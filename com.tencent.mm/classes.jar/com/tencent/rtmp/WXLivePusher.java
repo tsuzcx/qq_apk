@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Surface;
-import com.tencent.liteav.audio.TXCAudioLocalRecorder;
-import com.tencent.liteav.audio.TXCAudioLocalRecorder.a;
+import com.tencent.liteav.audio.TXCAudioEngine;
+import com.tencent.liteav.audio.impl.TXCAudioEngineJNI.a;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -33,7 +33,6 @@ public class WXLivePusher
   private static final String ADDRESS2 = "room://rtc.tencent.com";
   private static final String TAG = "WXLivePusher";
   private int mAppScene;
-  private TXCAudioLocalRecorder mAudioLocalRecorder;
   private int mAudioVolumeEvaluationInterval;
   private TXLivePusher.ITXAudioVolumeEvaluationListener mAudioVolumeEvaluationListener;
   private boolean mAutoRecvAudio;
@@ -73,7 +72,6 @@ public class WXLivePusher
     this.mPushConfig = new WXLivePushConfig();
     this.mMapMainStream = new HashMap();
     this.mMapSubStream = new HashMap();
-    this.mAudioLocalRecorder = null;
     this.mAudioVolumeEvaluationListener = null;
     this.mAudioVolumeEvaluationInterval = 0;
     this.mTRTCCloudListener = new TRTCCloudListener()
@@ -92,6 +90,7 @@ public class WXLivePusher
         }
         catch (Exception paramAnonymousString1)
         {
+          TXCLog.e("WXLivePusher", "build json object failed.", paramAnonymousString1);
           AppMethodBeat.o(170239);
         }
         return null;
@@ -109,6 +108,7 @@ public class WXLivePusher
         }
         catch (Exception paramAnonymousString)
         {
+          TXCLog.e("WXLivePusher", "build json object failed.", paramAnonymousString);
           AppMethodBeat.o(170236);
         }
         return null;
@@ -126,6 +126,7 @@ public class WXLivePusher
         }
         catch (Exception paramAnonymousString)
         {
+          TXCLog.e("WXLivePusher", "build json object failed.", paramAnonymousString);
           AppMethodBeat.o(170237);
         }
         return null;
@@ -146,6 +147,7 @@ public class WXLivePusher
         }
         catch (Exception paramAnonymousString1)
         {
+          TXCLog.e("WXLivePusher", "build json object failed.", paramAnonymousString1);
           AppMethodBeat.o(170238);
         }
         return null;
@@ -204,6 +206,7 @@ public class WXLivePusher
         }
         catch (Exception paramAnonymousJSONObject)
         {
+          TXCLog.e("WXLivePusher", "send event failed.", paramAnonymousJSONObject);
           AppMethodBeat.o(170242);
         }
       }
@@ -405,29 +408,25 @@ public class WXLivePusher
   private int internalStartDumpAudioData(String paramString)
   {
     AppMethodBeat.i(170218);
-    if (this.mAudioLocalRecorder == null)
+    TXCAudioEngine.getInstance().setAudioDumpingListener(new TXCAudioEngineJNI.a()
     {
-      this.mAudioLocalRecorder = new TXCAudioLocalRecorder();
-      this.mAudioLocalRecorder.a(new TXCAudioLocalRecorder.a()
+      public void onLocalAudioWriteFailed()
       {
-        public void onLocalAudioWriteFailed()
+        AppMethodBeat.i(170223);
+        if (WXLivePusher.this.mPushListener != null)
         {
-          AppMethodBeat.i(170223);
-          if (WXLivePusher.this.mPushListener != null)
+          ITXLivePushListener localITXLivePushListener = (ITXLivePushListener)WXLivePusher.this.mPushListener.get();
+          if (localITXLivePushListener != null)
           {
-            ITXLivePushListener localITXLivePushListener = (ITXLivePushListener)WXLivePusher.this.mPushListener.get();
-            if (localITXLivePushListener != null)
-            {
-              Bundle localBundle = new Bundle();
-              localBundle.putString("EVT_MSG", "write file failed when recording audio");
-              localITXLivePushListener.onPushEvent(7001, localBundle);
-            }
+            Bundle localBundle = new Bundle();
+            localBundle.putString("EVT_MSG", "write file failed when recording audio");
+            localITXLivePushListener.onPushEvent(7001, localBundle);
           }
-          AppMethodBeat.o(170223);
         }
-      });
-    }
-    int i = this.mAudioLocalRecorder.a(48000, 16, false, paramString);
+        AppMethodBeat.o(170223);
+      }
+    });
+    int i = TXCAudioEngine.getInstance().startLocalAudioDumping(48000, 16, paramString);
     AppMethodBeat.o(170218);
     return i;
   }
@@ -435,12 +434,7 @@ public class WXLivePusher
   private void internalStopDumpAudioData()
   {
     AppMethodBeat.i(170220);
-    if (this.mAudioLocalRecorder != null)
-    {
-      this.mAudioLocalRecorder.b();
-      this.mAudioLocalRecorder.a();
-      this.mAudioLocalRecorder = null;
-    }
+    TXCAudioEngine.getInstance().stopLocalAudioDumping();
     AppMethodBeat.o(170220);
   }
   
@@ -466,176 +460,180 @@ public class WXLivePusher
   {
     // Byte code:
     //   0: sipush 13989
-    //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 213	org/json/JSONObject
+    //   3: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 211	org/json/JSONObject
     //   9: dup
-    //   10: invokespecial 214	org/json/JSONObject:<init>	()V
+    //   10: invokespecial 212	org/json/JSONObject:<init>	()V
     //   13: astore_1
-    //   14: new 216	org/json/JSONArray
+    //   14: new 214	org/json/JSONArray
     //   17: dup
-    //   18: invokespecial 217	org/json/JSONArray:<init>	()V
+    //   18: invokespecial 215	org/json/JSONArray:<init>	()V
     //   21: astore_2
     //   22: aload_1
-    //   23: ldc 219
+    //   23: ldc 217
     //   25: aload_2
-    //   26: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   26: invokevirtual 221	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   29: pop
     //   30: aload_0
     //   31: monitorenter
     //   32: aload_0
-    //   33: getfield 104	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
-    //   36: invokevirtual 227	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   39: invokeinterface 233 1 0
+    //   33: getfield 102	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
+    //   36: invokevirtual 225	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   39: invokeinterface 231 1 0
     //   44: astore_3
     //   45: aload_3
-    //   46: invokeinterface 239 1 0
-    //   51: ifeq +79 -> 130
+    //   46: invokeinterface 237 1 0
+    //   51: ifeq +87 -> 138
     //   54: aload_3
-    //   55: invokeinterface 243 1 0
-    //   60: checkcast 205	java/lang/String
+    //   55: invokeinterface 241 1 0
+    //   60: checkcast 203	java/lang/String
     //   63: astore 4
-    //   65: new 213	org/json/JSONObject
+    //   65: new 211	org/json/JSONObject
     //   68: dup
-    //   69: invokespecial 214	org/json/JSONObject:<init>	()V
+    //   69: invokespecial 212	org/json/JSONObject:<init>	()V
     //   72: astore 5
     //   74: aload 5
-    //   76: ldc 245
+    //   76: ldc 243
     //   78: aload 4
-    //   80: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   80: invokevirtual 221	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   83: pop
     //   84: aload 5
-    //   86: ldc 247
+    //   86: ldc 245
     //   88: aload_0
-    //   89: getfield 104	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
+    //   89: getfield 102	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
     //   92: aload 4
-    //   94: invokevirtual 251	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   97: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   94: invokevirtual 249	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: invokevirtual 221	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   100: pop
     //   101: aload_2
     //   102: aload 5
-    //   104: invokevirtual 254	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   104: invokevirtual 252	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   107: pop
     //   108: goto -63 -> 45
     //   111: astore_1
     //   112: aload_0
     //   113: monitorexit
     //   114: sipush 13989
-    //   117: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: aload_1
     //   121: athrow
     //   122: astore_1
-    //   123: sipush 13989
-    //   126: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   129: return
-    //   130: aload_0
-    //   131: monitorexit
-    //   132: new 216	org/json/JSONArray
-    //   135: dup
-    //   136: invokespecial 217	org/json/JSONArray:<init>	()V
-    //   139: astore_2
-    //   140: aload_1
-    //   141: ldc_w 256
-    //   144: aload_2
-    //   145: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   148: pop
-    //   149: aload_0
-    //   150: monitorenter
-    //   151: aload_0
-    //   152: getfield 106	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
-    //   155: invokevirtual 227	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   158: invokeinterface 233 1 0
-    //   163: astore_3
-    //   164: aload_3
-    //   165: invokeinterface 239 1 0
-    //   170: ifeq +71 -> 241
-    //   173: aload_3
-    //   174: invokeinterface 243 1 0
-    //   179: checkcast 205	java/lang/String
-    //   182: astore 4
-    //   184: new 213	org/json/JSONObject
-    //   187: dup
-    //   188: invokespecial 214	org/json/JSONObject:<init>	()V
-    //   191: astore 5
-    //   193: aload 5
-    //   195: ldc 245
-    //   197: aload 4
-    //   199: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   202: pop
-    //   203: aload 5
-    //   205: ldc 247
-    //   207: aload_0
-    //   208: getfield 106	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
-    //   211: aload 4
-    //   213: invokevirtual 251	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   216: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   219: pop
-    //   220: aload_2
-    //   221: aload 5
-    //   223: invokevirtual 254	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   226: pop
-    //   227: goto -63 -> 164
-    //   230: astore_1
-    //   231: aload_0
-    //   232: monitorexit
-    //   233: sipush 13989
-    //   236: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   239: aload_1
-    //   240: athrow
-    //   241: aload_0
-    //   242: monitorexit
-    //   243: aload_0
-    //   244: getfield 88	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
-    //   247: ifnull +47 -> 294
-    //   250: aload_0
-    //   251: getfield 88	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
-    //   254: invokevirtual 260	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   257: checkcast 262	com/tencent/rtmp/ITXLivePushListener
-    //   260: astore_2
-    //   261: aload_2
-    //   262: ifnull +32 -> 294
-    //   265: new 264	android/os/Bundle
-    //   268: dup
-    //   269: invokespecial 265	android/os/Bundle:<init>	()V
-    //   272: astore_3
-    //   273: aload_3
-    //   274: ldc_w 267
-    //   277: aload_1
-    //   278: invokevirtual 271	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   281: invokevirtual 275	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   284: aload_2
-    //   285: sipush 1020
-    //   288: aload_3
-    //   289: invokeinterface 279 3 0
-    //   294: sipush 13989
-    //   297: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   300: return
+    //   123: ldc 22
+    //   125: ldc 254
+    //   127: aload_1
+    //   128: invokestatic 260	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   131: sipush 13989
+    //   134: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: return
+    //   138: aload_0
+    //   139: monitorexit
+    //   140: new 214	org/json/JSONArray
+    //   143: dup
+    //   144: invokespecial 215	org/json/JSONArray:<init>	()V
+    //   147: astore_2
+    //   148: aload_1
+    //   149: ldc_w 262
+    //   152: aload_2
+    //   153: invokevirtual 221	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   156: pop
+    //   157: aload_0
+    //   158: monitorenter
+    //   159: aload_0
+    //   160: getfield 104	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
+    //   163: invokevirtual 225	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   166: invokeinterface 231 1 0
+    //   171: astore_3
+    //   172: aload_3
+    //   173: invokeinterface 237 1 0
+    //   178: ifeq +71 -> 249
+    //   181: aload_3
+    //   182: invokeinterface 241 1 0
+    //   187: checkcast 203	java/lang/String
+    //   190: astore 4
+    //   192: new 211	org/json/JSONObject
+    //   195: dup
+    //   196: invokespecial 212	org/json/JSONObject:<init>	()V
+    //   199: astore 5
+    //   201: aload 5
+    //   203: ldc 243
+    //   205: aload 4
+    //   207: invokevirtual 221	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   210: pop
+    //   211: aload 5
+    //   213: ldc 245
+    //   215: aload_0
+    //   216: getfield 104	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
+    //   219: aload 4
+    //   221: invokevirtual 249	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   224: invokevirtual 221	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   227: pop
+    //   228: aload_2
+    //   229: aload 5
+    //   231: invokevirtual 252	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   234: pop
+    //   235: goto -63 -> 172
+    //   238: astore_1
+    //   239: aload_0
+    //   240: monitorexit
+    //   241: sipush 13989
+    //   244: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   247: aload_1
+    //   248: athrow
+    //   249: aload_0
+    //   250: monitorexit
+    //   251: aload_0
+    //   252: getfield 86	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
+    //   255: ifnull +47 -> 302
+    //   258: aload_0
+    //   259: getfield 86	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
+    //   262: invokevirtual 266	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   265: checkcast 268	com/tencent/rtmp/ITXLivePushListener
+    //   268: astore_2
+    //   269: aload_2
+    //   270: ifnull +32 -> 302
+    //   273: new 270	android/os/Bundle
+    //   276: dup
+    //   277: invokespecial 271	android/os/Bundle:<init>	()V
+    //   280: astore_3
+    //   281: aload_3
+    //   282: ldc_w 273
+    //   285: aload_1
+    //   286: invokevirtual 277	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   289: invokevirtual 281	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   292: aload_2
+    //   293: sipush 1020
+    //   296: aload_3
+    //   297: invokeinterface 285 3 0
+    //   302: sipush 13989
+    //   305: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   308: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	301	0	this	WXLivePusher
+    //   0	309	0	this	WXLivePusher
     //   13	10	1	localJSONObject1	JSONObject
     //   111	10	1	localObject1	Object
-    //   122	19	1	localException	Exception
-    //   230	48	1	localObject2	Object
-    //   21	264	2	localObject3	Object
-    //   44	245	3	localObject4	Object
-    //   63	149	4	str	String
-    //   72	150	5	localJSONObject2	JSONObject
+    //   122	27	1	localException	Exception
+    //   238	48	1	localObject2	Object
+    //   21	272	2	localObject3	Object
+    //   44	253	3	localObject4	Object
+    //   63	157	4	str	String
+    //   72	158	5	localJSONObject2	JSONObject
     // Exception table:
     //   from	to	target	type
     //   32	45	111	finally
     //   45	108	111	finally
     //   112	114	111	finally
-    //   130	132	111	finally
+    //   138	140	111	finally
     //   6	32	122	java/lang/Exception
     //   114	122	122	java/lang/Exception
-    //   132	151	122	java/lang/Exception
-    //   233	241	122	java/lang/Exception
-    //   243	261	122	java/lang/Exception
-    //   265	294	122	java/lang/Exception
-    //   151	164	230	finally
-    //   164	227	230	finally
-    //   231	233	230	finally
-    //   241	243	230	finally
+    //   140	159	122	java/lang/Exception
+    //   241	249	122	java/lang/Exception
+    //   251	269	122	java/lang/Exception
+    //   273	302	122	java/lang/Exception
+    //   159	172	238	finally
+    //   172	235	238	finally
+    //   239	241	238	finally
+    //   249	251	238	finally
   }
   
   private void notifyMainStreamChange(boolean paramBoolean, String paramString1, String paramString2)
@@ -688,1143 +686,591 @@ public class WXLivePusher
       AppMethodBeat.o(13984);
       return false;
     }
-    int i2 = 0;
-    int i = 0;
-    int i3 = 0;
-    int j = 0;
-    Object localObject1 = "";
-    Object localObject2 = "";
-    Object localObject3 = "";
-    Object localObject4 = "";
-    Object localObject5 = "";
-    Object localObject6 = "";
-    int i4 = 0;
-    int k = 0;
-    int i1 = i4;
-    Object localObject12 = localObject6;
-    Object localObject11 = localObject5;
-    Object localObject7 = localObject4;
-    Object localObject8 = localObject3;
-    Object localObject9 = localObject2;
-    Object localObject10 = localObject1;
-    int n = i3;
-    int m = i2;
-    for (;;)
+    m = 0;
+    i = 0;
+    n = 0;
+    j = 0;
+    localObject1 = "";
+    localObject2 = "";
+    localObject3 = "";
+    localObject4 = "";
+    localObject6 = "";
+    localObject5 = "";
+    k = 0;
+    try
     {
-      Object localObject13;
-      Object localObject14;
-      Object localObject15;
-      Object localObject16;
-      Object localObject17;
-      Object localObject18;
-      int i5;
+      arrayOfString = paramString.split("[?&]");
+      i3 = arrayOfString.length;
+      m = 0;
+      k = 0;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        String[] arrayOfString;
+        int i3;
+        Object localObject7;
+        Object localObject8;
+        Object localObject9;
+        Object localObject10;
+        Object localObject11;
+        Object localObject12;
+        int i1;
+        int i2;
+        CharSequence localCharSequence;
+        j = n;
+        i = m;
+        continue;
+        m += 1;
+        k = n;
+        localObject5 = localObject7;
+        localObject6 = localObject8;
+        localObject4 = localObject9;
+        localObject3 = localObject10;
+        localObject2 = localObject11;
+        localObject1 = localObject12;
+        j = i1;
+        i = i2;
+      }
+    }
+    if (m < i3)
+    {
+      paramString = arrayOfString[m];
+      n = k;
+      localObject7 = localObject5;
+      localObject8 = localObject6;
+      localObject9 = localObject4;
+      localObject10 = localObject3;
+      localObject11 = localObject2;
+      localObject12 = localObject1;
+      i1 = j;
+      i2 = i;
       try
       {
-        String[] arrayOfString = paramString.split("[?&]");
-        i1 = i4;
-        localObject12 = localObject6;
-        localObject11 = localObject5;
-        localObject7 = localObject4;
-        localObject8 = localObject3;
-        localObject9 = localObject2;
-        localObject10 = localObject1;
-        n = i3;
-        m = i2;
-        int i6 = arrayOfString.length;
-        i2 = 0;
-        if (i2 < i6)
+        if (paramString.indexOf("=") == -1) {
+          break label2149;
+        }
+        paramString = paramString.split("[=]");
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        if (paramString.length != 2) {
+          break label2149;
+        }
+        localCharSequence = paramString[0];
+        paramString = paramString[1];
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        if (TextUtils.isEmpty(localCharSequence)) {
+          break label2149;
+        }
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        if (TextUtils.isEmpty(paramString)) {
+          break label2149;
+        }
+        if (localCharSequence.equalsIgnoreCase("sdkappid"))
         {
-          paramString = arrayOfString[i2];
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          i3 = k;
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          if (paramString.indexOf("=") == -1) {
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          paramString = paramString.split("[=]");
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          i3 = k;
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          if (paramString.length != 2) {
-            break label4198;
-          }
-          localCharSequence = paramString[0];
-          paramString = paramString[1];
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          i3 = k;
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          if (TextUtils.isEmpty(localCharSequence)) {
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          i3 = k;
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          if (TextUtils.isEmpty(paramString)) {
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("sdkappid"))
+          i2 = Integer.parseInt(paramString);
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          i1 = j;
+        }
+        else if (localCharSequence.equalsIgnoreCase("roomid"))
+        {
+          i1 = Long.valueOf(paramString).intValue();
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          i2 = i;
+        }
+        else if (localCharSequence.equalsIgnoreCase("userid"))
+        {
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = paramString;
+          i1 = j;
+          i2 = i;
+        }
+        else if (localCharSequence.equalsIgnoreCase("usersig"))
+        {
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = paramString;
+          localObject12 = localObject1;
+          i1 = j;
+          i2 = i;
+        }
+        else if (localCharSequence.equalsIgnoreCase("cloudenv"))
+        {
+          if (paramString.equalsIgnoreCase("pro"))
           {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            i5 = Integer.parseInt(paramString);
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-          }
-          else
-          {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            if (localCharSequence.equalsIgnoreCase("roomid"))
-            {
-              i1 = k;
-              localObject12 = localObject6;
-              localObject11 = localObject5;
-              localObject7 = localObject4;
-              localObject8 = localObject3;
-              localObject9 = localObject2;
-              localObject10 = localObject1;
-              n = j;
-              m = i;
-              i4 = Long.valueOf(paramString).intValue();
-              i3 = k;
-              localObject13 = localObject6;
-              localObject14 = localObject5;
-              localObject15 = localObject4;
-              localObject16 = localObject3;
-              localObject17 = localObject2;
-              localObject18 = localObject1;
-              i5 = i;
-            }
-            else
-            {
-              i1 = k;
-              localObject12 = localObject6;
-              localObject11 = localObject5;
-              localObject7 = localObject4;
-              localObject8 = localObject3;
-              localObject9 = localObject2;
-              localObject10 = localObject1;
-              n = j;
-              m = i;
-              if (localCharSequence.equalsIgnoreCase("userid"))
-              {
-                i3 = k;
-                localObject13 = localObject6;
-                localObject14 = localObject5;
-                localObject15 = localObject4;
-                localObject16 = localObject3;
-                localObject17 = localObject2;
-                localObject18 = paramString;
-                i4 = j;
-                i5 = i;
-              }
-              else
-              {
-                i1 = k;
-                localObject12 = localObject6;
-                localObject11 = localObject5;
-                localObject7 = localObject4;
-                localObject8 = localObject3;
-                localObject9 = localObject2;
-                localObject10 = localObject1;
-                n = j;
-                m = i;
-                if (localCharSequence.equalsIgnoreCase("usersig"))
-                {
-                  i3 = k;
-                  localObject13 = localObject6;
-                  localObject14 = localObject5;
-                  localObject15 = localObject4;
-                  localObject16 = localObject3;
-                  localObject17 = paramString;
-                  localObject18 = localObject1;
-                  i4 = j;
-                  i5 = i;
-                }
-                else
-                {
-                  i1 = k;
-                  localObject12 = localObject6;
-                  localObject11 = localObject5;
-                  localObject7 = localObject4;
-                  localObject8 = localObject3;
-                  localObject9 = localObject2;
-                  localObject10 = localObject1;
-                  n = j;
-                  m = i;
-                  if (localCharSequence.equalsIgnoreCase("cloudenv"))
-                  {
-                    i1 = k;
-                    localObject12 = localObject6;
-                    localObject11 = localObject5;
-                    localObject7 = localObject4;
-                    localObject8 = localObject3;
-                    localObject9 = localObject2;
-                    localObject10 = localObject1;
-                    n = j;
-                    m = i;
-                    if (paramString.equalsIgnoreCase("pro"))
-                    {
-                      i1 = k;
-                      localObject12 = localObject6;
-                      localObject11 = localObject5;
-                      localObject7 = localObject4;
-                      localObject8 = localObject3;
-                      localObject9 = localObject2;
-                      localObject10 = localObject1;
-                      n = j;
-                      m = i;
-                      WXTRTCCloud.setNetEnv(0);
-                      i3 = k;
-                      localObject13 = localObject6;
-                      localObject14 = localObject5;
-                      localObject15 = localObject4;
-                      localObject16 = localObject3;
-                      localObject17 = localObject2;
-                      localObject18 = localObject1;
-                      i4 = j;
-                      i5 = i;
-                    }
-                  }
-                }
-              }
-            }
+            WXTRTCCloud.setNetEnv(0);
+            n = k;
+            localObject7 = localObject5;
+            localObject8 = localObject6;
+            localObject9 = localObject4;
+            localObject10 = localObject3;
+            localObject11 = localObject2;
+            localObject12 = localObject1;
+            i1 = j;
+            i2 = i;
           }
         }
       }
-      catch (Exception paramString)
+      catch (Exception paramString) {}
+      TXCLog.e("WXLivePusher", "parse trtc params failed.", paramString);
+      paramString = (String)localObject6;
+    }
+    for (m = i; (m == 0) || ((j == 0) && (TextUtils.isEmpty(paramString))) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)); m = i)
+    {
+      AppMethodBeat.o(13984);
+      return false;
+      if (paramString.equalsIgnoreCase("dev"))
       {
-        CharSequence localCharSequence;
-        i = i1;
-        localObject5 = localObject12;
-        paramString = localObject11;
-        j = n;
-        localObject1 = localObject10;
-        localObject2 = localObject9;
-        localObject3 = localObject8;
-        localObject4 = localObject7;
-        if ((m == 0) || ((j == 0) && (TextUtils.isEmpty(paramString))) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
-        {
-          AppMethodBeat.o(13984);
-          return false;
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (paramString.equalsIgnoreCase("dev"))
-          {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            WXTRTCCloud.setNetEnv(1);
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (paramString.equalsIgnoreCase("uat"))
-          {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            WXTRTCCloud.setNetEnv(2);
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          i3 = k;
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          if (!paramString.equalsIgnoreCase("ccc")) {
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          WXTRTCCloud.setNetEnv(3);
-          i3 = k;
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          break label4198;
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("encsmall"))
-          {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            localObject13 = new TRTCCloudDef.TRTCVideoEncParam();
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            ((TRTCCloudDef.TRTCVideoEncParam)localObject13).videoResolution = 100;
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            ((TRTCCloudDef.TRTCVideoEncParam)localObject13).videoFps = 15;
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            ((TRTCCloudDef.TRTCVideoEncParam)localObject13).videoBitrate = 100;
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            ((TRTCCloudDef.TRTCVideoEncParam)localObject13).videoResolutionMode = 1;
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            if (Integer.parseInt(paramString) == 1)
-            {
-              i1 = k;
-              localObject12 = localObject6;
-              localObject11 = localObject5;
-              localObject7 = localObject4;
-              localObject8 = localObject3;
-              localObject9 = localObject2;
-              localObject10 = localObject1;
-              n = j;
-              m = i;
-              this.mTRTCCloud.enableEncSmallVideoStream(true, (TRTCCloudDef.TRTCVideoEncParam)localObject13);
-              i3 = k;
-              localObject13 = localObject6;
-              localObject14 = localObject5;
-              localObject15 = localObject4;
-              localObject16 = localObject3;
-              localObject17 = localObject2;
-              localObject18 = localObject1;
-              i4 = j;
-              i5 = i;
-              break label4198;
-            }
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            this.mTRTCCloud.enableEncSmallVideoStream(false, (TRTCCloudDef.TRTCVideoEncParam)localObject13);
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("enableblackstream"))
-          {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            if (Integer.parseInt(paramString) != 1) {
-              break label4198;
-            }
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            this.mTRTCCloud.enableBlackStream(true);
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("appscene"))
-          {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            if (paramString.equalsIgnoreCase("live"))
-            {
-              i1 = k;
-              localObject12 = localObject6;
-              localObject11 = localObject5;
-              localObject7 = localObject4;
-              localObject8 = localObject3;
-              localObject9 = localObject2;
-              localObject10 = localObject1;
-              n = j;
-              m = i;
-              this.mAppScene = 1;
-              i3 = k;
-              localObject13 = localObject6;
-              localObject14 = localObject5;
-              localObject15 = localObject4;
-              localObject16 = localObject3;
-              localObject17 = localObject2;
-              localObject18 = localObject1;
-              i4 = j;
-              i5 = i;
-              break label4198;
-            }
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            if (paramString.equalsIgnoreCase("videocall"))
-            {
-              i1 = k;
-              localObject12 = localObject6;
-              localObject11 = localObject5;
-              localObject7 = localObject4;
-              localObject8 = localObject3;
-              localObject9 = localObject2;
-              localObject10 = localObject1;
-              n = j;
-              m = i;
-              this.mAppScene = 0;
-              i3 = k;
-              localObject13 = localObject6;
-              localObject14 = localObject5;
-              localObject15 = localObject4;
-              localObject16 = localObject3;
-              localObject17 = localObject2;
-              localObject18 = localObject1;
-              i4 = j;
-              i5 = i;
-              break label4198;
-            }
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            if (paramString.equalsIgnoreCase("audiocall"))
-            {
-              i1 = k;
-              localObject12 = localObject6;
-              localObject11 = localObject5;
-              localObject7 = localObject4;
-              localObject8 = localObject3;
-              localObject9 = localObject2;
-              localObject10 = localObject1;
-              n = j;
-              m = i;
-              this.mAppScene = 2;
-              i3 = k;
-              localObject13 = localObject6;
-              localObject14 = localObject5;
-              localObject15 = localObject4;
-              localObject16 = localObject3;
-              localObject17 = localObject2;
-              localObject18 = localObject1;
-              i4 = j;
-              i5 = i;
-              break label4198;
-            }
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            if (paramString.equalsIgnoreCase("voicechatroom"))
-            {
-              i1 = k;
-              localObject12 = localObject6;
-              localObject11 = localObject5;
-              localObject7 = localObject4;
-              localObject8 = localObject3;
-              localObject9 = localObject2;
-              localObject10 = localObject1;
-              n = j;
-              m = i;
-              this.mAppScene = 3;
-              i3 = k;
-              localObject13 = localObject6;
-              localObject14 = localObject5;
-              localObject15 = localObject4;
-              localObject16 = localObject3;
-              localObject17 = localObject2;
-              localObject18 = localObject1;
-              i4 = j;
-              i5 = i;
-              break label4198;
-            }
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            this.mAppScene = 0;
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("recvmode"))
-          {
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            i3 = Integer.parseInt(paramString);
-            if (i3 != 1)
-            {
-              if (i3 == 2)
-              {
-                i1 = k;
-                localObject12 = localObject6;
-                localObject11 = localObject5;
-                localObject7 = localObject4;
-                localObject8 = localObject3;
-                localObject9 = localObject2;
-                localObject10 = localObject1;
-                n = j;
-                m = i;
-                this.mAutoRecvAudio = true;
-                i1 = k;
-                localObject12 = localObject6;
-                localObject11 = localObject5;
-                localObject7 = localObject4;
-                localObject8 = localObject3;
-                localObject9 = localObject2;
-                localObject10 = localObject1;
-                n = j;
-                m = i;
-                this.mAutoRecvVideo = false;
-                i3 = k;
-                localObject13 = localObject6;
-                localObject14 = localObject5;
-                localObject15 = localObject4;
-                localObject16 = localObject3;
-                localObject17 = localObject2;
-                localObject18 = localObject1;
-                i4 = j;
-                i5 = i;
-                break label4198;
-              }
-              if (i3 == 3)
-              {
-                i1 = k;
-                localObject12 = localObject6;
-                localObject11 = localObject5;
-                localObject7 = localObject4;
-                localObject8 = localObject3;
-                localObject9 = localObject2;
-                localObject10 = localObject1;
-                n = j;
-                m = i;
-                this.mAutoRecvAudio = false;
-                i1 = k;
-                localObject12 = localObject6;
-                localObject11 = localObject5;
-                localObject7 = localObject4;
-                localObject8 = localObject3;
-                localObject9 = localObject2;
-                localObject10 = localObject1;
-                n = j;
-                m = i;
-                this.mAutoRecvVideo = true;
-                i3 = k;
-                localObject13 = localObject6;
-                localObject14 = localObject5;
-                localObject15 = localObject4;
-                localObject16 = localObject3;
-                localObject17 = localObject2;
-                localObject18 = localObject1;
-                i4 = j;
-                i5 = i;
-                break label4198;
-              }
-              if (i3 == 4)
-              {
-                i1 = k;
-                localObject12 = localObject6;
-                localObject11 = localObject5;
-                localObject7 = localObject4;
-                localObject8 = localObject3;
-                localObject9 = localObject2;
-                localObject10 = localObject1;
-                n = j;
-                m = i;
-                this.mAutoRecvAudio = false;
-                i1 = k;
-                localObject12 = localObject6;
-                localObject11 = localObject5;
-                localObject7 = localObject4;
-                localObject8 = localObject3;
-                localObject9 = localObject2;
-                localObject10 = localObject1;
-                n = j;
-                m = i;
-                this.mAutoRecvVideo = false;
-                i3 = k;
-                localObject13 = localObject6;
-                localObject14 = localObject5;
-                localObject15 = localObject4;
-                localObject16 = localObject3;
-                localObject17 = localObject2;
-                localObject18 = localObject1;
-                i4 = j;
-                i5 = i;
-                break label4198;
-              }
-            }
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            this.mAutoRecvAudio = true;
-            i1 = k;
-            localObject12 = localObject6;
-            localObject11 = localObject5;
-            localObject7 = localObject4;
-            localObject8 = localObject3;
-            localObject9 = localObject2;
-            localObject10 = localObject1;
-            n = j;
-            m = i;
-            this.mAutoRecvVideo = true;
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("streamid"))
-          {
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = paramString;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("userdefinerecordid"))
-          {
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = localObject5;
-            localObject15 = paramString;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("strroomid"))
-          {
-            i3 = k;
-            localObject13 = localObject6;
-            localObject14 = paramString;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          if (localCharSequence.equalsIgnoreCase("privatemapkey"))
-          {
-            i3 = k;
-            localObject13 = paramString;
-            localObject14 = localObject5;
-            localObject15 = localObject4;
-            localObject16 = localObject3;
-            localObject17 = localObject2;
-            localObject18 = localObject1;
-            i4 = j;
-            i5 = i;
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          i3 = k;
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          if (!localCharSequence.equalsIgnoreCase("pureaudiomode")) {
-            break label4198;
-          }
-          i1 = k;
-          localObject12 = localObject6;
-          localObject11 = localObject5;
-          localObject7 = localObject4;
-          localObject8 = localObject3;
-          localObject9 = localObject2;
-          localObject10 = localObject1;
-          n = j;
-          m = i;
-          i3 = Integer.parseInt(paramString);
-          localObject13 = localObject6;
-          localObject14 = localObject5;
-          localObject15 = localObject4;
-          localObject16 = localObject3;
-          localObject17 = localObject2;
-          localObject18 = localObject1;
-          i4 = j;
-          i5 = i;
-          break label4198;
-          paramString = (String)localObject5;
-          m = i;
-          i = k;
-          localObject5 = localObject6;
-          continue;
-        }
-        n = 0;
-        k = n;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          k = n;
-          if (j == 0) {
-            k = 1;
-          }
-        }
-        this.mTRTCParams.sdkAppId = m;
-        localObject6 = this.mTRTCParams;
-        if (k == 0) {
-          break label4153;
-        }
+        WXTRTCCloud.setNetEnv(1);
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
       }
+      if (paramString.equalsIgnoreCase("uat"))
+      {
+        WXTRTCCloud.setNetEnv(2);
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      n = k;
+      localObject7 = localObject5;
+      localObject8 = localObject6;
+      localObject9 = localObject4;
+      localObject10 = localObject3;
+      localObject11 = localObject2;
+      localObject12 = localObject1;
+      i1 = j;
+      i2 = i;
+      if (!paramString.equalsIgnoreCase("ccc")) {
+        break label2149;
+      }
+      WXTRTCCloud.setNetEnv(3);
+      n = k;
+      localObject7 = localObject5;
+      localObject8 = localObject6;
+      localObject9 = localObject4;
+      localObject10 = localObject3;
+      localObject11 = localObject2;
+      localObject12 = localObject1;
+      i1 = j;
+      i2 = i;
+      break label2149;
+      if (localCharSequence.equalsIgnoreCase("encsmall"))
+      {
+        localObject7 = new TRTCCloudDef.TRTCVideoEncParam();
+        ((TRTCCloudDef.TRTCVideoEncParam)localObject7).videoResolution = 100;
+        ((TRTCCloudDef.TRTCVideoEncParam)localObject7).videoFps = 15;
+        ((TRTCCloudDef.TRTCVideoEncParam)localObject7).videoBitrate = 100;
+        ((TRTCCloudDef.TRTCVideoEncParam)localObject7).videoResolutionMode = 1;
+        if (Integer.parseInt(paramString) == 1)
+        {
+          this.mTRTCCloud.enableEncSmallVideoStream(true, (TRTCCloudDef.TRTCVideoEncParam)localObject7);
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          i1 = j;
+          i2 = i;
+          break label2149;
+        }
+        this.mTRTCCloud.enableEncSmallVideoStream(false, (TRTCCloudDef.TRTCVideoEncParam)localObject7);
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      if (localCharSequence.equalsIgnoreCase("enableblackstream"))
+      {
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        if (Integer.parseInt(paramString) != 1) {
+          break label2149;
+        }
+        this.mTRTCCloud.enableBlackStream(true);
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      if (localCharSequence.equalsIgnoreCase("appscene"))
+      {
+        if (paramString.equalsIgnoreCase("live"))
+        {
+          this.mAppScene = 1;
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          i1 = j;
+          i2 = i;
+          break label2149;
+        }
+        if (paramString.equalsIgnoreCase("videocall"))
+        {
+          this.mAppScene = 0;
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          i1 = j;
+          i2 = i;
+          break label2149;
+        }
+        if (paramString.equalsIgnoreCase("audiocall"))
+        {
+          this.mAppScene = 2;
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          i1 = j;
+          i2 = i;
+          break label2149;
+        }
+        if (paramString.equalsIgnoreCase("voicechatroom"))
+        {
+          this.mAppScene = 3;
+          n = k;
+          localObject7 = localObject5;
+          localObject8 = localObject6;
+          localObject9 = localObject4;
+          localObject10 = localObject3;
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          i1 = j;
+          i2 = i;
+          break label2149;
+        }
+        this.mAppScene = 0;
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      if (localCharSequence.equalsIgnoreCase("recvmode"))
+      {
+        n = Integer.parseInt(paramString);
+        if (n != 1)
+        {
+          if (n == 2)
+          {
+            this.mAutoRecvAudio = true;
+            this.mAutoRecvVideo = false;
+            n = k;
+            localObject7 = localObject5;
+            localObject8 = localObject6;
+            localObject9 = localObject4;
+            localObject10 = localObject3;
+            localObject11 = localObject2;
+            localObject12 = localObject1;
+            i1 = j;
+            i2 = i;
+            break label2149;
+          }
+          if (n == 3)
+          {
+            this.mAutoRecvAudio = false;
+            this.mAutoRecvVideo = true;
+            n = k;
+            localObject7 = localObject5;
+            localObject8 = localObject6;
+            localObject9 = localObject4;
+            localObject10 = localObject3;
+            localObject11 = localObject2;
+            localObject12 = localObject1;
+            i1 = j;
+            i2 = i;
+            break label2149;
+          }
+          if (n == 4)
+          {
+            this.mAutoRecvAudio = false;
+            this.mAutoRecvVideo = false;
+            n = k;
+            localObject7 = localObject5;
+            localObject8 = localObject6;
+            localObject9 = localObject4;
+            localObject10 = localObject3;
+            localObject11 = localObject2;
+            localObject12 = localObject1;
+            i1 = j;
+            i2 = i;
+            break label2149;
+          }
+        }
+        this.mAutoRecvAudio = true;
+        this.mAutoRecvVideo = true;
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      if (localCharSequence.equalsIgnoreCase("streamid"))
+      {
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = paramString;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      if (localCharSequence.equalsIgnoreCase("userdefinerecordid"))
+      {
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = paramString;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      if (localCharSequence.equalsIgnoreCase("strroomid"))
+      {
+        n = k;
+        localObject7 = localObject5;
+        localObject8 = paramString;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      if (localCharSequence.equalsIgnoreCase("privatemapkey"))
+      {
+        n = k;
+        localObject7 = paramString;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i1 = j;
+        i2 = i;
+        break label2149;
+      }
+      n = k;
+      localObject7 = localObject5;
+      localObject8 = localObject6;
+      localObject9 = localObject4;
+      localObject10 = localObject3;
+      localObject11 = localObject2;
+      localObject12 = localObject1;
+      i1 = j;
+      i2 = i;
+      if (!localCharSequence.equalsIgnoreCase("pureaudiomode")) {
+        break label2149;
+      }
+      n = Integer.parseInt(paramString);
+      localObject7 = localObject5;
+      localObject8 = localObject6;
+      localObject9 = localObject4;
+      localObject10 = localObject3;
+      localObject11 = localObject2;
+      localObject12 = localObject1;
+      i1 = j;
+      i2 = i;
+      break label2149;
+      paramString = (String)localObject6;
+    }
+    n = 0;
+    i = n;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      i = n;
+      if (j == 0) {
+        i = 1;
+      }
+    }
+    this.mTRTCParams.sdkAppId = m;
+    localObject6 = this.mTRTCParams;
+    if (i != 0)
+    {
       j = -1;
       ((TRTCCloudDef.TRTCParams)localObject6).roomId = j;
       this.mTRTCParams.userId = ((String)localObject1);
       this.mTRTCParams.userSig = ((String)localObject2);
       this.mTRTCParams.privateMapKey = ((String)localObject5);
-      if ((this.mAppScene == 1) || (this.mAppScene == 3))
-      {
-        this.mNeedCheckRole = true;
-        label3971:
-        if ((localObject3 == null) || (((String)localObject3).length() <= 0)) {
-          break label4164;
-        }
-        j = 1;
-        label3986:
-        if ((localObject4 == null) || (((String)localObject4).length() <= 0)) {
-          break label4169;
-        }
-        m = 1;
-        label4002:
-        if ((i != 1) && (i != 2)) {
-          break label4175;
-        }
-        n = 1;
-        label4015:
-        if ((j == 0) && (m == 0) && (k == 0) && (n == 0)) {
-          break label4181;
-        }
+      if ((this.mAppScene != 1) && (this.mAppScene != 3)) {
+        break label2088;
       }
-      for (;;)
-      {
-        try
-        {
-          localObject1 = new JSONObject();
-          if ((j != 0) || (m != 0))
-          {
-            localObject2 = new JSONObject();
-            if (j != 0) {
-              ((JSONObject)localObject2).put("userdefine_streamid_main", localObject3);
-            }
-            if (m != 0) {
-              ((JSONObject)localObject2).put("userdefine_record_id", localObject4);
-            }
-            if (n != 0) {
-              ((JSONObject)localObject2).put("pure_audio_push_mod", i);
-            }
-            ((JSONObject)localObject1).put("Str_uc_params", localObject2);
-          }
-          if (k != 0) {
-            ((JSONObject)localObject1).put("strGroupId", paramString);
-          }
-          this.mTRTCParams.businessInfo = ((JSONObject)localObject1).toString();
-        }
-        catch (Exception paramString)
-        {
-          label4153:
-          label4164:
-          label4169:
-          label4175:
-          label4181:
-          continue;
-        }
-        AppMethodBeat.o(13984);
-        return true;
-        break;
-        this.mNeedCheckRole = false;
-        break label3971;
-        j = 0;
-        break label3986;
-        m = 0;
-        break label4002;
-        n = 0;
-        break label4015;
-        this.mTRTCParams.businessInfo = "";
+      this.mNeedCheckRole = true;
+      label1902:
+      if ((localObject3 == null) || (((String)localObject3).length() <= 0)) {
+        break label2096;
       }
-      label4198:
-      i2 += 1;
-      k = i3;
-      localObject6 = localObject13;
-      localObject5 = localObject14;
-      localObject4 = localObject15;
-      localObject3 = localObject16;
-      localObject2 = localObject17;
-      localObject1 = localObject18;
-      j = i4;
-      i = i5;
+      j = 1;
+      label1917:
+      if ((localObject4 == null) || (((String)localObject4).length() <= 0)) {
+        break label2101;
+      }
+      m = 1;
+      label1933:
+      if ((k != 1) && (k != 2)) {
+        break label2107;
+      }
+      n = 1;
+      label1948:
+      if ((j == 0) && (m == 0) && (i == 0) && (n == 0)) {
+        break label2126;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new JSONObject();
+        if ((j != 0) || (m != 0))
+        {
+          localObject2 = new JSONObject();
+          if (j != 0) {
+            ((JSONObject)localObject2).put("userdefine_streamid_main", localObject3);
+          }
+          if (m != 0) {
+            ((JSONObject)localObject2).put("userdefine_record_id", localObject4);
+          }
+          if (n != 0) {
+            ((JSONObject)localObject2).put("pure_audio_push_mod", k);
+          }
+          ((JSONObject)localObject1).put("Str_uc_params", localObject2);
+        }
+        if (i != 0) {
+          ((JSONObject)localObject1).put("strGroupId", paramString);
+        }
+        this.mTRTCParams.businessInfo = ((JSONObject)localObject1).toString();
+      }
+      catch (Exception paramString)
+      {
+        label2088:
+        label2096:
+        label2101:
+        label2107:
+        TXCLog.e("WXLivePusher", "build json object failed.", paramString);
+        continue;
+      }
+      AppMethodBeat.o(13984);
+      return true;
+      break;
+      this.mNeedCheckRole = false;
+      break label1902;
+      j = 0;
+      break label1917;
+      m = 0;
+      break label1933;
+      n = 0;
+      break label1948;
+      label2126:
+      this.mTRTCParams.businessInfo = "";
     }
   }
   
@@ -1882,7 +1328,7 @@ public class WXLivePusher
           {
             localJSONObject1 = new JSONObject();
             if (!paramWXLivePushConfig.mEnableAgc) {
-              break label789;
+              break label798;
             }
             i = 1;
             localJSONObject1.put("enable", i);
@@ -1895,7 +1341,7 @@ public class WXLivePusher
           {
             localJSONObject1 = new JSONObject();
             if (!paramWXLivePushConfig.mEnableAns) {
-              break label794;
+              break label803;
             }
             i = 1;
             localJSONObject1.put("enable", i);
@@ -1954,6 +1400,7 @@ public class WXLivePusher
       }
       catch (Exception paramWXLivePushConfig)
       {
+        TXCLog.e("WXLivePusher", "update config failed.", paramWXLivePushConfig);
         AppMethodBeat.o(13982);
         return;
       }
@@ -1964,10 +1411,10 @@ public class WXLivePusher
       continue;
       i = 2;
       continue;
-      label789:
+      label798:
       i = 0;
       continue;
-      label794:
+      label803:
       i = 0;
     }
   }
@@ -2570,7 +2017,7 @@ public class WXLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePusher
  * JD-Core Version:    0.7.0.1
  */

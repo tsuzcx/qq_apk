@@ -13,17 +13,17 @@ import java.util.regex.Pattern;
 public final class a
   extends b
 {
-  private static final Pattern bCv;
+  private static final Pattern bCx;
   private int bCA;
-  private final boolean bCw;
-  private int bCx;
-  private int bCy;
+  private int bCB;
+  private int bCC;
+  private final boolean bCy;
   private int bCz;
   
   static
   {
     AppMethodBeat.i(92810);
-    bCv = Pattern.compile("(?:(\\d+):)?(\\d+):(\\d+)(?::|\\.)(\\d+)");
+    bCx = Pattern.compile("(?:(\\d+):)?(\\d+):(\\d+)(?::|\\.)(\\d+)");
     AppMethodBeat.o(92810);
   }
   
@@ -38,7 +38,7 @@ public final class a
     AppMethodBeat.i(92804);
     if (paramList != null)
     {
-      this.bCw = true;
+      this.bCy = true;
       String str = new String((byte[])paramList.get(0));
       com.google.android.exoplayer2.i.a.checkArgument(str.startsWith("Format: "));
       bk(str);
@@ -46,7 +46,7 @@ public final class a
       AppMethodBeat.o(92804);
       return;
     }
-    this.bCw = false;
+    this.bCy = false;
     AppMethodBeat.o(92804);
   }
   
@@ -84,16 +84,16 @@ public final class a
             if (localObject == null) {
               break label208;
             }
-            if ((this.bCw) || (!((String)localObject).startsWith("Format: "))) {
+            if ((this.bCy) || (!((String)localObject).startsWith("Format: "))) {
               break;
             }
             bk((String)localObject);
           }
-        } while ((!((String)localObject).startsWith("Dialogue: ")) || (this.bCx == 0));
-        localObject = ((String)localObject).substring(10).split(",", this.bCx);
-        l2 = bl(localObject[this.bCy]);
+        } while ((!((String)localObject).startsWith("Dialogue: ")) || (this.bCz == 0));
+        localObject = ((String)localObject).substring(10).split(",", this.bCz);
+        l2 = bl(localObject[this.bCA]);
       } while (l2 == -9223372036854775807L);
-      String str = localObject[this.bCz];
+      String str = localObject[this.bCB];
       if (str.trim().isEmpty()) {
         break label214;
       }
@@ -101,7 +101,7 @@ public final class a
     } while (l1 == -9223372036854775807L);
     for (;;)
     {
-      paramList.add(new com.google.android.exoplayer2.f.a(localObject[this.bCA].replaceAll("\\{.*?\\}", "").replaceAll("\\\\N", "\n").replaceAll("\\\\n", "\n")));
+      paramList.add(new com.google.android.exoplayer2.f.a(localObject[this.bCC].replaceAll("\\{.*?\\}", "").replaceAll("\\\\N", "\n").replaceAll("\\\\n", "\n")));
       paramh.add(l2);
       if (l1 == -9223372036854775807L) {
         break;
@@ -121,12 +121,12 @@ public final class a
   {
     AppMethodBeat.i(92807);
     paramString = TextUtils.split(paramString.substring(8), ",");
-    this.bCx = paramString.length;
-    this.bCy = -1;
-    this.bCz = -1;
+    this.bCz = paramString.length;
     this.bCA = -1;
+    this.bCB = -1;
+    this.bCC = -1;
     int j = 0;
-    if (j < this.bCx)
+    if (j < this.bCz)
     {
       String str = x.bH(paramString[j].trim());
       label100:
@@ -160,11 +160,11 @@ public final class a
         }
         i = 2;
         break label102;
-        this.bCy = j;
-        continue;
-        this.bCz = j;
-        continue;
         this.bCA = j;
+        continue;
+        this.bCB = j;
+        continue;
+        this.bCC = j;
       }
     }
     AppMethodBeat.o(92807);
@@ -173,7 +173,7 @@ public final class a
   private static long bl(String paramString)
   {
     AppMethodBeat.i(92808);
-    paramString = bCv.matcher(paramString);
+    paramString = bCx.matcher(paramString);
     if (!paramString.matches())
     {
       AppMethodBeat.o(92808);
@@ -189,7 +189,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.c.a
  * JD-Core Version:    0.7.0.1
  */

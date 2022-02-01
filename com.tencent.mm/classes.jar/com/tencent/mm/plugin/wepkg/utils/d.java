@@ -9,11 +9,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.wepkg.model.WepkgCrossProcessTask;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,44 +22,106 @@ import java.util.Set;
 
 public final class d
 {
-  private static final Set<Object> ktn;
-  private static final Object mTx;
-  private static volatile aq udO;
+  private static final Set<Object> lwZ;
+  private static final Object ogA;
+  private static volatile MMHandler xvA;
   
   static
   {
     AppMethodBeat.i(110824);
-    mTx = new Object();
-    ktn = new HashSet();
+    ogA = new Object();
+    lwZ = new HashSet();
     AppMethodBeat.o(110824);
   }
   
-  public static String aMu(String paramString)
+  public static void b(String paramString, final com.tencent.mm.plugin.wepkg.model.a parama)
+  {
+    AppMethodBeat.i(110815);
+    long l = System.currentTimeMillis();
+    final WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
+    localWepkgCrossProcessTask.EX = 1001;
+    localWepkgCrossProcessTask.JNm = paramString;
+    if (MMApplicationContext.isMMProcess())
+    {
+      cyh().postToWorker(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(110808);
+          this.JNt.bjj();
+          if (parama != null) {
+            parama.a(this.JNt);
+          }
+          AppMethodBeat.o(110808);
+        }
+      });
+      AppMethodBeat.o(110815);
+      return;
+    }
+    localWepkgCrossProcessTask.lyv = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(110809);
+        Log.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.JOq) });
+        if (localWepkgCrossProcessTask != null) {
+          localWepkgCrossProcessTask.a(this.JNt);
+        }
+        this.JNt.bDK();
+        AppMethodBeat.o(110809);
+      }
+    };
+    localWepkgCrossProcessTask.bDJ();
+    AppBrandMainProcessService.a(localWepkgCrossProcessTask);
+    AppMethodBeat.o(110815);
+  }
+  
+  public static void bZm()
+  {
+    AppMethodBeat.i(110813);
+    if (xvA == null)
+    {
+      AppMethodBeat.o(110813);
+      return;
+    }
+    synchronized (ogA)
+    {
+      if (xvA != null)
+      {
+        xvA.quit();
+        xvA = null;
+      }
+      AppMethodBeat.o(110813);
+      return;
+    }
+  }
+  
+  public static String bcO(String paramString)
   {
     AppMethodBeat.i(110816);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110816);
       return "";
     }
     try
     {
-      paramString = bu.nullAsNil(Uri.parse(paramString).getQueryParameter("wechat_pkgid"));
+      paramString = Util.nullAsNil(Uri.parse(paramString).getQueryParameter("wechat_pkgid"));
       AppMethodBeat.o(110816);
       return paramString;
     }
     catch (UnsupportedOperationException paramString)
     {
-      ae.e("MicroMsg.Wepkg.WepkgUtil", paramString.getMessage());
+      Log.e("MicroMsg.Wepkg.WepkgUtil", paramString.getMessage());
       AppMethodBeat.o(110816);
     }
     return "";
   }
   
-  public static String aMv(String paramString)
+  public static String bcP(String paramString)
   {
     AppMethodBeat.i(110817);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110817);
       return "";
@@ -70,51 +132,51 @@ public final class d
   }
   
   /* Error */
-  public static String aMw(String paramString)
+  public static String bcQ(String paramString)
   {
     // Byte code:
-    //   0: ldc 86
+    //   0: ldc 148
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 49	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifne +10 -> 19
     //   12: aload_0
-    //   13: invokestatic 91	android/webkit/URLUtil:isNetworkUrl	(Ljava/lang/String;)Z
+    //   13: invokestatic 153	android/webkit/URLUtil:isNetworkUrl	(Ljava/lang/String;)Z
     //   16: ifne +11 -> 27
-    //   19: ldc 86
+    //   19: ldc 148
     //   21: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   24: ldc 51
+    //   24: ldc 113
     //   26: areturn
     //   27: aload_0
-    //   28: invokestatic 57	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   28: invokestatic 119	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   31: astore_1
     //   32: aload_0
-    //   33: new 93	java/lang/StringBuilder
+    //   33: new 155	java/lang/StringBuilder
     //   36: dup
-    //   37: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   37: invokespecial 156	java/lang/StringBuilder:<init>	()V
     //   40: aload_1
-    //   41: invokevirtual 97	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   44: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc 103
-    //   49: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: ldc 51
-    //   57: invokevirtual 112	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   41: invokevirtual 159	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   44: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: ldc 165
+    //   49: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: ldc 113
+    //   57: invokevirtual 174	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   60: astore_1
     //   61: aload_1
     //   62: astore_0
     //   63: aload_1
-    //   64: ldc 114
-    //   66: invokevirtual 118	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   64: ldc 176
+    //   66: invokevirtual 180	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   69: ifeq +15 -> 84
     //   72: aload_1
     //   73: iconst_0
     //   74: aload_1
-    //   75: ldc 114
-    //   77: invokevirtual 122	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   80: invokevirtual 126	java/lang/String:substring	(II)Ljava/lang/String;
+    //   75: ldc 176
+    //   77: invokevirtual 184	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   80: invokevirtual 188	java/lang/String:substring	(II)Ljava/lang/String;
     //   83: astore_0
-    //   84: ldc 86
+    //   84: ldc 148
     //   86: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_0
     //   90: areturn
@@ -135,23 +197,23 @@ public final class d
     //   63	84	95	java/lang/Exception
   }
   
-  public static boolean aMx(String paramString)
+  public static boolean bcR(String paramString)
   {
     AppMethodBeat.i(110819);
-    if (!bu.isNullOrNil(aMu(paramString)))
+    if (!Util.isNullOrNil(bcO(paramString)))
     {
-      SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("we_pkg_sp", 4);
+      SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("we_pkg_sp", 4);
       if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("disable_we_pkg", false)))
       {
-        ae.i("MicroMsg.Wepkg.WepkgUtil", "disable wepkg");
-        a.b("EnterWeb", paramString, aMu(paramString), null, 0L, 0L, a.YG(11));
+        Log.i("MicroMsg.Wepkg.WepkgUtil", "disable wepkg");
+        a.b("EnterWeb", paramString, bcO(paramString), null, 0L, 0L, a.ahr(11));
         AppMethodBeat.o(110819);
         return false;
       }
-      if (b.EYn)
+      if (com.tencent.mm.plugin.game.commlib.a.dSV())
       {
-        ae.i("MicroMsg.Wepkg.WepkgUtil", "config wepkg disable");
-        a.b("EnterWeb", paramString, aMu(paramString), null, 0L, 0L, a.YG(12));
+        Log.i("MicroMsg.Wepkg.WepkgUtil", "config wepkg disable");
+        a.b("EnterWeb", paramString, bcO(paramString), null, 0L, 0L, a.ahr(12));
         AppMethodBeat.o(110819);
         return false;
       }
@@ -162,12 +224,27 @@ public final class d
     return false;
   }
   
-  public static boolean aMy(String paramString)
+  public static void bs(Object paramObject)
+  {
+    AppMethodBeat.i(110812);
+    lwZ.remove(paramObject);
+    AppMethodBeat.o(110812);
+  }
+  
+  public static <T> T cP(T paramT)
+  {
+    AppMethodBeat.i(110811);
+    lwZ.add(paramT);
+    AppMethodBeat.o(110811);
+    return paramT;
+  }
+  
+  public static boolean checkMkdir(String paramString)
   {
     AppMethodBeat.i(110821);
     try
     {
-      paramString = new k(paramString);
+      paramString = new o(paramString);
       if ((!paramString.exists()) || (!paramString.isDirectory())) {
         paramString.mkdirs();
       }
@@ -181,130 +258,30 @@ public final class d
     return false;
   }
   
-  public static void b(String paramString, final com.tencent.mm.plugin.wepkg.model.a parama)
+  public static long currentTime()
   {
-    AppMethodBeat.i(110815);
-    long l = System.currentTimeMillis();
-    final WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
-    localWepkgCrossProcessTask.EN = 1001;
-    localWepkgCrossProcessTask.EXu = paramString;
-    if (ak.cpe())
-    {
-      caq().postToWorker(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(110808);
-          this.EXB.aOX();
-          if (parama != null) {
-            parama.a(this.EXB);
-          }
-          AppMethodBeat.o(110808);
-        }
-      });
-      AppMethodBeat.o(110815);
-      return;
-    }
-    localWepkgCrossProcessTask.kuv = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(110809);
-        ae.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.EYA) });
-        if (localWepkgCrossProcessTask != null) {
-          localWepkgCrossProcessTask.a(this.EXB);
-        }
-        this.EXB.bix();
-        AppMethodBeat.o(110809);
-      }
-    };
-    localWepkgCrossProcessTask.biw();
-    AppBrandMainProcessService.a(localWepkgCrossProcessTask);
-    AppMethodBeat.o(110815);
+    AppMethodBeat.i(110810);
+    long l = Util.nowSecond();
+    AppMethodBeat.o(110810);
+    return l;
   }
   
-  public static void bCi()
-  {
-    AppMethodBeat.i(110813);
-    if (udO == null)
-    {
-      AppMethodBeat.o(110813);
-      return;
-    }
-    synchronized (mTx)
-    {
-      if (udO != null)
-      {
-        udO.quit();
-        udO = null;
-      }
-      AppMethodBeat.o(110813);
-      return;
-    }
-  }
-  
-  public static void bj(Object paramObject)
-  {
-    AppMethodBeat.i(110812);
-    ktn.remove(paramObject);
-    AppMethodBeat.o(110812);
-  }
-  
-  public static <T> T cI(T paramT)
-  {
-    AppMethodBeat.i(110811);
-    ktn.add(paramT);
-    AppMethodBeat.o(110811);
-    return paramT;
-  }
-  
-  public static boolean cJ(Context paramContext)
-  {
-    AppMethodBeat.i(110823);
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(110823);
-      return false;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if ((localRunningAppProcessInfo.importance == 100) && ((localRunningAppProcessInfo.processName.equals("com.tencent.mm")) || (localRunningAppProcessInfo.processName.equals("com.tencent.mm:tools")) || (localRunningAppProcessInfo.processName.equals("com.tencent.mm:toolsmp"))))
-      {
-        AppMethodBeat.o(110823);
-        return true;
-      }
-    }
-    AppMethodBeat.o(110823);
-    return false;
-  }
-  
-  public static aq caq()
+  public static MMHandler cyh()
   {
     AppMethodBeat.i(184500);
-    if (udO == null) {}
-    synchronized (mTx)
+    if (xvA == null) {}
+    synchronized (ogA)
     {
-      if (udO == null) {
-        udO = new aq("WebviewCache#WorkerThread");
+      if (xvA == null) {
+        xvA = new MMHandler("WebviewCache#WorkerThread");
       }
-      ??? = udO;
+      ??? = xvA;
       AppMethodBeat.o(184500);
       return ???;
     }
   }
   
-  public static long currentTime()
-  {
-    AppMethodBeat.i(110810);
-    long l = bu.aRi();
-    AppMethodBeat.o(110810);
-    return l;
-  }
-  
-  public static boolean fbS()
+  public static boolean gkY()
   {
     AppMethodBeat.i(110822);
     GregorianCalendar localGregorianCalendar = new GregorianCalendar();
@@ -332,7 +309,30 @@ public final class d
     return false;
   }
   
-  public static String lw(String paramString1, String paramString2)
+  public static boolean isAppOnForeground(Context paramContext)
+  {
+    AppMethodBeat.i(110823);
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(110823);
+      return false;
+    }
+    paramContext = paramContext.iterator();
+    while (paramContext.hasNext())
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+      if ((localRunningAppProcessInfo.importance == 100) && ((localRunningAppProcessInfo.processName.equals(MMApplicationContext.getApplicationId())) || (localRunningAppProcessInfo.processName.equals(MMApplicationContext.getApplicationId() + ":tools")) || (localRunningAppProcessInfo.processName.equals(MMApplicationContext.getApplicationId() + ":toolsmp"))))
+      {
+        AppMethodBeat.o(110823);
+        return true;
+      }
+    }
+    AppMethodBeat.o(110823);
+    return false;
+  }
+  
+  public static String mv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110820);
     paramString1 = g.getMessageDigest((paramString1 + "_" + paramString2).getBytes());
@@ -342,7 +342,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.d
  * JD-Core Version:    0.7.0.1
  */

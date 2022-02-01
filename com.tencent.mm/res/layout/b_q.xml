@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/fpi" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/d" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:scaleType="fitCenter" android:contentDescription="@string/fpo" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/fpk" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/d" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:scaleType="fitCenter" android:contentDescription="@string/fpp" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/fph" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/d" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:scaleType="fitCenter" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/fpj" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/d" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:scaleType="fitCenter" />
-        </LinearLayout>
-    </LinearLayout>
+<LinearLayout android:gravity="center|left" android:id="@id/iqp" android:paddingLeft="0.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/bb" android:layout_weight="1.0" style="@style/mz"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/mi" />
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/i4u" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_done" app:iconColor="@color/Brand" />
 </LinearLayout>

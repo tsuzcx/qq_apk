@@ -9,37 +9,40 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.util.SparseArray;
-import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.b;
-import com.tencent.luggage.h.e.c;
+import com.tencent.luggage.h.f.b;
+import com.tencent.luggage.h.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils;", "", "()V", "TAG", "", "gProxyFunctionsMap", "Landroid/util/SparseArray;", "Lkotlin/Function1;", "Lcom/tencent/mm/ui/MMActivity;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/pay/ProxyForMMActivityResultCallback;", "waitForMMActivityResult", "", "context", "Landroid/app/Activity;", "function", "activityResultCallback", "Lcom/tencent/luggage/util/LuggageActivityHelper$ActivityResultCallback;", "removeReturns", "T", "key", "", "(Landroid/util/SparseArray;I)Ljava/lang/Object;", "ProxyMMActivityResultRequest", "ProxyMMActivityResultResult", "ProxyMMActivityResultTask", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils;", "", "()V", "TAG", "", "gProxyFunctionsMap", "Landroid/util/SparseArray;", "Lkotlin/Function1;", "Lcom/tencent/mm/ui/MMActivity;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/pay/ProxyForMMActivityResultCallback;", "customAppIdInWhitleList", "", "service", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "customAppId", "libSupportUseCustomAppId", "waitForMMActivityResult", "context", "Landroid/app/Activity;", "function", "activityResultCallback", "Lcom/tencent/luggage/util/LuggageActivityHelper$ActivityResultCallback;", "removeReturns", "T", "key", "", "(Landroid/util/SparseArray;I)Ljava/lang/Object;", "ProxyMMActivityResultRequest", "ProxyMMActivityResultResult", "ProxyMMActivityResultTask", "plugin-appbrand-integration_release"})
 public final class AppBrandJsApiPayUtils
 {
-  private static final SparseArray<b<MMActivity, z>> lgC;
-  public static final AppBrandJsApiPayUtils lgD;
+  private static final SparseArray<b<MMActivity, x>> mlY;
+  public static final AppBrandJsApiPayUtils mlZ;
   
   static
   {
     AppMethodBeat.i(175184);
-    lgD = new AppBrandJsApiPayUtils();
-    lgC = new SparseArray();
+    mlZ = new AppBrandJsApiPayUtils();
+    mlY = new SparseArray();
     AppMethodBeat.o(175184);
   }
   
-  public static final boolean a(Activity paramActivity, b<? super MMActivity, z> paramb)
+  public static final boolean a(Activity paramActivity, b<? super MMActivity, x> paramb)
   {
     AppMethodBeat.i(175183);
     boolean bool = a(paramActivity, paramb, null);
@@ -47,26 +50,26 @@ public final class AppBrandJsApiPayUtils
     return bool;
   }
   
-  public static final boolean a(Activity paramActivity, b<? super MMActivity, z> paramb, final e.b paramb1)
+  public static final boolean a(Activity paramActivity, b<? super MMActivity, x> paramb, f.b paramb1)
   {
-    AppMethodBeat.i(223413);
+    AppMethodBeat.i(228437);
     p.h(paramActivity, "context");
     p.h(paramb, "function");
     if ((paramActivity instanceof MMActivity))
     {
       paramb.invoke(paramActivity);
-      AppMethodBeat.o(223413);
+      AppMethodBeat.o(228437);
       return true;
     }
     try
     {
       int i = paramb.hashCode();
       ProxyMMActivityResultRequest localProxyMMActivityResultRequest = new ProxyMMActivityResultRequest(i);
-      int j = com.tencent.luggage.sdk.g.a.aC(localProxyMMActivityResultRequest);
+      int j = com.tencent.luggage.sdk.g.a.aK(localProxyMMActivityResultRequest);
       if (paramb1 != null) {
-        e.aB((Context)paramActivity).b((e.c)new a(j, paramb1));
+        com.tencent.luggage.h.f.aK((Context)paramActivity).b((f.c)new AppBrandJsApiPayUtils.a(j, paramb1));
       }
-      lgC.put(i, paramb);
+      mlY.put(i, paramb);
       com.tencent.mm.plugin.appbrand.ipc.a.b((Context)paramActivity, (AppBrandProxyUIProcessTask.ProcessRequest)localProxyMMActivityResultRequest, null);
       bool = true;
     }
@@ -74,15 +77,62 @@ public final class AppBrandJsApiPayUtils
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.AppBrandJsApiPayUtils", paramActivity, "waitForMMActivityResult startLogicProxy", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.AppBrandJsApiPayUtils", paramActivity, "waitForMMActivityResult startLogicProxy", new Object[0]);
         boolean bool = false;
       }
     }
-    AppMethodBeat.o(223413);
+    AppMethodBeat.o(228437);
     return bool;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "requestId", "", "(I)V", "getRequestId", "()I", "component1", "copy", "describeContents", "equals", "", "other", "", "getStartActivityRequestCode", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "getUIAlias", "", "hashCode", "toString", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  public static boolean c(c paramc)
+  {
+    AppMethodBeat.i(228439);
+    p.h(paramc, "service");
+    paramc = paramc.bqZ();
+    if (paramc != null) {}
+    for (paramc = paramc.UN("paymentCustomAppid");; paramc = null)
+    {
+      boolean bool = Util.getBoolean(paramc, false);
+      Log.i("MicroMsg.AppBrandJsApiPayUtils", "libSupportUseCustomAppId %b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(228439);
+      return bool;
+    }
+  }
+  
+  public static boolean c(c paramc, String paramString)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(228438);
+    p.h(paramc, "service");
+    p.h(paramString, "customAppId");
+    paramc = paramc.getRuntime();
+    p.g(paramc, "service.runtime");
+    paramc = new i(paramc.bsC().cyv.lgZ).FI("call_plugin_info");
+    if (paramc == null)
+    {
+      AppMethodBeat.o(228438);
+      return false;
+    }
+    int j = paramc.length();
+    int i = 0;
+    if (i < j)
+    {
+      String str = paramc.pY(i).optString("plugin_id");
+      Log.i("MicroMsg.AppBrandJsApiPayUtils", "canRequestPaymentUseCustomAppId pluginId:%s customAppId:%s", new Object[] { str, paramString });
+      if (!p.j(str, paramString)) {}
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(228438);
+      return bool;
+      i += 1;
+      break;
+      bool = false;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "requestId", "", "(I)V", "getRequestId", "()I", "component1", "copy", "describeContents", "equals", "", "other", "", "getStartActivityRequestCode", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "getUIAlias", "", "hashCode", "toString", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
   public static final class ProxyMMActivityResultRequest
     extends AppBrandProxyUIProcessTask.ProcessRequest
   {
@@ -108,21 +158,21 @@ public final class AppBrandJsApiPayUtils
       AppMethodBeat.o(175172);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bhv()
+    public final Class<? extends AppBrandProxyUIProcessTask> bCJ()
     {
       return AppBrandJsApiPayUtils.ProxyMMActivityResultTask.class;
     }
     
-    public final String biB()
+    public final String bDO()
     {
       return "AppBrandJsApiPayUtils.waitForMMActivityResult";
     }
     
-    public final int biC()
+    public final int bDP()
     {
-      AppMethodBeat.i(224376);
-      int i = com.tencent.luggage.sdk.g.a.aC(this);
-      AppMethodBeat.o(224376);
+      AppMethodBeat.i(258368);
+      int i = com.tencent.luggage.sdk.g.a.aK(this);
+      AppMethodBeat.o(258368);
       return i;
     }
     
@@ -169,60 +219,18 @@ public final class AppBrandJsApiPayUtils
       AppMethodBeat.o(175171);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest;", "plugin-appbrand-integration_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultRequest;", "plugin-appbrand-integration_release"})
     public static final class a
       implements Parcelable.Creator<AppBrandJsApiPayUtils.ProxyMMActivityResultRequest>
     {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "describeContents", "", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
-  public static final class ProxyMMActivityResultResult
-    extends AppBrandProxyUIProcessTask.ProcessResult
-  {
-    public static final a CREATOR;
-    
-    static
-    {
-      AppMethodBeat.i(175178);
-      CREATOR = new a((byte)0);
-      AppMethodBeat.o(175178);
-    }
-    
-    public ProxyMMActivityResultResult() {}
-    
-    public ProxyMMActivityResultResult(Parcel paramParcel)
-    {
-      this();
-      AppMethodBeat.i(175177);
-      AppMethodBeat.o(175177);
-    }
-    
-    public final int describeContents()
-    {
-      return 0;
-    }
-    
-    public final void j(Parcel paramParcel) {}
-    
-    public final void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(175176);
-      p.h(paramParcel, "parcel");
-      AppMethodBeat.o(175176);
-    }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultResult;", "plugin-appbrand-integration_release"})
-    public static final class a
-      implements Parcelable.Creator<AppBrandJsApiPayUtils.ProxyMMActivityResultResult>
-    {}
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "Landroid/arch/lifecycle/LifecycleObserver;", "()V", "mHasActivityResult", "", "requestId", "", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "onHostActivityDestroyed", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/AppBrandJsApiPayUtils$ProxyMMActivityResultTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "Landroid/arch/lifecycle/LifecycleObserver;", "()V", "mHasActivityResult", "", "requestId", "", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "onHostActivityDestroyed", "plugin-appbrand-integration_release"})
   public static final class ProxyMMActivityResultTask
     extends AppBrandProxyUIProcessTask
     implements LifecycleObserver
   {
-    private boolean lgE;
+    private boolean mma;
     private int requestId;
     
     public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
@@ -230,21 +238,21 @@ public final class AppBrandJsApiPayUtils
       AppMethodBeat.i(175181);
       if (paramProcessRequest == null)
       {
-        paramProcessRequest = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.pay.AppBrandJsApiPayUtils.ProxyMMActivityResultRequest");
+        paramProcessRequest = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.pay.AppBrandJsApiPayUtils.ProxyMMActivityResultRequest");
         AppMethodBeat.o(175181);
         throw paramProcessRequest;
       }
       this.requestId = ((AppBrandJsApiPayUtils.ProxyMMActivityResultRequest)paramProcessRequest).requestId;
-      paramProcessRequest = AppBrandJsApiPayUtils.lgD;
-      paramProcessRequest = (b)AppBrandJsApiPayUtils.a(AppBrandJsApiPayUtils.bmM(), this.requestId);
+      paramProcessRequest = AppBrandJsApiPayUtils.mlZ;
+      paramProcessRequest = (b)AppBrandJsApiPayUtils.a(AppBrandJsApiPayUtils.bIl(), this.requestId);
       if (paramProcessRequest == null)
       {
-        ((d.g.a.a)new a(this)).invoke();
+        ((kotlin.g.a.a)new a(this)).invoke();
         AppMethodBeat.o(175181);
         return;
       }
-      e.aB((Context)bis()).a((e.c)new b(this));
-      MMActivity localMMActivity = bis();
+      com.tencent.luggage.h.f.aK((Context)bDF()).a((f.c)new b(this));
+      MMActivity localMMActivity = bDF();
       p.g(localMMActivity, "activityContext");
       paramProcessRequest.invoke(localMMActivity);
       AppMethodBeat.o(175181);
@@ -253,19 +261,19 @@ public final class AppBrandJsApiPayUtils
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public final void onHostActivityDestroyed()
     {
-      AppMethodBeat.i(223410);
-      if (!this.lgE)
+      AppMethodBeat.i(228434);
+      if (!this.mma)
       {
-        bis().setResult(0);
-        bis().finish();
+        bDF().setResult(0);
+        bDF().finish();
       }
-      AppMethodBeat.o(223410);
+      AppMethodBeat.o(228434);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
     static final class a
-      extends q
-      implements d.g.a.a<z>
+      extends kotlin.g.b.q
+      implements kotlin.g.a.a<x>
     {
       a(AppBrandJsApiPayUtils.ProxyMMActivityResultTask paramProxyMMActivityResultTask)
       {
@@ -273,47 +281,27 @@ public final class AppBrandJsApiPayUtils
       }
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
     static final class b
-      implements e.c
+      implements f.c
     {
       b(AppBrandJsApiPayUtils.ProxyMMActivityResultTask paramProxyMMActivityResultTask) {}
       
-      public final boolean b(int paramInt1, int paramInt2, Intent paramIntent)
+      public final boolean c(int paramInt1, int paramInt2, Intent paramIntent)
       {
         AppMethodBeat.i(175180);
-        AppBrandJsApiPayUtils.ProxyMMActivityResultTask.b(this.lgF).setResult(paramInt2, paramIntent);
-        AppBrandJsApiPayUtils.ProxyMMActivityResultTask.a(this.lgF);
-        AppBrandJsApiPayUtils.ProxyMMActivityResultTask.c(this.lgF);
+        AppBrandJsApiPayUtils.ProxyMMActivityResultTask.b(this.mmb).setResult(paramInt2, paramIntent);
+        AppBrandJsApiPayUtils.ProxyMMActivityResultTask.a(this.mmb);
+        AppBrandJsApiPayUtils.ProxyMMActivityResultTask.c(this.mmb);
         AppMethodBeat.o(175180);
         return true;
       }
     }
   }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
-  static final class a
-    implements e.c
-  {
-    a(int paramInt, e.b paramb) {}
-    
-    public final boolean b(int paramInt1, int paramInt2, Intent paramIntent)
-    {
-      AppMethodBeat.i(223412);
-      if (this.lgG == paramInt1)
-      {
-        paramb1.a(paramInt2, paramIntent);
-        AppMethodBeat.o(223412);
-        return true;
-      }
-      AppMethodBeat.o(223412);
-      return false;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.pay.AppBrandJsApiPayUtils
  * JD-Core Version:    0.7.0.1
  */

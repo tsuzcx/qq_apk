@@ -7,14 +7,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet_payu.security_question.model.PayUSecurityQuestion;
 import com.tencent.mm.plugin.wallet_payu.security_question.model.d;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import com.tencent.mm.ui.tools.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
@@ -24,16 +22,16 @@ import java.util.ArrayList;
 public class WalletPayUSecurityQuestionSettingUI
   extends WalletBaseUI
 {
-  private m DLA;
-  private String DLB = "";
-  private a DLC;
-  private WalletPayUSecurityQuestionView DLv;
-  private WalletFormView DLw;
-  private Button jtd;
+  private WalletPayUSecurityQuestionView IuK;
+  private WalletFormView IuL;
+  private com.tencent.mm.ui.tools.m IuP;
+  private String IuQ = "";
+  private a IuR;
+  private Button krs;
   
   public int getLayoutId()
   {
-    return 2131495075;
+    return 2131495912;
   }
   
   public boolean needConfirmFinish()
@@ -45,46 +43,46 @@ public class WalletPayUSecurityQuestionSettingUI
   {
     AppMethodBeat.i(72231);
     super.onCreate(paramBundle);
-    this.DLA = new m(this);
-    this.DLA.yQ(true);
-    this.DLA.LfS = new n.d()
+    this.IuP = new com.tencent.mm.ui.tools.m(this);
+    this.IuP.CL(true);
+    this.IuP.HLX = new o.f()
     {
-      public final void onCreateMMMenu(l paramAnonymousl)
+      public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymousm)
       {
         AppMethodBeat.i(72223);
-        paramAnonymousl.clear();
+        paramAnonymousm.clear();
         ArrayList localArrayList = WalletPayUSecurityQuestionSettingUI.a(WalletPayUSecurityQuestionSettingUI.this);
         if (localArrayList != null)
         {
           int i = 0;
           while (i < localArrayList.size())
           {
-            paramAnonymousl.add(((PayUSecurityQuestion)localArrayList.get(i)).desc);
+            paramAnonymousm.add(((PayUSecurityQuestion)localArrayList.get(i)).desc);
             i += 1;
           }
         }
         AppMethodBeat.o(72223);
       }
     };
-    this.DLA.LfT = new n.e()
+    this.IuP.HLY = new o.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(72224);
         WalletPayUSecurityQuestionSettingUI.b(WalletPayUSecurityQuestionSettingUI.this).setQuestionText(((PayUSecurityQuestion)WalletPayUSecurityQuestionSettingUI.a(WalletPayUSecurityQuestionSettingUI.this).get(paramAnonymousInt)).desc);
         WalletPayUSecurityQuestionSettingUI.a(WalletPayUSecurityQuestionSettingUI.this, ((PayUSecurityQuestion)WalletPayUSecurityQuestionSettingUI.a(WalletPayUSecurityQuestionSettingUI.this).get(paramAnonymousInt)).id);
-        WalletPayUSecurityQuestionSettingUI.c(WalletPayUSecurityQuestionSettingUI.this).dHv();
+        WalletPayUSecurityQuestionSettingUI.c(WalletPayUSecurityQuestionSettingUI.this).eIj();
         WalletPayUSecurityQuestionSettingUI.a.a(WalletPayUSecurityQuestionSettingUI.d(WalletPayUSecurityQuestionSettingUI.this));
         AppMethodBeat.o(72224);
       }
     };
-    this.DLC = new a();
-    this.DLv = ((WalletPayUSecurityQuestionView)findViewById(2131303198));
-    this.DLw = ((WalletFormView)findViewById(2131303197));
-    com.tencent.mm.wallet_core.ui.formview.a.g(this.DLw);
-    this.jtd = ((Button)findViewById(2131303196));
-    this.DLv.setOnClickListener(new WalletPayUSecurityQuestionSettingUI.3(this));
-    this.DLw.setOnInputValidChangeListener(new WalletFormView.a()
+    this.IuR = new a();
+    this.IuK = ((WalletPayUSecurityQuestionView)findViewById(2131305864));
+    this.IuL = ((WalletFormView)findViewById(2131305863));
+    com.tencent.mm.wallet_core.ui.formview.a.g(this.IuL);
+    this.krs = ((Button)findViewById(2131305862));
+    this.IuK.setOnClickListener(new WalletPayUSecurityQuestionSettingUI.3(this));
+    this.IuL.setOnInputValidChangeListener(new WalletFormView.a()
     {
       public final void onInputValidChange(boolean paramAnonymousBoolean)
       {
@@ -93,19 +91,19 @@ public class WalletPayUSecurityQuestionSettingUI
         AppMethodBeat.o(72226);
       }
     });
-    this.jtd.setOnClickListener(new View.OnClickListener()
+    this.krs.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72227);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_payu/security_question/ui/WalletPayUSecurityQuestionSettingUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (WalletPayUSecurityQuestionSettingUI.d(WalletPayUSecurityQuestionSettingUI.this).eMU())
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_payu/security_question/ui/WalletPayUSecurityQuestionSettingUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if (WalletPayUSecurityQuestionSettingUI.d(WalletPayUSecurityQuestionSettingUI.this).fUD())
         {
           WalletPayUSecurityQuestionSettingUI.this.getInput().putString("key_question_id", WalletPayUSecurityQuestionSettingUI.f(WalletPayUSecurityQuestionSettingUI.this));
           WalletPayUSecurityQuestionSettingUI.this.getInput().putString("key_question_answer", WalletPayUSecurityQuestionSettingUI.c(WalletPayUSecurityQuestionSettingUI.this).getText());
-          com.tencent.mm.wallet_core.a.k(WalletPayUSecurityQuestionSettingUI.this, WalletPayUSecurityQuestionSettingUI.this.getInput());
+          com.tencent.mm.wallet_core.a.l(WalletPayUSecurityQuestionSettingUI.this, WalletPayUSecurityQuestionSettingUI.this.getInput());
         }
         for (;;)
         {
@@ -116,7 +114,7 @@ public class WalletPayUSecurityQuestionSettingUI
         }
       }
     });
-    a.a(this.DLC);
+    a.a(this.IuR);
     AppMethodBeat.o(72231);
   }
   
@@ -127,11 +125,11 @@ public class WalletPayUSecurityQuestionSettingUI
     AppMethodBeat.o(72232);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(72233);
-    if (((paramn instanceof d)) && (this.DLA.isShowing())) {
-      this.DLA.dismiss();
+    if (((paramq instanceof d)) && (this.IuP.isShowing())) {
+      this.IuP.dismiss();
     }
     AppMethodBeat.o(72233);
     return false;
@@ -147,10 +145,10 @@ public class WalletPayUSecurityQuestionSettingUI
   {
     protected a() {}
     
-    private void eMQ()
+    private void fUz()
     {
       AppMethodBeat.i(72228);
-      if (eMU())
+      if (fUD())
       {
         WalletPayUSecurityQuestionSettingUI.g(WalletPayUSecurityQuestionSettingUI.this).setEnabled(true);
         AppMethodBeat.o(72228);
@@ -160,10 +158,10 @@ public class WalletPayUSecurityQuestionSettingUI
       AppMethodBeat.o(72228);
     }
     
-    protected final boolean eMU()
+    protected final boolean fUD()
     {
       AppMethodBeat.i(72229);
-      if ((WalletPayUSecurityQuestionSettingUI.b(WalletPayUSecurityQuestionSettingUI.this).aVz()) && (WalletPayUSecurityQuestionSettingUI.c(WalletPayUSecurityQuestionSettingUI.this).aVz()))
+      if ((WalletPayUSecurityQuestionSettingUI.b(WalletPayUSecurityQuestionSettingUI.this).bql()) && (WalletPayUSecurityQuestionSettingUI.c(WalletPayUSecurityQuestionSettingUI.this).bql()))
       {
         AppMethodBeat.o(72229);
         return true;
@@ -175,7 +173,7 @@ public class WalletPayUSecurityQuestionSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionSettingUI
  * JD-Core Version:    0.7.0.1
  */

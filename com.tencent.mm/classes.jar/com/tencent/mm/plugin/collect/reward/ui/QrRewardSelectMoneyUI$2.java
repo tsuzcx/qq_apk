@@ -15,9 +15,9 @@ final class QrRewardSelectMoneyUI$2
   {
     AppMethodBeat.i(63991);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/collect/reward/ui/QrRewardSelectMoneyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    QrRewardSelectMoneyUI.a(this.pjQ, 0, 2);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/collect/reward/ui/QrRewardSelectMoneyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    QrRewardSelectMoneyUI.a(this.qzb, 0, 2);
     a.a(this, "com/tencent/mm/plugin/collect/reward/ui/QrRewardSelectMoneyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(63991);
   }

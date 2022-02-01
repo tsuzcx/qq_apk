@@ -1,73 +1,69 @@
 package com.tencent.mm.plugin.finder.upload.action;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.cgi.j;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.plugin.finder.cgi.k;
+import com.tencent.mm.protocal.protobuf.bbn;
 import com.tencent.mm.vending.c.a;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedId", "", "objectNonceId", "", "like", "", "isPrivate", "scene", "", "uicallback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;JLjava/lang/String;ZZILcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "getFeedId", "()J", "getFinderObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "()Z", "getLike", "getObjectNonceId", "()Ljava/lang/String;", "getScene", "()I", "doSomething", "", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "toString", "uniqueId", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/upload/action/FollowAction;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "finderUser", "", "opType", "", "feedId", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isPrivate", "", "(Ljava/lang/String;IJLcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Z)V", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "getFeedId", "()J", "getFinderUser", "()Ljava/lang/String;", "()Z", "getOpType", "()I", "doFollow", "", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "doSomething", "toString", "uniqueId", "plugin-finder_release"})
 public final class f
   extends e
 {
-  public final long duw;
-  public final String objectNonceId;
-  private final arn rQw;
-  public final FinderItem sUY;
-  public final boolean sVp;
-  public final boolean sVq;
-  public final int scene;
+  public final String dNc;
+  public final long feedId;
+  public final int opType;
+  public final bbn ttO;
+  final boolean vUk;
   
-  public f(FinderItem paramFinderItem, long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, arn paramarn)
+  public f(String paramString, int paramInt, long paramLong, bbn parambbn, boolean paramBoolean)
   {
-    AppMethodBeat.i(204990);
-    this.sUY = paramFinderItem;
-    this.duw = paramLong;
-    this.objectNonceId = paramString;
-    this.sVp = paramBoolean1;
-    this.sVq = paramBoolean2;
-    this.scene = paramInt;
-    this.rQw = paramarn;
-    AppMethodBeat.o(204990);
+    super(null);
+    AppMethodBeat.i(253200);
+    this.dNc = paramString;
+    this.opType = paramInt;
+    this.feedId = paramLong;
+    this.ttO = parambbn;
+    this.vUk = paramBoolean;
+    AppMethodBeat.o(253200);
   }
   
-  public final void a(final h.b paramb)
+  public final void a(final k.b paramb)
   {
-    AppMethodBeat.i(167807);
+    AppMethodBeat.i(253199);
     p.h(paramb, "callback");
     super.a(paramb);
-    new j(this, this.rQw).aET().g((a)new a(this, paramb));
-    AppMethodBeat.o(167807);
+    new k(this).aYI().g((a)new a(this, paramb));
+    AppMethodBeat.o(253199);
   }
   
-  public final String aeW()
+  public final String auK()
   {
-    AppMethodBeat.i(167806);
-    String str = "id_" + this.duw + '_' + this.sVp;
-    AppMethodBeat.o(167806);
+    AppMethodBeat.i(253198);
+    String str = "id_" + this.dNc + '_' + this.opType;
+    AppMethodBeat.o(253198);
     return str;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(167805);
-    String str = "action_" + this.duw + '_' + this.sVp + '_' + this.scene + '_' + this.sVn;
-    AppMethodBeat.o(167805);
+    AppMethodBeat.i(253197);
+    String str = "action_" + this.dNc + '_' + this.opType + '_' + this.vUi;
+    AppMethodBeat.o(253197);
     return str;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "kotlin.jvm.PlatformType", "call"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderFollowResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class a<_Ret, _Var>
     implements a<_Ret, _Var>
   {
-    a(f paramf, h.b paramb) {}
+    a(f paramf, k.b paramb) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.action.f
  * JD-Core Version:    0.7.0.1
  */

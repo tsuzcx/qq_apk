@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.luckymoney.scaledLayout;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView.i;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.View;
 
 public abstract class b
 {
-  final Rect TW = new Rect();
-  protected final RecyclerView.i arw;
-  private int arx = -2147483648;
+  final Rect Ui = new Rect();
+  protected final RecyclerView.LayoutManager arI;
+  private int arJ = -2147483648;
   
-  private b(RecyclerView.i parami)
+  private b(RecyclerView.LayoutManager paramLayoutManager)
   {
-    this.arw = parami;
+    this.arI = paramLayoutManager;
   }
   
-  public static b b(RecyclerView.i parami, int paramInt)
+  public static b b(RecyclerView.LayoutManager paramLayoutManager, int paramInt)
   {
     switch (paramInt)
     {
     default: 
       throw new IllegalArgumentException("invalid orientation");
     case 0: 
-      return new b.1(parami);
+      return new b.1(paramLayoutManager);
     }
-    return new b.2(parami);
+    return new b.2(paramLayoutManager);
   }
-  
-  public abstract int br(View paramView);
   
   public abstract int bs(View paramView);
   
-  public abstract int dlr();
+  public abstract int bt(View paramView);
   
-  public abstract int kB();
+  public abstract int efm();
   
-  public abstract int kD();
+  public abstract int kH();
+  
+  public abstract int kJ();
 }
 
 

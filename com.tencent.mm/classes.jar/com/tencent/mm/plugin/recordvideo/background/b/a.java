@@ -4,32 +4,32 @@ import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
 {
-  protected int xKX;
+  protected int BLb;
   
-  private static void Oj(int paramInt)
+  private static void Vy(int paramInt)
   {
     GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
   }
   
-  public static int f(Bitmap paramBitmap, int paramInt)
+  public static int h(Bitmap paramBitmap, int paramInt)
   {
     if (paramInt > 0) {
       return paramInt;
     }
-    return g(paramBitmap, paramInt);
+    return i(paramBitmap, paramInt);
   }
   
-  public static int g(Bitmap paramBitmap, int paramInt)
+  public static int i(Bitmap paramBitmap, int paramInt)
   {
-    ae.i("MicroMsg.Story.AbsShader", "loadTexture");
+    Log.i("MicroMsg.Story.AbsShader", "loadTexture");
     if (paramBitmap != null)
     {
       if (paramInt > 0) {
-        Oj(paramInt);
+        Vy(paramInt);
       }
       int[] arrayOfInt = new int[1];
       GLES20.glGenTextures(1, arrayOfInt, 0);
@@ -42,13 +42,13 @@ public abstract class a
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
       return paramInt;
     }
-    ae.i("MicroMsg.Story.AbsShader", "loadTexture bitmap null");
+    Log.i("MicroMsg.Story.AbsShader", "loadTexture bitmap null");
     return paramInt;
   }
   
   protected static int loadShader(int paramInt, String paramString)
   {
-    ae.i("MicroMsg.Story.AbsShader", "loadShader");
+    Log.i("MicroMsg.Story.AbsShader", "loadShader");
     int[] arrayOfInt = new int[1];
     paramInt = GLES20.glCreateShader(paramInt);
     if (paramInt == 0) {
@@ -59,16 +59,16 @@ public abstract class a
     GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
     if (arrayOfInt[0] == 0)
     {
-      ae.e("MicroMsg.Story.AbsShader", GLES20.glGetShaderInfoLog(paramInt));
+      Log.e("MicroMsg.Story.AbsShader", GLES20.glGetShaderInfoLog(paramInt));
       GLES20.glDeleteShader(paramInt);
       return 0;
     }
     return paramInt;
   }
   
-  public final void dIu()
+  public final void eJh()
   {
-    GLES20.glUseProgram(this.xKX);
+    GLES20.glUseProgram(this.BLb);
   }
   
   public static enum a
@@ -76,10 +76,10 @@ public abstract class a
     static
     {
       AppMethodBeat.i(74994);
-      xKY = new a("Default", 0);
-      xKZ = new a("CenterCrop", 1);
-      xLa = new a("CenterInside", 2);
-      xLb = new a[] { xKY, xKZ, xLa };
+      BLc = new a("Default", 0);
+      BLd = new a("CenterCrop", 1);
+      BLe = new a("CenterInside", 2);
+      BLf = new a[] { BLc, BLd, BLe };
       AppMethodBeat.o(74994);
     }
     
@@ -88,7 +88,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.a
  * JD-Core Version:    0.7.0.1
  */

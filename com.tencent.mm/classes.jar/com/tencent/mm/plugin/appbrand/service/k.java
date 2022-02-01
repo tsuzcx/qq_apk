@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.appbrand.service;
 
-import android.content.Context;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface k
   extends a
 {
-  public abstract void X(Context paramContext, String paramString);
+  public abstract boolean bVs();
   
-  public abstract void a(Context paramContext, int paramInt, String paramString);
+  public abstract int bVt();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.k
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,14 @@ import java.util.concurrent.CountDownLatch;
 
 public final class f
 {
-  private static Handler MnI = null;
-  CountDownLatch Fcr = null;
+  private static Handler RQg = null;
+  CountDownLatch JTq = null;
   
   public final void countDown()
   {
     AppMethodBeat.i(88726);
-    if (this.Fcr != null) {
-      this.Fcr.countDown();
+    if (this.JTq != null) {
+      this.JTq.countDown();
     }
     AppMethodBeat.o(88726);
   }

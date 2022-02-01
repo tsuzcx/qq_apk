@@ -1,61 +1,63 @@
 package com.tencent.mm.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.h;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.ak.h.c;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class d
-  implements com.tencent.mm.ak.e
+  implements h
 {
-  public final e.b b(e.a parama)
+  public final h.b b(h.a parama)
   {
     AppMethodBeat.i(153093);
-    parama = parama.gte;
-    if ((parama == null) || (parama.FNI == null))
+    parama = parama.heO;
+    if ((parama == null) || (parama.KHn == null))
     {
-      ae.f("MicroMsg.abtest.AbTestMsgExtension", "[Abtest] AbTestMsgExtension failed, invalid cmdAM");
+      Log.f("MicroMsg.abtest.AbTestMsgExtension", "[Abtest] AbTestMsgExtension failed, invalid cmdAM");
       AppMethodBeat.o(153093);
       return null;
     }
-    String str = z.a(parama.FNI);
-    com.tencent.mm.kernel.g.ajR().ajA().set(328193, str);
-    parama = g.aDh();
+    String str = z.a(parama.KHn);
+    com.tencent.mm.kernel.g.aAh().azQ().set(328193, str);
+    parama = g.aWT();
     long l = System.currentTimeMillis();
     try
     {
-      parama.Ch(str);
-      str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(328197, null);
-      if ((bu.isNullOrNil(str)) || ((parama.hLx != null) && (!str.equals(parama.hLx.hLt))))
+      parama.KS(str);
+      str = (String)com.tencent.mm.kernel.g.aAh().azQ().get(328197, null);
+      if ((Util.isNullOrNil(str)) || ((parama.iGz != null) && (!str.equals(parama.iGz.iGw))))
       {
-        com.tencent.mm.kernel.g.ajR().ajA().set(328197, parama.hLx.hLt);
-        com.tencent.mm.kernel.g.ajR().ajA().set(328195, Boolean.FALSE);
-        com.tencent.mm.kernel.g.ajR().ajA().set(328194, Boolean.FALSE);
-        com.tencent.mm.kernel.g.ajR().ajA().set(328196, Boolean.FALSE);
-        ae.i("MicroMsg.abtest.AbTestManager", "[cpan] new case id or new case id , reset click value.");
+        com.tencent.mm.kernel.g.aAh().azQ().set(328197, parama.iGz.iGw);
+        com.tencent.mm.kernel.g.aAh().azQ().set(328195, Boolean.FALSE);
+        com.tencent.mm.kernel.g.aAh().azQ().set(328194, Boolean.FALSE);
+        com.tencent.mm.kernel.g.aAh().azQ().set(328196, Boolean.FALSE);
+        Log.i("MicroMsg.abtest.AbTestManager", "[cpan] new case id or new case id , reset click value.");
       }
     }
     catch (Exception parama)
     {
       for (;;)
       {
-        ae.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { parama.toString() });
+        Log.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { parama.toString() });
       }
     }
-    ae.i("MicroMsg.abtest.AbTestManager", "[Abtest] update use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    if (g.aDh().aDf()) {
-      f.Cj(g.aDh().hLx.hLt);
+    Log.i("MicroMsg.abtest.AbTestManager", "[Abtest] update use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    if (g.aWT().aWR()) {
+      f.KU(g.aWT().iGz.iGw);
     }
     AppMethodBeat.o(153093);
     return null;
   }
   
-  public final void b(e.c paramc) {}
+  public final void b(h.c paramc) {}
 }
 
 

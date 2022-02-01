@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/BaseDataSource;", "", "()V", "mVideoDisplayDataHandler", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataHandler;", "registerDataHandler", "", "handler", "plugin-multitalk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/BaseDataSource;", "", "()V", "mVideoDisplayDataHandler", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataHandler;", "registerDataHandler", "", "handler", "plugin-multitalk_release"})
 public abstract class c
 {
-  protected aa wpX;
+  protected ad zLj;
   
-  public final void a(aa paramaa)
+  public final void a(ad paramad)
   {
-    p.h(paramaa, "handler");
-    paramaa.dtN();
-    this.wpX = paramaa;
+    p.h(paramad, "handler");
+    paramad.eor();
+    this.zLj = paramad;
   }
 }
 

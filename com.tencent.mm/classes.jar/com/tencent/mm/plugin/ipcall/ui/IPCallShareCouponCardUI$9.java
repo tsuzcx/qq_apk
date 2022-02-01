@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class IPCallShareCouponCardUI$9
   implements DialogInterface.OnCancelListener
@@ -15,13 +15,13 @@ final class IPCallShareCouponCardUI$9
     AppMethodBeat.i(25911);
     try
     {
-      this.vfB.finish();
+      this.yya.finish();
       AppMethodBeat.o(25911);
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      ae.e("MicroMsg.IPCallShareCouponCardUI", "loadFromSystemAddressBook error: %s", new Object[] { paramDialogInterface.getMessage() });
+      Log.e("MicroMsg.IPCallShareCouponCardUI", "loadFromSystemAddressBook error: %s", new Object[] { paramDialogInterface.getMessage() });
       AppMethodBeat.o(25911);
     }
   }

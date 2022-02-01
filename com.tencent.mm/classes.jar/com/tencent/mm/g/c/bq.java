@@ -2,49 +2,38 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class bq
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEX;
-  private static final int eEY;
-  private static final int eGe = "subType".hashCode();
-  private static final int eUL;
-  private static final int eVP = "exptId".hashCode();
-  private static final int eVQ;
-  private static final int eVR;
-  private static final int eVS;
-  private static final int eVT = "exptCheckSum".hashCode();
+  private static final int fmm = "modifyTime".hashCode();
+  private static final int fni;
+  private static final int fzk = "prodcutID".hashCode();
+  private static final int fzl = "totalCount".hashCode();
+  private static final int fzm = "continuCount".hashCode();
+  private static final int fzn = "showTipsTime".hashCode();
+  private static final int fzo = "setFlagTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEQ = true;
-  private boolean eER = true;
-  private boolean eFH = true;
-  private boolean eTZ = true;
-  private boolean eVK = true;
-  private boolean eVL = true;
-  private boolean eVM = true;
-  private boolean eVN = true;
-  private boolean eVO = true;
-  public long field_endTime;
-  public String field_exptCheckSum;
-  public String field_exptContent;
-  public int field_exptId;
-  public int field_exptSeq;
-  public int field_exptType;
-  public int field_groupId;
-  public long field_startTime;
-  public int field_subType;
+  public int field_continuCount;
+  public int field_flag;
+  public long field_modifyTime;
+  public String field_prodcutID;
+  public long field_setFlagTime;
+  public long field_showTipsTime;
+  public int field_totalCount;
+  private boolean flQ = true;
+  private boolean fng = true;
+  private boolean fzf = true;
+  private boolean fzg = true;
+  private boolean fzh = true;
+  private boolean fzi = true;
+  private boolean fzj = true;
   
   static
   {
-    eUL = "groupId".hashCode();
-    eVQ = "exptSeq".hashCode();
-    eVR = "exptContent".hashCode();
-    eEX = "startTime".hashCode();
-    eEY = "endTime".hashCode();
-    eVS = "exptType".hashCode();
+    fni = "flag".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -60,11 +49,11 @@ public abstract class bq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVP != k) {
+      if (fzk != k) {
         break label65;
       }
-      this.field_exptId = paramCursor.getInt(i);
-      this.eVK = true;
+      this.field_prodcutID = paramCursor.getString(i);
+      this.fzf = true;
     }
     for (;;)
     {
@@ -72,22 +61,18 @@ public abstract class bq
       break label20;
       break;
       label65:
-      if (eUL == k) {
-        this.field_groupId = paramCursor.getInt(i);
-      } else if (eVQ == k) {
-        this.field_exptSeq = paramCursor.getInt(i);
-      } else if (eVR == k) {
-        this.field_exptContent = paramCursor.getString(i);
-      } else if (eEX == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (eEY == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (eVS == k) {
-        this.field_exptType = paramCursor.getInt(i);
-      } else if (eGe == k) {
-        this.field_subType = paramCursor.getInt(i);
-      } else if (eVT == k) {
-        this.field_exptCheckSum = paramCursor.getString(i);
+      if (fzl == k) {
+        this.field_totalCount = paramCursor.getInt(i);
+      } else if (fzm == k) {
+        this.field_continuCount = paramCursor.getInt(i);
+      } else if (fni == k) {
+        this.field_flag = paramCursor.getInt(i);
+      } else if (fmm == k) {
+        this.field_modifyTime = paramCursor.getLong(i);
+      } else if (fzn == k) {
+        this.field_showTipsTime = paramCursor.getLong(i);
+      } else if (fzo == k) {
+        this.field_setFlagTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -97,32 +82,26 @@ public abstract class bq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVK) {
-      localContentValues.put("exptId", Integer.valueOf(this.field_exptId));
+    if (this.fzf) {
+      localContentValues.put("prodcutID", this.field_prodcutID);
     }
-    if (this.eTZ) {
-      localContentValues.put("groupId", Integer.valueOf(this.field_groupId));
+    if (this.fzg) {
+      localContentValues.put("totalCount", Integer.valueOf(this.field_totalCount));
     }
-    if (this.eVL) {
-      localContentValues.put("exptSeq", Integer.valueOf(this.field_exptSeq));
+    if (this.fzh) {
+      localContentValues.put("continuCount", Integer.valueOf(this.field_continuCount));
     }
-    if (this.eVM) {
-      localContentValues.put("exptContent", this.field_exptContent);
+    if (this.fng) {
+      localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
-    if (this.eEQ) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
+    if (this.flQ) {
+      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
-    if (this.eER) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    if (this.fzi) {
+      localContentValues.put("showTipsTime", Long.valueOf(this.field_showTipsTime));
     }
-    if (this.eVN) {
-      localContentValues.put("exptType", Integer.valueOf(this.field_exptType));
-    }
-    if (this.eFH) {
-      localContentValues.put("subType", Integer.valueOf(this.field_subType));
-    }
-    if (this.eVO) {
-      localContentValues.put("exptCheckSum", this.field_exptCheckSum);
+    if (this.fzj) {
+      localContentValues.put("setFlagTime", Long.valueOf(this.field_setFlagTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -132,7 +111,7 @@ public abstract class bq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.c.bq
  * JD-Core Version:    0.7.0.1
  */

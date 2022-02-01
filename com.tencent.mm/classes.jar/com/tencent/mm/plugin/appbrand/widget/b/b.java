@@ -5,7 +5,7 @@ import android.content.Context;
 public abstract interface b
   extends com.tencent.luggage.a.b
 {
-  public abstract a dI(Context paramContext);
+  public abstract a ed(Context paramContext);
 }
 
 

@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class tl
-  extends b
+  extends IEvent
 {
-  public a dIV;
-  public b dIW;
+  public a dZU;
   
   public tl()
   {
@@ -17,25 +15,21 @@ public final class tl
   
   private tl(byte paramByte)
   {
-    AppMethodBeat.i(155375);
-    this.dIV = new a();
-    this.dIW = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(91040);
+    this.dZU = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(155375);
+    AppMethodBeat.o(91040);
   }
   
   public static final class a
   {
-    public Intent intent;
-    public String username;
+    public int cSx = 0;
   }
-  
-  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.tl
  * JD-Core Version:    0.7.0.1
  */

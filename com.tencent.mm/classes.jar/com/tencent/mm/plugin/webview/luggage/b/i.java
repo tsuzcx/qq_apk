@@ -3,42 +3,44 @@ package com.tencent.mm.plugin.webview.luggage.b;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.e.c;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.f.c;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.m;
 
 public final class i
   extends a
 {
-  private com.tencent.mm.plugin.webview.modeltools.a Eim;
+  private com.tencent.mm.plugin.webview.modeltools.a IVh;
   
   public i()
   {
     super(7);
     AppMethodBeat.i(78698);
-    this.Eim = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.IVh = new com.tencent.mm.plugin.webview.modeltools.a();
     AppMethodBeat.o(78698);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
+  public final void a(Context paramContext, g paramg)
   {
     AppMethodBeat.i(78700);
-    String str2 = paramg.eSU().aJe(paramg.getUrl());
+    String str2 = paramg.gbF().aZj(paramg.getUrl());
     String str1 = str2;
-    if (bu.isNullOrNil(str2)) {
+    if (Util.isNullOrNil(str2)) {
       str1 = paramg.getUrl();
     }
     if ((paramContext instanceof Activity)) {
-      this.Eim.c((Activity)paramContext, str1);
+      this.IVh.c((Activity)paramContext, str1);
     }
-    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 6);
+    h.CyF.dN(982, 6);
     AppMethodBeat.o(78700);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
+  public final void a(Context paramContext, g paramg, m paramm)
   {
     AppMethodBeat.i(78699);
-    paraml.a(7, paramContext.getString(2131766252), 2131689797);
+    paramm.b(7, paramContext.getString(2131768763), 2131689809);
     AppMethodBeat.o(78699);
   }
 }

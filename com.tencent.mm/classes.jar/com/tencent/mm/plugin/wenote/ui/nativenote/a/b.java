@@ -14,10 +14,10 @@ public final class b
   {
     super(paramView, paramk);
     AppMethodBeat.i(30847);
-    this.pzb.setVisibility(8);
-    this.dtJ.setVisibility(8);
-    this.jnX.setVisibility(8);
-    this.pzb.setOnClickListener(null);
+    this.qOs.setVisibility(8);
+    this.dKU.setVisibility(8);
+    this.kmg.setVisibility(8);
+    this.qOs.setOnClickListener(null);
     AppMethodBeat.o(30847);
   }
   
@@ -30,23 +30,23 @@ public final class b
       AppMethodBeat.o(30848);
       return;
     }
-    if (this.ETB.EST != 3)
+    if (this.JJu.JIH != 3)
     {
       AppMethodBeat.o(30848);
       return;
     }
-    this.pzj.setVisibility(0);
+    this.qOA.setVisibility(0);
     AppMethodBeat.o(30848);
   }
   
-  public final int cfi()
+  public final int cCY()
   {
     return -2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.b
  * JD-Core Version:    0.7.0.1
  */

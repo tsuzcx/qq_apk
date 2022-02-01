@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class w
 {
-  public static final w beo = new w()
+  public static final w bel = new w()
   {
     public final w.a a(int paramAnonymousInt, w.a paramAnonymousa, boolean paramAnonymousBoolean)
     {
@@ -29,12 +29,12 @@ public abstract class w
       return -1;
     }
     
-    public final int ty()
+    public final int tD()
     {
       return 0;
     }
     
-    public final int tz()
+    public final int tE()
     {
       return 0;
     }
@@ -42,14 +42,14 @@ public abstract class w
   
   public final int a(int paramInt1, a parama, b paramb, int paramInt2)
   {
-    int i = a(paramInt1, parama, false).bdl;
-    if (a(i, paramb).beC == paramInt1)
+    int i = a(paramInt1, parama, false).bdi;
+    if (a(i, paramb).bez == paramInt1)
     {
-      paramInt1 = bf(i, paramInt2);
+      paramInt1 = aZ(i, paramInt2);
       if (paramInt1 == -1) {
         return -1;
       }
-      return a(paramInt1, paramb).beB;
+      return a(paramInt1, paramb).bey;
     }
     return paramInt1 + 1;
   }
@@ -61,20 +61,20 @@ public abstract class w
   
   public final Pair<Integer, Long> a(b paramb, a parama, int paramInt, long paramLong1, long paramLong2)
   {
-    a.bn(paramInt, ty());
+    a.bh(paramInt, tD());
     a(paramInt, paramb, false, paramLong2);
     paramLong2 = paramLong1;
     if (paramLong1 == -9223372036854775807L)
     {
-      paramLong1 = paramb.beD;
+      paramLong1 = paramb.beA;
       paramLong2 = paramLong1;
       if (paramLong1 == -9223372036854775807L) {
         return null;
       }
     }
-    paramInt = paramb.beB;
-    paramLong2 = paramb.beE + paramLong2;
-    for (paramLong1 = a(paramInt, parama, false).bdM; (paramLong1 != -9223372036854775807L) && (paramLong2 >= paramLong1) && (paramInt < paramb.beC); paramLong1 = a(paramInt, parama, false).bdM)
+    paramInt = paramb.bey;
+    paramLong2 = paramb.beB + paramLong2;
+    for (paramLong1 = a(paramInt, parama, false).bdJ; (paramLong1 != -9223372036854775807L) && (paramLong2 >= paramLong1) && (paramInt < paramb.bez); paramLong1 = a(paramInt, parama, false).bdJ)
     {
       paramLong2 -= paramLong1;
       paramInt += 1;
@@ -91,14 +91,7 @@ public abstract class w
   
   public abstract b a(int paramInt, b paramb, boolean paramBoolean, long paramLong);
   
-  public abstract int ae(Object paramObject);
-  
-  public final boolean b(int paramInt1, a parama, b paramb, int paramInt2)
-  {
-    return a(paramInt1, parama, paramb, paramInt2) == -1;
-  }
-  
-  public int bf(int paramInt1, int paramInt2)
+  public int aZ(int paramInt1, int paramInt2)
   {
     int i = paramInt1;
     switch (paramInt2)
@@ -106,55 +99,62 @@ public abstract class w
     default: 
       throw new IllegalStateException();
     case 0: 
-      if (paramInt1 == ty() - 1) {
+      if (paramInt1 == tD() - 1) {
         i = -1;
       }
     case 1: 
       return i;
       return paramInt1 + 1;
     }
-    if (paramInt1 == ty() - 1) {
+    if (paramInt1 == tD() - 1) {
       return 0;
     }
     return paramInt1 + 1;
   }
   
-  public final boolean isEmpty()
+  public abstract int ae(Object paramObject);
+  
+  public final boolean b(int paramInt1, a parama, b paramb, int paramInt2)
   {
-    return ty() == 0;
+    return a(paramInt1, parama, paramb, paramInt2) == -1;
   }
   
-  public abstract int ty();
+  public final boolean isEmpty()
+  {
+    return tD() == 0;
+  }
   
-  public abstract int tz();
+  public abstract int tD();
+  
+  public abstract int tE();
   
   public static final class a
   {
-    public Object bcW;
-    public long bdM;
-    public int bdl;
-    public Object bep;
-    public long beq;
-    public long[] ber;
-    public int[] bes;
-    public int[] bet;
-    public int[] beu;
-    public long[][] bev;
-    public long bew;
+    public Object bcT;
+    public long bdJ;
+    public int bdi;
+    public Object bem;
+    public long ben;
+    public long[] beo;
+    public int[] bep;
+    public int[] beq;
+    public int[] ber;
+    public long[][] bes;
+    public long bet;
     
     public final int E(long paramLong)
     {
       AppMethodBeat.i(92923);
-      if (this.ber == null)
+      if (this.beo == null)
       {
         AppMethodBeat.o(92923);
         return -1;
       }
-      int i = this.ber.length - 1;
-      while ((i >= 0) && ((this.ber[i] == -9223372036854775808L) || (this.ber[i] > paramLong))) {
+      int i = this.beo.length - 1;
+      while ((i >= 0) && ((this.beo[i] == -9223372036854775808L) || (this.beo[i] > paramLong))) {
         i -= 1;
       }
-      if ((i >= 0) && (!dM(i)))
+      if ((i >= 0) && (!dH(i)))
       {
         AppMethodBeat.o(92923);
         return i;
@@ -166,16 +166,16 @@ public abstract class w
     public final int F(long paramLong)
     {
       AppMethodBeat.i(92924);
-      if (this.ber == null)
+      if (this.beo == null)
       {
         AppMethodBeat.o(92924);
         return -1;
       }
       int i = 0;
-      while ((i < this.ber.length) && (this.ber[i] != -9223372036854775808L) && ((paramLong >= this.ber[i]) || (dM(i)))) {
+      while ((i < this.beo.length) && (this.beo[i] != -9223372036854775808L) && ((paramLong >= this.beo[i]) || (dH(i)))) {
         i += 1;
       }
-      if (i < this.ber.length)
+      if (i < this.beo.length)
       {
         AppMethodBeat.o(92924);
         return i;
@@ -184,50 +184,50 @@ public abstract class w
       return -1;
     }
     
-    public final boolean bg(int paramInt1, int paramInt2)
+    public final boolean ba(int paramInt1, int paramInt2)
     {
-      return paramInt2 < this.bet[paramInt1];
+      return paramInt2 < this.beq[paramInt1];
     }
     
-    public final long bh(int paramInt1, int paramInt2)
+    public final long bb(int paramInt1, int paramInt2)
     {
-      if (paramInt2 >= this.bev[paramInt1].length) {
+      if (paramInt2 >= this.bes[paramInt1].length) {
         return -9223372036854775807L;
       }
-      return this.bev[paramInt1][paramInt2];
+      return this.bes[paramInt1][paramInt2];
     }
     
-    public final boolean dM(int paramInt)
+    public final boolean dH(int paramInt)
     {
-      return (this.bes[paramInt] != -1) && (this.beu[paramInt] == this.bes[paramInt]);
+      return (this.bep[paramInt] != -1) && (this.ber[paramInt] == this.bep[paramInt]);
     }
     
-    public final int tA()
+    public final int tF()
     {
-      if (this.ber == null) {
+      if (this.beo == null) {
         return 0;
       }
-      return this.ber.length;
+      return this.beo.length;
     }
   }
   
   public static final class b
   {
-    public long bdM;
-    public boolean beA;
-    public int beB;
-    public int beC;
-    public long beD;
-    public long beE;
-    public Object bep;
-    public long bex;
-    public long bey;
-    public boolean bez;
+    public long bdJ;
+    public long beA;
+    public long beB;
+    public Object bem;
+    public long beu;
+    public long bev;
+    public boolean bew;
+    public boolean bex;
+    public int bey;
+    public int bez;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.w
  * JD-Core Version:    0.7.0.1
  */

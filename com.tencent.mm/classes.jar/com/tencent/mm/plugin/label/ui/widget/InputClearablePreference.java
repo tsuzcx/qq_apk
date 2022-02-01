@@ -17,10 +17,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -28,18 +28,18 @@ import com.tencent.mm.ui.widget.MMEditText;
 public class InputClearablePreference
   extends Preference
 {
-  public String iIJ;
+  public String jFn;
   private String mText;
-  public String vjA;
-  public int vjB;
-  private int vjC;
-  public boolean vjD;
-  public MMEditText vjE;
-  private ImageView vjF;
-  public TextView vjG;
-  private int vjH;
-  public a vjI;
-  public String vjz;
+  public String yDC;
+  public String yDD;
+  public int yDE;
+  private int yDF;
+  public boolean yDG;
+  public MMEditText yDH;
+  private ImageView yDI;
+  public TextView yDJ;
+  private int yDK;
+  public a yDL;
   
   public InputClearablePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -51,22 +51,22 @@ public class InputClearablePreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void apw(String paramString)
+  private void aCP(String paramString)
   {
     boolean bool2 = true;
     AppMethodBeat.i(26333);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
-      int i = f.aYK(paramString);
-      if (i <= this.vjB) {
+      int i = f.bnP(paramString);
+      if (i <= this.yDE) {
         break label90;
       }
       bool1 = true;
-      g(bool1, f.cU(this.vjB, ""), f.cV(this.vjB, paramString));
-      if (this.vjI != null)
+      g(bool1, f.dp(this.yDE, ""), f.dq(this.yDE, paramString));
+      if (this.yDL != null)
       {
-        paramString = this.vjI;
-        if (i > this.vjB) {
+        paramString = this.yDL;
+        if (i > this.yDE) {
           break label95;
         }
       }
@@ -75,7 +75,7 @@ public class InputClearablePreference
     label95:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramString.nU(bool1);
+      paramString.qD(bool1);
       AppMethodBeat.o(26333);
       return;
       bool1 = false;
@@ -86,55 +86,38 @@ public class InputClearablePreference
   private void g(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(26334);
-    if (this.vjG != null)
+    if (this.yDJ != null)
     {
       if (paramBoolean)
       {
-        this.vjG.setText(String.format(this.iIJ, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-        this.vjG.setVisibility(0);
+        this.yDJ.setText(String.format(this.jFn, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        this.yDJ.setVisibility(0);
         AppMethodBeat.o(26334);
         return;
       }
-      this.vjG.setVisibility(8);
+      this.yDJ.setVisibility(8);
     }
     AppMethodBeat.o(26334);
-  }
-  
-  public final void nW(boolean paramBoolean)
-  {
-    AppMethodBeat.i(26335);
-    if (this.vjG != null)
-    {
-      if (paramBoolean)
-      {
-        this.vjG.setText(this.vjA);
-        this.vjG.setVisibility(0);
-        AppMethodBeat.o(26335);
-        return;
-      }
-      this.vjG.setVisibility(8);
-    }
-    AppMethodBeat.o(26335);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(26332);
     super.onBindView(paramView);
-    this.vjH = com.tencent.mm.cb.a.ax(this.mContext, 2131165466);
-    this.vjE = ((MMEditText)paramView.findViewById(2131299306));
-    this.vjF = ((ImageView)paramView.findViewById(2131298982));
-    this.vjG = ((TextView)paramView.findViewById(2131299513));
-    if (this.vjE != null)
+    this.yDK = com.tencent.mm.cb.a.aG(this.mContext, 2131165482);
+    this.yDH = ((MMEditText)paramView.findViewById(2131299910));
+    this.yDI = ((ImageView)paramView.findViewById(2131299476));
+    this.yDJ = ((TextView)paramView.findViewById(2131300150));
+    if (this.yDH != null)
     {
-      if (this.vjC <= 0) {
+      if (this.yDF <= 0) {
         break label273;
       }
-      this.vjE.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.vjC), new b() });
+      this.yDH.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.yDF), new b() });
     }
     for (;;)
     {
-      this.vjE.addTextChangedListener(new TextWatcher()
+      this.yDH.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -145,7 +128,7 @@ public class InputClearablePreference
             paramAnonymousEditable = paramAnonymousEditable.toString();
             InputClearablePreference.a(InputClearablePreference.this, paramAnonymousEditable);
             InputClearablePreference localInputClearablePreference = InputClearablePreference.this;
-            if (bu.isNullOrNil(paramAnonymousEditable)) {}
+            if (Util.isNullOrNil(paramAnonymousEditable)) {}
             for (;;)
             {
               InputClearablePreference.a(localInputClearablePreference, bool);
@@ -166,21 +149,21 @@ public class InputClearablePreference
           AppMethodBeat.i(26324);
           if (paramAnonymousCharSequence != null)
           {
-            ae.d("MicroMsg.Label.InputClearablePreference", "cpan[onTextChanged] :%s", new Object[] { paramAnonymousCharSequence.toString() });
+            Log.d("MicroMsg.Label.InputClearablePreference", "cpan[onTextChanged] :%s", new Object[] { paramAnonymousCharSequence.toString() });
             if (InputClearablePreference.a(InputClearablePreference.this) != null) {
-              InputClearablePreference.a(InputClearablePreference.this).aiT(paramAnonymousCharSequence.toString());
+              InputClearablePreference.a(InputClearablePreference.this).auW(paramAnonymousCharSequence.toString());
             }
           }
           AppMethodBeat.o(26324);
         }
       });
-      ae.d("MicroMsg.Label.InputClearablePreference", "mText %s", new Object[] { this.mText });
+      Log.d("MicroMsg.Label.InputClearablePreference", "mText %s", new Object[] { this.mText });
       setText(this.mText);
-      if (!bu.isNullOrNil(this.mText)) {
-        this.vjE.setSelection(this.mText.length());
+      if (!Util.isNullOrNil(this.mText)) {
+        this.yDH.setSelection(this.mText.length());
       }
-      if (this.vjD) {
-        new aq().postDelayed(new Runnable()
+      if (this.yDG) {
+        new MMHandler().postDelayed(new Runnable()
         {
           public final void run()
           {
@@ -197,15 +180,15 @@ public class InputClearablePreference
           }
         }, 0L);
       }
-      this.vjE.setHint(this.vjz);
-      this.vjF.setOnClickListener(new View.OnClickListener()
+      this.yDH.setHint(this.yDC);
+      this.yDI.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(26326);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           if (InputClearablePreference.b(InputClearablePreference.this) != null)
           {
             InputClearablePreference.b(InputClearablePreference.this).setText("");
@@ -215,20 +198,15 @@ public class InputClearablePreference
           AppMethodBeat.o(26326);
         }
       });
-      if (this.vjG != null) {
-        this.vjG.setOnTouchListener(new View.OnTouchListener()
+      if (this.yDJ != null) {
+        this.yDJ.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
             AppMethodBeat.i(26327);
-            b localb = new b();
-            localb.bd(paramAnonymousView);
-            localb.bd(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
             if (InputClearablePreference.b(InputClearablePreference.this) != null) {
               InputClearablePreference.b(InputClearablePreference.this).clearFocus();
             }
-            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(26327);
             return false;
           }
@@ -237,52 +215,69 @@ public class InputClearablePreference
       AppMethodBeat.o(26332);
       return;
       label273:
-      this.vjE.setFilters(new InputFilter[] { new b() });
+      this.yDH.setFilters(new InputFilter[] { new b() });
     }
+  }
+  
+  public final void qF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(26335);
+    if (this.yDJ != null)
+    {
+      if (paramBoolean)
+      {
+        this.yDJ.setText(this.yDD);
+        this.yDJ.setVisibility(0);
+        AppMethodBeat.o(26335);
+        return;
+      }
+      this.yDJ.setVisibility(8);
+    }
+    AppMethodBeat.o(26335);
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(26331);
     this.mText = paramString;
-    if ((this.vjE != null) && (!bu.isNullOrNil(paramString)))
+    if ((this.yDH != null) && (!Util.isNullOrNil(paramString)))
     {
-      paramString = k.b(this.mContext, this.mText, this.vjH);
-      this.vjE.setText(paramString);
-      apw(this.mText);
+      paramString = l.e(this.mContext, this.mText, this.yDK);
+      this.yDH.setText(paramString);
+      aCP(this.mText);
     }
     AppMethodBeat.o(26331);
   }
   
   public static abstract interface a
   {
-    public abstract void aiT(String paramString);
+    public abstract void auW(String paramString);
     
-    public abstract void nU(boolean paramBoolean);
+    public abstract void qD(boolean paramBoolean);
   }
   
   final class b
     implements InputFilter
   {
-    public final char[] vjK;
+    public final char[] yDN;
     
     b()
     {
       AppMethodBeat.i(26329);
-      this.vjK = new char[] { 10, 44, 59, 12289, -244, -229 };
+      this.yDN = new char[] { 10, 44, 59, 12289, -244, -229 };
       AppMethodBeat.o(26329);
     }
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(26330);
-      ae.d("MicroMsg.Label.InputClearablePreference", "on create tag filter, %s [%d, %d) %s [%d, %d),", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      Log.d("MicroMsg.Label.InputClearablePreference", "on create tag filter, %s [%d, %d) %s [%d, %d),", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
       paramInt4 = paramInt1;
       while (paramInt4 < paramInt2)
       {
         paramSpanned = new char[paramInt2 - paramInt1];
         TextUtils.getChars(paramCharSequence, paramInt1, paramInt2, paramSpanned, 0);
-        int j = this.vjK.length;
+        int j = this.yDN.length;
         int i = 0;
         while (i < j)
         {
@@ -291,9 +286,9 @@ public class InputClearablePreference
             AppMethodBeat.o(26330);
             return "";
           }
-          if (paramSpanned[paramInt4] == this.vjK[i])
+          if (paramSpanned[paramInt4] == this.yDN[i])
           {
-            InputClearablePreference.this.nW(true);
+            InputClearablePreference.this.qF(true);
             AppMethodBeat.o(26330);
             return "";
           }
@@ -308,7 +303,7 @@ public class InputClearablePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.widget.InputClearablePreference
  * JD-Core Version:    0.7.0.1
  */

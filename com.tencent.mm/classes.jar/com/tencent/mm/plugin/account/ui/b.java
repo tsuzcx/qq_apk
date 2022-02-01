@@ -1,29 +1,112 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.ui.applet.SecurityImage;
-import com.tencent.mm.ui.applet.SecurityImage.b;
-import com.tencent.mm.ui.base.h;
 
-public abstract class b
-  extends SecurityImage.b
+public final class b
+  extends BaseAdapter
 {
-  SecurityImage jfm = null;
-  n jlL = null;
+  private LayoutInflater kgB;
+  private String[] kjQ;
+  private Drawable kjR;
+  private View.OnTouchListener kjS;
+  private Context mContext;
   
-  public abstract n a(n paramn, String paramString);
-  
-  public final void aSU()
+  public b(Context paramContext, String[] paramArrayOfString)
   {
-    g.ajj().a(a(this.jlL, ""), 0);
+    AppMethodBeat.i(127865);
+    this.kjR = null;
+    this.kjS = new b.1(this);
+    this.kjQ = paramArrayOfString;
+    this.mContext = paramContext;
+    this.kgB = LayoutInflater.from(paramContext);
+    this.kjR = paramContext.getResources().getDrawable(2131234905);
+    this.kjR.setBounds(0, 0, this.kjR.getIntrinsicWidth(), this.kjR.getIntrinsicHeight());
+    AppMethodBeat.o(127865);
+  }
+  
+  private boolean vn(int paramInt)
+  {
+    return paramInt == this.kjQ.length - 1;
+  }
+  
+  public final int getCount()
+  {
+    return this.kjQ.length;
+  }
+  
+  public final Object getItem(int paramInt)
+  {
+    return this.kjQ[paramInt];
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = 1;
+    AppMethodBeat.i(127866);
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.kgB.inflate(2131492989, null);
+    }
+    paramView = (TextView)paramViewGroup.findViewById(2131296716);
+    paramViewGroup.setOnTouchListener(this.kjS);
+    int i;
+    if (paramInt == 0)
+    {
+      i = 1;
+      if ((i == 0) || (!vn(paramInt))) {
+        break label110;
+      }
+      paramView.setPadding(25, 0, 25, 10);
+      paramView.setCompoundDrawablePadding(0);
+      paramView.setCompoundDrawables(null, null, null, null);
+    }
+    for (;;)
+    {
+      paramView.setText(this.kjQ[paramInt]);
+      AppMethodBeat.o(127866);
+      return paramViewGroup;
+      i = 0;
+      break;
+      label110:
+      if (paramInt == 0) {}
+      for (i = j;; i = 0)
+      {
+        if (i == 0) {
+          break label160;
+        }
+        paramView.setPadding(25, 0, 10, 10);
+        paramView.setCompoundDrawablePadding(10);
+        paramView.setCompoundDrawables(null, null, this.kjR, null);
+        break;
+      }
+      label160:
+      if (vn(paramInt))
+      {
+        paramView.setPadding(0, 0, 25, 10);
+        paramView.setCompoundDrawablePadding(0);
+        paramView.setCompoundDrawables(null, null, null, null);
+      }
+      else
+      {
+        paramView.setPadding(0, 0, 10, 10);
+        paramView.setCompoundDrawablePadding(10);
+        paramView.setCompoundDrawables(null, null, this.kjR, null);
+      }
+    }
   }
 }
 

@@ -2,88 +2,96 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.plugin.gamelife.b.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class cz
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int eHv;
-  private static final int eIJ;
-  private static final int eOL = "downloadUrl".hashCode();
-  private static final int eUA;
-  private static final int eZk = "sectionMd5Byte".hashCode();
-  private static final int feI;
-  private static final int ffe;
-  private static final int fff;
-  private static final int ffg;
-  private static final int ffh;
-  private static final int ffi;
-  private static final int ffj;
-  private static final int ffk;
-  private static final int ffl;
-  private static final int ffm;
-  private static final int ffn;
-  private static final int ffo;
-  private static final int ffp = "forceUpdateFlag".hashCode();
+  private static final int fBC;
+  private static final int fID;
+  private static final int fIE;
+  private static final int fIF;
+  private static final int fIG;
+  private static final int fqf;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGm = true;
-  private boolean eHt = true;
-  private boolean eIn = true;
-  private boolean eOD = true;
-  private boolean eTO = true;
-  private boolean eYH = true;
-  private boolean feS = true;
-  private boolean feT = true;
-  private boolean feU = true;
-  private boolean feV = true;
-  private boolean feW = true;
-  private boolean feX = true;
-  private boolean feY = true;
-  private boolean feZ = true;
-  private boolean few = true;
-  private boolean ffa = true;
-  private boolean ffb = true;
-  private boolean ffc = true;
-  private boolean ffd = true;
-  public String field_SecondaryUrl;
-  public String field_appId;
-  public boolean field_continueDelay;
-  public boolean field_downloadInWidget;
-  public String field_downloadUrl;
-  public long field_expireTime;
-  public int field_forceUpdateFlag;
-  public boolean field_isFirst;
-  public boolean field_isRunning;
-  public boolean field_lowBattery;
-  public String field_md5;
-  public long field_nextCheckTime;
-  public boolean field_noEnoughSpace;
-  public boolean field_noSdcard;
-  public boolean field_noWifi;
-  public String field_packageName;
-  public long field_randomTime;
-  public byte[] field_sectionMd5Byte;
-  public long field_size;
+  private static final int updateTime_HASHCODE;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetupdateTime = true;
+  private boolean __hadSetusername = true;
+  private boolean fBs = true;
+  private boolean fIA = true;
+  private boolean fIB = true;
+  private boolean fIC = true;
+  private boolean fIz = true;
+  public int field_accountType;
+  public String field_avatarURL;
+  public l field_jumpInfo;
+  public String field_nickname;
+  public int field_sex;
+  public String field_tag;
+  public long field_updateTime;
+  public String field_username;
+  private boolean fqb = true;
   
   static
   {
-    eHv = "size".hashCode();
-    eUA = "md5".hashCode();
-    eIJ = "packageName".hashCode();
-    feI = "expireTime".hashCode();
-    ffe = "randomTime".hashCode();
-    fff = "isFirst".hashCode();
-    ffg = "nextCheckTime".hashCode();
-    ffh = "isRunning".hashCode();
-    ffi = "noWifi".hashCode();
-    ffj = "noSdcard".hashCode();
-    ffk = "noEnoughSpace".hashCode();
-    ffl = "lowBattery".hashCode();
-    ffm = "continueDelay".hashCode();
-    ffn = "SecondaryUrl".hashCode();
-    ffo = "downloadInWidget".hashCode();
+    fID = "accountType".hashCode();
+    fqf = "nickname".hashCode();
+    fIE = "avatarURL".hashCode();
+    fIF = "sex".hashCode();
+    fBC = "tag".hashCode();
+    fIG = "jumpInfo".hashCode();
+    updateTime_HASHCODE = "updateTime".hashCode();
+  }
+  
+  public static IAutoDBItem.MAutoDBInfo ajs()
+  {
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[8];
+    localMAutoDBInfo.columns = new String[9];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "username";
+    localMAutoDBInfo.columns[1] = "accountType";
+    localMAutoDBInfo.colsMap.put("accountType", "INTEGER default '0' ");
+    localStringBuilder.append(" accountType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "nickname";
+    localMAutoDBInfo.colsMap.put("nickname", "TEXT default '' ");
+    localStringBuilder.append(" nickname TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "avatarURL";
+    localMAutoDBInfo.colsMap.put("avatarURL", "TEXT default '' ");
+    localStringBuilder.append(" avatarURL TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "sex";
+    localMAutoDBInfo.colsMap.put("sex", "INTEGER default '0' ");
+    localStringBuilder.append(" sex INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "tag";
+    localMAutoDBInfo.colsMap.put("tag", "TEXT default '' ");
+    localStringBuilder.append(" tag TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "jumpInfo";
+    localMAutoDBInfo.colsMap.put("jumpInfo", "BLOB");
+    localStringBuilder.append(" jumpInfo BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "updateTime";
+    localMAutoDBInfo.colsMap.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
+    localMAutoDBInfo.columns[8] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -99,11 +107,11 @@ public abstract class cz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGD != k) {
+      if (username_HASHCODE != k) {
         break label65;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.eGm = true;
+      this.field_username = paramCursor.getString(i);
+      this.__hadSetusername = true;
     }
     for (;;)
     {
@@ -111,126 +119,33 @@ public abstract class cz
       break label20;
       break;
       label65:
-      if (eOL == k)
-      {
-        this.field_downloadUrl = paramCursor.getString(i);
-      }
-      else if (eHv == k)
-      {
-        this.field_size = paramCursor.getLong(i);
-      }
-      else if (eUA == k)
-      {
-        this.field_md5 = paramCursor.getString(i);
-      }
-      else if (eIJ == k)
-      {
-        this.field_packageName = paramCursor.getString(i);
-      }
-      else if (feI == k)
-      {
-        this.field_expireTime = paramCursor.getLong(i);
-      }
-      else if (ffe == k)
-      {
-        this.field_randomTime = paramCursor.getLong(i);
-      }
-      else
-      {
-        boolean bool;
-        if (fff == k)
+      if (fID == k) {
+        this.field_accountType = paramCursor.getInt(i);
+      } else if (fqf == k) {
+        this.field_nickname = paramCursor.getString(i);
+      } else if (fIE == k) {
+        this.field_avatarURL = paramCursor.getString(i);
+      } else if (fIF == k) {
+        this.field_sex = paramCursor.getInt(i);
+      } else if (fBC == k) {
+        this.field_tag = paramCursor.getString(i);
+      } else if (fIG == k) {
+        try
         {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_isFirst = bool;
-            break;
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
           }
+          this.field_jumpInfo = ((l)new l().parseFrom(arrayOfByte));
         }
-        if (ffg == k)
+        catch (IOException localIOException)
         {
-          this.field_nextCheckTime = paramCursor.getLong(i);
+          Log.e("MicroMsg.SDK.BaseGameLifeContact", localIOException.getMessage());
         }
-        else
-        {
-          if (ffh == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_isRunning = bool;
-              break;
-            }
-          }
-          if (ffi == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noWifi = bool;
-              break;
-            }
-          }
-          if (ffj == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noSdcard = bool;
-              break;
-            }
-          }
-          if (ffk == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noEnoughSpace = bool;
-              break;
-            }
-          }
-          if (ffl == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_lowBattery = bool;
-              break;
-            }
-          }
-          if (ffm == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_continueDelay = bool;
-              break;
-            }
-          }
-          if (ffn == k)
-          {
-            this.field_SecondaryUrl = paramCursor.getString(i);
-          }
-          else
-          {
-            if (ffo == k)
-            {
-              if (paramCursor.getInt(i) != 0) {}
-              for (bool = true;; bool = false)
-              {
-                this.field_downloadInWidget = bool;
-                break;
-              }
-            }
-            if (eZk == k) {
-              this.field_sectionMd5Byte = paramCursor.getBlob(i);
-            } else if (ffp == k) {
-              this.field_forceUpdateFlag = paramCursor.getInt(i);
-            } else if (rowid_HASHCODE == k) {
-              this.systemRowid = paramCursor.getLong(i);
-            }
-          }
-        }
+      } else if (updateTime_HASHCODE == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -238,72 +153,60 @@ public abstract class cz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGm) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.field_username == null) {
+      this.field_username = "";
     }
-    if (this.eOD) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eHt) {
-      localContentValues.put("size", Long.valueOf(this.field_size));
+    if (this.fIz) {
+      localContentValues.put("accountType", Integer.valueOf(this.field_accountType));
     }
-    if (this.eTO) {
-      localContentValues.put("md5", this.field_md5);
+    if (this.field_nickname == null) {
+      this.field_nickname = "";
     }
-    if (this.eIn) {
-      localContentValues.put("packageName", this.field_packageName);
+    if (this.fqb) {
+      localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.few) {
-      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
+    if (this.field_avatarURL == null) {
+      this.field_avatarURL = "";
     }
-    if (this.feS) {
-      localContentValues.put("randomTime", Long.valueOf(this.field_randomTime));
+    if (this.fIA) {
+      localContentValues.put("avatarURL", this.field_avatarURL);
     }
-    if (this.feT) {
-      localContentValues.put("isFirst", Boolean.valueOf(this.field_isFirst));
+    if (this.fIB) {
+      localContentValues.put("sex", Integer.valueOf(this.field_sex));
     }
-    if (this.feU) {
-      localContentValues.put("nextCheckTime", Long.valueOf(this.field_nextCheckTime));
+    if (this.field_tag == null) {
+      this.field_tag = "";
     }
-    if (this.feV) {
-      localContentValues.put("isRunning", Boolean.valueOf(this.field_isRunning));
+    if (this.fBs) {
+      localContentValues.put("tag", this.field_tag);
     }
-    if (this.feW) {
-      localContentValues.put("noWifi", Boolean.valueOf(this.field_noWifi));
+    if ((this.fIC) && (this.field_jumpInfo != null)) {}
+    try
+    {
+      localContentValues.put("jumpInfo", this.field_jumpInfo.toByteArray());
+      if (this.__hadSetupdateTime) {
+        localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+      }
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.feX) {
-      localContentValues.put("noSdcard", Boolean.valueOf(this.field_noSdcard));
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.SDK.BaseGameLifeContact", localIOException.getMessage());
+      }
     }
-    if (this.feY) {
-      localContentValues.put("noEnoughSpace", Boolean.valueOf(this.field_noEnoughSpace));
-    }
-    if (this.feZ) {
-      localContentValues.put("lowBattery", Boolean.valueOf(this.field_lowBattery));
-    }
-    if (this.ffa) {
-      localContentValues.put("continueDelay", Boolean.valueOf(this.field_continueDelay));
-    }
-    if (this.ffb) {
-      localContentValues.put("SecondaryUrl", this.field_SecondaryUrl);
-    }
-    if (this.ffc) {
-      localContentValues.put("downloadInWidget", Boolean.valueOf(this.field_downloadInWidget));
-    }
-    if (this.eYH) {
-      localContentValues.put("sectionMd5Byte", this.field_sectionMd5Byte);
-    }
-    if (this.ffd) {
-      localContentValues.put("forceUpdateFlag", Integer.valueOf(this.field_forceUpdateFlag));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.cz
  * JD-Core Version:    0.7.0.1
  */

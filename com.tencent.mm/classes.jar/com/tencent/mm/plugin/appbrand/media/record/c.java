@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,71 +13,71 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<String, com.tencent.mm.sdk.b.c> lVM;
-  private static ArrayList<String> lVN;
-  private static boolean lVO;
+  private static Map<String, IListener> ndn;
+  private static ArrayList<String> ndo;
+  private static boolean ndp;
   
   static
   {
     AppMethodBeat.i(146148);
-    lVM = new HashMap();
-    lVN = new ArrayList();
-    lVO = false;
+    ndn = new HashMap();
+    ndo = new ArrayList();
+    ndp = false;
     AppMethodBeat.o(146148);
   }
   
-  public static void Tb(String paramString)
+  public static void acF(String paramString)
   {
     AppMethodBeat.i(146145);
-    if (!lVM.containsKey(paramString))
+    if (!ndn.containsKey(paramString))
     {
-      ae.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
+      Log.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
       AppMethodBeat.o(146145);
       return;
     }
-    ae.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
-    lVN.remove(paramString);
-    paramString = (com.tencent.mm.sdk.b.c)lVM.remove(paramString);
+    Log.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
+    ndo.remove(paramString);
+    paramString = (IListener)ndn.remove(paramString);
     if (paramString != null) {
-      a.IvT.d(paramString);
+      EventCenter.instance.removeListener(paramString);
     }
     AppMethodBeat.o(146145);
   }
   
-  public static void b(String paramString, com.tencent.mm.sdk.b.c paramc)
+  public static void b(String paramString, IListener paramIListener)
   {
     AppMethodBeat.i(146144);
-    if (lVM.containsKey(paramString))
+    if (ndn.containsKey(paramString))
     {
-      ae.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
+      Log.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
       AppMethodBeat.o(146144);
       return;
     }
-    if (paramc == null)
+    if (paramIListener == null)
     {
-      ae.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
+      Log.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
       AppMethodBeat.o(146144);
       return;
     }
-    ae.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
-    lVM.put(paramString, paramc);
-    if (!lVN.contains(paramString)) {
-      lVN.add(paramString);
+    Log.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
+    ndn.put(paramString, paramIListener);
+    if (!ndo.contains(paramString)) {
+      ndo.add(paramString);
     }
-    a.IvT.b(paramc);
+    EventCenter.instance.add(paramIListener);
     AppMethodBeat.o(146144);
   }
   
-  public static void btp()
+  public static void bOS()
   {
     AppMethodBeat.i(146146);
-    if (lVO)
+    if (ndp)
     {
-      ae.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
+      Log.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
       AppMethodBeat.o(146146);
       return;
     }
-    b.c(new Runnable()
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
@@ -93,38 +94,38 @@ public final class c
   public static void onDestroy()
   {
     AppMethodBeat.i(146143);
-    ae.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
-    Object localObject1 = lVN.iterator();
+    Log.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
+    Object localObject1 = ndo.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (com.tencent.mm.sdk.b.c)lVM.remove(localObject2);
+      localObject2 = (IListener)ndn.remove(localObject2);
       if (localObject2 != null) {
-        a.IvT.d((com.tencent.mm.sdk.b.c)localObject2);
+        EventCenter.instance.removeListener((IListener)localObject2);
       }
     }
-    lVM.clear();
-    lVN.clear();
-    localObject1 = g.btx();
-    ae.i("MicroMsg.Record.AudioRecordMgr", "destroy");
-    if ((((g)localObject1).lVT == g.a.lWi) || (((g)localObject1).lVT == g.a.lWj) || (((g)localObject1).lVT == g.a.lWm)) {
-      ((g)localObject1).PF();
+    ndn.clear();
+    ndo.clear();
+    localObject1 = g.bPa();
+    Log.i("MicroMsg.Record.AudioRecordMgr", "destroy");
+    if ((((g)localObject1).ndv == g.a.ndK) || (((g)localObject1).ndv == g.a.ndL) || (((g)localObject1).ndv == g.a.ndO)) {
+      ((g)localObject1).ZZ();
     }
-    if (((g)localObject1).lVZ)
+    if (((g)localObject1).ndB)
     {
-      if ((((g)localObject1).lVS != null) && (((g)localObject1).lVS.lWS != null))
+      if ((((g)localObject1).ndu != null) && (((g)localObject1).ndu.nev != null))
       {
-        ((g)localObject1).lVS.lWS.a(null);
-        ((g)localObject1).lVS.lWS.btw();
+        ((g)localObject1).ndu.nev.a(null);
+        ((g)localObject1).ndu.nev.bOZ();
       }
-      ((g)localObject1).lVZ = false;
+      ((g)localObject1).ndB = false;
     }
     AppMethodBeat.o(146143);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.c
  * JD-Core Version:    0.7.0.1
  */

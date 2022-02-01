@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center_vertical" android:background="@drawable/a7t" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="60.0dip" android:minWidth="100.0dip" android:hint="@string/da4" wallet:contentGravity="ahg" wallet:contentTextColor="@color/y4" wallet:layoutRes="@layout/ayj" wallet:titleText="@string/eci" wallet:typeface="gut" style="@style/zm"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />
+<LinearLayout android:orientation="vertical" android:id="@id/adk" android:background="@drawable/b1e" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/adl" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cc" android:layout_marginRight="@dimen/cc">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/adj" android:padding="@dimen/bt" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/actionbar_icon_dark_back" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/b5x" app:iconColor="@color/BW_0_Alpha_0_9" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/adm" android:padding="@dimen/bt" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_outlined_more" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wp" app:iconColor="@color/BW_0_Alpha_0_9" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/adp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iya" android:maxLines="1" android:lines="1" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@color/m9" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.mm.plugin.appbrand.ui.MaxHeightRecyclerView android:id="@id/ads" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

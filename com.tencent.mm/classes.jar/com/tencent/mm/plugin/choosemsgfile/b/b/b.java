@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.choosemsgfile.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.pluginsdk.model.app.c;
 import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 
 public final class b
   extends g
 {
-  private k.b oYH;
-  private String oYI;
+  private k.b qnG;
+  private String qnH;
   
-  public b(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bv parambv)
+  public b(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, ca paramca)
   {
-    super(paramg, parambv);
+    super(paramg, paramca);
   }
   
-  private k.b caJ()
+  private k.b cyz()
   {
     AppMethodBeat.i(123259);
-    if (this.oYH == null) {
-      this.oYH = k.b.zb(this.oYw.field_content);
+    if (this.qnG == null) {
+      this.qnG = k.b.HD(this.qnv.field_content);
     }
-    k.b localb = this.oYH;
+    k.b localb = this.qnG;
     AppMethodBeat.o(123259);
     return localb;
   }
   
-  protected final String aCF()
+  protected final String aWd()
   {
     AppMethodBeat.i(123263);
     Object localObject;
-    if ((this.oYI == null) && (caJ() != null) && (caJ().dlu != null) && (caJ().dlu.length() > 0))
+    if ((this.qnH == null) && (cyz() != null) && (cyz().dCK != null) && (cyz().dCK.length() > 0))
     {
-      localObject = com.tencent.mm.plugin.s.a.bJV().aMZ(caJ().dlu);
+      localObject = com.tencent.mm.plugin.r.a.cgO().bdx(cyz().dCK);
       if (localObject != null) {
-        this.oYI = ((c)localObject).field_fileFullPath;
+        this.qnH = ((c)localObject).field_fileFullPath;
       }
     }
-    if (this.oYI != null)
+    if (this.qnH != null)
     {
-      localObject = this.oYI;
+      localObject = this.qnH;
       AppMethodBeat.o(123263);
       return localObject;
     }
@@ -50,25 +50,12 @@ public final class b
     return "";
   }
   
-  public final String caC()
-  {
-    AppMethodBeat.i(123260);
-    if (caJ() != null)
-    {
-      String str = caJ().hCD;
-      AppMethodBeat.o(123260);
-      return str;
-    }
-    AppMethodBeat.o(123260);
-    return "";
-  }
-  
-  public final int caD()
+  public final int cyt()
   {
     AppMethodBeat.i(123262);
-    if (caJ() != null)
+    if (cyz() != null)
     {
-      int i = caJ().hCC;
+      int i = cyz().iwI;
       AppMethodBeat.o(123262);
       return i;
     }
@@ -76,12 +63,25 @@ public final class b
     return 0;
   }
   
+  public final String getFileExt()
+  {
+    AppMethodBeat.i(123260);
+    if (cyz() != null)
+    {
+      String str = cyz().iwJ;
+      AppMethodBeat.o(123260);
+      return str;
+    }
+    AppMethodBeat.o(123260);
+    return "";
+  }
+  
   public final String getFileName()
   {
     AppMethodBeat.i(123261);
-    if (caJ() != null)
+    if (cyz() != null)
     {
-      String str = caJ().title;
+      String str = cyz().title;
       AppMethodBeat.o(123261);
       return str;
     }
@@ -91,7 +91,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.b
  * JD-Core Version:    0.7.0.1
  */

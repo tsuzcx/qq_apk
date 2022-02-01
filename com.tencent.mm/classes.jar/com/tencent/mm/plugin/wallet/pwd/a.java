@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.pwd.a.j;
 import com.tencent.mm.plugin.wallet.pwd.a.o;
@@ -28,11 +28,11 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletConfirmCardIDUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.f;
@@ -40,32 +40,32 @@ import com.tencent.mm.wallet_core.ui.f;
 public class a
   extends com.tencent.mm.plugin.wallet_core.b.a
 {
-  public a Dca;
-  private p Dcb;
+  public a HHO;
+  private p HHP;
   
   public final int a(MMActivity paramMMActivity, int paramInt)
   {
-    return 2131765275;
+    return 2131767718;
   }
   
-  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public final g a(MMActivity paramMMActivity, i parami)
   {
     AppMethodBeat.i(69496);
     if ((paramMMActivity instanceof WalletForgotPwdUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(69483);
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousn instanceof ad)))
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousq instanceof ad)))
           {
-            paramAnonymousString = com.tencent.mm.plugin.wallet_core.model.t.eJa().eKO();
-            ae.i("MicroMsg.ProcessManager", "hy: reset_pwd_flag: %s, find_pwd_url: %s", new Object[] { paramAnonymousString.field_reset_passwd_flag, paramAnonymousString.field_find_passwd_url });
-            paramAnonymousString = com.tencent.mm.plugin.wallet_core.model.t.eJf().eJU();
-            if (!bu.isNullOrNil(paramAnonymousString))
+            paramAnonymousString = com.tencent.mm.plugin.wallet_core.model.t.fQD().fRN();
+            Log.i("MicroMsg.ProcessManager", "hy: reset_pwd_flag: %s, find_pwd_url: %s", new Object[] { paramAnonymousString.field_reset_passwd_flag, paramAnonymousString.field_find_passwd_url });
+            paramAnonymousString = com.tencent.mm.plugin.wallet_core.model.t.fQI().fRx();
+            if (!Util.isNullOrNil(paramAnonymousString))
             {
-              ae.i("MicroMsg.ProcessManager", "jump to forget url: %s", new Object[] { paramAnonymousString });
+              Log.i("MicroMsg.ProcessManager", "jump to forget url: %s", new Object[] { paramAnonymousString });
               f.p(this.activity, paramAnonymousString, false);
               AppMethodBeat.o(69483);
               return true;
@@ -85,9 +85,9 @@ public class a
     }
     if ((paramMMActivity instanceof WalletForgotPwdVerifyIdUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           return false;
         }
@@ -98,7 +98,7 @@ public class a
           if (paramAnonymousVarArgs.length == 3)
           {
             paramAnonymousVarArgs = new com.tencent.mm.plugin.wallet.pwd.a.t(paramAnonymousVarArgs[0].toString(), ((Integer)paramAnonymousVarArgs[1]).intValue(), (String)paramAnonymousVarArgs[2]);
-            this.LVJ.b(paramAnonymousVarArgs, true);
+            this.Ruz.b(paramAnonymousVarArgs, true);
           }
           AppMethodBeat.o(69484);
           return true;
@@ -109,17 +109,17 @@ public class a
     }
     if ((paramMMActivity instanceof WalletCardElementUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(69485);
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousn instanceof p)))
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousq instanceof p)))
           {
-            paramAnonymousString = (p)paramAnonymousn;
+            paramAnonymousString = (p)paramAnonymousq;
             a.a(a.this).putString("kreq_token", paramAnonymousString.getToken());
             a.a(a.this, paramAnonymousString);
-            if (!paramAnonymousString.CZQ) {
+            if (!paramAnonymousString.HFE) {
               a.this.a(this.activity, 0, a.b(a.this));
             }
             AppMethodBeat.o(69485);
@@ -133,9 +133,9 @@ public class a
         {
           AppMethodBeat.i(69486);
           paramAnonymousVarArgs = (Authen)paramAnonymousVarArgs[0];
-          if (!a.this.eLI())
+          if (!a.this.fTp())
           {
-            paramAnonymousVarArgs.dEu = 1;
+            paramAnonymousVarArgs.cSx = 1;
             if (!a.c(a.this).getBoolean("key_is_paymanager")) {
               break label90;
             }
@@ -143,10 +143,10 @@ public class a
           label90:
           for (int i = 1;; i = 0)
           {
-            this.LVJ.a(new p(paramAnonymousVarArgs, a.d(a.this).getBoolean("key_is_reset_with_new_card", false), i), true, 1);
+            this.Ruz.a(new p(paramAnonymousVarArgs, a.d(a.this).getBoolean("key_is_reset_with_new_card", false), i), true, 1);
             AppMethodBeat.o(69486);
             return true;
-            paramAnonymousVarArgs.dEu = 4;
+            paramAnonymousVarArgs.cSx = 4;
             break;
           }
         }
@@ -156,34 +156,34 @@ public class a
     }
     if ((paramMMActivity instanceof WalletVerifyCodeUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean A(Object... paramAnonymousVarArgs)
+        public final boolean B(Object... paramAnonymousVarArgs)
         {
-          AppMethodBeat.i(190143);
+          AppMethodBeat.i(214058);
           if (a.f(a.this) != null)
           {
             a.f(a.this).resend();
-            this.LVJ.b(a.f(a.this), false);
+            this.Ruz.b(a.f(a.this), false);
           }
-          AppMethodBeat.o(190143);
+          AppMethodBeat.o(214058);
           return true;
         }
         
         public final CharSequence getTips(int paramAnonymousInt)
         {
           AppMethodBeat.i(69489);
-          String str = this.activity.getString(2131765911);
+          String str = this.activity.getString(2131768364);
           AppMethodBeat.o(69489);
           return str;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(69487);
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousn instanceof p)))
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousq instanceof p)))
           {
-            paramAnonymousString = (p)paramAnonymousn;
+            paramAnonymousString = (p)paramAnonymousq;
             a.e(a.this).putString("kreq_token", paramAnonymousString.getToken());
             AppMethodBeat.o(69487);
             return true;
@@ -197,7 +197,7 @@ public class a
           AppMethodBeat.i(69488);
           paramAnonymousVarArgs = (v)paramAnonymousVarArgs[1];
           paramAnonymousVarArgs.flag = "3";
-          this.LVJ.a(new r(paramAnonymousVarArgs), true, 1);
+          this.Ruz.a(new r(paramAnonymousVarArgs), true, 1);
           AppMethodBeat.o(69488);
           return true;
         }
@@ -207,12 +207,12 @@ public class a
     }
     if ((paramMMActivity instanceof WalletPwdConfirmUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(69490);
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (((paramAnonymousn instanceof o)) || ((paramAnonymousn instanceof j))))
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (((paramAnonymousq instanceof o)) || ((paramAnonymousq instanceof j))))
           {
             a.this.a(this.activity, 0, a.g(a.this));
             AppMethodBeat.o(69490);
@@ -226,18 +226,18 @@ public class a
         {
           AppMethodBeat.i(69491);
           paramAnonymousVarArgs = (v)paramAnonymousVarArgs[0];
-          if (a.this.dyY.getBoolean("key_is_set_pwd_after_face_action"))
+          if (a.this.dQL.getBoolean("key_is_set_pwd_after_face_action"))
           {
-            ae.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, after face verify, reset pwd by face");
-            String str = a.this.dyY.getString("key_face_action_result_token");
-            this.LVJ.a(new j(str, paramAnonymousVarArgs.jfC), true, 1);
+            Log.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, after face verify, reset pwd by face");
+            String str = a.this.dQL.getString("key_face_action_result_token");
+            this.Ruz.a(new j(str, paramAnonymousVarArgs.kdF), true, 1);
           }
           for (;;)
           {
             AppMethodBeat.o(69491);
             return true;
-            ae.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, not after face verify, reset pwd normal");
-            this.LVJ.a(new o(paramAnonymousVarArgs), true, 1);
+            Log.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, not after face verify, reset pwd normal");
+            this.Ruz.a(new o(paramAnonymousVarArgs), true, 1);
           }
         }
       };
@@ -252,28 +252,28 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69493);
-    ae.d("MicroMsg.ProcessManager", "start Process : ForgotPwdProcess");
-    Bundle localBundle = this.dyY;
-    s.eGW();
+    Log.d("MicroMsg.ProcessManager", "start Process : ForgotPwdProcess");
+    Bundle localBundle = this.dQL;
+    s.fOg();
     boolean bool1;
     int i;
-    if (!s.eGX().eJQ())
+    if (!s.fOh().fRt())
     {
       bool1 = true;
       localBundle.putBoolean("key_is_oversea", bool1);
-      localBundle = this.dyY;
-      s.eGW();
-      if (!s.eGX().eJQ()) {
+      localBundle = this.dQL;
+      s.fOg();
+      if (!s.fOh().fRt()) {
         break label142;
       }
       i = 1;
       label64:
       localBundle.putInt("key_support_bankcard", i);
-      this.dyY.putBoolean("key_is_forgot_process", true);
+      this.dQL.putBoolean("key_is_forgot_process", true);
       bool1 = paramBundle.getBoolean("isFromKinda");
       boolean bool2 = paramBundle.getBoolean("isDomesticUser");
-      s.eGW();
-      if ((!s.eGX().eJQ()) && ((!bool1) || (!bool2))) {
+      s.fOg();
+      if ((!s.fOh().fRt()) && ((!bool1) || (!bool2))) {
         break label147;
       }
       b(paramActivity, WalletForgotPwdVerifyIdUI.class, paramBundle);
@@ -309,7 +309,7 @@ public class a
     }
     if ((paramActivity instanceof WalletCardElementUI))
     {
-      if (!eLI())
+      if (!fTp())
       {
         b(paramActivity, WalletVerifyCodeUI.class, paramBundle);
         AppMethodBeat.o(69494);
@@ -339,18 +339,18 @@ public class a
     }
     if (((paramActivity instanceof WalletBankcardIdUI)) || ((paramActivity instanceof WalletConfirmCardIDUI)))
     {
-      J(new Object[] { "startActivity2", paramActivity, WalletCardElementUI.class, paramBundle, "flag: 67108864" });
+      K(new Object[] { "startActivity2", paramActivity, WalletCardElementUI.class, paramBundle, "flag: 67108864" });
       Object localObject = new Intent(paramActivity, WalletCardElementUI.class);
       ((Intent)localObject).putExtra("process_id", getClass().hashCode());
       ((Intent)localObject).addFlags(67108864);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       if (paramBundle != null) {
-        this.dyY.putAll(paramBundle);
+        this.dQL.putAll(paramBundle);
       }
-      ae.d("MicroMsg.ProcessManager", "bankcard tag :" + fVl());
+      Log.d("MicroMsg.ProcessManager", "bankcard tag :" + hgI());
       AppMethodBeat.o(69494);
       return;
     }
@@ -358,13 +358,13 @@ public class a
     {
       if ((paramBundle.containsKey("key_is_support_face")) && (paramBundle.getInt("key_is_support_face") == 1))
       {
-        ae.i("MicroMsg.ProcessManager", "forward support face");
-        com.tencent.mm.plugin.report.service.g.yxI.f(15774, new Object[] { Integer.valueOf(this.dyY.getInt("key_forgot_scene", 1)), Integer.valueOf(1) });
+        Log.i("MicroMsg.ProcessManager", "forward support face");
+        com.tencent.mm.plugin.report.service.h.CyF.a(15774, new Object[] { Integer.valueOf(this.dQL.getInt("key_forgot_scene", 1)), Integer.valueOf(1) });
         b(paramActivity, WalletForgotPwdSelectUI.class, paramBundle);
         AppMethodBeat.o(69494);
         return;
       }
-      ae.i("MicroMsg.ProcessManager", "forward not support face");
+      Log.i("MicroMsg.ProcessManager", "forward not support face");
       b(paramActivity, WalletForgotPwdUI.class, paramBundle);
       AppMethodBeat.o(69494);
       return;
@@ -373,12 +373,12 @@ public class a
     {
       if ((paramBundle.containsKey("key_select_bank_card")) && (paramBundle.getBoolean("key_select_bank_card")))
       {
-        ae.i("MicroMsg.ProcessManager", "forward select bankcard");
+        Log.i("MicroMsg.ProcessManager", "forward select bankcard");
         b(paramActivity, WalletForgotPwdUI.class, paramBundle);
         AppMethodBeat.o(69494);
         return;
       }
-      ae.i("MicroMsg.ProcessManager", "forward after face check");
+      Log.i("MicroMsg.ProcessManager", "forward after face check");
       b(paramActivity, WalletSetPasswordUI.class, paramBundle);
     }
     AppMethodBeat.o(69494);
@@ -393,7 +393,7 @@ public class a
       AppMethodBeat.o(69497);
       return false;
     }
-    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(2131765275), false, new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(2131767718), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -413,21 +413,21 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69495);
-    s.eGW();
-    if (s.eGX().eJQ())
+    s.fOg();
+    if (s.fOh().fRt())
     {
       a(paramActivity, WalletForgotPwdVerifyIdUI.class, -1, false);
-      if (this.Dca != null)
+      if (this.HHO != null)
       {
-        this.Dca.run(0);
+        this.HHO.run(0);
         AppMethodBeat.o(69495);
       }
     }
     else
     {
       a(paramActivity, WalletForgotPwdUI.class, -1, false);
-      if (this.Dca != null) {
-        this.Dca.run(-1);
+      if (this.HHO != null) {
+        this.HHO.run(-1);
       }
     }
     AppMethodBeat.o(69495);
@@ -438,7 +438,7 @@ public class a
     return paramActivity instanceof WalletPwdConfirmUI;
   }
   
-  public final String cSH()
+  public final String dKC()
   {
     return "ForgotPwdProcess";
   }
@@ -450,7 +450,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a
  * JD-Core Version:    0.7.0.1
  */

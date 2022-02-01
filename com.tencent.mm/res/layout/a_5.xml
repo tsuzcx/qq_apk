@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dm" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/oc" android:paddingLeft="@dimen/dm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/cn1" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/fts_websearch_relevant_icon" app:iconColor="@color/FG_2" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:id="@id/b3b" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/ru" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ds" android:layout_marginRight="12.0dip" android:src="@raw/arrow_right" app:iconColor="@color/FG_2" />
-    </LinearLayout>
-</RelativeLayout>
+<com.tencent.mm.view.TouchableLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/bcd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" style="@style/zy" />
+</com.tencent.mm.view.TouchableLayout>

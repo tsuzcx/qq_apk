@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/cc_" style="@style/kc">
-        <ImageView android:id="@id/ccc" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:layout_marginRight="@dimen/j9" />
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/cce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/cca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="20.0dip" android:maxLines="2" />
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textSize="@dimen/f5" android:textColor="@color/ql" android:id="@id/fr5" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <TextView android:textSize="@dimen/f5" android:textColor="@color/ql" android:id="@id/b6j" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            </LinearLayout>
+<RelativeLayout android:id="@id/cpp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/cp4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/cpc" android:background="@drawable/a08" android:paddingTop="@dimen/ce" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:weightSum="4.0" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce">
+            <RelativeLayout android:gravity="center_horizontal" android:id="@id/cpm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cpn" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_filled_camera_switch" android:layout_centerHorizontal="true" app:iconColor="@color/ag2" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/cpo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/egd" android:layout_below="@id/cpn" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center_horizontal" android:id="@id/cpj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cpk" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/finder_live_mirror_icon" android:layout_centerHorizontal="true" app:iconColor="@color/ag2" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/cpl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/cwk" android:layout_below="@id/cpk" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center_horizontal" android:id="@id/cpd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cpe" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/finder_live_beauty_icon" android:layout_centerHorizontal="true" app:iconColor="@color/ag2" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/cpf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/cwi" android:layout_below="@id/cpe" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center_horizontal" android:id="@id/cpg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cph" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/finder_live_filter_icon" android:layout_centerHorizontal="true" app:iconColor="@color/ag2" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/cpi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/cwj" android:layout_below="@id/cph" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+    </RelativeLayout>
+    <include android:id="@id/cp5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/adn" />
+    <include android:id="@id/cow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/ad5" />
+</RelativeLayout>

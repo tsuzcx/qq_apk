@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/f4b" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/bev" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/image_download_fail_icon" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/cd" android:id="@id/bex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/d2h" />
-    </LinearLayout>
+    <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/ejt" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/bt" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/ag2" android:id="@id/ejv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toEndOf="@id/ejt" />
 </RelativeLayout>

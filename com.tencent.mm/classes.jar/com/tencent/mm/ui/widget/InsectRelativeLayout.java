@@ -5,79 +5,79 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.ar;
-import d.g.a.b;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.au;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "discardKeyboard", "", "getDiscardKeyboard", "()Z", "setDiscardKeyboard", "(Z)V", "insectCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "bottom", "getInsectCallback", "()Lkotlin/jvm/functions/Function1;", "setInsectCallback", "(Lkotlin/jvm/functions/Function1;)V", "positionInWindow", "", "visibleRect", "Landroid/graphics/Rect;", "insectBottom", "onLayout", "", "changed", "left", "top", "right", "libmmui_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "discardKeyboard", "", "getDiscardKeyboard", "()Z", "setDiscardKeyboard", "(Z)V", "insectCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "bottom", "getInsectCallback", "()Lkotlin/jvm/functions/Function1;", "setInsectCallback", "(Lkotlin/jvm/functions/Function1;)V", "positionInWindow", "", "visibleRect", "Landroid/graphics/Rect;", "insectBottom", "onLayout", "", "changed", "left", "top", "right", "libmmui_release"})
 public class InsectRelativeLayout
   extends RelativeLayout
 {
-  private Rect LmI;
-  private int[] LmQ;
-  private b<? super Integer, Boolean> LmR;
-  private boolean LmU;
+  private int[] QBW;
+  private b<? super Integer, Boolean> QBX;
+  private boolean QCa;
   private final String TAG;
+  private Rect vPN;
   
   public InsectRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(193887);
-    AppMethodBeat.o(193887);
+    AppMethodBeat.i(204872);
+    AppMethodBeat.o(204872);
   }
   
   public InsectRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(193886);
+    AppMethodBeat.i(204871);
     this.TAG = "MicroMsg.InsectLayout";
-    this.LmI = new Rect();
-    this.LmQ = new int[2];
-    AppMethodBeat.o(193886);
+    this.vPN = new Rect();
+    this.QBW = new int[2];
+    AppMethodBeat.o(204871);
   }
   
-  public boolean CK(int paramInt)
+  public boolean Gv(int paramInt)
   {
     return false;
   }
   
   public final boolean getDiscardKeyboard()
   {
-    return this.LmU;
+    return this.QCa;
   }
   
   public final b<Integer, Boolean> getInsectCallback()
   {
-    return this.LmR;
+    return this.QBX;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(193885);
-    ae.i(this.TAG, "InsectRelativeLayout onLayout");
-    getWindowVisibleDisplayFrame(this.LmI);
-    getLocationOnScreen(this.LmQ);
-    final int j = paramInt4 - paramInt2 + this.LmQ[1] - this.LmI.bottom;
-    boolean bool2 = CK(j);
+    AppMethodBeat.i(204870);
+    Log.i(this.TAG, "InsectRelativeLayout onLayout");
+    getWindowVisibleDisplayFrame(this.vPN);
+    getLocationOnScreen(this.QBW);
+    final int j = paramInt4 - paramInt2 + this.QBW[1] - this.vPN.bottom;
+    boolean bool2 = Gv(j);
     boolean bool1 = bool2;
     if (!bool2)
     {
       bool1 = bool2;
-      if (this.LmR != null)
+      if (this.QBX != null)
       {
-        b localb = this.LmR;
+        b localb = this.QBX;
         if (localb == null) {
-          p.gkB();
+          p.hyc();
         }
         bool1 = ((Boolean)localb.invoke(Integer.valueOf(j))).booleanValue();
       }
     }
-    if (j > ar.en(getContext()) * 3)
+    if (j > au.aD(getContext()) * 3)
     {
       i = 1;
-      if ((!bool1) && ((i == 0) || (!this.LmU))) {
+      if ((!bool1) && ((i == 0) || (!this.QCa))) {
         break label205;
       }
     }
@@ -88,7 +88,7 @@ public class InsectRelativeLayout
         post((Runnable)new a(this, j));
       }
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(193885);
+      AppMethodBeat.o(204870);
       return;
       i = 0;
       break;
@@ -97,15 +97,15 @@ public class InsectRelativeLayout
   
   public final void setDiscardKeyboard(boolean paramBoolean)
   {
-    this.LmU = paramBoolean;
+    this.QCa = paramBoolean;
   }
   
   public final void setInsectCallback(b<? super Integer, Boolean> paramb)
   {
-    this.LmR = paramb;
+    this.QBX = paramb;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -113,16 +113,16 @@ public class InsectRelativeLayout
     
     public final void run()
     {
-      AppMethodBeat.i(193884);
-      this.LmW.setPadding(this.LmW.getPaddingLeft(), this.LmW.getPaddingTop(), this.LmW.getPaddingRight(), j);
-      this.LmW.requestLayout();
-      AppMethodBeat.o(193884);
+      AppMethodBeat.i(204869);
+      this.QCc.setPadding(this.QCc.getPaddingLeft(), this.QCc.getPaddingTop(), this.QCc.getPaddingRight(), j);
+      this.QCc.requestLayout();
+      AppMethodBeat.o(204869);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.InsectRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

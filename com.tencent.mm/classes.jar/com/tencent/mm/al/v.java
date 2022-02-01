@@ -1,64 +1,66 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.pi;
-import com.tencent.mm.protocal.protobuf.pj;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.qh;
+import com.tencent.mm.protocal.protobuf.qi;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class v
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private a hTF;
-  private com.tencent.mm.ak.b rr;
+  private i callback;
+  private a iOR;
+  private d rr;
   
   public v(String paramString, a parama, a parama1)
   {
-    AppMethodBeat.i(188886);
-    ae.i("MicroMsg.NetSceneBiztransfer", "NetSceneBiztransfer username (%s) cmdid (%s)", new Object[] { paramString, Integer.valueOf(2) });
-    this.hTF = parama1;
-    parama1 = new b.a();
+    AppMethodBeat.i(212179);
+    Log.i("MicroMsg.NetSceneBiztransfer", "NetSceneBiztransfer username (%s) cmdid (%s)", new Object[] { paramString, Integer.valueOf(2) });
+    this.iOR = parama1;
+    parama1 = new d.a();
     parama1.funcId = 1915;
     parama1.uri = "/cgi-bin/mmocbiz-bin-new/biztransfer";
-    parama1.hQF = new pi();
-    parama1.hQG = new pj();
-    parama1.hQH = 0;
+    parama1.iLN = new qh();
+    parama1.iLO = new qi();
+    parama1.iLP = 0;
     parama1.respCmdId = 0;
-    this.rr = parama1.aDS();
-    parama1 = (pi)this.rr.hQD.hQJ;
-    parama1.GcV = paramString;
-    parama1.GcW = 2;
+    this.rr = parama1.aXF();
+    parama1 = (qh)this.rr.iLK.iLR;
+    parama1.KXi = paramString;
+    parama1.KXj = 2;
     try
     {
-      parama1.GcX = com.tencent.mm.bw.b.cm(parama.toByteArray());
-      AppMethodBeat.o(188886);
+      parama1.KXk = b.cD(parama.toByteArray());
+      AppMethodBeat.o(212179);
       return;
     }
     catch (IOException paramString)
     {
       paramString = new RuntimeException("bad cgi request", paramString);
-      AppMethodBeat.o(188886);
+      AppMethodBeat.o(212179);
       throw paramString;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(188888);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(188888);
+    AppMethodBeat.i(212181);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(212181);
     return i;
   }
   
@@ -67,42 +69,42 @@ public final class v
     return 1915;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(188887);
-    ae.i("MicroMsg.NetSceneBiztransfer", "NetSceneBiztransfer onGYNetEnd netId %d, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.hTF != null) {
-      this.hTF.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(212180);
+    Log.i("MicroMsg.NetSceneBiztransfer", "NetSceneBiztransfer onGYNetEnd netId %d, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.iOR != null) {
+      this.iOR.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(188887);
+    AppMethodBeat.o(212180);
   }
   
   public static abstract class a<T extends a>
-    implements f
+    implements i
   {
-    private final T hTG;
+    private final T iOS;
     
     protected a(T paramT)
     {
-      this.hTG = paramT;
+      this.iOS = paramT;
     }
     
     protected abstract void e(T paramT);
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
     {
-      if ((paramn == null) || (!(paramn instanceof v))) {
+      if ((paramq == null) || (!(paramq instanceof v))) {
         return;
       }
-      paramString = (pj)((com.tencent.mm.ak.b)paramn.getReqResp()).hQE.hQJ;
+      paramString = (qi)((d)paramq.getReqResp()).iLL.iLR;
       try
       {
-        this.hTG.parseFrom(paramString.GcX.zr);
+        this.iOS.parseFrom(paramString.KXk.zy);
         label47:
-        e(this.hTG);
+        e(this.iOS);
         return;
       }
       catch (Throwable paramString)

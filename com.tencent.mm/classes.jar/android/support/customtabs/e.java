@@ -13,9 +13,9 @@ public abstract interface e
 {
   public abstract boolean a(d paramd);
   
-  public abstract boolean aI();
+  public abstract boolean aK();
   
-  public abstract Bundle aL();
+  public abstract Bundle aN();
   
   public abstract boolean b(d paramd);
   
@@ -59,7 +59,7 @@ public abstract interface e
       case 2: 
         paramParcel1.enforceInterface("android.support.customtabs.ICustomTabsService");
         paramParcel1.readLong();
-        bool = aI();
+        bool = aK();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -101,7 +101,7 @@ public abstract interface e
         if (paramParcel1.readInt() != 0) {
           Bundle.CREATOR.createFromParcel(paramParcel1);
         }
-        paramParcel1 = aL();
+        paramParcel1 = aN();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -173,7 +173,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.customtabs.e
  * JD-Core Version:    0.7.0.1
  */

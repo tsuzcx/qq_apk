@@ -6,76 +6,77 @@ import com.tencent.mm.plugin.report.a;
 public final class o
   extends a
 {
-  public String dTC = "";
-  public int dTF = 0;
-  public long dTG = 0L;
-  public long dTH = 0L;
-  public long dTI = 0L;
-  private long dTJ = 0L;
-  public long dTK = 0L;
-  public String dTL = "";
+  public String ekH = "";
+  public long ekI;
+  public long ekJ;
+  public long ekK;
+  public long ekL;
+  public long ekM;
+  public long ekN;
+  private long ekO;
+  public long ekP;
+  public long ekQ;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(121747);
+    AppMethodBeat.i(238089);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTC);
+    ((StringBuffer)localObject).append(this.ekH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTF);
+    ((StringBuffer)localObject).append(this.ekI);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTG);
+    ((StringBuffer)localObject).append(this.ekJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTH);
+    ((StringBuffer)localObject).append(this.ekK);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTI);
+    ((StringBuffer)localObject).append(this.ekL);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTJ);
+    ((StringBuffer)localObject).append(this.ekM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTK);
+    ((StringBuffer)localObject).append(this.ekN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTL);
+    ((StringBuffer)localObject).append(this.ekO);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekQ);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(121747);
+    aMq((String)localObject);
+    AppMethodBeat.o(238089);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(121748);
+    AppMethodBeat.i(238090);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatroomName:").append(this.dTC);
+    ((StringBuffer)localObject).append("session_id:").append(this.ekH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatroomMute:").append(this.dTF);
+    ((StringBuffer)localObject).append("action_type:").append(this.ekI);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadCount:").append(this.dTG);
+    ((StringBuffer)localObject).append("background_status:").append(this.ekJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DisRedDotCount:").append(this.dTH);
+    ((StringBuffer)localObject).append("weapp_cnt:").append(this.ekK);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterCount:").append(this.dTI);
+    ((StringBuffer)localObject).append("brand_cnt:").append(this.ekL);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StayTimeMs:").append(this.dTJ);
+    ((StringBuffer)localObject).append("file_cnt:").append(this.ekM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SendCount:").append(this.dTK);
+    ((StringBuffer)localObject).append("note_cnt:").append(this.ekN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Score:").append(this.dTL);
+    ((StringBuffer)localObject).append("mpvideo_cnt:").append(this.ekO);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("finder_cnt:").append(this.ekP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("live_cnt:").append(this.ekQ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(121748);
+    AppMethodBeat.o(238090);
     return localObject;
-  }
-  
-  public final o bu(long paramLong)
-  {
-    AppMethodBeat.i(121746);
-    this.dTJ = paramLong;
-    super.bg("StayTimeMs", this.dTJ);
-    AppMethodBeat.o(121746);
-    return this;
   }
   
   public final int getId()
   {
-    return 15460;
+    return 21927;
   }
 }
 

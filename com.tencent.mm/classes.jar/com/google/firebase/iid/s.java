@@ -12,36 +12,36 @@ final class s
   extends BroadcastReceiver
 {
   @Nullable
-  r bLJ;
+  r bLZ;
   
   public s(r paramr)
   {
-    this.bLJ = paramr;
+    this.bLZ = paramr;
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(4208);
-    if (this.bLJ == null)
+    if (this.bLZ == null)
     {
       AppMethodBeat.o(4208);
       return;
     }
-    if (!this.bLJ.zzaj())
+    if (!this.bLZ.zzaj())
     {
       AppMethodBeat.o(4208);
       return;
     }
-    FirebaseInstanceId.xY();
-    FirebaseInstanceId.b(this.bLJ, 0L);
-    this.bLJ.getContext().unregisterReceiver(this);
-    this.bLJ = null;
+    FirebaseInstanceId.yg();
+    FirebaseInstanceId.b(this.bLZ, 0L);
+    this.bLZ.getContext().unregisterReceiver(this);
+    this.bLZ = null;
     AppMethodBeat.o(4208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.iid.s
  * JD-Core Version:    0.7.0.1
  */

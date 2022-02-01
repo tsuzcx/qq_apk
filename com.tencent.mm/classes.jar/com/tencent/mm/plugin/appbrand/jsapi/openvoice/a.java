@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class a
@@ -17,24 +17,24 @@ public final class a
   public a()
   {
     AppMethodBeat.i(174844);
-    com.tencent.mm.plugin.appbrand.permission.c.Uy("exitVoIPChat");
+    com.tencent.mm.plugin.appbrand.permission.c.aem("exitVoIPChat");
     AppMethodBeat.o(174844);
   }
   
   public final void a(final com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46670);
-    ae.i("MicroMsg.OpenVoice.JsApiCloudVoiceExitVoIPChat", "hy: invoke JsApiCloudVoiceExitVoIPChat");
-    go(false);
+    Log.i("MicroMsg.OpenVoice.JsApiCloudVoiceExitVoIPChat", "hy: invoke JsApiCloudVoiceExitVoIPChat");
+    hl(false);
     paramJSONObject = paramc.getAppId();
-    final long l = bu.HQ();
-    p.pdY.a(new b() {}, p.a.pfH);
+    final long l = Util.currentTicks();
+    q.qta.a(new b() {}, q.a.quL);
     AppMethodBeat.o(46670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.a
  * JD-Core Version:    0.7.0.1
  */

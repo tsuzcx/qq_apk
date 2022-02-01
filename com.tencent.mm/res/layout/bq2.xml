@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.TouchableLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/a" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/g" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/k_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/he9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:layout_gravity="center_horizontal" android:id="@id/bm5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cg" android:text="@string/dbp" style="@style/hn" />
-    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/hqc" android:background="@drawable/zj" android:visibility="gone" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/cg" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/hss" android:paddingTop="@dimen/cg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cee" />
-</com.tencent.mm.view.TouchableLayout>
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/tx" android:id="@id/dp0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" android:layout_alignParentBottom="true" />
+</RelativeLayout>

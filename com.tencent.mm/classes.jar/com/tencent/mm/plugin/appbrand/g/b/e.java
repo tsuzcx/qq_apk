@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public a kgy = a.kgz;
+  public a lkh = a.lki;
   public int progress = 0;
   public int volume = 0;
   
@@ -13,12 +13,12 @@ public final class e
     static
     {
       AppMethodBeat.i(158944);
-      kgz = new a("NoMediaPresent", 0);
-      kgA = new a("Stopped", 1);
-      kgB = new a("Transitioning", 2);
-      kgC = new a("Playing", 3);
-      kgD = new a("Paused", 4);
-      kgE = new a[] { kgz, kgA, kgB, kgC, kgD };
+      lki = new a("NoMediaPresent", 0);
+      lkj = new a("Stopped", 1);
+      lkk = new a("Transitioning", 2);
+      lkl = new a("Playing", 3);
+      lkm = new a("Paused", 4);
+      lkn = new a[] { lki, lkj, lkk, lkl, lkm };
       AppMethodBeat.o(158944);
     }
     
@@ -27,7 +27,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.b.e
  * JD-Core Version:    0.7.0.1
  */

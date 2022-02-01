@@ -13,45 +13,44 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.e.h;
+import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.recovery.b;
 import com.tencent.mm.recoveryv2.RecoveryCrash;
 import com.tencent.mm.recoveryv2.RecoveryCrash.Record;
 import com.tencent.mm.recoveryv2.f;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class RecoveryUI
   extends AppCompatActivity
 {
-  private TextView InK;
-  private TextView InL;
-  private RecoveryCrash.Record InM;
-  private ProgressBar jtq;
-  private Button uzP;
+  private TextView NBi;
+  private TextView NBj;
+  private RecoveryCrash.Record NBk;
+  private ProgressBar krF;
+  private Button xRO;
   
-  private void fkN()
+  private void guy()
   {
-    AppMethodBeat.i(186170);
-    this.uzP.setClickable(true);
-    this.uzP.setVisibility(0);
-    this.jtq.setVisibility(8);
-    AppMethodBeat.o(186170);
+    AppMethodBeat.i(193927);
+    this.xRO.setClickable(true);
+    this.xRO.setVisibility(0);
+    this.krF.setVisibility(8);
+    AppMethodBeat.o(193927);
   }
   
   public Resources getResources()
   {
-    AppMethodBeat.i(186166);
-    if (ak.getResources() == null)
+    AppMethodBeat.i(193923);
+    if (MMApplicationContext.getResources() == null)
     {
       localResources = super.getResources();
-      AppMethodBeat.o(186166);
+      AppMethodBeat.o(193923);
       return localResources;
     }
-    Resources localResources = ak.getResources();
-    AppMethodBeat.o(186166);
+    Resources localResources = MMApplicationContext.getResources();
+    AppMethodBeat.o(193923);
     return localResources;
   }
   
@@ -60,7 +59,7 @@ public class RecoveryUI
   @SuppressLint({"SourceLockedOrientationActivity"})
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(186167);
+    AppMethodBeat.i(193924);
     super.onCreate(paramBundle);
     f.i("MicroMsg.recovery.ui", "activity onCreate, id = ".concat(String.valueOf(this)));
     try
@@ -73,24 +72,24 @@ public class RecoveryUI
       {
         for (;;)
         {
-          setContentView(2131492934);
-          this.InK = ((TextView)findViewById(2131306137));
-          this.InL = ((TextView)findViewById(2131306160));
-          this.uzP = ((Button)findViewById(2131297591));
-          this.jtq = ((ProgressBar)findViewById(2131303527));
-          this.uzP.setOnClickListener(new View.OnClickListener()
+          setContentView(2131492960);
+          this.NBi = ((TextView)findViewById(2131309501));
+          this.NBj = ((TextView)findViewById(2131309538));
+          this.xRO = ((Button)findViewById(2131297838));
+          this.krF = ((ProgressBar)findViewById(2131306294));
+          this.xRO.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(final View paramAnonymousView)
             {
-              AppMethodBeat.i(186164);
+              AppMethodBeat.i(193921);
               RecoveryUI.a(RecoveryUI.this);
-              RecoveryUI.b(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131762265));
+              RecoveryUI.b(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131764331));
               paramAnonymousView = new CountDownLatch(3);
-              h.MqF.aO(new Runnable()
+              h.RTc.aX(new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(186160);
+                  AppMethodBeat.i(193917);
                   if (paramAnonymousView.getCount() > 0L) {}
                   try
                   {
@@ -100,26 +99,26 @@ public class RecoveryUI
                     {
                       public final void run()
                       {
-                        AppMethodBeat.i(186159);
+                        AppMethodBeat.i(193916);
                         if (!RecoveryUI.this.isFinishing())
                         {
                           RecoveryUI.c(RecoveryUI.this);
-                          RecoveryUI.b(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131762266));
-                          RecoveryUI.d(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131762261));
+                          RecoveryUI.b(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131764332));
+                          RecoveryUI.d(RecoveryUI.this).setText(RecoveryUI.this.getResources().getString(2131764327));
                           RecoveryUI.d(RecoveryUI.this).setOnClickListener(new View.OnClickListener()
                           {
                             public final void onClick(View paramAnonymous4View)
                             {
-                              AppMethodBeat.i(186158);
+                              AppMethodBeat.i(193915);
                               RecoveryUI.e(RecoveryUI.this);
-                              AppMethodBeat.o(186158);
+                              AppMethodBeat.o(193915);
                             }
                           });
                         }
-                        AppMethodBeat.o(186159);
+                        AppMethodBeat.o(193916);
                       }
                     });
-                    AppMethodBeat.o(186160);
+                    AppMethodBeat.o(193917);
                     return;
                   }
                   catch (Throwable localThrowable)
@@ -132,50 +131,49 @@ public class RecoveryUI
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(186161);
+                  AppMethodBeat.i(193918);
                   paramAnonymousView.countDown();
-                  AppMethodBeat.o(186161);
+                  AppMethodBeat.o(193918);
                 }
               }, 3000L);
-              h.MqF.aO(new Runnable()
+              h.RTc.aX(new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(186162);
+                  AppMethodBeat.i(193919);
                   RecoveryUI.f(RecoveryUI.this);
-                  RecoveryCrash.hP(RecoveryUI.this.getApplication()).fkR().save();
+                  RecoveryCrash.iI(RecoveryUI.this.getApplication()).guC().save();
                   paramAnonymousView.countDown();
-                  AppMethodBeat.o(186162);
+                  AppMethodBeat.o(193919);
                 }
               });
-              h.MqF.aO(new Runnable()
+              h.RTc.aX(new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(186163);
+                  AppMethodBeat.i(193920);
                   RecoveryUI.g(RecoveryUI.this);
                   paramAnonymousView.countDown();
-                  AppMethodBeat.o(186163);
+                  AppMethodBeat.o(193920);
                 }
               });
-              AppMethodBeat.o(186164);
+              AppMethodBeat.o(193921);
             }
           });
           paramBundle = getSupportActionBar();
           if (paramBundle != null) {
             paramBundle.hide();
           }
-          fkN();
-          this.InK.setText(getResources().getString(2131762264));
-          this.InL.setText(getResources().getString(2131762267));
-          this.uzP.setText(getResources().getString(2131762262));
-          this.InM = ((RecoveryCrash.Record)getIntent().getParcelableExtra("extra_crash_record"));
-          paramBundle = com.tencent.mm.recoveryv2.i.hX(getApplication());
-          paramBundle.IoA = false;
-          paramBundle.Iox = true;
+          guy();
+          this.NBi.setText(getResources().getString(2131764330));
+          this.NBj.setText(getResources().getString(2131764333));
+          this.xRO.setText(getResources().getString(2131764328));
+          this.NBk = ((RecoveryCrash.Record)getIntent().getParcelableExtra("extra_crash_record"));
+          paramBundle = com.tencent.mm.recoveryv2.i.iQ(getApplication());
+          paramBundle.NBY = false;
+          paramBundle.NBV = true;
           paramBundle.save();
-          b.fkM();
-          AppMethodBeat.o(186167);
+          AppMethodBeat.o(193924);
           return;
           paramBundle = paramBundle;
           f.w("MicroMsg.recovery.ui", "set portrait mode fail", paramBundle);
@@ -186,7 +184,7 @@ public class RecoveryUI
         for (;;)
         {
           f.w("MicroMsg.recovery.ui", "setContentView fail, try raw layout", paramBundle);
-          setContentView(2131496507);
+          setContentView(2131492961);
         }
       }
     }
@@ -194,18 +192,18 @@ public class RecoveryUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(186169);
+    AppMethodBeat.i(193926);
     super.onDestroy();
     f.i("MicroMsg.recovery.ui", "activity onDestroy, id = ".concat(String.valueOf(this)));
-    AppMethodBeat.o(186169);
+    AppMethodBeat.o(193926);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(186168);
+    AppMethodBeat.i(193925);
     super.onNewIntent(paramIntent);
     f.i("MicroMsg.recovery.ui", "activity onNewIntent, id = ".concat(String.valueOf(this)));
-    AppMethodBeat.o(186168);
+    AppMethodBeat.o(193925);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -216,7 +214,7 @@ public class RecoveryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.recovery.ui.RecoveryUI
  * JD-Core Version:    0.7.0.1
  */

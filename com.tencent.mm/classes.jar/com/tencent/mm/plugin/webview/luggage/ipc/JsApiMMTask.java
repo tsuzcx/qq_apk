@@ -5,21 +5,21 @@ import android.os.Parcelable.Creator;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public class JsApiMMTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiMMTask> CREATOR;
-  public b.a EiB;
-  public String EiC;
-  public String EiD;
+  public b.a IVw;
+  public String IVx;
+  public String IVy;
   public String errMsg;
-  public String kAh;
+  public String lEA;
   
   static
   {
@@ -33,23 +33,23 @@ public class JsApiMMTask
   private JsApiMMTask(Parcel paramParcel)
   {
     AppMethodBeat.i(78501);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(78501);
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(78497);
     try
     {
-      ((bq)Class.forName(this.EiC).newInstance()).a(ak.getContext(), this.kAh, new bq.a()
+      ((br)Class.forName(this.IVx).newInstance()).a(MMApplicationContext.getContext(), this.lEA, new br.a()
       {
-        public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(78495);
           JsApiMMTask.this.errMsg = paramAnonymousString;
           if (paramAnonymousJSONObject != null) {
-            JsApiMMTask.this.EiD = paramAnonymousJSONObject.toString();
+            JsApiMMTask.this.IVy = paramAnonymousJSONObject.toString();
           }
           JsApiMMTask.a(JsApiMMTask.this);
           AppMethodBeat.o(78495);
@@ -60,49 +60,49 @@ public class JsApiMMTask
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInMainProcess fail.", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInMainProcess fail.", new Object[0]);
       AppMethodBeat.o(78497);
     }
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(78498);
-    bix();
-    if (this.EiB != null) {
+    bDK();
+    if (this.IVw != null) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(this.EiD);
-        this.EiB.a(this.errMsg, localJSONObject);
+        JSONObject localJSONObject = new JSONObject(this.IVy);
+        this.IVw.c(this.errMsg, localJSONObject);
         AppMethodBeat.o(78498);
         return;
       }
       catch (Exception localException)
       {
-        this.EiB.a(this.errMsg, null);
-        ae.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInClientProcess fail.", new Object[0]);
+        this.IVw.c(this.errMsg, null);
+        Log.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInClientProcess fail.", new Object[0]);
       }
     }
     AppMethodBeat.o(78498);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(78499);
-    this.kAh = paramParcel.readString();
-    this.EiC = paramParcel.readString();
+    this.lEA = paramParcel.readString();
+    this.IVx = paramParcel.readString();
     this.errMsg = paramParcel.readString();
-    this.EiD = paramParcel.readString();
+    this.IVy = paramParcel.readString();
     AppMethodBeat.o(78499);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(78500);
-    paramParcel.writeString(this.kAh);
-    paramParcel.writeString(this.EiC);
+    paramParcel.writeString(this.lEA);
+    paramParcel.writeString(this.IVx);
     paramParcel.writeString(this.errMsg);
-    paramParcel.writeString(this.EiD);
+    paramParcel.writeString(this.IVy);
     AppMethodBeat.o(78500);
   }
 }

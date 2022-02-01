@@ -21,21 +21,23 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class BaseNumberKeyboardView
   extends LinearLayout
 {
+  public View jBN;
   private Context mContext;
   private EditText mInputEditText;
-  private Button mKey0;
-  private Button mKey1;
-  private Button mKey2;
-  private Button mKey3;
-  private Button mKey4;
-  private Button mKey5;
-  private Button mKey6;
-  private Button mKey7;
-  private Button mKey8;
-  private Button mKey9;
-  private Button mKeyX;
+  public Button mKey0;
+  public Button mKey1;
+  public Button mKey2;
+  public Button mKey3;
+  public Button mKey4;
+  public Button mKey5;
+  public Button mKey6;
+  public Button mKey7;
+  public Button mKey8;
+  public Button mKey9;
+  public Button mKeyX;
   private int mXMode;
-  private ImageButton nnf;
+  public boolean orS;
+  public ImageButton owM;
   
   public BaseNumberKeyboardView(Context paramContext)
   {
@@ -59,27 +61,27 @@ public class BaseNumberKeyboardView
   {
     AppMethodBeat.i(136681);
     this.mContext = paramContext.getApplicationContext();
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493102, this, true);
-    this.mKey1 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_1")));
-    this.mKey2 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_2")));
-    this.mKey3 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_3")));
-    this.mKey4 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_4")));
-    this.mKey5 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_5")));
-    this.mKey6 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_6")));
-    this.mKey7 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_7")));
-    this.mKey8 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_8")));
-    this.mKey9 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_9")));
-    this.mKeyX = ((Button)paramContext.findViewById(getId("tenpay_keyboard_x")));
-    this.mKey0 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_0")));
-    this.nnf = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
+    this.jBN = LayoutInflater.from(paramContext).inflate(2131493144, this, true);
+    this.mKey1 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_1")));
+    this.mKey2 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_2")));
+    this.mKey3 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_3")));
+    this.mKey4 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_4")));
+    this.mKey5 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_5")));
+    this.mKey6 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_6")));
+    this.mKey7 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_7")));
+    this.mKey8 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_8")));
+    this.mKey9 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_9")));
+    this.mKeyX = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_x")));
+    this.mKey0 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_0")));
+    this.owM = ((ImageButton)this.jBN.findViewById(getId("tenpay_keyboard_d")));
     paramContext = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(136678);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (BaseNumberKeyboardView.a(BaseNumberKeyboardView.this) == null)
         {
           a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -153,7 +155,7 @@ public class BaseNumberKeyboardView
       this.mKey9.setContentDescription("9");
       this.mKey0.setContentDescription("0");
       this.mKeyX.setContentDescription("字母X");
-      this.nnf.setContentDescription("删除");
+      this.owM.setContentDescription("删除");
     }
     this.mKey1.setOnClickListener(paramContext);
     this.mKey2.setOnClickListener(paramContext);
@@ -166,7 +168,7 @@ public class BaseNumberKeyboardView
     this.mKey9.setOnClickListener(paramContext);
     this.mKeyX.setOnClickListener(paramContext);
     this.mKey0.setOnClickListener(paramContext);
-    this.nnf.setOnClickListener(paramContext);
+    this.owM.setOnClickListener(paramContext);
     AppMethodBeat.o(136681);
   }
   
@@ -225,7 +227,7 @@ public class BaseNumberKeyboardView
     this.mKey8.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey9.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyX.setAccessibilityDelegate(paramAccessibilityDelegate);
-    this.nnf.setAccessibilityDelegate(paramAccessibilityDelegate);
+    this.owM.setAccessibilityDelegate(paramAccessibilityDelegate);
     AppMethodBeat.o(136682);
   }
   
@@ -241,23 +243,41 @@ public class BaseNumberKeyboardView
       return;
     case 0: 
       this.mKeyX.setText("");
-      this.mKeyX.setBackgroundResource(2131099977);
+      if (this.orS)
+      {
+        this.mKeyX.setBackgroundResource(2131100000);
+        AppMethodBeat.o(136684);
+        return;
+      }
+      this.mKeyX.setBackgroundResource(2131099997);
       AppMethodBeat.o(136684);
       return;
     case 1: 
       this.mKeyX.setText("X");
-      this.mKeyX.setBackgroundResource(2131234342);
+      if (this.orS)
+      {
+        this.mKeyX.setBackgroundResource(2131235232);
+        AppMethodBeat.o(136684);
+        return;
+      }
+      this.mKeyX.setBackgroundResource(2131235231);
       AppMethodBeat.o(136684);
       return;
     }
     this.mKeyX.setText(".");
-    this.mKeyX.setBackgroundResource(2131234342);
+    if (this.orS)
+    {
+      this.mKeyX.setBackgroundResource(2131235232);
+      AppMethodBeat.o(136684);
+      return;
+    }
+    this.mKeyX.setBackgroundResource(2131235231);
     AppMethodBeat.o(136684);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,22 +11,21 @@ import java.util.TimeZone;
 
 public final class a
 {
-  public static float dA(Context paramContext)
+  public static String AF(long paramLong)
   {
-    AppMethodBeat.i(110226);
-    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
-    if (localLayoutParams.screenBrightness < 0.0F)
+    AppMethodBeat.i(110228);
+    if (paramLong < 3600000L) {}
+    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
     {
-      f = dy(paramContext);
-      AppMethodBeat.o(110226);
-      return f;
+      localObject = new SimpleDateFormat((String)localObject);
+      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
+      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
+      AppMethodBeat.o(110228);
+      return localObject;
     }
-    float f = localLayoutParams.screenBrightness;
-    AppMethodBeat.o(110226);
-    return f;
   }
   
-  private static float dy(Context paramContext)
+  private static float dT(Context paramContext)
   {
     AppMethodBeat.i(110227);
     paramContext = paramContext.getContentResolver();
@@ -45,23 +44,24 @@ public final class a
     return f;
   }
   
-  public static String sz(long paramLong)
+  public static float dV(Context paramContext)
   {
-    AppMethodBeat.i(110228);
-    if (paramLong < 3600000L) {}
-    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
+    AppMethodBeat.i(110226);
+    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
+    if (localLayoutParams.screenBrightness < 0.0F)
     {
-      localObject = new SimpleDateFormat((String)localObject);
-      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
-      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
-      AppMethodBeat.o(110228);
-      return localObject;
+      f = dT(paramContext);
+      AppMethodBeat.o(110226);
+      return f;
     }
+    float f = localLayoutParams.screenBrightness;
+    AppMethodBeat.o(110226);
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.a
  * JD-Core Version:    0.7.0.1
  */

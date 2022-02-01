@@ -11,9 +11,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class e
   extends Preference
 {
+  public String AQz;
   public View.OnClickListener mOnClickListener;
   private View mView;
-  public String wUD;
   
   public e(Context paramContext)
   {
@@ -21,7 +21,7 @@ public final class e
     AppMethodBeat.i(66811);
     this.mView = null;
     this.mOnClickListener = null;
-    setLayoutResource(2131494708);
+    setLayoutResource(2131495437);
     AppMethodBeat.o(66811);
   }
   
@@ -41,8 +41,8 @@ public final class e
   {
     AppMethodBeat.i(66813);
     super.onBindView(paramView);
-    paramView = (TextView)paramView.findViewById(2131302031);
-    paramView.setText(this.wUD);
+    paramView = (TextView)paramView.findViewById(2131304370);
+    paramView.setText(this.AQz);
     paramView.setOnClickListener(this.mOnClickListener);
     AppMethodBeat.o(66813);
   }

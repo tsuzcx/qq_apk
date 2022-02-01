@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 public abstract interface FontChooserView$a
 {
-  public abstract void PL(int paramInt);
+  public abstract void ig(int paramInt);
 }
 
 

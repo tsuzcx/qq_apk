@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ct">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bw8" android:padding="@dimen/ct" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/icons_filled_close" app:iconColor="@color/am" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/am" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hyb" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bw9" android:padding="@dimen/ct" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/icons_filled_done" android:layout_alignParentRight="true" app:iconColor="@color/Orange" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.vlog.ui.plugin.timecrop.TimeCropViewGroup android:id="@id/ium" android:layout_width="fill_parent" android:layout_height="@dimen/bw" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cr" app:layout_constraintBottom_toBottomOf="g8m">
+        <android.support.v7.widget.RecyclerView android:id="@id/iuk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/cf" />
+        <com.tencent.mm.plugin.vlog.ui.plugin.timecrop.TimeCropSliderSeekBar android:id="@id/iuj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.plugin.vlog.ui.plugin.timecrop.TimeCropViewGroup>
+</LinearLayout>

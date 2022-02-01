@@ -10,56 +10,56 @@ public class MultiTalkGroup
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiTalkGroup> CREATOR = new Parcelable.Creator() {};
-  public int Mcu;
-  public String MgG = "";
-  public String MgH = "";
-  public List<MultiTalkGroupMember> MgI = new ArrayList();
-  public String wmA = "";
-  public String wmz = "";
+  public int RCJ;
+  public String RGY = "";
+  public String RGZ = "";
+  public List<MultiTalkGroupMember> RHa = new ArrayList();
+  public String zHD = "";
+  public String zHE = "";
   
   public int describeContents()
   {
     return 0;
   }
   
-  public final String fXP()
+  public final String hjv()
   {
-    return this.wmz;
+    return this.zHD;
   }
   
   public String toString()
   {
-    return "MultiTalkGroup [mMultiTalkGroupId=" + this.wmz + ", mMultiTalkClientGroupId=" + this.MgG + ", mWxGroupId=" + this.wmA + ", mRouteId=" + this.Mcu + ", mCreatorUsrName=" + this.MgH + ", mMultiTalkGroupMemberList=" + this.MgI + "]";
+    return "MultiTalkGroup [mMultiTalkGroupId=" + this.zHD + ", mMultiTalkClientGroupId=" + this.RGY + ", mWxGroupId=" + this.zHE + ", mRouteId=" + this.RCJ + ", mCreatorUsrName=" + this.RGZ + ", mMultiTalkGroupMemberList=" + this.RHa + "]";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int j = 0;
     String str;
-    if (this.wmz == null)
+    if (this.zHD == null)
     {
       str = "";
       paramParcel.writeString(str);
-      if (this.MgG != null) {
+      if (this.RGY != null) {
         break label136;
       }
       str = "";
       label31:
       paramParcel.writeString(str);
-      if (this.wmA != null) {
+      if (this.zHE != null) {
         break label145;
       }
       str = "";
       label48:
       paramParcel.writeString(str);
-      paramParcel.writeInt(this.Mcu);
-      if (this.MgH != null) {
+      paramParcel.writeInt(this.RCJ);
+      if (this.RGZ != null) {
         break label154;
       }
       str = "";
       label73:
       paramParcel.writeString(str);
-      if (this.MgI != null) {
+      if (this.RHa != null) {
         break label163;
       }
     }
@@ -67,21 +67,21 @@ public class MultiTalkGroup
     label145:
     label154:
     label163:
-    for (int i = 0;; i = this.MgI.size())
+    for (int i = 0;; i = this.RHa.size())
     {
       paramParcel.writeInt(i);
       while (j < i)
       {
-        paramParcel.writeParcelable((MultiTalkGroupMember)this.MgI.get(j), paramInt);
+        paramParcel.writeParcelable((MultiTalkGroupMember)this.RHa.get(j), paramInt);
         j += 1;
       }
-      str = this.wmz;
+      str = this.zHD;
       break;
-      str = this.MgG;
+      str = this.RGY;
       break label31;
-      str = this.wmA;
+      str = this.zHE;
       break label48;
-      str = this.MgH;
+      str = this.RGZ;
       break label73;
     }
   }

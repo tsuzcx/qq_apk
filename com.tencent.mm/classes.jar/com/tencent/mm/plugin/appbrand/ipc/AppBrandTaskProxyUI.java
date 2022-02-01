@@ -8,27 +8,28 @@ import com.tencent.mm.miniutil.MiniReaderLogic;
 import com.tencent.mm.miniutil.MiniReaderLogic.MiniQbFloatBallMenuActionBrandEvent;
 import com.tencent.mm.platformtools.p;
 import com.tencent.mm.platformtools.p.a;
-import com.tencent.mm.plugin.ball.a.e;
-import com.tencent.mm.plugin.ball.f.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.multitask.a.b;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 
 public class AppBrandTaskProxyUI
   extends AppBrandProcessProxyUI
 {
   public String appId;
-  private String fXl;
   private String fileName;
   private String filePath;
-  public com.tencent.mm.plugin.appbrand.floatball.b ksU;
-  public boolean ksV;
-  public boolean ksW;
-  public ValueCallback<Integer> ksX;
-  public ValueCallback<String> ksY;
-  private ValueCallback<Integer> ksZ;
-  private MMToClientEvent.c kta;
-  private boolean showMenu;
+  private String gCr;
+  public com.tencent.mm.plugin.appbrand.q.a lwE;
+  private boolean lwF;
+  public boolean lwG;
+  public boolean lwH;
+  public ValueCallback<Integer> lwI;
+  public ValueCallback<String> lwJ;
+  private ValueCallback<Integer> lwK;
+  private MMToClientEvent.c lwL;
   private String token;
   
   public AppBrandTaskProxyUI()
@@ -36,17 +37,17 @@ public class AppBrandTaskProxyUI
     AppMethodBeat.i(45416);
     this.appId = "";
     this.filePath = "";
-    this.fXl = "";
+    this.gCr = "";
     this.token = "";
     this.fileName = "";
-    this.ksV = true;
-    this.ksW = false;
-    this.ksX = null;
-    this.ksY = null;
-    this.ksZ = new ValueCallback() {};
-    this.kta = new MMToClientEvent.c()
+    this.lwG = true;
+    this.lwH = false;
+    this.lwI = null;
+    this.lwJ = null;
+    this.lwK = new ValueCallback() {};
+    this.lwL = new MMToClientEvent.c()
     {
-      public final void ch(Object paramAnonymousObject)
+      public final void cq(Object paramAnonymousObject)
       {
         AppMethodBeat.i(45415);
         if ((paramAnonymousObject instanceof MiniReaderLogic.MiniQbFloatBallMenuActionBrandEvent))
@@ -54,57 +55,61 @@ public class AppBrandTaskProxyUI
           paramAnonymousObject = (MiniReaderLogic.MiniQbFloatBallMenuActionBrandEvent)paramAnonymousObject;
           if ((paramAnonymousObject != null) && (AppBrandTaskProxyUI.a(AppBrandTaskProxyUI.this) != null))
           {
-            if (!bu.lX(paramAnonymousObject.filePath, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this)))
+            if (!Util.isEqual(paramAnonymousObject.filePath, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this)))
             {
-              ae.e("MicroMsg.AppBrandTaskProxyUI", "MiniQbFloatBallMenuActionEvent event.filePath:%s filePath:%s", new Object[] { paramAnonymousObject.filePath, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this) });
+              Log.e("MicroMsg.AppBrandTaskProxyUI", "MiniQbFloatBallMenuActionEvent event.filePath:%s filePath:%s", new Object[] { paramAnonymousObject.filePath, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this) });
               AppMethodBeat.o(45415);
               return;
             }
-            ae.i("MicroMsg.AppBrandTaskProxyUI", "MiniQbFloatBallMenuActionEvent event.action:%s", new Object[] { Integer.valueOf(paramAnonymousObject.action) });
+            Log.i("MicroMsg.AppBrandTaskProxyUI", "MiniQbFloatBallMenuActionEvent event.action:%s", new Object[] { Integer.valueOf(paramAnonymousObject.action) });
             switch (paramAnonymousObject.action)
             {
             case 3: 
+            case 5: 
+            case 6: 
+            case 7: 
             default: 
               AppMethodBeat.o(45415);
               return;
             case 1: 
-              AppBrandTaskProxyUI.a(AppBrandTaskProxyUI.this).o(true, 2);
+            case 8: 
+              AppBrandTaskProxyUI.a(AppBrandTaskProxyUI.this).ic(true);
               AppMethodBeat.o(45415);
               return;
             case 2: 
-              AppBrandTaskProxyUI.a(AppBrandTaskProxyUI.this).o(false, 2);
+              AppBrandTaskProxyUI.a(AppBrandTaskProxyUI.this).ic(false);
               if (AppBrandTaskProxyUI.c(AppBrandTaskProxyUI.this))
               {
-                MiniReaderLogic.a(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.d(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.e(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.f(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.g(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.h(AppBrandTaskProxyUI.this), true, AppBrandTaskProxyUI.i(AppBrandTaskProxyUI.this));
+                MiniReaderLogic.a(false, AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.d(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.e(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.f(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.g(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.h(AppBrandTaskProxyUI.this), true, AppBrandTaskProxyUI.i(AppBrandTaskProxyUI.this), false);
                 AppMethodBeat.o(45415);
                 return;
               }
               AppBrandTaskProxyUI.j(AppBrandTaskProxyUI.this);
-              com.tencent.mm.cp.a.V(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.f(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this));
+              com.tencent.mm.cr.a.Z(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.f(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this));
               MiniReaderLogic.a(false, false, AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.d(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.e(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.f(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.g(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.k(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.i(AppBrandTaskProxyUI.this), AppBrandTaskProxyUI.l(AppBrandTaskProxyUI.this));
               AppMethodBeat.o(45415);
               return;
             }
             p.c(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.b(AppBrandTaskProxyUI.this), new p.a()
             {
-              public final void bF(String paramAnonymous2String1, String paramAnonymous2String2)
+              public final void bP(String paramAnonymous2String1, String paramAnonymous2String2)
               {
-                AppMethodBeat.i(222369);
-                Toast.makeText(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.this.getString(2131764447, new Object[] { com.tencent.mm.sdk.f.b.aSY(paramAnonymous2String2) }), 1).show();
-                AppMethodBeat.o(222369);
+                AppMethodBeat.i(226646);
+                Toast.makeText(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.this.getString(2131766791, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramAnonymous2String2) }), 1).show();
+                AppMethodBeat.o(226646);
               }
               
-              public final void bG(String paramAnonymous2String1, String paramAnonymous2String2)
+              public final void bQ(String paramAnonymous2String1, String paramAnonymous2String2)
               {
-                AppMethodBeat.i(222370);
-                Toast.makeText(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.this.getString(2131764446), 1).show();
-                AppMethodBeat.o(222370);
+                AppMethodBeat.i(226647);
+                Toast.makeText(AppBrandTaskProxyUI.this, AppBrandTaskProxyUI.this.getString(2131766790), 1).show();
+                AppMethodBeat.o(226647);
               }
             });
             AppMethodBeat.o(45415);
             return;
           }
-          ae.e("MicroMsg.AppBrandTaskProxyUI", "MiniQbFloatBallMenuActionEvent fail");
+          Log.e("MicroMsg.AppBrandTaskProxyUI", "MiniQbFloatBallMenuActionEvent fail");
         }
         AppMethodBeat.o(45415);
       }
@@ -115,43 +120,37 @@ public class AppBrandTaskProxyUI
   public final void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
     this.filePath = paramString1;
-    this.fXl = paramString2;
+    this.gCr = paramString2;
     this.token = paramString3;
     this.fileName = paramString4;
-    this.showMenu = paramBoolean;
+    this.lwF = paramBoolean;
   }
   
-  public final void biE()
+  public final void bDR()
   {
-    AppMethodBeat.i(222371);
-    ae.i("MicroMsg.AppBrandTaskProxyUI", "creatFilesFloatball() processName:%s", new Object[] { ak.getProcessName() });
-    this.ksU = new com.tencent.mm.plugin.appbrand.floatball.b(new e(getContext()));
-    this.ksU.a(this.filePath, this.fXl, this.appId, ak.getProcessName(), this.showMenu, this);
-    com.tencent.mm.plugin.appbrand.floatball.b localb = this.ksU;
-    Object localObject = this.fXl;
-    String str = this.fileName;
-    Integer localInteger = d.Xd((String)localObject);
-    localObject = localInteger;
-    if (localInteger == null) {
-      localObject = d.Xd("unknown");
-    }
-    localb.nLK.mdM = ((Integer)localObject).intValue();
-    localb.nLK.name = str;
-    localb.bLz();
-    MMToClientEvent.a(this.appId, this.kta);
-    AppMethodBeat.o(222371);
+    AppMethodBeat.i(226648);
+    Log.i("MicroMsg.AppBrandTaskProxyUI", "creatFilesFloatball() processName:%s", new Object[] { MMApplicationContext.getProcessName() });
+    this.lwE = new com.tencent.mm.plugin.appbrand.q.a(new b(getContext()));
+    this.lwE.a(this.filePath, this.gCr, this.appId, MMApplicationContext.getProcessName(), this.lwF, this);
+    com.tencent.mm.plugin.appbrand.q.a locala = this.lwE;
+    String str1 = this.gCr;
+    String str2 = this.fileName;
+    MultiTaskInfo localMultiTaskInfo = locala.Abp;
+    localMultiTaskInfo.erh().title = str2;
+    localMultiTaskInfo.erh().gCr = str1;
+    locala.eqX();
+    MMToClientEvent.a(this.appId, this.lwL);
+    AppMethodBeat.o(226648);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(45419);
     super.onDestroy();
-    if (this.ksU != null)
-    {
-      this.ksU.onDestroy();
-      com.tencent.mm.cp.a.V(this, this.token, this.filePath);
+    if (this.lwE != null) {
+      com.tencent.mm.cr.a.Z(this, this.token, this.filePath);
     }
-    MMToClientEvent.b(this.appId, this.kta);
+    MMToClientEvent.b(this.appId, this.lwL);
     AppMethodBeat.o(45419);
   }
   
@@ -159,8 +158,8 @@ public class AppBrandTaskProxyUI
   {
     AppMethodBeat.i(45418);
     super.onPause();
-    if (this.ksU != null) {
-      this.ksU.bhk();
+    if (this.lwE != null) {
+      this.lwE.aGj();
     }
     AppMethodBeat.o(45418);
   }
@@ -169,8 +168,8 @@ public class AppBrandTaskProxyUI
   {
     AppMethodBeat.i(45417);
     super.onResume();
-    if (this.ksU != null) {
-      this.ksU.bhj();
+    if (this.lwE != null) {
+      this.lwE.bCA();
     }
     AppMethodBeat.o(45417);
   }
@@ -183,7 +182,7 @@ public class AppBrandTaskProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI
  * JD-Core Version:    0.7.0.1
  */

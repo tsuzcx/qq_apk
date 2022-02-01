@@ -13,10 +13,14 @@ public class FinderFeedReportObject
   public int cgiErrorType;
   public String clickId;
   public int clickMentionCount;
+  public int clickRepostCount;
   public int clickSucMentionCount;
   public int descCount;
   public int descEmojiCount;
   public int draft;
+  public int draftType;
+  public int dumpCgiErrorCode;
+  public int dumpCgiErrorType;
   public String editId;
   public int enterScene;
   public long enterTakePhotoTime;
@@ -24,27 +28,41 @@ public class FinderFeedReportObject
   public int existDesc;
   public int existLocation;
   public int exitPageId;
+  public String followSoundTrackId;
+  public String forwardingAppId;
   public int isBeauty;
   public int isDurationCut;
   public int isMultiShot;
   public int lbsFlag;
   public String link;
+  public int longVideoSizeInvalid;
   public LinkedList<FinderMediaReportObject> mediaList;
+  public int mediaProcessCost;
+  public int megaCgiErrorCode;
+  public int megaCgiErrorType;
   public int mentionCount;
   public int mentionRepeatCount;
   public int multiShotChangeCnt;
   public int multiShotClickCnt;
   public int multiShotSuccessCnt;
   public int multiShotVideoCnt;
+  public int musicType;
   public String postId;
   public int postStage;
+  public int postTaskCost;
   public long remuxEndTime;
   public int remuxType;
   public int retryCount;
-  public apl selectLocation;
+  public int sdkShareType;
+  public axt selectLocation;
   public long sendOrExitButtonTime;
   public String sessionId;
+  public int soundTrackType;
+  public String topicActivityId;
+  public int topicActivityType;
+  public int uploadCost;
   public int uploadLogicError;
+  public long uploadMediaTotalSize;
   public int videoEmojiCount;
   public String videoMediaInfo;
   public String videoMusicId;
@@ -68,143 +86,183 @@ public class FinderFeedReportObject
     AppMethodBeat.i(168957);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.sessionId != null) {
-        paramVarArgs.d(1, this.sessionId);
+        paramVarArgs.e(1, this.sessionId);
       }
-      paramVarArgs.aS(2, this.enterScene);
-      paramVarArgs.aS(3, this.exitPageId);
-      paramVarArgs.aZ(4, this.enterTakePhotoTime);
-      paramVarArgs.aZ(5, this.enterVideoEditTime);
-      paramVarArgs.aZ(6, this.sendOrExitButtonTime);
-      paramVarArgs.aZ(7, this.videoRecordTime);
-      paramVarArgs.aS(8, this.videoSource);
-      paramVarArgs.aS(9, this.videoEmojiCount);
-      paramVarArgs.aS(10, this.videoWordingCount);
+      paramVarArgs.aM(2, this.enterScene);
+      paramVarArgs.aM(3, this.exitPageId);
+      paramVarArgs.bb(4, this.enterTakePhotoTime);
+      paramVarArgs.bb(5, this.enterVideoEditTime);
+      paramVarArgs.bb(6, this.sendOrExitButtonTime);
+      paramVarArgs.bb(7, this.videoRecordTime);
+      paramVarArgs.aM(8, this.videoSource);
+      paramVarArgs.aM(9, this.videoEmojiCount);
+      paramVarArgs.aM(10, this.videoWordingCount);
       if (this.videoMusicId != null) {
-        paramVarArgs.d(11, this.videoMusicId);
+        paramVarArgs.e(11, this.videoMusicId);
       }
-      paramVarArgs.aS(12, this.videoMusicIndex);
-      paramVarArgs.aS(13, this.videoMusicSearch);
-      paramVarArgs.aS(14, this.videoPostType);
+      paramVarArgs.aM(12, this.videoMusicIndex);
+      paramVarArgs.aM(13, this.videoMusicSearch);
+      paramVarArgs.aM(14, this.videoPostType);
       if (this.videoMediaInfo != null) {
-        paramVarArgs.d(15, this.videoMediaInfo);
+        paramVarArgs.e(15, this.videoMediaInfo);
       }
-      paramVarArgs.aS(16, this.existDesc);
-      paramVarArgs.aS(17, this.descCount);
-      paramVarArgs.aS(18, this.descEmojiCount);
+      paramVarArgs.aM(16, this.existDesc);
+      paramVarArgs.aM(17, this.descCount);
+      paramVarArgs.aM(18, this.descEmojiCount);
       if (this.actionTrace != null) {
-        paramVarArgs.d(19, this.actionTrace);
+        paramVarArgs.e(19, this.actionTrace);
       }
-      paramVarArgs.aS(20, this.existLocation);
+      paramVarArgs.aM(20, this.existLocation);
       if (this.link != null) {
-        paramVarArgs.d(21, this.link);
+        paramVarArgs.e(21, this.link);
       }
-      paramVarArgs.aS(22, this.draft);
-      paramVarArgs.aZ(23, this.cdnEndTime);
-      paramVarArgs.aZ(24, this.remuxEndTime);
+      paramVarArgs.aM(22, this.draft);
+      paramVarArgs.bb(23, this.cdnEndTime);
+      paramVarArgs.bb(24, this.remuxEndTime);
       paramVarArgs.e(25, 8, this.mediaList);
-      paramVarArgs.aS(26, this.retryCount);
-      paramVarArgs.aS(27, this.isBeauty);
-      paramVarArgs.aS(28, this.isDurationCut);
+      paramVarArgs.aM(26, this.retryCount);
+      paramVarArgs.aM(27, this.isBeauty);
+      paramVarArgs.aM(28, this.isDurationCut);
       if (this.beforeCutMediaPath != null) {
-        paramVarArgs.d(29, this.beforeCutMediaPath);
+        paramVarArgs.e(29, this.beforeCutMediaPath);
       }
-      paramVarArgs.aS(30, this.isMultiShot);
-      paramVarArgs.aS(31, this.multiShotChangeCnt);
-      paramVarArgs.aS(32, this.multiShotClickCnt);
-      paramVarArgs.aS(33, this.multiShotSuccessCnt);
-      paramVarArgs.aS(35, this.multiShotVideoCnt);
-      paramVarArgs.aS(36, this.videoSubType);
+      paramVarArgs.aM(30, this.isMultiShot);
+      paramVarArgs.aM(31, this.multiShotChangeCnt);
+      paramVarArgs.aM(32, this.multiShotClickCnt);
+      paramVarArgs.aM(33, this.multiShotSuccessCnt);
+      paramVarArgs.aM(35, this.multiShotVideoCnt);
+      paramVarArgs.aM(36, this.videoSubType);
       if (this.postId != null) {
-        paramVarArgs.d(37, this.postId);
+        paramVarArgs.e(37, this.postId);
       }
       if (this.editId != null) {
-        paramVarArgs.d(38, this.editId);
+        paramVarArgs.e(38, this.editId);
       }
-      paramVarArgs.aS(39, this.mentionCount);
-      paramVarArgs.aS(40, this.clickMentionCount);
-      paramVarArgs.aS(41, this.clickSucMentionCount);
-      paramVarArgs.aS(42, this.mentionRepeatCount);
-      paramVarArgs.aS(43, this.lbsFlag);
+      paramVarArgs.aM(39, this.mentionCount);
+      paramVarArgs.aM(40, this.clickMentionCount);
+      paramVarArgs.aM(41, this.clickSucMentionCount);
+      paramVarArgs.aM(42, this.mentionRepeatCount);
+      paramVarArgs.aM(43, this.lbsFlag);
       if (this.selectLocation != null)
       {
-        paramVarArgs.lJ(44, this.selectLocation.computeSize());
+        paramVarArgs.ni(44, this.selectLocation.computeSize());
         this.selectLocation.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(45, this.remuxType);
-      paramVarArgs.aS(46, this.uploadLogicError);
-      paramVarArgs.aS(47, this.postStage);
-      paramVarArgs.aS(48, this.cgiErrorCode);
-      paramVarArgs.aS(49, this.cgiErrorType);
+      paramVarArgs.aM(45, this.remuxType);
+      paramVarArgs.aM(46, this.uploadLogicError);
+      paramVarArgs.aM(47, this.postStage);
+      paramVarArgs.aM(48, this.cgiErrorCode);
+      paramVarArgs.aM(49, this.cgiErrorType);
       if (this.clickId != null) {
-        paramVarArgs.d(50, this.clickId);
+        paramVarArgs.e(50, this.clickId);
       }
+      paramVarArgs.aM(51, this.soundTrackType);
+      if (this.followSoundTrackId != null) {
+        paramVarArgs.e(52, this.followSoundTrackId);
+      }
+      paramVarArgs.aM(53, this.megaCgiErrorCode);
+      paramVarArgs.aM(54, this.megaCgiErrorType);
+      paramVarArgs.aM(55, this.musicType);
+      paramVarArgs.aM(56, this.longVideoSizeInvalid);
+      paramVarArgs.aM(57, this.mediaProcessCost);
+      paramVarArgs.aM(58, this.uploadCost);
+      paramVarArgs.bb(59, this.uploadMediaTotalSize);
+      paramVarArgs.aM(60, this.postTaskCost);
+      paramVarArgs.aM(61, this.clickRepostCount);
+      paramVarArgs.aM(62, this.dumpCgiErrorCode);
+      paramVarArgs.aM(63, this.dumpCgiErrorType);
+      paramVarArgs.aM(64, this.sdkShareType);
+      if (this.forwardingAppId != null) {
+        paramVarArgs.e(65, this.forwardingAppId);
+      }
+      if (this.topicActivityId != null) {
+        paramVarArgs.e(66, this.topicActivityId);
+      }
+      paramVarArgs.aM(67, this.topicActivityType);
+      paramVarArgs.aM(68, this.draftType);
       AppMethodBeat.o(168957);
       return 0;
     }
     if (paramInt == 1) {
       if (this.sessionId == null) {
-        break label2694;
+        break label3550;
       }
     }
-    label2694:
-    for (paramInt = f.a.a.b.b.a.e(1, this.sessionId) + 0;; paramInt = 0)
+    label3550:
+    for (paramInt = g.a.a.b.b.a.f(1, this.sessionId) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.enterScene) + f.a.a.b.b.a.bz(3, this.exitPageId) + f.a.a.b.b.a.p(4, this.enterTakePhotoTime) + f.a.a.b.b.a.p(5, this.enterVideoEditTime) + f.a.a.b.b.a.p(6, this.sendOrExitButtonTime) + f.a.a.b.b.a.p(7, this.videoRecordTime) + f.a.a.b.b.a.bz(8, this.videoSource) + f.a.a.b.b.a.bz(9, this.videoEmojiCount) + f.a.a.b.b.a.bz(10, this.videoWordingCount);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.enterScene) + g.a.a.b.b.a.bu(3, this.exitPageId) + g.a.a.b.b.a.r(4, this.enterTakePhotoTime) + g.a.a.b.b.a.r(5, this.enterVideoEditTime) + g.a.a.b.b.a.r(6, this.sendOrExitButtonTime) + g.a.a.b.b.a.r(7, this.videoRecordTime) + g.a.a.b.b.a.bu(8, this.videoSource) + g.a.a.b.b.a.bu(9, this.videoEmojiCount) + g.a.a.b.b.a.bu(10, this.videoWordingCount);
       paramInt = i;
       if (this.videoMusicId != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.videoMusicId);
+        paramInt = i + g.a.a.b.b.a.f(11, this.videoMusicId);
       }
-      i = paramInt + f.a.a.b.b.a.bz(12, this.videoMusicIndex) + f.a.a.b.b.a.bz(13, this.videoMusicSearch) + f.a.a.b.b.a.bz(14, this.videoPostType);
+      i = paramInt + g.a.a.b.b.a.bu(12, this.videoMusicIndex) + g.a.a.b.b.a.bu(13, this.videoMusicSearch) + g.a.a.b.b.a.bu(14, this.videoPostType);
       paramInt = i;
       if (this.videoMediaInfo != null) {
-        paramInt = i + f.a.a.b.b.a.e(15, this.videoMediaInfo);
+        paramInt = i + g.a.a.b.b.a.f(15, this.videoMediaInfo);
       }
-      i = paramInt + f.a.a.b.b.a.bz(16, this.existDesc) + f.a.a.b.b.a.bz(17, this.descCount) + f.a.a.b.b.a.bz(18, this.descEmojiCount);
+      i = paramInt + g.a.a.b.b.a.bu(16, this.existDesc) + g.a.a.b.b.a.bu(17, this.descCount) + g.a.a.b.b.a.bu(18, this.descEmojiCount);
       paramInt = i;
       if (this.actionTrace != null) {
-        paramInt = i + f.a.a.b.b.a.e(19, this.actionTrace);
+        paramInt = i + g.a.a.b.b.a.f(19, this.actionTrace);
       }
-      i = paramInt + f.a.a.b.b.a.bz(20, this.existLocation);
+      i = paramInt + g.a.a.b.b.a.bu(20, this.existLocation);
       paramInt = i;
       if (this.link != null) {
-        paramInt = i + f.a.a.b.b.a.e(21, this.link);
+        paramInt = i + g.a.a.b.b.a.f(21, this.link);
       }
-      i = paramInt + f.a.a.b.b.a.bz(22, this.draft) + f.a.a.b.b.a.p(23, this.cdnEndTime) + f.a.a.b.b.a.p(24, this.remuxEndTime) + f.a.a.a.c(25, 8, this.mediaList) + f.a.a.b.b.a.bz(26, this.retryCount) + f.a.a.b.b.a.bz(27, this.isBeauty) + f.a.a.b.b.a.bz(28, this.isDurationCut);
+      i = paramInt + g.a.a.b.b.a.bu(22, this.draft) + g.a.a.b.b.a.r(23, this.cdnEndTime) + g.a.a.b.b.a.r(24, this.remuxEndTime) + g.a.a.a.c(25, 8, this.mediaList) + g.a.a.b.b.a.bu(26, this.retryCount) + g.a.a.b.b.a.bu(27, this.isBeauty) + g.a.a.b.b.a.bu(28, this.isDurationCut);
       paramInt = i;
       if (this.beforeCutMediaPath != null) {
-        paramInt = i + f.a.a.b.b.a.e(29, this.beforeCutMediaPath);
+        paramInt = i + g.a.a.b.b.a.f(29, this.beforeCutMediaPath);
       }
-      i = paramInt + f.a.a.b.b.a.bz(30, this.isMultiShot) + f.a.a.b.b.a.bz(31, this.multiShotChangeCnt) + f.a.a.b.b.a.bz(32, this.multiShotClickCnt) + f.a.a.b.b.a.bz(33, this.multiShotSuccessCnt) + f.a.a.b.b.a.bz(35, this.multiShotVideoCnt) + f.a.a.b.b.a.bz(36, this.videoSubType);
+      i = paramInt + g.a.a.b.b.a.bu(30, this.isMultiShot) + g.a.a.b.b.a.bu(31, this.multiShotChangeCnt) + g.a.a.b.b.a.bu(32, this.multiShotClickCnt) + g.a.a.b.b.a.bu(33, this.multiShotSuccessCnt) + g.a.a.b.b.a.bu(35, this.multiShotVideoCnt) + g.a.a.b.b.a.bu(36, this.videoSubType);
       paramInt = i;
       if (this.postId != null) {
-        paramInt = i + f.a.a.b.b.a.e(37, this.postId);
+        paramInt = i + g.a.a.b.b.a.f(37, this.postId);
       }
       i = paramInt;
       if (this.editId != null) {
-        i = paramInt + f.a.a.b.b.a.e(38, this.editId);
+        i = paramInt + g.a.a.b.b.a.f(38, this.editId);
       }
-      i = i + f.a.a.b.b.a.bz(39, this.mentionCount) + f.a.a.b.b.a.bz(40, this.clickMentionCount) + f.a.a.b.b.a.bz(41, this.clickSucMentionCount) + f.a.a.b.b.a.bz(42, this.mentionRepeatCount) + f.a.a.b.b.a.bz(43, this.lbsFlag);
+      i = i + g.a.a.b.b.a.bu(39, this.mentionCount) + g.a.a.b.b.a.bu(40, this.clickMentionCount) + g.a.a.b.b.a.bu(41, this.clickSucMentionCount) + g.a.a.b.b.a.bu(42, this.mentionRepeatCount) + g.a.a.b.b.a.bu(43, this.lbsFlag);
       paramInt = i;
       if (this.selectLocation != null) {
-        paramInt = i + f.a.a.a.lI(44, this.selectLocation.computeSize());
+        paramInt = i + g.a.a.a.nh(44, this.selectLocation.computeSize());
       }
-      i = paramInt + f.a.a.b.b.a.bz(45, this.remuxType) + f.a.a.b.b.a.bz(46, this.uploadLogicError) + f.a.a.b.b.a.bz(47, this.postStage) + f.a.a.b.b.a.bz(48, this.cgiErrorCode) + f.a.a.b.b.a.bz(49, this.cgiErrorType);
+      i = paramInt + g.a.a.b.b.a.bu(45, this.remuxType) + g.a.a.b.b.a.bu(46, this.uploadLogicError) + g.a.a.b.b.a.bu(47, this.postStage) + g.a.a.b.b.a.bu(48, this.cgiErrorCode) + g.a.a.b.b.a.bu(49, this.cgiErrorType);
       paramInt = i;
       if (this.clickId != null) {
-        paramInt = i + f.a.a.b.b.a.e(50, this.clickId);
+        paramInt = i + g.a.a.b.b.a.f(50, this.clickId);
       }
+      i = paramInt + g.a.a.b.b.a.bu(51, this.soundTrackType);
+      paramInt = i;
+      if (this.followSoundTrackId != null) {
+        paramInt = i + g.a.a.b.b.a.f(52, this.followSoundTrackId);
+      }
+      i = paramInt + g.a.a.b.b.a.bu(53, this.megaCgiErrorCode) + g.a.a.b.b.a.bu(54, this.megaCgiErrorType) + g.a.a.b.b.a.bu(55, this.musicType) + g.a.a.b.b.a.bu(56, this.longVideoSizeInvalid) + g.a.a.b.b.a.bu(57, this.mediaProcessCost) + g.a.a.b.b.a.bu(58, this.uploadCost) + g.a.a.b.b.a.r(59, this.uploadMediaTotalSize) + g.a.a.b.b.a.bu(60, this.postTaskCost) + g.a.a.b.b.a.bu(61, this.clickRepostCount) + g.a.a.b.b.a.bu(62, this.dumpCgiErrorCode) + g.a.a.b.b.a.bu(63, this.dumpCgiErrorType) + g.a.a.b.b.a.bu(64, this.sdkShareType);
+      paramInt = i;
+      if (this.forwardingAppId != null) {
+        paramInt = i + g.a.a.b.b.a.f(65, this.forwardingAppId);
+      }
+      i = paramInt;
+      if (this.topicActivityId != null) {
+        i = paramInt + g.a.a.b.b.a.f(66, this.topicActivityId);
+      }
+      paramInt = g.a.a.b.b.a.bu(67, this.topicActivityType);
+      int j = g.a.a.b.b.a.bu(68, this.draftType);
       AppMethodBeat.o(168957);
-      return paramInt;
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
         this.mediaList.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(168957);
@@ -212,7 +270,7 @@ public class FinderFeedReportObject
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         FinderFeedReportObject localFinderFeedReportObject = (FinderFeedReportObject)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
@@ -224,221 +282,293 @@ public class FinderFeedReportObject
           AppMethodBeat.o(168957);
           return -1;
         case 1: 
-          localFinderFeedReportObject.sessionId = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.sessionId = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 2: 
-          localFinderFeedReportObject.enterScene = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.enterScene = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 3: 
-          localFinderFeedReportObject.exitPageId = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.exitPageId = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 4: 
-          localFinderFeedReportObject.enterTakePhotoTime = ((f.a.a.a.a)localObject1).OmT.zd();
+          localFinderFeedReportObject.enterTakePhotoTime = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(168957);
           return 0;
         case 5: 
-          localFinderFeedReportObject.enterVideoEditTime = ((f.a.a.a.a)localObject1).OmT.zd();
+          localFinderFeedReportObject.enterVideoEditTime = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(168957);
           return 0;
         case 6: 
-          localFinderFeedReportObject.sendOrExitButtonTime = ((f.a.a.a.a)localObject1).OmT.zd();
+          localFinderFeedReportObject.sendOrExitButtonTime = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(168957);
           return 0;
         case 7: 
-          localFinderFeedReportObject.videoRecordTime = ((f.a.a.a.a)localObject1).OmT.zd();
+          localFinderFeedReportObject.videoRecordTime = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(168957);
           return 0;
         case 8: 
-          localFinderFeedReportObject.videoSource = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.videoSource = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 9: 
-          localFinderFeedReportObject.videoEmojiCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.videoEmojiCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 10: 
-          localFinderFeedReportObject.videoWordingCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.videoWordingCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 11: 
-          localFinderFeedReportObject.videoMusicId = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.videoMusicId = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 12: 
-          localFinderFeedReportObject.videoMusicIndex = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.videoMusicIndex = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 13: 
-          localFinderFeedReportObject.videoMusicSearch = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.videoMusicSearch = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 14: 
-          localFinderFeedReportObject.videoPostType = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.videoPostType = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 15: 
-          localFinderFeedReportObject.videoMediaInfo = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.videoMediaInfo = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 16: 
-          localFinderFeedReportObject.existDesc = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.existDesc = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 17: 
-          localFinderFeedReportObject.descCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.descCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 18: 
-          localFinderFeedReportObject.descEmojiCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.descEmojiCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 19: 
-          localFinderFeedReportObject.actionTrace = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.actionTrace = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 20: 
-          localFinderFeedReportObject.existLocation = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.existLocation = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 21: 
-          localFinderFeedReportObject.link = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.link = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 22: 
-          localFinderFeedReportObject.draft = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.draft = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 23: 
-          localFinderFeedReportObject.cdnEndTime = ((f.a.a.a.a)localObject1).OmT.zd();
+          localFinderFeedReportObject.cdnEndTime = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(168957);
           return 0;
         case 24: 
-          localFinderFeedReportObject.remuxEndTime = ((f.a.a.a.a)localObject1).OmT.zd();
+          localFinderFeedReportObject.remuxEndTime = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(168957);
           return 0;
         case 25: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new FinderMediaReportObject();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderMediaReportObject)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((FinderMediaReportObject)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localFinderFeedReportObject.mediaList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168957);
           return 0;
         case 26: 
-          localFinderFeedReportObject.retryCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.retryCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 27: 
-          localFinderFeedReportObject.isBeauty = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.isBeauty = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 28: 
-          localFinderFeedReportObject.isDurationCut = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.isDurationCut = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 29: 
-          localFinderFeedReportObject.beforeCutMediaPath = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.beforeCutMediaPath = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 30: 
-          localFinderFeedReportObject.isMultiShot = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.isMultiShot = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 31: 
-          localFinderFeedReportObject.multiShotChangeCnt = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.multiShotChangeCnt = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 32: 
-          localFinderFeedReportObject.multiShotClickCnt = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.multiShotClickCnt = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 33: 
-          localFinderFeedReportObject.multiShotSuccessCnt = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.multiShotSuccessCnt = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 35: 
-          localFinderFeedReportObject.multiShotVideoCnt = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.multiShotVideoCnt = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 36: 
-          localFinderFeedReportObject.videoSubType = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.videoSubType = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 37: 
-          localFinderFeedReportObject.postId = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.postId = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 38: 
-          localFinderFeedReportObject.editId = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderFeedReportObject.editId = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168957);
           return 0;
         case 39: 
-          localFinderFeedReportObject.mentionCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.mentionCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 40: 
-          localFinderFeedReportObject.clickMentionCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.clickMentionCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 41: 
-          localFinderFeedReportObject.clickSucMentionCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.clickSucMentionCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 42: 
-          localFinderFeedReportObject.mentionRepeatCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.mentionRepeatCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 43: 
-          localFinderFeedReportObject.lbsFlag = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.lbsFlag = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 44: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new apl();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((apl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localFinderFeedReportObject.selectLocation = ((apl)localObject1);
+            localObject1 = new axt();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((axt)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localFinderFeedReportObject.selectLocation = ((axt)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168957);
           return 0;
         case 45: 
-          localFinderFeedReportObject.remuxType = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.remuxType = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 46: 
-          localFinderFeedReportObject.uploadLogicError = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.uploadLogicError = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 47: 
-          localFinderFeedReportObject.postStage = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.postStage = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 48: 
-          localFinderFeedReportObject.cgiErrorCode = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.cgiErrorCode = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         case 49: 
-          localFinderFeedReportObject.cgiErrorType = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderFeedReportObject.cgiErrorType = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 50: 
+          localFinderFeedReportObject.clickId = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 51: 
+          localFinderFeedReportObject.soundTrackType = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 52: 
+          localFinderFeedReportObject.followSoundTrackId = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 53: 
+          localFinderFeedReportObject.megaCgiErrorCode = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 54: 
+          localFinderFeedReportObject.megaCgiErrorType = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 55: 
+          localFinderFeedReportObject.musicType = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 56: 
+          localFinderFeedReportObject.longVideoSizeInvalid = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 57: 
+          localFinderFeedReportObject.mediaProcessCost = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 58: 
+          localFinderFeedReportObject.uploadCost = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 59: 
+          localFinderFeedReportObject.uploadMediaTotalSize = ((g.a.a.a.a)localObject1).UbS.zl();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 60: 
+          localFinderFeedReportObject.postTaskCost = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 61: 
+          localFinderFeedReportObject.clickRepostCount = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 62: 
+          localFinderFeedReportObject.dumpCgiErrorCode = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 63: 
+          localFinderFeedReportObject.dumpCgiErrorType = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 64: 
+          localFinderFeedReportObject.sdkShareType = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 65: 
+          localFinderFeedReportObject.forwardingAppId = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 66: 
+          localFinderFeedReportObject.topicActivityId = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(168957);
+          return 0;
+        case 67: 
+          localFinderFeedReportObject.topicActivityType = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168957);
           return 0;
         }
-        localFinderFeedReportObject.clickId = ((f.a.a.a.a)localObject1).OmT.readString();
+        localFinderFeedReportObject.draftType = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(168957);
         return 0;
       }
@@ -449,7 +579,7 @@ public class FinderFeedReportObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderFeedReportObject
  * JD-Core Version:    0.7.0.1
  */

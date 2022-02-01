@@ -1,284 +1,118 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.n.e;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.ui.base.h;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanYuvUtils;", "", "()V", "encodeYUV420SP", "", "yuv420sp", "", "argb", "", "width", "", "height", "getNV21", "inputWidth", "inputHeight", "scaled", "Landroid/graphics/Bitmap;", "plugin-scan_release"})
 public final class o
 {
-  public static String yQs = "title";
-  public static String yQt = "tip";
-  public static String yQu = "buttonTitle";
-  private static Boolean yQv = null;
-  private static Boolean yQw = null;
+  public static final o CUB;
   
-  public static boolean AB(int paramInt)
+  static
   {
-    AppMethodBeat.i(52072);
-    com.tencent.mm.plugin.card.c.b localb = (com.tencent.mm.plugin.card.c.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.card.c.b.class);
-    if (localb != null)
-    {
-      boolean bool = localb.AB(paramInt);
-      AppMethodBeat.o(52072);
-      return bool;
-    }
-    AppMethodBeat.o(52072);
-    return false;
+    AppMethodBeat.i(161063);
+    CUB = new o();
+    AppMethodBeat.o(161063);
   }
   
-  public static boolean PD(int paramInt)
+  public static final byte[] getNV21(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    return (paramInt == 1) || (paramInt == 8) || (paramInt == 4);
-  }
-  
-  public static boolean ax(ArrayList<a> paramArrayList)
-  {
-    AppMethodBeat.i(52075);
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    AppMethodBeat.i(161062);
+    if (paramBitmap == null)
     {
-      ae.e("MicroMsg.ScannerUtil", "list == null || list.size() == 0");
-      AppMethodBeat.o(52075);
-      return false;
+      AppMethodBeat.o(161062);
+      return null;
     }
+    int[] arrayOfInt = new int[paramInt1 * paramInt2];
+    paramBitmap.getPixels(arrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
+    byte[] arrayOfByte = new byte[paramInt1 * paramInt2 * 3 / 2];
+    int k = paramInt1 * paramInt2;
     int i = 0;
-    while (i < paramArrayList.size())
+    int j = 0;
+    int n = 0;
+    int i1;
+    label68:
+    int m;
+    int i4;
+    int i3;
+    int i2;
+    if (n < paramInt2)
     {
-      a locala = (a)paramArrayList.get(i);
-      if ((locala != null) && (AB(locala.mwj)))
+      i1 = 0;
+      if (i1 < paramInt1)
       {
-        AppMethodBeat.o(52075);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(52075);
-    return false;
-  }
-  
-  public static a ayp(String paramString)
-  {
-    AppMethodBeat.i(52073);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(52073);
-      return null;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      a locala = new a();
-      locala.oEo = paramString.optString("card_tp_id");
-      locala.mwj = paramString.optInt("card_type");
-      locala.dJc = paramString.optString("card_ext");
-      AppMethodBeat.o(52073);
-      return locala;
-    }
-    catch (JSONException paramString)
-    {
-      ae.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(52073);
-    }
-    return null;
-  }
-  
-  public static ArrayList<a> ayq(String paramString)
-  {
-    AppMethodBeat.i(52074);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(52074);
-      return null;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString).optJSONArray("card_list");
-      if ((paramString == null) || (paramString.length() == 0))
-      {
-        ae.e("MicroMsg.ScannerUtil", "parseCardListItemArray cardItemListJson is null");
-        AppMethodBeat.o(52074);
-        return null;
-      }
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramString.length())
-      {
-        JSONObject localJSONObject = paramString.optJSONObject(i);
-        a locala = new a();
-        locala.oEo = localJSONObject.optString("card_tp_id");
-        locala.mwj = localJSONObject.optInt("card_type");
-        locala.dJc = localJSONObject.optString("card_ext");
-        localArrayList.add(locala);
-        i += 1;
-      }
-      AppMethodBeat.o(52074);
-      return localArrayList;
-    }
-    catch (JSONException paramString)
-    {
-      ae.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(52074);
-    }
-    return null;
-  }
-  
-  public static void bd(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(52076);
-    h.a(paramContext, paramString, null, false, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(52071);
-        paramAnonymousDialogInterface.dismiss();
-        AppMethodBeat.o(52071);
-      }
-    });
-    AppMethodBeat.o(52076);
-  }
-  
-  public static boolean dQl()
-  {
-    AppMethodBeat.i(52078);
-    int i = ((a)com.tencent.mm.kernel.g.ab(a.class)).acL().getInt("EnableNewOCRTranslation", 0);
-    Object localObject = ((a)com.tencent.mm.kernel.g.ab(a.class)).acL().getValue("PicTranslationSupportUserLanguage");
-    if (i == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ae.i("MicroMsg.ScannerUtil", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, ad.fom() });
-      if ((i != 1) || (bu.isNullOrNil((String)localObject))) {
-        break;
-      }
-      localObject = ((String)localObject).split(";");
-      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(ad.fom()))) {
-        break;
-      }
-      AppMethodBeat.o(52078);
-      return true;
-    }
-    AppMethodBeat.o(52078);
-    return false;
-  }
-  
-  public static void dQm()
-  {
-    AppMethodBeat.i(189519);
-    dQo();
-    dQq();
-    AppMethodBeat.o(189519);
-  }
-  
-  public static boolean dQn()
-  {
-    AppMethodBeat.i(52079);
-    ae.i("MicroMsg.ScannerUtil", "alvinluo showScanGoodsTab %b", new Object[] { yQv });
-    if (yQv == null) {
-      dQo();
-    }
-    boolean bool = yQv.booleanValue();
-    AppMethodBeat.o(52079);
-    return bool;
-  }
-  
-  private static void dQo()
-  {
-    AppMethodBeat.i(52080);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qIP, 0);
-    if (i != 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      yQv = Boolean.valueOf(bool);
-      ae.i("MicroMsg.ScannerUtil", "alvinluo updateShowScanGoodsTabSwitch clicfg_disable_scan_goods_tab config: %d, show: %b", new Object[] { Integer.valueOf(i), yQv });
-      AppMethodBeat.o(52080);
-      return;
-    }
-  }
-  
-  public static boolean dQp()
-  {
-    AppMethodBeat.i(189520);
-    if (yQw == null) {
-      dQq();
-    }
-    boolean bool = yQw.booleanValue();
-    AppMethodBeat.o(189520);
-    return bool;
-  }
-  
-  private static void dQq()
-  {
-    AppMethodBeat.i(189521);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qJb, 0);
-    if ((i != 0) || (j.DEBUG) || (j.IS_FLAVOR_RED)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      yQw = Boolean.valueOf(bool);
-      ae.i("MicroMsg.ScannerUtil", "alvinluo updateEnableMultiCode clicfg_scan_code_multi_code_enable config: %d, enable: %b", new Object[] { Integer.valueOf(i), yQw });
-      AppMethodBeat.o(189521);
-      return;
-    }
-  }
-  
-  public static String jg(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(52077);
-    Object localObject2 = com.tencent.mm.n.g.acL().getValue("ScanBookWording");
-    ae.i("MicroMsg.ScannerUtil", "scan image dynamic wording: " + bu.nullAsNil((String)localObject2));
-    Object localObject1 = paramString2;
-    if (!bu.isNullOrNil((String)localObject2))
-    {
-      localObject2 = ((String)localObject2).split("&");
-      localObject1 = paramString2;
-      if (localObject2 != null)
-      {
-        localObject1 = new HashMap();
-        int i = 0;
-        while (i < localObject2.length)
+        m = (arrayOfInt[j] & 0xFF0000) >> 16;
+        i4 = (arrayOfInt[j] & 0xFF00) >> 8;
+        int i5 = (arrayOfInt[j] & 0xFF) >> 0;
+        i3 = (m * 66 + i4 * 129 + i5 * 25 + 128 >> 8) + 16;
+        i2 = (m * -38 - i4 * 74 + i5 * 112 + 128 >> 8) + 128;
+        i4 = (m * 112 - i4 * 94 - i5 * 18 + 128 >> 8) + 128;
+        if (i3 < 0)
         {
-          String[] arrayOfString = localObject2[i].split("=");
-          if (arrayOfString.length == 2) {
-            ((Map)localObject1).put(arrayOfString[0], arrayOfString[1]);
+          m = 0;
+          label211:
+          arrayOfByte[i] = ((byte)m);
+          if ((n % 2 != 0) || (j % 2 != 0)) {
+            break label382;
           }
-          i += 1;
-        }
-        paramString1 = (String)((Map)localObject1).get(paramString1);
-        localObject1 = paramString2;
-        if (!bu.isNullOrNil(paramString1)) {
-          localObject1 = paramString1;
+          i3 = k + 1;
+          if (i4 >= 0) {
+            break label315;
+          }
+          m = 0;
+          label246:
+          arrayOfByte[k] = ((byte)m);
+          if (i2 >= 0) {
+            break label338;
+          }
+          k = 0;
+          label262:
+          arrayOfByte[i3] = ((byte)k);
+          k = i3 + 1;
         }
       }
     }
-    AppMethodBeat.o(52077);
-    return localObject1;
-  }
-  
-  public static final class a
-  {
-    public String dJc;
-    public int mwj;
-    public String oEo;
+    label315:
+    label338:
+    label382:
+    for (;;)
+    {
+      i1 += 1;
+      j += 1;
+      i += 1;
+      break label68;
+      m = i3;
+      if (i3 <= 255) {
+        break label211;
+      }
+      m = 255;
+      break label211;
+      if (i4 > 255)
+      {
+        m = 255;
+        break label246;
+      }
+      m = i4;
+      break label246;
+      if (i2 > 255)
+      {
+        k = 255;
+        break label262;
+      }
+      k = i2;
+      break label262;
+      n += 1;
+      break;
+      paramBitmap.recycle();
+      AppMethodBeat.o(161062);
+      return arrayOfByte;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.o
  * JD-Core Version:    0.7.0.1
  */

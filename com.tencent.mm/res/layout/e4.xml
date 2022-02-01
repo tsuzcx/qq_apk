@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:orientation="horizontal" android:id="@id/o_" android:paddingTop="@dimen/qv" android:paddingBottom="@dimen/qw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/qw" android:paddingEnd="@dimen/qw"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/oc" android:layout_width="20.0dip" android:layout_height="20.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/oa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="8.0dip" app:layout_constraintBottom_toBottomOf="@id/oc" app:layout_constraintStart_toEndOf="@id/oc" app:layout_constraintTop_toTopOf="@id/oc" />
-    <ImageView android:id="@id/ob" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="1.0dip" android:src="@raw/arrow_right" android:scaleType="center" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintStart_toEndOf="@id/oa" app:layout_constraintTop_toTopOf="ea8" />
-</android.support.constraint.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/p0" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/is" android:id="@id/ox" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs" />
+        <TextView android:textSize="@dimen/k6" android:textStyle="bold" android:id="@id/p1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs" android:layout_below="@id/ox" />
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/x0" android:id="@id/p2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs" android:text="@string/me" android:layout_toRightOf="@id/p1" android:layout_below="@id/ox" />
+        <com.tencent.mm.ui.base.MMFormVerifyCodeInputView android:id="@id/oy" android:focusableInTouchMode="false" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs" android:layout_below="@id/p1" form:form_btn_title="@string/mb" form:form_hint="@string/mf" form:form_layout="@layout/b89" form:form_title="@string/mi" style="@style/mv" />
+        <Button android:id="@id/om" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/hs" android:layout_marginBottom="@dimen/hs" android:text="@string/ma" android:layout_below="@id/oy" style="@style/ou" />
+        <com.tenpay.android.wechat.MyKeyboardWindow android:id="@id/oz" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

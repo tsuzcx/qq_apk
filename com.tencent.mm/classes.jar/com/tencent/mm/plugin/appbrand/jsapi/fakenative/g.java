@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.fakenative;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.b;
-import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.l;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.m;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 
 public final class g
-  extends l
+  extends m
 {
-  public static final g kPE;
+  public static final g lUC;
   
   static
   {
     AppMethodBeat.i(46298);
-    kPE = new g();
+    lUC = new g();
     AppMethodBeat.o(46298);
   }
   
@@ -25,7 +25,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.g
  * JD-Core Version:    0.7.0.1
  */

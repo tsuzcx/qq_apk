@@ -6,125 +6,62 @@ import com.tencent.mm.plugin.report.a;
 public final class au
   extends a
 {
-  private String dWq = "";
-  private long dYA;
-  private String dYB = "";
-  private long dYh;
-  private long dYw = 0L;
-  private long dYx;
-  private String dYy = "";
-  private long dYz;
+  public int enW;
+  private String eqs = "";
+  private String eqt = "";
+  public int equ = 0;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(189141);
+    AppMethodBeat.i(163530);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dYw);
+    ((StringBuffer)localObject).append(this.enW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYx);
+    ((StringBuffer)localObject).append(this.eqs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYh);
+    ((StringBuffer)localObject).append(this.eqt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWq);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYy);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYB);
+    ((StringBuffer)localObject).append(this.equ);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(189141);
+    aMq((String)localObject);
+    AppMethodBeat.o(163530);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(189142);
+    AppMethodBeat.i(163531);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("fromTab:").append(this.dYw);
+    ((StringBuffer)localObject).append("ActionType:").append(this.enW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("toTab:").append(this.dYx);
+    ((StringBuffer)localObject).append("F2FId:").append(this.eqs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActionTimeStamp:").append(this.dYh);
+    ((StringBuffer)localObject).append("QrCodeId:").append(this.eqt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Sessionid:").append(this.dWq);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickContextid:").append(this.dYy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("hasRedDot:").append(this.dYz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ManuallyTapped:").append(this.dYA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ContextID:").append(this.dYB);
+    ((StringBuffer)localObject).append("TotalAmount:").append(this.equ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(189142);
+    AppMethodBeat.o(163531);
     return localObject;
-  }
-  
-  public final String RZ()
-  {
-    return this.dYy;
-  }
-  
-  public final au Sa()
-  {
-    this.dYz = 1L;
-    return this;
-  }
-  
-  public final au dT(long paramLong)
-  {
-    this.dYw = paramLong;
-    return this;
-  }
-  
-  public final au dU(long paramLong)
-  {
-    this.dYx = paramLong;
-    return this;
-  }
-  
-  public final au dV(long paramLong)
-  {
-    this.dYh = paramLong;
-    return this;
-  }
-  
-  public final au dW(long paramLong)
-  {
-    this.dYA = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 19949;
+    return 18885;
   }
   
-  public final au ix(String paramString)
+  public final au iA(String paramString)
   {
-    AppMethodBeat.i(189138);
-    this.dWq = t("Sessionid", paramString, true);
-    AppMethodBeat.o(189138);
+    AppMethodBeat.i(163528);
+    this.eqs = x("F2FId", paramString, true);
+    AppMethodBeat.o(163528);
     return this;
   }
   
-  public final au iy(String paramString)
+  public final au iB(String paramString)
   {
-    AppMethodBeat.i(189139);
-    this.dYy = t("ClickContextid", paramString, true);
-    AppMethodBeat.o(189139);
-    return this;
-  }
-  
-  public final au iz(String paramString)
-  {
-    AppMethodBeat.i(189140);
-    this.dYB = t("ContextID", paramString, true);
-    AppMethodBeat.o(189140);
+    AppMethodBeat.i(163529);
+    this.eqt = x("QrCodeId", paramString, true);
+    AppMethodBeat.o(163529);
     return this;
   }
 }

@@ -6,62 +6,62 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public abstract class f
 {
-  private static float cBm = 3.4028235E+38F;
-  private static float pBA = 3.4028235E+38F;
-  private static int pBB = -1;
-  public static float pBC = 48.0F;
+  private static float cPs = 3.4028235E+38F;
+  private static float qQS = 3.4028235E+38F;
+  private static int qQT = -1;
+  public static float qQU = 48.0F;
   
-  public static int BP(int paramInt)
+  public static int FA(int paramInt)
   {
-    return Math.round(paramInt * cfN());
+    return Math.round(paramInt / cDD());
   }
   
-  public static int BQ(int paramInt)
+  public static int Fz(int paramInt)
   {
-    return Math.round(paramInt / cfN());
+    return Math.round(paramInt * cDD());
   }
   
-  private static float cfM()
+  private static float cDC()
   {
     try
     {
-      if (cBm == 3.4028235E+38F) {
-        cBm = getDisplayMetrics().density;
+      if (cPs == 3.4028235E+38F) {
+        cPs = getDisplayMetrics().density;
       }
-      float f = cBm;
+      float f = cPs;
       return f;
     }
     finally {}
   }
   
-  private static float cfN()
+  private static float cDD()
   {
     try
     {
-      if (pBA == 3.4028235E+38F) {
-        pBA = getDisplayMetrics().density * ak.getContext().getResources().getConfiguration().fontScale;
+      if (qQS == 3.4028235E+38F) {
+        qQS = getDisplayMetrics().density * MMApplicationContext.getContext().getResources().getConfiguration().fontScale;
       }
-      float f = pBA;
+      float f = qQS;
       return f;
     }
     finally {}
   }
   
-  public static int cfO()
+  public static int cDE()
   {
-    if (pBB == -1) {
-      pBB = Math.round(cfM() * 30.0F);
+    if (qQT == -1) {
+      qQT = Math.round(cDC() * 30.0F);
     }
-    return pBB;
+    return qQT;
   }
   
   private static DisplayMetrics getDisplayMetrics()
   {
-    Display localDisplay = ((WindowManager)ak.getContext().getSystemService("window")).getDefaultDisplay();
+    Display localDisplay = ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     localDisplay.getMetrics(localDisplayMetrics);
     return localDisplayMetrics;
@@ -69,17 +69,17 @@ public abstract class f
   
   public static float getTextSize()
   {
-    return pBC;
+    return qQU;
   }
   
   public static void setTextSize(float paramFloat)
   {
-    pBC = paramFloat;
+    qQU = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.f
  * JD-Core Version:    0.7.0.1
  */

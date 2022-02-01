@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.sns.f;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uy;
+import com.tencent.mm.g.a.vx;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.plugin.sns.storage.w;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.storage.s;
+import com.tencent.mm.plugin.sns.storage.t;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -17,20 +17,20 @@ import java.util.List;
 
 public final class a
 {
-  private static boolean cBE;
-  private static c<uy> fHr;
-  private static final List<String> zuY;
+  private static final List<String> DFl;
+  private static IListener<vx> gmC;
+  private static boolean isInit;
   
   static
   {
     AppMethodBeat.i(95170);
-    zuY = Collections.synchronizedList(new LinkedList());
-    cBE = false;
-    fHr = new c() {};
+    DFl = Collections.synchronizedList(new LinkedList());
+    isInit = false;
+    gmC = new IListener() {};
     AppMethodBeat.o(95170);
   }
   
-  public static boolean azG(String paramString)
+  public static boolean aOD(String paramString)
   {
     AppMethodBeat.i(95166);
     if (TextUtils.isEmpty(paramString))
@@ -38,22 +38,22 @@ public final class a
       AppMethodBeat.o(95166);
       return false;
     }
-    if (paramString.equals(g.ajR().ajA().get(2, null)))
+    if (paramString.equals(g.aAh().azQ().get(2, null)))
     {
       AppMethodBeat.o(95166);
       return false;
     }
-    if (azI(paramString))
+    if (aOF(paramString))
     {
       AppMethodBeat.o(95166);
       return false;
     }
-    boolean bool = ((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString);
+    boolean bool = ((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString);
     AppMethodBeat.o(95166);
     return bool;
   }
   
-  public static boolean azH(String paramString)
+  public static boolean aOE(String paramString)
   {
     AppMethodBeat.i(95167);
     if (TextUtils.isEmpty(paramString))
@@ -61,12 +61,12 @@ public final class a
       AppMethodBeat.o(95167);
       return false;
     }
-    if (azI(paramString))
+    if (aOF(paramString))
     {
       AppMethodBeat.o(95167);
       return false;
     }
-    if ((((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).isStoryExist(paramString)) || (((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString)))
+    if ((((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).isStoryExist(paramString)) || (((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString)))
     {
       AppMethodBeat.o(95167);
       return true;
@@ -75,55 +75,55 @@ public final class a
     return false;
   }
   
-  public static boolean azI(String paramString)
+  public static boolean aOF(String paramString)
   {
     AppMethodBeat.i(95168);
-    boolean bool = dWA().contains(paramString);
+    boolean bool = eZI().contains(paramString);
     AppMethodBeat.o(95168);
     return bool;
   }
   
-  public static List<String> dWA()
+  public static void destroy()
+  {
+    AppMethodBeat.i(95165);
+    gmC.dead();
+    AppMethodBeat.o(95165);
+  }
+  
+  public static List<String> eZI()
   {
     AppMethodBeat.i(95169);
-    if (cBE)
+    if (isInit)
     {
-      localObject = zuY;
+      localObject = DFl;
       AppMethodBeat.o(95169);
       return localObject;
     }
-    Object localObject = ah.dXK().AI(5L);
-    if (bu.isNullOrNil(((v)localObject).field_memberList))
+    Object localObject = aj.faU().JL(5L);
+    if (Util.isNullOrNil(((s)localObject).field_memberList))
     {
       localObject = new LinkedList();
       AppMethodBeat.o(95169);
       return localObject;
     }
-    localObject = bu.U(((v)localObject).field_memberList.split(","));
+    localObject = Util.stringsToList(((s)localObject).field_memberList.split(","));
     if (localObject == null)
     {
       localObject = new LinkedList();
       AppMethodBeat.o(95169);
       return localObject;
     }
-    zuY.addAll((Collection)localObject);
-    cBE = true;
-    localObject = zuY;
+    DFl.addAll((Collection)localObject);
+    isInit = true;
+    localObject = DFl;
     AppMethodBeat.o(95169);
     return localObject;
-  }
-  
-  public static void destroy()
-  {
-    AppMethodBeat.i(95165);
-    fHr.dead();
-    AppMethodBeat.o(95165);
   }
   
   public static void init()
   {
     AppMethodBeat.i(95164);
-    fHr.alive();
+    gmC.alive();
     AppMethodBeat.o(95164);
   }
 }

@@ -21,25 +21,25 @@ public final class Format
   implements Parcelable
 {
   public static final Parcelable.Creator<Format> CREATOR;
-  private int aHQ;
+  private int aHK;
   public final int bdA;
-  public final byte[] bdB;
-  public final ColorInfo bdC;
+  public final int bdB;
+  public final long bdC;
   public final int bdD;
   public final int bdE;
-  public final long bdF;
-  public final int bdG;
-  public final int bdH;
+  public final String bdn;
+  public final Metadata bdo;
+  public final String bdp;
   public final String bdq;
-  public final Metadata bdr;
-  public final String bds;
-  public final String bdt;
-  public final int bdu;
-  public final List<byte[]> bdv;
-  public final DrmInitData bdw;
-  public final float bdx;
-  public final int bdy;
-  public final float bdz;
+  public final int bdr;
+  public final List<byte[]> bds;
+  public final DrmInitData bdt;
+  public final float bdu;
+  public final int bdv;
+  public final float bdw;
+  public final int bdx;
+  public final byte[] bdy;
+  public final ColorInfo bdz;
   public final int bitrate;
   public final int channelCount;
   public final int height;
@@ -52,7 +52,7 @@ public final class Format
   static
   {
     AppMethodBeat.i(92348);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new Format.1();
     AppMethodBeat.o(92348);
   }
   
@@ -60,16 +60,16 @@ public final class Format
   {
     AppMethodBeat.i(92334);
     this.id = paramParcel.readString();
-    this.bds = paramParcel.readString();
-    this.bdt = paramParcel.readString();
+    this.bdp = paramParcel.readString();
     this.bdq = paramParcel.readString();
+    this.bdn = paramParcel.readString();
     this.bitrate = paramParcel.readInt();
-    this.bdu = paramParcel.readInt();
+    this.bdr = paramParcel.readInt();
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
-    this.bdx = paramParcel.readFloat();
-    this.bdy = paramParcel.readInt();
-    this.bdz = paramParcel.readFloat();
+    this.bdu = paramParcel.readFloat();
+    this.bdv = paramParcel.readInt();
+    this.bdw = paramParcel.readFloat();
     int i;
     if (paramParcel.readInt() != 0)
     {
@@ -81,31 +81,31 @@ public final class Format
     label268:
     for (byte[] arrayOfByte = paramParcel.createByteArray();; arrayOfByte = null)
     {
-      this.bdB = arrayOfByte;
-      this.bdA = paramParcel.readInt();
-      this.bdC = ((ColorInfo)paramParcel.readParcelable(ColorInfo.class.getClassLoader()));
+      this.bdy = arrayOfByte;
+      this.bdx = paramParcel.readInt();
+      this.bdz = ((ColorInfo)paramParcel.readParcelable(ColorInfo.class.getClassLoader()));
       this.channelCount = paramParcel.readInt();
       this.sampleRate = paramParcel.readInt();
       this.pcmEncoding = paramParcel.readInt();
+      this.bdA = paramParcel.readInt();
+      this.bdB = paramParcel.readInt();
       this.bdD = paramParcel.readInt();
-      this.bdE = paramParcel.readInt();
-      this.bdG = paramParcel.readInt();
       this.language = paramParcel.readString();
-      this.bdH = paramParcel.readInt();
-      this.bdF = paramParcel.readLong();
+      this.bdE = paramParcel.readInt();
+      this.bdC = paramParcel.readLong();
       int j = paramParcel.readInt();
-      this.bdv = new ArrayList(j);
+      this.bds = new ArrayList(j);
       i = 0;
       while (i < j)
       {
-        this.bdv.add(paramParcel.createByteArray());
+        this.bds.add(paramParcel.createByteArray());
         i += 1;
       }
       i = 0;
       break;
     }
-    this.bdw = ((DrmInitData)paramParcel.readParcelable(DrmInitData.class.getClassLoader()));
-    this.bdr = ((Metadata)paramParcel.readParcelable(Metadata.class.getClassLoader()));
+    this.bdt = ((DrmInitData)paramParcel.readParcelable(DrmInitData.class.getClassLoader()));
+    this.bdo = ((Metadata)paramParcel.readParcelable(Metadata.class.getClassLoader()));
     AppMethodBeat.o(92334);
   }
   
@@ -113,50 +113,42 @@ public final class Format
   {
     AppMethodBeat.i(92333);
     this.id = paramString1;
-    this.bds = paramString2;
-    this.bdt = paramString3;
-    this.bdq = paramString4;
+    this.bdp = paramString2;
+    this.bdq = paramString3;
+    this.bdn = paramString4;
     this.bitrate = paramInt1;
-    this.bdu = paramInt2;
+    this.bdr = paramInt2;
     this.width = paramInt3;
     this.height = paramInt4;
-    this.bdx = paramFloat1;
-    this.bdy = paramInt5;
-    this.bdz = paramFloat2;
-    this.bdB = paramArrayOfByte;
-    this.bdA = paramInt6;
-    this.bdC = paramColorInfo;
+    this.bdu = paramFloat1;
+    this.bdv = paramInt5;
+    this.bdw = paramFloat2;
+    this.bdy = paramArrayOfByte;
+    this.bdx = paramInt6;
+    this.bdz = paramColorInfo;
     this.channelCount = paramInt7;
     this.sampleRate = paramInt8;
     this.pcmEncoding = paramInt9;
-    this.bdD = paramInt10;
-    this.bdE = paramInt11;
-    this.bdG = paramInt12;
+    this.bdA = paramInt10;
+    this.bdB = paramInt11;
+    this.bdD = paramInt12;
     this.language = paramString5;
-    this.bdH = paramInt13;
-    this.bdF = paramLong;
+    this.bdE = paramInt13;
+    this.bdC = paramLong;
     paramString1 = paramList;
     if (paramList == null) {
       paramString1 = Collections.emptyList();
     }
-    this.bdv = paramString1;
-    this.bdw = paramDrmInitData;
-    this.bdr = paramMetadata;
+    this.bds = paramString1;
+    this.bdt = paramDrmInitData;
+    this.bdo = paramMetadata;
     AppMethodBeat.o(92333);
-  }
-  
-  public static Format a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, List<byte[]> paramList, DrmInitData paramDrmInitData, int paramInt8, String paramString3, Metadata paramMetadata)
-  {
-    AppMethodBeat.i(92321);
-    paramString1 = new Format(paramString1, null, paramString2, null, paramInt1, paramInt2, -1, -1, -1.0F, -1, -1.0F, null, -1, null, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramString3, -1, 9223372036854775807L, paramList, paramDrmInitData, paramMetadata);
-    AppMethodBeat.o(92321);
-    return paramString1;
   }
   
   public static Format a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, List<byte[]> paramList, DrmInitData paramDrmInitData, int paramInt6, String paramString3)
   {
     AppMethodBeat.i(92320);
-    paramString1 = a(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, -1, -1, paramList, paramDrmInitData, paramInt6, paramString3, null);
+    paramString1 = a(paramString1, paramString2, null, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, -1, -1, paramList, paramDrmInitData, paramInt6, paramString3, null);
     AppMethodBeat.o(92320);
     return paramString1;
   }
@@ -187,9 +179,9 @@ public final class Format
   
   public static Format a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(211638);
+    AppMethodBeat.i(196031);
     paramString1 = new Format(paramString1, paramString2, null, null, -1, -1, -1, -1, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, paramInt, paramString3, -1, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(211638);
+    AppMethodBeat.o(196031);
     return paramString1;
   }
   
@@ -227,25 +219,33 @@ public final class Format
   
   public static Format a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(211637);
+    AppMethodBeat.i(196030);
     paramString1 = new Format(paramString1, paramString2, null, paramString3, paramInt1, -1, paramInt2, paramInt3, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, 0, null, -1, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(211637);
+    AppMethodBeat.o(196030);
+    return paramString1;
+  }
+  
+  public static Format a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, List<byte[]> paramList, DrmInitData paramDrmInitData, int paramInt8, String paramString4, Metadata paramMetadata)
+  {
+    AppMethodBeat.i(196032);
+    paramString1 = new Format(paramString1, null, paramString2, null, paramInt1, paramInt2, -1, -1, -1.0F, -1, -1.0F, null, -1, null, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramString4, -1, 9223372036854775807L, paramList, paramDrmInitData, paramMetadata);
+    AppMethodBeat.o(196032);
     return paramString1;
   }
   
   public static Format a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    AppMethodBeat.i(211639);
+    AppMethodBeat.i(196033);
     paramString1 = a(paramString1, paramString2, paramString3, paramInt, paramString4, -1);
-    AppMethodBeat.o(211639);
+    AppMethodBeat.o(196033);
     return paramString1;
   }
   
   public static Format a(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
   {
-    AppMethodBeat.i(211640);
+    AppMethodBeat.i(196034);
     paramString1 = new Format(paramString1, paramString2, paramString3, null, -1, -1, -1, -1, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, paramInt1, paramString4, paramInt2, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(211640);
+    AppMethodBeat.o(196034);
     return paramString1;
   }
   
@@ -266,15 +266,15 @@ public final class Format
       return "null";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(paramFormat.id).append(", mimeType=").append(paramFormat.bdt);
+    localStringBuilder.append("id=").append(paramFormat.id).append(", mimeType=").append(paramFormat.bdq);
     if (paramFormat.bitrate != -1) {
       localStringBuilder.append(", bitrate=").append(paramFormat.bitrate);
     }
     if ((paramFormat.width != -1) && (paramFormat.height != -1)) {
       localStringBuilder.append(", res=").append(paramFormat.width).append("x").append(paramFormat.height);
     }
-    if (paramFormat.bdx != -1.0F) {
-      localStringBuilder.append(", fps=").append(paramFormat.bdx);
+    if (paramFormat.bdu != -1.0F) {
+      localStringBuilder.append(", fps=").append(paramFormat.bdu);
     }
     if (paramFormat.channelCount != -1) {
       localStringBuilder.append(", channels=").append(paramFormat.channelCount);
@@ -302,13 +302,13 @@ public final class Format
   
   public static Format bc(String paramString)
   {
-    AppMethodBeat.i(211641);
+    AppMethodBeat.i(196035);
     paramString = a(null, paramString, 0, null, null);
-    AppMethodBeat.o(211641);
+    AppMethodBeat.o(196035);
     return paramString;
   }
   
-  public static Format c(String paramString, long paramLong)
+  public static Format d(String paramString, long paramLong)
   {
     AppMethodBeat.i(92331);
     paramString = new Format(null, null, paramString, null, -1, -1, -1, -1, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, 0, null, -1, paramLong, null, null, null);
@@ -318,9 +318,9 @@ public final class Format
   
   public static Format j(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(211642);
+    AppMethodBeat.i(196036);
     paramString1 = new Format(paramString1, paramString2, null, null, -1, -1, -1, -1, -1.0F, -1, -1.0F, null, -1, null, -1, -1, -1, -1, -1, 0, null, -1, 9223372036854775807L, null, null, null);
-    AppMethodBeat.o(211642);
+    AppMethodBeat.o(196036);
     return paramString1;
   }
   
@@ -335,7 +335,7 @@ public final class Format
   public final Format D(long paramLong)
   {
     AppMethodBeat.i(92336);
-    Format localFormat = new Format(this.id, this.bds, this.bdt, this.bdq, this.bitrate, this.bdu, this.width, this.height, this.bdx, this.bdy, this.bdz, this.bdB, this.bdA, this.bdC, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdD, this.bdE, this.bdG, this.language, this.bdH, paramLong, this.bdv, this.bdw, this.bdr);
+    Format localFormat = new Format(this.id, this.bdp, this.bdq, this.bdn, this.bitrate, this.bdr, this.width, this.height, this.bdu, this.bdv, this.bdw, this.bdy, this.bdx, this.bdz, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdA, this.bdB, this.bdD, this.language, this.bdE, paramLong, this.bds, this.bdt, this.bdo);
     AppMethodBeat.o(92336);
     return localFormat;
   }
@@ -343,7 +343,7 @@ public final class Format
   public final Format a(DrmInitData paramDrmInitData)
   {
     AppMethodBeat.i(92339);
-    paramDrmInitData = new Format(this.id, this.bds, this.bdt, this.bdq, this.bitrate, this.bdu, this.width, this.height, this.bdx, this.bdy, this.bdz, this.bdB, this.bdA, this.bdC, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdD, this.bdE, this.bdG, this.language, this.bdH, this.bdF, this.bdv, paramDrmInitData, this.bdr);
+    paramDrmInitData = new Format(this.id, this.bdp, this.bdq, this.bdn, this.bitrate, this.bdr, this.width, this.height, this.bdu, this.bdv, this.bdw, this.bdy, this.bdx, this.bdz, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdA, this.bdB, this.bdD, this.language, this.bdE, this.bdC, this.bds, paramDrmInitData, this.bdo);
     AppMethodBeat.o(92339);
     return paramDrmInitData;
   }
@@ -351,7 +351,7 @@ public final class Format
   public final Format a(Metadata paramMetadata)
   {
     AppMethodBeat.i(92340);
-    paramMetadata = new Format(this.id, this.bds, this.bdt, this.bdq, this.bitrate, this.bdu, this.width, this.height, this.bdx, this.bdy, this.bdz, this.bdB, this.bdA, this.bdC, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdD, this.bdE, this.bdG, this.language, this.bdH, this.bdF, this.bdv, this.bdw, paramMetadata);
+    paramMetadata = new Format(this.id, this.bdp, this.bdq, this.bdn, this.bitrate, this.bdr, this.width, this.height, this.bdu, this.bdv, this.bdw, this.bdy, this.bdx, this.bdz, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdA, this.bdB, this.bdD, this.language, this.bdE, this.bdC, this.bds, this.bdt, paramMetadata);
     AppMethodBeat.o(92340);
     return paramMetadata;
   }
@@ -359,23 +359,23 @@ public final class Format
   public final Format a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3)
   {
     AppMethodBeat.i(92337);
-    paramString1 = new Format(paramString1, this.bds, this.bdt, paramString2, paramInt1, this.bdu, paramInt2, paramInt3, this.bdx, this.bdy, this.bdz, this.bdB, this.bdA, this.bdC, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdD, this.bdE, paramInt4, paramString3, this.bdH, this.bdF, this.bdv, this.bdw, this.bdr);
+    paramString1 = new Format(paramString1, this.bdp, this.bdq, paramString2, paramInt1, this.bdr, paramInt2, paramInt3, this.bdu, this.bdv, this.bdw, this.bdy, this.bdx, this.bdz, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdA, this.bdB, paramInt4, paramString3, this.bdE, this.bdC, this.bds, this.bdt, this.bdo);
     AppMethodBeat.o(92337);
     return paramString1;
   }
   
-  public final Format be(int paramInt1, int paramInt2)
+  public final Format aY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(92338);
-    Format localFormat = new Format(this.id, this.bds, this.bdt, this.bdq, this.bitrate, this.bdu, this.width, this.height, this.bdx, this.bdy, this.bdz, this.bdB, this.bdA, this.bdC, this.channelCount, this.sampleRate, this.pcmEncoding, paramInt1, paramInt2, this.bdG, this.language, this.bdH, this.bdF, this.bdv, this.bdw, this.bdr);
+    Format localFormat = new Format(this.id, this.bdp, this.bdq, this.bdn, this.bitrate, this.bdr, this.width, this.height, this.bdu, this.bdv, this.bdw, this.bdy, this.bdx, this.bdz, this.channelCount, this.sampleRate, this.pcmEncoding, paramInt1, paramInt2, this.bdD, this.language, this.bdE, this.bdC, this.bds, this.bdt, this.bdo);
     AppMethodBeat.o(92338);
     return localFormat;
   }
   
-  public final Format dK(int paramInt)
+  public final Format dF(int paramInt)
   {
     AppMethodBeat.i(92335);
-    Format localFormat = new Format(this.id, this.bds, this.bdt, this.bdq, this.bitrate, paramInt, this.width, this.height, this.bdx, this.bdy, this.bdz, this.bdB, this.bdA, this.bdC, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdD, this.bdE, this.bdG, this.language, this.bdH, this.bdF, this.bdv, this.bdw, this.bdr);
+    Format localFormat = new Format(this.id, this.bdp, this.bdq, this.bdn, this.bitrate, paramInt, this.width, this.height, this.bdu, this.bdv, this.bdw, this.bdy, this.bdx, this.bdz, this.channelCount, this.sampleRate, this.pcmEncoding, this.bdA, this.bdB, this.bdD, this.language, this.bdE, this.bdC, this.bds, this.bdt, this.bdo);
     AppMethodBeat.o(92335);
     return localFormat;
   }
@@ -399,15 +399,15 @@ public final class Format
       return false;
     }
     paramObject = (Format)paramObject;
-    if ((this.bitrate != paramObject.bitrate) || (this.bdu != paramObject.bdu) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.bdx != paramObject.bdx) || (this.bdy != paramObject.bdy) || (this.bdz != paramObject.bdz) || (this.bdA != paramObject.bdA) || (this.channelCount != paramObject.channelCount) || (this.sampleRate != paramObject.sampleRate) || (this.pcmEncoding != paramObject.pcmEncoding) || (this.bdD != paramObject.bdD) || (this.bdE != paramObject.bdE) || (this.bdF != paramObject.bdF) || (this.bdG != paramObject.bdG) || (!x.i(this.id, paramObject.id)) || (!x.i(this.language, paramObject.language)) || (this.bdH != paramObject.bdH) || (!x.i(this.bds, paramObject.bds)) || (!x.i(this.bdt, paramObject.bdt)) || (!x.i(this.bdq, paramObject.bdq)) || (!x.i(this.bdw, paramObject.bdw)) || (!x.i(this.bdr, paramObject.bdr)) || (!x.i(this.bdC, paramObject.bdC)) || (!Arrays.equals(this.bdB, paramObject.bdB)) || (this.bdv.size() != paramObject.bdv.size()))
+    if ((this.bitrate != paramObject.bitrate) || (this.bdr != paramObject.bdr) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.bdu != paramObject.bdu) || (this.bdv != paramObject.bdv) || (this.bdw != paramObject.bdw) || (this.bdx != paramObject.bdx) || (this.channelCount != paramObject.channelCount) || (this.sampleRate != paramObject.sampleRate) || (this.pcmEncoding != paramObject.pcmEncoding) || (this.bdA != paramObject.bdA) || (this.bdB != paramObject.bdB) || (this.bdC != paramObject.bdC) || (this.bdD != paramObject.bdD) || (!x.j(this.id, paramObject.id)) || (!x.j(this.language, paramObject.language)) || (this.bdE != paramObject.bdE) || (!x.j(this.bdp, paramObject.bdp)) || (!x.j(this.bdq, paramObject.bdq)) || (!x.j(this.bdn, paramObject.bdn)) || (!x.j(this.bdt, paramObject.bdt)) || (!x.j(this.bdo, paramObject.bdo)) || (!x.j(this.bdz, paramObject.bdz)) || (!Arrays.equals(this.bdy, paramObject.bdy)) || (this.bds.size() != paramObject.bds.size()))
     {
       AppMethodBeat.o(92344);
       return false;
     }
     int i = 0;
-    while (i < this.bdv.size())
+    while (i < this.bds.size())
     {
-      if (!Arrays.equals((byte[])this.bdv.get(i), (byte[])paramObject.bdv.get(i)))
+      if (!Arrays.equals((byte[])this.bds.get(i), (byte[])paramObject.bds.get(i)))
       {
         AppMethodBeat.o(92344);
         return false;
@@ -438,21 +438,21 @@ public final class Format
     label93:
     int i8;
     int i1;
-    if (this.aHQ == 0)
+    if (this.aHK == 0)
     {
       if (this.id != null) {
         break label208;
       }
       i = 0;
-      if (this.bds != null) {
+      if (this.bdp != null) {
         break label219;
       }
       j = 0;
-      if (this.bdt != null) {
+      if (this.bdq != null) {
         break label230;
       }
       k = 0;
-      if (this.bdq != null) {
+      if (this.bdn != null) {
         break label241;
       }
       m = 0;
@@ -465,54 +465,54 @@ public final class Format
         break label253;
       }
       n = 0;
-      i8 = this.bdH;
-      if (this.bdw != null) {
+      i8 = this.bdE;
+      if (this.bdt != null) {
         break label265;
       }
       i1 = 0;
       label109:
-      if (this.bdr != null) {
+      if (this.bdo != null) {
         break label277;
       }
     }
     for (;;)
     {
-      this.aHQ = ((i1 + ((n + ((((((m + (k + (j + (i + 527) * 31) * 31) * 31) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31) * 31 + i8) * 31) * 31 + i2);
-      i = this.aHQ;
+      this.aHK = ((i1 + ((n + ((((((m + (k + (j + (i + 527) * 31) * 31) * 31) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31) * 31 + i8) * 31) * 31 + i2);
+      i = this.aHK;
       AppMethodBeat.o(92343);
       return i;
       label208:
       i = this.id.hashCode();
       break;
       label219:
-      j = this.bds.hashCode();
+      j = this.bdp.hashCode();
       break label34;
       label230:
-      k = this.bdt.hashCode();
+      k = this.bdq.hashCode();
       break label43;
       label241:
-      m = this.bdq.hashCode();
+      m = this.bdn.hashCode();
       break label53;
       label253:
       n = this.language.hashCode();
       break label93;
       label265:
-      i1 = this.bdw.hashCode();
+      i1 = this.bdt.hashCode();
       break label109;
       label277:
-      i2 = this.bdr.hashCode();
+      i2 = this.bdo.hashCode();
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(92342);
-    String str = "Format(" + this.id + ", " + this.bds + ", " + this.bdt + ", " + this.bitrate + ", " + this.language + ", [" + this.width + ", " + this.height + ", " + this.bdx + "], [" + this.channelCount + ", " + this.sampleRate + "])";
+    String str = "Format(" + this.id + ", " + this.bdp + ", " + this.bdq + ", " + this.bitrate + ", " + this.language + ", [" + this.width + ", " + this.height + ", " + this.bdu + "], [" + this.channelCount + ", " + this.sampleRate + "])";
     AppMethodBeat.o(92342);
     return str;
   }
   
-  public final int tq()
+  public final int tv()
   {
     if ((this.width == -1) || (this.height == -1)) {
       return -1;
@@ -522,40 +522,40 @@ public final class Format
   
   @SuppressLint({"InlinedApi"})
   @TargetApi(16)
-  public final MediaFormat tr()
+  public final MediaFormat tw()
   {
     AppMethodBeat.i(92341);
     MediaFormat localMediaFormat = new MediaFormat();
-    localMediaFormat.setString("mime", this.bdt);
+    localMediaFormat.setString("mime", this.bdq);
     Object localObject = this.language;
     if (localObject != null) {
       localMediaFormat.setString("language", (String)localObject);
     }
-    a(localMediaFormat, "max-input-size", this.bdu);
+    a(localMediaFormat, "max-input-size", this.bdr);
     a(localMediaFormat, "width", this.width);
     a(localMediaFormat, "height", this.height);
-    float f = this.bdx;
+    float f = this.bdu;
     if (f != -1.0F) {
       localMediaFormat.setFloat("frame-rate", f);
     }
-    a(localMediaFormat, "rotation-degrees", this.bdy);
+    a(localMediaFormat, "rotation-degrees", this.bdv);
     a(localMediaFormat, "channel-count", this.channelCount);
     a(localMediaFormat, "sample-rate", this.sampleRate);
-    a(localMediaFormat, "encoder-delay", this.bdD);
-    a(localMediaFormat, "encoder-padding", this.bdE);
+    a(localMediaFormat, "encoder-delay", this.bdA);
+    a(localMediaFormat, "encoder-padding", this.bdB);
     int i = 0;
-    while (i < this.bdv.size())
+    while (i < this.bds.size())
     {
-      localMediaFormat.setByteBuffer("csd-".concat(String.valueOf(i)), ByteBuffer.wrap((byte[])this.bdv.get(i)));
+      localMediaFormat.setByteBuffer("csd-".concat(String.valueOf(i)), ByteBuffer.wrap((byte[])this.bds.get(i)));
       i += 1;
     }
-    localObject = this.bdC;
+    localObject = this.bdz;
     if (localObject != null)
     {
-      a(localMediaFormat, "color-transfer", ((ColorInfo)localObject).bkc);
-      a(localMediaFormat, "color-standard", ((ColorInfo)localObject).bkb);
-      a(localMediaFormat, "color-range", ((ColorInfo)localObject).bkd);
-      localObject = ((ColorInfo)localObject).bHw;
+      a(localMediaFormat, "color-transfer", ((ColorInfo)localObject).bjX);
+      a(localMediaFormat, "color-standard", ((ColorInfo)localObject).bjW);
+      a(localMediaFormat, "color-range", ((ColorInfo)localObject).bjY);
+      localObject = ((ColorInfo)localObject).bHM;
       if (localObject != null) {
         localMediaFormat.setByteBuffer("hdr-static-info", ByteBuffer.wrap((byte[])localObject));
       }
@@ -568,51 +568,51 @@ public final class Format
   {
     AppMethodBeat.i(92347);
     paramParcel.writeString(this.id);
-    paramParcel.writeString(this.bds);
-    paramParcel.writeString(this.bdt);
+    paramParcel.writeString(this.bdp);
     paramParcel.writeString(this.bdq);
+    paramParcel.writeString(this.bdn);
     paramParcel.writeInt(this.bitrate);
-    paramParcel.writeInt(this.bdu);
+    paramParcel.writeInt(this.bdr);
     paramParcel.writeInt(this.width);
     paramParcel.writeInt(this.height);
-    paramParcel.writeFloat(this.bdx);
-    paramParcel.writeInt(this.bdy);
-    paramParcel.writeFloat(this.bdz);
-    if (this.bdB != null) {}
+    paramParcel.writeFloat(this.bdu);
+    paramParcel.writeInt(this.bdv);
+    paramParcel.writeFloat(this.bdw);
+    if (this.bdy != null) {}
     for (int i = 1;; i = 0)
     {
       paramParcel.writeInt(i);
-      if (this.bdB != null) {
-        paramParcel.writeByteArray(this.bdB);
+      if (this.bdy != null) {
+        paramParcel.writeByteArray(this.bdy);
       }
-      paramParcel.writeInt(this.bdA);
-      paramParcel.writeParcelable(this.bdC, paramInt);
+      paramParcel.writeInt(this.bdx);
+      paramParcel.writeParcelable(this.bdz, paramInt);
       paramParcel.writeInt(this.channelCount);
       paramParcel.writeInt(this.sampleRate);
       paramParcel.writeInt(this.pcmEncoding);
+      paramParcel.writeInt(this.bdA);
+      paramParcel.writeInt(this.bdB);
       paramParcel.writeInt(this.bdD);
-      paramParcel.writeInt(this.bdE);
-      paramParcel.writeInt(this.bdG);
       paramParcel.writeString(this.language);
-      paramParcel.writeInt(this.bdH);
-      paramParcel.writeLong(this.bdF);
-      i = this.bdv.size();
+      paramParcel.writeInt(this.bdE);
+      paramParcel.writeLong(this.bdC);
+      i = this.bds.size();
       paramParcel.writeInt(i);
       paramInt = 0;
       while (paramInt < i)
       {
-        paramParcel.writeByteArray((byte[])this.bdv.get(paramInt));
+        paramParcel.writeByteArray((byte[])this.bds.get(paramInt));
         paramInt += 1;
       }
     }
-    paramParcel.writeParcelable(this.bdw, 0);
-    paramParcel.writeParcelable(this.bdr, 0);
+    paramParcel.writeParcelable(this.bdt, 0);
+    paramParcel.writeParcelable(this.bdo, 0);
     AppMethodBeat.o(92347);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.Format
  * JD-Core Version:    0.7.0.1
  */

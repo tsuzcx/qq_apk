@@ -2,16 +2,11 @@ package com.tencent.mm.plugin.scanner.word;
 
 public abstract interface a<T, R>
 {
-  public abstract void a(T paramT, a<T, R> parama);
-  
-  public static abstract interface a<T, R>
-  {
-    public abstract void G(T paramT, R paramR);
-  }
+  public abstract void a(T paramT, a.a<T, R> parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.word.a
  * JD-Core Version:    0.7.0.1
  */

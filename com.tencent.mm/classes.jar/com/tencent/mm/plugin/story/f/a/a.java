@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.story.f.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "", "storyId", "", "type", "", "(JI)V", "getStoryId", "()J", "getType", "()I", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "", "storyId", "", "type", "", "(JI)V", "getStoryId", "()J", "getType", "()I", "plugin-story_release"})
 public class a
 {
-  public final long dLI;
+  public final long edx;
   final int type;
   
   public a(long paramLong, int paramInt)
   {
-    this.dLI = paramLong;
+    this.edx = paramLong;
     this.type = paramInt;
   }
 }

@@ -13,9 +13,9 @@ abstract interface q
   
   public abstract boolean getUseCompatPadding();
   
-  public abstract Drawable jp();
+  public abstract Drawable jy();
   
-  public abstract View jq();
+  public abstract View jz();
   
   public abstract void q(Drawable paramDrawable);
 }

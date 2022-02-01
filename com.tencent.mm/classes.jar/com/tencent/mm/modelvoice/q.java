@@ -1,30 +1,29 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
 import java.io.Closeable;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
 
 public final class q
 {
-  public static int HL(String paramString)
+  public static int Qy(String paramString)
   {
     boolean bool2 = true;
     boolean bool1 = true;
     AppMethodBeat.i(148450);
-    switch (Iq(paramString))
+    switch (Rc(paramString))
     {
     default: 
-      i = Ir(s.getFullPath(paramString));
+      i = Rd(s.getFullPath(paramString));
       AppMethodBeat.o(148450);
       return i;
     case 0: 
-      i = Ir(s.getFullPath(paramString));
+      i = Rd(s.getFullPath(paramString));
       AppMethodBeat.o(148450);
       return i;
     case 1: 
@@ -33,7 +32,7 @@ public final class q
       for (;;)
       {
         Assert.assertTrue(bool1);
-        paramString = new k(paramString);
+        paramString = new o(paramString);
         if (paramString.exists()) {
           break;
         }
@@ -55,7 +54,7 @@ public final class q
     for (bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      paramString = new k(paramString);
+      paramString = new o(paramString);
       if (paramString.exists()) {
         break;
       }
@@ -72,21 +71,21 @@ public final class q
     return i;
   }
   
-  public static int Iq(String paramString)
+  public static int Rc(String paramString)
   {
     AppMethodBeat.i(148446);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(148446);
       return -1;
     }
-    ae.d("MicroMsg.VoiceFile", "fileName ".concat(String.valueOf(paramString)));
-    if (g(paramString, 0, false))
+    Log.d("MicroMsg.VoiceFile", "fileName ".concat(String.valueOf(paramString)));
+    if (h(paramString, 0, false))
     {
       AppMethodBeat.o(148446);
       return 0;
     }
-    if (h(paramString, 0, false))
+    if (i(paramString, 0, false))
     {
       AppMethodBeat.o(148446);
       return 2;
@@ -95,14 +94,14 @@ public final class q
     return 1;
   }
   
-  private static int Ir(String paramString)
+  private static int Rd(String paramString)
   {
     AppMethodBeat.i(148451);
     if (paramString.length() >= 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      paramString = new k(paramString);
+      paramString = new o(paramString);
       if (paramString.exists()) {
         break;
       }
@@ -119,21 +118,21 @@ public final class q
     return i;
   }
   
-  public static int f(String paramString, int paramInt, boolean paramBoolean)
+  public static int g(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(148447);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(148447);
       return -1;
     }
-    ae.d("MicroMsg.VoiceFile", "fileName ".concat(String.valueOf(paramString)));
-    if (g(paramString, paramInt, paramBoolean))
+    Log.d("MicroMsg.VoiceFile", "fileName ".concat(String.valueOf(paramString)));
+    if (h(paramString, paramInt, paramBoolean))
     {
       AppMethodBeat.o(148447);
       return 0;
     }
-    if (h(paramString, paramInt, paramBoolean))
+    if (i(paramString, paramInt, paramBoolean))
     {
       AppMethodBeat.o(148447);
       return 2;
@@ -143,22 +142,22 @@ public final class q
   }
   
   /* Error */
-  private static boolean g(String paramString, int paramInt, boolean paramBoolean)
+  private static boolean h(String paramString, int paramInt, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 92
+    //   0: ldc 91
     //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: iload_2
     //   6: ifeq +66 -> 72
     //   9: ldc 63
-    //   11: ldc 94
+    //   11: ldc 93
     //   13: aload_0
     //   14: invokestatic 69	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   17: invokevirtual 72	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   20: invokestatic 78	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: invokestatic 78	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: aload_0
     //   24: iconst_0
-    //   25: invokestatic 100	com/tencent/mm/vfs/o:dg	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   25: invokestatic 99	com/tencent/mm/vfs/s:dB	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   28: astore_3
     //   29: aload_3
     //   30: astore_0
@@ -171,17 +170,17 @@ public final class q
     //   40: aload 4
     //   42: iconst_0
     //   43: bipush 6
-    //   45: invokevirtual 106	java/io/RandomAccessFile:read	([BII)I
+    //   45: invokevirtual 105	java/io/RandomAccessFile:read	([BII)I
     //   48: iconst_m1
     //   49: if_icmpne +35 -> 84
     //   52: aload_3
     //   53: astore_0
     //   54: ldc 63
-    //   56: ldc 108
-    //   58: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: ldc 107
+    //   58: invokestatic 110	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   61: aload_3
-    //   62: invokestatic 117	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
-    //   65: ldc 92
+    //   62: invokestatic 116	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   65: ldc 91
     //   67: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: iconst_0
     //   71: ireturn
@@ -196,18 +195,18 @@ public final class q
     //   86: new 30	java/lang/String
     //   89: dup
     //   90: aload 4
-    //   92: invokespecial 120	java/lang/String:<init>	([B)V
+    //   92: invokespecial 119	java/lang/String:<init>	([B)V
     //   95: astore 5
     //   97: aload_3
     //   98: astore_0
     //   99: ldc 63
-    //   101: ldc 122
+    //   101: ldc 121
     //   103: iconst_3
     //   104: anewarray 4	java/lang/Object
     //   107: dup
     //   108: iconst_0
     //   109: aload 4
-    //   111: invokestatic 126	com/tencent/mm/sdk/platformtools/bu:cE	([B)Ljava/lang/String;
+    //   111: invokestatic 125	com/tencent/mm/sdk/platformtools/Util:dumpHex	([B)Ljava/lang/String;
     //   114: aastore
     //   115: dup
     //   116: iconst_1
@@ -215,26 +214,26 @@ public final class q
     //   119: aastore
     //   120: dup
     //   121: iconst_2
-    //   122: ldc 128
+    //   122: ldc 127
     //   124: aastore
-    //   125: invokestatic 131	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   125: invokestatic 130	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   128: aload_3
     //   129: astore_0
     //   130: aload 5
-    //   132: ldc 128
-    //   134: invokevirtual 134	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   132: ldc 127
+    //   134: invokevirtual 133	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   137: istore_2
     //   138: iload_2
     //   139: ifeq +14 -> 153
     //   142: aload_3
-    //   143: invokestatic 117	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
-    //   146: ldc 92
+    //   143: invokestatic 116	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   146: ldc 91
     //   148: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: iconst_1
     //   152: ireturn
     //   153: aload_3
-    //   154: invokestatic 117	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
-    //   157: ldc 92
+    //   154: invokestatic 116	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   157: ldc 91
     //   159: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   162: iconst_0
     //   163: ireturn
@@ -245,19 +244,19 @@ public final class q
     //   169: astore_0
     //   170: ldc 63
     //   172: aload 4
-    //   174: ldc 136
+    //   174: ldc 135
     //   176: iconst_0
     //   177: anewarray 4	java/lang/Object
-    //   180: invokestatic 140	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   180: invokestatic 139	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   183: aload_3
-    //   184: invokestatic 117	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
+    //   184: invokestatic 116	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
     //   187: goto -30 -> 157
     //   190: astore_3
     //   191: aconst_null
     //   192: astore_0
     //   193: aload_0
-    //   194: invokestatic 117	com/tencent/mm/vfs/w:closeQuietly	(Ljava/io/Closeable;)V
-    //   197: ldc 92
+    //   194: invokestatic 116	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   197: ldc 91
     //   199: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   202: aload_3
     //   203: athrow
@@ -299,7 +298,7 @@ public final class q
     //   130	138	208	java/lang/Exception
   }
   
-  public static boolean h(String paramString, int paramInt, boolean paramBoolean)
+  public static boolean i(String paramString, int paramInt, boolean paramBoolean)
   {
     Object localObject1 = null;
     byte[] arrayOfByte = null;
@@ -309,11 +308,11 @@ public final class q
     {
       for (;;)
       {
-        ae.d("MicroMsg.VoiceFile", "isSilkHeader path ".concat(String.valueOf(localObject2)));
+        Log.d("MicroMsg.VoiceFile", "isSilkHeader path ".concat(String.valueOf(localObject2)));
         paramString = arrayOfByte;
         try
         {
-          localObject2 = o.dg((String)localObject2, false);
+          localObject2 = com.tencent.mm.vfs.s.dB((String)localObject2, false);
           paramString = (String)localObject2;
           localObject1 = localObject2;
           arrayOfByte = new byte[9];
@@ -325,7 +324,7 @@ public final class q
           paramInt = ((RandomAccessFile)localObject2).read(arrayOfByte, 0, 9);
           if (paramInt == -1)
           {
-            w.closeQuietly((Closeable)localObject2);
+            aa.closeQuietly((Closeable)localObject2);
             AppMethodBeat.o(148449);
             return false;
             if (paramInt == 0)
@@ -337,7 +336,7 @@ public final class q
               if (paramInt != 1) {
                 break;
               }
-              ae.e("MicroMsg.VoiceFile", "isSilkHeader usertype error, TYPE_RECOGNIZER_BIZ fileName:%s", new Object[] { paramString });
+              Log.e("MicroMsg.VoiceFile", "isSilkHeader usertype error, TYPE_RECOGNIZER_BIZ fileName:%s", new Object[] { paramString });
               AppMethodBeat.o(148449);
               return false;
             }
@@ -349,17 +348,17 @@ public final class q
             String str2 = new String(arrayOfByte);
             paramString = (String)localObject2;
             localObject1 = localObject2;
-            ae.i("MicroMsg.VoiceFile", "isSilkHeader voice file headHex:|%s| headStr:|%s| AmrFileOperator.AMR_NB_HEAD:|%s|", new Object[] { bu.cE(arrayOfByte), str2, "#!SILK_V3" });
+            Log.i("MicroMsg.VoiceFile", "isSilkHeader voice file headHex:|%s| headStr:|%s| AmrFileOperator.AMR_NB_HEAD:|%s|", new Object[] { Util.dumpHex(arrayOfByte), str2, "#!SILK_V3" });
             paramString = (String)localObject2;
             localObject1 = localObject2;
             paramBoolean = str2.endsWith("#!SILK_V3");
             if (paramBoolean)
             {
-              w.closeQuietly((Closeable)localObject2);
+              aa.closeQuietly((Closeable)localObject2);
               AppMethodBeat.o(148449);
               return true;
             }
-            w.closeQuietly((Closeable)localObject2);
+            aa.closeQuietly((Closeable)localObject2);
           }
         }
         catch (Exception localException)
@@ -367,14 +366,14 @@ public final class q
           for (;;)
           {
             str1 = paramString;
-            ae.d("MicroMsg.VoiceFile", "isSilkHeader file not found");
-            w.closeQuietly(paramString);
+            Log.d("MicroMsg.VoiceFile", "isSilkHeader file not found");
+            aa.closeQuietly(paramString);
           }
         }
         finally
         {
           String str1;
-          w.closeQuietly(str1);
+          aa.closeQuietly(str1);
           AppMethodBeat.o(148449);
         }
       }
@@ -385,7 +384,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoice.q
  * JD-Core Version:    0.7.0.1
  */

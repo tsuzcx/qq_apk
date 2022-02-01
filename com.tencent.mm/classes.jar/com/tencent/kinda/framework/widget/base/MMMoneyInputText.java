@@ -31,10 +31,10 @@ public class MMMoneyInputText
   public LinearLayout createView(final Context paramContext)
   {
     AppMethodBeat.i(19289);
-    this.contentView = ((LinearLayout)View.inflate(paramContext, 2131495981, null));
-    this.titleTv = ((TextView)this.contentView.findViewById(2131306836));
-    this.contentTv = ((TenpaySecureEditText)this.contentView.findViewById(2131306718));
-    this.contentTv.setBackgroundResource(2131233299);
+    this.contentView = ((LinearLayout)View.inflate(paramContext, 2131496961, null));
+    this.titleTv = ((TextView)this.contentView.findViewById(2131310298));
+    this.contentTv = ((TenpaySecureEditText)this.contentView.findViewById(2131310180));
+    this.contentTv.setBackgroundResource(2131233974);
     this.contentTv.setOnClickListener(new View.OnClickListener()
     {
       private byte _hellAccFlag_;
@@ -43,8 +43,8 @@ public class MMMoneyInputText
       {
         AppMethodBeat.i(19286);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if ((paramContext instanceof BaseFrActivity)) {
           ((BaseFrActivity)paramContext).hideTenpayKB();
         }
@@ -197,7 +197,7 @@ public class MMMoneyInputText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMMoneyInputText
  * JD-Core Version:    0.7.0.1
  */

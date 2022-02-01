@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.chatting.d.a;
 
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.ui.chatting.d.af;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,10 +10,10 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.TYPE})
 public @interface a
 {
-  Class<? extends ad> fJv() default a.class;
+  Class<? extends af> gRF() default a.class;
   
   public static class a
-    implements ad
+    implements af
   {}
 }
 

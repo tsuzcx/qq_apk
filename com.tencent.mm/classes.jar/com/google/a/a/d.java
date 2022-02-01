@@ -1,21 +1,53 @@
 package com.google.a.a;
 
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.io.IOException;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.TYPE})
-public @interface d
+public final class d
+  extends IOException
 {
-  double yG();
+  private d(String paramString)
+  {
+    super(paramString);
+  }
+  
+  static d HY()
+  {
+    return new d("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
+  }
+  
+  static d HZ()
+  {
+    return new d("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
+  }
+  
+  static d Ia()
+  {
+    return new d("CodedInputStream encountered a malformed varint.");
+  }
+  
+  static d Ib()
+  {
+    return new d("Protocol message contained an invalid tag (zero).");
+  }
+  
+  static d Ic()
+  {
+    return new d("Protocol message end-group tag did not match expected tag.");
+  }
+  
+  static d Id()
+  {
+    return new d("Protocol message tag had invalid wire type.");
+  }
+  
+  static d Ie()
+  {
+    return new d("Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit.");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.a.a.d
  * JD-Core Version:    0.7.0.1
  */

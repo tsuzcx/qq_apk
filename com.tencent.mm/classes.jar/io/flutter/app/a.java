@@ -20,11 +20,10 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.embedding.engine.c.e;
-import io.flutter.embedding.engine.c.j;
+import io.flutter.embedding.engine.c.f;
 import io.flutter.plugin.a.m;
 import io.flutter.plugin.a.m.c;
-import io.flutter.plugin.platform.h;
+import io.flutter.plugin.platform.PlatformViewsController;
 import io.flutter.view.FlutterMain;
 import io.flutter.view.FlutterNativeView;
 import io.flutter.view.FlutterView;
@@ -36,28 +35,28 @@ import java.util.List;
 public final class a
   implements b, m, FlutterView.b
 {
-  private static final WindowManager.LayoutParams MXN;
-  private final a MXO;
-  private FlutterView MXP;
-  private View MXQ;
+  private static final WindowManager.LayoutParams SLX;
+  private final a SLY;
+  private FlutterView SLZ;
+  private View SMa;
   private final Activity activity;
   
   static
   {
     AppMethodBeat.i(9669);
-    MXN = new WindowManager.LayoutParams(-1, -1);
+    SLX = new WindowManager.LayoutParams(-1, -1);
     AppMethodBeat.o(9669);
   }
   
   public a(Activity paramActivity, a parama)
   {
     AppMethodBeat.i(9648);
-    this.activity = ((Activity)io.flutter.b.b.checkNotNull(paramActivity));
-    this.MXO = ((a)io.flutter.b.b.checkNotNull(parama));
+    this.activity = ((Activity)io.flutter.a.b.checkNotNull(paramActivity));
+    this.SLY = ((a)io.flutter.a.b.checkNotNull(parama));
     AppMethodBeat.o(9648);
   }
   
-  private boolean bB(Intent paramIntent)
+  private boolean bN(Intent paramIntent)
   {
     AppMethodBeat.i(9665);
     if ("android.intent.action.RUN".equals(paramIntent.getAction()))
@@ -69,9 +68,9 @@ public final class a
         paramIntent = FlutterMain.findAppBundlePath();
       }
       if (str2 != null) {
-        this.MXP.setInitialRoute(str2);
+        this.SLZ.setInitialRoute(str2);
       }
-      bdm(paramIntent);
+      bsY(paramIntent);
       AppMethodBeat.o(9665);
       return true;
     }
@@ -79,20 +78,20 @@ public final class a
     return false;
   }
   
-  private void bdm(String paramString)
+  private void bsY(String paramString)
   {
     AppMethodBeat.i(9666);
-    if (!this.MXP.getFlutterNativeView().Ngw)
+    if (!this.SLZ.getFlutterNativeView().SWg)
     {
       io.flutter.view.b localb = new io.flutter.view.b();
-      localb.Ngy = paramString;
-      localb.Ngz = "main";
-      this.MXP.a(localb);
+      localb.SWi = paramString;
+      localb.SWj = "main";
+      this.SLZ.a(localb);
     }
     AppMethodBeat.o(9666);
   }
   
-  private Drawable giK()
+  private Drawable hwj()
   {
     AppMethodBeat.i(9667);
     Object localObject = new TypedValue();
@@ -120,7 +119,7 @@ public final class a
   }
   
   /* Error */
-  private Boolean giL()
+  private Boolean hwk()
   {
     // Byte code:
     //   0: sipush 9668
@@ -174,28 +173,28 @@ public final class a
   public final boolean a(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(9651);
-    boolean bool = this.MXP.getPluginRegistry().a(paramInt, paramArrayOfString, paramArrayOfInt);
+    boolean bool = this.SLZ.getPluginRegistry().a(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(9651);
     return bool;
   }
   
-  public final boolean bdl(String paramString)
+  public final boolean bsW(String paramString)
   {
     AppMethodBeat.i(9649);
-    boolean bool = this.MXP.getPluginRegistry().bdl(paramString);
+    boolean bool = this.SLZ.getPluginRegistry().bsW(paramString);
     AppMethodBeat.o(9649);
     return bool;
   }
   
-  public final m.c er(String paramString)
+  public final m.c bsX(String paramString)
   {
     AppMethodBeat.i(9650);
-    paramString = this.MXP.getPluginRegistry().er(paramString);
+    paramString = this.SLZ.getPluginRegistry().bsX(paramString);
     AppMethodBeat.o(9650);
     return paramString;
   }
   
-  public final void giJ()
+  public final void hwi()
   {
     FlutterView.a local1 = null;
     AppMethodBeat.i(9653);
@@ -261,13 +260,13 @@ public final class a
     {
       localObject1 = (String[])((ArrayList)localObject2).toArray(new String[((ArrayList)localObject2).size()]);
       FlutterMain.ensureInitializationComplete(this.activity.getApplicationContext(), (String[])localObject1);
-      this.MXP = null;
-      if (this.MXP == null)
+      this.SLZ = null;
+      if (this.SLZ == null)
       {
-        this.MXP = new FlutterView(this.activity, null, null);
-        this.MXP.setLayoutParams(MXN);
-        this.activity.setContentView(this.MXP);
-        if (giL().booleanValue()) {
+        this.SLZ = new FlutterView(this.activity, null, null);
+        this.SLZ.setLayoutParams(SLX);
+        this.activity.setContentView(this.SLZ);
+        if (hwk().booleanValue()) {
           break label613;
         }
         localObject1 = local1;
@@ -275,11 +274,11 @@ public final class a
     }
     for (;;)
     {
-      this.MXQ = ((View)localObject1);
-      if ((this.MXQ != null) && (this.MXQ != null))
+      this.SMa = ((View)localObject1);
+      if ((this.SMa != null) && (this.SMa != null))
       {
-        this.activity.addContentView(this.MXQ, MXN);
-        localObject1 = this.MXP;
+        this.activity.addContentView(this.SMa, SLX);
+        localObject1 = this.SLZ;
         local1 = new FlutterView.a()
         {
           public final void onFirstFrame()
@@ -295,14 +294,14 @@ public final class a
                 AppMethodBeat.o(9623);
               }
             });
-            a.c(a.this).NgG.remove(this);
+            a.c(a.this).SWs.remove(this);
             AppMethodBeat.o(9594);
           }
         };
-        ((FlutterView)localObject1).NgG.add(local1);
+        ((FlutterView)localObject1).SWs.add(local1);
         this.activity.setTheme(16973833);
       }
-      if (!bB(this.activity.getIntent())) {
+      if (!bN(this.activity.getIntent())) {
         break label654;
       }
       AppMethodBeat.o(9653);
@@ -310,19 +309,19 @@ public final class a
       localObject1 = null;
       break;
       label613:
-      localObject2 = giK();
+      localObject2 = hwj();
       localObject1 = local1;
       if (localObject2 != null)
       {
         localObject1 = new View(this.activity);
-        ((View)localObject1).setLayoutParams(MXN);
+        ((View)localObject1).setLayoutParams(SLX);
         ((View)localObject1).setBackground((Drawable)localObject2);
       }
     }
     label654:
     localObject1 = FlutterMain.findAppBundlePath();
     if (localObject1 != null) {
-      bdm((String)localObject1);
+      bsY((String)localObject1);
     }
     AppMethodBeat.o(9653);
   }
@@ -330,7 +329,7 @@ public final class a
   public final boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(9652);
-    boolean bool = this.MXP.getPluginRegistry().onActivityResult(paramInt1, paramInt2, paramIntent);
+    boolean bool = this.SLZ.getPluginRegistry().onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(9652);
     return bool;
   }
@@ -338,9 +337,9 @@ public final class a
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(9661);
-    if (this.MXP != null)
+    if (this.SLZ != null)
     {
-      this.MXP.MZr.cSQ();
+      this.SLZ.SOc.dLr();
       AppMethodBeat.o(9661);
       return true;
     }
@@ -361,27 +360,27 @@ public final class a
         ((FlutterApplication)localObject).setCurrentActivity(null);
       }
     }
-    if (this.MXP != null)
+    if (this.SLZ != null)
     {
-      if (this.MXP.getPluginRegistry().a(this.MXP.getFlutterNativeView()))
+      if (this.SLZ.getPluginRegistry().a(this.SLZ.getFlutterNativeView()))
       {
-        localObject = this.MXP;
+        localObject = this.SLZ;
         if (((FlutterView)localObject).isAttached())
         {
-          ((FlutterView)localObject).getHolder().removeCallback(((FlutterView)localObject).NgD);
-          FlutterNativeView localFlutterNativeView = ((FlutterView)localObject).MXT;
-          c localc = localFlutterNativeView.Ngu;
-          localc.MXV.detach();
-          localc.MXV.gjP();
-          localc.MXU = null;
+          ((FlutterView)localObject).getHolder().removeCallback(((FlutterView)localObject).SWp);
+          FlutterNativeView localFlutterNativeView = ((FlutterView)localObject).SMd;
+          c localc = localFlutterNativeView.SWe;
+          localc.SMf.detach();
+          localc.SMf.onDetachedFromJNI();
+          localc.SMe = null;
           localc.mActivity = null;
-          localFlutterNativeView.MXU = null;
-          ((FlutterView)localObject).MXT = null;
+          localFlutterNativeView.SMe = null;
+          ((FlutterView)localObject).SMd = null;
         }
         AppMethodBeat.o(9660);
         return;
       }
-      this.MXP.destroy();
+      this.SLZ.destroy();
     }
     AppMethodBeat.o(9660);
   }
@@ -389,7 +388,7 @@ public final class a
   public final void onLowMemory()
   {
     AppMethodBeat.i(9664);
-    this.MXP.MZv.gjI();
+    this.SLZ.hxz();
     AppMethodBeat.o(9664);
   }
   
@@ -399,8 +398,8 @@ public final class a
     if ((this.activity.getApplicationInfo().flags & 0x2) != 0) {}
     for (int i = 1;; i = 0)
     {
-      if ((i == 0) || (!bB(paramIntent))) {
-        this.MXP.getPluginRegistry().onNewIntent(paramIntent);
+      if ((i == 0) || (!bN(paramIntent))) {
+        this.SLZ.getPluginRegistry().onNewIntent(paramIntent);
       }
       AppMethodBeat.o(9654);
       return;
@@ -418,8 +417,8 @@ public final class a
         ((FlutterApplication)localObject).setCurrentActivity(null);
       }
     }
-    if (this.MXP != null) {
-      this.MXP.MZp.gjA();
+    if (this.SLZ != null) {
+      this.SLZ.SNZ.hxc();
     }
     AppMethodBeat.o(9655);
   }
@@ -427,8 +426,8 @@ public final class a
   public final void onPostResume()
   {
     AppMethodBeat.i(9659);
-    if (this.MXP != null) {
-      this.MXP.onPostResume();
+    if (this.SLZ != null) {
+      this.SLZ.onPostResume();
     }
     AppMethodBeat.o(9659);
   }
@@ -446,8 +445,8 @@ public final class a
   public final void onStart()
   {
     AppMethodBeat.i(9656);
-    if (this.MXP != null) {
-      this.MXP.MZp.gjA();
+    if (this.SLZ != null) {
+      this.SLZ.SNZ.hxc();
     }
     AppMethodBeat.o(9656);
   }
@@ -455,7 +454,7 @@ public final class a
   public final void onStop()
   {
     AppMethodBeat.i(9658);
-    this.MXP.MZp.gjC();
+    this.SLZ.SNZ.hxe();
     AppMethodBeat.o(9658);
   }
   
@@ -463,7 +462,7 @@ public final class a
   {
     AppMethodBeat.i(9663);
     if (paramInt == 10) {
-      this.MXP.MZv.gjI();
+      this.SLZ.hxz();
     }
     AppMethodBeat.o(9663);
   }
@@ -471,7 +470,7 @@ public final class a
   public final void onUserLeaveHint()
   {
     AppMethodBeat.i(9662);
-    this.MXP.getPluginRegistry().onUserLeaveHint();
+    this.SLZ.getPluginRegistry().onUserLeaveHint();
     AppMethodBeat.o(9662);
   }
   
@@ -479,7 +478,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.app.a
  * JD-Core Version:    0.7.0.1
  */

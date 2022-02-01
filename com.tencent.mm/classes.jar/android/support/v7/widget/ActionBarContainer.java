@@ -3,7 +3,7 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v7.a.a.a;
 import android.util.AttributeSet;
 import android.view.ActionMode;
@@ -18,33 +18,33 @@ import android.widget.FrameLayout.LayoutParams;
 public class ActionBarContainer
   extends FrameLayout
 {
-  Drawable afM;
-  private boolean ahn;
-  private View aho;
-  private View ahp;
-  private View ahq;
-  Drawable ahr;
-  Drawable ahs;
-  boolean aht;
-  boolean ahu;
+  Drawable afZ;
+  private boolean ahA;
+  private View ahB;
+  private View ahC;
+  private View ahD;
+  Drawable ahE;
+  Drawable ahF;
+  boolean ahG;
+  boolean ahH;
   private int mHeight;
   
   public ActionBarContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    t.a(this, new b(this));
+    u.a(this, new b(this));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ActionBar);
-    this.afM = paramContext.getDrawable(0);
-    this.ahr = paramContext.getDrawable(2);
+    this.afZ = paramContext.getDrawable(0);
+    this.ahE = paramContext.getDrawable(2);
     this.mHeight = paramContext.getDimensionPixelSize(13, -1);
-    if (getId() == 2131305154)
+    if (getId() == 2131308337)
     {
-      this.aht = true;
-      this.ahs = paramContext.getDrawable(1);
+      this.ahG = true;
+      this.ahF = paramContext.getDrawable(1);
     }
     paramContext.recycle();
-    if (this.aht) {
-      if (this.ahs != null) {}
+    if (this.ahG) {
+      if (this.ahF != null) {}
     }
     for (;;)
     {
@@ -52,18 +52,18 @@ public class ActionBarContainer
       return;
       bool = false;
       continue;
-      if ((this.afM != null) || (this.ahr != null)) {
+      if ((this.afZ != null) || (this.ahE != null)) {
         bool = false;
       }
     }
   }
   
-  private static boolean bc(View paramView)
+  private static boolean bd(View paramView)
   {
     return (paramView == null) || (paramView.getVisibility() == 8) || (paramView.getMeasuredHeight() == 0);
   }
   
-  private static int bd(View paramView)
+  private static int be(View paramView)
   {
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramView.getLayoutParams();
     int i = paramView.getMeasuredHeight();
@@ -74,41 +74,41 @@ public class ActionBarContainer
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.afM != null) && (this.afM.isStateful())) {
-      this.afM.setState(getDrawableState());
+    if ((this.afZ != null) && (this.afZ.isStateful())) {
+      this.afZ.setState(getDrawableState());
     }
-    if ((this.ahr != null) && (this.ahr.isStateful())) {
-      this.ahr.setState(getDrawableState());
+    if ((this.ahE != null) && (this.ahE.isStateful())) {
+      this.ahE.setState(getDrawableState());
     }
-    if ((this.ahs != null) && (this.ahs.isStateful())) {
-      this.ahs.setState(getDrawableState());
+    if ((this.ahF != null) && (this.ahF.isStateful())) {
+      this.ahF.setState(getDrawableState());
     }
   }
   
   public View getTabContainer()
   {
-    return this.aho;
+    return this.ahB;
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.afM != null) {
-      this.afM.jumpToCurrentState();
+    if (this.afZ != null) {
+      this.afZ.jumpToCurrentState();
     }
-    if (this.ahr != null) {
-      this.ahr.jumpToCurrentState();
+    if (this.ahE != null) {
+      this.ahE.jumpToCurrentState();
     }
-    if (this.ahs != null) {
-      this.ahs.jumpToCurrentState();
+    if (this.ahF != null) {
+      this.ahF.jumpToCurrentState();
     }
   }
   
   public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.ahp = findViewById(2131296343);
-    this.ahq = findViewById(2131296357);
+    this.ahC = findViewById(2131296363);
+    this.ahD = findViewById(2131296380);
   }
   
   public boolean onHoverEvent(MotionEvent paramMotionEvent)
@@ -119,14 +119,14 @@ public class ActionBarContainer
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return (this.ahn) || (super.onInterceptTouchEvent(paramMotionEvent));
+    return (this.ahA) || (super.onInterceptTouchEvent(paramMotionEvent));
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 1;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    View localView = this.aho;
+    View localView = this.ahB;
     if ((localView != null) && (localView.getVisibility() != 8))
     {
       paramBoolean = true;
@@ -136,13 +136,13 @@ public class ActionBarContainer
         FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localView.getLayoutParams();
         localView.layout(paramInt1, paramInt2 - localView.getMeasuredHeight() - localLayoutParams.bottomMargin, paramInt3, paramInt2 - localLayoutParams.bottomMargin);
       }
-      if (!this.aht) {
+      if (!this.ahG) {
         break label143;
       }
-      if (this.ahs == null) {
+      if (this.ahF == null) {
         break label323;
       }
-      this.ahs.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+      this.ahF.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
       paramInt1 = i;
     }
     for (;;)
@@ -154,26 +154,26 @@ public class ActionBarContainer
       paramBoolean = false;
       break;
       label143:
-      if (this.afM != null) {
-        if (this.ahp.getVisibility() == 0) {
-          this.afM.setBounds(this.ahp.getLeft(), this.ahp.getTop(), this.ahp.getRight(), this.ahp.getBottom());
+      if (this.afZ != null) {
+        if (this.ahC.getVisibility() == 0) {
+          this.afZ.setBounds(this.ahC.getLeft(), this.ahC.getTop(), this.ahC.getRight(), this.ahC.getBottom());
         }
       }
       label195:
       for (paramInt1 = 1;; paramInt1 = 0)
       {
-        this.ahu = paramBoolean;
-        if ((paramBoolean) && (this.ahr != null))
+        this.ahH = paramBoolean;
+        if ((paramBoolean) && (this.ahE != null))
         {
-          this.ahr.setBounds(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
+          this.ahE.setBounds(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
           paramInt1 = i;
           break;
-          if ((this.ahq != null) && (this.ahq.getVisibility() == 0))
+          if ((this.ahD != null) && (this.ahD.getVisibility() == 0))
           {
-            this.afM.setBounds(this.ahq.getLeft(), this.ahq.getTop(), this.ahq.getRight(), this.ahq.getBottom());
+            this.afZ.setBounds(this.ahD.getLeft(), this.ahD.getTop(), this.ahD.getRight(), this.ahD.getBottom());
             break label195;
           }
-          this.afM.setBounds(0, 0, 0, 0);
+          this.afZ.setBounds(0, 0, 0, 0);
           break label195;
         }
         break;
@@ -186,7 +186,7 @@ public class ActionBarContainer
   public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = paramInt2;
-    if (this.ahp == null)
+    if (this.ahC == null)
     {
       i = paramInt2;
       if (View.MeasureSpec.getMode(paramInt2) == -2147483648)
@@ -198,15 +198,15 @@ public class ActionBarContainer
       }
     }
     super.onMeasure(paramInt1, i);
-    if (this.ahp == null) {}
+    if (this.ahC == null) {}
     do
     {
       return;
       paramInt2 = View.MeasureSpec.getMode(i);
-    } while ((this.aho == null) || (this.aho.getVisibility() == 8) || (paramInt2 == 1073741824));
-    if (!bc(this.ahp))
+    } while ((this.ahB == null) || (this.ahB.getVisibility() == 8) || (paramInt2 == 1073741824));
+    if (!bd(this.ahC))
     {
-      paramInt1 = bd(this.ahp);
+      paramInt1 = be(this.ahC);
       if (paramInt2 != -2147483648) {
         break label167;
       }
@@ -214,11 +214,11 @@ public class ActionBarContainer
     label167:
     for (paramInt2 = View.MeasureSpec.getSize(i);; paramInt2 = 2147483647)
     {
-      setMeasuredDimension(getMeasuredWidth(), Math.min(paramInt1 + bd(this.aho), paramInt2));
+      setMeasuredDimension(getMeasuredWidth(), Math.min(paramInt1 + be(this.ahB), paramInt2));
       return;
-      if (!bc(this.ahq))
+      if (!bd(this.ahD))
       {
-        paramInt1 = bd(this.ahq);
+        paramInt1 = be(this.ahD);
         break;
       }
       paramInt1 = 0;
@@ -235,21 +235,21 @@ public class ActionBarContainer
   public void setPrimaryBackground(Drawable paramDrawable)
   {
     boolean bool = true;
-    if (this.afM != null)
+    if (this.afZ != null)
     {
-      this.afM.setCallback(null);
-      unscheduleDrawable(this.afM);
+      this.afZ.setCallback(null);
+      unscheduleDrawable(this.afZ);
     }
-    this.afM = paramDrawable;
+    this.afZ = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
-      if (this.ahp != null) {
-        this.afM.setBounds(this.ahp.getLeft(), this.ahp.getTop(), this.ahp.getRight(), this.ahp.getBottom());
+      if (this.ahC != null) {
+        this.afZ.setBounds(this.ahC.getLeft(), this.ahC.getTop(), this.ahC.getRight(), this.ahC.getBottom());
       }
     }
-    if (this.aht) {
-      if (this.ahs != null) {}
+    if (this.ahG) {
+      if (this.ahF != null) {}
     }
     for (;;)
     {
@@ -258,7 +258,7 @@ public class ActionBarContainer
       return;
       bool = false;
       continue;
-      if ((this.afM != null) || (this.ahr != null)) {
+      if ((this.afZ != null) || (this.ahE != null)) {
         bool = false;
       }
     }
@@ -267,21 +267,21 @@ public class ActionBarContainer
   public void setSplitBackground(Drawable paramDrawable)
   {
     boolean bool = true;
-    if (this.ahs != null)
+    if (this.ahF != null)
     {
-      this.ahs.setCallback(null);
-      unscheduleDrawable(this.ahs);
+      this.ahF.setCallback(null);
+      unscheduleDrawable(this.ahF);
     }
-    this.ahs = paramDrawable;
+    this.ahF = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
-      if ((this.aht) && (this.ahs != null)) {
-        this.ahs.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+      if ((this.ahG) && (this.ahF != null)) {
+        this.ahF.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
       }
     }
-    if (this.aht) {
-      if (this.ahs != null) {}
+    if (this.ahG) {
+      if (this.ahF != null) {}
     }
     for (;;)
     {
@@ -290,7 +290,7 @@ public class ActionBarContainer
       return;
       bool = false;
       continue;
-      if ((this.afM != null) || (this.ahr != null)) {
+      if ((this.afZ != null) || (this.ahE != null)) {
         bool = false;
       }
     }
@@ -299,21 +299,21 @@ public class ActionBarContainer
   public void setStackedBackground(Drawable paramDrawable)
   {
     boolean bool = true;
-    if (this.ahr != null)
+    if (this.ahE != null)
     {
-      this.ahr.setCallback(null);
-      unscheduleDrawable(this.ahr);
+      this.ahE.setCallback(null);
+      unscheduleDrawable(this.ahE);
     }
-    this.ahr = paramDrawable;
+    this.ahE = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
-      if ((this.ahu) && (this.ahr != null)) {
-        this.ahr.setBounds(this.aho.getLeft(), this.aho.getTop(), this.aho.getRight(), this.aho.getBottom());
+      if ((this.ahH) && (this.ahE != null)) {
+        this.ahE.setBounds(this.ahB.getLeft(), this.ahB.getTop(), this.ahB.getRight(), this.ahB.getBottom());
       }
     }
-    if (this.aht) {
-      if (this.ahs != null) {}
+    if (this.ahG) {
+      if (this.ahF != null) {}
     }
     for (;;)
     {
@@ -322,7 +322,7 @@ public class ActionBarContainer
       return;
       bool = false;
       continue;
-      if ((this.afM != null) || (this.ahr != null)) {
+      if ((this.afZ != null) || (this.ahE != null)) {
         bool = false;
       }
     }
@@ -330,10 +330,10 @@ public class ActionBarContainer
   
   public void setTabContainer(ar paramar)
   {
-    if (this.aho != null) {
-      removeView(this.aho);
+    if (this.ahB != null) {
+      removeView(this.ahB);
     }
-    this.aho = paramar;
+    this.ahB = paramar;
     if (paramar != null)
     {
       addView(paramar);
@@ -346,7 +346,7 @@ public class ActionBarContainer
   
   public void setTransitioning(boolean paramBoolean)
   {
-    this.ahn = paramBoolean;
+    this.ahA = paramBoolean;
     if (paramBoolean) {}
     for (int i = 393216;; i = 262144)
     {
@@ -361,14 +361,14 @@ public class ActionBarContainer
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      if (this.afM != null) {
-        this.afM.setVisible(bool, false);
+      if (this.afZ != null) {
+        this.afZ.setVisible(bool, false);
       }
-      if (this.ahr != null) {
-        this.ahr.setVisible(bool, false);
+      if (this.ahE != null) {
+        this.ahE.setVisible(bool, false);
       }
-      if (this.ahs != null) {
-        this.ahs.setVisible(bool, false);
+      if (this.ahF != null) {
+        this.ahF.setVisible(bool, false);
       }
       return;
     }
@@ -389,7 +389,7 @@ public class ActionBarContainer
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return ((paramDrawable == this.afM) && (!this.aht)) || ((paramDrawable == this.ahr) && (this.ahu)) || ((paramDrawable == this.ahs) && (this.aht)) || (super.verifyDrawable(paramDrawable));
+    return ((paramDrawable == this.afZ) && (!this.ahG)) || ((paramDrawable == this.ahE) && (this.ahH)) || ((paramDrawable == this.ahF) && (this.ahG)) || (super.verifyDrawable(paramDrawable));
   }
 }
 

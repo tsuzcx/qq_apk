@@ -1,182 +1,273 @@
 package com.tencent.mm.model;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.cbk;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Util;
+import junit.framework.Assert;
+import org.json.JSONObject;
 
 public final class bv
 {
-  public String cityCode = "";
-  public String countryCode = "";
-  public int eQV = 0;
-  public int eRe = 0;
-  public String eRj = "";
-  private String hKN = "";
-  private String hKO = "";
-  public String provinceCode = "";
-  public String signature = "";
+  public int cSx;
+  private String groupId;
+  public String iAo;
+  public String iAq;
+  public String iFk;
+  public String iFl;
+  public String iFm;
+  public long iFn;
+  public String iFo;
+  public String iFp;
+  public int iFq;
+  public int iFr;
+  public long iFs;
+  public String iFt;
+  public String iFu;
+  private boolean iFv;
+  private int iFw;
+  private int iFx;
+  public String name;
+  private int subType;
+  public long time;
+  public String title;
+  public int type;
+  public String url;
   
-  public static cbk a(bv parambv)
+  public bv()
   {
-    AppMethodBeat.i(42985);
-    g.ajR().ajA().set(12289, Integer.valueOf(parambv.eRe));
-    g.ajR().ajA().set(12290, Integer.valueOf(parambv.eQV));
-    if (bv.a.aO((String)g.ajR().ajA().get(12293, null), parambv.getProvince())) {
-      g.ajR().ajA().set(12293, parambv.getProvince());
-    }
-    if (bv.a.aO((String)g.ajR().ajA().get(12292, null), parambv.getCity())) {
-      g.ajR().ajA().set(12292, parambv.getCity());
-    }
-    if (bv.a.aO((String)g.ajR().ajA().get(12291, null), parambv.signature)) {
-      g.ajR().ajA().set(12291, parambv.signature);
-    }
-    if (bv.a.aO((String)g.ajR().ajA().get(12307, null), parambv.eRj)) {
-      g.ajR().ajA().set(12307, parambv.eRj);
-    }
-    if (bv.a.aO((String)g.ajR().ajA().get(12324, null), parambv.countryCode)) {
-      g.ajR().ajA().set(12324, parambv.countryCode);
-    }
-    if (bv.a.aO((String)g.ajR().ajA().get(12325, null), parambv.provinceCode)) {
-      g.ajR().ajA().set(12325, parambv.provinceCode);
-    }
-    if (bv.a.aO((String)g.ajR().ajA().get(12326, null), parambv.cityCode)) {
-      g.ajR().ajA().set(12326, parambv.cityCode);
-    }
-    cbk localcbk = new cbk();
-    localcbk.HoK = 128;
-    localcbk.GuF = new cxn().aQV("");
-    localcbk.Hed = new cxn().aQV("");
-    localcbk.FKD = 0;
-    localcbk.HoL = new cxn().aQV("");
-    localcbk.HoM = new cxn().aQV("");
-    localcbk.nJb = 0;
-    byte[] arrayOfByte2 = o.bb("", 0, -1);
-    byte[] arrayOfByte1;
-    if (arrayOfByte2 == null)
+    AppMethodBeat.i(91028);
+    this.iFv = false;
+    this.iFw = 0;
+    this.subType = 0;
+    this.iFx = 0;
+    this.groupId = "";
+    this.cSx = -1;
+    this.iFk = "";
+    this.time = 0L;
+    this.type = 0;
+    this.name = "";
+    this.title = "";
+    this.url = "";
+    this.iFl = "";
+    this.iFm = "";
+    this.iFn = 0L;
+    this.iFo = "";
+    this.iFp = "";
+    this.iFq = 0;
+    this.iAo = "";
+    this.iAq = "";
+    this.iFr = 0;
+    this.iFs = 0L;
+    this.iFt = "";
+    this.iFu = "";
+    AppMethodBeat.o(91028);
+  }
+  
+  private void aWi()
+  {
+    AppMethodBeat.i(91036);
+    if ((this.iFv) || (Util.isNullOrNil(this.iFu)))
     {
-      arrayOfByte1 = new byte[0];
-      localcbk.HoI = new b(arrayOfByte1);
-      if (arrayOfByte2 != null) {
-        break label598;
+      AppMethodBeat.o(91036);
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(this.iFu);
+        this.iFw = localJSONObject.optInt("videoLength", 0);
+        int i = localJSONObject.optInt("subType", 0);
+        if (i != 1) {
+          continue;
+        }
+        this.subType = i;
+        this.groupId = localJSONObject.optString("groupId", "");
+        this.iFx = localJSONObject.optInt("tweetType", 0);
       }
-    }
-    label598:
-    for (int i = 0;; i = arrayOfByte2.length)
-    {
-      localcbk.HoH = i;
-      localcbk.jfV = parambv.eQV;
-      localcbk.jfZ = parambv.eRe;
-      localcbk.jfY = bu.nullAsNil(parambv.signature);
-      localcbk.jfX = bu.nullAsNil(parambv.cityCode);
-      localcbk.jfW = bu.nullAsNil(parambv.provinceCode);
-      localcbk.FKG = 0;
-      localcbk.Hhw = bu.nullAsNil(parambv.eRj);
-      localcbk.HoR = 0;
-      localcbk.jga = "";
-      localcbk.Hhy = 0;
-      localcbk.Hhx = "";
-      localcbk.jge = bu.nullAsNil(parambv.countryCode);
-      AppMethodBeat.o(42985);
-      return localcbk;
-      arrayOfByte1 = arrayOfByte2;
-      break;
+      catch (Exception localException)
+      {
+        continue;
+      }
+      this.iFv = true;
+      AppMethodBeat.o(91036);
+      return;
+      this.subType = 0;
     }
   }
   
-  public static bv aCL()
+  public static String sd(int paramInt)
   {
-    AppMethodBeat.i(42983);
-    bv localbv = new bv();
-    localbv.eRe = 1;
-    localbv.eQV = bu.a((Integer)g.ajR().ajA().get(12290, null), 0);
-    localbv.hKN = ((String)g.ajR().ajA().get(12293, null));
-    localbv.hKO = ((String)g.ajR().ajA().get(12292, null));
-    localbv.signature = ((String)g.ajR().ajA().get(12291, null));
-    localbv.eRj = ((String)g.ajR().ajA().get(12307, null));
-    localbv.countryCode = ((String)g.ajR().ajA().get(12324, null));
-    localbv.provinceCode = ((String)g.ajR().ajA().get(12325, null));
-    localbv.cityCode = ((String)g.ajR().ajA().get(12326, null));
-    AppMethodBeat.o(42983);
-    return localbv;
+    AppMethodBeat.i(91030);
+    if (paramInt == 20)
+    {
+      AppMethodBeat.o(91030);
+      return "newsapp";
+    }
+    if (paramInt == 11)
+    {
+      AppMethodBeat.o(91030);
+      return "blogapp";
+    }
+    Assert.assertTrue("INFO TYPE NEITHER NEWS NOR WEIBO", false);
+    AppMethodBeat.o(91030);
+    return null;
   }
   
-  public static bv aCM()
+  public final String aVZ()
   {
-    AppMethodBeat.i(42984);
-    if (bu.a((Integer)g.ajR().ajA().get(12289, null), 0) == 0)
-    {
-      AppMethodBeat.o(42984);
-      return null;
+    if (this.iFk == null) {
+      return "";
     }
-    bv localbv = aCL();
-    AppMethodBeat.o(42984);
-    return localbv;
+    return this.iFk;
   }
   
-  public final String getCity()
+  public final String aWa()
   {
-    AppMethodBeat.i(42986);
-    if (!bu.isNullOrNil(this.countryCode))
-    {
-      if (bu.isNullOrNil(this.provinceCode)) {
-        break label105;
-      }
-      if (!bu.isNullOrNil(this.cityCode)) {
-        break label79;
-      }
-      RegionCodeDecoder.fwA();
-      this.hKO = RegionCodeDecoder.mi(this.countryCode, this.provinceCode);
+    if (this.iFl == null) {
+      return "";
     }
-    while (bu.isNullOrNil(this.hKO))
-    {
-      str = bu.nullAsNil(this.cityCode);
-      AppMethodBeat.o(42986);
-      return str;
-      label79:
-      RegionCodeDecoder.fwA();
-      this.hKO = RegionCodeDecoder.bi(this.countryCode, this.provinceCode, this.cityCode);
-      continue;
-      label105:
-      this.hKO = "";
+    return this.iFl;
+  }
+  
+  public final String aWb()
+  {
+    if (this.iFo == null) {
+      return "";
     }
-    String str = this.hKO;
-    AppMethodBeat.o(42986);
+    return this.iFo;
+  }
+  
+  public final String aWc()
+  {
+    if (this.iFp == null) {
+      return "";
+    }
+    return this.iFp;
+  }
+  
+  public final String aWd()
+  {
+    AppMethodBeat.i(91031);
+    if (this.iAo != null)
+    {
+      Object localObject = this.iAo.split("\\|");
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        localObject = localObject[0];
+        AppMethodBeat.o(91031);
+        return localObject;
+      }
+      AppMethodBeat.o(91031);
+      return "";
+    }
+    AppMethodBeat.o(91031);
+    return "";
+  }
+  
+  public final String aWe()
+  {
+    if (this.iFu == null) {
+      return "";
+    }
+    return this.iFu;
+  }
+  
+  public final int aWf()
+  {
+    AppMethodBeat.i(91032);
+    aWi();
+    int i = this.subType;
+    AppMethodBeat.o(91032);
+    return i;
+  }
+  
+  public final int aWg()
+  {
+    AppMethodBeat.i(91033);
+    aWi();
+    int i = this.iFw;
+    AppMethodBeat.o(91033);
+    return i;
+  }
+  
+  public final int aWh()
+  {
+    AppMethodBeat.i(91035);
+    aWi();
+    int i = this.iFx;
+    AppMethodBeat.o(91035);
+    return i;
+  }
+  
+  public final String avy()
+  {
+    AppMethodBeat.i(91034);
+    aWi();
+    String str = this.groupId;
+    AppMethodBeat.o(91034);
     return str;
   }
   
-  public final String getProvince()
+  public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(42987);
-    if (!bu.isNullOrNil(this.countryCode))
-    {
-      if ((bu.isNullOrNil(this.provinceCode)) || (bu.isNullOrNil(this.cityCode)) || (!RegionCodeDecoder.aVQ(this.countryCode))) {
-        break label89;
-      }
-      RegionCodeDecoder.fwA();
+    AppMethodBeat.i(91029);
+    this.iFk = paramCursor.getString(0);
+    this.time = paramCursor.getLong(1);
+    this.type = paramCursor.getInt(2);
+    this.name = paramCursor.getString(3);
+    this.title = paramCursor.getString(4);
+    this.url = paramCursor.getString(5);
+    this.iFl = paramCursor.getString(6);
+    this.iFm = paramCursor.getString(7);
+    this.iFn = paramCursor.getLong(8);
+    this.iFo = paramCursor.getString(9);
+    this.iFp = paramCursor.getString(10);
+    this.iFq = paramCursor.getInt(11);
+    this.iAo = paramCursor.getString(12);
+    this.iAq = paramCursor.getString(13);
+    this.iFr = paramCursor.getInt(14);
+    this.iFs = paramCursor.getLong(15);
+    this.iFt = paramCursor.getString(16);
+    this.iFu = paramCursor.getString(17);
+    AppMethodBeat.o(91029);
+  }
+  
+  public final String getDigest()
+  {
+    if (this.iAq == null) {
+      return "";
     }
-    for (this.hKN = RegionCodeDecoder.mi(this.countryCode, this.provinceCode); bu.isNullOrNil(this.hKN); this.hKN = RegionCodeDecoder.aVR(this.countryCode))
-    {
-      str = bu.nullAsNil(this.provinceCode);
-      AppMethodBeat.o(42987);
-      return str;
-      label89:
-      RegionCodeDecoder.fwA();
+    return this.iAq;
+  }
+  
+  public final String getName()
+  {
+    if (this.name == null) {
+      return "";
     }
-    String str = this.hKN;
-    AppMethodBeat.o(42987);
-    return str;
+    return this.name;
+  }
+  
+  public final String getTitle()
+  {
+    if (this.title == null) {
+      return "";
+    }
+    return this.title;
+  }
+  
+  public final String getUrl()
+  {
+    if (this.url == null) {
+      return "";
+    }
+    return this.url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bv
  * JD-Core Version:    0.7.0.1
  */

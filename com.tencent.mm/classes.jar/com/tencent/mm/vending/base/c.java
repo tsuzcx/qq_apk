@@ -8,25 +8,25 @@ import com.tencent.mm.vending.f.a;
 
 public final class c
 {
-  private Looper LEf;
-  private Handler LEg;
-  byte[] LEh;
-  a LEi;
+  private Looper QZA;
+  private Handler QZB;
+  byte[] QZC;
+  a QZD;
   private Handler mVendingHandler;
   private Looper mVendingLooper;
   
   public c(Looper paramLooper1, Looper paramLooper2)
   {
     AppMethodBeat.i(74945);
-    this.LEh = new byte[0];
-    this.LEf = paramLooper1;
+    this.QZC = new byte[0];
+    this.QZA = paramLooper1;
     this.mVendingLooper = paramLooper2;
-    this.LEg = new Handler(this.LEf)
+    this.QZB = new Handler(this.QZA)
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(74959);
-        c.this.q(paramAnonymousMessage.what, paramAnonymousMessage.obj);
+        c.this.t(paramAnonymousMessage.what, paramAnonymousMessage.obj);
         AppMethodBeat.o(74959);
       }
     };
@@ -35,12 +35,12 @@ public final class c
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(74950);
-        synchronized (c.this.LEh)
+        synchronized (c.this.QZC)
         {
-          if (c.this.LEi != null) {
-            c.this.LEi.synchronizing(paramAnonymousMessage.what, paramAnonymousMessage.obj);
+          if (c.this.QZD != null) {
+            c.this.QZD.synchronizing(paramAnonymousMessage.what, paramAnonymousMessage.obj);
           }
-          c.this.LEh.notify();
+          c.this.QZC.notify();
           AppMethodBeat.o(74950);
           return;
         }
@@ -49,28 +49,28 @@ public final class c
     AppMethodBeat.o(74945);
   }
   
-  public final void q(int paramInt, Object paramObject)
+  public final void t(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(74946);
-    if (Looper.myLooper() == this.LEf)
+    if (Looper.myLooper() == this.QZA)
     {
-      if (this.LEi == null)
+      if (this.QZD == null)
       {
         a.w("Vending.VendingSync", "This call is pointless.", new Object[0]);
         AppMethodBeat.o(74946);
         return;
       }
-      this.LEi.fSo();
-      synchronized (this.LEh)
+      this.QZD.hds();
+      synchronized (this.QZC)
       {
         this.mVendingHandler.sendMessageAtFrontOfQueue(this.mVendingHandler.obtainMessage(paramInt, paramObject));
       }
     }
     try
     {
-      this.LEh.wait();
+      this.QZC.wait();
       label79:
-      this.LEi.fSp();
+      this.QZD.hdt();
       AppMethodBeat.o(74946);
       return;
       paramObject = finally;
@@ -78,7 +78,7 @@ public final class c
       throw paramObject;
       if (Looper.myLooper() == this.mVendingLooper)
       {
-        this.LEg.sendMessageAtFrontOfQueue(this.LEg.obtainMessage(paramInt, paramObject));
+        this.QZB.sendMessageAtFrontOfQueue(this.QZB.obtainMessage(paramInt, paramObject));
         AppMethodBeat.o(74946);
         return;
       }
@@ -93,16 +93,16 @@ public final class c
   
   public static abstract interface a
   {
-    public abstract void fSo();
+    public abstract void hds();
     
-    public abstract void fSp();
+    public abstract void hdt();
     
     public abstract void synchronizing(int paramInt, Object paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.vending.base.c
  * JD-Core Version:    0.7.0.1
  */

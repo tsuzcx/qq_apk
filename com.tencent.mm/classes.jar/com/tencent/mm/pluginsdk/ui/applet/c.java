@@ -10,9 +10,9 @@ public final class c
 {
   public final w a(Context paramContext, String paramString, int paramInt, v paramv, a parama)
   {
-    AppMethodBeat.i(186723);
+    AppMethodBeat.i(232191);
     paramContext = new b(paramContext, paramString, paramInt, paramv, parama);
-    AppMethodBeat.o(186723);
+    AppMethodBeat.o(232191);
     return paramContext;
   }
   
@@ -26,7 +26,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,139 +1,42 @@
 package com.tencent.mm.view.recyclerview;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.w;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedHashSet;
+import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-public class e
-  extends RecyclerView.w
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/recyclerview/ItemConvert;", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "", "()V", "isAttachedToRecyclerView", "", "()Z", "setAttachedToRecyclerView", "(Z)V", "getLayoutId", "", "onAttachedToRecyclerView", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "payloads", "", "(Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;Lcom/tencent/mm/view/recyclerview/ConvertData;IIZLjava/util/List;)V", "onCreateViewHolder", "onDetachedFromRecyclerView", "onViewRecycled", "libmmui_release"})
+public abstract class e<D extends a>
 {
-  private final LinkedHashSet<Integer> LSh;
-  private final LinkedHashSet<Integer> LSi;
-  public Object LSj;
-  private final Context context;
-  public RecyclerView gpr;
-  private RecyclerView.a gqn;
-  private Object tag;
-  private final SparseArray<View> tff;
+  boolean RqG;
   
-  public e(View paramView)
+  public void a(RecyclerView paramRecyclerView, WxRecyclerAdapter<?> paramWxRecyclerAdapter)
   {
-    super(paramView);
-    AppMethodBeat.i(164329);
-    this.gpr = null;
-    this.tff = new SparseArray();
-    this.LSh = new LinkedHashSet();
-    this.LSi = new LinkedHashSet();
-    this.context = paramView.getContext();
-    AppMethodBeat.o(164329);
+    p.h(paramRecyclerView, "recyclerView");
+    p.h(paramWxRecyclerAdapter, "adapter");
+    this.RqG = true;
   }
   
-  public final <T extends View> T GD(int paramInt)
+  public abstract void a(RecyclerView paramRecyclerView, h paramh, int paramInt);
+  
+  public abstract void a(h paramh, D paramD, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList);
+  
+  public void b(h paramh)
   {
-    AppMethodBeat.i(164335);
-    View localView2 = (View)this.tff.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.auu.findViewById(paramInt);
-      this.tff.put(paramInt, localView1);
-    }
-    AppMethodBeat.o(164335);
-    return localView1;
+    p.h(paramh, "holder");
   }
   
-  public final e agS(int paramInt)
+  public void c(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(164332);
-    ((TextView)GD(2131298516)).setText(paramInt);
-    AppMethodBeat.o(164332);
-    return this;
+    p.h(paramRecyclerView, "recyclerView");
+    this.RqG = false;
   }
   
-  public final e b(RecyclerView.a parama)
-  {
-    this.gqn = parama;
-    return this;
-  }
-  
-  public final e e(int paramInt, CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(164331);
-    ((TextView)GD(paramInt)).setText(paramCharSequence);
-    AppMethodBeat.o(164331);
-    return this;
-  }
-  
-  public final void ep(Object paramObject)
-  {
-    this.LSj = paramObject;
-  }
-  
-  public final <T> T fUY()
-  {
-    return this.LSj;
-  }
-  
-  public final Context getContext()
-  {
-    return this.context;
-  }
-  
-  public final RecyclerView getRecyclerView()
-  {
-    AppMethodBeat.i(164330);
-    if ((this.gpr == null) && ((this.auu.getParent() instanceof RecyclerView)))
-    {
-      this.gpr = ((RecyclerView)this.auu.getParent());
-      localRecyclerView = this.gpr;
-      AppMethodBeat.o(164330);
-      return localRecyclerView;
-    }
-    RecyclerView localRecyclerView = this.gpr;
-    AppMethodBeat.o(164330);
-    return localRecyclerView;
-  }
-  
-  public final Object getTag()
-  {
-    return this.tag;
-  }
-  
-  public final e kG(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(193823);
-    ((TextView)GD(paramInt1)).setTextColor(paramInt2);
-    AppMethodBeat.o(193823);
-    return this;
-  }
-  
-  public final e kH(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(164334);
-    GD(paramInt1).setVisibility(paramInt2);
-    AppMethodBeat.o(164334);
-    return this;
-  }
-  
-  public final void setRecyclerView(RecyclerView paramRecyclerView)
-  {
-    this.gpr = paramRecyclerView;
-  }
-  
-  public final void setTag(Object paramObject)
-  {
-    this.tag = paramObject;
-  }
+  public abstract int getLayoutId();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.view.recyclerview.e
  * JD-Core Version:    0.7.0.1
  */

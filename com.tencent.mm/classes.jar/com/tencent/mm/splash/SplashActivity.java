@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class SplashActivity
   extends HellActivity
 {
-  private boolean IFe = false;
+  private boolean NLX = false;
   
-  private void frs()
+  private void gys()
   {
     AppMethodBeat.i(40662);
-    e locale = h.IEL;
+    e locale = h.NLE;
     new Runnable()
     {
       public final void run()
@@ -27,26 +27,26 @@ public class SplashActivity
         AppMethodBeat.o(40653);
       }
     };
-    if (locale.MK()) {
-      fru();
+    if (locale.WX()) {
+      gyu();
     }
     AppMethodBeat.o(40662);
   }
   
-  private void fru()
+  private void gyu()
   {
     AppMethodBeat.i(40664);
-    if (this.IFe)
+    if (this.NLX)
     {
       AppMethodBeat.o(40664);
       return;
     }
-    this.IFe = true;
+    this.NLX = true;
     if (!isFinishing())
     {
       setResult(-100);
       int i = getIntent().getIntExtra("hashcode", 0);
-      Iterator localIterator = h.IEI.iterator();
+      Iterator localIterator = h.NLB.iterator();
       while (localIterator.hasNext())
       {
         i locali = (i)localIterator.next();
@@ -72,7 +72,7 @@ public class SplashActivity
         public final void run()
         {
           AppMethodBeat.i(40656);
-          h.IEL = null;
+          h.NLE = null;
           AppMethodBeat.o(40656);
         }
       }, 5000L);
@@ -82,12 +82,12 @@ public class SplashActivity
     }
   }
   
-  public final void frt()
+  public final void gyt()
   {
     AppMethodBeat.i(40663);
-    if (h.IEL != null)
+    if (h.NLE != null)
     {
-      if (!h.IEL.a(this, new Runnable()
+      if (!h.NLE.a(this, new Runnable()
       {
         public final void run()
         {
@@ -97,14 +97,14 @@ public class SplashActivity
         }
       }))
       {
-        frs();
+        gys();
         AppMethodBeat.o(40663);
       }
     }
     else
     {
-      h.b("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
-      fru();
+      h.c("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
+      gyu();
     }
     AppMethodBeat.o(40663);
   }
@@ -114,14 +114,14 @@ public class SplashActivity
     AppMethodBeat.i(40657);
     super.onCreate(paramBundle);
     h.a(this);
-    h.b("WxSplash.SplashActivity", "onCreate", new Object[0]);
-    if (!h.frj())
+    h.c("WxSplash.SplashActivity", "onCreate", new Object[0]);
+    if (!h.gyj())
     {
-      h.b("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
-      frt();
+      h.c("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
+      gyt();
     }
-    if (h.IEU != null) {
-      h.IEU.r(this);
+    if (h.NLN != null) {
+      h.NLN.r(this);
     }
     AppMethodBeat.o(40657);
   }
@@ -130,7 +130,7 @@ public class SplashActivity
   {
     AppMethodBeat.i(40660);
     h.b(this);
-    h.b("WxSplash.SplashActivity", "onDestroy", new Object[0]);
+    h.c("WxSplash.SplashActivity", "onDestroy", new Object[0]);
     super.onDestroy();
     AppMethodBeat.o(40660);
   }
@@ -138,7 +138,7 @@ public class SplashActivity
   public void onPause()
   {
     AppMethodBeat.i(40659);
-    h.b("WxSplash.SplashActivity", "onPause", new Object[0]);
+    h.c("WxSplash.SplashActivity", "onPause", new Object[0]);
     super.onPause();
     AppMethodBeat.o(40659);
   }
@@ -146,8 +146,8 @@ public class SplashActivity
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(40661);
-    if (h.IEL != null) {
-      h.IEL.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    if (h.NLE != null) {
+      h.NLE.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     }
     AppMethodBeat.o(40661);
   }
@@ -156,7 +156,7 @@ public class SplashActivity
   {
     AppMethodBeat.i(40658);
     super.onResume();
-    h.b("WxSplash.SplashActivity", "onResume", new Object[0]);
+    h.c("WxSplash.SplashActivity", "onResume", new Object[0]);
     AppMethodBeat.o(40658);
   }
   

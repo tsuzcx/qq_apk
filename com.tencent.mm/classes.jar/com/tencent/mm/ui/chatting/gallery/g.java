@@ -6,41 +6,53 @@ import com.tencent.mm.b.f;
 import com.tencent.mm.b.f.a;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class g
 {
-  protected HashMap<String, Long> Kms;
-  private bf hTx;
+  protected HashMap<String, Long> Pyp;
+  private QueueWorkerThread iOL;
   private int mScrollState;
-  protected f<String, Bitmap> tYV;
-  public LinkedList<String> tYX;
-  private boolean tYZ;
+  protected f<String, Bitmap> xqj;
+  public LinkedList<String> xql;
+  private boolean xqn;
   
   public g()
   {
     AppMethodBeat.i(36076);
-    this.tYV = new b(4, new f.b() {}, getClass());
-    this.Kms = new HashMap();
-    this.tYX = new LinkedList();
-    this.hTx = new bf(1, "chatting-image-gallery-preload-loader");
-    this.tYZ = false;
+    this.xqj = new b(4, new f.b() {}, getClass());
+    this.Pyp = new HashMap();
+    this.xql = new LinkedList();
+    this.iOL = new QueueWorkerThread(1, "chatting-image-gallery-preload-loader");
+    this.xqn = false;
     this.mScrollState = 0;
     AppMethodBeat.o(36076);
   }
   
-  public final void cYL()
+  public final void dSj()
   {
     AppMethodBeat.i(36077);
-    this.tYV.a(new f.a() {});
+    this.xqj.a(new f.a() {});
     AppMethodBeat.o(36077);
+  }
+  
+  public static final class a
+  {
+    public static g Pyr;
+    
+    static
+    {
+      AppMethodBeat.i(36075);
+      Pyr = new g();
+      AppMethodBeat.o(36075);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.g
  * JD-Core Version:    0.7.0.1
  */

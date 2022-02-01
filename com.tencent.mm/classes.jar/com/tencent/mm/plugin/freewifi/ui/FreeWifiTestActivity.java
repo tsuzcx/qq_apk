@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.base.h;
 
 public class FreeWifiTestActivity
@@ -21,28 +21,28 @@ public class FreeWifiTestActivity
   {
     AppMethodBeat.i(25170);
     super.onCreate(paramBundle);
-    setContentView(2131494179);
-    findViewById(2131300286).setOnClickListener(new View.OnClickListener()
+    setContentView(2131494733);
+    findViewById(2131301765).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(25168);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiTestActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        Toast.makeText(ak.getContext(), "test message", 0).show();
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiTestActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        Toast.makeText(MMApplicationContext.getContext(), "test message", 0).show();
         a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiTestActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(25168);
       }
     });
-    findViewById(2131300287).setOnClickListener(new View.OnClickListener()
+    findViewById(2131301766).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(25169);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiTestActivity$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiTestActivity$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         h.a(FreeWifiTestActivity.this, "t12345", "t54331", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}

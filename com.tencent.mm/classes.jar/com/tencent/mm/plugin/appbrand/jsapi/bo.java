@@ -1,20 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.h.e.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
 
 public final class bo
-  extends a<c>
+  extends d<k>
 {
-  public static final int CTRL_INDEX = 192;
-  public static final String NAME = "openSetting";
+  public static final int CTRL_INDEX = 868;
+  public static final String NAME = "requestQueryCashier";
 }
 
 

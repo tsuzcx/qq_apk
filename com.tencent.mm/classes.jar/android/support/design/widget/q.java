@@ -13,9 +13,9 @@ import android.view.ViewOutlineProvider;
 
 final class q
 {
-  private static final int[] wB = { 16843848 };
+  private static final int[] wI = { 16843848 };
   
-  static void A(View paramView)
+  static void B(View paramView)
   {
     paramView.setOutlineProvider(ViewOutlineProvider.BOUNDS);
   }
@@ -23,7 +23,7 @@ final class q
   static void a(View paramView, AttributeSet paramAttributeSet)
   {
     Context localContext = paramView.getContext();
-    paramAttributeSet = f.a(localContext, paramAttributeSet, wB, 0, 2131821633, new int[0]);
+    paramAttributeSet = f.a(localContext, paramAttributeSet, wI, 0, 2131821681, new int[0]);
     try
     {
       if (paramAttributeSet.hasValue(0)) {
@@ -42,7 +42,7 @@ final class q
     int i = paramView.getResources().getInteger(2131361795);
     StateListAnimator localStateListAnimator = new StateListAnimator();
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "elevation", new float[] { 0.0F }).setDuration(i);
-    localStateListAnimator.addState(new int[] { 16842766, 2130969481, -2130969482 }, localObjectAnimator);
+    localStateListAnimator.addState(new int[] { 16842766, 2130969566, -2130969567 }, localObjectAnimator);
     localObjectAnimator = ObjectAnimator.ofFloat(paramView, "elevation", new float[] { paramFloat }).setDuration(i);
     localStateListAnimator.addState(new int[] { 16842766 }, localObjectAnimator);
     localObjectAnimator = ObjectAnimator.ofFloat(paramView, "elevation", new float[] { 0.0F }).setDuration(0L);

@@ -14,10 +14,10 @@ public class ExtractorUtils
   
   public static void applyMirror(Matrix paramMatrix, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(215156);
+    AppMethodBeat.i(218507);
     if (paramMatrix == null)
     {
-      AppMethodBeat.o(215156);
+      AppMethodBeat.o(218507);
       return;
     }
     Matrix localMatrix = new Matrix();
@@ -27,7 +27,7 @@ public class ExtractorUtils
     for (;;)
     {
       paramMatrix.postConcat(localMatrix);
-      AppMethodBeat.o(215156);
+      AppMethodBeat.o(218507);
       return;
       localMatrix.postScale(-1.0F, 1.0F);
       localMatrix.postTranslate(paramInt2, 0.0F);
@@ -42,20 +42,20 @@ public class ExtractorUtils
   
   public static int getFrameRate(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(215157);
+    AppMethodBeat.i(218508);
     if (paramMediaFormat != null) {}
     try
     {
       if (paramMediaFormat.containsKey("frame-rate"))
       {
         int i = paramMediaFormat.getInteger("frame-rate");
-        AppMethodBeat.o(215157);
+        AppMethodBeat.o(218508);
         return i;
       }
     }
     catch (Exception paramMediaFormat)
     {
-      AppMethodBeat.o(215157);
+      AppMethodBeat.o(218508);
       return 0;
     }
     catch (Error paramMediaFormat)
@@ -67,20 +67,20 @@ public class ExtractorUtils
   
   public static int getPreferRotation(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(215155);
+    AppMethodBeat.i(218506);
     try
     {
       paramAssetExtractor = DecoderUtils.getFirstFormat(paramAssetExtractor, "video/");
       if ((paramAssetExtractor != null) && (paramAssetExtractor.containsKey("rotation-degrees")))
       {
         int i = paramAssetExtractor.getInteger("rotation-degrees") / 90;
-        AppMethodBeat.o(215155);
+        AppMethodBeat.o(218506);
         return i;
       }
     }
     catch (Exception paramAssetExtractor)
     {
-      AppMethodBeat.o(215155);
+      AppMethodBeat.o(218506);
       return 0;
     }
     catch (Error paramAssetExtractor)
@@ -92,7 +92,7 @@ public class ExtractorUtils
   
   public static CGSize getVideoSize(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(215154);
+    AppMethodBeat.i(218505);
     for (;;)
     {
       try
@@ -115,7 +115,7 @@ public class ExtractorUtils
       {
         CGSize localCGSize;
         paramAssetExtractor = new CGSize();
-        AppMethodBeat.o(215154);
+        AppMethodBeat.o(218505);
         return paramAssetExtractor;
         localCGSize.height = paramAssetExtractor.getInteger("height");
         continue;
@@ -124,7 +124,7 @@ public class ExtractorUtils
       {
         continue;
       }
-      AppMethodBeat.o(215154);
+      AppMethodBeat.o(218505);
       return localCGSize;
       localCGSize.width = paramAssetExtractor.getInteger("width");
     }
@@ -132,20 +132,20 @@ public class ExtractorUtils
   
   public static boolean isSameExtractor(DecoderAssetTrack paramDecoderAssetTrack1, DecoderAssetTrack paramDecoderAssetTrack2)
   {
-    AppMethodBeat.i(215158);
+    AppMethodBeat.i(218509);
     if ((paramDecoderAssetTrack1 != null) && (paramDecoderAssetTrack2 != null)) {}
     for (int i = 1; (i != 0) && (paramDecoderAssetTrack1.assetPath != null) && (paramDecoderAssetTrack1.assetPath.equals(paramDecoderAssetTrack2.assetPath)); i = 0)
     {
-      AppMethodBeat.o(215158);
+      AppMethodBeat.o(218509);
       return true;
     }
-    AppMethodBeat.o(215158);
+    AppMethodBeat.o(218509);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.extractor.ExtractorUtils
  * JD-Core Version:    0.7.0.1
  */

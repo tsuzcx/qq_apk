@@ -8,32 +8,32 @@ import rx.internal.c.m;
 
 public final class Schedulers
 {
-  private static final AtomicReference<Schedulers> OyB;
-  private final rx.g OyA;
-  private final rx.g Oyy;
-  private final rx.g Oyz;
+  private static final AtomicReference<Schedulers> Uop;
+  private final rx.g Uom;
+  private final rx.g Uon;
+  private final rx.g Uoo;
   
   static
   {
     AppMethodBeat.i(90101);
-    OyB = new AtomicReference();
+    Uop = new AtomicReference();
     AppMethodBeat.o(90101);
   }
   
   private Schedulers()
   {
     AppMethodBeat.i(90090);
-    rx.d.f.gDO().gDT();
-    this.Oyy = rx.d.g.gDU();
-    this.Oyz = rx.d.g.gDV();
-    this.OyA = rx.d.g.gDW();
+    rx.d.f.hQW().hRb();
+    this.Uom = rx.d.g.hRc();
+    this.Uon = rx.d.g.hRd();
+    this.Uoo = rx.d.g.hRe();
     AppMethodBeat.o(90090);
   }
   
   public static rx.g computation()
   {
     AppMethodBeat.i(90092);
-    rx.g localg = rx.d.c.c(gDZ().Oyy);
+    rx.g localg = rx.d.c.c(hRh().Uom);
     AppMethodBeat.o(90092);
     return localg;
   }
@@ -46,40 +46,40 @@ public final class Schedulers
     return paramExecutor;
   }
   
-  private static Schedulers gDZ()
+  private static Schedulers hRh()
   {
     AppMethodBeat.i(90089);
     for (;;)
     {
-      Schedulers localSchedulers = (Schedulers)OyB.get();
+      Schedulers localSchedulers = (Schedulers)Uop.get();
       if (localSchedulers != null)
       {
         AppMethodBeat.o(90089);
         return localSchedulers;
       }
       localSchedulers = new Schedulers();
-      if (OyB.compareAndSet(null, localSchedulers))
+      if (Uop.compareAndSet(null, localSchedulers))
       {
         AppMethodBeat.o(90089);
         return localSchedulers;
       }
-      localSchedulers.gEb();
+      localSchedulers.hRj();
     }
   }
   
-  private void gEa()
+  private void hRi()
   {
     try
     {
       AppMethodBeat.i(90099);
-      if ((this.Oyy instanceof j)) {
-        ((j)this.Oyy).start();
+      if ((this.Uom instanceof j)) {
+        ((j)this.Uom).start();
       }
-      if ((this.Oyz instanceof j)) {
-        ((j)this.Oyz).start();
+      if ((this.Uon instanceof j)) {
+        ((j)this.Uon).start();
       }
-      if ((this.OyA instanceof j)) {
-        ((j)this.OyA).start();
+      if ((this.Uoo instanceof j)) {
+        ((j)this.Uoo).start();
       }
       AppMethodBeat.o(90099);
       return;
@@ -87,19 +87,19 @@ public final class Schedulers
     finally {}
   }
   
-  private void gEb()
+  private void hRj()
   {
     try
     {
       AppMethodBeat.i(90100);
-      if ((this.Oyy instanceof j)) {
-        ((j)this.Oyy).shutdown();
+      if ((this.Uom instanceof j)) {
+        ((j)this.Uom).shutdown();
       }
-      if ((this.Oyz instanceof j)) {
-        ((j)this.Oyz).shutdown();
+      if ((this.Uon instanceof j)) {
+        ((j)this.Uon).shutdown();
       }
-      if ((this.OyA instanceof j)) {
-        ((j)this.OyA).shutdown();
+      if ((this.Uoo instanceof j)) {
+        ((j)this.Uoo).shutdown();
       }
       AppMethodBeat.o(90100);
       return;
@@ -109,13 +109,13 @@ public final class Schedulers
   
   public static rx.g immediate()
   {
-    return rx.internal.c.f.Oww;
+    return rx.internal.c.f.Umk;
   }
   
   public static rx.g io()
   {
     AppMethodBeat.i(90093);
-    rx.g localg = rx.d.c.d(gDZ().Oyz);
+    rx.g localg = rx.d.c.d(hRh().Uon);
     AppMethodBeat.o(90093);
     return localg;
   }
@@ -123,7 +123,7 @@ public final class Schedulers
   public static rx.g newThread()
   {
     AppMethodBeat.i(90091);
-    rx.g localg = rx.d.c.e(gDZ().OyA);
+    rx.g localg = rx.d.c.e(hRh().Uoo);
     AppMethodBeat.o(90091);
     return localg;
   }
@@ -131,9 +131,9 @@ public final class Schedulers
   public static void reset()
   {
     AppMethodBeat.i(90096);
-    Schedulers localSchedulers = (Schedulers)OyB.getAndSet(null);
+    Schedulers localSchedulers = (Schedulers)Uop.getAndSet(null);
     if (localSchedulers != null) {
-      localSchedulers.gEb();
+      localSchedulers.hRj();
     }
     AppMethodBeat.o(90096);
   }
@@ -141,13 +141,13 @@ public final class Schedulers
   public static void shutdown()
   {
     AppMethodBeat.i(90098);
-    Schedulers localSchedulers = gDZ();
-    localSchedulers.gEb();
+    Schedulers localSchedulers = hRh();
+    localSchedulers.hRj();
     try
     {
-      rx.internal.c.d.Owr.shutdown();
-      rx.internal.util.f.OxA.shutdown();
-      rx.internal.util.f.OxB.shutdown();
+      rx.internal.c.d.Umf.shutdown();
+      rx.internal.util.f.Uno.shutdown();
+      rx.internal.util.f.Unp.shutdown();
       return;
     }
     finally
@@ -159,13 +159,13 @@ public final class Schedulers
   public static void start()
   {
     AppMethodBeat.i(90097);
-    Schedulers localSchedulers = gDZ();
-    localSchedulers.gEa();
+    Schedulers localSchedulers = hRh();
+    localSchedulers.hRi();
     try
     {
-      rx.internal.c.d.Owr.start();
-      rx.internal.util.f.OxA.start();
-      rx.internal.util.f.OxB.start();
+      rx.internal.c.d.Umf.start();
+      rx.internal.util.f.Uno.start();
+      rx.internal.util.f.Unp.start();
       return;
     }
     finally
@@ -184,7 +184,7 @@ public final class Schedulers
   
   public static rx.g trampoline()
   {
-    return m.Oxb;
+    return m.UmP;
   }
 }
 

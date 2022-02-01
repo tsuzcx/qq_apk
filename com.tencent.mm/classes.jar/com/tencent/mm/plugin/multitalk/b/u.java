@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class u
 {
   public int ret;
-  public int[] wpx;
-  public int wpy;
-  public int wpz;
+  public int[] zKJ;
+  public int zKK;
+  public int zKL;
   
   public u()
   {
-    AppMethodBeat.i(190724);
-    this.wpx = new int[0];
-    AppMethodBeat.o(190724);
+    AppMethodBeat.i(239319);
+    this.zKJ = new int[0];
+    AppMethodBeat.o(239319);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(190725);
+    AppMethodBeat.i(239320);
     Object localObject = new StringBuilder("ILinkVideoTransInfo [imgRGBdata size=");
-    if (this.wpx == null) {}
-    for (int i = 0;; i = this.wpx.length)
+    if (this.zKJ == null) {}
+    for (int i = 0;; i = this.zKJ.length)
     {
-      localObject = i + ", localImgWidth=" + this.wpy + ", localImgHeight=" + this.wpz + ", ret=" + this.ret + "]";
-      AppMethodBeat.o(190725);
+      localObject = i + ", localImgWidth=" + this.zKK + ", localImgHeight=" + this.zKL + ", ret=" + this.ret + "]";
+      AppMethodBeat.o(239320);
       return localObject;
     }
   }

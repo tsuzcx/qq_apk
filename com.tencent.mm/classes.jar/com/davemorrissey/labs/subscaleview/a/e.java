@@ -16,8 +16,8 @@ public class e
   implements d
 {
   private final Bitmap.Config aEF;
-  private BitmapRegionDecoder aWL;
-  private final ReadWriteLock aWM;
+  private BitmapRegionDecoder aWD;
+  private final ReadWriteLock aWE;
   
   public e()
   {
@@ -27,7 +27,7 @@ public class e
   private e(byte paramByte)
   {
     AppMethodBeat.i(157343);
-    this.aWM = new ReentrantReadWriteLock(true);
+    this.aWE = new ReentrantReadWriteLock(true);
     Bitmap.Config localConfig = SubsamplingScaleImageView.getPreferredBitmapConfig();
     if (localConfig != null)
     {
@@ -39,16 +39,16 @@ public class e
     AppMethodBeat.o(157343);
   }
   
-  private Lock rE()
+  private Lock rH()
   {
     AppMethodBeat.i(157348);
     if (Build.VERSION.SDK_INT < 21)
     {
-      localLock = this.aWM.writeLock();
+      localLock = this.aWE.writeLock();
       AppMethodBeat.o(157348);
       return localLock;
     }
-    Lock localLock = this.aWM.readLock();
+    Lock localLock = this.aWE.readLock();
     AppMethodBeat.o(157348);
     return localLock;
   }
@@ -56,16 +56,16 @@ public class e
   public final Bitmap a(Rect paramRect, int paramInt)
   {
     AppMethodBeat.i(157345);
-    rE().lock();
+    rH().lock();
     try
     {
-      if ((this.aWL == null) || (this.aWL.isRecycled())) {
+      if ((this.aWD == null) || (this.aWD.isRecycled())) {
         break label116;
       }
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inSampleSize = paramInt;
       localOptions.inPreferredConfig = this.aEF;
-      paramRect = this.aWL.decodeRegion(paramRect, localOptions);
+      paramRect = this.aWD.decodeRegion(paramRect, localOptions);
       if (paramRect == null)
       {
         paramRect = new RuntimeException("Skia image decoder returned null bitmap - image format may not be supported");
@@ -75,10 +75,10 @@ public class e
     }
     finally
     {
-      rE().unlock();
+      rH().unlock();
       AppMethodBeat.o(157345);
     }
-    rE().unlock();
+    rH().unlock();
     AppMethodBeat.o(157345);
     return paramRect;
     label116:
@@ -88,7 +88,7 @@ public class e
   }
   
   /* Error */
-  public final android.graphics.Point c(android.content.Context paramContext, android.net.Uri paramUri)
+  public final android.graphics.Point d(android.content.Context paramContext, android.net.Uri paramUri)
   {
     // Byte code:
     //   0: ldc 120
@@ -141,14 +141,14 @@ public class e
     //   102: invokevirtual 176	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
     //   105: iconst_0
     //   106: invokestatic 180	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
-    //   109: putfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   109: putfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   112: new 182	android/graphics/Point
     //   115: dup
     //   116: aload_0
-    //   117: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   117: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   120: invokevirtual 185	android/graphics/BitmapRegionDecoder:getWidth	()I
     //   123: aload_0
-    //   124: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   124: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   127: invokevirtual 188	android/graphics/BitmapRegionDecoder:getHeight	()I
     //   130: invokespecial 191	android/graphics/Point:<init>	(II)V
     //   133: astore_1
@@ -176,7 +176,7 @@ public class e
     //   178: invokeinterface 164 2 0
     //   183: checkcast 130	java/lang/String
     //   186: iconst_0
-    //   187: invokestatic 215	com/tencent/mm/sdk/platformtools/bu:getInt	(Ljava/lang/String;I)I
+    //   187: invokestatic 215	com/tencent/mm/sdk/platformtools/Util:getInt	(Ljava/lang/String;I)I
     //   190: istore_3
     //   191: goto -95 -> 96
     //   194: astore_2
@@ -185,13 +185,13 @@ public class e
     //   197: goto -101 -> 96
     //   200: aload_2
     //   201: aconst_null
-    //   202: invokestatic 221	com/tencent/mm/vfs/o:b	(Landroid/net/Uri;Lcom/tencent/mm/vfs/e$e;)Ljava/io/InputStream;
+    //   202: invokestatic 221	com/tencent/mm/vfs/s:b	(Landroid/net/Uri;Lcom/tencent/mm/vfs/g$e;)Ljava/io/InputStream;
     //   205: astore 4
     //   207: aload_0
     //   208: aload 4
     //   210: iconst_0
     //   211: invokestatic 180	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
-    //   214: putfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   214: putfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   217: aload 4
     //   219: ifnull -107 -> 112
     //   222: aload 4
@@ -252,10 +252,10 @@ public class e
     //   2: ldc 232
     //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   8: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   11: ifnull +24 -> 35
     //   14: aload_0
-    //   15: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   15: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   18: invokevirtual 85	android/graphics/BitmapRegionDecoder:isRecycled	()Z
     //   21: ifne +14 -> 35
     //   24: iconst_1
@@ -297,17 +297,17 @@ public class e
     //   2: ldc 234
     //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 34	com/davemorrissey/labs/subscaleview/a/e:aWM	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   8: getfield 34	com/davemorrissey/labs/subscaleview/a/e:aWE	Ljava/util/concurrent/locks/ReadWriteLock;
     //   11: invokeinterface 64 1 0
     //   16: invokeinterface 77 1 0
     //   21: aload_0
-    //   22: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   22: getfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   25: invokevirtual 236	android/graphics/BitmapRegionDecoder:recycle	()V
     //   28: aload_0
     //   29: aconst_null
-    //   30: putfield 79	com/davemorrissey/labs/subscaleview/a/e:aWL	Landroid/graphics/BitmapRegionDecoder;
+    //   30: putfield 79	com/davemorrissey/labs/subscaleview/a/e:aWD	Landroid/graphics/BitmapRegionDecoder;
     //   33: aload_0
-    //   34: getfield 34	com/davemorrissey/labs/subscaleview/a/e:aWM	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   34: getfield 34	com/davemorrissey/labs/subscaleview/a/e:aWE	Ljava/util/concurrent/locks/ReadWriteLock;
     //   37: invokeinterface 64 1 0
     //   42: invokeinterface 108 1 0
     //   47: ldc 234
@@ -317,7 +317,7 @@ public class e
     //   54: return
     //   55: astore_1
     //   56: aload_0
-    //   57: getfield 34	com/davemorrissey/labs/subscaleview/a/e:aWM	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   57: getfield 34	com/davemorrissey/labs/subscaleview/a/e:aWE	Ljava/util/concurrent/locks/ReadWriteLock;
     //   60: invokeinterface 64 1 0
     //   65: invokeinterface 108 1 0
     //   70: ldc 234
@@ -344,7 +344,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.a.e
  * JD-Core Version:    0.7.0.1
  */

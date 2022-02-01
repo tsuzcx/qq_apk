@@ -7,7 +7,7 @@ import android.content.res.Resources;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -18,28 +18,28 @@ import java.util.Set;
 public final class a
 {
   public volatile boolean stopped;
-  public SoundPool vxj;
-  Hashtable<String, Integer> vxk;
-  Map<Integer, Boolean> vxl;
+  Map<Integer, Boolean> yRA;
+  public SoundPool yRy;
+  Hashtable<String, Integer> yRz;
   
   public a()
   {
     AppMethodBeat.i(65033);
     this.stopped = false;
-    this.vxj = new SoundPool(2, 3, 0);
-    this.vxk = new Hashtable();
-    this.vxl = new HashMap();
+    this.yRy = new SoundPool(2, 3, 0);
+    this.yRz = new Hashtable();
+    this.yRA = new HashMap();
     AppMethodBeat.o(65033);
   }
   
-  public final void uP(String paramString)
+  public final void Df(String paramString)
   {
     AppMethodBeat.i(65034);
-    if (this.vxk.containsKey(paramString))
+    if (this.yRz.containsKey(paramString))
     {
-      int i = ((Integer)this.vxk.get(paramString)).intValue();
-      if ((i >= 0) && (this.vxl.containsKey(Integer.valueOf(i))) && (((Boolean)this.vxl.get(Integer.valueOf(i))).booleanValue())) {
-        this.vxj.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
+      int i = ((Integer)this.yRz.get(paramString)).intValue();
+      if ((i >= 0) && (this.yRA.containsKey(Integer.valueOf(i))) && (((Boolean)this.yRA.get(Integer.valueOf(i))).booleanValue())) {
+        this.yRy.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
       }
     }
     AppMethodBeat.o(65034);

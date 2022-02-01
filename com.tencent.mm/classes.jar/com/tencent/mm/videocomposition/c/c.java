@@ -1,63 +1,36 @@
 package com.tencent.mm.videocomposition.c;
 
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
+@l(hxD={1, 1, 15}, hxE={""}, hxF={"currentTicks", "", "stackTraceToString", "", "throwable", "", "ticksToNow", "before", "uiThread", "", "block", "Lkotlin/Function0;", "wxRemoveIf", "", "T", "Ljava/util/LinkedList;", "func", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "t", "video_composition_release"})
 public final class c
 {
-  public static String o(Throwable paramThrowable)
+  public static final void h(a<x> parama)
   {
-    AppMethodBeat.i(194927);
-    try
+    AppMethodBeat.i(216871);
+    p.h(parama, "block");
+    Thread localThread = Thread.currentThread();
+    Looper localLooper = Looper.getMainLooper();
+    p.g(localLooper, "Looper.getMainLooper()");
+    if (p.j(localThread, localLooper.getThread()))
     {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
-      paramThrowable.printStackTrace(localPrintStream);
-      paramThrowable = localByteArrayOutputStream.toString();
-      localPrintStream.close();
-      localByteArrayOutputStream.close();
-      AppMethodBeat.o(194927);
-      return paramThrowable;
+      parama.invoke();
+      AppMethodBeat.o(216871);
+      return;
     }
-    catch (Exception paramThrowable)
-    {
-      AppMethodBeat.o(194927);
-    }
-    return "";
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(194926);
-    Object localObject = new Throwable().getStackTrace();
-    if ((localObject == null) || (localObject.length < 4))
-    {
-      AppMethodBeat.o(194926);
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 3;
-    while (i < localObject.length)
-    {
-      if ((localObject[i].getClassName().contains("com.tencent.mm")) && (!localObject[i].getClassName().contains("sdk.platformtools.Log")))
-      {
-        localStringBuilder.append("[");
-        localStringBuilder.append(localObject[i].getClassName().substring(15));
-        localStringBuilder.append(":");
-        localStringBuilder.append(localObject[i].getMethodName());
-        localStringBuilder.append("(" + localObject[i].getLineNumber() + ")]");
-      }
-      i += 1;
-    }
-    localObject = localStringBuilder.toString();
-    AppMethodBeat.o(194926);
-    return localObject;
+    new Handler(Looper.getMainLooper()).post((Runnable)new d(parama));
+    AppMethodBeat.o(216871);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.videocomposition.c.c
  * JD-Core Version:    0.7.0.1
  */

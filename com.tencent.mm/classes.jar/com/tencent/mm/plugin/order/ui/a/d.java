@@ -12,7 +12,7 @@ import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.order.a.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class d
@@ -21,14 +21,14 @@ public final class d
   String mName;
   View.OnClickListener mOnClickListener;
   private View mView;
-  String pMn;
+  String rcG;
   
   public d(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66808);
     this.mView = null;
-    setLayoutResource(2131494707);
+    setLayoutResource(2131495436);
     AppMethodBeat.o(66808);
   }
   
@@ -48,28 +48,28 @@ public final class d
   {
     AppMethodBeat.i(66810);
     super.onBindView(paramView);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131302029);
-    TextView localTextView = (TextView)paramView.findViewById(2131302030);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131304368);
+    TextView localTextView = (TextView)paramView.findViewById(2131304369);
     localImageView.setImageBitmap(null);
-    if (!bu.isNullOrNil(this.pMn))
+    if (!Util.isNullOrNil(this.rcG))
     {
       Object localObject = new c.a();
-      b.dBo();
-      ((c.a)localObject).prefixPath = b.dkI();
-      ((c.a)localObject).igk = true;
-      ((c.a)localObject).hgL = true;
-      ((c.a)localObject).hhW = true;
-      localObject = ((c.a)localObject).aJu();
-      q.aJb().a(this.pMn, localImageView, (c)localObject);
+      b.eBa();
+      ((c.a)localObject).prefixPath = b.eeA();
+      ((c.a)localObject).jbf = true;
+      ((c.a)localObject).hZF = true;
+      ((c.a)localObject).iaT = true;
+      localObject = ((c.a)localObject).bdv();
+      q.bcV().a(this.rcG, localImageView, (c)localObject);
     }
     localTextView.setText(this.mName);
-    paramView.findViewById(2131302028).setOnClickListener(this.mOnClickListener);
+    paramView.findViewById(2131304367).setOnClickListener(this.mOnClickListener);
     AppMethodBeat.o(66810);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

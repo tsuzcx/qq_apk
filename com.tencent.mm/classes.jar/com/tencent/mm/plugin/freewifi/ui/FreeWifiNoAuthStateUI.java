@@ -10,61 +10,61 @@ import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.h;
 
 @Deprecated
 public abstract class FreeWifiNoAuthStateUI
   extends FreeWifiStateUI
 {
-  private String dyO;
-  private boolean qqb = true;
-  private int tzF;
-  private boolean tzG;
+  private String dQC;
+  private boolean rHi = true;
+  private int wQH;
+  private boolean wQI;
   
   public void a(NetworkInfo.State paramState)
   {
-    ae.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
-    if ((paramState == NetworkInfo.State.CONNECTED) && (com.tencent.mm.plugin.freewifi.model.d.akO(this.ssid)))
+    Log.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
+    if ((paramState == NetworkInfo.State.CONNECTED) && (com.tencent.mm.plugin.freewifi.model.d.axS(this.ssid)))
     {
-      cUK();
-      this.tzO = false;
+      dNT();
+      this.wQQ = false;
       com.tencent.mm.plugin.freewifi.model.d.a(this.ssid, 2, getIntent());
     }
   }
   
-  protected final void aUs()
+  protected final void bpf()
   {
-    cUF();
+    dNO();
   }
   
-  protected final void cUF()
+  protected final void dNO()
   {
-    if (this.tzO)
+    if (this.wQQ)
     {
-      ae.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "it is authing now");
+      Log.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "it is authing now");
       return;
     }
-    this.tzO = true;
-    cUJ();
-    int i = com.tencent.mm.plugin.freewifi.model.d.e(this.ssid, this.dyO, this.tzF, this.tzG);
-    k.a locala = k.cTw();
+    this.wQQ = true;
+    dNS();
+    int i = com.tencent.mm.plugin.freewifi.model.d.d(this.ssid, this.dQC, this.wQH, this.wQI);
+    k.a locala = k.dMF();
     locala.ssid = this.ssid;
-    locala.dnO = this.dnO;
-    locala.pfT = m.ap(getIntent());
-    locala.tvY = m.ar(getIntent());
-    locala.tvZ = k.b.twk.twK;
-    locala.twa = k.b.twk.name;
+    locala.dFd = this.dFd;
+    locala.quX = m.aw(getIntent());
+    locala.wNc = m.ay(getIntent());
+    locala.wNd = k.b.wNo.wNO;
+    locala.wNe = k.b.wNo.name;
     locala.result = i;
-    locala.channel = m.as(getIntent());
-    locala.tvX = this.dwb;
-    locala.twb = this.duJ;
-    locala.cTy().cTx();
+    locala.channel = m.az(getIntent());
+    locala.wNb = this.dNI;
+    locala.wNf = this.appUserName;
+    locala.dMH().dMG();
   }
   
-  protected int cUG()
+  protected int dNP()
   {
-    if (com.tencent.mm.plugin.freewifi.model.d.akO(this.ssid))
+    if (com.tencent.mm.plugin.freewifi.model.d.axS(this.ssid))
     {
       com.tencent.mm.plugin.freewifi.model.d.a(this.ssid, 2, getIntent());
       return 2;
@@ -72,22 +72,22 @@ public abstract class FreeWifiNoAuthStateUI
     return 1;
   }
   
-  protected abstract String cUH();
+  protected abstract String dNQ();
   
   public void initView()
   {
     super.initView();
-    setMMTitle(cUH());
+    setMMTitle(dNQ());
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.tzF = getIntent().getIntExtra("free_wifi_encrypt_type", 0);
-    this.dyO = getIntent().getStringExtra("free_wifi_passowrd");
-    this.tzG = getIntent().getBooleanExtra("free_wifi_hide_ssid", false);
+    this.wQH = getIntent().getIntExtra("free_wifi_encrypt_type", 0);
+    this.dQC = getIntent().getStringExtra("free_wifi_passowrd");
+    this.wQI = getIntent().getBooleanExtra("free_wifi_hide_ssid", false);
     super.onCreate(paramBundle);
     com.tencent.mm.plugin.freewifi.model.d.a(this.ssid, 4, getIntent());
-    ae.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "Comes from webview, do auth");
+    Log.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "Comes from webview, do auth");
   }
   
   public void onDestroy()
@@ -98,20 +98,20 @@ public abstract class FreeWifiNoAuthStateUI
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-      ae.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      Log.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
     }
     do
     {
       return;
-      ae.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+      Log.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
       switch (paramInt)
       {
       default: 
         return;
       }
     } while ((paramArrayOfInt.length <= 0) || (paramArrayOfInt[0] != -1));
-    this.qqb = false;
-    h.a(this, getString(2131761869), getString(2131761885), getString(2131760598), getString(2131756766), false, new FreeWifiNoAuthStateUI.2(this), new FreeWifiNoAuthStateUI.3(this));
+    this.rHi = false;
+    h.a(this, getString(2131763874), getString(2131763890), getString(2131762043), getString(2131756929), false, new FreeWifiNoAuthStateUI.2(this), new FreeWifiNoAuthStateUI.3(this));
   }
   
   public void onResume()
@@ -119,10 +119,10 @@ public abstract class FreeWifiNoAuthStateUI
     int j = 0;
     super.onResume();
     int i;
-    if (this.qqb)
+    if (this.rHi)
     {
-      boolean bool = b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 77, null, null);
-      ae.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "summerper checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = b.a(this, "android.permission.ACCESS_FINE_LOCATION", 77, null, null);
+      Log.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "summerper checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         i = j;
       }
@@ -130,14 +130,14 @@ public abstract class FreeWifiNoAuthStateUI
     for (;;)
     {
       if (i == 0) {
-        ae.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "check permission not passed!");
+        Log.i("MicroMsg.FreeWifi.FreeWifiNoAuthStateUI", "check permission not passed!");
       }
       return;
       i = j;
-      if (b.n(this, "android.permission.ACCESS_COARSE_LOCATION")) {
-        if (!com.tencent.mm.modelgeo.d.aIi())
+      if (b.n(this, "android.permission.ACCESS_FINE_LOCATION")) {
+        if (!com.tencent.mm.modelgeo.d.bcc())
         {
-          h.a(this, getString(2131760082), getString(2131755906), getString(2131760598), getString(2131755691), false, new FreeWifiNoAuthStateUI.1(this), null);
+          h.a(this, getString(2131761461), getString(2131755998), getString(2131762043), getString(2131755761), false, new FreeWifiNoAuthStateUI.1(this), null);
           i = j;
         }
         else
@@ -156,7 +156,7 @@ public abstract class FreeWifiNoAuthStateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiNoAuthStateUI
  * JD-Core Version:    0.7.0.1
  */

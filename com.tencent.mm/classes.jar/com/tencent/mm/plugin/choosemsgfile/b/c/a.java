@@ -1,83 +1,83 @@
 package com.tencent.mm.plugin.choosemsgfile.b.c;
 
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.choosemsgfile.ui.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
 
 public abstract class a
   extends RecyclerView.a
   implements g
 {
-  static g.b oZs;
-  protected List<com.tencent.mm.plugin.choosemsgfile.b.b.a> ndS;
-  private c oZp;
-  private boolean oZq;
-  g.a oZr;
+  static g.b qoq;
+  protected List<com.tencent.mm.plugin.choosemsgfile.b.b.a> opg;
+  private c qon;
+  private boolean qoo;
+  g.a qop;
   
   public a(c paramc, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
   {
-    this.oZp = paramc;
-    this.ndS = paramList;
-    this.oZq = com.tencent.mm.kernel.g.ajR().isSDCardAvailable();
+    this.qon = paramc;
+    this.opg = paramList;
+    this.qoo = com.tencent.mm.kernel.g.aAh().isSDCardAvailable();
   }
   
-  public final com.tencent.mm.plugin.choosemsgfile.b.b.a Be(int paramInt)
+  public final com.tencent.mm.plugin.choosemsgfile.b.b.a EM(int paramInt)
   {
-    if ((this.ndS == null) || (this.ndS.size() <= paramInt)) {
+    if ((this.opg == null) || (this.opg.size() <= paramInt)) {
       return null;
     }
-    return (com.tencent.mm.plugin.choosemsgfile.b.b.a)this.ndS.get(paramInt);
+    return (com.tencent.mm.plugin.choosemsgfile.b.b.a)this.opg.get(paramInt);
   }
   
-  public final void a(RecyclerView.w paramw, int paramInt)
+  public final void a(RecyclerView.v paramv, int paramInt)
   {
-    if (!this.oZq)
+    if (!this.qoo)
     {
-      ae.e("MicroMsg.BaseChooseFileAdapter", "[onBindViewHolder] isSDCardAvailable:%b", new Object[] { Boolean.valueOf(this.oZq) });
+      Log.e("MicroMsg.BaseChooseFileAdapter", "[onBindViewHolder] isSDCardAvailable:%b", new Object[] { Boolean.valueOf(this.qoo) });
       return;
     }
-    Be(paramInt).a(paramw, paramInt, Be(paramInt + 1));
+    EM(paramInt).a(paramv, paramInt, EM(paramInt + 1));
   }
   
-  public final void a(RecyclerView.w paramw, int paramInt, List paramList)
+  public final void a(RecyclerView.v paramv, int paramInt, List paramList)
   {
-    Be(paramInt);
-    super.a(paramw, paramInt, paramList);
+    EM(paramInt);
+    super.a(paramv, paramInt, paramList);
   }
   
-  public final void a(boolean paramBoolean, com.tencent.mm.plugin.choosemsgfile.b.b.a parama, RecyclerView.w paramw)
+  public final void a(boolean paramBoolean, com.tencent.mm.plugin.choosemsgfile.b.b.a parama, RecyclerView.v paramv)
   {
-    if (this.oZr != null) {
-      this.oZr.a(paramBoolean, parama, paramw);
+    if (this.qop != null) {
+      this.qop.a(paramBoolean, parama, paramv);
     }
   }
   
-  public final c caM()
+  public final c cyC()
   {
-    return this.oZp;
+    return this.qon;
   }
   
-  public boolean caN()
+  public boolean cyD()
   {
     return false;
   }
   
   public final int getItemCount()
   {
-    return this.ndS.size();
+    return this.opg.size();
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return Be(paramInt).getType();
+    return EM(paramInt).getType();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.a
  * JD-Core Version:    0.7.0.1
  */

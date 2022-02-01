@@ -3,14 +3,14 @@ package com.tencent.mm.live.view;
 import android.content.Intent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.live.b.f;
-import com.tencent.mm.live.b.f.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.live.b.o;
+import com.tencent.mm.live.b.o.a;
 import com.tencent.mm.plugin.messenger.a.a;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/view/LiveAnchorPluginLayout$createNewLive$1$clickSpan$1", "Lcom/tencent/mm/plugin/messenger/api/AvoidDuplicatedPressableSpan;", "onClickImp", "", "widget", "Landroid/view/View;", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/live/view/LiveAnchorPluginLayout$createNewLive$1$clickSpan$1", "Lcom/tencent/mm/plugin/messenger/api/AvoidDuplicatedPressableSpan;", "onClickImp", "", "widget", "Landroid/view/View;", "plugin-logic_release"})
 public final class LiveAnchorPluginLayout$b$a
   extends a
 {
@@ -18,19 +18,19 @@ public final class LiveAnchorPluginLayout$b$a
   
   public final void onClickImp(View paramView)
   {
-    AppMethodBeat.i(216539);
+    AppMethodBeat.i(208498);
     p.h(paramView, "widget");
     paramView = new Intent();
-    f.a locala = f.gPE;
-    paramView.putExtra("rawUrl", f.anj());
+    o.a locala = o.hGl;
+    paramView.putExtra("rawUrl", o.aFj());
     paramView.putExtra("showShare", false);
-    d.f(this.hdB.hdz.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
-    AppMethodBeat.o(216539);
+    c.f(this.hWm.hWk.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(208498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.live.view.LiveAnchorPluginLayout.b.a
  * JD-Core Version:    0.7.0.1
  */

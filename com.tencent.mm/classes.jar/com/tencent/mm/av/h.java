@@ -1,18 +1,18 @@
 package com.tencent.mm.av;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.vfs.s;
 import java.util.Map;
 
 public final class h
 {
-  public static final a FK(String paramString)
+  public static final a Ov(String paramString)
   {
     AppMethodBeat.i(150558);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(150558);
       return null;
@@ -22,10 +22,10 @@ public final class h
     if (i > 0) {
       localObject = paramString.substring(i);
     }
-    paramString = bx.M((String)localObject, "msg");
+    paramString = XmlParser.parseXml((String)localObject, "msg", null);
     if (paramString == null)
     {
-      ae.e("MicroMsg.ImgInfoLogic", "parseImg failed");
+      Log.e("MicroMsg.ImgInfoLogic", "parseImg failed");
       AppMethodBeat.o(150558);
       return null;
     }
@@ -38,15 +38,15 @@ public final class h
     return localObject;
   }
   
-  public static String FL(String paramString)
+  public static String Ow(String paramString)
   {
     AppMethodBeat.i(150559);
-    if (!o.fB(paramString))
+    if (!s.YS(paramString))
     {
       AppMethodBeat.o(150559);
       return null;
     }
-    long l = o.aZR(paramString);
+    long l = s.boW(paramString);
     paramString = com.tencent.mm.b.g.getMessageDigest((paramString + "-" + l).getBytes());
     AppMethodBeat.o(150559);
     return paramString;
@@ -60,9 +60,9 @@ public final class h
       AppMethodBeat.o(150554);
       return null;
     }
-    if (paramg.aIB())
+    if (paramg.bcv())
     {
-      g localg = q.aIX().pw(paramg.icz);
+      g localg = q.bcR().tl(paramg.iXx);
       if (localg == null)
       {
         AppMethodBeat.o(150554);
@@ -84,14 +84,14 @@ public final class h
       return false;
     }
     int j = paramg.offset;
-    int i = paramg.hPI;
-    long l = paramg.dCd;
-    if (paramg.aIB())
+    int i = paramg.iKP;
+    long l = paramg.dTS;
+    if (paramg.bcv())
     {
-      paramg = q.aIX().pw(paramg.icz);
+      paramg = q.bcR().tl(paramg.iXx);
       j = paramg.offset;
-      i = paramg.hPI;
-      l = paramg.dCd;
+      i = paramg.iKP;
+      l = paramg.dTS;
     }
     if (i == 0)
     {
@@ -115,29 +115,29 @@ public final class h
       AppMethodBeat.o(150556);
       return "";
     }
-    if (paramg.aIB())
+    if (paramg.bcv())
     {
-      paramg = q.aIX().pw(paramg.icz);
+      paramg = q.bcR().tl(paramg.iXx);
       if (paramg == null)
       {
         AppMethodBeat.o(150556);
         return "";
       }
-      paramg = paramg.ico;
+      paramg = paramg.iXm;
       AppMethodBeat.o(150556);
       return paramg;
     }
-    paramg = paramg.ico;
+    paramg = paramg.iXm;
     AppMethodBeat.o(150556);
     return paramg;
   }
   
-  public static String d(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static String c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(150557);
     String str = null;
-    if (!bu.isNullOrNil(paramString1)) {
-      str = String.format("<appinfo><appid>%s</appid><mediatagname>%s</mediatagname><messageext>%s</messageext><messageaction>%s</messageaction></appinfo>", new Object[] { paramString1, bu.nullAsNil(paramString2), bu.nullAsNil(paramString3), bu.nullAsNil(paramString4) });
+    if (!Util.isNullOrNil(paramString1)) {
+      str = String.format("<appinfo><appid>%s</appid><mediatagname>%s</mediatagname><messageext>%s</messageext><messageaction>%s</messageaction></appinfo>", new Object[] { paramString1, Util.nullAsNil(paramString2), Util.nullAsNil(paramString3), Util.nullAsNil(paramString4) });
     }
     AppMethodBeat.o(150557);
     return str;
@@ -145,7 +145,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.h
  * JD-Core Version:    0.7.0.1
  */

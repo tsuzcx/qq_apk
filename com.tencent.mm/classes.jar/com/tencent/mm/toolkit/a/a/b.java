@@ -6,7 +6,7 @@ public abstract interface b
 {
   public abstract void a(c paramc);
   
-  public abstract void cL(int paramInt, String paramString);
+  public abstract void df(int paramInt, String paramString);
 }
 
 

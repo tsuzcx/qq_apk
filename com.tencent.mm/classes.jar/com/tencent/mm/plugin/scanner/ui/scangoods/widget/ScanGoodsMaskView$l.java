@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import android.graphics.Bitmap;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "roundBitmap", "Landroid/graphics/Bitmap;", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "roundBitmap", "Landroid/graphics/Bitmap;", "invoke"})
 final class ScanGoodsMaskView$l
   extends q
   implements b<Bitmap, Boolean>

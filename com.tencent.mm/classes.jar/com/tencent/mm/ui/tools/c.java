@@ -7,36 +7,36 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aw.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class c
   extends BaseAdapter
 {
+  private List<b.a> bXV;
   private Context context;
-  private List<b.a> fQE;
-  private String jff;
+  private String kdi;
   private List<b.a> list;
-  int[] vcp;
-  boolean vcq;
+  int[] yuP;
+  boolean yuQ;
   
   public c(Context paramContext, List<b.a> paramList)
   {
     AppMethodBeat.i(38986);
-    this.fQE = new ArrayList();
-    this.vcq = false;
+    this.bXV = new ArrayList();
+    this.yuQ = false;
     this.context = paramContext;
     this.list = paramList;
-    dhq();
-    dhr();
+    ebk();
+    ebl();
     AppMethodBeat.o(38986);
   }
   
-  private static String Je(int paramInt)
+  private static String Ph(int paramInt)
   {
     AppMethodBeat.i(38993);
-    if (ad.fok())
+    if (LocaleUtil.isTraditionalChineseAppLang())
     {
       String str = Integer.toString(paramInt) + "劃";
       AppMethodBeat.o(38993);
@@ -47,50 +47,50 @@ public final class c
     return String.valueOf(c);
   }
   
-  private void dhq()
+  private void ebk()
   {
     AppMethodBeat.i(38987);
     int i = 0;
     int j = this.list.size();
     while (i < j)
     {
-      this.fQE.add(this.list.get(i));
+      this.bXV.add(this.list.get(i));
       i += 1;
     }
     AppMethodBeat.o(38987);
   }
   
-  private void dhr()
+  private void ebl()
   {
     AppMethodBeat.i(38988);
-    this.vcp = new int[this.list.size()];
+    this.yuP = new int[this.list.size()];
     int j = this.list.size();
     int i = 0;
     while (i < j)
     {
-      this.vcp[i] = ((b.a)this.list.get(i)).ihg;
+      this.yuP[i] = ((b.a)this.list.get(i)).jcb;
       i += 1;
     }
     AppMethodBeat.o(38988);
   }
   
-  public final void JN(String paramString)
+  public final void SM(String paramString)
   {
     AppMethodBeat.i(38991);
     if (paramString != null)
     {
-      this.jff = paramString.trim();
+      this.kdi = paramString.trim();
       this.list.clear();
-      int j = this.fQE.size();
+      int j = this.bXV.size();
       int i = 0;
       while (i < j)
       {
-        if ((((b.a)this.fQE.get(i)).ihe.toUpperCase().contains(this.jff.toUpperCase())) || (((b.a)this.fQE.get(i)).ihf.toUpperCase().contains(this.jff.toUpperCase())) || (((b.a)this.fQE.get(i)).ihd.contains(this.jff))) {
-          this.list.add(this.fQE.get(i));
+        if ((((b.a)this.bXV.get(i)).jbZ.toUpperCase().contains(this.kdi.toUpperCase())) || (((b.a)this.bXV.get(i)).jca.toUpperCase().contains(this.kdi.toUpperCase())) || (((b.a)this.bXV.get(i)).jbY.contains(this.kdi))) {
+          this.list.add(this.bXV.get(i));
         }
         i += 1;
       }
-      dhr();
+      ebl();
       super.notifyDataSetChanged();
     }
     AppMethodBeat.o(38991);
@@ -124,38 +124,38 @@ public final class c
     label88:
     int i;
     if (paramView == null) {
-      if (!ad.fok())
+      if (!LocaleUtil.isTraditionalChineseAppLang())
       {
-        paramView = View.inflate(this.context, 2131493668, null);
+        paramView = View.inflate(this.context, 2131493798, null);
         paramViewGroup = new a();
-        paramViewGroup.vcs = ((TextView)paramView.findViewById(2131298724));
-        paramViewGroup.fRI = ((TextView)paramView.findViewById(2131298729));
-        paramViewGroup.vct = ((TextView)paramView.findViewById(2131298734));
+        paramViewGroup.yuS = ((TextView)paramView.findViewById(2131299162));
+        paramViewGroup.gwR = ((TextView)paramView.findViewById(2131299167));
+        paramViewGroup.yuT = ((TextView)paramView.findViewById(2131299172));
         paramView.setTag(paramViewGroup);
         if (paramInt <= 0) {
           break label201;
         }
-        i = this.vcp[(paramInt - 1)];
+        i = this.yuP[(paramInt - 1)];
         label102:
         if (paramInt != 0) {
           break label207;
         }
-        paramViewGroup.vcs.setVisibility(0);
-        paramViewGroup.vcs.setText(Je(this.vcp[paramInt]));
+        paramViewGroup.yuS.setVisibility(0);
+        paramViewGroup.yuS.setText(Ph(this.yuP[paramInt]));
         label130:
-        paramViewGroup.fRI.setText(locala.ihe);
-        paramViewGroup.vct.setText(locala.ihd);
-        if (!this.vcq) {
+        paramViewGroup.gwR.setText(locala.jbZ);
+        paramViewGroup.yuT.setText(locala.jbY);
+        if (!this.yuQ) {
           break label261;
         }
-        paramViewGroup.vct.setVisibility(0);
+        paramViewGroup.yuT.setVisibility(0);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(38992);
       return paramView;
-      paramView = View.inflate(this.context, 2131493669, null);
+      paramView = View.inflate(this.context, 2131493799, null);
       break;
       paramViewGroup = (a)paramView.getTag();
       break label88;
@@ -163,29 +163,29 @@ public final class c
       i = -1;
       break label102;
       label207:
-      if ((paramInt > 0) && (this.vcp[paramInt] != i))
+      if ((paramInt > 0) && (this.yuP[paramInt] != i))
       {
-        paramViewGroup.vcs.setVisibility(0);
-        paramViewGroup.vcs.setText(Je(this.vcp[paramInt]));
+        paramViewGroup.yuS.setVisibility(0);
+        paramViewGroup.yuS.setText(Ph(this.yuP[paramInt]));
         break label130;
       }
-      paramViewGroup.vcs.setVisibility(8);
+      paramViewGroup.yuS.setVisibility(8);
       break label130;
       label261:
-      paramViewGroup.vct.setVisibility(4);
+      paramViewGroup.yuT.setVisibility(4);
     }
   }
   
   static final class a
   {
-    TextView fRI;
-    TextView vcs;
-    TextView vct;
+    TextView gwR;
+    TextView yuS;
+    TextView yuT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.c
  * JD-Core Version:    0.7.0.1
  */

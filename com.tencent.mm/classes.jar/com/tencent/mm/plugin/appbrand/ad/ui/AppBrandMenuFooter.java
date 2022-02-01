@@ -11,19 +11,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.g;
 import com.tencent.mm.plugin.appbrand.ad.e;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.page.ag;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class AppBrandMenuFooter
   extends LinearLayout
 {
-  private View jFG;
+  private View kHq;
   
   public AppBrandMenuFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(160568);
-    aN(paramContext);
+    bh(paramContext);
     AppMethodBeat.o(160568);
   }
   
@@ -31,29 +31,29 @@ public class AppBrandMenuFooter
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(160569);
-    aN(paramContext);
+    bh(paramContext);
     AppMethodBeat.o(160569);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(160570);
-    this.jFG = LayoutInflater.from(paramContext).inflate(2131493011, this);
+    this.kHq = LayoutInflater.from(paramContext).inflate(2131493049, this);
     AppMethodBeat.o(160570);
   }
   
-  public void setPageView(ad paramad)
+  public void setPageView(ag paramag)
   {
     AppMethodBeat.i(160571);
-    ((TextView)this.jFG.findViewById(2131302654)).setText(bu.nullAsNil(e.Lp(paramad.getAppId())));
-    ImageView localImageView = (ImageView)this.jFG.findViewById(2131300874);
-    b.aEl().a(localImageView, e.Lq(paramad.getAppId()), 2131230988, g.hOv);
+    ((TextView)this.kHq.findViewById(2131305208)).setText(Util.nullAsNil(e.Uy(paramag.getAppId())));
+    ImageView localImageView = (ImageView)this.kHq.findViewById(2131302468);
+    b.aXY().a(localImageView, e.Uz(paramag.getAppId()), 2131231017, g.iJB);
     AppMethodBeat.o(160571);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.ui.AppBrandMenuFooter
  * JD-Core Version:    0.7.0.1
  */

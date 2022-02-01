@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.report.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.ah;
-import com.tencent.mm.protocal.protobuf.ai;
-import com.tencent.mm.protocal.protobuf.awd;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.aj;
+import com.tencent.mm.protocal.protobuf.ak;
+import com.tencent.mm.protocal.protobuf.bhn;
+import com.tencent.mm.protocal.protobuf.bho;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
-  extends n
-  implements k
+  extends q
+  implements m
 {
   private static boolean isRunning;
   private static Object lock;
-  private awd cJJ;
-  private f callback;
-  private com.tencent.mm.ak.b rr;
-  public ai ywW;
+  public ak CxS;
+  private i callback;
+  private bhn dah;
+  private d rr;
   
   static
   {
@@ -37,21 +40,21 @@ public final class g
   public g(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143796);
-    this.cJJ = null;
+    this.dah = null;
     setIsRunning(true);
-    ah localah = new ah();
-    this.cJJ = new awd();
+    aj localaj = new aj();
+    this.dah = new bhn();
     try
     {
-      localah.FJH = paramInt1;
-      localah.FJI = paramInt2;
-      this.cJJ.GNW = localah;
+      localaj.KCZ = paramInt1;
+      localaj.KDa = paramInt2;
+      this.dah.LSc = localaj;
       AppMethodBeat.o(143796);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.NetSceneGetAPMStrategy", "parse data error");
+      Log.e("MicroMsg.NetSceneGetAPMStrategy", "parse data error");
       AppMethodBeat.o(143796);
     }
   }
@@ -65,40 +68,40 @@ public final class g
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(143798);
-    this.callback = paramf;
-    com.tencent.mm.kernel.g.ajP();
-    if (!a.aiY())
+    this.callback = parami;
+    com.tencent.mm.kernel.g.aAf();
+    if (!a.azo())
     {
-      ae.w("MicroMsg.NetSceneGetAPMStrategy", "get mrs strategy must go after login");
+      Log.w("MicroMsg.NetSceneGetAPMStrategy", "get mrs strategy must go after login");
       AppMethodBeat.o(143798);
       return -1;
     }
-    paramf = new b.a();
-    paramf.hQI = false;
-    paramf.hQF = this.cJJ;
-    paramf.hQG = new awe();
-    paramf.uri = "/cgi-bin/micromsg-bin/getapmstrategy";
-    paramf.funcId = getType();
-    this.rr = paramf.aDS();
-    int i = dispatch(parame, this.rr, this);
+    parami = new d.a();
+    parami.iLQ = false;
+    parami.iLN = this.dah;
+    parami.iLO = new bho();
+    parami.uri = "/cgi-bin/micromsg-bin/getapmstrategy";
+    parami.funcId = getType();
+    this.rr = parami.aXF();
+    int i = dispatch(paramg, this.rr, this);
     if (i < 0) {
-      ae.i("MicroMsg.NetSceneGetAPMStrategy", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
+      Log.i("MicroMsg.NetSceneGetAPMStrategy", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
     }
     try
     {
-      this.ywW = null;
+      this.CxS = null;
       setIsRunning(false);
       AppMethodBeat.o(143798);
       return i;
     }
-    catch (Exception parame)
+    catch (Exception paramg)
     {
       for (;;)
       {
-        ae.e("MicroMsg.NetSceneGetAPMStrategy", "onStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bu.o(parame) });
+        Log.e("MicroMsg.NetSceneGetAPMStrategy", "onStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), Util.stackTraceToString(paramg) });
       }
     }
   }
@@ -108,26 +111,26 @@ public final class g
     return 914;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(143797);
     try
     {
-      this.ywW = null;
-      if ((com.tencent.mm.kernel.g.ajQ().gDv == null) || (com.tencent.mm.kernel.g.ajQ().gDv.hRo == null))
+      this.CxS = null;
+      if ((com.tencent.mm.kernel.g.aAg().hqi == null) || (com.tencent.mm.kernel.g.aAg().hqi.iMw == null))
       {
-        ae.f("MicroMsg.NetSceneGetAPMStrategy", "null == network().getNetSceneQueue().getDispatcher(), can't give response to kvcomm.");
+        Log.f("MicroMsg.NetSceneGetAPMStrategy", "null == network().getNetSceneQueue().getDispatcher(), can't give response to kvcomm.");
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         return;
       }
       if (paramInt2 != 0)
       {
-        ae.e("MicroMsg.NetSceneGetAPMStrategy", "get report strategy err, errType:" + paramInt2 + ", errCode:" + paramInt3);
+        Log.e("MicroMsg.NetSceneGetAPMStrategy", "get report strategy err, errType:" + paramInt2 + ", errCode:" + paramInt3);
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         return;
       }
-      ae.d("MicroMsg.NetSceneGetAPMStrategy", "get report strategy ok");
-      this.ywW = ((awe)this.rr.hQE.hQJ).GNX;
+      Log.d("MicroMsg.NetSceneGetAPMStrategy", "get report strategy ok");
+      this.CxS = ((bho)this.rr.iLL.iLR).LSd;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       return;
     }

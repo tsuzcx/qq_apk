@@ -42,7 +42,7 @@ public class j
         Object localObject1 = x.b(this.b, x.a);
         str = x.b(this.b, x.b);
         localStringBuilder = new StringBuilder();
-        i = s.a(this.b).a();
+        i = s.a(this.b).a;
         localObject3 = ((List)localObject3).iterator();
         if (!((Iterator)localObject3).hasNext()) {
           break label279;
@@ -118,7 +118,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.j
  * JD-Core Version:    0.7.0.1
  */

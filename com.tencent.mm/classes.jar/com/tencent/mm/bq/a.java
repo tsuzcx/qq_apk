@@ -7,32 +7,33 @@ import android.support.v4.app.s.c;
 import android.text.format.Time;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.n.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  private static String Fbo = "";
-  private static String ggt = "";
+  private static String JSi = "";
+  private static String gLY = "";
   
-  public static void aMz(String paramString)
-  {
-    ggt = paramString;
-  }
-  
-  public static String abK()
+  public static String apJ()
   {
     AppMethodBeat.i(116804);
-    if (bu.isNullOrNil(ggt)) {
-      ggt = com.tencent.mm.kernel.a.abL().getString("message_channel_id", "message_channel_new_id");
+    if (Util.isNullOrNil(gLY)) {
+      gLY = com.tencent.mm.kernel.a.apK().getString("message_channel_id", "message_channel_new_id");
     }
-    String str = ggt;
+    String str = gLY;
     AppMethodBeat.o(116804);
     return str;
   }
   
-  public static s.c bJ(Context paramContext, String paramString)
+  public static void bcS(String paramString)
+  {
+    gLY = paramString;
+  }
+  
+  public static s.c cd(Context paramContext, String paramString)
   {
     AppMethodBeat.i(116806);
     paramContext = new s.c(paramContext, paramString);
@@ -40,37 +41,37 @@ public final class a
     return paramContext;
   }
   
-  public static int dzu()
+  public static int ezb()
   {
     if (Build.VERSION.SDK_INT < 19) {
-      return 2131233500;
+      return 2131234303;
     }
-    return 2131233502;
+    return 2131234305;
   }
   
-  public static String fcs()
+  public static String glD()
   {
     AppMethodBeat.i(116805);
-    if (bu.isNullOrNil(Fbo)) {
-      Fbo = com.tencent.mm.kernel.a.abL().getString("voip_notify_channel_new_id", "voip_notify_channel_new_id");
+    if (Util.isNullOrNil(JSi)) {
+      JSi = com.tencent.mm.kernel.a.apK().getString("voip_notify_channel_new_id", "voip_notify_channel_new_id");
     }
-    String str = Fbo;
+    String str = JSi;
     AppMethodBeat.o(116805);
     return str;
   }
   
-  public static String fct()
+  public static String glE()
   {
     AppMethodBeat.i(116807);
-    if (d.lA(26))
+    if (d.oD(26))
     {
       localObject = new Time();
       ((Time)localObject).setToNow();
       int i = ((Time)localObject).hour;
       int j = ((Time)localObject).minute;
-      ak.getContext();
-      if (!com.tencent.mm.n.a.cr(i, j)) {
-        ae.w("MicroMsg.NotificationHelper", "no shake & sound notification during background deactive time");
+      MMApplicationContext.getContext();
+      if (!b.ct(i, j)) {
+        Log.w("MicroMsg.NotificationHelper", "no shake & sound notification during background deactive time");
       }
       for (i = 1; i != 0; i = 0)
       {
@@ -78,14 +79,14 @@ public final class a
         return "message_dnd_mode_channel_id";
       }
     }
-    Object localObject = abK();
+    Object localObject = apJ();
     AppMethodBeat.o(116807);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bq.a
  * JD-Core Version:    0.7.0.1
  */

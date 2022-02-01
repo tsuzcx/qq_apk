@@ -22,7 +22,7 @@ final class ay
     Context localContext = (Context)this.mContextRef.get();
     if ((localDrawable != null) && (localContext != null))
     {
-      g.jb();
+      g.jk();
       g.a(localContext, paramInt, localDrawable);
     }
     return localDrawable;

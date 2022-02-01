@@ -110,16 +110,10 @@ public class WebStorage
     android.webkit.WebStorage.getInstance().setQuotaForOrigin(paramString, paramLong);
     AppMethodBeat.o(54328);
   }
-  
-  @Deprecated
-  public static abstract interface QuotaUpdater
-  {
-    public abstract void updateQuota(long paramLong);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebStorage
  * JD-Core Version:    0.7.0.1
  */

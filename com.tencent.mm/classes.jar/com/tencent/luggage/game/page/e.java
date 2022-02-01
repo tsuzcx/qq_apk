@@ -4,85 +4,85 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.sdk.platformtools.Log;
 
 @SuppressLint({"ViewConstructor"})
 public final class e
-  extends q
+  extends t
 {
-  private z ckP;
+  private ac cwK;
   private String mURL;
   
-  public e(Context paramContext, t paramt)
+  public e(Context paramContext, w paramw)
   {
-    super(paramContext, paramt);
+    super(paramContext, paramw);
     AppMethodBeat.i(130628);
-    ae.i("MicroMsg.WAGamePage", "hy: WAGamePage on create");
+    Log.i("MicroMsg.WAGamePage", "hy: WAGamePage on create");
     AppMethodBeat.o(130628);
   }
   
-  public final View Dw()
+  public final View MT()
   {
     AppMethodBeat.i(130629);
-    Object localObject = getContainer().buT();
-    this.ckP = ((z)localObject);
-    localObject = ((z)localObject).kfr;
+    Object localObject = getContainer().bQT();
+    this.cwK = ((ac)localObject);
+    localObject = ((ac)localObject).getContentView();
     AppMethodBeat.o(130629);
     return localObject;
   }
   
-  public final void Dx()
+  public final void MU()
   {
     AppMethodBeat.i(130633);
-    super.Dx();
-    this.ckP.onDestroy();
+    super.MU();
+    this.cwK.onDestroy();
     AppMethodBeat.o(130633);
   }
   
-  public final void Dy()
+  public final void MV()
   {
     AppMethodBeat.i(130634);
-    super.Dy();
+    super.MV();
     setEnableGesture(false);
-    this.ckP.onForeground();
+    this.cwK.onForeground();
     AppMethodBeat.o(130634);
   }
   
-  public final void Dz()
+  public final void MW()
   {
     AppMethodBeat.i(130635);
-    super.Dz();
-    this.ckP.onBackground();
+    super.MW();
+    this.cwK.onBackground();
     AppMethodBeat.o(130635);
   }
   
   public final void a(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(130631);
-    this.ckP.c(paramString1, paramString2, 0);
+    this.cwK.c(paramString1, paramString2, 0);
     AppMethodBeat.o(130631);
-  }
-  
-  public final boolean cX(String paramString)
-  {
-    return true;
   }
   
   public final void cleanup()
   {
     AppMethodBeat.i(130632);
     super.cleanup();
-    this.ckP.cleanup();
+    this.cwK.cleanup();
     AppMethodBeat.o(130632);
   }
   
-  public final z getCurrentPageView()
+  public final boolean dw(String paramString)
   {
-    return this.ckP;
+    return true;
+  }
+  
+  public final ac getCurrentPageView()
+  {
+    return this.cwK;
   }
   
   public final String getCurrentUrl()
@@ -90,11 +90,24 @@ public final class e
     return this.mURL;
   }
   
+  public final ac hL(int paramInt)
+  {
+    AppMethodBeat.i(222887);
+    if (this.cwK.getComponentId() == paramInt)
+    {
+      ac localac = this.cwK;
+      AppMethodBeat.o(222887);
+      return localac;
+    }
+    AppMethodBeat.o(222887);
+    return null;
+  }
+  
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(130630);
     this.mURL = paramString;
-    this.ckP.dm(paramString);
+    this.cwK.dE(paramString);
     AppMethodBeat.o(130630);
   }
   
@@ -105,7 +118,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.page.e
  * JD-Core Version:    0.7.0.1
  */

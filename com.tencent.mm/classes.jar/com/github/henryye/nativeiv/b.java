@@ -13,15 +13,15 @@ import java.util.Map;
 
 public final class b
 {
-  Map<BitmapType, com.github.henryye.nativeiv.bitmap.b> bax;
-  SparseArray<Map<BitmapType, com.github.henryye.nativeiv.bitmap.b>> bay;
+  Map<BitmapType, com.github.henryye.nativeiv.bitmap.b> bat;
+  SparseArray<Map<BitmapType, com.github.henryye.nativeiv.bitmap.b>> bau;
   
   public b()
   {
     AppMethodBeat.i(127329);
-    this.bax = new HashMap(3);
-    this.bay = new SparseArray();
-    this.bax.put(BitmapType.Native, new com.github.henryye.nativeiv.bitmap.b()
+    this.bat = new HashMap(3);
+    this.bau = new SparseArray();
+    this.bat.put(BitmapType.Native, new com.github.henryye.nativeiv.bitmap.b()
     {
       public final boolean a(c paramAnonymousc)
       {
@@ -30,7 +30,7 @@ public final class b
       
       public final void destroy() {}
       
-      public final IBitmap sM()
+      public final IBitmap sP()
       {
         AppMethodBeat.i(127326);
         c.b localb = new c.b();
@@ -38,7 +38,7 @@ public final class b
         return localb;
       }
     });
-    this.bax.put(BitmapType.Legacy, new com.github.henryye.nativeiv.bitmap.b()
+    this.bat.put(BitmapType.Legacy, new com.github.henryye.nativeiv.bitmap.b()
     {
       public final boolean a(c paramAnonymousc)
       {
@@ -47,7 +47,7 @@ public final class b
       
       public final void destroy() {}
       
-      public final IBitmap<Bitmap> sM()
+      public final IBitmap<Bitmap> sP()
       {
         AppMethodBeat.i(127327);
         LegacyBitmap localLegacyBitmap = new LegacyBitmap();
@@ -55,7 +55,7 @@ public final class b
         return localLegacyBitmap;
       }
     });
-    this.bax.put(BitmapType.Undefined, new com.github.henryye.nativeiv.bitmap.b()
+    this.bat.put(BitmapType.Undefined, new com.github.henryye.nativeiv.bitmap.b()
     {
       public final boolean a(c paramAnonymousc)
       {
@@ -64,7 +64,7 @@ public final class b
       
       public final void destroy() {}
       
-      public final IBitmap sM()
+      public final IBitmap sP()
       {
         AppMethodBeat.i(127328);
         c.a locala = new c.a();
@@ -80,17 +80,17 @@ public final class b
     AppMethodBeat.i(127331);
     if (((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Native)).a(paramc))
     {
-      paramc = ((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Native)).sM();
+      paramc = ((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Native)).sP();
       AppMethodBeat.o(127331);
       return paramc;
     }
     if (((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Legacy)).a(paramc))
     {
-      paramc = ((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Legacy)).sM();
+      paramc = ((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Legacy)).sP();
       AppMethodBeat.o(127331);
       return paramc;
     }
-    paramc = ((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Undefined)).sM();
+    paramc = ((com.github.henryye.nativeiv.bitmap.b)paramMap.get(BitmapType.Undefined)).sP();
     AppMethodBeat.o(127331);
     return paramc;
   }
@@ -112,7 +112,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.b
  * JD-Core Version:    0.7.0.1
  */

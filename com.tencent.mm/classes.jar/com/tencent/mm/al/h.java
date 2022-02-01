@@ -1,53 +1,53 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.al;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.g.c.am;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.storage.ca;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class h
-  extends al
+  extends am
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(124069);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "openId";
-    locala.IBN.put("openId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "openId";
+    localMAutoDBInfo.colsMap.put("openId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" openId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "openId";
-    locala.columns[1] = "brandUsername";
-    locala.IBN.put("brandUsername", "TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "openId";
+    localMAutoDBInfo.columns[1] = "brandUsername";
+    localMAutoDBInfo.colsMap.put("brandUsername", "TEXT default '' ");
     localStringBuilder.append(" brandUsername TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "headImgUrl";
-    locala.IBN.put("headImgUrl", "TEXT");
+    localMAutoDBInfo.columns[2] = "headImgUrl";
+    localMAutoDBInfo.colsMap.put("headImgUrl", "TEXT");
     localStringBuilder.append(" headImgUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "nickname";
-    locala.IBN.put("nickname", "TEXT");
+    localMAutoDBInfo.columns[3] = "nickname";
+    localMAutoDBInfo.colsMap.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "kfType";
-    locala.IBN.put("kfType", "INTEGER");
+    localMAutoDBInfo.columns[4] = "kfType";
+    localMAutoDBInfo.colsMap.put("kfType", "INTEGER");
     localStringBuilder.append(" kfType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "updateTime";
-    locala.IBN.put("updateTime", "LONG");
+    localMAutoDBInfo.columns[5] = "updateTime";
+    localMAutoDBInfo.colsMap.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(124069);
   }
   
@@ -63,23 +63,23 @@ public final class h
     this.field_updateTime = paramLong;
   }
   
-  public static boolean H(bv parambv)
+  public static boolean R(ca paramca)
   {
     AppMethodBeat.i(176137);
-    if ((parambv == null) || (bu.isNullOrNil(parambv.field_talker)))
+    if ((paramca == null) || (Util.isNullOrNil(paramca.field_talker)))
     {
       AppMethodBeat.o(176137);
       return false;
     }
-    if (parambv.fmB == 2)
+    if (paramca.fRf == 2)
     {
       AppMethodBeat.o(176137);
       return true;
     }
-    if ((!bu.isNullOrNil(parambv.fmv)) && (g.En(parambv.field_talker)))
+    if ((!Util.isNullOrNil(paramca.fQZ)) && (g.Nb(paramca.field_talker)))
     {
-      parambv = ag.aGo().Ey(parambv.fmv);
-      if ((parambv != null) && (parambv.field_kfType == 2))
+      paramca = ag.bag().Nm(paramca.fQZ);
+      if ((paramca != null) && (paramca.field_kfType == 2))
       {
         AppMethodBeat.o(176137);
         return true;
@@ -89,14 +89,14 @@ public final class h
     return false;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.al.h
  * JD-Core Version:    0.7.0.1
  */

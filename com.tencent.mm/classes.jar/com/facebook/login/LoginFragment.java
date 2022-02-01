@@ -68,7 +68,7 @@ public class LoginFragment
   
   protected int getLayoutResId()
   {
-    return 2131493569;
+    return 2131493685;
   }
   
   LoginClient getLoginClient()
@@ -128,7 +128,7 @@ public class LoginFragment
   {
     AppMethodBeat.i(7873);
     paramLayoutInflater = paramLayoutInflater.inflate(getLayoutResId(), paramViewGroup, false);
-    paramViewGroup = paramLayoutInflater.findViewById(2131298500);
+    paramViewGroup = paramLayoutInflater.findViewById(2131298919);
     this.loginClient.setBackgroundProcessingListener(new LoginClient.BackgroundProcessingListener()
     {
       public void onBackgroundProcessingStarted()
@@ -162,7 +162,7 @@ public class LoginFragment
     AppMethodBeat.i(7876);
     super.onPause();
     if (getView() == null) {}
-    for (View localView = null;; localView = getView().findViewById(2131298500))
+    for (View localView = null;; localView = getView().findViewById(2131298919))
     {
       if (localView != null) {
         localView.setVisibility(8);
@@ -196,7 +196,7 @@ public class LoginFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.LoginFragment
  * JD-Core Version:    0.7.0.1
  */

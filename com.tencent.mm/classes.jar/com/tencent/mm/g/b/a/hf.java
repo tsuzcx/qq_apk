@@ -6,67 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class hf
   extends a
 {
-  public long ets = 0L;
-  public long ett = 0L;
-  public String etu = "";
-  public String etv = "";
-  public String etw = "";
-  public String etx = "";
-  public String ety = "";
+  public long eEH = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(91243);
+    AppMethodBeat.i(149926);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ets);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ett);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etu);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etv);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etx);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ety);
+    ((StringBuffer)localObject).append(this.eEH);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(91243);
+    aMq((String)localObject);
+    AppMethodBeat.o(149926);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(91244);
+    AppMethodBeat.i(149927);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PayType:").append(this.ets);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CallbackType:").append(this.ett);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceH5Url:").append(this.etu);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceAppUsername:").append(this.etv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceAppPath:").append(this.etw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TargetAppUsername:").append(this.etx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TargetAppPath:").append(this.ety);
+    ((StringBuffer)localObject).append("ClickScene:").append(this.eEH);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91244);
+    AppMethodBeat.o(149927);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16310;
+    return 16867;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hf
  * JD-Core Version:    0.7.0.1
  */

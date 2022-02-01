@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.dbbackup;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.n;
 
@@ -16,7 +16,7 @@ public class Plugin
     return locala;
   }
   
-  public az createSubCore()
+  public bd createSubCore()
   {
     AppMethodBeat.i(23077);
     d locald = new d();
@@ -31,7 +31,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.Plugin
  * JD-Core Version:    0.7.0.1
  */

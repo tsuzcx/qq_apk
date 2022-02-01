@@ -17,16 +17,16 @@ import com.tencent.mm.plugin.fts.ui.n;
 public final class g
   extends a
 {
-  private a.b KNC;
-  a.a KND;
-  private CharSequence tMa;
+  private a.b QaC;
+  a.a QaD;
+  private CharSequence xdb;
   
   public g(int paramInt)
   {
     super(5, paramInt);
     AppMethodBeat.i(102956);
-    this.KNC = new b();
-    this.KND = new a();
+    this.QaC = new b();
+    this.QaD = new a();
     AppMethodBeat.o(102956);
   }
   
@@ -34,32 +34,32 @@ public final class g
   {
     AppMethodBeat.i(102957);
     parama = new SpannableStringBuilder();
-    String[] arrayOfString = this.tFe.tFE;
+    String[] arrayOfString = this.wWd.wWD;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
       SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new ForegroundColorSpan(b.b.tIR), 0, str.length(), 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(b.b.wZQ), 0, str.length(), 33);
       parama.append(localSpannableString);
       parama.append("、");
       i += 1;
     }
-    this.tMa = TextUtils.concat(new CharSequence[] { paramContext.getString(2131762984), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131762984) });
+    this.xdb = TextUtils.concat(new CharSequence[] { paramContext.getString(2131765121), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131765121) });
     AppMethodBeat.o(102957);
   }
   
-  public final a.b aRR()
+  public final a.b bmx()
   {
-    return this.KNC;
+    return this.QaC;
   }
   
   public final class a
     extends a.a
   {
-    public TextView iFO;
-    public View knu;
+    public TextView jBR;
+    public View lrc;
     
     public a()
     {
@@ -78,10 +78,10 @@ public final class g
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102954);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131495361, paramViewGroup, false);
-      paramViewGroup = (g.a)g.this.KND;
-      paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
-      paramViewGroup.knu = paramContext.findViewById(2131300716);
+      paramContext = LayoutInflater.from(paramContext).inflate(2131496222, paramViewGroup, false);
+      paramViewGroup = (g.a)g.this.QaD;
+      paramViewGroup.jBR = ((TextView)paramContext.findViewById(2131299510));
+      paramViewGroup.lrc = paramContext.findViewById(2131302290);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102954);
       return paramContext;
@@ -91,18 +91,18 @@ public final class g
     {
       AppMethodBeat.i(102955);
       paramContext = (g.a)parama;
-      n.a(g.a((g)parama1), paramContext.iFO);
+      n.a(g.a((g)parama1), paramContext.jBR);
       if (g.this.position == 0)
       {
-        paramContext.knu.setVisibility(8);
+        paramContext.lrc.setVisibility(8);
         AppMethodBeat.o(102955);
         return;
       }
-      paramContext.knu.setVisibility(0);
+      paramContext.lrc.setVisibility(0);
       AppMethodBeat.o(102955);
     }
     
-    public final boolean aRS()
+    public final boolean bmy()
     {
       return false;
     }
@@ -110,7 +110,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.g
  * JD-Core Version:    0.7.0.1
  */

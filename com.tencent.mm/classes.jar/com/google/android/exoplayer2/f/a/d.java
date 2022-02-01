@@ -9,88 +9,88 @@ import java.util.PriorityQueue;
 abstract class d
   implements com.google.android.exoplayer2.f.e
 {
-  private final PriorityQueue<h> bBA;
-  private h bBB;
-  private final LinkedList<h> bBy = new LinkedList();
-  final LinkedList<i> bBz;
-  private long bvf;
+  private final LinkedList<h> bBA = new LinkedList();
+  final LinkedList<i> bBB;
+  private final PriorityQueue<h> bBC;
+  private h bBD;
+  private long buZ;
   
   public d()
   {
     int i = 0;
     while (i < 10)
     {
-      this.bBy.add(new h());
+      this.bBA.add(new h());
       i += 1;
     }
-    this.bBz = new LinkedList();
+    this.bBB = new LinkedList();
     i = j;
     while (i < 2)
     {
-      this.bBz.add(new e(this));
+      this.bBB.add(new e(this));
       i += 1;
     }
-    this.bBA = new PriorityQueue();
+    this.bBC = new PriorityQueue();
   }
   
   private void c(h paramh)
   {
     paramh.clear();
-    this.bBy.add(paramh);
+    this.bBA.add(paramh);
   }
   
   protected abstract void a(h paramh);
   
   public void ah(long paramLong)
   {
-    this.bvf = paramLong;
+    this.buZ = paramLong;
   }
   
   public void b(h paramh)
   {
     boolean bool;
-    if (paramh == this.bBB)
+    if (paramh == this.bBD)
     {
       bool = true;
       a.checkArgument(bool);
-      if (!paramh.tX()) {
+      if (!paramh.uc()) {
         break label37;
       }
       c(paramh);
     }
     for (;;)
     {
-      this.bBB = null;
+      this.bBD = null;
       return;
       bool = false;
       break;
       label37:
-      this.bBA.add(paramh);
+      this.bBC.add(paramh);
     }
   }
   
   public void flush()
   {
-    this.bvf = 0L;
-    while (!this.bBA.isEmpty()) {
-      c((h)this.bBA.poll());
+    this.buZ = 0L;
+    while (!this.bBC.isEmpty()) {
+      c((h)this.bBC.poll());
     }
-    if (this.bBB != null)
+    if (this.bBD != null)
     {
-      c(this.bBB);
-      this.bBB = null;
+      c(this.bBD);
+      this.bBD = null;
     }
   }
   
   public void release() {}
   
-  protected abstract boolean vZ();
+  protected abstract boolean we();
   
-  protected abstract com.google.android.exoplayer2.f.d wa();
+  protected abstract com.google.android.exoplayer2.f.d wf();
   
-  public i wd()
+  public i wi()
   {
-    if (this.bBz.isEmpty()) {
+    if (this.bBB.isEmpty()) {
       return null;
     }
     h localh;
@@ -100,46 +100,46 @@ abstract class d
       do
       {
         c(localh);
-        if ((this.bBA.isEmpty()) || (((h)this.bBA.peek()).timeUs > this.bvf)) {
+        if ((this.bBC.isEmpty()) || (((h)this.bBC.peek()).timeUs > this.buZ)) {
           break;
         }
-        localh = (h)this.bBA.poll();
-        if (localh.tY())
+        localh = (h)this.bBC.poll();
+        if (localh.ud())
         {
-          localObject = (i)this.bBz.pollFirst();
-          ((i)localObject).dP(4);
+          localObject = (i)this.bBB.pollFirst();
+          ((i)localObject).dK(4);
           c(localh);
           return localObject;
         }
         a(localh);
-      } while (!vZ());
-      localObject = wa();
-    } while (localh.tX());
-    i locali = (i)this.bBz.pollFirst();
+      } while (!we());
+      localObject = wf();
+    } while (localh.uc());
+    i locali = (i)this.bBB.pollFirst();
     locali.a(localh.timeUs, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
     c(localh);
     return locali;
     return null;
   }
   
-  public h we()
+  public h wj()
   {
-    if (this.bBB == null) {}
+    if (this.bBD == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      if (!this.bBy.isEmpty()) {
+      if (!this.bBA.isEmpty()) {
         break;
       }
       return null;
     }
-    this.bBB = ((h)this.bBy.pollFirst());
-    return this.bBB;
+    this.bBD = ((h)this.bBA.pollFirst());
+    return this.bBD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.d
  * JD-Core Version:    0.7.0.1
  */

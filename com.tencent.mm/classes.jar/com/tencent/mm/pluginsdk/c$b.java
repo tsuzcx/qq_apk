@@ -1,22 +1,22 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "invoke"})
 final class c$b
   extends q
   implements a<ConcurrentLinkedDeque<String>>
 {
-  public static final b FbD;
+  public static final b JSx;
   
   static
   {
     AppMethodBeat.i(124764);
-    FbD = new b();
+    JSx = new b();
     AppMethodBeat.o(124764);
   }
   

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public final class i$1
   implements Runnable
@@ -9,7 +9,7 @@ public final class i$1
   public final void run()
   {
     AppMethodBeat.i(28304);
-    o.dd(i.dSP(), true);
+    s.dy(i.eUQ(), true);
     AppMethodBeat.o(28304);
   }
   
@@ -23,7 +23,7 @@ public final class i$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.i.1
  * JD-Core Version:    0.7.0.1
  */

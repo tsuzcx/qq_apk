@@ -7,7 +7,7 @@ import com.tencent.mm.ui.widget.snackbar.a.b;
 public abstract interface v
   extends a
 {
-  public abstract void a(int paramInt, Activity paramActivity, a.b paramb);
+  public abstract void a(int paramInt1, int paramInt2, Activity paramActivity, a.b paramb);
 }
 
 

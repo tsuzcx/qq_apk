@@ -9,23 +9,23 @@ public final class b
 {
   public b()
   {
-    AppMethodBeat.i(187234);
-    com.tencent.mm.j.a.a.fXk = new a.a.a()
+    AppMethodBeat.i(232993);
+    com.tencent.mm.j.a.a.gCq = new a.a.a()
     {
       public final com.tencent.mm.j.a a(MMActivity paramAnonymousMMActivity)
       {
-        AppMethodBeat.i(187233);
+        AppMethodBeat.i(232992);
         paramAnonymousMMActivity = new a(paramAnonymousMMActivity);
-        AppMethodBeat.o(187233);
+        AppMethodBeat.o(232992);
         return paramAnonymousMMActivity;
       }
     };
-    AppMethodBeat.o(187234);
+    AppMethodBeat.o(232993);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b
  * JD-Core Version:    0.7.0.1
  */

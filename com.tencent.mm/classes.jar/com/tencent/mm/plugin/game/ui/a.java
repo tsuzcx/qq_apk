@@ -9,23 +9,23 @@ import com.tencent.mm.b.f.a;
 import com.tencent.mm.memory.a.b;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.util.LinkedList;
 
 public abstract class a<T>
   extends BaseAdapter
 {
-  private static int uwc = 500;
+  private static int xOd = 500;
   protected Context mContext;
-  protected LinkedList<T> upc;
-  private a uvZ;
-  protected boolean uwa = false;
-  private f<String, Bitmap> uwb;
-  private aw uwd = new aw(new aw.a()
+  protected LinkedList<T> xHv;
+  private a xOa;
+  protected boolean xOb = false;
+  private f<String, Bitmap> xOc;
+  private MTimerHandler xOe = new MTimerHandler(new MTimerHandler.CallBack()
   {
     public final boolean onTimerExpired()
     {
@@ -35,15 +35,13 @@ public abstract class a<T>
       return false;
     }
   }, false);
-  private final k.a uwe = new k.a()
+  private final MStorage.IOnStorageChange xOf = new MStorage.IOnStorageChange()
   {
-    public final void a(String paramAnonymousString, m paramAnonymousm)
+    public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
     {
       AppMethodBeat.i(41857);
       a.a(a.this).stopTimer();
-      paramAnonymousString = a.a(a.this);
-      long l = a.uwc;
-      paramAnonymousString.ay(l, l);
+      a.a(a.this).startTimer(a.xOd);
       AppMethodBeat.o(41857);
     }
   };
@@ -51,31 +49,15 @@ public abstract class a<T>
   public a(Context paramContext)
   {
     this.mContext = paramContext;
-    this.upc = new LinkedList();
-    this.uwb = new b(20, getClass());
-    com.tencent.mm.plugin.s.a.dBg().add(this.uwe);
+    this.xHv = new LinkedList();
+    this.xOc = new b(20, getClass());
+    com.tencent.mm.plugin.r.a.eAS().add(this.xOf);
   }
   
-  public void aA(LinkedList<T> paramLinkedList)
-  {
-    if (paramLinkedList == null)
-    {
-      if (this.uvZ != null) {
-        this.upc.size();
-      }
-      return;
-    }
-    this.upc = paramLinkedList;
-    if (this.uvZ != null) {
-      this.upc.size();
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  protected final Bitmap ani(String paramString)
+  protected final Bitmap aAz(String paramString)
   {
     Object localObject;
-    if (bu.isNullOrNil(paramString)) {
+    if (Util.isNullOrNil(paramString)) {
       localObject = null;
     }
     Bitmap localBitmap;
@@ -86,10 +68,10 @@ public abstract class a<T>
         do
         {
           return localObject;
-          if (!this.uwb.aM(paramString)) {
+          if (!this.xOc.check(paramString)) {
             break;
           }
-          localBitmap = (Bitmap)this.uwb.get(paramString);
+          localBitmap = (Bitmap)this.xOc.get(paramString);
           if (localBitmap == null) {
             break;
           }
@@ -100,46 +82,62 @@ public abstract class a<T>
       } while (localBitmap == null);
       localObject = localBitmap;
     } while (localBitmap.isRecycled());
-    this.uwb.q(paramString, localBitmap);
+    this.xOc.x(paramString, localBitmap);
     return localBitmap;
   }
   
-  public void az(LinkedList<T> paramLinkedList)
+  public void aU(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.uvZ != null) {
-        this.upc.size();
+      if (this.xOa != null) {
+        this.xHv.size();
       }
       return;
     }
-    this.upc.addAll(paramLinkedList);
-    if (this.uvZ != null) {
-      this.upc.size();
+    this.xHv.addAll(paramLinkedList);
+    if (this.xOa != null) {
+      this.xHv.size();
+    }
+    super.notifyDataSetChanged();
+  }
+  
+  public void aV(LinkedList<T> paramLinkedList)
+  {
+    if (paramLinkedList == null)
+    {
+      if (this.xOa != null) {
+        this.xHv.size();
+      }
+      return;
+    }
+    this.xHv = paramLinkedList;
+    if (this.xOa != null) {
+      this.xHv.size();
     }
     super.notifyDataSetChanged();
   }
   
   public void clear()
   {
-    if (this.upc != null) {
-      this.upc.clear();
+    if (this.xHv != null) {
+      this.xHv.clear();
     }
-    if (this.uwb != null) {
-      this.uwb.a(new f.a() {});
+    if (this.xOc != null) {
+      this.xOc.a(new f.a() {});
     }
-    this.uwb = null;
-    com.tencent.mm.plugin.s.a.dBg().remove(this.uwe);
+    this.xOc = null;
+    com.tencent.mm.plugin.r.a.eAS().remove(this.xOf);
   }
   
   public int getCount()
   {
-    return this.upc.size();
+    return this.xHv.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.upc.get(paramInt);
+    return this.xHv.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -151,7 +149,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.a
  * JD-Core Version:    0.7.0.1
  */

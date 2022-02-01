@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/b39" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
-        <ImageView android:layout_gravity="center_horizontal" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="80.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/as8" />
-        <TextView android:textSize="@dimen/f3" android:textColor="@color/y4" android:id="@id/dg3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" />
-        <TextView android:textSize="@dimen/f3" android:textColor="@color/qk" android:id="@id/f_8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
-        <TextView android:textSize="@dimen/fc" android:textColor="@color/qk" android:id="@id/f_0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:lineSpacingExtra="4.0dip" />
-    </LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/Link_80" android:gravity="center" android:id="@id/d84" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:layout_marginBottom="@dimen/cl" android:text="关注的话题数为" />
+    </FrameLayout>
 </LinearLayout>

@@ -14,50 +14,50 @@ import com.tencent.mm.emoji.loader.d.i.a;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.emoji.d.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
-import com.tencent.mm.vfs.o;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.n.n;
-import d.z;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.n.n;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher;", "", "()V", "fetch", "Lcom/tencent/mm/emoji/loader/request/Request;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "fetchInternal", "readFromCache", "Companion", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher;", "", "()V", "fetch", "Lcom/tencent/mm/emoji/loader/request/Request;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "fetchInternal", "readFromCache", "Companion", "plugin-emojisdk_release"})
 public final class c
 {
-  public static final a glj;
+  public static final a gWc;
   
   static
   {
     AppMethodBeat.i(105427);
-    glj = new a((byte)0);
+    gWc = new a((byte)0);
     AppMethodBeat.o(105427);
   }
   
-  private static void b(EmojiInfo paramEmojiInfo, final d.g.a.b<? super Boolean, z> paramb)
+  private static void b(EmojiInfo paramEmojiInfo, final kotlin.g.a.b<? super Boolean, x> paramb)
   {
     AppMethodBeat.i(105426);
-    if (!bu.isNullOrNil(paramEmojiInfo.field_thumbUrl))
+    if (!Util.isNullOrNil(paramEmojiInfo.field_thumbUrl))
     {
-      ae.i("MicroMsg.EmojiCoverFetcher", "loadDataImp: load by url " + paramEmojiInfo.Lj());
-      com.tencent.mm.av.a.d.b localb = new a().Gj(paramEmojiInfo.field_thumbUrl);
+      Log.i("MicroMsg.EmojiCoverFetcher", "loadDataImp: load by url " + paramEmojiInfo.getMd5());
+      com.tencent.mm.av.a.d.b localb = new a().OV(paramEmojiInfo.field_thumbUrl);
       if (localb != null) {
         localObject = localb.data;
       }
       while (localObject != null)
       {
-        localObject = h.cu(localb.data);
-        com.tencent.mm.emoji.loader.a.b localb1 = com.tencent.mm.emoji.loader.a.b.gla;
-        com.tencent.mm.emoji.loader.a.b.put(paramEmojiInfo.Lj(), (Bitmap)localObject);
-        o.C(paramEmojiInfo.fSR(), localb.data);
+        localObject = BitmapUtil.decodeByteArray(localb.data);
+        com.tencent.mm.emoji.loader.a.b localb1 = com.tencent.mm.emoji.loader.a.b.gVU;
+        com.tencent.mm.emoji.loader.a.b.put(paramEmojiInfo.getMd5(), (Bitmap)localObject);
+        s.C(paramEmojiInfo.hRN(), localb.data);
         if (paramb != null)
         {
           paramb.invoke(Boolean.TRUE);
@@ -80,8 +80,8 @@ public final class c
       AppMethodBeat.o(105426);
       return;
     }
-    ae.i("MicroMsg.EmojiCoverFetcher", "loadDataImp: load by gif " + paramEmojiInfo.Lj());
-    Object localObject = com.tencent.mm.emoji.loader.e.gkR;
+    Log.i("MicroMsg.EmojiCoverFetcher", "loadDataImp: load by gif " + paramEmojiInfo.getMd5());
+    Object localObject = com.tencent.mm.emoji.loader.e.gVM;
     com.tencent.mm.emoji.loader.e.a(paramEmojiInfo, false, (i.a)new c(paramEmojiInfo, paramb));
     AppMethodBeat.o(105426);
   }
@@ -94,20 +94,20 @@ public final class c
     return bool;
   }
   
-  public final i<?> a(final EmojiInfo paramEmojiInfo, final d.g.a.b<? super Boolean, z> paramb)
+  public final i<?> a(final EmojiInfo paramEmojiInfo, final kotlin.g.a.b<? super Boolean, x> paramb)
   {
     AppMethodBeat.i(105425);
     p.h(paramEmojiInfo, "emojiInfo");
-    Object localObject1 = com.tencent.mm.emoji.loader.a.b.gla;
-    localObject1 = com.tencent.mm.emoji.loader.a.b.wA(paramEmojiInfo.Lj());
+    Object localObject1 = com.tencent.mm.emoji.loader.a.b.gVU;
+    localObject1 = com.tencent.mm.emoji.loader.a.b.EP(paramEmojiInfo.getMd5());
     int i;
     if (localObject1 != null)
     {
       i = 1;
       if (i == 0) {
-        break label321;
+        break label322;
       }
-      ae.d("MicroMsg.EmojiCoverFetcher", "fetch: from cache " + paramEmojiInfo.Lj());
+      Log.d("MicroMsg.EmojiCoverFetcher", "fetch: from cache " + paramEmojiInfo.getMd5());
       paramb.invoke(Boolean.TRUE);
     }
     for (;;)
@@ -115,36 +115,36 @@ public final class c
       AppMethodBeat.o(105425);
       return null;
       Object localObject2;
-      if ((p.i(paramEmojiInfo.afK(), String.valueOf(EmojiGroupInfo.OzR))) || (paramEmojiInfo.getGroup() == EmojiGroupInfo.OzS) || (paramEmojiInfo.getGroup() == EmojiInfo.OzZ) || (paramEmojiInfo.getGroup() == EmojiInfo.OzY))
+      if ((p.j(paramEmojiInfo.avy(), String.valueOf(EmojiGroupInfo.Uum))) || (paramEmojiInfo.getGroup() == EmojiGroupInfo.Uun) || (paramEmojiInfo.getGroup() == EmojiInfo.Uuu) || (paramEmojiInfo.getGroup() == EmojiInfo.Uut))
       {
         localObject2 = paramEmojiInfo.getName();
-        if (!bu.isNullOrNil((String)localObject2))
+        if (!Util.isNullOrNil((String)localObject2))
         {
           p.g(localObject2, "name");
-          localObject1 = n.h((String)localObject2, ".png", "", false);
-          localObject2 = ak.getContext();
+          localObject1 = n.j((String)localObject2, ".png", "", false);
+          localObject2 = MMApplicationContext.getContext();
           p.g(localObject2, "MMApplicationContext.getContext()");
           localObject2 = ((Context)localObject2).getResources();
-          localObject1 = MMBitmapFactory.decodeResource((Resources)localObject2, ((Resources)localObject2).getIdentifier((String)localObject1, "drawable", ak.getPackageName()));
+          localObject1 = MMBitmapFactory.decodeResource((Resources)localObject2, ((Resources)localObject2).getIdentifier((String)localObject1, "drawable", MMApplicationContext.getPackageName()));
         }
       }
       for (;;)
       {
-        label194:
+        label195:
         if (localObject1 != null)
         {
-          localObject2 = com.tencent.mm.emoji.loader.a.b.gla;
-          com.tencent.mm.emoji.loader.a.b.put(paramEmojiInfo.Lj(), (Bitmap)localObject1);
+          localObject2 = com.tencent.mm.emoji.loader.a.b.gVU;
+          com.tencent.mm.emoji.loader.a.b.put(paramEmojiInfo.getMd5(), (Bitmap)localObject1);
           i = 1;
           break;
-          if (o.fB(paramEmojiInfo.fSR()))
+          if (s.YS(paramEmojiInfo.hRN()))
           {
             localObject1 = new BitmapFactory.Options();
             ((BitmapFactory.Options)localObject1).outWidth = 120;
             ((BitmapFactory.Options)localObject1).outHeight = 120;
-            localObject2 = h.decodeFile(paramEmojiInfo.fSR(), (BitmapFactory.Options)localObject1);
+            localObject2 = BitmapUtil.decodeFile(paramEmojiInfo.hRN(), (BitmapFactory.Options)localObject1);
             if (localObject2 != null) {
-              break label272;
+              break label273;
             }
           }
         }
@@ -153,22 +153,22 @@ public final class c
       {
         i = 0;
         break;
-        label272:
+        label273:
         if (((Bitmap)localObject2).getWidth() <= 120)
         {
           localObject1 = localObject2;
           if (((Bitmap)localObject2).getHeight() <= 120) {
-            break label194;
+            break label195;
           }
         }
-        localObject2 = h.a((Bitmap)localObject2, 120, 120, false, true);
+        localObject2 = BitmapUtil.extractThumbNail((Bitmap)localObject2, 120, 120, false, true);
         localObject1 = localObject2;
         if (localObject2 != null) {
-          break label194;
+          break label195;
         }
       }
-      label321:
-      if ((ak.coh()) && (paramEmojiInfo.fxx() == EmojiInfo.a.Jir)) {
+      label322:
+      if ((MMApplicationContext.isMainProcess()) && (paramEmojiInfo.hRH() == EmojiInfo.a.Osj)) {
         new f(paramEmojiInfo, (m)new b(this, paramb, paramEmojiInfo));
       } else {
         b(paramEmojiInfo, paramb);
@@ -176,54 +176,54 @@ public final class c
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher$Companion;", "", "()V", "ThumbSize", "", "createThumb", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher$Companion;", "", "()V", "ThumbSize", "", "createThumb", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "plugin-emojisdk_release"})
   public static final class a
   {
     public static boolean f(EmojiInfo paramEmojiInfo)
     {
       AppMethodBeat.i(105422);
       p.h(paramEmojiInfo, "emojiInfo");
-      ae.i("MicroMsg.EmojiCoverFetcher", "createThumb: " + paramEmojiInfo.Lj());
+      Log.i("MicroMsg.EmojiCoverFetcher", "createThumb: " + paramEmojiInfo.getMd5());
       Object localObject2 = MMGIFJNIFactory.Companion.getDecoder(paramEmojiInfo);
       if (!MMGIFJNIFactory.Companion.isValid((d)localObject2))
       {
-        ae.w("MicroMsg.EmojiCoverFetcher", "createThumb: invalid decoder");
+        Log.w("MicroMsg.EmojiCoverFetcher", "createThumb: invalid decoder");
         ((d)localObject2).destroy();
         AppMethodBeat.o(105422);
         return false;
       }
       Object localObject1;
-      if (((localObject2 instanceof com.tencent.mm.emoji.decode.g)) && (((d)localObject2).aeI() == 1))
+      if (((localObject2 instanceof com.tencent.mm.emoji.decode.g)) && (((d)localObject2).aup() == 1))
       {
         ((d)localObject2).destroy();
-        localObject1 = com.tencent.mm.kernel.g.ad(PluginEmoji.class);
+        localObject1 = com.tencent.mm.kernel.g.ah(PluginEmoji.class);
         p.g(localObject1, "MMKernel.plugin(PluginEmoji::class.java)");
         localObject1 = ((PluginEmoji)localObject1).getProvider().a(paramEmojiInfo);
         if (localObject1 == null) {
           break label291;
         }
-        localObject1 = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.c.class)).aW((byte[])localObject1);
+        localObject1 = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.emoji.b.c.class)).bn((byte[])localObject1);
         if (localObject1 == null) {
           break label291;
         }
-        localObject1 = h.cu((byte[])localObject1);
+        localObject1 = BitmapUtil.decodeByteArray((byte[])localObject1);
       }
       for (;;)
       {
         if (localObject1 == null)
         {
-          ae.e("MicroMsg.EmojiCoverFetcher", "bitmap is null");
+          Log.e("MicroMsg.EmojiCoverFetcher", "bitmap is null");
           AppMethodBeat.o(105422);
           return false;
-          ((d)localObject2).aeG();
-          localObject1 = ((d)localObject2).aeH();
+          ((d)localObject2).auo();
+          localObject1 = ((d)localObject2).getFrame();
           ((d)localObject2).destroy();
         }
         else
         {
           try
           {
-            h.a((Bitmap)localObject1, 100, Bitmap.CompressFormat.PNG, paramEmojiInfo.fSR(), false);
+            BitmapUtil.saveBitmapToImage((Bitmap)localObject1, 100, Bitmap.CompressFormat.PNG, paramEmojiInfo.hRN(), false);
             if (((Bitmap)localObject1).getWidth() <= 120)
             {
               localObject2 = localObject1;
@@ -231,7 +231,7 @@ public final class c
             }
             else
             {
-              localObject1 = h.a((Bitmap)localObject1, 120, 120, false, true);
+              localObject1 = BitmapUtil.extractThumbNail((Bitmap)localObject1, 120, 120, false, true);
               localObject2 = localObject1;
               if (localObject1 == null)
               {
@@ -239,14 +239,14 @@ public final class c
                 return false;
               }
             }
-            localObject1 = com.tencent.mm.emoji.loader.a.b.gla;
-            com.tencent.mm.emoji.loader.a.b.put(paramEmojiInfo.Lj(), (Bitmap)localObject2);
+            localObject1 = com.tencent.mm.emoji.loader.a.b.gVU;
+            com.tencent.mm.emoji.loader.a.b.put(paramEmojiInfo.getMd5(), (Bitmap)localObject2);
             AppMethodBeat.o(105422);
             return true;
           }
           catch (IOException paramEmojiInfo)
           {
-            ae.printErrStackTrace("MicroMsg.EmojiCoverFetcher", (Throwable)paramEmojiInfo, "saveBitmapToImage failed", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.EmojiCoverFetcher", (Throwable)paramEmojiInfo, "saveBitmapToImage failed", new Object[0]);
             AppMethodBeat.o(105422);
             return false;
           }
@@ -257,36 +257,36 @@ public final class c
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "config", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "config", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
   static final class b
     extends q
-    implements m<Boolean, e, z>
+    implements m<Boolean, e, x>
   {
-    b(c paramc, d.g.a.b paramb, EmojiInfo paramEmojiInfo)
+    b(c paramc, kotlin.g.a.b paramb, EmojiInfo paramEmojiInfo)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher$fetchInternal$1", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "onResult", "", "success", "", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher$fetchInternal$1", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "onResult", "", "success", "", "plugin-emojisdk_release"})
   public static final class c
     implements i.a
   {
-    c(EmojiInfo paramEmojiInfo, d.g.a.b paramb) {}
+    c(EmojiInfo paramEmojiInfo, kotlin.g.a.b paramb) {}
     
-    public final void dg(boolean paramBoolean)
+    public final void dQ(boolean paramBoolean)
     {
       AppMethodBeat.i(105424);
-      ae.i("MicroMsg.EmojiCoverFetcher", "onResult: " + this.glm.Lj() + ", " + paramBoolean);
+      Log.i("MicroMsg.EmojiCoverFetcher", "onResult: " + this.gWf.getMd5() + ", " + paramBoolean);
       if (paramBoolean)
       {
-        localObject = c.glj;
-        if (c.a.f(this.glm))
+        localObject = c.gWc;
+        if (c.a.f(this.gWf))
         {
           localObject = paramb;
           if (localObject != null)
           {
-            ((d.g.a.b)localObject).invoke(Boolean.TRUE);
+            ((kotlin.g.a.b)localObject).invoke(Boolean.TRUE);
             AppMethodBeat.o(105424);
             return;
           }
@@ -296,7 +296,7 @@ public final class c
         localObject = paramb;
         if (localObject != null)
         {
-          ((d.g.a.b)localObject).invoke(Boolean.FALSE);
+          ((kotlin.g.a.b)localObject).invoke(Boolean.FALSE);
           AppMethodBeat.o(105424);
           return;
         }
@@ -306,7 +306,7 @@ public final class c
       Object localObject = paramb;
       if (localObject != null)
       {
-        ((d.g.a.b)localObject).invoke(Boolean.FALSE);
+        ((kotlin.g.a.b)localObject).invoke(Boolean.FALSE);
         AppMethodBeat.o(105424);
         return;
       }
@@ -316,7 +316,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -61,21 +61,7 @@ public final class AccessToken
     DEFAULT_EXPIRATION_TIME = localDate;
     DEFAULT_LAST_REFRESH_TIME = new Date();
     DEFAULT_ACCESS_TOKEN_SOURCE = AccessTokenSource.FACEBOOK_APPLICATION_WEB;
-    CREATOR = new Parcelable.Creator()
-    {
-      public final AccessToken createFromParcel(Parcel paramAnonymousParcel)
-      {
-        AppMethodBeat.i(16946);
-        paramAnonymousParcel = new AccessToken(paramAnonymousParcel);
-        AppMethodBeat.o(16946);
-        return paramAnonymousParcel;
-      }
-      
-      public final AccessToken[] newArray(int paramAnonymousInt)
-      {
-        return new AccessToken[paramAnonymousInt];
-      }
-    };
+    CREATOR = new AccessToken.2();
     AppMethodBeat.o(16975);
   }
   
@@ -604,7 +590,7 @@ public final class AccessToken
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.AccessToken
  * JD-Core Version:    0.7.0.1
  */

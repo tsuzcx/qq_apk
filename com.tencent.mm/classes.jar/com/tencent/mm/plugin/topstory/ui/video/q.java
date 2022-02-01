@@ -6,69 +6,69 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.plugin.a.f;
-import com.tencent.mm.plugin.topstory.ui.d;
+import com.tencent.mm.plugin.topstory.ui.c;
 import com.tencent.mm.plugin.websearch.api.a.a;
 import com.tencent.mm.pluginsdk.ui.i.b;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.h;
+import com.tencent.mm.pluginsdk.ui.tools.j;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class q
   extends MMVideoView
 {
-  private dpa BIY;
-  private b BLm;
+  private eiw GjH;
+  private b GlS;
   String sessionId = "";
   
   public q(Context paramContext, b paramb)
   {
     super(paramContext);
     this.mContext = paramContext;
-    this.BLm = paramb;
+    this.GlS = paramb;
   }
   
-  private static boolean cyZ()
+  private static boolean cXc()
   {
     AppMethodBeat.i(126177);
     try
     {
-      g.ajS();
-      boolean bool = g.ajR().ajA().getBoolean(am.a.ISo, false);
+      g.aAi();
+      boolean bool = g.aAh().azQ().getBoolean(ar.a.Oaq, false);
       AppMethodBeat.o(126177);
       return bool;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoView", localException, "check need reset error", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoView", localException, "check need reset error", new Object[0]);
       AppMethodBeat.o(126177);
     }
     return false;
   }
   
-  public final boolean C(int paramInt, boolean paramBoolean)
+  public final boolean G(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(164125);
     int i = paramInt;
-    if (this.iuL != null)
+    if (this.jpX != null)
     {
-      int j = this.iuL.aRn();
+      int j = this.jpX.blR();
       i = paramInt;
       if (paramInt > j)
       {
         i = paramInt;
         if (j > 0)
         {
-          ae.i("MicroMsg.TopStory.TopStoryVideoView", "%s seek to reset time ori[%d] last key frame[%d]", new Object[] { bpA(), Integer.valueOf(paramInt), Integer.valueOf(j) });
+          Log.i("MicroMsg.TopStory.TopStoryVideoView", "%s seek to reset time ori[%d] last key frame[%d]", new Object[] { bgQ(), Integer.valueOf(paramInt), Integer.valueOf(j) });
           i = j;
         }
       }
     }
-    paramBoolean = super.C(i, paramBoolean);
+    paramBoolean = super.G(i, paramBoolean);
     AppMethodBeat.o(164125);
     return paramBoolean;
   }
@@ -76,14 +76,14 @@ public final class q
   public final boolean a(int paramInt, PInt paramPInt1, PInt paramPInt2)
   {
     AppMethodBeat.i(126183);
-    paramPInt1.value = Math.max(paramInt, this.iuQ);
+    paramPInt1.value = Math.max(paramInt, this.jqc);
     boolean bool2;
-    if ((this.iuK == 1) || (this.iuK == 0)) {
-      if ((this.iuL != null) && (cyZ()))
+    if ((this.jpW == 1) || (this.jpW == 0)) {
+      if ((this.jpX != null) && (cXc()))
       {
         paramPInt2.value = 0;
         paramPInt1.value = 0;
-        bool2 = this.iuL.b(paramInt + 1, paramPInt1, paramPInt2);
+        bool2 = this.jpX.b(paramInt + 1, paramPInt1, paramPInt2);
         bool1 = bool2;
         if (!bool2)
         {
@@ -95,11 +95,11 @@ public final class q
     for (boolean bool1 = bool2;; bool1 = false)
     {
       bool2 = bool1;
-      if (this.iuK == 2)
+      if (this.jpW == 2)
       {
-        if (this.iuL != null)
+        if (this.jpX != null)
         {
-          bool1 = this.iuL.b(paramInt, paramPInt1, paramPInt2);
+          bool1 = this.jpX.b(paramInt, paramPInt1, paramPInt2);
           paramPInt2.value += 4;
         }
         bool2 = bool1;
@@ -109,17 +109,17 @@ public final class q
           if (paramPInt1.value < 0) {
             paramPInt1.value = 0;
           }
-          paramPInt2.value = (paramPInt1.value + this.iuR + 8);
+          paramPInt2.value = (paramPInt1.value + this.jqd + 8);
           bool2 = bool1;
         }
       }
-      if ((this.iuK == 3) || (this.iuK == 4))
+      if ((this.jpW == 3) || (this.jpW == 4))
       {
-        paramPInt1.value = this.iuQ;
-        paramPInt2.value = (this.iuM + 1);
+        paramPInt1.value = this.jqc;
+        paramPInt2.value = (this.jpY + 1);
       }
-      if (paramPInt2.value >= this.iuM + 1) {
-        paramPInt2.value = (this.iuM + 1);
+      if (paramPInt2.value >= this.jpY + 1) {
+        paramPInt2.value = (this.jpY + 1);
       }
       if (paramPInt2.value < paramPInt1.value)
       {
@@ -127,7 +127,7 @@ public final class q
         AppMethodBeat.o(126183);
         return false;
       }
-      ae.d("MicroMsg.TopStory.TopStoryVideoView", "%s calcDownloadRange2 range[%d, %d, %b] playTime[%d] playStatus[%d] cache[%d, %d] [%s]", new Object[] { bpA(), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Boolean.valueOf(bool2), Integer.valueOf(paramInt), Integer.valueOf(this.iuK), Integer.valueOf(this.iuQ), Integer.valueOf(this.iuR), this.iuG });
+      Log.d("MicroMsg.TopStory.TopStoryVideoView", "%s calcDownloadRange2 range[%d, %d, %b] playTime[%d] playStatus[%d] cache[%d, %d] [%s]", new Object[] { bgQ(), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Boolean.valueOf(bool2), Integer.valueOf(paramInt), Integer.valueOf(this.jpW), Integer.valueOf(this.jqc), Integer.valueOf(this.jqd), this.jpT });
       AppMethodBeat.o(126183);
       return true;
       bool2 = false;
@@ -135,7 +135,7 @@ public final class q
     }
   }
   
-  public final void aEq(String paramString)
+  public final void aTG(String paramString)
   {
     AppMethodBeat.i(126184);
     this.sessionId = paramString;
@@ -143,54 +143,54 @@ public final class q
     AppMethodBeat.o(126184);
   }
   
-  public final void aMS()
-  {
-    this.iuV.iva = 4;
-    this.iuV.ivb = 2;
-  }
-  
-  public final void at(String paramString, int paramInt)
+  public final void ax(String paramString, int paramInt)
   {
     AppMethodBeat.i(126190);
-    super.at(paramString, paramInt);
-    if ((paramInt != 0) && (this.ozA != null)) {
-      this.ozA.c(getSessionId(), getMediaId(), "download error", paramInt, 0);
+    super.ax(paramString, paramInt);
+    if ((paramInt != 0) && (this.pNj != null)) {
+      this.pNj.c(getSessionId(), getMediaId(), "download error", paramInt, 0);
     }
     AppMethodBeat.o(126190);
   }
   
-  public final h cN(Context paramContext)
+  public final void bgU()
+  {
+    this.jqh.jqm = 4;
+    this.jqh.jqn = 2;
+  }
+  
+  public final boolean dUD()
+  {
+    return false;
+  }
+  
+  public final j di(Context paramContext)
   {
     AppMethodBeat.i(126176);
     paramContext = new TopStoryVideoPlayTextureView(paramContext);
     paramContext.setOpenWithNoneSurface(true);
-    paramContext.setNeedResetExtractor(cyZ());
+    paramContext.setNeedResetExtractor(cXc());
     paramContext.setIsOnlineVideoType(true);
     AppMethodBeat.o(126176);
     return paramContext;
   }
   
-  public final boolean daW()
+  public final boolean efT()
   {
     return false;
   }
   
-  public final boolean dlY()
-  {
-    return false;
-  }
-  
-  public final void euh()
+  public final void fzD()
   {
     AppMethodBeat.i(126194);
-    ((TopStoryVideoPlayTextureView)this.oNV).setAlpha(0.0F);
+    ((TopStoryVideoPlayTextureView)this.qbJ).setAlpha(0.0F);
     AppMethodBeat.o(126194);
   }
   
-  public final void eui()
+  public final void fzE()
   {
     AppMethodBeat.i(126195);
-    ((TopStoryVideoPlayTextureView)this.oNV).setAlpha(1.0F);
+    ((TopStoryVideoPlayTextureView)this.qbJ).setAlpha(1.0F);
     AppMethodBeat.o(126195);
   }
   
@@ -198,11 +198,11 @@ public final class q
   {
     AppMethodBeat.i(126188);
     int i = 0;
-    if (this.oNV != null) {
-      i = this.oNV.getCurrentPosition();
+    if (this.qbJ != null) {
+      i = this.qbJ.getCurrentPosition();
     }
-    if (this.iuN > 0) {
-      i = this.iuN * 1000;
+    if (this.jpZ > 0) {
+      i = this.jpZ * 1000;
     }
     AppMethodBeat.o(126188);
     return i;
@@ -212,11 +212,11 @@ public final class q
   {
     AppMethodBeat.i(126189);
     int i = 0;
-    if (this.oNV != null) {
-      i = Math.round(this.oNV.getCurrentPosition() * 1.0F / 1000.0F);
+    if (this.qbJ != null) {
+      i = Math.round(this.qbJ.getCurrentPosition() * 1.0F / 1000.0F);
     }
-    if (this.iuN > 0) {
-      i = this.iuN;
+    if (this.jpZ > 0) {
+      i = this.jpZ;
     }
     AppMethodBeat.o(126189);
     return i;
@@ -230,14 +230,14 @@ public final class q
   public final void i(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(126181);
-    if (!bu.lX(this.iuG, paramString))
+    if (!Util.isEqual(this.jpT, paramString))
     {
       AppMethodBeat.o(126181);
       return;
     }
-    ae.d("MicroMsg.TopStory.TopStoryVideoView", "%s download  onProgress [%d, %d]", new Object[] { bpA(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((this.iuP) && (this.iuK == 3)) {
-      ql(getCurrPosSec());
+    Log.d("MicroMsg.TopStory.TopStoryVideoView", "%s download  onProgress [%d, %d]", new Object[] { bgQ(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if ((this.jqb) && (this.jpW == 3)) {
+      ub(getCurrPosSec());
     }
     AppMethodBeat.o(126181);
   }
@@ -253,10 +253,10 @@ public final class q
   {
     AppMethodBeat.i(126187);
     boolean bool2 = super.isPlaying();
-    if ((bool2) && (this.iuK == 3)) {}
+    if ((bool2) && (this.jpW == 3)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      ae.d("MicroMsg.TopStory.TopStoryVideoView", "%s result [%b] is playing[%b] playStatus[%d]", new Object[] { bpA(), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(this.iuK) });
+      Log.d("MicroMsg.TopStory.TopStoryVideoView", "%s result [%b] is playing[%b] playStatus[%d]", new Object[] { bgQ(), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(this.jpW) });
       AppMethodBeat.o(126187);
       return bool2;
     }
@@ -275,12 +275,12 @@ public final class q
       return;
       try
       {
-        g.ajS();
-        g.ajR().ajA().set(am.a.ISo, Boolean.TRUE);
-        if ((this.oNV instanceof TopStoryVideoPlayTextureView)) {
-          ((TopStoryVideoPlayTextureView)this.oNV).setNeedResetExtractor(true);
+        g.aAi();
+        g.aAh().azQ().set(ar.a.Oaq, Boolean.TRUE);
+        if ((this.qbJ instanceof TopStoryVideoPlayTextureView)) {
+          ((TopStoryVideoPlayTextureView)this.qbJ).setNeedResetExtractor(true);
         }
-        com.tencent.mm.plugin.websearch.api.a.b.md(com.tencent.mm.plugin.websearch.api.a.b.sBU);
+        com.tencent.mm.plugin.websearch.api.a.b.pl(com.tencent.mm.plugin.websearch.api.a.b.vhO);
         AppMethodBeat.o(126191);
         return;
       }
@@ -288,13 +288,13 @@ public final class q
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoView", localException, "%s onError [%s]", new Object[] { bpA(), localException.toString() });
+          Log.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoView", localException, "%s onError [%s]", new Object[] { bgQ(), localException.toString() });
         }
       }
-      com.tencent.mm.plugin.websearch.api.a.b.md(com.tencent.mm.plugin.websearch.api.a.b.sBT);
+      com.tencent.mm.plugin.websearch.api.a.b.pl(com.tencent.mm.plugin.websearch.api.a.b.vhN);
       AppMethodBeat.o(126191);
       return;
-      com.tencent.mm.plugin.websearch.api.a.b.md(com.tencent.mm.plugin.websearch.api.a.b.sBV);
+      com.tencent.mm.plugin.websearch.api.a.b.pl(com.tencent.mm.plugin.websearch.api.a.b.vhP);
     }
   }
   
@@ -302,24 +302,24 @@ public final class q
   {
     AppMethodBeat.i(126185);
     super.onUIDestroy();
-    this.BLm = null;
+    this.GlS = null;
     AppMethodBeat.o(126185);
   }
   
   public final void onUIPause()
   {
     AppMethodBeat.i(126193);
-    ae.i("MicroMsg.TopStory.TopStoryVideoView", "%s onUIPause", new Object[] { bpA() });
-    if (this.lxy)
+    Log.i("MicroMsg.TopStory.TopStoryVideoView", "%s onUIPause", new Object[] { bgQ() });
+    if (this.mEw)
     {
-      this.lxJ = getCurrPosSec();
-      this.lxK = isPlaying();
-      this.lxQ = 0;
-      this.lxP = 0L;
+      this.mEH = getCurrPosSec();
+      this.mEI = isPlaying();
+      this.mEO = 0;
+      this.mEN = 0L;
       pause();
       stopTimer();
-      this.lxy = false;
-      rd(getReportIdkey() + 11);
+      this.mEw = false;
+      yU(getReportIdkey() + 11);
     }
     AppMethodBeat.o(126193);
   }
@@ -327,13 +327,13 @@ public final class q
   public final void onUIResume()
   {
     AppMethodBeat.i(126192);
-    ae.i("MicroMsg.TopStory.TopStoryVideoView", "%s onUIResume", new Object[] { bpA() });
-    if (!this.lxy)
+    Log.i("MicroMsg.TopStory.TopStoryVideoView", "%s onUIResume", new Object[] { bgQ() });
+    if (!this.mEw)
     {
-      this.lxy = true;
-      if (this.oNV != null)
+      this.mEw = true;
+      if (this.qbJ != null)
       {
-        if (!this.lxK) {
+        if (!this.mEI) {
           break label75;
         }
         play();
@@ -341,18 +341,44 @@ public final class q
     }
     for (;;)
     {
-      rd(getReportIdkey() + 10);
+      yU(getReportIdkey() + 10);
       AppMethodBeat.o(126192);
       return;
       label75:
-      ((VideoPlayerTextureView)this.oNV).bpy();
+      ((VideoPlayerTextureView)this.qbJ).bLe();
     }
   }
   
-  public final boolean qm(int paramInt)
+  public final void setVideoInfo(eiw parameiw)
+  {
+    AppMethodBeat.i(126178);
+    super.c(false, parameiw.videoUrl, 0);
+    this.GjH = parameiw;
+    this.jpT = c.bu(parameiw.psI, parameiw.Nip);
+    this.jpU = (this.GlS.fyC() + this.jpT + ".mp4");
+    AppMethodBeat.o(126178);
+  }
+  
+  public final void start()
+  {
+    AppMethodBeat.i(126186);
+    super.start();
+    a.pl(5);
+    AppMethodBeat.o(126186);
+  }
+  
+  public final void stop()
+  {
+    AppMethodBeat.i(126196);
+    super.stop();
+    this.GjH = null;
+    AppMethodBeat.o(126196);
+  }
+  
+  public final boolean uc(int paramInt)
   {
     AppMethodBeat.i(126180);
-    if (this.iuJ == 3)
+    if (this.jpV == 3)
     {
       AppMethodBeat.o(126180);
       return true;
@@ -363,12 +389,12 @@ public final class q
     {
       PInt localPInt3 = new PInt();
       localPInt4 = new PInt();
-      if ((paramInt != 0) || (this.iuL == null) || (!cyZ())) {
+      if ((paramInt != 0) || (this.jpX == null) || (!cXc())) {
         break label249;
       }
       localPInt4.value = 0;
       localPInt3.value = 0;
-      bool1 = this.iuL.b(paramInt + 1, localPInt3, localPInt4);
+      bool1 = this.jpX.b(paramInt + 1, localPInt3, localPInt4);
     }
     catch (Exception localException1)
     {
@@ -377,7 +403,7 @@ public final class q
         try
         {
           PInt localPInt4;
-          this.iuQ = i;
+          this.jqc = i;
           bool2 = bool1;
           AppMethodBeat.o(126180);
           return bool2;
@@ -388,7 +414,7 @@ public final class q
         }
         localException1 = localException1;
         boolean bool1 = false;
-        ae.e("MicroMsg.TopStory.TopStoryVideoView", "%s check video data error %s ", new Object[] { bpA(), localException1.toString() });
+        Log.e("MicroMsg.TopStory.TopStoryVideoView", "%s check video data error %s ", new Object[] { bgQ(), localException1.toString() });
         boolean bool2 = bool1;
         continue;
         bool2 = false;
@@ -401,44 +427,18 @@ public final class q
     if (bool1)
     {
       i = localPInt4.value;
-      if ((this.iuF != null) && (this.iuL != null) && (this.iuL.a(paramInt, i, localPInt1, localPInt2)))
+      if ((this.jpS != null) && (this.jpX != null) && (this.jpX.a(paramInt, i, localPInt1, localPInt2)))
       {
-        bool1 = this.iuF.isVideoDataAvailable(this.iuG, localPInt1.value, localPInt2.value);
+        bool1 = this.jpS.isVideoDataAvailable(this.jpT, localPInt1.value, localPInt2.value);
         bool2 = bool1;
         if (!bool1) {}
       }
     }
   }
-  
-  public final void setVideoInfo(dpa paramdpa)
-  {
-    AppMethodBeat.i(126178);
-    super.c(false, paramdpa.videoUrl, 0);
-    this.BIY = paramdpa;
-    this.iuG = d.bt(paramdpa.udb, paramdpa.HWh);
-    this.iuH = (this.BLm.etf() + this.iuG + ".mp4");
-    AppMethodBeat.o(126178);
-  }
-  
-  public final void start()
-  {
-    AppMethodBeat.i(126186);
-    super.start();
-    a.md(5);
-    AppMethodBeat.o(126186);
-  }
-  
-  public final void stop()
-  {
-    AppMethodBeat.i(126196);
-    super.stop();
-    this.BIY = null;
-    AppMethodBeat.o(126196);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.q
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.support.v4.content.a.g;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,20 +26,20 @@ public class Fade
   public Fade(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.BO);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.BV);
     setMode(g.a(paramContext, (XmlResourceParser)paramAttributeSet, "fadingMode", 0, this.mMode));
     paramContext.recycle();
   }
   
-  private static float a(u paramu, float paramFloat)
+  private static float a(v paramv, float paramFloat)
   {
     float f = paramFloat;
-    if (paramu != null)
+    if (paramv != null)
     {
-      paramu = (Float)paramu.values.get("android:fade:transitionAlpha");
+      paramv = (Float)paramv.values.get("android:fade:transitionAlpha");
       f = paramFloat;
-      if (paramu != null) {
-        f = paramu.floatValue();
+      if (paramv != null) {
+        f = paramv.floatValue();
       }
     }
     return f;
@@ -50,31 +50,31 @@ public class Fade
     if (paramFloat1 == paramFloat2) {
       return null;
     }
-    ag.d(paramView, paramFloat1);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, ag.DC, new float[] { paramFloat2 });
+    ah.d(paramView, paramFloat1);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, ah.DL, new float[] { paramFloat2 });
     localObjectAnimator.addListener(new a(paramView));
-    a(new q()
+    a(new r()
     {
       public final void a(Transition paramAnonymousTransition)
       {
-        ag.d(paramView, 1.0F);
-        ag.Q(paramView);
+        ah.d(paramView, 1.0F);
+        ah.R(paramView);
         paramAnonymousTransition.b(this);
       }
     });
     return localObjectAnimator;
   }
   
-  public final Animator a(ViewGroup paramViewGroup, View paramView, u paramu)
+  public final Animator a(ViewGroup paramViewGroup, View paramView, v paramv)
   {
-    ag.P(paramView);
-    return b(paramView, a(paramu, 1.0F), 0.0F);
+    ah.Q(paramView);
+    return b(paramView, a(paramv, 1.0F), 0.0F);
   }
   
-  public final Animator a(ViewGroup paramViewGroup, View paramView, u paramu1, u paramu2)
+  public final Animator a(ViewGroup paramViewGroup, View paramView, v paramv1, v paramv2)
   {
     float f1 = 0.0F;
-    float f2 = a(paramu1, 0.0F);
+    float f2 = a(paramv1, 0.0F);
     if (f2 == 1.0F) {}
     for (;;)
     {
@@ -83,16 +83,16 @@ public class Fade
     }
   }
   
-  public final void a(u paramu)
+  public final void a(v paramv)
   {
-    super.a(paramu);
-    paramu.values.put("android:fade:transitionAlpha", Float.valueOf(ag.O(paramu.view)));
+    super.a(paramv);
+    paramv.values.put("android:fade:transitionAlpha", Float.valueOf(ah.P(paramv.view)));
   }
   
   static final class a
     extends AnimatorListenerAdapter
   {
-    private boolean AO = false;
+    private boolean AU = false;
     private final View mView;
     
     a(View paramView)
@@ -102,17 +102,17 @@ public class Fade
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      ag.d(this.mView, 1.0F);
-      if (this.AO) {
+      ah.d(this.mView, 1.0F);
+      if (this.AU) {
         this.mView.setLayerType(0, null);
       }
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      if ((t.ar(this.mView)) && (this.mView.getLayerType() == 0))
+      if ((u.ar(this.mView)) && (this.mView.getLayerType() == 0))
       {
-        this.AO = true;
+        this.AU = true;
         this.mView.setLayerType(2, null);
       }
     }

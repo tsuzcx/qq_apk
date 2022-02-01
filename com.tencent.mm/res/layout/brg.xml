@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/ci" android:paddingEnd="@dimen/ci"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/cbl" android:background="#ff333333" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="16.0dip" android:textColor="@color/a_u" android:gravity="center_vertical" android:id="@id/hfy" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/hlh" android:layout_alignParentLeft="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/hfw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cbl" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dud" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ce" />
+        <com.tencent.mm.ui.MMImageView android:id="@id/dhh" android:visibility="gone" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ce" android:src="@raw/icons_outlined_colorful_game" />
+        <TextView android:textSize="@dimen/hd" android:textColor="@color/a2x" android:gravity="center" android:id="@id/ir3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/l4" android:gravity="center" android:id="@id/bn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" />
+    </LinearLayout>
 </RelativeLayout>

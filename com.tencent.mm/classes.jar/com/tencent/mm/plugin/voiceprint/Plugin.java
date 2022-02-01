@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.voiceprint;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.plugin.voiceprint.a.a;
 import com.tencent.mm.plugin.voiceprint.model.k;
 import com.tencent.mm.pluginsdk.b.c;
@@ -19,7 +19,7 @@ public class Plugin
     return locala;
   }
   
-  public az createSubCore()
+  public bd createSubCore()
   {
     AppMethodBeat.i(29755);
     k localk = new k();
@@ -34,7 +34,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public abstract class BaseKindaCodeView
       int i = this.mCodeBitmaps.size() - 1;
       while (i > 1)
       {
-        f.U((Bitmap)this.mCodeBitmaps.remove(i));
+        f.Z((Bitmap)this.mCodeBitmaps.remove(i));
         i -= 1;
       }
     }
@@ -55,7 +55,7 @@ public abstract class BaseKindaCodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.BaseKindaCodeView
  * JD-Core Version:    0.7.0.1
  */

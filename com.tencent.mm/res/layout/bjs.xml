@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a_r" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/eg0" android:padding="14.0dip" android:visibility="gone" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <RelativeLayout android:gravity="center" android:layout_width="250.0dip" android:layout_height="250.0dip">
-            <ImageView android:id="@id/efz" android:layout_width="250.0dip" android:layout_height="250.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" android:contentDescription="@string/h5f" />
-            <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/wallet_offline_icon" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/efw" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:visibility="visible" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="53.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="53.0dip" android:layout_marginBottom="53.0dip">
-        <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gl9" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="24.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/hk" app:direction="gjc" app:text="" app:textColor="@color/y4" app:textSize="@dimen/i" />
-        <ImageView android:id="@id/efv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:contentDescription="@string/h4e" />
+<LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:padding="@dimen/ir" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="168.0dip" android:minHeight="64.0dip" style="@style/sa">
+        <ProgressBar android:id="@id/gle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" style="@style/a61" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/a2w" android:id="@id/glf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:maxWidth="200.0dip" />
     </LinearLayout>
 </LinearLayout>

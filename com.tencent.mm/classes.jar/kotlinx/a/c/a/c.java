@@ -1,19 +1,19 @@
 package kotlinx.a.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/internal/EscapeCharMappings;", "", "()V", "ESCAPE_2_CHAR", "", "initC2ESC", "", "c", "", "esc", "", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/json/internal/EscapeCharMappings;", "", "()V", "ESCAPE_2_CHAR", "", "initC2ESC", "", "c", "", "esc", "", "kotlinx-serialization-runtime"})
 public final class c
 {
-  public static final char[] Olk;
-  public static final c Oll;
+  public static final char[] Uah;
+  public static final c Uai;
   
   static
   {
-    AppMethodBeat.i(199940);
-    Oll = new c();
-    Olk = new char[117];
+    AppMethodBeat.i(225712);
+    Uai = new c();
+    Uah = new char[117];
     int i = 0;
     while (i <= 31)
     {
@@ -28,13 +28,13 @@ public final class c
     a(47, '/');
     a(34, '"');
     a(92, '\\');
-    AppMethodBeat.o(199940);
+    AppMethodBeat.o(225712);
   }
   
   private static void a(int paramInt, char paramChar)
   {
     if (paramChar != 'u') {
-      Olk[paramChar] = ((char)paramInt);
+      Uah[paramChar] = ((char)paramInt);
     }
   }
 }

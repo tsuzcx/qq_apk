@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/rv" android:background="?ji" android:layout_width="@dimen/ch" android:layout_height="@dimen/ch" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/cb" android:scaleType="fitCenter" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/am" android:paddingBottom="@dimen/c8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/b_" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fif" />
-        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_weight="1.0" />
+    <TextView android:id="@id/fas" style="@style/a60" />
+    <LinearLayout android:orientation="vertical" android:id="@id/fai" android:background="@drawable/o9" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5">
+        <TextView android:id="@id/faj" style="@style/a5y" />
+        <TextView android:id="@id/fam" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/k5" style="@style/a5y" />
+        <View style="@style/a5z" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:layout_marginBottom="@dimen/k">
+            <TextView android:id="@id/fak" style="@style/h8" />
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@id/far" android:background="@drawable/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ad" android:drawableRight="@raw/chatto_voice_playing" />
+                <com.tencent.mm.ui.base.AnimImageView android:layout_gravity="right" android:id="@id/faq" android:paddingRight="17.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/ad" />
+            </FrameLayout>
+        </LinearLayout>
+        <View style="@style/a5z" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/fah" style="@style/a5x" />
     </LinearLayout>
 </LinearLayout>

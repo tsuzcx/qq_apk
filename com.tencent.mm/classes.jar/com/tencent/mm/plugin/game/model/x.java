@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.er;
-import com.tencent.mm.plugin.game.d.g;
-import com.tencent.mm.plugin.game.d.w;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.game.protobuf.er;
+import com.tencent.mm.plugin.game.protobuf.g;
+import com.tencent.mm.plugin.game.protobuf.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class x
 {
@@ -14,66 +14,66 @@ public class x
     AppMethodBeat.i(41523);
     if (paramg == null)
     {
-      ae.e("MicroMsg.GamePBData", "Invalid pb object");
+      Log.e("MicroMsg.GamePBData", "Invalid pb object");
       AppMethodBeat.o(41523);
       return null;
     }
-    if (bu.isNullOrNil(paramg.gvv))
+    if (Util.isNullOrNil(paramg.hik))
     {
-      ae.e("MicroMsg.GamePBData", "No AppID field, abort");
+      Log.e("MicroMsg.GamePBData", "No AppID field, abort");
       AppMethodBeat.o(41523);
       return null;
     }
-    ae.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { paramg.gvv });
+    Log.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { paramg.hik });
     c localc = new c();
-    localc.field_appId = paramg.gvv;
+    localc.field_appId = paramg.hik;
     localc.field_appName = paramg.Name;
-    localc.field_appIconUrl = paramg.uqq;
+    localc.field_appIconUrl = paramg.xIJ;
     localc.field_appType = ",1,";
-    localc.field_packageName = paramg.uqs;
+    localc.field_packageName = paramg.xuk;
     localc.field_appVersion = paramg.Version;
-    localc.field_appInfoFlag = paramg.uqv;
-    if (paramg.uqu != null)
+    localc.field_appInfoFlag = paramg.xIN;
+    if (paramg.xIM != null)
     {
-      localc.sU(paramg.uqu.uru);
-      localc.sX(paramg.uqu.urv);
-      localc.jX(paramg.uqu.ury);
-      localc.sY(paramg.uqu.urw);
-      localc.ulV = paramg.uqu.urA;
-      localc.myB = paramg.uqu.urz;
-      localc.dvO = paramg.uqu.urB;
+      localc.Bl(paramg.xIM.xJL);
+      localc.Bo(paramg.xIM.xJM);
+      localc.mZ(paramg.xIM.xJP);
+      localc.Bp(paramg.xIM.xJN);
+      localc.xEn = paramg.xIM.xJR;
+      localc.nJC = paramg.xIM.xJQ;
+      localc.dNv = paramg.xIM.xJS;
     }
-    if ((paramg.uqu != null) && (paramg.uqu.urx != null))
+    if ((paramg.xIM != null) && (paramg.xIM.xJO != null))
     {
-      localc.td(paramg.uqu.urx.uru);
-      localc.te(paramg.uqu.urx.uvR);
-      localc.tb(paramg.uqu.urx.uvS);
-      localc.tc(paramg.uqu.urx.uvT);
-      localc.jY(paramg.uqu.urx.uvV);
+      localc.Bu(paramg.xIM.xJO.xJL);
+      localc.Bv(paramg.xIM.xJO.xNS);
+      localc.Bs(paramg.xIM.xJO.xNT);
+      localc.Bt(paramg.xIM.xJO.xNU);
+      localc.na(paramg.xIM.xJO.xNW);
     }
-    localc.ulD = paramg.Desc;
-    localc.ulC = paramg.uqr;
-    localc.status = paramg.nJb;
-    localc.ulF = paramg.uqi;
-    localc.versionCode = paramg.uqt;
-    localc.dmu = paramg.uqn;
-    localc.iEF = paramg.uqw;
-    localc.ulO = paramg.uqB;
-    if ((paramg.uqu != null) && (paramg.uqu.urx != null))
+    localc.xDV = paramg.Desc;
+    localc.xDU = paramg.xIK;
+    localc.status = paramg.oTW;
+    localc.xDX = paramg.xIB;
+    localc.versionCode = paramg.xIL;
+    localc.dDJ = paramg.xIG;
+    localc.jyX = paramg.xIO;
+    localc.xEg = paramg.xIT;
+    if ((paramg.xIM != null) && (paramg.xIM.xJO != null))
     {
-      localc.ulH = paramg.uqu.urx.uvU;
-      localc.ulI = paramg.uqu.urx.uvW;
-      localc.ulJ = paramg.uqu.urx.uvX;
+      localc.xDZ = paramg.xIM.xJO.xNV;
+      localc.xEa = paramg.xIM.xJO.xNX;
+      localc.xEb = paramg.xIM.xJO.xNY;
     }
-    localc.appType = paramg.uqD;
-    localc.ulW = paramg.uqE;
+    localc.appType = paramg.xIV;
+    localc.xEo = paramg.xIW;
     AppMethodBeat.o(41523);
     return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.x
  * JD-Core Version:    0.7.0.1
  */

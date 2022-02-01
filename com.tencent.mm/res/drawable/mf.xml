@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/FG_3" />
-    <corners android:radius="@dimen/bq" android:topLeftRadius="@dimen/bq" android:topRightRadius="@dimen/bq" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="0.0dip" />
-</shape>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="4.0dip" />
+            <solid android:color="@color/is" />
+            <stroke android:color="@color/wz" />
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="4.0dip" />
+            <solid android:color="@color/is" />
+            <stroke android:color="@color/wz" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="4.0dip" />
+            <solid android:color="@color/ac_" />
+            <stroke android:color="@color/wz" />
+        </shape>
+    </item>
+</selector>

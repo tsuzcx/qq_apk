@@ -3,43 +3,43 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.d;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.e;
-import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.cie;
-import com.tencent.mm.protocal.protobuf.dol;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bn;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.protocal.protobuf.eih;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static com.tencent.mm.vending.j.c<bou, Integer> crl()
+  public static com.tencent.mm.vending.j.c<cbm, Integer> cPT()
   {
     AppMethodBeat.i(122090);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getCurPageFlowItem, doNotNeedSessionMonitor: TRUE");
+      Log.w("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getCurPageFlowItem, doNotNeedSessionMonitor: TRUE");
       AppMethodBeat.o(122090);
       return null;
     }
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
     if (localObject == null)
     {
-      ae.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession is NULL");
+      Log.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
-    ae.i("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession: %s", new Object[] { ((cie)localObject).sessionId });
-    d.cpt();
-    bj localbj = e.cpy();
-    if (localbj == null)
+    Log.i("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession: %s", new Object[] { ((cyl)localObject).sessionId });
+    d.cNM();
+    bn localbn = e.cNR();
+    if (localbn == null)
     {
-      ae.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curAR is NULL");
+      Log.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curAR is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
-    localObject = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.gc(((cie)localObject).sessionId, localbj.FLG.activityName);
+    localObject = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.gw(((cyl)localObject).sessionId, localbn.KFh.activityName);
     if (localObject == null)
     {
-      ae.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getPageFlowItemOfCurSession is NULL");
+      Log.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getPageFlowItemOfCurSession is NULL");
       AppMethodBeat.o(122090);
       return null;
     }

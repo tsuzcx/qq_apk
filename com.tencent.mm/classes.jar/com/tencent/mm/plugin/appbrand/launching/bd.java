@@ -1,71 +1,142 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import android.content.Intent;
-import android.os.Build.VERSION;
+import android.content.res.Resources;
+import android.util.Pair;
+import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 
-public class bd
-  implements MMActivity.a
+final class bd
 {
-  public final int requestCode;
-  
-  protected bd()
+  static boolean a(WxaAttributes paramWxaAttributes, ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
   {
-    AppMethodBeat.i(47308);
-    this.requestCode = (bd.class.hashCode() & 0xFFFF);
-    AppMethodBeat.o(47308);
+    AppMethodBeat.i(47358);
+    if (1 == paramWxaAttributes.bAp().cyu)
+    {
+      AppBrand404PageUI.a(paramActivityStarterIpcDelegate);
+      i.T(paramWxaAttributes.field_appId, 14, 1);
+      AppMethodBeat.o(47358);
+      return false;
+    }
+    AppMethodBeat.o(47358);
+    return true;
   }
   
-  public void bsl() {}
-  
-  public final void bsm()
+  static boolean a(String paramString, boolean paramBoolean, aa paramaa)
   {
-    AppMethodBeat.i(47309);
-    if (d.lA(17)) {
-      onReady();
+    AppMethodBeat.i(227116);
+    Object localObject = new be(paramString, aci(paramString), paramBoolean).bNQ();
+    int i = ((Integer)((Pair)localObject).first).intValue();
+    localObject = (String)((Pair)localObject).second;
+    Log.i("MicroMsg.AppBrand.PrepareStepOpBan", "checkDemoInfo, appId %s, ret %d, ignoreCgiError %b", new Object[] { paramString, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
+    be.a locala = be.a.ym(i);
+    if (locala == null)
+    {
+      switch (i)
+      {
+      default: 
+        if (paramBoolean)
+        {
+          AppMethodBeat.o(227116);
+          return true;
+        }
+        break;
+      case -13002: 
+        ax.a(2131755416, paramaa);
+        i.T(paramString, 13, 3);
+        AppMethodBeat.o(227116);
+        return false;
+      case -13003: 
+        if (paramaa.bNh()) {
+          b((String)localObject, paramaa);
+        }
+        i.T(paramString, 12, 3);
+        AppMethodBeat.o(227116);
+        return false;
+      }
+      ax.a(MMApplicationContext.getResources().getString(2131755623, new Object[] { Integer.valueOf(3), Integer.valueOf(i) }), paramaa);
+      AppMethodBeat.o(227116);
+      return false;
     }
-    AppMethodBeat.o(47309);
+    if (paramBoolean)
+    {
+      AppMethodBeat.o(227116);
+      return true;
+    }
+    switch (1.mXg[locala.ordinal()])
+    {
+    default: 
+      ax.a(2131755414, paramaa);
+      i.T(paramString, 13, 3);
+      AppMethodBeat.o(227116);
+      return false;
+    case 1: 
+      AppMethodBeat.o(227116);
+      return true;
+    }
+    ax.a(2131755415, paramaa);
+    i.T(paramString, 13, 3);
+    AppMethodBeat.o(227116);
+    return false;
   }
   
-  public final void c(int paramInt1, int paramInt2, Intent paramIntent)
+  private static String aci(String paramString)
   {
-    AppMethodBeat.i(47310);
-    if (this.requestCode != paramInt1)
+    AppMethodBeat.i(180317);
+    Object localObject = null;
+    com.tencent.mm.plugin.appbrand.appcache.bd localbd = n.buL().a(paramString, 10001, new String[] { "versionMd5", "pkgPath" });
+    paramString = localObject;
+    if (localbd != null)
     {
-      AppMethodBeat.o(47310);
-      return;
+      paramString = localObject;
+      if (!Util.isNullOrNil(localbd.field_pkgPath))
+      {
+        paramString = localObject;
+        if (s.YS(localbd.field_pkgPath))
+        {
+          paramString = localObject;
+          if (!Util.isNullOrNil(localbd.field_versionMd5))
+          {
+            paramString = localObject;
+            if (localbd.field_pkgPath.equals(s.bhK(localbd.field_pkgPath))) {
+              paramString = localbd.field_versionMd5;
+            }
+          }
+        }
+      }
     }
-    if (paramInt2 == -1)
-    {
-      ae.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download ok");
-      f.vz(0);
-      onReady();
-      AppMethodBeat.o(47310);
-      return;
-    }
-    if (paramInt2 == 2)
-    {
-      ae.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs cancel loading, download in background");
-      bsl();
-      AppMethodBeat.o(47310);
-      return;
-    }
-    ae.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download unknown error, resultCode = %d, apiLevel = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(Build.VERSION.SDK_INT) });
-    g.yxI.idkeyStat(366L, 8L, 1L, false);
-    bsm();
-    AppMethodBeat.o(47310);
+    AppMethodBeat.o(180317);
+    return paramString;
   }
   
-  public void onReady() {}
+  private static void b(String paramString, aa paramaa)
+  {
+    AppMethodBeat.i(227117);
+    if (Util.isNullOrNil(paramString))
+    {
+      ax.a(2131755417, paramaa);
+      AppMethodBeat.o(227117);
+      return;
+    }
+    paramString = new Intent().putExtra("rawUrl", paramString).putExtra("forceHideShare", true);
+    c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
+    AppMethodBeat.o(227117);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.bd
  * JD-Core Version:    0.7.0.1
  */

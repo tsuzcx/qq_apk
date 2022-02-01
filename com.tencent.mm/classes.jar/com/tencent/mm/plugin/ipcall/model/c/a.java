@@ -5,46 +5,46 @@ import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.voip.model.b;
 import com.tencent.mm.plugin.voip.model.c;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
   public boolean isStart;
-  public c pcA;
-  public final Object uXL;
-  public int uXM;
-  public boolean uXN;
-  public com.tencent.mm.plugin.ipcall.model.a.a uXO;
+  public c qrz;
+  public final Object yql;
+  public int yqm;
+  public boolean yqn;
+  public com.tencent.mm.plugin.ipcall.model.a.a yqo;
   
   public a(com.tencent.mm.plugin.ipcall.model.a.a parama)
   {
-    AppMethodBeat.i(186481);
-    this.pcA = null;
-    this.uXL = new Object();
+    AppMethodBeat.i(231722);
+    this.qrz = null;
+    this.yql = new Object();
     this.isStart = false;
-    this.uXM = 0;
-    this.uXN = false;
-    this.uXO = parama;
-    AppMethodBeat.o(186481);
+    this.yqm = 0;
+    this.yqn = false;
+    this.yqo = parama;
+    AppMethodBeat.o(231722);
   }
   
-  public final void nN(boolean paramBoolean)
+  public final void qw(boolean paramBoolean)
   {
     AppMethodBeat.i(25417);
-    ae.i("MicroMsg.IPCallAudioPlayer", "setSpeakerPhoneOn, old isSpeakerPhoneOn: %b, new isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(this.uXN), Boolean.valueOf(paramBoolean) });
-    this.uXO.io(paramBoolean);
-    com.tencent.mm.plugin.ipcall.model.d.a locala = i.dgz();
+    Log.i("MicroMsg.IPCallAudioPlayer", "setSpeakerPhoneOn, old isSpeakerPhoneOn: %b, new isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(this.yqn), Boolean.valueOf(paramBoolean) });
+    this.yqo.jp(paramBoolean);
+    com.tencent.mm.plugin.ipcall.model.d.a locala = i.eat();
     if (paramBoolean) {}
-    for (int i = locala.uYf.setAppCmd(401);; i = locala.uYf.setAppCmd(402))
+    for (int i = locala.yqF.setAppCmd(401);; i = locala.yqF.setAppCmd(402))
     {
       if (i < 0) {
-        ae.e("MicroMsg.IPCallEngineManager", "setSpeakerPhoneOn, failed, ret: %d", new Object[] { Integer.valueOf(i) });
+        Log.e("MicroMsg.IPCallEngineManager", "setSpeakerPhoneOn, failed, ret: %d", new Object[] { Integer.valueOf(i) });
       }
-      if (paramBoolean != this.uXN)
+      if (paramBoolean != this.yqn)
       {
-        this.uXN = paramBoolean;
-        if ((this.pcA != null) && (this.pcA.Cpa)) {
-          this.pcA.ti(paramBoolean);
+        this.yqn = paramBoolean;
+        if ((this.qrz != null) && (this.qrz.GSW)) {
+          this.qrz.wS(paramBoolean);
         }
       }
       AppMethodBeat.o(25417);
@@ -55,24 +55,24 @@ public final class a
   public final class a
     implements Runnable
   {
-    private c uXQ = null;
+    private c yqq = null;
     
     public a(c paramc)
     {
-      this.uXQ = paramc;
+      this.yqq = paramc;
     }
     
     public final void run()
     {
       AppMethodBeat.i(25414);
-      if (this.uXQ != null)
+      if (this.yqq != null)
       {
-        this.uXQ.eyA();
-        this.uXQ.eyx();
-        this.uXQ = null;
-        a.this.uXN = false;
+        this.yqq.fFr();
+        this.yqq.fFo();
+        this.yqq = null;
+        a.this.yqn = false;
       }
-      a.this.uXO.bHs();
+      a.this.yqo.cdV();
       AppMethodBeat.o(25414);
     }
   }

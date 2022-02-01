@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.expt.hellhound.core.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.btm;
-import com.tencent.mm.protocal.protobuf.cib;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cgh;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class b
 {
-  public static String aeU(String paramString)
+  public static String apk(String paramString)
   {
     AppMethodBeat.i(121960);
-    Object localObject = cpE();
-    if ((localObject == null) || (((cib)localObject).Huj.isEmpty()))
+    Object localObject = cNX();
+    if ((localObject == null) || (((cyi)localObject).MDh.isEmpty()))
     {
       AppMethodBeat.o(121960);
       return null;
     }
-    Iterator localIterator = ((cib)localObject).Huj.iterator();
+    Iterator localIterator = ((cyi)localObject).MDh.iterator();
     localObject = null;
     if (localIterator.hasNext())
     {
-      btm localbtm = (btm)localIterator.next();
-      if ((localbtm == null) || (!paramString.equals(localbtm.key))) {
+      cgh localcgh = (cgh)localIterator.next();
+      if ((localcgh == null) || (!paramString.equals(localcgh.key))) {
         break label102;
       }
-      localObject = localbtm;
+      localObject = localcgh;
     }
     label102:
     for (;;)
@@ -37,13 +37,13 @@ public final class b
         AppMethodBeat.o(121960);
         return null;
       }
-      paramString = ((btm)localObject).value;
+      paramString = ((cgh)localObject).value;
       AppMethodBeat.o(121960);
       return paramString;
     }
   }
   
-  private static cib cpE()
+  private static cyi cNX()
   {
     AppMethodBeat.i(121962);
     byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_ac_ble_mmkv_key");
@@ -52,53 +52,53 @@ public final class b
       AppMethodBeat.o(121962);
       return null;
     }
-    cib localcib = new cib();
+    cyi localcyi = new cyi();
     try
     {
-      localcib.parseFrom(arrayOfByte);
+      localcyi.parseFrom(arrayOfByte);
       AppMethodBeat.o(121962);
-      return localcib;
+      return localcyi;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.ActivityBundleDao", localException, "ActivityBundleDao _doRead parse", new Object[0]);
+        Log.printErrStackTrace("HABBYGE-MALI.ActivityBundleDao", localException, "ActivityBundleDao _doRead parse", new Object[0]);
         Object localObject = null;
       }
     }
   }
   
-  public static void fV(String paramString1, String paramString2)
+  public static void go(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121961);
-    cib localcib = cpE();
-    if (localcib == null) {
-      localcib = new cib();
+    cyi localcyi = cNX();
+    if (localcyi == null) {
+      localcyi = new cyi();
     }
     for (;;)
     {
-      Object localObject = localcib.Huj.iterator();
+      Object localObject = localcyi.MDh.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        btm localbtm = (btm)((Iterator)localObject).next();
-        if ((localbtm != null) && (paramString1.equals(localbtm.key))) {
-          localcib.Huj.remove(localbtm);
+        cgh localcgh = (cgh)((Iterator)localObject).next();
+        if ((localcgh != null) && (paramString1.equals(localcgh.key))) {
+          localcyi.MDh.remove(localcgh);
         }
       }
-      localObject = new btm();
-      ((btm)localObject).key = paramString1;
-      ((btm)localObject).value = paramString2;
-      localcib.Huj.add(localObject);
+      localObject = new cgh();
+      ((cgh)localObject).key = paramString1;
+      ((cgh)localObject).value = paramString2;
+      localcyi.MDh.add(localObject);
       try
       {
-        com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_ac_ble_mmkv_key", localcib.toByteArray());
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_ac_ble_mmkv_key", localcyi.toByteArray());
         AppMethodBeat.o(121961);
         return;
       }
       catch (Exception paramString1)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.ActivityBundleDao", paramString1, "ActivityBundleDao writeBack", new Object[0]);
+        Log.printErrStackTrace("HABBYGE-MALI.ActivityBundleDao", paramString1, "ActivityBundleDao writeBack", new Object[0]);
         AppMethodBeat.o(121961);
         return;
       }

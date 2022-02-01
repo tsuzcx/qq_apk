@@ -1,63 +1,61 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.ad;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d;
-import d.a.ae;
-import d.l;
-import d.o;
-import d.u;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import java.util.Map;
+import kotlin.a.ae;
+import kotlin.l;
+import kotlin.o;
+import kotlin.s;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class e
-  extends a<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.d<f>
 {
   public static final int CTRL_INDEX = 788;
   public static final String NAME = "isSupportNFC";
-  public static final a lbJ;
+  public static final a mha;
   
   static
   {
     AppMethodBeat.i(183639);
-    lbJ = new a((byte)0);
+    mha = new a((byte)0);
     AppMethodBeat.o(183639);
   }
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(183638);
-    if (paramc == null)
+    if (paramf == null)
     {
       AppMethodBeat.o(183638);
       return;
     }
-    paramJSONObject = (ad)com.tencent.luggage.a.e.K(ad.class);
-    if ((paramJSONObject != null) && (!paramJSONObject.biW()))
+    paramJSONObject = (ai)com.tencent.luggage.a.e.M(ai.class);
+    if ((paramJSONObject != null) && (!paramJSONObject.bEm()))
     {
-      paramc.h(paramInt, n("fail:user is not authorized", (Map)ae.c(new o[] { u.R("errCode", Integer.valueOf(13019)) })));
+      paramf.i(paramInt, n("fail:user is not authorized", (Map)ae.g(new o[] { s.U("errCode", Integer.valueOf(13019)) })));
       AppMethodBeat.o(183638);
       return;
     }
-    if (d.bmy())
+    if (com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bHX())
     {
-      paramc.h(paramInt, PO("ok"));
+      paramf.i(paramInt, Zf("ok"));
       AppMethodBeat.o(183638);
       return;
     }
-    paramc.h(paramInt, n("fail", (Map)ae.c(new o[] { u.R("errCode", Integer.valueOf(13000)) })));
+    paramf.i(paramInt, n("fail", (Map)ae.g(new o[] { s.U("errCode", Integer.valueOf(13000)) })));
     AppMethodBeat.o(183638);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/JsApiIsSupportNFC$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.e
  * JD-Core Version:    0.7.0.1
  */

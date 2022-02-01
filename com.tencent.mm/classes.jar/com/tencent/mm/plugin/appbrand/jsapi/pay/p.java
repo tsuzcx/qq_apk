@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.service.c;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class p
-  extends a<c>
+  extends d<c>
 {
   public static final int CTRL_INDEX = 707;
   public static final String NAME = "requestVerifyUserIdentity";

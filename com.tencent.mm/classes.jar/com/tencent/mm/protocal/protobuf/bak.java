@@ -4,113 +4,98 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bak
-  extends cvw
+  extends dpc
 {
-  public int GjL;
-  public int GjM;
-  public double latitude;
-  public double longitude;
-  public int offset;
-  public int scene;
+  public FinderObject LCD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(218611);
+    AppMethodBeat.i(209634);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.offset);
-      paramVarArgs.aS(3, this.GjM);
-      paramVarArgs.e(4, this.latitude);
-      paramVarArgs.e(5, this.longitude);
-      paramVarArgs.aS(6, this.scene);
-      paramVarArgs.aS(7, this.GjL);
-      AppMethodBeat.o(218611);
+      if (this.LCD != null)
+      {
+        paramVarArgs.ni(2, this.LCD.computeSize());
+        this.LCD.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(209634);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label588;
+      if (this.BaseResponse == null) {
+        break label466;
       }
     }
-    label588:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label466:
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.offset);
-      int j = f.a.a.b.b.a.bz(3, this.GjM);
-      int k = f.a.a.b.b.a.amD(4);
-      int m = f.a.a.b.b.a.amD(5);
-      int n = f.a.a.b.b.a.bz(6, this.scene);
-      int i1 = f.a.a.b.b.a.bz(7, this.GjL);
-      AppMethodBeat.o(218611);
-      return paramInt + i + j + k + m + n + i1;
+      int i = paramInt;
+      if (this.LCD != null) {
+        i = paramInt + g.a.a.a.nh(2, this.LCD.computeSize());
+      }
+      AppMethodBeat.o(209634);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(218611);
+        AppMethodBeat.o(209634);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         bak localbak = (bak)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(218611);
+          AppMethodBeat.o(209634);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbak.BaseRequest = ((jc)localObject1);
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localbak.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(218611);
-          return 0;
-        case 2: 
-          localbak.offset = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(218611);
-          return 0;
-        case 3: 
-          localbak.GjM = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(218611);
-          return 0;
-        case 4: 
-          localbak.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
-          AppMethodBeat.o(218611);
-          return 0;
-        case 5: 
-          localbak.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).OmT.gwc());
-          AppMethodBeat.o(218611);
-          return 0;
-        case 6: 
-          localbak.scene = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(218611);
+          AppMethodBeat.o(209634);
           return 0;
         }
-        localbak.GjL = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(218611);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new FinderObject();
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((FinderObject)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          localbak.LCD = ((FinderObject)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(209634);
         return 0;
       }
-      AppMethodBeat.o(218611);
+      AppMethodBeat.o(209634);
       return -1;
     }
   }

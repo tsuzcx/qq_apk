@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static String Jk(String paramString)
+  public static String Sh(String paramString)
   {
     AppMethodBeat.i(132967);
     if ((paramString == null) || ("".equals(paramString.trim())))
@@ -29,7 +29,7 @@ public final class f
     return paramString;
   }
   
-  public static String Jl(String paramString)
+  public static String Si(String paramString)
   {
     AppMethodBeat.i(132968);
     if ((paramString == null) || ("".equals(paramString.trim())))
@@ -59,7 +59,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.f
  * JD-Core Version:    0.7.0.1
  */

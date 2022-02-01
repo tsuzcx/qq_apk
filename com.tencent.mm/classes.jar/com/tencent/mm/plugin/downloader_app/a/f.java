@@ -11,61 +11,61 @@ public final class f
     super(paramf);
   }
   
-  public final void ac(int paramInt, String paramString)
+  public final void G(int paramInt, String paramString)
   {
     AppMethodBeat.i(175270);
-    super.ac(paramInt, paramString);
-    bLD().nLC = 11;
+    super.G(paramInt, paramString);
+    ciw().hDa = 11;
     AppMethodBeat.o(175270);
   }
   
-  public final boolean bhh()
+  public final boolean aGg()
   {
     return false;
   }
   
-  public final boolean bhi()
+  public final boolean aGh()
   {
     return false;
   }
   
-  public final void bhj()
-  {
-    AppMethodBeat.i(175272);
-    super.bhj();
-    e.ceh().pvD = true;
-    AppMethodBeat.o(175272);
-  }
-  
-  public final void bhk()
-  {
-    AppMethodBeat.i(175273);
-    super.bhk();
-    e.ceh().pvD = false;
-    e.ceh().iW(false);
-    AppMethodBeat.o(175273);
-  }
-  
-  public final void bhl()
+  public final void aGi()
   {
     AppMethodBeat.i(175274);
-    super.bhl();
-    this.nME.ge(false);
+    super.aGi();
+    this.oXA.hb(false);
     AppMethodBeat.o(175274);
   }
   
-  public final boolean sy(int paramInt)
+  public final void aGj()
+  {
+    AppMethodBeat.i(175273);
+    super.aGj();
+    e.cBX().qKU = false;
+    e.cBX().jU(false);
+    AppMethodBeat.o(175273);
+  }
+  
+  public final void bCA()
+  {
+    AppMethodBeat.i(175272);
+    super.bCA();
+    e.cBX().qKU = true;
+    AppMethodBeat.o(175272);
+  }
+  
+  public final boolean wu(int paramInt)
   {
     AppMethodBeat.i(175271);
-    this.nLK = e.ceh().nLK;
-    boolean bool = super.sy(paramInt);
+    this.oWE = e.cBX().oWE;
+    boolean bool = super.wu(paramInt);
     AppMethodBeat.o(175271);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a.f
  * JD-Core Version:    0.7.0.1
  */

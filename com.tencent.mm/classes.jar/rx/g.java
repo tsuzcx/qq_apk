@@ -9,7 +9,7 @@ import rx.internal.c.k;
 
 public abstract class g
 {
-  static final long Ouj = TimeUnit.MINUTES.toNanos(Long.getLong("rx.scheduler.drift-tolerance", 15L).longValue());
+  static final long UjX = TimeUnit.MINUTES.toNanos(Long.getLong("rx.scheduler.drift-tolerance", 15L).longValue());
   
   public abstract a createWorker();
   

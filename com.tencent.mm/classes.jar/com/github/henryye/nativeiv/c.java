@@ -15,86 +15,86 @@ import java.util.Map;
 
 public class c
 {
-  private static final Object baA;
-  IBitmap baB;
-  IImageDecodeService.b baC;
-  a baD;
-  b baE;
-  BitmapType bav;
+  private static final Object baw;
+  b baA;
+  BitmapType bar;
+  IBitmap bax;
+  IImageDecodeService.b bay;
+  a baz;
   
   static
   {
     AppMethodBeat.i(127335);
-    baA = new Object();
+    baw = new Object();
     AppMethodBeat.o(127335);
   }
   
   public c(b paramb, a parama)
   {
     AppMethodBeat.i(127334);
-    this.bav = null;
-    this.baB = new a();
-    this.baE = paramb;
-    this.baD = parama;
+    this.bar = null;
+    this.bax = new a();
+    this.baA = paramb;
+    this.baz = parama;
     AppMethodBeat.o(127334);
   }
   
-  private void sN()
+  private void sQ()
   {
-    AppMethodBeat.i(209410);
-    if (this.baB != null) {
-      this.baB.recycle();
+    AppMethodBeat.i(219796);
+    if (this.bax != null) {
+      this.bax.recycle();
     }
-    AppMethodBeat.o(209410);
+    AppMethodBeat.o(219796);
   }
   
   public final void a(com.github.henryye.nativeiv.bitmap.b<Bitmap> paramb)
   {
-    AppMethodBeat.i(209411);
+    AppMethodBeat.i(219797);
     BitmapType localBitmapType = BitmapType.Legacy;
-    synchronized (baA)
+    synchronized (baw)
     {
-      if (this.baB.getType() == localBitmapType) {
-        sN();
+      if (this.bax.getType() == localBitmapType) {
+        sQ();
       }
-      b localb = this.baE;
+      b localb = this.baA;
       int i = hashCode();
-      Map localMap = (Map)localb.bay.get(i);
+      Map localMap = (Map)localb.bau.get(i);
       Object localObject1 = localMap;
       if (localMap == null) {
         localObject1 = new HashMap(2);
       }
       ((Map)localObject1).put(localBitmapType, paramb);
-      localb.bay.append(i, localObject1);
-      AppMethodBeat.o(209411);
+      localb.bau.append(i, localObject1);
+      AppMethodBeat.o(219797);
       return;
     }
   }
   
   public final void forceSetUseType(BitmapType paramBitmapType)
   {
-    this.bav = paramBitmapType;
+    this.bar = paramBitmapType;
   }
   
   public final com.github.henryye.nativeiv.bitmap.d h(InputStream paramInputStream)
   {
-    AppMethodBeat.i(209408);
-    sN();
+    AppMethodBeat.i(219794);
+    sQ();
     if (paramInputStream != null)
     {
       paramInputStream = i(paramInputStream);
-      AppMethodBeat.o(209408);
+      AppMethodBeat.o(219794);
       return paramInputStream;
     }
-    AppMethodBeat.o(209408);
+    AppMethodBeat.o(219794);
     return null;
   }
   
   protected com.github.henryye.nativeiv.bitmap.d i(InputStream paramInputStream)
   {
-    AppMethodBeat.i(209409);
+    AppMethodBeat.i(219795);
     paramInputStream = com.github.henryye.nativeiv.c.d.k(paramInputStream);
-    AppMethodBeat.o(209409);
+    AppMethodBeat.o(219795);
     return paramInputStream;
   }
   
@@ -157,7 +157,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.c
  * JD-Core Version:    0.7.0.1
  */

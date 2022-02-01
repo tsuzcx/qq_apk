@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$Companion;", "", "()V", "FULLSCREEN_DIRECTION_UNKNOWN", "", "getFULLSCREEN_DIRECTION_UNKNOWN", "()I", "TAG", "", "VOLUME_BRIGHTNESS_NUM_STARS", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$Companion;", "", "()V", "FULLSCREEN_DIRECTION_UNKNOWN", "", "getFULLSCREEN_DIRECTION_UNKNOWN", "()I", "TAG", "", "VOLUME_BRIGHTNESS_NUM_STARS", "plugin-brandservice_release"})
 public final class MPVideoView$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPVideoView.a
  * JD-Core Version:    0.7.0.1
  */

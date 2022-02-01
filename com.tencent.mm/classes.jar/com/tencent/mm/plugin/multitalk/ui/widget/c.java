@@ -3,41 +3,41 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarOperatorUtil;", "", "()V", "Companion", "plugin-multitalk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarOperatorUtil;", "", "()V", "Companion", "plugin-multitalk_release"})
 public final class c
 {
-  public static final a wus;
+  public static final a zRp;
   
   static
   {
     AppMethodBeat.i(178969);
-    wus = new a((byte)0);
+    zRp = new a((byte)0);
     AppMethodBeat.o(178969);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarOperatorUtil$Companion;", "", "()V", "inflateBigAvatarLayout", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "parent", "Landroid/view/ViewGroup;", "clickListener", "Landroid/view/View$OnClickListener;", "startLoadingAnimation", "", "holder", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "stopLoadingAnimation", "plugin-multitalk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarOperatorUtil$Companion;", "", "()V", "inflateBigAvatarLayout", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "parent", "Landroid/view/ViewGroup;", "clickListener", "Landroid/view/View$OnClickListener;", "startLoadingAnimation", "", "holder", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "stopLoadingAnimation", "plugin-multitalk_release"})
   public static final class a
   {
     public static void g(b paramb)
     {
       AppMethodBeat.i(178967);
       p.h(paramb, "holder");
-      Object localObject = paramb.vLZ;
+      Object localObject = paramb.zhh;
       if (localObject != null)
       {
         localObject = ((ImageView)localObject).getBackground();
         if (localObject == null) {
           break label142;
         }
-        localObject = paramb.vLZ;
+        localObject = paramb.zhh;
         if (localObject != null) {
           ((ImageView)localObject).setVisibility(0);
         }
-        localObject = paramb.vLZ;
+        localObject = paramb.zhh;
         if (localObject == null) {
           break label83;
         }
@@ -48,7 +48,7 @@ public final class c
         if (localObject != null) {
           break label88;
         }
-        paramb = new v("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
+        paramb = new t("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
         AppMethodBeat.o(178967);
         throw paramb;
         localObject = null;
@@ -56,11 +56,11 @@ public final class c
       }
       label88:
       ((AnimationDrawable)localObject).stop();
-      paramb = paramb.vLZ;
+      paramb = paramb.zhh;
       if (paramb != null) {}
       for (paramb = paramb.getBackground(); paramb == null; paramb = null)
       {
-        paramb = new v("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
+        paramb = new t("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
         AppMethodBeat.o(178967);
         throw paramb;
       }
@@ -74,20 +74,20 @@ public final class c
       Object localObject2 = null;
       AppMethodBeat.i(178968);
       p.h(paramb, "holder");
-      Object localObject1 = paramb.vLZ;
+      Object localObject1 = paramb.zhh;
       if (localObject1 != null) {
         localObject1 = ((ImageView)localObject1).getBackground();
       }
       while (localObject1 != null)
       {
-        ImageView localImageView = paramb.vLZ;
+        ImageView localImageView = paramb.zhh;
         localObject1 = localObject2;
         if (localImageView != null) {
           localObject1 = localImageView.getBackground();
         }
         if (localObject1 == null)
         {
-          paramb = new v("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
+          paramb = new t("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
           AppMethodBeat.o(178968);
           throw paramb;
           localObject1 = null;
@@ -97,7 +97,7 @@ public final class c
           ((AnimationDrawable)localObject1).stop();
         }
       }
-      paramb = paramb.vLZ;
+      paramb = paramb.zhh;
       if (paramb != null)
       {
         paramb.setVisibility(8);

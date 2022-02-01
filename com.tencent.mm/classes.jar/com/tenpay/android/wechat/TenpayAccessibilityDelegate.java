@@ -88,12 +88,12 @@ public class TenpayAccessibilityDelegate
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           try
           {
-            localObject1 = View.class.getMethod("clearAccessibilityFocus", null);
+            localObject1 = View.class.getMethod("clearAccessibilityFocus", new Class[0]);
             ((Method)localObject1).setAccessible(true);
-            ((Method)localObject1).invoke(paramView, null);
-            localObject1 = View.class.getMethod("requestAccessibilityFocus", null);
+            ((Method)localObject1).invoke(paramView, new Object[0]);
+            localObject1 = View.class.getMethod("requestAccessibilityFocus", new Class[0]);
             ((Method)localObject1).setAccessible(true);
-            ((Method)localObject1).invoke(paramView, null);
+            ((Method)localObject1).invoke(paramView, new Object[0]);
             AppMethodBeat.o(130958);
             return;
           }
@@ -110,7 +110,7 @@ public class TenpayAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpayAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

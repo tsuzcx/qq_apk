@@ -4,53 +4,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public static final j kIP;
-  public static final j kIQ;
-  public static final j kIR;
-  public static final j kIS;
-  public static final j kIT;
-  public static final j kIU;
-  public static final j kIV;
-  public static final j kIW;
-  public static final j kIX;
-  public static final j kIY;
-  public static final j kIZ;
-  public static final j kJa;
-  public static final j kJb;
-  public static final j kJc;
-  public static final j kJd;
-  public static final j kJe;
-  public static final j kJf;
-  public static final j kJg;
-  public static final j kJh;
-  public static final j kJi;
+  public static final j lNA;
+  public static final j lNB;
+  public static final j lNC;
+  public static final j lND;
+  public static final j lNE;
+  public static final j lNF;
+  public static final j lNG;
+  public static final j lNH;
+  public static final j lNI;
+  public static final j lNJ;
+  public static final j lNK;
+  public static final j lNL;
+  public static final j lNM;
+  public static final j lNN;
+  public static final j lNu;
+  public static final j lNv;
+  public static final j lNw;
+  public static final j lNx;
+  public static final j lNy;
+  public static final j lNz;
   public int errCode;
   public String errMsg;
-  public final Object kJj;
+  public final Object lNO;
   
   static
   {
     AppMethodBeat.i(144596);
-    kIP = new j(0, "");
-    kIQ = new j(-1, "fail:internal error");
-    kIR = new j(10000, "fail:not init");
-    kIS = new j(10001, "fail:not available");
-    kIT = new j(10002, "fail:no device");
-    kIU = new j(10003, "fail:connection fail");
-    kIV = new j(10004, "fail:no service");
-    kIW = new j(10005, "fail:no characteristic");
-    kIX = new j(10006, "fail:no connection");
-    kIY = new j(10007, "fail:property not support");
-    kIZ = new j(10008, "fail:system error");
-    kJa = new j(10009, "fail:system not support");
-    kJb = new j(10008, "fail:no descriptor");
-    kJc = new j(10008, "fail:fail to set descriptor");
-    kJd = new j(10008, "fail:fail to write descriptor");
-    kJe = new j(10012, "fail:operate time out");
-    kJf = new j(-1, "fail:already connect");
-    kJg = new j(10013, "fail:invalid data");
-    kJh = new j(10008, "fail:not found service");
-    kJi = new j(10014, "fail:need pin");
+    lNu = new j(0, "");
+    lNv = new j(-1, "fail:internal error");
+    lNw = new j(10000, "fail:not init");
+    lNx = new j(10001, "fail:not available");
+    lNy = new j(10002, "fail:no device");
+    lNz = new j(10003, "fail:connection fail");
+    lNA = new j(10004, "fail:no service");
+    lNB = new j(10005, "fail:no characteristic");
+    lNC = new j(10006, "fail:no connection");
+    lND = new j(10007, "fail:property not support");
+    lNE = new j(10008, "fail:system error");
+    lNF = new j(10009, "fail:system not support");
+    lNG = new j(10008, "fail:no descriptor");
+    lNH = new j(10008, "fail:fail to set descriptor");
+    lNI = new j(10008, "fail:fail to write descriptor");
+    lNJ = new j(10012, "fail:operate time out");
+    lNK = new j(-1, "fail:already connect");
+    lNL = new j(10013, "fail:invalid data");
+    lNM = new j(10008, "fail:not found service");
+    lNN = new j(10014, "fail:need pin");
     AppMethodBeat.o(144596);
   }
   
@@ -58,17 +58,17 @@ public final class j
   {
     this.errCode = paramInt;
     this.errMsg = paramString;
-    this.kJj = null;
+    this.lNO = null;
   }
   
   private j(String paramString, Object paramObject)
   {
     this.errCode = 0;
     this.errMsg = paramString;
-    this.kJj = paramObject;
+    this.lNO = paramObject;
   }
   
-  public static j cw(Object paramObject)
+  public static j cF(Object paramObject)
   {
     AppMethodBeat.i(175631);
     paramObject = new j("", paramObject);
@@ -79,14 +79,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(144595);
-    String str = "Result{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + ", retObj=" + this.kJj + '}';
+    String str = "Result{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + ", retObj=" + this.lNO + '}';
     AppMethodBeat.o(144595);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j
  * JD-Core Version:    0.7.0.1
  */

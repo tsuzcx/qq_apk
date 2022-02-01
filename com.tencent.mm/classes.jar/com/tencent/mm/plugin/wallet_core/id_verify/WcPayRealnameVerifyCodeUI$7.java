@@ -6,7 +6,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class WcPayRealnameVerifyCodeUI$7
   implements View.OnClickListener
@@ -17,19 +17,19 @@ final class WcPayRealnameVerifyCodeUI$7
   {
     AppMethodBeat.i(174463);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ae.d("MicroMsg.WcPayRealNameVerifyCodeUI", "click phone code layout");
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    Log.d("MicroMsg.WcPayRealNameVerifyCodeUI", "click phone code layout");
     paramView = new Intent();
-    paramView.setClassName(this.DiL.getContext(), "com.tencent.mm.ui.tools.CountryCodeUI");
-    this.DiL.startActivityForResult(paramView, 1);
+    paramView.setClassName(this.HSe.getContext(), "com.tencent.mm.ui.tools.CountryCodeUI");
+    this.HSe.startActivityForResult(paramView, 1);
     a.a(this, "com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(174463);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.WcPayRealnameVerifyCodeUI.7
  * JD-Core Version:    0.7.0.1
  */

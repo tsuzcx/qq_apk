@@ -2,19 +2,27 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class dn
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEC = "payMsgId".hashCode();
-  private static final int eEF = "msgId".hashCode();
+  private static final int fLA = "championMotto".hashCode();
+  private static final int fLz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEB = true;
-  private boolean eEy = true;
-  public long field_msgId;
-  public String field_payMsgId;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetusername = true;
+  private boolean fLx = true;
+  private boolean fLy = true;
+  public String field_championMotto;
+  public String field_championUrl;
+  public String field_username;
+  
+  static
+  {
+    fLz = "championUrl".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +37,21 @@ public abstract class dn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEC != k) {
-        break label65;
+      if (username_HASHCODE != k) {
+        break label60;
       }
-      this.field_payMsgId = paramCursor.getString(i);
-      this.eEy = true;
+      this.field_username = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eEF == k) {
-        this.field_msgId = paramCursor.getLong(i);
+      label60:
+      if (fLz == k) {
+        this.field_championUrl = paramCursor.getString(i);
+      } else if (fLA == k) {
+        this.field_championMotto = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +61,14 @@ public abstract class dn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eEy) {
-      localContentValues.put("payMsgId", this.field_payMsgId);
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eEB) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.fLx) {
+      localContentValues.put("championUrl", this.field_championUrl);
+    }
+    if (this.fLy) {
+      localContentValues.put("championMotto", this.field_championMotto);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +78,7 @@ public abstract class dn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dn
  * JD-Core Version:    0.7.0.1
  */

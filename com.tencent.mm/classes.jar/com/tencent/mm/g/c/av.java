@@ -2,34 +2,34 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.k.a.a.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import java.io.IOException;
 
 public abstract class av
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFO = "createTime".hashCode();
-  private static final int eHv = "size".hashCode();
-  private static final int eIK = "modifyTime".hashCode();
-  private static final int eQg = "deleteTime".hashCode();
-  private static final int eQh = "id".hashCode();
-  private static final int eQi = "saveTime".hashCode();
-  private static final int eQj = "flags".hashCode();
+  private static final int ftE = "lastPushSeq".hashCode();
+  private static final int ftF = "lastLocalSeq".hashCode();
+  private static final int ftG = "lastPushCreateTime".hashCode();
+  private static final int ftH = "lastLocalCreateTime".hashCode();
+  private static final int ftI = "seqBlockInfo".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFr = true;
-  private boolean eHt = true;
-  private boolean eIo = true;
-  private boolean eQc = true;
-  private boolean eQd = true;
-  private boolean eQe = true;
-  private boolean eQf = true;
-  public long field_createTime;
-  public long field_deleteTime;
-  public long field_flags;
-  public String field_id;
-  public long field_modifyTime;
-  public long field_saveTime;
-  public long field_size;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetusername = true;
+  public long field_lastLocalCreateTime;
+  public long field_lastLocalSeq;
+  public long field_lastPushCreateTime;
+  public long field_lastPushSeq;
+  public d field_seqBlockInfo;
+  public String field_username;
+  private boolean ftA = true;
+  private boolean ftB = true;
+  private boolean ftC = true;
+  private boolean ftD = true;
+  private boolean ftz = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -37,36 +37,46 @@ public abstract class av
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFO != k) {
-        break label60;
+      if (username_HASHCODE != k) {
+        break label65;
       }
-      this.field_createTime = paramCursor.getLong(i);
+      this.field_username = paramCursor.getString(i);
+      this.__hadSetusername = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eIK == k) {
-        this.field_modifyTime = paramCursor.getLong(i);
-      } else if (eQg == k) {
-        this.field_deleteTime = paramCursor.getLong(i);
-      } else if (eQh == k) {
-        this.field_id = paramCursor.getString(i);
-      } else if (eQi == k) {
-        this.field_saveTime = paramCursor.getLong(i);
-      } else if (eHv == k) {
-        this.field_size = paramCursor.getLong(i);
-      } else if (eQj == k) {
-        this.field_flags = paramCursor.getLong(i);
+      label65:
+      if (ftE == k) {
+        this.field_lastPushSeq = paramCursor.getLong(i);
+      } else if (ftF == k) {
+        this.field_lastLocalSeq = paramCursor.getLong(i);
+      } else if (ftG == k) {
+        this.field_lastPushCreateTime = paramCursor.getLong(i);
+      } else if (ftH == k) {
+        this.field_lastLocalCreateTime = paramCursor.getLong(i);
+      } else if (ftI == k) {
+        try
+        {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
+          }
+          this.field_seqBlockInfo = ((d)new d().parseFrom(arrayOfByte));
+        }
+        catch (IOException localIOException)
+        {
+          Log.e("MicroMsg.SDK.BaseChatroomMsgSeq", localIOException.getMessage());
+        }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -76,34 +86,40 @@ public abstract class av
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFr) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.field_username == null) {
+      this.field_username = "";
     }
-    if (this.eIo) {
-      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eQc) {
-      localContentValues.put("deleteTime", Long.valueOf(this.field_deleteTime));
+    if (this.ftz) {
+      localContentValues.put("lastPushSeq", Long.valueOf(this.field_lastPushSeq));
     }
-    if (this.field_id == null) {
-      this.field_id = "";
+    if (this.ftA) {
+      localContentValues.put("lastLocalSeq", Long.valueOf(this.field_lastLocalSeq));
     }
-    if (this.eQd) {
-      localContentValues.put("id", this.field_id);
+    if (this.ftB) {
+      localContentValues.put("lastPushCreateTime", Long.valueOf(this.field_lastPushCreateTime));
     }
-    if (this.eQe) {
-      localContentValues.put("saveTime", Long.valueOf(this.field_saveTime));
+    if (this.ftC) {
+      localContentValues.put("lastLocalCreateTime", Long.valueOf(this.field_lastLocalCreateTime));
     }
-    if (this.eHt) {
-      localContentValues.put("size", Long.valueOf(this.field_size));
+    if ((this.ftD) && (this.field_seqBlockInfo != null)) {}
+    try
+    {
+      localContentValues.put("seqBlockInfo", this.field_seqBlockInfo.toByteArray());
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.eQf) {
-      localContentValues.put("flags", Long.valueOf(this.field_flags));
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.SDK.BaseChatroomMsgSeq", localIOException.getMessage());
+      }
     }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 

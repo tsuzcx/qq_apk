@@ -1,155 +1,152 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hm;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.storage.b;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM.b;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM.e;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.compatible.util.f.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.s;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.a.j;
+import kotlin.b.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.o;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderLbsLogic;", "", "()V", "TAG", "", "checkLocationBeforeCgi", "", "noPermission", "Lkotlin/Function0;", "cacheInvalid", "cacheValid", "checkLocationPermission", "", "requestLocationPermission", "activity", "Lcom/tencent/mm/ui/MMActivity;", "syncWaitLbs", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "", "path", "", "name", "maxSize", "", "markNoMedia", "", "enableClear", "(Ljava/lang/String;Ljava/lang/String;JZZ)V", "TAG", "getEnableClear", "()Z", "getMarkNoMedia", "getMaxSize", "()J", "getName", "()Ljava/lang/String;", "getPath", "dumpCacheDir", "Lkotlin/Pair;", "initFolder", "", "isNoMedia", "plugin-finder_release"})
 public final class i
 {
-  private static final String TAG = "Finder.FinderLbsLogic";
-  public static final i sWy;
+  private final String TAG;
+  final long maxSize;
+  final String name;
+  public final String path;
+  private final boolean vVx;
+  final boolean vVy;
   
-  static
+  public i(String paramString1, String paramString2, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(205096);
-    sWy = new i();
-    TAG = "Finder.FinderLbsLogic";
-    AppMethodBeat.o(205096);
+    AppMethodBeat.i(167885);
+    this.path = paramString1;
+    this.name = paramString2;
+    this.maxSize = paramLong;
+    this.vVx = paramBoolean1;
+    this.vVy = paramBoolean2;
+    this.TAG = "Finder.FinderFolder";
+    AppMethodBeat.o(167885);
   }
   
-  public static void a(d.g.a.a<z> parama1, d.g.a.a<z> parama2, d.g.a.a<z> parama3)
+  private static boolean awg(String paramString)
   {
-    AppMethodBeat.i(205092);
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KEX;
-    p.g(com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class), "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    if (!FinderGlobalLocationVM.cQK())
+    AppMethodBeat.i(253394);
+    if (p.j(".nomedia", paramString))
     {
-      parama1.invoke();
-      AppMethodBeat.o(205092);
-      return;
+      AppMethodBeat.o(253394);
+      return true;
     }
-    long l1 = ch.aDa();
-    long l2 = FinderGlobalLocationVM.cQM();
-    parama1 = b.sHP;
-    if (l1 - l2 < b.cIv())
-    {
-      parama3.invoke();
-      AppMethodBeat.o(205092);
-      return;
+    AppMethodBeat.o(253394);
+    return false;
+  }
+  
+  public final void dBE()
+  {
+    AppMethodBeat.i(167883);
+    s.boN(this.path);
+    if (this.vVx) {
+      s.bpc(this.path);
     }
-    parama2.invoke();
-    AppMethodBeat.o(205092);
+    AppMethodBeat.o(167883);
   }
   
-  public static boolean cNN()
+  public final o<String, Long> dBF()
   {
-    AppMethodBeat.i(205093);
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KEX;
-    p.g(com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class), "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    boolean bool = FinderGlobalLocationVM.cQK();
-    AppMethodBeat.o(205093);
-    return bool;
-  }
-  
-  public static boolean cNO()
-  {
-    AppMethodBeat.i(205095);
-    try
+    AppMethodBeat.i(167884);
+    c localc = new c("dumpCacheDir");
+    Object localObject1 = this.path;
+    Log.i(this.TAG, "dumpCacheDir cache ".concat(String.valueOf(localObject1)));
+    localObject1 = s.dC((String)localObject1, true);
+    long l1;
+    long l2;
+    Object localObject2;
+    int i;
+    if (localObject1 != null)
     {
-      synchronized (new Object())
+      localObject1 = aa.c((Iterable)localObject1);
+      if ((localObject1 != null) && (((List)localObject1).size() > 1)) {
+        j.a((List)localObject1, (Comparator)new a());
+      }
+      l1 = 0L;
+      l2 = l1;
+      if (localObject1 == null) {
+        break label211;
+      }
+      localObject2 = (Iterable)localObject1;
+      i = 0;
+      localObject2 = ((Iterable)localObject2).iterator();
+    }
+    for (;;)
+    {
+      l2 = l1;
+      int j;
+      if (((Iterator)localObject2).hasNext())
       {
-        ae.i(TAG, "start syncWaitLbs");
-        new a(???).alive();
-        Object localObject2 = com.tencent.mm.ui.component.a.KEX;
-        localObject2 = com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class);
-        p.g(localObject2, "UICProvider.of(PluginFin…alLocationVM::class.java)");
-        localObject2 = (FinderGlobalLocationVM)localObject2;
-        if (!FinderGlobalLocationVM.cQK()) {
-          ae.w("Finder.GlobalLocationVM", "[requestLocation] without perssion.");
+        Object localObject3 = ((Iterator)localObject2).next();
+        j = i + 1;
+        if (i < 0) {
+          j.hxH();
         }
-        for (int i = 0; i != 0; i = 1)
+        localObject3 = (e)localObject3;
+        l2 = l1;
+        if (localObject3 != null)
         {
-          ae.i(TAG, "wait syncWaitLbs");
-          localObject2 = b.sHP;
-          ???.wait(b.cIw());
-          ae.i(TAG, "syncWaitLbs ok");
-          AppMethodBeat.o(205095);
-          return true;
-          ae.i("Finder.GlobalLocationVM", "[requestLocation]...");
-          com.tencent.mm.ac.c.b(null, (d.g.a.a)new FinderGlobalLocationVM.b((FinderGlobalLocationVM)localObject2));
+          String str = ((e)localObject3).name;
+          p.g(str, "fileEntry.name");
+          if (awg(str)) {
+            break label336;
+          }
+          l2 = l1 + ((e)localObject3).size;
         }
-        ae.i(TAG, "syncWaitLbs no permission");
-        AppMethodBeat.o(205095);
-        return false;
+        i = j;
+        l1 = l2;
+        continue;
+        localObject1 = null;
+        break;
       }
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      ae.printErrStackTrace(TAG, localThrowable, "syncWaitLbs exception", new Object[0]);
-      AppMethodBeat.o(205095);
-    }
-  }
-  
-  public static void g(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(205094);
-    p.h(paramMMActivity, "activity");
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KEX;
-    p.g(com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class), "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    p.h(paramMMActivity, "activity");
-    if ((Build.VERSION.SDK_INT > 23) && (!paramMMActivity.shouldShowRequestPermissionRationale("android.permission.ACCESS_COARSE_LOCATION")))
-    {
-      h.a((Context)paramMMActivity, paramMMActivity.getString(2131761869), paramMMActivity.getString(2131761885), paramMMActivity.getString(2131760598), paramMMActivity.getString(2131755691), false, (DialogInterface.OnClickListener)new FinderGlobalLocationVM.e(paramMMActivity), (DialogInterface.OnClickListener)new FinderGlobalLocationVM.f(paramMMActivity));
-      AppMethodBeat.o(205094);
-      return;
-    }
-    FinderGlobalLocationVM.h(paramMMActivity);
-    AppMethodBeat.o(205094);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/utils/FinderLbsLogic$syncWaitLbs$1$listener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FinderLocationRefreshEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class a
-    extends com.tencent.mm.sdk.b.c<hm>
-  {
-    a(Object paramObject) {}
-    
-    private boolean cNQ()
-    {
-      AppMethodBeat.i(205090);
-      dead();
-      synchronized (this.sWz)
+      label211:
+      localObject2 = new StringBuilder("dump ").append(this.name).append(" fileCounts ");
+      if (localObject1 != null) {}
+      for (localObject1 = Integer.valueOf(((List)localObject1).size());; localObject1 = null)
       {
-        Object localObject2 = i.sWy;
-        ae.i(i.cNP(), "notify syncWaitLbs");
-        this.sWz.notifyAll();
-        localObject2 = z.Nhr;
-        AppMethodBeat.o(205090);
-        return true;
+        localObject1 = localObject1 + ", cost: " + localc.hvh.apr() + "ms, totalSize " + Util.getSizeKB(l2) + " \n";
+        Log.i(this.TAG, (String)localObject1);
+        localObject1 = new o(localObject1, Long.valueOf(l2));
+        AppMethodBeat.o(167884);
+        return localObject1;
       }
+      label336:
+      i = j;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  public static final class a<T>
+    implements Comparator<T>
+  {
+    public final int compare(T paramT1, T paramT2)
+    {
+      AppMethodBeat.i(167882);
+      int i = a.a((Comparable)Long.valueOf(((e)paramT1).RbI), (Comparable)Long.valueOf(((e)paramT2).RbI));
+      AppMethodBeat.o(167882);
+      return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.i
  * JD-Core Version:    0.7.0.1
  */

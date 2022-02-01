@@ -1,42 +1,20 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.l;
-import d.z;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/InvokeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/IncompleteStateBox;", "", "state", "Lkotlinx/coroutines/Incomplete;", "(Lkotlinx/coroutines/Incomplete;)V", "kotlinx-coroutines-core"})
 final class bq
-  extends bu<br>
 {
-  private final b<Throwable, z> kFj;
+  public final bp TUM;
   
-  public bq(br parambr, b<? super Throwable, z> paramb)
+  public bq(bp parambp)
   {
-    super(parambr);
-    AppMethodBeat.i(118058);
-    this.kFj = paramb;
-    AppMethodBeat.o(118058);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118057);
-    String str = "InvokeOnCompletion[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
-    AppMethodBeat.o(118057);
-    return str;
-  }
-  
-  public final void x(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118055);
-    this.kFj.invoke(paramThrowable);
-    AppMethodBeat.o(118055);
+    this.TUM = parambp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.bq
  * JD-Core Version:    0.7.0.1
  */

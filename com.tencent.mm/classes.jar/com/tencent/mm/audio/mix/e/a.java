@@ -1,52 +1,127 @@
 package com.tencent.mm.audio.mix.e;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
-public final class a
-  extends f
+public class a
+  implements f
 {
-  protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
+  Object dup;
+  public volatile LinkedList<String> dvR;
+  volatile ArrayList<String> dvS;
+  public f.a dvT;
+  public volatile HashMap<String, c> dvb;
+  
+  public a()
   {
-    AppMethodBeat.i(136834);
-    int j = 0;
-    if (j < paramInt2)
+    AppMethodBeat.i(198113);
+    this.dvb = new HashMap();
+    this.dvR = new LinkedList();
+    this.dvS = new ArrayList();
+    this.dup = new Object();
+    AppMethodBeat.o(198113);
+  }
+  
+  public final boolean a(com.tencent.mm.ai.b paramb)
+  {
+    AppMethodBeat.i(198114);
+    com.tencent.mm.audio.mix.i.b.i("MicroMsg.Audio.AudioDownloadMgr", "startDownload");
+    if (paramb == null)
     {
-      int k = 0;
-      float f2 = 0.0F;
-      float f3;
-      for (float f1 = 0.0F; k < paramInt1; f1 = f3 + f1)
+      com.tencent.mm.audio.mix.i.b.e("MicroMsg.Audio.AudioDownloadMgr", "param is null");
+      AppMethodBeat.o(198114);
+      return false;
+    }
+    if (TextUtils.isEmpty(paramb.dvn))
+    {
+      com.tencent.mm.audio.mix.i.b.e("MicroMsg.Audio.AudioDownloadMgr", "srcUrl is null");
+      AppMethodBeat.o(198114);
+      return false;
+    }
+    if (this.dvS.contains(paramb.dvn))
+    {
+      com.tencent.mm.audio.mix.i.b.e("MicroMsg.Audio.AudioDownloadMgr", "srcUrl:%s is download finish", new Object[] { paramb.dvn });
+      AppMethodBeat.o(198114);
+      return false;
+    }
+    if (this.dvb.containsKey(paramb.dvn))
+    {
+      com.tencent.mm.audio.mix.i.b.e("MicroMsg.Audio.AudioDownloadMgr", "task is exit!");
+      AppMethodBeat.o(198114);
+      return true;
+    }
+    com.tencent.mm.audio.mix.i.b.i("MicroMsg.Audio.AudioDownloadMgr", "download src:%s, audioId:%s", new Object[] { paramb.dvn, paramb.dtX });
+    c localc = new c(new b(new e()
+    {
+      public final void c(com.tencent.mm.ai.b paramAnonymousb)
       {
-        f2 = (float)(f2 + Math.pow(this.dfB[k][j], 2.0D) * Math.signum(this.dfB[k][j]));
-        f3 = Math.abs(this.dfB[k][j]);
-        k += 1;
-      }
-      if (f1 == 0.0F)
-      {
-        k = 0;
-        label111:
-        localObject = this.dfE;
-        if (f1 != 0.0F) {
-          break label154;
+        AppMethodBeat.i(198111);
+        String str = "";
+        Object localObject = a.this.dup;
+        if (paramAnonymousb != null) {}
+        try
+        {
+          a.this.dvb.remove(paramAnonymousb.dvn);
+          str = paramAnonymousb.dvn;
+          a.this.dvS.add(paramAnonymousb.dvn);
+          com.tencent.mm.audio.mix.i.b.i("MicroMsg.Audio.AudioDownloadMgr", "download finish, src:%s", new Object[] { str });
+          if (a.this.dvT != null) {
+            a.this.dvT.e(paramAnonymousb);
+          }
+          AppMethodBeat.o(198111);
+          return;
+        }
+        finally
+        {
+          AppMethodBeat.o(198111);
         }
       }
-      label154:
-      for (int i = 0;; i = hL(k))
+      
+      public final void d(com.tencent.mm.ai.b paramAnonymousb)
       {
-        localObject[j] = i;
-        j += 1;
-        break;
-        k = (int)(f2 / f1);
-        break label111;
+        AppMethodBeat.i(198112);
+        String str = "";
+        Object localObject = a.this.dup;
+        if (paramAnonymousb != null) {}
+        try
+        {
+          a.this.dvb.remove(paramAnonymousb.dvn);
+          str = paramAnonymousb.dvn;
+          com.tencent.mm.audio.mix.i.b.e("MicroMsg.Audio.AudioDownloadMgr", "download fail, src:%s", new Object[] { str });
+          AppMethodBeat.o(198112);
+          return;
+        }
+        finally
+        {
+          AppMethodBeat.o(198112);
+        }
       }
+    }), paramb.dtX);
+    localc.b(b(paramb));
+    d.a(localc);
+    synchronized (this.dup)
+    {
+      this.dvb.put(paramb.dvn, localc);
+      this.dvR.add(paramb.dvn);
+      AppMethodBeat.o(198114);
+      return true;
     }
-    Object localObject = cg(paramInt3, paramInt2);
-    AppMethodBeat.o(136834);
-    return localObject;
+  }
+  
+  protected com.tencent.mm.audio.mix.h.c b(com.tencent.mm.ai.b paramb)
+  {
+    AppMethodBeat.i(198115);
+    paramb = new com.tencent.mm.audio.mix.h.b();
+    AppMethodBeat.o(198115);
+    return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.a
  * JD-Core Version:    0.7.0.1
  */

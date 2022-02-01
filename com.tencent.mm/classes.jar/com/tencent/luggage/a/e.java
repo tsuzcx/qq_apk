@@ -1,7 +1,7 @@
 package com.tencent.luggage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -13,21 +13,21 @@ import java.util.Map;
 
 public final class e
 {
-  private static LinkedHashMap<String, c> cgk;
-  private static Map<Class<? extends d>, Object> cgl;
+  private static LinkedHashMap<String, c> csf;
+  private static Map<Class<? extends d>, Object> csg;
   
   static
   {
     AppMethodBeat.i(140311);
-    cgk = new LinkedHashMap();
+    csf = new LinkedHashMap();
     a locala = new a();
-    ae.i("Luggage.Luggage", "plugin:[%s] installed", new Object[] { locala.getName() });
-    cgk.put(locala.getName(), locala);
-    cgl = new HashMap();
+    Log.i("Luggage.Luggage", "plugin:[%s] installed", new Object[] { locala.getName() });
+    csf.put(locala.getName(), locala);
+    csg = new HashMap();
     AppMethodBeat.o(140311);
   }
   
-  public static <T extends b> T K(Class<T> paramClass)
+  public static <T extends b> T M(Class<T> paramClass)
   {
     AppMethodBeat.i(140305);
     if (paramClass == null)
@@ -35,62 +35,62 @@ public final class e
       AppMethodBeat.o(140305);
       return null;
     }
-    ListIterator localListIterator = new ArrayList(cgk.values()).listIterator(cgk.size());
+    ListIterator localListIterator = new ArrayList(csf.values()).listIterator(csf.size());
     while (localListIterator.hasPrevious())
     {
       c localc = (c)localListIterator.previous();
-      if ((localc != null) && (localc.BF() != null) && (localc.BF().get(paramClass) != null))
+      if ((localc != null) && (localc.KU() != null) && (localc.KU().get(paramClass) != null))
       {
-        paramClass = (b)localc.BF().get(paramClass);
+        paramClass = (b)localc.KU().get(paramClass);
         AppMethodBeat.o(140305);
         return paramClass;
       }
     }
-    ae.w("Luggage.Luggage", "no customize found for [%s]", new Object[] { paramClass.getCanonicalName() });
+    Log.w("Luggage.Luggage", "no customize found for [%s]", new Object[] { paramClass.getCanonicalName() });
     AppMethodBeat.o(140305);
     return null;
   }
   
-  public static <T extends d> T L(Class<T> paramClass)
+  public static <T extends d> T N(Class<T> paramClass)
   {
     AppMethodBeat.i(140308);
-    paramClass = M(paramClass);
+    paramClass = O(paramClass);
     AppMethodBeat.o(140308);
     return paramClass;
   }
   
-  public static <T extends d> T M(Class<T> paramClass)
+  public static <T extends d> T O(Class<T> paramClass)
   {
     AppMethodBeat.i(140309);
     if (paramClass == null)
     {
-      paramClass = N(paramClass);
+      paramClass = P(paramClass);
       AppMethodBeat.o(140309);
       return paramClass;
     }
-    ListIterator localListIterator = new ArrayList(cgk.values()).listIterator(cgk.size());
+    ListIterator localListIterator = new ArrayList(csf.values()).listIterator(csf.size());
     while (localListIterator.hasPrevious())
     {
       c localc = (c)localListIterator.previous();
-      if ((localc != null) && (localc.BG() != null) && (localc.BG().get(paramClass) != null))
+      if ((localc != null) && (localc.KV() != null) && (localc.KV().get(paramClass) != null))
       {
-        paramClass = (d)localc.BG().get(paramClass);
+        paramClass = (d)localc.KV().get(paramClass);
         AppMethodBeat.o(140309);
         return paramClass;
       }
     }
-    ae.w("Luggage.Luggage", "no profiler found for [%s], genDummy[%b]", new Object[] { paramClass.getCanonicalName(), Boolean.TRUE });
-    paramClass = N(paramClass);
+    Log.w("Luggage.Luggage", "no profiler found for [%s], genDummy[%b]", new Object[] { paramClass.getCanonicalName(), Boolean.TRUE });
+    paramClass = P(paramClass);
     AppMethodBeat.o(140309);
     return paramClass;
   }
   
-  private static <T extends d> T N(Class<T> paramClass)
+  private static <T extends d> T P(Class<T> paramClass)
   {
     AppMethodBeat.i(140310);
-    if (cgl.get(paramClass) != null)
+    if (csg.get(paramClass) != null)
     {
-      paramClass = (d)cgl.get(paramClass);
+      paramClass = (d)csg.get(paramClass);
       AppMethodBeat.o(140310);
       return paramClass;
     }
@@ -102,7 +102,7 @@ public final class e
       }
     };
     localObject = (d)Proxy.newProxyInstance(d.class.getClassLoader(), new Class[] { paramClass }, (InvocationHandler)localObject);
-    cgl.put(paramClass, localObject);
+    csg.put(paramClass, localObject);
     AppMethodBeat.o(140310);
     return localObject;
   }
@@ -115,7 +115,7 @@ public final class e
       AppMethodBeat.o(140306);
       return;
     }
-    ((c)cgk.get("luggage-core")).BF().put(paramClass, paramT);
+    ((c)csf.get("luggage-core")).KU().put(paramClass, paramT);
     AppMethodBeat.o(140306);
   }
   
@@ -127,13 +127,13 @@ public final class e
       AppMethodBeat.o(140307);
       return;
     }
-    ((c)cgk.get("luggage-core")).BG().put(paramClass, paramT);
+    ((c)csf.get("luggage-core")).KV().put(paramClass, paramT);
     AppMethodBeat.o(140307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.a.e
  * JD-Core Version:    0.7.0.1
  */

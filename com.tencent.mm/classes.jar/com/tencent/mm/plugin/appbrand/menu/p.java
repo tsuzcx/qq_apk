@@ -1,33 +1,42 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.wework.api.IWWAPI;
-import com.tencent.wework.api.WWAPIFactory;
+import com.tencent.mm.plugin.appbrand.page.ag;
 
 public final class p
-  extends a<ad>
+  extends a<ag>
 {
-  public p()
+  p()
   {
-    super(s.lXL.ordinal());
-    AppMethodBeat.i(222824);
-    AppMethodBeat.o(222824);
+    super(u.neZ.ordinal());
+    AppMethodBeat.i(47660);
+    AppMethodBeat.o(47660);
   }
   
-  public static boolean dK(Context paramContext)
+  public static boolean g(ag paramag)
   {
-    AppMethodBeat.i(222825);
-    boolean bool = WWAPIFactory.lz(paramContext).geD();
-    AppMethodBeat.o(222825);
-    return bool;
+    AppMethodBeat.i(227171);
+    if (!paramag.yK(u.neZ.ordinal()).neT)
+    {
+      AppMethodBeat.o(227171);
+      return true;
+    }
+    AppMethodBeat.o(227171);
+    return false;
+  }
+  
+  public static final class a
+    extends s
+  {
+    private static final int CTRL_INDEX = 76;
+    public static final String NAME = "onShareTimeline";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.p
  * JD-Core Version:    0.7.0.1
  */

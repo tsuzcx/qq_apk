@@ -7,17 +7,17 @@ import com.tencent.mm.av.a.d.a;
 public final class g
   implements p
 {
-  private a<String, Integer> igL;
+  private a<String, Integer> jbG;
   
   public g()
   {
     AppMethodBeat.i(130423);
-    this.igL = new a(10);
+    this.jbG = new a(10);
     AppMethodBeat.o(130423);
   }
   
   /* Error */
-  public final boolean Gm(String paramString)
+  public final boolean OY(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -25,19 +25,19 @@ public final class g
     //   2: ldc 33
     //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 26	com/tencent/mm/av/a/b/g:igL	Lcom/tencent/mm/av/a/d/a;
+    //   8: getfield 26	com/tencent/mm/av/a/b/g:jbG	Lcom/tencent/mm/av/a/d/a;
     //   11: aload_1
-    //   12: invokevirtual 37	com/tencent/mm/av/a/d/a:aM	(Ljava/lang/Object;)Z
+    //   12: invokevirtual 37	com/tencent/mm/av/a/d/a:check	(Ljava/lang/Object;)Z
     //   15: ifeq +94 -> 109
     //   18: aload_0
-    //   19: getfield 26	com/tencent/mm/av/a/b/g:igL	Lcom/tencent/mm/av/a/d/a;
+    //   19: getfield 26	com/tencent/mm/av/a/b/g:jbG	Lcom/tencent/mm/av/a/d/a;
     //   22: aload_1
     //   23: invokevirtual 41	com/tencent/mm/av/a/d/a:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   26: checkcast 43	java/lang/Integer
     //   29: invokevirtual 47	java/lang/Integer:intValue	()I
     //   32: istore_2
     //   33: aload_0
-    //   34: getfield 26	com/tencent/mm/av/a/b/g:igL	Lcom/tencent/mm/av/a/d/a;
+    //   34: getfield 26	com/tencent/mm/av/a/b/g:jbG	Lcom/tencent/mm/av/a/d/a;
     //   37: aload_1
     //   38: iload_2
     //   39: iconst_1
@@ -73,7 +73,7 @@ public final class g
     //   90: iload_2
     //   91: invokestatic 51	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   94: aastore
-    //   95: invokestatic 64	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   95: invokestatic 64	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   98: ldc 33
     //   100: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: iconst_0
@@ -83,7 +83,7 @@ public final class g
     //   107: iload_3
     //   108: ireturn
     //   109: aload_0
-    //   110: getfield 26	com/tencent/mm/av/a/b/g:igL	Lcom/tencent/mm/av/a/d/a;
+    //   110: getfield 26	com/tencent/mm/av/a/b/g:jbG	Lcom/tencent/mm/av/a/d/a;
     //   113: aload_1
     //   114: iconst_1
     //   115: invokestatic 51	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -116,7 +116,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.a.b.g
  * JD-Core Version:    0.7.0.1
  */

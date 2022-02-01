@@ -12,27 +12,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.e;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SafeDeviceListPreference
   extends Preference
-  implements f
+  implements i
 {
   private Context context;
-  private ProgressDialog fOC;
-  d jlj;
-  private boolean jlk = false;
-  private Button jll;
-  a jlm;
-  b jln;
+  private ProgressDialog gtM;
+  d kjm;
+  private boolean kjn = false;
+  private Button kjo;
+  a kjp;
+  b kjq;
   int mode = -2;
   
   public SafeDeviceListPreference(Context paramContext)
@@ -51,19 +51,19 @@ public class SafeDeviceListPreference
     this.context = paramContext;
   }
   
-  private void aOm()
+  private void bit()
   {
     AppMethodBeat.i(125579);
-    com.tencent.mm.kernel.g.ajj().b(362, this);
+    com.tencent.mm.kernel.g.azz().b(362, this);
     AppMethodBeat.o(125579);
   }
   
   final void initView()
   {
     AppMethodBeat.i(125580);
-    if (!this.jlk)
+    if (!this.kjn)
     {
-      ae.d("MicroMsg.SafeDeviceListPreference", "has not binded");
+      Log.d("MicroMsg.SafeDeviceListPreference", "has not binded");
       AppMethodBeat.o(125580);
       return;
     }
@@ -73,28 +73,28 @@ public class SafeDeviceListPreference
     case 0: 
     default: 
       setWidgetLayoutResource(0);
-      ade(0);
+      alO(0);
       AppMethodBeat.o(125580);
       return;
     case 1: 
-      setWidgetLayoutResource(2131493690);
-      if (this.jll != null) {
-        this.jll.setOnClickListener(new SafeDeviceListPreference.3(this));
+      setWidgetLayoutResource(2131493821);
+      if (this.kjo != null) {
+        this.kjo.setOnClickListener(new SafeDeviceListPreference.3(this));
       }
-      ade(8);
+      alO(8);
       AppMethodBeat.o(125580);
       return;
     }
     setWidgetLayoutResource(0);
-    ade(0);
+    alO(0);
     AppMethodBeat.o(125580);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(125578);
-    this.jlk = true;
-    this.jll = ((Button)paramView.findViewById(2131298960));
+    this.kjn = true;
+    this.kjo = ((Button)paramView.findViewById(2131299454));
     initView();
     super.onBindView(paramView);
     AppMethodBeat.o(125578);
@@ -105,44 +105,44 @@ public class SafeDeviceListPreference
     AppMethodBeat.i(125577);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.context.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     if (localViewGroup != null)
     {
       localViewGroup.removeAllViews();
-      localLayoutInflater.inflate(2131494855, localViewGroup);
+      localLayoutInflater.inflate(2131495591, localViewGroup);
     }
     AppMethodBeat.o(125577);
     return paramViewGroup;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(125581);
-    aOm();
-    if ((this.fOC != null) && (this.fOC.isShowing()))
+    bit();
+    if ((this.gtM != null) && (this.gtM.isShowing()))
     {
-      this.fOC.dismiss();
-      this.fOC = null;
+      this.gtM.dismiss();
+      this.gtM = null;
     }
     if ((paramInt2 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.plugin.account.security.a.g.aUf().delete(this.jlj, new String[0]);
-      if (this.jln != null)
+      com.tencent.mm.plugin.account.security.a.g.boR().delete(this.kjm, new String[0]);
+      if (this.kjq != null)
       {
-        this.jln.Kr(this.mKey);
+        this.kjq.onSucceed(this.mKey);
         AppMethodBeat.o(125581);
       }
     }
     else
     {
-      if (com.tencent.mm.plugin.account.a.a.iUA.a(this.context, paramInt1, paramInt2, paramString))
+      if (com.tencent.mm.plugin.account.a.a.jRu.a(this.context, paramInt1, paramInt2, paramString))
       {
         AppMethodBeat.o(125581);
         return;
       }
-      Toast.makeText(this.context, this.context.getString(2131762756, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-      if (this.jlm != null) {
-        this.jlm.onFailed(this.jlj.field_uid);
+      Toast.makeText(this.context, this.context.getString(2131764841, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      if (this.kjp != null) {
+        this.kjp.Tp(this.kjm.field_uid);
       }
     }
     AppMethodBeat.o(125581);
@@ -150,17 +150,17 @@ public class SafeDeviceListPreference
   
   public static abstract interface a
   {
-    public abstract void onFailed(String paramString);
+    public abstract void Tp(String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract void Kr(String paramString);
+    public abstract void onSucceed(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.SafeDeviceListPreference
  * JD-Core Version:    0.7.0.1
  */

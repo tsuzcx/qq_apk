@@ -12,12 +12,12 @@ import rx.j;
 public final class m
   extends g
 {
-  public static final m Oxb;
+  public static final m UmP;
   
   static
   {
     AppMethodBeat.i(90410);
-    Oxb = new m();
+    UmP = new m();
     AppMethodBeat.o(90410);
   }
   
@@ -44,42 +44,42 @@ public final class m
     extends g.a
     implements j
   {
-    private final AtomicInteger Owl;
-    private final rx.f.a Owx;
-    final PriorityBlockingQueue<m.b> Oxc;
+    private final AtomicInteger UlZ;
+    final PriorityBlockingQueue<m.b> UmQ;
+    private final rx.f.a Uml;
     final AtomicInteger counter;
     
     a()
     {
       AppMethodBeat.i(90402);
       this.counter = new AtomicInteger();
-      this.Oxc = new PriorityBlockingQueue();
-      this.Owx = new rx.f.a();
-      this.Owl = new AtomicInteger();
+      this.UmQ = new PriorityBlockingQueue();
+      this.Uml = new rx.f.a();
+      this.UlZ = new AtomicInteger();
       AppMethodBeat.o(90402);
     }
     
     private j a(final rx.b.a parama, long paramLong)
     {
       AppMethodBeat.i(90405);
-      if (this.Owx.gDt())
+      if (this.Uml.hQB())
       {
-        parama = d.gEf();
+        parama = d.hRn();
         AppMethodBeat.o(90405);
         return parama;
       }
       parama = new m.b(parama, Long.valueOf(paramLong), this.counter.incrementAndGet());
-      this.Oxc.add(parama);
-      if (this.Owl.getAndIncrement() == 0)
+      this.UmQ.add(parama);
+      if (this.UlZ.getAndIncrement() == 0)
       {
         do
         {
-          parama = (m.b)this.Oxc.poll();
+          parama = (m.b)this.UmQ.poll();
           if (parama != null) {
-            parama.OwI.call();
+            parama.Umw.call();
           }
-        } while (this.Owl.decrementAndGet() > 0);
-        parama = d.gEf();
+        } while (this.UlZ.decrementAndGet() > 0);
+        parama = d.hRn();
         AppMethodBeat.o(90405);
         return parama;
       }
@@ -88,7 +88,7 @@ public final class m
         public final void call()
         {
           AppMethodBeat.i(90401);
-          m.a.this.Oxc.remove(parama);
+          m.a.this.UmQ.remove(parama);
           AppMethodBeat.o(90401);
         }
       });
@@ -113,17 +113,17 @@ public final class m
       return parama;
     }
     
-    public final void gDs()
+    public final void hQA()
     {
       AppMethodBeat.i(90406);
-      this.Owx.gDs();
+      this.Uml.hQA();
       AppMethodBeat.o(90406);
     }
     
-    public final boolean gDt()
+    public final boolean hQB()
     {
       AppMethodBeat.i(90407);
-      boolean bool = this.Owx.gDt();
+      boolean bool = this.Uml.hQB();
       AppMethodBeat.o(90407);
       return bool;
     }
@@ -132,14 +132,14 @@ public final class m
   static final class b
     implements Comparable<b>
   {
-    final rx.b.a OwI;
-    final Long Oxf;
+    final Long UmT;
+    final rx.b.a Umw;
     final int count;
     
     b(rx.b.a parama, Long paramLong, int paramInt)
     {
-      this.OwI = parama;
-      this.Oxf = paramLong;
+      this.Umw = parama;
+      this.UmT = paramLong;
       this.count = paramInt;
     }
   }

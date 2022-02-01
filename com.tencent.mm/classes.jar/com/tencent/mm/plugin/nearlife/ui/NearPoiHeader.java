@@ -12,8 +12,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class NearPoiHeader
   extends LinearLayout
 {
-  private TextView gXb;
-  private ImageView vQu;
+  private TextView hPW;
+  private ImageView zky;
   
   public NearPoiHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,16 +35,16 @@ public class NearPoiHeader
   private void init(Context paramContext)
   {
     AppMethodBeat.i(26623);
-    paramContext = View.inflate(paramContext, 2131494994, this);
-    this.vQu = ((ImageView)paramContext.findViewById(2131301524));
-    this.gXb = ((TextView)paramContext.findViewById(2131301407));
+    paramContext = View.inflate(paramContext, 2131495807, this);
+    this.zky = ((ImageView)paramContext.findViewById(2131303730));
+    this.hPW = ((TextView)paramContext.findViewById(2131303166));
     AppMethodBeat.o(26623);
   }
   
   public void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(26624);
-    this.gXb.setText(paramCharSequence);
+    this.hPW.setText(paramCharSequence);
     AppMethodBeat.o(26624);
   }
 }

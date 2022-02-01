@@ -8,55 +8,48 @@ import junit.framework.Assert;
 
 public abstract class a<_Callback>
 {
-  private LinkedList<b> LEk = new LinkedList();
-  protected f LEl;
-  protected d cUP;
+  private LinkedList<b> mQueue = new LinkedList();
+  protected d mScheduler;
+  protected f mSchedulerInvoker;
   
   public a()
   {
-    this(g.fSC());
+    this(g.current());
   }
   
   public a(d paramd)
   {
     Assert.assertNotNull(paramd);
-    this.cUP = paramd;
-    this.LEl = new f(paramd, null);
+    this.mScheduler = paramd;
+    this.mSchedulerInvoker = new f(paramd, null);
   }
   
-  protected final b a(b paramb)
+  public a(String paramString)
   {
-    try
+    this(g.boH(paramString));
+  }
+  
+  protected b add(b paramb)
+  {
+    if (paramb == null) {
+      paramb = null;
+    }
+    for (;;)
     {
-      this.LEk.add(paramb);
       return paramb;
-    }
-    finally
-    {
-      paramb = finally;
-      throw paramb;
-    }
-  }
-  
-  protected final void b(b paramb)
-  {
-    try
-    {
-      this.LEk.remove(paramb);
-      return;
-    }
-    finally
-    {
-      paramb = finally;
-      throw paramb;
+      try
+      {
+        this.mQueue.add(paramb);
+      }
+      finally {}
     }
   }
   
-  public final boolean contains(_Callback param_Callback)
+  public boolean contains(_Callback param_Callback)
   {
     try
     {
-      boolean bool = this.LEk.contains(new b(param_Callback, this));
+      boolean bool = this.mQueue.contains(new b(param_Callback, this));
       return bool;
     }
     finally
@@ -66,11 +59,11 @@ public abstract class a<_Callback>
     }
   }
   
-  public final LinkedList<b> fSr()
+  public LinkedList<b> getQueue()
   {
     try
     {
-      LinkedList localLinkedList = fSs();
+      LinkedList localLinkedList = getQueueImpl();
       return localLinkedList;
     }
     finally
@@ -80,16 +73,30 @@ public abstract class a<_Callback>
     }
   }
   
-  protected final LinkedList<b> fSs()
+  protected LinkedList<b> getQueueImpl()
   {
-    return new LinkedList(this.LEk);
+    return new LinkedList(this.mQueue);
   }
   
-  public final int size()
+  protected void remove(b paramb)
+  {
+    if (paramb == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        this.mQueue.remove(paramb);
+      }
+      finally {}
+    }
+  }
+  
+  public int size()
   {
     try
     {
-      int i = this.LEk.size();
+      int i = this.mQueue.size();
       return i;
     }
     finally

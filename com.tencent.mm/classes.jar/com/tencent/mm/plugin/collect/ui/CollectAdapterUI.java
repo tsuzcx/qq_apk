@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.collect.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.br.d;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -27,22 +27,22 @@ public class CollectAdapterUI
     AppMethodBeat.i(64028);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
-    g.ajS();
-    int i = ((Integer)g.ajR().ajA().get(am.a.IPF, Integer.valueOf(0))).intValue();
-    ae.i("MicroMsg.CollectAdapterUI", "walletRegion: %s", new Object[] { Integer.valueOf(i) });
+    g.aAi();
+    int i = ((Integer)g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue();
+    Log.i("MicroMsg.CollectAdapterUI", "walletRegion: %s", new Object[] { Integer.valueOf(i) });
     if (i == 8) {
-      d.b(this, "collect", ".ui.CollectHKMainUI", getIntent());
+      c.b(this, "collect", ".ui.CollectHKMainUI", getIntent());
     }
     for (;;)
     {
       finish();
       AppMethodBeat.o(64028);
       return;
-      d.b(this, "collect", ".ui.CollectMainUI", getIntent());
+      c.b(this, "collect", ".ui.CollectMainUI", getIntent());
     }
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     return false;
   }
@@ -55,7 +55,7 @@ public class CollectAdapterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectAdapterUI
  * JD-Core Version:    0.7.0.1
  */

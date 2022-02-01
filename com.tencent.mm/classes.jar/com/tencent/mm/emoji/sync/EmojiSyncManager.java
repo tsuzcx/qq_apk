@@ -6,60 +6,60 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.loader.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager;", "", "customType", "", "(I)V", "callbackQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/sync/SyncCallback;", "connectivityReceiver", "Landroid/content/BroadcastReceiver;", "getCustomType", "()I", "downloadCallback", "com/tencent/mm/emoji/sync/EmojiSyncManager$downloadCallback$1", "Lcom/tencent/mm/emoji/sync/EmojiSyncManager$downloadCallback$1;", "downloadList", "", "", "kotlin.jvm.PlatformType", "", "downloadQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/emoji/sync/EmojiDownLoadTask;", "<set-?>", "remainSize", "getRemainSize", "startNonWifi", "", "Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "syncState", "getSyncState", "()Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "totalSize", "getTotalSize", "addDownloadTask", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "checkAutoStart", "checkBroken", "checkSync", "checkSyncEmoji", "start", "withBroken", "destroy", "init", "markBroken", "md5", "registerCallback", "callback", "force", "startInternal", "stop", "unregisterCallback", "Companion", "ConnectivityReceiver", "SyncState", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager;", "", "customType", "", "(I)V", "callbackQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/sync/SyncCallback;", "connectivityReceiver", "Landroid/content/BroadcastReceiver;", "getCustomType", "()I", "downloadCallback", "com/tencent/mm/emoji/sync/EmojiSyncManager$downloadCallback$1", "Lcom/tencent/mm/emoji/sync/EmojiSyncManager$downloadCallback$1;", "downloadList", "", "", "kotlin.jvm.PlatformType", "", "downloadQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/emoji/sync/EmojiDownLoadTask;", "<set-?>", "remainSize", "getRemainSize", "startNonWifi", "", "Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "syncState", "getSyncState", "()Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "totalSize", "getTotalSize", "addDownloadTask", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "checkAutoStart", "checkBroken", "checkSync", "checkSyncEmoji", "start", "withBroken", "destroy", "init", "markBroken", "md5", "registerCallback", "callback", "force", "startInternal", "stop", "unregisterCallback", "Companion", "ConnectivityReceiver", "SyncState", "plugin-emojisdk_release"})
 public final class EmojiSyncManager
 {
-  private static long grM;
-  private static EmojiSyncManager grN;
-  private static EmojiSyncManager grO;
-  public static final a grP;
-  private BroadcastReceiver aMz;
-  public int cdl;
-  private final com.tencent.mm.loader.g.d<c> grF;
-  private final LinkedList<f> grG;
-  public b grH;
-  public final List<String> grI;
-  private boolean grJ;
-  private final d grK;
-  final int grL;
+  private static long hcX;
+  private static EmojiSyncManager hcY;
+  private static EmojiSyncManager hcZ;
+  public static final a hda;
+  private BroadcastReceiver aMq;
+  public int cnR;
+  private final com.tencent.mm.loader.g.d<c> hcQ;
+  private final LinkedList<f> hcR;
+  public b hcS;
+  public final List<String> hcT;
+  private boolean hcU;
+  private final d hcV;
+  final int hcW;
   
   static
   {
     AppMethodBeat.i(105761);
-    grP = new a((byte)0);
+    hda = new a((byte)0);
     AppMethodBeat.o(105761);
   }
   
   public EmojiSyncManager(int paramInt)
   {
     AppMethodBeat.i(105760);
-    this.grL = paramInt;
-    this.grF = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new com.tencent.mm.loader.g.a.a(2147483647), new com.tencent.mm.loader.g.a.g(1, (byte)0), 1, "EmojiSync"));
-    this.grG = new LinkedList();
-    this.grH = b.grR;
-    this.grI = Collections.synchronizedList((List)new LinkedList());
-    this.grK = new d(this);
+    this.hcW = paramInt;
+    this.hcQ = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new com.tencent.mm.loader.g.a.a(2147483647), new com.tencent.mm.loader.g.a.g(1, (byte)0), 1, "EmojiSync"));
+    this.hcR = new LinkedList();
+    this.hcS = b.hdc;
+    this.hcT = Collections.synchronizedList((List)new LinkedList());
+    this.hcV = new d(this);
     AppMethodBeat.o(105760);
   }
   
-  private final boolean ags()
+  private final boolean awi()
   {
     AppMethodBeat.i(105759);
-    if ((this.grJ) || (az.isWifi(ak.getContext())) || (a.agw()))
+    if ((this.hcU) || (NetStatusUtil.isWifi(MMApplicationContext.getContext())) || (a.awm()))
     {
       AppMethodBeat.o(105759);
       return true;
@@ -68,10 +68,10 @@ public final class EmojiSyncManager
     return false;
   }
   
-  public static final boolean agw()
+  public static final boolean awm()
   {
     AppMethodBeat.i(177055);
-    boolean bool = a.agw();
+    boolean bool = a.awm();
     AppMethodBeat.o(177055);
     return bool;
   }
@@ -80,25 +80,18 @@ public final class EmojiSyncManager
   {
     AppMethodBeat.i(105756);
     p.h(paramEmojiInfo, "emojiInfo");
-    ae.i(e.aeP(), this.grL + " addDownloadTask: " + paramEmojiInfo.Lj());
-    this.grF.b((com.tencent.mm.loader.g.c)new c(paramEmojiInfo));
+    Log.i(e.auD(), this.hcW + " addDownloadTask: " + paramEmojiInfo.getMd5());
+    this.hcQ.c((com.tencent.mm.loader.g.c)new c(paramEmojiInfo));
     AppMethodBeat.o(105756);
-  }
-  
-  public static final void ri(long paramLong)
-  {
-    AppMethodBeat.i(177054);
-    a.ri(paramLong);
-    AppMethodBeat.o(177054);
   }
   
   private final void startInternal()
   {
     AppMethodBeat.i(105758);
-    ae.i(e.aeP(), this.grL + " startInternal: " + this.grJ + ' ' + az.isWifi(ak.getContext()) + ' ' + "size is " + this.grI.size());
-    ??? = b.gla;
+    Log.i(e.auD(), this.hcW + " startInternal: " + this.hcU + ' ' + NetStatusUtil.isWifi(MMApplicationContext.getContext()) + ' ' + "size is " + this.hcT.size());
+    ??? = b.gVU;
     b.clear();
-    ??? = this.grI;
+    ??? = this.hcT;
     p.g(???, "downloadList");
     synchronized ((Iterable)???)
     {
@@ -106,69 +99,76 @@ public final class EmojiSyncManager
       while (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
-        com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class);
+        com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class);
         p.g(locala, "plugin(IPluginEmoji::class.java)");
-        localObject3 = ((com.tencent.mm.plugin.emoji.b.d)locala).getProvider().acj((String)localObject3);
+        localObject3 = ((com.tencent.mm.plugin.emoji.b.d)locala).getProvider().amm((String)localObject3);
         if (localObject3 != null) {
           n((EmojiInfo)localObject3);
         }
       }
     }
-    z localz = z.Nhr;
-    this.grH = b.grS;
-    com.tencent.mm.ac.c.h((d.g.a.a)new f(this));
+    x localx = x.SXb;
+    this.hcS = b.hdd;
+    com.tencent.mm.ac.d.h((kotlin.g.a.a)new f(this));
     AppMethodBeat.o(105758);
+  }
+  
+  public static final void zl(long paramLong)
+  {
+    AppMethodBeat.i(177054);
+    a.zl(paramLong);
+    AppMethodBeat.o(177054);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(105753);
-    ae.i(e.aeP(), "destroy customType: " + this.grL);
-    this.grF.b((com.tencent.mm.loader.g.f)this.grK);
-    this.grF.clean();
-    if (this.aMz != null)
+    Log.i(e.auD(), "destroy customType: " + this.hcW);
+    this.hcQ.b((com.tencent.mm.loader.g.f)this.hcV);
+    this.hcQ.clean();
+    if (this.aMq != null)
     {
-      ak.getContext().unregisterReceiver(this.aMz);
-      this.aMz = null;
+      MMApplicationContext.getContext().unregisterReceiver(this.aMq);
+      this.aMq = null;
     }
     AppMethodBeat.o(105753);
   }
   
-  public final void dt(final boolean paramBoolean)
+  public final void eg(final boolean paramBoolean)
   {
     AppMethodBeat.i(105757);
-    if (!ak.coh())
+    if (!MMApplicationContext.isMainProcess())
     {
       AppMethodBeat.o(105757);
       return;
     }
-    ae.i(e.aeP(), this.grL + " checkSyncEmoji: true " + paramBoolean);
-    com.tencent.mm.ac.c.b("EmojiSyncManager_checkBrokenEmoji", (d.g.a.a)new c(this, paramBoolean));
+    Log.i(e.auD(), this.hcW + " checkSyncEmoji: true " + paramBoolean);
+    com.tencent.mm.ac.d.b("EmojiSyncManager_checkBrokenEmoji", (kotlin.g.a.a)new c(this, paramBoolean));
     AppMethodBeat.o(105757);
   }
   
   public final void init()
   {
     AppMethodBeat.i(105752);
-    ae.i(e.aeP(), "init customType: " + this.grL);
-    this.grF.a((com.tencent.mm.loader.g.f)this.grK);
-    this.aMz = ((BroadcastReceiver)new ConnectivityReceiver());
-    ak.getContext().registerReceiver(this.aMz, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+    Log.i(e.auD(), "init customType: " + this.hcW);
+    this.hcQ.a((com.tencent.mm.loader.g.f)this.hcV);
+    this.aMq = ((BroadcastReceiver)new ConnectivityReceiver());
+    MMApplicationContext.getContext().registerReceiver(this.aMq, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
     AppMethodBeat.o(105752);
   }
   
   public final void start(boolean paramBoolean)
   {
     AppMethodBeat.i(105754);
-    if (!ak.coh())
+    if (!MMApplicationContext.isMainProcess())
     {
       AppMethodBeat.o(105754);
       return;
     }
-    this.grJ = paramBoolean;
-    if (this.grH != b.grS)
+    this.hcU = paramBoolean;
+    if (this.hcS != b.hdd)
     {
-      List localList = this.grI;
+      List localList = this.hcT;
       p.g(localList, "downloadList");
       if (((Collection)localList).isEmpty()) {
         break label82;
@@ -177,7 +177,7 @@ public final class EmojiSyncManager
     label82:
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) && (ags())) {
+      if ((i != 0) && (awi())) {
         startInternal();
       }
       AppMethodBeat.o(105754);
@@ -188,18 +188,18 @@ public final class EmojiSyncManager
   public final void stop()
   {
     AppMethodBeat.i(105755);
-    ae.i(e.aeP(), this.grL + " stop: " + az.isWifi(ak.getContext()));
-    this.grJ = false;
-    this.grF.clean();
-    if (!this.grI.isEmpty())
+    Log.i(e.auD(), this.hcW + " stop: " + NetStatusUtil.isWifi(MMApplicationContext.getContext()));
+    this.hcU = false;
+    this.hcQ.clean();
+    if (!this.hcT.isEmpty())
     {
-      this.grH = b.grT;
-      com.tencent.mm.ac.c.h((d.g.a.a)new g(this));
+      this.hcS = b.hde;
+      com.tencent.mm.ac.d.h((kotlin.g.a.a)new g(this));
     }
     AppMethodBeat.o(105755);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$ConnectivityReceiver;", "Landroid/content/BroadcastReceiver;", "(Lcom/tencent/mm/emoji/sync/EmojiSyncManager;)V", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$ConnectivityReceiver;", "Landroid/content/BroadcastReceiver;", "(Lcom/tencent/mm/emoji/sync/EmojiSyncManager;)V", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojisdk_release"})
   public final class ConnectivityReceiver
     extends BroadcastReceiver
   {
@@ -208,33 +208,33 @@ public final class EmojiSyncManager
       AppMethodBeat.i(105738);
       p.h(paramContext, "context");
       p.h(paramIntent, "intent");
-      if (!az.isConnected(paramContext))
+      if (!NetStatusUtil.isConnected(paramContext))
       {
-        this.grQ.stop();
+        this.hdb.stop();
         AppMethodBeat.o(105738);
         return;
       }
-      if (az.isWifi(paramContext))
+      if (NetStatusUtil.isWifi(paramContext))
       {
-        this.grQ.start(false);
+        this.hdb.start(false);
         AppMethodBeat.o(105738);
         return;
       }
-      if (!EmojiSyncManager.a(this.grQ)) {
-        this.grQ.stop();
+      if (!EmojiSyncManager.a(this.hdb)) {
+        this.hdb.stop();
       }
       AppMethodBeat.o(105738);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$Companion;", "", "()V", "MaxNoWifiCount", "", "captureSyncMgr", "Lcom/tencent/mm/emoji/sync/EmojiSyncManager;", "customSyncMgr", "noWifiCount", "addNoWifiSize", "", "size", "checkNoWifiSize", "", "getCaptureSyncMgr", "getCustomSyncMgr", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$Companion;", "", "()V", "MaxNoWifiCount", "", "captureSyncMgr", "Lcom/tencent/mm/emoji/sync/EmojiSyncManager;", "customSyncMgr", "noWifiCount", "addNoWifiSize", "", "size", "checkNoWifiSize", "", "getCaptureSyncMgr", "getCustomSyncMgr", "plugin-emojisdk_release"})
   public static final class a
   {
-    public static boolean agw()
+    public static boolean awm()
     {
       AppMethodBeat.i(177053);
-      ae.i(e.aeP(), "checkNoWifiSize " + EmojiSyncManager.agt() / 1048576L + "MB");
-      if (EmojiSyncManager.agt() < 52428800L)
+      Log.i(e.auD(), "checkNoWifiSize " + EmojiSyncManager.awj() / 1048576L + "MB");
+      if (EmojiSyncManager.awj() < 52428800L)
       {
         AppMethodBeat.o(177053);
         return true;
@@ -243,10 +243,10 @@ public final class EmojiSyncManager
       return false;
     }
     
-    public static EmojiSyncManager agx()
+    public static EmojiSyncManager awn()
     {
       AppMethodBeat.i(105736);
-      EmojiSyncManager localEmojiSyncManager2 = EmojiSyncManager.agu();
+      EmojiSyncManager localEmojiSyncManager2 = EmojiSyncManager.awk();
       EmojiSyncManager localEmojiSyncManager1 = localEmojiSyncManager2;
       if (localEmojiSyncManager2 == null)
       {
@@ -257,10 +257,10 @@ public final class EmojiSyncManager
       return localEmojiSyncManager1;
     }
     
-    public static EmojiSyncManager agy()
+    public static EmojiSyncManager awo()
     {
       AppMethodBeat.i(105737);
-      EmojiSyncManager localEmojiSyncManager2 = EmojiSyncManager.agv();
+      EmojiSyncManager localEmojiSyncManager2 = EmojiSyncManager.awl();
       EmojiSyncManager localEmojiSyncManager1 = localEmojiSyncManager2;
       if (localEmojiSyncManager2 == null)
       {
@@ -271,44 +271,44 @@ public final class EmojiSyncManager
       return localEmojiSyncManager1;
     }
     
-    public static void ri(long paramLong)
+    public static void zl(long paramLong)
     {
       AppMethodBeat.i(177052);
-      ae.i(e.aeP(), "addNoWifiSize " + paramLong + ", " + EmojiSyncManager.agt());
-      if (!az.isWifi(ak.getContext())) {
-        EmojiSyncManager.rh(EmojiSyncManager.agt() + paramLong);
+      Log.i(e.auD(), "addNoWifiSize " + paramLong + ", " + EmojiSyncManager.awj());
+      if (!NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
+        EmojiSyncManager.zk(EmojiSyncManager.awj() + paramLong);
       }
       AppMethodBeat.o(177052);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "", "(Ljava/lang/String;I)V", "Init", "Syncing", "Wait", "WaitOffline", "End", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "", "(Ljava/lang/String;I)V", "Init", "Syncing", "Wait", "WaitOffline", "End", "plugin-emojisdk_release"})
   public static enum b
   {
     static
     {
       AppMethodBeat.i(105739);
       b localb1 = new b("Init", 0);
-      grR = localb1;
+      hdc = localb1;
       b localb2 = new b("Syncing", 1);
-      grS = localb2;
+      hdd = localb2;
       b localb3 = new b("Wait", 2);
-      grT = localb3;
+      hde = localb3;
       b localb4 = new b("WaitOffline", 3);
-      grU = localb4;
+      hdf = localb4;
       b localb5 = new b("End", 4);
-      grV = localb5;
-      grW = new b[] { localb1, localb2, localb3, localb4, localb5 };
+      hdg = localb5;
+      hdh = new b[] { localb1, localb2, localb3, localb4, localb5 };
       AppMethodBeat.o(105739);
     }
     
     private b() {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class c
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     c(EmojiSyncManager paramEmojiSyncManager, boolean paramBoolean)
     {
@@ -316,14 +316,14 @@ public final class EmojiSyncManager
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/emoji/sync/EmojiSyncManager$downloadCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/emoji/sync/EmojiDownLoadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/emoji/sync/EmojiSyncManager$downloadCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/emoji/sync/EmojiDownLoadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojisdk_release"})
   public static final class d
     implements com.tencent.mm.loader.g.f<c>
   {
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
     static final class a
       extends q
-      implements d.g.a.a<z>
+      implements kotlin.g.a.a<x>
     {
       a(EmojiSyncManager.d paramd)
       {
@@ -331,10 +331,10 @@ public final class EmojiSyncManager
       }
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
     static final class b
       extends q
-      implements d.g.a.a<z>
+      implements kotlin.g.a.a<x>
     {
       b(EmojiSyncManager.d paramd)
       {
@@ -343,10 +343,10 @@ public final class EmojiSyncManager
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   public static final class e
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     public e(EmojiSyncManager paramEmojiSyncManager, f paramf)
     {
@@ -354,10 +354,10 @@ public final class EmojiSyncManager
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class f
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     f(EmojiSyncManager paramEmojiSyncManager)
     {
@@ -365,10 +365,10 @@ public final class EmojiSyncManager
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class g
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     g(EmojiSyncManager paramEmojiSyncManager)
     {
@@ -376,10 +376,10 @@ public final class EmojiSyncManager
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   public static final class h
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     public h(EmojiSyncManager paramEmojiSyncManager, f paramf)
     {
@@ -389,7 +389,7 @@ public final class EmojiSyncManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.sync.EmojiSyncManager
  * JD-Core Version:    0.7.0.1
  */

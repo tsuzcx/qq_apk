@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.appbrand.game.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b.a;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigUseGlobalTimer;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSyncSurfaceDestroy;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
 public final class m
-  extends t<Boolean>
+  extends v<Boolean>
 {
-  public static final m koh;
+  public static final m lrN;
   
   static
   {
-    AppMethodBeat.i(184732);
-    koh = new m();
-    AppMethodBeat.o(184732);
+    AppMethodBeat.i(228205);
+    lrN = new m();
+    AppMethodBeat.o(228205);
   }
   
-  protected final String bhJ()
+  protected final String bCY()
   {
-    return "nodetimer";
+    return "ssd";
   }
   
-  protected final b.a bhK()
+  protected final b.a bCZ()
   {
-    return b.a.qOR;
+    return b.a.rWa;
   }
   
-  protected final boolean bhL()
+  protected final boolean bDa()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:clipChildren="false" android:clipToPadding="false" android:layout_below="@id/ao5" style="@style/go"
+<RelativeLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gq">
-        <TextView android:layout_gravity="right" android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/ao1" style="@style/gy" />
-            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/gj8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c0" style="@style/a5o" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/ao3" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/iz" android:gravity="center_vertical" android:id="@id/ala" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
-                <TextView android:id="@id/aki" android:layout_marginLeft="0.0dip" style="@style/gf" />
-                <LinearLayout android:orientation="horizontal" android:id="@id/ako" android:background="@drawable/lm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/bq">
-                    <TextView android:textSize="@dimen/jv" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center" android:id="@id/akp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="@string/cxm" android:singleLine="true" android:includeFontPadding="false" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-        <ViewStub android:layout_gravity="right" android:id="@id/gfa" android:layout="@layout/qp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:layout_marginRight="5.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/j0s" android:background="@drawable/bbl" android:paddingTop="20.0dip" android:paddingBottom="26.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="center_horizontal" android:id="@id/j0r" android:layout_width="65.0dip" android:layout_height="65.0dip" android:src="@drawable/bca" />
+        <TextView android:textSize="@dimen/l" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center" android:id="@id/j0t" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="尤达" android:singleLine="true" />
+        <TextView android:textSize="@dimen/kc" android:textColor="#ff9f9e9f" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/g_6" />
+        <TextView android:textSize="@dimen/kc" android:textColor="#ff9f9e9f" android:gravity="center" android:id="@id/j0u" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/g_7" />
     </LinearLayout>
-    <include layout="@layout/o7" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/l" android:textColor="#ff000000" android:gravity="center" android:id="@id/j0o" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="{当前群最多可容纳100人}" android:layout_below="@id/j0s" android:layout_centerHorizontal="true" />
+    <TextView android:id="@id/j0n" android:visibility="gone" android:layout_marginLeft="10.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="10.0dip" android:layout_below="@id/j0o" android:layout_centerHorizontal="true" style="@style/gh" />
+    <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/kc" android:textColor="#ff848386" android:gravity="center" android:id="@id/j0p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="{你还可增加x个群聊的最大人数}" android:lineSpacingExtra="0.0dip" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/a0a" android:gravity="center" android:id="@id/dq8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="14.0dip" android:text="@string/g_1" android:lineSpacingExtra="0.0dip" />
+    </LinearLayout>
+</RelativeLayout>

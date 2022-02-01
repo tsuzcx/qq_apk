@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/go1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/co4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/i" android:textColor="#ccf2f2f2" android:id="@id/gm9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/gni" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:layout_centerInParent="true" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/gms" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4q" />
-    <TextView android:textColor="@color/a0g" android:id="@id/go6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <include layout="@layout/a2f" />
-    <ImageView android:id="@id/glt" android:visibility="gone" android:layout_width="@dimen/a6u" android:layout_height="@dimen/a6t" android:layout_marginLeft="12.0dip" android:layout_marginTop="22.0dip" android:layout_marginBottom="22.0dip" android:src="@raw/media_preview_btn_close" android:layout_alignParentLeft="true" />
-    <RelativeLayout android:id="@id/b70" android:paddingBottom="@dimen/c_" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/a6s" android:layout_alignParentBottom="true">
-        <include android:id="@id/gmi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_alignParentBottom="true" layout="@layout/afk" />
-    </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/c1u" android:background="@drawable/b9w" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v4.view.ViewPager android:gravity="center" android:id="@id/c1v" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/c1t" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

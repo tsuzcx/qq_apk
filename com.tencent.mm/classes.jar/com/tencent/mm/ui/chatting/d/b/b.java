@@ -2,18 +2,18 @@ package com.tencent.mm.ui.chatting.d.b;
 
 import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.ui.tools.r;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.pluginsdk.ui.tools.t;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface b
-  extends ad
+  extends af
 {
-  public abstract void a(r paramr);
+  public abstract void a(t paramt);
   
-  public abstract void a(bv parambv, al paramal);
+  public abstract void a(ca paramca, al paramal);
   
-  public abstract void t(g paramg);
+  public abstract void u(g paramg);
 }
 
 

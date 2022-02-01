@@ -6,54 +6,54 @@ import com.tencent.mm.hellhoundlib.a.c;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b.a;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b.a.a;
 import com.tencent.mm.plugin.expt.hellhound.core.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
-import d.g.b.p;
-import d.l;
-import d.v;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;", "", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;)V", "launcherUIClass", "Ljava/lang/Class;", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/ui/MMFragmentActivity;", "mCallback", "mChatProxy", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatUIFragmentProxy;", "mHasScrollChanged", "", "mLastFragmentIndex", "", "mListener", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "methodInfoMap", "Ljava/util/HashMap;", "", "", "", "Landroid/util/Pair;", "callbackMMFragmentActivityWhenResume", "", "mmfActivity", "timestamp", "", "doMonitor4MMFragmentActivity", "mmfa", "doMonitorViewPagerEvent", "fragmentPauseCallback", "fa", "Landroid/support/v4/app/FragmentActivity;", "monitor", "launcherUI", "onChatAction", "msgType", "onPageScrollStateChanged", "state", "onPageSelected", "position", "onSwipEvent", "lf", "Landroid/support/v4/app/Fragment;", "unmonitor", "Companion", "MethodListener", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;", "", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;)V", "launcherUIClass", "Ljava/lang/Class;", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/ui/MMFragmentActivity;", "mCallback", "mChatProxy", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatUIFragmentProxy;", "mHasScrollChanged", "", "mLastFragmentIndex", "", "mListener", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "methodInfoMap", "Ljava/util/HashMap;", "", "", "", "Landroid/util/Pair;", "callbackMMFragmentActivityWhenResume", "", "mmfActivity", "timestamp", "", "doMonitor4MMFragmentActivity", "mmfa", "doMonitorViewPagerEvent", "fragmentPauseCallback", "fa", "Landroid/support/v4/app/FragmentActivity;", "monitor", "launcherUI", "onChatAction", "msgType", "onPageScrollStateChanged", "state", "onPageSelected", "position", "onSwipEvent", "lf", "Landroid/support/v4/app/Fragment;", "unmonitor", "Companion", "MethodListener", "plugin-expt_release"})
 public final class e
 {
-  public static final e.a qZP;
+  public static final e.a sAg;
   WeakReference<MMFragmentActivity> mActivityRef;
-  d qZI;
-  Class<?> qZJ;
-  b qZK;
-  private int qZL;
-  c qZM;
-  final HashMap<String, Map<String, List<Pair<String, String>>>> qZN;
-  private boolean qZO;
+  Class<?> sAa;
+  b sAb;
+  private int sAc;
+  c sAd;
+  final HashMap<String, Map<String, List<Pair<String, String>>>> sAe;
+  private boolean sAf;
+  d szZ;
   
   static
   {
     AppMethodBeat.i(122562);
-    qZP = new e.a((byte)0);
+    sAg = new e.a((byte)0);
     AppMethodBeat.o(122562);
   }
   
   public e(d paramd)
   {
     AppMethodBeat.i(122561);
-    this.qZN = new HashMap();
-    this.qZI = paramd;
-    this.qZM = ((c)new b());
+    this.sAe = new HashMap();
+    this.szZ = paramd;
+    this.sAd = ((c)new b());
     try
     {
-      paramd = a.qZa;
-      this.qZJ = a.a.getClass("com.tencent.mm.ui.LauncherUI");
-      this.qZK = new b(this.qZI);
+      paramd = a.szr;
+      this.sAa = a.a.getClass("com.tencent.mm.ui.LauncherUI");
+      this.sAb = new b(this.szZ);
       paramd = new ArrayList();
       paramd.add(Pair.create("onPageSelected", "(I)V"));
       paramd.add(Pair.create("onPageScrollStateChanged", "(I)V"));
       HashMap localHashMap = new HashMap();
       ((Map)localHashMap).put("android/support/v4/view/ViewPager$OnPageChangeListener", paramd);
-      ((Map)this.qZN).put("com/tencent/mm/ui/MainTabUI$TabsAdapter", localHashMap);
+      ((Map)this.sAe).put("com/tencent/mm/ui/MainTabUI$TabsAdapter", localHashMap);
       AppMethodBeat.o(122561);
       return;
     }
@@ -61,12 +61,12 @@ public final class e
     {
       for (;;)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FragmentLauncherUIMonitor", (Throwable)paramd, "FragmentLauncherUIMonitor", new Object[0]);
+        Log.printErrStackTrace("HABBYGE-MALI.FragmentLauncherUIMonitor", (Throwable)paramd, "FragmentLauncherUIMonitor", new Object[0]);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor$MethodListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;)V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor$MethodListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;)V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
   final class b
     implements c
   {
@@ -91,13 +91,13 @@ public final class e
         {
           if (i != 0)
           {
-            if (p.i(paramString2, "onPageSelected"))
+            if (p.j(paramString2, "onPageSelected"))
             {
-              paramString1 = this.qZQ;
+              paramString1 = this.sAh;
               paramString2 = paramArrayOfObject[0];
               if (paramString2 == null)
               {
-                paramString1 = new v("null cannot be cast to non-null type kotlin.Int");
+                paramString1 = new t("null cannot be cast to non-null type kotlin.Int");
                 AppMethodBeat.o(184272);
                 throw paramString1;
                 i = 0;
@@ -110,13 +110,13 @@ public final class e
               AppMethodBeat.o(184272);
               return;
             }
-            if (p.i(paramString2, "onPageScrollStateChanged"))
+            if (p.j(paramString2, "onPageScrollStateChanged"))
             {
-              paramString1 = this.qZQ;
+              paramString1 = this.sAh;
               paramString2 = paramArrayOfObject[0];
               if (paramString2 == null)
               {
-                paramString1 = new v("null cannot be cast to non-null type kotlin.Int");
+                paramString1 = new t("null cannot be cast to non-null type kotlin.Int");
                 AppMethodBeat.o(184272);
                 throw paramString1;
               }

@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.fts.a.b.b;
 import com.tencent.mm.plugin.fts.a.c.a;
 import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.g;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,22 +13,22 @@ import java.util.regex.Pattern;
 
 public final class h
 {
-  private static final a tFH;
-  public String tFC;
-  public String tFD;
-  public String[] tFE;
-  public String[] tFF;
-  public List<c> tFG;
+  private static final a wWG;
+  public String wWB;
+  public String wWC;
+  public String[] wWD;
+  public String[] wWE;
+  public List<c> wWF;
   
   static
   {
     AppMethodBeat.i(131701);
-    tFH = new a()
+    wWG = new a()
     {
-      public final String[] alu(String paramAnonymousString)
+      public final String[] ayy(String paramAnonymousString)
       {
         AppMethodBeat.i(131689);
-        paramAnonymousString = c.a.tEf.split(paramAnonymousString, 2);
+        paramAnonymousString = c.a.wVe.split(paramAnonymousString, 2);
         AppMethodBeat.o(131689);
         return paramAnonymousString;
       }
@@ -36,7 +36,7 @@ public final class h
       public final String[] split(String paramAnonymousString)
       {
         AppMethodBeat.i(131688);
-        paramAnonymousString = c.a.tEf.split(paramAnonymousString);
+        paramAnonymousString = c.a.wVe.split(paramAnonymousString);
         AppMethodBeat.o(131688);
         return paramAnonymousString;
       }
@@ -47,7 +47,7 @@ public final class h
   private h()
   {
     AppMethodBeat.i(131696);
-    this.tFG = new ArrayList();
+    this.wWF = new ArrayList();
     AppMethodBeat.o(131696);
   }
   
@@ -55,24 +55,24 @@ public final class h
   {
     AppMethodBeat.i(131700);
     h localh = new h();
-    localh.tFC = paramString;
-    localh.tFD = d.alm(paramString);
-    localh.tFE = parama.split(localh.tFD);
-    localh.tFF = parama.alu(localh.tFD);
-    paramString = localh.tFE;
+    localh.wWB = paramString;
+    localh.wWC = d.ayq(paramString);
+    localh.wWD = parama.split(localh.wWC);
+    localh.wWE = parama.ayy(localh.wWC);
+    paramString = localh.wWD;
     int j = paramString.length;
     int i = 0;
     while (i < j)
     {
       parama = paramString[i];
-      localh.tFG.add(bp(parama, paramBoolean));
+      localh.wWF.add(bD(parama, paramBoolean));
       i += 1;
     }
     AppMethodBeat.o(131700);
     return localh;
   }
   
-  private static c bp(String paramString, boolean paramBoolean)
+  private static c bD(String paramString, boolean paramBoolean)
   {
     int j = 0;
     AppMethodBeat.i(131698);
@@ -89,7 +89,7 @@ public final class h
       bool = paramBoolean;
       if (i < paramString.length())
       {
-        if (!g.B(paramString.charAt(i))) {
+        if (!g.C(paramString.charAt(i))) {
           bool = false;
         }
       }
@@ -99,7 +99,7 @@ public final class h
         if (!bool) {
           break label359;
         }
-        localObject2 = g.tEN;
+        localObject2 = g.wVM;
         localObject1 = new ArrayList();
         localObject3 = paramString.toLowerCase().toCharArray();
         i = j;
@@ -109,7 +109,7 @@ public final class h
             break label144;
           }
           j = localObject3[i];
-          if (localObject2.tGv.tGw[(j - 97)] == null) {
+          if (localObject2.wXu.wXv[(j - 97)] == null) {
             break;
           }
           ((List)localObject1).add(String.valueOf(localObject3[i]));
@@ -123,12 +123,12 @@ public final class h
     if (((List)localObject1).size() > 0)
     {
       localObject2 = new b();
-      ((b)localObject2).tFI = d.tFM;
-      ((b)localObject2).content = bu.m((List)localObject1, "​");
-      ((b)localObject2).tFJ = ((List)localObject1);
-      localc.tFK.add(localObject2);
+      ((b)localObject2).wWH = d.wWL;
+      ((b)localObject2).content = Util.listToString((List)localObject1, "​");
+      ((b)localObject2).wWI = ((List)localObject1);
+      localc.wWJ.add(localObject2);
     }
-    Object localObject1 = g.tEN.alw(paramString);
+    Object localObject1 = g.wVM.ayA(paramString);
     if (((List)localObject1).size() > 0)
     {
       localObject1 = ((List)localObject1).iterator();
@@ -138,48 +138,48 @@ public final class h
         if (((List)localObject2).size() > 0)
         {
           localObject3 = new b();
-          ((b)localObject3).tFI = d.tFL;
-          ((b)localObject3).content = bu.m((List)localObject2, "​");
-          ((b)localObject3).tFJ = ((List)localObject2);
-          localc.tFK.add(localObject3);
+          ((b)localObject3).wWH = d.wWK;
+          ((b)localObject3).content = Util.listToString((List)localObject2, "​");
+          ((b)localObject3).wWI = ((List)localObject2);
+          localc.wWJ.add(localObject3);
         }
       }
     }
     localObject1 = new b();
-    ((b)localObject1).tFI = d.tFN;
+    ((b)localObject1).wWH = d.wWM;
     ((b)localObject1).content = paramString;
-    localc.tFK.add(localObject1);
+    localc.wWJ.add(localObject1);
     for (;;)
     {
       AppMethodBeat.o(131698);
       return localc;
       label359:
       localObject1 = new b();
-      ((b)localObject1).tFI = d.tFN;
+      ((b)localObject1).wWH = d.wWM;
       ((b)localObject1).content = paramString;
-      localc.tFK.add(localObject1);
+      localc.wWJ.add(localObject1);
     }
   }
   
-  public static h bq(String paramString, boolean paramBoolean)
+  public static h bE(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131699);
-    paramString = a(paramString, paramBoolean, tFH);
+    paramString = a(paramString, paramBoolean, wWG);
     AppMethodBeat.o(131699);
     return paramString;
   }
   
-  public final String cVq()
+  public final String dOz()
   {
     AppMethodBeat.i(131697);
     Object localObject = new StringBuffer();
     int i = 0;
-    while (i < this.tFG.size())
+    while (i < this.wWF.size())
     {
       ((StringBuffer)localObject).append("(");
-      ((StringBuffer)localObject).append(((c)this.tFG.get(i)).cVs());
+      ((StringBuffer)localObject).append(((c)this.wWF.get(i)).dOB());
       ((StringBuffer)localObject).append(")");
-      if (i != this.tFG.size() - 1) {
+      if (i != this.wWF.size() - 1) {
         ((StringBuffer)localObject).append(" AND ");
       }
       i += 1;
@@ -191,7 +191,7 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract String[] alu(String paramString);
+    public abstract String[] ayy(String paramString);
     
     public abstract String[] split(String paramString);
   }
@@ -199,26 +199,26 @@ public final class h
   public static final class b
   {
     public String content;
-    public h.d tFI;
-    public List<String> tFJ;
+    public h.d wWH;
+    public List<String> wWI;
   }
   
   public static final class c
   {
-    public List<h.b> tFK;
+    public List<h.b> wWJ;
     
     public c()
     {
       AppMethodBeat.i(131690);
-      this.tFK = new ArrayList();
+      this.wWJ = new ArrayList();
       AppMethodBeat.o(131690);
     }
     
-    private List<String> cVr()
+    private List<String> dOA()
     {
       AppMethodBeat.i(131691);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.tFK.iterator();
+      Iterator localIterator = this.wWJ.iterator();
       while (localIterator.hasNext())
       {
         h.b localb = (h.b)localIterator.next();
@@ -230,10 +230,10 @@ public final class h
       return localArrayList;
     }
     
-    public final String cVs()
+    public final String dOB()
     {
       AppMethodBeat.i(131692);
-      Object localObject = cVr();
+      Object localObject = dOA();
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       if (i < ((List)localObject).size())
@@ -242,7 +242,7 @@ public final class h
         localStringBuilder.append("\"");
         localStringBuilder.append(str);
         char c = str.charAt(str.length() - 1);
-        if ((g.B(c)) || (g.C(c))) {
+        if ((g.C(c)) || (g.D(c))) {
           localStringBuilder.append("\"*");
         }
         for (;;)
@@ -266,10 +266,10 @@ public final class h
     static
     {
       AppMethodBeat.i(131695);
-      tFL = new d("FullPY", 0);
-      tFM = new d("ShortPY", 1);
-      tFN = new d("OTHER", 2);
-      tFO = new d[] { tFL, tFM, tFN };
+      wWK = new d("FullPY", 0);
+      wWL = new d("ShortPY", 1);
+      wWM = new d("OTHER", 2);
+      wWN = new d[] { wWK, wWL, wWM };
       AppMethodBeat.o(131695);
     }
     
@@ -278,7 +278,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.h
  * JD-Core Version:    0.7.0.1
  */

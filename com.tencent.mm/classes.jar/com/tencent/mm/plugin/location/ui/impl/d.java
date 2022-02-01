@@ -8,12 +8,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.a;
 import com.tencent.mm.plugin.location_soso.SoSoProxyUI;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   implements com.tencent.mm.plugin.k.c
 {
-  public static Intent as(Activity paramActivity)
+  public static Intent ar(Activity paramActivity)
   {
     AppMethodBeat.i(56077);
     paramActivity = new Intent(paramActivity, SoSoProxyUI.class);
@@ -21,11 +21,11 @@ public final class d
     return paramActivity;
   }
   
-  public static View fM(Context paramContext)
+  public static View gs(Context paramContext)
   {
     AppMethodBeat.i(56078);
     paramContext = new SoSoMapView(paramContext);
-    paramContext.setId(2131300334);
+    paramContext.setId(2131301852);
     AppMethodBeat.o(56078);
     return paramContext;
   }
@@ -40,22 +40,24 @@ public final class d
       AppMethodBeat.o(56079);
       return null;
     case 2: 
+      Log.i("MicroMsg.MapFactoryImp", "poi map");
       paramActivity = new c(paramActivity);
     }
     for (;;)
     {
       AppMethodBeat.o(56079);
       return paramActivity;
+      Log.i("MicroMsg.MapFactoryImp", "track map");
       paramActivity = new j(paramActivity);
       continue;
-      ae.i("MicroMsg.MapFactoryImp", "share map");
+      Log.i("MicroMsg.MapFactoryImp", "share map");
       paramActivity = new h(paramActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.d
  * JD-Core Version:    0.7.0.1
  */

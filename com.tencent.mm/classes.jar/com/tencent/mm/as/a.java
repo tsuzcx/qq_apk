@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  private static a iaW;
+  private static a iVU;
   
-  public static a aIm()
+  public static a bcg()
   {
     AppMethodBeat.i(20488);
-    if (iaW == null) {}
+    if (iVU == null) {}
     try
     {
-      if (iaW == null) {
-        iaW = new a();
+      if (iVU == null) {
+        iVU = new a();
       }
-      a locala = iaW;
+      a locala = iVU;
       AppMethodBeat.o(20488);
       return locala;
     }
@@ -27,7 +27,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.as.a
  * JD-Core Version:    0.7.0.1
  */

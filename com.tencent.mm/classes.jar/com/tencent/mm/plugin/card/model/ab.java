@@ -2,63 +2,63 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.azb;
-import com.tencent.mm.protocal.protobuf.azc;
-import com.tencent.mm.protocal.protobuf.th;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bkl;
+import com.tencent.mm.protocal.protobuf.bkm;
+import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class ab
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public int oGD;
-  public String oGE;
-  public int oGF;
-  public String oGG;
-  public String oGs;
-  private final b rr;
+  private i callback;
+  public String pTY;
+  public int pUj;
+  public String pUk;
+  public int pUl;
+  public String pUm;
+  private final d rr;
   
-  public ab(LinkedList<th> paramLinkedList, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2)
+  public ab(LinkedList<um> paramLinkedList, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2)
   {
     AppMethodBeat.i(112840);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new azb();
-    ((b.a)localObject).hQG = new azc();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getcardlistfromapp";
-    ((b.a)localObject).funcId = 1079;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (azb)this.rr.hQD.hQJ;
-    ((azb)localObject).FJS = paramLinkedList;
-    ((azb)localObject).dJd = paramInt1;
-    ((azb)localObject).pqK = paramString1;
-    ((azb)localObject).sign = paramString2;
-    ((azb)localObject).FJO = paramString3;
-    ((azb)localObject).FJN = paramString4;
-    ((azb)localObject).GPt = paramString5;
-    ((azb)localObject).FJP = paramInt2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bkl();
+    ((d.a)localObject).iLO = new bkm();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getcardlistfromapp";
+    ((d.a)localObject).funcId = 1079;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bkl)this.rr.iLK.iLR;
+    ((bkl)localObject).KDk = paramLinkedList;
+    ((bkl)localObject).eaQ = paramInt1;
+    ((bkl)localObject).qGp = paramString1;
+    ((bkl)localObject).sign = paramString2;
+    ((bkl)localObject).KDg = paramString3;
+    ((bkl)localObject).KDf = paramString4;
+    ((bkl)localObject).LTz = paramString5;
+    ((bkl)localObject).KDh = paramInt2;
     AppMethodBeat.o(112840);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(112841);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112841);
     return i;
   }
@@ -68,17 +68,17 @@ public final class ab
     return 1079;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112842);
-    ae.i("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3 + " netType = " + getType());
+    Log.i("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3 + " netType = " + getType());
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.oGs = ((azc)this.rr.hQE.hQJ).oGs;
-      if (!TextUtils.isEmpty(this.oGs)) {
+      this.pTY = ((bkm)this.rr.iLL.iLR).pTY;
+      if (!TextUtils.isEmpty(this.pTY)) {
         break label112;
       }
-      ae.e("MicroMsg.NetSceneGetCardListFromApp", "parseRespData json_ret is empty!");
+      Log.e("MicroMsg.NetSceneGetCardListFromApp", "parseRespData json_ret is empty!");
     }
     for (;;)
     {
@@ -88,16 +88,16 @@ public final class ab
       try
       {
         label112:
-        paramq = new JSONObject(this.oGs);
-        this.oGD = paramq.optInt("accept_button_status", 0);
-        this.oGE = paramq.optString("accept_button_wording");
-        this.oGF = paramq.optInt("private_status", 0);
-        this.oGG = paramq.optString("private_wording");
+        params = new JSONObject(this.pTY);
+        this.pUj = params.optInt("accept_button_status", 0);
+        this.pUk = params.optString("accept_button_wording");
+        this.pUl = params.optInt("private_status", 0);
+        this.pUm = params.optString("private_wording");
       }
-      catch (JSONException paramq)
+      catch (JSONException params)
       {
-        ae.printErrStackTrace("MicroMsg.NetSceneGetCardListFromApp", paramq, "", new Object[0]);
-        ae.e("MicroMsg.NetSceneGetCardListFromApp", "parseRespData:" + paramq.getMessage());
+        Log.printErrStackTrace("MicroMsg.NetSceneGetCardListFromApp", params, "", new Object[0]);
+        Log.e("MicroMsg.NetSceneGetCardListFromApp", "parseRespData:" + params.getMessage());
       }
     }
   }

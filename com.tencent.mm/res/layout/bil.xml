@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" />
-        <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-        <LinearLayout android:orientation="vertical" android:id="@id/b39" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/ga5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hj" />
+    <LinearLayout android:gravity="center|left" android:id="@id/fg1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/i0" android:layout_weight="1.0">
+        <ImageView android:id="@id/dvz" android:background="@null" android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:layout_marginRight="@dimen/cb" />
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:singleLine="true" style="@style/mi" />
+                <TextView android:id="@id/ikq" android:background="@null" android:visibility="gone" android:text="@string/hrt" style="@style/zr" />
+                <ImageView android:id="@id/ikj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1a" />
+            </LinearLayout>
+            <TextView android:gravity="left" android:id="@id/bmr" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/k5" style="@style/m0" />
+        </LinearLayout>
+        <TextView android:id="@id/iks" android:background="@null" android:visibility="gone" style="@style/rk" />
+        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ih" android:paddingBottom="@dimen/k5" android:singleLine="true" style="@style/ml" />
+        <RelativeLayout android:id="@id/h7f" android:background="@null" android:visibility="gone" android:layout_width="@dimen/ig" android:layout_height="@dimen/ig" android:layout_marginLeft="@dimen/ct">
+            <ImageView android:id="@id/dwk" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@drawable/c5a" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+            <ImageView android:gravity="center" android:id="@id/h7d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1a" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <ImageView android:gravity="center" android:id="@id/h72" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:src="@drawable/b1a" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

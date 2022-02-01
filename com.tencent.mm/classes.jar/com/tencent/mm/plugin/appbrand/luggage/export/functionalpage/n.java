@@ -7,29 +7,29 @@ import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.config.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
 final class n
   implements k<IPCString, AppBrandSysConfigWC>
 {
   private static AppBrandSysConfigWC b(IPCString paramIPCString)
   {
     AppMethodBeat.i(50878);
-    ae.i("MicroMsg.AppBrand.FunctionalConfigAssembler", "invoke GetSycConfigTask with ".concat(String.valueOf(paramIPCString)));
+    Log.i("MicroMsg.AppBrand.FunctionalConfigAssembler", "invoke GetSycConfigTask with ".concat(String.valueOf(paramIPCString)));
     if (paramIPCString == null) {}
     try
     {
-      p.gkB();
-      if (g.ajP().aiZ())
+      p.hyc();
+      if (g.aAf().azp())
       {
-        paramIPCString = v.Oj(paramIPCString.value);
+        paramIPCString = y.Xu(paramIPCString.value);
         if (paramIPCString != null)
         {
-          paramIPCString.cnh = AppBrandGlobalSystemConfig.bez();
+          paramIPCString.czd = AppBrandGlobalSystemConfig.bzP();
           AppMethodBeat.o(50878);
           return paramIPCString;
         }
@@ -46,7 +46,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.n
  * JD-Core Version:    0.7.0.1
  */

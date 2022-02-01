@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/nl"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3m" android:background="@drawable/ik" android:padding="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/g3l" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/boo" android:layout_weight="1.0" />
-    </LinearLayout>
-    <include layout="@layout/yl" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ListView android:id="@id/h4" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/b0w" android:transcriptMode="disabled" android:cacheColorHint="#ffffffff" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" style="@style/rj" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.applet.StrokeScrollBar android:id="@id/hl" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </FrameLayout>
 </LinearLayout>

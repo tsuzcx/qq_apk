@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static int[] eF(Context paramContext)
+  public static int[] getScreenWH(Context paramContext)
   {
     AppMethodBeat.i(143558);
     paramContext = (WindowManager)paramContext.getApplicationContext().getSystemService("window");
@@ -22,7 +22,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.happybubble.c
  * JD-Core Version:    0.7.0.1
  */

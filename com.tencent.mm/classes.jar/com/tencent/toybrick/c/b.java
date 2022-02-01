@@ -8,28 +8,28 @@ import com.tencent.toybrick.f.a;
 public final class b
   extends g<b, a>
 {
-  public static final int MFn = 2131494435;
-  
-  public final g.b gdg()
-  {
-    return g.b.MGe;
-  }
+  public static final int Sno = 2131495013;
   
   public final int getLayoutResource()
   {
-    return MFn;
+    return Sno;
+  }
+  
+  public final g.b hpJ()
+  {
+    return g.b.Sof;
   }
   
   public final class a
     extends a
   {
-    TextView MFy;
+    TextView Snz;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(159936);
-      this.MFy = ((TextView)paramView.findViewById(16908310));
+      this.Snz = ((TextView)paramView.findViewById(16908310));
       AppMethodBeat.o(159936);
     }
   }

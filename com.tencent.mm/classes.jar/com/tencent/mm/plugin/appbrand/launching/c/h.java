@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.launching.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.plugin.appbrand.launching.ax;
-import com.tencent.mm.plugin.appbrand.service.o.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.launching.ap;
+import com.tencent.mm.plugin.appbrand.service.q.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
 {
@@ -13,21 +13,21 @@ public final class h
   {
     AppMethodBeat.i(47420);
     if (parama != null) {
-      parama.bsD();
+      parama.bNZ();
     }
     AppMethodBeat.o(47420);
   }
   
   public static abstract interface a
   {
-    public abstract void bsC();
+    public abstract void bNY();
     
-    public abstract void bsD();
+    public abstract void bNZ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.h
  * JD-Core Version:    0.7.0.1
  */

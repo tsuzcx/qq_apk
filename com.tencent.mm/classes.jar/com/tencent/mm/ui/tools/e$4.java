@@ -15,7 +15,7 @@ final class e$4
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(143086);
-    this.Lfa.setLayerType(0, null);
+    this.Qub.setLayerType(0, null);
     AppMethodBeat.o(143086);
   }
   
@@ -24,13 +24,13 @@ final class e$4
   public final void onAnimationStart(Animator paramAnimator)
   {
     AppMethodBeat.i(143085);
-    this.Lfa.setLayerType(2, null);
+    this.Qub.setLayerType(2, null);
     AppMethodBeat.o(143085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.e.4
  * JD-Core Version:    0.7.0.1
  */

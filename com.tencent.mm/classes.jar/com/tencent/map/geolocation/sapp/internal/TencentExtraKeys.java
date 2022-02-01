@@ -40,7 +40,7 @@ public class TencentExtraKeys
   
   public static boolean a(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(210855);
+    AppMethodBeat.i(223103);
     if (paramInt > 0) {}
     try
     {
@@ -55,7 +55,7 @@ public class TencentExtraKeys
         paramContext = e.b();
         localObject = new StringBuilder();
         paramContext.a("EKS", "init error 2," + paramInt);
-        AppMethodBeat.o(210855);
+        AppMethodBeat.o(223103);
         return false;
       }
       if (mProxyclass != null)
@@ -72,61 +72,61 @@ public class TencentExtraKeys
       paramContext = e.b();
       Object localObject = new StringBuilder();
       paramContext.a("EKS", "init ok 0," + paramInt);
-      AppMethodBeat.o(210855);
+      AppMethodBeat.o(223103);
       return true;
     }
     catch (Throwable paramContext)
     {
       e.b().a("EKS", "init error 3," + paramInt + "," + paramContext.toString());
-      AppMethodBeat.o(210855);
+      AppMethodBeat.o(223103);
     }
     return false;
   }
   
   public static void enableMockLocationFilter(boolean paramBoolean)
   {
-    AppMethodBeat.i(210856);
+    AppMethodBeat.i(223104);
     try
     {
       if (initProxy())
       {
         localObject = mProxyclass;
         ((Class)localObject).getDeclaredMethod("enableMockLocationFilter", new Class[] { Boolean.TYPE }).invoke(mProxyObj, new Object[] { Boolean.valueOf(paramBoolean) });
-        AppMethodBeat.o(210856);
+        AppMethodBeat.o(223104);
         return;
       }
       Object localObject = new Exception("proxy is error");
-      AppMethodBeat.o(210856);
+      AppMethodBeat.o(223104);
       throw ((Throwable)localObject);
     }
     catch (Throwable localThrowable)
     {
       Exception localException = new Exception(localThrowable.toString());
-      AppMethodBeat.o(210856);
+      AppMethodBeat.o(223104);
       throw localException;
     }
   }
   
   public static String getLocationSource(TencentLocation paramTencentLocation)
   {
-    AppMethodBeat.i(210867);
+    AppMethodBeat.i(223115);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         paramTencentLocation = (String)localClass.getDeclaredMethod("getLocationSource", new Class[] { TencentLocation.class }).invoke(mProxyObj, new Object[] { paramTencentLocation });
-        AppMethodBeat.o(210867);
+        AppMethodBeat.o(223115);
         return paramTencentLocation;
       }
       paramTencentLocation = new Exception("proxy is error");
-      AppMethodBeat.o(210867);
+      AppMethodBeat.o(223115);
       throw paramTencentLocation;
     }
     catch (Throwable paramTencentLocation)
     {
       paramTencentLocation = new Exception(paramTencentLocation.toString());
-      AppMethodBeat.o(210867);
+      AppMethodBeat.o(223115);
       throw paramTencentLocation;
     }
   }
@@ -206,82 +206,82 @@ public class TencentExtraKeys
   
   public static byte[] getRawData(TencentLocation paramTencentLocation)
   {
-    AppMethodBeat.i(210857);
+    AppMethodBeat.i(223105);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         paramTencentLocation = (byte[])localClass.getDeclaredMethod("getRawData", new Class[] { TencentLocation.class }).invoke(mProxyObj, new Object[] { paramTencentLocation });
-        AppMethodBeat.o(210857);
+        AppMethodBeat.o(223105);
         return paramTencentLocation;
       }
       paramTencentLocation = new Exception("proxy is error");
-      AppMethodBeat.o(210857);
+      AppMethodBeat.o(223105);
       throw paramTencentLocation;
     }
     catch (Throwable paramTencentLocation)
     {
       paramTencentLocation = new Exception(paramTencentLocation.toString());
-      AppMethodBeat.o(210857);
+      AppMethodBeat.o(223105);
       throw paramTencentLocation;
     }
   }
   
   public static Location getRawGps(TencentLocation paramTencentLocation)
   {
-    AppMethodBeat.i(210861);
+    AppMethodBeat.i(223109);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         paramTencentLocation = (Location)localClass.getDeclaredMethod("getRawGps", new Class[] { TencentLocation.class }).invoke(mProxyObj, new Object[] { paramTencentLocation });
-        AppMethodBeat.o(210861);
+        AppMethodBeat.o(223109);
         return paramTencentLocation;
       }
       paramTencentLocation = new Exception("proxy is error");
-      AppMethodBeat.o(210861);
+      AppMethodBeat.o(223109);
       throw paramTencentLocation;
     }
     catch (Throwable paramTencentLocation)
     {
       paramTencentLocation = new Exception(paramTencentLocation.toString());
-      AppMethodBeat.o(210861);
+      AppMethodBeat.o(223109);
       throw paramTencentLocation;
     }
   }
   
   public static String getRawQuery(TencentLocation paramTencentLocation)
   {
-    AppMethodBeat.i(210859);
+    AppMethodBeat.i(223107);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         paramTencentLocation = (String)localClass.getDeclaredMethod("getRawQuery", new Class[] { TencentLocation.class }).invoke(mProxyObj, new Object[] { paramTencentLocation });
-        AppMethodBeat.o(210859);
+        AppMethodBeat.o(223107);
         return paramTencentLocation;
       }
       paramTencentLocation = new Exception("proxy is error");
-      AppMethodBeat.o(210859);
+      AppMethodBeat.o(223107);
       throw paramTencentLocation;
     }
     catch (Throwable paramTencentLocation)
     {
       paramTencentLocation = new Exception(paramTencentLocation.toString());
-      AppMethodBeat.o(210859);
+      AppMethodBeat.o(223107);
       throw paramTencentLocation;
     }
   }
   
   public static boolean initProxy()
   {
-    AppMethodBeat.i(210854);
+    AppMethodBeat.i(223102);
     if (mContext == null)
     {
-      AppMethodBeat.o(210854);
+      AppMethodBeat.o(223102);
       return false;
     }
     int i = 0;
@@ -289,35 +289,35 @@ public class TencentExtraKeys
     {
       if (a(mContext, i))
       {
-        AppMethodBeat.o(210854);
+        AppMethodBeat.o(223102);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(210854);
+    AppMethodBeat.o(223102);
     return false;
   }
   
   public static boolean isAllowedLevel(int paramInt)
   {
-    AppMethodBeat.i(210865);
+    AppMethodBeat.i(223113);
     try
     {
       if (initProxy())
       {
         localObject = mProxyclass;
         boolean bool = ((Boolean)((Class)localObject).getDeclaredMethod("isAllowedLevel", new Class[] { Integer.TYPE }).invoke(mProxyObj, new Object[] { Integer.valueOf(paramInt) })).booleanValue();
-        AppMethodBeat.o(210865);
+        AppMethodBeat.o(223113);
         return bool;
       }
       Object localObject = new Exception("proxy is error");
-      AppMethodBeat.o(210865);
+      AppMethodBeat.o(223113);
       throw ((Throwable)localObject);
     }
     catch (Throwable localThrowable)
     {
       Exception localException = new Exception(localThrowable.toString());
-      AppMethodBeat.o(210865);
+      AppMethodBeat.o(223113);
       throw localException;
     }
   }
@@ -400,7 +400,7 @@ public class TencentExtraKeys
   
   public static int isInsIllegalApp(Context paramContext)
   {
-    AppMethodBeat.i(210866);
+    AppMethodBeat.i(223114);
     try
     {
       mContext = paramContext;
@@ -408,68 +408,68 @@ public class TencentExtraKeys
       {
         Class localClass = mProxyclass;
         int i = ((Integer)localClass.getDeclaredMethod("isInsIllegalApp", new Class[] { Context.class }).invoke(mProxyObj, new Object[] { paramContext })).intValue();
-        AppMethodBeat.o(210866);
+        AppMethodBeat.o(223114);
         return i;
       }
       paramContext = new Exception("proxy is error");
-      AppMethodBeat.o(210866);
+      AppMethodBeat.o(223114);
       throw paramContext;
     }
     catch (Throwable paramContext)
     {
       paramContext = new Exception(paramContext.toString());
-      AppMethodBeat.o(210866);
+      AppMethodBeat.o(223114);
       throw paramContext;
     }
   }
   
   public static boolean isRequestRawData(TencentLocationRequest paramTencentLocationRequest)
   {
-    AppMethodBeat.i(210864);
+    AppMethodBeat.i(223112);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         boolean bool = ((Boolean)localClass.getDeclaredMethod("isRequestRawData", new Class[] { TencentLocationRequest.class }).invoke(mProxyObj, new Object[] { paramTencentLocationRequest })).booleanValue();
-        AppMethodBeat.o(210864);
+        AppMethodBeat.o(223112);
         return bool;
       }
       paramTencentLocationRequest = new Exception("proxy is error");
-      AppMethodBeat.o(210864);
+      AppMethodBeat.o(223112);
       throw paramTencentLocationRequest;
     }
     catch (Throwable paramTencentLocationRequest)
     {
       paramTencentLocationRequest = new Exception(paramTencentLocationRequest.toString());
-      AppMethodBeat.o(210864);
+      AppMethodBeat.o(223112);
       throw paramTencentLocationRequest;
     }
   }
   
   public static void loadLibrary(String paramString)
   {
-    AppMethodBeat.i(210868);
+    AppMethodBeat.i(223116);
     try
     {
       System.load(paramString);
-      AppMethodBeat.o(210868);
+      AppMethodBeat.o(223116);
       return;
     }
     catch (Throwable paramString)
     {
       paramString = new Exception(paramString.toString());
-      AppMethodBeat.o(210868);
+      AppMethodBeat.o(223116);
       throw paramString;
     }
   }
   
   public static void setContext(Context paramContext)
   {
-    AppMethodBeat.i(210853);
+    AppMethodBeat.i(223101);
     mContext = paramContext;
     e.a(paramContext).c();
-    AppMethodBeat.o(210853);
+    AppMethodBeat.o(223101);
   }
   
   /* Error */
@@ -551,103 +551,103 @@ public class TencentExtraKeys
   
   public static TencentLocation setRawData(TencentLocation paramTencentLocation, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(210858);
+    AppMethodBeat.i(223106);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         paramTencentLocation = (TencentLocation)localClass.getDeclaredMethod("setRawData", new Class[] { TencentLocation.class, [B.class }).invoke(mProxyObj, new Object[] { paramTencentLocation, paramArrayOfByte });
-        AppMethodBeat.o(210858);
+        AppMethodBeat.o(223106);
         return paramTencentLocation;
       }
       paramTencentLocation = new Exception("proxy is error");
-      AppMethodBeat.o(210858);
+      AppMethodBeat.o(223106);
       throw paramTencentLocation;
     }
     catch (Throwable paramTencentLocation)
     {
       paramTencentLocation = new Exception(paramTencentLocation.toString());
-      AppMethodBeat.o(210858);
+      AppMethodBeat.o(223106);
       throw paramTencentLocation;
     }
   }
   
   public static void setRawGps(TencentLocation paramTencentLocation, Location paramLocation)
   {
-    AppMethodBeat.i(210862);
+    AppMethodBeat.i(223110);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         localClass.getDeclaredMethod("setRawGps", new Class[] { TencentLocation.class, Location.class }).invoke(mProxyObj, new Object[] { paramTencentLocation, paramLocation });
-        AppMethodBeat.o(210862);
+        AppMethodBeat.o(223110);
         return;
       }
       paramTencentLocation = new Exception("proxy is error");
-      AppMethodBeat.o(210862);
+      AppMethodBeat.o(223110);
       throw paramTencentLocation;
     }
     catch (Throwable paramTencentLocation)
     {
       paramTencentLocation = new Exception(paramTencentLocation.toString());
-      AppMethodBeat.o(210862);
+      AppMethodBeat.o(223110);
       throw paramTencentLocation;
     }
   }
   
   public static void setRawQuery(TencentLocation paramTencentLocation, String paramString)
   {
-    AppMethodBeat.i(210860);
+    AppMethodBeat.i(223108);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         localClass.getDeclaredMethod("setRawQuery", new Class[] { TencentLocation.class, String.class }).invoke(mProxyObj, new Object[] { paramTencentLocation, paramString });
-        AppMethodBeat.o(210860);
+        AppMethodBeat.o(223108);
         return;
       }
       paramTencentLocation = new Exception("proxy is error");
-      AppMethodBeat.o(210860);
+      AppMethodBeat.o(223108);
       throw paramTencentLocation;
     }
     catch (Throwable paramTencentLocation)
     {
       paramTencentLocation = new Exception(paramTencentLocation.toString());
-      AppMethodBeat.o(210860);
+      AppMethodBeat.o(223108);
       throw paramTencentLocation;
     }
   }
   
   public static TencentLocationRequest setRequestRawData(TencentLocationRequest paramTencentLocationRequest, boolean paramBoolean)
   {
-    AppMethodBeat.i(210863);
+    AppMethodBeat.i(223111);
     try
     {
       if (initProxy())
       {
         Class localClass = mProxyclass;
         paramTencentLocationRequest = (TencentLocationRequest)localClass.getDeclaredMethod("setRequestRawData", new Class[] { TencentLocationRequest.class, Boolean.TYPE }).invoke(mProxyObj, new Object[] { paramTencentLocationRequest, Boolean.valueOf(paramBoolean) });
-        AppMethodBeat.o(210863);
+        AppMethodBeat.o(223111);
         return paramTencentLocationRequest;
       }
       paramTencentLocationRequest = new Exception("proxy is error");
-      AppMethodBeat.o(210863);
+      AppMethodBeat.o(223111);
       throw paramTencentLocationRequest;
     }
     catch (Throwable paramTencentLocationRequest)
     {
       paramTencentLocationRequest = new Exception(paramTencentLocationRequest.toString());
-      AppMethodBeat.o(210863);
+      AppMethodBeat.o(223111);
       throw paramTencentLocationRequest;
     }
   }
   
   public static void setTencentLog(Context paramContext, File paramFile)
   {
-    AppMethodBeat.i(210869);
+    AppMethodBeat.i(223117);
     try
     {
       mContext = paramContext;
@@ -655,24 +655,24 @@ public class TencentExtraKeys
       {
         Class localClass = mProxyclass;
         localClass.getDeclaredMethod("setTencentLog", new Class[] { Context.class, File.class }).invoke(mProxyObj, new Object[] { paramContext, paramFile });
-        AppMethodBeat.o(210869);
+        AppMethodBeat.o(223117);
         return;
       }
       paramContext = new Exception("proxy is error");
-      AppMethodBeat.o(210869);
+      AppMethodBeat.o(223117);
       throw paramContext;
     }
     catch (Throwable paramContext)
     {
       paramContext = new Exception(paramContext.toString());
-      AppMethodBeat.o(210869);
+      AppMethodBeat.o(223117);
       throw paramContext;
     }
   }
   
   public static void setTencentLogCallback(LocationLogCallback paramLocationLogCallback)
   {
-    AppMethodBeat.i(210870);
+    AppMethodBeat.i(223118);
     try
     {
       j.a(paramLocationLogCallback);
@@ -680,24 +680,24 @@ public class TencentExtraKeys
       {
         Class localClass = mProxyclass;
         localClass.getDeclaredMethod("setTencentLogCallback", new Class[] { LocationLogCallback.class }).invoke(mProxyObj, new Object[] { paramLocationLogCallback });
-        AppMethodBeat.o(210870);
+        AppMethodBeat.o(223118);
         return;
       }
       paramLocationLogCallback = new Exception("proxy is error");
-      AppMethodBeat.o(210870);
+      AppMethodBeat.o(223118);
       throw paramLocationLogCallback;
     }
     catch (Throwable paramLocationLogCallback)
     {
       paramLocationLogCallback = new Exception(paramLocationLogCallback.toString());
-      AppMethodBeat.o(210870);
+      AppMethodBeat.o(223118);
       throw paramLocationLogCallback;
     }
   }
   
   public static boolean wgs84ToGcj02(double[] paramArrayOfDouble1, double[] paramArrayOfDouble2)
   {
-    AppMethodBeat.i(210874);
+    AppMethodBeat.i(223122);
     try
     {
       boolean bool = TencentLocationManagerOptions.isLoadLibraryEnabled();
@@ -709,7 +709,7 @@ public class TencentExtraKeys
         {
           Class localClass = mProxyclass;
           bool = ((Boolean)localClass.getDeclaredMethod("wgs84ToGcj02", new Class[] { [D.class, [D.class }).invoke(mProxyObj, new Object[] { paramArrayOfDouble1, paramArrayOfDouble2 })).booleanValue();
-          AppMethodBeat.o(210874);
+          AppMethodBeat.o(223122);
           return bool;
         }
       }
@@ -717,24 +717,24 @@ public class TencentExtraKeys
       {
         paramArrayOfDouble2 = new StringBuilder();
         paramArrayOfDouble2.append("LOAD:").append(paramArrayOfDouble1.toString());
-        AppMethodBeat.o(210874);
+        AppMethodBeat.o(223122);
         return false;
       }
       paramArrayOfDouble1 = new Exception("proxy is error");
-      AppMethodBeat.o(210874);
+      AppMethodBeat.o(223122);
       throw paramArrayOfDouble1;
     }
     catch (Throwable paramArrayOfDouble1)
     {
       paramArrayOfDouble1 = new Exception(paramArrayOfDouble1.toString());
-      AppMethodBeat.o(210874);
+      AppMethodBeat.o(223122);
       throw paramArrayOfDouble1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.geolocation.sapp.internal.TencentExtraKeys
  * JD-Core Version:    0.7.0.1
  */

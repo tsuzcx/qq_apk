@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/am_" android:background="@drawable/mj" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/g7b" android:background="@drawable/mj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip">
-        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="start" android:id="@id/gam" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0dip" android:minHeight="90.0dip" android:text="text" android:maxLines="4" android:lineSpacingExtra="7.0dip" android:paddingStart="@dimen/c_" android:paddingEnd="@dimen/c_" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/f2" android:id="@id/g6y" android:paddingTop="@dimen/bq" android:paddingBottom="@dimen/ci" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="38.0dip" android:text="@string/aeh" android:paddingStart="@dimen/c_" android:paddingEnd="@dimen/c_" />
-    </LinearLayout>
-</LinearLayout>

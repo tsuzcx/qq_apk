@@ -1,51 +1,44 @@
 package com.tencent.mm.live.core.core;
 
-import android.content.Context;
-import com.tencent.mm.live.core.core.b.d;
-import com.tencent.mm.live.core.core.b.e;
-import com.tencent.mm.live.core.view.LivePreviewView;
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/IMMLiveCore;", "", "enterRoom", "", "callback", "Lcom/tencent/mm/live/core/core/LiveCallback;", "exitRoom", "finishLastLive", "floatMode", "", "context", "Landroid/content/Context;", "getLiveStatus", "Lcom/tencent/mm/live/core/core/model/LiveStatus;", "isInLinkMic", "", "normalMode", "refreshCamera", "release", "removeMiniWindow", "setLiveStatusCallback", "setup", "model", "Lcom/tencent/mm/live/core/core/model/LiveRoomModel;", "startPreview", "previewView", "Lcom/tencent/mm/live/core/view/LivePreviewView;", "startPush", "stopPreview", "stopPush", "switchCamera", "updateLiveMiniState", "state", "", "updateMixStreamFloatOffset", "xOffset", "", "yOffset", "plugin-core_release"})
-public abstract interface a
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/CdnQualityTag;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "CDN_QUALITY_HD", "CDN_QUALITY_SD1", "CDN_QUALITY_SD2", "CDN_QUALITY_SM", "CDN_QUALITY_SB", "CDN_QUALITY_HEVC", "CDN_QUALITY_AUTO_CLIQOS", "CDN_QUALITY_AUTO_SVRML", "plugin-core_release"})
+public enum a
 {
-  public abstract int a(d paramd);
+  public final int value;
   
-  public abstract int a(LivePreviewView paramLivePreviewView);
+  static
+  {
+    AppMethodBeat.i(196385);
+    a locala1 = new a("CDN_QUALITY_HD", 0, 0);
+    hwx = locala1;
+    a locala2 = new a("CDN_QUALITY_SD1", 1, 1);
+    hwy = locala2;
+    a locala3 = new a("CDN_QUALITY_SD2", 2, 2);
+    hwz = locala3;
+    a locala4 = new a("CDN_QUALITY_SM", 3, 3);
+    hwA = locala4;
+    a locala5 = new a("CDN_QUALITY_SB", 4, 4);
+    hwB = locala5;
+    a locala6 = new a("CDN_QUALITY_HEVC", 5, 5);
+    hwC = locala6;
+    a locala7 = new a("CDN_QUALITY_AUTO_CLIQOS", 6, 101);
+    hwD = locala7;
+    a locala8 = new a("CDN_QUALITY_AUTO_SVRML", 7, 102);
+    hwE = locala8;
+    hwF = new a[] { locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8 };
+    AppMethodBeat.o(196385);
+  }
   
-  public abstract void a(b paramb);
-  
-  public abstract int alr();
-  
-  public abstract void als();
-  
-  public abstract void alt();
-  
-  public abstract e alu();
-  
-  public abstract void alv();
-  
-  public abstract void alw();
-  
-  public abstract int alx();
-  
-  public abstract int aly();
-  
-  public abstract void b(b paramb);
-  
-  public abstract void c(b paramb);
-  
-  public abstract int cr(Context paramContext);
-  
-  public abstract void switchCamera();
-  
-  public abstract void xU(String paramString);
-  
-  public abstract void y(float paramFloat1, float paramFloat2);
+  private a(int paramInt)
+  {
+    this.value = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.a
  * JD-Core Version:    0.7.0.1
  */

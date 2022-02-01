@@ -2,49 +2,49 @@ package com.tencent.mm.plugin.voiceprint.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yb;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.g.a.zd;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public final class o
 {
-  public com.tencent.mm.modelvoice.m Cnk;
-  public aw Cnl;
-  int Cnm;
-  int Cnn;
+  public com.tencent.mm.modelvoice.m GRj;
+  public MTimerHandler GRk;
+  int GRl;
+  int GRm;
   
   public o()
   {
     AppMethodBeat.i(29799);
-    this.Cnk = null;
-    this.Cnl = null;
-    this.Cnm = 0;
-    this.Cnn = 0;
-    this.Cnk = new com.tencent.mm.modelvoice.m();
-    this.Cnl = new aw(Looper.getMainLooper(), new aw.a()
+    this.GRj = null;
+    this.GRk = null;
+    this.GRl = 0;
+    this.GRm = 0;
+    this.GRj = new com.tencent.mm.modelvoice.m();
+    this.GRk = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(29798);
-        o.this.Cnm += 100;
-        o.this.Cnn += o.this.Cnk.getMaxAmplitude() * 100 / 100;
-        if (o.this.Cnm >= 3000)
+        o.this.GRl += 100;
+        o.this.GRm += o.this.GRj.getMaxAmplitude() * 100 / 100;
+        if (o.this.GRl >= 3000)
         {
           Object localObject = o.this;
-          ae.d("MicroMsg.VoicePrintNoiseDetector", "onDetectFinish");
-          ((o)localObject).Cnk.PF();
-          ((o)localObject).Cnl.stopTimer();
-          ((o)localObject).Cnn /= 30;
-          if (((o)localObject).Cnn >= 30) {}
+          Log.d("MicroMsg.VoicePrintNoiseDetector", "onDetectFinish");
+          ((o)localObject).GRj.ZZ();
+          ((o)localObject).GRk.stopTimer();
+          ((o)localObject).GRm /= 30;
+          if (((o)localObject).GRm >= 30) {}
           for (boolean bool = true;; bool = false)
           {
-            ae.d("MicroMsg.VoicePrintNoiseDetector", "average amplitude: %d, hasNoise:%b", new Object[] { Integer.valueOf(((o)localObject).Cnn), Boolean.valueOf(bool) });
-            localObject = new yb();
-            ((yb)localObject).dNu.dNv = bool;
-            a.IvT.l((b)localObject);
+            Log.d("MicroMsg.VoicePrintNoiseDetector", "average amplitude: %d, hasNoise:%b", new Object[] { Integer.valueOf(((o)localObject).GRm), Boolean.valueOf(bool) });
+            localObject = new zd();
+            ((zd)localObject).efn.efo = bool;
+            EventCenter.instance.publish((IEvent)localObject);
             AppMethodBeat.o(29798);
             return false;
           }
@@ -59,29 +59,29 @@ public final class o
   private void stopRecord()
   {
     AppMethodBeat.i(29800);
-    this.Cnk.PF();
-    ae.d("MicroMsg.VoicePrintNoiseDetector", "stop record");
+    this.GRj.ZZ();
+    Log.d("MicroMsg.VoicePrintNoiseDetector", "stop record");
     AppMethodBeat.o(29800);
   }
   
-  public final void JE()
+  public final void TR()
   {
     AppMethodBeat.i(29801);
-    ae.d("MicroMsg.VoicePrintNoiseDetector", "start detect noise");
+    Log.d("MicroMsg.VoicePrintNoiseDetector", "start detect noise");
     reset();
-    String str = m.ch("voice_pt_voice_print_noise_detect.rec", true);
-    if (!this.Cnk.gF(str))
+    String str = m.cz("voice_pt_voice_print_noise_detect.rec", true);
+    if (!this.GRj.hw(str))
     {
-      this.Cnk.PF();
+      this.GRj.ZZ();
       reset();
-      ae.d("MicroMsg.VoicePrintNoiseDetector", "start record fail");
+      Log.d("MicroMsg.VoicePrintNoiseDetector", "start record fail");
     }
     for (;;)
     {
-      this.Cnl.ay(100L, 100L);
+      this.GRk.startTimer(100L);
       AppMethodBeat.o(29801);
       return;
-      ae.d("MicroMsg.VoicePrintNoiseDetector", "start record");
+      Log.d("MicroMsg.VoicePrintNoiseDetector", "start record");
     }
   }
   
@@ -89,15 +89,15 @@ public final class o
   {
     AppMethodBeat.i(29802);
     stopRecord();
-    this.Cnl.stopTimer();
-    this.Cnm = 0;
-    this.Cnn = 0;
+    this.GRk.stopTimer();
+    this.GRl = 0;
+    this.GRm = 0;
     AppMethodBeat.o(29802);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.o
  * JD-Core Version:    0.7.0.1
  */

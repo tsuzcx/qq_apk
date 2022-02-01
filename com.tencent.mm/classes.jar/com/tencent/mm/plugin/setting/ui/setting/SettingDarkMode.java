@@ -8,17 +8,19 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.a;
-import com.tencent.mm.modelappbrand.a.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.setting.c;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.t.b;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.a.f.c;
 import org.xwalk.core.XWalkEnvironment;
@@ -26,101 +28,101 @@ import org.xwalk.core.XWalkEnvironment;
 public class SettingDarkMode
   extends MMPreference
 {
-  private boolean gtO;
-  private int mvy = 0;
-  private boolean rHX = false;
+  private SelectPreference CZO;
+  private SelectPreference CZP;
+  private int CZQ = 0;
+  private boolean CZR;
+  private boolean CZS;
+  private boolean crv;
+  private boolean hfZ;
+  private int nGn = 0;
   private com.tencent.mm.ui.base.preference.f screen;
-  private int uow = 0;
-  private boolean yUY;
-  private SelectPreference yUZ;
-  private SelectPreference yVa;
-  private int yVb = 0;
-  private boolean yVc;
-  private boolean yVd;
+  private boolean thE = false;
+  private int xGO = 0;
   
-  private void dQP()
+  private void eSQ()
   {
-    AppMethodBeat.i(190325);
-    com.tencent.mm.plugin.report.service.g localg;
+    AppMethodBeat.i(256493);
+    h localh;
     int j;
     int k;
     int m;
-    if (this.rHX)
+    if (this.thE)
     {
-      if (al.fCb())
+      if (ao.awS())
       {
-        ay.aRW(ak.fow()).putBoolean("dark_mode_follow_system_need_report", true);
-        AppMethodBeat.o(190325);
+        MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system_need_report", true);
+        AppMethodBeat.o(256493);
         return;
       }
-      if (this.yVd != this.yUY) {
-        this.mvy = 4;
+      if (this.CZS != this.hfZ) {
+        this.nGn = 4;
       }
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
-      j = this.mvy;
-      k = this.yVb;
-      m = this.uow;
-      if (!al.fBV()) {
+      localh = h.CyF;
+      j = this.nGn;
+      k = this.CZQ;
+      m = this.xGO;
+      if (!ao.awN()) {
         break label186;
       }
     }
     label186:
     for (int i = 1;; i = 0)
     {
-      localg.f(18893, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(2), Integer.valueOf(m), Integer.valueOf(i) });
-      ae.i("MicroMsg.mmui.MMPreference", "dark mode kvReport logID:%s, action:%s, dark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(this.mvy), Integer.valueOf(this.yVb), Integer.valueOf(this.uow) });
-      AppMethodBeat.o(190325);
+      localh.a(18893, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(2), Integer.valueOf(m), Integer.valueOf(i) });
+      Log.i("MicroMsg.mmui.MMPreference", "dark mode kvReport logID:%s, action:%s, dark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(this.nGn), Integer.valueOf(this.CZQ), Integer.valueOf(this.xGO) });
+      AppMethodBeat.o(256493);
       return;
     }
   }
   
-  private void qU(boolean paramBoolean)
+  private void up(boolean paramBoolean)
   {
-    AppMethodBeat.i(190322);
-    if (!al.fBV()) {
-      this.screen.cT("manual_title", true);
+    AppMethodBeat.i(256490);
+    if (!ao.awN()) {
+      this.screen.jdMethod_do("manual_title", true);
     }
     for (;;)
     {
-      this.screen.cT("dark_mode", paramBoolean);
-      this.screen.cT("normal_mode", paramBoolean);
-      AppMethodBeat.o(190322);
+      this.screen.jdMethod_do("dark_mode", paramBoolean);
+      this.screen.jdMethod_do("normal_mode", paramBoolean);
+      AppMethodBeat.o(256490);
       return;
-      this.screen.cT("manual_title", paramBoolean);
+      this.screen.jdMethod_do("manual_title", paramBoolean);
     }
   }
   
   public int getResourceId()
   {
-    return 2131951714;
+    return 2132017259;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(190321);
-    setMMTitle(getString(2131763205));
+    AppMethodBeat.i(256489);
+    setMMTitle(getString(2131765373));
     this.screen = getPreferenceScreen();
-    if (!al.fBV())
+    if (!ao.awN())
     {
-      ay.aRW(ak.fow()).putBoolean("dark_mode_follow_system", false);
-      al.fCc();
+      MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system", false);
+      ao.gJU();
     }
-    this.gtO = al.isDarkMode();
-    this.yVc = this.gtO;
-    ay.aRW(ak.fow()).putBoolean("dark_mode_follow_system_need_report", false);
-    this.yUY = ay.aRW(ak.fow()).getBoolean("dark_mode_follow_system", false);
-    this.yVd = this.yUY;
-    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.aXe("follow_system");
-    this.yUZ = ((SelectPreference)this.screen.aXe("dark_mode"));
-    this.yVa = ((SelectPreference)this.screen.aXe("normal_mode"));
-    if (!al.fBV())
+    this.crv = ao.isDarkMode();
+    this.CZR = this.crv;
+    MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system_need_report", false);
+    this.hfZ = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getBoolean("dark_mode_follow_system", false);
+    this.CZS = this.hfZ;
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.bmg("follow_system");
+    this.CZO = ((SelectPreference)this.screen.bmg("dark_mode"));
+    this.CZP = ((SelectPreference)this.screen.bmg("normal_mode"));
+    if (!ao.awN())
     {
-      this.screen.cT("follow_system", true);
-      this.screen.cT("manual_title", true);
-      if (!this.yUY) {
+      this.screen.jdMethod_do("follow_system", true);
+      this.screen.jdMethod_do("manual_title", true);
+      if (!this.hfZ) {
         break label270;
       }
-      qU(true);
+      up(true);
     }
     for (;;)
     {
@@ -129,140 +131,140 @@ public class SettingDarkMode
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(190317);
+          AppMethodBeat.i(256485);
           SettingDarkMode.this.finish();
-          AppMethodBeat.o(190317);
+          AppMethodBeat.o(256485);
           return true;
         }
       });
-      addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+      addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(190318);
+          AppMethodBeat.i(256486);
           SettingDarkMode.a(SettingDarkMode.this);
-          AppMethodBeat.o(190318);
+          AppMethodBeat.o(256486);
           return true;
         }
-      }, null, s.b.JwA);
-      AppMethodBeat.o(190321);
+      }, null, t.b.OGU);
+      AppMethodBeat.o(256489);
       return;
       if (localCheckBoxPreference == null) {
         break;
       }
-      localCheckBoxPreference.setChecked(this.yUY);
-      localCheckBoxPreference.uo(this.yUY);
-      localCheckBoxPreference.JOq = false;
+      localCheckBoxPreference.setChecked(this.hfZ);
+      localCheckBoxPreference.xZ(this.hfZ);
+      localCheckBoxPreference.OZw = false;
       break;
       label270:
-      qU(false);
-      if (this.gtO)
+      up(false);
+      if (this.crv)
       {
-        this.yUZ.isSelected = true;
-        this.yVa.isSelected = false;
+        this.CZO.isSelected = true;
+        this.CZP.isSelected = false;
       }
       else
       {
-        this.yVa.isSelected = true;
-        this.yUZ.isSelected = false;
+        this.CZP.isSelected = true;
+        this.CZO.isSelected = false;
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(190320);
+    AppMethodBeat.i(256488);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(190320);
+    AppMethodBeat.o(256488);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(190324);
+    AppMethodBeat.i(256492);
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 0))
     {
       finish();
-      AppMethodBeat.o(190324);
+      AppMethodBeat.o(256492);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(190324);
+    AppMethodBeat.o(256492);
     return bool;
   }
   
   public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     int i = 1;
-    AppMethodBeat.i(190323);
+    AppMethodBeat.i(256491);
     String str = paramPreference.mKey;
-    this.rHX = true;
+    this.thE = true;
     if (str.equals("follow_system"))
     {
       if (((CheckBoxPreference)paramPreference).isChecked())
       {
-        this.mvy = 4;
-        if (al.j(getResources()))
+        this.nGn = 4;
+        if (ao.f(getResources()))
         {
           i = 1;
-          this.yVb = i;
-          this.uow = 1;
-          this.yVd = true;
-          qU(true);
+          this.CZQ = i;
+          this.xGO = 1;
+          this.CZS = true;
+          up(true);
         }
       }
       for (;;)
       {
-        this.yVc = this.gtO;
+        this.CZR = this.crv;
         paramf.notifyDataSetChanged();
-        AppMethodBeat.o(190323);
+        AppMethodBeat.o(256491);
         return false;
         i = 0;
         break;
-        this.mvy = 4;
-        if (this.gtO) {}
+        this.nGn = 4;
+        if (this.crv) {}
         for (i = 1;; i = 0)
         {
-          this.yVb = i;
-          this.uow = 2;
-          this.yVd = false;
-          qU(false);
-          if (!this.gtO) {
+          this.CZQ = i;
+          this.xGO = 2;
+          this.CZS = false;
+          up(false);
+          if (!this.crv) {
             break label168;
           }
-          this.yUZ.isSelected = true;
-          this.yVa.isSelected = false;
+          this.CZO.isSelected = true;
+          this.CZP.isSelected = false;
           break;
         }
         label168:
-        this.yVa.isSelected = true;
-        this.yUZ.isSelected = false;
+        this.CZP.isSelected = true;
+        this.CZO.isSelected = false;
       }
     }
-    boolean bool = this.gtO;
+    boolean bool = this.crv;
     if (str.equals("dark_mode"))
     {
-      this.yUZ.isSelected = true;
-      this.yVa.isSelected = false;
+      this.CZO.isSelected = true;
+      this.CZP.isSelected = false;
       paramf.notifyDataSetChanged();
       bool = true;
       label228:
-      this.mvy = 2;
+      this.nGn = 2;
       if (!bool) {
         break label295;
       }
     }
     for (;;)
     {
-      this.yVb = i;
-      this.uow = 2;
-      this.yVc = bool;
+      this.CZQ = i;
+      this.xGO = 2;
+      this.CZR = bool;
       break;
       if (!str.equals("normal_mode")) {
         break label228;
       }
-      this.yUZ.isSelected = false;
-      this.yVa.isSelected = true;
+      this.CZO.isSelected = false;
+      this.CZP.isSelected = true;
       paramf.notifyDataSetChanged();
       bool = false;
       break label228;
@@ -279,7 +281,7 @@ public class SettingDarkMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingDarkMode
  * JD-Core Version:    0.7.0.1
  */

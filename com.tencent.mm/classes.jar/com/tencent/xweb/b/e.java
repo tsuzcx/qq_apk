@@ -5,17 +5,17 @@ import java.io.OutputStream;
 
 public abstract interface e
 {
-  public abstract OutputStream Db(String paramString);
+  public abstract OutputStream LM(String paramString);
   
-  public abstract String aRh(String paramString);
+  public abstract String bhK(String paramString);
   
-  public abstract boolean lS(String paramString1, String paramString2);
+  public abstract boolean copyFile(String paramString1, String paramString2);
   
   public abstract InputStream openRead(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.b.e
  * JD-Core Version:    0.7.0.1
  */

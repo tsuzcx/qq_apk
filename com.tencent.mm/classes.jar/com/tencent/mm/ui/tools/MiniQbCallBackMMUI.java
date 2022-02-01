@@ -2,37 +2,38 @@ package com.tencent.mm.ui.tools;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lx;
+import com.tencent.mm.g.a.mn;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.miniutil.MiniReaderLogic.MiniQbFloatBallMenuActionBrandEvent;
 import com.tencent.mm.plugin.appbrand.service.f;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class MiniQbCallBackMMUI
   extends MiniQbCallBackBaseUI
 {
+  protected final void b(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
+  {
+    AppMethodBeat.i(234464);
+    super.b(paramString1, paramString2, paramInt1, paramString3, paramInt2);
+    if (Util.isNullOrNil(paramString2))
+    {
+      paramString1 = new mn();
+      paramString1.dSa.action = paramInt1;
+      paramString1.dSa.filePath = paramString3;
+      paramString1.dSa.dSc = paramInt2;
+      EventCenter.instance.publish(paramString1);
+      AppMethodBeat.o(234464);
+      return;
+    }
+    paramString1 = new MiniReaderLogic.MiniQbFloatBallMenuActionBrandEvent(paramInt1, paramString3);
+    ((f)g.af(f.class)).a(paramString2, paramString1);
+    AppMethodBeat.o(234464);
+  }
+  
   protected final String getTag()
   {
     return "MicroMsg.FilesFloatBall.MiniQbCallBackMMUI";
-  }
-  
-  protected final void h(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    AppMethodBeat.i(39076);
-    super.h(paramString1, paramString2, paramInt, paramString3);
-    if (bu.isNullOrNil(paramString2))
-    {
-      paramString1 = new lx();
-      paramString1.dAo.action = paramInt;
-      paramString1.dAo.filePath = paramString3;
-      a.IvT.l(paramString1);
-      AppMethodBeat.o(39076);
-      return;
-    }
-    paramString1 = new MiniReaderLogic.MiniQbFloatBallMenuActionBrandEvent(paramInt, paramString3);
-    ((f)g.ab(f.class)).a(paramString2, paramString1);
-    AppMethodBeat.o(39076);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -43,7 +44,7 @@ public class MiniQbCallBackMMUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MiniQbCallBackMMUI
  * JD-Core Version:    0.7.0.1
  */

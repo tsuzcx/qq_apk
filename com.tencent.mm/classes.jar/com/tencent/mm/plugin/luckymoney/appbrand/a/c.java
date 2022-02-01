@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cqn;
-import com.tencent.mm.protocal.protobuf.cqo;
+import com.tencent.mm.protocal.protobuf.dim;
+import com.tencent.mm.protocal.protobuf.din;
 
 public final class c
-  extends a<cqn, cqo>
+  extends a<dim, din>
 {
   public c(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(64875);
-    cqn localcqn = new cqn();
-    localcqn.dwb = paramString1;
-    localcqn.HsF = paramString2;
-    localcqn.offset = paramInt;
-    this.vvd = localcqn;
+    dim localdim = new dim();
+    localdim.dNI = paramString1;
+    localdim.MBB = paramString2;
+    localdim.offset = paramInt;
+    this.yPr = localdim;
     AppMethodBeat.o(64875);
   }
   

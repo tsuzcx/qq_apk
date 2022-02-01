@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.storage.DBManager;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -280,7 +280,7 @@ public class DownloadInfo
       }
       catch (JSONException localJSONException)
       {
-        ae.printErrStackTrace("_DownloadInfo", localJSONException, "", new Object[0]);
+        Log.printErrStackTrace("_DownloadInfo", localJSONException, "", new Object[0]);
       }
     }
     for (;;)
@@ -395,7 +395,7 @@ public class DownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="settings_sns_bg_select_from_album" android:layout="@layout/aop" android:title="@string/fab" />
-    <Preference android:key="settings_sns_bg_take_photo" android:layout="@layout/aop" android:title="@string/fac" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory mm:key="settings_netstat_info" />
+    <Preference mm:key="settings_netstat_mobile" mm:layout="@layout/b8j" mm:title="@string/grj" />
+    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_mobile_detail" mm:layout="@layout/b8j" mm:srcType="fgi" />
     <PreferenceCategory />
-    <com.tencent.mm.plugin.sns.ui.SnsArtistPreference android:key="settings_sns_bg_select_bg" android:layout="@layout/aop" android:title="@string/faa" />
-    <PreferenceCategory />
+    <Preference mm:key="settings_netstat_wifi" mm:layout="@layout/b8j" mm:title="@string/grn" />
+    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_wifi_detail" mm:layout="@layout/b8j" mm:srcType="iu3" />
+    <Preference mm:key="settings_netstat_tip" mm:layout="@layout/b_7" mm:title="@string/gvf" />
 </PreferenceScreen>

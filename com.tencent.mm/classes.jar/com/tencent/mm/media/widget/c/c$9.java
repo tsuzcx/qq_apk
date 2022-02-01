@@ -1,8 +1,8 @@
 package com.tencent.mm.media.widget.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 
 final class c$9
   implements Runnable
@@ -11,23 +11,23 @@ final class c$9
   
   public final void run()
   {
-    AppMethodBeat.i(217511);
+    AppMethodBeat.i(218964);
     try
     {
-      o.deleteFile(this.hyz);
-      AppMethodBeat.o(217511);
+      s.deleteFile(this.isA);
+      AppMethodBeat.o(218964);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.Media.MediaCodecMP4MuxRecorder", "[" + hashCode() + "] stop, delete old file error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(217511);
+      Log.e("MicroMsg.Media.MediaCodecMP4MuxRecorder", "[" + hashCode() + "] stop, delete old file error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(218964);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.widget.c.c.9
  * JD-Core Version:    0.7.0.1
  */

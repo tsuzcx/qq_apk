@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.priority.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.priority.PluginPriority;
 import com.tencent.mm.plugin.priority.a.a.a.a;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.protocal.protobuf.ho;
-import com.tencent.mm.protocal.protobuf.hp;
-import com.tencent.mm.protocal.protobuf.wa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.protocal.protobuf.ib;
+import com.tencent.mm.protocal.protobuf.ic;
+import com.tencent.mm.protocal.protobuf.xi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
 
 public final class c
 {
-  public static final void a(int paramInt1, long paramLong, int paramInt2, ho paramho)
+  public static final void a(int paramInt1, long paramLong, int paramInt2, ib paramib)
   {
     AppMethodBeat.i(87810);
-    Object localObject1 = (com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class);
-    Object localObject2 = b.a.qzF;
-    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LDf;
-    if (!com.tencent.mm.util.c.fSf())
+    Object localObject1 = (com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class);
+    Object localObject2 = b.a.rRQ;
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.QYz;
+    if (!com.tencent.mm.util.c.hde())
     {
-      localc = com.tencent.mm.util.c.LDf;
-      if (!com.tencent.mm.util.c.fSg()) {
+      localc = com.tencent.mm.util.c.QYz;
+      if (!com.tencent.mm.util.c.hdf()) {
         break label65;
       }
     }
@@ -42,34 +42,34 @@ public final class c
       AppMethodBeat.o(87810);
       return;
     }
-    localObject1 = az.iW(ak.getContext());
+    localObject1 = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
     int j;
     int k;
     label107:
     int m;
     label123:
     int i;
-    if (x.wb(paramho.FSq))
+    if (ab.Eq(paramib.KLZ))
     {
       j = 1;
-      if (!a.avJ(paramho.FSq)) {
+      if (!a.aKb(paramib.KLZ)) {
         break label532;
       }
       k = 1;
       if (j != 1) {
         break label538;
       }
-      m = r.zC(paramho.FSq);
-      localObject2 = ((l)g.ab(l.class)).azF().BH(paramho.FSq);
+      m = v.Ie(paramib.KLZ);
+      localObject2 = ((l)g.af(l.class)).aSN().Kn(paramib.KLZ);
       if (j != 1) {
         break label550;
       }
-      if (!com.tencent.mm.contact.c.lO(((aw)localObject2).field_type)) {
+      if (!com.tencent.mm.contact.c.oR(((ax)localObject2).field_type)) {
         break label544;
       }
       i = 3;
       label168:
-      if (!((l)g.ab(l.class)).azL().aVi(paramho.FSq)) {
+      if (!((l)g.af(l.class)).aST().bkg(paramib.KLZ)) {
         break label570;
       }
     }
@@ -80,18 +80,18 @@ public final class c
     label570:
     for (int n = 1;; n = 2)
     {
-      long l2 = Math.round(paramho.FSA * 100.0D);
-      localObject2 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage().avO(paramho.FSq);
+      long l2 = Math.round(paramib.KMj * 100.0D);
+      localObject2 = ((PluginPriority)g.ah(PluginPriority.class)).getC2CChatUsageResultStorage().aKg(paramib.KLZ);
       long l1 = 0L;
       int i1 = -1;
       if (localObject2 != null)
       {
-        l1 = Math.round(((wa)localObject2).GnY * 100.0D);
-        i1 = ((wa)localObject2).uvb;
+        l1 = Math.round(((xi)localObject2).LiL * 100.0D);
+        i1 = ((xi)localObject2).xNc;
       }
-      paramho = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(paramho.FSw), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramho.FSu), Integer.valueOf(paramInt2), Long.valueOf(ch.aDb() - paramho.FSt), Long.valueOf(paramho.FSx), paramho.FSy, Integer.valueOf(j), Integer.valueOf(k), paramho.FSq, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), Integer.valueOf(paramho.FSB), paramho.FSr, Long.valueOf(paramLong), Integer.valueOf(paramho.FSs), paramho.Id, Long.valueOf(l1), Integer.valueOf(i1), paramho.FSC });
-      ae.i("MicroMsg.Priority.PriorityReportLogic", "report18569File %s", new Object[] { paramho });
-      e.ywz.kvStat(18569, paramho);
+      paramib = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(paramib.KMf), Integer.valueOf(paramInt1), localObject1, Integer.valueOf(paramib.KMd), Integer.valueOf(paramInt2), Long.valueOf(cl.aWz() - paramib.KMc), Long.valueOf(paramib.KMg), paramib.KMh, Integer.valueOf(j), Integer.valueOf(k), paramib.KLZ, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), Integer.valueOf(paramib.KMk), paramib.KMa, Long.valueOf(paramLong), Integer.valueOf(paramib.KMb), paramib.Id, Long.valueOf(l1), Integer.valueOf(i1), paramib.KMl });
+      Log.i("MicroMsg.Priority.PriorityReportLogic", "report18569File %s", new Object[] { paramib });
+      e.Cxv.kvStat(18569, paramib);
       AppMethodBeat.o(87810);
       return;
       j = 2;
@@ -102,23 +102,23 @@ public final class c
       break label123;
       i = 4;
       break label168;
-      if (((an)localObject2).adx()) {}
+      if (((as)localObject2).arA()) {}
       for (i = 1;; i = 2) {
         break;
       }
     }
   }
   
-  public static final void a(int paramInt1, long paramLong, int paramInt2, hp paramhp)
+  public static final void a(int paramInt1, long paramLong, int paramInt2, ic paramic)
   {
     AppMethodBeat.i(87809);
-    Object localObject1 = (com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class);
-    Object localObject2 = b.a.qzE;
-    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LDf;
-    if (!com.tencent.mm.util.c.fSf())
+    Object localObject1 = (com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class);
+    Object localObject2 = b.a.rRP;
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.QYz;
+    if (!com.tencent.mm.util.c.hde())
     {
-      localc = com.tencent.mm.util.c.LDf;
-      if (!com.tencent.mm.util.c.fSg()) {
+      localc = com.tencent.mm.util.c.QYz;
+      if (!com.tencent.mm.util.c.hdf()) {
         break label65;
       }
     }
@@ -128,34 +128,34 @@ public final class c
       AppMethodBeat.o(87809);
       return;
     }
-    localObject1 = az.iW(ak.getContext());
+    localObject1 = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
     int j;
     int k;
     label107:
     int m;
     label123:
     int i;
-    if (x.wb(paramhp.FSq))
+    if (ab.Eq(paramic.KLZ))
     {
       j = 1;
-      if (!a.avJ(paramhp.FSq)) {
+      if (!a.aKb(paramic.KLZ)) {
         break label513;
       }
       k = 1;
       if (j != 1) {
         break label519;
       }
-      m = r.zC(paramhp.FSq);
-      localObject2 = ((l)g.ab(l.class)).azF().BH(paramhp.FSq);
+      m = v.Ie(paramic.KLZ);
+      localObject2 = ((l)g.af(l.class)).aSN().Kn(paramic.KLZ);
       if (j != 1) {
         break label531;
       }
-      if (!com.tencent.mm.contact.c.lO(((aw)localObject2).field_type)) {
+      if (!com.tencent.mm.contact.c.oR(((ax)localObject2).field_type)) {
         break label525;
       }
       i = 3;
       label168:
-      if (!((l)g.ab(l.class)).azL().aVi(paramhp.FSq)) {
+      if (!((l)g.af(l.class)).aST().bkg(paramic.KLZ)) {
         break label551;
       }
     }
@@ -166,18 +166,18 @@ public final class c
     label551:
     for (int n = 1;; n = 2)
     {
-      long l2 = Math.round(paramhp.FSA * 100.0D);
-      localObject2 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage().avO(paramhp.FSq);
+      long l2 = Math.round(paramic.KMj * 100.0D);
+      localObject2 = ((PluginPriority)g.ah(PluginPriority.class)).getC2CChatUsageResultStorage().aKg(paramic.KLZ);
       long l1 = 0L;
       int i1 = -1;
       if (localObject2 != null)
       {
-        l1 = Math.round(((wa)localObject2).GnY * 100.0D);
-        i1 = ((wa)localObject2).uvb;
+        l1 = Math.round(((xi)localObject2).LiL * 100.0D);
+        i1 = ((xi)localObject2).xNc;
       }
-      paramhp = String.format("%d,%d,%d,%s,%d,%d,%d,%d,%d,%d,%d,%d,%s,%d,%d,%d,%d,%s,%d,%s,%s", new Object[] { Long.valueOf(paramhp.FSD), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject1, Integer.valueOf(paramhp.FSu), Integer.valueOf(paramInt2), Long.valueOf(ch.aDb() - paramhp.FSt), Integer.valueOf(0), Integer.valueOf(paramhp.FSE), Long.valueOf(paramhp.FSw), Integer.valueOf(j), Integer.valueOf(k), paramhp.FSq, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), paramhp.FSr, Integer.valueOf(paramhp.FSB), Long.valueOf(l1), Integer.valueOf(i1) });
-      ae.i("MicroMsg.Priority.PriorityReportLogic", "report16308Img %s", new Object[] { paramhp });
-      e.ywz.kvStat(16308, paramhp);
+      paramic = String.format("%d,%d,%d,%s,%d,%d,%d,%d,%d,%d,%d,%d,%s,%d,%d,%d,%d,%s,%d,%s,%s", new Object[] { Long.valueOf(paramic.KMm), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject1, Integer.valueOf(paramic.KMd), Integer.valueOf(paramInt2), Long.valueOf(cl.aWz() - paramic.KMc), Integer.valueOf(0), Integer.valueOf(paramic.KMn), Long.valueOf(paramic.KMf), Integer.valueOf(j), Integer.valueOf(k), paramic.KLZ, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), paramic.KMa, Integer.valueOf(paramic.KMk), Long.valueOf(l1), Integer.valueOf(i1) });
+      Log.i("MicroMsg.Priority.PriorityReportLogic", "report16308Img %s", new Object[] { paramic });
+      e.Cxv.kvStat(16308, paramic);
       AppMethodBeat.o(87809);
       return;
       j = 2;
@@ -188,7 +188,7 @@ public final class c
       break label123;
       i = 4;
       break label168;
-      if (((an)localObject2).adx()) {}
+      if (((as)localObject2).arA()) {}
       for (i = 1;; i = 2) {
         break;
       }

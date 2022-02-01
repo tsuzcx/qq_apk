@@ -1,71 +1,71 @@
 package com.tencent.mm.al.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ai;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.aj;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class k
-  extends ai
+  extends aj
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(116443);
-    c.a locala = new c.a();
-    locala.IBL = new Field[10];
-    locala.columns = new String[11];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[10];
+    localMAutoDBInfo.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "userId";
-    locala.IBN.put("userId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "userId";
+    localMAutoDBInfo.colsMap.put("userId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" userId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "userId";
-    locala.columns[1] = "userName";
-    locala.IBN.put("userName", "TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "userId";
+    localMAutoDBInfo.columns[1] = "userName";
+    localMAutoDBInfo.colsMap.put("userName", "TEXT default '' ");
     localStringBuilder.append(" userName TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "userNamePY";
-    locala.IBN.put("userNamePY", "TEXT default '' ");
+    localMAutoDBInfo.columns[2] = "userNamePY";
+    localMAutoDBInfo.colsMap.put("userNamePY", "TEXT default '' ");
     localStringBuilder.append(" userNamePY TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "brandUserName";
-    locala.IBN.put("brandUserName", "TEXT default '' ");
+    localMAutoDBInfo.columns[3] = "brandUserName";
+    localMAutoDBInfo.colsMap.put("brandUserName", "TEXT default '' ");
     localStringBuilder.append(" brandUserName TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[4] = "UserVersion";
-    locala.IBN.put("UserVersion", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[4] = "UserVersion";
+    localMAutoDBInfo.colsMap.put("UserVersion", "INTEGER default '-1' ");
     localStringBuilder.append(" UserVersion INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[5] = "needToUpdate";
-    locala.IBN.put("needToUpdate", "INTEGER default 'true' ");
+    localMAutoDBInfo.columns[5] = "needToUpdate";
+    localMAutoDBInfo.colsMap.put("needToUpdate", "INTEGER default 'true' ");
     localStringBuilder.append(" needToUpdate INTEGER default 'true' ");
     localStringBuilder.append(", ");
-    locala.columns[6] = "headImageUrl";
-    locala.IBN.put("headImageUrl", "TEXT");
+    localMAutoDBInfo.columns[6] = "headImageUrl";
+    localMAutoDBInfo.colsMap.put("headImageUrl", "TEXT");
     localStringBuilder.append(" headImageUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "profileUrl";
-    locala.IBN.put("profileUrl", "TEXT");
+    localMAutoDBInfo.columns[7] = "profileUrl";
+    localMAutoDBInfo.colsMap.put("profileUrl", "TEXT");
     localStringBuilder.append(" profileUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "bitFlag";
-    locala.IBN.put("bitFlag", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[8] = "bitFlag";
+    localMAutoDBInfo.colsMap.put("bitFlag", "INTEGER default '0' ");
     localStringBuilder.append(" bitFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[9] = "addMemberUrl";
-    locala.IBN.put("addMemberUrl", "TEXT");
+    localMAutoDBInfo.columns[9] = "addMemberUrl";
+    localMAutoDBInfo.colsMap.put("addMemberUrl", "TEXT");
     localStringBuilder.append(" addMemberUrl TEXT");
-    locala.columns[10] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[10] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(116443);
   }
   
-  public final boolean aGF()
+  public final boolean bay()
   {
     AppMethodBeat.i(116442);
     if (this.field_needToUpdate)
@@ -73,12 +73,12 @@ public final class k
       AppMethodBeat.o(116442);
       return true;
     }
-    if ((bu.isNullOrNil(this.field_profileUrl)) && (bu.isNullOrNil(this.field_headImageUrl)))
+    if ((Util.isNullOrNil(this.field_profileUrl)) && (Util.isNullOrNil(this.field_headImageUrl)))
     {
       AppMethodBeat.o(116442);
       return true;
     }
-    if ((bu.isNullOrNil(this.field_userNamePY)) && (!bu.isNullOrNil(this.field_userName)))
+    if ((Util.isNullOrNil(this.field_userNamePY)) && (!Util.isNullOrNil(this.field_userName)))
     {
       AppMethodBeat.o(116442);
       return true;
@@ -87,19 +87,19 @@ public final class k
     return false;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
   
-  public final boolean hk(int paramInt)
+  public final boolean iE(int paramInt)
   {
     return (this.field_bitFlag & paramInt) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.al.a.k
  * JD-Core Version:    0.7.0.1
  */

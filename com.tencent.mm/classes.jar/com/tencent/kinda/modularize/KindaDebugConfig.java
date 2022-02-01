@@ -1,8 +1,5 @@
 package com.tencent.kinda.modularize;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-
 public class KindaDebugConfig
 {
   private static volatile boolean sLibReloading = false;
@@ -12,19 +9,11 @@ public class KindaDebugConfig
     return sLibReloading;
   }
   
-  public static void markLibReloading()
-  {
-    AppMethodBeat.i(221823);
-    ae.d("KindaHotReload", "mark reloading flag");
-    AppMethodBeat.o(221823);
-  }
+  public static void markLibReloading() {}
   
   public static void resetLibReloading()
   {
-    AppMethodBeat.i(221824);
-    ae.d("KindaHotReload", "reset reloading flag");
     sLibReloading = false;
-    AppMethodBeat.o(221824);
   }
 }
 

@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.mmsight;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.us;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.a.vq;
+import com.tencent.mm.g.a.wb;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.y.a;
 import com.tencent.mm.plugin.mmsight.model.a.k;
 import com.tencent.mm.plugin.mmsight.model.n;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class e
-  implements az
+  implements bd
 {
-  private n vYQ;
-  private c vYR;
-  private c vYS;
+  private n zsS;
+  private IListener zsT;
+  private IListener zsU;
   
   public e()
   {
     AppMethodBeat.i(89317);
-    this.vYQ = new n();
-    this.vYR = new c() {};
-    this.vYS = new e.2(this);
+    this.zsS = new n();
+    this.zsT = new IListener() {};
+    this.zsU = new IListener() {};
     AppMethodBeat.o(89317);
   }
   
@@ -38,19 +39,19 @@ public class e
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(89318);
-    o.aNm().a(this.vYQ);
-    a.IvT.b(this.vYS);
-    a.IvT.c(this.vYR);
+    o.bho().a(this.zsS);
+    EventCenter.instance.add(this.zsU);
+    EventCenter.instance.addListener(this.zsT);
     AppMethodBeat.o(89318);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(89319);
-    o.aNm().b(this.vYQ);
-    a.IvT.d(this.vYS);
-    k.wcg.ayL();
-    a.IvT.d(this.vYR);
+    o.bho().b(this.zsS);
+    EventCenter.instance.removeListener(this.zsU);
+    k.zwi.aRR();
+    EventCenter.instance.removeListener(this.zsT);
     AppMethodBeat.o(89319);
   }
   

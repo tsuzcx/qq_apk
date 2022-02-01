@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum h$a
 {
-  public final int czw;
+  public final int cND;
   
   static
   {
     AppMethodBeat.i(64889);
-    vvq = new a("RANDOM_LUCK", 0, 1);
-    vvr = new a("FIX_NORMAL", 1, 0);
-    vvs = new a[] { vvq, vvr };
+    yPE = new a("RANDOM_LUCK", 0, 1);
+    yPF = new a("FIX_NORMAL", 1, 0);
+    yPG = new a[] { yPE, yPF };
     AppMethodBeat.o(64889);
   }
   
   private h$a(int paramInt)
   {
-    this.czw = paramInt;
+    this.cND = paramInt;
   }
 }
 

@@ -5,24 +5,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.q;
 
 @a(19)
 public class DataTransferUI
   extends MMBaseActivity
 {
-  private p mHs;
+  private q nUq;
   private long startTime = 0L;
   
-  private void bo(Intent paramIntent)
+  private void by(Intent paramIntent)
   {
     AppMethodBeat.i(33018);
     boolean bool = paramIntent.getBooleanExtra("finish_data_transfer", false);
-    ae.d("MicroMsg.DataTransferUI", "tryFinish, timestamp = " + System.currentTimeMillis() + ", finish = " + bool);
+    Log.d("MicroMsg.DataTransferUI", "tryFinish, timestamp = " + System.currentTimeMillis() + ", finish = " + bool);
     if (bool) {
       finish();
     }
@@ -33,25 +33,25 @@ public class DataTransferUI
   {
     AppMethodBeat.i(33016);
     super.onCreate(paramBundle);
-    ae.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
+    Log.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
     this.startTime = System.currentTimeMillis();
-    getString(2131755906);
-    this.mHs = h.b(this, getString(2131755704), false, null);
-    new aq()
+    getString(2131755998);
+    this.nUq = h.a(this, getString(2131755775), false, null);
+    new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(33015);
         if ((DataTransferUI.a(DataTransferUI.this) != null) && (DataTransferUI.a(DataTransferUI.this).isShowing()))
         {
-          ae.e("MicroMsg.DataTransferUI", "dialog has shown for a long time, auto dismiss it...");
+          Log.e("MicroMsg.DataTransferUI", "dialog has shown for a long time, auto dismiss it...");
           DataTransferUI.a(DataTransferUI.this).dismiss();
           DataTransferUI.this.finish();
         }
         AppMethodBeat.o(33015);
       }
     }.sendEmptyMessageDelayed(0, 60000L);
-    bo(getIntent());
+    by(getIntent());
     AppMethodBeat.o(33016);
   }
   
@@ -59,9 +59,9 @@ public class DataTransferUI
   {
     AppMethodBeat.i(33020);
     super.onDestroy();
-    ae.d("MicroMsg.DataTransferUI", "onDestroy");
-    if ((this.mHs != null) && (this.mHs.isShowing())) {
-      this.mHs.dismiss();
+    Log.d("MicroMsg.DataTransferUI", "onDestroy");
+    if ((this.nUq != null) && (this.nUq.isShowing())) {
+      this.nUq.dismiss();
     }
     AppMethodBeat.o(33020);
   }
@@ -69,15 +69,15 @@ public class DataTransferUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(33017);
-    ae.d("MicroMsg.DataTransferUI", "onNewIntent, timestamp = " + System.currentTimeMillis());
-    bo(paramIntent);
+    Log.d("MicroMsg.DataTransferUI", "onNewIntent, timestamp = " + System.currentTimeMillis());
+    by(paramIntent);
     AppMethodBeat.o(33017);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(33019);
-    ae.d("MicroMsg.DataTransferUI", "edw DataTransferUI duration time = " + (System.currentTimeMillis() - this.startTime));
+    Log.d("MicroMsg.DataTransferUI", "edw DataTransferUI duration time = " + (System.currentTimeMillis() - this.startTime));
     super.onPause();
     AppMethodBeat.o(33019);
   }
@@ -90,7 +90,7 @@ public class DataTransferUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.DataTransferUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@drawable/f7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="bottom" android:id="@id/ga1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="{user}" style="@style/ly" />
+    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a9a" android:layout_width="@dimen/ad4" android:layout_height="@dimen/ad4" android:layout_marginTop="2.0dip" android:src="@drawable/bca" android:scaleType="centerCrop" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/a9d" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include android:id="@id/a9p" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bbm" />
+                <include android:id="@id/a9_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" layout="@layout/bbm" />
+            </LinearLayout>
+            <TextView android:textSize="15.0dip" android:textColor="@color/a0r" android:id="@id/a59" android:paddingRight="@dimen/ir" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yf" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/c3r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/ce">
+        <ImageView android:layout_gravity="center_vertical" android:background="@color/fi" android:layout_width="40.0dip" android:layout_height="1.0px" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="3.0dip" android:layout_height="3.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/aj6" />
+        <ImageView android:layout_gravity="center_vertical" android:background="@color/fi" android:layout_width="40.0dip" android:layout_height="1.0px" />
+    </LinearLayout>
 </LinearLayout>

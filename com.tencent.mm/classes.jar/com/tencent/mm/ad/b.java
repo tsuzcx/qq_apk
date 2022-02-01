@@ -8,14 +8,14 @@ public final class b
   {
     public static Field field_mContext;
     public static Field field_mFastgrabConfigReader;
-    public static Class<?> gIE;
+    public static Class<?> hvx;
   }
   
   public static final class b
   {
-    public static Class aWK;
-    public static Field gIF;
-    public static Field gIG;
+    public static Class aWC;
+    public static Field hvy;
+    public static Field hvz;
   }
 }
 

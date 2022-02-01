@@ -38,7 +38,6 @@ import com.facebook.share.widget.LikeView.ObjectType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
@@ -147,7 +146,7 @@ public class LikeActionController
     if (paramString != null) {
       localIntent.putExtras(paramString);
     }
-    d.V(FacebookSdk.getApplicationContext()).b(localIntent);
+    d.W(FacebookSdk.getApplicationContext()).b(localIntent);
     AppMethodBeat.o(8061);
   }
   
@@ -212,39 +211,39 @@ public class LikeActionController
     //   2: aconst_null
     //   3: astore_2
     //   4: sipush 8056
-    //   7: invokestatic 199	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: invokestatic 451	com/facebook/share/internal/LikeActionController:getCacheKeyForObjectId	(Ljava/lang/String;)Ljava/lang/String;
+    //   11: invokestatic 450	com/facebook/share/internal/LikeActionController:getCacheKeyForObjectId	(Ljava/lang/String;)Ljava/lang/String;
     //   14: astore_0
-    //   15: getstatic 335	com/facebook/share/internal/LikeActionController:controllerDiskCache	Lcom/facebook/internal/FileLruCache;
+    //   15: getstatic 334	com/facebook/share/internal/LikeActionController:controllerDiskCache	Lcom/facebook/internal/FileLruCache;
     //   18: aload_0
-    //   19: invokevirtual 457	com/facebook/internal/FileLruCache:get	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   19: invokevirtual 456	com/facebook/internal/FileLruCache:get	(Ljava/lang/String;)Ljava/io/InputStream;
     //   22: astore_0
     //   23: aload_2
     //   24: astore_1
     //   25: aload_0
     //   26: ifnull +25 -> 51
     //   29: aload_0
-    //   30: invokestatic 463	com/facebook/internal/Utility:readStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   30: invokestatic 462	com/facebook/internal/Utility:readStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
     //   33: astore 4
     //   35: aload_2
     //   36: astore_1
     //   37: aload 4
-    //   39: invokestatic 467	com/facebook/internal/Utility:isNullOrEmpty	(Ljava/lang/String;)Z
+    //   39: invokestatic 466	com/facebook/internal/Utility:isNullOrEmpty	(Ljava/lang/String;)Z
     //   42: ifne +9 -> 51
     //   45: aload 4
-    //   47: invokestatic 470	com/facebook/share/internal/LikeActionController:deserializeFromJson	(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;
+    //   47: invokestatic 469	com/facebook/share/internal/LikeActionController:deserializeFromJson	(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;
     //   50: astore_1
     //   51: aload_1
     //   52: astore_2
     //   53: aload_0
     //   54: ifnull +9 -> 63
     //   57: aload_0
-    //   58: invokestatic 474	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   58: invokestatic 473	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   61: aload_1
     //   62: astore_2
     //   63: sipush 8056
-    //   66: invokestatic 225	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: invokestatic 224	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: aload_2
     //   70: areturn
     //   71: astore_0
@@ -255,7 +254,7 @@ public class LikeActionController
     //   76: aload_0
     //   77: ifnull -14 -> 63
     //   80: aload_0
-    //   81: invokestatic 474	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   81: invokestatic 473	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   84: aload_3
     //   85: astore_2
     //   86: goto -23 -> 63
@@ -265,9 +264,9 @@ public class LikeActionController
     //   92: aload_1
     //   93: ifnull +7 -> 100
     //   96: aload_1
-    //   97: invokestatic 474	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   97: invokestatic 473	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   100: sipush 8056
-    //   103: invokestatic 225	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: invokestatic 224	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   106: aload_0
     //   107: athrow
     //   108: astore_1
@@ -442,7 +441,7 @@ public class LikeActionController
     paramString = getCacheKeyForObjectId(paramString);
     LikeActionController localLikeActionController = (LikeActionController)cache.get(paramString);
     if (localLikeActionController != null) {
-      mruCacheWorkQueue.addActiveWorkItem(new MRUCacheWorkItem(paramString, false));
+      mruCacheWorkQueue.addActiveWorkItem(new LikeActionController.MRUCacheWorkItem(paramString, false));
     }
     AppMethodBeat.o(8053);
     return localLikeActionController;
@@ -614,46 +613,46 @@ public class LikeActionController
     //   0: ldc 2
     //   2: monitorenter
     //   3: sipush 8049
-    //   6: invokestatic 199	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 585	com/facebook/share/internal/LikeActionController:isInitialized	Z
+    //   6: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 584	com/facebook/share/internal/LikeActionController:isInitialized	Z
     //   12: ifeq +13 -> 25
     //   15: sipush 8049
-    //   18: invokestatic 225	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: invokestatic 224	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: ldc 2
     //   23: monitorexit
     //   24: return
-    //   25: new 437	android/os/Handler
+    //   25: new 436	android/os/Handler
     //   28: dup
-    //   29: invokestatic 664	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   32: invokespecial 667	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   35: putstatic 433	com/facebook/share/internal/LikeActionController:handler	Landroid/os/Handler;
-    //   38: invokestatic 372	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
-    //   41: ldc 135
+    //   29: invokestatic 663	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   32: invokespecial 666	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   35: putstatic 432	com/facebook/share/internal/LikeActionController:handler	Landroid/os/Handler;
+    //   38: invokestatic 371	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
+    //   41: ldc 134
     //   43: iconst_0
-    //   44: invokevirtual 616	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   47: ldc 138
+    //   44: invokevirtual 615	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   47: ldc 137
     //   49: iconst_1
-    //   50: invokeinterface 670 3 0
-    //   55: putstatic 327	com/facebook/share/internal/LikeActionController:objectSuffix	I
-    //   58: new 453	com/facebook/internal/FileLruCache
+    //   50: invokeinterface 669 3 0
+    //   55: putstatic 326	com/facebook/share/internal/LikeActionController:objectSuffix	I
+    //   58: new 452	com/facebook/internal/FileLruCache
     //   61: dup
-    //   62: getstatic 207	com/facebook/share/internal/LikeActionController:TAG	Ljava/lang/String;
-    //   65: new 672	com/facebook/internal/FileLruCache$Limits
+    //   62: getstatic 206	com/facebook/share/internal/LikeActionController:TAG	Ljava/lang/String;
+    //   65: new 671	com/facebook/internal/FileLruCache$Limits
     //   68: dup
-    //   69: invokespecial 673	com/facebook/internal/FileLruCache$Limits:<init>	()V
-    //   72: invokespecial 676	com/facebook/internal/FileLruCache:<init>	(Ljava/lang/String;Lcom/facebook/internal/FileLruCache$Limits;)V
-    //   75: putstatic 335	com/facebook/share/internal/LikeActionController:controllerDiskCache	Lcom/facebook/internal/FileLruCache;
-    //   78: invokestatic 679	com/facebook/share/internal/LikeActionController:registerAccessTokenTracker	()V
-    //   81: getstatic 685	com/facebook/internal/CallbackManagerImpl$RequestCodeOffset:Like	Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;
-    //   84: invokevirtual 688	com/facebook/internal/CallbackManagerImpl$RequestCodeOffset:toRequestCode	()I
+    //   69: invokespecial 672	com/facebook/internal/FileLruCache$Limits:<init>	()V
+    //   72: invokespecial 675	com/facebook/internal/FileLruCache:<init>	(Ljava/lang/String;Lcom/facebook/internal/FileLruCache$Limits;)V
+    //   75: putstatic 334	com/facebook/share/internal/LikeActionController:controllerDiskCache	Lcom/facebook/internal/FileLruCache;
+    //   78: invokestatic 678	com/facebook/share/internal/LikeActionController:registerAccessTokenTracker	()V
+    //   81: getstatic 684	com/facebook/internal/CallbackManagerImpl$RequestCodeOffset:Like	Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;
+    //   84: invokevirtual 687	com/facebook/internal/CallbackManagerImpl$RequestCodeOffset:toRequestCode	()I
     //   87: new 16	com/facebook/share/internal/LikeActionController$3
     //   90: dup
-    //   91: invokespecial 689	com/facebook/share/internal/LikeActionController$3:<init>	()V
-    //   94: invokestatic 695	com/facebook/internal/CallbackManagerImpl:registerStaticCallback	(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V
+    //   91: invokespecial 688	com/facebook/share/internal/LikeActionController$3:<init>	()V
+    //   94: invokestatic 694	com/facebook/internal/CallbackManagerImpl:registerStaticCallback	(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V
     //   97: iconst_1
-    //   98: putstatic 585	com/facebook/share/internal/LikeActionController:isInitialized	Z
+    //   98: putstatic 584	com/facebook/share/internal/LikeActionController:isInitialized	Z
     //   101: sipush 8049
-    //   104: invokestatic 225	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: invokestatic 224	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: goto -86 -> 21
     //   110: astore_0
     //   111: ldc 2
@@ -848,7 +847,7 @@ public class LikeActionController
   {
     AppMethodBeat.i(8052);
     paramString = getCacheKeyForObjectId(paramString);
-    mruCacheWorkQueue.addActiveWorkItem(new MRUCacheWorkItem(paramString, true));
+    mruCacheWorkQueue.addActiveWorkItem(new LikeActionController.MRUCacheWorkItem(paramString, true));
     cache.put(paramString, paramLikeActionController);
     AppMethodBeat.o(8052);
   }
@@ -1546,46 +1545,6 @@ public class LikeActionController
     public abstract boolean isObjectLiked();
   }
   
-  static class MRUCacheWorkItem
-    implements Runnable
-  {
-    private static ArrayList<String> mruCachedItems;
-    private String cacheItem;
-    private boolean shouldTrim;
-    
-    static
-    {
-      AppMethodBeat.i(8038);
-      mruCachedItems = new ArrayList();
-      AppMethodBeat.o(8038);
-    }
-    
-    MRUCacheWorkItem(String paramString, boolean paramBoolean)
-    {
-      this.cacheItem = paramString;
-      this.shouldTrim = paramBoolean;
-    }
-    
-    public void run()
-    {
-      AppMethodBeat.i(8037);
-      if (this.cacheItem != null)
-      {
-        mruCachedItems.remove(this.cacheItem);
-        mruCachedItems.add(0, this.cacheItem);
-      }
-      if ((this.shouldTrim) && (mruCachedItems.size() >= 128)) {
-        while (64 < mruCachedItems.size())
-        {
-          Object localObject = mruCachedItems;
-          localObject = (String)((ArrayList)localObject).remove(((ArrayList)localObject).size() - 1);
-          LikeActionController.cache.remove(localObject);
-        }
-      }
-      AppMethodBeat.o(8037);
-    }
-  }
-  
   class PublishLikeRequestWrapper
     extends LikeActionController.AbstractRequestWrapper
   {
@@ -1682,7 +1641,7 @@ public class LikeActionController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.share.internal.LikeActionController
  * JD-Core Version:    0.7.0.1
  */

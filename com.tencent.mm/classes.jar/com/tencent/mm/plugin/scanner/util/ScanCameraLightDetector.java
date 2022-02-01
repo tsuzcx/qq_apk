@@ -3,43 +3,43 @@ package com.tencent.mm.plugin.scanner.util;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.e.c.d;
+import com.tencent.f.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.sl;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.a.ti;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class ScanCameraLightDetector
 {
-  public static final ScanCameraLightDetector yPx;
-  private aq handler;
-  private String hsp;
-  private float roV = -1.0F;
-  private long yPA = -1L;
-  private HandlerThread yPB;
-  private final int yPy = 2;
-  private int yPz;
+  public static final ScanCameraLightDetector CTx;
+  private long CTA = -1L;
+  private HandlerThread CTB;
+  private final int CTy = 2;
+  private int CTz;
+  private MMHandler handler;
+  private String imR;
+  private float sQv = -1.0F;
   
   static
   {
     AppMethodBeat.i(91077);
-    yPx = new ScanCameraLightDetector();
+    CTx = new ScanCameraLightDetector();
     AppMethodBeat.o(91077);
   }
   
   private static native int calcLumNative(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  private void dQf()
+  private void eRS()
   {
     AppMethodBeat.i(91074);
-    ae.i("MicroMsg.ScanCameraLightDetector", "alvinluo initDetectThread");
+    Log.i("MicroMsg.ScanCameraLightDetector", "alvinluo initDetectThread");
     stop();
-    this.yPB = d.hh("ScanCameraLightDetector_detectThread", 5);
-    this.yPB.start();
-    this.handler = new aq(this.yPB.getLooper())
+    this.CTB = d.hB("ScanCameraLightDetector_detectThread", 5);
+    this.CTB.start();
+    this.handler = new MMHandler(this.CTB.getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -49,12 +49,12 @@ public class ScanCameraLightDetector
           paramAnonymousMessage = (ScanCameraLightDetector.a)paramAnonymousMessage.obj;
           if (paramAnonymousMessage != null)
           {
-            long l = bu.HQ();
-            boolean bool = ScanCameraLightDetector.E(paramAnonymousMessage.wbi, paramAnonymousMessage.width, paramAnonymousMessage.height);
-            ae.i("MicroMsg.ScanCameraLightDetector", "isYuvDark: %s, currentLight: %s, used %sms", new Object[] { Boolean.valueOf(bool), Float.valueOf(ScanCameraLightDetector.a(ScanCameraLightDetector.this)), Long.valueOf(bu.aO(l)) });
+            long l = Util.currentTicks();
+            boolean bool = ScanCameraLightDetector.O(paramAnonymousMessage.zvl, paramAnonymousMessage.width, paramAnonymousMessage.height);
+            Log.i("MicroMsg.ScanCameraLightDetector", "isYuvDark: %s, currentLight: %s, used %sms", new Object[] { Boolean.valueOf(bool), Float.valueOf(ScanCameraLightDetector.a(ScanCameraLightDetector.this)), Long.valueOf(Util.ticksToNow(l)) });
             if (bool)
             {
-              ae.i("MicroMsg.ScanCameraLightDetector", "is dark now");
+              Log.i("MicroMsg.ScanCameraLightDetector", "is dark now");
               ScanCameraLightDetector.b(ScanCameraLightDetector.this);
               if ((ScanCameraLightDetector.c(ScanCameraLightDetector.this).equals("continuous-video")) && (ScanCameraLightDetector.d(ScanCameraLightDetector.this) < 2))
               {
@@ -62,30 +62,30 @@ public class ScanCameraLightDetector
                 return;
               }
               ScanCameraLightDetector.e(ScanCameraLightDetector.this);
-              ar.f(new Runnable()
+              MMHandlerThread.postToMainThread(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(91069);
-                  sl localsl = new sl();
-                  localsl.dIb.dIc = true;
-                  a.IvT.l(localsl);
+                  ti localti = new ti();
+                  localti.dZN.dZO = true;
+                  EventCenter.instance.publish(localti);
                   AppMethodBeat.o(91069);
                 }
               });
               AppMethodBeat.o(91071);
               return;
             }
-            ae.i("MicroMsg.ScanCameraLightDetector", "not dark");
+            Log.i("MicroMsg.ScanCameraLightDetector", "not dark");
             ScanCameraLightDetector.e(ScanCameraLightDetector.this);
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(91070);
-                sl localsl = new sl();
-                localsl.dIb.dIc = false;
-                a.IvT.l(localsl);
+                ti localti = new ti();
+                localti.dZN.dZO = false;
+                EventCenter.instance.publish(localti);
                 AppMethodBeat.o(91070);
               }
             });
@@ -97,20 +97,20 @@ public class ScanCameraLightDetector
     AppMethodBeat.o(91074);
   }
   
-  public final void D(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void N(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91075);
-    if (((this.yPA < 0L) || (bu.aO(this.yPA) >= 1000L)) && (this.handler != null) && (this.yPB != null) && (this.yPB.isAlive()))
+    if (((this.CTA < 0L) || (Util.ticksToNow(this.CTA) >= 1000L)) && (this.handler != null) && (this.CTB != null) && (this.CTB.isAlive()))
     {
       a locala = new a((byte)0);
-      locala.wbi = paramArrayOfByte;
+      locala.zvl = paramArrayOfByte;
       locala.width = paramInt1;
       locala.height = paramInt2;
       paramArrayOfByte = Message.obtain();
       paramArrayOfByte.what = 233;
       paramArrayOfByte.obj = locala;
       this.handler.sendMessage(paramArrayOfByte);
-      this.yPA = bu.HQ();
+      this.CTA = Util.currentTicks();
     }
     AppMethodBeat.o(91075);
   }
@@ -120,14 +120,14 @@ public class ScanCameraLightDetector
     AppMethodBeat.i(91072);
     try
     {
-      this.hsp = paramString;
-      dQf();
+      this.imR = paramString;
+      eRS();
       AppMethodBeat.o(91072);
       return;
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("MicroMsg.ScanCameraLightDetector", paramString, "start error: %s", new Object[] { paramString.getMessage() });
+      Log.printErrStackTrace("MicroMsg.ScanCameraLightDetector", paramString, "start error: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(91072);
     }
   }
@@ -137,16 +137,16 @@ public class ScanCameraLightDetector
     AppMethodBeat.i(91073);
     try
     {
-      this.yPA = -1L;
-      if (this.yPB != null) {
-        this.yPB.quit();
+      this.CTA = -1L;
+      if (this.CTB != null) {
+        this.CTB.quit();
       }
       AppMethodBeat.o(91073);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.ScanCameraLightDetector", localException, "stop error: %s", new Object[] { localException.getMessage() });
+      Log.printErrStackTrace("MicroMsg.ScanCameraLightDetector", localException, "stop error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(91073);
     }
   }
@@ -154,8 +154,8 @@ public class ScanCameraLightDetector
   final class a
   {
     int height;
-    byte[] wbi;
     int width;
+    byte[] zvl;
     
     private a() {}
   }

@@ -2,58 +2,55 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class gb
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFL = "snsId".hashCode();
-  private static final int eFM = "userName".hashCode();
-  private static final int eFN = "localFlag".hashCode();
-  private static final int eFO = "createTime".hashCode();
-  private static final int eFP = "head".hashCode();
-  private static final int eFQ = "localPrivate".hashCode();
-  private static final int eFR = "sourceType".hashCode();
-  private static final int eFS = "likeFlag".hashCode();
-  private static final int eFT = "pravited".hashCode();
-  private static final int eFU = "stringSeq".hashCode();
-  private static final int eFV = "content".hashCode();
-  private static final int eFW = "attrBuf".hashCode();
-  private static final int eFX = "postBuf".hashCode();
-  private static final int eGe = "subType".hashCode();
+  private static final int content_HASHCODE = "content".hashCode();
+  private static final int fLi;
+  private static final int fNl = "sayhiuser".hashCode();
+  private static final int fNm = "sayhicontent".hashCode();
+  private static final int fNn = "imgpath".hashCode();
+  private static final int fjQ;
+  private static final int fjl;
+  private static final int foe = "isSend".hashCode();
+  private static final int fqw;
+  private static final int fyg = "svrid".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE = "type".hashCode();
+  private static final int type_HASHCODE;
+  private boolean __hadSetcontent = true;
   private boolean __hadSettype = true;
-  private boolean eFA = true;
-  private boolean eFH = true;
-  private boolean eFo = true;
-  private boolean eFp = true;
-  private boolean eFq = true;
-  private boolean eFr = true;
-  private boolean eFs = true;
-  private boolean eFt = true;
-  private boolean eFu = true;
-  private boolean eFv = true;
-  private boolean eFw = true;
-  private boolean eFx = true;
-  private boolean eFy = true;
-  private boolean eFz = true;
-  public byte[] field_attrBuf;
-  public byte[] field_content;
-  public int field_createTime;
-  public int field_head;
-  public int field_likeFlag;
-  public int field_localFlag;
-  public int field_localPrivate;
-  public byte[] field_postBuf;
-  public int field_pravited;
-  public long field_snsId;
-  public int field_sourceType;
-  public String field_stringSeq;
-  public int field_subType;
+  private boolean fKX = true;
+  private boolean fNh = true;
+  private boolean fNi = true;
+  private boolean fNj = true;
+  public String field_content;
+  public long field_createtime;
+  public String field_imgpath;
+  public int field_isSend;
+  public String field_sayhicontent;
+  public String field_sayhiuser;
+  public int field_scene;
+  public int field_status;
+  public long field_svrid;
+  public String field_talker;
   public int field_type;
-  public String field_userName;
+  private boolean fjO = true;
+  private boolean fji = true;
+  private boolean fnP = true;
+  private boolean fqi = true;
+  private boolean fxu = true;
+  
+  static
+  {
+    fjl = "status".hashCode();
+    type_HASHCODE = "type".hashCode();
+    fjQ = "scene".hashCode();
+    fLi = "createtime".hashCode();
+    fqw = "talker".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -68,45 +65,38 @@ public abstract class gb
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFL != k) {
-        break label60;
+      if (fyg != k) {
+        break label65;
       }
-      this.field_snsId = paramCursor.getLong(i);
+      this.field_svrid = paramCursor.getLong(i);
+      this.fxu = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eFM == k) {
-        this.field_userName = paramCursor.getString(i);
-      } else if (eFN == k) {
-        this.field_localFlag = paramCursor.getInt(i);
-      } else if (eFO == k) {
-        this.field_createTime = paramCursor.getInt(i);
-      } else if (eFP == k) {
-        this.field_head = paramCursor.getInt(i);
-      } else if (eFQ == k) {
-        this.field_localPrivate = paramCursor.getInt(i);
+      label65:
+      if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eFR == k) {
-        this.field_sourceType = paramCursor.getInt(i);
-      } else if (eFS == k) {
-        this.field_likeFlag = paramCursor.getInt(i);
-      } else if (eFT == k) {
-        this.field_pravited = paramCursor.getInt(i);
-      } else if (eFU == k) {
-        this.field_stringSeq = paramCursor.getString(i);
-      } else if (eFV == k) {
-        this.field_content = paramCursor.getBlob(i);
-      } else if (eFW == k) {
-        this.field_attrBuf = paramCursor.getBlob(i);
-      } else if (eFX == k) {
-        this.field_postBuf = paramCursor.getBlob(i);
-      } else if (eGe == k) {
-        this.field_subType = paramCursor.getInt(i);
+      } else if (fjQ == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (fLi == k) {
+        this.field_createtime = paramCursor.getLong(i);
+      } else if (fqw == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (content_HASHCODE == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (fNl == k) {
+        this.field_sayhiuser = paramCursor.getString(i);
+      } else if (fNm == k) {
+        this.field_sayhicontent = paramCursor.getString(i);
+      } else if (fNn == k) {
+        this.field_imgpath = paramCursor.getString(i);
+      } else if (foe == k) {
+        this.field_isSend = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -116,50 +106,38 @@ public abstract class gb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFo) {
-      localContentValues.put("snsId", Long.valueOf(this.field_snsId));
+    if (this.fxu) {
+      localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
-    if (this.eFp) {
-      localContentValues.put("userName", this.field_userName);
-    }
-    if (this.eFq) {
-      localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
-    }
-    if (this.eFr) {
-      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
-    }
-    if (this.eFs) {
-      localContentValues.put("head", Integer.valueOf(this.field_head));
-    }
-    if (this.eFt) {
-      localContentValues.put("localPrivate", Integer.valueOf(this.field_localPrivate));
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eFu) {
-      localContentValues.put("sourceType", Integer.valueOf(this.field_sourceType));
+    if (this.fjO) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eFv) {
-      localContentValues.put("likeFlag", Integer.valueOf(this.field_likeFlag));
+    if (this.fKX) {
+      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.eFw) {
-      localContentValues.put("pravited", Integer.valueOf(this.field_pravited));
+    if (this.fqi) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.eFx) {
-      localContentValues.put("stringSeq", this.field_stringSeq);
-    }
-    if (this.eFy) {
+    if (this.__hadSetcontent) {
       localContentValues.put("content", this.field_content);
     }
-    if (this.eFz) {
-      localContentValues.put("attrBuf", this.field_attrBuf);
+    if (this.fNh) {
+      localContentValues.put("sayhiuser", this.field_sayhiuser);
     }
-    if (this.eFA) {
-      localContentValues.put("postBuf", this.field_postBuf);
+    if (this.fNi) {
+      localContentValues.put("sayhicontent", this.field_sayhicontent);
     }
-    if (this.eFH) {
-      localContentValues.put("subType", Integer.valueOf(this.field_subType));
+    if (this.fNj) {
+      localContentValues.put("imgpath", this.field_imgpath);
+    }
+    if (this.fnP) {
+      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -169,7 +147,7 @@ public abstract class gb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gb
  * JD-Core Version:    0.7.0.1
  */

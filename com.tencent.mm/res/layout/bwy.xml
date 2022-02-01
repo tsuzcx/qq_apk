@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.InsectRelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.TabLayout android:id="@id/i6_" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/c_" android:layout_marginBottom="@dimen/c8" android:layout_above="@id/i49" app:tabBackground="@color/a7c" app:tabGravity="ahg" app:tabIndicator="@drawable/c_i" app:tabIndicatorColor="@color/a_r" app:tabIndicatorHeight="1.0dip" app:tabMode="c3p" app:tabPadding="0.0dip" app:tabRippleColor="@color/a7c" app:tabSelectedTextColor="@color/a_r" app:tabTextAppearance="@style/a6x" app:tabTextColor="#4cffffff">
-        <android.support.design.widget.TabItem android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/i2a" />
-        <android.support.design.widget.TabItem android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/i2b" />
-    </android.support.design.widget.TabLayout>
-    <RelativeLayout android:id="@id/i67" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bz" android:layout_marginBottom="@dimen/c5" android:layout_alignParentBottom="true">
-        <android.support.v7.widget.RecyclerView android:id="@id/i66" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_alignParentTop="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/i49" android:layout_width="fill_parent" android:layout_height="@dimen/bz" android:layout_marginBottom="@dimen/c5" android:layout_alignParentBottom="true">
-        <include android:id="@id/i1n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/cd" android:layout_marginBottom="@dimen/bq" android:layout_alignParentBottom="true" layout="@layout/bxh" />
-        <include android:id="@id/i45" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:layout_marginBottom="@dimen/ci" android:layout_alignParentBottom="true" layout="@layout/bwx" />
-        <android.support.constraint.ConstraintLayout android:id="@id/hw3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" android:layout_above="@id/i1n">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/i6w" android:background="@drawable/c_t" android:padding="@dimen/bq" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/ci" android:src="@raw/icons_filled_pause" app:iconColor="@color/aj" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-            <android.support.v7.widget.RecyclerView android:id="@id/hw7" android:fadingEdge="horizontal" android:fadingEdgeLength="@dimen/ci" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_marginLeft="@dimen/cg" android:requiresFadingEdge="horizontal" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-            <View android:id="@id/hw2" android:background="@color/aj" android:visibility="invisible" android:layout_width="2.0dip" android:layout_height="@dimen/br" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-        </android.support.constraint.ConstraintLayout>
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/i49" android:layout_width="fill_parent" android:layout_height="@dimen/bz" android:layout_alignParentBottom="true">
-        <android.support.v7.widget.RecyclerView android:id="@id/c5z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cg" android:layout_marginBottom="@dimen/ch" android:layout_alignParentBottom="true" />
-        <com.tencent.mm.plugin.recordvideo.plugin.doodle.PhotoDoodlePlugin android:id="@id/be_" android:background="@drawable/c9r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</com.tencent.mm.ui.widget.InsectRelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/be3" android:padding="@dimen/akd" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/e44" android:duplicateParentState="true" android:layout_width="@dimen/ake" android:layout_height="@dimen/akc" android:scaleType="centerCrop" />
+</LinearLayout>

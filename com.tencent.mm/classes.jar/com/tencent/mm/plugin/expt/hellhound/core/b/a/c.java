@@ -10,29 +10,29 @@ import com.tencent.mm.plugin.expt.b.d.a;
 import com.tencent.mm.plugin.expt.b.d.c;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.m;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.g;
-import com.tencent.mm.protocal.protobuf.atn;
-import com.tencent.mm.protocal.protobuf.aua;
-import com.tencent.mm.protocal.protobuf.aub;
-import com.tencent.mm.protocal.protobuf.auh;
-import com.tencent.mm.protocal.protobuf.auq;
-import com.tencent.mm.protocal.protobuf.aur;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.protocal.protobuf.bcx;
-import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.bk;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.bov;
-import com.tencent.mm.protocal.protobuf.ccg;
-import com.tencent.mm.protocal.protobuf.cer;
-import com.tencent.mm.protocal.protobuf.ces;
-import com.tencent.mm.protocal.protobuf.cie;
-import com.tencent.mm.protocal.protobuf.dca;
-import com.tencent.mm.protocal.protobuf.dix;
-import com.tencent.mm.protocal.protobuf.dnf;
-import com.tencent.mm.protocal.protobuf.dol;
-import com.tencent.mm.protocal.protobuf.dwx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.protocal.protobuf.ben;
+import com.tencent.mm.protocal.protobuf.bfj;
+import com.tencent.mm.protocal.protobuf.bfk;
+import com.tencent.mm.protocal.protobuf.bfq;
+import com.tencent.mm.protocal.protobuf.bfz;
+import com.tencent.mm.protocal.protobuf.bga;
+import com.tencent.mm.protocal.protobuf.bgb;
+import com.tencent.mm.protocal.protobuf.bn;
+import com.tencent.mm.protocal.protobuf.bo;
+import com.tencent.mm.protocal.protobuf.boj;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.cbn;
+import com.tencent.mm.protocal.protobuf.cri;
+import com.tencent.mm.protocal.protobuf.cuy;
+import com.tencent.mm.protocal.protobuf.cuz;
+import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.protocal.protobuf.dve;
+import com.tencent.mm.protocal.protobuf.eci;
+import com.tencent.mm.protocal.protobuf.egw;
+import com.tencent.mm.protocal.protobuf.eih;
+import com.tencent.mm.protocal.protobuf.erd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -41,13 +41,13 @@ import org.json.JSONException;
 
 final class c
 {
-  d.a qZo;
-  private final com.tencent.mm.plugin.expt.hellhound.core.a.a.d qZs;
+  d.a szF;
+  private final com.tencent.mm.plugin.expt.hellhound.core.a.a.d szJ;
   
   c()
   {
     AppMethodBeat.i(121938);
-    this.qZs = new com.tencent.mm.plugin.expt.hellhound.core.a.a.d()
+    this.szJ = new com.tencent.mm.plugin.expt.hellhound.core.a.a.d()
     {
       public final void a(com.tencent.mm.plugin.expt.hellhound.core.a.a.a paramAnonymousa)
       {
@@ -64,9 +64,9 @@ final class c
         {
           AppMethodBeat.o(121937);
           return;
-          if (paramAnonymousa.qYQ != null)
+          if (paramAnonymousa.szh != null)
           {
-            Object localObject1 = (dix)paramAnonymousa.qYQ;
+            Object localObject1 = (eci)paramAnonymousa.szh;
             Object localObject2;
             Object localObject3;
             boolean bool;
@@ -75,74 +75,74 @@ final class c
             Object localObject6;
             if (localObject1 != null)
             {
-              ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_startActivity: %s, %s, %s", new Object[] { ((dix)localObject1).Hca.activityName, ((dix)localObject1).Hcb.activityName, ((dix)localObject1).GKU });
+              Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_startActivity: %s, %s, %s", new Object[] { ((eci)localObject1).Mhd.activityName, ((eci)localObject1).Mhe.activityName, ((eci)localObject1).LOY });
               localObject2 = c.this;
               paramAnonymousa = null;
-              if ((((dix)localObject1).Hca == null) || (TextUtils.isEmpty(((dix)localObject1).Hca.activityName))) {
+              if ((((eci)localObject1).Mhd == null) || (TextUtils.isEmpty(((eci)localObject1).Mhd.activityName))) {
                 break label1104;
               }
-              paramAnonymousa = ((dix)localObject1).Hca.activityName;
-              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cpF();
-              bool = ((dix)localObject1).GKX;
-              localObject4 = ((dix)localObject1).GKU;
-              ((com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c)localObject3).qZz.b(paramAnonymousa, bool, (String)localObject4);
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(paramAnonymousa, ((dix)localObject1).GKU, 100);
-              localObject3 = ((dix)localObject1).Hcb.activityName;
-              ae.i("HABBYGE-MALI.AsyncActivityMonitor", "_startActivity, toActivity: %s, %s", new Object[] { paramAnonymousa, localObject3 });
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O((String)localObject3, null, 101);
-              localObject4 = ((dix)localObject1).GKW;
-              localObject5 = ((dix)localObject1).Hcd;
-              localObject6 = ((dix)localObject1).Hcc;
+              paramAnonymousa = ((eci)localObject1).Mhd.activityName;
+              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cNY();
+              bool = ((eci)localObject1).LPb;
+              localObject4 = ((eci)localObject1).LOY;
+              ((com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c)localObject3).szQ.b(paramAnonymousa, bool, (String)localObject4);
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(paramAnonymousa, ((eci)localObject1).LOY, 100);
+              localObject3 = ((eci)localObject1).Mhe.activityName;
+              Log.i("HABBYGE-MALI.AsyncActivityMonitor", "_startActivity, toActivity: %s, %s", new Object[] { paramAnonymousa, localObject3 });
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject3, null, 101);
+              localObject4 = ((eci)localObject1).LPa;
+              localObject5 = ((eci)localObject1).Mhg;
+              localObject6 = ((eci)localObject1).Mhf;
               if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.fV("Chat_User", (String)localObject4);
+                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("Chat_User", (String)localObject4);
               }
               if ((!"1".equals(localObject6)) || (!"jd_store".equals(localObject5))) {
                 break label1137;
               }
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.fV("minimize_secene", (String)localObject6);
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.fV("KPublisherId", (String)localObject5);
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("minimize_secene", (String)localObject6);
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("KPublisherId", (String)localObject5);
             }
             for (;;)
             {
-              c.b(((dix)localObject1).flags, paramAnonymousa, ((dix)localObject1).GKU, (String)localObject3, 0, ((dix)localObject1).timestamp);
-              a.aeN((String)localObject3);
-              a.aeP(paramAnonymousa);
-              a.Df(0);
-              if ((localObject3 != null) && (((c)localObject2).qZo != null)) {
-                ((c)localObject2).qZo.adW((String)localObject3);
+              c.b(((eci)localObject1).flags, paramAnonymousa, ((eci)localObject1).LOY, (String)localObject3, 0, ((eci)localObject1).timestamp);
+              a.apd((String)localObject3);
+              a.apf(paramAnonymousa);
+              a.GQ(0);
+              if ((localObject3 != null) && (((c)localObject2).szF != null)) {
+                ((c)localObject2).szF.aof((String)localObject3);
               }
               AppMethodBeat.o(121937);
               return;
               label1104:
-              com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt();
-              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
+              com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
+              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
               if (localObject3 == null) {
                 break;
               }
-              paramAnonymousa = ((bj)localObject3).FLG.activityName;
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cpF().aeT(paramAnonymousa);
+              paramAnonymousa = ((bn)localObject3).KFh.activityName;
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cNY().apj(paramAnonymousa);
               break;
               label1137:
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.fV("minimize_secene", "");
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.fV("KPublisherId", "");
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("minimize_secene", "");
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("KPublisherId", "");
             }
-            if (paramAnonymousa.qYQ != null)
+            if (paramAnonymousa.szh != null)
             {
-              paramAnonymousa = (dol)paramAnonymousa.qYQ;
+              paramAnonymousa = (eih)paramAnonymousa.szh;
               long l;
               int i;
               if (paramAnonymousa != null)
               {
-                ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_finish: %s", new Object[] { paramAnonymousa.activityName });
+                Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_finish: %s", new Object[] { paramAnonymousa.activityName });
                 localObject1 = c.this;
                 localObject2 = c.a(paramAnonymousa);
                 if (localObject2 != null)
                 {
-                  ae.i("HABBYGE-MALI.AsyncActivityMonitor", "_finish: %s", new Object[] { ((dol)localObject2).activityName });
-                  com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(((dol)localObject2).activityName, null, 102);
-                  localObject5 = ((dol)localObject2).activityName;
-                  l = ((dol)localObject2).timestamp;
-                  localObject3 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt().qZj.qZk;
+                  Log.i("HABBYGE-MALI.AsyncActivityMonitor", "_finish: %s", new Object[] { ((eih)localObject2).activityName });
+                  com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(((eih)localObject2).activityName, null, 102);
+                  localObject5 = ((eih)localObject2).activityName;
+                  l = ((eih)localObject2).timestamp;
+                  localObject3 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM().szA.szB;
                   if (!TextUtils.isEmpty((CharSequence)localObject5)) {
                     break label1422;
                   }
@@ -156,25 +156,25 @@ final class c
               {
                 if (i == 0)
                 {
-                  ae.w("HABBYGE-MALI.AsyncActivityMonitor", "_finish, popSuccess FALSE");
-                  paramAnonymousa = new bj();
-                  paramAnonymousa.FLG = new dol();
-                  paramAnonymousa.FLG.activityName = ((dol)localObject2).activityName;
-                  paramAnonymousa.FLG.aHQ = ((dol)localObject2).aHQ;
-                  paramAnonymousa.FLG.timestamp = ((dol)localObject2).timestamp;
-                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg().a(null, paramAnonymousa, 1, null);
-                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.rcx;
-                  com.tencent.mm.plugin.expt.hellhound.a.b.a.b.afa(((dol)localObject2).activityName);
-                  com.tencent.mm.plugin.expt.hellhound.a.g.c.csm().a(3, ((dol)localObject2).activityName, null);
+                  Log.w("HABBYGE-MALI.AsyncActivityMonitor", "_finish, popSuccess FALSE");
+                  paramAnonymousa = new bn();
+                  paramAnonymousa.KFh = new eih();
+                  paramAnonymousa.KFh.activityName = ((eih)localObject2).activityName;
+                  paramAnonymousa.KFh.aHK = ((eih)localObject2).aHK;
+                  paramAnonymousa.KFh.timestamp = ((eih)localObject2).timestamp;
+                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(null, paramAnonymousa, 1, null);
+                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
+                  com.tencent.mm.plugin.expt.hellhound.a.b.a.b.apq(((eih)localObject2).activityName);
+                  com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV().a(3, ((eih)localObject2).activityName, null);
                 }
-                c.aV(((dol)localObject2).activityName, true);
-                if (((c)localObject1).qZo != null) {
-                  ((c)localObject1).qZo.e(((dol)localObject2).activityName, ((dol)localObject2).aHQ, ((dol)localObject2).timestamp);
+                c.aX(((eih)localObject2).activityName, true);
+                if (((c)localObject1).szF != null) {
+                  ((c)localObject1).szF.d(((eih)localObject2).activityName, ((eih)localObject2).aHK, ((eih)localObject2).timestamp);
                 }
                 AppMethodBeat.o(121937);
                 return;
-                localObject4 = com.tencent.mm.plugin.expt.hellhound.core.stack.c.cpr();
-                if (((bk)localObject4).FLM.isEmpty())
+                localObject4 = com.tencent.mm.plugin.expt.hellhound.core.stack.c.cNK();
+                if (((bo)localObject4).KFn.isEmpty())
                 {
                   i = 0;
                 }
@@ -182,20 +182,20 @@ final class c
                 {
                   if (localObject4 != null)
                   {
-                    i = ((bk)localObject4).FLM.size() - 1;
+                    i = ((bo)localObject4).KFn.size() - 1;
                     if (i >= 0)
                     {
-                      localObject6 = (dnf)((bk)localObject4).FLM.get(i);
-                      j = ((dnf)localObject6).HUq.size() - 1;
+                      localObject6 = (egw)((bo)localObject4).KFn.get(i);
+                      j = ((egw)localObject6).NgI.size() - 1;
                       label1488:
                       if (j >= 0)
                       {
-                        paramAnonymousa = (bj)((dnf)localObject6).HUq.get(j);
-                        if (paramAnonymousa.FLG.activityName.equals(localObject5))
+                        paramAnonymousa = (bn)((egw)localObject6).NgI.get(j);
+                        if (paramAnonymousa.KFh.activityName.equals(localObject5))
                         {
-                          ((dnf)localObject6).HUq.remove(j);
-                          if (((dnf)localObject6).HUq.isEmpty()) {
-                            ((bk)localObject4).FLM.remove(i);
+                          ((egw)localObject6).NgI.remove(j);
+                          if (((egw)localObject6).NgI.isEmpty()) {
+                            ((bo)localObject4).KFn.remove(i);
                           }
                         }
                       }
@@ -215,319 +215,319 @@ final class c
                     paramAnonymousa = null;
                   }
                   label1579:
-                  com.tencent.mm.plugin.expt.hellhound.core.stack.c.a((bk)localObject4);
-                  if (((g)localObject3).qZn != null)
+                  com.tencent.mm.plugin.expt.hellhound.core.stack.c.a((bo)localObject4);
+                  if (((g)localObject3).szE != null)
                   {
-                    paramAnonymousa.FLG.timestamp = l;
-                    ((g)localObject3).qZn.b(paramAnonymousa, (bj)g.cpz().get(1));
+                    paramAnonymousa.KFh.timestamp = l;
+                    ((g)localObject3).szE.b(paramAnonymousa, (bn)g.cNS().get(1));
                   }
                   i = 1;
                 }
               }
-              if (paramAnonymousa.qYQ != null)
+              if (paramAnonymousa.szh != null)
               {
-                localObject1 = (ccg)paramAnonymousa.qYQ;
+                localObject1 = (cri)paramAnonymousa.szh;
                 if (localObject1 != null)
                 {
-                  ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_moveTaskToBack: %s", new Object[] { ((ccg)localObject1).GKT.activityName });
+                  Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_moveTaskToBack: %s", new Object[] { ((cri)localObject1).LOX.activityName });
                   paramAnonymousa = c.this;
-                  localObject2 = ((ccg)localObject1).GKT;
-                  bool = ((ccg)localObject1).Hcf;
-                  localObject1 = c.a((dol)localObject2);
+                  localObject2 = ((cri)localObject1).LOX;
+                  bool = ((cri)localObject1).Mhi;
+                  localObject1 = c.a((eih)localObject2);
                   if (localObject1 != null)
                   {
-                    ae.d("HABBYGE-MALI.AsyncActivityMonitor", "_moveTaskToBack: %s", new Object[] { ((dol)localObject1).activityName });
-                    if (!TextUtils.isEmpty(((dol)localObject1).activityName))
+                    Log.d("HABBYGE-MALI.AsyncActivityMonitor", "_moveTaskToBack: %s", new Object[] { ((eih)localObject1).activityName });
+                    if (!TextUtils.isEmpty(((eih)localObject1).activityName))
                     {
-                      com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(((dol)localObject1).activityName, null, 103);
-                      localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt().qZj.qZk;
-                      localObject3 = com.tencent.mm.plugin.expt.hellhound.core.stack.c.cpr();
-                      localObject4 = new bj();
-                      ((bj)localObject4).FLG = new dol();
-                      ((bj)localObject4).FLG.activityName = ((dol)localObject1).activityName;
-                      ((bj)localObject4).FLG.aHQ = ((dol)localObject1).aHQ;
-                      ((bj)localObject4).FLG.timestamp = ((dol)localObject1).timestamp;
-                      localObject5 = g.a((bk)localObject3, (bj)localObject4);
+                      com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(((eih)localObject1).activityName, null, 103);
+                      localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM().szA.szB;
+                      localObject3 = com.tencent.mm.plugin.expt.hellhound.core.stack.c.cNK();
+                      localObject4 = new bn();
+                      ((bn)localObject4).KFh = new eih();
+                      ((bn)localObject4).KFh.activityName = ((eih)localObject1).activityName;
+                      ((bn)localObject4).KFh.aHK = ((eih)localObject1).aHK;
+                      ((bn)localObject4).KFh.timestamp = ((eih)localObject1).timestamp;
+                      localObject5 = g.a((bo)localObject3, (bn)localObject4);
                       if (localObject5 != null)
                       {
-                        localObject6 = (dnf)((com.tencent.mm.vending.j.b)localObject5).get(0);
+                        localObject6 = (egw)((com.tencent.mm.vending.j.b)localObject5).get(0);
                         i = ((Integer)((com.tencent.mm.vending.j.c)localObject5).get(1)).intValue();
-                        if (((bool) || (com.tencent.mm.plugin.expt.hellhound.core.stack.h.a(((bj)((dnf)localObject6).HUq.getFirst()).FLG, ((bj)localObject4).FLG))) && (i == ((bk)localObject3).FLM.size() - 1))
+                        if (((bool) || (com.tencent.mm.plugin.expt.hellhound.core.stack.h.a(((bn)((egw)localObject6).NgI.getFirst()).KFh, ((bn)localObject4).KFh))) && (i == ((bo)localObject3).KFn.size() - 1))
                         {
-                          ((bk)localObject3).FLM.remove(i);
-                          ((bk)localObject3).FLM.addFirst(localObject6);
-                          com.tencent.mm.plugin.expt.hellhound.core.stack.c.a((bk)localObject3);
-                          if (((g)localObject2).qZn != null) {
-                            ((g)localObject2).qZn.d((bj)localObject4, g.e((bk)localObject3));
+                          ((bo)localObject3).KFn.remove(i);
+                          ((bo)localObject3).KFn.addFirst(localObject6);
+                          com.tencent.mm.plugin.expt.hellhound.core.stack.c.a((bo)localObject3);
+                          if (((g)localObject2).szE != null) {
+                            ((g)localObject2).szE.d((bn)localObject4, g.e((bo)localObject3));
                           }
                         }
                       }
-                      c.aV(((dol)localObject1).activityName, false);
-                      if (paramAnonymousa.qZo != null) {
-                        paramAnonymousa.qZo.f(((dol)localObject1).activityName, ((dol)localObject1).aHQ, ((dol)localObject1).timestamp);
+                      c.aX(((eih)localObject1).activityName, false);
+                      if (paramAnonymousa.szF != null) {
+                        paramAnonymousa.szF.e(((eih)localObject1).activityName, ((eih)localObject1).aHK, ((eih)localObject1).timestamp);
                       }
                     }
                   }
                 }
                 AppMethodBeat.o(121937);
                 return;
-                if (paramAnonymousa.qYQ != null)
+                if (paramAnonymousa.szh != null)
                 {
-                  paramAnonymousa = (cer)paramAnonymousa.qYQ;
+                  paramAnonymousa = (cuy)paramAnonymousa.szh;
                   if (paramAnonymousa != null)
                   {
-                    ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onCreate: %s", new Object[] { paramAnonymousa.GKT.activityName });
+                    Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onCreate: %s", new Object[] { paramAnonymousa.LOX.activityName });
                     localObject1 = c.this;
-                    localObject2 = paramAnonymousa.GKT;
-                    c.a(paramAnonymousa.flags, (dol)localObject2);
-                    if (((c)localObject1).qZo != null) {
-                      ((c)localObject1).qZo.adX(((dol)localObject2).activityName);
+                    localObject2 = paramAnonymousa.LOX;
+                    c.a(paramAnonymousa.flags, (eih)localObject2);
+                    if (((c)localObject1).szF != null) {
+                      ((c)localObject1).szF.aog(((eih)localObject2).activityName);
                     }
                   }
                   AppMethodBeat.o(121937);
                   return;
-                  if (paramAnonymousa.qYQ != null)
+                  if (paramAnonymousa.szh != null)
                   {
-                    localObject1 = (cer)paramAnonymousa.qYQ;
+                    localObject1 = (cuy)paramAnonymousa.szh;
                     if (localObject1 != null)
                     {
-                      ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onNewIntent: %s", new Object[] { ((cer)localObject1).GKT.activityName });
+                      Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onNewIntent: %s", new Object[] { ((cuy)localObject1).LOX.activityName });
                       paramAnonymousa = c.this;
-                      i = ((cer)localObject1).flags;
-                      localObject1 = ((cer)localObject1).GKT;
-                      c.a(i, (dol)localObject1);
-                      if (paramAnonymousa.qZo != null) {
-                        paramAnonymousa.qZo.adY(((dol)localObject1).activityName);
+                      i = ((cuy)localObject1).flags;
+                      localObject1 = ((cuy)localObject1).LOX;
+                      c.a(i, (eih)localObject1);
+                      if (paramAnonymousa.szF != null) {
+                        paramAnonymousa.szF.aoh(((eih)localObject1).activityName);
                       }
                     }
                     AppMethodBeat.o(121937);
                     return;
-                    if (paramAnonymousa.qYQ != null)
+                    if (paramAnonymousa.szh != null)
                     {
-                      paramAnonymousa = (dol)paramAnonymousa.qYQ;
+                      paramAnonymousa = (eih)paramAnonymousa.szh;
                       if (paramAnonymousa != null)
                       {
-                        ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onResume: %s", new Object[] { paramAnonymousa.activityName });
+                        Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onResume: %s", new Object[] { paramAnonymousa.activityName });
                         localObject1 = c.this;
-                        com.tencent.mm.plugin.expt.hellhound.a.f.e.a.cY(com.tencent.mm.plugin.expt.hellhound.core.a.cpd().cpc());
-                        com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(paramAnonymousa.activityName, null, 105);
-                        com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt();
-                        com.tencent.mm.plugin.expt.hellhound.core.stack.d.aeL(paramAnonymousa.activityName);
-                        c.a(paramAnonymousa.activityName, paramAnonymousa.aHQ, com.tencent.mm.plugin.expt.hellhound.core.stack.a.qZc);
-                        if (((c)localObject1).qZo != null) {
-                          ((c)localObject1).qZo.g(paramAnonymousa.activityName, paramAnonymousa.aHQ, paramAnonymousa.timestamp);
+                        com.tencent.mm.plugin.expt.hellhound.a.f.e.a.df(com.tencent.mm.plugin.expt.hellhound.core.a.cNx().cNw());
+                        com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(paramAnonymousa.activityName, null, 105);
+                        com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
+                        com.tencent.mm.plugin.expt.hellhound.core.stack.d.apb(paramAnonymousa.activityName);
+                        c.a(paramAnonymousa.activityName, paramAnonymousa.aHK, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szt);
+                        if (((c)localObject1).szF != null) {
+                          ((c)localObject1).szF.f(paramAnonymousa.activityName, paramAnonymousa.aHK, paramAnonymousa.timestamp);
                         }
                       }
                       AppMethodBeat.o(121937);
                       return;
-                      if (paramAnonymousa.qYQ != null)
+                      if (paramAnonymousa.szh != null)
                       {
-                        paramAnonymousa = (String)paramAnonymousa.qYQ;
-                        ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_UPDATE_SID: %s", new Object[] { paramAnonymousa });
+                        paramAnonymousa = (String)paramAnonymousa.szh;
+                        Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_UPDATE_SID: %s", new Object[] { paramAnonymousa });
                         if (!TextUtils.isEmpty(paramAnonymousa)) {
-                          com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afF(paramAnonymousa);
+                          com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqq(paramAnonymousa);
                         }
                         AppMethodBeat.o(121937);
                         return;
-                        if (paramAnonymousa.qYQ != null)
+                        if (paramAnonymousa.szh != null)
                         {
-                          paramAnonymousa = (ces)paramAnonymousa.qYQ;
+                          paramAnonymousa = (cuz)paramAnonymousa.szh;
                           if (paramAnonymousa != null)
                           {
-                            ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onPostResume: %s", new Object[] { paramAnonymousa.GKT.activityName });
-                            if (c.this.qZo != null) {
-                              c.this.qZo.adZ(paramAnonymousa.GKT.activityName);
+                            Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onPostResume: %s", new Object[] { paramAnonymousa.LOX.activityName });
+                            if (c.this.szF != null) {
+                              c.this.szF.aoi(paramAnonymousa.LOX.activityName);
                             }
                           }
                           AppMethodBeat.o(121937);
                           return;
-                          if (paramAnonymousa.qYQ != null)
+                          if (paramAnonymousa.szh != null)
                           {
-                            paramAnonymousa = (dol)paramAnonymousa.qYQ;
+                            paramAnonymousa = (eih)paramAnonymousa.szh;
                             if (paramAnonymousa != null)
                             {
-                              ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onPause: %s", new Object[] { paramAnonymousa.activityName });
+                              Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onPause: %s", new Object[] { paramAnonymousa.activityName });
                               localObject1 = c.this;
-                              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(paramAnonymousa.activityName, null, 106);
-                              c.a(paramAnonymousa.activityName, paramAnonymousa.aHQ, com.tencent.mm.plugin.expt.hellhound.core.stack.a.qZd);
-                              if (((c)localObject1).qZo != null) {
-                                ((c)localObject1).qZo.h(paramAnonymousa.activityName, paramAnonymousa.aHQ, paramAnonymousa.timestamp);
+                              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(paramAnonymousa.activityName, null, 106);
+                              c.a(paramAnonymousa.activityName, paramAnonymousa.aHK, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szu);
+                              if (((c)localObject1).szF != null) {
+                                ((c)localObject1).szF.g(paramAnonymousa.activityName, paramAnonymousa.aHK, paramAnonymousa.timestamp);
                               }
                             }
                             AppMethodBeat.o(121937);
                             return;
-                            if (paramAnonymousa.qYQ != null)
+                            if (paramAnonymousa.szh != null)
                             {
-                              paramAnonymousa = (ces)paramAnonymousa.qYQ;
+                              paramAnonymousa = (cuz)paramAnonymousa.szh;
                               if (paramAnonymousa != null)
                               {
-                                ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onPaused: %s", new Object[] { paramAnonymousa.GKT.activityName });
-                                if (c.this.qZo != null) {
-                                  c.this.qZo.aea(paramAnonymousa.GKT.activityName);
+                                Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onPaused: %s", new Object[] { paramAnonymousa.LOX.activityName });
+                                if (c.this.szF != null) {
+                                  c.this.szF.aoj(paramAnonymousa.LOX.activityName);
                                 }
                               }
                               AppMethodBeat.o(121937);
                               return;
-                              if (paramAnonymousa.qYQ != null)
+                              if (paramAnonymousa.szh != null)
                               {
-                                paramAnonymousa = (dol)paramAnonymousa.qYQ;
+                                paramAnonymousa = (eih)paramAnonymousa.szh;
                                 if (paramAnonymousa != null)
                                 {
-                                  ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onStop: %s", new Object[] { paramAnonymousa.activityName });
+                                  Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onStop: %s", new Object[] { paramAnonymousa.activityName });
                                   localObject1 = c.this;
-                                  if (!com.tencent.mm.plugin.expt.hellhound.core.b.aet(paramAnonymousa.activityName))
+                                  if (!com.tencent.mm.plugin.expt.hellhound.core.b.aoG(paramAnonymousa.activityName))
                                   {
-                                    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(paramAnonymousa.activityName, null, 107);
-                                    c.a(paramAnonymousa.activityName, paramAnonymousa.aHQ, com.tencent.mm.plugin.expt.hellhound.core.stack.a.qZe);
-                                    if (((c)localObject1).qZo != null) {
-                                      ((c)localObject1).qZo.i(paramAnonymousa.activityName, paramAnonymousa.aHQ, paramAnonymousa.timestamp);
+                                    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(paramAnonymousa.activityName, null, 107);
+                                    c.a(paramAnonymousa.activityName, paramAnonymousa.aHK, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szv);
+                                    if (((c)localObject1).szF != null) {
+                                      ((c)localObject1).szF.h(paramAnonymousa.activityName, paramAnonymousa.aHK, paramAnonymousa.timestamp);
                                     }
                                   }
                                 }
                                 AppMethodBeat.o(121937);
                                 return;
-                                if (paramAnonymousa.qYQ != null)
+                                if (paramAnonymousa.szh != null)
                                 {
-                                  paramAnonymousa = (dol)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (eih)paramAnonymousa.szh;
                                   if (paramAnonymousa != null)
                                   {
-                                    ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onDestroy: %s", new Object[] { paramAnonymousa.activityName });
+                                    Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_ACTIVITY_onDestroy: %s", new Object[] { paramAnonymousa.activityName });
                                     localObject1 = c.this;
-                                    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(paramAnonymousa.activityName, null, 108);
-                                    c.a(paramAnonymousa.activityName, paramAnonymousa.aHQ, com.tencent.mm.plugin.expt.hellhound.core.stack.a.qZf);
-                                    if (((c)localObject1).qZo != null) {
-                                      ((c)localObject1).qZo.dd(paramAnonymousa.activityName, paramAnonymousa.aHQ);
+                                    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(paramAnonymousa.activityName, null, 108);
+                                    c.a(paramAnonymousa.activityName, paramAnonymousa.aHK, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szw);
+                                    if (((c)localObject1).szF != null) {
+                                      ((c)localObject1).szF.dj(paramAnonymousa.activityName, paramAnonymousa.aHK);
                                     }
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  ae.i("HABBYGE-MALI.AsyncActivityMonitor", "HellMsgType.MSGQ_TYPE_FRAGMENT_RESUME recv !!");
-                                  paramAnonymousa = (aub)paramAnonymousa.qYQ;
+                                  Log.i("HABBYGE-MALI.AsyncActivityMonitor", "HellMsgType.MSGQ_TYPE_FRAGMENT_RESUME recv !!");
+                                  paramAnonymousa = (bfk)paramAnonymousa.szh;
                                   if (paramAnonymousa != null) {
-                                    com.tencent.mm.plugin.expt.hellhound.core.a.cpd().qYD.a(paramAnonymousa);
+                                    com.tencent.mm.plugin.expt.hellhound.core.a.cNx().syU.a(paramAnonymousa);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = (aua)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (bfj)paramAnonymousa.szh;
                                   if (paramAnonymousa != null) {
-                                    com.tencent.mm.plugin.expt.hellhound.core.a.cpd().qYD.a(paramAnonymousa);
+                                    com.tencent.mm.plugin.expt.hellhound.core.a.cNx().syU.a(paramAnonymousa);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_FRAGMENT_%d", new Object[] { Integer.valueOf(paramAnonymousa.msgType) });
-                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.core.a.cpd();
+                                  Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_FRAGMENT_%d", new Object[] { Integer.valueOf(paramAnonymousa.msgType) });
+                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.core.a.cNx();
                                   i = paramAnonymousa.msgType;
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject1).qYD.Q(i, l);
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject1).syU.T(i, l);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  ae.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_STORY_%d", new Object[] { Integer.valueOf(paramAnonymousa.msgType) });
-                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.core.a.cpd();
+                                  Log.i("HABBYGE-MALI.AsyncActivityMonitor", "MSGQ_TYPE_STORY_%d", new Object[] { Integer.valueOf(paramAnonymousa.msgType) });
+                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.core.a.cNx();
                                   i = paramAnonymousa.msgType;
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject1).qYD.R(i, l);
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject1).syU.U(i, l);
                                   AppMethodBeat.o(121937);
                                   return;
                                   try
                                   {
-                                    i = ((Integer)paramAnonymousa.qYQ).intValue();
+                                    i = ((Integer)paramAnonymousa.szh).intValue();
                                     if (paramAnonymousa.msgType == 401)
                                     {
-                                      com.tencent.mm.plugin.expt.hellhound.a.f.e.a.DB(i);
+                                      com.tencent.mm.plugin.expt.hellhound.a.f.e.a.Ho(i);
                                       AppMethodBeat.o(121937);
                                       return;
                                     }
                                   }
                                   catch (Exception paramAnonymousa)
                                   {
-                                    ae.printErrStackTrace("HABBYGE-MALI.AsyncActivityMonitor", paramAnonymousa, "CATCH_ACTIVITY_ONRESUME: %s", new Object[] { paramAnonymousa.getMessage() });
+                                    Log.printErrStackTrace("HABBYGE-MALI.AsyncActivityMonitor", paramAnonymousa, "CATCH_ACTIVITY_ONRESUME: %s", new Object[] { paramAnonymousa.getMessage() });
                                     AppMethodBeat.o(121937);
                                     return;
                                   }
                                   if (paramAnonymousa.msgType == 400)
                                   {
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.e.a.DA(i);
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.e.a.Hn(i);
                                     AppMethodBeat.o(121937);
                                     return;
                                   }
                                   if (paramAnonymousa.msgType == 402)
                                   {
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.e.c.DA(i);
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.e.c.Hn(i);
                                     AppMethodBeat.o(121937);
                                     return;
                                   }
                                   if (paramAnonymousa.msgType == 403) {
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.e.c.DB(i);
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.e.c.Ho(i);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  localObject2 = com.tencent.mm.plugin.expt.hellhound.a.c.c.cqP();
-                                  ae.i("HABBYGE-MALI.HellFrontBackMonitor", "add8EventMMProcessEndIfNeed");
+                                  localObject2 = com.tencent.mm.plugin.expt.hellhound.a.c.c.cPx();
+                                  Log.i("HABBYGE-MALI.HellFrontBackMonitor", "add8EventMMProcessEndIfNeed");
                                   int k;
-                                  if (!com.tencent.mm.plugin.expt.hellhound.core.b.cpe())
+                                  if (!com.tencent.mm.plugin.expt.hellhound.core.b.isMMProcess())
                                   {
                                     paramAnonymousa = null;
                                     if (paramAnonymousa != null)
                                     {
-                                      com.tencent.mm.plugin.expt.hellhound.a.c.a.Dv(8);
-                                      a.Df(8);
+                                      com.tencent.mm.plugin.expt.hellhound.a.c.a.Hi(8);
+                                      a.GQ(8);
                                       localObject1 = (String)paramAnonymousa.get(0);
                                       i = ((Integer)paramAnonymousa.get(1)).intValue();
                                       j = ((Integer)paramAnonymousa.get(2)).intValue();
                                       l = ((Long)paramAnonymousa.get(3)).longValue();
                                       k = ((Integer)paramAnonymousa.get(4)).intValue();
-                                      ae.i("HABBYGE-MALI.HellFrontBackMonitor", "add8EventMMProcessEndIfNeed need 补充8事件: %s, %d, %s, %d", new Object[] { localObject1, Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(k) });
-                                      if (((com.tencent.mm.plugin.expt.hellhound.a.c.c)localObject2).rgu != null) {
-                                        ((com.tencent.mm.plugin.expt.hellhound.a.c.c)localObject2).rgu.a((String)localObject1, i, j, l, k);
+                                      Log.i("HABBYGE-MALI.HellFrontBackMonitor", "add8EventMMProcessEndIfNeed need 补充8事件: %s, %d, %s, %d", new Object[] { localObject1, Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(k) });
+                                      if (((com.tencent.mm.plugin.expt.hellhound.a.c.c)localObject2).sHQ != null) {
+                                        ((com.tencent.mm.plugin.expt.hellhound.a.c.c)localObject2).sHQ.a((String)localObject1, i, j, l, k);
                                       }
                                     }
                                     AppMethodBeat.o(121937);
                                     return;
                                   }
                                   i = Process.myPid();
-                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.a.c.a.cqO();
+                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.a.c.a.cPw();
                                   paramAnonymousa = (com.tencent.mm.plugin.expt.hellhound.core.a.a.a)localObject1;
                                   if (localObject1 == null) {
-                                    paramAnonymousa = new auh();
+                                    paramAnonymousa = new bfq();
                                   }
-                                  if (paramAnonymousa.GLf <= 0)
+                                  if (paramAnonymousa.LPj <= 0)
                                   {
-                                    ae.i("HABBYGE-MALI.FrontBackDao", "handleLastProcessParams lastMMProcessId <= 0");
+                                    Log.i("HABBYGE-MALI.FrontBackDao", "handleLastProcessParams lastMMProcessId <= 0");
                                     paramAnonymousa = null;
                                   }
                                   for (;;)
                                   {
                                     break;
-                                    if (paramAnonymousa.GLf != i)
+                                    if (paramAnonymousa.LPj != i)
                                     {
-                                      ae.i("HABBYGE-MALI.FrontBackDao", "handleLastProcessParams last != curr ---1: %d, %d", new Object[] { Integer.valueOf(paramAnonymousa.GLf), Integer.valueOf(i) });
-                                      if (paramAnonymousa.GLd == 7)
+                                      Log.i("HABBYGE-MALI.FrontBackDao", "handleLastProcessParams last != curr ---1: %d, %d", new Object[] { Integer.valueOf(paramAnonymousa.LPj), Integer.valueOf(i) });
+                                      if (paramAnonymousa.LPh == 7)
                                       {
-                                        com.tencent.mm.plugin.expt.hellhound.a.c.c.cqP();
-                                        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.c.a.cqO();
-                                        if ((localObject1 != null) && (((auh)localObject1).GLh)) {}
+                                        com.tencent.mm.plugin.expt.hellhound.a.c.c.cPx();
+                                        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.c.a.cPw();
+                                        if ((localObject1 != null) && (((bfq)localObject1).LPl)) {}
                                         for (i = 1;; i = 0)
                                         {
                                           if (i == 0) {
                                             break label3451;
                                           }
-                                          ae.i("HABBYGE-MALI.FrontBackDao", "getIsLogoutFromMMPageFlowService true");
-                                          com.tencent.mm.plugin.expt.hellhound.a.c.a.la(false);
+                                          Log.i("HABBYGE-MALI.FrontBackDao", "getIsLogoutFromMMPageFlowService true");
+                                          com.tencent.mm.plugin.expt.hellhound.a.c.a.mi(false);
                                           paramAnonymousa = null;
                                           break;
                                         }
                                         label3451:
                                         if (TextUtils.isEmpty("page_hell_seq_mmkv_key")) {}
-                                        for (i = -1;; i = ay.aRW("_hellhound_mmkv").getInt("page_hell_seq_mmkv_key", -1))
+                                        for (i = -1;; i = MultiProcessMMKV.getMMKV("_hellhound_mmkv").getInt("page_hell_seq_mmkv_key", -1))
                                         {
-                                          paramAnonymousa.iqb = i;
-                                          localObject1 = paramAnonymousa.GLg;
-                                          i = paramAnonymousa.aHQ;
-                                          j = paramAnonymousa.GLf;
-                                          l = paramAnonymousa.GLe;
-                                          k = paramAnonymousa.iqb;
+                                          paramAnonymousa.jlm = i;
+                                          localObject1 = paramAnonymousa.LPk;
+                                          i = paramAnonymousa.aHK;
+                                          j = paramAnonymousa.LPj;
+                                          l = paramAnonymousa.LPi;
+                                          k = paramAnonymousa.jlm;
                                           paramAnonymousa = new com.tencent.mm.vending.j.f();
-                                          paramAnonymousa.LFB = new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(k) };
+                                          paramAnonymousa.RaR = new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(k) };
                                           paramAnonymousa = (com.tencent.mm.vending.j.f)paramAnonymousa;
                                           break;
                                         }
@@ -535,79 +535,79 @@ final class c
                                     }
                                     else
                                     {
-                                      ae.i("HABBYGE-MALI.FrontBackDao", "handleLastProcessParams last == curr: %d, %d", new Object[] { Integer.valueOf(paramAnonymousa.GLf), Integer.valueOf(i) });
+                                      Log.i("HABBYGE-MALI.FrontBackDao", "handleLastProcessParams last == curr: %d, %d", new Object[] { Integer.valueOf(paramAnonymousa.LPj), Integer.valueOf(i) });
                                     }
                                     paramAnonymousa = null;
                                   }
-                                  localObject1 = (bov)paramAnonymousa.qYQ;
+                                  localObject1 = (cbn)paramAnonymousa.szh;
                                   if (localObject1 != null)
                                   {
-                                    paramAnonymousa = ((bov)localObject1).kNn;
-                                    localObject1 = ((bov)localObject1).value;
-                                    ae.i("HABBYGE-MALI.SyncBizCollector", "_collectBizData: %s, %s", new Object[] { paramAnonymousa, localObject1 });
-                                    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt();
-                                    localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer((String)com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpv().get(0));
+                                    paramAnonymousa = ((cbn)localObject1).businessId;
+                                    localObject1 = ((cbn)localObject1).value;
+                                    Log.i("HABBYGE-MALI.SyncBizCollector", "_collectBizData: %s, %s", new Object[] { paramAnonymousa, localObject1 });
+                                    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
+                                    localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE((String)com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNO().get(0));
                                     if (localObject2 != null)
                                     {
-                                      ae.i("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, curActivityName: %s", new Object[] { localObject2 });
-                                      localObject3 = com.tencent.mm.plugin.expt.hellhound.a.d.d.cqV();
+                                      Log.i("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, curActivityName: %s", new Object[] { localObject2 });
+                                      localObject3 = com.tencent.mm.plugin.expt.hellhound.a.d.d.cPD();
                                       if (localObject3 != null) {
                                         break label3741;
                                       }
-                                      ae.e("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, matchInfo is NULL !!");
+                                      Log.e("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, matchInfo is NULL !!");
                                     }
                                     label3986:
                                     for (;;)
                                     {
-                                      localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.a.b.crl();
+                                      localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.a.b.cPT();
                                       if (localObject3 != null) {
                                         break;
                                       }
-                                      ae.e("HABBYGE-MALI.SyncBizCollector", "collectBizData, tuple2 is NULL");
+                                      Log.e("HABBYGE-MALI.SyncBizCollector", "collectBizData, tuple2 is NULL");
                                       AppMethodBeat.o(121937);
                                       return;
                                       label3741:
-                                      if (((auq)localObject3).GLz.isEmpty())
+                                      if (((bfz)localObject3).LPD.isEmpty())
                                       {
-                                        ae.e("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, matchInfo.sessionFuzzyPaths is NULL !!");
+                                        Log.e("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, matchInfo.sessionFuzzyPaths is NULL !!");
                                       }
                                       else
                                       {
-                                        localObject4 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+                                        localObject4 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
                                         if (localObject4 == null)
                                         {
-                                          ae.e("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, curSession is NULL !!");
+                                          Log.e("HABBYGE-MALI.SyncBizCollector", "addBizData2Fuzzy, curSession is NULL !!");
                                         }
                                         else
                                         {
-                                          localObject5 = new bov();
-                                          ((bov)localObject5).kNn = paramAnonymousa;
-                                          ((bov)localObject5).value = ((String)localObject1);
-                                          i = ((auq)localObject3).GLz.size() - 1;
+                                          localObject5 = new cbn();
+                                          ((cbn)localObject5).businessId = paramAnonymousa;
+                                          ((cbn)localObject5).value = ((String)localObject1);
+                                          i = ((bfz)localObject3).LPD.size() - 1;
                                           while (i >= 0)
                                           {
-                                            localObject6 = (dca)((auq)localObject3).GLz.get(i);
-                                            if ((localObject6 != null) && (((dca)localObject6).dAa != null) && (((dca)localObject6).dAa.equals(((cie)localObject4).sessionId)))
+                                            localObject6 = (dve)((bfz)localObject3).LPD.get(i);
+                                            if ((localObject6 != null) && (((dve)localObject6).dRM != null) && (((dve)localObject6).dRM.equals(((cyl)localObject4).sessionId)))
                                             {
-                                              localObject6 = ((dca)localObject6).GLy.iterator();
+                                              localObject6 = ((dve)localObject6).LPC.iterator();
                                               while (((Iterator)localObject6).hasNext())
                                               {
-                                                aus localaus = (aus)((Iterator)localObject6).next();
-                                                if (!localaus.GLG.isEmpty())
+                                                bgb localbgb = (bgb)((Iterator)localObject6).next();
+                                                if (!localbgb.LPK.isEmpty())
                                                 {
-                                                  j = localaus.GLG.size() - 1;
+                                                  j = localbgb.LPK.size() - 1;
                                                   for (;;)
                                                   {
                                                     if (j < 0) {
                                                       break label3986;
                                                     }
-                                                    aur localaur = (aur)localaus.GLG.get(j);
-                                                    if (localaur != null)
+                                                    bga localbga = (bga)localbgb.LPK.get(j);
+                                                    if (localbga != null)
                                                     {
-                                                      String str = com.tencent.mm.plugin.expt.hellhound.core.b.aer(localaur.name);
+                                                      String str = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(localbga.name);
                                                       if ((str != null) && (str.equals(localObject2)))
                                                       {
-                                                        localaur.GLC.addLast(localObject5);
+                                                        localbga.LPG.addLast(localObject5);
                                                         break;
                                                       }
                                                     }
@@ -618,72 +618,72 @@ final class c
                                             }
                                             i -= 1;
                                           }
-                                          com.tencent.mm.plugin.expt.hellhound.a.d.d.a((auq)localObject3);
+                                          com.tencent.mm.plugin.expt.hellhound.a.d.d.a((bfz)localObject3);
                                         }
                                       }
                                     }
-                                    localObject2 = (bou)((com.tencent.mm.vending.j.b)localObject3).get(0);
+                                    localObject2 = (cbm)((com.tencent.mm.vending.j.b)localObject3).get(0);
                                     i = ((Integer)((com.tencent.mm.vending.j.c)localObject3).get(1)).intValue();
-                                    localObject3 = new bov();
-                                    ((bov)localObject3).kNn = paramAnonymousa;
-                                    ((bov)localObject3).value = ((String)localObject1);
-                                    ((bou)localObject2).GLC.add(localObject3);
-                                    ((bou)localObject2).Hcl.add(localObject3);
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((bou)localObject2, i);
+                                    localObject3 = new cbn();
+                                    ((cbn)localObject3).businessId = paramAnonymousa;
+                                    ((cbn)localObject3).value = ((String)localObject1);
+                                    ((cbm)localObject2).LPG.add(localObject3);
+                                    ((cbm)localObject2).Mho.add(localObject3);
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cbm)localObject2, i);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  localObject1 = (String)paramAnonymousa.qYQ;
+                                  localObject1 = (String)paramAnonymousa.szh;
                                   if (localObject1 != null)
                                   {
-                                    localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.a.b.crl();
+                                    localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.a.b.cPT();
                                     if (localObject2 != null) {
                                       break label4151;
                                     }
-                                    ae.e("HABBYGE-MALI.AsyncBizCollector", "getBizId, tuple2 is NULL");
+                                    Log.e("HABBYGE-MALI.AsyncBizCollector", "getBizId, tuple2 is NULL");
                                   }
-                                  for (paramAnonymousa = null;; paramAnonymousa = ((bov)localObject2).kNn)
+                                  for (paramAnonymousa = null;; paramAnonymousa = ((cbn)localObject2).businessId)
                                   {
-                                    ae.i("HABBYGE-MALI.AsyncBizCollector", "AsyncBizCollector, _collectBizId: %s", new Object[] { paramAnonymousa });
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm();
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.fY((String)localObject1, paramAnonymousa);
+                                    Log.i("HABBYGE-MALI.AsyncBizCollector", "AsyncBizCollector, _collectBizId: %s", new Object[] { paramAnonymousa });
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.gs((String)localObject1, paramAnonymousa);
                                     AppMethodBeat.o(121937);
                                     return;
                                     label4151:
-                                    paramAnonymousa = (bou)((com.tencent.mm.vending.j.b)localObject2).get(0);
+                                    paramAnonymousa = (cbm)((com.tencent.mm.vending.j.b)localObject2).get(0);
                                     i = ((Integer)((com.tencent.mm.vending.j.c)localObject2).get(1)).intValue();
-                                    j = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.fw(paramAnonymousa.GLC.size() + 1, paramAnonymousa.Hcl.size() + 1);
-                                    localObject2 = new bov();
-                                    ((bov)localObject2).kNn = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.v(paramAnonymousa.startTime, j);
-                                    paramAnonymousa.GLC.add(localObject2);
-                                    paramAnonymousa.Hcl.add(localObject2);
+                                    j = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.fM(paramAnonymousa.LPG.size() + 1, paramAnonymousa.Mho.size() + 1);
+                                    localObject2 = new cbn();
+                                    ((cbn)localObject2).businessId = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.s(paramAnonymousa.startTime, j);
+                                    paramAnonymousa.LPG.add(localObject2);
+                                    paramAnonymousa.Mho.add(localObject2);
                                     com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramAnonymousa, i);
-                                    ae.i("HABBYGE-MALI.AsyncBizCollector", "getBizId, addBizIdCurPageFlowItem: %s", new Object[] { ((bov)localObject2).kNn });
+                                    Log.i("HABBYGE-MALI.AsyncBizCollector", "getBizId, addBizIdCurPageFlowItem: %s", new Object[] { ((cbn)localObject2).businessId });
                                   }
-                                  localObject1 = (bov)paramAnonymousa.qYQ;
+                                  localObject1 = (cbn)paramAnonymousa.szh;
                                   if (localObject1 != null)
                                   {
-                                    paramAnonymousa = ((bov)localObject1).dGe;
-                                    localObject2 = ((bov)localObject1).value;
-                                    localObject3 = ((bov)localObject1).kNn;
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.a.a.X(paramAnonymousa, (String)localObject2, (String)localObject3);
+                                    paramAnonymousa = ((cbn)localObject1).dataPath;
+                                    localObject2 = ((cbn)localObject1).value;
+                                    localObject3 = ((cbn)localObject1).businessId;
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.a.a.ac(paramAnonymousa, (String)localObject2, (String)localObject3);
                                     if (localObject1 != null)
                                     {
-                                      ae.i("HABBYGE-MALI.AsyncBizCollector", "_collectBizData: %s, %s, %s", new Object[] { paramAnonymousa, localObject2, localObject3 });
+                                      Log.i("HABBYGE-MALI.AsyncBizCollector", "_collectBizData: %s, %s, %s", new Object[] { paramAnonymousa, localObject2, localObject3 });
                                       if (localObject1 != null)
                                       {
-                                        paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.a.crA();
+                                        paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.a.cQi();
                                         if ((paramAnonymousa == null) || (paramAnonymousa.isEmpty()))
                                         {
                                           paramAnonymousa = new JSONArray();
                                           paramAnonymousa.put(localObject1);
-                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.afU(System.currentTimeMillis() + "@" + paramAnonymousa.toString());
+                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.aqF(System.currentTimeMillis() + "@" + paramAnonymousa.toString());
                                           AppMethodBeat.o(121937);
                                           return;
                                         }
                                         if ("-1".equals(paramAnonymousa))
                                         {
-                                          ae.e("HABBYGE-MALI.AsyncBizDao", " AsyncBizDao putBiz NOT LOGIN");
+                                          Log.e("HABBYGE-MALI.AsyncBizDao", " AsyncBizDao putBiz NOT LOGIN");
                                           AppMethodBeat.o(121937);
                                           return;
                                         }
@@ -691,7 +691,7 @@ final class c
                                         {
                                           localObject2 = new JSONArray();
                                           ((JSONArray)localObject2).put(localObject1);
-                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.afU(paramAnonymousa + "@" + ((JSONArray)localObject2).toString());
+                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.aqF(paramAnonymousa + "@" + ((JSONArray)localObject2).toString());
                                           AppMethodBeat.o(121937);
                                           return;
                                         }
@@ -702,23 +702,23 @@ final class c
                                         {
                                           paramAnonymousa = new JSONArray();
                                           paramAnonymousa.put(localObject1);
-                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.afU(System.currentTimeMillis() + "@" + paramAnonymousa.toString());
+                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.aqF(System.currentTimeMillis() + "@" + paramAnonymousa.toString());
                                           AppMethodBeat.o(121937);
                                           return;
                                           paramAnonymousa = paramAnonymousa.split("@");
                                           if (paramAnonymousa.length <= 0) {
                                             paramAnonymousa = null;
                                           } else if (paramAnonymousa.length == 1) {
-                                            paramAnonymousa = com.tencent.mm.vending.j.a.N(paramAnonymousa[0], null);
+                                            paramAnonymousa = com.tencent.mm.vending.j.a.Q(paramAnonymousa[0], null);
                                           } else {
-                                            paramAnonymousa = com.tencent.mm.vending.j.a.N(paramAnonymousa[0], paramAnonymousa[1]);
+                                            paramAnonymousa = com.tencent.mm.vending.j.a.Q(paramAnonymousa[0], paramAnonymousa[1]);
                                           }
                                         }
                                         if ((TextUtils.isEmpty((CharSequence)paramAnonymousa.get(1))) && (!TextUtils.isEmpty((CharSequence)paramAnonymousa.get(0))))
                                         {
                                           localObject2 = new JSONArray();
                                           ((JSONArray)localObject2).put(localObject1);
-                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.afU((String)paramAnonymousa.get(0) + "@" + ((JSONArray)localObject2).toString());
+                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.aqF((String)paramAnonymousa.get(0) + "@" + ((JSONArray)localObject2).toString());
                                           AppMethodBeat.o(121937);
                                           return;
                                         }
@@ -726,325 +726,321 @@ final class c
                                         {
                                           localObject2 = new JSONArray((String)paramAnonymousa.get(1));
                                           ((JSONArray)localObject2).put(localObject1);
-                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.afU((String)paramAnonymousa.get(0) + "@" + ((JSONArray)localObject2).toString());
+                                          com.tencent.mm.plugin.expt.hellhound.a.f.c.a.aqF((String)paramAnonymousa.get(0) + "@" + ((JSONArray)localObject2).toString());
                                           AppMethodBeat.o(121937);
                                           return;
                                         }
                                         catch (JSONException paramAnonymousa)
                                         {
-                                          ae.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramAnonymousa, "AsyncBizDao.putBiz crash: %s", new Object[] { paramAnonymousa.getMessage() });
+                                          Log.printErrStackTrace("HABBYGE-MALI.AsyncBizDao", paramAnonymousa, "AsyncBizDao.putBiz crash: %s", new Object[] { paramAnonymousa.getMessage() });
                                         }
                                       }
                                     }
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = (String)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (String)paramAnonymousa.szh;
                                   if (paramAnonymousa != null)
                                   {
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.crg().crj();
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm();
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.ga(paramAnonymousa, (String)localObject1);
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().cPR();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.gu(paramAnonymousa, (String)localObject1);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = (String)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (String)paramAnonymousa.szh;
                                   if (paramAnonymousa != null)
                                   {
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.a.d.crn();
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm();
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.fZ(paramAnonymousa, (String)localObject1);
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.a.d.cPV();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.a.c.gt(paramAnonymousa, (String)localObject1);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  ae.i("HABBYGE-MALI.VoipFloatSession", "VoipMonitorCallback: _videoActivity2VoipFloat");
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c.vu(l);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  Log.i("HABBYGE-MALI.VoipFloatSession", "VoipMonitorCallback: _videoActivity2VoipFloat");
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c.Dy(l);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  localObject1 = ((com.tencent.mm.plugin.expt.hellhound.a.f.b)localObject1).rgU;
-                                  ae.i("HABBYGE-MALI.VoipFloatSession", "VoipMonitorCallback: _voipFloat2VideoActivity");
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+                                  localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  localObject1 = ((com.tencent.mm.plugin.expt.hellhound.a.f.b)localObject1).sIq;
+                                  Log.i("HABBYGE-MALI.VoipFloatSession", "VoipMonitorCallback: _voipFloat2VideoActivity");
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
                                   if ((paramAnonymousa != null) && (!TextUtils.isEmpty(paramAnonymousa.sessionId))) {
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg().a(paramAnonymousa, l);
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(paramAnonymousa, l);
                                   }
-                                  ae.i("HABBYGE-MALI.VoipFloatSession", "_beignVoipSession");
+                                  Log.i("HABBYGE-MALI.VoipFloatSession", "_beignVoipSession");
                                   bool = false;
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
                                   if (paramAnonymousa == null)
                                   {
-                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.b.crg().a(null, "LauncherUI", "VideoActivity", 0, l);
+                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(null, "LauncherUI", "VideoActivity", 0, l);
                                     if (paramAnonymousa == null)
                                     {
-                                      ae.e("HABBYGE-MALI.VoipFloatSession", "_beignFloatSession, 不是合法session ~~~");
+                                      Log.e("HABBYGE-MALI.VoipFloatSession", "_beignFloatSession, 不是合法session ~~~");
                                       AppMethodBeat.o(121937);
                                       return;
                                     }
                                     bool = true;
-                                    ae.i("HABBYGE-MALI.VoipFloatSession", "_beignFloatSession, isNewSession: %s, %b", new Object[] { paramAnonymousa.sessionId, Boolean.valueOf(bool) });
-                                    if ((((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c)localObject1).rhB == null) || (!((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c)localObject1).rhB.equals("com.tencent.mm.plugin.voip.ui.VideoActivity"))) {
+                                    Log.i("HABBYGE-MALI.VoipFloatSession", "_beignFloatSession, isNewSession: %s, %b", new Object[] { paramAnonymousa.sessionId, Boolean.valueOf(bool) });
+                                    if ((((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c)localObject1).sIX == null) || (!((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c)localObject1).sIX.equals("com.tencent.mm.plugin.voip.ui.VideoActivity"))) {
                                       break label5182;
                                     }
                                   }
                                   label5182:
-                                  for (i = ((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c)localObject1).rhC;; i = 0)
+                                  for (i = ((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c)localObject1).sIY;; i = 0)
                                   {
                                     com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramAnonymousa, "VideoActivity", i, l);
                                     if (!bool) {
                                       break label5187;
                                     }
-                                    paramAnonymousa.hTf = 0;
-                                    localObject2 = m.crj();
+                                    paramAnonymousa.iOu = 0;
+                                    localObject2 = m.cPR();
                                     localObject1 = localObject2;
                                     if (localObject2 == null) {
                                       localObject1 = "";
                                     }
-                                    paramAnonymousa.sCx = ((String)localObject1);
+                                    paramAnonymousa.kvy = ((String)localObject1);
                                     com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(paramAnonymousa);
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
                                     com.tencent.mm.plugin.expt.hellhound.a.f.b.e(paramAnonymousa);
                                     AppMethodBeat.o(121937);
                                     return;
-                                    ae.i("HABBYGE-MALI.VoipFloatSession", "_beignFloatSession, curSession: %s", new Object[] { paramAnonymousa.sessionId });
+                                    Log.i("HABBYGE-MALI.VoipFloatSession", "_beignFloatSession, curSession: %s", new Object[] { paramAnonymousa.sessionId });
                                     break;
                                   }
                                   label5187:
                                   com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(paramAnonymousa);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  ae.i("HABBYGE-MALI.VoipFloatSession", "VoipMonitorCallback: _closeVideoActivity");
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c.vu(l);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  Log.i("HABBYGE-MALI.VoipFloatSession", "VoipMonitorCallback: _closeVideoActivity");
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c.Dy(l);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csg();
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQO();
                                   if (paramAnonymousa != null)
                                   {
-                                    paramAnonymousa.GKs = -1;
-                                    paramAnonymousa.GKt = -1;
-                                    paramAnonymousa.GKv = 7;
+                                    paramAnonymousa.LOm = -1;
+                                    paramAnonymousa.LOn = -1;
+                                    paramAnonymousa.LOp = 7;
                                     com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.a(paramAnonymousa);
                                   }
-                                  ae.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall, stat, show: %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cse()) });
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+                                  Log.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall, stat, show: %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQM()) });
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
                                   if ((paramAnonymousa == null) || (TextUtils.isEmpty(paramAnonymousa.sessionId)))
                                   {
-                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.core.b.cpg();
+                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.core.b.cNz();
                                     if (paramAnonymousa != null)
                                     {
-                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.am((String)paramAnonymousa.first, l);
+                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.al((String)paramAnonymousa.first, l);
                                     }
                                   }
                                   for (;;)
                                   {
-                                    ae.d("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession");
-                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+                                    Log.d("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession");
+                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
                                     bool = false;
                                     if (paramAnonymousa != null) {
                                       break label5502;
                                     }
-                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.b.crg().a(null, "LauncherUI", "FloatingBall", 0, l);
+                                    paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(null, "LauncherUI", "FloatingBall", 0, l);
                                     if (paramAnonymousa != null) {
                                       break;
                                     }
-                                    ae.e("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession, 不是合法session ~~~");
+                                    Log.e("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession, 不是合法session ~~~");
                                     AppMethodBeat.o(121937);
                                     return;
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg().a(paramAnonymousa, l);
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(paramAnonymousa, l);
                                   }
                                   bool = true;
                                   for (;;)
                                   {
-                                    ae.d("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession, isNewSession: %s, %b", new Object[] { paramAnonymousa.sessionId, Boolean.valueOf(bool) });
+                                    Log.d("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession, isNewSession: %s, %b", new Object[] { paramAnonymousa.sessionId, Boolean.valueOf(bool) });
                                     com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramAnonymousa, "FloatBall", 0, l);
                                     if (!bool) {
                                       break;
                                     }
-                                    paramAnonymousa.hTf = 0;
-                                    localObject2 = m.crj();
+                                    paramAnonymousa.iOu = 0;
+                                    localObject2 = m.cPR();
                                     localObject1 = localObject2;
                                     if (localObject2 == null) {
                                       localObject1 = "";
                                     }
-                                    paramAnonymousa.sCx = ((String)localObject1);
+                                    paramAnonymousa.kvy = ((String)localObject1);
                                     com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(paramAnonymousa);
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
                                     com.tencent.mm.plugin.expt.hellhound.a.f.b.e(paramAnonymousa);
                                     AppMethodBeat.o(121937);
                                     return;
                                     label5502:
-                                    ae.d("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession, curSession: %s", new Object[] { paramAnonymousa.sessionId });
+                                    Log.d("HABBYGE-MALI.FloatBallSessionHandler", "_beignFloatSession, curSession: %s", new Object[] { paramAnonymousa.sessionId });
                                   }
                                   com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(paramAnonymousa);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csf();
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQN();
                                   if (paramAnonymousa != null)
                                   {
                                     i = ((Integer)paramAnonymousa.second).intValue();
                                     if ((i != 1) && (i != 0)) {
-                                      break label5685;
+                                      break label5684;
                                     }
                                   }
-                                  label5685:
+                                  label5684:
                                   for (bool = true;; bool = false)
                                   {
-                                    ae.i("HABBYGE-MALI.FloatBallSessionHandler", "onFloatMenuHide, FloatSession, End: %d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
-                                    if (bool)
-                                    {
-                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.b(false, null, l);
+                                    Log.i("HABBYGE-MALI.FloatBallSessionHandler", "onFloatMenuHide, FloatSession, End: %d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
+                                    if (bool) {
+                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().b(false, null, l);
                                     }
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csg();
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQO();
                                     paramAnonymousa = (com.tencent.mm.plugin.expt.hellhound.core.a.a.a)localObject1;
                                     if (localObject1 == null) {
-                                      paramAnonymousa = new atn();
+                                      paramAnonymousa = new ben();
                                     }
-                                    paramAnonymousa.GKv = 8;
+                                    paramAnonymousa.LOp = 8;
                                     com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.a(paramAnonymousa);
-                                    ae.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall, stat, hide: %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cse()) });
+                                    Log.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall, stat, hide: %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQM()) });
                                     AppMethodBeat.o(121937);
                                     return;
                                   }
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  l = ((Long)paramAnonymousa.qYQ).longValue();
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csf();
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  l = ((Long)paramAnonymousa.szh).longValue();
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQN();
                                   if (paramAnonymousa != null)
                                   {
                                     if (((Integer)paramAnonymousa.second).intValue() == 6)
                                     {
-                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.b(false, null, l);
+                                      com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().b(false, null, l);
                                       AppMethodBeat.o(121937);
                                       return;
                                     }
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                    com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a.DC(4);
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                    com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a.Hp(4);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  ae.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuBackgroundClicked");
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fx(1, 1);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  Log.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuBackgroundClicked");
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fN(1, 1);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  ae.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuBackPressed");
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fx(0, 0);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  Log.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuBackPressed");
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fN(0, 0);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  ae.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuItemClicked");
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fx(2, 2);
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.lc(true);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  Log.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuItemClicked");
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fN(2, 2);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.mk(true);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  ae.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuItemRemoved");
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fx(6, 6);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  Log.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall: onFloatMenuItemRemoved");
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.fN(6, 6);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.b(false, null, 0L);
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().b(false, null, 0L);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  i = ((Integer)paramAnonymousa.qYQ).intValue();
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a.DC(i);
+                                  i = ((Integer)paramAnonymousa.szh).intValue();
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a.Hp(i);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.g.c.csm();
-                                  localObject1 = paramAnonymousa.rhO;
-                                  localObject2 = paramAnonymousa.rch;
-                                  localObject3 = paramAnonymousa.rhQ;
-                                  ((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rch = ((com.tencent.mm.plugin.expt.hellhound.a.a.e)localObject2);
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.e(((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).qZY, ((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rhL);
-                                  ((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rhJ = ((com.tencent.mm.plugin.expt.hellhound.a.g.a)localObject3);
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.a(((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rcg, ((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rhM);
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.a(((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).qXf, ((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rhM);
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.a(((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rhK, ((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject1).rhL);
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV();
+                                  localObject1 = paramAnonymousa.sJs;
+                                  localObject2 = paramAnonymousa.sCN;
+                                  localObject3 = paramAnonymousa.sJu;
+                                  ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sCN = ((com.tencent.mm.plugin.expt.hellhound.a.a.f)localObject2);
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.e(((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sAp, ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sJh);
+                                  ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sJf = ((com.tencent.mm.plugin.expt.hellhound.a.g.b)localObject3);
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.a(((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sCM, ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sJi);
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.a(((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sxm, ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sJi);
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.a(((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sJg, ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).sJh);
                                   if (paramAnonymousa.mActivityRef != null) {
-                                    paramAnonymousa.rcz.a(0, (Activity)paramAnonymousa.mActivityRef.get());
+                                    paramAnonymousa.sDg.a(0, (Activity)paramAnonymousa.mActivityRef.get());
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.g.c.csm();
-                                  paramAnonymousa.rcz.a(1, null);
-                                  paramAnonymousa = paramAnonymousa.rhO;
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.f(paramAnonymousa.qZY, paramAnonymousa.rhL);
-                                  paramAnonymousa.rch = null;
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.b(paramAnonymousa.rcg, paramAnonymousa.rhM);
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.b(paramAnonymousa.qXf, paramAnonymousa.rhM);
-                                  paramAnonymousa.rhJ = null;
-                                  com.tencent.mm.hellhoundlib.a.ahD();
-                                  com.tencent.mm.hellhoundlib.a.b(paramAnonymousa.rhK, paramAnonymousa.rhL);
+                                  paramAnonymousa = com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV();
+                                  paramAnonymousa.sDg.a(1, null);
+                                  paramAnonymousa = paramAnonymousa.sJs;
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.f(paramAnonymousa.sAp, paramAnonymousa.sJh);
+                                  paramAnonymousa.sCN = null;
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.b(paramAnonymousa.sCM, paramAnonymousa.sJi);
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.b(paramAnonymousa.sxm, paramAnonymousa.sJi);
+                                  paramAnonymousa.sJf = null;
+                                  com.tencent.mm.hellhoundlib.a.axP();
+                                  com.tencent.mm.hellhoundlib.a.b(paramAnonymousa.sJg, paramAnonymousa.sJh);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.g.c.csm().rcz.a(2, null);
-                                  com.tencent.mm.plugin.expt.hellhound.a.g.c.rhP = null;
+                                  com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV().sDg.a(2, null);
+                                  com.tencent.mm.plugin.expt.hellhound.a.g.e.sJt = null;
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.g.c.csm().rcz.a(3, null);
+                                  com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV().sDg.a(3, null);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = (String)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (String)paramAnonymousa.szh;
                                   if (paramAnonymousa != null)
                                   {
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.rcx;
-                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aP(0, paramAnonymousa);
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
+                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aU(0, paramAnonymousa);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = (String)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (String)paramAnonymousa.szh;
                                   if (paramAnonymousa != null)
                                   {
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.rcx;
-                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aP(1, paramAnonymousa);
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
+                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aU(1, paramAnonymousa);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = (String)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (String)paramAnonymousa.szh;
                                   if (paramAnonymousa != null)
                                   {
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.rcx;
-                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aP(2, paramAnonymousa);
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
+                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aU(2, paramAnonymousa);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  paramAnonymousa = (String)paramAnonymousa.qYQ;
+                                  paramAnonymousa = (String)paramAnonymousa.szh;
                                   if (paramAnonymousa != null)
                                   {
-                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.rcx;
-                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aP(3, paramAnonymousa);
+                                    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
+                                    com.tencent.mm.plugin.expt.hellhound.a.b.a.b.aU(3, paramAnonymousa);
                                   }
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.vt(((Long)paramAnonymousa.qYQ).longValue());
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.Dx(((Long)paramAnonymousa.szh).longValue());
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.csc();
+                                  com.tencent.mm.plugin.expt.hellhound.a.f.g.a.cQK();
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.core.b.c.e.b((dwx)paramAnonymousa.qYQ);
+                                  com.tencent.mm.plugin.expt.hellhound.core.b.c.e.b((erd)paramAnonymousa.szh);
                                   AppMethodBeat.o(121937);
                                   return;
-                                  com.tencent.mm.plugin.expt.hellhound.b.a.a((bcx)paramAnonymousa.qYQ);
+                                  com.tencent.mm.plugin.expt.hellhound.b.a.a((boj)paramAnonymousa.szh);
                                 }
                               }
                             }
@@ -1060,122 +1056,33 @@ final class c
         }
       }
     };
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.c localc = com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cpq();
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.d locald = this.qZs;
-    localc.qYU.qYW = locald;
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.c localc = com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ();
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.d locald = this.szJ;
+    localc.szl.szn = locald;
     AppMethodBeat.o(121938);
   }
   
-  private static com.tencent.mm.vending.j.d<String, Boolean, Boolean> Z(Activity paramActivity)
+  private static com.tencent.mm.vending.j.d<String, Boolean, Boolean> X(Activity paramActivity)
   {
     AppMethodBeat.i(121940);
-    com.tencent.mm.vending.j.c localc = aa(paramActivity);
+    com.tencent.mm.vending.j.c localc = Y(paramActivity);
     if (!((Boolean)localc.get(1)).booleanValue())
     {
       paramActivity = com.tencent.mm.vending.j.a.i(localc.get(0), localc.get(1), Boolean.FALSE);
       AppMethodBeat.o(121940);
       return paramActivity;
     }
-    boolean bool = com.tencent.mm.plugin.expt.hellhound.core.b.aem(paramActivity.getClass().getCanonicalName());
+    boolean bool = com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramActivity.getClass().getCanonicalName());
     paramActivity = com.tencent.mm.vending.j.a.i(localc.get(0), localc.get(1), Boolean.valueOf(bool));
     AppMethodBeat.o(121940);
     return paramActivity;
   }
   
-  static dol a(dol paramdol)
-  {
-    AppMethodBeat.i(184315);
-    dol localdol;
-    if (paramdol != null)
-    {
-      localdol = paramdol;
-      if (!TextUtils.isEmpty(paramdol.activityName)) {
-        break label88;
-      }
-    }
-    try
-    {
-      com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt();
-      com.tencent.mm.vending.j.c localc = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpu();
-      if (localc == null)
-      {
-        AppMethodBeat.o(184315);
-        return null;
-      }
-      localdol = paramdol;
-      if (paramdol == null)
-      {
-        localdol = new dol();
-        localdol.timestamp = System.currentTimeMillis();
-      }
-      localdol.activityName = ((String)localc.get(0));
-      localdol.aHQ = ((Integer)localc.get(1)).intValue();
-      label88:
-      AppMethodBeat.o(184315);
-      return localdol;
-    }
-    catch (Exception paramdol)
-    {
-      ae.printErrStackTrace("HABBYGE-MALI.AsyncActivityMonitor", paramdol, "getActivityOnFinish", new Object[0]);
-      AppMethodBeat.o(184315);
-    }
-    return null;
-  }
-  
-  static void a(int paramInt, dol paramdol)
-  {
-    AppMethodBeat.i(184313);
-    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.O(paramdol.activityName, null, 104);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dh(101);
-    if (localObject != null) {}
-    for (localObject = (String)((com.tencent.mm.vending.j.b)localObject).get(0);; localObject = null)
-    {
-      if (!paramdol.activityName.equals(localObject))
-      {
-        ae.w("HABBYGE-MALI.AsyncActivityMonitor", "_onCreateEvent: %s, %s", new Object[] { localObject, paramdol.activityName });
-        b(paramInt, null, null, paramdol.activityName, paramdol.aHQ, paramdol.timestamp);
-      }
-      a(paramdol.activityName, paramdol.aHQ, com.tencent.mm.plugin.expt.hellhound.core.stack.a.qZb);
-      AppMethodBeat.o(184313);
-      return;
-    }
-  }
-  
-  static void a(String paramString, int paramInt, com.tencent.mm.plugin.expt.hellhound.core.stack.a parama)
-  {
-    AppMethodBeat.i(195997);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt();
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.a(paramString, paramInt, parama);
-    AppMethodBeat.o(195997);
-  }
-  
-  static void aV(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(121943);
-    a.Df(1);
-    if ((!paramBoolean) && (com.tencent.mm.plugin.expt.hellhound.core.b.aem(paramString)))
-    {
-      ae.i("HABBYGE-MALI.AsyncActivityMonitor", "_quiteActivity come frome: moveActivityTaskToBack");
-      AppMethodBeat.o(121943);
-      return;
-    }
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt();
-    bj localbj = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
-    String str = null;
-    if (localbj != null) {
-      str = localbj.FLG.activityName;
-    }
-    a.aeQ(paramString);
-    a.aeO(str);
-    ae.i("HABBYGE-MALI.AsyncActivityMonitor", "setActivityActionOnFinish: from: %s, to: %s", new Object[] { paramString, str });
-    AppMethodBeat.o(121943);
-  }
-  
-  static com.tencent.mm.vending.j.c<String, Boolean> aa(Activity paramActivity)
+  static com.tencent.mm.vending.j.c<String, Boolean> Y(Activity paramActivity)
   {
     AppMethodBeat.i(121942);
     String str = null;
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.h.ac(paramActivity);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.h.aa(paramActivity);
     if (localObject != null) {
       str = localObject.getClass().getCanonicalName();
     }
@@ -1186,52 +1093,141 @@ final class c
       localObject = paramActivity.getClass().getCanonicalName();
       bool = false;
     }
-    paramActivity = com.tencent.mm.vending.j.a.N(localObject, Boolean.valueOf(bool));
+    paramActivity = com.tencent.mm.vending.j.a.Q(localObject, Boolean.valueOf(bool));
     AppMethodBeat.o(121942);
     return paramActivity;
   }
   
+  static eih a(eih parameih)
+  {
+    AppMethodBeat.i(184315);
+    eih localeih;
+    if (parameih != null)
+    {
+      localeih = parameih;
+      if (!TextUtils.isEmpty(parameih.activityName)) {
+        break label88;
+      }
+    }
+    try
+    {
+      com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
+      com.tencent.mm.vending.j.c localc = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNN();
+      if (localc == null)
+      {
+        AppMethodBeat.o(184315);
+        return null;
+      }
+      localeih = parameih;
+      if (parameih == null)
+      {
+        localeih = new eih();
+        localeih.timestamp = System.currentTimeMillis();
+      }
+      localeih.activityName = ((String)localc.get(0));
+      localeih.aHK = ((Integer)localc.get(1)).intValue();
+      label88:
+      AppMethodBeat.o(184315);
+      return localeih;
+    }
+    catch (Exception parameih)
+    {
+      Log.printErrStackTrace("HABBYGE-MALI.AsyncActivityMonitor", parameih, "getActivityOnFinish", new Object[0]);
+      AppMethodBeat.o(184315);
+    }
+    return null;
+  }
+  
+  static void a(int paramInt, eih parameih)
+  {
+    AppMethodBeat.i(184313);
+    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(parameih.activityName, null, 104);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GS(101);
+    if (localObject != null) {}
+    for (localObject = (String)((com.tencent.mm.vending.j.b)localObject).get(0);; localObject = null)
+    {
+      if (!parameih.activityName.equals(localObject))
+      {
+        Log.w("HABBYGE-MALI.AsyncActivityMonitor", "_onCreateEvent: %s, %s", new Object[] { localObject, parameih.activityName });
+        b(paramInt, null, null, parameih.activityName, parameih.aHK, parameih.timestamp);
+      }
+      a(parameih.activityName, parameih.aHK, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szs);
+      AppMethodBeat.o(184313);
+      return;
+    }
+  }
+  
+  static void a(String paramString, int paramInt, com.tencent.mm.plugin.expt.hellhound.core.stack.a parama)
+  {
+    AppMethodBeat.i(220427);
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.a(paramString, paramInt, parama);
+    AppMethodBeat.o(220427);
+  }
+  
+  static void aX(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(121943);
+    a.GQ(1);
+    if ((!paramBoolean) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramString)))
+    {
+      Log.i("HABBYGE-MALI.AsyncActivityMonitor", "_quiteActivity come frome: moveActivityTaskToBack");
+      AppMethodBeat.o(121943);
+      return;
+    }
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
+    bn localbn = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+    String str = null;
+    if (localbn != null) {
+      str = localbn.KFh.activityName;
+    }
+    a.apg(paramString);
+    a.ape(str);
+    Log.i("HABBYGE-MALI.AsyncActivityMonitor", "setActivityActionOnFinish: from: %s, to: %s", new Object[] { paramString, str });
+    AppMethodBeat.o(121943);
+  }
+  
   static void b(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(195998);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cpt().a(paramInt1, paramString1, paramString2, paramString3, paramInt2, paramLong);
-    AppMethodBeat.o(195998);
+    AppMethodBeat.i(220428);
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM().a(paramInt1, paramString1, paramString2, paramString3, paramInt2, paramLong);
+    AppMethodBeat.o(220428);
   }
   
-  static ces c(Activity paramActivity, long paramLong)
+  static cuz c(Activity paramActivity, long paramLong)
   {
     AppMethodBeat.i(184312);
-    ces localces = new ces();
-    localces.GKT = new dol();
-    localces.GKT.activityName = paramActivity.getClass().getCanonicalName();
-    localces.GKT.aHQ = paramActivity.hashCode();
-    localces.GKT.timestamp = paramLong;
-    paramActivity = Z(paramActivity);
-    localces.GKU = ((String)paramActivity.get(0));
-    localces.GKX = ((Boolean)paramActivity.get(1)).booleanValue();
-    localces.Hce = ((Boolean)paramActivity.get(2)).booleanValue();
+    cuz localcuz = new cuz();
+    localcuz.LOX = new eih();
+    localcuz.LOX.activityName = paramActivity.getClass().getCanonicalName();
+    localcuz.LOX.aHK = paramActivity.hashCode();
+    localcuz.LOX.timestamp = paramLong;
+    paramActivity = X(paramActivity);
+    localcuz.LOY = ((String)paramActivity.get(0));
+    localcuz.LPb = ((Boolean)paramActivity.get(1)).booleanValue();
+    localcuz.Mhh = ((Boolean)paramActivity.get(2)).booleanValue();
     AppMethodBeat.o(184312);
-    return localces;
+    return localcuz;
   }
   
-  static cer g(Intent paramIntent, Activity paramActivity)
+  static cuy g(Intent paramIntent, Activity paramActivity)
   {
     AppMethodBeat.i(121941);
-    cer localcer = new cer();
+    cuy localcuy = new cuy();
     if (paramIntent != null) {
-      localcer.flags = paramIntent.getFlags();
+      localcuy.flags = paramIntent.getFlags();
     }
-    localcer.GKT = new dol();
+    localcuy.LOX = new eih();
     if (paramActivity == null)
     {
       AppMethodBeat.o(121941);
-      return localcer;
+      return localcuy;
     }
-    localcer.GKT.activityName = paramActivity.getClass().getCanonicalName();
-    localcer.GKT.aHQ = paramActivity.hashCode();
-    localcer.GKT.timestamp = System.currentTimeMillis();
+    localcuy.LOX.activityName = paramActivity.getClass().getCanonicalName();
+    localcuy.LOX.aHK = paramActivity.hashCode();
+    localcuy.LOX.timestamp = System.currentTimeMillis();
     AppMethodBeat.o(121941);
-    return localcer;
+    return localcuy;
   }
 }
 

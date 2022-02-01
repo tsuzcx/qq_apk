@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbiz.WXOpenBusinessView.Resp;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.pluginsdk.ui.tools.l;
+import com.tencent.mm.pluginsdk.ui.tools.n;
 
 final class b$9
   implements DialogInterface.OnClickListener
@@ -16,15 +16,15 @@ final class b$9
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(125939);
-    e.ywz.f(17080, new Object[] { Integer.valueOf(43), Integer.valueOf(1) });
-    paramDialogInterface = new WXOpenBusinessView.Resp(this.BKr);
-    l.a(this.BKr, paramDialogInterface, this.cCR);
+    e.Cxv.a(17080, new Object[] { Integer.valueOf(43), Integer.valueOf(1) });
+    paramDialogInterface = new WXOpenBusinessView.Resp(this.GkX);
+    n.a(this.GkX, paramDialogInterface, this.cQM);
     AppMethodBeat.o(125939);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.b.9
  * JD-Core Version:    0.7.0.1
  */

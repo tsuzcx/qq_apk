@@ -1,14 +1,12 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.ui.chatting.d.ad;
-import d.l;
+import com.tencent.mm.pluginsdk.ui.chat.ChattingScrollLayout.a;
+import com.tencent.mm.ui.chatting.d.af;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "attachFooter", "", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "detachFooter", "app_release"})
 public abstract interface r
-  extends ad
+  extends ChattingScrollLayout.a, af
 {
-  public abstract void bC(ChatFooter paramChatFooter);
+  public abstract void bmJ(String paramString);
 }
 
 

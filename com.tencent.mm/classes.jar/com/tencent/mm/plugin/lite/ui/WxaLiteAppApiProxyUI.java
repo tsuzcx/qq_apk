@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.lite.LiteAppCenter;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity.b;
 import com.tencent.mm.ui.base.a;
@@ -29,9 +29,9 @@ public class WxaLiteAppApiProxyUI
   @TargetApi(21)
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(217821);
+    AppMethodBeat.i(198906);
     super.onCreate(paramBundle);
-    if (com.tencent.mm.compatible.util.d.lA(21)) {
+    if (d.oD(21)) {
       getWindow().setStatusBarColor(0);
     }
     paramBundle = getIntent();
@@ -45,20 +45,20 @@ public class WxaLiteAppApiProxyUI
       localIntent.putExtra("mutil_select_is_ret", true);
       localIntent.putExtra("webview_params", paramBundle);
       localIntent.putExtra("Retr_Msg_Type", 2);
-      ae.i(TAG, "start SelectConversationUI");
-      com.tencent.mm.br.d.a(this, ".ui.transmit.SelectConversationUI", localIntent, 1, new MMFragmentActivity.b()
+      Log.i(TAG, "start SelectConversationUI");
+      com.tencent.mm.br.c.a(this, ".ui.transmit.SelectConversationUI", localIntent, 1, new MMFragmentActivity.b()
       {
-        public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
-          AppMethodBeat.i(217820);
-          ae.i(WxaLiteAppApiProxyUI.TAG, "startAppActivityForResult %d %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-          LiteAppCenter.onSelectConversationUICallback(i, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+          AppMethodBeat.i(198905);
+          Log.i(WxaLiteAppApiProxyUI.TAG, "startAppActivityForResult %d %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          com.tencent.mm.plugin.lite.c.a(i, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
           WxaLiteAppApiProxyUI.this.finish();
-          AppMethodBeat.o(217820);
+          AppMethodBeat.o(198905);
         }
       });
     }
-    AppMethodBeat.o(217821);
+    AppMethodBeat.o(198906);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -69,7 +69,7 @@ public class WxaLiteAppApiProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.lite.ui.WxaLiteAppApiProxyUI
  * JD-Core Version:    0.7.0.1
  */

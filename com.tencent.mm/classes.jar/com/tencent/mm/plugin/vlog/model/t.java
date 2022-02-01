@@ -1,142 +1,39 @@
 package com.tencent.mm.plugin.vlog.model;
 
+import android.graphics.Matrix;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.videocomposition.c.b;
-import com.tencent.mm.videocomposition.c.b.a;
-import com.tencent.tav.decoder.logger.ILog;
-import com.tencent.tav.decoder.logger.Logger;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/TAVKitLog;", "", "()V", "TAG", "", "setUp", "", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"scaleRect", "", "origin", "Landroid/graphics/Rect;", "target", "getScale", "", "Landroid/graphics/Matrix;", "scaleBy", "scale", "setRectToRectCenterCrop", "src", "Landroid/graphics/RectF;", "dst", "srcLeft", "srcTop", "srcRight", "srcBottom", "dstLeft", "dstTop", "dstRight", "dstBottom", "plugin-vlog_release"})
 public final class t
 {
-  public static final t BXD;
-  private static final String TAG = "MicroMsg.TAVKit";
-  
-  static
+  public static final void a(Matrix paramMatrix, RectF paramRectF1, RectF paramRectF2)
   {
-    AppMethodBeat.i(191227);
-    BXD = new t();
-    TAG = "MicroMsg.TAVKit";
-    AppMethodBeat.o(191227);
+    AppMethodBeat.i(190589);
+    p.h(paramMatrix, "$this$setRectToRectCenterCrop");
+    p.h(paramRectF1, "src");
+    p.h(paramRectF2, "dst");
+    paramMatrix.reset();
+    float f = Math.max(paramRectF2.height() / paramRectF1.height(), paramRectF2.width() / paramRectF1.width());
+    paramMatrix.postTranslate(-paramRectF1.centerX(), -paramRectF1.centerY());
+    paramMatrix.postScale(f, f);
+    paramMatrix.postTranslate(paramRectF2.centerX(), paramRectF2.centerY());
+    AppMethodBeat.o(190589);
   }
   
-  public static void dlu()
+  public static final float e(Matrix paramMatrix)
   {
-    AppMethodBeat.i(191226);
-    Logger.setLogProxy((ILog)new a());
-    b localb = b.LKp;
-    b.a((b.a)new b());
-    AppMethodBeat.o(191226);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/model/TAVKitLog$setUp$1", "Lcom/tencent/tav/decoder/logger/ILog;", "d", "", "tag", "", "message", "e", "t", "", "i", "v", "msg", "w", "plugin-vlog_release"})
-  public static final class a
-    implements ILog
-  {
-    public final void d(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191220);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.d(t.evF() + ':' + paramString1, String.valueOf(paramString2));
-      AppMethodBeat.o(191220);
-    }
-    
-    public final void e(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191218);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.e(t.evF() + ':' + paramString1, String.valueOf(paramString2));
-      AppMethodBeat.o(191218);
-    }
-    
-    public final void e(String paramString1, String paramString2, Throwable paramThrowable)
-    {
-      AppMethodBeat.i(191219);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.printErrStackTrace(t.evF() + ':' + paramString1, paramThrowable, String.valueOf(paramString2), new Object[0]);
-      AppMethodBeat.o(191219);
-    }
-    
-    public final void i(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191215);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.i(t.evF() + ':' + paramString1, paramString2);
-      AppMethodBeat.o(191215);
-    }
-    
-    public final void v(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191217);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.v(t.evF() + ':' + paramString1, String.valueOf(paramString2));
-      AppMethodBeat.o(191217);
-    }
-    
-    public final void w(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191216);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.w(t.evF() + ':' + paramString1, String.valueOf(paramString2));
-      AppMethodBeat.o(191216);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/model/TAVKitLog$setUp$2", "Lcom/tencent/mm/videocomposition/sdk/CLog$LogImp;", "logLevel", "", "getLogLevel", "()I", "logD", "", "tag", "", "filename", "funcname", "linuxTid", "pid", "tid", "", "maintid", "log", "logE", "logF", "logI", "logV", "logW", "plugin-vlog_release"})
-  public static final class b
-    implements b.a
-  {
-    public final void aEH(String paramString)
-    {
-      AppMethodBeat.i(191225);
-      t localt = t.BXD;
-      ae.w(t.evF(), paramString);
-      AppMethodBeat.o(191225);
-    }
-    
-    public final void kp(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191221);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.d(t.evF() + ':' + paramString1, paramString2);
-      AppMethodBeat.o(191221);
-    }
-    
-    public final void kq(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191222);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.e(t.evF() + ':' + paramString1, paramString2);
-      AppMethodBeat.o(191222);
-    }
-    
-    public final void kr(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191223);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.i(t.evF() + ':' + paramString1, paramString2);
-      AppMethodBeat.o(191223);
-    }
-    
-    public final void ks(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(191224);
-      StringBuilder localStringBuilder = new StringBuilder();
-      t localt = t.BXD;
-      ae.v(t.evF() + ':' + paramString1, paramString2);
-      AppMethodBeat.o(191224);
-    }
+    AppMethodBeat.i(190588);
+    p.h(paramMatrix, "$this$getScale");
+    float[] arrayOfFloat = new float[9];
+    paramMatrix.getValues(arrayOfFloat);
+    float f1 = arrayOfFloat[0];
+    float f2 = arrayOfFloat[3];
+    f1 = (float)Math.sqrt(f2 * f2 + f1 * f1);
+    AppMethodBeat.o(190588);
+    return f1;
   }
 }
 

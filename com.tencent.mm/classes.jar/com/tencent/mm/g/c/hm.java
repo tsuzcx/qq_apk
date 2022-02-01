@@ -2,22 +2,45 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class hm
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS WxaAttrVersionServerNotifyRecordAppVersionIndex ON WxaAttrVersionServerNotifyRecord(appVersion)" };
-  private static final int eGY = "username".hashCode();
-  private static final int eHp = "appVersion".hashCode();
-  private static final int eIh = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int flv;
+  private static final int fss = "downloadUrl".hashCode();
+  private static final int fyf;
+  private static final int ghj = "pkgId".hashCode();
+  private static final int ghk;
+  private static final int ghl;
+  private static final int ghm = "pkgSize".hashCode();
+  private static final int ghn = "downloadNetType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  private boolean eHl = true;
-  private boolean eIc = true;
-  public int field_appVersion;
-  public int field_reportId;
-  public String field_username;
+  public int field_downloadNetType;
+  public String field_downloadUrl;
+  public String field_md5;
+  public String field_oldPath;
+  public String field_oldVersion;
+  public String field_pkgId;
+  public int field_pkgSize;
+  public String field_version;
+  private boolean flq = true;
+  private boolean fsk = true;
+  private boolean fxt = true;
+  private boolean ghe = true;
+  private boolean ghf = true;
+  private boolean ghg = true;
+  private boolean ghh = true;
+  private boolean ghi = true;
+  
+  static
+  {
+    flv = "version".hashCode();
+    ghk = "oldVersion".hashCode();
+    ghl = "oldPath".hashCode();
+    fyf = "md5".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +55,11 @@ public abstract class hm
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (ghj != k) {
         break label65;
       }
-      this.field_username = paramCursor.getString(i);
-      this.eGV = true;
+      this.field_pkgId = paramCursor.getString(i);
+      this.ghe = true;
     }
     for (;;)
     {
@@ -44,10 +67,20 @@ public abstract class hm
       break label20;
       break;
       label65:
-      if (eHp == k) {
-        this.field_appVersion = paramCursor.getInt(i);
-      } else if (eIh == k) {
-        this.field_reportId = paramCursor.getInt(i);
+      if (flv == k) {
+        this.field_version = paramCursor.getString(i);
+      } else if (ghk == k) {
+        this.field_oldVersion = paramCursor.getString(i);
+      } else if (ghl == k) {
+        this.field_oldPath = paramCursor.getString(i);
+      } else if (fyf == k) {
+        this.field_md5 = paramCursor.getString(i);
+      } else if (fss == k) {
+        this.field_downloadUrl = paramCursor.getString(i);
+      } else if (ghm == k) {
+        this.field_pkgSize = paramCursor.getInt(i);
+      } else if (ghn == k) {
+        this.field_downloadNetType = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +90,29 @@ public abstract class hm
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.ghe) {
+      localContentValues.put("pkgId", this.field_pkgId);
     }
-    if (this.eHl) {
-      localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
+    if (this.flq) {
+      localContentValues.put("version", this.field_version);
     }
-    if (this.eIc) {
-      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
+    if (this.ghf) {
+      localContentValues.put("oldVersion", this.field_oldVersion);
+    }
+    if (this.ghg) {
+      localContentValues.put("oldPath", this.field_oldPath);
+    }
+    if (this.fxt) {
+      localContentValues.put("md5", this.field_md5);
+    }
+    if (this.fsk) {
+      localContentValues.put("downloadUrl", this.field_downloadUrl);
+    }
+    if (this.ghh) {
+      localContentValues.put("pkgSize", Integer.valueOf(this.field_pkgSize));
+    }
+    if (this.ghi) {
+      localContentValues.put("downloadNetType", Integer.valueOf(this.field_downloadNetType));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -74,7 +122,7 @@ public abstract class hm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.c.hm
  * JD-Core Version:    0.7.0.1
  */

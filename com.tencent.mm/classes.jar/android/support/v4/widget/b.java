@@ -4,14 +4,14 @@ import android.os.Build.VERSION;
 
 public abstract interface b
 {
-  public static final boolean Sp;
+  public static final boolean SC;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 27) {}
     for (boolean bool = true;; bool = false)
     {
-      Sp = bool;
+      SC = bool;
       return;
     }
   }

@@ -1,58 +1,50 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils.TruncateAt;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.luggage.h.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.az;
+import com.tencent.mm.plugin.appbrand.page.bf;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.b;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/JsApiSaveInitialRenderingCache;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "()V", "dispatchInJsThread", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
 public final class b
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.page.z>
+  extends d<s>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "saveInitialRenderingCache";
-  @Deprecated
-  public static final a ljr;
+  private static final int CTRL_INDEX = 107;
+  private static final String NAME = "showActionSheet";
+  public static a mnM;
   
-  static
+  public static abstract interface a
   {
-    AppMethodBeat.i(147960);
-    ljr = new a((byte)0);
-    AppMethodBeat.o(147960);
-  }
-  
-  public final boolean biK()
-  {
-    return false;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/JsApiSaveInitialRenderingCache$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wechat-full-sdk_release"})
-  static final class a {}
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements d.g.a.a<d.z>
-  {
-    b(b paramb, com.tencent.mm.plugin.appbrand.page.z paramz, int paramInt)
-    {
-      super();
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements d.g.a.a<d.z>
-  {
-    c(b paramb, com.tencent.mm.plugin.appbrand.page.z paramz, int paramInt)
-    {
-      super();
-    }
+    public abstract void xl(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.b
  * JD-Core Version:    0.7.0.1
  */

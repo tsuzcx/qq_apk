@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.er;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.eu;
+import com.tencent.mm.sdk.event.IListener;
 
 final class e$3
-  extends c<er>
+  extends IListener<eu>
 {
   e$3(e parame)
   {
     AppMethodBeat.i(161317);
-    this.__eventId = er.class.getName().hashCode();
+    this.__eventId = eu.class.getName().hashCode();
     AppMethodBeat.o(161317);
   }
 }

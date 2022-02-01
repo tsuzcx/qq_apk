@@ -3,9 +3,9 @@ package com.tencent.mm.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.ao;
 
 final class MMAppMgr$7
   implements DialogInterface.OnClickListener
@@ -13,8 +13,8 @@ final class MMAppMgr$7
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(33409);
-    bc.aCg();
-    c.ajA().set(65, Integer.valueOf(5));
+    bg.aVF();
+    c.azQ().set(65, Integer.valueOf(5));
     AppMethodBeat.o(33409);
   }
 }

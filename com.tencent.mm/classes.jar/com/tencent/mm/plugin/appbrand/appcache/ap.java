@@ -1,45 +1,30 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.x.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.plugin.appbrand.ab.c;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public class ap
   extends c<ao>
 {
-  public static final String[] hGX;
+  public static final String[] iBh;
   
   static
   {
     AppMethodBeat.i(90566);
-    hGX = new String[] { j.getCreateSQLs(ao.hGW, "PushWxaPkgDecryptKeyTable") };
+    iBh = new String[] { MAutoStorage.getCreateSQLs(ao.iBg, "PushWxaPkgDecryptKeyTable") };
     AppMethodBeat.o(90566);
   }
   
-  public ap(e parame)
+  public ap(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, ao.hGW, "PushWxaPkgDecryptKeyTable", ao.INDEX_CREATE);
-  }
-  
-  public final ao aN(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(90565);
-    ao localao = new ao();
-    localao.field_appId = paramString;
-    localao.field_appVersion = paramInt;
-    if (get(localao, new String[0]))
-    {
-      AppMethodBeat.o(90565);
-      return localao;
-    }
-    AppMethodBeat.o(90565);
-    return null;
+    super(paramISQLiteDatabase, ao.iBg, "PushWxaPkgDecryptKeyTable", ao.INDEX_CREATE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ap
  * JD-Core Version:    0.7.0.1
  */

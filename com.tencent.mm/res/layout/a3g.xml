@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textColor="#ff888888" android:gravity="center" android:paddingLeft="@dimen/e8" android:paddingTop="8.0dip" android:paddingRight="@dimen/e8" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/c5k"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.MMPullDownView android:orientation="vertical" android:id="@id/ep3" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.emoji.ui.v2.PreViewListGridView android:gravity="center" android:id="@id/ecm" android:background="@color/ac_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/b0w" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+    <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/hhh" android:background="#f7ffffff" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/g" android:paddingRight="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/bpf" />
+            <com.tencent.mm.ui.base.MMTagPanel android:id="@id/bcb" android:paddingTop="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/g" />
+        </LinearLayout>
+    </com.tencent.mm.ui.contact.LabelContainerView>
+</FrameLayout>

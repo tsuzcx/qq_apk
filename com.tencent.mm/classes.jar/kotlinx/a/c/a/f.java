@@ -1,38 +1,38 @@
 package kotlinx.a.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.v;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.t;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/internal/JsonReader;", "", "source", "", "(Ljava/lang/String;)V", "buf", "", "canBeginValue", "", "getCanBeginValue", "()Z", "currentPosition", "", "isDone", "length", "offset", "tokenClass", "", "tokenPosition", "append", "", "ch", "", "appendEsc", "startPosition", "appendHex", "startPos", "appendRange", "fromIndex", "toIndex", "fail", "", "message", "position", "fromHexChar", "nextLiteral", "nextString", "nextToken", "require", "condition", "Lkotlin/Function0;", "require$kotlinx_serialization_runtime", "requireTokenClass", "expected", "errorMessage", "Lkotlin/Function1;", "requireTokenClass$kotlinx_serialization_runtime", "skipElement", "takeBooleanStringUnquoted", "takeString", "takeStringInternal", "takeStringQuoted", "toString", "kotlinx-serialization-runtime"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/json/internal/JsonReader;", "", "source", "", "(Ljava/lang/String;)V", "buf", "", "canBeginValue", "", "getCanBeginValue", "()Z", "currentPosition", "", "isDone", "length", "offset", "tokenClass", "", "tokenPosition", "append", "", "ch", "", "appendEsc", "startPosition", "appendHex", "startPos", "appendRange", "fromIndex", "toIndex", "fail", "", "message", "position", "fromHexChar", "nextLiteral", "nextString", "nextToken", "require", "condition", "Lkotlin/Function0;", "require$kotlinx_serialization_runtime", "requireTokenClass", "expected", "errorMessage", "Lkotlin/Function1;", "requireTokenClass$kotlinx_serialization_runtime", "skipElement", "takeBooleanStringUnquoted", "takeString", "takeStringInternal", "takeStringQuoted", "toString", "kotlinx-serialization-runtime"})
 public final class f
 {
-  public byte Olo;
-  int Olp;
+  public byte Ual;
+  int Uam;
   private char[] buf;
   private int length;
   private int offset;
   private final String source;
-  public int vFD;
+  public int zaD;
   
   public f(String paramString)
   {
-    AppMethodBeat.i(199902);
+    AppMethodBeat.i(225674);
     this.source = paramString;
-    this.Olo = 12;
+    this.Ual = 12;
     this.offset = -1;
     this.buf = new char[16];
-    gBV();
-    AppMethodBeat.o(199902);
+    hPc();
+    AppMethodBeat.o(225674);
   }
   
   private final void append(char paramChar)
   {
-    AppMethodBeat.i(199890);
+    AppMethodBeat.i(225662);
     if (this.length >= this.buf.length)
     {
       arrayOfChar = Arrays.copyOf(this.buf, this.buf.length * 2);
@@ -43,18 +43,18 @@ public final class f
     int i = this.length;
     this.length = (i + 1);
     arrayOfChar[i] = paramChar;
-    AppMethodBeat.o(199890);
+    AppMethodBeat.o(225662);
   }
   
-  private final void bh(String paramString, int paramInt1, int paramInt2)
+  private final void bd(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(199891);
+    AppMethodBeat.i(225663);
     int i = paramInt2 - paramInt1;
     int j = this.length;
     paramInt2 = j + i;
     if (paramInt2 > this.buf.length)
     {
-      char[] arrayOfChar = Arrays.copyOf(this.buf, d.k.j.lw(paramInt2, this.buf.length * 2));
+      char[] arrayOfChar = Arrays.copyOf(this.buf, kotlin.k.j.mZ(paramInt2, this.buf.length * 2));
       p.g(arrayOfChar, "java.util.Arrays.copyOf(this, newSize)");
       this.buf = arrayOfChar;
     }
@@ -65,40 +65,40 @@ public final class f
       paramInt2 += 1;
     }
     this.length += i;
-    AppMethodBeat.o(199891);
+    AppMethodBeat.o(225663);
   }
   
-  private final void hB(String paramString, int paramInt)
+  private final void hX(String paramString, int paramInt)
   {
-    AppMethodBeat.i(199893);
-    this.Olp = paramInt;
+    AppMethodBeat.i(225665);
+    this.Uam = paramInt;
     this.offset = paramInt;
-    while ((paramInt < paramString.length()) && (g.I(paramString.charAt(paramInt)) == 0)) {
+    while ((paramInt < paramString.length()) && (g.G(paramString.charAt(paramInt)) == 0)) {
       paramInt += 1;
     }
-    this.vFD = paramInt;
+    this.zaD = paramInt;
     this.length = (paramInt - this.offset);
-    if (g.n(paramString, this.offset, this.length, "null")) {}
+    if (g.o(paramString, this.offset, this.length, "null")) {}
     for (byte b = 10;; b = 0)
     {
-      this.Olo = b;
-      AppMethodBeat.o(199893);
+      this.Ual = b;
+      AppMethodBeat.o(225665);
       return;
     }
   }
   
-  private final void hC(String paramString, int paramInt)
+  private final void hY(String paramString, int paramInt)
   {
-    AppMethodBeat.i(199894);
-    this.Olp = paramInt;
+    AppMethodBeat.i(225666);
+    this.Uam = paramInt;
     this.length = 0;
     int i = paramInt + 1;
     int j = i;
     while (paramString.charAt(i) != '"') {
       if (paramString.charAt(i) == '\\')
       {
-        bh(paramString, j, i);
-        i = hD(paramString, i + 1);
+        bd(paramString, j, i);
+        i = hZ(paramString, i + 1);
         j = i;
       }
       else
@@ -106,8 +106,8 @@ public final class f
         i += 1;
         if (i >= paramString.length())
         {
-          hF("EOF", i);
-          AppMethodBeat.o(199894);
+          ib("EOF", i);
+          AppMethodBeat.o(225666);
           throw null;
         }
       }
@@ -119,68 +119,68 @@ public final class f
     }
     for (;;)
     {
-      this.vFD = (i + 1);
-      this.Olo = 1;
-      AppMethodBeat.o(199894);
+      this.zaD = (i + 1);
+      this.Ual = 1;
+      AppMethodBeat.o(225666);
       return;
-      bh(paramString, j, i);
+      bd(paramString, j, i);
       this.offset = -1;
     }
   }
   
-  private final int hD(String paramString, int paramInt)
+  private final int hZ(String paramString, int paramInt)
   {
     int j = 1;
-    AppMethodBeat.i(199895);
+    AppMethodBeat.i(225667);
     if (paramInt < paramString.length()) {}
     for (int i = 1; i == 0; i = 0)
     {
-      hF("Unexpected EOF after escape character", paramInt);
-      AppMethodBeat.o(199895);
+      ib("Unexpected EOF after escape character", paramInt);
+      AppMethodBeat.o(225667);
       throw null;
     }
     i = paramInt + 1;
     char c1 = paramString.charAt(paramInt);
     if (c1 == 'u')
     {
-      paramInt = hE(paramString, i);
-      AppMethodBeat.o(199895);
+      paramInt = ia(paramString, i);
+      AppMethodBeat.o(225667);
       return paramInt;
     }
-    char c2 = g.amw(c1);
+    char c2 = g.awf(c1);
     if (c2 != 0) {}
     for (paramInt = j; paramInt == 0; paramInt = 0)
     {
-      hF("Invalid escaped char '" + c1 + '\'', i);
-      AppMethodBeat.o(199895);
+      ib("Invalid escaped char '" + c1 + '\'', i);
+      AppMethodBeat.o(225667);
       throw null;
     }
     append(c2);
-    AppMethodBeat.o(199895);
+    AppMethodBeat.o(225667);
     return i;
   }
   
-  private final int hE(String paramString, int paramInt)
+  private final int ia(String paramString, int paramInt)
   {
-    AppMethodBeat.i(199896);
+    AppMethodBeat.i(225668);
     int j = paramInt + 1;
-    paramInt = hG(paramString, paramInt);
+    paramInt = ic(paramString, paramInt);
     int i = j + 1;
-    j = hG(paramString, j);
+    j = ic(paramString, j);
     int k = i + 1;
-    append((char)((j << 8) + (paramInt << 12) + (hG(paramString, i) << 4) + hG(paramString, k)));
-    AppMethodBeat.o(199896);
+    append((char)((j << 8) + (paramInt << 12) + (ic(paramString, i) << 4) + ic(paramString, k)));
+    AppMethodBeat.o(225668);
     return k + 1;
   }
   
-  private final int hG(String paramString, int paramInt)
+  private final int ic(String paramString, int paramInt)
   {
-    AppMethodBeat.i(199901);
+    AppMethodBeat.i(225673);
     if (paramInt < paramString.length()) {}
     for (int i = 1; i == 0; i = 0)
     {
-      hF("Unexpected EOF during unicode escape", paramInt);
-      AppMethodBeat.o(199901);
+      ib("Unexpected EOF during unicode escape", paramInt);
+      AppMethodBeat.o(225673);
       throw null;
     }
     char c = paramString.charAt(paramInt);
@@ -198,27 +198,27 @@ public final class f
     while ('F' < c)
     {
       a(this, "Invalid toHexChar char '" + c + "' in unicode escape");
-      AppMethodBeat.o(199901);
+      AppMethodBeat.o(225673);
       throw null;
       if ('9' < c) {
         break;
       }
-      AppMethodBeat.o(199901);
+      AppMethodBeat.o(225673);
       return c - '0';
       if ('f' < c) {
         break label60;
       }
-      AppMethodBeat.o(199901);
+      AppMethodBeat.o(225673);
       return c - 'a' + 10;
     }
     label134:
-    AppMethodBeat.o(199901);
+    AppMethodBeat.o(225673);
     return c - 'A' + 10;
   }
   
-  public final boolean gBR()
+  public final boolean hOY()
   {
-    switch (this.Olo)
+    switch (this.Ual)
     {
     case 2: 
     case 3: 
@@ -232,45 +232,45 @@ public final class f
     return true;
   }
   
-  public final String gBS()
+  public final String hOZ()
   {
-    AppMethodBeat.i(199887);
-    if ((this.Olo != 0) && (this.Olo != 1))
+    AppMethodBeat.i(225659);
+    if ((this.Ual != 0) && (this.Ual != 1))
     {
-      hF("Expected string or non-null literal", this.Olp);
-      AppMethodBeat.o(199887);
+      ib("Expected string or non-null literal", this.Uam);
+      AppMethodBeat.o(225659);
       throw null;
     }
-    String str = gBU();
-    AppMethodBeat.o(199887);
+    String str = hPb();
+    AppMethodBeat.o(225659);
     return str;
   }
   
-  public final String gBT()
+  public final String hPa()
   {
-    AppMethodBeat.i(199888);
-    if (this.Olo != 1)
+    AppMethodBeat.i(225660);
+    if (this.Ual != 1)
     {
-      hF("Expected string literal with quotes. Use 'JsonConfiguration.isLenient = true' to accept non-compliant JSON", this.Olp);
-      AppMethodBeat.o(199888);
+      ib("Expected string literal with quotes. Use 'JsonConfiguration.isLenient = true' to accept non-compliant JSON", this.Uam);
+      AppMethodBeat.o(225660);
       throw null;
     }
-    String str = gBU();
-    AppMethodBeat.o(199888);
+    String str = hPb();
+    AppMethodBeat.o(225660);
     return str;
   }
   
-  final String gBU()
+  final String hPb()
   {
-    AppMethodBeat.i(199889);
+    AppMethodBeat.i(225661);
     Object localObject;
     if (this.offset < 0) {
       localObject = new String(this.buf, 0, this.length);
     }
     for (;;)
     {
-      gBV();
-      AppMethodBeat.o(199889);
+      hPc();
+      AppMethodBeat.o(225661);
       return localObject;
       localObject = this.source;
       int i = this.offset;
@@ -278,8 +278,8 @@ public final class f
       int k = this.length;
       if (localObject == null)
       {
-        localObject = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(199889);
+        localObject = new t("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(225661);
         throw ((Throwable)localObject);
       }
       localObject = ((String)localObject).substring(i, j + k);
@@ -287,14 +287,14 @@ public final class f
     }
   }
   
-  public final void gBV()
+  public final void hPc()
   {
-    AppMethodBeat.i(199892);
+    AppMethodBeat.i(225664);
     String str = this.source;
-    int i = this.vFD;
+    int i = this.zaD;
     while (i < str.length())
     {
-      byte b = g.I(str.charAt(i));
+      byte b = g.G(str.charAt(i));
       if (b == 3)
       {
         i += 1;
@@ -303,65 +303,65 @@ public final class f
       {
         if (b == 0)
         {
-          hB(str, i);
-          AppMethodBeat.o(199892);
+          hX(str, i);
+          AppMethodBeat.o(225664);
           return;
         }
         if (b == 1)
         {
-          hC(str, i);
-          AppMethodBeat.o(199892);
+          hY(str, i);
+          AppMethodBeat.o(225664);
           return;
         }
-        this.Olp = i;
-        this.Olo = b;
-        this.vFD = (i + 1);
-        AppMethodBeat.o(199892);
+        this.Uam = i;
+        this.Ual = b;
+        this.zaD = (i + 1);
+        AppMethodBeat.o(225664);
         return;
       }
     }
-    this.Olp = i;
-    this.Olo = 12;
-    AppMethodBeat.o(199892);
+    this.Uam = i;
+    this.Ual = 12;
+    AppMethodBeat.o(225664);
   }
   
-  public final void gBW()
+  public final void hPd()
   {
-    AppMethodBeat.i(199897);
-    if ((this.Olo != 6) && (this.Olo != 8))
+    AppMethodBeat.i(225669);
+    if ((this.Ual != 6) && (this.Ual != 8))
     {
-      gBV();
-      AppMethodBeat.o(199897);
+      hPc();
+      AppMethodBeat.o(225669);
       return;
     }
     Object localObject = (List)new ArrayList();
-    switch (this.Olo)
+    switch (this.Ual)
     {
     default: 
       label80:
-      gBV();
+      hPc();
       if (((Collection)localObject).isEmpty()) {
         break;
       }
     }
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(199897);
+      AppMethodBeat.o(225669);
       return;
-      ((List)localObject).add(Byte.valueOf(this.Olo));
+      ((List)localObject).add(Byte.valueOf(this.Ual));
       break label80;
-      if (((Number)d.a.j.jn((List)localObject)).byteValue() != 8)
+      if (((Number)kotlin.a.j.ku((List)localObject)).byteValue() != 8)
       {
-        localObject = (Throwable)kotlinx.a.c.l.ac(this.vFD, "found ] instead of }", this.source);
-        AppMethodBeat.o(199897);
+        localObject = (Throwable)kotlinx.a.c.l.af(this.zaD, "found ] instead of }", this.source);
+        AppMethodBeat.o(225669);
         throw ((Throwable)localObject);
       }
       ((List)localObject).remove(((List)localObject).size() - 1);
       break label80;
-      if (((Number)d.a.j.jn((List)localObject)).byteValue() != 6)
+      if (((Number)kotlin.a.j.ku((List)localObject)).byteValue() != 6)
       {
-        localObject = (Throwable)kotlinx.a.c.l.ac(this.vFD, "found } instead of ]", this.source);
-        AppMethodBeat.o(199897);
+        localObject = (Throwable)kotlinx.a.c.l.af(this.zaD, "found } instead of ]", this.source);
+        AppMethodBeat.o(225669);
         throw ((Throwable)localObject);
       }
       ((List)localObject).remove(((List)localObject).size() - 1);
@@ -369,26 +369,26 @@ public final class f
     }
   }
   
-  public final Void hF(String paramString, int paramInt)
+  public final Void ib(String paramString, int paramInt)
   {
-    AppMethodBeat.i(199899);
+    AppMethodBeat.i(225671);
     p.h(paramString, "message");
-    paramString = (Throwable)kotlinx.a.c.l.ac(paramInt, paramString, this.source);
-    AppMethodBeat.o(199899);
+    paramString = (Throwable)kotlinx.a.c.l.af(paramInt, paramString, this.source);
+    AppMethodBeat.o(225671);
     throw paramString;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(199898);
-    String str = "JsonReader(source='" + this.source + "', currentPosition=" + this.vFD + ", tokenClass=" + this.Olo + ", tokenPosition=" + this.Olp + ", offset=" + this.offset + ')';
-    AppMethodBeat.o(199898);
+    AppMethodBeat.i(225670);
+    String str = "JsonReader(source='" + this.source + "', currentPosition=" + this.zaD + ", tokenClass=" + this.Ual + ", tokenPosition=" + this.Uam + ", offset=" + this.offset + ')';
+    AppMethodBeat.o(225670);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.c.a.f
  * JD-Core Version:    0.7.0.1
  */

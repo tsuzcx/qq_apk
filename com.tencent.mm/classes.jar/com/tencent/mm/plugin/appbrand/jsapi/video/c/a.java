@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class a
-  extends b
+  extends IEvent
 {
-  public a luh;
+  public a mAJ;
   
   public a()
   {
@@ -15,18 +15,18 @@ public final class a
   
   private a(byte paramByte)
   {
-    AppMethodBeat.i(211236);
-    this.luh = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(234905);
+    this.mAJ = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(211236);
+    AppMethodBeat.o(234905);
   }
   
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.c.a
  * JD-Core Version:    0.7.0.1
  */

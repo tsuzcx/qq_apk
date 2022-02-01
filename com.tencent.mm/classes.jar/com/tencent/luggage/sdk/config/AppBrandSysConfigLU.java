@@ -6,53 +6,50 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
-import com.tencent.mm.plugin.appbrand.config.k;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.config.l;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class AppBrandSysConfigLU
-  extends k
-  implements Parcelable, j
+  extends l
+  implements Parcelable, m
 {
   public static final Parcelable.Creator<AppBrandSysConfigLU> CREATOR;
-  public String cmF;
-  public boolean cmG;
-  public boolean cmH;
+  public String cyB;
+  public boolean cyC;
+  public boolean cyD;
   @Deprecated
-  public boolean cmI;
-  public boolean cmJ;
-  public AppRuntimeApiPermissionBundle cmK;
-  public HashMap<String, AppRuntimeApiPermissionBundle> cmL;
-  public String cmM;
-  public int cmN;
-  public int cmO;
-  public int cmP;
-  public int cmQ;
-  public int cmR;
-  public int cmS;
-  public boolean cmT;
-  public boolean cmU;
-  public long cmV;
-  public int cmW;
-  public ArrayList<String> cmX;
-  public ArrayList<String> cmY;
-  public ArrayList<String> cmZ;
-  public boolean cmu;
-  public ArrayList<String> cna;
-  public ArrayList<String> cnb;
-  public boolean cnc;
-  public int cnd;
-  public int cne;
-  public int cnf;
-  public long cng;
-  public AppBrandGlobalSystemConfig cnh;
-  public String[] cni;
-  public long cnj;
-  public List<WxaAttributes.WxaPluginCodeInfo> cnk;
+  public boolean cyE;
+  public boolean cyF;
+  public AppRuntimeApiPermissionBundle cyG;
+  public HashMap<String, AppRuntimeApiPermissionBundle> cyH;
+  public String cyI;
+  public int cyJ;
+  public int cyK;
+  public int cyL;
+  public int cyM;
+  public int cyN;
+  public int cyO;
+  public boolean cyP;
+  public boolean cyQ;
+  public long cyR;
+  public int cyS;
+  public ArrayList<String> cyT;
+  public ArrayList<String> cyU;
+  public ArrayList<String> cyV;
+  public ArrayList<String> cyW;
+  public ArrayList<String> cyX;
+  public boolean cyY;
+  public int cyZ;
+  public boolean cyp;
+  public int cza;
+  public int czb;
+  public long czc;
+  public AppBrandGlobalSystemConfig czd;
+  public String[] cze;
+  public long czf;
   
   static
   {
@@ -64,135 +61,134 @@ public class AppBrandSysConfigLU
   public AppBrandSysConfigLU()
   {
     AppMethodBeat.i(146705);
-    this.cmG = false;
-    this.cmH = false;
-    this.cmI = false;
-    this.cmJ = false;
-    this.cmu = false;
-    this.cng = 0L;
-    this.cni = new String[0];
+    this.cyC = false;
+    this.cyD = false;
+    this.cyE = false;
+    this.cyF = false;
+    this.cyp = false;
+    this.czc = 0L;
+    this.cze = new String[0];
     AppMethodBeat.o(146705);
   }
   
   protected AppBrandSysConfigLU(Parcel paramParcel)
   {
     AppMethodBeat.i(146708);
-    this.cmG = false;
-    this.cmH = false;
-    this.cmI = false;
-    this.cmJ = false;
-    this.cmu = false;
-    this.cng = 0L;
-    this.cni = new String[0];
-    this.dpI = paramParcel.readString();
-    this.cmF = paramParcel.readString();
+    this.cyC = false;
+    this.cyD = false;
+    this.cyE = false;
+    this.cyF = false;
+    this.cyp = false;
+    this.czc = 0L;
+    this.cze = new String[0];
+    this.brandName = paramParcel.readString();
+    this.cyB = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.iCT = paramParcel.readString();
+    this.jyi = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.cmG = bool1;
+      this.cyC = bool1;
       if (paramParcel.readByte() == 0) {
-        break label525;
+        break label514;
       }
       bool1 = true;
       label104:
-      this.cmH = bool1;
+      this.cyD = bool1;
       if (paramParcel.readByte() == 0) {
-        break label530;
+        break label519;
       }
       bool1 = true;
       label118:
-      this.cmI = bool1;
-      this.cmK = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
-      this.kbp = paramParcel.readInt();
-      this.cmN = paramParcel.readInt();
-      this.cmO = paramParcel.readInt();
-      this.cmP = paramParcel.readInt();
-      this.cmQ = paramParcel.readInt();
-      this.cmR = paramParcel.readInt();
-      this.cmS = paramParcel.readInt();
+      this.cyE = bool1;
+      this.cyG = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
+      this.lex = paramParcel.readInt();
+      this.cyJ = paramParcel.readInt();
+      this.cyK = paramParcel.readInt();
+      this.cyL = paramParcel.readInt();
+      this.cyM = paramParcel.readInt();
+      this.cyN = paramParcel.readInt();
+      this.cyO = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label535;
+        break label524;
       }
       bool1 = true;
       label204:
-      this.cmT = bool1;
+      this.cyP = bool1;
       if (paramParcel.readByte() == 0) {
-        break label540;
+        break label529;
       }
       bool1 = true;
       label218:
-      this.cmU = bool1;
-      this.cmV = paramParcel.readLong();
-      this.cmW = paramParcel.readInt();
-      this.cmX = paramParcel.createStringArrayList();
-      this.cmY = paramParcel.createStringArrayList();
-      this.cmZ = paramParcel.createStringArrayList();
-      this.cna = paramParcel.createStringArrayList();
-      this.cnb = paramParcel.createStringArrayList();
-      this.kbw = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
-      this.cnh = ((AppBrandGlobalSystemConfig)paramParcel.readParcelable(AppBrandGlobalSystemConfig.class.getClassLoader()));
+      this.cyQ = bool1;
+      this.cyR = paramParcel.readLong();
+      this.cyS = paramParcel.readInt();
+      this.cyT = paramParcel.createStringArrayList();
+      this.cyU = paramParcel.createStringArrayList();
+      this.cyV = paramParcel.createStringArrayList();
+      this.cyW = paramParcel.createStringArrayList();
+      this.cyX = paramParcel.createStringArrayList();
+      this.leE = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
+      this.czd = ((AppBrandGlobalSystemConfig)paramParcel.readParcelable(AppBrandGlobalSystemConfig.class.getClassLoader()));
       if (paramParcel.readByte() <= 0) {
-        break label545;
+        break label534;
       }
       bool1 = true;
       label320:
-      this.kbq = bool1;
+      this.ley = bool1;
       if (paramParcel.readByte() <= 0) {
-        break label550;
+        break label539;
       }
       bool1 = true;
       label334:
-      this.kbr = bool1;
-      this.kbu = paramParcel.readInt();
-      this.kbv = paramParcel.readInt();
-      this.cnd = paramParcel.readInt();
+      this.lez = bool1;
+      this.leC = paramParcel.readInt();
+      this.leD = paramParcel.readInt();
+      this.cyZ = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label555;
+        break label544;
       }
       bool1 = true;
       label373:
-      this.cnc = bool1;
-      this.cng = paramParcel.readLong();
-      this.cmM = paramParcel.readString();
-      this.cni = new String[paramParcel.readInt()];
-      paramParcel.readStringArray(this.cni);
-      this.cne = paramParcel.readInt();
-      this.cnf = paramParcel.readInt();
-      this.kbx = paramParcel.readInt();
+      this.cyY = bool1;
+      this.czc = paramParcel.readLong();
+      this.cyI = paramParcel.readString();
+      this.cze = new String[paramParcel.readInt()];
+      paramParcel.readStringArray(this.cze);
+      this.cza = paramParcel.readInt();
+      this.czb = paramParcel.readInt();
+      this.leF = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label560;
+        break label549;
       }
       bool1 = true;
       label447:
-      this.kby = bool1;
+      this.leG = bool1;
       if (paramParcel.readInt() != 1) {
-        break label565;
+        break label554;
       }
       bool1 = true;
       label462:
-      this.kbs = bool1;
+      this.leA = bool1;
       if (paramParcel.readInt() != 1) {
-        break label570;
+        break label559;
       }
     }
-    label525:
-    label530:
-    label535:
-    label540:
-    label545:
-    label550:
-    label555:
-    label560:
-    label565:
-    label570:
+    label514:
+    label519:
+    label524:
+    label529:
+    label534:
+    label539:
+    label544:
+    label549:
+    label554:
+    label559:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.kbt = bool1;
-      this.cnj = paramParcel.readLong();
-      this.cnk = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-      this.cmL = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
+      this.leB = bool1;
+      this.czf = paramParcel.readLong();
+      this.cyH = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
       AppMethodBeat.o(146708);
       return;
       bool1 = false;
@@ -226,9 +222,9 @@ public class AppBrandSysConfigLU
   public String toString()
   {
     AppMethodBeat.i(146706);
-    StringBuilder localStringBuilder = new StringBuilder("AppBrandSysConfigLU{, brandName='").append(this.dpI).append('\'').append(", appId='").append(this.appId).append('\'').append(", appIconUrl='").append(this.iCT).append('\'').append(", debugEnabled=").append(this.cmG).append(", performancePanelEnabled=").append(this.cmH).append(", maxWebViewDepth=").append(this.kbp).append(", maxBackgroundLifeSpan=").append(this.cmN).append(", maxRequestConcurrent=").append(this.cmO).append(", maxUploadConcurrent=").append(this.cmP).append(", maxDownloadConcurrent=").append(this.cmQ).append(", maxWebsocketConnect=").append(this.cmR).append(", websocketSkipPortCheck=").append(this.cmT).append(", requestDomains=").append(this.cmX).append(", socketDomains=").append(this.cmY).append(", uploadDomains=").append(this.cmZ).append(", downloadDomains=").append(this.cna).append(", downloadDomains=").append(this.cnb).append(", appPkgInfo=").append(this.kbw).append(", systemSettings=").append(this.cnh).append(", runningFlag=").append(this.cnj).append(", operationInfo=").append(this.cmM).append(", kvStorageScheme=").append(this.kbx).append(", TLSSkipHostnameCheck=").append(this.cmU).append(", kvStoragePerformanceReportOn=").append(this.kby).append(", pluginPermissionBundleMap=");
-    if (this.cmL == null) {}
-    for (String str = "0";; str = String.valueOf(this.cmL.size()))
+    StringBuilder localStringBuilder = new StringBuilder("AppBrandSysConfigLU{, brandName='").append(this.brandName).append('\'').append(", appId='").append(this.appId).append('\'').append(", appIconUrl='").append(this.jyi).append('\'').append(", debugEnabled=").append(this.cyC).append(", performancePanelEnabled=").append(this.cyD).append(", maxWebViewDepth=").append(this.lex).append(", maxBackgroundLifeSpan=").append(this.cyJ).append(", maxRequestConcurrent=").append(this.cyK).append(", maxUploadConcurrent=").append(this.cyL).append(", maxDownloadConcurrent=").append(this.cyM).append(", maxWebsocketConnect=").append(this.cyN).append(", websocketSkipPortCheck=").append(this.cyP).append(", requestDomains=").append(this.cyT).append(", socketDomains=").append(this.cyU).append(", uploadDomains=").append(this.cyV).append(", downloadDomains=").append(this.cyW).append(", downloadDomains=").append(this.cyX).append(", appPkgInfo=").append(this.leE).append(", systemSettings=").append(this.czd).append(", runningFlag=").append(this.czf).append(", operationInfo=").append(this.cyI).append(", kvStorageScheme=").append(this.leF).append(", TLSSkipHostnameCheck=").append(this.cyQ).append(", kvStoragePerformanceReportOn=").append(this.leG).append(", pluginPermissionBundleMap=");
+    if (this.cyH == null) {}
+    for (String str = "0";; str = String.valueOf(this.cyH.size()))
     {
       str = str + '}';
       AppMethodBeat.o(146706);
@@ -240,116 +236,115 @@ public class AppBrandSysConfigLU
   {
     int i = 1;
     AppMethodBeat.i(146707);
-    paramParcel.writeString(this.dpI);
-    paramParcel.writeString(this.cmF);
+    paramParcel.writeString(this.brandName);
+    paramParcel.writeString(this.cyB);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.iCT);
+    paramParcel.writeString(this.jyi);
     byte b;
-    if (this.cmG)
+    if (this.cyC)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.cmH) {
-        break label452;
+      if (!this.cyD) {
+        break label444;
       }
       b = 1;
       label64:
       paramParcel.writeByte(b);
-      if (!this.cmI) {
-        break label457;
+      if (!this.cyE) {
+        break label449;
       }
       b = 1;
       label78:
       paramParcel.writeByte(b);
-      paramParcel.writeParcelable(this.cmK, paramInt);
-      paramParcel.writeInt(this.kbp);
-      paramParcel.writeInt(this.cmN);
-      paramParcel.writeInt(this.cmO);
-      paramParcel.writeInt(this.cmP);
-      paramParcel.writeInt(this.cmQ);
-      paramParcel.writeInt(this.cmR);
-      paramParcel.writeInt(this.cmS);
-      if (!this.cmT) {
-        break label462;
+      paramParcel.writeParcelable(this.cyG, paramInt);
+      paramParcel.writeInt(this.lex);
+      paramParcel.writeInt(this.cyJ);
+      paramParcel.writeInt(this.cyK);
+      paramParcel.writeInt(this.cyL);
+      paramParcel.writeInt(this.cyM);
+      paramParcel.writeInt(this.cyN);
+      paramParcel.writeInt(this.cyO);
+      if (!this.cyP) {
+        break label454;
       }
       b = 1;
       label157:
       paramParcel.writeByte(b);
-      if (!this.cmU) {
-        break label467;
+      if (!this.cyQ) {
+        break label459;
       }
       b = 1;
       label171:
       paramParcel.writeByte(b);
-      paramParcel.writeLong(this.cmV);
-      paramParcel.writeInt(this.cmW);
-      paramParcel.writeStringList(this.cmX);
-      paramParcel.writeStringList(this.cmY);
-      paramParcel.writeStringList(this.cmZ);
-      paramParcel.writeStringList(this.cna);
-      paramParcel.writeStringList(this.cnb);
-      paramParcel.writeParcelable(this.kbw, paramInt);
-      paramParcel.writeParcelable(this.cnh, paramInt);
-      if (!this.kbq) {
-        break label472;
+      paramParcel.writeLong(this.cyR);
+      paramParcel.writeInt(this.cyS);
+      paramParcel.writeStringList(this.cyT);
+      paramParcel.writeStringList(this.cyU);
+      paramParcel.writeStringList(this.cyV);
+      paramParcel.writeStringList(this.cyW);
+      paramParcel.writeStringList(this.cyX);
+      paramParcel.writeParcelable(this.leE, paramInt);
+      paramParcel.writeParcelable(this.czd, paramInt);
+      if (!this.ley) {
+        break label464;
       }
       b = 1;
       label259:
       paramParcel.writeByte(b);
-      if (!this.kbr) {
-        break label477;
+      if (!this.lez) {
+        break label469;
       }
       b = 1;
       label273:
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.kbu);
-      paramParcel.writeInt(this.kbv);
-      paramParcel.writeInt(this.cnd);
-      if (!this.cnc) {
-        break label482;
+      paramParcel.writeInt(this.leC);
+      paramParcel.writeInt(this.leD);
+      paramParcel.writeInt(this.cyZ);
+      if (!this.cyY) {
+        break label474;
       }
       paramInt = 1;
       label311:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.cng);
-      paramParcel.writeString(this.cmM);
-      paramParcel.writeInt(this.cni.length);
-      paramParcel.writeStringArray(this.cni);
-      paramParcel.writeInt(this.cne);
-      paramParcel.writeInt(this.cnf);
-      paramParcel.writeInt(this.kbx);
-      if (!this.kby) {
-        break label487;
+      paramParcel.writeLong(this.czc);
+      paramParcel.writeString(this.cyI);
+      paramParcel.writeInt(this.cze.length);
+      paramParcel.writeStringArray(this.cze);
+      paramParcel.writeInt(this.cza);
+      paramParcel.writeInt(this.czb);
+      paramParcel.writeInt(this.leF);
+      if (!this.leG) {
+        break label479;
       }
       paramInt = 1;
       label382:
       paramParcel.writeInt(paramInt);
-      if (!this.kbs) {
-        break label492;
+      if (!this.leA) {
+        break label484;
       }
       paramInt = 1;
       label396:
       paramParcel.writeInt(paramInt);
-      if (!this.kbt) {
-        break label497;
+      if (!this.leB) {
+        break label489;
       }
     }
-    label452:
-    label457:
-    label462:
-    label467:
-    label472:
-    label477:
-    label482:
-    label487:
-    label492:
-    label497:
+    label444:
+    label449:
+    label454:
+    label459:
+    label464:
+    label469:
+    label474:
+    label479:
+    label484:
+    label489:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.cnj);
-      paramParcel.writeTypedList(this.cnk);
-      paramParcel.writeMap(this.cmL);
+      paramParcel.writeLong(this.czf);
+      paramParcel.writeMap(this.cyH);
       AppMethodBeat.o(146707);
       return;
       b = 0;
@@ -377,7 +372,7 @@ public class AppBrandSysConfigLU
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.config.AppBrandSysConfigLU
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ import java.util.Map;
 
 public final class a
 {
-  WebResourceRequest MOa;
+  WebResourceRequest SAW;
   
   public a(WebResourceRequest paramWebResourceRequest)
   {
-    this.MOa = paramWebResourceRequest;
+    this.SAW = paramWebResourceRequest;
   }
   
   public final Bundle getBundle()
   {
     AppMethodBeat.i(153550);
     Object localObject;
-    if ((this.MOa != null) && (this.MOa.getRequestHeaders() != null) && (!this.MOa.isForMainFrame()) && (this.MOa.getRequestHeaders().containsKey("Accept")))
+    if ((this.SAW != null) && (this.SAW.getRequestHeaders() != null) && (!this.SAW.isForMainFrame()) && (this.SAW.getRequestHeaders().containsKey("Accept")))
     {
-      localObject = (String)this.MOa.getRequestHeaders().get("Accept");
+      localObject = (String)this.SAW.getRequestHeaders().get("Accept");
       if ((localObject == null) || (!((String)localObject).startsWith("text/html"))) {}
     }
     for (int i = 1;; i = 0)

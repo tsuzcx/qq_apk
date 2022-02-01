@@ -5,7 +5,7 @@ public final class c$ba
 {
   public c$ba()
   {
-    super("currentMpInfoHide", "currentMpInfoHide", 347, false);
+    super("currentMpInfoShow", "currentMpInfoShow", 346, false);
   }
 }
 

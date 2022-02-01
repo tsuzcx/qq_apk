@@ -1,358 +1,377 @@
 package com.tencent.mm.plugin.multitalk.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.model.m;
+import com.tencent.mm.plugin.audio.d.d;
+import com.tencent.mm.plugin.multitalk.model.ac;
 import com.tencent.mm.plugin.multitalk.model.o;
-import com.tencent.mm.plugin.voip.ui.d;
-import com.tencent.mm.plugin.voip.video.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.plugin.multitalk.ui.widget.n;
+import com.tencent.mm.plugin.voip.model.c;
+import com.tencent.mm.plugin.voip.video.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/audio/MultiTalkAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseIPCallAudioManager;", "()V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "innerPlayer", "Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "getInnerPlayer", "()Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "setInnerPlayer", "(Lcom/tencent/mm/plugin/voip/model/AudioPlayer;)V", "ringPlayer", "Lcom/tencent/mm/plugin/voip/video/RingPlayer;", "checkRingPlayStop", "", "enableSpeakerOn", "", "value", "getAudioPlayErrState", "", "getAudioPlayerStreamType", "getCurrentStreamType", "isSpeakerAfterBluetoothDisconnected", "onAudioDeviceStateChanged", "status", "refreshHandFree", "releaseAudioDeviceCauseStopRing", "releaseAudioPlayingDevice", "requestAudioDeviceToStartRing", "isCallingParty", "type", "requestAudioPlayingDevice", "setSpeakerPhoneOnInternal", "isSpeakerPhoneOn", "turnVolumeDown", "turnVolumeUp", "unInit", "Companion", "plugin-multitalk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/audio/MultiTalkAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseIPCallAudioManager;", "()V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "innerPlayer", "Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "getInnerPlayer", "()Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "setInnerPlayer", "(Lcom/tencent/mm/plugin/voip/model/AudioPlayer;)V", "ringPlayer", "Lcom/tencent/mm/plugin/voip/video/RingPlayer;", "checkCurrentIsSpeakerMute", "", "checkRingPlayStop", "enableSpeakerOn", "", "value", "getAudioPlayErrState", "", "getAudioPlayerStreamType", "getCurrentStreamType", "isSpeakerAfterBluetoothDisconnected", "onAudioDeviceStateChanged", "status", "refreshHandFree", "releaseAudioDeviceCauseStopRing", "releaseAudioPlayingDevice", "requestAudioDeviceToStartRing", "isCallingParty", "type", "requestAudioPlayingDevice", "setSpeakerPhoneOnInternal", "isSpeakerPhoneOn", "turnVolumeDown", "turnVolumeUp", "unInit", "Companion", "plugin-multitalk_release"})
 public final class a
   extends com.tencent.mm.plugin.audio.b.b
 {
-  public static final a.a wlZ;
-  public i haq;
-  private com.tencent.mm.compatible.util.b iAr;
-  public com.tencent.mm.plugin.voip.model.c wlY;
+  public static final a.a zHc;
+  public e hTl;
+  private com.tencent.mm.compatible.util.b jvG;
+  public c zHb;
   
   static
   {
-    AppMethodBeat.i(190886);
-    wlZ = new a.a((byte)0);
-    AppMethodBeat.o(190886);
+    AppMethodBeat.i(239553);
+    zHc = new a.a((byte)0);
+    AppMethodBeat.o(239553);
   }
   
   public a()
   {
-    AppMethodBeat.i(190885);
-    this.haq = new i(ak.getContext());
-    this.iAr = new com.tencent.mm.compatible.util.b(ak.getContext());
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
+    AppMethodBeat.i(239552);
+    this.hTl = new e(MMApplicationContext.getContext());
+    this.jvG = new com.tencent.mm.compatible.util.b(MMApplicationContext.getContext());
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.oIh;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "multitalke");
-    com.tencent.mm.plugin.audio.d.a.bHI();
-    com.tencent.mm.plugin.audio.d.c.bHI();
-    this.iAr.requestFocus();
-    if (bHw())
+    com.tencent.mm.plugin.audio.d.b.cet();
+    d.cet();
+    com.tencent.mm.plugin.audio.broadcast.bluetooth.a.agp("multitalke");
+    this.jvG.requestFocus();
+    if (cdZ())
     {
-      if (xs(4))
+      if (AY(4))
       {
         b("multitalke", Integer.valueOf(4));
-        AppMethodBeat.o(190885);
+        AppMethodBeat.o(239552);
         return;
       }
       b("multitalke", Integer.valueOf(3));
-      AppMethodBeat.o(190885);
+      AppMethodBeat.o(239552);
       return;
     }
     b("multitalke", Integer.valueOf(2));
-    AppMethodBeat.o(190885);
+    AppMethodBeat.o(239552);
   }
   
-  public static int dgR()
+  public static int eaL()
   {
-    AppMethodBeat.i(190881);
-    Object localObject = com.tencent.mm.plugin.audio.c.a.nxo;
-    localObject = com.tencent.mm.plugin.audio.d.a.nxr;
-    if (com.tencent.mm.plugin.audio.d.a.bHz())
+    AppMethodBeat.i(239547);
+    Object localObject = com.tencent.mm.plugin.audio.c.a.oIh;
+    localObject = com.tencent.mm.plugin.audio.d.b.oIo;
+    if (com.tencent.mm.plugin.audio.d.b.ceb())
     {
-      localObject = com.tencent.mm.plugin.audio.c.a.nxo;
-      int i = com.tencent.mm.plugin.audio.c.a.a.bHy().bHu();
-      AppMethodBeat.o(190881);
+      localObject = com.tencent.mm.plugin.audio.c.a.oIh;
+      int i = com.tencent.mm.plugin.audio.c.a.a.cea().cdX();
+      AppMethodBeat.o(239547);
       return i;
     }
-    localObject = com.tencent.mm.plugin.multitalk.model.z.dtK();
+    localObject = ac.eom();
     p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-    if (!((o)localObject).cbt())
+    if (!((com.tencent.mm.plugin.multitalk.model.q)localObject).czl())
     {
-      AppMethodBeat.o(190881);
+      AppMethodBeat.o(239547);
       return 3;
     }
-    AppMethodBeat.o(190881);
+    AppMethodBeat.o(239547);
     return 0;
   }
   
-  public static void drE()
+  public static boolean elC()
   {
-    AppMethodBeat.i(190878);
-    if ((xs(3)) || (xs(4)))
+    AppMethodBeat.i(239551);
+    boolean bool = ac.eol().elC();
+    AppMethodBeat.o(239551);
+    return bool;
+  }
+  
+  public static void elz()
+  {
+    AppMethodBeat.i(239544);
+    if ((AY(3)) || (AY(4)))
     {
-      com.tencent.mm.plugin.multitalk.model.z.dtK().oP(false);
-      AppMethodBeat.o(190878);
+      ac.eom().rx(false);
+      AppMethodBeat.o(239544);
       return;
     }
-    com.tencent.mm.plugin.multitalk.model.z.dtK().oP(true);
-    AppMethodBeat.o(190878);
+    ac.eom().rx(true);
+    AppMethodBeat.o(239544);
   }
   
   public static void unInit()
   {
-    AppMethodBeat.i(190876);
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    com.tencent.mm.plugin.audio.c.a.a.Wy("multitalke");
-    AppMethodBeat.o(190876);
+    AppMethodBeat.i(239542);
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.oIh;
+    com.tencent.mm.plugin.audio.c.a.a.agt("multitalke");
+    AppMethodBeat.o(239542);
   }
   
-  public final void M(final boolean paramBoolean, int paramInt)
+  public final void P(final boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(190879);
+    AppMethodBeat.i(239545);
     if (paramInt == 0)
     {
-      if (!this.nwZ)
+      if (!this.oHS)
       {
-        ae.i("MicroMsg.MT.MultiTalkAudioManager", "requestAudioDeviceToStartRing ignore bluetooth or not bt plug");
-        this.haq.aU(1, paramBoolean);
-        AppMethodBeat.o(190879);
+        Log.i("MicroMsg.MT.MultiTalkAudioManager", "requestAudioDeviceToStartRing ignore bluetooth or not bt plug");
+        this.hTl.bl(1, paramBoolean);
+        AppMethodBeat.o(239545);
         return;
       }
-      ae.i("MicroMsg.MT.MultiTalkAudioManager", "requestAudioDeviceToStartRing but waitting the bt connected");
-      this.nwY = ((d.g.a.b)new b(this, paramBoolean));
-      AppMethodBeat.o(190879);
+      Log.i("MicroMsg.MT.MultiTalkAudioManager", "requestAudioDeviceToStartRing but waitting the bt connected");
+      this.oHR = ((kotlin.g.a.b)new b(this, paramBoolean));
+      AppMethodBeat.o(239545);
       return;
     }
-    this.nwY = null;
-    this.haq.X(false, 1);
-    AppMethodBeat.o(190879);
+    this.oHR = null;
+    this.hTl.g(2131689973, false, 1);
+    AppMethodBeat.o(239545);
   }
   
-  public final void NZ()
+  public final void Yl()
   {
-    AppMethodBeat.i(190882);
-    ae.i("MicroMsg.MT.MultiTalkAudioManager", "startPlay, isHeadsetPlugged: %b, isBluetoothConnected: %b %s", new Object[] { Boolean.valueOf(xs(3)), Boolean.valueOf(xs(4)), Integer.valueOf(hashCode()) });
-    if (bHw())
+    AppMethodBeat.i(239548);
+    Log.i("MicroMsg.MT.MultiTalkAudioManager", "startPlay, isHeadsetPlugged: %b, isBluetoothConnected: %b %s", new Object[] { Boolean.valueOf(AY(3)), Boolean.valueOf(AY(4)), Integer.valueOf(hashCode()) });
+    if (cdZ())
     {
-      com.tencent.mm.plugin.multitalk.model.z.dtK().oP(false);
-      if (xs(4)) {
+      ac.eom().rx(false);
+      if (AY(4)) {
         b("multitalke", Integer.valueOf(4));
       }
       for (;;)
       {
-        com.tencent.mm.plugin.multitalk.model.z.dtJ().oR(false);
-        com.tencent.mm.plugin.multitalk.model.z.dtJ().oQ(true);
-        this.iAr.requestFocus();
-        AppMethodBeat.o(190882);
+        ac.eol().rz(false);
+        ac.eol().ry(true);
+        this.jvG.requestFocus();
+        AppMethodBeat.o(239548);
         return;
         b("multitalke", Integer.valueOf(3));
       }
     }
-    o localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-    p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-    if (localo.dsV())
+    com.tencent.mm.plugin.multitalk.model.q localq = ac.eom();
+    p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+    if (localq.enq())
     {
       b("multitalke", Integer.valueOf(1));
-      com.tencent.mm.plugin.multitalk.model.z.dtJ().oR(true);
+      ac.eol().rz(true);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.multitalk.model.z.dtJ().oQ(false);
+      ac.eol().ry(false);
       break;
       b("multitalke", Integer.valueOf(2));
-      com.tencent.mm.plugin.multitalk.model.z.dtJ().oR(false);
+      ac.eol().rz(false);
     }
   }
   
-  public final void drF()
+  public final void elA()
   {
-    AppMethodBeat.i(190880);
-    this.nwY = null;
-    this.haq.stop();
-    this.iAr.abn();
-    AppMethodBeat.o(190880);
+    AppMethodBeat.i(239546);
+    this.oHR = null;
+    this.hTl.stop();
+    this.jvG.apm();
+    AppMethodBeat.o(239546);
   }
   
-  public final void drG()
+  public final void elB()
   {
-    AppMethodBeat.i(190883);
-    bHs();
-    Wv("multitalke");
-    this.iAr.abn();
-    AppMethodBeat.o(190883);
+    AppMethodBeat.i(239549);
+    cdV();
+    agq("multitalke");
+    this.jvG.apm();
+    AppMethodBeat.o(239549);
   }
   
-  public final void hE(int paramInt)
+  public final void iY(int paramInt)
   {
-    AppMethodBeat.i(190884);
-    super.hE(paramInt);
+    boolean bool2 = false;
+    AppMethodBeat.i(239550);
+    super.iY(paramInt);
     switch (paramInt)
     {
     case 4: 
     case 5: 
     default: 
-      AppMethodBeat.o(190884);
+      AppMethodBeat.o(239550);
       return;
     case 2: 
-      com.tencent.mm.plugin.multitalk.model.z.dtK().oP(false);
-      cn(false);
-      com.tencent.mm.plugin.multitalk.model.z.dtK().pb(false);
-      com.tencent.mm.plugin.multitalk.model.z.dtJ().oQ(true);
-      com.tencent.mm.plugin.multitalk.model.z.dtJ().oR(false);
-      AppMethodBeat.o(190884);
+      ac.eom().rx(false);
+      cV(false);
+      ac.eom().rJ(false);
+      ac.eol().ry(true);
+      ac.eol().rz(false);
+      ac.eon().setVoicePlayDevice(4);
+      AppMethodBeat.o(239550);
       return;
     case 1: 
     case 3: 
     case 6: 
     case 7: 
-      localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-      p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-      if ((localo.cbt()) && (!xs(3)))
+      localq = ac.eom();
+      p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+      if ((localq.czl()) && (!AY(3)))
       {
         bool1 = true;
-        localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-        p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
+        localq = ac.eom();
+        p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
         bool2 = bool1;
-        if (localo.cbt())
+        if (localq.czl())
         {
           bool2 = bool1;
-          if (!xs(3))
+          if (!AY(3))
           {
-            localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-            p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-            bool2 = localo.dtv();
+            localq = ac.eom();
+            p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+            bool2 = localq.enS();
           }
         }
-        if (!xs(3)) {
-          break label366;
+        if (!AY(3)) {
+          break label387;
         }
-        com.tencent.mm.plugin.multitalk.model.z.dtJ().oQ(true);
-        bool1 = xs(3);
-        localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-        p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-        boolean bool3 = localo.dsV();
-        localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-        p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-        boolean bool4 = localo.dtv();
-        localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-        p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-        ae.i("MicroMsg.MT.MultiTalkAudioManager", "isSpeakerAfterBluetoothDisconnected: isHeadsetPlugged: %s, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s, isSpeaker: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(localo.cbt()), Boolean.valueOf(xs(4)), Boolean.valueOf(bool2) });
-        com.tencent.mm.plugin.multitalk.model.z.dtK().pb(bool2);
-        if (!xs(3)) {
-          break label383;
+        ac.eol().ry(true);
+        bool1 = AY(3);
+        localq = ac.eom();
+        p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+        bool3 = localq.enq();
+        localq = ac.eom();
+        p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+        boolean bool4 = localq.enS();
+        localq = ac.eom();
+        p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+        Log.i("MicroMsg.MT.MultiTalkAudioManager", "isSpeakerAfterBluetoothDisconnected: isHeadsetPlugged: %s, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s, isSpeaker: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(localq.czl()), Boolean.valueOf(AY(4)), Boolean.valueOf(bool2) });
+        ac.eom().rJ(bool2);
+        ac.eol().ry(false);
+        if (!AY(3)) {
+          break label397;
         }
-        com.tencent.mm.plugin.multitalk.model.z.dtK().oP(false);
+        ac.eom().rx(false);
+        ac.eol().ry(true);
       }
       for (;;)
       {
         if (!bool2) {
-          break label393;
+          break label407;
         }
-        com.tencent.mm.plugin.voip.c.eyt().setVoicePlayDevice(1);
-        AppMethodBeat.o(190884);
+        ac.eon().setVoicePlayDevice(1);
+        AppMethodBeat.o(239550);
         return;
         bool1 = false;
         break;
-        com.tencent.mm.plugin.multitalk.model.z.dtJ().oQ(false);
-        com.tencent.mm.plugin.multitalk.model.z.dtJ().oR(bool2);
-        break label203;
-        com.tencent.mm.plugin.multitalk.model.z.dtK().oP(true);
+        ac.eol().rz(bool2);
+        break label210;
+        ac.eom().rx(true);
       }
-      if (xs(3))
+      if (AY(3))
       {
-        com.tencent.mm.plugin.voip.c.eyt().setVoicePlayDevice(3);
-        AppMethodBeat.o(190884);
+        ac.eon().setVoicePlayDevice(3);
+        AppMethodBeat.o(239550);
         return;
       }
-      com.tencent.mm.plugin.voip.c.eyt().setVoicePlayDevice(2);
-      AppMethodBeat.o(190884);
+      ac.eon().setVoicePlayDevice(2);
+      AppMethodBeat.o(239550);
       return;
     case 8: 
-      label203:
-      label366:
-      label383:
-      localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-      label393:
-      p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-      bool1 = localo.dsV();
-      localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-      p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-      bool2 = localo.dtv();
-      localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-      p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-      ae.i("MicroMsg.MT.MultiTalkAudioManager", "isHeadsetPlug connected, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(localo.cbt()), Boolean.valueOf(xs(3)) });
-      com.tencent.mm.plugin.multitalk.model.z.dtK().oP(false);
-      com.tencent.mm.plugin.voip.c.eyt().setVoicePlayDevice(3);
-      com.tencent.mm.plugin.multitalk.model.z.dtK().pb(false);
-      com.tencent.mm.plugin.multitalk.model.z.dtJ().oQ(true);
-      com.tencent.mm.plugin.multitalk.model.z.dtJ().oR(false);
-      AppMethodBeat.o(190884);
+      label210:
+      localq = ac.eom();
+      label387:
+      label397:
+      label407:
+      p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+      bool1 = localq.enq();
+      localq = ac.eom();
+      p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+      bool2 = localq.enS();
+      localq = ac.eom();
+      p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+      Log.i("MicroMsg.MT.MultiTalkAudioManager", "isHeadsetPlug connected, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(localq.czl()), Boolean.valueOf(AY(3)) });
+      ac.eom().rx(false);
+      ac.eom().rJ(false);
+      ac.eon().setVoicePlayDevice(3);
+      ac.eol().ry(true);
+      ac.eol().rz(false);
+      AppMethodBeat.o(239550);
       return;
     }
-    o localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-    p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-    boolean bool1 = localo.dsV();
-    localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-    p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-    boolean bool2 = localo.dtv();
-    localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-    p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-    ae.i("MicroMsg.MT.MultiTalkAudioManager", "isHeadsetPlug disconnected, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(localo.cbt()), Boolean.valueOf(xs(4)) });
-    localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-    p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
-    if (localo.cbt())
+    com.tencent.mm.plugin.multitalk.model.q localq = ac.eom();
+    p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+    boolean bool1 = localq.enq();
+    localq = ac.eom();
+    p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+    boolean bool3 = localq.enS();
+    localq = ac.eom();
+    p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+    Log.i("MicroMsg.MT.MultiTalkAudioManager", "isHeadsetPlug disconnected, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(localq.czl()), Boolean.valueOf(AY(4)) });
+    localq = ac.eom();
+    p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+    if (localq.czl())
     {
-      localo = com.tencent.mm.plugin.multitalk.model.z.dtK();
-      p.g(localo, "SubCoreMultiTalk.getMultiTalkManager()");
+      localq = ac.eom();
+      p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
     }
-    for (bool1 = localo.dtv();; bool1 = true)
+    for (bool1 = localq.enS();; bool1 = true)
     {
-      if (xs(4)) {
-        bool1 = false;
-      }
-      if (bool1) {
-        com.tencent.mm.plugin.voip.c.eyt().setVoicePlayDevice(1);
+      ac.eol().ry(false);
+      if (AY(4))
+      {
+        ac.eol().ry(true);
+        bool1 = bool2;
       }
       for (;;)
       {
-        com.tencent.mm.plugin.multitalk.model.z.dtK().pb(bool1);
-        com.tencent.mm.plugin.multitalk.model.z.dtK().oP(true);
-        com.tencent.mm.plugin.multitalk.model.z.dtJ().oQ(false);
-        com.tencent.mm.plugin.multitalk.model.z.dtJ().oR(bool1);
-        break;
-        if (xs(4)) {
-          com.tencent.mm.plugin.voip.c.eyt().setVoicePlayDevice(4);
-        } else {
-          com.tencent.mm.plugin.voip.c.eyt().setVoicePlayDevice(2);
+        if (bool1) {
+          ac.eon().setVoicePlayDevice(1);
+        }
+        for (;;)
+        {
+          ac.eom().rJ(bool1);
+          ac.eom().rx(true);
+          ac.eol().rz(bool1);
+          break;
+          if (AY(4)) {
+            ac.eon().setVoicePlayDevice(4);
+          } else {
+            ac.eon().setVoicePlayDevice(2);
+          }
         }
       }
     }
   }
   
-  public final void oK(boolean paramBoolean)
+  public final void rs(boolean paramBoolean)
   {
-    AppMethodBeat.i(190877);
-    ae.i("MicroMsg.MT.MultiTalkAudioManager", "setSpeakerPhoneOn, isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    io(paramBoolean);
-    if (this.wlY != null)
+    AppMethodBeat.i(239543);
+    Log.i("MicroMsg.MT.MultiTalkAudioManager", "setSpeakerPhoneOn, isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    jp(paramBoolean);
+    if (this.zHb != null)
     {
-      com.tencent.mm.plugin.voip.model.c localc = this.wlY;
+      c localc = this.zHb;
       if (localc != null)
       {
         if (localc.isPlaying() == true)
         {
-          localc = this.wlY;
+          localc = this.zHb;
           if (localc != null)
           {
-            localc.ti(paramBoolean);
-            AppMethodBeat.o(190877);
+            localc.wS(paramBoolean);
+            AppMethodBeat.o(239543);
           }
         }
       }
       else
       {
-        AppMethodBeat.o(190877);
+        AppMethodBeat.o(239543);
         return;
       }
     }
-    AppMethodBeat.o(190877);
+    AppMethodBeat.o(239543);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
   static final class b
-    extends q
-    implements d.g.a.b<Boolean, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Boolean, x>
   {
     b(a parama, boolean paramBoolean)
     {

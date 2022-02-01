@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class db
-  extends b
+  extends IEvent
 {
+  public a dGl;
+  
   public db()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class db
   
   private db(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(225907);
+    this.dGl = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(225907);
+  }
+  
+  public static final class a
+  {
+    public int action;
   }
 }
 

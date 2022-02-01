@@ -1,372 +1,762 @@
 package com.tencent.mm.plugin.scanner.box;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
-import android.webkit.JavascriptInterface;
-import android.widget.Toast;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tl;
-import com.tencent.mm.model.au.a;
-import com.tencent.mm.model.au.b;
-import com.tencent.mm.model.au.b.a;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import d.g.b.y.f;
-import org.json.JSONObject;
+import com.tencent.mm.api.aa;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.box.webview.BoxWebView;
+import com.tencent.mm.plugin.box.webview.d;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController.c;
+import com.tencent.mm.plugin.webview.d.o;
+import com.tencent.mm.protocal.protobuf.qt;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.ui.widget.MMWebView.e;
+import com.tencent.xweb.WebView;
+import kotlin.l;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebViewJSApi;", "Lcom/tencent/mm/plugin/box/webview/BoxWebViewJSApi;", "uiComponent", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "(Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;)V", "getContactUserName", "", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "closePage", "", "params", "dismissProgressDialog", "doOpenProfilePage", "", "username", "openAdPage", "openProfilePage", "openVideoPage", "openWebView", "showProgressDialog", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "viewContactProfile", "intent", "Landroid/content/Intent;", "Companion", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog;", "Landroid/support/v7/app/AppCompatDialog;", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "context", "Landroid/content/Context;", "theme", "", "homeContext", "Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;", "(Landroid/content/Context;ILcom/tencent/mm/protocal/protobuf/BoxHomeContext;)V", "dialogView", "Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;", "listener", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialogViewListener;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialogViewListener;)V", "boxDialogViewListener", "boxWebData", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebData;", "boxWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "boxWebViewJSApi", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebViewJSApi;", "enableCancelOutside", "", "enableDialogScroll", "enableFullScreen", "enableScrollRightClose", "enableWebViewScroll", "fixedDialogHeight", "fixedDialogHeightRate", "", "isAttachedToWindow", "isFixedDialogHeight", "mContext", "mDialogView", "mExitType", "pendingShow", "showAfterWebViewReady", "webViewCallback", "com/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewCallback$1", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewCallback$1;", "webViewClientListener", "com/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewClientListener$1", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewClientListener$1;", "webViewController", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "webViewControllerListener", "com/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewControllerListener$1", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewControllerListener$1;", "webViewReady", "configFullScreen", "", "createWebView", "dismiss", "dismissDialog", "exitType", "getActivityContext", "getBoxWebData", "Lcom/tencent/mm/plugin/box/webview/IBoxWebData;", "getBoxWebView", "getBoxWebViewJsApi", "Lcom/tencent/mm/plugin/box/webview/BoxWebViewJSApi;", "getHomeContext", "init", "initContentView", "initJsApi", "initWebView", "initWebViewController", "isShowingDialog", "onAttachedToWindow", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDetachedFromWindow", "onPause", "onResume", "realShow", "release", "setBackgroundOpView", "opView", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel;", "setBackgroundTouchListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundTouchListener;", "setBackgroundViewModel", "viewModel", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "setBoxDialogMoveListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "setBoxDialogViewListener", "setDimAmount", "amount", "setEnableCancelOutside", "enable", "setEnableDialogScroll", "enableScroll", "setEnableFullScreen", "setEnableScrollRightClose", "setEnableWebViewScroll", "setFixDialogHeight", "fixedHeight", "setFixDialogHeightRate", "rate", "setIsFixDialogHeight", "fixed", "setReportData", "data", "setShowAfterWebViewPageReady", "show", "showDialog", "startLoadUrl", "webviewUIReady", "Companion", "plugin-scan_release"})
 public final class i
-  extends com.tencent.mm.plugin.box.webview.d
+  extends android.support.v7.app.e
+  implements com.tencent.mm.plugin.box.c.b, e
 {
-  public static final i.a yBh;
-  private com.tencent.mm.ui.base.p fPj;
-  private final com.tencent.mm.plugin.box.c.c oaX;
-  private String yBg;
+  public static final a CCM;
+  boolean CAK;
+  boolean CAL;
+  private boolean CBG;
+  int CBH;
+  float CBJ;
+  private h CCA;
+  p CCB;
+  q CCC;
+  private j CCD;
+  public BaseBoxDialogView CCE;
+  private int CCF;
+  private boolean CCG;
+  boolean CCH;
+  boolean CCI;
+  boolean CCJ;
+  private boolean CCK;
+  private boolean CCL;
+  BaseWebViewController CCx;
+  private j CCy;
+  private i CCz;
+  private boolean isAttachedToWindow;
+  private Context mContext;
+  private qt plO;
+  BoxWebView plR;
   
   static
   {
-    AppMethodBeat.i(52144);
-    yBh = new i.a((byte)0);
-    AppMethodBeat.o(52144);
+    AppMethodBeat.i(52131);
+    CCM = new a((byte)0);
+    AppMethodBeat.o(52131);
   }
   
-  public i(com.tencent.mm.plugin.box.c.c paramc)
+  public i(Context paramContext, qt paramqt, BaseBoxDialogView paramBaseBoxDialogView, j paramj)
   {
-    super(paramc);
-    AppMethodBeat.i(52143);
-    this.oaX = paramc;
-    AppMethodBeat.o(52143);
+    super(paramContext, 2131820794);
+    AppMethodBeat.i(240272);
+    this.CCy = new j(this);
+    this.CCz = new i(this);
+    this.CCA = new h(this);
+    this.CAK = true;
+    this.CCG = true;
+    this.CCH = true;
+    this.CCI = true;
+    this.CCE = paramBaseBoxDialogView;
+    this.CCD = paramj;
+    paramBaseBoxDialogView = com.tencent.mm.plugin.webview.d.q.ISm;
+    com.tencent.mm.plugin.webview.d.q.a((com.tencent.mm.plugin.webview.d.e)o.ISi);
+    this.mContext = paramContext;
+    this.plO = paramqt;
+    this.CCC = new q((com.tencent.mm.plugin.box.c.b)this);
+    paramContext = this.CCD;
+    if (paramContext != null) {
+      paramContext.ePs();
+    }
+    paramContext = this.mContext;
+    if (paramContext == null) {
+      kotlin.g.b.p.btv("mContext");
+    }
+    this.plR = h.a(paramContext, (kotlin.g.a.q)new b(this));
+    this.CCK = false;
+    paramContext = (aa)g.af(aa.class);
+    paramqt = this.plR;
+    if (paramqt == null) {
+      kotlin.g.b.p.hyc();
+    }
+    this.CCx = paramContext.a((MMWebView)paramqt, new BaseWebViewController.c(null, true, false, false, true, 41), (com.tencent.mm.plugin.webview.d.e)o.ISi);
+    paramContext = this.CCx;
+    if (paramContext != null) {
+      paramContext.a((com.tencent.mm.plugin.webview.core.j)this.CCy);
+    }
+    paramContext = this.CCx;
+    if (paramContext != null) {
+      paramContext.a((com.tencent.mm.plugin.webview.core.f)this.CCz);
+    }
+    paramContext = this.CCx;
+    if (paramContext != null) {
+      paramContext.init();
+    }
+    paramContext = this.CCD;
+    if (paramContext != null) {
+      paramContext.ePt();
+    }
+    Log.i("MicroMsg.ScanBoxDialog", "alvinluo initWebView");
+    this.CCB = new p((com.tencent.mm.plugin.box.c.b)this);
+    com.tencent.f.h.RTc.aZ((Runnable)new f(this));
+    AppMethodBeat.o(240272);
   }
   
-  private final void aJ(Intent paramIntent)
+  private final void ePn()
   {
-    AppMethodBeat.i(189536);
-    com.tencent.mm.br.d.b(this.oaX.getActivityContext(), "profile", ".ui.ContactInfoUI", paramIntent);
-    AppMethodBeat.o(189536);
-  }
-  
-  @JavascriptInterface
-  public final void closePage(String paramString)
-  {
-    AppMethodBeat.i(189538);
-    ae.i("MicroMsg.ScanBoxWebViewJSApi", "scanBoxJsApi closePage: %s", new Object[] { paramString });
-    com.tencent.e.h.MqF.aM((Runnable)new b(this));
-    AppMethodBeat.o(189538);
-  }
-  
-  @JavascriptInterface
-  public final void openAdPage(String paramString)
-  {
-    AppMethodBeat.i(189534);
-    d.g.b.p.h(paramString, "params");
-    ae.d("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openAdPage %s", new Object[] { paramString });
+    AppMethodBeat.i(240268);
     try
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("adXml", "");
-      localObject = ((JSONObject)localObject).optString("uxinfo", "");
-      ae.i("MicroMsg.ScanBoxWebViewJSApi", "openAdPage, adXml=".concat(String.valueOf(paramString)));
-      Intent localIntent = new Intent();
-      localIntent.putExtra("sns_landing_pages_xml", paramString);
-      localIntent.putExtra("sns_landig_pages_from_source", 14);
-      localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
-      localIntent.putExtra("sns_landing_pages_ux_info", (String)localObject);
-      if (this.oaX.getActivityContext() != null)
+      if (!(getContext() instanceof Activity)) {
+        break label95;
+      }
+      Object localObject = getContext();
+      if (localObject == null)
       {
-        com.tencent.mm.br.d.b(this.oaX.getActivityContext(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
-        AppMethodBeat.o(189534);
+        localObject = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(240268);
+        throw ((Throwable)localObject);
+      }
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.ScanBoxDialog", (Throwable)localException, "realShowDialog exception", new Object[0]);
+      AppMethodBeat.o(240268);
+      return;
+    }
+    if (((Activity)localException).isFinishing())
+    {
+      Log.w("MicroMsg.ScanBoxDialog", "realShowDialog ui is finishing and ignore");
+      AppMethodBeat.o(240268);
+      return;
+    }
+    label95:
+    super.show();
+    AppMethodBeat.o(240268);
+  }
+  
+  public final void a(f paramf)
+  {
+    AppMethodBeat.i(240270);
+    kotlin.g.b.p.h(paramf, "listener");
+    BaseBoxDialogView localBaseBoxDialogView = this.CCE;
+    if (localBaseBoxDialogView != null)
+    {
+      localBaseBoxDialogView.setBackgroundListener(paramf);
+      AppMethodBeat.o(240270);
+      return;
+    }
+    AppMethodBeat.o(240270);
+  }
+  
+  public final BoxWebView ckY()
+  {
+    return this.plR;
+  }
+  
+  public final com.tencent.mm.plugin.box.webview.e ckZ()
+  {
+    return (com.tencent.mm.plugin.box.webview.e)this.CCB;
+  }
+  
+  public final d cla()
+  {
+    return (d)this.CCC;
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(52125);
+    this.CCL = false;
+    if (isShowing())
+    {
+      BaseBoxDialogView localBaseBoxDialogView = this.CCE;
+      if (localBaseBoxDialogView != null)
+      {
+        localBaseBoxDialogView.Wr(5);
+        AppMethodBeat.o(52125);
         return;
       }
     }
-    catch (Exception paramString)
-    {
-      ae.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openAdPage exception", new Object[0]);
-      AppMethodBeat.o(189534);
-    }
+    AppMethodBeat.o(52125);
   }
   
-  @JavascriptInterface
-  public final void openProfilePage(final String paramString)
+  public final void dismissDialog(int paramInt)
   {
-    AppMethodBeat.i(189535);
-    d.g.b.p.h(paramString, "params");
-    ae.d("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openProfilePage %s", new Object[] { paramString });
-    for (;;)
+    AppMethodBeat.i(52126);
+    Log.d("MicroMsg.ScanBoxDialog", "alvinluo dismissDialog isShowing: %b, isAttachedToWindow: %b, exitType: %s", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.isAttachedToWindow), Integer.valueOf(paramInt) });
+    this.CCF = paramInt;
+    this.CCL = false;
+    if ((isShowing()) && (this.isAttachedToWindow)) {
+      super.dismiss();
+    }
+    AppMethodBeat.o(52126);
+  }
+  
+  public final void ePo()
+  {
+    AppMethodBeat.i(240271);
+    this.CBG = true;
+    BaseBoxDialogView localBaseBoxDialogView = this.CCE;
+    if (localBaseBoxDialogView != null)
     {
-      try
+      localBaseBoxDialogView.setIsFixDialogHeight(true);
+      AppMethodBeat.o(240271);
+      return;
+    }
+    AppMethodBeat.o(240271);
+  }
+  
+  public final Context getActivityContext()
+  {
+    AppMethodBeat.i(52129);
+    Context localContext = this.mContext;
+    if (localContext == null) {
+      kotlin.g.b.p.btv("mContext");
+    }
+    AppMethodBeat.o(52129);
+    return localContext;
+  }
+  
+  public final boolean isShowingDialog()
+  {
+    AppMethodBeat.i(240269);
+    if ((isShowing()) || (this.CCL))
+    {
+      AppMethodBeat.o(240269);
+      return true;
+    }
+    AppMethodBeat.o(240269);
+    return false;
+  }
+  
+  public final void onAttachedToWindow()
+  {
+    AppMethodBeat.i(52127);
+    super.onAttachedToWindow();
+    Log.v("MicroMsg.ScanBoxDialog", "alvinluo onAttachedToWindow %b", new Object[] { Boolean.valueOf(this.isAttachedToWindow) });
+    this.isAttachedToWindow = true;
+    AppMethodBeat.o(52127);
+  }
+  
+  public final void onBackPressed()
+  {
+    AppMethodBeat.i(161054);
+    if (isShowing())
+    {
+      BaseBoxDialogView localBaseBoxDialogView = this.CCE;
+      if (localBaseBoxDialogView != null)
       {
-        Object localObject = new JSONObject(paramString).optString("username", "");
-        paramString = (CharSequence)localObject;
-        if (paramString != null)
+        if (!localBaseBoxDialogView.isAnimating) {
+          localBaseBoxDialogView.Wr(5);
+        }
+        AppMethodBeat.o(161054);
+        return;
+      }
+    }
+    super.onBackPressed();
+    AppMethodBeat.o(161054);
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(52124);
+    super.onCreate(paramBundle);
+    Log.i("MicroMsg.ScanBoxDialog", "alvinluo onCreate");
+    Object localObject;
+    if (this.CAK)
+    {
+      paramBundle = getWindow();
+      if (paramBundle != null) {
+        paramBundle.addFlags(100729856);
+      }
+      gR();
+      paramBundle = getWindow();
+      if (paramBundle != null) {
+        paramBundle.setLayout(-1, -1);
+      }
+      paramBundle = getWindow();
+      if (paramBundle != null) {
+        paramBundle.setDimAmount(0.0F);
+      }
+      paramBundle = getWindow();
+      if (paramBundle != null) {
+        paramBundle.setWindowAnimations(2131820795);
+      }
+      paramBundle = getWindow();
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.getDecorView();
+        if (paramBundle != null)
         {
-          boolean bool;
-          if (paramString.length() == 0)
-          {
-            break label619;
-            if (i != 0)
-            {
-              ae.e("MicroMsg.ScanBoxWebViewJSApi", "doOpenProfilePage fail, username is null");
-              Toast.makeText(this.oaX.getActivityContext(), (CharSequence)this.oaX.getActivityContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
-              bool = false;
-              ae.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openProfilePage result: %b", new Object[] { Boolean.valueOf(bool) });
-              AppMethodBeat.o(189535);
-            }
+          kotlin.g.b.p.g(paramBundle, "this");
+          localObject = paramBundle.getContext();
+          if (localObject == null) {
+            break label551;
           }
-          else
-          {
-            i = 0;
-            continue;
+          localObject = ((Context)localObject).getResources();
+          if (localObject == null) {
+            break label551;
           }
-          final y.f localf = new y.f();
-          paramString = (com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-          if (paramString == null) {
-            break label624;
+          localObject = ((Resources)localObject).getDisplayMetrics();
+          if (localObject == null) {
+            break label551;
           }
-          paramString = paramString.azF();
-          if (paramString == null) {
-            break label624;
-          }
-          paramString = paramString.BH((String)localObject);
-          localf.NiY = paramString;
-          if (((an)localf.NiY == null) || (((an)localf.NiY).adE() <= 0))
-          {
-            paramString = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-            d.g.b.p.g(paramString, "MMKernel.service(IMessengerStorage::class.java)");
-            localf.NiY = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramString).azF().aUI((String)localObject);
-          }
-          paramString = new Intent();
-          if (((an)localf.NiY != null) && (((an)localf.NiY).adE() > 0))
-          {
-            paramString.addFlags(268435456);
-            paramString.putExtra("Contact_User", ((an)localf.NiY).getUsername());
-            if (((an)localf.NiY).fug())
-            {
-              com.tencent.mm.plugin.report.service.g.yxI.kvStat(10298, ((an)localf.NiY).getUsername() + ",300");
-              paramString.putExtra("Contact_Scene", 300);
-            }
-            if (((an)localf.NiY).ads())
-            {
-              localObject = new tl();
-              ((tl)localObject).dIV.intent = paramString;
-              ((tl)localObject).dIV.username = ((an)localf.NiY).getUsername();
-              a.IvT.l((b)localObject);
-            }
-            aJ(paramString);
-            bool = true;
-            continue;
-          }
-          CharSequence localCharSequence = (CharSequence)this.yBg;
-          if (localCharSequence == null) {
-            break label629;
-          }
-          if (localCharSequence.length() == 0)
-          {
-            break label629;
-            if (i == 0) {
-              au.a.aBQ().Bt(this.yBg);
-            }
-            this.yBg = ((String)localObject);
-            au.a.aBQ().a((String)localObject, "", (au.b.a)new c(this, localf, paramString));
-            paramString = (DialogInterface.OnCancelListener)new d((String)localObject);
-            this.fPj = com.tencent.mm.ui.base.h.b(this.oaX.getActivityContext(), this.oaX.getActivityContext().getString(2131755936), true, paramString);
-            bool = true;
-            continue;
-          }
-          i = 0;
-          continue;
         }
-        i = 1;
-      }
-      catch (Exception paramString)
-      {
-        ae.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openProfilePage exception", new Object[0]);
-        AppMethodBeat.o(189535);
-        return;
-      }
-      label619:
-      continue;
-      label624:
-      paramString = null;
-      continue;
-      label629:
-      int i = 1;
-    }
-  }
-  
-  @JavascriptInterface
-  public final void openVideoPage(String paramString)
-  {
-    AppMethodBeat.i(189537);
-    d.g.b.p.h(paramString, "params");
-    ae.i("MicroMsg.ScanBoxWebViewJSApi", "openVideoPage param = ".concat(String.valueOf(paramString)));
-    try
-    {
-      Object localObject = new JSONObject(paramString).optString("videoUrl", "");
-      if (bu.isNullOrNil((String)localObject))
-      {
-        ae.i("MicroMsg.ScanBoxWebViewJSApi", "openVideoPage videoUrl null");
-        AppMethodBeat.o(189537);
-        return;
-      }
-      paramString = new Intent();
-      paramString.putExtra("rawUrl", (String)localObject);
-      localObject = this.oaX.getActivityContext();
-      if (localObject != null)
-      {
-        com.tencent.mm.br.d.b((Context)localObject, "brandservice", ".ui.timeline.video.lite.VideoLiteUI", paramString);
-        AppMethodBeat.o(189537);
-        return;
       }
     }
-    catch (Exception paramString)
+    label551:
+    for (int i = ((DisplayMetrics)localObject).widthPixels;; i = a.jn(paramBundle.getContext()))
     {
-      AppMethodBeat.o(189537);
-    }
-  }
-  
-  @JavascriptInterface
-  public final void openWebView(String paramString)
-  {
-    AppMethodBeat.i(52140);
-    d.g.b.p.h(paramString, "params");
-    ae.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openWebView %s", new Object[] { paramString });
-    try
-    {
-      Object localObject = new JSONObject(paramString).optString("url", "");
-      paramString = new Intent();
-      paramString.putExtra("rawUrl", (String)localObject);
-      paramString.putExtra("geta8key_scene", 67);
-      localObject = this.oaX.getActivityContext();
-      if (localObject != null)
+      paramBundle.setMinimumWidth(i);
+      paramBundle.setPadding(0, 0, 0, 0);
+      paramBundle = getWindow();
+      if (paramBundle != null)
       {
-        com.tencent.mm.br.d.b((Context)localObject, "webview", ".ui.tools.WebViewUI", paramString);
-        AppMethodBeat.o(52140);
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      ae.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openWebView exception", new Object[0]);
-      AppMethodBeat.o(52140);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(i parami) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(189531);
-      i.b(this.yBi).dismiss();
-      AppMethodBeat.o(189531);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "userName", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack"})
-  static final class c
-    implements au.b.a
-  {
-    c(i parami, y.f paramf, Intent paramIntent) {}
-    
-    public final void p(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(189532);
-      i.a(this.yBi);
-      if (i.b(this.yBi).getActivityContext() == null)
-      {
-        ae.w("MicroMsg.ScanBoxWebViewJSApi", "doOpenProfilePage getNow callback, context is null");
-        AppMethodBeat.o(189532);
-        return;
-      }
-      i.c(this.yBi);
-      Object localObject = (com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azF();
-        if (localObject != null)
+        paramBundle = paramBundle.getAttributes();
+        if (paramBundle != null)
         {
-          localObject = ((bq)localObject).BH(paramString);
-          if (localObject != null)
-          {
-            an localan = (an)localf.NiY;
-            if (localan == null) {
-              d.g.b.p.gkB();
-            }
-            if (localan.adE() > 0) {
-              break label353;
-            }
-          }
-          localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-          d.g.b.p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azF().aUI(paramString);
+          paramBundle.width = -1;
+          paramBundle.height = -1;
+          paramBundle.gravity = 80;
         }
       }
-      label353:
-      for (;;)
+      paramBundle = this.CCE;
+      if (paramBundle != null)
       {
-        if ((localObject == null) || (((an)localObject).adE() <= 0)) {
-          paramBoolean = false;
-        }
-        for (;;)
-        {
-          if (paramBoolean) {
-            break label232;
-          }
-          Toast.makeText(i.b(this.yBi).getActivityContext(), (CharSequence)i.b(this.yBi).getActivityContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
-          AppMethodBeat.o(189532);
-          return;
-          localObject = null;
-          break;
-          paramString = ((an)localObject).getUsername();
-        }
-        label232:
-        ae.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo doOpenProfilePage realUsername: %s", new Object[] { paramString });
-        com.tencent.mm.aj.c.al(paramString, 3);
-        com.tencent.mm.aj.p.aEP().Dw(paramString);
-        paramString.addFlags(268435456);
-        paramString.putExtra("Contact_User", paramString);
+        localObject = this.plR;
         if (localObject == null) {
-          d.g.b.p.gkB();
+          kotlin.g.b.p.hyc();
         }
-        if (((an)localObject).fug())
-        {
-          com.tencent.mm.plugin.report.service.g.yxI.kvStat(10298, paramString + ",300");
-          paramString.putExtra("Contact_Scene", 300);
+        localObject = (MMWebView)localObject;
+        kotlin.g.b.p.h(localObject, "webView");
+        paramBundle.CBn = ((MMWebView)localObject);
+        localObject = paramBundle.CBn;
+        if (localObject == null) {
+          kotlin.g.b.p.hyc();
         }
-        i.a(this.yBi, paramString);
-        AppMethodBeat.o(189532);
-        return;
+        ((MMWebView)localObject).a((MMWebView.e)new BaseBoxDialogView.g(paramBundle));
+        localObject = paramBundle.CBk;
+        if (localObject == null) {
+          kotlin.g.b.p.btv("webViewContainer");
+        }
+        ((BoxWebViewContainer)localObject).addView((View)paramBundle.CBn, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -2));
       }
+      paramBundle = this.CCE;
+      if (paramBundle != null)
+      {
+        localObject = (e)this;
+        kotlin.g.b.p.h(localObject, "dialogModel");
+        paramBundle.CBh = ((e)localObject);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle != null) {
+        paramBundle.setIsFixDialogHeight(this.CBG);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle != null) {
+        paramBundle.setFixDialogHeight(this.CBH);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle != null) {
+        paramBundle.setFixDialogHeightRate(this.CBJ);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle != null) {
+        paramBundle.setEnableDialogScroll(this.CCH);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle != null) {
+        paramBundle.setEnableWebViewScroll(this.CCG);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle != null) {
+        paramBundle.setCanceledOnTouchOutside(this.CCI);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle != null) {
+        paramBundle.setEnableScrollRightClose(this.CAL);
+      }
+      paramBundle = this.CCE;
+      if (paramBundle == null) {
+        kotlin.g.b.p.hyc();
+      }
+      setContentView((View)paramBundle, new ViewGroup.LayoutParams(-1, -1));
+      setOnShowListener((DialogInterface.OnShowListener)new i.c(this));
+      setOnDismissListener((DialogInterface.OnDismissListener)new d(this));
+      setOnCancelListener((DialogInterface.OnCancelListener)new e(this));
+      setCancelable(true);
+      AppMethodBeat.o(52124);
+      return;
+      paramBundle = getWindow();
+      if (paramBundle == null) {
+        break;
+      }
+      paramBundle.addFlags(67108864);
+      break;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  public final void onDetachedFromWindow()
+  {
+    AppMethodBeat.i(52128);
+    super.onDetachedFromWindow();
+    Log.v("MicroMsg.ScanBoxDialog", "alvinluo onDetachedFromWindow %b", new Object[] { Boolean.valueOf(this.isAttachedToWindow) });
+    this.isAttachedToWindow = false;
+    AppMethodBeat.o(52128);
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(240267);
+    Log.i("MicroMsg.ScanBoxDialog", "alvinluo showDialog showAfterWebViewReady: %b, webViewReady: %b", new Object[] { Boolean.valueOf(this.CCJ), Boolean.valueOf(this.CCK) });
+    if (this.CCJ)
+    {
+      if (!this.CCK)
+      {
+        this.CCL = true;
+        AppMethodBeat.o(240267);
+        return;
+      }
+      ePn();
+      AppMethodBeat.o(240267);
+      return;
+    }
+    ePn();
+    AppMethodBeat.o(240267);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "enablePreloadWebView", "", "enablePreloadFromFindTab", "useCache", "invoke"})
+  static final class b
+    extends kotlin.g.b.q
+    implements kotlin.g.a.q<Boolean, Boolean, Boolean, x>
+  {
+    b(i parami)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class d
+    implements DialogInterface.OnDismissListener
+  {
+    d(i parami) {}
+    
+    public final void onDismiss(DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(240256);
+      Log.i("MicroMsg.ScanBoxDialog", "dismiss dialog");
+      Object localObject = i.d(this.CCN);
+      if (localObject != null) {
+        ((j)localObject).a(paramDialogInterface, i.e(this.CCN));
+      }
+      paramDialogInterface = this.CCN;
+      localObject = com.tencent.mm.plugin.webview.d.q.ISm;
+      com.tencent.mm.plugin.webview.d.q.b((com.tencent.mm.plugin.webview.d.e)o.ISi);
+      localObject = paramDialogInterface.CCB;
+      if (localObject != null)
+      {
+        if (((p)localObject).CDm != null) {
+          g.azz().a((com.tencent.mm.ak.q)((p)localObject).CDm);
+        }
+        g.azz().b(1532, (com.tencent.mm.ak.i)localObject);
+      }
+      localObject = paramDialogInterface.plR;
+      if (localObject != null) {
+        ((BoxWebView)localObject).destroy();
+      }
+      paramDialogInterface.plR = null;
+      if (paramDialogInterface.CCC != null) {
+        q.release();
+      }
+      paramDialogInterface = paramDialogInterface.CCx;
+      if (paramDialogInterface != null)
+      {
+        paramDialogInterface.onDestroy();
+        AppMethodBeat.o(240256);
+        return;
+      }
+      AppMethodBeat.o(240256);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  static final class e
     implements DialogInterface.OnCancelListener
   {
-    d(String paramString) {}
+    e(i parami) {}
     
     public final void onCancel(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(189533);
-      ae.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo doOpenProfilePage user cancel");
-      au.a.aBQ().Bt(this.gTN);
-      AppMethodBeat.o(189533);
+      AppMethodBeat.i(240257);
+      j localj = i.d(this.CCN);
+      if (localj != null)
+      {
+        localj.onCancel(paramDialogInterface);
+        AppMethodBeat.o(240257);
+        return;
+      }
+      AppMethodBeat.o(240257);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class f
+    implements Runnable
+  {
+    f(i parami) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(240259);
+      try
+      {
+        Object localObject = i.f(this.CCN);
+        if (localObject != null) {
+          ((BoxWebView)localObject).a(null, null);
+        }
+        localObject = i.f(this.CCN);
+        if (localObject != null) {
+          ((BoxWebView)localObject).addJavascriptInterface(i.g(this.CCN), "boxJSApi");
+        }
+        i.h(this.CCN);
+        localObject = i.d(this.CCN);
+        if (localObject != null)
+        {
+          ((j)localObject).ePu();
+          AppMethodBeat.o(240259);
+          return;
+        }
+        AppMethodBeat.o(240259);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Log.printErrStackTrace("MicroMsg.ScanBoxDialog", localThrowable, "initWebView exception", new Object[0]);
+        com.tencent.f.h.RTc.aV((Runnable)new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(240258);
+            Object localObject = i.f(this.CCO.CCN);
+            if (localObject != null) {
+              ((BoxWebView)localObject).a(null, null);
+            }
+            localObject = i.f(this.CCO.CCN);
+            if (localObject != null) {
+              ((BoxWebView)localObject).addJavascriptInterface(i.g(this.CCO.CCN), "boxJSApi");
+            }
+            i.h(this.CCO.CCN);
+            localObject = i.d(this.CCO.CCN);
+            if (localObject != null)
+            {
+              ((j)localObject).ePu();
+              AppMethodBeat.o(240258);
+              return;
+            }
+            AppMethodBeat.o(240258);
+          }
+        });
+        AppMethodBeat.o(240259);
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class g
+    implements Runnable
+  {
+    g(i parami) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(240260);
+      Log.i("MicroMsg.ScanBoxDialog", "alvinluo startLoadUrl %s", new Object[] { i.a(this.CCN).Url });
+      BaseWebViewController localBaseWebViewController = i.b(this.CCN);
+      if (localBaseWebViewController != null)
+      {
+        Intent localIntent = new Intent();
+        localIntent.putExtra("rawUrl", i.a(this.CCN).Url);
+        localIntent.putExtra("useJs", true);
+        localBaseWebViewController.aB(localIntent);
+        AppMethodBeat.o(240260);
+        return;
+      }
+      AppMethodBeat.o(240260);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewCallback$1", "Lcom/tencent/mm/plugin/webview/stub/DefaultWebViewStubCallback;", "getCommitUrl", "", "getCurrentUrl", "plugin-scan_release"})
+  public static final class h
+    extends com.tencent.mm.plugin.webview.stub.b
+  {
+    public final String ePp()
+    {
+      AppMethodBeat.i(240261);
+      Log.v("MicroMsg.ScanBoxDialog", "alvinluo getCommitUrl");
+      for (;;)
+      {
+        try
+        {
+          Object localObject = i.b(this.CCN);
+          if (localObject != null)
+          {
+            String str2 = ((BaseWebViewController)localObject).IJP;
+            localObject = str2;
+            if (str2 != null)
+            {
+              AppMethodBeat.o(240261);
+              return localObject;
+            }
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          Log.printErrStackTrace("MicroMsg.ScanBoxDialog", localThrowable, "getCommitUrl exception", new Object[0]);
+          AppMethodBeat.o(240261);
+          return "";
+        }
+        String str1 = "";
+      }
+    }
+    
+    public final String getCurrentUrl()
+    {
+      AppMethodBeat.i(240262);
+      Log.v("MicroMsg.ScanBoxDialog", "alvinluo getCurrentUrl");
+      for (;;)
+      {
+        try
+        {
+          Object localObject = i.b(this.CCN);
+          if (localObject != null)
+          {
+            String str2 = ((BaseWebViewController)localObject).getCurrentUrl();
+            localObject = str2;
+            if (str2 != null)
+            {
+              AppMethodBeat.o(240262);
+              return localObject;
+            }
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          Log.printErrStackTrace("MicroMsg.ScanBoxDialog", localThrowable, "getCommitUrl exception", new Object[0]);
+          AppMethodBeat.o(240262);
+          return "";
+        }
+        String str1 = "";
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewClientListener$1", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "onPageCommitVisible", "", "webview", "Lcom/tencent/xweb/WebView;", "url", "", "onPageStarted", "webViewReady", "plugin-scan_release"})
+  public static final class i
+    extends com.tencent.mm.plugin.webview.core.f
+  {
+    private final void ePq()
+    {
+      AppMethodBeat.i(240265);
+      if (i.j(this.CCN))
+      {
+        AppMethodBeat.o(240265);
+        return;
+      }
+      i.k(this.CCN);
+      Log.i("MicroMsg.ScanBoxDialog", "alvinluo webViewReady showAfterWebViewReady: %b, pendingShow: %b", new Object[] { Boolean.valueOf(i.l(this.CCN)), Boolean.valueOf(i.m(this.CCN)) });
+      if ((i.l(this.CCN)) && (i.m(this.CCN)))
+      {
+        i.n(this.CCN);
+        this.CCN.show();
+      }
+      AppMethodBeat.o(240265);
+    }
+    
+    public final void e(WebView paramWebView, String paramString)
+    {
+      AppMethodBeat.i(240263);
+      super.e(paramWebView, paramString);
+      ePq();
+      AppMethodBeat.o(240263);
+    }
+    
+    public final void i(WebView paramWebView, String paramString)
+    {
+      AppMethodBeat.i(240264);
+      super.i(paramWebView, paramString);
+      ePq();
+      AppMethodBeat.o(240264);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/ScanBoxDialog$webViewControllerListener$1", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "onBinded", "", "plugin-scan_release"})
+  public static final class j
+    extends com.tencent.mm.plugin.webview.core.j
+  {
+    public final void ePr()
+    {
+      AppMethodBeat.i(240266);
+      try
+      {
+        Object localObject = i.b(this.CCN);
+        if (localObject != null)
+        {
+          localObject = ((BaseWebViewController)localObject).fZs();
+          if (localObject != null)
+          {
+            com.tencent.mm.plugin.webview.stub.f localf = (com.tencent.mm.plugin.webview.stub.f)i.i(this.CCN);
+            BaseWebViewController localBaseWebViewController = i.b(this.CCN);
+            if (localBaseWebViewController != null) {}
+            for (int i = localBaseWebViewController.fZu();; i = 0)
+            {
+              ((com.tencent.mm.plugin.webview.stub.e)localObject).a(localf, i);
+              AppMethodBeat.o(240266);
+              return;
+            }
+          }
+        }
+        AppMethodBeat.o(240266);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Log.printErrStackTrace("MicroMsg.ScanBoxDialog", localThrowable, "alvinluo initWebViewController exception", new Object[0]);
+        AppMethodBeat.o(240266);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.i
  * JD-Core Version:    0.7.0.1
  */

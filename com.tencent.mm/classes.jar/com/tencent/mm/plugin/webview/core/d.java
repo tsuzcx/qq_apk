@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.core;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"})
 public abstract interface d
 {
   public abstract void a(c paramc);
   
-  public abstract boolean ePi();
+  public abstract boolean fXa();
 }
 
 

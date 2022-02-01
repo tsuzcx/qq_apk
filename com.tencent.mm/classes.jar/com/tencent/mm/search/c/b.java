@@ -1,27 +1,29 @@
 package com.tencent.mm.search.c;
 
-import com.tencent.e.h;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ed;
+import com.tencent.mm.emoji.b.j;
+import com.tencent.mm.g.b.a.hi;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.p;
-import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/search/report/SimilarEmojiReport;", "", "()V", "chatId", "", "source", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "timestamp", "", "getTimestamp", "()J", "setTimestamp", "(J)V", "reportClickEmoji", "", "select", "index", "reportClickSimilarMenu", "emojiInfo", "reportClickSosEntrance", "reportListIdle", "emojiList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "reportShowSimilarMenu", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/report/SimilarEmojiReport;", "", "()V", "chatId", "", "source", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "timestamp", "", "getTimestamp", "()J", "setTimestamp", "(J)V", "reportClickEmoji", "", "select", "index", "reportClickSimilarMenu", "emojiInfo", "reportClickSosEntrance", "reportListIdle", "emojiList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "reportShowSimilarMenu", "plugin-emojisdk_release"})
 public final class b
 {
-  private static EmojiInfo ICD;
-  private static String ICE;
-  public static final b ICF;
+  private static EmojiInfo NJw;
+  public static final b NJx;
+  private static String gVs;
   private static long timestamp;
   
   static
   {
     AppMethodBeat.i(105858);
-    ICF = new b();
-    ICE = "";
+    NJx = new b();
+    gVs = "";
     AppMethodBeat.o(105858);
   }
   
@@ -29,15 +31,15 @@ public final class b
   {
     AppMethodBeat.i(105855);
     p.h(paramEmojiInfo, "emojiInfo");
-    ed localed = new ed();
-    localed.ke(timestamp);
-    localed.kf(2L);
-    localed.nD(paramEmojiInfo.field_groupId);
-    localed.nE(paramEmojiInfo.Lj());
-    localed.nK(ICE);
-    localed.aLH();
-    paramEmojiInfo = a.ICC;
-    a.fqx();
+    hi localhi = new hi();
+    localhi.qN(timestamp);
+    localhi.qO(2L);
+    localhi.uW(paramEmojiInfo.field_groupId);
+    localhi.uX(paramEmojiInfo.getMd5());
+    localhi.vd(gVs);
+    localhi.bfK();
+    paramEmojiInfo = a.NJv;
+    a.gxs();
     AppMethodBeat.o(105855);
   }
   
@@ -45,62 +47,36 @@ public final class b
   {
     AppMethodBeat.i(105857);
     p.h(paramEmojiInfo, "select");
-    h.MqF.aO((Runnable)new a(paramLong, paramEmojiInfo));
+    h.RTc.aX((Runnable)new a(paramLong, paramEmojiInfo));
     AppMethodBeat.o(105857);
-  }
-  
-  public static void b(EmojiInfo paramEmojiInfo, String paramString)
-  {
-    AppMethodBeat.i(188619);
-    p.h(paramEmojiInfo, "emojiInfo");
-    p.h(paramString, "chatId");
-    timestamp = System.currentTimeMillis();
-    ICD = paramEmojiInfo;
-    ICE = paramString;
-    ed localed = new ed();
-    localed.ke(timestamp);
-    localed.kf(1L);
-    localed.nD(paramEmojiInfo.field_groupId);
-    localed.nE(paramEmojiInfo.Lj());
-    localed.nK(paramString);
-    localed.aLH();
-    paramEmojiInfo = a.ICC;
-    a.fqw();
-    AppMethodBeat.o(188619);
   }
   
   public static void b(ArrayList<EmojiInfo> paramArrayList, long paramLong)
   {
     AppMethodBeat.i(105856);
     p.h(paramArrayList, "emojiList");
-    h.MqF.aO((Runnable)new b(paramLong, paramArrayList));
+    h.RTc.aX((Runnable)new b(paramLong, paramArrayList));
     AppMethodBeat.o(105856);
   }
   
-  public static void fqD()
+  public static void c(EmojiInfo paramEmojiInfo, String paramString)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(169247);
-    ed localed = new ed();
-    localed.ke(timestamp);
-    localed.kf(5L);
-    Object localObject1 = ICD;
-    if (localObject1 != null) {}
-    for (localObject1 = ((EmojiInfo)localObject1).field_groupId;; localObject1 = null)
-    {
-      localed.nD((String)localObject1);
-      EmojiInfo localEmojiInfo = ICD;
-      localObject1 = localObject2;
-      if (localEmojiInfo != null) {
-        localObject1 = localEmojiInfo.Lj();
-      }
-      localed.nE((String)localObject1);
-      localed.Tk();
-      localed.nK(ICE);
-      localed.aLH();
-      AppMethodBeat.o(169247);
-      return;
-    }
+    AppMethodBeat.i(200088);
+    p.h(paramEmojiInfo, "emojiInfo");
+    p.h(paramString, "chatId");
+    timestamp = System.currentTimeMillis();
+    NJw = paramEmojiInfo;
+    gVs = paramString;
+    hi localhi = new hi();
+    localhi.qN(timestamp);
+    localhi.qO(1L);
+    localhi.uW(paramEmojiInfo.field_groupId);
+    localhi.uX(paramEmojiInfo.getMd5());
+    localhi.vd(paramString);
+    localhi.bfK();
+    paramEmojiInfo = a.NJv;
+    a.gxr();
+    AppMethodBeat.o(200088);
   }
   
   public static long getTimestamp()
@@ -108,7 +84,33 @@ public final class b
     return timestamp;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  public static void gxy()
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(169247);
+    hi localhi = new hi();
+    localhi.qN(timestamp);
+    localhi.qO(5L);
+    Object localObject1 = NJw;
+    if (localObject1 != null) {}
+    for (localObject1 = ((EmojiInfo)localObject1).field_groupId;; localObject1 = null)
+    {
+      localhi.uW((String)localObject1);
+      EmojiInfo localEmojiInfo = NJw;
+      localObject1 = localObject2;
+      if (localEmojiInfo != null) {
+        localObject1 = localEmojiInfo.getMd5();
+      }
+      localhi.uX((String)localObject1);
+      localhi.agV();
+      localhi.vd(gVs);
+      localhi.bfK();
+      AppMethodBeat.o(169247);
+      return;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -118,44 +120,44 @@ public final class b
     {
       Object localObject2 = null;
       AppMethodBeat.i(105852);
-      ed localed = new ed();
-      Object localObject1 = b.ICF;
-      localed.ke(b.getTimestamp());
-      localed.kf(4L);
-      localObject1 = b.ICF;
-      localObject1 = b.fqE();
+      hi localhi = new hi();
+      Object localObject1 = b.NJx;
+      localhi.qN(b.getTimestamp());
+      localhi.qO(4L);
+      localObject1 = b.NJx;
+      localObject1 = b.gxz();
       if (localObject1 != null)
       {
         localObject1 = ((EmojiInfo)localObject1).field_groupId;
-        localed.nD((String)localObject1);
-        localObject1 = b.ICF;
-        EmojiInfo localEmojiInfo = b.fqE();
+        localhi.uW((String)localObject1);
+        localObject1 = b.NJx;
+        EmojiInfo localEmojiInfo = b.gxz();
         localObject1 = localObject2;
         if (localEmojiInfo != null) {
-          localObject1 = localEmojiInfo.Lj();
+          localObject1 = localEmojiInfo.getMd5();
         }
-        localed.nE((String)localObject1);
-        localed.kg(this.ICG);
-        localed.Tk();
-        localed.nF(this.ICH.field_groupId);
-        localed.nG(this.ICH.Lj());
-        localed.nH(String.valueOf(this.ICH.OAs));
-        if (!com.tencent.mm.emoji.a.i.aeX().l(this.ICH)) {
+        localhi.uX((String)localObject1);
+        localhi.qP(this.NJy);
+        localhi.agV();
+        localhi.uY(this.NJz.field_groupId);
+        localhi.uZ(this.NJz.getMd5());
+        localhi.va(String.valueOf(this.NJz.UuN));
+        if (!j.auL().l(this.NJz)) {
           break label206;
         }
         localObject1 = "2";
         label155:
-        localed.nJ((String)localObject1);
-        if (!com.tencent.mm.plugin.emoji.h.b.w(this.ICH)) {
+        localhi.vc((String)localObject1);
+        if (!com.tencent.mm.plugin.emoji.h.b.w(this.NJz)) {
           break label212;
         }
-        localed.nI("1");
+        localhi.vb("1");
       }
       for (;;)
       {
-        localObject1 = b.ICF;
-        localed.nK(b.fqF());
-        localed.aLH();
+        localObject1 = b.NJx;
+        localhi.vd(b.gxA());
+        localhi.bfK();
         AppMethodBeat.o(105852);
         return;
         localObject1 = null;
@@ -164,12 +166,12 @@ public final class b
         localObject1 = "1";
         break label155;
         label212:
-        localed.nI("2");
+        localhi.vb("2");
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -179,32 +181,32 @@ public final class b
     {
       Iterator localIterator = null;
       AppMethodBeat.i(105853);
-      ed localed = new ed();
-      Object localObject = b.ICF;
-      localed.ke(b.getTimestamp());
-      localed.kf(3L);
-      localObject = b.ICF;
-      localObject = b.fqE();
+      hi localhi = new hi();
+      Object localObject = b.NJx;
+      localhi.qN(b.getTimestamp());
+      localhi.qO(3L);
+      localObject = b.NJx;
+      localObject = b.gxz();
       EmojiInfo localEmojiInfo;
       if (localObject != null)
       {
         localObject = ((EmojiInfo)localObject).field_groupId;
-        localed.nD((String)localObject);
-        localObject = b.ICF;
-        localEmojiInfo = b.fqE();
+        localhi.uW((String)localObject);
+        localObject = b.NJx;
+        localEmojiInfo = b.gxz();
         localObject = localIterator;
         if (localEmojiInfo != null) {
-          localObject = localEmojiInfo.Lj();
+          localObject = localEmojiInfo.getMd5();
         }
-        localed.nE((String)localObject);
-        localed.kg(this.ICG);
-        localed.Tk();
-        localed.nF("");
-        localed.nG("");
-        localed.nH("");
-        localed.nI("");
-        localed.nJ("");
-        localIterator = ((Iterable)this.ICI).iterator();
+        localhi.uX((String)localObject);
+        localhi.qP(this.NJy);
+        localhi.agV();
+        localhi.uY("");
+        localhi.uZ("");
+        localhi.va("");
+        localhi.vb("");
+        localhi.vc("");
+        localIterator = ((Iterable)this.NJA).iterator();
       }
       for (;;)
       {
@@ -213,42 +215,42 @@ public final class b
           break label432;
         }
         localEmojiInfo = (EmojiInfo)localIterator.next();
-        localObject = localed.Tj();
-        localed.nF((String)localObject + localEmojiInfo.field_groupId + "#");
-        localObject = localed.Lj();
-        localed.nG((String)localObject + localEmojiInfo.Lj() + "#");
-        localObject = localed.Tl();
-        localed.nH((String)localObject + String.valueOf(localEmojiInfo.OAs) + "#");
-        localObject = localed.Tn();
+        localObject = localhi.agU();
+        localhi.uY((String)localObject + localEmojiInfo.field_groupId + "#");
+        localObject = localhi.getMd5();
+        localhi.uZ((String)localObject + localEmojiInfo.getMd5() + "#");
+        localObject = localhi.agW();
+        localhi.va((String)localObject + String.valueOf(localEmojiInfo.UuN) + "#");
+        localObject = localhi.agY();
         StringBuilder localStringBuilder = new StringBuilder().append((String)localObject);
-        if (com.tencent.mm.emoji.a.i.aeX().l(localEmojiInfo)) {}
+        if (j.auL().l(localEmojiInfo)) {}
         for (localObject = "2";; localObject = "1")
         {
-          localed.nJ((String)localObject + "#");
+          localhi.vc((String)localObject + "#");
           if (!com.tencent.mm.plugin.emoji.h.b.w(localEmojiInfo)) {
             break label392;
           }
-          localObject = localed.Tm();
-          localed.nI((String)localObject + "1".concat(String.valueOf("#")));
+          localObject = localhi.agX();
+          localhi.vb((String)localObject + "1".concat(String.valueOf("#")));
           break label148;
           localObject = null;
           break;
         }
         label392:
-        localObject = localed.Tm();
-        localed.nI((String)localObject + "2".concat(String.valueOf("#")));
+        localObject = localhi.agX();
+        localhi.vb((String)localObject + "2".concat(String.valueOf("#")));
       }
       label432:
-      localObject = b.ICF;
-      localed.nK(b.fqF());
-      localed.aLH();
+      localObject = b.NJx;
+      localhi.vd(b.gxA());
+      localhi.bfK();
       AppMethodBeat.o(105853);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.search.c.b
  * JD-Core Version:    0.7.0.1
  */

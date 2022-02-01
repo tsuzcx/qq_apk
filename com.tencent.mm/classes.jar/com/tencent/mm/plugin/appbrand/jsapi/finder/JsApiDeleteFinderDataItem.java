@@ -3,33 +3,34 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.finder.cgi.ab;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.finder.cgi.av;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class JsApiDeleteFinderDataItem
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+  extends d<s>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "deleteFinderDataItem";
   
   static class DeleteFinderTask
     extends MainProcessTask
-    implements f
+    implements i
   {
     public static final Parcelable.Creator<DeleteFinderTask> CREATOR;
-    private r kQI;
-    private String kQJ;
-    private String kQK;
-    private String kQL;
-    private int kmu;
+    private s lVM;
+    private String lVN;
+    private String lVO;
+    private String lVP;
+    private int lqe;
     
     static
     {
@@ -41,54 +42,54 @@ public final class JsApiDeleteFinderDataItem
     public DeleteFinderTask(Parcel paramParcel)
     {
       AppMethodBeat.i(163919);
-      e(paramParcel);
+      f(paramParcel);
       AppMethodBeat.o(163919);
     }
     
-    public DeleteFinderTask(r paramr, int paramInt, String paramString1, String paramString2)
+    public DeleteFinderTask(s params, int paramInt, String paramString1, String paramString2)
     {
-      this.kQI = paramr;
-      this.kmu = paramInt;
-      this.kQJ = paramString1;
-      this.kQK = paramString2;
+      this.lVM = params;
+      this.lqe = paramInt;
+      this.lVN = paramString1;
+      this.lVO = paramString2;
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(163923);
-      ab localab = new ab(v.aAK(), Long.valueOf(this.kQJ).longValue(), this.kQK);
-      g.ajj().a(3627, this);
-      g.ajj().a(localab, 0);
+      av localav = new av(z.aUg(), Long.valueOf(this.lVN).longValue(), this.lVO, false);
+      g.azz().a(3627, this);
+      g.azz().a(localav, 0);
       AppMethodBeat.o(163923);
     }
     
-    public final void aOY()
+    public final void bjk()
     {
       AppMethodBeat.i(163922);
-      ae.i("MicroMsg.Finder.JsApiDeleteFinderDataItem", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.kQI.getAppId(), this.kQL, Integer.valueOf(this.kmu), Boolean.valueOf(this.kQI.isRunning()) });
-      this.kQI.h(this.kmu, this.kQL);
-      bix();
+      Log.i("MicroMsg.Finder.JsApiDeleteFinderDataItem", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.lVM.getAppId(), this.lVP, Integer.valueOf(this.lqe), Boolean.valueOf(this.lVM.isRunning()) });
+      this.lVM.i(this.lqe, this.lVP);
+      bDK();
       AppMethodBeat.o(163922);
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(163920);
-      this.kQJ = paramParcel.readString();
-      this.kQK = paramParcel.readString();
-      this.kQL = paramParcel.readString();
+      this.lVN = paramParcel.readString();
+      this.lVO = paramParcel.readString();
+      this.lVP = paramParcel.readString();
       AppMethodBeat.o(163920);
     }
     
-    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
     {
       AppMethodBeat.i(163924);
-      g.ajj().b(3627, this);
-      paramn = new JSONObject();
+      g.azz().b(3627, this);
+      paramq = new JSONObject();
       if ((paramInt1 == 0) && (paramInt2 == 0)) {}
-      for (this.kQL = a.a("", 0, paramn);; this.kQL = a.a(paramString, paramInt2, paramn))
+      for (this.lVP = a.a("", 0, paramq);; this.lVP = a.a(paramString, paramInt2, paramq))
       {
-        biG();
+        bDU();
         AppMethodBeat.o(163924);
         return;
       }
@@ -97,9 +98,9 @@ public final class JsApiDeleteFinderDataItem
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(163921);
-      paramParcel.writeString(this.kQJ);
-      paramParcel.writeString(this.kQK);
-      paramParcel.writeString(this.kQL);
+      paramParcel.writeString(this.lVN);
+      paramParcel.writeString(this.lVO);
+      paramParcel.writeString(this.lVP);
       AppMethodBeat.o(163921);
     }
   }

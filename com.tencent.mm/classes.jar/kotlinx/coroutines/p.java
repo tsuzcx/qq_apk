@@ -3,50 +3,50 @@ package kotlinx.coroutines;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/ChildContinuation;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/Job;", "parent", "child", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/Job;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ChildContinuation;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/Job;", "parent", "child", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/Job;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
 public final class p
-  extends bt<br>
+  extends bw<bu>
 {
-  public final l<?> OeM;
+  public final l<?> TTG;
   
-  public p(br parambr, l<?> paraml)
+  public p(bu parambu, l<?> paraml)
   {
-    super(parambr);
-    this.OeM = paraml;
+    super(parambu);
+    this.TTG = paraml;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(118228);
-    String str = "ChildContinuation[" + this.OeM + ']';
+    String str = "ChildContinuation[" + this.TTG + ']';
     AppMethodBeat.o(118228);
     return str;
   }
   
-  public final void x(Throwable paramThrowable)
+  public final void y(Throwable paramThrowable)
   {
     AppMethodBeat.i(118226);
-    l locall = this.OeM;
-    Throwable localThrowable = this.OeM.a(this.OfU);
+    l locall = this.TTG;
+    Throwable localThrowable = this.TTG.a(this.TUQ);
     int i;
-    if (locall.Ofv != 0) {
+    if (locall.TUq != 0) {
       i = 0;
     }
     for (;;)
     {
       if (i == 0)
       {
-        locall.z(localThrowable);
-        locall.gzs();
+        locall.A(localThrowable);
+        locall.hMw();
       }
       AppMethodBeat.o(118226);
       return;
-      Object localObject = locall.Nic;
+      Object localObject = locall.SXL;
       paramThrowable = (Throwable)localObject;
-      if (!(localObject instanceof au)) {
+      if (!(localObject instanceof av)) {
         paramThrowable = null;
       }
-      paramThrowable = (au)paramThrowable;
+      paramThrowable = (av)paramThrowable;
       if (paramThrowable == null)
       {
         i = 0;
@@ -58,10 +58,10 @@ public final class p
           do
           {
             localObject = paramThrowable._reusableCancellableContinuation;
-            if (!d.g.b.p.i(localObject, av.Ofu)) {
+            if (!kotlin.g.b.p.j(localObject, aw.TUp)) {
               break;
             }
-          } while (!au.Ofq.compareAndSet(paramThrowable, av.Ofu, localThrowable));
+          } while (!av.TUl.compareAndSet(paramThrowable, aw.TUp, localThrowable));
           i = 1;
           break;
           if ((localObject instanceof Throwable))
@@ -69,7 +69,7 @@ public final class p
             i = 1;
             break;
           }
-        } while (!au.Ofq.compareAndSet(paramThrowable, localObject, null));
+        } while (!av.TUl.compareAndSet(paramThrowable, localObject, null));
         i = 0;
       }
     }
@@ -77,7 +77,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.p
  * JD-Core Version:    0.7.0.1
  */

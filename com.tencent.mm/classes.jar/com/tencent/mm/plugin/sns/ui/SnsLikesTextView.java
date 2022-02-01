@@ -23,37 +23,39 @@ import com.tencent.mm.plugin.story.api.f;
 import com.tencent.mm.plugin.story.api.f.a;
 import com.tencent.mm.plugin.story.api.n;
 import com.tencent.mm.plugin.story.api.o;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.pluginsdk.ui.span.p;
-import com.tencent.mm.pluginsdk.ui.span.p.a;
+import com.tencent.mm.plugin.textstatus.a.a.b;
+import com.tencent.mm.plugin.textstatus.a.c;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.q;
+import com.tencent.mm.pluginsdk.ui.span.q.a;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.vending.d.b;
 import java.util.HashMap;
 
 public class SnsLikesTextView
   extends RelativeLayout
-  implements bh.a
+  implements bk.a
 {
-  private BaseTimeLineItem.BaseViewHolder AfQ;
-  private TextView AgQ;
-  private bi AgU;
-  private j Asf;
-  private ImageView Awr;
-  private LinearLayout Aws;
-  private MaskTextView Awt;
-  private SpannableStringBuilder Awu;
-  private int Awv;
-  private boolean Aww;
-  private PBool Awx;
-  protected HashMap<String, Integer> Awy;
-  private Runnable Awz;
-  private String dsN;
+  private j EBk;
+  private ImageView EFG;
+  private LinearLayout EFH;
+  private MaskTextView EFI;
+  private SpannableStringBuilder EFJ;
+  private int EFK;
+  private boolean EFL;
+  private PBool EFM;
+  protected HashMap<String, Integer> EFN;
+  private Runnable EFO;
+  private BaseTimeLineItem.BaseViewHolder Eon;
+  private TextView Epm;
+  private bl Epq;
+  private String dJX;
   private boolean hasCheck;
-  private int oOD;
+  private int qcr;
   
   public SnsLikesTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -64,22 +66,22 @@ public class SnsLikesTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98838);
-    this.dsN = null;
+    this.dJX = null;
     this.hasCheck = true;
-    this.AgQ = null;
-    this.Awr = null;
-    this.Aws = null;
-    this.Awt = null;
-    this.Awu = new SpannableStringBuilder(" ");
-    this.Awv = 0;
-    this.Aww = false;
-    this.oOD = 0;
-    this.Asf = null;
-    this.Awx = null;
-    this.Awy = null;
-    this.AfQ = null;
-    this.AgU = null;
-    this.Awz = new Runnable()
+    this.Epm = null;
+    this.EFG = null;
+    this.EFH = null;
+    this.EFI = null;
+    this.EFJ = new SpannableStringBuilder(" ");
+    this.EFK = 0;
+    this.EFL = false;
+    this.qcr = 0;
+    this.EBk = null;
+    this.EFM = null;
+    this.EFN = null;
+    this.Eon = null;
+    this.Epq = null;
+    this.EFO = new Runnable()
     {
       public final void run()
       {
@@ -88,18 +90,18 @@ public class SnsLikesTextView
         AppMethodBeat.o(98837);
       }
     };
-    inflate(getContext(), 2131495559, this);
-    this.AgQ = ((TextView)findViewById(2131305001));
-    this.Awr = ((ImageView)findViewById(2131304999));
-    this.Aws = ((LinearLayout)findViewById(2131305000));
-    this.Awt = ((MaskTextView)findViewById(2131305002));
+    inflate(getContext(), 2131496451, this);
+    this.Epm = ((TextView)findViewById(2131308152));
+    this.EFG = ((ImageView)findViewById(2131308150));
+    this.EFH = ((LinearLayout)findViewById(2131308151));
+    this.EFI = ((MaskTextView)findViewById(2131308153));
     AppMethodBeat.o(98838);
   }
   
-  private void efU()
+  private void fiu()
   {
     AppMethodBeat.i(98840);
-    Object localObject1 = (Integer)this.Awy.get(this.dsN);
+    Object localObject1 = (Integer)this.EFN.get(this.dJX);
     if (localObject1 != null) {}
     switch (((Integer)localObject1).intValue())
     {
@@ -109,175 +111,186 @@ public class SnsLikesTextView
       {
         AppMethodBeat.o(98840);
         return;
-        i = this.Awt.getLayout().getLineCount();
-        this.Aws.setVisibility(8);
-      } while (i <= this.Awv);
-      com.tencent.mm.plugin.sns.j.e.zKO.a(this.AfQ.uan, this.AgU, this.Awu.toString(), this.Awu.toString(), i, i, false, this.AfQ.position, this.Awv);
+        i = this.EFI.getLayout().getLineCount();
+        this.EFH.setVisibility(8);
+      } while (i <= this.EFK);
+      com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, this.EFJ.toString(), this.EFJ.toString(), i, i, false, this.Eon.position, this.EFK);
       AppMethodBeat.o(98840);
       return;
     case 1: 
-      i = this.Awt.getLayout().getLineCount();
-      j = Math.max(Math.min(this.Awv, i), 0);
-      k = this.Awt.getLayout().getLineVisibleEnd(j - 1);
-      localObject1 = this.Awu.subSequence(0, k);
+      i = this.EFI.getLayout().getLineCount();
+      j = Math.max(Math.min(this.EFK, i), 0);
+      k = this.EFI.getLayout().getLineVisibleEnd(j - 1);
+      localObject1 = this.EFJ.subSequence(0, k);
       k = ((CharSequence)localObject1).toString().lastIndexOf(",");
       if ((k > 0) && (k < ((CharSequence)localObject1).length())) {}
       for (localObject1 = new SpannableStringBuilder(((CharSequence)localObject1).subSequence(0, k));; localObject1 = new SpannableStringBuilder((CharSequence)localObject1))
       {
         localObject2 = ((SpannableStringBuilder)localObject1).toString();
         ((SpannableStringBuilder)localObject1).append(",...");
-        this.Awt.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-        this.Aws.setVisibility(0);
-        this.AgQ.setText(getContext().getString(2131763885));
-        this.Awr.setRotation(90.0F);
-        this.Awr.setImageDrawable(ao.k(getContext(), 2131690349, getContext().getResources().getColor(2131100547)));
-        com.tencent.mm.plugin.sns.j.e.zKO.a(this.AfQ.uan, this.AgU, (String)localObject2, this.Awu.toString(), j, i, true, this.AfQ.position, this.Awv);
+        this.EFI.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
+        this.EFH.setVisibility(0);
+        this.Epm.setText(getContext().getString(2131766112));
+        this.EFG.setRotation(90.0F);
+        this.EFG.setImageDrawable(ar.m(getContext(), 2131690481, getContext().getResources().getColor(2131100685)));
+        com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, (String)localObject2, this.EFJ.toString(), j, i, true, this.Eon.position, this.EFK);
         AppMethodBeat.o(98840);
         return;
       }
     case 2: 
-      i = this.Awt.getLayout().getLineCount();
-      this.Awt.setText(this.Awu, TextView.BufferType.SPANNABLE);
-      this.Aws.setVisibility(0);
-      this.Awr.setRotation(-90.0F);
-      this.Awr.setImageDrawable(ao.k(getContext(), 2131690349, getContext().getResources().getColor(2131100547)));
-      this.AgQ.setText(getContext().getString(2131763884));
-      com.tencent.mm.plugin.sns.j.e.zKO.a(this.AfQ.uan, this.AgU, this.Awu.toString(), this.Awu.toString(), i, i, false, this.AfQ.position, this.Awv);
+      i = this.EFI.getLayout().getLineCount();
+      this.EFI.setText(this.EFJ, TextView.BufferType.SPANNABLE);
+      this.EFH.setVisibility(0);
+      this.EFG.setRotation(-90.0F);
+      this.EFG.setImageDrawable(ar.m(getContext(), 2131690481, getContext().getResources().getColor(2131100685)));
+      this.Epm.setText(getContext().getString(2131766111));
+      com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, this.EFJ.toString(), this.EFJ.toString(), i, i, false, this.Eon.position, this.EFK);
       AppMethodBeat.o(98840);
       return;
     }
-    int j = this.Awt.getLayout().getLineCount();
-    Object localObject2 = (String)g.ajR().ajA().get(2, null);
-    localObject1 = (String)g.ajR().ajA().get(4, null);
-    SpannableString localSpannableString = k.b(getContext(), (CharSequence)localObject1, this.Awt.getTextSize());
-    int k = Math.max(Math.min(this.Awv, j), 0);
-    int i = this.Awt.getLayout().getLineVisibleEnd(k - 1);
-    localObject1 = this.Awu.subSequence(0, i);
+    int j = this.EFI.getLayout().getLineCount();
+    Object localObject2 = (String)g.aAh().azQ().get(2, null);
+    localObject1 = (String)g.aAh().azQ().get(4, null);
+    SpannableString localSpannableString = l.b(getContext(), (CharSequence)localObject1, this.EFI.getTextSize());
+    int k = Math.max(Math.min(this.EFK, j), 0);
+    int i = this.EFI.getLayout().getLineVisibleEnd(k - 1);
+    localObject1 = this.EFJ.subSequence(0, i);
     i = ((CharSequence)localObject1).toString().lastIndexOf(",");
     if ((i > 0) && (i < ((CharSequence)localObject1).length()))
     {
       localObject1 = new SpannableStringBuilder(((CharSequence)localObject1).subSequence(0, i));
       label672:
-      if (this.oOD != 10) {
-        break label894;
+      if (this.qcr != 10) {
+        break label896;
       }
     }
-    label894:
+    label896:
     for (i = 3;; i = 2)
     {
       getContext();
-      localSpannableString.setSpan(new p(localObject2, new p.a()
+      localSpannableString.setSpan(new q(localObject2, new q.a()
       {
         public final void b(View paramAnonymousView, Object paramAnonymousObject)
         {
           AppMethodBeat.i(98835);
           if (SnsLikesTextView.a(SnsLikesTextView.this) != null)
           {
-            SnsLikesTextView.a(SnsLikesTextView.this).doj = 13;
+            SnsLikesTextView.a(SnsLikesTextView.this).source = 13;
             SnsLikesTextView.a(SnsLikesTextView.this).b(paramAnonymousView, paramAnonymousObject);
+            ((c)g.ah(c.class)).report22210(this.gtu, 7L);
           }
           AppMethodBeat.o(98835);
         }
       }, i), 0, localSpannableString.length(), 33);
       localObject2 = new StringBuilder(((SpannableStringBuilder)localObject1).toString());
       ((SpannableStringBuilder)localObject1).append(",...").append(",").append(localSpannableString);
-      this.Awt.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-      this.Aws.setVisibility(0);
-      this.AgQ.setText(getContext().getString(2131763885));
-      this.Awr.setRotation(90.0F);
-      this.Awr.setImageDrawable(ao.k(getContext(), 2131690349, getContext().getResources().getColor(2131100547)));
-      com.tencent.mm.plugin.sns.j.e.zKO.a(this.AfQ.uan, this.AgU, "," + localSpannableString, this.Awu.toString(), k, j, true, this.AfQ.position, this.Awv);
+      this.EFI.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
+      this.EFH.setVisibility(0);
+      this.Epm.setText(getContext().getString(2131766112));
+      this.EFG.setRotation(90.0F);
+      this.EFG.setImageDrawable(ar.m(getContext(), 2131690481, getContext().getResources().getColor(2131100685)));
+      com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, "," + localSpannableString, this.EFJ.toString(), k, j, true, this.Eon.position, this.EFK);
       break;
       localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
       break label672;
     }
   }
   
-  public final boolean a(b<com.tencent.mm.vending.j.a> paramb, int paramInt1, bh parambh, String paramString, int paramInt2, boolean paramBoolean, PBool paramPBool, bi parambi, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
+  public final boolean a(b<com.tencent.mm.vending.j.a> paramb, int paramInt1, bk parambk, String paramString, int paramInt2, boolean paramBoolean, PBool paramPBool, bl parambl, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(98843);
-    this.Awv = paramInt2;
-    this.dsN = paramString;
-    this.oOD = paramInt1;
-    this.Asf = parambh.Asf;
-    this.Awx = paramPBool;
-    this.Aww = paramBoolean;
-    this.AfQ = paramBaseViewHolder;
-    this.AgU = parambi;
-    this.Awy = parambh.Awy;
-    this.Awu.clear();
-    parambh = new StringBuffer();
+    this.EFK = paramInt2;
+    this.dJX = paramString;
+    this.qcr = paramInt1;
+    this.EBk = parambk.EBk;
+    this.EFM = paramPBool;
+    this.EFL = paramBoolean;
+    this.Eon = paramBaseViewHolder;
+    this.Epq = parambl;
+    this.EFN = parambk.EFN;
+    this.EFJ.clear();
+    parambk = new StringBuffer();
     paramString = new int[paramb.size()];
     paramPBool = new int[paramb.size()];
-    int i = 0;
-    int j = 1;
+    int i = 1;
+    int j = 0;
     for (;;)
     {
       try
       {
-        if (i < paramb.size())
+        if (j < paramb.size())
         {
-          parambi = (String)((com.tencent.mm.vending.j.a)paramb.get(i)).get(1);
-          paramBaseViewHolder = k.b(getContext(), parambi, this.Awt.getTextSize());
-          if (j != 0)
+          parambl = (String)((com.tencent.mm.vending.j.a)paramb.get(j)).get(1);
+          paramBaseViewHolder = l.b(getContext(), parambl, this.EFI.getTextSize());
+          if (i != 0)
           {
-            this.Awu.append(" ");
-            parambh.append(" ");
-            j = 0;
-            paramString[i] = this.Awu.length();
-            paramString[i] += parambi.length();
-            parambh.append(parambi);
-            this.Awu.append(paramBaseViewHolder);
-            if ((!com.tencent.mm.plugin.sns.f.a.azG((String)((com.tencent.mm.vending.j.a)paramb.get(i)).get(0))) || (!((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).getStoryBasicConfig().a(f.a.AZx)) || (!o.isShowStoryCheck())) {
-              break label709;
+            this.EFJ.append(" ");
+            parambk.append(" ");
+            i = 0;
+            paramString[j] = this.EFJ.length();
+            paramString[j] += parambl.length();
+            parambk.append(parambl);
+            this.EFJ.append(paramBaseViewHolder);
+            parambl = (String)((com.tencent.mm.vending.j.a)paramb.get(j)).get(0);
+            if ((com.tencent.mm.plugin.sns.f.a.aOD(parambl)) && (((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).getStoryBasicConfig().a(f.a.Fkv)) && (o.isShowStoryCheck()))
+            {
+              this.EFJ.append("  ");
+              parambl = new h(((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().vJ(true));
+              this.EFJ.setSpan(parambl, this.EFJ.length() - 1, this.EFJ.length(), 17);
+              break label786;
             }
-            this.Awu.append("  ");
-            parambi = new h(((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().so(true));
-            this.Awu.setSpan(parambi, this.Awu.length() - 1, this.Awu.length(), 17);
-            break label709;
           }
-          this.Awu.append(", ");
-          parambh.append(", ");
-          continue;
-          AppMethodBeat.o(98843);
+          else
+          {
+            this.EFJ.append(", ");
+            parambk.append(", ");
+            continue;
+          }
+          parambl = ((c)g.ah(c.class)).getTextStatusSpanSync(parambl, a.b.FXk, this.EFI.getTextSize());
+          if (parambl == null) {
+            break label786;
+          }
+          this.EFJ.append(" ");
+          this.EFJ.setSpan(parambl, this.EFJ.length() - 1, this.EFJ.length(), 17);
         }
       }
       catch (Exception paramb)
       {
-        ae.e("MicroMsg.SnsLikesTextView", "setLikedList  e:%s", new Object[] { bu.o(paramb) });
+        Log.e("MicroMsg.SnsLikesTextView", "setLikedList  e:%s", new Object[] { Util.stackTraceToString(paramb) });
       }
       for (;;)
       {
+        AppMethodBeat.o(98843);
         return true;
-        parambi = getContext();
+        parambl = getContext();
         if (paramInt1 != 10) {
-          break label724;
+          break label801;
         }
-        i = 2131232602;
-        parambi = ao.k(parambi, i, getContext().getResources().getColor(2131099769));
-        parambi.setBounds(0, 0, parambi.getIntrinsicWidth(), parambi.getIntrinsicHeight());
-        paramBaseViewHolder = new com.tencent.mm.ui.widget.a(parambi);
-        paramBaseViewHolder.LmE = ((int)((parambi.getIntrinsicHeight() - this.Awt.getTextSize() + com.tencent.mm.cb.a.fromDPToPix(getContext(), 2)) / 2.0F));
-        this.Awu.setSpan(paramBaseViewHolder, 0, 1, 33);
+        i = 2131232997;
+        parambl = ar.m(parambl, i, getContext().getResources().getColor(2131099783));
+        parambl.setBounds(0, 0, parambl.getIntrinsicWidth(), parambl.getIntrinsicHeight());
+        paramBaseViewHolder = new com.tencent.mm.ui.widget.a(parambl);
+        paramBaseViewHolder.QBM = ((int)((parambl.getIntrinsicHeight() - this.EFI.getTextSize() + com.tencent.mm.cb.a.fromDPToPix(getContext(), 2)) / 2.0F));
+        this.EFJ.setSpan(paramBaseViewHolder, 0, 1, 33);
         if (paramInt1 != 10) {
-          break label732;
+          break label809;
         }
         paramInt1 = 3;
         break;
-        label512:
+        label589:
         while (i < paramString.length)
         {
-          parambi = (String)((com.tencent.mm.vending.j.a)paramb.get(i)).get(0);
-          paramBaseViewHolder = this.Awu;
+          parambl = (String)((com.tencent.mm.vending.j.a)paramb.get(i)).get(0);
+          paramBaseViewHolder = this.EFJ;
           getContext();
-          paramBaseViewHolder.setSpan(new p(parambi, new p.a()
+          paramBaseViewHolder.setSpan(new q(parambl, new q.a()
           {
             public final void b(View paramAnonymousView, Object paramAnonymousObject)
             {
               AppMethodBeat.i(98836);
               if (SnsLikesTextView.a(SnsLikesTextView.this) != null)
               {
-                SnsLikesTextView.a(SnsLikesTextView.this).doj = 13;
+                SnsLikesTextView.a(SnsLikesTextView.this).source = 13;
                 SnsLikesTextView.a(SnsLikesTextView.this).b(paramAnonymousView, paramAnonymousObject);
               }
               AppMethodBeat.o(98836);
@@ -285,52 +298,52 @@ public class SnsLikesTextView
           }, paramInt1), paramString[i], paramPBool[i], 33);
           i += 1;
         }
-        this.Awt.setText(this.Awu, TextView.BufferType.SPANNABLE);
-        this.Awt.setOriginText(parambh.toString());
+        this.EFI.setText(this.EFJ, TextView.BufferType.SPANNABLE);
+        this.EFI.setOriginText(parambk.toString());
         if (paramInt2 > 0)
         {
-          if ((getTag() == null) || (!(getTag() instanceof String)) || (!bu.lX((String)getTag(), this.Awu.toString())))
+          if ((getTag() == null) || (!(getTag() instanceof String)) || (!Util.isEqual((String)getTag(), this.EFJ.toString())))
           {
-            setTag(this.Awu.toString());
-            this.Aws.setVisibility(8);
+            setTag(this.EFJ.toString());
+            this.EFH.setVisibility(8);
             this.hasCheck = false;
             requestLayout();
             AppMethodBeat.o(98843);
             return true;
           }
           this.hasCheck = true;
-          efU();
+          fiu();
         }
       }
-      label709:
-      i += 1;
+      label786:
+      j += 1;
     }
     for (;;)
     {
       i = 0;
-      break label512;
-      label724:
-      i = 2131233474;
+      break label589;
+      label801:
+      i = 2131234277;
       break;
-      label732:
+      label809:
       paramInt1 = 2;
     }
   }
   
   public String getKey()
   {
-    return this.dsN;
+    return this.dJX;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(98839);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    paramInt1 = this.Awt.getLineCount();
-    if ((this.Awv > 0) && (paramInt1 > this.Awv) && (this.Awx != null)) {
-      this.Awx.value = true;
+    paramInt1 = this.EFI.getLineCount();
+    if ((this.EFK > 0) && (paramInt1 > this.EFK) && (this.EFM != null)) {
+      this.EFM.value = true;
     }
-    if ((this.Awv > 0) && (this.Awy != null))
+    if ((this.EFK > 0) && (this.EFN != null))
     {
       if (this.hasCheck)
       {
@@ -338,66 +351,35 @@ public class SnsLikesTextView
         return;
       }
       this.hasCheck = true;
-      if (this.Awy.get(this.dsN) == null)
+      if (this.EFN.get(this.dJX) == null)
       {
-        if (!this.Aww) {
+        if (!this.EFL) {
           break label168;
         }
-        if (paramInt1 > this.Awv) {
+        if (paramInt1 > this.EFK) {
           break label149;
         }
-        this.Awy.put(this.dsN, Integer.valueOf(0));
+        this.EFN.put(this.dJX, Integer.valueOf(0));
       }
     }
     for (;;)
     {
-      post(this.Awz);
+      post(this.EFO);
       AppMethodBeat.o(98839);
       return;
       label149:
-      this.Awy.put(this.dsN, Integer.valueOf(1));
+      this.EFN.put(this.dJX, Integer.valueOf(1));
       continue;
       label168:
-      this.Awy.put(this.dsN, Integer.valueOf(0));
+      this.EFN.put(this.dJX, Integer.valueOf(0));
     }
-  }
-  
-  public final void rZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(98846);
-    if ((this.Awv > 0) && (this.Awy != null))
-    {
-      Integer localInteger = (Integer)this.Awy.get(this.dsN);
-      if (localInteger != null)
-      {
-        if (paramBoolean)
-        {
-          if (localInteger.intValue() == 1)
-          {
-            this.Awy.put(this.dsN, Integer.valueOf(3));
-            efU();
-            AppMethodBeat.o(98846);
-          }
-        }
-        else if (localInteger.intValue() == 3)
-        {
-          this.Awy.put(this.dsN, Integer.valueOf(1));
-          efU();
-          AppMethodBeat.o(98846);
-        }
-      }
-      else {
-        this.Awy.put(this.dsN, Integer.valueOf(0));
-      }
-    }
-    AppMethodBeat.o(98846);
   }
   
   public void setLikeTvTag(Object paramObject)
   {
     AppMethodBeat.i(98844);
-    if (this.Awt != null) {
-      this.Awt.setTag(paramObject);
+    if (this.EFI != null) {
+      this.EFI.setTag(paramObject);
     }
     AppMethodBeat.o(98844);
   }
@@ -405,8 +387,8 @@ public class SnsLikesTextView
   public void setLikedTextTouchListener(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(98842);
-    if (this.Awt != null) {
-      this.Awt.setOnTouchListener(paramOnTouchListener);
+    if (this.EFI != null) {
+      this.EFI.setOnTouchListener(paramOnTouchListener);
     }
     AppMethodBeat.o(98842);
   }
@@ -414,8 +396,8 @@ public class SnsLikesTextView
   public void setOpClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(98841);
-    if (this.Aws != null) {
-      this.Aws.setOnClickListener(paramOnClickListener);
+    if (this.EFH != null) {
+      this.EFH.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(98841);
   }
@@ -423,15 +405,46 @@ public class SnsLikesTextView
   public void setOpTvTag(Object paramObject)
   {
     AppMethodBeat.i(98845);
-    if (this.Aws != null) {
-      this.Aws.setTag(paramObject);
+    if (this.EFH != null) {
+      this.EFH.setTag(paramObject);
     }
     AppMethodBeat.o(98845);
+  }
+  
+  public final void vv(boolean paramBoolean)
+  {
+    AppMethodBeat.i(98846);
+    if ((this.EFK > 0) && (this.EFN != null))
+    {
+      Integer localInteger = (Integer)this.EFN.get(this.dJX);
+      if (localInteger != null)
+      {
+        if (paramBoolean)
+        {
+          if (localInteger.intValue() == 1)
+          {
+            this.EFN.put(this.dJX, Integer.valueOf(3));
+            fiu();
+            AppMethodBeat.o(98846);
+          }
+        }
+        else if (localInteger.intValue() == 3)
+        {
+          this.EFN.put(this.dJX, Integer.valueOf(1));
+          fiu();
+          AppMethodBeat.o(98846);
+        }
+      }
+      else {
+        this.EFN.put(this.dJX, Integer.valueOf(0));
+      }
+    }
+    AppMethodBeat.o(98846);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsLikesTextView
  * JD-Core Version:    0.7.0.1
  */

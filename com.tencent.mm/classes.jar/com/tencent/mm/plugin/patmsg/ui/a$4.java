@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.patmsg.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
 
 final class a$4
-  implements n.d
+  implements o.f
 {
   a$4(a parama, Context paramContext) {}
   
-  public final void onCreateMMMenu(l paraml)
+  public final void onCreateMMMenu(m paramm)
   {
-    AppMethodBeat.i(220371);
-    paraml.a(547, this.val$context.getResources().getColor(2131100800), this.val$context.getString(2131758004));
-    AppMethodBeat.o(220371);
+    AppMethodBeat.i(206993);
+    paramm.a(547, this.val$context.getResources().getColor(2131100996), this.val$context.getString(2131755968));
+    AppMethodBeat.o(206993);
   }
 }
 

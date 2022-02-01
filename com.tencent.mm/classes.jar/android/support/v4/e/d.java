@@ -2,9 +2,9 @@ package android.support.v4.e;
 
 public final class d
 {
-  static final int[] OC = new int[0];
-  static final long[] OD = new long[0];
-  static final Object[] OE = new Object[0];
+  static final int[] OQ = new int[0];
+  static final long[] OR = new long[0];
+  static final Object[] OS = new Object[0];
   
   public static int a(long[] paramArrayOfLong, int paramInt, long paramLong)
   {

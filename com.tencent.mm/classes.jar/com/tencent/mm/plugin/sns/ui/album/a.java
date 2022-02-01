@@ -6,7 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,24 +18,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.model.ao.a;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.aq.a;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.l;
+import com.tencent.mm.plugin.sns.storage.m;
 import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.storage.q;
-import com.tencent.mm.plugin.sns.storage.x;
+import com.tencent.mm.plugin.sns.storage.y;
 import com.tencent.mm.plugin.sns.ui.LoadingMoreView;
-import com.tencent.mm.plugin.sns.ui.bj;
+import com.tencent.mm.plugin.sns.ui.bm;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.protocal.protobuf.aju;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.ami;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,54 +45,54 @@ import java.util.List;
 public final class a
   extends RecyclerView.a
 {
-  private final int AJe;
-  private final int AJf;
-  private final int AJg;
-  List<a.b> AJh;
-  String AJi;
-  String AJj;
-  boolean AJk;
-  private long AJl;
-  private long AJm;
-  int AJn;
-  private int AJo;
-  private b AJp;
-  c.a AJq;
-  private a AJr;
-  private boolean Aiv;
-  private String fIQ;
+  private final int ESX;
+  private final int ESY;
+  private final int ESZ;
+  List<a.b> ETa;
+  String ETb;
+  String ETc;
+  boolean ETd;
+  private long ETe;
+  private long ETf;
+  int ETg;
+  private int ETh;
+  private b ETi;
+  c.a ETj;
+  private a ETk;
+  private boolean EqY;
+  private String goe;
   private Context mContext;
-  private boolean oTp;
-  private String oeR;
-  private String tDq;
+  private String ppP;
+  private boolean qhf;
+  private String wUp;
   
   public a(Context paramContext, String paramString, a parama)
   {
     AppMethodBeat.i(99856);
-    this.AJe = 0;
-    this.AJf = 1;
-    this.AJg = 2;
-    this.AJh = new ArrayList();
+    this.ESX = 0;
+    this.ESY = 1;
+    this.ESZ = 2;
+    this.ETa = new ArrayList();
     this.mContext = null;
-    this.tDq = null;
-    this.AJi = "";
-    this.AJj = "";
-    this.fIQ = "";
-    this.Aiv = false;
-    this.AJk = false;
-    this.AJl = 0L;
-    this.AJm = 0L;
-    this.AJn = 0;
-    this.oTp = false;
-    this.oeR = "";
-    this.AJo = 0;
-    this.AJp = null;
-    this.AJq = null;
-    this.AJr = null;
+    this.wUp = null;
+    this.ETb = "";
+    this.ETc = "";
+    this.goe = "";
+    this.EqY = false;
+    this.ETd = false;
+    this.ETe = 0L;
+    this.ETf = 0L;
+    this.ETg = 0;
+    this.qhf = false;
+    this.ppP = "";
+    this.ETh = 0;
+    this.ETi = null;
+    this.ETj = null;
+    this.ETk = null;
     this.mContext = paramContext;
-    this.AJr = parama;
-    parama = ad.f(this.mContext.getSharedPreferences(ak.fow(), 0));
-    ae.d("MicroMsg.SnsAlbumAdapter", "filterLan temp ".concat(String.valueOf(parama)));
+    this.ETk = parama;
+    parama = LocaleUtil.loadApplicationLanguage(this.mContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), this.mContext);
+    Log.d("MicroMsg.SnsAlbumAdapter", "filterLan temp ".concat(String.valueOf(parama)));
     paramContext = parama;
     if (!parama.equals("zh_CN"))
     {
@@ -100,29 +100,29 @@ public final class a
       if (!parama.equals("en"))
       {
         if (!parama.equals("zh_TW")) {
-          break label297;
+          break label301;
         }
         paramContext = parama;
       }
     }
     for (;;)
     {
-      this.tDq = paramContext;
-      this.fIQ = paramString;
-      g.ajS();
-      paramContext = (String)g.ajR().ajA().get(2, null);
-      if (this.fIQ.equals(paramContext)) {
-        this.Aiv = true;
+      this.wUp = paramContext;
+      this.goe = paramString;
+      g.aAi();
+      paramContext = (String)g.aAh().azQ().get(2, null);
+      if (this.goe.equals(paramContext)) {
+        this.EqY = true;
       }
-      this.AJp = new b(new b.a()
+      this.ETi = new b(new b.a()
       {
-        public final void gj(List<a.b> paramAnonymousList)
+        public final void hg(List<a.b> paramAnonymousList)
         {
           AppMethodBeat.i(99849);
           if (paramAnonymousList == null) {}
           for (int i = 0;; i = paramAnonymousList.size())
           {
-            ae.d("MicroMsg.SnsAlbumAdapter", "onLoadingFinish list.size=%s", new Object[] { Integer.valueOf(i) });
+            Log.d("MicroMsg.SnsAlbumAdapter", "onLoadingFinish list.size=%s", new Object[] { Integer.valueOf(i) });
             a.a(a.this).clear();
             a.b localb = new a.b();
             localb.label = "my_timeline";
@@ -135,21 +135,21 @@ public final class a
               localb.label = "loading";
               a.a(a.this).add(localb);
             }
-            a.this.asY.notifyChanged();
+            a.this.atj.notifyChanged();
             if (a.c(a.this) != null) {
-              a.c(a.this).gk(paramAnonymousList);
+              a.c(a.this).hh(paramAnonymousList);
             }
             AppMethodBeat.o(99849);
             return;
           }
         }
-      }, this.fIQ, this.Aiv);
-      AN(0L);
-      ae.d("MicroMsg.SnsAlbumAdapter", "limitId=%s", new Object[] { this.AJj });
-      sa(false);
+      }, this.goe, this.EqY);
+      JS(0L);
+      Log.d("MicroMsg.SnsAlbumAdapter", "limitId=%s", new Object[] { this.ETc });
+      vw(false);
       AppMethodBeat.o(99856);
       return;
-      label297:
+      label301:
       if (parama.equals("zh_HK")) {
         paramContext = "zh_TW";
       } else {
@@ -158,224 +158,224 @@ public final class a
     }
   }
   
-  private void AN(long paramLong)
+  private void JS(long paramLong)
   {
     AppMethodBeat.i(99863);
-    int i = ah.dXu().aAr(this.fIQ);
-    Object localObject = r.zW(ah.dXE().X(paramLong, i));
-    if (this.AJi.equals("")) {}
+    int i = aj.faE().aPn(this.goe);
+    Object localObject = r.Jc(aj.faO().Y(paramLong, i));
+    if (this.ETb.equals("")) {}
     for (;;)
     {
-      this.AJj = ((String)localObject);
-      localObject = ah.dXI().aBw(this.fIQ).ecg();
-      if (((aju)localObject).Gzo != 0L) {
+      this.ETc = ((String)localObject);
+      localObject = aj.faS().aQr(this.goe).feM();
+      if (((ami)localObject).Lvc != 0L) {
         break;
       }
       AppMethodBeat.o(99863);
       return;
-      if (((String)localObject).compareTo(this.AJi) >= 0) {
-        localObject = this.AJi;
+      if (((String)localObject).compareTo(this.ETb) >= 0) {
+        localObject = this.ETb;
       }
     }
-    localObject = r.zW(((aju)localObject).Gzo);
-    if (this.AJj.equals(""))
+    localObject = r.Jc(((ami)localObject).Lvc);
+    if (this.ETc.equals(""))
     {
-      this.AJj = ((String)localObject);
+      this.ETc = ((String)localObject);
       AppMethodBeat.o(99863);
       return;
     }
-    ae.d("MicroMsg.SnsAlbumAdapter", "updateLimieSeq getListId=%s mLimitSeq=%s", new Object[] { Long.valueOf(paramLong), this.AJj });
-    if (((String)localObject).compareTo(this.AJj) > 0) {}
+    Log.d("MicroMsg.SnsAlbumAdapter", "updateLimieSeq getListId=%s mLimitSeq=%s", new Object[] { Long.valueOf(paramLong), this.ETc });
+    if (((String)localObject).compareTo(this.ETc) > 0) {}
     for (;;)
     {
-      this.AJj = ((String)localObject);
+      this.ETc = ((String)localObject);
       AppMethodBeat.o(99863);
       return;
-      localObject = this.AJj;
+      localObject = this.ETc;
     }
   }
   
-  public final void AM(long paramLong)
+  public final void JR(long paramLong)
   {
-    if (0L != this.AJl) {
+    if (0L != this.ETe) {
       return;
     }
-    this.AJl = paramLong;
-    this.AJm = 0L;
+    this.ETe = paramLong;
+    this.ETf = 0L;
   }
   
-  public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
+  public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(99858);
-    ae.d("MicroMsg.SnsAlbumAdapter", "onCreateViewHolder %s", new Object[] { Integer.valueOf(paramInt) });
+    Log.d("MicroMsg.SnsAlbumAdapter", "onCreateViewHolder %s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 1) {
-      paramViewGroup = new c(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495522, paramViewGroup, false));
+      paramViewGroup = new c(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496410, paramViewGroup, false));
     }
     for (;;)
     {
       AppMethodBeat.o(99858);
       return paramViewGroup;
       if (paramInt == 2) {
-        paramViewGroup = new e(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495524, paramViewGroup, false));
+        paramViewGroup = new e(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496412, paramViewGroup, false));
       } else {
-        paramViewGroup = new f(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495521, paramViewGroup, false));
+        paramViewGroup = new f(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496409, paramViewGroup, false));
       }
     }
   }
   
-  public final void a(RecyclerView.w paramw, int paramInt)
+  public final void a(RecyclerView.v paramv, int paramInt)
   {
     AppMethodBeat.i(99859);
-    ae.d("MicroMsg.SnsAlbumAdapter", "onBindViewHolder %s", new Object[] { Integer.valueOf(paramInt) });
-    if ((paramw instanceof c))
+    Log.d("MicroMsg.SnsAlbumAdapter", "onBindViewHolder %s", new Object[] { Integer.valueOf(paramInt) });
+    if ((paramv instanceof c))
     {
-      paramw = (c)paramw;
-      ae.d("MicroMsg.SnsAlbumAdapter", "SnsAlbumLoadingHolder onBind");
-      if (paramw.AJs.oTp)
+      paramv = (c)paramv;
+      Log.d("MicroMsg.SnsAlbumAdapter", "SnsAlbumLoadingHolder onBind");
+      if (paramv.ETl.qhf)
       {
-        paramw.AJu.setVisibility(0);
-        paramw.AJu.aBZ(paramw.AJs.oeR);
+        paramv.ETn.setVisibility(0);
+        paramv.ETn.aQU(paramv.ETl.ppP);
         AppMethodBeat.o(99859);
         return;
       }
-      paramw.AJu.setVisibility(0);
+      paramv.ETn.setVisibility(0);
       AppMethodBeat.o(99859);
       return;
     }
     Object localObject2;
     Object localObject1;
-    if ((paramw instanceof f))
+    if ((paramv instanceof f))
     {
-      localObject2 = (f)paramw;
-      localObject1 = (a.b)((f)localObject2).AJs.AJh.get(paramInt);
+      localObject2 = (f)paramv;
+      localObject1 = (a.b)((f)localObject2).ETl.ETa.get(paramInt);
       if (paramInt <= 1) {
         break label673;
       }
     }
     label647:
     label673:
-    for (paramw = (a.b)((f)localObject2).AJs.AJh.get(paramInt - 1);; paramw = null)
+    for (paramv = (a.b)((f)localObject2).ETl.ETa.get(paramInt - 1);; paramv = null)
     {
-      int i = ((p)((a.b)localObject1).AJt.get(0)).field_head;
-      if (paramw == null)
+      int i = ((SnsInfo)((a.b)localObject1).ETm.get(0)).getHead();
+      if (paramv == null)
       {
         paramInt = 0;
         int j = i / 10000;
         int k = paramInt / 10000;
-        ae.d("MicroMsg.SnsAlbumAdapter", "handleDateTv prehead=%s head=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-        if (((paramInt != 0) || (j == bj.getYear())) && ((paramInt == 0) || (j == k))) {
+        Log.d("MicroMsg.SnsAlbumAdapter", "handleDateTv prehead=%s head=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        if (((paramInt != 0) || (j == bm.getYear())) && ((paramInt == 0) || (j == k))) {
           break label586;
         }
-        paramw = String.format(((f)localObject2).AJs.mContext.getResources().getString(2131764061), new Object[] { Integer.valueOf(j) });
-        ((f)localObject2).iXP.setText(paramw);
-        ((f)localObject2).iXP.setVisibility(0);
-        paramw = ((f)localObject2).auu.getLayoutParams();
-        if ((paramw instanceof ViewGroup.MarginLayoutParams))
+        paramv = String.format(((f)localObject2).ETl.mContext.getResources().getString(2131766301), new Object[] { Integer.valueOf(j) });
+        ((f)localObject2).jUO.setText(paramv);
+        ((f)localObject2).jUO.setVisibility(0);
+        paramv = ((f)localObject2).aus.getLayoutParams();
+        if ((paramv instanceof ViewGroup.MarginLayoutParams))
         {
-          paramw = (ViewGroup.MarginLayoutParams)paramw;
+          paramv = (ViewGroup.MarginLayoutParams)paramv;
           if (paramInt == 0) {
             break label565;
           }
-          paramw.topMargin = com.tencent.mm.cb.a.fromDPToPix(((f)localObject2).iXP.getContext(), 70);
+          paramv.topMargin = com.tencent.mm.cb.a.fromDPToPix(((f)localObject2).jUO.getContext(), 70);
           label336:
-          ((f)localObject2).auu.setLayoutParams(paramw);
+          ((f)localObject2).aus.setLayoutParams(paramv);
         }
         label345:
-        paramw = ((a.b)localObject1).label;
-        if (paramw.indexOf(":") == -1) {
+        paramv = ((a.b)localObject1).label;
+        if (paramv.indexOf(":") == -1) {
           break label647;
         }
-        paramw = paramw.split(":");
-        if (paramw.length > 1) {
-          ((f)localObject2).timeTv.setText(paramw[1]);
+        paramv = paramv.split(":");
+        if (paramv.length > 1) {
+          ((f)localObject2).timeTv.setText(paramv[1]);
         }
       }
       for (;;)
       {
-        ((f)localObject2).AJB.setLayoutManager(((f)localObject2).ndV);
-        ((f)localObject2).AJB.setAdapter(((f)localObject2).AJA);
-        paramw = ((f)localObject2).AJA;
-        localObject1 = ((a.b)localObject1).AJt;
-        paramw.AJD.clear();
+        ((f)localObject2).ETu.setLayoutManager(((f)localObject2).opj);
+        ((f)localObject2).ETu.setAdapter(((f)localObject2).ETt);
+        paramv = ((f)localObject2).ETt;
+        localObject1 = ((a.b)localObject1).ETm;
+        paramv.ETw.clear();
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (p)((Iterator)localObject1).next();
-          Iterator localIterator = ((p)localObject2).ebP().HUG.Gtx.iterator();
+          localObject2 = (SnsInfo)((Iterator)localObject1).next();
+          Iterator localIterator = ((SnsInfo)localObject2).getTimeLine().ContentObj.LoV.iterator();
           while (localIterator.hasNext())
           {
-            bzh localbzh = (bzh)localIterator.next();
+            cnb localcnb = (cnb)localIterator.next();
             d locald = new d();
-            locald.dKr = ((p)localObject2).AdJ;
-            locald.AJv = localbzh;
-            paramw.AJD.add(locald);
+            locald.ecf = ((SnsInfo)localObject2).localid;
+            locald.ETo = localcnb;
+            paramv.ETw.add(locald);
           }
         }
-        paramInt = ((p)paramw.AJt.get(0)).field_head;
+        paramInt = ((SnsInfo)paramv.ETm.get(0)).getHead();
         break;
         label565:
-        paramw.topMargin = com.tencent.mm.cb.a.ay(((f)localObject2).iXP.getContext(), 2131165187);
+        paramv.topMargin = com.tencent.mm.cb.a.aH(((f)localObject2).jUO.getContext(), 2131165190);
         break label336;
         label586:
-        ((f)localObject2).iXP.setVisibility(8);
-        paramw = ((f)localObject2).auu.getLayoutParams();
-        if (!(paramw instanceof ViewGroup.MarginLayoutParams)) {
+        ((f)localObject2).jUO.setVisibility(8);
+        paramv = ((f)localObject2).aus.getLayoutParams();
+        if (!(paramv instanceof ViewGroup.MarginLayoutParams)) {
           break label345;
         }
-        paramw = (ViewGroup.MarginLayoutParams)paramw;
-        paramw.topMargin = com.tencent.mm.cb.a.ay(((f)localObject2).iXP.getContext(), 2131165187);
-        ((f)localObject2).auu.setLayoutParams(paramw);
+        paramv = (ViewGroup.MarginLayoutParams)paramv;
+        paramv.topMargin = com.tencent.mm.cb.a.aH(((f)localObject2).jUO.getContext(), 2131165190);
+        ((f)localObject2).aus.setLayoutParams(paramv);
         break label345;
-        ((f)localObject2).timeTv.setText(paramw);
+        ((f)localObject2).timeTv.setText(paramv);
       }
-      paramw.asY.notifyChanged();
+      paramv.atj.notifyChanged();
       AppMethodBeat.o(99859);
       return;
     }
   }
   
-  public final void aCr(String paramString)
+  public final void aRn(String paramString)
   {
     AppMethodBeat.i(99861);
-    ae.d("MicroMsg.SnsAlbumAdapter", "snsactivty onIsDownAll ");
-    this.oTp = true;
-    this.oeR = paramString;
+    Log.d("MicroMsg.SnsAlbumAdapter", "snsactivty onIsDownAll ");
+    this.qhf = true;
+    this.ppP = paramString;
     AppMethodBeat.o(99861);
   }
   
-  public final ArrayList<com.tencent.mm.plugin.sns.i.b> ce(int paramInt, String paramString)
+  public final ArrayList<com.tencent.mm.plugin.sns.j.b> cv(int paramInt, String paramString)
   {
     AppMethodBeat.i(99865);
-    ae.d("MicroMsg.SnsAlbumAdapter", "snsLocalId=%s", new Object[] { Integer.valueOf(paramInt) });
+    Log.d("MicroMsg.SnsAlbumAdapter", "snsLocalId=%s", new Object[] { Integer.valueOf(paramInt) });
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.AJh.size())
+    while (i < this.ETa.size())
     {
-      Iterator localIterator1 = ((a.b)this.AJh.get(i)).AJt.iterator();
+      Iterator localIterator1 = ((a.b)this.ETa.get(i)).ETm.iterator();
       while (localIterator1.hasNext())
       {
-        p localp = (p)localIterator1.next();
-        int k = localp.AdJ;
-        if ((localp.ebP() != null) && (localp.ebP().HUG != null) && (localp.ebP().HUG.Gtx.size() != 0) && ((localp.ebP().HUG.Gtw == 1) || (localp.ebP().HUG.Gtw == 15)))
+        SnsInfo localSnsInfo = (SnsInfo)localIterator1.next();
+        int k = localSnsInfo.localid;
+        if ((localSnsInfo.getTimeLine() != null) && (localSnsInfo.getTimeLine().ContentObj != null) && (localSnsInfo.getTimeLine().ContentObj.LoV.size() != 0) && ((localSnsInfo.getTimeLine().ContentObj.LoU == 1) || (localSnsInfo.getTimeLine().ContentObj.LoU == 15)))
         {
           if (k == paramInt)
           {
-            ae.d("MicroMsg.SnsAlbumAdapter", "mFixPosition=%s", new Object[] { Integer.valueOf(this.AJn) });
-            this.AJn = localArrayList.size();
+            Log.d("MicroMsg.SnsAlbumAdapter", "mFixPosition=%s", new Object[] { Integer.valueOf(this.ETg) });
+            this.ETg = localArrayList.size();
           }
-          Iterator localIterator2 = localp.ebP().HUG.Gtx.iterator();
+          Iterator localIterator2 = localSnsInfo.getTimeLine().ContentObj.LoV.iterator();
           int j = 0;
           while (localIterator2.hasNext())
           {
-            bzh localbzh = (bzh)localIterator2.next();
-            if (bu.lX(localbzh.Id, paramString)) {
-              this.AJn += j;
+            cnb localcnb = (cnb)localIterator2.next();
+            if (Util.isEqual(localcnb.Id, paramString)) {
+              this.ETg += j;
             }
-            com.tencent.mm.plugin.sns.i.b localb = new com.tencent.mm.plugin.sns.i.b();
-            localb.dKe = localbzh;
-            localb.parentId = x.bo("sns_table_", k);
-            localb.icw = localp.field_createTime;
-            localb.zHI = j;
+            com.tencent.mm.plugin.sns.j.b localb = new com.tencent.mm.plugin.sns.j.b();
+            localb.ebR = localcnb;
+            localb.parentId = y.bq("sns_table_", k);
+            localb.iXu = localSnsInfo.getCreateTime();
+            localb.DRJ = j;
             localArrayList.add(localb);
             j += 1;
           }
@@ -387,19 +387,19 @@ public final class a
     return localArrayList;
   }
   
-  public final void ege()
+  public final void fiE()
   {
     AppMethodBeat.i(99862);
-    ae.d("MicroMsg.SnsAlbumAdapter", "i addSize ");
+    Log.d("MicroMsg.SnsAlbumAdapter", "i addSize ");
     List localList;
-    if (this.AJh.size() > 1)
+    if (this.ETa.size() > 1)
     {
-      localList = ((a.b)this.AJh.get(this.AJh.size() - 2)).AJt;
+      localList = ((a.b)this.ETa.get(this.ETa.size() - 2)).ETm;
       if (localList.isEmpty()) {}
     }
-    for (long l = ((p)localList.get(localList.size() - 1)).field_snsId;; l = 0L)
+    for (long l = ((SnsInfo)localList.get(localList.size() - 1)).field_snsId;; l = 0L)
     {
-      AN(l);
+      JS(l);
       AppMethodBeat.o(99862);
       return;
     }
@@ -408,7 +408,7 @@ public final class a
   public final int getItemCount()
   {
     AppMethodBeat.i(99860);
-    int i = this.AJh.size();
+    int i = this.ETa.size();
     AppMethodBeat.o(99860);
     return i;
   }
@@ -416,14 +416,14 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(99857);
-    if ("loading".equals(((a.b)this.AJh.get(paramInt)).label)) {
+    if ("loading".equals(((a.b)this.ETa.get(paramInt)).label)) {
       paramInt = 1;
     }
     for (;;)
     {
       AppMethodBeat.o(99857);
       return paramInt;
-      if ("my_timeline".equals(((a.b)this.AJh.get(paramInt)).label)) {
+      if ("my_timeline".equals(((a.b)this.ETa.get(paramInt)).label)) {
         paramInt = 2;
       } else {
         paramInt = 0;
@@ -431,64 +431,64 @@ public final class a
     }
   }
   
-  public final void sa(boolean paramBoolean)
+  public final void vw(boolean paramBoolean)
   {
     AppMethodBeat.i(99864);
-    ae.d("MicroMsg.SnsAlbumAdapter", "limitSeq " + this.AJj);
-    if (this.AJp != null) {
-      this.AJp.j(this.AJj, this.AJk, paramBoolean);
+    Log.d("MicroMsg.SnsAlbumAdapter", "limitSeq " + this.ETc);
+    if (this.ETi != null) {
+      this.ETi.k(this.ETc, this.ETd, paramBoolean);
     }
     AppMethodBeat.o(99864);
   }
   
   public static abstract interface a
   {
-    public abstract void gk(List<a.b> paramList);
+    public abstract void hh(List<a.b> paramList);
   }
   
   final class c
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
-    LoadingMoreView AJu;
+    LoadingMoreView ETn;
     
     public c(View paramView)
     {
       super();
       AppMethodBeat.i(99852);
-      this.AJu = null;
-      this.AJu = ((LoadingMoreView)paramView.findViewById(2131304930));
+      this.ETn = null;
+      this.ETn = ((LoadingMoreView)paramView.findViewById(2131308069));
       AppMethodBeat.o(99852);
     }
   }
   
   public static final class d
   {
-    public bzh AJv = null;
-    public int dKr = 0;
+    public cnb ETo = null;
+    public int ecf = 0;
   }
   
   final class e
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
-    private TextView AJw;
-    private WeImageView AJx;
+    private TextView ETp;
+    private WeImageView ETq;
     
     public e(View paramView)
     {
       super();
       AppMethodBeat.i(99854);
-      this.AJw = null;
-      this.AJx = null;
-      this.AJw = ((TextView)paramView.findViewById(2131296602));
-      this.AJx = ((WeImageView)paramView.findViewById(2131296601));
-      this.AJw.setOnClickListener(new View.OnClickListener()
+      this.ETp = null;
+      this.ETq = null;
+      this.ETp = ((TextView)paramView.findViewById(2131296679));
+      this.ETq = ((WeImageView)paramView.findViewById(2131296678));
+      this.ETp.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(99853);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumAdapter$SnsAlbumTimelineHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumAdapter$SnsAlbumTimelineHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           a.f(a.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumAdapter$SnsAlbumTimelineHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(99853);
@@ -499,39 +499,39 @@ public final class a
   }
   
   final class f
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
-    c AJA;
-    RecyclerView AJB;
-    private LinearLayout AyV;
-    TextView iXP;
-    GridLayoutManager ndV;
+    private LinearLayout EIn;
+    c ETt;
+    RecyclerView ETu;
+    TextView jUO;
+    GridLayoutManager opj;
     TextView timeTv;
     
     public f(View paramView)
     {
       super();
       AppMethodBeat.i(99855);
-      this.AJA = null;
-      this.iXP = null;
+      this.ETt = null;
+      this.jUO = null;
       this.timeTv = null;
-      this.AJB = null;
-      this.ndV = null;
-      this.AyV = null;
-      this.iXP = ((TextView)paramView.findViewById(2131304929));
-      this.timeTv = ((TextView)paramView.findViewById(2131304935));
-      this.AJB = ((RecyclerView)paramView.findViewById(2131304934));
+      this.ETu = null;
+      this.opj = null;
+      this.EIn = null;
+      this.jUO = ((TextView)paramView.findViewById(2131308068));
+      this.timeTv = ((TextView)paramView.findViewById(2131308074));
+      this.ETu = ((RecyclerView)paramView.findViewById(2131308073));
       a.d(a.this);
-      this.ndV = new GridLayoutManager(3);
-      this.AJA = new c();
-      this.AJA.AJE = a.e(a.this);
+      this.opj = new GridLayoutManager(3);
+      this.ETt = new c();
+      this.ETt.ETx = a.e(a.this);
       AppMethodBeat.o(99855);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.album.a
  * JD-Core Version:    0.7.0.1
  */

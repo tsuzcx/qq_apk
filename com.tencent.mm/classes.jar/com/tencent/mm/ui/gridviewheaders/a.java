@@ -7,10 +7,10 @@ import java.util.Date;
 
 public class a
 {
-  private static a KWQ;
-  private long KWN;
-  private long KWO;
-  private long KWP;
+  private static a Qkg;
+  private long Qkd;
+  private long Qke;
+  private long Qkf;
   
   private a()
   {
@@ -21,19 +21,19 @@ public class a
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.KWO = localCalendar.getTimeInMillis();
+    this.Qke = localCalendar.getTimeInMillis();
     localCalendar = Calendar.getInstance();
     localCalendar.set(5, 1);
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.KWP = localCalendar.getTimeInMillis();
-    this.KWN = Calendar.getInstance().getTimeInMillis();
+    this.Qkf = localCalendar.getTimeInMillis();
+    this.Qkd = Calendar.getInstance().getTimeInMillis();
     AppMethodBeat.o(142754);
   }
   
-  public static long ES(long paramLong)
+  public static long NX(long paramLong)
   {
     AppMethodBeat.i(142756);
     Calendar localCalendar = Calendar.getInstance();
@@ -56,14 +56,14 @@ public class a
     return l;
   }
   
-  public static a fNX()
+  public static a gWr()
   {
     AppMethodBeat.i(142753);
-    if (KWQ == null) {}
+    if (Qkg == null) {}
     try
     {
-      KWQ = new a();
-      a locala = KWQ;
+      Qkg = new a();
+      a locala = Qkg;
       AppMethodBeat.o(142753);
       return locala;
     }
@@ -76,15 +76,15 @@ public class a
   public final String a(Date paramDate, Context paramContext)
   {
     AppMethodBeat.i(142758);
-    if (paramDate.getTime() >= this.KWO)
+    if (paramDate.getTime() >= this.Qke)
     {
-      paramDate = paramContext.getString(2131764412);
+      paramDate = paramContext.getString(2131766755);
       AppMethodBeat.o(142758);
       return paramDate;
     }
-    if (paramDate.getTime() >= this.KWP)
+    if (paramDate.getTime() >= this.Qkf)
     {
-      paramDate = paramContext.getString(2131764411);
+      paramDate = paramContext.getString(2131766754);
       AppMethodBeat.o(142758);
       return paramDate;
     }
@@ -96,12 +96,12 @@ public class a
   public final long b(Date paramDate)
   {
     AppMethodBeat.i(142755);
-    if (paramDate.getTime() >= this.KWO)
+    if (paramDate.getTime() >= this.Qke)
     {
       AppMethodBeat.o(142755);
       return 9223372036854775807L;
     }
-    if (paramDate.getTime() >= this.KWP)
+    if (paramDate.getTime() >= this.Qkf)
     {
       AppMethodBeat.o(142755);
       return 9223372036854775806L;
@@ -113,7 +113,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.a
  * JD-Core Version:    0.7.0.1
  */

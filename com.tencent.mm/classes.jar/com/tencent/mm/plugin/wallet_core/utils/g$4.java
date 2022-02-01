@@ -13,15 +13,15 @@ public final class g$4
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     AppMethodBeat.i(71654);
-    if (this.DFN != null) {
-      this.DFN.setEnabled(paramBoolean);
+    if (this.IoZ != null) {
+      this.IoZ.setEnabled(paramBoolean);
     }
     AppMethodBeat.o(71654);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.g.4
  * JD-Core Version:    0.7.0.1
  */

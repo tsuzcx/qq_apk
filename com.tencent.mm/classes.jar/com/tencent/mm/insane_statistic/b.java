@@ -1,83 +1,88 @@
 package com.tencent.mm.insane_statistic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.av.g;
 import com.tencent.mm.av.i;
 import com.tencent.mm.av.q;
 import com.tencent.mm.av.u.a;
-import com.tencent.mm.g.a.qd;
-import com.tencent.mm.g.a.qe;
-import com.tencent.mm.g.a.qf;
-import com.tencent.mm.g.a.qf.a;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.x;
+import com.tencent.mm.g.a.qx;
+import com.tencent.mm.g.a.qy;
+import com.tencent.mm.g.a.qz;
+import com.tencent.mm.g.a.qz.a;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.v;
+import com.tencent.mm.modelsns.m;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.platformtools.af;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.dtw;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.enu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.c;
+import com.tencent.mm.storage.ca;
 import java.net.URLEncoder;
 import java.util.Map;
 
 public final class b
   implements u.a
 {
-  public final void a(long paramLong, bv parambv, com.tencent.mm.ak.b paramb, int paramInt, boolean paramBoolean, com.tencent.mm.i.d paramd)
+  public final void a(long paramLong, ca paramca, com.tencent.mm.ak.d paramd, int paramInt, boolean paramBoolean, com.tencent.mm.i.d paramd1, String paramString)
   {
-    AppMethodBeat.i(20225);
-    paramb = new a(paramLong, parambv, paramb, paramBoolean, paramInt);
-    parambv = com.tencent.mm.model.c.d.aDI().xi("100131");
-    if (parambv.isValid()) {
-      paramb.gzC = af.getInt((String)parambv.fsy().get("needUploadData"), 1);
+    AppMethodBeat.i(231533);
+    paramd = new a(paramLong, paramca, paramd, paramBoolean, paramInt, paramString);
+    paramca = com.tencent.mm.model.c.d.aXu().Fu("100131");
+    if (paramca.isValid()) {
+      paramd.hmp = af.getInt((String)paramca.gzz().get("needUploadData"), 1);
     }
-    if ((paramb.gzA) || ((!paramb.gzE) && (paramb.gzC == 0)))
+    if ((paramd.hmn) || ((!paramd.hmr) && (paramd.hmp == 0)))
     {
-      AppMethodBeat.o(20225);
+      AppMethodBeat.o(231533);
       return;
     }
-    paramb.gzD = paramd;
-    paramb.gzA = true;
-    parambv = (dtw)paramb.rr.hQD.hQJ;
-    if (parambv.FNH != null)
+    paramd.hmq = paramd1;
+    paramd.hmn = true;
+    paramca = (enu)paramd.rr.iLK.iLR;
+    if (paramca.KHm != null)
     {
-      parambv = parambv.FNH.HId;
-      if ((bu.isNullOrNil(parambv)) || (!x.wb(parambv))) {
-        break label328;
+      paramca = paramca.KHm.MTo;
+      if ((Util.isNullOrNil(paramca)) || (!ab.Eq(paramca))) {
+        break label327;
       }
       paramInt = 1;
       label156:
-      parambv = new StringBuilder("2,");
+      paramca = new StringBuilder("2,");
       if (paramInt == 0) {
-        break label334;
+        break label333;
       }
     }
-    label328:
-    label334:
+    label327:
+    label333:
     for (paramInt = 2;; paramInt = 1)
     {
-      paramb.gzz = (paramInt + ",,");
-      if (paramb.gzy == null) {
-        paramb.gzy = q.aIX().c(Long.valueOf(paramb.gzw));
+      paramd.hmm = (paramInt + ",,");
+      if (paramd.hml == null) {
+        paramd.hml = q.bcR().c(Long.valueOf(paramd.hmj));
       }
-      parambv = paramb.gzy;
-      if (parambv != null)
+      paramca = paramd.hml;
+      if (paramca != null)
       {
-        paramd = new qd();
-        a.IvT.c(paramb.gzF);
-        a.IvT.c(paramb.gzG);
-        paramb.gzB = q.aIX().o(parambv.ico, "", "");
-        paramd.dFH.dmK = System.currentTimeMillis();
-        paramd.dFH.filePath = paramb.gzB;
-        a.IvT.l(paramd);
+        paramd1 = new qx();
+        EventCenter.instance.addListener(paramd.hms);
+        EventCenter.instance.addListener(paramd.hmt);
+        paramd.hmo = q.bcR().o(paramca.iXm, "", "");
+        paramd1.dXu.dDZ = System.nanoTime();
+        paramd1.dXu.filePath = paramd.hmo;
+        EventCenter.instance.publish(paramd1);
       }
-      AppMethodBeat.o(20225);
+      AppMethodBeat.o(231533);
       return;
-      parambv = "";
+      paramca = "";
       break;
       paramInt = 0;
       break label156;
@@ -86,91 +91,93 @@ public final class b
   
   static final class a
   {
-    bv dlw;
-    boolean gzA;
-    String gzB;
-    int gzC;
-    com.tencent.mm.i.d gzD;
-    boolean gzE;
-    com.tencent.mm.sdk.b.c gzF;
-    com.tencent.mm.sdk.b.c gzG;
-    long gzw;
-    int gzx;
-    com.tencent.mm.av.g gzy;
-    String gzz;
-    final com.tencent.mm.ak.b rr;
+    ca dCM;
+    long hmj;
+    int hmk;
+    g hml;
+    String hmm;
+    boolean hmn;
+    String hmo;
+    int hmp;
+    com.tencent.mm.i.d hmq;
+    boolean hmr;
+    IListener hms;
+    IListener hmt;
+    final com.tencent.mm.ak.d rr;
+    private String uuid;
     
-    a(long paramLong, bv parambv, com.tencent.mm.ak.b paramb, boolean paramBoolean, int paramInt)
+    a(long paramLong, ca paramca, com.tencent.mm.ak.d paramd, boolean paramBoolean, int paramInt, String paramString)
     {
-      AppMethodBeat.i(20223);
-      this.dlw = null;
-      this.gzA = false;
-      this.gzC = 0;
-      this.gzE = false;
-      this.gzF = new com.tencent.mm.sdk.b.c()
+      AppMethodBeat.i(231531);
+      this.dCM = null;
+      this.hmn = false;
+      this.hmp = 0;
+      this.hmr = false;
+      this.hms = new IListener()
       {
-        private boolean a(qf paramAnonymousqf)
+        private boolean a(qz paramAnonymousqz)
         {
           AppMethodBeat.i(20220);
-          if ((bu.V(new String[] { b.a.this.gzB, paramAnonymousqf.dFM.filePath })) || (!paramAnonymousqf.dFM.filePath.equals(b.a.this.gzB)))
+          if ((Util.isNullOrNil(new String[] { b.a.this.hmo, paramAnonymousqz.dXz.filePath })) || (!paramAnonymousqz.dXz.filePath.equals(b.a.this.hmo)))
           {
             AppMethodBeat.o(20220);
             return false;
           }
           try
           {
-            Object localObject1 = URLEncoder.encode(paramAnonymousqf.dFM.result, "UTF-8");
+            Object localObject1 = URLEncoder.encode(paramAnonymousqz.dXz.result, "UTF-8");
             Object localObject2;
-            if (b.a.this.gzE)
+            if (b.a.this.hmr)
             {
-              localObject2 = b.a.this.gzz + (String)localObject1;
-              ae.i("MicroMsg.OnNetSceneUploadMsgImgEnd", "androidSystemShareFixed(13717) , imgLocalId:%d, scene.hash:%d, %s, filePath:%s", new Object[] { Long.valueOf(b.a.this.gzw), Integer.valueOf(b.a.this.hashCode()), localObject2, paramAnonymousqf.dFM.filePath });
-              com.tencent.mm.plugin.report.service.g.yxI.kvStat(13717, (String)localObject2);
+              localObject2 = b.a.this.hmm + (String)localObject1;
+              Log.i("MicroMsg.OnNetSceneUploadMsgImgEnd", "androidSystemShareFixed(13717) , imgLocalId:%d, scene.hash:%d, %s, filePath:%s", new Object[] { Long.valueOf(b.a.this.hmj), Integer.valueOf(b.a.this.hashCode()), localObject2, paramAnonymousqz.dXz.filePath });
+              h.CyF.kvStat(13717, (String)localObject2);
             }
-            if (b.a.this.gzC == 1)
+            if (b.a.this.hmp == 1)
             {
-              com.tencent.mm.modelsns.g localg = new com.tencent.mm.modelsns.g();
-              dtw localdtw = (dtw)b.a.this.rr.hQD.hQJ;
-              localg.m("20toUser", localdtw.FNH.HId + ",");
-              localg.m("21source", b.a.this.gzx + ",");
-              localg.m("22qrUrl", (String)localObject1 + ",");
+              m localm = new m();
+              enu localenu = (enu)b.a.this.rr.iLK.iLR;
+              localm.n("20toUser", localenu.KHm.MTo + ",");
+              localm.n("21source", b.a.this.hmk + ",");
+              localm.n("22qrUrl", (String)localObject1 + ",");
               localObject2 = new StringBuilder();
-              if (b.a.this.gzD == null)
+              if (b.a.this.hmq == null)
               {
                 localObject1 = "";
-                localg.m("23md5", (String)localObject1 + ",");
+                localm.n("23md5", (String)localObject1 + ",");
                 localObject2 = new StringBuilder();
-                if (b.a.this.gzD != null) {
-                  break label637;
-                }
-                localObject1 = "";
-                localg.m("24cdnFileId", (String)localObject1 + ",");
-                localObject2 = new StringBuilder();
-                if (b.a.this.gzD != null) {
+                if (b.a.this.hmq != null) {
                   break label651;
                 }
                 localObject1 = "";
-                localg.m("25cdnAesKey", (String)localObject1 + ",");
+                localm.n("24cdnFileId", (String)localObject1 + ",");
+                localObject2 = new StringBuilder();
+                if (b.a.this.hmq != null) {
+                  break label665;
+                }
+                localObject1 = "";
+                localm.n("25cdnAesKey", (String)localObject1 + ",");
                 localObject2 = "";
                 localObject1 = localObject2;
-                if (b.a.this.dlw.cVH())
+                if (b.a.this.dCM.dOQ())
                 {
-                  k.b localb = k.b.zb(b.a.this.dlw.field_content);
+                  k.b localb = k.b.HD(b.a.this.dCM.field_content);
                   localObject1 = localObject2;
                   if (localb != null) {
                     localObject1 = localb.appId;
                   }
                 }
-                localg.m("26appip", (String)localObject1 + ",");
-                localg.m("27toUsersCount", r.zC(localdtw.FNH.HId) + ",");
-                localg.m("28codeType", Integer.valueOf(paramAnonymousqf.dFM.dov));
-                ae.i("MicroMsg.OnNetSceneUploadMsgImgEnd", "report qrCodeImgChatting(13628): " + localg.RD());
-                o.L(13628, localg.toString());
+                localm.n("26appip", (String)localObject1 + ",");
+                localm.n("27toUsersCount", v.Ie(localenu.KHm.MTo) + ",");
+                localm.n("28codeType", Integer.valueOf(paramAnonymousqz.dXz.dFL));
+                Log.i("MicroMsg.OnNetSceneUploadMsgImgEnd", "report qrCodeImgChatting(13628): " + localm.abW());
+                o.O(13628, localm.toString());
               }
             }
             else
             {
               b.a.a(b.a.this);
+              b.a.a(b.a.this, paramAnonymousqz.dXz.result);
               AppMethodBeat.o(20220);
               return false;
             }
@@ -179,27 +186,28 @@ public final class b
           {
             for (;;)
             {
-              ae.printErrStackTrace("MicroMsg.OnNetSceneUploadMsgImgEnd", localException, "", new Object[0]);
+              Log.printErrStackTrace("MicroMsg.OnNetSceneUploadMsgImgEnd", localException, "", new Object[0]);
               String str = "";
               continue;
-              str = b.a.this.gzD.field_filemd5;
-              continue;
-              label637:
-              str = b.a.this.gzD.field_fileId;
+              str = b.a.this.hmq.field_filemd5;
               continue;
               label651:
-              str = b.a.this.gzD.field_aesKey;
+              str = b.a.this.hmq.field_fileId;
+              continue;
+              label665:
+              str = b.a.this.hmq.field_aesKey;
             }
           }
         }
       };
-      this.gzG = new com.tencent.mm.sdk.b.c() {};
-      this.gzw = paramLong;
-      this.dlw = parambv;
-      this.rr = paramb;
-      this.gzx = paramInt;
-      this.gzE = paramBoolean;
-      AppMethodBeat.o(20223);
+      this.hmt = new IListener() {};
+      this.hmj = paramLong;
+      this.dCM = paramca;
+      this.rr = paramd;
+      this.hmk = paramInt;
+      this.hmr = paramBoolean;
+      this.uuid = paramString;
+      AppMethodBeat.o(231531);
     }
   }
 }

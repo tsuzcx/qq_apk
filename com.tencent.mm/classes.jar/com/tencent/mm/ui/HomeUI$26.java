@@ -1,19 +1,27 @@
 package com.tencent.mm.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.c;
+import com.tencent.mm.storage.ao;
 
 final class HomeUI$26
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   HomeUI$26(HomeUI paramHomeUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(33204);
-    paramDialogInterface.dismiss();
-    AppMethodBeat.o(33204);
+    AppMethodBeat.i(232575);
+    if (bg.aAc())
+    {
+      bg.aVF();
+      ao localao = c.azQ();
+      if (localao != null) {
+        localao.gBI();
+      }
+    }
+    AppMethodBeat.o(232575);
   }
 }
 

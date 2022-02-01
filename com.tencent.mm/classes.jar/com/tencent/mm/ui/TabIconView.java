@@ -11,19 +11,19 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 
 public class TabIconView
   extends ImageView
 {
-  private Bitmap JAP;
-  private Bitmap JAQ;
-  private Bitmap JAR;
-  private Rect JAS;
-  private Rect JAT;
-  private Rect JAU;
-  private int JAV = 0;
-  private Paint bBH;
+  private int OLA = 0;
+  private Bitmap OLu;
+  private Bitmap OLv;
+  private Bitmap OLw;
+  private Rect OLx;
+  private Rect OLy;
+  private Rect OLz;
+  private Paint bBJ;
   private Context mContext;
   private Paint paint;
   private float scale = 1.166667F;
@@ -40,28 +40,28 @@ public class TabIconView
     this.mContext = paramContext;
   }
   
-  public final void h(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public final void i(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(33778);
     if (paramBoolean) {
       this.scale *= 1.2F;
     }
-    this.JAP = h.u(paramInt1, this.scale);
-    this.JAQ = h.u(paramInt3, this.scale);
-    this.JAR = h.u(paramInt2, this.scale);
-    if (this.JAP != null) {
-      this.JAS = new Rect(0, 0, this.JAP.getWidth(), this.JAP.getHeight());
+    this.OLu = BitmapUtil.getBitmapNative(paramInt1, this.scale);
+    this.OLv = BitmapUtil.getBitmapNative(paramInt3, this.scale);
+    this.OLw = BitmapUtil.getBitmapNative(paramInt2, this.scale);
+    if (this.OLu != null) {
+      this.OLx = new Rect(0, 0, this.OLu.getWidth(), this.OLu.getHeight());
     }
-    if (this.JAQ != null) {
-      this.JAT = new Rect(0, 0, this.JAQ.getWidth(), this.JAQ.getHeight());
+    if (this.OLv != null) {
+      this.OLy = new Rect(0, 0, this.OLv.getWidth(), this.OLv.getHeight());
     }
-    if (this.JAR != null) {
-      this.JAU = new Rect(0, 0, this.JAR.getWidth(), this.JAR.getHeight());
+    if (this.OLw != null) {
+      this.OLz = new Rect(0, 0, this.OLw.getWidth(), this.OLw.getHeight());
     }
     this.paint = new Paint(1);
-    this.bBH = new Paint(1);
-    this.bBH.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(2131099732), PorterDuff.Mode.SRC_ATOP));
-    this.paint.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(2131101171), PorterDuff.Mode.SRC_ATOP));
+    this.bBJ = new Paint(1);
+    this.bBJ.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(2131099746), PorterDuff.Mode.SRC_ATOP));
+    this.paint.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(2131101414), PorterDuff.Mode.SRC_ATOP));
     AppMethodBeat.o(33778);
   }
   
@@ -74,33 +74,33 @@ public class TabIconView
       AppMethodBeat.o(33780);
       return;
     }
-    if (this.JAV < 128)
+    if (this.OLA < 128)
     {
-      this.bBH.setAlpha(255 - this.JAV);
-      paramCanvas.drawBitmap(this.JAQ, null, this.JAT, this.bBH);
-      this.paint.setAlpha(this.JAV);
-      paramCanvas.drawBitmap(this.JAR, null, this.JAU, this.paint);
+      this.bBJ.setAlpha(255 - this.OLA);
+      paramCanvas.drawBitmap(this.OLv, null, this.OLy, this.bBJ);
+      this.paint.setAlpha(this.OLA);
+      paramCanvas.drawBitmap(this.OLw, null, this.OLz, this.paint);
       AppMethodBeat.o(33780);
       return;
     }
-    this.paint.setAlpha(255 - this.JAV);
-    paramCanvas.drawBitmap(this.JAR, null, this.JAU, this.paint);
-    this.paint.setAlpha(this.JAV);
-    paramCanvas.drawBitmap(this.JAP, null, this.JAS, this.paint);
+    this.paint.setAlpha(255 - this.OLA);
+    paramCanvas.drawBitmap(this.OLw, null, this.OLz, this.paint);
+    this.paint.setAlpha(this.OLA);
+    paramCanvas.drawBitmap(this.OLu, null, this.OLx, this.paint);
     AppMethodBeat.o(33780);
   }
   
   public void setFocusAlpha(int paramInt)
   {
     AppMethodBeat.i(33779);
-    this.JAV = paramInt;
+    this.OLA = paramInt;
     invalidate();
     AppMethodBeat.o(33779);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.TabIconView
  * JD-Core Version:    0.7.0.1
  */

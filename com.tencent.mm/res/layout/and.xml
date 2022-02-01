@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/rs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/hee" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="middle" android:id="@id/dp0" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" android:singleLine="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/g8b" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/a" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dx" android:layout_alignParentBottom="true" />
+</RelativeLayout>

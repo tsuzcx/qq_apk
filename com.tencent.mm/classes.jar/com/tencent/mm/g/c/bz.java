@@ -2,76 +2,53 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class bz
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavSearchInfo_Content_Index ON FavSearchInfo(content)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_TagContent_Index ON FavSearchInfo(tagContent)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_SubType_Index ON FavSearchInfo(subtype)" };
-  private static final int eFV;
-  private static final int eNV;
-  private static final int eWU = "localId".hashCode();
-  private static final int eXK;
-  private static final int eXL = "subtype".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int fBg;
+  private static final int fBh;
+  private static final int fBi;
+  private static final int fBj = "failNum".hashCode();
+  private static final int fBk = "isReport".hashCode();
+  private static final int fjl;
+  private static final int fkH;
+  private static final int fkX;
+  private static final int fnB = "url".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eFy = true;
-  private boolean eNC = true;
-  private boolean eWS = true;
-  private boolean eXI = true;
-  private boolean eXJ = true;
-  public String field_content;
-  public long field_localId;
-  public int field_subtype;
-  public String field_tagContent;
-  public long field_time;
-  public int field_type;
+  private static final int updateTime_HASHCODE;
+  private boolean __hadSetupdateTime = true;
+  private boolean fBb = true;
+  private boolean fBc = true;
+  private boolean fBd = true;
+  private boolean fBe = true;
+  private boolean fBf = true;
+  public int field_failNum;
+  public long field_favTime;
+  public String field_imgDirPath;
+  public String field_imgPaths;
+  public int field_isReport;
+  public String field_path;
+  public long field_size;
+  public int field_status;
+  public long field_updateTime;
+  public String field_url;
+  private boolean fji = true;
+  private boolean fkD = true;
+  private boolean fkV = true;
+  private boolean fnx = true;
   
   static
   {
-    eFV = "content".hashCode();
-    eXK = "tagContent".hashCode();
-    eNV = "time".hashCode();
-    type_HASHCODE = "type".hashCode();
-  }
-  
-  public static c.a VD()
-  {
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "localId";
-    locala.IBN.put("localId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" localId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IBM = "localId";
-    locala.columns[1] = "content";
-    locala.IBN.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "tagContent";
-    locala.IBN.put("tagContent", "TEXT");
-    localStringBuilder.append(" tagContent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "time";
-    locala.IBN.put("time", "LONG");
-    localStringBuilder.append(" time LONG");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "type";
-    locala.IBN.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "subtype";
-    locala.IBN.put("subtype", "INTEGER default '0' ");
-    localStringBuilder.append(" subtype INTEGER default '0' ");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    fkX = "size".hashCode();
+    fkH = "path".hashCode();
+    fBg = "imgDirPath".hashCode();
+    fBh = "imgPaths".hashCode();
+    fBi = "favTime".hashCode();
+    updateTime_HASHCODE = "updateTime".hashCode();
+    fjl = "status".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -87,28 +64,35 @@ public abstract class bz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eWU != k) {
-        break label65;
+      if (fnB != k) {
+        break label60;
       }
-      this.field_localId = paramCursor.getLong(i);
-      this.eWS = true;
+      this.field_url = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eFV == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eXK == k) {
-        this.field_tagContent = paramCursor.getString(i);
-      } else if (eNV == k) {
-        this.field_time = paramCursor.getLong(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eXL == k) {
-        this.field_subtype = paramCursor.getInt(i);
+      label60:
+      if (fkX == k) {
+        this.field_size = paramCursor.getLong(i);
+      } else if (fkH == k) {
+        this.field_path = paramCursor.getString(i);
+      } else if (fBg == k) {
+        this.field_imgDirPath = paramCursor.getString(i);
+      } else if (fBh == k) {
+        this.field_imgPaths = paramCursor.getString(i);
+      } else if (fBi == k) {
+        this.field_favTime = paramCursor.getLong(i);
+      } else if (updateTime_HASHCODE == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (fBj == k) {
+        this.field_failNum = paramCursor.getInt(i);
+      } else if (fBk == k) {
+        this.field_isReport = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -118,23 +102,35 @@ public abstract class bz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eWS) {
-      localContentValues.put("localId", Long.valueOf(this.field_localId));
+    if (this.fnx) {
+      localContentValues.put("url", this.field_url);
     }
-    if (this.eFy) {
-      localContentValues.put("content", this.field_content);
+    if (this.fkV) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.eXI) {
-      localContentValues.put("tagContent", this.field_tagContent);
+    if (this.fkD) {
+      localContentValues.put("path", this.field_path);
     }
-    if (this.eNC) {
-      localContentValues.put("time", Long.valueOf(this.field_time));
+    if (this.fBb) {
+      localContentValues.put("imgDirPath", this.field_imgDirPath);
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.fBc) {
+      localContentValues.put("imgPaths", this.field_imgPaths);
     }
-    if (this.eXJ) {
-      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
+    if (this.fBd) {
+      localContentValues.put("favTime", Long.valueOf(this.field_favTime));
+    }
+    if (this.__hadSetupdateTime) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    }
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.fBe) {
+      localContentValues.put("failNum", Integer.valueOf(this.field_failNum));
+    }
+    if (this.fBf) {
+      localContentValues.put("isReport", Integer.valueOf(this.field_isReport));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -144,7 +140,7 @@ public abstract class bz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.bz
  * JD-Core Version:    0.7.0.1
  */

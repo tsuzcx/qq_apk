@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberCore;", "", "()V", "sPhoneNumberLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "getSPhoneNumberLogic", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "setSPhoneNumberLogic", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;)V", "logic", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberCore;", "", "()V", "sPhoneNumberLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "getSPhoneNumberLogic", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "setSPhoneNumberLogic", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;)V", "logic", "luggage-wechat-full-sdk_release"})
 public final class u
 {
-  private static n mpr;
-  public static final u mps;
+  private static n nAd;
+  public static final u nAe;
   
   static
   {
     AppMethodBeat.i(148122);
-    mps = new u();
+    nAe = new u();
     AppMethodBeat.o(148122);
   }
   
   public static void a(n paramn)
   {
-    mpr = paramn;
+    nAd = paramn;
   }
   
-  public static n bxp()
+  public static n bTz()
   {
     AppMethodBeat.i(148121);
-    if (mpr == null)
+    if (nAd == null)
     {
       localn = (n)new i();
       AppMethodBeat.o(148121);
       return localn;
     }
-    n localn = mpr;
+    n localn = nAd;
     if (localn == null) {
-      p.gkB();
+      p.hyc();
     }
     AppMethodBeat.o(148121);
     return localn;

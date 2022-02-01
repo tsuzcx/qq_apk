@@ -26,15 +26,15 @@ public class IssueDetailActivity
       AppMethodBeat.o(52909);
       return;
     }
-    setTitle(getString(2131758064));
-    Object localObject = (TextView)findViewById(2131305822);
-    TextView localTextView = (TextView)findViewById(2131299094);
+    setTitle(getString(2131758324));
+    Object localObject = (TextView)findViewById(2131309101);
+    TextView localTextView = (TextView)findViewById(2131299614);
     ((TextView)localObject).setText(SQLiteLintUtil.formatTime("yyyy-MM-dd HH:mm", paramSQLiteLintIssue.createTime));
     localTextView.setText(SQLiteLintIssue.getLevelText(paramSQLiteLintIssue.level, getBaseContext()));
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.desc))
     {
-      localObject = (LinearLayout)findViewById(2131299005);
-      ((TextView)findViewById(2131299008)).setText(paramSQLiteLintIssue.desc);
+      localObject = (LinearLayout)findViewById(2131299507);
+      ((TextView)findViewById(2131299510)).setText(paramSQLiteLintIssue.desc);
       ((LinearLayout)localObject).setVisibility(0);
       ((LinearLayout)localObject).setOnClickListener(new View.OnClickListener()
       {
@@ -48,8 +48,8 @@ public class IssueDetailActivity
     }
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.detail))
     {
-      localObject = (LinearLayout)findViewById(2131299048);
-      localTextView = (TextView)findViewById(2131299061);
+      localObject = (LinearLayout)findViewById(2131299554);
+      localTextView = (TextView)findViewById(2131299567);
       localTextView.setText(paramSQLiteLintIssue.detail);
       ((LinearLayout)localObject).setVisibility(0);
       localTextView.setOnClickListener(new View.OnClickListener()
@@ -64,14 +64,14 @@ public class IssueDetailActivity
     }
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.advice))
     {
-      localObject = (LinearLayout)findViewById(2131296511);
-      ((TextView)findViewById(2131296512)).setText(paramSQLiteLintIssue.advice);
+      localObject = (LinearLayout)findViewById(2131296585);
+      ((TextView)findViewById(2131296586)).setText(paramSQLiteLintIssue.advice);
       ((LinearLayout)localObject).setVisibility(0);
     }
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.extInfo))
     {
-      localObject = (LinearLayout)findViewById(2131299618);
-      ((TextView)findViewById(2131299619)).setText(getString(2131758065, new Object[] { paramSQLiteLintIssue.extInfo }));
+      localObject = (LinearLayout)findViewById(2131300252);
+      ((TextView)findViewById(2131300253)).setText(getString(2131758325, new Object[] { paramSQLiteLintIssue.extInfo }));
       ((LinearLayout)localObject).setVisibility(0);
     }
     AppMethodBeat.o(52909);
@@ -79,7 +79,7 @@ public class IssueDetailActivity
   
   protected int getLayoutId()
   {
-    return 2131492932;
+    return 2131492954;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -98,7 +98,7 @@ public class IssueDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.IssueDetailActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,132 +1,139 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bfk;
-import com.tencent.mm.protocal.protobuf.bfl;
-import com.tencent.mm.protocal.protobuf.cet;
-import com.tencent.mm.protocal.protobuf.jc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.brg;
+import com.tencent.mm.protocal.protobuf.brh;
+import com.tencent.mm.protocal.protobuf.cva;
+import com.tencent.mm.protocal.protobuf.jr;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class o
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public static String ioA;
-  public static String ioB;
-  public static String ioC;
-  public static String ioD;
-  public static String ioE;
-  private static int ioF;
-  private static int ioG = -1;
-  private static int ioH = 22;
-  private static int ioI = 0;
-  private static boolean ioJ = false;
-  private static int ioK = 0;
-  private static int ioL = 0;
-  public static String iou;
-  public static String iov;
-  public static String iow;
-  public static String iox;
-  public static String ioy;
-  public static String ioz;
-  private f callback;
+  public static String jjB;
+  public static String jjC;
+  public static String jjD;
+  public static String jjE;
+  public static String jjF;
+  public static String jjG;
+  public static String jjH;
+  public static String jjI;
+  public static String jjJ;
+  public static String jjK;
+  public static String jjL;
+  private static int jjM;
+  private static int jjN = -1;
+  private static int jjO = 22;
+  private static int jjP = 0;
+  private static boolean jjQ = false;
+  private static int jjR = 0;
+  private static int jjS = 0;
+  private i callback;
   
   public o(int paramInt)
   {
-    ioF = paramInt;
+    jjM = paramInt;
   }
   
-  public static int aKL()
+  public static int beM()
   {
-    return ioL;
+    return jjS;
   }
   
-  public static int aLa()
+  public static int bfc()
   {
-    return ioG;
+    return jjN;
   }
   
-  public static boolean aLb()
+  public static boolean bfd()
   {
-    return (ioI & 0x2) != 0;
+    return (jjP & 0x2) != 0;
   }
   
-  public static boolean aLc()
+  public static boolean bfe()
   {
-    return (ioH & 0x4) != 0;
+    return (jjO & 0x4) != 0;
   }
   
-  public static int aLd()
+  public static int bff()
   {
-    return ioF;
+    return jjM;
   }
   
-  public static boolean aLe()
+  public static boolean bfg()
   {
-    return (ioI & 0x200) != 0;
+    return (jjP & 0x200) != 0;
   }
   
-  public static boolean aLf()
+  public static boolean bfh()
   {
-    return (ioI & 0x400) != 0;
+    return (jjP & 0x400) != 0;
   }
   
-  public static void eU(boolean paramBoolean)
+  public static boolean bfi()
+  {
+    return (jjP & 0x20) != 0;
+  }
+  
+  public static void fK(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      ioH |= 0x4;
+      jjO |= 0x4;
       return;
     }
-    ioH &= 0xFFFFFFFB;
+    jjO &= 0xFFFFFFFB;
   }
   
   public static int getDeviceType()
   {
-    return ioK;
+    return jjR;
   }
   
-  public static boolean pV(int paramInt)
+  public static boolean tK(int paramInt)
   {
-    return ioF != paramInt;
+    return jjM != paramInt;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(20633);
-    b.a locala = new b.a();
-    bfk localbfk = new bfk();
-    localbfk.qkN = ad.fom();
-    ae.d("MicroMsg.NetSceneGetOnlineInfo", "language %s", new Object[] { localbfk.qkN });
-    locala.hQF = localbfk;
-    locala.hQG = new bfl();
+    d.a locala = new d.a();
+    brg localbrg = new brg();
+    localbrg.rBI = LocaleUtil.getApplicationLanguage();
+    Log.d("MicroMsg.NetSceneGetOnlineInfo", "language %s", new Object[] { localbrg.rBI });
+    locala.iLN = localbrg;
+    locala.iLO = new brh();
     locala.uri = "/cgi-bin/micromsg-bin/getonlineinfo";
     locala.funcId = 526;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.callback = paramf;
-    int i = dispatch(parame, locala.aDS(), this);
+    this.callback = parami;
+    int i = dispatch(paramg, locala.aXF(), this);
     AppMethodBeat.o(20633);
     return i;
   }
@@ -136,94 +143,96 @@ public final class o
     return 526;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20634);
-    ae.i("MicroMsg.NetSceneGetOnlineInfo", "ongynetend %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.NetSceneGetOnlineInfo", "ongynetend %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramArrayOfByte = (bfl)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-      ioG = paramArrayOfByte.GUu;
-      ae.d("MicroMsg.NetSceneGetOnlineInfo", "iconType:%d onlineInfoFlag:%d", new Object[] { Integer.valueOf(ioG), Integer.valueOf(paramArrayOfByte.FNv) });
-      Object localObject = bx.M(paramArrayOfByte.GUt, "summary");
-      paramInt1 = ioH;
+      paramArrayOfByte = (brh)((d)params).iLL.iLR;
+      jjN = paramArrayOfByte.LYM;
+      Log.d("MicroMsg.NetSceneGetOnlineInfo", "iconType:%d onlineInfoFlag:%d", new Object[] { Integer.valueOf(jjN), Integer.valueOf(paramArrayOfByte.KHa) });
+      Object localObject = XmlParser.parseXml(paramArrayOfByte.LYL, "summary", null);
+      paramInt1 = jjO;
       if (localObject != null)
       {
-        iou = (String)((Map)localObject).get(".summary.banner");
-        iov = bu.nullAsNil((String)((Map)localObject).get(".summary.device_name"));
-        ae.d("MicroMsg.NetSceneGetOnlineInfo", "onlineinfo, count:%d, summary:%s", new Object[] { Integer.valueOf(paramArrayOfByte.GUr), paramArrayOfByte.GUt });
-        localObject = (bfk)((com.tencent.mm.ak.b)paramq).hQD.hQJ;
-        Iterator localIterator = paramArrayOfByte.GUs.iterator();
+        jjB = (String)((Map)localObject).get(".summary.banner");
+        jjC = Util.nullAsNil((String)((Map)localObject).get(".summary.device_name"));
+        Log.d("MicroMsg.NetSceneGetOnlineInfo", "onlineinfo, count:%d, summary:%s", new Object[] { Integer.valueOf(paramArrayOfByte.LYJ), paramArrayOfByte.LYL });
+        localObject = (brg)((d)params).iLK.iLR;
+        Iterator localIterator = paramArrayOfByte.LYK.iterator();
         while (localIterator.hasNext())
         {
-          paramq = (cet)localIterator.next();
-          if (paramq.FUz.fjO().hashCode() != ((bfk)localObject).BaseRequest.FUz.fjO().hashCode())
+          params = (cva)localIterator.next();
+          if (params.KOi.yO().hashCode() != ((brg)localObject).BaseRequest.KOi.yO().hashCode())
           {
-            ioK = paramq.Hrw;
-            ae.i("MicroMsg.NetSceneGetOnlineInfo", "device type %d", new Object[] { Integer.valueOf(ioK) });
-            localObject = bx.M(paramq.Hrx, "wording");
-            ae.d("MicroMsg.NetSceneGetOnlineInfo", paramq.Hrx);
+            jjR = params.MAt;
+            Log.i("MicroMsg.NetSceneGetOnlineInfo", "device type %d", new Object[] { Integer.valueOf(jjR) });
+            localObject = XmlParser.parseXml(params.MAu, "wording", null);
+            Log.d("MicroMsg.NetSceneGetOnlineInfo", params.MAu);
             if (localObject != null)
             {
-              iow = (String)((Map)localObject).get(".wording.title");
-              iox = (String)((Map)localObject).get(".wording.notify");
-              ioy = (String)((Map)localObject).get(".wording.mute_title");
-              ioz = (String)((Map)localObject).get(".wording.mute_tips");
-              ioD = (String)((Map)localObject).get(".wording.exit_confirm");
-              ioA = (String)((Map)localObject).get(".wording.lock_title");
-              ioB = (String)((Map)localObject).get(".wording.mute_lock_title");
-              ioC = (String)((Map)localObject).get(".wording.exit");
-              ioE = (String)((Map)localObject).get(".wording.usage_link");
+              jjD = (String)((Map)localObject).get(".wording.title");
+              jjE = (String)((Map)localObject).get(".wording.notify");
+              jjF = (String)((Map)localObject).get(".wording.mute_title");
+              jjG = (String)((Map)localObject).get(".wording.mute_tips");
+              jjK = (String)((Map)localObject).get(".wording.exit_confirm");
+              jjH = (String)((Map)localObject).get(".wording.lock_title");
+              jjI = (String)((Map)localObject).get(".wording.mute_lock_title");
+              jjJ = (String)((Map)localObject).get(".wording.exit");
+              jjL = (String)((Map)localObject).get(".wording.usage_link");
             }
-            paramInt1 = paramq.Hrz;
-            ioL = paramq.FUA;
+            paramInt1 = params.MAw;
+            jjS = params.KOj;
           }
         }
       }
     }
     for (;;)
     {
-      int i = paramArrayOfByte.FNv;
-      ioI = i;
+      int i = paramArrayOfByte.KHa;
+      jjP = i;
       if ((i & 0x2) == 0)
       {
-        ioJ = true;
-        if (paramInt1 != ioH)
+        jjQ = true;
+        if (paramInt1 != jjO)
         {
-          ioH = paramInt1;
-          bc.aCg();
-          com.tencent.mm.model.c.aiV();
+          jjO = paramInt1;
+          bg.aVF();
+          com.tencent.mm.model.c.azl();
         }
-        if ((paramArrayOfByte.FNv & 0x40) != 0)
+        paramInt1 = paramArrayOfByte.KHa;
+        i = paramArrayOfByte.LYM;
+        if (((paramInt1 & 0x40) != 0) || (7 == i) || (8 == i))
         {
-          bc.aCg();
-          paramArrayOfByte = com.tencent.mm.model.c.azF().BH("filehelper");
+          bg.aVF();
+          paramArrayOfByte = com.tencent.mm.model.c.aSN().Kn("filehelper");
           if (paramArrayOfByte != null)
           {
-            paramq = paramArrayOfByte;
-            if (!bu.isNullOrNil(paramArrayOfByte.field_username)) {}
+            params = paramArrayOfByte;
+            if (!Util.isNullOrNil(paramArrayOfByte.field_username)) {}
           }
           else
           {
-            ag.L(paramArrayOfByte);
-            bc.aCg();
-            paramq = com.tencent.mm.model.c.azF().BH("filehelper");
+            ak.L(paramArrayOfByte);
+            bg.aVF();
+            params = com.tencent.mm.model.c.aSN().Kn("filehelper");
           }
-          if ((paramq != null) && (!com.tencent.mm.contact.c.lO(paramq.field_type)))
+          if ((params != null) && (!com.tencent.mm.contact.c.oR(params.field_type)))
           {
-            paramq.acS();
-            bc.aCg();
-            com.tencent.mm.model.c.azF().c(paramq.field_username, paramq);
+            params.aqQ();
+            bg.aVF();
+            com.tencent.mm.model.c.aSN().c(params.field_username, params);
           }
-          bc.aCg();
-          paramq = com.tencent.mm.model.c.azL().aVa("filehelper");
-          if (paramq != null) {
-            break label706;
+          bg.aVF();
+          params = com.tencent.mm.model.c.aST().bjY("filehelper");
+          if (params != null) {
+            break label731;
           }
-          paramq = new au("filehelper");
-          paramq.qH(bu.fpO());
-          bc.aCg();
-          com.tencent.mm.model.c.azL().e(paramq);
+          params = new az("filehelper");
+          params.yA(Util.nowMilliSecond());
+          bg.aVF();
+          com.tencent.mm.model.c.aST().e(params);
         }
       }
       for (;;)
@@ -231,19 +240,19 @@ public final class o
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(20634);
         return;
-        ioJ = false;
+        jjQ = false;
         break;
-        label706:
-        paramq.qH(bu.fpO());
-        bc.aCg();
-        com.tencent.mm.model.c.azL().a(paramq, "filehelper");
+        label731:
+        params.yA(Util.nowMilliSecond());
+        bg.aVF();
+        com.tencent.mm.model.c.aST().a(params, "filehelper");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.o
  * JD-Core Version:    0.7.0.1
  */

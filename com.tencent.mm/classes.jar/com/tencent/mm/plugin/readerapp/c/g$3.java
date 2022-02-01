@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.readerapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.image.d;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 
 final class g$3
   implements Runnable
@@ -13,17 +13,17 @@ final class g$3
   {
     int i = 0;
     AppMethodBeat.i(102669);
-    Object localObject = new k(d.azQ());
-    if ((!((k)localObject).exists()) || (!((k)localObject).isDirectory()))
+    Object localObject = new o(d.aSY());
+    if ((!((o)localObject).exists()) || (!((o)localObject).isDirectory()))
     {
-      g.d(this.xCd);
+      g.d(this.BCd);
       AppMethodBeat.o(102669);
       return;
     }
-    localObject = ((k)localObject).fTj();
+    localObject = ((o)localObject).het();
     if ((localObject == null) || (localObject.length <= 0))
     {
-      g.d(this.xCd);
+      g.d(this.BCd);
       AppMethodBeat.o(102669);
       return;
     }
@@ -39,7 +39,7 @@ final class g$3
       }
       i += 1;
     }
-    g.d(this.xCd);
+    g.d(this.BCd);
     AppMethodBeat.o(102669);
   }
   

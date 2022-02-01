@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.recordvideo.plugin.cropvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "error", "", "onPrepared"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "error", "", "onPrepared"})
 final class EditVideoSeekBarView$b
   implements c.a
 {
-  public static final b xSz;
+  public static final b BSM;
   
   static
   {
     AppMethodBeat.i(75704);
-    xSz = new b();
+    BSM = new b();
     AppMethodBeat.o(75704);
   }
   
-  public final void oz(boolean paramBoolean)
+  public final void ri(boolean paramBoolean)
   {
     AppMethodBeat.i(75703);
     if (paramBoolean)
     {
-      ae.e("MicroMsg.VideoSeekBarEditorView", "Not Supported init SegmentSeekBar failed.");
+      Log.e("MicroMsg.VideoSeekBarEditorView", "Not Supported init SegmentSeekBar failed.");
       AppMethodBeat.o(75703);
       return;
     }
@@ -32,7 +32,7 @@ final class EditVideoSeekBarView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditVideoSeekBarView.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,23 @@ import android.net.TrafficStats;
 import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
-import com.tencent.e.h;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.emoji.b.j;
 import com.tencent.mm.emoji.sync.EmojiSyncManager;
+import com.tencent.mm.g.a.dm;
 import com.tencent.mm.plugin.emoji.sync.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -32,93 +36,93 @@ import java.util.concurrent.Executor;
 public final class BKGLoaderManager
   implements d
 {
-  int Mh;
-  public boolean cFc;
+  int Mr;
+  public boolean mIsForeground;
   int mNetWorkType;
-  private int pNd;
-  private int pNe;
-  private boolean pNf;
-  boolean pNg;
-  boolean pNh;
-  public boolean pNi;
-  public boolean pNj;
-  private boolean pNk;
-  private boolean pNl;
-  private c pNm;
-  private b pNn;
-  private Vector<c> pNo;
-  private Vector<c> pNp;
-  private Vector<c> pNq;
-  private Set<Object> pNr;
-  public ConnectivityReceiver pNs;
-  long pNt;
-  long pNu;
-  aw pNv;
-  public com.tencent.mm.sdk.b.c pNw;
-  public com.tencent.mm.sdk.b.c pNx;
+  boolean rdA;
+  boolean rdB;
+  public boolean rdC;
+  public boolean rdD;
+  private boolean rdE;
+  private boolean rdF;
+  private c rdG;
+  private b rdH;
+  private Vector<c> rdI;
+  private Vector<c> rdJ;
+  private Vector<c> rdK;
+  private Set<Object> rdL;
+  public ConnectivityReceiver rdM;
+  long rdN;
+  long rdO;
+  MTimerHandler rdP;
+  public IListener rdQ;
+  public IListener rdR;
+  private int rdx;
+  private int rdy;
+  private boolean rdz;
   
   public BKGLoaderManager(b paramb)
   {
     AppMethodBeat.i(108757);
-    this.pNd = 0;
-    this.pNe = 0;
-    this.pNf = false;
-    this.pNg = false;
-    this.pNh = false;
-    this.pNi = false;
-    this.pNj = false;
-    this.pNk = false;
-    this.pNl = false;
-    this.cFc = false;
-    this.pNm = null;
-    this.pNo = new Vector();
-    this.pNp = new Vector();
-    this.pNq = new Vector();
-    this.pNr = new HashSet();
+    this.rdx = 0;
+    this.rdy = 0;
+    this.rdz = false;
+    this.rdA = false;
+    this.rdB = false;
+    this.rdC = false;
+    this.rdD = false;
+    this.rdE = false;
+    this.rdF = false;
+    this.mIsForeground = false;
+    this.rdG = null;
+    this.rdI = new Vector();
+    this.rdJ = new Vector();
+    this.rdK = new Vector();
+    this.rdL = new HashSet();
     this.mNetWorkType = -1;
-    this.pNt = 0L;
-    this.pNu = 0L;
-    this.pNv = new aw(Looper.getMainLooper(), new aw.a()
+    this.rdN = 0L;
+    this.rdO = 0L;
+    this.rdP = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(108753);
         long l1;
         long l2;
-        if ((BKGLoaderManager.this.pNg) || (BKGLoaderManager.this.pNh) || (BKGLoaderManager.this.pNi))
+        if ((BKGLoaderManager.this.rdA) || (BKGLoaderManager.this.rdB) || (BKGLoaderManager.this.rdC))
         {
-          l1 = TrafficStats.getUidTxBytes(BKGLoaderManager.this.Mh);
-          l2 = TrafficStats.getUidRxBytes(BKGLoaderManager.this.Mh);
-          long l3 = l1 - BKGLoaderManager.this.pNt + (l2 - BKGLoaderManager.this.pNu);
-          ae.d("MicroMsg.BKGLoader.BKGLoaderManager", "delta of data: " + l3 / 1024L);
+          l1 = TrafficStats.getUidTxBytes(BKGLoaderManager.this.Mr);
+          l2 = TrafficStats.getUidRxBytes(BKGLoaderManager.this.Mr);
+          long l3 = l1 - BKGLoaderManager.this.rdN + (l2 - BKGLoaderManager.this.rdO);
+          Log.d("MicroMsg.BKGLoader.BKGLoaderManager", "delta of data: " + l3 / 1024L);
           if (l3 > 20480L) {
             break label127;
           }
-          BKGLoaderManager.this.ciE();
+          BKGLoaderManager.this.cGC();
         }
         for (;;)
         {
           AppMethodBeat.o(108753);
           return false;
           label127:
-          BKGLoaderManager.this.pNt = l1;
-          BKGLoaderManager.this.pNu = l2;
-          BKGLoaderManager.this.pNv.ay(1000L, 1000L);
+          BKGLoaderManager.this.rdN = l1;
+          BKGLoaderManager.this.rdO = l2;
+          BKGLoaderManager.this.rdP.startTimer(1000L);
         }
       }
     }, false);
-    this.pNw = new BKGLoaderManager.2(this);
-    this.pNx = new BKGLoaderManager.3(this);
-    this.pNn = paramb;
-    this.Mh = Process.myUid();
-    this.mNetWorkType = az.getNetType(ak.getContext());
+    this.rdQ = new IListener() {};
+    this.rdR = new IListener() {};
+    this.rdH = paramb;
+    this.Mr = Process.myUid();
+    this.mNetWorkType = NetStatusUtil.getNetType(MMApplicationContext.getContext());
     AppMethodBeat.o(108757);
   }
   
-  static boolean chH()
+  static boolean cFE()
   {
     AppMethodBeat.i(108768);
-    if ((az.is3G(ak.getContext())) || (az.is4G(ak.getContext())) || (az.is2G(ak.getContext())))
+    if ((NetStatusUtil.is3G(MMApplicationContext.getContext())) || (NetStatusUtil.is4G(MMApplicationContext.getContext())) || (NetStatusUtil.is2G(MMApplicationContext.getContext())))
     {
       AppMethodBeat.o(108768);
       return true;
@@ -127,13 +131,13 @@ public final class BKGLoaderManager
     return false;
   }
   
-  public static boolean ciH()
+  public static boolean cGF()
   {
     AppMethodBeat.i(108767);
     long l = SystemClock.uptimeMillis();
     try
     {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)ak.getContext().getSystemService("connectivity")).getNetworkInfo(1);
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getNetworkInfo(1);
       if (localNetworkInfo != null)
       {
         boolean bool = localNetworkInfo.isConnected();
@@ -145,119 +149,41 @@ public final class BKGLoaderManager
     {
       l = SystemClock.uptimeMillis() - l;
       if (l >= 1000L) {
-        ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[isWifi] cost:%s", new Object[] { Long.valueOf(l) });
+        Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[isWifi] cost:%s", new Object[] { Long.valueOf(l) });
       }
       AppMethodBeat.o(108767);
     }
   }
   
-  public final void acN(String paramString)
+  public final void amU(String paramString)
   {
     AppMethodBeat.i(108765);
-    ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is ruing. key:%s", new Object[] { paramString });
+    Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is ruing. key:%s", new Object[] { paramString });
     AppMethodBeat.o(108765);
   }
   
-  public final void cS(List<c> paramList)
-  {
-    AppMethodBeat.i(108759);
-    if (this.pNp == null) {
-      this.pNp = new Vector();
-    }
-    if (paramList.size() > 0)
-    {
-      int j = paramList.size();
-      int i = 0;
-      if (i < j)
-      {
-        c localc = (c)paramList.get(i);
-        if ((localc != null) && (!this.pNp.contains(localc))) {
-          this.pNp.add(localc);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is has exist:%s", new Object[] { localc.getKey() });
-        }
-      }
-    }
-    AppMethodBeat.o(108759);
-  }
-  
-  public final void cT(List<c> paramList)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        AppMethodBeat.i(108760);
-        if (this.pNq == null) {
-          this.pNq = new Vector();
-        }
-        if ((paramList == null) || (paramList.size() <= 0)) {
-          break label194;
-        }
-        int j = paramList.size();
-        i = 0;
-        if (i >= j) {
-          break label194;
-        }
-        localObject = (c)paramList.get(i);
-        if ((this.pNm != null) && (this.pNm.equals(localObject)))
-        {
-          if (localObject == null)
-          {
-            localObject = "task is null";
-            ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] currentTask equals task is has exist:%s", new Object[] { localObject });
-          }
-          else
-          {
-            localObject = ((c)localObject).getKey();
-            continue;
-          }
-        }
-        else if ((localObject != null) && (!this.pNq.contains(localObject))) {
-          this.pNq.add(localObject);
-        }
-      }
-      finally {}
-      if (localObject == null) {}
-      for (Object localObject = "task is null";; localObject = ((c)localObject).getKey())
-      {
-        ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is has exist:%s", new Object[] { localObject });
-        break;
-      }
-      label194:
-      AppMethodBeat.o(108760);
-      return;
-      i += 1;
-    }
-  }
-  
-  public final void ciD()
+  public final void cGB()
   {
     try
     {
       AppMethodBeat.i(108761);
-      if (this.pNo != null) {
-        this.pNo.clear();
+      if (this.rdI != null) {
+        this.rdI.clear();
       }
-      if (this.pNp != null) {
-        this.pNp.clear();
+      if (this.rdJ != null) {
+        this.rdJ.clear();
       }
-      if (this.pNq != null) {
-        this.pNq.clear();
+      if (this.rdK != null) {
+        this.rdK.clear();
       }
-      this.pNf = false;
+      this.rdz = false;
       AppMethodBeat.o(108761);
       return;
     }
     finally {}
   }
   
-  public final void ciE()
+  public final void cGC()
   {
     int i = 0;
     for (;;)
@@ -265,106 +191,106 @@ public final class BKGLoaderManager
       try
       {
         AppMethodBeat.i(108762);
-        if ((az.isWifi(ak.getContext())) || (EmojiSyncManager.agw())) {
-          break label666;
+        if ((NetStatusUtil.isWifi(MMApplicationContext.getContext())) || (EmojiSyncManager.awm())) {
+          break label661;
         }
-        if ((i == 0) && (!this.pNf)) {
-          break label602;
+        if ((i == 0) && (!this.rdz)) {
+          break label599;
         }
-        if ((this.pNo != null) && (this.pNo.size() > 0))
+        if ((this.rdI != null) && (this.rdI.size() > 0))
         {
-          this.pNl = e.abp();
-          this.pNg = true;
-          this.pNh = false;
-          this.pNj = false;
-          this.pNi = false;
-          if (!this.pNl)
+          this.rdF = e.apo();
+          this.rdA = true;
+          this.rdB = false;
+          this.rdD = false;
+          this.rdC = false;
+          if (!this.rdF)
           {
-            this.pNm = ((c)this.pNo.remove(0));
-            this.pNm.a(this);
-            this.pNn.pNb.execute(this.pNm);
-            ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart task is ruing. key:%s donwload list size:%d", new Object[] { this.pNm.getKey(), Integer.valueOf(this.pNo.size()) });
-            ciG();
-            if ((this.pNh) || (this.pNg)) {
-              break label657;
+            this.rdG = ((c)this.rdI.remove(0));
+            this.rdG.a(this);
+            this.rdH.rdv.execute(this.rdG);
+            Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart task is ruing. key:%s donwload list size:%d", new Object[] { this.rdG.getKey(), Integer.valueOf(this.rdI.size()) });
+            cGE();
+            if ((this.rdB) || (this.rdA)) {
+              break label653;
             }
-            if ((this.pNq == null) || (this.pNq.size() <= 0)) {
-              break label588;
+            if ((this.rdK == null) || (this.rdK.size() <= 0)) {
+              break label586;
             }
-            this.pNi = true;
-            this.pNm = ((c)this.pNq.remove(0));
-            this.pNm.a(this);
-            this.pNn.pNb.execute(this.pNm);
-            ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart download store emoji task is runing. productID:%s size:%d", new Object[] { this.pNm.getKey(), Integer.valueOf(this.pNq.size()) });
+            this.rdC = true;
+            this.rdG = ((c)this.rdK.remove(0));
+            this.rdG.a(this);
+            this.rdH.rdv.execute(this.rdG);
+            Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart download store emoji task is runing. productID:%s size:%d", new Object[] { this.rdG.getKey(), Integer.valueOf(this.rdK.size()) });
             AppMethodBeat.o(108762);
             return;
           }
-          ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] sdcard is full.");
+          Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] sdcard is full.");
           continue;
         }
-        if (this.pNp == null) {
-          break label421;
+        if (this.rdJ == null) {
+          break label419;
         }
       }
       finally {}
-      label657:
-      label666:
-      if (this.pNp.size() > 0)
+      label653:
+      label661:
+      if (this.rdJ.size() > 0)
       {
-        this.pNh = true;
-        this.pNg = false;
-        this.pNk = false;
-        this.pNi = false;
-        this.pNm = ((c)this.pNp.remove(0));
-        this.pNm.a(this);
-        this.pNn.pNb.execute(this.pNm);
-        ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart task is ruing. key:%s upload list size:%d", new Object[] { this.pNm.getKey(), Integer.valueOf(this.pNp.size()) });
-        ciG();
+        this.rdB = true;
+        this.rdA = false;
+        this.rdE = false;
+        this.rdC = false;
+        this.rdG = ((c)this.rdJ.remove(0));
+        this.rdG.a(this);
+        this.rdH.rdv.execute(this.rdG);
+        Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart task is ruing. key:%s upload list size:%d", new Object[] { this.rdG.getKey(), Integer.valueOf(this.rdJ.size()) });
+        cGE();
       }
       else
       {
-        label421:
-        ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart no task list .");
-        if ((this.pNo == null) || (this.pNo.size() <= 0))
+        label419:
+        Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] tryToStart no task list .");
+        if ((this.rdI == null) || (this.rdI.size() <= 0))
         {
-          if ((this.pNg) && (this.cFc)) {
-            this.pNj = true;
+          if ((this.rdA) && (this.mIsForeground)) {
+            this.rdD = true;
           }
-          this.pNg = false;
+          this.rdA = false;
         }
-        if ((this.pNp == null) || (this.pNp.size() <= 0))
+        if ((this.rdJ == null) || (this.rdJ.size() <= 0))
         {
-          if ((this.pNh) && (this.cFc)) {
-            this.pNk = true;
+          if ((this.rdB) && (this.mIsForeground)) {
+            this.rdE = true;
           }
-          this.pNh = false;
+          this.rdB = false;
         }
-        if (((this.pNo == null) || (this.pNo.size() <= 0)) && ((this.pNp == null) || (this.pNp.size() <= 0)) && ((this.pNg) || (this.pNh)) && (this.cFc))
+        if (((this.rdI == null) || (this.rdI.size() <= 0)) && ((this.rdJ == null) || (this.rdJ.size() <= 0)) && ((this.rdA) || (this.rdB)) && (this.mIsForeground))
         {
-          this.pNh = false;
-          this.pNg = false;
+          this.rdB = false;
+          this.rdA = false;
         }
-        this.pNf = false;
-        ciG();
+        this.rdz = false;
+        cGE();
         continue;
-        label588:
-        this.pNi = false;
+        label586:
+        this.rdC = false;
         AppMethodBeat.o(108762);
         continue;
-        label602:
-        if (chH())
+        label599:
+        if (cFE())
         {
-          ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[dz tryToStart is 3g or 4g]");
-          this.pNg = false;
-          this.pNh = false;
-          this.pNj = false;
-          this.pNi = false;
-          ciG();
+          Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[dz tryToStart is 3g or 4g]");
+          this.rdA = false;
+          this.rdB = false;
+          this.rdD = false;
+          this.rdC = false;
+          cGE();
           AppMethodBeat.o(108762);
         }
         else
         {
-          ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[dz tryToStart is not wifi, 3g nor 4g]");
+          Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[dz tryToStart is not wifi, 3g nor 4g]");
           AppMethodBeat.o(108762);
           continue;
           i = 1;
@@ -373,17 +299,17 @@ public final class BKGLoaderManager
     }
   }
   
-  public final void ciF()
+  public final void cGD()
   {
     try
     {
       AppMethodBeat.i(108763);
-      this.pNg = false;
-      this.pNh = false;
-      this.pNf = false;
-      ciG();
-      if (this.pNm != null) {
-        this.pNm.cancel();
+      this.rdA = false;
+      this.rdB = false;
+      this.rdz = false;
+      cGE();
+      if (this.rdG != null) {
+        this.rdG.cancel();
       }
       AppMethodBeat.o(108763);
       return;
@@ -391,12 +317,12 @@ public final class BKGLoaderManager
     finally {}
   }
   
-  public final void ciG()
+  public final void cGE()
   {
     AppMethodBeat.i(108764);
-    if ((this.pNr != null) && (this.pNr.size() > 0))
+    if ((this.rdL != null) && (this.rdL.size() > 0))
     {
-      Iterator localIterator = this.pNr.iterator();
+      Iterator localIterator = this.rdL.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -404,74 +330,152 @@ public final class BKGLoaderManager
     AppMethodBeat.o(108764);
   }
   
-  public final void l(String paramString, int paramInt, boolean paramBoolean)
+  public final void dh(List<c> paramList)
+  {
+    AppMethodBeat.i(108759);
+    if (this.rdJ == null) {
+      this.rdJ = new Vector();
+    }
+    if (paramList.size() > 0)
+    {
+      int j = paramList.size();
+      int i = 0;
+      if (i < j)
+      {
+        c localc = (c)paramList.get(i);
+        if ((localc != null) && (!this.rdJ.contains(localc))) {
+          this.rdJ.add(localc);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is has exist:%s", new Object[] { localc.getKey() });
+        }
+      }
+    }
+    AppMethodBeat.o(108759);
+  }
+  
+  public final void di(List<c> paramList)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        AppMethodBeat.i(108760);
+        if (this.rdK == null) {
+          this.rdK = new Vector();
+        }
+        if ((paramList == null) || (paramList.size() <= 0)) {
+          break label199;
+        }
+        int j = paramList.size();
+        i = 0;
+        if (i >= j) {
+          break label199;
+        }
+        localObject = (c)paramList.get(i);
+        if ((this.rdG != null) && (this.rdG.equals(localObject)))
+        {
+          if (localObject == null)
+          {
+            localObject = "task is null";
+            Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] currentTask equals task is has exist:%s", new Object[] { localObject });
+          }
+          else
+          {
+            localObject = ((c)localObject).getKey();
+            continue;
+          }
+        }
+        else if ((localObject != null) && (!this.rdK.contains(localObject))) {
+          this.rdK.add(localObject);
+        }
+      }
+      finally {}
+      if (localObject == null) {}
+      for (Object localObject = "task is null";; localObject = ((c)localObject).getKey())
+      {
+        Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is has exist:%s", new Object[] { localObject });
+        break;
+      }
+      label199:
+      AppMethodBeat.o(108760);
+      return;
+      i += 1;
+    }
+  }
+  
+  public final void m(String paramString, int paramInt, boolean paramBoolean)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(108766);
-        ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is finish. key:%s success:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-        if ((this.pNm == null) || (bu.isNullOrNil(paramString)))
+        Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] task is finish. key:%s success:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+        if ((this.rdG == null) || (Util.isNullOrNil(paramString)))
         {
-          ae.e("MicroMsg.BKGLoader.BKGLoaderManager", "CurrentTask or key is null. or key is no equal crrentkey ");
+          Log.e("MicroMsg.BKGLoader.BKGLoaderManager", "CurrentTask or key is null. or key is no equal crrentkey ");
           AppMethodBeat.o(108766);
           return;
         }
-        if (this.pNo.contains(this.pNm))
+        if (this.rdI.contains(this.rdG))
         {
-          this.pNo.remove(this.pNm);
+          this.rdI.remove(this.rdG);
           if (!paramBoolean) {
-            break label335;
+            break label332;
           }
-          if ((paramInt == 2) || (this.pNr == null) || (this.pNr.size() <= 0)) {
+          if ((paramInt == 2) || (this.rdL == null) || (this.rdL.size() <= 0)) {
             break label208;
           }
-          paramString = this.pNr.iterator();
+          paramString = this.rdL.iterator();
           if (!paramString.hasNext()) {
             break label208;
           }
           paramString.next();
           continue;
         }
-        if (!this.pNp.contains(this.pNm)) {
+        if (!this.rdJ.contains(this.rdG)) {
           break label179;
         }
       }
       finally {}
-      this.pNp.remove(this.pNm);
+      this.rdJ.remove(this.rdG);
       continue;
       label179:
-      if (this.pNq.contains(this.pNm))
+      if (this.rdK.contains(this.rdG))
       {
-        this.pNq.remove(this.pNm);
+        this.rdK.remove(this.rdG);
         continue;
         label208:
-        if ((this.pNm instanceof a))
+        if ((this.rdG instanceof a))
         {
-          paramString = ((a)this.pNm).pMk;
-          paramString = com.tencent.mm.emoji.a.i.aeX().wB(paramString);
+          paramString = ((a)this.rdG).rcD;
+          paramString = j.auL().EQ(paramString);
           if (paramString != null)
           {
             paramString = paramString.iterator();
-            for (long l = 0L; paramString.hasNext(); l = o.aZR(((EmojiInfo)paramString.next()).fSQ()) + l) {}
-            ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "download size is %s", new Object[] { Long.valueOf(l) });
-            EmojiSyncManager.ri(l);
+            for (long l = 0L; paramString.hasNext(); l = s.boW(((EmojiInfo)paramString.next()).hRM()) + l) {}
+            Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "download size is %s", new Object[] { Long.valueOf(l) });
+            EmojiSyncManager.zl(l);
           }
         }
         for (;;)
         {
           if (paramInt != 2) {
-            break label346;
+            break label343;
           }
-          this.pNv.ay(5000L, 5000L);
+          this.rdP.startTimer(5000L);
           AppMethodBeat.o(108766);
           break;
-          label335:
-          ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "retry later.");
+          label332:
+          Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "retry later.");
         }
-        label346:
-        this.pNv.ay(1000L, 1000L);
+        label343:
+        this.rdP.startTimer(1000L);
         AppMethodBeat.o(108766);
       }
     }
@@ -485,32 +489,32 @@ public final class BKGLoaderManager
     public final void onReceive(final Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(108756);
-      h.MqF.aO(new Runnable()
+      h.RTc.aX(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(194865);
-          int i = az.getNetType(paramContext);
+          AppMethodBeat.i(240155);
+          int i = NetStatusUtil.getNetType(paramContext);
           if (BKGLoaderManager.this.mNetWorkType == i)
           {
-            AppMethodBeat.o(194865);
+            AppMethodBeat.o(240155);
             return;
           }
-          ae.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] network change type:%d", new Object[] { Integer.valueOf(i) });
-          if (BKGLoaderManager.chH()) {
-            BKGLoaderManager.this.ciF();
+          Log.i("MicroMsg.BKGLoader.BKGLoaderManager", "[cpan] network change type:%d", new Object[] { Integer.valueOf(i) });
+          if (BKGLoaderManager.cFE()) {
+            BKGLoaderManager.this.cGD();
           }
           for (;;)
           {
             BKGLoaderManager.this.mNetWorkType = i;
-            AppMethodBeat.o(194865);
+            AppMethodBeat.o(240155);
             return;
-            if (BKGLoaderManager.ciH()) {
-              BKGLoaderManager.this.ciE();
-            } else if (!az.isConnected(ak.getContext())) {
-              BKGLoaderManager.this.ciF();
+            if (BKGLoaderManager.cGF()) {
+              BKGLoaderManager.this.cGC();
+            } else if (!NetStatusUtil.isConnected(MMApplicationContext.getContext())) {
+              BKGLoaderManager.this.cGD();
             } else {
-              BKGLoaderManager.this.ciG();
+              BKGLoaderManager.this.cGE();
             }
           }
         }
@@ -521,7 +525,7 @@ public final class BKGLoaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.sync.BKGLoaderManager
  * JD-Core Version:    0.7.0.1
  */

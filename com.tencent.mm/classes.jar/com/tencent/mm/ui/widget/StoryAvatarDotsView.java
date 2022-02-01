@@ -13,15 +13,15 @@ import com.tencent.mm.cb.a;
 public final class StoryAvatarDotsView
   extends FrameLayout
 {
-  private int mWV;
-  private int mWW;
+  private int ojY;
+  private int ojZ;
   
   public StoryAvatarDotsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143459);
-    this.mWV = a.fromDPToPix(getContext(), 25);
-    this.mWW = a.fromDPToPix(getContext(), 19);
+    this.ojY = a.fromDPToPix(getContext(), 25);
+    this.ojZ = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143459);
   }
   
@@ -29,12 +29,12 @@ public final class StoryAvatarDotsView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143460);
-    this.mWV = a.fromDPToPix(getContext(), 25);
-    this.mWW = a.fromDPToPix(getContext(), 19);
+    this.ojY = a.fromDPToPix(getContext(), 25);
+    this.ojZ = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143460);
   }
   
-  private void bCP()
+  private void bZU()
   {
     AppMethodBeat.i(143463);
     if (getChildCount() > 0)
@@ -45,12 +45,12 @@ public final class StoryAvatarDotsView
         View localView = getChildAt(i);
         Object localObject = localView.getLayoutParams();
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-        int j = this.mWV;
+        int j = this.ojY;
         localLayoutParams.height = j;
         ((ViewGroup.LayoutParams)localObject).width = j;
         localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity |= 0x5;
-        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.mWW * i);
+        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.ojZ * i);
         i -= 1;
       }
       requestLayout();
@@ -75,10 +75,10 @@ public final class StoryAvatarDotsView
   public final void setIconGap(int paramInt)
   {
     AppMethodBeat.i(143462);
-    if ((paramInt >= 0) && (this.mWW != paramInt))
+    if ((paramInt >= 0) && (this.ojZ != paramInt))
     {
-      this.mWW = paramInt;
-      bCP();
+      this.ojZ = paramInt;
+      bZU();
     }
     AppMethodBeat.o(143462);
   }
@@ -95,7 +95,7 @@ public final class StoryAvatarDotsView
         while (i < paramInt - j)
         {
           ImageView localImageView = new ImageView(getContext());
-          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.mWV, this.mWV);
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.ojY, this.ojY);
           localLayoutParams.gravity = 16;
           addViewInLayout(localImageView, 0, localLayoutParams, true);
           i += 1;
@@ -104,7 +104,7 @@ public final class StoryAvatarDotsView
       if (paramInt < getChildCount()) {
         removeViewsInLayout(0, getChildCount() - paramInt);
       }
-      bCP();
+      bZU();
     }
     AppMethodBeat.o(143464);
   }
@@ -112,15 +112,15 @@ public final class StoryAvatarDotsView
   public final void setIconSize(int paramInt)
   {
     AppMethodBeat.i(143461);
-    if ((paramInt > 0) && (paramInt != this.mWV))
+    if ((paramInt > 0) && (paramInt != this.ojY))
     {
-      this.mWV = paramInt;
-      bCP();
+      this.ojY = paramInt;
+      bZU();
     }
     AppMethodBeat.o(143461);
   }
   
-  public final ImageView vV(int paramInt)
+  public final ImageView zK(int paramInt)
   {
     AppMethodBeat.i(143465);
     ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);

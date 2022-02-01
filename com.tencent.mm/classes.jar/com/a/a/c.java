@@ -7,45 +7,45 @@ import java.lang.reflect.Method;
 
 final class c
 {
-  static final int aPC;
-  private static final Method aPD;
+  static final int aPv;
+  private static final Method aPw;
   
   static
   {
-    AppMethodBeat.i(212964);
+    AppMethodBeat.i(206460);
     try
     {
-      aPC = ((Integer)Canvas.class.getField("MATRIX_SAVE_FLAG").get(null)).intValue();
-      aPD = Canvas.class.getMethod("save", new Class[] { Integer.TYPE });
-      AppMethodBeat.o(212964);
+      aPv = ((Integer)Canvas.class.getField("MATRIX_SAVE_FLAG").get(null)).intValue();
+      aPw = Canvas.class.getMethod("save", new Class[] { Integer.TYPE });
+      AppMethodBeat.o(206460);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(212964);
+      AppMethodBeat.o(206460);
       throw localThrowable;
     }
   }
   
   static void c(Canvas paramCanvas, int paramInt)
   {
-    AppMethodBeat.i(212963);
+    AppMethodBeat.i(206459);
     try
     {
-      aPD.invoke(paramCanvas, new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(212963);
+      aPw.invoke(paramCanvas, new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(206459);
       return;
     }
     catch (Throwable paramCanvas)
     {
-      AppMethodBeat.o(212963);
+      AppMethodBeat.o(206459);
       throw paramCanvas;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.a.a.c
  * JD-Core Version:    0.7.0.1
  */

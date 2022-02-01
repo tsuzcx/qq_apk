@@ -9,53 +9,53 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 @com.tencent.mm.ui.base.a(19)
 public class WalletWXCreditOpenResultUI
   extends WalletBaseUI
 {
-  private CheckBox EZY;
+  private CheckBox JQQ;
   
-  private void aUI()
+  private void bpv()
   {
     AppMethodBeat.i(72390);
-    getNetController().r(new Object[] { Boolean.valueOf(this.EZY.isChecked()) });
+    getNetController().r(new Object[] { Boolean.valueOf(this.JQQ.isChecked()) });
     AppMethodBeat.o(72390);
   }
   
   public int getLayoutId()
   {
-    return 2131496050;
+    return 2131497030;
   }
   
   public void initView()
   {
     AppMethodBeat.i(72389);
-    setMMTitle(2131766015);
-    TextView localTextView = (TextView)findViewById(2131306855);
-    this.EZY = ((CheckBox)findViewById(2131296965));
+    setMMTitle(2131768468);
+    TextView localTextView = (TextView)findViewById(2131310317);
+    this.JQQ = ((CheckBox)findViewById(2131297080));
     Bankcard localBankcard = (Bankcard)getInput().getParcelable("key_bankcard");
     if (localBankcard != null)
     {
-      this.EZY.setText(getString(2131766017, new Object[] { localBankcard.field_bankName }));
-      localTextView.setText(2131766018);
+      this.JQQ.setText(getString(2131768470, new Object[] { localBankcard.field_bankName }));
+      localTextView.setText(2131768471);
     }
-    ((Button)findViewById(2131302852)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131305423)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72387);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         WalletWXCreditOpenResultUI.a(WalletWXCreditOpenResultUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72387);
@@ -68,9 +68,9 @@ public class WalletWXCreditOpenResultUI
   {
     AppMethodBeat.i(72388);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajR().ajA().set(196658, Boolean.TRUE);
-    t.eJf().DsG = bu.aRi();
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAh().azQ().set(196658, Boolean.TRUE);
+    t.fQI().IbS = Util.nowSecond();
     initView();
     AppMethodBeat.o(72388);
   }
@@ -80,7 +80,7 @@ public class WalletWXCreditOpenResultUI
     AppMethodBeat.i(72391);
     if (paramInt == 4)
     {
-      aUI();
+      bpv();
       AppMethodBeat.o(72391);
       return true;
     }
@@ -89,7 +89,7 @@ public class WalletWXCreditOpenResultUI
     return bool;
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     return false;
   }
@@ -102,7 +102,7 @@ public class WalletWXCreditOpenResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditOpenResultUI
  * JD-Core Version:    0.7.0.1
  */

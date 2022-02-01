@@ -12,13 +12,13 @@ final class SnsCommentDetailUI$b$1
   public final void run()
   {
     AppMethodBeat.i(98585);
-    SnsCommentDetailUI.a(this.Atv.AsY).setSelection(SnsCommentDetailUI.a(this.Atv.AsY).getHeaderViewsCount() + this.Atv.commentList.size() - 1);
+    SnsCommentDetailUI.a(this.ECD.ECd).setSelection(SnsCommentDetailUI.a(this.ECD.ECd).getHeaderViewsCount() + this.ECD.commentList.size() - 1);
     AppMethodBeat.o(98585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.b.1
  * JD-Core Version:    0.7.0.1
  */

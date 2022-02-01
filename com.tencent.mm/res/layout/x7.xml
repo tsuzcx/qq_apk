@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/avh" android:background="@color/a_r" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/avf" layout="@layout/x2" />
-    <android.support.v7.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/avg" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/avf" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
-    <RelativeLayout android:orientation="horizontal" android:id="@id/h3m" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
-        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/h93" android:background="@drawable/he" android:layout_width="fill_parent" android:layout_height="96.0dip" android:layout_marginLeft="@dimen/k" android:layout_marginTop="@dimen/k" android:layout_marginRight="@dimen/k">
+        <RelativeLayout android:id="@id/iqm" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="@dimen/hs">
+            <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/j4s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aj8" android:includeFontPadding="false" android:layout_alignParentTop="true" />
+            <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_2" android:id="@id/j4r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aj7" android:includeFontPadding="false" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="6.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/k_" android:src="@raw/video_channel_arrow" app:iconColor="@color/FG_2" />
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/hs" android:layout_marginBottom="@dimen/hs" android:layout_toRightOf="@id/iqm" android:layout_alignParentRight="true">
+            <LinearLayout android:orientation="horizontal" android:id="@id/j41" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

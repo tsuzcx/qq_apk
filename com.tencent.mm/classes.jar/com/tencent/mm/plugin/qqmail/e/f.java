@@ -1,50 +1,49 @@
 package com.tencent.mm.plugin.qqmail.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.qqmail.d.bb;
 import com.tencent.mm.plugin.qqmail.d.bc;
 import java.util.LinkedList;
 
 public final class f
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private com.tencent.mm.ak.f callback;
-  private b hZD;
-  public String xqW;
+  public String BqZ;
+  private i callback;
+  private d iUB;
   
   public f(String paramString, int paramInt)
   {
-    AppMethodBeat.i(218009);
-    b.a locala = new b.a();
+    AppMethodBeat.i(198665);
+    d.a locala = new d.a();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/xmmailbroker/mb_updatemailstatus";
     bb localbb = new bb();
-    localbb.xtr.add(paramString);
-    g.ajP();
+    localbb.Btu.add(paramString);
+    com.tencent.mm.kernel.g.aAf();
     localbb.uin = a.getUin();
-    localbb.xts = paramInt;
-    locala.hQF = localbb;
-    locala.hQG = new bc();
-    this.hZD = locala.aDS();
-    this.xqW = paramString;
-    AppMethodBeat.o(218009);
+    localbb.Btv = paramInt;
+    locala.iLN = localbb;
+    locala.iLO = new bc();
+    this.iUB = locala.aXF();
+    this.BqZ = paramString;
+    AppMethodBeat.o(198665);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    AppMethodBeat.i(218010);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
-    AppMethodBeat.o(218010);
+    AppMethodBeat.i(198666);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
+    AppMethodBeat.o(198666);
     return i;
   }
   
@@ -53,11 +52,11 @@ public final class f
     return 11480;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(218011);
+    AppMethodBeat.i(198667);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(218011);
+    AppMethodBeat.o(198667);
   }
 }
 

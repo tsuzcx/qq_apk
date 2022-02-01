@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$a
 {
-  public final boolean btd;
+  public final boolean bsY;
   public final String mimeType;
   
   public d$a(String paramString, boolean paramBoolean)
   {
     this.mimeType = paramString;
-    this.btd = paramBoolean;
+    this.bsY = paramBoolean;
   }
   
   public final boolean equals(Object paramObject)
@@ -28,7 +28,7 @@ final class d$a
       return false;
     }
     paramObject = (a)paramObject;
-    if ((TextUtils.equals(this.mimeType, paramObject.mimeType)) && (this.btd == paramObject.btd))
+    if ((TextUtils.equals(this.mimeType, paramObject.mimeType)) && (this.bsY == paramObject.bsY))
     {
       AppMethodBeat.o(92362);
       return true;
@@ -44,7 +44,7 @@ final class d$a
     if (this.mimeType == null)
     {
       i = 0;
-      if (!this.btd) {
+      if (!this.bsY) {
         break label51;
       }
     }

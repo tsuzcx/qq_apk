@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.finder.feed.RCLinearLayout android:layout_width="@dimen/bw" android:layout_height="@dimen/c1" android:layout_marginLeft="@dimen/bq"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/ht8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginRight="@dimen/c0" android:layout_marginBottom="@dimen/c0" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8">
-            <ImageView android:id="@id/ht0" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
-            <TextView android:textSize="@dimen/jo" android:textColor="@color/aj" android:ellipsize="end" android:id="@id/ht7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:maxWidth="110.0px" android:text="{nickname}" android:maxLines="1" />
-            <ImageView android:id="@id/hsz" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/bq" />
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
-</com.tencent.mm.plugin.finder.feed.RCLinearLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hin" android:background="@color/a6p" android:layout_width="fill_parent" android:layout_height="215.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MMFlipper android:gravity="center" android:id="@id/hip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:orientation="horizontal" android:id="@id/hio" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

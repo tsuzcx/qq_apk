@@ -12,33 +12,31 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.gallery.picker.view.TouchCoordinatorLayout;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class AppBarLayoutBehavior
   extends AppBarLayout.Behavior
   implements View.OnTouchListener
 {
+  private View nmd;
   private Rect rect;
-  private AppBarLayout tSU;
-  private View tTA;
-  private int tTB;
-  private boolean tTC;
-  private boolean tTD;
-  private boolean tTE;
-  private boolean tTz;
+  private boolean xkM;
+  private int xkN;
+  private boolean xkO;
+  private boolean xkP;
+  private boolean xkQ;
+  private AppBarLayout xkh;
   
   public AppBarLayoutBehavior()
   {
     AppMethodBeat.i(164777);
-    this.tTz = false;
-    this.tTB = ((int)ak.getContext().getResources().getDimension(2131165298));
+    this.xkM = false;
+    this.xkN = ((int)MMApplicationContext.getContext().getResources().getDimension(2131165308));
     this.rect = new Rect();
-    this.tTC = true;
-    this.tTD = false;
-    this.tTE = false;
+    this.xkO = true;
+    this.xkP = false;
+    this.xkQ = false;
     init();
     AppMethodBeat.o(164777);
   }
@@ -47,12 +45,12 @@ public class AppBarLayoutBehavior
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164778);
-    this.tTz = false;
-    this.tTB = ((int)ak.getContext().getResources().getDimension(2131165298));
+    this.xkM = false;
+    this.xkN = ((int)MMApplicationContext.getContext().getResources().getDimension(2131165308));
     this.rect = new Rect();
-    this.tTC = true;
-    this.tTD = false;
-    this.tTE = false;
+    this.xkO = true;
+    this.xkP = false;
+    this.xkQ = false;
     init();
     AppMethodBeat.o(164778);
   }
@@ -62,7 +60,7 @@ public class AppBarLayoutBehavior
     AppMethodBeat.i(164779);
     a(new AppBarLayout.Behavior.a()
     {
-      public final boolean bQ()
+      public final boolean bS()
       {
         AppMethodBeat.i(164776);
         if ((AppBarLayoutBehavior.a(AppBarLayoutBehavior.this)) || (AppBarLayoutBehavior.b(AppBarLayoutBehavior.this)))
@@ -80,12 +78,12 @@ public class AppBarLayoutBehavior
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(164783);
-    if ((paramInt5 == 1) && (this.tTD))
+    if ((paramInt5 == 1) && (this.xkP))
     {
       AppMethodBeat.o(164783);
       return;
     }
-    if (this.tTz) {
+    if (this.xkM) {
       super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
     AppMethodBeat.o(164783);
@@ -94,15 +92,15 @@ public class AppBarLayoutBehavior
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
     AppMethodBeat.i(164782);
-    if ((paramInt3 == 1) && (this.tTD))
+    if ((paramInt3 == 1) && (this.xkP))
     {
       AppMethodBeat.o(164782);
       return;
     }
-    if (this.tTz)
+    if (this.xkM)
     {
       super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-      if (this.tTC)
+      if (this.xkO)
       {
         if (paramArrayOfInt[1] == 0) {
           super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, 0, 0, 0, paramInt2, paramInt3);
@@ -124,8 +122,8 @@ public class AppBarLayoutBehavior
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, int paramInt)
   {
     AppMethodBeat.i(164780);
-    this.tSU = paramAppBarLayout;
-    this.tTA = paramAppBarLayout.findViewById(2131300185);
+    this.xkh = paramAppBarLayout;
+    this.nmd = paramAppBarLayout.findViewById(2131301641);
     if ((paramCoordinatorLayout instanceof TouchCoordinatorLayout)) {
       ((TouchCoordinatorLayout)paramCoordinatorLayout).setTouchListener(this);
     }
@@ -137,52 +135,47 @@ public class AppBarLayoutBehavior
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164784);
-    b localb = new b();
-    localb.bd(paramView);
-    localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/gallery/picker/behavior/AppBarLayoutBehavior", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     if (paramMotionEvent.getAction() == 0)
     {
-      this.tTz = false;
-      this.tTE = false;
-      if (Math.abs(bR()) > 0) {
-        break label279;
+      this.xkM = false;
+      this.xkQ = false;
+      if (Math.abs(bT()) > 0) {
+        break label228;
       }
       bool = true;
-      this.tTC = bool;
-      int i = bR();
-      if (this.tSU.getTotalScrollRange() != Math.abs(i)) {
-        break label285;
+      this.xkO = bool;
+      int i = bT();
+      if (this.xkh.getTotalScrollRange() != Math.abs(i)) {
+        break label234;
       }
     }
-    label279:
-    label285:
+    label228:
+    label234:
     for (boolean bool = true;; bool = false)
     {
-      this.tTD = bool;
-      new StringBuilder("isFromSnapOfBottom=").append(this.tTC).append(" isFromSnapOfTop=").append(this.tTD);
-      if (this.tTC)
+      this.xkP = bool;
+      new StringBuilder("isFromSnapOfBottom=").append(this.xkO).append(" isFromSnapOfTop=").append(this.xkP);
+      if (this.xkO)
       {
-        this.tTA.getGlobalVisibleRect(this.rect);
+        this.nmd.getGlobalVisibleRect(this.rect);
         if (this.rect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()))
         {
-          this.tTz = true;
-          this.tTE = true;
+          this.xkM = true;
+          this.xkQ = true;
         }
       }
-      if (this.tTD) {
-        this.tTz = true;
+      if (this.xkP) {
+        this.xkM = true;
       }
-      if (!this.tTz)
+      if (!this.xkM)
       {
-        this.tSU.getGlobalVisibleRect(this.rect);
+        this.xkh.getGlobalVisibleRect(this.rect);
         paramView = this.rect;
-        paramView.bottom -= this.tTB;
+        paramView.bottom -= this.xkN;
         if (this.rect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-          this.tTz = true;
+          this.xkM = true;
         }
       }
-      a.a(false, this, "com/tencent/mm/plugin/gallery/picker/behavior/AppBarLayoutBehavior", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(164784);
       return false;
       bool = false;
@@ -192,7 +185,7 @@ public class AppBarLayoutBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.behavior.AppBarLayoutBehavior
  * JD-Core Version:    0.7.0.1
  */

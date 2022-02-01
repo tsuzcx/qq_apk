@@ -8,17 +8,17 @@ import com.tencent.mm.ao.d;
 import com.tencent.mm.ao.e;
 import com.tencent.mm.ao.f;
 import com.tencent.mm.ao.g;
-import com.tencent.mm.model.ao;
-import com.tencent.mm.model.ap;
+import com.tencent.mm.model.as;
+import com.tencent.mm.model.at;
 import java.util.ArrayList;
 import java.util.List;
 
 final class PluginBigBallOfMudAsync$8
-  implements ap
+  implements at
 {
   PluginBigBallOfMudAsync$8(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
-  public final List<ao> getDataTransferList()
+  public final List<as> getDataTransferList()
   {
     AppMethodBeat.i(22427);
     ArrayList localArrayList = new ArrayList();
@@ -35,7 +35,7 @@ final class PluginBigBallOfMudAsync$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.PluginBigBallOfMudAsync.8
  * JD-Core Version:    0.7.0.1
  */

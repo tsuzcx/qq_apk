@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="144.0dip" android:layout_height="256.0dip" android:layout_marginRight="@dimen/ir"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/b3q" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="186.0dip" android:minHeight="186.0dip">
-        <ImageView android:id="@id/cn1" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/aw7" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/dui" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/fc1" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <FrameLayout android:id="@id/fbu" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/bfw" />
+    </FrameLayout>
+</FrameLayout>

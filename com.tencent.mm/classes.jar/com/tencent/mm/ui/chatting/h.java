@@ -1,85 +1,85 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.av.g;
 import com.tencent.mm.av.i;
 import com.tencent.mm.av.q;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.protocal.b.a.c;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
-import d.l;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/ChattingCheckUtil;", "", "()V", "TAG", "", "checkIfExceedSingleFileLimit", "", "selectItems", "", "Lcom/tencent/mm/storage/MsgInfo;", "maxSingleFileSize", "", "checkIfOverRecordMsgLimit", "maxGroupSize", "sumSelectedMsgFileSize", "app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/ChattingCheckUtil;", "", "()V", "TAG", "", "checkIfExceedSingleFileLimit", "", "selectItems", "", "Lcom/tencent/mm/storage/MsgInfo;", "maxSingleFileSize", "", "checkIfOverRecordMsgLimit", "maxGroupSize", "sumSelectedMsgFileSize", "app_release"})
 public final class h
 {
-  public static final h JUT;
+  public static final h Pgg;
   private static final String TAG = "MicroMsg.ChattingEditModeRetransmitMsg";
   
   static
   {
-    AppMethodBeat.i(188269);
-    JUT = new h();
+    AppMethodBeat.i(231175);
+    Pgg = new h();
     TAG = "MicroMsg.ChattingEditModeRetransmitMsg";
-    AppMethodBeat.o(188269);
+    AppMethodBeat.o(231175);
   }
   
-  public static boolean g(List<? extends bv> paramList, long paramLong)
+  public static boolean h(List<? extends ca> paramList, long paramLong)
   {
-    AppMethodBeat.i(188267);
-    d.g.b.p.h(paramList, "selectItems");
+    AppMethodBeat.i(231173);
+    kotlin.g.b.p.h(paramList, "selectItems");
     long l = 0L;
     paramList = paramList.iterator();
     Object localObject1;
     if (paramList.hasNext())
     {
-      localObject1 = (bv)paramList.next();
-      if ((((bv)localObject1).cyG()) || (((bv)localObject1).cyI()))
+      localObject1 = (ca)paramList.next();
+      if ((((ca)localObject1).cWJ()) || (((ca)localObject1).cWL()))
       {
-        localObject1 = u.Ia(((bv)localObject1).Wb());
+        localObject1 = u.QN(((ca)localObject1).ajP());
         if (localObject1 == null) {
           break label514;
         }
       }
     }
     label514:
-    for (int i = ((s)localObject1).aIw();; i = 0)
+    for (int i = ((s)localObject1).bcq();; i = 0)
     {
       l += i;
-      ae.d(TAG, "sumSelectedMsgFileSize, videoSize:%s", new Object[] { Integer.valueOf(i) });
+      Log.d(TAG, "sumSelectedMsgFileSize, videoSize:%s", new Object[] { Integer.valueOf(i) });
       break;
-      if (((bv)localObject1).ftg())
+      if (((ca)localObject1).gAz())
       {
-        localObject1 = q.aIX().F(((bv)localObject1).Wa(), ((bv)localObject1).VY());
-        d.g.b.p.g(localObject1, "img");
-        l += ((g)localObject1).aIw();
-        ae.d(TAG, "sumSelectedMsgFileSize, imgSize:%s", new Object[] { Integer.valueOf(((g)localObject1).aIw()) });
+        localObject1 = q.bcR().G(((ca)localObject1).ajO(), ((ca)localObject1).ajM());
+        kotlin.g.b.p.g(localObject1, "img");
+        l += ((g)localObject1).bcq();
+        Log.d(TAG, "sumSelectedMsgFileSize, imgSize:%s", new Object[] { Integer.valueOf(((g)localObject1).bcq()) });
         break;
       }
-      if (!((bv)localObject1).cVH()) {
+      if (!((ca)localObject1).dOQ()) {
         break;
       }
-      localObject1 = k.b.zb(((bv)localObject1).getContent());
+      localObject1 = k.b.HD(((ca)localObject1).getContent());
       if ((localObject1 != null) && (((k.b)localObject1).type == 6))
       {
-        l += ((k.b)localObject1).hCC;
-        ae.d(TAG, "sumSelectedMsgFileSize, fileSize:%s", new Object[] { Integer.valueOf(((k.b)localObject1).hCC) });
+        l += ((k.b)localObject1).iwI;
+        Log.d(TAG, "sumSelectedMsgFileSize, fileSize:%s", new Object[] { Integer.valueOf(((k.b)localObject1).iwI) });
         break;
       }
       if ((localObject1 == null) || ((((k.b)localObject1).type != 24) && (((k.b)localObject1).type != 19))) {
         break;
       }
-      localObject1 = com.tencent.mm.plugin.record.b.p.awG(((k.b)localObject1).hDg);
+      localObject1 = com.tencent.mm.plugin.record.b.p.aKY(((k.b)localObject1).ixl);
       if (localObject1 != null)
       {
-        localObject1 = ((c)localObject1).hFT.iterator();
+        localObject1 = ((c)localObject1).iAd.iterator();
         i = 0;
         for (;;)
         {
@@ -87,23 +87,23 @@ public final class h
           if (!((Iterator)localObject1).hasNext()) {
             break;
           }
-          Object localObject2 = (ajx)((Iterator)localObject1).next();
-          d.g.b.p.g(localObject2, "dataItem");
-          if (((ajx)localObject2).getDataType() == 17)
+          Object localObject2 = (aml)((Iterator)localObject1).next();
+          kotlin.g.b.p.g(localObject2, "dataItem");
+          if (((aml)localObject2).getDataType() == 17)
           {
-            localObject2 = com.tencent.mm.plugin.record.b.p.awG(((ajx)localObject2).fkz());
+            localObject2 = com.tencent.mm.plugin.record.b.p.aKY(((aml)localObject2).gue());
             if (localObject2 != null)
             {
-              localObject2 = ((c)localObject2).hFT.iterator();
-              ajx localajx;
-              for (j = 0;; j = (int)localajx.fkw() + j)
+              localObject2 = ((c)localObject2).iAd.iterator();
+              aml localaml;
+              for (j = 0;; j = (int)localaml.gub() + j)
               {
                 k = j;
                 if (!((Iterator)localObject2).hasNext()) {
                   break;
                 }
-                localajx = (ajx)((Iterator)localObject2).next();
-                d.g.b.p.g(localajx, "innerDataItem");
+                localaml = (aml)((Iterator)localObject2).next();
+                kotlin.g.b.p.g(localaml, "innerDataItem");
               }
             }
             int k = 0;
@@ -111,51 +111,51 @@ public final class h
           }
           else
           {
-            i = (int)((ajx)localObject2).fkw() + i;
+            i = (int)((aml)localObject2).gub() + i;
           }
         }
       }
       int j = 0;
       l += j;
-      ae.d(TAG, "sumSelectedMsgFileSize, noteSize:%s", new Object[] { Integer.valueOf(j) });
+      Log.d(TAG, "sumSelectedMsgFileSize, noteSize:%s", new Object[] { Integer.valueOf(j) });
       break;
-      ae.i(TAG, "sumSelectedMsgFileSize, totalSize:%s", new Object[] { Long.valueOf(l) });
+      Log.i(TAG, "sumSelectedMsgFileSize, totalSize:%s", new Object[] { Long.valueOf(l) });
       if (l > paramLong)
       {
-        AppMethodBeat.o(188267);
+        AppMethodBeat.o(231173);
         return true;
       }
-      AppMethodBeat.o(188267);
+      AppMethodBeat.o(231173);
       return false;
     }
   }
   
-  public static boolean h(List<? extends bv> paramList, long paramLong)
+  public static boolean i(List<? extends ca> paramList, long paramLong)
   {
-    AppMethodBeat.i(188268);
-    d.g.b.p.h(paramList, "selectItems");
+    AppMethodBeat.i(231174);
+    kotlin.g.b.p.h(paramList, "selectItems");
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      Object localObject = (bv)paramList.next();
-      if (((bv)localObject).cVH())
+      Object localObject = (ca)paramList.next();
+      if (((ca)localObject).dOQ())
       {
-        localObject = k.b.zb(((bv)localObject).getContent());
-        if ((localObject != null) && (((k.b)localObject).type == 6) && (((k.b)localObject).hCC > paramLong))
+        localObject = k.b.HD(((ca)localObject).getContent());
+        if ((localObject != null) && (((k.b)localObject).type == 6) && (((k.b)localObject).iwI > paramLong))
         {
-          ae.w(TAG, "file is too large, %s", new Object[] { bu.sL(((k.b)localObject).hCC) });
-          AppMethodBeat.o(188268);
+          Log.w(TAG, "file is too large, %s", new Object[] { Util.getSizeKB(((k.b)localObject).iwI) });
+          AppMethodBeat.o(231174);
           return true;
         }
       }
     }
-    AppMethodBeat.o(188268);
+    AppMethodBeat.o(231174);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.h
  * JD-Core Version:    0.7.0.1
  */

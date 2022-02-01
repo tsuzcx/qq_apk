@@ -1,47 +1,46 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.awx;
-import com.tencent.mm.protocal.protobuf.awy;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bih;
+import com.tencent.mm.protocal.protobuf.bii;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
-  extends n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  private f callback;
-  public final b gux;
+  private i callback;
+  public final d hhm;
   
   public m(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78876);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new awx();
-    ((b.a)localObject).hQG = new awy();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/getappticket";
-    ((b.a)localObject).funcId = 1097;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.gux = ((b.a)localObject).aDS();
-    localObject = (awx)this.gux.hQD.hQJ;
-    ((awx)localObject).dwb = paramString1;
-    ((awx)localObject).signature = paramString2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bih();
+    ((d.a)localObject).iLO = new bii();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/getappticket";
+    ((d.a)localObject).funcId = 1097;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.hhm = ((d.a)localObject).aXF();
+    localObject = (bih)this.hhm.iLK.iLR;
+    ((bih)localObject).dNI = paramString1;
+    ((bih)localObject).signature = paramString2;
     AppMethodBeat.o(78876);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(78877);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gux, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hhm, this);
     AppMethodBeat.o(78877);
     return i;
   }
@@ -51,10 +50,10 @@ public final class m
     return 1097;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78878);
-    ae.i("MicroMsg.NetSceneGetAppTicket", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    Log.i("MicroMsg.NetSceneGetAppTicket", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(78878);
   }

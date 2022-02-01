@@ -1,126 +1,83 @@
 package com.tencent.xweb.util;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.Application;
+import android.content.Context;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.lang.reflect.Method;
-import org.xwalk.core.Log;
+import java.util.Iterator;
+import java.util.List;
+import org.xwalk.core.XWalkEnvironment;
 
 public final class f
 {
-  public static Object b(String paramString1, String paramString2, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
+  public static String htT()
   {
-    AppMethodBeat.i(157010);
-    try
+    AppMethodBeat.i(219086);
+    Object localObject1;
+    if (Build.VERSION.SDK_INT >= 28)
     {
-      paramString1 = Class.forName(paramString1).getMethod(paramString2, paramArrayOfClass);
-      paramString1.setAccessible(true);
-      paramString1 = paramString1.invoke(null, paramVarArgs);
-      AppMethodBeat.o(157010);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      AppMethodBeat.o(157010);
-    }
-    return null;
-  }
-  
-  public static Object bcT(String paramString)
-  {
-    AppMethodBeat.i(157011);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(157011);
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName(paramString).newInstance();
-      AppMethodBeat.o(157011);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      AppMethodBeat.o(157011);
-    }
-    return null;
-  }
-  
-  public static Object c(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(157013);
-    if (paramObject == null)
-    {
-      AppMethodBeat.o(157013);
-      return null;
-    }
-    try
-    {
-      Object localObject = paramObject.getClass();
-      if (Build.VERSION.SDK_INT > 10) {}
-      for (paramArrayOfClass = ((Class)localObject).getMethod(paramString, paramArrayOfClass);; paramArrayOfClass = ((Class)localObject).getDeclaredMethod(paramString, paramArrayOfClass))
+      localObject1 = g.oj("android.app.Application", "getProcessName");
+      if (localObject1 != null)
       {
-        paramArrayOfClass.setAccessible(true);
-        localObject = paramVarArgs;
-        if (paramVarArgs.length == 0) {
-          localObject = null;
+        localObject1 = localObject1.toString();
+        AppMethodBeat.o(219086);
+        return localObject1;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = Class.forName("android.app.ActivityThread", false, Application.class.getClassLoader()).getDeclaredMethod("currentProcessName", new Class[0]);
+        ((Method)localObject1).setAccessible(true);
+        localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
+        if ((localObject1 instanceof String))
+        {
+          localObject1 = (String)localObject1;
+          AppMethodBeat.o(219086);
+          return localObject1;
         }
-        paramObject = paramArrayOfClass.invoke(paramObject, (Object[])localObject);
-        AppMethodBeat.o(157013);
-        return paramObject;
       }
-      return null;
-    }
-    catch (Throwable paramObject)
-    {
-      if ((paramObject.getCause() != null) && (paramObject.getCause().toString().contains("AuthenticationFail")))
+      catch (Exception localException)
       {
-        paramObject = new String("AuthenticationFail");
-        AppMethodBeat.o(157013);
-        return paramObject;
-      }
-      if ((paramString == null) || ((!paramString.equalsIgnoreCase("canLoadX5Core")) && (!paramString.equalsIgnoreCase("initTesRuntimeEnvironment"))))
-      {
-        paramString = new StringWriter();
-        paramObject.printStackTrace(new PrintWriter(paramString));
-        Log.e("ReflectionUtils", "invokeInstance -- exceptions:" + paramString.toString());
-        AppMethodBeat.o(157013);
+        localObject2 = XWalkEnvironment.getApplicationContext();
+        int i = Process.myPid();
+        if (localObject2 != null)
+        {
+          localObject2 = (ActivityManager)((Context)localObject2).getSystemService("activity");
+          if (localObject2 != null)
+          {
+            localObject2 = ((ActivityManager)localObject2).getRunningAppProcesses();
+            if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+            {
+              localObject2 = ((List)localObject2).iterator();
+              if (((Iterator)localObject2).hasNext())
+              {
+                ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject2).next();
+                if (localRunningAppProcessInfo.pid != i) {
+                  continue;
+                }
+                localObject2 = localRunningAppProcessInfo.processName;
+                AppMethodBeat.o(219086);
+                return localObject2;
+              }
+            }
+          }
+        }
+        AppMethodBeat.o(219086);
         return null;
       }
-      AppMethodBeat.o(157013);
+      Object localObject2 = null;
     }
-  }
-  
-  public static Object f(Object paramObject, String paramString)
-  {
-    AppMethodBeat.i(157012);
-    paramObject = c(paramObject, paramString, null, new Object[0]);
-    AppMethodBeat.o(157012);
-    return paramObject;
-  }
-  
-  public static Object no(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(157009);
-    try
-    {
-      paramString1 = Class.forName(paramString1).getMethod(paramString2, new Class[0]).invoke(null, new Object[0]);
-      AppMethodBeat.o(157009);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      AppMethodBeat.o(157009);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.util.f
  * JD-Core Version:    0.7.0.1
  */

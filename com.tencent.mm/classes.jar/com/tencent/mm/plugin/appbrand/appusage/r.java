@@ -4,50 +4,50 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ao;
-import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.model.as;
+import com.tencent.mm.plugin.appbrand.app.n;
 import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.plugin.appbrand.jsruntime.ad;
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.appbrand.m.ad;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class r
-  extends ao
+  extends as
 {
   public final String getTag()
   {
     return "AppBrandPluginCodeCodeCacheTransfer";
   }
   
-  public final boolean os(int paramInt)
+  public final boolean rT(int paramInt)
   {
-    AppMethodBeat.i(222152);
-    boolean bool = g.ajR().ajA().getBoolean(am.a.IQl, false);
-    ae.d("AppBrandPluginCodeCodeCacheTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.i(226392);
+    boolean bool = g.aAh().azQ().getBoolean(ar.a.NYm, false);
+    Log.d("AppBrandPluginCodeCodeCacheTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      AppMethodBeat.o(222152);
+      AppMethodBeat.o(226392);
       return true;
     }
-    AppMethodBeat.o(222152);
+    AppMethodBeat.o(226392);
     return false;
   }
   
   public final void transfer(int paramInt)
   {
-    AppMethodBeat.i(222151);
+    AppMethodBeat.i(226391);
     try
     {
-      localObject1 = j.aZu().jLK.a(String.format("select distinct %s from %s where %s like '%%$%s' ", new Object[] { "appId", "AppBrandWxaPkgManifestRecord", "appId", "__PLUGINCODE__" }), null, 2);
+      localObject1 = n.buL().kNJ.rawQuery(String.format("select distinct %s from %s where %s like '%%$%s' ", new Object[] { "appId", "AppBrandWxaPkgManifestRecord", "appId", "__PLUGINCODE__" }), null, 2);
       ArrayList localArrayList = new ArrayList();
       while (((Cursor)localObject1).moveToNext()) {
         localArrayList.add(((Cursor)localObject1).getString(0));
@@ -56,18 +56,18 @@ public final class r
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("AppBrandPluginCodeCodeCacheTransfer", localException, "transfer failed", new Object[0]);
-      AppMethodBeat.o(222151);
+      Log.printErrStackTrace("AppBrandPluginCodeCodeCacheTransfer", localException, "transfer failed", new Object[0]);
+      AppMethodBeat.o(226391);
       return;
     }
-    if ((bu.ht(localException)) || (localException.size() <= 0))
+    if ((Util.isNullOrNil(localException)) || (localException.size() <= 0))
     {
-      ae.i("AppBrandPluginCodeCodeCacheTransfer", "no need to transfer pluginAppIdList :%d", new Object[] { Integer.valueOf(localException.size()) });
-      g.ajR().ajA().set(am.a.IQl, Boolean.TRUE);
-      AppMethodBeat.o(222151);
+      Log.i("AppBrandPluginCodeCodeCacheTransfer", "no need to transfer pluginAppIdList :%d", new Object[] { Integer.valueOf(localException.size()) });
+      g.aAh().azQ().set(ar.a.NYm, Boolean.TRUE);
+      AppMethodBeat.o(226391);
       return;
     }
-    Object localObject1 = new k(ad.bie()).fTj();
+    Object localObject1 = new o(ad.bDt()).het();
     int i = localObject1.length;
     paramInt = 0;
     for (;;)
@@ -78,8 +78,8 @@ public final class r
         if (localObject2.isDirectory())
         {
           String str1 = localObject2.getName();
-          ae.d("AppBrandPluginCodeCodeCacheTransfer", "fileName:%s", new Object[] { str1 });
-          if (!bu.isNullOrNil(str1))
+          Log.d("AppBrandPluginCodeCodeCacheTransfer", "fileName:%s", new Object[] { str1 });
+          if (!Util.isNullOrNil(str1))
           {
             Iterator localIterator = localException.iterator();
             String str2;
@@ -92,11 +92,11 @@ public final class r
             } while (!str1.startsWith(str2.substring(0, str2.indexOf("$"))));
             boolean bool = localObject2.delete();
             if (localObject2.isDirectory()) {
-              bool = o.dd(w.B(localObject2.mUri), true);
+              bool = s.dy(aa.z(localObject2.mUri), true);
             }
             for (;;)
             {
-              ae.d("AppBrandPluginCodeCodeCacheTransfer", "delete file:%s ret:%b", new Object[] { str1, Boolean.valueOf(bool) });
+              Log.d("AppBrandPluginCodeCodeCacheTransfer", "delete file:%s ret:%b", new Object[] { str1, Boolean.valueOf(bool) });
               break;
               if (localObject2.isFile()) {
                 bool = localObject2.delete();
@@ -107,8 +107,8 @@ public final class r
       }
       else
       {
-        g.ajR().ajA().set(am.a.IQl, Boolean.TRUE);
-        AppMethodBeat.o(222151);
+        g.aAh().azQ().set(ar.a.NYm, Boolean.TRUE);
+        AppMethodBeat.o(226391);
         return;
       }
       paramInt += 1;
@@ -117,7 +117,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.r
  * JD-Core Version:    0.7.0.1
  */

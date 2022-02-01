@@ -7,54 +7,54 @@ import java.util.TreeSet;
 public final class h
   implements d, Comparator<f>
 {
-  private long aIK;
-  public volatile long bGl;
-  private final TreeSet<f> bGm;
+  private long aID;
+  public volatile long bGC;
+  private final TreeSet<f> bGD;
   
   public h(long paramLong)
   {
-    AppMethodBeat.i(211020);
-    this.bGl = paramLong;
-    this.bGm = new TreeSet(this);
-    AppMethodBeat.o(211020);
+    AppMethodBeat.i(234689);
+    this.bGC = paramLong;
+    this.bGD = new TreeSet(this);
+    AppMethodBeat.o(234689);
   }
   
   private void b(a parama, long paramLong)
   {
-    AppMethodBeat.i(211024);
-    while ((this.aIK + paramLong > this.bGl) && (!this.bGm.isEmpty())) {
-      parama.b((f)this.bGm.first());
+    AppMethodBeat.i(234693);
+    while ((this.aID + paramLong > this.bGC) && (!this.bGD.isEmpty())) {
+      parama.b((f)this.bGD.first());
     }
-    AppMethodBeat.o(211024);
+    AppMethodBeat.o(234693);
   }
   
   public final void a(a parama, long paramLong)
   {
-    AppMethodBeat.i(211021);
+    AppMethodBeat.i(234690);
     b(parama, paramLong);
-    AppMethodBeat.o(211021);
+    AppMethodBeat.o(234690);
   }
   
   public final void a(a parama, f paramf)
   {
-    AppMethodBeat.i(211022);
-    this.bGm.add(paramf);
-    this.aIK += paramf.length;
+    AppMethodBeat.i(234691);
+    this.bGD.add(paramf);
+    this.aID += paramf.length;
     b(parama, 0L);
-    AppMethodBeat.o(211022);
+    AppMethodBeat.o(234691);
   }
   
   public final void c(f paramf)
   {
-    AppMethodBeat.i(211023);
-    this.bGm.remove(paramf);
-    this.aIK -= paramf.length;
-    AppMethodBeat.o(211023);
+    AppMethodBeat.i(234692);
+    this.bGD.remove(paramf);
+    this.aID -= paramf.length;
+    AppMethodBeat.o(234692);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.a.h
  * JD-Core Version:    0.7.0.1
  */

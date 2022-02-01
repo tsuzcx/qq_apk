@@ -2,37 +2,37 @@ package com.tencent.mm.plugin.appbrand.jsapi.offlinevoice;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class b
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d
 {
   public static final int CTRL_INDEX = 635;
   public static final String NAME = "loadPaySpeechDialectConfig";
   
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46658);
-    ae.i("MicroMsg.OfflineVoice.JsApiLoadPaySpeechDialectConfig", "invoke JsApiLoadPaySpeechDialectConfig!");
-    if (paramc == null)
+    Log.i("MicroMsg.OfflineVoice.JsApiLoadPaySpeechDialectConfig", "invoke JsApiLoadPaySpeechDialectConfig!");
+    if (paramf == null)
     {
-      ae.e("MicroMsg.OfflineVoice.JsApiLoadPaySpeechDialectConfig", "fail:component is null");
+      Log.e("MicroMsg.OfflineVoice.JsApiLoadPaySpeechDialectConfig", "fail:component is null");
       AppMethodBeat.o(46658);
       return;
     }
-    if (paramc.getContext() == null)
+    if (paramf.getContext() == null)
     {
-      ae.e("MicroMsg.OfflineVoice.JsApiLoadPaySpeechDialectConfig", "fail:context is null");
-      paramc.h(paramInt, e("fail", null));
+      Log.e("MicroMsg.OfflineVoice.JsApiLoadPaySpeechDialectConfig", "fail:context is null");
+      paramf.i(paramInt, h("fail", null));
       AppMethodBeat.o(46658);
       return;
     }
-    h.a("com.tencent.mm", null, a.class, new d() {});
+    h.a(MainProcessIPCService.dkO, null, a.class, new com.tencent.mm.ipcinvoker.d() {});
     AppMethodBeat.o(46658);
   }
 }

@@ -34,7 +34,9 @@ public class QbarNative
   
   protected static native int nativeYuvToCropIntArray(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  protected native int GetCodeDetectInfo(QBarCodeDetectInfo[] paramArrayOfQBarCodeDetectInfo, QBarPoint[] paramArrayOfQBarPoint, int paramInt);
+  protected native int GetCodeDetectInfo(QBarCodeDetectInfo[] paramArrayOfQBarCodeDetectInfo, QbarNative.QBarPoint[] paramArrayOfQBarPoint, int paramInt);
+  
+  protected native int GetDetailResults(QBarResultJNI[] paramArrayOfQBarResultJNI, QbarNative.QBarPoint[] paramArrayOfQBarPoint, QbarNative.QBarReportMsg[] paramArrayOfQBarReportMsg, int paramInt);
   
   protected native int GetOneResult(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int[] paramArrayOfInt, int paramInt);
   
@@ -54,19 +56,6 @@ public class QbarNative
   {
     public float prob;
     public int readerId;
-  }
-  
-  public static class QBarPoint
-  {
-    public int point_cnt;
-    public float x0;
-    public float x1;
-    public float x2;
-    public float x3;
-    public float y0;
-    public float y1;
-    public float y2;
-    public float y3;
   }
   
   public static class QBarResultJNI
@@ -94,7 +83,7 @@ public class QbarNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qbar.QbarNative
  * JD-Core Version:    0.7.0.1
  */

@@ -6,37 +6,37 @@ import java.util.List;
 public final class a<T>
   implements e
 {
-  private List<T> hMc;
+  private List<T> iHf;
   
   public a(List<T> paramList)
   {
-    this.hMc = paramList;
+    this.iHf = paramList;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(200539);
-    if ((paramInt >= 0) && (paramInt < this.hMc.size()))
+    AppMethodBeat.i(198497);
+    if ((paramInt >= 0) && (paramInt < this.iHf.size()))
     {
-      Object localObject = this.hMc.get(paramInt);
-      AppMethodBeat.o(200539);
+      Object localObject = this.iHf.get(paramInt);
+      AppMethodBeat.o(198497);
       return localObject;
     }
-    AppMethodBeat.o(200539);
+    AppMethodBeat.o(198497);
     return "";
   }
   
   public final int getItemsCount()
   {
-    AppMethodBeat.i(200541);
-    int i = this.hMc.size();
-    AppMethodBeat.o(200541);
+    AppMethodBeat.i(198499);
+    int i = this.iHf.size();
+    AppMethodBeat.o(198499);
     return i;
   }
   
-  public final String qO(int paramInt)
+  public final String uG(int paramInt)
   {
-    AppMethodBeat.i(200540);
+    AppMethodBeat.i(198498);
     Object localObject2 = getItem(paramInt);
     Object localObject1;
     if (localObject2 == null) {
@@ -45,7 +45,7 @@ public final class a<T>
     for (;;)
     {
       localObject1 = (String)localObject1;
-      AppMethodBeat.o(200540);
+      AppMethodBeat.o(198498);
       return localObject1;
       localObject1 = localObject2;
       if (!(localObject2 instanceof String)) {
@@ -56,7 +56,7 @@ public final class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.a.a
  * JD-Core Version:    0.7.0.1
  */

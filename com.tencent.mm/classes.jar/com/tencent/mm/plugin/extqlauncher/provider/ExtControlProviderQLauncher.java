@@ -8,35 +8,33 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.ba;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.c;
+import com.tencent.mm.g.c.bb;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.ext.provider.ExtContentProviderBase;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bw;
 
 public class ExtControlProviderQLauncher
   extends ExtContentProviderBase
 {
-  private static final String[] rkS;
-  private static final UriMatcher rlA;
-  private static final String[] rnt;
+  private static final String[] sMy;
+  private static final UriMatcher sNf;
+  private static final String[] sOY;
   private Context context;
-  private String[] rli;
-  private int rnu = -1;
+  private String[] sMN;
+  private int sOZ = -1;
   
   static
   {
     AppMethodBeat.i(24565);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    rlA = localUriMatcher;
+    sNf = localUriMatcher;
     localUriMatcher.addURI("com.tencent.mm.plugin.extqlauncher", "openQRCodeScan", 18);
-    rlA.addURI("com.tencent.mm.plugin.extqlauncher", "batchAddShortcut", 19);
-    rlA.addURI("com.tencent.mm.plugin.extqlauncher", "getUnreadCount", 20);
-    rkS = new String[] { "retCode" };
-    rnt = new String[] { "id", "count" };
+    sNf.addURI("com.tencent.mm.plugin.extqlauncher", "batchAddShortcut", 19);
+    sNf.addURI("com.tencent.mm.plugin.extqlauncher", "getUnreadCount", 20);
+    sMy = new String[] { "retCode" };
+    sOY = new String[] { "id", "count" };
     AppMethodBeat.o(24565);
   }
   
@@ -44,29 +42,29 @@ public class ExtControlProviderQLauncher
   
   public ExtControlProviderQLauncher(String[] paramArrayOfString, int paramInt, Context paramContext)
   {
-    this.rli = paramArrayOfString;
-    this.rnu = paramInt;
+    this.sMN = paramArrayOfString;
+    this.sOZ = paramInt;
     this.context = paramContext;
   }
   
-  private Cursor F(String[] paramArrayOfString)
+  private Cursor H(String[] paramArrayOfString)
   {
     AppMethodBeat.i(24564);
-    ae.d("MicroMsg.ExtControlProviderQLauncher", "getUnreadCount");
+    Log.d("MicroMsg.ExtControlProviderQLauncher", "getUnreadCount");
     if (this.context == null)
     {
-      DS(4);
+      HF(4);
       AppMethodBeat.o(24564);
       return null;
     }
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ae.e("MicroMsg.ExtControlProviderQLauncher", "wrong args");
-      DS(3);
+      Log.e("MicroMsg.ExtControlProviderQLauncher", "wrong args");
+      HF(3);
       AppMethodBeat.o(24564);
       return null;
     }
-    MatrixCursor localMatrixCursor = new MatrixCursor(rnt);
+    MatrixCursor localMatrixCursor = new MatrixCursor(sOY);
     int i = 0;
     for (;;)
     {
@@ -75,33 +73,33 @@ public class ExtControlProviderQLauncher
         if ((i >= paramArrayOfString.length) || (i >= 10)) {
           break label264;
         }
-        if (bu.isNullOrNil(paramArrayOfString[i])) {
+        if (Util.isNullOrNil(paramArrayOfString[i])) {
           break label277;
         }
         Object localObject;
         if (paramArrayOfString[i].equals("0"))
         {
           localObject = paramArrayOfString[i];
-          com.tencent.mm.plugin.extqlauncher.b.cua();
+          com.tencent.mm.plugin.extqlauncher.b.cSI();
           localMatrixCursor.addRow(new Object[] { localObject, Integer.valueOf(0) });
         }
         else
         {
-          localObject = com.tencent.mm.plugin.base.model.b.Xe(paramArrayOfString[i]);
-          if (!bu.isNullOrNil((String)localObject))
+          localObject = com.tencent.mm.plugin.base.model.b.agY(paramArrayOfString[i]);
+          if (!Util.isNullOrNil((String)localObject))
           {
-            bc.aCg();
-            localObject = c.azL().aVa((String)localObject);
+            bg.aVF();
+            localObject = com.tencent.mm.model.c.aST().bjY((String)localObject);
             if (localObject != null) {
-              localMatrixCursor.addRow(new Object[] { paramArrayOfString[i], Integer.valueOf(((ba)localObject).field_unReadCount) });
+              localMatrixCursor.addRow(new Object[] { paramArrayOfString[i], Integer.valueOf(((bb)localObject).field_unReadCount) });
             }
           }
         }
       }
       catch (Exception paramArrayOfString)
       {
-        ae.e("MicroMsg.ExtControlProviderQLauncher", "exception in updateShortcut, %s", new Object[] { paramArrayOfString.getMessage() });
-        DS(4);
+        Log.e("MicroMsg.ExtControlProviderQLauncher", "exception in updateShortcut, %s", new Object[] { paramArrayOfString.getMessage() });
+        HF(4);
         localMatrixCursor.close();
         AppMethodBeat.o(24564);
         return null;
@@ -109,7 +107,7 @@ public class ExtControlProviderQLauncher
       localMatrixCursor.addRow(new Object[] { paramArrayOfString[i], Integer.valueOf(0) });
       break label277;
       label264:
-      DS(0);
+      HF(0);
       AppMethodBeat.o(24564);
       return localMatrixCursor;
       label277:
@@ -140,74 +138,74 @@ public class ExtControlProviderQLauncher
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(24563);
-    ae.d("MicroMsg.ExtControlProviderQLauncher", "query()");
-    a(paramUri, this.context, this.rnu, this.rli);
+    Log.d("MicroMsg.ExtControlProviderQLauncher", "query()");
+    a(paramUri, this.context, this.sOZ, this.sMN);
     if (paramUri == null)
     {
-      DS(3);
+      HF(3);
       AppMethodBeat.o(24563);
       return null;
     }
-    if ((bu.isNullOrNil(this.rlu)) || (bu.isNullOrNil(ctL())))
+    if ((Util.isNullOrNil(this.sMZ)) || (Util.isNullOrNil(cSt())))
     {
-      DS(3);
+      HF(3);
       AppMethodBeat.o(24563);
       return null;
     }
-    if (!bNl())
+    if (!ckf())
     {
-      DS(1);
-      paramUri = this.nTy;
+      HF(1);
+      paramUri = this.pem;
       AppMethodBeat.o(24563);
       return paramUri;
     }
-    if (!eK(this.context))
+    if (!fe(this.context))
     {
-      ae.w("MicroMsg.ExtControlProviderQLauncher", "invalid appid ! return null");
-      DS(2);
+      Log.w("MicroMsg.ExtControlProviderQLauncher", "invalid appid ! return null");
+      HF(2);
       AppMethodBeat.o(24563);
       return null;
     }
-    switch (this.rnu)
+    switch (this.sOZ)
     {
     default: 
-      DS(3);
+      HF(3);
       AppMethodBeat.o(24563);
       return null;
     case 18: 
-      ae.d("MicroMsg.ExtControlProviderQLauncher", "toScanQRCode");
+      Log.d("MicroMsg.ExtControlProviderQLauncher", "toScanQRCode");
       if (this.context == null)
       {
-        DS(4);
+        HF(4);
         AppMethodBeat.o(24563);
         return null;
       }
       paramUri = new Intent();
       paramUri.putExtra("BaseScanUI_select_scan_mode", 1);
       paramUri.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
-      d.b(this.context, "scanner", ".ui.BaseScanUI", paramUri);
-      paramUri = new MatrixCursor(rkS);
+      com.tencent.mm.br.c.b(this.context, "scanner", ".ui.BaseScanUI", paramUri);
+      paramUri = new MatrixCursor(sMy);
       paramUri.addRow(new Object[] { Integer.valueOf(1) });
-      DS(0);
+      HF(0);
       AppMethodBeat.o(24563);
       return paramUri;
     case 19: 
-      ae.d("MicroMsg.ExtControlProviderQLauncher", "toCreateShortcut");
+      Log.d("MicroMsg.ExtControlProviderQLauncher", "toCreateShortcut");
       if (this.context == null)
       {
-        DS(4);
+        HF(4);
         AppMethodBeat.o(24563);
         return null;
       }
       paramUri = new Intent();
-      d.b(this.context, "extqlauncher", ".ui.QLauncherCreateShortcutUI", paramUri);
-      paramUri = new MatrixCursor(rkS);
+      com.tencent.mm.br.c.b(this.context, "extqlauncher", ".ui.QLauncherCreateShortcutUI", paramUri);
+      paramUri = new MatrixCursor(sMy);
       paramUri.addRow(new Object[] { Integer.valueOf(1) });
-      DS(0);
+      HF(0);
       AppMethodBeat.o(24563);
       return paramUri;
     }
-    paramUri = F(paramArrayOfString2);
+    paramUri = H(paramArrayOfString2);
     AppMethodBeat.o(24563);
     return paramUri;
   }
@@ -219,7 +217,7 @@ public class ExtControlProviderQLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.extqlauncher.provider.ExtControlProviderQLauncher
  * JD-Core Version:    0.7.0.1
  */

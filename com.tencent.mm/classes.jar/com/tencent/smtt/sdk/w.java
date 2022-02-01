@@ -19,45 +19,45 @@ class w
   
   public Object a(Context paramContext)
   {
-    AppMethodBeat.i(192680);
+    AppMethodBeat.i(188236);
     DexLoader localDexLoader = this.a;
     DexClassLoader localDexClassLoader = this.a.getClassLoader();
     paramContext = localDexLoader.newInstance("com.tencent.tbs.player.TbsPlayerProxy", new Class[] { Context.class, DexClassLoader.class }, new Object[] { paramContext, localDexClassLoader });
-    AppMethodBeat.o(192680);
+    AppMethodBeat.o(188236);
     return paramContext;
   }
   
   public void a(Object paramObject)
   {
-    AppMethodBeat.i(192683);
+    AppMethodBeat.i(188239);
     this.a.invokeMethod(paramObject, "com.tencent.tbs.player.TbsPlayerProxy", "onUserStateChanged", new Class[0], new Object[0]);
-    AppMethodBeat.o(192683);
+    AppMethodBeat.o(188239);
   }
   
   public void a(Object paramObject, Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(192682);
+    AppMethodBeat.i(188238);
     this.a.invokeMethod(paramObject, "com.tencent.tbs.player.TbsPlayerProxy", "onActivity", new Class[] { Activity.class, Integer.TYPE }, new Object[] { paramActivity, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(192682);
+    AppMethodBeat.o(188238);
   }
   
   public boolean a(Object paramObject1, Bundle paramBundle, FrameLayout paramFrameLayout, Object paramObject2)
   {
-    AppMethodBeat.i(192681);
+    AppMethodBeat.i(188237);
     if (paramObject2 != null) {}
     for (paramObject1 = this.a.invokeMethod(paramObject1, "com.tencent.tbs.player.TbsPlayerProxy", "play", new Class[] { Bundle.class, FrameLayout.class, Object.class }, new Object[] { paramBundle, paramFrameLayout, paramObject2 }); (paramObject1 instanceof Boolean); paramObject1 = this.a.invokeMethod(paramObject1, "com.tencent.tbs.player.TbsPlayerProxy", "play", new Class[] { Bundle.class, FrameLayout.class }, new Object[] { paramBundle, paramFrameLayout }))
     {
       boolean bool = ((Boolean)paramObject1).booleanValue();
-      AppMethodBeat.o(192681);
+      AppMethodBeat.o(188237);
       return bool;
     }
-    AppMethodBeat.o(192681);
+    AppMethodBeat.o(188237);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.w
  * JD-Core Version:    0.7.0.1
  */

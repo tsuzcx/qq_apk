@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -25,8 +24,8 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.p;
 import com.tencent.mm.plugin.wallet_core.model.p.a;
 import com.tencent.mm.plugin.wallet_core.model.p.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MaxListView;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,38 +34,25 @@ import java.util.Vector;
 public final class n
   extends com.tencent.mm.ui.base.i
 {
-  private d Dbe;
-  private MaxListView DxB;
-  private TextView DxC;
-  private a DxD;
-  private b DxE;
-  private View iFK;
+  private d HGS;
+  private MaxListView IgM;
+  private TextView IgN;
+  private a IgO;
+  private b IgP;
+  private View jBN;
   private LayoutInflater mInflater;
   
   private n(Context paramContext)
   {
-    super(paramContext, 2131821723);
+    super(paramContext, 2131821772);
     AppMethodBeat.i(70947);
     this.mInflater = LayoutInflater.from(paramContext);
-    this.iFK = LayoutInflater.from(paramContext).inflate(2131495948, null);
-    this.DxB = ((MaxListView)this.iFK.findViewById(2131306744));
-    this.DxC = ((TextView)this.iFK.findViewById(2131306741));
-    this.DxD = new a();
-    this.DxB.setAdapter(this.DxD);
-    this.iFK.findViewById(2131306742).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(70940);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/wallet_core/ui/WalletFavorDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        n.a(n.this);
-        n.this.dismiss();
-        a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletFavorDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(70940);
-      }
-    });
+    this.jBN = LayoutInflater.from(paramContext).inflate(2131496928, null);
+    this.IgM = ((MaxListView)this.jBN.findViewById(2131310205));
+    this.IgN = ((TextView)this.jBN.findViewById(2131310202));
+    this.IgO = new a();
+    this.IgM.setAdapter(this.IgO);
+    this.jBN.findViewById(2131310203).setOnClickListener(new n.1(this));
     AppMethodBeat.o(70947);
   }
   
@@ -77,69 +63,69 @@ public final class n
     localn.setOnCancelListener(paramOnCancelListener);
     localn.setCancelable(true);
     localn.setCanceledOnTouchOutside(false);
-    localn.Dbe = e.DtH.a(paramOrders);
-    if (localn.Dbe == null)
+    localn.HGS = e.IcT.a(paramOrders);
+    if (localn.HGS == null)
     {
-      ae.w("MicroMsg.WalletFavorDialog", "mFavorLogicHelper null & dismiss");
+      Log.w("MicroMsg.WalletFavorDialog", "mFavorLogicHelper null & dismiss");
       localn.dismiss();
     }
     Object localObject2;
     int i;
     for (;;)
     {
-      localn.DxE = paramb;
+      localn.IgP = paramb;
       localn.show();
       com.tencent.mm.ui.base.h.a(paramContext, localn);
       AppMethodBeat.o(70950);
       return localn;
-      paramOrders = localn.DxD;
-      localObject2 = paramOrders.DxF.Dbe.DtC;
-      paramOnCancelListener = paramOrders.DxF.Dbe.aGm(paramString);
-      paramOrders.DxH = paramOrders.DxF.Dbe.eKU();
-      paramOrders.DxI = paramOrders.DxF.Dbe.aGi(paramOnCancelListener);
-      paramOrders.DxG = -1;
+      paramOrders = localn.IgO;
+      localObject2 = paramOrders.IgQ.HGS.IcO;
+      paramOnCancelListener = paramOrders.IgQ.HGS.aVN(paramString);
+      paramOrders.IgS = paramOrders.IgQ.HGS.fSz();
+      paramOrders.IgT = paramOrders.IgQ.HGS.aVJ(paramOnCancelListener);
+      paramOrders.IgR = -1;
       i = 0;
       for (;;)
       {
-        if (i < paramOrders.DxH.size()) {
-          if (((t)paramOrders.DxH.get(i)).CZC == 0) {
+        if (i < paramOrders.IgS.size()) {
+          if (((t)paramOrders.IgS.get(i)).HFq == 0) {
             break label273;
           }
         }
         label273:
         for (j = 1; j != 0; j = 0)
         {
-          paramOrders.DxG = i;
+          paramOrders.IgR = i;
           paramString = new LinkedList();
-          if (paramOrders.DxH == null) {
+          if (paramOrders.IgS == null) {
             break label288;
           }
           i = 0;
-          while (i < paramOrders.DxH.size())
+          while (i < paramOrders.IgS.size())
           {
-            paramString.add(((t)paramOrders.DxH.get(i)).CYz);
+            paramString.add(((t)paramOrders.IgS.get(i)).HEn);
             i += 1;
           }
         }
         i += 1;
       }
       label288:
-      ae.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] mFavorList null");
+      Log.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] mFavorList null");
       i = 0;
       label298:
       if (i != 0) {
         break label670;
       }
-      ae.w("MicroMsg.WalletFavorDialog", "initFavorInfo failed & dismiss");
+      Log.w("MicroMsg.WalletFavorDialog", "initFavorInfo failed & dismiss");
       localn.dismiss();
     }
     LinkedList localLinkedList = new LinkedList();
-    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).CYG != null))
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).HEu != null))
     {
       i = 0;
-      while (i < ((com.tencent.mm.plugin.wallet.a.h)localObject2).CYG.size())
+      while (i < ((com.tencent.mm.plugin.wallet.a.h)localObject2).HEu.size())
       {
-        localObject1 = ((t)((com.tencent.mm.plugin.wallet.a.h)localObject2).CYG.get(i)).CYz;
+        localObject1 = ((t)((com.tencent.mm.plugin.wallet.a.h)localObject2).HEu.get(i)).HEn;
         if (!paramString.contains(localObject1)) {
           localLinkedList.add(localObject1);
         }
@@ -149,14 +135,14 @@ public final class n
     Object localObject1 = new LinkedList();
     label450:
     String str;
-    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).CYH != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).CYH.CYT != null))
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).HEv != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).HEv.HEH != null))
     {
-      localObject2 = ((com.tencent.mm.plugin.wallet.a.h)localObject2).CYH.CYT;
+      localObject2 = ((com.tencent.mm.plugin.wallet.a.h)localObject2).HEv.HEH;
       i = 0;
       if (i >= ((List)localObject2).size()) {
         break label563;
       }
-      str = ((j)((List)localObject2).get(i)).CYV;
+      str = ((j)((List)localObject2).get(i)).HEJ;
       j = 0;
       label482:
       if (j >= localLinkedList.size()) {
@@ -175,11 +161,11 @@ public final class n
       break label450;
       j += 1;
       break label482;
-      ae.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] favorInfo.favorComposeList or favorInfo.favorComposeList.favorComposeInfo null");
+      Log.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] favorInfo.favorComposeList or favorInfo.favorComposeList.favorComposeInfo null");
       i = 0;
       break label298;
       localLinkedList = new LinkedList();
-      if ((!bu.isNullOrNil(paramOnCancelListener)) && (!paramOnCancelListener.equals("0")))
+      if ((!Util.isNullOrNil(paramOnCancelListener)) && (!paramOnCancelListener.equals("0")))
       {
         paramOnCancelListener = paramOnCancelListener.split("-");
         if (paramOnCancelListener != null)
@@ -191,38 +177,38 @@ public final class n
             i += 1;
           }
         }
-        ae.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] preKeyArr null");
+        Log.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] preKeyArr null");
         i = 0;
         break label298;
       }
-      paramOrders.DxJ.e(paramString, localLinkedList, (List)localObject1);
+      paramOrders.IgU.f(paramString, localLinkedList, (List)localObject1);
       i = 1;
       break label298;
-      localn.DxC.setText(2131765257);
-      localn.DxB.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      localn.IgN.setText(2131767700);
+      localn.IgM.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(70941);
           Object localObject = new b();
-          ((b)localObject).bd(paramAnonymousAdapterView);
-          ((b)localObject).bd(paramAnonymousView);
-          ((b)localObject).mu(paramAnonymousInt);
-          ((b)localObject).rl(paramAnonymousLong);
-          a.b("com/tencent/mm/plugin/wallet_core/ui/WalletFavorDialog$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahF());
+          ((b)localObject).bm(paramAnonymousAdapterView);
+          ((b)localObject).bm(paramAnonymousView);
+          ((b)localObject).pH(paramAnonymousInt);
+          ((b)localObject).zo(paramAnonymousLong);
+          a.b("com/tencent/mm/plugin/wallet_core/ui/WalletFavorDialog$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).axR());
           paramAnonymousAdapterView = n.b(n.this);
-          paramAnonymousView = paramAnonymousAdapterView.DxJ;
-          if (paramAnonymousInt < paramAnonymousView.DoS.size())
+          paramAnonymousView = paramAnonymousAdapterView.IgU;
+          if (paramAnonymousInt < paramAnonymousView.HYg.size())
           {
-            localObject = ((p.b)paramAnonymousView.DoS.get(paramAnonymousInt)).Dpa;
-            p.a locala = p.a.DoW;
+            localObject = ((p.b)paramAnonymousView.HYg.get(paramAnonymousInt)).HYo;
+            p.a locala = p.a.HYk;
             int i = 0;
-            while (i < paramAnonymousView.DoS.size())
+            while (i < paramAnonymousView.HYg.size())
             {
-              paramAnonymousView.a(i, p.a.DoX);
+              paramAnonymousView.a(i, p.a.HYl);
               i += 1;
             }
-            switch (com.tencent.mm.plugin.wallet_core.model.p.1.DoU[localObject.ordinal()])
+            switch (com.tencent.mm.plugin.wallet_core.model.p.1.HYi[localObject.ordinal()])
             {
             }
           }
@@ -232,9 +218,9 @@ public final class n
             a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletFavorDialog$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(70941);
             return;
-            paramAnonymousView.a(paramAnonymousInt, p.a.DoW);
+            paramAnonymousView.a(paramAnonymousInt, p.a.HYk);
             continue;
-            paramAnonymousView.a(paramAnonymousInt, p.a.DoX);
+            paramAnonymousView.a(paramAnonymousInt, p.a.HYl);
           }
         }
       });
@@ -242,16 +228,16 @@ public final class n
     }
   }
   
-  private void eLm()
+  private void fSR()
   {
     AppMethodBeat.i(70952);
-    ae.d("MicroMsg.WalletFavorDialog", "On selection done");
-    if (this.DxD != null)
+    Log.d("MicroMsg.WalletFavorDialog", "On selection done");
+    if (this.IgO != null)
     {
-      Object localObject = this.DxD.DxJ;
-      localObject = ((p)localObject).a(((p)localObject).DoS, -1);
-      localObject = this.Dbe.aGl((String)localObject);
-      this.DxE.a((FavorPayInfo)localObject);
+      Object localObject = this.IgO.IgU;
+      localObject = ((p)localObject).a(((p)localObject).HYg, -1);
+      localObject = this.HGS.aVM((String)localObject);
+      this.IgP.a((FavorPayInfo)localObject);
     }
     AppMethodBeat.o(70952);
   }
@@ -267,7 +253,7 @@ public final class n
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.WalletFavorDialog", "dismiss exception, e = " + localException.getMessage());
+      Log.e("MicroMsg.WalletFavorDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(70949);
     }
   }
@@ -276,7 +262,7 @@ public final class n
   {
     AppMethodBeat.i(70948);
     super.onCreate(paramBundle);
-    setContentView(this.iFK);
+    setContentView(this.jBN);
     AppMethodBeat.o(70948);
   }
   
@@ -284,7 +270,7 @@ public final class n
   {
     AppMethodBeat.i(70953);
     if (paramInt == 4) {
-      eLm();
+      fSR();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(70953);
@@ -302,25 +288,25 @@ public final class n
   final class a
     extends BaseAdapter
   {
-    int DxG;
-    List<t> DxH;
-    j DxI;
-    p<String> DxJ;
+    int IgR;
+    List<t> IgS;
+    j IgT;
+    p<String> IgU;
     
     public a()
     {
       AppMethodBeat.i(70943);
-      this.DxG = -1;
-      this.DxH = new LinkedList();
-      this.DxI = null;
-      this.DxJ = new p()
+      this.IgR = -1;
+      this.IgS = new LinkedList();
+      this.IgT = null;
+      this.IgU = new p()
       {
         public final String a(Vector<p<String>.b> paramAnonymousVector, int paramAnonymousInt)
         {
           AppMethodBeat.i(70942);
           if (paramAnonymousVector == null)
           {
-            ae.w("MicroMsg.WalletFavorDialog", "func[getComposedKey] keyList null");
+            Log.w("MicroMsg.WalletFavorDialog", "func[getComposedKey] keyList null");
             AppMethodBeat.o(70942);
             return "";
           }
@@ -328,9 +314,9 @@ public final class n
           int i = 0;
           while (i < paramAnonymousVector.size())
           {
-            p.a locala = ((p.b)paramAnonymousVector.get(i)).Dpa;
-            if ((i == paramAnonymousInt) || (locala == p.a.DoW)) {
-              localStringBuilder.append((String)((p.b)paramAnonymousVector.get(i)).DoZ + "-");
+            p.a locala = ((p.b)paramAnonymousVector.get(i)).HYo;
+            if ((i == paramAnonymousInt) || (locala == p.a.HYk)) {
+              localStringBuilder.append((String)((p.b)paramAnonymousVector.get(i)).HYn + "-");
             }
             i += 1;
           }
@@ -353,7 +339,7 @@ public final class n
     public final int getCount()
     {
       AppMethodBeat.i(70944);
-      int i = this.DxH.size();
+      int i = this.IgS.size();
       AppMethodBeat.o(70944);
       return i;
     }
@@ -361,7 +347,7 @@ public final class n
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(70945);
-      Object localObject = this.DxH.get(paramInt);
+      Object localObject = this.IgS.get(paramInt);
       AppMethodBeat.o(70945);
       return localObject;
     }
@@ -382,69 +368,69 @@ public final class n
       int i;
       if (paramView == null)
       {
-        paramView = n.c(n.this).inflate(2131495939, paramViewGroup, false);
+        paramView = n.c(n.this).inflate(2131496919, paramViewGroup, false);
         paramViewGroup = new n.c();
-        paramViewGroup.DxL = paramView.findViewById(2131306726);
-        paramViewGroup.lHk = ((TextView)paramView.findViewById(2131306725));
-        paramViewGroup.oLi = ((TextView)paramView.findViewById(2131306724));
-        paramViewGroup.lHT = ((TextView)paramView.findViewById(2131306723));
-        paramViewGroup.DxN = ((CheckBox)paramView.findViewById(2131306722));
-        paramViewGroup.DxM = ((ImageView)paramView.findViewById(2131306721));
+        paramViewGroup.IgW = paramView.findViewById(2131310188);
+        paramViewGroup.mPa = ((TextView)paramView.findViewById(2131310187));
+        paramViewGroup.pYW = ((TextView)paramView.findViewById(2131310186));
+        paramViewGroup.jVn = ((TextView)paramView.findViewById(2131310185));
+        paramViewGroup.IgY = ((CheckBox)paramView.findViewById(2131310184));
+        paramViewGroup.IgX = ((ImageView)paramView.findViewById(2131310183));
         paramView.setTag(paramViewGroup);
         localObject3 = (t)getItem(paramInt);
-        if ((paramInt != this.DxG) || (this.DxG <= 0)) {
+        if ((paramInt != this.IgR) || (this.IgR <= 0)) {
           break label418;
         }
-        paramViewGroup.DxL.setVisibility(0);
-        paramViewGroup.DxM.setVisibility(8);
-        if (bu.isNullOrNil(((t)localObject3).CZy)) {
+        paramViewGroup.IgW.setVisibility(0);
+        paramViewGroup.IgX.setVisibility(8);
+        if (Util.isNullOrNil(((t)localObject3).HFm)) {
           break label438;
         }
-        paramViewGroup.lHk.setText(((t)localObject3).CZy);
-        paramViewGroup.lHk.setVisibility(0);
-        localObject1 = ((t)localObject3).CYz;
-        if ((this.DxI == null) || (this.DxI.CYX == null)) {
+        paramViewGroup.mPa.setText(((t)localObject3).HFm);
+        paramViewGroup.mPa.setVisibility(0);
+        localObject1 = ((t)localObject3).HEn;
+        if ((this.IgT == null) || (this.IgT.HEL == null)) {
           break label459;
         }
-        localObject2 = this.DxI.CYX;
+        localObject2 = this.IgT.HEL;
         i = 0;
         label221:
         if (i >= ((List)localObject2).size()) {
           break label459;
         }
-        if (!((String)localObject1).equals(((f)((List)localObject2).get(i)).CYz)) {
+        if (!((String)localObject1).equals(((f)((List)localObject2).get(i)).HEn)) {
           break label450;
         }
         localObject1 = (f)((List)localObject2).get(i);
         label270:
-        localObject2 = ((t)localObject3).CYA;
-        localObject3 = ((t)localObject3).CYB;
+        localObject2 = ((t)localObject3).HEo;
+        localObject3 = ((t)localObject3).HEp;
         if (localObject1 == null) {
           break label527;
         }
-        localObject3 = ((f)localObject1).CYA;
-        localObject2 = ((f)localObject1).CYB;
+        localObject3 = ((f)localObject1).HEo;
+        localObject2 = ((f)localObject1).HEp;
         localObject1 = localObject3;
       }
       for (;;)
       {
-        if (!bu.isNullOrNil((String)localObject1))
+        if (!Util.isNullOrNil((String)localObject1))
         {
-          paramViewGroup.oLi.setText((CharSequence)localObject1);
-          paramViewGroup.oLi.setVisibility(0);
+          paramViewGroup.pYW.setText((CharSequence)localObject1);
+          paramViewGroup.pYW.setVisibility(0);
           label332:
-          if (bu.isNullOrNil((String)localObject2)) {
+          if (Util.isNullOrNil((String)localObject2)) {
             break label477;
           }
-          paramViewGroup.lHT.setText((CharSequence)localObject2);
-          paramViewGroup.lHT.setVisibility(0);
+          paramViewGroup.jVn.setText((CharSequence)localObject2);
+          paramViewGroup.jVn.setVisibility(0);
           label357:
-          localObject1 = ((p.b)this.DxJ.DoS.get(paramInt)).Dpa;
-          if (localObject1 != p.a.DoV) {
+          localObject1 = ((p.b)this.IgU.HYg.get(paramInt)).HYo;
+          if (localObject1 != p.a.HYj) {
             break label489;
           }
-          paramViewGroup.DxN.setChecked(false);
-          paramViewGroup.DxN.setEnabled(false);
+          paramViewGroup.IgY.setChecked(false);
+          paramViewGroup.IgY.setEnabled(false);
         }
         for (;;)
         {
@@ -453,11 +439,11 @@ public final class n
           paramViewGroup = (n.c)paramView.getTag();
           break;
           label418:
-          paramViewGroup.DxL.setVisibility(8);
-          paramViewGroup.DxM.setVisibility(0);
+          paramViewGroup.IgW.setVisibility(8);
+          paramViewGroup.IgX.setVisibility(0);
           break label154;
           label438:
-          paramViewGroup.lHk.setVisibility(8);
+          paramViewGroup.mPa.setVisibility(8);
           break label185;
           label450:
           i += 1;
@@ -465,17 +451,17 @@ public final class n
           label459:
           localObject1 = null;
           break label270;
-          paramViewGroup.oLi.setVisibility(8);
+          paramViewGroup.pYW.setVisibility(8);
           break label332;
           label477:
-          paramViewGroup.lHT.setVisibility(8);
+          paramViewGroup.jVn.setVisibility(8);
           break label357;
           label489:
-          paramViewGroup.DxN.setEnabled(true);
-          if (localObject1 == p.a.DoW) {
-            paramViewGroup.DxN.setChecked(true);
+          paramViewGroup.IgY.setEnabled(true);
+          if (localObject1 == p.a.HYk) {
+            paramViewGroup.IgY.setChecked(true);
           } else {
-            paramViewGroup.DxN.setChecked(false);
+            paramViewGroup.IgY.setChecked(false);
           }
         }
         label527:
@@ -492,17 +478,17 @@ public final class n
   
   static final class c
   {
-    View DxL;
-    ImageView DxM;
-    CheckBox DxN;
-    TextView lHT;
-    TextView lHk;
-    TextView oLi;
+    View IgW;
+    ImageView IgX;
+    CheckBox IgY;
+    TextView jVn;
+    TextView mPa;
+    TextView pYW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.n
  * JD-Core Version:    0.7.0.1
  */

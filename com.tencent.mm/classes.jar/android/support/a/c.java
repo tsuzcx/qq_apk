@@ -2,11 +2,11 @@ package android.support.a;
 
 public abstract class c<T>
 {
-  final String gg;
+  final String gi;
   
   public c(String paramString)
   {
-    this.gg = paramString;
+    this.gi = paramString;
   }
   
   public abstract float f(T paramT);

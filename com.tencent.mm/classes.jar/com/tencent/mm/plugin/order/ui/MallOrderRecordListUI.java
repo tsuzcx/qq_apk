@@ -16,20 +16,21 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.yo;
-import com.tencent.mm.g.a.yo.b;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.zt;
+import com.tencent.mm.g.a.zt.b;
 import com.tencent.mm.plugin.order.model.c;
 import com.tencent.mm.plugin.order.model.d;
 import com.tencent.mm.plugin.order.model.e;
 import com.tencent.mm.plugin.order.model.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 import com.tencent.mm.ui.base.MMLoadMoreListView.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.c;
+import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.f;
 import java.text.SimpleDateFormat;
@@ -44,37 +45,37 @@ import java.util.Map;
 public class MallOrderRecordListUI
   extends WalletBaseUI
 {
-  public MMLoadMoreListView fVK;
-  protected int fq;
+  public a APZ;
+  protected List<i> AQa;
+  protected String AQb;
+  public boolean AQc;
+  protected Map<String, String> AQd;
+  protected int fs;
+  public MMLoadMoreListView gAR;
   protected boolean isLoading;
   protected int mCount;
-  protected aq mHandler;
+  protected MMHandler mHandler;
   protected Dialog mProgressDialog;
-  public boolean vHj;
-  public a wUd;
-  protected List<i> wUe;
-  protected String wUf;
-  public boolean wUg;
-  protected Map<String, String> wUh;
+  public boolean zci;
   
   public MallOrderRecordListUI()
   {
     AppMethodBeat.i(66767);
     this.mHandler = null;
     this.mProgressDialog = null;
-    this.wUd = null;
-    this.wUe = new ArrayList();
-    this.vHj = true;
+    this.APZ = null;
+    this.AQa = new ArrayList();
+    this.zci = true;
     this.mCount = 0;
-    this.fq = 0;
-    this.wUf = null;
-    this.wUg = false;
+    this.fs = 0;
+    this.AQb = null;
+    this.AQc = false;
     this.isLoading = false;
-    this.wUh = new HashMap();
+    this.AQd = new HashMap();
     AppMethodBeat.o(66767);
   }
   
-  private boolean avs(String paramString)
+  private boolean aJF(String paramString)
   {
     AppMethodBeat.i(66777);
     if (TextUtils.isEmpty(paramString))
@@ -83,10 +84,10 @@ public class MallOrderRecordListUI
       return false;
     }
     int i = 0;
-    while (i < this.wUe.size())
+    while (i < this.AQa.size())
     {
-      i locali = (i)this.wUe.get(i);
-      if ((locali != null) && (paramString.equals(locali.wSZ)))
+      i locali = (i)this.AQa.get(i);
+      if ((locali != null) && (paramString.equals(locali.AOT)))
       {
         AppMethodBeat.o(66777);
         return true;
@@ -97,7 +98,7 @@ public class MallOrderRecordListUI
     return false;
   }
   
-  private static String gW(int paramInt1, int paramInt2)
+  private static String hH(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(66781);
     String str = paramInt1 + "-" + paramInt2;
@@ -105,35 +106,35 @@ public class MallOrderRecordListUI
     return str;
   }
   
-  protected final void Na(int paramInt)
+  protected final void Uk(int paramInt)
   {
     AppMethodBeat.i(66775);
-    if (paramInt >= this.wUe.size())
+    if (paramInt >= this.AQa.size())
     {
       AppMethodBeat.o(66775);
       return;
     }
-    i locali = (i)this.wUe.get(paramInt);
+    i locali = (i)this.AQa.get(paramInt);
     if (locali != null)
     {
       Bundle localBundle = getInput();
-      localBundle.putString("key_trans_id", locali.wSZ);
-      localBundle.putInt("key_pay_type", locali.wTg);
-      localBundle.putString("bill_id", locali.wTr);
-      com.tencent.mm.wallet_core.a.k(this, localBundle);
+      localBundle.putString("key_trans_id", locali.AOT);
+      localBundle.putInt("key_pay_type", locali.APa);
+      localBundle.putString("bill_id", locali.APl);
+      com.tencent.mm.wallet_core.a.l(this, localBundle);
     }
     AppMethodBeat.o(66775);
   }
   
-  protected String Nb(int paramInt)
+  protected String Ul(int paramInt)
   {
     AppMethodBeat.i(66779);
-    String str = f.agZ(paramInt);
+    String str = f.aql(paramInt);
     AppMethodBeat.o(66779);
     return str;
   }
   
-  protected void dBB()
+  protected void eBm()
   {
     AppMethodBeat.i(66769);
     addSceneEndListener(388);
@@ -141,7 +142,7 @@ public class MallOrderRecordListUI
     AppMethodBeat.o(66769);
   }
   
-  protected void dBC()
+  protected void eBn()
   {
     AppMethodBeat.i(66770);
     removeSceneEndListener(388);
@@ -149,14 +150,14 @@ public class MallOrderRecordListUI
     AppMethodBeat.o(66770);
   }
   
-  protected void dBD()
+  protected void eBo()
   {
     AppMethodBeat.i(66773);
-    doSceneProgress(new e(this.fq, this.wUf));
+    doSceneProgress(new e(this.fs, this.AQb));
     AppMethodBeat.o(66773);
   }
   
-  protected final void eP(List<i> paramList)
+  protected final void fM(List<i> paramList)
   {
     AppMethodBeat.i(66776);
     if ((paramList == null) || (paramList.size() == 0))
@@ -164,22 +165,22 @@ public class MallOrderRecordListUI
       AppMethodBeat.o(66776);
       return;
     }
-    if (this.wUe == null) {
-      this.wUe = new ArrayList();
+    if (this.AQa == null) {
+      this.AQa = new ArrayList();
     }
     int i = 0;
     while (i < paramList.size())
     {
       i locali = (i)paramList.get(i);
-      if (!avs(locali.wSZ)) {
-        this.wUe.add(locali);
+      if (!aJF(locali.AOT)) {
+        this.AQa.add(locali);
       }
       i += 1;
     }
     AppMethodBeat.o(66776);
   }
   
-  protected final void eQ(List<d> paramList)
+  protected final void fN(List<d> paramList)
   {
     AppMethodBeat.i(66780);
     if (paramList == null)
@@ -193,8 +194,8 @@ public class MallOrderRecordListUI
       d locald = (d)paramList.get(i);
       if (locald != null)
       {
-        String str = gW(locald.year, locald.month);
-        this.wUh.put(str, locald.wST);
+        String str = hH(locald.year, locald.month);
+        this.AQd.put(str, locald.AON);
       }
       i += 1;
     }
@@ -203,51 +204,51 @@ public class MallOrderRecordListUI
   
   public int getLayoutId()
   {
-    return 2131494716;
+    return 2131495445;
   }
   
   public void initView()
   {
     AppMethodBeat.i(66774);
-    if ((com.tencent.mm.wallet_core.a.bs(this) instanceof com.tencent.mm.plugin.order.a.a))
+    if ((com.tencent.mm.wallet_core.a.by(this) instanceof com.tencent.mm.plugin.order.a.a))
     {
       this.isLoading = true;
-      dBD();
+      eBo();
     }
-    setMMTitle(2131761091);
-    this.fVK = ((MMLoadMoreListView)findViewById(2131302064));
-    this.wUd = new a();
-    this.fVK.setAdapter(this.wUd);
-    this.fVK.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    setMMTitle(2131762878);
+    this.gAR = ((MMLoadMoreListView)findViewById(2131304403));
+    this.APZ = new a();
+    this.gAR.setAdapter(this.APZ);
+    this.gAR.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(66756);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/MallOrderRecordListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-        MallOrderRecordListUI.this.Na(paramAnonymousInt);
-        f.aha(26);
+        localb.bm(paramAnonymousAdapterView);
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.zo(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/MallOrderRecordListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        MallOrderRecordListUI.this.Uk(paramAnonymousInt);
+        f.aqm(26);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/ui/MallOrderRecordListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(66756);
       }
     });
-    this.fVK.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.gAR.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, final int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(66758);
-        if (paramAnonymousInt >= MallOrderRecordListUI.this.wUe.size())
+        if (paramAnonymousInt >= MallOrderRecordListUI.this.AQa.size())
         {
           AppMethodBeat.o(66758);
           return true;
         }
-        h.a(MallOrderRecordListUI.this, MallOrderRecordListUI.this.getResources().getString(2131765585), null, MallOrderRecordListUI.this.getResources().getString(2131755707), new h.c()
+        com.tencent.mm.ui.base.h.a(MallOrderRecordListUI.this, MallOrderRecordListUI.this.getResources().getString(2131768034), null, MallOrderRecordListUI.this.getResources().getString(2131755778), new h.d()
         {
-          public final void lh(int paramAnonymous2Int)
+          public final void oj(int paramAnonymous2Int)
           {
             AppMethodBeat.i(66757);
             switch (paramAnonymous2Int)
@@ -257,11 +258,11 @@ public class MallOrderRecordListUI
             {
               AppMethodBeat.o(66757);
               return;
-              i locali = (i)MallOrderRecordListUI.this.wUe.get(paramAnonymousInt);
+              i locali = (i)MallOrderRecordListUI.this.AQa.get(paramAnonymousInt);
               if (locali != null)
               {
-                String str = locali.wSZ;
-                MallOrderRecordListUI.this.iy(str, locali.wTr);
+                String str = locali.AOT;
+                MallOrderRecordListUI.this.jj(str, locali.APl);
               }
             }
           }
@@ -270,48 +271,48 @@ public class MallOrderRecordListUI
         return true;
       }
     });
-    this.fVK.setOnLoadMoreListener(new MMLoadMoreListView.a()
+    this.gAR.setOnLoadMoreListener(new MMLoadMoreListView.a()
     {
-      public final void ZC()
+      public final void onLoadMore()
       {
         AppMethodBeat.i(66759);
         if (!MallOrderRecordListUI.this.isLoading)
         {
           MallOrderRecordListUI.this.isLoading = true;
           MallOrderRecordListUI localMallOrderRecordListUI = MallOrderRecordListUI.this;
-          localMallOrderRecordListUI.fq += 10;
-          MallOrderRecordListUI.this.dBD();
+          localMallOrderRecordListUI.fs += 10;
+          MallOrderRecordListUI.this.eBo();
         }
         AppMethodBeat.o(66759);
       }
     });
-    Object localObject = new yo();
-    ((yo)localObject).dNR.scene = "6";
-    ((yo)localObject).callback = new Runnable()
+    Object localObject = new zt();
+    ((zt)localObject).efM.scene = "6";
+    ((zt)localObject).callback = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(66760);
-        if (!bu.isNullOrNil(this.pmv.dNS.dNT))
+        if (!Util.isNullOrNil(this.qBN.efN.efO))
         {
-          f.a((TextView)MallOrderRecordListUI.this.findViewById(2131297186), this.pmv.dNS.dNT, this.pmv.dNS.content, this.pmv.dNS.url);
+          f.a((TextView)MallOrderRecordListUI.this.findViewById(2131297330), this.qBN.efN.efO, this.qBN.efN.content, this.qBN.efN.url);
           AppMethodBeat.o(66760);
           return;
         }
-        ae.i("MicroMsg.WalletOrderListUI", "no bulletin data");
+        Log.i("MicroMsg.WalletOrderListUI", "no bulletin data");
         AppMethodBeat.o(66760);
       }
     };
-    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-    com.tencent.mm.plugin.order.a.b.dBo().onChange();
-    this.wUd.notifyDataSetChanged();
-    localObject = com.tencent.mm.plugin.report.service.g.yxI;
-    com.tencent.mm.plugin.order.a.b.dBo();
-    ((com.tencent.mm.plugin.report.service.g)localObject).f(11036, new Object[] { Integer.valueOf(com.tencent.mm.plugin.order.a.b.dBr().dBw()) });
+    EventCenter.instance.publish((IEvent)localObject);
+    com.tencent.mm.plugin.order.a.b.eBa().onChange();
+    this.APZ.notifyDataSetChanged();
+    localObject = com.tencent.mm.plugin.report.service.h.CyF;
+    com.tencent.mm.plugin.order.a.b.eBa();
+    ((com.tencent.mm.plugin.report.service.h)localObject).a(11036, new Object[] { Integer.valueOf(com.tencent.mm.plugin.order.a.b.eBd().eBh()) });
     AppMethodBeat.o(66774);
   }
   
-  protected void iy(String paramString1, String paramString2)
+  protected void jj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(66772);
     doSceneProgress(new com.tencent.mm.plugin.order.model.g(paramString1, paramString2));
@@ -322,18 +323,18 @@ public class MallOrderRecordListUI
   {
     AppMethodBeat.i(66768);
     super.onCreate(paramBundle);
-    this.mHandler = new aq();
-    dBB();
+    this.mHandler = new MMHandler();
+    eBm();
     initView();
-    this.fq = 0;
-    this.wUf = null;
+    this.fs = 0;
+    this.AQb = null;
     AppMethodBeat.o(66768);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(66778);
-    dBC();
+    eBn();
     super.onDestroy();
     AppMethodBeat.o(66778);
   }
@@ -342,68 +343,68 @@ public class MallOrderRecordListUI
   {
     AppMethodBeat.i(66771);
     super.onResume();
-    if (this.wUd != null) {
-      this.wUd.notifyDataSetChanged();
+    if (this.APZ != null) {
+      this.APZ.notifyDataSetChanged();
     }
     AppMethodBeat.o(66771);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(66782);
     boolean bool;
-    if ((paramn instanceof e))
+    if ((paramq instanceof e))
     {
       if (this.mProgressDialog != null)
       {
         this.mProgressDialog.dismiss();
         this.mProgressDialog = null;
       }
-      paramString = (e)paramn;
-      this.wUf = paramString.wSW;
-      eP(paramString.wSU);
-      eQ(paramString.wSV);
-      this.mCount = this.wUe.size();
-      if (paramString.pgV > this.mCount)
+      paramString = (e)paramq;
+      this.AQb = paramString.AOQ;
+      fM(paramString.AOO);
+      fN(paramString.AOP);
+      this.mCount = this.AQa.size();
+      if (paramString.qwe > this.mCount)
       {
         bool = true;
-        this.vHj = bool;
-        this.wUd.notifyDataSetChanged();
-        ae.d("MicroMsg.WalletOrderListUI", "orders list count: " + this.mCount);
-        ae.d("MicroMsg.WalletOrderListUI", "orders list total record: " + paramString.pgV);
-        ae.d("MicroMsg.WalletOrderListUI", "orders list has more: " + this.vHj);
+        this.zci = bool;
+        this.APZ.notifyDataSetChanged();
+        Log.d("MicroMsg.WalletOrderListUI", "orders list count: " + this.mCount);
+        Log.d("MicroMsg.WalletOrderListUI", "orders list total record: " + paramString.qwe);
+        Log.d("MicroMsg.WalletOrderListUI", "orders list has more: " + this.zci);
         this.mHandler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66761);
-            if (MallOrderRecordListUI.this.vHj)
+            if (MallOrderRecordListUI.this.zci)
             {
-              ae.v("MicroMsg.WalletOrderListUI", "has more");
-              if (!MallOrderRecordListUI.this.wUg)
+              Log.v("MicroMsg.WalletOrderListUI", "has more");
+              if (!MallOrderRecordListUI.this.AQc)
               {
-                MallOrderRecordListUI.this.fVK.fCN();
-                MallOrderRecordListUI.this.fVK.setAdapter(MallOrderRecordListUI.this.wUd);
-                MallOrderRecordListUI.this.wUg = true;
+                MallOrderRecordListUI.this.gAR.gKM();
+                MallOrderRecordListUI.this.gAR.setAdapter(MallOrderRecordListUI.this.APZ);
+                MallOrderRecordListUI.this.AQc = true;
               }
             }
             for (;;)
             {
-              MallOrderRecordListUI.this.wUd.notifyDataSetChanged();
+              MallOrderRecordListUI.this.APZ.notifyDataSetChanged();
               AppMethodBeat.o(66761);
               return;
-              ae.v("MicroMsg.WalletOrderListUI", "no more! dismiss footer view!");
-              MallOrderRecordListUI.this.fVK.fCO();
+              Log.v("MicroMsg.WalletOrderListUI", "no more! dismiss footer view!");
+              MallOrderRecordListUI.this.gAR.gKN();
             }
           }
         });
         this.isLoading = false;
         label202:
-        if ((this.mCount > 0) || (this.wUe.size() != 0)) {
+        if ((this.mCount > 0) || (this.AQa.size() != 0)) {
           break label445;
         }
         showOptionMenu(false);
-        findViewById(2131299473).setVisibility(0);
+        findViewById(2131300102).setVisibility(0);
       }
     }
     for (;;)
@@ -412,7 +413,7 @@ public class MallOrderRecordListUI
       return true;
       bool = false;
       break;
-      if (!(paramn instanceof com.tencent.mm.plugin.order.model.g)) {
+      if (!(paramq instanceof com.tencent.mm.plugin.order.model.g)) {
         break label202;
       }
       if (this.mProgressDialog != null)
@@ -420,16 +421,16 @@ public class MallOrderRecordListUI
         this.mProgressDialog.dismiss();
         this.mProgressDialog = null;
       }
-      paramString = (com.tencent.mm.plugin.order.model.g)paramn;
+      paramString = (com.tencent.mm.plugin.order.model.g)paramq;
       label324:
-      if (paramString.dBx() == 2)
+      if (paramString.eBi() == 2)
       {
-        if (this.wUe != null) {
-          this.wUe.clear();
+        if (this.AQa != null) {
+          this.AQa.clear();
         }
         this.mCount = 0;
-        this.vHj = false;
-        this.fVK.fCO();
+        this.zci = false;
+        this.gAR.gKN();
       }
       for (;;)
       {
@@ -438,30 +439,30 @@ public class MallOrderRecordListUI
           public final void run()
           {
             AppMethodBeat.i(66762);
-            MallOrderRecordListUI.this.wUd.notifyDataSetChanged();
+            MallOrderRecordListUI.this.APZ.notifyDataSetChanged();
             AppMethodBeat.o(66762);
           }
         });
         break;
-        paramString = paramString.dBy();
-        ae.d("MicroMsg.WalletOrderListUI", "delete transId:".concat(String.valueOf(paramString)));
-        if (!bu.isNullOrNil(paramString))
+        paramString = paramString.eBj();
+        Log.d("MicroMsg.WalletOrderListUI", "delete transId:".concat(String.valueOf(paramString)));
+        if (!Util.isNullOrNil(paramString))
         {
-          paramn = this.wUe.iterator();
-          if (paramn.hasNext())
+          paramq = this.AQa.iterator();
+          if (paramq.hasNext())
           {
-            i locali = (i)paramn.next();
-            if (!paramString.equals(locali.wSZ)) {
+            i locali = (i)paramq.next();
+            if (!paramString.equals(locali.AOT)) {
               break label324;
             }
-            this.wUe.remove(locali);
-            this.mCount = this.wUe.size();
+            this.AQa.remove(locali);
+            this.mCount = this.AQa.size();
           }
         }
       }
       label445:
       showOptionMenu(true);
-      findViewById(2131299473).setVisibility(8);
+      findViewById(2131300102).setVisibility(8);
     }
   }
   
@@ -476,10 +477,10 @@ public class MallOrderRecordListUI
   {
     protected a() {}
     
-    private i Nc(int paramInt)
+    private i Um(int paramInt)
     {
       AppMethodBeat.i(66764);
-      i locali = (i)MallOrderRecordListUI.this.wUe.get(paramInt);
+      i locali = (i)MallOrderRecordListUI.this.AQa.get(paramInt);
       AppMethodBeat.o(66764);
       return locali;
     }
@@ -487,7 +488,7 @@ public class MallOrderRecordListUI
     public final int getCount()
     {
       AppMethodBeat.i(66763);
-      int i = MallOrderRecordListUI.this.wUe.size();
+      int i = MallOrderRecordListUI.this.AQa.size();
       AppMethodBeat.o(66763);
       return i;
     }
@@ -506,27 +507,27 @@ public class MallOrderRecordListUI
       Object localObject1;
       if (paramView == null)
       {
-        localView = View.inflate(MallOrderRecordListUI.this, 2131494717, null);
+        localView = View.inflate(MallOrderRecordListUI.this, 2131495446, null);
         paramViewGroup = new MallOrderRecordListUI.b(MallOrderRecordListUI.this, (byte)0);
-        paramViewGroup.wUk = ((TextView)localView.findViewById(2131303073));
-        paramViewGroup.wUm = ((TextView)localView.findViewById(2131303072));
-        paramViewGroup.wUl = ((TextView)localView.findViewById(2131303071));
-        paramViewGroup.wUn = ((TextView)localView.findViewById(2131303069));
-        paramViewGroup.wUp = localView.findViewById(2131303066);
-        paramViewGroup.wUq = ((TextView)localView.findViewById(2131303068));
-        paramViewGroup.wUr = ((TextView)localView.findViewById(2131303067));
-        paramViewGroup.wUo = ((TextView)localView.findViewById(2131303070));
+        paramViewGroup.AQg = ((TextView)localView.findViewById(2131305681));
+        paramViewGroup.AQi = ((TextView)localView.findViewById(2131305680));
+        paramViewGroup.AQh = ((TextView)localView.findViewById(2131305679));
+        paramViewGroup.AQj = ((TextView)localView.findViewById(2131305677));
+        paramViewGroup.AQl = localView.findViewById(2131305674);
+        paramViewGroup.AQm = ((TextView)localView.findViewById(2131305676));
+        paramViewGroup.AQn = ((TextView)localView.findViewById(2131305675));
+        paramViewGroup.AQk = ((TextView)localView.findViewById(2131305678));
         localView.setTag(paramViewGroup);
-        locali = Nc(paramInt);
+        locali = Um(paramInt);
         i = 0;
         if (paramInt != 0) {
           break label594;
         }
         i = 1;
-        paramView = Nc(0);
+        paramView = Um(0);
         localObject1 = new GregorianCalendar();
         ((GregorianCalendar)localObject1).setTimeInMillis(paramView.CreateTime * 1000L);
-        paramView = MallOrderRecordListUI.gX(((GregorianCalendar)localObject1).get(1), ((GregorianCalendar)localObject1).get(2) + 1);
+        paramView = MallOrderRecordListUI.hI(((GregorianCalendar)localObject1).get(1), ((GregorianCalendar)localObject1).get(2) + 1);
       }
       for (;;)
       {
@@ -534,49 +535,49 @@ public class MallOrderRecordListUI
         {
           if (i != 0)
           {
-            localObject1 = new SimpleDateFormat(MallOrderRecordListUI.this.getString(2131759579, new Object[] { "" })).format(new Date(Nc(paramInt).CreateTime * 1000L));
-            paramViewGroup.wUq.setText((CharSequence)localObject1);
-            if ((!bu.isNullOrNil(paramView)) && (!bu.isNullOrNil((String)MallOrderRecordListUI.this.wUh.get(paramView)))) {
-              paramViewGroup.wUr.setText((CharSequence)MallOrderRecordListUI.this.wUh.get(paramView));
+            localObject1 = new SimpleDateFormat(MallOrderRecordListUI.this.getString(2131760896, new Object[] { "" })).format(new Date(Um(paramInt).CreateTime * 1000L));
+            paramViewGroup.AQm.setText((CharSequence)localObject1);
+            if ((!Util.isNullOrNil(paramView)) && (!Util.isNullOrNil((String)MallOrderRecordListUI.this.AQd.get(paramView)))) {
+              paramViewGroup.AQn.setText((CharSequence)MallOrderRecordListUI.this.AQd.get(paramView));
             }
-            paramViewGroup.wUp.setVisibility(0);
+            paramViewGroup.AQl.setVisibility(0);
             label337:
-            paramViewGroup.wUk.setText(locali.wTb);
-            paramViewGroup.wUl.setText(locali.wTc);
-            i = MallOrderRecordListUI.this.getContext().getResources().getColor(2131100609);
+            paramViewGroup.AQg.setText(locali.AOV);
+            paramViewGroup.AQh.setText(locali.AOW);
+            i = MallOrderRecordListUI.this.getContext().getResources().getColor(2131100777);
             paramInt = i;
-            if (bu.isNullOrNil(locali.wTo)) {}
+            if (Util.isNullOrNil(locali.APi)) {}
           }
           try
           {
-            paramInt = com.tencent.mm.plugin.wallet_core.utils.g.cp(locali.wTo, true);
-            paramViewGroup.wUl.setTextColor(paramInt);
-            paramViewGroup.wUm.setText(MallOrderRecordListUI.this.Nb(locali.CreateTime));
-            i = MallOrderRecordListUI.this.getContext().getResources().getColor(2131100611);
+            paramInt = com.tencent.mm.plugin.wallet_core.utils.g.cI(locali.APi, true);
+            paramViewGroup.AQh.setTextColor(paramInt);
+            paramViewGroup.AQi.setText(MallOrderRecordListUI.this.Ul(locali.CreateTime));
+            i = MallOrderRecordListUI.this.getContext().getResources().getColor(2131100779);
             paramInt = i;
-            if (bu.isNullOrNil(locali.wTp)) {}
+            if (Util.isNullOrNil(locali.APj)) {}
           }
           catch (Exception paramView)
           {
             try
             {
-              paramInt = com.tencent.mm.plugin.wallet_core.utils.g.cp(locali.wTp, true);
-              if (locali.wTa != locali.wTq)
+              paramInt = com.tencent.mm.plugin.wallet_core.utils.g.cI(locali.APj, true);
+              if (locali.AOU != locali.APk)
               {
-                paramView = f.d(locali.wTa / 100.0D, locali.wTe);
+                paramView = f.d(locali.AOU / 100.0D, locali.AOY);
                 localObject1 = new SpannableString(paramView);
                 ((SpannableString)localObject1).setSpan(new StrikethroughSpan(), 0, paramView.length(), 33);
-                paramViewGroup.wUn.setText((CharSequence)localObject1);
-                paramViewGroup.wUo.setTextColor(paramInt);
-                paramViewGroup.wUo.setText(f.d(locali.wTq / 100.0D, locali.wTe));
+                paramViewGroup.AQj.setText((CharSequence)localObject1);
+                paramViewGroup.AQk.setTextColor(paramInt);
+                paramViewGroup.AQk.setText(f.d(locali.APk / 100.0D, locali.AOY));
                 AppMethodBeat.o(66765);
                 return localView;
                 paramViewGroup = (MallOrderRecordListUI.b)paramView.getTag();
                 localView = paramView;
                 break;
                 label594:
-                paramView = Nc(paramInt);
-                Object localObject2 = Nc(paramInt - 1);
+                paramView = Um(paramInt);
+                Object localObject2 = Um(paramInt - 1);
                 if ((paramView.CreateTime <= 0) || (((i)localObject2).CreateTime <= 0)) {
                   break label823;
                 }
@@ -588,12 +589,12 @@ public class MallOrderRecordListUI
                   break label823;
                 }
                 i = 1;
-                paramView = MallOrderRecordListUI.gX(((GregorianCalendar)localObject2).get(1), ((GregorianCalendar)localObject2).get(2) + 1);
+                paramView = MallOrderRecordListUI.hI(((GregorianCalendar)localObject2).get(1), ((GregorianCalendar)localObject2).get(2) + 1);
                 continue;
-                paramViewGroup.wUp.setVisibility(8);
+                paramViewGroup.AQl.setVisibility(8);
                 break label337;
                 paramView = paramView;
-                ae.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + bu.nullAsNil(locali.wTo));
+                Log.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + Util.nullAsNil(locali.APi));
                 paramInt = i;
               }
             }
@@ -601,10 +602,10 @@ public class MallOrderRecordListUI
             {
               for (;;)
               {
-                ae.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + bu.nullAsNil(locali.wTp));
+                Log.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + Util.nullAsNil(locali.APj));
                 paramInt = i;
                 continue;
-                paramViewGroup.wUn.setText("");
+                paramViewGroup.AQj.setText("");
               }
               label823:
               paramView = null;
@@ -617,21 +618,21 @@ public class MallOrderRecordListUI
   
   final class b
   {
-    TextView wUk;
-    TextView wUl;
-    TextView wUm;
-    TextView wUn;
-    TextView wUo;
-    View wUp;
-    TextView wUq;
-    TextView wUr;
+    TextView AQg;
+    TextView AQh;
+    TextView AQi;
+    TextView AQj;
+    TextView AQk;
+    View AQl;
+    TextView AQm;
+    TextView AQn;
     
     private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.MallOrderRecordListUI
  * JD-Core Version:    0.7.0.1
  */

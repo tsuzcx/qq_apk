@@ -10,16 +10,18 @@ import com.tencent.mm.b.q;
 import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.h.d;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.jsapi.f.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.permission.r;
 import com.tencent.mm.plugin.appbrand.utils.ad;
+import com.tencent.mm.plugin.appbrand.utils.c;
 import com.tencent.mm.plugin.appbrand.utils.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.rtmp.TXLiveBase;
 import com.tencent.rtmp.WXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -32,43 +34,43 @@ public final class b
 {
   private static final int CTRL_INDEX = 360;
   public static final String NAME = "insertLivePusher";
-  private int kSN;
+  private int lXS;
   
-  private void a(final Activity paramActivity, final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final int paramInt)
+  private void a(final Activity paramActivity, final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(145882);
-    int i = this.kSN;
-    this.kSN = (i + 1);
+    int i = this.lXS;
+    this.lXS = (i + 1);
     if (i > 5)
     {
-      ae.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, avoid dead loop");
+      Log.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, avoid dead loop");
       AppMethodBeat.o(145882);
       return;
     }
-    r.b(paramc.getAppId(), new a.a()
+    r.b(paramf.getAppId(), new a.a()
     {
       public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
       {
         AppMethodBeat.i(182552);
-        ae.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback requestCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        Log.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback requestCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (paramAnonymousInt == 117)
         {
           if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
           {
-            ar.o(new Runnable()
+            MMHandlerThread.postToMainThreadDelayed(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(182550);
-                b.a(b.this, b.5.this.val$activity, b.5.this.kxj, b.5.this.cjV, b.5.this.cjS);
+                b.a(b.this, b.5.this.val$activity, b.5.this.lBw, b.5.this.cvS, b.5.this.cvP);
                 AppMethodBeat.o(182550);
               }
             }, 50L);
             AppMethodBeat.o(182552);
             return;
           }
-          ae.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback not grant");
-          paramc.h(paramInt, b.this.e("fail:system permission denied", null));
+          Log.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback not grant");
+          paramf.i(paramInt, b.this.h("fail:system permission denied", null));
           AppMethodBeat.o(182552);
           return;
         }
@@ -76,42 +78,42 @@ public final class b
         {
           if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
           {
-            ar.o(new Runnable()
+            MMHandlerThread.postToMainThreadDelayed(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(182551);
-                b.a(b.this, b.5.this.val$activity, b.5.this.kxj, b.5.this.cjV, b.5.this.cjS);
+                b.a(b.this, b.5.this.val$activity, b.5.this.lBw, b.5.this.cvS, b.5.this.cvP);
                 AppMethodBeat.o(182551);
               }
             }, 50L);
             AppMethodBeat.o(182552);
             return;
           }
-          ae.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback not grant");
-          paramc.h(paramInt, b.this.e("fail:system permission denied", null));
+          Log.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback not grant");
+          paramf.i(paramInt, b.this.h("fail:system permission denied", null));
         }
         AppMethodBeat.o(182552);
       }
     });
-    if (!com.tencent.luggage.h.h.a(paramActivity, "android.permission.CAMERA", 117, "", ""))
+    if (!com.tencent.luggage.h.i.a(paramActivity, "android.permission.CAMERA", 117, "", ""))
     {
-      ae.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, !retCameraPermission");
+      Log.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, !retCameraPermission");
       AppMethodBeat.o(145882);
       return;
     }
-    if (!com.tencent.luggage.h.h.a(paramActivity, "android.permission.RECORD_AUDIO", 118, "", ""))
+    if (!com.tencent.luggage.h.i.a(paramActivity, "android.permission.RECORD_AUDIO", 118, "", ""))
     {
-      ae.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, !retMicrophonePermission");
+      Log.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, !retMicrophonePermission");
       AppMethodBeat.o(145882);
       return;
     }
-    ae.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, super.invoke");
-    super.a(paramc, paramJSONObject, paramInt);
+    Log.i("MicroMsg.JsApiInsertLivePusher", "doInvokeAfterRequestPermission, super.invoke");
+    super.a(paramf, paramJSONObject, paramInt);
     AppMethodBeat.o(145882);
   }
   
-  public final int A(JSONObject paramJSONObject)
+  public final int H(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145880);
     int i = paramJSONObject.getInt("livePusherId");
@@ -119,71 +121,71 @@ public final class b
     return i;
   }
   
-  public final View a(e parame, JSONObject paramJSONObject)
+  public final View a(com.tencent.mm.plugin.appbrand.jsapi.h paramh, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145879);
-    paramJSONObject = new AppBrandLivePusherView(parame.getContext());
-    parame = new CoverViewContainer(parame.getContext(), paramJSONObject);
+    paramJSONObject = new AppBrandLivePusherView(paramh.getContext());
+    paramh = new CoverViewContainer(paramh.getContext(), paramJSONObject);
     AppMethodBeat.o(145879);
-    return parame;
+    return paramh;
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(145878);
-    j.Gg();
-    if (!(paramc.getContext() instanceof Activity))
+    j.PP();
+    if (!(paramf.getContext() instanceof Activity))
     {
-      ae.w("MicroMsg.JsApiInsertLivePusher", "invokeAfterRequestPermission pageContext not activity");
-      paramc.h(paramInt, e("fail", null));
-      r.UC(paramc.getAppId());
+      Log.w("MicroMsg.JsApiInsertLivePusher", "invokeAfterRequestPermission pageContext not activity");
+      paramf.i(paramInt, h("fail", null));
+      r.aeq(paramf.getAppId());
       AppMethodBeat.o(145878);
       return;
     }
-    this.kSN = 0;
-    a((Activity)paramc.getContext(), paramc, paramJSONObject, paramInt);
+    this.lXS = 0;
+    a((Activity)paramf.getContext(), paramf, paramJSONObject, paramInt);
     AppMethodBeat.o(145878);
   }
   
-  public final void a(final e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145881);
-    ae.i("MicroMsg.JsApiInsertLivePusher", "onInsertView livePusherId=%d", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.JsApiInsertLivePusher", "onInsertView livePusherId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ae.w("MicroMsg.JsApiInsertLivePusher", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      Log.w("MicroMsg.JsApiInsertLivePusher", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(145881);
       return;
     }
-    TXLiveBase.setAppVersion(String.format("weixin_%s", new Object[] { parame.getAppId() }));
-    final AppBrandLivePusherView localAppBrandLivePusherView = (AppBrandLivePusherView)((CoverViewContainer)paramView).ax(AppBrandLivePusherView.class);
+    TXLiveBase.setAppVersion(String.format("weixin_%s", new Object[] { paramh.getAppId() }));
+    final AppBrandLivePusherView localAppBrandLivePusherView = (AppBrandLivePusherView)((CoverViewContainer)paramView).aB(AppBrandLivePusherView.class);
     if (localAppBrandLivePusherView == null)
     {
-      ae.e("MicroMsg.JsApiInsertLivePusher", "pusherView null");
+      Log.e("MicroMsg.JsApiInsertLivePusher", "pusherView null");
       AppMethodBeat.o(145881);
       return;
     }
-    Object localObject1 = new f.d()
+    Object localObject1 = new i.d()
     {
       public final void onForeground()
       {
         AppMethodBeat.i(145860);
         AppBrandLivePusherView localAppBrandLivePusherView = localAppBrandLivePusherView;
-        i locali = localAppBrandLivePusherView.kSD.bls();
-        ae.i("MicroMsg.AppBrandLivePusherView", "onForeground code:%d info:%s", new Object[] { Integer.valueOf(locali.errorCode), locali.csi });
-        localAppBrandLivePusherView.kSB.enable();
+        i locali = localAppBrandLivePusherView.lXI.bGO();
+        Log.i("MicroMsg.AppBrandLivePusherView", "onForeground code:%d info:%s", new Object[] { Integer.valueOf(locali.errorCode), locali.errorInfo });
+        localAppBrandLivePusherView.lPK.enable();
         AppMethodBeat.o(145860);
       }
     };
-    Object localObject2 = new f.b()
+    Object localObject2 = new i.b()
     {
       public final void onBackground()
       {
         AppMethodBeat.i(145865);
         AppBrandLivePusherView localAppBrandLivePusherView = localAppBrandLivePusherView;
-        i locali = localAppBrandLivePusherView.kSD.gx(false);
-        ae.i("MicroMsg.AppBrandLivePusherView", "onBackground code:%d info:%s", new Object[] { Integer.valueOf(locali.errorCode), locali.csi });
-        localAppBrandLivePusherView.kSB.disable();
+        i locali = localAppBrandLivePusherView.lXI.hu(false);
+        Log.i("MicroMsg.AppBrandLivePusherView", "onBackground code:%d info:%s", new Object[] { Integer.valueOf(locali.errorCode), locali.errorInfo });
+        localAppBrandLivePusherView.lPK.disable();
         AppMethodBeat.o(145865);
       }
     };
@@ -193,9 +195,9 @@ public final class b
       {
         AppMethodBeat.i(145866);
         AppBrandLivePusherView localAppBrandLivePusherView = localAppBrandLivePusherView;
-        ae.i("MicroMsg.AppBrandLivePusherView", "onAppBrandPause pauseType:%s", new Object[] { paramAnonymousd });
-        if ((paramAnonymousd == h.d.jzi) || (paramAnonymousd == h.d.jzh) || (paramAnonymousd == h.d.jzo)) {
-          localAppBrandLivePusherView.kSD.gx(true);
+        Log.i("MicroMsg.AppBrandLivePusherView", "onAppBrandPause pauseType:%s", new Object[] { paramAnonymousd });
+        if ((paramAnonymousd == h.d.kzQ) || (paramAnonymousd == h.d.kzP) || (paramAnonymousd == h.d.kzW)) {
+          localAppBrandLivePusherView.lXI.hu(true);
         }
         AppMethodBeat.o(145866);
       }
@@ -203,51 +205,51 @@ public final class b
       public final void onDestroy()
       {
         AppMethodBeat.i(145868);
-        com.tencent.mm.plugin.appbrand.h.b(parame.getAppId(), this);
+        com.tencent.mm.plugin.appbrand.h.b(paramh.getAppId(), this);
         AppMethodBeat.o(145868);
       }
       
       public final void onResume()
       {
         AppMethodBeat.i(145867);
-        localAppBrandLivePusherView.kSD.bls();
+        localAppBrandLivePusherView.lXI.bGO();
         AppMethodBeat.o(145867);
       }
     };
-    f.c local8 = new f.c()
+    i.c local8 = new i.c()
     {
       public final void onDestroy()
       {
         AppMethodBeat.i(145869);
         localAppBrandLivePusherView.onExit();
-        parame.b(this);
-        com.tencent.mm.plugin.appbrand.h.b(parame.getAppId(), local7);
+        paramh.b(this);
+        com.tencent.mm.plugin.appbrand.h.b(paramh.getAppId(), local7);
         AppMethodBeat.o(145869);
       }
     };
-    parame.a((f.d)localObject1);
-    parame.a((f.b)localObject2);
-    parame.a(local8);
+    paramh.a((i.d)localObject1);
+    paramh.a((i.b)localObject2);
+    paramh.a(local8);
     localAppBrandLivePusherView.setOnExitListener(new AppBrandLivePusherView.c()
     {
-      public final void blr()
+      public final void bGN()
       {
         AppMethodBeat.i(145870);
-        parame.b(this.kSM);
-        parame.b(this.kSL);
+        paramh.b(this.lXR);
+        paramh.b(this.lXQ);
         AppMethodBeat.o(145870);
       }
     });
-    com.tencent.mm.plugin.appbrand.h.a(parame.getAppId(), local7);
-    localAppBrandLivePusherView.setOnPushEventListener(new b.10(this, paramInt, parame));
-    localAppBrandLivePusherView.setBGMNotifyListener(new b.11(this, paramInt, parame));
-    localAppBrandLivePusherView.setOnErrorListener(new b.12(this, paramInt, parame));
-    localAppBrandLivePusherView.setAudioVolumeNotifyListener(new b.13(this, paramInt, parame));
+    com.tencent.mm.plugin.appbrand.h.a(paramh.getAppId(), local7);
+    localAppBrandLivePusherView.setOnPushEventListener(new b.10(this, paramInt, paramh));
+    localAppBrandLivePusherView.setBGMNotifyListener(new b.11(this, paramInt, paramh));
+    localAppBrandLivePusherView.setOnErrorListener(new b.12(this, paramInt, paramh));
+    localAppBrandLivePusherView.setAudioVolumeNotifyListener(new b.13(this, paramInt, paramh));
     if (paramJSONObject.has("filterImage"))
     {
-      localAppBrandLivePusherView.ctJ = paramJSONObject.optString("filterImage", localAppBrandLivePusherView.ctJ);
-      localAppBrandLivePusherView.ctK = paramJSONObject.optString("filterImageMd5", null);
-      if (!bu.isNullOrNil(localAppBrandLivePusherView.ctJ)) {
+      localAppBrandLivePusherView.cHp = paramJSONObject.optString("filterImage", localAppBrandLivePusherView.cHp);
+      localAppBrandLivePusherView.cHq = paramJSONObject.optString("filterImageMd5", null);
+      if (!Util.isNullOrNil(localAppBrandLivePusherView.cHp)) {
         break label698;
       }
     }
@@ -257,73 +259,73 @@ public final class b
       try
       {
         paramJSONObject.put("filterImage", "");
-        localObject1 = k.Q(paramJSONObject);
-        localObject2 = localAppBrandLivePusherView.kSD;
+        localObject1 = k.Z(paramJSONObject);
+        localObject2 = localAppBrandLivePusherView.lXI;
         m.l("InitLivePusher", (Bundle)localObject1);
         ((m)localObject2).mVideoView = localAppBrandLivePusherView;
         ((m)localObject2).mVideoView.disableLog(false);
-        ((m)localObject2).cud = ((Bundle)localObject1).getString("pushUrl", "");
-        ((m)localObject2).cub.setPusherUrl(((m)localObject2).cud);
+        ((m)localObject2).cHX = ((Bundle)localObject1).getString("pushUrl", "");
+        ((m)localObject2).cHV.setPusherUrl(((m)localObject2).cHX);
         ((m)localObject2).a((Bundle)localObject1, true);
-        ((m)localObject2).cun = ((Bundle)localObject1).getBoolean("autopush", ((m)localObject2).cun);
-        if ((((m)localObject2).cun) && (((m)localObject2).cud != null) && (!((m)localObject2).cud.isEmpty()) && (!((m)localObject2).cub.isPushing()))
+        ((m)localObject2).cIh = ((Bundle)localObject1).getBoolean("autopush", ((m)localObject2).cIh);
+        if ((((m)localObject2).cIh) && (((m)localObject2).cHX != null) && (!((m)localObject2).cHX.isEmpty()) && (!((m)localObject2).cHV.isPushing()))
         {
-          ae.i("TXLivePusherJSAdapter", "initLivePusher: startPusher");
-          ((m)localObject2).bB(((m)localObject2).cut);
-          ((m)localObject2).bC(((m)localObject2).cuu);
-          ((m)localObject2).cub.startPusher(((m)localObject2).cud);
+          Log.i("TXLivePusherJSAdapter", "initLivePusher: startPusher");
+          ((m)localObject2).ca(((m)localObject2).cIm);
+          ((m)localObject2).cb(((m)localObject2).cIn);
+          ((m)localObject2).cHV.startPusher(((m)localObject2).cHX);
         }
         ((m)localObject2).mInited = true;
         localObject1 = new i();
-        ae.i("MicroMsg.AppBrandLivePusherView", "onInsert code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject1).errorCode), ((i)localObject1).csi });
+        Log.i("MicroMsg.AppBrandLivePusherView", "onInsert code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject1).errorCode), ((i)localObject1).errorInfo });
         localObject1 = paramJSONObject.optString("backgroundImage");
         localObject2 = paramJSONObject.optString("backgroundMD5");
-        if (!bu.isNullOrNil((String)localObject1)) {
+        if (!Util.isNullOrNil((String)localObject1)) {
           break label738;
         }
-        ae.i("MicroMsg.JsApiInsertLivePusher", "convertBackgroundImageToLocalPath, url is null");
+        Log.i("MicroMsg.JsApiInsertLivePusher", "convertBackgroundImageToLocalPath, url is null");
         localObject1 = paramJSONObject.optString("filterImage");
-        if (!bu.isNullOrNil((String)localObject1)) {
+        if (!Util.isNullOrNil((String)localObject1)) {
           break label761;
         }
-        ae.i("MicroMsg.JsApiInsertLivePusher", "convertFilterImageToLocalPath, url is null");
+        Log.i("MicroMsg.JsApiInsertLivePusher", "convertFilterImageToLocalPath, url is null");
         localObject1 = paramJSONObject.optString("watermarkImage");
         paramJSONObject = paramJSONObject.optString("watermarkMD5");
-        if (!bu.isNullOrNil((String)localObject1)) {
+        if (!Util.isNullOrNil((String)localObject1)) {
           break label783;
         }
-        ae.i("MicroMsg.JsApiInsertLivePusher", "convertWatermarkImageToLocalPath, url is null");
-        localAppBrandLivePusherView.setContentDescription(paramView.getContext().getString(2131755289));
+        Log.i("MicroMsg.JsApiInsertLivePusher", "convertWatermarkImageToLocalPath, url is null");
+        localAppBrandLivePusherView.setContentDescription(paramView.getContext().getString(2131755325));
         AppMethodBeat.o(145881);
         return;
       }
       catch (JSONException localJSONException)
       {
-        ae.w("MicroMsg.JsApiInsertLivePusher", "parseFilterImage, ignore exception:%s", new Object[] { localJSONException });
+        Log.w("MicroMsg.JsApiInsertLivePusher", "parseFilterImage, ignore exception:%s", new Object[] { localJSONException });
         continue;
       }
       label698:
-      if ((localAppBrandLivePusherView.ctJ.startsWith("http://")) || (localAppBrandLivePusherView.ctJ.startsWith("https://")))
+      if ((localAppBrandLivePusherView.cHp.startsWith("http://")) || (localAppBrandLivePusherView.cHp.startsWith("https://")))
       {
         paramJSONObject.remove("filterImage");
         continue;
         label738:
-        com.tencent.mm.plugin.appbrand.utils.c.a(parame, localJSONException, (String)localObject2, new c.a()
+        c.a(paramh, localJSONException, (String)localObject2, new c.a()
         {
-          public final void Nr(String paramAnonymousString)
+          public final void Wz(String paramAnonymousString)
           {
             AppMethodBeat.i(145861);
-            if (!bu.isNullOrNil(paramAnonymousString))
+            if (!Util.isNullOrNil(paramAnonymousString))
             {
               paramAnonymousString = q.k(paramAnonymousString, false);
-              ae.i("MicroMsg.JsApiInsertLivePusher", "convertBackgroundImageToLocalPath, targetPath:%s", new Object[] { paramAnonymousString });
+              Log.i("MicroMsg.JsApiInsertLivePusher", "convertBackgroundImageToLocalPath, targetPath:%s", new Object[] { paramAnonymousString });
               Bundle localBundle = new Bundle();
               localBundle.putString("backgroundImage", paramAnonymousString);
-              localAppBrandLivePusherView.J(localBundle);
+              localAppBrandLivePusherView.P(localBundle);
               AppMethodBeat.o(145861);
               return;
             }
-            ae.i("MicroMsg.JsApiInsertLivePusher", "convertBackgroundImageToLocalPath, load background image fail");
+            Log.i("MicroMsg.JsApiInsertLivePusher", "convertBackgroundImageToLocalPath, load background image fail");
             paramAnonymousString = new HashMap();
             paramAnonymousString.put("url", localJSONException);
             localAppBrandLivePusherView.a(10004, "load background image fail", paramAnonymousString);
@@ -332,22 +334,22 @@ public final class b
         });
         continue;
         label761:
-        com.tencent.mm.plugin.appbrand.utils.c.a(parame, localJSONException, null, new c.a()
+        c.a(paramh, localJSONException, null, new c.a()
         {
-          public final void Nr(String paramAnonymousString)
+          public final void Wz(String paramAnonymousString)
           {
             AppMethodBeat.i(182548);
-            if (!bu.isNullOrNil(paramAnonymousString))
+            if (!Util.isNullOrNil(paramAnonymousString))
             {
               paramAnonymousString = q.k(paramAnonymousString, false);
-              ae.i("MicroMsg.JsApiInsertLivePusher", "convertFilterImageToLocalPath, localPath:%s", new Object[] { paramAnonymousString });
+              Log.i("MicroMsg.JsApiInsertLivePusher", "convertFilterImageToLocalPath, localPath:%s", new Object[] { paramAnonymousString });
               Bundle localBundle = new Bundle();
               localBundle.putString("filterImage", paramAnonymousString);
-              localAppBrandLivePusherView.J(localBundle);
+              localAppBrandLivePusherView.P(localBundle);
               AppMethodBeat.o(182548);
               return;
             }
-            ae.i("MicroMsg.JsApiInsertLivePusher", "convertFilterImageToLocalPath, load filter image fail");
+            Log.i("MicroMsg.JsApiInsertLivePusher", "convertFilterImageToLocalPath, load filter image fail");
             paramAnonymousString = new HashMap();
             paramAnonymousString.put("url", localJSONException);
             localAppBrandLivePusherView.a(10005, "load filter image fail", paramAnonymousString);
@@ -355,18 +357,18 @@ public final class b
           }
         });
         continue;
-        com.tencent.mm.plugin.appbrand.utils.c.a(parame, localJSONException, paramJSONObject, new c.a()
+        c.a(paramh, localJSONException, paramJSONObject, new c.a()
         {
-          public final void Nr(String paramAnonymousString)
+          public final void Wz(String paramAnonymousString)
           {
             AppMethodBeat.i(182549);
-            if (!bu.isNullOrNil(paramAnonymousString))
+            if (!Util.isNullOrNil(paramAnonymousString))
             {
               paramAnonymousString = q.k(paramAnonymousString, false);
-              ae.i("MicroMsg.JsApiInsertLivePusher", "convertWatermarkImageToLocalPath, localPath:%s", new Object[] { paramAnonymousString });
+              Log.i("MicroMsg.JsApiInsertLivePusher", "convertWatermarkImageToLocalPath, localPath:%s", new Object[] { paramAnonymousString });
               Bundle localBundle = new Bundle();
               localBundle.putString("watermarkImage", paramAnonymousString);
-              localAppBrandLivePusherView.J(localBundle);
+              localAppBrandLivePusherView.P(localBundle);
             }
             AppMethodBeat.o(182549);
           }
@@ -377,7 +379,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.b
  * JD-Core Version:    0.7.0.1
  */

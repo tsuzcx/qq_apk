@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.finder.feed.RCLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="14.0dip" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ej3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="@dimen/c5" android:layout_marginRight="20.0dip" android:layout_marginBottom="@dimen/c5" android:text="{description}" android:maxLines="4" android:lines="4" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d1k" android:padding="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/bq" android:layout_below="@id/ej3" android:layout_alignParentStart="true">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:src="@raw/icon_outlined_awesome" app:iconColor="@color/aj" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/aj" android:id="@id/ej9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="{0}" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/ek5" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_below="@id/ej3" android:layout_alignParentStart="true">
-            <com.tencent.mm.plugin.finder.view.FinderPostProgressView android:id="@id/ek6" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/ci" android:layout_centerVertical="true" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip">
-                <TextView android:textSize="12.0dip" android:textColor="@color/y4" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ccb" />
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/ej4" android:background="@color/c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginTop="@dimen/ci" android:layout_below="@id/ej3" android:layout_alignParentStart="true">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="9.0dip" android:src="@raw/icons_filled_error" android:layout_centerVertical="true" app:iconColor="@color/Red" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/y4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:text="@string/cc0" android:layout_centerVertical="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-</com.tencent.mm.plugin.finder.feed.RCLinearLayout>
+<LinearLayout android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@android:id/title" android:drawableLeft="@drawable/ai8" style="@style/ou" />
+</LinearLayout>

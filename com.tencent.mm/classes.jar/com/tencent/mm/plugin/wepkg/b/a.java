@@ -1,69 +1,69 @@
 package com.tencent.mm.plugin.wepkg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hb;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hm;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends hb
+  extends hm
 {
-  public static final c.a hGW;
+  public static final IAutoDBItem.MAutoDBInfo iBg;
   
   static
   {
     AppMethodBeat.i(110557);
-    c.a locala = new c.a();
-    locala.IBL = new Field[8];
-    locala.columns = new String[9];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[8];
+    localMAutoDBInfo.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "pkgId";
-    locala.IBN.put("pkgId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "pkgId";
+    localMAutoDBInfo.colsMap.put("pkgId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" pkgId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "pkgId";
-    locala.columns[1] = "version";
-    locala.IBN.put("version", "TEXT");
+    localMAutoDBInfo.primaryKey = "pkgId";
+    localMAutoDBInfo.columns[1] = "version";
+    localMAutoDBInfo.colsMap.put("version", "TEXT");
     localStringBuilder.append(" version TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "oldVersion";
-    locala.IBN.put("oldVersion", "TEXT");
+    localMAutoDBInfo.columns[2] = "oldVersion";
+    localMAutoDBInfo.colsMap.put("oldVersion", "TEXT");
     localStringBuilder.append(" oldVersion TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "oldPath";
-    locala.IBN.put("oldPath", "TEXT");
+    localMAutoDBInfo.columns[3] = "oldPath";
+    localMAutoDBInfo.colsMap.put("oldPath", "TEXT");
     localStringBuilder.append(" oldPath TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "md5";
-    locala.IBN.put("md5", "TEXT");
+    localMAutoDBInfo.columns[4] = "md5";
+    localMAutoDBInfo.colsMap.put("md5", "TEXT");
     localStringBuilder.append(" md5 TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "downloadUrl";
-    locala.IBN.put("downloadUrl", "TEXT");
+    localMAutoDBInfo.columns[5] = "downloadUrl";
+    localMAutoDBInfo.colsMap.put("downloadUrl", "TEXT");
     localStringBuilder.append(" downloadUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "pkgSize";
-    locala.IBN.put("pkgSize", "INTEGER");
+    localMAutoDBInfo.columns[6] = "pkgSize";
+    localMAutoDBInfo.colsMap.put("pkgSize", "INTEGER");
     localStringBuilder.append(" pkgSize INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[7] = "downloadNetType";
-    locala.IBN.put("downloadNetType", "INTEGER");
+    localMAutoDBInfo.columns[7] = "downloadNetType";
+    localMAutoDBInfo.colsMap.put("downloadNetType", "INTEGER");
     localStringBuilder.append(" downloadNetType INTEGER");
-    locala.columns[8] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    hGW = locala;
+    localMAutoDBInfo.columns[8] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    iBg = localMAutoDBInfo;
     AppMethodBeat.o(110557);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return hGW;
+    return iBg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.a
  * JD-Core Version:    0.7.0.1
  */

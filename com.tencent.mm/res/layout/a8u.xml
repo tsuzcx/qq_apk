@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/ww" android:paddingLeft="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:id="@id/e2g" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb">
+        <ImageView android:id="@id/e2f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/e23" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/e3p" android:layout_toRightOf="@id/e2g">
+        <TextView android:id="@id/e40" android:text="微信年会 " style="@style/mp" />
+        <TextView android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="21.56M" android:layout_below="@id/e40" android:layout_alignParentLeft="true" style="@style/mo" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/cb">
+            <TableLayout android:id="@id/ftc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0">
+                <TableRow>
+                    <TextView android:id="@id/e2d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="来自felix" style="@style/mn" />
+                    <TextView android:ellipsize="none" android:id="@id/e3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="星期三" android:layout_marginStart="@dimen/ct" style="@style/mn" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:id="@id/e3p" android:paddingRight="@dimen/hs" android:layout_width="@dimen/cr" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/ce" android:layout_alignParentRight="true">
+        <View android:layout_gravity="center_vertical" android:layout_width="1.0dip" android:layout_height="32.0dip" style="@style/hx" />
+        <CheckBox android:layout_gravity="center|right" android:id="@id/e3o" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" style="@style/m6" />
+    </FrameLayout>
+    <View android:id="@id/e2u" android:layout_height="0.5dip" android:layout_alignParentBottom="true" style="@style/hx" />
+</RelativeLayout>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.blink.FirstScreenFrameLayout android:id="@id/c3g" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="left" android:id="@id/y1" android:background="#fff3f3f3" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.base.CustomViewPager android:id="@id/ea6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <com.tencent.mm.ui.tools.TestTimeForChatting android:orientation="vertical" android:id="@id/akr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mm.blink.FirstScreenFrameLayout>
+    <TextView android:textColor="@color/ag2" android:id="@id/d4e" android:background="@drawable/cny" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cg8" style="@style/m0" />
+</RelativeLayout>

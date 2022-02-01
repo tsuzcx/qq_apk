@@ -6,12 +6,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class GameFeedModuleTitle
   extends LinearLayout
 {
-  private TextView lHk;
+  private TextView mPa;
   
   public GameFeedModuleTitle(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,27 +22,27 @@ public class GameFeedModuleTitle
   {
     AppMethodBeat.i(42113);
     super.onFinishInflate();
-    this.lHk = ((TextView)findViewById(2131300440));
+    this.mPa = ((TextView)findViewById(2131301963));
     AppMethodBeat.o(42113);
   }
   
   public void setData(d paramd)
   {
     AppMethodBeat.i(42114);
-    if ((paramd == null) || (bu.isNullOrNil(paramd.ulX)))
+    if ((paramd == null) || (Util.isNullOrNil(paramd.xEp)))
     {
       setVisibility(8);
       AppMethodBeat.o(42114);
       return;
     }
     setVisibility(0);
-    this.lHk.setText(paramd.ulX);
+    this.mPa.setText(paramd.xEp);
     AppMethodBeat.o(42114);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedModuleTitle
  * JD-Core Version:    0.7.0.1
  */

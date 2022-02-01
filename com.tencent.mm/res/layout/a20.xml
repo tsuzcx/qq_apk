@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.emoji.panel.EmojiPanelRecyclerView android:id="@id/c0p" android:background="@drawable/cao" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/bt" android:paddingEnd="@dimen/bt"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -17,18 +17,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.kt;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.lj;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_core.model.BindCardOrder;
 import com.tencent.mm.plugin.wallet_ecard.a.f;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.cpa;
-import com.tencent.mm.protocal.protobuf.ir;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.dgz;
+import com.tencent.mm.protocal.protobuf.je;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.z;
@@ -41,38 +42,38 @@ import java.util.List;
 public class WalletECardBindCardListUI
   extends WalletECardBaseUI
 {
-  private ListView DGU;
-  private TextView DGV;
-  private List<ir> DGW;
-  private c DGX;
-  private boolean DGY;
-  private d.a DGZ;
-  private int obQ;
-  private c<kt> wNu;
+  private IListener<lj> AJa;
+  private ListView Iqg;
+  private TextView Iqh;
+  private List<je> Iqi;
+  private c Iqj;
+  private boolean Iqk;
+  private d.a Iql;
+  private int pmM;
   
   public WalletECardBindCardListUI()
   {
     AppMethodBeat.i(71758);
-    this.DGW = new ArrayList();
-    this.DGY = true;
-    this.DGZ = new d.a()
+    this.Iqi = new ArrayList();
+    this.Iqk = true;
+    this.Iql = new d.a()
     {
-      public final Intent s(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final Intent q(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(71748);
-        ae.i("MicroMsg.WalletECardBindCardListUI", "bind card end, resultCode: %s, feedbackData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousBundle });
+        Log.i("MicroMsg.WalletECardBindCardListUI", "bind card end, resultCode: %s, feedbackData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousBundle });
         if (paramAnonymousInt == -1)
         {
           BindCardOrder localBindCardOrder = (BindCardOrder)paramAnonymousBundle.getParcelable("key_bindcard_value_result");
           if (localBindCardOrder != null)
           {
-            ir localir = new ir();
-            localir.dlT = paramAnonymousBundle.getString("key_bind_card_type");
-            localir.FTZ = localBindCardOrder.Dnf;
-            localir.DgJ = paramAnonymousBundle.getString("key_mobile");
-            if ((!bu.isNullOrNil(localir.FTZ)) && (!bu.isNullOrNil(localir.dlT)) && (!bu.isNullOrNil(localir.DgJ)))
+            je localje = new je();
+            localje.dDj = paramAnonymousBundle.getString("key_bind_card_type");
+            localje.KNI = localBindCardOrder.HWx;
+            localje.HQc = paramAnonymousBundle.getString("key_mobile");
+            if ((!Util.isNullOrNil(localje.KNI)) && (!Util.isNullOrNil(localje.dDj)) && (!Util.isNullOrNil(localje.HQc)))
             {
-              WalletECardBindCardListUI.this.getNetController().r(new Object[] { localir });
+              WalletECardBindCardListUI.this.getNetController().r(new Object[] { localje });
               AppMethodBeat.o(71748);
               return null;
             }
@@ -84,42 +85,42 @@ public class WalletECardBindCardListUI
         return null;
       }
     };
-    this.wNu = new c() {};
+    this.AJa = new IListener() {};
     AppMethodBeat.o(71758);
   }
   
-  private void aVt()
+  private void bqe()
   {
     AppMethodBeat.i(71764);
-    ae.i("MicroMsg.WalletECardBindCardListUI", "load Data");
-    doSceneForceProgress(new f("WEB_DEBIT", this.obQ));
+    Log.i("MicroMsg.WalletECardBindCardListUI", "load Data");
+    doSceneForceProgress(new f("WEB_DEBIT", this.pmM));
     AppMethodBeat.o(71764);
   }
   
-  private boolean g(Context paramContext, Bundle paramBundle)
+  private boolean h(Context paramContext, Bundle paramBundle)
   {
     AppMethodBeat.i(71765);
-    com.tencent.mm.wallet_core.b.fVf();
-    if (com.tencent.mm.wallet_core.b.b(b.a.qGD, false))
+    com.tencent.mm.wallet_core.b.hgC();
+    if (com.tencent.mm.wallet_core.b.b(b.a.rZU, true))
     {
-      com.tencent.mm.sdk.b.a.IvT.b(this.wNu);
-      ae.d("MicroMsg.WalletECardBindCardListUI", "startKindaBindCard:true");
-      ab.kI(6, paramBundle.getInt("key_bind_scene"));
-      z.agV(paramBundle.getInt("key_bind_scene"));
-      ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).startBindCardUseCase(paramContext, paramBundle);
+      EventCenter.instance.add(this.AJa);
+      Log.d("MicroMsg.WalletECardBindCardListUI", "startKindaBindCard:true");
+      ab.mg(6, paramBundle.getInt("key_bind_scene"));
+      z.aqh(paramBundle.getInt("key_bind_scene"));
+      ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.af(com.tencent.mm.pluginsdk.wallet.a.class)).startBindCardUseCase(paramContext, paramBundle);
       AppMethodBeat.o(71765);
       return true;
     }
-    ae.d("MicroMsg.WalletECardBindCardListUI", "startKindaBindCard:false");
+    Log.d("MicroMsg.WalletECardBindCardListUI", "startKindaBindCard:false");
     AppMethodBeat.o(71765);
     return false;
   }
   
-  public final void eMF()
+  public final void fUm()
   {
     AppMethodBeat.i(71762);
     Bundle localBundle = new Bundle();
-    if (this.obQ == 3) {
+    if (this.pmM == 3) {
       localBundle.putInt("key_bind_scene", 18);
     }
     for (;;)
@@ -127,60 +128,60 @@ public class WalletECardBindCardListUI
       localBundle.putBoolean("key_need_bind_response", true);
       localBundle.putBoolean("key_is_bind_bankcard", true);
       localBundle.putString("key_pwd1", getInput().getString("key_pwd1"));
-      ae.i("MicroMsg.WalletECardBindCardListUI", "start bind card, scene: %s", new Object[] { Integer.valueOf(this.obQ) });
-      if (!g(this, localBundle)) {
+      Log.i("MicroMsg.WalletECardBindCardListUI", "start bind card, scene: %s", new Object[] { Integer.valueOf(this.pmM) });
+      if (!h(this, localBundle)) {
         break;
       }
       AppMethodBeat.o(71762);
       return;
       localBundle.putInt("key_bind_scene", 19);
     }
-    com.tencent.mm.wallet_core.a.a(this, com.tencent.mm.plugin.wallet_ecard.b.a.class, localBundle, this.DGZ);
+    com.tencent.mm.wallet_core.a.a(this, com.tencent.mm.plugin.wallet_ecard.b.a.class, localBundle, this.Iql);
     AppMethodBeat.o(71762);
   }
   
   public int getLayoutId()
   {
-    return 2131493727;
+    return 2131493862;
   }
   
   public void initView()
   {
     AppMethodBeat.i(71760);
-    this.DGU = ((ListView)findViewById(2131297192));
-    View localView = LayoutInflater.from(this).inflate(2131493728, this.DGU, false);
-    this.DGV = ((TextView)localView.findViewById(2131299245));
-    this.DGU.addHeaderView(localView, null, false);
-    this.DGX = new c((byte)0);
-    this.DGU.setAdapter(this.DGX);
-    this.DGU.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.Iqg = ((ListView)findViewById(2131297337));
+    View localView = LayoutInflater.from(this).inflate(2131493863, this.Iqg, false);
+    this.Iqh = ((TextView)localView.findViewById(2131299817));
+    this.Iqg.addHeaderView(localView, null, false);
+    this.Iqj = new c((byte)0);
+    this.Iqg.setAdapter(this.Iqj);
+    this.Iqg.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(71747);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardBindCardListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-        ae.i("MicroMsg.WalletECardBindCardListUI", "position: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        localb.bm(paramAnonymousAdapterView);
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.zo(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardBindCardListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        Log.i("MicroMsg.WalletECardBindCardListUI", "position: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         int i = paramAnonymousAdapterView.getAdapter().getItemViewType(paramAnonymousInt);
         WalletECardBindCardListUI.a(WalletECardBindCardListUI.this).getClass();
         if (i == 1)
         {
-          ae.d("MicroMsg.WalletECardBindCardListUI", "click add item: %s", new Object[] { Integer.valueOf(WalletECardBindCardListUI.b(WalletECardBindCardListUI.this)) });
-          WalletECardBindCardListUI.this.eMF();
+          Log.d("MicroMsg.WalletECardBindCardListUI", "click add item: %s", new Object[] { Integer.valueOf(WalletECardBindCardListUI.b(WalletECardBindCardListUI.this)) });
+          WalletECardBindCardListUI.this.fUm();
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_ecard/ui/WalletECardBindCardListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(71747);
           return;
-          paramAnonymousAdapterView = (ir)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
+          paramAnonymousAdapterView = (je)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
-            ae.w("MicroMsg.WalletECardBindCardListUI", "empty item");
+            Log.w("MicroMsg.WalletECardBindCardListUI", "empty item");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_ecard/ui/WalletECardBindCardListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(71747);
             return;
@@ -201,15 +202,15 @@ public class WalletECardBindCardListUI
   {
     AppMethodBeat.i(71759);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101179));
+    setActionbarColor(getResources().getColor(2131101424));
     hideActionbarLine();
     this.mNetSceneMgr.addSceneEndListener(1988);
-    this.obQ = getInput().getInt(com.tencent.mm.plugin.wallet_ecard.a.a.DGe, 2);
-    ae.i("MicroMsg.WalletECardBindCardListUI", "openScene: %d", new Object[] { Integer.valueOf(this.obQ) });
+    this.pmM = getInput().getInt(com.tencent.mm.plugin.wallet_ecard.a.a.Ipq, 2);
+    Log.i("MicroMsg.WalletECardBindCardListUI", "openScene: %d", new Object[] { Integer.valueOf(this.pmM) });
     setMMTitle("");
     initView();
-    this.DGY = true;
-    aVt();
+    this.Iqk = true;
+    bqe();
     AppMethodBeat.o(71759);
   }
   
@@ -221,27 +222,27 @@ public class WalletECardBindCardListUI
     AppMethodBeat.o(71763);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(71761);
-    if ((paramn instanceof f))
+    if ((paramq instanceof f))
     {
-      paramn = (f)paramn;
+      paramq = (f)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (!bu.isNullOrNil(paramn.DGL.HAK)) {
-          this.DGV.setText(paramn.DGL.HAK);
+        if (!Util.isNullOrNil(paramq.IpX.MLv)) {
+          this.Iqh.setText(paramq.IpX.MLv);
         }
-        if (paramn.DGL.oGt == 0)
+        if (paramq.IpX.pTZ == 0)
         {
-          ae.i("MicroMsg.WalletECardBindCardListUI", "banklist: %s", new Object[] { Integer.valueOf(paramn.DGL.HAL.size()) });
-          ae.d("MicroMsg.WalletECardBindCardListUI", "true name: %s", new Object[] { paramn.DGL.DkG });
-          getInput().putString(com.tencent.mm.plugin.wallet_ecard.a.a.DGv, paramn.DGL.DkG);
-          if (paramn.DGL.HAL.size() == 0)
+          Log.i("MicroMsg.WalletECardBindCardListUI", "banklist: %s", new Object[] { Integer.valueOf(paramq.IpX.MLw.size()) });
+          Log.d("MicroMsg.WalletECardBindCardListUI", "true name: %s", new Object[] { paramq.IpX.HTZ });
+          getInput().putString(com.tencent.mm.plugin.wallet_ecard.a.a.IpH, paramq.IpX.HTZ);
+          if (paramq.IpX.MLw.size() == 0)
           {
-            ae.i("MicroMsg.WalletECardBindCardListUI", "no bind card, isGotoBindCardAfterNoBindCard: %s", new Object[] { Boolean.valueOf(this.DGY) });
-            if (this.DGY) {
-              eMF();
+            Log.i("MicroMsg.WalletECardBindCardListUI", "no bind card, isGotoBindCardAfterNoBindCard: %s", new Object[] { Boolean.valueOf(this.Iqk) });
+            if (this.Iqk) {
+              fUm();
             }
           }
         }
@@ -250,16 +251,16 @@ public class WalletECardBindCardListUI
       {
         AppMethodBeat.o(71761);
         return true;
-        this.DGW.clear();
-        this.DGW.addAll(paramn.DGL.HAL);
-        this.DGX.notifyDataSetChanged();
+        this.Iqi.clear();
+        this.Iqi.addAll(paramq.IpX.MLw);
+        this.Iqj.notifyDataSetChanged();
         continue;
-        if (!com.tencent.mm.plugin.wallet_ecard.a.b.a(this, paramn.DGL.FVM))
+        if (!com.tencent.mm.plugin.wallet_ecard.a.b.a(this, paramq.IpX.KPx))
         {
-          paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(getContext(), new String[] { paramn.DGL.oGu, paramString });
+          paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(getContext(), new String[] { paramq.IpX.pUa, paramString });
           h.c(getContext(), paramString, "", false);
           continue;
-          ae.w("MicroMsg.WalletECardBindCardListUI", "net error: %s", new Object[] { paramn });
+          Log.w("MicroMsg.WalletECardBindCardListUI", "net error: %s", new Object[] { paramq });
           paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(getContext(), new String[] { paramString });
           h.c(getContext(), paramString, "", false);
         }
@@ -277,15 +278,15 @@ public class WalletECardBindCardListUI
   
   final class a
   {
-    TextView mYK;
+    TextView olP;
     
     public a(View paramView)
     {
       AppMethodBeat.i(71750);
-      this.mYK = ((TextView)paramView.findViewById(2131299244));
-      this$1 = (ImageView)paramView.findViewById(2131299243);
+      this.olP = ((TextView)paramView.findViewById(2131299816));
+      this$1 = (ImageView)paramView.findViewById(2131299815);
       paramView = android.support.v4.graphics.drawable.a.i(WalletECardBindCardListUI.this.getDrawable());
-      android.support.v4.graphics.drawable.a.a(paramView, ColorStateList.valueOf(ak.getResources().getColor(2131100547)));
+      android.support.v4.graphics.drawable.a.a(paramView, ColorStateList.valueOf(MMApplicationContext.getResources().getColor(2131100685)));
       WalletECardBindCardListUI.this.setImageDrawable(paramView);
       AppMethodBeat.o(71750);
     }
@@ -293,14 +294,14 @@ public class WalletECardBindCardListUI
   
   static abstract interface b
   {
-    public abstract void a(View paramView, ir paramir);
+    public abstract void a(View paramView, je paramje);
   }
   
   final class c
     extends BaseAdapter
   {
-    public final int DHb = 1;
-    public final int xPe = 0;
+    public final int BPh = 0;
+    public final int Iqn = 1;
     
     private c() {}
     
@@ -351,10 +352,10 @@ public class WalletECardBindCardListUI
         localView = paramView;
         if (paramView == null)
         {
-          localView = LayoutInflater.from(WalletECardBindCardListUI.this.getContext()).inflate(2131493730, paramViewGroup, false);
+          localView = LayoutInflater.from(WalletECardBindCardListUI.this.getContext()).inflate(2131493865, paramViewGroup, false);
           localView.setTag(new WalletECardBindCardListUI.a(WalletECardBindCardListUI.this, localView));
         }
-        ((WalletECardBindCardListUI.a)localView.getTag()).mYK.setText(2131758158);
+        ((WalletECardBindCardListUI.a)localView.getTag()).olP.setText(2131758431);
       }
       for (;;)
       {
@@ -363,10 +364,10 @@ public class WalletECardBindCardListUI
         localView = paramView;
         if (paramView == null)
         {
-          localView = LayoutInflater.from(WalletECardBindCardListUI.this.getContext()).inflate(2131493729, paramViewGroup, false);
+          localView = LayoutInflater.from(WalletECardBindCardListUI.this.getContext()).inflate(2131493864, paramViewGroup, false);
           localView.setTag(new WalletECardBindCardListUI.d(WalletECardBindCardListUI.this, localView));
         }
-        ((WalletECardBindCardListUI.b)localView.getTag()).a(localView, (ir)getItem(paramInt));
+        ((WalletECardBindCardListUI.b)localView.getTag()).a(localView, (je)getItem(paramInt));
       }
     }
     
@@ -378,10 +379,10 @@ public class WalletECardBindCardListUI
     public final boolean isEnabled(int paramInt)
     {
       AppMethodBeat.i(71754);
-      ir localir = (ir)getItem(paramInt);
-      if (localir != null)
+      je localje = (je)getItem(paramInt);
+      if (localje != null)
       {
-        if (localir.FUb)
+        if (localje.KNK)
         {
           AppMethodBeat.o(71754);
           return false;
@@ -398,43 +399,43 @@ public class WalletECardBindCardListUI
   final class d
     implements WalletECardBindCardListUI.b
   {
-    CdnImageView DHc;
-    TextView lHk;
-    TextView oLi;
+    CdnImageView Iqo;
+    TextView mPa;
+    TextView pYW;
     
     public d(View paramView)
     {
       AppMethodBeat.i(71756);
-      this.DHc = ((CdnImageView)paramView.findViewById(2131297191));
-      this.lHk = ((TextView)paramView.findViewById(2131297194));
-      this.oLi = ((TextView)paramView.findViewById(2131297193));
+      this.Iqo = ((CdnImageView)paramView.findViewById(2131297336));
+      this.mPa = ((TextView)paramView.findViewById(2131297339));
+      this.pYW = ((TextView)paramView.findViewById(2131297338));
       AppMethodBeat.o(71756);
     }
     
-    public final void a(View paramView, ir paramir)
+    public final void a(View paramView, je paramje)
     {
       AppMethodBeat.i(71757);
-      if (paramir != null)
+      if (paramje != null)
       {
-        this.DHc.setRoundCorner(true);
-        this.DHc.setUrl(paramir.FUa);
-        this.lHk.setText(String.format("%s %s(%s)", new Object[] { paramir.uVs, paramir.oOZ, paramir.FTY }));
-        if (!bu.isNullOrNil(paramir.FUc)) {
-          this.oLi.setText(String.format("%s，%s", new Object[] { paramir.DgJ, paramir.FUc }));
+        this.Iqo.setRoundCorner(true);
+        this.Iqo.setUrl(paramje.KNJ);
+        this.mPa.setText(String.format("%s %s(%s)", new Object[] { paramje.ynT, paramje.qcN, paramje.KNH }));
+        if (!Util.isNullOrNil(paramje.KNL)) {
+          this.pYW.setText(String.format("%s，%s", new Object[] { paramje.HQc, paramje.KNL }));
         }
-        while (paramir.FUb)
+        while (paramje.KNK)
         {
-          ae.i("MicroMsg.WalletECardBindCardListUI", "disable card: %s", new Object[] { paramir.uVs });
+          Log.i("MicroMsg.WalletECardBindCardListUI", "disable card: %s", new Object[] { paramje.ynT });
           paramView.setEnabled(false);
-          this.lHk.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100541));
-          this.oLi.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100541));
+          this.mPa.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100679));
+          this.pYW.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100679));
           AppMethodBeat.o(71757);
           return;
-          this.oLi.setText(String.format("%s", new Object[] { paramir.DgJ }));
+          this.pYW.setText(String.format("%s", new Object[] { paramje.HQc }));
         }
         paramView.setEnabled(true);
-        this.lHk.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100711));
-        this.oLi.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100707));
+        this.mPa.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100904));
+        this.pYW.setTextColor(WalletECardBindCardListUI.this.getResources().getColor(2131100900));
       }
       AppMethodBeat.o(71757);
     }
@@ -442,7 +443,7 @@ public class WalletECardBindCardListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.ui.WalletECardBindCardListUI
  * JD-Core Version:    0.7.0.1
  */

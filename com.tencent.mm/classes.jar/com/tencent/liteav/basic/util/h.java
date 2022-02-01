@@ -20,34 +20,34 @@ public class h
   
   public void a()
   {
-    AppMethodBeat.i(221380);
+    AppMethodBeat.i(222118);
     while (hasMessages(0)) {
       removeMessages(0);
     }
     this.b = false;
-    AppMethodBeat.o(221380);
+    AppMethodBeat.o(222118);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221379);
+    AppMethodBeat.i(222117);
     a();
     this.a = paramInt2;
     this.b = true;
     sendEmptyMessageDelayed(0, paramInt1);
-    AppMethodBeat.o(221379);
+    AppMethodBeat.o(222117);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(221378);
+    AppMethodBeat.i(222116);
     if (this.c != null) {
       this.c.a();
     }
     if (this.b) {
       sendEmptyMessageDelayed(0, this.a);
     }
-    AppMethodBeat.o(221378);
+    AppMethodBeat.o(222116);
   }
   
   public static abstract interface a
@@ -57,7 +57,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.util.h
  * JD-Core Version:    0.7.0.1
  */

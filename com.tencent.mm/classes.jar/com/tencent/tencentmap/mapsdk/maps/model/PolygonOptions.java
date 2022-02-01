@@ -1,8 +1,6 @@
 package com.tencent.tencentmap.mapsdk.maps.model;
 
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +10,6 @@ import java.util.List;
 public class PolygonOptions
 {
   private static final int COLOR_DEFAULT_POLYGON;
-  private boolean boIsGeoDes;
   private boolean boIsVisble;
   private float fStrokeWidth;
   private int iFillColor;
@@ -21,12 +18,9 @@ public class PolygonOptions
   private int iZindex;
   private final List<LatLng> listPts;
   private boolean mClickable;
-  private int mMaxTextSize;
-  private int mMinTextSize;
-  private String mText;
-  private int mTextColor;
-  private int mTextSize;
-  private Typeface mTypeface;
+  private List<Integer> pattern;
+  private BitmapDescriptor texture;
+  private int textureSpacing;
   
   static
   {
@@ -38,37 +32,14 @@ public class PolygonOptions
   public PolygonOptions()
   {
     AppMethodBeat.i(173295);
-    this.mText = "";
-    this.mTextColor = -16777216;
-    this.mTypeface = Typeface.DEFAULT;
-    this.mMaxTextSize = 2147483647;
-    this.mMinTextSize = 1;
-    this.mTextSize = -1;
     this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
     this.fStrokeWidth = 1.0F;
     this.iStrokeColor = -16777216;
     this.iFillColor = COLOR_DEFAULT_POLYGON;
     this.iZindex = 0;
     this.boIsVisble = true;
-    this.boIsGeoDes = false;
     this.listPts = new ArrayList();
     AppMethodBeat.o(173295);
-  }
-  
-  private PolygonOptions geodesic(boolean paramBoolean)
-  {
-    this.boIsGeoDes = paramBoolean;
-    return this;
-  }
-  
-  private int getTextSize()
-  {
-    return this.mTextSize;
-  }
-  
-  private boolean isGeodesic()
-  {
-    return this.boIsGeoDes;
   }
   
   public PolygonOptions add(LatLng paramLatLng)
@@ -139,14 +110,9 @@ public class PolygonOptions
     return this.iLevel;
   }
   
-  int getMaxTextSize()
+  public List<Integer> getPattern()
   {
-    return this.mMaxTextSize;
-  }
-  
-  int getMinTextSize()
-  {
-    return this.mMinTextSize;
+    return this.pattern;
   }
   
   public List<LatLng> getPoints()
@@ -164,19 +130,14 @@ public class PolygonOptions
     return this.fStrokeWidth;
   }
   
-  public String getText()
+  public BitmapDescriptor getTexture()
   {
-    return this.mText;
+    return this.texture;
   }
   
-  int getTextColor()
+  public int getTextureSpacing()
   {
-    return this.mTextColor;
-  }
-  
-  Typeface getTypeface()
-  {
-    return this.mTypeface;
+    return this.textureSpacing;
   }
   
   public float getZIndex()
@@ -187,6 +148,18 @@ public class PolygonOptions
   public boolean isClickable()
   {
     return this.mClickable;
+  }
+  
+  public boolean isValid()
+  {
+    AppMethodBeat.i(193615);
+    if ((this.listPts != null) && (this.listPts.size() > 2))
+    {
+      AppMethodBeat.o(193615);
+      return true;
+    }
+    AppMethodBeat.o(193615);
+    return false;
   }
   
   public boolean isVisible()
@@ -203,15 +176,10 @@ public class PolygonOptions
     return this;
   }
   
-  PolygonOptions maxTextSize(int paramInt)
+  public PolygonOptions pattern(List<Integer> paramList)
   {
-    this.mMaxTextSize = paramInt;
-    return this;
-  }
-  
-  PolygonOptions minTextSize(int paramInt)
-  {
-    this.mMinTextSize = paramInt;
+    this.pattern = paramList;
+    this.texture = null;
     return this;
   }
   
@@ -231,6 +199,7 @@ public class PolygonOptions
   public PolygonOptions strokeColor(int paramInt)
   {
     this.iStrokeColor = paramInt;
+    this.texture = null;
     return this;
   }
   
@@ -245,27 +214,15 @@ public class PolygonOptions
     return this;
   }
   
-  PolygonOptions text(String paramString)
+  public PolygonOptions texture(BitmapDescriptor paramBitmapDescriptor)
   {
-    this.mText = paramString;
+    this.texture = paramBitmapDescriptor;
     return this;
   }
   
-  PolygonOptions textColor(int paramInt)
+  public PolygonOptions textureSpacing(int paramInt)
   {
-    this.mTextColor = paramInt;
-    return this;
-  }
-  
-  PolygonOptions textSize(int paramInt)
-  {
-    this.mTextSize = paramInt;
-    return this;
-  }
-  
-  PolygonOptions textTypeface(Typeface paramTypeface)
-  {
-    this.mTypeface = paramTypeface;
+    this.textureSpacing = paramInt;
     return this;
   }
   
@@ -273,18 +230,6 @@ public class PolygonOptions
   {
     this.boIsVisble = paramBoolean;
     return this;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    AppMethodBeat.i(173301);
-    if (paramParcel == null)
-    {
-      AppMethodBeat.o(173301);
-      return;
-    }
-    paramParcel.writeInt(this.iFillColor);
-    AppMethodBeat.o(173301);
   }
   
   public PolygonOptions zIndex(int paramInt)
@@ -295,7 +240,7 @@ public class PolygonOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.PolygonOptions
  * JD-Core Version:    0.7.0.1
  */

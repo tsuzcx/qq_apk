@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/duy" android:background="@drawable/av1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/a3m" android:layout_width="fill_parent" android:layout_height="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:gravity="center" android:id="@id/cxt" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="120.0dip" android:layout_marginBottom="40.0dip" android:text="@string/hah" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/o6" />
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:gravity="center" android:id="@id/dvf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="@string/fn0" android:layout_above="@id/cxt" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/ct" android:src="@raw/icons_outlined_delete" />
+        <TextView android:ellipsize="end" android:id="@id/bfe" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="-1.0dip" android:text="@string/d8c" android:singleLine="true" android:layout_weight="1.0" style="@style/mp" />
+    </LinearLayout>
+    <View android:id="@id/bsp" android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

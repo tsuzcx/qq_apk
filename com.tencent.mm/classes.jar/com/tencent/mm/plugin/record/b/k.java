@@ -4,33 +4,37 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.record.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.plugin.record.a.e;
+import com.tencent.mm.plugin.record.a.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
 public final class k
-  extends com.tencent.mm.sdk.e.j<com.tencent.mm.plugin.record.a.j>
-  implements com.tencent.mm.plugin.record.a.e
+  extends MAutoStorage<j>
+  implements e
 {
-  private com.tencent.mm.sdk.e.e db;
-  private Vector<d> xGV;
+  private Vector<d> BGU;
+  private ISQLiteDatabase db;
   
-  public k(com.tencent.mm.sdk.e.e parame)
+  public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, com.tencent.mm.plugin.record.a.j.info, "RecordCDNInfo", null);
+    super(paramISQLiteDatabase, j.info, "RecordCDNInfo", null);
     AppMethodBeat.i(9500);
-    this.xGV = new Vector();
-    this.db = parame;
+    this.BGU = new Vector();
+    this.db = paramISQLiteDatabase;
     AppMethodBeat.o(9500);
   }
   
-  private void b(final int paramInt, final com.tencent.mm.plugin.record.a.j paramj)
+  private void b(final int paramInt, final j paramj)
   {
     AppMethodBeat.i(9503);
-    g.ajU().aw(new Runnable()
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -45,23 +49,23 @@ public final class k
     AppMethodBeat.o(9503);
   }
   
-  public final List<com.tencent.mm.plugin.record.a.j> Oe(int paramInt)
+  public final List<j> Vt(int paramInt)
   {
     AppMethodBeat.i(9505);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = "SELECT * FROM RecordCDNInfo WHERE recordLocalId = ".concat(String.valueOf(paramInt));
-    localObject = this.db.a((String)localObject, null, 2);
+    localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject != null)
     {
       while (((Cursor)localObject).moveToNext())
       {
-        com.tencent.mm.plugin.record.a.j localj = new com.tencent.mm.plugin.record.a.j();
+        j localj = new j();
         localj.convertFrom((Cursor)localObject);
         localLinkedList.add(localj);
       }
       ((Cursor)localObject).close();
     }
-    ae.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    Log.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
     AppMethodBeat.o(9505);
     return localLinkedList;
   }
@@ -69,7 +73,7 @@ public final class k
   public final void a(final d paramd)
   {
     AppMethodBeat.i(9501);
-    g.ajU().aw(new Runnable()
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -83,7 +87,7 @@ public final class k
     AppMethodBeat.o(9501);
   }
   
-  public final boolean a(com.tencent.mm.plugin.record.a.j paramj)
+  public final boolean a(j paramj)
   {
     AppMethodBeat.i(9509);
     if (super.replace(paramj))
@@ -96,7 +100,7 @@ public final class k
     return false;
   }
   
-  public final boolean a(com.tencent.mm.plugin.record.a.j paramj, String... paramVarArgs)
+  public final boolean a(j paramj, String... paramVarArgs)
   {
     AppMethodBeat.i(9507);
     if (super.delete(paramj, paramVarArgs))
@@ -109,19 +113,19 @@ public final class k
     return false;
   }
   
-  public final com.tencent.mm.plugin.record.a.j awF(String paramString)
+  public final j aKX(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(9506);
     paramString = "SELECT * FROM RecordCDNInfo WHERE mediaId='" + paramString + "'";
-    Cursor localCursor = this.db.a(paramString, null, 2);
+    Cursor localCursor = this.db.rawQuery(paramString, null, 2);
     paramString = localObject;
     if (localCursor != null)
     {
       paramString = localObject;
       if (localCursor.moveToFirst())
       {
-        paramString = new com.tencent.mm.plugin.record.a.j();
+        paramString = new j();
         paramString.convertFrom(localCursor);
       }
     }
@@ -135,7 +139,7 @@ public final class k
   public final void b(final d paramd)
   {
     AppMethodBeat.i(9502);
-    g.ajU().aw(new Runnable()
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -147,12 +151,12 @@ public final class k
     AppMethodBeat.o(9502);
   }
   
-  public final boolean b(com.tencent.mm.plugin.record.a.j paramj)
+  public final boolean b(j paramj)
   {
     AppMethodBeat.i(9510);
     if (paramj != null)
     {
-      ae.v("MicroMsg.RecordMsgCDNStorage", "insert record cdn info %s", new Object[] { paramj });
+      Log.v("MicroMsg.RecordMsgCDNStorage", "insert record cdn info %s", new Object[] { paramj });
       if (super.insert(paramj))
       {
         b(2, paramj);
@@ -162,7 +166,7 @@ public final class k
     }
     else
     {
-      ae.e("MicroMsg.RecordMsgCDNStorage", "insert null record cdn info");
+      Log.e("MicroMsg.RecordMsgCDNStorage", "insert null record cdn info");
       AppMethodBeat.o(9510);
       return false;
     }
@@ -170,7 +174,7 @@ public final class k
     return false;
   }
   
-  public final boolean b(com.tencent.mm.plugin.record.a.j paramj, String... paramVarArgs)
+  public final boolean b(j paramj, String... paramVarArgs)
   {
     AppMethodBeat.i(9508);
     if (super.update(paramj, paramVarArgs))
@@ -183,29 +187,29 @@ public final class k
     return false;
   }
   
-  public final List<com.tencent.mm.plugin.record.a.j> dHx()
+  public final List<j> eIk()
   {
     AppMethodBeat.i(9504);
     LinkedList localLinkedList = new LinkedList();
-    Cursor localCursor = this.db.a("SELECT * FROM RecordCDNInfo WHERE status != 3 AND status != 4 AND status != 2 AND status != -1", null, 2);
+    Cursor localCursor = this.db.rawQuery("SELECT * FROM RecordCDNInfo WHERE status != 3 AND status != 4 AND status != 2 AND status != -1", null, 2);
     if (localCursor != null)
     {
       while (localCursor.moveToNext())
       {
-        com.tencent.mm.plugin.record.a.j localj = new com.tencent.mm.plugin.record.a.j();
+        j localj = new j();
         localj.convertFrom(localCursor);
         localLinkedList.add(localj);
       }
       localCursor.close();
     }
-    ae.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    Log.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
     AppMethodBeat.o(9504);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.k
  * JD-Core Version:    0.7.0.1
  */

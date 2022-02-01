@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.l;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,20 +11,32 @@ import java.util.TimeZone;
 
 public final class b
 {
-  private static SimpleDateFormat yw = null;
+  private static SimpleDateFormat yC = null;
+  
+  private static boolean YS(String paramString)
+  {
+    AppMethodBeat.i(138803);
+    if ((!TextUtils.isEmpty(paramString)) && (new o(paramString).exists()))
+    {
+      AppMethodBeat.o(138803);
+      return true;
+    }
+    AppMethodBeat.o(138803);
+    return false;
+  }
   
   public static void a(String paramString, double paramDouble1, double paramDouble2, long paramLong)
   {
     AppMethodBeat.i(179483);
-    if (!fB(paramString))
+    if (!YS(paramString))
     {
       AppMethodBeat.o(179483);
       return;
     }
-    if (yw == null)
+    if (yC == null)
     {
       localObject = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.US);
-      yw = (SimpleDateFormat)localObject;
+      yC = (SimpleDateFormat)localObject;
       ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("UTC"));
     }
     Object localObject = new android.support.e.a(paramString);
@@ -54,10 +66,10 @@ public final class b
     {
       ((android.support.e.a)localObject).setAttribute("GPSLongitudeRef", paramString);
       ((android.support.e.a)localObject).setAttribute("GPSLongitude", android.support.e.a.b(Math.abs(paramDouble2)));
-      paramString = yw.format(new Date(paramLong)).split("\\s+", -1);
+      paramString = yC.format(new Date(paramLong)).split("\\s+", -1);
       ((android.support.e.a)localObject).setAttribute("GPSDateStamp", paramString[0]);
       ((android.support.e.a)localObject).setAttribute("GPSTimeStamp", paramString[1]);
-      ((android.support.e.a)localObject).setAttribute("DateTime", yw.format(new Date(paramLong)));
+      ((android.support.e.a)localObject).setAttribute("DateTime", yC.format(new Date(paramLong)));
       ((android.support.e.a)localObject).setAttribute("SubSecTime", Long.toString(paramLong % 1000L));
       ((android.support.e.a)localObject).saveAttributes();
       AppMethodBeat.o(179483);
@@ -70,7 +82,7 @@ public final class b
   public static void b(InputStream paramInputStream, String paramString)
   {
     AppMethodBeat.i(138802);
-    if ((paramInputStream == null) || (!fB(paramString)))
+    if ((paramInputStream == null) || (!YS(paramString)))
     {
       AppMethodBeat.o(138802);
       return;
@@ -84,10 +96,10 @@ public final class b
     AppMethodBeat.o(138802);
   }
   
-  public static void cV(String paramString1, String paramString2)
+  public static void dk(String paramString1, String paramString2)
   {
     AppMethodBeat.i(138801);
-    if ((!fB(paramString1)) || (!fB(paramString2)))
+    if ((!YS(paramString1)) || (!YS(paramString2)))
     {
       AppMethodBeat.o(138801);
       return;
@@ -99,18 +111,6 @@ public final class b
     paramString2.setAttribute("ThumbnailImageWidth", null);
     paramString2.saveAttributes();
     AppMethodBeat.o(138801);
-  }
-  
-  private static boolean fB(String paramString)
-  {
-    AppMethodBeat.i(138803);
-    if ((!TextUtils.isEmpty(paramString)) && (new k(paramString).exists()))
-    {
-      AppMethodBeat.o(138803);
-      return true;
-    }
-    AppMethodBeat.o(138803);
-    return false;
   }
   
   public static int m(InputStream paramInputStream)
@@ -141,7 +141,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.l.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,43 +5,21 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public abstract class a
 {
-  a mOm;
+  a obo;
   
   protected void a(WeImageView paramWeImageView) {}
   
-  public abstract View bBp();
+  public abstract void bSx();
   
-  protected final boolean bBq()
+  public abstract View bYp();
+  
+  protected final boolean getViewEnable()
   {
-    if (bBp() == null) {}
-    while (bBp().getVisibility() != 0) {
+    if (bYp() == null) {}
+    while (bYp().getVisibility() != 0) {
       return false;
     }
     return true;
-  }
-  
-  public abstract void bwp();
-  
-  protected final void hL(boolean paramBoolean)
-  {
-    if (bBp() == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean) {
-        if (bBp().getVisibility() != 0) {
-          bBp().setVisibility(0);
-        }
-      }
-      while (this.mOm != null)
-      {
-        this.mOm.a(this, bBp(), paramBoolean);
-        return;
-        if (bBp().getVisibility() != 8) {
-          bBp().setVisibility(8);
-        }
-      }
-    }
   }
   
   public abstract void onDetached();
@@ -50,9 +28,31 @@ public abstract class a
   
   public abstract void onResume();
   
-  public abstract void vF(int paramInt);
+  protected final void setViewEnable(boolean paramBoolean)
+  {
+    if (bYp() == null) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean) {
+        if (bYp().getVisibility() != 0) {
+          bYp().setVisibility(0);
+        }
+      }
+      while (this.obo != null)
+      {
+        this.obo.a(this, bYp(), paramBoolean);
+        return;
+        if (bYp().getVisibility() != 8) {
+          bYp().setVisibility(8);
+        }
+      }
+    }
+  }
   
-  public abstract void vG(int paramInt);
+  public abstract void zu(int paramInt);
+  
+  public abstract void zv(int paramInt);
   
   static abstract interface a
   {
@@ -61,7 +61,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.a
  * JD-Core Version:    0.7.0.1
  */

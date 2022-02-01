@@ -22,13 +22,13 @@ public class SnsServiceBean
     this.mTrueName = "";
     this.mPayInfo = paramPayInfo;
     this.mContext = paramContext;
-    this.mReqKey = paramPayInfo.dmw;
+    this.mReqKey = paramPayInfo.dDL;
     this.mChannel = paramPayInfo.channel;
-    this.mPayScene = paramPayInfo.dDH;
-    if (paramPayInfo.hwN != null)
+    this.mPayScene = paramPayInfo.dVv;
+    if (paramPayInfo.iqp != null)
     {
-      this.mReceiverName = paramPayInfo.hwN.getString("extinfo_key_1");
-      this.mTrueName = paramPayInfo.hwN.getString("extinfo_key_2");
+      this.mReceiverName = paramPayInfo.iqp.getString("extinfo_key_1");
+      this.mTrueName = paramPayInfo.iqp.getString("extinfo_key_2");
     }
     AppMethodBeat.o(18717);
   }
@@ -105,7 +105,7 @@ public class SnsServiceBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.SnsServiceBean
  * JD-Core Version:    0.7.0.1
  */

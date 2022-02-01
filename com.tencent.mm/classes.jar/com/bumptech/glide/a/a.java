@@ -20,16 +20,16 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public final class a
   implements Closeable
 {
-  private final File aDA;
   private final File aDB;
   private final File aDC;
-  private final int aDD;
+  private final File aDD;
   private final int aDE;
   private Writer aDF;
   private final LinkedHashMap<String, c> aDG;
@@ -37,6 +37,7 @@ public final class a
   private long aDI;
   final ThreadPoolExecutor aDJ;
   private final Callable<Void> aDK;
+  private final int appVersion;
   private final File directory;
   private long maxSize;
   private long size;
@@ -47,7 +48,7 @@ public final class a
     this.size = 0L;
     this.aDG = new LinkedHashMap(0, 0.75F, true);
     this.aDI = 0L;
-    this.aDJ = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), new a.a((byte)0));
+    this.aDJ = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), new a((byte)0));
     this.aDK = new Callable()
     {
       private Void call()
@@ -72,10 +73,10 @@ public final class a
       }
     };
     this.directory = paramFile;
-    this.aDD = 1;
-    this.aDA = new File(paramFile, "journal");
-    this.aDB = new File(paramFile, "journal.tmp");
-    this.aDC = new File(paramFile, "journal.bkp");
+    this.appVersion = 1;
+    this.aDB = new File(paramFile, "journal");
+    this.aDC = new File(paramFile, "journal.tmp");
+    this.aDD = new File(paramFile, "journal.bkp");
     this.aDE = 1;
     this.maxSize = paramLong;
     AppMethodBeat.o(100610);
@@ -159,7 +160,7 @@ public final class a
           this.aDF.append("CLEAN");
           this.aDF.append(' ');
           this.aDF.append(localc.key);
-          this.aDF.append(localc.nX());
+          this.aDF.append(localc.od());
           this.aDF.append('\n');
           if (paramBoolean)
           {
@@ -171,7 +172,7 @@ public final class a
         for (;;)
         {
           this.aDF.flush();
-          if ((this.size > this.maxSize) || (nT())) {
+          if ((this.size > this.maxSize) || (nZ())) {
             this.aDJ.submit(this.aDK);
           }
           AppMethodBeat.o(100619);
@@ -224,13 +225,13 @@ public final class a
     for (;;)
     {
       localObject = new a(paramFile, paramLong);
-      if (!((a)localObject).aDA.exists()) {
+      if (!((a)localObject).aDB.exists()) {
         break label172;
       }
       try
       {
-        ((a)localObject).nQ();
-        ((a)localObject).nR();
+        ((a)localObject).nW();
+        ((a)localObject).nX();
         AppMethodBeat.o(100611);
         return localObject;
       }
@@ -246,15 +247,15 @@ public final class a
     label172:
     paramFile.mkdirs();
     paramFile = new a(paramFile, paramLong);
-    paramFile.nS();
+    paramFile.nY();
     AppMethodBeat.o(100611);
     return paramFile;
   }
   
-  private void nQ()
+  private void nW()
   {
     AppMethodBeat.i(100612);
-    b localb = new b(new FileInputStream(this.aDA), c.US_ASCII);
+    b localb = new b(new FileInputStream(this.aDB), c.US_ASCII);
     Object localObject4;
     Object localObject5;
     String str1;
@@ -265,7 +266,7 @@ public final class a
       localObject5 = localb.readLine();
       str1 = localb.readLine();
       String str2 = localb.readLine();
-      if ((!"libcore.io.DiskLruCache".equals(localObject1)) || (!"1".equals(localObject4)) || (!Integer.toString(this.aDD).equals(localObject5)) || (!Integer.toString(this.aDE).equals(str1)) || (!"".equals(str2)))
+      if ((!"libcore.io.DiskLruCache".equals(localObject1)) || (!"1".equals(localObject4)) || (!Integer.toString(this.appVersion).equals(localObject5)) || (!Integer.toString(this.aDE).equals(str1)) || (!"".equals(str2)))
       {
         localObject1 = new IOException("unexpected journal header: [" + (String)localObject1 + ", " + (String)localObject4 + ", " + str1 + ", " + str2 + "]");
         AppMethodBeat.o(100612);
@@ -300,7 +301,7 @@ public final class a
           i = 1;
           if (i != 0)
           {
-            nS();
+            nY();
             c.closeQuietly(localb);
             AppMethodBeat.o(100612);
             return;
@@ -349,7 +350,7 @@ public final class a
           i = 0;
           continue;
         }
-        this.aDF = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDA, true), c.US_ASCII));
+        this.aDF = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDB, true), c.US_ASCII));
         continue;
         continue;
         i += 1;
@@ -357,10 +358,10 @@ public final class a
     }
   }
   
-  private void nR()
+  private void nX()
   {
     AppMethodBeat.i(100613);
-    q(this.aDB);
+    q(this.aDC);
     Iterator localIterator = this.aDG.values().iterator();
     while (localIterator.hasNext())
     {
@@ -391,7 +392,7 @@ public final class a
     AppMethodBeat.o(100613);
   }
   
-  private void nS()
+  private void nY()
   {
     for (;;)
     {
@@ -401,7 +402,7 @@ public final class a
         if (this.aDF != null) {
           this.aDF.close();
         }
-        BufferedWriter localBufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDB), c.US_ASCII));
+        BufferedWriter localBufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDC), c.US_ASCII));
         c localc;
         try
         {
@@ -409,7 +410,7 @@ public final class a
           localBufferedWriter.write("\n");
           localBufferedWriter.write("1");
           localBufferedWriter.write("\n");
-          localBufferedWriter.write(Integer.toString(this.aDD));
+          localBufferedWriter.write(Integer.toString(this.appVersion));
           localBufferedWriter.write("\n");
           localBufferedWriter.write(Integer.toString(this.aDE));
           localBufferedWriter.write("\n");
@@ -431,21 +432,21 @@ public final class a
           localBufferedWriter.close();
           AppMethodBeat.o(100614);
         }
-        localObject1.write("CLEAN " + localc.key + localc.nX() + '\n');
+        localObject1.write("CLEAN " + localc.key + localc.od() + '\n');
       }
       finally {}
     }
     localObject1.close();
-    if (this.aDA.exists()) {
-      a(this.aDA, this.aDC, true);
+    if (this.aDB.exists()) {
+      a(this.aDB, this.aDD, true);
     }
-    a(this.aDB, this.aDA, false);
-    this.aDC.delete();
-    this.aDF = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDA, true), c.US_ASCII));
+    a(this.aDC, this.aDB, false);
+    this.aDD.delete();
+    this.aDF = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDB, true), c.US_ASCII));
     AppMethodBeat.o(100614);
   }
   
-  private boolean nT()
+  private boolean nZ()
   {
     AppMethodBeat.i(100620);
     if ((this.aDH >= 2000) && (this.aDH >= this.aDG.size()))
@@ -457,7 +458,7 @@ public final class a
     return false;
   }
   
-  private void nU()
+  private void oa()
   {
     AppMethodBeat.i(100622);
     if (this.aDF == null)
@@ -489,7 +490,7 @@ public final class a
       try
       {
         AppMethodBeat.i(100621);
-        nU();
+        oa();
         c localc = (c)this.aDG.get(paramString);
         if ((localc == null) || (localc.aDS != null))
         {
@@ -518,7 +519,7 @@ public final class a
       this.aDF.append(paramString);
       this.aDF.append('\n');
       this.aDG.remove(paramString);
-      if (nT()) {
+      if (nZ()) {
         this.aDJ.submit(this.aDK);
       }
       boolean bool = true;
@@ -535,7 +536,7 @@ public final class a
     AppMethodBeat.o(100624);
   }
   
-  public final d N(String paramString)
+  public final d O(String paramString)
   {
     int i = 0;
     Object localObject = null;
@@ -543,7 +544,7 @@ public final class a
     try
     {
       AppMethodBeat.i(100617);
-      nU();
+      oa();
       localc = (c)this.aDG.get(paramString);
       if (localc == null) {
         AppMethodBeat.o(100617);
@@ -577,7 +578,7 @@ public final class a
       this.aDF.append(' ');
       this.aDF.append(paramString);
       this.aDF.append('\n');
-      if (nT()) {
+      if (nZ()) {
         this.aDJ.submit(this.aDK);
       }
       paramString = new d(paramString, localc.aDT, localc.aDQ, localc.aDP, (byte)0);
@@ -588,7 +589,7 @@ public final class a
     }
   }
   
-  public final b O(String paramString)
+  public final b P(String paramString)
   {
     label183:
     for (;;)
@@ -596,7 +597,7 @@ public final class a
       try
       {
         AppMethodBeat.i(100618);
-        nU();
+        oa();
         c localc = (c)this.aDG.get(paramString);
         if ((-1L != -1L) && ((localc == null) || (localc.aDT != -1L)))
         {
@@ -660,6 +661,27 @@ public final class a
     }
   }
   
+  static final class a
+    implements ThreadFactory
+  {
+    public final Thread newThread(Runnable paramRunnable)
+    {
+      try
+      {
+        AppMethodBeat.i(100647);
+        paramRunnable = new Thread(paramRunnable, "glide-disk-lru-cache-thread");
+        paramRunnable.setPriority(1);
+        AppMethodBeat.o(100647);
+        return paramRunnable;
+      }
+      finally
+      {
+        paramRunnable = finally;
+        throw paramRunnable;
+      }
+    }
+  }
+  
   public final class b
   {
     final a.c aDM;
@@ -686,7 +708,7 @@ public final class a
       AppMethodBeat.o(100631);
     }
     
-    public final File nV()
+    public final File ob()
     {
       AppMethodBeat.i(100630);
       synchronized (a.this)
@@ -709,7 +731,7 @@ public final class a
       return localFile;
     }
     
-    public final void nW()
+    public final void oc()
     {
       AppMethodBeat.i(100632);
       if (!this.aDO) {
@@ -793,7 +815,7 @@ public final class a
       }
     }
     
-    public final String nX()
+    public final String od()
     {
       AppMethodBeat.i(100634);
       Object localObject = new StringBuilder();
@@ -830,7 +852,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,62 @@
 package com.tencent.f;
 
-import android.content.Context;
-import com.tencent.f.b.d;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.f.i.d;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
 
-public final class i
+public abstract interface i
 {
-  private static i MHc;
-  private Context IR;
-  private boolean mStarted;
+  public abstract b a(String paramString, int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue);
   
-  private static i gdp()
-  {
-    AppMethodBeat.i(62809);
-    if (MHc == null) {}
-    try
-    {
-      if (MHc == null) {
-        MHc = new i();
-      }
-      i locali = MHc;
-      AppMethodBeat.o(62809);
-      return locali;
-    }
-    finally
-    {
-      AppMethodBeat.o(62809);
-    }
-  }
+  public abstract d<?> a(Runnable paramRunnable, long paramLong1, long paramLong2);
   
-  public static void lw(Context paramContext)
-  {
-    AppMethodBeat.i(62810);
-    i locali = gdp();
-    if (!locali.mStarted)
-    {
-      locali.IR = paramContext;
-      paramContext = new d("EventCenter", com.tencent.f.a.b.class.getName());
-      try
-      {
-        paramContext = f.a(paramContext);
-        if (paramContext != null) {
-          paramContext.start();
-        }
-        AppMethodBeat.o(62810);
-        return;
-      }
-      catch (Throwable paramContext)
-      {
-        com.tencent.pb.common.c.b.w("service", new Object[] { paramContext });
-      }
-    }
-    AppMethodBeat.o(62810);
-  }
+  public abstract d<?> a(Runnable paramRunnable, long paramLong, String paramString);
+  
+  public abstract <T> d<T> a(Callable<T> paramCallable, String paramString);
+  
+  public abstract d<?> aV(Runnable paramRunnable);
+  
+  public abstract d<?> aW(Runnable paramRunnable);
+  
+  public abstract d<?> aX(Runnable paramRunnable);
+  
+  public abstract d<?> aY(Runnable paramRunnable);
+  
+  public abstract d<?> aZ(Runnable paramRunnable);
+  
+  public abstract d<?> b(Runnable paramRunnable, long paramLong, String paramString);
+  
+  public abstract d<?> b(Runnable paramRunnable, String paramString);
+  
+  public abstract d<?> ba(Runnable paramRunnable);
+  
+  public abstract boolean bqo(String paramString);
+  
+  public abstract b bqp(String paramString);
+  
+  public abstract d<?> c(Runnable paramRunnable, String paramString);
+  
+  public abstract d<?> d(Runnable paramRunnable, String paramString);
+  
+  public abstract <T> d<T> d(Callable<T> paramCallable);
+  
+  public abstract d<?> e(Runnable paramRunnable, String paramString);
+  
+  public abstract boolean hmg();
+  
+  public abstract a hmh();
+  
+  public abstract boolean isShutdown();
+  
+  public abstract d<?> n(Runnable paramRunnable, long paramLong);
+  
+  public abstract d<?> o(Runnable paramRunnable, long paramLong);
+  
+  public abstract d<?> p(Runnable paramRunnable, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.f.i
  * JD-Core Version:    0.7.0.1
  */

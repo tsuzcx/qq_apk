@@ -7,8 +7,9 @@ import android.os.Looper;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.hellhoundlib.b.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class NetworkSignalUtil
 {
@@ -19,19 +20,26 @@ public class NetworkSignalUtil
   public static void InitNetworkSignalUtil(Context paramContext)
   {
     context = paramContext;
-    new aq(Looper.getMainLooper()).post(new Runnable()
+    new MMHandler(Looper.getMainLooper()).post(new Runnable()
     {
+      private byte _hellAccFlag_;
+      
       public final void run()
       {
-        ae.i("MicroMsg.NetworkSignalUtil", "[InitNetworkSignalUtil] run.. %s", new Object[] { Looper.myLooper() });
-        ((TelephonyManager)NetworkSignalUtil.context.getSystemService("phone")).listen(new PhoneStateListener()
+        Log.i("MicroMsg.NetworkSignalUtil", "[InitNetworkSignalUtil] run.. %s", new Object[] { Looper.myLooper() });
+        TelephonyManager localTelephonyManager = (TelephonyManager)NetworkSignalUtil.context.getSystemService("phone");
+        Object localObject = new PhoneStateListener()
         {
           public void onSignalStrengthsChanged(SignalStrength paramAnonymous2SignalStrength)
           {
             super.onSignalStrengthsChanged(paramAnonymous2SignalStrength);
             NetworkSignalUtil.calSignalStrength(paramAnonymous2SignalStrength);
           }
-        }, 256);
+        };
+        localObject = c.a(256, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mars/comm/NetworkSignalUtil$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+        localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, "com/tencent/mars/comm/NetworkSignalUtil$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
       }
     });
   }
@@ -88,7 +96,7 @@ public class NetworkSignalUtil
     if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
     {
       int j = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 10);
-      ae.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:" + j * 10);
+      Log.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:" + j * 10);
       int i = j;
       if (j > 10) {
         i = 10;
@@ -99,7 +107,7 @@ public class NetworkSignalUtil
       }
       return j * 10;
     }
-    ae.v("MicroMsg.NetworkSignalUtil", "Can Not Get Wifi Signal");
+    Log.v("MicroMsg.NetworkSignalUtil", "Can Not Get Wifi Signal");
     return 0L;
   }
 }

@@ -2,27 +2,17 @@ package com.tencent.mm.model;
 
 public abstract interface an
 {
-  public abstract void ak(String paramString1, String paramString2);
+  public abstract void a(ao paramao);
   
-  public abstract void wj(String paramString);
+  public abstract void akq();
   
-  public abstract void wk(String paramString);
+  public abstract void akr();
   
-  public abstract am wl(String paramString);
-  
-  public abstract am wm(String paramString);
-  
-  public abstract void wn(String paramString);
-  
-  public abstract void wo(String paramString);
-  
-  public abstract void wp(String paramString);
-  
-  public abstract void wq(String paramString);
+  public abstract void b(ao paramao);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.an
  * JD-Core Version:    0.7.0.1
  */

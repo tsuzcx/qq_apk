@@ -13,7 +13,7 @@ public final class i
     return localBigDecimal;
   }
   
-  public static double v(int[] paramArrayOfInt)
+  public static double x(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(22470);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
@@ -37,7 +37,7 @@ public final class i
     return d1;
   }
   
-  public static double w(int[] paramArrayOfInt)
+  public static double y(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(22471);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
@@ -46,7 +46,7 @@ public final class i
       AppMethodBeat.o(22471);
       throw paramArrayOfInt;
     }
-    double d = v(paramArrayOfInt);
+    double d = x(paramArrayOfInt);
     BigDecimal localBigDecimal = new BigDecimal(0.0D);
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -62,7 +62,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.a.i
  * JD-Core Version:    0.7.0.1
  */

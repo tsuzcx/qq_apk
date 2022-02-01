@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/hat" android:padding="@dimen/c0" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_cutie" />
-    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/hau" android:visibility="gone" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" />
-</merge>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/j7g" android:background="@drawable/ast" android:layout_width="fill_parent" android:layout_height="100.0dip">
+        <ImageView android:id="@id/agc" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="40.0dip" />
+        <TextView android:textSize="18.0dip" android:id="@id/fti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="text" />
+    </LinearLayout> > </LinearLayout>

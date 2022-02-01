@@ -10,12 +10,12 @@ public enum f
   static
   {
     AppMethodBeat.i(46297);
-    kPy = new f("OK", 0, 0, "ok");
-    kPz = new f("SYSTEM_ERROR", 1, -1, "fail system error");
-    kPA = new f("CGI_ERROR", 2, -2, "fail CGI error");
-    kPB = new f("CANCEL", 3, -3, "fail cancel");
-    kPC = new f("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
-    kPD = new f[] { kPy, kPz, kPA, kPB, kPC };
+    lUw = new f("OK", 0, 0, "ok");
+    lUx = new f("SYSTEM_ERROR", 1, -1, "fail system error");
+    lUy = new f("CGI_ERROR", 2, -2, "fail CGI error");
+    lUz = new f("CANCEL", 3, -3, "fail cancel");
+    lUA = new f("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
+    lUB = new f[] { lUw, lUx, lUy, lUz, lUA };
     AppMethodBeat.o(46297);
   }
   
@@ -27,7 +27,7 @@ public enum f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.f
  * JD-Core Version:    0.7.0.1
  */

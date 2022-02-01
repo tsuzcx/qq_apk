@@ -1,72 +1,132 @@
 package com.tencent.mm.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
 
-public final class an
+public final class an<T>
 {
-  public static Bitmap c(Bitmap paramBitmap, float paramFloat)
+  private Field bUo;
+  private String classname;
+  private String fieldName;
+  private boolean gKM;
+  private Object obj;
+  
+  public an(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(159110);
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    AppMethodBeat.i(159106);
+    if (paramObject == null)
     {
-      ap.e("WeUIBitmapUtil", "getRoundedCornerBitmap in bitmap is null", new Object[0]);
-      AppMethodBeat.o(159110);
-      return null;
+      paramObject = new IllegalArgumentException("obj cannot be null");
+      AppMethodBeat.o(159106);
+      throw paramObject;
     }
-    Bitmap localBitmap = j(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-    if (localBitmap == null)
-    {
-      AppMethodBeat.o(159110);
-      return null;
-    }
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    RectF localRectF = new RectF(localRect);
-    localPaint.setAntiAlias(true);
-    localPaint.setDither(true);
-    localPaint.setFilterBitmap(true);
-    localCanvas.drawARGB(0, 0, 0, 0);
-    localPaint.setColor(-4144960);
-    localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
-    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
-    ap.i("WeUIBitmapUtil", "getRoundedCornerBitmap bitmap recycle %s", new Object[] { paramBitmap });
-    paramBitmap.recycle();
-    AppMethodBeat.o(159110);
-    return localBitmap;
+    this.obj = paramObject;
+    this.fieldName = paramString;
+    this.classname = null;
+    AppMethodBeat.o(159106);
   }
   
-  private static Bitmap j(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
+  private void prepare()
   {
-    AppMethodBeat.i(159111);
-    Object localObject = null;
-    try
+    AppMethodBeat.i(159107);
+    if (this.gKM)
     {
-      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
-      AppMethodBeat.o(159111);
-      return paramConfig;
+      AppMethodBeat.o(159107);
+      return;
     }
-    catch (Throwable paramConfig)
-    {
-      for (;;)
+    this.gKM = true;
+    Class localClass = this.obj.getClass();
+    while (localClass != null) {
+      try
       {
-        paramConfig = localObject;
+        Field localField1 = localClass.getDeclaredField(this.fieldName);
+        localField1.setAccessible(true);
+        this.bUo = localField1;
+        return;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            if ((this.classname != null) && (!this.classname.equals("")))
+            {
+              Field[] arrayOfField = localClass.getDeclaredFields();
+              int j = arrayOfField.length;
+              i = 0;
+              if (i < j)
+              {
+                Field localField2 = arrayOfField[i];
+                if (!localField2.getType().getName().equals(this.classname)) {
+                  continue;
+                }
+                localField2.setAccessible(true);
+                this.bUo = localField2;
+              }
+            }
+          }
+          catch (Exception localException2)
+          {
+            int i;
+            continue;
+          }
+          localClass = localClass.getSuperclass();
+          break;
+          i += 1;
+        }
+      }
+      finally
+      {
+        localClass.getSuperclass();
+        AppMethodBeat.o(159107);
       }
     }
+    AppMethodBeat.o(159107);
+  }
+  
+  public final T get()
+  {
+    AppMethodBeat.i(159108);
+    prepare();
+    Object localObject;
+    if (this.bUo == null)
+    {
+      localObject = new NoSuchFieldException();
+      AppMethodBeat.o(159108);
+      throw ((Throwable)localObject);
+    }
+    try
+    {
+      localObject = this.bUo.get(this.obj);
+      AppMethodBeat.o(159108);
+      return localObject;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
+      AppMethodBeat.o(159108);
+      throw localIllegalArgumentException;
+    }
+  }
+  
+  public final void set(T paramT)
+  {
+    AppMethodBeat.i(159109);
+    prepare();
+    if (this.bUo == null)
+    {
+      paramT = new NoSuchFieldException();
+      AppMethodBeat.o(159109);
+      throw paramT;
+    }
+    this.bUo.set(this.obj, paramT);
+    AppMethodBeat.o(159109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.an
  * JD-Core Version:    0.7.0.1
  */

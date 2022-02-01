@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class nf
-  extends b
+  extends IEvent
 {
-  public a dCj;
+  public a dTf;
   
   public nf()
   {
@@ -15,23 +15,23 @@ public final class nf
   
   private nf(byte paramByte)
   {
-    AppMethodBeat.i(42654);
-    this.dCj = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(116461);
+    this.dTf = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(42654);
+    AppMethodBeat.o(116461);
   }
   
   public static final class a
   {
-    public String bVF;
-    public int type;
-    public String userName;
+    public String chatroomName;
+    public boolean dSQ = false;
+    public int dTg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.nf
  * JD-Core Version:    0.7.0.1
  */

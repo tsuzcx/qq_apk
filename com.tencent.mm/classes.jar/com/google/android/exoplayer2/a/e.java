@@ -8,21 +8,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface e
 {
-  public abstract void c(int paramInt, long paramLong1, long paramLong2);
-  
   public abstract void c(d paramd);
   
   public abstract void c(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void d(int paramInt, long paramLong1, long paramLong2);
   
   public abstract void d(Format paramFormat);
   
   public abstract void d(d paramd);
   
-  public abstract void dL(int paramInt);
+  public abstract void dG(int paramInt);
   
   public static final class a
   {
-    final e beS;
+    final e beP;
     final Handler handler;
     
     public a(Handler paramHandler, e parame)
@@ -32,7 +32,7 @@ public abstract interface e
       for (paramHandler = (Handler)a.checkNotNull(paramHandler);; paramHandler = null)
       {
         this.handler = paramHandler;
-        this.beS = parame;
+        this.beP = parame;
         AppMethodBeat.o(91769);
         return;
       }
@@ -41,13 +41,13 @@ public abstract interface e
     public final void e(final d paramd)
     {
       AppMethodBeat.i(91770);
-      if (this.beS != null) {
+      if (this.beP != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(91767);
-            e.a.this.beS.d(paramd);
+            e.a.this.beP.d(paramd);
             AppMethodBeat.o(91767);
           }
         });
@@ -58,7 +58,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "", "id", "", "startTime", "", "endTime", "minShowTime", "url", "", "(IDDDLjava/lang/String;)V", "canCreateTime", "getCanCreateTime", "()D", "setCanCreateTime", "(D)V", "end", "", "getEnd", "()Z", "setEnd", "(Z)V", "getEndTime", "hasShow", "getHasShow", "setHasShow", "getId", "()I", "isBeforeCurrentTime", "setBeforeCurrentTime", "isShowControlBar", "setShowControlBar", "getMinShowTime", "needAdjustHeight", "getNeedAdjustHeight", "setNeedAdjustHeight", "needDestroyNotInDotArea", "getNeedDestroyNotInDotArea", "setNeedDestroyNotInDotArea", "posInfo", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotPosInfo;", "getPosInfo", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotPosInfo;", "setPosInfo", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotPosInfo;)V", "getStartTime", "getUrl", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "", "id", "", "startTime", "", "endTime", "minShowTime", "url", "", "(IDDDLjava/lang/String;)V", "canCreateTime", "getCanCreateTime", "()D", "setCanCreateTime", "(D)V", "end", "", "getEnd", "()Z", "setEnd", "(Z)V", "getEndTime", "hasShow", "getHasShow", "setHasShow", "getId", "()I", "isBeforeCurrentTime", "setBeforeCurrentTime", "isShowControlBar", "setShowControlBar", "getMinShowTime", "needAdjustHeight", "getNeedAdjustHeight", "setNeedAdjustHeight", "needDestroyNotInDotArea", "getNeedDestroyNotInDotArea", "setNeedDestroyNotInDotArea", "posInfo", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotPosInfo;", "getPosInfo", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotPosInfo;", "setPosInfo", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotPosInfo;)V", "getStartTime", "getUrl", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "plugin-brandservice_release"})
 public final class c
 {
-  public boolean del;
+  public boolean dvh;
   public final int id;
-  double owI;
-  public boolean owJ;
-  public boolean owK;
-  public boolean owL;
-  public boolean owM;
-  public boolean owN;
-  public d owO;
-  public final double owP;
-  public final double owQ;
-  private final double owR;
+  double pKm;
+  public boolean pKn;
+  public boolean pKo;
+  public boolean pKp;
+  public boolean pKq;
+  public boolean pKr;
+  public d pKs;
+  public final double pKt;
+  public final double pKu;
+  private final double pKv;
   public final String url;
   
   public c(int paramInt, double paramDouble1, double paramDouble2, double paramDouble3, String paramString)
   {
     AppMethodBeat.i(7284);
     this.id = paramInt;
-    this.owP = paramDouble1;
-    this.owQ = paramDouble2;
-    this.owR = paramDouble3;
+    this.pKt = paramDouble1;
+    this.pKu = paramDouble2;
+    this.pKv = paramDouble3;
     this.url = paramString;
-    this.owI = (this.owQ - this.owR);
-    this.owO = new d();
+    this.pKm = (this.pKu - this.pKv);
+    this.pKs = new d();
     AppMethodBeat.o(7284);
   }
   
@@ -42,7 +42,7 @@ public final class c
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((this.id != paramObject.id) || (Double.compare(this.owP, paramObject.owP) != 0) || (Double.compare(this.owQ, paramObject.owQ) != 0) || (Double.compare(this.owR, paramObject.owR) != 0) || (!p.i(this.url, paramObject.url))) {}
+        if ((this.id != paramObject.id) || (Double.compare(this.pKt, paramObject.pKt) != 0) || (Double.compare(this.pKu, paramObject.pKu) != 0) || (Double.compare(this.pKv, paramObject.pKv) != 0) || (!p.j(this.url, paramObject.url))) {}
       }
     }
     else
@@ -58,11 +58,11 @@ public final class c
   {
     AppMethodBeat.i(7286);
     int j = this.id;
-    long l = Double.doubleToLongBits(this.owP);
+    long l = Double.doubleToLongBits(this.pKt);
     int k = (int)(l ^ l >>> 32);
-    l = Double.doubleToLongBits(this.owQ);
+    l = Double.doubleToLongBits(this.pKu);
     int m = (int)(l ^ l >>> 32);
-    l = Double.doubleToLongBits(this.owR);
+    l = Double.doubleToLongBits(this.pKv);
     int n = (int)(l ^ l >>> 32);
     String str = this.url;
     if (str != null) {}
@@ -76,7 +76,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(7285);
-    String str = "BizVideoDotInfo(id=" + this.id + ", startTime=" + this.owP + ", endTime=" + this.owQ + ", minShowTime=" + this.owR + ", url=" + this.url + ")";
+    String str = "BizVideoDotInfo(id=" + this.id + ", startTime=" + this.pKt + ", endTime=" + this.pKu + ", minShowTime=" + this.pKv + ", url=" + this.url + ")";
     AppMethodBeat.o(7285);
     return str;
   }

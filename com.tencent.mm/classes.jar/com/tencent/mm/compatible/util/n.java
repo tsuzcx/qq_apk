@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
 {
-  public static int B(Context paramContext, int paramInt)
+  public static int D(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(211736);
+    AppMethodBeat.i(200825);
     try
     {
       paramContext = paramContext.getResources();
@@ -18,18 +18,26 @@ public final class n
       if (i != 0)
       {
         i = paramContext.getDimensionPixelSize(i);
-        AppMethodBeat.o(211736);
+        AppMethodBeat.o(200825);
         return i;
       }
-      AppMethodBeat.o(211736);
+      AppMethodBeat.o(200825);
       return paramInt;
     }
     catch (Resources.NotFoundException paramContext)
     {
-      ae.printErrStackTrace("MicroMsg.ResourceCompat", paramContext, "get res of status_bar_height fail", new Object[0]);
-      AppMethodBeat.o(211736);
+      Log.printErrStackTrace("MicroMsg.ResourceCompat", paramContext, "get res of status_bar_height fail", new Object[0]);
+      AppMethodBeat.o(200825);
     }
     return paramInt;
+  }
+  
+  public static int getStatusBarHeight(Context paramContext)
+  {
+    AppMethodBeat.i(200824);
+    int i = D(paramContext, 0);
+    AppMethodBeat.o(200824);
+    return i;
   }
 }
 

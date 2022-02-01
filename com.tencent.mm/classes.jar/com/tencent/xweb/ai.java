@@ -5,18 +5,52 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class ai
 {
-  static String MNV;
-  static boolean MNW = true;
-  static boolean MNX;
+  static String SAR;
+  static boolean SAS = true;
+  static boolean SAT;
   
-  public static void bcI(String paramString)
+  public static void Ek(boolean paramBoolean)
   {
     try
     {
-      AppMethodBeat.i(217407);
+      AppMethodBeat.i(219063);
+      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setIsEmbedDirReady: ".concat(String.valueOf(paramBoolean)));
+      SAS = paramBoolean;
+      AppMethodBeat.o(219063);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void El(boolean paramBoolean)
+  {
+    try
+    {
+      AppMethodBeat.i(219064);
+      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setForbidDownloadCode: ".concat(String.valueOf(paramBoolean)));
+      SAT = paramBoolean;
+      AppMethodBeat.o(219064);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void bss(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(219061);
       XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setEmbedInstallLibDir: ".concat(String.valueOf(paramString)));
-      MNV = paramString;
-      AppMethodBeat.o(217407);
+      SAR = paramString;
+      AppMethodBeat.o(219061);
       return;
     }
     finally
@@ -27,30 +61,30 @@ public final class ai
   }
   
   /* Error */
-  public static String gfQ()
+  public static String hti()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 51
+    //   3: ldc 65
     //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 45	com/tencent/xweb/ai:MNV	Ljava/lang/String;
-    //   11: invokestatic 57	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8: getstatic 62	com/tencent/xweb/ai:SAR	Ljava/lang/String;
+    //   11: invokestatic 71	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   14: ifne +17 -> 31
-    //   17: getstatic 45	com/tencent/xweb/ai:MNV	Ljava/lang/String;
+    //   17: getstatic 62	com/tencent/xweb/ai:SAR	Ljava/lang/String;
     //   20: astore_0
-    //   21: ldc 51
-    //   23: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: ldc 65
+    //   23: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   26: ldc 2
     //   28: monitorexit
     //   29: aload_0
     //   30: areturn
-    //   31: invokestatic 61	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
-    //   34: invokevirtual 67	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   37: getfield 72	android/content/pm/ApplicationInfo:nativeLibraryDir	Ljava/lang/String;
+    //   31: invokestatic 75	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
+    //   34: invokevirtual 81	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   37: getfield 86	android/content/pm/ApplicationInfo:nativeLibraryDir	Ljava/lang/String;
     //   40: astore_0
-    //   41: ldc 51
-    //   43: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   41: ldc 65
+    //   43: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: goto -20 -> 26
     //   49: astore_0
     //   50: ldc 2
@@ -68,12 +102,12 @@ public final class ai
   }
   
   /* Error */
-  public static boolean gfR()
+  public static boolean htj()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 76	com/tencent/xweb/ai:MNX	Z
+    //   3: getstatic 52	com/tencent/xweb/ai:SAT	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +10 -> 18
@@ -99,44 +133,10 @@ public final class ai
     //   from	to	target	type
     //   3	7	23	finally
   }
-  
-  public static void zU(boolean paramBoolean)
-  {
-    try
-    {
-      AppMethodBeat.i(217409);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setIsEmbedDirReady: ".concat(String.valueOf(paramBoolean)));
-      MNW = paramBoolean;
-      AppMethodBeat.o(217409);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void zV(boolean paramBoolean)
-  {
-    try
-    {
-      AppMethodBeat.i(217410);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setForbidDownloadCode: ".concat(String.valueOf(paramBoolean)));
-      MNX = paramBoolean;
-      AppMethodBeat.o(217410);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.ai
  * JD-Core Version:    0.7.0.1
  */

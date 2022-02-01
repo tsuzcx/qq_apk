@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 final class u
 {
-  private final BroadcastReceiver.PendingResult bLR;
-  private final ScheduledFuture<?> bLS;
+  private final BroadcastReceiver.PendingResult bMh;
+  private final ScheduledFuture<?> bMi;
   final Intent intent;
   private boolean zzt;
   
@@ -19,8 +19,8 @@ final class u
     AppMethodBeat.i(4210);
     this.zzt = false;
     this.intent = paramIntent;
-    this.bLR = paramPendingResult;
-    this.bLS = paramScheduledExecutorService.schedule(new v(this, paramIntent), 9500L, TimeUnit.MILLISECONDS);
+    this.bMh = paramPendingResult;
+    this.bMi = paramScheduledExecutorService.schedule(new v(this, paramIntent), 9500L, TimeUnit.MILLISECONDS);
     AppMethodBeat.o(4210);
   }
   
@@ -31,8 +31,8 @@ final class u
       AppMethodBeat.i(4211);
       if (!this.zzt)
       {
-        this.bLR.finish();
-        this.bLS.cancel(false);
+        this.bMh.finish();
+        this.bMi.cancel(false);
         this.zzt = true;
       }
       AppMethodBeat.o(4211);
@@ -43,7 +43,7 @@ final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.iid.u
  * JD-Core Version:    0.7.0.1
  */

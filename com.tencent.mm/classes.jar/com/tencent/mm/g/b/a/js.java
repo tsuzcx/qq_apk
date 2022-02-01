@@ -6,83 +6,86 @@ import com.tencent.mm.plugin.report.a;
 public final class js
   extends a
 {
-  public long eDF = 0L;
-  public long eDG = 0L;
-  public long eDH = 0L;
-  public long eDI = 0L;
-  private String eDJ = "";
-  private String eDK = "";
-  public long ejq = 0L;
+  public long eRo = 0L;
+  private String eSl = "";
+  public long eSm = 0L;
+  private String eSn = "";
+  public long eSo = 0L;
+  private String eiB = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(121787);
+    AppMethodBeat.i(94854);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eDF);
+    ((StringBuffer)localObject).append(this.eSl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDG);
+    ((StringBuffer)localObject).append(this.eiB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDH);
+    ((StringBuffer)localObject).append(this.eSm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejq);
+    ((StringBuffer)localObject).append(this.eSn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDI);
+    ((StringBuffer)localObject).append(this.eSo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDK);
+    ((StringBuffer)localObject).append(this.eRo);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(121787);
+    aMq((String)localObject);
+    AppMethodBeat.o(94854);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(121788);
+    AppMethodBeat.i(94855);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ExptId:").append(this.eDF);
+    ((StringBuffer)localObject).append("EnterObjectId:").append(this.eSl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("GroupId:").append(this.eDG);
+    ((StringBuffer)localObject).append("SessionId:").append(this.eiB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExptSeq:").append(this.eDH);
+    ((StringBuffer)localObject).append("ExposeUinCount:").append(this.eSm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartTimeStampSec:").append(this.ejq);
+    ((StringBuffer)localObject).append("ExposeUinList:").append(this.eSn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndTimeStampSec:").append(this.eDI);
+    ((StringBuffer)localObject).append("ExposeNewVideoCount:").append(this.eSo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExptKey:").append(this.eDJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExptVal:").append(this.eDK);
+    ((StringBuffer)localObject).append("InteractiveUserCount:").append(this.eRo);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(121788);
+    AppMethodBeat.o(94855);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15452;
+    return 16843;
   }
   
-  public final js sD(String paramString)
+  public final js wZ(String paramString)
   {
-    AppMethodBeat.i(121785);
-    this.eDJ = t("ExptKey", paramString, true);
-    AppMethodBeat.o(121785);
+    AppMethodBeat.i(94851);
+    this.eSl = x("EnterObjectId", paramString, true);
+    AppMethodBeat.o(94851);
     return this;
   }
   
-  public final js sE(String paramString)
+  public final js xa(String paramString)
   {
-    AppMethodBeat.i(121786);
-    this.eDK = t("ExptVal", paramString, false);
-    AppMethodBeat.o(121786);
+    AppMethodBeat.i(94852);
+    this.eiB = x("SessionId", paramString, true);
+    AppMethodBeat.o(94852);
+    return this;
+  }
+  
+  public final js xb(String paramString)
+  {
+    AppMethodBeat.i(94853);
+    this.eSn = x("ExposeUinList", paramString, true);
+    AppMethodBeat.o(94853);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.js
  * JD-Core Version:    0.7.0.1
  */

@@ -9,24 +9,24 @@ import java.util.Calendar;
 
 final class i
 {
-  private static i ZT;
-  private final LocationManager ZU;
-  private final a ZV = new a();
+  private static i aag;
+  private final LocationManager aah;
+  private final a aai = new a();
   private final Context mContext;
   
   private i(Context paramContext, LocationManager paramLocationManager)
   {
     this.mContext = paramContext;
-    this.ZU = paramLocationManager;
+    this.aah = paramLocationManager;
   }
   
-  private Location B(String paramString)
+  private Location C(String paramString)
   {
     try
     {
-      if (this.ZU.isProviderEnabled(paramString))
+      if (this.aah.isProviderEnabled(paramString))
       {
-        paramString = this.ZU.getLastKnownLocation(paramString);
+        paramString = this.aah.getLastKnownLocation(paramString);
         return paramString;
       }
     }
@@ -34,23 +34,13 @@ final class i
     return null;
   }
   
-  static i Z(Context paramContext)
-  {
-    if (ZT == null)
-    {
-      paramContext = paramContext.getApplicationContext();
-      ZT = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
-    }
-    return ZT;
-  }
-  
   private void a(Location paramLocation)
   {
-    a locala = this.ZV;
+    a locala = this.aai;
     long l1 = System.currentTimeMillis();
-    h localh = h.gL();
+    h localh = h.gS();
     localh.b(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
-    long l2 = localh.ZR;
+    long l2 = localh.aae;
     localh.b(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
     if (localh.state == 1) {}
     long l3;
@@ -58,20 +48,20 @@ final class i
     long l5;
     for (boolean bool = true;; bool = false)
     {
-      l3 = localh.ZS;
-      l4 = localh.ZR;
+      l3 = localh.aaf;
+      l4 = localh.aae;
       localh.b(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
-      l5 = localh.ZS;
+      l5 = localh.aaf;
       if ((l3 != -1L) && (l4 != -1L)) {
         break;
       }
       l1 = 43200000L + l1;
-      locala.ZW = bool;
-      locala.ZX = l2;
-      locala.ZY = l3;
-      locala.ZZ = l4;
-      locala.aaa = l5;
-      locala.aab = l1;
+      locala.aaj = bool;
+      locala.aak = l2;
+      locala.aal = l3;
+      locala.aam = l4;
+      locala.aan = l5;
+      locala.aao = l1;
       return;
     }
     if (l1 > l4) {
@@ -89,15 +79,25 @@ final class i
     }
   }
   
+  static i aa(Context paramContext)
+  {
+    if (aag == null)
+    {
+      paramContext = paramContext.getApplicationContext();
+      aag = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
+    }
+    return aag;
+  }
+  
   @SuppressLint({"MissingPermission"})
-  private Location gN()
+  private Location gU()
   {
     Location localLocation2 = null;
     if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_COARSE_LOCATION") == 0) {}
-    for (Location localLocation1 = B("network");; localLocation1 = null)
+    for (Location localLocation1 = C("network");; localLocation1 = null)
     {
       if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_FINE_LOCATION") == 0) {
-        localLocation2 = B("gps");
+        localLocation2 = C("gps");
       }
       Location localLocation3;
       if ((localLocation2 != null) && (localLocation1 != null))
@@ -116,22 +116,22 @@ final class i
     }
   }
   
-  private boolean gO()
+  private boolean gV()
   {
-    return this.ZV.aab > System.currentTimeMillis();
+    return this.aai.aao > System.currentTimeMillis();
   }
   
-  final boolean gM()
+  final boolean gT()
   {
-    a locala = this.ZV;
-    if (gO()) {
-      return locala.ZW;
+    a locala = this.aai;
+    if (gV()) {
+      return locala.aaj;
     }
-    Location localLocation = gN();
+    Location localLocation = gU();
     if (localLocation != null)
     {
       a(localLocation);
-      return locala.ZW;
+      return locala.aaj;
     }
     int i = Calendar.getInstance().get(11);
     return (i < 6) || (i >= 22);
@@ -139,12 +139,12 @@ final class i
   
   static final class a
   {
-    boolean ZW;
-    long ZX;
-    long ZY;
-    long ZZ;
-    long aaa;
-    long aab;
+    boolean aaj;
+    long aak;
+    long aal;
+    long aam;
+    long aan;
+    long aao;
   }
 }
 

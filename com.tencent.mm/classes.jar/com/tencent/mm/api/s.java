@@ -1,12 +1,15 @@
 package com.tencent.mm.api;
 
-import android.graphics.Bitmap;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.rx;
 
 public abstract interface s
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public abstract void a(String paramString, i parami, de paramde);
   
-  public abstract void onError(Exception paramException);
+  public abstract void b(rx paramrx);
+  
+  public abstract void b(String paramString, i parami, de paramde);
 }
 
 

@@ -18,12 +18,12 @@ public abstract class a<T, V, X, Y>
   
   public a(f.b<T, V> paramb)
   {
-    super(paramb);
+    super(10, paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.memory.a.a
  * JD-Core Version:    0.7.0.1
  */

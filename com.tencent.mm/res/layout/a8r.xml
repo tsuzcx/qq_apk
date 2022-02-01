@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" style="@style/qp"
+<RelativeLayout android:id="@id/j44" android:background="@color/kz" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/ld">
-        <com.tencent.mm.plugin.freewifi.ui.FreeWifiStateView android:id="@id/c74" style="@style/jj" />
-        <TextView android:id="@id/c75" style="@style/jk" />
-        <TextView android:id="@id/c76" style="@style/jl" />
-        <Button android:id="@id/eqr" android:visibility="gone" android:text="@string/cl7" style="@style/je" />
+    <ImageView android:id="@id/j73" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/app_attach_file_icon_unknow" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/dtx" android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:layout_marginTop="@dimen/hi" android:scaleType="centerCrop" android:layout_centerHorizontal="true" android:contentDescription="@string/hb" />
+    <TextView android:gravity="center" android:id="@id/fti" android:layout_marginLeft="@dimen/g" android:layout_marginTop="@dimen/jv" android:layout_marginRight="@dimen/g" android:text="{name}" android:layout_below="@id/dtx" android:layout_centerHorizontal="true" style="@style/p_" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bue" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/fti">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hw">
+            <ProgressBar android:id="@id/buc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="?android:progressBarStyleHorizontal" />
+            <ImageView android:id="@id/buk" android:background="@drawable/ap8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ah4" />
+        </LinearLayout>
+        <TextView android:id="@id/bug" android:layout_width="wrap_content" android:layout_marginTop="@dimen/k" style="@style/m0" />
     </LinearLayout>
-    <Button android:id="@id/cjb" android:text="@string/cks" style="@style/jn" />
-</LinearLayout>
+    <Button android:id="@id/ggf" android:layout_width="fill_parent" android:layout_marginTop="@dimen/hw" android:text="@string/ca0" android:layout_below="@id/fti" android:layout_centerHorizontal="true" style="@style/ou" />
+    <Button android:id="@id/g48" android:layout_width="fill_parent" android:layout_marginTop="@dimen/hw" android:text="@string/c_z" android:layout_below="@id/ggf" android:layout_centerHorizontal="true" style="@style/ou" />
+    <TextView android:gravity="center" android:id="@id/ipe" android:layout_width="wrap_content" android:layout_marginTop="@dimen/k" android:text="@string/c_x" android:layout_below="@id/g48" android:layout_centerHorizontal="true" style="@style/m0" />
+    <Button android:id="@id/bto" android:layout_marginTop="@dimen/hw" android:text="@string/c_y" android:layout_below="@id/fti" android:layout_centerHorizontal="true" style="@style/ou" />
+</RelativeLayout>

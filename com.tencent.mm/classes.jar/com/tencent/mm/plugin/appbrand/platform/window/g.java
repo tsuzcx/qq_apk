@@ -4,7 +4,9 @@ import android.util.DisplayMetrics;
 
 public abstract interface g
 {
-  public abstract boolean EX();
+  public abstract boolean OD();
+  
+  public abstract boolean OG();
   
   public abstract d a(d.b paramb);
   
@@ -12,13 +14,15 @@ public abstract interface g
   
   public abstract float getScale();
   
+  public abstract c.c getStatusBar();
+  
   public abstract DisplayMetrics getVDisplayMetrics();
   
   public abstract void setSoftOrientation(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.g
  * JD-Core Version:    0.7.0.1
  */

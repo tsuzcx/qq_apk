@@ -13,13 +13,13 @@ final class b$10
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(125940);
-    e.ywz.f(17080, new Object[] { Integer.valueOf(44), Integer.valueOf(1) });
+    e.Cxv.a(17080, new Object[] { Integer.valueOf(44), Integer.valueOf(1) });
     AppMethodBeat.o(125940);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.b.10
  * JD-Core Version:    0.7.0.1
  */

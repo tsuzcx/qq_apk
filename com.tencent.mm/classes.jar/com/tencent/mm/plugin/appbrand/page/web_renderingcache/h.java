@@ -3,39 +3,39 @@ package com.tencent.mm.plugin.appbrand.page.web_renderingcache;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.vfs.s;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheUtils;", "", "()V", "generateDirectoryPrefix", "", "appId", "generateRootDirectoryPrefix", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheUtils;", "", "()V", "generateDirectoryPrefix", "", "appId", "generateRootDirectoryPrefix", "plugin-appbrand-integration_release"})
 public final class h
 {
-  public static final h mlZ;
+  public static final h nwx;
   
   static
   {
     AppMethodBeat.i(50996);
-    mlZ = new h();
+    nwx = new h();
     AppMethodBeat.o(50996);
   }
   
-  public static final String Ut(String paramString)
+  public static final String aeh(String paramString)
   {
     AppMethodBeat.i(50994);
     p.h(paramString, "appId");
-    paramString = bwA() + '/' + paramString;
-    o.aZI(paramString);
+    paramString = bSI() + '/' + paramString;
+    s.boN(paramString);
     AppMethodBeat.o(50994);
     return paramString;
   }
   
-  public static final String bwA()
+  public static final String bSI()
   {
     AppMethodBeat.i(50995);
-    Object localObject = g.ajR();
+    Object localObject = g.aAh();
     p.g(localObject, "MMKernel.storage()");
-    String str = ((e)localObject).ajw();
+    String str = ((e)localObject).azM();
     p.g(str, "path");
     localObject = str;
     if (!n.a((CharSequence)str, '/')) {

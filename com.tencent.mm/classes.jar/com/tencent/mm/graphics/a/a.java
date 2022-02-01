@@ -7,10 +7,10 @@ public enum a
   static
   {
     AppMethodBeat.i(136190);
-    gxa = new a("Start", 0);
-    gxb = new a("Stop", 1);
-    gxc = new a("AutoDetect", 2);
-    gxd = new a[] { gxa, gxb, gxc };
+    hjO = new a("Start", 0);
+    hjP = new a("Stop", 1);
+    hjQ = new a("AutoDetect", 2);
+    hjR = new a[] { hjO, hjP, hjQ };
     AppMethodBeat.o(136190);
   }
   

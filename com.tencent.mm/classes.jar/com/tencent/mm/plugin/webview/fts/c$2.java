@@ -1,45 +1,31 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a;
-import com.tencent.mm.g.a.mg;
-import com.tencent.mm.g.a.mg.a;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.websearch.api.ac;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import org.json.JSONObject;
 
 final class c$2
-  extends com.tencent.mm.sdk.b.c<mg>
+  implements Runnable
 {
-  c$2(c paramc)
-  {
-    AppMethodBeat.i(160414);
-    this.__eventId = mg.class.getName().hashCode();
-    AppMethodBeat.o(160414);
-  }
+  c$2(c paramc, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3) {}
   
-  private boolean a(mg parammg)
+  public final void run()
   {
-    AppMethodBeat.i(77887);
-    com.tencent.mm.ay.f localf = parammg.dAP.dAJ;
-    if ((localf != null) && (a.e(localf))) {
-      switch (parammg.dAP.action)
-      {
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(77887);
-      return false;
-      parammg = this.EbY.EbO.iterator();
-      while (parammg.hasNext()) {
-        g.Yt(((Integer)parammg.next()).intValue()).fT(localf.ijZ, 0);
-      }
-      parammg = this.EbY.EbO.iterator();
-      while (parammg.hasNext()) {
-        g.Yt(((Integer)parammg.next()).intValue()).fT(localf.ijZ, 1);
-      }
-    }
+    AppMethodBeat.i(210818);
+    Log.i("MicroMsg.WebSearch.FTSWebViewLogic", "getTeachSearchData realTime, webviewID = %d", new Object[] { Integer.valueOf(this.IOm) });
+    g.azz().a(1048, this.IOi);
+    String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+    long l = ak.aXe("discoverSearchEntry").optLong("guideParam");
+    this.IOi.IOb = new ac(this.gsA, this.val$type, ai.aft(0), this.IOm, str, l, this.DHv, this.lnN, this.IOn);
+    g.azz().a(this.IOi.IOb, 0);
+    AppMethodBeat.o(210818);
   }
 }
 

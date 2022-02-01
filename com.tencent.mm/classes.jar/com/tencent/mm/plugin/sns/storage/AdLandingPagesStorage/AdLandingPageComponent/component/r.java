@@ -7,89 +7,97 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.CircularImageView;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class r
   extends m
 {
-  CircularImageView zVr;
+  CircularImageView Edy;
   
-  public r(Context paramContext, s params, ViewGroup paramViewGroup)
+  public r(Context paramContext, t paramt, ViewGroup paramViewGroup)
   {
-    super(paramContext, params, paramViewGroup);
+    super(paramContext, paramt, paramViewGroup);
   }
   
-  public final void dUI()
-  {
-    this.zVr = ((CircularImageView)this.contentView);
-  }
-  
-  protected final void dUJ()
+  protected final void eWT()
   {
     AppMethodBeat.i(96504);
-    if ((this.contentView == null) || (this.zVr == null))
+    if ((this.contentView == null) || (this.Edy == null))
     {
       AppMethodBeat.o(96504);
       return;
     }
-    s locals = (s)this.zUP;
-    if (locals == null)
+    t localt = (t)this.EcX;
+    if (localt == null)
     {
       AppMethodBeat.o(96504);
       return;
     }
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(locals.zQK, locals.zRh, new f.a()
+    h.a(localt.DYK, localt.DZj, new f.a()
     {
-      public final void ayY(String paramAnonymousString)
+      public final void aNH(String paramAnonymousString)
       {
         AppMethodBeat.i(96501);
         r localr;
         try
         {
-          paramAnonymousString = com.tencent.mm.sdk.platformtools.h.decodeFile(paramAnonymousString);
+          paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString);
           localr = r.this;
           if (paramAnonymousString == null)
           {
-            ae.e("AdLandingPageCircleImgComp", "when set image the bmp is null!");
+            Log.e("AdLandingPageCircleImgComp", "when set image the bmp is null!");
             AppMethodBeat.o(96501);
             return;
           }
-          if (localr.zVr == null)
+          if (localr.Edy == null)
           {
-            ae.e("AdLandingPageCircleImgComp", "when set image the img is null!");
+            Log.e("AdLandingPageCircleImgComp", "when set image the img is null!");
             AppMethodBeat.o(96501);
             return;
           }
         }
         catch (Exception paramAnonymousString)
         {
-          ae.e("AdLandingPageCircleImgComp", "%s" + bu.o(paramAnonymousString));
+          Log.e("AdLandingPageCircleImgComp", "%s" + Util.stackTraceToString(paramAnonymousString));
           AppMethodBeat.o(96501);
           return;
         }
         if (paramAnonymousString.getWidth() == 0)
         {
-          ae.e("AdLandingPageCircleImgComp", "when set image the bmp.getWidth is 0!");
+          Log.e("AdLandingPageCircleImgComp", "when set image the bmp.getWidth is 0!");
           AppMethodBeat.o(96501);
           return;
         }
-        localr.zVr.setImageBitmap(paramAnonymousString);
+        localr.Edy.setImageBitmap(paramAnonymousString);
         AppMethodBeat.o(96501);
       }
       
-      public final void dVu() {}
+      public final void eWN() {}
       
-      public final void dVv() {}
+      public final void eWO() {}
     });
     AppMethodBeat.o(96504);
   }
   
-  protected final View eae()
+  protected final void eWX()
+  {
+    AppMethodBeat.i(96502);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.EcX.paddingLeft, (int)this.EcX.paddingTop, (int)this.EcX.paddingRight, (int)this.EcX.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(96502);
+  }
+  
+  protected final View eWY()
   {
     AppMethodBeat.i(96503);
     CircularImageView localCircularImageView = new CircularImageView(this.context);
@@ -97,20 +105,14 @@ public final class r
     return localCircularImageView;
   }
   
-  protected final void eah()
+  public final void eXe()
   {
-    AppMethodBeat.i(96502);
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zUP.paddingLeft, (int)this.zUP.paddingTop, (int)this.zUP.paddingRight, (int)this.zUP.paddingBottom);
-    }
-    this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(96502);
+    this.Edy = ((CircularImageView)this.contentView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mm.au;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements az
+  implements bd
 {
-  private static aq ibI = null;
+  private static MMHandler iWG = null;
   
-  public static boolean h(Runnable paramRunnable, long paramLong)
+  public static boolean f(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(104523);
     if (paramRunnable == null)
@@ -22,18 +22,18 @@ public class a
       return false;
     }
     boolean bool;
-    if (ibI == null)
+    if (iWG == null)
     {
-      if (ibI != null)
+      if (iWG != null)
       {
         bool = true;
-        ae.w("MicroMsg.GIF.SubCoreGIF", "check decoder thread available fail, handler[%B] stack[%s]", new Object[] { Boolean.valueOf(bool), bu.fpN() });
-        if (ibI != null) {
-          ibI.removeCallbacksAndMessages(null);
+        Log.w("MicroMsg.GIF.SubCoreGIF", "check decoder thread available fail, handler[%B] stack[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack() });
+        if (iWG != null) {
+          iWG.removeCallbacksAndMessages(null);
         }
-        aq localaq = new aq("GIF-Decoder");
-        ibI = localaq;
-        localaq.setLogging(false);
+        MMHandler localMMHandler = new MMHandler("GIF-Decoder");
+        iWG = localMMHandler;
+        localMMHandler.setLogging(false);
       }
     }
     else
@@ -41,7 +41,7 @@ public class a
       if (paramLong <= 0L) {
         break label116;
       }
-      ibI.postDelayed(paramRunnable, paramLong);
+      iWG.postDelayed(paramRunnable, paramLong);
     }
     for (;;)
     {
@@ -50,7 +50,7 @@ public class a
       bool = false;
       break;
       label116:
-      ibI.post(paramRunnable);
+      iWG.post(paramRunnable);
     }
   }
   
@@ -64,8 +64,8 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(104524);
-    if (ibI != null) {
-      ibI.removeCallbacksAndMessages(null);
+    if (iWG != null) {
+      iWG.removeCallbacksAndMessages(null);
     }
     AppMethodBeat.o(104524);
   }
@@ -73,8 +73,8 @@ public class a
   public void onAccountRelease()
   {
     AppMethodBeat.i(104525);
-    if (ibI != null) {
-      ibI.removeCallbacksAndMessages(null);
+    if (iWG != null) {
+      iWG.removeCallbacksAndMessages(null);
     }
     AppMethodBeat.o(104525);
   }

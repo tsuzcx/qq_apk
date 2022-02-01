@@ -23,7 +23,7 @@ public class MMKLoadingImage
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     this.progressBar = new ProgressBar(paramContext);
     this.circleProgressDrawable = new CircleProgressDrawable(paramContext);
-    this.circleProgressDrawable.setStrokeColor(2131100470);
+    this.circleProgressDrawable.setStrokeColor(2131100572);
     this.progressBar.setIndeterminateDrawable(this.circleProgressDrawable);
     this.progressBar.setVisibility(8);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
@@ -42,7 +42,7 @@ public class MMKLoadingImage
     AppMethodBeat.i(19087);
     this.loadingImageStype = paramLoadingImageStyle;
     if (paramLoadingImageStyle == LoadingImageStyle.WHITE) {
-      this.circleProgressDrawable.setStrokeColor(2131101181);
+      this.circleProgressDrawable.setStrokeColor(2131101426);
     }
     for (;;)
     {
@@ -50,9 +50,9 @@ public class MMKLoadingImage
       AppMethodBeat.o(19087);
       return;
       if (paramLoadingImageStyle == LoadingImageStyle.WHITELARGE) {
-        this.circleProgressDrawable.setStrokeColor(2131101181);
+        this.circleProgressDrawable.setStrokeColor(2131101426);
       } else if (paramLoadingImageStyle == LoadingImageStyle.GRAY) {
-        this.circleProgressDrawable.setStrokeColor(2131100470);
+        this.circleProgressDrawable.setStrokeColor(2131100572);
       }
     }
   }
@@ -60,7 +60,7 @@ public class MMKLoadingImage
   public void startAnimating()
   {
     AppMethodBeat.i(19085);
-    this.circleProgressDrawable.bEw();
+    this.circleProgressDrawable.caK();
     this.circleProgressDrawable.start();
     this.progressBar.setVisibility(0);
     AppMethodBeat.o(19085);
@@ -76,7 +76,7 @@ public class MMKLoadingImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKLoadingImage
  * JD-Core Version:    0.7.0.1
  */

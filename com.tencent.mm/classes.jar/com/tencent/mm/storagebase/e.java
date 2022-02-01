@@ -4,7 +4,7 @@ import android.database.AbstractCursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.CursorWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
   extends AbstractCursor
@@ -27,23 +27,6 @@ public final class e
   public e(String[] paramArrayOfString, byte paramByte)
   {
     this(paramArrayOfString);
-  }
-  
-  private static int ea(Object paramObject)
-  {
-    if (paramObject == null) {
-      return 0;
-    }
-    if ((paramObject instanceof byte[])) {
-      return 4;
-    }
-    if (((paramObject instanceof Float)) || ((paramObject instanceof Double))) {
-      return 2;
-    }
-    if (((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Short)) || ((paramObject instanceof Byte))) {
-      return 1;
-    }
-    return 3;
   }
   
   private void ensureCapacity(int paramInt)
@@ -96,6 +79,23 @@ public final class e
     return localObject;
   }
   
+  private static int getType(Object paramObject)
+  {
+    if (paramObject == null) {
+      return 0;
+    }
+    if ((paramObject instanceof byte[])) {
+      return 4;
+    }
+    if (((paramObject instanceof Float)) || ((paramObject instanceof Double))) {
+      return 2;
+    }
+    if (((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Short)) || ((paramObject instanceof Byte))) {
+      return 1;
+    }
+    return 3;
+  }
+  
   public final void addRow(Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(133333);
@@ -136,7 +136,7 @@ public final class e
           i = 0;
           label72:
           if (i < k) {
-            switch (ea(get(i)))
+            switch (getType(get(i)))
             {
             }
           }
@@ -224,7 +224,7 @@ public final class e
       AppMethodBeat.o(133340);
       return d;
     }
-    double d = bu.getDouble(localObject.toString(), 0.0D);
+    double d = Util.getDouble(localObject.toString(), 0.0D);
     AppMethodBeat.o(133340);
     return d;
   }
@@ -244,7 +244,7 @@ public final class e
       AppMethodBeat.o(133339);
       return f;
     }
-    float f = bu.getFloat(localObject.toString(), 0.0F);
+    float f = Util.getFloat(localObject.toString(), 0.0F);
     AppMethodBeat.o(133339);
     return f;
   }
@@ -264,7 +264,7 @@ public final class e
       AppMethodBeat.o(133337);
       return paramInt;
     }
-    paramInt = bu.getInt(localObject.toString(), 0);
+    paramInt = Util.getInt(localObject.toString(), 0);
     AppMethodBeat.o(133337);
     return paramInt;
   }
@@ -284,7 +284,7 @@ public final class e
       AppMethodBeat.o(133338);
       return l;
     }
-    long l = bu.getLong(localObject.toString(), 0L);
+    long l = Util.getLong(localObject.toString(), 0L);
     AppMethodBeat.o(133338);
     return l;
   }
@@ -326,7 +326,7 @@ public final class e
   public final int getType(int paramInt)
   {
     AppMethodBeat.i(133342);
-    paramInt = ea(get(paramInt));
+    paramInt = getType(get(paramInt));
     AppMethodBeat.o(133342);
     return paramInt;
   }
@@ -345,7 +345,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.storagebase.e
  * JD-Core Version:    0.7.0.1
  */

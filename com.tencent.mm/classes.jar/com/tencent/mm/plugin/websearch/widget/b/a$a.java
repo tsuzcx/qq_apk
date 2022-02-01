@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.websearch.widget.b;
 
 public abstract interface a$a
 {
-  public abstract void ePB();
+  public abstract void fXH();
   
-  public abstract void eQy();
+  public abstract void fYX();
 }
 
 

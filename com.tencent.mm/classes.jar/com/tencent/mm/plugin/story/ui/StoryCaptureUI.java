@@ -4,33 +4,33 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fz;
+import com.tencent.mm.g.b.a.jn;
 import com.tencent.mm.plugin.mmsight.d;
 import com.tencent.mm.plugin.story.h.h;
 import com.tencent.mm.plugin.story.ui.view.UserGuideView;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
 @com.tencent.mm.ui.base.a(3)
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/StoryCaptureUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "guideView", "Lcom/tencent/mm/plugin/story/ui/view/UserGuideView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/StoryCaptureUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "guideView", "Lcom/tencent/mm/plugin/story/ui/view/UserGuideView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-story_release"})
 public final class StoryCaptureUI
   extends MMActivity
 {
-  public static final StoryCaptureUI.a Bme;
-  private UserGuideView Bmd;
+  public static final a FwU;
+  private UserGuideView FwT;
   
   static
   {
     AppMethodBeat.i(119629);
-    Bme = new StoryCaptureUI.a((byte)0);
+    FwU = new a((byte)0);
     AppMethodBeat.o(119629);
   }
   
   public final int getLayoutId()
   {
-    return 2131495666;
+    return 2131496571;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -41,16 +41,16 @@ public final class StoryCaptureUI
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(2097280);
     getWindow().setFlags(201327616, 201327616);
-    d.ow(true);
-    this.Bmd = ((UserGuideView)findViewById(2131305283));
-    paramBundle = this.Bmd;
+    d.rb(true);
+    this.FwT = ((UserGuideView)findViewById(2131308488));
+    paramBundle = this.FwT;
     if (paramBundle != null) {
-      paramBundle.setClickListener((d.g.a.a)new b(this));
+      paramBundle.setClickListener((kotlin.g.a.a)new b(this));
     }
-    paramBundle = h.BjR;
-    h.enM().lh(1L);
-    paramBundle = h.BjR;
-    h.enN();
+    paramBundle = h.FuH;
+    h.fqm().sj(1L);
+    paramBundle = h.FuH;
+    h.fqn();
     AppMethodBeat.o(119628);
   }
   
@@ -60,10 +60,13 @@ public final class StoryCaptureUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/StoryCaptureUI$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     b(StoryCaptureUI paramStoryCaptureUI)
     {
@@ -73,7 +76,7 @@ public final class StoryCaptureUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.StoryCaptureUI
  * JD-Core Version:    0.7.0.1
  */

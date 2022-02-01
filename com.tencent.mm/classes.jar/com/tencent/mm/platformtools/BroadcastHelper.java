@@ -10,9 +10,9 @@ import com.tencent.mm.booter.MMReceivers.ConnectionReceiver;
 import com.tencent.mm.booter.MountReceiver;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.downloader.model.FileDownloadReceiver;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 
 public class BroadcastHelper
@@ -60,11 +60,11 @@ public class BroadcastHelper
   {
     int j = 0;
     AppMethodBeat.i(20708);
-    ae.i("MicroMsg.BroadcastHelper", "registerBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
+    Log.i("MicroMsg.BroadcastHelper", "registerBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
     IntentFilter localIntentFilter = new IntentFilter();
     int k;
     int i;
-    if (!bu.V(paramArrayOfString1))
+    if (!Util.isNullOrNil(paramArrayOfString1))
     {
       k = paramArrayOfString1.length;
       i = 0;
@@ -74,7 +74,7 @@ public class BroadcastHelper
         i += 1;
       }
     }
-    if (!bu.V(paramArrayOfString2))
+    if (!Util.isNullOrNil(paramArrayOfString2))
     {
       k = paramArrayOfString2.length;
       i = j;
@@ -84,16 +84,16 @@ public class BroadcastHelper
         i += 1;
       }
     }
-    ak.getContext().registerReceiver(paramBroadcastReceiver, localIntentFilter);
+    MMApplicationContext.getContext().registerReceiver(paramBroadcastReceiver, localIntentFilter);
     AppMethodBeat.o(20708);
   }
   
   public static void unRegisterBroadcast(BroadcastReceiver paramBroadcastReceiver)
   {
     AppMethodBeat.i(20709);
-    ae.i("MicroMsg.BroadcastHelper", "unRegisterBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
+    Log.i("MicroMsg.BroadcastHelper", "unRegisterBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
     if (paramBroadcastReceiver != null) {
-      ak.getContext().unregisterReceiver(paramBroadcastReceiver);
+      MMApplicationContext.getContext().unregisterReceiver(paramBroadcastReceiver);
     }
     AppMethodBeat.o(20709);
   }
@@ -101,15 +101,15 @@ public class BroadcastHelper
   public void registerBroadcasts()
   {
     AppMethodBeat.i(20710);
-    ae.i("MicroMsg.BroadcastHelper", "registerBroadcasts()");
+    Log.i("MicroMsg.BroadcastHelper", "registerBroadcasts()");
     Object localObject;
-    if ((ak.foA()) && (d.lA(24)))
+    if ((MMApplicationContext.isPushProcess()) && (d.oD(24)))
     {
       localObject = new MMReceivers.ConnectionReceiver();
       broadcastReceiverHashMap.put(MMReceivers.ConnectionReceiver.class.getSimpleName(), localObject);
       registerBroadcast((BroadcastReceiver)localObject, "android.net.conn.CONNECTIVITY_CHANGE");
     }
-    if ((ak.cpe()) && (d.lA(26)))
+    if ((MMApplicationContext.isMMProcess()) && (d.oD(26)))
     {
       localObject = new FileDownloadReceiver();
       broadcastReceiverHashMap.put(FileDownloadReceiver.class.getSimpleName(), localObject);
@@ -124,13 +124,13 @@ public class BroadcastHelper
   public void unRegisterBroadcasts()
   {
     AppMethodBeat.i(20711);
-    ae.i("MicroMsg.BroadcastHelper", "unRegisterBroadcasts()");
+    Log.i("MicroMsg.BroadcastHelper", "unRegisterBroadcasts()");
     try
     {
-      if ((ak.foA()) && (d.lA(24))) {
+      if ((MMApplicationContext.isPushProcess()) && (d.oD(24))) {
         unRegisterBroadcast((MMReceivers.ConnectionReceiver)broadcastReceiverHashMap.get(MMReceivers.ConnectionReceiver.class.getSimpleName()));
       }
-      if ((ak.cpe()) && (d.lA(26)))
+      if ((MMApplicationContext.isMMProcess()) && (d.oD(26)))
       {
         unRegisterBroadcast((FileDownloadReceiver)broadcastReceiverHashMap.get(FileDownloadReceiver.class.getSimpleName()));
         unRegisterBroadcast((InstallReceiver)broadcastReceiverHashMap.get(InstallReceiver.class.getSimpleName()));
@@ -141,14 +141,14 @@ public class BroadcastHelper
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.BroadcastHelper", "unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
+      Log.e("MicroMsg.BroadcastHelper", "unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
       AppMethodBeat.o(20711);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.platformtools.BroadcastHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public class CircleImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(106377);
     this.progress = -2147483648L;
-    ep(paramContext);
+    eH(paramContext);
     AppMethodBeat.o(106377);
   }
   
@@ -39,15 +39,15 @@ public class CircleImageView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106376);
     this.progress = -2147483648L;
-    ep(paramContext);
+    eH(paramContext);
     AppMethodBeat.o(106376);
   }
   
-  private void ep(Context paramContext)
+  private void eH(Context paramContext)
   {
     AppMethodBeat.i(106378);
-    this.defaultWidth = a.ay(paramContext, 2131166366);
-    this.defaultHeight = a.ay(paramContext, 2131166366);
+    this.defaultWidth = a.aH(paramContext, 2131166458);
+    this.defaultHeight = a.aH(paramContext, 2131166458);
     AppMethodBeat.o(106378);
   }
   
@@ -94,15 +94,15 @@ public class CircleImageView
           j = getWidth();
           float f1 = i / 2.0F;
           float f2 = j / 2.0F;
-          float f3 = a.h(getContext(), 1.5F);
+          float f3 = a.fromDPToPix(getContext(), 1.5F);
           float f4 = i * 0.7083333F / 2.0F - f3;
           localPaint = new Paint();
           localPaint.setAntiAlias(true);
           localPaint.setStyle(Paint.Style.STROKE);
           localPaint.setStrokeWidth(f3);
-          localPaint.setColor(b.n(getContext(), 2131099656));
+          localPaint.setColor(b.n(getContext(), 2131099657));
           ((Canvas)localObject).drawCircle(f1, f2, f4, localPaint);
-          localPaint.setColor(b.n(getContext(), 2131101171));
+          localPaint.setColor(b.n(getContext(), 2131101414));
           ((Canvas)localObject).drawArc(f1 - f4, f2 - f4, f1 + f4, f2 + f4, -90.0F, (float)this.progress / 100.0F * 360.0F, false, localPaint);
         }
       }
@@ -188,7 +188,7 @@ public class CircleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.CircleImageView
  * JD-Core Version:    0.7.0.1
  */

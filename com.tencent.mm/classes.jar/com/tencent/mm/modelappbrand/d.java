@@ -1,50 +1,48 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.protocal.protobuf.ddm;
-import com.tencent.mm.protocal.protobuf.ddn;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.dwq;
+import com.tencent.mm.protocal.protobuf.dwr;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig;", "", "()V", "Companion", "plugin-compat_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig;", "", "()V", "Companion", "plugin-compat_release"})
 public final class d
 {
-  public static final a hNj;
+  public static final a iIp;
   
   static
   {
-    AppMethodBeat.i(200318);
-    hNj = new a((byte)0);
-    AppMethodBeat.o(200318);
+    AppMethodBeat.i(201282);
+    iIp = new a((byte)0);
+    AppMethodBeat.o(201282);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig$Companion;", "", "()V", "buildInstance", "Lcom/tencent/mm/modelbase/CommReqResp;", "req", "Lcom/tencent/mm/protocal/protobuf/SetWxaMsgConfigRequest;", "plugin-compat_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig$Companion;", "", "()V", "buildInstance", "Lcom/tencent/mm/modelbase/CommReqResp;", "req", "Lcom/tencent/mm/protocal/protobuf/SetWxaMsgConfigRequest;", "plugin-compat_release"})
   public static final class a
   {
-    public static b a(ddm paramddm)
+    public static com.tencent.mm.ak.d a(dwq paramdwq)
     {
-      AppMethodBeat.i(200317);
-      p.h(paramddm, "req");
-      b.a locala = new b.a();
-      locala.d((a)new ddn());
-      locala.DN("/cgi-bin/mmbiz-bin/wxaapp/setwxamsgconfig");
-      locala.oS(3872);
-      locala.oU(0);
-      locala.oV(0);
-      locala.c((a)paramddm);
-      paramddm = locala.aDS();
-      p.g(paramddm, "builder.buildInstance()");
-      AppMethodBeat.o(200317);
-      return paramddm;
+      AppMethodBeat.i(201281);
+      p.h(paramdwq, "req");
+      com.tencent.mm.ak.d.a locala = new com.tencent.mm.ak.d.a();
+      locala.d((a)new dwr());
+      locala.MB("/cgi-bin/mmbiz-bin/wxaapp/setwxamsgconfig");
+      locala.sG(3872);
+      locala.sI(0);
+      locala.sJ(0);
+      locala.c((a)paramdwq);
+      paramdwq = locala.aXF();
+      p.g(paramdwq, "builder.buildInstance()");
+      AppMethodBeat.o(201281);
+      return paramdwq;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.d
  * JD-Core Version:    0.7.0.1
  */

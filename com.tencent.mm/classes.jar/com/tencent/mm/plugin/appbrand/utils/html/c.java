@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static CharSequence a(CharSequence paramCharSequence, a parama, boolean paramBoolean)
+  private static CharSequence a(CharSequence paramCharSequence, c.a parama, boolean paramBoolean)
   {
     int i = 0;
     AppMethodBeat.i(147730);
@@ -33,22 +33,17 @@ public final class c
     return paramCharSequence;
   }
   
-  public static CharSequence a(String paramString, boolean paramBoolean, a parama)
+  public static CharSequence a(String paramString, boolean paramBoolean, c.a parama)
   {
     AppMethodBeat.i(147731);
     paramString = a(Html.fromHtml(paramString, new a(), new b(parama, paramBoolean)), parama, paramBoolean);
     AppMethodBeat.o(147731);
     return paramString;
   }
-  
-  public static abstract interface a
-  {
-    public abstract void Pu(String paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.html.c
  * JD-Core Version:    0.7.0.1
  */

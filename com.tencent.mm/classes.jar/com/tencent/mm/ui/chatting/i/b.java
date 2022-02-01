@@ -5,54 +5,54 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d.a;
-import com.tencent.mm.br.d.b;
+import com.tencent.mm.br.c.a;
+import com.tencent.mm.br.c.b;
 import com.tencent.mm.ui.chatting.e.a;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.WeakHashMap;
 
 public final class b
-  implements d.b
+  implements c.b
 {
-  private static WeakHashMap<Fragment, HashMap<Integer, d.a>> KrN;
-  private WeakReference<a> KrO;
+  private static WeakHashMap<Fragment, HashMap<Integer, c.a>> PDV;
+  private WeakReference<a> PDW;
   
   static
   {
     AppMethodBeat.i(36442);
-    KrN = new WeakHashMap();
+    PDV = new WeakHashMap();
     AppMethodBeat.o(36442);
   }
   
   public b(a parama)
   {
     AppMethodBeat.i(36436);
-    this.KrO = new WeakReference(parama);
+    this.PDW = new WeakReference(parama);
     AppMethodBeat.o(36436);
   }
   
-  private static void a(Fragment paramFragment, int paramInt, d.a parama)
+  private static void a(Fragment paramFragment, int paramInt, c.a parama)
   {
     AppMethodBeat.i(36438);
-    HashMap localHashMap2 = (HashMap)KrN.get(paramFragment);
+    HashMap localHashMap2 = (HashMap)PDV.get(paramFragment);
     HashMap localHashMap1 = localHashMap2;
     if (localHashMap2 == null)
     {
       localHashMap1 = new HashMap();
-      KrN.put(paramFragment, localHashMap1);
+      PDV.put(paramFragment, localHashMap1);
     }
     localHashMap1.put(Integer.valueOf(paramInt), parama);
     AppMethodBeat.o(36438);
   }
   
-  public static d.a d(Fragment paramFragment, int paramInt)
+  public static c.a d(Fragment paramFragment, int paramInt)
   {
     AppMethodBeat.i(36437);
-    paramFragment = (HashMap)KrN.get(paramFragment);
+    paramFragment = (HashMap)PDV.get(paramFragment);
     if (paramFragment != null)
     {
-      paramFragment = (d.a)paramFragment.remove(Integer.valueOf(paramInt));
+      paramFragment = (c.a)paramFragment.remove(Integer.valueOf(paramInt));
       AppMethodBeat.o(36437);
       return paramFragment;
     }
@@ -60,7 +60,7 @@ public final class b
     return null;
   }
   
-  public final void a(Intent paramIntent, int paramInt, d.a parama)
+  public final void a(Intent paramIntent, int paramInt, c.a parama)
   {
     AppMethodBeat.i(36440);
     Fragment localFragment = getFragment();
@@ -85,10 +85,10 @@ public final class b
   public final Fragment getFragment()
   {
     AppMethodBeat.i(36439);
-    Object localObject = (a)this.KrO.get();
+    Object localObject = (a)this.PDW.get();
     if (localObject != null)
     {
-      localObject = ((a)localObject).Kkd;
+      localObject = ((a)localObject).Pwc;
       AppMethodBeat.o(36439);
       return localObject;
     }
@@ -98,7 +98,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.i.b
  * JD-Core Version:    0.7.0.1
  */

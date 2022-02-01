@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "", "sessionId", "", "pageName", "stayTimeMs", "", "enterTimeMs", "exitTimeMs", "clickTabContextId", "sid", "reportType", "", "isPoi", "", "extraInfo", "enterSourceInfo", "(Ljava/lang/String;Ljava/lang/String;JJJLjava/lang/String;Ljava/lang/String;IZLjava/lang/String;Ljava/lang/String;)V", "getClickTabContextId", "()Ljava/lang/String;", "setClickTabContextId", "(Ljava/lang/String;)V", "getEnterSourceInfo", "setEnterSourceInfo", "getEnterTimeMs", "()J", "setEnterTimeMs", "(J)V", "getExitTimeMs", "setExitTimeMs", "getExtraInfo", "setExtraInfo", "()Z", "setPoi", "(Z)V", "getPageName", "setPageName", "getReportType", "()I", "setReportType", "(I)V", "getSessionId", "setSessionId", "getSid", "setSid", "getStayTimeMs", "setStayTimeMs", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "", "sessionId", "", "pageName", "stayTimeMs", "", "enterTimeMs", "exitTimeMs", "clickTabContextId", "sid", "reportType", "", "isPoi", "", "extraInfo", "enterSourceInfo", "(Ljava/lang/String;Ljava/lang/String;JJJLjava/lang/String;Ljava/lang/String;IZLjava/lang/String;Ljava/lang/String;)V", "getClickTabContextId", "()Ljava/lang/String;", "setClickTabContextId", "(Ljava/lang/String;)V", "getEnterSourceInfo", "setEnterSourceInfo", "getEnterTimeMs", "()J", "setEnterTimeMs", "(J)V", "getExitTimeMs", "setExitTimeMs", "getExtraInfo", "setExtraInfo", "()Z", "setPoi", "(Z)V", "getPageName", "setPageName", "getReportType", "()I", "setReportType", "(I)V", "getSessionId", "setSessionId", "getSid", "setSid", "getStayTimeMs", "setStayTimeMs", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-expt_release"})
 public final class b
 {
-  public int dGC;
-  public String duQ = null;
+  public String dMl = null;
+  public int dYn;
   public String extraInfo;
-  public long rfl = -1L;
-  public long rfm = -1L;
-  public long rfn = -1L;
-  public String rfo = null;
-  public String rfp = null;
-  public boolean rfq;
-  public String rfr;
+  public long sGB = -1L;
+  public long sGC = -1L;
+  public long sGD = -1L;
+  public String sGE = null;
+  public String sGF = null;
+  public boolean sGG;
+  public String sGH;
   public String sessionId = null;
   
   public b(byte paramByte)
@@ -26,29 +26,29 @@ public final class b
   
   private b(int paramInt)
   {
-    this.dGC = paramInt;
-    this.rfq = false;
+    this.dYn = paramInt;
+    this.sGG = false;
     this.extraInfo = null;
-    this.rfr = null;
+    this.sGH = null;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(196538);
+    AppMethodBeat.i(221030);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.i(this.sessionId, paramObject.sessionId)) || (!p.i(this.duQ, paramObject.duQ)) || (this.rfl != paramObject.rfl) || (this.rfm != paramObject.rfm) || (this.rfn != paramObject.rfn) || (!p.i(this.rfo, paramObject.rfo)) || (!p.i(this.rfp, paramObject.rfp)) || (this.dGC != paramObject.dGC) || (this.rfq != paramObject.rfq) || (!p.i(this.extraInfo, paramObject.extraInfo)) || (!p.i(this.rfr, paramObject.rfr))) {}
+        if ((!p.j(this.sessionId, paramObject.sessionId)) || (!p.j(this.dMl, paramObject.dMl)) || (this.sGB != paramObject.sGB) || (this.sGC != paramObject.sGC) || (this.sGD != paramObject.sGD) || (!p.j(this.sGE, paramObject.sGE)) || (!p.j(this.sGF, paramObject.sGF)) || (this.dYn != paramObject.dYn) || (this.sGG != paramObject.sGG) || (!p.j(this.extraInfo, paramObject.extraInfo)) || (!p.j(this.sGH, paramObject.sGH))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(196538);
+      AppMethodBeat.o(221030);
       return true;
     }
-    AppMethodBeat.o(196538);
+    AppMethodBeat.o(221030);
     return false;
   }
   
@@ -59,9 +59,9 @@ public final class b
   
   public final String toString()
   {
-    AppMethodBeat.i(196536);
-    String str = "StayTimeStatistics(sessionId=" + this.sessionId + ", pageName=" + this.duQ + ", stayTimeMs=" + this.rfl + ", enterTimeMs=" + this.rfm + ", exitTimeMs=" + this.rfn + ", clickTabContextId=" + this.rfo + ", sid=" + this.rfp + ", reportType=" + this.dGC + ", isPoi=" + this.rfq + ", extraInfo=" + this.extraInfo + ", enterSourceInfo=" + this.rfr + ")";
-    AppMethodBeat.o(196536);
+    AppMethodBeat.i(221028);
+    String str = "StayTimeStatistics(sessionId=" + this.sessionId + ", pageName=" + this.dMl + ", stayTimeMs=" + this.sGB + ", enterTimeMs=" + this.sGC + ", exitTimeMs=" + this.sGD + ", clickTabContextId=" + this.sGE + ", sid=" + this.sGF + ", reportType=" + this.dYn + ", isPoi=" + this.sGG + ", extraInfo=" + this.extraInfo + ", enterSourceInfo=" + this.sGH + ")";
+    AppMethodBeat.o(221028);
     return str;
   }
 }

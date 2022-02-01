@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import java.util.Objects;
 import org.json.JSONObject;
 
@@ -28,7 +28,7 @@ public class TranslateActionArg
     super(paramParcel, (byte)0);
   }
   
-  public final boolean bdT()
+  public final boolean bzk()
   {
     return (this.x == 0.0F) && (this.y == 0.0F);
   }
@@ -66,21 +66,21 @@ public class TranslateActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145262);
-    super.h(paramParcel);
-    this.x = paramParcel.readFloat();
-    this.y = paramParcel.readFloat();
-    AppMethodBeat.o(145262);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145266);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y) });
     AppMethodBeat.o(145266);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145262);
+    super.i(paramParcel);
+    this.x = paramParcel.readFloat();
+    this.y = paramParcel.readFloat();
+    AppMethodBeat.o(145262);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -104,7 +104,7 @@ public class TranslateActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.TranslateActionArg
  * JD-Core Version:    0.7.0.1
  */

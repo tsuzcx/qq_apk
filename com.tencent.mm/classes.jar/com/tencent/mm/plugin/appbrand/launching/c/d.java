@@ -10,22 +10,22 @@ final class d
   final void a(String paramString, Uri paramUri, a.a parama)
   {
     AppMethodBeat.i(47413);
-    switch (1.lRi[parama.ordinal()])
+    switch (1.mYr[parama.ordinal()])
     {
     default: 
-      AppBrand404PageUI.show(2131755402);
+      AppBrand404PageUI.show(2131755441);
       AppMethodBeat.o(47413);
       return;
     case 1: 
-      AppBrand404PageUI.show(2131755353);
+      AppBrand404PageUI.show(2131755390);
       AppMethodBeat.o(47413);
       return;
     case 2: 
-      AppBrand404PageUI.show(2131755354);
+      AppBrand404PageUI.show(2131755391);
       AppMethodBeat.o(47413);
       return;
     case 3: 
-      AppBrand404PageUI.show(2131755606);
+      AppBrand404PageUI.show(2131755653);
       AppMethodBeat.o(47413);
       return;
     }
@@ -34,7 +34,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.d
  * JD-Core Version:    0.7.0.1
  */

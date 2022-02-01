@@ -7,7 +7,7 @@ public abstract interface c
 {
   public abstract void a(d.a parama);
   
-  public abstract void m(Application paramApplication);
+  public abstract void l(Application paramApplication);
 }
 
 

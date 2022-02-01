@@ -1,273 +1,597 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
-import junit.framework.Assert;
-import org.json.JSONObject;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ca;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class br
 {
-  public int dEu;
-  private String groupId;
-  public String hGe;
-  public String hGg;
-  public String hKA;
-  public String hKB;
-  public int hKC;
-  public int hKD;
-  public long hKE;
-  public String hKF;
-  public String hKG;
-  private boolean hKH;
-  private int hKI;
-  private int hKJ;
-  public String hKw;
-  public String hKx;
-  public String hKy;
-  public long hKz;
-  public String name;
-  private int subType;
-  public long time;
-  public String title;
-  public int type;
-  public String url;
+  public static int iEW;
+  private static ConcurrentHashMap<Long, String> iEX;
+  private static int iEY;
+  private static float iEZ;
+  private static float iFa;
+  private static float iFb;
   
-  public br()
+  static
   {
-    AppMethodBeat.i(91028);
-    this.hKH = false;
-    this.hKI = 0;
-    this.subType = 0;
-    this.hKJ = 0;
-    this.groupId = "";
-    this.dEu = -1;
-    this.hKw = "";
-    this.time = 0L;
-    this.type = 0;
-    this.name = "";
-    this.title = "";
-    this.url = "";
-    this.hKx = "";
-    this.hKy = "";
-    this.hKz = 0L;
-    this.hKA = "";
-    this.hKB = "";
-    this.hKC = 0;
-    this.hGe = "";
-    this.hGg = "";
-    this.hKD = 0;
-    this.hKE = 0L;
-    this.hKF = "";
-    this.hKG = "";
-    AppMethodBeat.o(91028);
+    AppMethodBeat.i(150189);
+    iEW = 0;
+    iEX = new ConcurrentHashMap();
+    iEY = 1;
+    iEZ = 0.75F;
+    iFa = 0.4F;
+    iFb = 0.5F;
+    AppMethodBeat.o(150189);
   }
   
-  private void aCK()
+  public static int A(ca paramca)
   {
-    AppMethodBeat.i(91036);
-    if ((this.hKH) || (bu.isNullOrNil(this.hKG)))
+    AppMethodBeat.i(150172);
+    if (paramca == null)
     {
-      AppMethodBeat.o(91036);
-      return;
+      AppMethodBeat.o(150172);
+      return 0;
     }
-    for (;;)
+    paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+    if (paramca != null)
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(this.hKG);
-        this.hKI = localJSONObject.optInt("videoLength", 0);
-        int i = localJSONObject.optInt("subType", 0);
-        if (i != 1) {
-          continue;
-        }
-        this.subType = i;
-        this.groupId = localJSONObject.optString("groupId", "");
-        this.hKJ = localJSONObject.optInt("tweetType", 0);
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      this.hKH = true;
-      AppMethodBeat.o(91036);
-      return;
-      this.subType = 0;
+      paramca = (String)paramca.get(".msgsource.bizflag");
+      if (Util.isNullOrNil(paramca)) {}
+    }
+    for (int i = Util.getInt(paramca, 0);; i = 0)
+    {
+      AppMethodBeat.o(150172);
+      return i;
     }
   }
   
-  public static String oC(int paramInt)
+  public static String A(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(91030);
-    if (paramInt == 20)
+    AppMethodBeat.i(150185);
+    int i = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.sfn"));
+    String str1 = Util.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.show-h5"));
+    int j = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.clip-len"));
+    String str2 = Util.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.share-tip-url"));
+    int k = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.fold-reduce"));
+    int m = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.media-to-emoji"));
+    int n = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.block-range"));
+    paramMap = new StringBuilder();
+    paramMap.append("<sec_msg_node>");
+    paramMap.append("<sfn>").append(i).append("</sfn>");
+    paramMap.append("<show-h5><![CDATA[").append(str1).append("]]></show-h5>");
+    paramMap.append("<clip-len>").append(j).append("</clip-len>");
+    paramMap.append("<share-tip-url><![CDATA[").append(str2).append("]]></share-tip-url>");
+    paramMap.append("<fold-reduce>").append(k).append("</fold-reduce>");
+    paramMap.append("<media-to-emoji>").append(m).append("</media-to-emoji>");
+    paramMap.append("<block-range>").append(n).append("</block-range>");
+    paramMap.append("</sec_msg_node>");
+    paramMap = paramMap.toString();
+    AppMethodBeat.o(150185);
+    return paramMap;
+  }
+  
+  public static String B(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(163513);
+    int i = Util.safeParseInt((String)paramMap.get(".msgsource.alnode.cf"));
+    paramMap = new StringBuilder();
+    paramMap.append("<alnode>");
+    paramMap.append("<cf>").append(i).append("</cf>");
+    paramMap.append("</alnode>");
+    paramMap = paramMap.toString();
+    AppMethodBeat.o(163513);
+    return paramMap;
+  }
+  
+  public static boolean B(ca paramca)
+  {
+    AppMethodBeat.i(150174);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
     {
-      AppMethodBeat.o(91030);
-      return "newsapp";
+      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if ((paramca != null) && (Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.sfn")) == 1))
+      {
+        AppMethodBeat.o(150174);
+        return true;
+      }
     }
-    if (paramInt == 11)
+    AppMethodBeat.o(150174);
+    return false;
+  }
+  
+  public static int C(ca paramca)
+  {
+    AppMethodBeat.i(225951);
+    if (iEY == 0)
     {
-      AppMethodBeat.o(91030);
-      return "blogapp";
+      AppMethodBeat.o(225951);
+      return 0;
     }
-    Assert.assertTrue("INFO TYPE NEITHER NEWS NOR WEIBO", false);
-    AppMethodBeat.o(91030);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if (paramca != null)
+      {
+        int i = Util.getInt((String)paramca.get(".msgsource.sec_msg_node.media-to-emoji"), 0);
+        AppMethodBeat.o(225951);
+        return i;
+      }
+    }
+    AppMethodBeat.o(225951);
+    return 0;
+  }
+  
+  public static boolean D(ca paramca)
+  {
+    AppMethodBeat.i(225952);
+    if (C(paramca) > 0)
+    {
+      AppMethodBeat.o(225952);
+      return true;
+    }
+    AppMethodBeat.o(225952);
+    return false;
+  }
+  
+  public static void E(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(150184);
+    if ((!Util.isNullOrNil(paramString)) && (paramLong > 0L) && (iEX.containsKey(Long.valueOf(paramLong))))
+    {
+      paramString = ((l)g.af(l.class)).eiy().aJ(paramString, paramLong);
+      if ((!Util.isNullOrNil(paramString.field_talker)) && (paramString.field_msgSvrId > 0L))
+      {
+        Log.i("MicroMsg.MsgSourceHelper", "found sec msg of %s", new Object[] { Long.valueOf(paramLong) });
+        a(paramString, (String)iEX.get(Long.valueOf(paramLong)));
+        iEX.remove(Long.valueOf(paramLong));
+      }
+    }
+    AppMethodBeat.o(150184);
+  }
+  
+  public static boolean E(ca paramca)
+  {
+    AppMethodBeat.i(225953);
+    int i = C(paramca);
+    if ((i == 2) || (i == 4))
+    {
+      AppMethodBeat.o(225953);
+      return true;
+    }
+    AppMethodBeat.o(225953);
+    return false;
+  }
+  
+  public static boolean F(ca paramca)
+  {
+    AppMethodBeat.i(225954);
+    int i = C(paramca);
+    if ((i == 3) || (i == 4))
+    {
+      AppMethodBeat.o(225954);
+      return true;
+    }
+    AppMethodBeat.o(225954);
+    return false;
+  }
+  
+  public static float G(ca paramca)
+  {
+    AppMethodBeat.i(225955);
+    if (!D(paramca))
+    {
+      AppMethodBeat.o(225955);
+      return 1.0F;
+    }
+    float f = iEZ;
+    AppMethodBeat.o(225955);
+    return f;
+  }
+  
+  public static float H(ca paramca)
+  {
+    AppMethodBeat.i(225956);
+    if (!D(paramca))
+    {
+      AppMethodBeat.o(225956);
+      return 1.0F;
+    }
+    float f = iFa;
+    AppMethodBeat.o(225956);
+    return f;
+  }
+  
+  public static float I(ca paramca)
+  {
+    AppMethodBeat.i(225957);
+    if (!D(paramca))
+    {
+      AppMethodBeat.o(225957);
+      return 1.0F;
+    }
+    float f = iFb;
+    AppMethodBeat.o(225957);
+    return f;
+  }
+  
+  public static void I(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(150170);
+    if ("bizflag".equals(paramString))
+    {
+      if (paramBoolean)
+      {
+        iEW |= 0x1;
+        AppMethodBeat.o(150170);
+        return;
+      }
+      iEW &= 0xFFFFFFFE;
+    }
+    AppMethodBeat.o(150170);
+  }
+  
+  public static boolean J(ca paramca)
+  {
+    AppMethodBeat.i(150175);
+    if (paramca != null)
+    {
+      int i = P(paramca);
+      if ((paramca.isText()) && (i >= 3))
+      {
+        AppMethodBeat.o(150175);
+        return true;
+      }
+      if ((paramca.gAz()) && (i >= 2))
+      {
+        AppMethodBeat.o(150175);
+        return true;
+      }
+    }
+    AppMethodBeat.o(150175);
+    return false;
+  }
+  
+  public static boolean K(ca paramca)
+  {
+    AppMethodBeat.i(150176);
+    if (paramca != null)
+    {
+      int i = P(paramca);
+      if ((paramca.isText()) && (i > 3))
+      {
+        AppMethodBeat.o(150176);
+        return true;
+      }
+      if ((paramca.gAz()) && (i > 2))
+      {
+        AppMethodBeat.o(150176);
+        return true;
+      }
+    }
+    AppMethodBeat.o(150176);
+    return false;
+  }
+  
+  public static void KA(String paramString)
+  {
+    AppMethodBeat.i(150188);
+    Log.i("MicroMsg.MsgSourceHelper", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { paramString, "" });
+    AppMethodBeat.o(150188);
+  }
+  
+  public static String KB(String paramString)
+  {
+    AppMethodBeat.i(163514);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(163514);
+      return null;
+    }
+    paramString = XmlParser.parseXml(paramString, "msgsource", null);
+    if (paramString != null)
+    {
+      paramString = (String)paramString.get(".msgsource.sec_msg_node.uuid");
+      AppMethodBeat.o(163514);
+      return paramString;
+    }
+    AppMethodBeat.o(163514);
     return null;
   }
   
-  public final String aCB()
+  public static String KC(String paramString)
   {
-    if (this.hKw == null) {
-      return "";
-    }
-    return this.hKw;
-  }
-  
-  public final String aCC()
-  {
-    if (this.hKx == null) {
-      return "";
-    }
-    return this.hKx;
-  }
-  
-  public final String aCD()
-  {
-    if (this.hKA == null) {
-      return "";
-    }
-    return this.hKA;
-  }
-  
-  public final String aCE()
-  {
-    if (this.hKB == null) {
-      return "";
-    }
-    return this.hKB;
-  }
-  
-  public final String aCF()
-  {
-    AppMethodBeat.i(91031);
-    if (this.hGe != null)
+    AppMethodBeat.i(163515);
+    if (Util.isNullOrNil(paramString))
     {
-      Object localObject = this.hGe.split("\\|");
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        localObject = localObject[0];
-        AppMethodBeat.o(91031);
-        return localObject;
-      }
-      AppMethodBeat.o(91031);
-      return "";
+      AppMethodBeat.o(163515);
+      return null;
     }
-    AppMethodBeat.o(91031);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<msgsource><sec_msg_node><uuid>").append(paramString).append("</uuid></sec_msg_node></msgsource>");
+    paramString = localStringBuilder.toString();
+    AppMethodBeat.o(163515);
+    return paramString;
+  }
+  
+  public static void L(ca paramca)
+  {
+    AppMethodBeat.i(150177);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      Object localObject = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if ((localObject != null) && (Util.safeParseInt((String)((Map)localObject).get(".msgsource.sec_msg_node.sfn")) == 1)) {
+        try
+        {
+          localObject = paramca.fqK.substring(paramca.fqK.indexOf("<sec_msg_node"), paramca.fqK.indexOf("</sec_msg_node") + 12 + 2);
+          Log.i("MicroMsg.MsgSourceHelper", (String)localObject);
+          if (!Util.isNullOrNil((String)localObject))
+          {
+            String str = ((String)localObject).substring(((String)localObject).indexOf("<sfn"), ((String)localObject).indexOf("</sfn") + 3 + 2);
+            paramca.BB(paramca.fqK.replace((CharSequence)localObject, ((String)localObject).replace(str, "<sfn>0<sfn/>")));
+          }
+          AppMethodBeat.o(150177);
+          return;
+        }
+        catch (Exception paramca)
+        {
+          Log.printErrStackTrace("MicroMsg.MsgSourceHelper", paramca, "resetShareForbidden msg exception", new Object[0]);
+        }
+      }
+    }
+    AppMethodBeat.o(150177);
+  }
+  
+  @Deprecated
+  public static String M(ca paramca)
+  {
+    AppMethodBeat.i(150178);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if (paramca != null)
+      {
+        paramca = (String)paramca.get(".msgsource.sec_msg_node.show-h5");
+        if (!Util.isNullOrNil(paramca))
+        {
+          AppMethodBeat.o(150178);
+          return paramca;
+        }
+      }
+    }
+    AppMethodBeat.o(150178);
     return "";
   }
   
-  public final String aCG()
+  public static String N(ca paramca)
   {
-    if (this.hKG == null) {
+    AppMethodBeat.i(150179);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if (paramca != null)
+      {
+        paramca = (String)paramca.get(".msgsource.sec_msg_node.share-tip-url");
+        if (!Util.isNullOrNil(paramca))
+        {
+          AppMethodBeat.o(150179);
+          return paramca;
+        }
+      }
+    }
+    AppMethodBeat.o(150179);
+    return "";
+  }
+  
+  public static int O(ca paramca)
+  {
+    AppMethodBeat.i(150180);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if (paramca != null)
+      {
+        int i = Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.clip-len"));
+        AppMethodBeat.o(150180);
+        return i;
+      }
+    }
+    AppMethodBeat.o(150180);
+    return 0;
+  }
+  
+  public static int P(ca paramca)
+  {
+    AppMethodBeat.i(150182);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if (paramca != null)
+      {
+        int i = Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.fold-reduce"));
+        AppMethodBeat.o(150182);
+        return i;
+      }
+    }
+    AppMethodBeat.o(150182);
+    return 0;
+  }
+  
+  public static boolean Q(ca paramca)
+  {
+    AppMethodBeat.i(225958);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if (paramca != null)
+      {
+        if (Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.block-range")) != 0)
+        {
+          AppMethodBeat.o(225958);
+          return true;
+        }
+        AppMethodBeat.o(225958);
+        return false;
+      }
+    }
+    AppMethodBeat.o(225958);
+    return false;
+  }
+  
+  public static void a(ca paramca, int paramInt)
+  {
+    AppMethodBeat.i(163510);
+    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
+    {
+      Map localMap = XmlParser.parseXml(paramca.fqK, "msgsource", null);
+      if (localMap != null)
+      {
+        localMap.put(".msgsource.sec_msg_node.clip-len", String.valueOf(paramInt));
+        a(paramca, A(localMap));
+      }
+    }
+    AppMethodBeat.o(163510);
+  }
+  
+  public static void a(ca paramca, String paramString)
+  {
+    AppMethodBeat.i(163511);
+    if (paramca != null)
+    {
+      String str2 = paramca.fqK;
+      String str1;
+      if (!Util.isNullOrNil(str2))
+      {
+        str1 = str2;
+        if (str2.trim().startsWith("<msgsource>")) {}
+      }
+      else
+      {
+        str1 = "<msgsource></msgsource>";
+      }
+      paramca.BB(str1.replaceAll("(?s)<sec_msg_node[^>]*>.*?</sec_msg_node>", "").replace("</msgsource>", paramString + "</msgsource>"));
+      ((l)g.af(l.class)).eiy().b(paramca.field_msgSvrId, paramca);
+    }
+    AppMethodBeat.o(163511);
+  }
+  
+  public static String aVV()
+  {
+    AppMethodBeat.i(150171);
+    Object localObject = new StringBuilder();
+    if (iEW != 0)
+    {
+      ((StringBuilder)localObject).append("<");
+      ((StringBuilder)localObject).append("bizflag");
+      ((StringBuilder)localObject).append(">");
+      ((StringBuilder)localObject).append(iEW);
+      ((StringBuilder)localObject).append("</");
+      ((StringBuilder)localObject).append("bizflag");
+      ((StringBuilder)localObject).append(">");
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(150171);
+    return localObject;
+  }
+  
+  public static String aVW()
+  {
+    AppMethodBeat.i(150187);
+    String str = (String)g.aAh().azQ().get(70, null);
+    if (!Util.isNullOrNil(str)) {
+      g.aAh().azQ().set(70, "");
+    }
+    Log.d("MicroMsg.MsgSourceHelper", "getMsg ccr[%s]", new Object[] { str });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<msgsource>");
+    localStringBuilder.append(Util.nullAsNil(str));
+    if (iEW != 0)
+    {
+      localStringBuilder.append("<");
+      localStringBuilder.append("bizflag");
+      localStringBuilder.append(">");
+      localStringBuilder.append(iEW);
+      localStringBuilder.append("</");
+      localStringBuilder.append("bizflag");
+      localStringBuilder.append(">");
+    }
+    localStringBuilder.append("</msgsource>");
+    str = localStringBuilder.toString();
+    if ("<msgsource></msgsource>".equals(str))
+    {
+      AppMethodBeat.o(150187);
       return "";
     }
-    return this.hKG;
-  }
-  
-  public final int aCH()
-  {
-    AppMethodBeat.i(91032);
-    aCK();
-    int i = this.subType;
-    AppMethodBeat.o(91032);
-    return i;
-  }
-  
-  public final int aCI()
-  {
-    AppMethodBeat.i(91033);
-    aCK();
-    int i = this.hKI;
-    AppMethodBeat.o(91033);
-    return i;
-  }
-  
-  public final int aCJ()
-  {
-    AppMethodBeat.i(91035);
-    aCK();
-    int i = this.hKJ;
-    AppMethodBeat.o(91035);
-    return i;
-  }
-  
-  public final String afK()
-  {
-    AppMethodBeat.i(91034);
-    aCK();
-    String str = this.groupId;
-    AppMethodBeat.o(91034);
+    Log.d("MicroMsg.MsgSourceHelper", "getAndResetMsgSrcIn msgsource[%s]", new Object[] { str });
+    AppMethodBeat.o(150187);
     return str;
   }
   
-  public final void convertFrom(Cursor paramCursor)
+  public static String ajw()
   {
-    AppMethodBeat.i(91029);
-    this.hKw = paramCursor.getString(0);
-    this.time = paramCursor.getLong(1);
-    this.type = paramCursor.getInt(2);
-    this.name = paramCursor.getString(3);
-    this.title = paramCursor.getString(4);
-    this.url = paramCursor.getString(5);
-    this.hKx = paramCursor.getString(6);
-    this.hKy = paramCursor.getString(7);
-    this.hKz = paramCursor.getLong(8);
-    this.hKA = paramCursor.getString(9);
-    this.hKB = paramCursor.getString(10);
-    this.hKC = paramCursor.getInt(11);
-    this.hGe = paramCursor.getString(12);
-    this.hGg = paramCursor.getString(13);
-    this.hKD = paramCursor.getInt(14);
-    this.hKE = paramCursor.getLong(15);
-    this.hKF = paramCursor.getString(16);
-    this.hKG = paramCursor.getString(17);
-    AppMethodBeat.o(91029);
+    AppMethodBeat.i(150173);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Util.nullAsNil(aVV()));
+    if (((StringBuilder)localObject).length() > 0)
+    {
+      ((StringBuilder)localObject).insert(0, "<msgsource>");
+      ((StringBuilder)localObject).append("</msgsource>");
+      localObject = ((StringBuilder)localObject).toString();
+      AppMethodBeat.o(150173);
+      return localObject;
+    }
+    AppMethodBeat.o(150173);
+    return null;
   }
   
-  public final String getDigest()
+  public static void b(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.hGg == null) {
-      return "";
-    }
-    return this.hGg;
+    iEY = paramInt;
+    iEZ = paramFloat1;
+    iFa = paramFloat2;
+    iFb = paramFloat3;
   }
   
-  public final String getName()
+  public static void b(ca paramca, String paramString)
   {
-    if (this.name == null) {
-      return "";
+    AppMethodBeat.i(163512);
+    String str2 = paramca.fqK;
+    String str1;
+    if (!Util.isNullOrNil(str2))
+    {
+      str1 = str2;
+      if (str2.trim().startsWith("<msgsource>")) {}
     }
-    return this.name;
+    else
+    {
+      str1 = "<msgsource></msgsource>";
+    }
+    paramca.BB(str1.replaceAll("(?s)<alnode[^>]*>.*?</alnode>", "").replace("</msgsource>", paramString + "</msgsource>"));
+    AppMethodBeat.o(163512);
   }
   
-  public final String getTitle()
+  public static void d(long paramLong, String paramString)
   {
-    if (this.title == null) {
-      return "";
+    AppMethodBeat.i(150183);
+    if ((paramLong > 0L) && (!Util.isNullOrNil(paramString))) {
+      iEX.put(Long.valueOf(paramLong), paramString);
     }
-    return this.title;
-  }
-  
-  public final String getUrl()
-  {
-    if (this.url == null) {
-      return "";
-    }
-    return this.url;
+    AppMethodBeat.o(150183);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.br
  * JD-Core Version:    0.7.0.1
  */

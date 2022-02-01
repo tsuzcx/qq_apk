@@ -3,25 +3,25 @@ package com.tencent.mm.platformtools;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class i
 {
-  public static i iPU;
-  private Map<String, String> iPV;
+  public static i jMH;
+  private Map<String, String> jMI;
   
   static
   {
     AppMethodBeat.i(127692);
-    iPU = new i();
+    jMH = new i();
     AppMethodBeat.o(127692);
   }
   
-  public final Map<String, String> cV(Context paramContext)
+  public final Map<String, String> dq(Context paramContext)
   {
     AppMethodBeat.i(127691);
     for (;;)
@@ -29,23 +29,23 @@ public final class i
       int i;
       try
       {
-        paramContext = bu.S(paramContext.getAssets().open("config/EmailAddress.xml"));
-        boolean bool = bu.isNullOrNil(paramContext);
+        paramContext = Util.streamToString(paramContext.getAssets().open("config/EmailAddress.xml"));
+        boolean bool = Util.isNullOrNil(paramContext);
         if (bool)
         {
           AppMethodBeat.o(127691);
           return null;
         }
-        Map localMap = bx.M(paramContext, "config");
+        Map localMap = XmlParser.parseXml(paramContext, "config", null);
         if ((localMap == null) || (localMap.isEmpty()))
         {
-          ae.d("MicroMsg.EmailFormater", "values null");
+          Log.d("MicroMsg.EmailFormater", "values null");
           AppMethodBeat.o(127691);
           return null;
         }
-        if (this.iPV == null)
+        if (this.jMI == null)
         {
-          this.iPV = new HashMap();
+          this.jMI = new HashMap();
           i = 0;
           Object localObject = new StringBuilder(".config.format");
           if (i == 0)
@@ -59,32 +59,32 @@ public final class i
             localObject = (String)localObject + ".loginpage";
             paramContext = (String)localMap.get(paramContext);
             localObject = (String)localMap.get(localObject);
-            if ((bu.isNullOrNil(paramContext)) || (bu.isNullOrNil((String)localObject))) {
-              break label290;
+            if ((Util.isNullOrNil(paramContext)) || (Util.isNullOrNil((String)localObject))) {
+              break label291;
             }
-            this.iPV.put(paramContext, localObject);
-            break label290;
+            this.jMI.put(paramContext, localObject);
+            break label291;
           }
         }
         else
         {
-          paramContext = this.iPV;
+          paramContext = this.jMI;
           AppMethodBeat.o(127691);
           return paramContext;
         }
         paramContext = Integer.valueOf(i);
         continue;
-        paramContext = this.iPV;
+        paramContext = this.jMI;
         AppMethodBeat.o(127691);
         return paramContext;
       }
       catch (Exception paramContext)
       {
-        ae.e("MicroMsg.EmailFormater", "parse email failed:[%s]", new Object[] { paramContext.getMessage() });
+        Log.e("MicroMsg.EmailFormater", "parse email failed:[%s]", new Object[] { paramContext.getMessage() });
         AppMethodBeat.o(127691);
         return null;
       }
-      label290:
+      label291:
       i += 1;
     }
   }

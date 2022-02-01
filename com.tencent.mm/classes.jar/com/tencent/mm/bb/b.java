@@ -3,28 +3,28 @@ package com.tencent.mm.bb;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage;
 import com.tencent.mm.storagebase.h;
 import junit.framework.Assert;
 
 public final class b
-  extends k
+  extends MStorage
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS chattingbginfo ( username text  PRIMARY KEY , bgflag int  , path text  , reserved1 text  , reserved2 text  , reserved3 int  , reserved4 int  ) " };
-  public h hKK;
+  public h iFy;
   
   public b(h paramh)
   {
-    this.hKK = paramh;
+    this.iFy = paramh;
   }
   
-  public final a GD(String paramString)
+  public final a Pp(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(150789);
-    paramString = "select chattingbginfo.username,chattingbginfo.bgflag,chattingbginfo.path,chattingbginfo.reserved1,chattingbginfo.reserved2,chattingbginfo.reserved3,chattingbginfo.reserved4 from chattingbginfo   where chattingbginfo.username = \"" + bu.aSk(String.valueOf(paramString)) + "\"";
-    Cursor localCursor = this.hKK.a(paramString, null, 2);
+    paramString = "select chattingbginfo.username,chattingbginfo.bgflag,chattingbginfo.path,chattingbginfo.reserved1,chattingbginfo.reserved2,chattingbginfo.reserved3,chattingbginfo.reserved4 from chattingbginfo   where chattingbginfo.username = \"" + Util.escapeSqlValue(String.valueOf(paramString)) + "\"";
+    Cursor localCursor = this.iFy.rawQuery(paramString, null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(150789);
@@ -44,9 +44,9 @@ public final class b
   public final boolean a(a parama)
   {
     AppMethodBeat.i(150787);
-    parama.dEu = -1;
+    parama.cSx = -1;
     ContentValues localContentValues = parama.convertTo();
-    if ((int)this.hKK.a("chattingbginfo", "username", localContentValues) != -1)
+    if ((int)this.iFy.insert("chattingbginfo", "username", localContentValues) != -1)
     {
       doNotify(parama.getUsername());
       AppMethodBeat.o(150787);
@@ -67,7 +67,7 @@ public final class b
       if (localContentValues.size() <= 0) {
         break;
       }
-      if (this.hKK.update("chattingbginfo", localContentValues, "username= ?", new String[] { parama.getUsername() }) <= 0) {
+      if (this.iFy.update("chattingbginfo", localContentValues, "username= ?", new String[] { parama.getUsername() }) <= 0) {
         break;
       }
       doNotify(parama.getUsername());
@@ -80,7 +80,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bb.b
  * JD-Core Version:    0.7.0.1
  */

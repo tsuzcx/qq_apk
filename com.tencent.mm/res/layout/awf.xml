@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/a_f" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/ba6" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/i" android:textColor="@color/br" android:gravity="center" android:id="@id/bgh" android:background="@android:color/transparent" android:paddingLeft="@dimen/zq" android:paddingRight="@dimen/zq" android:layout_width="wrap_content" android:layout_height="@dimen/b4" android:text="@string/e7r" />
-    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <Button android:textSize="@dimen/i" android:textColor="@color/a_j" android:gravity="center" android:id="@id/bgj" android:background="@android:color/transparent" android:paddingLeft="@dimen/zq" android:paddingRight="@dimen/zq" android:layout_width="wrap_content" android:layout_height="@dimen/b4" android:text="@string/e7s" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/is" android:textColor="@color/tx" android:gravity="center" android:id="@id/ba5" android:layout_width="fill_parent" android:layout_height="56.0dip" />
+</FrameLayout>

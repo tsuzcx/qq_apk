@@ -8,11 +8,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.ToolsProfile.a;
 import com.tencent.mm.cc.b;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.pluginsdk.model.v;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.model.w;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.xweb.ah;
 import java.util.Locale;
 
@@ -28,8 +28,8 @@ public class e$c
       return;
     }
     String str1 = paramIntent.getStringExtra("tools_process_action_code_key");
-    ae.i("MicroMsg.ToolsProcessReceiver", "onReceive, action = ".concat(String.valueOf(str1)));
-    if (bu.isNullOrNil(str1))
+    Log.i("MicroMsg.ToolsProcessReceiver", "onReceive, action = ".concat(String.valueOf(str1)));
+    if (Util.isNullOrNil(str1))
     {
       AppMethodBeat.o(19878);
       return;
@@ -37,15 +37,15 @@ public class e$c
     boolean bool;
     if (str1.equals("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS"))
     {
-      ae.fop();
+      Log.appenderFlushSync();
       bool = ToolsProfile.a.isLocked();
-      ae.i("MicroMsg.ToolsProcessReceiver", "onReceive, ACTION_KILL_TOOLS_PROCESS, x5 kernel video isLocked = %b", new Object[] { Boolean.valueOf(bool) });
+      Log.i("MicroMsg.ToolsProcessReceiver", "onReceive, ACTION_KILL_TOOLS_PROCESS, x5 kernel video isLocked = %b", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
         paramContext = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
         paramIntent = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(paramIntent, paramContext.ahE(), "com/tencent/mm/booter/MMProcessReceivers$ToolsProcessReceiverImpl", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)paramContext.mt(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.a(paramIntent, paramContext.axQ(), "com/tencent/mm/booter/MMProcessReceivers$ToolsProcessReceiverImpl", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        Process.killProcess(((Integer)paramContext.pG(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(paramIntent, "com/tencent/mm/booter/MMProcessReceivers$ToolsProcessReceiverImpl", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
       }
       AppMethodBeat.o(19878);
@@ -59,20 +59,20 @@ public class e$c
         AppMethodBeat.o(19878);
         return;
       }
-      ae.i("MicroMsg.ToolsProcessReceiver", "onReceive, language %s", new Object[] { str1 });
-      paramIntent = ad.aRN(str1);
+      Log.i("MicroMsg.ToolsProcessReceiver", "onReceive, language %s", new Object[] { str1 });
+      paramIntent = LocaleUtil.transLanguageToLocale(str1);
       if ("language_default".equalsIgnoreCase(str1))
       {
         if (Build.VERSION.SDK_INT < 24) {
           break label292;
         }
-        paramIntent = ad.Ixw;
+        paramIntent = LocaleUtil.sysDefaultLocale;
         Locale.setDefault(paramIntent);
       }
       for (;;)
       {
-        ad.a(paramContext.getApplicationContext(), paramIntent);
-        ak.h(b.a(paramContext.getApplicationContext().getResources(), paramContext.getApplicationContext(), str1));
+        LocaleUtil.updateApplicationResourceLocale(paramContext.getApplicationContext(), paramIntent);
+        MMApplicationContext.setResources(b.a(paramContext.getApplicationContext().getResources(), paramContext.getApplicationContext(), str1));
         AppMethodBeat.o(19878);
         return;
         label292:
@@ -88,7 +88,7 @@ public class e$c
       }
       catch (Exception paramContext)
       {
-        ae.i("MicroMsg.ToolsProcessReceiver", "clear cookie faild : " + paramContext.getMessage());
+        Log.i("MicroMsg.ToolsProcessReceiver", "clear cookie faild : " + paramContext.getMessage());
         AppMethodBeat.o(19878);
         return;
       }
@@ -98,20 +98,20 @@ public class e$c
       if (str1.equals("com.tencent.mm.intent.ACTION_CLEAR_WEBVIEW_CACHE"))
       {
         bool = paramIntent.getBooleanExtra("tools_clean_webview_cache_ignore_cookie", true);
-        ae.i("MicroMsg.ToolsProcessReceiver", "WebViewCacheClearTask, clearAllWebViewCache, includeCookie = %b", new Object[] { Boolean.valueOf(bool) });
+        Log.i("MicroMsg.ToolsProcessReceiver", "WebViewCacheClearTask, clearAllWebViewCache, includeCookie = %b", new Object[] { Boolean.valueOf(bool) });
         ah.clearAllWebViewCache(paramContext.getApplicationContext(), bool);
         AppMethodBeat.o(19878);
         return;
       }
       if (str1.equals("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS"))
       {
-        ae.i("MicroMsg.ToolsProcessReceiver", "start tools process task, try to pre load tbs");
+        Log.i("MicroMsg.ToolsProcessReceiver", "start tools process task, try to pre load tbs");
         AppMethodBeat.o(19878);
         return;
       }
       if (str1.equals("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS_DO_NOTHING"))
       {
-        ae.i("MicroMsg.ToolsProcessReceiver", "start tools process and do nothing");
+        Log.i("MicroMsg.ToolsProcessReceiver", "start tools process and do nothing");
         AppMethodBeat.o(19878);
         return;
       }
@@ -120,22 +120,24 @@ public class e$c
         paramContext = paramIntent.getStringExtra("file_path");
         str1 = paramIntent.getStringExtra("file_ext");
         String str2 = paramIntent.getStringExtra("file_name");
+        byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_multi_task_common_info");
         int i = paramIntent.getIntExtra("sence", 0);
-        if ((System.currentTimeMillis() - v.FeP >= 1000L) && (!bu.isNullOrNil(paramContext)))
+        if ((System.currentTimeMillis() - w.JVG >= 1000L) && (!Util.isNullOrNil(paramContext)))
         {
-          v.FeP = System.currentTimeMillis();
+          w.JVG = System.currentTimeMillis();
           paramIntent = new Intent();
-          paramIntent.setClassName(ak.getContext(), "com.tencent.mm.pluginsdk.ui.tools.MiniQBReaderUI");
+          paramIntent.setClassName(MMApplicationContext.getContext(), "com.tencent.mm.pluginsdk.ui.tools.MiniQBReaderUI");
           paramIntent.putExtra("file_path", paramContext);
           paramIntent.putExtra("file_ext", str1);
           paramIntent.putExtra("file_name", str2);
           paramIntent.putExtra("sence", i);
+          paramIntent.putExtra("key_multi_task_common_info", arrayOfByte);
           paramIntent.addFlags(268435456);
-          paramContext = ak.getContext();
-          paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramIntent.mt(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext = MMApplicationContext.getContext();
+          paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I[B)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramIntent.pG(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I[B)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
     }
@@ -144,7 +146,7 @@ public class e$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.e.c
  * JD-Core Version:    0.7.0.1
  */

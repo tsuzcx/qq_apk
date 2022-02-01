@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="#ffcccac6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/km" android:id="@id/cj3" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:layout_centerVertical="true" />
-    <com.tencent.mm.plugin.location.ui.SimpleImageView android:id="@id/ciw" android:layout_width="wrap_content" android:layout_height="13.0dip" android:layout_marginRight="5.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/agf" android:layout_width="@dimen/alv" android:layout_height="@dimen/alv" android:scaleType="centerCrop" />
+    <TextView android:textSize="@dimen/als" android:textColor="@color/ab8" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ijq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/alw" />
+</LinearLayout>

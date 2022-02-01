@@ -1,113 +1,61 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gk;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.fc;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class cg
-  extends gk
+  extends fc
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(43306);
-    c.a locala = new c.a();
-    locala.IBL = new Field[5];
-    locala.columns = new String[6];
+    AppMethodBeat.i(32880);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "encryptUsername";
-    locala.IBN.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "encryptUsername";
-    locala.columns[1] = "conRemark";
-    locala.IBN.put("conRemark", "TEXT default '' ");
-    localStringBuilder.append(" conRemark TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "appId";
+    localMAutoDBInfo.columns[1] = "packageName";
+    localMAutoDBInfo.colsMap.put("packageName", "TEXT");
+    localStringBuilder.append(" packageName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "contactLabels";
-    locala.IBN.put("contactLabels", "TEXT default '' ");
-    localStringBuilder.append(" contactLabels TEXT default '' ");
+    localMAutoDBInfo.columns[2] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER default '0' ");
+    localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "conDescription";
-    locala.IBN.put("conDescription", "TEXT default '' ");
-    localStringBuilder.append(" conDescription TEXT default '' ");
+    localMAutoDBInfo.columns[3] = "sceneFlag";
+    localMAutoDBInfo.colsMap.put("sceneFlag", "INTEGER default '0' ");
+    localStringBuilder.append(" sceneFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[4] = "conPhone";
-    locala.IBN.put("conPhone", "TEXT default '' ");
-    localStringBuilder.append(" conPhone TEXT default '' ");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(43306);
+    localMAutoDBInfo.columns[4] = "msgTypeFlag";
+    localMAutoDBInfo.colsMap.put("msgTypeFlag", "INTEGER default '0' ");
+    localStringBuilder.append(" msgTypeFlag INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "msgState";
+    localMAutoDBInfo.colsMap.put("msgState", "INTEGER default '0' ");
+    localStringBuilder.append(" msgState INTEGER default '0' ");
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(32880);
   }
   
-  public cg()
-  {
-    AppMethodBeat.i(43304);
-    this.field_encryptUsername = "";
-    this.field_conRemark = "";
-    AppMethodBeat.o(43304);
-  }
-  
-  public cg(String paramString)
-  {
-    this();
-    AppMethodBeat.i(43302);
-    this.field_conRemark = "";
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.field_encryptUsername = str;
-    AppMethodBeat.o(43302);
-  }
-  
-  public cg(String paramString1, String paramString2)
-  {
-    this();
-    AppMethodBeat.i(43303);
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    this.field_encryptUsername = str;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    this.field_conRemark = paramString1;
-    AppMethodBeat.o(43303);
-  }
-  
-  public final String VJ()
-  {
-    return this.field_conRemark;
-  }
-  
-  public final String VN()
-  {
-    return this.field_encryptUsername;
-  }
-  
-  protected final Object clone()
-  {
-    AppMethodBeat.i(43305);
-    Object localObject = super.clone();
-    AppMethodBeat.o(43305);
-    return localObject;
-  }
-  
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.cg
  * JD-Core Version:    0.7.0.1
  */

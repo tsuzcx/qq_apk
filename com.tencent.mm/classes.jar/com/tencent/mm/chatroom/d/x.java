@@ -1,65 +1,63 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.r;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.ap;
 import com.tencent.mm.model.v;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.protocal.protobuf.dsy;
-import com.tencent.mm.protocal.protobuf.dsz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ac;
+import com.tencent.mm.protocal.protobuf.emw;
+import com.tencent.mm.protocal.protobuf.emx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ah;
 
 public final class x
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   public String chatroomName;
-  public String fMT;
-  public String fNk;
-  public int fNl;
+  public String gsv;
+  public int gsw;
   public int maxCount;
-  private final b rr;
+  public String resultMsg;
+  private final d rr;
   
   public x(String paramString)
   {
     AppMethodBeat.i(12498);
     this.callback = null;
     this.chatroomName = null;
-    this.fMT = null;
-    this.fNk = null;
+    this.resultMsg = null;
+    this.gsv = null;
     this.maxCount = 0;
-    this.fNl = 0;
-    b.a locala = new b.a();
-    locala.hQF = new dsy();
-    locala.hQG = new dsz();
+    this.gsw = 0;
+    d.a locala = new d.a();
+    locala.iLN = new emw();
+    locala.iLO = new emx();
     locala.uri = "/cgi-bin/micromsg-bin/upgradechatroom";
     locala.funcId = 482;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     this.chatroomName = paramString;
-    ((dsy)this.rr.hQD.hQJ).FNj = paramString;
+    ((emw)this.rr.iLK.iLR).KGO = paramString;
     AppMethodBeat.o(12498);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(12499);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(12499);
     return i;
   }
@@ -69,32 +67,32 @@ public final class x
     return 482;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12500);
-    dsz localdsz = (dsz)this.rr.hQE.hQJ;
-    ae.d("MicroMsg.NetSceneUpgradeChatroom", "NetSceneUpgradeChatroom onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.fNk = localdsz.HnR;
-    if (!bu.isNullOrNil(this.fNk))
+    emx localemx = (emx)this.rr.iLL.iLR;
+    Log.d("MicroMsg.NetSceneUpgradeChatroom", "NetSceneUpgradeChatroom onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.gsv = localemx.Mvl;
+    if (!Util.isNullOrNil(this.gsv))
     {
-      paramArrayOfByte = ((c)g.ab(c.class)).azP().Bx(this.chatroomName);
-      paramq = paramArrayOfByte;
+      paramArrayOfByte = ((c)com.tencent.mm.kernel.g.af(c.class)).aSX().Kd(this.chatroomName);
+      params = paramArrayOfByte;
       if (paramArrayOfByte == null) {
-        paramq = new ac();
+        params = new ah();
       }
-      paramq.mc(v.aAC(), this.fNk);
-      r.a(paramq);
+      params.mQ(z.aTY(), this.gsv);
+      v.a(params);
     }
-    this.fMT = localdsz.GPY;
-    this.maxCount = localdsz.GPX;
-    this.fNl = localdsz.GPZ;
+    this.resultMsg = localemx.LUf;
+    this.maxCount = localemx.LUe;
+    this.gsw = localemx.LUg;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.x
  * JD-Core Version:    0.7.0.1
  */

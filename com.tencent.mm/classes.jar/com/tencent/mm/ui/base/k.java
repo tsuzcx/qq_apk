@@ -1,93 +1,58 @@
 package com.tencent.mm.ui.base;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ui.widget.a.g;
 
 public final class k
-  extends AlertDialog
+  extends g
 {
-  public AdapterView.OnItemClickListener FBJ;
-  private CharSequence Hd;
-  private View iFK;
-  private Context mContext;
-  private ListView mListView;
-  public BaseAdapter oKk;
+  private Button gxv;
+  private TextView kuu;
+  private TextView titleTv;
   
   public k(Context paramContext)
   {
-    super(paramContext, 2131821723);
-    AppMethodBeat.i(142033);
-    this.mContext = paramContext;
-    if (a.ir(this.mContext)) {}
-    for (this.iFK = View.inflate(this.mContext, 2131494799, null);; this.iFK = View.inflate(this.mContext, 2131494798, null))
-    {
-      this.mListView = ((ListView)this.iFK.findViewById(2131301443));
-      AppMethodBeat.o(142033);
-      return;
-    }
+    super(paramContext);
+    AppMethodBeat.i(205229);
+    apf(2131495002);
+    this.titleTv = ((TextView)this.lJI.findViewById(2131309186));
+    this.kuu = ((TextView)this.lJI.findViewById(2131309179));
+    this.gxv = ((Button)this.lJI.findViewById(2131305423));
+    AppMethodBeat.o(205229);
   }
   
-  public final void dismiss()
+  public final k bmc(String paramString)
   {
-    AppMethodBeat.i(142036);
-    try
-    {
-      super.dismiss();
-      AppMethodBeat.o(142036);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ae.e("MicroMsg.MMListDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(142036);
-    }
+    AppMethodBeat.i(205230);
+    this.titleTv.setText(paramString);
+    AppMethodBeat.o(205230);
+    return this;
   }
   
-  protected final void onCreate(Bundle paramBundle)
+  public final k bmd(String paramString)
   {
-    AppMethodBeat.i(142034);
-    super.onCreate(paramBundle);
-    setContentView(this.iFK);
-    AppMethodBeat.o(142034);
+    AppMethodBeat.i(205231);
+    this.kuu.setText(paramString);
+    AppMethodBeat.o(205231);
+    return this;
   }
   
-  public final void setTitle(CharSequence paramCharSequence)
+  public final k g(View.OnClickListener paramOnClickListener)
   {
-    if (paramCharSequence != null)
-    {
-      this.Hd = paramCharSequence;
-      return;
-    }
-    this.Hd = null;
-  }
-  
-  public final void show()
-  {
-    AppMethodBeat.i(142035);
-    if (this.Hd != null) {
-      this.Hd.length();
-    }
-    if (this.FBJ != null) {
-      this.mListView.setOnItemClickListener(this.FBJ);
-    }
-    if (this.oKk != null) {
-      this.mListView.setAdapter(this.oKk);
-    }
-    super.show();
-    AppMethodBeat.o(142035);
+    AppMethodBeat.i(205232);
+    this.gxv.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(205232);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.k
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ public abstract class a
 {
   private static FileSystem.b a(FileSystem.b paramb, String paramString, int paramInt)
   {
-    while ((paramb instanceof b)) {
-      paramb = ((b)paramb).gU(paramString, paramInt);
+    while ((paramb instanceof c)) {
+      paramb = ((c)paramb).ho(paramString, paramInt);
     }
     return paramb;
   }
@@ -35,19 +35,19 @@ public abstract class a
     return localb.a(paramString1, paramb, paramString2);
   }
   
-  public ReadableByteChannel aZD(String paramString)
+  protected boolean b(String paramString1, FileSystem.b paramb, String paramString2)
+  {
+    return false;
+  }
+  
+  public ReadableByteChannel boI(String paramString)
   {
     return Channels.newChannel(openRead(paramString));
   }
   
-  public ByteChannel aZE(String paramString)
+  public ByteChannel boJ(String paramString)
   {
     throw new FileNotFoundException("Not supported by the filesystem.");
-  }
-  
-  protected boolean b(String paramString1, FileSystem.b paramb, String paramString2)
-  {
-    return false;
   }
   
   public long c(String paramString1, FileSystem.b paramb, String paramString2)
@@ -65,15 +65,15 @@ public abstract class a
   
   protected long d(String paramString1, FileSystem.b paramb, String paramString2)
   {
-    return w.a(paramb, paramString2, this, paramString1);
+    return aa.a(paramb, paramString2, this, paramString1);
   }
   
-  public WritableByteChannel da(String paramString, boolean paramBoolean)
+  public WritableByteChannel dv(String paramString, boolean paramBoolean)
   {
-    return Channels.newChannel(db(paramString, paramBoolean));
+    return Channels.newChannel(dw(paramString, paramBoolean));
   }
   
-  public ParcelFileDescriptor mA(String paramString1, String paramString2)
+  public ParcelFileDescriptor nr(String paramString1, String paramString2)
   {
     throw new FileNotFoundException("Not supported by the filesystem.");
   }

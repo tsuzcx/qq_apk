@@ -9,7 +9,9 @@ import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.r;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.storage.t;
+import com.tencent.mm.storage.u;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,20 +19,10 @@ import java.util.List;
 public final class m
   implements q, com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.b, c
 {
-  private r hTq;
-  private com.tencent.mm.storage.s hTr;
+  private t iOE;
+  private u iOF;
   
-  public final String aGd()
-  {
-    AppMethodBeat.i(188881);
-    Object localObject = new StringBuilder();
-    g.ajS();
-    localObject = g.ajR().gDT + "bizcache/";
-    AppMethodBeat.o(188881);
-    return localObject;
-  }
-  
-  public final List<String> ajY()
+  public final List<String> aAo()
   {
     AppMethodBeat.i(124102);
     LinkedList localLinkedList = new LinkedList();
@@ -39,34 +31,44 @@ public final class m
     return localLinkedList;
   }
   
-  public final r azJ()
+  public final t aSR()
   {
-    return this.hTq;
+    return this.iOE;
   }
   
-  public final com.tencent.mm.storage.s azK()
+  public final u aSS()
   {
-    return this.hTr;
+    return this.iOF;
   }
   
-  public final String azZ()
+  public final String aTh()
   {
     AppMethodBeat.i(124101);
     Object localObject = new StringBuilder();
-    g.ajS();
-    localObject = g.ajR().gDT + "brandicon/";
+    g.aAi();
+    localObject = g.aAh().hqG + "brandicon/";
     AppMethodBeat.o(124101);
+    return localObject;
+  }
+  
+  public final String aZV()
+  {
+    AppMethodBeat.i(212174);
+    Object localObject = new StringBuilder();
+    g.aAi();
+    localObject = g.aAh().hqG + "bizcache/";
+    AppMethodBeat.o(212174);
     return localObject;
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(124103);
-    paramc = ((l)g.ab(l.class)).doJ();
-    r localr = new r(paramc);
-    this.hTq = localr;
-    paramc.a(localr);
-    this.hTr = new com.tencent.mm.storage.s(((l)g.ab(l.class)).azL());
+    paramc = ((l)g.af(l.class)).eiy();
+    t localt = new t(paramc);
+    this.iOE = localt;
+    paramc.a(localt);
+    this.iOF = new u(((l)g.af(l.class)).aST());
     AppMethodBeat.o(124103);
   }
   
@@ -75,13 +77,13 @@ public final class m
   public final void parallelsDependency()
   {
     AppMethodBeat.i(124104);
-    a.a(this, c.class).bA(g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class));
+    a.a(this, c.class).bI(g.ah(s.class));
     AppMethodBeat.o(124104);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.al.m
  * JD-Core Version:    0.7.0.1
  */

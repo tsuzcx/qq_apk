@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.channel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.util.Base64;
 import com.tencent.tmassistantsdk.util.Cryptor;
 import java.io.UnsupportedEncodingException;
@@ -99,7 +99,7 @@ public class TMAssistantSDKChannelDataItem
       long l1;
       long l2;
       int k;
-      ae.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(101865);
       return null;
     }
@@ -107,7 +107,7 @@ public class TMAssistantSDKChannelDataItem
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
         continue;
         paramArrayOfByte = null;
       }
@@ -152,7 +152,7 @@ public class TMAssistantSDKChannelDataItem
     }
     catch (JSONException localJSONException)
     {
-      ae.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localJSONException, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localJSONException, "", new Object[0]);
       AppMethodBeat.o(101866);
       return null;
     }
@@ -160,14 +160,14 @@ public class TMAssistantSDKChannelDataItem
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localUnsupportedEncodingException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localUnsupportedEncodingException, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.channel.TMAssistantSDKChannelDataItem
  * JD-Core Version:    0.7.0.1
  */

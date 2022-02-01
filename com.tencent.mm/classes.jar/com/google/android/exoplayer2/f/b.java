@@ -13,15 +13,15 @@ public abstract class b
   {
     super(new h[2], new i[2]);
     this.name = paramString;
-    if (this.bhz == this.bhx.length) {}
+    if (this.bhw == this.bhu.length) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      paramString = this.bhx;
+      paramString = this.bhu;
       int j = paramString.length;
       while (i < j)
       {
-        paramString[i].dR(1024);
+        paramString[i].dM(1024);
         i += 1;
       }
     }
@@ -31,9 +31,9 @@ public abstract class b
   {
     try
     {
-      Object localObject = paramh.aKX;
+      Object localObject = paramh.aKP;
       localObject = b(((ByteBuffer)localObject).array(), ((ByteBuffer)localObject).limit(), paramBoolean);
-      parami.a(paramh.timeUs, (d)localObject, paramh.bdF);
+      parami.a(paramh.timeUs, (d)localObject, paramh.bdC);
       parami.flags &= 0x7FFFFFFF;
       return null;
     }
@@ -52,7 +52,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b
  * JD-Core Version:    0.7.0.1
  */

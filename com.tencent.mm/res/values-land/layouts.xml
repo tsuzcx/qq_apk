@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="layout" name="brp">false</item>
-    <item type="layout" name="brt">false</item>
-    <item type="layout" name="bs1">false</item>
-    <item type="layout" name="bs2">false</item>
-    <item type="layout" name="bs3">false</item>
-    <item type="layout" name="bs_">false</item>
-    <item type="layout" name="bsf">false</item>
-    <item type="layout" name="bss">false</item>
-    <item type="layout" name="bst">false</item>
-    <item type="layout" name="bt0">false</item>
+    <item type="layout" name="ae1">false</item>
+    <item type="layout" name="afa">false</item>
+    <item type="layout" name="afg">false</item>
+    <item type="layout" name="b02">false</item>
+    <item type="layout" name="b06">false</item>
+    <item type="layout" name="b0d">false</item>
+    <item type="layout" name="b0e">false</item>
+    <item type="layout" name="b0f">false</item>
+    <item type="layout" name="b0m">false</item>
+    <item type="layout" name="b0s">false</item>
+    <item type="layout" name="b16">false</item>
+    <item type="layout" name="b17">false</item>
+    <item type="layout" name="b1d">false</item>
+    <item type="layout" name="cd9">false</item>
 </resources>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/ia" android:textColor="@color/BW_0_Alpha_0_9" android:textColorLink="@color/Link" android:id="@id/a1z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:minHeight="116.0dip" android:maxLines="3" android:lineSpacingExtra="8.0dip" android:layout_marginStart="@dimen/i_" android:layout_marginEnd="@dimen/i_" app:collapseButtonPosition="c" app:noCollapseCenter="true" />
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/BW_0_Alpha_0_2" android:id="@id/biz_slot_show_desc_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/a1z" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/g">
+        <ImageView android:gravity="center_vertical" android:id="@id/ayt" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/ob" android:scaleType="centerCrop" />
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:id="@id/ayu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxEms="13" android:singleLine="true" android:layout_toRightOf="@id/ayt" />
+    </LinearLayout>
+</LinearLayout>

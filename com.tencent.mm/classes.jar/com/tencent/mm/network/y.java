@@ -1,108 +1,48 @@
 package com.tencent.mm.network;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.net.ssl.HttpsURLConnection;
+import java.util.List;
+import java.util.Map;
 
-public final class y
+public abstract interface y
 {
-  public HttpsURLConnection iIO;
+  public abstract void RU(String paramString);
   
-  public y(String paramString)
-  {
-    this(new URL(paramString));
-    AppMethodBeat.i(132883);
-    AppMethodBeat.o(132883);
-  }
+  public abstract String bjP();
   
-  private y(URL paramURL)
-  {
-    AppMethodBeat.i(132884);
-    this.iIO = null;
-    try
-    {
-      this.iIO = ((HttpsURLConnection)paramURL.openConnection());
-      AppMethodBeat.o(132884);
-      return;
-    }
-    catch (MalformedURLException paramURL)
-    {
-      ae.e("MicroMsg.MMHttpsUrlConnection", "MalformedURLException : %s", new Object[] { paramURL.getMessage() });
-      ae.e("MicroMsg.MMHttpsUrlConnection", "exception:%s", new Object[] { bu.o(paramURL) });
-      AppMethodBeat.o(132884);
-      return;
-    }
-    catch (IOException paramURL)
-    {
-      ae.e("MicroMsg.MMHttpsUrlConnection", "IOException : %s", new Object[] { paramURL.getMessage() });
-      ae.e("MicroMsg.MMHttpsUrlConnection", "exception:%s", new Object[] { bu.o(paramURL) });
-      AppMethodBeat.o(132884);
-      return;
-    }
-    catch (Exception paramURL)
-    {
-      ae.e("MicroMsg.MMHttpsUrlConnection", "Exception :" + paramURL.getMessage());
-      ae.e("MicroMsg.MMHttpsUrlConnection", "exception:%s", new Object[] { bu.o(paramURL) });
-      AppMethodBeat.o(132884);
-    }
-  }
+  public abstract int bjQ();
   
-  public final void IX(String paramString)
-  {
-    AppMethodBeat.i(132888);
-    this.iIO.setRequestProperty("Referer", paramString);
-    AppMethodBeat.o(132888);
-  }
+  public abstract void disconnect();
   
-  public final void aPw()
-  {
-    AppMethodBeat.i(132889);
-    this.iIO.setUseCaches(true);
-    AppMethodBeat.o(132889);
-  }
+  public abstract int getContentLength();
   
-  public final void disconnect()
-  {
-    AppMethodBeat.i(132885);
-    if (this.iIO != null) {}
-    try
-    {
-      this.iIO.getInputStream().close();
-      this.iIO.disconnect();
-      AppMethodBeat.o(132885);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ae.e("MicroMsg.MMHttpsUrlConnection", localException.getMessage());
-      }
-    }
-  }
+  public abstract String getContentType();
   
-  public final void setConnectTimeout(int paramInt)
-  {
-    AppMethodBeat.i(132886);
-    this.iIO.setConnectTimeout(paramInt);
-    AppMethodBeat.o(132886);
-  }
+  public abstract String getHeaderField(String paramString);
   
-  public final void setReadTimeout(int paramInt)
-  {
-    AppMethodBeat.i(132887);
-    this.iIO.setReadTimeout(paramInt);
-    AppMethodBeat.o(132887);
-  }
+  public abstract int getHeaderFieldInt(String paramString, int paramInt);
+  
+  public abstract Map<String, List<String>> getHeaderFields();
+  
+  public abstract String getHost();
+  
+  public abstract InputStream getInputStream();
+  
+  public abstract int getResponseCode();
+  
+  public abstract void setConnectTimeout(int paramInt);
+  
+  public abstract void setReadTimeout(int paramInt);
+  
+  public abstract void setRequestMethod(String paramString);
+  
+  public abstract void setRequestProperty(String paramString1, String paramString2);
+  
+  public abstract void setUseCaches(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.network.y
  * JD-Core Version:    0.7.0.1
  */

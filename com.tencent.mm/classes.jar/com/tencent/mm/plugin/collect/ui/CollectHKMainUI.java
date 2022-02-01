@@ -13,16 +13,18 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.collect.model.n;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.f;
@@ -30,140 +32,140 @@ import com.tencent.mm.wallet_core.ui.f;
 public class CollectHKMainUI
   extends CollectMainUI
 {
-  private boolean pld = false;
+  private boolean qAt = false;
   
-  protected final void cct()
+  protected final void cAn()
   {
     AppMethodBeat.i(64109);
-    g.ajS();
-    this.plD = ((String)g.ajR().ajA().get(am.a.IUa, ""));
-    com.tencent.mm.plugin.collect.model.n localn = new com.tencent.mm.plugin.collect.model.n(v.aAJ());
-    if (!bu.isNullOrNil(this.plD))
+    g.aAi();
+    this.qAT = ((String)g.aAh().azQ().get(ar.a.Oco, ""));
+    n localn = new n(z.aUf());
+    if (!Util.isNullOrNil(this.qAT))
     {
-      fWy().a(localn, false, 1);
+      hhW().a(localn, false, 1);
       AppMethodBeat.o(64109);
       return;
     }
-    ae.i("MicroMsg.CollectHKMainUI", "force load payurl");
-    this.pld = true;
-    fWy().a(localn, true, 1);
+    Log.i("MicroMsg.CollectHKMainUI", "force load payurl");
+    this.qAt = true;
+    hhW().a(localn, true, 1);
     AppMethodBeat.o(64109);
   }
   
-  protected final String ccu()
+  protected final String cAo()
   {
     AppMethodBeat.i(64110);
-    if (bu.isNullOrNil(this.plE)) {
-      this.plE = ah.fWc();
+    if (Util.isNullOrNil(this.qAU)) {
+      this.qAU = ah.hhz();
     }
-    String str = this.plE;
+    String str = this.qAU;
     AppMethodBeat.o(64110);
     return str;
   }
   
-  protected final void ccv()
+  protected final void cAp()
   {
     AppMethodBeat.i(64112);
-    ImageView localImageView1 = (ImageView)this.pjp.findViewById(2131298474);
-    ImageView localImageView2 = (ImageView)this.pjp.findViewById(2131298465);
+    ImageView localImageView1 = (ImageView)this.qyA.findViewById(2131298888);
+    ImageView localImageView2 = (ImageView)this.qyA.findViewById(2131298879);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localImageView2.getLayoutParams();
     localLayoutParams.topMargin = 0;
     localLayoutParams.bottomMargin = 0;
     localLayoutParams.addRule(13);
     localImageView2.setLayoutParams(localLayoutParams);
-    if (ad.fom().equals("zh_HK"))
+    if (LocaleUtil.getApplicationLanguage().equals("zh_HK"))
     {
-      localImageView1.setImageResource(2131689962);
-      localImageView2.setImageResource(2131689958);
+      localImageView1.setImageResource(2131689986);
+      localImageView2.setImageResource(2131689982);
       AppMethodBeat.o(64112);
       return;
     }
-    localImageView1.setImageResource(2131689961);
-    localImageView2.setImageResource(2131689957);
+    localImageView1.setImageResource(2131689985);
+    localImageView2.setImageResource(2131689981);
     AppMethodBeat.o(64112);
   }
   
-  protected final void ccw()
+  protected final void cAq()
   {
     AppMethodBeat.i(64113);
-    super.ccw();
-    if (this.plL)
+    super.cAq();
+    if (this.qBb)
     {
-      findViewById(2131298458).setVisibility(8);
+      findViewById(2131298871).setVisibility(8);
       AppMethodBeat.o(64113);
       return;
     }
-    findViewById(2131298458).setVisibility(0);
+    findViewById(2131298871).setVisibility(0);
     AppMethodBeat.o(64113);
   }
   
-  public final boolean e(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.n paramn)
+  public final boolean e(int paramInt1, int paramInt2, final String paramString, q paramq)
   {
     AppMethodBeat.i(64111);
-    if ((paramn instanceof com.tencent.mm.plugin.collect.model.n))
+    if ((paramq instanceof n))
     {
-      paramString = (com.tencent.mm.plugin.collect.model.n)paramn;
+      paramString = (n)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (paramString.dmy == 0)
+        if (paramString.dDN == 0)
         {
-          this.plD = paramString.phf;
-          this.mTrueName = paramString.php;
-          this.plE = paramString.pho;
+          this.qAT = paramString.qwo;
+          this.mTrueName = paramString.qwy;
+          this.qAU = paramString.qwx;
           refreshView();
-          if (!bu.isNullOrNil(paramString.phl))
+          if (!Util.isNullOrNil(paramString.qwu))
           {
-            this.plZ.setText(paramString.phl);
-            this.pmc.setOnClickListener(new View.OnClickListener()
+            this.qBp.setText(paramString.qwu);
+            this.qBs.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(64105);
                 b localb = new b();
-                localb.bd(paramAnonymousView);
-                a.b("com/tencent/mm/plugin/collect/ui/CollectHKMainUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                f.p(CollectHKMainUI.this.getContext(), paramString.phm, false);
+                localb.bm(paramAnonymousView);
+                a.b("com/tencent/mm/plugin/collect/ui/CollectHKMainUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                f.p(CollectHKMainUI.this.getContext(), paramString.qwv, false);
                 a.a(this, "com/tencent/mm/plugin/collect/ui/CollectHKMainUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(64105);
               }
             });
-            this.pmc.setVisibility(0);
-            if (bu.isNullOrNil(paramString.iWA)) {
+            this.qBs.setVisibility(0);
+            if (Util.isNullOrNil(paramString.jTx)) {
               break label171;
             }
-            this.plA.setText(paramString.iWA);
-            this.plA.setOnClickListener(new View.OnClickListener()
+            this.qAQ.setText(paramString.jTx);
+            this.qAQ.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(64106);
                 b localb = new b();
-                localb.bd(paramAnonymousView);
-                a.b("com/tencent/mm/plugin/collect/ui/CollectHKMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                if (!bu.isNullOrNil(paramString.iWB)) {
-                  f.p(CollectHKMainUI.this.getContext(), paramString.iWB, true);
+                localb.bm(paramAnonymousView);
+                a.b("com/tencent/mm/plugin/collect/ui/CollectHKMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                if (!Util.isNullOrNil(paramString.jTy)) {
+                  f.p(CollectHKMainUI.this.getContext(), paramString.jTy, true);
                 }
                 a.a(this, "com/tencent/mm/plugin/collect/ui/CollectHKMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(64106);
               }
             });
-            this.plz.setVisibility(0);
+            this.qAP.setVisibility(0);
           }
           for (;;)
           {
             AppMethodBeat.o(64111);
             return true;
-            this.pmc.setVisibility(8);
+            this.qBs.setVisibility(8);
             break;
             label171:
-            this.plz.setVisibility(8);
+            this.qAP.setVisibility(8);
           }
         }
       }
       else {
-        ae.e("MicroMsg.CollectHKMainUI", "net error: %s", new Object[] { paramn });
+        Log.e("MicroMsg.CollectHKMainUI", "net error: %s", new Object[] { paramq });
       }
-      if (!this.pld)
+      if (!this.qAt)
       {
         AppMethodBeat.o(64111);
         return true;
@@ -182,11 +184,11 @@ public class CollectHKMainUI
   {
     AppMethodBeat.i(64107);
     super.onCreate(paramBundle);
-    this.pmc.setVisibility(8);
-    findViewById(2131298458).setVisibility(0);
-    findViewById(2131298479).setVisibility(8);
-    fWy().addSceneEndListener(1335);
-    addIconOptionMenu(0, 2131234701, new MenuItem.OnMenuItemClickListener()
+    this.qBs.setVisibility(8);
+    findViewById(2131298871).setVisibility(0);
+    findViewById(2131298898).setVisibility(8);
+    hhW().addSceneEndListener(1335);
+    addIconOptionMenu(0, 2131235663, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -196,7 +198,7 @@ public class CollectHKMainUI
         return false;
       }
     });
-    ccx();
+    cAr();
     AppMethodBeat.o(64107);
   }
   
@@ -204,7 +206,7 @@ public class CollectHKMainUI
   {
     AppMethodBeat.i(64108);
     super.onDestroy();
-    fWy().removeSceneEndListener(1335);
+    hhW().removeSceneEndListener(1335);
     AppMethodBeat.o(64108);
   }
   
@@ -216,7 +218,7 @@ public class CollectHKMainUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectHKMainUI
  * JD-Core Version:    0.7.0.1
  */

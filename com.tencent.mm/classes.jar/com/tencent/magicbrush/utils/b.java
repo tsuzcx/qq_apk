@@ -10,9 +10,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static float cBm = -1.0F;
+  private static float cPs = -1.0F;
   
-  public static Point aM(Context paramContext)
+  public static Point aV(Context paramContext)
   {
     AppMethodBeat.i(140069);
     WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
@@ -24,8 +24,8 @@ public final class b
     }
     for (;;)
     {
-      localPoint.x = y(paramContext, localPoint.x);
-      localPoint.y = y(paramContext, localPoint.y);
+      localPoint.x = z(paramContext, localPoint.x);
+      localPoint.y = z(paramContext, localPoint.y);
       AppMethodBeat.o(140069);
       return localPoint;
       localPoint.x = paramContext.getResources().getDisplayMetrics().widthPixels;
@@ -36,15 +36,15 @@ public final class b
   public static float getDensity(Context paramContext)
   {
     AppMethodBeat.i(140067);
-    if (cBm < 0.0F) {
-      cBm = paramContext.getResources().getDisplayMetrics().density;
+    if (cPs < 0.0F) {
+      cPs = paramContext.getResources().getDisplayMetrics().density;
     }
-    float f = cBm;
+    float f = cPs;
     AppMethodBeat.o(140067);
     return f;
   }
   
-  private static int y(Context paramContext, int paramInt)
+  private static int z(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(140068);
     paramInt = (int)Math.ceil(paramInt / getDensity(paramContext));
@@ -54,7 +54,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.utils.b
  * JD-Core Version:    0.7.0.1
  */

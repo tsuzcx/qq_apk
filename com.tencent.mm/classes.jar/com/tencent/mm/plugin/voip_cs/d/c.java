@@ -3,53 +3,53 @@ package com.tencent.mm.plugin.voip_cs.d;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class c
 {
-  private static int CNV;
-  public static final int tbf;
-  public static final int wve;
-  public static final int wvf;
-  public static final int wvg;
-  public static final int wvi;
-  public static final int wvl;
-  public static final int wvn;
-  public static final int wvt;
-  public static final int wvv;
-  public static final int wvy;
+  private static int HsM;
+  public static final int wfQ;
+  public static final int zSD;
+  public static final int zSd;
+  public static final int zSe;
+  public static final int zSf;
+  public static final int zSh;
+  public static final int zSl;
+  public static final int zSn;
+  public static final int zSv;
+  public static final int zSy;
   
   static
   {
     AppMethodBeat.i(125492);
-    wve = a.fromDPToPix(ak.getContext(), 3);
-    tbf = a.fromDPToPix(ak.getContext(), 4);
-    wvf = a.fromDPToPix(ak.getContext(), 8);
-    wvg = a.fromDPToPix(ak.getContext(), 10);
-    wvi = a.fromDPToPix(ak.getContext(), 14);
-    wvl = a.fromDPToPix(ak.getContext(), 30);
-    wvn = a.fromDPToPix(ak.getContext(), 32);
-    wvv = a.fromDPToPix(ak.getContext(), 96);
-    wvt = a.fromDPToPix(ak.getContext(), 76);
-    wvy = a.fromDPToPix(ak.getContext(), 230);
-    CNV = 0;
+    zSd = a.fromDPToPix(MMApplicationContext.getContext(), 3);
+    wfQ = a.fromDPToPix(MMApplicationContext.getContext(), 4);
+    zSe = a.fromDPToPix(MMApplicationContext.getContext(), 8);
+    zSf = a.fromDPToPix(MMApplicationContext.getContext(), 10);
+    zSh = a.fromDPToPix(MMApplicationContext.getContext(), 14);
+    zSl = a.fromDPToPix(MMApplicationContext.getContext(), 30);
+    zSn = a.fromDPToPix(MMApplicationContext.getContext(), 32);
+    zSy = a.fromDPToPix(MMApplicationContext.getContext(), 96);
+    zSv = a.fromDPToPix(MMApplicationContext.getContext(), 76);
+    zSD = a.fromDPToPix(MMApplicationContext.getContext(), 230);
+    HsM = 0;
     AppMethodBeat.o(125492);
   }
   
-  public static int gN(Context paramContext)
+  public static int hI(Context paramContext)
   {
     AppMethodBeat.i(125491);
-    if (CNV == 0) {
-      CNV = a.iv(paramContext);
+    if (HsM == 0) {
+      HsM = a.jo(paramContext);
     }
-    int i = CNV;
+    int i = HsM;
     AppMethodBeat.o(125491);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.d.c
  * JD-Core Version:    0.7.0.1
  */

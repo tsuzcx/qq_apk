@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/hv" android:layout_marginBottom="@dimen/hv"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Button android:id="@id/d3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="pause" android:layout_marginStart="59.0dip" app:layout_constraintBaseline_toBaselineOf="@id/dvz" app:layout_constraintStart_toStartOf="ea8" />
-    <Button android:id="@id/dvz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="43.0dip" android:text="quit" android:layout_marginStart="30.0dip" app:layout_constraintStart_toEndOf="@id/d3x" app:layout_constraintTop_toTopOf="ea8" />
-    <Button android:id="@id/cwv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="41.0dip" android:text="back" android:layout_marginEnd="21.0dip" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-</android.support.constraint.ConstraintLayout>
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/Link_100" android:id="@id/kq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h50" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kp" android:layout_width="wrap_content" android:layout_height="@dimen/ajv" android:layout_marginLeft="@dimen/kb" android:src="@raw/arrow_right" app:iconColor="@color/Link_100" />
+</LinearLayout>

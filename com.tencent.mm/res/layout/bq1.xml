@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/a_c" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/he6" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:layout_marginLeft="@dimen/c5" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/hf7" android:paddingLeft="@dimen/c0" android:paddingRight="18.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/hf6" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@raw/icons_outlined_eyes_on" app:iconColor="@color/FG_1" />
-        <TextView android:textSize="@dimen/ed" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="center_vertical" android:id="@id/hxf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/huy" android:layout_marginStart="3.0dip" />
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/dob" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/hi1" android:background="@drawable/qd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:minHeight="@dimen/bb" android:layout_below="@id/dob">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:layout_marginRight="@dimen/cb" android:src="@raw/mm_select_create_chatroom" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ghk" android:singleLine="true" style="@style/mp" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/kc" android:textColor="@color/l4" android:id="@id/bn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{desc}" android:singleLine="true" style="@style/mo" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/he7" android:paddingLeft="@dimen/c9" android:paddingRight="@dimen/ci" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintRight_toLeftOf="@id/hf7" app:layout_constraintTop_toTopOf="ea8">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/he8" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@raw/icons_outlined_like" app:iconColor="@color/FG_2" />
-    </LinearLayout>
-    <TextView android:ellipsize="end" android:gravity="left" android:id="@id/he_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:singleLine="true" app:layout_constraintBottom_toBottomOf="@id/he6" app:layout_constraintHorizontal_weight="1.0" app:layout_constraintLeft_toRightOf="@id/he6" app:layout_constraintRight_toLeftOf="@id/he7" app:layout_constraintTop_toTopOf="@id/he6" style="@style/wf" />
-    <View android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cf" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" />
-    <View android:id="@id/hy4" android:background="@color/os" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

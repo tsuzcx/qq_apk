@@ -5,39 +5,39 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public class TopStoryTabHomeUI
   extends MMActivity
 {
-  private c BKN;
+  private c Glt;
   
   public TopStoryTabHomeUI()
   {
     AppMethodBeat.i(126028);
-    this.BKN = new c(this);
+    this.Glt = new c(this);
     AppMethodBeat.o(126028);
   }
   
   public int getLayoutId()
   {
-    return 2131495786;
+    return 2131496744;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(126029);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.BKN.onCreate(paramBundle);
+    Log.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
+    this.Glt.onCreate(paramBundle);
     AppMethodBeat.o(126029);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(126033);
-    this.BKN.onDestroy();
+    this.Glt.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(126033);
   }
@@ -45,7 +45,7 @@ public class TopStoryTabHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(126030);
-    if (this.BKN.TC(paramInt))
+    if (this.Glt.abS(paramInt))
     {
       AppMethodBeat.o(126030);
       return true;
@@ -58,7 +58,7 @@ public class TopStoryTabHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(126034);
-    this.BKN.onNewIntent(paramIntent);
+    this.Glt.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(126034);
   }
@@ -66,7 +66,7 @@ public class TopStoryTabHomeUI
   public void onPause()
   {
     AppMethodBeat.i(126032);
-    this.BKN.onPause();
+    this.Glt.onPause();
     super.onPause();
     AppMethodBeat.o(126032);
   }
@@ -75,7 +75,7 @@ public class TopStoryTabHomeUI
   {
     AppMethodBeat.i(126031);
     super.onResume();
-    this.BKN.onResume();
+    this.Glt.onResume();
     AppMethodBeat.o(126031);
   }
   
@@ -83,7 +83,7 @@ public class TopStoryTabHomeUI
   {
     AppMethodBeat.i(126035);
     super.onSaveInstanceState(paramBundle);
-    this.BKN.onSaveInstanceState(paramBundle);
+    this.Glt.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(126035);
   }
   
@@ -95,7 +95,7 @@ public class TopStoryTabHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStoryTabHomeUI
  * JD-Core Version:    0.7.0.1
  */

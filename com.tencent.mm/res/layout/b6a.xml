@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/al7" android:background="@color/d" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:background="@color/wt" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.tools.VideoSightView android:id="@id/co4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView android:id="@id/hyq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center" android:id="@id/bmo" android:background="@color/fc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fjn" android:layout_centerInParent="true" android:alpha="0.8" />
-    <ViewStub android:id="@id/fii" android:layout="@layout/b69" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/fsv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:gravity="center" android:id="@id/bnc" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.8" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/ekf" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <ListView android:id="@android:id/list" android:paddingBottom="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="#00000000" android:divider="#00000000" android:dividerHeight="0.0px" />
+</LinearLayout>

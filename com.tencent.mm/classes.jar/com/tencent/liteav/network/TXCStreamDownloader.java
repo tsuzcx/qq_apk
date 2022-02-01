@@ -3,6 +3,8 @@ package com.tencent.liteav.network;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.liteav.basic.b.b;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
@@ -14,7 +16,7 @@ import java.util.Vector;
 
 public class TXCStreamDownloader
   extends com.tencent.liteav.basic.module.a
-  implements com.tencent.liteav.basic.c.a, TXIStreamDownloader.a, d.a, f
+  implements b, TXIStreamDownloader.a, d.a, f
 {
   public static final String TAG = "TXCStreamDownloader";
   private g mAccUrlFetcher;
@@ -27,6 +29,7 @@ public class TXCStreamDownloader
   private boolean mEnableMessage;
   private boolean mEnableMetaData;
   private boolean mEnableNearestIP;
+  private String mFlvSessionKey;
   private Handler mHandler;
   protected Map<String, String> mHeaders;
   private DownloadStats mLastDownloadStats;
@@ -34,7 +37,7 @@ public class TXCStreamDownloader
   private long mLastTimeStamp;
   private f mListener;
   private byte[] mListenerLock;
-  private com.tencent.liteav.basic.c.a mNotifyListener;
+  private b mNotifyListener;
   private String mOriginPlayUrl;
   private boolean mRecvFirstNal;
   private Runnable mReportNetStatusRunnalbe;
@@ -61,6 +64,7 @@ public class TXCStreamDownloader
     this.mChannelType = 0;
     this.mEnableMessage = false;
     this.mEnableMetaData = false;
+    this.mFlvSessionKey = "";
     this.mDownloadFormat = 1;
     this.mHandler = null;
     this.mLastTimeStamp = 0L;
@@ -79,25 +83,30 @@ public class TXCStreamDownloader
         AppMethodBeat.o(15407);
       }
     };
-    if (paramInt == 0) {}
-    for (this.mDownloader = new TXCFLVDownloader(paramContext);; this.mDownloader = new TXCRTMPDownloader(paramContext)) {
-      do
+    if (paramInt == 0)
+    {
+      this.mDownloader = new TXCFLVDownloader(paramContext);
+      this.mDownloader.setFlvSessionKey(this.mFlvSessionKey);
+    }
+    for (;;)
+    {
+      if (this.mDownloader != null)
       {
-        if (this.mDownloader != null)
-        {
-          this.mDownloader.setListener(this);
-          this.mDownloader.setNotifyListener(this);
-          this.mDownloader.setRestartListener(this);
-        }
-        this.mDownloadFormat = paramInt;
-        this.mAccUrlFetcher = new g(paramContext);
-        this.mApplicationContext = paramContext;
-        if (this.mApplicationContext != null) {
-          this.mHandler = new Handler(this.mApplicationContext.getMainLooper());
-        }
-        AppMethodBeat.o(15293);
-        return;
-      } while ((paramInt != 1) && (paramInt != 4));
+        this.mDownloader.setListener(this);
+        this.mDownloader.setNotifyListener(this);
+        this.mDownloader.setRestartListener(this);
+      }
+      this.mDownloadFormat = paramInt;
+      this.mAccUrlFetcher = new g(paramContext);
+      this.mApplicationContext = paramContext;
+      if (this.mApplicationContext != null) {
+        this.mHandler = new Handler(this.mApplicationContext.getMainLooper());
+      }
+      AppMethodBeat.o(15293);
+      return;
+      if ((paramInt == 1) || (paramInt == 4)) {
+        this.mDownloader = new TXCRTMPDownloader(paramContext);
+      }
     }
   }
   
@@ -117,21 +126,27 @@ public class TXCStreamDownloader
   private a getRealTimeStreamInfo()
   {
     AppMethodBeat.i(15300);
-    a locala = new a();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
     if (this.mAccUrlFetcher != null)
     {
-      locala.b = this.mAccUrlFetcher.a();
-      locala.c = this.mAccUrlFetcher.b();
-      locala.d = this.mAccUrlFetcher.c();
-      locala.e = this.mAccUrlFetcher.d();
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(this.mAccUrlFetcher.a()))
+      {
+        localObject1 = new a();
+        ((a)localObject1).b = this.mAccUrlFetcher.a();
+        ((a)localObject1).c = this.mAccUrlFetcher.b();
+        ((a)localObject1).d = this.mAccUrlFetcher.c();
+        ((a)localObject1).e = this.mAccUrlFetcher.d();
+      }
     }
-    if (this.mDownloader != null)
+    if ((this.mDownloader != null) && (localObject1 != null))
     {
-      locala.a = this.mDownloader.getCurrentStreamUrl();
-      locala.f = this.mDownloader.isQuicChannel();
+      ((a)localObject1).a = this.mDownloader.getCurrentStreamUrl();
+      ((a)localObject1).f = this.mDownloader.isQuicChannel();
     }
     AppMethodBeat.o(15300);
-    return locala;
+    return localObject1;
   }
   
   private Long getSpeed(long paramLong1, long paramLong2, long paramLong3)
@@ -151,6 +166,8 @@ public class TXCStreamDownloader
     }
   }
   
+  private native String nativeGetRTMPProxyUserId();
+  
   private void playStreamWithRawUrl(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(15295);
@@ -162,6 +179,7 @@ public class TXCStreamDownloader
         int j = this.mDownloader.connectRetryInterval;
         this.mDownloader = null;
         this.mDownloader = new TXCFLVDownloader(this.mApplicationContext);
+        this.mDownloader.setFlvSessionKey(this.mFlvSessionKey);
         this.mDownloader.setListener(this);
         this.mDownloader.setNotifyListener(this);
         this.mDownloader.setRestartListener(this);
@@ -211,22 +229,22 @@ public class TXCStreamDownloader
       setStatusValue(7103, Long.valueOf(localDownloadStats.firstVideoTS));
       setStatusValue(7104, Long.valueOf(localDownloadStats.firstAudioTS));
       setStatusValue(7120, Long.valueOf(localDownloadStats.videoGop));
-      if (locala != null)
-      {
-        setStatusValue(7105, Long.valueOf(locala.d));
-        setStatusValue(7106, locala.e);
-        if (!locala.f) {
-          break label437;
-        }
+      if (locala == null) {
+        break label460;
       }
-    }
-    label437:
-    for (l1 = 2L;; l1 = 1L)
-    {
+      setStatusValue(7105, Long.valueOf(locala.d));
+      setStatusValue(7106, locala.e);
+      if (!locala.f) {
+        break label455;
+      }
+      l1 = 2L;
       setStatusValue(7111, Long.valueOf(l1));
       setStatusValue(7116, locala.a);
       setStatusValue(7117, locala.b);
       setStatusValue(7118, locala.c);
+    }
+    for (;;)
+    {
       setStatusValue(7107, Long.valueOf(localDownloadStats.startTS));
       setStatusValue(7108, Long.valueOf(localDownloadStats.dnsTS));
       setStatusValue(7109, Long.valueOf(localDownloadStats.connTS));
@@ -238,11 +256,19 @@ public class TXCStreamDownloader
         setStatusValue(7114, Long.valueOf(i + 1));
         setStatusValue(7115, Long.valueOf(j + 1));
         setStatusValue(7119, this.mDownloader.getRealStreamUrl());
+        setStatusValue(7121, String.valueOf(this.mDownloader.getFlvSessionKey()));
       }
       this.mLastTimeStamp = l3;
       this.mLastDownloadStats = localDownloadStats;
       AppMethodBeat.o(15302);
       return;
+      label455:
+      l1 = 1L;
+      break;
+      label460:
+      setStatusValue(7105, Long.valueOf(localDownloadStats.errorCode));
+      setStatusValue(7106, localDownloadStats.errorInfo);
+      setStatusValue(7111, Long.valueOf(1L));
     }
   }
   
@@ -251,6 +277,14 @@ public class TXCStreamDownloader
     if (this.mDownloader != null) {
       this.mDownloader.connectRetryTimes = 0;
     }
+  }
+  
+  public String getRTMPProxyUserId()
+  {
+    AppMethodBeat.i(222373);
+    String str = nativeGetRTMPProxyUserId();
+    AppMethodBeat.o(222373);
+    return str;
   }
   
   public void onNotifyEvent(int paramInt, Bundle paramBundle)
@@ -268,7 +302,7 @@ public class TXCStreamDownloader
         {
         case 3003: 
           localBundle.putString("EVT_MSG", "UNKNOWN event = ".concat(String.valueOf(paramInt)));
-          break label437;
+          break label602;
           localObject = "";
           if (paramBundle != null) {
             localObject = paramBundle.getString("EVT_MSG", "");
@@ -278,53 +312,60 @@ public class TXCStreamDownloader
           }
           localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
           this.mNotifyListener.onNotifyEvent(paramInt, localBundle);
+          if ((paramInt == 3001) || (paramInt == 3002) || (paramInt == 3003) || (paramInt == 3004) || (paramInt == 3005) || (paramInt == 3006) || (paramInt == 3007) || (paramInt == 3008) || (paramInt == 3009) || (paramInt == 3010) || (paramInt == 2101) || (paramInt == 2102) || (paramInt == 2109) || (paramInt == 2110) || (paramInt == -2301) || (paramInt == -2304) || (paramInt == -2308) || (paramInt == -2309))
+          {
+            setStatusValue(7105, Integer.valueOf(paramInt));
+            if (localBundle != null) {
+              setStatusValue(7106, localBundle.getString("EVT_MSG"));
+            }
+          }
           if (paramInt == 2001) {
             reportNetStatusInternal();
           }
           AppMethodBeat.o(15286);
           return;
-          localBundle.putString("EVT_MSG", "RTMP服务器握手失败");
+          localBundle.putString("EVT_MSG", "RTMP handshake failed");
           break;
         case -2301: 
-          localBundle.putString("EVT_MSG", "经多次自动重连失败，放弃连接");
+          localBundle.putString("EVT_MSG", "failed to connect server for several times, abort connection");
           break;
         case 3010: 
-          localBundle.putString("EVT_MSG", "该流地址无视频");
+          localBundle.putString("EVT_MSG", "No video at this stream address");
           break;
         case 3007: 
-          localBundle.putString("EVT_MSG", "读数据错误，网络连接断开");
+          localBundle.putString("EVT_MSG", "Read data error");
           break;
         case 3006: 
-          localBundle.putString("EVT_MSG", "写数据错误，网络连接断开");
+          localBundle.putString("EVT_MSG", "Write data error");
           break;
         case -2302: 
-          localBundle.putString("EVT_MSG", "获取加速拉流地址失败");
+          localBundle.putString("EVT_MSG", "Failed to get accelerated pull address");
           break;
         case 2001: 
-          localBundle.putString("EVT_MSG", "已连接服务器");
+          localBundle.putString("EVT_MSG", "connection SUCCESS");
           break;
         case 3002: 
-          localBundle.putString("EVT_MSG", "连接服务器失败");
+          localBundle.putString("EVT_MSG", "Failed to connect server");
           break;
         case 2103: 
-          localBundle.putString("EVT_MSG", "启动网络重连");
+          localBundle.putString("EVT_MSG", "retry connecting stream server");
           break;
         case 2002: 
-          localBundle.putString("EVT_MSG", "开始拉流");
+          localBundle.putString("EVT_MSG", "begine receiving stream");
           break;
         case -2308: 
-          localBundle.putString("EVT_MSG", "服务器拒绝连接请求");
+          localBundle.putString("EVT_MSG", "The server rejected the connection request");
           break;
         case 2012: 
           localObject = paramBundle.getByteArray("EVT_GET_MSG");
           if ((localObject == null) || (localObject.length <= 0)) {
-            break label437;
+            break label602;
           }
           localBundle.putByteArray("EVT_GET_MSG", (byte[])localObject);
         }
       }
       continue;
-      label437:
+      label602:
       continue;
       Bundle localBundle = paramBundle;
     }
@@ -420,7 +461,7 @@ public class TXCStreamDownloader
         this.mDownloader.setNotifyListener(this);
         this.mDownloader.setRestartListener(this);
         localBundle.putInt("EVT_ID", 2015);
-        localBundle.putCharSequence("EVT_MSG", "切换分辨率成功");
+        localBundle.putCharSequence("EVT_MSG", "Switched resolution successfully");
         if (this.mNotifyListener != null) {
           this.mNotifyListener.onNotifyEvent(2015, localBundle);
         }
@@ -430,7 +471,7 @@ public class TXCStreamDownloader
         return;
       }
       localBundle.putInt("EVT_ID", 2015);
-      localBundle.putCharSequence("EVT_MSG", "切换分辨率失败");
+      localBundle.putCharSequence("EVT_MSG", "Failed to switch resolution");
       if (this.mNotifyListener != null) {
         this.mNotifyListener.onNotifyEvent(2015, localBundle);
       }
@@ -445,6 +486,16 @@ public class TXCStreamDownloader
       this.mDownloader.requestKeyFrame(paramString);
     }
     AppMethodBeat.o(15298);
+  }
+  
+  public void setFlvSessionKey(String paramString)
+  {
+    AppMethodBeat.i(222372);
+    this.mFlvSessionKey = paramString;
+    if (this.mDownloader != null) {
+      this.mDownloader.setFlvSessionKey(paramString);
+    }
+    AppMethodBeat.o(222372);
   }
   
   public void setHeaders(Map<String, String> paramMap)
@@ -476,11 +527,11 @@ public class TXCStreamDownloader
     }
   }
   
-  public void setNotifyListener(com.tencent.liteav.basic.c.a parama)
+  public void setNotifyListener(b paramb)
   {
     synchronized (this.mListenerLock)
     {
-      this.mNotifyListener = parama;
+      this.mNotifyListener = paramb;
       return;
     }
   }
@@ -677,6 +728,7 @@ public class TXCStreamDownloader
       localTXCFLVDownloader.connectRetryInterval = this.mDownloader.connectRetryInterval;
       localTXCFLVDownloader.setHeaders(this.mHeaders);
       localTXCFLVDownloader.setUserID(getID());
+      localTXCFLVDownloader.setFlvSessionKey(this.mFlvSessionKey);
       this.mStreamSwitcher = new d(this);
       this.mStreamSwitcher.a(this);
       this.mStreamSwitcher.a(this.mDownloader, localTXCFLVDownloader, this.mCurrentNalTs, this.mLastIFramelTs, paramString);
@@ -694,8 +746,11 @@ public class TXCStreamDownloader
     public long beforeParseVideoBytes;
     public long connTS;
     public long dnsTS;
+    public int errorCode;
+    public String errorInfo;
     public long firstAudioTS;
     public long firstVideoTS;
+    public String flvSessionKey;
     public String serverIP;
     public long startTS;
     public long videoGop;
@@ -713,7 +768,7 @@ public class TXCStreamDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamDownloader
  * JD-Core Version:    0.7.0.1
  */

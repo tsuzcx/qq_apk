@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.story.api;
 
 public abstract interface k
 {
-  public abstract void SI(int paramInt);
+  public abstract void aaE(int paramInt);
   
-  public abstract void ekG();
+  public abstract void fnh();
   
-  public abstract void ekH();
+  public abstract void fni();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.k
  * JD-Core Version:    0.7.0.1
  */

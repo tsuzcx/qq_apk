@@ -12,9 +12,9 @@ public final class b
   {
     AppMethodBeat.i(133036);
     getClass().getClassLoader();
-    j.vN("commonimgdec");
+    j.Ed("commonimgdec");
     getClass().getClassLoader();
-    j.vN("wechatcommon");
+    j.Ed("wechatcommon");
     AppMethodBeat.o(133036);
   }
   
@@ -25,7 +25,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.b
  * JD-Core Version:    0.7.0.1
  */

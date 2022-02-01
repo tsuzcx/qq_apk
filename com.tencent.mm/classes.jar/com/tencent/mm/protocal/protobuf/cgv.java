@@ -5,99 +5,75 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cgv
   extends com.tencent.mm.bw.a
 {
-  public String GvO;
-  public String desc;
-  public String detail;
-  public String title;
+  public int KWb;
+  public int Mmd;
+  public String Mme;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72534);
+    AppMethodBeat.i(146308);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.d(1, this.title);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.Mmd);
+      if (this.Mme != null) {
+        paramVarArgs.e(2, this.Mme);
       }
-      if (this.desc != null) {
-        paramVarArgs.d(2, this.desc);
-      }
-      if (this.GvO != null) {
-        paramVarArgs.d(3, this.GvO);
-      }
-      if (this.detail != null) {
-        paramVarArgs.d(4, this.detail);
-      }
-      AppMethodBeat.o(72534);
+      paramVarArgs.aM(3, this.KWb);
+      AppMethodBeat.o(146308);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.title == null) {
-        break label394;
-      }
-    }
-    label394:
-    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = g.a.a.b.b.a.bu(1, this.Mmd) + 0;
       paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.desc);
+      if (this.Mme != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.Mme);
       }
-      i = paramInt;
-      if (this.GvO != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GvO);
-      }
-      paramInt = i;
-      if (this.detail != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.detail);
-      }
-      AppMethodBeat.o(72534);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        AppMethodBeat.o(72534);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cgv localcgv = (cgv)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(72534);
-          return -1;
-        case 1: 
-          localcgv.title = locala.OmT.readString();
-          AppMethodBeat.o(72534);
-          return 0;
-        case 2: 
-          localcgv.desc = locala.OmT.readString();
-          AppMethodBeat.o(72534);
-          return 0;
-        case 3: 
-          localcgv.GvO = locala.OmT.readString();
-          AppMethodBeat.o(72534);
-          return 0;
-        }
-        localcgv.detail = locala.OmT.readString();
-        AppMethodBeat.o(72534);
-        return 0;
-      }
-      AppMethodBeat.o(72534);
-      return -1;
+      i = g.a.a.b.b.a.bu(3, this.KWb);
+      AppMethodBeat.o(146308);
+      return paramInt + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(146308);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      cgv localcgv = (cgv)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(146308);
+        return -1;
+      case 1: 
+        localcgv.Mmd = locala.UbS.zi();
+        AppMethodBeat.o(146308);
+        return 0;
+      case 2: 
+        localcgv.Mme = locala.UbS.readString();
+        AppMethodBeat.o(146308);
+        return 0;
+      }
+      localcgv.KWb = locala.UbS.zi();
+      AppMethodBeat.o(146308);
+      return 0;
+    }
+    AppMethodBeat.o(146308);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cgv
  * JD-Core Version:    0.7.0.1
  */

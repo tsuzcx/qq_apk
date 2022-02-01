@@ -1,42 +1,49 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.m;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.p;
-import d.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/upload/EmojiUploadFactory;", "", "()V", "useCdn", "", "getUpload", "Lcom/tencent/mm/emoji/upload/EmojiUpload;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isSelfie", "callback", "Lcom/tencent/mm/emoji/upload/EmojiUpload$Callback;", "plugin-emojisdk_release"})
 public final class h
 {
-  public static final h gsA;
+  private static h hco;
+  public String extraInfo = "";
+  public long hcf;
+  public int hcg;
+  public int hch;
+  public int hcp;
+  public int hcq;
+  public int hcr;
+  public int scene;
   
-  static
+  public static h awf()
   {
-    AppMethodBeat.i(105778);
-    gsA = new h();
-    AppMethodBeat.o(105778);
+    AppMethodBeat.i(104484);
+    if (hco == null) {
+      hco = new h();
+    }
+    h localh = hco;
+    AppMethodBeat.o(104484);
+    return localh;
   }
   
-  public static d a(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
+  public final void b(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(105777);
-    p.h(paramEmojiInfo, "emojiInfo");
-    p.h(parama, "callback");
-    if (m.afx())
-    {
-      paramEmojiInfo = (d)new e(paramEmojiInfo, paramBoolean, parama);
-      AppMethodBeat.o(105777);
-      return paramEmojiInfo;
-    }
-    paramEmojiInfo = (d)new g(paramEmojiInfo, paramBoolean, parama);
-    AppMethodBeat.o(105777);
-    return paramEmojiInfo;
+    AppMethodBeat.i(104485);
+    long l1 = System.currentTimeMillis();
+    long l2 = this.hcf;
+    com.tencent.mm.plugin.report.service.h.CyF.a(16029, new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(this.scene), Long.valueOf(l1 - l2), Integer.valueOf(this.hcg), Integer.valueOf(this.hcp), Integer.valueOf(this.hcq), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(this.hcr), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.hch), this.extraInfo, Long.valueOf(l1), Long.valueOf(this.hcf) });
+    this.hcg += 1;
+    AppMethodBeat.o(104485);
+  }
+  
+  public final void zj(long paramLong)
+  {
+    this.hcf = paramLong;
+    this.hcg = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.c.h
  * JD-Core Version:    0.7.0.1
  */

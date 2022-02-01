@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
@@ -12,37 +12,37 @@ import java.util.Map;
 
 public enum e
 {
-  private Map<String, WeakReference<d>> DtI;
+  private Map<String, WeakReference<d>> IcU;
   
   static
   {
     AppMethodBeat.i(70674);
-    DtH = new e("INSTANCE");
-    DtJ = new e[] { DtH };
+    IcT = new e("INSTANCE");
+    IcV = new e[] { IcT };
     AppMethodBeat.o(70674);
   }
   
   private e()
   {
     AppMethodBeat.i(70671);
-    this.DtI = new HashMap();
+    this.IcU = new HashMap();
     AppMethodBeat.o(70671);
   }
   
   private static String b(Orders paramOrders)
   {
     AppMethodBeat.i(70673);
-    if ((paramOrders != null) && (paramOrders.DpP != null))
+    if ((paramOrders != null) && (paramOrders.HZd != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
-      while (i < paramOrders.DpP.size())
+      while (i < paramOrders.HZd.size())
       {
-        localStringBuilder.append(((Orders.Commodity)paramOrders.DpP.get(i)).dmx);
+        localStringBuilder.append(((Orders.Commodity)paramOrders.HZd.get(i)).dDM);
         i += 1;
       }
       localStringBuilder.append("@");
-      localStringBuilder.append(paramOrders.Dpx);
+      localStringBuilder.append(paramOrders.HYL);
       paramOrders = localStringBuilder.toString();
       AppMethodBeat.o(70673);
       return paramOrders;
@@ -55,17 +55,17 @@ public enum e
   {
     AppMethodBeat.i(70672);
     String str = b(paramOrders);
-    if (bu.isNullOrNil(str))
+    if (Util.isNullOrNil(str))
     {
-      ae.w("MicroMsg.FavorLogicHelperPool", "get key null");
+      Log.w("MicroMsg.FavorLogicHelperPool", "get key null");
       AppMethodBeat.o(70672);
       return null;
     }
     Object localObject;
-    if (this.DtI.containsKey(str))
+    if (this.IcU.containsKey(str))
     {
-      ae.i("MicroMsg.FavorLogicHelperPool", "hit cache, key:".concat(String.valueOf(str)));
-      localObject = (WeakReference)this.DtI.get(str);
+      Log.i("MicroMsg.FavorLogicHelperPool", "hit cache, key:".concat(String.valueOf(str)));
+      localObject = (WeakReference)this.IcU.get(str);
       if (localObject == null) {
         break label153;
       }
@@ -75,17 +75,17 @@ public enum e
         AppMethodBeat.o(70672);
         return localObject;
       }
-      ae.i("MicroMsg.FavorLogicHelperPool", "helper null");
+      Log.i("MicroMsg.FavorLogicHelperPool", "helper null");
     }
-    while ((paramOrders != null) && (paramOrders.DpQ != null))
+    while ((paramOrders != null) && (paramOrders.HZe != null))
     {
-      paramOrders = new d(paramOrders.DpQ);
+      paramOrders = new d(paramOrders.HZe);
       localObject = new WeakReference(paramOrders);
-      this.DtI.put(str, localObject);
+      this.IcU.put(str, localObject);
       AppMethodBeat.o(70672);
       return paramOrders;
       label153:
-      ae.i("MicroMsg.FavorLogicHelperPool", "weakHelper null");
+      Log.i("MicroMsg.FavorLogicHelperPool", "weakHelper null");
     }
     AppMethodBeat.o(70672);
     return null;
@@ -93,7 +93,7 @@ public enum e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.e
  * JD-Core Version:    0.7.0.1
  */

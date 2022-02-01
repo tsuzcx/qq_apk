@@ -13,9 +13,9 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.p;
-import com.tencent.mm.plugin.game.d.eq;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.game.protobuf.eq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class GameIndexWxagView
   extends LinearLayout
@@ -23,7 +23,7 @@ public class GameIndexWxagView
 {
   ViewGroup mContainer;
   LayoutInflater mInflater;
-  int uoy;
+  int xGR;
   
   public GameIndexWxagView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,8 +39,8 @@ public class GameIndexWxagView
   {
     AppMethodBeat.i(42176);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/GameIndexWxagView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/game/ui/GameIndexWxagView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
       a.a(this, "com/tencent/mm/plugin/game/ui/GameIndexWxagView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -48,7 +48,7 @@ public class GameIndexWxagView
       return;
     }
     paramView = (a)paramView.getTag();
-    if (paramView.uBg == null)
+    if (paramView.xTe == null)
     {
       a.a(this, "com/tencent/mm/plugin/game/ui/GameIndexWxagView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42176);
@@ -56,8 +56,8 @@ public class GameIndexWxagView
     }
     localObject = new AppBrandStatObject();
     ((AppBrandStatObject)localObject).scene = 1079;
-    ((p)g.ab(p.class)).a(getContext(), paramView.uBg.nIJ, paramView.uBg.ikm, paramView.uBg.uvQ, 0, paramView.uBg.uuA, (AppBrandStatObject)localObject);
-    f.a(getContext(), 10, 1025, paramView.upr, 30, paramView.uBg.ikm, this.uoy, null);
+    ((r)g.af(r.class)).a(getContext(), paramView.xTe.UserName, paramView.xTe.jfi, paramView.xTe.xNR, 0, paramView.xTe.xut, (AppBrandStatObject)localObject);
+    f.a(getContext(), 10, 1025, paramView.xHK, 30, paramView.xTe.jfi, this.xGR, null);
     a.a(this, "com/tencent/mm/plugin/game/ui/GameIndexWxagView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42176);
   }
@@ -66,25 +66,25 @@ public class GameIndexWxagView
   {
     AppMethodBeat.i(42175);
     super.onFinishInflate();
-    ae.i("MicroMsg.GameIndexWxagView", "initView finished");
+    Log.i("MicroMsg.GameIndexWxagView", "initView finished");
     AppMethodBeat.o(42175);
   }
   
   static final class a
   {
-    public eq uBg;
-    public int upr;
+    public int xHK;
+    public eq xTe;
     
     public a(int paramInt, eq parameq)
     {
-      this.upr = paramInt;
-      this.uBg = parameq;
+      this.xHK = paramInt;
+      this.xTe = parameq;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameIndexWxagView
  * JD-Core Version:    0.7.0.1
  */

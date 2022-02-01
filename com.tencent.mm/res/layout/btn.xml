@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/f42" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:paddingStart="@dimen/bt" android:paddingEnd="@dimen/bt"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/y4" android:gravity="left" android:layout_gravity="left" android:id="@id/hg5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="∙ " android:singleLine="false" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/y4" android:gravity="left" android:layout_gravity="left" android:id="@id/chm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" android:singleLine="false" />
-</LinearLayout>
+    <View android:background="?kk" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/htd" android:padding="@dimen/ct" android:layout_width="44.0dip" android:layout_height="44.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/htc" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/zs" />
+</RelativeLayout>

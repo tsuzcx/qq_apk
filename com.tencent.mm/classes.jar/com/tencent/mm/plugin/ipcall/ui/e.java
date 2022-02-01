@@ -1,114 +1,122 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.Intent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.plugin.ipcall.model.f.i;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.blu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.plugin.ipcall.model.h.d;
+import com.tencent.mm.plugin.ipcall.model.h.k;
+import com.tencent.mm.protocal.protobuf.byf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import java.util.ArrayList;
 
 public final class e
 {
-  View vbA;
-  IPCallAddressUI vbB;
-  boolean vbC = false;
-  TextView vbD = null;
-  TextView vbE = null;
-  LinearLayout vbF = null;
-  TextView vbG = null;
-  ImageView vbH = null;
-  ListView vby;
-  h vbz;
+  ListView ytY;
+  h ytZ;
+  View yua;
+  IPCallAddressUI yub;
+  boolean yuc = false;
+  TextView yud = null;
+  TextView yue = null;
+  LinearLayout yuf = null;
+  TextView yug = null;
+  ImageView yuh = null;
   
   public e(IPCallAddressUI paramIPCallAddressUI, ListView paramListView, View paramView)
   {
-    this.vby = paramListView;
-    this.vbB = paramIPCallAddressUI;
-    this.vbA = paramView;
+    this.ytY = paramListView;
+    this.yub = paramIPCallAddressUI;
+    this.yua = paramView;
   }
   
-  public final void dhn()
+  public final void ebh()
   {
     AppMethodBeat.i(25658);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25654);
-        bc.aCg();
-        if (((Boolean)com.tencent.mm.model.c.ajA().get(am.a.INe, Boolean.FALSE)).booleanValue()) {
-          e.this.vbH.setVisibility(0);
+        bg.aVF();
+        if (((Boolean)com.tencent.mm.model.c.azQ().get(ar.a.NVh, Boolean.FALSE)).booleanValue()) {
+          e.this.yuh.setVisibility(0);
         }
         String str2;
         for (;;)
         {
-          bc.aCg();
-          String str1 = (String)com.tencent.mm.model.c.ajA().get(am.a.INg, "");
-          bc.aCg();
-          str2 = (String)com.tencent.mm.model.c.ajA().get(am.a.INh, "");
-          if (bu.isNullOrNil(str1)) {
+          bg.aVF();
+          String str1 = (String)com.tencent.mm.model.c.azQ().get(ar.a.NVj, "");
+          bg.aVF();
+          str2 = (String)com.tencent.mm.model.c.azQ().get(ar.a.NVk, "");
+          if (Util.isNullOrNil(str1)) {
             break;
           }
-          e.this.vbG.setText(str1);
-          e.this.vbF.setVisibility(0);
+          e.this.yug.setText(str1);
+          e.this.yuf.setVisibility(0);
           AppMethodBeat.o(25654);
           return;
-          e.this.vbH.setVisibility(8);
+          e.this.yuh.setVisibility(8);
         }
-        if (!bu.isNullOrNil(str2))
+        if (!Util.isNullOrNil(str2))
         {
-          e.this.vbG.setText(str2);
-          e.this.vbF.setVisibility(0);
+          e.this.yug.setText(str2);
+          e.this.yuf.setVisibility(0);
           AppMethodBeat.o(25654);
           return;
         }
-        e.this.vbG.setText("");
-        e.this.vbF.setVisibility(8);
+        e.this.yug.setText("");
+        e.this.yuf.setVisibility(8);
         AppMethodBeat.o(25654);
       }
     });
     AppMethodBeat.o(25658);
   }
   
-  public final void dho()
+  public final void ebi()
   {
     AppMethodBeat.i(25659);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25655);
-        blu localblu = com.tencent.mm.plugin.ipcall.a.c.dia();
-        if (localblu != null)
+        byf localbyf = com.tencent.mm.plugin.ipcall.a.c.ebR();
+        if (localbyf != null)
         {
-          e.this.vbD.setText(localblu.GYR);
-          if (!bu.isNullOrNil(localblu.GYZ))
+          e.this.yud.setText(localbyf.MdJ);
+          if (!Util.isNullOrNil(localbyf.MdR))
           {
-            e.this.vbE.setText(localblu.GYZ);
-            e.this.vbE.setVisibility(0);
+            e.this.yue.setText(localbyf.MdR);
+            e.this.yue.setVisibility(0);
             AppMethodBeat.o(25655);
             return;
           }
-          e.this.vbE.setText("");
-          e.this.vbE.setVisibility(8);
+          e.this.yue.setText("");
+          e.this.yue.setVisibility(8);
           AppMethodBeat.o(25655);
           return;
         }
-        e.this.vbD.setText("");
-        e.this.vbE.setText("");
-        e.this.vbE.setVisibility(8);
+        e.this.yud.setText("");
+        e.this.yue.setText("");
+        e.this.yue.setVisibility(8);
         AppMethodBeat.o(25655);
       }
     });

@@ -1,88 +1,88 @@
 package com.tencent.mm.plugin.appbrand.pip;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.plugin.appbrand.jsapi.q.b;
-import com.tencent.mm.plugin.appbrand.jsapi.q.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.q.g;
-import com.tencent.mm.plugin.appbrand.jsapi.q.h.a;
-import com.tencent.mm.plugin.appbrand.jsapi.q.i;
-import com.tencent.mm.plugin.appbrand.jsapi.q.i.a;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.jsapi.s.b;
+import com.tencent.mm.plugin.appbrand.jsapi.s.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.s.g;
+import com.tencent.mm.plugin.appbrand.jsapi.s.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.s.i;
+import com.tencent.mm.plugin.appbrand.jsapi.s.i.a;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  final z ckP;
-  public final String crG;
-  public i.a lCC;
-  boolean mrc;
-  final LinkedList<String> mrd;
-  public final Map<String, a> mre;
+  public final String cDW;
+  final ac cwK;
+  public i.a mKh;
+  boolean nBN;
+  final LinkedList<String> nBO;
+  public final Map<String, a> nBP;
   
-  public a(z paramz)
+  public a(ac paramac)
   {
-    AppMethodBeat.i(207892);
-    this.crG = ("MicroMsg.AppBrand.AppBrandPageScopedPipInfo#" + hashCode());
-    this.lCC = null;
-    this.mrd = new LinkedList();
-    this.mre = new ConcurrentHashMap();
-    this.ckP = paramz;
-    this.mrc = this.ckP.cla;
-    ae.i(this.crG, "mIsCurPageForeground: " + this.mrc);
-    paramz.a(new f.d()
+    AppMethodBeat.i(219494);
+    this.cDW = ("MicroMsg.AppBrand.AppBrandPageScopedPipInfo#" + hashCode());
+    this.mKh = null;
+    this.nBO = new LinkedList();
+    this.nBP = new ConcurrentHashMap();
+    this.cwK = paramac;
+    this.nBN = this.cwK.cwV;
+    Log.i(this.cDW, "mIsCurPageForeground: " + this.nBN);
+    paramac.a(new i.d()
     {
       public final void onForeground()
       {
-        AppMethodBeat.i(207888);
+        AppMethodBeat.i(219490);
         a locala = a.this;
-        ae.i(locala.crG, "markCurPageForeground");
-        locala.mrc = true;
-        AppMethodBeat.o(207888);
+        Log.i(locala.cDW, "markCurPageForeground");
+        locala.nBN = true;
+        AppMethodBeat.o(219490);
       }
     });
-    paramz.a(new f.b()
+    paramac.a(new i.b()
     {
       public final void onBackground()
       {
-        AppMethodBeat.i(207889);
+        AppMethodBeat.i(219491);
         a locala = a.this;
-        ae.i(locala.crG, "markCurPageBackground");
-        locala.mrc = false;
-        AppMethodBeat.o(207889);
+        Log.i(locala.cDW, "markCurPageBackground");
+        locala.nBN = false;
+        AppMethodBeat.o(219491);
       }
     });
-    AppMethodBeat.o(207892);
+    AppMethodBeat.o(219494);
   }
   
-  public final void UL(String paramString)
+  public final void aez(String paramString)
   {
-    AppMethodBeat.i(207893);
-    ae.i(this.crG, "removePipRelatedKey, key: ".concat(String.valueOf(paramString)));
-    synchronized (this.mrd)
+    AppMethodBeat.i(219495);
+    Log.i(this.cDW, "removePipRelatedKey, key: ".concat(String.valueOf(paramString)));
+    synchronized (this.nBO)
     {
-      this.mrd.remove(paramString);
-      AppMethodBeat.o(207893);
+      this.nBO.remove(paramString);
+      AppMethodBeat.o(219495);
       return;
     }
   }
   
-  final String bxt()
+  final String bTD()
   {
-    AppMethodBeat.i(207894);
-    synchronized (this.mrd)
+    AppMethodBeat.i(219496);
+    synchronized (this.nBO)
     {
-      if (this.mrd.isEmpty())
+      if (this.nBO.isEmpty())
       {
-        AppMethodBeat.o(207894);
+        AppMethodBeat.o(219496);
         return null;
       }
-      String str = (String)this.mrd.getFirst();
-      AppMethodBeat.o(207894);
+      String str = (String)this.nBO.getFirst();
+      AppMethodBeat.o(219496);
       return str;
     }
   }
@@ -90,48 +90,48 @@ public final class a
   public static final class a
   {
     public final int id;
-    public b.a mrg;
-    public boolean mrh;
-    public final h.a mri;
-    public final com.tencent.mm.plugin.appbrand.jsapi.q.c mrj;
-    public final g mrk;
-    public final i mrl;
-    public c mrm;
+    public b.a nBR;
+    public boolean nBS;
+    public final h.a nBT;
+    public final com.tencent.mm.plugin.appbrand.jsapi.s.c nBU;
+    public final g nBV;
+    public final i nBW;
+    public c nBX;
     
-    public a(int paramInt, b paramb, g paramg, h.a parama, com.tencent.mm.plugin.appbrand.jsapi.q.c paramc, c paramc1, i.a parama1)
+    public a(int paramInt, b paramb, g paramg, h.a parama, com.tencent.mm.plugin.appbrand.jsapi.s.c paramc, c paramc1, i.a parama1)
     {
-      AppMethodBeat.i(207890);
-      this.mrg = b.a.lhS;
-      this.mrh = false;
+      AppMethodBeat.i(219492);
+      this.nBR = b.a.mnq;
+      this.nBS = false;
       this.id = paramInt;
-      this.mrk = paramg;
-      this.mri = parama;
-      this.mrj = paramc;
-      this.mrm = paramc1;
+      this.nBV = paramg;
+      this.nBT = parama;
+      this.nBU = paramc;
+      this.nBX = paramc1;
       a(paramb);
-      this.mrl = paramg.bmT();
-      this.mrl.a(parama1);
-      AppMethodBeat.o(207890);
+      this.nBW = paramg.bIs();
+      this.nBW.a(parama1);
+      AppMethodBeat.o(219492);
     }
     
     public final void a(b paramb)
     {
-      AppMethodBeat.i(207891);
-      b.a locala = paramb.FO();
+      AppMethodBeat.i(219493);
+      b.a locala = paramb.Px();
       if (locala != null) {
-        this.mrg = locala;
+        this.nBR = locala;
       }
-      paramb = paramb.FP();
+      paramb = paramb.Py();
       if (paramb != null) {
-        this.mrh = paramb.booleanValue();
+        this.nBS = paramb.booleanValue();
       }
-      AppMethodBeat.o(207891);
+      AppMethodBeat.o(219493);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.a
  * JD-Core Version:    0.7.0.1
  */

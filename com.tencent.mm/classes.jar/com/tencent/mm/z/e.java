@@ -14,51 +14,51 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cl.a;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.LinkedList;
 
 public final class e
   implements Cloneable
 {
-  private static int gBK;
-  private static Paint gBM;
-  private float cQN;
-  private LinkedList<b> dcG;
-  public e.a dcH;
-  private Bitmap gBL;
-  private Path xN;
+  private static Paint hoB;
+  private static int hoz;
+  private float dhh;
+  private LinkedList<b> dtx;
+  public a dty;
+  private Bitmap hoA;
+  private Path xT;
   
   static
   {
     AppMethodBeat.i(9272);
-    gBK = a.cb(12.0F);
+    hoz = a.ao(12.0F);
     Paint localPaint = new Paint();
-    gBM = localPaint;
+    hoB = localPaint;
     localPaint.setAntiAlias(true);
-    gBM.setStyle(Paint.Style.STROKE);
-    gBM.setColor(-16776961);
-    gBM.setStrokeCap(Paint.Cap.ROUND);
+    hoB.setStyle(Paint.Style.STROKE);
+    hoB.setColor(-16776961);
+    hoB.setStrokeCap(Paint.Cap.ROUND);
     AppMethodBeat.o(9272);
   }
   
-  public e(e.a parama, Path paramPath, float paramFloat, Bitmap paramBitmap)
+  public e(a parama, Path paramPath, float paramFloat, Bitmap paramBitmap)
   {
     AppMethodBeat.i(9269);
-    this.dcH = parama;
-    this.gBL = paramBitmap;
-    this.xN = paramPath;
-    this.cQN = paramFloat;
-    gBM.setStrokeWidth(a.cb(24.0F) * paramFloat);
+    this.dty = parama;
+    this.hoA = paramBitmap;
+    this.xT = paramPath;
+    this.dhh = paramFloat;
+    hoB.setStrokeWidth(a.ao(24.0F) * paramFloat);
     AppMethodBeat.o(9269);
   }
   
-  public e(e.a parama, LinkedList<b> paramLinkedList, float paramFloat)
+  public e(a parama, LinkedList<b> paramLinkedList, float paramFloat)
   {
     AppMethodBeat.i(9270);
-    this.dcH = parama;
-    this.dcG = paramLinkedList;
-    this.cQN = paramFloat;
-    gBM.setStrokeWidth(a.cb(24.0F) * paramFloat);
+    this.dty = parama;
+    this.dtx = paramLinkedList;
+    this.dhh = paramFloat;
+    hoB.setStrokeWidth(a.ao(24.0F) * paramFloat);
     AppMethodBeat.o(9270);
   }
   
@@ -66,17 +66,17 @@ public final class e
   {
     AppMethodBeat.i(9271);
     Object localObject1;
-    if (this.dcH == e.a.gBN)
+    if (this.dty == a.hoC)
     {
-      localObject1 = this.gBL;
+      localObject1 = this.hoA;
       if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
       {
         paramCanvas.saveLayer(0.0F, 0.0F, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), null, 31);
         paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        paramCanvas.drawPath(this.xN, gBM);
-        gBM.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, gBM);
-        gBM.setXfermode(null);
+        paramCanvas.drawPath(this.xT, hoB);
+        hoB.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, hoB);
+        hoB.setXfermode(null);
         paramCanvas.restore();
       }
       AppMethodBeat.o(9271);
@@ -87,26 +87,26 @@ public final class e
     float f3;
     Object localObject2;
     float f2;
-    if (this.dcH == e.a.gBO)
+    if (this.dty == a.hoD)
     {
-      if (this.dcG.size() <= 0)
+      if (this.dtx.size() <= 0)
       {
         AppMethodBeat.o(9271);
         return;
       }
-      localObject1 = (b)this.dcG.getLast();
+      localObject1 = (b)this.dtx.getLast();
       f1 = ((b)localObject1).scale;
       int i = ((b)localObject1).color;
       j = (int)(Math.random() * 100.0D);
-      f3 = gBK * f1;
+      f3 = hoz * f1;
       localObject2 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233344, (BitmapFactory.Options)localObject2);
+      BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234024, (BitmapFactory.Options)localObject2);
       ((BitmapFactory.Options)localObject2).inSampleSize = a.a((BitmapFactory.Options)localObject2, Math.round(((BitmapFactory.Options)localObject2).outWidth * f1 * 0.7F), Math.round(f1 * ((BitmapFactory.Options)localObject2).outHeight * 0.7F));
       ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
-      localObject2 = BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233344, (BitmapFactory.Options)localObject2);
-      gBM.setStyle(Paint.Style.FILL);
-      gBM.setColorFilter(new LightingColorFilter(i, 1));
+      localObject2 = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234024, (BitmapFactory.Options)localObject2);
+      hoB.setStyle(Paint.Style.FILL);
+      hoB.setColorFilter(new LightingColorFilter(i, 1));
       if (localObject2 == null) {
         break label460;
       }
@@ -125,11 +125,11 @@ public final class e
         paramCanvas.save();
         paramCanvas.rotate(-((b)localObject1).rotation, ((b)localObject1).centerX, ((b)localObject1).centerY);
         if (localObject2 != null) {
-          paramCanvas.drawBitmap((Bitmap)localObject2, f2, f1, gBM);
+          paramCanvas.drawBitmap((Bitmap)localObject2, f2, f1, hoB);
         }
         paramCanvas.restore();
-        gBM.setStyle(Paint.Style.STROKE);
-        gBM.setColorFilter(null);
+        hoB.setStyle(Paint.Style.STROKE);
+        hoB.setColorFilter(null);
         AppMethodBeat.o(9271);
         return;
         if (80 < j)
@@ -142,6 +142,20 @@ public final class e
       f1 = 0.0F;
       f2 = 0.0F;
     }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(9268);
+      hoC = new a("ONE", 0);
+      hoD = new a("TWO", 1);
+      hoE = new a[] { hoC, hoD };
+      AppMethodBeat.o(9268);
+    }
+    
+    private a() {}
   }
   
   public static final class b
@@ -164,7 +178,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.z.e
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.wcdb.support.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,26 +24,26 @@ import java.util.List;
 public class MMSightProgressBar
   extends View
 {
-  public static final int qui;
-  public static final int wjF;
-  private static final int[] wjG;
+  public static final int rLp;
+  public static final int zEe;
+  private static final int[] zEf;
   private int centerX;
   private int centerY;
-  private aq handler;
+  private MMHandler handler;
   private boolean isStart;
   private Paint paint;
-  private List<a> wjH;
-  private int wjI;
-  private b wjJ;
-  private boolean wjK;
-  private a wjL;
+  private List<a> zEg;
+  private int zEh;
+  private b zEi;
+  private boolean zEj;
+  private a zEk;
   
   static
   {
     AppMethodBeat.i(94793);
-    qui = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 3);
-    wjF = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 5);
-    wjG = new int[] { -1, -1, Color.parseColor("#F5B3B2"), Color.parseColor("#EB6866"), Color.parseColor("#E64340") };
+    rLp = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 3);
+    zEe = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 5);
+    zEf = new int[] { -1, -1, Color.parseColor("#F5B3B2"), Color.parseColor("#EB6866"), Color.parseColor("#E64340") };
     AppMethodBeat.o(94793);
   }
   
@@ -53,13 +51,13 @@ public class MMSightProgressBar
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94789);
-    this.wjH = new ArrayList(5);
-    this.wjI = 0;
+    this.zEg = new ArrayList(5);
+    this.zEh = 0;
     this.centerX = 0;
     this.centerY = 0;
     this.handler = null;
     this.isStart = false;
-    this.wjK = false;
+    this.zEj = false;
     init();
     AppMethodBeat.o(94789);
   }
@@ -68,13 +66,13 @@ public class MMSightProgressBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94790);
-    this.wjH = new ArrayList(5);
-    this.wjI = 0;
+    this.zEg = new ArrayList(5);
+    this.zEh = 0;
     this.centerX = 0;
     this.centerY = 0;
     this.handler = null;
     this.isStart = false;
-    this.wjK = false;
+    this.zEj = false;
     init();
     AppMethodBeat.o(94790);
   }
@@ -85,7 +83,7 @@ public class MMSightProgressBar
     this.paint = new Paint();
     this.paint.setColor(-65536);
     this.paint.setAntiAlias(true);
-    this.handler = new aq(Looper.getMainLooper())
+    this.handler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -93,7 +91,7 @@ public class MMSightProgressBar
         if ((paramAnonymousMessage.what == 233) && (MMSightProgressBar.a(MMSightProgressBar.this)) && (MMSightProgressBar.b(MMSightProgressBar.this).size() > 0) && (MMSightProgressBar.b(MMSightProgressBar.this).size() < 5))
         {
           paramAnonymousMessage = (a)MMSightProgressBar.b(MMSightProgressBar.this).get(MMSightProgressBar.b(MMSightProgressBar.this).size() - 1);
-          int i = MMSightProgressBar.cxV()[MMSightProgressBar.b(MMSightProgressBar.this).size()];
+          int i = MMSightProgressBar.cVZ()[MMSightProgressBar.b(MMSightProgressBar.this).size()];
           a locala = new a(MMSightProgressBar.b(MMSightProgressBar.this).size(), MMSightProgressBar.c(MMSightProgressBar.this), MMSightProgressBar.d(MMSightProgressBar.this), i);
           MMSightProgressBar.a(MMSightProgressBar.this, new b(paramAnonymousMessage, locala, new b.a()
           {
@@ -104,7 +102,7 @@ public class MMSightProgressBar
               MMSightProgressBar.a(MMSightProgressBar.this, null);
               if (MMSightProgressBar.b(MMSightProgressBar.this).size() >= 5)
               {
-                Log.i("MicroMsg.MMSightProgressBar", "progress finish!");
+                com.tencent.wcdb.support.Log.i("MicroMsg.MMSightProgressBar", "progress finish!");
                 if (MMSightProgressBar.e(MMSightProgressBar.this) != null) {
                   MMSightProgressBar.e(MMSightProgressBar.this);
                 }
@@ -120,7 +118,7 @@ public class MMSightProgressBar
               }
             }
             
-            public final void drl()
+            public final void elf()
             {
               AppMethodBeat.i(94787);
               MMSightProgressBar.this.invalidate();
@@ -138,7 +136,7 @@ public class MMSightProgressBar
         AppMethodBeat.o(94788);
       }
     };
-    Log.i("MicroMsg.MMSightProgressBar", "init, pointRadius: %s, pointDistance: %s", new Object[] { Integer.valueOf(qui), Integer.valueOf(wjF) });
+    com.tencent.wcdb.support.Log.i("MicroMsg.MMSightProgressBar", "init, pointRadius: %s, pointDistance: %s", new Object[] { Integer.valueOf(rLp), Integer.valueOf(zEe) });
     AppMethodBeat.o(94791);
   }
   
@@ -157,105 +155,105 @@ public class MMSightProgressBar
       int m = getBottom();
       this.centerX = ((j - i) / 2);
       this.centerY = ((m - k) / 2);
-      Log.i("MicroMsg.MMSightProgressBar", "left: %s, right: %s, top: %s, bottom: %s, centerX: %s, centerY: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(this.centerX), Integer.valueOf(this.centerY) });
-      Log.i("MicroMsg.MMSightProgressBar", "add init point");
+      com.tencent.wcdb.support.Log.i("MicroMsg.MMSightProgressBar", "left: %s, right: %s, top: %s, bottom: %s, centerX: %s, centerY: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(this.centerX), Integer.valueOf(this.centerY) });
+      com.tencent.wcdb.support.Log.i("MicroMsg.MMSightProgressBar", "add init point");
       localObject1 = new a(0, this.centerX, this.centerY, -1);
-      this.wjH.add(localObject1);
+      this.zEg.add(localObject1);
     }
     int i = paramCanvas.save();
-    this.wjI = this.wjH.size();
+    this.zEh = this.zEg.size();
     float f1;
     float f3;
-    if (this.wjI % 2 == 0)
+    if (this.zEh % 2 == 0)
     {
-      f1 = -(wjF / 2.0F + (this.wjI / 2 - 1) * wjF + this.wjI / 2 * qui);
+      f1 = -(zEe / 2.0F + (this.zEh / 2 - 1) * zEe + this.zEh / 2 * rLp);
       f2 = f1;
-      if (this.wjJ != null)
+      if (this.zEi != null)
       {
         f2 = f1;
-        if (this.wjJ.wjS)
+        if (this.zEi.zEr)
         {
-          j = this.wjI + 1;
+          j = this.zEh + 1;
           if (j % 2 != 0) {
             break label1181;
           }
-          f2 = wjF / 2.0F;
-          f3 = (j / 2 - 1) * wjF;
+          f2 = zEe / 2.0F;
+          f3 = (j / 2 - 1) * zEe;
         }
       }
     }
-    for (float f2 = -(j / 2 * qui + (f2 + f3));; f2 = -(j / 2 * qui + (f2 + f3)))
+    for (float f2 = -(j / 2 * rLp + (f2 + f3));; f2 = -(j / 2 * rLp + (f2 + f3)))
     {
-      Log.d("MicroMsg.MMSightProgressBar", "add translateX for splitting, dstTranslateX: %s, progress: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.wjJ.progress) });
-      f3 = this.wjJ.progress / 100.0F;
+      com.tencent.wcdb.support.Log.d("MicroMsg.MMSightProgressBar", "add translateX for splitting, dstTranslateX: %s, progress: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.zEi.progress) });
+      f3 = this.zEi.progress / 100.0F;
       f2 = f1 - (Math.abs(f2) - Math.abs(f1)) * f3;
-      Log.d("MicroMsg.MMSightProgressBar", "draw, translateX: %s, currentPointCount: %s", new Object[] { Float.valueOf(f2), Integer.valueOf(this.wjI) });
+      com.tencent.wcdb.support.Log.d("MicroMsg.MMSightProgressBar", "draw, translateX: %s, currentPointCount: %s", new Object[] { Float.valueOf(f2), Integer.valueOf(this.zEh) });
       paramCanvas.translate(f2, 0.0F);
       Object localObject2;
       Object localObject3;
-      if ((this.wjJ != null) && (this.wjJ.wjS))
+      if ((this.zEi != null) && (this.zEi.zEr))
       {
-        localObject2 = this.wjJ;
+        localObject2 = this.zEi;
         localObject1 = this.paint;
-        f1 = (wjF + qui * 2) * (((b)localObject2).progress / 100.0F);
-        ae.d("MicroMsg.MMSightProgressPointSplitter", "drawForSplitProgress, progress: %s, rightPointXOffset: %s", new Object[] { Float.valueOf(((b)localObject2).progress), Float.valueOf(f1) });
-        if (((b)localObject2).wka > ((b)localObject2).wkc)
+        f1 = (zEe + rLp * 2) * (((b)localObject2).progress / 100.0F);
+        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.MMSightProgressPointSplitter", "drawForSplitProgress, progress: %s, rightPointXOffset: %s", new Object[] { Float.valueOf(((b)localObject2).progress), Float.valueOf(f1) });
+        if (((b)localObject2).zEz > ((b)localObject2).zEB)
         {
-          f2 = ((b)localObject2).wjQ.mFP - qui;
-          f3 = ((b)localObject2).wjQ.mFQ - qui;
-          ((Paint)localObject1).setColor(((b)localObject2).wjR.color);
-          ((b)localObject2).wke.reset();
-          ((b)localObject2).wke.moveTo(((b)localObject2).wjU.x + f2, ((b)localObject2).wjU.y + f3);
-          ((b)localObject2).wke.quadTo(((b)localObject2).wjV.x + f2, ((b)localObject2).wjV.y + f3, ((b)localObject2).wjW.x + f2, ((b)localObject2).wjW.y + f3);
-          ((b)localObject2).wke.lineTo(((b)localObject2).wjZ.x + f2, ((b)localObject2).wjZ.y + f3);
-          ((b)localObject2).wke.quadTo(((b)localObject2).wjY.x + f2, ((b)localObject2).wjY.y + f3, ((b)localObject2).wjX.x + f2, f3 + ((b)localObject2).wjX.y);
-          if (((b)localObject2).wjR.color != ((b)localObject2).wjQ.color)
+          f2 = ((b)localObject2).zEp.nSI - rLp;
+          f3 = ((b)localObject2).zEp.nSJ - rLp;
+          ((Paint)localObject1).setColor(((b)localObject2).zEq.color);
+          ((b)localObject2).zED.reset();
+          ((b)localObject2).zED.moveTo(((b)localObject2).zEt.x + f2, ((b)localObject2).zEt.y + f3);
+          ((b)localObject2).zED.quadTo(((b)localObject2).zEu.x + f2, ((b)localObject2).zEu.y + f3, ((b)localObject2).zEv.x + f2, ((b)localObject2).zEv.y + f3);
+          ((b)localObject2).zED.lineTo(((b)localObject2).zEy.x + f2, ((b)localObject2).zEy.y + f3);
+          ((b)localObject2).zED.quadTo(((b)localObject2).zEx.x + f2, ((b)localObject2).zEx.y + f3, ((b)localObject2).zEw.x + f2, f3 + ((b)localObject2).zEw.y);
+          if (((b)localObject2).zEq.color != ((b)localObject2).zEp.color)
           {
-            f3 = ((b)localObject2).wjU.x;
-            float f4 = ((b)localObject2).wjQ.mFQ;
-            float f5 = qui;
-            float f6 = ((b)localObject2).wjW.x;
-            float f7 = ((b)localObject2).wjQ.mFQ;
-            float f8 = qui;
-            j = ((b)localObject2).wjQ.color;
-            k = ((b)localObject2).wjR.color;
+            f3 = ((b)localObject2).zEt.x;
+            float f4 = ((b)localObject2).zEp.nSJ;
+            float f5 = rLp;
+            float f6 = ((b)localObject2).zEv.x;
+            float f7 = ((b)localObject2).zEp.nSJ;
+            float f8 = rLp;
+            j = ((b)localObject2).zEp.color;
+            k = ((b)localObject2).zEq.color;
             localObject3 = Shader.TileMode.REPEAT;
             ((Paint)localObject1).setShader(new LinearGradient(f3 + f2, f4 - f5, f2 + f6, f7 - f8, new int[] { j, k }, null, (Shader.TileMode)localObject3));
           }
-          paramCanvas.drawPath(((b)localObject2).wke, (Paint)localObject1);
+          paramCanvas.drawPath(((b)localObject2).zED, (Paint)localObject1);
           ((Paint)localObject1).setShader(null);
         }
-        localObject2 = ((b)localObject2).wjR;
+        localObject2 = ((b)localObject2).zEq;
         ((Paint)localObject1).setColor(((a)localObject2).color);
-        ((a)localObject2).mFQ = ((a)localObject2).wjP;
-        ((a)localObject2).mFP = (((a)localObject2).wjO + (((a)localObject2).index - 1) * (wjF + qui * 2) + f1);
-        Log.d("MicroMsg.MMSightProgressPoint", "drawWithOffset, index: %s, offset: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(f1), Float.valueOf(((a)localObject2).mFP) });
-        paramCanvas.drawCircle(((a)localObject2).mFP, ((a)localObject2).mFQ, qui, (Paint)localObject1);
+        ((a)localObject2).nSJ = ((a)localObject2).zEo;
+        ((a)localObject2).nSI = (((a)localObject2).zEn + (((a)localObject2).index - 1) * (zEe + rLp * 2) + f1);
+        com.tencent.wcdb.support.Log.d("MicroMsg.MMSightProgressPoint", "drawWithOffset, index: %s, offset: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(f1), Float.valueOf(((a)localObject2).nSI) });
+        paramCanvas.drawCircle(((a)localObject2).nSI, ((a)localObject2).nSJ, rLp, (Paint)localObject1);
         ((Paint)localObject1).setShader(null);
       }
-      localObject1 = this.wjH.iterator();
+      localObject1 = this.zEg.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (a)((Iterator)localObject1).next();
         localObject3 = this.paint;
         ((Paint)localObject3).setColor(((a)localObject2).color);
-        ((a)localObject2).mFP = (((a)localObject2).wjO + ((a)localObject2).index * (wjF + qui * 2));
-        ((a)localObject2).mFQ = ((a)localObject2).wjP;
-        Log.d("MicroMsg.MMSightProgressPoint", "draw, index: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(((a)localObject2).mFP) });
-        paramCanvas.drawCircle(((a)localObject2).mFP, ((a)localObject2).mFQ, qui, (Paint)localObject3);
+        ((a)localObject2).nSI = (((a)localObject2).zEn + ((a)localObject2).index * (zEe + rLp * 2));
+        ((a)localObject2).nSJ = ((a)localObject2).zEo;
+        com.tencent.wcdb.support.Log.d("MicroMsg.MMSightProgressPoint", "draw, index: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(((a)localObject2).nSI) });
+        paramCanvas.drawCircle(((a)localObject2).nSI, ((a)localObject2).nSJ, rLp, (Paint)localObject3);
         ((Paint)localObject3).setShader(null);
       }
-      f1 = -(qui / 2.0F + this.wjI / 2 * wjF + this.wjI / 2 * qui);
+      f1 = -(rLp / 2.0F + this.zEh / 2 * zEe + this.zEh / 2 * rLp);
       break;
       label1181:
-      f2 = qui / 2.0F;
-      f3 = j / 2 * wjF;
+      f2 = rLp / 2.0F;
+      f3 = j / 2 * zEe;
     }
     paramCanvas.restoreToCount(i);
-    if ((this.isStart) && (!this.wjK) && (this.wjH.size() > 0))
+    if ((this.isStart) && (!this.zEj) && (this.zEg.size() > 0))
     {
-      Log.i("MicroMsg.MMSightProgressBar", "start handler loop");
-      this.wjK = true;
+      com.tencent.wcdb.support.Log.i("MicroMsg.MMSightProgressBar", "start handler loop");
+      this.zEj = true;
       this.handler.sendEmptyMessage(233);
     }
     AppMethodBeat.o(94792);
@@ -263,14 +261,14 @@ public class MMSightProgressBar
   
   public void setProgressCallback(a parama)
   {
-    this.wjL = parama;
+    this.zEk = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.progressbar.MMSightProgressBar
  * JD-Core Version:    0.7.0.1
  */

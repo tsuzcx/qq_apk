@@ -5,11 +5,11 @@ import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.j.b.a;
 import com.tencent.mm.media.j.b.b;
-import d.l;
 import java.nio.FloatBuffer;
 import java.util.Arrays;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderGLTextureRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "videoHeight", "videoWidth", "initDrawCoordBuffer", "", "setVideoSize", "width", "height", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderGLTextureRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "videoHeight", "videoWidth", "initDrawCoordBuffer", "", "setVideoSize", "width", "height", "plugin-finder_release"})
 public final class c
   extends b
 {
@@ -21,24 +21,24 @@ public final class c
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
   
-  public final void aur()
+  public final void aMS()
   {
-    AppMethodBeat.i(205234);
+    AppMethodBeat.i(254014);
     if (this.scaleType == 4)
     {
-      Object localObject = auq();
+      Object localObject = aMR();
       float f7 = ((RectF)localObject).left;
       float f1 = ((RectF)localObject).top;
       float f5 = ((RectF)localObject).right;
       float f2 = ((RectF)localObject).bottom;
-      localObject = this.hqf;
+      localObject = this.ijA;
       float[] arrayOfFloat;
       int i;
       if (localObject != null)
       {
-        arrayOfFloat = com.tencent.mm.media.k.c.hrx;
+        arrayOfFloat = com.tencent.mm.media.k.c.iln;
         arrayOfFloat = Arrays.copyOf(arrayOfFloat, arrayOfFloat.length);
-        c.a locala = c.a.sYx;
+        c.a locala = c.a.wct;
         if (this.videoWidth <= 0) {
           break label354;
         }
@@ -49,12 +49,12 @@ public final class c
       }
       label354:
       label363:
-      for (int j = this.videoHeight;; j = this.gNt)
+      for (int j = this.videoHeight;; j = this.hDo)
       {
-        float f6 = c.a.al(((Rect)localObject).left / i);
-        float f8 = c.a.al(((Rect)localObject).right / i);
-        float f4 = c.a.al(((Rect)localObject).bottom / j);
-        float f3 = c.a.al(((Rect)localObject).top / j);
+        float f6 = c.a.au(((Rect)localObject).left / i);
+        float f8 = c.a.au(((Rect)localObject).right / i);
+        float f4 = c.a.au(((Rect)localObject).bottom / j);
+        float f3 = c.a.au(((Rect)localObject).top / j);
         float f9 = Math.abs(f5 - f7);
         f5 = Math.abs(f2 - f1);
         f6 = f6 * f9 + f7;
@@ -69,27 +69,27 @@ public final class c
         arrayOfFloat[5] = f4;
         arrayOfFloat[6] = f7;
         arrayOfFloat[7] = f4;
-        this.gNU.put(com.tencent.mm.media.k.c.hrx);
-        this.gNU.position(0);
-        this.gNU.put(arrayOfFloat);
-        this.gNU.position(0);
-        this.gNV.position(0);
-        this.gNV.position(0);
-        this.gNV.put(com.tencent.mm.media.k.c.hrw);
-        this.gNV.position(0);
-        AppMethodBeat.o(205234);
+        this.hDT.put(com.tencent.mm.media.k.c.iln);
+        this.hDT.position(0);
+        this.hDT.put(arrayOfFloat);
+        this.hDT.position(0);
+        this.hDU.position(0);
+        this.hDU.position(0);
+        this.hDU.put(com.tencent.mm.media.k.c.ilm);
+        this.hDU.position(0);
+        AppMethodBeat.o(254014);
         return;
-        i = this.gNs;
+        i = this.hDn;
         break;
       }
     }
-    super.aur();
-    AppMethodBeat.o(205234);
+    super.aMS();
+    AppMethodBeat.o(254014);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.c
  * JD-Core Version:    0.7.0.1
  */

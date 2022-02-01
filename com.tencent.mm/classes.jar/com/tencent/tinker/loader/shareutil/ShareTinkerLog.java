@@ -75,7 +75,7 @@ public class ShareTinkerLog
     {
       try
       {
-        Constructor localConstructor = Class.forName("com.tencent.tinker.lib.util.TinkerLogInlineFence").getDeclaredConstructor(new Class[0]);
+        Constructor localConstructor = Class.forName("com.tencent.tinker.loader.shareutil.TinkerLogInlineFence").getDeclaredConstructor(new Class[0]);
         localConstructor.setAccessible(true);
         tinkerLogInlineFenceRef[0] = ((Handler)localConstructor.newInstance(new Object[0]));
         return;

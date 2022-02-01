@@ -2,225 +2,315 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.ArrayList;
+import com.tencent.mm.booter.notification.a.h;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.Map;
 
 public final class cf
-  extends j<ce>
-  implements m
+  extends MAutoStorage<ce>
 {
-  public static final String[] INDEX_CREATE;
+  public static volatile boolean Orv;
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabaseEx kOg;
   
   static
   {
-    AppMethodBeat.i(117342);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ce.info, "shakeverifymessage") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS  shakeverifymessage_unread_index ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_statusIndex ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_createtimeIndex ON shakeverifymessage ( createtime )" };
-    AppMethodBeat.o(117342);
+    AppMethodBeat.i(232429);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ce.info, "NotifyMessageRecord") };
+    Orv = false;
+    AppMethodBeat.o(232429);
   }
   
-  public cf(e parame)
+  public cf(ISQLiteDatabaseEx paramISQLiteDatabaseEx)
   {
-    super(parame, ce.info, "shakeverifymessage", INDEX_CREATE);
-    this.db = parame;
+    this(paramISQLiteDatabaseEx, ce.info, "NotifyMessageRecord");
   }
   
-  public final Cursor Jc(int paramInt)
+  private cf(ISQLiteDatabaseEx paramISQLiteDatabaseEx, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    AppMethodBeat.i(117334);
-    Object localObject = "SELECT * FROM " + getTableName() + " where isSend = 0 ORDER BY createtime desc LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(117334);
-    return localObject;
+    super(paramISQLiteDatabaseEx, paramMAutoDBInfo, paramString, null);
+    this.kOg = paramISQLiteDatabaseEx;
   }
   
-  public final boolean a(ce paramce)
+  public static String bc(ca paramca)
   {
-    AppMethodBeat.i(117337);
-    if (paramce == null)
+    Object localObject = null;
+    AppMethodBeat.i(232427);
+    paramca = XmlParser.parseXml(paramca.field_content, "msg", null);
+    if (paramca != null) {}
+    for (paramca = Util.nullAsNil((String)paramca.get(".msg.fromusername"));; paramca = localObject)
     {
-      ae.e("MicroMsg.ShakeVerifyMessageStorage", "insert fail, shakeMsg is null");
-      AppMethodBeat.o(117337);
-      return false;
+      AppMethodBeat.o(232427);
+      return paramca;
+      Log.i("MicroMsg.NotifyMessageRecordStorage", "not template message, can't find username field from content");
     }
-    if (super.insert(paramce))
-    {
-      doNotify(paramce.systemRowid);
-      AppMethodBeat.o(117337);
-      return true;
-    }
-    AppMethodBeat.o(117337);
-    return false;
   }
   
-  public final ce[] aVY(String paramString)
+  public static String bd(ca paramca)
   {
-    AppMethodBeat.i(117339);
-    ae.d("MicroMsg.ShakeVerifyMessageStorage", "getLastShakeVerifyMessage");
-    paramString = "select *, rowid from ShakeVerifyMessage  where sayhiuser = '" + bu.aSk(paramString) + "' order by createtime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      ce localce = new ce();
-      localce.convertFrom(paramString);
-      localArrayList.add(localce);
-    }
-    paramString.close();
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(117339);
-      return null;
-    }
-    paramString = (ce[])localArrayList.toArray(new ce[localArrayList.size()]);
-    AppMethodBeat.o(117339);
-    return paramString;
+    AppMethodBeat.i(232428);
+    paramca = h.b(paramca, new PString(), new PString(), new PInt(), false);
+    AppMethodBeat.o(232428);
+    return paramca;
   }
   
-  public final void aqU(String paramString)
+  public static boolean gEg()
   {
-    AppMethodBeat.i(117335);
-    paramString = "svrid = '" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
-      doNotify();
-    }
-    ae.i("MicroMsg.ShakeVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(117335);
+    return Orv;
   }
   
-  public final long aqW(String paramString)
+  public final Cursor J(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(117340);
-    if (paramString != null)
+    AppMethodBeat.i(232426);
+    try
     {
-      paramString = ((cf)((l)g.ab(l.class)).doF()).fwL();
-      if (paramString == null) {}
-    }
-    for (long l1 = paramString.field_createtime + 1L;; l1 = 0L)
-    {
-      long l2 = bu.aRi();
-      if (l1 > l2)
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      StringBuilder localStringBuilder2 = localStringBuilder1.append("SELECT * FROM ( SELECT * FROM message AS MESSAGE INNER JOIN NotifyMessageRecord AS NOTIFY_RECORD").append(" ON MESSAGE.msgId = NOTIFY_RECORD.msgId").append(" WHERE NOTIFY_RECORD.talker = '").append(Util.escapeSqlValue(paramString)).append("'");
+      if (paramLong > 0L) {}
+      for (paramString = " AND createTime > ".concat(String.valueOf(paramLong));; paramString = "")
       {
-        AppMethodBeat.o(117340);
-        return l1;
+        localStringBuilder2.append(paramString).append(" ORDER BY MESSAGE.createTime DESC LIMIT ").append(paramInt).append(") ORDER BY createTime ASC");
+        paramString = this.kOg.rawQuery(localStringBuilder1.toString(), null);
+        if (paramString == null) {
+          break;
+        }
+        paramString.moveToFirst();
+        AppMethodBeat.o(232426);
+        return paramString;
       }
-      AppMethodBeat.o(117340);
-      return l2;
-    }
-  }
-  
-  public final int bVY()
-  {
-    AppMethodBeat.i(117331);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 4", null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(117331);
-      return 0;
-    }
-    int i = localCursor.getInt(0);
-    localCursor.close();
-    if (i > 0)
-    {
-      AppMethodBeat.o(117331);
-      return i;
-    }
-    AppMethodBeat.o(117331);
-    return 0;
-  }
-  
-  public final void bdi()
-  {
-    AppMethodBeat.i(117336);
-    this.db.delete(getTableName(), null, null);
-    AppMethodBeat.o(117336);
-  }
-  
-  public final ce fwL()
-  {
-    AppMethodBeat.i(117333);
-    Cursor localCursor = this.db.a("SELECT * FROM " + getTableName() + " ORDER BY createtime DESC LIMIT 1", null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(117333);
       return null;
     }
-    if (!localCursor.moveToFirst())
+    catch (Exception paramString)
     {
-      localCursor.close();
-      AppMethodBeat.o(117333);
-      return null;
+      Log.w("MicroMsg.NotifyMessageRecordStorage", "dz[getCursor] exception %s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(232426);
     }
+  }
+  
+  public final boolean bb(ca paramca)
+  {
+    AppMethodBeat.i(232420);
     ce localce = new ce();
-    localce.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(117333);
-    return localce;
+    localce.field_msgId = paramca.field_msgId;
+    boolean bool = super.delete(localce, new String[0]);
+    AppMethodBeat.o(232420);
+    return bool;
   }
   
-  public final ce[] gA(String paramString, int paramInt)
+  public final boolean e(ca paramca, String paramString)
   {
-    AppMethodBeat.i(117338);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ae.e("MicroMsg.ShakeVerifyMessageStorage", "getLastRecvShakeMsg fail, talker is null");
-      AppMethodBeat.o(117338);
-      return null;
-    }
-    paramString = "select * from ShakeVerifyMessage where isSend = 0 and sayhiuser = '" + bu.aSk(paramString) + "' order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      ce localce = new ce();
-      localce.convertFrom(paramString);
-      localArrayList.add(localce);
-    }
-    paramString.close();
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(117338);
-      return null;
-    }
-    paramString = (ce[])localArrayList.toArray(new ce[localArrayList.size()]);
-    AppMethodBeat.o(117338);
-    return paramString;
+    AppMethodBeat.i(232419);
+    ce localce = new ce();
+    localce.field_msgId = paramca.field_msgId;
+    localce.field_talker = paramca.field_talker;
+    localce.field_createTime = paramca.field_createTime;
+    localce.field_digest = paramString;
+    boolean bool = super.insert(localce);
+    AppMethodBeat.o(232419);
+    return bool;
   }
   
-  public final int getCount()
+  public final boolean f(ca paramca, String paramString)
   {
-    AppMethodBeat.i(117332);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName(), null, 2);
-    if (!localCursor.moveToFirst())
+    AppMethodBeat.i(232421);
+    ce localce = new ce();
+    localce.field_msgId = paramca.field_msgId;
+    localce.field_talker = paramca.field_talker;
+    localce.field_createTime = paramca.field_createTime;
+    localce.field_digest = paramString;
+    boolean bool = super.update(localce, new String[0]);
+    AppMethodBeat.o(232421);
+    return bool;
+  }
+  
+  public final int gEh()
+  {
+    Cursor localCursor2 = null;
+    j = 0;
+    AppMethodBeat.i(232422);
+    localCursor1 = localCursor2;
+    try
     {
-      localCursor.close();
-      AppMethodBeat.o(117332);
-      return 0;
+      localObject = new StringBuilder();
+      localCursor1 = localCursor2;
+      ((StringBuilder)localObject).append("SELECT COUNT(*) FROM message WHERE talker = '").append(Util.escapeSqlValue("notifymessage")).append("'");
+      localCursor1 = localCursor2;
+      localCursor2 = this.kOg.rawQuery(((StringBuilder)localObject).toString(), null);
+      localCursor1 = localCursor2;
+      localCursor2.moveToFirst();
+      i = j;
+      localObject = localCursor2;
+      localCursor1 = localCursor2;
+      if (localCursor2.moveToLast())
+      {
+        localCursor1 = localCursor2;
+        i = localCursor2.getInt(0);
+        localObject = localCursor2;
+      }
     }
-    int i = localCursor.getInt(0);
-    localCursor.close();
-    if (i > 0)
+    catch (Exception localException)
     {
-      AppMethodBeat.o(117332);
-      return i;
+      for (;;)
+      {
+        Log.w("MicroMsg.NotifyMessageRecordStorage", "dz[getNotifyMessageCount] exception %s", new Object[] { localException.toString() });
+        int i = j;
+        Object localObject = localCursor1;
+      }
     }
-    AppMethodBeat.o(117332);
-    return 0;
+    if (localObject != null) {
+      ((Cursor)localObject).close();
+    }
+    AppMethodBeat.o(232422);
+    return i;
+  }
+  
+  public final int gEi()
+  {
+    Cursor localCursor2 = null;
+    j = 0;
+    AppMethodBeat.i(232423);
+    localCursor1 = localCursor2;
+    try
+    {
+      localObject = new StringBuilder();
+      localCursor1 = localCursor2;
+      ((StringBuilder)localObject).append("SELECT COUNT(*) FROM NotifyMessageRecord");
+      localCursor1 = localCursor2;
+      localCursor2 = this.kOg.rawQuery(((StringBuilder)localObject).toString(), null);
+      localCursor1 = localCursor2;
+      localCursor2.moveToFirst();
+      i = j;
+      localObject = localCursor2;
+      localCursor1 = localCursor2;
+      if (localCursor2.moveToLast())
+      {
+        localCursor1 = localCursor2;
+        i = localCursor2.getInt(0);
+        localObject = localCursor2;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.w("MicroMsg.NotifyMessageRecordStorage", "dz[getNotifyMessageRecordCount] exception %s", new Object[] { localException.toString() });
+        int i = j;
+        Object localObject = localCursor1;
+      }
+    }
+    if (localObject != null) {
+      ((Cursor)localObject).close();
+    }
+    AppMethodBeat.o(232423);
+    return i;
+  }
+  
+  public final boolean gEj()
+  {
+    bool1 = true;
+    AppMethodBeat.i(232424);
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("SELECT * FROM message AS MESSAGE LEFT JOIN (SELECT msgId AS ").append("NOTIFY_RECORD_msgId FROM NotifyMessageRecord) AS NOTIFY_RECORD ON MESSAGE.").append("msgId = NOTIFY_RECORD.NOTIFY_RECORD_msgId WHERE MESSAGE.").append("talker = '").append(Util.escapeSqlValue("notifymessage")).append("' AND NOTIFY_RECORD.NOTIFY_RECORD_msgId IS NULL");
+        localObject1 = this.kOg.rawQuery(((StringBuilder)localObject1).toString(), null);
+        try
+        {
+          ((Cursor)localObject1).moveToFirst();
+          localca = new ca();
+          localca.convertFrom((Cursor)localObject1);
+          if (Util.isNullOrNil(localca.field_talker))
+          {
+            Log.i("MicroMsg.NotifyMessageRecordStorage", "talker is null");
+            localObject2 = null;
+            if (localObject2 != null) {
+              insertNotify((IAutoDBItem)localObject2, false);
+            }
+            boolean bool2 = ((Cursor)localObject1).moveToNext();
+            if (bool2) {
+              continue;
+            }
+          }
+        }
+        catch (Exception localException1)
+        {
+          ca localca;
+          Object localObject2;
+          String str;
+          bool1 = false;
+        }
+      }
+      catch (Exception localException2)
+      {
+        bool1 = false;
+        Object localObject1 = null;
+        continue;
+      }
+      try
+      {
+        Log.i("MicroMsg.NotifyMessageRecordStorage", "sync row: %d", new Object[] { Integer.valueOf(((Cursor)localObject1).getCount()) });
+        if (localObject1 != null) {
+          ((Cursor)localObject1).close();
+        }
+        AppMethodBeat.o(232424);
+        return bool1;
+      }
+      catch (Exception localException3)
+      {
+        bool1 = true;
+        continue;
+      }
+      str = bc(localca);
+      if (Util.isNullOrNil(str)) {
+        Log.i("MicroMsg.NotifyMessageRecordStorage", "username is null or nil");
+      }
+      localObject2 = new ce();
+      ((ce)localObject2).field_msgId = localca.field_msgId;
+      ((ce)localObject2).field_createTime = localca.field_createTime;
+      ((ce)localObject2).field_talker = str;
+      ((ce)localObject2).field_digest = bd(localca);
+      continue;
+      Log.w("MicroMsg.NotifyMessageRecordStorage", "dz[handleSyncRecordMsg] exception %s", new Object[] { localException1.toString() });
+    }
+  }
+  
+  public final Cursor gEk()
+  {
+    AppMethodBeat.i(232425);
+    try
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SELECT talker,msgId,MAX(createTime) AS createTime").append(",digest FROM NotifyMessageRecord WHERE talker IS NOT NULL AND LENGTH(talker").append(") > 0 GROUP BY talker ORDER BY createTime DESC");
+      localObject = this.kOg.rawQuery(((StringBuilder)localObject).toString(), null);
+      if (localObject != null)
+      {
+        ((Cursor)localObject).moveToFirst();
+        AppMethodBeat.o(232425);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      Log.w("MicroMsg.NotifyMessageRecordStorage", "dz[getNotifyMsgConversationCursor] exception %s", new Object[] { localException.toString() });
+      AppMethodBeat.o(232425);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.cf
  * JD-Core Version:    0.7.0.1
  */

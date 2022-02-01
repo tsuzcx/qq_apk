@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,26 +13,26 @@ public final class g$a
 {
   public long endTime;
   public long startTime;
-  public int umn;
-  public List<String> umo;
+  public int xEF;
+  public List<String> xEG;
   
   public g$a()
   {
-    AppMethodBeat.i(195632);
+    AppMethodBeat.i(204151);
     this.startTime = 0L;
     this.endTime = 0L;
-    this.umn = -10;
-    this.umo = new ArrayList();
-    AppMethodBeat.o(195632);
+    this.xEF = -10;
+    this.xEG = new ArrayList();
+    AppMethodBeat.o(204151);
   }
   
-  static a amT(String paramString)
+  static a aAj(String paramString)
   {
-    AppMethodBeat.i(195634);
+    AppMethodBeat.i(204153);
     locala = new a();
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(195634);
+      AppMethodBeat.o(204153);
       return locala;
     }
     try
@@ -40,14 +40,14 @@ public final class g$a
       paramString = new JSONObject(paramString);
       locala.startTime = paramString.optLong("startTime", 0L);
       locala.endTime = paramString.optLong("endTime", 0L);
-      locala.umn = paramString.optInt("basicType", -10);
+      locala.xEF = paramString.optInt("basicType", -10);
       paramString = paramString.optJSONArray("msgIdList");
       if (paramString != null)
       {
         int i = 0;
         while (i < paramString.length())
         {
-          locala.umo.add(paramString.optString(i));
+          locala.xEG.add(paramString.optString(i));
           i += 1;
         }
       }
@@ -55,21 +55,21 @@ public final class g$a
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(195634);
+      AppMethodBeat.o(204153);
     }
   }
   
   public final String toJson()
   {
-    AppMethodBeat.i(195633);
+    AppMethodBeat.i(204152);
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("startTime", this.startTime);
       ((JSONObject)localObject).put("endTime", this.endTime);
-      ((JSONObject)localObject).put("basicType", this.umn);
+      ((JSONObject)localObject).put("basicType", this.xEF);
       JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.umo.iterator();
+      Iterator localIterator = this.xEG.iterator();
       while (localIterator.hasNext())
       {
         localJSONArray.put((String)localIterator.next());
@@ -80,7 +80,7 @@ public final class g$a
     catch (JSONException localJSONException) {}
     for (;;)
     {
-      AppMethodBeat.o(195633);
+      AppMethodBeat.o(204152);
       return localObject;
       ((JSONObject)localObject).put("msgIdList", localJSONException);
     }
@@ -88,7 +88,7 @@ public final class g$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.g.a
  * JD-Core Version:    0.7.0.1
  */

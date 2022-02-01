@@ -20,9 +20,9 @@ import com.tencent.mm.plugin.emoji.model.a;
 import com.tencent.mm.protocal.protobuf.EmotionBanner;
 import com.tencent.mm.protocal.protobuf.EmotionBannerImg;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMDotView;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,25 +31,25 @@ public class EmojiStoreVpHeader
   extends LinearLayout
   implements ViewPager.OnPageChangeListener
 {
-  private View iFK;
-  private View jFG;
-  private MMDotView nnw;
-  private ViewPager pRH;
-  private LinkedList<a> pRI;
-  private i pRJ;
-  private float pRK;
-  private float pRL;
-  private a pRM;
-  private volatile boolean pRN;
-  private final int pRO;
-  private final int pRP;
+  private View jBN;
+  private View kHq;
+  private MMDotView oxc;
+  private ViewPager riH;
+  private LinkedList<a> riI;
+  private i riJ;
+  private float riK;
+  private float riL;
+  private a riM;
+  private volatile boolean riN;
+  private final int riO;
+  private final int riP;
   
   public EmojiStoreVpHeader(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(109071);
-    this.pRO = 5;
-    this.pRP = 0;
+    this.riO = 5;
+    this.riP = 0;
     setOrientation(1);
     AppMethodBeat.o(109071);
   }
@@ -58,18 +58,18 @@ public class EmojiStoreVpHeader
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109072);
-    this.pRO = 5;
-    this.pRP = 0;
+    this.riO = 5;
+    this.riP = 0;
     setOrientation(1);
     AppMethodBeat.o(109072);
   }
   
-  private void cjK()
+  private void cHL()
   {
     try
     {
       AppMethodBeat.i(109074);
-      if (this.pRI == null)
+      if (this.riI == null)
       {
         IllegalAccessError localIllegalAccessError = new IllegalAccessError("must has emoji baner list first");
         AppMethodBeat.o(109074);
@@ -78,33 +78,33 @@ public class EmojiStoreVpHeader
     }
     finally {}
     int i;
-    if (this.iFK == null)
+    if (this.jBN == null)
     {
-      this.iFK = inflate(getContext(), 2131493831, null);
-      this.jFG = this.iFK.findViewById(2131299439);
-      this.nnw = ((MMDotView)this.iFK.findViewById(2131299438));
-      this.pRH = ((ViewPager)this.iFK.findViewById(2131299440));
-      this.pRM = new a((byte)0);
-      i = eF(getContext())[0] * 3 / 8;
-      if (this.jFG != null) {
-        this.jFG.setLayoutParams(new LinearLayout.LayoutParams(-1, i + 1));
+      this.jBN = inflate(getContext(), 2131493985, null);
+      this.kHq = this.jBN.findViewById(2131300053);
+      this.oxc = ((MMDotView)this.jBN.findViewById(2131300052));
+      this.riH = ((ViewPager)this.jBN.findViewById(2131300054));
+      this.riM = new a((byte)0);
+      i = getScreenWH(getContext())[0] * 3 / 8;
+      if (this.kHq != null) {
+        this.kHq.setLayoutParams(new LinearLayout.LayoutParams(-1, i + 1));
       }
-      addView(this.iFK, new LinearLayout.LayoutParams(-1, -2));
+      addView(this.jBN, new LinearLayout.LayoutParams(-1, -2));
     }
-    if (this.nnw != null)
+    if (this.oxc != null)
     {
-      MMDotView localMMDotView = this.nnw;
-      if (this.pRI == null)
+      MMDotView localMMDotView = this.oxc;
+      if (this.riI == null)
       {
         i = 0;
         localMMDotView.setDotCount(i);
-        this.nnw.setSelectedDot(0);
-        this.nnw.setVisibility(8);
+        this.oxc.setSelectedDot(0);
+        this.oxc.setVisibility(8);
       }
     }
     else
     {
-      if ((this.pRH != null) && (this.pRI != null)) {
+      if ((this.riH != null) && (this.riI != null)) {
         break label249;
       }
       AppMethodBeat.o(109074);
@@ -112,28 +112,28 @@ public class EmojiStoreVpHeader
     for (;;)
     {
       return;
-      i = this.pRI.size();
+      i = this.riI.size();
       break;
       label249:
-      if (this.pRI.size() <= 0)
+      if (this.riI.size() <= 0)
       {
-        if (this.jFG != null) {
-          this.jFG.setVisibility(8);
+        if (this.kHq != null) {
+          this.kHq.setVisibility(8);
         }
         AppMethodBeat.o(109074);
       }
       else
       {
-        if (this.jFG != null) {
-          this.jFG.setVisibility(0);
+        if (this.kHq != null) {
+          this.kHq.setVisibility(0);
         }
-        this.pRH.setOnPageChangeListener(this);
-        if (this.pRJ == null)
+        this.riH.setOnPageChangeListener(this);
+        if (this.riJ == null)
         {
-          this.pRJ = new i(getContext(), this.pRI);
-          this.pRH.setAdapter(this.pRJ);
-          this.pRH.setOffscreenPageLimit(1);
-          cjL();
+          this.riJ = new i(getContext(), this.riI);
+          this.riH.setAdapter(this.riJ);
+          this.riH.setOffscreenPageLimit(1);
+          cHM();
           AppMethodBeat.o(109074);
         }
         else
@@ -147,8 +147,8 @@ public class EmojiStoreVpHeader
               {
                 i locali = EmojiStoreVpHeader.a(EmojiStoreVpHeader.this);
                 LinkedList localLinkedList = EmojiStoreVpHeader.b(EmojiStoreVpHeader.this);
-                locali.pIb.clear();
-                locali.pIb.addAll(localLinkedList);
+                locali.qXN.clear();
+                locali.qXN.addAll(localLinkedList);
                 locali.notifyDataSetChanged();
               }
               AppMethodBeat.o(109068);
@@ -160,19 +160,19 @@ public class EmojiStoreVpHeader
     }
   }
   
-  private void cjL()
+  private void cHM()
   {
     AppMethodBeat.i(109075);
-    if (this.pRH == null)
+    if (this.riH == null)
     {
       AppMethodBeat.o(109075);
       return;
     }
-    this.pRH.setCurrentItem(i.pIc / 2 * this.pRI.size(), false);
+    this.riH.setCurrentItem(i.qXO / 2 * this.riI.size(), false);
     AppMethodBeat.o(109075);
   }
   
-  public static int[] eF(Context paramContext)
+  public static int[] getScreenWH(Context paramContext)
   {
     AppMethodBeat.i(109073);
     int[] arrayOfInt = new int[2];
@@ -193,7 +193,7 @@ public class EmojiStoreVpHeader
     }
   }
   
-  private void ks(boolean paramBoolean)
+  private void lu(boolean paramBoolean)
   {
     AppMethodBeat.i(109082);
     ViewParent localViewParent = getParent();
@@ -203,40 +203,40 @@ public class EmojiStoreVpHeader
     AppMethodBeat.o(109082);
   }
   
-  public final void cjM()
+  public final void cHN()
   {
     AppMethodBeat.i(109076);
-    if (this.pRM == null) {
-      this.pRM = new a((byte)0);
+    if (this.riM == null) {
+      this.riM = new a((byte)0);
     }
-    this.pRN = true;
-    this.pRM.removeMessages(0);
-    this.pRM.sendEmptyMessageDelayed(0, 5000L);
+    this.riN = true;
+    this.riM.removeMessages(0);
+    this.riM.sendEmptyMessageDelayed(0, 5000L);
     AppMethodBeat.o(109076);
   }
   
-  public final void cjN()
+  public final void cHO()
   {
     AppMethodBeat.i(109077);
-    if (this.pRM == null)
+    if (this.riM == null)
     {
       AppMethodBeat.o(109077);
       return;
     }
-    this.pRN = false;
-    this.pRM.removeMessages(0);
+    this.riN = false;
+    this.riM.removeMessages(0);
     AppMethodBeat.o(109077);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(109078);
-    if (this.pRJ != null)
+    if (this.riJ != null)
     {
-      this.pRJ.clear();
-      this.pRJ = null;
+      this.riJ.clear();
+      this.riJ = null;
     }
-    this.pRM = null;
+    this.riM = null;
     AppMethodBeat.o(109078);
   }
   
@@ -248,8 +248,8 @@ public class EmojiStoreVpHeader
       AppMethodBeat.o(109079);
       return;
     }
-    if (this.pRI == null) {
-      this.pRI = new LinkedList();
+    if (this.riI == null) {
+      this.riI = new LinkedList();
     }
     for (;;)
     {
@@ -257,21 +257,21 @@ public class EmojiStoreVpHeader
       while (paramLinkedList1.hasNext())
       {
         EmotionBannerSet localEmotionBannerSet = (EmotionBannerSet)paramLinkedList1.next();
-        if ((localEmotionBannerSet != null) && (localEmotionBannerSet.BannerImg != null) && (!bu.isNullOrNil(localEmotionBannerSet.BannerImg.StripUrl))) {
-          this.pRI.add(new a(null, localEmotionBannerSet, true));
+        if ((localEmotionBannerSet != null) && (localEmotionBannerSet.BannerImg != null) && (!Util.isNullOrNil(localEmotionBannerSet.BannerImg.StripUrl))) {
+          this.riI.add(new a(null, localEmotionBannerSet, true));
         }
       }
-      this.pRI.clear();
+      this.riI.clear();
     }
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
       paramLinkedList1 = (EmotionBanner)paramLinkedList.next();
-      if ((paramLinkedList1 != null) && (paramLinkedList1.BannerImg != null) && (!bu.isNullOrNil(paramLinkedList1.BannerImg.StripUrl))) {
-        this.pRI.add(new a(paramLinkedList1, null, false));
+      if ((paramLinkedList1 != null) && (paramLinkedList1.BannerImg != null) && (!Util.isNullOrNil(paramLinkedList1.BannerImg.StripUrl))) {
+        this.riI.add(new a(paramLinkedList1, null, false));
       }
     }
-    cjK();
+    cHL();
     AppMethodBeat.o(109079);
   }
   
@@ -295,23 +295,23 @@ public class EmojiStoreVpHeader
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(109081);
       return bool;
-      this.pRK = f1;
-      this.pRL = f2;
+      this.riK = f1;
+      this.riL = f2;
       break;
-      j = (int)(f1 - this.pRK);
-      int k = (int)(f2 - this.pRL);
+      j = (int)(f1 - this.riK);
+      int k = (int)(f2 - this.riL);
       if (Math.abs(j) <= Math.abs(k)) {
         break;
       }
-      ks(true);
+      lu(true);
       break;
-      this.pRK = 0.0F;
-      this.pRL = 0.0F;
-      ks(false);
+      this.riK = 0.0F;
+      this.riL = 0.0F;
+      lu(false);
       break;
-      cjN();
+      cHO();
       continue;
-      cjM();
+      cHN();
     }
   }
   
@@ -322,13 +322,13 @@ public class EmojiStoreVpHeader
   public void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(109080);
-    if ((this.pRI == null) || (this.pRI.size() <= 1))
+    if ((this.riI == null) || (this.riI.size() <= 1))
     {
       AppMethodBeat.o(109080);
       return;
     }
-    if ((paramInt == 0) || (paramInt == this.pRJ.getCount() - 1)) {
-      this.iFK.postDelayed(new Runnable()
+    if ((paramInt == 0) || (paramInt == this.riJ.getCount() - 1)) {
+      this.jBN.postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -342,7 +342,7 @@ public class EmojiStoreVpHeader
   }
   
   final class a
-    extends aq
+    extends MMHandler
   {
     private a() {}
     
@@ -356,20 +356,20 @@ public class EmojiStoreVpHeader
       }
       if ((EmojiStoreVpHeader.b(EmojiStoreVpHeader.this) == null) || (EmojiStoreVpHeader.b(EmojiStoreVpHeader.this).size() <= 1))
       {
-        ae.w("MicroMsg.emoji.EmojiStoreVpHeader", "list is null");
+        Log.w("MicroMsg.emoji.EmojiStoreVpHeader", "list is null");
         AppMethodBeat.o(109070);
         return;
       }
       if (EmojiStoreVpHeader.a(EmojiStoreVpHeader.this) == null)
       {
-        ae.w("MicroMsg.emoji.EmojiStoreVpHeader", "adapter is null");
+        Log.w("MicroMsg.emoji.EmojiStoreVpHeader", "adapter is null");
         AppMethodBeat.o(109070);
         return;
       }
       int j = EmojiStoreVpHeader.e(EmojiStoreVpHeader.this).getCurrentItem() + 1;
       int i = j;
       if (j >= EmojiStoreVpHeader.a(EmojiStoreVpHeader.this).getCount()) {
-        i = EmojiStoreVpHeader.b(EmojiStoreVpHeader.this).size() * i.pIc / 2;
+        i = EmojiStoreVpHeader.b(EmojiStoreVpHeader.this).size() * i.qXO / 2;
       }
       EmojiStoreVpHeader.e(EmojiStoreVpHeader.this).setCurrentItem(i);
       if ((EmojiStoreVpHeader.d(EmojiStoreVpHeader.this)) && (EmojiStoreVpHeader.f(EmojiStoreVpHeader.this) != null)) {
@@ -381,7 +381,7 @@ public class EmojiStoreVpHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiStoreVpHeader
  * JD-Core Version:    0.7.0.1
  */

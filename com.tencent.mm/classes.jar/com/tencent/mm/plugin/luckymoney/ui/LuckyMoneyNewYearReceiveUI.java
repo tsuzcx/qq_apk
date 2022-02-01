@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -19,111 +18,107 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.br.d;
 import com.tencent.mm.emoji.view.BaseEmojiView;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.n.e;
-import com.tencent.mm.plugin.emoji.model.c.a;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.emoji.model.d;
+import com.tencent.mm.plugin.emoji.model.d.a;
+import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.plugin.gif.MMAnimateView;
-import com.tencent.mm.plugin.luckymoney.model.ap;
-import com.tencent.mm.plugin.luckymoney.model.as;
-import com.tencent.mm.plugin.luckymoney.model.u;
-import com.tencent.mm.plugin.luckymoney.model.z;
+import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.plugin.luckymoney.model.ay;
+import com.tencent.mm.plugin.luckymoney.model.bd;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.a.a;
+import com.tencent.mm.plugin.wallet_core.utils.c;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 @com.tencent.mm.ui.base.a(3)
 public class LuckyMoneyNewYearReceiveUI
   extends LuckyMoneyBaseUI
 {
-  private String dPb;
-  private String fVg;
+  private String egX;
+  private String gAn;
   private String imagePath;
-  private aq mHandler;
-  private TextView mdh;
-  private bv oYw;
-  private c.a pKA;
-  private EmojiInfo pOS;
-  private ImageView pjj;
-  private p tipDialog;
-  private TextView uSM;
-  public int vCC;
-  private String vHa;
-  private LuckyMoneyAutoScrollView vJQ;
-  private TextView vJR;
-  private TextView vJS;
-  private LinearLayout vJT;
-  private ImageView vJU;
-  private LinearLayout vJV;
-  private LinearLayout vJW;
-  private MMAnimateView vJX;
-  private TextView vJY;
-  private LinearLayout vJZ;
-  private TextView vKa;
-  private ImageView vKb;
-  private ImageView vKc;
-  private MMAnimateView vKd;
-  private ImageView vKe;
-  private View vKf;
-  private BaseEmojiView vKg;
-  private boolean vKh;
-  private String vKi;
-  private int vKj;
-  private String vKk;
-  private String vKl;
-  private boolean vKm;
-  private View vxa;
+  private MMHandler mHandler;
+  private TextView nnA;
+  private ca qnv;
+  private ImageView qyu;
+  private d.a rbg;
+  private EmojiInfo rfq;
+  private com.tencent.mm.ui.base.q tipDialog;
+  private View yRp;
+  private String yUc;
+  public int yXD;
+  private TextView yln;
+  private LuckyMoneyAutoScrollView zeW;
+  private TextView zeX;
+  private TextView zeY;
+  private LinearLayout zeZ;
+  private ImageView zfa;
+  private LinearLayout zfb;
+  private LinearLayout zfc;
+  private MMAnimateView zfd;
+  private TextView zfe;
+  private LinearLayout zff;
+  private TextView zfg;
+  private ImageView zfh;
+  private ImageView zfi;
+  private MMAnimateView zfj;
+  private ImageView zfk;
+  private View zfl;
+  private BaseEmojiView zfm;
+  private boolean zfn;
+  private String zfo;
+  private int zfp;
+  private String zfq;
+  private String zfr;
+  private boolean zfs;
   
   public LuckyMoneyNewYearReceiveUI()
   {
     AppMethodBeat.i(65673);
     this.tipDialog = null;
-    this.vCC = 0;
-    this.vKh = false;
-    this.vKi = "";
-    this.vKk = "";
-    this.vKl = "";
+    this.yXD = 0;
+    this.zfn = false;
+    this.zfo = "";
+    this.zfq = "";
+    this.zfr = "";
     this.imagePath = "";
-    this.mHandler = new aq();
-    this.vKm = false;
-    this.pKA = new c.a()
+    this.mHandler = new MMHandler();
+    this.zfs = false;
+    this.rbg = new d.a()
     {
       public final void a(final boolean paramAnonymousBoolean, final EmojiInfo paramAnonymousEmojiInfo)
       {
         AppMethodBeat.i(65662);
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(65661);
-            if ((paramAnonymousEmojiInfo != null) && (LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this) != null) && (LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this).Lj().equals(paramAnonymousEmojiInfo.Lj())))
+            if ((paramAnonymousEmojiInfo != null) && (LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this) != null) && (LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this).getMd5().equals(paramAnonymousEmojiInfo.getMd5())))
             {
               if (paramAnonymousBoolean)
               {
-                ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "somethings success.");
-                LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this, com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().JfU.aWl(LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this).Lj()));
+                Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "somethings success.");
+                LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this, k.getEmojiStorageMgr().OpN.blk(LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this).getMd5()));
                 LuckyMoneyNewYearReceiveUI.b(LuckyMoneyNewYearReceiveUI.this).setVisibility(8);
                 LuckyMoneyNewYearReceiveUI.c(LuckyMoneyNewYearReceiveUI.this).setVisibility(0);
                 LuckyMoneyNewYearReceiveUI.c(LuckyMoneyNewYearReceiveUI.this).setEmojiInfo(LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this));
                 AppMethodBeat.o(65661);
                 return;
               }
-              ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "somethings error.");
+              Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "somethings error.");
               LuckyMoneyNewYearReceiveUI.b(LuckyMoneyNewYearReceiveUI.this).setVisibility(8);
               LuckyMoneyNewYearReceiveUI.d(LuckyMoneyNewYearReceiveUI.this).setVisibility(0);
             }
@@ -136,24 +131,24 @@ public class LuckyMoneyNewYearReceiveUI
     AppMethodBeat.o(65673);
   }
   
-  private void JS(int paramInt)
+  private void PU(int paramInt)
   {
     AppMethodBeat.i(65682);
-    ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() localReceiveStatus:%s newStatus:%s", new Object[] { Integer.valueOf(this.vKj), Integer.valueOf(paramInt) });
-    if (this.oYw == null)
+    Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() localReceiveStatus:%s newStatus:%s", new Object[] { Integer.valueOf(this.zfp), Integer.valueOf(paramInt) });
+    if (this.qnv == null)
     {
-      ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() mEmojiInfo == null");
+      Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() mEmojiInfo == null");
       AppMethodBeat.o(65682);
       return;
     }
-    if ((bu.jB(this.vKj, paramInt)) || (bu.jB(this.vKj, 2)))
+    if ((Util.isEqual(this.zfp, paramInt)) || (Util.isEqual(this.zfp, 2)))
     {
       AppMethodBeat.o(65682);
       return;
     }
     try
     {
-      Object localObject2 = new StringBuilder(this.oYw.field_content);
+      Object localObject2 = new StringBuilder(this.qnv.field_content);
       Object localObject1 = new StringBuilder();
       int i = ((StringBuilder)localObject2).indexOf("<localreceivestatus>");
       StringBuilder localStringBuilder;
@@ -165,9 +160,9 @@ public class LuckyMoneyNewYearReceiveUI
       }
       for (;;)
       {
-        this.oYw.setContent(localStringBuilder.toString());
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(this.oYw.field_msgId, this.oYw);
-        ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() success msgXml:%s", new Object[] { localStringBuilder });
+        this.qnv.setContent(localStringBuilder.toString());
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().a(this.qnv.field_msgId, this.qnv);
+        Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() success msgXml:%s", new Object[] { localStringBuilder });
         AppMethodBeat.o(65682);
         return;
         i = ((StringBuilder)localObject2).indexOf("<emoji>");
@@ -191,7 +186,7 @@ public class LuckyMoneyNewYearReceiveUI
     }
     catch (Exception localException)
     {
-      ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() Exception:%s", new Object[] { localException.getMessage() });
+      Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "dealMessageInfo() Exception:%s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(65682);
     }
   }
@@ -199,162 +194,96 @@ public class LuckyMoneyNewYearReceiveUI
   private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(65681);
-    doSceneProgress(new ap(paramInt1, paramInt2, paramString1, paramString2, z.dlp(), v.aAE(), getIntent().getStringExtra("key_username"), "v1.0", paramString3), false);
+    doSceneProgress(new ay(paramInt1, paramInt2, paramString1, paramString2, af.efj(), com.tencent.mm.model.z.aUa(), getIntent().getStringExtra("key_username"), "v1.0", paramString3), false);
     AppMethodBeat.o(65681);
   }
   
-  private void dmt()
+  private void ego()
   {
     AppMethodBeat.i(65678);
-    this.vJY.setVisibility(8);
-    this.pOS = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().JfU.aWl(this.vKi);
-    if (this.pOS == null)
+    this.zfe.setVisibility(8);
+    this.rfq = k.getEmojiStorageMgr().OpN.blk(this.zfo);
+    if (this.rfq == null)
     {
-      ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "showExpression() mEmojiInfo == null ");
+      Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "showExpression() mEmojiInfo == null ");
       AppMethodBeat.o(65678);
       return;
     }
-    if ((o.aZR(this.pOS.fSQ()) > 0L) || (this.pOS.Ee()) || (this.pOS.fxr()))
+    if ((s.boW(this.rfq.hRM()) > 0L) || (this.rfq.NA()) || (this.rfq.hRB()))
     {
-      this.vKg.setVisibility(0);
-      this.vKg.setEmojiInfo(this.pOS);
+      this.zfm.setVisibility(0);
+      this.zfm.setEmojiInfo(this.rfq);
       AppMethodBeat.o(65678);
       return;
     }
-    this.vKg.setVisibility(8);
-    this.vJW.setVisibility(0);
-    this.vJX.setImageResource(2131690763);
-    com.tencent.mm.plugin.emoji.model.k.cif().pKA = this.pKA;
-    com.tencent.mm.plugin.emoji.model.k.cif().u(this.pOS);
+    this.zfm.setVisibility(8);
+    this.zfc.setVisibility(0);
+    this.zfd.setImageResource(2131691047);
+    k.cGd().rbg = this.rbg;
+    k.cGd().u(this.rfq);
     AppMethodBeat.o(65678);
   }
   
-  private void dmu()
+  private void egp()
   {
     AppMethodBeat.i(65679);
-    this.vKd.setImageResource(2131690764);
+    this.zfj.setImageResource(2131691048);
     AppMethodBeat.o(65679);
   }
   
-  private void of(boolean paramBoolean)
+  private void qN(boolean paramBoolean)
   {
     AppMethodBeat.i(65683);
     if (paramBoolean)
     {
-      this.vJZ.setVisibility(0);
-      ((RelativeLayout.LayoutParams)this.vJZ.getLayoutParams()).addRule(3, 2131301881);
-      this.vKa.setText(getString(2131760948));
-      this.vJZ.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(65671);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "goto detail!");
-          paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("key_native_url", LuckyMoneyNewYearReceiveUI.j(LuckyMoneyNewYearReceiveUI.this));
-          d.b(LuckyMoneyNewYearReceiveUI.this, "luckymoney", ".ui.LuckyMoneyBeforeDetailUI", paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(65671);
-        }
-      });
+      this.zff.setVisibility(0);
+      ((RelativeLayout.LayoutParams)this.zff.getLayoutParams()).addRule(3, 2131304200);
+      this.zfg.setText(getString(2131762722));
+      this.zff.setOnClickListener(new LuckyMoneyNewYearReceiveUI.8(this));
       AppMethodBeat.o(65683);
       return;
     }
-    this.vJZ.setVisibility(0);
-    this.vJZ.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(65672);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "goto BalanceManagerUI!");
-        com.tencent.mm.pluginsdk.wallet.f.aw(LuckyMoneyNewYearReceiveUI.this.getContext(), 1);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(65672);
-      }
-    });
-    this.vKa.setText(getString(2131760946));
+    this.zff.setVisibility(0);
+    this.zff.setOnClickListener(new LuckyMoneyNewYearReceiveUI.9(this));
+    this.zfg.setText(getString(2131762720));
     AppMethodBeat.o(65683);
   }
   
   public int getLayoutId()
   {
-    return 2131494652;
+    return 2131495375;
   }
   
   public void initView()
   {
     AppMethodBeat.i(65677);
     setActionbarColor(-839716110);
-    this.vxa = findViewById(2131301882);
-    this.vJQ = ((LuckyMoneyAutoScrollView)findViewById(2131301878));
-    this.vJR = ((TextView)findViewById(2131301717));
-    this.uSM = ((TextView)findViewById(2131301889));
-    this.pjj = ((ImageView)findViewById(2131301879));
-    this.vJT = ((LinearLayout)findViewById(2131301887));
-    this.mdh = ((TextView)findViewById(2131301885));
-    this.vJU = ((ImageView)findViewById(2131301886));
-    this.vJS = ((TextView)findViewById(2131301888));
-    this.vJV = ((LinearLayout)findViewById(2131301884));
-    this.vKd = ((MMAnimateView)findViewById(2131303142));
-    this.vKe = ((ImageView)findViewById(2131301869));
-    this.vKf = findViewById(2131301866);
-    this.vKg = ((BaseEmojiView)findViewById(2131301862));
-    this.vJY = ((TextView)findViewById(2131301873));
-    this.vJW = ((LinearLayout)findViewById(2131301870));
-    this.vJX = ((MMAnimateView)findViewById(2131301501));
-    this.vJZ = ((LinearLayout)findViewById(2131301738));
-    this.vKa = ((TextView)findViewById(2131301739));
-    this.vJY.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(65663);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        LuckyMoneyNewYearReceiveUI.e(LuckyMoneyNewYearReceiveUI.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(65663);
-      }
-    });
-    this.vKb = ((ImageView)findViewById(2131301876));
-    this.vKb.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(65664);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        LuckyMoneyNewYearReceiveUI.this.finish();
-        com.tencent.mm.plugin.report.service.g.yxI.f(13079, new Object[] { Integer.valueOf(6), Integer.valueOf(2) });
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(65664);
-      }
-    });
-    this.vKc = ((ImageView)findViewById(2131301875));
-    this.vKc.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(65665);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        LuckyMoneyNewYearReceiveUI.this.finish();
-        com.tencent.mm.plugin.report.service.g.yxI.f(13079, new Object[] { Integer.valueOf(6), Integer.valueOf(2) });
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(65665);
-      }
-    });
+    this.yRp = findViewById(2131304201);
+    this.zeW = ((LuckyMoneyAutoScrollView)findViewById(2131304197));
+    this.zeX = ((TextView)findViewById(2131304017));
+    this.yln = ((TextView)findViewById(2131304208));
+    this.qyu = ((ImageView)findViewById(2131304198));
+    this.zeZ = ((LinearLayout)findViewById(2131304206));
+    this.nnA = ((TextView)findViewById(2131304204));
+    this.zfa = ((ImageView)findViewById(2131304205));
+    this.zeY = ((TextView)findViewById(2131304207));
+    this.zfb = ((LinearLayout)findViewById(2131304203));
+    this.zfj = ((MMAnimateView)findViewById(2131305787));
+    this.zfk = ((ImageView)findViewById(2131304188));
+    this.zfl = findViewById(2131304185);
+    this.zfm = ((BaseEmojiView)findViewById(2131304181));
+    this.zfe = ((TextView)findViewById(2131304192));
+    this.zfc = ((LinearLayout)findViewById(2131304189));
+    this.zfd = ((MMAnimateView)findViewById(2131303704));
+    this.zff = ((LinearLayout)findViewById(2131304038));
+    this.zfg = ((TextView)findViewById(2131304039));
+    this.zfe.setOnClickListener(new LuckyMoneyNewYearReceiveUI.2(this));
+    this.zfh = ((ImageView)findViewById(2131304195));
+    this.zfh.setOnClickListener(new LuckyMoneyNewYearReceiveUI.3(this));
+    this.zfi = ((ImageView)findViewById(2131304194));
+    this.zfi.setOnClickListener(new LuckyMoneyNewYearReceiveUI.4(this));
     setContentViewVisibility(8);
-    this.tipDialog = h.b(getContext(), getString(2131760709), true, new DialogInterface.OnCancelListener()
+    this.tipDialog = com.tencent.mm.ui.base.h.a(getContext(), getString(2131762446), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -362,10 +291,10 @@ public class LuckyMoneyNewYearReceiveUI
         if ((LuckyMoneyNewYearReceiveUI.f(LuckyMoneyNewYearReceiveUI.this) != null) && (LuckyMoneyNewYearReceiveUI.f(LuckyMoneyNewYearReceiveUI.this).isShowing())) {
           LuckyMoneyNewYearReceiveUI.f(LuckyMoneyNewYearReceiveUI.this).dismiss();
         }
-        LuckyMoneyNewYearReceiveUI.this.vGY.forceCancel();
+        LuckyMoneyNewYearReceiveUI.this.zbX.forceCancel();
         if ((LuckyMoneyNewYearReceiveUI.g(LuckyMoneyNewYearReceiveUI.this).getVisibility() == 8) || (LuckyMoneyNewYearReceiveUI.h(LuckyMoneyNewYearReceiveUI.this).getVisibility() == 4))
         {
-          ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "usr cancel, & visibility not visiable, so finish");
+          Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "usr cancel, & visibility not visiable, so finish");
           LuckyMoneyNewYearReceiveUI.this.finish();
         }
         AppMethodBeat.o(65666);
@@ -378,21 +307,21 @@ public class LuckyMoneyNewYearReceiveUI
   {
     AppMethodBeat.i(65674);
     super.onCreate(paramBundle);
-    this.fVg = getIntent().getStringExtra("key_username");
-    this.vKi = getIntent().getStringExtra("key_emoji_md5");
+    this.gAn = getIntent().getStringExtra("key_username");
+    this.zfo = getIntent().getStringExtra("key_emoji_md5");
     long l = getIntent().getLongExtra("key_msgid", 0L);
-    this.oYw = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(l);
-    this.vKj = getIntent().getIntExtra("key_msg_newyear_localreceivestatus", 0);
-    this.dPb = getIntent().getStringExtra("key_native_url");
-    ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "emojiMd5:" + this.vKi);
-    paramBundle = Uri.parse(bu.nullAsNil(this.dPb));
+    this.qnv = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().Hb(l);
+    this.zfp = getIntent().getIntExtra("key_msg_newyear_localreceivestatus", 0);
+    this.egX = getIntent().getStringExtra("key_native_url");
+    Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "emojiMd5:" + this.zfo);
+    paramBundle = Uri.parse(Util.nullAsNil(this.egX));
     try
     {
-      this.vHa = paramBundle.getQueryParameter("sendid");
+      this.yUc = paramBundle.getQueryParameter("sendid");
       initView();
-      if (!bu.isNullOrNil(this.vHa))
+      if (!Util.isNullOrNil(this.yUc))
       {
-        doSceneProgress(new as(bu.getInt(paramBundle.getQueryParameter("channelid"), 1), this.vHa, this.dPb, 1, "v1.0"), false);
+        doSceneProgress(new bd(Util.getInt(paramBundle.getQueryParameter("channelid"), 1), this.yUc, this.egX, 1, "v1.0", ""), false);
         if (this.tipDialog != null) {
           this.tipDialog.show();
         }
@@ -404,10 +333,10 @@ public class LuckyMoneyNewYearReceiveUI
     {
       for (;;)
       {
-        ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "onCreate() Exception:%s", new Object[] { localException.getMessage() });
+        Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "onCreate() Exception:%s", new Object[] { localException.getMessage() });
       }
       finish();
-      ae.w("MicroMsg.LuckyMoneyNewYearReceiveUI", "sendid null & finish");
+      Log.w("MicroMsg.LuckyMoneyNewYearReceiveUI", "sendid null & finish");
       AppMethodBeat.o(65674);
     }
   }
@@ -419,7 +348,7 @@ public class LuckyMoneyNewYearReceiveUI
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
-    com.tencent.mm.plugin.emoji.model.k.cif().pKA = null;
+    k.cGd().rbg = null;
     AppMethodBeat.o(65676);
   }
   
@@ -427,16 +356,16 @@ public class LuckyMoneyNewYearReceiveUI
   {
     AppMethodBeat.i(65675);
     super.onResume();
-    if (this.vKm) {
+    if (this.zfs) {
       finish();
     }
     AppMethodBeat.o(65675);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(65680);
-    ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramn.getType());
+    Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramq.getType());
     label258:
     label323:
     boolean bool;
@@ -444,77 +373,77 @@ public class LuckyMoneyNewYearReceiveUI
     label464:
     label595:
     String str1;
-    if ((paramn instanceof as))
+    if ((paramq instanceof bd))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (as)paramn;
-        this.vCC = paramString.vCC;
-        if (paramString.vAs == 1)
+        paramString = (bd)paramq;
+        this.yXD = paramString.yXD;
+        if (paramString.yVm == 1)
         {
           paramInt1 = 1;
           if (paramInt1 == 0) {
             break label667;
           }
-          ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "is Sender hb!");
-          if (paramString.dPd != 4) {
-            this.vJV.setVisibility(8);
+          Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "is Sender hb!");
+          if (paramString.egZ != 4) {
+            this.zfb.setVisibility(8);
           }
           if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
             this.tipDialog.dismiss();
           }
-          if (paramString.dPd == 5) {
+          if (paramString.egZ == 5) {
             break label595;
           }
-          paramn = com.tencent.mm.wallet_core.ui.f.C(paramString.vCL / 100.0D);
-          this.vJQ.setContentDescription(paramn);
-          this.vJQ.setFinalText(paramn);
-          this.vJQ.dmb();
-          z.a(getContext(), this.uSM, paramString.vvw);
-          this.vJT.setVisibility(8);
-          this.vJV.setVisibility(0);
-          if (paramString.dPd != 4) {
+          paramq = com.tencent.mm.wallet_core.ui.f.formatMoney2f(paramString.yXO / 100.0D);
+          this.zeW.setContentDescription(paramq);
+          this.zeW.setFinalText(paramq);
+          this.zeW.efX();
+          af.a(getContext(), this.yln, paramString.yPK);
+          this.zeZ.setVisibility(8);
+          this.zfb.setVisibility(0);
+          if (paramString.egZ != 4) {
             break label583;
           }
-          a.b.d(this.pjj, this.fVg);
-          JS(2);
-          this.vJS.setText(paramString.vAh);
-          this.vJS.setTextSize(1, 16.0F);
-          paramn = (RelativeLayout.LayoutParams)this.vJV.getLayoutParams();
-          paramn.bottomMargin = com.tencent.mm.cb.a.fromDPToPix(this, 82);
-          this.vJV.setLayoutParams(paramn);
-          this.vJV.invalidate();
-          dmu();
+          a.b.d(this.qyu, this.gAn);
+          PU(2);
+          this.zeY.setText(paramString.yVb);
+          this.zeY.setTextSize(1, 16.0F);
+          paramq = (RelativeLayout.LayoutParams)this.zfb.getLayoutParams();
+          paramq.bottomMargin = com.tencent.mm.cb.a.fromDPToPix(this, 82);
+          this.zfb.setLayoutParams(paramq);
+          this.zfb.invalidate();
+          egp();
           setContentViewVisibility(0);
-          z.a(this.vxa, null);
-          this.vKb.setVisibility(0);
-          this.vKc.setVisibility(8);
+          af.a(this.yRp, null);
+          this.zfh.setVisibility(0);
+          this.zfi.setVisibility(8);
           bool = true;
-          if ((paramString.dPd == 5) || (paramString.dPd == 1)) {
+          if ((paramString.egZ == 5) || (paramString.egZ == 1)) {
             bool = false;
           }
-          ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "receiveScene.hbStatus is " + paramString.dPd + ", isValidStatus is " + bool);
-          if ((!bu.jB(this.vCC, 1)) || (bu.isNullOrNil(this.vKi))) {
+          Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "receiveScene.hbStatus is " + paramString.egZ + ", isValidStatus is " + bool);
+          if ((!Util.isEqual(this.yXD, 1)) || (Util.isNullOrNil(this.zfo))) {
             break label1246;
           }
           paramInt1 = 1;
           if ((paramInt1 == 0) || (!bool)) {
             break label1251;
           }
-          this.vKf.setVisibility(0);
-          this.vKe.setVisibility(8);
-          dmt();
+          this.zfl.setVisibility(0);
+          this.zfk.setVisibility(8);
+          ego();
           if ((paramInt1 == 0) || (!bool)) {
             break label1271;
           }
-          this.uSM.getLayoutParams();
-          this.uSM.setTextSize(1, 21.0F);
-          this.vJR.setTextSize(1, 15.0F);
-          this.vJQ.gx(getResources().getDimensionPixelOffset(2131166534), getResources().getDimensionPixelOffset(2131166530));
-          paramString = (LinearLayout.LayoutParams)this.vJQ.getLayoutParams();
-          paramString.topMargin = getResources().getDimensionPixelOffset(2131166517);
-          this.vJQ.setLayoutParams(paramString);
-          this.vJQ.invalidate();
+          this.yln.getLayoutParams();
+          this.yln.setTextSize(1, 21.0F);
+          this.zeX.setTextSize(1, 15.0F);
+          this.zeW.gV(getResources().getDimensionPixelOffset(2131166649), getResources().getDimensionPixelOffset(2131166645));
+          paramString = (LinearLayout.LayoutParams)this.zeW.getLayoutParams();
+          paramString.topMargin = getResources().getDimensionPixelOffset(2131166632);
+          this.zeW.setLayoutParams(paramString);
+          this.zeW.invalidate();
         }
         for (;;)
         {
@@ -523,46 +452,46 @@ public class LuckyMoneyNewYearReceiveUI
           paramInt1 = 0;
           break;
           label583:
-          this.pjj.setVisibility(8);
+          this.qyu.setVisibility(8);
           break label258;
-          findViewById(2131301880).setVisibility(8);
-          ((TextView)findViewById(2131301881)).setText(paramString.vAh);
-          ((TextView)findViewById(2131301881)).setVisibility(0);
-          ((TextView)findViewById(2131301881)).setTextSize(24.0F);
-          of(true);
-          JS(1);
+          findViewById(2131304199).setVisibility(8);
+          ((TextView)findViewById(2131304200)).setText(paramString.yVb);
+          ((TextView)findViewById(2131304200)).setVisibility(0);
+          ((TextView)findViewById(2131304200)).setTextSize(24.0F);
+          qN(true);
+          PU(1);
           break label323;
           label667:
-          ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "is receiver hb!");
+          Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "is receiver hb!");
           if (!TextUtils.isEmpty(getIntent().getStringExtra("key_username")))
           {
-            a.b.d(this.pjj, getIntent().getStringExtra("key_username"));
+            a.b.d(this.qyu, getIntent().getStringExtra("key_username"));
             label708:
-            this.vJS.setTextSize(1, 16.0F);
-            z.a(getContext(), this.vJS, paramString.vCK + getString(2131760907));
-            paramn = (RelativeLayout.LayoutParams)this.vJV.getLayoutParams();
-            paramn.bottomMargin = com.tencent.mm.cb.a.fromDPToPix(this, 30);
-            this.vJV.setLayoutParams(paramn);
-            this.vJV.invalidate();
-            this.vJV.setVisibility(0);
-            this.vJT.setVisibility(8);
-            if ((paramString.dPe != 0) || (paramString.dPd == 4) || (paramString.dPd == 5) || (paramString.dPd == 1)) {
+            this.zeY.setTextSize(1, 16.0F);
+            af.a(getContext(), this.zeY, paramString.yXN + getString(2131762681));
+            paramq = (RelativeLayout.LayoutParams)this.zfb.getLayoutParams();
+            paramq.bottomMargin = com.tencent.mm.cb.a.fromDPToPix(this, 30);
+            this.zfb.setLayoutParams(paramq);
+            this.zfb.invalidate();
+            this.zfb.setVisibility(0);
+            this.zeZ.setVisibility(8);
+            if ((paramString.eha != 0) || (paramString.egZ == 4) || (paramString.egZ == 5) || (paramString.egZ == 1)) {
               break label1054;
             }
-            if (!"0".equals(paramString.vBY)) {
+            if (!"0".equals(paramString.yWY)) {
               break label1027;
             }
-            paramn = this.vGY;
-            str1 = paramString.vBZ;
-            String str2 = paramString.vCa;
-            String str3 = paramString.vCb;
-            String str4 = paramString.vCc;
+            paramq = this.zbX;
+            str1 = paramString.yWZ;
+            String str2 = paramString.yXa;
+            String str3 = paramString.yXb;
+            String str4 = paramString.yXc;
             a.a local6 = new a.a()
             {
               public final boolean run(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, boolean paramAnonymousBoolean)
               {
                 AppMethodBeat.i(65667);
-                ae.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "showDisclaimerDialog resultCode=" + paramAnonymousInt1 + ";errCode=" + paramAnonymousInt2 + ";errMsg=" + paramAnonymousString + ";hadAgree = " + paramAnonymousBoolean);
+                Log.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "showDisclaimerDialog resultCode=" + paramAnonymousInt1 + ";errCode=" + paramAnonymousInt2 + ";errMsg=" + paramAnonymousString + ";hadAgree = " + paramAnonymousBoolean);
                 if (paramAnonymousInt1 == 1) {
                   LuckyMoneyNewYearReceiveUI.this.finish();
                 }
@@ -571,72 +500,72 @@ public class LuckyMoneyNewYearReceiveUI
                   AppMethodBeat.o(65667);
                   return true;
                   if (paramAnonymousInt1 == 2) {
-                    LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this, paramString.msgType, paramString.cSM, paramString.vwq, paramString.dPb, paramString.vCP);
+                    LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this, paramString.msgType, paramString.channelId, paramString.yQE, paramString.egX, paramString.yXR);
                   } else if ((paramAnonymousInt1 == 0) && (paramAnonymousBoolean)) {
-                    LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this, paramString.msgType, paramString.cSM, paramString.vwq, paramString.dPb, paramString.vCP);
+                    LuckyMoneyNewYearReceiveUI.a(LuckyMoneyNewYearReceiveUI.this, paramString.msgType, paramString.channelId, paramString.yQE, paramString.egX, paramString.yXR);
                   }
                 }
               }
             };
-            new com.tencent.mm.plugin.wallet_core.id_verify.util.a().a(this, paramn, str1, str2, str3, str4, local6, true, 1005);
+            new com.tencent.mm.plugin.wallet_core.id_verify.util.a().a(this, paramq, str1, str2, str3, str4, local6, true, 1005);
           }
           for (;;)
           {
-            paramn = (LinearLayout.LayoutParams)this.vJT.getLayoutParams();
-            paramn.topMargin = getResources().getDimensionPixelOffset(2131166538);
-            this.vJT.setLayoutParams(paramn);
-            this.vJT.invalidate();
-            this.mdh.setTextSize(1, 12.0F);
-            this.vKb.setVisibility(8);
-            this.vKc.setVisibility(0);
+            paramq = (LinearLayout.LayoutParams)this.zeZ.getLayoutParams();
+            paramq.topMargin = getResources().getDimensionPixelOffset(2131166653);
+            this.zeZ.setLayoutParams(paramq);
+            this.zeZ.invalidate();
+            this.nnA.setTextSize(1, 12.0F);
+            this.zfh.setVisibility(8);
+            this.zfi.setVisibility(0);
             break;
-            if (TextUtils.isEmpty(paramString.vAk)) {
+            if (TextUtils.isEmpty(paramString.yVe)) {
               break label708;
             }
-            z.b(this.pjj, paramString.vAk, paramString.vAE);
+            af.a(this.qyu, paramString.yVe, paramString.yVy);
             break label708;
             label1027:
-            a(paramString.msgType, paramString.cSM, paramString.vwq, paramString.dPb, paramString.vCP);
+            a(paramString.msgType, paramString.channelId, paramString.yQE, paramString.egX, paramString.yXR);
           }
           label1054:
           if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
             this.tipDialog.dismiss();
           }
-          if (paramString.dPd != 5)
+          if (paramString.egZ != 5)
           {
-            paramn = com.tencent.mm.wallet_core.ui.f.C(paramString.vCL / 100.0D);
-            this.vJQ.setContentDescription(paramn);
-            this.vJQ.setFinalText(paramn);
-            this.vJQ.dmb();
-            z.a(getContext(), this.uSM, paramString.vvw);
-            JS(2);
-            dmu();
-            of(false);
+            paramq = com.tencent.mm.wallet_core.ui.f.formatMoney2f(paramString.yXO / 100.0D);
+            this.zeW.setContentDescription(paramq);
+            this.zeW.setFinalText(paramq);
+            this.zeW.efX();
+            af.a(getContext(), this.yln, paramString.yPK);
+            PU(2);
+            egp();
+            qN(false);
           }
           for (;;)
           {
             setContentViewVisibility(0);
-            z.a(this.vxa, null);
+            af.a(this.yRp, null);
             break;
-            this.vJZ.setVisibility(8);
-            findViewById(2131301880).setVisibility(8);
-            ((TextView)findViewById(2131301881)).setText(paramString.vAh);
-            ((TextView)findViewById(2131301881)).setVisibility(0);
-            ((TextView)findViewById(2131301881)).setTextSize(24.0F);
-            JS(1);
+            this.zff.setVisibility(8);
+            findViewById(2131304199).setVisibility(8);
+            ((TextView)findViewById(2131304200)).setText(paramString.yVb);
+            ((TextView)findViewById(2131304200)).setVisibility(0);
+            ((TextView)findViewById(2131304200)).setTextSize(24.0F);
+            PU(1);
           }
           label1246:
           paramInt1 = 0;
           break label434;
           label1251:
-          this.vKf.setVisibility(8);
-          this.vKe.setVisibility(0);
+          this.zfl.setVisibility(8);
+          this.zfk.setVisibility(0);
           break label464;
           label1271:
-          this.uSM.setTextSize(1, 21.0F);
-          this.vJR.setTextSize(1, 18.0F);
-          this.vJQ.gx(getResources().getDimensionPixelOffset(2131166535), getResources().getDimensionPixelOffset(2131166531));
-          this.vJQ.invalidate();
+          this.yln.setTextSize(1, 21.0F);
+          this.zeX.setTextSize(1, 18.0F);
+          this.zeW.gV(getResources().getDimensionPixelOffset(2131166650), getResources().getDimensionPixelOffset(2131166646));
+          this.zeW.invalidate();
         }
       }
       if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
@@ -645,41 +574,41 @@ public class LuckyMoneyNewYearReceiveUI
       AppMethodBeat.o(65680);
       return false;
     }
-    if ((paramn instanceof ap))
+    if ((paramq instanceof ay))
     {
       if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
         this.tipDialog.dismiss();
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (ap)paramn;
-        if (com.tencent.mm.plugin.wallet_core.utils.c.a(paramString.vCD))
+        paramString = (ay)paramq;
+        if (c.a(paramString.yXE))
         {
           setContentViewVisibility(4);
-          paramn = new com.tencent.mm.plugin.wallet_core.utils.c(this);
-          paramn.DFD = true;
-          paramn.b(paramString.vCD);
+          paramq = new c(this);
+          paramq.IoO = true;
+          paramq.b(paramString.yXE);
           AppMethodBeat.o(65680);
           return true;
         }
-        this.vCC = paramString.vCC;
-        if (!bu.jB(this.vCC, 1))
+        this.yXD = paramString.yXD;
+        if (!Util.isEqual(this.yXD, 1))
         {
-          this.vKf.setVisibility(8);
-          this.vKe.setVisibility(0);
+          this.zfl.setVisibility(8);
+          this.zfk.setVisibility(0);
         }
-        paramn = paramString.vBT;
-        this.mdh.setText(paramString.vBT.vAh);
-        str1 = com.tencent.mm.wallet_core.ui.f.C(paramString.vBT.dPq / 100.0D);
-        this.vJQ.setContentDescription(str1);
-        this.vJQ.setFinalText(str1);
-        this.vJQ.a(new LuckyMoneyAutoScrollView.a()
+        paramq = paramString.yWT;
+        this.nnA.setText(paramString.yWT.yVb);
+        str1 = com.tencent.mm.wallet_core.ui.f.formatMoney2f(paramString.yWT.eht / 100.0D);
+        this.zeW.setContentDescription(str1);
+        this.zeW.setFinalText(str1);
+        this.zeW.a(new LuckyMoneyAutoScrollView.a()
         {
-          public final void dmc()
+          public final void efY()
           {
             AppMethodBeat.i(65670);
             LuckyMoneyNewYearReceiveUI.i(LuckyMoneyNewYearReceiveUI.this).setVisibility(4);
-            z.a(LuckyMoneyNewYearReceiveUI.this.getContext(), LuckyMoneyNewYearReceiveUI.i(LuckyMoneyNewYearReceiveUI.this), paramString.vBT.vvw);
+            af.a(LuckyMoneyNewYearReceiveUI.this.getContext(), LuckyMoneyNewYearReceiveUI.i(LuckyMoneyNewYearReceiveUI.this), paramString.yWT.yPK);
             AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
             localAlphaAnimation.setDuration(500L);
             localAlphaAnimation.setAnimationListener(new Animation.AnimationListener()
@@ -687,11 +616,11 @@ public class LuckyMoneyNewYearReceiveUI
               public final void onAnimationEnd(Animation paramAnonymous2Animation)
               {
                 AppMethodBeat.i(65669);
-                if (com.tencent.mm.n.g.acL().getInt("PlayCoinSound", 0) > 0) {
-                  k.a(LuckyMoneyNewYearReceiveUI.this, k.a.vND);
+                if (com.tencent.mm.n.h.aqJ().getInt("PlayCoinSound", 0) > 0) {
+                  l.a(LuckyMoneyNewYearReceiveUI.this, l.a.zjb);
                 }
-                if (LuckyMoneyNewYearReceiveUI.7.this.vKq.vxf != null) {
-                  LuckyMoneyNewYearReceiveUI.7.this.vKq.vxf.b(LuckyMoneyNewYearReceiveUI.this, null, null);
+                if (LuckyMoneyNewYearReceiveUI.7.this.zfw.yRu != null) {
+                  LuckyMoneyNewYearReceiveUI.7.this.zfw.yRu.b(LuckyMoneyNewYearReceiveUI.this, null, null);
                 }
                 AppMethodBeat.o(65669);
               }
@@ -709,14 +638,14 @@ public class LuckyMoneyNewYearReceiveUI
             AppMethodBeat.o(65670);
           }
         });
-        if ((paramn.dPd == 4) && (!TextUtils.isEmpty(paramString.vBT.vAh))) {
-          this.vJU.setVisibility(8);
+        if ((paramq.egZ == 4) && (!TextUtils.isEmpty(paramString.yWT.yVb))) {
+          this.zfa.setVisibility(8);
         }
-        of(false);
+        qN(false);
         setContentViewVisibility(0);
-        z.a(this.vxa, null);
-        JS(2);
-        dmu();
+        af.a(this.yRp, null);
+        PU(2);
+        egp();
         AppMethodBeat.o(65680);
         return true;
       }
@@ -725,11 +654,11 @@ public class LuckyMoneyNewYearReceiveUI
         if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
           this.tipDialog.dismiss();
         }
-        this.vKm = true;
+        this.zfs = true;
         paramString = new Bundle();
         paramString.putString("realname_verify_process_jump_activity", ".ui.LuckyMoneyNewYearReceiveUI");
         paramString.putString("realname_verify_process_jump_plugin", "luckymoney");
-        bool = z.a(this, paramInt2, paramn, paramString, true, null, 1004);
+        bool = af.a(this, paramInt2, paramq, paramString, true, null, null, 1004);
         AppMethodBeat.o(65680);
         return bool;
       }
@@ -746,7 +675,7 @@ public class LuckyMoneyNewYearReceiveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNewYearReceiveUI
  * JD-Core Version:    0.7.0.1
  */

@@ -5,58 +5,58 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cjr
   extends com.tencent.mm.bw.a
 {
-  public String Hwk;
+  public int KJK;
+  public long commentId;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91582);
+    AppMethodBeat.i(169084);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Hwk != null) {
-        paramVarArgs.d(1, this.Hwk);
-      }
-      AppMethodBeat.o(91582);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.KJK);
+      paramVarArgs.bb(2, this.commentId);
+      AppMethodBeat.o(169084);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Hwk == null) {
-        break label213;
-      }
-    }
-    label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Hwk) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(91582);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        AppMethodBeat.o(91582);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cjr localcjr = (cjr)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(91582);
-          return -1;
-        }
-        localcjr.Hwk = locala.OmT.readString();
-        AppMethodBeat.o(91582);
-        return 0;
-      }
-      AppMethodBeat.o(91582);
-      return -1;
+      paramInt = g.a.a.b.b.a.bu(1, this.KJK);
+      int i = g.a.a.b.b.a.r(2, this.commentId);
+      AppMethodBeat.o(169084);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(169084);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      cjr localcjr = (cjr)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(169084);
+        return -1;
+      case 1: 
+        localcjr.KJK = locala.UbS.zi();
+        AppMethodBeat.o(169084);
+        return 0;
+      }
+      localcjr.commentId = locala.UbS.zl();
+      AppMethodBeat.o(169084);
+      return 0;
+    }
+    AppMethodBeat.o(169084);
+    return -1;
   }
 }
 

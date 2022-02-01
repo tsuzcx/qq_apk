@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.ext.openapi.provider;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.protocal.protobuf.bkn;
-import com.tencent.mm.protocal.protobuf.duq;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bp;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.protocal.protobuf.bww;
+import com.tencent.mm.protocal.protobuf.eop;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.SyncTask;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 final class ExtControlProviderOpenApi$1
-  extends bp<Cursor>
+  extends SyncTask<Cursor>
 {
   ExtControlProviderOpenApi$1(ExtControlProviderOpenApi paramExtControlProviderOpenApi, Cursor paramCursor, String[] paramArrayOfString)
   {
-    super(20000L, paramCursor);
+    super(20000L, paramCursor, true);
   }
 }
 

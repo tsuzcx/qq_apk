@@ -154,7 +154,7 @@ public class PackageManagerWrapper
   {
     AppMethodBeat.i(5345);
     paramString = this.zzjp.getPackageManager().getApplicationInfo(paramString, 0);
-    paramString = new k(this.zzjp.getPackageManager().getApplicationLabel(paramString), this.zzjp.getPackageManager().getApplicationIcon(paramString));
+    paramString = k.c(this.zzjp.getPackageManager().getApplicationLabel(paramString), this.zzjp.getPackageManager().getApplicationIcon(paramString));
     AppMethodBeat.o(5345);
     return paramString;
   }

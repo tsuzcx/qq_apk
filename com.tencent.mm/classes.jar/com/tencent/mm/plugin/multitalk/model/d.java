@@ -8,60 +8,60 @@ import java.util.List;
 public abstract interface d
   extends a
 {
-  public abstract boolean Dc(String paramString);
-  
   public abstract void a(a parama);
   
-  public abstract void asn(String paramString);
+  public abstract void aFG(String paramString);
   
-  public abstract boolean aso(String paramString);
+  public abstract boolean aFH(String paramString);
   
-  public abstract f asp(String paramString);
+  public abstract f aFI(String paramString);
   
-  public abstract boolean asq(String paramString);
+  public abstract boolean aFJ(String paramString);
   
-  public abstract List<String> asr(String paramString);
+  public abstract List<String> aFK(String paramString);
   
-  public abstract boolean ass(String paramString);
+  public abstract boolean aFL(String paramString);
   
-  public abstract boolean ast(String paramString);
+  public abstract boolean aFM(String paramString);
   
-  public abstract boolean asu(String paramString);
+  public abstract boolean aFN(String paramString);
   
-  public abstract void asv(String paramString);
+  public abstract void aFO(String paramString);
   
-  public abstract boolean asw(String paramString);
+  public abstract boolean aFP(String paramString);
   
-  public abstract void asx(String paramString);
+  public abstract void aFQ(String paramString);
   
   public abstract void b(a parama);
   
-  public abstract boolean ch(Context paramContext);
+  public abstract boolean cC(Context paramContext);
   
-  public abstract boolean dsh();
+  public abstract boolean emp();
   
-  public abstract boolean dsi();
+  public abstract boolean emq();
   
-  public abstract boolean dsj();
+  public abstract boolean emr();
   
-  public abstract boolean dsk();
+  public abstract boolean ems();
   
-  public abstract boolean ic(String paramString1, String paramString2);
+  public abstract boolean gC(String paramString);
   
-  public abstract int id(String paramString1, String paramString2);
+  public abstract String getDisplayName(String paramString);
   
-  public abstract String ie(String paramString1, String paramString2);
+  public abstract boolean iL(String paramString1, String paramString2);
   
-  public abstract String zP(String paramString);
+  public abstract int iM(String paramString1, String paramString2);
+  
+  public abstract String iN(String paramString1, String paramString2);
   
   public static abstract interface a
   {
-    public abstract void asy(String paramString);
+    public abstract void aFR(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.d
  * JD-Core Version:    0.7.0.1
  */

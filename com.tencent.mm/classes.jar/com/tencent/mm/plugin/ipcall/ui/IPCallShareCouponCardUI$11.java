@@ -15,9 +15,9 @@ final class IPCallShareCouponCardUI$11
   {
     AppMethodBeat.i(25913);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponCardUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    IPCallShareCouponCardUI.a(this.vfB);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponCardUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    IPCallShareCouponCardUI.a(this.yya);
     a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponCardUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25913);
   }

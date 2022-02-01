@@ -2,109 +2,110 @@ package com.tencent.mm.plugin.topstory.a.c;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.api.am;
-import com.tencent.mm.protocal.protobuf.aaj;
-import com.tencent.mm.protocal.protobuf.dom;
-import com.tencent.mm.protocal.protobuf.dou;
-import com.tencent.mm.protocal.protobuf.ega;
-import com.tencent.mm.protocal.protobuf.egb;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.topstory.a.e;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.eii;
+import com.tencent.mm.protocal.protobuf.eiq;
+import com.tencent.mm.protocal.protobuf.fal;
+import com.tencent.mm.protocal.protobuf.fam;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public dom dMt;
-  private com.tencent.mm.ak.b rr;
-  private long szi;
+  private i callback;
+  public eii eel;
+  private d rr;
+  private long uOV;
   
-  public b(dom paramdom, int paramInt, String paramString)
+  public b(eii parameii, int paramInt, String paramString)
   {
     AppMethodBeat.i(91005);
-    ae.i("MicroMsg.TopStory.NetSceneTopStory", "Create NetSceneTopStory Home channelId:%s, %s %s %s", new Object[] { Integer.valueOf(paramdom.cSM), Integer.valueOf(paramInt), paramdom.rfA, paramdom.sessionId });
-    this.szi = System.currentTimeMillis();
-    this.dMt = paramdom;
-    Object localObject = new b.a();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
-    ((b.a)localObject).hQF = new ega();
-    ((b.a)localObject).hQG = new egb();
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (ega)this.rr.hQD.hQJ;
-    ((ega)localObject).GeT = paramdom.offset;
-    ((ega)localObject).GWA = ad.WL(1);
-    ((ega)localObject).GLP = paramdom.dmf;
-    ((ega)localObject).HkU = ad.bOD();
-    ((ega)localObject).Scene = paramdom.scene;
-    ((ega)localObject).GeS = paramdom.kid;
-    ((ega)localObject).Iiw.addAll(paramdom.DTg);
-    ((ega)localObject).HUi = paramdom.cSM;
-    ((ega)localObject).IjL = paramInt;
-    ((ega)localObject).IjM = paramdom.HVs;
-    if (((ega)localObject).HUi == 110)
+    Log.i("MicroMsg.TopStory.NetSceneTopStory", "Create NetSceneTopStory Home channelId:%s, %s %s %s", new Object[] { Integer.valueOf(parameii.channelId), Integer.valueOf(paramInt), parameii.sGQ, parameii.sessionId });
+    this.uOV = System.currentTimeMillis();
+    this.eel = parameii;
+    Object localObject = new d.a();
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
+    ((d.a)localObject).iLN = new fal();
+    ((d.a)localObject).iLO = new fam();
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (fal)this.rr.iLK.iLR;
+    ((fal)localObject).KZk = parameii.offset;
+    ((fal)localObject).MaY = ai.aft(1);
+    ((fal)localObject).LPT = parameii.dDv;
+    ((fal)localObject).MlQ = ai.clJ();
+    ((fal)localObject).Scene = parameii.scene;
+    ((fal)localObject).KZj = parameii.hes;
+    ((fal)localObject).Nva.addAll(parameii.IDO);
+    ((fal)localObject).NgA = parameii.channelId;
+    ((fal)localObject).NwK = paramInt;
+    ((fal)localObject).NwL = parameii.NhC;
+    if (((fal)localObject).NgA == 110)
     {
-      paramString = ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().erR();
+      paramString = ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().fxo();
       if (paramString != null) {
-        ((ega)localObject).HDq = paramString.msgId;
+        ((fal)localObject).MOi = paramString.msgId;
       }
     }
     for (;;)
     {
-      ((ega)localObject).IjJ = paramdom.DTo;
-      ((ega)localObject).IjK = paramdom.HVr;
-      paramdom = new aaj();
-      paramdom.key = "client_system_version";
-      paramdom.GrE = Build.VERSION.SDK_INT;
-      ((ega)localObject).Iiw.add(paramdom);
-      paramdom = new aaj();
-      paramdom.key = "netType";
-      paramdom.GrF = ad.UD();
-      ((ega)localObject).Iiw.add(paramdom);
-      paramdom = new aaj();
-      paramdom.key = "client_request_time";
-      paramdom.GrF = String.valueOf(System.currentTimeMillis());
-      ((ega)localObject).Iiw.add(paramdom);
-      paramdom = ((ega)localObject).Iiw.iterator();
-      while (paramdom.hasNext())
+      ((fal)localObject).NwI = parameii.IDW;
+      ((fal)localObject).NwJ = parameii.NhB;
+      parameii = new aca();
+      parameii.key = "client_system_version";
+      parameii.LmC = Build.VERSION.SDK_INT;
+      ((fal)localObject).Nva.add(parameii);
+      parameii = new aca();
+      parameii.key = "netType";
+      parameii.LmD = ai.ait();
+      ((fal)localObject).Nva.add(parameii);
+      parameii = new aca();
+      parameii.key = "client_request_time";
+      parameii.LmD = String.valueOf(System.currentTimeMillis());
+      ((fal)localObject).Nva.add(parameii);
+      parameii = ((fal)localObject).Nva.iterator();
+      while (parameii.hasNext())
       {
-        paramString = (aaj)paramdom.next();
-        ae.i("MicroMsg.TopStory.NetSceneTopStory", "key: %s unit_value %s text_value %s", new Object[] { paramString.key, Long.valueOf(paramString.GrE), paramString.GrF });
+        paramString = (aca)parameii.next();
+        Log.i("MicroMsg.TopStory.NetSceneTopStory", "key: %s unit_value %s text_value %s", new Object[] { paramString.key, Long.valueOf(paramString.LmC), paramString.LmD });
       }
-      if (((ega)localObject).HUi == 100) {
-        ((ega)localObject).HDq = paramString;
+      if (((fal)localObject).NgA == 100) {
+        ((fal)localObject).MOi = paramString;
       } else {
-        ((ega)localObject).HDq = "";
+        ((fal)localObject).MOi = "";
       }
     }
-    ae.i("MicroMsg.TopStory.NetSceneTopStory", "request params offset %d h5Version %d CheckDocListSize: %d", new Object[] { Integer.valueOf(((ega)localObject).GeT), Integer.valueOf(((ega)localObject).GWA), Integer.valueOf(((ega)localObject).IjK.size()) });
+    Log.i("MicroMsg.TopStory.NetSceneTopStory", "request params offset %d h5Version %d CheckDocListSize: %d", new Object[] { Integer.valueOf(((fal)localObject).KZk), Integer.valueOf(((fal)localObject).MaY), Integer.valueOf(((fal)localObject).NwJ.size()) });
     AppMethodBeat.o(91005);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(91006);
-    am.iV(this.dMt.scene, 2);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    ar.kb(this.eel.scene, 2);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(91006);
     return i;
   }
   
-  public final egb esB()
+  public final fam fxZ()
   {
-    return (egb)this.rr.hQE.hQJ;
+    return (fam)this.rr.iLL.iLR;
   }
   
   public final int getType()
@@ -112,12 +113,12 @@ public final class b
     return 1943;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(91007);
-    ae.i("MicroMsg.TopStory.NetSceneTopStory", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.szi) });
+    Log.i("MicroMsg.TopStory.NetSceneTopStory", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.uOV) });
     if (paramInt3 == -1) {
-      am.iV(this.dMt.scene, 4);
+      ar.kb(this.eel.scene, 4);
     }
     for (;;)
     {
@@ -125,9 +126,9 @@ public final class b
       AppMethodBeat.o(91007);
       return;
       if ((paramInt2 != 0) || (paramInt3 != 0)) {
-        am.iV(this.dMt.scene, 8);
+        ar.kb(this.eel.scene, 8);
       } else {
-        am.iV(this.dMt.scene, 3);
+        ar.kb(this.eel.scene, 3);
       }
     }
   }

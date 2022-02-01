@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/hoj" android:background="@color/rx" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/ho7" android:layout_width="fill_parent" android:layout_height="240.0dip" />
-    <RelativeLayout android:orientation="vertical" android:id="@id/ho9" android:background="@drawable/c64" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <ProgressBar android:id="@id/hog" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4p" />
-        <TextView android:textColor="@color/a_r" android:id="@id/ho_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hnp" android:layout_centerInParent="true" />
-        <RelativeLayout android:id="@id/hoh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
-            <FrameLayout android:layout_gravity="center" android:id="@id/ho8" android:background="@drawable/c6w" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
-                <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bak" android:rotation="-90.0" />
-            </FrameLayout>
-            <Button android:textSize="14.0dip" android:textColor="@color/a_r" android:id="@id/hoa" android:background="@drawable/c6n" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hq2" android:layout_centerVertical="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-        <TextView android:textSize="14.0dip" android:textColor="@color/ry" android:id="@id/hoi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/hq4" android:layout_below="@id/hoh" android:layout_marginStart="16.0dip" android:layout_alignParentStart="true" />
-        <android.support.v7.widget.RecyclerView android:id="@id/hof" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hoi" />
-    </RelativeLayout>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:layout_gravity="center_horizontal" android:id="@id/ut" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.emoji.view.CoverEmojiStatusView android:id="@id/ur" android:padding="4.0dip" android:layout_width="@dimen/a2x" android:layout_height="@dimen/a2x" android:src="@color/d" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/us" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <TextView android:textSize="@dimen/y" android:textColor="@color/afz" android:id="@id/g9m" android:background="@color/a3b" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h2m" app:layout_constraintBottom_toBottomOf="@id/ur" app:layout_constraintEnd_toEndOf="@id/ur" />
+    <TextView android:textSize="12.0sp" android:textColor="?kb" android:id="@id/us" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/ur" />
+</android.support.constraint.ConstraintLayout>

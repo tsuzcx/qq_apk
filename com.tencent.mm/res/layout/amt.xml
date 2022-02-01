@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dan" android:background="@color/a74" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:text="{A}" style="@style/nq" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/nr">
+        <ImageView android:id="@id/dam" android:background="@raw/default_avatar" android:layout_width="@dimen/jx" android:layout_height="@dimen/jx" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/dao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{QQ/Mobile/Google昵称}" android:singleLine="true" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/tx" android:id="@id/dar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{${BRAND}昵称}" android:singleLine="true" />
+        </LinearLayout>
+        <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/dal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="75.0dip" android:minHeight="30.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/wx" android:gravity="center" android:layout_gravity="center" android:id="@id/daq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:minHeight="30.0dip" android:text="@string/diz" />
+            <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/dap" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

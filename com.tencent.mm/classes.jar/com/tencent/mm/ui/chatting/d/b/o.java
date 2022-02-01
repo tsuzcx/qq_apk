@@ -1,13 +1,18 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
+import android.widget.LinearLayout;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface o
-  extends ad
+  extends af
 {
-  public abstract void ehi();
+  public abstract boolean gPG();
   
-  public abstract void fHD();
+  public abstract boolean gPH();
+  
+  public abstract String gPI();
+  
+  public abstract void j(LinearLayout paramLinearLayout);
 }
 
 

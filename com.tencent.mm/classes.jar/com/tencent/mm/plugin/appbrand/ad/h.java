@@ -3,265 +3,263 @@ package com.tencent.mm.plugin.appbrand.ad;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ad.a.b;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.ui.w;
-import com.tencent.mm.plugin.appbrand.ui.x;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.ui.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.a.a;
+import kotlin.x;
 
 public final class h
   implements j
 {
-  public p jFm;
-  public com.tencent.mm.plugin.appbrand.service.c jFn;
-  public int jFo = 9;
-  public aw jFp;
-  private HandlerThread jFq;
-  public i jFr;
-  public long jFs;
-  volatile boolean jFt = false;
-  private volatile boolean jFu = false;
-  volatile boolean jFv = false;
+  public q kGW;
+  public com.tencent.mm.plugin.appbrand.service.c kGX;
+  public int kGY = 9;
+  public MTimerHandler kGZ;
+  private HandlerThread kHa;
+  public i kHb;
+  public long kHc;
+  volatile boolean kHd = false;
+  private volatile boolean kHe = false;
+  volatile boolean kHf = false;
   
-  public h(p paramp)
+  public h(q paramq)
   {
-    this.jFm = paramp;
+    this.kGW = paramq;
   }
   
-  private void aXZ()
+  private void btf()
   {
-    AppMethodBeat.i(222071);
-    if (aYE() != null)
+    AppMethodBeat.i(226273);
+    if (btQ() != null)
     {
-      ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "destroyServiceAdComponentView");
-      aYE().aXZ();
+      Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "destroyServiceAdComponentView");
+      btQ().btf();
     }
-    AppMethodBeat.o(222071);
+    AppMethodBeat.o(226273);
   }
   
-  public final void Lt(String paramString)
+  public final void UC(String paramString)
   {
-    AppMethodBeat.i(222067);
+    AppMethodBeat.i(226269);
     if ("launch".equalsIgnoreCase(paramString))
     {
       Object localObject = new com.tencent.mm.plugin.appbrand.ad.a.d();
       ((com.tencent.mm.plugin.appbrand.ad.a.d)localObject).source = paramString;
-      ((com.tencent.mm.plugin.appbrand.ad.a.d)localObject).c(aYE());
+      ((com.tencent.mm.plugin.appbrand.ad.a.d)localObject).d(btQ());
       localObject = new com.tencent.mm.plugin.appbrand.ad.a.c();
       ((com.tencent.mm.plugin.appbrand.ad.a.c)localObject).source = paramString;
-      ((com.tencent.mm.plugin.appbrand.ad.a.c)localObject).c(aYE());
-      paramString = this.jFm;
-      ae.i("MicroMsg.AppBrandRuntime", "tryResetPageOrientation[AppBrandSplashAd], appId:%s, reset orientation", new Object[] { paramString.mAppId });
-      if ((paramString.aWm() != null) && (paramString.aWm().getPageView() != null))
+      ((com.tencent.mm.plugin.appbrand.ad.a.c)localObject).d(btQ());
+      paramString = this.kGW;
+      Log.i("MicroMsg.AppBrandRuntime", "tryResetPageOrientation[AppBrandSplashAd], appId:%s, reset orientation", new Object[] { paramString.mAppId });
+      if ((paramString.brh() != null) && (paramString.brh().getPageView() != null))
       {
-        localObject = (com.tencent.mm.plugin.appbrand.page.a.d)paramString.aWm().getPageView().Q(com.tencent.mm.plugin.appbrand.page.a.d.class);
+        localObject = (com.tencent.mm.plugin.appbrand.page.a.d)paramString.brh().getPageView().S(com.tencent.mm.plugin.appbrand.page.a.d.class);
         if (localObject != null)
         {
-          String str = ((com.tencent.mm.plugin.appbrand.page.a.d)localObject).DC();
-          ae.i("MicroMsg.AppBrandRuntime", "tryResetPageOrientation[AppBrandSplashAd], appId:%s, request orientation:%s", new Object[] { paramString.mAppId, str });
-          if (!bu.isNullOrNil(str)) {
+          String str = ((com.tencent.mm.plugin.appbrand.page.a.d)localObject).MZ();
+          Log.i("MicroMsg.AppBrandRuntime", "tryResetPageOrientation[AppBrandSplashAd], appId:%s, request orientation:%s", new Object[] { paramString.mAppId, str });
+          if (!Util.isNullOrNil(str)) {
             ((com.tencent.mm.plugin.appbrand.page.a.d)localObject).a(null);
           }
         }
       }
-      aYK();
-      com.tencent.mm.plugin.appbrand.report.quality.a.F(this.jFm);
-      ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "onSplashAdViewContainerHide");
-      this.jFu = true;
-      aXZ();
-      aYJ();
+      btW();
+      com.tencent.mm.plugin.appbrand.report.quality.b.K(this.kGW);
+      Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "onSplashAdViewContainerHide");
+      this.kHe = true;
+      btf();
+      btV();
     }
-    AppMethodBeat.o(222067);
+    AppMethodBeat.o(226269);
   }
   
-  public final void Lu(String paramString)
+  public final void UD(String paramString)
   {
-    AppMethodBeat.i(222074);
-    if (this.jFp != null)
+    AppMethodBeat.i(226276);
+    if (this.kGZ != null)
     {
-      ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "stopCheckShowAdTimeoutTick, appId:%s, reason:%s, realTime:%s", new Object[] { this.jFm.mAppId, paramString, Long.valueOf(bu.fpO() - this.jFs) });
-      this.jFt = true;
-      this.jFp.stopTimer();
-      this.jFp = null;
+      Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "stopCheckShowAdTimeoutTick, appId:%s, reason:%s, realTime:%s", new Object[] { this.kGW.mAppId, paramString, Long.valueOf(Util.nowMilliSecond() - this.kHc) });
+      this.kHd = true;
+      this.kGZ.stopTimer();
+      this.kGZ = null;
     }
-    aYL();
-    AppMethodBeat.o(222074);
+    btX();
+    AppMethodBeat.o(226276);
   }
   
-  final x aYD()
+  final com.tencent.mm.plugin.appbrand.ui.ac btP()
   {
-    AppMethodBeat.i(222063);
-    if ((this.jFm.aWN() instanceof x))
+    AppMethodBeat.i(226265);
+    if ((this.kGW.brK() instanceof com.tencent.mm.plugin.appbrand.ui.ac))
     {
-      x localx = (x)this.jFm.aWN();
-      AppMethodBeat.o(222063);
-      return localx;
+      com.tencent.mm.plugin.appbrand.ui.ac localac = (com.tencent.mm.plugin.appbrand.ui.ac)this.kGW.brK();
+      AppMethodBeat.o(226265);
+      return localac;
     }
-    AppMethodBeat.o(222063);
+    AppMethodBeat.o(226265);
     return null;
   }
   
-  public final com.tencent.mm.plugin.appbrand.service.c aYE()
+  public final com.tencent.mm.plugin.appbrand.service.c btQ()
   {
-    AppMethodBeat.i(222064);
+    AppMethodBeat.i(226266);
     com.tencent.mm.plugin.appbrand.service.c localc;
-    if (this.jFn != null)
+    if (this.kGX != null)
     {
-      localc = this.jFn;
-      AppMethodBeat.o(222064);
+      localc = this.kGX;
+      AppMethodBeat.o(226266);
       return localc;
     }
-    if (this.jFm != null)
+    if (this.kGW != null)
     {
-      localc = this.jFm.aXz();
-      AppMethodBeat.o(222064);
+      localc = this.kGW.bsE();
+      AppMethodBeat.o(226266);
       return localc;
     }
-    AppMethodBeat.o(222064);
+    AppMethodBeat.o(226266);
     return null;
   }
   
-  public final void aYF()
+  public final void btR()
   {
-    AppMethodBeat.i(222065);
-    ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "hideLoadingSplashFromRuntime, isSplashAdFinished:%s, isLoadingSplashFinished:%s", new Object[] { Boolean.valueOf(this.jFu), Boolean.valueOf(this.jFv) });
-    x localx = aYD();
-    if ((localx != null) && (localx.getInternalLoadingSplash() != null)) {
-      localx.getInternalLoadingSplash().v(new d.g.a.a() {});
+    AppMethodBeat.i(226267);
+    Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "hideLoadingSplashFromRuntime, isSplashAdFinished:%s, isLoadingSplashFinished:%s", new Object[] { Boolean.valueOf(this.kHe), Boolean.valueOf(this.kHf) });
+    com.tencent.mm.plugin.appbrand.ui.ac localac = btP();
+    if ((localac != null) && (localac.getInternalLoadingSplash() != null)) {
+      localac.getInternalLoadingSplash().z(new a() {});
     }
-    AppMethodBeat.o(222065);
+    AppMethodBeat.o(226267);
   }
   
-  public final void aYG()
+  public final void btS()
   {
-    AppMethodBeat.i(222066);
-    b localb = new b();
+    AppMethodBeat.i(226268);
+    com.tencent.mm.plugin.appbrand.ad.a.b localb = new com.tencent.mm.plugin.appbrand.ad.a.b();
     localb.source = "launch";
     localb.type = "close";
-    localb.c(aYE());
-    l(true, "launch");
-    AppMethodBeat.o(222066);
+    localb.d(btQ());
+    m(true, "launch");
+    AppMethodBeat.o(226268);
   }
   
-  public final void aYH()
+  public final void btT()
   {
-    AppMethodBeat.i(222068);
-    this.jFs = bu.fpO();
-    this.jFq = new HandlerThread("checkShowAdThread");
-    this.jFq.start();
-    this.jFp = new aw(this.jFq.getLooper(), new aw.a()
+    AppMethodBeat.i(226270);
+    this.kHc = Util.nowMilliSecond();
+    this.kHa = new HandlerThread("checkShowAdThread");
+    this.kHa.start();
+    this.kGZ = new MTimerHandler(this.kHa.getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(222060);
-        if (h.this.jFt)
+        AppMethodBeat.i(226262);
+        if (h.this.kHd)
         {
-          ae.w("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkShowAdTimer, timer already stopped");
-          AppMethodBeat.o(222060);
+          Log.w("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkShowAdTimer, timer already stopped");
+          AppMethodBeat.o(226262);
           return false;
         }
-        ae.e("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkShowAdTimer timeOut, realTime:%s", new Object[] { Long.valueOf(bu.fpO() - h.this.jFs) });
-        h.this.aYK();
-        h.this.aYI();
-        h.this.aYL();
-        AppMethodBeat.o(222060);
+        Log.e("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkShowAdTimer timeOut, realTime:%s", new Object[] { Long.valueOf(Util.nowMilliSecond() - h.this.kHc) });
+        h.this.btW();
+        h.this.btU();
+        h.this.btX();
+        AppMethodBeat.o(226262);
         return false;
       }
     }, false);
-    int i = p.aXF();
-    ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkShowAdTimer start, timeThreshold:%s", new Object[] { Integer.valueOf(i) });
-    this.jFt = false;
-    aw localaw = this.jFp;
-    long l = i;
-    localaw.ay(l, l);
-    AppMethodBeat.o(222068);
+    int i = q.bsK();
+    Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkShowAdTimer start, timeThreshold:%s", new Object[] { Integer.valueOf(i) });
+    this.kHd = false;
+    this.kGZ.startTimer(i);
+    AppMethodBeat.o(226270);
   }
   
-  public final void aYI()
+  public final void btU()
   {
-    AppMethodBeat.i(222070);
-    x localx = aYD();
-    if (localx != null) {
-      localx.aYI();
+    AppMethodBeat.i(226272);
+    com.tencent.mm.plugin.appbrand.ui.ac localac = btP();
+    if (localac != null) {
+      localac.bWI();
     }
-    ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "hideSplashAdImmediately");
-    this.jFu = true;
-    aXZ();
-    aYJ();
-    AppMethodBeat.o(222070);
+    Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "hideSplashAdImmediately");
+    this.kHe = true;
+    btf();
+    btV();
+    AppMethodBeat.o(226272);
   }
   
-  final void aYJ()
+  final void btV()
   {
-    AppMethodBeat.i(222072);
-    ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkAllFinished, isSplashAdFinished:%s, isLoadingSplashFinished:%s", new Object[] { Boolean.valueOf(this.jFu), Boolean.valueOf(this.jFv) });
-    if ((this.jFu) && (this.jFv))
+    AppMethodBeat.i(226274);
+    Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkAllFinished, isSplashAdFinished:%s, isLoadingSplashFinished:%s", new Object[] { Boolean.valueOf(this.kHe), Boolean.valueOf(this.kHf) });
+    if ((this.kHe) && (this.kHf))
     {
-      x localx = aYD();
-      if (localx != null)
+      com.tencent.mm.plugin.appbrand.ui.ac localac = btP();
+      if (localac != null)
       {
-        ae.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkAllFinished, remove AdLoadingSplash");
-        localx.bzO();
+        Log.i("MicroMsg.AppBrandSplashAdLogic[AppBrandSplashAd]", "checkAllFinished, remove AdLoadingSplash");
+        localac.bWJ();
       }
     }
-    AppMethodBeat.o(222072);
+    AppMethodBeat.o(226274);
   }
   
-  public final void aYK()
+  public final void btW()
   {
-    AppMethodBeat.i(222073);
-    if (this.jFr != null) {
-      this.jFm.N(new Runnable()
+    AppMethodBeat.i(226275);
+    if (this.kHb != null) {
+      this.kGW.S(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(222062);
-          if (h.this.jFr != null) {
-            h.this.jFr.BJ();
+          AppMethodBeat.i(226264);
+          if (h.this.kHb != null) {
+            h.this.kHb.KY();
           }
-          AppMethodBeat.o(222062);
+          AppMethodBeat.o(226264);
         }
       });
     }
-    AppMethodBeat.o(222073);
+    AppMethodBeat.o(226275);
   }
   
-  final void aYL()
+  final void btX()
   {
-    AppMethodBeat.i(222075);
-    if (this.jFq != null)
+    AppMethodBeat.i(226277);
+    if (this.kHa != null)
     {
-      this.jFq.quitSafely();
-      this.jFq = null;
+      this.kHa.quitSafely();
+      this.kHa = null;
     }
-    AppMethodBeat.o(222075);
+    AppMethodBeat.o(226277);
   }
   
-  public final void l(final boolean paramBoolean, final String paramString)
+  public final void m(final boolean paramBoolean, final String paramString)
   {
-    AppMethodBeat.i(222069);
-    this.jFm.j(new Runnable()
+    AppMethodBeat.i(226271);
+    this.kGW.i(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(222061);
-        x localx = h.this.aYD();
-        if (localx != null) {
-          localx.l(paramBoolean, paramString);
+        AppMethodBeat.i(226263);
+        com.tencent.mm.plugin.appbrand.ui.ac localac = h.this.btP();
+        if (localac != null) {
+          localac.k(paramBoolean, paramString);
         }
-        AppMethodBeat.o(222061);
+        AppMethodBeat.o(226263);
       }
     }, 0L);
-    AppMethodBeat.o(222069);
+    AppMethodBeat.o(226271);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_switch" android:title="@string/bx2" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_pic_switch" android:title="@string/bwu" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_final_switch" android:title="@string/bww" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_lipreading_switch" android:title="@string/bwx" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_voice_switch" android:title="@string/bwy" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_force_upload_video" android:title="@string/bwq" />
-    <Preference android:key="face_debug_check_resource" android:layout="@layout/aop" android:title="@string/bwo" />
-    <Preference android:key="face_debug_clear_resource" android:layout="@layout/aop" android:title="@string/bwp" />
+    <com.tencent.mm.plugin.exdevice.ui.DeviceProfileHeaderPreference android:key="device_profile_header" android:layout="@layout/a4i" />
+    <Preference android:key="sub_device_desc" android:layout="@layout/a5d" android:title="@string/c2d" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="message_manage" android:layout="@layout/b8j" android:title="@string/c0p" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="connect_setting" android:layout="@layout/b8j" android:title="@string/bzk" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="user_list" android:layout="@layout/b8j" android:title="@string/c2k" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_biz_go_chatting" android:layout="@layout/b8j" android:title="@string/b_b" />
+    <PreferenceSmallCategory />
+    <Preference android:key="bind_device" android:layout="@layout/aw2" android:title="@string/byi" />
+    <Preference android:key="open_device_panel" android:layout="@layout/aw2" android:title="@string/c0x" />
+    <PreferenceSmallCategory />
+    <Preference android:key="unbind_device" android:layout="@layout/ccg" android:title="@string/c2g" />
     <PreferenceCategory />
 </PreferenceScreen>

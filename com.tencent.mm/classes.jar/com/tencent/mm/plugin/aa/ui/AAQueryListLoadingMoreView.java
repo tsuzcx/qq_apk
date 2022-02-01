@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
 
 public class AAQueryListLoadingMoreView
   extends LinearLayout
@@ -37,7 +37,7 @@ public class AAQueryListLoadingMoreView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63507);
-    z.jV(paramContext).inflate(2131492888, this, true);
+    aa.jQ(paramContext).inflate(2131492904, this, true);
     AppMethodBeat.o(63507);
   }
 }

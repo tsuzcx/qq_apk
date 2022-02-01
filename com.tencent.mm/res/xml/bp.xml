@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="settings_room_size" android:layout="@layout/aop" android:title="@string/f_k" />
-    <Preference android:key="room_right_max_tip" android:layout="@layout/aqa" android:title="@string/erq" />
-    <PreferenceCategory />
-    <com.tencent.mm.chatroom.ui.RoomGrantPreference android:key="settings_room_grant" android:layout="@layout/aop" android:title="@string/f_h" />
-    <PreferenceCategory />
-    <Preference android:key="room_grant_to_friend" android:layout="@layout/ae7" android:title="@string/erm" />
-    <PreferenceCategory />
-    <Preference android:key="room_right_grant_tip" android:layout="@layout/aqa" android:title="@string/ern" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_wechat_account" android:layout="@layout/b8j" android:title="@string/bhp" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser" android:layout="@layout/b8j" android:title="@string/bhj" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_trademark" android:layout="@layout/b8j" android:title="@string/bhd" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_privilege" android:title="@string/bdl" />
+    <com.tencent.mm.plugin.profile.ui.IconWidgetPreference android:key="contact_info_kf_worker" android:layout="@layout/b8j" android:title="@string/gpi" />
+    <Preference android:key="contact_info_service_phone" android:layout="@layout/b8j" android:title="@string/bfc" />
+    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:key="contact_info_reputation" android:layout="@layout/xt" android:title="@string/bex" />
+    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:key="contact_info_guarantee_info" android:layout="@layout/xt" android:title="@string/bbr" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_scope_of_business" android:layout="@layout/b8j" android:title="@string/bf4" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser_weibo" android:layout="@layout/b8j" android:title="@string/bhq" />
+    <Preference android:key="near_field_service" android:layout="@layout/b8j" android:title="@string/f_h" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_see_locate" android:layout="@layout/b8j" android:title="@string/b_u" />
+    <PreferenceSmallCategory android:key="contact_info_category2" />
 </PreferenceScreen>

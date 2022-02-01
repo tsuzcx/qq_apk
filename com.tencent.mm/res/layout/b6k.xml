@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/b8"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" />
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/ce">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/cn1" android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" android:layout_marginLeft="@dimen/c8" android:layout_marginRight="@dimen/c8" android:src="@raw/sos_logo_icon" android:layout_centerVertical="true" />
-        <TextView android:textColor="@color/y4" android:text="@string/fid" android:layout_toRightOf="@id/cn1" android:layout_centerVertical="true" style="@style/lw" />
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/c8" android:layout_marginRight="@dimen/c8" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/cb" />
+    <TextView android:id="@id/fas" style="@style/a60" />
+    <LinearLayout android:orientation="vertical" android:id="@id/fai" android:background="@drawable/o9" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5">
+        <TextView android:id="@id/faj" style="@style/a5y" />
+        <TextView android:id="@id/fam" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/k5" style="@style/a5y" />
+        <View style="@style/a5z" />
+        <ImageView android:layout_gravity="center" android:id="@id/fao" android:layout_width="wrap_content" android:layout_height="160.0dip" android:layout_marginTop="@dimen/k" android:layout_marginBottom="@dimen/k" />
+        <View style="@style/a5z" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/fah" style="@style/a5x" />
+    </LinearLayout>
 </LinearLayout>

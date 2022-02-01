@@ -8,6 +8,7 @@ public class ConstantsKinda
   public static final String INTENT_TARGET = "intent_target";
   public static final String INTENT_TINYAPP = "intent_tinyapp";
   public static final String INTENT_TINYAPP_PATH = "intent_tinyapp_path";
+  public static final String INTENT_TINYAPP_SCENE = "intent_tinyapp_scene";
   public static final String INTENT_TINYAPP_TYPE = "intent_tinyapp_type";
   public static final String INTENT_TINYAPP_USERNAME = "intent_tinyapp_username";
   public static final String INTENT_TINYAPP_VERSION = "intent_tinyapp_version";
@@ -21,7 +22,7 @@ public class ConstantsKinda
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.ConstantsKinda
  * JD-Core Version:    0.7.0.1
  */

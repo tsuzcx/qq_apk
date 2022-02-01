@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,7 +21,7 @@ public final class j
     parama = paramJSONObject.optJSONArray("dataArray");
     if (parama == null)
     {
-      parama1.bk(a(false, "dataArray is null", null));
+      parama1.bt(a(false, "dataArray is null", null));
       AppMethodBeat.o(121331);
       return;
     }
@@ -35,25 +35,25 @@ public final class j
           int j = paramJSONObject.optInt("id");
           int k = paramJSONObject.optInt("key");
           int m = paramJSONObject.optInt("value");
-          g.yxI.idkeyStat(j, k, m, false);
+          h.CyF.idkeyStat(j, k, m, false);
           i += 1;
         }
         catch (Exception paramJSONObject)
         {
           for (;;)
           {
-            ae.e("MicroMsg.JsApiFunc_ReportIDKey", "parse json failed : %s", new Object[] { paramJSONObject.getMessage() });
+            Log.e("MicroMsg.JsApiFunc_ReportIDKey", "parse json failed : %s", new Object[] { paramJSONObject.getMessage() });
           }
         }
       }
     }
-    parama1.bk(a(true, "", null));
+    parama1.bt(a(true, "", null));
     AppMethodBeat.o(121331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.j
  * JD-Core Version:    0.7.0.1
  */

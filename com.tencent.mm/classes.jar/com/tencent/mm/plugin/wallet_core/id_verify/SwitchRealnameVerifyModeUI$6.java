@@ -12,13 +12,13 @@ final class SwitchRealnameVerifyModeUI$6
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(70023);
-    this.DhW.finish();
+    this.HRp.finish();
     AppMethodBeat.o(70023);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.SwitchRealnameVerifyModeUI.6
  * JD-Core Version:    0.7.0.1
  */

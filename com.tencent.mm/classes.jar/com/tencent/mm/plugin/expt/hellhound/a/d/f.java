@@ -2,60 +2,82 @@ package com.tencent.mm.plugin.expt.hellhound.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.b.a;
-import com.tencent.mm.protocal.protobuf.aup;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.protocal.protobuf.dca;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.bfy;
+import com.tencent.mm.protocal.protobuf.bgb;
+import com.tencent.mm.protocal.protobuf.dve;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchedBackup;", "", "()V", "Companion", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchedBackup;", "", "()V", "Companion", "plugin-expt_release"})
 public final class f
 {
-  public static final a rgE;
+  public static final a sIa;
   
   static
   {
     AppMethodBeat.i(185597);
-    rgE = new a((byte)0);
+    sIa = new a((byte)0);
     AppMethodBeat.o(185597);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchedBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/FuzzyMatchCache;", "_write", "", "cache", "backup", "paths", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FuzzyPath;", "getBackup", "Lcom/tencent/mm/protocal/protobuf/SessionFuzzyPath;", "sessionId", "reset", "plugin-expt_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchedBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/FuzzyMatchCache;", "_write", "", "cache", "backup", "paths", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FuzzyPath;", "getBackup", "Lcom/tencent/mm/protocal/protobuf/SessionFuzzyPath;", "sessionId", "reset", "plugin-expt_release"})
   public static final class a
   {
-    private static void a(aup paramaup)
+    private static void a(bfy parambfy)
     {
       AppMethodBeat.i(185595);
-      if ((paramaup == null) || (paramaup.GLy.isEmpty()))
+      if ((parambfy == null) || (parambfy.LPC.isEmpty()))
       {
         AppMethodBeat.o(185595);
         return;
       }
       try
       {
-        paramaup = paramaup.toByteArray();
-        if (paramaup == null)
+        parambfy = parambfy.toByteArray();
+        if (parambfy == null)
         {
           AppMethodBeat.o(185595);
           return;
         }
       }
-      catch (IOException paramaup)
+      catch (IOException parambfy)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)paramaup, "FuzzyMatchedBackup, _write: %s", new Object[] { paramaup.getMessage() });
+        Log.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)parambfy, "FuzzyMatchedBackup, _write: %s", new Object[] { parambfy.getMessage() });
         AppMethodBeat.o(185595);
         return;
       }
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_fuzzy_matched_bckup", paramaup);
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_fuzzy_matched_bckup", parambfy);
       AppMethodBeat.o(185595);
     }
     
-    public static void aaB(String paramString)
+    public static void ad(LinkedList<bgb> paramLinkedList)
+    {
+      AppMethodBeat.i(185591);
+      p.h(paramLinkedList, "paths");
+      Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.sIy;
+      if (b.a.cPX())
+      {
+        Log.w("HABBYGE-MALI.FuzzyMatchedBackup", "FuzzyMatchedBackup, report, doNotNeedSessionMonitor FALSE");
+        AppMethodBeat.o(185591);
+        return;
+      }
+      Log.i("HABBYGE-MALI.FuzzyMatchedBackup", "FuzzyMatchedBackup, report: " + paramLinkedList.size());
+      bfy localbfy = cPE();
+      localObject = localbfy;
+      if (localbfy == null) {
+        localObject = new bfy();
+      }
+      ((bfy)localObject).LPC.addAll((Collection)paramLinkedList);
+      a((bfy)localObject);
+      AppMethodBeat.o(185591);
+    }
+    
+    public static void akH(String paramString)
     {
       AppMethodBeat.i(185594);
       if (paramString == null)
@@ -63,51 +85,29 @@ public final class f
         AppMethodBeat.o(185594);
         return;
       }
-      aup localaup = cqW();
-      if (localaup == null)
+      bfy localbfy = cPE();
+      if (localbfy == null)
       {
         AppMethodBeat.o(185594);
         return;
       }
-      int i = localaup.GLy.size() - 1;
+      int i = localbfy.LPC.size() - 1;
       if (i >= 0)
       {
-        aus localaus = (aus)localaup.GLy.get(i);
-        if ((localaus == null) || ((p.i(paramString, localaus.dAa) ^ true))) {}
+        bgb localbgb = (bgb)localbfy.LPC.get(i);
+        if ((localbgb == null) || ((p.j(paramString, localbgb.dRM) ^ true))) {}
         for (;;)
         {
           i -= 1;
           break;
-          localaup.GLy.remove(i);
+          localbfy.LPC.remove(i);
         }
       }
-      a(localaup);
+      a(localbfy);
       AppMethodBeat.o(185594);
     }
     
-    public static void ac(LinkedList<aus> paramLinkedList)
-    {
-      AppMethodBeat.i(185591);
-      p.h(paramLinkedList, "paths");
-      Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.rhc;
-      if (b.a.crp())
-      {
-        ae.w("HABBYGE-MALI.FuzzyMatchedBackup", "FuzzyMatchedBackup, report, doNotNeedSessionMonitor FALSE");
-        AppMethodBeat.o(185591);
-        return;
-      }
-      ae.i("HABBYGE-MALI.FuzzyMatchedBackup", "FuzzyMatchedBackup, report: " + paramLinkedList.size());
-      aup localaup = cqW();
-      localObject = localaup;
-      if (localaup == null) {
-        localObject = new aup();
-      }
-      ((aup)localObject).GLy.addAll((Collection)paramLinkedList);
-      a((aup)localObject);
-      AppMethodBeat.o(185591);
-    }
-    
-    public static dca afw(String paramString)
+    public static dve aqh(String paramString)
     {
       AppMethodBeat.i(185592);
       if (paramString == null)
@@ -115,27 +115,27 @@ public final class f
         AppMethodBeat.o(185592);
         return null;
       }
-      Object localObject = cqW();
+      Object localObject = cPE();
       if (localObject == null)
       {
         AppMethodBeat.o(185592);
         return null;
       }
-      dca localdca = new dca();
-      localdca.dAa = paramString;
-      localObject = ((aup)localObject).GLy.iterator();
+      dve localdve = new dve();
+      localdve.dRM = paramString;
+      localObject = ((bfy)localObject).LPC.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        aus localaus = (aus)((Iterator)localObject).next();
-        if ((localaus != null) && (!(p.i(paramString, localaus.dAa) ^ true))) {
-          localdca.GLy.add(localaus);
+        bgb localbgb = (bgb)((Iterator)localObject).next();
+        if ((localbgb != null) && (!(p.j(paramString, localbgb.dRM) ^ true))) {
+          localdve.LPC.add(localbgb);
         }
       }
       AppMethodBeat.o(185592);
-      return localdca;
+      return localdve;
     }
     
-    private static aup cqW()
+    private static bfy cPE()
     {
       AppMethodBeat.i(185596);
       byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("mmkv_fuzzy_matched_bckup");
@@ -150,16 +150,16 @@ public final class f
         AppMethodBeat.o(185596);
         return null;
       }
-      aup localaup = new aup();
+      bfy localbfy = new bfy();
       try
       {
-        localaup.parseFrom(arrayOfByte);
+        localbfy.parseFrom(arrayOfByte);
         AppMethodBeat.o(185596);
-        return localaup;
+        return localbfy;
       }
       catch (IOException localIOException)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)localIOException, "FuzzyMatchedBackup, _read: %s", new Object[] { localIOException.getMessage() });
+        Log.printErrStackTrace("HABBYGE-MALI.FuzzyMatchedBackup", (Throwable)localIOException, "FuzzyMatchedBackup, _read: %s", new Object[] { localIOException.getMessage() });
         AppMethodBeat.o(185596);
       }
       return null;
@@ -168,7 +168,7 @@ public final class f
     public static void reset()
     {
       AppMethodBeat.i(185593);
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_fuzzy_matched_bckup", new byte[0]);
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_fuzzy_matched_bckup", new byte[0]);
       AppMethodBeat.o(185593);
     }
   }

@@ -23,40 +23,40 @@ import com.tencent.mm.ui.widget.a.e.b;
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public e.b KtV;
-  public boolean KtW;
-  public ViewTreeObserver afv;
-  public View kFh;
-  public Dialog lDY;
-  public BottomSheetBehavior lEb;
-  public boolean lEc;
-  public int lEd;
-  public boolean lEf;
+  public e.b PGl;
+  public boolean PGm;
+  public ViewTreeObserver afI;
+  public View lJI;
   public Context mContext;
-  public View qI;
-  private boolean tdt;
+  public Dialog mLH;
+  public BottomSheetBehavior mLK;
+  public boolean mLL;
+  public int mLM;
+  public boolean mLO;
+  public View qK;
+  private boolean wjN;
   
   public b(Context paramContext, View paramView)
   {
     AppMethodBeat.i(185898);
-    this.lEc = false;
-    this.tdt = false;
-    this.KtW = false;
-    this.lEf = false;
-    this.kFh = paramView;
+    this.mLL = false;
+    this.wjN = false;
+    this.PGm = false;
+    this.mLO = false;
+    this.lJI = paramView;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
-      this.qI = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.qK = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.lDY = new a(this.mContext, 2131820788);
-    this.lEc = aoA();
-    if (this.lDY != null) {
-      this.lDY.setContentView(this.kFh);
+    this.mLH = new a(this.mContext, 2131820791);
+    this.mLL = isLandscape();
+    if (this.mLH != null) {
+      this.mLH.setContentView(this.lJI);
     }
-    this.lEb = BottomSheetBehavior.l((View)this.kFh.getParent());
-    this.lEb.setState(3);
-    if (this.lDY != null) {
-      this.lDY.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.mLK = BottomSheetBehavior.l((View)this.lJI.getParent());
+    this.mLK.setState(3);
+    if (this.mLH != null) {
+      this.mLH.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -82,7 +82,7 @@ public final class b
   private boolean isShowing()
   {
     AppMethodBeat.i(185903);
-    if ((this.lDY != null) && (this.lDY.isShowing()))
+    if ((this.mLH != null) && (this.mLH.isShowing()))
     {
       AppMethodBeat.o(185903);
       return true;
@@ -91,28 +91,16 @@ public final class b
     return false;
   }
   
-  public final boolean aoA()
-  {
-    AppMethodBeat.i(185902);
-    if (this.mContext.getResources().getConfiguration().orientation == 2)
-    {
-      AppMethodBeat.o(185902);
-      return true;
-    }
-    AppMethodBeat.o(185902);
-    return false;
-  }
-  
-  public final void bqD()
+  public final void bMo()
   {
     AppMethodBeat.i(185901);
-    if (this.lDY != null)
+    if (this.mLH != null)
     {
-      if (this.lEb != null) {
-        this.lEb.nZ = true;
+      if (this.mLK != null) {
+        this.mLK.ob = true;
       }
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.lDY.dismiss();
+        this.mLH.dismiss();
       }
     }
     AppMethodBeat.o(185901);
@@ -130,20 +118,32 @@ public final class b
     return i;
   }
   
+  public final boolean isLandscape()
+  {
+    AppMethodBeat.i(185902);
+    if (this.mContext.getResources().getConfiguration().orientation == 2)
+    {
+      AppMethodBeat.o(185902);
+      return true;
+    }
+    AppMethodBeat.o(185902);
+    return false;
+  }
+  
   public final void onGlobalLayout()
   {
     AppMethodBeat.i(185899);
     if (isShowing())
     {
-      View localView = this.qI;
+      View localView = this.qK;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bqD();
+        bMo();
         AppMethodBeat.o(185899);
         return;
       }
-      if ((isShowing()) && ((this.lEc != aoA()) || (this.lEd != getRotation()))) {
-        bqD();
+      if ((isShowing()) && ((this.mLL != isLandscape()) || (this.mLM != getRotation()))) {
+        bMo();
       }
     }
     AppMethodBeat.o(185899);
@@ -151,7 +151,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.b
  * JD-Core Version:    0.7.0.1
  */

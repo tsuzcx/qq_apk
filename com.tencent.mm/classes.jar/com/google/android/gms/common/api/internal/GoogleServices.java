@@ -37,7 +37,7 @@ public final class GoogleServices
   {
     AppMethodBeat.i(4492);
     Object localObject = paramContext.getResources();
-    int i = ((Resources)localObject).getIdentifier("google_app_measurement_enable", "integer", ((Resources)localObject).getResourcePackageName(2131757542));
+    int i = ((Resources)localObject).getIdentifier("google_app_measurement_enable", "integer", ((Resources)localObject).getResourcePackageName(2131757764));
     if (i != 0) {
       if (((Resources)localObject).getInteger(i) != 0)
       {
@@ -210,7 +210,7 @@ public final class GoogleServices
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.GoogleServices
  * JD-Core Version:    0.7.0.1
  */

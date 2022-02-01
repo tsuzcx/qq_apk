@@ -6,15 +6,15 @@ import java.util.HashMap;
 
 public final class b
 {
-  private final a<?>[] IFM;
-  private final HashMap<String, a<?>> IFN;
+  private final a<?>[] NME;
+  private final HashMap<String, a<?>> NMF;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(133216);
     paramContext = new c(paramContext);
-    this.IFM = new a[] { paramContext.IFO, paramContext.IFP };
-    this.IFN = new HashMap();
+    this.NME = new a[] { paramContext.NMG, paramContext.NMH };
+    this.NMF = new HashMap();
     AppMethodBeat.o(133216);
   }
   

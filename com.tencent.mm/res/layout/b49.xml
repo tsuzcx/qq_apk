@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<ScrollView android:orientation="vertical" android:background="@color/BW_97" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckedTextView android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/gh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/f31" android:singleLine="true" android:drawableLeft="?android:listChoiceIndicatorMultiple" />
-    <TextView android:id="@id/e3i" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/uw" style="@style/o6" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyEnvelopeTouchRecyclerView android:layout_gravity="center_vertical" android:id="@id/eov" android:visibility="visible" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:layout_centerVertical="true" android:overScrollMode="never" />
+        <Button android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/eot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="64.0dip" android:text="{领取并使用}" style="@style/oz" />
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/x3" android:layout_gravity="center_horizontal" android:id="@id/eou" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="16.0dip" android:text="" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/eos" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0dip" android:textColor="@color/fp" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="108.0dip" android:text="@string/er7" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

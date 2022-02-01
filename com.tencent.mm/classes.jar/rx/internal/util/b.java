@@ -8,17 +8,17 @@ public final class b
   extends AtomicLong
   implements f
 {
-  Throwable Nhi;
-  boolean OuF;
-  final a Oxj;
+  boolean Ukt;
+  final a UmX;
+  Throwable exception;
   public volatile boolean terminated;
   
   public b(a parama)
   {
-    this.Oxj = parama;
+    this.UmX = parama;
   }
   
-  public final void Gq(long paramLong)
+  public final void Pw(long paramLong)
   {
     AppMethodBeat.i(90200);
     if (paramLong == 0L)
@@ -69,12 +69,12 @@ public final class b
     }
   }
   
-  public final void Q(Throwable paramThrowable)
+  public final void S(Throwable paramThrowable)
   {
     AppMethodBeat.i(90199);
     if (!this.terminated)
     {
-      this.Nhi = paramThrowable;
+      this.exception = paramThrowable;
       this.terminated = true;
       drain();
     }
@@ -87,10 +87,10 @@ public final class b
     int k;
     try
     {
-      if (this.OuF) {
+      if (this.Ukt) {
         return;
       }
-      this.OuF = true;
+      this.Ukt = true;
       bool1 = this.terminated;
       l1 = get();
       k = 0;
@@ -104,7 +104,7 @@ public final class b
     }
     try
     {
-      locala = this.Oxj;
+      locala = this.UmX;
     }
     finally
     {
@@ -126,7 +126,7 @@ public final class b
       if (locala.peek() == null)
       {
         i = 1;
-        locala.O(this.Nhi);
+        locala.Q(this.exception);
         AppMethodBeat.o(90201);
         return;
       }
@@ -176,7 +176,7 @@ public final class b
       }
       try
       {
-        this.OuF = false;
+        this.Ukt = false;
         i = j;
         AppMethodBeat.o(90201);
         return;
@@ -209,7 +209,7 @@ public final class b
         if (i == 0) {}
         try
         {
-          this.OuF = false;
+          this.Ukt = false;
           throw localObject3;
         }
         finally
@@ -231,14 +231,14 @@ public final class b
     } while (i == 0);
     j = 1;
     i = j;
-    this.OuF = false;
+    this.Ukt = false;
     i = j;
     AppMethodBeat.o(90201);
   }
   
   public static abstract interface a
   {
-    public abstract void O(Throwable paramThrowable);
+    public abstract void Q(Throwable paramThrowable);
     
     public abstract boolean accept(Object paramObject);
     

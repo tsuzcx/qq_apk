@@ -3,91 +3,117 @@ package com.tencent.mm.plugin.finder.viewmodel.component;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.finder.extension.reddot.g.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.finder.extension.reddot.h;
+import com.tencent.mm.plugin.finder.extension.reddot.h.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.component.UIComponent;
-import d.g.b.p;
-import d.g.b.y.a;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.g.b.z.a;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "showBottomSheetRunnable", "Ljava/lang/Runnable;", "getShowBottomSheetRunnable", "()Ljava/lang/Runnable;", "setShowBottomSheetRunnable", "(Ljava/lang/Runnable;)V", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "showBottomSheet", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroid/support/v7/app/AppCompatActivity;", "(Landroid/support/v7/app/AppCompatActivity;)V", "showBottomSheetRunnable", "Ljava/lang/Runnable;", "getShowBottomSheetRunnable", "()Ljava/lang/Runnable;", "setShowBottomSheetRunnable", "(Ljava/lang/Runnable;)V", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "showBottomSheet", "Companion", "plugin-finder_release"})
 public final class FinderPostQualificationUIC
   extends UIComponent
 {
-  public static final FinderPostQualificationUIC.a tmZ;
-  Runnable tmY;
+  public static final a wyS;
+  Runnable wyR;
   
   static
   {
-    AppMethodBeat.i(206253);
-    tmZ = new FinderPostQualificationUIC.a((byte)0);
-    AppMethodBeat.o(206253);
+    AppMethodBeat.i(255861);
+    wyS = new a((byte)0);
+    AppMethodBeat.o(255861);
   }
   
-  public FinderPostQualificationUIC(MMActivity paramMMActivity)
+  public FinderPostQualificationUIC(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramMMActivity);
-    AppMethodBeat.i(206252);
-    AppMethodBeat.o(206252);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(255860);
+    AppMethodBeat.o(255860);
   }
   
   public final void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(206250);
+    AppMethodBeat.i(255858);
     super.onCreate(paramBundle);
-    paramBundle = new y.a();
-    Object localObject = com.tencent.mm.kernel.g.ajR();
+    paramBundle = new z.a();
+    Object localObject = g.aAh();
     p.g(localObject, "MMKernel.storage()");
-    localObject = ((e)localObject).ajA().get(am.a.Jdn, Boolean.FALSE);
+    localObject = ((e)localObject).azQ().get(ar.a.OmC, Boolean.FALSE);
     if (localObject == null)
     {
-      paramBundle = new v("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(206250);
+      paramBundle = new t("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(255858);
       throw paramBundle;
     }
-    paramBundle.NiT = ((Boolean)localObject).booleanValue();
-    if (!paramBundle.NiT)
+    paramBundle.SYB = ((Boolean)localObject).booleanValue();
+    if (!paramBundle.SYB)
     {
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.g.sbw;
-      com.tencent.mm.plugin.finder.extension.reddot.g.a(com.tencent.mm.plugin.finder.extension.reddot.g.cBz(), (LifecycleOwner)getActivity(), (Observer)new b(this, paramBundle));
+      localObject = h.tKR;
+      localObject = h.tKR;
+      h.a(h.daL(), (LifecycleOwner)getActivity(), (Observer)new b(this, paramBundle));
     }
-    AppMethodBeat.o(206250);
+    AppMethodBeat.o(255858);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(206251);
+    AppMethodBeat.i(255859);
     super.onResume();
-    if (this.tmY != null)
+    if (this.wyR != null)
     {
-      ae.i("Finder.PostQualityUIC", "showBottomSheet onResume");
-      Runnable localRunnable = this.tmY;
+      Log.i("Finder.PostQualityUIC", "showBottomSheet onResume");
+      Runnable localRunnable = this.wyR;
       if (localRunnable == null) {
-        p.gkB();
+        p.hyc();
       }
-      c.a(0L, localRunnable);
+      com.tencent.mm.ac.d.a(0L, localRunnable);
     }
-    AppMethodBeat.o(206251);
+    AppMethodBeat.o(255859);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
   static final class b<T>
-    implements Observer<g.a>
+    implements Observer<h.a>
   {
-    b(FinderPostQualificationUIC paramFinderPostQualificationUIC, y.a parama) {}
+    b(FinderPostQualificationUIC paramFinderPostQualificationUIC, z.a parama) {}
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC$showBottomSheet$1$1"})
+  static final class c
+    implements View.OnClickListener
+  {
+    c(com.tencent.mm.plugin.finder.view.d paramd) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(255857);
+      b localb = new b();
+      localb.bm(paramView);
+      a.b("com/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC$showBottomSheet$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      this.tOn.bMo();
+      a.a(this, "com/tencent/mm/plugin/finder/viewmodel/component/FinderPostQualificationUIC$showBottomSheet$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(255857);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderPostQualificationUIC
  * JD-Core Version:    0.7.0.1
  */

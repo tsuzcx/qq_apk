@@ -17,12 +17,12 @@ final class a$5
   {
     AppMethodBeat.i(71457);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.DDu.setVisibility(0);
-    this.DDv.setVisibility(8);
-    this.DDw.setText("");
-    this.DDt.setText("");
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.ImG.setVisibility(0);
+    this.ImH.setVisibility(8);
+    this.ImI.setText("");
+    this.ImF.setText("");
     a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(71457);
   }

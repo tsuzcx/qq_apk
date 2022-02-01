@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.m;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 final class LuggageLocalFileObjectManager$2
-  implements m
+  implements q
 {
   LuggageLocalFileObjectManager$2(LuggageLocalFileObjectManager paramLuggageLocalFileObjectManager) {}
   
-  public final boolean accept(k paramk)
+  public final boolean accept(o paramo)
   {
     AppMethodBeat.i(175589);
-    if ((paramk.exists()) && (!paramk.isDirectory()) && (!bu.isNullOrNil(paramk.getName())) && (paramk.getName().startsWith("tmp_")))
+    if ((paramo.exists()) && (!paramo.isDirectory()) && (!Util.isNullOrNil(paramo.getName())) && (paramo.getName().startsWith("tmp_")))
     {
       AppMethodBeat.o(175589);
       return true;
@@ -24,7 +24,7 @@ final class LuggageLocalFileObjectManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.LuggageLocalFileObjectManager.2
  * JD-Core Version:    0.7.0.1
  */

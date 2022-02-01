@@ -10,7 +10,7 @@ final class c
 {
   c(int paramInt, String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    super(b.cgr);
+    super(b.csm);
     AppMethodBeat.i(140315);
     HashMap localHashMap = new HashMap();
     localHashMap.put("callbackId", Integer.valueOf(paramInt));
@@ -21,7 +21,7 @@ final class c
       localHashMap.put("data", paramJSONObject);
     }
     localHashMap.put("keepCallback", Boolean.valueOf(paramBoolean));
-    j(localHashMap);
+    l(localHashMap);
     AppMethodBeat.o(140315);
   }
 }

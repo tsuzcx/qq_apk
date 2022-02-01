@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cx0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hb" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:text="@string/cyu" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ce" android:text="@string/cyt" android:layout_below="@id/ipm" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <CheckBox android:id="@id/eav" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" style="@style/m6" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/eax" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="@string/cte" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/Link" android:id="@id/eaw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cqu" />
+    </LinearLayout>
+</RelativeLayout>

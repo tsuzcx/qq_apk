@@ -9,18 +9,18 @@ import java.util.Locale;
 final class WalletBankCardSelectUI$a
   implements Comparator<d>
 {
-  private Collator DtP;
+  private Collator Idb;
   
   private WalletBankCardSelectUI$a()
   {
     AppMethodBeat.i(70697);
-    this.DtP = Collator.getInstance(Locale.getDefault());
+    this.Idb = Collator.getInstance(Locale.getDefault());
     AppMethodBeat.o(70697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletBankCardSelectUI.a
  * JD-Core Version:    0.7.0.1
  */

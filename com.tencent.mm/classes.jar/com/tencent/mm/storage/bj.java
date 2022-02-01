@@ -1,167 +1,201 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.emoji.b.j;
+import com.tencent.mm.g.a.rj;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.storage.emotion.b;
+import com.tencent.mm.storage.emotion.c;
+import com.tencent.mm.storage.emotion.f;
+import com.tencent.mm.storage.emotion.i;
+import com.tencent.mm.storage.emotion.k;
+import com.tencent.mm.storage.emotion.m;
+import com.tencent.mm.storage.emotion.o;
+import com.tencent.mm.storage.emotion.q;
+import com.tencent.mm.storage.emotion.s;
+import com.tencent.mm.storage.emotion.t;
+import com.tencent.mm.storage.emotion.u;
+import com.tencent.mm.storage.emotion.w;
+import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public final class bj
-  extends j<bi>
-  implements com.tencent.mm.plugin.messenger.foundation.a.a.e
 {
-  private static final String[] IJJ;
-  public static final String[] SQL_CREATE;
-  public com.tencent.mm.sdk.e.e db;
+  public static boolean Oqc;
+  private static ArrayList<EmojiGroupInfo> Oqd;
+  private static HashMap<String, ArrayList<EmojiInfo>> Oqe;
+  private static bj Oqh;
+  public static int eii;
+  public f OpN;
+  public c OpO;
+  public com.tencent.mm.storage.emotion.e OpP;
+  public s OpQ;
+  public m OpR;
+  public o OpS;
+  public k OpT;
+  public q OpU;
+  public t OpV;
+  public u OpW;
+  public i OpX;
+  public w OpY;
+  private b OpZ;
+  private com.tencent.mm.storage.emotion.g Oqa;
+  public j Oqb;
+  public final MStorage.IOnStorageChange Oqf;
+  public final MStorage.IOnStorageChange Oqg;
+  public final MStorage.IOnStorageChange wKf;
+  public final IListener wKg;
   
   static
   {
-    AppMethodBeat.i(117170);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bi.info, "fmessage_msginfo") };
-    IJJ = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageTalkerIndex ON fmessage_msginfo ( talker )" };
-    AppMethodBeat.o(117170);
+    AppMethodBeat.i(104977);
+    Oqc = false;
+    Oqd = new ArrayList();
+    Oqe = new HashMap();
+    eii = -1;
+    AppMethodBeat.o(104977);
   }
   
-  public bj(com.tencent.mm.sdk.e.e parame)
+  private bj()
   {
-    super(parame, bi.info, "fmessage_msginfo", IJJ);
-    this.db = parame;
+    AppMethodBeat.i(104971);
+    this.Oqf = new MStorage.IOnStorageChange()
+    {
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
+      {
+        AppMethodBeat.i(104966);
+        if ((!Util.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equals("event_update_group")))
+        {
+          Log.d("MicroMsg.emoji.EmojiStorageMgr", "onNotifyChange event:%s", new Object[] { (String)paramAnonymousMStorageEventData.obj });
+          if (!com.tencent.mm.kernel.g.aAf().azp())
+          {
+            AppMethodBeat.o(104966);
+            return;
+          }
+          ((d)com.tencent.mm.kernel.g.ah(d.class)).getEmojiDescMgr().gCG();
+        }
+        if ((!Util.isNullOrNil(paramAnonymousString)) && ((paramAnonymousString.equals("event_update_group")) || (paramAnonymousString.equalsIgnoreCase("productID"))))
+        {
+          Log.d("MicroMsg.emoji.EmojiStorageMgr", "modify emoji gorup .");
+          bj.Oqc = true;
+          bj.a(bj.this).dX(true);
+        }
+        AppMethodBeat.o(104966);
+      }
+    };
+    this.Oqg = new MStorage.IOnStorageChange()
+    {
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
+      {
+        AppMethodBeat.i(104967);
+        ((d)com.tencent.mm.kernel.g.ah(d.class)).getEmojiDescMgr().gCG();
+        AppMethodBeat.o(104967);
+      }
+    };
+    this.wKf = new MStorage.IOnStorageChange()
+    {
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
+      {
+        AppMethodBeat.i(104968);
+        if (paramAnonymousString == null)
+        {
+          AppMethodBeat.o(104968);
+          return;
+        }
+        bj.a(bj.this).dV(true);
+        bj.a(bj.this).dW(true);
+        bj.a(bj.this).dY(true);
+        AppMethodBeat.o(104968);
+      }
+    };
+    this.wKg = new IListener() {};
+    Log.i("MicroMsg.emoji.EmojiStorageMgr", "EmojiStorageMgr: %s", new Object[] { Util.getStack() });
+    AppMethodBeat.o(104971);
   }
   
-  public final bi[] aVw(String paramString)
+  public static bj gCJ()
   {
-    AppMethodBeat.i(117162);
-    ae.d("MicroMsg.FMessageMsgInfoStorage", "getLastFMessageMsgInfo");
-    paramString = "select *, rowid from fmessage_msginfo  where talker = '" + bu.aSk(paramString) + "' order by createTime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
+    try
     {
-      bi localbi = new bi();
-      localbi.convertFrom(paramString);
-      localArrayList.add(localbi);
+      AppMethodBeat.i(104970);
+      if (Oqh == null)
+      {
+        localbj = new bj();
+        Oqh = localbj;
+        Log.i("MicroMsg.emoji.EmojiStorageMgr", "checkInitStorage: ");
+        if (localbj.OpN == null) {
+          localbj.gCK();
+        }
+      }
+      bj localbj = Oqh;
+      AppMethodBeat.o(104970);
+      return localbj;
     }
-    paramString.close();
-    paramString = (bi[])localArrayList.toArray(new bi[localArrayList.size()]);
-    AppMethodBeat.o(117162);
-    return paramString;
+    finally {}
   }
   
-  public final bi aVx(String paramString)
+  public final f cgN()
   {
-    AppMethodBeat.i(117164);
-    paramString = gx(paramString, 1);
-    if ((paramString != null) && (paramString.length > 0))
-    {
-      paramString = paramString[0];
-      AppMethodBeat.o(117164);
-      return paramString;
-    }
-    AppMethodBeat.o(117164);
-    return null;
+    return this.OpN;
   }
   
-  public final bi aqR(String paramString)
+  public final void gCK()
   {
-    AppMethodBeat.i(117163);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ae.e("MicroMsg.FMessageMsgInfoStorage", "getLastFMsg fail, talker is null");
-      AppMethodBeat.o(117163);
-      return null;
+    AppMethodBeat.i(104972);
+    Log.i("MicroMsg.emoji.EmojiStorageMgr", "initStorage: ");
+    if ((com.tencent.mm.kernel.g.aAh().hqK == null) || (!com.tencent.mm.kernel.g.aAh().hqK.isOpen())) {
+      Log.w("MicroMsg.emoji.EmojiStorageMgr", "initStorage: db close %s", new Object[] { com.tencent.mm.kernel.g.aAh().hqK });
     }
-    paramString = "select * from fmessage_msginfo where talker = '" + bu.aSk(paramString) + "' order by createTime DESC limit 1";
-    paramString = this.db.a(paramString, null, 2);
-    bi localbi = new bi();
-    if (paramString.moveToFirst()) {
-      localbi.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(117163);
-    return localbi;
+    this.OpN = new f(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpO = new c(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpP = new com.tencent.mm.storage.emotion.e(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpR = new m(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpS = new o(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpT = new k(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpQ = new s(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpU = new q(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpV = new t(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpW = new u(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpX = new i(com.tencent.mm.kernel.g.aAh().hqK);
+    this.OpY = new w();
+    this.OpZ = new b(com.tencent.mm.kernel.g.aAh().hqK);
+    this.Oqa = new com.tencent.mm.storage.emotion.g(com.tencent.mm.kernel.g.aAh().hqK);
+    this.Oqb = j.auL();
+    AppMethodBeat.o(104972);
   }
   
-  public final boolean aqS(String paramString)
+  public final m gCL()
   {
-    AppMethodBeat.i(117168);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ae.e("MicroMsg.FMessageMsgInfoStorage", "deleteByTalker fail, talker is null");
-      AppMethodBeat.o(117168);
-      return false;
-    }
-    paramString = "delete from fmessage_msginfo where talker = '" + bu.aSk(paramString) + "'";
-    boolean bool = this.db.execSQL("fmessage_msginfo", paramString);
-    AppMethodBeat.o(117168);
-    return bool;
+    return this.OpR;
   }
   
-  public final boolean b(bi parambi)
+  public final s gCM()
   {
-    AppMethodBeat.i(117166);
-    if (parambi == null)
-    {
-      ae.e("MicroMsg.FMessageMsgInfoStorage", "insert fail, fmsgInfo is null");
-      AppMethodBeat.o(117166);
-      return false;
-    }
-    if (super.insert(parambi))
-    {
-      doNotify(parambi.systemRowid);
-      AppMethodBeat.o(117166);
-      return true;
-    }
-    AppMethodBeat.o(117166);
-    return false;
+    return this.OpQ;
   }
   
-  public final List<bi> doO()
+  public final b gCN()
   {
-    AppMethodBeat.i(117167);
-    ae.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, type = 0");
-    ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = this.db.a("select *, rowid from fmessage_msginfo where type = 0", null, 2);
-    while (localCursor.moveToNext())
-    {
-      bi localbi = new bi();
-      localbi.convertFrom(localCursor);
-      localArrayList.add(localbi);
-    }
-    localCursor.close();
-    ae.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, size = " + localArrayList.size());
-    AppMethodBeat.o(117167);
-    return localArrayList;
+    return this.OpZ;
   }
   
-  public final bi[] gx(String paramString, int paramInt)
+  public final com.tencent.mm.storage.emotion.g gCO()
   {
-    AppMethodBeat.i(117165);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ae.e("MicroMsg.FMessageMsgInfoStorage", "getLastRecvFMsg fail, talker is null");
-      AppMethodBeat.o(117165);
-      return null;
-    }
-    paramString = "select * from fmessage_msginfo where isSend != 1 and talker = '" + bu.aSk(paramString) + "' order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bi localbi = new bi();
-      localbi.convertFrom(paramString);
-      localArrayList.add(localbi);
-    }
-    paramString.close();
-    paramString = (bi[])localArrayList.toArray(new bi[localArrayList.size()]);
-    AppMethodBeat.o(117165);
-    return paramString;
+    return this.Oqa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.bj
  * JD-Core Version:    0.7.0.1
  */

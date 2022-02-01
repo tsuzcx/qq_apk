@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class cj
-  extends b
+  extends IEvent
 {
-  public a dor;
+  public a dFB;
+  public b dFC;
   
   public cj()
   {
@@ -15,21 +17,29 @@ public final class cj
   
   private cj(byte paramByte)
   {
-    AppMethodBeat.i(91202);
-    this.dor = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(149859);
+    this.dFB = new a();
+    this.dFC = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91202);
+    AppMethodBeat.o(149859);
   }
   
   public static final class a
   {
-    public int bZU = 0;
+    public Context context;
+    public String dFD;
+    public String username;
+  }
+  
+  public static final class b
+  {
+    public boolean dFE = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.cj
  * JD-Core Version:    0.7.0.1
  */

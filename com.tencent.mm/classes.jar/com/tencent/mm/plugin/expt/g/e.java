@@ -1,93 +1,97 @@
 package com.tencent.mm.plugin.expt.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.dt;
+import com.tencent.mm.g.b.a.gw;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.expt.b.e.a;
+import com.tencent.mm.plugin.expt.d.b;
 import com.tencent.mm.plugin.expt.d.d.a.2;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
+import org.apache.commons.b.g;
 
 public final class e
 {
-  private static e riS;
+  private static e sKu;
   
-  private static ay LD()
+  private static MultiProcessMMKV VQ()
   {
     AppMethodBeat.i(122392);
-    int i = com.tencent.mm.kernel.a.ajc();
+    int i = com.tencent.mm.kernel.a.azs();
     if (i == 0)
     {
       AppMethodBeat.o(122392);
       return null;
     }
-    ay localay = ay.aRW(i + "_WxPageFlowMerge");
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(i + "_WxPageFlowMerge");
     AppMethodBeat.o(122392);
-    return localay;
+    return localMultiProcessMMKV;
   }
   
-  private void a(b.a parama, dt paramdt)
+  private void a(b.a parama, gw paramgw)
   {
     AppMethodBeat.i(122391);
-    if (!ak.cpe())
+    if (!MMApplicationContext.isMMProcess())
     {
       AppMethodBeat.o(122391);
       return;
     }
-    long l1 = bu.HQ();
+    long l1 = Util.currentTicks();
     int i = a.b(parama);
     if (i <= 0)
     {
       AppMethodBeat.o(122391);
       return;
     }
-    ay localay = LD();
-    if (localay == null)
+    MultiProcessMMKV localMultiProcessMMKV = VQ();
+    if (localMultiProcessMMKV == null)
     {
       AppMethodBeat.o(122391);
       return;
     }
-    String str = localay.getString(parama.name(), "");
-    str = str + "|" + paramdt.ny(";");
-    long l2 = localay.getLong(parama.name() + "_rpttime", 0L);
-    if (((str.length() >= i) || (bu.rZ(l2) > 3600L)) && (paramdt.dZW % 2L == 0L))
+    String str = localMultiProcessMMKV.getString(parama.name(), "");
+    str = str + "|" + paramgw.uL(";");
+    long l2 = localMultiProcessMMKV.getLong(parama.name() + "_rpttime", 0L);
+    if (((str.length() >= i) || (Util.secondsToNow(l2) > 3600L)) && (paramgw.erY % 2L == 0L))
     {
-      localay.putLong(parama.name() + "_rpttime", bu.aRi());
-      localay.putString(parama.name(), "");
-      com.tencent.mm.plugin.report.service.g.yxI.kvStat(16562, str);
-      if (parama == b.a.qBz) {
-        agw(str);
+      localMultiProcessMMKV.putLong(parama.name() + "_rpttime", Util.nowSecond());
+      localMultiProcessMMKV.putString(parama.name(), "");
+      h.CyF.kvStat(16562, str);
+      if (parama == b.a.rUj) {
+        arh(str);
       }
     }
     for (;;)
     {
-      ae.v("MicroMsg.MMPageReporter", "handle merge cost[%d]", new Object[] { Long.valueOf(bu.aO(l1)) });
+      Log.v("MicroMsg.MMPageReporter", "handle merge cost[%d]", new Object[] { Long.valueOf(Util.ticksToNow(l1)) });
       AppMethodBeat.o(122391);
       return;
-      localay.putString(parama.name(), str);
+      localMultiProcessMMKV.putString(parama.name(), str);
     }
   }
   
-  private void agw(final String paramString)
+  private void arh(final String paramString)
   {
     AppMethodBeat.i(122393);
-    com.tencent.mm.sdk.g.b.c(new Runnable()
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(122387);
         Object localObject1 = e.this;
         localObject2 = paramString;
-        if (!bu.isNullOrNil((String)localObject2))
+        if (!Util.isNullOrNil((String)localObject2))
         {
-          long l2 = bu.HQ();
+          long l2 = Util.currentTicks();
           Object localObject3 = ((String)localObject2).split("\\|");
           localObject2 = new ArrayList();
           j = localObject3.length;
@@ -96,10 +100,10 @@ public final class e
           while (i < j)
           {
             localObject4 = localObject3[i];
-            if (!bu.isNullOrNil((String)localObject4))
+            if (!Util.isNullOrNil((String)localObject4))
             {
-              localObject4 = new dt(((String)localObject4).replace(';', ','));
-              if ((((dt)localObject4).efZ > 0L) && (((dt)localObject4).dZW > 0L)) {
+              localObject4 = new gw(((String)localObject4).replace(';', ','));
+              if ((((gw)localObject4).eHw > 0L) && (((gw)localObject4).erY > 0L)) {
                 ((List)localObject2).add(localObject4);
               }
             }
@@ -128,28 +132,28 @@ public final class e
               {
                 int k;
                 i = j;
-                ae.printErrStackTrace("MicroMsg.MMPageReporter", localException1, "reportWeixinAppTime error", new Object[0]);
+                Log.printErrStackTrace("MicroMsg.MMPageReporter", localException1, "reportWeixinAppTime error", new Object[0]);
                 continue;
                 l1 = System.currentTimeMillis();
-                ((com.tencent.mm.plugin.expt.d.d.a)localObject2).qXo.execute(new a.2((com.tencent.mm.plugin.expt.d.d.a)localObject2, l1, localException1));
+                ((com.tencent.mm.plugin.expt.d.d.a)localObject2).sxy.execute(new a.2((com.tencent.mm.plugin.expt.d.d.a)localObject2, l1, localException1));
                 continue;
               }
               try
               {
-                localObject4 = (dt)((List)localObject2).get(j);
+                localObject4 = (gw)((List)localObject2).get(j);
                 if (j + 1 < k) {
-                  localObject1 = (dt)((List)localObject2).get(j + 1);
+                  localObject1 = (gw)((List)localObject2).get(j + 1);
                 }
                 if ((localObject4 == null) || (localObject1 == null)) {
                   break label678;
                 }
-                if ((((dt)localObject4).dZW != 7L) || (((dt)localObject1).dZW != 8L) || (((dt)localObject4).efZ >= ((dt)localObject1).efZ) || (((dt)localObject4).dYC != ((dt)localObject1).dYC)) {
+                if ((((gw)localObject4).erY != 7L) || (((gw)localObject1).erY != 8L) || (((gw)localObject4).eHw >= ((gw)localObject1).eHw) || (((gw)localObject4).euv != ((gw)localObject1).euv)) {
                   continue;
                 }
                 if (l1 <= 0L) {
                   break label681;
                 }
-                l1 = ((dt)localObject4).efZ - l1;
+                l1 = ((gw)localObject4).eHw - l1;
               }
               catch (Exception localException2)
               {
@@ -158,43 +162,43 @@ public final class e
                 l1 = 0L;
                 continue;
               }
-              ((StringBuffer)localObject3).append(String.format("{\"tbe\":%d.\"ten\":%d.\"in\":%d.\"inbg\":%d}", new Object[] { Long.valueOf(((dt)localObject4).efZ), Long.valueOf(((dt)localObject1).efZ), Long.valueOf(((dt)localObject1).efZ - ((dt)localObject4).efZ), Long.valueOf(l1) })).append(";");
-              l1 = ((dt)localObject1).efZ;
+              ((StringBuffer)localObject3).append(String.format("{\"tbe\":%d.\"ten\":%d.\"in\":%d.\"inbg\":%d}", new Object[] { Long.valueOf(((gw)localObject4).eHw), Long.valueOf(((gw)localObject1).eHw), Long.valueOf(((gw)localObject1).eHw - ((gw)localObject4).eHw), Long.valueOf(l1) })).append(";");
+              l1 = ((gw)localObject1).eHw;
               i += 1;
               j += 2;
               continue;
-              if (((dt)localObject4).dZW != 8L) {
+              if (((gw)localObject4).erY != 8L) {
                 break label678;
               }
-              l1 = ((dt)localObject4).efZ;
+              l1 = ((gw)localObject4).eHw;
               j += 1;
             }
           }
           localObject3 = ((StringBuffer)localObject3).toString();
-          if (!bu.isNullOrNil((String)localObject3))
+          if (!Util.isNullOrNil((String)localObject3))
           {
             localObject2 = ((String)localObject3).replace(".", ",").replace(";", ",");
             localObject1 = localObject2;
-            if (org.apache.commons.b.g.equals(((String)localObject2).substring(((String)localObject2).length() - 1), ",")) {
+            if (g.equals(((String)localObject2).substring(((String)localObject2).length() - 1), ",")) {
               localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
             }
             localObject1 = "[" + (String)localObject1 + "]";
-            localObject2 = com.tencent.mm.plugin.expt.d.a.cow().qXi;
-            if (com.tencent.mm.plugin.expt.d.b.coz())
+            localObject2 = com.tencent.mm.plugin.expt.d.a.cMI().sxs;
+            if (b.cML())
             {
-              if (org.apache.commons.b.g.ef((String)localObject1)) {
-                ae.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendForeBack data isEmpty!");
+              if (g.eP((String)localObject1)) {
+                Log.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendForeBack data isEmpty!");
               }
             }
             else
             {
-              com.tencent.mm.plugin.report.service.g.yxI.f(16563, new Object[] { localObject3, Long.valueOf(bu.aO(l2)), Integer.valueOf(i) });
-              ae.i("MicroMsg.MMPageReporter", "reportWeixinAppTime [%s]", new Object[] { localObject3 });
+              h.CyF.a(16563, new Object[] { localObject3, Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(i) });
+              Log.i("MicroMsg.MMPageReporter", "reportWeixinAppTime [%s]", new Object[] { localObject3 });
             }
           }
           else
           {
-            ae.i("MicroMsg.MMPageReporter", "reportWeixinAppTime cost[%d] count[%d]", new Object[] { Long.valueOf(bu.aO(l2)), Integer.valueOf(i) });
+            Log.i("MicroMsg.MMPageReporter", "reportWeixinAppTime cost[%d] count[%d]", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(i) });
           }
         }
         else
@@ -207,45 +211,45 @@ public final class e
     AppMethodBeat.o(122393);
   }
   
-  public static e csR()
+  public static e cRy()
   {
     AppMethodBeat.i(122389);
-    if (riS == null) {
-      riS = new e();
+    if (sKu == null) {
+      sKu = new e();
     }
-    e locale = riS;
+    e locale = sKu;
     AppMethodBeat.o(122389);
     return locale;
   }
   
-  public final void a(dt paramdt)
+  public final void a(gw paramgw)
   {
     AppMethodBeat.i(122390);
-    if (paramdt == null)
+    if (paramgw == null)
     {
       AppMethodBeat.o(122390);
       return;
     }
-    int i = (int)paramdt.dZW;
-    if ((i == e.a.qWW.value) || (i == e.a.qWX.value))
+    int i = (int)paramgw.erY;
+    if ((i == e.a.sxa.value) || (i == e.a.sxb.value))
     {
-      a(b.a.qBx, paramdt);
-      if (a.csJ()) {
-        paramdt.aLH();
+      a(b.a.rUh, paramgw);
+      if (a.cRq()) {
+        paramgw.bfK();
       }
     }
-    if ((i == e.a.qWY.value) || (i == e.a.qWZ.value))
+    if ((i == e.a.sxc.value) || (i == e.a.sxd.value))
     {
-      a(b.a.qBy, paramdt);
-      if (a.csK()) {
-        paramdt.aLH();
+      a(b.a.rUi, paramgw);
+      if (a.cRr()) {
+        paramgw.bfK();
       }
     }
-    if (((i == e.a.qXc.value) || (i == e.a.qXd.value)) && (com.tencent.mm.plugin.expt.hellhound.a.coV()) && (com.tencent.mm.plugin.expt.hellhound.a.coW()))
+    if (((i == e.a.sxg.value) || (i == e.a.sxh.value)) && (com.tencent.mm.plugin.expt.hellhound.a.cNo()) && (com.tencent.mm.plugin.expt.hellhound.a.cNp()))
     {
-      a(b.a.qBz, paramdt);
-      if (a.csL()) {
-        paramdt.aLH();
+      a(b.a.rUj, paramgw);
+      if (a.cRs()) {
+        paramgw.bfK();
       }
     }
     AppMethodBeat.o(122390);

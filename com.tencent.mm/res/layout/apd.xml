@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="left" android:id="@id/dpa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/b8" android:layout_weight="1.0">
-        <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/cox" android:background="@null" android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" android:layout_marginRight="@dimen/c5" />
-        <LinearLayout android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/gbk" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center|left" android:orientation="vertical" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/b8" android:layout_weight="1.0">
-                <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <TextView android:ellipsize="end" android:id="@android:id/title" android:layout_marginRight="@dimen/jn" android:singleLine="true" style="@style/yo" />
-                    <TextView android:id="@id/g7d" android:background="@null" android:visibility="gone" android:text="@string/uv" style="@style/yi" />
-                    <ImageView android:id="@id/g79" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afx" />
-                </LinearLayout>
-                <TextView android:gravity="left" android:id="@id/b__" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/bq" style="@style/le" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/b_" android:ellipsize="end" android:id="@id/g7f" android:background="@null" android:visibility="gone" android:maxWidth="180.0dip" android:singleLine="true" style="@style/qq" />
-            <RelativeLayout android:id="@id/f2p" android:background="@null" android:layout_width="@dimen/jf" android:layout_height="@dimen/jf">
-                <ImageView android:id="@id/cpc" android:visibility="gone" android:layout_width="@dimen/hz" android:layout_height="@dimen/hz" android:src="@raw/default_avatar" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-                <ImageView android:gravity="center" android:id="@id/f2o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:layout_marginRight="-4.0dip" android:src="@drawable/afx" android:layout_alignTop="@id/cpc" android:layout_alignRight="@id/cpc" />
-            </RelativeLayout>
-            <ImageView android:gravity="center" android:id="@id/f2f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afx" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/b_" android:ellipsize="end" android:id="@id/g7e" android:background="@null" android:visibility="gone" android:maxWidth="130.0dip" android:singleLine="true" style="@style/qq" />
-            <TextView android:id="@android:id/summary" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i0" android:paddingBottom="@dimen/jn" android:singleLine="true" style="@style/lz" />
-        </LinearLayout>
-    </LinearLayout>
+    <com.tencent.mm.plugin.game.ui.GameInfoViewForeign android:id="@id/ddd" android:background="@drawable/a5n" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/fmh" android:layout_width="34.0dip" android:layout_height="36.0dip" android:layout_marginRight="@dimen/g">
+            <ImageView android:id="@id/fmg" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/bea" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/ag2" android:gravity="center" android:id="@id/dht" android:background="@drawable/b16" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/fn2" android:layout_width="wrap_content" android:layout_height="28.0dip" android:text="@string/drk" android:layout_toRightOf="@id/fmh" android:layout_alignBottom="@id/fmh" android:layout_toEndOf="@id/fmh" />
+    </com.tencent.mm.plugin.game.ui.GameInfoViewForeign>
 </LinearLayout>

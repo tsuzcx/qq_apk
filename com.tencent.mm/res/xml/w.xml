@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/awl" />
+    <com.tencent.mm.plugin.profile.ui.NormalProfileHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/y4" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_go_to_downloader" android:layout="@layout/aop" android:title="@string/bhe" />
-    <Preference android:key="contact_info_downloader_manager" android:layout="@layout/aop" android:title="@string/bhc" />
-    <Preference android:key="contact_info_common_problem" android:layout="@layout/aop" android:title="@string/bhb" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_signature" android:layout="@layout/b8j" android:title="@string/bfk" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="contact_info_top_downloader" android:layout="@layout/aop" android:persistent="false" android:title="@string/bhi" />
-    <CheckBoxPreference android:key="contact_info_not_disturb" android:layout="@layout/aop" android:persistent="false" android:title="@string/bhg" />
-    <Preference android:key="contact_info_clear_data" android:layout="@layout/aop" android:title="@string/b55" />
-    <PreferenceSmallCategory />
-    <Preference android:key="contact_info_downloader_install" android:layout="@layout/ag2" android:title="@string/f9r" />
-    <Preference android:key="contact_info_downloader_uninstall" android:layout="@layout/ajc" android:title="@string/f9x" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/bf3" android:key="contact_profile_say_hi" android:layout="@layout/b8j" android:title_color="@color/afp" />
     <PreferenceCategory />
+    <com.tencent.mm.plugin.profile.ui.MultiButtonPreference android:key="contact_profile_multi_button" />
 </PreferenceScreen>

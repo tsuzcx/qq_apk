@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/go"
+<LinearLayout android:orientation="vertical" android:id="@id/hq7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/k5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/o5" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
-        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <RelativeLayout android:orientation="horizontal" android:id="@id/al8" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom android:id="@id/alb" android:layout_marginLeft="@dimen/a0u" android:layout_marginRight="@dimen/a0u" style="@style/hu" />
-            <ProgressBar android:id="@id/alj" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:indeterminateDrawable="@drawable/a7h" android:layout_centerInParent="true" />
-            <TextView android:textSize="@dimen/k4" android:textColor="@color/a_u" android:gravity="right" android:id="@id/any" android:background="@drawable/emoji_app_msg_mask" android:padding="@dimen/js" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="@color/k8" android:layout_alignLeft="@id/alb" android:layout_alignRight="@id/alb" android:layout_alignBottom="@id/alb" />
-            <ImageView android:id="@id/ao2" android:background="@null" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:src="@drawable/emoji_download_btn" android:layout_centerInParent="true" />
-        </RelativeLayout>
+    <RelativeLayout android:id="@id/hq9" android:layout_width="fill_parent" android:layout_height="57.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/hq8" android:background="@drawable/c1u" android:layout_width="fill_parent" android:layout_height="57.0dip" android:layout_centerInParent="true">
+            <ImageView android:id="@id/hq1" android:visibility="visible" android:layout_width="@dimen/w0" android:layout_height="@dimen/w0" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ib" android:src="@raw/actionbar_particular_icon" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/hm" android:ellipsize="end" android:gravity="left" android:id="@id/hq2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/hm" android:ellipsize="end" android:gravity="center" android:id="@id/hq4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:id="@id/hq3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i1" android:src="@drawable/c2_" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:id="@id/akq" android:background="@drawable/rc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ib" android:layout_marginRight="@dimen/ib" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/hq8" android:layerType="software" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/hq5" android:background="@drawable/c1t" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.MMSmoothHorizontalScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" android:overScrollMode="never">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hq6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.tencent.mm.ui.base.MMSmoothHorizontalScrollView>
     </LinearLayout>
 </LinearLayout>

@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.FileStructStat;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.appstorage.x;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,65 +27,65 @@ final class bf
     return paramMap;
   }
   
-  private static i.a g(c paramc, String paramString)
+  private static i.a g(f paramf, String paramString)
   {
     AppMethodBeat.i(128927);
     Object localObject = new LinkedList();
-    paramc = paramc.Fl().g(paramString, (List)localObject);
-    switch (1.kQn[paramc.ordinal()])
+    paramf = paramf.getFileSystem().h(paramString, (List)localObject);
+    switch (1.lVs[paramf.ordinal()])
     {
     default: 
-      paramc = new i.a("fail " + paramc.name(), new Object[0]);
+      paramf = new i.a("fail " + paramf.name(), new Object[0]);
       AppMethodBeat.o(128927);
-      return paramc;
+      return paramf;
     }
-    paramc = new i.a("ok", new Object[0]);
+    paramf = new i.a("ok", new Object[0]);
     paramString = ((List)localObject).iterator();
     while (paramString.hasNext())
     {
       localObject = (x)paramString.next();
-      paramc.q(((x)localObject).jQx, a((FileStructStat)localObject, new HashMap()));
+      paramf.q(((x)localObject).kTh, a((FileStructStat)localObject, new HashMap()));
     }
     AppMethodBeat.o(128927);
-    return paramc;
+    return paramf;
   }
   
-  final i.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  final i.a a(f paramf, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(128926);
     boolean bool = paramJSONObject.optBoolean("recursive", false);
     paramJSONObject = new FileStructStat();
-    m localm = paramc.Fl().a(paramString, paramJSONObject);
-    switch (1.kQn[localm.ordinal()])
+    m localm = paramf.getFileSystem().a(paramString, paramJSONObject);
+    switch (1.lVs[localm.ordinal()])
     {
     default: 
-      paramc = new i.a("fail " + localm.name(), new Object[0]);
+      paramf = new i.a("fail " + localm.name(), new Object[0]);
       AppMethodBeat.o(128926);
-      return paramc;
+      return paramf;
     case 1: 
       if ((!paramJSONObject.isDirectory()) || (!bool))
       {
-        paramc = new i.a("ok", new Object[0]).K(a(paramJSONObject, new HashMap()));
+        paramf = new i.a("ok", new Object[0]).N(a(paramJSONObject, new HashMap()));
         AppMethodBeat.o(128926);
-        return paramc;
+        return paramf;
       }
-      paramc = g(paramc, paramString);
+      paramf = g(paramf, paramString);
       AppMethodBeat.o(128926);
-      return paramc;
+      return paramf;
     case 2: 
     case 3: 
-      paramc = new i.a("fail no such file or directory \"%s\"", new Object[] { paramString });
+      paramf = new i.a("fail no such file or directory \"%s\"", new Object[] { paramString });
       AppMethodBeat.o(128926);
-      return paramc;
+      return paramf;
     }
-    paramc = new i.a("fail permission denied, open \"%s\"", new Object[] { paramString });
+    paramf = new i.a("fail permission denied, open \"%s\"", new Object[] { paramString });
     AppMethodBeat.o(128926);
-    return paramc;
+    return paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.bf
  * JD-Core Version:    0.7.0.1
  */

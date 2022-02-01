@@ -5,47 +5,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends com.tencent.mm.bw.a
 {
-  public String prF;
-  public String uds;
+  public String qHk;
   public int width;
+  public String xve;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(40879);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.prF != null) {
-        paramVarArgs.d(1, this.prF);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.qHk != null) {
+        paramVarArgs.e(1, this.qHk);
       }
-      if (this.uds != null) {
-        paramVarArgs.d(2, this.uds);
+      if (this.xve != null) {
+        paramVarArgs.e(2, this.xve);
       }
-      paramVarArgs.aS(3, this.width);
+      paramVarArgs.aM(3, this.width);
       AppMethodBeat.o(40879);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.prF == null) {
+      if (this.qHk == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.prF) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.qHk) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.uds != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.uds);
+      if (this.xve != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.xve);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.width);
+      paramInt = g.a.a.b.b.a.bu(3, this.width);
       AppMethodBeat.o(40879);
       return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(40879);
@@ -53,7 +53,7 @@ public final class l
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         l locall = (l)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -61,15 +61,15 @@ public final class l
           AppMethodBeat.o(40879);
           return -1;
         case 1: 
-          locall.prF = locala.OmT.readString();
+          locall.qHk = locala.UbS.readString();
           AppMethodBeat.o(40879);
           return 0;
         case 2: 
-          locall.uds = locala.OmT.readString();
+          locall.xve = locala.UbS.readString();
           AppMethodBeat.o(40879);
           return 0;
         }
-        locall.width = locala.OmT.zc();
+        locall.width = locala.UbS.zi();
         AppMethodBeat.o(40879);
         return 0;
       }

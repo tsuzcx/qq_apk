@@ -15,7 +15,7 @@ public class e
   
   public boolean a(final Runnable paramRunnable)
   {
-    AppMethodBeat.i(221382);
+    AppMethodBeat.i(222120);
     final CountDownLatch localCountDownLatch = new CountDownLatch(1);
     boolean bool = post(new Runnable()
     {
@@ -31,7 +31,7 @@ public class e
     try
     {
       localCountDownLatch.await();
-      AppMethodBeat.o(221382);
+      AppMethodBeat.o(222120);
       return bool;
     }
     catch (InterruptedException paramRunnable)
@@ -45,7 +45,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.util.e
  * JD-Core Version:    0.7.0.1
  */

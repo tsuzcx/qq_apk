@@ -1,83 +1,76 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.v;
-import com.tencent.mm.protocal.protobuf.w;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.r;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
-  extends n
-  implements k
+  extends com.tencent.mm.ak.q
+  implements m, com.tencent.mm.wallet_core.c.j
 {
-  private f callback;
-  private b gRX;
-  private v iWr;
-  public w iWs;
+  private i callback;
+  private d hJu;
+  private com.tencent.mm.protocal.protobuf.q jTm;
+  public r jTn;
   
-  public j(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
+  public j(String paramString1, long paramLong, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(63391);
-    b.a locala = new b.a();
-    locala.hQF = new v();
-    locala.hQG = new w();
-    locala.funcId = 1695;
-    locala.uri = "/cgi-bin/mmpay-bin/newaaquerydetail";
-    locala.hQH = 0;
+    AppMethodBeat.i(212948);
+    d.a locala = new d.a();
+    locala.iLN = new com.tencent.mm.protocal.protobuf.q();
+    locala.iLO = new r();
+    locala.funcId = 1629;
+    locala.uri = "/cgi-bin/mmpay-bin/newaapay";
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.gRX = locala.aDS();
-    this.iWr = ((v)this.gRX.hQD.hQJ);
-    this.iWr.FIe = paramString1;
-    this.iWr.scene = paramInt1;
-    this.iWr.FIf = paramString2;
-    if (paramInt1 == 5)
-    {
-      ae.i("MicroMsg.NetSceneAAQueryDetail", "set sign and ver");
-      this.iWr.sign = paramString3;
-      this.iWr.ver = paramInt2;
-    }
-    ae.i("MicroMsg.NetSceneAAQueryDetail", "NetSceneAAQueryDetail, billNo: %s, scene: %s, groupId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2 });
-    AppMethodBeat.o(63391);
+    this.hJu = locala.aXF();
+    this.jTm = ((com.tencent.mm.protocal.protobuf.q)this.hJu.iLK.iLR);
+    this.jTm.KBs = paramString1;
+    this.jTm.KBK = paramLong;
+    this.jTm.scene = paramInt;
+    this.jTm.KBt = paramString2;
+    this.jTm.KBL = paramString3;
+    Log.i("MicroMsg.NetSceneAAPay", "NetSceneAAPay, bill_no: %s, pay_amount: %s, scene: %s, groupid: %s", new Object[] { this.jTm.KBs, Long.valueOf(this.jTm.KBK), Integer.valueOf(this.jTm.scene), this.jTm.KBt });
+    AppMethodBeat.o(212948);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(63393);
-    ae.i("MicroMsg.NetSceneAAQueryDetail", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
-    AppMethodBeat.o(63393);
+    AppMethodBeat.i(63389);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
+    AppMethodBeat.o(63389);
     return i;
   }
   
   public final int getType()
   {
-    return 1695;
+    return 1629;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(63392);
-    ae.i("MicroMsg.NetSceneAAQueryDetail", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.iWs = ((w)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneAAQueryDetail", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.iWs.dmy), this.iWs.phe });
+    AppMethodBeat.i(63390);
+    Log.i("MicroMsg.NetSceneAAPay", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.jTn = ((r)((d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneAAPay", "retcode: %s, retmsg: %s, paymsgid:%s", new Object[] { Integer.valueOf(this.jTn.dDN), this.jTn.qwn, this.jTn.dXf });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(63392);
+    AppMethodBeat.o(63390);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.cgi.j
  * JD-Core Version:    0.7.0.1
  */

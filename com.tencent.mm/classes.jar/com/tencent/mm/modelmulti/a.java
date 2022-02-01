@@ -7,107 +7,113 @@ import com.tencent.mm.aj.i;
 import com.tencent.mm.aj.j;
 import com.tencent.mm.al.ag;
 import com.tencent.mm.api.c.b;
-import com.tencent.mm.g.a.pk;
-import com.tencent.mm.g.a.sc;
-import com.tencent.mm.g.a.tz;
-import com.tencent.mm.g.a.wm;
-import com.tencent.mm.g.a.xl;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.v;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.g.a.qc;
+import com.tencent.mm.g.a.sy;
+import com.tencent.mm.g.a.ux;
+import com.tencent.mm.g.a.xm;
+import com.tencent.mm.g.a.ym;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.cr;
 import com.tencent.mm.plugin.account.friend.a.q;
+import com.tencent.mm.plugin.i.a.ac;
+import com.tencent.mm.plugin.i.a.aj;
 import com.tencent.mm.plugin.messenger.foundation.a.aa;
+import com.tencent.mm.plugin.messenger.foundation.a.x;
+import com.tencent.mm.plugin.teenmode.a.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.auo;
-import com.tencent.mm.protocal.protobuf.bqt;
-import com.tencent.mm.protocal.protobuf.bva;
-import com.tencent.mm.protocal.protobuf.cab;
-import com.tencent.mm.protocal.protobuf.cae;
-import com.tencent.mm.protocal.protobuf.caj;
-import com.tencent.mm.protocal.protobuf.cav;
-import com.tencent.mm.protocal.protobuf.cbj;
-import com.tencent.mm.protocal.protobuf.ccz;
-import com.tencent.mm.protocal.protobuf.cjd;
-import com.tencent.mm.protocal.protobuf.cok;
-import com.tencent.mm.protocal.protobuf.dar;
-import com.tencent.mm.protocal.protobuf.dia;
-import com.tencent.mm.protocal.protobuf.dky;
-import com.tencent.mm.protocal.protobuf.dmk;
-import com.tencent.mm.protocal.protobuf.dut;
-import com.tencent.mm.protocal.protobuf.zx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.abn;
+import com.tencent.mm.protocal.protobuf.aeq;
+import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.protocal.protobuf.cdm;
+import com.tencent.mm.protocal.protobuf.cih;
+import com.tencent.mm.protocal.protobuf.cpd;
+import com.tencent.mm.protocal.protobuf.cpg;
+import com.tencent.mm.protocal.protobuf.cpl;
+import com.tencent.mm.protocal.protobuf.cpx;
+import com.tencent.mm.protocal.protobuf.cql;
+import com.tencent.mm.protocal.protobuf.ctf;
+import com.tencent.mm.protocal.protobuf.czl;
+import com.tencent.mm.protocal.protobuf.dgj;
+import com.tencent.mm.protocal.protobuf.dtv;
+import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.protocal.protobuf.eel;
+import com.tencent.mm.protocal.protobuf.efy;
+import com.tencent.mm.protocal.protobuf.eos;
+import com.tencent.mm.protocal.protobuf.fff;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import junit.framework.Assert;
 
 public final class a
-  implements com.tencent.mm.plugin.messenger.foundation.a.x
+  implements x
 {
-  public static boolean a(an paraman)
+  public static boolean a(as paramas)
   {
     AppMethodBeat.i(20539);
-    if ((paraman == null) || (bu.isNullOrNil(paraman.field_username)))
+    if ((paramas == null) || (Util.isNullOrNil(paramas.field_username)))
     {
-      if (paraman == null) {}
-      for (paraman = "-1";; paraman = paraman.field_username)
+      if (paramas == null) {}
+      for (paramas = "-1";; paramas = paramas.field_username)
       {
-        ae.w("MicroMsg.BigBallOfMudSyncExtension", "dealModContactExtInfo username:%s ", new Object[] { paraman });
+        Log.w("MicroMsg.BigBallOfMudSyncExtension", "dealModContactExtInfo username:%s ", new Object[] { paramas });
         AppMethodBeat.o(20539);
         return false;
       }
     }
-    bc.aCg();
-    Object localObject = com.tencent.mm.model.c.azF().aUQ(paraman.field_username);
-    if (bu.cF((byte[])localObject))
+    bg.aVF();
+    Object localObject = com.tencent.mm.model.c.aSN().bjP(paramas.field_username);
+    if (Util.isNullOrNil((byte[])localObject))
     {
-      paraman = paraman.field_username;
+      paramas = paramas.field_username;
       if (localObject == null) {}
       for (int i = -1;; i = localObject.length)
       {
-        ae.w("MicroMsg.BigBallOfMudSyncExtension", "dealModContactExtInfo username:%s  buf:%d", new Object[] { paraman, Integer.valueOf(i) });
+        Log.w("MicroMsg.BigBallOfMudSyncExtension", "dealModContactExtInfo username:%s  buf:%d", new Object[] { paramas, Integer.valueOf(i) });
         AppMethodBeat.o(20539);
         return false;
       }
     }
     try
     {
-      localObject = (caj)new caj().parseFrom((byte[])localObject);
-      bc.aCg();
-      com.tencent.mm.model.c.azF().aUR(paraman.field_username);
+      localObject = (cpl)new cpl().parseFrom((byte[])localObject);
+      bg.aVF();
+      com.tencent.mm.model.c.aSN().bjQ(paramas.field_username);
       if (localObject == null)
       {
-        ae.e("MicroMsg.BigBallOfMudSyncExtension", "dkinit dealModContactExtInfo failed parse buf failed.");
+        Log.e("MicroMsg.BigBallOfMudSyncExtension", "dkinit dealModContactExtInfo failed parse buf failed.");
         AppMethodBeat.o(20539);
         return false;
       }
     }
     catch (Exception localException)
     {
-      caj localcaj;
+      cpl localcpl;
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.BigBallOfMudSyncExtension", localException, "", new Object[0]);
-        localcaj = null;
+        Log.printErrStackTrace("MicroMsg.BigBallOfMudSyncExtension", localException, "", new Object[0]);
+        localcpl = null;
       }
-      boolean bool = com.tencent.mm.plugin.bbom.c.a(paraman, localcaj, false);
+      boolean bool = com.tencent.mm.plugin.bbom.c.a(paramas, localcpl, false);
       AppMethodBeat.o(20539);
       return bool;
     }
   }
   
-  public final void a(zx paramzx, byte[] paramArrayOfByte, boolean paramBoolean, aa paramaa)
+  public final void a(abn paramabn, byte[] paramArrayOfByte, boolean paramBoolean, aa paramaa)
   {
     AppMethodBeat.i(20538);
-    switch (paramzx.Gru)
+    switch (paramabn.Lms)
     {
     default: 
-      ae.e("MicroMsg.BigBallOfMudSyncExtension", "doCmd: no processing method, cmd id=" + paramzx.Gru);
+      Log.e("MicroMsg.BigBallOfMudSyncExtension", "doCmd: no processing method, cmd id=" + paramabn.Lms);
     }
     label301:
     label1882:
@@ -116,294 +122,294 @@ public final class a
     {
       AppMethodBeat.o(20538);
       return;
-      paramzx = (bqt)new bqt().parseFrom(paramArrayOfByte);
+      paramabn = (cdm)new cdm().parseFrom(paramArrayOfByte);
       paramArrayOfByte = new com.tencent.mm.plugin.account.friend.a.p();
-      paramArrayOfByte.username = paramzx.nIJ;
-      paramArrayOfByte.jgM = paramzx.Hee;
-      paramArrayOfByte.cRP = ((int)bu.aRi());
+      paramArrayOfByte.username = paramabn.UserName;
+      paramArrayOfByte.keQ = paramabn.Mjk;
+      paramArrayOfByte.dii = ((int)Util.nowSecond());
       com.tencent.mm.plugin.account.a.getInviteFriendOpenStg().b(paramArrayOfByte);
       AppMethodBeat.o(20538);
       return;
-      paramzx = (cav)new cav().parseFrom(paramArrayOfByte);
-      if (1 == paramzx.Hov)
+      paramabn = (cpx)new cpx().parseFrom(paramArrayOfByte);
+      if (1 == paramabn.MvQ)
       {
-        bc.aCg();
-        paramArrayOfByte = com.tencent.mm.model.c.azO();
-        paramaa = z.a(paramzx.GuF);
-        if (paramzx.DeleteFlag == 1)
+        bg.aVF();
+        paramArrayOfByte = com.tencent.mm.model.c.aSW();
+        paramaa = com.tencent.mm.platformtools.z.a(paramabn.Lqk);
+        if (paramabn.DeleteFlag == 1)
         {
           paramBoolean = true;
-          if (paramzx.How != 1) {
+          if (paramabn.MvR != 1) {
             break label301;
           }
         }
         for (boolean bool = true;; bool = false)
         {
-          paramArrayOfByte.h(paramaa, paramBoolean, bool);
+          paramArrayOfByte.i(paramaa, paramBoolean, bool);
           AppMethodBeat.o(20538);
           return;
           paramBoolean = false;
           break;
         }
       }
-      ae.e("MicroMsg.BigBallOfMudSyncExtension", "unknown micro blog type:" + paramzx.Hov);
+      Log.e("MicroMsg.BigBallOfMudSyncExtension", "unknown micro blog type:" + paramabn.MvQ);
       AppMethodBeat.o(20538);
       return;
-      paramzx = (cae)new cae().parseFrom(paramArrayOfByte);
-      if (paramzx != null)
+      paramabn = (cpg)new cpg().parseFrom(paramArrayOfByte);
+      if (paramabn != null)
       {
-        ae.d("MicroMsg.BigBallOfMudSyncExtension", "processModChatRoomMember username:" + paramzx.GuF + " nickname:" + paramzx.Hed);
-        paramaa = z.a(paramzx.GuF);
-        bc.aCg();
-        paramArrayOfByte = com.tencent.mm.model.c.azF().BH(paramaa);
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "processModChatRoomMember username:" + paramabn.Lqk + " nickname:" + paramabn.Mjj);
+        paramaa = com.tencent.mm.platformtools.z.a(paramabn.Lqk);
+        bg.aVF();
+        paramArrayOfByte = com.tencent.mm.model.c.aSN().Kn(paramaa);
         paramArrayOfByte.setUsername(paramaa);
-        paramArrayOfByte.to(z.a(paramzx.Hed));
-        paramArrayOfByte.tp(z.a(paramzx.GtY));
-        paramArrayOfByte.tq(z.a(paramzx.GtZ));
-        paramArrayOfByte.kh(paramzx.jfV);
-        paramArrayOfByte.tm(z.a(paramzx.Hnt));
-        paramArrayOfByte.ts(z.a(paramzx.Hnv));
-        paramArrayOfByte.tt(z.a(paramzx.Hnu));
-        paramArrayOfByte.kj(paramzx.Gto);
+        paramArrayOfByte.setNickname(com.tencent.mm.platformtools.z.a(paramabn.Mjj));
+        paramArrayOfByte.BF(com.tencent.mm.platformtools.z.a(paramabn.LpA));
+        paramArrayOfByte.BG(com.tencent.mm.platformtools.z.a(paramabn.LpB));
+        paramArrayOfByte.nj(paramabn.kdY);
+        paramArrayOfByte.BD(com.tencent.mm.platformtools.z.a(paramabn.MuI));
+        paramArrayOfByte.BI(com.tencent.mm.platformtools.z.a(paramabn.MuK));
+        paramArrayOfByte.BJ(com.tencent.mm.platformtools.z.a(paramabn.MuJ));
+        paramArrayOfByte.nl(paramabn.LoM);
         paramaa = new i();
-        paramaa.dEu = -1;
+        paramaa.cSx = -1;
         paramaa.username = paramArrayOfByte.field_username;
-        paramaa.hPP = paramzx.GnO;
-        paramaa.hPQ = paramzx.GnN;
-        ae.d("MicroMsg.BigBallOfMudSyncExtension", "dkhurl chatmember %s b[%s] s[%s]", new Object[] { paramaa.getUsername(), paramaa.aEG(), paramaa.aEH() });
-        paramaa.eD(true);
-        if ((paramzx.HnJ != 3) && (paramzx.HnJ != 4)) {
+        paramaa.iKW = paramabn.Lis;
+        paramaa.iKX = paramabn.Lir;
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "dkhurl chatmember %s b[%s] s[%s]", new Object[] { paramaa.getUsername(), paramaa.aYt(), paramaa.aYu() });
+        paramaa.fv(true);
+        if ((paramabn.Mvd != 3) && (paramabn.Mvd != 4)) {
           break label773;
         }
-        paramArrayOfByte.kg(paramzx.HnJ);
-        paramaa.eQU = paramzx.HnJ;
+        paramArrayOfByte.ni(paramabn.Mvd);
+        paramaa.fuz = paramabn.Mvd;
       }
       for (;;)
       {
-        com.tencent.mm.aj.p.aEN().b(paramaa);
-        bc.aCg();
-        com.tencent.mm.model.c.azF().am(paramArrayOfByte);
-        paramaa = ag.aGp().Ef(paramArrayOfByte.field_username);
+        com.tencent.mm.aj.p.aYB().b(paramaa);
+        bg.aVF();
+        com.tencent.mm.model.c.aSN().ao(paramArrayOfByte);
+        paramaa = ag.bah().MT(paramArrayOfByte.field_username);
         paramaa.field_username = paramArrayOfByte.field_username;
-        paramaa.field_brandList = paramzx.jgf;
-        paramzx = paramzx.HhB;
-        if (paramzx != null)
+        paramaa.field_brandList = paramabn.kei;
+        paramabn = paramabn.MmR;
+        if (paramabn != null)
         {
-          paramaa.field_brandFlag = paramzx.jgj;
-          paramaa.field_brandInfo = paramzx.jgl;
-          paramaa.field_brandIconURL = paramzx.jgm;
-          paramaa.field_extInfo = paramzx.jgk;
+          paramaa.field_brandFlag = paramabn.kem;
+          paramaa.field_brandInfo = paramabn.keo;
+          paramaa.field_brandIconURL = paramabn.kep;
+          paramaa.field_extInfo = paramabn.ken;
           paramaa.field_attrSyncVersion = null;
-          ae.i("MicroMsg.BigBallOfMudSyncExtension", "update extInfo=%s", new Object[] { paramaa.field_extInfo });
+          Log.i("MicroMsg.BigBallOfMudSyncExtension", "update extInfo=%s", new Object[] { paramaa.field_extInfo });
         }
-        if (!ag.aGp().g(paramaa)) {
-          ag.aGp().f(paramaa);
+        if (!ag.bah().h(paramaa)) {
+          ag.bah().g(paramaa);
         }
         AppMethodBeat.o(20538);
         return;
-        if (paramzx.HnJ == 2)
+        if (paramabn.Mvd == 2)
         {
-          paramArrayOfByte.kg(3);
-          paramaa.eQU = 3;
-          paramArrayOfByte.kg(3);
-          if (!v.aAC().equals(paramArrayOfByte.field_username))
+          paramArrayOfByte.ni(3);
+          paramaa.fuz = 3;
+          paramArrayOfByte.ni(3);
+          if (!com.tencent.mm.model.z.aTY().equals(paramArrayOfByte.field_username))
           {
-            com.tencent.mm.aj.p.aEA();
-            com.tencent.mm.aj.e.L(paramArrayOfByte.field_username, false);
-            com.tencent.mm.aj.p.aEA();
-            com.tencent.mm.aj.e.L(paramArrayOfByte.field_username, true);
-            com.tencent.mm.aj.p.aEP().Dw(paramArrayOfByte.field_username);
+            com.tencent.mm.aj.p.aYn();
+            com.tencent.mm.aj.e.N(paramArrayOfByte.field_username, false);
+            com.tencent.mm.aj.p.aYn();
+            com.tencent.mm.aj.e.N(paramArrayOfByte.field_username, true);
+            com.tencent.mm.aj.p.aYD().Mg(paramArrayOfByte.field_username);
           }
         }
       }
-      paramzx = (auo)new auo().parseFrom(paramArrayOfByte);
-      switch (paramzx.GLx)
+      paramabn = (bfx)new bfx().parseFrom(paramArrayOfByte);
+      switch (paramabn.LPB)
       {
       case 2: 
       case 3: 
       default: 
-        ae.e("MicroMsg.BigBallOfMudSyncExtension", "unknown function switch id:" + paramzx.GLx);
+        Log.e("MicroMsg.BigBallOfMudSyncExtension", "unknown function switch id:" + paramabn.LPB);
         AppMethodBeat.o(20538);
         return;
       case 1: 
-        bc.aCg();
-        com.tencent.mm.model.c.ajA().set(17, Integer.valueOf(paramzx.xsz));
+        bg.aVF();
+        com.tencent.mm.model.c.azQ().set(17, Integer.valueOf(paramabn.BsD));
         AppMethodBeat.o(20538);
         return;
       }
       AppMethodBeat.o(20538);
       return;
-      paramzx = (dmk)new dmk().parseFrom(paramArrayOfByte);
-      if (paramzx != null)
+      paramabn = (efy)new efy().parseFrom(paramArrayOfByte);
+      if (paramabn != null)
       {
         paramBoolean = true;
         Assert.assertTrue(paramBoolean);
-        if (bu.nullAsNil(paramzx.nIJ).length() <= 0) {
+        if (Util.nullAsNil(paramabn.UserName).length() <= 0) {
           break label1039;
         }
       }
       for (paramBoolean = true;; paramBoolean = false)
       {
         Assert.assertTrue(paramBoolean);
-        if (an.aUn(paramzx.nIJ)) {
+        if (as.bjm(paramabn.UserName)) {
           break label1044;
         }
-        ae.w("MicroMsg.BigBallOfMudSyncExtension", "processModTContact: tcontact should ends with @t.qq.com");
+        Log.w("MicroMsg.BigBallOfMudSyncExtension", "processModTContact: tcontact should ends with @t.qq.com");
         AppMethodBeat.o(20538);
         return;
         paramBoolean = false;
         break;
       }
-      bc.aCg();
-      paramArrayOfByte = com.tencent.mm.model.c.azF().BH(paramzx.nIJ);
-      if ((paramArrayOfByte == null) || ((int)paramArrayOfByte.ght == 0))
+      bg.aVF();
+      paramArrayOfByte = com.tencent.mm.model.c.aSN().Kn(paramabn.UserName);
+      if ((paramArrayOfByte == null) || ((int)paramArrayOfByte.gMZ == 0))
       {
-        paramArrayOfByte = new an(paramzx.nIJ);
-        paramArrayOfByte.tm(paramzx.GnM);
-        paramArrayOfByte.kj(1);
-        paramArrayOfByte.acY();
-        bc.aCg();
-        if (com.tencent.mm.model.c.azF().ao(paramArrayOfByte) == -1)
+        paramArrayOfByte = new as(paramabn.UserName);
+        paramArrayOfByte.BD(paramabn.Liq);
+        paramArrayOfByte.nl(1);
+        paramArrayOfByte.aqW();
+        bg.aVF();
+        if (com.tencent.mm.model.c.aSN().aq(paramArrayOfByte) == -1)
         {
-          ae.e("MicroMsg.BigBallOfMudSyncExtension", "processModTContact: insert contact failed");
+          Log.e("MicroMsg.BigBallOfMudSyncExtension", "processModTContact: insert contact failed");
           AppMethodBeat.o(20538);
           return;
         }
         paramArrayOfByte = paramArrayOfByte.field_username;
         if (paramArrayOfByte == null) {
-          ae.w("MicroMsg.AvatarLogic", "setMBTAvatarImgFlag failed : invalid username");
+          Log.w("MicroMsg.AvatarLogic", "setMBTAvatarImgFlag failed : invalid username");
         }
       }
       for (;;)
       {
-        paramArrayOfByte = new wm();
-        paramArrayOfByte.dLU.opType = 1;
-        paramArrayOfByte.dLU.dED = paramzx.nIJ;
-        paramArrayOfByte.dLU.dEE = paramzx.HAn;
-        paramArrayOfByte.dLU.dEF = paramzx.Gtv;
-        com.tencent.mm.sdk.b.a.IvT.l(paramArrayOfByte);
+        paramArrayOfByte = new xm();
+        paramArrayOfByte.edJ.opType = 1;
+        paramArrayOfByte.edJ.dWq = paramabn.UserName;
+        paramArrayOfByte.edJ.dWr = paramabn.MKY;
+        paramArrayOfByte.edJ.dWs = paramabn.LoT;
+        EventCenter.instance.publish(paramArrayOfByte);
         AppMethodBeat.o(20538);
         return;
         if (!paramArrayOfByte.endsWith("@t.qq.com"))
         {
-          ae.w("MicroMsg.AvatarLogic", "setMBTAvatarImgFlag failed : invalid username");
+          Log.w("MicroMsg.AvatarLogic", "setMBTAvatarImgFlag failed : invalid username");
         }
         else
         {
           paramaa = new i();
           paramaa.username = paramArrayOfByte;
-          paramaa.eQU = 3;
-          paramaa.dEu = 3;
-          com.tencent.mm.aj.p.aEN().b(paramaa);
+          paramaa.fuz = 3;
+          paramaa.cSx = 3;
+          com.tencent.mm.aj.p.aYB().b(paramaa);
           continue;
-          if (!bu.nullAsNil(paramzx.GnM).equals(bu.nullAsNil(paramArrayOfByte.field_username)))
+          if (!Util.nullAsNil(paramabn.Liq).equals(Util.nullAsNil(paramArrayOfByte.field_username)))
           {
-            paramArrayOfByte.tm(paramzx.GnM);
-            bc.aCg();
-            if (com.tencent.mm.model.c.azF().c(paramArrayOfByte.field_username, paramArrayOfByte) == -1) {
-              ae.e("MicroMsg.BigBallOfMudSyncExtension", "processModTContact: update contact failed");
+            paramArrayOfByte.BD(paramabn.Liq);
+            bg.aVF();
+            if (com.tencent.mm.model.c.aSN().c(paramArrayOfByte.field_username, paramArrayOfByte) == -1) {
+              Log.e("MicroMsg.BigBallOfMudSyncExtension", "processModTContact: update contact failed");
             }
           }
         }
       }
-      paramzx = (cok)new cok().parseFrom(paramArrayOfByte);
-      if (paramzx != null)
+      paramabn = (dgj)new dgj().parseFrom(paramArrayOfByte);
+      if (paramabn != null)
       {
         paramBoolean = true;
         Assert.assertTrue(paramBoolean);
-        if (bu.nullAsNil(paramzx.nIJ).length() <= 0) {
+        if (Util.nullAsNil(paramabn.UserName).length() <= 0) {
           break label1411;
         }
       }
       for (paramBoolean = true;; paramBoolean = false)
       {
         Assert.assertTrue(paramBoolean);
-        if (an.aUp(paramzx.nIJ)) {
+        if (as.bjo(paramabn.UserName)) {
           break label1416;
         }
-        ae.w("MicroMsg.BigBallOfMudSyncExtension", "processModQContact: qcontact should ends with @t.qq.com");
+        Log.w("MicroMsg.BigBallOfMudSyncExtension", "processModQContact: qcontact should ends with @t.qq.com");
         AppMethodBeat.o(20538);
         return;
         paramBoolean = false;
         break;
       }
-      bc.aCg();
-      paramArrayOfByte = com.tencent.mm.model.c.azF().BH(paramzx.nIJ);
-      if ((paramArrayOfByte == null) || ((int)paramArrayOfByte.ght == 0))
+      bg.aVF();
+      paramArrayOfByte = com.tencent.mm.model.c.aSN().Kn(paramabn.UserName);
+      if ((paramArrayOfByte == null) || ((int)paramArrayOfByte.gMZ == 0))
       {
-        paramArrayOfByte = new an(paramzx.nIJ);
-        paramArrayOfByte.acY();
-        paramArrayOfByte.to(paramzx.GnM);
-        paramArrayOfByte.tm(paramzx.GnM);
-        paramArrayOfByte.kj(4);
-        bc.aCg();
-        if (com.tencent.mm.model.c.azF().ao(paramArrayOfByte) == -1)
+        paramArrayOfByte = new as(paramabn.UserName);
+        paramArrayOfByte.aqW();
+        paramArrayOfByte.setNickname(paramabn.Liq);
+        paramArrayOfByte.BD(paramabn.Liq);
+        paramArrayOfByte.nl(4);
+        bg.aVF();
+        if (com.tencent.mm.model.c.aSN().aq(paramArrayOfByte) == -1)
         {
-          ae.e("MicroMsg.BigBallOfMudSyncExtension", "processModQContact: insert contact failed");
+          Log.e("MicroMsg.BigBallOfMudSyncExtension", "processModQContact: insert contact failed");
           AppMethodBeat.o(20538);
           return;
         }
-        com.tencent.mm.aj.c.Dr(paramArrayOfByte.field_username);
+        com.tencent.mm.aj.c.Mb(paramArrayOfByte.field_username);
       }
       for (;;)
       {
-        paramArrayOfByte = new pk();
-        paramArrayOfByte.dEz.opType = 1;
-        paramArrayOfByte.dEz.dED = paramzx.nIJ;
-        paramArrayOfByte.dEz.dEE = paramzx.HAn;
-        paramArrayOfByte.dEz.dEF = paramzx.Gtv;
-        com.tencent.mm.sdk.b.a.IvT.l(paramArrayOfByte);
+        paramArrayOfByte = new qc();
+        paramArrayOfByte.dWm.opType = 1;
+        paramArrayOfByte.dWm.dWq = paramabn.UserName;
+        paramArrayOfByte.dWm.dWr = paramabn.MKY;
+        paramArrayOfByte.dWm.dWs = paramabn.LoT;
+        EventCenter.instance.publish(paramArrayOfByte);
         AppMethodBeat.o(20538);
         return;
-        if (!bu.nullAsNil(paramzx.GnM).equals(bu.nullAsNil(paramArrayOfByte.field_username)))
+        if (!Util.nullAsNil(paramabn.Liq).equals(Util.nullAsNil(paramArrayOfByte.field_username)))
         {
-          paramArrayOfByte.to(paramzx.GnM);
-          paramArrayOfByte.tm(paramzx.GnM);
-          bc.aCg();
-          if (com.tencent.mm.model.c.azF().c(paramArrayOfByte.field_username, paramArrayOfByte) == -1) {
-            ae.e("MicroMsg.BigBallOfMudSyncExtension", "processModQContact: update contact failed");
+          paramArrayOfByte.setNickname(paramabn.Liq);
+          paramArrayOfByte.BD(paramabn.Liq);
+          bg.aVF();
+          if (com.tencent.mm.model.c.aSN().c(paramArrayOfByte.field_username, paramArrayOfByte) == -1) {
+            Log.e("MicroMsg.BigBallOfMudSyncExtension", "processModQContact: update contact failed");
           }
         }
       }
-      paramzx = (cab)new cab().parseFrom(paramArrayOfByte);
-      if (paramzx != null)
+      paramabn = (cpd)new cpd().parseFrom(paramArrayOfByte);
+      if (paramabn != null)
       {
         paramBoolean = true;
         Assert.assertTrue(paramBoolean);
-        if (bu.nullAsNil(paramzx.nIJ).length() <= 0) {
+        if (Util.nullAsNil(paramabn.UserName).length() <= 0) {
           break label1956;
         }
         paramBoolean = true;
         Assert.assertTrue(paramBoolean);
-        paramArrayOfByte = new an();
-        paramArrayOfByte.setUsername(paramzx.nIJ);
-        paramArrayOfByte.setType(paramzx.nJA);
-        paramArrayOfByte.kh(paramzx.jfV);
-        paramArrayOfByte.tL(RegionCodeDecoder.bg(paramzx.jge, paramzx.jfW, paramzx.jfX));
-        paramArrayOfByte.tF(paramzx.jfY);
+        paramArrayOfByte = new as();
+        paramArrayOfByte.setUsername(paramabn.UserName);
+        paramArrayOfByte.setType(paramabn.oUv);
+        paramArrayOfByte.nj(paramabn.kdY);
+        paramArrayOfByte.Cb(RegionCodeDecoder.bq(paramabn.keh, paramabn.kdZ, paramabn.kea));
+        paramArrayOfByte.BV(paramabn.keb);
         paramaa = new i();
-        paramaa.dEu = -1;
-        paramaa.username = paramzx.nIJ;
-        paramaa.hPP = paramzx.GnO;
-        paramaa.hPQ = paramzx.GnN;
-        ae.d("MicroMsg.BigBallOfMudSyncExtension", "dkhurl bottle %s b[%s] s[%s]", new Object[] { paramaa.getUsername(), paramaa.aEG(), paramaa.aEH() });
-        ae.d("MicroMsg.BigBallOfMudSyncExtension", "bottlecontact imgflag:" + paramzx.HnJ + " hd:" + paramzx.HnK);
-        if (paramzx.HnK == 0) {
+        paramaa.cSx = -1;
+        paramaa.username = paramabn.UserName;
+        paramaa.iKW = paramabn.Lis;
+        paramaa.iKX = paramabn.Lir;
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "dkhurl bottle %s b[%s] s[%s]", new Object[] { paramaa.getUsername(), paramaa.aYt(), paramaa.aYu() });
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "bottlecontact imgflag:" + paramabn.Mvd + " hd:" + paramabn.Mve);
+        if (paramabn.Mve == 0) {
           break label1961;
         }
         paramBoolean = true;
-        paramaa.eD(paramBoolean);
-        if ((paramzx.HnJ != 3) && (paramzx.HnJ != 4)) {
+        paramaa.fv(paramBoolean);
+        if ((paramabn.Mvd != 3) && (paramabn.Mvd != 4)) {
           break label1966;
         }
-        paramArrayOfByte.kg(paramzx.HnJ);
-        paramaa.eQU = paramzx.HnJ;
+        paramArrayOfByte.ni(paramabn.Mvd);
+        paramaa.fuz = paramabn.Mvd;
       }
       for (;;)
       {
-        com.tencent.mm.aj.p.aEN().b(paramaa);
-        bc.aCg();
-        com.tencent.mm.model.c.azF().al(paramArrayOfByte);
+        com.tencent.mm.aj.p.aYB().b(paramaa);
+        bg.aVF();
+        com.tencent.mm.model.c.aSN().an(paramArrayOfByte);
         AppMethodBeat.o(20538);
         return;
         paramBoolean = false;
@@ -412,75 +418,75 @@ public final class a
         break label1694;
         paramBoolean = false;
         break label1882;
-        if (paramzx.HnJ == 2)
+        if (paramabn.Mvd == 2)
         {
-          paramArrayOfByte.kg(3);
-          paramaa.eQU = 3;
-          com.tencent.mm.aj.p.aEA();
-          com.tencent.mm.aj.e.L(paramzx.nIJ, false);
-          com.tencent.mm.aj.p.aEA();
-          com.tencent.mm.aj.e.L(paramzx.nIJ, true);
-          com.tencent.mm.aj.p.aEP().Dw(paramzx.nIJ);
+          paramArrayOfByte.ni(3);
+          paramaa.fuz = 3;
+          com.tencent.mm.aj.p.aYn();
+          com.tencent.mm.aj.e.N(paramabn.UserName, false);
+          com.tencent.mm.aj.p.aYn();
+          com.tencent.mm.aj.e.N(paramabn.UserName, true);
+          com.tencent.mm.aj.p.aYD().Mg(paramabn.UserName);
         }
         else
         {
-          paramArrayOfByte.kg(3);
-          paramaa.eQU = 3;
+          paramArrayOfByte.ni(3);
+          paramaa.fuz = 3;
         }
       }
-      paramaa = (cbj)new cbj().parseFrom(paramArrayOfByte);
+      paramaa = (cql)new cql().parseFrom(paramArrayOfByte);
       if (paramaa != null)
       {
         paramBoolean = true;
         Assert.assertTrue(paramBoolean);
-        paramzx = v.aAC();
-        j = paramaa.HoG;
+        paramabn = com.tencent.mm.model.z.aTY();
+        j = paramaa.Mwb;
         if (j != 2) {
           break label2349;
         }
-        paramzx = an.aUA(paramzx);
-        bc.aCg();
-        paramArrayOfByte = (String)com.tencent.mm.model.c.ajA().get(12553, null);
+        paramabn = as.bjz(paramabn);
+        bg.aVF();
+        paramArrayOfByte = (String)com.tencent.mm.model.c.azQ().get(12553, null);
         paramBoolean = false;
-        if ((paramArrayOfByte == null) || (!paramArrayOfByte.equals(paramaa.HoJ)))
+        if ((paramArrayOfByte == null) || (!paramArrayOfByte.equals(paramaa.Mwe)))
         {
-          com.tencent.mm.aj.p.aEA();
-          com.tencent.mm.aj.e.L(paramzx, true);
-          bc.aCg();
-          paramArrayOfByte = com.tencent.mm.model.c.ajA();
+          com.tencent.mm.aj.p.aYn();
+          com.tencent.mm.aj.e.N(paramabn, true);
+          bg.aVF();
+          paramArrayOfByte = com.tencent.mm.model.c.azQ();
           if (j != 2) {
             break label2370;
           }
           i = 12553;
-          paramArrayOfByte.set(i, paramaa.HoJ);
+          paramArrayOfByte.set(i, paramaa.Mwe);
           paramBoolean = true;
         }
-        ae.d("MicroMsg.BigBallOfMudSyncExtension", "ModUserImg beRemove:%b imgtype:%d md5:%s big:%s sm:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(j), paramaa.HoJ, paramaa.GnN, paramaa.GnO });
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "ModUserImg beRemove:%b imgtype:%d md5:%s big:%s sm:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(j), paramaa.Mwe, paramaa.Lir, paramaa.Lis });
         paramArrayOfByte = new i();
-        paramArrayOfByte.username = paramzx;
-        paramArrayOfByte.hPQ = paramaa.GnN;
-        paramArrayOfByte.hPP = paramaa.GnO;
-        if (!bu.isNullOrNil(paramArrayOfByte.aEH()))
+        paramArrayOfByte.username = paramabn;
+        paramArrayOfByte.iKX = paramaa.Lir;
+        paramArrayOfByte.iKW = paramaa.Lis;
+        if (!Util.isNullOrNil(paramArrayOfByte.aYu()))
         {
           if (j != 1) {
             break label2378;
           }
-          bc.aCg();
-          com.tencent.mm.model.c.ajA().set(59, Boolean.TRUE);
+          bg.aVF();
+          com.tencent.mm.model.c.azQ().set(59, Boolean.TRUE);
         }
       }
       for (;;)
       {
-        paramArrayOfByte.eD(false);
-        paramArrayOfByte.dEu = 56;
-        if (!bu.isNullOrNil(paramaa.HoJ)) {
-          paramArrayOfByte.eD(true);
+        paramArrayOfByte.fv(false);
+        paramArrayOfByte.cSx = 56;
+        if (!Util.isNullOrNil(paramaa.Mwe)) {
+          paramArrayOfByte.fv(true);
         }
-        com.tencent.mm.aj.p.aEN().b(paramArrayOfByte);
+        com.tencent.mm.aj.p.aYB().b(paramArrayOfByte);
         if (paramBoolean) {
-          new com.tencent.mm.aj.f().a(paramzx, new f.c()
+          new com.tencent.mm.aj.f().a(paramabn, new f.c()
           {
-            public final int df(int paramAnonymousInt1, int paramAnonymousInt2)
+            public final int dp(int paramAnonymousInt1, int paramAnonymousInt2)
             {
               return 0;
             }
@@ -490,151 +496,167 @@ public final class a
         return;
         paramBoolean = false;
         break;
-        bc.aCg();
-        paramArrayOfByte = (String)com.tencent.mm.model.c.ajA().get(12297, null);
+        bg.aVF();
+        paramArrayOfByte = (String)com.tencent.mm.model.c.azQ().get(12297, null);
         break label2105;
         i = 12297;
         break label2152;
-        bc.aCg();
-        com.tencent.mm.model.c.ajA().set(60, Boolean.TRUE);
+        bg.aVF();
+        com.tencent.mm.model.c.azQ().set(60, Boolean.TRUE);
       }
-      paramaa = (dut)new dut().parseFrom(paramArrayOfByte);
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "snsExtFlag:%s, snsExtFlagEx:%s, snsPrivacyRecent:%s", new Object[] { Integer.valueOf(paramaa.HhA.jgg), Integer.valueOf(paramaa.HhA.HPm), Integer.valueOf(paramaa.HhA.HPn) });
-      bc.aCg();
-      String str = (String)com.tencent.mm.model.c.ajA().get(2, null);
+      paramaa = (eos)new eos().parseFrom(paramArrayOfByte);
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "processModUserInfoExt snsExtFlag:%s, snsExtFlagEx:%s, snsPrivacyRecent:%s, textStatus:%s", new Object[] { Integer.valueOf(paramaa.MmQ.kej), Integer.valueOf(paramaa.MmQ.Nbc), Integer.valueOf(paramaa.MmQ.Nbd), paramaa.Liv });
+      bg.aVF();
+      String str = (String)com.tencent.mm.model.c.azQ().get(2, null);
       if ((str == null) || (str.length() <= 0))
       {
         AppMethodBeat.o(20538);
         return;
       }
-      if (com.tencent.mm.plugin.sns.b.o.zsw != null) {
-        com.tencent.mm.plugin.sns.b.o.zsw.a(str, paramaa.HhA);
+      if (com.tencent.mm.plugin.sns.b.o.DCN != null) {
+        com.tencent.mm.plugin.sns.b.o.DCN.a(str, paramaa.MmQ);
       }
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "storyExtFlag:%s", new Object[] { Integer.valueOf(paramaa.IaC.HSC) });
-      ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).updateStoryUserInfo(str, paramaa.IaC);
-      paramArrayOfByte = com.tencent.mm.al.g.eX(v.aAC());
-      paramzx = paramArrayOfByte;
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "storyExtFlag:%s", new Object[] { Integer.valueOf(paramaa.NmJ.NeF) });
+      ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.story.api.e.class)).updateStoryUserInfo(str, paramaa.NmJ);
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "finderSetting:%s", new Object[] { Long.valueOf(paramaa.NmS) });
+      ((aj)com.tencent.mm.kernel.g.ah(aj.class)).getFinderSwitchApi().Gf(paramaa.NmS);
+      paramArrayOfByte = com.tencent.mm.al.g.fJ(com.tencent.mm.model.z.aTY());
+      paramabn = paramArrayOfByte;
       if (paramArrayOfByte == null) {
-        paramzx = new com.tencent.mm.api.c();
+        paramabn = new com.tencent.mm.api.c();
       }
-      paramzx.field_username = str;
-      paramzx.field_brandList = paramaa.jgf;
-      if ((paramzx.Kw()) && (paramzx.bX(false) != null) && (paramzx.bX(false).KX() != null) && (!bu.isNullOrNil(paramzx.KD())))
+      paramabn.field_username = str;
+      paramabn.field_brandList = paramaa.kei;
+      if ((paramabn.UG()) && (paramabn.cG(false) != null) && (paramabn.cG(false).Vh() != null) && (!Util.isNullOrNil(paramabn.UN())))
       {
-        paramzx.field_enterpriseFather = paramzx.KD();
-        ae.d("MicroMsg.BigBallOfMudSyncExtension", "processModUserInfoExt, %s set enterpriseFather %s", new Object[] { str, paramzx.field_enterpriseFather });
+        paramabn.field_enterpriseFather = paramabn.UN();
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "processModUserInfoExt, %s set enterpriseFather %s", new Object[] { str, paramabn.field_enterpriseFather });
       }
-      if (!ag.aGp().g(paramzx)) {
-        ag.aGp().f(paramzx);
+      if (!ag.bah().h(paramabn)) {
+        ag.bah().g(paramabn);
       }
-      int i = paramaa.Ial;
-      int j = paramaa.Iam;
-      int k = paramaa.Ian;
-      ae.d("MicroMsg.BigBallOfMudSyncExtension", "roomSize :" + i + " rommquota: " + j + " invite: " + k);
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(135175, Integer.valueOf(i));
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(135176, Integer.valueOf(j));
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(135177, Integer.valueOf(k));
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(144385, Integer.valueOf(paramaa.Iar));
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.IPF, Integer.valueOf(paramaa.GNz));
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(339975, Integer.valueOf(paramaa.Iaz));
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "hy: sync do cmd pay wallet type: %d %d", new Object[] { Integer.valueOf(paramaa.Iaz), Integer.valueOf(paramaa.GNz) });
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.INH, bu.bI(paramaa.eRt, ""));
-      ae.d("MicroMsg.BigBallOfMudSyncExtension", "weidianinfo:%s", new Object[] { paramaa.eRt });
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(147457, Long.valueOf(paramaa.IaA));
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.ExtStatus:%s", new Object[] { Long.valueOf(paramaa.IaA) });
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.Jem, Integer.valueOf(paramaa.HzY));
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.UserStatus:%s", new Object[] { Integer.valueOf(paramaa.HzY) });
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.Jen, paramaa.IaG);
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.BindXMail:%s", new Object[] { paramaa.IaG });
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.Jav, Long.valueOf(paramaa.IaD));
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PaySetting:%s", new Object[] { Long.toBinaryString(paramaa.IaD) });
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.ISf, paramaa.IaB);
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.JaI, Integer.valueOf(paramaa.IaE));
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PayBindMobileTransfer:%s", new Object[] { Integer.valueOf(paramaa.IaE) });
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.Jet, paramaa.Hoy);
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PatSuffix:%s", new Object[] { paramaa.Hoy });
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.Jez, Integer.valueOf(paramaa.HJY));
-      ae.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PatSuffixVersion:%d", new Object[] { Integer.valueOf(paramaa.HJY) });
-      com.tencent.mm.plugin.patmsg.c.eK(str, paramaa.HJY);
-      paramzx = new i();
-      paramzx.dEu = -1;
-      paramzx.username = str;
-      paramzx.hPQ = paramaa.GnN;
-      paramzx.hPP = paramaa.GnO;
-      paramzx.eD(true);
-      paramzx.eQU = 3;
-      ae.d("MicroMsg.BigBallOfMudSyncExtension", "dkavatar user:[%s] big:[%s] sm:[%s]", new Object[] { paramzx.getUsername(), paramzx.aEG(), paramzx.aEH() });
-      com.tencent.mm.aj.p.aEN().b(paramzx);
-      paramzx = paramaa.HnU;
-      paramArrayOfByte = paramaa.HnV;
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(274433, paramArrayOfByte);
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(274434, paramzx);
-      if (paramaa.FNY != null)
+      int i = paramaa.Nms;
+      int j = paramaa.Nmt;
+      int k = paramaa.Nmu;
+      Log.d("MicroMsg.BigBallOfMudSyncExtension", "roomSize :" + i + " rommquota: " + j + " invite: " + k);
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(135175, Integer.valueOf(i));
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(135176, Integer.valueOf(j));
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(135177, Integer.valueOf(k));
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(144385, Integer.valueOf(paramaa.Nmy));
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.NXG, Integer.valueOf(paramaa.LRD));
+      com.tencent.mm.plugin.base.model.c.cjL();
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(339975, Integer.valueOf(paramaa.NmG));
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "hy: sync do cmd pay wallet type: %d %d", new Object[] { Integer.valueOf(paramaa.NmG), Integer.valueOf(paramaa.LRD) });
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.NVK, Util.nullAs(paramaa.fuW, ""));
+      Log.d("MicroMsg.BigBallOfMudSyncExtension", "weidianinfo:%s", new Object[] { paramaa.fuW });
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(147457, Long.valueOf(paramaa.NmH));
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.ExtStatus:%s", new Object[] { Long.valueOf(paramaa.NmH) });
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.OnT, Integer.valueOf(paramaa.MKH));
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.UserStatus:%s", new Object[] { Integer.valueOf(paramaa.MKH) });
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.OnU, paramaa.NmM);
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.BindXMail:%s", new Object[] { paramaa.NmM });
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.Ojb, Long.valueOf(paramaa.NmK));
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PaySetting:%s", new Object[] { Long.toBinaryString(paramaa.NmK) });
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.Oah, paramaa.NmI);
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.Ojo, Integer.valueOf(paramaa.NmL));
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PayBindMobileTransfer:%s", new Object[] { Integer.valueOf(paramaa.NmL) });
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oob, paramaa.MvT);
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PatSuffix:%s", new Object[] { paramaa.MvT });
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Ooh, Integer.valueOf(paramaa.MVK));
+      Log.i("MicroMsg.BigBallOfMudSyncExtension", "userinfoExt.PatSuffixVersion:%d", new Object[] { Integer.valueOf(paramaa.MVK) });
+      com.tencent.mm.plugin.patmsg.c.fa(str, paramaa.MVK);
+      if ((paramaa.NmH & 0x0) != 0L) {}
+      for (paramBoolean = true;; paramBoolean = false)
       {
-        bc.aCg();
-        com.tencent.mm.model.c.ajA().set(286721, paramaa.FNY.FVV);
-        bc.aCg();
-        com.tencent.mm.model.c.ajA().set(286722, paramaa.FNY.FVW);
-        bc.aCg();
-        com.tencent.mm.model.c.ajA().set(286723, paramaa.FNY.FVX);
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaV, Boolean.valueOf(paramBoolean));
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaW, Integer.valueOf(paramaa.NmN));
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaX, Integer.valueOf(paramaa.NmO));
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaY, Integer.valueOf(paramaa.NmP));
+        ((b)com.tencent.mm.kernel.g.af(b.class)).fvq();
+        paramabn = new i();
+        paramabn.cSx = -1;
+        paramabn.username = str;
+        paramabn.iKX = paramaa.Lir;
+        paramabn.iKW = paramaa.Lis;
+        paramabn.fv(true);
+        paramabn.fuz = 3;
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "dkavatar user:[%s] big:[%s] sm:[%s]", new Object[] { paramabn.getUsername(), paramabn.aYt(), paramabn.aYu() });
+        com.tencent.mm.aj.p.aYB().b(paramabn);
+        paramabn = paramaa.Mvo;
+        paramArrayOfByte = paramaa.Mvp;
+        bg.aVF();
+        com.tencent.mm.model.c.azQ().set(274433, paramArrayOfByte);
+        bg.aVF();
+        com.tencent.mm.model.c.azQ().set(274434, paramabn);
+        if (paramaa.KHD != null)
+        {
+          bg.aVF();
+          com.tencent.mm.model.c.azQ().set(286721, paramaa.KHD.KPG);
+          bg.aVF();
+          com.tencent.mm.model.c.azQ().set(286722, paramaa.KHD.KPH);
+          bg.aVF();
+          com.tencent.mm.model.c.azQ().set(286723, paramaa.KHD.KPI);
+        }
+        if ((paramaa.NmE != null) && (paramaa.NmE.MEK != null) && (paramaa.NmE.MEK.getILen() > 0))
+        {
+          Log.i("MicroMsg.BigBallOfMudSyncExtension", "tomgest PatternLockInfo %d", new Object[] { Integer.valueOf(paramaa.NmE.MEK.getILen()) });
+          paramabn = new ym();
+          paramabn.eeL.eeM = paramaa.NmE;
+          EventCenter.instance.publish(paramabn);
+        }
+        Log.i("MicroMsg.BigBallOfMudSyncExtension", "handling xagreement configs");
+        if (paramaa.NmQ != null) {
+          cr.z(paramaa.NmQ.NAz, paramaa.NmQ.NAA);
+        }
+        AppMethodBeat.o(20538);
+        return;
       }
-      if ((paramaa.Iax != null) && (paramaa.Iax.HvL != null) && (paramaa.Iax.HvL.getILen() > 0))
-      {
-        ae.i("MicroMsg.BigBallOfMudSyncExtension", "tomgest PatternLockInfo %d", new Object[] { Integer.valueOf(paramaa.Iax.HvL.getILen()) });
-        paramzx = new xl();
-        paramzx.dMT.dMU = paramaa.Iax;
-        com.tencent.mm.sdk.b.a.IvT.l(paramzx);
-      }
-      AppMethodBeat.o(20538);
-      return;
       try
       {
-        i = com.tencent.mm.b.o.t(paramArrayOfByte, 0);
-        ae.d("MicroMsg.BigBallOfMudSyncExtension", "local test synccmd, sleep %d", new Object[] { Integer.valueOf(i) });
+        i = com.tencent.mm.b.o.v(paramArrayOfByte, 0);
+        Log.d("MicroMsg.BigBallOfMudSyncExtension", "local test synccmd, sleep %d", new Object[] { Integer.valueOf(i) });
         if (i > 0) {
           Thread.sleep(i);
         }
         AppMethodBeat.o(20538);
         return;
       }
-      catch (InterruptedException paramzx)
+      catch (InterruptedException paramabn)
       {
-        ae.printErrStackTrace("MicroMsg.BigBallOfMudSyncExtension", paramzx, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.BigBallOfMudSyncExtension", paramabn, "", new Object[0]);
         AppMethodBeat.o(20538);
         return;
       }
-      paramzx = (ccz)new ccz().parseFrom(paramArrayOfByte);
-      ae.d("MicroMsg.BigBallOfMudSyncExtension", "rollback, msgtype is %d, msgid is %d", new Object[] { Integer.valueOf(paramzx.urJ), Long.valueOf(paramzx.xrk) });
-      if (com.tencent.mm.model.x.AE(paramzx.uvG))
+      paramabn = (ctf)new ctf().parseFrom(paramArrayOfByte);
+      Log.d("MicroMsg.BigBallOfMudSyncExtension", "rollback, msgtype is %d, msgid is %d", new Object[] { Integer.valueOf(paramabn.xKb), Long.valueOf(paramabn.Brn) });
+      if (ab.Jj(paramabn.xNH))
       {
-        paramArrayOfByte = new sc();
-        paramArrayOfByte.dHJ.msgId = paramzx.xrk;
-        com.tencent.mm.sdk.b.a.IvT.l(paramArrayOfByte);
+        paramArrayOfByte = new sy();
+        paramArrayOfByte.dZu.msgId = paramabn.Brn;
+        EventCenter.instance.publish(paramArrayOfByte);
       }
       AppMethodBeat.o(20538);
       return;
-      paramzx = new tz();
-      paramzx.dJz.data = paramArrayOfByte;
-      com.tencent.mm.sdk.b.a.IvT.l(paramzx);
+      paramabn = new ux();
+      paramabn.ebm.data = paramArrayOfByte;
+      EventCenter.instance.publish(paramabn);
       AppMethodBeat.o(20538);
       return;
-      paramzx = (dar)new dar().parseFrom(paramArrayOfByte);
-    } while (paramzx == null);
+      paramabn = (dtv)new dtv().parseFrom(paramArrayOfByte);
+    } while (paramabn == null);
     label773:
     label1039:
     label1044:
@@ -645,7 +667,7 @@ public final class a
     label2105:
     label2370:
     label2378:
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().me(paramzx.nIJ, paramzx.xrf);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().mS(paramabn.UserName, paramabn.Bri);
     label1411:
     label1416:
     label2349:
@@ -654,7 +676,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelmulti.a
  * JD-Core Version:    0.7.0.1
  */

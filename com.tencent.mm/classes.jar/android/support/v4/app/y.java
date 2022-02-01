@@ -9,10 +9,10 @@ public final class y
 {
   public static final class a
   {
-    public ArrayList<String> IC;
-    public ArrayList<String> IE;
-    public ArrayList<String> IF;
-    public ArrayList<Uri> IG;
+    public ArrayList<String> IN;
+    public ArrayList<String> IP;
+    public ArrayList<String> IQ;
+    public ArrayList<Uri> IR;
     private Activity mActivity;
     public Intent mIntent;
     
@@ -25,7 +25,7 @@ public final class y
       this.mIntent.addFlags(524288);
     }
     
-    public final void a(String paramString, ArrayList<String> paramArrayList)
+    public final void b(String paramString, ArrayList<String> paramArrayList)
     {
       String[] arrayOfString1 = this.mIntent.getStringArrayExtra(paramString);
       if (arrayOfString1 != null) {}

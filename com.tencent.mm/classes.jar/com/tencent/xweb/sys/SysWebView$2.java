@@ -14,7 +14,7 @@ import android.webkit.WebChromeClient.FileChooserParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView.a;
 import com.tencent.xweb.extension.video.b;
-import com.tencent.xweb.util.g;
+import com.tencent.xweb.util.h;
 import com.tencent.xweb.x;
 import org.xwalk.core.Log;
 
@@ -26,13 +26,13 @@ class SysWebView$2
   public View getVideoLoadingProgressView()
   {
     AppMethodBeat.i(153705);
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      localView = this.MRr.MRk.getVideoLoadingProgressView();
+      localView = this.SEv.SEo.getVideoLoadingProgressView();
       AppMethodBeat.o(153705);
       return localView;
     }
-    View localView = LayoutInflater.from(this.MRr.MRh.getContext()).inflate(2131495836, null);
+    View localView = LayoutInflater.from(this.SEv.SEl.getContext()).inflate(2131496804, null);
     AppMethodBeat.o(153705);
     return localView;
   }
@@ -41,9 +41,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153700);
     Log.i("SysWebView", "onConsoleMessage " + paramConsoleMessage.message());
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      bool = this.MRr.MRk.onConsoleMessage(paramConsoleMessage);
+      bool = this.SEv.SEo.onConsoleMessage(paramConsoleMessage);
       AppMethodBeat.o(153700);
       return bool;
     }
@@ -56,9 +56,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153699);
     Log.i("SysWebView", "onGeolocationPermissionsHidePrompt");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.onGeolocationPermissionsHidePrompt();
+      this.SEv.SEo.onGeolocationPermissionsHidePrompt();
       AppMethodBeat.o(153699);
       return;
     }
@@ -70,9 +70,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153698);
     Log.i("SysWebView", "onGeolocationPermissionsShowPrompt");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+      this.SEv.SEo.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
       AppMethodBeat.o(153698);
       return;
     }
@@ -85,9 +85,9 @@ class SysWebView$2
     boolean bool = false;
     AppMethodBeat.i(153694);
     Log.i("SysWebView", "onHideCustomView");
-    e.a(this.MRr, false);
-    if (this.MRr.MRk != null) {
-      bool = this.MRr.MRk.bpU();
+    e.a(this.SEv, false);
+    if (this.SEv.SEo != null) {
+      bool = this.SEv.SEo.bLA();
     }
     if (bool)
     {
@@ -95,15 +95,15 @@ class SysWebView$2
       AppMethodBeat.o(153694);
       return;
     }
-    if (e.a(this.MRr) != null)
+    if (e.a(this.SEv) != null)
     {
-      e.a(this.MRr).onHideCustomView();
+      e.a(this.SEv).onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.onHideCustomView();
+      this.SEv.SEo.onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
@@ -115,9 +115,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153695);
     Log.i("SysWebView", "onJsAlert");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      bool = this.MRr.MRk.a(this.MRr.MRh, paramString1, paramString2, new c.e(paramJsResult));
+      bool = this.SEv.SEo.a(this.SEv.SEl, paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153695);
       return bool;
     }
@@ -130,9 +130,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153696);
     Log.i("SysWebView", "onJsConfirm");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      bool = this.MRr.MRk.b(this.MRr.MRh, paramString1, paramString2, new c.e(paramJsResult));
+      bool = this.SEv.SEo.b(this.SEv.SEl, paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153696);
       return bool;
     }
@@ -145,9 +145,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153697);
     Log.i("SysWebView", "onJsPrompt");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      bool = this.MRr.MRk.a(this.MRr.MRh, paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
+      bool = this.SEv.SEo.a(this.SEv.SEl, paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
       AppMethodBeat.o(153697);
       return bool;
     }
@@ -159,9 +159,9 @@ class SysWebView$2
   public void onProgressChanged(android.webkit.WebView paramWebView, int paramInt)
   {
     AppMethodBeat.i(153691);
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.a(this.MRr.MRh, paramInt);
+      this.SEv.SEo.a(this.SEv.SEl, paramInt);
       AppMethodBeat.o(153691);
       return;
     }
@@ -174,21 +174,21 @@ class SysWebView$2
     AppMethodBeat.i(153692);
     Log.i("SysWebView", "onReceivedTitle: ".concat(String.valueOf(paramString)));
     b localb;
-    if (e.a(this.MRr) != null)
+    if (e.a(this.SEv) != null)
     {
-      localb = e.a(this.MRr);
-      if (this.MRr.MRh.getFullscreenVideoKind() != WebView.a.MNv) {
+      localb = e.a(this.SEv);
+      if (this.SEv.SEl.getFullscreenVideoKind() != WebView.a.SAq) {
         break label99;
       }
     }
     label99:
     for (boolean bool = true;; bool = false)
     {
-      localb.ba(true, bool);
-      if (this.MRr.MRk == null) {
+      localb.bk(true, bool);
+      if (this.SEv.SEo == null) {
         break;
       }
-      this.MRr.MRk.d(this.MRr.MRh, paramString);
+      this.SEv.SEo.d(this.SEv.SEl, paramString);
       AppMethodBeat.o(153692);
       return;
     }
@@ -200,27 +200,27 @@ class SysWebView$2
   {
     AppMethodBeat.i(153693);
     Log.i("SysWebView", "onShowCustomView");
-    e.a(this.MRr, true);
+    e.a(this.SEv, true);
     boolean bool = false;
-    if (this.MRr.MRk != null) {
-      bool = this.MRr.MRk.a(paramView, paramCustomViewCallback);
+    if (this.SEv.SEo != null) {
+      bool = this.SEv.SEo.a(paramView, paramCustomViewCallback);
     }
-    g.ggO();
+    h.huh();
     if (bool)
     {
       Log.i("SysWebView", "onShowCustomView isHandled:true");
       AppMethodBeat.o(153693);
       return;
     }
-    if (e.a(this.MRr) != null)
+    if (e.a(this.SEv) != null)
     {
-      e.a(this.MRr).onShowCustomView(paramView, paramCustomViewCallback);
+      e.a(this.SEv).onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.onShowCustomView(paramView, paramCustomViewCallback);
+      this.SEv.SEo.onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
@@ -232,9 +232,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153704);
     Log.i("SysWebView", "onShowFileChooser last method");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      bool = this.MRr.MRk.a(this.MRr.MRh, paramValueCallback, new c.c(paramFileChooserParams));
+      bool = this.SEv.SEo.a(this.SEv.SEl, paramValueCallback, new c.c(paramFileChooserParams));
       AppMethodBeat.o(153704);
       return bool;
     }
@@ -247,9 +247,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153701);
     Log.i("SysWebView", "openFileChooser with one param");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.openFileChooser(paramValueCallback, null, null);
+      this.SEv.SEo.openFileChooser(paramValueCallback, null, null);
       AppMethodBeat.o(153701);
       return;
     }
@@ -261,9 +261,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153702);
     Log.i("SysWebView", "openFileChooser with two param");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.openFileChooser(paramValueCallback, paramString, null);
+      this.SEv.SEo.openFileChooser(paramValueCallback, paramString, null);
       AppMethodBeat.o(153702);
       return;
     }
@@ -275,9 +275,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153703);
     Log.i("SysWebView", "openFileChooser with three param");
-    if (this.MRr.MRk != null)
+    if (this.SEv.SEo != null)
     {
-      this.MRr.MRk.openFileChooser(paramValueCallback, paramString1, paramString2);
+      this.SEv.SEo.openFileChooser(paramValueCallback, paramString1, paramString2);
       AppMethodBeat.o(153703);
       return;
     }
@@ -287,7 +287,7 @@ class SysWebView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.sys.SysWebView.2
  * JD-Core Version:    0.7.0.1
  */

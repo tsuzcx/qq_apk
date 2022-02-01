@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@raw/checkbox_selected_game" />
-    <item android:drawable="@drawable/nd" />
-</selector>
+    <solid android:color="@color/w0" />
+    <corners android:radius="@dimen/c5" />
+</shape>

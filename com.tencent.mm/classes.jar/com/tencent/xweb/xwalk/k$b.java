@@ -5,27 +5,27 @@ import org.xwalk.core.Log;
 
 public final class k$b
 {
-  public String HMx;
-  public String HMy;
-  public String HMz;
-  public int MUs;
-  public int MUt;
-  public int MUu;
-  public int MUv;
-  public String MUw;
-  public String MUx;
+  public String MYh;
+  public String MYi;
+  public String MYj;
+  public int SHA;
+  public int SHB;
+  public int SHC;
+  public String SHD;
+  public String SHE;
+  public int SHz;
   
   public static b c(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
     k = 1;
     AppMethodBeat.i(154354);
     b localb = new b();
-    localb.HMx = paramString1;
-    localb.MUx = paramString2;
-    localb.MUs = paramInt1;
-    localb.MUu = paramInt2;
-    localb.HMy = paramString3;
-    localb.HMz = paramString4;
+    localb.MYh = paramString1;
+    localb.SHE = paramString2;
+    localb.SHz = paramInt1;
+    localb.SHB = paramInt2;
+    localb.MYi = paramString3;
+    localb.MYj = paramString4;
     if (paramInt1 > 0) {
       for (;;)
       {
@@ -99,9 +99,9 @@ public final class k$b
       Log.e("XWWebView", "getSelectInfo error prefixIndex:" + i + ",suffixIndex:" + paramInt2);
       paramInt2 = 0;
       paramInt1 = 0;
-      localb.MUt = paramInt1;
-      localb.MUv = paramInt2;
-      localb.MUw = (paramString3 + paramString1 + paramString4).substring(paramString3.length() - paramInt1, paramInt2 + (paramString3.length() + paramString1.length()));
+      localb.SHA = paramInt1;
+      localb.SHC = paramInt2;
+      localb.SHD = (paramString3 + paramString1 + paramString4).substring(paramString3.length() - paramInt1, paramInt2 + (paramString3.length() + paramString1.length()));
       AppMethodBeat.o(154354);
       return localb;
     }
@@ -112,7 +112,7 @@ public final class k$b
     AppMethodBeat.i(154355);
     try
     {
-      String str = "SelectInfo PickedWord:" + this.HMx + ",PrefixText:" + this.HMy + ",SuffixText:" + this.HMz + ",PrefixOffset:" + this.MUs + ",prefixIndex:" + this.MUt + ",SuffixOffset:" + this.MUu + ",SuffixIndex:" + this.MUv + ",ResultPickedWord:" + this.MUx + ",OffsetedPickedWord:" + this.MUw;
+      String str = "SelectInfo PickedWord:" + this.MYh + ",PrefixText:" + this.MYi + ",SuffixText:" + this.MYj + ",PrefixOffset:" + this.SHz + ",prefixIndex:" + this.SHA + ",SuffixOffset:" + this.SHB + ",SuffixIndex:" + this.SHC + ",ResultPickedWord:" + this.SHE + ",OffsetedPickedWord:" + this.SHD;
       AppMethodBeat.o(154355);
       return str;
     }

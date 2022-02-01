@@ -113,6 +113,26 @@ public class SystemClassLoaderAdder
     return paramList;
   }
   
+  static void injectDexesInternal(ClassLoader paramClassLoader, List<File> paramList, File paramFile)
+  {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      V23.install(paramClassLoader, paramList, paramFile);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      V19.install(paramClassLoader, paramList, paramFile);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 14)
+    {
+      V14.install(paramClassLoader, paramList, paramFile);
+      return;
+    }
+    V4.install(paramClassLoader, paramList, paramFile);
+  }
+  
   public static void installApk(PathClassLoader paramPathClassLoader, List<File> paramList)
   {
     if (!paramList.isEmpty())
@@ -143,15 +163,7 @@ public class SystemClassLoaderAdder
         }
         uninstallPatchDex(paramClassLoader);
         throw new TinkerRuntimeException("checkDexInstall failed");
-        if (Build.VERSION.SDK_INT >= 23) {
-          V23.install(paramClassLoader, paramList, paramFile);
-        } else if (Build.VERSION.SDK_INT >= 19) {
-          V19.install(paramClassLoader, paramList, paramFile);
-        } else if (Build.VERSION.SDK_INT >= 14) {
-          V14.install(paramClassLoader, paramList, paramFile);
-        } else {
-          V4.install(paramClassLoader, paramList, paramFile);
-        }
+        injectDexesInternal(paramClassLoader, paramList, paramFile);
       }
     }
   }

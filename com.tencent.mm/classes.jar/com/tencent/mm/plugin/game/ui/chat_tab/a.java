@@ -13,10 +13,10 @@ public final class a
 {
   public static GameTabWidget2 b(Activity paramActivity, View paramView)
   {
-    AppMethodBeat.i(195719);
+    AppMethodBeat.i(204243);
     if (!(paramView instanceof FrameLayout))
     {
-      AppMethodBeat.o(195719);
+      AppMethodBeat.o(204243);
       return null;
     }
     Object localObject = (GameTabData2)paramActivity.getIntent().getParcelableExtra("game_tab_data");
@@ -31,17 +31,17 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(195719);
+      AppMethodBeat.o(204243);
       return paramActivity;
       paramActivity = null;
     }
   }
   
-  public static void fE(Context paramContext)
+  public static void gk(Context paramContext)
   {
-    AppMethodBeat.i(195720);
-    paramContext.sendBroadcast(new Intent("com.tencent.mm.game.ACTION_EXIT"), "com.tencent.mm.permission.MM_MESSAGE");
-    AppMethodBeat.o(195720);
+    AppMethodBeat.i(204244);
+    paramContext.sendBroadcast(new Intent("com.tencent.mm.game.ACTION_EXIT"), com.tencent.mm.plugin.game.a.xtn);
+    AppMethodBeat.o(204244);
   }
 }
 

@@ -13,19 +13,19 @@ import java.util.List;
 public final class k
   extends BaseAdapter
 {
+  AdapterView.OnItemClickListener BbB;
+  List<n> BbI;
   private Context mContext;
-  AdapterView.OnItemClickListener xdZ;
-  List<n> xeg;
   
   public k(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private n Nk(int paramInt)
+  private n Ux(int paramInt)
   {
     AppMethodBeat.i(67037);
-    n localn = (n)this.xeg.get(paramInt);
+    n localn = (n)this.BbI.get(paramInt);
     AppMethodBeat.o(67037);
     return localn;
   }
@@ -33,9 +33,9 @@ public final class k
   public final int getCount()
   {
     AppMethodBeat.i(67036);
-    if (this.xeg != null)
+    if (this.BbI != null)
     {
-      int i = this.xeg.size();
+      int i = this.BbI.size();
       AppMethodBeat.o(67036);
       return i;
     }
@@ -51,25 +51,25 @@ public final class k
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(67038);
-    n localn = Nk(paramInt);
+    n localn = Ux(paramInt);
     View localView;
     if ((paramView == null) || (paramView.getTag() == null))
     {
       paramView = new a();
-      localView = View.inflate(this.mContext, 2131495130, null);
-      paramView.xea = ((TextView)localView.findViewById(2131302112));
-      paramView.xeb = ((MaxGridView)localView.findViewById(2131302111));
-      paramView.xeh = new l(this.mContext);
+      localView = View.inflate(this.mContext, 2131495973, null);
+      paramView.BbC = ((TextView)localView.findViewById(2131304451));
+      paramView.BbD = ((MaxGridView)localView.findViewById(2131304450));
+      paramView.BbJ = new l(this.mContext);
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.xea.setText(localn.name);
-      paramViewGroup.xeb.setOnItemClickListener(this.xdZ);
-      paramViewGroup.xeh.xej = localn.xcf;
-      paramViewGroup.xeh.notifyDataSetChanged();
-      paramViewGroup.xeb.setAdapter(paramViewGroup.xeh);
+      paramViewGroup.BbC.setText(localn.name);
+      paramViewGroup.BbD.setOnItemClickListener(this.BbB);
+      paramViewGroup.BbJ.BbL = localn.AZH;
+      paramViewGroup.BbJ.notifyDataSetChanged();
+      paramViewGroup.BbD.setAdapter(paramViewGroup.BbJ);
       AppMethodBeat.o(67038);
       return localView;
       paramViewGroup = (a)paramView.getTag();
@@ -79,16 +79,16 @@ public final class k
   
   final class a
   {
-    public TextView xea = null;
-    public MaxGridView xeb = null;
-    public l xeh = null;
+    public TextView BbC = null;
+    public MaxGridView BbD = null;
+    public l BbJ = null;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.k
  * JD-Core Version:    0.7.0.1
  */

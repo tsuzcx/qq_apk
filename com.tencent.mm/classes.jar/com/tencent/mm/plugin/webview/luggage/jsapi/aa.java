@@ -6,31 +6,31 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class aa
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78562);
-    ae.i("MicroMsg.JsApiHideOptionMenu", "invoke");
-    m localm = ((g)paramb.chg).eSQ();
+    Log.i("MicroMsg.JsApiHideOptionMenu", "invoke");
+    m localm = ((g)paramb.cta).gbC();
     if (localm == null)
     {
-      ae.e("MicroMsg.JsApiHideOptionMenu", "actionBar is null");
-      paramb.a("fail", null);
+      Log.e("MicroMsg.JsApiHideOptionMenu", "actionBar is null");
+      paramb.c("fail", null);
       AppMethodBeat.o(78562);
       return;
     }
-    localm.eTk();
-    paramb.a("", null);
+    localm.gbX();
+    paramb.c("", null);
     AppMethodBeat.o(78562);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

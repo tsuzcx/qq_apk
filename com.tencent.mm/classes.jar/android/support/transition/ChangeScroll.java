@@ -11,7 +11,7 @@ import java.util.Map;
 public class ChangeScroll
   extends Transition
 {
-  private static final String[] Aq = { "android:changeScroll:x", "android:changeScroll:y" };
+  private static final String[] Aw = { "android:changeScroll:x", "android:changeScroll:y" };
   
   public ChangeScroll() {}
   
@@ -20,22 +20,22 @@ public class ChangeScroll
     super(paramContext, paramAttributeSet);
   }
   
-  private static void c(u paramu)
+  private static void c(v paramv)
   {
-    paramu.values.put("android:changeScroll:x", Integer.valueOf(paramu.view.getScrollX()));
-    paramu.values.put("android:changeScroll:y", Integer.valueOf(paramu.view.getScrollY()));
+    paramv.values.put("android:changeScroll:x", Integer.valueOf(paramv.view.getScrollX()));
+    paramv.values.put("android:changeScroll:y", Integer.valueOf(paramv.view.getScrollY()));
   }
   
-  public final Animator a(ViewGroup paramViewGroup, u paramu1, u paramu2)
+  public final Animator a(ViewGroup paramViewGroup, v paramv1, v paramv2)
   {
-    if ((paramu1 == null) || (paramu2 == null)) {
+    if ((paramv1 == null) || (paramv2 == null)) {
       return null;
     }
-    View localView = paramu2.view;
-    int i = ((Integer)paramu1.values.get("android:changeScroll:x")).intValue();
-    int j = ((Integer)paramu2.values.get("android:changeScroll:x")).intValue();
-    int k = ((Integer)paramu1.values.get("android:changeScroll:y")).intValue();
-    int m = ((Integer)paramu2.values.get("android:changeScroll:y")).intValue();
+    View localView = paramv2.view;
+    int i = ((Integer)paramv1.values.get("android:changeScroll:x")).intValue();
+    int j = ((Integer)paramv2.values.get("android:changeScroll:x")).intValue();
+    int k = ((Integer)paramv1.values.get("android:changeScroll:y")).intValue();
+    int m = ((Integer)paramv2.values.get("android:changeScroll:y")).intValue();
     if (i != j) {
       localView.setScrollX(i);
     }
@@ -44,25 +44,25 @@ public class ChangeScroll
       if (k != m) {
         localView.setScrollY(k);
       }
-      for (paramu1 = ObjectAnimator.ofInt(localView, "scrollY", new int[] { k, m });; paramu1 = null) {
-        return t.a(paramViewGroup, paramu1);
+      for (paramv1 = ObjectAnimator.ofInt(localView, "scrollY", new int[] { k, m });; paramv1 = null) {
+        return u.a(paramViewGroup, paramv1);
       }
     }
   }
   
-  public final void a(u paramu)
+  public final void a(v paramv)
   {
-    c(paramu);
+    c(paramv);
   }
   
-  public final void b(u paramu)
+  public final void b(v paramv)
   {
-    c(paramu);
+    c(paramv);
   }
   
   public final String[] getTransitionProperties()
   {
-    return Aq;
+    return Aw;
   }
 }
 

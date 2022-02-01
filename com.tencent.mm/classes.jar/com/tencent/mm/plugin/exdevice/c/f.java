@@ -5,7 +5,7 @@ import com.tencent.mm.bw.a;
 import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.exdevice.f.k;
 import com.tencent.mm.plugin.exdevice.f.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class f
@@ -15,32 +15,32 @@ public final class f
   {
     super(paramLong, paramInt1, paramInt2, paramArrayOfByte);
     AppMethodBeat.i(23153);
-    ae.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "ExDeviceCmdSendDataToManufacturer deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
+    Log.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "ExDeviceCmdSendDataToManufacturer deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
     AppMethodBeat.o(23153);
   }
   
   public final void b(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23154);
-    ae.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "setSendDataToManufacturerResponse ret = " + paramInt + paramString);
+    Log.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "setSendDataToManufacturerResponse ret = " + paramInt + paramString);
     l locall = new l();
-    locall.qlh = aL(paramInt, paramString);
+    locall.rCc = aQ(paramInt, paramString);
     paramString = paramArrayOfByte;
     if (paramArrayOfByte == null) {
       paramString = new byte[0];
     }
-    locall.nIq = new b(paramString);
-    this.qgD = locall;
-    this.qgB = 20002;
+    locall.oTm = new b(paramString);
+    this.rxz = locall;
+    this.rxx = 20002;
     AppMethodBeat.o(23154);
   }
   
-  protected final a bd(byte[] paramArrayOfByte)
+  protected final a bu(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23155);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "data is null");
+      Log.e("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "data is null");
       AppMethodBeat.o(23155);
       return null;
     }
@@ -48,15 +48,15 @@ public final class f
     try
     {
       localk.parseFrom(paramArrayOfByte);
-      this.qgE = localk;
-      ae.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "SendDataToManufacturerSvrRequest cmd has been received");
+      this.rxA = localk;
+      Log.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "SendDataToManufacturerSvrRequest cmd has been received");
       AppMethodBeat.o(23155);
       return localk;
     }
     catch (IOException paramArrayOfByte)
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "SendDataToManufacturerSvrRequest.parseFrom Failed!!! %s", new Object[] { paramArrayOfByte.getMessage() });
-      ae.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", paramArrayOfByte, "", new Object[0]);
+      Log.e("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "SendDataToManufacturerSvrRequest.parseFrom Failed!!! %s", new Object[] { paramArrayOfByte.getMessage() });
+      Log.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(23155);
     }
     return null;
@@ -64,7 +64,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.f
  * JD-Core Version:    0.7.0.1
  */

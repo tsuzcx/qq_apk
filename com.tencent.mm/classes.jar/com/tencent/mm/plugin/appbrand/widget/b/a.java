@@ -1,13 +1,18 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
 import android.view.View;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.appbrand.jsapi.base.f;
-import com.tencent.mm.plugin.appbrand.jsapi.s.b;
+import com.tencent.mm.plugin.appbrand.jsapi.u.b;
 
 public abstract interface a
   extends f, b, c, d
 {
+  public abstract ad.b getKeyValueSet();
+  
   public abstract View getView();
+  
+  public abstract void setKeyValueSet(ad.b paramb);
 }
 
 

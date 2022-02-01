@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape>
-            <corners android:radius="2.0dip" />
-            <solid android:color="#1a000000" />
-        </shape>
-    </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape>
-                <corners android:radius="2.0dip" />
-                <solid android:color="@color/a_j" />
-            </shape>
-        </clip>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@color/x5" />
+    <item android:state_selected="true" android:drawable="@color/x5" />
+    <item android:drawable="@color/afz" />
+</selector>

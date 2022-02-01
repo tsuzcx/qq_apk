@@ -2,234 +2,236 @@ package com.tencent.mm.plugin.emoji.e;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.emoji.f.o;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.emotion.p;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.emotion.q;
 import java.util.HashMap;
 
 public final class i
 {
-  public int fVN;
-  public boolean pJV;
-  public long pJW;
-  public int pJX;
-  public p pJY;
-  public HashMap<String, p> pJZ;
+  public int cSs;
+  public int raA;
+  public com.tencent.mm.storage.emotion.p raB;
+  public HashMap<String, com.tencent.mm.storage.emotion.p> raC;
+  public boolean ray;
+  public long raz;
   
   public i()
   {
     AppMethodBeat.i(108522);
-    this.pJV = true;
-    this.pJW = 863913600000L;
-    this.pJX = 19;
-    this.fVN = 79;
-    this.pJZ = new HashMap();
+    this.ray = true;
+    this.raz = 863913600000L;
+    this.raA = 19;
+    this.cSs = 79;
+    this.raC = new HashMap();
     AppMethodBeat.o(108522);
   }
   
-  private void a(p paramp, boolean paramBoolean)
+  private void a(com.tencent.mm.storage.emotion.p paramp, boolean paramBoolean)
   {
     AppMethodBeat.i(108525);
     if (paramp == null)
     {
-      ae.w("MicroMsg.emoji.EmojiRewardTipMgr", "updateLastRewardTipInfo failed. reward tip info is null.");
+      Log.w("MicroMsg.emoji.EmojiRewardTipMgr", "updateLastRewardTipInfo failed. reward tip info is null.");
       AppMethodBeat.o(108525);
       return;
     }
-    if ((this.pJY == null) || (this.pJY.field_prodcutID.equalsIgnoreCase(paramp.field_prodcutID))) {}
+    if ((this.raB == null) || (this.raB.field_prodcutID.equalsIgnoreCase(paramp.field_prodcutID))) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        this.pJY.field_continuCount = 0;
-        this.pJZ.put(this.pJY.field_prodcutID, this.pJY);
-        k.getEmojiStorageMgr().Jgb.a(this.pJY);
+        this.raB.field_continuCount = 0;
+        this.raC.put(this.raB.field_prodcutID, this.raB);
+        k.getEmojiStorageMgr().OpU.a(this.raB);
       }
-      this.pJY = paramp;
+      this.raB = paramp;
       if (!paramBoolean) {
         break;
       }
-      this.pJY.field_modifyTime = 0L;
-      this.pJY.field_showTipsTime = System.currentTimeMillis();
-      this.pJY.field_totalCount = 0;
-      this.pJY.field_continuCount = 0;
-      this.pJZ.put(this.pJY.field_prodcutID, this.pJY);
-      k.getEmojiStorageMgr().Jgb.a(this.pJY);
+      this.raB.field_modifyTime = 0L;
+      this.raB.field_showTipsTime = System.currentTimeMillis();
+      this.raB.field_totalCount = 0;
+      this.raB.field_continuCount = 0;
+      this.raC.put(this.raB.field_prodcutID, this.raB);
+      k.getEmojiStorageMgr().OpU.a(this.raB);
       AppMethodBeat.o(108525);
       return;
     }
     if (i != 0) {}
-    for (this.pJY.field_continuCount += 1;; this.pJY.field_continuCount = 1)
+    for (this.raB.field_continuCount += 1;; this.raB.field_continuCount = 1)
     {
-      this.pJY.field_totalCount += 1;
-      this.pJY.field_modifyTime = System.currentTimeMillis();
+      this.raB.field_totalCount += 1;
+      this.raB.field_modifyTime = System.currentTimeMillis();
       break;
     }
   }
   
-  public final boolean acy(String paramString)
+  public final boolean amF(String paramString)
   {
     AppMethodBeat.i(108524);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip product id is null.");
+      Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip product id is null.");
       AppMethodBeat.o(108524);
       return false;
     }
-    if ((!this.pJV) && (!v.aAM()))
+    if ((!this.ray) && (!z.aUj()))
     {
-      ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip reward tip is disable. mRewardTipEnable:%b isOpenForWallet:%b", new Object[] { Boolean.valueOf(this.pJV), Boolean.valueOf(v.aAM()) });
+      Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip reward tip is disable. mRewardTipEnable:%b isOpenForWallet:%b", new Object[] { Boolean.valueOf(this.ray), Boolean.valueOf(z.aUj()) });
       AppMethodBeat.o(108524);
       return false;
     }
     Object localObject;
-    if ((this.pJZ != null) && (this.pJZ.containsKey(paramString))) {
-      localObject = (p)this.pJZ.get(paramString);
+    if ((this.raC != null) && (this.raC.containsKey(paramString))) {
+      localObject = (com.tencent.mm.storage.emotion.p)this.raC.get(paramString);
     }
-    while (System.currentTimeMillis() - ((p)localObject).field_showTipsTime < this.pJW)
+    while (System.currentTimeMillis() - ((com.tencent.mm.storage.emotion.p)localObject).field_showTipsTime < this.raz)
     {
-      ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip in cool down time.");
-      chW();
+      Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip in cool down time.");
+      cFU();
       AppMethodBeat.o(108524);
       return false;
-      localObject = new p();
-      ((p)localObject).field_prodcutID = paramString;
+      localObject = new com.tencent.mm.storage.emotion.p();
+      ((com.tencent.mm.storage.emotion.p)localObject).field_prodcutID = paramString;
     }
-    if ((localObject != null) && (System.currentTimeMillis() - ((p)localObject).field_setFlagTime > 86400000L)) {
-      if ((this.pJY != null) && (paramString.equalsIgnoreCase(this.pJY.field_prodcutID)) && (this.pJY.field_continuCount >= this.pJX - 1) && (this.pJY.field_continuCount <= this.pJX + 5 - 1)) {
-        com.tencent.mm.kernel.g.ajQ().gDv.a(new o(paramString, o.pML), 0);
+    if ((localObject != null) && (System.currentTimeMillis() - ((com.tencent.mm.storage.emotion.p)localObject).field_setFlagTime > 86400000L)) {
+      if ((this.raB != null) && (paramString.equalsIgnoreCase(this.raB.field_prodcutID)) && (this.raB.field_continuCount >= this.raA - 1) && (this.raB.field_continuCount <= this.raA + 5 - 1)) {
+        g.aAg().hqi.a(new com.tencent.mm.plugin.emoji.f.p(paramString, com.tencent.mm.plugin.emoji.f.p.rdf), 0);
       }
     }
     int i;
     label469:
     int j;
-    while ((this.pJY != null) && (paramString.equalsIgnoreCase(this.pJY.field_prodcutID)) && (this.pJY.field_continuCount >= this.pJX)) {
-      if (((this.pJY.field_flag & o.pMM) == o.pMM) && ((this.pJY.field_flag & o.pMN) != o.pMN))
+    while ((this.raB != null) && (paramString.equalsIgnoreCase(this.raB.field_prodcutID)) && (this.raB.field_continuCount >= this.raA)) {
+      if (((this.raB.field_flag & com.tencent.mm.plugin.emoji.f.p.rdg) == com.tencent.mm.plugin.emoji.f.p.rdg) && ((this.raB.field_flag & com.tencent.mm.plugin.emoji.f.p.rdh) != com.tencent.mm.plugin.emoji.f.p.rdh))
       {
-        ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  continue count:%d", new Object[] { Boolean.TRUE, paramString, Integer.valueOf(this.pJY.field_continuCount) });
-        a((p)localObject, true);
-        com.tencent.mm.plugin.report.service.g.yxI.f(12953, new Object[] { Integer.valueOf(0), this.pJY.field_prodcutID });
+        Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  continue count:%d", new Object[] { Boolean.TRUE, paramString, Integer.valueOf(this.raB.field_continuCount) });
+        a((com.tencent.mm.storage.emotion.p)localObject, true);
+        h.CyF.a(12953, new Object[] { Integer.valueOf(0), this.raB.field_prodcutID });
         AppMethodBeat.o(108524);
         return true;
-        if ((((p)localObject).field_totalCount >= this.fVN - 1) && (((p)localObject).field_totalCount <= this.fVN + 5 - 1))
+        if ((((com.tencent.mm.storage.emotion.p)localObject).field_totalCount >= this.cSs - 1) && (((com.tencent.mm.storage.emotion.p)localObject).field_totalCount <= this.cSs + 5 - 1))
         {
-          com.tencent.mm.kernel.g.ajQ().gDv.a(new o(paramString, o.pML), 0);
+          g.aAg().hqi.a(new com.tencent.mm.plugin.emoji.f.p(paramString, com.tencent.mm.plugin.emoji.f.p.rdf), 0);
           continue;
-          if (this.pJY == null)
+          if (this.raB == null)
           {
             i = 0;
-            if (this.pJY != null) {
+            if (this.raB != null) {
               break label517;
             }
           }
           label517:
-          for (j = 0;; j = this.pJY.field_totalCount)
+          for (j = 0;; j = this.raB.field_totalCount)
           {
-            ae.d("MicroMsg.emoji.EmojiRewardTipMgr", "no need to get reward today. continue count:%d total count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+            Log.d("MicroMsg.emoji.EmojiRewardTipMgr", "no need to get reward today. continue count:%d total count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
             break;
-            i = this.pJY.field_continuCount;
+            i = this.raB.field_continuCount;
             break label469;
           }
         }
       }
       else
       {
-        ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  continue count:%d flag:%d", new Object[] { Boolean.FALSE, paramString, Integer.valueOf(this.pJY.field_continuCount), Integer.valueOf(this.pJY.field_flag) });
-        a((p)localObject, false);
+        Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  continue count:%d flag:%d", new Object[] { Boolean.FALSE, paramString, Integer.valueOf(this.raB.field_continuCount), Integer.valueOf(this.raB.field_flag) });
+        a((com.tencent.mm.storage.emotion.p)localObject, false);
         AppMethodBeat.o(108524);
         return false;
       }
     }
-    if ((localObject != null) && (((p)localObject).field_totalCount >= this.fVN))
+    if ((localObject != null) && (((com.tencent.mm.storage.emotion.p)localObject).field_totalCount >= this.cSs))
     {
-      if (((((p)localObject).field_flag & o.pMM) == o.pMM) && ((((p)localObject).field_flag & o.pMN) != o.pMN))
+      if (((((com.tencent.mm.storage.emotion.p)localObject).field_flag & com.tencent.mm.plugin.emoji.f.p.rdg) == com.tencent.mm.plugin.emoji.f.p.rdg) && ((((com.tencent.mm.storage.emotion.p)localObject).field_flag & com.tencent.mm.plugin.emoji.f.p.rdh) != com.tencent.mm.plugin.emoji.f.p.rdh))
       {
         localBoolean = Boolean.TRUE;
-        if (this.pJY == null)
+        if (this.raB == null)
         {
           i = 0;
-          ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  total count :%d", new Object[] { localBoolean, paramString, Integer.valueOf(i) });
-          a((p)localObject, true);
-          localObject = com.tencent.mm.plugin.report.service.g.yxI;
-          if (this.pJY != null) {
+          Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  total count :%d", new Object[] { localBoolean, paramString, Integer.valueOf(i) });
+          a((com.tencent.mm.storage.emotion.p)localObject, true);
+          localObject = h.CyF;
+          if (this.raB != null) {
             break label740;
           }
         }
         label740:
-        for (paramString = "";; paramString = this.pJY.field_prodcutID)
+        for (paramString = "";; paramString = this.raB.field_prodcutID)
         {
-          ((com.tencent.mm.plugin.report.service.g)localObject).f(12953, new Object[] { Integer.valueOf(0), paramString });
+          ((h)localObject).a(12953, new Object[] { Integer.valueOf(0), paramString });
           AppMethodBeat.o(108524);
           return true;
-          i = this.pJY.field_totalCount;
+          i = this.raB.field_totalCount;
           break;
         }
       }
       Boolean localBoolean = Boolean.FALSE;
-      if (this.pJY == null)
+      if (this.raB == null)
       {
         i = 0;
-        if (this.pJY != null) {
+        if (this.raB != null) {
           break label833;
         }
       }
       label833:
-      for (j = 0;; j = this.pJY.field_flag)
+      for (j = 0;; j = this.raB.field_flag)
       {
-        ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  total count :%d flag:%d", new Object[] { localBoolean, paramString, Integer.valueOf(i), Integer.valueOf(j) });
-        a((p)localObject, false);
+        Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  total count :%d flag:%d", new Object[] { localBoolean, paramString, Integer.valueOf(i), Integer.valueOf(j) });
+        a((com.tencent.mm.storage.emotion.p)localObject, false);
         AppMethodBeat.o(108524);
         return false;
-        i = this.pJY.field_totalCount;
+        i = this.raB.field_totalCount;
         break;
       }
     }
-    a((p)localObject, false);
+    a((com.tencent.mm.storage.emotion.p)localObject, false);
     AppMethodBeat.o(108524);
     return false;
   }
   
-  public final void chW()
+  public final void cFU()
   {
     AppMethodBeat.i(108523);
-    if (this.pJY != null)
+    if (this.raB != null)
     {
-      this.pJY.field_continuCount = 0;
-      this.pJZ.put(this.pJY.field_prodcutID, this.pJY);
-      k.getEmojiStorageMgr().Jgb.a(this.pJY);
-      this.pJY = null;
+      this.raB.field_continuCount = 0;
+      this.raC.put(this.raB.field_prodcutID, this.raB);
+      k.getEmojiStorageMgr().OpU.a(this.raB);
+      this.raB = null;
     }
     AppMethodBeat.o(108523);
   }
   
-  public final void da(String paramString, int paramInt)
+  public final void dg(String paramString, int paramInt)
   {
     AppMethodBeat.i(108526);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.emoji.EmojiRewardTipMgr", "updateProductFlag failed. no such product id.");
+      Log.w("MicroMsg.emoji.EmojiRewardTipMgr", "updateProductFlag failed. no such product id.");
       AppMethodBeat.o(108526);
       return;
     }
-    if ((this.pJZ != null) && (this.pJZ.containsKey(paramString)))
+    if ((this.raC != null) && (this.raC.containsKey(paramString)))
     {
-      ((p)this.pJZ.get(paramString)).field_flag = paramInt;
-      ((p)this.pJZ.get(paramString)).field_setFlagTime = System.currentTimeMillis();
+      ((com.tencent.mm.storage.emotion.p)this.raC.get(paramString)).field_flag = paramInt;
+      ((com.tencent.mm.storage.emotion.p)this.raC.get(paramString)).field_setFlagTime = System.currentTimeMillis();
       AppMethodBeat.o(108526);
       return;
     }
-    ae.i("MicroMsg.emoji.EmojiRewardTipMgr", "updateProductFlag map no contains this product id :%s", new Object[] { paramString });
+    Log.i("MicroMsg.emoji.EmojiRewardTipMgr", "updateProductFlag map no contains this product id :%s", new Object[] { paramString });
     AppMethodBeat.o(108526);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.i
  * JD-Core Version:    0.7.0.1
  */

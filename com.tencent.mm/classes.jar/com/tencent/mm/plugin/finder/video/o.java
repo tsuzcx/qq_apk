@@ -1,112 +1,71 @@
 package com.tencent.mm.plugin.finder.video;
 
-import android.graphics.Bitmap;
-import android.view.View;
-import android.view.ViewParent;
-import android.view.ViewPropertyAnimator;
-import com.tencent.mm.modelvideo.b;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.pluginsdk.ui.i.b;
-import com.tencent.mm.pluginsdk.ui.i.e;
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.vlog.model.ac;
+import com.tencent.mm.plugin.vlog.model.i;
+import com.tencent.mm.protocal.protobuf.acn;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.videocomposition.c.a;
+import com.tencent.mm.videocomposition.n;
+import com.tencent.mm.xeffect.effect.EffectManager;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "", "animate", "Landroid/view/ViewPropertyAnimator;", "getAlpha", "", "getBitmap", "Landroid/graphics/Bitmap;", "getCurrentPlaySecond", "", "getHeight", "getIsNeverStart", "", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getTag", "id", "getVideoDuration", "getVideoMediaId", "", "getVideoMediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "getWidth", "isPlaying", "isPreviewing", "onRelease", "", "onUIDestroy", "pause", "pauseWithCancel", "play", "prepareToPlay", "removeVideoFooterView", "seekTo", "timestamp", "", "afterSeekPlay", "setAlpha", "alpha", "setFinderVideoCore", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "setIMMVideoViewCallback", "_callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setKeepScreenOn", "keepScreenOn", "setLoop", "loop", "setMute", "isMute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setTag", "tag", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "isLocal", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setVideoMuteListener", "muteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setVideoPlayLifecycle", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setVideoViewFocused", "focused", "startOrPlay", "stop", "plugin-finder_release"})
-public abstract interface o
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderVideoThumbFetcherFactory;", "", "()V", "getThumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "width", "", "height", "plugin-finder_release"})
+public final class o
 {
-  public abstract void a(m paramm, boolean paramBoolean, FinderItem paramFinderItem);
+  public static final o wfX;
   
-  public abstract ViewPropertyAnimator animate();
+  static
+  {
+    AppMethodBeat.i(254381);
+    wfX = new o();
+    AppMethodBeat.o(254381);
+  }
   
-  public abstract boolean c(double paramDouble, boolean paramBoolean);
+  public static com.tencent.mm.videocomposition.g m(final cjl paramcjl)
+  {
+    AppMethodBeat.i(254380);
+    p.h(paramcjl, "media");
+    Object localObject1 = paramcjl.MfU;
+    Object localObject2 = y.vXH;
+    if ((!y.h(paramcjl)) && (localObject1 != null))
+    {
+      paramcjl = new EffectManager();
+      localObject2 = i.d((acn)localObject1, paramcjl);
+      localObject1 = i.d((acn)localObject1);
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1).start();
+      ((ac)localObject2).O((b)localObject1);
+      long l = ((ac)localObject2).Gez.getPlayStart();
+      c.a locala = com.tencent.mm.videocomposition.c.RgU;
+      paramcjl = (com.tencent.mm.videocomposition.g)new w(l, (com.tencent.mm.videocomposition.g)c.a.b(((ac)localObject2).getComposition()), (a)new a((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1, paramcjl));
+      AppMethodBeat.o(254380);
+      return paramcjl;
+    }
+    paramcjl = (com.tencent.mm.videocomposition.g)new g(paramcjl);
+    AppMethodBeat.o(254380);
+    return paramcjl;
+  }
   
-  public abstract boolean cOA();
-  
-  public abstract boolean cOB();
-  
-  public abstract boolean cON();
-  
-  public abstract int cOO();
-  
-  public abstract void cOS();
-  
-  public abstract float getAlpha();
-  
-  public abstract Bitmap getBitmap();
-  
-  public abstract int getCurrentPlaySecond();
-  
-  public abstract int getHeight();
-  
-  public abstract boolean getIsNeverStart();
-  
-  public abstract boolean getIsShouldPlayResume();
-  
-  public abstract ViewParent getParentView();
-  
-  public abstract Object getTag(int paramInt);
-  
-  public abstract int getVideoDuration();
-  
-  public abstract String getVideoMediaId();
-  
-  public abstract p getVideoMediaInfo();
-  
-  public abstract View getVideoView();
-  
-  public abstract boolean getVideoViewFocused();
-  
-  public abstract int getWidth();
-  
-  public abstract boolean isPlaying();
-  
-  public abstract void onRelease();
-  
-  public abstract void onUIDestroy();
-  
-  public abstract boolean pause();
-  
-  public abstract boolean play();
-  
-  public abstract void setAlpha(float paramFloat);
-  
-  public abstract void setFinderVideoCore(i parami);
-  
-  public abstract void setIMMVideoViewCallback(i.b paramb);
-  
-  public abstract void setIOnlineVideoProxy(b paramb);
-  
-  public abstract void setInterceptDetach(boolean paramBoolean);
-  
-  public abstract void setIsShouldPlayResume(boolean paramBoolean);
-  
-  public abstract void setIsShowBasicControls(boolean paramBoolean);
-  
-  public abstract void setKeepScreenOn(boolean paramBoolean);
-  
-  public abstract void setLoop(boolean paramBoolean);
-  
-  public abstract void setMute(boolean paramBoolean);
-  
-  public abstract void setPreview(boolean paramBoolean);
-  
-  public abstract void setScaleType(i.e parame);
-  
-  public abstract void setTag(int paramInt, Object paramObject);
-  
-  public abstract void setTag(Object paramObject);
-  
-  public abstract void setVideoMuteListener(q paramq);
-  
-  public abstract void setVideoPlayLifecycle(u paramu);
-  
-  public abstract void setVideoViewFocused(boolean paramBoolean);
-  
-  public abstract void stop();
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class a
+    extends q
+    implements a<x>
+  {
+    a(com.tencent.mm.plugin.recordvideo.ui.editor.b.c paramc, EffectManager paramEffectManager)
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.o
  * JD-Core Version:    0.7.0.1
  */

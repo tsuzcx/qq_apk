@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
 
 final class JsApiResendProfileFeed$a
-  extends p
+  extends s
 {
   private static final int CTRL_INDEX = -2;
   private static final String NAME = "onFeedPostCallback";

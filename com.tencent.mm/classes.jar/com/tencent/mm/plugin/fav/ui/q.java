@@ -3,29 +3,30 @@ package com.tencent.mm.plugin.fav.ui;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.an.a;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.g.a.gx.a;
-import com.tencent.mm.g.a.gx.b;
+import com.tencent.mm.g.a.hb;
+import com.tencent.mm.g.a.hb.a;
+import com.tencent.mm.g.a.hb.b;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.am;
 import com.tencent.mm.plugin.fav.a.ap;
 import com.tencent.mm.plugin.fav.a.b;
+import com.tencent.mm.plugin.fav.a.h;
 import com.tencent.mm.plugin.fav.a.n;
 import com.tencent.mm.plugin.fav.a.r;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.akn;
-import com.tencent.mm.protocal.protobuf.akq;
-import com.tencent.mm.protocal.protobuf.akt;
-import com.tencent.mm.protocal.protobuf.ala;
-import com.tencent.mm.protocal.protobuf.aln;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.amr;
+import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.protocal.protobuf.ane;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.ano;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -34,94 +35,94 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class q
-  extends c<gx>
+  extends IListener<hb>
 {
   public q()
   {
     AppMethodBeat.i(160917);
-    this.__eventId = gx.class.getName().hashCode();
+    this.__eventId = hb.class.getName().hashCode();
     AppMethodBeat.o(160917);
   }
   
-  private static boolean d(gx paramgx)
+  private static boolean d(hb paramhb)
   {
     AppMethodBeat.i(107062);
-    switch (paramgx.dub.type)
+    switch (paramhb.dLm.type)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(107062);
       return false;
-      Object localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
-      if ((localObject1 != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_tagProto.GCs != null))
+      Object localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
+      if ((localObject1 != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_tagProto.Lyo != null))
       {
-        paramgx.duc.bzf = new ArrayList();
-        paramgx.duc.bzf.addAll(((com.tencent.mm.plugin.fav.a.g)localObject1).field_tagProto.GCs);
+        paramhb.dLn.bzh = new ArrayList();
+        paramhb.dLn.bzh.addAll(((com.tencent.mm.plugin.fav.a.g)localObject1).field_tagProto.Lyo);
         continue;
-        if (paramgx.dub.dud != null)
+        if (paramhb.dLm.dLo != null)
         {
-          localObject1 = new com.tencent.mm.vfs.k(b.d(paramgx.dub.dud));
-          if (((com.tencent.mm.vfs.k)localObject1).exists()) {
-            paramgx.duc.path = w.B(((com.tencent.mm.vfs.k)localObject1).fTh());
+          localObject1 = new com.tencent.mm.vfs.o(b.d(paramhb.dLm.dLo));
+          if (((com.tencent.mm.vfs.o)localObject1).exists()) {
+            paramhb.dLn.path = aa.z(((com.tencent.mm.vfs.o)localObject1).her());
           }
-          localObject1 = new com.tencent.mm.vfs.k(b.a(paramgx.dub.dud));
-          if (((com.tencent.mm.vfs.k)localObject1).exists())
+          localObject1 = new com.tencent.mm.vfs.o(b.a(paramhb.dLm.dLo));
+          if (((com.tencent.mm.vfs.o)localObject1).exists())
           {
-            paramgx.duc.thumbPath = w.B(((com.tencent.mm.vfs.k)localObject1).fTh());
+            paramhb.dLn.thumbPath = aa.z(((com.tencent.mm.vfs.o)localObject1).her());
             continue;
-            ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().add(paramgx.dub.duf);
-            paramgx.duc.ret = 0;
+            ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().add(paramhb.dLm.dLq);
+            paramhb.dLn.ret = 0;
             continue;
-            ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().remove(paramgx.dub.duf);
-            paramgx.duc.ret = 0;
+            ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().remove(paramhb.dLm.dLq);
+            paramhb.dLn.ret = 0;
             continue;
-            paramgx.duc.duo = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cwL();
-            paramgx.duc.ret = 0;
+            paramhb.dLn.dLz = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().cUP();
+            paramhb.dLn.ret = 0;
             continue;
-            localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+            localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
             if (localObject1 == null) {}
-            for (paramgx.duc.dun = null;; paramgx.duc.dun = b.a(((com.tencent.mm.plugin.fav.a.g)localObject1).field_type, ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto, ((com.tencent.mm.plugin.fav.a.g)localObject1).field_tagProto))
+            for (paramhb.dLn.dLy = null;; paramhb.dLn.dLy = b.a(((com.tencent.mm.plugin.fav.a.g)localObject1).field_type, ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto, ((com.tencent.mm.plugin.fav.a.g)localObject1).field_tagProto))
             {
-              paramgx.duc.ret = 0;
+              paramhb.dLn.ret = 0;
               break;
             }
-            localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
-            ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramgx.dub.context, (com.tencent.mm.plugin.fav.a.g)localObject1, paramgx.dub.dum);
-            paramgx.duc.ret = 0;
+            localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
+            ((y)com.tencent.mm.kernel.g.af(y.class)).a(paramhb.dLm.context, (com.tencent.mm.plugin.fav.a.g)localObject1, paramhb.dLm.dLx);
+            paramhb.dLn.ret = 0;
             continue;
-            localObject1 = b.a(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH), paramgx.dub.handler);
-            paramgx.duc.thumbPath = localObject1[0];
-            paramgx.duc.thumbUrl = localObject1[1];
-            paramgx.duc.ret = 0;
+            localObject1 = b.a(((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW), paramhb.dLm.handler);
+            paramhb.dLn.thumbPath = localObject1[0];
+            paramhb.dLn.thumbUrl = localObject1[1];
+            paramhb.dLn.ret = 0;
             continue;
-            b.b(paramgx.dub.doH, paramgx.dub.dug);
+            b.b(paramhb.dLm.dFW, paramhb.dLm.dLr);
             continue;
-            Object localObject2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+            Object localObject2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
             b.q((com.tencent.mm.plugin.fav.a.g)localObject2);
             localObject1 = localObject2;
             if (localObject2 == null)
             {
               localObject1 = localObject2;
-              if (paramgx.dub.doN != null) {
-                localObject1 = b.a(paramgx.dub.doN);
+              if (paramhb.dLm.dGb != null) {
+                localObject1 = b.a(paramhb.dLm.dGb);
               }
             }
-            l.a(paramgx.dub.context, paramgx.dub.toUser, paramgx.dub.duh, (com.tencent.mm.plugin.fav.a.g)localObject1, paramgx.dub.dug);
+            l.a(paramhb.dLm.context, paramhb.dLm.toUser, paramhb.dLm.dLs, (com.tencent.mm.plugin.fav.a.g)localObject1, paramhb.dLm.dLr);
             continue;
-            if (b.g(paramgx.dub.dud))
+            if (b.g(paramhb.dLm.dLo))
             {
-              paramgx.duc.ret = 1;
+              paramhb.dLn.ret = 1;
             }
             else
             {
-              paramgx.duc.ret = 0;
+              paramhb.dLn.ret = 0;
               continue;
-              b.l(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH));
+              b.l(((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW));
               continue;
-              b.m(((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH));
+              b.m(((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW));
               continue;
-              paramgx.duc.ret = b.ahf(paramgx.dub.dud.GzP);
+              paramhb.dLn.ret = b.arN(paramhb.dLm.dLo.LvC);
               continue;
               localObject1 = new ArrayList();
               ((List)localObject1).add(Integer.valueOf(7));
@@ -134,277 +135,277 @@ public final class q
               while (((Iterator)localObject2).hasNext())
               {
                 localObject5 = (com.tencent.mm.plugin.fav.a.g)((Iterator)localObject2).next();
-                localObject4 = ((com.tencent.mm.plugin.fav.a.g)localObject5).field_favProto.GCe;
-                if (((com.tencent.mm.plugin.fav.a.g)localObject5).field_type == 7)
+                localObject4 = ((com.tencent.mm.plugin.fav.a.g)localObject5).field_favProto.Lya;
+                if ((((com.tencent.mm.plugin.fav.a.g)localObject5).field_type == 7) || (((com.tencent.mm.plugin.fav.a.g)localObject5).field_type == 21))
                 {
                   localObject5 = b.c((com.tencent.mm.plugin.fav.a.g)localObject5);
-                  localObject6 = m((ajx)localObject5);
-                  localObject4 = com.tencent.mm.ay.g.a(6, null, ((ajx)localObject5).title, ((ajx)localObject5).desc, ((ajx)localObject5).GzH, ((ajx)localObject5).GzL, ((ajx)localObject5).GzJ, ((ajx)localObject5).dua, b.cwi(), (String)localObject6, "", ((akt)localObject4).appId);
-                  ((com.tencent.mm.ay.f)localObject4).ikq = ((ajx)localObject5).songAlbumUrl;
-                  ((com.tencent.mm.ay.f)localObject4).iki = ((ajx)localObject5).songLyric;
+                  localObject6 = m((aml)localObject5);
+                  localObject4 = com.tencent.mm.ay.g.a(6, null, ((aml)localObject5).title, ((aml)localObject5).desc, ((aml)localObject5).Lvu, ((aml)localObject5).Lvy, ((aml)localObject5).Lvw, ((aml)localObject5).dLl, b.cUl(), (String)localObject6, "", ((anh)localObject4).appId);
+                  ((com.tencent.mm.ay.f)localObject4).jfm = ((aml)localObject5).songAlbumUrl;
+                  ((com.tencent.mm.ay.f)localObject4).jfe = ((aml)localObject5).songLyric;
                   ((List)localObject1).add(localObject4);
                 }
-                else if ((((com.tencent.mm.plugin.fav.a.g)localObject5).field_type == 14) && (((com.tencent.mm.plugin.fav.a.g)localObject5).field_favProto.oeJ != null))
+                else if ((((com.tencent.mm.plugin.fav.a.g)localObject5).field_type == 14) && (((com.tencent.mm.plugin.fav.a.g)localObject5).field_favProto.ppH != null))
                 {
-                  localObject5 = ((com.tencent.mm.plugin.fav.a.g)localObject5).field_favProto.oeJ.iterator();
+                  localObject5 = ((com.tencent.mm.plugin.fav.a.g)localObject5).field_favProto.ppH.iterator();
                   while (((Iterator)localObject5).hasNext())
                   {
-                    localObject6 = (ajx)((Iterator)localObject5).next();
-                    if (((ajx)localObject6).dataType == 7)
+                    localObject6 = (aml)((Iterator)localObject5).next();
+                    if ((((aml)localObject6).dataType == 7) || (((aml)localObject6).dataType == 29))
                     {
-                      Object localObject7 = m((ajx)localObject6);
-                      localObject7 = com.tencent.mm.ay.g.a(6, null, ((ajx)localObject6).title, ((ajx)localObject6).desc, ((ajx)localObject6).GzH, ((ajx)localObject6).GzL, ((ajx)localObject6).GzJ, ((ajx)localObject6).dua, b.cwi(), (String)localObject7, "", ((akt)localObject4).appId);
-                      ((com.tencent.mm.ay.f)localObject7).ikq = ((ajx)localObject6).songAlbumUrl;
-                      ((com.tencent.mm.ay.f)localObject7).iki = ((ajx)localObject6).songLyric;
+                      Object localObject7 = m((aml)localObject6);
+                      localObject7 = com.tencent.mm.ay.g.a(6, null, ((aml)localObject6).title, ((aml)localObject6).desc, ((aml)localObject6).Lvu, ((aml)localObject6).Lvy, ((aml)localObject6).Lvw, ((aml)localObject6).dLl, b.cUl(), (String)localObject7, "", ((anh)localObject4).appId);
+                      ((com.tencent.mm.ay.f)localObject7).jfm = ((aml)localObject6).songAlbumUrl;
+                      ((com.tencent.mm.ay.f)localObject7).jfe = ((aml)localObject6).songLyric;
                       ((List)localObject1).add(localObject7);
                     }
                   }
                 }
               }
-              paramgx.duc.dup = ((List)localObject1);
+              paramhb.dLn.dLA = ((List)localObject1);
               continue;
-              if (paramgx.dub.doH == -1L)
+              if (paramhb.dLm.dFW == -1L)
               {
-                k.a(paramgx.dub.title, paramgx.dub.doN.oeJ, -1L);
+                k.a(paramhb.dLm.title, paramhb.dLm.dGb.ppH, -1L);
               }
-              else if (paramgx.dub.dui == -1)
+              else if (paramhb.dLm.dLt == -1)
               {
-                localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
-                if ((localObject1 != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.oeJ.size() > 1))
+                localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
+                if ((localObject1 != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH.size() > 1))
                 {
-                  localObject1 = (ajx)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.oeJ.get(0);
-                  paramgx.duc.dus = bu.isNullOrNil(((ajx)localObject1).GzA);
+                  localObject1 = (aml)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH.get(0);
+                  paramhb.dLn.dLD = Util.isNullOrNil(((aml)localObject1).KuR);
                 }
               }
-              else if ((paramgx.dub.dui == -3) && (paramgx.dub.doH > 0L))
+              else if ((paramhb.dLm.dLt == -3) && (paramhb.dLm.dFW > 0L))
               {
-                localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+                localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
                 if (localObject1 != null)
                 {
-                  ((com.tencent.mm.plugin.fav.a.g)localObject1).field_itemStatus = paramgx.dub.due.getIntExtra("fav_note_item_status", ((com.tencent.mm.plugin.fav.a.g)localObject1).field_itemStatus);
-                  ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime = paramgx.dub.due.getLongExtra("fav_note_item_updatetime", ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime);
-                  ((com.tencent.mm.plugin.fav.a.g)localObject1).ahi(paramgx.dub.due.getStringExtra("fav_note_xml"));
-                  ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject1, new String[] { "localId" });
+                  ((com.tencent.mm.plugin.fav.a.g)localObject1).field_itemStatus = paramhb.dLm.dLp.getIntExtra("fav_note_item_status", ((com.tencent.mm.plugin.fav.a.g)localObject1).field_itemStatus);
+                  ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime = paramhb.dLm.dLp.getLongExtra("fav_note_item_updatetime", ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime);
+                  ((com.tencent.mm.plugin.fav.a.g)localObject1).arQ(paramhb.dLm.dLp.getStringExtra("fav_note_xml"));
+                  ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject1, new String[] { "localId" });
                 }
               }
               else
               {
-                if ((paramgx.dub.dui == -2) && (paramgx.dub.doH > 0L))
+                if ((paramhb.dLm.dLt == -2) && (paramhb.dLm.dFW > 0L))
                 {
-                  localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
-                  if ((localObject1 != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_itemStatus == 10) && (!bu.isNullOrNil(((com.tencent.mm.plugin.fav.a.g)localObject1).field_xml)))
+                  localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
+                  if ((localObject1 != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_itemStatus == 10) && (!Util.isNullOrNil(((com.tencent.mm.plugin.fav.a.g)localObject1).field_xml)))
                   {
-                    ((com.tencent.mm.plugin.fav.a.g)localObject1).ahi(((com.tencent.mm.plugin.fav.a.g)localObject1).field_xml);
-                    if ((((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.oeJ.size() > 1))
+                    ((com.tencent.mm.plugin.fav.a.g)localObject1).arQ(((com.tencent.mm.plugin.fav.a.g)localObject1).field_xml);
+                    if ((((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH.size() > 1))
                     {
-                      localObject2 = (ajx)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.oeJ.get(0);
-                      if ((!bu.isNullOrNil(((ajx)localObject2).GzA)) && (!bu.isNullOrNil(((ajx)localObject2).GzC)))
+                      localObject2 = (aml)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH.get(0);
+                      if ((!Util.isNullOrNil(((aml)localObject2).KuR)) && (!Util.isNullOrNil(((aml)localObject2).Lvp)))
                       {
-                        ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject1, new String[] { "localId" });
+                        ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject1, new String[] { "localId" });
                         continue;
                       }
                     }
                   }
                 }
                 localObject1 = new Intent();
-                if ((paramgx.dub.doH > 0L) && (!bu.isNullOrNil(paramgx.dub.desc)) && (paramgx.dub.dui > 0))
+                if ((paramhb.dLm.dFW > 0L) && (!Util.isNullOrNil(paramhb.dLm.desc)) && (paramhb.dLm.dLt > 0))
                 {
-                  localObject2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+                  localObject2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
                   if (localObject2 != null)
                   {
                     ((Intent)localObject1).putExtra("fav_note_xml", com.tencent.mm.plugin.fav.a.g.t((com.tencent.mm.plugin.fav.a.g)localObject2));
                     ((Intent)localObject1).putExtra("fav_note_item_updatetime", ((com.tencent.mm.plugin.fav.a.g)localObject2).field_updateTime);
                   }
                 }
-                localObject2 = k.a(paramgx.dub.doN.oeJ, paramgx.dub.doH);
-                if (!bu.isNullOrNil(paramgx.dub.desc))
+                localObject2 = k.a(paramhb.dLm.dGb.ppH, paramhb.dLm.dFW);
+                if (!Util.isNullOrNil(paramhb.dLm.desc))
                 {
-                  if (paramgx.dub.dui > 0)
+                  if (paramhb.dLm.dLt > 0)
                   {
                     ((Intent)localObject1).putExtra("fav_note_item_status", ((com.tencent.mm.plugin.fav.a.g)localObject2).field_itemStatus);
-                    paramgx.dub.due = ((Intent)localObject1);
-                    ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.aaw(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 1);
+                    paramhb.dLm.dLp = ((Intent)localObject1);
+                    ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.ajl(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 1);
                   }
                   ((com.tencent.mm.plugin.fav.a.g)localObject2).field_itemStatus = 1;
                   b.q((com.tencent.mm.plugin.fav.a.g)localObject2);
-                  ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
-                  if (paramgx.dub.desc.equals("fav_add_new_note"))
+                  ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
+                  if (paramhb.dLm.desc.equals("fav_add_new_note"))
                   {
                     if (((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version != 0) {
-                      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.aaw(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 1);
+                      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.ajl(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 1);
                     }
                     for (;;)
                     {
-                      ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
-                      k.a(paramgx.dub.title, paramgx.dub.doN.oeJ, paramgx.dub.doH);
+                      ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
+                      k.a(paramhb.dLm.title, paramhb.dLm.dGb.ppH, paramhb.dLm.dFW);
                       break;
-                      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.aaw(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 2);
+                      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.ajl(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 2);
                     }
                   }
                 }
                 else
                 {
                   if (((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version != 0) {
-                    ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.aaw(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 1);
+                    ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.ajl(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 1);
                   }
                   for (;;)
                   {
                     ((com.tencent.mm.plugin.fav.a.g)localObject2).field_itemStatus = 1;
                     b.q((com.tencent.mm.plugin.fav.a.g)localObject2);
-                    ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
-                    ((af)com.tencent.mm.kernel.g.ad(af.class)).getCheckCdnService().run();
+                    ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
+                    ((af)com.tencent.mm.kernel.g.ah(af.class)).getCheckCdnService().run();
                     break;
-                    ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.aaw(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 2);
+                    ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.ajl(((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.version + 2);
                   }
-                  ap.cxi().cxj();
-                  localObject1 = ap.cxi();
-                  localObject2 = paramgx.dub.title;
-                  int i = paramgx.dub.dui;
-                  int j = paramgx.dub.duj;
-                  ((ap)localObject1).path = bu.bI((String)localObject2, "");
-                  ((ap)localObject1).dui = i;
+                  ap.cVm().cVn();
+                  localObject1 = ap.cVm();
+                  localObject2 = paramhb.dLm.title;
+                  int i = paramhb.dLm.dLt;
+                  int j = paramhb.dLm.dLu;
+                  ((ap)localObject1).path = Util.nullAs((String)localObject2, "");
+                  ((ap)localObject1).dLt = i;
                   ((ap)localObject1).duration = j;
                   continue;
-                  paramgx.duc.path = m.G(paramgx.dub.context, paramgx.dub.duj).toString();
+                  paramhb.dLn.path = m.J(paramhb.dLm.context, paramhb.dLm.dLu).toString();
                   continue;
-                  ap.cxi();
-                  ap.cxk().destroy();
+                  ap.cVm();
+                  ap.cVo().destroy();
                   continue;
-                  ap.cxi();
-                  ap.cxk().cwF();
+                  ap.cVm();
+                  ap.cVo().cUJ();
                   continue;
-                  localObject1 = paramgx.duc;
-                  ap.cxi();
-                  ((gx.b)localObject1).duq = ap.cxk().aa(paramgx.dub.path, paramgx.dub.dui, paramgx.dub.duj);
+                  localObject1 = paramhb.dLn;
+                  ap.cVm();
+                  ((hb.b)localObject1).dLB = ap.cVo().ab(paramhb.dLm.path, paramhb.dLm.dLt, paramhb.dLm.dLu);
                   continue;
-                  ap.cxi();
-                  ap.cxk().stopPlay();
+                  ap.cVm();
+                  ap.cVo().stopPlay();
                   continue;
-                  localObject1 = paramgx.duc;
-                  ap.cxi();
-                  ((gx.b)localObject1).path = ap.cxk().path;
-                  localObject1 = paramgx.duc;
-                  ap.cxi();
-                  ((gx.b)localObject1).duq = ap.cxk().cgS();
-                  localObject1 = paramgx.duc;
-                  ap.cxi();
-                  ((gx.b)localObject1).dur = ap.cxk().cwE();
-                  localObject1 = paramgx.duc;
-                  ap.cxi();
-                  localObject2 = ap.cxk();
+                  localObject1 = paramhb.dLn;
+                  ap.cVm();
+                  ((hb.b)localObject1).path = ap.cVo().path;
+                  localObject1 = paramhb.dLn;
+                  ap.cVm();
+                  ((hb.b)localObject1).dLB = ap.cVo().cEF();
+                  localObject1 = paramhb.dLn;
+                  ap.cVm();
+                  ((hb.b)localObject1).dLC = ap.cVo().cUI();
+                  localObject1 = paramhb.dLn;
+                  ap.cVm();
+                  localObject2 = ap.cVo();
                   boolean bool;
-                  if (((n)localObject2).pEU == null)
+                  if (((n)localObject2).qUl == null)
                   {
-                    ae.w("MicroMsg.FavVoiceLogic", "check is pause, but player is null");
+                    Log.w("MicroMsg.FavVoiceLogic", "check is pause, but player is null");
                     bool = false;
-                    label2539:
-                    ((gx.b)localObject1).dus = bool;
-                    paramgx = paramgx.duc;
-                    ap.cxi();
-                    localObject1 = ap.cxk();
-                    if (((n)localObject1).pEU != null) {
-                      break label2602;
+                    label2559:
+                    ((hb.b)localObject1).dLD = bool;
+                    paramhb = paramhb.dLn;
+                    ap.cVm();
+                    localObject1 = ap.cVo();
+                    if (((n)localObject1).qUl != null) {
+                      break label2622;
                     }
-                    ae.w("MicroMsg.FavVoiceLogic", "get now progress error, player is null");
+                    Log.w("MicroMsg.FavVoiceLogic", "get now progress error, player is null");
                   }
-                  label2602:
-                  for (double d = 0.0D;; d = ((n)localObject1).pEU.PE())
+                  label2622:
+                  for (double d = 0.0D;; d = ((n)localObject1).qUl.ZY())
                   {
-                    paramgx.dut = d;
+                    paramhb.dLE = d;
                     break;
-                    bool = ((n)localObject2).pEU.OG();
-                    break label2539;
+                    bool = ((n)localObject2).qUl.YY();
+                    break label2559;
                   }
-                  if (paramgx.dub.dud != null)
+                  if (paramhb.dLm.dLo != null)
                   {
-                    localObject1 = new com.tencent.mm.vfs.k(b.d(paramgx.dub.dud));
-                    paramgx.duc.path = w.B(((com.tencent.mm.vfs.k)localObject1).fTh());
-                    localObject1 = new com.tencent.mm.vfs.k(b.a(paramgx.dub.dud));
-                    paramgx.duc.thumbPath = w.B(((com.tencent.mm.vfs.k)localObject1).fTh());
+                    localObject1 = new com.tencent.mm.vfs.o(b.d(paramhb.dLm.dLo));
+                    paramhb.dLn.path = aa.z(((com.tencent.mm.vfs.o)localObject1).her());
+                    localObject1 = new com.tencent.mm.vfs.o(b.a(paramhb.dLm.dLo));
+                    paramhb.dLn.thumbPath = aa.z(((com.tencent.mm.vfs.o)localObject1).her());
                     continue;
-                    localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+                    localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
                     if (localObject1 == null)
                     {
-                      b.b(paramgx.dub.dud, paramgx.dub.dui, paramgx.dub.doH);
-                      b.a(paramgx.dub.dud, paramgx.dub.dui, paramgx.dub.doH);
+                      b.b(paramhb.dLm.dLo, paramhb.dLm.dLt, paramhb.dLm.dFW);
+                      b.a(paramhb.dLm.dLo, paramhb.dLm.dLt, paramhb.dLm.dFW);
                     }
-                    else if (bu.isNullOrNil(paramgx.dub.path))
+                    else if (Util.isNullOrNil(paramhb.dLm.path))
                     {
-                      b.a((com.tencent.mm.plugin.fav.a.g)localObject1, paramgx.dub.dud, true);
+                      b.a((com.tencent.mm.plugin.fav.a.g)localObject1, paramhb.dLm.dLo, true);
                     }
                     else
                     {
-                      b.a((com.tencent.mm.plugin.fav.a.g)localObject1, paramgx.dub.dud);
+                      b.a((com.tencent.mm.plugin.fav.a.g)localObject1, paramhb.dLm.dLo);
                       continue;
-                      b.c(paramgx);
+                      b.c(paramhb);
                       continue;
-                      localObject1 = (am)paramgx.dub.dpw;
-                      paramgx.duc.path = ((am)localObject1).rCa;
+                      localObject1 = (am)paramhb.dLm.dGJ;
+                      paramhb.dLn.path = ((am)localObject1).tbF;
                       if ((((am)localObject1).getReqResp() != null) && (((am)localObject1).getReqResp().getRespObj() != null) && (((am)localObject1).getReqResp().getRespObj().getRetCode() == -435))
                       {
-                        paramgx = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vV(((am)localObject1).rBW);
-                        if ((paramgx != null) && (paramgx.field_favProto != null) && (paramgx.field_favProto.oeJ != null))
+                        paramhb = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DZ(((am)localObject1).tbB);
+                        if ((paramhb != null) && (paramhb.field_favProto != null) && (paramhb.field_favProto.ppH != null))
                         {
-                          paramgx.field_favProto.aaw(paramgx.field_favProto.version + 2);
-                          paramgx.field_itemStatus = 1;
-                          ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a(paramgx, new String[] { "localId" });
-                          ((af)com.tencent.mm.kernel.g.ad(af.class)).getCheckCdnService().run();
+                          paramhb.field_favProto.ajl(paramhb.field_favProto.version + 2);
+                          paramhb.field_itemStatus = 1;
+                          ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a(paramhb, new String[] { "localId" });
+                          ((af)com.tencent.mm.kernel.g.ah(af.class)).getCheckCdnService().run();
                           continue;
-                          localObject2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+                          localObject2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
                           localObject1 = localObject2;
                           if (localObject2 == null)
                           {
                             localObject1 = localObject2;
-                            if (paramgx.dub.doN != null) {
-                              localObject1 = b.a(paramgx.dub.doN);
+                            if (paramhb.dLm.dGb != null) {
+                              localObject1 = b.a(paramhb.dLm.dGb);
                             }
                           }
                           localObject2 = new com.tencent.mm.plugin.fav.a.k();
-                          localObject4 = paramgx.duc;
+                          localObject4 = paramhb.dLn;
                           if ((!((com.tencent.mm.plugin.fav.a.k)localObject2).u((com.tencent.mm.plugin.fav.a.g)localObject1)) || (b.g((com.tencent.mm.plugin.fav.a.g)localObject1))) {}
                           for (i = 0;; i = 1)
                           {
-                            ((gx.b)localObject4).ret = i;
-                            paramgx.duc.dus = com.tencent.mm.plugin.fav.a.k.v((com.tencent.mm.plugin.fav.a.g)localObject1);
-                            paramgx.duc.path = "";
+                            ((hb.b)localObject4).ret = i;
+                            paramhb.dLn.dLD = com.tencent.mm.plugin.fav.a.k.v((com.tencent.mm.plugin.fav.a.g)localObject1);
+                            paramhb.dLn.path = "";
                             if (localObject1 != null) {
                               break;
                             }
-                            paramgx.duc.dus = true;
-                            paramgx.duc.path = null;
+                            paramhb.dLn.dLD = true;
+                            paramhb.dLn.path = null;
                             break;
                           }
-                          localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+                          localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
                           if (localObject1 != null)
                           {
-                            ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.bm(paramgx.dub.doN.oeJ);
-                            ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().b((com.tencent.mm.plugin.fav.a.g)localObject1, new String[] { "localId" });
+                            ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.bH(paramhb.dLm.dGb.ppH);
+                            ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().b((com.tencent.mm.plugin.fav.a.g)localObject1, new String[] { "localId" });
                             continue;
-                            localObject1 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramgx.dub.doH);
+                            localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramhb.dLm.dFW);
                             if ((localObject1 != null) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_type == 18))
                             {
-                              paramgx.dub.doN = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto;
+                              paramhb.dLm.dGb = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto;
                               continue;
-                              b.eN(paramgx.dub.context);
+                              b.fh(paramhb.dLm.context);
                               continue;
-                              paramgx = paramgx.duc;
-                              if (b.cwm()) {}
+                              paramhb = paramhb.dLn;
+                              if (b.cUp()) {}
                               for (i = 1;; i = 0)
                               {
-                                paramgx.ret = i;
+                                paramhb.ret = i;
                                 break;
                               }
-                              b.c(paramgx.dub.context, paramgx.dub.desc, paramgx.dub.title, paramgx.dub.path);
+                              b.e(paramhb.dLm.context, paramhb.dLm.desc, paramhb.dLm.title, paramhb.dLm.path);
                               continue;
-                              ae.i("MicroMsg.Fav.FavoriteOperationListener", "TYPE_NEW_XML_UPLOAD_FAV_ITEM %s", new Object[] { paramgx.dub.duk });
-                              if (!bu.isNullOrNil(paramgx.dub.duk))
+                              Log.i("MicroMsg.Fav.FavoriteOperationListener", "TYPE_NEW_XML_UPLOAD_FAV_ITEM %s", new Object[] { paramhb.dLm.dLv });
+                              if (!Util.isNullOrNil(paramhb.dLm.dLv))
                               {
-                                paramgx = paramgx.dub.duk.split(";");
+                                paramhb = paramhb.dLm.dLv.split(";");
                                 localObject1 = new LinkedList();
-                                ((List)localObject1).addAll(Arrays.asList(paramgx));
+                                ((List)localObject1).addAll(Arrays.asList(paramhb));
                                 if (((List)localObject1).size() > 0)
                                 {
-                                  paramgx = new ArrayList();
+                                  paramhb = new ArrayList();
                                   localObject1 = ((List)localObject1).iterator();
                                   while (((Iterator)localObject1).hasNext())
                                   {
@@ -414,105 +415,105 @@ public final class q
                                       i = Integer.valueOf((String)localObject2).intValue();
                                       if (i > 0)
                                       {
-                                        localObject2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vV(i);
-                                        localObject4 = new akd();
-                                        ((akd)localObject4).FNu = i;
-                                        if ((localObject2 != null) && (!bu.isNullOrNil(((com.tencent.mm.plugin.fav.a.g)localObject2).field_xml))) {
-                                          ((akd)localObject4).FNA = ((com.tencent.mm.plugin.fav.a.g)localObject2).field_xml;
+                                        localObject2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DZ(i);
+                                        localObject4 = new amr();
+                                        ((amr)localObject4).KGZ = i;
+                                        if ((localObject2 != null) && (!Util.isNullOrNil(((com.tencent.mm.plugin.fav.a.g)localObject2).field_xml))) {
+                                          ((amr)localObject4).KHf = ((com.tencent.mm.plugin.fav.a.g)localObject2).field_xml;
                                         }
-                                        paramgx.add(localObject4);
+                                        paramhb.add(localObject4);
                                       }
                                     }
                                     catch (Exception localException1) {}
                                   }
-                                  ((af)com.tencent.mm.kernel.g.ad(af.class)).checkFavItem(paramgx);
-                                  ae.i("MicroMsg.Fav.FavoriteOperationListener", "do scene NetSceneCheckFavItem");
+                                  ((af)com.tencent.mm.kernel.g.ah(af.class)).checkFavItem(paramhb);
+                                  Log.i("MicroMsg.Fav.FavoriteOperationListener", "do scene NetSceneCheckFavItem");
                                   continue;
                                   Object localObject3;
                                   try
                                   {
-                                    ae.i("MicroMsg.Fav.FavoriteOperationListener", "TYPE_NEW_XML_RESEND_FAV_ITEM %s %s", new Object[] { paramgx.dub.duk, paramgx.dub.dul });
-                                    i = bu.getInt(paramgx.dub.duk, -1);
-                                    paramgx = bu.U(paramgx.dub.dul.split(";"));
+                                    Log.i("MicroMsg.Fav.FavoriteOperationListener", "TYPE_NEW_XML_RESEND_FAV_ITEM %s %s", new Object[] { paramhb.dLm.dLv, paramhb.dLm.dLw });
+                                    i = Util.getInt(paramhb.dLm.dLv, -1);
+                                    paramhb = Util.stringsToList(paramhb.dLm.dLw.split(";"));
                                     localObject3 = new HashSet();
-                                    ((HashSet)localObject3).addAll(paramgx);
-                                    paramgx = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vV(i);
-                                    if (paramgx != null) {
-                                      break label3771;
+                                    ((HashSet)localObject3).addAll(paramhb);
+                                    paramhb = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DZ(i);
+                                    if (paramhb != null) {
+                                      break label3791;
                                     }
-                                    ae.i("MicroMsg.Fav.FavoriteOperationListener", "NotFound %d", new Object[] { Integer.valueOf(i) });
-                                    com.tencent.mm.plugin.fav.a.h.Ei(8);
+                                    Log.i("MicroMsg.Fav.FavoriteOperationListener", "NotFound %d", new Object[] { Integer.valueOf(i) });
+                                    h.HT(8);
                                   }
-                                  catch (Exception paramgx)
+                                  catch (Exception paramhb)
                                   {
-                                    ae.printErrStackTrace("MicroMsg.Fav.FavoriteOperationListener", paramgx, "TYPE_NEW_XML_RESEND_FAV_ITEM", new Object[0]);
+                                    Log.printErrStackTrace("MicroMsg.Fav.FavoriteOperationListener", paramhb, "TYPE_NEW_XML_RESEND_FAV_ITEM", new Object[0]);
                                   }
                                   continue;
-                                  label3771:
-                                  localObject1 = new akq();
-                                  ((akq)localObject1).FNu = i;
-                                  localObject4 = paramgx.field_favProto.oeJ.iterator();
+                                  label3791:
+                                  localObject1 = new ane();
+                                  ((ane)localObject1).KGZ = i;
+                                  localObject4 = paramhb.field_favProto.ppH.iterator();
                                   i = 0;
                                   while (((Iterator)localObject4).hasNext())
                                   {
-                                    localObject5 = (ajx)((Iterator)localObject4).next();
+                                    localObject5 = (aml)((Iterator)localObject4).next();
                                     j = i;
-                                    if (((HashSet)localObject3).remove(((ajx)localObject5).dua + "#0"))
+                                    if (((HashSet)localObject3).remove(((aml)localObject5).dLl + "#0"))
                                     {
-                                      if (bu.isNullOrNil(((ajx)localObject5).GzC))
+                                      if (Util.isNullOrNil(((aml)localObject5).Lvp))
                                       {
-                                        com.tencent.mm.an.f.aHa();
-                                        ((ajx)localObject5).aPH(a.aGP());
-                                        com.tencent.mm.plugin.fav.a.h.Ei(2);
+                                        com.tencent.mm.an.f.baR();
+                                        ((aml)localObject5).bgk(a.baG());
+                                        h.HT(2);
                                       }
-                                      if (!com.tencent.mm.vfs.o.fB(b.d((ajx)localObject5))) {
-                                        break label4017;
+                                      if (!com.tencent.mm.vfs.s.YS(b.d((aml)localObject5))) {
+                                        break label4037;
                                       }
-                                      ((ajx)localObject5).aar(1);
-                                      b.a((ajx)localObject5, paramgx, 0, false);
-                                      com.tencent.mm.plugin.fav.a.h.Ei(3);
+                                      ((aml)localObject5).ajg(1);
+                                      b.a((aml)localObject5, paramhb, 0, false);
+                                      h.HT(3);
                                     }
                                     for (j = 1;; j = i)
                                     {
                                       i = j;
-                                      if (!((HashSet)localObject3).remove(((ajx)localObject5).dua + "#1")) {
+                                      if (!((HashSet)localObject3).remove(((aml)localObject5).dLl + "#1")) {
                                         break;
                                       }
-                                      if (bu.isNullOrNil(((ajx)localObject5).GzC))
+                                      if (Util.isNullOrNil(((aml)localObject5).Lvp))
                                       {
-                                        com.tencent.mm.an.f.aHa();
-                                        ((ajx)localObject5).aPH(a.aGP());
-                                        com.tencent.mm.plugin.fav.a.h.Ei(2);
+                                        com.tencent.mm.an.f.baR();
+                                        ((aml)localObject5).bgk(a.baG());
+                                        h.HT(2);
                                       }
-                                      if (!com.tencent.mm.vfs.o.fB(b.a((ajx)localObject5))) {
-                                        break label4069;
+                                      if (!com.tencent.mm.vfs.s.YS(b.a((aml)localObject5))) {
+                                        break label4089;
                                       }
-                                      ((ajx)localObject5).aar(-1);
-                                      b.a((ajx)localObject5, paramgx, 0);
-                                      com.tencent.mm.plugin.fav.a.h.Ei(3);
+                                      ((aml)localObject5).ajg(-1);
+                                      b.a((aml)localObject5, paramhb, 0);
+                                      h.HT(3);
                                       i = 1;
                                       break;
-                                      label4017:
-                                      com.tencent.mm.plugin.fav.a.h.Ei(5);
-                                      localObject6 = new aln();
-                                      ((aln)localObject6).Goj = ((ajx)localObject5).dua;
-                                      ((aln)localObject6).Gop = 0;
-                                      ((aln)localObject6).nJb = 4;
-                                      ((akq)localObject1).GCi.add(localObject6);
+                                      label4037:
+                                      h.HT(5);
+                                      localObject6 = new aoc();
+                                      ((aoc)localObject6).LiU = ((aml)localObject5).dLl;
+                                      ((aoc)localObject6).Lja = 0;
+                                      ((aoc)localObject6).oTW = 4;
+                                      ((ane)localObject1).Lye.add(localObject6);
                                     }
-                                    label4069:
-                                    com.tencent.mm.plugin.fav.a.h.Ei(5);
-                                    localObject6 = new aln();
-                                    ((aln)localObject6).Goj = ((ajx)localObject5).dua;
-                                    ((aln)localObject6).Gop = 1;
-                                    ((aln)localObject6).nJb = 4;
-                                    ((akq)localObject1).GCi.add(localObject6);
+                                    label4089:
+                                    h.HT(5);
+                                    localObject6 = new aoc();
+                                    ((aoc)localObject6).LiU = ((aml)localObject5).dLl;
+                                    ((aoc)localObject6).Lja = 1;
+                                    ((aoc)localObject6).oTW = 4;
+                                    ((ane)localObject1).Lye.add(localObject6);
                                     i = j;
                                   }
                                   if (((HashSet)localObject3).size() > 0)
                                   {
-                                    ae.i("MicroMsg.Fav.FavoriteOperationListener", "not found url data item %s", new Object[] { ((HashSet)localObject3).toString() });
-                                    com.tencent.mm.plugin.fav.a.h.Ej(((HashSet)localObject3).size());
+                                    Log.i("MicroMsg.Fav.FavoriteOperationListener", "not found url data item %s", new Object[] { ((HashSet)localObject3).toString() });
+                                    h.HU(((HashSet)localObject3).size());
                                     localObject3 = ((HashSet)localObject3).iterator();
                                     while (((Iterator)localObject3).hasNext())
                                     {
@@ -520,34 +521,34 @@ public final class q
                                       try
                                       {
                                         localObject4 = ((String)localObject4).split("#");
-                                        localObject5 = new aln();
-                                        ((aln)localObject5).Goj = localObject4[0];
-                                        ((aln)localObject5).Gop = Integer.valueOf(localObject4[1]).intValue();
-                                        ((aln)localObject5).nJb = 3;
-                                        ((akq)localObject1).GCi.add(localObject5);
+                                        localObject5 = new aoc();
+                                        ((aoc)localObject5).LiU = localObject4[0];
+                                        ((aoc)localObject5).Lja = Integer.valueOf(localObject4[1]).intValue();
+                                        ((aoc)localObject5).oTW = 3;
+                                        ((ane)localObject1).Lye.add(localObject5);
                                       }
                                       catch (Exception localException2) {}
                                     }
                                   }
-                                  if (((akq)localObject1).GCi.size() > 0) {
-                                    ((af)com.tencent.mm.kernel.g.ad(af.class)).checkFavItem((akq)localObject1);
+                                  if (((ane)localObject1).Lye.size() > 0) {
+                                    ((af)com.tencent.mm.kernel.g.ah(af.class)).checkFavItem((ane)localObject1);
                                   }
                                   if (i != 0)
                                   {
-                                    if (paramgx.field_type == 18) {
-                                      paramgx.field_favProto.aaw(paramgx.field_favProto.version + 1);
+                                    if (paramhb.field_type == 18) {
+                                      paramhb.field_favProto.ajl(paramhb.field_favProto.version + 1);
                                     }
-                                    paramgx.field_itemStatus = 15;
-                                    ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a(paramgx, new String[] { "localId" });
-                                    ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnService().run();
-                                    com.tencent.mm.plugin.fav.a.h.Ei(6);
+                                    paramhb.field_itemStatus = 15;
+                                    ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a(paramhb, new String[] { "localId" });
+                                    ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavCdnService().run();
+                                    h.HT(6);
                                   }
                                   else
                                   {
-                                    com.tencent.mm.plugin.fav.a.h.Ei(7);
-                                    ae.i("MicroMsg.Fav.FavoriteOperationListener", "do not has upload data item");
+                                    h.HT(7);
+                                    Log.i("MicroMsg.Fav.FavoriteOperationListener", "do not has upload data item");
                                     continue;
-                                    paramgx.duc.duu = b.b(paramgx.dub.doN);
+                                    paramhb.dLn.dLF = b.b(paramhb.dLm.dGb);
                                   }
                                 }
                               }
@@ -566,36 +567,36 @@ public final class q
     }
   }
   
-  private static String m(ajx paramajx)
+  private static String m(aml paramaml)
   {
     AppMethodBeat.i(107063);
-    com.tencent.mm.vfs.k localk = new com.tencent.mm.vfs.k(b.a(paramajx));
-    if (!localk.exists()) {
-      if (paramajx.dox == null) {
-        paramajx = "";
+    com.tencent.mm.vfs.o localo = new com.tencent.mm.vfs.o(b.a(paramaml));
+    if (!localo.exists()) {
+      if (paramaml.dFN == null) {
+        paramaml = "";
       }
     }
     for (;;)
     {
       AppMethodBeat.o(107063);
-      return paramajx;
-      paramajx = new com.tencent.mm.vfs.k(b.cwc() + com.tencent.mm.b.g.getMessageDigest(paramajx.dox.getBytes()));
-      if (paramajx.exists())
+      return paramaml;
+      paramaml = new com.tencent.mm.vfs.o(b.cUf() + com.tencent.mm.b.g.getMessageDigest(paramaml.dFN.getBytes()));
+      if (paramaml.exists())
       {
-        paramajx = w.B(paramajx.fTh());
+        paramaml = aa.z(paramaml.her());
       }
       else
       {
-        paramajx = "";
+        paramaml = "";
         continue;
-        paramajx = w.B(localk.fTh());
+        paramaml = aa.z(localo.her());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.q
  * JD-Core Version:    0.7.0.1
  */

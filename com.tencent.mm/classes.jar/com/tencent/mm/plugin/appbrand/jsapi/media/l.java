@@ -4,44 +4,45 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.c;
+import com.tencent.luggage.h.f;
+import com.tencent.luggage.h.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class l
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+  extends d<com.tencent.mm.plugin.appbrand.s>
 {
   public static final int CTRL_INDEX = 30;
   public static final String NAME = "previewImage";
-  private final int kYJ;
-  final int kYK;
+  private final int mdT;
+  final int mdU;
   
   public l()
   {
     AppMethodBeat.i(174842);
-    this.kYJ = 524288;
-    this.kYK = com.tencent.luggage.sdk.g.a.aC(this);
+    this.mdT = 524288;
+    this.mdU = com.tencent.luggage.sdk.g.a.aK(this);
     AppMethodBeat.o(174842);
   }
   
-  private String a(Context paramContext, z paramz, String paramString, JSONObject paramJSONObject)
+  private String a(Context paramContext, ac paramac, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(46577);
     Object localObject1 = paramJSONObject.optJSONArray("urls");
     if (localObject1 == null)
     {
-      paramContext = e("fail:invalid data", null);
+      paramContext = h("fail:invalid data", null);
       AppMethodBeat.o(46577);
       return paramContext;
     }
@@ -63,13 +64,13 @@ public final class l
       j = 0;
       while (j < localObject3.length)
       {
-        localObject2 = paramz.Fl().MP(localObject3[j]);
+        localObject2 = paramac.getFileSystem().VY(localObject3[j]);
         localObject1 = localObject2;
         if (localObject2 == null) {
-          localObject1 = paramz.Fl().MM(localObject3[j]);
+          localObject1 = paramac.getFileSystem().VV(localObject3[j]);
         }
         if (localObject1 != null) {
-          localObject3[j] = w.B(((k)localObject1).fTh());
+          localObject3[j] = aa.z(((o)localObject1).her());
         }
         j += 1;
       }
@@ -86,20 +87,20 @@ public final class l
       }
       j += 1;
     }
-    String[] arrayOfString = com.tencent.mm.plugin.appbrand.jsapi.aa.a.o((String[])localObject3);
-    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.aa.a.a(arrayOfString, (String[])localObject3);
+    String[] arrayOfString = com.tencent.mm.plugin.appbrand.jsapi.ac.a.q((String[])localObject3);
+    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.ac.a.a(arrayOfString, (String[])localObject3);
     j = i;
     if (i >= arrayOfString.length) {
       j = 0;
     }
     if (!(paramContext instanceof Activity))
     {
-      paramContext = e("fail:internal error invalid android context", null);
+      paramContext = h("fail:internal error invalid android context", null);
       AppMethodBeat.o(46577);
       return paramContext;
     }
     boolean bool = paramJSONObject.optBoolean("showmenu", true);
-    ae.i("MicroMsg.JsApiPreviewImage", "showmenu:%b", new Object[] { Boolean.valueOf(bool) });
+    Log.i("MicroMsg.JsApiPreviewImage", "showmenu:%b", new Object[] { Boolean.valueOf(bool) });
     Object localObject2 = new Intent();
     ((Intent)localObject2).putExtra("nowUrl", arrayOfString[j]);
     ((Intent)localObject2).putExtra("urlList", arrayOfString);
@@ -107,9 +108,9 @@ public final class l
     ((Intent)localObject2).putExtra("isFromWebView", true);
     ((Intent)localObject2).putExtra("isFromAppBrand", true);
     ((Intent)localObject2).putExtra("showmenu", bool);
-    localObject3 = (com.tencent.mm.plugin.appbrand.o.a)paramz.ar(com.tencent.mm.plugin.appbrand.o.a.class);
-    if ((localObject3 != null) && (!bu.isNullOrNil(((com.tencent.mm.plugin.appbrand.o.a)localObject3).referer))) {
-      s.a(paramz, paramJSONObject, (Intent)localObject2, ((com.tencent.mm.plugin.appbrand.o.a)localObject3).referer);
+    localObject3 = (com.tencent.mm.plugin.appbrand.s.a)paramac.av(com.tencent.mm.plugin.appbrand.s.a.class);
+    if ((localObject3 != null) && (!Util.isNullOrNil(((com.tencent.mm.plugin.appbrand.s.a)localObject3).referer))) {
+      s.a(paramac, paramJSONObject, (Intent)localObject2, ((com.tencent.mm.plugin.appbrand.s.a)localObject3).referer);
     }
     for (;;)
     {
@@ -120,37 +121,37 @@ public final class l
       paramJSONObject = new Bundle();
       paramJSONObject.putInt("stat_scene", 6);
       paramJSONObject.putString("stat_app_id", paramString);
-      paramJSONObject.putString("stat_url", paramz.kxv);
+      paramJSONObject.putString("stat_url", paramac.lBI);
       ((Intent)localObject2).putExtra("_stat_obj", paramJSONObject);
-      ((Intent)localObject2).setClassName(paramContext, paramContext.getPackageName() + ".plugin.subapp.ui.gallery.GestureGalleryUI");
+      ((Intent)localObject2).setClassName(paramContext, MMApplicationContext.getSourcePackageName() + ".plugin.subapp.ui.gallery.GestureGalleryUI");
       try
       {
         i = ((Intent)localObject2).getExtras().toString().length();
         if (i <= 524288) {
           break;
         }
-        ae.e("MicroMsg.JsApiPreviewImage", "data too large size:%d", new Object[] { Integer.valueOf(i) });
-        paramContext = e("fail:data too large", null);
+        Log.e("MicroMsg.JsApiPreviewImage", "data too large size:%d", new Object[] { Integer.valueOf(i) });
+        paramContext = h("fail:data too large", null);
         AppMethodBeat.o(46577);
         return paramContext;
       }
       catch (Exception paramContext)
       {
-        ae.printErrStackTrace("MicroMsg.JsApiPreviewImage", paramContext, "JsApiPreviewImage get size error", new Object[0]);
-        paramContext = e("fail", null);
+        Log.printErrStackTrace("MicroMsg.JsApiPreviewImage", paramContext, "JsApiPreviewImage get size error", new Object[0]);
+        paramContext = h("fail", null);
         AppMethodBeat.o(46577);
         return paramContext;
       }
-      ae.w("MicroMsg.JsApiPreviewImage", "config.referer is null");
+      Log.w("MicroMsg.JsApiPreviewImage", "config.referer is null");
     }
-    e.aB(paramContext).b(new e.c()
+    f.aK(paramContext).b(new f.c()
     {
-      public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final boolean c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174841);
-        if (l.this.kYK == paramAnonymousInt1)
+        if (l.this.mdU == paramAnonymousInt1)
         {
-          com.tencent.mm.plugin.appbrand.jsapi.aa.a.p(this.kYL);
+          com.tencent.mm.plugin.appbrand.jsapi.ac.a.r(this.mdV);
           AppMethodBeat.o(174841);
           return true;
         }
@@ -158,15 +159,15 @@ public final class l
         return false;
       }
     });
-    d.a(paramContext, "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject2, this.kYK, false);
-    paramContext = e("ok", null);
+    c.a(paramContext, "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject2, this.mdU, false);
+    paramContext = h("ok", null);
     AppMethodBeat.o(46577);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.l
  * JD-Core Version:    0.7.0.1
  */

@@ -17,50 +17,50 @@ public class f
   
   public f()
   {
-    AppMethodBeat.i(192556);
+    AppMethodBeat.i(188390);
     this.e = -1;
     this.c = new LinkedHashMap();
     this.d = new LinkedHashMap();
-    AppMethodBeat.o(192556);
+    AppMethodBeat.o(188390);
   }
   
   public static f a()
   {
-    AppMethodBeat.i(192555);
+    AppMethodBeat.i(188389);
     if (b == null) {
       b = new f();
     }
     f localf = b;
-    AppMethodBeat.o(192555);
+    AppMethodBeat.o(188389);
     return localf;
   }
   
   public void a(int paramInt, a parama)
   {
-    AppMethodBeat.i(192557);
+    AppMethodBeat.i(188391);
     if (this.d.containsKey(Integer.valueOf(paramInt)))
     {
       String str = (String)this.d.get(Integer.valueOf(paramInt));
       this.d.remove(Integer.valueOf(paramInt));
       parama.a(str);
       TbsLog.e(a, "Executed command: " + paramInt + ", extra: " + str + ", emergency configuration has requested");
-      AppMethodBeat.o(192557);
+      AppMethodBeat.o(188391);
       return;
     }
     if (this.e == -1)
     {
       this.c.put(Integer.valueOf(paramInt), parama);
       TbsLog.e(a, "Emergency configuration has not yet dispatched. Command query: " + paramInt + " has been suspended");
-      AppMethodBeat.o(192557);
+      AppMethodBeat.o(188391);
       return;
     }
     TbsLog.e(a, "Emergency configuration has been dispatched, status: " + this.e + ". Command query: " + paramInt + " ignored");
-    AppMethodBeat.o(192557);
+    AppMethodBeat.o(188391);
   }
   
   public void a(int paramInt, Map<Integer, String> paramMap)
   {
-    AppMethodBeat.i(192558);
+    AppMethodBeat.i(188392);
     TbsLog.e(a, "Handle emergency commands in sdk, status: ".concat(String.valueOf(paramInt)));
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     if (paramInt == 0)
@@ -95,7 +95,7 @@ public class f
     label181:
     this.d = localLinkedHashMap;
     this.e = paramInt;
-    AppMethodBeat.o(192558);
+    AppMethodBeat.o(188392);
   }
   
   public static abstract interface a
@@ -105,7 +105,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.f
  * JD-Core Version:    0.7.0.1
  */

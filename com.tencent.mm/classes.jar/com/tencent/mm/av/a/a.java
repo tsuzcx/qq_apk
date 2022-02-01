@@ -9,40 +9,41 @@ import com.tencent.mm.av.a.c.d;
 import com.tencent.mm.av.a.c.j;
 import com.tencent.mm.av.a.c.k;
 import com.tencent.mm.av.a.c.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  private static a ifN = null;
-  private b ifK;
-  private com.tencent.mm.av.a.a.b ifL;
-  private final k ifM;
+  private static a jaI = null;
+  private b jaF;
+  private com.tencent.mm.av.a.a.b jaG;
+  private final k jaH;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(130347);
-    this.ifM = new com.tencent.mm.av.a.b.h();
-    a(com.tencent.mm.av.a.a.b.cF(paramContext));
+    this.jaH = new com.tencent.mm.av.a.b.h();
+    a(com.tencent.mm.av.a.a.b.db(paramContext));
     AppMethodBeat.o(130347);
   }
   
   public a(com.tencent.mm.av.a.a.b paramb)
   {
     AppMethodBeat.i(130348);
-    this.ifM = new com.tencent.mm.av.a.b.h();
+    this.jaH = new com.tencent.mm.av.a.b.h();
     a(paramb);
     AppMethodBeat.o(130348);
   }
   
-  private static aq a(com.tencent.mm.av.a.a.c paramc)
+  private static MMHandler a(com.tencent.mm.av.a.a.c paramc)
   {
     AppMethodBeat.i(130364);
     paramc = paramc.handler;
     if ((paramc == null) || (Looper.myLooper() == Looper.getMainLooper())) {
-      paramc = new aq();
+      paramc = new MMHandler();
     }
     AppMethodBeat.o(130364);
     return paramc;
@@ -53,19 +54,19 @@ public final class a
     AppMethodBeat.i(130362);
     if ((paramImageView == null) || (paramc == null))
     {
-      ae.w("MicroMsg.imageloader.ImageLoader", "[cpan] should show default background view or options is null.");
+      Log.w("MicroMsg.imageloader.ImageLoader", "[cpan] should show default background view or options is null.");
       AppMethodBeat.o(130362);
       return;
     }
-    if (paramc.aJn())
+    if (paramc.bdh())
     {
-      if (paramc.igy == 0)
+      if (paramc.jbt == 0)
       {
-        paramImageView.setBackgroundDrawable(paramc.g(this.ifL.aKG));
+        paramImageView.setBackgroundDrawable(paramc.h(this.jaG.aKy));
         AppMethodBeat.o(130362);
         return;
       }
-      paramImageView.setBackgroundResource(paramc.igy);
+      paramImageView.setBackgroundResource(paramc.jbt);
       AppMethodBeat.o(130362);
       return;
     }
@@ -86,33 +87,18 @@ public final class a
       }
     }
     finally {}
-    if (this.ifL == null)
+    if (this.jaG == null)
     {
-      this.ifK = new b(paramb);
-      this.ifL = paramb;
+      this.jaF = new b(paramb);
+      this.jaG = paramb;
       AppMethodBeat.o(130349);
     }
     for (;;)
     {
       return;
-      ae.w("MicroMsg.imageloader.ImageLoader", "[cpan] image loader had init.");
+      Log.w("MicroMsg.imageloader.ImageLoader", "[cpan] image loader had init.");
       AppMethodBeat.o(130349);
     }
-  }
-  
-  public static a aJh()
-  {
-    try
-    {
-      AppMethodBeat.i(130346);
-      if (ifN == null) {
-        ifN = new a(ak.getContext());
-      }
-      a locala = ifN;
-      AppMethodBeat.o(130346);
-      return locala;
-    }
-    finally {}
   }
   
   private void b(ImageView paramImageView, com.tencent.mm.av.a.a.c paramc)
@@ -120,23 +106,23 @@ public final class a
     AppMethodBeat.i(130363);
     if ((paramImageView == null) || (paramc == null))
     {
-      ae.w("MicroMsg.imageloader.ImageLoader", "[cpan] should show default image view or options is null.");
+      Log.w("MicroMsg.imageloader.ImageLoader", "[cpan] should show default image view or options is null.");
       AppMethodBeat.o(130363);
       return;
     }
-    if (paramc.aJm())
+    if (paramc.bdg())
     {
-      if (paramc.igv == 0)
+      if (paramc.jbq == 0)
       {
-        paramImageView.setImageDrawable(paramc.f(this.ifL.aKG));
+        paramImageView.setImageDrawable(paramc.g(this.jaG.aKy));
         AppMethodBeat.o(130363);
         return;
       }
-      paramImageView.setImageResource(paramc.igv);
+      paramImageView.setImageResource(paramc.jbq);
       AppMethodBeat.o(130363);
       return;
     }
-    if (paramc.hgL) {
+    if (paramc.hZF) {
       paramImageView.setImageDrawable(null);
     }
     AppMethodBeat.o(130363);
@@ -146,54 +132,54 @@ public final class a
   {
     AppMethodBeat.i(130356);
     if (paramc == null) {
-      paramc = this.ifL.ifW;
+      paramc = this.jaG.jaR;
     }
     for (;;)
     {
       if (paramk == null) {
-        paramk = this.ifM;
+        paramk = this.jaH;
       }
       for (;;)
       {
         c localc = new c(paramImageView, paramString);
         a(paramImageView, paramc);
-        if (bu.isNullOrNil(paramString))
+        if (Util.isNullOrNil(paramString))
         {
-          ae.w("MicroMsg.imageloader.ImageLoader", "[cpan load image url is null.]");
+          Log.w("MicroMsg.imageloader.ImageLoader", "[cpan load image url is null.]");
           b(paramImageView, paramc);
-          this.ifK.a(localc);
-          paramk.a(paramString, paramImageView, null, paramc.igJ);
+          this.jaF.a(localc);
+          paramk.a(paramString, paramImageView, null, paramc.jbE);
           AppMethodBeat.o(130356);
           return;
         }
-        com.tencent.mm.av.a.f.b localb = new com.tencent.mm.av.a.f.b(paramString, localc, a(paramc), paramc, paramk, this.ifK, paramh);
-        paramk = localb.Gq(paramString);
-        Bitmap localBitmap = this.ifK.Gf(paramk);
+        com.tencent.mm.av.a.f.b localb = new com.tencent.mm.av.a.f.b(paramString, localc, a(paramc), paramc, paramk, this.jaF, paramh);
+        paramk = localb.Pc(paramString);
+        Bitmap localBitmap = this.jaF.OQ(paramk);
         if ((localBitmap != null) && (!localBitmap.isRecycled()))
         {
-          ae.d("MicroMsg.imageloader.ImageLoader", "[cpan] load from cache. not need to load:%s", new Object[] { paramk });
+          Log.d("MicroMsg.imageloader.ImageLoader", "[cpan] load from cache. not need to load:%s", new Object[] { paramk });
           paramk = localBitmap;
-          if (paramc.igq) {
-            paramk = com.tencent.mm.sdk.platformtools.h.l(localBitmap, paramc.igr);
+          if (paramc.jbl) {
+            paramk = BitmapUtil.fastblur(localBitmap, paramc.jbm);
           }
           if (paramImageView != null) {
             paramImageView.setImageBitmap(paramk);
           }
-          localb.sw(0L);
+          localb.AC(0L);
           if (paramh != null) {
             paramh.b(paramString, paramImageView, new com.tencent.mm.av.a.d.b(paramk));
           }
-          this.ifK.a(localc);
+          this.jaF.a(localc);
           AppMethodBeat.o(130356);
           return;
         }
         if (paramImageView != null) {
           b(paramImageView, paramc);
         }
-        if (((localb.ifW.igl) || (!this.ifK.OG())) && (this.ifK.a(localc, paramString)))
+        if (((localb.jaR.jbg) || (!this.jaF.YY())) && (this.jaF.a(localc, paramString)))
         {
-          this.ifK.a(localb);
-          this.ifK.a(localb, paramc.igj);
+          this.jaF.a(localb);
+          this.jaF.a(localb, paramc.jbe);
         }
         AppMethodBeat.o(130356);
         return;
@@ -201,12 +187,27 @@ public final class a
     }
   }
   
-  public final Bitmap Gf(String paramString)
+  public static a bdb()
+  {
+    try
+    {
+      AppMethodBeat.i(130346);
+      if (jaI == null) {
+        jaI = new a(MMApplicationContext.getContext());
+      }
+      a locala = jaI;
+      AppMethodBeat.o(130346);
+      return locala;
+    }
+    finally {}
+  }
+  
+  public final Bitmap OQ(String paramString)
   {
     AppMethodBeat.i(130360);
-    if (this.ifK != null)
+    if (this.jaF != null)
     {
-      paramString = this.ifK.Gf(paramString);
+      paramString = this.jaF.OQ(paramString);
       AppMethodBeat.o(130360);
       return paramString;
     }
@@ -214,11 +215,24 @@ public final class a
     return null;
   }
   
+  public final void OR(String paramString)
+  {
+    AppMethodBeat.i(212679);
+    if (this.jaF != null)
+    {
+      b localb = this.jaF;
+      if (localb.jaJ != null) {
+        localb.jaJ.jaS.remove(paramString);
+      }
+    }
+    AppMethodBeat.o(212679);
+  }
+  
   public final void a(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(130357);
     paramString = new c(paramImageView, paramString);
-    this.ifK.a(paramString);
+    this.jaF.a(paramString);
     AppMethodBeat.o(130357);
   }
   
@@ -260,32 +274,16 @@ public final class a
   public final void a(String paramString, com.tencent.mm.av.a.a.c paramc, d paramd)
   {
     AppMethodBeat.i(130365);
-    paramString = new com.tencent.mm.av.a.f.a(paramString, paramc, this.ifK, paramd);
-    this.ifK.a(paramString);
+    paramString = new com.tencent.mm.av.a.f.a(paramString, paramc, this.jaF, paramd);
+    this.jaF.a(paramString);
     AppMethodBeat.o(130365);
-  }
-  
-  public final void cp(int paramInt)
-  {
-    AppMethodBeat.i(130358);
-    ae.d("MicroMsg.imageloader.ImageLoader", "[cpan] on scroll state changed :%d", new Object[] { Integer.valueOf(paramInt) });
-    if ((paramInt == 0) || (paramInt == 1))
-    {
-      ae.d("MicroMsg.imageloader.ImageLoader", "[cpan] resume");
-      this.ifK.ifP.resume();
-      AppMethodBeat.o(130358);
-      return;
-    }
-    ae.d("MicroMsg.imageloader.ImageLoader", "[cpan] pause");
-    this.ifK.ifP.pause();
-    AppMethodBeat.o(130358);
   }
   
   public final void detach()
   {
     AppMethodBeat.i(130359);
-    if (this.ifK != null) {
-      this.ifK.aoM();
+    if (this.jaF != null) {
+      this.jaF.aHn();
     }
     AppMethodBeat.o(130359);
   }
@@ -293,11 +291,11 @@ public final class a
   public final void h(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(130361);
-    if (this.ifK != null)
+    if (this.jaF != null)
     {
-      b localb = this.ifK;
-      if (localb.ifO != null) {
-        localb.ifO.ifX.put(paramString, paramBitmap);
+      b localb = this.jaF;
+      if (localb.jaJ != null) {
+        localb.jaJ.jaS.put(paramString, paramBitmap);
       }
     }
     AppMethodBeat.o(130361);
@@ -308,6 +306,22 @@ public final class a
     AppMethodBeat.i(130350);
     b(paramString, paramImageView, null, null, null);
     AppMethodBeat.o(130350);
+  }
+  
+  public final void onScrollStateChanged(int paramInt)
+  {
+    AppMethodBeat.i(130358);
+    Log.d("MicroMsg.imageloader.ImageLoader", "[cpan] on scroll state changed :%d", new Object[] { Integer.valueOf(paramInt) });
+    if ((paramInt == 0) || (paramInt == 1))
+    {
+      Log.d("MicroMsg.imageloader.ImageLoader", "[cpan] resume");
+      this.jaF.jaK.resume();
+      AppMethodBeat.o(130358);
+      return;
+    }
+    Log.d("MicroMsg.imageloader.ImageLoader", "[cpan] pause");
+    this.jaF.jaK.pause();
+    AppMethodBeat.o(130358);
   }
 }
 

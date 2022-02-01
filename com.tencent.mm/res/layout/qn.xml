@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/go"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ao1" style="@style/gy" />
-    <LinearLayout android:orientation="vertical" android:id="@id/al7" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gq">
-        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/b4v" style="@style/h3" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/y4" android:gravity="center" android:id="@id/ap1" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gc_" />
+    <ImageView android:layout_gravity="center_vertical" android:background="@color/iq" android:layout_width="fill_parent" android:layout_height="0.5px" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/g">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center_vertical" android:id="@id/atn" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/ob" android:scaleType="centerCrop" />
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/u_" android:id="@id/atq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/atn" />
+        <LinearLayout android:gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" android:layout_weight="1.0">
+            <ImageView android:id="@id/ato" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="3.0dip" android:src="@raw/app_brand_we_app_logo_share" android:scaleType="centerCrop" />
+            <com.tencent.mm.ui.widget.MMTextView android:gravity="center|right" android:id="@id/atp" android:paddingRight="@dimen/ib" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" style="@style/gk" />
+        </LinearLayout>
     </LinearLayout>
-    <include android:layout_marginTop="5.0dip" layout="@layout/o7" style="@style/gl" />
 </LinearLayout>

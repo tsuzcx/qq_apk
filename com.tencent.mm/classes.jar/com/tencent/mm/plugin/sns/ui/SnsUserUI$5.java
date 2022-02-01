@@ -12,19 +12,19 @@ final class SnsUserUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(220028);
+    AppMethodBeat.i(203792);
     paramMenuItem = new Intent();
-    paramMenuItem.setClass(this.AGR, SnsMsgUI.class);
+    paramMenuItem.setClass(this.EQA, SnsMsgUI.class);
     paramMenuItem.putExtra("sns_msg_force_show_all", true);
     paramMenuItem.putExtra("sns_msg_comment_list_scene", 2);
-    this.AGR.startActivityForResult(paramMenuItem, 8);
-    AppMethodBeat.o(220028);
+    this.EQA.startActivityForResult(paramMenuItem, 8);
+    AppMethodBeat.o(203792);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUserUI.5
  * JD-Core Version:    0.7.0.1
  */

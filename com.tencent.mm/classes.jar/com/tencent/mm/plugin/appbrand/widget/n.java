@@ -1,49 +1,52 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ht;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class n
-  extends ht
+  extends MAutoStorage<m>
 {
-  public static c.a hGW;
+  public static final String[] iBh;
+  public static final String[] iBi;
   
   static
   {
-    AppMethodBeat.i(76411);
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appIdHash";
-    locala.IBN.put("appIdHash", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" appIdHash INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IBM = "appIdHash";
-    locala.columns[1] = "appId";
-    locala.IBN.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "openDebug";
-    locala.IBN.put("openDebug", "INTEGER");
-    localStringBuilder.append(" openDebug INTEGER");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    hGW = locala;
-    AppMethodBeat.o(76411);
+    AppMethodBeat.i(76413);
+    iBh = new String[] { MAutoStorage.getCreateSQLs(m.iBg, "WxaWidgetInfo") };
+    iBi = new String[0];
+    AppMethodBeat.o(76413);
   }
   
-  public final c.a getDBInfo()
+  public n(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return hGW;
+    super(paramISQLiteDatabase, m.iBg, "WxaWidgetInfo", iBi);
+  }
+  
+  public final m afV(String paramString)
+  {
+    AppMethodBeat.i(76412);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(76412);
+      return null;
+    }
+    m localm = new m();
+    localm.field_appId = paramString;
+    localm.field_appIdHash = paramString.hashCode();
+    if (!get(localm, new String[] { "appIdHash" }))
+    {
+      AppMethodBeat.o(76412);
+      return null;
+    }
+    AppMethodBeat.o(76412);
+    return localm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.n
  * JD-Core Version:    0.7.0.1
  */

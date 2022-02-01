@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/dnc" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentTop="true">
-        <LinearLayout android:orientation="horizontal" android:id="@id/d4" android:background="@drawable/au" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d3" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ar" android:contentDescription="@string/ca" />
+    <android.support.constraint.ConstraintLayout android:id="@id/hft" android:background="@drawable/asu" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/c5" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/hfu" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginRight="@dimen/ct" android:scaleType="centerCrop" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/hg7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="640.0px" android:text="{title}{title}{title}{title}{title}{title}{title}{title}" android:maxLines="1" />
+            <TextView android:textSize="@dimen/k6" android:textColor="@color/a3b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/hg6" android:background="@drawable/zf" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:text="{sub}{sub}" />
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/dg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/df" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/c5" android:src="@raw/actionbar_icon_dark_more" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
-            <com.tencent.mm.plugin.game.ui.message.TabItemView android:id="@id/g3z" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="2.0dip" app:tab_name="@string/csy" />
-            <com.tencent.mm.plugin.game.ui.message.TabItemView android:id="@id/g40" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" app:tab_name="@string/csz" />
-        </LinearLayout>
-        <View android:background="@color/BW_0_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-    <android.support.v4.view.ViewPager android:id="@id/dnd" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/dnc" />
-</RelativeLayout>
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_2" android:id="@id/hfs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cf" android:text="{desc}" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+        <FrameLayout android:id="@id/hg5" android:background="@drawable/ze" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginRight="@dimen/ct" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_arrow" app:iconColor="@color/BW_70" />
+        </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@color/BW_100" android:paddingLeft="@dimen/ct" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/c5" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/hft">
+        <include android:id="@id/hg0" layout="@layout/acj" />
+        <include android:id="@id/hg1" layout="@layout/acj" />
+        <include android:id="@id/hg2" layout="@layout/acj" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

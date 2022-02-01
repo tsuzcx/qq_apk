@@ -4,31 +4,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.b.b.a.b;
+import com.huawei.b.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oe;
-import com.tencent.mm.g.a.oe.a;
-import com.tencent.mm.g.a.oe.b;
+import com.tencent.mm.g.a.ow;
+import com.tencent.mm.g.a.ow.a;
+import com.tencent.mm.g.a.ow.b;
 import com.tencent.mm.plugin.fingerprint.b.a.b;
 import com.tencent.mm.plugin.fingerprint.b.a.f;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Map;
 
 public final class c
   extends a
 {
-  private String dwk;
-  private String trt;
-  private a tru;
-  private com.tencent.mm.plugin.fingerprint.d.c trv;
+  private String dNR;
+  private String wFa;
+  private a wFb;
+  private com.tencent.mm.plugin.fingerprint.d.c wFc;
   
   public c()
   {
     AppMethodBeat.i(64295);
-    this.tru = new a((byte)0);
-    this.trv = null;
+    this.wFb = new a((byte)0);
+    this.wFc = null;
     AppMethodBeat.o(64295);
   }
   
@@ -40,8 +40,8 @@ public final class c
   public final int a(final com.tencent.mm.plugin.fingerprint.d.c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(64301);
-    f localf = new f(p.tse.tsf, (byte)0);
-    this.trq.a(ak.getContext(), localf, new b()
+    f localf = new f(p.wFK.wFL, (byte)0);
+    this.wEX.a(MMApplicationContext.getContext(), localf, new b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
@@ -51,10 +51,10 @@ public final class c
         {
           if (i != 0)
           {
-            c.a(c.this, paramAnonymousc.dwk);
-            c.b(c.this, paramAnonymousc.dwl);
+            c.a(c.this, paramAnonymousc.dNR);
+            c.b(c.this, paramAnonymousc.dNS);
           }
-          paramc.gb(paramAnonymousc.errCode, paramAnonymousc.dwi);
+          paramc.gz(paramAnonymousc.errCode, paramAnonymousc.dNP);
           AppMethodBeat.o(64292);
           return;
         }
@@ -64,39 +64,39 @@ public final class c
     return 0;
   }
   
-  public final void a(oe paramoe, int paramInt)
+  public final void a(ow paramow, int paramInt)
   {
     AppMethodBeat.i(64302);
-    if (!TextUtils.isEmpty(this.dwk))
+    if (!TextUtils.isEmpty(this.dNR))
     {
-      ae.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
-      if (TextUtils.isEmpty(this.trt)) {
+      Log.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
+      if (TextUtils.isEmpty(this.wFa)) {
         break label147;
       }
-      ae.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
+      Log.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
     }
     for (;;)
     {
-      ae.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
-      if ((paramoe != null) && (paramoe.dDb.dDf != null))
+      Log.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
+      if ((paramow != null) && (paramow.dUQ.dUU != null))
       {
-        oe.b localb = new oe.b();
-        localb.dDh = type();
+        ow.b localb = new ow.b();
+        localb.dUW = type();
         localb.errCode = 0;
-        localb.dwk = this.dwk;
-        localb.dwl = this.trt;
-        localb.dwi = paramInt;
-        paramoe.dDc = localb;
-        paramoe.dDb.dDf.run();
+        localb.dNR = this.dNR;
+        localb.dNS = this.wFa;
+        localb.dNP = paramInt;
+        paramow.dUR = localb;
+        paramow.dUQ.dUU.run();
       }
-      this.dwk = "";
-      this.trt = "";
+      this.dNR = "";
+      this.wFa = "";
       AppMethodBeat.o(64302);
       return;
-      ae.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
+      Log.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
       break;
       label147:
-      ae.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
+      Log.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
     }
   }
   
@@ -105,69 +105,69 @@ public final class c
     return false;
   }
   
-  public final boolean cRY()
+  public final boolean dJT()
   {
     AppMethodBeat.i(64296);
-    boolean bool = this.trq.fi(ak.getContext());
+    boolean bool = this.wEX.fN(MMApplicationContext.getContext());
     AppMethodBeat.o(64296);
     return bool;
   }
   
-  public final boolean cRZ()
+  public final boolean dJU()
   {
     AppMethodBeat.i(64297);
-    boolean bool = this.trq.cSw();
+    boolean bool = this.wEX.dKr();
     AppMethodBeat.o(64297);
     return bool;
   }
   
-  public final void cSa()
+  public final void dJV()
   {
     AppMethodBeat.i(64299);
-    ae.i("MicroMsg.FingerPrintMgrImpl", "initFP");
-    this.trq.prepare();
+    Log.i("MicroMsg.FingerPrintMgrImpl", "initFP");
+    this.wEX.prepare();
     AppMethodBeat.o(64299);
   }
   
-  public final boolean cSb()
+  public final boolean dJW()
   {
     return true;
   }
   
-  public final boolean cSc()
+  public final boolean dJX()
   {
     AppMethodBeat.i(64300);
-    boolean bool = d.cSc();
+    boolean bool = d.dJX();
     AppMethodBeat.o(64300);
     return bool;
   }
   
-  public final Map<String, String> cSd()
+  public final Map<String, String> dJY()
   {
     return null;
   }
   
-  public final Map<String, String> cSe()
+  public final Map<String, String> dJZ()
   {
     return null;
   }
   
-  public final boolean cSf()
+  public final boolean dKa()
   {
     return true;
   }
   
-  public final boolean cSg()
+  public final boolean dKb()
   {
     return false;
   }
   
-  public final boolean cSh()
+  public final boolean dKc()
   {
     return false;
   }
   
-  public final void ff(Context paramContext)
+  public final void fK(Context paramContext)
   {
     AppMethodBeat.i(64298);
     if (paramContext != null)
@@ -176,9 +176,9 @@ public final class c
       ((Intent)localObject).setAction("com.android.settings.fingerprint.FingerprintSettings");
       ((Intent)localObject).addCategory("android.intent.category.DEFAULT");
       ((Intent)localObject).setFlags(268435456);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(64298);
@@ -187,7 +187,7 @@ public final class c
   public final int type()
   {
     AppMethodBeat.i(64304);
-    int i = this.trq.cSz();
+    int i = this.wEX.dKu();
     AppMethodBeat.o(64304);
     return i;
   }
@@ -195,7 +195,7 @@ public final class c
   public final void userCancel()
   {
     AppMethodBeat.i(64303);
-    this.trq.cancel();
+    this.wEX.cancel();
     AppMethodBeat.o(64303);
   }
   
@@ -208,7 +208,7 @@ public final class c
     {
       AppMethodBeat.i(64294);
       if (c.a(c.this) != null) {
-        c.a(c.this).gb(paramInt1, paramInt2);
+        c.a(c.this).gz(paramInt1, paramInt2);
       }
       AppMethodBeat.o(64294);
     }
@@ -225,7 +225,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.c
  * JD-Core Version:    0.7.0.1
  */

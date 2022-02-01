@@ -2,25 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class ae
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eJU = "appMsgReportContextId".hashCode();
-  private static final int eJV = "url".hashCode();
-  private static final int eJW = "reportTime".hashCode();
-  private static final int eJX = "aScene".hashCode();
+  private static final int fjf = "msgId".hashCode();
+  private static final int fnu = "aId".hashCode();
+  private static final int fnv = "exposeTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eJQ = true;
-  private boolean eJR = true;
-  private boolean eJS = true;
-  private boolean eJT = true;
-  public int field_aScene;
-  public long field_appMsgReportContextId;
-  public long field_reportTime;
-  public String field_url;
+  public String field_aId;
+  public long field_exposeTime;
+  public long field_msgId;
+  private boolean fjb = true;
+  private boolean fns = true;
+  private boolean fnt = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +32,11 @@ public abstract class ae
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eJU != k) {
+      if (fnu != k) {
         break label65;
       }
-      this.field_appMsgReportContextId = paramCursor.getLong(i);
-      this.eJQ = true;
+      this.field_aId = paramCursor.getString(i);
+      this.fns = true;
     }
     for (;;)
     {
@@ -47,12 +44,10 @@ public abstract class ae
       break label20;
       break;
       label65:
-      if (eJV == k) {
-        this.field_url = paramCursor.getString(i);
-      } else if (eJW == k) {
-        this.field_reportTime = paramCursor.getLong(i);
-      } else if (eJX == k) {
-        this.field_aScene = paramCursor.getInt(i);
+      if (fjf == k) {
+        this.field_msgId = paramCursor.getLong(i);
+      } else if (fnv == k) {
+        this.field_exposeTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -62,17 +57,14 @@ public abstract class ae
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eJQ) {
-      localContentValues.put("appMsgReportContextId", Long.valueOf(this.field_appMsgReportContextId));
+    if (this.fns) {
+      localContentValues.put("aId", this.field_aId);
     }
-    if (this.eJR) {
-      localContentValues.put("url", this.field_url);
+    if (this.fjb) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eJS) {
-      localContentValues.put("reportTime", Long.valueOf(this.field_reportTime));
-    }
-    if (this.eJT) {
-      localContentValues.put("aScene", Integer.valueOf(this.field_aScene));
+    if (this.fnt) {
+      localContentValues.put("exposeTime", Long.valueOf(this.field_exposeTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -82,7 +74,7 @@ public abstract class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ae
  * JD-Core Version:    0.7.0.1
  */

@@ -7,34 +7,34 @@ import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.model.b;
 import com.tencent.mm.plugin.game.model.r;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   implements c, com.tencent.mm.plugin.game.api.e
 {
-  private b ucv;
-  private r ucw;
+  private b xtL;
+  private r xtM;
   
-  public final b cZj()
+  public final b dSI()
   {
     AppMethodBeat.i(40843);
-    g.ajP().aiU();
-    if (this.ucv == null) {
-      this.ucv = new b();
+    g.aAf().azk();
+    if (this.xtL == null) {
+      this.xtL = new b();
     }
-    b localb = this.ucv;
+    b localb = this.xtL;
     AppMethodBeat.o(40843);
     return localb;
   }
   
-  public final r cZk()
+  public final r dSJ()
   {
     AppMethodBeat.i(40845);
-    g.ajP().aiU();
-    if (this.ucw == null) {
-      this.ucw = new r();
+    g.aAf().azk();
+    if (this.xtM == null) {
+      this.xtM = new r();
     }
-    r localr = this.ucw;
+    r localr = this.xtM;
     AppMethodBeat.o(40845);
     return localr;
   }
@@ -42,22 +42,22 @@ public final class e
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(40841);
-    ae.i("MicroMsg.GameService", "GameService onAccountInitialized");
-    this.ucv = new b();
-    this.ucw = new r();
+    Log.i("MicroMsg.GameService", "GameService onAccountInitialized");
+    this.xtL = new b();
+    this.xtM = new r();
     AppMethodBeat.o(40841);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(40842);
-    ae.i("MicroMsg.GameService", "GameService onAccountRelease");
+    Log.i("MicroMsg.GameService", "GameService onAccountRelease");
     AppMethodBeat.o(40842);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.e
  * JD-Core Version:    0.7.0.1
  */

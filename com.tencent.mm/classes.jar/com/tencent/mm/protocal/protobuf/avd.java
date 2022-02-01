@@ -5,56 +5,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class avd
   extends com.tencent.mm.bw.a
 {
-  public String GMk;
+  public String LFU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(42647);
+    AppMethodBeat.i(209496);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GMk != null) {
-        paramVarArgs.d(1, this.GMk);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.LFU != null) {
+        paramVarArgs.e(1, this.LFU);
       }
-      AppMethodBeat.o(42647);
+      AppMethodBeat.o(209496);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GMk == null) {
+      if (this.LFU == null) {
         break label213;
       }
     }
     label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GMk) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.LFU) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(42647);
+      AppMethodBeat.o(209496);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(42647);
+        AppMethodBeat.o(209496);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         avd localavd = (avd)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(42647);
+          AppMethodBeat.o(209496);
           return -1;
         }
-        localavd.GMk = locala.OmT.readString();
-        AppMethodBeat.o(42647);
+        localavd.LFU = locala.UbS.readString();
+        AppMethodBeat.o(209496);
         return 0;
       }
-      AppMethodBeat.o(42647);
+      AppMethodBeat.o(209496);
       return -1;
     }
   }

@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.k;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
@@ -77,16 +77,16 @@ public class ModulePkgInfo
   public long getPkgSize()
   {
     AppMethodBeat.i(182977);
-    if (!o.fB(this.pkgPath))
+    if (!s.YS(this.pkgPath))
     {
       localObject = new FileNotFoundException();
       AppMethodBeat.o(182977);
       throw ((Throwable)localObject);
     }
-    Object localObject = new k(this.pkgPath);
-    if ((((k)localObject).isFile()) && (((k)localObject).canRead()))
+    Object localObject = new o(this.pkgPath);
+    if ((((o)localObject).isFile()) && (((o)localObject).canRead()))
     {
-      long l = ((k)localObject).length();
+      long l = ((o)localObject).length();
       AppMethodBeat.o(182977);
       return l;
     }
@@ -105,9 +105,9 @@ public class ModulePkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(182973);
-    if (o.fB(this.pkgPath))
+    if (s.YS(this.pkgPath))
     {
-      long l = o.aZS(this.pkgPath);
+      long l = s.boX(this.pkgPath);
       AppMethodBeat.o(182973);
       return l;
     }
@@ -143,9 +143,9 @@ public class ModulePkgInfo
   
   public String toString()
   {
-    AppMethodBeat.i(195061);
+    AppMethodBeat.i(196150);
     String str = "ModulePkgInfo{pkgPath='" + this.pkgPath + '\'' + ", name='" + this.name + '\'' + ", md5='" + this.md5 + '\'' + ", independent=" + this.independent + ", aliases=" + Arrays.toString(this.aliases) + ", pkgVersion=" + this.pkgVersion + '}';
-    AppMethodBeat.o(195061);
+    AppMethodBeat.o(196150);
     return str;
   }
   
@@ -167,7 +167,7 @@ public class ModulePkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo
  * JD-Core Version:    0.7.0.1
  */

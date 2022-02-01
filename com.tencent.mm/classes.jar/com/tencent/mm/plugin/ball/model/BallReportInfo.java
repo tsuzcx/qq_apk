@@ -11,16 +11,16 @@ public class BallReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<BallReportInfo> CREATOR;
-  public String dyc;
-  public String hSG;
-  public int nLA;
-  public int nLB;
-  public int nLC;
-  public String nLD;
-  public int nLE;
-  public String nLF;
-  public String nLG;
-  public int nLH;
+  public String dPJ;
+  public int hCZ;
+  public int hDa;
+  public String iNV;
+  public String oWA;
+  public String oWB;
+  public int oWC;
+  public int oWx;
+  public String oWy;
+  public int oWz;
   public int opType;
   
   static
@@ -35,38 +35,38 @@ public class BallReportInfo
   protected BallReportInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(127550);
-    this.nLA = paramParcel.readInt();
-    this.nLB = paramParcel.readInt();
-    this.nLC = paramParcel.readInt();
-    this.dyc = paramParcel.readString();
-    this.nLD = paramParcel.readString();
-    this.hSG = paramParcel.readString();
+    this.hCZ = paramParcel.readInt();
+    this.oWx = paramParcel.readInt();
+    this.hDa = paramParcel.readInt();
+    this.dPJ = paramParcel.readString();
+    this.oWy = paramParcel.readString();
+    this.iNV = paramParcel.readString();
     this.opType = paramParcel.readInt();
-    this.nLF = paramParcel.readString();
-    this.nLG = paramParcel.readString();
-    this.nLH = paramParcel.readInt();
-    this.nLE = paramParcel.readInt();
+    this.oWA = paramParcel.readString();
+    this.oWB = paramParcel.readString();
+    this.oWC = paramParcel.readInt();
+    this.oWz = paramParcel.readInt();
     AppMethodBeat.o(127550);
   }
   
   BallReportInfo(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(127553);
-    this.nLF = paramJSONObject.optString("r_internal_sessionId", null);
-    this.nLG = paramJSONObject.optString("r_internal_aggregationSessionId", null);
-    this.nLH = paramJSONObject.optInt("r_internal_taskOrder", 1);
+    this.oWA = paramJSONObject.optString("r_internal_sessionId", null);
+    this.oWB = paramJSONObject.optString("r_internal_aggregationSessionId", null);
+    this.oWC = paramJSONObject.optInt("r_internal_taskOrder", 1);
     AppMethodBeat.o(127553);
   }
   
-  public final JSONObject bLo()
+  public final JSONObject cii()
   {
     AppMethodBeat.i(127552);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("r_internal_sessionId", this.nLF);
-      localJSONObject.put("r_internal_aggregationSessionId", this.nLG);
-      localJSONObject.put("r_internal_taskOrder", this.nLH);
+      localJSONObject.put("r_internal_sessionId", this.oWA);
+      localJSONObject.put("r_internal_aggregationSessionId", this.oWB);
+      localJSONObject.put("r_internal_taskOrder", this.oWC);
       AppMethodBeat.o(127552);
       return localJSONObject;
     }
@@ -84,26 +84,26 @@ public class BallReportInfo
   
   public String toString()
   {
-    AppMethodBeat.i(200287);
-    String str = "BallReportInfo{generateType=" + this.nLA + ", generateScene=" + this.nLB + ", bizScene=" + this.nLC + ", bizId='" + this.dyc + '\'' + ", bizSubId='" + this.nLD + '\'' + ", bizName='" + this.hSG + '\'' + ", opType=" + this.opType + ", internal_sessionId='" + this.nLF + '\'' + ", internal_aggregationSessionId='" + this.nLG + '\'' + ", internal_taskOrder=" + this.nLH + '}';
-    AppMethodBeat.o(200287);
+    AppMethodBeat.i(188577);
+    String str = "BallReportInfo{generateType=" + this.hCZ + ", generateScene=" + this.oWx + ", bizScene=" + this.hDa + ", bizId='" + this.dPJ + '\'' + ", bizSubId='" + this.oWy + '\'' + ", bizName='" + this.iNV + '\'' + ", opType=" + this.opType + ", internal_sessionId='" + this.oWA + '\'' + ", internal_aggregationSessionId='" + this.oWB + '\'' + ", internal_taskOrder=" + this.oWC + '}';
+    AppMethodBeat.o(188577);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(127551);
-    paramParcel.writeInt(this.nLA);
-    paramParcel.writeInt(this.nLB);
-    paramParcel.writeInt(this.nLC);
-    paramParcel.writeString(this.dyc);
-    paramParcel.writeString(this.nLD);
-    paramParcel.writeString(this.hSG);
+    paramParcel.writeInt(this.hCZ);
+    paramParcel.writeInt(this.oWx);
+    paramParcel.writeInt(this.hDa);
+    paramParcel.writeString(this.dPJ);
+    paramParcel.writeString(this.oWy);
+    paramParcel.writeString(this.iNV);
     paramParcel.writeInt(this.opType);
-    paramParcel.writeString(this.nLF);
-    paramParcel.writeString(this.nLG);
-    paramParcel.writeInt(this.nLH);
-    paramParcel.writeInt(this.nLE);
+    paramParcel.writeString(this.oWA);
+    paramParcel.writeString(this.oWB);
+    paramParcel.writeInt(this.oWC);
+    paramParcel.writeInt(this.oWz);
     AppMethodBeat.o(127551);
   }
 }

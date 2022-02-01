@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.forcenotify.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
 final class a$b
   extends q
-  implements a<aq>
+  implements a<MMHandler>
 {
-  public static final b tuE;
+  public static final b wLL;
   
   static
   {
     AppMethodBeat.i(185651);
-    tuE = new b();
+    wLL = new b();
     AppMethodBeat.o(185651);
   }
   
@@ -27,7 +27,7 @@ final class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.b.a.b
  * JD-Core Version:    0.7.0.1
  */

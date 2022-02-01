@@ -4,7 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.protocol.jce.ReportLogRequest;
 import com.tencent.tmassistantsdk.protocol.jce.ReqHead;
 import com.tencent.tmassistantsdk.protocol.jce.Request;
@@ -117,7 +117,7 @@ public class ProtocolPackage
     {
       for (;;)
       {
-        ae.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+        Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
         paramJceStruct = null;
       }
     }
@@ -125,7 +125,7 @@ public class ProtocolPackage
     {
       for (;;)
       {
-        ae.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+        Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
         paramJceStruct = null;
       }
     }
@@ -133,7 +133,7 @@ public class ProtocolPackage
     {
       for (;;)
       {
-        ae.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+        Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
         paramJceStruct = null;
       }
     }
@@ -222,7 +222,7 @@ public class ProtocolPackage
     //   108: ldc 179
     //   110: iconst_0
     //   111: anewarray 4	java/lang/Object
-    //   114: invokestatic 185	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   114: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   117: aload_1
     //   118: ifnull +7 -> 125
     //   121: aload_1
@@ -256,7 +256,7 @@ public class ProtocolPackage
     //   170: ldc 179
     //   172: iconst_0
     //   173: anewarray 4	java/lang/Object
-    //   176: invokestatic 185	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   176: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   179: goto -25 -> 154
     //   182: astore_1
     //   183: ldc 19
@@ -264,7 +264,7 @@ public class ProtocolPackage
     //   186: ldc 179
     //   188: iconst_0
     //   189: anewarray 4	java/lang/Object
-    //   192: invokestatic 185	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   192: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   195: goto -36 -> 159
     //   198: astore_1
     //   199: ldc 19
@@ -272,7 +272,7 @@ public class ProtocolPackage
     //   202: ldc 179
     //   204: iconst_0
     //   205: anewarray 4	java/lang/Object
-    //   208: invokestatic 185	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   208: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   211: goto -86 -> 125
     //   214: astore_0
     //   215: ldc 19
@@ -280,7 +280,7 @@ public class ProtocolPackage
     //   218: ldc 179
     //   220: iconst_0
     //   221: anewarray 4	java/lang/Object
-    //   224: invokestatic 185	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   224: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   227: goto -94 -> 133
     //   230: astore_0
     //   231: aconst_null
@@ -305,7 +305,7 @@ public class ProtocolPackage
     //   262: ldc 179
     //   264: iconst_0
     //   265: anewarray 4	java/lang/Object
-    //   268: invokestatic 185	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   268: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   271: goto -28 -> 243
     //   274: astore_1
     //   275: ldc 19
@@ -313,7 +313,7 @@ public class ProtocolPackage
     //   278: ldc 179
     //   280: iconst_0
     //   281: anewarray 4	java/lang/Object
-    //   284: invokestatic 185	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   284: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   287: goto -36 -> 251
     //   290: astore_0
     //   291: aconst_null
@@ -446,7 +446,7 @@ public class ProtocolPackage
     }
     catch (Exception paramArrayOfByte)
     {
-      ae.printErrStackTrace("ProtocolPackage", paramArrayOfByte, "", new Object[0]);
+      Log.printErrStackTrace("ProtocolPackage", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(102264);
     }
     return null;
@@ -469,7 +469,7 @@ public class ProtocolPackage
         }
         catch (Exception paramJceStruct)
         {
-          ae.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+          Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
           AppMethodBeat.o(102265);
           return null;
         }
@@ -481,7 +481,7 @@ public class ProtocolPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.ProtocolPackage
  * JD-Core Version:    0.7.0.1
  */

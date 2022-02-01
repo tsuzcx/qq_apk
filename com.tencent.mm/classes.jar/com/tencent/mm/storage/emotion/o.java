@@ -3,32 +3,32 @@ package com.tencent.mm.storage.emotion;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import java.io.IOException;
 
 public final class o
-  extends j<n>
+  extends MAutoStorage<n>
   implements g.a
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(105120);
-    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "EmotionRewardInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(n.info, "EmotionRewardInfo") };
     AppMethodBeat.o(105120);
   }
   
-  public o(e parame)
+  public o(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, n.info, "EmotionRewardInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, n.info, "EmotionRewardInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
   public final int a(g paramg)
@@ -37,17 +37,17 @@ public final class o
     return 0;
   }
   
-  public final GetEmotionRewardResponse aWv(String paramString)
+  public final GetEmotionRewardResponse blu(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(105119);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
+      Log.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
       AppMethodBeat.o(105119);
       return null;
     }
-    Cursor localCursor = this.db.a("EmotionRewardInfo", new String[] { "content" }, "productID=?", new String[] { paramString }, null, null, null, 2);
+    Cursor localCursor = this.db.query("EmotionRewardInfo", new String[] { "content" }, "productID=?", new String[] { paramString }, null, null, null, 2);
     paramString = localObject;
     if (localCursor != null)
     {
@@ -68,7 +68,7 @@ public final class o
     {
       for (;;)
       {
-        ae.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
         paramString = localObject;
       }
     }
@@ -76,7 +76,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,46 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bwp;
-import com.tencent.mm.protocal.protobuf.bwq;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ckd;
+import com.tencent.mm.protocal.protobuf.cke;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ae
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   
   public ae(int paramInt)
   {
     AppMethodBeat.i(150963);
-    b.a locala = new b.a();
-    locala.hQF = new bwp();
-    locala.hQG = new bwq();
+    d.a locala = new d.a();
+    locala.iLN = new ckd();
+    locala.iLO = new cke();
     locala.uri = "/cgi-bin/micromsg-bin/logoutwebwx";
     locala.funcId = 281;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((bwp)this.rr.hQD.hQJ).OpCode = paramInt;
+    this.rr = locala.aXF();
+    ((ckd)this.rr.iLK.iLR).OpCode = paramInt;
     AppMethodBeat.o(150963);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(150964);
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetSceneWebWXLogout", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    Log.d("MicroMsg.NetSceneWebWXLogout", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(150964);
     return i;
   }
@@ -49,11 +50,11 @@ public final class ae
     return 281;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150965);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetSceneWebWXLogout", "logout Error. ");
+      Log.d("MicroMsg.NetSceneWebWXLogout", "logout Error. ");
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

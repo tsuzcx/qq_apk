@@ -7,9 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(136379);
-    niW = new d("PANEL_HIDDEN", 0);
-    niX = new d("CONFIRM_CLICKED", 1);
-    niY = new d[] { niW, niX };
+    osH = new d("PANEL_HIDDEN", 0);
+    osI = new d("CONFIRM_KEYBOARD_CLICKED", 1);
+    osJ = new d("CONFIRM_BAR_CLICKED", 2);
+    osK = new d[] { osH, osI, osJ };
     AppMethodBeat.o(136379);
   }
   
@@ -17,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.i.d
  * JD-Core Version:    0.7.0.1
  */

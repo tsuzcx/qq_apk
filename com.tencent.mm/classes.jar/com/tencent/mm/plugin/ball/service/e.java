@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.ball.service;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -18,56 +17,48 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class e
-  implements com.tencent.mm.plugin.ball.c.e
+  implements com.tencent.mm.plugin.ball.c.d
 {
-  public static int nMA;
-  public static int nMB;
-  public static boolean nMC;
-  private static e nMD;
-  private static List<BallInfo> nMz;
+  private static List<BallInfo> oXv;
+  public static int oXw;
+  public static int oXx;
+  public static boolean oXy;
+  private static e oXz;
   
   static
   {
     AppMethodBeat.i(106235);
-    nMz = new Vector();
-    nMA = com.tencent.mm.plugin.ball.f.e.nOb;
-    nMB = com.tencent.mm.plugin.ball.f.e.nOc;
-    nMC = false;
+    oXv = new Vector();
+    oXw = 0;
+    oXx = com.tencent.mm.plugin.ball.f.e.oYW;
+    oXy = false;
     AppMethodBeat.o(106235);
   }
   
   private e()
   {
     AppMethodBeat.i(106222);
-    vw();
-    if (g.ab(com.tencent.mm.plugin.handoff.a.a.class) != null) {
-      ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).em(nMz);
+    vC();
+    if (g.af(com.tencent.mm.plugin.handoff.a.a.class) != null) {
+      ((com.tencent.mm.plugin.handoff.a.a)g.af(com.tencent.mm.plugin.handoff.a.a.class)).ff(oXv);
     }
     AppMethodBeat.o(106222);
   }
   
-  private static String Lv(String paramString)
+  private static String UE(String paramString)
   {
     AppMethodBeat.i(106226);
-    g.ajP();
-    if (!com.tencent.mm.kernel.a.aiY())
+    g.aAf();
+    if (!com.tencent.mm.kernel.a.azo())
     {
       AppMethodBeat.o(106226);
       return paramString;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    g.ajP();
-    paramString = com.tencent.mm.kernel.a.aiF() + "#" + paramString;
+    g.aAf();
+    paramString = com.tencent.mm.kernel.a.ayV() + "#" + paramString;
     AppMethodBeat.o(106226);
     return paramString;
-  }
-  
-  public static int Xa(String paramString)
-  {
-    AppMethodBeat.i(176965);
-    int i = ay.aRW(bLr()).decodeInt(paramString, 0);
-    AppMethodBeat.o(176965);
-    return i;
   }
   
   /* Error */
@@ -76,54 +67,54 @@ public class e
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 115
+    //   2: ldc 96
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
     //   8: ifnull +85 -> 93
     //   11: aload_2
     //   12: ifnull +47 -> 59
-    //   15: ldc 117
-    //   17: ldc 119
+    //   15: ldc 98
+    //   17: ldc 100
     //   19: iconst_1
     //   20: anewarray 4	java/lang/Object
     //   23: dup
     //   24: iconst_0
     //   25: aload_1
-    //   26: invokevirtual 124	com/tencent/mm/plugin/ball/model/BallInfo:bLl	()Ljava/lang/String;
+    //   26: invokevirtual 105	com/tencent/mm/plugin/ball/model/BallInfo:cif	()Ljava/lang/String;
     //   29: aastore
-    //   30: invokestatic 129	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   33: invokestatic 102	com/tencent/mm/plugin/ball/service/e:bLr	()Ljava/lang/String;
-    //   36: invokestatic 108	com/tencent/mm/sdk/platformtools/ay:aRW	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/ay;
+    //   30: invokestatic 110	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   33: invokestatic 113	com/tencent/mm/plugin/ball/service/e:cik	()Ljava/lang/String;
+    //   36: invokestatic 119	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getMMKV	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
     //   39: aload_1
-    //   40: invokevirtual 124	com/tencent/mm/plugin/ball/model/BallInfo:bLl	()Ljava/lang/String;
+    //   40: invokevirtual 105	com/tencent/mm/plugin/ball/model/BallInfo:cif	()Ljava/lang/String;
     //   43: aload_2
-    //   44: invokevirtual 132	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   47: invokevirtual 136	com/tencent/mm/sdk/platformtools/ay:encode	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   44: invokevirtual 122	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   47: invokevirtual 126	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:encode	(Ljava/lang/String;Ljava/lang/String;)Z
     //   50: pop
-    //   51: ldc 115
-    //   53: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   51: ldc 96
+    //   53: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: aload_0
     //   57: monitorexit
     //   58: return
-    //   59: ldc 117
-    //   61: ldc 138
+    //   59: ldc 98
+    //   61: ldc 128
     //   63: iconst_1
     //   64: anewarray 4	java/lang/Object
     //   67: dup
     //   68: iconst_0
     //   69: aload_1
-    //   70: invokevirtual 124	com/tencent/mm/plugin/ball/model/BallInfo:bLl	()Ljava/lang/String;
+    //   70: invokevirtual 105	com/tencent/mm/plugin/ball/model/BallInfo:cif	()Ljava/lang/String;
     //   73: aastore
-    //   74: invokestatic 129	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   77: invokestatic 102	com/tencent/mm/plugin/ball/service/e:bLr	()Ljava/lang/String;
-    //   80: invokestatic 108	com/tencent/mm/sdk/platformtools/ay:aRW	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/ay;
+    //   74: invokestatic 110	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   77: invokestatic 113	com/tencent/mm/plugin/ball/service/e:cik	()Ljava/lang/String;
+    //   80: invokestatic 119	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getMMKV	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
     //   83: aload_1
-    //   84: invokevirtual 124	com/tencent/mm/plugin/ball/model/BallInfo:bLl	()Ljava/lang/String;
-    //   87: ldc 140
-    //   89: invokevirtual 136	com/tencent/mm/sdk/platformtools/ay:encode	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   84: invokevirtual 105	com/tencent/mm/plugin/ball/model/BallInfo:cif	()Ljava/lang/String;
+    //   87: ldc 130
+    //   89: invokevirtual 126	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:encode	(Ljava/lang/String;Ljava/lang/String;)Z
     //   92: pop
-    //   93: ldc 115
-    //   95: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: ldc 96
+    //   95: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   98: goto -42 -> 56
     //   101: astore_1
     //   102: aload_0
@@ -143,16 +134,24 @@ public class e
     //   93	98	101	finally
   }
   
-  public static e bLU()
+  public static int agV(String paramString)
+  {
+    AppMethodBeat.i(176965);
+    int i = MultiProcessMMKV.getMMKV(cik()).decodeInt(paramString, 0);
+    AppMethodBeat.o(176965);
+    return i;
+  }
+  
+  public static e ciJ()
   {
     AppMethodBeat.i(106223);
-    if (nMD == null) {}
+    if (oXz == null) {}
     try
     {
-      if (nMD == null) {
-        nMD = new e();
+      if (oXz == null) {
+        oXz = new e();
       }
-      e locale = nMD;
+      e locale = oXz;
       AppMethodBeat.o(106223);
       return locale;
     }
@@ -162,22 +161,27 @@ public class e
     }
   }
   
-  public static int bLV()
+  public static int ciK()
   {
-    return nMA;
+    return oXw;
   }
   
-  public static int bLW()
+  public static int ciL()
   {
-    return nMB;
+    return oXx;
   }
   
-  public static List<BallInfo> bLX()
+  public static boolean ciM()
   {
-    return nMz;
+    return oXy;
   }
   
-  private void bLY()
+  public static List<BallInfo> ciN()
+  {
+    return oXv;
+  }
+  
+  private void ciO()
   {
     try
     {
@@ -188,14 +192,14 @@ public class e
         try
         {
           int i;
-          if (d.h(nMz))
+          if (com.tencent.mm.plugin.ball.f.d.h(oXv))
           {
             int j = 0;
             i = 0;
-            if (j < nMz.size())
+            if (j < oXv.size())
             {
-              BallInfo localBallInfo = (BallInfo)nMz.get(j);
-              JSONObject localJSONObject = BallInfo.y(localBallInfo);
+              BallInfo localBallInfo = (BallInfo)oXv.get(j);
+              JSONObject localJSONObject = BallInfo.x(localBallInfo);
               if (localJSONObject == null) {
                 break label187;
               }
@@ -206,20 +210,20 @@ public class e
               continue;
             }
           }
-          ay localay;
+          MultiProcessMMKV localMultiProcessMMKV;
           localObject2 = finally;
         }
         catch (JSONException localJSONException)
         {
-          ae.printErrStackTrace("MicroMsg.FloatBallStorage", localJSONException, "saveBallInfoList fail, exception:%s", new Object[] { localJSONException });
+          Log.printErrStackTrace("MicroMsg.FloatBallStorage", localJSONException, "saveBallInfoList fail, exception:%s", new Object[] { localJSONException });
           localObject1 = ((JSONArray)localObject1).toString();
-          ay.aRW(bLr()).encode("balls", (String)localObject1);
-          localObject1 = d.bS(nMz);
-          localay = ay.aRW(bLr());
-          if (d.h((Collection)localObject1))
+          MultiProcessMMKV.getMMKV(cik()).encode("balls", (String)localObject1);
+          localObject1 = com.tencent.mm.plugin.ball.f.d.cg(oXv);
+          localMultiProcessMMKV = MultiProcessMMKV.getMMKV(cik());
+          if (com.tencent.mm.plugin.ball.f.d.h((Collection)localObject1))
           {
             i = ((List)localObject1).size();
-            localay.encode("ActiveCount", i);
+            localMultiProcessMMKV.encode("ActiveCount", i);
             AppMethodBeat.o(106232);
             return;
           }
@@ -230,10 +234,10 @@ public class e
     finally {}
   }
   
-  private static void bLZ()
+  private static void ciP()
   {
     AppMethodBeat.i(106234);
-    String[] arrayOfString = ay.aRW(bLr()).allKeys();
+    String[] arrayOfString = MultiProcessMMKV.getMMKV(cik()).allKeys();
     int i;
     int j;
     label24:
@@ -246,23 +250,23 @@ public class e
         break label176;
       }
       str = arrayOfString[j];
-      if ((!bu.lX(str, "pos_x")) && (!bu.lX(str, "pos_y")) && (!bu.lX(str, "balls")) && (!bu.lX(str, "ActiveCount")) && (!bu.lX(str, "req_perm_cnt")))
+      if ((!Util.isEqual(str, "pos_x")) && (!Util.isEqual(str, "pos_y")) && (!Util.isEqual(str, "balls")) && (!Util.isEqual(str, "ActiveCount")) && (!Util.isEqual(str, "req_perm_cnt")))
       {
-        Iterator localIterator = nMz.iterator();
+        Iterator localIterator = oXv.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!bu.lX(str, ((BallInfo)localIterator.next()).bLl()));
+        } while (!Util.isEqual(str, ((BallInfo)localIterator.next()).cif()));
       }
     }
     for (int k = 1;; k = 0)
     {
       if (k == 0)
       {
-        ae.i("MicroMsg.FloatBallStorage", "fixExistedKeyValues, key:%s", new Object[] { str });
-        ay.aRW(bLr()).remove(str).commit();
+        Log.i("MicroMsg.FloatBallStorage", "fixExistedKeyValues, key:%s", new Object[] { str });
+        MultiProcessMMKV.getMMKV(cik()).remove(str).commit();
       }
       j += 1;
       break label24;
@@ -274,35 +278,35 @@ public class e
     }
   }
   
-  public static String bLr()
+  public static String cik()
   {
     AppMethodBeat.i(106227);
-    g.ajP();
-    if (!com.tencent.mm.kernel.a.aiY())
+    g.aAf();
+    if (!com.tencent.mm.kernel.a.azo())
     {
       AppMethodBeat.o(106227);
       return "float_ball_storage";
     }
-    String str = Lv("float_ball_storage");
+    String str = UE("float_ball_storage");
     AppMethodBeat.o(106227);
     return str;
   }
   
-  public static void cs(String paramString, int paramInt)
+  public static void cz(String paramString, int paramInt)
   {
     AppMethodBeat.i(176966);
-    ay.aRW(bLr()).encode(paramString, paramInt);
+    MultiProcessMMKV.getMMKV(cik()).encode(paramString, paramInt);
     AppMethodBeat.o(176966);
   }
   
-  private void vw()
+  private void vC()
   {
     boolean bool = true;
     int k = 0;
     Object localObject1;
     label32:
-    label219:
-    label242:
+    label216:
+    label239:
     try
     {
       AppMethodBeat.i(106233);
@@ -310,51 +314,51 @@ public class e
     finally {}
     try
     {
-      localObject1 = ay.aRW(bLr()).allKeys();
+      localObject1 = MultiProcessMMKV.getMMKV(cik()).allKeys();
       if (localObject1 == null) {
-        break label515;
+        break label510;
       }
       i = localObject1.length;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      label290:
-      nMA = com.tencent.mm.plugin.ball.f.e.nOb;
-      label413:
-      nMB = com.tencent.mm.plugin.ball.f.e.nOc;
-      nMC = false;
-      nMz = new Vector();
-      ae.printErrStackTrace("MicroMsg.FloatBallStorage", localUnsatisfiedLinkError, "load fail, error:%s", new Object[] { localUnsatisfiedLinkError });
+      label287:
+      oXw = 0;
+      label410:
+      oXx = com.tencent.mm.plugin.ball.f.e.oYW;
+      oXy = false;
+      oXv = new Vector();
+      Log.printErrStackTrace("MicroMsg.FloatBallStorage", localUnsatisfiedLinkError, "load fail, error:%s", new Object[] { localUnsatisfiedLinkError });
       AppMethodBeat.o(106233);
-      break label219;
+      break label216;
       i = 0;
       break label32;
       i += 1;
-      break label290;
+      break label287;
     }
-    ae.i("MicroMsg.FloatBallStorage", "printExistedKeyValues, size:%s", new Object[] { Integer.valueOf(i) });
+    Log.i("MicroMsg.FloatBallStorage", "printExistedKeyValues, size:%s", new Object[] { Integer.valueOf(i) });
     int j = 0;
     for (;;)
     {
       if (j < i)
       {
-        ae.i("MicroMsg.FloatBallStorage", "printExistedKeyValues, key:%s", new Object[] { localObject1[j] });
+        Log.i("MicroMsg.FloatBallStorage", "printExistedKeyValues, key:%s", new Object[] { localObject1[j] });
         j += 1;
       }
       else
       {
-        nMA = ay.aRW(bLr()).decodeInt("pos_x", com.tencent.mm.plugin.ball.f.e.nOb);
-        nMB = ay.aRW(bLr()).decodeInt("pos_y", com.tencent.mm.plugin.ball.f.e.nOc);
-        if (ay.aRW(bLr()).contains("dock_left"))
+        oXw = MultiProcessMMKV.getMMKV(cik()).decodeInt("pos_x", 0);
+        oXx = MultiProcessMMKV.getMMKV(cik()).decodeInt("pos_y", com.tencent.mm.plugin.ball.f.e.oYW);
+        if (MultiProcessMMKV.getMMKV(cik()).contains("dock_left"))
         {
-          bool = ay.aRW(bLr()).decodeBool("dock_left", false);
-          nMC = bool;
-          localObject1 = ay.aRW(bLr()).decodeString("balls");
-          if (!bu.isNullOrNil((String)localObject1)) {
-            break label242;
+          bool = MultiProcessMMKV.getMMKV(cik()).decodeBool("dock_left", false);
+          oXy = bool;
+          localObject1 = MultiProcessMMKV.getMMKV(cik()).decodeString("balls");
+          if (!Util.isNullOrNil((String)localObject1)) {
+            break label239;
           }
-          nMz = new Vector();
-          ae.i("MicroMsg.FloatBallStorage", "load, ballPosition:[%s, %s], ballInfoList is empty", new Object[] { Integer.valueOf(nMA), Integer.valueOf(nMB) });
+          oXv = new Vector();
+          Log.i("MicroMsg.FloatBallStorage", "load, ballPosition:[%s, %s], ballInfoList is empty", new Object[] { Integer.valueOf(oXw), Integer.valueOf(oXx) });
           AppMethodBeat.o(106233);
         }
       }
@@ -362,50 +366,50 @@ public class e
     for (;;)
     {
       return;
-      if (nMA < com.tencent.mm.cb.a.iu(ak.getContext()) / 2) {
+      if (oXw < com.tencent.mm.cb.a.jn(MMApplicationContext.getContext()) / 2) {
         break;
       }
       bool = false;
       break;
-      ae.i("MicroMsg.FloatBallStorage", "load, savedBalls:%s", new Object[] { localObject1 });
+      Log.i("MicroMsg.FloatBallStorage", "load, savedBalls:%s", new Object[] { localObject1 });
       try
       {
-        nMz = new Vector();
+        oXv = new Vector();
         localObject1 = new JSONArray((String)localObject1);
         if (((JSONArray)localObject1).length() <= 0) {
-          break label413;
+          break label410;
         }
         i = k;
         if (i >= ((JSONArray)localObject1).length()) {
-          break label413;
+          break label410;
         }
         Object localObject3 = ((JSONArray)localObject1).optJSONObject(i);
         if (localObject3 == null) {
-          break label520;
+          break label515;
         }
-        localObject3 = BallInfo.ad((JSONObject)localObject3);
+        localObject3 = BallInfo.av((JSONObject)localObject3);
         if (localObject3 == null) {
-          break label520;
+          break label515;
         }
-        if ((((BallInfo)localObject3).nLu) && (((BallInfo)localObject3).type != 16))
+        if ((((BallInfo)localObject3).oWr) && (((BallInfo)localObject3).type != 16))
         {
-          m((BallInfo)localObject3);
+          l((BallInfo)localObject3);
         }
         else
         {
-          ((BallInfo)localObject3).nLv = false;
+          ((BallInfo)localObject3).nno = false;
           ((BallInfo)localObject3).state = 0;
-          nMz.add(localObject3);
+          oXv.add(localObject3);
         }
       }
       catch (JSONException localJSONException)
       {
-        ae.printErrStackTrace("MicroMsg.FloatBallStorage", localJSONException, "load fail, exception:%s", new Object[] { localJSONException });
+        Log.printErrStackTrace("MicroMsg.FloatBallStorage", localJSONException, "load fail, exception:%s", new Object[] { localJSONException });
         AppMethodBeat.o(106233);
       }
       continue;
-      bLZ();
-      ae.i("MicroMsg.FloatBallStorage", "load, ballPosition:[%s, %s], ballInfoList:%s", new Object[] { Integer.valueOf(nMA), Integer.valueOf(nMB), nMz });
+      ciP();
+      Log.i("MicroMsg.FloatBallStorage", "load, ballPosition:[%s, %s], ballInfoList:%s", new Object[] { Integer.valueOf(oXw), Integer.valueOf(oXx), oXv });
       AppMethodBeat.o(106233);
     }
   }
@@ -413,8 +417,8 @@ public class e
   public final void a(List<BallInfo> paramList, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106228);
-    nMz = paramList;
-    bLY();
+    oXv = paramList;
+    ciO();
     AppMethodBeat.o(106228);
   }
   
@@ -423,7 +427,7 @@ public class e
     try
     {
       AppMethodBeat.i(106229);
-      ay.aRW(bLr()).clear();
+      MultiProcessMMKV.getMMKV(cik()).clear();
       AppMethodBeat.o(106229);
       return;
     }
@@ -434,15 +438,15 @@ public class e
     }
   }
   
-  public final void m(BallInfo paramBallInfo)
+  public final void l(BallInfo paramBallInfo)
   {
     try
     {
       AppMethodBeat.i(106231);
       if (paramBallInfo != null)
       {
-        ae.i("MicroMsg.FloatBallStorage", ">>>>>> removeBallInfo, dataKey:%s <<<<<<", new Object[] { paramBallInfo.bLl() });
-        ay.aRW(bLr()).remove(paramBallInfo.bLl()).commit();
+        Log.i("MicroMsg.FloatBallStorage", ">>>>>> removeBallInfo, dataKey:%s <<<<<<", new Object[] { paramBallInfo.cif() });
+        MultiProcessMMKV.getMMKV(cik()).remove(paramBallInfo.cif()).commit();
       }
       AppMethodBeat.o(106231);
       return;
@@ -452,7 +456,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.service.e
  * JD-Core Version:    0.7.0.1
  */

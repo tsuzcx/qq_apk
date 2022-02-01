@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
 import com.tencent.mm.model.e;
 
 public final class b
   extends e
 {
-  public final e.b b(e.a parama)
+  public final h.b b(h.a parama)
   {
     AppMethodBeat.i(55682);
     parama = super.b(parama);
     if (parama != null) {
-      n.ap(parama.dlw);
+      n.aA(parama.dCM);
     }
     AppMethodBeat.o(55682);
     return parama;
@@ -21,7 +21,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.b
  * JD-Core Version:    0.7.0.1
  */

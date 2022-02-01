@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.qmessage;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.plugin.qmessage.a.g;
 import com.tencent.mm.plugin.qmessage.ui.b;
 import com.tencent.mm.pluginsdk.b.c;
@@ -12,14 +12,14 @@ import com.tencent.mm.pluginsdk.n;
 public class Plugin
   implements d
 {
-  private c nZR;
+  private c pkO;
   
   public Plugin()
   {
     AppMethodBeat.i(27706);
-    this.nZR = new c()
+    this.pkO = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ac(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ak(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(27705);
         if ("widget_type_contact".equals(paramAnonymousString))
@@ -44,7 +44,7 @@ public class Plugin
     return locala;
   }
   
-  public az createSubCore()
+  public bd createSubCore()
   {
     AppMethodBeat.i(27708);
     g localg = new g();
@@ -54,12 +54,12 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.nZR;
+    return this.pkO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.Plugin
  * JD-Core Version:    0.7.0.1
  */

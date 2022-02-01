@@ -8,37 +8,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.pluginsdk.model.q;
-import com.tencent.mm.pluginsdk.model.t;
-import com.tencent.mm.pluginsdk.ui.tools.AppChooserUI;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.ui.tools.browser.b;
+import com.tencent.mm.plugin.webview.ui.tools.j;
+import com.tencent.mm.plugin.webview.ui.tools.j.a;
+import com.tencent.mm.pluginsdk.model.r;
+import com.tencent.mm.pluginsdk.model.u;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public final class a
 {
-  public static Intent a(Activity paramActivity, Intent paramIntent, String paramString)
-  {
-    AppMethodBeat.i(79108);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("targeturl", paramString);
-    localBundle.putParcelable("targetintent", paramIntent);
-    paramString = new Intent();
-    paramString.setClass(paramActivity, AppChooserUI.class);
-    paramString.putExtra("scene", 4);
-    paramString.putExtra("type", 0);
-    paramString.putExtra("title", paramActivity.getString(2131757346));
-    paramString.putExtra("targetintent", paramIntent);
-    paramString.putExtra("transferback", localBundle);
-    AppMethodBeat.o(79108);
-    return paramString;
-  }
+  public WeakReference<j> Jaq = null;
   
   public final void c(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(79107);
-    if ((paramActivity == null) || (paramActivity.isFinishing()) || (bu.isNullOrNil(paramString)))
+    if ((paramActivity == null) || (paramActivity.isFinishing()) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(79107);
       return;
@@ -54,18 +43,18 @@ public final class a
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(str));
     try
     {
-      if ((!bu.jq(paramActivity)) && (!k.fnT())) {
+      if ((!Util.isOverseasUser(paramActivity)) && (!ChannelUtil.isGPVersion())) {
         break label216;
       }
-      if (d.lA(29))
+      if (d.oD(29))
       {
         PendingIntent.getActivity(paramActivity, 0, paramString, 134217728).send(paramActivity, 1, null, new PendingIntent.OnFinished()
         {
           public final void onSendFinished(PendingIntent paramAnonymousPendingIntent, Intent paramAnonymousIntent, int paramAnonymousInt, String paramAnonymousString, Bundle paramAnonymousBundle)
           {
-            AppMethodBeat.i(198165);
-            ae.i("MicroMsg.BrowserChooserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-            AppMethodBeat.o(198165);
+            AppMethodBeat.i(211025);
+            Log.i("MicroMsg.BrowserChooserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+            AppMethodBeat.o(211025);
           }
         }, null);
         AppMethodBeat.o(79107);
@@ -74,48 +63,48 @@ public final class a
     }
     catch (Exception paramActivity)
     {
-      ae.e("MicroMsg.BrowserChooserHelper", "open in browser failed : %s", new Object[] { paramActivity.getMessage() });
+      Log.e("MicroMsg.BrowserChooserHelper", "open in browser failed : %s", new Object[] { paramActivity.getMessage() });
       AppMethodBeat.o(79107);
       return;
     }
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.ahE(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "showAndOpenInBrowser", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramString.mt(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.axQ(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "showAndOpenInBrowser", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramString.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "showAndOpenInBrowser", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(79107);
     return;
     label216:
-    paramActivity.startActivityForResult(a(paramActivity, paramString, str), 2);
+    paramActivity.startActivityForResult(b.a(paramActivity, paramString, str), 6);
     AppMethodBeat.o(79107);
   }
   
   public final boolean d(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(79109);
+    Object localObject;
+    boolean bool;
     if (2 == paramInt1)
     {
-      String str;
       Bundle localBundle;
-      boolean bool;
       if ((-1 == paramInt2) && (paramIntent != null))
       {
-        str = paramIntent.getStringExtra("selectpkg");
+        localObject = paramIntent.getStringExtra("selectpkg");
         localBundle = paramIntent.getBundleExtra("transferback");
         bool = paramIntent.getBooleanExtra("isalways", false);
-        ae.i("MicroMsg.BrowserChooserHelper", "App Chooser Browser is %s", new Object[] { str });
-        t.fdv();
-        paramIntent = (q)t.A(0, null);
-        if (!paramIntent.aMR(str)) {
-          break label348;
+        Log.i("MicroMsg.BrowserChooserHelper", "App Chooser Browser is %s", new Object[] { localObject });
+        u.gmF();
+        paramIntent = (r)u.A(0, null);
+        if (!paramIntent.bdn((String)localObject)) {
+          break label343;
         }
-        if (!paramIntent.ht(paramActivity)) {
+        if (!paramIntent.in(paramActivity)) {
           break label150;
         }
-        paramIntent.bM(paramActivity, localBundle.getString("targeturl"));
+        paramIntent.cg(paramActivity, localBundle.getString("targeturl"));
         if (!bool) {
-          break label318;
+          break label313;
         }
-        g.yxI.f(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(2) });
+        h.CyF.a(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(2) });
       }
       for (;;)
       {
@@ -125,10 +114,10 @@ public final class a
           return true;
           label150:
           paramIntent = new Intent((Intent)localBundle.getParcelable("targetintent"));
-          paramIntent.setPackage(str);
+          paramIntent.setPackage((String)localObject);
           paramIntent.addFlags(524288);
-          if (!d.lA(29)) {
-            break label247;
+          if (!d.oD(29)) {
+            break label246;
           }
           paramIntent = PendingIntent.getActivity(paramActivity, 0, paramIntent, 134217728);
           try
@@ -137,55 +126,55 @@ public final class a
             {
               public final void onSendFinished(PendingIntent paramAnonymousPendingIntent, Intent paramAnonymousIntent, int paramAnonymousInt, String paramAnonymousString, Bundle paramAnonymousBundle)
               {
-                AppMethodBeat.i(198166);
-                ae.i("MicroMsg.BrowserChooserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-                AppMethodBeat.o(198166);
+                AppMethodBeat.i(211026);
+                Log.i("MicroMsg.BrowserChooserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+                AppMethodBeat.o(211026);
               }
             }, null);
           }
           catch (Exception paramActivity)
           {
-            ae.e("MicroMsg.BrowserChooserHelper", "open in browser failed : %s", new Object[] { paramActivity.getMessage() });
+            Log.e("MicroMsg.BrowserChooserHelper", "open in browser failed : %s", new Object[] { paramActivity.getMessage() });
           }
         }
         break;
-        label247:
-        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.ahE(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramIntent.mt(0));
+        label246:
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.axQ(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramIntent.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         break;
-        label318:
-        g.yxI.f(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+        label313:
+        h.CyF.a(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
         continue;
-        label348:
+        label343:
         paramIntent = new Intent((Intent)localBundle.getParcelable("targetintent"));
-        paramIntent.setPackage(str);
+        paramIntent.setPackage((String)localObject);
         paramIntent.addFlags(524288);
         try
         {
-          if (d.lA(29)) {
+          if (d.oD(29)) {
             PendingIntent.getActivity(paramActivity, 0, paramIntent, 134217728).send(paramActivity, 1, null, new PendingIntent.OnFinished()
             {
               public final void onSendFinished(PendingIntent paramAnonymousPendingIntent, Intent paramAnonymousIntent, int paramAnonymousInt, String paramAnonymousString, Bundle paramAnonymousBundle)
               {
-                AppMethodBeat.i(198167);
-                ae.i("MicroMsg.BrowserChooserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-                AppMethodBeat.o(198167);
+                AppMethodBeat.i(211027);
+                Log.i("MicroMsg.BrowserChooserHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+                AppMethodBeat.o(211027);
               }
             }, null);
           }
           for (;;)
           {
-            g.yxI.f(10998, new Object[] { Integer.valueOf(5) });
+            h.CyF.a(10998, new Object[] { Integer.valueOf(5) });
             if (!bool) {
-              break label565;
+              break label555;
             }
-            g.yxI.f(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
+            h.CyF.a(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
             break;
-            paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-            com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.ahE(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramActivity.startActivity((Intent)paramIntent.mt(0));
+            paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
+            com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.axQ(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramActivity.startActivity((Intent)paramIntent.pG(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
         }
@@ -193,10 +182,62 @@ public final class a
         {
           for (;;)
           {
-            ae.w("MicroMsg.BrowserChooserHelper", "onActivityResult err:%s", new Object[] { paramActivity.getMessage() });
+            Log.w("MicroMsg.BrowserChooserHelper", "onActivityResult err:%s", new Object[] { paramActivity.getMessage() });
           }
-          label565:
-          g.yxI.f(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
+          label555:
+          h.CyF.a(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
+        }
+      }
+    }
+    if (paramInt1 == 6)
+    {
+      if (paramInt2 == -1) {
+        if (paramIntent != null)
+        {
+          paramInt1 = paramIntent.getIntExtra("browser_setting_result", 0);
+          if (paramIntent == null) {
+            break label775;
+          }
+          bool = true;
+          label619:
+          Log.i("MicroMsg.BrowserChooserHelper", "alvinluo chooseBrowser onActivityResult resultCode: %d, data != null: %b, settingResult: %d", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(bool), Integer.valueOf(paramInt1) });
+          if ((this.Jaq != null) && (this.Jaq.get() != null) && (paramIntent != null) && (paramInt1 == 1))
+          {
+            paramActivity = (j)this.Jaq.get();
+            localObject = new j.a();
+            if (((j.a)localObject).JgL == null) {
+              ((j.a)localObject).JgL = new Bundle();
+            }
+            if (paramIntent.getExtras() != null) {
+              ((j.a)localObject).JgL.putAll(paramIntent.getExtras());
+            }
+            paramActivity.Jgo.put(Integer.valueOf(((j.a)localObject).nfG), localObject);
+            paramActivity.cpD();
+          }
+        }
+      }
+      label775:
+      label852:
+      for (;;)
+      {
+        AppMethodBeat.o(79109);
+        return true;
+        paramInt1 = 0;
+        break;
+        bool = false;
+        break label619;
+        if (paramInt2 == 0)
+        {
+          if ((paramIntent != null) && (paramIntent.getBooleanExtra("show_webview_menu", false))) {}
+          for (paramInt1 = 1;; paramInt1 = 0)
+          {
+            if ((paramInt1 == 0) || (this.Jaq == null) || (this.Jaq.get() == null)) {
+              break label852;
+            }
+            Log.i("MicroMsg.BrowserChooserHelper", "alvinluo chooseBrowser cancel and show webview menu");
+            ((j)this.Jaq.get()).cpD();
+            break;
+          }
         }
       }
     }

@@ -1,31 +1,37 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
-import d.d.g;
-import d.l;
+import java.io.Closeable;
+import java.util.concurrent.Executor;
+import kotlin.d.f.b;
+import kotlin.d.f.c;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
-public final class bk
-  implements ah
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Ljava/io/Closeable;", "()V", "executor", "Ljava/util/concurrent/Executor;", "getExecutor", "()Ljava/util/concurrent/Executor;", "close", "", "Key", "kotlinx-coroutines-core"})
+public abstract class bk
+  extends ad
+  implements Closeable
 {
-  public static final bk OfO;
+  public static final a TUH = new a((byte)0);
   
-  static
-  {
-    AppMethodBeat.i(118184);
-    OfO = new bk();
-    AppMethodBeat.o(118184);
-  }
+  public abstract Executor getExecutor();
   
-  public final f gzg()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
+  public static final class a
+    extends kotlin.d.b<ad, bk>
   {
-    return (f)g.Nib;
+    private a()
+    {
+      super((kotlin.g.a.b)1.TUI);
+      AppMethodBeat.i(192428);
+      AppMethodBeat.o(192428);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.bk
  * JD-Core Version:    0.7.0.1
  */

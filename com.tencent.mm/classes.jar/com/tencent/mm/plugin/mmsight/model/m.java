@@ -2,23 +2,29 @@ package com.tencent.mm.plugin.mmsight.model;
 
 import android.media.MediaMetadataRetriever;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.x;
+import com.tencent.mm.compatible.i.d;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.n.f;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.protocal.protobuf.byg;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.protocal.protobuf.cly;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public final class m
 {
-  public static boolean a(String paramString, VideoTransPara paramVideoTransPara, byg parambyg, e parame)
+  public static boolean a(String paramString, VideoTransPara paramVideoTransPara, cly paramcly, e parame)
   {
     AppMethodBeat.i(148821);
     String str = paramString;
-    Object localObject = parambyg;
+    Object localObject = paramcly;
     for (;;)
     {
       int j;
@@ -26,179 +32,179 @@ public final class m
       float f1;
       try
       {
-        boolean bool1 = bu.isNullOrNil(paramString);
+        boolean bool1 = Util.isNullOrNil(paramString);
         if ((bool1) || (paramVideoTransPara == null))
         {
           AppMethodBeat.o(148821);
           return false;
         }
-        byg localbyg = parambyg;
-        if (parambyg == null)
+        cly localcly = paramcly;
+        if (paramcly == null)
         {
           str = paramString;
-          localObject = parambyg;
-          localbyg = new byg();
+          localObject = paramcly;
+          localcly = new cly();
         }
         str = paramString;
-        localObject = localbyg;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "check localCaptureVideo %s videoPath %s videoParams %s, finishPreSendProcess: %s", new Object[] { Boolean.valueOf(localbyg.Hlb), paramString, paramVideoTransPara, Boolean.valueOf(localbyg.Hle) });
+        localObject = localcly;
+        Log.i("MicroMsg.SightSendVideoLogic", "check localCaptureVideo %s videoPath %s videoParams %s, finishPreSendProcess: %s", new Object[] { Boolean.valueOf(localcly.Mrn), paramString, paramVideoTransPara, Boolean.valueOf(localcly.Mrq) });
         str = paramString;
-        localObject = localbyg;
-        if (localbyg.Hle)
+        localObject = localcly;
+        if (localcly.Mrq)
         {
           str = paramString;
-          localObject = localbyg;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "checkShouldRemuxing, already finish preSendProcess, videoPath: %s", new Object[] { paramString });
+          localObject = localcly;
+          Log.i("MicroMsg.SightSendVideoLogic", "checkShouldRemuxing, already finish preSendProcess, videoPath: %s", new Object[] { paramString });
           AppMethodBeat.o(148821);
           return false;
         }
         str = paramString;
-        localObject = localbyg;
-        if (localbyg.Hlb)
+        localObject = localcly;
+        if (localcly.Mrn)
         {
           str = paramString;
-          localObject = localbyg;
-          if (!bu.isNullOrNil(paramString))
+          localObject = localcly;
+          if (!Util.isNullOrNil(paramString))
           {
             str = paramString;
-            localObject = localbyg;
-            SightVideoJNI.tagMP4Dscp(paramString, com.tencent.mm.modelcontrol.d.aHh().getWeixinMeta());
+            localObject = localcly;
+            SightVideoJNI.tagMP4Dscp(paramString, com.tencent.mm.modelcontrol.e.baZ().getWeixinMeta());
             str = paramString;
-            localObject = localbyg;
-            if (!bu.isNullOrNil(localbyg.Hld))
+            localObject = localcly;
+            if (!Util.isNullOrNil(localcly.Mrp))
             {
               str = paramString;
-              localObject = localbyg;
-              SightVideoJNI.tagMp4RecordInfo(paramString, localbyg.Hld);
+              localObject = localcly;
+              SightVideoJNI.tagMp4RecordInfo(paramString, localcly.Mrp);
             }
             str = paramString;
-            localObject = localbyg;
-            long l = bu.HQ();
+            localObject = localcly;
+            long l = Util.currentTicks();
             str = paramString;
-            localObject = localbyg;
+            localObject = localcly;
             SightVideoJNI.optimizeMP4VFS(paramString);
             str = paramString;
-            localObject = localbyg;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "optimizeMP4 used %sms", new Object[] { Long.valueOf(bu.aO(l)) });
+            localObject = localcly;
+            Log.i("MicroMsg.SightSendVideoLogic", "optimizeMP4 used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
             str = paramString;
-            localObject = localbyg;
-            parame.dog();
+            localObject = localcly;
+            parame.ehT();
             str = paramString;
-            localObject = localbyg;
-            paramString = o.k(paramString, false);
+            localObject = localcly;
+            paramString = s.k(paramString, false);
             str = paramString;
-            localObject = localbyg;
-            parambyg = new com.tencent.mm.compatible.h.d();
+            localObject = localcly;
+            paramcly = new d();
             str = paramString;
-            localObject = localbyg;
-            parambyg.setDataSource(paramString);
+            localObject = localcly;
+            paramcly.setDataSource(paramString);
             str = paramString;
-            localObject = localbyg;
-            i = bu.getInt(parambyg.extractMetadata(18), 0);
+            localObject = localcly;
+            i = Util.getInt(paramcly.extractMetadata(18), 0);
             str = paramString;
-            localObject = localbyg;
-            int k = bu.getInt(parambyg.extractMetadata(19), 0);
+            localObject = localcly;
+            int k = Util.getInt(paramcly.extractMetadata(19), 0);
             str = paramString;
-            localObject = localbyg;
-            j = bu.getInt(parambyg.extractMetadata(20), 0);
+            localObject = localcly;
+            j = Util.getInt(paramcly.extractMetadata(20), 0);
             str = paramString;
-            localObject = localbyg;
-            parambyg.release();
+            localObject = localcly;
+            paramcly.release();
             str = paramString;
-            localObject = localbyg;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "videopath %d %d %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
+            localObject = localcly;
+            Log.i("MicroMsg.SightSendVideoLogic", "videopath %d %d %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
             str = paramString;
-            localObject = localbyg;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "videoParams %s %s %s %s", new Object[] { Integer.valueOf(paramVideoTransPara.width), Integer.valueOf(paramVideoTransPara.height), Integer.valueOf(paramVideoTransPara.videoBitrate), Integer.valueOf(paramVideoTransPara.hYj) });
+            localObject = localcly;
+            Log.i("MicroMsg.SightSendVideoLogic", "videoParams %s %s %s %s", new Object[] { Integer.valueOf(paramVideoTransPara.width), Integer.valueOf(paramVideoTransPara.height), Integer.valueOf(paramVideoTransPara.videoBitrate), Integer.valueOf(paramVideoTransPara.iTh) });
             str = paramString;
-            localObject = localbyg;
+            localObject = localcly;
             k = Math.min(i, k);
             str = paramString;
-            localObject = localbyg;
-            if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdB != 1) {
+            localObject = localcly;
+            if (ae.gKA.gIZ != 1) {
               continue;
             }
             bool1 = true;
             str = paramString;
-            localObject = localbyg;
-            if (bu.getInt(((a)com.tencent.mm.kernel.g.ab(a.class)).acL().getValue("MMSightCheckSendVideoBitrate"), 0) != 1) {
+            localObject = localcly;
+            if (Util.getInt(((a)g.af(a.class)).aqJ().getValue("MMSightCheckSendVideoBitrate"), 0) != 1) {
               continue;
             }
             bool2 = true;
             str = paramString;
-            localObject = localbyg;
-            f2 = bu.getFloat(((a)com.tencent.mm.kernel.g.ab(a.class)).acL().getValue("MMSightCheckSendVideoBitrateLimit"), 1.3F);
+            localObject = localcly;
+            f2 = Util.getFloat(((a)g.af(a.class)).aqJ().getValue("MMSightCheckSendVideoBitrateLimit"), 1.3F);
             str = paramString;
-            localObject = localbyg;
-            parambyg = SightVideoJNI.getMP4CprtH(paramString);
+            localObject = localcly;
+            paramcly = SightVideoJNI.getMP4CprtH(paramString);
             f1 = f2;
-            if (parambyg != null)
+            if (paramcly != null)
             {
               f1 = f2;
               str = paramString;
-              localObject = localbyg;
-              if (parambyg.length() >= 17)
+              localObject = localcly;
+              if (paramcly.length() >= 17)
               {
                 f1 = f2;
                 str = paramString;
-                localObject = localbyg;
-                if (parambyg.substring(0, 17).equals("AdaptiveBitrateUP"))
+                localObject = localcly;
+                if (paramcly.substring(0, 17).equals("AdaptiveBitrateUP"))
                 {
                   str = paramString;
-                  localObject = localbyg;
-                  com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "ABA: checkShouldRemuxing use aba: %s ", new Object[] { parambyg });
+                  localObject = localcly;
+                  Log.i("MicroMsg.SightSendVideoLogic", "ABA: checkShouldRemuxing use aba: %s ", new Object[] { paramcly });
                   f1 = 2.0F;
                 }
               }
             }
             str = paramString;
-            localObject = localbyg;
-            if ((paramVideoTransPara.hYj & 0x2) == 0) {
-              break label1115;
+            localObject = localcly;
+            if ((paramVideoTransPara.iTh & 0x2) == 0) {
+              break label1116;
             }
             f1 = 2.0F;
             str = paramString;
-            localObject = localbyg;
+            localObject = localcly;
             f2 = paramVideoTransPara.videoBitrate;
             str = paramString;
-            localObject = localbyg;
-            if (!localbyg.Hlf) {
-              break label1105;
+            localObject = localcly;
+            if (!localcly.Mrr) {
+              break label1106;
             }
             str = paramString;
-            localObject = localbyg;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "from skip compress, set to bitrate upper bound to 2400000");
+            localObject = localcly;
+            Log.i("MicroMsg.SightSendVideoLogic", "from skip compress, set to bitrate upper bound to 2400000");
             str = paramString;
-            localObject = localbyg;
-            f2 = bu.getInt(((a)com.tencent.mm.kernel.g.ab(a.class)).acL().getValue("MMSightCheckSendVideoBitrateLimitFromSkipCompress"), 2400000);
+            localObject = localcly;
+            f2 = Util.getInt(((a)g.af(a.class)).aqJ().getValue("MMSightCheckSendVideoBitrateLimitFromSkipCompress"), 2400000);
             str = paramString;
-            localObject = localbyg;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "deviceConfigCheckBitrate: %s, serverConfigCheckBitrate: %s, bitrateLimitRatio: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Float.valueOf(f1) });
+            localObject = localcly;
+            Log.i("MicroMsg.SightSendVideoLogic", "deviceConfigCheckBitrate: %s, serverConfigCheckBitrate: %s, bitrateLimitRatio: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Float.valueOf(f1) });
             if (bool1) {
-              break label1118;
+              break label1119;
             }
             if (!bool2) {
               continue;
             }
-            break label1118;
+            break label1119;
             str = paramString;
-            localObject = localbyg;
+            localObject = localcly;
             if (k > paramVideoTransPara.width)
             {
               str = paramString;
-              localObject = localbyg;
+              localObject = localcly;
               if ((k <= paramVideoTransPara.width) || (k % 16 != 0)) {
-                break label1124;
+                break label1125;
               }
               str = paramString;
-              localObject = localbyg;
+              localObject = localcly;
               if (Math.abs(k - paramVideoTransPara.width) >= 16) {
-                break label1124;
+                break label1125;
               }
             }
             str = paramString;
-            localObject = localbyg;
-            bool1 = localbyg.Hla;
+            localObject = localcly;
+            bool1 = localcly.Mrm;
             if (!bool1) {
               continue;
             }
@@ -218,60 +224,60 @@ public final class m
         {
           f2 = j;
           str = paramString;
-          localObject = localbyg;
+          localObject = localcly;
           if (f2 >= paramVideoTransPara.videoBitrate * f1)
           {
             str = paramString;
-            localObject = localbyg;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "exceed video bitrate, need remux video");
+            localObject = localcly;
+            Log.i("MicroMsg.SightSendVideoLogic", "exceed video bitrate, need remux video");
             str = paramString;
-            localObject = localbyg;
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(440L, 205L, 1L, false);
+            localObject = localcly;
+            h.CyF.idkeyStat(440L, 205L, 1L, false);
             AppMethodBeat.o(148821);
             return true;
           }
         }
         str = paramString;
-        localObject = localbyg;
-        localbyg.Hle = true;
+        localObject = localcly;
+        localcly.Mrq = true;
         AppMethodBeat.o(148821);
         return false;
       }
       catch (Exception paramString)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SightSendVideoLogic", "checkShouldRemuxing error: %s %s", new Object[] { paramString.getMessage(), str });
+        Log.e("MicroMsg.SightSendVideoLogic", "checkShouldRemuxing error: %s %s", new Object[] { paramString.getMessage(), str });
         if (localObject == null) {
           continue;
         }
-        ((byg)localObject).Hle = true;
+        ((cly)localObject).Mrq = true;
         AppMethodBeat.o(148821);
         return false;
       }
       AppMethodBeat.o(148821);
       return true;
-      label1105:
+      label1106:
       f2 *= f1;
       continue;
-      label1115:
+      label1116:
       continue;
-      label1118:
+      label1119:
       int i = 1;
       continue;
-      label1124:
+      label1125:
       if ((i == 0) || (j < f2)) {}
     }
   }
   
-  public static int b(String paramString, VideoTransPara paramVideoTransPara, byg parambyg, e parame)
+  public static int b(String paramString, VideoTransPara paramVideoTransPara, cly paramcly, e parame)
   {
     AppMethodBeat.i(148822);
-    if ((parambyg == null) || (!parambyg.Hlb) || (!o.fB(paramString)))
+    if ((paramcly == null) || (!paramcly.Mrn) || (!s.YS(paramString)))
     {
       AppMethodBeat.o(148822);
       return -1;
     }
-    if (parambyg.Hle) {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "doRemuxingSendVideoMsg, already finish preSendProcess, videoPath: %s", new Object[] { paramString });
+    if (paramcly.Mrq) {
+      Log.i("MicroMsg.SightSendVideoLogic", "doRemuxingSendVideoMsg, already finish preSendProcess, videoPath: %s", new Object[] { paramString });
     }
     for (;;)
     {
@@ -284,11 +290,11 @@ public final class m
       int k;
       try
       {
-        localObject = o.aZU(paramString);
+        localObject = s.boZ(paramString);
         if (!((String)localObject).endsWith("/"))
         {
           localObject = (String)localObject + "/";
-          String str1 = new k(paramString).getName();
+          String str1 = new o(paramString).getName();
           i = str1.lastIndexOf('.');
           if (i > 0)
           {
@@ -299,63 +305,63 @@ public final class m
               str2 = str3 + ".mp4";
             }
             str3 = (String)localObject + str1 + "tempRemuxing.mp4";
-            o.mF(paramString, str2);
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "doRemuxingSendVideoMsg, dir: %s, oldFileName: %s, hdFilePath: %s, remuxingOutputFile: %s extInfotrycount %d", new Object[] { localObject, str1, str2, str3, Integer.valueOf(parambyg.sVm) });
-            str1 = o.k(str2, true);
-            str2 = o.k(str3, true);
-            localObject = new com.tencent.mm.compatible.h.d();
+            s.nw(paramString, str2);
+            Log.i("MicroMsg.SightSendVideoLogic", "doRemuxingSendVideoMsg, dir: %s, oldFileName: %s, hdFilePath: %s, remuxingOutputFile: %s extInfotrycount %d", new Object[] { localObject, str1, str2, str3, Integer.valueOf(paramcly.vUh) });
+            str1 = s.k(str2, true);
+            str2 = s.k(str3, true);
+            localObject = new d();
             ((MediaMetadataRetriever)localObject).setDataSource(str1);
-            n = bu.getInt(((MediaMetadataRetriever)localObject).extractMetadata(18), 0);
-            i1 = bu.getInt(((MediaMetadataRetriever)localObject).extractMetadata(19), 0);
+            n = Util.getInt(((MediaMetadataRetriever)localObject).extractMetadata(18), 0);
+            i1 = Util.getInt(((MediaMetadataRetriever)localObject).extractMetadata(19), 0);
             i = Math.min(n, i1);
             if (i <= paramVideoTransPara.width) {
-              break label1018;
+              break label1019;
             }
             if ((i > paramVideoTransPara.width) && (i % 16 == 0) && (Math.abs(i - paramVideoTransPara.width) < 16))
             {
-              break label1018;
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "start remuxing %s,  rawwith %s, rawheight %s, outputWidth: %s, outputHeight: %s videoParams: %s", new Object[] { paramString, Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), paramVideoTransPara });
-              long l = bu.HQ();
-              if (parambyg.Hlf)
+              break label1019;
+              Log.i("MicroMsg.SightSendVideoLogic", "start remuxing %s,  rawwith %s, rawheight %s, outputWidth: %s, outputHeight: %s videoParams: %s", new Object[] { paramString, Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), paramVideoTransPara });
+              long l = Util.currentTicks();
+              if (paramcly.Mrr)
               {
-                com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "from skip compress, set remux target bitrate to 2400000");
-                paramVideoTransPara.videoBitrate = bu.getInt(((a)com.tencent.mm.kernel.g.ab(a.class)).acL().getValue("MMSightCheckSendVideoBitrateLimitFromSkipCompress"), 2400000);
+                Log.i("MicroMsg.SightSendVideoLogic", "from skip compress, set remux target bitrate to 2400000");
+                paramVideoTransPara.videoBitrate = Util.getInt(((a)g.af(a.class)).aqJ().getValue("MMSightCheckSendVideoBitrateLimitFromSkipCompress"), 2400000);
               }
               localObject = new int[34];
-              if ((paramVideoTransPara.hYi != 1) && (paramVideoTransPara.hYi != 2)) {
-                break label1009;
+              if ((paramVideoTransPara.iTg != 1) && (paramVideoTransPara.iTg != 2)) {
+                break label1010;
               }
-              localObject = AdaptiveAdjustBitrate.a(str1, j, i, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, 0.0F, 0.0F, 2, paramVideoTransPara.hYk, paramVideoTransPara.hYl, paramVideoTransPara.hYm, paramVideoTransPara.hYn, paramVideoTransPara.hYo, paramVideoTransPara.hYp, paramVideoTransPara.hYq, false);
+              localObject = AdaptiveAdjustBitrate.a(str1, j, i, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, 0.0F, 0.0F, 2, paramVideoTransPara.iTi, paramVideoTransPara.iTj, paramVideoTransPara.iTk, paramVideoTransPara.iTl, paramVideoTransPara.iTm, paramVideoTransPara.iTn, paramVideoTransPara.iTo, false);
               if (localObject == null) {
-                break label1029;
+                break label1030;
               }
               paramVideoTransPara.videoBitrate = (localObject[0] * 1000);
-              break label1029;
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "ABA: MMsightSendVideoLogic Videobitrate: [%d] , Width: [%d], Height: [%d] ", new Object[] { Integer.valueOf(paramVideoTransPara.videoBitrate), Integer.valueOf(i), Integer.valueOf(j) });
-              if (paramVideoTransPara.hYj != 1) {
-                break label1096;
+              break label1030;
+              Log.i("MicroMsg.SightSendVideoLogic", "ABA: MMsightSendVideoLogic Videobitrate: [%d] , Width: [%d], Height: [%d] ", new Object[] { Integer.valueOf(paramVideoTransPara.videoBitrate), Integer.valueOf(i), Integer.valueOf(j) });
+              if (paramVideoTransPara.iTh != 1) {
+                break label1097;
               }
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(paramVideoTransPara.hkJ), Integer.valueOf(paramVideoTransPara.hkK) });
-              k = paramVideoTransPara.hkJ;
-              m = paramVideoTransPara.hkK;
-              k = SightVideoJNI.remuxingVFS(str1, str2, i, j, paramVideoTransPara.videoBitrate, paramVideoTransPara.hXX, 8, paramVideoTransPara.hXW, 25.0F, 30.0F, null, 0, false, k, m);
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "doremuxing finish %s,  rawwith %s, rawheight %s, outputWidth: %s, outputHeight: %s duration: %s, used %sms", new Object[] { paramString, Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(bu.aO(l)) });
-              o.mG(str2, paramString);
-              paramString = o.k(paramString, true);
-              l = bu.HQ();
-              if (paramVideoTransPara.hYi > 0)
+              Log.i("MicroMsg.SightSendVideoLogic", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(paramVideoTransPara.idF), Integer.valueOf(paramVideoTransPara.idG) });
+              k = paramVideoTransPara.idF;
+              m = paramVideoTransPara.idG;
+              k = SightVideoJNI.remuxingVFS(str1, str2, i, j, paramVideoTransPara.videoBitrate, paramVideoTransPara.iSV, 8, paramVideoTransPara.iSU, 25.0F, 30.0F, null, 0, false, k, m);
+              Log.i("MicroMsg.SightSendVideoLogic", "doremuxing finish %s,  rawwith %s, rawheight %s, outputWidth: %s, outputHeight: %s duration: %s, used %sms", new Object[] { paramString, Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(Util.ticksToNow(l)) });
+              s.nx(str2, paramString);
+              paramString = s.k(paramString, true);
+              l = Util.currentTicks();
+              if (paramVideoTransPara.iTg > 0)
               {
-                SightVideoJNI.addReportMetadata(paramString, (int[])localObject, paramVideoTransPara.hYi, 0);
-                if (parambyg.Hlb)
+                SightVideoJNI.addReportMetadata(paramString, (int[])localObject, paramVideoTransPara.iTg, 0);
+                if (paramcly.Mrn)
                 {
-                  SightVideoJNI.tagMP4Dscp(paramString, com.tencent.mm.modelcontrol.d.aHh().getWeixinMeta());
-                  if (!bu.isNullOrNil(parambyg.Hld)) {
-                    SightVideoJNI.tagMp4RecordInfo(paramString, parambyg.Hld);
+                  SightVideoJNI.tagMP4Dscp(paramString, com.tencent.mm.modelcontrol.e.baZ().getWeixinMeta());
+                  if (!Util.isNullOrNil(paramcly.Mrp)) {
+                    SightVideoJNI.tagMp4RecordInfo(paramString, paramcly.Mrp);
                   }
                   SightVideoJNI.optimizeMP4VFS(paramString);
                 }
-                parame.dog();
-                com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightSendVideoLogic", "tagMP4Dscp used %sms", new Object[] { Long.valueOf(bu.aO(l)) });
+                parame.ehT();
+                Log.i("MicroMsg.SightSendVideoLogic", "tagMP4Dscp used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
                 AppMethodBeat.o(148822);
                 return k;
               }
@@ -367,17 +373,17 @@ public final class m
                 k = paramVideoTransPara.width;
                 d = 1.0D * n / k;
                 i = (int)(i1 / d);
-                break label1051;
+                break label1052;
               }
               i = paramVideoTransPara.width;
               double d = 1.0D * i1 / i;
               k = (int)(n / d);
-              break label1051;
+              break label1052;
             }
-            if (paramVideoTransPara.hYj != 1) {
+            if (paramVideoTransPara.iTh != 1) {
               continue;
             }
-            SightVideoJNI.addReportMetadata(paramString, (int[])localObject, 0, paramVideoTransPara.hYj);
+            SightVideoJNI.addReportMetadata(paramString, (int[])localObject, 0, paramVideoTransPara.iTh);
             continue;
             continue;
           }
@@ -385,12 +391,12 @@ public final class m
       }
       catch (Exception paramString)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SightSendVideoLogic", "doRemuxingSendVideoMsg error: %s", new Object[] { paramString.getMessage() });
+        Log.e("MicroMsg.SightSendVideoLogic", "doRemuxingSendVideoMsg error: %s", new Object[] { paramString.getMessage() });
         AppMethodBeat.o(148822);
         return -1;
       }
-      label1009:
-      label1018:
+      label1010:
+      label1019:
       do
       {
         break label616;
@@ -400,11 +406,11 @@ public final class m
         i = n;
         break label385;
       } while (localObject[5] <= 0);
-      label1029:
+      label1030:
       int i = localObject[1];
       int j = localObject[2];
       continue;
-      label1051:
+      label1052:
       int m = i;
       if (i % 2 != 0) {
         m = i + 1;
@@ -416,7 +422,7 @@ public final class m
         i = k + 1;
         j = m;
         continue;
-        label1096:
+        label1097:
         k = 0;
         m = 51;
       }
@@ -425,7 +431,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.m
  * JD-Core Version:    0.7.0.1
  */

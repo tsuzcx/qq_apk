@@ -12,18 +12,18 @@ public abstract class HoneyPayBaseUI
   extends WalletBaseUI
 {
   protected final String TAG = "MicroMsg." + getClass().getSimpleName();
-  protected int uRo = 2131101179;
+  protected int wwG = 2131101424;
   
-  protected void deV()
+  protected void dYP()
   {
-    setActionbarColor(getResources().getColor(this.uRo));
+    setActionbarColor(getResources().getColor(this.wwG));
     hideActionbarLine();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    deV();
+    dYP();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -46,7 +46,7 @@ public abstract class HoneyPayBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayBaseUI
  * JD-Core Version:    0.7.0.1
  */

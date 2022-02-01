@@ -7,40 +7,40 @@ import org.xwalk.core.XWalkEnvironment;
 public final class a$c
   extends a.b
 {
-  static String MQr = null;
+  static String SDr = null;
   
-  public static void bcL(String paramString)
+  public static void bsv(String paramString)
   {
-    MQr = paramString;
+    SDr = paramString;
   }
   
-  public static boolean ggh()
+  public static boolean htz()
   {
-    AppMethodBeat.i(217413);
-    if (!XWalkEnvironment.getRuntimeAbi().equalsIgnoreCase(MQr))
+    AppMethodBeat.i(219067);
+    if (!XWalkEnvironment.getRuntimeAbi().equalsIgnoreCase(SDr))
     {
-      AppMethodBeat.o(217413);
+      AppMethodBeat.o(219067);
       return true;
     }
-    AppMethodBeat.o(217413);
+    AppMethodBeat.o(219067);
     return false;
   }
   
-  public final String ggd()
+  public final String htv()
   {
     AppMethodBeat.i(156957);
-    if (!TextUtils.isEmpty(MQr))
+    if (!TextUtils.isEmpty(SDr))
     {
-      str = MQr;
+      str = SDr;
       AppMethodBeat.o(156957);
       return str;
     }
-    String str = super.ggd();
+    String str = super.htv();
     AppMethodBeat.o(156957);
     return str;
   }
   
-  protected final boolean ggf()
+  protected final boolean htx()
   {
     AppMethodBeat.i(156956);
     boolean bool = XWalkEnvironment.is64BitRuntime();
@@ -50,7 +50,7 @@ public final class a$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.internal.a.c
  * JD-Core Version:    0.7.0.1
  */

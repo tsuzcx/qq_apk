@@ -1,32 +1,31 @@
 package com.tencent.mm.plugin.facedetectaction.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.facedetectaction.b.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.at;
 
 final class FaceActionUI$5
-  implements View.OnClickListener
+  implements Runnable
 {
   FaceActionUI$5(FaceActionUI paramFaceActionUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(104244);
-    b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    d.rxC.onBackPressed();
-    this.rys.finish();
-    a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(104244);
+    AppMethodBeat.i(104243);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.m(this.sYw).getLayoutParams();
+    int i = (int)(FaceActionUI.l(this.sYw).getHeight() * 0.4D) + (int)(FaceActionUI.l(this.sYw).getWidth() * 0.35D) + at.fromDPToPix(this.sYw, 30);
+    localMarginLayoutParams.topMargin = i;
+    Log.i("MicroMsg.FaceActionUI", "topMargin：%d", new Object[] { Integer.valueOf(i) });
+    FaceActionUI.m(this.sYw).setLayoutParams(localMarginLayoutParams);
+    FaceActionUI.m(this.sYw).setVisibility(0);
+    AppMethodBeat.o(104243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI.5
  * JD-Core Version:    0.7.0.1
  */

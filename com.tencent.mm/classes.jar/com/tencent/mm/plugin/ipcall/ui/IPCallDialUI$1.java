@@ -12,7 +12,7 @@ final class IPCallDialUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25742);
-    this.vcX.finish();
+    this.yvx.finish();
     AppMethodBeat.o(25742);
     return true;
   }

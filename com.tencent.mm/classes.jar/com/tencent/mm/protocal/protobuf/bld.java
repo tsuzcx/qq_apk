@@ -1,140 +1,144 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class bld
-  extends cvw
+  extends dpc
 {
-  public SKBuiltinBuffer_t FWl;
-  public int GYv;
-  public String GYw;
+  public int LUb;
+  public int LUc;
+  public int LUd;
+  public int LUe;
+  public String LUf;
+  public int LUg;
+  public int oTW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32289);
+    AppMethodBeat.i(101813);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FWl == null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-        paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-        AppMethodBeat.o(32289);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(101813);
         throw paramVarArgs;
       }
-      if (this.BaseRequest != null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.GYv);
-      if (this.GYw != null) {
-        paramVarArgs.d(3, this.GYw);
+      paramVarArgs.aM(2, this.oTW);
+      paramVarArgs.aM(3, this.LUb);
+      paramVarArgs.aM(4, this.LUc);
+      paramVarArgs.aM(5, this.LUd);
+      paramVarArgs.aM(6, this.LUe);
+      if (this.LUf != null) {
+        paramVarArgs.e(7, this.LUf);
       }
-      if (this.FWl != null)
-      {
-        paramVarArgs.lJ(4, this.FWl.computeSize());
-        this.FWl.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(32289);
+      paramVarArgs.aM(8, this.LUg);
+      AppMethodBeat.o(101813);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label628;
+      if (this.BaseResponse == null) {
+        break label682;
       }
     }
-    label628:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label682:
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.GYv);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.oTW) + g.a.a.b.b.a.bu(3, this.LUb) + g.a.a.b.b.a.bu(4, this.LUc) + g.a.a.b.b.a.bu(5, this.LUd) + g.a.a.b.b.a.bu(6, this.LUe);
       paramInt = i;
-      if (this.GYw != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.GYw);
+      if (this.LUf != null) {
+        paramInt = i + g.a.a.b.b.a.f(7, this.LUf);
       }
-      i = paramInt;
-      if (this.FWl != null) {
-        i = paramInt + f.a.a.a.lI(4, this.FWl.computeSize());
-      }
-      AppMethodBeat.o(32289);
-      return i;
+      i = g.a.a.b.b.a.bu(8, this.LUg);
+      AppMethodBeat.o(101813);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.FWl == null)
+        if (this.BaseResponse == null)
         {
-          paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-          AppMethodBeat.o(32289);
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(101813);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(32289);
+        AppMethodBeat.o(101813);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         bld localbld = (bld)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32289);
+          AppMethodBeat.o(101813);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbld.BaseRequest = ((jc)localObject1);
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localbld.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(32289);
+          AppMethodBeat.o(101813);
           return 0;
         case 2: 
-          localbld.GYv = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(32289);
+          localbld.oTW = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(101813);
           return 0;
         case 3: 
-          localbld.GYw = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(32289);
+          localbld.LUb = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(101813);
+          return 0;
+        case 4: 
+          localbld.LUc = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(101813);
+          return 0;
+        case 5: 
+          localbld.LUd = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(101813);
+          return 0;
+        case 6: 
+          localbld.LUe = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(101813);
+          return 0;
+        case 7: 
+          localbld.LUf = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(101813);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localbld.FWl = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(32289);
+        localbld.LUg = ((g.a.a.a.a)localObject1).UbS.zi();
+        AppMethodBeat.o(101813);
         return 0;
       }
-      AppMethodBeat.o(32289);
+      AppMethodBeat.o(101813);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bld
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.z;
-import com.tencent.mm.protocal.protobuf.bnr;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.protocal.protobuf.cai;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.ui.f;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,38 +20,38 @@ public final class c
 {
   private Context mContext;
   private LayoutInflater mInflater;
-  private List<bnr> vvQ;
-  private String vvR;
-  boolean vvS;
-  private int vvT;
-  private a vvU;
+  private List<cai> yQe;
+  private String yQf;
+  boolean yQg;
+  private int yQh;
+  private a yQi;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(64906);
-    this.vvQ = new LinkedList();
-    this.vvR = null;
-    this.vvS = false;
-    this.vvT = 1;
-    this.vvU = null;
+    this.yQe = new LinkedList();
+    this.yQf = null;
+    this.yQg = false;
+    this.yQh = 1;
+    this.yQi = null;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(64906);
   }
   
-  private bnr JA(int paramInt)
+  private cai PC(int paramInt)
   {
     AppMethodBeat.i(64909);
-    bnr localbnr = (bnr)this.vvQ.get(paramInt);
+    cai localcai = (cai)this.yQe.get(paramInt);
     AppMethodBeat.o(64909);
-    return localbnr;
+    return localcai;
   }
   
-  public final void ew(List<bnr> paramList)
+  public final void fq(List<cai> paramList)
   {
     AppMethodBeat.i(64907);
     if (paramList == null) {}
-    for (this.vvQ = new LinkedList();; this.vvQ = paramList)
+    for (this.yQe = new LinkedList();; this.yQe = paramList)
     {
       notifyDataSetChanged();
       AppMethodBeat.o(64907);
@@ -62,7 +62,7 @@ public final class c
   public final int getCount()
   {
     AppMethodBeat.i(64908);
-    int i = this.vvQ.size();
+    int i = this.yQe.size();
     AppMethodBeat.o(64908);
     return i;
   }
@@ -77,50 +77,50 @@ public final class c
     AppMethodBeat.i(64910);
     if (paramView == null)
     {
-      paramView = this.mInflater.inflate(2131494658, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2131495383, paramViewGroup, false);
       paramViewGroup = new b();
-      paramViewGroup.jFG = paramView.findViewById(2131304239);
-      paramViewGroup.pjj = ((ImageView)paramView.findViewById(2131301935));
-      paramViewGroup.uAJ = ((TextView)paramView.findViewById(2131301938));
-      paramViewGroup.vvV = ((TextView)paramView.findViewById(2131301939));
-      paramViewGroup.vvW = ((TextView)paramView.findViewById(2131301933));
-      paramViewGroup.vvX = ((TextView)paramView.findViewById(2131301934));
-      paramViewGroup.vvY = ((TextView)paramView.findViewById(2131301940));
-      paramViewGroup.vvZ = ((ImageView)paramView.findViewById(2131301936));
-      paramViewGroup.vwa = ((TextView)paramView.findViewById(2131301937));
+      paramViewGroup.kHq = paramView.findViewById(2131307157);
+      paramViewGroup.qyu = ((ImageView)paramView.findViewById(2131304259));
+      paramViewGroup.rMV = ((TextView)paramView.findViewById(2131304263));
+      paramViewGroup.yQj = ((TextView)paramView.findViewById(2131304264));
+      paramViewGroup.yQk = ((TextView)paramView.findViewById(2131304257));
+      paramViewGroup.yQl = ((TextView)paramView.findViewById(2131304258));
+      paramViewGroup.yQm = ((TextView)paramView.findViewById(2131304265));
+      paramViewGroup.yQn = ((ImageView)paramView.findViewById(2131304260));
+      paramViewGroup.yQo = ((TextView)paramView.findViewById(2131304261));
       paramView.setTag(paramViewGroup);
     }
-    bnr localbnr;
+    cai localcai;
     for (;;)
     {
-      localbnr = JA(paramInt);
-      z.b(paramViewGroup.pjj, localbnr.vvt, localbnr.username);
-      paramViewGroup.vvX.setVisibility(8);
-      z.a(this.mContext, paramViewGroup.uAJ, localbnr.nickname);
-      String str = this.mContext.getString(2131760940, new Object[] { f.C(localbnr.Hay / 100.0D) });
-      paramViewGroup.vvW.setText(str);
-      paramViewGroup.vvV.setText(z.o(this.mContext, localbnr.Haz * 1000L));
-      paramViewGroup.vvV.setVisibility(0);
-      paramViewGroup.vvY.setVisibility(8);
-      if (!bu.isNullOrNil(localbnr.HaB)) {
+      localcai = PC(paramInt);
+      af.a(paramViewGroup.qyu, localcai.yPH, localcai.username);
+      paramViewGroup.yQl.setVisibility(8);
+      af.a(this.mContext, paramViewGroup.rMV, localcai.nickname);
+      String str = this.mContext.getString(2131762714, new Object[] { f.formatMoney2f(localcai.Mfy / 100.0D) });
+      paramViewGroup.yQk.setText(str);
+      paramViewGroup.yQj.setText(af.o(this.mContext, localcai.Mfz * 1000L));
+      paramViewGroup.yQj.setVisibility(0);
+      paramViewGroup.yQm.setVisibility(8);
+      if (!Util.isNullOrNil(localcai.MfB)) {
         break;
       }
-      paramViewGroup.vvZ.setVisibility(8);
-      paramViewGroup.vwa.setVisibility(8);
+      paramViewGroup.yQn.setVisibility(8);
+      paramViewGroup.yQo.setVisibility(8);
       AppMethodBeat.o(64910);
       return paramView;
       paramViewGroup = (b)paramView.getTag();
     }
-    paramViewGroup.vwa.setText(localbnr.HaB);
-    if (this.vvT == 2) {
-      paramViewGroup.vvZ.setImageResource(2131233018);
+    paramViewGroup.yQo.setText(localcai.MfB);
+    if (this.yQh == 2) {
+      paramViewGroup.yQn.setImageResource(2131233671);
     }
     for (;;)
     {
-      paramViewGroup.vvZ.setVisibility(0);
-      paramViewGroup.vwa.setVisibility(0);
+      paramViewGroup.yQn.setVisibility(0);
+      paramViewGroup.yQo.setVisibility(0);
       break;
-      paramViewGroup.vvZ.setImageResource(2131232964);
+      paramViewGroup.yQn.setImageResource(2131233614);
     }
   }
   
@@ -128,22 +128,22 @@ public final class c
   
   final class b
   {
-    View jFG;
-    ImageView pjj;
-    TextView uAJ;
-    TextView vvV;
-    TextView vvW;
-    TextView vvX;
-    TextView vvY;
-    ImageView vvZ;
-    TextView vwa;
+    View kHq;
+    ImageView qyu;
+    TextView rMV;
+    TextView yQj;
+    TextView yQk;
+    TextView yQl;
+    TextView yQm;
+    ImageView yQn;
+    TextView yQo;
     
     b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.c
  * JD-Core Version:    0.7.0.1
  */

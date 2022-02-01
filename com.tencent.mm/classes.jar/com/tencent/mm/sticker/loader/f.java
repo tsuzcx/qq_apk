@@ -5,11 +5,11 @@ import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/loader/StickerProcessTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "call", "", "onResult", "success", "", "uniqueId", "IPCStickerTask", "plugin-sticker_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/loader/StickerProcessTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "call", "", "onResult", "success", "", "uniqueId", "IPCStickerTask", "plugin-sticker_release"})
 public final class f
   extends g
 {
@@ -23,11 +23,11 @@ public final class f
     AppMethodBeat.o(105949);
   }
   
-  public final String aeW()
+  public final String auK()
   {
-    AppMethodBeat.i(224387);
-    String str = this.IHb.BN();
-    AppMethodBeat.o(224387);
+    AppMethodBeat.i(258688);
+    String str = this.NNU.Lb();
+    AppMethodBeat.o(258688);
     return str;
   }
   
@@ -35,20 +35,20 @@ public final class f
   {
     AppMethodBeat.i(105946);
     Bundle localBundle = new Bundle();
-    localBundle.putParcelable("load_info", (Parcelable)this.IHb);
-    h.a(ak.getPackageName(), (Parcelable)localBundle, f.a.class, (d)new b(this));
+    localBundle.putParcelable("load_info", (Parcelable)this.NNU);
+    h.a(MMApplicationContext.getPackageName(), (Parcelable)localBundle, f.a.class, (d)new b(this));
     AppMethodBeat.o(105946);
   }
   
-  public final void dg(boolean paramBoolean)
+  public final void dQ(boolean paramBoolean)
   {
     AppMethodBeat.i(105947);
-    ae.i(this.TAG, "onResult: " + this.IHb.BN() + ' ' + paramBoolean);
-    super.dg(paramBoolean);
+    Log.i(this.TAG, "onResult: " + this.NNU.Lb() + ' ' + paramBoolean);
+    super.dQ(paramBoolean);
     AppMethodBeat.o(105947);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class b<T>
     implements d<ResultType>
   {
@@ -57,7 +57,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.f
  * JD-Core Version:    0.7.0.1
  */

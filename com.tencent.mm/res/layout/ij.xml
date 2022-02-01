@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4" style="@style/mz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView android:id="@id/a2b" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/e1x" android:background="@drawable/h1" android:padding="@dimen/hk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hj" android:layout_marginBottom="@dimen/ha">
-        <ImageView android:id="@id/e1w" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:id="@id/e1y" android:paddingLeft="18.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:id="@id/bex" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/be9" android:paddingLeft="@dimen/ih" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:layout_weight="1.0">
+            <TextView android:textColor="@drawable/fa" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
+            <TextView android:textSize="13.0dip" android:textColor="@drawable/fa" android:id="@android:id/summary" android:paddingRight="@dimen/ih" android:layout_marginTop="4.0dip" android:singleLine="true" style="@style/ml" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="14.0dip" />
     </LinearLayout>
-</LinearLayout>
+    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/bex" android:layout_alignParentBottom="true" />
+</RelativeLayout>

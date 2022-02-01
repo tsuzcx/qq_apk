@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.r.a;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
-import d.z;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgStorageInvalidRecordFixer;", "", "()V", "TAG", "", "removeInvalidReleaseRecords", "", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgStorageInvalidRecordFixer;", "", "()V", "TAG", "", "removeInvalidReleaseRecords", "", "plugin-appbrand-integration_release"})
 public final class bi
 {
-  public static final bi jLR;
+  public static final bi kNS;
   
   static
   {
     AppMethodBeat.i(50182);
-    jLR = new bi();
+    kNS = new bi();
     AppMethodBeat.o(50182);
   }
   
-  public static final void bbm()
+  public static final void bwz()
   {
     AppMethodBeat.i(50181);
-    r.a locala = j.aZh();
+    r.a locala = n.buy();
     if (locala != null) {
       try
       {
@@ -32,8 +32,8 @@ public final class bi
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("MiroMsg.WxaPkgStorageInvalidRecordFixer", (Throwable)localException, " removeInvalidReleaseRecords", new Object[0]);
-        z localz = z.Nhr;
+        Log.printErrStackTrace("MiroMsg.WxaPkgStorageInvalidRecordFixer", (Throwable)localException, " removeInvalidReleaseRecords", new Object[0]);
+        x localx = x.SXb;
         AppMethodBeat.o(50181);
         return;
       }
@@ -43,7 +43,7 @@ public final class bi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bi
  * JD-Core Version:    0.7.0.1
  */

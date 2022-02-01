@@ -1,21 +1,19 @@
 package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import org.xwalk.core.Log;
 
 public final class d
 {
-  public static Map<Integer, ByteBuffer> G(k paramk)
+  public static Map<Integer, ByteBuffer> K(o paramo)
   {
     AppMethodBeat.i(177460);
-    if ((paramk == null) || (!paramk.exists()) || (!paramk.isFile()))
+    if ((paramo == null) || (!paramo.exists()) || (!paramo.isFile()))
     {
       AppMethodBeat.o(177460);
       return null;
@@ -23,13 +21,13 @@ public final class d
     LinkedHashMap localLinkedHashMap;
     try
     {
-      localObject = f.I(paramk);
+      localObject = f.M(paramo);
       a.C((ByteBuffer)localObject);
       localObject = a.c((ByteBuffer)localObject, ((ByteBuffer)localObject).capacity() - 24);
       localLinkedHashMap = new LinkedHashMap();
       i = 0;
     }
-    catch (IOException paramk)
+    catch (IOException paramo)
     {
       AppMethodBeat.o(177460);
       return null;
@@ -47,7 +45,7 @@ public final class d
       for (;;)
       {
         long l;
-        Log.e("MicroMsg.Channel.IdValueReader", "APK : " + w.B(paramk.fTh()) + " not have apk signature block");
+        org.xwalk.core.Log.e("MicroMsg.Channel.IdValueReader", "APK : " + aa.z(paramo.her()) + " not have apk signature block");
         continue;
         int j = (int)l;
         int k = localb1.position();
@@ -60,7 +58,7 @@ public final class d
         int m = localb2.getInt();
         localLinkedHashMap.put(Integer.valueOf(m), a.d(localb2, j - 4));
         if (m == 1896449818) {
-          ae.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
+          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
         }
         localb2.position(k + j);
       }
@@ -88,7 +86,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.d
  * JD-Core Version:    0.7.0.1
  */

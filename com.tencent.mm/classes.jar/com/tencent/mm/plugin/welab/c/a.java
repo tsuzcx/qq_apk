@@ -4,37 +4,40 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.nu;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.om;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.api.af;
-import com.tencent.mm.plugin.websearch.api.am;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.plugin.websearch.api.ar;
 import com.tencent.mm.plugin.websearch.api.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.welab.a.a.b;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  implements com.tencent.mm.plugin.welab.a.a.b
+  implements b
 {
-  public final String fag()
+  public final String gjl()
   {
     AppMethodBeat.i(30250);
-    String str = af.aHj("discoverRecommendEntry").optString("labIcon");
+    String str = ak.aXe("discoverRecommendEntry").optString("labIcon");
     AppMethodBeat.o(30250);
     return str;
   }
   
-  public final String fah()
+  public final String gjm()
   {
     AppMethodBeat.i(30251);
-    String str = af.aHj("discoverRecommendEntry").optString("wording");
-    if (bu.isNullOrNil(str))
+    String str = ak.aXe("discoverRecommendEntry").optString("wording");
+    if (Util.isNullOrNil(str))
     {
-      str = ak.getContext().getString(2131759102);
+      str = MMApplicationContext.getContext().getString(2131759435);
       AppMethodBeat.o(30251);
       return str;
     }
@@ -42,42 +45,42 @@ public final class a
     return str;
   }
   
-  public final void i(final Activity paramActivity, final String paramString)
+  public final void m(final Activity paramActivity, final String paramString)
   {
     AppMethodBeat.i(30249);
-    if (!ad.WK(0))
+    if (!ai.afs(0))
     {
-      ae.e("MicroMsg.FTS.LookOneLookOpener", "fts h5 template not avail");
+      Log.e("MicroMsg.FTS.LookOneLookOpener", "fts h5 template not avail");
       AppMethodBeat.o(30249);
       return;
     }
-    paramString = af.aHj("discoverRecommendEntry").optString("wording");
-    if (bu.isNullOrNil(paramString))
+    paramString = ak.aXe("discoverRecommendEntry").optString("wording");
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.FTS.LookOneLookOpener", "empty query");
+      Log.e("MicroMsg.FTS.LookOneLookOpener", "empty query");
       AppMethodBeat.o(30249);
       return;
     }
-    ((i)g.ab(i.class)).a(ak.getContext(), new Runnable()
+    ((i)g.af(i.class)).a(MMApplicationContext.getContext(), new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(30248);
-        Intent localIntent = ad.ePM();
+        Intent localIntent = ai.fXX();
         localIntent.putExtra("ftsbizscene", 21);
         localIntent.putExtra("ftsQuery", paramString);
         localIntent.putExtra("title", paramString);
         localIntent.putExtra("isWebwx", paramString);
         localIntent.putExtra("ftscaneditable", false);
-        Object localObject = ad.f(21, false, 2);
+        Object localObject = ai.h(21, false, 2);
         ((Map)localObject).put("query", paramString);
         ((Map)localObject).put("sceneActionType", "2");
-        localIntent.putExtra("rawUrl", ad.e((Map)localObject, 1));
-        localObject = new nu();
-        ((nu)localObject).dCJ.scene = 0;
-        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-        d.b(paramActivity, "webview", ".ui.tools.fts.FTSWebViewUI", localIntent);
-        am.cw(21, paramString);
+        localIntent.putExtra("rawUrl", ai.g((Map)localObject, 1));
+        localObject = new om();
+        ((om)localObject).dUz.scene = 0;
+        EventCenter.instance.publish((IEvent)localObject);
+        c.b(paramActivity, "webview", ".ui.tools.fts.FTSWebViewUI", localIntent);
+        ar.cO(21, paramString);
         AppMethodBeat.o(30248);
       }
     });

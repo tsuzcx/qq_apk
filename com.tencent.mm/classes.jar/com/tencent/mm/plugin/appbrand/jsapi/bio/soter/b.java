@@ -5,44 +5,44 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d
 {
   public static final int CTRL_INDEX = 277;
   public static final String NAME = "startSoterAuthentication";
-  private Class<?> kFY;
+  private Class<?> lKz;
   private int scene;
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(159051);
-    ae.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: JsApiStartSoterAuthentication");
-    Activity localActivity = (Activity)paramc.getContext();
+    Log.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: JsApiStartSoterAuthentication");
+    Activity localActivity = (Activity)paramf.getContext();
     if (localActivity == null)
     {
-      ae.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "JsApiStartSoterAuthentication context is null, appId is %s", new Object[] { paramc.getAppId() });
-      paramc.h(paramInt, e("fail", null));
+      Log.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "JsApiStartSoterAuthentication context is null, appId is %s", new Object[] { paramf.getAppId() });
+      paramf.i(paramInt, h("fail", null));
       AppMethodBeat.o(159051);
       return;
     }
-    if (this.kFY == null)
+    if (this.lKz == null)
     {
-      ae.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "JsApiStartSoterAuthentication ui is null!");
-      paramc.h(paramInt, e("fail:JsApiStartSoterAuthentication UI is null!", null));
+      Log.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "JsApiStartSoterAuthentication ui is null!");
+      paramf.i(paramInt, h("fail:JsApiStartSoterAuthentication UI is null!", null));
       AppMethodBeat.o(159051);
       return;
     }
     JSONArray localJSONArray = paramJSONObject.optJSONArray("requestAuthModes");
     String str1 = paramJSONObject.optString("challenge");
     String str2 = paramJSONObject.optString("authContent");
-    Intent localIntent = new Intent(localActivity, this.kFY);
+    Intent localIntent = new Intent(localActivity, this.lKz);
     localIntent.putExtra("auth_mode", d.o(localJSONArray));
     localIntent.putExtra("challenge", str1);
     localIntent.putExtra("auth_content", str2);
@@ -51,10 +51,10 @@ public final class b
     {
       this.scene = paramJSONObject.getInt("scene");
       localIntent.putExtra("key_soter_fp_luggage_scene", this.scene);
-      localIntent.putExtra("Soter_Result_Receiver", new JsApiLuggageStartSoterAuthentication.1(this, new Handler(Looper.getMainLooper()), paramc, paramInt));
-      paramc = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(localActivity, paramc.ahE(), "com/tencent/mm/plugin/appbrand/jsapi/bio/soter/JsApiLuggageStartSoterAuthentication", "invoke", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;Lorg/json/JSONObject;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localActivity.startActivity((Intent)paramc.mt(0));
+      localIntent.putExtra("Soter_Result_Receiver", new JsApiLuggageStartSoterAuthentication.1(this, new Handler(Looper.getMainLooper()), paramf, paramInt));
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(localActivity, paramf.axQ(), "com/tencent/mm/plugin/appbrand/jsapi/bio/soter/JsApiLuggageStartSoterAuthentication", "invoke", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;Lorg/json/JSONObject;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localActivity.startActivity((Intent)paramf.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(localActivity, "com/tencent/mm/plugin/appbrand/jsapi/bio/soter/JsApiLuggageStartSoterAuthentication", "invoke", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;Lorg/json/JSONObject;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(159051);
       return;
@@ -63,7 +63,7 @@ public final class b
     {
       for (;;)
       {
-        ae.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter authentication scene null");
+        Log.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter authentication scene null");
       }
     }
   }

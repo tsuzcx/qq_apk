@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/ale" />
-    <item android:drawable="@android:color/transparent" />
-</selector>
+    <item android:id="@android:id/background" android:drawable="@drawable/b7k" />
+    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/b7n" />
+    <item android:id="@android:id/progress">
+        <bitmap android:src="@drawable/b7k" android:tileModeX="repeat" />
+    </item>
+</layer-list>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dk4" android:paddingBottom="@dimen/ct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct">
+        <ImageView android:id="@id/cr3" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" />
+        <TextView android:textColor="@color/ag2" android:id="@id/cqe" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cqv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/cqw" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:src="@raw/coin_icon" android:layout_marginEnd="@dimen/bt" app:iconColor="@color/BW_100_Alpha_0_3" />
+            <TextView android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_vertical" android:id="@id/cqx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

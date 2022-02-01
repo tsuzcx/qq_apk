@@ -1,31 +1,31 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 import kotlinx.a.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "serialName", "", "elementDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "(Ljava/lang/String;Lkotlinx/serialization/SerialDescriptor;)V", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/ListLikeDescriptor;", "serialName", "", "elementDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "(Ljava/lang/String;Lkotlinx/serialization/SerialDescriptor;)V", "getSerialName", "()Ljava/lang/String;", "kotlinx-serialization-runtime"})
 public final class ap
   extends ah
 {
-  private final String OiM;
+  private final String TXI;
   
   public ap(String paramString, n paramn)
   {
     super(paramn, (byte)0);
-    AppMethodBeat.i(199826);
-    this.OiM = paramString;
-    AppMethodBeat.o(199826);
+    AppMethodBeat.i(225598);
+    this.TXI = paramString;
+    AppMethodBeat.o(225598);
   }
   
-  public final String gBs()
+  public final String hOz()
   {
-    return this.OiM;
+    return this.TXI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.a.b.ap
  * JD-Core Version:    0.7.0.1
  */

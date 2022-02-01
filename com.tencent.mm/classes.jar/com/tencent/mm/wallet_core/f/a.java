@@ -3,25 +3,24 @@ package com.tencent.mm.wallet_core.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.plugin.secinforeport.a.d;
 import java.util.WeakHashMap;
 
 public final class a
 {
-  private WeakHashMap<Object, Boolean> LVP;
+  private WeakHashMap<Object, Boolean> RuF;
   
   public a()
   {
     AppMethodBeat.i(72880);
-    this.LVP = new WeakHashMap();
+    this.RuF = new WeakHashMap();
     AppMethodBeat.o(72880);
   }
   
-  public static a fWj()
+  public static a hhH()
   {
     try
     {
-      a locala = a.LVQ;
+      a locala = a.RuG;
       return locala;
     }
     finally
@@ -31,20 +30,20 @@ public final class a
     }
   }
   
-  public final boolean es(Object paramObject)
+  public final boolean ew(Object paramObject)
   {
     AppMethodBeat.i(72881);
-    if (com.tencent.mm.plugin.normsg.a.b.wJt.dy(paramObject))
+    if (com.tencent.mm.plugin.normsg.a.d.AEF.dH(paramObject))
     {
-      if (this.LVP.containsKey(paramObject))
+      if (this.RuF.containsKey(paramObject))
       {
         AppMethodBeat.o(72881);
         return false;
       }
-      this.LVP.put(paramObject, Boolean.TRUE);
-      e.ywz.idkeyStat(715L, 0L, 1L, false);
-      if (((b.fWm()) || (g.abt())) && (b.fWk())) {
-        d.yRQ.PF(-2147483648);
+      this.RuF.put(paramObject, Boolean.TRUE);
+      e.Cxv.idkeyStat(715L, 0L, 1L, false);
+      if (((b.hhK()) || (g.isMIUI())) && (b.hhI())) {
+        com.tencent.mm.plugin.secinforeport.a.d.CWG.Xj(-2147483648);
       }
       AppMethodBeat.o(72881);
       return false;
@@ -55,19 +54,19 @@ public final class a
   
   static final class a
   {
-    static a LVQ;
+    static a RuG;
     
     static
     {
       AppMethodBeat.i(72879);
-      LVQ = new a();
+      RuG = new a();
       AppMethodBeat.o(72879);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,51 +12,51 @@ import java.util.List;
 public final class d
   implements b, c
 {
-  private static d uVm;
+  private static d ynN;
   
-  public static String azQ()
+  public static String aSY()
   {
     AppMethodBeat.i(151494);
     Object localObject = new StringBuilder();
-    g.ajS();
-    localObject = g.ajR().gDT + "image/";
+    g.aAi();
+    localObject = g.aAh().hqG + "image/";
     AppMethodBeat.o(151494);
     return localObject;
   }
   
-  public static String azR()
+  public static String aSZ()
   {
     AppMethodBeat.i(151495);
     Object localObject = new StringBuilder();
-    g.ajS();
-    localObject = g.ajR().gDT + "image2/";
+    g.aAi();
+    localObject = g.aAh().hqG + "image2/";
     AppMethodBeat.o(151495);
     return localObject;
   }
   
-  public static d dfK()
+  public static d dZE()
   {
     try
     {
       AppMethodBeat.i(151492);
-      if (uVm == null) {
-        uVm = new d();
+      if (ynN == null) {
+        ynN = new d();
       }
-      d locald = uVm;
+      d locald = ynN;
       AppMethodBeat.o(151492);
       return locald;
     }
     finally {}
   }
   
-  public static String dfL()
+  public static String dZF()
   {
     AppMethodBeat.i(151496);
     AppMethodBeat.o(151496);
     return "wcf://bizimg/";
   }
   
-  public final List<String> ajY()
+  public final List<String> aAo()
   {
     AppMethodBeat.i(151493);
     LinkedList localLinkedList = new LinkedList();
@@ -67,7 +67,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.image.d
  * JD-Core Version:    0.7.0.1
  */

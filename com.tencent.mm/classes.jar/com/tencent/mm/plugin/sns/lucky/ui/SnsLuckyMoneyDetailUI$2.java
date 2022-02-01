@@ -12,7 +12,7 @@ final class SnsLuckyMoneyDetailUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(68356);
-    this.zvT.finish();
+    this.DGg.finish();
     AppMethodBeat.o(68356);
     return true;
   }

@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.subapp.jdbiz;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ao;
 import java.util.Map;
 
 public final class c
 {
-  public String ByA = "";
-  public String ByB = "";
-  public boolean ByC = false;
-  public boolean ByD = false;
-  public String ByE = "";
-  public String ByF = "";
-  public long ByG;
-  public long ByH;
-  public long ByI;
-  public long ByJ;
-  public String ByK = "";
-  public String ByL = "";
-  public String ByM = "";
-  public String ByN = "";
-  public String ByO = "";
-  public String ByP = "";
-  public int ByQ = 0;
-  public String dEU = "";
+  public String FJA = "";
+  public int FJB = 0;
+  public String FJl = "";
+  public String FJm = "";
+  public boolean FJn = false;
+  public boolean FJo = false;
+  public String FJp = "";
+  public String FJq = "";
+  public long FJr;
+  public long FJs;
+  public long FJt;
+  public long FJu;
+  public String FJv = "";
+  public String FJw = "";
+  public String FJx = "";
+  public String FJy = "";
+  public String FJz = "";
+  public String dWG = "";
   public String iconUrl = "";
-  public long irN = 0L;
+  public long jmW = 0L;
   public String jumpUrl = "";
   public long startTime;
   public String title = "";
   
-  private void aU(Map<String, String> paramMap)
+  private void aS(Map<String, String> paramMap)
   {
     AppMethodBeat.i(28871);
     if (paramMap == null)
@@ -42,57 +42,57 @@ public final class c
       AppMethodBeat.o(28871);
       return;
     }
-    this.ByA = bu.bI((String)paramMap.get(".sysmsg.biztype"), "");
-    this.ByK = bu.bI((String)paramMap.get(".sysmsg.alert"), "");
-    this.ByB = bu.bI((String)paramMap.get(".sysmsg.activityid"), "");
-    this.startTime = bu.aSC((String)paramMap.get(".sysmsg.starttime"));
-    this.irN = bu.aSC((String)paramMap.get(".sysmsg.expiretime"));
-    this.title = bu.bI((String)paramMap.get(".sysmsg.content.title"), "");
-    this.iconUrl = bu.bI((String)paramMap.get(".sysmsg.content.icon"), "");
-    this.jumpUrl = bu.bI((String)paramMap.get(".sysmsg.content.jumpurl"), "");
-    this.ByO = bu.bI((String)paramMap.get(".sysmsg.content.jumpweapp.username"), "");
-    this.ByP = bu.bI((String)paramMap.get(".sysmsg.content.jumpweapp.path"), "");
-    this.ByQ = bu.aSB((String)paramMap.get(".sysmsg.content.jumpweapp.version"));
-    this.ByG = bu.aSC((String)paramMap.get(".sysmsg.content.urlstarttime"));
-    this.ByH = bu.aSC((String)paramMap.get(".sysmsg.content.urlexpiretime"));
-    this.ByE = bu.bI((String)paramMap.get(".sysmsg.content.jdcelltitle"), "");
-    this.ByF = bu.bI((String)paramMap.get(".sysmsg.content.jdcellicon"), "");
-    this.ByI = bu.aSC((String)paramMap.get(".sysmsg.content.titlestarttime"));
-    this.ByJ = bu.aSC((String)paramMap.get(".sysmsg.content.titleexpiretime"));
-    this.ByC = "1".equals(paramMap.get(".sysmsg.content.findshowreddot"));
-    this.ByD = "1".equals(paramMap.get(".sysmsg.content.jdcellshowred"));
-    this.ByL = bu.bI((String)paramMap.get(".sysmsg.content.alertviewtitle"), "");
-    this.ByM = bu.bI((String)paramMap.get(".sysmsg.content.alertviewconfirm"), "");
-    this.ByN = bu.bI((String)paramMap.get(".sysmsg.content.alertviewcancel"), "");
+    this.FJl = Util.nullAs((String)paramMap.get(".sysmsg.biztype"), "");
+    this.FJv = Util.nullAs((String)paramMap.get(".sysmsg.alert"), "");
+    this.FJm = Util.nullAs((String)paramMap.get(".sysmsg.activityid"), "");
+    this.startTime = Util.safeParseLong((String)paramMap.get(".sysmsg.starttime"));
+    this.jmW = Util.safeParseLong((String)paramMap.get(".sysmsg.expiretime"));
+    this.title = Util.nullAs((String)paramMap.get(".sysmsg.content.title"), "");
+    this.iconUrl = Util.nullAs((String)paramMap.get(".sysmsg.content.icon"), "");
+    this.jumpUrl = Util.nullAs((String)paramMap.get(".sysmsg.content.jumpurl"), "");
+    this.FJz = Util.nullAs((String)paramMap.get(".sysmsg.content.jumpweapp.username"), "");
+    this.FJA = Util.nullAs((String)paramMap.get(".sysmsg.content.jumpweapp.path"), "");
+    this.FJB = Util.safeParseInt((String)paramMap.get(".sysmsg.content.jumpweapp.version"));
+    this.FJr = Util.safeParseLong((String)paramMap.get(".sysmsg.content.urlstarttime"));
+    this.FJs = Util.safeParseLong((String)paramMap.get(".sysmsg.content.urlexpiretime"));
+    this.FJp = Util.nullAs((String)paramMap.get(".sysmsg.content.jdcelltitle"), "");
+    this.FJq = Util.nullAs((String)paramMap.get(".sysmsg.content.jdcellicon"), "");
+    this.FJt = Util.safeParseLong((String)paramMap.get(".sysmsg.content.titlestarttime"));
+    this.FJu = Util.safeParseLong((String)paramMap.get(".sysmsg.content.titleexpiretime"));
+    this.FJn = "1".equals(paramMap.get(".sysmsg.content.findshowreddot"));
+    this.FJo = "1".equals(paramMap.get(".sysmsg.content.jdcellshowred"));
+    this.FJw = Util.nullAs((String)paramMap.get(".sysmsg.content.alertviewtitle"), "");
+    this.FJx = Util.nullAs((String)paramMap.get(".sysmsg.content.alertviewconfirm"), "");
+    this.FJy = Util.nullAs((String)paramMap.get(".sysmsg.content.alertviewcancel"), "");
     AppMethodBeat.o(28871);
   }
   
-  public static c eqo()
+  public static c fsN()
   {
     AppMethodBeat.i(28869);
-    bc.aCg();
-    String str = (String)com.tencent.mm.model.c.ajA().get(327942, "");
+    bg.aVF();
+    String str = (String)com.tencent.mm.model.c.azQ().get(327942, "");
     c localc = new c();
-    ae.i("MicroMsg.JdMsgContent", " create xml : ".concat(String.valueOf(str)));
-    localc.aAY(str);
+    Log.i("MicroMsg.JdMsgContent", " create xml : ".concat(String.valueOf(str)));
+    localc.feed(str);
     AppMethodBeat.o(28869);
     return localc;
   }
   
   private void init()
   {
-    this.ByA = "";
-    this.ByB = "";
-    this.irN = 0L;
-    this.ByE = "";
-    this.ByC = false;
-    this.ByD = false;
-    this.ByL = "";
-    this.ByM = "";
-    this.ByN = "";
-    this.ByK = "";
+    this.FJl = "";
+    this.FJm = "";
+    this.jmW = 0L;
+    this.FJp = "";
+    this.FJn = false;
+    this.FJo = false;
+    this.FJw = "";
+    this.FJx = "";
+    this.FJy = "";
+    this.FJv = "";
     this.jumpUrl = "";
-    this.dEU = "";
+    this.dWG = "";
   }
   
   public final boolean a(c paramc)
@@ -103,7 +103,7 @@ public final class c
       AppMethodBeat.o(28876);
       return true;
     }
-    if (!bu.bI(this.ByB, "").equals(bu.bI(paramc.ByB, "")))
+    if (!Util.nullAs(this.FJm, "").equals(Util.nullAs(paramc.FJm, "")))
     {
       AppMethodBeat.o(28876);
       return true;
@@ -112,33 +112,18 @@ public final class c
     return false;
   }
   
-  public final void aAY(String paramString)
-  {
-    AppMethodBeat.i(28870);
-    init();
-    this.dEU = paramString;
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(28870);
-      return;
-    }
-    ae.i("MicroMsg.JdMsgContent", "feed xml %s", new Object[] { paramString });
-    aU(bx.M(paramString, "sysmsg"));
-    AppMethodBeat.o(28870);
-  }
-  
-  public final String alg()
+  public final String aBz()
   {
     AppMethodBeat.i(28877);
-    String str = bu.bI(this.dEU, "");
+    String str = Util.nullAs(this.dWG, "");
     AppMethodBeat.o(28877);
     return str;
   }
   
-  public final boolean cTg()
+  public final boolean dMp()
   {
     AppMethodBeat.i(28873);
-    if ((this.irN != 0L) && (this.irN < System.currentTimeMillis() / 1000L))
+    if ((this.jmW != 0L) && (this.jmW < System.currentTimeMillis() / 1000L))
     {
       AppMethodBeat.o(28873);
       return true;
@@ -147,10 +132,25 @@ public final class c
     return false;
   }
   
-  public final boolean eqp()
+  public final void feed(String paramString)
+  {
+    AppMethodBeat.i(28870);
+    init();
+    this.dWG = paramString;
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(28870);
+      return;
+    }
+    Log.i("MicroMsg.JdMsgContent", "feed xml %s", new Object[] { paramString });
+    aS(XmlParser.parseXml(paramString, "sysmsg", null));
+    AppMethodBeat.o(28870);
+  }
+  
+  public final boolean fsO()
   {
     AppMethodBeat.i(28874);
-    if (this.ByG < System.currentTimeMillis() / 1000L)
+    if (this.FJr < System.currentTimeMillis() / 1000L)
     {
       AppMethodBeat.o(28874);
       return true;
@@ -159,10 +159,10 @@ public final class c
     return false;
   }
   
-  public final boolean eqq()
+  public final boolean fsP()
   {
     AppMethodBeat.i(28875);
-    if ((this.ByH != 0L) && (this.ByH < System.currentTimeMillis() / 1000L))
+    if ((this.FJs != 0L) && (this.FJs < System.currentTimeMillis() / 1000L))
     {
       AppMethodBeat.o(28875);
       return true;
@@ -185,7 +185,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.jdbiz.c
  * JD-Core Version:    0.7.0.1
  */

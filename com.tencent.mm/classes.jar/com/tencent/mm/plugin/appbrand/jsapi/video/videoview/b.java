@@ -2,50 +2,50 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.videoview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  e.h lqa = e.h.lqm;
-  protected int lxZ;
-  public boolean lxh;
-  protected int lya;
-  protected int lyb;
-  protected int lyc;
+  protected int mEX;
+  protected int mEY;
+  protected int mEZ;
+  public boolean mEe;
+  protected int mFa;
+  e.h mwG = e.h.mwR;
   protected int videoHeight;
   protected int videoWidth;
   
   public final void reset()
   {
-    this.lya = 0;
-    this.lxZ = 0;
+    this.mEY = 0;
+    this.mEX = 0;
     this.videoHeight = 0;
     this.videoWidth = 0;
-    this.lyc = 0;
-    this.lyb = 0;
+    this.mFa = 0;
+    this.mEZ = 0;
   }
   
   public final boolean y(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(211510);
-    if ((this.lxZ == paramInt1) && (this.lya == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
+    AppMethodBeat.i(235189);
+    if ((this.mEX == paramInt1) && (this.mEY == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
     {
-      AppMethodBeat.o(211510);
+      AppMethodBeat.o(235189);
       return true;
     }
-    this.lxZ = paramInt1;
-    this.lya = paramInt2;
+    this.mEX = paramInt1;
+    this.mEY = paramInt2;
     this.videoWidth = paramInt3;
     this.videoHeight = paramInt4;
     float f1 = this.videoWidth * 1.0F / this.videoHeight;
-    float f2 = this.lxZ * 1.0F / this.lya;
-    if (this.lqa != e.h.lqm) {
-      if (this.lqa == e.h.lqo) {
-        if (this.lxZ < this.lya)
+    float f2 = this.mEX * 1.0F / this.mEY;
+    if (this.mwG != e.h.mwR) {
+      if (this.mwG == e.h.mwT) {
+        if (this.mEX < this.mEY)
         {
-          this.lyc = ((int)(this.lxZ / f1));
-          this.lyb = this.lxZ;
-          if (this.lyc <= this.lya) {}
+          this.mFa = ((int)(this.mEX / f1));
+          this.mEZ = this.mEX;
+          if (this.mFa <= this.mEY) {}
         }
       }
     }
@@ -53,80 +53,80 @@ public final class b
     for (;;)
     {
       b localb = this;
-      localb.lyb = ((int)(localb.lya * f1));
-      localb.lyc = localb.lya;
+      localb.mEZ = ((int)(localb.mEY * f1));
+      localb.mFa = localb.mEY;
       for (;;)
       {
-        ae.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.lxZ), Integer.valueOf(this.lya), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.lyb), Integer.valueOf(this.lyc), Float.valueOf(f2), Float.valueOf(f1) });
-        AppMethodBeat.o(211510);
+        Log.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.mEX), Integer.valueOf(this.mEY), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.mEZ), Integer.valueOf(this.mFa), Float.valueOf(f2), Float.valueOf(f1) });
+        AppMethodBeat.o(235189);
         return false;
-        this.lyb = ((int)(this.lya * f1));
-        this.lyc = this.lya;
-        if (this.lyb > this.lxZ)
+        this.mEZ = ((int)(this.mEY * f1));
+        this.mFa = this.mEY;
+        if (this.mEZ > this.mEX)
         {
-          this.lyc = ((int)(this.lxZ / f1));
-          this.lyb = this.lxZ;
+          this.mFa = ((int)(this.mEX / f1));
+          this.mEZ = this.mEX;
           continue;
-          if (this.lqa == e.h.lqn)
+          if (this.mwG == e.h.mwS)
           {
-            this.lyc = this.lya;
-            this.lyb = this.lxZ;
+            this.mFa = this.mEY;
+            this.mEZ = this.mEX;
           }
           else
           {
-            if (this.lqa == e.h.lqp)
+            if (this.mwG == e.h.mwU)
             {
-              if (this.lxZ > this.lya)
+              if (this.mEX > this.mEY)
               {
-                this.lyc = ((int)(this.lxZ / f1));
-                this.lyb = this.lxZ;
-                if (this.lyc >= this.lya) {
+                this.mFa = ((int)(this.mEX / f1));
+                this.mEZ = this.mEX;
+                if (this.mFa >= this.mEY) {
                   continue;
                 }
                 break;
               }
-              this.lyb = ((int)(this.lya * f1));
-              this.lyc = this.lya;
-              if (this.lyb >= this.lxZ) {
+              this.mEZ = ((int)(this.mEY * f1));
+              this.mFa = this.mEY;
+              if (this.mEZ >= this.mEX) {
                 continue;
               }
-              this.lyc = ((int)(this.lxZ / f1));
-              this.lyb = this.lxZ;
+              this.mFa = ((int)(this.mEX / f1));
+              this.mEZ = this.mEX;
               continue;
             }
-            if (!this.lxh)
+            if (!this.mEe)
             {
-              if (this.lxZ < this.lya)
+              if (this.mEX < this.mEY)
               {
-                this.lyc = ((int)(this.lxZ / f1));
-                this.lyb = this.lxZ;
+                this.mFa = ((int)(this.mEX / f1));
+                this.mEZ = this.mEX;
               }
               else
               {
-                this.lyb = ((int)(this.lya * f1));
-                this.lyc = this.lya;
+                this.mEZ = ((int)(this.mEY * f1));
+                this.mFa = this.mEY;
               }
             }
             else if (Math.abs(f1 - f2) > 0.05D)
             {
-              if (this.lxZ < this.lya)
+              if (this.mEX < this.mEY)
               {
-                this.lyc = ((int)(this.lxZ / f1));
-                this.lyb = this.lxZ;
+                this.mFa = ((int)(this.mEX / f1));
+                this.mEZ = this.mEX;
               }
               else
               {
-                this.lyb = ((int)(this.lya * f1));
-                this.lyc = this.lya;
+                this.mEZ = ((int)(this.mEY * f1));
+                this.mFa = this.mEY;
               }
             }
             else
             {
-              if (this.lxZ <= this.lya) {
+              if (this.mEX <= this.mEY) {
                 break label657;
               }
-              this.lyc = ((int)(this.lxZ / f1));
-              this.lyb = this.lxZ;
+              this.mFa = ((int)(this.mEX / f1));
+              this.mEZ = this.mEX;
             }
           }
         }
@@ -136,7 +136,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.b
  * JD-Core Version:    0.7.0.1
  */

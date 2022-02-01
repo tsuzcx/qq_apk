@@ -28,7 +28,7 @@ public class SightRangeWidget
         break label46;
       }
       paramAtContactWidget.setVisibility(4);
-      paramAtContactWidget.ecZ();
+      paramAtContactWidget.ffm();
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public class SightRangeWidget
   
   protected int getLayoutResource()
   {
-    return 2131495459;
+    return 2131496332;
   }
   
   protected int getMaxTagNameLen()
@@ -51,7 +51,7 @@ public class SightRangeWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SightRangeWidget
  * JD-Core Version:    0.7.0.1
  */

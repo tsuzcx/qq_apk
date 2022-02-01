@@ -15,52 +15,88 @@ import com.tencent.mm.cb.a;
 
 public final class AppBrandMultiOptionsPicker
   extends FrameLayout
-  implements com.tencent.mm.plugin.appbrand.jsapi.p.c<int[]>
+  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<int[]>
 {
-  private boolean asc;
-  private final Drawable npJ;
-  public LinearLayout npK;
-  private boolean npL;
-  private c npM;
-  public final YANumberPicker.b npN;
+  private boolean asn;
+  private final Drawable ozq;
+  public LinearLayout ozr;
+  private boolean ozs;
+  private c ozt;
+  public final YANumberPicker.b ozu;
   
   @Keep
   public AppBrandMultiOptionsPicker(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(137995);
-    this.npN = new YANumberPicker.b()
+    this.ozu = new YANumberPicker.b()
     {
       public final void a(YANumberPicker paramAnonymousYANumberPicker, int paramAnonymousInt)
       {
         AppMethodBeat.i(137993);
         if (AppBrandMultiOptionsPicker.a(AppBrandMultiOptionsPicker.this) != null)
         {
-          int i = ((Integer)paramAnonymousYANumberPicker.getTag(2131296775)).intValue();
-          AppBrandMultiOptionsPicker.a(AppBrandMultiOptionsPicker.this).cP(new int[] { i, paramAnonymousInt });
+          int i = ((Integer)paramAnonymousYANumberPicker.getTag(2131296857)).intValue();
+          AppBrandMultiOptionsPicker.a(AppBrandMultiOptionsPicker.this).cY(new int[] { i, paramAnonymousInt });
         }
         AppMethodBeat.o(137993);
       }
     };
-    this.npJ = paramContext.getResources().getDrawable(2131230991);
-    this.npK = new LinearLayout(paramContext);
-    this.npK.setPadding(a.fromDPToPix(paramContext, 2), 0, a.fromDPToPix(paramContext, 2), 0);
-    this.npK.setOrientation(0);
-    addView(this.npK, new FrameLayout.LayoutParams(-1, -1, 17));
-    this.npK.setDividerDrawable(this.npJ);
-    this.npK.setShowDividers(2);
+    this.ozq = paramContext.getResources().getDrawable(2131231020);
+    this.ozr = new LinearLayout(paramContext);
+    this.ozr.setPadding(a.fromDPToPix(paramContext, 2), 0, a.fromDPToPix(paramContext, 2), 0);
+    this.ozr.setOrientation(0);
+    addView(this.ozr, new FrameLayout.LayoutParams(-1, -1, 17));
+    this.ozr.setDividerDrawable(this.ozq);
+    this.ozr.setShowDividers(2);
     AppMethodBeat.o(137995);
+  }
+  
+  public final AppBrandOptionsPickerV2 At(int paramInt)
+  {
+    AppMethodBeat.i(138000);
+    if (paramInt < 0)
+    {
+      AppMethodBeat.o(138000);
+      return null;
+    }
+    if (this.ozr == null)
+    {
+      AppMethodBeat.o(138000);
+      return null;
+    }
+    AppBrandOptionsPickerV2 localAppBrandOptionsPickerV2 = (AppBrandOptionsPickerV2)this.ozr.getChildAt(paramInt);
+    AppMethodBeat.o(138000);
+    return localAppBrandOptionsPickerV2;
+  }
+  
+  public final void Au(int paramInt)
+  {
+    AppMethodBeat.i(193734);
+    if (paramInt <= 0)
+    {
+      AppMethodBeat.o(193734);
+      return;
+    }
+    int i = getPickersCount() - 1;
+    while (paramInt > 0)
+    {
+      this.ozr.removeViewAt(i);
+      i -= 1;
+      paramInt -= 1;
+    }
+    AppMethodBeat.o(193734);
   }
   
   public final int getPickersCount()
   {
     AppMethodBeat.i(138001);
-    if (this.npK == null)
+    if (this.ozr == null)
     {
       AppMethodBeat.o(138001);
       return 0;
     }
-    int i = this.npK.getChildCount();
+    int i = this.ozr.getChildCount();
     AppMethodBeat.o(138001);
     return i;
   }
@@ -72,12 +108,12 @@ public final class AppBrandMultiOptionsPicker
   
   public final void onAttach(c paramc)
   {
-    this.npM = paramc;
+    this.ozt = paramc;
   }
   
   public final void onDetach(c paramc)
   {
-    this.npM = null;
+    this.ozt = null;
   }
   
   public final void onHide(c paramc)
@@ -87,9 +123,9 @@ public final class AppBrandMultiOptionsPicker
     int i = 0;
     while (i < j)
     {
-      paramc = wL(i);
+      paramc = At(i);
       if (paramc != null) {
-        paramc.bGq();
+        paramc.ccG();
       }
       i += 1;
     }
@@ -99,7 +135,7 @@ public final class AppBrandMultiOptionsPicker
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(137998);
-    if (this.asc)
+    if (this.asn)
     {
       AppMethodBeat.o(137998);
       return false;
@@ -111,13 +147,13 @@ public final class AppBrandMultiOptionsPicker
   
   public final void onShow(c paramc)
   {
-    this.npM = paramc;
+    this.ozt = paramc;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(137999);
-    if (this.asc)
+    if (this.asn)
     {
       AppMethodBeat.o(137999);
       return false;
@@ -130,9 +166,9 @@ public final class AppBrandMultiOptionsPicker
   public final void requestLayout()
   {
     AppMethodBeat.i(137997);
-    if (this.asc)
+    if (this.asn)
     {
-      this.npL = true;
+      this.ozs = true;
       AppMethodBeat.o(137997);
       return;
     }
@@ -143,9 +179,9 @@ public final class AppBrandMultiOptionsPicker
   public final void setLayoutFrozen(boolean paramBoolean)
   {
     AppMethodBeat.i(137996);
-    if (this.asc != paramBoolean)
+    if (this.asn != paramBoolean)
     {
-      this.asc = paramBoolean;
+      this.asn = paramBoolean;
       if (paramBoolean)
       {
         long l = SystemClock.uptimeMillis();
@@ -153,58 +189,22 @@ public final class AppBrandMultiOptionsPicker
         AppMethodBeat.o(137996);
         return;
       }
-      if (this.npL) {
+      if (this.ozs) {
         requestLayout();
       }
     }
     AppMethodBeat.o(137996);
   }
   
-  public final AppBrandOptionsPickerV2 wL(int paramInt)
-  {
-    AppMethodBeat.i(138000);
-    if (paramInt < 0)
-    {
-      AppMethodBeat.o(138000);
-      return null;
-    }
-    if (this.npK == null)
-    {
-      AppMethodBeat.o(138000);
-      return null;
-    }
-    AppBrandOptionsPickerV2 localAppBrandOptionsPickerV2 = (AppBrandOptionsPickerV2)this.npK.getChildAt(paramInt);
-    AppMethodBeat.o(138000);
-    return localAppBrandOptionsPickerV2;
-  }
-  
-  public final void wM(int paramInt)
-  {
-    AppMethodBeat.i(197282);
-    if (paramInt <= 0)
-    {
-      AppMethodBeat.o(197282);
-      return;
-    }
-    int i = getPickersCount() - 1;
-    while (paramInt > 0)
-    {
-      this.npK.removeViewAt(i);
-      i -= 1;
-      paramInt -= 1;
-    }
-    AppMethodBeat.o(197282);
-  }
-  
   public static final class a
   {
-    public final String[] npP;
+    public final String[] ozw;
     public final int selected;
     
     public a(String[] paramArrayOfString, int paramInt)
     {
       AppMethodBeat.i(137994);
-      this.npP = paramArrayOfString;
+      this.ozw = paramArrayOfString;
       this.selected = Math.max(0, Math.min(paramInt, paramArrayOfString.length - 1));
       AppMethodBeat.o(137994);
     }
@@ -212,7 +212,7 @@ public final class AppBrandMultiOptionsPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandMultiOptionsPicker
  * JD-Core Version:    0.7.0.1
  */

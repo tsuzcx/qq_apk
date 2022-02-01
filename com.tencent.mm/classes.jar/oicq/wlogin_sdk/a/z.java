@@ -6,31 +6,31 @@ import oicq.wlogin_sdk.tools.util;
 public final class z
   extends a
 {
-  public int OoG = 0;
-  public int OoH = 0;
+  public int UdF = 0;
+  public int UdG = 0;
   
   public z()
   {
-    this.Ony = 293;
+    this.Ucx = 293;
   }
   
-  public final Boolean gCy()
+  public final Boolean hPC()
   {
     AppMethodBeat.i(88115);
-    if (this.Ooi < 2)
+    if (this.Udh < 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88115);
       return localBoolean;
     }
-    this.OoG = util.am(this.Ons, this.Ooh);
-    if (this.Ooi < this.OoG + 2 + 2)
+    this.UdF = util.an(this.Ucr, this.Udg);
+    if (this.Udh < this.UdF + 2 + 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88115);
       return localBoolean;
     }
-    this.OoH = util.am(this.Ons, this.Ooh + 2 + this.OoG);
+    this.UdG = util.an(this.Ucr, this.Udg + 2 + this.UdF);
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88115);
     return localBoolean;

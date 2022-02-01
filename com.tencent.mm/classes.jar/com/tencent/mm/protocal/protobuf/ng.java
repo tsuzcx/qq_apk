@@ -1,120 +1,83 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
-import java.util.LinkedList;
 
 public final class ng
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public String FZx;
-  public String dmf;
-  public int offset;
+  public int CreateTime;
+  public int KHb;
+  public int KSf;
+  public int KSg;
+  public int oUv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124422);
+    AppMethodBeat.i(124398);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FZx == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: brand_user_name");
-        AppMethodBeat.o(124422);
-        throw paramVarArgs;
-      }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      if (this.FZx != null) {
-        paramVarArgs.d(2, this.FZx);
-      }
-      if (this.dmf != null) {
-        paramVarArgs.d(3, this.dmf);
-      }
-      paramVarArgs.aS(4, this.offset);
-      AppMethodBeat.o(124422);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.KSf);
+      paramVarArgs.aM(2, this.CreateTime);
+      paramVarArgs.aM(3, this.KHb);
+      paramVarArgs.aM(4, this.oUv);
+      paramVarArgs.aM(5, this.KSg);
+      AppMethodBeat.o(124398);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label522;
-      }
-    }
-    label522:
-    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    if (paramInt == 1)
     {
-      paramInt = i;
-      if (this.FZx != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FZx);
-      }
-      i = paramInt;
-      if (this.dmf != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dmf);
-      }
-      paramInt = f.a.a.b.b.a.bz(4, this.offset);
-      AppMethodBeat.o(124422);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        if (this.FZx == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: brand_user_name");
-          AppMethodBeat.o(124422);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(124422);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        ng localng = (ng)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(124422);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localng.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(124422);
-          return 0;
-        case 2: 
-          localng.FZx = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(124422);
-          return 0;
-        case 3: 
-          localng.dmf = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(124422);
-          return 0;
-        }
-        localng.offset = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(124422);
-        return 0;
-      }
-      AppMethodBeat.o(124422);
-      return -1;
+      paramInt = g.a.a.b.b.a.bu(1, this.KSf);
+      int i = g.a.a.b.b.a.bu(2, this.CreateTime);
+      int j = g.a.a.b.b.a.bu(3, this.KHb);
+      int k = g.a.a.b.b.a.bu(4, this.oUv);
+      int m = g.a.a.b.b.a.bu(5, this.KSg);
+      AppMethodBeat.o(124398);
+      return paramInt + 0 + i + j + k + m;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(124398);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      ng localng = (ng)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(124398);
+        return -1;
+      case 1: 
+        localng.KSf = locala.UbS.zi();
+        AppMethodBeat.o(124398);
+        return 0;
+      case 2: 
+        localng.CreateTime = locala.UbS.zi();
+        AppMethodBeat.o(124398);
+        return 0;
+      case 3: 
+        localng.KHb = locala.UbS.zi();
+        AppMethodBeat.o(124398);
+        return 0;
+      case 4: 
+        localng.oUv = locala.UbS.zi();
+        AppMethodBeat.o(124398);
+        return 0;
+      }
+      localng.KSg = locala.UbS.zi();
+      AppMethodBeat.o(124398);
+      return 0;
+    }
+    AppMethodBeat.o(124398);
+    return -1;
   }
 }
 

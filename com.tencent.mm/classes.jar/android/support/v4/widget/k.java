@@ -248,23 +248,23 @@ final class k
   static final class c<T>
     implements Comparator<T>
   {
-    private final Rect Ul = new Rect();
-    private final Rect Um = new Rect();
-    private final boolean Un;
-    private final k.a<T> Uo;
+    private final k.a<T> UA;
+    private final Rect Ux = new Rect();
+    private final Rect Uy = new Rect();
+    private final boolean Uz;
     
     c(boolean paramBoolean, k.a<T> parama)
     {
-      this.Un = paramBoolean;
-      this.Uo = parama;
+      this.Uz = paramBoolean;
+      this.UA = parama;
     }
     
     public final int compare(T paramT1, T paramT2)
     {
-      Rect localRect1 = this.Ul;
-      Rect localRect2 = this.Um;
-      this.Uo.b(paramT1, localRect1);
-      this.Uo.b(paramT2, localRect2);
+      Rect localRect1 = this.Ux;
+      Rect localRect2 = this.Uy;
+      this.UA.b(paramT1, localRect1);
+      this.UA.b(paramT2, localRect2);
       if (localRect1.top < localRect2.top) {}
       do
       {
@@ -283,12 +283,12 @@ final class k
                 if (localRect1.left >= localRect2.left) {
                   break;
                 }
-              } while (!this.Un);
+              } while (!this.Uz);
               return 1;
               if (localRect1.left <= localRect2.left) {
                 break;
               }
-            } while (this.Un);
+            } while (this.Uz);
             return 1;
           } while (localRect1.bottom < localRect2.bottom);
           if (localRect1.bottom > localRect2.bottom) {
@@ -297,12 +297,12 @@ final class k
           if (localRect1.right >= localRect2.right) {
             break;
           }
-        } while (!this.Un);
+        } while (!this.Uz);
         return 1;
         if (localRect1.right <= localRect2.right) {
           break;
         }
-      } while (this.Un);
+      } while (this.Uz);
       return 1;
       return 0;
     }

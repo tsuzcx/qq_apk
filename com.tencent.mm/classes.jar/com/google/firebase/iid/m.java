@@ -16,23 +16,23 @@ import javax.annotation.concurrent.GuardedBy;
 
 final class m
 {
-  private static int bLc = 0;
-  private static PendingIntent bLp;
-  private final f bKT;
-  private final Context bLf;
+  private static PendingIntent bLF;
+  private static int bLs = 0;
   @GuardedBy("responseCallbacks")
-  private final android.support.v4.e.n<String, TaskCompletionSource<Bundle>> bLq;
-  private Messenger bLr;
-  private Messenger bLs;
-  private zzi bLt;
+  private final android.support.v4.e.n<String, TaskCompletionSource<Bundle>> bLG;
+  private Messenger bLH;
+  private Messenger bLI;
+  private zzi bLJ;
+  private final f bLj;
+  private final Context bLv;
   
   public m(Context paramContext, f paramf)
   {
     AppMethodBeat.i(4171);
-    this.bLq = new android.support.v4.e.n();
-    this.bLf = paramContext;
-    this.bKT = paramf;
-    this.bLr = new Messenger(new n(this, Looper.getMainLooper()));
+    this.bLG = new android.support.v4.e.n();
+    this.bLv = paramContext;
+    this.bLj = paramf;
+    this.bLH = new Messenger(new n(this, Looper.getMainLooper()));
     AppMethodBeat.o(4171);
   }
   
@@ -41,13 +41,13 @@ final class m
     try
     {
       AppMethodBeat.i(4172);
-      if (bLp == null)
+      if (bLF == null)
       {
         Intent localIntent = new Intent();
         localIntent.setPackage("com.google.example.invalidpackage");
-        bLp = PendingIntent.getBroadcast(paramContext, 0, localIntent, 0);
+        bLF = PendingIntent.getBroadcast(paramContext, 0, localIntent, 0);
       }
-      paramIntent.putExtra("app", bLp);
+      paramIntent.putExtra("app", bLF);
       AppMethodBeat.o(4172);
       return;
     }
@@ -58,9 +58,9 @@ final class m
   {
     AppMethodBeat.i(4173);
     TaskCompletionSource localTaskCompletionSource;
-    synchronized (this.bLq)
+    synchronized (this.bLG)
     {
-      localTaskCompletionSource = (TaskCompletionSource)this.bLq.remove(paramString);
+      localTaskCompletionSource = (TaskCompletionSource)this.bLG.remove(paramString);
       if (localTaskCompletionSource == null)
       {
         paramString = String.valueOf(paramString);
@@ -83,19 +83,19 @@ final class m
     // Byte code:
     //   0: sipush 4177
     //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 273	com/google/firebase/iid/m:yi	()Ljava/lang/String;
+    //   6: invokestatic 273	com/google/firebase/iid/m:yq	()Ljava/lang/String;
     //   9: astore_2
     //   10: new 255	com/google/android/gms/tasks/TaskCompletionSource
     //   13: dup
     //   14: invokespecial 274	com/google/android/gms/tasks/TaskCompletionSource:<init>	()V
     //   17: astore_3
     //   18: aload_0
-    //   19: getfield 43	com/google/firebase/iid/m:bLq	Landroid/support/v4/e/n;
+    //   19: getfield 43	com/google/firebase/iid/m:bLG	Landroid/support/v4/e/n;
     //   22: astore 4
     //   24: aload 4
     //   26: monitorenter
     //   27: aload_0
-    //   28: getfield 43	com/google/firebase/iid/m:bLq	Landroid/support/v4/e/n;
+    //   28: getfield 43	com/google/firebase/iid/m:bLG	Landroid/support/v4/e/n;
     //   31: aload_2
     //   32: aload_3
     //   33: invokevirtual 278	android/support/v4/e/n:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -103,7 +103,7 @@ final class m
     //   37: aload 4
     //   39: monitorexit
     //   40: aload_0
-    //   41: getfield 47	com/google/firebase/iid/m:bKT	Lcom/google/firebase/iid/f;
+    //   41: getfield 47	com/google/firebase/iid/m:bLj	Lcom/google/firebase/iid/f;
     //   44: invokevirtual 283	com/google/firebase/iid/f:zzx	()I
     //   47: ifne +34 -> 81
     //   50: new 285	java/io/IOException
@@ -131,7 +131,7 @@ final class m
     //   95: invokevirtual 81	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   98: pop
     //   99: aload_0
-    //   100: getfield 47	com/google/firebase/iid/m:bKT	Lcom/google/firebase/iid/f;
+    //   100: getfield 47	com/google/firebase/iid/m:bLj	Lcom/google/firebase/iid/f;
     //   103: invokevirtual 283	com/google/firebase/iid/f:zzx	()I
     //   106: iconst_2
     //   107: if_icmpne +211 -> 318
@@ -144,7 +144,7 @@ final class m
     //   122: invokevirtual 299	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   125: pop
     //   126: aload_0
-    //   127: getfield 45	com/google/firebase/iid/m:bLf	Landroid/content/Context;
+    //   127: getfield 45	com/google/firebase/iid/m:bLv	Landroid/content/Context;
     //   130: aload 4
     //   132: invokestatic 301	com/google/firebase/iid/m:a	(Landroid/content/Context;Landroid/content/Intent;)V
     //   135: aload 4
@@ -190,14 +190,14 @@ final class m
     //   224: aload 4
     //   226: ldc 109
     //   228: aload_0
-    //   229: getfield 65	com/google/firebase/iid/m:bLr	Landroid/os/Messenger;
+    //   229: getfield 65	com/google/firebase/iid/m:bLH	Landroid/os/Messenger;
     //   232: invokevirtual 93	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
     //   235: pop
     //   236: aload_0
-    //   237: getfield 123	com/google/firebase/iid/m:bLs	Landroid/os/Messenger;
+    //   237: getfield 123	com/google/firebase/iid/m:bLI	Landroid/os/Messenger;
     //   240: ifnonnull +10 -> 250
     //   243: aload_0
-    //   244: getfield 121	com/google/firebase/iid/m:bLt	Lcom/google/firebase/iid/zzi;
+    //   244: getfield 121	com/google/firebase/iid/m:bLJ	Lcom/google/firebase/iid/zzi;
     //   247: ifnull +102 -> 349
     //   250: invokestatic 314	android/os/Message:obtain	()Landroid/os/Message;
     //   253: astore_1
@@ -205,10 +205,10 @@ final class m
     //   255: aload 4
     //   257: putfield 100	android/os/Message:obj	Ljava/lang/Object;
     //   260: aload_0
-    //   261: getfield 123	com/google/firebase/iid/m:bLs	Landroid/os/Messenger;
+    //   261: getfield 123	com/google/firebase/iid/m:bLI	Landroid/os/Messenger;
     //   264: ifnull +66 -> 330
     //   267: aload_0
-    //   268: getfield 123	com/google/firebase/iid/m:bLs	Landroid/os/Messenger;
+    //   268: getfield 123	com/google/firebase/iid/m:bLI	Landroid/os/Messenger;
     //   271: aload_1
     //   272: invokevirtual 318	android/os/Messenger:send	(Landroid/os/Message;)V
     //   275: aload_3
@@ -219,12 +219,12 @@ final class m
     //   288: checkcast 245	android/os/Bundle
     //   291: astore_3
     //   292: aload_0
-    //   293: getfield 43	com/google/firebase/iid/m:bLq	Landroid/support/v4/e/n;
+    //   293: getfield 43	com/google/firebase/iid/m:bLG	Landroid/support/v4/e/n;
     //   296: astore_1
     //   297: aload_1
     //   298: monitorenter
     //   299: aload_0
-    //   300: getfield 43	com/google/firebase/iid/m:bLq	Landroid/support/v4/e/n;
+    //   300: getfield 43	com/google/firebase/iid/m:bLG	Landroid/support/v4/e/n;
     //   303: aload_2
     //   304: invokevirtual 253	android/support/v4/e/n:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   307: pop
@@ -240,7 +240,7 @@ final class m
     //   326: pop
     //   327: goto -208 -> 119
     //   330: aload_0
-    //   331: getfield 121	com/google/firebase/iid/m:bLt	Lcom/google/firebase/iid/zzi;
+    //   331: getfield 121	com/google/firebase/iid/m:bLJ	Lcom/google/firebase/iid/zzi;
     //   334: aload_1
     //   335: invokevirtual 339	com/google/firebase/iid/zzi:send	(Landroid/os/Message;)V
     //   338: goto -63 -> 275
@@ -250,17 +250,17 @@ final class m
     //   345: invokestatic 143	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
     //   348: pop
     //   349: aload_0
-    //   350: getfield 47	com/google/firebase/iid/m:bKT	Lcom/google/firebase/iid/f;
+    //   350: getfield 47	com/google/firebase/iid/m:bLj	Lcom/google/firebase/iid/f;
     //   353: invokevirtual 283	com/google/firebase/iid/f:zzx	()I
     //   356: iconst_2
     //   357: if_icmpne +15 -> 372
     //   360: aload_0
-    //   361: getfield 45	com/google/firebase/iid/m:bLf	Landroid/content/Context;
+    //   361: getfield 45	com/google/firebase/iid/m:bLv	Landroid/content/Context;
     //   364: aload 4
     //   366: invokevirtual 345	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
     //   369: goto -94 -> 275
     //   372: aload_0
-    //   373: getfield 45	com/google/firebase/iid/m:bLf	Landroid/content/Context;
+    //   373: getfield 45	com/google/firebase/iid/m:bLv	Landroid/content/Context;
     //   376: aload 4
     //   378: invokevirtual 349	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
     //   381: pop
@@ -284,12 +284,12 @@ final class m
     //   415: athrow
     //   416: astore_3
     //   417: aload_0
-    //   418: getfield 43	com/google/firebase/iid/m:bLq	Landroid/support/v4/e/n;
+    //   418: getfield 43	com/google/firebase/iid/m:bLG	Landroid/support/v4/e/n;
     //   421: astore_1
     //   422: aload_1
     //   423: monitorenter
     //   424: aload_0
-    //   425: getfield 43	com/google/firebase/iid/m:bLq	Landroid/support/v4/e/n;
+    //   425: getfield 43	com/google/firebase/iid/m:bLG	Landroid/support/v4/e/n;
     //   428: aload_2
     //   429: invokevirtual 253	android/support/v4/e/n:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   432: pop
@@ -345,13 +345,13 @@ final class m
     //   275	292	472	java/util/concurrent/TimeoutException
   }
   
-  private static String yi()
+  private static String yq()
   {
     try
     {
       AppMethodBeat.i(4176);
-      int i = bLc;
-      bLc = i + 1;
+      int i = bLs;
+      bLs = i + 1;
       String str = Integer.toString(i);
       AppMethodBeat.o(4176);
       return str;
@@ -392,10 +392,10 @@ final class m
   {
     AppMethodBeat.i(4174);
     Object localObject;
-    if (this.bKT.yh() >= 12000000)
+    if (this.bLj.yp() >= 12000000)
     {
-      localObject = ai.ar(this.bLf);
-      localObject = ((ai)localObject).a(new e(((ai)localObject).yo(), paramBundle));
+      localObject = ai.as(this.bLv);
+      localObject = ((ai)localObject).a(new e(((ai)localObject).yw(), paramBundle));
     }
     try
     {
@@ -431,7 +431,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.iid.m
  * JD-Core Version:    0.7.0.1
  */

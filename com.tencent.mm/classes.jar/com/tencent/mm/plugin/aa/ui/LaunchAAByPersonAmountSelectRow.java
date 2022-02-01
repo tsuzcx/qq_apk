@@ -9,25 +9,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 public class LaunchAAByPersonAmountSelectRow
   extends LinearLayout
 {
-  private ImageView fTj;
-  private TextView heI;
-  private WalletFormView iYL;
-  private View iYM;
-  private TextWatcher iYN;
+  private ImageView gyr;
+  private TextView hXv;
+  private WalletFormView jWq;
+  private View jWr;
+  private TextWatcher jWs;
   private String username;
   
   public LaunchAAByPersonAmountSelectRow(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(63580);
-    this.iYN = null;
+    this.jWs = null;
     init(paramContext);
     AppMethodBeat.o(63580);
   }
@@ -36,7 +36,7 @@ public class LaunchAAByPersonAmountSelectRow
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(63581);
-    this.iYN = null;
+    this.jWs = null;
     init(paramContext);
     AppMethodBeat.o(63581);
   }
@@ -44,31 +44,31 @@ public class LaunchAAByPersonAmountSelectRow
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63582);
-    z.jV(paramContext).inflate(2131494546, this, true);
-    this.fTj = ((ImageView)findViewById(2131296996));
-    this.heI = ((TextView)findViewById(2131306252));
-    this.iYL = ((WalletFormView)findViewById(2131302444));
-    this.iYM = findViewById(2131299154);
+    aa.jQ(paramContext).inflate(2131495155, this, true);
+    this.gyr = ((ImageView)findViewById(2131297119));
+    this.hXv = ((TextView)findViewById(2131309651));
+    this.jWq = ((WalletFormView)findViewById(2131304845));
+    this.jWr = findViewById(2131299682);
     AppMethodBeat.o(63582);
   }
   
   public double getAmount()
   {
     AppMethodBeat.i(63584);
-    String str = this.iYL.getText().toString();
-    if ((bu.isNullOrNil(str)) || ("".equals(str)))
+    String str = this.jWq.getText().toString();
+    if ((Util.isNullOrNil(str)) || ("".equals(str)))
     {
       AppMethodBeat.o(63584);
       return 0.0D;
     }
-    double d = bu.getDouble(str, 0.0D);
+    double d = Util.getDouble(str, 0.0D);
     AppMethodBeat.o(63584);
     return d;
   }
   
   public WalletFormView getMoneyEdit()
   {
-    return this.iYL;
+    return this.jWq;
   }
   
   public String getUsername()
@@ -79,7 +79,7 @@ public class LaunchAAByPersonAmountSelectRow
   public void setDividerVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(63585);
-    View localView = this.iYM;
+    View localView = this.jWr;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -92,14 +92,14 @@ public class LaunchAAByPersonAmountSelectRow
   public void setTextWatcher(TextWatcher paramTextWatcher)
   {
     AppMethodBeat.i(63583);
-    this.iYN = paramTextWatcher;
-    this.iYL.a(paramTextWatcher);
+    this.jWs = paramTextWatcher;
+    this.jWq.a(paramTextWatcher);
     AppMethodBeat.o(63583);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectRow
  * JD-Core Version:    0.7.0.1
  */

@@ -5,24 +5,24 @@ import android.support.v4.view.q;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public abstract class d
   extends q
 {
-  private Queue<View> JDh;
-  private int JDi = 0;
+  private Queue<View> ONZ;
+  private int OOa = 0;
   public Context context;
   
   public d(Context paramContext)
   {
     this.context = paramContext;
-    this.JDh = new LinkedList();
+    this.ONZ = new LinkedList();
   }
   
-  public abstract void Mh(int paramInt);
+  public abstract void Te(int paramInt);
   
   public abstract View a(View paramView, ViewGroup paramViewGroup, int paramInt);
   
@@ -30,18 +30,18 @@ public abstract class d
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    this.JDh.add(paramObject);
-    Mh(paramInt);
-    ae.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.JDh.size()) });
+    this.ONZ.add(paramObject);
+    Te(paramInt);
+    Log.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.ONZ.size()) });
   }
   
-  public abstract int dwY();
+  public abstract int evg();
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.JDi > 0)
+    if (this.OOa > 0)
     {
-      this.JDi -= 1;
+      this.OOa -= 1;
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -50,12 +50,12 @@ public abstract class d
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     long l = System.currentTimeMillis();
-    View localView = a((View)this.JDh.poll(), paramViewGroup, paramInt);
+    View localView = a((View)this.ONZ.poll(), paramViewGroup, paramInt);
     if (localView.getLayoutParams() == null) {
       localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     }
     paramViewGroup.addView(localView);
-    ae.v("MicroMsg.CustomPagerAdapter", "instantiateItem usetime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    Log.v("MicroMsg.CustomPagerAdapter", "instantiateItem usetime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     return localView;
   }
   
@@ -66,13 +66,13 @@ public abstract class d
   
   public void notifyDataSetChanged()
   {
-    this.JDi = dwY();
+    this.OOa = evg();
     super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,41 +4,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m
 {
-  static final ae.a jIF;
+  static final ae.a kKB;
   
   static
   {
     AppMethodBeat.i(90551);
-    jIF = new ae.a()
+    kKB = new ae.a()
     {
       public final void a(com.tencent.mm.pluginsdk.j.a.c.m paramAnonymousm) {}
       
-      public final void aZS() {}
+      public final void bvj() {}
       
-      public final void aZT() {}
+      public final void bvk() {}
       
-      public final void aZU() {}
+      public final void bvl() {}
       
-      public final void aZV() {}
+      public final void bvm() {}
       
-      public final void aZW() {}
+      public final void bvn() {}
       
-      public final void aZX() {}
+      public final void bvo() {}
       
-      public final void aZY() {}
+      public final void bvp() {}
       
-      public final void fI(boolean paramAnonymousBoolean) {}
+      public final void gE(boolean paramAnonymousBoolean) {}
       
-      public final void fJ(boolean paramAnonymousBoolean) {}
+      public final void gF(boolean paramAnonymousBoolean) {}
       
-      public final void rU(int paramAnonymousInt) {}
+      public final void vQ(int paramAnonymousInt) {}
     };
     AppMethodBeat.o(90551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.m
  * JD-Core Version:    0.7.0.1
  */

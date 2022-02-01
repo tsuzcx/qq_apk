@@ -13,9 +13,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MatrixSettingSeekBarPreference
   extends Preference
 {
-  int GbL = 700;
-  MatrixSettingSeekBarPreference.a KXX;
-  private SeekBar npi;
+  int KVM = 700;
+  MatrixSettingSeekBarPreference.a QmR;
+  private SeekBar oyP;
   
   public MatrixSettingSeekBarPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,17 +31,17 @@ public class MatrixSettingSeekBarPreference
   {
     AppMethodBeat.i(38885);
     super.onBindView(paramView);
-    this.npi = ((SeekBar)paramView.findViewById(2131305791));
-    this.npi.setProgress((int)(100.0F * this.GbL / 5000.0F));
-    paramView = (TextView)paramView.findViewById(2131301227);
-    paramView.setText(this.mContext.getResources().getString(2131761200, new Object[] { Integer.valueOf(this.GbL) }));
-    this.npi.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+    this.oyP = ((SeekBar)paramView.findViewById(2131309066));
+    this.oyP.setProgress((int)(100.0F * this.KVM / 5000.0F));
+    paramView = (TextView)paramView.findViewById(2131302915);
+    paramView.setText(this.mContext.getResources().getString(2131762987, new Object[] { Integer.valueOf(this.KVM) }));
+    this.oyP.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
     {
       public final void onProgressChanged(SeekBar paramAnonymousSeekBar, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(38883);
         MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this, Math.max(17, (int)(5000.0F * paramAnonymousInt / 100.0F)));
-        paramView.setText(MatrixSettingSeekBarPreference.this.mContext.getResources().getString(2131761200, new Object[] { Integer.valueOf(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this)) }));
+        paramView.setText(MatrixSettingSeekBarPreference.this.mContext.getResources().getString(2131762987, new Object[] { Integer.valueOf(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this)) }));
         AppMethodBeat.o(38883);
       }
       
@@ -51,7 +51,7 @@ public class MatrixSettingSeekBarPreference
       {
         AppMethodBeat.i(38884);
         if (MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this) != null) {
-          MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this).afx(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this));
+          MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this).aok(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this));
         }
         AppMethodBeat.o(38884);
       }
@@ -61,7 +61,7 @@ public class MatrixSettingSeekBarPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.MatrixSettingSeekBarPreference
  * JD-Core Version:    0.7.0.1
  */

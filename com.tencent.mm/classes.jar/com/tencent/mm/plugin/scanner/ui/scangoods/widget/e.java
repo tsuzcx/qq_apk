@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import android.graphics.Canvas;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "updateViewSize", "width", "", "height", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "updateViewSize", "width", "", "height", "plugin-scan_release"})
 public abstract interface e
   extends d
 {
   public abstract void draw(Canvas paramCanvas);
   
-  public abstract void ht(int paramInt1, int paramInt2);
+  public abstract void ih(int paramInt1, int paramInt2);
 }
 
 

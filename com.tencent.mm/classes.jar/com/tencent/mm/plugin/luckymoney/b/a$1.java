@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.luckymoney.b;
 
-import com.tencent.mm.cm.c;
-import com.tencent.mm.plugin.luckymoney.model.q;
+import com.tencent.mm.co.c;
+import com.tencent.mm.plugin.luckymoney.model.v;
 
 final class a$1
-  implements c<q>
+  implements c<v>
 {
   a$1(a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.b.a.1
  * JD-Core Version:    0.7.0.1
  */

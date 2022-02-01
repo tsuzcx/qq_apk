@@ -7,27 +7,27 @@ import java.util.LinkedList;
 public final class t
   extends com.tencent.mm.bw.a
 {
-  public String CYA;
-  public String CYB;
-  public String CYz;
-  public double CZA;
-  public double CZB;
-  public int CZC;
-  public String CZD;
-  public String CZE;
-  public LinkedList<b> CZF;
-  public int CZu;
-  public int CZv;
-  public long CZw;
-  public String CZx;
-  public String CZy;
-  public String CZz;
-  public String wSo;
+  public String AOj;
+  public String HEn;
+  public String HEo;
+  public String HEp;
+  public int HFi;
+  public int HFj;
+  public long HFk;
+  public String HFl;
+  public String HFm;
+  public String HFn;
+  public double HFo;
+  public double HFp;
+  public int HFq;
+  public String HFr;
+  public String HFs;
+  public LinkedList<b> HFt;
   
   public t()
   {
     AppMethodBeat.i(91304);
-    this.CZF = new LinkedList();
+    this.HFt = new LinkedList();
     AppMethodBeat.o(91304);
   }
   
@@ -36,96 +36,96 @@ public final class t
     AppMethodBeat.i(91305);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.CZu);
-      paramVarArgs.aS(2, this.CZv);
-      paramVarArgs.aZ(3, this.CZw);
-      if (this.CZx != null) {
-        paramVarArgs.d(4, this.CZx);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.HFi);
+      paramVarArgs.aM(2, this.HFj);
+      paramVarArgs.bb(3, this.HFk);
+      if (this.HFl != null) {
+        paramVarArgs.e(4, this.HFl);
       }
-      if (this.CYz != null) {
-        paramVarArgs.d(5, this.CYz);
+      if (this.HEn != null) {
+        paramVarArgs.e(5, this.HEn);
       }
-      if (this.CZy != null) {
-        paramVarArgs.d(6, this.CZy);
+      if (this.HFm != null) {
+        paramVarArgs.e(6, this.HFm);
       }
-      if (this.CZz != null) {
-        paramVarArgs.d(7, this.CZz);
+      if (this.HFn != null) {
+        paramVarArgs.e(7, this.HFn);
       }
-      if (this.CYA != null) {
-        paramVarArgs.d(8, this.CYA);
+      if (this.HEo != null) {
+        paramVarArgs.e(8, this.HEo);
       }
-      if (this.CYB != null) {
-        paramVarArgs.d(9, this.CYB);
+      if (this.HEp != null) {
+        paramVarArgs.e(9, this.HEp);
       }
-      paramVarArgs.e(10, this.CZA);
-      paramVarArgs.e(11, this.CZB);
-      paramVarArgs.aS(12, this.CZC);
-      if (this.CZD != null) {
-        paramVarArgs.d(13, this.CZD);
+      paramVarArgs.e(10, this.HFo);
+      paramVarArgs.e(11, this.HFp);
+      paramVarArgs.aM(12, this.HFq);
+      if (this.HFr != null) {
+        paramVarArgs.e(13, this.HFr);
       }
-      if (this.wSo != null) {
-        paramVarArgs.d(14, this.wSo);
+      if (this.AOj != null) {
+        paramVarArgs.e(14, this.AOj);
       }
-      if (this.CZE != null) {
-        paramVarArgs.d(16, this.CZE);
+      if (this.HFs != null) {
+        paramVarArgs.e(16, this.HFs);
       }
-      paramVarArgs.e(17, 6, this.CZF);
+      paramVarArgs.e(17, 6, this.HFt);
       AppMethodBeat.o(91305);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.CZu) + 0 + f.a.a.b.b.a.bz(2, this.CZv) + f.a.a.b.b.a.p(3, this.CZw);
+      int i = g.a.a.b.b.a.bu(1, this.HFi) + 0 + g.a.a.b.b.a.bu(2, this.HFj) + g.a.a.b.b.a.r(3, this.HFk);
       paramInt = i;
-      if (this.CZx != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.CZx);
+      if (this.HFl != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.HFl);
       }
       i = paramInt;
-      if (this.CYz != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.CYz);
+      if (this.HEn != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.HEn);
       }
       paramInt = i;
-      if (this.CZy != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.CZy);
+      if (this.HFm != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.HFm);
       }
       i = paramInt;
-      if (this.CZz != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.CZz);
+      if (this.HFn != null) {
+        i = paramInt + g.a.a.b.b.a.f(7, this.HFn);
       }
       paramInt = i;
-      if (this.CYA != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.CYA);
+      if (this.HEo != null) {
+        paramInt = i + g.a.a.b.b.a.f(8, this.HEo);
       }
       i = paramInt;
-      if (this.CYB != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.CYB);
+      if (this.HEp != null) {
+        i = paramInt + g.a.a.b.b.a.f(9, this.HEp);
       }
-      i = i + f.a.a.b.b.a.amD(10) + f.a.a.b.b.a.amD(11) + f.a.a.b.b.a.bz(12, this.CZC);
+      i = i + (g.a.a.b.b.a.fS(10) + 8) + (g.a.a.b.b.a.fS(11) + 8) + g.a.a.b.b.a.bu(12, this.HFq);
       paramInt = i;
-      if (this.CZD != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.CZD);
+      if (this.HFr != null) {
+        paramInt = i + g.a.a.b.b.a.f(13, this.HFr);
       }
       i = paramInt;
-      if (this.wSo != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.wSo);
+      if (this.AOj != null) {
+        i = paramInt + g.a.a.b.b.a.f(14, this.AOj);
       }
       paramInt = i;
-      if (this.CZE != null) {
-        paramInt = i + f.a.a.b.b.a.e(16, this.CZE);
+      if (this.HFs != null) {
+        paramInt = i + g.a.a.b.b.a.f(16, this.HFs);
       }
-      i = f.a.a.a.c(17, 6, this.CZF);
+      i = g.a.a.a.c(17, 6, this.HFt);
       AppMethodBeat.o(91305);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.CZF.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      this.HFt.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(91305);
@@ -133,7 +133,7 @@ public final class t
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       t localt = (t)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -142,67 +142,67 @@ public final class t
         AppMethodBeat.o(91305);
         return -1;
       case 1: 
-        localt.CZu = locala.OmT.zc();
+        localt.HFi = locala.UbS.zi();
         AppMethodBeat.o(91305);
         return 0;
       case 2: 
-        localt.CZv = locala.OmT.zc();
+        localt.HFj = locala.UbS.zi();
         AppMethodBeat.o(91305);
         return 0;
       case 3: 
-        localt.CZw = locala.OmT.zd();
+        localt.HFk = locala.UbS.zl();
         AppMethodBeat.o(91305);
         return 0;
       case 4: 
-        localt.CZx = locala.OmT.readString();
+        localt.HFl = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 5: 
-        localt.CYz = locala.OmT.readString();
+        localt.HEn = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 6: 
-        localt.CZy = locala.OmT.readString();
+        localt.HFm = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 7: 
-        localt.CZz = locala.OmT.readString();
+        localt.HFn = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 8: 
-        localt.CYA = locala.OmT.readString();
+        localt.HEo = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 9: 
-        localt.CYB = locala.OmT.readString();
+        localt.HEp = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 10: 
-        localt.CZA = Double.longBitsToDouble(locala.OmT.gwc());
+        localt.HFo = Double.longBitsToDouble(locala.UbS.zn());
         AppMethodBeat.o(91305);
         return 0;
       case 11: 
-        localt.CZB = Double.longBitsToDouble(locala.OmT.gwc());
+        localt.HFp = Double.longBitsToDouble(locala.UbS.zn());
         AppMethodBeat.o(91305);
         return 0;
       case 12: 
-        localt.CZC = locala.OmT.zc();
+        localt.HFq = locala.UbS.zi();
         AppMethodBeat.o(91305);
         return 0;
       case 13: 
-        localt.CZD = locala.OmT.readString();
+        localt.HFr = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 14: 
-        localt.wSo = locala.OmT.readString();
+        localt.AOj = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       case 16: 
-        localt.CZE = locala.OmT.readString();
+        localt.HFs = locala.UbS.readString();
         AppMethodBeat.o(91305);
         return 0;
       }
-      localt.CZF.add(locala.OmT.gCk());
+      localt.HFt.add(locala.UbS.hPo());
       AppMethodBeat.o(91305);
       return 0;
     }
@@ -212,7 +212,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.t
  * JD-Core Version:    0.7.0.1
  */

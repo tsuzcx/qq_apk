@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -15,10 +15,10 @@ final class k
     this.enable = paramBoolean;
   }
   
-  final ArrayList<AppBrandRecentTaskInfo> F(ArrayList<AppBrandRecentTaskInfo> paramArrayList)
+  final ArrayList<AppBrandRecentTaskInfo> L(ArrayList<AppBrandRecentTaskInfo> paramArrayList)
   {
     AppMethodBeat.i(49208);
-    if ((!this.enable) || (bu.ht(paramArrayList)))
+    if ((!this.enable) || (Util.isNullOrNil(paramArrayList)))
     {
       AppMethodBeat.o(49208);
       return paramArrayList;
@@ -28,7 +28,7 @@ final class k
     while (paramArrayList.hasNext())
     {
       AppBrandRecentTaskInfo localAppBrandRecentTaskInfo = (AppBrandRecentTaskInfo)paramArrayList.next();
-      if (!localAppBrandRecentTaskInfo.jSF) {
+      if (!localAppBrandRecentTaskInfo.kVp) {
         localArrayList.add(localAppBrandRecentTaskInfo);
       }
     }
@@ -38,7 +38,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.k
  * JD-Core Version:    0.7.0.1
  */

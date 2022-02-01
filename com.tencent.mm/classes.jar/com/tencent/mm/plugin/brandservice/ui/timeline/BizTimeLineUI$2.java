@@ -1,35 +1,55 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.text.TextUtils;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.f;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
 
 final class BizTimeLineUI$2
-  implements View.OnLongClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   BizTimeLineUI$2(BizTimeLineUI paramBizTimeLineUI) {}
   
-  public final boolean onLongClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(208460);
-    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-    paramView = com.tencent.mm.plugin.biz.b.b.nUB;
-    if (((Boolean)com.tencent.mm.plugin.biz.b.b.nUz.getValue()).booleanValue())
+    AppMethodBeat.i(5945);
+    if (ai.afs(0))
     {
-      paramView = this.ohP;
-      localObject = new Intent(this.ohP, BizTestUI.class);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI$10", "onLongClick", "(Landroid/view/View;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI$10", "onLongClick", "(Landroid/view/View;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramMenuItem = ai.fXX();
+      paramMenuItem.putExtra("title", this.ptt.getString(2131761039));
+      paramMenuItem.putExtra("searchbar_tips", this.ptt.getString(2131761039));
+      paramMenuItem.putExtra("KRightBtn", true);
+      paramMenuItem.putExtra("ftsneedkeyboard", true);
+      paramMenuItem.putExtra("publishIdPrefix", "bs");
+      paramMenuItem.putExtra("ftsType", 2);
+      paramMenuItem.putExtra("ftsbizscene", 11);
+      Object localObject = ai.h(11, true, 2);
+      String str = ai.afq(Util.safeParseInt((String)((Map)localObject).get("scene")));
+      ((Map)localObject).put("sessionId", str);
+      paramMenuItem.putExtra("sessionId", str);
+      paramMenuItem.putExtra("rawUrl", ai.bd((Map)localObject));
+      paramMenuItem.putExtra("key_load_js_without_delay", true);
+      paramMenuItem.addFlags(67108864);
+      localObject = ak.aXg("bizAccountTopSearch");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramMenuItem.putExtra("key_search_input_hint", (String)localObject);
+      }
+      c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", paramMenuItem);
     }
-    com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(208460);
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(5945);
+      return true;
+      Log.e("MicroMsg.BizTimeLineUI", "fts h5 template not avail");
+    }
   }
 }
 

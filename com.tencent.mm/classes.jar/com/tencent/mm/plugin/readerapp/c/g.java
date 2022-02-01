@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.readerapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bs;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.model.r;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.model.s;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.List;
 
 public class g
-  implements az
+  implements bd
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private bs xBY;
-  private c xBZ;
-  private a xCa;
-  private d xCb;
-  private f xCc;
+  private com.tencent.mm.model.bw BBY;
+  private c BBZ;
+  private a BCa;
+  private d BCb;
+  private f BCc;
   
   static
   {
@@ -32,7 +32,7 @@ public class g
     {
       public final String[] getSQLs()
       {
-        return bs.SQL_CREATE;
+        return com.tencent.mm.model.bw.SQL_CREATE;
       }
     });
     AppMethodBeat.o(102687);
@@ -41,31 +41,38 @@ public class g
   public g()
   {
     AppMethodBeat.i(102673);
-    this.xBZ = new c();
-    this.xCa = new a();
-    this.xCb = new d();
-    this.xCc = new f();
+    this.BBZ = new c();
+    this.BCa = new a();
+    this.BCb = new d();
+    this.BCc = new f();
     AppMethodBeat.o(102673);
+  }
+  
+  public static void HP(long paramLong)
+  {
+    AppMethodBeat.i(102680);
+    fZ(eHI().Ae(paramLong));
+    AppMethodBeat.o(102680);
   }
   
   private static void a(int paramInt, a parama)
   {
     AppMethodBeat.i(102684);
-    if (!com.tencent.mm.kernel.g.ajM())
+    if (!com.tencent.mm.kernel.g.aAc())
     {
       c(parama);
       AppMethodBeat.o(102684);
       return;
     }
-    com.tencent.mm.kernel.g.ajU().aw(new g.3(parama, paramInt));
+    com.tencent.mm.kernel.g.aAk().postToWorker(new g.3(parama, paramInt));
     AppMethodBeat.o(102684);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(102678);
-    dGU().oG(20);
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().aUY("newsapp");
+    eHI().sh(20);
+    ((l)com.tencent.mm.kernel.g.af(l.class)).aST().bjW("newsapp");
     a(20, parama);
     AppMethodBeat.o(102678);
   }
@@ -73,8 +80,8 @@ public class g
   public static void b(a parama)
   {
     AppMethodBeat.i(102679);
-    dGU().oG(11);
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).azL().aUY("blogapp");
+    eHI().sh(11);
+    ((l)com.tencent.mm.kernel.g.af(l.class)).aST().bjW("blogapp");
     a(11, parama);
     AppMethodBeat.o(102679);
   }
@@ -82,13 +89,13 @@ public class g
   private static void c(a parama)
   {
     AppMethodBeat.i(102683);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(102668);
-        if (this.xCd != null) {
-          this.xCd.dGR();
+        if (this.BCd != null) {
+          this.BCd.eHF();
         }
         AppMethodBeat.o(102668);
       }
@@ -96,34 +103,27 @@ public class g
     AppMethodBeat.o(102683);
   }
   
-  private static g dGT()
+  private static g eHH()
   {
     AppMethodBeat.i(102674);
-    g localg = (g)u.ap(g.class);
+    g localg = (g)y.at(g.class);
     AppMethodBeat.o(102674);
     return localg;
   }
   
-  public static bs dGU()
+  public static com.tencent.mm.model.bw eHI()
   {
     AppMethodBeat.i(102675);
-    com.tencent.mm.kernel.g.ajP().aiU();
-    if (dGT().xBY == null) {
-      dGT().xBY = new bs(com.tencent.mm.kernel.g.ajR().gDX);
+    com.tencent.mm.kernel.g.aAf().azk();
+    if (eHH().BBY == null) {
+      eHH().BBY = new com.tencent.mm.model.bw(com.tencent.mm.kernel.g.aAh().hqK);
     }
-    bs localbs = dGT().xBY;
+    com.tencent.mm.model.bw localbw = eHH().BBY;
     AppMethodBeat.o(102675);
-    return localbs;
+    return localbw;
   }
   
-  public static void eQ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(102681);
-    fd(dGU().ai(paramString, paramInt));
-    AppMethodBeat.o(102681);
-  }
-  
-  private static void fd(List<com.tencent.mm.model.br> paramList)
+  private static void fZ(List<bv> paramList)
   {
     AppMethodBeat.i(102682);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -134,17 +134,17 @@ public class g
     int i = 0;
     while (i < paramList.size())
     {
-      bu.deleteFile(r.aMY(((com.tencent.mm.model.br)paramList.get(i)).aCF()));
+      Util.deleteFile(s.bdu(((bv)paramList.get(i)).aWd()));
       i += 1;
     }
     AppMethodBeat.o(102682);
   }
   
-  public static void yZ(long paramLong)
+  public static void fi(String paramString, int paramInt)
   {
-    AppMethodBeat.i(102680);
-    fd(dGU().rX(paramLong));
-    AppMethodBeat.o(102680);
+    AppMethodBeat.i(102681);
+    fZ(eHI().al(paramString, paramInt));
+    AppMethodBeat.o(102681);
   }
   
   public void clearPluginData(int paramInt)
@@ -167,18 +167,18 @@ public class g
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(102685);
-    d.a.a(this.xBZ);
-    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    com.tencent.mm.ak.g.a.a(this.BBZ);
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(102671);
-        if (!com.tencent.mm.kernel.g.ajM())
+        if (!com.tencent.mm.kernel.g.aAc())
         {
           AppMethodBeat.o(102671);
           return;
         }
-        bu.n(com.tencent.mm.plugin.image.d.azQ(), "ReaderApp_", 604800000L);
+        Util.deleteOutOfDateFile(com.tencent.mm.plugin.image.d.aSY(), "ReaderApp_", 604800000L);
         AppMethodBeat.o(102671);
       }
       
@@ -190,21 +190,21 @@ public class g
         return str;
       }
     });
-    com.tencent.mm.sdk.b.a.IvT.c(this.xCa);
-    com.tencent.mm.sdk.b.a.IvT.c(this.xCb);
-    com.tencent.mm.sdk.b.a.IvT.c(this.xCc);
-    e locale = e.xBX;
+    EventCenter.instance.addListener(this.BCa);
+    EventCenter.instance.addListener(this.BCb);
+    EventCenter.instance.addListener(this.BCc);
+    e locale = e.BBX;
     AppMethodBeat.o(102685);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(102676);
-    d.a.b(this.xBZ);
-    com.tencent.mm.sdk.b.a.IvT.d(this.xCa);
-    com.tencent.mm.sdk.b.a.IvT.d(this.xCb);
-    com.tencent.mm.sdk.b.a.IvT.d(this.xCc);
-    e locale = e.xBX;
+    com.tencent.mm.ak.g.a.b(this.BBZ);
+    EventCenter.instance.removeListener(this.BCa);
+    EventCenter.instance.removeListener(this.BCb);
+    EventCenter.instance.removeListener(this.BCc);
+    e locale = e.BBX;
     AppMethodBeat.o(102676);
   }
   
@@ -212,12 +212,12 @@ public class g
   
   public static abstract interface a
   {
-    public abstract void dGR();
+    public abstract void eHF();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.c.g
  * JD-Core Version:    0.7.0.1
  */

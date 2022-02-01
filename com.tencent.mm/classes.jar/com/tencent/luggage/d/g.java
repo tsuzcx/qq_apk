@@ -5,7 +5,7 @@ import com.tencent.luggage.bridge.s;
 public abstract interface g
   extends s
 {
-  public abstract void BQ();
+  public abstract void Le();
   
   public abstract void destroy();
 }

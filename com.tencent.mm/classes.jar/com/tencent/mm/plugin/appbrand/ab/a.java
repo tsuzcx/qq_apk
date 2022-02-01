@@ -1,56 +1,119 @@
 package com.tencent.mm.plugin.appbrand.ab;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.appbrand.v8.v;
-import com.tencent.mm.appbrand.v8.v.a;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.ar;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.w;
-import com.tencent.mm.plugin.appbrand.y.d;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoDBFieldAnnotation;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-public class a
-  extends w
+public final class a
+  extends MAutoStorage<a>
 {
-  public a(r paramr)
+  public static final String[] iBh;
+  
+  static
   {
-    super(paramr);
+    AppMethodBeat.i(48359);
+    iBh = new String[] { MAutoStorage.getCreateSQLs(a.kLR, "AppBrandCommonKVBinaryData") };
+    AppMethodBeat.o(48359);
   }
   
-  public final v.a Lk(String paramString)
+  public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(147753);
-    paramString = new c.a(super.Lk(paramString), ar.a(this.jzD.getRuntime(), paramString, this.jzD.ER()), this.jzD.getAppId(), this.jzD.aXP());
-    AppMethodBeat.o(147753);
-    return paramString;
+    super(paramISQLiteDatabase, a.kLR, "AppBrandCommonKVBinaryData", null);
   }
   
-  public final void a(ArrayList<v.a> paramArrayList, String paramString)
+  public final void clear(String paramString)
   {
-    AppMethodBeat.i(147754);
-    super.a(paramArrayList, paramString);
-    paramArrayList.add(new c.a(this.jzD.ES() + "shared_buffer.js", d.VE("wxa_library/shared_buffer.js"), this.jzD.getAppId(), this.jzD.aXP()));
-    paramArrayList.add(new c.a(this.jzD.ES() + "android.js", d.VE("wxa_library/android.js"), this.jzD.getAppId(), this.jzD.aXP()));
-    paramArrayList.add(new c.a(this.jzD.ES() + "WAWorker.js", this.jzD.aWe().LD("WAWorker.js"), this.jzD.getAppId(), this.jzD.aXP()));
-    paramString = ar.b(this.jzD);
-    paramArrayList.add(new v.a(this.jzD.ES() + "WASourceMap.js", paramString));
-    paramString = ar.getSysInfo();
-    paramArrayList.add(new v.a(this.jzD.ES() + "sourcemapSysinfo", paramString));
-    AppMethodBeat.o(147754);
+    AppMethodBeat.i(48355);
+    a locala = new a();
+    locala.field_key = paramString;
+    locala.field_value = new byte[0];
+    super.replace(locala);
+    AppMethodBeat.o(48355);
   }
   
-  public v aYc()
+  public final byte[] get(String paramString)
   {
-    AppMethodBeat.i(147752);
-    c localc = new c(this.daw);
-    AppMethodBeat.o(147752);
-    return localc;
+    AppMethodBeat.i(48357);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(48357);
+      return null;
+    }
+    a locala = new a();
+    locala.field_key = paramString;
+    if (super.get(locala, new String[0]))
+    {
+      paramString = locala.field_value;
+      AppMethodBeat.o(48357);
+      return paramString;
+    }
+    AppMethodBeat.o(48357);
+    return null;
+  }
+  
+  public final void l(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(48356);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(48356);
+      return;
+    }
+    a locala = new a();
+    locala.field_key = paramString;
+    locala.field_value = paramArrayOfByte;
+    super.replace(locala);
+    AppMethodBeat.o(48356);
+  }
+  
+  static final class a
+    extends IAutoDBItem
+  {
+    static final IAutoDBItem.MAutoDBInfo kLR;
+    @MAutoDBFieldAnnotation(defValue="$$invalid", primaryKey=1)
+    public String field_key;
+    public byte[] field_value;
+    
+    static
+    {
+      AppMethodBeat.i(48354);
+      kLR = initAutoDBInfo(a.class);
+      AppMethodBeat.o(48354);
+    }
+    
+    public final void convertFrom(Cursor paramCursor)
+    {
+      AppMethodBeat.i(48352);
+      this.field_key = paramCursor.getString(0);
+      this.field_value = paramCursor.getBlob(1);
+      AppMethodBeat.o(48352);
+    }
+    
+    public final ContentValues convertTo()
+    {
+      AppMethodBeat.i(48353);
+      ContentValues localContentValues = new ContentValues(2);
+      localContentValues.put("key", this.field_key);
+      localContentValues.put("value", this.field_value);
+      AppMethodBeat.o(48353);
+      return localContentValues;
+    }
+    
+    public final IAutoDBItem.MAutoDBInfo getDBInfo()
+    {
+      return kLR;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.a
  * JD-Core Version:    0.7.0.1
  */

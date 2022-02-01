@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.csl;
-import d.g.a.m;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.protocal.protobuf.dko;
+import kotlin.g.a.m;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", "", "invoke"})
 final class a$p
   extends q
-  implements m<csl, Integer, z>
+  implements m<dko, Integer, x>
 {
-  public static final p mRX;
+  public static final p ofa;
   
   static
   {
     AppMethodBeat.i(51333);
-    mRX = new p();
+    ofa = new p();
     AppMethodBeat.o(51333);
   }
   

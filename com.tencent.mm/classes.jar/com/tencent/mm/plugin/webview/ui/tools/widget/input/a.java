@@ -5,15 +5,17 @@ import android.view.View;
 
 public abstract class a
 {
-  protected c ELj;
-  Context nnh;
-  int nnj = 0;
+  protected c JBa;
+  Context owO;
+  int owQ = 0;
   
-  public abstract int bFP();
+  public abstract View Ap(int paramInt);
   
-  public abstract int bFQ();
+  public abstract int ccf();
   
-  public abstract int bFR();
+  public abstract int ccg();
+  
+  public abstract int cch();
   
   public abstract int getPageCount();
   
@@ -23,14 +25,12 @@ public abstract class a
   
   public final void setPanelManager(c paramc)
   {
-    this.ELj = paramc;
+    this.JBa = paramc;
   }
-  
-  public abstract View wH(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.a
  * JD-Core Version:    0.7.0.1
  */

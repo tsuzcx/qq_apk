@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class h$a$a
   implements f.c
 {
-  public static final a kBq;
+  public static final a lFH;
   
   static
   {
-    AppMethodBeat.i(223329);
-    kBq = new a();
-    AppMethodBeat.o(223329);
+    AppMethodBeat.i(228302);
+    lFH = new a();
+    AppMethodBeat.o(228302);
   }
   
-  public final void d(boolean paramBoolean, String paramString) {}
+  public final void e(boolean paramBoolean, String paramString) {}
 }
 
 

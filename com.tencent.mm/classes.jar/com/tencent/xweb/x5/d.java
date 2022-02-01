@@ -8,12 +8,12 @@ import org.xwalk.core.Log;
 public final class d
   implements CookieInternal.ICookieManagerInternal
 {
-  CookieManager MRS;
+  CookieManager SEY;
   
   public d()
   {
     AppMethodBeat.i(153834);
-    this.MRS = CookieManager.getInstance();
+    this.SEY = CookieManager.getInstance();
     AppMethodBeat.o(153834);
   }
   
@@ -33,49 +33,49 @@ public final class d
       AppMethodBeat.o(153836);
       return;
     }
-    this.MRS.setAcceptThirdPartyCookies((com.tencent.smtt.sdk.WebView)paramWebView, true);
+    this.SEY.setAcceptThirdPartyCookies((com.tencent.smtt.sdk.WebView)paramWebView, true);
     AppMethodBeat.o(153836);
-  }
-  
-  public final void geZ()
-  {
-    AppMethodBeat.i(153835);
-    this.MRS.setAcceptCookie(true);
-    AppMethodBeat.o(153835);
   }
   
   public final String getCookie(String paramString)
   {
     AppMethodBeat.i(153838);
-    paramString = this.MRS.getCookie(paramString);
+    paramString = this.SEY.getCookie(paramString);
     AppMethodBeat.o(153838);
     return paramString;
+  }
+  
+  public final void hsq()
+  {
+    AppMethodBeat.i(153835);
+    this.SEY.setAcceptCookie(true);
+    AppMethodBeat.o(153835);
   }
   
   public final void removeAllCookie()
   {
     AppMethodBeat.i(153837);
-    this.MRS.removeAllCookie();
+    this.SEY.removeAllCookie();
     AppMethodBeat.o(153837);
   }
   
   public final void removeSessionCookie()
   {
     AppMethodBeat.i(153840);
-    this.MRS.removeSessionCookie();
+    this.SEY.removeSessionCookie();
     AppMethodBeat.o(153840);
   }
   
   public final void setCookie(String paramString1, String paramString2)
   {
     AppMethodBeat.i(153839);
-    this.MRS.setCookie(paramString1, paramString2);
+    this.SEY.setCookie(paramString1, paramString2);
     AppMethodBeat.o(153839);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.d
  * JD-Core Version:    0.7.0.1
  */

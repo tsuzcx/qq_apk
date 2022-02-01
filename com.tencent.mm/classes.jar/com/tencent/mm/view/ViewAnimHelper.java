@@ -1,5 +1,6 @@
 package com.tencent.mm.view;
 
+import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -15,17 +16,17 @@ public final class ViewAnimHelper
   public static void a(View paramView1, final View paramView2, ViewAnimHelper.ViewInfo paramViewInfo, Animator.AnimatorListener paramAnimatorListener, final ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
   {
     AppMethodBeat.i(143624);
-    ViewAnimHelper.ViewInfo localViewInfo = o(paramView1, null);
-    final float f1 = Math.max(1.0F * paramViewInfo.Lro.height() / localViewInfo.Lro.height(), 1.0F * paramViewInfo.Lro.width() / localViewInfo.Lro.width());
+    ViewAnimHelper.ViewInfo localViewInfo = q(paramView1, null);
+    final float f1 = Math.max(1.0F * paramViewInfo.QMg.height() / localViewInfo.QMg.height(), 1.0F * paramViewInfo.QMg.width() / localViewInfo.QMg.width());
     final float f2 = paramView1.getScaleX();
     final float f3 = paramView1.getTranslationX();
     final float f4 = paramView1.getScaleY();
     final float f5 = paramView1.getTranslationY();
     final float f6 = paramView2.getAlpha();
-    final float f7 = localViewInfo.Lro.centerX();
-    final float f8 = localViewInfo.Lro.centerY();
-    final float f9 = paramViewInfo.Lro.centerX();
-    final float f10 = paramViewInfo.Lro.centerY();
+    final float f7 = localViewInfo.QMg.centerX();
+    final float f8 = localViewInfo.QMg.centerY();
+    final float f9 = paramViewInfo.QMg.centerX();
+    final float f10 = paramViewInfo.QMg.centerY();
     paramViewInfo = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     paramViewInfo.setInterpolator(new DecelerateInterpolator(1.2F));
     paramViewInfo.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
@@ -34,10 +35,10 @@ public final class ViewAnimHelper
       {
         AppMethodBeat.i(143612);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        this.oWl.setTranslationX(f3 + (f9 - f7) * f);
-        this.oWl.setTranslationY(f5 + (f10 - f8) * f);
-        this.oWl.setScaleX(f2 + (f1 * f2 - f2) * f);
-        this.oWl.setScaleY(f4 + (f1 * f4 - f4) * f);
+        this.qlf.setTranslationX(f3 + (f9 - f7) * f);
+        this.qlf.setTranslationY(f5 + (f10 - f8) * f);
+        this.qlf.setScaleX(f2 + (f1 * f2 - f2) * f);
+        this.qlf.setScaleY(f4 + (f1 * f4 - f4) * f);
         paramView2.setAlpha((1.0F - f) * f6);
         if (paramAnimatorUpdateListener != null) {
           paramAnimatorUpdateListener.onAnimationUpdate(paramAnonymousValueAnimator);
@@ -45,7 +46,44 @@ public final class ViewAnimHelper
         AppMethodBeat.o(143612);
       }
     });
-    paramViewInfo.addListener(new ViewAnimHelper.4(paramAnimatorListener));
+    paramViewInfo.addListener(new Animator.AnimatorListener()
+    {
+      public final void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(143615);
+        if (this.Rin != null) {
+          this.Rin.onAnimationCancel(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(143615);
+      }
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(143614);
+        if (this.Rin != null) {
+          this.Rin.onAnimationEnd(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(143614);
+      }
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(143616);
+        if (this.Rin != null) {
+          this.Rin.onAnimationRepeat(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(143616);
+      }
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(143613);
+        if (this.Rin != null) {
+          this.Rin.onAnimationStart(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(143613);
+      }
+    });
     paramViewInfo.setInterpolator(new LinearInterpolator());
     paramViewInfo.setDuration(240L);
     paramViewInfo.start();
@@ -64,13 +102,13 @@ public final class ViewAnimHelper
   
   public static void c(View paramView1, final View paramView2, ViewAnimHelper.ViewInfo paramViewInfo, Animator.AnimatorListener paramAnimatorListener, final ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
   {
-    AppMethodBeat.i(193822);
-    ViewAnimHelper.ViewInfo localViewInfo = o(paramView1, null);
-    final float f1 = Math.max(paramViewInfo.Lro.height() * 1.0F / localViewInfo.Lro.height(), paramViewInfo.Lro.width() * 1.0F / localViewInfo.Lro.width());
-    final float f2 = localViewInfo.Lro.centerX();
-    final float f3 = localViewInfo.Lro.centerY();
-    final float f4 = paramViewInfo.Lro.centerX();
-    final float f5 = paramViewInfo.Lro.centerY();
+    AppMethodBeat.i(206184);
+    ViewAnimHelper.ViewInfo localViewInfo = q(paramView1, null);
+    final float f1 = Math.max(paramViewInfo.QMg.height() * 1.0F / localViewInfo.QMg.height(), paramViewInfo.QMg.width() * 1.0F / localViewInfo.QMg.width());
+    final float f2 = localViewInfo.QMg.centerX();
+    final float f3 = localViewInfo.QMg.centerY();
+    final float f4 = paramViewInfo.QMg.centerX();
+    final float f5 = paramViewInfo.QMg.centerY();
     paramViewInfo = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     paramViewInfo.setInterpolator(new AccelerateInterpolator(1.2F));
     paramViewInfo.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
@@ -79,10 +117,10 @@ public final class ViewAnimHelper
       {
         AppMethodBeat.i(164324);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        this.oWl.setTranslationX((1.0F - f) * (f4 - f2));
-        this.oWl.setTranslationY((1.0F - f) * (f5 - f3));
-        this.oWl.setScaleX(f1 * (1.0F - f) + f);
-        this.oWl.setScaleY(f1 * (1.0F - f) + f);
+        this.qlf.setTranslationX((1.0F - f) * (f4 - f2));
+        this.qlf.setTranslationY((1.0F - f) * (f5 - f3));
+        this.qlf.setScaleX(f1 * (1.0F - f) + f);
+        this.qlf.setScaleY(f1 * (1.0F - f) + f);
         paramView2.setAlpha(f);
         if (paramAnimatorUpdateListener != null) {
           paramAnimatorUpdateListener.onAnimationUpdate(paramAnonymousValueAnimator);
@@ -90,14 +128,51 @@ public final class ViewAnimHelper
         AppMethodBeat.o(164324);
       }
     });
-    paramViewInfo.addListener(new ViewAnimHelper.2(paramAnimatorListener));
+    paramViewInfo.addListener(new Animator.AnimatorListener()
+    {
+      public final void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(164327);
+        if (this.Rin != null) {
+          this.Rin.onAnimationCancel(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(164327);
+      }
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(164326);
+        if (this.Rin != null) {
+          this.Rin.onAnimationEnd(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(164326);
+      }
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(164328);
+        if (this.Rin != null) {
+          this.Rin.onAnimationRepeat(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(164328);
+      }
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(164325);
+        if (this.Rin != null) {
+          this.Rin.onAnimationStart(paramAnonymousAnimator);
+        }
+        AppMethodBeat.o(164325);
+      }
+    });
     paramViewInfo.setInterpolator(new LinearInterpolator());
     paramViewInfo.setDuration(240L);
     paramViewInfo.start();
-    AppMethodBeat.o(193822);
+    AppMethodBeat.o(206184);
   }
   
-  public static ViewAnimHelper.ViewInfo o(View paramView1, View paramView2)
+  public static ViewAnimHelper.ViewInfo q(View paramView1, View paramView2)
   {
     AppMethodBeat.i(143623);
     Rect localRect1 = new Rect();

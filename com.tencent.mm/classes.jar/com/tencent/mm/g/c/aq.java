@@ -2,34 +2,92 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class aq
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNW = "card_id".hashCode();
-  private static final int eOs = "lower_bound".hashCode();
-  private static final int eOt = "need_insert_show_timestamp".hashCode();
-  private static final int eOu = "show_timestamp_encrypt_key".hashCode();
-  private static final int eOv = "expire_time_interval".hashCode();
-  private static final int eOw = "show_expire_interval".hashCode();
-  private static final int eOx = "fetch_time".hashCode();
+  private static final int fnB = "url".hashCode();
+  private static final int fne;
+  private static final int fnf;
+  private static final int frA = "card_type".hashCode();
+  private static final int frB;
+  private static final int frC;
+  private static final int frD;
+  private static final int frE;
+  private static final int frF;
+  private static final int frG;
+  private static final int frH;
+  private static final int frI = "buttonData".hashCode();
+  private static final int frJ = "operData".hashCode();
+  private static final int frK = "report_scene".hashCode();
+  private static final int frL = "read_state".hashCode();
+  private static final int frM = "accept_buttons".hashCode();
+  private static final int frN = "consumed_box_id".hashCode();
+  private static final int frO = "jump_buttons".hashCode();
+  private static final int frP = "logo_color".hashCode();
+  private static final int frQ = "unavailable_qr_code_list".hashCode();
+  private static final int frR = "all_unavailable".hashCode();
+  private static final int frS = "need_pull_card_entrance".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eND = true;
-  private boolean eOm = true;
-  private boolean eOn = true;
-  private boolean eOo = true;
-  private boolean eOp = true;
-  private boolean eOq = true;
-  private boolean eOr = true;
+  public String field_accept_buttons;
+  public boolean field_all_unavailable;
+  public byte[] field_buttonData;
   public String field_card_id;
-  public int field_expire_time_interval;
-  public long field_fetch_time;
-  public int field_lower_bound;
-  public boolean field_need_insert_show_timestamp;
-  public int field_show_expire_interval;
-  public String field_show_timestamp_encrypt_key;
+  public String field_card_tp_id;
+  public int field_card_type;
+  public String field_consumed_box_id;
+  public String field_description;
+  public String field_jump_buttons;
+  public int field_jump_type;
+  public String field_logo_color;
+  public String field_logo_url;
+  public String field_msg_id;
+  public int field_msg_type;
+  public boolean field_need_pull_card_entrance;
+  public byte[] field_operData;
+  public int field_read_state;
+  public int field_report_scene;
+  public int field_time;
+  public String field_title;
+  public String field_unavailable_qr_code_list;
+  public String field_url;
+  private boolean fnb = true;
+  private boolean fnc = true;
+  private boolean fnx = true;
+  private boolean frh = true;
+  private boolean fri = true;
+  private boolean frj = true;
+  private boolean frk = true;
+  private boolean frl = true;
+  private boolean frm = true;
+  private boolean frn = true;
+  private boolean fro = true;
+  private boolean frp = true;
+  private boolean frq = true;
+  private boolean frr = true;
+  private boolean frs = true;
+  private boolean frt = true;
+  private boolean fru = true;
+  private boolean frv = true;
+  private boolean frw = true;
+  private boolean frx = true;
+  private boolean fry = true;
+  private boolean frz = true;
+  
+  static
+  {
+    fne = "title".hashCode();
+    fnf = "description".hashCode();
+    frB = "logo_url".hashCode();
+    frC = "time".hashCode();
+    frD = "card_id".hashCode();
+    frE = "card_tp_id".hashCode();
+    frF = "msg_id".hashCode();
+    frG = "msg_type".hashCode();
+    frH = "jump_type".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,42 +102,116 @@ public abstract class aq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eNW != k) {
-        break label65;
+      if (frA != k) {
+        break label60;
       }
-      this.field_card_id = paramCursor.getString(i);
-      this.eND = true;
+      this.field_card_type = paramCursor.getInt(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eOs == k)
+      label60:
+      if (fne == k)
       {
-        this.field_lower_bound = paramCursor.getInt(i);
+        this.field_title = paramCursor.getString(i);
+      }
+      else if (fnf == k)
+      {
+        this.field_description = paramCursor.getString(i);
+      }
+      else if (frB == k)
+      {
+        this.field_logo_url = paramCursor.getString(i);
+      }
+      else if (frC == k)
+      {
+        this.field_time = paramCursor.getInt(i);
+      }
+      else if (frD == k)
+      {
+        this.field_card_id = paramCursor.getString(i);
+      }
+      else if (frE == k)
+      {
+        this.field_card_tp_id = paramCursor.getString(i);
+      }
+      else if (frF == k)
+      {
+        this.field_msg_id = paramCursor.getString(i);
+        this.frm = true;
+      }
+      else if (frG == k)
+      {
+        this.field_msg_type = paramCursor.getInt(i);
+      }
+      else if (frH == k)
+      {
+        this.field_jump_type = paramCursor.getInt(i);
+      }
+      else if (fnB == k)
+      {
+        this.field_url = paramCursor.getString(i);
+      }
+      else if (frI == k)
+      {
+        this.field_buttonData = paramCursor.getBlob(i);
+      }
+      else if (frJ == k)
+      {
+        this.field_operData = paramCursor.getBlob(i);
+      }
+      else if (frK == k)
+      {
+        this.field_report_scene = paramCursor.getInt(i);
+      }
+      else if (frL == k)
+      {
+        this.field_read_state = paramCursor.getInt(i);
+      }
+      else if (frM == k)
+      {
+        this.field_accept_buttons = paramCursor.getString(i);
+      }
+      else if (frN == k)
+      {
+        this.field_consumed_box_id = paramCursor.getString(i);
+      }
+      else if (frO == k)
+      {
+        this.field_jump_buttons = paramCursor.getString(i);
+      }
+      else if (frP == k)
+      {
+        this.field_logo_color = paramCursor.getString(i);
+      }
+      else if (frQ == k)
+      {
+        this.field_unavailable_qr_code_list = paramCursor.getString(i);
       }
       else
       {
-        if (eOt == k)
+        boolean bool;
+        if (frR == k)
         {
           if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
+          for (bool = true;; bool = false)
           {
-            this.field_need_insert_show_timestamp = bool;
+            this.field_all_unavailable = bool;
             break;
           }
         }
-        if (eOu == k) {
-          this.field_show_timestamp_encrypt_key = paramCursor.getString(i);
-        } else if (eOv == k) {
-          this.field_expire_time_interval = paramCursor.getInt(i);
-        } else if (eOw == k) {
-          this.field_show_expire_interval = paramCursor.getInt(i);
-        } else if (eOx == k) {
-          this.field_fetch_time = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
+        if (frS == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (bool = true;; bool = false)
+          {
+            this.field_need_pull_card_entrance = bool;
+            break;
+          }
+        }
+        if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
         }
       }
@@ -89,26 +221,71 @@ public abstract class aq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eND) {
+    if (this.frh) {
+      localContentValues.put("card_type", Integer.valueOf(this.field_card_type));
+    }
+    if (this.fnb) {
+      localContentValues.put("title", this.field_title);
+    }
+    if (this.fnc) {
+      localContentValues.put("description", this.field_description);
+    }
+    if (this.fri) {
+      localContentValues.put("logo_url", this.field_logo_url);
+    }
+    if (this.frj) {
+      localContentValues.put("time", Integer.valueOf(this.field_time));
+    }
+    if (this.frk) {
       localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.eOm) {
-      localContentValues.put("lower_bound", Integer.valueOf(this.field_lower_bound));
+    if (this.frl) {
+      localContentValues.put("card_tp_id", this.field_card_tp_id);
     }
-    if (this.eOn) {
-      localContentValues.put("need_insert_show_timestamp", Boolean.valueOf(this.field_need_insert_show_timestamp));
+    if (this.frm) {
+      localContentValues.put("msg_id", this.field_msg_id);
     }
-    if (this.eOo) {
-      localContentValues.put("show_timestamp_encrypt_key", this.field_show_timestamp_encrypt_key);
+    if (this.frn) {
+      localContentValues.put("msg_type", Integer.valueOf(this.field_msg_type));
     }
-    if (this.eOp) {
-      localContentValues.put("expire_time_interval", Integer.valueOf(this.field_expire_time_interval));
+    if (this.fro) {
+      localContentValues.put("jump_type", Integer.valueOf(this.field_jump_type));
     }
-    if (this.eOq) {
-      localContentValues.put("show_expire_interval", Integer.valueOf(this.field_show_expire_interval));
+    if (this.fnx) {
+      localContentValues.put("url", this.field_url);
     }
-    if (this.eOr) {
-      localContentValues.put("fetch_time", Long.valueOf(this.field_fetch_time));
+    if (this.frp) {
+      localContentValues.put("buttonData", this.field_buttonData);
+    }
+    if (this.frq) {
+      localContentValues.put("operData", this.field_operData);
+    }
+    if (this.frr) {
+      localContentValues.put("report_scene", Integer.valueOf(this.field_report_scene));
+    }
+    if (this.frs) {
+      localContentValues.put("read_state", Integer.valueOf(this.field_read_state));
+    }
+    if (this.frt) {
+      localContentValues.put("accept_buttons", this.field_accept_buttons);
+    }
+    if (this.fru) {
+      localContentValues.put("consumed_box_id", this.field_consumed_box_id);
+    }
+    if (this.frv) {
+      localContentValues.put("jump_buttons", this.field_jump_buttons);
+    }
+    if (this.frw) {
+      localContentValues.put("logo_color", this.field_logo_color);
+    }
+    if (this.frx) {
+      localContentValues.put("unavailable_qr_code_list", this.field_unavailable_qr_code_list);
+    }
+    if (this.fry) {
+      localContentValues.put("all_unavailable", Boolean.valueOf(this.field_all_unavailable));
+    }
+    if (this.frz) {
+      localContentValues.put("need_pull_card_entrance", Boolean.valueOf(this.field_need_pull_card_entrance));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

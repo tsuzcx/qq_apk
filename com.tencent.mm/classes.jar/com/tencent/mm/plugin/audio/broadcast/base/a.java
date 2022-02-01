@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.audio.broadcast.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.c.a.a;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioMgr;", "", "()V", "onAudioBecomingNoisy", "", "plugin-audio_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioMgr;", "", "()V", "onAudioBecomingNoisy", "", "plugin-audio_release"})
 public final class a
 {
-  public static final a nwM;
+  public static final a oHC;
   
   static
   {
-    AppMethodBeat.i(201042);
-    nwM = new a();
-    AppMethodBeat.o(201042);
+    AppMethodBeat.i(223935);
+    oHC = new a();
+    AppMethodBeat.o(223935);
   }
   
-  public static void bHp()
+  public static void cdR()
   {
-    AppMethodBeat.i(201041);
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    a.a.bHy().hE(10);
-    AppMethodBeat.o(201041);
+    AppMethodBeat.i(223934);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.oIh;
+    a.a.cea().iY(10);
+    AppMethodBeat.o(223934);
   }
 }
 

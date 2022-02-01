@@ -2,25 +2,23 @@ package com.tencent.mm.ui;
 
 public abstract interface m
 {
-  public abstract void fyN();
+  public abstract void cFx();
   
-  public abstract void fyO();
+  public abstract void cFy();
   
-  public abstract void fyP();
+  public abstract void gIk();
   
-  public abstract void fyQ();
+  public abstract void gIl();
   
-  public abstract void fyR();
+  public abstract void gIm();
   
-  public abstract void fyT();
+  public abstract void gIn();
   
-  public abstract void fzQ();
-  
-  public abstract void fzR();
+  public abstract void gIo();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.m
  * JD-Core Version:    0.7.0.1
  */

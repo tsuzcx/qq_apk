@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class h
-  extends p
+  extends q
 {
-  public a zQd;
+  public a DYb;
   
   public h(a parama)
   {
-    this.zQd = parama;
+    this.DYb = parama;
   }
   
   public static final class a
   {
-    public String dEv;
-    public int dzG;
-    public double vlC = -85.0D;
-    public double vlD = -1000.0D;
-    public String vlF = "";
+    public int dRt;
+    public String dWi;
+    public double yFu = -85.0D;
+    public double yFv = -1000.0D;
+    public String yFx = "";
     
     public a(double paramDouble1, double paramDouble2, int paramInt, String paramString1, String paramString2)
     {
-      this.vlC = paramDouble1;
-      this.vlD = paramDouble2;
-      this.dzG = paramInt;
-      this.vlF = paramString1;
-      this.dEv = paramString2;
+      this.yFu = paramDouble1;
+      this.yFv = paramDouble2;
+      this.dRt = paramInt;
+      this.yFx = paramString1;
+      this.dWi = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h
  * JD-Core Version:    0.7.0.1
  */

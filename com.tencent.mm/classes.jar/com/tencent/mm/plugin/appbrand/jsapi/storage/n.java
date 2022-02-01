@@ -1,39 +1,41 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
 import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appstorage.t;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 
 public class n
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.h>
+  extends d<k>
 {
   public static final int CTRL_INDEX = 16;
   public static final String NAME = "setStorage";
-  private a lmR;
+  private a mtw;
   
   public n()
   {
     AppMethodBeat.i(147281);
-    this.lmR = new a()
+    this.mtw = new a()
     {
-      public final void a(String paramAnonymousString, com.tencent.mm.plugin.appbrand.jsapi.h paramAnonymoush, int paramAnonymousInt)
+      public final void a(String paramAnonymousString, k paramAnonymousk, int paramAnonymousInt)
       {
         AppMethodBeat.i(147278);
-        paramAnonymoush.h(paramAnonymousInt, n.this.e(paramAnonymousString, null));
+        paramAnonymousk.i(paramAnonymousInt, n.this.h(paramAnonymousString, null));
         AppMethodBeat.o(147278);
       }
     };
     AppMethodBeat.o(147281);
   }
   
-  private void a(final com.tencent.mm.plugin.appbrand.jsapi.h paramh, final int paramInt1, final int paramInt2, final String paramString1, final String paramString2, final String paramString3, final String paramString4, final a parama)
+  private void a(final k paramk, final int paramInt1, final int paramInt2, final String paramString1, final String paramString2, final String paramString3, final String paramString4, final a parama)
   {
     AppMethodBeat.i(147282);
     final long l = System.currentTimeMillis();
-    paramh.getRuntime().L(new com.tencent.e.i.h()
+    paramk.getRuntime().Q(new com.tencent.f.i.h()
     {
       public final String getKey()
       {
@@ -43,59 +45,59 @@ public class n
       public final void run()
       {
         AppMethodBeat.i(147279);
-        String str = p.a(((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dl(paramh.getAppId()).c(paramInt2, paramString4, paramString1, paramString2, paramString3));
+        String str = p.a(((a)e.M(a.class)).dD(paramk.getAppId()).c(paramInt2, paramString4, paramString1, paramString2, paramString3));
         if (parama != null) {
-          parama.a(str, paramh, paramInt1);
+          parama.a(str, paramk, paramInt1);
         }
-        n.b(2, t.cr(paramString1, paramString2), l, paramh);
+        n.b(2, t.cF(paramString1, paramString2), l, paramk);
         AppMethodBeat.o(147279);
       }
     });
     AppMethodBeat.o(147282);
   }
   
-  private void b(final com.tencent.mm.plugin.appbrand.jsapi.h paramh, final int paramInt1, int paramInt2, final String paramString1, final String paramString2, String paramString3, String paramString4, final a parama)
+  private void b(final k paramk, final int paramInt1, int paramInt2, final String paramString1, final String paramString2, String paramString3, String paramString4, final a parama)
   {
     AppMethodBeat.i(147283);
     final long l = System.currentTimeMillis();
     final JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
     localJsApiSetStorageTask.appId = paramString4;
-    localJsApiSetStorageTask.lmG = paramInt2;
-    localJsApiSetStorageTask.C(paramString1, paramString2, paramString3);
-    localJsApiSetStorageTask.kuv = new Runnable()
+    localJsApiSetStorageTask.mtl = paramInt2;
+    localJsApiSetStorageTask.E(paramString1, paramString2, paramString3);
+    localJsApiSetStorageTask.lyv = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(147280);
         if (parama != null) {
-          parama.a(localJsApiSetStorageTask.result, paramh, paramInt1);
+          parama.a(localJsApiSetStorageTask.result, paramk, paramInt1);
         }
-        n.b(1, t.cr(paramString1, paramString2), l, paramh);
-        localJsApiSetStorageTask.bix();
+        n.b(1, t.cF(paramString1, paramString2), l, paramk);
+        localJsApiSetStorageTask.bDK();
         AppMethodBeat.o(147280);
       }
     };
-    localJsApiSetStorageTask.biw();
+    localJsApiSetStorageTask.bDJ();
     AppBrandMainProcessService.a(localJsApiSetStorageTask);
     AppMethodBeat.o(147283);
   }
   
-  protected String e(com.tencent.mm.plugin.appbrand.jsapi.h paramh)
+  protected String e(k paramk)
   {
     AppMethodBeat.i(147284);
-    paramh = paramh.getRuntime().mAppId;
+    paramk = paramk.getRuntime().mAppId;
     AppMethodBeat.o(147284);
-    return paramh;
+    return paramk;
   }
   
   static abstract interface a
   {
-    public abstract void a(String paramString, com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt);
+    public abstract void a(String paramString, k paramk, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.n
  * JD-Core Version:    0.7.0.1
  */

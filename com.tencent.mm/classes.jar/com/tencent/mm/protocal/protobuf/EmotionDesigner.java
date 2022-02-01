@@ -16,21 +16,21 @@ public class EmotionDesigner
     AppMethodBeat.i(104775);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.Title != null) {
-        paramVarArgs.d(1, this.Title);
+        paramVarArgs.e(1, this.Title);
       }
       if (this.SmallImgUrl != null) {
-        paramVarArgs.d(2, this.SmallImgUrl);
+        paramVarArgs.e(2, this.SmallImgUrl);
       }
       if (this.BigImgUrl != null) {
-        paramVarArgs.d(3, this.BigImgUrl);
+        paramVarArgs.e(3, this.BigImgUrl);
       }
       if (this.Desc != null) {
-        paramVarArgs.d(4, this.Desc);
+        paramVarArgs.e(4, this.Desc);
       }
       if (this.Motto != null) {
-        paramVarArgs.d(5, this.Motto);
+        paramVarArgs.e(5, this.Motto);
       }
       AppMethodBeat.o(104775);
       return 0;
@@ -41,32 +41,32 @@ public class EmotionDesigner
       }
     }
     label454:
-    for (int i = f.a.a.b.b.a.e(1, this.Title) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.f(1, this.Title) + 0;; i = 0)
     {
       paramInt = i;
       if (this.SmallImgUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.SmallImgUrl);
+        paramInt = i + g.a.a.b.b.a.f(2, this.SmallImgUrl);
       }
       i = paramInt;
       if (this.BigImgUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.BigImgUrl);
+        i = paramInt + g.a.a.b.b.a.f(3, this.BigImgUrl);
       }
       paramInt = i;
       if (this.Desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Desc);
+        paramInt = i + g.a.a.b.b.a.f(4, this.Desc);
       }
       i = paramInt;
       if (this.Motto != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Motto);
+        i = paramInt + g.a.a.b.b.a.f(5, this.Motto);
       }
       AppMethodBeat.o(104775);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(104775);
@@ -74,7 +74,7 @@ public class EmotionDesigner
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         EmotionDesigner localEmotionDesigner = (EmotionDesigner)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -82,23 +82,23 @@ public class EmotionDesigner
           AppMethodBeat.o(104775);
           return -1;
         case 1: 
-          localEmotionDesigner.Title = locala.OmT.readString();
+          localEmotionDesigner.Title = locala.UbS.readString();
           AppMethodBeat.o(104775);
           return 0;
         case 2: 
-          localEmotionDesigner.SmallImgUrl = locala.OmT.readString();
+          localEmotionDesigner.SmallImgUrl = locala.UbS.readString();
           AppMethodBeat.o(104775);
           return 0;
         case 3: 
-          localEmotionDesigner.BigImgUrl = locala.OmT.readString();
+          localEmotionDesigner.BigImgUrl = locala.UbS.readString();
           AppMethodBeat.o(104775);
           return 0;
         case 4: 
-          localEmotionDesigner.Desc = locala.OmT.readString();
+          localEmotionDesigner.Desc = locala.UbS.readString();
           AppMethodBeat.o(104775);
           return 0;
         }
-        localEmotionDesigner.Motto = locala.OmT.readString();
+        localEmotionDesigner.Motto = locala.UbS.readString();
         AppMethodBeat.o(104775);
         return 0;
       }

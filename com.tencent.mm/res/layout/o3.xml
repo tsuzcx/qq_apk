@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:background="@color/i_" android:layout_width="fill_parent" android:layout_height="0.5px" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d" android:layout_marginBottom="@dimen/d">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center_vertical" android:id="@id/akf" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/mk" android:scaleType="centerCrop" />
-        <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/rx" android:id="@id/aki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/akf" />
-        <LinearLayout android:gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hu" android:layout_weight="1.0">
-            <ImageView android:id="@id/akg" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="3.0dip" android:src="@raw/app_brand_we_app_logo_share" android:scaleType="centerCrop" />
-            <com.tencent.mm.ui.widget.MMTextView android:gravity="center|right" android:id="@id/akh" android:paddingRight="@dimen/hu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" style="@style/gg" />
-        </LinearLayout>
-    </LinearLayout>
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/b4o" android:layout_width="272.0dip" android:layout_height="153.0dip" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/u_" android:gravity="center" android:id="@id/b4n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
 </LinearLayout>

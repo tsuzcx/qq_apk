@@ -12,14 +12,14 @@ public class r
   
   static
   {
-    AppMethodBeat.i(209797);
+    AppMethodBeat.i(193536);
     a = r.class.getSimpleName();
-    AppMethodBeat.o(209797);
+    AppMethodBeat.o(193536);
   }
   
   public static byte[] a(String paramString)
   {
-    AppMethodBeat.i(209796);
+    AppMethodBeat.i(193535);
     Object localObject;
     try
     {
@@ -39,11 +39,11 @@ public class r
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(209796);
+      AppMethodBeat.o(193535);
       return null;
     }
     paramString.close();
-    AppMethodBeat.o(209796);
+    AppMethodBeat.o(193535);
     return localObject;
   }
   
@@ -259,7 +259,7 @@ public class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.r
  * JD-Core Version:    0.7.0.1
  */

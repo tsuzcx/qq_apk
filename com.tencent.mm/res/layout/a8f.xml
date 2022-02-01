@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j_9" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/k5" android:paddingEnd="@dimen/k5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/d2f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/c5" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/bm5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c1" android:text="@string/cjp" />
-    <ProgressBar android:id="@id/d3q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c1" style="@style/a4p" />
+    <ImageButton android:id="@id/j__" android:background="@color/ac_" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/voicepost_beginicon" android:scaleType="centerInside" />
+    <TextView android:textColor="@color/a2x" android:id="@id/j_a" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+    <FrameLayout android:id="@id/j_c" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <View android:layout_gravity="center_vertical" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="0.0dip" android:layout_gravity="center_vertical" android:id="@id/j_b" android:background="#ff1aad19" android:layout_width="wrap_content" android:layout_height="3.0px" android:lines="0" />
+            <TextView android:textSize="0.0dip" android:layout_gravity="center_vertical" android:background="@drawable/vq" android:layout_width="wrap_content" android:layout_height="8.0dip" android:lines="0" />
+        </LinearLayout>
+    </FrameLayout>
+    <TextView android:textColor="@color/a2x" android:id="@id/j_d" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
 </LinearLayout>

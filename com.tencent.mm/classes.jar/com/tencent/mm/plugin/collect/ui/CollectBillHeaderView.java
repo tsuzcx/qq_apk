@@ -8,16 +8,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.collect.model.e;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 
 public class CollectBillHeaderView
   extends LinearLayout
 {
-  private TextView lHT;
-  private TextView pah;
-  private WalletTextView pki;
-  private TextView pkj;
+  private TextView jVn;
+  private TextView qpf;
+  private WalletTextView qzt;
+  private TextView qzu;
   
   public CollectBillHeaderView(Context paramContext)
   {
@@ -46,26 +46,26 @@ public class CollectBillHeaderView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(64037);
-    paramContext = z.jV(paramContext).inflate(2131493552, this);
-    this.pah = ((TextView)paramContext.findViewById(2131298432));
-    this.pkj = ((TextView)paramContext.findViewById(2131298431));
-    this.pki = ((WalletTextView)paramContext.findViewById(2131298434));
-    this.lHT = ((TextView)paramContext.findViewById(2131298433));
+    paramContext = aa.jQ(paramContext).inflate(2131493664, this);
+    this.qpf = ((TextView)paramContext.findViewById(2131298843));
+    this.qzu = ((TextView)paramContext.findViewById(2131298842));
+    this.qzt = ((WalletTextView)paramContext.findViewById(2131298845));
+    this.jVn = ((TextView)paramContext.findViewById(2131298844));
     AppMethodBeat.o(64037);
   }
   
   public final void b(int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
     AppMethodBeat.i(64038);
-    this.pah.setText(e.a(getContext(), paramLong, paramInt3));
-    this.pki.setText(e.Bt(paramInt2));
-    this.lHT.setText(getContext().getString(2131757448, new Object[] { Integer.valueOf(paramInt1) }));
+    this.qpf.setText(e.a(getContext(), paramLong, paramInt3));
+    this.qzt.setText(e.Fb(paramInt2));
+    this.jVn.setText(getContext().getString(2131757667, new Object[] { Integer.valueOf(paramInt1) }));
     AppMethodBeat.o(64038);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectBillHeaderView
  * JD-Core Version:    0.7.0.1
  */

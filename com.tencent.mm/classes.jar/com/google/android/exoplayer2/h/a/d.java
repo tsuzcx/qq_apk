@@ -11,49 +11,49 @@ import java.io.InterruptedIOException;
 public final class d
   implements com.google.android.exoplayer2.h.g
 {
-  private long bEH;
-  private final a bFC;
-  private final com.google.android.exoplayer2.h.g bFI;
-  private final com.google.android.exoplayer2.h.g bFJ;
-  private final com.google.android.exoplayer2.h.g bFK;
-  private final d.a bFL;
-  private final boolean bFM;
-  private final boolean bFN;
-  private final boolean bFO;
-  private com.google.android.exoplayer2.h.g bFP;
-  private boolean bFQ;
-  private long bFR;
-  private g bFS;
-  private boolean bFT;
-  private boolean bFU;
-  private long bFV;
+  private long bEJ;
+  private final a bFT;
+  private final com.google.android.exoplayer2.h.g bFZ;
+  private final com.google.android.exoplayer2.h.g bGa;
+  private final com.google.android.exoplayer2.h.g bGb;
+  private final a bGc;
+  private final boolean bGd;
+  private final boolean bGe;
+  private final boolean bGf;
+  private com.google.android.exoplayer2.h.g bGg;
+  private boolean bGh;
+  private long bGi;
+  private g bGj;
+  private boolean bGk;
+  private boolean bGl;
+  private long bGm;
   private int flags;
   private String key;
   private Uri uri;
   
-  public d(a parama, com.google.android.exoplayer2.h.g paramg1, com.google.android.exoplayer2.h.g paramg2, f paramf, int paramInt, d.a parama1)
+  public d(a parama, com.google.android.exoplayer2.h.g paramg1, com.google.android.exoplayer2.h.g paramg2, f paramf, int paramInt, a parama1)
   {
     AppMethodBeat.i(92966);
-    this.bFC = parama;
-    this.bFI = paramg2;
+    this.bFT = parama;
+    this.bFZ = paramg2;
     boolean bool1;
     if ((paramInt & 0x1) != 0)
     {
       bool1 = true;
-      this.bFM = bool1;
+      this.bGd = bool1;
       if ((paramInt & 0x2) == 0) {
         break label113;
       }
       bool1 = true;
       label48:
-      this.bFN = bool1;
+      this.bGe = bool1;
       if ((paramInt & 0x4) == 0) {
         break label119;
       }
       bool1 = bool2;
       label65:
-      this.bFO = bool1;
-      this.bFK = paramg1;
+      this.bGf = bool1;
+      this.bGb = paramg1;
       if (paramf == null) {
         break label125;
       }
@@ -61,9 +61,9 @@ public final class d
     label113:
     label119:
     label125:
-    for (this.bFJ = new v(paramg1, paramf);; this.bFJ = null)
+    for (this.bGa = new v(paramg1, paramf);; this.bGa = null)
     {
-      this.bFL = parama1;
+      this.bGc = parama1;
       AppMethodBeat.o(92966);
       return;
       bool1 = false;
@@ -75,18 +75,18 @@ public final class d
     }
   }
   
-  private boolean aX(boolean paramBoolean)
+  private boolean aW(boolean paramBoolean)
   {
     AppMethodBeat.i(92971);
     Object localObject1;
-    if (this.bFU)
+    if (this.bGl)
     {
       localObject1 = null;
       if (localObject1 != null) {
         break label203;
       }
-      this.bFP = this.bFK;
-      localObject1 = new j(this.uri, this.bFR, this.bEH, this.key, this.flags);
+      this.bGg = this.bGb;
+      localObject1 = new j(this.uri, this.bGi, this.bEJ, this.key, this.flags);
       label57:
       if (((j)localObject1).length != -1L) {
         break label431;
@@ -98,11 +98,11 @@ public final class d
     {
       for (;;)
       {
-        this.bFQ = bool;
+        this.bGh = bool;
         bool = false;
         try
         {
-          l1 = this.bFP.a((j)localObject1);
+          l1 = this.bGg.a((j)localObject1);
           paramBoolean = true;
         }
         catch (IOException localIOException1)
@@ -117,14 +117,14 @@ public final class d
             if (!paramBoolean)
             {
               localIOException2 = localIOException1;
-              if (!this.bFQ) {}
+              if (!this.bGh) {}
             }
             for (Object localObject4 = localIOException1;; localObject4 = ((Throwable)localObject4).getCause())
             {
               localIOException2 = localIOException1;
               if (localObject4 != null)
               {
-                if (((localObject4 instanceof com.google.android.exoplayer2.h.h)) && (((com.google.android.exoplayer2.h.h)localObject4).reason == 0)) {
+                if (((localObject4 instanceof com.google.android.exoplayer2.h.h)) && (((com.google.android.exoplayer2.h.h)localObject4).bDZ == 0)) {
                   localIOException2 = null;
                 }
               }
@@ -141,17 +141,17 @@ public final class d
             paramBoolean = bool;
           }
         }
-        if ((this.bFQ) && (l1 != -1L))
+        if ((this.bGh) && (l1 != -1L))
         {
-          this.bEH = l1;
-          setContentLength(((j)localObject1).position + this.bEH);
+          this.bEJ = l1;
+          setContentLength(((j)localObject1).position + this.bEJ);
         }
         AppMethodBeat.o(92971);
         return paramBoolean;
-        if (this.bFM) {
+        if (this.bGd) {
           try
           {
-            localObject1 = this.bFC.d(this.key, this.bFR);
+            localObject1 = this.bFT.e(this.key, this.bGi);
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -161,43 +161,43 @@ public final class d
           }
         }
       }
-      localObject2 = this.bFC.e(this.key, this.bFR);
+      localObject2 = this.bFT.f(this.key, this.bGi);
       break;
       label203:
-      if (((g)localObject2).bFZ)
+      if (((g)localObject2).bGq)
       {
         localObject3 = Uri.fromFile(((g)localObject2).file);
-        l3 = this.bFR - ((g)localObject2).position;
+        l3 = this.bGi - ((g)localObject2).position;
         l2 = ((g)localObject2).length - l3;
         l1 = l2;
-        if (this.bEH != -1L) {
-          l1 = Math.min(l2, this.bEH);
+        if (this.bEJ != -1L) {
+          l1 = Math.min(l2, this.bEJ);
         }
-        localObject2 = new j((Uri)localObject3, this.bFR, l3, l1, this.key, this.flags);
-        this.bFP = this.bFI;
+        localObject2 = new j((Uri)localObject3, this.bGi, l3, l1, this.key, this.flags);
+        this.bGg = this.bFZ;
         break label57;
       }
-      if (((g)localObject2).wK()) {
-        l1 = this.bEH;
+      if (((g)localObject2).wS()) {
+        l1 = this.bEJ;
       }
       for (;;)
       {
-        localObject3 = new j(this.uri, this.bFR, l1, this.key, this.flags);
-        if (this.bFJ == null) {
+        localObject3 = new j(this.uri, this.bGi, l1, this.key, this.flags);
+        if (this.bGa == null) {
           break label405;
         }
-        this.bFP = this.bFJ;
-        this.bFS = ((g)localObject2);
+        this.bGg = this.bGa;
+        this.bGj = ((g)localObject2);
         localObject2 = localObject3;
         break;
         l2 = ((g)localObject2).length;
         l1 = l2;
-        if (this.bEH != -1L) {
-          l1 = Math.min(l2, this.bEH);
+        if (this.bEJ != -1L) {
+          l1 = Math.min(l2, this.bEJ);
         }
       }
-      this.bFP = this.bFK;
-      this.bFC.a((g)localObject2);
+      this.bGg = this.bGb;
+      this.bFT.a((g)localObject2);
       localObject2 = localObject3;
       break label57;
     }
@@ -205,41 +205,41 @@ public final class d
   
   private void b(IOException paramIOException)
   {
-    if ((this.bFP == this.bFI) || ((paramIOException instanceof a.a))) {
-      this.bFT = true;
+    if ((this.bGg == this.bFZ) || ((paramIOException instanceof a.a))) {
+      this.bGk = true;
     }
   }
   
   private void setContentLength(long paramLong)
   {
     AppMethodBeat.i(92972);
-    if (this.bFP == this.bFJ) {
-      this.bFC.f(this.key, paramLong);
+    if (this.bGg == this.bGa) {
+      this.bFT.g(this.key, paramLong);
     }
     AppMethodBeat.o(92972);
   }
   
-  private void wI()
+  private void wQ()
   {
     AppMethodBeat.i(92973);
-    if (this.bFP == null)
+    if (this.bGg == null)
     {
       AppMethodBeat.o(92973);
       return;
     }
     try
     {
-      this.bFP.close();
-      this.bFP = null;
-      this.bFQ = false;
+      this.bGg.close();
+      this.bGg = null;
+      this.bGh = false;
       return;
     }
     finally
     {
-      if (this.bFS != null)
+      if (this.bGj != null)
       {
-        this.bFC.a(this.bFS);
-        this.bFS = null;
+        this.bFT.a(this.bGj);
+        this.bGj = null;
       }
       AppMethodBeat.o(92973);
     }
@@ -255,39 +255,39 @@ public final class d
       this.uri = paramj.uri;
       this.flags = paramj.flags;
       this.key = h.c(paramj);
-      this.bFR = paramj.position;
+      this.bGi = paramj.position;
       boolean bool1;
-      if (this.bFN)
+      if (this.bGe)
       {
         bool1 = bool2;
-        if (this.bFT) {}
+        if (this.bGk) {}
       }
       else
       {
-        if ((paramj.length != -1L) || (!this.bFO)) {
+        if ((paramj.length != -1L) || (!this.bGf)) {
           break label126;
         }
         bool1 = bool2;
       }
-      this.bFU = bool1;
-      if ((paramj.length != -1L) || (this.bFU)) {
-        this.bEH = paramj.length;
+      this.bGl = bool1;
+      if ((paramj.length != -1L) || (this.bGl)) {
+        this.bEJ = paramj.length;
       }
       label126:
       do
       {
         do
         {
-          aX(true);
-          long l = this.bEH;
+          aW(true);
+          long l = this.bEJ;
           AppMethodBeat.o(92967);
           return l;
           bool1 = false;
           break;
-          this.bEH = this.bFC.bp(this.key);
-        } while (this.bEH == -1L);
-        this.bEH -= paramj.position;
-      } while (this.bEH > 0L);
+          this.bEJ = this.bFT.bp(this.key);
+        } while (this.bEJ == -1L);
+        this.bEJ -= paramj.position;
+      } while (this.bEJ > 0L);
       paramj = new com.google.android.exoplayer2.h.h();
       AppMethodBeat.o(92967);
       throw paramj;
@@ -304,14 +304,14 @@ public final class d
   {
     AppMethodBeat.i(92970);
     this.uri = null;
-    if ((this.bFL != null) && (this.bFV > 0L))
+    if ((this.bGc != null) && (this.bGm > 0L))
     {
-      this.bFL.k(this.bFC.wF(), this.bFV);
-      this.bFV = 0L;
+      this.bGc.k(this.bFT.wN(), this.bGm);
+      this.bGm = 0L;
     }
     try
     {
-      wI();
+      wQ();
       AppMethodBeat.o(92970);
       return;
     }
@@ -326,9 +326,9 @@ public final class d
   public final Uri getUri()
   {
     AppMethodBeat.i(92969);
-    if (this.bFP == this.bFK)
+    if (this.bGg == this.bGb)
     {
-      localUri = this.bFP.getUri();
+      localUri = this.bGg.getUri();
       AppMethodBeat.o(92969);
       return localUri;
     }
@@ -345,35 +345,35 @@ public final class d
       AppMethodBeat.o(92968);
       return 0;
     }
-    if (this.bEH == 0L)
+    if (this.bEJ == 0L)
     {
       AppMethodBeat.o(92968);
       return -1;
     }
     try
     {
-      int i = this.bFP.read(paramArrayOfByte, paramInt1, paramInt2);
+      int i = this.bGg.read(paramArrayOfByte, paramInt1, paramInt2);
       if (i >= 0)
       {
-        if (this.bFP == this.bFI) {
-          this.bFV += i;
+        if (this.bGg == this.bFZ) {
+          this.bGm += i;
         }
-        this.bFR += i;
-        if (this.bEH != -1L) {
-          this.bEH -= i;
+        this.bGi += i;
+        if (this.bEJ != -1L) {
+          this.bEJ -= i;
         }
       }
       do
       {
         AppMethodBeat.o(92968);
         return i;
-        if (this.bFQ)
+        if (this.bGh)
         {
-          setContentLength(this.bFR);
-          this.bEH = 0L;
+          setContentLength(this.bGi);
+          this.bEJ = 0L;
         }
-        wI();
-      } while (((this.bEH <= 0L) && (this.bEH != -1L)) || (!aX(false)));
+        wQ();
+      } while (((this.bEJ <= 0L) && (this.bEJ != -1L)) || (!aW(false)));
       paramInt1 = read(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(92968);
       return paramInt1;
@@ -385,10 +385,15 @@ public final class d
       throw paramArrayOfByte;
     }
   }
+  
+  public static abstract interface a
+  {
+    public abstract void k(long paramLong1, long paramLong2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,45 +4,45 @@ import android.view.MotionEvent;
 
 public abstract interface b
 {
-  public abstract long PY();
+  public abstract void X(MotionEvent paramMotionEvent);
   
-  public abstract void T(MotionEvent paramMotionEvent);
+  public abstract void aBt(String paramString);
   
-  public abstract void aoa(String paramString);
+  public abstract boolean aDN(String paramString);
   
-  public abstract boolean aqs(String paramString);
+  public abstract boolean aDO(String paramString);
   
-  public abstract boolean aqt(String paramString);
+  public abstract long aas();
   
-  public abstract boolean dnV();
+  public abstract boolean ehI();
   
-  public abstract boolean dnW();
+  public abstract boolean ehJ();
   
-  public abstract boolean dnY();
+  public abstract boolean ehL();
   
-  public abstract void dnZ();
+  public abstract void ehM();
   
-  public abstract boolean doa();
+  public abstract boolean ehN();
   
-  public abstract void dob();
+  public abstract void ehO();
   
-  public abstract void doc();
+  public abstract void ehP();
   
-  public abstract void dod();
+  public abstract void ehQ();
   
-  public abstract boolean eg(String paramString, int paramInt);
+  public abstract boolean eu(String paramString, int paramInt);
   
   public abstract String getFileName();
   
   public abstract void onPause();
   
-  public abstract void ot(boolean paramBoolean);
+  public abstract void qY(boolean paramBoolean);
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.b
  * JD-Core Version:    0.7.0.1
  */

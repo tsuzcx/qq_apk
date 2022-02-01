@@ -13,7 +13,7 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ci.b;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
@@ -21,19 +21,19 @@ import java.util.HashMap;
 public class MemoryLeakActivity
   extends HellActivity
 {
-  private AlertDialog iMR;
-  private aq mHandler;
+  private AlertDialog jJF;
+  private MMHandler mHandler;
   private String mKey;
   
   public MemoryLeakActivity()
   {
     AppMethodBeat.i(145579);
-    this.mHandler = new aq()
+    this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(145575);
-        if (((WeakReference)a.iMU.get(MemoryLeakActivity.a(MemoryLeakActivity.this))).get() == null)
+        if (((WeakReference)a.jJI.get(MemoryLeakActivity.a(MemoryLeakActivity.this))).get() == null)
         {
           MemoryLeakActivity.this.finish();
           AppMethodBeat.o(145575);
@@ -50,7 +50,7 @@ public class MemoryLeakActivity
   {
     AppMethodBeat.i(145580);
     super.onCreate(paramBundle);
-    setContentView(2131493128);
+    setContentView(2131493171);
     AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
     localBuilder.setTitle("memory leak");
     this.mKey = getIntent().getStringExtra("key");
@@ -61,14 +61,14 @@ public class MemoryLeakActivity
       paramBundle = str1.substring(str1.indexOf(" "));
     }
     str1 = paramBundle.replace(".", "_");
-    localBuilder.setMessage(str2 + paramBundle + "\n\npath:" + b.Jmc + str1 + ".zip");
+    localBuilder.setMessage(str2 + paramBundle + "\n\npath:" + b.OvV + str1 + ".zip");
     localBuilder.setCancelable(true);
     localBuilder.setPositiveButton("dumphprof", new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(145576);
-        b.aWF(str1);
+        b.blE(str1);
         if ((MemoryLeakActivity.b(MemoryLeakActivity.this) != null) && (MemoryLeakActivity.b(MemoryLeakActivity.this).isShowing())) {
           MemoryLeakActivity.b(MemoryLeakActivity.this).dismiss();
         }
@@ -97,8 +97,8 @@ public class MemoryLeakActivity
         AppMethodBeat.o(145578);
       }
     });
-    this.iMR = localBuilder.create();
-    b.fyw();
+    this.jJF = localBuilder.create();
+    b.gGk();
     this.mHandler.sendEmptyMessageDelayed(0, 200L);
     AppMethodBeat.o(145580);
   }
@@ -107,12 +107,12 @@ public class MemoryLeakActivity
   {
     AppMethodBeat.i(145581);
     super.onDestroy();
-    a.iMU.remove(this.mKey);
+    a.jJI.remove(this.mKey);
     this.mHandler.removeCallbacksAndMessages(null);
-    if ((this.iMR != null) && (this.iMR.isShowing()))
+    if ((this.jJF != null) && (this.jJF.isShowing()))
     {
-      this.iMR.dismiss();
-      this.iMR = null;
+      this.jJF.dismiss();
+      this.jJF = null;
     }
     AppMethodBeat.o(145581);
   }
@@ -125,7 +125,7 @@ public class MemoryLeakActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.performance.wxperformancetool.MemoryLeakActivity
  * JD-Core Version:    0.7.0.1
  */

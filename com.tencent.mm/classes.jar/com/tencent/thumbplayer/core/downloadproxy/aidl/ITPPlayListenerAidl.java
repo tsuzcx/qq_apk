@@ -9,15 +9,15 @@ public abstract interface ITPPlayListenerAidl
 {
   public abstract long getAdvRemainTime();
   
-  public abstract String getContentType(long paramLong, String paramString);
+  public abstract String getContentType(int paramInt, String paramString);
   
   public abstract int getCurrentPlayClipNo();
   
   public abstract long getCurrentPosition();
   
-  public abstract String getDataFilePath(long paramLong, String paramString);
+  public abstract String getDataFilePath(int paramInt, String paramString);
   
-  public abstract long getDataTotalSize(long paramLong, String paramString);
+  public abstract long getDataTotalSize(int paramInt, String paramString);
   
   public abstract String getPlayInfo(String paramString);
   
@@ -33,7 +33,7 @@ public abstract interface ITPPlayListenerAidl
   
   public abstract void onDownloadFinish();
   
-  public abstract void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
+  public abstract void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString);
   
   public abstract void onDownloadProtocolUpdate(String paramString1, String paramString2);
   
@@ -41,15 +41,15 @@ public abstract interface ITPPlayListenerAidl
   
   public abstract int onPlayCallback(int paramInt, List paramList);
   
-  public abstract int onReadData(long paramLong1, String paramString, long paramLong2, long paramLong3);
+  public abstract int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
   
-  public abstract int onStartReadData(long paramLong1, String paramString, long paramLong2, long paramLong3);
+  public abstract int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
   
-  public abstract int onStopReadData(long paramLong, String paramString);
+  public abstract int onStopReadData(int paramInt1, String paramString, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.protocal;
 
+import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
@@ -8,89 +9,151 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface ab
   extends IInterface
 {
-  public abstract int O(byte[] paramArrayOfByte);
+  public abstract int ac(byte[] paramArrayOfByte);
   
-  public abstract byte[] ajl();
+  public abstract byte[] azB();
   
-  public abstract byte[] ajm();
+  public abstract byte[] azC();
   
-  public static final class a$a
+  public static abstract class a
+    extends Binder
     implements ab
   {
-    private IBinder mRemote;
-    
-    public a$a(IBinder paramIBinder)
+    public a()
     {
-      this.mRemote = paramIBinder;
+      attachInterface(this, "com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
     }
     
-    public final int O(byte[] paramArrayOfByte)
+    public static ab gtQ()
     {
-      AppMethodBeat.i(133131);
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-        localParcel1.writeByteArray(paramArrayOfByte);
-        this.mRemote.transact(3, localParcel1, localParcel2, 0);
-        localParcel2.readException();
-        int i = localParcel2.readInt();
-        return i;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-        AppMethodBeat.o(133131);
-      }
+      return a.KAv;
     }
     
-    public final byte[] ajl()
+    public IBinder asBinder()
     {
-      AppMethodBeat.i(133129);
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-        this.mRemote.transact(1, localParcel1, localParcel2, 0);
-        localParcel2.readException();
-        byte[] arrayOfByte = localParcel2.createByteArray();
-        return arrayOfByte;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-        AppMethodBeat.o(133129);
-      }
+      return this;
     }
     
-    public final byte[] ajm()
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
     {
-      AppMethodBeat.i(133130);
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      try
+      switch (paramInt1)
       {
-        localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
-        this.mRemote.transact(2, localParcel1, localParcel2, 0);
-        localParcel2.readException();
-        byte[] arrayOfByte = localParcel2.createByteArray();
-        return arrayOfByte;
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+        return true;
+      case 1: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+        paramParcel1 = azB();
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+        paramParcel1 = azC();
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
       }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-        AppMethodBeat.o(133130);
-      }
+      paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+      paramInt1 = ac(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
     
-    public final IBinder asBinder()
+    public static final class a
+      implements ab
     {
-      return this.mRemote;
+      public static ab KAv;
+      private IBinder mRemote;
+      
+      public a(IBinder paramIBinder)
+      {
+        this.mRemote = paramIBinder;
+      }
+      
+      public final int ac(byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(133131);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte);
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (ab.a.gtQ() != null))
+          {
+            i = ab.a.gtQ().ac(paramArrayOfByte);
+            return i;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133131);
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
+      public final byte[] azB()
+      {
+        AppMethodBeat.i(133129);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (ab.a.gtQ() != null))
+          {
+            arrayOfByte = ab.a.gtQ().azB();
+            return arrayOfByte;
+          }
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133129);
+        }
+      }
+      
+      public final byte[] azC()
+      {
+        AppMethodBeat.i(133130);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (ab.a.gtQ() != null))
+          {
+            arrayOfByte = ab.a.gtQ().azC();
+            return arrayOfByte;
+          }
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133130);
+        }
+      }
     }
   }
 }

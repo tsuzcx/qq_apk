@@ -13,54 +13,54 @@ import android.widget.CompoundButton;
 
 final class f
 {
-  private final CompoundButton ajX;
-  ColorStateList ajY = null;
-  PorterDuff.Mode ajZ = null;
-  private boolean aka = false;
-  private boolean akb = false;
-  private boolean akc;
+  private final CompoundButton akk;
+  ColorStateList akl = null;
+  PorterDuff.Mode akm = null;
+  private boolean akn = false;
+  private boolean ako = false;
+  private boolean akp;
   
   f(CompoundButton paramCompoundButton)
   {
-    this.ajX = paramCompoundButton;
+    this.akk = paramCompoundButton;
   }
   
-  private void ja()
+  private void jj()
   {
-    Drawable localDrawable = e.a(this.ajX);
-    if ((localDrawable != null) && ((this.aka) || (this.akb)))
+    Drawable localDrawable = e.a(this.akk);
+    if ((localDrawable != null) && ((this.akn) || (this.ako)))
     {
       localDrawable = android.support.v4.graphics.drawable.a.i(localDrawable).mutate();
-      if (this.aka) {
-        android.support.v4.graphics.drawable.a.a(localDrawable, this.ajY);
+      if (this.akn) {
+        android.support.v4.graphics.drawable.a.a(localDrawable, this.akl);
       }
-      if (this.akb) {
-        android.support.v4.graphics.drawable.a.a(localDrawable, this.ajZ);
+      if (this.ako) {
+        android.support.v4.graphics.drawable.a.a(localDrawable, this.akm);
       }
       if (localDrawable.isStateful()) {
-        localDrawable.setState(this.ajX.getDrawableState());
+        localDrawable.setState(this.akk.getDrawableState());
       }
-      this.ajX.setButtonDrawable(localDrawable);
+      this.akk.setButtonDrawable(localDrawable);
     }
   }
   
   final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    paramAttributeSet = this.ajX.getContext().obtainStyledAttributes(paramAttributeSet, a.a.CompoundButton, paramInt, 0);
+    paramAttributeSet = this.akk.getContext().obtainStyledAttributes(paramAttributeSet, a.a.CompoundButton, paramInt, 0);
     try
     {
       if (paramAttributeSet.hasValue(0))
       {
         paramInt = paramAttributeSet.getResourceId(0, 0);
         if (paramInt != 0) {
-          this.ajX.setButtonDrawable(android.support.v7.c.a.a.l(this.ajX.getContext(), paramInt));
+          this.akk.setButtonDrawable(android.support.v7.c.a.a.l(this.akk.getContext(), paramInt));
         }
       }
       if (paramAttributeSet.hasValue(1)) {
-        e.a(this.ajX, paramAttributeSet.getColorStateList(1));
+        e.a(this.akk, paramAttributeSet.getColorStateList(1));
       }
       if (paramAttributeSet.hasValue(2)) {
-        e.a(this.ajX, x.a(paramAttributeSet.getInt(2, -1), null));
+        e.a(this.akk, x.a(paramAttributeSet.getInt(2, -1), null));
       }
       return;
     }
@@ -70,12 +70,12 @@ final class f
     }
   }
   
-  final int bH(int paramInt)
+  final int bI(int paramInt)
   {
     int i = paramInt;
     if (Build.VERSION.SDK_INT < 17)
     {
-      Drawable localDrawable = e.a(this.ajX);
+      Drawable localDrawable = e.a(this.akk);
       i = paramInt;
       if (localDrawable != null) {
         i = paramInt + localDrawable.getIntrinsicWidth();
@@ -84,29 +84,29 @@ final class f
     return i;
   }
   
-  final void iZ()
+  final void ji()
   {
-    if (this.akc)
+    if (this.akp)
     {
-      this.akc = false;
+      this.akp = false;
       return;
     }
-    this.akc = true;
-    ja();
+    this.akp = true;
+    jj();
   }
   
   final void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    this.ajY = paramColorStateList;
-    this.aka = true;
-    ja();
+    this.akl = paramColorStateList;
+    this.akn = true;
+    jj();
   }
   
   final void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    this.ajZ = paramMode;
-    this.akb = true;
-    ja();
+    this.akm = paramMode;
+    this.ako = true;
+    jj();
   }
 }
 

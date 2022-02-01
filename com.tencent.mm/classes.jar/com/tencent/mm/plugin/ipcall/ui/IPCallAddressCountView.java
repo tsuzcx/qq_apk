@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class IPCallAddressCountView
   extends FrameLayout
 {
-  private View iBX;
-  private TextView vbL;
+  private View jxm;
+  private TextView yul;
   
   private IPCallAddressCountView(Context paramContext)
   {
@@ -41,16 +41,16 @@ public class IPCallAddressCountView
   private void init()
   {
     AppMethodBeat.i(25663);
-    inflate(getContext(), 2131494498, this);
-    this.iBX = findViewById(2131298592);
-    this.vbL = ((TextView)findViewById(2131298591));
+    inflate(getContext(), 2131495090, this);
+    this.jxm = findViewById(2131299029);
+    this.yul = ((TextView)findViewById(2131299028));
     AppMethodBeat.o(25663);
   }
   
   public void setAddressCount(int paramInt)
   {
     AppMethodBeat.i(25664);
-    this.vbL.setText(getContext().getResources().getQuantityString(2131623937, paramInt, new Object[] { Integer.valueOf(paramInt) }));
+    this.yul.setText(getContext().getResources().getQuantityString(2131623937, paramInt, new Object[] { Integer.valueOf(paramInt) }));
     AppMethodBeat.o(25664);
   }
 }

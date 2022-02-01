@@ -5,82 +5,80 @@ import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.ak.h.d;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.sa;
-import com.tencent.mm.g.a.ya;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.x;
-import com.tencent.mm.modelvoice.p;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.ak.k.a;
+import com.tencent.mm.ak.k.b;
+import com.tencent.mm.ak.k.c;
+import com.tencent.mm.ak.k.d;
+import com.tencent.mm.g.a.sw;
+import com.tencent.mm.g.a.zc;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMEntryLock;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bl;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.SensorController.SensorEventCallBack;
+import com.tencent.mm.sdk.platformtools.ShakeManager;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.chatting.d.b.k;
-import com.tencent.mm.ui.chatting.d.bf;
+import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.chatting.d.bi;
 import java.util.LinkedList;
 import java.util.List;
 import junit.framework.Assert;
 
 public final class d
-  implements h.a, h.b, h.c, h.d, ak, com.tencent.mm.modelvoice.c, SensorController.a
+  implements k.a, k.b, k.c, k.d, com.tencent.mm.model.ao, com.tencent.mm.modelvoice.c, SensorController.SensorEventCallBack
 {
-  private List<bv> JTc;
-  public long JTd;
-  private o JTe;
-  bf JTf;
-  public o JTg;
-  public boolean JTh;
-  public boolean JTi;
-  public boolean JTj;
-  private long JTk;
-  private long JTl;
-  public boolean JTm;
-  private boolean JTn;
-  public com.tencent.mm.sdk.b.c JTo;
-  private aq JTp;
-  private aq JTq;
-  public com.tencent.mm.ui.chatting.e.a cXJ;
+  private List<ca> Peh;
+  public long Pei;
+  private com.tencent.mm.ui.base.p Pej;
+  private bi Pek;
+  public com.tencent.mm.ui.base.p Pel;
+  public boolean Pem;
+  public boolean Pen;
+  public boolean Peo;
+  private long Pep;
+  private long Peq;
+  public boolean Per;
+  private boolean Pes;
+  public IListener Pet;
+  private MMHandler Peu;
+  private MMHandler Pev;
   public Context context;
-  private int dgT;
-  boolean hvU;
-  long lastShakeTime;
-  public com.tencent.mm.ak.h pEU;
-  boolean pEV;
-  private boolean pEX;
-  private bl pEY;
-  private SensorController pEZ;
+  public com.tencent.mm.ui.chatting.e.a dom;
+  private int dyc;
+  boolean ipv;
+  private long lastShakeTime;
+  public com.tencent.mm.ak.k qUl;
+  private boolean qUm;
+  private boolean qUo;
+  private ShakeManager qUp;
+  private SensorController qUq;
   
-  public d(com.tencent.mm.ui.chatting.e.a parama, bf parambf, String paramString)
+  public d(com.tencent.mm.ui.chatting.e.a parama, bi parambi, String paramString)
   {
     AppMethodBeat.i(34261);
-    this.hvU = false;
-    this.JTd = -1L;
+    this.ipv = false;
+    this.Pei = -1L;
     this.lastShakeTime = -1L;
-    this.JTi = true;
-    this.JTj = false;
-    this.JTk = 0L;
-    this.JTl = 0L;
-    this.JTm = false;
-    this.JTn = false;
-    this.JTo = new com.tencent.mm.sdk.b.c() {};
-    this.JTp = new aq(Looper.getMainLooper())
+    this.Pen = true;
+    this.Peo = false;
+    this.Pep = 0L;
+    this.Peq = 0L;
+    this.Per = false;
+    this.Pes = false;
+    this.Pet = new IListener() {};
+    this.Peu = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -88,13 +86,13 @@ public final class d
         super.handleMessage(paramAnonymousMessage);
         try
         {
-          ae.i("MicroMsg.AutoPlay", "reset speaker");
-          d.a(d.this);
+          Log.i("MicroMsg.AutoPlay", "reset speaker");
+          d.b(d.this);
           paramAnonymousMessage = d.this;
-          if (!d.this.JTf.pEW) {}
+          if (!d.c(d.this).qUn) {}
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousMessage.pEV = bool;
+            d.a(paramAnonymousMessage, bool);
             AppMethodBeat.o(34256);
             return;
           }
@@ -102,12 +100,12 @@ public final class d
         }
         catch (Exception paramAnonymousMessage)
         {
-          ae.printErrStackTrace("MicroMsg.AutoPlay", paramAnonymousMessage, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AutoPlay", paramAnonymousMessage, "", new Object[0]);
           AppMethodBeat.o(34256);
         }
       }
     };
-    this.JTq = new aq(Looper.getMainLooper())
+    this.Pev = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -115,58 +113,58 @@ public final class d
         super.handleMessage(paramAnonymousMessage);
         try
         {
-          ae.i("MicroMsg.AutoPlay", "startPlayHandler start Play");
-          d.this.fEK();
+          Log.i("MicroMsg.AutoPlay", "startPlayHandler start Play");
+          d.this.gMR();
           AppMethodBeat.o(34257);
           return;
         }
         catch (Exception paramAnonymousMessage)
         {
-          ae.printErrStackTrace("MicroMsg.AutoPlay", paramAnonymousMessage, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AutoPlay", paramAnonymousMessage, "", new Object[0]);
           AppMethodBeat.o(34257);
         }
       }
     };
-    this.pEX = false;
-    this.context = parama.Kkd.getContext();
-    this.cXJ = parama;
-    this.JTf = parambf;
-    if (this.pEZ == null) {
-      this.pEZ = new SensorController(this.context.getApplicationContext());
+    this.qUo = false;
+    this.context = parama.Pwc.getContext();
+    this.dom = parama;
+    this.Pek = parambi;
+    if (this.qUq == null) {
+      this.qUq = new SensorController(this.context.getApplicationContext());
     }
-    if (this.pEY == null) {
-      this.pEY = new bl(this.context.getApplicationContext());
+    if (this.qUp == null) {
+      this.qUp = new ShakeManager(this.context.getApplicationContext());
     }
-    aXq(paramString);
-    com.tencent.mm.sdk.b.a.IvT.c(this.JTo);
-    bc.MW().a(this);
+    bmt(paramString);
+    EventCenter.instance.addListener(this.Pet);
+    bg.Xi().a(this);
     AppMethodBeat.o(34261);
   }
   
-  private void aQ(bv parambv)
+  private void bg(ca paramca)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(187129);
+    AppMethodBeat.i(232835);
     boolean bool1;
     Object localObject;
-    if ((parambv != null) && ((parambv.ftf()) || (parambv.fvL()) || (parambv.fvM()) || (parambv.fvN())))
+    if ((paramca != null) && ((paramca.gAy()) || (paramca.gDs()) || (paramca.gDt()) || (paramca.gDu())))
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      ae.i("MicroMsg.AutoPlay", "start play msg: %d", new Object[] { Long.valueOf(parambv.field_msgId) });
-      if (!this.pEZ.aMy)
+      Log.i("MicroMsg.AutoPlay", "start play msg: %d", new Object[] { Long.valueOf(paramca.field_msgId) });
+      if (!this.qUq.hasRegistered())
       {
-        this.pEZ.a(this);
+        this.qUq.setSensorCallBack(this);
         localObject = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(34258);
-            d.this.lastShakeTime = bu.HQ();
+            d.a(d.this, Util.currentTicks());
             AppMethodBeat.o(34258);
           }
         };
-        if (!this.pEY.aB((Runnable)localObject)) {
+        if (!this.qUp.startShake((Runnable)localObject)) {
           break label168;
         }
       }
@@ -174,108 +172,108 @@ public final class d
     label168:
     for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
     {
-      bc.aCg();
-      if ((com.tencent.mm.model.c.isSDCardAvailable()) || (bu.isNullOrNil(parambv.field_imgPath))) {
+      bg.aVF();
+      if ((com.tencent.mm.model.c.isSDCardAvailable()) || (Util.isNullOrNil(paramca.field_imgPath))) {
         break label178;
       }
-      this.JTc.clear();
-      t.g(this.context, this.cXJ.Kkd.getContentView());
-      AppMethodBeat.o(187129);
+      this.Peh.clear();
+      u.g(this.context, this.dom.Pwc.getContentView());
+      AppMethodBeat.o(232835);
       return;
       bool1 = false;
       break;
     }
     label178:
-    bc.aCg();
-    if ((com.tencent.mm.model.c.isSDCardAvailable()) && (this.JTf.pEW))
+    bg.aVF();
+    if ((com.tencent.mm.model.c.isSDCardAvailable()) && (this.Pek.qUn))
     {
-      if (this.JTe != null) {
-        this.JTe.dismiss();
+      if (this.Pej != null) {
+        this.Pej.dismiss();
       }
-      bool1 = com.tencent.mm.plugin.audio.c.a.bHt();
-      boolean bool3 = com.tencent.mm.plugin.audio.c.a.bHz();
-      ae.i("MicroMsg.AutoPlay", "alvinluo isHeadsetPlugged: %b, isBluetoothOn: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
+      bool1 = com.tencent.mm.plugin.audio.c.a.cdW();
+      boolean bool3 = com.tencent.mm.plugin.audio.c.a.ceb();
+      Log.i("MicroMsg.AutoPlay", "alvinluo isHeadsetPlugged: %b, isBluetoothOn: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
       if ((!bool1) && (bool3)) {
-        t.v(this.cXJ.Kkd.getActivity(), this.context.getString(2131757074), 2131690357);
+        u.u(this.dom.Pwc.getActivity(), this.context.getString(2131757275), 2131690495);
       }
     }
     else
     {
-      ao.aRR("keep_app_silent");
-      com.tencent.mm.modelvoice.s.aa(parambv);
-      this.pEU.stop(true);
-      this.JTf.acquireWakeLock();
-      if ((com.tencent.mm.plugin.audio.c.a.bHt()) || (com.tencent.mm.plugin.audio.c.a.bHz()))
+      MMEntryLock.lock("keep_app_silent");
+      s.ak(paramca);
+      this.qUl.stop(true);
+      this.Pek.acquireWakeLock();
+      if ((com.tencent.mm.plugin.audio.c.a.cdW()) || (com.tencent.mm.plugin.audio.c.a.ceb()))
       {
-        ae.i("MicroMsg.AutoPlay", "headset plugged: %b, bluetoothon: %b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.bHt()), Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.bHz()) });
-        this.pEV = false;
+        Log.i("MicroMsg.AutoPlay", "headset plugged: %b, bluetoothon: %b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.cdW()), Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.ceb()) });
+        this.qUm = false;
       }
-      localObject = getFullPath(parambv.field_imgPath);
-      ae.i("MicroMsg.AutoPlay", "startplay");
-      bool1 = com.tencent.mm.modelvoice.s.IA(parambv.field_imgPath);
+      localObject = getFullPath(paramca.field_imgPath);
+      Log.i("MicroMsg.AutoPlay", "startplay");
+      bool1 = s.Rm(paramca.field_imgPath);
       if (!bool1) {
-        g.yxI.idkeyStat(111L, 175L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 175L, 1L, false);
       }
-      if ((!bool1) || (!this.pEU.a((String)localObject, this.pEV, true, -1))) {
+      if ((!bool1) || (!this.qUl.a((String)localObject, this.qUm, true, -1))) {
         break label577;
       }
-      localObject = this.pEU;
-      if (this.JTc.size() <= 1) {
+      localObject = this.qUl;
+      if (this.Peh.size() <= 1) {
         break label572;
       }
       bool1 = bool2;
       label447:
-      ((com.tencent.mm.ak.h)localObject).ct(bool1);
-      this.pEU.a(this);
-      this.pEU.a(this);
-      this.pEU.a(this);
-      this.pEU.a(this);
-      this.JTd = parambv.field_msgId;
-      this.JTl = new p(parambv.field_content).time;
-      this.JTk = System.currentTimeMillis();
+      ((com.tencent.mm.ak.k)localObject).db(bool1);
+      this.qUl.a(this);
+      this.qUl.a(this);
+      this.qUl.a(this);
+      this.qUl.a(this);
+      this.Pei = paramca.field_msgId;
+      this.Peq = new com.tencent.mm.modelvoice.p(paramca.field_content).time;
+      this.Pep = System.currentTimeMillis();
     }
     for (;;)
     {
-      bPl();
-      this.JTj = false;
-      AppMethodBeat.o(187129);
+      cmy();
+      this.Peo = false;
+      AppMethodBeat.o(232835);
       return;
-      t.v(this.cXJ.Kkd.getActivity(), this.context.getString(2131757075), 2131690395);
+      u.u(this.dom.Pwc.getActivity(), this.context.getString(2131757276), 2131690544);
       break;
       label572:
       bool1 = false;
       break label447;
       label577:
-      this.JTd = -1L;
-      fEH();
-      Toast.makeText(this.context, this.context.getString(2131757274), 0).show();
+      this.Pei = -1L;
+      gMO();
+      Toast.makeText(this.context, this.context.getString(2131757488), 0).show();
     }
   }
   
-  private void bPl()
+  private void cmy()
   {
     AppMethodBeat.i(34276);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34259);
-        d.this.cXJ.bPl();
+        d.d(d.this).cmy();
         AppMethodBeat.o(34259);
       }
     });
     AppMethodBeat.o(34276);
   }
   
-  private void fEJ()
+  private void gMQ()
   {
     AppMethodBeat.i(34270);
-    int k = this.JTc.size();
+    int k = this.Peh.size();
     int i = 0;
     int j = -1;
     if (i < k)
     {
-      if (((bv)this.JTc.get(i)).field_msgId != this.JTd) {
+      if (((ca)this.Peh.get(i)).field_msgId != this.Pei) {
         break label139;
       }
       j = i;
@@ -286,11 +284,11 @@ public final class d
       i += 1;
       break;
       if (j != -1) {
-        this.JTc.remove(j);
+        this.Peh.remove(j);
       }
-      ae.d("MicroMsg.AutoPlay", "remove voice msg : size = " + this.JTc.size());
-      if (this.JTc.size() == 0) {
-        com.tencent.mm.sdk.b.a.IvT.a(new ya(), Looper.getMainLooper());
+      Log.d("MicroMsg.AutoPlay", "remove voice msg : size = " + this.Peh.size());
+      if (this.Peh.size() == 0) {
+        EventCenter.instance.asyncPublish(new zc(), Looper.getMainLooper());
       }
       AppMethodBeat.o(34270);
       return;
@@ -299,24 +297,24 @@ public final class d
   
   private String getFullPath(String paramString)
   {
-    AppMethodBeat.i(187130);
-    if (this.dgT == 1)
+    AppMethodBeat.i(232836);
+    if (this.dyc == 1)
     {
-      paramString = com.tencent.mm.plugin.subapp.d.h.ch(paramString, false);
-      AppMethodBeat.o(187130);
+      paramString = com.tencent.mm.plugin.subapp.d.h.cz(paramString, false);
+      AppMethodBeat.o(232836);
       return paramString;
     }
-    paramString = com.tencent.mm.modelvoice.s.getFullPath(paramString);
-    AppMethodBeat.o(187130);
+    paramString = s.getFullPath(paramString);
+    AppMethodBeat.o(232836);
     return paramString;
   }
   
   private boolean isScreenEnable()
   {
     AppMethodBeat.i(34284);
-    if (this.cXJ != null)
+    if (this.dom != null)
     {
-      boolean bool = this.cXJ.Kkd.getController().Jvy;
+      boolean bool = this.dom.Pwc.getController().OFT;
       AppMethodBeat.o(34284);
       return bool;
     }
@@ -327,287 +325,304 @@ public final class d
   private void setScreenEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(34283);
-    if (this.cXJ != null) {
-      this.cXJ.Kkd.getController().setScreenEnable(paramBoolean);
+    if (this.dom != null) {
+      this.dom.Pwc.getController().setScreenEnable(paramBoolean);
     }
     AppMethodBeat.o(34283);
   }
   
-  public final void X(bv parambv)
+  public final void BK(boolean paramBoolean)
   {
-    AppMethodBeat.i(34268);
-    if ((this.JTi) && (this.JTc.isEmpty()))
+    AppMethodBeat.i(34271);
+    Log.i("MicroMsg.AutoPlay", "play next: size: %s needAudioFocus: %s", new Object[] { Integer.valueOf(this.Peh.size()), Boolean.valueOf(paramBoolean) });
+    if (this.Peh.size() <= 0)
     {
-      AppMethodBeat.o(34268);
+      this.Peu.sendEmptyMessageDelayed(0, 1000L);
+      AppMethodBeat.o(34271);
       return;
     }
-    if ((parambv == null) || (!parambv.ftf()) || (parambv.field_isSend == 1))
+    if (this.qUl != null)
     {
-      AppMethodBeat.o(34268);
-      return;
+      this.qUl.cZ(paramBoolean);
+      this.qUl.cY(paramBoolean);
     }
-    if ((parambv.field_talker == null) || (!parambv.field_talker.equals(this.cXJ.getTalkerUserName())))
-    {
-      AppMethodBeat.o(34268);
-      return;
-    }
-    if ((!bc.ajj().foreground) || (!this.cXJ.cCq))
-    {
-      AppMethodBeat.o(34268);
-      return;
-    }
-    if (com.tencent.mm.modelvoice.s.Z(parambv))
-    {
-      ae.e("MicroMsg.AutoPlay", "should not in this setData");
-      AppMethodBeat.o(34268);
-      return;
-    }
-    aP(parambv);
-    if ((!this.hvU) && (!this.pEU.isPlaying()) && (bu.jn(this.context))) {
-      xV(true);
-    }
-    AppMethodBeat.o(34268);
+    gMR();
+    AppMethodBeat.o(34271);
   }
   
-  public final void a(int paramInt, bv parambv)
+  public final void BL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(232834);
+    Log.printInfoStack("MicroMsg.AutoPlay", "speakerOn has been set %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.qUm = paramBoolean;
+    AppMethodBeat.o(232834);
+  }
+  
+  public final void a(int paramInt, ca paramca)
   {
     AppMethodBeat.i(34266);
-    if (parambv == null)
+    if (paramca == null)
     {
       AppMethodBeat.o(34266);
       return;
     }
-    fEH();
-    bc.aCg();
-    Boolean localBoolean = (Boolean)com.tencent.mm.model.c.ajA().get(4115, null);
+    gMO();
+    bg.aVF();
+    Boolean localBoolean = (Boolean)com.tencent.mm.model.c.azQ().get(4115, null);
     if ((localBoolean == null) || (!localBoolean.booleanValue()))
     {
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(4115, Boolean.TRUE);
-      fEM();
-      this.JTg = t.a(this.cXJ.Kkd.getActivity(), this.context.getString(2131757255), 4000L);
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(4115, Boolean.TRUE);
+      gMU();
+      this.Pel = u.a(this.dom.Pwc.getActivity(), this.context.getString(2131757468), 4000L);
     }
-    if ((this.pEU.isPlaying()) && (parambv.field_msgId == this.JTd))
+    if ((this.qUl.isPlaying()) && (paramca.field_msgId == this.Pei))
     {
-      apj();
+      gMT();
       AppMethodBeat.o(34266);
       return;
     }
-    aP(parambv);
-    if ((parambv.field_isSend == 0) && (!com.tencent.mm.modelvoice.s.Y(parambv))) {
-      adq(paramInt + 1);
+    bf(paramca);
+    if ((paramca.field_isSend == 0) && (!s.ai(paramca))) {
+      ama(paramInt + 1);
     }
-    xV(true);
+    BK(true);
     AppMethodBeat.o(34266);
   }
   
-  public final void aBN()
+  public final void aVl()
   {
     AppMethodBeat.i(34286);
-    ae.i("MicroMsg.AutoPlay", "phone or record stop, resume and do nothing");
-    this.JTn = false;
+    Log.i("MicroMsg.AutoPlay", "phone or record stop, resume and do nothing");
+    this.Pes = false;
     AppMethodBeat.o(34286);
   }
   
-  public final void aBO()
+  public final void aVm()
   {
     AppMethodBeat.i(34287);
-    ae.m("MicroMsg.AutoPlay", "phone comming or record start, stop play", new Object[0]);
-    this.JTn = true;
-    apj();
-    fEH();
+    Log.printInfoStack("MicroMsg.AutoPlay", "phone comming or record start, stop play", new Object[0]);
+    this.Pes = true;
+    gMT();
+    gMO();
     try
     {
-      if (this.pEZ != null) {
-        this.pEZ.fpx();
+      if (this.qUq != null) {
+        this.qUq.removeSensorCallBack();
       }
-      if (this.pEY != null) {
-        this.pEY.fpy();
+      if (this.qUp != null) {
+        this.qUp.stopShake();
       }
       AppMethodBeat.o(34287);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.AutoPlay", localException, "reset sensor error: %s", new Object[] { localException.getMessage() });
+      Log.printErrStackTrace("MicroMsg.AutoPlay", localException, "reset sensor error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(34287);
     }
   }
   
-  public final void aP(bv parambv)
+  public final void ah(ca paramca)
   {
-    AppMethodBeat.i(34265);
-    if (parambv == null)
+    AppMethodBeat.i(34268);
+    if ((this.Pen) && (this.Peh.isEmpty()))
     {
-      AppMethodBeat.o(34265);
+      AppMethodBeat.o(34268);
       return;
     }
-    bc.aCg();
-    if (!com.tencent.mm.model.c.isSDCardAvailable())
+    if ((paramca == null) || (!paramca.gAy()) || (paramca.field_isSend == 1))
     {
-      if (this.JTc.size() > 0)
-      {
-        this.JTc.clear();
-        t.g(this.context, this.cXJ.Kkd.getContentView());
-      }
-      AppMethodBeat.o(34265);
+      AppMethodBeat.o(34268);
       return;
     }
-    int j = this.JTc.size();
-    int i = 0;
-    while (i < j)
+    if ((paramca.field_talker == null) || (!paramca.field_talker.equals(this.dom.getTalkerUserName())))
     {
-      if (((bv)this.JTc.get(i)).field_msgId == parambv.field_msgId)
-      {
-        AppMethodBeat.o(34265);
-        return;
-      }
-      i += 1;
+      AppMethodBeat.o(34268);
+      return;
     }
-    if ((this.JTh) || (this.JTc.size() == 0)) {
-      this.JTc.add(parambv);
+    if ((!bg.azz().foreground) || (!this.dom.cQp))
+    {
+      AppMethodBeat.o(34268);
+      return;
     }
-    ae.d("MicroMsg.AutoPlay", "add voice msg :" + this.JTc.size());
-    AppMethodBeat.o(34265);
+    if (s.aj(paramca))
+    {
+      Log.e("MicroMsg.AutoPlay", "should not in this setData");
+      AppMethodBeat.o(34268);
+      return;
+    }
+    bf(paramca);
+    if ((!this.ipv) && (!this.qUl.isPlaying()) && (Util.isTopActivity(this.context))) {
+      BK(true);
+    }
+    AppMethodBeat.o(34268);
   }
   
-  public final void aXq(String paramString)
-  {
-    AppMethodBeat.i(34262);
-    ae.i("MicroMsg.AutoPlay", "changeTalker, isResumeFromDisableScreen: %b", new Object[] { Boolean.valueOf(this.JTj) });
-    if ((this.JTj) || (this.context == null))
-    {
-      AppMethodBeat.o(34262);
-      return;
-    }
-    this.JTc = new LinkedList();
-    this.hvU = false;
-    this.JTd = -1L;
-    this.pEV = false;
-    this.lastShakeTime = -1L;
-    this.JTh = false;
-    this.dgT = 0;
-    if (x.AK(paramString))
-    {
-      this.dgT = 1;
-      this.pEU = new com.tencent.mm.audio.a.a(this.context, 1);
-      AppMethodBeat.o(34262);
-      return;
-    }
-    this.dgT = 0;
-    this.pEU = new com.tencent.mm.audio.a.a(this.context, 0);
-    AppMethodBeat.o(34262);
-  }
-  
-  public final void adq(int paramInt)
+  public final void ama(int paramInt)
   {
     AppMethodBeat.i(34264);
     for (;;)
     {
       if (this.context == null)
       {
-        ae.e("MicroMsg.AutoPlay", "context is null");
+        Log.e("MicroMsg.AutoPlay", "context is null");
         AppMethodBeat.o(34264);
         return;
       }
-      if (this.cXJ == null)
+      if (this.dom == null)
       {
-        ae.e("MicroMsg.AutoPlay", "add next failed: null mChattingContext");
+        Log.e("MicroMsg.AutoPlay", "add next failed: null mChattingContext");
         AppMethodBeat.o(34264);
         return;
       }
-      int i = ((k)this.cXJ.bh(k.class)).getCount();
-      ae.d("MicroMsg.AutoPlay", "position : " + paramInt + "adapter getCount = " + i);
+      int i = ((com.tencent.mm.ui.chatting.d.b.k)this.dom.bh(com.tencent.mm.ui.chatting.d.b.k.class)).getCount();
+      Log.d("MicroMsg.AutoPlay", "position : " + paramInt + "adapter getCount = " + i);
       if ((paramInt < 0) || (paramInt >= i))
       {
         AppMethodBeat.o(34264);
         return;
       }
-      bv localbv = ((k)this.cXJ.bh(k.class)).adI(paramInt);
-      if (localbv == null)
+      ca localca = ((com.tencent.mm.ui.chatting.d.b.k)this.dom.bh(com.tencent.mm.ui.chatting.d.b.k.class)).amt(paramInt);
+      if (localca == null)
       {
         AppMethodBeat.o(34264);
         return;
       }
-      if ((localbv.ftf()) && (localbv.field_isSend == 0) && (!com.tencent.mm.modelvoice.s.Y(localbv)) && (!com.tencent.mm.modelvoice.s.Z(localbv))) {
-        aP(localbv);
+      if ((localca.gAy()) && (localca.field_isSend == 0) && (!s.ai(localca)) && (!s.aj(localca))) {
+        bf(localca);
       }
       paramInt += 1;
     }
   }
   
-  public final void apj()
-  {
-    AppMethodBeat.i(34275);
-    ae.i("MicroMsg.AutoPlay", "stop play");
-    ao.aRS("keep_app_silent");
-    this.pEU.cr(true);
-    this.pEU.stop();
-    AppMethodBeat.o(34275);
-  }
-  
-  public final void b(int paramInt, bv parambv)
+  public final void b(int paramInt, ca paramca)
   {
     AppMethodBeat.i(34267);
-    if (parambv == null)
+    if (paramca == null)
     {
       AppMethodBeat.o(34267);
       return;
     }
-    fEH();
-    bc.aCg();
-    Boolean localBoolean = (Boolean)com.tencent.mm.model.c.ajA().get(4115, null);
+    gMO();
+    bg.aVF();
+    Boolean localBoolean = (Boolean)com.tencent.mm.model.c.azQ().get(4115, null);
     if ((localBoolean == null) || (!localBoolean.booleanValue()))
     {
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(4115, Boolean.TRUE);
-      fEM();
-      this.JTg = t.a(this.cXJ.Kkd.getActivity(), this.context.getString(2131757255), 4000L);
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(4115, Boolean.TRUE);
+      gMU();
+      this.Pel = u.a(this.dom.Pwc.getActivity(), this.context.getString(2131757468), 4000L);
     }
-    if ((this.pEU.isPlaying()) && (parambv.field_msgId == this.JTd))
+    if ((this.qUl.isPlaying()) && (paramca.field_msgId == this.Pei))
     {
-      apj();
+      gMT();
       AppMethodBeat.o(34267);
       return;
     }
-    aP(parambv);
-    if ((parambv.field_isSend == 0) && (!com.tencent.mm.modelvoice.s.Y(parambv))) {
-      adq(paramInt + 1);
+    bf(paramca);
+    if ((paramca.field_isSend == 0) && (!s.ai(paramca))) {
+      ama(paramInt + 1);
     }
-    xV(true);
+    BK(true);
     AppMethodBeat.o(34267);
   }
   
-  public final void eE(boolean paramBoolean)
+  public final void bf(ca paramca)
+  {
+    AppMethodBeat.i(34265);
+    if (paramca == null)
+    {
+      AppMethodBeat.o(34265);
+      return;
+    }
+    bg.aVF();
+    if (!com.tencent.mm.model.c.isSDCardAvailable())
+    {
+      if (this.Peh.size() > 0)
+      {
+        this.Peh.clear();
+        u.g(this.context, this.dom.Pwc.getContentView());
+      }
+      AppMethodBeat.o(34265);
+      return;
+    }
+    int j = this.Peh.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (((ca)this.Peh.get(i)).field_msgId == paramca.field_msgId)
+      {
+        AppMethodBeat.o(34265);
+        return;
+      }
+      i += 1;
+    }
+    if ((this.Pem) || (this.Peh.size() == 0)) {
+      this.Peh.add(paramca);
+    }
+    Log.d("MicroMsg.AutoPlay", "add voice msg :" + this.Peh.size());
+    AppMethodBeat.o(34265);
+  }
+  
+  public final void bmt(String paramString)
+  {
+    AppMethodBeat.i(34262);
+    Log.i("MicroMsg.AutoPlay", "changeTalker, isResumeFromDisableScreen: %b", new Object[] { Boolean.valueOf(this.Peo) });
+    if ((this.Peo) || (this.context == null))
+    {
+      AppMethodBeat.o(34262);
+      return;
+    }
+    this.Peh = new LinkedList();
+    this.ipv = false;
+    this.Pei = -1L;
+    this.qUm = false;
+    this.lastShakeTime = -1L;
+    this.Pem = false;
+    this.dyc = 0;
+    if (ab.Jp(paramString))
+    {
+      this.dyc = 1;
+      this.qUl = new com.tencent.mm.audio.a.a(this.context, 1);
+      AppMethodBeat.o(34262);
+      return;
+    }
+    this.dyc = 0;
+    this.qUl = new com.tencent.mm.audio.a.a(this.context, 0);
+    AppMethodBeat.o(34262);
+  }
+  
+  public final void fw(boolean paramBoolean)
   {
     AppMethodBeat.i(34280);
-    ae.w("MicroMsg.AutoPlay", "voice play pause. %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    Log.w("MicroMsg.AutoPlay", "voice play pause. %b", new Object[] { Boolean.valueOf(paramBoolean) });
     onStop();
     AppMethodBeat.o(34280);
   }
   
-  public final void fEH()
+  public final void gMO()
   {
     AppMethodBeat.i(34263);
-    if (1 == ae.getLogLevel()) {
-      ae.d("MicroMsg.AutoPlay", "clear play list, stack: %s", new Object[] { bu.fpN() });
+    if (1 == Log.getLogLevel()) {
+      Log.d("MicroMsg.AutoPlay", "clear play list, stack: %s", new Object[] { Util.getStack() });
     }
-    if (this.JTe != null) {
-      this.JTe.dismiss();
+    if (this.Pej != null) {
+      this.Pej.dismiss();
     }
-    this.JTc.clear();
+    this.Peh.clear();
     AppMethodBeat.o(34263);
   }
   
-  public final void fEI()
+  public final void gMP()
   {
     AppMethodBeat.i(34269);
-    this.hvU = false;
-    xV(true);
+    this.ipv = false;
+    BK(true);
     AppMethodBeat.o(34269);
   }
   
-  public final void fEK()
+  public final void gMR()
   {
     AppMethodBeat.i(34272);
     for (;;)
@@ -615,30 +630,30 @@ public final class d
       int i;
       try
       {
-        ae.d("MicroMsg.AutoPlay", "realPlayNext play next: size = " + this.JTc.size());
-        if (this.JTc.size() <= 0)
+        Log.d("MicroMsg.AutoPlay", "realPlayNext play next: size = " + this.Peh.size());
+        if (this.Peh.size() <= 0)
         {
-          this.JTp.sendEmptyMessageDelayed(0, 1000L);
+          this.Peu.sendEmptyMessageDelayed(0, 1000L);
           AppMethodBeat.o(34272);
           return;
         }
-        long l = ((bv)this.JTc.get(0)).field_createTime;
-        int k = this.JTc.size();
+        long l = ((ca)this.Peh.get(0)).field_createTime;
+        int k = this.Peh.size();
         i = 1;
         int j = 0;
         if (i < k)
         {
-          if (l > ((bv)this.JTc.get(i)).field_createTime)
+          if (l > ((ca)this.Peh.get(i)).field_createTime)
           {
-            l = ((bv)this.JTc.get(i)).field_createTime;
+            l = ((ca)this.Peh.get(i)).field_createTime;
             j = i;
           }
         }
         else
         {
-          bv localbv = (bv)this.JTc.get(j);
-          if (localbv != null) {
-            aQ(localbv);
+          ca localca = (ca)this.Peh.get(j);
+          if (localca != null) {
+            bg(localca);
           }
           AppMethodBeat.o(34272);
           return;
@@ -646,7 +661,7 @@ public final class d
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("MicroMsg.AutoPlay", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.AutoPlay", localException, "", new Object[0]);
         AppMethodBeat.o(34272);
         return;
       }
@@ -654,22 +669,32 @@ public final class d
     }
   }
   
-  public final void fEL()
+  public final void gMS()
   {
     AppMethodBeat.i(34273);
-    if ((this.pEU != null) && (this.pEU.isPlaying()))
+    if ((this.qUl != null) && (this.qUl.isPlaying()))
     {
-      ae.i("MicroMsg.AutoPlay", "switchSpeaker, isSpeakerOn: %b, isPlaying: %b", new Object[] { Boolean.valueOf(this.pEV), Boolean.valueOf(this.pEU.isPlaying()) });
-      this.pEU.cm(this.pEV);
+      Log.i("MicroMsg.AutoPlay", "switchSpeaker, isSpeakerOn: %b, isPlaying: %b", new Object[] { Boolean.valueOf(this.qUm), Boolean.valueOf(this.qUl.isPlaying()) });
+      this.qUl.cU(this.qUm);
     }
     AppMethodBeat.o(34273);
   }
   
-  public final void fEM()
+  public final void gMT()
+  {
+    AppMethodBeat.i(34275);
+    Log.i("MicroMsg.AutoPlay", "stop play");
+    MMEntryLock.unlock("keep_app_silent");
+    this.qUl.cZ(true);
+    this.qUl.stop();
+    AppMethodBeat.o(34275);
+  }
+  
+  public final void gMU()
   {
     AppMethodBeat.i(34285);
-    if (this.JTg != null) {
-      this.JTg.dismiss();
+    if (this.Pel != null) {
+      this.Pel.dismiss();
     }
     AppMethodBeat.o(34285);
   }
@@ -677,132 +702,32 @@ public final class d
   public final boolean isPlaying()
   {
     AppMethodBeat.i(34277);
-    boolean bool = this.pEU.isPlaying();
+    boolean bool = this.qUl.isPlaying();
     AppMethodBeat.o(34277);
     return bool;
-  }
-  
-  public final void km(final boolean paramBoolean)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(34282);
-    ae.i("MicroMsg.AutoPlay", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.pEX + " tick:" + bu.aO(this.lastShakeTime) + "  lt:" + this.lastShakeTime);
-    if (this.pEX)
-    {
-      if (!paramBoolean) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        this.pEX = paramBoolean;
-        AppMethodBeat.o(34282);
-        return;
-      }
-    }
-    if (this.context == null)
-    {
-      this.pEZ.fpx();
-      AppMethodBeat.o(34282);
-      return;
-    }
-    ae.i("MicroMsg.AutoPlay", "isScreenOn: %s", new Object[] { Boolean.valueOf(isScreenEnable()) });
-    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bu.aO(this.lastShakeTime) > 400L))
-    {
-      this.pEX = true;
-      AppMethodBeat.o(34282);
-      return;
-    }
-    this.pEX = false;
-    if (this.pEU.PC())
-    {
-      AppMethodBeat.o(34282);
-      return;
-    }
-    if (com.tencent.mm.plugin.audio.c.a.bHz())
-    {
-      fEM();
-      ae.d("MicroMsg.AutoPlay", "onSensorEvent, connecting bluetooth, omit sensor event");
-      AppMethodBeat.o(34282);
-      return;
-    }
-    if (this.JTf.pEW)
-    {
-      xW(false);
-      if (this.JTd != -1L) {
-        setScreenEnable(paramBoolean);
-      }
-      for (this.JTj = paramBoolean;; this.JTj = true)
-      {
-        fEL();
-        AppMethodBeat.o(34282);
-        return;
-        setScreenEnable(true);
-      }
-    }
-    if (this.JTd != -1L)
-    {
-      if (isScreenEnable() == paramBoolean)
-      {
-        AppMethodBeat.o(34282);
-        return;
-      }
-      setScreenEnable(paramBoolean);
-      this.JTj = paramBoolean;
-      new aw(new aw.a()
-      {
-        public final boolean onTimerExpired()
-        {
-          AppMethodBeat.i(34260);
-          if (!paramBoolean)
-          {
-            ae.i("MicroMsg.AutoPlay", "speaker off");
-            d.this.xW(false);
-            d locald = d.this;
-            if (locald.pEU.isPlaying())
-            {
-              ae.d("MicroMsg.AutoPlay", "deal sensor event, play next");
-              locald.pEU.cr(false);
-              locald.xV(false);
-            }
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(34260);
-            return false;
-            ae.i("MicroMsg.AutoPlay", "speaker true");
-            d.this.fEM();
-            if (d.this.context != null) {
-              d.this.JTg = t.a(d.this.cXJ.Kkd.getActivity(), d.this.context.getString(2131759558), 2000L);
-            }
-            d.this.xW(true);
-            d.this.fEL();
-          }
-        }
-      }, false).ay(50L, 50L);
-    }
-    ae.i("MicroMsg.AutoPlay", "onSensorEvent, isResumeFromDisableScreen:%b", new Object[] { Boolean.valueOf(this.JTj) });
-    AppMethodBeat.o(34282);
   }
   
   public final void onCompletion()
   {
     AppMethodBeat.i(34278);
-    ae.i("MicroMsg.AutoPlay", "voice play completion isSpeakerOn %b, %d, %d", new Object[] { Boolean.valueOf(this.pEV), Long.valueOf(this.JTd), Long.valueOf(this.JTl) });
-    g.yxI.f(15160, new Object[] { Long.valueOf(this.JTd), Long.valueOf(this.JTl), Long.valueOf(this.JTl), Integer.valueOf(0) });
+    Log.i("MicroMsg.AutoPlay", "voice play completion isSpeakerOn %b, %d, %d", new Object[] { Boolean.valueOf(this.qUm), Long.valueOf(this.Pei), Long.valueOf(this.Peq) });
+    com.tencent.mm.plugin.report.service.h.CyF.a(15160, new Object[] { Long.valueOf(this.Pei), Long.valueOf(this.Peq), Long.valueOf(this.Peq), Integer.valueOf(0) });
     if (this.context != null)
     {
-      ae.i("MicroMsg.AutoPlay", "stop play complete");
-      ao.aRS("keep_app_silent");
-      this.JTf.releaseWakeLock();
-      fEJ();
-      if (this.JTc.isEmpty())
+      Log.i("MicroMsg.AutoPlay", "stop play complete");
+      MMEntryLock.unlock("keep_app_silent");
+      this.Pek.releaseWakeLock();
+      gMQ();
+      if (this.Peh.isEmpty())
       {
-        this.pEZ.fpx();
-        this.pEY.fpy();
+        this.qUq.removeSensorCallBack();
+        this.qUp.stopShake();
       }
-      bPl();
-      this.JTd = -1L;
-      fEM();
-      this.JTf.releaseWakeLock();
-      xV(false);
+      cmy();
+      this.Pei = -1L;
+      gMU();
+      this.Pek.releaseWakeLock();
+      BK(false);
     }
     AppMethodBeat.o(34278);
   }
@@ -810,49 +735,149 @@ public final class d
   public final void onError()
   {
     AppMethodBeat.i(34279);
-    ae.e("MicroMsg.AutoPlay", "voice play error");
-    apj();
-    xV(true);
+    Log.e("MicroMsg.AutoPlay", "voice play error");
+    gMT();
+    BK(true);
     AppMethodBeat.o(34279);
+  }
+  
+  public final void onSensorEvent(final boolean paramBoolean)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(34282);
+    Log.i("MicroMsg.AutoPlay", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.qUo + " tick:" + Util.ticksToNow(this.lastShakeTime) + "  lt:" + this.lastShakeTime);
+    if (this.qUo)
+    {
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        this.qUo = paramBoolean;
+        AppMethodBeat.o(34282);
+        return;
+      }
+    }
+    if (this.context == null)
+    {
+      this.qUq.removeSensorCallBack();
+      AppMethodBeat.o(34282);
+      return;
+    }
+    Log.i("MicroMsg.AutoPlay", "isScreenOn: %s", new Object[] { Boolean.valueOf(isScreenEnable()) });
+    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (Util.ticksToNow(this.lastShakeTime) > 400L))
+    {
+      this.qUo = true;
+      AppMethodBeat.o(34282);
+      return;
+    }
+    this.qUo = false;
+    if (this.qUl.isCalling())
+    {
+      AppMethodBeat.o(34282);
+      return;
+    }
+    if (com.tencent.mm.plugin.audio.c.a.ceb())
+    {
+      gMU();
+      Log.d("MicroMsg.AutoPlay", "onSensorEvent, connecting bluetooth, omit sensor event");
+      AppMethodBeat.o(34282);
+      return;
+    }
+    if (this.Pek.qUn)
+    {
+      BL(false);
+      if (this.Pei != -1L) {
+        setScreenEnable(paramBoolean);
+      }
+      for (this.Peo = paramBoolean;; this.Peo = true)
+      {
+        gMS();
+        AppMethodBeat.o(34282);
+        return;
+        setScreenEnable(true);
+      }
+    }
+    if (this.Pei != -1L)
+    {
+      if (isScreenEnable() == paramBoolean)
+      {
+        AppMethodBeat.o(34282);
+        return;
+      }
+      setScreenEnable(paramBoolean);
+      this.Peo = paramBoolean;
+      new MTimerHandler(new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(34260);
+          if (!paramBoolean)
+          {
+            Log.i("MicroMsg.AutoPlay", "speaker off");
+            d.this.BL(false);
+            d locald = d.this;
+            if (locald.qUl.isPlaying())
+            {
+              Log.d("MicroMsg.AutoPlay", "deal sensor event, play next");
+              locald.qUl.cZ(false);
+              locald.BK(false);
+            }
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(34260);
+            return false;
+            Log.i("MicroMsg.AutoPlay", "speaker true");
+            d.e(d.this);
+            if (d.f(d.this) != null) {
+              d.a(d.this, u.a(d.d(d.this).Pwc.getActivity(), d.f(d.this).getString(2131760875), 2000L));
+            }
+            d.this.BL(true);
+            d.this.gMS();
+          }
+        }
+      }, false).startTimer(50L);
+    }
+    Log.i("MicroMsg.AutoPlay", "onSensorEvent, isResumeFromDisableScreen:%b", new Object[] { Boolean.valueOf(this.Peo) });
+    AppMethodBeat.o(34282);
   }
   
   public final void onStop()
   {
     int i = 2;
     AppMethodBeat.i(34281);
-    ae.w("MicroMsg.AutoPlay", "voice play stop. %d, %d, %d, %b, %b, %s", new Object[] { Long.valueOf(this.JTd), Long.valueOf(this.JTl), Long.valueOf(bu.DD(this.JTk)), Boolean.valueOf(this.JTn), Boolean.valueOf(this.JTm), bu.fpN() });
-    g localg;
+    Log.w("MicroMsg.AutoPlay", "voice play stop. %d, %d, %d, %b, %b, %s", new Object[] { Long.valueOf(this.Pei), Long.valueOf(this.Peq), Long.valueOf(Util.milliSecondsToNow(this.Pep)), Boolean.valueOf(this.Pes), Boolean.valueOf(this.Per), Util.getStack() });
+    com.tencent.mm.plugin.report.service.h localh;
     long l1;
     long l2;
     long l3;
-    if (this.JTd > 0L)
+    if (this.Pei > 0L)
     {
-      localg = g.yxI;
-      l1 = this.JTd;
-      l2 = this.JTl;
-      l3 = bu.DD(this.JTk);
-      if (this.JTn) {
+      localh = com.tencent.mm.plugin.report.service.h.CyF;
+      l1 = this.Pei;
+      l2 = this.Peq;
+      l3 = Util.milliSecondsToNow(this.Pep);
+      if (this.Pes) {
         break label251;
       }
-      if (!this.JTm) {}
+      if (!this.Per) {}
     }
     label251:
     for (i = 1;; i = 3)
     {
-      localg.f(15160, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(i) });
-      this.JTn = false;
-      this.JTm = false;
-      this.JTf.releaseWakeLock();
-      fEJ();
-      if (this.JTc.isEmpty())
+      localh.a(15160, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(i) });
+      this.Pes = false;
+      this.Per = false;
+      this.Pek.releaseWakeLock();
+      gMQ();
+      if (this.Peh.isEmpty())
       {
-        this.pEZ.fpx();
-        this.pEY.fpy();
+        this.qUq.removeSensorCallBack();
+        this.qUp.stopShake();
       }
-      bPl();
-      this.JTd = -1L;
-      fEM();
-      this.JTj = false;
+      cmy();
+      this.Pei = -1L;
+      gMU();
+      this.Peo = false;
       setScreenEnable(true);
       AppMethodBeat.o(34281);
       return;
@@ -862,43 +887,16 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(34274);
-    ae.i("MicroMsg.AutoPlay", "alvinluo AutoPlay release");
-    if (this.pEY != null) {
-      this.pEY.fpy();
+    Log.i("MicroMsg.AutoPlay", "alvinluo AutoPlay release");
+    if (this.qUp != null) {
+      this.qUp.stopShake();
     }
     AppMethodBeat.o(34274);
-  }
-  
-  public final void xV(boolean paramBoolean)
-  {
-    AppMethodBeat.i(34271);
-    ae.i("MicroMsg.AutoPlay", "play next: size: %s needAudioFocus: %s", new Object[] { Integer.valueOf(this.JTc.size()), Boolean.valueOf(paramBoolean) });
-    if (this.JTc.size() <= 0)
-    {
-      this.JTp.sendEmptyMessageDelayed(0, 1000L);
-      AppMethodBeat.o(34271);
-      return;
-    }
-    if (this.pEU != null)
-    {
-      this.pEU.cr(paramBoolean);
-      this.pEU.cq(paramBoolean);
-    }
-    fEK();
-    AppMethodBeat.o(34271);
-  }
-  
-  public final void xW(boolean paramBoolean)
-  {
-    AppMethodBeat.i(187128);
-    ae.m("MicroMsg.AutoPlay", "speakerOn has been set %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.pEV = paramBoolean;
-    AppMethodBeat.o(187128);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d
  * JD-Core Version:    0.7.0.1
  */

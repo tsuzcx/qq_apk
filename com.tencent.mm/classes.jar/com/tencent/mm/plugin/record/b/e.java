@@ -1,53 +1,54 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.xl;
-import com.tencent.mm.protocal.protobuf.xm;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.yx;
+import com.tencent.mm.protocal.protobuf.yy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
-  private a xGw;
+  private a BGv;
+  private i callback;
+  private d rr;
   
   public e(String paramString1, String paramString2, String paramString3, int paramInt, a parama)
   {
     AppMethodBeat.i(9462);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new xl();
-    ((b.a)localObject).hQG = new xm();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkmd5";
-    ((b.a)localObject).funcId = 939;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (xl)this.rr.hQD.hQJ;
-    ((xl)localObject).fileid = paramString1;
-    ((xl)localObject).md5 = paramString2;
-    ((xl)localObject).Ggb = paramString3;
-    ((xl)localObject).Gpm = paramInt;
-    this.xGw = parama;
-    ae.i("MicroMsg.NetSceneCheckMd5", "summersafecdn NetSceneCheckMd5 fileid[%s], md5[%s], newmd5[%s], crc[%d], stack[%s]", new Object[] { ((xl)localObject).fileid, ((xl)localObject).md5, ((xl)localObject).Ggb, Integer.valueOf(((xl)localObject).Gpm), bu.fpN() });
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new yx();
+    ((d.a)localObject).iLO = new yy();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/checkmd5";
+    ((d.a)localObject).funcId = 939;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (yx)this.rr.iLK.iLR;
+    ((yx)localObject).fileid = paramString1;
+    ((yx)localObject).md5 = paramString2;
+    ((yx)localObject).LaE = paramString3;
+    ((yx)localObject).LjY = paramInt;
+    this.BGv = parama;
+    Log.i("MicroMsg.NetSceneCheckMd5", "summersafecdn NetSceneCheckMd5 fileid[%s], md5[%s], newmd5[%s], crc[%d], stack[%s]", new Object[] { ((yx)localObject).fileid, ((yx)localObject).md5, ((yx)localObject).LaE, Integer.valueOf(((yx)localObject).LjY), Util.getStack() });
     AppMethodBeat.o(9462);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(9463);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(9463);
     return i;
   }
@@ -57,42 +58,42 @@ public final class e
     return 939;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(9464);
-    ae.i("MicroMsg.NetSceneCheckMd5", "summersafecdn onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.NetSceneCheckMd5", "summersafecdn onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if (this.xGw != null)
+    if (this.BGv != null)
     {
       if ((paramInt2 == 0) && (paramInt3 == 0)) {
         break label101;
       }
-      paramString = this.xGw;
+      paramString = this.BGv;
     }
     for (;;)
     {
       paramArrayOfByte = "";
-      paramq = paramString;
+      params = paramString;
       for (paramString = paramArrayOfByte;; paramString = paramArrayOfByte)
       {
-        paramq.au(paramString, paramInt2, paramInt3);
+        params.ax(paramString, paramInt2, paramInt3);
         AppMethodBeat.o(9464);
         return;
         label101:
-        paramq = (xm)((b)paramq).hQE.hQJ;
-        paramString = this.xGw;
-        if (paramq == null) {
+        params = (yy)((d)params).iLL.iLR;
+        paramString = this.BGv;
+        if (params == null) {
           break;
         }
-        paramArrayOfByte = paramq.aeskey;
-        paramq = paramString;
+        paramArrayOfByte = params.aeskey;
+        params = paramString;
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void au(String paramString, int paramInt1, int paramInt2);
+    public abstract void ax(String paramString, int paramInt1, int paramInt2);
   }
 }
 

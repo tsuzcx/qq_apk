@@ -4,54 +4,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.data.j;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.vfs.s;
 
 public final class d
   extends b
 {
-  private final String AcD;
-  private final a AcE;
+  private final String EkT;
+  private final a EkU;
   private final String fileName;
   private final String filePath;
   private final int fileType;
   
   public d(String paramString1, String paramString2, String paramString3, int paramInt, a parama)
   {
-    AppMethodBeat.i(219620);
-    o.aZI(paramString2);
+    AppMethodBeat.i(203151);
+    s.boN(paramString2);
     this.url = paramString1;
-    this.AcD = paramString2;
+    this.EkT = paramString2;
     this.fileName = paramString3;
     this.filePath = (paramString2 + paramString3);
     this.fileType = paramInt;
-    this.AcE = parama;
-    AppMethodBeat.o(219620);
+    this.EkU = parama;
+    AppMethodBeat.o(203151);
   }
   
-  private String ebE()
+  private String fev()
   {
     AppMethodBeat.i(97289);
     try
     {
-      AdLandingPagesProxy.getInstance().downloadLandingPagesCDNFile(this.AcD, this.fileName, this.url, this.fileType, new AdLandingPagesProxy.g()
+      AdLandingPagesProxy.getInstance().downloadLandingPagesCDNFile(this.EkT, this.fileName, this.url, this.fileType, new AdLandingPagesProxy.g()
       {
-        public final void dVv()
+        public final void eWO()
         {
           AppMethodBeat.i(97285);
-          String str = az.iW(ak.getContext());
-          ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "onDownloadError, netType=" + str + ", url=" + d.this.url);
-          d.this.aBe(d.a(d.this));
+          String str = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
+          Log.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "onDownloadError, netType=" + str + ", url=" + d.this.url);
+          d.this.aPY(d.a(d.this));
           if (d.b(d.this) != null) {
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97283);
-                d.b(d.this).dVv();
+                d.b(d.this).eWO();
                 AppMethodBeat.o(97283);
               }
             });
@@ -59,16 +59,16 @@ public final class d
           AppMethodBeat.o(97285);
         }
         
-        public final void dWM()
+        public final void eZU()
         {
           AppMethodBeat.i(97286);
           if (d.b(d.this) != null) {
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97284);
-                d.b(d.this).ayY(d.a(d.this));
+                d.b(d.this).aNH(d.a(d.this));
                 AppMethodBeat.o(97284);
               }
             });
@@ -83,15 +83,15 @@ public final class d
     {
       for (;;)
       {
-        String str = az.iW(ak.getContext());
-        ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "doInBackground exp, netType=" + str + ", exp=" + localException.toString() + ", url=" + this.url);
-        aBe(this.filePath);
-        ar.f(new Runnable()
+        String str = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
+        Log.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "doInBackground exp, netType=" + str + ", exp=" + localException.toString() + ", url=" + this.url);
+        aPY(this.filePath);
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97287);
-            d.b(d.this).dVv();
+            d.b(d.this).eWO();
             AppMethodBeat.o(97287);
           }
         });
@@ -99,38 +99,38 @@ public final class d
     }
   }
   
-  protected final void aBe(String paramString)
+  protected final void aPY(String paramString)
   {
-    AppMethodBeat.i(219621);
+    AppMethodBeat.i(203152);
     int i = 0;
     String str = "0";
     for (;;)
     {
       try
       {
-        if (o.fB(paramString))
+        if (s.YS(paramString))
         {
           str = "1";
-          if (o.deleteFile(paramString))
+          if (s.deleteFile(paramString))
           {
             i = 1;
-            ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, succ");
+            Log.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, succ");
             paramString = str;
-            str = az.iW(ak.getContext());
-            j.b(j.ztQ, paramString, this.fileType, i, "cdn|".concat(String.valueOf(str)));
-            AppMethodBeat.o(219621);
+            str = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
+            j.b(j.DEa, paramString, this.fileType, i, "cdn|".concat(String.valueOf(str)));
+            AppMethodBeat.o(203152);
             return;
           }
-          ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, failed");
+          Log.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, failed");
           paramString = str;
           continue;
         }
-        ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, file not exists");
+        Log.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, file not exists");
       }
       catch (Throwable paramString)
       {
-        ae.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, exp=" + paramString.toString());
-        AppMethodBeat.o(219621);
+        Log.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, exp=" + paramString.toString());
+        AppMethodBeat.o(203152);
         return;
       }
       paramString = str;
@@ -139,14 +139,14 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void ayY(String paramString);
+    public abstract void aNH(String paramString);
     
-    public abstract void dVv();
+    public abstract void eWO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.d
  * JD-Core Version:    0.7.0.1
  */

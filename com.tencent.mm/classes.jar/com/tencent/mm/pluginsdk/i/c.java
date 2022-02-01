@@ -1,30 +1,30 @@
 package com.tencent.mm.pluginsdk.i;
 
 import android.content.Context;
-import android.text.ClipboardManager;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
 
-final class c
+public final class c
 {
-  public static void Q(CharSequence paramCharSequence)
+  public static a JYn;
+  
+  public static a gnr()
   {
-    AppMethodBeat.i(151891);
-    ((ClipboardManager)ak.getContext().getSystemService("clipboard")).setText(paramCharSequence);
-    AppMethodBeat.o(151891);
+    return JYn;
   }
   
-  public static CharSequence fee()
+  public static abstract interface a
   {
-    AppMethodBeat.i(151892);
-    CharSequence localCharSequence = ((ClipboardManager)ak.getContext().getSystemService("clipboard")).getText();
-    AppMethodBeat.o(151892);
-    return localCharSequence;
+    public abstract boolean Xl();
+    
+    public abstract void bV(Context paramContext);
+    
+    public abstract void bW(Context paramContext);
+    
+    public abstract void n(Context paramContext, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.i.c
  * JD-Core Version:    0.7.0.1
  */

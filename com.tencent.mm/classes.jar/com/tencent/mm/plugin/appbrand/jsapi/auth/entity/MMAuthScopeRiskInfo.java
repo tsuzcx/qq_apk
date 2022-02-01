@@ -4,49 +4,49 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cyi;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.drd;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "scopeRiskPopUpInfo", "Lcom/tencent/mm/protocal/protobuf/ScopeRiskPopUpInfo;", "(Lcom/tencent/mm/protocal/protobuf/ScopeRiskPopUpInfo;)V", "route_type", "", "wording", "", "left_button_wording", "right_button_wording", "right_button_h5_url", "wxa_app_info", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;)V", "getLeft_button_wording", "()Ljava/lang/String;", "setLeft_button_wording", "(Ljava/lang/String;)V", "getRight_button_h5_url", "setRight_button_h5_url", "getRight_button_wording", "setRight_button_wording", "getRoute_type", "()I", "setRoute_type", "(I)V", "getWording", "setWording", "getWxa_app_info", "()Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;", "setWxa_app_info", "(Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;)V", "describeContents", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "scopeRiskPopUpInfo", "Lcom/tencent/mm/protocal/protobuf/ScopeRiskPopUpInfo;", "(Lcom/tencent/mm/protocal/protobuf/ScopeRiskPopUpInfo;)V", "route_type", "", "wording", "", "left_button_wording", "right_button_wording", "right_button_h5_url", "wxa_app_info", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;)V", "getLeft_button_wording", "()Ljava/lang/String;", "setLeft_button_wording", "(Ljava/lang/String;)V", "getRight_button_h5_url", "setRight_button_h5_url", "getRight_button_wording", "setRight_button_wording", "getRoute_type", "()I", "setRoute_type", "(I)V", "getWording", "setWording", "getWxa_app_info", "()Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;", "setWxa_app_info", "(Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskWxaAppInfo;)V", "describeContents", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
 public class MMAuthScopeRiskInfo
   implements Parcelable
 {
   public static final a CREATOR;
-  public String dyI;
-  public int kCY;
-  public String kCZ;
-  public String kDa;
-  public String kDb;
-  public MMAuthScopeRiskWxaAppInfo kDc;
+  public String dQx;
+  public String lHA;
+  public String lHB;
+  public String lHC;
+  public MMAuthScopeRiskWxaAppInfo lHD;
+  public int lHz;
   
   static
   {
-    AppMethodBeat.i(223343);
+    AppMethodBeat.i(228316);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(223343);
+    AppMethodBeat.o(228316);
   }
   
   private MMAuthScopeRiskInfo(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, MMAuthScopeRiskWxaAppInfo paramMMAuthScopeRiskWxaAppInfo)
   {
-    AppMethodBeat.i(223340);
-    this.kCY = paramInt;
-    this.dyI = paramString1;
-    this.kCZ = paramString2;
-    this.kDa = paramString3;
-    this.kDb = paramString4;
-    this.kDc = paramMMAuthScopeRiskWxaAppInfo;
-    AppMethodBeat.o(223340);
+    AppMethodBeat.i(228313);
+    this.lHz = paramInt;
+    this.dQx = paramString1;
+    this.lHA = paramString2;
+    this.lHB = paramString3;
+    this.lHC = paramString4;
+    this.lHD = paramMMAuthScopeRiskWxaAppInfo;
+    AppMethodBeat.o(228313);
   }
   
   public MMAuthScopeRiskInfo(Parcel paramParcel)
   {
-    this(i, str1, str2, str3, str4, (MMAuthScopeRiskWxaAppInfo)paramParcel.readParcelable(MMAuthScopeRiskWxaAppInfo.class.getClassLoader()));
-    AppMethodBeat.i(223341);
-    AppMethodBeat.o(223341);
+    this(paramParcel.readInt(), String.valueOf(paramParcel.readString()), String.valueOf(paramParcel.readString()), String.valueOf(paramParcel.readString()), String.valueOf(paramParcel.readString()), (MMAuthScopeRiskWxaAppInfo)paramParcel.readParcelable(MMAuthScopeRiskWxaAppInfo.class.getClassLoader()));
+    AppMethodBeat.i(228314);
+    AppMethodBeat.o(228314);
   }
   
-  public MMAuthScopeRiskInfo(cyi paramcyi) {}
+  public MMAuthScopeRiskInfo(drd paramdrd) {}
   
   public int describeContents()
   {
@@ -55,18 +55,18 @@ public class MMAuthScopeRiskInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(223339);
+    AppMethodBeat.i(228312);
     p.h(paramParcel, "parcel");
-    paramParcel.writeInt(this.kCY);
-    paramParcel.writeString(this.dyI);
-    paramParcel.writeString(this.kCZ);
-    paramParcel.writeString(this.kDa);
-    paramParcel.writeString(this.kDb);
-    paramParcel.writeParcelable((Parcelable)this.kDc, paramInt);
-    AppMethodBeat.o(223339);
+    paramParcel.writeInt(this.lHz);
+    paramParcel.writeString(this.dQx);
+    paramParcel.writeString(this.lHA);
+    paramParcel.writeString(this.lHB);
+    paramParcel.writeString(this.lHC);
+    paramParcel.writeParcelable((Parcelable)this.lHD, paramInt);
+    AppMethodBeat.o(228312);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo;", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/MMAuthScopeRiskInfo;", "plugin-appbrand-integration_release"})
   public static final class a
     implements Parcelable.Creator<MMAuthScopeRiskInfo>
   {}

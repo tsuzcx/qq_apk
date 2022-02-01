@@ -46,7 +46,7 @@ public class AudioDecoderTrack
   
   public AudioDecoderTrack()
   {
-    AppMethodBeat.i(214756);
+    AppMethodBeat.i(218089);
     this.preRead = false;
     this.frameDuration = new CMTime(92880L, 1000000);
     this.frameRate = 11;
@@ -68,7 +68,7 @@ public class AudioDecoderTrack
     this._speed = 1.0F;
     this.started = false;
     this.duration = CMTime.CMTimeZero;
-    AppMethodBeat.o(214756);
+    AppMethodBeat.o(218089);
   }
   
   /* Error */
@@ -421,16 +421,16 @@ public class AudioDecoderTrack
       int i;
       try
       {
-        AppMethodBeat.i(214780);
+        AppMethodBeat.i(218113);
         if ((this.segments == null) || (!this.preRead))
         {
-          AppMethodBeat.o(214780);
+          AppMethodBeat.o(218113);
           return;
         }
         i = paramInt + 1;
         if (i >= this.segments.size())
         {
-          AppMethodBeat.o(214780);
+          AppMethodBeat.o(218113);
           continue;
         }
         if (this.decoderCreateThread != null) {
@@ -452,12 +452,12 @@ public class AudioDecoderTrack
           {
             this.decoderCreateThread = new AudioDecoderCreateThread(localDecoderAssetTrack, null, i, null);
             this.decoderCreateThread.start();
-            AppMethodBeat.o(214780);
+            AppMethodBeat.o(218113);
           }
           catch (Exception localException)
           {
             Logger.e(TAG, "createNextDecoder", localException);
-            AppMethodBeat.o(214780);
+            AppMethodBeat.o(218113);
           }
         }
       }
@@ -467,7 +467,7 @@ public class AudioDecoderTrack
         this.nextDecoder.segmentIndex = paramInt;
       }
       label236:
-      AppMethodBeat.o(214780);
+      AppMethodBeat.o(218113);
     }
   }
   
@@ -475,7 +475,7 @@ public class AudioDecoderTrack
   {
     Object localObject2 = null;
     Object localObject3 = null;
-    AppMethodBeat.i(214776);
+    AppMethodBeat.i(218109);
     try
     {
       if (this.isReleased)
@@ -498,7 +498,7 @@ public class AudioDecoderTrack
     }
     finally
     {
-      AppMethodBeat.o(214776);
+      AppMethodBeat.o(218109);
     }
     Object localObject1;
     CMTime localCMTime;
@@ -520,7 +520,7 @@ public class AudioDecoderTrack
         this.isEmptyFrame = true;
         Logger.v(TAG, "doReadSample: return emptyBuffer currentDecoder == null");
         paramCMTime = new CMSampleBuffer(localCMTime, outputBuffer());
-        AppMethodBeat.o(214776);
+        AppMethodBeat.o(218109);
         return paramCMTime;
         if (this.lastSampleState.getTime().sub(this.currentSegmentStartTime).multi(this._speed).bigThan(((DecoderTrackSegment)localObject1).getScaledDuration().multi(this._speed))) {
           paramCMTime = CMSampleState.fromError(-1L);
@@ -548,7 +548,7 @@ public class AudioDecoderTrack
           localObject1 = getEmptyAudioBuffer();
         }
         paramCMTime = new CMSampleBuffer(localCMTime, (ByteBuffer)localObject1);
-        AppMethodBeat.o(214776);
+        AppMethodBeat.o(218109);
         return paramCMTime;
         paramCMTime = this.currentDecoder.readSample(CMTime.CMTimeInvalid);
         break;
@@ -561,7 +561,7 @@ public class AudioDecoderTrack
         for (paramCMTime = localObject3;; paramCMTime = this.currentDecoder.outputBuffer())
         {
           paramCMTime = new CMSampleBuffer((CMSampleState)localObject1, paramCMTime);
-          AppMethodBeat.o(214776);
+          AppMethodBeat.o(218109);
           return paramCMTime;
         }
       }
@@ -573,11 +573,11 @@ public class AudioDecoderTrack
         if ((paramCMTime.getStateCode() != -3L) && (paramCMTime.getStateCode() != -100L))
         {
           paramCMTime = new CMSampleBuffer(this.lastSampleState);
-          AppMethodBeat.o(214776);
+          AppMethodBeat.o(218109);
           return paramCMTime;
         }
         paramCMTime = new CMSampleBuffer(paramCMTime);
-        AppMethodBeat.o(214776);
+        AppMethodBeat.o(218109);
         return paramCMTime;
       }
       localCMTime = paramCMTime.getTime().sub(((DecoderTrackSegment)localObject1).getDecoderStartTime()).divide(this._speed);
@@ -591,7 +591,7 @@ public class AudioDecoderTrack
       for (paramCMTime = localObject2;; paramCMTime = this.currentDecoder.outputBuffer())
       {
         paramCMTime = new CMSampleBuffer((CMSampleState)localObject1, paramCMTime);
-        AppMethodBeat.o(214776);
+        AppMethodBeat.o(218109);
         return paramCMTime;
       }
     }
@@ -600,7 +600,7 @@ public class AudioDecoderTrack
   private int findSegmentIndexAt(CMTime paramCMTime, boolean paramBoolean)
   {
     int k = 0;
-    AppMethodBeat.i(214758);
+    AppMethodBeat.i(218091);
     CMTime localCMTime1 = CMTime.CMTimeZero;
     Iterator localIterator = this.segments.iterator();
     int i = 0;
@@ -626,20 +626,20 @@ public class AudioDecoderTrack
     {
       if (j != 0)
       {
-        AppMethodBeat.o(214758);
+        AppMethodBeat.o(218091);
         return i;
         localCMTime1 = localCMTime1.add(localCMTime2);
         i += 1;
         break;
       }
-      AppMethodBeat.o(214758);
+      AppMethodBeat.o(218091);
       return -1;
     }
   }
   
   private CMTime getSegmentStartTime(int paramInt)
   {
-    AppMethodBeat.i(214759);
+    AppMethodBeat.i(218092);
     CMTime localCMTime = CMTime.CMTimeZero;
     int i = 0;
     while (i < paramInt)
@@ -647,31 +647,31 @@ public class AudioDecoderTrack
       localCMTime = CMTime.add(localCMTime, ((DecoderTrackSegment)this.segments.get(i)).getScaledDuration());
       i += 1;
     }
-    AppMethodBeat.o(214759);
+    AppMethodBeat.o(218092);
     return localCMTime;
   }
   
   private static boolean isSameExtractor(DecoderAssetTrack paramDecoderAssetTrack1, DecoderAssetTrack paramDecoderAssetTrack2)
   {
-    AppMethodBeat.i(214782);
+    AppMethodBeat.i(218115);
     if ((paramDecoderAssetTrack1 != null) && (paramDecoderAssetTrack2 != null) && (paramDecoderAssetTrack1.assetPath != null) && (paramDecoderAssetTrack1.assetPath.equals(paramDecoderAssetTrack2.assetPath)))
     {
-      AppMethodBeat.o(214782);
+      AppMethodBeat.o(218115);
       return true;
     }
-    AppMethodBeat.o(214782);
+    AppMethodBeat.o(218115);
     return false;
   }
   
   private boolean nextSegment(boolean paramBoolean)
   {
-    AppMethodBeat.i(214771);
+    AppMethodBeat.i(218104);
     Logger.d(TAG, "nextSegment:".concat(String.valueOf(paramBoolean)));
     this.segmentIndex += 1;
     if (this.segmentIndex >= this.segments.size())
     {
       this.segmentIndex = -1;
-      AppMethodBeat.o(214771);
+      AppMethodBeat.o(218104);
       return false;
     }
     this.currentSegmentStartTime = getSegmentStartTime(this.segmentIndex);
@@ -718,10 +718,10 @@ public class AudioDecoderTrack
         }
         paramBoolean = true;
         Logger.d((String)???, paramBoolean + " " + this._speed);
-        AppMethodBeat.o(214771);
+        AppMethodBeat.o(218104);
         return true;
         localObject3 = finally;
-        AppMethodBeat.o(214771);
+        AppMethodBeat.o(218104);
         throw localObject3;
         ??? = CMTime.CMTimeInvalid;
       }
@@ -741,26 +741,26 @@ public class AudioDecoderTrack
   
   public void asyncReadNextSample(CMTime arg1)
   {
-    AppMethodBeat.i(214777);
+    AppMethodBeat.i(218110);
     if (this.decoderThread.pcmFrame == null) {
       synchronized (this.decoderThread)
       {
         if (this.decoderThread.pcmFrame == null) {
           this.decoderThread.action();
         }
-        AppMethodBeat.o(214777);
+        AppMethodBeat.o(218110);
         return;
       }
     }
-    AppMethodBeat.o(214777);
+    AppMethodBeat.o(218110);
   }
   
   public void clipRangeAndClearRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(214767);
+    AppMethodBeat.i(218100);
     if ((paramCMTimeRange == null) || (paramCMTimeRange.getDurationUs() <= 0L) || (this.segments.size() == 0))
     {
-      AppMethodBeat.o(214767);
+      AppMethodBeat.o(218100);
       return;
     }
     CMTime localCMTime1 = paramCMTimeRange.getStart();
@@ -773,15 +773,15 @@ public class AudioDecoderTrack
     if (localCMTime2.getTimeUs() < localCMTime3.getTimeUs()) {
       this.segments.add(new DecoderTrackSegment(new CMTimeRange(localCMTime2, new CMTime(localCMTime3.getTimeSeconds() - localCMTime2.getTimeSeconds())), null));
     }
-    AppMethodBeat.o(214767);
+    AppMethodBeat.o(218100);
   }
   
   public void clipRangeAndRemoveRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(214768);
+    AppMethodBeat.i(218101);
     if ((paramCMTimeRange == null) || (paramCMTimeRange.getDurationUs() <= 0L) || (this.segments.size() == 0))
     {
-      AppMethodBeat.o(214768);
+      AppMethodBeat.o(218101);
       return;
     }
     Object localObject = paramCMTimeRange.getStart();
@@ -789,7 +789,7 @@ public class AudioDecoderTrack
     int k = findSegmentIndexAt((CMTime)localObject, false);
     if (k == -1)
     {
-      AppMethodBeat.o(214768);
+      AppMethodBeat.o(218101);
       return;
     }
     int i = findSegmentIndexAt(localCMTime1, false);
@@ -829,44 +829,44 @@ public class AudioDecoderTrack
           break;
         }
       }
-      AppMethodBeat.o(214768);
+      AppMethodBeat.o(218101);
       return;
     }
   }
   
   public CMTime duration()
   {
-    AppMethodBeat.i(214760);
+    AppMethodBeat.i(218093);
     CMTime localCMTime = getSegmentStartTime(this.segments.size());
-    AppMethodBeat.o(214760);
+    AppMethodBeat.o(218093);
     return localCMTime;
   }
   
   public AudioInfo getAudioInfo()
   {
-    AppMethodBeat.i(214765);
+    AppMethodBeat.i(218098);
     if (this.currentDecoder != null)
     {
       localAudioInfo = this.currentDecoder.getAudioInfo();
-      AppMethodBeat.o(214765);
+      AppMethodBeat.o(218098);
       return localAudioInfo;
     }
     AudioInfo localAudioInfo = this.audioInfo;
-    AppMethodBeat.o(214765);
+    AppMethodBeat.o(218098);
     return localAudioInfo;
   }
   
   public CMTime getCurrentSampleTime()
   {
-    AppMethodBeat.i(214779);
+    AppMethodBeat.i(218112);
     CMTime localCMTime = this.lastSampleState.getTime();
-    AppMethodBeat.o(214779);
+    AppMethodBeat.o(218112);
     return localCMTime;
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(214778);
+    AppMethodBeat.i(218111);
     if (this.duration == CMTime.CMTimeZero)
     {
       localCMTime = CMTime.CMTimeZero;
@@ -877,13 +877,13 @@ public class AudioDecoderTrack
       this.duration = localCMTime;
     }
     CMTime localCMTime = this.duration;
-    AppMethodBeat.o(214778);
+    AppMethodBeat.o(218111);
     return localCMTime;
   }
   
   public ByteBuffer getEmptyAudioBuffer()
   {
-    AppMethodBeat.i(214773);
+    AppMethodBeat.i(218106);
     if (this.emptyAudioBuffer == null)
     {
       long l = this.audioInfo.channelCount * this.audioInfo.sampleRate * this.frameDuration.getTimeUs() / 1000000L;
@@ -900,7 +900,7 @@ public class AudioDecoderTrack
     }
     this.emptyAudioBuffer.position(0);
     Object localObject = this.emptyAudioBuffer;
-    AppMethodBeat.o(214773);
+    AppMethodBeat.o(218106);
     return localObject;
   }
   
@@ -912,6 +912,11 @@ public class AudioDecoderTrack
   public int getFrameRate()
   {
     return this.frameRate;
+  }
+  
+  public long getLaggingTime()
+  {
+    return 0L;
   }
   
   public int getTrackID()
@@ -926,20 +931,20 @@ public class AudioDecoderTrack
   
   public ByteBuffer outputBuffer()
   {
-    AppMethodBeat.i(214757);
+    AppMethodBeat.i(218090);
     if (this.isEmptyFrame)
     {
       localByteBuffer = getEmptyAudioBuffer();
-      AppMethodBeat.o(214757);
+      AppMethodBeat.o(218090);
       return localByteBuffer;
     }
     if (this.currentDecoder == null)
     {
-      AppMethodBeat.o(214757);
+      AppMethodBeat.o(218090);
       return null;
     }
     ByteBuffer localByteBuffer = this.currentDecoder.outputBuffer();
-    AppMethodBeat.o(214757);
+    AppMethodBeat.o(218090);
     return localByteBuffer;
   }
   
@@ -947,14 +952,14 @@ public class AudioDecoderTrack
   {
     try
     {
-      AppMethodBeat.i(214783);
+      AppMethodBeat.i(218116);
       if (this.audioMixer.getDestAudioChannelCount() != paramAudioInfo.channelCount)
       {
         this.audioMixer.release();
         this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
       }
       paramByteBuffer = this.audioMixer.processBytes(paramByteBuffer, paramFloat2, paramFloat1, 1.0F);
-      AppMethodBeat.o(214783);
+      AppMethodBeat.o(218116);
       return paramByteBuffer;
     }
     finally {}
@@ -962,21 +967,21 @@ public class AudioDecoderTrack
   
   public CMSampleBuffer readSample()
   {
-    AppMethodBeat.i(214774);
+    AppMethodBeat.i(218107);
     CMSampleBuffer localCMSampleBuffer = readSample(CMTime.CMTimeInvalid);
-    AppMethodBeat.o(214774);
+    AppMethodBeat.o(218107);
     return localCMSampleBuffer;
   }
   
   public CMSampleBuffer readSample(CMTime paramCMTime)
   {
-    AppMethodBeat.i(214775);
+    AppMethodBeat.i(218108);
     Logger.v(TAG, "readSample: [start]".concat(String.valueOf(paramCMTime)));
     if (this.isReleased)
     {
       Logger.e(TAG, "readSample: [error] has released");
       paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-1L));
-      AppMethodBeat.o(214775);
+      AppMethodBeat.o(218108);
       return paramCMTime;
     }
     synchronized (this.decoderThread.nextFrameDecoderLock)
@@ -987,7 +992,7 @@ public class AudioDecoderTrack
         this.lastSampleState = new CMSampleState(DecoderThread.access$200(this.decoderThread).frameTime);
         createNextDecoder(this.segmentIndex);
         Logger.v(TAG, "readSample: [success] hit asyncRead - " + this.lastSampleState);
-        AppMethodBeat.o(214775);
+        AppMethodBeat.o(218108);
         return paramCMTime;
       }
       paramCMTime = doReadSample(paramCMTime);
@@ -1000,7 +1005,7 @@ public class AudioDecoderTrack
       this.lastSampleState = paramCMTime.getState();
       createNextDecoder(this.segmentIndex);
       Logger.v(TAG, "readSample: [success]  - " + this.lastSampleState);
-      AppMethodBeat.o(214775);
+      AppMethodBeat.o(218108);
       return paramCMTime;
     }
   }
@@ -1011,14 +1016,14 @@ public class AudioDecoderTrack
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 676
+    //   2: ldc_w 677
     //   5: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   11: ldc_w 678
+    //   11: ldc_w 679
     //   14: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_0
     //   18: getfield 137	com/tencent/tav/decoder/AudioDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderThread;
-    //   21: invokevirtual 679	com/tencent/tav/decoder/AudioDecoderTrack$DecoderThread:release	()V
+    //   21: invokevirtual 680	com/tencent/tav/decoder/AudioDecoderTrack$DecoderThread:release	()V
     //   24: aload_0
     //   25: iconst_1
     //   26: putfield 132	com/tencent/tav/decoder/AudioDecoderTrack:isReleased	Z
@@ -1027,7 +1032,7 @@ public class AudioDecoderTrack
     //   33: ifnull +15 -> 48
     //   36: aload_0
     //   37: getfield 176	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
-    //   40: invokevirtual 680	com/tencent/tav/decoder/AudioDecoder:release	()V
+    //   40: invokevirtual 681	com/tencent/tav/decoder/AudioDecoder:release	()V
     //   43: aload_0
     //   44: aconst_null
     //   45: putfield 176	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
@@ -1041,16 +1046,16 @@ public class AudioDecoderTrack
     //   59: ifnull +15 -> 74
     //   62: aload_0
     //   63: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   66: invokestatic 684	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:access$600	(Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;)V
+    //   66: invokestatic 685	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:access$600	(Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;)V
     //   69: aload_0
     //   70: aconst_null
     //   71: putfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   74: aload_1
     //   75: monitorexit
     //   76: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   79: ldc_w 686
+    //   79: ldc_w 687
     //   82: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   85: ldc_w 676
+    //   85: ldc_w 677
     //   88: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: aload_0
     //   92: monitorexit
@@ -1058,7 +1063,7 @@ public class AudioDecoderTrack
     //   94: astore_2
     //   95: aload_1
     //   96: monitorexit
-    //   97: ldc_w 676
+    //   97: ldc_w 677
     //   100: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: aload_2
     //   104: athrow
@@ -1085,13 +1090,13 @@ public class AudioDecoderTrack
   
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(214772);
+    AppMethodBeat.i(218105);
     Logger.v(TAG, "seekTo:[time " + paramCMTime + "] [needRead " + paramBoolean1 + "] [quickSeek " + paramBoolean2 + "]");
     if (this.isReleased)
     {
       Logger.e(TAG, "seekTo: [failed] has released");
       paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-1L));
-      AppMethodBeat.o(214772);
+      AppMethodBeat.o(218105);
       return paramCMTime;
     }
     synchronized (this.decoderThread.nextFrameDecoderLock)
@@ -1100,7 +1105,7 @@ public class AudioDecoderTrack
       if (!this.started)
       {
         Logger.w(TAG, "seekTo: [failed] un started, stack = " + Log.getStackTraceString(new RuntimeException()));
-        AppMethodBeat.o(214772);
+        AppMethodBeat.o(218105);
         return null;
       }
     }
@@ -1109,7 +1114,7 @@ public class AudioDecoderTrack
     {
       this.segmentIndex = -1;
       Logger.e(TAG, "seekTo: [failed] segmentIndex = -1");
-      AppMethodBeat.o(214772);
+      AppMethodBeat.o(218105);
       return null;
     }
     ??? = getSegmentStartTime(i);
@@ -1124,7 +1129,7 @@ public class AudioDecoderTrack
     {
       this.lastSampleState = new CMSampleState(paramCMTime);
       Logger.d(TAG, "seekTo: [failed] currentDecoder == null ");
-      AppMethodBeat.o(214772);
+      AppMethodBeat.o(218105);
       return null;
     }
     this.currentDecoder.seekTo(localDecoderTrackSegment.getDecoderStartTime().add((CMTime)???));
@@ -1132,19 +1137,19 @@ public class AudioDecoderTrack
     for (this.lastSampleState = new CMSampleState(paramCMTime.sub(this.frameDuration));; this.lastSampleState = new CMSampleState(paramCMTime))
     {
       Logger.v(TAG, "seekTo: [success] [lastSampleState " + this.lastSampleState + "]");
-      AppMethodBeat.o(214772);
+      AppMethodBeat.o(218105);
       return null;
     }
   }
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(214766);
+    AppMethodBeat.i(218099);
     this.audioInfo = paramAudioInfo.clone();
     if (this.emptyAudioBuffer != null) {
       this.emptyAudioBuffer = null;
     }
-    AppMethodBeat.o(214766);
+    AppMethodBeat.o(218099);
   }
   
   public void setDecodeType(IDecoder.DecodeType paramDecodeType)
@@ -1154,10 +1159,10 @@ public class AudioDecoderTrack
   
   public void setFrameRate(int paramInt)
   {
-    AppMethodBeat.i(214764);
+    AppMethodBeat.i(218097);
     this.frameDuration = this.frameDuration.divide(paramInt / this.frameRate);
     this.frameRate = paramInt;
-    AppMethodBeat.o(214764);
+    AppMethodBeat.o(218097);
   }
   
   public void setTrackID(int paramInt)
@@ -1167,13 +1172,13 @@ public class AudioDecoderTrack
   
   public void setTrackSegments(List<DecoderTrackSegment> paramList)
   {
-    AppMethodBeat.i(214769);
+    AppMethodBeat.i(218102);
     if (this.segments == null) {
       this.segments = new ArrayList();
     }
     this.segments.clear();
     this.segments.addAll(paramList);
-    AppMethodBeat.o(214769);
+    AppMethodBeat.o(218102);
   }
   
   public void setVolume(float paramFloat)
@@ -1188,25 +1193,25 @@ public class AudioDecoderTrack
   
   public void start()
   {
-    AppMethodBeat.i(214761);
+    AppMethodBeat.i(218094);
     start(null);
-    AppMethodBeat.o(214761);
+    AppMethodBeat.o(218094);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator)
   {
-    AppMethodBeat.i(214762);
+    AppMethodBeat.i(218095);
     start(paramSurfaceCreator, null);
-    AppMethodBeat.o(214762);
+    AppMethodBeat.o(218095);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(214763);
+    AppMethodBeat.i(218096);
     if (this.segments.size() == 0)
     {
       release();
-      AppMethodBeat.o(214763);
+      AppMethodBeat.o(218096);
       return;
     }
     this.isReleased = false;
@@ -1215,7 +1220,7 @@ public class AudioDecoderTrack
     this.segmentIndex = -1;
     clipRangeAndRemoveRange(paramCMTimeRange);
     nextSegment(true);
-    AppMethodBeat.o(214763);
+    AppMethodBeat.o(218096);
   }
   
   class AudioDecoderCreateThread
@@ -1228,12 +1233,12 @@ public class AudioDecoderTrack
     private AudioDecoderCreateThread(DecoderAssetTrack paramDecoderAssetTrack, Surface paramSurface, int paramInt)
     {
       super();
-      AppMethodBeat.i(214748);
+      AppMethodBeat.i(218081);
       this.segmentIndex = 0;
       this.extractor = paramDecoderAssetTrack;
       this.outputSurface = paramSurface;
       this.segmentIndex = paramInt;
-      AppMethodBeat.o(214748);
+      AppMethodBeat.o(218081);
     }
     
     /* Error */
@@ -1504,7 +1509,7 @@ public class AudioDecoderTrack
     
     public void run()
     {
-      AppMethodBeat.i(214749);
+      AppMethodBeat.i(218082);
       ??? = AudioDecoderTrack.TAG;
       StringBuilder localStringBuilder = new StringBuilder("AudioDecoderCreateThread start - ").append(this.extractor.assetPath).append(" - ");
       if (this.outputSurface != null) {}
@@ -1515,7 +1520,7 @@ public class AudioDecoderTrack
           break;
         }
         AudioDecoderTrack.access$902(AudioDecoderTrack.this, null);
-        AppMethodBeat.o(214749);
+        AppMethodBeat.o(218082);
         return;
       }
       for (;;)
@@ -1549,12 +1554,12 @@ public class AudioDecoderTrack
             AudioDecoderTrack.access$1102(AudioDecoderTrack.this, null);
           }
           Logger.d(AudioDecoderTrack.TAG, "AudioDecoderCreateThread finish - " + this.extractor.assetPath);
-          AppMethodBeat.o(214749);
+          AppMethodBeat.o(218082);
           return;
           createDecoder();
           continue;
           localObject2 = finally;
-          AppMethodBeat.o(214749);
+          AppMethodBeat.o(218082);
           throw localObject2;
         }
       }
@@ -1578,15 +1583,15 @@ public class AudioDecoderTrack
     public DecoderThread()
     {
       super();
-      AppMethodBeat.i(214751);
+      AppMethodBeat.i(218084);
       this.nextFrameDecoderLock = new Object();
-      AppMethodBeat.o(214751);
+      AppMethodBeat.o(218084);
     }
     
     protected void doAction()
     {
       CMSampleBuffer localCMSampleBuffer = null;
-      AppMethodBeat.i(214752);
+      AppMethodBeat.i(218085);
       synchronized (this.nextFrameDecoderLock)
       {
         if (this.pcmFrame != null)
@@ -1612,7 +1617,7 @@ public class AudioDecoderTrack
             AudioDecoderTrack.CacheBuffer.access$2202(this.pcmFrame, AudioDecoderTrack.this.lastSampleState.getTime());
             AudioDecoderTrack.CacheBuffer.access$302(this.pcmFrame, localCMSampleBuffer.getTime());
           }
-          AppMethodBeat.o(214752);
+          AppMethodBeat.o(218085);
           return;
         }
         Logger.v(AudioDecoderTrack.TAG, "doAction: lastSampleTime.add(frameDuration)");
@@ -1629,19 +1634,19 @@ public class AudioDecoderTrack
     
     private void release()
     {
-      AppMethodBeat.i(214753);
+      AppMethodBeat.i(218086);
       Logger.d(AudioDecoderTrack.TAG, "Audio DecoderWrapper release: ");
       try
       {
         if (this.decoder != null) {
           this.decoder.release();
         }
-        AppMethodBeat.o(214753);
+        AppMethodBeat.o(218086);
         return;
       }
       catch (Exception localException)
       {
-        AppMethodBeat.o(214753);
+        AppMethodBeat.o(218086);
         return;
       }
       catch (Error localError)
@@ -1665,17 +1670,17 @@ public class AudioDecoderTrack
     
     public void run()
     {
-      AppMethodBeat.i(214755);
+      AppMethodBeat.i(218088);
       if (this.decoder != null) {
         this.decoder.release();
       }
-      AppMethodBeat.o(214755);
+      AppMethodBeat.o(218088);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

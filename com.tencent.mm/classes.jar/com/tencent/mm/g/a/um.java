@@ -1,9 +1,9 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class um
-  extends b
+  extends IEvent
 {
   public um()
   {
@@ -12,13 +12,13 @@ public final class um
   
   private um(byte paramByte)
   {
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.a.um
  * JD-Core Version:    0.7.0.1
  */

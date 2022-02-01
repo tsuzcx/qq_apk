@@ -1,105 +1,143 @@
 package com.tencent.mm.plugin.finder.cgi;
 
-import android.widget.Toast;
+import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.modelcontrol.e;
+import com.tencent.mm.plugin.finder.report.f;
+import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.report.k;
+import com.tencent.mm.plugin.finder.report.p;
+import com.tencent.mm.plugin.finder.report.p.a;
+import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.cak;
-import com.tencent.mm.protocal.protobuf.kf;
-import com.tencent.mm.protocal.protobuf.kg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.ui.base.t;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.apc;
+import com.tencent.mm.protocal.protobuf.arc;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.bct;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.ecq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneBatchSetBlackList;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "userList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeInfo;", "(Ljava/util/LinkedList;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getUserList", "()Ljava/util/LinkedList;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getRespContactTypeInfo", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeResInfo;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStatsReport;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderStatsReportResponse;", "stats", "", "Lcom/tencent/mm/protocal/protobuf/Stats;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/util/List;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "enableReportVal", "Lcom/tencent/mm/plugin/finder/cgi/report/EnableValue;", "buildStatsRequest", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderStatsReportRequest;", "getFluencyInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderFluencyInfo;", "isEnableReport", "onCgiEnd", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class z
-  extends n
-  implements k
+  extends an<bct>
 {
-  private static final String TAG = "Finder.NetSceneBatchSetBlackList";
-  public static final a rRl;
-  private f callback;
-  public final LinkedList<cak> rRk;
-  public b rr;
+  public static final a ttI;
+  private com.tencent.mm.plugin.finder.cgi.report.b ttH;
   
   static
   {
-    AppMethodBeat.i(201521);
-    rRl = new a((byte)0);
-    TAG = "Finder.NetSceneBatchSetBlackList";
-    AppMethodBeat.o(201521);
+    AppMethodBeat.i(242260);
+    ttI = new a((byte)0);
+    AppMethodBeat.o(242260);
   }
   
-  public z(LinkedList<cak> paramLinkedList)
+  public z(List<? extends ecq> paramList, bbn parambbn)
   {
-    AppMethodBeat.i(201520);
-    this.rRk = paramLinkedList;
-    paramLinkedList = new b.a();
-    paramLinkedList.oS(getType());
-    Object localObject = new kf();
-    ((kf)localObject).FVc = this.rRk;
-    ((kf)localObject).FVb = this.rRk.size();
-    ((kf)localObject).scene = 1;
-    paramLinkedList.c((a)localObject);
-    localObject = new kg();
-    ((kg)localObject).setBaseResponse(new BaseResponse());
-    paramLinkedList.d((a)localObject);
-    paramLinkedList.DN("/cgi-bin/micromsg-bin/batchmodcontacttype");
-    paramLinkedList = paramLinkedList.aDS();
-    p.g(paramLinkedList, "builder.buildInstance()");
-    this.rr = paramLinkedList;
-    AppMethodBeat.o(201520);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(201518);
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(201518);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 3990;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(201519);
-    ae.i(TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    if (((paramInt2 != 0) || (paramInt3 != 0)) && ((j.IS_FLAVOR_PURPLE) || (j.IS_FLAVOR_RED))) {
-      t.makeText(ak.getContext(), (CharSequence)("is debug info finder batch black list: " + paramInt2 + ' ' + paramInt3), 1).show();
-    }
-    if (this.callback != null)
+    super(parambbn);
+    AppMethodBeat.i(242259);
+    d.a locala = new d.a();
+    Object localObject1 = new bcs();
+    Object localObject2 = ((Iterable)paramList).iterator();
+    if (((Iterator)localObject2).hasNext())
     {
-      paramq = this.callback;
-      if (paramq == null) {
-        p.gkB();
+      localObject3 = (ecq)((Iterator)localObject2).next();
+      if (parambbn != null) {}
+      for (int i = parambbn.tCE;; i = 0)
+      {
+        ((ecq)localObject3).tCE = i;
+        break;
       }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
     }
-    AppMethodBeat.o(201519);
+    locala.c((a)localObject1);
+    ((bcs)localObject1).LEw.addAll((Collection)paramList);
+    ((bcs)localObject1).finderUsername = com.tencent.mm.model.z.aUg();
+    localObject2 = am.tuw;
+    ((bcs)localObject1).uli = am.a(parambbn);
+    ((bcs)localObject1).LLM = cl.aWA();
+    parambbn = new apc();
+    parambbn.osName = d.KyL;
+    parambbn.osVersion = d.KyM;
+    parambbn.deviceBrand = d.KyI;
+    parambbn.deviceModel = d.KyJ;
+    parambbn.LBe = NetStatusUtil.getNetTypeString(MMApplicationContext.getContext());
+    localObject2 = k.vfA;
+    parambbn.netType = k.dod();
+    parambbn.LBf = CdnLogic.getRecentAverageSpeed(2);
+    localObject2 = parambbn.LBg;
+    Object localObject3 = com.tencent.mm.plugin.finder.video.reporter.b.whK;
+    ((LinkedList)localObject2).addAll((Collection)com.tencent.mm.plugin.finder.video.reporter.b.dFZ());
+    localObject2 = new StringBuilder("[buildStatsRequest] lastVideosDownloadInfo size=");
+    localObject3 = com.tencent.mm.plugin.finder.video.reporter.b.whK;
+    Log.i("Finder.CgiFinderStatsReport", com.tencent.mm.plugin.finder.video.reporter.b.dFZ().size());
+    localObject2 = com.tencent.mm.plugin.finder.video.reporter.b.whK;
+    com.tencent.mm.plugin.finder.video.reporter.b.dFZ().clear();
+    parambbn.LBh.add("h264");
+    if (e.sX(4)) {
+      parambbn.LBh.add("h265");
+    }
+    parambbn.LBi = cXR();
+    ((bcs)localObject1).LAv = parambbn;
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
+    {
+      parambbn = (ecq)paramList.next();
+      localObject1 = p.vgC;
+      p.a.a(parambbn, "Finder.CgiFinderStatsReport");
+    }
+    paramList = new bct();
+    paramList.setBaseResponse(new BaseResponse());
+    paramList.getBaseResponse().ErrMsg = new dqi();
+    locala.d((a)paramList);
+    locala.MB("/cgi-bin/micromsg-bin/finderstatsreport");
+    locala.sG(3776);
+    c(locala.aXF());
+    this.ttH = com.tencent.mm.plugin.finder.cgi.report.b.tyf;
+    AppMethodBeat.o(242259);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneBatchSetBlackList$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  private final LinkedList<arc> cXR()
+  {
+    try
+    {
+      AppMethodBeat.i(242257);
+      LinkedList localLinkedList = new LinkedList();
+      Object localObject2 = h.veu;
+      localLinkedList.addAll((Collection)h.dnP());
+      localObject2 = f.veb;
+      localLinkedList.addAll((Collection)f.dnP());
+      AppMethodBeat.o(242257);
+      return localLinkedList;
+    }
+    finally
+    {
+      localObject1 = finally;
+      throw localObject1;
+    }
+  }
+  
+  public final com.tencent.mm.plugin.finder.cgi.report.b cXS()
+  {
+    return this.ttH;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStatsReport$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.z
  * JD-Core Version:    0.7.0.1
  */

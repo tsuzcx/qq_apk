@@ -7,13 +7,13 @@ final class d
 {
   public static final class n
   {
-    private static volatile a iKb = null;
+    private static volatile a jGH = null;
     
     public static void c0(a parama)
     {
       try
       {
-        iKb = parama;
+        jGH = parama;
         return;
       }
       finally
@@ -31,9 +31,9 @@ final class d
       //   2: monitorenter
       //   3: ldc 22
       //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 13	com/tencent/mm/normsgext/d$n:iKb	Lcom/tencent/mm/normsgext/a;
+      //   8: getstatic 13	com/tencent/mm/normsgext/d$n:jGH	Lcom/tencent/mm/normsgext/a;
       //   11: ifnull +22 -> 33
-      //   14: getstatic 13	com/tencent/mm/normsgext/d$n:iKb	Lcom/tencent/mm/normsgext/a;
+      //   14: getstatic 13	com/tencent/mm/normsgext/d$n:jGH	Lcom/tencent/mm/normsgext/a;
       //   17: invokeinterface 33 1 0
       //   22: astore_0
       //   23: ldc 22
@@ -64,88 +64,88 @@ final class d
     
     private static String c10()
     {
-      AppMethodBeat.i(193674);
-      if (iKb != null)
+      AppMethodBeat.i(188594);
+      if (jGH != null)
       {
-        String str = iKb.getDeviceId();
-        AppMethodBeat.o(193674);
+        String str = jGH.getDeviceId();
+        AppMethodBeat.o(188594);
         return str;
       }
-      AppMethodBeat.o(193674);
+      AppMethodBeat.o(188594);
       return "";
     }
     
     private static boolean c11(String paramString, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(193675);
-      if (iKb != null)
+      AppMethodBeat.i(188595);
+      if (jGH != null)
       {
-        boolean bool = iKb.k(paramString, paramArrayOfByte);
-        AppMethodBeat.o(193675);
+        boolean bool = jGH.k(paramString, paramArrayOfByte);
+        AppMethodBeat.o(188595);
         return bool;
       }
-      AppMethodBeat.o(193675);
+      AppMethodBeat.o(188595);
       return false;
     }
     
     private static byte[] c12(String paramString)
     {
-      AppMethodBeat.i(193676);
-      if (iKb != null)
+      AppMethodBeat.i(188596);
+      if (jGH != null)
       {
-        paramString = iKb.IZ(paramString);
-        AppMethodBeat.o(193676);
+        paramString = jGH.RW(paramString);
+        AppMethodBeat.o(188596);
         return paramString;
       }
-      AppMethodBeat.o(193676);
+      AppMethodBeat.o(188596);
       return new byte[0];
     }
     
     private static void c13(String paramString)
     {
-      AppMethodBeat.i(193677);
-      if (iKb != null) {
-        iKb.Ja(paramString);
+      AppMethodBeat.i(188597);
+      if (jGH != null) {
+        jGH.RX(paramString);
       }
-      AppMethodBeat.o(193677);
+      AppMethodBeat.o(188597);
     }
     
     private static String c14()
     {
-      AppMethodBeat.i(193678);
-      if (iKb != null)
+      AppMethodBeat.i(188598);
+      if (jGH != null)
       {
-        String str = iKb.aaL();
-        AppMethodBeat.o(193678);
+        String str = jGH.aoK();
+        AppMethodBeat.o(188598);
         return str;
       }
-      AppMethodBeat.o(193678);
+      AppMethodBeat.o(188598);
       return "";
     }
     
     private static String c15(Context paramContext, String paramString)
     {
-      AppMethodBeat.i(193679);
-      if (iKb != null)
+      AppMethodBeat.i(188599);
+      if (jGH != null)
       {
-        paramContext = iKb.H(paramContext, paramString);
-        AppMethodBeat.o(193679);
+        paramContext = jGH.G(paramContext, paramString);
+        AppMethodBeat.o(188599);
         return paramContext;
       }
-      AppMethodBeat.o(193679);
+      AppMethodBeat.o(188599);
       return paramString;
     }
     
     private static boolean c16(Context paramContext)
     {
-      AppMethodBeat.i(193680);
-      if (iKb != null)
+      AppMethodBeat.i(188600);
+      if (jGH != null)
       {
-        boolean bool = iKb.cS(paramContext);
-        AppMethodBeat.o(193680);
+        boolean bool = jGH.dn(paramContext);
+        AppMethodBeat.o(188600);
         return bool;
       }
-      AppMethodBeat.o(193680);
+      AppMethodBeat.o(188600);
       return false;
     }
     
@@ -157,9 +157,9 @@ final class d
       //   2: monitorenter
       //   3: ldc 81
       //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 13	com/tencent/mm/normsgext/d$n:iKb	Lcom/tencent/mm/normsgext/a;
+      //   8: getstatic 13	com/tencent/mm/normsgext/d$n:jGH	Lcom/tencent/mm/normsgext/a;
       //   11: ifnull +22 -> 33
-      //   14: getstatic 13	com/tencent/mm/normsgext/d$n:iKb	Lcom/tencent/mm/normsgext/a;
+      //   14: getstatic 13	com/tencent/mm/normsgext/d$n:jGH	Lcom/tencent/mm/normsgext/a;
       //   17: invokeinterface 84 1 0
       //   22: lstore_0
       //   23: ldc 81
@@ -192,11 +192,11 @@ final class d
     {
       try
       {
-        AppMethodBeat.i(193668);
-        if (iKb != null) {
-          iKb.O(paramInt, paramString);
+        AppMethodBeat.i(188588);
+        if (jGH != null) {
+          jGH.R(paramInt, paramString);
         }
-        AppMethodBeat.o(193668);
+        AppMethodBeat.o(188588);
         return;
       }
       finally {}
@@ -206,11 +206,11 @@ final class d
     {
       try
       {
-        AppMethodBeat.i(193669);
-        if (iKb != null) {
-          iKb.N(paramInt1, paramInt2, paramInt3);
+        AppMethodBeat.i(188589);
+        if (jGH != null) {
+          jGH.O(paramInt1, paramInt2, paramInt3);
         }
-        AppMethodBeat.o(193669);
+        AppMethodBeat.o(188589);
         return;
       }
       finally {}
@@ -220,11 +220,11 @@ final class d
     {
       try
       {
-        AppMethodBeat.i(193670);
-        if (iKb != null) {
-          iKb.w(paramInt1, paramInt2, paramInt3, paramInt4);
+        AppMethodBeat.i(188590);
+        if (jGH != null) {
+          jGH.w(paramInt1, paramInt2, paramInt3, paramInt4);
         }
-        AppMethodBeat.o(193670);
+        AppMethodBeat.o(188590);
         return;
       }
       finally {}
@@ -243,9 +243,9 @@ final class d
       //   2: monitorenter
       //   3: ldc 105
       //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 13	com/tencent/mm/normsgext/d$n:iKb	Lcom/tencent/mm/normsgext/a;
+      //   8: getstatic 13	com/tencent/mm/normsgext/d$n:jGH	Lcom/tencent/mm/normsgext/a;
       //   11: ifnull +22 -> 33
-      //   14: getstatic 13	com/tencent/mm/normsgext/d$n:iKb	Lcom/tencent/mm/normsgext/a;
+      //   14: getstatic 13	com/tencent/mm/normsgext/d$n:jGH	Lcom/tencent/mm/normsgext/a;
       //   17: invokeinterface 108 1 0
       //   22: astore_0
       //   23: ldc 105
@@ -276,27 +276,27 @@ final class d
     
     private static boolean c8()
     {
-      AppMethodBeat.i(193672);
-      if (iKb != null)
+      AppMethodBeat.i(188592);
+      if (jGH != null)
       {
-        boolean bool = iKb.aPW();
-        AppMethodBeat.o(193672);
+        boolean bool = jGH.bky();
+        AppMethodBeat.o(188592);
         return bool;
       }
-      AppMethodBeat.o(193672);
+      AppMethodBeat.o(188592);
       return false;
     }
     
     private static String c9()
     {
-      AppMethodBeat.i(193673);
-      if (iKb != null)
+      AppMethodBeat.i(188593);
+      if (jGH != null)
       {
-        String str = iKb.aPX();
-        AppMethodBeat.o(193673);
+        String str = jGH.bkz();
+        AppMethodBeat.o(188593);
         return str;
       }
-      AppMethodBeat.o(193673);
+      AppMethodBeat.o(188593);
       return "";
     }
   }

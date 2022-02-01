@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.f;
+import com.tencent.mm.ac.g;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -122,7 +122,7 @@ public final class a
   public static final void a(Object paramObject, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(163914);
-    f.a(paramObject, paramJSONObject);
+    g.a(paramObject, paramJSONObject);
     AppMethodBeat.o(163914);
   }
   

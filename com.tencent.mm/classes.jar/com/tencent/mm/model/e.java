@@ -1,94 +1,97 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.ak.e.c;
-import com.tencent.mm.cm.a.a;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.ak.h;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.ak.h.c;
+import com.tencent.mm.co.a.a;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.t;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.ca;
 
 public class e
-  implements com.tencent.mm.ak.e
+  implements h
 {
-  private static final a hHt;
+  private static final a iBD;
   
   static
   {
     AppMethodBeat.i(42771);
-    hHt = new a();
+    iBD = new a();
     AppMethodBeat.o(42771);
   }
   
   public static void a(com.tencent.mm.plugin.messenger.foundation.a.a parama)
   {
     AppMethodBeat.i(42768);
-    hHt.bu(parama);
+    iBD.add(parama);
     AppMethodBeat.o(42768);
   }
   
-  protected bv a(com.tencent.mm.ak.e.a parama, String paramString1, String paramString2, String paramString3)
+  protected ca a(h.a parama, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(213387);
-    cv localcv = parama.gte;
+    AppMethodBeat.i(225913);
+    de localde = parama.heO;
     if (paramString3.equals(paramString1)) {}
     for (parama = paramString2;; parama = paramString1)
     {
-      paramString3 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().aJ(parama, localcv.xrk);
-      ae.i("MicroMsg.BaseMsgExtension", "summerbadcr dkmsgid prepareMsgInfo svrid:%d localid:%d  from:%s to:%s talker:%s", new Object[] { Long.valueOf(localcv.xrk), Long.valueOf(paramString3.field_msgId), paramString1, paramString2, parama });
-      if ((paramString3.field_msgId != 0L) && (paramString3.field_createTime + 604800000L < bl.B(parama, localcv.CreateTime)))
+      paramString3 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().aJ(parama, localde.Brn);
+      Log.i("MicroMsg.BaseMsgExtension", "summerbadcr dkmsgid prepareMsgInfo svrid:%d localid:%d  from:%s to:%s talker:%s", new Object[] { Long.valueOf(localde.Brn), Long.valueOf(paramString3.field_msgId), paramString1, paramString2, parama });
+      if ((paramString3.field_msgId != 0L) && (paramString3.field_createTime + 604800000L < bp.C(parama, localde.CreateTime)))
       {
-        ae.w("MicroMsg.BaseMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(localcv.xrk), Long.valueOf(paramString3.field_msgId) });
-        bl.rW(paramString3.field_msgId);
+        Log.w("MicroMsg.BaseMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(localde.Brn), Long.valueOf(paramString3.field_msgId) });
+        bp.Ad(paramString3.field_msgId);
         paramString3.setMsgId(0L);
       }
       paramString1 = paramString3;
       if (paramString3.field_msgId == 0L)
       {
-        paramString1 = new bv();
-        paramString1.ui(parama);
-        paramString1.qM(localcv.xrk);
-        paramString1.qN(bl.B(parama, localcv.CreateTime));
-        paramString1.setType(localcv.urJ);
-        paramString1.setContent(bu.aSS(bu.nullAsNil(z.a(localcv.FNI))));
+        paramString1 = new ca();
+        paramString1.Cy(parama);
+        paramString1.yF(localde.Brn);
+        paramString1.setCreateTime(bp.C(parama, localde.CreateTime));
+        paramString1.setType(localde.xKb);
+        paramString1.setContent(Util.escapeStringForUCC(Util.nullAsNil(com.tencent.mm.platformtools.z.a(localde.KHn))));
       }
-      AppMethodBeat.o(213387);
+      AppMethodBeat.o(225913);
       return paramString1;
     }
   }
   
-  public e.b b(com.tencent.mm.ak.e.a parama)
+  public h.b b(h.a parama)
   {
     AppMethodBeat.i(42769);
-    Object localObject1 = parama.gte;
-    Object localObject2 = (String)g.ajR().ajA().get(2, "");
+    Object localObject1 = parama.heO;
+    Object localObject2 = (String)g.aAh().azQ().get(2, "");
     if (((String)localObject2).length() <= 0)
     {
       AppMethodBeat.o(42769);
       return null;
     }
-    String str1 = z.a(((cv)localObject1).FNG);
-    String str3 = z.a(((cv)localObject1).FNH);
-    if ((bu.nullAsNil(str1).length() <= 0) || (bu.nullAsNil(str3).length() <= 0))
+    String str1 = com.tencent.mm.platformtools.z.a(((de)localObject1).KHl);
+    String str3 = com.tencent.mm.platformtools.z.a(((de)localObject1).KHm);
+    if ((Util.nullAsNil(str1).length() <= 0) || (Util.nullAsNil(str3).length() <= 0))
     {
-      ae.e("MicroMsg.BaseMsgExtension", "neither from-user nor to-user can be empty");
+      Log.e("MicroMsg.BaseMsgExtension", "neither from-user nor to-user can be empty");
       AppMethodBeat.o(42769);
       return null;
     }
-    bv localbv = a(parama, str1, str3, (String)localObject2);
-    if (localbv == null)
+    ca localca = a(parama, str1, str3, (String)localObject2);
+    if (localca == null)
     {
       AppMethodBeat.o(42769);
       return null;
@@ -97,96 +100,96 @@ public class e
     label190:
     boolean bool;
     label224:
-    e.b localb;
+    h.b localb;
     label367:
     String str2;
-    if (!localbv.Zn)
+    if (!localca.ZA)
     {
-      if ((((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azO().has(str1)) || (((String)localObject2).equals(str1)))
+      if ((((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().has(str1)) || (((String)localObject2).equals(str1)))
       {
         i = 1;
         if (i == 0) {
           break label669;
         }
-        localbv.kt(1);
-        localbv.ui(str3);
-        i = ((cv)localObject1).nJb;
-        localbv.setStatus(i);
+        localca.nv(1);
+        localca.Cy(str3);
+        i = ((de)localObject1).oTW;
+        localca.setStatus(i);
       }
     }
     else
     {
-      if (((cv)localObject1).urJ == 10000) {
-        localbv.setStatus(4);
+      if (((de)localObject1).xKb == 10000) {
+        localca.setStatus(4);
       }
-      if (localbv.field_isSend != 1) {
+      if (localca.field_isSend != 1) {
         break label705;
       }
       bool = true;
-      localbv.tk(((cv)localObject1).FNL);
-      if (localbv.aVB(v.aAC()))
+      localca.BB(((de)localObject1).KHq);
+      if (localca.bkz(z.aTY()))
       {
-        localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azL().aVa(localbv.field_talker);
+        localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aST().bjY(localca.field_talker);
         if (localObject2 != null)
         {
-          ((au)localObject2).lR(16777216);
-          ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azL().a((au)localObject2, localbv.field_talker);
+          ((az)localObject2).oU(16777216);
+          ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aST().a((az)localObject2, localca.field_talker);
         }
       }
-      hHt.a(parama, localbv, str1, str3, bool);
-      if (localbv.field_msgId != 0L) {
+      iBD.a(parama, localca, str1, str3, bool);
+      if (localca.field_msgId != 0L) {
         break label710;
       }
-      localbv.setFlag(2);
-      bl.a(localbv, parama);
-      localbv.setMsgId(bl.v(localbv));
-      localb = new e.b(localbv, true);
-      if (!bu.isNullOrNil(localbv.field_content))
+      localca.setFlag(2);
+      bp.a(localca, parama);
+      localca.setMsgId(bp.x(localca));
+      localb = new h.b(localca, true);
+      if (!Util.isNullOrNil(localca.field_content))
       {
         if (!bool) {
           break label750;
         }
         str2 = str3;
         label386:
-        if ((!parama.hQN) && (((com.tencent.mm.plugin.messenger.foundation.a.j)g.ab(com.tencent.mm.plugin.messenger.foundation.a.j.class)).anM(str2)))
+        if ((!parama.iLV) && (((j)g.af(j.class)).aBf(str2)))
         {
           if (!bool) {
             break label757;
           }
-          localObject2 = localbv.field_content;
+          localObject2 = localca.field_content;
           localObject1 = str1;
         }
       }
     }
     for (;;)
     {
-      if (com.tencent.mm.sdk.platformtools.j.DEBUG) {
-        ae.d("MicroMsg.BaseMsgExtension", "onPreAddMessage() isSender:%s fromUser:%s creator:%s content:%s", new Object[] { Boolean.valueOf(bool), str1, localObject1, bu.bI((String)localObject2, "null") });
+      if (BuildInfo.DEBUG) {
+        Log.d("MicroMsg.BaseMsgExtension", "onPreAddMessage() isSender:%s fromUser:%s creator:%s content:%s", new Object[] { Boolean.valueOf(bool), str1, localObject1, Util.nullAs((String)localObject2, "null") });
       }
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.ab(com.tencent.mm.plugin.messenger.foundation.a.j.class)).a(str2, (String)localObject1, (String)localObject2, localbv.field_msgId, localbv.field_createTime / 1000L);
-      if ((localbv.fwp()) && (x.zU(localbv.field_talker)) && (((t)g.ab(t.class)).Yn()))
+      ((j)g.af(j.class)).a(str2, (String)localObject1, (String)localObject2, localca.field_msgId, localca.field_createTime / 1000L);
+      if ((localca.gDV()) && (ab.Ix(localca.field_talker)) && (((t)g.af(t.class)).ama()))
       {
-        g.ajS();
-        localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(localbv.field_talker);
-        long l = ((aw)localObject1).eRB;
-        ((an)localObject1).qG(localbv.field_msgId);
-        g.ajS();
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().am((an)localObject1);
+        g.aAi();
+        localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(localca.field_talker);
+        long l = ((ax)localObject1).fve;
+        ((as)localObject1).yz(localca.field_msgId);
+        g.aAi();
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().ao((as)localObject1);
         if (l != 0L) {
-          ((t)g.ab(t.class)).q(localbv.field_talker, l);
+          ((t)g.af(t.class)).r(localca.field_talker, l);
         }
       }
-      hHt.b(parama, localbv, str1, str3, bool);
+      iBD.b(parama, localca, str1, str3, bool);
       AppMethodBeat.o(42769);
       return localb;
       i = 0;
       break;
       label669:
-      localbv.kt(0);
-      localbv.ui(str1);
-      if (((cv)localObject1).nJb > 3)
+      localca.nv(0);
+      localca.Cy(str1);
+      if (((de)localObject1).oTW > 3)
       {
-        i = ((cv)localObject1).nJb;
+        i = ((de)localObject1).oTW;
         break label190;
       }
       i = 3;
@@ -195,15 +198,15 @@ public class e
       bool = false;
       break label224;
       label710:
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().b(((cv)localObject1).xrk, localbv);
-      localb = new e.b(localbv, false);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().b(((de)localObject1).Brn, localca);
+      localb = new h.b(localca, false);
       break label367;
       label750:
       str2 = str1;
       break label386;
       label757:
-      localObject2 = localbv.field_content;
-      i = bl.BJ(localbv.field_content);
+      localObject2 = localca.field_content;
+      i = bp.Kp(localca.field_content);
       if (i != -1)
       {
         localObject1 = ((String)localObject2).substring(0, i).trim();
@@ -219,20 +222,20 @@ public class e
     }
   }
   
-  public void b(e.c paramc) {}
+  public void b(h.c paramc) {}
   
   public static final class a
-    extends com.tencent.mm.cm.a<com.tencent.mm.plugin.messenger.foundation.a.a>
+    extends com.tencent.mm.co.a<com.tencent.mm.plugin.messenger.foundation.a.a>
     implements com.tencent.mm.plugin.messenger.foundation.a.a
   {
-    public final void a(final com.tencent.mm.ak.e.a parama, final bv parambv, final String paramString1, final String paramString2, final boolean paramBoolean)
+    public final void a(final h.a parama, final ca paramca, final String paramString1, final String paramString2, final boolean paramBoolean)
     {
       AppMethodBeat.i(42766);
       a(new a.a() {});
       AppMethodBeat.o(42766);
     }
     
-    public final void b(final com.tencent.mm.ak.e.a parama, final bv parambv, final String paramString1, final String paramString2, final boolean paramBoolean)
+    public final void b(final h.a parama, final ca paramca, final String paramString1, final String paramString2, final boolean paramBoolean)
     {
       AppMethodBeat.i(42767);
       a(new a.a() {});
@@ -242,7 +245,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.e
  * JD-Core Version:    0.7.0.1
  */

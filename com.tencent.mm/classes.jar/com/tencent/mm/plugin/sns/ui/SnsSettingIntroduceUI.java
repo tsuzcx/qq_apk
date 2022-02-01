@@ -10,23 +10,25 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.az;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.bb;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.i;
+import com.tencent.mm.ui.e.k;
 
 public class SnsSettingIntroduceUI
   extends MMActivity
 {
-  private Button AzD;
-  private Button AzE;
-  private Intent AzF;
+  private Button EIX;
+  private Button EIY;
+  private Intent EIZ;
   
   public int getLayoutId()
   {
-    return 2131495585;
+    return 2131496483;
   }
   
   @TargetApi(17)
@@ -36,45 +38,45 @@ public class SnsSettingIntroduceUI
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
     hideTitleView();
-    this.AzF = getIntent();
-    this.AzD = ((Button)findViewById(2131297026));
-    this.AzD.setOnClickListener(new View.OnClickListener()
+    this.EIZ = getIntent();
+    this.EIX = ((Button)findViewById(2131297163));
+    this.EIX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99073);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        g.yxI.f(14090, new Object[] { Integer.valueOf(3) });
-        d.b(SnsSettingIntroduceUI.this, "sns", ".ui.SnsTimeLineUI", SnsSettingIntroduceUI.a(SnsSettingIntroduceUI.this));
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        h.CyF.a(14090, new Object[] { Integer.valueOf(3) });
+        c.b(SnsSettingIntroduceUI.this, "sns", ".ui.SnsTimeLineUI", SnsSettingIntroduceUI.a(SnsSettingIntroduceUI.this));
         SnsSettingIntroduceUI.this.finish();
         SnsSettingIntroduceUI.this.overridePendingTransition(0, 0);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        a.a(this, "com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(99073);
       }
     });
-    g.yxI.f(14090, new Object[] { Integer.valueOf(1) });
-    this.AzE = ((Button)findViewById(2131300595));
-    this.AzE.setOnClickListener(new View.OnClickListener()
+    h.CyF.a(14090, new Object[] { Integer.valueOf(1) });
+    this.EIY = ((Button)findViewById(2131302145));
+    this.EIY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99074);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = new az();
-        paramAnonymousView.dmV.index = 3;
-        com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousView);
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = new bb();
+        paramAnonymousView.dEk.index = 3;
+        EventCenter.instance.publish(paramAnonymousView);
         paramAnonymousView = new Intent();
-        d.b(SnsSettingIntroduceUI.this.getContext(), "setting", ".ui.setting.SettingsUI", paramAnonymousView);
+        c.b(SnsSettingIntroduceUI.this.getContext(), "setting", ".ui.setting.SettingsUI", paramAnonymousView);
         paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("enter_scene", e.i.Jpl);
-        d.b(SnsSettingIntroduceUI.this.getContext(), "setting", ".ui.setting.SettingsPrivacyUI", paramAnonymousView);
-        g.yxI.f(14090, new Object[] { Integer.valueOf(2) });
+        paramAnonymousView.putExtra("enter_scene", e.k.Ozk);
+        c.b(SnsSettingIntroduceUI.this.getContext(), "setting", ".ui.setting.SettingsPrivacyUI", paramAnonymousView);
+        h.CyF.a(14090, new Object[] { Integer.valueOf(2) });
         SnsSettingIntroduceUI.this.finish();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        a.a(this, "com/tencent/mm/plugin/sns/ui/SnsSettingIntroduceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(99074);
       }
     });
@@ -94,7 +96,7 @@ public class SnsSettingIntroduceUI
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 0))
     {
       finish();
-      g.yxI.f(14090, new Object[] { Integer.valueOf(3) });
+      h.CyF.a(14090, new Object[] { Integer.valueOf(3) });
       AppMethodBeat.o(99077);
       return true;
     }
@@ -111,7 +113,7 @@ public class SnsSettingIntroduceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsSettingIntroduceUI
  * JD-Core Version:    0.7.0.1
  */

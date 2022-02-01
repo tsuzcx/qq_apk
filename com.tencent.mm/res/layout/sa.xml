@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/awu" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ikk" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="26.0dip" android:id="@id/dc4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.CustomScrollView android:id="@id/dc2" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="26.0dip" android:textColor="@color/FG_0" android:id="@id/dc3" android:paddingLeft="20.0dip" android:paddingTop="16.0dip" android:paddingRight="20.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" android:lineSpacingExtra="@dimen/c5" />
+        </com.tencent.mm.ui.base.CustomScrollView>
+    </LinearLayout>
+    <ViewStub android:id="@id/j8a" android:layout="@layout/c3m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/e6q" android:background="@drawable/b6d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/k4"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/hc" android:textColor="?o" android:id="@id/e5q" android:padding="@dimen/kb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zx" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

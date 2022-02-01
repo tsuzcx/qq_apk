@@ -5,18 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static final a xOE;
+  public static final a BOL;
   
   static
   {
     AppMethodBeat.i(101522);
-    xOE = new a();
+    BOL = new a();
     AppMethodBeat.o(101522);
   }
   
@@ -26,33 +26,26 @@ public final class a
     if (paramInt == 0)
     {
       Boolean localBoolean;
-      if ((com.tencent.mm.r.a.n(paramActivity, true)) || (com.tencent.mm.r.a.ch(paramActivity)) || (com.tencent.mm.r.a.cf(paramActivity)))
+      if ((com.tencent.mm.q.a.o(paramActivity, true)) || (com.tencent.mm.q.a.cC(paramActivity)) || (com.tencent.mm.q.a.cA(paramActivity)))
       {
-        ae.i("MicroMsg.VideoCaptureJumper", "startStoryCapture, voip or multitalk running");
+        Log.i("MicroMsg.VideoCaptureJumper", "startStoryCapture, voip or multitalk running");
         localBoolean = Boolean.FALSE;
       }
       while (!localBoolean.booleanValue())
       {
-        ae.i("MicroMsg.VideoCaptureJumper", "not get enough permission");
+        Log.i("MicroMsg.VideoCaptureJumper", "not get enough permission");
         AppMethodBeat.o(101520);
         return null;
-        if ((paramActivity instanceof Activity))
+        if (((paramActivity instanceof Activity)) && (!b.a(paramActivity, "android.permission.CAMERA", 16, "", "")))
         {
-          if (!b.a(paramActivity, "android.permission.CAMERA", 16, "", ""))
-          {
-            ae.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkCamera");
-            localBoolean = Boolean.FALSE;
-            continue;
-          }
-          if (!b.a(paramActivity, "android.permission.RECORD_AUDIO", 80, "", ""))
-          {
-            ae.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkMicroPhone");
-            localBoolean = Boolean.FALSE;
-            continue;
-          }
+          Log.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkCamera");
+          localBoolean = Boolean.FALSE;
         }
-        ae.i("MicroMsg.VideoCaptureJumper", "startStoryCapture %s", new Object[] { bu.fpN().toString() });
-        localBoolean = Boolean.TRUE;
+        else
+        {
+          Log.i("MicroMsg.VideoCaptureJumper", "startStoryCapture %s", new Object[] { Util.getStack().toString() });
+          localBoolean = Boolean.TRUE;
+        }
       }
     }
     try
@@ -65,7 +58,7 @@ public final class a
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.VideoCaptureJumper", paramActivity, "buildIntent failed!", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.VideoCaptureJumper", paramActivity, "buildIntent failed!", new Object[0]);
         paramActivity = null;
       }
     }
@@ -83,9 +76,9 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
-    ae.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
+    Log.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
-    g(paramContext, paramInt2, paramInt3);
+    h(paramContext, paramInt2, paramInt3);
     AppMethodBeat.o(101518);
     return true;
   }
@@ -103,9 +96,9 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", paramInt4);
     localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", paramInt5);
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
-    ae.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
+    Log.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
-    g(paramContext, paramInt2, paramInt3);
+    h(paramContext, paramInt2, paramInt3);
     AppMethodBeat.o(168713);
     return true;
   }
@@ -121,11 +114,11 @@ public final class a
     }
     localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
-    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", 2130772138);
+    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", 2130772162);
     localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", 0);
-    ae.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
+    Log.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-    g(paramContext, 2130772137, 2130772138);
+    h(paramContext, 2130772161, 2130772162);
     AppMethodBeat.o(101519);
     return true;
   }
@@ -142,14 +135,14 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
     localIntent.putExtra("KEY_PARAMS_TO_WHERE", 2);
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", -1);
-    ae.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
+    Log.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
     ((Activity)paramContext).startActivityForResult(localIntent, 121);
-    g(paramContext, 2130772137, -1);
+    h(paramContext, 2130772161, -1);
     AppMethodBeat.o(101517);
     return true;
   }
   
-  private static void g(Context paramContext, int paramInt1, int paramInt2)
+  private static void h(Context paramContext, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(101521);
     if ((paramInt1 != -1) && (paramInt2 != -1)) {
@@ -160,7 +153,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.a
  * JD-Core Version:    0.7.0.1
  */

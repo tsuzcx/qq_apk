@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/BW_95" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.search.DownloadSearchListView android:id="@id/f9h" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/f9e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4p" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/a4i" android:layout_gravity="center_horizontal" android:id="@id/e4c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:paddingLeft="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/cr">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/fvh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:scaleType="centerCrop" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="@dimen/hn" android:layout_gravity="center_vertical" android:id="@id/fvi" android:singleLine="false" android:layout_weight="1.0" style="@style/mi" />
+    </LinearLayout>
 </FrameLayout>

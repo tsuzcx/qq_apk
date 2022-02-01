@@ -1,27 +1,28 @@
 package com.tencent.luggage.sdk.f;
 
+import android.graphics.Bitmap;
 import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public abstract interface a
   extends b
 {
-  public abstract String Fr();
+  public abstract String Pa();
   
-  public abstract void a(a.b paramb);
+  public abstract void a(b paramb);
   
   public static final class a
   {
-    private static final a cqk;
+    private static final a cCD;
     
     static
     {
       AppMethodBeat.i(169461);
-      cqk = new a()
+      cCD = new a()
       {
-        public final String Fr()
+        public final String Pa()
         {
           return null;
         }
@@ -29,7 +30,7 @@ public abstract interface a
         public final void a(final a.b paramAnonymousb)
         {
           AppMethodBeat.i(169459);
-          ar.f(new Runnable()
+          MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
@@ -44,17 +45,22 @@ public abstract interface a
       AppMethodBeat.o(169461);
     }
     
-    public static a b(c paramc)
+    public static a b(f paramf)
     {
       AppMethodBeat.i(169460);
-      a locala = (a)paramc.K(a.class);
-      paramc = locala;
+      a locala = (a)paramf.M(a.class);
+      paramf = locala;
       if (locala == null) {
-        paramc = cqk;
+        paramf = cCD;
       }
       AppMethodBeat.o(169460);
-      return paramc;
+      return paramf;
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void o(Bitmap paramBitmap);
   }
 }
 

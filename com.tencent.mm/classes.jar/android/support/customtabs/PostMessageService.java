@@ -8,7 +8,7 @@ import android.os.IBinder;
 public class PostMessageService
   extends Service
 {
-  private f.a gG = new f.a()
+  private f.a gI = new f.a()
   {
     public final void a(d paramAnonymousd, Bundle paramAnonymousBundle)
     {
@@ -23,12 +23,12 @@ public class PostMessageService
   
   public IBinder onBind(Intent paramIntent)
   {
-    return this.gG;
+    return this.gI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.customtabs.PostMessageService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip"
+<LinearLayout style="@style/gs"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/awi" layout="@layout/s_" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/av1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
-        <TextView android:textSize="27.0dip" android:textColor="@color/y4" android:layout_gravity="top" android:id="@id/av0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="¥" android:includeFontPadding="false" />
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="36.0dip" android:textColor="@color/y4" android:id="@id/av3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/y0" android:layout_gravity="center" android:id="@id/av2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="40.0dip" android:text="" />
+    <include layout="@layout/qp" />
+    <FrameLayout android:id="@id/auf" android:background="@drawable/mw" android:layout_width="@dimen/wm" android:layout_height="wrap_content" style="@style/gt">
+        <LinearLayout android:orientation="vertical" android:id="@id/u7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="20.0dip" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/ib" android:paddingBottom="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/u9" android:layout_width="34.0dip" android:layout_height="34.0dip" android:scaleType="centerCrop" />
+                <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib">
+                    <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/u_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/zz" />
+                    <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/u8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k_" android:singleLine="true" android:layout_below="@id/u_" style="@style/zy" />
+                </RelativeLayout>
+            </LinearLayout>
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_marginLeft="17.0dip" android:layout_marginRight="@dimen/c5" style="@style/hx" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:minHeight="20.0dip">
+                <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:id="@id/u6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/azr" android:singleLine="true" android:layout_weight="1.0" style="@style/gk" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/aun" android:background="@drawable/md" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
 </LinearLayout>

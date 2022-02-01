@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.sns.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import java.util.List;
 
 public final class g
-  implements f
+  implements i
 {
-  h zHF;
+  h DRF;
   
-  public final boolean dZa()
+  public final boolean fco()
   {
     AppMethodBeat.i(96138);
-    if ((this.zHF == null) || (this.zHF.zHu.size() == 0))
+    if ((this.DRF == null) || (this.DRF.DRu.size() == 0))
     {
       AppMethodBeat.o(96138);
       return false;
@@ -22,24 +22,24 @@ public final class g
     return true;
   }
   
-  public final h dZb()
+  public final h fcp()
   {
     AppMethodBeat.i(96139);
-    if ((this.zHF == null) || (this.zHF.zHu.size() == 0))
+    if ((this.DRF == null) || (this.DRF.DRu.size() == 0))
     {
       AppMethodBeat.o(96139);
       return null;
     }
-    h localh = this.zHF;
+    h localh = this.DRF;
     AppMethodBeat.o(96139);
     return localh;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn) {}
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.h.g
  * JD-Core Version:    0.7.0.1
  */

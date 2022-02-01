@@ -4,8 +4,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,25 +14,25 @@ import java.util.HashMap;
 
 public final class d
 {
-  private static a JoM;
-  private static HashMap<Integer, Long> JoN;
-  private static int JoO;
-  private static int JoP;
-  private static long JoQ;
+  private static a OyG;
+  private static HashMap<Integer, Long> OyH;
+  private static int OyI;
+  private static int OyJ;
+  private static long OyK;
   
   static
   {
     AppMethodBeat.i(141281);
-    JoN = new HashMap();
-    JoO = 1100;
-    JoP = 2000;
-    JoQ = 0L;
+    OyH = new HashMap();
+    OyI = 1100;
+    OyJ = 2000;
+    OyK = 0L;
     AppMethodBeat.o(141281);
   }
   
   public static void a(a parama)
   {
-    JoM = parama;
+    OyG = parama;
   }
   
   public static boolean a(Context paramContext, boolean paramBoolean, Intent[] paramArrayOfIntent, Object... paramVarArgs)
@@ -49,7 +49,7 @@ public final class d
         int i = 0;
         if (i < j)
         {
-          if (bn(paramArrayOfIntent[i]))
+          if (bx(paramArrayOfIntent[i]))
           {
             paramBoolean = false;
             AppMethodBeat.o(141278);
@@ -81,27 +81,27 @@ public final class d
         }
         paramVarArgs = ((StringBuilder)localObject).toString();
         localObject = Integer.valueOf(paramVarArgs.hashCode());
-        Long localLong1 = (Long)JoN.get(localObject);
+        Long localLong1 = (Long)OyH.get(localObject);
         localLong2 = Long.valueOf(System.currentTimeMillis());
         if ((!paramBoolean) || (localLong1 == null)) {
           break label370;
         }
-        if (localLong2.longValue() - localLong1.longValue() <= JoP)
+        if (localLong2.longValue() - localLong1.longValue() <= OyJ)
         {
-          String str = aWM(paramContext.getClass().toString());
+          String str = blL(paramContext.getClass().toString());
           if (paramArrayOfIntent[0].getComponent() != null)
           {
-            paramContext = aWM(paramArrayOfIntent[0].getComponent().getClassName());
-            JoM.c(localLong2.longValue() - localLong1.longValue(), str, paramContext);
+            paramContext = blL(paramArrayOfIntent[0].getComponent().getClassName());
+            OyG.c(localLong2.longValue() - localLong1.longValue(), str, paramContext);
           }
         }
         else
         {
-          if (localLong2.longValue() - localLong1.longValue() > JoO) {
+          if (localLong2.longValue() - localLong1.longValue() > OyI) {
             break label370;
           }
-          JoN.put(localObject, localLong2);
-          ae.e("MicroMsg.CheckReduplicatedAcitiv", "starting the same activity in %sms, [k:%s, v:%s], curr: %s", new Object[] { Integer.valueOf(JoO), paramVarArgs, localLong1, localLong2 });
+          OyH.put(localObject, localLong2);
+          Log.e("MicroMsg.CheckReduplicatedAcitiv", "starting the same activity in %sms, [k:%s, v:%s], curr: %s", new Object[] { Integer.valueOf(OyI), paramVarArgs, localLong1, localLong2 });
           paramBoolean = true;
           AppMethodBeat.o(141278);
           continue;
@@ -111,18 +111,18 @@ public final class d
       finally {}
       continue;
       label370:
-      if ((JoN.size() > 100) && (JoQ != 0L) && (System.currentTimeMillis() - JoQ > JoO)) {
-        JoN.clear();
+      if ((OyH.size() > 100) && (OyK != 0L) && (System.currentTimeMillis() - OyK > OyI)) {
+        OyH.clear();
       }
-      JoN.put(localObject, localLong2);
-      JoQ = System.currentTimeMillis();
-      ae.i("MicroMsg.CheckReduplicatedAcitiv", "check reduplicated cost %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      OyH.put(localObject, localLong2);
+      OyK = System.currentTimeMillis();
+      Log.i("MicroMsg.CheckReduplicatedAcitiv", "check reduplicated cost %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       paramBoolean = false;
       AppMethodBeat.o(141278);
     }
   }
   
-  private static String aWM(String paramString)
+  private static String blL(String paramString)
   {
     AppMethodBeat.i(141279);
     paramString = paramString.split("\\.");
@@ -136,7 +136,7 @@ public final class d
     return "";
   }
   
-  private static boolean bn(Intent paramIntent)
+  private static boolean bx(Intent paramIntent)
   {
     AppMethodBeat.i(141280);
     if (paramIntent != null) {}
@@ -144,7 +144,7 @@ public final class d
     {
       if (paramIntent.getComponent() != null)
       {
-        boolean bool = bu.isNullOrNil(paramIntent.getComponent().getClassName());
+        boolean bool = Util.isNullOrNil(paramIntent.getComponent().getClassName());
         if (!bool) {}
       }
       else
@@ -160,7 +160,7 @@ public final class d
     }
     catch (Exception paramIntent)
     {
-      ae.e("MicroMsg.CheckReduplicatedAcitiv", "skipReduplicateCheck exception %s", new Object[] { paramIntent });
+      Log.e("MicroMsg.CheckReduplicatedAcitiv", "skipReduplicateCheck exception %s", new Object[] { paramIntent });
       AppMethodBeat.o(141280);
       return false;
     }
@@ -168,9 +168,9 @@ public final class d
     return false;
   }
   
-  public static int fzf()
+  public static int gGT()
   {
-    return JoO;
+    return OyI;
   }
   
   public static abstract interface a

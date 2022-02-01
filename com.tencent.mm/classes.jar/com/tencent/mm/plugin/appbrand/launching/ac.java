@@ -1,553 +1,615 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.h;
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.ak.y;
-import com.tencent.mm.b.p;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.co.f;
+import com.tencent.mm.co.g;
+import com.tencent.mm.g.b.a.ls;
+import com.tencent.mm.g.b.a.mr;
+import com.tencent.mm.g.b.a.mr.a;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.IPkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.ad;
-import com.tencent.mm.plugin.appbrand.appcache.bd;
 import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
-import com.tencent.mm.plugin.appbrand.launching.report.c;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.protocal.protobuf.baw;
-import com.tencent.mm.protocal.protobuf.bax;
-import com.tencent.mm.protocal.protobuf.bwg;
-import com.tencent.mm.protocal.protobuf.cvv;
-import com.tencent.mm.protocal.protobuf.eia;
-import com.tencent.mm.protocal.protobuf.jx;
-import com.tencent.mm.protocal.protobuf.jy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vending.c.a;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
+import com.tencent.mm.plugin.appbrand.report.t;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.acc;
+import com.tencent.mm.protocal.protobuf.bmm;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import kotlin.a.e;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-public class ac
-  implements x
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils;", "", "()V", "TAG", "", "WAGAME_TYPE", "", "getWAGAME_TYPE", "()I", "applyLaunchAheadParallelCgiResponse", "", "instanceId", "canUseSeparatedPlugins", "", "appId", "versionType", "appVersion", "isGame", "acceptedLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "createBatchReporter", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "isLaunch", "isForPreRender", "onPkgMissed", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "singleMapOf", "", "K", "V", "key", "value", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;", "pickAppropriateWidgetInfoList", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaWidgetInfo;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "plugin-appbrand-integration_release"})
+public final class ac
 {
-  final String appId;
-  final int hSZ;
-  List<WxaAttributes.WxaWidgetInfo> irC;
-  final int lMU;
-  List<WxaAttributes.WxaPluginCodeInfo> lMV;
-  LinkedHashMap<String, i<WxaPkgWrappingInfo>> lMW;
-  private final String lMX;
-  private final AtomicInteger lMY;
-  private volatile boolean lMZ;
-  private c lNa;
-  private PBool lNb;
-  List<u> lNc;
+  private static final int mUG = 1004;
+  public static final ac mUH;
   
-  ac(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, List<WxaAttributes.WxaPluginCodeInfo> paramList, List<WxaAttributes.WxaWidgetInfo> paramList1, PBool paramPBool)
+  static
   {
-    AppMethodBeat.i(174946);
-    this.lMW = new LinkedHashMap();
-    this.lMY = new AtomicInteger(0);
-    this.lMZ = false;
-    this.lNc = new LinkedList();
-    ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "appId:%s,versionType:%s,desirePkgVersion:%s,instanceId:%s,scene:%d", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2, Integer.valueOf(paramInt3) });
-    this.appId = paramString1;
-    this.hSZ = paramInt1;
-    this.lMU = paramInt2;
-    this.lMV = paramList;
-    this.irC = paramList1;
-    this.lNa = new c(paramString1, paramInt2, paramInt1, paramString2, paramInt3, this.lMV);
-    this.lNb = paramPBool;
-    this.lMX = paramString2;
-    AppMethodBeat.o(174946);
+    AppMethodBeat.i(180606);
+    mUH = new ac();
+    mUG = 1004;
+    AppMethodBeat.o(180606);
   }
   
-  private WxaPkgWrappingInfo bgP()
+  private static <K, V> Map<K, V> I(K paramK, V paramV)
   {
-    AppMethodBeat.i(174947);
-    Object localObject1 = new i();
-    int j = 12;
-    int i = j;
-    Object localObject2;
-    if (this.irC != null)
+    AppMethodBeat.i(180605);
+    ArrayMap localArrayMap = new ArrayMap();
+    localArrayMap.put(paramK, paramV);
+    paramK = (Map)localArrayMap;
+    AppMethodBeat.o(180605);
+    return paramK;
+  }
+  
+  private static boolean a(ICommLibReader paramICommLibReader, boolean paramBoolean)
+  {
+    AppMethodBeat.i(180602);
+    if (paramBoolean)
     {
-      i = j;
-      if (this.irC.size() > 0)
-      {
-        localObject2 = this.irC.iterator();
-        i = 12;
-        if (((Iterator)localObject2).hasNext())
-        {
-          j = ((WxaAttributes.WxaWidgetInfo)((Iterator)localObject2).next()).doK;
-          if (j != 22) {
-            break label2136;
-          }
-          i = j;
-        }
-      }
+      AppMethodBeat.o(180602);
+      return true;
     }
-    label1161:
-    label1427:
-    label1492:
-    label2136:
-    for (;;)
+    paramICommLibReader = paramICommLibReader.UN("injectAppSeparatedPlugin");
+    if ((paramICommLibReader != null) && (Boolean.parseBoolean(paramICommLibReader) == true))
     {
-      break;
-      localObject2 = m.b(this.appId, "__WITHOUT_MULTI_PLUGINCODE__", i, this.lMU, this.hSZ);
-      if (localObject2 != null)
+      AppMethodBeat.o(180602);
+      return true;
+    }
+    AppMethodBeat.o(180602);
+    return false;
+  }
+  
+  public static boolean a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, ICommLibReader paramICommLibReader)
+  {
+    AppMethodBeat.i(180603);
+    p.h(paramString, "appId");
+    if (j.a.sE(paramInt1))
+    {
+      if ((paramICommLibReader != null) && (a(paramICommLibReader, paramBoolean) == true))
       {
-        ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "mainModulePkgInfo exists!");
-        ((i)localObject1).value = localObject2;
-        ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "mainModulePkgType:%d", new Object[] { Integer.valueOf(i) });
-        localObject2 = (WxaPkgWrappingInfo)((i)localObject1).value;
-        localObject3 = this.lMV.iterator();
+        AppMethodBeat.o(180603);
+        return true;
       }
-      Object localObject5;
-      Object localObject4;
-      Object localObject6;
+      AppMethodBeat.o(180603);
+      return false;
+    }
+    paramString = ((com.tencent.mm.plugin.appbrand.appcache.b)n.W(com.tencent.mm.plugin.appbrand.appcache.b.class)).aM(paramString, paramInt2);
+    switch (ad.$EnumSwitchMapping$0[paramString.ordinal()])
+    {
+    default: 
+      AppMethodBeat.o(180603);
+      return false;
+    }
+    if ((paramICommLibReader != null) && (a(paramICommLibReader, paramBoolean) == true))
+    {
+      AppMethodBeat.o(180603);
+      return true;
+    }
+    AppMethodBeat.o(180603);
+    return false;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "invoke", "()[Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$applyLaunchAheadParallelCgiResponse$1$1$interceptResp$1"})
+  static final class a
+    extends q
+    implements kotlin.g.a.a<bmm[]>
+  {
+    a(y.b paramb, HashMap paramHashMap)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  public static final class b<T>
+    implements Comparator<T>
+  {
+    public final int compare(T paramT1, T paramT2)
+    {
+      AppMethodBeat.i(180589);
+      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT2).packageType), (Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT1).packageType));
+      AppMethodBeat.o(180589);
+      return i;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    c(HashMap paramHashMap)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "invoke"})
+  static final class d
+    extends q
+    implements kotlin.g.a.b<x.d, x>
+  {
+    public static final d mUL;
+    
+    static
+    {
+      AppMethodBeat.i(228663);
+      mUL = new d();
+      AppMethodBeat.o(228663);
+    }
+    
+    d()
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "TAG", "", "mIsColdStartUp", "", "mStageList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2.PluginInfo", "addPluginStage", "", "stage", "", "provider", "version", "markColdStartUp", "onAllPkgDownloaded", "onPkgCached", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgDownloadError", "onPkgDownloadSuccess", "packageType", "onPkgMissed", "reportPkgDownloadStatus", "key", "reportPluginHitRate", "assignFromQualitySession", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualitySplitCodeLibStatisStruct;", "session", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "PluginInfo", "plugin-appbrand-integration_release"})
+  public static final class e
+    implements l.a
+  {
+    final String TAG;
+    private CopyOnWriteArrayList<a> mUM;
+    private volatile boolean mUN;
+    
+    e(boolean paramBoolean, QualitySession paramQualitySession, acc paramacc, kotlin.g.a.b paramb)
+    {
+      AppMethodBeat.i(228678);
+      this.TAG = "MicroMsg.AppBrand.LaunchCheckPkgBatchGetCodeUtils.gameBatchReporter";
+      this.mUM = new CopyOnWriteArrayList();
+      AppMethodBeat.o(228678);
+    }
+    
+    private final void bNB()
+    {
+      AppMethodBeat.i(228670);
+      if (this.mUN)
+      {
+        AppMethodBeat.o(228670);
+        return;
+      }
+      this.mUN = true;
+      k(1, "", 0);
+      AppMethodBeat.o(228670);
+    }
+    
+    private final void k(int paramInt1, String paramString, int paramInt2)
+    {
+      AppMethodBeat.i(228671);
+      Log.i(this.TAG, "addPluginStage stage:%d,provider:%s,version:%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2) });
+      a locala = new a();
+      locala.setProvider(paramString);
+      locala.dTz = paramInt1;
+      locala.version = paramInt2;
+      this.mUM.add(locala);
+      AppMethodBeat.o(228671);
+    }
+    
+    private static void yj(int paramInt)
+    {
+      AppMethodBeat.i(228672);
+      switch (paramInt)
+      {
+      }
       for (;;)
       {
-        if (!((Iterator)localObject3).hasNext()) {
-          break label501;
-        }
-        localObject5 = (WxaAttributes.WxaPluginCodeInfo)((Iterator)localObject3).next();
-        localObject4 = ((WxaAttributes.WxaPluginCodeInfo)localObject5).provider;
-        localObject6 = ((WxaAttributes.WxaPluginCodeInfo)localObject5).md5;
-        i = ((WxaAttributes.WxaPluginCodeInfo)localObject5).version;
-        this.lMW.put(localObject6, new i());
-        localObject5 = m.b((String)localObject4, "__PLUGINCODE__", 6, i, 0);
-        if (localObject5 != null)
-        {
-          ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "pluginPkgInfo exists!");
-          ((i)this.lMW.get(((WxaPkgWrappingInfo)localObject5).md5)).value = localObject5;
-          uj(3);
-          continue;
-          localObject2 = new u();
-          localObject3 = new cvv();
-          ((cvv)localObject3).dwb = this.appId;
-          if (j.a.rT(this.hSZ)) {
-            ((u)localObject2).lLN = m.Sv(new ad(this.appId, "__WITHOUT_MULTI_PLUGINCODE__", i).toString());
-          }
-          ((cvv)localObject3).Gdl = this.hSZ;
-          ((cvv)localObject3).GXq = i;
-          ((u)localObject2).lLM = ((cvv)localObject3);
-          ((u)localObject2).lLO = this.lMU;
-          this.lNc.add(localObject2);
-          break;
-        }
-        localObject5 = new u();
-        localObject6 = new cvv();
-        ((cvv)localObject6).dwb = ((String)localObject4);
-        ((cvv)localObject6).Gdl = 0;
-        ((cvv)localObject6).GXq = 6;
-        ((u)localObject5).lLM = ((cvv)localObject6);
-        ((u)localObject5).lLN = m.bP(new ad((String)localObject4, "/__plugin__/", 6).toString(), i);
-        ((u)localObject5).lLO = i;
-        this.lNc.add(localObject5);
-        ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "pluginCode localPkgVersion:%d", new Object[] { Integer.valueOf(((u)localObject5).lLN) });
+        AppMethodBeat.o(228672);
+        return;
+        yk(0);
+        AppMethodBeat.o(228672);
+        return;
+        yk(9);
+        AppMethodBeat.o(228672);
+        return;
+        yk(4);
+        AppMethodBeat.o(228672);
+        return;
+        yk(2);
+        AppMethodBeat.o(228672);
+        return;
+        yk(7);
+        AppMethodBeat.o(228672);
+        return;
+        yk(11);
+        AppMethodBeat.o(228672);
+        return;
+        yk(13);
       }
-      label501:
-      ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "todoDownloadPkgList size:%d", new Object[] { Integer.valueOf(this.lNc.size()) });
-      if (this.lNc.size() == 0)
+    }
+    
+    private static void yk(int paramInt)
+    {
+      AppMethodBeat.i(228673);
+      h.CyF.idkeyStat(1027L, paramInt, 1L, false);
+      AppMethodBeat.o(228673);
+    }
+    
+    public final void a(x.d paramd)
+    {
+      AppMethodBeat.i(228675);
+      p.h(paramd, "request");
+      switch (paramd.packageType)
       {
-        i = 0;
-        if (i < this.lMV.size())
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(228675);
+        return;
+        yk(1);
+        AppMethodBeat.o(228675);
+        return;
+        yk(10);
+        AppMethodBeat.o(228675);
+        return;
+        yk(5);
+        AppMethodBeat.o(228675);
+        return;
+        yk(3);
+        AppMethodBeat.o(228675);
+        return;
+        yk(8);
+        AppMethodBeat.o(228675);
+        return;
+        yk(12);
+        AppMethodBeat.o(228675);
+        return;
+        yk(14);
+      }
+    }
+    
+    public final void b(x.d paramd)
+    {
+      AppMethodBeat.i(228677);
+      p.h(paramd, "request");
+      this.mUP.invoke(paramd);
+      int[] arrayOfInt = com.tencent.mm.cp.a.Rxa;
+      p.g(arrayOfInt, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
+      if (e.contains(arrayOfInt, paramd.packageType))
+      {
+        if ((paramd.mUl instanceof x.g.b))
         {
-          localObject1 = (WxaAttributes.WxaPluginCodeInfo)this.lMV.get(i);
-          localObject3 = (i)this.lMW.get(((WxaAttributes.WxaPluginCodeInfo)localObject1).md5);
-          if (localObject3 == null) {
-            ae.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "wxaPkgInfoPointer null!");
+          final int k = ((x.g.b)paramd.mUl).version;
+          arrayOfInt = n.buL().Vs(paramd.bNz().toString());
+          if (arrayOfInt == null)
+          {
+            bNB();
+            k(2, paramd.appId, k);
+            yj(paramd.packageType);
           }
+          label266:
           for (;;)
           {
-            i += 1;
-            break;
-            localObject3 = (WxaPkgWrappingInfo)((i)localObject3).value;
-            if (localObject3 == null)
+            g.hio().i((com.tencent.mm.vending.c.a)new d(paramd, k)).hdy();
+            AppMethodBeat.o(228677);
+            return;
+            Collection localCollection = (Collection)new ArrayList();
+            int m = arrayOfInt.length;
+            int i = 0;
+            if (i < m)
             {
-              ae.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "wxaPkgInfoPointer value null!");
-            }
-            else if (bu.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)localObject1).md5))
-            {
-              ae.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "pluginInfo md5 null!");
-            }
-            else
-            {
-              localObject4 = new ModulePkgInfo();
-              ((ModulePkgInfo)localObject4).name = ("/__plugin__/" + ((WxaAttributes.WxaPluginCodeInfo)localObject1).provider);
-              ((ModulePkgInfo)localObject4).md5 = ((WxaAttributes.WxaPluginCodeInfo)this.lMV.get(i)).md5;
-              ((ModulePkgInfo)localObject4).pkgPath = ((WxaPkgWrappingInfo)localObject3).pkgPath;
-              ((WxaPkgWrappingInfo)localObject2).jLY.add(localObject4);
-            }
-          }
-        }
-        this.lNb.value = true;
-        AppMethodBeat.o(174947);
-        return localObject2;
-      }
-      localObject2 = new jx();
-      Object localObject3 = this.lNc.iterator();
-      Object localObject7;
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (u)((Iterator)localObject3).next();
-        localObject5 = ((u)localObject4).lLM;
-        localObject6 = new bwg();
-        ((bwg)localObject6).Gdm = ((u)localObject4).lLN;
-        ((bwg)localObject6).GZl = 0;
-        localObject7 = new baw();
-        ((baw)localObject7).GQP = ((cvv)localObject5);
-        ((baw)localObject7).GQQ = ((bwg)localObject6);
-        ((baw)localObject7).GQR = 0;
-        ((baw)localObject7).Gdm = ((u)localObject4).lLO;
-        String str;
-        if (((cvv)localObject5).Gdl == 1) {
-          str = ((t)j.T(t.class)).bQ(this.appId, this.hSZ);
-        }
-        try
-        {
-          long l = h.xs(str).optLong("dev_key");
-          ((baw)localObject7).GQU = new p(l).intValue();
-          ae.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "uinL:%d", new Object[] { Long.valueOf(l) });
-          if (((cvv)localObject5).Gdl == 0)
-          {
-            ((baw)localObject7).GQT = true;
-            ((jx)localObject2).FUW.add(localObject7);
-            localObject7 = new baw();
-            ((baw)localObject7).GQP = ((cvv)localObject5);
-            ((baw)localObject7).GQQ = ((bwg)localObject6);
-            ((baw)localObject7).GQR = 0;
-            ((baw)localObject7).Gdm = ((u)localObject4).lLO;
-            ((baw)localObject7).GQT = false;
-            ((jx)localObject2).FUW.add(localObject7);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            ae.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "opt devKey %s", new Object[] { localException });
-          }
-          ((baw)localObject7).GQT = false;
-          ((jx)localObject2).FUW.add(localObject7);
-        }
-      }
-      localObject2 = y.a(new com.tencent.mm.plugin.appbrand.appcache.g((jx)localObject2));
-      if ((localObject2 == null) || (((a.a)localObject2).errType != 0) || (((a.a)localObject2).errCode != 0))
-      {
-        if (localObject2 == null)
-        {
-          i = -1;
-          if (localObject2 != null) {
-            break label1161;
-          }
-        }
-        for (j = -1;; j = ((a.a)localObject2).errCode)
-        {
-          ae.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", " cgi failed, %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          AppMethodBeat.o(174947);
-          return null;
-          i = ((a.a)localObject2).errType;
-          break;
-        }
-      }
-      ae.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "back.resp.resp_list size:%d", new Object[] { Integer.valueOf(((jy)((a.a)localObject2).hQv).FUX.size()) });
-      localObject2 = ((jy)((a.a)localObject2).hQv).FUX.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Object localObject8 = (bax)((Iterator)localObject2).next();
-        if (((bax)localObject8).drN == 0)
-        {
-          localObject3 = ((bax)localObject8).md5;
-          localObject4 = ((bax)localObject8).url;
-          localObject5 = ((bax)localObject8).GQP;
-          localObject6 = ((cvv)localObject5).dwb;
-          localObject7 = ((cvv)localObject5).GXn;
-          i = ((cvv)localObject5).GXq;
-          j = ((cvv)localObject5).Gdl;
-          int k = ((bax)localObject8).Gdm;
-          boolean bool1 = ((bax)localObject8).GQV;
-          boolean bool2 = ((bax)localObject8).GQW;
-          ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "appid:%s,pkgType:%d,md5:%s,url:%s,isPatch:%b,isZstd:%b", new Object[] { localObject6, Integer.valueOf(i), localObject3, localObject4, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          if (j == 0)
-          {
-            localObject8 = new eia();
-            ((eia)localObject8).IlC = ((String)localObject3);
-            ((eia)localObject8).FYj = k;
-            j.aZu().a(new ad((String)localObject6, (String)localObject7, i).toString(), (eia)localObject8);
-            localObject6 = this.lNc.iterator();
-          }
-          for (;;)
-          {
-            if (!((Iterator)localObject6).hasNext()) {
-              break label1714;
-            }
-            localObject7 = (u)((Iterator)localObject6).next();
-            localObject8 = ((u)localObject7).lLM;
-            if ((localObject8 != null) && (localObject5 != null))
-            {
-              j = 0;
-              if ((bu.isNullOrNil(((cvv)localObject8).GXn)) && (bu.isNullOrNil(((cvv)localObject5).GXn)))
+              int n = arrayOfInt[i];
+              if (n == ((x.g.b)paramd.mUl).version) {}
+              for (int j = 1;; j = 0)
               {
-                i = 1;
-                if ((!((cvv)localObject8).dwb.equals(((cvv)localObject5).dwb)) || (((cvv)localObject8).GXq != ((cvv)localObject5).GXq) || (i == 0) || (((cvv)localObject8).Gdl != ((cvv)localObject5).Gdl)) {
-                  break label1681;
+                if (j == 0) {
+                  localCollection.add(Integer.valueOf(n));
                 }
-                i = 1;
-              }
-            }
-            for (;;)
-            {
-              if (i == 0) {
-                break label1689;
-              }
-              ((u)localObject7).md5 = ((String)localObject3);
-              if (!bool1) {
-                break label1691;
-              }
-              ((u)localObject7).lLR = ((String)localObject4);
-              break label1427;
-              localObject6 = j.aZu().a(new ad(this.appId, (String)localObject7, i).toString(), j, new String[] { "versionMd5", "downloadURL" });
-              ((bd)localObject6).field_versionMd5 = ((String)localObject3);
-              if (localObject6 == null) {
+                i += 1;
                 break;
               }
-              j.aZu().e((bd)localObject6);
-              break;
-              i = j;
-              if (bu.isNullOrNil(((cvv)localObject8).GXn)) {
-                break label1492;
-              }
-              i = j;
-              if (bu.isNullOrNil(((cvv)localObject5).GXn)) {
-                break label1492;
-              }
-              i = j;
-              if (!((cvv)localObject8).GXn.equals(((cvv)localObject5).GXn)) {
-                break label1492;
-              }
-              i = 1;
-              break label1492;
-              i = 0;
-              continue;
-              i = 0;
             }
-            continue;
-            if (bool2) {
-              ((u)localObject7).lLQ = ((String)localObject4);
-            } else {
-              ((u)localObject7).lLP = ((String)localObject4);
-            }
-          }
-        }
-        else
-        {
-          ae.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "batch cgi error errcode:%d!", new Object[] { Integer.valueOf(((bax)localObject8).drN) });
-        }
-      }
-      localObject2 = new CountDownLatch(this.lNc.size());
-      localObject3 = this.lNc.iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (u)((Iterator)localObject3).next();
-        localObject5 = aa.c.a((u)localObject4);
-        ((aa)localObject5).a(k.St(this.lMX));
-        ((aa)localObject5).a(new a((CountDownLatch)localObject2, (u)localObject4)
-        {
-          final long brX()
-          {
-            AppMethodBeat.i(174938);
-            long l = this.val$latch.getCount();
-            AppMethodBeat.o(174938);
-            return l;
-          }
-          
-          final String brY()
-          {
-            AppMethodBeat.i(174939);
-            String str = "appId=" + this.lNd.lLM.dwb + " packgeType=" + this.lNd.lLM.GXq;
-            AppMethodBeat.o(174939);
-            return str;
-          }
-        });
-        ((aa)localObject5).a(new aa.e()
-        {
-          public final void brT()
-          {
-            AppMethodBeat.i(174941);
-            if (this.lNd.lLM.GXq == 6) {
-              ac.a(ac.this, 3);
-            }
-            ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "plugin already downloaded, engineId[%s] version[%d]", new Object[] { this.lNd.lLM.dwb, Integer.valueOf(this.lNd.lLM.Gdl) });
-            AppMethodBeat.o(174941);
-          }
-          
-          public final void brU()
-          {
-            AppMethodBeat.i(174942);
-            if (this.lNd.lLM.GXq == 6) {
-              ac.a(ac.this, 4);
-            }
-            ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "onPatchDownload");
-            AppMethodBeat.o(174942);
-          }
-          
-          public final void brV()
-          {
-            AppMethodBeat.i(174943);
-            ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "onIntegrateDownload");
-            if (this.lNd.lLM.GXq == 6) {
-              ac.a(ac.this, 2);
-            }
-            AppMethodBeat.o(174943);
-          }
-          
-          public final void c(WxaPkgWrappingInfo paramAnonymousWxaPkgWrappingInfo)
-          {
-            AppMethodBeat.i(174944);
-            if (paramAnonymousWxaPkgWrappingInfo != null)
+            if (!((Collection)localCollection).isEmpty()) {}
+            for (i = 1;; i = 0)
             {
-              if (ac.this.lMW.containsKey(paramAnonymousWxaPkgWrappingInfo.md5))
-              {
-                ((i)ac.this.lMW.get(paramAnonymousWxaPkgWrappingInfo.md5)).value = paramAnonymousWxaPkgWrappingInfo;
-                com.tencent.mm.cm.g.fWL().i(new a() {}).fSw();
+              if (i == 0) {
+                break label266;
               }
-            }
-            else
-            {
-              this.val$latch.countDown();
-              if (paramAnonymousWxaPkgWrappingInfo == null) {
-                break label113;
-              }
-            }
-            label113:
-            for (paramAnonymousWxaPkgWrappingInfo = paramAnonymousWxaPkgWrappingInfo.toString();; paramAnonymousWxaPkgWrappingInfo = "null")
-            {
-              ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "downloadPkgInfo :%s", new Object[] { paramAnonymousWxaPkgWrappingInfo });
-              AppMethodBeat.o(174944);
-              return;
-              this.lNf.value = paramAnonymousWxaPkgWrappingInfo;
+              bNB();
+              k(4, paramd.appId, k);
+              yj(paramd.packageType);
               break;
             }
           }
-          
-          public final void d(WxaPkgWrappingInfo paramAnonymousWxaPkgWrappingInfo)
-          {
-            AppMethodBeat.i(174945);
-            if (paramAnonymousWxaPkgWrappingInfo != null)
-            {
-              if (ac.this.lMW.containsKey(paramAnonymousWxaPkgWrappingInfo.md5))
-              {
-                ac.uk(0);
-                AppMethodBeat.o(174945);
-                return;
-              }
-              ac.uk(7);
-              AppMethodBeat.o(174945);
-              return;
-            }
-            if (ac.this.lMW.containsKey(this.lNd.md5))
-            {
-              ac.uk(1);
-              AppMethodBeat.o(174945);
-              return;
-            }
-            ac.uk(8);
-            AppMethodBeat.o(174945);
-          }
-        });
-        ((aa)localObject5).prepareAsync();
-      }
-      ((CountDownLatch)localObject2).await();
-      ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "both downloaded");
-      if (this.lMZ) {
-        brG();
-      }
-      if ((((i)localObject1).value == null) || (this.lMW.size() <= 0))
-      {
-        ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "mainModule value or pluginCodeList result null!!");
-        AppMethodBeat.o(174947);
-        return null;
-      }
-      this.lNa.report();
-      localObject1 = (WxaPkgWrappingInfo)((i)localObject1).value;
-      i = 0;
-      while (i < this.lMV.size())
-      {
-        localObject2 = (WxaAttributes.WxaPluginCodeInfo)this.lMV.get(i);
-        localObject3 = (WxaPkgWrappingInfo)((i)this.lMW.get(((WxaAttributes.WxaPluginCodeInfo)this.lMV.get(i)).md5)).value;
-        if ((localObject3 != null) && (!bu.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)this.lMV.get(i)).md5)))
-        {
-          localObject4 = new ModulePkgInfo();
-          ((ModulePkgInfo)localObject4).name = ("/__plugin__/" + ((WxaAttributes.WxaPluginCodeInfo)localObject2).provider);
-          ((ModulePkgInfo)localObject4).md5 = ((WxaAttributes.WxaPluginCodeInfo)this.lMV.get(i)).md5;
-          ((ModulePkgInfo)localObject4).pkgPath = ((WxaPkgWrappingInfo)localObject3).pkgPath;
-          ((WxaPkgWrappingInfo)localObject1).jLY.add(localObject4);
         }
-        i += 1;
+        bNB();
+        k(2, paramd.appId, 0);
+        yj(paramd.packageType);
+        AppMethodBeat.o(228677);
+        return;
       }
-      this.lNb.value = true;
-      ae.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", "module rerange ok!");
-      AppMethodBeat.o(174947);
-      return localObject1;
+      arrayOfInt = com.tencent.mm.cp.a.RwY;
+      p.g(arrayOfInt, "ConstantsWxaPackageProto…KAGE_TYPES_IN_WIDGET_INFO");
+      if (e.contains(arrayOfInt, paramd.packageType))
+      {
+        bNB();
+        yj(paramd.packageType);
+      }
+      AppMethodBeat.o(228677);
+    }
+    
+    public final void b(final x.d paramd, final x.e parame)
+    {
+      AppMethodBeat.i(228676);
+      p.h(paramd, "request");
+      p.h(parame, "response");
+      if (((paramd.mUl instanceof x.g.a)) && (!((x.g.a)paramd.mUl).mUt))
+      {
+        arrayOfInt = com.tencent.mm.cp.a.Rxa;
+        p.g(arrayOfInt, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
+        if (e.contains(arrayOfInt, paramd.packageType))
+        {
+          Log.i(this.TAG, "onPkgCached, will update plugin(" + paramd.appId + ") to latest in background...");
+          d.i((kotlin.g.a.a)new b(this, paramd, parame));
+        }
+      }
+      int[] arrayOfInt = com.tencent.mm.cp.a.Rxa;
+      p.g(arrayOfInt, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
+      if (e.contains(arrayOfInt, paramd.packageType))
+      {
+        k(3, paramd.appId, parame.mUo.pkgVersion());
+        g.hio().i((com.tencent.mm.vending.c.a)new c(paramd, parame)).hdy();
+      }
+      AppMethodBeat.o(228676);
+    }
+    
+    public final void bNs()
+    {
+      AppMethodBeat.i(228674);
+      Log.i(this.TAG, "onAllPkgDownloaded isLaunch:%b", new Object[] { Boolean.valueOf(this.mUO) });
+      if ((this.mUN) && (this.mUO) && (this.mUM != null) && (this.mUM.size() > 0))
+      {
+        Log.i(this.TAG, "mStageList size:%d", new Object[] { Integer.valueOf(this.mUM.size()) });
+        Iterator localIterator = this.mUM.iterator();
+        while (localIterator.hasNext())
+        {
+          a locala = (a)localIterator.next();
+          mr localmr = new mr();
+          QualitySession localQualitySession = this.mSX;
+          localmr.zS(localQualitySession.appId);
+          localmr.wC(localQualitySession.nLk);
+          localmr.a(mr.a.mC(localQualitySession.nJE));
+          localmr.wD(localQualitySession.apptype);
+          localmr.zV(localQualitySession.kEY);
+          localmr.wG(localQualitySession.scene);
+          localmr.zU(t.bUy());
+          localmr.zT(locala.provider);
+          localmr.wE(locala.version);
+          localmr.wF(locala.dTz);
+          localmr.bfK();
+        }
+      }
+      AppMethodBeat.o(228674);
+    }
+    
+    public final void c(x.d paramd, x.e parame)
+    {
+      AppMethodBeat.i(228679);
+      p.h(paramd, "request");
+      p.h(parame, "response");
+      l.a.a.a(paramd, parame);
+      AppMethodBeat.o(228679);
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2.PluginInfo", "", "(Lcom/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$2;)V", "provider", "", "getProvider", "()Ljava/lang/String;", "setProvider", "(Ljava/lang/String;)V", "stage", "", "getStage", "()I", "setStage", "(I)V", "version", "getVersion", "setVersion", "plugin-appbrand-integration_release"})
+    public final class a
+    {
+      int dTz;
+      String provider = "";
+      int version;
+      
+      public final void setProvider(String paramString)
+      {
+        AppMethodBeat.i(228664);
+        p.h(paramString, "<set-?>");
+        this.provider = paramString;
+        AppMethodBeat.o(228664);
+      }
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    static final class b
+      extends q
+      implements kotlin.g.a.a<x>
+    {
+      b(ac.e parame, x.d paramd, x.e parame1)
+      {
+        super();
+      }
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+    static final class c<_Ret, _Var>
+      implements com.tencent.mm.vending.c.a<_Ret, _Var>
+    {
+      c(x.d paramd, x.e parame) {}
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+    static final class d<_Ret, _Var>
+      implements com.tencent.mm.vending.c.a<_Ret, _Var>
+    {
+      d(x.d paramd, int paramInt) {}
     }
   }
   
-  private void uj(int paramInt)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/launching/LaunchCheckPkgBatchGetCodeUtils$createBatchReporter$3", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "TAG", "", "onPkgCached", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "onPkgMissed", "assignFromQualitySession", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualitySplitCodeLibStatisStruct;", "session", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "plugin-appbrand-integration_release"})
+  public static final class f
+    implements l.a
   {
-    AppMethodBeat.i(174948);
-    this.lNa.uw(paramInt);
-    AppMethodBeat.o(174948);
-  }
-  
-  public void brG() {}
-  
-  public void brx() {}
-  
-  public void onDownloadProgress(int paramInt) {}
-  
-  abstract class a
-    implements aa.b
-  {
-    private int lNh = 0;
+    final String TAG = "MicroMsg.AppBrand.LaunchCheckPkgBatchGetCodeUtils.defaultBatchReporter";
     
-    private a() {}
+    f(QualitySession paramQualitySession, acc paramacc, kotlin.g.a.b paramb) {}
     
-    public final void a(WxaPkgLoadProgress paramWxaPkgLoadProgress)
+    private static void a(mr parammr, QualitySession paramQualitySession)
     {
-      ac.a(ac.this);
-      ae.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoHandler", brY() + " progress=" + paramWxaPkgLoadProgress.progress);
-      long l = brX();
-      if (l == 0L) {
-        ac.b(ac.this).set(100);
+      AppMethodBeat.i(228685);
+      parammr.zS(paramQualitySession.appId);
+      parammr.wC(paramQualitySession.nLk);
+      parammr.a(mr.a.mC(paramQualitySession.nJE));
+      parammr.wD(paramQualitySession.apptype);
+      parammr.zV(paramQualitySession.kEY);
+      parammr.wG(paramQualitySession.scene);
+      AppMethodBeat.o(228685);
+    }
+    
+    public final void a(x.d paramd)
+    {
+      AppMethodBeat.i(228686);
+      p.h(paramd, "request");
+      p.h(paramd, "request");
+      AppMethodBeat.o(228686);
+    }
+    
+    public final void b(x.d paramd)
+    {
+      AppMethodBeat.i(228684);
+      p.h(paramd, "request");
+      this.mUP.invoke(paramd);
+      Object localObject = com.tencent.mm.cp.a.Rxa;
+      p.g(localObject, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
+      int[] arrayOfInt;
+      if (e.contains((int[])localObject, paramd.packageType))
+      {
+        localObject = new mr();
+        a((mr)localObject, this.mSX);
+        ((mr)localObject).zU(t.bUy());
+        ((mr)localObject).zT(paramd.appId);
+        if (!(paramd.mUl instanceof x.g.b)) {
+          break label267;
+        }
+        ((mr)localObject).wE(((x.g.b)paramd.mUl).version);
+        arrayOfInt = n.buL().Vs(paramd.bNz().toString());
+        if (arrayOfInt != null) {
+          break label151;
+        }
+        ((mr)localObject).wF(2L);
       }
       for (;;)
       {
-        this.lNh = paramWxaPkgLoadProgress.progress;
-        ac.c(ac.this);
+        ((mr)localObject).bfK();
+        AppMethodBeat.o(228684);
         return;
-        ac.b(ac.this).addAndGet(Math.round(Math.max(0, paramWxaPkgLoadProgress.progress - this.lNh) / (float)l));
+        label151:
+        Collection localCollection = (Collection)new ArrayList();
+        int k = arrayOfInt.length;
+        int i = 0;
+        if (i < k)
+        {
+          int m = arrayOfInt[i];
+          if (m == ((x.g.b)paramd.mUl).version) {}
+          for (int j = 1;; j = 0)
+          {
+            if (j == 0) {
+              localCollection.add(Integer.valueOf(m));
+            }
+            i += 1;
+            break;
+          }
+        }
+        if (!((Collection)localCollection).isEmpty()) {}
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label265;
+          }
+          ((mr)localObject).wF(4L);
+          break;
+        }
+        label265:
+        continue;
+        label267:
+        ((mr)localObject).wE(0L);
+        ((mr)localObject).wF(2L);
       }
     }
     
-    abstract long brX();
+    public final void b(final x.d paramd, final x.e parame)
+    {
+      AppMethodBeat.i(228683);
+      p.h(paramd, "request");
+      p.h(parame, "response");
+      if (((paramd.mUl instanceof x.g.a)) && (!((x.g.a)paramd.mUl).mUt))
+      {
+        localObject = com.tencent.mm.cp.a.Rxa;
+        p.g(localObject, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
+        if (e.contains((int[])localObject, paramd.packageType))
+        {
+          Log.i(this.TAG, "onPkgCached, will update plugin(" + paramd.appId + ") to latest in background...");
+          d.i((kotlin.g.a.a)new a(this, paramd, parame));
+        }
+      }
+      Object localObject = com.tencent.mm.cp.a.Rxa;
+      p.g(localObject, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
+      if (e.contains((int[])localObject, paramd.packageType))
+      {
+        localObject = new mr();
+        a((mr)localObject, this.mSX);
+        ((mr)localObject).zU(t.bUy());
+        ((mr)localObject).zT(paramd.appId);
+        ((mr)localObject).wE(parame.mUo.pkgVersion());
+        ((mr)localObject).wF(3L);
+        ((mr)localObject).bfK();
+      }
+      AppMethodBeat.o(228683);
+    }
     
-    abstract String brY();
+    public final void bNs() {}
+    
+    public final void c(x.d paramd, x.e parame)
+    {
+      AppMethodBeat.i(228687);
+      p.h(paramd, "request");
+      p.h(parame, "response");
+      l.a.a.a(paramd, parame);
+      AppMethodBeat.o(228687);
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    static final class a
+      extends q
+      implements kotlin.g.a.a<x>
+    {
+      a(ac.f paramf, x.d paramd, x.e parame)
+      {
+        super();
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  public static final class g<T>
+    implements Comparator<T>
+  {
+    public final int compare(T paramT1, T paramT2)
+    {
+      AppMethodBeat.i(180599);
+      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT2).packageType), (Comparable)Integer.valueOf(((WxaAttributes.WxaWidgetInfo)paramT1).packageType));
+      AppMethodBeat.o(180599);
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ac
  * JD-Core Version:    0.7.0.1
  */

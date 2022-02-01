@@ -12,7 +12,7 @@ final class ManualDumpActivity$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(38863);
-    this.KXO.finish();
+    this.QmI.finish();
     AppMethodBeat.o(38863);
     return true;
   }

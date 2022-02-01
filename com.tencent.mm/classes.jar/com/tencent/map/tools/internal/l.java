@@ -29,7 +29,7 @@ public class l
     x.a(paramContext, x.b);
     x.a(paramContext, x.c);
     Object localObject2 = x.c(paramContext, t.o);
-    int j = s.a(paramContext).a();
+    int j = s.a(paramContext).a;
     Object localObject3 = x.a((String)localObject2);
     int i;
     if (((List)localObject3).isEmpty())
@@ -98,7 +98,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.l
  * JD-Core Version:    0.7.0.1
  */

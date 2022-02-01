@@ -12,14 +12,14 @@ final class EditorUI$11
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(181527);
-    this.pyG.goBack();
+    this.qNX.goBack();
     AppMethodBeat.o(181527);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.EditorUI.11
  * JD-Core Version:    0.7.0.1
  */

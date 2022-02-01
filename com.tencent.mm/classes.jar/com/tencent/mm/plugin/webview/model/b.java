@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,11 +14,11 @@ import java.util.Map;
 
 public final class b
 {
-  ay Eae;
+  az IMs;
   
-  public b(ay paramay)
+  public b(az paramaz)
   {
-    this.Eae = paramay;
+    this.IMs = paramaz;
   }
 }
 

@@ -7,9 +7,9 @@ import android.os.Looper;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.e.i;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
@@ -20,23 +20,23 @@ import java.util.List;
 public class DanmuView
   extends View
 {
-  private LinkedList<Float> cNj;
-  private int ltO;
-  private int ltP;
-  private int ltQ;
-  private float ltR;
-  private float ltS;
-  private boolean ltT;
-  private boolean ltU;
-  private c ltV;
-  private HashMap<Integer, ArrayList<d>> ltW;
-  public final Deque<d> ltX;
-  public List<d> ltY;
-  private int[] ltZ;
-  private volatile boolean lua;
-  private LinkedList<Long> lub;
-  private Paint luc;
-  private long lud;
+  private LinkedList<Float> ddH;
+  public List<d> mAA;
+  private int[] mAB;
+  private volatile boolean mAC;
+  private LinkedList<Long> mAD;
+  private Paint mAE;
+  private long mAF;
+  private int mAq;
+  private int mAr;
+  private int mAs;
+  private float mAt;
+  private float mAu;
+  private boolean mAv;
+  private boolean mAw;
+  private c mAx;
+  private HashMap<Integer, ArrayList<d>> mAy;
+  public final Deque<d> mAz;
   private final Context mContext;
   private volatile int status;
   
@@ -49,22 +49,22 @@ public class DanmuView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(137862);
-    this.ltO = 5;
-    this.ltP = 500;
-    this.ltQ = 10;
-    this.ltR = 0.0F;
-    this.ltS = 0.6F;
-    this.ltT = false;
-    this.ltU = false;
-    this.ltX = new LinkedList();
-    this.ltY = new LinkedList();
+    this.mAq = 5;
+    this.mAr = 500;
+    this.mAs = 10;
+    this.mAt = 0.0F;
+    this.mAu = 0.6F;
+    this.mAv = false;
+    this.mAw = false;
+    this.mAz = new LinkedList();
+    this.mAA = new LinkedList();
     this.status = 3;
-    this.lud = 0L;
+    this.mAF = 0L;
     this.mContext = paramContext;
     AppMethodBeat.o(137862);
   }
   
-  private static void J(float paramFloat1, float paramFloat2)
+  private static void N(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(137863);
     IllegalArgumentException localIllegalArgumentException;
@@ -89,17 +89,17 @@ public class DanmuView
     int i = 0;
     try
     {
-      while (i < this.ltO)
+      while (i < this.mAq)
       {
-        int j = (i + 0) % this.ltO;
-        ArrayList localArrayList = (ArrayList)this.ltW.get(Integer.valueOf(j));
+        int j = (i + 0) % this.mAq;
+        ArrayList localArrayList = (ArrayList)this.mAy.get(Integer.valueOf(j));
         int k = localArrayList.size();
         if (k == 0)
         {
           AppMethodBeat.o(137869);
           return j;
         }
-        if (localArrayList.size() <= this.ltQ)
+        if (localArrayList.size() <= this.mAs)
         {
           boolean bool = paramd.a((d)localArrayList.get(localArrayList.size() - 1));
           if (!bool)
@@ -114,95 +114,95 @@ public class DanmuView
     }
     catch (Exception paramd)
     {
-      ae.w("MicroMsg.DanmuView", "findVacant,Exception:" + paramd.getMessage());
+      Log.w("MicroMsg.DanmuView", "findVacant,Exception:" + paramd.getMessage());
       AppMethodBeat.o(137869);
     }
   }
   
-  private void boJ()
+  private void bKm()
   {
     AppMethodBeat.i(137865);
-    boK();
-    boL();
+    bKn();
+    bKo();
     AppMethodBeat.o(137865);
   }
   
-  private void boK()
+  private void bKn()
   {
     AppMethodBeat.i(137866);
-    this.ltW = new HashMap(this.ltO);
+    this.mAy = new HashMap(this.mAq);
     int i = 0;
-    while (i < this.ltO)
+    while (i < this.mAq)
     {
-      ArrayList localArrayList = new ArrayList(this.ltQ);
-      this.ltW.put(Integer.valueOf(i), localArrayList);
+      ArrayList localArrayList = new ArrayList(this.mAs);
+      this.mAy.put(Integer.valueOf(i), localArrayList);
       i += 1;
     }
     AppMethodBeat.o(137866);
   }
   
-  private void boL()
+  private void bKo()
   {
     int j = 0;
     AppMethodBeat.i(137867);
-    this.ltZ = new int[this.ltO];
-    float f1 = b.dB(this.mContext);
+    this.mAB = new int[this.mAq];
+    float f1 = b.dW(this.mContext);
     float f2 = getHeight();
-    f2 = this.ltR * f2;
+    f2 = this.mAt * f2;
     int i = 0;
-    while (i < this.ltO)
+    while (i < this.mAq)
     {
-      this.ltZ[i] = ((int)((i + 1) * f1 + f2 - 3.0F * f1 / 4.0F));
+      this.mAB[i] = ((int)((i + 1) * f1 + f2 - 3.0F * f1 / 4.0F));
       i += 1;
     }
-    if (this.ltU)
+    if (this.mAw)
     {
-      this.cNj.clear();
-      this.cNj.add(Float.valueOf(f2));
+      this.ddH.clear();
+      this.ddH.add(Float.valueOf(f2));
       i = j;
-      while (i < this.ltO)
+      while (i < this.mAq)
       {
-        this.cNj.add(Float.valueOf((i + 1) * f1 + f2));
+        this.ddH.add(Float.valueOf((i + 1) * f1 + f2));
         i += 1;
       }
     }
     AppMethodBeat.o(137867);
   }
   
-  private void boO()
+  private void bKr()
   {
     AppMethodBeat.i(137878);
-    if ((this.ltW != null) && (!this.ltW.isEmpty())) {
-      this.ltW.clear();
+    if ((this.mAy != null) && (!this.mAy.isEmpty())) {
+      this.mAy.clear();
     }
     AppMethodBeat.o(137878);
   }
   
-  private void boP()
+  private void bKs()
   {
     AppMethodBeat.i(137879);
-    synchronized (this.ltX)
+    synchronized (this.mAz)
     {
-      if (!this.ltX.isEmpty()) {
-        this.ltX.clear();
+      if (!this.mAz.isEmpty()) {
+        this.mAz.clear();
       }
       AppMethodBeat.o(137879);
       return;
     }
   }
   
-  private double boR()
+  private double bKu()
   {
     AppMethodBeat.i(137883);
     long l = System.nanoTime();
-    this.lub.addLast(Long.valueOf(l));
-    double d = (l - ((Long)this.lub.getFirst()).longValue()) / 1000000000.0D;
-    if (this.lub.size() > 100) {
-      this.lub.removeFirst();
+    this.mAD.addLast(Long.valueOf(l));
+    double d = (l - ((Long)this.mAD.getFirst()).longValue()) / 1000000000.0D;
+    if (this.mAD.size() > 100) {
+      this.mAD.removeFirst();
     }
     if (d > 0.0D)
     {
-      d = this.lub.size() / d;
+      d = this.mAD.size() / d;
       AppMethodBeat.o(137883);
       return d;
     }
@@ -222,12 +222,12 @@ public class DanmuView
     return false;
   }
   
-  public final void boM()
+  public final void bKp()
   {
     AppMethodBeat.i(137871);
     if (isMainThread())
     {
-      this.lua = true;
+      this.mAC = true;
       AppMethodBeat.o(137871);
       return;
     }
@@ -243,12 +243,12 @@ public class DanmuView
     AppMethodBeat.o(137871);
   }
   
-  public final void boN()
+  public final void bKq()
   {
     AppMethodBeat.i(137872);
     if (isMainThread())
     {
-      this.lua = false;
+      this.mAC = false;
       invalidate();
       AppMethodBeat.o(137872);
       return;
@@ -266,10 +266,10 @@ public class DanmuView
     AppMethodBeat.o(137872);
   }
   
-  public final void boQ()
+  public final void bKt()
   {
-    this.ltR = 0.0F;
-    this.ltS = 0.8F;
+    this.mAt = 0.0F;
+    this.mAu = 0.8F;
   }
   
   public final void clear()
@@ -277,7 +277,7 @@ public class DanmuView
     AppMethodBeat.i(137876);
     this.status = 3;
     clearItems();
-    this.ltY.clear();
+    this.mAA.clear();
     invalidate();
     AppMethodBeat.o(137876);
   }
@@ -285,14 +285,14 @@ public class DanmuView
   public final void clearItems()
   {
     AppMethodBeat.i(137877);
-    boO();
-    boP();
+    bKr();
+    bKs();
     AppMethodBeat.o(137877);
   }
   
   public float getYOffset()
   {
-    return this.ltS - this.ltR;
+    return this.mAu - this.mAt;
   }
   
   public final void hide()
@@ -307,9 +307,9 @@ public class DanmuView
   {
     AppMethodBeat.i(137868);
     super.onDraw(paramCanvas);
-    if (this.lua)
+    if (this.mAC)
     {
-      ae.i("MicroMsg.DanmuView", "inTransition");
+      Log.i("MicroMsg.DanmuView", "inTransition");
       AppMethodBeat.o(137868);
       return;
     }
@@ -322,15 +322,15 @@ public class DanmuView
       {
         paramCanvas.drawColor(0);
         i = 0;
-        if (i >= this.ltW.size()) {
+        if (i >= this.mAy.size()) {
           break label160;
         }
-        localObject1 = ((ArrayList)this.ltW.get(Integer.valueOf(i))).iterator();
+        localObject1 = ((ArrayList)this.mAy.get(Integer.valueOf(i))).iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break label698;
         }
         ??? = (d)((Iterator)localObject1).next();
-        if (((d)???).boG())
+        if (((d)???).bKj())
         {
           ((Iterator)localObject1).remove();
           continue;
@@ -339,61 +339,61 @@ public class DanmuView
       }
       catch (Exception paramCanvas)
       {
-        ae.w("MicroMsg.DanmuView", "STATUS_RUNNING onDraw e=%s", new Object[] { paramCanvas });
+        Log.w("MicroMsg.DanmuView", "STATUS_RUNNING onDraw e=%s", new Object[] { paramCanvas });
         invalidate();
         AppMethodBeat.o(137868);
         return;
       }
       continue;
       label160:
-      if (System.currentTimeMillis() - this.lud > this.ltP) {
-        this.lud = System.currentTimeMillis();
+      if (System.currentTimeMillis() - this.mAF > this.mAr) {
+        this.mAF = System.currentTimeMillis();
       }
       float f;
-      synchronized (this.ltX)
+      synchronized (this.mAz)
       {
-        if (this.ltX.size() > 0)
+        if (this.mAz.size() > 0)
         {
-          localObject1 = (d)this.ltX.getFirst();
-          i = this.ltV.aHc();
-          while ((localObject1 != null) && (((d)localObject1).tF(i)))
+          localObject1 = (d)this.mAz.getFirst();
+          i = this.mAx.baT();
+          while ((localObject1 != null) && (((d)localObject1).xD(i)))
           {
-            this.ltX.pollFirst();
-            localObject1 = (d)this.ltX.getFirst();
+            this.mAz.pollFirst();
+            localObject1 = (d)this.mAz.getFirst();
           }
-          if ((localObject1 != null) && (((d)localObject1).tE(i)))
+          if ((localObject1 != null) && (((d)localObject1).xC(i)))
           {
             i = b((d)localObject1);
             if (i >= 0)
             {
-              ((d)localObject1).dV(paramCanvas.getWidth() - 2, this.ltZ[i]);
+              ((d)localObject1).eh(paramCanvas.getWidth() - 2, this.mAB[i]);
               ((d)localObject1).b(paramCanvas, false);
-              ((ArrayList)this.ltW.get(Integer.valueOf(i))).add(localObject1);
-              this.ltX.pollFirst();
+              ((ArrayList)this.mAy.get(Integer.valueOf(i))).add(localObject1);
+              this.mAz.pollFirst();
             }
           }
         }
-        if ((this.ltT) && (this.lub != null)) {
-          paramCanvas.drawText("FPS:".concat(String.valueOf((int)boR())), 5.0F, 20.0F, this.luc);
+        if ((this.mAv) && (this.mAD != null)) {
+          paramCanvas.drawText("FPS:".concat(String.valueOf((int)bKu())), 5.0F, 20.0F, this.mAE);
         }
-        if ((!this.ltU) || (this.cNj == null)) {
+        if ((!this.mAw) || (this.ddH == null)) {
           continue;
         }
-        localObject1 = this.cNj.iterator();
+        localObject1 = this.ddH.iterator();
         if (!((Iterator)localObject1).hasNext()) {
           continue;
         }
         f = ((Float)((Iterator)localObject1).next()).floatValue();
-        paramCanvas.drawLine(0.0F, f, getWidth(), f, this.luc);
+        paramCanvas.drawLine(0.0F, f, getWidth(), f, this.mAE);
       }
       if (this.status == 2) {
         try
         {
           paramCanvas.drawColor(0);
           i = 0;
-          if (i < this.ltW.size())
+          if (i < this.mAy.size())
           {
-            localObject1 = ((ArrayList)this.ltW.get(Integer.valueOf(i))).iterator();
+            localObject1 = ((ArrayList)this.mAy.get(Integer.valueOf(i))).iterator();
             while (((Iterator)localObject1).hasNext())
             {
               ((d)((Iterator)localObject1).next()).b(paramCanvas, true);
@@ -404,7 +404,7 @@ public class DanmuView
         }
         catch (Exception paramCanvas)
         {
-          ae.w("MicroMsg.DanmuView", "STATUS_PAUSE onDraw e=%s", new Object[] { paramCanvas });
+          Log.w("MicroMsg.DanmuView", "STATUS_PAUSE onDraw e=%s", new Object[] { paramCanvas });
         }
       }
       for (;;)
@@ -413,16 +413,16 @@ public class DanmuView
         return;
         i += 1;
         break;
-        if ((this.ltT) && (this.lub != null)) {
-          paramCanvas.drawText("FPS:".concat(String.valueOf((int)boR())), 5.0F, 20.0F, this.luc);
+        if ((this.mAv) && (this.mAD != null)) {
+          paramCanvas.drawText("FPS:".concat(String.valueOf((int)bKu())), 5.0F, 20.0F, this.mAE);
         }
-        if ((this.ltU) && (this.cNj != null))
+        if ((this.mAw) && (this.ddH != null))
         {
-          localObject1 = this.cNj.iterator();
+          localObject1 = this.ddH.iterator();
           while (((Iterator)localObject1).hasNext())
           {
             f = ((Float)((Iterator)localObject1).next()).floatValue();
-            paramCanvas.drawLine(0.0F, f, getWidth(), f, this.luc);
+            paramCanvas.drawLine(0.0F, f, getWidth(), f, this.mAE);
           }
         }
       }
@@ -435,7 +435,7 @@ public class DanmuView
   {
     AppMethodBeat.i(137870);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    boL();
+    bKo();
     AppMethodBeat.o(137870);
   }
   
@@ -450,42 +450,42 @@ public class DanmuView
   public final void prepare()
   {
     AppMethodBeat.i(137864);
-    J(this.ltR, this.ltS);
+    N(this.mAt, this.mAu);
     setBackgroundColor(0);
     setDrawingCacheBackgroundColor(0);
-    boJ();
+    bKm();
     AppMethodBeat.o(137864);
   }
   
   public void setDanmuViewCallBack(c paramc)
   {
-    this.ltV = paramc;
+    this.mAx = paramc;
   }
   
   public void setMaxRow(int paramInt)
   {
     AppMethodBeat.i(137880);
-    this.ltO = paramInt;
+    this.mAq = paramInt;
     HashMap localHashMap;
-    if (this.ltW != null)
+    if (this.mAy != null)
     {
-      localHashMap = this.ltW;
+      localHashMap = this.mAy;
       paramInt = 0;
     }
     for (;;)
     {
       try
       {
-        if (paramInt < this.ltW.size())
+        if (paramInt < this.mAy.size())
         {
-          ArrayList localArrayList = (ArrayList)this.ltW.get(Integer.valueOf(paramInt));
+          ArrayList localArrayList = (ArrayList)this.mAy.get(Integer.valueOf(paramInt));
           if (localArrayList != null) {
             localArrayList.clear();
           }
         }
         else
         {
-          boJ();
+          bKm();
           AppMethodBeat.o(137880);
           return;
         }
@@ -500,24 +500,24 @@ public class DanmuView
   
   public void setMaxRunningPerRow(int paramInt)
   {
-    this.ltQ = paramInt;
+    this.mAs = paramInt;
   }
   
   public void setPickItemInterval(int paramInt)
   {
-    this.ltP = paramInt;
+    this.mAr = paramInt;
   }
   
   public void setShowFps(boolean paramBoolean)
   {
     AppMethodBeat.i(137881);
-    this.ltT = paramBoolean;
-    if ((paramBoolean) && ((this.luc == null) || (this.lub == null)))
+    this.mAv = paramBoolean;
+    if ((paramBoolean) && ((this.mAE == null) || (this.mAD == null)))
     {
-      this.luc = new TextPaint(1);
-      this.luc.setColor(-256);
-      this.luc.setTextSize(20.0F);
-      this.lub = new LinkedList();
+      this.mAE = new TextPaint(1);
+      this.mAE.setColor(-256);
+      this.mAE.setTextSize(20.0F);
+      this.mAD = new LinkedList();
     }
     AppMethodBeat.o(137881);
   }
@@ -525,9 +525,9 @@ public class DanmuView
   public void setShowLines(boolean paramBoolean)
   {
     AppMethodBeat.i(137882);
-    this.ltU = paramBoolean;
-    if ((paramBoolean) && (this.cNj == null)) {
-      this.cNj = new LinkedList();
+    this.mAw = paramBoolean;
+    if ((paramBoolean) && (this.ddH == null)) {
+      this.ddH = new LinkedList();
     }
     AppMethodBeat.o(137882);
   }
@@ -540,14 +540,14 @@ public class DanmuView
     AppMethodBeat.o(137873);
   }
   
-  public final void tG(final int paramInt)
+  public final void xE(final int paramInt)
   {
-    AppMethodBeat.i(211235);
-    ae.i("MicroMsg.DanmuView", "seekToPlayTime playTime=%d", new Object[] { Integer.valueOf(paramInt) });
-    boM();
+    AppMethodBeat.i(234904);
+    Log.i("MicroMsg.DanmuView", "seekToPlayTime playTime=%d", new Object[] { Integer.valueOf(paramInt) });
+    bKp();
     clearItems();
     prepare();
-    com.tencent.e.h.MqF.aO(new com.tencent.e.i.h()
+    com.tencent.f.h.RTc.aX(new com.tencent.f.i.h()
     {
       public final String getKey()
       {
@@ -563,10 +563,10 @@ public class DanmuView
           while (i >= 0)
           {
             d locald = (d)DanmuView.a(DanmuView.this).get(i);
-            if (locald.boH() < paramInt) {
+            if (locald.bKk() < paramInt) {
               break;
             }
-            ae.v("MicroMsg.DanmuView", "seekToPlayTime addBack i=%d showTime=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(locald.boH()) });
+            Log.v("MicroMsg.DanmuView", "seekToPlayTime addBack i=%d showTime=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(locald.bKk()) });
             DanmuView.b(DanmuView.this).addFirst(locald);
             i -= 1;
           }
@@ -576,12 +576,12 @@ public class DanmuView
         }
       }
     });
-    AppMethodBeat.o(211235);
+    AppMethodBeat.o(234904);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.DanmuView
  * JD-Core Version:    0.7.0.1
  */

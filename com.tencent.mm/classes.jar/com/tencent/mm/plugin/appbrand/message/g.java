@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.appbrand.message;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.a.c;
-import com.tencent.mm.ah.a.d;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.ag.a.c;
+import com.tencent.mm.ak.aa;
+import com.tencent.mm.ak.aa.a;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.bw.a;
 import com.tencent.mm.modelappbrand.m;
 import com.tencent.mm.modelappbrand.m.a;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.protocal.protobuf.bkc;
-import com.tencent.mm.protocal.protobuf.bkd;
-import com.tencent.mm.protocal.protobuf.dep;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.protocal.protobuf.bwl;
+import com.tencent.mm.protocal.protobuf.bwm;
+import com.tencent.mm.protocal.protobuf.dxt;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,30 +30,30 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class g
   implements m
 {
-  private static Map<String, Object> lYO;
-  private static Map<String, List<a>> lYP;
+  private static Map<String, Object> ngu;
+  private static Map<String, List<a>> ngv;
   
   static
   {
     AppMethodBeat.i(47740);
-    lYO = new HashMap();
-    lYP = new HashMap();
+    ngu = new HashMap();
+    ngv = new HashMap();
     AppMethodBeat.o(47740);
   }
   
-  public final c CF(String paramString)
+  public final c Lq(String paramString)
   {
     AppMethodBeat.i(47733);
-    d locald = j.aZr();
+    com.tencent.mm.ag.a.d locald = n.buI();
     if (locald == null)
     {
-      ae.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null");
+      Log.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null");
       AppMethodBeat.o(47733);
       return null;
     }
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.WxaUpdateableMsgService", "shareKey is null, return");
+      Log.e("MicroMsg.WxaUpdateableMsgService", "shareKey is null, return");
       AppMethodBeat.o(47733);
       return null;
     }
@@ -65,32 +63,32 @@ public final class g
     c localc1 = localc2;
     if (!locald.get(localc2, new String[] { "shareKeyHash" }))
     {
-      ae.e("MicroMsg.WxaUpdateableMsgStorage", "WxaUpdateableMsg is null");
+      Log.e("MicroMsg.WxaUpdateableMsgStorage", "WxaUpdateableMsg is null");
       localc1 = null;
     }
     if (localc1 == null)
     {
-      ae.e("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, wxaUpdateableMsg is null", new Object[] { paramString, Integer.valueOf(paramString.hashCode()) });
+      Log.e("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, wxaUpdateableMsg is null", new Object[] { paramString, Integer.valueOf(paramString.hashCode()) });
       AppMethodBeat.o(47733);
       return null;
     }
-    ae.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d status:%s", new Object[] { paramString, Integer.valueOf(paramString.hashCode()), Integer.valueOf(localc1.field_btnState) });
+    Log.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d status:%s", new Object[] { paramString, Integer.valueOf(paramString.hashCode()), Integer.valueOf(localc1.field_btnState) });
     AppMethodBeat.o(47733);
     return localc1;
   }
   
-  public final void CG(String paramString)
+  public final void Lr(String paramString)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(47737);
-        ae.i("MicroMsg.WxaUpdateableMsgService", "removeOnUpdatbleMsgInfoChange token:%s", new Object[] { paramString });
-        Object localObject = (List)lYP.get(paramString);
+        Log.i("MicroMsg.WxaUpdateableMsgService", "removeOnUpdatbleMsgInfoChange token:%s", new Object[] { paramString });
+        Object localObject = (List)ngv.get(paramString);
         if (localObject == null)
         {
-          ae.w("MicroMsg.WxaUpdateableMsgService", "[removeOnUpdatbleMsgInfoChange]getUpdatableMsgWorkers is null, err");
+          Log.w("MicroMsg.WxaUpdateableMsgService", "[removeOnUpdatbleMsgInfoChange]getUpdatableMsgWorkers is null, err");
           AppMethodBeat.o(47737);
           return;
         }
@@ -98,12 +96,12 @@ public final class g
         if (((Iterator)localObject).hasNext())
         {
           a locala = (a)((Iterator)localObject).next();
-          b localb = b.lYS;
-          ae.d("MicroMsg.WxaUpdateableMsgService", "[removeWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(localb.lYT.size()) });
-          localb.lYT.remove(Integer.valueOf(locala.cmw.hashCode()));
+          b localb = b.ngy;
+          Log.d("MicroMsg.WxaUpdateableMsgService", "[removeWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(localb.ngz.size()) });
+          localb.ngz.remove(Integer.valueOf(locala.cyr.hashCode()));
           continue;
         }
-        lYP.remove(paramString);
+        ngv.remove(paramString);
       }
       finally {}
       AppMethodBeat.o(47737);
@@ -117,61 +115,61 @@ public final class g
       try
       {
         AppMethodBeat.i(47736);
-        if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)) || (bu.isNullOrNil(paramString3)))
+        if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
         {
-          ae.e("MicroMsg.WxaUpdateableMsgService", "token appId or shareKey is null, return");
+          Log.e("MicroMsg.WxaUpdateableMsgService", "token appId or shareKey is null, return");
           AppMethodBeat.o(47736);
           return;
         }
-        List localList = (List)lYP.get(paramString1);
+        List localList = (List)ngv.get(paramString1);
         Object localObject = localList;
         if (localList == null)
         {
-          ae.i("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange token:%s", new Object[] { paramString1 });
+          Log.i("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange token:%s", new Object[] { paramString1 });
           localObject = new ArrayList();
-          lYP.put(paramString1, localObject);
+          ngv.put(paramString1, localObject);
         }
-        ae.i("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange shareKeyHash:%d", new Object[] { Integer.valueOf(paramString3.hashCode()) });
-        ae.d("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange shareKey:%s", new Object[] { paramString3 });
+        Log.i("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange shareKeyHash:%d", new Object[] { Integer.valueOf(paramString3.hashCode()) });
+        Log.d("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange shareKey:%s", new Object[] { paramString3 });
         paramString1 = new a((byte)0);
         paramString1.appId = paramString2;
-        paramString1.cmw = paramString3;
-        paramString1.lYQ = paramInt;
-        paramString1.lYR = parama;
-        if ((bu.isNullOrNil(paramString1.appId)) || (bu.isNullOrNil(paramString1.cmw)))
+        paramString1.cyr = paramString3;
+        paramString1.ngw = paramInt;
+        paramString1.ngx = parama;
+        if ((Util.isNullOrNil(paramString1.appId)) || (Util.isNullOrNil(paramString1.cyr)))
         {
-          ae.w("MicroMsg.WxaUpdateableMsgService", "appId or shareKey is null, return");
+          Log.w("MicroMsg.WxaUpdateableMsgService", "appId or shareKey is null, return");
           ((List)localObject).add(paramString1);
           AppMethodBeat.o(47736);
           continue;
         }
-        paramString2 = b.lYS;
+        paramString2 = b.ngy;
       }
       finally {}
-      ae.d("MicroMsg.WxaUpdateableMsgService", "[addWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(paramString2.lYT.size()) });
-      paramString2.lYT.put(Integer.valueOf(paramString1.cmw.hashCode()), paramString1);
+      Log.d("MicroMsg.WxaUpdateableMsgService", "[addWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(paramString2.ngz.size()) });
+      paramString2.ngz.put(Integer.valueOf(paramString1.cyr.hashCode()), paramString1);
     }
   }
   
   public final boolean a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(47735);
-    d locald = j.aZr();
+    com.tencent.mm.ag.a.d locald = n.buI();
     if (locald == null)
     {
-      ae.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null, err");
+      Log.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null, err");
       AppMethodBeat.o(47735);
       return false;
     }
     boolean bool;
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
-      ae.e("MicroMsg.WxaUpdateableMsgStorage", "shareKey is null, err");
+      Log.e("MicroMsg.WxaUpdateableMsgStorage", "shareKey is null, err");
       bool = false;
     }
     for (;;)
     {
-      ae.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, content:%s contentColor:%s isOk:%b", new Object[] { paramString1, Integer.valueOf(paramString1.hashCode()), paramString2, paramString3, Boolean.valueOf(bool) });
+      Log.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, content:%s contentColor:%s isOk:%b", new Object[] { paramString1, Integer.valueOf(paramString1.hashCode()), paramString2, paramString3, Boolean.valueOf(bool) });
       AppMethodBeat.o(47735);
       return bool;
       c localc = new c();
@@ -189,43 +187,43 @@ public final class g
     }
   }
   
-  public final void aDZ()
+  public final void aXM()
   {
     AppMethodBeat.i(47738);
-    ae.i("MicroMsg.WxaUpdateableMsgService", "startUpdatbleMsgInfoChange");
-    b.lYS.start();
+    Log.i("MicroMsg.WxaUpdateableMsgService", "startUpdatbleMsgInfoChange");
+    b.ngy.start();
     AppMethodBeat.o(47738);
   }
   
-  public final void aEa()
+  public final void aXN()
   {
     AppMethodBeat.i(47739);
-    ae.i("MicroMsg.WxaUpdateableMsgService", "stopOnUpdatbleMsgInfoChange");
-    b.lYS.stop();
+    Log.i("MicroMsg.WxaUpdateableMsgService", "stopOnUpdatbleMsgInfoChange");
+    b.ngy.stop();
     AppMethodBeat.o(47739);
   }
   
-  public final boolean ak(String paramString, int paramInt)
+  public final boolean ao(String paramString, int paramInt)
   {
     AppMethodBeat.i(47734);
-    d locald = j.aZr();
+    com.tencent.mm.ag.a.d locald = n.buI();
     if (locald == null)
     {
-      ae.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null, err");
+      Log.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null, err");
       AppMethodBeat.o(47734);
       return false;
     }
     boolean bool;
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.WxaUpdateableMsgStorage", "shareKey is null, err");
+      Log.e("MicroMsg.WxaUpdateableMsgStorage", "shareKey is null, err");
       bool = false;
     }
     for (;;)
     {
-      ae.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, btnState:%d isOk:%b", new Object[] { paramString, Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+      Log.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, btnState:%d isOk:%b", new Object[] { paramString, Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt), Boolean.valueOf(bool) });
       if (bool) {
-        lYO.get(paramString);
+        ngu.get(paramString);
       }
       AppMethodBeat.o(47734);
       return bool;
@@ -244,31 +242,31 @@ public final class g
   static final class a
   {
     public String appId;
-    public String cmw;
-    public int lYQ;
-    public m.a lYR;
+    public String cyr;
     public long lastUpdateTime;
+    public int ngw;
+    public m.a ngx;
     
-    private long btK()
+    private long bPl()
     {
       AppMethodBeat.i(47719);
       long l = System.currentTimeMillis() - this.lastUpdateTime;
-      ae.d("MicroMsg.WxaUpdateableMsgService", "consumeTime:%d", new Object[] { Long.valueOf(l) });
+      Log.d("MicroMsg.WxaUpdateableMsgService", "consumeTime:%d", new Object[] { Long.valueOf(l) });
       AppMethodBeat.o(47719);
       return l;
     }
     
-    public final boolean btJ()
+    public final boolean bPk()
     {
       AppMethodBeat.i(47718);
-      if (this.lYQ < 0)
+      if (this.ngw < 0)
       {
         AppMethodBeat.o(47718);
         return false;
       }
-      if (this.lYQ == 0)
+      if (this.ngw == 0)
       {
-        if (btK() > 10000L)
+        if (bPl() > 10000L)
         {
           AppMethodBeat.o(47718);
           return true;
@@ -276,7 +274,7 @@ public final class g
         AppMethodBeat.o(47718);
         return false;
       }
-      if (btK() > this.lYQ * 1000L)
+      if (bPl() > this.ngw * 1000L)
       {
         AppMethodBeat.o(47718);
         return true;
@@ -288,24 +286,24 @@ public final class g
   
   public static enum b
   {
-    private AtomicBoolean dfY;
-    Map<Integer, g.a> lYT;
-    private Runnable lYU;
+    private AtomicBoolean dxi;
+    private Runnable ngA;
+    Map<Integer, g.a> ngz;
     
     static
     {
       AppMethodBeat.i(47732);
-      lYS = new b("INSTANCE");
-      lYV = new b[] { lYS };
+      ngy = new b("INSTANCE");
+      ngB = new b[] { ngy };
       AppMethodBeat.o(47732);
     }
     
     private b()
     {
       AppMethodBeat.i(47724);
-      this.lYT = new ConcurrentHashMap();
-      this.dfY = new AtomicBoolean(true);
-      this.lYU = new Runnable()
+      this.ngz = new ConcurrentHashMap();
+      this.dxi = new AtomicBoolean(true);
+      this.ngA = new Runnable()
       {
         public final void run()
         {
@@ -315,71 +313,71 @@ public final class g
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (g.a)((Iterator)localObject1).next();
-            if (((g.a)localObject2).btJ())
+            if (((g.a)localObject2).bPk())
             {
-              localObject3 = new dep();
-              ((dep)localObject3).HLO = ((g.a)localObject2).cmw;
-              ((dep)localObject3).dwb = ((g.a)localObject2).appId;
+              localObject3 = new dxt();
+              ((dxt)localObject3).MXx = ((g.a)localObject2).cyr;
+              ((dxt)localObject3).dNI = ((g.a)localObject2).appId;
               localLinkedList.add(localObject3);
             }
           }
           localObject1 = g.b.this;
           if (localLinkedList.size() <= 0)
           {
-            ae.d("MicroMsg.WxaUpdateableMsgService", "shareKeyInfoList is null, return");
-            ((g.b)localObject1).btL();
+            Log.d("MicroMsg.WxaUpdateableMsgService", "shareKeyInfoList is null, return");
+            ((g.b)localObject1).bPm();
             AppMethodBeat.o(47720);
             return;
           }
-          ae.d("MicroMsg.WxaUpdateableMsgService", "getUpdateableMsg shareKeyInfoList.size:%d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-          Object localObject2 = new b.a();
-          ((b.a)localObject2).funcId = 2954;
-          ((b.a)localObject2).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getupdatablemsginfo";
-          Object localObject3 = new bkc();
-          ((bkc)localObject3).GXt = localLinkedList;
-          ((b.a)localObject2).hQF = ((a)localObject3);
-          ((b.a)localObject2).hQG = new bkd();
-          x.a(((b.a)localObject2).aDS(), new g.b.2((g.b)localObject1));
+          Log.d("MicroMsg.WxaUpdateableMsgService", "getUpdateableMsg shareKeyInfoList.size:%d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+          Object localObject2 = new d.a();
+          ((d.a)localObject2).funcId = 2954;
+          ((d.a)localObject2).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getupdatablemsginfo";
+          Object localObject3 = new bwl();
+          ((bwl)localObject3).Mci = localLinkedList;
+          ((d.a)localObject2).iLN = ((a)localObject3);
+          ((d.a)localObject2).iLO = new bwm();
+          aa.a(((d.a)localObject2).aXF(), new g.b.2((g.b)localObject1));
           AppMethodBeat.o(47720);
         }
       };
       AppMethodBeat.o(47724);
     }
     
-    final void btL()
+    final void bPm()
     {
       boolean bool1 = false;
       boolean bool2 = true;
       try
       {
         AppMethodBeat.i(47727);
-        com.tencent.mm.kernel.g.ajU();
-        ar.ay(this.lYU);
-        if (this.dfY.get())
+        com.tencent.mm.kernel.g.aAk();
+        MMHandlerThread.removeRunnable(this.ngA);
+        if (this.dxi.get())
         {
-          ae.d("MicroMsg.WxaUpdateableMsgService", "isPause, not sendUpdatableMsgRequest");
+          Log.d("MicroMsg.WxaUpdateableMsgService", "isPause, not sendUpdatableMsgRequest");
           AppMethodBeat.o(47727);
         }
         for (;;)
         {
           return;
-          if (this.lYT.size() > 0) {
+          if (this.ngz.size() > 0) {
             break;
           }
-          ae.d("MicroMsg.WxaUpdateableMsgService", "sGetUpdatableMsgWorkerMap is empty, not sendUpdatableMsgRequest");
+          Log.d("MicroMsg.WxaUpdateableMsgService", "sGetUpdatableMsgWorkerMap is empty, not sendUpdatableMsgRequest");
           AppMethodBeat.o(47727);
         }
         l = 9223372036854775807L;
       }
       finally {}
       long l;
-      Iterator localIterator = this.lYT.values().iterator();
+      Iterator localIterator = this.ngz.values().iterator();
       label101:
       g.a locala;
       if (localIterator.hasNext())
       {
         locala = (g.a)localIterator.next();
-        if (locala.btJ())
+        if (locala.bPk())
         {
           l = 0L;
           bool1 = bool2;
@@ -387,19 +385,19 @@ public final class g
       }
       for (;;)
       {
-        ae.d("MicroMsg.WxaUpdateableMsgService", "needUpdate:%b minDelayTime:%d", new Object[] { Boolean.valueOf(bool1), Long.valueOf(l) });
+        Log.d("MicroMsg.WxaUpdateableMsgService", "needUpdate:%b minDelayTime:%d", new Object[] { Boolean.valueOf(bool1), Long.valueOf(l) });
         if (!bool1)
         {
           AppMethodBeat.o(47727);
           break;
-          if (locala.lYQ < 0) {
+          if (locala.ngw < 0) {
             break label101;
           }
-          l = Math.min(locala.lYQ, l);
+          l = Math.min(locala.ngw, l);
           bool1 = true;
           break label101;
         }
-        com.tencent.mm.kernel.g.ajU().n(this.lYU, l * 1000L);
+        com.tencent.mm.kernel.g.aAk().postToWorkerDelayed(this.ngA, l * 1000L);
         AppMethodBeat.o(47727);
         break;
       }
@@ -410,8 +408,8 @@ public final class g
       try
       {
         AppMethodBeat.i(47725);
-        this.dfY.set(false);
-        btL();
+        this.dxi.set(false);
+        bPm();
         AppMethodBeat.o(47725);
         return;
       }
@@ -427,7 +425,7 @@ public final class g
       try
       {
         AppMethodBeat.i(47726);
-        this.dfY.set(true);
+        this.dxi.set(true);
         AppMethodBeat.o(47726);
         return;
       }
@@ -441,7 +439,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.message.g
  * JD-Core Version:    0.7.0.1
  */

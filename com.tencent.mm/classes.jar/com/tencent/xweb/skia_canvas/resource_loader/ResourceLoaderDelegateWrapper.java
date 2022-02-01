@@ -10,23 +10,23 @@ public class ResourceLoaderDelegateWrapper
   
   ResourceLoaderDelegateWrapper(IResourceLoader paramIResourceLoader)
   {
-    AppMethodBeat.i(218257);
+    AppMethodBeat.i(217614);
     this.mDelegate = paramIResourceLoader;
     this.mThread = Thread.currentThread();
     nativeCreatePeer();
-    AppMethodBeat.o(218257);
+    AppMethodBeat.o(217614);
   }
   
   private void checkRunningThread()
   {
-    AppMethodBeat.i(218258);
+    AppMethodBeat.i(217615);
     if (Thread.currentThread() != this.mThread)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Any method should be run at thread " + this.mThread);
-      AppMethodBeat.o(218258);
+      AppMethodBeat.o(217615);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(218258);
+    AppMethodBeat.o(217615);
   }
   
   private native void nativeCreatePeer();
@@ -35,46 +35,44 @@ public class ResourceLoaderDelegateWrapper
   
   public byte[] loadResource(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(218259);
+    AppMethodBeat.i(217616);
     String.format("loadResource path:%s, referrerPolicy:%s, delegate: %s", new Object[] { paramString1, paramString2, this.mDelegate });
     paramString1 = this.mDelegate.loadResource(paramString1, paramString2);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(218259);
+      AppMethodBeat.o(217616);
       return new byte[0];
     }
-    String.format("loadResource result:%d", new Object[] { Integer.valueOf(paramString1.length) });
-    AppMethodBeat.o(218259);
+    AppMethodBeat.o(217616);
     return paramString1;
   }
   
   public void loadResourceAsync(final int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(218260);
+    AppMethodBeat.i(217617);
     String.format("loadResourceAsync path:%s, referrerPolicy:%s, requestId: %d, delegate: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), this.mDelegate });
     this.mDelegate.loadResourceAsync(paramString1, paramString2, new IResourceLoader.ResourceLoadCallback()
     {
       public void onResourceLoaded(byte[] paramAnonymousArrayOfByte)
       {
-        AppMethodBeat.i(218256);
+        AppMethodBeat.i(217613);
         ResourceLoaderDelegateWrapper.access$000(ResourceLoaderDelegateWrapper.this);
         if (paramAnonymousArrayOfByte == null)
         {
           ResourceLoaderDelegateWrapper.access$100(ResourceLoaderDelegateWrapper.this, paramInt, new byte[0]);
-          AppMethodBeat.o(218256);
+          AppMethodBeat.o(217613);
           return;
         }
-        String.format("loadResourceAsync result:%d", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length) });
         ResourceLoaderDelegateWrapper.access$100(ResourceLoaderDelegateWrapper.this, paramInt, paramAnonymousArrayOfByte);
-        AppMethodBeat.o(218256);
+        AppMethodBeat.o(217613);
       }
     });
-    AppMethodBeat.o(218260);
+    AppMethodBeat.o(217617);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.resource_loader.ResourceLoaderDelegateWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class JsonItemView
   extends LinearLayout
 {
-  public static int KYl = 12;
-  private TextView KYm;
-  private TextView KYn;
-  private ImageView KYo;
+  public static int Qnf = 12;
+  private TextView Qng;
+  private TextView Qnh;
+  private ImageView Qni;
   private Context mContext;
   
   public JsonItemView(Context paramContext)
@@ -35,46 +35,68 @@ public class JsonItemView
     AppMethodBeat.i(38898);
     this.mContext = paramContext;
     setOrientation(1);
-    LayoutInflater.from(this.mContext).inflate(2131494529, this, true);
-    this.KYm = ((TextView)findViewById(2131306136));
-    this.KYn = ((TextView)findViewById(2131306148));
-    this.KYo = ((ImageView)findViewById(2131301215));
+    LayoutInflater.from(this.mContext).inflate(2131495125, this, true);
+    this.Qng = ((TextView)findViewById(2131309498));
+    this.Qnh = ((TextView)findViewById(2131309518));
+    this.Qni = ((ImageView)findViewById(2131302896));
     AppMethodBeat.o(38898);
   }
   
-  public final void ao(CharSequence paramCharSequence)
+  public final void CE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(38905);
+    this.Qni.setVisibility(0);
+    ImageView localImageView = this.Qni;
+    if (paramBoolean) {}
+    for (int i = 2131233199;; i = 2131233198)
+    {
+      localImageView.setImageResource(i);
+      AppMethodBeat.o(38905);
+      return;
+    }
+  }
+  
+  public final void au(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(38901);
-    this.KYm.setVisibility(0);
-    this.KYm.setText(paramCharSequence);
+    this.Qng.setVisibility(0);
+    this.Qng.setText(paramCharSequence);
     AppMethodBeat.o(38901);
   }
   
-  public final void ap(CharSequence paramCharSequence)
+  public final void av(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(38902);
-    this.KYn.setVisibility(0);
+    this.Qnh.setVisibility(0);
     if (paramCharSequence != null) {
-      this.KYn.setText(paramCharSequence);
+      this.Qnh.setText(paramCharSequence);
     }
     AppMethodBeat.o(38902);
   }
   
-  public final void fOf()
+  public final void gWX()
   {
     AppMethodBeat.i(38900);
-    this.KYm.setVisibility(8);
+    this.Qng.setVisibility(8);
     AppMethodBeat.o(38900);
   }
   
-  public final void fOg()
+  public final void gWY()
   {
     AppMethodBeat.i(38904);
-    this.KYo.setVisibility(8);
+    this.Qni.setVisibility(8);
     AppMethodBeat.o(38904);
   }
   
-  public final void gW(View paramView)
+  public CharSequence getRightText()
+  {
+    AppMethodBeat.i(38903);
+    CharSequence localCharSequence = this.Qnh.getText();
+    AppMethodBeat.o(38903);
+    return localCharSequence;
+  }
+  
+  public final void hm(View paramView)
   {
     AppMethodBeat.i(38907);
     Object localObject2 = paramView.getLayoutParams();
@@ -94,47 +116,25 @@ public class JsonItemView
     AppMethodBeat.o(38907);
   }
   
-  public CharSequence getRightText()
-  {
-    AppMethodBeat.i(38903);
-    CharSequence localCharSequence = this.KYn.getText();
-    AppMethodBeat.o(38903);
-    return localCharSequence;
-  }
-  
   public void setIconClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(38906);
-    this.KYo.setOnClickListener(paramOnClickListener);
+    this.Qni.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(38906);
   }
   
   public void setRightColor(int paramInt)
   {
     AppMethodBeat.i(38899);
-    this.KYn.setTextColor(paramInt);
+    this.Qnh.setTextColor(paramInt);
     AppMethodBeat.o(38899);
   }
   
   public void setTextSize(float paramFloat) {}
-  
-  public final void yK(boolean paramBoolean)
-  {
-    AppMethodBeat.i(38905);
-    this.KYo.setVisibility(0);
-    ImageView localImageView = this.KYo;
-    if (paramBoolean) {}
-    for (int i = 2131232758;; i = 2131232757)
-    {
-      localImageView.setImageResource(i);
-      AppMethodBeat.o(38905);
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.recyclerview.JsonItemView
  * JD-Core Version:    0.7.0.1
  */

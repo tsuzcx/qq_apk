@@ -9,30 +9,29 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class g
   extends Preference
 {
-  public View.OnClickListener gON;
-  private View jFG;
+  public int AQA;
+  private int AQB;
+  private int AQC;
+  public View.OnClickListener hEZ;
+  private View kHq;
   public boolean mClickable;
   public String mContent;
   private View mView;
-  public int wUE;
-  private int wUF;
-  private int wUG;
   
   public g(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(70676);
     this.mView = null;
-    this.wUE = 2147483647;
-    this.wUF = -1;
-    this.wUG = -1;
-    setLayoutResource(2131494531);
+    this.AQA = 2147483647;
+    this.AQB = -1;
+    this.AQC = -1;
+    setLayoutResource(2131495127);
     AppMethodBeat.o(70676);
   }
   
@@ -52,20 +51,20 @@ public final class g
   {
     AppMethodBeat.i(70678);
     super.onBindView(paramView);
-    Object localObject = (TextView)paramView.findViewById(2131301249);
-    TextView localTextView = (TextView)paramView.findViewById(2131306264);
+    Object localObject = (TextView)paramView.findViewById(2131302945);
+    TextView localTextView = (TextView)paramView.findViewById(2131309675);
     ((TextView)localObject).setText(getTitle());
-    this.jFG = paramView;
-    if (this.wUE != 2147483647) {
-      localTextView.setTextColor(this.wUE);
+    this.kHq = paramView;
+    if (this.AQA != 2147483647) {
+      localTextView.setTextColor(this.AQA);
     }
     if (this.mClickable)
     {
-      if ((this.wUF >= 0) && (this.wUG > 0))
+      if ((this.AQB >= 0) && (this.AQC > 0))
       {
         paramView = new l(this.mContext);
         localObject = new SpannableString(this.mContent);
-        paramView.Dxw = new l.a()
+        paramView.IgH = new l.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -77,31 +76,31 @@ public final class g
           }
         };
         localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        ((SpannableString)localObject).setSpan(paramView, this.wUF, this.wUG, 33);
+        ((SpannableString)localObject).setSpan(paramView, this.AQB, this.AQC, 33);
         localTextView.setText((CharSequence)localObject);
         AppMethodBeat.o(70678);
         return;
       }
-      if (this.wUE != 2147483647) {
-        localTextView.setTextColor(this.wUE);
+      if (this.AQA != 2147483647) {
+        localTextView.setTextColor(this.AQA);
       }
       for (;;)
       {
-        localTextView.setOnClickListener(this.gON);
-        localTextView.setText(k.b(this.mContext, this.mContent, localTextView.getTextSize()));
+        localTextView.setOnClickListener(this.hEZ);
+        localTextView.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.mContext, this.mContent, localTextView.getTextSize()));
         AppMethodBeat.o(70678);
         return;
-        localTextView.setTextColor(this.mContext.getResources().getColor(2131100607));
+        localTextView.setTextColor(this.mContext.getResources().getColor(2131100775));
       }
     }
     localTextView.setOnClickListener(null);
-    localTextView.setText(k.b(this.mContext, this.mContent, localTextView.getTextSize()));
+    localTextView.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.mContext, this.mContent, localTextView.getTextSize()));
     AppMethodBeat.o(70678);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.g
  * JD-Core Version:    0.7.0.1
  */

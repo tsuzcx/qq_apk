@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:layout_gravity="center" android:orientation="vertical" android:id="@id/g6x" android:background="@color/c1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.view.PhotoEditText android:textSize="@dimen/zs" android:textColor="@android:color/white" android:gravity="top" android:id="@id/g6w" android:background="@null" android:paddingLeft="@dimen/zq" android:paddingTop="50.0dip" android:paddingRight="@dimen/zq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:height="800.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a5i" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Switch android:id="@id/z3" android:background="@drawable/ko" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="20.0dip" android:thumb="@android:color/transparent" android:track="@android:color/transparent" />
-        <com.tencent.mm.view.footer.SelectColorBar android:gravity="top" android:id="@id/fa7" android:layout_width="fill_parent" android:layout_height="@dimen/wi" />
-    </LinearLayout>
-</LinearLayout>
+<android.support.design.widget.CoordinatorLayout android:id="@id/a7q" android:background="@color/a" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout android:orientation="vertical" android:id="@id/a5s" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip">
+        <android.support.design.widget.CollapsingToolbarLayout android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_scrollFlags="c6i|hci" app:titleEnabled="false">
+            <include android:id="@id/a5f" layout="@layout/x3" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+        <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileTabLayout android:id="@id/a6_" android:layout_width="fill_parent" android:layout_height="46.0dip" />
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+    </android.support.design.widget.AppBarLayout>
+    <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileViewPager android:id="@id/b8c" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e" />
+</android.support.design.widget.CoordinatorLayout>

@@ -12,9 +12,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class IconWidgetPreference
   extends Preference
 {
-  private ImageView xiq;
-  private int xir;
-  private Bitmap xis;
+  private ImageView Bgk;
+  private int Bgl;
+  private Bitmap Bgm;
   
   public IconWidgetPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,20 +25,20 @@ public class IconWidgetPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27256);
-    this.xiq = null;
-    this.xir = -1;
-    this.xis = null;
-    setLayoutResource(2131494804);
+    this.Bgk = null;
+    this.Bgl = -1;
+    this.Bgm = null;
+    setLayoutResource(2131495538);
     setWidgetLayoutResource(0);
     AppMethodBeat.o(27256);
   }
   
-  public final void aa(Bitmap paramBitmap)
+  public final void al(Bitmap paramBitmap)
   {
     AppMethodBeat.i(27258);
-    this.xis = paramBitmap;
-    if (this.xiq != null) {
-      this.xiq.setImageBitmap(paramBitmap);
+    this.Bgm = paramBitmap;
+    if (this.Bgk != null) {
+      this.Bgk.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(27258);
   }
@@ -47,21 +47,21 @@ public class IconWidgetPreference
   {
     AppMethodBeat.i(27259);
     super.onBindView(paramView);
-    this.xiq = ((ImageView)paramView.findViewById(2131303377));
-    if (this.xiq != null)
+    this.Bgk = ((ImageView)paramView.findViewById(2131306090));
+    if (this.Bgk != null)
     {
-      this.xiq.setVisibility(8);
-      if (this.xir != -1)
+      this.Bgk.setVisibility(8);
+      if (this.Bgl != -1)
       {
-        this.xiq.setImageResource(this.xir);
-        this.xiq.setVisibility(0);
+        this.Bgk.setImageResource(this.Bgl);
+        this.Bgk.setVisibility(0);
         AppMethodBeat.o(27259);
         return;
       }
-      if (this.xis != null)
+      if (this.Bgm != null)
       {
-        this.xiq.setImageBitmap(this.xis);
-        this.xiq.setVisibility(0);
+        this.Bgk.setImageBitmap(this.Bgm);
+        this.Bgk.setVisibility(0);
       }
     }
     AppMethodBeat.o(27259);
@@ -71,9 +71,9 @@ public class IconWidgetPreference
   {
     AppMethodBeat.i(27257);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131494894, localViewGroup);
+    View.inflate(this.mContext, 2131495632, localViewGroup);
     AppMethodBeat.o(27257);
     return paramViewGroup;
   }

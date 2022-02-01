@@ -3,41 +3,43 @@ package com.tencent.mm.plugin.music.model.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.plugin.music.cache.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class a
-  implements com.tencent.mm.plugin.music.cache.b
+  implements b
 {
-  public final void dvI()
+  public final void etC()
   {
-    AppMethodBeat.i(224249);
-    dwx();
-    AppMethodBeat.o(224249);
+    AppMethodBeat.i(258339);
+    euF();
+    AppMethodBeat.o(258339);
   }
   
-  public final void dwx()
+  public final void euF()
   {
     AppMethodBeat.i(63039);
-    long l1 = ((Long)g.ajR().ajA().get(am.a.ISV, Long.valueOf(0L))).longValue();
+    long l1 = ((Long)g.aAh().azQ().get(ar.a.Obi, Long.valueOf(0L))).longValue();
     long l2 = System.currentTimeMillis();
-    if (l2 - l1 < ddV.longValue())
+    if (l2 - l1 < duR.longValue())
     {
-      ae.e("MicroMsg.PieceCacheCleanController", "don't scanMusic because the time is in one day");
+      Log.e("MicroMsg.PieceCacheCleanController", "don't scanMusic because the time is in one day");
       AppMethodBeat.o(63039);
       return;
     }
-    g.ajR().ajA().set(am.a.ISV, Long.valueOf(l2));
-    com.tencent.mm.sdk.g.b.d(new Runnable()
+    g.aAh().azQ().set(ar.a.Obi, Long.valueOf(l2));
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(63037);
-        a.dwy();
+        a.euG();
         AppMethodBeat.o(63037);
       }
-    }, "ScanMusicThread");
+    }, "ScanMusicThread", 1);
     AppMethodBeat.o(63039);
   }
 }

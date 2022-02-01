@@ -1,310 +1,405 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.util.Base64;
+import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.bh.f;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.multitalk.c.a;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.aj;
-import com.tencent.pb.common.b.a.a.a.ay;
-import com.tencent.pb.common.b.a.a.a.be;
-import com.tencent.pb.talkroom.sdk.d;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
 
 public final class p
 {
-  private Map<String, Long> wrH;
+  public static int zMn = 0;
+  public static int zMo = 0;
+  public static int zMp = 0;
+  public static int zMq = 0;
+  public static int zMr = 0;
+  public static int zMs = 0;
+  public static int zMt = 0;
+  public static int zMu = 0;
+  public static int zbi = 0;
   
-  public p()
+  public static final void A(long paramLong, String paramString)
   {
-    AppMethodBeat.i(114536);
-    this.wrH = new ConcurrentHashMap();
-    AppMethodBeat.o(114536);
+    AppMethodBeat.i(114449);
+    if (paramLong > 1000L) {}
+    for (paramLong /= 1000L;; paramLong = 1L)
+    {
+      Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkVideoDuration %d %s", new Object[] { Long.valueOf(paramLong), paramString });
+      h.CyF.a(12728, new Object[] { Long.valueOf(paramLong), paramString });
+      AppMethodBeat.o(114449);
+      return;
+    }
   }
   
-  final void a(String paramString, e.a parama)
+  public static final void Re(int paramInt)
   {
-    AppMethodBeat.i(114537);
-    String str = com.tencent.mm.platformtools.z.a(parama.gte.FNI);
-    paramString = Base64.decode(paramString.getBytes(), 0);
-    ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive banner msg:" + str + " buffer len " + paramString.length);
-    a.be localbe;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    a.ay[] arrayOfay;
-    int i;
-    int m;
-    int j;
-    label331:
-    int k;
-    int n;
-    label641:
-    for (;;)
+    AppMethodBeat.i(178879);
+    h.CyF.idkeyStat(220L, 35L, 1L, false);
+    h.CyF.idkeyStat(220L, 36L, paramInt, false);
+    AppMethodBeat.o(178879);
+  }
+  
+  public static final void Rf(int paramInt)
+  {
+    AppMethodBeat.i(178883);
+    h.CyF.idkeyStat(220L, 23L, 1L, false);
+    h.CyF.idkeyStat(220L, 24L, paramInt, false);
+    AppMethodBeat.o(178883);
+  }
+  
+  public static final void Rg(int paramInt)
+  {
+    AppMethodBeat.i(178884);
+    h.CyF.idkeyStat(220L, 19L, 1L, false);
+    h.CyF.idkeyStat(220L, 20L, paramInt, false);
+    AppMethodBeat.o(178884);
+  }
+  
+  public static final void Rh(int paramInt)
+  {
+    AppMethodBeat.i(114457);
+    ArrayList localArrayList = new ArrayList();
+    IDKey localIDKey = new IDKey();
+    localIDKey.SetID(220);
+    localIDKey.SetKey(7);
+    localIDKey.SetValue(paramInt);
+    localArrayList.add(localIDKey);
+    localIDKey = new IDKey();
+    localIDKey.SetID(220);
+    localIDKey.SetKey(8);
+    localIDKey.SetValue(1L);
+    localArrayList.add(localIDKey);
+    h.CyF.b(localArrayList, false);
+    AppMethodBeat.o(114457);
+  }
+  
+  public static final void a(int paramInt1, boolean paramBoolean, int paramInt2, String paramString, int paramInt3)
+  {
+    AppMethodBeat.i(114448);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkSelectContact %d %b %d %s %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3) });
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      try
-      {
-        localbe = (a.be)com.google.b.a.e.a(new a.be(), paramString, paramString.length);
-        if (localbe == null)
-        {
-          ae.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "parse  bannerinfo  is null! xml:".concat(String.valueOf(str)));
-          AppMethodBeat.o(114537);
-          return;
-        }
-        if ((this.wrH.get(localbe.groupId) == null) || (((Long)this.wrH.get(localbe.groupId)).longValue() < localbe.Mgv))
-        {
-          this.wrH.put(localbe.groupId, Long.valueOf(localbe.Mgv));
-          parama = parama.gte;
-          paramString = com.tencent.mm.platformtools.z.a(parama.FNG);
-          parama = com.tencent.mm.platformtools.z.a(parama.FNH);
-          localObject1 = (String)g.ajR().ajA().get(2, null);
-          if (localObject1 == null)
-          {
-            ae.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "userName is null");
-            AppMethodBeat.o(114537);
-          }
-        }
-        else
-        {
-          ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "msg for this groupId : " + localbe.groupId + " is early than last msg, so we do not process,now return.");
-          AppMethodBeat.o(114537);
-          return;
-        }
-        if (!((String)localObject1).equals(paramString)) {
-          break label1406;
-        }
-        paramString = parama;
-        localObject2 = localbe.Mgt;
-        z.dtK().ey(paramString, 1);
-        if (localbe.Mgs != 1) {
-          break;
-        }
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "get WxVoiceBannerBegin,show bar!");
-        localObject3 = localbe.Mgu;
-        arrayOfay = localbe.Met;
-        i = 0;
-        parama = "";
-        m = arrayOfay.length;
-        j = 0;
-        if (j < m)
-        {
-          a.ay localay = arrayOfay[j];
-          parama = parama + localay.duC + ",";
-          k = i;
-          if (localay.duC == null) {
-            break label1394;
-          }
-          k = i;
-          if (!localay.duC.equals(localObject1)) {
-            break label1394;
-          }
-          ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "in voiceGroupMem!");
-          k = 1;
-          break label1394;
-        }
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "memberUserNames :".concat(String.valueOf(parama)));
-        m = 0;
-        n = localObject3.length;
-        j = 0;
-        k = m;
-        if (j < n)
-        {
-          parama = localObject3[j];
-          if ((parama != null) && (parama.equals(localObject1)))
-          {
-            ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "isInvitedNotFriend true! In invitelist and with talk creator is not friend!");
-            k = 1;
-          }
-        }
-        else
-        {
-          if (i != 0) {
-            break label609;
-          }
-          z.dtL().asH(paramString);
-          z.dtL().dtw().remove(paramString);
-          if (!((String)localObject1).equals(localObject2)) {
-            break label641;
-          }
-          z.dtK().d(paramString, (String)localObject2, false, false);
-          z.dtL().a(paramString, localbe);
-          z.dtJ().wqE.cW(bu.o((Integer)g.ajR().gDO.get(1)), v.aAC());
-          AppMethodBeat.o(114537);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        ae.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "parse  bannerinfo  failure! xml:".concat(String.valueOf(str)), new Object[] { paramString.getMessage() });
-        AppMethodBeat.o(114537);
-        return;
-      }
-      j += 1;
-      continue;
-      label609:
-      if ((!z.dtL().dtw().contains(paramString)) && (k != 0))
-      {
-        z.dtL().dtw().add(paramString);
-        continue;
-        if ((i != 0) && (k == 0)) {
-          z.dtK().d(paramString, (String)localObject2, false, false);
-        } else if ((i != 0) && (k != 0)) {
-          z.dtK().d(paramString, (String)localObject2, true, true);
-        } else {
-          z.dtK().d(paramString, (String)localObject2, true, false);
-        }
-      }
+      h.CyF.a(12727, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt3) });
+      AppMethodBeat.o(114448);
+      return;
     }
-    if (localbe.Mgs == 2)
+  }
+  
+  public static final void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    AppMethodBeat.i(114442);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkConnectSuccess %b %d %s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString });
+    h.CyF.idkeyStat(220L, 34L, 1L, false);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "WxVoiceBannerMemChange!2,member size : " + localbe.Met.length);
-      localObject2 = localbe.Mgu;
-      localObject3 = localbe.Met;
-      i = 0;
-      parama = "";
-      m = localObject3.length;
-      j = 0;
-      label764:
-      if (j < m)
-      {
-        arrayOfay = localObject3[j];
-        parama = parama + arrayOfay.duC + ",";
-        k = i;
-        if (arrayOfay.duC != null)
-        {
-          k = i;
-          if (arrayOfay.duC.equals(localObject1))
-          {
-            ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "in voiceGroupMem!");
-            k = 1;
-          }
-        }
-      }
-      else
-      {
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "memberUserNames :".concat(String.valueOf(parama)));
-        m = 0;
-        n = localObject2.length;
-        j = 0;
-        k = m;
-        if (j < n)
-        {
-          parama = localObject2[j];
-          if ((parama == null) || (!parama.equals(localObject1))) {
-            break label1421;
-          }
-          ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "isInvitedNotFriend true! In invitelist and with talk creator is not friend!");
-          k = 1;
-        }
-        if (i == 0)
-        {
-          if ((!z.dtL().asI(paramString)) && (z.dtL().dtw().contains(paramString)) && (z.dtL().ic(paramString, (String)localObject1)))
-          {
-            z.dtK();
-            o.asE(paramString);
-          }
-          z.dtL().asH(paramString);
-          z.dtL().dtw().remove(paramString);
-        }
-        for (;;)
-        {
-          z.dtJ().wqE.cW(bu.o((Integer)g.ajR().gDO.get(1)), v.aAC());
-          ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "WxVoiceBannerMemChange setWxUinAndUsrName:");
-          parama = z.dtL();
-          ae.i("MicroMsg.MultiTalkRoomListMsg", "updateBanner  wxGroupId = %s", new Object[] { paramString });
-          localObject1 = z.dtG().asp(paramString);
-          if (localObject1 == null) {
-            break label1176;
-          }
-          if (((f)localObject1).field_roomId == localbe.Cuf) {
-            break;
-          }
-          ae.i("MicroMsg.MultiTalkRoomListMsg", "roomid has changed! now return!multiTalkInfo.field_roomId:" + ((f)localObject1).field_roomId + ", bannerinfo.roomid:" + localbe.Cuf);
-          AppMethodBeat.o(114537);
-          return;
-          if ((!z.dtL().dtw().contains(paramString)) && (k != 0)) {
-            z.dtL().dtw().add(paramString);
-          }
-        }
-        if (!q.d(paramString, localbe))
-        {
-          ae.e("MicroMsg.MultiTalkRoomListMsg", "update multiTalkMember failure!");
-          AppMethodBeat.o(114537);
-          return;
-        }
-        parama.asJ(paramString);
-        AppMethodBeat.o(114537);
-        return;
-        ae.i("MicroMsg.MultiTalkRoomListMsg", "change,still show banner.");
-        parama.a(paramString, localbe);
-        AppMethodBeat.o(114537);
-      }
+      h.CyF.a(12725, new Object[] { Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(paramLong), paramString });
+      AppMethodBeat.o(114442);
+      return;
     }
-    else
+  }
+  
+  public static final void a(boolean paramBoolean, long paramLong, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(114443);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkConnectFail %b %d %s %d", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, Integer.valueOf(paramInt) });
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      label871:
-      if (localbe.Mgs == 0)
-      {
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "get WxVoiceBannerEnd,dismiss bar!");
-        if ((!z.dtL().asI(paramString)) && (z.dtL().dtw().contains(paramString)) && (z.dtL().ic(paramString, (String)localObject1)))
-        {
-          z.dtK();
-          o.asE(paramString);
-        }
-        z.dtK().asD(paramString);
-        z.dtL().asv(paramString);
-        z.dtL().asH(paramString);
-        z.dtL().dtw().remove(paramString);
-        AppMethodBeat.o(114537);
-        return;
-      }
-      label1176:
-      if (localbe.Mgs == 3)
-      {
-        paramString = localbe.Met;
-        j = paramString.length;
-        i = 0;
-      }
+      h.CyF.a(12725, new Object[] { Integer.valueOf(2), Integer.valueOf(i), Long.valueOf(paramLong), paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(114443);
+      return;
     }
-    for (;;)
+  }
+  
+  public static final void aFV(String paramString)
+  {
+    AppMethodBeat.i(114450);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkTalkFunction %s %d %d %d %d %d,%d,%d,%d,%d", new Object[] { paramString, Integer.valueOf(zMn), Integer.valueOf(zMo), Integer.valueOf(zMp), Integer.valueOf(zbi), Integer.valueOf(zMq), Integer.valueOf(zMr), Integer.valueOf(zMs), Integer.valueOf(zMt), Integer.valueOf(zMu) });
+    h.CyF.a(12729, new Object[] { paramString, Integer.valueOf(zMn), Integer.valueOf(zMo), Integer.valueOf(zMp), Integer.valueOf(zbi), Integer.valueOf(zMq), Integer.valueOf(zMr), Integer.valueOf(zMs), Integer.valueOf(zMt), Integer.valueOf(zMu) });
+    hi(9, zMn);
+    hi(10, zMq);
+    hi(11, zMo);
+    hi(12, zMp);
+    hi(13, zbi);
+    zMn = 0;
+    zMo = 0;
+    zMp = 0;
+    zbi = 0;
+    zMq = 0;
+    zMr = 0;
+    zMs = 0;
+    zMt = 0;
+    zMu = 0;
+    AppMethodBeat.o(114450);
+  }
+  
+  public static final void bI(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(114446);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkReceiveCall %d %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    h.CyF.a(12723, new Object[] { Integer.valueOf(paramInt), paramString });
+    AppMethodBeat.o(114446);
+  }
+  
+  public static final void emV()
+  {
+    AppMethodBeat.i(114444);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkDailSuccess");
+    h.CyF.a(12722, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.o(114444);
+  }
+  
+  public static final void emW()
+  {
+    AppMethodBeat.i(114445);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkDailFail");
+    h.CyF.a(12722, new Object[] { Integer.valueOf(2) });
+    AppMethodBeat.o(114445);
+  }
+  
+  public static final void emX()
+  {
+    AppMethodBeat.i(178880);
+    h.CyF.idkeyStat(220L, 27L, 1L, false);
+    AppMethodBeat.o(178880);
+  }
+  
+  public static final void emY()
+  {
+    AppMethodBeat.i(178881);
+    h.CyF.idkeyStat(220L, 26L, 1L, false);
+    AppMethodBeat.o(178881);
+  }
+  
+  public static final void emZ()
+  {
+    AppMethodBeat.i(178887);
+    h.CyF.idkeyStat(220L, 25L, 1L, false);
+    AppMethodBeat.o(178887);
+  }
+  
+  public static final void ena()
+  {
+    AppMethodBeat.i(114453);
+    h.CyF.idkeyStat(220L, 0L, 1L, false);
+    AppMethodBeat.o(114453);
+  }
+  
+  public static final void enb()
+  {
+    AppMethodBeat.i(114455);
+    h.CyF.idkeyStat(220L, 1L, 1L, false);
+    AppMethodBeat.o(114455);
+  }
+  
+  public static final void enc()
+  {
+    AppMethodBeat.i(114459);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.o(114459);
+  }
+  
+  public static final void ene()
+  {
+    AppMethodBeat.i(114460);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(2) });
+    AppMethodBeat.o(114460);
+  }
+  
+  public static final void enf()
+  {
+    AppMethodBeat.i(114461);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(3) });
+    AppMethodBeat.o(114461);
+  }
+  
+  public static final void eng()
+  {
+    AppMethodBeat.i(114462);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(4) });
+    AppMethodBeat.o(114462);
+  }
+  
+  public static final void enh()
+  {
+    AppMethodBeat.i(114463);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(5) });
+    AppMethodBeat.o(114463);
+  }
+  
+  public static final void eni()
+  {
+    AppMethodBeat.i(114464);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(6) });
+    AppMethodBeat.o(114464);
+  }
+  
+  public static final void enj()
+  {
+    AppMethodBeat.i(114465);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(7) });
+    AppMethodBeat.o(114465);
+  }
+  
+  public static final void enk()
+  {
+    AppMethodBeat.i(114466);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(8) });
+    AppMethodBeat.o(114466);
+  }
+  
+  public static final void enl()
+  {
+    AppMethodBeat.i(114467);
+    h.CyF.a(14849, new Object[] { Integer.valueOf(9) });
+    AppMethodBeat.o(114467);
+  }
+  
+  private static void hi(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(114458);
+    h.CyF.idkeyStat(220L, paramInt1, paramInt2, false);
+    AppMethodBeat.o(114458);
+  }
+  
+  public static final void iO(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(114452);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkTalkGroupId %s %s", new Object[] { paramString2, paramString1 });
+    h.CyF.a(17771, new Object[] { Integer.valueOf(0), Integer.valueOf(0), paramString2, paramString1 });
+    AppMethodBeat.o(114452);
+  }
+  
+  public static final void j(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(114451);
+    if ((paramBoolean1) && (paramBoolean2))
     {
-      if (i < j)
-      {
-        parama = paramString[i];
-        if ((parama.duC != null) && (parama.duC.equals(localObject1))) {
-          ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "wxVoiceBannerWaitTimeOut in voiceGroupMem!");
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(114537);
-        return;
-        ae.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "get bannerinfo voicestatus is invalidate!: voicestatus:" + localbe.Mgs);
-        AppMethodBeat.o(114537);
-        return;
-        label1394:
-        j += 1;
-        i = k;
-        break label331;
-        label1406:
-        break;
-        j += 1;
-        i = k;
-        break label764;
-        label1421:
-        j += 1;
-        break label871;
-      }
-      i += 1;
+      h.CyF.a(12917, new Object[] { paramString, Integer.valueOf(2), Integer.valueOf(1) });
+      AppMethodBeat.o(114451);
+      return;
     }
+    if (paramBoolean1)
+    {
+      h.CyF.a(12917, new Object[] { paramString, Integer.valueOf(2), Integer.valueOf(2) });
+      AppMethodBeat.o(114451);
+      return;
+    }
+    if (paramBoolean2)
+    {
+      h.CyF.a(12917, new Object[] { paramString, Integer.valueOf(1), Integer.valueOf(1) });
+      AppMethodBeat.o(114451);
+      return;
+    }
+    h.CyF.a(12917, new Object[] { paramString, Integer.valueOf(1), Integer.valueOf(2) });
+    AppMethodBeat.o(114451);
+  }
+  
+  public static final void n(int paramInt1, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(178878);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMultiTalkTalkMoreArrowClick %s,%s, %s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2) });
+    h.CyF.a(19424, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.o(178878);
+  }
+  
+  public static final void n(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(239365);
+    Log.i("MicroMsg.MT.MultiTalkKvReportUtil", "reportScreenProjectFuncReport %s,%s, %s,%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    h.CyF.a(21344, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.o(239365);
+  }
+  
+  public static final void rC(boolean paramBoolean)
+  {
+    AppMethodBeat.i(178882);
+    if (paramBoolean)
+    {
+      h.CyF.idkeyStat(220L, 21L, 1L, false);
+      AppMethodBeat.o(178882);
+      return;
+    }
+    h.CyF.idkeyStat(220L, 22L, 1L, false);
+    AppMethodBeat.o(178882);
+  }
+  
+  public static final void rD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(178885);
+    if (paramBoolean)
+    {
+      h.CyF.idkeyStat(220L, 30L, 1L, false);
+      AppMethodBeat.o(178885);
+      return;
+    }
+    h.CyF.idkeyStat(220L, 31L, 1L, false);
+    AppMethodBeat.o(178885);
+  }
+  
+  public static final void rE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(178886);
+    if (paramBoolean)
+    {
+      h.CyF.idkeyStat(220L, 33L, 1L, false);
+      AppMethodBeat.o(178886);
+      return;
+    }
+    h.CyF.idkeyStat(220L, 32L, 1L, false);
+    AppMethodBeat.o(178886);
+  }
+  
+  public static final void rF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(114454);
+    ArrayList localArrayList = new ArrayList();
+    IDKey localIDKey = new IDKey();
+    localIDKey.SetID(220);
+    localIDKey.SetKey(3);
+    localIDKey.SetValue(1L);
+    localArrayList.add(localIDKey);
+    if (paramBoolean)
+    {
+      localIDKey = new IDKey();
+      localIDKey.SetID(220);
+      localIDKey.SetKey(4);
+      localIDKey.SetValue(1L);
+      localArrayList.add(localIDKey);
+    }
+    h.CyF.b(localArrayList, false);
+    AppMethodBeat.o(114454);
+  }
+  
+  public static final void rG(boolean paramBoolean)
+  {
+    AppMethodBeat.i(114456);
+    ArrayList localArrayList = new ArrayList();
+    IDKey localIDKey = new IDKey();
+    localIDKey.SetID(220);
+    localIDKey.SetKey(5);
+    localIDKey.SetValue(1L);
+    localArrayList.add(localIDKey);
+    if (paramBoolean)
+    {
+      localIDKey = new IDKey();
+      localIDKey.SetID(220);
+      localIDKey.SetKey(6);
+      localIDKey.SetValue(1L);
+      localArrayList.add(localIDKey);
+    }
+    h.CyF.b(localArrayList, false);
+    AppMethodBeat.o(114456);
+  }
+  
+  public static final void z(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(114447);
+    Log.v("MicroMsg.MT.MultiTalkKvReportUtil", "reportMutliTalkDuration %d %s", new Object[] { Long.valueOf(paramLong), paramString });
+    h.CyF.a(12726, new Object[] { Long.valueOf(paramLong), paramString });
+    AppMethodBeat.o(114447);
   }
 }
 

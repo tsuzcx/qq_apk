@@ -1,7 +1,7 @@
 package android.support.design.internal;
 
 import android.graphics.PorterDuff.Mode;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.view.View;
 
 public final class g
@@ -36,7 +36,7 @@ public final class g
   
   public static boolean d(View paramView)
   {
-    return t.Y(paramView) == 1;
+    return u.Z(paramView) == 1;
   }
 }
 

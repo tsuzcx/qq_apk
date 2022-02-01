@@ -33,9 +33,9 @@ public class l
     AppMethodBeat.i(66274);
     paramBundle = new Intent(paramActivity, WalletOfflineCoinPurseUI.class);
     paramBundle.addFlags(67108864);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramBundle.ahE(), "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramBundle.mt(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bl(paramBundle);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramBundle.axQ(), "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramBundle.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(66274);
   }
@@ -45,7 +45,7 @@ public class l
     return false;
   }
   
-  public final String cSH()
+  public final String dKC()
   {
     return "VerifyProcess";
   }

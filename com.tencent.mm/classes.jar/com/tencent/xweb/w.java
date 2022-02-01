@@ -2,58 +2,69 @@ package com.tencent.xweb;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.j;
-import com.tencent.xweb.internal.j.a;
-import com.tencent.xweb.util.g;
-import com.tencent.xweb.xwalk.a.i;
+import com.tencent.xweb.internal.l;
+import com.tencent.xweb.internal.l.a;
+import com.tencent.xweb.util.h;
+import com.tencent.xweb.xwalk.a.j;
 import java.util.HashMap;
 import org.xwalk.core.Log;
 import org.xwalk.core.XWalkEnvironment;
 
-public final class w
+public class w
 {
-  static b MMR;
-  static a MMS;
+  static b SzM;
+  static a SzN;
   
   static
   {
     AppMethodBeat.i(156773);
-    j.a locala = j.g(WebView.c.MNy);
-    MMR = (b)locala.excute("STR_CMD_GET_UPDATER", null);
-    MMS = (a)locala.excute("STR_CMD_GET_PLUGIN_UPDATER", null);
+    l.a locala = l.g(WebView.c.SAt);
+    SzM = (b)locala.excute("STR_CMD_GET_UPDATER", null);
+    SzN = (a)locala.excute("STR_CMD_GET_PLUGIN_UPDATER", null);
     AppMethodBeat.o(156773);
   }
   
-  public static void a(Context paramContext, HashMap<String, String> paramHashMap)
+  public static void b(Context paramContext, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(156769);
-    g.ghk();
-    if (MMR != null)
+    for (;;)
     {
-      Log.i("WCWebUpdater", "start check runtime update");
-      MMR.a(paramContext, paramHashMap);
+      try
+      {
+        h.huE();
+        if (SzM != null)
+        {
+          Log.i("WCWebUpdater", "start check runtime update");
+          SzM.b(paramContext, paramHashMap);
+          if (SzN != null)
+          {
+            h.hux();
+            SzN.b(paramContext, paramHashMap);
+          }
+        }
+        else
+        {
+          Log.e("WCWebUpdater", "no sWebviewUpdater");
+          continue;
+        }
+        Log.e("WCWebUpdater", "no sPluginUpdater");
+      }
+      finally
+      {
+        AppMethodBeat.o(156769);
+      }
     }
-    while (MMS != null)
-    {
-      g.ghd();
-      MMS.a(paramContext, paramHashMap);
-      AppMethodBeat.o(156769);
-      return;
-      Log.e("WCWebUpdater", "no sWebviewUpdater");
-    }
-    Log.e("WCWebUpdater", "no sPluginUpdater");
-    AppMethodBeat.o(156769);
   }
   
-  public static void gfk()
+  public static void hsB()
   {
     AppMethodBeat.i(156770);
-    if (MMR != null)
+    if (SzM != null)
     {
       Log.i("WCWebUpdater", "start check runtime update");
       HashMap localHashMap = new HashMap();
       localHashMap.put("UpdaterCheckType", "2");
-      MMR.a(XWalkEnvironment.getApplicationContext(), localHashMap);
+      SzM.b(XWalkEnvironment.getApplicationContext(), localHashMap);
       AppMethodBeat.o(156770);
       return;
     }
@@ -61,14 +72,14 @@ public final class w
     AppMethodBeat.o(156770);
   }
   
-  public static void gfl()
+  public static void hsC()
   {
     AppMethodBeat.i(156771);
-    if (MMR != null)
+    if (SzM != null)
     {
       Log.i("WCWebUpdater", "start check runtime update");
       new HashMap().put("UpdaterCheckType", "3");
-      MMR.a(XWalkEnvironment.getApplicationContext(), null);
+      SzM.b(XWalkEnvironment.getApplicationContext(), null);
       AppMethodBeat.o(156771);
       return;
     }
@@ -76,34 +87,34 @@ public final class w
     AppMethodBeat.o(156771);
   }
   
-  public static void gfm()
+  public static void hsD()
   {
-    AppMethodBeat.i(217395);
-    if (MMR != null)
+    AppMethodBeat.i(219045);
+    if (SzM != null)
     {
       Log.i("WCWebUpdater", "tryEmbedInstall");
       HashMap localHashMap = new HashMap();
       localHashMap.put("UpdaterCheckType", "4");
-      MMR.a(XWalkEnvironment.getApplicationContext(), localHashMap);
-      AppMethodBeat.o(217395);
+      SzM.b(XWalkEnvironment.getApplicationContext(), localHashMap);
+      AppMethodBeat.o(219045);
       return;
     }
     Log.e("WCWebUpdater", "no sWebviewUpdater");
-    AppMethodBeat.o(217395);
+    AppMethodBeat.o(219045);
   }
   
   public static boolean isBusy()
   {
     AppMethodBeat.i(156772);
     boolean bool1;
-    if (MMR != null)
+    if (SzM != null)
     {
-      bool1 = MMR.isBusy();
-      if (MMS == null) {
+      bool1 = SzM.isBusy();
+      if (SzN == null) {
         break label62;
       }
     }
-    for (boolean bool2 = MMS.isBusy();; bool2 = false)
+    for (boolean bool2 = SzN.isBusy();; bool2 = false)
     {
       if ((!bool1) && (!bool2)) {
         break label74;
@@ -124,21 +135,21 @@ public final class w
   public static abstract interface a
     extends w.b
   {
-    public abstract void a(String paramString, i parami);
+    public abstract void a(String paramString, j paramj);
     
-    public abstract void gfn();
+    public abstract void hsE();
   }
   
   public static abstract interface b
   {
-    public abstract void a(Context paramContext, HashMap<String, String> paramHashMap);
+    public abstract void b(Context paramContext, HashMap<String, String> paramHashMap);
     
     public abstract boolean isBusy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.w
  * JD-Core Version:    0.7.0.1
  */

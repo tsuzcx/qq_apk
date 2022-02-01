@@ -15,46 +15,46 @@ import com.tencent.soter.core.c.i;
 public class SoterTestUI
   extends MMActivity
 {
-  private Button AXE = null;
-  private Button AXF = null;
-  private Button AXG = null;
-  private Button AXH = null;
-  private Button AXI = null;
-  private Button AXJ = null;
-  private Button AXK = null;
-  private Button AXL = null;
-  private Button AXM = null;
-  private TextView AXN = null;
+  private Button FiA = null;
+  private Button FiB = null;
+  private Button FiC = null;
+  private Button FiD = null;
+  private Button FiE = null;
+  private Button FiF = null;
+  private TextView FiG = null;
+  private Button Fix = null;
+  private Button Fiy = null;
+  private Button Fiz = null;
   
   public int getLayoutId()
   {
-    return 2131495636;
+    return 2131496537;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(130918);
     super.onCreate(paramBundle);
-    this.AXE = ((Button)findViewById(2131305127));
-    this.AXF = ((Button)findViewById(2131305122));
-    this.AXG = ((Button)findViewById(2131305126));
-    this.AXH = ((Button)findViewById(2131305124));
-    this.AXI = ((Button)findViewById(2131305121));
-    this.AXJ = ((Button)findViewById(2131305125));
-    this.AXK = ((Button)findViewById(2131305123));
-    this.AXL = ((Button)findViewById(2131305120));
-    this.AXM = ((Button)findViewById(2131305119));
-    this.AXN = ((TextView)findViewById(2131304144));
-    this.AXE.setOnClickListener(new View.OnClickListener()
+    this.Fix = ((Button)findViewById(2131308305));
+    this.Fiy = ((Button)findViewById(2131308300));
+    this.Fiz = ((Button)findViewById(2131308304));
+    this.FiA = ((Button)findViewById(2131308302));
+    this.FiB = ((Button)findViewById(2131308299));
+    this.FiC = ((Button)findViewById(2131308303));
+    this.FiD = ((Button)findViewById(2131308301));
+    this.FiE = ((Button)findViewById(2131308298));
+    this.FiF = ((Button)findViewById(2131308297));
+    this.FiG = ((TextView)findViewById(2131307040));
+    this.Fix.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130905);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
         localObject = SoterTestUI.a(SoterTestUI.this);
-        if (com.tencent.soter.a.a.fZr()) {}
+        if (com.tencent.soter.a.a.hlC()) {}
         for (paramAnonymousView = "passed";; paramAnonymousView = "not support")
         {
           ((TextView)localObject).setText(paramAnonymousView);
@@ -64,15 +64,15 @@ public class SoterTestUI
         }
       }
     });
-    this.AXF.setOnClickListener(new View.OnClickListener()
+    this.Fiy.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130906);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        paramAnonymousView = com.tencent.soter.core.a.fYZ();
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        paramAnonymousView = com.tencent.soter.core.a.hlk();
         localObject = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "passed";; paramAnonymousView = "not support")
@@ -84,15 +84,15 @@ public class SoterTestUI
         }
       }
     });
-    this.AXG.setOnClickListener(new View.OnClickListener()
+    this.Fiz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130907);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        paramAnonymousView = com.tencent.soter.core.a.fZa();
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        paramAnonymousView = com.tencent.soter.core.a.hll();
         localObject = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "passed";; paramAnonymousView = "not passed")
@@ -104,15 +104,15 @@ public class SoterTestUI
         }
       }
     });
-    this.AXH.setOnClickListener(new View.OnClickListener()
+    this.FiA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130908);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = com.tencent.soter.core.a.fZd();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = com.tencent.soter.core.a.hlo();
         if (paramAnonymousView == null)
         {
           SoterTestUI.a(SoterTestUI.this).setText("not passed: no certificate");
@@ -125,15 +125,15 @@ public class SoterTestUI
         AppMethodBeat.o(130908);
       }
     });
-    this.AXI.setOnClickListener(new View.OnClickListener()
+    this.FiB.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130909);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        paramAnonymousView = com.tencent.soter.core.a.baU("sample_auth_key_name");
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        paramAnonymousView = com.tencent.soter.core.a.bqg("sample_auth_key_name");
         localObject = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "pass";; paramAnonymousView = "not passed")
@@ -145,15 +145,15 @@ public class SoterTestUI
         }
       }
     });
-    this.AXJ.setOnClickListener(new View.OnClickListener()
+    this.FiC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130910);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        paramAnonymousView = com.tencent.soter.core.a.dj("sample_auth_key_name", false);
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        paramAnonymousView = com.tencent.soter.core.a.dE("sample_auth_key_name", false);
         localObject = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "pass";; paramAnonymousView = "not passed")
@@ -165,15 +165,15 @@ public class SoterTestUI
         }
       }
     });
-    this.AXK.setOnClickListener(new View.OnClickListener()
+    this.FiD.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130911);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = com.tencent.soter.core.a.baX("sample_auth_key_name");
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/soter/ui/SoterTestUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = com.tencent.soter.core.a.bqj("sample_auth_key_name");
         if (paramAnonymousView == null)
         {
           SoterTestUI.a(SoterTestUI.this).setText("not passed: no certificate");
@@ -186,7 +186,7 @@ public class SoterTestUI
         AppMethodBeat.o(130911);
       }
     });
-    this.AXL.setOnClickListener(new SoterTestUI.8(this));
+    this.FiE.setOnClickListener(new SoterTestUI.8(this));
     AppMethodBeat.o(130918);
   }
   

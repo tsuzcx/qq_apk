@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ho
-  extends b
+  extends IEvent
 {
-  public a dvd;
+  public a dMd;
   
   public ho()
   {
@@ -16,19 +15,20 @@ public final class ho
   
   private ho(byte paramByte)
   {
-    AppMethodBeat.i(189053);
-    this.dvd = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(136974);
+    this.dMd = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(189053);
+    AppMethodBeat.o(136974);
   }
   
   public static final class a
   {
-    public WXMediaMessage dve;
-    public int dvf;
-    public String dvg;
-    public String username;
+    public String appId;
+    public String appUserName;
+    public String brandName;
+    public int dMe;
+    public String dMf;
   }
 }
 

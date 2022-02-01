@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public final class b
 {
-  public static <T> T H(Class<?> paramClass)
+  public static <T> T ac(Class<?> paramClass)
   {
     AppMethodBeat.i(158833);
     if (paramClass == null)
@@ -178,7 +178,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.g.b
  * JD-Core Version:    0.7.0.1
  */

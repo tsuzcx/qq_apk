@@ -15,9 +15,9 @@ final class GameMsgCenterUI$1
   {
     AppMethodBeat.i(183870);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/message/GameMsgCenterUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.uFX.finish();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/game/ui/message/GameMsgCenterUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.xYg.finish();
     a.a(this, "com/tencent/mm/plugin/game/ui/message/GameMsgCenterUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(183870);
   }

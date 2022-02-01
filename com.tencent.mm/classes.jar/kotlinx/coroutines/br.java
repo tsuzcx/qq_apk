@@ -1,33 +1,37 @@
 package kotlinx.coroutines;
 
-import d.d.f.b;
-import d.g.a.b;
-import d.l;
-import d.z;
-import java.util.concurrent.CancellationException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.b;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/CoroutineContext$Element;", "children", "Lkotlin/sequences/Sequence;", "getChildren", "()Lkotlin/sequences/Sequence;", "isActive", "", "()Z", "isCancelled", "isCompleted", "onJoin", "Lkotlinx/coroutines/selects/SelectClause0;", "getOnJoin", "()Lkotlinx/coroutines/selects/SelectClause0;", "attachChild", "Lkotlinx/coroutines/ChildHandle;", "child", "Lkotlinx/coroutines/ChildJob;", "cancel", "", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "getCancellationException", "invokeOnCompletion", "Lkotlinx/coroutines/DisposableHandle;", "onCancelling", "invokeImmediately", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "join", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plus", "other", "start", "Key", "kotlinx-coroutines-core"})
-public abstract interface br
-  extends f.b
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/InvokeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
+final class br
+  extends i
 {
-  public static final br.b OfS = br.b.OfT;
+  private final b<Throwable, x> lJK;
   
-  public abstract ba O(b<? super Throwable, z> paramb);
+  public br(b<? super Throwable, x> paramb)
+  {
+    AppMethodBeat.i(118164);
+    this.lJK = paramb;
+    AppMethodBeat.o(118164);
+  }
   
-  public abstract q a(s params);
+  public final String toString()
+  {
+    AppMethodBeat.i(118163);
+    String str = "InvokeOnCancel[" + this.lJK.getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
+    AppMethodBeat.o(118163);
+    return str;
+  }
   
-  public abstract ba b(boolean paramBoolean1, boolean paramBoolean2, b<? super Throwable, z> paramb);
-  
-  public abstract CancellationException gAe();
-  
-  public abstract void gAf();
-  
-  public abstract boolean isActive();
-  
-  public abstract boolean start();
-  
-  @l(gjZ={1, 1, 16})
-  public static final class a {}
+  public final void y(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118161);
+    this.lJK.invoke(paramThrowable);
+    AppMethodBeat.o(118161);
+  }
 }
 
 

@@ -1,302 +1,176 @@
 package com.tencent.mm.plugin.fcm;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public class a
-  implements f
+public final class a
 {
-  @SuppressLint({"StaticFieldLeak"})
-  private static a rNM;
-  private static volatile boolean rNN = false;
-  private final Context context;
-  private int rNO;
+  private static final String[] tnA = { "Hi3751V811", "IdeaHub" };
+  private static final String[] tny = { "A53", "A53m", "A53t", "A33m", "A33", "A33t", "R7Plust", "R7Plus", "A59t", "A59s", "A59m", "R9PlustA", "R9PlusmA", "R9PlustmA", "R9tm", "R9m", "R9km", "A37t", "A37m", "R7sPlus", "R7Plusm", "A53", "A51kc", "A51", "A30" };
+  private static final String[] tnz = { "V1950A", "V1955A" };
   
-  private a(Context paramContext)
+  public static void asz(String paramString)
   {
-    this.context = paramContext;
-  }
-  
-  public static a czb()
-  {
-    AppMethodBeat.i(127566);
-    Object localObject1;
-    if (rNM != null)
+    AppMethodBeat.i(192522);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("com.google.android.gms.common.internal.BaseGmsClient")) && (paramString.contains("android.os.BinderProxy.transactNative(Native Method)")))
     {
-      localObject1 = rNM;
-      AppMethodBeat.o(127566);
-      return localObject1;
-    }
-    try
-    {
-      if (rNM != null)
-      {
-        localObject1 = rNM;
-        return localObject1;
+      paramString = MultiProcessMMKV.getDefault();
+      if (paramString != null) {
+        paramString.encode("fcm_last_anr_record", d.KyO);
       }
-      localObject1 = ak.getContext();
-      if (localObject1 == null)
-      {
-        ae.e("MicroMsg.FCM.FcmRegister", "FCM appcontext null");
-        return null;
-      }
-      localObject1 = new a((Context)localObject1);
-      rNM = (a)localObject1;
-      return localObject1;
     }
-    finally
-    {
-      AppMethodBeat.o(127566);
-    }
+    AppMethodBeat.o(192522);
   }
   
-  private SharedPreferences czg()
+  private static boolean cXe()
   {
-    AppMethodBeat.i(127573);
-    SharedPreferences localSharedPreferences = this.context.getSharedPreferences(a.class.getSimpleName(), 0);
-    AppMethodBeat.o(127573);
-    return localSharedPreferences;
-  }
-  
-  private void lJ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(127572);
-    Object localObject = czg();
-    ae.i("MicroMsg.FCM.FcmRegister", "Saving regSvrResult: ".concat(String.valueOf(paramBoolean)));
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("isRegToSvr", paramBoolean);
-    ((SharedPreferences.Editor)localObject).commit();
-    if (paramBoolean)
+    AppMethodBeat.i(192521);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getDefault();
+    if (localMultiProcessMMKV != null)
     {
-      this.rNO = com.tencent.mm.kernel.a.ajc();
-      AppMethodBeat.o(127572);
-      return;
-    }
-    this.rNO = 0;
-    AppMethodBeat.o(127572);
-  }
-  
-  public final void ahR(String paramString)
-  {
-    AppMethodBeat.i(127570);
-    ae.i("MicroMsg.FCM.FcmRegister", "register token to svr: %s", new Object[] { paramString });
-    e.ywz.idkeyStat(901L, 11L, 1L, false);
-    if (bu.isNullOrNil(paramString))
-    {
-      e.ywz.idkeyStat(901L, 13L, 1L, false);
-      ae.e("MicroMsg.FCM.FcmRegister", "token is null, fail reg");
-      AppMethodBeat.o(127570);
-      return;
-    }
-    if (this.rNO == com.tencent.mm.kernel.a.ajc())
-    {
-      e.ywz.idkeyStat(901L, 12L, 1L, false);
-      ae.w("MicroMsg.FCM.FcmRegister", "have registered yet.");
-      AppMethodBeat.o(127570);
-      return;
-    }
-    paramString = new b(paramString);
-    g.ajS();
-    g.ajQ().gDv.a(paramString.getType(), this);
-    g.ajS();
-    g.ajQ().gDv.a(paramString, 0);
-    e.ywz.idkeyStat(901L, 14L, 1L, false);
-    AppMethodBeat.o(127570);
-  }
-  
-  /* Error */
-  final boolean czc()
-  {
-    // Byte code:
-    //   0: ldc 197
-    //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 21	com/tencent/mm/plugin/fcm/a:rNN	Z
-    //   8: ifne +36 -> 44
-    //   11: aload_0
-    //   12: monitorenter
-    //   13: getstatic 21	com/tencent/mm/plugin/fcm/a:rNN	Z
-    //   16: istore_1
-    //   17: iload_1
-    //   18: ifne +24 -> 42
-    //   21: aload_0
-    //   22: getfield 28	com/tencent/mm/plugin/fcm/a:context	Landroid/content/Context;
-    //   25: invokestatic 203	com/google/firebase/a:ak	(Landroid/content/Context;)Lcom/google/firebase/a;
-    //   28: pop
-    //   29: invokestatic 209	com/google/firebase/messaging/a:yr	()Lcom/google/firebase/messaging/a;
-    //   32: getfield 213	com/google/firebase/messaging/a:bLI	Lcom/google/firebase/iid/FirebaseInstanceId;
-    //   35: invokevirtual 218	com/google/firebase/iid/FirebaseInstanceId:yd	()V
-    //   38: iconst_1
-    //   39: putstatic 21	com/tencent/mm/plugin/fcm/a:rNN	Z
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: ldc 197
-    //   46: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   49: iconst_1
-    //   50: ireturn
-    //   51: astore_2
-    //   52: ldc 50
-    //   54: aload_2
-    //   55: ldc 220
-    //   57: iconst_0
-    //   58: anewarray 4	java/lang/Object
-    //   61: invokestatic 224	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: ldc 197
-    //   68: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   71: iconst_0
-    //   72: ireturn
-    //   73: astore_2
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: ldc 197
-    //   78: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   81: aload_2
-    //   82: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	83	0	this	a
-    //   16	2	1	bool	boolean
-    //   51	4	2	localThrowable	Throwable
-    //   73	9	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   21	42	51	java/lang/Throwable
-    //   13	17	73	finally
-    //   21	42	73	finally
-    //   42	44	73	finally
-    //   52	66	73	finally
-    //   74	76	73	finally
-  }
-  
-  final boolean czd()
-  {
-    AppMethodBeat.i(127568);
-    try
-    {
-      if (Build.VERSION.SDK_INT < 14)
-      {
-        ae.w("MicroMsg.FCM.FcmRegister", "device not support FCM reason = version < 14");
-        AppMethodBeat.o(127568);
-        return false;
-      }
-      int i = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.context);
+      int i = localMultiProcessMMKV.getInt("fcm_last_anr_record", 0);
       if (i != 0)
       {
-        ae.w("MicroMsg.FCM.FcmRegister", "device not support FCM reason = ".concat(String.valueOf(i)));
-        AppMethodBeat.o(127568);
+        if (i == d.KyO)
+        {
+          AppMethodBeat.o(192521);
+          return true;
+        }
+        AppMethodBeat.o(192521);
         return false;
       }
     }
-    catch (Throwable localThrowable)
-    {
-      ae.e("MicroMsg.FCM.FcmRegister", localThrowable.toString());
-      AppMethodBeat.o(127568);
-      return false;
-    }
-    AppMethodBeat.o(127568);
-    return true;
+    AppMethodBeat.o(192521);
+    return false;
   }
   
-  final void cze()
+  public static boolean fj(Context paramContext)
   {
-    AppMethodBeat.i(127569);
-    e.ywz.idkeyStat(901L, 18L, 1L, false);
-    Object localObject = null;
-    if (czc()) {
-      localObject = FirebaseInstanceId.xU().getToken();
-    }
-    if (bu.isNullOrNil((String)localObject))
+    AppMethodBeat.i(192520);
+    String[] arrayOfString;
+    int j;
+    int i;
+    String str;
+    if ((Util.nullAs(Build.MANUFACTURER, "").toLowerCase().contains("oppo".toLowerCase())) && ((Build.VERSION.SDK_INT == 21) || (Build.VERSION.SDK_INT == 22)))
     {
-      e.ywz.idkeyStat(901L, 19L, 1L, false);
-      ae.w("MicroMsg.FCM.FcmRegister", "unreg fail, token is null");
-      AppMethodBeat.o(127569);
-      return;
-    }
-    lJ(false);
-    localObject = new c((String)localObject);
-    g.ajS();
-    g.ajQ().gDv.a(((c)localObject).getType(), this);
-    g.ajS();
-    g.ajQ().gDv.a((n)localObject, 0);
-    e.ywz.idkeyStat(901L, 21L, 1L, false);
-    AppMethodBeat.o(127569);
-  }
-  
-  public final boolean czf()
-  {
-    AppMethodBeat.i(127571);
-    boolean bool = czg().getBoolean("isRegToSvr", false);
-    AppMethodBeat.o(127571);
-    return bool;
-  }
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(127574);
-    if (paramn == null)
-    {
-      AppMethodBeat.o(127574);
-      return;
-    }
-    if ((paramn instanceof b))
-    {
-      g.ajS();
-      g.ajQ().gDv.a(((b)paramn).getType(), this);
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      arrayOfString = tny;
+      j = arrayOfString.length;
+      i = 0;
+      if (i < j)
       {
-        ae.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmReg success.");
-        e.ywz.idkeyStat(901L, 16L, 1L, false);
-        bool = true;
+        str = arrayOfString[i];
+        if ((str.equalsIgnoreCase(Build.DEVICE)) || (str.equalsIgnoreCase(Build.PRODUCT)))
+        {
+          Log.w("MicroMsg.FCM.FcmServiceHelper", "fcm service incompatible!");
+          Log.w("MicroMsg.FCM.FcmServiceHelper", "for oppo firebase problem, %s", new Object[] { Build.MODEL });
+          i = 1;
+        }
       }
-      for (;;)
-      {
-        lJ(bool);
-        AppMethodBeat.o(127574);
-        return;
-        ae.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmReg faild.");
-        e.ywz.idkeyStat(901L, 17L, 1L, false);
-      }
-    }
-    if ((paramn instanceof c))
-    {
-      g.ajS();
-      g.ajQ().gDv.a(((c)paramn).getType(), this);
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label194;
-      }
-      ae.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmUnreg success.");
-      e.ywz.idkeyStat(901L, 23L, 1L, false);
     }
     for (;;)
     {
-      lJ(false);
-      AppMethodBeat.o(127574);
-      return;
-      label194:
-      ae.e("MicroMsg.FCM.FcmRegister", "NetSceneFcmUnreg faild.");
-      e.ywz.idkeyStat(901L, 24L, 1L, false);
+      if (i != 0)
+      {
+        Log.w("MicroMsg.FCM.FcmServiceHelper", "fcm-incompatible device");
+        i = GooglePlayServicesUtil.isGooglePlayServicesAvailable(paramContext);
+        Log.i("MicroMsg.FCM.FcmServiceHelper", "check google play service available, code = ".concat(String.valueOf(i)));
+        if (i != 0)
+        {
+          Log.i("MicroMsg.FCM.FcmServiceHelper", "fcm is NOT available");
+          AppMethodBeat.o(192520);
+          return false;
+          i += 1;
+          break;
+          if (Util.nullAs(Build.MANUFACTURER, "").toLowerCase().contains("vivo".toLowerCase()))
+          {
+            i = 1;
+            label189:
+            if ((i != 0) && (Build.VERSION.SDK_INT == 29))
+            {
+              arrayOfString = tnz;
+              j = arrayOfString.length;
+              i = 0;
+            }
+          }
+          else
+          {
+            for (;;)
+            {
+              if (i >= j) {
+                break label283;
+              }
+              str = arrayOfString[i];
+              if ((str.equalsIgnoreCase(Build.DEVICE)) || (str.equalsIgnoreCase(Build.PRODUCT)))
+              {
+                Log.w("MicroMsg.FCM.FcmServiceHelper", "fcm service incompatible!");
+                Log.w("MicroMsg.FCM.FcmServiceHelper", "for vivo firebase problem, %s", new Object[] { Build.MODEL });
+                i = 1;
+                break;
+                i = 0;
+                break label189;
+              }
+              i += 1;
+            }
+          }
+          label283:
+          if ((Util.nullAs(Build.MANUFACTURER, "").toLowerCase().contains("huawei".toLowerCase())) && (Build.VERSION.SDK_INT >= 28))
+          {
+            arrayOfString = tnA;
+            j = arrayOfString.length;
+            i = 0;
+            for (;;)
+            {
+              if (i >= j) {
+                break label390;
+              }
+              str = arrayOfString[i];
+              if ((str.equalsIgnoreCase(Build.DEVICE)) || (str.equalsIgnoreCase(Build.PRODUCT)))
+              {
+                Log.w("MicroMsg.FCM.FcmServiceHelper", "fcm service incompatible!");
+                Log.w("MicroMsg.FCM.FcmServiceHelper", "for huawei firebase problem, %s", new Object[] { Build.MODEL });
+                i = 1;
+                break;
+              }
+              i += 1;
+            }
+          }
+          label390:
+          i = 0;
+          continue;
+        }
+        Log.i("MicroMsg.FCM.FcmServiceHelper", "fcm is available");
+        if ((ChannelUtil.isGPVersion()) || (!cXe()))
+        {
+          AppMethodBeat.o(192520);
+          return true;
+        }
+        AppMethodBeat.o(192520);
+        return false;
+      }
     }
+    Log.i("MicroMsg.FCM.FcmServiceHelper", "normal device");
+    Log.i("MicroMsg.FCM.FcmServiceHelper", "fcm is available");
+    if ((ChannelUtil.isGPVersion()) || (!cXe()))
+    {
+      AppMethodBeat.o(192520);
+      return true;
+    }
+    AppMethodBeat.o(192520);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.a
  * JD-Core Version:    0.7.0.1
  */

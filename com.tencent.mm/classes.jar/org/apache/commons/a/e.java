@@ -12,8 +12,8 @@ import java.net.URLConnection;
 
 public final class e
 {
-  public static final String Oex;
-  public static final char OpG;
+  public static final String TTr;
+  public static final char UeE;
   
   /* Error */
   static
@@ -24,7 +24,7 @@ public final class e
     //   2: sipush 10310
     //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: getstatic 23	java/io/File:separatorChar	C
-    //   11: putstatic 25	org/apache/commons/a/e:OpG	C
+    //   11: putstatic 25	org/apache/commons/a/e:UeE	C
     //   14: new 27	org/apache/commons/a/a/b
     //   17: dup
     //   18: iconst_0
@@ -39,7 +39,7 @@ public final class e
     //   35: invokevirtual 39	java/io/PrintWriter:println	()V
     //   38: aload_3
     //   39: invokevirtual 43	org/apache/commons/a/a/b:toString	()Ljava/lang/String;
-    //   42: putstatic 45	org/apache/commons/a/e:Oex	Ljava/lang/String;
+    //   42: putstatic 45	org/apache/commons/a/e:TTr	Ljava/lang/String;
     //   45: aload 4
     //   47: invokevirtual 48	java/io/PrintWriter:close	()V
     //   50: aload_3
@@ -135,7 +135,7 @@ public final class e
   }
   
   @Deprecated
-  public static void Z(InputStream paramInputStream)
+  public static void W(InputStream paramInputStream)
   {
     AppMethodBeat.i(10304);
     closeQuietly(paramInputStream);
@@ -144,7 +144,7 @@ public final class e
   
   public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
   {
-    AppMethodBeat.i(186136);
+    AppMethodBeat.i(187043);
     byte[] arrayOfByte = new byte[paramInt];
     for (long l = 0L;; l += paramInt)
     {
@@ -154,7 +154,7 @@ public final class e
       }
       paramOutputStream.write(arrayOfByte, 0, paramInt);
     }
-    AppMethodBeat.o(186136);
+    AppMethodBeat.o(187043);
     return l;
   }
   
@@ -190,12 +190,12 @@ public final class e
     //   18: dup
     //   19: aload_0
     //   20: aload_1
-    //   21: invokestatic 103	org/apache/commons/a/a:a	(Ljava/nio/charset/Charset;)Ljava/nio/charset/Charset;
-    //   24: invokespecial 106	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
+    //   21: invokestatic 104	org/apache/commons/a/a:b	(Ljava/nio/charset/Charset;)Ljava/nio/charset/Charset;
+    //   24: invokespecial 107	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
     //   27: aload_3
     //   28: sipush 4096
     //   31: newarray char
-    //   33: invokestatic 108	org/apache/commons/a/e:a	(Ljava/io/Reader;Ljava/io/Writer;[C)J
+    //   33: invokestatic 109	org/apache/commons/a/e:a	(Ljava/io/Reader;Ljava/io/Writer;[C)J
     //   36: pop2
     //   37: aload_3
     //   38: invokevirtual 43	org/apache/commons/a/a/b:toString	()Ljava/lang/String;
@@ -250,25 +250,25 @@ public final class e
   @Deprecated
   public static void a(Reader paramReader)
   {
-    AppMethodBeat.i(186135);
+    AppMethodBeat.i(187042);
     closeQuietly(paramReader);
-    AppMethodBeat.o(186135);
+    AppMethodBeat.o(187042);
   }
   
   public static void a(URLConnection paramURLConnection)
   {
-    AppMethodBeat.i(186134);
+    AppMethodBeat.i(187041);
     if ((paramURLConnection instanceof HttpURLConnection)) {
       ((HttpURLConnection)paramURLConnection).disconnect();
     }
-    AppMethodBeat.o(186134);
+    AppMethodBeat.o(187041);
   }
   
   private static long c(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(186137);
+    AppMethodBeat.i(187044);
     long l = a(paramInputStream, paramOutputStream, 4096);
-    AppMethodBeat.o(186137);
+    AppMethodBeat.o(187044);
     return l;
   }
   
@@ -317,21 +317,21 @@ public final class e
     // Byte code:
     //   0: sipush 10307
     //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 139	org/apache/commons/a/a/a
+    //   6: new 140	org/apache/commons/a/a/a
     //   9: dup
-    //   10: invokespecial 140	org/apache/commons/a/a/a:<init>	()V
+    //   10: invokespecial 141	org/apache/commons/a/a/a:<init>	()V
     //   13: astore_2
     //   14: aconst_null
     //   15: astore_1
     //   16: aload_0
     //   17: aload_2
-    //   18: invokestatic 142	org/apache/commons/a/e:copy	(Ljava/io/InputStream;Ljava/io/OutputStream;)I
+    //   18: invokestatic 143	org/apache/commons/a/e:copy	(Ljava/io/InputStream;Ljava/io/OutputStream;)I
     //   21: pop
     //   22: aload_2
-    //   23: invokevirtual 145	org/apache/commons/a/a/a:toByteArray	()[B
+    //   23: invokevirtual 146	org/apache/commons/a/a/a:toByteArray	()[B
     //   26: astore_0
     //   27: aload_2
-    //   28: invokevirtual 146	org/apache/commons/a/a/a:close	()V
+    //   28: invokevirtual 147	org/apache/commons/a/a/a:close	()V
     //   31: sipush 10307
     //   34: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aload_0
@@ -345,7 +345,7 @@ public final class e
     //   49: aload_1
     //   50: ifnull +24 -> 74
     //   53: aload_2
-    //   54: invokevirtual 146	org/apache/commons/a/a/a:close	()V
+    //   54: invokevirtual 147	org/apache/commons/a/a/a:close	()V
     //   57: sipush 10307
     //   60: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: aload_0
@@ -356,7 +356,7 @@ public final class e
     //   68: invokevirtual 56	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   71: goto -14 -> 57
     //   74: aload_2
-    //   75: invokevirtual 146	org/apache/commons/a/a/a:close	()V
+    //   75: invokevirtual 147	org/apache/commons/a/a/a:close	()V
     //   78: goto -21 -> 57
     //   81: astore_0
     //   82: goto -33 -> 49
@@ -377,7 +377,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import android.annotation.TargetApi;
 @TargetApi(16)
 public abstract interface b<T extends c>
 {
-  public abstract boolean un();
+  public abstract boolean us();
   
-  public abstract a<T> uo();
+  public abstract a<T> ut();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.b
  * JD-Core Version:    0.7.0.1
  */

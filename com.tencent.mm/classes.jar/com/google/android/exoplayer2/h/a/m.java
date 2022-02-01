@@ -10,16 +10,16 @@ import java.util.regex.Pattern;
 final class m
   extends g
 {
-  private static final Pattern bGv;
-  private static final Pattern bGw;
-  private static final Pattern bGx;
+  private static final Pattern bGM;
+  private static final Pattern bGN;
+  private static final Pattern bGO;
   
   static
   {
     AppMethodBeat.i(93032);
-    bGv = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v1\\.exo$", 32);
-    bGw = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v2\\.exo$", 32);
-    bGx = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)\\.v3\\.exo$", 32);
+    bGM = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v1\\.exo$", 32);
+    bGN = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v2\\.exo$", 32);
+    bGO = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)\\.v3\\.exo$", 32);
     AppMethodBeat.o(93032);
   }
   
@@ -36,7 +36,7 @@ final class m
     if (!((String)localObject2).endsWith(".v3.exo"))
     {
       localObject1 = paramFile.getName();
-      localObject2 = bGw.matcher((CharSequence)localObject1);
+      localObject2 = bGN.matcher((CharSequence)localObject1);
       if (((Matcher)localObject2).matches())
       {
         localObject1 = x.bL(((Matcher)localObject2).group(1));
@@ -50,7 +50,7 @@ final class m
         {
           AppMethodBeat.o(93031);
           return null;
-          localObject2 = bGv.matcher((CharSequence)localObject1);
+          localObject2 = bGM.matcher((CharSequence)localObject1);
           if (!((Matcher)localObject2).matches())
           {
             localObject1 = null;
@@ -69,7 +69,7 @@ final class m
     }
     for (paramFile = ((File)localObject1).getName();; paramFile = (File)localObject2)
     {
-      paramFile = bGx.matcher(paramFile);
+      paramFile = bGO.matcher(paramFile);
       if (!paramFile.matches())
       {
         AppMethodBeat.o(93031);
@@ -77,7 +77,7 @@ final class m
       }
       long l = ((File)localObject1).length();
       int i = Integer.parseInt(paramFile.group(1));
-      paramj = (String)paramj.bGf.get(i);
+      paramj = (String)paramj.bGw.get(i);
       if (paramj == null)
       {
         AppMethodBeat.o(93031);
@@ -107,7 +107,7 @@ final class m
     return paramString;
   }
   
-  public static m j(String paramString, long paramLong)
+  public static m k(String paramString, long paramLong)
   {
     AppMethodBeat.i(93028);
     paramString = new m(paramString, paramLong, -1L, -9223372036854775807L, null);
@@ -115,7 +115,7 @@ final class m
     return paramString;
   }
   
-  public static m k(String paramString, long paramLong)
+  public static m l(String paramString, long paramLong)
   {
     AppMethodBeat.i(93029);
     paramString = new m(paramString, paramLong, -1L, -9223372036854775807L, null);
@@ -125,7 +125,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.m
  * JD-Core Version:    0.7.0.1
  */

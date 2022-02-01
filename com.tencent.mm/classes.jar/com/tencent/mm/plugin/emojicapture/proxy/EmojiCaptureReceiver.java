@@ -4,12 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.c.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.emoji.d.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"})
 public final class EmojiCaptureReceiver
   extends BroadcastReceiver
 {
@@ -21,7 +21,7 @@ public final class EmojiCaptureReceiver
     p.h(paramContext, "context");
     p.h(paramIntent, "intent");
     paramContext = paramIntent.getAction();
-    ae.i(this.TAG, "onReceive: ".concat(String.valueOf(paramContext)));
+    Log.i(this.TAG, "onReceive: ".concat(String.valueOf(paramContext)));
     if (paramContext == null)
     {
       AppMethodBeat.o(415);
@@ -38,7 +38,7 @@ public final class EmojiCaptureReceiver
       {
         int i = paramIntent.getIntExtra("res_sub_type", 0);
         boolean bool = paramIntent.getBooleanExtra("res_result", false);
-        ae.i(this.TAG, "onReceive: res update " + i + ' ' + bool);
+        Log.i(this.TAG, "onReceive: res update " + i + ' ' + bool);
         AppMethodBeat.o(415);
         return;
         if (paramContext.equals("com.tencent.mm.Emoji_Capture_Upload"))
@@ -46,9 +46,9 @@ public final class EmojiCaptureReceiver
           long l = paramIntent.getLongExtra("upload_time_enter", 0L);
           bool = paramIntent.getBooleanExtra("upload_success", false);
           paramContext = paramIntent.getStringExtra("upload_md5");
-          paramIntent = b.gsl;
+          paramIntent = b.hdv;
           b.b(l, bool, paramContext);
-          ae.i(this.TAG, "onReceive: upload " + l + ", " + bool + ", " + paramContext);
+          Log.i(this.TAG, "onReceive: upload " + l + ", " + bool + ", " + paramContext);
         }
       }
     }

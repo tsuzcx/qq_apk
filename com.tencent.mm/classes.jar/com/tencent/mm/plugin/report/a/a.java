@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.report.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.be;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.bf;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends be
+  extends bf
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(143779);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "bakLogId";
-    locala.IBN.put("bakLogId", "INTEGER");
+    localMAutoDBInfo.columns[0] = "bakLogId";
+    localMAutoDBInfo.colsMap.put("bakLogId", "INTEGER");
     localStringBuilder.append(" bakLogId INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[1] = "valueStr";
-    locala.IBN.put("valueStr", "TEXT");
+    localMAutoDBInfo.columns[1] = "valueStr";
+    localMAutoDBInfo.colsMap.put("valueStr", "TEXT");
     localStringBuilder.append(" valueStr TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(143779);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

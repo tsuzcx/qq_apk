@@ -9,13 +9,13 @@ import rx.internal.b.a;
 public final class h<T>
   implements d.b<Boolean, T>
 {
-  final e<? super T, Boolean> Ova;
-  final boolean Ovb;
+  final e<? super T, Boolean> UkO;
+  final boolean UkP;
   
   public h(e<? super T, Boolean> parame)
   {
-    this.Ova = parame;
-    this.Ovb = true;
+    this.UkO = parame;
+    this.UkP = true;
   }
   
   private rx.i<? super T> b(final rx.i<? super Boolean> parami)
@@ -24,27 +24,27 @@ public final class h<T>
     final a locala = new a(parami);
     rx.i local1 = new rx.i()
     {
-      boolean Ovc;
+      boolean UkQ;
       boolean done;
       
-      public final void gC(T paramAnonymousT)
+      public final void gL(T paramAnonymousT)
       {
         AppMethodBeat.i(90259);
-        this.Ovc = true;
+        this.UkQ = true;
         for (;;)
         {
           try
           {
-            bool = ((Boolean)h.this.Ova.call(paramAnonymousT)).booleanValue();
+            bool = ((Boolean)h.this.UkO.call(paramAnonymousT)).booleanValue();
             if ((bool) && (!this.done))
             {
               this.done = true;
               paramAnonymousT = locala;
-              if (!h.this.Ovb)
+              if (!h.this.UkP)
               {
                 bool = true;
                 paramAnonymousT.setValue(Boolean.valueOf(bool));
-                this.Ous.gDs();
+                this.Ukg.hQA();
               }
             }
             else
@@ -63,19 +63,19 @@ public final class h<T>
         }
       }
       
-      public final void gDo()
+      public final void hQw()
       {
         AppMethodBeat.i(90261);
         if (!this.done)
         {
           this.done = true;
-          if (this.Ovc)
+          if (this.UkQ)
           {
             locala.setValue(Boolean.FALSE);
             AppMethodBeat.o(90261);
             return;
           }
-          locala.setValue(Boolean.valueOf(h.this.Ovb));
+          locala.setValue(Boolean.valueOf(h.this.UkP));
         }
         AppMethodBeat.o(90261);
       }

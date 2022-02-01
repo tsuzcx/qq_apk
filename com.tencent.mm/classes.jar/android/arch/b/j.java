@@ -7,69 +7,69 @@ import java.util.List;
 final class j<T>
   extends AbstractList<T>
 {
-  private static final List fa = new ArrayList();
-  private int eU;
-  int fb;
-  final ArrayList<List<T>> fc;
+  private static final List eZ = new ArrayList();
+  private int eT;
   int fe;
-  private int ff;
+  final ArrayList<List<T>> ff;
   int fg;
-  int fh;
+  private int fh;
   int fi;
+  int fj;
+  int fk;
   
   j()
   {
-    this.fb = 0;
-    this.fc = new ArrayList();
     this.fe = 0;
-    this.ff = 0;
+    this.ff = new ArrayList();
     this.fg = 0;
-    this.eU = 1;
     this.fh = 0;
     this.fi = 0;
+    this.eT = 1;
+    this.fj = 0;
+    this.fk = 0;
   }
   
   j(j<T> paramj)
   {
-    this.fb = paramj.fb;
-    this.fc = new ArrayList(paramj.fc);
     this.fe = paramj.fe;
-    this.ff = paramj.ff;
+    this.ff = new ArrayList(paramj.ff);
     this.fg = paramj.fg;
-    this.eU = paramj.eU;
     this.fh = paramj.fh;
     this.fi = paramj.fi;
+    this.eT = paramj.eT;
+    this.fj = paramj.fj;
+    this.fk = paramj.fk;
   }
   
-  final int ax()
+  final int aA()
   {
-    int j = this.fb;
-    int k = this.fc.size();
-    int i = 0;
-    while (i < k)
+    int j = this.fg;
+    int i = this.ff.size() - 1;
+    while (i >= 0)
     {
-      List localList = (List)this.fc.get(i);
-      if ((localList != null) && (localList != fa)) {
+      List localList = (List)this.ff.get(i);
+      if ((localList != null) && (localList != eZ)) {
         break;
       }
-      j += this.eU;
-      i += 1;
+      j += this.eT;
+      i -= 1;
     }
     return j;
   }
   
-  final int ay()
+  final int az()
   {
     int j = this.fe;
-    int i = this.fc.size() - 1;
-    while (i >= 0)
+    int k = this.ff.size();
+    int i = 0;
+    while (i < k)
     {
-      List localList = (List)this.fc.get(i);
-      if ((localList != null) && (localList != fa)) {
+      List localList = (List)this.ff.get(i);
+      if ((localList != null) && (localList != eZ)) {
         break;
       }
-      j += this.eU;
-      i -= 1;
+      j += this.eT;
+      i += 1;
     }
     return j;
   }
@@ -80,22 +80,22 @@ final class j<T>
     if ((paramInt < 0) || (paramInt >= size())) {
       throw new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + size());
     }
-    int j = paramInt - this.fb;
-    if ((j < 0) || (j >= this.fg)) {
+    int j = paramInt - this.fe;
+    if ((j < 0) || (j >= this.fi)) {
       return null;
     }
-    if (this.eU > 0)
+    if (this.eT > 0)
     {
       paramInt = 1;
       if (paramInt == 0) {
         break label133;
       }
-      i = j / this.eU;
-      paramInt = j % this.eU;
+      i = j / this.eT;
+      paramInt = j % this.eT;
     }
     for (;;)
     {
-      List localList = (List)this.fc.get(i);
+      List localList = (List)this.ff.get(i);
       label133:
       int k;
       if ((localList == null) || (localList.size() == 0))
@@ -103,12 +103,12 @@ final class j<T>
         return null;
         paramInt = 0;
         break;
-        k = this.fc.size();
+        k = this.ff.size();
         paramInt = j;
       }
       while (i < k)
       {
-        j = ((List)this.fc.get(i)).size();
+        j = ((List)this.ff.get(i)).size();
         if (j <= paramInt)
         {
           paramInt -= j;
@@ -122,16 +122,16 @@ final class j<T>
   
   public final int size()
   {
-    return this.fb + this.fg + this.fe;
+    return this.fe + this.fi + this.fg;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("leading " + this.fb + ", storage " + this.fg + ", trailing " + this.fe);
+    StringBuilder localStringBuilder = new StringBuilder("leading " + this.fe + ", storage " + this.fi + ", trailing " + this.fg);
     int i = 0;
-    while (i < this.fc.size())
+    while (i < this.ff.size())
     {
-      localStringBuilder.append(" ").append(this.fc.get(i));
+      localStringBuilder.append(" ").append(this.ff.get(i));
       i += 1;
     }
     return localStringBuilder.toString();
@@ -139,7 +139,7 @@ final class j<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.arch.b.j
  * JD-Core Version:    0.7.0.1
  */

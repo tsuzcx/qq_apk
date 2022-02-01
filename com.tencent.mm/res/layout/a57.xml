@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.HardTouchableLayout android:id="@id/dm2" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.finder.view.FinderMediaBanner android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/d1q" android:visibility="gone" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/icon_filled_awesome" app:iconColor="@color/Red_90" />
-</com.tencent.mm.view.HardTouchableLayout>
+<RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/c5m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@color/kw" android:scaleType="centerCrop" />
+        <ImageView android:background="@drawable/r5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/hl3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:src="@drawable/bsk" android:contentDescription="@string/bz6" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/uj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c1n" />
+    </LinearLayout>
+    <LinearLayout android:background="@null" style="@style/rj">
+        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/gm5" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ListView android:id="@id/c68" android:background="@null" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@drawable/to" android:dividerHeight="0.0dip" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:overScrollHeader="@null" android:overScrollFooter="@android:color/transparent" />
+        </com.tencent.mm.ui.base.MMPullDownView>
+        <RelativeLayout android:id="@id/g12" android:padding="@dimen/k5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/l4" android:gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/c1m" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mm.plugin.exdevice.ui.ExdeviceRankChampionInfoView android:id="@id/aqr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</RelativeLayout>

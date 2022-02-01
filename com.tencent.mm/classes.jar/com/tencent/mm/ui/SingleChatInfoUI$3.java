@@ -11,14 +11,14 @@ final class SingleChatInfoUI$3
   
   public final void run()
   {
-    AppMethodBeat.i(187033);
-    p.aJQ().pP(7);
-    AppMethodBeat.o(187033);
+    AppMethodBeat.i(232717);
+    p.bdS().tE(7);
+    AppMethodBeat.o(232717);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.SingleChatInfoUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
 package kotlinx.coroutines.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/ThreadState;", "", "context", "Lkotlin/coroutines/CoroutineContext;", "n", "", "(Lkotlin/coroutines/CoroutineContext;I)V", "a", "", "[Ljava/lang/Object;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "i", "append", "", "value", "start", "take", "kotlinx-coroutines-core"})
-final class aa
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "", "heap", "Lkotlinx/coroutines/internal/ThreadSafeHeap;", "getHeap", "()Lkotlinx/coroutines/internal/ThreadSafeHeap;", "setHeap", "(Lkotlinx/coroutines/internal/ThreadSafeHeap;)V", "index", "", "getIndex", "()I", "setIndex", "(I)V", "kotlinx-coroutines-core"})
+public abstract interface aa
 {
-  final f Oez;
-  Object[] Ohw;
-  int i;
+  public abstract void a(z<?> paramz);
   
-  public aa(f paramf, int paramInt)
-  {
-    AppMethodBeat.i(118108);
-    this.Oez = paramf;
-    this.Ohw = new Object[paramInt];
-    AppMethodBeat.o(118108);
-  }
+  public abstract int getIndex();
+  
+  public abstract z<?> hNf();
+  
+  public abstract void setIndex(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.internal.aa
  * JD-Core Version:    0.7.0.1
  */

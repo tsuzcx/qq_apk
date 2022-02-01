@@ -1,96 +1,129 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.protocal.protobuf.aoz;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.hw;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.aor;
+import com.tencent.mm.protocal.protobuf.aos;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetTagContact;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "getTagScene", "", "(I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getGetTagScene", "()I", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getTagContacts", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderTagContact;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneAudienceReserveLive;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "userName", "", "noticeId", "optype", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getNoticeId", "()Ljava/lang/String;", "getOptype", "()I", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getUserName", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "Lcom/tencent/mm/protocal/protobuf/FinderAudienceReserveLiveResponse;", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
 public final class ar
-  extends n
-  implements k
+  extends ax
+  implements m
 {
-  private static final String TAG = "Finder.NetSceneFinderGetTagContact";
-  private static final int rRL = 1;
-  public static final a rRM;
-  private f callback;
-  private final int rRK;
-  public b rr;
+  public static final a tuK;
+  private i callback;
+  private final String dDJ;
+  private final int dYx;
+  private d rr;
+  private final String userName;
   
   static
   {
-    AppMethodBeat.i(201573);
-    rRM = new a((byte)0);
-    TAG = "Finder.NetSceneFinderGetTagContact";
-    rRL = 1;
-    AppMethodBeat.o(201573);
+    AppMethodBeat.i(242338);
+    tuK = new a((byte)0);
+    AppMethodBeat.o(242338);
   }
   
-  public ar(int paramInt)
+  public ar(String paramString1, String paramString2, int paramInt, bbn parambbn)
   {
-    AppMethodBeat.i(201572);
-    this.rRK = paramInt;
-    Object localObject = new b.a();
-    ((b.a)localObject).oS(getType());
-    aoy localaoy = new aoy();
-    localaoy.scene = this.rRK;
-    v localv = v.rRb;
-    localaoy.GEg = v.czz();
-    ((b.a)localObject).c((a)localaoy);
-    ((b.a)localObject).d((a)new aoz());
-    ((b.a)localObject).DN("/cgi-bin/micromsg-bin/findergettagcontact");
-    localObject = ((b.a)localObject).aDS();
-    p.g(localObject, "builder.buildInstance()");
-    this.rr = ((b)localObject);
-    ae.i(TAG, "NetSceneFinderGetTagContact");
-    AppMethodBeat.o(201572);
+    super(parambbn);
+    AppMethodBeat.i(242337);
+    this.userName = paramString1;
+    this.dDJ = paramString2;
+    this.dYx = paramInt;
+    paramString1 = new d.a();
+    paramString1.MB("/cgi-bin/micromsg-bin/finderaudiencereservelive");
+    paramString1.sG(getType());
+    paramString2 = new aor();
+    paramString2.LAN = this.userName;
+    paramString2.dDJ = this.dDJ;
+    paramString2.opType = this.dYx;
+    parambbn = new aos();
+    paramString1.c((com.tencent.mm.bw.a)paramString2);
+    paramString1.d((com.tencent.mm.bw.a)parambbn);
+    paramString1 = paramString1.aXF();
+    p.g(paramString1, "builder.buildInstance()");
+    this.rr = paramString1;
+    Log.i("Finder.NetSceneAudienceReserveLive", "NetSceneAudienceReserveLive init userName:" + this.userName + ", noticeId:" + this.dDJ + " ,optype:" + this.dYx + ' ');
+    AppMethodBeat.o(242337);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
   {
-    AppMethodBeat.i(201570);
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(201570);
+    boolean bool2 = true;
+    AppMethodBeat.i(242336);
+    Log.i("Finder.NetSceneAudienceReserveLive", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    params = this.callback;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+    }
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramString = com.tencent.mm.plugin.finder.live.a.ufi;
+      paramString = this.userName;
+      params = this.dDJ;
+      if (this.dYx != 1) {
+        break label184;
+      }
+      bool1 = true;
+      com.tencent.mm.plugin.finder.live.a.q(paramString, params, bool1);
+      paramString = new hw();
+      paramString.dMx.dDJ = this.dDJ;
+      params = paramString.dMx;
+      if (this.dYx != 1) {
+        break label190;
+      }
+    }
+    label184:
+    label190:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      params.dCs = bool1;
+      EventCenter.instance.publish((IEvent)paramString);
+      AppMethodBeat.o(242336);
+      return;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(242335);
+    this.callback = parami;
+    parami = this.rr;
+    if (parami == null) {
+      p.btv("rr");
+    }
+    int i = dispatch(paramg, (s)parami, (m)this);
+    AppMethodBeat.o(242335);
     return i;
   }
   
   public final int getType()
   {
-    return 3528;
+    return 6276;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(201571);
-    ae.i(TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    if (this.callback != null)
-    {
-      paramq = this.callback;
-      if (paramq == null) {
-        p.gkB();
-      }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-    }
-    AppMethodBeat.o(201571);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetTagContact$Companion;", "", "()V", "GetTagContactScene_Not_Interesting", "", "getGetTagContactScene_Not_Interesting", "()I", "TAG", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneAudienceReserveLive$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:orientation="vertical" android:id="@id/h9a" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="240.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/h3" android:layout_marginRight="@dimen/ha">
-        <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/hc" android:src="@drawable/b5s" />
+    <View android:id="@id/bru" style="@style/ab" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:id="@id/tenpay_keyboard_1" android:background="@drawable/ec" android:text="1" style="@style/ad" />
+        <View android:id="@id/brz" style="@style/ac" />
+        <Button android:id="@id/tenpay_keyboard_2" android:background="@drawable/ec" android:text="2" style="@style/ad" />
+        <View android:id="@id/bs0" style="@style/ac" />
+        <Button android:id="@id/tenpay_keyboard_3" android:background="@drawable/ec" android:text="3" style="@style/ad" />
     </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/hd" android:layout_marginRight="@dimen/ha">
-        <TextView android:textSize="18.0dip" android:textColor="@color/y4" android:id="@id/vi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a77" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/vj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:text="@string/a78" />
+    <View android:id="@id/bs1" style="@style/ab" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:id="@id/tenpay_keyboard_4" android:background="@drawable/ec" android:text="4" style="@style/ad" />
+        <View android:id="@id/bs2" style="@style/ac" />
+        <Button android:id="@id/tenpay_keyboard_5" android:background="@drawable/ec" android:text="5" style="@style/ad" />
+        <View android:id="@id/bs3" style="@style/ac" />
+        <Button android:id="@id/tenpay_keyboard_6" android:background="@drawable/ec" android:text="6" style="@style/ad" />
     </LinearLayout>
-    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <View android:id="@id/bs4" style="@style/ab" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:id="@id/tenpay_keyboard_7" android:background="@drawable/ec" android:text="7" style="@style/ad" />
+        <View android:id="@id/bs5" style="@style/ac" />
+        <Button android:id="@id/tenpay_keyboard_8" android:background="@drawable/ec" android:text="8" style="@style/ad" />
+        <View android:id="@id/bs6" style="@style/ac" />
+        <Button android:id="@id/tenpay_keyboard_9" android:background="@drawable/ec" android:text="9" style="@style/ad" />
+    </LinearLayout>
+    <View android:id="@id/brv" style="@style/ab" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:textSize="26.0dip" android:id="@id/tenpay_keyboard_x" android:background="@drawable/ayt" android:text="" style="@style/ad" />
+        <View android:id="@id/brw" style="@style/ac" />
+        <Button android:id="@id/tenpay_keyboard_0" android:background="@drawable/ec" android:text="0" style="@style/ad" />
+        <View android:id="@id/brx" style="@style/ac" />
+        <ImageButton android:id="@id/tenpay_keyboard_d" android:background="@drawable/ayt" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/ayy" android:layout_weight="1.0" android:contentDescription="@string/etk" />
+    </LinearLayout>
+    <View android:id="@id/bry" style="@style/ab" />
 </LinearLayout>

@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public enum b
 {
-  public final int hSZ;
+  public final int iOo;
   
   static
   {
     AppMethodBeat.i(147177);
-    kZy = new b("RELEASE", 0, 0);
-    kZz = new b("DEVELOP", 1, 1);
-    kZA = new b("TRIAL", 2, 2);
-    kZB = new b[] { kZy, kZz, kZA };
+    meL = new b("RELEASE", 0, 0);
+    meM = new b("DEVELOP", 1, 1);
+    meN = new b("TRIAL", 2, 2);
+    meO = new b[] { meL, meM, meN };
     AppMethodBeat.o(147177);
   }
   
   private b(int paramInt)
   {
-    this.hSZ = paramInt;
+    this.iOo = paramInt;
   }
   
   public static b a(String paramString, b paramb)
   {
     AppMethodBeat.i(147175);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147175);
       return paramb;
@@ -47,7 +47,7 @@ public enum b
     return paramb;
   }
   
-  public static b tn(int paramInt)
+  public static b xj(int paramInt)
   {
     AppMethodBeat.i(147176);
     Object localObject = values();
@@ -56,21 +56,21 @@ public enum b
     while (i < j)
     {
       b localb = localObject[i];
-      if (localb.hSZ == paramInt)
+      if (localb.iOo == paramInt)
       {
         AppMethodBeat.o(147176);
         return localb;
       }
       i += 1;
     }
-    localObject = kZy;
+    localObject = meL;
     AppMethodBeat.o(147176);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.b
  * JD-Core Version:    0.7.0.1
  */

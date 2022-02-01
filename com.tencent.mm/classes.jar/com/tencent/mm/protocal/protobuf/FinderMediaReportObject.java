@@ -9,7 +9,7 @@ public class FinderMediaReportObject
   public int cdnControl;
   public int cdnUploadRetCode;
   public int cdnUploadTime;
-  public apo codecInfo;
+  public ayg codecInfo;
   public int isBigFile;
   public String mediaId;
   public int mediaType;
@@ -25,9 +25,9 @@ public class FinderMediaReportObject
   
   public FinderMediaReportObject()
   {
-    AppMethodBeat.i(189370);
+    AppMethodBeat.i(209587);
     this.multiMediaInfo = new LinkedList();
-    AppMethodBeat.o(189370);
+    AppMethodBeat.o(209587);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -35,62 +35,62 @@ public class FinderMediaReportObject
     AppMethodBeat.i(169008);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.remuxTime);
-      paramVarArgs.aS(2, this.remuxRetCode);
-      paramVarArgs.aS(3, this.cdnUploadTime);
-      paramVarArgs.aS(4, this.cdnUploadRetCode);
-      paramVarArgs.aS(5, this.zipTime);
-      paramVarArgs.aS(6, this.zipRetCode);
-      paramVarArgs.aS(7, this.mediaType);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.remuxTime);
+      paramVarArgs.aM(2, this.remuxRetCode);
+      paramVarArgs.aM(3, this.cdnUploadTime);
+      paramVarArgs.aM(4, this.cdnUploadRetCode);
+      paramVarArgs.aM(5, this.zipTime);
+      paramVarArgs.aM(6, this.zipRetCode);
+      paramVarArgs.aM(7, this.mediaType);
       if (this.mediaId != null) {
-        paramVarArgs.d(8, this.mediaId);
+        paramVarArgs.e(8, this.mediaId);
       }
       if (this.origin != null)
       {
-        paramVarArgs.lJ(9, this.origin.computeSize());
+        paramVarArgs.ni(9, this.origin.computeSize());
         this.origin.writeFields(paramVarArgs);
       }
       if (this.target != null)
       {
-        paramVarArgs.lJ(10, this.target.computeSize());
+        paramVarArgs.ni(10, this.target.computeSize());
         this.target.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(11, this.isBigFile);
-      paramVarArgs.aS(12, this.cdnControl);
-      paramVarArgs.aS(13, this.videoFinalSize);
+      paramVarArgs.aM(11, this.isBigFile);
+      paramVarArgs.aM(12, this.cdnControl);
+      paramVarArgs.aM(13, this.videoFinalSize);
       paramVarArgs.e(14, 8, this.multiMediaInfo);
       if (this.codecInfo != null)
       {
-        paramVarArgs.lJ(15, this.codecInfo.computeSize());
+        paramVarArgs.ni(15, this.codecInfo.computeSize());
         this.codecInfo.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(16, this.playDecoderType);
+      paramVarArgs.aM(16, this.playDecoderType);
       AppMethodBeat.o(169008);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bz(1, this.remuxTime) + 0 + f.a.a.b.b.a.bz(2, this.remuxRetCode) + f.a.a.b.b.a.bz(3, this.cdnUploadTime) + f.a.a.b.b.a.bz(4, this.cdnUploadRetCode) + f.a.a.b.b.a.bz(5, this.zipTime) + f.a.a.b.b.a.bz(6, this.zipRetCode) + f.a.a.b.b.a.bz(7, this.mediaType);
+      i = g.a.a.b.b.a.bu(1, this.remuxTime) + 0 + g.a.a.b.b.a.bu(2, this.remuxRetCode) + g.a.a.b.b.a.bu(3, this.cdnUploadTime) + g.a.a.b.b.a.bu(4, this.cdnUploadRetCode) + g.a.a.b.b.a.bu(5, this.zipTime) + g.a.a.b.b.a.bu(6, this.zipRetCode) + g.a.a.b.b.a.bu(7, this.mediaType);
       paramInt = i;
       if (this.mediaId != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.mediaId);
+        paramInt = i + g.a.a.b.b.a.f(8, this.mediaId);
       }
       i = paramInt;
       if (this.origin != null) {
-        i = paramInt + f.a.a.a.lI(9, this.origin.computeSize());
+        i = paramInt + g.a.a.a.nh(9, this.origin.computeSize());
       }
       paramInt = i;
       if (this.target != null) {
-        paramInt = i + f.a.a.a.lI(10, this.target.computeSize());
+        paramInt = i + g.a.a.a.nh(10, this.target.computeSize());
       }
-      i = paramInt + f.a.a.b.b.a.bz(11, this.isBigFile) + f.a.a.b.b.a.bz(12, this.cdnControl) + f.a.a.b.b.a.bz(13, this.videoFinalSize) + f.a.a.a.c(14, 8, this.multiMediaInfo);
+      i = paramInt + g.a.a.b.b.a.bu(11, this.isBigFile) + g.a.a.b.b.a.bu(12, this.cdnControl) + g.a.a.b.b.a.bu(13, this.videoFinalSize) + g.a.a.a.c(14, 8, this.multiMediaInfo);
       paramInt = i;
       if (this.codecInfo != null) {
-        paramInt = i + f.a.a.a.lI(15, this.codecInfo.computeSize());
+        paramInt = i + g.a.a.a.nh(15, this.codecInfo.computeSize());
       }
-      i = f.a.a.b.b.a.bz(16, this.playDecoderType);
+      i = g.a.a.b.b.a.bu(16, this.playDecoderType);
       AppMethodBeat.o(169008);
       return paramInt + i;
     }
@@ -98,10 +98,10 @@ public class FinderMediaReportObject
     {
       paramVarArgs = (byte[])paramVarArgs[0];
       this.multiMediaInfo.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(169008);
@@ -109,7 +109,7 @@ public class FinderMediaReportObject
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
       FinderMediaReportObject localFinderMediaReportObject = (FinderMediaReportObject)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       Object localObject2;
@@ -120,111 +120,111 @@ public class FinderMediaReportObject
         AppMethodBeat.o(169008);
         return -1;
       case 1: 
-        localFinderMediaReportObject.remuxTime = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.remuxTime = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 2: 
-        localFinderMediaReportObject.remuxRetCode = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.remuxRetCode = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 3: 
-        localFinderMediaReportObject.cdnUploadTime = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.cdnUploadTime = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 4: 
-        localFinderMediaReportObject.cdnUploadRetCode = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.cdnUploadRetCode = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 5: 
-        localFinderMediaReportObject.zipTime = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.zipTime = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 6: 
-        localFinderMediaReportObject.zipRetCode = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.zipRetCode = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 7: 
-        localFinderMediaReportObject.mediaType = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.mediaType = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 8: 
-        localFinderMediaReportObject.mediaId = ((f.a.a.a.a)localObject1).OmT.readString();
+        localFinderMediaReportObject.mediaId = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(169008);
         return 0;
       case 9: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new FinderMediaReportInfo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((FinderMediaReportInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((FinderMediaReportInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
           localFinderMediaReportObject.origin = ((FinderMediaReportInfo)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(169008);
         return 0;
       case 10: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new FinderMediaReportInfo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((FinderMediaReportInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((FinderMediaReportInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
           localFinderMediaReportObject.target = ((FinderMediaReportInfo)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(169008);
         return 0;
       case 11: 
-        localFinderMediaReportObject.isBigFile = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.isBigFile = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 12: 
-        localFinderMediaReportObject.cdnControl = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.cdnControl = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 13: 
-        localFinderMediaReportObject.videoFinalSize = ((f.a.a.a.a)localObject1).OmT.zc();
+        localFinderMediaReportObject.videoFinalSize = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(169008);
         return 0;
       case 14: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new FinderMediaReportInfo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((FinderMediaReportInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((FinderMediaReportInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
           localFinderMediaReportObject.multiMediaInfo.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(169008);
         return 0;
       case 15: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new apo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((apo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localFinderMediaReportObject.codecInfo = ((apo)localObject1);
+          localObject1 = new ayg();
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((ayg)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          localFinderMediaReportObject.codecInfo = ((ayg)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(169008);
         return 0;
       }
-      localFinderMediaReportObject.playDecoderType = ((f.a.a.a.a)localObject1).OmT.zc();
+      localFinderMediaReportObject.playDecoderType = ((g.a.a.a.a)localObject1).UbS.zi();
       AppMethodBeat.o(169008);
       return 0;
     }
@@ -234,7 +234,7 @@ public class FinderMediaReportObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderMediaReportObject
  * JD-Core Version:    0.7.0.1
  */

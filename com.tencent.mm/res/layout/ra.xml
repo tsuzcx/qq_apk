@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/gs"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ye">
-        <ImageView android:id="@id/d0u" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/hz" android:layout_height="@dimen/hz" android:layout_marginRight="@dimen/h" />
-        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/jn" android:singleLine="true" style="@style/yg" />
-        <TextView android:id="@id/g79" android:visibility="gone" android:text="@string/g4j" style="@style/yi" />
-        <ImageView android:id="@id/cpa" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afx" />
-        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-        <include android:gravity="center|right" layout="@layout/aox" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/ye">
-        <TextView android:id="@id/g2b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/yf" />
+    <include layout="@layout/qp" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gt">
+        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/auh" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom android:id="@id/aul" android:layout_marginLeft="@dimen/a20" android:layout_marginRight="@dimen/a20" style="@style/i2" />
+            <ProgressBar android:id="@id/aut" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:indeterminateDrawable="@drawable/ape" android:layout_centerInParent="true" />
+            <TextView android:textSize="@dimen/kl" android:textColor="@color/ag2" android:gravity="right" android:id="@id/ay8" android:background="@drawable/emoji_app_msg_mask" android:padding="@dimen/k_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="@color/kp" android:layout_alignLeft="@id/aul" android:layout_alignRight="@id/aul" android:layout_alignBottom="@id/aul" />
+            <ImageView android:id="@id/ayc" android:background="@null" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:src="@drawable/emoji_download_btn" android:layout_centerInParent="true" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

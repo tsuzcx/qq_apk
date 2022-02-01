@@ -80,12 +80,12 @@ public class LikeBoxCountView
   {
     AppMethodBeat.i(8104);
     setWillNotDraw(false);
-    this.caretHeight = getResources().getDimension(2131166055);
-    this.caretWidth = getResources().getDimension(2131166056);
-    this.borderRadius = getResources().getDimension(2131166053);
+    this.caretHeight = getResources().getDimension(2131166095);
+    this.caretWidth = getResources().getDimension(2131166096);
+    this.borderRadius = getResources().getDimension(2131166093);
     this.borderPaint = new Paint();
-    this.borderPaint.setColor(getResources().getColor(2131100175));
-    this.borderPaint.setStrokeWidth(getResources().getDimension(2131166054));
+    this.borderPaint.setColor(getResources().getColor(2131100208));
+    this.borderPaint.setStrokeWidth(getResources().getDimension(2131166094));
     this.borderPaint.setStyle(Paint.Style.STROKE);
     initializeLikeCountLabel(paramContext);
     addView(this.likeCountLabel);
@@ -100,10 +100,10 @@ public class LikeBoxCountView
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     this.likeCountLabel.setLayoutParams(paramContext);
     this.likeCountLabel.setGravity(17);
-    this.likeCountLabel.setTextSize(0, getResources().getDimension(2131166058));
-    this.likeCountLabel.setTextColor(getResources().getColor(2131100176));
-    this.textPadding = getResources().getDimensionPixelSize(2131166057);
-    this.additionalTextPadding = getResources().getDimensionPixelSize(2131166055);
+    this.likeCountLabel.setTextSize(0, getResources().getDimension(2131166098));
+    this.likeCountLabel.setTextColor(getResources().getColor(2131100209));
+    this.textPadding = getResources().getDimensionPixelSize(2131166097);
+    this.additionalTextPadding = getResources().getDimensionPixelSize(2131166095);
     AppMethodBeat.o(8105);
   }
   
@@ -191,7 +191,7 @@ public class LikeBoxCountView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.facebook.share.internal.LikeBoxCountView
  * JD-Core Version:    0.7.0.1
  */

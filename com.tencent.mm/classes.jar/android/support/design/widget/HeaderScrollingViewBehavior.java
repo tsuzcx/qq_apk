@@ -3,9 +3,9 @@ package android.support.design.widget;
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.v4.b.a;
-import android.support.v4.view.ab;
+import android.support.v4.view.ac;
 import android.support.v4.view.d;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -15,10 +15,10 @@ import java.util.List;
 abstract class HeaderScrollingViewBehavior
   extends ViewOffsetBehavior<View>
 {
-  final Rect sa = new Rect();
-  final Rect sc = new Rect();
-  int sd = 0;
-  int se;
+  final Rect se = new Rect();
+  final Rect sf = new Rect();
+  int sg = 0;
+  int sh;
   
   public HeaderScrollingViewBehavior() {}
   
@@ -32,13 +32,13 @@ abstract class HeaderScrollingViewBehavior
     int j = paramView.getLayoutParams().height;
     if ((j == -1) || (j == -2))
     {
-      View localView = e(paramCoordinatorLayout.s(paramView));
+      View localView = e(paramCoordinatorLayout.t(paramView));
       if (localView != null)
       {
-        if ((t.aq(localView)) && (!t.aq(paramView)))
+        if ((u.aq(localView)) && (!u.aq(paramView)))
         {
-          t.e(paramView, true);
-          if (t.aq(paramView))
+          u.e(paramView, true);
+          if (u.aq(paramView))
           {
             paramView.requestLayout();
             return true;
@@ -64,32 +64,32 @@ abstract class HeaderScrollingViewBehavior
   
   protected final void c(CoordinatorLayout paramCoordinatorLayout, View paramView, int paramInt)
   {
-    View localView = e(paramCoordinatorLayout.s(paramView));
+    View localView = e(paramCoordinatorLayout.t(paramView));
     if (localView != null)
     {
       CoordinatorLayout.d locald = (CoordinatorLayout.d)paramView.getLayoutParams();
-      Rect localRect = this.sa;
+      Rect localRect = this.se;
       localRect.set(paramCoordinatorLayout.getPaddingLeft() + locald.leftMargin, localView.getBottom() + locald.topMargin, paramCoordinatorLayout.getWidth() - paramCoordinatorLayout.getPaddingRight() - locald.rightMargin, paramCoordinatorLayout.getHeight() + localView.getBottom() - paramCoordinatorLayout.getPaddingBottom() - locald.bottomMargin);
-      ab localab = paramCoordinatorLayout.getLastWindowInsets();
-      if ((localab != null) && (t.aq(paramCoordinatorLayout)) && (!t.aq(paramView)))
+      ac localac = paramCoordinatorLayout.getLastWindowInsets();
+      if ((localac != null) && (u.aq(paramCoordinatorLayout)) && (!u.aq(paramView)))
       {
-        localRect.left += localab.getSystemWindowInsetLeft();
-        localRect.right -= localab.getSystemWindowInsetRight();
+        localRect.left += localac.getSystemWindowInsetLeft();
+        localRect.right -= localac.getSystemWindowInsetRight();
       }
-      paramCoordinatorLayout = this.sc;
+      paramCoordinatorLayout = this.sf;
       int j = locald.gravity;
       int i = j;
       if (j == 0) {
         i = 8388659;
       }
       d.apply(i, paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), localRect, paramCoordinatorLayout, paramInt);
-      paramInt = v(localView);
+      paramInt = w(localView);
       paramView.layout(paramCoordinatorLayout.left, paramCoordinatorLayout.top - paramInt, paramCoordinatorLayout.right, paramCoordinatorLayout.bottom - paramInt);
-      this.sd = (paramCoordinatorLayout.top - localView.getBottom());
+      this.sg = (paramCoordinatorLayout.top - localView.getBottom());
       return;
     }
     super.c(paramCoordinatorLayout, paramView, paramInt);
-    this.sd = 0;
+    this.sg = 0;
   }
   
   abstract View e(List<View> paramList);
@@ -104,12 +104,12 @@ abstract class HeaderScrollingViewBehavior
     return paramView.getMeasuredHeight();
   }
   
-  final int v(View paramView)
+  final int w(View paramView)
   {
-    if (this.se == 0) {
+    if (this.sh == 0) {
       return 0;
     }
-    return a.clamp((int)(h(paramView) * this.se), 0, this.se);
+    return a.clamp((int)(h(paramView) * this.sh), 0, this.sh);
   }
 }
 

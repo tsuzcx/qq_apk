@@ -42,7 +42,7 @@ public class TAVVideoCompositing
   
   public TAVVideoCompositing()
   {
-    AppMethodBeat.i(200944);
+    AppMethodBeat.i(197614);
     this.TAG = ("TAVVideoCompositing@" + Integer.toHexString(hashCode()));
     this.transitionFilterMap = new HashMap();
     this.sourceFilterMap = new HashMap();
@@ -50,15 +50,15 @@ public class TAVVideoCompositing
     this.globalFilterMap = new HashMap();
     this.defaultVideoMixFilter = new DefaultVideoMixFilter();
     this.tryPostReleaseDone = false;
-    AppMethodBeat.o(200944);
+    AppMethodBeat.o(197614);
   }
   
   private CIImage applyClipSourceEffect(RenderInfo paramRenderInfo, CIImage paramCIImage, List<TAVVideoEffect> paramList)
   {
-    AppMethodBeat.i(200953);
+    AppMethodBeat.i(197623);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(200953);
+      AppMethodBeat.o(197623);
       return paramCIImage;
     }
     paramList = paramList.iterator();
@@ -70,27 +70,27 @@ public class TAVVideoCompositing
         paramCIImage = localFilter.apply(localTAVVideoEffect, paramCIImage, paramRenderInfo);
       }
     }
-    AppMethodBeat.o(200953);
+    AppMethodBeat.o(197623);
     return paramCIImage;
   }
   
   private CIImage applyCompositionSourceEffect(RenderInfo paramRenderInfo, CIImage paramCIImage, TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(200954);
+    AppMethodBeat.i(197624);
     TAVVideoEffect.Filter localFilter = getSourceFilter(paramTAVVideoEffect);
     if (localFilter == null)
     {
-      AppMethodBeat.o(200954);
+      AppMethodBeat.o(197624);
       return paramCIImage;
     }
     paramRenderInfo = localFilter.apply(paramTAVVideoEffect, paramCIImage, paramRenderInfo);
-    AppMethodBeat.o(200954);
+    AppMethodBeat.o(197624);
     return paramRenderInfo;
   }
   
   private void applySourceTransform(TAVVideoConfiguration paramTAVVideoConfiguration, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    AppMethodBeat.i(200956);
+    AppMethodBeat.i(197626);
     Logger.v(this.TAG, "applySourceTransform() called with: config = [" + paramTAVVideoConfiguration + "]");
     if (paramTAVVideoConfiguration.frameEnable()) {
       paramCIImage.applyFillInFrame(paramTAVVideoConfiguration.getFrame(), paramTAVVideoConfiguration.getContentMode());
@@ -98,7 +98,7 @@ public class TAVVideoCompositing
     for (;;)
     {
       paramCIImage.safeApplyTransform(paramTAVVideoConfiguration.getTransform());
-      AppMethodBeat.o(200956);
+      AppMethodBeat.o(197626);
       return;
       if (paramTAVVideoConfiguration.getFrame() == TAVVideoConfiguration.FIX_RENDER_SIZE) {
         paramCIImage.applyFixInSize(paramRenderInfo.getRenderSize(), paramTAVVideoConfiguration.getContentMode());
@@ -108,10 +108,10 @@ public class TAVVideoCompositing
   
   private CIImage compositingImages(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest, TAVVideoCompositionInstruction paramTAVVideoCompositionInstruction)
   {
-    AppMethodBeat.i(200947);
+    AppMethodBeat.i(197617);
     if (this.ciContext == null)
     {
-      AppMethodBeat.o(200947);
+      AppMethodBeat.o(197617);
       return null;
     }
     Object localObject1 = this.sourceFilterMap.values().iterator();
@@ -137,17 +137,17 @@ public class TAVVideoCompositing
       if (localObject3 != null) {
         localObject1 = ((TAVVideoEffect.Filter)localObject3).apply(paramTAVVideoCompositionInstruction.getGlobalVideoEffect(), paramAsynchronousVideoCompositionRequest, (RenderInfo)localObject2);
       }
-      AppMethodBeat.o(200947);
+      AppMethodBeat.o(197617);
       return localObject1;
     }
   }
   
   private CIImage convertLayerToImage(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest, RenderInfo paramRenderInfo, TAVVideoCompositionLayerInstruction paramTAVVideoCompositionLayerInstruction, TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(200951);
+    AppMethodBeat.i(197621);
     if (!paramTAVVideoCompositionLayerInstruction.getTimeRange().containsTime(paramRenderInfo.getTime()))
     {
-      AppMethodBeat.o(200951);
+      AppMethodBeat.o(197621);
       return null;
     }
     CIImage localCIImage2 = paramTAVVideoCompositionLayerInstruction.getImageSource().sourceImageAtTime(paramRenderInfo.getTime().sub(paramTAVVideoCompositionLayerInstruction.getTimeRange().getStart()), paramRenderInfo.getRenderSize());
@@ -160,7 +160,7 @@ public class TAVVideoCompositing
     if (localCIImage1 == null)
     {
       Logger.w(this.TAG, "convertLayerToImage: begin sourceImage by request, sourceImage is null ");
-      AppMethodBeat.o(200951);
+      AppMethodBeat.o(197621);
       return null;
     }
     paramRenderInfo.addTrack(paramTAVVideoCompositionLayerInstruction.getImageSource());
@@ -168,13 +168,13 @@ public class TAVVideoCompositing
     applySourceTransform(paramTAVVideoCompositionLayerInstruction.getVideoConfiguration(), localCIImage1, paramRenderInfo);
     paramAsynchronousVideoCompositionRequest = applyCompositionSourceEffect(paramRenderInfo, applyClipSourceEffect(paramRenderInfo, localCIImage1, paramTAVVideoCompositionLayerInstruction.getVideoConfiguration().getEffects()), paramTAVVideoEffect);
     Logger.v(this.TAG, "convertLayerToImage: end, returned: ".concat(String.valueOf(paramAsynchronousVideoCompositionRequest)));
-    AppMethodBeat.o(200951);
+    AppMethodBeat.o(197621);
     return paramAsynchronousVideoCompositionRequest;
   }
   
   private ImageCollection convertToImageCollection(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest, RenderInfo paramRenderInfo, TAVVideoCompositionInstruction paramTAVVideoCompositionInstruction)
   {
-    AppMethodBeat.i(200948);
+    AppMethodBeat.i(197618);
     ImageCollection localImageCollection = new ImageCollection();
     Iterator localIterator = paramTAVVideoCompositionInstruction.getChannelLayers().iterator();
     Object localObject1;
@@ -201,16 +201,16 @@ public class TAVVideoCompositing
       }
     }
     Logger.v(this.TAG, "convertToImageCollection: result imageCollection = ".concat(String.valueOf(localImageCollection)));
-    AppMethodBeat.o(200948);
+    AppMethodBeat.o(197618);
     return localImageCollection;
   }
   
   private TAVVideoEffect.Filter getGlobalFilter(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(200950);
+    AppMethodBeat.i(197620);
     if ((paramTAVVideoEffect == null) || (TextUtils.isEmpty(paramTAVVideoEffect.effectId())))
     {
-      AppMethodBeat.o(200950);
+      AppMethodBeat.o(197620);
       return null;
     }
     String str = paramTAVVideoEffect.effectId();
@@ -219,7 +219,7 @@ public class TAVVideoCompositing
     }
     for (;;)
     {
-      AppMethodBeat.o(200950);
+      AppMethodBeat.o(197620);
       return paramTAVVideoEffect;
       paramTAVVideoEffect = paramTAVVideoEffect.createFilter();
       this.globalFilterMap.put(str, paramTAVVideoEffect);
@@ -228,24 +228,24 @@ public class TAVVideoCompositing
   
   private CIImage getImageWithRequest(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest, TAVVideoCompositionLayerInstruction paramTAVVideoCompositionLayerInstruction)
   {
-    AppMethodBeat.i(200952);
+    AppMethodBeat.i(197622);
     paramAsynchronousVideoCompositionRequest = paramAsynchronousVideoCompositionRequest.sourceFrameByTrackID(paramTAVVideoCompositionLayerInstruction.getTrackID());
     if ((paramAsynchronousVideoCompositionRequest != null) && (paramAsynchronousVideoCompositionRequest.getTextureInfo() != null))
     {
       paramAsynchronousVideoCompositionRequest = new CIImage(paramAsynchronousVideoCompositionRequest.getTextureInfo());
-      AppMethodBeat.o(200952);
+      AppMethodBeat.o(197622);
       return paramAsynchronousVideoCompositionRequest;
     }
-    AppMethodBeat.o(200952);
+    AppMethodBeat.o(197622);
     return null;
   }
   
   private TAVVideoEffect.Filter getSourceFilter(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(200955);
+    AppMethodBeat.i(197625);
     if ((paramTAVVideoEffect == null) || (TextUtils.isEmpty(paramTAVVideoEffect.effectId())))
     {
-      AppMethodBeat.o(200955);
+      AppMethodBeat.o(197625);
       return null;
     }
     String str = paramTAVVideoEffect.effectId();
@@ -254,7 +254,7 @@ public class TAVVideoCompositing
     }
     for (;;)
     {
-      AppMethodBeat.o(200955);
+      AppMethodBeat.o(197625);
       return paramTAVVideoEffect;
       paramTAVVideoEffect = paramTAVVideoEffect.createFilter();
       this.sourceFilterMap.put(str, paramTAVVideoEffect);
@@ -263,10 +263,10 @@ public class TAVVideoCompositing
   
   private TAVVideoMixEffect.Filter getVideoMixFilter(TAVVideoCompositionInstruction paramTAVVideoCompositionInstruction, TAVVideoMixEffect paramTAVVideoMixEffect)
   {
-    AppMethodBeat.i(200949);
+    AppMethodBeat.i(197619);
     if ((paramTAVVideoMixEffect == null) || (TextUtils.isEmpty(paramTAVVideoMixEffect.effectId())))
     {
-      AppMethodBeat.o(200949);
+      AppMethodBeat.o(197619);
       return null;
     }
     paramTAVVideoMixEffect = paramTAVVideoMixEffect.effectId();
@@ -275,7 +275,7 @@ public class TAVVideoCompositing
     }
     for (;;)
     {
-      AppMethodBeat.o(200949);
+      AppMethodBeat.o(197619);
       return paramTAVVideoCompositionInstruction;
       paramTAVVideoCompositionInstruction = paramTAVVideoCompositionInstruction.getVideoMixEffect().createFilter();
       this.mixFilterMap.put(paramTAVVideoMixEffect, paramTAVVideoCompositionInstruction);
@@ -284,10 +284,10 @@ public class TAVVideoCompositing
   
   private void reportMemory()
   {
-    AppMethodBeat.i(200946);
+    AppMethodBeat.i(197616);
     if (MemoryReportHelper.isInIntervalTime())
     {
-      AppMethodBeat.o(200946);
+      AppMethodBeat.o(197616);
       return;
     }
     String str1 = MemoryReportHelper.appendReportKey(this.sourceFilterMap.values());
@@ -295,15 +295,15 @@ public class TAVVideoCompositing
     String str3 = MemoryReportHelper.appendReportKey(this.globalFilterMap.values());
     str1 = "sourceFilter:[" + str1 + "], mixFilter:[" + str2 + "], globalFilter:[" + str3 + "]";
     MemoryReportHelper.getInstance().tick(str1);
-    AppMethodBeat.o(200946);
+    AppMethodBeat.o(197616);
   }
   
   private void tryPostReleaseToRenderThread()
   {
-    AppMethodBeat.i(200958);
+    AppMethodBeat.i(197628);
     if (this.tryPostReleaseDone)
     {
-      AppMethodBeat.o(200958);
+      AppMethodBeat.o(197628);
       return;
     }
     this.tryPostReleaseDone = true;
@@ -312,25 +312,25 @@ public class TAVVideoCompositing
       {
         public void run()
         {
-          AppMethodBeat.i(200943);
+          AppMethodBeat.i(197613);
           TAVVideoCompositing.this.release();
-          AppMethodBeat.o(200943);
+          AppMethodBeat.o(197613);
         }
       });
     }
-    AppMethodBeat.o(200958);
+    AppMethodBeat.o(197628);
   }
   
   public void cancelAllPendingVideoCompositionRequests() {}
   
   public void release()
   {
-    AppMethodBeat.i(200957);
+    AppMethodBeat.i(197627);
     if ((this.renderThread != null) && (!Thread.currentThread().equals(this.renderThread)))
     {
       Logger.e(this.TAG, "release: 当前线程非渲染线程！currentThread = " + Thread.currentThread().getName() + ", renderThread = " + this.renderThread.getName());
       tryPostReleaseToRenderThread();
-      AppMethodBeat.o(200957);
+      AppMethodBeat.o(197627);
       return;
     }
     this.tryPostReleaseDone = false;
@@ -365,7 +365,7 @@ public class TAVVideoCompositing
       this.reportSession = null;
     }
     Logger.d(this.TAG, "release: end, currentThread = " + Thread.currentThread().getName());
-    AppMethodBeat.o(200957);
+    AppMethodBeat.o(197627);
   }
   
   public void renderContextChanged(VideoCompositionRenderContext paramVideoCompositionRenderContext) {}
@@ -382,7 +382,7 @@ public class TAVVideoCompositing
   
   public void startVideoCompositionRequest(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest)
   {
-    AppMethodBeat.i(200945);
+    AppMethodBeat.i(197615);
     if (this.reportSession == null) {
       this.reportSession = new CompositingReportSession(paramAsynchronousVideoCompositionRequest.getRenderContext().getSize().width, paramAsynchronousVideoCompositionRequest.getRenderContext().getSize().height);
     }
@@ -400,7 +400,7 @@ public class TAVVideoCompositing
       Logger.e(this.TAG, "startVideoCompositionRequest: end, ".concat(String.valueOf("instruction not instanceof TAVVideoCompositionInstruction")));
       this.reportSession.tickFailed();
       paramAsynchronousVideoCompositionRequest.finishWithError(new ErrorMsg(10086, "instruction not instanceof TAVVideoCompositionInstruction"));
-      AppMethodBeat.o(200945);
+      AppMethodBeat.o(197615);
       return;
     }
     BenchUtil.benchStart("compositingImages");
@@ -418,7 +418,7 @@ public class TAVVideoCompositing
     for (;;)
     {
       BenchUtil.benchEnd("renderToSampleBuffer");
-      AppMethodBeat.o(200945);
+      AppMethodBeat.o(197615);
       return;
       Logger.e(this.TAG, "startVideoCompositionRequest: end, ".concat(String.valueOf("destImage is null ")));
       this.reportSession.tickFailed();
@@ -428,7 +428,7 @@ public class TAVVideoCompositing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.TAVVideoCompositing
  * JD-Core Version:    0.7.0.1
  */

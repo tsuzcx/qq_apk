@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.websearch.widget.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hj;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hv;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends hj
+  extends hv
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(116652);
-    c.a locala = new c.a();
-    locala.IBL = new Field[5];
-    locala.columns = new String[6];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[5];
+    localMAutoDBInfo.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appid";
-    locala.IBN.put("appid", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "appid";
+    localMAutoDBInfo.colsMap.put("appid", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appid TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "appid";
-    locala.columns[1] = "jsExceptionCount";
-    locala.IBN.put("jsExceptionCount", "INTEGER");
+    localMAutoDBInfo.primaryKey = "appid";
+    localMAutoDBInfo.columns[1] = "jsExceptionCount";
+    localMAutoDBInfo.colsMap.put("jsExceptionCount", "INTEGER");
     localStringBuilder.append(" jsExceptionCount INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "crashCount";
-    locala.IBN.put("crashCount", "INTEGER");
+    localMAutoDBInfo.columns[2] = "crashCount";
+    localMAutoDBInfo.colsMap.put("crashCount", "INTEGER");
     localStringBuilder.append(" crashCount INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "beginTimestamp";
-    locala.IBN.put("beginTimestamp", "LONG");
+    localMAutoDBInfo.columns[3] = "beginTimestamp";
+    localMAutoDBInfo.colsMap.put("beginTimestamp", "LONG");
     localStringBuilder.append(" beginTimestamp LONG");
     localStringBuilder.append(", ");
-    locala.columns[4] = "pkgVersion";
-    locala.IBN.put("pkgVersion", "INTEGER");
+    localMAutoDBInfo.columns[4] = "pkgVersion";
+    localMAutoDBInfo.colsMap.put("pkgVersion", "INTEGER");
     localStringBuilder.append(" pkgVersion INTEGER");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[5] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(116652);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

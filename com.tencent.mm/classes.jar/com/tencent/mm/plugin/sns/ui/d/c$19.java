@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.storage.x;
+import com.tencent.mm.plugin.sns.storage.y;
 import com.tencent.mm.pluginsdk.m;
 
 final class c$19
@@ -15,19 +15,19 @@ final class c$19
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(220115);
+    AppMethodBeat.i(203957);
     b localb = new b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     try
     {
-      int i = x.aBN((String)paramView.getTag());
+      int i = y.aQI((String)paramView.getTag());
       paramView = new Intent();
       paramView.putExtra("sns_label_sns_info", i);
-      com.tencent.mm.plugin.sns.c.a.iUz.u(paramView, this.AQE.activity);
+      com.tencent.mm.plugin.sns.c.a.jRt.t(paramView, this.Fbj.activity);
       label77:
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(220115);
+      AppMethodBeat.o(203957);
       return;
     }
     catch (Exception paramView)
@@ -38,7 +38,7 @@ final class c$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.d.c.19
  * JD-Core Version:    0.7.0.1
  */

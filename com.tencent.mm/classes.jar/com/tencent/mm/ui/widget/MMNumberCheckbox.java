@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMNumberCheckbox
   extends AppCompatCheckBox
 {
-  private int Hq;
+  private int HA;
   
   public MMNumberCheckbox(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,19 +22,19 @@ public class MMNumberCheckbox
   
   public int getNumber()
   {
-    return this.Hq;
+    return this.HA;
   }
   
   public void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(143377);
     super.setChecked(paramBoolean);
-    if ((paramBoolean) && (this.Hq > 0) && (!String.valueOf(this.Hq).contentEquals(getText()))) {
-      setText(String.valueOf(this.Hq));
+    if ((paramBoolean) && (this.HA > 0) && (!String.valueOf(this.HA).contentEquals(getText()))) {
+      setText(String.valueOf(this.HA));
     }
     if (!paramBoolean)
     {
-      this.Hq = 0;
+      this.HA = 0;
       setText("");
     }
     AppMethodBeat.o(143377);
@@ -43,9 +43,9 @@ public class MMNumberCheckbox
   public void setCheckedNumber(int paramInt)
   {
     AppMethodBeat.i(143378);
-    if ((paramInt > 0) && (paramInt != this.Hq))
+    if ((paramInt > 0) && (paramInt != this.HA))
     {
-      this.Hq = paramInt;
+      this.HA = paramInt;
       setText(String.valueOf(paramInt));
       setChecked(true);
     }
@@ -54,8 +54,8 @@ public class MMNumberCheckbox
   
   public void setNumber(int paramInt)
   {
-    if (this.Hq > 0) {
-      this.Hq = paramInt;
+    if (this.HA > 0) {
+      this.HA = paramInt;
     }
   }
 }

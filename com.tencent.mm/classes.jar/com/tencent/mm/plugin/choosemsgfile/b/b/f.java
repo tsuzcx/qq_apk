@@ -5,33 +5,33 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 import com.tencent.mm.plugin.choosemsgfile.b.d.c;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 
 public class f
   extends d
 {
-  private k.b oYH;
-  public String oYR;
-  private String oYS;
+  private k.b qnG;
+  public String qnQ;
+  private String qnR;
   
-  public f(g paramg, bv parambv, String paramString)
+  public f(g paramg, ca paramca, String paramString)
   {
-    super(paramg, parambv);
-    this.oYR = paramString;
+    super(paramg, paramca);
+    this.qnQ = paramString;
   }
   
-  private k.b caJ()
+  private k.b cyz()
   {
     AppMethodBeat.i(123267);
-    if (this.oYH == null) {
-      this.oYH = k.b.zb(this.oYw.field_content);
+    if (this.qnG == null) {
+      this.qnG = k.b.HD(this.qnv.field_content);
     }
-    k.b localb = this.oYH;
+    k.b localb = this.qnG;
     AppMethodBeat.o(123267);
     return localb;
   }
@@ -39,15 +39,15 @@ public class f
   public void a(View paramView, a parama)
   {
     AppMethodBeat.i(123272);
-    if ((!caB().tW(this.oYw.field_msgId)) && (!isInvalid()))
+    if ((!cys().Cb(this.qnv.field_msgId)) && (!isInvalid()))
     {
       if (isEnable())
       {
-        c.g(getContext(), this.oYw.field_msgId);
+        c.g(getContext(), this.qnv.field_msgId);
         AppMethodBeat.o(123272);
         return;
       }
-      c.Q(getContext(), caB().mMaxCount);
+      c.V(getContext(), cys().mMaxCount);
     }
     AppMethodBeat.o(123272);
   }
@@ -56,37 +56,24 @@ public class f
   {
     AppMethodBeat.i(162327);
     super.a(paramm, paramInt, parama);
-    paramm.oZf.setVisibility(0);
-    paramm.oZf.setText(getFileName());
-    paramm.oZg.setVisibility(0);
-    paramm.oZg.setText(bu.sL(caD()));
-    paramm = paramm.oZd;
-    if (this.oYS == null) {
-      this.oYS = c.aav(caC());
+    paramm.qod.setVisibility(0);
+    paramm.qod.setText(getFileName());
+    paramm.qoe.setVisibility(0);
+    paramm.qoe.setText(Util.getSizeKB(cyt()));
+    paramm = paramm.puw;
+    if (this.qnR == null) {
+      this.qnR = c.akB(getFileExt());
     }
-    paramm.setBackgroundColor(Color.parseColor(this.oYS));
+    paramm.setBackgroundColor(Color.parseColor(this.qnR));
     AppMethodBeat.o(162327);
   }
   
-  public String caC()
-  {
-    AppMethodBeat.i(123268);
-    if (caJ() != null)
-    {
-      String str = caJ().hCD;
-      AppMethodBeat.o(123268);
-      return str;
-    }
-    AppMethodBeat.o(123268);
-    return "";
-  }
-  
-  public int caD()
+  public int cyt()
   {
     AppMethodBeat.i(123270);
-    if (caJ() != null)
+    if (cyz() != null)
     {
-      int i = caJ().hCC;
+      int i = cyz().iwI;
       AppMethodBeat.o(123270);
       return i;
     }
@@ -94,12 +81,25 @@ public class f
     return 0;
   }
   
+  public String getFileExt()
+  {
+    AppMethodBeat.i(123268);
+    if (cyz() != null)
+    {
+      String str = cyz().iwJ;
+      AppMethodBeat.o(123268);
+      return str;
+    }
+    AppMethodBeat.o(123268);
+    return "";
+  }
+  
   public String getFileName()
   {
     AppMethodBeat.i(123269);
-    if (caJ() != null)
+    if (cyz() != null)
     {
-      String str = caJ().title;
+      String str = cyz().title;
       AppMethodBeat.o(123269);
       return str;
     }
@@ -114,7 +114,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import java.io.PrintWriter;
 
 public final class p
 {
-  private static final Object OX = new Object();
-  private static char[] OY = new char[24];
+  private static final Object Pj = new Object();
+  private static char[] Pk = new char[24];
   
   private static int a(char[] paramArrayOfChar, int paramInt1, char paramChar, int paramInt2, boolean paramBoolean)
   {
@@ -70,17 +70,17 @@ public final class p
     {
       int i;
       boolean bool1;
-      synchronized (OX)
+      synchronized (Pj)
       {
-        if (OY.length < 0) {
-          OY = new char[0];
+        if (Pk.length < 0) {
+          Pk = new char[0];
         }
-        char[] arrayOfChar = OY;
+        char[] arrayOfChar = Pk;
         if (paramLong != 0L) {
           break label301;
         }
         arrayOfChar[0] = '0';
-        paramPrintWriter.print(new String(OY, 0, j));
+        paramPrintWriter.print(new String(Pk, 0, j));
         return;
         int i1 = (int)(paramLong % 1000L);
         j = (int)Math.floor(paramLong / 1000L);
@@ -156,7 +156,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.e.p
  * JD-Core Version:    0.7.0.1
  */

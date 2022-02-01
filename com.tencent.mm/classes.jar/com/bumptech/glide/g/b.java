@@ -1,62 +1,71 @@
 package com.bumptech.glide.g;
 
-import com.bumptech.glide.c.h;
-import com.bumptech.glide.h.i;
+import android.support.v4.e.a;
+import android.support.v4.e.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.security.MessageDigest;
 
-public final class b
-  implements h
+public final class b<K, V>
+  extends a<K, V>
 {
-  private final Object object;
+  private int aHK;
   
-  public b(Object paramObject)
+  public final void a(n<? extends K, ? extends V> paramn)
   {
-    AppMethodBeat.i(77706);
-    this.object = i.checkNotNull(paramObject, "Argument must not be null");
-    AppMethodBeat.o(77706);
+    AppMethodBeat.i(77725);
+    this.aHK = 0;
+    super.a(paramn);
+    AppMethodBeat.o(77725);
   }
   
-  public final void a(MessageDigest paramMessageDigest)
+  public final void clear()
   {
-    AppMethodBeat.i(77710);
-    paramMessageDigest.update(this.object.toString().getBytes(aFf));
-    AppMethodBeat.o(77710);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(77708);
-    if ((paramObject instanceof b))
-    {
-      paramObject = (b)paramObject;
-      boolean bool = this.object.equals(paramObject.object);
-      AppMethodBeat.o(77708);
-      return bool;
-    }
-    AppMethodBeat.o(77708);
-    return false;
+    AppMethodBeat.i(77722);
+    this.aHK = 0;
+    super.clear();
+    AppMethodBeat.o(77722);
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(77709);
-    int i = this.object.hashCode();
-    AppMethodBeat.o(77709);
+    AppMethodBeat.i(77727);
+    if (this.aHK == 0) {
+      this.aHK = super.hashCode();
+    }
+    int i = this.aHK;
+    AppMethodBeat.o(77727);
     return i;
   }
   
-  public final String toString()
+  public final V put(K paramK, V paramV)
   {
-    AppMethodBeat.i(77707);
-    String str = "ObjectKey{object=" + this.object + '}';
-    AppMethodBeat.o(77707);
-    return str;
+    AppMethodBeat.i(77724);
+    this.aHK = 0;
+    paramK = super.put(paramK, paramV);
+    AppMethodBeat.o(77724);
+    return paramK;
+  }
+  
+  public final V removeAt(int paramInt)
+  {
+    AppMethodBeat.i(77726);
+    this.aHK = 0;
+    Object localObject = super.removeAt(paramInt);
+    AppMethodBeat.o(77726);
+    return localObject;
+  }
+  
+  public final V setValueAt(int paramInt, V paramV)
+  {
+    AppMethodBeat.i(77723);
+    this.aHK = 0;
+    paramV = super.setValueAt(paramInt, paramV);
+    AppMethodBeat.o(77723);
+    return paramV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.g.b
  * JD-Core Version:    0.7.0.1
  */

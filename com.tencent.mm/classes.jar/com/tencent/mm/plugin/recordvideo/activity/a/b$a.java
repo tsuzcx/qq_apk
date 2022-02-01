@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.recordvideo.activity.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
 import java.util.Collection;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIRouter$Companion;", "", "()V", "TAG", "", "autoRoute", "", "toWhere", "photoList", "", "videoList", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIRouter$Companion;", "", "()V", "TAG", "", "autoRoute", "", "toWhere", "photoList", "", "videoList", "plugin-recordvideo_release"})
 public final class b$a
 {
-  public static int d(int paramInt, List<String> paramList1, List<String> paramList2)
+  public static int c(int paramInt, List<String> paramList1, List<String> paramList2)
   {
     AppMethodBeat.i(75068);
     if (-1 == paramInt)
@@ -44,7 +44,7 @@ public final class b$a
         break;
         label86:
         if (paramList1 == null) {
-          p.gkB();
+          p.hyc();
         }
         paramInt = paramList1.size();
         break label39;
@@ -53,7 +53,7 @@ public final class b$a
         break label59;
         label108:
         if (paramList2 == null) {
-          p.gkB();
+          p.hyc();
         }
       }
       label125:

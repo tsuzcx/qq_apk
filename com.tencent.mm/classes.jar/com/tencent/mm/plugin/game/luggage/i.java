@@ -9,34 +9,34 @@ import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.q;
 import com.tencent.luggage.webview.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.f.f;
+import com.tencent.mm.plugin.game.luggage.g.h;
 import com.tencent.mm.plugin.webview.luggage.LuggageMMLocalResourceProvider;
 import com.tencent.mm.plugin.webview.luggage.e;
 import com.tencent.xweb.WebView;
 import org.json.JSONObject;
 
 public class i
-  extends f
+  extends h
 {
   public i(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(192986);
-    if (this.ufZ != null) {
-      this.ufZ.EVX = true;
+    AppMethodBeat.i(186846);
+    if (this.xyl != null) {
+      this.xyl.JLQ = true;
     }
-    AppMethodBeat.o(192986);
+    AppMethodBeat.o(186846);
   }
   
-  public final void Cn()
+  public final void LE()
   {
     AppMethodBeat.i(83028);
-    getWebCore().chO = new q()
+    getWebCore().ctJ = new q()
     {
-      public final String Cs()
+      public final String LJ()
       {
         AppMethodBeat.i(83025);
-        String str = com.tencent.mm.plugin.appbrand.y.d.VE("preload_game_adapter.js");
+        String str = com.tencent.mm.plugin.appbrand.ac.d.afA("preload_game_adapter.js");
         AppMethodBeat.o(83025);
         return str;
       }
@@ -46,14 +46,14 @@ public class i
         return null;
       }
       
-      public final void cE(String paramAnonymousString) {}
+      public final void cV(String paramAnonymousString) {}
       
-      public final void cF(String paramAnonymousString) {}
+      public final void cW(String paramAnonymousString) {}
     };
-    if (getWebCore().chR != null)
+    if (getWebCore().ctM != null)
     {
-      getWebCore().chR.a(new LuggageMMLocalResourceProvider());
-      getWebCore().chR.a(new e(com.tencent.mm.plugin.appbrand.y.d.VE("preload_game_adapter.js")));
+      getWebCore().ctM.a(new LuggageMMLocalResourceProvider());
+      getWebCore().ctM.a(new e(com.tencent.mm.plugin.appbrand.ac.d.afA("preload_game_adapter.js")));
     }
     AppMethodBeat.o(83028);
   }
@@ -72,13 +72,21 @@ public class i
     AppMethodBeat.o(83029);
   }
   
+  public void loadUrl(String paramString)
+  {
+    AppMethodBeat.i(186847);
+    super.loadUrl(paramString);
+    g.a(getWebCore(), paramString);
+    AppMethodBeat.o(186847);
+  }
+  
   public void onAttachedToWindow()
   {
     AppMethodBeat.i(83026);
     super.onAttachedToWindow();
     getWebCore().a(new com.tencent.luggage.d.d()
     {
-      public final JSONObject BP()
+      public final JSONObject Ld()
       {
         return null;
       }

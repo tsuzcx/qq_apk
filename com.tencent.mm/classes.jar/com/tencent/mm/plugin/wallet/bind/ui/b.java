@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.ao;
 
 public final class b
 {
-  public static boolean b(Bankcard paramBankcard)
+  public static boolean c(Bankcard paramBankcard)
   {
     AppMethodBeat.i(69076);
     if (paramBankcard == null)
@@ -17,8 +17,8 @@ public final class b
       AppMethodBeat.o(69076);
       return false;
     }
-    g.ajS();
-    Object localObject1 = (String)g.ajR().ajA().get(196659, null);
+    g.aAi();
+    Object localObject1 = (String)g.aAh().azQ().get(196659, null);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       AppMethodBeat.o(69076);
@@ -47,7 +47,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.b
  * JD-Core Version:    0.7.0.1
  */

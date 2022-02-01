@@ -8,21 +8,21 @@ import java.util.Map;
 
 public final class a
 {
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    AppMethodBeat.i(108272);
-    f.a(paramContext, 87, paramInt1, paramInt2, paramInt3, 0, paramString);
-    AppMethodBeat.o(108272);
+    AppMethodBeat.i(190325);
+    f.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    AppMethodBeat.o(190325);
   }
   
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
   {
-    AppMethodBeat.i(108273);
-    f.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramString1, 0, paramString2);
-    AppMethodBeat.o(108273);
+    AppMethodBeat.i(190326);
+    f.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramString1, paramInt4, paramString2);
+    AppMethodBeat.o(190326);
   }
   
-  public static String b(int paramInt, Map paramMap)
+  public static String c(int paramInt, Map paramMap)
   {
     AppMethodBeat.i(108271);
     Object localObject = paramMap;
@@ -34,7 +34,7 @@ public final class a
     }
     for (;;)
     {
-      paramMap = com.tencent.mm.game.report.e.a.s((Map)localObject);
+      paramMap = com.tencent.mm.game.report.e.a.u((Map)localObject);
       AppMethodBeat.o(108271);
       return paramMap;
       ((Map)localObject).put("ssid", Integer.valueOf(9));

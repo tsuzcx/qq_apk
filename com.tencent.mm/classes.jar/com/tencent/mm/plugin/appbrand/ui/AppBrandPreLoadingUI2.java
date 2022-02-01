@@ -1,13 +1,44 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import java.util.HashMap;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI2;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI;", "()V", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI2;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI;", "()V", "plugin-appbrand-integration_release"})
 public final class AppBrandPreLoadingUI2
   extends AppBrandPreLoadingUI
 {
+  private HashMap _$_findViewCache;
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(229497);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(229497);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(229496);
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    AppMethodBeat.o(229496);
+    return localView1;
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
@@ -16,7 +47,7 @@ public final class AppBrandPreLoadingUI2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandPreLoadingUI2
  * JD-Core Version:    0.7.0.1
  */

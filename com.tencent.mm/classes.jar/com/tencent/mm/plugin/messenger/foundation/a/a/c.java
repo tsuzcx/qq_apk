@@ -4,17 +4,17 @@ import java.util.Map;
 
 public abstract interface c
 {
+  public abstract long aEj(String paramString);
+  
+  public abstract long aEk(String paramString);
+  
   public abstract boolean aG(String paramString, long paramLong);
   
   public abstract boolean aH(String paramString, long paramLong);
   
-  public abstract long aqO(String paramString);
+  public abstract Map<String, Long> eiB();
   
-  public abstract long aqP(String paramString);
-  
-  public abstract Map<String, Long> doM();
-  
-  public abstract boolean doN();
+  public abstract boolean eiC();
 }
 
 

@@ -1,58 +1,63 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bir;
-import com.tencent.mm.protocal.protobuf.bis;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.audio.mix.i.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bus;
+import com.tencent.mm.protocal.protobuf.but;
 
 public final class p
   extends a
-  implements k
+  implements m
 {
-  private bis DSS;
-  private f callback;
-  private com.tencent.mm.ak.b hZD;
+  private v IDt;
+  private but IDu;
+  private i callback;
+  private d iUB;
   
-  public p(s params)
+  public p(v paramv)
   {
-    AppMethodBeat.i(188464);
-    bir localbir = new bir();
-    localbir.Scene = params.scene;
-    localbir.GWz = params.dmw;
-    localbir.GWA = ad.WL(0);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.WebSearch.NetSceneGetSearchResult", "create NetSceneGetSearchResult scene:%s requestKey:%s", new Object[] { Integer.valueOf(params.scene), params.dmw });
-    params = new b.a();
-    params.funcId = 1003;
-    params.uri = "/cgi-bin/mmsearch-bin/getsearchresult";
-    params.hQF = localbir;
-    params.hQG = new bis();
-    this.hZD = params.aDS();
-    AppMethodBeat.o(188464);
+    AppMethodBeat.i(187823);
+    this.IDt = paramv;
+    aWX(this.IDt.dPI);
+    bus localbus = new bus();
+    localbus.Scene = paramv.scene;
+    localbus.MaX = paramv.dDL;
+    localbus.MaY = ai.aft(0);
+    b.i("MicroMsg.WebSearch.NetSceneGetSearchResult", "create NetSceneGetSearchResult scene:%s requestKey:%s", new Object[] { Integer.valueOf(paramv.scene), paramv.dDL });
+    paramv = new d.a();
+    paramv.funcId = 1003;
+    paramv.uri = "/cgi-bin/mmsearch-bin/getsearchresult";
+    paramv.iLN = localbus;
+    paramv.iLO = new but();
+    this.iUB = paramv.aXF();
+    AppMethodBeat.o(187823);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(188465);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
-    AppMethodBeat.o(188465);
+    AppMethodBeat.i(187824);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
+    AppMethodBeat.o(187824);
     return i;
   }
   
-  public final String ePw()
+  public final String fXC()
   {
-    if (this.DSS != null) {
-      return this.DSS.GWB;
+    if (this.IDu != null) {
+      return this.IDu.MaZ;
     }
     return null;
   }
   
-  public final int ePx()
+  public final int fXD()
   {
     return 0;
   }
@@ -62,20 +67,20 @@ public final class p
     return 1003;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(188466);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.WebSearch.NetSceneGetSearchResult", "netId: %s errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(187825);
+    b.i("MicroMsg.WebSearch.NetSceneGetSearchResult", "netId: %s errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.DSS = ((bis)this.hZD.hQE.hQJ);
+      this.IDu = ((but)this.iUB.iLL.iLR);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(188466);
+    AppMethodBeat.o(187825);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.p
  * JD-Core Version:    0.7.0.1
  */

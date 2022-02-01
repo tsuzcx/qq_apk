@@ -2,43 +2,47 @@ package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.cm.g;
+import com.tencent.mm.co.f;
+import com.tencent.mm.co.g;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime.b;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainerWC;
 import com.tencent.mm.plugin.appbrand.appcache.AssetReader;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.jsapi.autofill.b.a.b;
 import com.tencent.mm.plugin.appbrand.jsapi.file.at;
-import com.tencent.mm.plugin.appbrand.k.b;
-import com.tencent.mm.plugin.appbrand.m.a.c;
+import com.tencent.mm.plugin.appbrand.p.a.c;
 import com.tencent.mm.plugin.appbrand.permission.a.b.b;
 import com.tencent.mm.plugin.appbrand.task.AppBrandRemoteTaskController;
-import com.tencent.mm.plugin.appbrand.task.e;
-import com.tencent.mm.plugin.appbrand.ui.w;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
+import com.tencent.mm.plugin.appbrand.ui.ab;
 import com.tencent.mm.plugin.appbrand.utils.aa;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.util.Iterator;
+import kotlin.g.b.p;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class l
-  extends com.tencent.mm.plugin.appbrand.p
+  extends com.tencent.mm.plugin.appbrand.q
 {
-  public volatile c lTa;
+  public volatile c naC;
+  private l.a naD;
   
   public l(AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
     super(paramAppBrandRuntimeContainerWC);
   }
   
-  public final com.tencent.mm.plugin.appbrand.m.a Fk()
+  public final com.tencent.mm.plugin.appbrand.p.a OR()
   {
     AppMethodBeat.i(47533);
     a.c localc = new a.c();
@@ -46,53 +50,93 @@ public class l
     return localc;
   }
   
-  public final w aWt()
+  public final void a(AppBrandInitConfig paramAppBrandInitConfig, Object paramObject)
+  {
+    AppMethodBeat.i(227147);
+    super.a(paramAppBrandInitConfig, paramObject);
+    if (this.naD != null) {
+      this.naD.c(paramAppBrandInitConfig, paramObject);
+    }
+    AppMethodBeat.o(227147);
+  }
+  
+  public final void a(l.a parama)
+  {
+    this.naD = parama;
+  }
+  
+  final void bOG()
+  {
+    AppMethodBeat.i(227145);
+    super.R(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(227144);
+        if ((this.val$context instanceof AppBrandPluginUI)) {
+          ((AppBrandPluginUI)this.val$context).finish();
+        }
+        AppMethodBeat.o(227144);
+      }
+    });
+    AppMethodBeat.o(227145);
+  }
+  
+  public final k bOH()
+  {
+    AppMethodBeat.i(227146);
+    k localk = (k)super.bsz();
+    AppMethodBeat.o(227146);
+    return localk;
+  }
+  
+  public final ab bro()
   {
     AppMethodBeat.i(47530);
-    h localh = new h(com.tencent.mm.sdk.f.a.jw(this.mContext));
+    h localh = new h(AndroidContextUtil.castActivityOrNull(this.mContext));
     AppMethodBeat.o(47530);
     return localh;
   }
   
-  public final b aXn()
+  public final com.tencent.mm.plugin.appbrand.k.b bsq()
   {
-    return b.krT;
+    return com.tencent.mm.plugin.appbrand.k.b.lvC;
   }
   
   @SuppressLint({"MissingSuperCall", "SourceLockedOrientationActivity"})
   public final void onCreate()
   {
     AppMethodBeat.i(47531);
-    aXt();
-    aXs();
-    com.tencent.mm.plugin.appbrand.report.quality.a.C(this);
-    b(b.b.class, i.lSW);
-    b(a.b.class, i.lSW);
+    bsy();
+    bsv();
+    com.tencent.mm.plugin.appbrand.report.quality.b.H(this);
+    b(b.b.class, i.nax);
+    b(a.b.class, i.nax);
     a(new AppBrandRuntime.b()
     {
       public final void prepare()
       {
         AppMethodBeat.i(47529);
-        g.fWL().h(new com.tencent.mm.vending.c.a()
+        g.hio().h(new com.tencent.mm.vending.c.a()
         {
-          private Void aZf()
+          private Void buw()
           {
             AppMethodBeat.i(47527);
             l.c(l.this);
             Object localObject2 = l.this;
-            Object localObject1 = ((com.tencent.mm.plugin.appbrand.p)localObject2).aXx();
-            if ((localObject1 == null) || (((AppBrandInitConfigWC)localObject1).cmx == null) || (((AppBrandInitConfigWC)localObject1).cmx.kbg != 7))
+            Object localObject1 = ((com.tencent.mm.plugin.appbrand.q)localObject2).bsC();
+            if ((localObject1 == null) || (((AppBrandInitConfigWC)localObject1).cys == null) || (((AppBrandInitConfigWC)localObject1).cys.leo != 7))
             {
-              ae.i("MicroMsg.OpenSdkJsApiProcessor", "initConfig is null or lanunchScene is err, return");
-              localObject1 = LEs;
+              Log.i("MicroMsg.OpenSdkJsApiProcessor", "initConfig is null or lanunchScene is err, return");
+              localObject1 = QZL;
               AppMethodBeat.o(47527);
               return localObject1;
             }
-            String str1 = aa.j((AppBrandInitConfigWC)localObject1);
-            ae.d("MicroMsg.OpenSdkJsApiProcessor", "openapiInvokeData:%s", new Object[] { str1 });
+            String str1 = aa.m((AppBrandInitConfigWC)localObject1);
+            Log.d("MicroMsg.OpenSdkJsApiProcessor", "openapiInvokeData:%s", new Object[] { str1 });
             JSONObject localJSONObject1;
             JSONObject localJSONObject2;
-            com.tencent.mm.plugin.appbrand.y.i locali;
+            com.tencent.mm.plugin.appbrand.ac.i locali;
             label149:
             String str2;
             do
@@ -101,8 +145,8 @@ public class l
               {
                 localJSONObject1 = new JSONObject(str1);
                 localJSONObject2 = new JSONObject(localJSONObject1.getString("args"));
-                locali = new com.tencent.mm.plugin.appbrand.y.i();
-                if (((com.tencent.mm.plugin.appbrand.p)localObject2).Fd().a(locali) != m.jPM) {
+                locali = new com.tencent.mm.plugin.appbrand.ac.i();
+                if (((com.tencent.mm.plugin.appbrand.q)localObject2).OK().a(locali) != m.kSu) {
                   break;
                 }
                 Iterator localIterator = localJSONObject2.keys();
@@ -113,15 +157,15 @@ public class l
                   }
                   str2 = (String)localIterator.next();
                   localObject3 = localJSONObject2.get(str2);
-                  if ((!(localObject3 instanceof String)) || (!aa.VP((String)localObject3))) {
+                  if ((!(localObject3 instanceof String)) || (!aa.afL((String)localObject3))) {
                     break;
                   }
-                  localJSONObject2.put(str2, aa.a((com.tencent.mm.plugin.appbrand.p)localObject2, (String)locali.value, (String)localObject3));
+                  localJSONObject2.put(str2, aa.a((com.tencent.mm.plugin.appbrand.q)localObject2, (String)locali.value, (String)localObject3));
                 }
               }
               catch (JSONException localJSONException)
               {
-                ae.m("MicroMsg.OpenSdkJsApiProcessor", "", new Object[] { localJSONException });
+                Log.printInfoStack("MicroMsg.OpenSdkJsApiProcessor", "", new Object[] { localJSONException });
               }
             } while (!(localObject3 instanceof JSONArray));
             Object localObject3 = (JSONArray)localObject3;
@@ -131,8 +175,8 @@ public class l
               if (i < ((JSONArray)localObject3).length())
               {
                 Object localObject4 = ((JSONArray)localObject3).get(i);
-                if (((localObject4 instanceof String)) && (aa.VP((String)localObject4))) {
-                  ((JSONArray)localObject3).put(aa.a((com.tencent.mm.plugin.appbrand.p)localObject2, (String)locali.value, (String)localObject4));
+                if (((localObject4 instanceof String)) && (aa.afL((String)localObject4))) {
+                  ((JSONArray)localObject3).put(aa.a((com.tencent.mm.plugin.appbrand.q)localObject2, (String)locali.value, (String)localObject4));
                 }
               }
               else
@@ -142,14 +186,14 @@ public class l
                 label340:
                 localJSONObject1.put("args", localJSONObject2.toString());
                 localObject2 = localJSONObject1.toString();
-                if (!TextUtils.isEmpty(localJSONException.kaN)) {
-                  localJSONException.kaN = ((String)localObject2);
+                if (!TextUtils.isEmpty(localJSONException.ldR)) {
+                  localJSONException.ldR = ((String)localObject2);
                 }
                 for (;;)
                 {
-                  ae.d("MicroMsg.OpenSdkJsApiProcessor", "transfer finish, openapiInvokeData:%s", new Object[] { str1 });
+                  Log.d("MicroMsg.OpenSdkJsApiProcessor", "transfer finish, openapiInvokeData:%s", new Object[] { str1 });
                   break;
-                  localJSONException.cmx.kbj = ((String)localObject2);
+                  localJSONException.cys.ler = ((String)localObject2);
                 }
               }
               i += 1;
@@ -159,13 +203,13 @@ public class l
         AppMethodBeat.o(47529);
       }
     });
-    a(AssetReader.jIn);
-    this.jCl.a(this.mAppId, aXx().dQv, e.h(aXx()));
-    com.tencent.mm.sdk.f.a.jw(this.mContext).setRequestedOrientation(1);
+    a(AssetReader.kKj);
+    this.kDi.N(this);
+    AndroidContextUtil.castActivityOrNull(this.mContext).setRequestedOrientation(1);
     com.tencent.mm.plugin.appbrand.media.a.a.onCreate(this.mAppId);
     com.tencent.mm.plugin.appbrand.media.record.c.onCreate();
-    com.tencent.mm.plugin.appbrand.jsapi.h5_interact.a.p(this);
-    com.tencent.mm.plugin.appbrand.backgroundfetch.i.p(this);
+    com.tencent.mm.plugin.appbrand.jsapi.h5_interact.a.s(this);
+    com.tencent.mm.plugin.appbrand.backgroundfetch.i.s(this);
     AppMethodBeat.o(47531);
   }
   
@@ -173,43 +217,35 @@ public class l
   public final void onReady()
   {
     AppMethodBeat.i(47532);
-    c localc = this.lTa;
-    String str = aa.j(aXx());
-    int i;
+    c localc = this.naC;
+    String str = aa.m(bsC());
+    boolean bool = aa.n(bsC());
+    p.h(str, "invokeData");
     o localo;
-    if (!TextUtils.isEmpty(aXx().kaN))
-    {
-      i = 1;
-      d.g.b.p.h(str, "invokeData");
-      if (localc.lSR.aXx().cmC == null) {
-        break label110;
-      }
-      localo = (o)new r(localc.lSR);
+    if (localc.nas.bsC().cyx != null) {
+      localo = (o)new r(localc.nas);
     }
     for (;;)
     {
-      localc.lSQ = localo;
-      localo = localc.lSQ;
+      localc.nar = localo;
+      localo = localc.nar;
       if (localo == null) {
-        d.g.b.p.bdF("invokeProcess");
+        p.btv("invokeProcess");
       }
-      localo.SN(str);
+      localo.acv(str);
       AppMethodBeat.o(47532);
       return;
-      i = 0;
-      break;
-      label110:
-      if (i != 0) {
-        localo = (o)new NewSDKInvokeProcess(localc.lSR);
+      if (bool) {
+        localo = (o)new NewSDKInvokeProcess(localc.nas);
       } else {
-        localo = (o)new q(localc.lSR);
+        localo = (o)new q(localc.nas);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.l
  * JD-Core Version:    0.7.0.1
  */

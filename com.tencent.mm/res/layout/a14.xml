@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/f9v" android:background="@color/a_r" android:padding="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ProgressBar android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:progressDrawable="@drawable/a7h" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:id="@id/ga6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bu1" />
-    </LinearLayout>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:background="@drawable/ss" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="160.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/bx9" android:background="@drawable/sx" android:layout_width="@dimen/cn" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/ce" android:src="@raw/icons_panel_close" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.view.TextColorSelector android:layout_gravity="center" android:id="@id/b80" android:layout_width="0.0dip" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/ci" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" app:layout_constraintEnd_toStartOf="@id/gu0" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/bx9" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/gu0" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_previous" android:layout_marginEnd="@dimen/cb" app:iconColor="@color/BW_BG_100" app:layout_constraintBottom_toBottomOf="@id/b80" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toEndOf="@id/b80" app:layout_constraintTop_toTopOf="@id/b80" />
+</android.support.constraint.ConstraintLayout>

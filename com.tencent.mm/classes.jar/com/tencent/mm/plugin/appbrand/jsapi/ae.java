@@ -1,15 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-abstract class ae
-  implements c.a
+public final class ae
 {
-  public final void PL(String paramString) {}
+  public String data;
+  public String event;
+  public int src;
   
-  public void proceed() {}
+  public ae(String paramString1, String paramString2, int paramInt)
+  {
+    this.event = paramString1;
+    this.data = paramString2;
+    this.src = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ae
  * JD-Core Version:    0.7.0.1
  */

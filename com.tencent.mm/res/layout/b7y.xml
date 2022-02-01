@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@id/d2o" android:background="@color/a3d" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/flh" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/fli" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="share to a friend" />
-    </LinearLayout>
-</ScrollView>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.constraint.Placeholder android:id="@id/gc8" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <android.support.constraint.Placeholder android:id="@id/gc9" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <android.support.constraint.Placeholder android:id="@id/gc5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/gc9" />
+    <android.support.constraint.Placeholder android:id="@id/gc6" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/gc9" app:layout_constraintRight_toRightOf="g8m" />
+    <android.support.constraint.Placeholder android:id="@id/gc7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/gc9" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:ellipsize="end" android:id="@id/bfe" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <TextView android:ellipsize="end" android:id="@id/bek" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <TextView android:id="@id/b5p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c2u" android:includeFontPadding="false" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/bfe" />
+    <ImageView android:id="@id/b5o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/bfe" />
+</merge>

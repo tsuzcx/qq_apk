@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.app.Activity;
-import com.tencent.mm.protocal.protobuf.bj;
+import com.tencent.mm.protocal.protobuf.bn;
 
 public abstract interface f
 {
   @Deprecated
-  public abstract void a(Activity paramActivity, bj parambj1, bj parambj2);
+  public abstract void a(Activity paramActivity, bn parambn1, bn parambn2);
   
-  public abstract void a(bj parambj1, bj parambj2);
+  public abstract void a(bn parambn1, bn parambn2);
   
-  public abstract void b(bj parambj1, bj parambj2);
+  public abstract void b(bn parambn1, bn parambn2);
   
-  public abstract void c(bj parambj1, bj parambj2);
+  public abstract void c(bn parambn1, bn parambn2);
   
-  public abstract void d(bj parambj1, bj parambj2);
+  public abstract void d(bn parambn1, bn parambn2);
 }
 
 

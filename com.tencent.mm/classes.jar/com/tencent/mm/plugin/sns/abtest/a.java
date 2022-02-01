@@ -8,65 +8,70 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ij;
+import com.tencent.mm.g.a.vl;
+import com.tencent.mm.model.a.c;
 import com.tencent.mm.model.a.e;
 import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
 import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.plugin.sns.ui.SnsNotInterestUI;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
+  private static boolean DqY;
+  private static String DqZ;
+  private static View.OnClickListener Dra;
+  private static int Drb;
+  private static int Drc;
+  private static long Drd;
+  private static View Dre;
+  private static b Drf;
+  private static NotInterestMenu.c Drg;
+  private static IListener Drh;
+  private static IListener Dri;
   private static Context context;
-  private static boolean zmg;
-  private static String zmh;
-  private static View.OnClickListener zmi;
-  private static int zmj;
-  private static int zmk;
-  private static long zml;
-  private static View zmm;
-  private static b zmn;
-  private static NotInterestMenu.c zmo;
-  private static com.tencent.mm.sdk.b.c zmp;
-  private static com.tencent.mm.sdk.b.c zmq;
   
   static
   {
     AppMethodBeat.i(94936);
-    zmg = false;
-    zmh = "0";
-    zmi = null;
-    zmj = -1;
-    zmk = -1;
-    zml = 0L;
-    zmm = null;
-    zmn = null;
-    zmo = null;
+    DqY = false;
+    DqZ = "0";
+    Dra = null;
+    Drb = -1;
+    Drc = -1;
+    Drd = 0L;
+    Dre = null;
+    Drf = null;
+    Drg = null;
     context = null;
-    zmp = new a.1();
-    zmq = new a.2();
+    Drh = new IListener() {};
+    Dri = new IListener() {};
     AppMethodBeat.o(94936);
   }
   
-  public static void a(Context paramContext, p paramp)
+  public static void a(Context paramContext, SnsInfo paramSnsInfo)
   {
     int i = 2;
     AppMethodBeat.i(94927);
     Intent localIntent;
-    if ((zmg) && (paramp != null) && (paramContext != null))
+    if ((DqY) && (paramSnsInfo != null) && (paramContext != null))
     {
-      zml = paramp.field_snsId;
-      a(paramp);
+      Drd = paramSnsInfo.field_snsId;
+      a(paramSnsInfo);
       localIntent = new Intent(paramContext, SnsNotInterestUI.class);
-      localIntent.putExtra("sns_info_svr_id", zml);
-      if ((!zmg) || (bu.isNullOrNil(zmh))) {
+      localIntent.putExtra("sns_info_svr_id", Drd);
+      if ((!DqY) || (Util.isNullOrNil(DqZ))) {
         break label210;
       }
-      if ((!zmh.equals("1")) && (!zmh.equals("2"))) {
+      if ((!DqZ.equals("1")) && (!DqZ.equals("2"))) {
         break label166;
       }
       i = 1;
@@ -74,20 +79,20 @@ public final class a
     for (;;)
     {
       localIntent.putExtra("sns_info_not_interest_scene", i);
-      paramp = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramp.ahE(), "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramp.mt(0));
+      paramSnsInfo = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramSnsInfo.axQ(), "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramSnsInfo.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(94927);
       return;
       label166:
-      if (zmh.equals("3"))
+      if (DqZ.equals("3"))
       {
-        if (r.n(paramp)) {
+        if (r.u(paramSnsInfo)) {
           i = 4;
-        } else if (paramp.field_type == 1) {
+        } else if (paramSnsInfo.field_type == 1) {
           i = 3;
-        } else if (paramp.field_type == 2) {}
+        } else if (paramSnsInfo.field_type == 2) {}
       }
       else {
         label210:
@@ -96,11 +101,11 @@ public final class a
     }
   }
   
-  public static void a(ContextMenu paramContextMenu, p paramp)
+  public static void a(ContextMenu paramContextMenu, SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(94928);
-    if ((zmg) && (zmh.equals("3")) && (paramp != null) && (!paramp.Rt(32)) && (!paramp.field_userName.equals(ah.dXj())) && (paramp.field_type != 15)) {
-      paramContextMenu.add(0, 13, 0, 2131763845);
+    if ((DqY) && (DqZ.equals("3")) && (paramSnsInfo != null) && (!paramSnsInfo.isAd()) && (!paramSnsInfo.getUserName().equals(aj.fau())) && (paramSnsInfo.field_type != 15)) {
+      paramContextMenu.add(0, 13, 0, 2131766071);
     }
     AppMethodBeat.o(94928);
   }
@@ -108,74 +113,74 @@ public final class a
   public static void a(View paramView, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(94929);
-    if ((zmg) && (!bu.isNullOrNil(zmh)) && (!zmh.equals("0")))
+    if ((DqY) && (!Util.isNullOrNil(DqZ)) && (!DqZ.equals("0")))
     {
-      paramBaseViewHolder.ANi = ((ImageView)paramView.findViewById(2131304979));
-      paramBaseViewHolder.ANi.setVisibility(8);
-      paramBaseViewHolder.ANj = false;
-      if (!zmh.equals("3")) {
-        paramBaseViewHolder.ANi.setOnClickListener(zmi);
+      paramBaseViewHolder.EXs = ((ImageView)paramView.findViewById(2131308128));
+      paramBaseViewHolder.EXs.setVisibility(8);
+      paramBaseViewHolder.EXt = false;
+      if (!DqZ.equals("3")) {
+        paramBaseViewHolder.EXs.setOnClickListener(Dra);
       }
     }
     AppMethodBeat.o(94929);
   }
   
-  private static void a(p paramp)
+  private static void a(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(94926);
-    boolean bool = zmh.equals("3");
-    if (paramp.field_type == 1)
+    boolean bool = DqZ.equals("3");
+    if (paramSnsInfo.field_type == 1)
     {
       if (bool)
       {
-        zmk = 5;
+        Drc = 5;
         AppMethodBeat.o(94926);
         return;
       }
-      zmk = 0;
+      Drc = 0;
       AppMethodBeat.o(94926);
       return;
     }
-    if (paramp.field_type == 2)
+    if (paramSnsInfo.field_type == 2)
     {
       if (bool)
       {
-        zmk = 4;
+        Drc = 4;
         AppMethodBeat.o(94926);
         return;
       }
-      zmk = 1;
+      Drc = 1;
       AppMethodBeat.o(94926);
       return;
     }
-    if (paramp.field_type == 15)
+    if (paramSnsInfo.field_type == 15)
     {
       if (!bool)
       {
-        zmk = 2;
+        Drc = 2;
         AppMethodBeat.o(94926);
       }
     }
-    else if (r.n(paramp))
+    else if (r.u(paramSnsInfo))
     {
       if (bool)
       {
-        zmk = 6;
+        Drc = 6;
         AppMethodBeat.o(94926);
         return;
       }
-      zmk = 3;
+      Drc = 3;
     }
     AppMethodBeat.o(94926);
   }
   
-  public static void b(p paramp)
+  public static void b(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(94930);
-    if (zmg)
+    if (DqY)
     {
-      zml = paramp.field_snsId;
-      a(paramp);
+      Drd = paramSnsInfo.field_snsId;
+      a(paramSnsInfo);
     }
     AppMethodBeat.o(94930);
   }
@@ -183,75 +188,75 @@ public final class a
   public static void clean()
   {
     AppMethodBeat.i(94931);
-    zmk = -1;
-    zmj = -1;
-    zml = 0L;
-    zmi = null;
-    zmo = null;
-    zmm = null;
+    Drc = -1;
+    Drb = -1;
+    Drd = 0L;
+    Dra = null;
+    Drg = null;
+    Dre = null;
     context = null;
-    zmg = false;
-    zmh = "0";
-    f.Cl("7");
-    com.tencent.mm.sdk.b.a.IvT.d(zmp);
-    com.tencent.mm.sdk.b.a.IvT.d(zmq);
+    DqY = false;
+    DqZ = "0";
+    f.KW("7");
+    EventCenter.instance.removeListener(Drh);
+    EventCenter.instance.removeListener(Dri);
     AppMethodBeat.o(94931);
   }
   
   public static void d(Context paramContext, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(94924);
-    if (g.aDh().Cg("7") != null)
+    if (g.aWT().KR("7") != null)
     {
-      zmg = true;
-      zmh = g.aDh().Cg("7").value;
-      ae.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { zmh });
-      zmm = paramViewGroup;
-      zmn = new b(paramViewGroup);
+      DqY = true;
+      DqZ = g.aWT().KR("7").value;
+      Log.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { DqZ });
+      Dre = paramViewGroup;
+      Drf = new b(paramViewGroup);
       context = paramContext;
-      com.tencent.mm.sdk.b.a.IvT.c(zmp);
-      com.tencent.mm.sdk.b.a.IvT.c(zmq);
-      zmi = new a.3();
-      zmo = new NotInterestMenu.c()
+      EventCenter.instance.addListener(Drh);
+      EventCenter.instance.addListener(Dri);
+      Dra = new a.3();
+      Drg = new NotInterestMenu.c()
       {
-        public final void c(p paramAnonymousp)
+        public final void c(SnsInfo paramAnonymousSnsInfo)
         {
           AppMethodBeat.i(94921);
-          a.a(a.dUv(), paramAnonymousp);
+          a.a(a.eWv(), paramAnonymousSnsInfo);
           AppMethodBeat.o(94921);
         }
         
-        public final void d(p paramAnonymousp)
+        public final void d(SnsInfo paramAnonymousSnsInfo)
         {
           AppMethodBeat.i(94922);
-          a.b(a.dUv(), paramAnonymousp);
+          a.b(a.eWv(), paramAnonymousSnsInfo);
           AppMethodBeat.o(94922);
         }
         
-        public final void e(p paramAnonymousp)
+        public final void e(SnsInfo paramAnonymousSnsInfo)
         {
           AppMethodBeat.i(94923);
-          a.c(a.dUv(), paramAnonymousp);
+          a.c(a.eWv(), paramAnonymousSnsInfo);
           AppMethodBeat.o(94923);
         }
       };
-      zmn.zmt = zmo;
+      Drf.Drl = Drg;
     }
     AppMethodBeat.o(94924);
   }
   
-  public static void dUu()
+  public static void eWu()
   {
     AppMethodBeat.i(94925);
-    if (zmn != null) {
-      zmn.dUy();
+    if (Drf != null) {
+      Drf.eWy();
     }
     AppMethodBeat.o(94925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class na
-  extends b
+  extends IEvent
 {
-  public a dBZ;
+  public a dSK;
   
   public na()
   {
@@ -17,24 +15,23 @@ public final class na
   
   private na(byte paramByte)
   {
-    AppMethodBeat.i(89647);
-    this.dBZ = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(43442);
+    this.dSK = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(89647);
+    AppMethodBeat.o(43442);
   }
   
   public static final class a
   {
-    public Context context;
-    public String group;
-    public Intent intent;
-    public int type = 0;
+    public String businessType;
+    public String dSJ;
+    public int errCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.na
  * JD-Core Version:    0.7.0.1
  */

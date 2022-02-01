@@ -1,176 +1,176 @@
 package com.tencent.mm.ui.chatting.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.chatting.d.b.j;
-import com.tencent.mm.ui.l;
+import com.tencent.mm.ui.m;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public final class k
-  implements j, l
+  implements j, m
 {
-  private HashSet<l> KcA;
+  private HashSet<m> PnY;
   
   public k()
   {
     AppMethodBeat.i(35179);
-    this.KcA = new HashSet();
+    this.PnY = new HashSet();
     AppMethodBeat.o(35179);
   }
   
-  public final void a(l paraml)
+  public final void a(m paramm)
   {
     AppMethodBeat.i(35180);
-    if (!this.KcA.contains(paraml)) {
-      this.KcA.add(paraml);
+    if (!this.PnY.contains(paramm)) {
+      this.PnY.add(paramm);
     }
     AppMethodBeat.o(35180);
   }
   
-  public final void b(l paraml)
+  public final void b(m paramm)
   {
     AppMethodBeat.i(35181);
-    this.KcA.remove(paraml);
+    this.PnY.remove(paramm);
     AppMethodBeat.o(35181);
   }
   
-  public final void fAs()
-  {
-    AppMethodBeat.i(35182);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.KcA).iterator();
-    while (localIterator.hasNext())
-    {
-      l locall = (l)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      locall.fAs();
-      long l3 = System.currentTimeMillis();
-      if (ae.getLogLevel() == 0) {
-        ae.v("MicroMsg.ChattingLifecycleObserver", "[onChattingInit] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
-    }
-    ae.i("MicroMsg.ChattingLifecycleObserver", "[onChattingInit]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35182);
-  }
-  
-  public final void fAt()
-  {
-    AppMethodBeat.i(35183);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.KcA).iterator();
-    while (localIterator.hasNext())
-    {
-      l locall = (l)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      locall.fAt();
-      long l3 = System.currentTimeMillis();
-      if (ae.getLogLevel() == 0) {
-        ae.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
-    }
-    ae.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35183);
-  }
-  
-  public final void fAu()
-  {
-    AppMethodBeat.i(35184);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.KcA).iterator();
-    while (localIterator.hasNext())
-    {
-      l locall = (l)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      locall.fAu();
-      long l3 = System.currentTimeMillis();
-      if (ae.getLogLevel() == 0) {
-        ae.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
-    }
-    ae.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35184);
-  }
-  
-  public final void fAv()
+  public final void cFx()
   {
     AppMethodBeat.i(35185);
     long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.KcA).iterator();
+    Iterator localIterator = new HashSet(this.PnY).iterator();
     while (localIterator.hasNext())
     {
-      l locall = (l)localIterator.next();
+      m localm = (m)localIterator.next();
       long l2 = System.currentTimeMillis();
-      locall.fAv();
+      localm.cFx();
       long l3 = System.currentTimeMillis();
-      if (ae.getLogLevel() == 0) {
-        ae.v("MicroMsg.ChattingLifecycleObserver", "[onChattingResume] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      if (Log.getLogLevel() == 0) {
+        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingResume] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
       }
     }
-    ae.i("MicroMsg.ChattingLifecycleObserver", "[onChattingResume]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingResume]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     AppMethodBeat.o(35185);
   }
   
-  public final void fAw()
+  public final void cFy()
   {
     AppMethodBeat.i(35186);
     long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.KcA).iterator();
+    Iterator localIterator = new HashSet(this.PnY).iterator();
     while (localIterator.hasNext())
     {
-      l locall = (l)localIterator.next();
+      m localm = (m)localIterator.next();
       long l2 = System.currentTimeMillis();
-      locall.fAw();
+      localm.cFy();
       long l3 = System.currentTimeMillis();
-      if (ae.getLogLevel() == 0) {
-        ae.v("MicroMsg.ChattingLifecycleObserver", "[onChattingPause] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      if (Log.getLogLevel() == 0) {
+        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingPause] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
       }
     }
-    ae.i("MicroMsg.ChattingLifecycleObserver", "[onChattingPause]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingPause]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     AppMethodBeat.o(35186);
   }
   
-  public final void fAx()
+  public final void gIk()
+  {
+    AppMethodBeat.i(35182);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.PnY).iterator();
+    while (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      localm.gIk();
+      long l3 = System.currentTimeMillis();
+      if (Log.getLogLevel() == 0) {
+        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingInit] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
+    }
+    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingInit]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35182);
+  }
+  
+  public final void gIl()
+  {
+    AppMethodBeat.i(35183);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.PnY).iterator();
+    while (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      localm.gIl();
+      long l3 = System.currentTimeMillis();
+      if (Log.getLogLevel() == 0) {
+        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
+    }
+    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35183);
+  }
+  
+  public final void gIm()
+  {
+    AppMethodBeat.i(35184);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.PnY).iterator();
+    while (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      localm.gIm();
+      long l3 = System.currentTimeMillis();
+      if (Log.getLogLevel() == 0) {
+        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
+    }
+    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35184);
+  }
+  
+  public final void gIn()
   {
     AppMethodBeat.i(35187);
     long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.KcA).iterator();
+    Iterator localIterator = new HashSet(this.PnY).iterator();
     while (localIterator.hasNext())
     {
-      l locall = (l)localIterator.next();
+      m localm = (m)localIterator.next();
       long l2 = System.currentTimeMillis();
-      locall.fAx();
+      localm.gIn();
       long l3 = System.currentTimeMillis();
-      if (ae.getLogLevel() == 0) {
-        ae.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      if (Log.getLogLevel() == 0) {
+        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
       }
     }
-    ae.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     AppMethodBeat.o(35187);
   }
   
-  public final void fAy()
+  public final void gIo()
   {
     AppMethodBeat.i(35188);
     long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.KcA).iterator();
+    Iterator localIterator = new HashSet(this.PnY).iterator();
     while (localIterator.hasNext())
     {
-      l locall = (l)localIterator.next();
+      m localm = (m)localIterator.next();
       long l2 = System.currentTimeMillis();
-      locall.fAy();
+      localm.gIo();
       long l3 = System.currentTimeMillis();
-      if (ae.getLogLevel() == 0) {
-        ae.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      if (Log.getLogLevel() == 0) {
+        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
       }
     }
-    ae.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     AppMethodBeat.o(35188);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.k
  * JD-Core Version:    0.7.0.1
  */

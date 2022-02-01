@@ -5,7 +5,7 @@ import com.tencent.kinda.gen.KJSEvent;
 import com.tencent.kinda.gen.KindaJSEventType;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
 import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
@@ -45,9 +45,9 @@ public class KindaJSEvent
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("key_jsapi_close_page_after_pay", i);
-      ae.i("MicroMsg.KindaJSEvent", "[kindaCloseWebViewImpl] The data from JsApiPayUseCase: isCloseWebView: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      Log.i("MicroMsg.KindaJSEvent", "[kindaCloseWebViewImpl] The data from JsApiPayUseCase: isCloseWebView: %b", new Object[] { Boolean.valueOf(paramBoolean) });
       if (this.mIMMOnActivityResult != null) {
-        this.mIMMOnActivityResult.c(this.mRequestCode, this.mResultCode, localIntent);
+        this.mIMMOnActivityResult.d(this.mRequestCode, this.mResultCode, localIntent);
       }
       if (paramVoidCallback != null) {
         paramVoidCallback.call();
@@ -79,7 +79,7 @@ public class KindaJSEvent
     }
     for (paramHashMap = (HashMap<String, String>)localObject;; paramHashMap = (HashMap<String, String>)localObject)
     {
-      ae.i("MicroMsg.KindaJSEvent", "[kindaEndWithResult] The data from JsApiPayUseCase: result: %s, pay_status(isClearFailure): %d, err_code: %s, err_desc: %s", new Object[] { paramString, Integer.valueOf(i), paramHashMap, str });
+      Log.i("MicroMsg.KindaJSEvent", "[kindaEndWithResult] The data from JsApiPayUseCase: result: %s, pay_status(isClearFailure): %d, err_code: %s, err_desc: %s", new Object[] { paramString, Integer.valueOf(i), paramHashMap, str });
       localObject = new Intent();
       this.mResultCode = 0;
       if (paramString.endsWith("ok"))
@@ -90,7 +90,7 @@ public class KindaJSEvent
       for (;;)
       {
         if (this.mIMMOnActivityResult != null) {
-          this.mIMMOnActivityResult.c(this.mRequestCode, this.mResultCode, (Intent)localObject);
+          this.mIMMOnActivityResult.d(this.mRequestCode, this.mResultCode, (Intent)localObject);
         }
         AppMethodBeat.o(170114);
         return;
@@ -116,15 +116,15 @@ public class KindaJSEvent
   
   public KindaJSEventType kindaGetType()
   {
-    AppMethodBeat.i(193160);
+    AppMethodBeat.i(214451);
     if (this.mDelegate != null)
     {
       localKindaJSEventType = this.mDelegate.kindaGetType();
-      AppMethodBeat.o(193160);
+      AppMethodBeat.o(214451);
       return localKindaJSEventType;
     }
     KindaJSEventType localKindaJSEventType = this.mEventType;
-    AppMethodBeat.o(193160);
+    AppMethodBeat.o(214451);
     return localKindaJSEventType;
   }
   
@@ -154,7 +154,7 @@ public class KindaJSEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaJSEvent
  * JD-Core Version:    0.7.0.1
  */

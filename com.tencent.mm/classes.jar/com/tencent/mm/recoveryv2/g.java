@@ -16,17 +16,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract interface g
 {
-  public abstract g aQY(String paramString);
+  public abstract g bT(String paramString, long paramLong);
   
-  public abstract g bS(String paramString, long paramLong);
+  public abstract g bhB(String paramString);
   
-  public abstract g cJ(String paramString, boolean paramBoolean);
+  public abstract g de(String paramString, boolean paramBoolean);
   
-  public abstract g fkT();
-  
-  public abstract g fkU();
-  
-  public abstract g fkV();
+  public abstract g gL(String paramString, int paramInt);
   
   public abstract boolean getBoolean(String paramString, boolean paramBoolean);
   
@@ -36,40 +32,64 @@ public abstract interface g
   
   public abstract String getString(String paramString1, String paramString2);
   
-  public abstract g gn(String paramString, int paramInt);
+  public abstract g guE();
   
-  public abstract g lM(String paramString1, String paramString2);
+  public abstract g guF();
+  
+  public abstract g guG();
+  
+  public abstract g mK(String paramString1, String paramString2);
   
   public static final class a
     implements g
   {
-    final File Ioh;
-    final File Ioi;
-    private final AtomicBoolean Ioj;
+    final File NBF;
+    final File NBG;
+    private final AtomicBoolean NBH;
     private final Bundle mExtras;
     
     public a(Context paramContext, String paramString)
     {
-      this(new File(l.ib(paramContext), paramString));
-      AppMethodBeat.i(195296);
-      AppMethodBeat.o(195296);
+      this(new File(l.iU(paramContext), paramString));
+      AppMethodBeat.i(193784);
+      AppMethodBeat.o(193784);
     }
     
     private a(File paramFile)
     {
-      AppMethodBeat.i(195297);
+      AppMethodBeat.i(193785);
       this.mExtras = new Bundle();
-      this.Ioj = new AtomicBoolean();
-      this.Ioh = paramFile;
-      this.Ioi = new File(this.Ioh, "fast_persist_data");
-      AppMethodBeat.o(195297);
+      this.NBH = new AtomicBoolean();
+      this.NBF = paramFile;
+      this.NBG = new File(this.NBF, "fast_persist_data");
+      AppMethodBeat.o(193785);
     }
     
-    private Pair<String, File> aQZ(String paramString)
+    private void aTL()
     {
-      AppMethodBeat.i(195301);
+      AppMethodBeat.i(193788);
+      if (!this.NBH.get())
+      {
+        IllegalStateException localIllegalStateException = new IllegalStateException("Persis#load() has not yet been called");
+        AppMethodBeat.o(193788);
+        throw localIllegalStateException;
+      }
+      AppMethodBeat.o(193788);
+    }
+    
+    private a bU(String paramString, long paramLong)
+    {
+      AppMethodBeat.i(193793);
+      this.mExtras.putLong(paramString, paramLong);
+      AppMethodBeat.o(193793);
+      return this;
+    }
+    
+    private Pair<String, File> bhC(String paramString)
+    {
+      AppMethodBeat.i(193789);
       Object localObject1 = new ArrayList();
-      File[] arrayOfFile = l.b.O(this.Ioi);
+      File[] arrayOfFile = l.b.P(this.NBG);
       int j = arrayOfFile.length;
       int i = 0;
       while (i < j)
@@ -88,21 +108,21 @@ public abstract interface g
                 localObject3 = new Pair(((String)localObject3).substring(((String)localObject3).indexOf("__VALUE__") + 9), localObject2);
                 paramString = ((List)localObject1).iterator();
                 while (paramString.hasNext()) {
-                  l.b.L((File)paramString.next());
+                  l.b.M((File)paramString.next());
                 }
-                AppMethodBeat.o(195301);
+                AppMethodBeat.o(193789);
                 return localObject3;
               }
               localObject2 = ((List)localObject1).iterator();
               while (((Iterator)localObject2).hasNext()) {
-                l.b.L((File)((Iterator)localObject2).next());
+                l.b.M((File)((Iterator)localObject2).next());
               }
             }
             ((List)localObject1).add(localObject2);
           }
           localObject2 = ((List)localObject1).iterator();
           while (((Iterator)localObject2).hasNext()) {
-            l.b.L((File)((Iterator)localObject2).next());
+            l.b.M((File)((Iterator)localObject2).next());
           }
           i += 1;
         }
@@ -112,52 +132,32 @@ public abstract interface g
           ((List)localObject1).add(localObject2);
           localObject2 = ((List)localObject1).iterator();
           while (((Iterator)localObject2).hasNext()) {
-            l.b.L((File)((Iterator)localObject2).next());
+            l.b.M((File)((Iterator)localObject2).next());
           }
         }
         finally
         {
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext()) {
-            l.b.L((File)((Iterator)localObject1).next());
+            l.b.M((File)((Iterator)localObject1).next());
           }
-          AppMethodBeat.o(195301);
+          AppMethodBeat.o(193789);
         }
       }
-      AppMethodBeat.o(195301);
+      AppMethodBeat.o(193789);
       return null;
     }
     
-    private a bT(String paramString, long paramLong)
+    private a guH()
     {
-      AppMethodBeat.i(195305);
-      this.mExtras.putLong(paramString, paramLong);
-      AppMethodBeat.o(195305);
-      return this;
-    }
-    
-    private void ewL()
-    {
-      AppMethodBeat.i(195300);
-      if (!this.Ioj.get())
-      {
-        IllegalStateException localIllegalStateException = new IllegalStateException("Persis#load() has not yet been called");
-        AppMethodBeat.o(195300);
-        throw localIllegalStateException;
-      }
-      AppMethodBeat.o(195300);
-    }
-    
-    private a fkW()
-    {
-      AppMethodBeat.i(195298);
+      AppMethodBeat.i(193786);
       try
       {
-        Object localObject = this.Ioi;
+        Object localObject = this.NBG;
         if (localObject == null)
         {
           localObject = new IOException("Dir is null.");
-          AppMethodBeat.o(195298);
+          AppMethodBeat.o(193786);
           throw ((Throwable)localObject);
         }
       }
@@ -167,18 +167,18 @@ public abstract interface g
       }
       for (;;)
       {
-        this.Ioj.set(true);
-        AppMethodBeat.o(195298);
+        this.NBH.set(true);
+        AppMethodBeat.o(193786);
         return this;
         IOException localIOException;
         if (localThrowable.exists())
         {
           if (!localThrowable.isDirectory())
           {
-            if (!l.b.L(localThrowable))
+            if (!l.b.M(localThrowable))
             {
               localIOException = new IOException("Fail to delete existing file, file = " + localThrowable.getAbsolutePath());
-              AppMethodBeat.o(195298);
+              AppMethodBeat.o(193786);
               throw localIOException;
             }
             localIOException.mkdir();
@@ -188,7 +188,7 @@ public abstract interface g
           while ((!localIOException.exists()) || (!localIOException.isDirectory()))
           {
             localIOException = new IOException("Fail to create dir, dir = " + localIOException.getAbsolutePath());
-            AppMethodBeat.o(195298);
+            AppMethodBeat.o(193786);
             throw localIOException;
             localIOException.mkdirs();
           }
@@ -196,10 +196,10 @@ public abstract interface g
       }
     }
     
-    private a fkX()
+    private a guI()
     {
-      AppMethodBeat.i(195299);
-      ewL();
+      AppMethodBeat.i(193787);
+      aTL();
       Iterator localIterator = this.mExtras.keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -207,13 +207,13 @@ public abstract interface g
         Object localObject = this.mExtras.get(str);
         if (localObject != null)
         {
-          Pair localPair = aQZ(str);
+          Pair localPair = bhC(str);
           if (localPair != null) {
-            l.b.L((File)localPair.second);
+            l.b.M((File)localPair.second);
           }
           try
           {
-            l.b.N(new File(this.Ioi, ".FP__KEY__" + str + "__VALUE__" + localObject));
+            l.b.O(new File(this.NBG, ".FP__KEY__" + str + "__VALUE__" + localObject));
           }
           catch (Throwable localThrowable)
           {
@@ -221,54 +221,54 @@ public abstract interface g
           }
         }
       }
-      AppMethodBeat.o(195299);
+      AppMethodBeat.o(193787);
       return this;
     }
     
     public final boolean getBoolean(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(195302);
-      ewL();
+      AppMethodBeat.i(193790);
+      aTL();
       if (this.mExtras.containsKey(paramString))
       {
         paramBoolean = this.mExtras.getBoolean(paramString);
-        AppMethodBeat.o(195302);
+        AppMethodBeat.o(193790);
         return paramBoolean;
       }
-      paramString = aQZ(paramString);
+      paramString = bhC(paramString);
       if (paramString != null)
       {
         paramString = (String)paramString.first;
         if ((paramString.equalsIgnoreCase("true")) || (paramString.equalsIgnoreCase("false")))
         {
           paramBoolean = Boolean.parseBoolean(paramString);
-          AppMethodBeat.o(195302);
+          AppMethodBeat.o(193790);
           return paramBoolean;
         }
       }
-      AppMethodBeat.o(195302);
+      AppMethodBeat.o(193790);
       return paramBoolean;
     }
     
     public final int getInt(String paramString, int paramInt)
     {
-      AppMethodBeat.i(195303);
-      paramInt = l.aj(getLong(paramString, paramInt), paramInt);
-      AppMethodBeat.o(195303);
+      AppMethodBeat.i(193791);
+      paramInt = l.am(getLong(paramString, paramInt), paramInt);
+      AppMethodBeat.o(193791);
       return paramInt;
     }
     
     public final long getLong(String paramString, long paramLong)
     {
-      AppMethodBeat.i(195304);
-      ewL();
+      AppMethodBeat.i(193792);
+      aTL();
       if (this.mExtras.containsKey(paramString))
       {
         paramLong = this.mExtras.getLong(paramString);
-        AppMethodBeat.o(195304);
+        AppMethodBeat.o(193792);
         return paramLong;
       }
-      paramString = aQZ(paramString);
+      paramString = bhC(paramString);
       if (paramString != null)
       {
         paramString = (String)paramString.first;
@@ -276,34 +276,34 @@ public abstract interface g
           try
           {
             long l = Long.parseLong(paramString);
-            AppMethodBeat.o(195304);
+            AppMethodBeat.o(193792);
             return l;
           }
           catch (Throwable paramString) {}
         }
       }
-      AppMethodBeat.o(195304);
+      AppMethodBeat.o(193792);
       return paramLong;
     }
     
     public final String getString(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(195306);
-      ewL();
+      AppMethodBeat.i(193794);
+      aTL();
       if (this.mExtras.containsKey(paramString1))
       {
         paramString1 = this.mExtras.getString(paramString1);
-        AppMethodBeat.o(195306);
+        AppMethodBeat.o(193794);
         return paramString1;
       }
-      paramString1 = aQZ(paramString1);
+      paramString1 = bhC(paramString1);
       if (paramString1 != null)
       {
         paramString1 = (String)paramString1.first;
-        AppMethodBeat.o(195306);
+        AppMethodBeat.o(193794);
         return paramString1;
       }
-      AppMethodBeat.o(195306);
+      AppMethodBeat.o(193794);
       return paramString2;
     }
   }
@@ -311,32 +311,32 @@ public abstract interface g
   public static final class b
     implements g
   {
-    private final String Iok;
-    private SharedPreferences Iol;
+    private final String NBI;
+    private SharedPreferences NBJ;
     private final Context mContext;
     private final Bundle mExtras;
     
     public b(Context paramContext, String paramString)
     {
-      AppMethodBeat.i(195315);
+      AppMethodBeat.i(193803);
       this.mExtras = new Bundle();
       this.mContext = paramContext;
-      this.Iok = paramString;
-      AppMethodBeat.o(195315);
+      this.NBI = paramString;
+      AppMethodBeat.o(193803);
     }
     
     private static long a(SharedPreferences paramSharedPreferences, String paramString, long paramLong)
     {
-      AppMethodBeat.i(195324);
+      AppMethodBeat.i(193812);
       if (!paramSharedPreferences.contains(paramString))
       {
-        AppMethodBeat.o(195324);
+        AppMethodBeat.o(193812);
         return paramLong;
       }
       try
       {
         long l = paramSharedPreferences.getLong(paramString, paramLong);
-        AppMethodBeat.o(195324);
+        AppMethodBeat.o(193812);
         return l;
       }
       catch (Throwable localThrowable)
@@ -345,42 +345,42 @@ public abstract interface g
         {
           int i = paramSharedPreferences.getInt(paramString, 0);
           paramLong = i;
-          AppMethodBeat.o(195324);
+          AppMethodBeat.o(193812);
           return paramLong;
         }
         catch (Throwable paramSharedPreferences)
         {
-          AppMethodBeat.o(195324);
+          AppMethodBeat.o(193812);
         }
       }
       return paramLong;
     }
     
-    private b bU(String paramString, long paramLong)
+    private b bV(String paramString, long paramLong)
     {
-      AppMethodBeat.i(195322);
-      fkZ();
+      AppMethodBeat.i(193810);
+      guK();
       this.mExtras.putLong(paramString, paramLong);
-      AppMethodBeat.o(195322);
+      AppMethodBeat.o(193810);
       return this;
     }
     
-    private void fkZ()
+    private void guK()
     {
-      AppMethodBeat.i(195317);
-      if (this.Iol == null)
+      AppMethodBeat.i(193805);
+      if (this.NBJ == null)
       {
         IllegalStateException localIllegalStateException = new IllegalStateException("Persis#load() has not yet been called");
-        AppMethodBeat.o(195317);
+        AppMethodBeat.o(193805);
         throw localIllegalStateException;
       }
-      AppMethodBeat.o(195317);
+      AppMethodBeat.o(193805);
     }
     
-    private SharedPreferences.Editor fla()
+    private SharedPreferences.Editor guL()
     {
-      AppMethodBeat.i(195318);
-      SharedPreferences.Editor localEditor = this.Iol.edit();
+      AppMethodBeat.i(193806);
+      SharedPreferences.Editor localEditor = this.NBJ.edit();
       Iterator localIterator = this.mExtras.keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -402,69 +402,69 @@ public abstract interface g
           }
         }
       }
-      AppMethodBeat.o(195318);
+      AppMethodBeat.o(193806);
       return localEditor;
-    }
-    
-    public final b fkY()
-    {
-      AppMethodBeat.i(195316);
-      this.Iol = this.mContext.getSharedPreferences(this.Iok, 4);
-      AppMethodBeat.o(195316);
-      return this;
     }
     
     public final boolean getBoolean(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(195319);
-      fkZ();
+      AppMethodBeat.i(193807);
+      guK();
       if (this.mExtras.containsKey(paramString))
       {
         paramBoolean = this.mExtras.getBoolean(paramString);
-        AppMethodBeat.o(195319);
+        AppMethodBeat.o(193807);
         return paramBoolean;
       }
-      paramBoolean = this.Iol.getBoolean(paramString, paramBoolean);
-      AppMethodBeat.o(195319);
+      paramBoolean = this.NBJ.getBoolean(paramString, paramBoolean);
+      AppMethodBeat.o(193807);
       return paramBoolean;
     }
     
     public final int getInt(String paramString, int paramInt)
     {
-      AppMethodBeat.i(195320);
-      paramInt = l.aj(getLong(paramString, paramInt), paramInt);
-      AppMethodBeat.o(195320);
+      AppMethodBeat.i(193808);
+      paramInt = l.am(getLong(paramString, paramInt), paramInt);
+      AppMethodBeat.o(193808);
       return paramInt;
     }
     
     public final long getLong(String paramString, long paramLong)
     {
-      AppMethodBeat.i(195321);
-      fkZ();
+      AppMethodBeat.i(193809);
+      guK();
       if (this.mExtras.containsKey(paramString))
       {
         paramLong = this.mExtras.getLong(paramString);
-        AppMethodBeat.o(195321);
+        AppMethodBeat.o(193809);
         return paramLong;
       }
-      paramLong = a(this.Iol, paramString, paramLong);
-      AppMethodBeat.o(195321);
+      paramLong = a(this.NBJ, paramString, paramLong);
+      AppMethodBeat.o(193809);
       return paramLong;
     }
     
     public final String getString(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(195323);
-      fkZ();
+      AppMethodBeat.i(193811);
+      guK();
       if (this.mExtras.containsKey(paramString1))
       {
         paramString1 = this.mExtras.getString(paramString1);
-        AppMethodBeat.o(195323);
+        AppMethodBeat.o(193811);
         return paramString1;
       }
-      paramString1 = this.Iol.getString(paramString1, paramString2);
-      AppMethodBeat.o(195323);
+      paramString1 = this.NBJ.getString(paramString1, paramString2);
+      AppMethodBeat.o(193811);
       return paramString1;
+    }
+    
+    public final b guJ()
+    {
+      AppMethodBeat.i(193804);
+      this.NBJ = this.mContext.getSharedPreferences(this.NBI, 4);
+      AppMethodBeat.o(193804);
+      return this;
     }
   }
 }

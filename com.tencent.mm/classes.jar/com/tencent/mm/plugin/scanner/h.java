@@ -7,18 +7,18 @@ import com.tencent.mm.pluginsdk.n;
 public final class h
   implements n
 {
-  public static m iUz;
+  public static m jRt;
   
-  public static m dNN()
+  public static m eON()
   {
-    return iUz;
+    return jRt;
   }
   
   public final void a(l paraml) {}
   
   public final void a(m paramm)
   {
-    iUz = paramm;
+    jRt = paramm;
   }
 }
 

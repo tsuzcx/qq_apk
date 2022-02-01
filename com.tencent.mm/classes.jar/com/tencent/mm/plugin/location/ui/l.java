@@ -11,93 +11,93 @@ import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.d;
 import com.tencent.mm.plugin.location_soso.ViewManager;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.InfoWindowAdapter;
 
 public final class l
   implements c
 {
-  public boolean dsB;
+  public boolean dJM;
   public boolean isVisible;
-  public String jGd;
+  public String kHV;
   private Context mContext;
   public ViewManager mViewManager;
-  public double vlC;
-  public double vlD;
-  private String vly;
-  private TextView vnB;
-  private ProgressBar vnC;
-  private String vnF;
-  public boolean vnY;
-  private View vnZ;
-  public final String vqV;
-  public ImageView vqW;
-  public FrameLayout vqX;
-  private TextView vqY;
-  public boolean vqZ;
+  private String yFq;
+  public double yFu;
+  public double yFv;
+  public boolean yHP;
+  private View yHQ;
+  private TextView yHs;
+  private ProgressBar yHt;
+  private String yHw;
+  public final String yKL;
+  public ImageView yKM;
+  public FrameLayout yKN;
+  private TextView yKO;
+  public boolean yKP;
   
   public l(d paramd, Context paramContext)
   {
     AppMethodBeat.i(55993);
-    this.vqV = "info_window_tag";
-    this.dsB = false;
-    this.vnY = true;
-    this.vlC = 1000000.0D;
-    this.vlD = 1000000.0D;
+    this.yKL = "info_window_tag";
+    this.dJM = false;
+    this.yHP = true;
+    this.yFu = 1000000.0D;
+    this.yFv = 1000000.0D;
     this.isVisible = true;
-    this.vnF = "";
+    this.yHw = "";
     this.mContext = paramContext;
-    this.vqZ = false;
-    this.vqW = new ImageView(paramContext);
-    this.vqW.setBackgroundResource(2131233299);
-    this.vqW.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.vqX = ((FrameLayout)View.inflate(paramContext, 2131494732, null));
-    this.vqW.setImageResource(2131232887);
-    this.vnZ = this.vqX;
+    this.yKP = false;
+    this.yKM = new ImageView(paramContext);
+    this.yKM.setBackgroundResource(2131233974);
+    this.yKM.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.yKN = ((FrameLayout)View.inflate(paramContext, 2131495461, null));
+    this.yKM.setImageResource(2131233529);
+    this.yHQ = this.yKN;
     this.mViewManager = ((ViewManager)paramd.getViewManager());
     AppMethodBeat.o(55993);
   }
   
   public final String getPreText()
   {
-    return this.vnF;
+    return this.yHw;
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(55994);
-    this.vly = paramString;
-    paramString = this.vly;
-    this.vnB = ((TextView)this.vqX.findViewById(2131301545));
-    this.vnC = ((ProgressBar)this.vqX.findViewById(2131301532));
-    this.vqY = ((TextView)this.vqX.findViewById(2131301537));
+    this.yFq = paramString;
+    paramString = this.yFq;
+    this.yHs = ((TextView)this.yKN.findViewById(2131303755));
+    this.yHt = ((ProgressBar)this.yKN.findViewById(2131303738));
+    this.yKO = ((TextView)this.yKN.findViewById(2131303747));
     if ((paramString == null) || (paramString.equals("")))
     {
-      this.vnC.setVisibility(0);
-      if ((this.jGd == null) || (this.jGd.equals(""))) {
+      this.yHt.setVisibility(0);
+      if ((this.kHV == null) || (this.kHV.equals(""))) {
         break label201;
       }
-      this.vqY.setVisibility(0);
-      this.vqY.setText(this.jGd);
+      this.yKO.setVisibility(0);
+      this.yKO.setText(this.kHV);
     }
     for (;;)
     {
-      if (this.vnY)
+      if (this.yHP)
       {
-        this.mViewManager.updateViewLayout(this.vqW, this.vlC, this.vlD, false);
-        if (this.vqZ) {
-          this.mViewManager.showInfoWindowByView(this.vqW);
+        this.mViewManager.updateViewLayout(this.yKM, this.yFu, this.yFv, false);
+        if (this.yKP) {
+          this.mViewManager.showInfoWindowByView(this.yKM);
         }
       }
       AppMethodBeat.o(55994);
       return;
-      this.vnC.setVisibility(8);
-      this.vnB.setVisibility(0);
-      this.vnB.setText(paramString);
+      this.yHt.setVisibility(8);
+      this.yHs.setVisibility(0);
+      this.yHs.setText(paramString);
       break;
       label201:
-      this.vqY.setText("");
-      this.vqY.setVisibility(8);
+      this.yKO.setText("");
+      this.yKO.setVisibility(8);
     }
   }
   
@@ -109,10 +109,10 @@ public final class l
     public final View getInfoWindow(Marker paramMarker)
     {
       AppMethodBeat.i(55992);
-      ae.i("ZItemOverlay", "get info window: %s", new Object[] { Integer.valueOf(l.this.vqX.getVisibility()) });
+      Log.i("ZItemOverlay", "get info window: %s", new Object[] { Integer.valueOf(l.this.yKN.getVisibility()) });
       if ("info_window_tag".equals(paramMarker.getTag()))
       {
-        paramMarker = l.this.vqX;
+        paramMarker = l.this.yKN;
         AppMethodBeat.o(55992);
         return paramMarker;
       }
@@ -125,7 +125,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.l
  * JD-Core Version:    0.7.0.1
  */

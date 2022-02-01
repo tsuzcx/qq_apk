@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.compatible.i.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "", "duration", "", "size", "width", "", "height", "(JJII)V", "getDuration", "()J", "getHeight", "()I", "getSize", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "", "duration", "", "size", "width", "", "height", "(JJII)V", "getDuration", "()J", "getHeight", "()I", "getSize", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-appbrand-integration_release"})
 public final class u
 {
-  public static final a kZx;
+  public static final a meK;
   final long duration;
   final int height;
   final long size;
@@ -20,7 +20,7 @@ public final class u
   static
   {
     AppMethodBeat.i(50581);
-    kZx = new a((byte)0);
+    meK = new a((byte)0);
     AppMethodBeat.o(50581);
   }
   
@@ -64,14 +64,14 @@ public final class u
     return str;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData$Companion;", "", "()V", "TAG", "", "obtain", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "path", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData$Companion;", "", "()V", "TAG", "", "obtain", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "path", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static u QP(String paramString)
+    public static u aaq(String paramString)
     {
       AppMethodBeat.i(50580);
       p.h(paramString, "path");
-      if (!o.fB(paramString))
+      if (!s.YS(paramString))
       {
         AppMethodBeat.o(50580);
         return null;
@@ -83,33 +83,33 @@ public final class u
         {
           locald = new d();
           locald.setDataSource(paramString);
-          i = bu.getInt(locald.extractMetadata(24), 0);
+          i = Util.getInt(locald.extractMetadata(24), 0);
           if ((i == 90) || (i == 270))
           {
-            i = bu.getInt(locald.extractMetadata(19), 0);
-            j = bu.getInt(locald.extractMetadata(18), 0);
-            long l = bu.getLong(locald.extractMetadata(9), 0L);
+            i = Util.getInt(locald.extractMetadata(19), 0);
+            j = Util.getInt(locald.extractMetadata(18), 0);
+            long l = Util.getLong(locald.extractMetadata(9), 0L);
             locald.release();
-            paramString = new u(l, o.aZR(paramString), i, j);
+            paramString = new u(l, s.boW(paramString), i, j);
             AppMethodBeat.o(50580);
             return paramString;
           }
         }
         catch (Exception paramString)
         {
-          ae.e("MicroMsg.VideoMetaData", "MetaDataRetriever failed, e = ".concat(String.valueOf(paramString)));
+          Log.e("MicroMsg.VideoMetaData", "MetaDataRetriever failed, e = ".concat(String.valueOf(paramString)));
           AppMethodBeat.o(50580);
           return null;
         }
-        int i = bu.getInt(locald.extractMetadata(18), 0);
-        int j = bu.getInt(locald.extractMetadata(19), 0);
+        int i = Util.getInt(locald.extractMetadata(18), 0);
+        int j = Util.getInt(locald.extractMetadata(19), 0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.u
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,134 @@
 package com.tencent.mm;
 
-import android.app.Activity;
 import android.content.Context;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.wax.d;
-import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.plugin.a.m.c;
-import io.flutter.plugin.a.m.f;
+import com.tencent.mm.api.ab;
+import com.tencent.mm.api.ab.a;
+import com.tencent.mm.api.ab.c;
+import com.tencent.mm.api.e;
+import com.tencent.mm.api.u;
+import com.tencent.mm.api.x;
+import com.tencent.mm.cache.ArtistCacheManager;
+import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.view.a;
+import com.tencent.mm.view.l;
+import com.tencent.mm.view.m;
+import com.tencent.mm.view.o;
 
 public final class b
-  extends io.flutter.app.c
+  extends ab
 {
-  private io.flutter.embedding.engine.a cPI;
+  private a dgg;
+  private x dgh;
   
-  public b(io.flutter.embedding.engine.a parama, Context paramContext)
+  public final boolean Ul()
   {
-    super(paramContext);
-    this.cPI = parama;
+    AppMethodBeat.i(9100);
+    boolean bool = this.dgg.getPresenter().Ul();
+    AppMethodBeat.o(9100);
+    return bool;
   }
   
-  public final m.c er(String paramString)
+  public final x Um()
   {
-    AppMethodBeat.i(159063);
-    paramString = new a(super.er(paramString));
-    AppMethodBeat.o(159063);
-    return paramString;
+    AppMethodBeat.i(9103);
+    if (this.dgh == null) {
+      this.dgh = new com.tencent.mm.bz.c(this.dgg.getPresenter());
+    }
+    x localx = this.dgh;
+    AppMethodBeat.o(9103);
+    return localx;
   }
   
-  public final class a
-    implements m.c
+  public final void Un()
   {
-    private m.c cPJ;
-    
-    public a(m.c paramc)
+    AppMethodBeat.i(9104);
+    ArtistCacheManager.alA().alB();
+    AppMethodBeat.o(9104);
+  }
+  
+  public final void a(ab.a parama)
+  {
+    AppMethodBeat.i(9101);
+    super.a(parama);
+    ArtistCacheManager.alA().Dn(Util.nullAs(this.diP.path, "MicroMsg.MMPhotoEditorImpl"));
+    com.tencent.mm.cache.c.alF().Dp(Util.nullAs(this.diP.path, "MicroMsg.MMPhotoEditorImpl"));
+    AppMethodBeat.o(9101);
+  }
+  
+  public final void a(u paramu)
+  {
+    AppMethodBeat.i(9099);
+    com.tencent.mm.bt.b localb = this.dgg.getPresenter();
+    if (!Um().VE()) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.cPJ = paramc;
+      localb.a(paramu, bool);
+      AppMethodBeat.o(9099);
+      return;
     }
-    
-    public final Activity JY()
+  }
+  
+  public final e bB(Context paramContext)
+  {
+    AppMethodBeat.i(9098);
+    if (this.dgg == null)
     {
-      AppMethodBeat.i(159056);
-      Activity localActivity;
-      if (this.cPJ.JY() != null)
-      {
-        localActivity = this.cPJ.JY();
-        AppMethodBeat.o(159056);
-        return localActivity;
+      Log.d("MicroMsg.MMPhotoEditorImpl", "mDrawingView == null, create a new one");
+      if (this.diP.diR == ab.c.diY) {
+        this.dgg = new o(paramContext);
       }
-      if (d.gdr().MHD != null)
+    }
+    for (;;)
+    {
+      this.dgg.setup(this.diP);
+      paramContext = this.dgg;
+      AppMethodBeat.o(9098);
+      return paramContext;
+      if (this.diP.diR == ab.c.diZ)
       {
-        localActivity = d.gdr().MHD.getActivity();
-        AppMethodBeat.o(159056);
-        return localActivity;
+        this.dgg = new m(paramContext);
       }
-      AppMethodBeat.o(159056);
-      return null;
+      else if (this.diP.diR == ab.c.dja)
+      {
+        this.dgg = new l(paramContext);
+        continue;
+        Log.d("MicroMsg.MMPhotoEditorImpl", "recycled");
+        if (this.dgg.getParent() != null) {
+          ((ViewGroup)this.dgg.getParent()).removeView(this.dgg);
+        }
+      }
     }
-    
-    public final Context JZ()
-    {
-      AppMethodBeat.i(159057);
-      Context localContext = this.cPJ.JZ();
-      AppMethodBeat.o(159057);
-      return localContext;
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(9102);
+    if ((this.diP != null) && (!this.diP.diS)) {
+      ArtistCacheManager.alA().Do(Util.nullAs(this.diP.path, "MicroMsg.MMPhotoEditorImpl"));
     }
-    
-    public final io.flutter.plugin.a.c Ka()
-    {
-      AppMethodBeat.i(159058);
-      DartExecutor localDartExecutor = b.a(b.this).MZm;
-      AppMethodBeat.o(159058);
-      return localDartExecutor;
+    if (this.dgg != null) {
+      this.dgg.getPresenter().onDestroy();
     }
-    
-    public final io.flutter.view.c Kb()
+    try
     {
-      AppMethodBeat.i(159059);
-      io.flutter.embedding.engine.b.a locala = b.a(b.this).MYh;
-      AppMethodBeat.o(159059);
-      return locala;
+      this.dgg.getChatFooterPanel().destroy();
+      AppMethodBeat.o(9102);
+      return;
     }
-    
-    public final String L(String paramString1, String paramString2)
+    catch (Exception localException)
     {
-      AppMethodBeat.i(159061);
-      paramString1 = this.cPJ.L(paramString1, paramString2);
-      AppMethodBeat.o(159061);
-      return paramString1;
-    }
-    
-    public final m.c a(m.f paramf)
-    {
-      AppMethodBeat.i(159062);
-      paramf = this.cPJ.a(paramf);
-      AppMethodBeat.o(159062);
-      return paramf;
-    }
-    
-    public final String es(String paramString)
-    {
-      AppMethodBeat.i(159060);
-      paramString = this.cPJ.es(paramString);
-      AppMethodBeat.o(159060);
-      return paramString;
+      Log.e("MicroMsg.MMPhotoEditorImpl", "[onDestroy] may be has destory!");
+      AppMethodBeat.o(9102);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.b
  * JD-Core Version:    0.7.0.1
  */

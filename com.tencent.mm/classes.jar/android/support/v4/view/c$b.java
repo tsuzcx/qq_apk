@@ -12,51 +12,51 @@ import android.view.ViewConfiguration;
 final class c$b
   implements c.a
 {
-  private static final int Pj = ;
-  private static final int Pk = ViewConfiguration.getTapTimeout();
-  private static final int Pl = ViewConfiguration.getDoubleTapTimeout();
-  private boolean PA;
-  private int Pf;
-  private int Pg;
-  private int Ph;
-  private int Pi;
-  final GestureDetector.OnGestureListener Pm;
-  GestureDetector.OnDoubleTapListener Pn;
-  boolean Po;
-  boolean Pp;
-  boolean Pq;
-  private boolean Pr;
-  private boolean Ps;
-  MotionEvent Pt;
-  private MotionEvent Pu;
-  private boolean Pv;
-  private float Pw;
-  private float Px;
-  private float Py;
-  private float Pz;
+  private static final int Pv = ;
+  private static final int Pw = ViewConfiguration.getTapTimeout();
+  private static final int Px = ViewConfiguration.getDoubleTapTimeout();
+  boolean PA;
+  boolean PB;
+  boolean PC;
+  private boolean PD;
+  private boolean PE;
+  MotionEvent PF;
+  private MotionEvent PG;
+  private boolean PH;
+  private float PI;
+  private float PJ;
+  private float PK;
+  private float PL;
+  private boolean PM;
+  private int Pr;
+  private int Ps;
+  private int Pt;
+  private int Pu;
+  final GestureDetector.OnGestureListener Py;
+  GestureDetector.OnDoubleTapListener Pz;
   final Handler mHandler = new a();
   private VelocityTracker mVelocityTracker;
   
   c$b(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    this.Pm = paramOnGestureListener;
+    this.Py = paramOnGestureListener;
     if ((paramOnGestureListener instanceof GestureDetector.OnDoubleTapListener)) {
-      this.Pn = ((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
+      this.Pz = ((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
     }
     if (paramContext == null) {
       throw new IllegalArgumentException("Context must not be null");
     }
-    if (this.Pm == null) {
+    if (this.Py == null) {
       throw new IllegalArgumentException("OnGestureListener must not be null");
     }
-    this.PA = true;
+    this.PM = true;
     paramContext = ViewConfiguration.get(paramContext);
     int i = paramContext.getScaledTouchSlop();
     int j = paramContext.getScaledDoubleTapSlop();
-    this.Ph = paramContext.getScaledMinimumFlingVelocity();
-    this.Pi = paramContext.getScaledMaximumFlingVelocity();
-    this.Pf = (i * i);
-    this.Pg = (j * j);
+    this.Pt = paramContext.getScaledMinimumFlingVelocity();
+    this.Pu = paramContext.getScaledMaximumFlingVelocity();
+    this.Pr = (i * i);
+    this.Ps = (j * j);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -127,25 +127,25 @@ final class c$b
           return false;
           i = n;
           break;
-          this.Pw = f2;
-          this.Py = f2;
-          this.Px = f1;
-          this.Pz = f1;
+          this.PI = f2;
+          this.PK = f2;
+          this.PJ = f1;
+          this.PL = f1;
           this.mHandler.removeMessages(1);
           this.mHandler.removeMessages(2);
           this.mHandler.removeMessages(3);
-          this.Pv = false;
-          this.Pr = false;
-          this.Ps = false;
-          this.Pp = false;
-        } while (!this.Pq);
-        this.Pq = false;
+          this.PH = false;
+          this.PD = false;
+          this.PE = false;
+          this.PB = false;
+        } while (!this.PC);
+        this.PC = false;
         return false;
-        this.Pw = f2;
-        this.Py = f2;
-        this.Px = f1;
-        this.Pz = f1;
-        this.mVelocityTracker.computeCurrentVelocity(1000, this.Pi);
+        this.PI = f2;
+        this.PK = f2;
+        this.PJ = f1;
+        this.PL = f1;
+        this.mVelocityTracker.computeCurrentVelocity(1000, this.Pu);
         k = paramMotionEvent.getActionIndex();
         i = paramMotionEvent.getPointerId(k);
         f1 = this.mVelocityTracker.getXVelocity(i);
@@ -165,75 +165,75 @@ final class c$b
           }
           i += 1;
         }
-        if (this.Pn != null)
+        if (this.Pz != null)
         {
           bool2 = this.mHandler.hasMessages(3);
           if (bool2) {
             this.mHandler.removeMessages(3);
           }
-          if ((this.Pt != null) && (this.Pu != null) && (bool2))
+          if ((this.PF != null) && (this.PG != null) && (bool2))
           {
-            localMotionEvent = this.Pt;
-            localObject = this.Pu;
-            if ((this.Ps) && (paramMotionEvent.getEventTime() - ((MotionEvent)localObject).getEventTime() <= Pl))
+            localMotionEvent = this.PF;
+            localObject = this.PG;
+            if ((this.PE) && (paramMotionEvent.getEventTime() - ((MotionEvent)localObject).getEventTime() <= Px))
             {
               i = (int)localMotionEvent.getX() - (int)paramMotionEvent.getX();
               k = (int)localMotionEvent.getY() - (int)paramMotionEvent.getY();
-              if (k * k + i * i < this.Pg)
+              if (k * k + i * i < this.Ps)
               {
                 i = 1;
                 if (i == 0) {
                   break label757;
                 }
-                this.Pv = true;
+                this.PH = true;
               }
             }
           }
         }
-        for (boolean bool1 = this.Pn.onDoubleTap(this.Pt) | false | this.Pn.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
+        for (boolean bool1 = this.Pz.onDoubleTap(this.PF) | false | this.Pz.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
         {
-          this.Pw = f2;
-          this.Py = f2;
-          this.Px = f1;
-          this.Pz = f1;
-          if (this.Pt != null) {
-            this.Pt.recycle();
+          this.PI = f2;
+          this.PK = f2;
+          this.PJ = f1;
+          this.PL = f1;
+          if (this.PF != null) {
+            this.PF.recycle();
           }
-          this.Pt = MotionEvent.obtain(paramMotionEvent);
-          this.Pr = true;
-          this.Ps = true;
-          this.Po = true;
-          this.Pq = false;
-          this.Pp = false;
-          if (this.PA)
+          this.PF = MotionEvent.obtain(paramMotionEvent);
+          this.PD = true;
+          this.PE = true;
+          this.PA = true;
+          this.PC = false;
+          this.PB = false;
+          if (this.PM)
           {
             this.mHandler.removeMessages(2);
-            this.mHandler.sendEmptyMessageAtTime(2, this.Pt.getDownTime() + Pk + Pj);
+            this.mHandler.sendEmptyMessageAtTime(2, this.PF.getDownTime() + Pw + Pv);
           }
-          this.mHandler.sendEmptyMessageAtTime(1, this.Pt.getDownTime() + Pk);
-          return bool1 | this.Pm.onDown(paramMotionEvent);
+          this.mHandler.sendEmptyMessageAtTime(1, this.PF.getDownTime() + Pw);
+          return bool1 | this.Py.onDown(paramMotionEvent);
           bool1 = false;
           break;
-          this.mHandler.sendEmptyMessageDelayed(3, Pl);
+          this.mHandler.sendEmptyMessageDelayed(3, Px);
         }
-      } while (this.Pq);
-      f3 = this.Pw - f2;
-      f4 = this.Px - f1;
-      if (this.Pv) {
-        return this.Pn.onDoubleTapEvent(paramMotionEvent) | false;
+      } while (this.PC);
+      f3 = this.PI - f2;
+      f4 = this.PJ - f1;
+      if (this.PH) {
+        return this.Pz.onDoubleTapEvent(paramMotionEvent) | false;
       }
-      if (this.Pr)
+      if (this.PD)
       {
-        j = (int)(f2 - this.Py);
-        k = (int)(f1 - this.Pz);
+        j = (int)(f2 - this.PK);
+        k = (int)(f1 - this.PL);
         j = j * j + k * k;
-        if (j <= this.Pf) {
+        if (j <= this.Pr) {
           break label1350;
         }
-        bool2 = this.Pm.onScroll(this.Pt, paramMotionEvent, f3, f4);
-        this.Pw = f2;
-        this.Px = f1;
-        this.Pr = false;
+        bool2 = this.Py.onScroll(this.PF, paramMotionEvent, f3, f4);
+        this.PI = f2;
+        this.PJ = f1;
+        this.PD = false;
         this.mHandler.removeMessages(3);
         this.mHandler.removeMessages(1);
         this.mHandler.removeMessages(2);
@@ -242,54 +242,54 @@ final class c$b
     }
     for (;;)
     {
-      if (j > this.Pf) {
-        this.Ps = false;
+      if (j > this.Pr) {
+        this.PE = false;
       }
       return bool2;
       if ((Math.abs(f3) < 1.0F) && (Math.abs(f4) < 1.0F)) {
         break;
       }
-      bool2 = this.Pm.onScroll(this.Pt, paramMotionEvent, f3, f4);
-      this.Pw = f2;
-      this.Px = f1;
+      bool2 = this.Py.onScroll(this.PF, paramMotionEvent, f3, f4);
+      this.PI = f2;
+      this.PJ = f1;
       return bool2;
-      this.Po = false;
+      this.PA = false;
       localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      if (this.Pv) {
-        bool2 = this.Pn.onDoubleTapEvent(paramMotionEvent) | false;
+      if (this.PH) {
+        bool2 = this.Pz.onDoubleTapEvent(paramMotionEvent) | false;
       }
       for (;;)
       {
-        if (this.Pu != null) {
-          this.Pu.recycle();
+        if (this.PG != null) {
+          this.PG.recycle();
         }
-        this.Pu = localMotionEvent;
+        this.PG = localMotionEvent;
         if (this.mVelocityTracker != null)
         {
           this.mVelocityTracker.recycle();
           this.mVelocityTracker = null;
         }
-        this.Pv = false;
-        this.Pp = false;
+        this.PH = false;
+        this.PB = false;
         this.mHandler.removeMessages(1);
         this.mHandler.removeMessages(2);
         return bool2;
-        if (this.Pq)
+        if (this.PC)
         {
           this.mHandler.removeMessages(3);
-          this.Pq = false;
+          this.PC = false;
           bool2 = false;
         }
-        else if (this.Pr)
+        else if (this.PD)
         {
-          boolean bool3 = this.Pm.onSingleTapUp(paramMotionEvent);
+          boolean bool3 = this.Py.onSingleTapUp(paramMotionEvent);
           bool2 = bool3;
-          if (this.Pp)
+          if (this.PB)
           {
             bool2 = bool3;
-            if (this.Pn != null)
+            if (this.Pz != null)
             {
-              this.Pn.onSingleTapConfirmed(paramMotionEvent);
+              this.Pz.onSingleTapConfirmed(paramMotionEvent);
               bool2 = bool3;
             }
           }
@@ -298,27 +298,27 @@ final class c$b
         {
           localObject = this.mVelocityTracker;
           j = paramMotionEvent.getPointerId(0);
-          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.Pi);
+          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.Pu);
           f1 = ((VelocityTracker)localObject).getYVelocity(j);
           f2 = ((VelocityTracker)localObject).getXVelocity(j);
-          if ((Math.abs(f1) > this.Ph) || (Math.abs(f2) > this.Ph))
+          if ((Math.abs(f1) > this.Pt) || (Math.abs(f2) > this.Pt))
           {
-            bool2 = this.Pm.onFling(this.Pt, paramMotionEvent, f2, f1);
+            bool2 = this.Py.onFling(this.PF, paramMotionEvent, f2, f1);
             continue;
             this.mHandler.removeMessages(1);
             this.mHandler.removeMessages(2);
             this.mHandler.removeMessages(3);
             this.mVelocityTracker.recycle();
             this.mVelocityTracker = null;
-            this.Pv = false;
-            this.Po = false;
-            this.Pr = false;
-            this.Ps = false;
-            this.Pp = false;
-            if (!this.Pq) {
+            this.PH = false;
+            this.PA = false;
+            this.PD = false;
+            this.PE = false;
+            this.PB = false;
+            if (!this.PC) {
               break;
             }
-            this.Pq = false;
+            this.PC = false;
             return false;
           }
           bool2 = false;
@@ -341,24 +341,24 @@ final class c$b
       default: 
         throw new RuntimeException("Unknown message ".concat(String.valueOf(paramMessage)));
       case 1: 
-        c.b.this.Pm.onShowPress(c.b.this.Pt);
+        c.b.this.Py.onShowPress(c.b.this.PF);
       }
       do
       {
         return;
         paramMessage = c.b.this;
         paramMessage.mHandler.removeMessages(3);
-        paramMessage.Pp = false;
-        paramMessage.Pq = true;
-        paramMessage.Pm.onLongPress(paramMessage.Pt);
+        paramMessage.PB = false;
+        paramMessage.PC = true;
+        paramMessage.Py.onLongPress(paramMessage.PF);
         return;
-      } while (c.b.this.Pn == null);
-      if (!c.b.this.Po)
+      } while (c.b.this.Pz == null);
+      if (!c.b.this.PA)
       {
-        c.b.this.Pn.onSingleTapConfirmed(c.b.this.Pt);
+        c.b.this.Pz.onSingleTapConfirmed(c.b.this.PF);
         return;
       }
-      c.b.this.Pp = true;
+      c.b.this.PB = true;
     }
   }
 }

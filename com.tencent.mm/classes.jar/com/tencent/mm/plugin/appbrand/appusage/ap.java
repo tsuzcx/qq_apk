@@ -1,137 +1,122 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.plugin.appbrand.utils.f;
-import com.tencent.mm.protocal.protobuf.ahg;
-import com.tencent.mm.protocal.protobuf.bmk;
-import com.tencent.mm.protocal.protobuf.bml;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.ajs;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic;", "", "()V", "mReceiver", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "clear", "", "notifyReceiver", "entrances", "", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "registerEntranceInfoUpdateReceiverForId", "receiver", "requestEntranceInfo", "unregisterEntranceInfoUpdateReceiverForId", "Companion", "EntranceId", "EntranceInfoUpdateReceiver", "ShowCaseType", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic;", "", "()V", "mReceiver", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "clear", "", "notifyReceiver", "entrances", "", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "registerEntranceInfoUpdateReceiverForId", "receiver", "requestEntranceInfo", "unregisterEntranceInfoUpdateReceiverForId", "Companion", "EntranceId", "EntranceInfoUpdateReceiver", "ShowCaseType", "plugin-appbrand-integration_release"})
 public final class ap
 {
-  public static final a jTz;
-  public final Map<b, List<c>> jTy;
+  public static final a kWn;
+  public final Map<b, List<c>> kWm;
   
   static
   {
     AppMethodBeat.i(180446);
-    jTz = new a((byte)0);
+    kWn = new a((byte)0);
     AppMethodBeat.o(180446);
   }
   
   public ap()
   {
     AppMethodBeat.i(180445);
-    this.jTy = ((Map)new LinkedHashMap());
+    this.kWm = ((Map)new LinkedHashMap());
     AppMethodBeat.o(180445);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "", "(Ljava/lang/String;I)V", "ENTRANCE_ID_NONE", "ENTRANCE_ID_NEARBY", "ENTRANCE_ID_LIVE", "ENTRANCE_ID_FRIENDS_USING", "Companion", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "", "(Ljava/lang/String;I)V", "ENTRANCE_ID_NONE", "ENTRANCE_ID_NEARBY", "ENTRANCE_ID_LIVE", "ENTRANCE_ID_FRIENDS_USING", "Companion", "plugin-appbrand-integration_release"})
   public static enum b
   {
-    public static final a jTF;
+    public static final a kWt;
     
     static
     {
       AppMethodBeat.i(180436);
       b localb1 = new b("ENTRANCE_ID_NONE", 0);
-      jTA = localb1;
+      kWo = localb1;
       b localb2 = new b("ENTRANCE_ID_NEARBY", 1);
-      jTB = localb2;
+      kWp = localb2;
       b localb3 = new b("ENTRANCE_ID_LIVE", 2);
-      jTC = localb3;
+      kWq = localb3;
       b localb4 = new b("ENTRANCE_ID_FRIENDS_USING", 3);
-      jTD = localb4;
-      jTE = new b[] { localb1, localb2, localb3, localb4 };
-      jTF = new a((byte)0);
+      kWr = localb4;
+      kWs = new b[] { localb1, localb2, localb3, localb4 };
+      kWt = new a((byte)0);
       AppMethodBeat.o(180436);
     }
     
     private b() {}
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId$Companion;", "", "()V", "getByOrdinal", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "id", "", "plugin-appbrand-integration_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId$Companion;", "", "()V", "getByOrdinal", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "id", "", "plugin-appbrand-integration_release"})
     public static final class a {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "", "getEntranceId", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "onEntranceInfoUpdate", "", "info", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "", "getEntranceId", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "onEntranceInfoUpdate", "", "info", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "plugin-appbrand-integration_release"})
   public static abstract interface c
   {
-    public abstract void a(ahg paramahg);
+    public abstract void a(ajs paramajs);
     
-    public abstract ap.b bdh();
+    public abstract ap.b byw();
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType$Companion;", "", "()V", "getByOrdinal", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType;", "id", "", "plugin-appbrand-integration_release"})
-  public static final class d$a {}
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$requestEntranceInfo$locationCallback$1", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "onGetLocation", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "plugin-appbrand-integration_release"})
-  public static final class e
-    implements com.tencent.mm.modelgeo.b.a
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType;", "", "(Ljava/lang/String;I)V", "TYPE_NULL", "TYPE_WORDING", "TYPE_ICON_WORDING", "TYPE_ICON_WORDING_ICON2", "TYPE_WORDING_ICON", "Companion", "plugin-appbrand-integration_release"})
+  public static enum d
   {
-    public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2)
+    public static final a kWA;
+    
+    static
     {
-      AppMethodBeat.i(180444);
-      d.aIh().c((com.tencent.mm.modelgeo.b.a)this);
-      f.bj(this);
-      com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
-      locala.oS(3752);
-      locala.DN("/cgi-bin/mmbiz-bin/wxaapp/getwxadesktopentrance");
-      bmk localbmk = new bmk();
-      localbmk.GZH = paramFloat1;
-      localbmk.GZI = paramFloat2;
-      locala.c((a)localbmk);
-      locala.d((a)new bml());
-      x.a(locala.aDS(), (x.a)new a(this), true);
-      AppMethodBeat.o(180444);
-      return false;
+      AppMethodBeat.i(180439);
+      d locald1 = new d("TYPE_NULL", 0);
+      kWu = locald1;
+      d locald2 = new d("TYPE_WORDING", 1);
+      kWv = locald2;
+      d locald3 = new d("TYPE_ICON_WORDING", 2);
+      kWw = locald3;
+      d locald4 = new d("TYPE_ICON_WORDING_ICON2", 3);
+      kWx = locald4;
+      d locald5 = new d("TYPE_WORDING_ICON", 4);
+      kWy = locald5;
+      kWz = new d[] { locald1, locald2, locald3, locald4, locald5 };
+      kWA = new a((byte)0);
+      AppMethodBeat.o(180439);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
-    static final class a
-      implements x.a
+    private d() {}
+    
+    public static final d wb(int paramInt)
     {
-      a(ap.e parame) {}
-      
-      public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
+      AppMethodBeat.i(180442);
+      d[] arrayOfd = values();
+      int j = arrayOfd.length;
+      int i = 0;
+      while (i < j)
       {
-        AppMethodBeat.i(180443);
-        p.g(paramb, "rr");
-        paramb = paramb.aEV();
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (paramb != null) && ((paramb instanceof bml)))
+        d locald = arrayOfd[i];
+        if (paramInt == locald.ordinal())
         {
-          paramString = this.jTO.jTN;
-          paramb = ((bml)paramb).GZJ;
-          p.g(paramb, "resp.entrance_info");
-          ap.a(paramString, (List)paramb);
+          AppMethodBeat.o(180442);
+          return locald;
         }
-        for (;;)
-        {
-          AppMethodBeat.o(180443);
-          return 0;
-          ae.e("WxaDesktopEntranceShowLogic", "refresh() cgi return errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        }
+        i += 1;
       }
+      AppMethodBeat.o(180442);
+      return null;
     }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType$Companion;", "", "()V", "getByOrdinal", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType;", "id", "", "plugin-appbrand-integration_release"})
+    public static final class a {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ap
  * JD-Core Version:    0.7.0.1
  */

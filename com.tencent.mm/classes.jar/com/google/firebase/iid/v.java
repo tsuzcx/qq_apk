@@ -11,15 +11,15 @@ final class v
   public final void run()
   {
     AppMethodBeat.i(4212);
-    String str = this.bLO.getAction();
+    String str = this.bMe.getAction();
     new StringBuilder(String.valueOf(str).length() + 61).append("Service took too long to process intent: ").append(str).append(" App may get closed.");
-    this.bLT.finish();
+    this.bMj.finish();
     AppMethodBeat.o(4212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.iid.v
  * JD-Core Version:    0.7.0.1
  */

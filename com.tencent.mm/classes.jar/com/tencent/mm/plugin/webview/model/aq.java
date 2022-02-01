@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class aq
-  extends j<ap>
+  extends MAutoStorage<ap>
 {
   public static final String[] SQL_CREATE;
   
   static
   {
     AppMethodBeat.i(79031);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ap.info, "WebviewLocalData") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ap.info, "WebviewLocalData") };
     AppMethodBeat.o(79031);
   }
   
-  public aq(e parame)
+  public aq(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, ap.info, "WebviewLocalData", null);
+    super(paramISQLiteDatabase, ap.info, "WebviewLocalData", null);
   }
   
-  public static int aU(String paramString1, String paramString2, String paramString3)
+  public static int be(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(79030);
     int i = (paramString1 + paramString2 + paramString3).hashCode();

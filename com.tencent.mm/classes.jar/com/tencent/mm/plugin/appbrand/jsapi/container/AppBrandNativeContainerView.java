@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.appbrand.jsapi.container;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.s;
+import com.tencent.mm.plugin.appbrand.jsapi.coverview.v;
 
 public class AppBrandNativeContainerView
   extends FrameLayout
-  implements s
+  implements v
 {
-  public boolean kNN;
+  public boolean lSD;
   
   public AppBrandNativeContainerView(Context paramContext)
   {
@@ -28,7 +28,7 @@ public class AppBrandNativeContainerView
   
   public void setFullscreenWithChild(boolean paramBoolean)
   {
-    this.kNN = paramBoolean;
+    this.lSD = paramBoolean;
   }
 }
 

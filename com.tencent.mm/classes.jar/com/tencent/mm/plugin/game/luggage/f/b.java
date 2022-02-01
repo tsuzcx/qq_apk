@@ -1,62 +1,19 @@
 package com.tencent.mm.plugin.game.luggage.f;
 
-import android.os.Bundle;
-import com.tencent.luggage.d.p;
-import com.tencent.luggage.d.s;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.d.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 
 public final class b
-  extends g
+  extends WXWebpageObject
 {
-  public b(com.tencent.luggage.d.j paramj, Bundle paramBundle)
-  {
-    super(paramj, null, paramBundle);
-    AppMethodBeat.i(83122);
-    dme();
-    eSR();
-    Ct();
-    AppMethodBeat.o(83122);
-  }
+  public String desc;
+  public String iconUrl;
+  public String jumpUrl;
+  public String nickName;
+  public String xxN;
   
-  public final boolean bRP()
+  public final int type()
   {
-    return false;
-  }
-  
-  public final void onBackground()
-  {
-    AppMethodBeat.i(83124);
-    ae.i("MicroMsg.GameInsertWebPage", "onBackground");
-    abj("onPause");
-    this.Egt.onPause();
-    AppMethodBeat.o(83124);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(83125);
-    if (!this.uhn)
-    {
-      this.uhn = true;
-      ae.i("MicroMsg.GameInsertWebPage", "onDestroy");
-      abj("onDestroy");
-      this.EgE.Egl = null;
-      com.tencent.mm.plugin.webview.luggage.j.c(this);
-      this.EgK.DYb = true;
-      this.chX.destroy();
-    }
-    AppMethodBeat.o(83125);
-  }
-  
-  public final void onForeground()
-  {
-    AppMethodBeat.i(83123);
-    ae.i("MicroMsg.GameInsertWebPage", "onForeground");
-    abj("onResume");
-    this.Egt.onResume();
-    AppMethodBeat.o(83123);
+    return 69;
   }
 }
 

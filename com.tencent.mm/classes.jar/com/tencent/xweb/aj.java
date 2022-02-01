@@ -2,18 +2,18 @@ package com.tencent.xweb;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.j;
-import com.tencent.xweb.internal.j.a;
+import com.tencent.xweb.internal.l;
+import com.tencent.xweb.internal.l.a;
 import com.tencent.xweb.util.IXWebLogClient;
-import com.tencent.xweb.util.g;
+import com.tencent.xweb.util.h;
 import org.xwalk.core.Log;
 import org.xwalk.core.WebViewExtensionListener;
 import org.xwalk.core.XWalkEnvironment;
 
 public final class aj
 {
-  static boolean MNY = false;
-  static boolean MNZ = false;
+  static boolean SAU = false;
+  static boolean SAV = false;
   
   public static void a(Context paramContext, IXWebLogClient paramIXWebLogClient)
   {
@@ -31,16 +31,19 @@ public final class aj
         Log.SetLogCallBack(paramIXWebLogClient);
       }
       if (paramaf != null) {
-        g.a(paramaf);
+        h.a(paramaf);
       }
       if (paramISharedPreferenceProvider != null) {
         ah.setSharedPreferenceProvider(paramISharedPreferenceProvider);
       }
-      lE(paramContext);
+      lD(paramContext);
       if (paramWebViewExtensionListener != null) {
-        j.g(WebView.c.MNy).initCallback(paramWebViewExtensionListener);
+        l.g(WebView.c.SAt).initCallback(paramWebViewExtensionListener);
       }
-      XWebCoreContentProvider.gfJ();
+      if (paramWebViewExtensionListener != null) {
+        l.g(WebView.c.SAu).initCallback(paramWebViewExtensionListener);
+      }
+      XWebCoreContentProvider.htb();
       AppMethodBeat.o(156943);
       return;
     }
@@ -53,32 +56,32 @@ public final class aj
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 76
+    //   3: ldc 79
     //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 11	com/tencent/xweb/aj:MNY	Z
+    //   8: getstatic 11	com/tencent/xweb/aj:SAU	Z
     //   11: ifeq +12 -> 23
-    //   14: ldc 76
+    //   14: ldc 79
     //   16: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: ldc 2
     //   21: monitorexit
     //   22: return
     //   23: iconst_1
-    //   24: putstatic 11	com/tencent/xweb/aj:MNY	Z
-    //   27: getstatic 57	com/tencent/xweb/WebView$c:MNy	Lcom/tencent/xweb/WebView$c;
-    //   30: invokestatic 63	com/tencent/xweb/internal/j:g	(Lcom/tencent/xweb/WebView$c;)Lcom/tencent/xweb/internal/j$a;
+    //   24: putstatic 11	com/tencent/xweb/aj:SAU	Z
+    //   27: getstatic 57	com/tencent/xweb/WebView$c:SAt	Lcom/tencent/xweb/WebView$c;
+    //   30: invokestatic 63	com/tencent/xweb/internal/l:g	(Lcom/tencent/xweb/WebView$c;)Lcom/tencent/xweb/internal/l$a;
     //   33: astore_0
     //   34: aload_0
     //   35: ifnull +9 -> 44
     //   38: aload_0
-    //   39: invokeinterface 78 1 0
-    //   44: getstatic 81	com/tencent/xweb/WebView$c:MNz	Lcom/tencent/xweb/WebView$c;
-    //   47: invokestatic 63	com/tencent/xweb/internal/j:g	(Lcom/tencent/xweb/WebView$c;)Lcom/tencent/xweb/internal/j$a;
+    //   39: invokeinterface 81 1 0
+    //   44: getstatic 72	com/tencent/xweb/WebView$c:SAu	Lcom/tencent/xweb/WebView$c;
+    //   47: invokestatic 63	com/tencent/xweb/internal/l:g	(Lcom/tencent/xweb/WebView$c;)Lcom/tencent/xweb/internal/l$a;
     //   50: astore_0
     //   51: aload_0
     //   52: ifnull +9 -> 61
     //   55: aload_0
-    //   56: invokeinterface 78 1 0
-    //   61: ldc 76
+    //   56: invokeinterface 81 1 0
+    //   61: ldc 79
     //   63: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   66: goto -47 -> 19
     //   69: astore_0
@@ -88,7 +91,7 @@ public final class aj
     //   74: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   33	23	0	locala	j.a
+    //   33	23	0	locala	l.a
     //   69	5	0	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -100,7 +103,7 @@ public final class aj
     //   61	66	69	finally
   }
   
-  private static void lE(Context paramContext)
+  private static void lD(Context paramContext)
   {
     for (;;)
     {
@@ -112,7 +115,7 @@ public final class aj
           AppMethodBeat.o(156945);
           return;
         }
-        if (MNZ)
+        if (SAV)
         {
           AppMethodBeat.o(156945);
           continue;
@@ -120,22 +123,22 @@ public final class aj
         XWalkEnvironment.init(paramContext);
       }
       finally {}
-      j.a locala = j.g(WebView.c.MNy);
+      l.a locala = l.g(WebView.c.SAt);
       if (locala != null) {
         locala.initEnviroment(paramContext);
       }
-      locala = j.g(WebView.c.MNz);
+      locala = l.g(WebView.c.SAu);
       if (locala != null) {
         locala.initEnviroment(paramContext);
       }
-      MNZ = true;
+      SAV = true;
       AppMethodBeat.o(156945);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.aj
  * JD-Core Version:    0.7.0.1
  */

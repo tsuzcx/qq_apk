@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0" android:minHeight="@dimen/jm"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/to" android:gravity="center" android:id="@id/h0c" android:clickable="true" android:layout_width="0.0dip" android:layout_height="@dimen/jm" android:text="@string/h5v" android:layout_weight="1.0" />
-    <TextView android:id="@id/h74" android:background="#ffeeeeee" android:layout_width="2.0px" android:layout_height="32.0dip" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/to" android:gravity="center" android:id="@id/h0a" android:clickable="true" android:layout_width="0.0dip" android:layout_height="@dimen/jm" android:text="@string/h67" android:layout_weight="1.0" />
-</LinearLayout>
+    <LinearLayout android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
+        <ListView android:id="@android:id/list" android:paddingBottom="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="#00000000" android:divider="#00000000" android:dividerHeight="0.0px" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/is" android:gravity="center" android:layout_gravity="center" android:id="@id/gu1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fus" />
+</FrameLayout>

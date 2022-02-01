@@ -21,14 +21,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelsimple.BindWordingContent;
 import com.tencent.mm.plugin.account.friend.a.l.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.protocal.protobuf.auo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -38,33 +38,33 @@ import java.util.Set;
 public class BindMobileStatusUI
   extends MMWizardActivity
 {
-  private Button gXc;
-  private TextView gXi;
-  private TextView jcR;
-  private ImageView jcy;
-  private ImageView jdg;
-  private ImageView jdh;
-  private Boolean jdi;
-  private Boolean jdj;
-  private RelativeLayout jdk;
-  private RelativeLayout jdl;
-  private BindWordingContent jdm;
-  private int jdn;
-  private boolean jdo;
-  private boolean jdp;
+  private Button hPX;
+  private TextView hQd;
+  private ImageView kaB;
+  private TextView kaU;
+  private ImageView kbj;
+  private ImageView kbk;
+  private Boolean kbl;
+  private Boolean kbm;
+  private RelativeLayout kbn;
+  private RelativeLayout kbo;
+  private BindWordingContent kbp;
+  private int kbq;
+  private boolean kbr;
+  private boolean kbs;
   @SuppressLint({"UseSparseArrays"})
-  private HashMap<Integer, Integer> jdq;
-  private SparseArray<String> jdr;
+  private HashMap<Integer, Integer> kbt;
+  private SparseArray<String> kbu;
   private SharedPreferences sp;
   private int status;
   
   public BindMobileStatusUI()
   {
     AppMethodBeat.i(109926);
-    this.jdi = Boolean.TRUE;
-    this.jdj = Boolean.TRUE;
-    this.jdq = new HashMap();
-    this.jdr = new SparseArray(3);
+    this.kbl = Boolean.TRUE;
+    this.kbm = Boolean.TRUE;
+    this.kbt = new HashMap();
+    this.kbu = new SparseArray(3);
     AppMethodBeat.o(109926);
   }
   
@@ -86,7 +86,7 @@ public class BindMobileStatusUI
         bool1 = true;
       }
       paramContext.putBoolean("settings_recommend_mobilefriends_to_me", bool1).commit();
-      i = v.aAG();
+      i = z.aUc();
       if (!paramBoolean1) {
         break label274;
       }
@@ -97,18 +97,18 @@ public class BindMobileStatusUI
       }
       i |= 0x100;
       label129:
-      g.ajR().ajA().set(7, Integer.valueOf(i));
-      paramContext = new auo();
-      paramContext.GLx = 8;
+      g.aAh().azQ().set(7, Integer.valueOf(i));
+      paramContext = new bfx();
+      paramContext.LPB = 8;
       if (!paramBoolean2) {
         break label292;
       }
       i = 1;
       label164:
-      paramContext.xsz = i;
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new k.a(23, paramContext));
-      localObject = new auo();
-      ((auo)localObject).GLx = 7;
+      paramContext.BsD = i;
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(23, paramContext));
+      localObject = new bfx();
+      ((bfx)localObject).LPB = 7;
       if (!paramBoolean1) {
         break label297;
       }
@@ -119,9 +119,9 @@ public class BindMobileStatusUI
     label297:
     for (int i = j;; i = 2)
     {
-      paramContext.xsz = i;
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new k.a(23, (com.tencent.mm.bw.a)localObject));
-      com.tencent.mm.plugin.account.a.a.iUA.MM();
+      paramContext.BsD = i;
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(23, (com.tencent.mm.bw.a)localObject));
+      com.tencent.mm.plugin.account.a.a.jRu.WZ();
       AppMethodBeat.o(109932);
       return;
       bool1 = false;
@@ -138,7 +138,7 @@ public class BindMobileStatusUI
   private boolean d(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(109929);
-    ae.d("MicroMsg.BindMobileStatusUI", "switch change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
+    Log.d("MicroMsg.BindMobileStatusUI", "switch change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
     label64:
     String str;
     Boolean localBoolean;
@@ -149,8 +149,8 @@ public class BindMobileStatusUI
         break label192;
       }
       paramInt1 = 1;
-      this.jdq.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
-      str = (String)this.jdr.get(paramInt2);
+      this.kbt.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+      str = (String)this.kbu.get(paramInt2);
       if ((this.sp != null) && (str != null) && (str.length() > 0))
       {
         localBoolean = Boolean.valueOf(paramBoolean);
@@ -178,33 +178,33 @@ public class BindMobileStatusUI
   
   public int getLayoutId()
   {
-    return 2131493174;
+    return 2131493220;
   }
   
   public void initView()
   {
     boolean bool2 = true;
     AppMethodBeat.i(109930);
-    this.jcy = ((ImageView)findViewById(2131297240));
-    this.gXi = ((TextView)findViewById(2131297238));
-    this.jcR = ((TextView)findViewById(2131297237));
-    this.gXc = ((Button)findViewById(2131297239));
-    this.jdg = ((ImageView)findViewById(2131297266));
-    this.jdh = ((ImageView)findViewById(2131297265));
-    this.jdk = ((RelativeLayout)findViewById(2131297234));
-    this.jdl = ((RelativeLayout)findViewById(2131297235));
-    switch (this.jdn)
+    this.kaB = ((ImageView)findViewById(2131297395));
+    this.hQd = ((TextView)findViewById(2131297393));
+    this.kaU = ((TextView)findViewById(2131297392));
+    this.hPX = ((Button)findViewById(2131297394));
+    this.kbj = ((ImageView)findViewById(2131297422));
+    this.kbk = ((ImageView)findViewById(2131297421));
+    this.kbn = ((RelativeLayout)findViewById(2131297389));
+    this.kbo = ((RelativeLayout)findViewById(2131297390));
+    switch (this.kbq)
     {
     default: 
-      if (this.jdm != null) {}
-      switch (this.jdm.inO.intValue())
+      if (this.kbp != null) {}
+      switch (this.kbp.jiW.intValue())
       {
       case 0: 
       case 1: 
       default: 
         label192:
-        this.gXc.setVisibility(8);
-        addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+        this.hPX.setVisibility(8);
+        addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
@@ -214,12 +214,12 @@ public class BindMobileStatusUI
             return false;
           }
         });
-        if ((com.tencent.mm.plugin.account.friend.a.l.aTn() == l.a.jgH) || (com.tencent.mm.plugin.account.friend.a.l.aTn() == l.a.jgI))
+        if ((com.tencent.mm.plugin.account.friend.a.l.bnZ() == l.a.keL) || (com.tencent.mm.plugin.account.friend.a.l.bnZ() == l.a.keM))
         {
-          this.jcy.setImageResource(2131231178);
-          String str = (String)g.ajR().ajA().get(6, null);
+          this.kaB.setImageResource(2131231229);
+          String str = (String)g.aAh().azQ().get(6, null);
           if ((str == null) || (str.equals(""))) {
-            g.ajR().ajA().get(4097, null);
+            g.aAh().azQ().get(4097, null);
           }
         }
         break;
@@ -228,15 +228,15 @@ public class BindMobileStatusUI
     }
     for (;;)
     {
-      this.jdg.setOnClickListener(new View.OnClickListener()
+      this.kbj.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           boolean bool2 = true;
           AppMethodBeat.i(109923);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMobileStatusUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMobileStatusUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           paramAnonymousView = BindMobileStatusUI.this;
           if (!BindMobileStatusUI.b(BindMobileStatusUI.this).booleanValue())
           {
@@ -245,7 +245,7 @@ public class BindMobileStatusUI
             if (!BindMobileStatusUI.b(BindMobileStatusUI.this).booleanValue()) {
               break label147;
             }
-            BindMobileStatusUI.c(BindMobileStatusUI.this).setImageResource(2131689936);
+            BindMobileStatusUI.c(BindMobileStatusUI.this).setImageResource(2131689951);
             label93:
             paramAnonymousView = BindMobileStatusUI.this;
             if (BindMobileStatusUI.b(BindMobileStatusUI.this).booleanValue()) {
@@ -262,20 +262,20 @@ public class BindMobileStatusUI
             return;
             bool1 = false;
             break;
-            BindMobileStatusUI.c(BindMobileStatusUI.this).setImageResource(2131231750);
+            BindMobileStatusUI.c(BindMobileStatusUI.this).setImageResource(2131231825);
             break label93;
           }
         }
       });
-      this.jdh.setOnClickListener(new View.OnClickListener()
+      this.kbk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           boolean bool2 = true;
           AppMethodBeat.i(109924);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMobileStatusUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMobileStatusUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           paramAnonymousView = BindMobileStatusUI.this;
           if (!BindMobileStatusUI.d(BindMobileStatusUI.this).booleanValue())
           {
@@ -284,7 +284,7 @@ public class BindMobileStatusUI
             if (!BindMobileStatusUI.d(BindMobileStatusUI.this).booleanValue()) {
               break label173;
             }
-            BindMobileStatusUI.e(BindMobileStatusUI.this).setImageResource(2131689936);
+            BindMobileStatusUI.e(BindMobileStatusUI.this).setImageResource(2131689951);
             label93:
             paramAnonymousView = BindMobileStatusUI.this;
             if (BindMobileStatusUI.d(BindMobileStatusUI.this).booleanValue()) {
@@ -304,19 +304,19 @@ public class BindMobileStatusUI
             return;
             bool1 = false;
             break;
-            BindMobileStatusUI.e(BindMobileStatusUI.this).setImageResource(2131231750);
+            BindMobileStatusUI.e(BindMobileStatusUI.this).setImageResource(2131231825);
             break label93;
           }
         }
       });
-      this.gXc.setOnClickListener(new View.OnClickListener()
+      this.hPX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109925);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMobileStatusUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMobileStatusUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           BindMobileStatusUI.f(BindMobileStatusUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileStatusUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109925);
@@ -324,14 +324,14 @@ public class BindMobileStatusUI
       });
       AppMethodBeat.o(109930);
       return;
-      this.jdk.setVisibility(8);
-      this.jdl.setVisibility(8);
-      if (!this.jdo)
+      this.kbn.setVisibility(8);
+      this.kbo.setVisibility(8);
+      if (!this.kbr)
       {
         bool1 = true;
         label372:
         d(bool1, 512, 8);
-        if (this.jdp) {
+        if (this.kbs) {
           break label411;
         }
       }
@@ -343,15 +343,15 @@ public class BindMobileStatusUI
         bool1 = false;
         break label372;
       }
-      this.jdk.setVisibility(0);
-      this.jdk.setBackgroundResource(2131231182);
-      this.jdl.setVisibility(8);
+      this.kbn.setVisibility(0);
+      this.kbn.setBackgroundResource(2131231233);
+      this.kbo.setVisibility(8);
       break;
-      this.jcR.setVisibility(8);
+      this.kaU.setVisibility(8);
       break label192;
-      this.jcy.setImageResource(2131231175);
-      this.jcR.setVisibility(8);
-      this.gXi.setText(getString(2131756447));
+      this.kaB.setImageResource(2131231226);
+      this.kaU.setVisibility(8);
+      this.hQd.setText(getString(2131756583));
     }
   }
   
@@ -360,17 +360,17 @@ public class BindMobileStatusUI
     AppMethodBeat.i(109927);
     super.onCreate(paramBundle);
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.status = v.aAG();
-    this.jdr.put(8, "settings_find_me_by_mobile");
-    this.jdr.put(7, "settings_recommend_mobilefriends_to_me");
-    this.jdr.put(32, "settings_autoadd_mobilefriends");
+    this.status = z.aUc();
+    this.kbu.put(8, "settings_find_me_by_mobile");
+    this.kbu.put(7, "settings_recommend_mobilefriends_to_me");
+    this.kbu.put(32, "settings_autoadd_mobilefriends");
     d(false, 512, 8);
     d(false, 256, 7);
-    setMMTitle(2131756488);
-    this.jdm = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
-    this.jdn = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
-    this.jdo = getIntent().getBooleanExtra("Kfind_friend_by_mobile_flag", false);
-    this.jdp = getIntent().getBooleanExtra("Krecom_friends_by_mobile_flag", false);
+    setMMTitle(2131756624);
+    this.kbp = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
+    this.kbq = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
+    this.kbr = getIntent().getBooleanExtra("Kfind_friend_by_mobile_flag", false);
+    this.kbs = getIntent().getBooleanExtra("Krecom_friends_by_mobile_flag", false);
     initView();
     AppMethodBeat.o(109927);
   }
@@ -380,7 +380,7 @@ public class BindMobileStatusUI
     AppMethodBeat.i(109931);
     if (paramInt == 4)
     {
-      acs(1);
+      ala(1);
       AppMethodBeat.o(109931);
       return true;
     }
@@ -392,20 +392,20 @@ public class BindMobileStatusUI
   public void onPause()
   {
     AppMethodBeat.i(109928);
-    g.ajR().ajA().set(7, Integer.valueOf(this.status));
-    Iterator localIterator = this.jdq.entrySet().iterator();
+    g.aAh().azQ().set(7, Integer.valueOf(this.status));
+    Iterator localIterator = this.kbt.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
       int j = ((Integer)((Map.Entry)localObject).getValue()).intValue();
-      localObject = new auo();
-      ((auo)localObject).GLx = i;
-      ((auo)localObject).xsz = j;
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new k.a(23, (com.tencent.mm.bw.a)localObject));
-      ae.d("MicroMsg.BindMobileStatusUI", "switch  " + i + " " + j);
+      localObject = new bfx();
+      ((bfx)localObject).LPB = i;
+      ((bfx)localObject).BsD = j;
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(23, (com.tencent.mm.bw.a)localObject));
+      Log.d("MicroMsg.BindMobileStatusUI", "switch  " + i + " " + j);
     }
-    this.jdq.clear();
+    this.kbt.clear();
     super.onPause();
     AppMethodBeat.o(109928);
   }
@@ -418,7 +418,7 @@ public class BindMobileStatusUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMobileStatusUI
  * JD-Core Version:    0.7.0.1
  */

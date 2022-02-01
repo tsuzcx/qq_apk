@@ -1,40 +1,40 @@
 package com.tencent.mm.u;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.h;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.g.b.y.f;
-import d.l;
-import d.z;
+import com.tencent.mm.api.i;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.g.b.z.f;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/engine/FunctionMsgQueue;", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "(Lcom/tencent/mm/engine/FunctionMsgTimer;)V", "lock", "mList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/engine/FunctionMsgTask;", "mMap", "Ljava/util/HashMap;", "", "mTimer", "add", "", "task", "isNeedRemove", "", "old", "new", "loop", "Companion", "plugin-functionmsg_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/engine/FunctionMsgQueue;", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "(Lcom/tencent/mm/engine/FunctionMsgTimer;)V", "lock", "mList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/engine/FunctionMsgTask;", "mMap", "Ljava/util/HashMap;", "", "mTimer", "add", "", "task", "isNeedRemove", "", "old", "new", "loop", "Companion", "plugin-functionmsg_release"})
 public final class c
 {
-  public static final c.a gtj;
-  private final HashMap<String, d> dz;
-  private final e gta;
-  private final LinkedList<d> gti;
+  public static final c.a heT;
+  private final e heK;
+  private final LinkedList<d> heS;
   private final Object lock;
+  private final HashMap<String, d> mMap;
   
   static
   {
     AppMethodBeat.i(114119);
-    gtj = new c.a((byte)0);
+    heT = new c.a((byte)0);
     AppMethodBeat.o(114119);
   }
   
   public c(e parame)
   {
     AppMethodBeat.i(114118);
-    this.gti = new LinkedList();
-    this.dz = new HashMap();
-    this.gta = parame;
+    this.heS = new LinkedList();
+    this.mMap = new HashMap();
+    this.heK = parame;
     this.lock = new Object();
     AppMethodBeat.o(114118);
   }
@@ -47,65 +47,65 @@ public final class c
     {
       synchronized (this.lock)
       {
-        localObject1 = new y.f();
-        ((y.f)localObject1).NiY = null;
-        if (this.dz.containsKey(paramd.gtk.La())) {
-          ((y.f)localObject1).NiY = ((d)this.dz.remove(paramd.gtk.La()));
+        localObject1 = new z.f();
+        ((z.f)localObject1).SYG = null;
+        if (this.mMap.containsKey(paramd.heU.Vk())) {
+          ((z.f)localObject1).SYG = ((d)this.mMap.remove(paramd.heU.Vk()));
         }
-        if ((d)((y.f)localObject1).NiY != null)
+        if ((d)((z.f)localObject1).SYG != null)
         {
-          Object localObject3 = (d)((y.f)localObject1).NiY;
-          if (101 == paramd.dtf)
+          Object localObject3 = (d)((z.f)localObject1).SYG;
+          if (101 == paramd.dKp)
           {
             i = 1;
             if (i != 0)
             {
-              ae.w("FunctionMsg.FunctionMsgQueue", "[add] remove old task[%s]", new Object[] { (d)((y.f)localObject1).NiY });
-              this.gti.remove((d)((y.f)localObject1).NiY);
+              Log.w("FunctionMsg.FunctionMsgQueue", "[add] remove old task[%s]", new Object[] { (d)((z.f)localObject1).SYG });
+              this.heS.remove((d)((z.f)localObject1).SYG);
               localObject3 = new Object[2];
               localObject3[0] = paramd;
-              if ((d)((y.f)localObject1).NiY == null) {
+              if ((d)((z.f)localObject1).SYG == null) {
                 break label371;
               }
-              localObject1 = (d)((y.f)localObject1).NiY;
+              localObject1 = (d)((z.f)localObject1).SYG;
               if (localObject1 != null) {
                 break label368;
               }
               break label371;
               localObject3[1] = localObject1;
-              ae.i("FunctionMsg.FunctionMsgQueue", "[add] add task[%s] old Task[%s]", (Object[])localObject3);
-              this.gti.add(paramd);
-              localObject1 = (Map)this.dz;
-              localObject3 = paramd.gtk.La();
+              Log.i("FunctionMsg.FunctionMsgQueue", "[add] add task[%s] old Task[%s]", (Object[])localObject3);
+              this.heS.add(paramd);
+              localObject1 = (Map)this.mMap;
+              localObject3 = paramd.heU.Vk();
               p.g(localObject3, "task.mItem.functionMsgId");
               ((Map)localObject1).put(localObject3, paramd);
-              paramd = z.Nhr;
+              paramd = x.SXb;
               AppMethodBeat.o(114116);
             }
           }
           else
           {
-            if (1 == paramd.dtf)
+            if (1 == paramd.dKp)
             {
-              if (((d)localObject3).gtk.getVersion() < paramd.gtk.getVersion()) {
+              if (((d)localObject3).heU.getVersion() < paramd.heU.getVersion()) {
                 break label377;
               }
-              if (paramd.gtk.getVersion() != 0L) {
+              if (paramd.heU.getVersion() != 0L) {
                 break label382;
               }
               break label377;
             }
-            if (((d)localObject3).gtk.getVersion() >= paramd.gtk.getVersion()) {
+            if (((d)localObject3).heU.getVersion() >= paramd.heU.getVersion()) {
               break label387;
             }
             i = 1;
             continue;
           }
         }
-        if ((d)((y.f)localObject1).NiY == null) {
+        if ((d)((z.f)localObject1).SYG == null) {
           continue;
         }
-        ae.e("FunctionMsg.FunctionMsgQueue", "[add] is wrong! new task:%s old task:%s", new Object[] { paramd, (d)((y.f)localObject1).NiY });
+        Log.e("FunctionMsg.FunctionMsgQueue", "[add] is wrong! new task:%s old task:%s", new Object[] { paramd, (d)((z.f)localObject1).SYG });
         AppMethodBeat.o(114116);
         return;
       }
@@ -130,31 +130,31 @@ public final class c
     AppMethodBeat.i(114117);
     synchronized (this.lock)
     {
-      ae.i("FunctionMsg.FunctionMsgQueue", "[loop] size:" + this.gti.size());
-      ListIterator localListIterator = this.gti.listIterator();
+      Log.i("FunctionMsg.FunctionMsgQueue", "[loop] size:" + this.heS.size());
+      ListIterator localListIterator = this.heS.listIterator();
       p.g(localListIterator, "mList.listIterator()");
       while (localListIterator.hasNext())
       {
         Object localObject3 = localListIterator.next();
         p.g(localObject3, "iterator.next()");
         localObject3 = (d)localObject3;
-        if (((d)localObject3).gtk.Lg() <= ch.aDa() / 1000L)
+        if (((d)localObject3).heU.Vq() <= cl.aWy() / 1000L)
         {
           localListIterator.remove();
-          this.dz.remove(((d)localObject3).gtk.La());
-          e locale = this.gta;
+          this.mMap.remove(((d)localObject3).heU.Vk());
+          e locale = this.heK;
           p.h(localObject3, "task");
-          locale.gtm.a(((d)localObject3).dtf, (d)localObject3);
+          locale.heW.a(((d)localObject3).dKp, (d)localObject3);
         }
       }
     }
-    z localz = z.Nhr;
+    x localx = x.SXb;
     AppMethodBeat.o(114117);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.u.c
  * JD-Core Version:    0.7.0.1
  */

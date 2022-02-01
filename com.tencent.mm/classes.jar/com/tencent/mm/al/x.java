@@ -1,61 +1,60 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.coi;
-import com.tencent.mm.protocal.protobuf.coj;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dgh;
+import com.tencent.mm.protocal.protobuf.dgi;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Date;
 
 public final class x
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   private Object data;
-  public b rr;
+  public com.tencent.mm.ak.d rr;
   
   public x(d paramd, int paramInt1, int paramInt2, Object paramObject)
   {
     AppMethodBeat.i(124123);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new coi();
-    ((b.a)localObject).hQG = new coj();
-    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/reportpluginstat";
-    ((b.a)localObject).funcId = 2805;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (coi)this.rr.hQD.hQJ;
-    ((coi)localObject).HAj = 1;
-    ((coi)localObject).HAk = paramd.field_wwCorpId;
-    ((coi)localObject).FZY = paramd.field_wwUserVid;
-    g.ajP();
-    ((coi)localObject).HAl = a.getUin();
-    ((coi)localObject).scene = paramInt2;
-    ((coi)localObject).dlO = paramInt1;
-    ((coi)localObject).xts = 0L;
-    ((coi)localObject).HAm = new Date().getTime();
-    ((coi)localObject).platform = 1;
-    ((coi)localObject).Hwp = com.tencent.mm.sdk.platformtools.k.aD(null, com.tencent.mm.protocal.d.FFH);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dgh();
+    ((d.a)localObject).iLO = new dgi();
+    ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/reportpluginstat";
+    ((d.a)localObject).funcId = 2805;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dgh)this.rr.iLK.iLR;
+    ((dgh)localObject).MKU = 1;
+    ((dgh)localObject).MKV = paramd.field_wwCorpId;
+    ((dgh)localObject).KTS = paramd.field_wwUserVid;
+    com.tencent.mm.kernel.g.aAf();
+    ((dgh)localObject).MKW = a.getUin();
+    ((dgh)localObject).scene = paramInt2;
+    ((dgh)localObject).dDe = paramInt1;
+    ((dgh)localObject).Btv = 0L;
+    ((dgh)localObject).MKX = new Date().getTime();
+    ((dgh)localObject).platform = 1;
+    ((dgh)localObject).MFo = ChannelUtil.formatVersion(null, com.tencent.mm.protocal.d.KyO);
     this.data = paramObject;
     AppMethodBeat.o(124123);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(124125);
-    this.callback = paramf;
-    ae.i("MicroMsg.NetSceneEnterprisePushStat", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.NetSceneEnterprisePushStat", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(124125);
     return i;
   }
@@ -65,10 +64,10 @@ public final class x
     return 2805;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(124124);
-    ae.d("MicroMsg.NetSceneEnterprisePushStat", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.NetSceneEnterprisePushStat", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -77,7 +76,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.al.x
  * JD-Core Version:    0.7.0.1
  */

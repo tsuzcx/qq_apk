@@ -4,33 +4,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.model.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"})
 public final class PluginAudio
   extends f
   implements com.tencent.mm.plugin.audio.a.a
 {
-  public static final a nwL;
+  public static final a oHB;
   
   static
   {
-    AppMethodBeat.i(201040);
-    nwL = new a((byte)0);
-    AppMethodBeat.o(201040);
+    AppMethodBeat.i(223933);
+    oHB = new a((byte)0);
+    AppMethodBeat.o(223933);
   }
   
   public final void configure(g paramg)
   {
-    AppMethodBeat.i(201039);
-    if ((paramg != null) && (paramg.akL()))
+    AppMethodBeat.i(223932);
+    if ((paramg != null) && (paramg.aBb()))
     {
-      ae.i("MicroMsg.PluginAudio", "PluginAudio configure");
-      pin((c)new u(com.tencent.mm.plugin.audio.c.a.class));
+      Log.i("MicroMsg.PluginAudio", "PluginAudio configure");
+      pin((c)new y(com.tencent.mm.plugin.audio.c.a.class));
     }
-    AppMethodBeat.o(201039);
+    AppMethodBeat.o(223932);
   }
   
   public final void execute(g paramg) {}
@@ -40,7 +40,7 @@ public final class PluginAudio
     return "plugin-audio";
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
   public static final class a {}
 }
 

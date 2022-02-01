@@ -4,10 +4,10 @@ import android.content.Context;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import java.io.File;
 import java.security.MessageDigest;
 
@@ -55,7 +55,7 @@ public class CertUtil
   private void checkDir(String paramString)
   {
     AppMethodBeat.i(73293);
-    paramString = new k(paramString);
+    paramString = new o(paramString);
     if (!paramString.exists())
     {
       paramString.mkdirs();
@@ -77,7 +77,7 @@ public class CertUtil
     {
       try
       {
-        paramString = new k(paramString);
+        paramString = new o(paramString);
         if (paramString.exists()) {
           continue;
         }
@@ -99,39 +99,39 @@ public class CertUtil
   private boolean del_all_files(String paramString)
   {
     AppMethodBeat.i(73295);
-    k localk = new k(paramString);
-    if (!localk.exists())
+    o localo = new o(paramString);
+    if (!localo.exists())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    if (!localk.isDirectory())
+    if (!localo.isDirectory())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    String[] arrayOfString = localk.list();
+    String[] arrayOfString = localo.list();
     int i = 0;
     boolean bool = false;
     if (i < arrayOfString.length) {
       if (paramString.endsWith("/"))
       {
-        localk = new k(paramString + arrayOfString[i]);
+        localo = new o(paramString + arrayOfString[i]);
         label102:
-        if (!localk.isFile()) {
+        if (!localo.isFile()) {
           break label161;
         }
-        localk.delete();
+        localo.delete();
       }
     }
     for (;;)
     {
       i += 1;
       break;
-      localk = new k(paramString + "/" + arrayOfString[i]);
+      localo = new o(paramString + "/" + arrayOfString[i]);
       break label102;
       label161:
-      if (localk.isDirectory())
+      if (localo.isDirectory())
       {
         del_all_files(paramString + "/" + arrayOfString[i]);
         del_dir(paramString + "/" + arrayOfString[i], true);
@@ -150,7 +150,7 @@ public class CertUtil
     {
       del_all_files(paramString);
       if (paramBoolean) {
-        new k(paramString.toString()).delete();
+        new o(paramString.toString()).delete();
       }
       AppMethodBeat.o(73296);
       return;
@@ -284,8 +284,8 @@ public class CertUtil
   {
     AppMethodBeat.i(73297);
     boolean bool = true;
-    paramString = new k(paramString);
-    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.fTj() == null)) {
+    paramString = new o(paramString);
+    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.het() == null)) {
       bool = false;
     }
     AppMethodBeat.o(73297);
@@ -308,7 +308,7 @@ public class CertUtil
   {
     AppMethodBeat.i(73298);
     boolean bool = true;
-    paramString = new k(paramString);
+    paramString = new o(paramString);
     if ((!paramString.exists()) || (!paramString.isDirectory())) {
       bool = false;
     }
@@ -875,19 +875,19 @@ public class CertUtil
     this.eventListener = paramEventListener;
     this.mContext = paramContext.getApplicationContext();
     TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
-    if (j.IS_FLAVOR_RED) {}
+    if (BuildInfo.IS_FLAVOR_RED) {}
     try
     {
-      ae.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { bu.fpN() });
+      Log.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { Util.getStack() });
       this.imsi = localTelephonyManager.getSubscriberId();
-      ae.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { bu.fpN() });
+      Log.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { Util.getStack() });
       this.iccid = localTelephonyManager.getSimSerialNumber();
-      ae.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { bu.fpN() });
+      Log.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { Util.getStack() });
       this.imei = localTelephonyManager.getDeviceId();
       this.softid = Settings.System.getString(paramContext.getContentResolver(), "android_id");
       label131:
       this.deskey = paramEventListener.getUniqueID();
-      ae.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
+      Log.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
       for (;;)
       {
         this.imei = this.deskey;

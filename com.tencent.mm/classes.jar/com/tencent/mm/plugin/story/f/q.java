@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.story.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.csx;
-import com.tencent.mm.protocal.protobuf.djx;
-import com.tencent.mm.protocal.protobuf.dkg;
-import com.tencent.mm.protocal.protobuf.dkx;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.dlg;
+import com.tencent.mm.protocal.protobuf.edk;
+import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.LinkedList;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper;", "", "()V", "Companion", "ContentObjTAG", "LocationTAG", "MediaObjTAG", "MediaSizeTAG", "TimelineObjectTAG", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper;", "", "()V", "Companion", "ContentObjTAG", "LocationTAG", "MediaObjTAG", "MediaSizeTAG", "TimelineObjectTAG", "plugin-story_release"})
 public final class q
 {
-  public static final a BbV;
+  public static final a FmO;
   private static final String TAG = "MicroMsg.StoryTimelineHelper";
   
   static
   {
     AppMethodBeat.i(118776);
-    BbV = new a((byte)0);
+    FmO = new a((byte)0);
     TAG = "MicroMsg.StoryTimelineHelper";
     AppMethodBeat.o(118776);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "fillContentObj", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "maps", "", "timeLine", "fillLocation", "getMediaObj", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "srcMedia", "id", "mediaType", "", "mediaUrl", "mediaThumb", "mediaUrlType", "mediaThumbType", "desc", "isPrivated", "getNewTimeline", "parserFloat", "", "src", "parserFromXml", "xml", "parserInt", "parserLong", "", "parserString", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "fillContentObj", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "maps", "", "timeLine", "fillLocation", "getMediaObj", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "srcMedia", "id", "mediaType", "", "mediaUrl", "mediaThumb", "mediaUrlType", "mediaThumbType", "desc", "isPrivated", "getNewTimeline", "parserFloat", "", "src", "parserFromXml", "xml", "parserInt", "parserLong", "", "parserString", "plugin-story_release"})
   public static final class a
   {
-    private static String GY(String paramString)
+    private static String PL(String paramString)
     {
       String str = paramString;
       if (paramString == null) {
@@ -38,33 +38,33 @@ public final class q
       return str;
     }
     
-    private static dkx a(dkx paramdkx)
+    private static eek a(eek parameek)
     {
       AppMethodBeat.i(118769);
-      csx localcsx = new csx();
-      localcsx.GgZ = 0.0F;
-      localcsx.Gha = 0.0F;
-      localcsx.jfX = "";
-      localcsx.Hjr = 0;
-      localcsx.GGA = "";
-      localcsx.Ajt = 0;
-      localcsx.Ajr = "";
-      localcsx.jGd = "";
-      localcsx.Hjs = 1;
-      localcsx.Hju = "";
-      localcsx.country = "";
-      paramdkx.HSx = localcsx;
+      dlg localdlg = new dlg();
+      localdlg.LbC = 0.0F;
+      localdlg.LbD = 0.0F;
+      localdlg.kea = "";
+      localdlg.Mpu = 0;
+      localdlg.LIb = "";
+      localdlg.Esb = 0;
+      localdlg.ErZ = "";
+      localdlg.kHV = "";
+      localdlg.Mpv = 1;
+      localdlg.Mpx = "";
+      localdlg.country = "";
+      parameek.NeA = localdlg;
       AppMethodBeat.o(118769);
-      return paramdkx;
+      return parameek;
     }
     
-    private static dkx a(Map<String, String> paramMap, dkx paramdkx)
+    private static eek a(Map<String, String> paramMap, eek parameek)
     {
       AppMethodBeat.i(118770);
-      if (paramdkx.HSy == null) {
-        paramdkx.HSy = new djx();
+      if (parameek.NeB == null) {
+        parameek.NeB = new edk();
       }
-      paramdkx.HSy.Title = GY((String)paramMap.get("contTitle"));
+      parameek.NeB.Title = PL((String)paramMap.get("contTitle"));
       int i = 0;
       Object localObject1;
       Object localObject2;
@@ -81,111 +81,111 @@ public final class q
       if (i != 0)
       {
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str8 = q.c.elY();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str8 = q.c.foA();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str2 = q.c.elZ();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str2 = q.c.foB();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str4 = q.c.ema();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str4 = q.c.foC();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str7 = q.c.emb();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str7 = q.c.foD();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str6 = q.c.emd();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str6 = q.c.foF();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str5 = q.c.emc();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str5 = q.c.foE();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str3 = q.c.eme();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str3 = q.c.foG();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        str1 = q.c.emf();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        str1 = q.c.foH();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        localObject3 = q.c.emg();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        localObject3 = q.c.foI();
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        ((StringBuilder)localObject1).append(q.c.elX()).append(i);
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        ((StringBuilder)localObject1).append(q.c.foz()).append(i);
         localObject1 = new StringBuilder();
-        localObject2 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject2 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject2 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject2 = q.c.Bco;
-        localObject2 = q.c.emh();
+        localObject2 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject2 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject2 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject2 = q.c.Fnh;
+        localObject2 = q.c.foJ();
         localObject1 = new StringBuilder();
-        localObject4 = q.d.Bcw;
-        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-        localObject4 = q.b.BbX;
-        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-        localObject4 = q.c.Bco;
-        localObject1 = ((StringBuilder)localObject1).append(q.c.elX()).append(i);
-        localObject4 = q.c.Bco;
-        localObject1 = q.c.emi();
+        localObject4 = q.d.Fnp;
+        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+        localObject4 = q.b.FmQ;
+        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+        localObject4 = q.c.Fnh;
+        localObject1 = ((StringBuilder)localObject1).append(q.c.foz()).append(i);
+        localObject4 = q.c.Fnh;
+        localObject1 = q.c.foK();
         label943:
         str8 = (String)paramMap.get(str8);
         str2 = (String)paramMap.get(str2);
@@ -248,130 +248,130 @@ public final class q
                       if ((str2 == null) || (str8 == null))
                       {
                         AppMethodBeat.o(118770);
-                        return paramdkx;
+                        return parameek;
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str8 = q.c.elY();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str8 = q.c.foA();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str2 = q.c.elZ();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str2 = q.c.foB();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str4 = q.c.ema();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str4 = q.c.foC();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str7 = q.c.emb();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str7 = q.c.foD();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str6 = q.c.emd();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str6 = q.c.foF();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str5 = q.c.emc();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str5 = q.c.foE();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str3 = q.c.eme();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str3 = q.c.foG();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        str1 = q.c.emf();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        str1 = q.c.foH();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        localObject3 = q.c.emg();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        localObject3 = q.c.foI();
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        ((StringBuilder)localObject1).append(q.c.elX());
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        ((StringBuilder)localObject1).append(q.c.foz());
                         localObject1 = new StringBuilder();
-                        localObject2 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject2 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject2 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject2 = q.c.Bco;
-                        localObject2 = q.c.emh();
+                        localObject2 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject2 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject2 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject2 = q.c.Fnh;
+                        localObject2 = q.c.foJ();
                         localObject1 = new StringBuilder();
-                        localObject4 = q.d.Bcw;
-                        localObject1 = ((StringBuilder)localObject1).append(q.d.emm());
-                        localObject4 = q.b.BbX;
-                        localObject1 = ((StringBuilder)localObject1).append(q.b.elW());
-                        localObject4 = q.c.Bco;
-                        localObject1 = ((StringBuilder)localObject1).append(q.c.elX());
-                        localObject4 = q.c.Bco;
-                        localObject1 = q.c.emi();
+                        localObject4 = q.d.Fnp;
+                        localObject1 = ((StringBuilder)localObject1).append(q.d.foO());
+                        localObject4 = q.b.FmQ;
+                        localObject1 = ((StringBuilder)localObject1).append(q.b.foy());
+                        localObject4 = q.c.Fnh;
+                        localObject1 = ((StringBuilder)localObject1).append(q.c.foz());
+                        localObject4 = q.c.Fnh;
+                        localObject1 = q.c.foK();
                         break label943;
                       }
-                      localObject3 = new dkg();
-                      ((dkg)localObject3).Id = GY(str8);
-                      ((dkg)localObject3).nJA = bu.getInt(str2, 0);
-                      ((dkg)localObject3).Url = GY(str4);
-                      ((dkg)localObject3).GXH = bu.getInt(str5, 0);
-                      ((dkg)localObject3).Hmj = GY(str6);
-                      ((dkg)localObject3).Hmk = bu.getInt(str3, 0);
-                      ((dkg)localObject3).subType = bu.getInt(str1, 0);
-                      ((dkg)localObject3).md5 = GY((String)localObject2);
-                      ((dkg)localObject3).HmE = GY(str7);
+                      localObject3 = new edt();
+                      ((edt)localObject3).Id = PL(str8);
+                      ((edt)localObject3).oUv = Util.getInt(str2, 0);
+                      ((edt)localObject3).Url = PL(str4);
+                      ((edt)localObject3).Mcw = Util.getInt(str5, 0);
+                      ((edt)localObject3).Msz = PL(str6);
+                      ((edt)localObject3).MsA = Util.getInt(str3, 0);
+                      ((edt)localObject3).subType = Util.getInt(str1, 0);
+                      ((edt)localObject3).md5 = PL((String)localObject2);
+                      ((edt)localObject3).MsS = PL(str7);
                       if (localObject1 == null) {}
-                      for (float f = 0.0F;; f = bu.getFloat((String)localObject1, 0.0F))
+                      for (float f = 0.0F;; f = Util.getFloat((String)localObject1, 0.0F))
                       {
-                        ((dkg)localObject3).HSb = f;
-                        paramdkx.HSy.Gtx.add(localObject3);
+                        ((edt)localObject3).Ned = f;
+                        parameek.NeB.LoV.add(localObject3);
                         i += 1;
                         break;
                       }
@@ -385,23 +385,23 @@ public final class q
       }
     }
     
-    public static dkx aDg(String paramString)
+    public static eek aSb(String paramString)
     {
       AppMethodBeat.i(118772);
       p.h(paramString, "xml");
-      paramString = bx.M(paramString, "StoryObject");
+      paramString = XmlParser.parseXml(paramString, "StoryObject", null);
       if (paramString != null)
       {
-        dkx localdkx = elV();
-        q.d locald = q.d.Bcw;
-        localdkx.Id = GY((String)paramString.get(q.d.emj()));
-        locald = q.d.Bcw;
-        localdkx.nIJ = GY((String)paramString.get(q.d.emk()));
-        locald = q.d.Bcw;
-        localdkx.CreateTime = bu.getInt((String)paramString.get(q.d.eml()), 0);
-        locald = q.d.Bcw;
-        localdkx.HSA = bu.getInt((String)paramString.get(q.d.emn()), 0);
-        paramString = a(paramString, a(localdkx));
+        eek localeek = fox();
+        q.d locald = q.d.Fnp;
+        localeek.Id = PL((String)paramString.get(q.d.foL()));
+        locald = q.d.Fnp;
+        localeek.UserName = PL((String)paramString.get(q.d.foM()));
+        locald = q.d.Fnp;
+        localeek.CreateTime = Util.getInt((String)paramString.get(q.d.foN()), 0);
+        locald = q.d.Fnp;
+        localeek.NeD = Util.getInt((String)paramString.get(q.d.foP()), 0);
+        paramString = a(paramString, a(localeek));
         AppMethodBeat.o(118772);
         return paramString;
       }
@@ -409,183 +409,203 @@ public final class q
       return null;
     }
     
-    public static dkx elV()
+    public static eek fox()
     {
       AppMethodBeat.i(118771);
-      dkx localdkx = new dkx();
-      djx localdjx = new djx();
-      csx localcsx = new csx();
-      localcsx.Gha = 0.0F;
-      localcsx.GgZ = 0.0F;
-      localdkx.HSx = localcsx;
-      localdkx.HSy = localdjx;
-      localdkx.Id = "";
-      localdkx.CreateTime = 0;
+      eek localeek = new eek();
+      edk localedk = new edk();
+      dlg localdlg = new dlg();
+      localdlg.LbD = 0.0F;
+      localdlg.LbC = 0.0F;
+      localeek.NeA = localdlg;
+      localeek.NeB = localedk;
+      localeek.Id = "";
+      localeek.CreateTime = 0;
       AppMethodBeat.o(118771);
-      return localdkx;
+      return localeek;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$MediaObjTAG;", "", "()V", "XML_DESC", "", "getXML_DESC", "()Ljava/lang/String;", "XML_DURATION", "getXML_DURATION", "XML_PRIVATED", "getXML_PRIVATED", "XML_SIZE", "getXML_SIZE", "XML_SUBTYPE", "getXML_SUBTYPE", "XML_TAG", "getXML_TAG", "XML_THUMB", "getXML_THUMB", "XML_THUMBTYPE", "getXML_THUMBTYPE", "XML_TITLE", "getXML_TITLE", "XML_TYPE", "getXML_TYPE", "XML_URL", "getXML_URL", "XML_URLTYPE", "getXML_URLTYPE", "XML_URL_MD5", "getXML_URL_MD5", "XML_USERDATA", "getXML_USERDATA", "XML_VIDEOMD5", "getXML_VIDEOMD5", "XML_id", "getXML_id", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$ContentObjTAG;", "", "()V", "XML_MEDIALIST", "", "getXML_MEDIALIST", "()Ljava/lang/String;", "plugin-story_release"})
+  public static final class b
+  {
+    private static final String FmP = ".mediaList";
+    public static final b FmQ;
+    
+    static
+    {
+      AppMethodBeat.i(118773);
+      FmQ = new b();
+      FmP = ".mediaList";
+      AppMethodBeat.o(118773);
+    }
+    
+    public static String foy()
+    {
+      return FmP;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$MediaObjTAG;", "", "()V", "XML_DESC", "", "getXML_DESC", "()Ljava/lang/String;", "XML_DURATION", "getXML_DURATION", "XML_PRIVATED", "getXML_PRIVATED", "XML_SIZE", "getXML_SIZE", "XML_SUBTYPE", "getXML_SUBTYPE", "XML_TAG", "getXML_TAG", "XML_THUMB", "getXML_THUMB", "XML_THUMBTYPE", "getXML_THUMBTYPE", "XML_TITLE", "getXML_TITLE", "XML_TYPE", "getXML_TYPE", "XML_URL", "getXML_URL", "XML_URLTYPE", "getXML_URLTYPE", "XML_URL_MD5", "getXML_URL_MD5", "XML_USERDATA", "getXML_USERDATA", "XML_VIDEOMD5", "getXML_VIDEOMD5", "XML_id", "getXML_id", "plugin-story_release"})
   public static final class c
   {
-    private static final String BbY = ".media";
-    private static final String BbZ = ".id";
-    private static final String Bca = ".type";
-    private static final String Bcb = ".title";
-    private static final String Bcc = ".description";
-    private static final String Bcd = ".url";
-    private static final String Bce = ".url.$videomd5";
-    private static final String Bcf = ".url.$type";
-    private static final String Bcg = ".thumb";
-    private static final String Bch = ".thumb.$type";
-    private static final String Bci = ".private";
-    private static final String Bcj = ".size";
-    private static final String Bck = ".subType";
-    private static final String Bcl = ".userData";
-    private static final String Bcm = ".url.$md5";
-    private static final String Bcn = ".duration";
-    public static final c Bco;
+    private static final String FmR = ".media";
+    private static final String FmS = ".id";
+    private static final String FmT = ".type";
+    private static final String FmU = ".title";
+    private static final String FmV = ".description";
+    private static final String FmW = ".url";
+    private static final String FmX = ".url.$videomd5";
+    private static final String FmY = ".url.$type";
+    private static final String FmZ = ".thumb";
+    private static final String Fna = ".thumb.$type";
+    private static final String Fnb = ".private";
+    private static final String Fnc = ".size";
+    private static final String Fnd = ".subType";
+    private static final String Fne = ".userData";
+    private static final String Fnf = ".url.$md5";
+    private static final String Fng = ".duration";
+    public static final c Fnh;
     
     static
     {
       AppMethodBeat.i(118774);
-      Bco = new c();
-      BbY = ".media";
-      BbZ = ".id";
-      Bca = ".type";
-      Bcb = ".title";
-      Bcc = ".description";
-      Bcd = ".url";
-      Bce = ".url.$videomd5";
-      Bcf = ".url.$type";
-      Bcg = ".thumb";
-      Bch = ".thumb.$type";
-      Bci = ".private";
-      Bcj = ".size";
-      Bck = ".subType";
-      Bcl = ".userData";
-      Bcm = ".url.$md5";
-      Bcn = ".duration";
+      Fnh = new c();
+      FmR = ".media";
+      FmS = ".id";
+      FmT = ".type";
+      FmU = ".title";
+      FmV = ".description";
+      FmW = ".url";
+      FmX = ".url.$videomd5";
+      FmY = ".url.$type";
+      FmZ = ".thumb";
+      Fna = ".thumb.$type";
+      Fnb = ".private";
+      Fnc = ".size";
+      Fnd = ".subType";
+      Fne = ".userData";
+      Fnf = ".url.$md5";
+      Fng = ".duration";
       AppMethodBeat.o(118774);
     }
     
-    public static String elX()
+    public static String foA()
     {
-      return BbY;
+      return FmS;
     }
     
-    public static String elY()
+    public static String foB()
     {
-      return BbZ;
+      return FmT;
     }
     
-    public static String elZ()
+    public static String foC()
     {
-      return Bca;
+      return FmW;
     }
     
-    public static String ema()
+    public static String foD()
     {
-      return Bcd;
+      return FmX;
     }
     
-    public static String emb()
+    public static String foE()
     {
-      return Bce;
+      return FmY;
     }
     
-    public static String emc()
+    public static String foF()
     {
-      return Bcf;
+      return FmZ;
     }
     
-    public static String emd()
+    public static String foG()
     {
-      return Bcg;
+      return Fna;
     }
     
-    public static String eme()
+    public static String foH()
     {
-      return Bch;
+      return Fnd;
     }
     
-    public static String emf()
+    public static String foI()
     {
-      return Bck;
+      return Fne;
     }
     
-    public static String emg()
+    public static String foJ()
     {
-      return Bcl;
+      return Fnf;
     }
     
-    public static String emh()
+    public static String foK()
     {
-      return Bcm;
+      return Fng;
     }
     
-    public static String emi()
+    public static String foz()
     {
-      return Bcn;
+      return FmR;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$TimelineObjectTAG;", "", "()V", "TAG_CONTENTDESC", "", "getTAG_CONTENTDESC", "()Ljava/lang/String;", "TAG_CONTENTOBJ", "getTAG_CONTENTOBJ", "TAG_CREATETIME", "getTAG_CREATETIME", "TAG_ID", "getTAG_ID", "TAG_LOCATION", "getTAG_LOCATION", "TAG_SCOPE", "getTAG_SCOPE", "TAG_USERNAME", "getTAG_USERNAME", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$TimelineObjectTAG;", "", "()V", "TAG_CONTENTDESC", "", "getTAG_CONTENTDESC", "()Ljava/lang/String;", "TAG_CONTENTOBJ", "getTAG_CONTENTOBJ", "TAG_CREATETIME", "getTAG_CREATETIME", "TAG_ID", "getTAG_ID", "TAG_LOCATION", "getTAG_LOCATION", "TAG_SCOPE", "getTAG_SCOPE", "TAG_USERNAME", "getTAG_USERNAME", "plugin-story_release"})
   public static final class d
   {
-    private static final String Bcp = ".StoryObject.id";
-    private static final String Bcq = ".StoryObject.username";
-    private static final String Bcr = ".StoryObject.createTime";
-    private static final String Bcs = ".StoryObject.contentDesc";
-    private static final String Bct = ".StoryObject.location";
-    private static final String Bcu = ".StoryObject.ContentObject";
-    private static final String Bcv = ".StoryObject.scope";
-    public static final d Bcw;
+    private static final String Fni = ".StoryObject.id";
+    private static final String Fnj = ".StoryObject.username";
+    private static final String Fnk = ".StoryObject.createTime";
+    private static final String Fnl = ".StoryObject.contentDesc";
+    private static final String Fnm = ".StoryObject.location";
+    private static final String Fnn = ".StoryObject.ContentObject";
+    private static final String Fno = ".StoryObject.scope";
+    public static final d Fnp;
     
     static
     {
       AppMethodBeat.i(118775);
-      Bcw = new d();
-      Bcp = ".StoryObject.id";
-      Bcq = ".StoryObject.username";
-      Bcr = ".StoryObject.createTime";
-      Bcs = ".StoryObject.contentDesc";
-      Bct = ".StoryObject.location";
-      Bcu = ".StoryObject.ContentObject";
-      Bcv = ".StoryObject.scope";
+      Fnp = new d();
+      Fni = ".StoryObject.id";
+      Fnj = ".StoryObject.username";
+      Fnk = ".StoryObject.createTime";
+      Fnl = ".StoryObject.contentDesc";
+      Fnm = ".StoryObject.location";
+      Fnn = ".StoryObject.ContentObject";
+      Fno = ".StoryObject.scope";
       AppMethodBeat.o(118775);
     }
     
-    public static String emj()
+    public static String foL()
     {
-      return Bcp;
+      return Fni;
     }
     
-    public static String emk()
+    public static String foM()
     {
-      return Bcq;
+      return Fnj;
     }
     
-    public static String eml()
+    public static String foN()
     {
-      return Bcr;
+      return Fnk;
     }
     
-    public static String emm()
+    public static String foO()
     {
-      return Bcu;
+      return Fnn;
     }
     
-    public static String emn()
+    public static String foP()
     {
-      return Bcv;
+      return Fno;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.q
  * JD-Core Version:    0.7.0.1
  */

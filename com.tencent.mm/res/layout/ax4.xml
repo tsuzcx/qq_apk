@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/e95" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/ea6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="215.0dip" />
-    <com.tencent.mm.ui.base.MMPageControlView android:gravity="center" android:id="@id/cqh" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:background="@drawable/aon" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentTop="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip">
+            <Button android:id="@id/aeb" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="54.0dip" android:text="@string/e8t" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/qt" />
+            <LinearLayout android:gravity="center|left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_toLeftOf="@id/aeb" android:layout_toRightOf="@id/aeb" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_toStartOf="@id/aeb">
+                <LinearLayout android:id="@id/enu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+                    <TextView android:textSize="36.0dip" android:textColor="@color/a2x" android:id="@id/iwd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textSize="18.0dip" android:textColor="@color/a2x" android:id="@id/iwc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:id="@id/iwa" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/afp" android:id="@id/iwb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <View android:layout_width="fill_parent" android:layout_height="20.0dip" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

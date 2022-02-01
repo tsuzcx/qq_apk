@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  public List<l> EYR;
-  public int EYS;
+  public List<l> JPJ;
+  public int JPK;
   public String token;
   
   public e(String paramString)
@@ -35,7 +35,7 @@ public final class e
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72306);
-    ae.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    Log.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72306);
@@ -46,7 +46,7 @@ public final class e
       try
       {
         this.token = paramJSONObject.getString("session_key");
-        this.EYS = paramJSONObject.optInt("answer_times_left", -1);
+        this.JPK = paramJSONObject.optInt("answer_times_left", -1);
         paramString = paramJSONObject.getJSONArray("Array");
         if ((paramString == null) || (paramString.length() <= 0)) {
           break label314;
@@ -59,14 +59,14 @@ public final class e
           JSONObject localJSONObject = paramString.getJSONObject(paramInt);
           l locall = new l();
           locall.id = localJSONObject.getString("qt_id");
-          locall.EZk = localJSONObject.getString("parent_id");
+          locall.JQc = localJSONObject.getString("parent_id");
           locall.type = localJSONObject.getString("qt_type");
           locall.desc = localJSONObject.getString("qt_cont");
-          locall.EZl = localJSONObject.getInt("ans_len");
-          locall.oIr = localJSONObject.getString("wording");
+          locall.JQd = localJSONObject.getInt("ans_len");
+          locall.pWf = localJSONObject.getString("wording");
           locall.level = localJSONObject.getInt("level");
-          if ((paramJSONObject.containsKey(locall.EZk)) && (!"0".equals(locall.EZk))) {
-            ((l)paramJSONObject.get(locall.EZk)).EZm = locall;
+          if ((paramJSONObject.containsKey(locall.JQc)) && (!"0".equals(locall.JQc))) {
+            ((l)paramJSONObject.get(locall.JQc)).JQe = locall;
           } else {
             paramJSONObject.put(locall.id, locall);
           }
@@ -74,11 +74,11 @@ public final class e
       }
       catch (JSONException paramString)
       {
-        ae.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+        Log.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
         AppMethodBeat.o(72306);
         return;
       }
-      this.EYR = new ArrayList(paramJSONObject.values());
+      this.JPJ = new ArrayList(paramJSONObject.values());
       paramJSONObject.clear();
       label314:
       AppMethodBeat.o(72306);
@@ -89,7 +89,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.e
  * JD-Core Version:    0.7.0.1
  */

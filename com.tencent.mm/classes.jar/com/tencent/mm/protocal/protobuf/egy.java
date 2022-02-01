@@ -5,62 +5,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class egy
   extends com.tencent.mm.bw.a
 {
-  public int FJl;
-  public String HgU;
+  public int NgJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123681);
+    AppMethodBeat.i(187469);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FJl);
-      if (this.HgU != null) {
-        paramVarArgs.d(2, this.HgU);
-      }
-      AppMethodBeat.o(123681);
+      ((g.a.a.c.a)paramVarArgs[0]).aM(1, this.NgJ);
+      AppMethodBeat.o(187469);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.FJl) + 0;
-      paramInt = i;
-      if (this.HgU != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.HgU);
-      }
-      AppMethodBeat.o(123681);
-      return paramInt;
+      paramInt = g.a.a.b.b.a.bu(1, this.NgJ);
+      AppMethodBeat.o(187469);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(123681);
+      AppMethodBeat.o(187469);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       egy localegy = (egy)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(123681);
+        AppMethodBeat.o(187469);
         return -1;
-      case 1: 
-        localegy.FJl = locala.OmT.zc();
-        AppMethodBeat.o(123681);
-        return 0;
       }
-      localegy.HgU = locala.OmT.readString();
-      AppMethodBeat.o(123681);
+      localegy.NgJ = locala.UbS.zi();
+      AppMethodBeat.o(187469);
       return 0;
     }
-    AppMethodBeat.o(123681);
+    AppMethodBeat.o(187469);
     return -1;
   }
 }

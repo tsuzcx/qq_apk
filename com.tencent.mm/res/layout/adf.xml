@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.view.HardTouchableLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/eg9" android:background="@drawable/a0f" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct">
+        <com.tencent.neattextview.textview.view.NeatTextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/egb" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="aaa" android:includeFontPadding="false" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</com.tencent.mm.view.HardTouchableLayout>

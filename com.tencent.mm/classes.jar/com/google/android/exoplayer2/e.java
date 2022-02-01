@@ -6,14 +6,14 @@ import java.io.IOException;
 public final class e
   extends Exception
 {
-  public final int bcb;
+  public final int bbY;
   public final int type;
   
   private e(int paramInt1, Throwable paramThrowable, int paramInt2)
   {
     super(null, paramThrowable);
     this.type = paramInt1;
-    this.bcb = paramInt2;
+    this.bbY = paramInt2;
   }
   
   public static e a(IOException paramIOException)
@@ -42,7 +42,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.e
  * JD-Core Version:    0.7.0.1
  */

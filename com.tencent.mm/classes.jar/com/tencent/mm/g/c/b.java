@@ -2,25 +2,25 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class b
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eED = "insertmsg".hashCode();
-  private static final int eEJ = "billNo".hashCode();
-  private static final int eEK = "localMsgId".hashCode();
-  private static final int eEL = "status".hashCode();
+  private static final int fjd = "insertmsg".hashCode();
+  private static final int fjj = "billNo".hashCode();
+  private static final int fjk = "localMsgId".hashCode();
+  private static final int fjl = "status".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEG = true;
-  private boolean eEH = true;
-  private boolean eEI = true;
-  private boolean eEz = true;
+  private boolean fiZ = true;
   public String field_billNo;
   public boolean field_insertmsg;
   public long field_localMsgId;
   public int field_status;
+  private boolean fjg = true;
+  private boolean fjh = true;
+  private boolean fji = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +35,11 @@ public abstract class b
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEJ != k) {
+      if (fjj != k) {
         break label65;
       }
       this.field_billNo = paramCursor.getString(i);
-      this.eEG = true;
+      this.fjg = true;
     }
     for (;;)
     {
@@ -47,7 +47,7 @@ public abstract class b
       break label20;
       break;
       label65:
-      if (eED == k)
+      if (fjd == k)
       {
         if (paramCursor.getInt(i) != 0) {}
         for (boolean bool = true;; bool = false)
@@ -56,9 +56,9 @@ public abstract class b
           break;
         }
       }
-      if (eEK == k) {
+      if (fjk == k) {
         this.field_localMsgId = paramCursor.getLong(i);
-      } else if (eEL == k) {
+      } else if (fjl == k) {
         this.field_status = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -69,16 +69,16 @@ public abstract class b
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eEG) {
+    if (this.fjg) {
       localContentValues.put("billNo", this.field_billNo);
     }
-    if (this.eEz) {
+    if (this.fiZ) {
       localContentValues.put("insertmsg", Boolean.valueOf(this.field_insertmsg));
     }
-    if (this.eEH) {
+    if (this.fjh) {
       localContentValues.put("localMsgId", Long.valueOf(this.field_localMsgId));
     }
-    if (this.eEI) {
+    if (this.fji) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.systemRowid > 0L) {
@@ -89,7 +89,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.b
  * JD-Core Version:    0.7.0.1
  */

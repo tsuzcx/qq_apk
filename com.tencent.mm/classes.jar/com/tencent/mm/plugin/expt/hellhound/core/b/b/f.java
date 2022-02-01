@@ -5,12 +5,12 @@ import com.tencent.mm.plugin.expt.hellhound.core.d;
 
 final class f
 {
-  e qZR;
+  e sAi;
   
   f(d paramd)
   {
     AppMethodBeat.i(121995);
-    this.qZR = new e(paramd);
+    this.sAi = new e(paramd);
     AppMethodBeat.o(121995);
   }
 }

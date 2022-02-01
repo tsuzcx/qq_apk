@@ -25,12 +25,12 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.at;
 import com.tenpay.ndk.Encrypt;
 import java.lang.reflect.Field;
 import java.util.regex.Matcher;
@@ -204,16 +204,16 @@ public final class TenpaySecureEditText
         AppMethodBeat.o(73225);
         return;
       }
-      j = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
+      j = a.fromDPToPix(getContext(), 8);
       while (i < PASSWD_LENGTH)
       {
         float f1 = (k + j) * i;
         float f2 = k + f1;
         RectF localRectF = new RectF(f1, 0.0F, f2, k);
-        float f3 = com.tencent.mm.cb.a.fromDPToPix(getContext(), 4);
+        float f3 = a.fromDPToPix(getContext(), 4);
         paramCanvas.drawRoundRect(localRectF, f3, f3, this.mPasswdBgPaint);
         if (i < n) {
-          paramCanvas.drawCircle((f1 + f2) / 2.0F, k / 2.0F, com.tencent.mm.cb.a.fromDPToPix(getContext(), 4), this.mPaintBackground);
+          paramCanvas.drawCircle((f1 + f2) / 2.0F, k / 2.0F, a.fromDPToPix(getContext(), 4), this.mPaintBackground);
         }
         i += 1;
       }
@@ -239,10 +239,10 @@ public final class TenpaySecureEditText
     for (;;)
     {
       localObject2 = localObject1;
-      if (!bu.isNullOrNil(this.regExFilterInput))
+      if (!Util.isNullOrNil(this.regExFilterInput))
       {
         localObject2 = Pattern.compile(this.regExFilterInput).matcher((CharSequence)localObject1).replaceAll("").trim();
-        ae.i("TenpaySecureEditText", "use filter");
+        Log.i("TenpaySecureEditText", "use filter");
       }
       AppMethodBeat.o(73232);
       return localObject2;
@@ -332,9 +332,9 @@ public final class TenpaySecureEditText
   public static void setSalt(String paramString)
   {
     AppMethodBeat.i(73231);
-    ae.i("TenpaySecureEditText", "check salt: %s", new Object[] { paramString });
-    if ((Integer.decode(j.hju).intValue() & 0xFF) < 48) {
-      ae.i("TenpaySecureEditText", "check salt stack: %s", new Object[] { bu.fpN() });
+    Log.i("TenpaySecureEditText", "check salt: %s", new Object[] { paramString });
+    if ((Integer.decode(BuildInfo.CLIENT_VERSION).intValue() & 0xFF) < 48) {
+      Log.i("TenpaySecureEditText", "check salt stack: %s", new Object[] { Util.getStack() });
     }
     mTimeStamp = paramString;
     AppMethodBeat.o(73231);
@@ -433,7 +433,7 @@ public final class TenpaySecureEditText
       AppMethodBeat.o(73234);
       return null;
     }
-    ae.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
+    Log.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
     if (this.mIEncrypt != null)
     {
       if (paramBoolean2)
@@ -859,7 +859,7 @@ public final class TenpaySecureEditText
       this.mTitlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, 0));
       this.mTitlePaint.setAntiAlias(true);
       this.mTitlePaint.setTextSize(getTextSize());
-      this.mIDCardPaint.setColor(getResources().getColor(2131100018));
+      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
     }
     AppMethodBeat.o(73221);
   }
@@ -896,14 +896,23 @@ public final class TenpaySecureEditText
         continue;
         this.mClearBtnImg.setBounds(0, 0, this.mClearBtnImg.getIntrinsicWidth(), this.mClearBtnImg.getIntrinsicHeight());
       }
-      setOnFocusChangeListener(new TenpaySecureEditText.4(this));
-      setOnTouchListener(new TenpaySecureEditText.5(this));
+      setOnFocusChangeListener(new View.OnFocusChangeListener()
+      {
+        public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean) {}
+      });
+      setOnTouchListener(new View.OnTouchListener()
+      {
+        public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          return false;
+        }
+      });
       AppMethodBeat.o(174540);
     }
     if (this.mClearBtnImg != null) {
       if ((paramInt3 != 0) && (paramInt4 != 0))
       {
-        this.mClearBtnImg.setBounds(0, 0, aq.fromDPToPix(getContext(), paramInt3), aq.fromDPToPix(getContext(), paramInt4));
+        this.mClearBtnImg.setBounds(0, 0, at.fromDPToPix(getContext(), paramInt3), at.fromDPToPix(getContext(), paramInt4));
         setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
           public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
@@ -923,15 +932,9 @@ public final class TenpaySecureEditText
         });
         setOnTouchListener(new View.OnTouchListener()
         {
-          private byte _hellAccFlag_;
-          
           public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
             AppMethodBeat.i(73205);
-            b localb = new b();
-            localb.bd(paramAnonymousView);
-            localb.bd(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
             if ((TenpaySecureEditText.EditState.PASSWORD != TenpaySecureEditText.this.mEditState) && (TenpaySecureEditText.EditState.CVV_PAYMENT != TenpaySecureEditText.this.mEditState) && (TenpaySecureEditText.EditState.CVV_4_PAYMENT != TenpaySecureEditText.this.mEditState))
             {
               paramAnonymousView = TenpaySecureEditText.this;
@@ -940,13 +943,11 @@ public final class TenpaySecureEditText
               }
               if (paramAnonymousView.getCompoundDrawables()[2] == null)
               {
-                com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
                 AppMethodBeat.o(73205);
                 return false;
               }
               if (paramAnonymousMotionEvent.getAction() != 1)
               {
-                com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
                 AppMethodBeat.o(73205);
                 return false;
               }
@@ -954,7 +955,6 @@ public final class TenpaySecureEditText
                 paramAnonymousView.setText("");
               }
             }
-            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(73205);
             return false;
           }
@@ -1020,7 +1020,7 @@ public final class TenpaySecureEditText
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      this.mIDCardPaint.setColor(getResources().getColor(2131100018));
+      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
       this.mEditState = EditState.CVV_4_PAYMENT;
       AppMethodBeat.o(73219);
       return;
@@ -1040,7 +1040,7 @@ public final class TenpaySecureEditText
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      this.mIDCardPaint.setColor(getResources().getColor(2131100018));
+      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
       this.mEditState = EditState.CVV_PAYMENT;
       AppMethodBeat.o(73218);
       return;
@@ -1064,7 +1064,7 @@ public final class TenpaySecureEditText
       this.mIDCardPaint.setTextAlign(Paint.Align.CENTER);
       this.mIDCardPaint.setAntiAlias(true);
       this.mIDCardPaint.setTextSize(getTextSize());
-      this.mIDCardPaint.setColor(getResources().getColor(2131100018));
+      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
       AppMethodBeat.o(73217);
       return;
     }
@@ -1085,50 +1085,50 @@ public final class TenpaySecureEditText
   
   public final void setIsPasswordFormat(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(190261);
+    AppMethodBeat.i(214353);
     if (paramBoolean1)
     {
       this.mNewPwdStyle = paramBoolean2;
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      if (al.isDarkMode())
+      if (ao.isDarkMode())
       {
-        this.mPaintBackground.setColor(getResources().getColor(2131099673));
+        this.mPaintBackground.setColor(getResources().getColor(2131099679));
         this.mEditState = EditState.PASSWORD;
         this.mPasswdSeparedPaint = new Paint(1);
         this.mPasswdSeparedPaint.setStyle(Paint.Style.STROKE);
         this.mPasswdSeparedPaint.setStrokeWidth(1.5F);
-        if (!al.isDarkMode()) {
+        if (!ao.isDarkMode()) {
           break label213;
         }
-        this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099737));
+        this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099751));
       }
       for (;;)
       {
         this.mPasswdBgPaint = new Paint(1);
         this.mPasswdBgPaint.setStyle(Paint.Style.FILL);
-        if (!al.isDarkMode()) {
+        if (!ao.isDarkMode()) {
           break label233;
         }
         this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-        AppMethodBeat.o(190261);
+        AppMethodBeat.o(214353);
         return;
         this.mPaintBackground.setColor(getResources().getColor(2131099654));
         break;
         label213:
-        this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099736));
+        this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099750));
       }
       label233:
       this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-      AppMethodBeat.o(190261);
+      AppMethodBeat.o(214353);
       return;
     }
     this.mPaintBackground = null;
     if (EditState.PASSWORD == this.mEditState) {
       this.mEditState = EditState.DEFAULT;
     }
-    AppMethodBeat.o(190261);
+    AppMethodBeat.o(214353);
   }
   
   public final void setIsSecurityAnswerFormat(boolean paramBoolean)
@@ -1217,7 +1217,7 @@ public final class TenpaySecureEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpaySecureEditText
  * JD-Core Version:    0.7.0.1
  */

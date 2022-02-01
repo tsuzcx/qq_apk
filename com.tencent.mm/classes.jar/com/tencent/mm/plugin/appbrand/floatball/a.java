@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.appbrand.floatball;
 
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.d.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningOperationParcel;
@@ -12,304 +11,305 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.h;
 import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.ball.f.c.a;
 import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.ball.ui.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Objects;
 
 public final class a
   extends com.tencent.mm.plugin.ball.service.f
 {
-  final String crG;
-  final p jAF;
-  private final com.tencent.mm.plugin.appbrand.backgroundrunning.f kmE;
-  volatile boolean kmF;
-  private f.b kmG;
+  final String cDW;
+  final q kBw;
+  private final com.tencent.mm.plugin.appbrand.backgroundrunning.f lqo;
+  volatile boolean lqp;
+  private f.b lqq;
   
-  public a(com.tencent.mm.plugin.ball.a.f paramf, p paramp)
+  public a(com.tencent.mm.plugin.ball.a.f paramf, q paramq)
   {
     super(paramf);
-    AppMethodBeat.i(222253);
-    this.crG = ("MicroMsg.AppBrand.AppBrandAudioOfVideoBackgroundPlayFloatBallHelper#" + hashCode());
-    this.kmF = false;
-    this.kmG = new f.b()
+    AppMethodBeat.i(226517);
+    this.cDW = ("MicroMsg.AppBrand.AppBrandAudioOfVideoBackgroundPlayFloatBallHelper#" + hashCode());
+    this.lqp = false;
+    this.lqq = new f.b()
     {
       public final void b(AppBrandBackgroundRunningOperationParcel paramAnonymousAppBrandBackgroundRunningOperationParcel)
       {
-        AppMethodBeat.i(222249);
+        AppMethodBeat.i(226513);
         if (paramAnonymousAppBrandBackgroundRunningOperationParcel == null)
         {
-          AppMethodBeat.o(222249);
+          AppMethodBeat.o(226513);
           return;
         }
-        if ((!a.this.jAF.mAppId.equals(paramAnonymousAppBrandBackgroundRunningOperationParcel.appId)) || (a.this.jAF.jzC.dQv != paramAnonymousAppBrandBackgroundRunningOperationParcel.hSZ))
+        if ((!a.this.kBw.mAppId.equals(paramAnonymousAppBrandBackgroundRunningOperationParcel.appId)) || (a.this.kBw.kAq.eix != paramAnonymousAppBrandBackgroundRunningOperationParcel.iOo))
         {
-          AppMethodBeat.o(222249);
+          AppMethodBeat.o(226513);
           return;
         }
-        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.beO != 8)
+        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.beL != 8)
         {
-          AppMethodBeat.o(222249);
+          AppMethodBeat.o(226513);
           return;
         }
-        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.dlO == 1)
+        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.dDe == 1)
         {
           paramAnonymousAppBrandBackgroundRunningOperationParcel = a.this;
-          if (!paramAnonymousAppBrandBackgroundRunningOperationParcel.bLw())
+          if (!paramAnonymousAppBrandBackgroundRunningOperationParcel.ciq())
           {
-            ae.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.crG, "onSendBackgroundRunningOperation, add passive audio of video background play float ball");
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.WY(paramAnonymousAppBrandBackgroundRunningOperationParcel.bho());
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.iV(true);
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.iW(false);
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.yc(d.eI(paramAnonymousAppBrandBackgroundRunningOperationParcel.nLK.state, 128));
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.bLD().nLC = 13;
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.bLz();
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.bLy();
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.kmF = true;
-            AppMethodBeat.o(222249);
+            Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cDW, "onSendBackgroundRunningOperation, add passive audio of video background play float ball");
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.agT(paramAnonymousAppBrandBackgroundRunningOperationParcel.bCD());
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.jT(true);
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.jU(false);
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.BH(d.eV(paramAnonymousAppBrandBackgroundRunningOperationParcel.oWE.state, 128));
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.ciw().hDa = 13;
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.cit();
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.cis();
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.lqp = true;
+            AppMethodBeat.o(226513);
             return;
           }
-          ae.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.crG, "onSendBackgroundRunningOperation, add audio of video background play state to float ball");
-          paramAnonymousAppBrandBackgroundRunningOperationParcel.yc(d.eI(paramAnonymousAppBrandBackgroundRunningOperationParcel.nLK.state, 128));
-          paramAnonymousAppBrandBackgroundRunningOperationParcel.iV(true);
-          AppMethodBeat.o(222249);
+          Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cDW, "onSendBackgroundRunningOperation, add audio of video background play state to float ball");
+          paramAnonymousAppBrandBackgroundRunningOperationParcel.BH(d.eV(paramAnonymousAppBrandBackgroundRunningOperationParcel.oWE.state, 128));
+          paramAnonymousAppBrandBackgroundRunningOperationParcel.jT(true);
+          AppMethodBeat.o(226513);
           return;
         }
-        if ((paramAnonymousAppBrandBackgroundRunningOperationParcel.dlO == 2) || (paramAnonymousAppBrandBackgroundRunningOperationParcel.dlO == 3))
+        if ((paramAnonymousAppBrandBackgroundRunningOperationParcel.dDe == 2) || (paramAnonymousAppBrandBackgroundRunningOperationParcel.dDe == 3))
         {
           paramAnonymousAppBrandBackgroundRunningOperationParcel = a.this;
-          BallInfo localBallInfo = paramAnonymousAppBrandBackgroundRunningOperationParcel.bKS();
+          BallInfo localBallInfo = paramAnonymousAppBrandBackgroundRunningOperationParcel.cil();
           if (localBallInfo != null)
           {
-            if (localBallInfo.nLu)
+            if (localBallInfo.oWr)
             {
-              ae.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.crG, "removeBackgroundPlayAudioBall, remove passive float ball");
-              paramAnonymousAppBrandBackgroundRunningOperationParcel.bLx();
-              paramAnonymousAppBrandBackgroundRunningOperationParcel.kmF = false;
-              AppMethodBeat.o(222249);
+              Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cDW, "removeBackgroundPlayAudioBall, remove passive float ball");
+              paramAnonymousAppBrandBackgroundRunningOperationParcel.cir();
+              paramAnonymousAppBrandBackgroundRunningOperationParcel.lqp = false;
+              AppMethodBeat.o(226513);
               return;
             }
-            ae.w(paramAnonymousAppBrandBackgroundRunningOperationParcel.crG, "removeBackgroundPlayAudioBall, passive is false");
-            AppMethodBeat.o(222249);
+            Log.w(paramAnonymousAppBrandBackgroundRunningOperationParcel.cDW, "removeBackgroundPlayAudioBall, passive is false");
+            AppMethodBeat.o(226513);
             return;
           }
-          ae.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.crG, "removeBackgroundPlayAudioBall, no this float ball");
-          paramAnonymousAppBrandBackgroundRunningOperationParcel.yc(d.eJ(paramAnonymousAppBrandBackgroundRunningOperationParcel.nLK.state, 128));
+          Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cDW, "removeBackgroundPlayAudioBall, no this float ball");
+          paramAnonymousAppBrandBackgroundRunningOperationParcel.BH(d.eW(paramAnonymousAppBrandBackgroundRunningOperationParcel.oWE.state, 128));
         }
-        AppMethodBeat.o(222249);
+        AppMethodBeat.o(226513);
       }
     };
-    this.jAF = paramp;
-    ae.i(this.crG, "create, runtime:%s", new Object[] { Integer.valueOf(paramp.hashCode()) });
-    this.kmE = ((com.tencent.mm.plugin.appbrand.backgroundrunning.f)g.ab(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class));
-    AppMethodBeat.o(222253);
+    this.kBw = paramq;
+    Log.i(this.cDW, "create, runtime:%s", new Object[] { Integer.valueOf(paramq.hashCode()) });
+    this.lqo = ((com.tencent.mm.plugin.appbrand.backgroundrunning.f)g.af(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class));
+    AppMethodBeat.o(226517);
   }
   
-  private void sz(int paramInt)
+  private void wv(int paramInt)
   {
-    AppMethodBeat.i(222262);
-    bLD().opType = yd(paramInt);
-    bLz();
-    Point localPoint = this.nLM.getBallPosition();
-    com.tencent.mm.plugin.ball.ui.c.a(this.nME, localPoint, new com.tencent.mm.plugin.ball.d.a()
+    AppMethodBeat.i(226526);
+    ciw().opType = BI(paramInt);
+    cit();
+    Point localPoint = this.oWG.getBallPosition();
+    c.a(this.oXA, localPoint, new com.tencent.mm.plugin.ball.d.a()
     {
-      public final void bhp()
+      public final void awJ()
       {
-        AppMethodBeat.i(222252);
-        ae.i(a.this.crG, "onCloseWithAnimation, transform to float ball animation cancel");
-        a.this.nME.ge(true);
-        AppMethodBeat.o(222252);
+        AppMethodBeat.i(226516);
+        Log.i(a.this.cDW, "onCloseWithAnimation, transform to float ball animation cancel");
+        a.this.oXA.hb(true);
+        AppMethodBeat.o(226516);
       }
       
       public final void onAnimationEnd()
       {
-        AppMethodBeat.i(222251);
-        ae.i(a.this.crG, "onCloseWithAnimation, transform to float ball animation end");
-        a.this.nME.ge(false);
-        AppMethodBeat.o(222251);
+        AppMethodBeat.i(226515);
+        Log.i(a.this.cDW, "onCloseWithAnimation, transform to float ball animation end");
+        a.this.oXA.hb(false);
+        AppMethodBeat.o(226515);
       }
     });
-    AppMethodBeat.o(222262);
+    AppMethodBeat.o(226526);
   }
   
-  public final void ac(int paramInt, String paramString)
+  public final void G(int paramInt, String paramString)
   {
-    AppMethodBeat.i(222254);
-    ae.i(this.crG, "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    super.ac(paramInt, paramString);
-    if (this.kmE != null) {
-      this.kmE.a(this.kmG);
+    AppMethodBeat.i(226518);
+    Log.i(this.cDW, "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.G(paramInt, paramString);
+    if (this.lqo != null) {
+      this.lqo.a(this.lqq);
     }
-    AppMethodBeat.o(222254);
+    AppMethodBeat.o(226518);
   }
   
-  public final void ad(int paramInt, String paramString)
+  public final boolean aGg()
   {
-    AppMethodBeat.i(222261);
-    ae.i(this.crG, "onReceivedBallInfoAddedEvent, runtime:%s, type: %d, key: %s", new Object[] { Integer.valueOf(this.jAF.hashCode()), Integer.valueOf(paramInt), paramString });
-    super.ad(paramInt, paramString);
-    if (this.nLK != null) {
-      ae.i(this.crG, "onReceivedBallInfoAddedEvent, myType: %d, myKey: %s", new Object[] { Integer.valueOf(this.nLK.type), this.nLK.key });
+    return false;
+  }
+  
+  public final boolean aGh()
+  {
+    return false;
+  }
+  
+  public final void aGi()
+  {
+    AppMethodBeat.i(226523);
+    Log.i(this.cDW, "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.kBw.hashCode()) });
+    this.oXA.hb(true);
+    AppMethodBeat.o(226523);
+  }
+  
+  public final void aGj()
+  {
+    AppMethodBeat.i(226522);
+    Log.i(this.cDW, "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.kBw.hashCode()) });
+    if (cin() != null) {
+      U(true);
     }
-    if ((this.nLK != null) && (paramInt == this.nLK.type) && (Objects.equals(paramString, this.nLK.key)))
+    AppMethodBeat.o(226522);
+  }
+  
+  public final void ag(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(226525);
+    Log.i(this.cDW, "onReceivedBallInfoAddedEvent, runtime:%s, type: %d, key: %s", new Object[] { Integer.valueOf(this.kBw.hashCode()), Integer.valueOf(paramInt), paramString });
+    super.ag(paramInt, paramString);
+    if (this.oWE != null) {
+      Log.i(this.cDW, "onReceivedBallInfoAddedEvent, myType: %d, myKey: %s", new Object[] { Integer.valueOf(this.oWE.type), this.oWE.key });
+    }
+    if ((this.oWE != null) && (paramInt == this.oWE.type) && (Objects.equals(paramString, this.oWE.key)))
     {
-      ae.i(this.crG, "onReceivedBallInfoAddedEvent, myself");
-      AppMethodBeat.o(222261);
+      Log.i(this.cDW, "onReceivedBallInfoAddedEvent, myself");
+      AppMethodBeat.o(226525);
       return;
     }
     if ((6 == paramInt) || (18 == paramInt) || (9 == paramInt) || (17 == paramInt))
     {
-      bLx();
-      this.kmF = false;
+      cir();
+      this.lqp = false;
     }
-    AppMethodBeat.o(222261);
+    AppMethodBeat.o(226525);
   }
   
-  public final boolean bhh()
+  public final void bCA()
   {
-    return false;
-  }
-  
-  public final boolean bhi()
-  {
-    return false;
-  }
-  
-  public final void bhj()
-  {
-    AppMethodBeat.i(222257);
-    ae.i(this.crG, "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.jAF.hashCode()) });
-    if (bLu() != null) {
-      V(false);
+    AppMethodBeat.i(226521);
+    Log.i(this.cDW, "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.kBw.hashCode()) });
+    if (cin() != null) {
+      U(false);
     }
-    AppMethodBeat.o(222257);
+    AppMethodBeat.o(226521);
   }
   
-  public final void bhk()
+  public final void bCB()
   {
-    AppMethodBeat.i(222258);
-    ae.i(this.crG, "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.jAF.hashCode()) });
-    if (bLu() != null) {
-      V(true);
-    }
-    AppMethodBeat.o(222258);
+    AppMethodBeat.i(226524);
+    Log.i(this.cDW, "onReceivedBallInfoRemovedEvent, runtime:%s", new Object[] { Integer.valueOf(this.kBw.hashCode()) });
+    super.bCB();
+    this.lqp = false;
+    bCC();
+    AppMethodBeat.o(226524);
   }
   
-  public final void bhl()
+  final void bCC()
   {
-    AppMethodBeat.i(222259);
-    ae.i(this.crG, "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.jAF.hashCode()) });
-    this.nME.ge(true);
-    AppMethodBeat.o(222259);
-  }
-  
-  public final void bhm()
-  {
-    AppMethodBeat.i(222260);
-    ae.i(this.crG, "onReceivedBallInfoRemovedEvent, runtime:%s", new Object[] { Integer.valueOf(this.jAF.hashCode()) });
-    super.bhm();
-    this.kmF = false;
-    bhn();
-    AppMethodBeat.o(222260);
-  }
-  
-  final void bhn()
-  {
-    AppMethodBeat.i(222263);
-    if (this.kmE == null)
+    AppMethodBeat.i(226527);
+    if (this.lqo == null)
     {
-      AppMethodBeat.o(222263);
+      AppMethodBeat.o(226527);
       return;
     }
     MMBackgroundRunningOperationParcel localMMBackgroundRunningOperationParcel = new MMBackgroundRunningOperationParcel();
-    localMMBackgroundRunningOperationParcel.appId = this.jAF.mAppId;
-    localMMBackgroundRunningOperationParcel.beO = 8;
-    localMMBackgroundRunningOperationParcel.dlO = 2;
-    ae.i(this.crG, "maybeStopBackgroundPlayAudio, appId:%s", new Object[] { this.jAF.mAppId });
-    this.kmE.a(localMMBackgroundRunningOperationParcel);
-    AppMethodBeat.o(222263);
+    localMMBackgroundRunningOperationParcel.appId = this.kBw.mAppId;
+    localMMBackgroundRunningOperationParcel.beL = 8;
+    localMMBackgroundRunningOperationParcel.dDe = 2;
+    Log.i(this.cDW, "maybeStopBackgroundPlayAudio, appId:%s", new Object[] { this.kBw.mAppId });
+    this.lqo.a(localMMBackgroundRunningOperationParcel);
+    AppMethodBeat.o(226527);
   }
   
-  final String bho()
+  final String bCD()
   {
-    AppMethodBeat.i(222264);
-    Object localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.ad.a)this.jAF.as(com.tencent.mm.plugin.appbrand.jsapi.ad.a.class);
+    AppMethodBeat.i(226528);
+    Object localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.ag.a)this.kBw.aw(com.tencent.mm.plugin.appbrand.jsapi.ag.a.class);
     if (localObject1 != null) {}
-    for (localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.ad.a)localObject1).bqi();; localObject1 = null)
+    for (localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.ag.a)localObject1).bLQ();; localObject1 = null)
     {
       Object localObject2 = localObject1;
-      if (bu.isNullOrNil((String)localObject1)) {
-        localObject2 = this.jAF.aXx().dpI;
+      if (Util.isNullOrNil((String)localObject1)) {
+        localObject2 = this.kBw.bsC().brandName;
       }
-      AppMethodBeat.o(222264);
+      AppMethodBeat.o(226528);
       return localObject2;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(222256);
-    ae.i(this.crG, "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.jAF.hashCode()) });
+    AppMethodBeat.i(226520);
+    Log.i(this.cDW, "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.kBw.hashCode()) });
     super.onDestroy();
-    if (this.kmE != null) {
-      this.kmE.b(this.kmG);
+    if (this.lqo != null) {
+      this.lqo.b(this.lqq);
     }
-    AppMethodBeat.o(222256);
+    AppMethodBeat.o(226520);
   }
   
-  public final boolean sy(final int paramInt)
+  public final boolean wu(final int paramInt)
   {
-    AppMethodBeat.i(222255);
-    ae.i(this.crG, "onClose, runtime:%s", new Object[] { Integer.valueOf(this.jAF.hashCode()) });
-    h.d locald = h.KU(this.jAF.mAppId);
-    ae.i(this.crG, "onRuntimeBackground, type: ".concat(String.valueOf(locald)));
-    com.tencent.mm.plugin.appbrand.jsapi.ad.a locala = (com.tencent.mm.plugin.appbrand.jsapi.ad.a)this.jAF.as(com.tencent.mm.plugin.appbrand.jsapi.ad.a.class);
+    AppMethodBeat.i(226519);
+    Log.i(this.cDW, "onClose, runtime:%s", new Object[] { Integer.valueOf(this.kBw.hashCode()) });
+    h.d locald = h.Uc(this.kBw.mAppId);
+    Log.i(this.cDW, "onRuntimeBackground, type: ".concat(String.valueOf(locald)));
+    com.tencent.mm.plugin.appbrand.jsapi.ag.a locala = (com.tencent.mm.plugin.appbrand.jsapi.ag.a)this.kBw.aw(com.tencent.mm.plugin.appbrand.jsapi.ag.a.class);
     if (locala == null)
     {
-      ae.w(this.crG, "onRuntimeBackground, audioOfVideoBackgroundPlayManager is null");
-      if ((!bLw()) && (!this.kmF)) {
+      Log.w(this.cDW, "onRuntimeBackground, audioOfVideoBackgroundPlayManager is null");
+      if ((!ciq()) && (!this.lqp)) {
         break label164;
       }
-      if (b.cc(this.nME.getActivity())) {
+      if (com.tencent.mm.compatible.e.b.cx(this.oXA.getActivity())) {
         break label156;
       }
-      AppBrandFloatBallPermissionHelper.a(this.nME.getActivity(), 18, new c.a()
+      AppBrandFloatBallPermissionHelper.a(this.oXA.getActivity(), 18, new c.a()
       {
-        public final void gd(boolean paramAnonymousBoolean)
+        public final void ha(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(222250);
-          ae.i(a.this.crG, "onClose, checkFloatBallPermission isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          AppMethodBeat.i(226514);
+          Log.i(a.this.cDW, "onClose, checkFloatBallPermission isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (paramAnonymousBoolean)
           {
             a.a(a.this, paramInt);
             a.a(a.this, true);
-            AppMethodBeat.o(222250);
+            AppMethodBeat.o(226514);
             return;
           }
-          ae.w(a.this.crG, "onClose, refuse permission, remove ball and stop background play");
-          a.this.bLx();
-          a.this.kmF = false;
-          a.this.bhn();
+          Log.w(a.this.cDW, "onClose, refuse permission, remove ball and stop background play");
+          a.this.cir();
+          a.this.lqp = false;
+          a.this.bCC();
           a.a(a.this, false);
-          a.this.nME.ge(true);
-          AppMethodBeat.o(222250);
+          a.this.oXA.hb(true);
+          AppMethodBeat.o(226514);
         }
       });
     }
     for (;;)
     {
-      AppMethodBeat.o(222255);
+      AppMethodBeat.o(226519);
       return true;
       locala.c(locald);
       break;
       label156:
-      sz(paramInt);
+      wv(paramInt);
     }
     label164:
-    AppMethodBeat.o(222255);
+    AppMethodBeat.o(226519);
     return false;
   }
 }

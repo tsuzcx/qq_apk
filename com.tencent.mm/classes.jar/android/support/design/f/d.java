@@ -8,24 +8,24 @@ import java.util.List;
 
 public final class d
 {
-  public float mc;
-  public float md;
   public float me;
   public float mf;
-  private final List<c> mg = new ArrayList();
+  public float mg;
+  public float mh;
+  private final List<c> mi = new ArrayList();
   
   public d()
   {
-    bI();
+    bK();
   }
   
   public final void a(Matrix paramMatrix, Path paramPath)
   {
-    int j = this.mg.size();
+    int j = this.mi.size();
     int i = 0;
     while (i < j)
     {
-      ((c)this.mg.get(i)).a(paramMatrix, paramPath);
+      ((c)this.mi.get(i)).a(paramMatrix, paramPath);
       i += 1;
     }
   }
@@ -33,20 +33,20 @@ public final class d
   public final void addArc(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
     a locala = new a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-    locala.mh = paramFloat5;
-    locala.mi = paramFloat6;
-    this.mg.add(locala);
-    this.me = ((paramFloat1 + paramFloat3) * 0.5F + (paramFloat3 - paramFloat1) / 2.0F * (float)Math.cos(Math.toRadians(paramFloat5 + paramFloat6)));
-    this.mf = ((paramFloat2 + paramFloat4) * 0.5F + (paramFloat4 - paramFloat2) / 2.0F * (float)Math.sin(Math.toRadians(paramFloat5 + paramFloat6)));
+    locala.mj = paramFloat5;
+    locala.mk = paramFloat6;
+    this.mi.add(locala);
+    this.mg = ((paramFloat1 + paramFloat3) * 0.5F + (paramFloat3 - paramFloat1) / 2.0F * (float)Math.cos(Math.toRadians(paramFloat5 + paramFloat6)));
+    this.mh = ((paramFloat2 + paramFloat4) * 0.5F + (paramFloat4 - paramFloat2) / 2.0F * (float)Math.sin(Math.toRadians(paramFloat5 + paramFloat6)));
   }
   
-  public final void bI()
+  public final void bK()
   {
-    this.mc = 0.0F;
-    this.md = 0.0F;
     this.me = 0.0F;
     this.mf = 0.0F;
-    this.mg.clear();
+    this.mg = 0.0F;
+    this.mh = 0.0F;
+    this.mi.clear();
   }
   
   public final void j(float paramFloat)
@@ -54,19 +54,19 @@ public final class d
     b localb = new b();
     localb.x = paramFloat;
     localb.y = 0.0F;
-    this.mg.add(localb);
-    this.me = paramFloat;
-    this.mf = 0.0F;
+    this.mi.add(localb);
+    this.mg = paramFloat;
+    this.mh = 0.0F;
   }
   
   public static final class a
     extends d.c
   {
-    private static final RectF hM = new RectF();
+    private static final RectF hO = new RectF();
     public float bottom;
     public float left;
-    public float mh;
-    public float mi;
+    public float mj;
+    public float mk;
     public float right;
     public float top;
     
@@ -80,11 +80,11 @@ public final class d
     
     public final void a(Matrix paramMatrix, Path paramPath)
     {
-      Matrix localMatrix = this.gR;
+      Matrix localMatrix = this.gT;
       paramMatrix.invert(localMatrix);
       paramPath.transform(localMatrix);
-      hM.set(this.left, this.top, this.right, this.bottom);
-      paramPath.arcTo(hM, this.mh, this.mi, false);
+      hO.set(this.left, this.top, this.right, this.bottom);
+      paramPath.arcTo(hO, this.mj, this.mk, false);
       paramPath.transform(paramMatrix);
     }
   }
@@ -97,7 +97,7 @@ public final class d
     
     public final void a(Matrix paramMatrix, Path paramPath)
     {
-      Matrix localMatrix = this.gR;
+      Matrix localMatrix = this.gT;
       paramMatrix.invert(localMatrix);
       paramPath.transform(localMatrix);
       paramPath.lineTo(this.x, this.y);
@@ -107,7 +107,7 @@ public final class d
   
   public static abstract class c
   {
-    protected final Matrix gR = new Matrix();
+    protected final Matrix gT = new Matrix();
     
     public abstract void a(Matrix paramMatrix, Path paramPath);
   }

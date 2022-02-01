@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jh;
+import com.tencent.mm.g.b.a.nd;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
@@ -20,26 +20,26 @@ public final class f
     }
     for (;;)
     {
-      localObject = new jh();
-      ((jh)localObject).eBL = ((jh)localObject).t("appId", paramWidgetData2, true);
-      ((jh)localObject).eBJ = paramInt;
-      ((jh)localObject).eBK = (System.currentTimeMillis() / 1000L);
-      ((jh)localObject).eBM = paramWidgetData1.DUM.cRx;
-      ((jh)localObject).eBN = ((jh)localObject).t("statBuffer", paramWidgetData1.DUM.DUT, true);
-      ((jh)localObject).eBO = ((jh)localObject).t("switchId", String.format("%s-%s-%s", new Object[] { paramWidgetData1.DUM.kid, Integer.valueOf(paramWidgetData1.DUM.cRx), Long.valueOf(System.currentTimeMillis() / 1000L) }), true);
-      paramWidgetData1 = ((jh)localObject).RC();
-      ((j)g.ab(j.class)).ct(14688, paramWidgetData1);
+      localObject = new nd();
+      ((nd)localObject).ekB = ((nd)localObject).x("appId", paramWidgetData2, true);
+      ((nd)localObject).fgg = paramInt;
+      ((nd)localObject).fgh = (System.currentTimeMillis() / 1000L);
+      ((nd)localObject).fgi = paramWidgetData1.IFG.serviceType;
+      ((nd)localObject).fgj = ((nd)localObject).x("statBuffer", paramWidgetData1.IFG.IFM, true);
+      ((nd)localObject).fgk = ((nd)localObject).x("switchId", String.format("%s-%s-%s", new Object[] { paramWidgetData1.IFG.hes, Integer.valueOf(paramWidgetData1.IFG.serviceType), Long.valueOf(System.currentTimeMillis() / 1000L) }), true);
+      paramWidgetData1 = ((nd)localObject).abV();
+      ((j)g.af(j.class)).cL(14688, paramWidgetData1);
       AppMethodBeat.o(116645);
       return;
-      paramWidgetData2 = paramWidgetData1.DUM.hNv;
+      paramWidgetData2 = paramWidgetData1.IFG.iIA;
       continue;
-      paramWidgetData2 = paramWidgetData2.DUM.hNv;
+      paramWidgetData2 = paramWidgetData2.IFG.iIA;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.f
  * JD-Core Version:    0.7.0.1
  */

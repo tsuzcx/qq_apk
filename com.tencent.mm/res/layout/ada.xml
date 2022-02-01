@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/cc_" style="@style/kc">
-        <ImageView android:id="@id/ccc" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:layout_marginRight="@dimen/j9" android:layout_alignParentLeft="true" />
-        <TextView android:id="@id/cc8" android:layout_marginLeft="5.0dip" android:minHeight="24.0dip" android:layout_alignTop="@id/ccc" android:layout_alignParentRight="true" style="@style/m2" />
-        <TextView android:gravity="center_vertical" android:id="@id/cce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="24.0dip" android:layout_toLeftOf="@id/cc8" android:layout_toRightOf="@id/ccc" android:layout_alignTop="@id/ccc" style="@style/m3" />
-        <TextView android:gravity="center_vertical" android:id="@id/cca" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:minHeight="24.0dip" android:singleLine="true" android:layout_toRightOf="@id/ccc" android:layout_alignLeft="@id/cce" android:layout_alignBottom="@id/ccc" style="@style/m2" />
-        <TextView android:gravity="center_vertical" android:id="@id/ccf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="3.0dip" android:maxLines="2" android:singleLine="false" android:layout_below="@id/ccc" android:layout_alignParentLeft="true" style="@style/m2" />
-    </RelativeLayout>
-</FrameLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@drawable/a07" android:gravity="center" android:id="@id/cot" android:background="@drawable/a06" android:layout_width="wrap_content" android:layout_height="@dimen/cl" android:paddingStart="@dimen/ce" android:paddingEnd="@dimen/ce" android:layout_marginEnd="@dimen/cc" />
+</RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/f40" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.LayoutListenerView android:id="@id/ffv" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart android:id="@id/ai4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <Button android:id="@id/fgg" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.ui.LayoutListenerView>

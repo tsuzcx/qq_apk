@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>3.Icons/Filled/play</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.52409743,4.93790611 L19.6160552,11.1483417 C20.0864131,11.4377927 20.2330671,12.0537395 19.9436161,12.5240974 C19.8615728,12.6574179 19.7493757,12.769615 19.6160552,12.8516583 L9.52409743,19.0620939 C9.05373953,19.3515449 8.4377927,19.2048909 8.14834168,18.734533 C8.05135233,18.5769253 8,18.3954954 8,18.2104356 L8,5.78956442 C8,5.23727967 8.44771525,4.78956442 9,4.78956442 C9.18505978,4.78956442 9.36648973,4.84091676 9.52409743,4.93790611 Z" id="path-1"></path>
+        <filter x="-24.8%" y="-20.8%" width="149.6%" height="141.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="3.Icons/Filled/play" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group"></g>
+        <g id="矩形">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use fill-opacity="1" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

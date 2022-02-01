@@ -10,18 +10,18 @@ import java.util.Map;
 public final class a
   implements d
 {
-  Map<String, List<Object>> BIb;
+  Map<String, List<Object>> GiJ;
   
   public a()
   {
     AppMethodBeat.i(88416);
-    this.BIb = Collections.synchronizedMap(new HashMap());
+    this.GiJ = Collections.synchronizedMap(new HashMap());
     AppMethodBeat.o(88416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a
  * JD-Core Version:    0.7.0.1
  */

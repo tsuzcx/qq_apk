@@ -9,6 +9,7 @@ import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
@@ -22,14 +23,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.ui.BaseActivity;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.as;
 
 public abstract class WeUIPreference
   extends BaseActivity
 {
-  private b MLb;
+  private b SwW;
   protected ImageView bannerCloseBtn;
   protected TextView bannerTv;
   protected RelativeLayout bannerView;
@@ -38,7 +38,22 @@ public abstract class WeUIPreference
   private ListView list;
   private SharedPreferences sp;
   
-  public abstract int getResourceId();
+  public abstract boolean a(a parama, Preference paramPreference);
+  
+  public int getFooterResourceId()
+  {
+    return -1;
+  }
+  
+  public final int getLayoutId()
+  {
+    return 2131495609;
+  }
+  
+  public final a hrD()
+  {
+    return this.SwW;
+  }
   
   public boolean onContextItemSelected(MenuItem paramMenuItem)
   {
@@ -49,13 +64,19 @@ public abstract class WeUIPreference
   {
     super.onCreate(paramBundle);
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.MLb = new b(this, this.sp);
+    this.SwW = new b(this, this.sp);
     this.list = ((ListView)findViewById(16908298));
-    this.bannerView = ((RelativeLayout)findViewById(2131303382));
-    this.bannerTv = ((TextView)findViewById(2131303381));
-    this.bannerCloseBtn = ((ImageView)findViewById(2131303380));
-    paramBundle = this.MLb;
-    paramBundle.MLf = new Preference.OnPreferenceChangeListener()
+    this.bannerView = ((RelativeLayout)findViewById(2131306095));
+    this.bannerTv = ((TextView)findViewById(2131306094));
+    this.bannerCloseBtn = ((ImageView)findViewById(2131306093));
+    int i = getFooterResourceId();
+    if (i != -1)
+    {
+      paramBundle = getLayoutInflater().inflate(i, null);
+      this.list.addFooterView(paramBundle);
+    }
+    paramBundle = this.SwW;
+    paramBundle.Sxa = new Preference.OnPreferenceChangeListener()
     {
       public final boolean onPreferenceChange(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
@@ -64,20 +85,20 @@ public abstract class WeUIPreference
         {
           WeUIPreference.a(WeUIPreference.this, true);
           if (!(paramAnonymousPreference instanceof CheckBoxPreference)) {
-            break label162;
+            break label170;
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
-          paramAnonymousObject.oB = paramAnonymousObject.isChecked();
+          paramAnonymousObject.oD = paramAnonymousObject.isChecked();
           if (paramAnonymousObject.isPersistent()) {
             WeUIPreference.b(WeUIPreference.this).edit().putBoolean(paramAnonymousPreference.getKey(), paramAnonymousObject.isChecked()).commit();
           }
           WeUIPreference.c(WeUIPreference.this);
         }
-        label162:
+        label170:
         for (int i = 1;; i = 0)
         {
           if (paramAnonymousPreference.getKey() != null) {
-            WeUIPreference.d(WeUIPreference.this);
+            WeUIPreference.this.a(WeUIPreference.d(WeUIPreference.this), paramAnonymousPreference);
           }
           if (i != 0) {
             WeUIPreference.d(WeUIPreference.this).notifyDataSetChanged();
@@ -94,39 +115,33 @@ public abstract class WeUIPreference
       }
     };
     paramBundle.notifyDataSetChanged();
-    int i = getResourceId();
-    b localb;
-    c localc;
-    if (i != -1)
-    {
-      localb = this.MLb;
-      localb.MLe = true;
-      localc = localb.MLd;
-      paramBundle = localc.mContext.getResources().getXml(i);
-      if (paramBundle == null) {}
-    }
+    b localb = this.SwW;
+    localb.SwZ = true;
+    c localc = localb.SwY;
+    paramBundle = localc.mContext.getResources().getXml(2132017160);
+    if (paramBundle != null) {}
     try
     {
       localc.a(paramBundle, localb);
       paramBundle.close();
-      localb.MLe = false;
+      localb.SwZ = false;
       localb.notifyDataSetChanged();
-      this.list.setAdapter(this.MLb);
+      this.list.setAdapter(this.SwW);
       this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(159998);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          a.b("com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          localb.bm(paramAnonymousAdapterView);
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.zo(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
           paramAnonymousAdapterView = (Preference)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
-            a.a(this, "com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(159998);
             return;
           }
@@ -134,15 +149,15 @@ public abstract class WeUIPreference
           {
             if ((paramAnonymousAdapterView instanceof CheckBoxPreference))
             {
-              a.a(this, "com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(159998);
               return;
             }
             if (paramAnonymousAdapterView.getKey() != null) {
-              WeUIPreference.d(WeUIPreference.this);
+              WeUIPreference.this.a(WeUIPreference.d(WeUIPreference.this), paramAnonymousAdapterView);
             }
           }
-          a.a(this, "com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(159998);
         }
       });
@@ -159,7 +174,7 @@ public abstract class WeUIPreference
           paramAnonymousInt -= WeUIPreference.e(WeUIPreference.this).getHeaderViewsCount();
           if (paramAnonymousInt >= WeUIPreference.d(WeUIPreference.this).getCount())
           {
-            ap.e("MicroMsg.mmui.WeUIPreference", "itemlongclick, outofindex, %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(WeUIPreference.d(WeUIPreference.this).getCount()) });
+            as.e("MicroMsg.mmui.WeUIPreference", "itemlongclick, outofindex, %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(WeUIPreference.d(WeUIPreference.this).getCount()) });
             AppMethodBeat.o(159999);
             return false;
           }
@@ -197,7 +212,7 @@ public abstract class WeUIPreference
   
   public void onResume()
   {
-    this.MLb.notifyDataSetChanged();
+    this.SwW.notifyDataSetChanged();
     super.onResume();
   }
   
@@ -209,7 +224,7 @@ public abstract class WeUIPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.weui.base.preference.WeUIPreference
  * JD-Core Version:    0.7.0.1
  */

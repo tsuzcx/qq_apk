@@ -7,9 +7,9 @@ import java.util.Map;
 public final class g$b
   implements com.tencent.xweb.WebResourceRequest
 {
-  private Map<String, String> Fjf;
-  private boolean MQX;
-  private boolean MQY;
+  private Map<String, String> JZZ;
+  private boolean SEb;
+  private boolean SEc;
   private String method;
   private Uri url;
   
@@ -17,10 +17,10 @@ public final class g$b
   {
     AppMethodBeat.i(153848);
     this.url = paramWebResourceRequest.getUrl();
-    this.MQX = paramWebResourceRequest.isForMainFrame();
-    this.MQY = paramWebResourceRequest.hasGesture();
+    this.SEb = paramWebResourceRequest.isForMainFrame();
+    this.SEc = paramWebResourceRequest.hasGesture();
     this.method = paramWebResourceRequest.getMethod();
-    this.Fjf = paramWebResourceRequest.getRequestHeaders();
+    this.JZZ = paramWebResourceRequest.getRequestHeaders();
     AppMethodBeat.o(153848);
   }
   
@@ -31,7 +31,7 @@ public final class g$b
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.Fjf;
+    return this.JZZ;
   }
   
   public final Uri getUrl()
@@ -41,17 +41,17 @@ public final class g$b
   
   public final boolean hasGesture()
   {
-    return this.MQY;
+    return this.SEc;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.MQX;
+    return this.SEb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.x5.g.b
  * JD-Core Version:    0.7.0.1
  */

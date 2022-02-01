@@ -1,70 +1,70 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.wh;
-import com.tencent.mm.protocal.protobuf.wi;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.xr;
+import com.tencent.mm.protocal.protobuf.xs;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   extends b
 {
+  public xs CiL;
   private final String TAG;
-  private f callback;
-  private com.tencent.mm.ak.b rr;
-  public wi yhK;
+  private i callback;
+  private com.tencent.mm.ak.d rr;
   
   public d(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(67358);
     this.TAG = "MicroMsg.NetSceneBankRemitCheckBankBind";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new wh();
-    ((b.a)localObject).hQG = new wi();
-    ((b.a)localObject).funcId = 1349;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/checkbankbind_tsbc";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (wh)this.rr.hQD.hQJ;
-    ((wh)localObject).Goc = paramString1;
-    ((wh)localObject).God = paramString2;
-    ((wh)localObject).uVs = paramString3;
-    ((wh)localObject).dlT = paramString4;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new xr();
+    ((d.a)localObject).iLO = new xs();
+    ((d.a)localObject).funcId = 1349;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/checkbankbind_tsbc";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (xr)this.rr.iLK.iLR;
+    ((xr)localObject).LiP = paramString1;
+    ((xr)localObject).LiQ = paramString2;
+    ((xr)localObject).ynT = paramString3;
+    ((xr)localObject).dDj = paramString4;
     AppMethodBeat.o(67358);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(67360);
-    ae.i("MicroMsg.NetSceneBankRemitCheckBankBind", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.yhK = ((wi)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneBankRemitCheckBankBind", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yhK.dmy), this.yhK.phe });
+    Log.i("MicroMsg.NetSceneBankRemitCheckBankBind", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.CiL = ((xs)((com.tencent.mm.ak.d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneBankRemitCheckBankBind", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.CiL.dDN), this.CiL.qwn });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(67360);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(67359);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(67359);
     return i;
   }
   
-  public final void e(q paramq)
+  public final void e(s params)
   {
-    paramq = (wi)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-    this.LVj = paramq.dmy;
-    this.LVk = paramq.phe;
+    params = (xs)((com.tencent.mm.ak.d)params).iLL.iLR;
+    this.RtZ = params.dDN;
+    this.Rua = params.qwn;
   }
   
   public final int getType()

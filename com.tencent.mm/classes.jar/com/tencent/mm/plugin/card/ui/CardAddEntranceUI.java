@@ -11,9 +11,9 @@ import com.tencent.mm.opensdk.modelbiz.AddCardToWXCardPackage.Resp;
 import com.tencent.mm.plugin.card.model.e;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.protocal.protobuf.th;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import java.util.ArrayList;
@@ -26,33 +26,33 @@ public class CardAddEntranceUI
   extends MMActivity
 {
   private String appId;
-  private int dJd;
-  LinkedList<th> oKT;
-  private String oLe;
-  private String oLf;
-  private int oLg;
+  private int eaQ;
+  LinkedList<um> pYH;
+  private String pYS;
+  private String pYT;
+  private int pYU;
   
   public CardAddEntranceUI()
   {
     AppMethodBeat.i(113180);
-    this.oKT = new LinkedList();
-    this.oLe = "";
-    this.dJd = 8;
-    this.oLg = 0;
+    this.pYH = new LinkedList();
+    this.pYS = "";
+    this.eaQ = 8;
+    this.pYU = 0;
     AppMethodBeat.o(113180);
   }
   
-  private void aI(int paramInt, String paramString)
+  private void aN(int paramInt, String paramString)
   {
     AppMethodBeat.i(113184);
     Bundle localBundle = new Bundle();
     localBundle.putString("_wxapi_add_card_to_wx_card_list", paramString);
-    Object localObject = com.tencent.mm.pluginsdk.model.app.h.m(this.appId, true, false);
+    Object localObject = com.tencent.mm.pluginsdk.model.app.h.o(this.appId, true, false);
     AddCardToWXCardPackage.Resp localResp = new AddCardToWXCardPackage.Resp(localBundle);
     if (localObject != null) {
       localResp.openId = ((g)localObject).field_openId;
     }
-    localResp.transaction = this.oLf;
+    localResp.transaction = this.pYT;
     String str = this.appId;
     if (localObject == null)
     {
@@ -62,9 +62,9 @@ public class CardAddEntranceUI
       }
       localObject = "null appinfo";
       label85:
-      ae.i("MicroMsg.CardAddEntranceUI", "setResultToSDK, appid : %s, appname : %s, openid : %s, transcation : %s", new Object[] { str, paramString, localObject, this.oLf });
+      Log.i("MicroMsg.CardAddEntranceUI", "setResultToSDK, appid : %s, appname : %s, openid : %s, transcation : %s", new Object[] { str, paramString, localObject, this.pYT });
       localResp.toBundle(localBundle);
-      ae.i("MicroMsg.CardAddEntranceUI", "setResultToSDK result:".concat(String.valueOf(paramInt)));
+      Log.i("MicroMsg.CardAddEntranceUI", "setResultToSDK result:".concat(String.valueOf(paramInt)));
       if (paramInt != -1) {
         break label210;
       }
@@ -74,11 +74,11 @@ public class CardAddEntranceUI
     for (localResp.errCode = 0;; localResp.errCode = -2)
     {
       paramString = new MMessageActV2.Args();
-      paramString.targetPkgName = this.oLe;
+      paramString.targetPkgName = this.pYS;
       paramString.bundle = localBundle;
-      q.bc(localBundle);
-      q.bd(localBundle);
-      MMessageActV2.send(ak.getContext(), paramString);
+      q.bo(localBundle);
+      q.bp(localBundle);
+      MMessageActV2.send(MMApplicationContext.getContext(), paramString);
       AppMethodBeat.o(113184);
       return;
       paramString = ((g)localObject).field_appName;
@@ -90,15 +90,15 @@ public class CardAddEntranceUI
   
   public int getLayoutId()
   {
-    return 2131493252;
+    return 2131493339;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(113183);
-    ae.v("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI onActivityResult");
+    Log.v("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI onActivityResult");
     if (paramInt2 == -1) {
-      ae.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI RESULT_OK");
+      Log.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI RESULT_OK");
     }
     LinkedList localLinkedList;
     Object localObject1;
@@ -106,21 +106,21 @@ public class CardAddEntranceUI
     for (;;)
     {
       localLinkedList = new LinkedList();
-      localObject1 = this.oKT.iterator();
+      localObject1 = this.pYH.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (th)((Iterator)localObject1).next();
+        localObject2 = (um)((Iterator)localObject1).next();
         e locale = new e();
-        locale.oEo = ((th)localObject2).oEo;
-        locale.dJc = ((th)localObject2).dJc;
+        locale.pRX = ((um)localObject2).pRX;
+        locale.eaP = ((um)localObject2).eaP;
         localLinkedList.add(locale);
       }
-      ae.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI RESULT_CANCELED");
+      Log.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI RESULT_CANCELED");
     }
     if (paramInt1 == 1)
     {
-      ae.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI REQUEST_CARD_DETAIL");
-      if ((this.dJd == 7) || (this.dJd == 16))
+      Log.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI REQUEST_CARD_DETAIL");
+      if ((this.eaQ == 7) || (this.eaQ == 16))
       {
         localObject1 = new Intent();
         switch (paramInt2)
@@ -136,13 +136,13 @@ public class CardAddEntranceUI
       if ((paramIntent != null) && (localLinkedList.size() > 0)) {
         ((e)localLinkedList.get(0)).code = paramIntent.getStringExtra("key_code");
       }
-      ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.dJd));
+      ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.eaQ));
       setResult(-1, (Intent)localObject1);
       continue;
-      ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.dJd));
+      ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.eaQ));
       setResult(0, (Intent)localObject1);
       continue;
-      if (this.dJd == 26)
+      if (this.eaQ == 26)
       {
         localObject1 = new Intent();
         switch (paramInt2)
@@ -153,11 +153,11 @@ public class CardAddEntranceUI
           if ((paramIntent != null) && (localLinkedList.size() > 0)) {
             ((e)localLinkedList.get(0)).code = paramIntent.getStringExtra("key_code");
           }
-          ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.dJd));
+          ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.eaQ));
           setResult(-1, (Intent)localObject1);
           break;
         case 0: 
-          ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.dJd));
+          ((Intent)localObject1).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.eaQ));
           setResult(0, (Intent)localObject1);
           break;
         }
@@ -172,19 +172,19 @@ public class CardAddEntranceUI
           if ((paramIntent != null) && (localLinkedList.size() > 0)) {
             ((e)localLinkedList.get(0)).code = paramIntent.getStringExtra("key_code");
           }
-          aI(-1, com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.dJd));
+          aN(-1, com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.eaQ));
           break;
         case 0: 
-          aI(0, com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.dJd));
+          aN(0, com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.eaQ));
           continue;
           if (paramInt1 == 2)
           {
-            ae.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI REQUEST_CARD_ACCEPT_CARD_LIST");
+            Log.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI REQUEST_CARD_ACCEPT_CARD_LIST");
             localObject1 = "";
             if (paramIntent != null) {
               localObject1 = paramIntent.getStringExtra("card_list");
             }
-            if ((this.dJd == 7) || (this.dJd == 16)) {
+            if ((this.eaQ == 7) || (this.eaQ == 16)) {
               localObject2 = new Intent();
             }
             switch (paramInt2)
@@ -194,28 +194,28 @@ public class CardAddEntranceUI
             case -1: 
               if ((paramIntent != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
               {
-                paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cM((String)localObject1, this.dJd));
+                paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cS((String)localObject1, this.eaQ));
                 setResult(-1, paramIntent);
               }
               else
               {
-                ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.dJd));
+                ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.eaQ));
                 setResult(-1, (Intent)localObject2);
               }
               break;
             case 0: 
               if ((paramIntent != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
               {
-                paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cM((String)localObject1, this.dJd));
+                paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cS((String)localObject1, this.eaQ));
                 setResult(0, paramIntent);
               }
               else
               {
-                ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.dJd));
+                ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.eaQ));
                 ((Intent)localObject2).putExtra("result_code", 1);
                 setResult(0, (Intent)localObject2);
                 continue;
-                if (this.dJd == 26)
+                if (this.eaQ == 26)
                 {
                   localObject2 = new Intent();
                   switch (paramInt2)
@@ -225,21 +225,21 @@ public class CardAddEntranceUI
                   case -1: 
                     if ((paramIntent != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
                     {
-                      paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cM((String)localObject1, this.dJd));
+                      paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cS((String)localObject1, this.eaQ));
                       setResult(-1, paramIntent);
                       continue;
                     }
-                    ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.dJd));
+                    ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.eaQ));
                     setResult(-1, (Intent)localObject2);
                     break;
                   case 0: 
                     if ((paramIntent != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
                     {
-                      paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cM((String)localObject1, this.dJd));
+                      paramIntent.putExtra("card_list", com.tencent.mm.plugin.card.d.h.cS((String)localObject1, this.eaQ));
                       setResult(0, paramIntent);
                       continue;
                     }
-                    ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.dJd));
+                    ((Intent)localObject2).putExtra("card_list", com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.eaQ));
                     ((Intent)localObject2).putExtra("result_code", 1);
                     setResult(0, (Intent)localObject2);
                     break;
@@ -253,16 +253,16 @@ public class CardAddEntranceUI
                     break;
                   case -1: 
                     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                      aI(-1, (String)localObject1);
+                      aN(-1, (String)localObject1);
                     } else {
-                      aI(-1, com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.dJd));
+                      aN(-1, com.tencent.mm.plugin.card.d.h.a(localLinkedList, true, this.eaQ));
                     }
                     break;
                   case 0: 
                     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                      aI(0, (String)localObject1);
+                      aN(0, (String)localObject1);
                     } else {
-                      aI(0, com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.dJd));
+                      aN(0, com.tencent.mm.plugin.card.d.h.a(localLinkedList, false, this.eaQ));
                     }
                     break;
                   }
@@ -284,46 +284,46 @@ public class CardAddEntranceUI
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      ae.e("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI onCreate() intent == null");
+      Log.e("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI onCreate() intent == null");
       setResult(0);
       finish();
       AppMethodBeat.o(113181);
       return;
     }
-    ae.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI doRediect() handle data");
+    Log.i("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI doRediect() handle data");
     Object localObject = paramBundle.getStringExtra("key_in_card_list");
-    this.dJd = paramBundle.getIntExtra("key_from_scene", 8);
-    this.oLg = paramBundle.getIntExtra("key_stastic_scene", 0);
-    ae.i("MicroMsg.CardAddEntranceUI", "doRediect() from_scene:" + this.dJd + "  from_origin_scene:" + this.oLg);
-    this.oLe = paramBundle.getStringExtra("key_package_name");
+    this.eaQ = paramBundle.getIntExtra("key_from_scene", 8);
+    this.pYU = paramBundle.getIntExtra("key_stastic_scene", 0);
+    Log.i("MicroMsg.CardAddEntranceUI", "doRediect() from_scene:" + this.eaQ + "  from_origin_scene:" + this.pYU);
+    this.pYS = paramBundle.getStringExtra("key_package_name");
     String str5 = paramBundle.getStringExtra("key_sign");
     String str1 = getIntent().getStringExtra("src_username");
-    ae.i("MicroMsg.CardAddEntranceUI", "doRediect() src_username:".concat(String.valueOf(str1)));
+    Log.i("MicroMsg.CardAddEntranceUI", "doRediect() src_username:".concat(String.valueOf(str1)));
     String str2 = getIntent().getStringExtra("js_url");
     this.appId = getIntent().getStringExtra("key_app_id");
-    this.oLf = getIntent().getStringExtra("key_transaction");
+    this.pYT = getIntent().getStringExtra("key_transaction");
     String str3 = getIntent().getStringExtra("key_consumed_card_id");
-    ae.i("MicroMsg.CardAddEntranceUI", "doRediect() consumedCardId:".concat(String.valueOf(str3)));
+    Log.i("MicroMsg.CardAddEntranceUI", "doRediect() consumedCardId:".concat(String.valueOf(str3)));
     String str4 = getIntent().getStringExtra("key_template_id");
-    ArrayList localArrayList = com.tencent.mm.plugin.card.d.h.cL((String)localObject, this.dJd);
+    ArrayList localArrayList = com.tencent.mm.plugin.card.d.h.cR((String)localObject, this.eaQ);
     if ((localArrayList == null) || (localArrayList.size() == 0))
     {
-      ae.e("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI initView () tempList == null || tempList.size() == 0");
+      Log.e("MicroMsg.CardAddEntranceUI", "CardAddEntranceUI initView () tempList == null || tempList.size() == 0");
       setResult(0);
       finish();
       AppMethodBeat.o(113181);
       return;
     }
-    this.oKT.clear();
-    this.oKT.addAll(localArrayList);
+    this.pYH.clear();
+    this.pYH.addAll(localArrayList);
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_from_scene", this.dJd);
-    localIntent.putExtra("key_stastic_scene", this.oLg);
+    localIntent.putExtra("key_from_scene", this.eaQ);
+    localIntent.putExtra("key_stastic_scene", this.pYU);
     if (localArrayList.size() == 1)
     {
-      localObject = (th)localArrayList.get(0);
-      localIntent.putExtra("key_card_id", ((th)localObject).oEo);
-      localIntent.putExtra("key_card_ext", ((th)localObject).dJc);
+      localObject = (um)localArrayList.get(0);
+      localIntent.putExtra("key_card_id", ((um)localObject).pRX);
+      localIntent.putExtra("key_card_ext", ((um)localObject).eaP);
       localIntent.putExtra("src_username", str1);
       localIntent.putExtra("js_url", str2);
       localIntent.putExtra("key_consumed_card_id", str3);
@@ -335,7 +335,7 @@ public class CardAddEntranceUI
       return;
     }
     localIntent.putExtra("key_in_card_list", (String)localObject);
-    localIntent.putExtra("key_package_name", this.oLe);
+    localIntent.putExtra("key_package_name", this.pYS);
     localIntent.putExtra("key_sign", str5);
     localIntent.putExtra("src_username", str1);
     localIntent.putExtra("js_url", str2);
@@ -361,7 +361,7 @@ public class CardAddEntranceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardAddEntranceUI
  * JD-Core Version:    0.7.0.1
  */

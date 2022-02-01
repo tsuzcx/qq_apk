@@ -31,58 +31,58 @@ public class EmotionSummary
     AppMethodBeat.i(104781);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.ProductID != null) {
-        paramVarArgs.d(1, this.ProductID);
+        paramVarArgs.e(1, this.ProductID);
       }
       if (this.IconUrl != null) {
-        paramVarArgs.d(2, this.IconUrl);
+        paramVarArgs.e(2, this.IconUrl);
       }
       if (this.PackName != null) {
-        paramVarArgs.d(3, this.PackName);
+        paramVarArgs.e(3, this.PackName);
       }
       if (this.PackDesc != null) {
-        paramVarArgs.d(4, this.PackDesc);
+        paramVarArgs.e(4, this.PackDesc);
       }
       if (this.PackAuthInfo != null) {
-        paramVarArgs.d(5, this.PackAuthInfo);
+        paramVarArgs.e(5, this.PackAuthInfo);
       }
       if (this.PackPrice != null) {
-        paramVarArgs.d(6, this.PackPrice);
+        paramVarArgs.e(6, this.PackPrice);
       }
-      paramVarArgs.aS(7, this.PackType);
-      paramVarArgs.aS(8, this.PackFlag);
+      paramVarArgs.aM(7, this.PackType);
+      paramVarArgs.aM(8, this.PackFlag);
       if (this.CoverUrl != null) {
-        paramVarArgs.d(9, this.CoverUrl);
+        paramVarArgs.e(9, this.CoverUrl);
       }
-      paramVarArgs.aS(10, this.PackExpire);
+      paramVarArgs.aM(10, this.PackExpire);
       if (this.PackCopyright != null) {
-        paramVarArgs.d(11, this.PackCopyright);
+        paramVarArgs.e(11, this.PackCopyright);
       }
-      paramVarArgs.aS(12, this.Timestamp);
+      paramVarArgs.aM(12, this.Timestamp);
       if (this.PanelUrl != null) {
-        paramVarArgs.d(13, this.PanelUrl);
+        paramVarArgs.e(13, this.PanelUrl);
       }
       if (this.PriceNum != null) {
-        paramVarArgs.d(14, this.PriceNum);
+        paramVarArgs.e(14, this.PriceNum);
       }
       if (this.PriceType != null) {
-        paramVarArgs.d(15, this.PriceType);
+        paramVarArgs.e(15, this.PriceType);
       }
       if (this.SendInfo != null) {
-        paramVarArgs.d(16, this.SendInfo);
+        paramVarArgs.e(16, this.SendInfo);
       }
       if (this.TimeLimitStr != null) {
-        paramVarArgs.d(17, this.TimeLimitStr);
+        paramVarArgs.e(17, this.TimeLimitStr);
       }
       if (this.Introduce != null) {
-        paramVarArgs.d(18, this.Introduce);
+        paramVarArgs.e(18, this.Introduce);
       }
       if (this.TagUri != null) {
-        paramVarArgs.d(19, this.TagUri);
+        paramVarArgs.e(19, this.TagUri);
       }
       if (this.ExptDesc != null) {
-        paramVarArgs.d(20, this.ExptDesc);
+        paramVarArgs.e(20, this.ExptDesc);
       }
       AppMethodBeat.o(104781);
       return 0;
@@ -93,79 +93,79 @@ public class EmotionSummary
       }
     }
     label1318:
-    for (int i = f.a.a.b.b.a.e(1, this.ProductID) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.f(1, this.ProductID) + 0;; i = 0)
     {
       paramInt = i;
       if (this.IconUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.IconUrl);
+        paramInt = i + g.a.a.b.b.a.f(2, this.IconUrl);
       }
       i = paramInt;
       if (this.PackName != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.PackName);
+        i = paramInt + g.a.a.b.b.a.f(3, this.PackName);
       }
       paramInt = i;
       if (this.PackDesc != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.PackDesc);
+        paramInt = i + g.a.a.b.b.a.f(4, this.PackDesc);
       }
       i = paramInt;
       if (this.PackAuthInfo != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.PackAuthInfo);
+        i = paramInt + g.a.a.b.b.a.f(5, this.PackAuthInfo);
       }
       paramInt = i;
       if (this.PackPrice != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.PackPrice);
+        paramInt = i + g.a.a.b.b.a.f(6, this.PackPrice);
       }
-      i = paramInt + f.a.a.b.b.a.bz(7, this.PackType) + f.a.a.b.b.a.bz(8, this.PackFlag);
+      i = paramInt + g.a.a.b.b.a.bu(7, this.PackType) + g.a.a.b.b.a.bu(8, this.PackFlag);
       paramInt = i;
       if (this.CoverUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.CoverUrl);
+        paramInt = i + g.a.a.b.b.a.f(9, this.CoverUrl);
       }
-      i = paramInt + f.a.a.b.b.a.bz(10, this.PackExpire);
+      i = paramInt + g.a.a.b.b.a.bu(10, this.PackExpire);
       paramInt = i;
       if (this.PackCopyright != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.PackCopyright);
+        paramInt = i + g.a.a.b.b.a.f(11, this.PackCopyright);
       }
-      i = paramInt + f.a.a.b.b.a.bz(12, this.Timestamp);
+      i = paramInt + g.a.a.b.b.a.bu(12, this.Timestamp);
       paramInt = i;
       if (this.PanelUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.PanelUrl);
+        paramInt = i + g.a.a.b.b.a.f(13, this.PanelUrl);
       }
       i = paramInt;
       if (this.PriceNum != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.PriceNum);
+        i = paramInt + g.a.a.b.b.a.f(14, this.PriceNum);
       }
       paramInt = i;
       if (this.PriceType != null) {
-        paramInt = i + f.a.a.b.b.a.e(15, this.PriceType);
+        paramInt = i + g.a.a.b.b.a.f(15, this.PriceType);
       }
       i = paramInt;
       if (this.SendInfo != null) {
-        i = paramInt + f.a.a.b.b.a.e(16, this.SendInfo);
+        i = paramInt + g.a.a.b.b.a.f(16, this.SendInfo);
       }
       paramInt = i;
       if (this.TimeLimitStr != null) {
-        paramInt = i + f.a.a.b.b.a.e(17, this.TimeLimitStr);
+        paramInt = i + g.a.a.b.b.a.f(17, this.TimeLimitStr);
       }
       i = paramInt;
       if (this.Introduce != null) {
-        i = paramInt + f.a.a.b.b.a.e(18, this.Introduce);
+        i = paramInt + g.a.a.b.b.a.f(18, this.Introduce);
       }
       paramInt = i;
       if (this.TagUri != null) {
-        paramInt = i + f.a.a.b.b.a.e(19, this.TagUri);
+        paramInt = i + g.a.a.b.b.a.f(19, this.TagUri);
       }
       i = paramInt;
       if (this.ExptDesc != null) {
-        i = paramInt + f.a.a.b.b.a.e(20, this.ExptDesc);
+        i = paramInt + g.a.a.b.b.a.f(20, this.ExptDesc);
       }
       AppMethodBeat.o(104781);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(104781);
@@ -173,7 +173,7 @@ public class EmotionSummary
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         EmotionSummary localEmotionSummary = (EmotionSummary)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -181,83 +181,83 @@ public class EmotionSummary
           AppMethodBeat.o(104781);
           return -1;
         case 1: 
-          localEmotionSummary.ProductID = locala.OmT.readString();
+          localEmotionSummary.ProductID = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 2: 
-          localEmotionSummary.IconUrl = locala.OmT.readString();
+          localEmotionSummary.IconUrl = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 3: 
-          localEmotionSummary.PackName = locala.OmT.readString();
+          localEmotionSummary.PackName = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 4: 
-          localEmotionSummary.PackDesc = locala.OmT.readString();
+          localEmotionSummary.PackDesc = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 5: 
-          localEmotionSummary.PackAuthInfo = locala.OmT.readString();
+          localEmotionSummary.PackAuthInfo = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 6: 
-          localEmotionSummary.PackPrice = locala.OmT.readString();
+          localEmotionSummary.PackPrice = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 7: 
-          localEmotionSummary.PackType = locala.OmT.zc();
+          localEmotionSummary.PackType = locala.UbS.zi();
           AppMethodBeat.o(104781);
           return 0;
         case 8: 
-          localEmotionSummary.PackFlag = locala.OmT.zc();
+          localEmotionSummary.PackFlag = locala.UbS.zi();
           AppMethodBeat.o(104781);
           return 0;
         case 9: 
-          localEmotionSummary.CoverUrl = locala.OmT.readString();
+          localEmotionSummary.CoverUrl = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 10: 
-          localEmotionSummary.PackExpire = locala.OmT.zc();
+          localEmotionSummary.PackExpire = locala.UbS.zi();
           AppMethodBeat.o(104781);
           return 0;
         case 11: 
-          localEmotionSummary.PackCopyright = locala.OmT.readString();
+          localEmotionSummary.PackCopyright = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 12: 
-          localEmotionSummary.Timestamp = locala.OmT.zc();
+          localEmotionSummary.Timestamp = locala.UbS.zi();
           AppMethodBeat.o(104781);
           return 0;
         case 13: 
-          localEmotionSummary.PanelUrl = locala.OmT.readString();
+          localEmotionSummary.PanelUrl = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 14: 
-          localEmotionSummary.PriceNum = locala.OmT.readString();
+          localEmotionSummary.PriceNum = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 15: 
-          localEmotionSummary.PriceType = locala.OmT.readString();
+          localEmotionSummary.PriceType = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 16: 
-          localEmotionSummary.SendInfo = locala.OmT.readString();
+          localEmotionSummary.SendInfo = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 17: 
-          localEmotionSummary.TimeLimitStr = locala.OmT.readString();
+          localEmotionSummary.TimeLimitStr = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 18: 
-          localEmotionSummary.Introduce = locala.OmT.readString();
+          localEmotionSummary.Introduce = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 19: 
-          localEmotionSummary.TagUri = locala.OmT.readString();
+          localEmotionSummary.TagUri = locala.UbS.readString();
           AppMethodBeat.o(104781);
           return 0;
         }
-        localEmotionSummary.ExptDesc = locala.OmT.readString();
+        localEmotionSummary.ExptDesc = locala.UbS.readString();
         AppMethodBeat.o(104781);
         return 0;
       }
@@ -268,7 +268,7 @@ public class EmotionSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionSummary
  * JD-Core Version:    0.7.0.1
  */

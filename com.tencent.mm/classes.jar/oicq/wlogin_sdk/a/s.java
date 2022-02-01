@@ -5,10 +5,10 @@ public final class s
 {
   public s()
   {
-    this.Ony = 281;
+    this.Ucx = 281;
   }
   
-  public final Boolean gCy()
+  public final Boolean hPC()
   {
     return Boolean.TRUE;
   }

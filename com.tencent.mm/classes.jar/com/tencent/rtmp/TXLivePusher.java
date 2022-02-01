@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.Surface;
+import com.tencent.liteav.audio.TXAudioEffectManager;
+import com.tencent.liteav.audio.TXAudioEffectManagerImpl;
 import com.tencent.liteav.beauty.TXBeautyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -32,6 +34,14 @@ public class TXLivePusher
     AppMethodBeat.o(182244);
   }
   
+  public TXAudioEffectManager getAudioEffectManager()
+  {
+    AppMethodBeat.i(222652);
+    TXAudioEffectManagerImpl localTXAudioEffectManagerImpl = TXAudioEffectManagerImpl.getAutoCacheHolder();
+    AppMethodBeat.o(222652);
+    return localTXAudioEffectManagerImpl;
+  }
+  
   public TXBeautyManager getBeautyManager()
   {
     AppMethodBeat.i(13577);
@@ -56,6 +66,7 @@ public class TXLivePusher
     return i;
   }
   
+  @Deprecated
   public int getMusicDuration(String paramString)
   {
     AppMethodBeat.i(13596);
@@ -79,10 +90,11 @@ public class TXLivePusher
     AppMethodBeat.o(13617);
   }
   
+  @Deprecated
   public boolean pauseBGM()
   {
     AppMethodBeat.i(13594);
-    boolean bool = this.mTXTxLivePusherImpl.t();
+    boolean bool = this.mTXTxLivePusherImpl.u();
     AppMethodBeat.o(13594);
     return bool;
   }
@@ -94,6 +106,7 @@ public class TXLivePusher
     AppMethodBeat.o(13566);
   }
   
+  @Deprecated
   public boolean playBGM(String paramString)
   {
     AppMethodBeat.i(13592);
@@ -102,10 +115,11 @@ public class TXLivePusher
     return bool;
   }
   
+  @Deprecated
   public boolean resumeBGM()
   {
     AppMethodBeat.i(13595);
-    boolean bool = this.mTXTxLivePusherImpl.u();
+    boolean bool = this.mTXTxLivePusherImpl.v();
     AppMethodBeat.o(13595);
     return bool;
   }
@@ -170,6 +184,7 @@ public class TXLivePusher
     AppMethodBeat.o(182243);
   }
   
+  @Deprecated
   public void setBGMNofify(OnBGMNotify paramOnBGMNotify)
   {
     AppMethodBeat.i(13591);
@@ -177,6 +192,7 @@ public class TXLivePusher
     AppMethodBeat.o(13591);
   }
   
+  @Deprecated
   public void setBGMPitch(float paramFloat)
   {
     AppMethodBeat.i(13599);
@@ -184,6 +200,7 @@ public class TXLivePusher
     AppMethodBeat.o(13599);
   }
   
+  @Deprecated
   public boolean setBGMPosition(int paramInt)
   {
     AppMethodBeat.i(13602);
@@ -192,6 +209,7 @@ public class TXLivePusher
     return bool;
   }
   
+  @Deprecated
   public boolean setBGMVolume(float paramFloat)
   {
     AppMethodBeat.i(13597);
@@ -287,6 +305,7 @@ public class TXLivePusher
     return true;
   }
   
+  @Deprecated
   public boolean setMicVolume(float paramFloat)
   {
     AppMethodBeat.i(13598);
@@ -348,6 +367,7 @@ public class TXLivePusher
     AppMethodBeat.o(13572);
   }
   
+  @Deprecated
   public void setReverb(int paramInt)
   {
     AppMethodBeat.i(13600);
@@ -398,6 +418,7 @@ public class TXLivePusher
     AppMethodBeat.o(13603);
   }
   
+  @Deprecated
   public void setVoiceChangerType(int paramInt)
   {
     AppMethodBeat.i(13601);
@@ -450,6 +471,7 @@ public class TXLivePusher
     AppMethodBeat.o(13564);
   }
   
+  @Deprecated
   public boolean stopBGM()
   {
     AppMethodBeat.i(13593);
@@ -475,7 +497,7 @@ public class TXLivePusher
   public void stopRecord()
   {
     AppMethodBeat.i(13605);
-    this.mTXTxLivePusherImpl.v();
+    this.mTXTxLivePusherImpl.w();
     AppMethodBeat.o(13605);
   }
   
@@ -518,6 +540,7 @@ public class TXLivePusher
     public abstract void onSnapshot(Bitmap paramBitmap);
   }
   
+  @Deprecated
   public static abstract interface OnBGMNotify
   {
     public abstract void onBGMComplete(int paramInt);
@@ -538,7 +561,7 @@ public class TXLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePusher
  * JD-Core Version:    0.7.0.1
  */

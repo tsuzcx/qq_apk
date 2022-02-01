@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/dks" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/dkr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_m" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/b83" android:background="@drawable/b8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/b8b" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/b84" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b8u" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <TextView android:id="@id/b8a" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/b84" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/a7_" />
+    </RelativeLayout>
+    <ImageView android:id="@id/b8b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-10.0dip" android:src="@drawable/b8t" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/b8_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-13.0dip" android:src="@drawable/b8s" android:layout_below="@id/b83" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class li
-  extends b
+  extends IEvent
 {
-  public a dzI;
-  public b dzJ;
-  
   public li()
   {
     this((byte)0);
@@ -17,31 +12,13 @@ public final class li
   
   private li(byte paramByte)
   {
-    AppMethodBeat.i(55664);
-    this.dzI = new a();
-    this.dzJ = new b();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(55664);
-  }
-  
-  public static final class a
-  {
-    public bv dlw;
-    public int dzC = 0;
-    public boolean dzK = false;
-    public String language;
-  }
-  
-  public static final class b
-  {
-    public String dvD;
-    public String dzL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.li
  * JD-Core Version:    0.7.0.1
  */

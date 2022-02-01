@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class nl
-  extends b
+  extends IEvent
 {
-  public a dCA;
-  public b dCB;
+  public a dTC;
   
   public nl()
   {
@@ -18,36 +15,21 @@ public final class nl
   
   private nl(byte paramByte)
   {
-    AppMethodBeat.i(127408);
-    this.dCA = new a();
-    this.dCB = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116033);
+    this.dTC = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(127408);
+    AppMethodBeat.o(116033);
   }
   
   public static final class a
   {
-    public Context context;
-    public String dCC;
-    public long dCD = 0L;
-    public String dCq;
-    public Bundle dCv;
-    public int dCw = 0;
-    public int dui = 0;
-    public int duj = 0;
-    public String jsonString;
-    public int type = 0;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public int dTD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.nl
  * JD-Core Version:    0.7.0.1
  */

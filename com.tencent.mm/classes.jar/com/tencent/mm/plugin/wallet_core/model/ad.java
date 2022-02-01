@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gw;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.hh;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class ad
-  extends gw
+  extends hh
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(70430);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "wallet_tpa_country";
-    locala.IBN.put("wallet_tpa_country", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "wallet_tpa_country";
+    localMAutoDBInfo.colsMap.put("wallet_tpa_country", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" wallet_tpa_country TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "wallet_tpa_country";
-    locala.columns[1] = "wallet_type";
-    locala.IBN.put("wallet_type", "INTEGER");
+    localMAutoDBInfo.primaryKey = "wallet_tpa_country";
+    localMAutoDBInfo.columns[1] = "wallet_type";
+    localMAutoDBInfo.colsMap.put("wallet_type", "INTEGER");
     localStringBuilder.append(" wallet_type INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "wallet_name";
-    locala.IBN.put("wallet_name", "TEXT");
+    localMAutoDBInfo.columns[2] = "wallet_name";
+    localMAutoDBInfo.colsMap.put("wallet_name", "TEXT");
     localStringBuilder.append(" wallet_name TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "wallet_selected";
-    locala.IBN.put("wallet_selected", "INTEGER");
+    localMAutoDBInfo.columns[3] = "wallet_selected";
+    localMAutoDBInfo.colsMap.put("wallet_selected", "INTEGER");
     localStringBuilder.append(" wallet_selected INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "wallet_balance";
-    locala.IBN.put("wallet_balance", "INTEGER");
+    localMAutoDBInfo.columns[4] = "wallet_balance";
+    localMAutoDBInfo.colsMap.put("wallet_balance", "INTEGER");
     localStringBuilder.append(" wallet_balance INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "wallet_tpa_country_mask";
-    locala.IBN.put("wallet_tpa_country_mask", "INTEGER");
+    localMAutoDBInfo.columns[5] = "wallet_tpa_country_mask";
+    localMAutoDBInfo.colsMap.put("wallet_tpa_country_mask", "INTEGER");
     localStringBuilder.append(" wallet_tpa_country_mask INTEGER");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(70430);
   }
   
-  public static ad bo(JSONObject paramJSONObject)
+  public static ad bO(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70429);
     if (paramJSONObject == null)
     {
-      ae.e("MicroMsg.WalletKindInfo", "json is null");
+      Log.e("MicroMsg.WalletKindInfo", "json is null");
       AppMethodBeat.o(70429);
       return null;
     }
@@ -67,9 +67,9 @@ public final class ad
     localad.field_wallet_type = paramJSONObject.optInt("wallet_type");
     localad.field_wallet_balance = paramJSONObject.optInt("wallet_balance");
     localad.field_wallet_tpa_country_mask = paramJSONObject.optInt("wallet_tpa_country_mask");
-    if (bu.isNullOrNil(localad.field_wallet_tpa_country))
+    if (Util.isNullOrNil(localad.field_wallet_tpa_country))
     {
-      ae.e("MicroMsg.WalletKindInfo", "wallet_id is illegal");
+      Log.e("MicroMsg.WalletKindInfo", "wallet_id is illegal");
       AppMethodBeat.o(70429);
       return null;
     }
@@ -77,14 +77,14 @@ public final class ad
     return localad;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ad
  * JD-Core Version:    0.7.0.1
  */

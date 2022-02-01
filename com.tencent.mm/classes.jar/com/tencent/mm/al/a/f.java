@@ -1,45 +1,45 @@
 package com.tencent.mm.al.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ah;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.ai;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class f
-  extends ah
+  extends ai
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(124242);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "brandUserName";
-    locala.IBN.put("brandUserName", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "brandUserName";
+    localMAutoDBInfo.colsMap.put("brandUserName", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" brandUserName TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "brandUserName";
-    locala.columns[1] = "userId";
-    locala.IBN.put("userId", "TEXT");
+    localMAutoDBInfo.primaryKey = "brandUserName";
+    localMAutoDBInfo.columns[1] = "userId";
+    localMAutoDBInfo.colsMap.put("userId", "TEXT");
     localStringBuilder.append(" userId TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(124242);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.a.f
  * JD-Core Version:    0.7.0.1
  */

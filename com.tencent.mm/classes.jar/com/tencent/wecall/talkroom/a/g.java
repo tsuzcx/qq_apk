@@ -1,17 +1,17 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.a.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.ad;
+import com.tencent.pb.common.b.a.a.a.ae;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
 
 public final class g
   extends d
 {
-  public String uwq;
+  public String xOr;
   
-  public final Object cL(byte[] paramArrayOfByte)
+  public final Object cO(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62535);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -20,7 +20,7 @@ public final class g
     {
       try
       {
-        paramArrayOfByte = (a.ad)e.a(new a.ad(), paramArrayOfByte, paramArrayOfByte.length);
+        paramArrayOfByte = (a.ae)e.a(new a.ae(), paramArrayOfByte, paramArrayOfByte.length);
         AppMethodBeat.o(62535);
         return paramArrayOfByte;
       }
@@ -34,19 +34,19 @@ public final class g
     }
   }
   
-  public final String fXq()
-  {
-    return "CsCmd.Cmd_V_CSModifyVoiceGroupInfoReq";
-  }
-  
   public final int getType()
   {
     return 209;
   }
+  
+  public final String hiV()
+  {
+    return "CsCmd.Cmd_V_CSModifyVoiceGroupInfoReq";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.g
  * JD-Core Version:    0.7.0.1
  */

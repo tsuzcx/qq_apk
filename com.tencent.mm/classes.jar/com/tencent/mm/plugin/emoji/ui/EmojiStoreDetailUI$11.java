@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.emoji.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
 
 final class EmojiStoreDetailUI$11
-  implements n.d
+  implements o.f
 {
   EmojiStoreDetailUI$11(EmojiStoreDetailUI paramEmojiStoreDetailUI) {}
   
-  public final void onCreateMMMenu(l paraml)
+  public final void onCreateMMMenu(m paramm)
   {
     AppMethodBeat.i(176189);
-    paraml.a(1001, this.pRx.getString(2131758301), 2131689831);
-    paraml.a(1000, this.pRx.getString(2131758302), 2131689817);
+    paramm.b(1001, this.rix.getString(2131758595), 2131689844);
+    paramm.b(1000, this.rix.getString(2131758596), 2131689830);
     AppMethodBeat.o(176189);
   }
 }

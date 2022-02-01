@@ -62,15 +62,15 @@ public class SheetManager
   
   public Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(209856);
+    AppMethodBeat.i(193596);
     if (this.mPluginExists)
     {
       paramClass = this.mSheetProxy.callSheetStaMth(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-      AppMethodBeat.o(209856);
+      AppMethodBeat.o(193596);
       return paramClass;
     }
     paramClass = Util.invokeStaticMethod(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-    AppMethodBeat.o(209856);
+    AppMethodBeat.o(193596);
     return paramClass;
   }
   
@@ -429,7 +429,7 @@ public class SheetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.sheet.SheetManager
  * JD-Core Version:    0.7.0.1
  */

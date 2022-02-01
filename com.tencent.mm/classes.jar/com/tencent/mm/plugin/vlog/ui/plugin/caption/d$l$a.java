@@ -5,29 +5,29 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class d$l$a
   implements View.OnClickListener
 {
-  public static final a Cix;
+  public static final a GLi;
   
   static
   {
-    AppMethodBeat.i(192001);
-    Cix = new a();
-    AppMethodBeat.o(192001);
+    AppMethodBeat.i(191690);
+    GLi = new a();
+    AppMethodBeat.o(191690);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(192000);
+    AppMethodBeat.i(191689);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$emptyLayout$2$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$emptyLayout$2$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$emptyLayout$2$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(192000);
+    AppMethodBeat.o(191689);
   }
 }
 

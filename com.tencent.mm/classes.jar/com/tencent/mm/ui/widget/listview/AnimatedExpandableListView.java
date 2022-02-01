@@ -9,7 +9,6 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.Transformation;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
@@ -21,7 +20,7 @@ public class AnimatedExpandableListView
   extends ExpandableListView
 {
   private static final String TAG;
-  private a LvB;
+  private a QRl;
   
   static
   {
@@ -46,7 +45,7 @@ public class AnimatedExpandableListView
   }
   
   @SuppressLint({"NewApi"})
-  public final boolean agf(int paramInt)
+  public final boolean api(int paramInt)
   {
     AppMethodBeat.i(159429);
     int i = getFlatListPosition(getPackedPositionForGroup(paramInt));
@@ -55,19 +54,19 @@ public class AnimatedExpandableListView
       i -= getFirstVisiblePosition();
       if ((i < getChildCount()) && (getChildAt(i).getBottom() >= getBottom()))
       {
-        this.LvB.agi(paramInt);
+        this.QRl.apl(paramInt);
         bool = expandGroup(paramInt);
         AppMethodBeat.o(159429);
         return bool;
       }
     }
-    a.a(this.LvB, paramInt);
+    a.a(this.QRl, paramInt);
     boolean bool = expandGroup(paramInt);
     AppMethodBeat.o(159429);
     return bool;
   }
   
-  public final boolean agg(int paramInt)
+  public final boolean apj(int paramInt)
   {
     AppMethodBeat.i(159430);
     int i = getFlatListPosition(getPackedPositionForGroup(paramInt));
@@ -96,8 +95,8 @@ public class AnimatedExpandableListView
     if ((i == -1) || (j != paramInt)) {
       i = 0;
     }
-    a.a(this.LvB, paramInt, i);
-    this.LvB.notifyDataSetChanged();
+    a.a(this.QRl, paramInt, i);
+    this.QRl.notifyDataSetChanged();
     boolean bool = isGroupExpanded(paramInt);
     AppMethodBeat.o(159430);
     return bool;
@@ -109,8 +108,8 @@ public class AnimatedExpandableListView
     super.setAdapter(paramExpandableListAdapter);
     if ((paramExpandableListAdapter instanceof a))
     {
-      this.LvB = ((a)paramExpandableListAdapter);
-      a.a(this.LvB, this);
+      this.QRl = ((a)paramExpandableListAdapter);
+      a.a(this.QRl, this);
       AppMethodBeat.o(159428);
       return;
     }
@@ -122,33 +121,33 @@ public class AnimatedExpandableListView
   public static abstract class a
     extends BaseExpandableListAdapter
   {
-    private SparseArray<AnimatedExpandableListView.d> LvC = new SparseArray();
-    private AnimatedExpandableListView LvD;
+    private SparseArray<AnimatedExpandableListView.d> QRm = new SparseArray();
+    private AnimatedExpandableListView QRn;
     
-    private AnimatedExpandableListView.d agh(int paramInt)
+    private AnimatedExpandableListView.d apk(int paramInt)
     {
-      AnimatedExpandableListView.d locald2 = (AnimatedExpandableListView.d)this.LvC.get(paramInt);
+      AnimatedExpandableListView.d locald2 = (AnimatedExpandableListView.d)this.QRm.get(paramInt);
       AnimatedExpandableListView.d locald1 = locald2;
       if (locald2 == null)
       {
         locald1 = new AnimatedExpandableListView.d((byte)0);
-        this.LvC.put(paramInt, locald1);
+        this.QRm.put(paramInt, locald1);
       }
       return locald1;
     }
     
-    public abstract int RS(int paramInt);
+    public abstract int ZO(int paramInt);
     
-    public final void agi(int paramInt)
+    public final void apl(int paramInt)
     {
-      agh(paramInt).LvP = -1;
+      apk(paramInt).QRy = -1;
     }
     
     public abstract View d(int paramInt1, int paramInt2, View paramView);
     
     public final int getChildType(int paramInt1, int paramInt2)
     {
-      if (agh(paramInt1).zCe) {
+      if (apk(paramInt1).DMe) {
         return 0;
       }
       return 1;
@@ -161,8 +160,8 @@ public class AnimatedExpandableListView
     
     public final View getChildView(final int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
     {
-      final AnimatedExpandableListView.d locald = agh(paramInt1);
-      if (locald.zCe)
+      final AnimatedExpandableListView.d locald = apk(paramInt1);
+      if (locald.DMe)
       {
         if ((paramView instanceof AnimatedExpandableListView.b)) {
           break label457;
@@ -173,7 +172,7 @@ public class AnimatedExpandableListView
       label457:
       for (;;)
       {
-        if (paramInt2 < locald.LvO) {
+        if (paramInt2 < locald.QRx) {
           paramView.getLayoutParams().height = 0;
         }
         final ExpandableListView localExpandableListView;
@@ -185,14 +184,14 @@ public class AnimatedExpandableListView
           return paramView;
           localExpandableListView = (ExpandableListView)paramViewGroup;
           localb = (AnimatedExpandableListView.b)paramView;
-          localb.LvI.clear();
+          localb.uZF.clear();
           AnimatedExpandableListView.b.a(localb, localExpandableListView.getDivider(), paramViewGroup.getMeasuredWidth(), localExpandableListView.getDividerHeight());
           int k = View.MeasureSpec.makeMeasureSpec(paramViewGroup.getWidth(), 1073741824);
           int m = View.MeasureSpec.makeMeasureSpec(0, 0);
           paramInt2 = 0;
           int n = paramViewGroup.getHeight();
-          int i1 = RS(paramInt1);
-          int j = locald.LvO;
+          int i1 = ZO(paramInt1);
+          int j = locald.QRx;
           for (;;)
           {
             i = paramInt2;
@@ -205,17 +204,17 @@ public class AnimatedExpandableListView
             if (paramInt2 >= n) {
               break;
             }
-            localb.hj(paramViewGroup);
+            localb.hy(paramViewGroup);
             j += 1;
           }
-          localb.hj(paramViewGroup);
+          localb.hy(paramViewGroup);
           i = paramInt2 + (i1 - j - 1) * (paramInt2 / (j + 1));
           paramViewGroup = localb.getTag();
           if (paramViewGroup == null) {}
-          for (paramInt2 = 0; (locald.LvN) && (paramInt2 != 1); paramInt2 = ((Integer)paramViewGroup).intValue())
+          for (paramInt2 = 0; (locald.QRw) && (paramInt2 != 1); paramInt2 = ((Integer)paramViewGroup).intValue())
           {
             paramViewGroup = new AnimatedExpandableListView.c(localb, 0, i, locald, (byte)0);
-            paramViewGroup.setDuration(AnimatedExpandableListView.a(this.LvD));
+            paramViewGroup.setDuration(AnimatedExpandableListView.a(this.QRn));
             paramViewGroup.setAnimationListener(new Animation.AnimationListener()
             {
               public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -235,12 +234,12 @@ public class AnimatedExpandableListView
             localb.setTag(Integer.valueOf(1));
             return paramView;
           }
-        } while ((locald.LvN) || (paramInt2 == 2));
-        if (locald.LvP == -1) {
-          locald.LvP = i;
+        } while ((locald.QRw) || (paramInt2 == 2));
+        if (locald.QRy == -1) {
+          locald.QRy = i;
         }
-        paramViewGroup = new AnimatedExpandableListView.c(localb, locald.LvP, 0, locald, (byte)0);
-        paramViewGroup.setDuration(AnimatedExpandableListView.a(this.LvD));
+        paramViewGroup = new AnimatedExpandableListView.c(localb, locald.QRy, 0, locald, (byte)0);
+        paramViewGroup.setDuration(AnimatedExpandableListView.a(this.QRn));
         paramViewGroup.setAnimationListener(new Animation.AnimationListener()
         {
           public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -249,7 +248,7 @@ public class AnimatedExpandableListView
             AnimatedExpandableListView.a.b(AnimatedExpandableListView.a.this, paramInt1);
             localExpandableListView.collapseGroup(paramInt1);
             AnimatedExpandableListView.a.this.notifyDataSetChanged();
-            locald.LvP = -1;
+            locald.QRy = -1;
             localb.setTag(Integer.valueOf(0));
             AppMethodBeat.o(159419);
           }
@@ -267,66 +266,25 @@ public class AnimatedExpandableListView
     
     public final int getChildrenCount(int paramInt)
     {
-      AnimatedExpandableListView.d locald = agh(paramInt);
-      if (locald.zCe) {
-        return locald.LvO + 1;
+      AnimatedExpandableListView.d locald = apk(paramInt);
+      if (locald.DMe) {
+        return locald.QRx + 1;
       }
-      return RS(paramInt);
-    }
-  }
-  
-  static final class c
-    extends Animation
-  {
-    private int LvK;
-    private int LvL;
-    private AnimatedExpandableListView.d LvM;
-    private View view;
-    
-    private c(View paramView, int paramInt1, int paramInt2, AnimatedExpandableListView.d paramd)
-    {
-      AppMethodBeat.i(159426);
-      this.LvK = paramInt1;
-      this.LvL = (paramInt2 - paramInt1);
-      this.view = paramView;
-      this.LvM = paramd;
-      this.view.getLayoutParams().height = paramInt1;
-      this.view.requestLayout();
-      AppMethodBeat.o(159426);
-    }
-    
-    protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
-    {
-      AppMethodBeat.i(159427);
-      super.applyTransformation(paramFloat, paramTransformation);
-      if (paramFloat < 1.0F)
-      {
-        i = this.LvK + (int)(this.LvL * paramFloat);
-        this.view.getLayoutParams().height = i;
-        this.LvM.LvP = i;
-        this.view.requestLayout();
-        AppMethodBeat.o(159427);
-        return;
-      }
-      int i = this.LvK + this.LvL;
-      this.view.getLayoutParams().height = i;
-      this.LvM.LvP = i;
-      this.view.requestLayout();
-      AppMethodBeat.o(159427);
+      return ZO(paramInt);
     }
   }
   
   static final class d
   {
-    boolean LvN = false;
-    int LvO;
-    int LvP = -1;
-    boolean zCe = false;
+    boolean DMe = false;
+    boolean QRw = false;
+    int QRx;
+    int QRy = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.widget.listview.AnimatedExpandableListView
  * JD-Core Version:    0.7.0.1
  */

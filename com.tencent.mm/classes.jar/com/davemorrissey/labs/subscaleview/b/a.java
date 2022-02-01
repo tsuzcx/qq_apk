@@ -13,8 +13,8 @@ import com.davemorrissey.labs.subscaleview.a.c;
 import com.davemorrissey.labs.subscaleview.a.d;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,33 +35,33 @@ public final class a
     extends AsyncTask<Void, Void, Integer>
     implements com.davemorrissey.labs.subscaleview.c.b
   {
-    private final WeakReference<Context> aWN;
-    private final WeakReference<com.davemorrissey.labs.subscaleview.a.b<? extends d>> aWO;
-    private final Uri aWP;
-    private final boolean aWQ;
-    private c aWR;
-    private long aWS;
+    private final WeakReference<Context> aWF;
+    private final WeakReference<com.davemorrissey.labs.subscaleview.a.b<? extends d>> aWG;
+    private final Uri aWH;
+    private final boolean aWI;
+    private c aWJ;
+    private long aWK;
     private Bitmap bitmap;
     private Exception exception;
     private Rect mRect;
-    private final WeakReference<SubsamplingScaleImageView> og;
+    private final WeakReference<SubsamplingScaleImageView> oi;
     
     a(SubsamplingScaleImageView paramSubsamplingScaleImageView, Context paramContext, com.davemorrissey.labs.subscaleview.a.b<? extends d> paramb, Uri paramUri, boolean paramBoolean)
     {
       AppMethodBeat.i(157349);
-      this.aWS = -1L;
-      this.og = new WeakReference(paramSubsamplingScaleImageView);
-      this.aWN = new WeakReference(paramContext);
-      this.aWO = new WeakReference(paramb);
-      this.aWP = paramUri;
-      this.aWQ = paramBoolean;
+      this.aWK = -1L;
+      this.oi = new WeakReference(paramSubsamplingScaleImageView);
+      this.aWF = new WeakReference(paramContext);
+      this.aWG = new WeakReference(paramb);
+      this.aWH = paramUri;
+      this.aWI = paramBoolean;
       paramb = new BitmapFactory.Options();
       paramb.inJustDecodeBounds = true;
       for (;;)
       {
         try
         {
-          localInputStream = o.b(paramUri, null);
+          localInputStream = s.b(paramUri, null);
           paramSubsamplingScaleImageView = localObject;
         }
         catch (IOException paramSubsamplingScaleImageView)
@@ -73,7 +73,7 @@ public final class a
             AppMethodBeat.o(157349);
             throw paramContext;
             paramSubsamplingScaleImageView = paramSubsamplingScaleImageView;
-            ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", paramSubsamplingScaleImageView, "Unable to read file: %s", new Object[] { paramUri.toString() });
+            Log.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", paramSubsamplingScaleImageView, "Unable to read file: %s", new Object[] { paramUri.toString() });
           }
           catch (Throwable localThrowable)
           {
@@ -114,34 +114,34 @@ public final class a
     private void a(SubsamplingScaleImageView paramSubsamplingScaleImageView)
     {
       AppMethodBeat.i(157351);
-      if ((paramSubsamplingScaleImageView != null) && (this.aWQ) && (this.aWS != -1L))
+      if ((paramSubsamplingScaleImageView != null) && (this.aWI) && (this.aWK != -1L))
       {
-        ae.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode onEnd %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-        paramSubsamplingScaleImageView.dD((int)(System.currentTimeMillis() - this.aWS));
+        Log.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode onEnd %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        paramSubsamplingScaleImageView.dy((int)(System.currentTimeMillis() - this.aWK));
       }
       AppMethodBeat.o(157351);
     }
     
     @SuppressLint({"LongLogTag"})
-    private Integer rF()
+    private Integer rI()
     {
       AppMethodBeat.i(157350);
-      ae.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode start");
-      if (this.aWQ) {
-        this.aWS = System.currentTimeMillis();
+      Log.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode start");
+      if (this.aWI) {
+        this.aWK = System.currentTimeMillis();
       }
       try
       {
-        Context localContext = (Context)this.aWN.get();
-        Object localObject = (com.davemorrissey.labs.subscaleview.a.b)this.aWO.get();
-        SubsamplingScaleImageView localSubsamplingScaleImageView = (SubsamplingScaleImageView)this.og.get();
+        Context localContext = (Context)this.aWF.get();
+        Object localObject = (com.davemorrissey.labs.subscaleview.a.b)this.aWG.get();
+        SubsamplingScaleImageView localSubsamplingScaleImageView = (SubsamplingScaleImageView)this.oi.get();
         if ((localContext != null) && (localObject != null) && (localSubsamplingScaleImageView != null))
         {
           localSubsamplingScaleImageView.h("BitmapLoadTask.doInBackground", new Object[0]);
-          localObject = (d)((com.davemorrissey.labs.subscaleview.a.b)localObject).rD();
-          ((d)localObject).c(localContext, this.aWP);
+          localObject = (d)((com.davemorrissey.labs.subscaleview.a.b)localObject).rG();
+          ((d)localObject).d(localContext, this.aWH);
           this.bitmap = ((d)localObject).a(this.mRect, 1);
-          int i = localSubsamplingScaleImageView.d(localContext, this.aWP);
+          int i = localSubsamplingScaleImageView.e(localContext, this.aWH);
           ((d)localObject).recycle();
           a(localSubsamplingScaleImageView);
           AppMethodBeat.o(157350);
@@ -150,10 +150,10 @@ public final class a
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
         this.exception = localFileNotFoundException;
-        this.aWR = new c(1, "tile init file not found");
-        a((SubsamplingScaleImageView)this.og.get());
+        this.aWJ = new c(1, "tile init file not found");
+        a((SubsamplingScaleImageView)this.oi.get());
         AppMethodBeat.o(157350);
         return null;
       }
@@ -161,18 +161,18 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localException, "Failed to load bitmap", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localException, "Failed to load bitmap", new Object[0]);
           this.exception = localException;
-          this.aWR = new c(2, "bitmap decode failed");
+          this.aWJ = new c(2, "bitmap decode failed");
         }
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localOutOfMemoryError, "Failed to load bitmap - OutOfMemoryError", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localOutOfMemoryError, "Failed to load bitmap - OutOfMemoryError", new Object[0]);
           this.exception = new RuntimeException(localOutOfMemoryError);
-          this.aWR = new c(3, "bitmap decode OutOfMemoryError");
+          this.aWJ = new c(3, "bitmap decode OutOfMemoryError");
           SubsamplingScaleImageView.setPreferredBitmapConfig(Bitmap.Config.RGB_565);
         }
       }
@@ -180,17 +180,17 @@ public final class a
     
     public final void cancel() {}
     
-    public final void rG()
+    public final void rJ()
     {
       AppMethodBeat.i(157352);
-      executeOnExecutor(((SubsamplingScaleImageView)this.og.get()).executor, new Void[0]);
+      executeOnExecutor(((SubsamplingScaleImageView)this.oi.get()).executor, new Void[0]);
       AppMethodBeat.o(157352);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.b.a
  * JD-Core Version:    0.7.0.1
  */

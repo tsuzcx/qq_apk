@@ -6,21 +6,21 @@ import org.json.JSONObject;
 
 final class g
 {
-  String bZM = null;
-  String cPk = null;
-  String cPl = "0";
-  long cPm = 0L;
+  String ckt = null;
+  String dfJ = null;
+  String dfK = "0";
+  long dfL = 0L;
   
-  private JSONObject JL()
+  private JSONObject TY()
   {
     AppMethodBeat.i(87660);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      s.a(localJSONObject, "ui", this.bZM);
-      s.a(localJSONObject, "mc", this.cPk);
-      s.a(localJSONObject, "mid", this.cPl);
-      localJSONObject.put("ts", this.cPm);
+      s.a(localJSONObject, "ui", this.ckt);
+      s.a(localJSONObject, "mc", this.dfJ);
+      s.a(localJSONObject, "mid", this.dfK);
+      localJSONObject.put("ts", this.dfL);
       AppMethodBeat.o(87660);
       return localJSONObject;
     }
@@ -28,37 +28,37 @@ final class g
     {
       for (;;)
       {
-        s.JT();
+        s.Ug();
       }
     }
   }
   
-  static g eo(String paramString)
+  static g eX(String paramString)
   {
     AppMethodBeat.i(87657);
     g localg = new g();
-    if (s.ep(paramString)) {}
+    if (s.eY(paramString)) {}
     try
     {
       paramString = new JSONObject(paramString);
       if (!paramString.isNull("ui")) {
-        localg.bZM = paramString.getString("ui");
+        localg.ckt = paramString.getString("ui");
       }
       if (!paramString.isNull("mc")) {
-        localg.cPk = paramString.getString("mc");
+        localg.dfJ = paramString.getString("mc");
       }
       if (!paramString.isNull("mid")) {
-        localg.cPl = paramString.getString("mid");
+        localg.dfK = paramString.getString("mid");
       }
       if (!paramString.isNull("ts")) {
-        localg.cPm = paramString.getLong("ts");
+        localg.dfL = paramString.getLong("ts");
       }
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        s.JT();
+        s.Ug();
       }
     }
     AppMethodBeat.o(87657);
@@ -73,14 +73,14 @@ final class g
       AppMethodBeat.o(87658);
       return 1;
     }
-    if ((s.eq(this.cPl)) && (s.eq(paramg.cPl)))
+    if ((s.eZ(this.dfK)) && (s.eZ(paramg.dfK)))
     {
-      if (this.cPl.equals(paramg.cPl))
+      if (this.dfK.equals(paramg.dfK))
       {
         AppMethodBeat.o(87658);
         return 0;
       }
-      if (this.cPm >= paramg.cPm)
+      if (this.dfL >= paramg.dfL)
       {
         AppMethodBeat.o(87658);
         return 1;
@@ -88,7 +88,7 @@ final class g
       AppMethodBeat.o(87658);
       return -1;
     }
-    if (s.eq(this.cPl))
+    if (s.eZ(this.dfK))
     {
       AppMethodBeat.o(87658);
       return 1;
@@ -100,14 +100,14 @@ final class g
   public final String toString()
   {
     AppMethodBeat.i(87659);
-    String str = JL().toString();
+    String str = TY().toString();
     AppMethodBeat.o(87659);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.g
  * JD-Core Version:    0.7.0.1
  */

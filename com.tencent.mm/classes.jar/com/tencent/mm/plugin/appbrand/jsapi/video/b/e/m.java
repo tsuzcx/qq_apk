@@ -11,7 +11,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.RunnableFuture;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -19,22 +18,22 @@ import java.util.concurrent.TimeoutException;
 
 public final class m
 {
-  public static void B(ArrayList<Runnable> paramArrayList)
+  public static void G(ArrayList<Runnable> paramArrayList)
   {
     try
     {
-      AppMethodBeat.i(211232);
-      c localc = new c();
+      AppMethodBeat.i(234901);
+      m.c localc = new m.c(2);
       Iterator localIterator = paramArrayList.iterator();
       long l;
       for (paramArrayList = Long.valueOf(1L); localIterator.hasNext(); paramArrayList = Long.valueOf(l + 1L))
       {
         Runnable localRunnable = (Runnable)localIterator.next();
         l = paramArrayList.longValue();
-        localc.l(localRunnable, paramArrayList.longValue());
+        localc.k(localRunnable, paramArrayList.longValue());
       }
       localc.shutdown();
-      AppMethodBeat.o(211232);
+      AppMethodBeat.o(234901);
       return;
     }
     finally {}
@@ -42,7 +41,7 @@ public final class m
   
   public static Object a(Callable<?> paramCallable, int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(211233);
+    AppMethodBeat.i(234902);
     Object localObject = Executors.newSingleThreadExecutor();
     paramCallable = ((ExecutorService)localObject).submit(paramCallable);
     ((ExecutorService)localObject).shutdown();
@@ -51,51 +50,51 @@ public final class m
     try
     {
       localObject = paramCallable.get(l, TimeUnit.MILLISECONDS);
-      AppMethodBeat.o(211233);
+      AppMethodBeat.o(234902);
       return localObject;
     }
     catch (TimeoutException localTimeoutException)
     {
       h.log(4, paramString2, paramString1 + "cancelled");
       paramCallable.cancel(true);
-      AppMethodBeat.o(211233);
+      AppMethodBeat.o(234902);
     }
     return null;
   }
   
   public static Future<?> a(Runnable paramRunnable, String paramString)
   {
-    AppMethodBeat.i(211231);
+    AppMethodBeat.i(234900);
     paramString = new b("job " + paramString + " ");
     paramRunnable = paramString.submit(paramRunnable);
     paramString.shutdown();
-    AppMethodBeat.o(211231);
+    AppMethodBeat.o(234900);
     return paramRunnable;
   }
   
   public static final class b
     extends ThreadPoolExecutor
   {
-    String ltC;
+    String mAd;
     
     public b(String paramString)
     {
       super(1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
-      AppMethodBeat.i(211225);
-      this.ltC = "";
-      this.ltC = paramString;
-      AppMethodBeat.o(211225);
+      AppMethodBeat.i(234894);
+      this.mAd = "";
+      this.mAd = paramString;
+      AppMethodBeat.o(234894);
     }
     
     public b(TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue)
     {
       super(10, 0L, paramTimeUnit, paramBlockingQueue);
-      this.ltC = "";
+      this.mAd = "";
     }
     
     protected final void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
     {
-      AppMethodBeat.i(211228);
+      AppMethodBeat.i(234897);
       super.afterExecute(paramRunnable, paramThrowable);
       Throwable localThrowable1 = paramThrowable;
       if (paramThrowable == null)
@@ -144,64 +143,31 @@ public final class m
         }
       }
       if (localThrowable1 != null) {
-        h.log(6, "ThreadUtils", this.ltC + " error occurred during processing request:" + h.i(localThrowable1));
+        h.log(6, "ThreadUtils", this.mAd + " error occurred during processing request:" + h.i(localThrowable1));
       }
-      AppMethodBeat.o(211228);
+      AppMethodBeat.o(234897);
     }
     
     protected final void beforeExecute(Thread paramThread, Runnable paramRunnable)
     {
-      AppMethodBeat.i(211227);
+      AppMethodBeat.i(234896);
       super.beforeExecute(paramThread, paramRunnable);
       h.log(4, "ThreadUtils", "beforeExecute: thread=" + paramThread.toString() + " thread.state=" + paramThread.getState() + " runnable=" + paramRunnable.toString());
-      AppMethodBeat.o(211227);
+      AppMethodBeat.o(234896);
     }
     
     protected final <T> RunnableFuture<T> newTaskFor(Runnable paramRunnable, T paramT)
     {
-      AppMethodBeat.i(211226);
+      AppMethodBeat.i(234895);
       paramRunnable = super.newTaskFor(paramRunnable, paramT);
-      AppMethodBeat.o(211226);
+      AppMethodBeat.o(234895);
       return paramRunnable;
-    }
-  }
-  
-  static final class c
-    extends ThreadPoolExecutor
-  {
-    public c()
-    {
-      this(TimeUnit.MILLISECONDS, new PriorityBlockingQueue());
-      AppMethodBeat.i(211229);
-      AppMethodBeat.o(211229);
-    }
-    
-    private c(TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue)
-    {
-      super(2, 0L, paramTimeUnit, paramBlockingQueue);
-    }
-    
-    public final void l(Runnable paramRunnable, long paramLong)
-    {
-      AppMethodBeat.i(211230);
-      super.execute(new m.a(paramRunnable, paramLong));
-      AppMethodBeat.o(211230);
-    }
-    
-    protected final <T> RunnableFuture<T> newTaskFor(Runnable paramRunnable, T paramT)
-    {
-      return (RunnableFuture)paramRunnable;
-    }
-    
-    protected final <T> RunnableFuture<T> newTaskFor(Callable<T> paramCallable)
-    {
-      return (RunnableFuture)paramCallable;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.m
  * JD-Core Version:    0.7.0.1
  */

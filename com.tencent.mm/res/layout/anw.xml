@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/f40" android:background="@drawable/a9y" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/g74" android:paddingTop="@dimen/c0" android:paddingBottom="@dimen/c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/tb" android:layout_centerInParent="true">
-            <TextView android:textSize="@dimen/td" android:textColor="@color/y4" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/uo" />
-            <TextView android:textSize="@dimen/tc" android:textColor="@color/fr" android:id="@id/b__" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/uo" android:lineSpacingMultiplier="1.2" />
-        </LinearLayout>
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/cn1" android:visibility="gone" android:layout_width="@dimen/ta" android:layout_height="@dimen/ta" android:src="@drawable/b94" android:scaleType="fitCenter" android:layout_toLeftOf="@id/g74" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/ci" />
-        <TextView android:id="@id/e22" android:visibility="gone" android:layout_centerVertical="true" android:layout_marginStart="4.0dip" android:layout_toEndOf="@id/g74" style="@style/qq" />
-        <TextView android:id="@id/eva" android:visibility="gone" android:layout_centerVertical="true" android:layout_marginStart="4.0dip" android:layout_toEndOf="@id/g74" style="@style/yj" />
-    </RelativeLayout>
-    <ImageView android:layout_gravity="bottom" android:id="@id/bdj" style="@style/hp" />
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a1" android:layout_width="fill_parent" android:layout_height="@dimen/cj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/alk" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cb" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/he6" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/bt" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_100_Alpha_0_5" />
+        <com.tencent.mm.ui.search.FTSEditTextView android:id="@id/db_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="1024.0dip" android:textCursorDrawable="@drawable/a70" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/is" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_vertical" android:id="@id/aib" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sz" />
 </LinearLayout>

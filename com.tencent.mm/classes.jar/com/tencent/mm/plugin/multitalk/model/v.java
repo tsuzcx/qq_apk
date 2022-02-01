@@ -1,118 +1,275 @@
 package com.tencent.mm.plugin.multitalk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ccl;
-import com.tencent.mm.protocal.protobuf.ccm;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.multitalk.ui.widget.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
+import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
+import java.util.Iterator;
+import java.util.List;
 
 public final class v
-  extends n
-  implements k
 {
-  private f callback;
-  byte[] dNz;
-  int mCmdId;
-  int qgy;
-  private final b rr;
-  
-  public v(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public static boolean Rl(int paramInt)
   {
-    AppMethodBeat.i(114616);
-    this.qgy = paramInt1;
-    this.mCmdId = paramInt2;
-    b.a locala = new b.a();
-    locala.hQF = new ccl();
-    locala.hQG = new ccm();
-    String str;
-    switch (paramInt2)
+    return (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public static boolean Rm(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3);
+  }
+  
+  public static boolean c(o paramo)
+  {
+    return (paramo == o.zUf) || (paramo == o.zUg) || (paramo == o.zUd);
+  }
+  
+  public static String enW()
+  {
+    AppMethodBeat.i(114585);
+    String str = k(ac.eom().zME);
+    AppMethodBeat.o(114585);
+    return str;
+  }
+  
+  public static String enX()
+  {
+    AppMethodBeat.i(114587);
+    String str = l(ac.eom().zME);
+    AppMethodBeat.o(114587);
+    return str;
+  }
+  
+  public static a enY()
+  {
+    AppMethodBeat.i(114589);
+    if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
     {
-    case 1920: 
-    case 1921: 
-    case 1922: 
-    case 1923: 
-    case 1924: 
-    case 1925: 
-    case 1926: 
-    case 1930: 
-    case 1934: 
-    case 1936: 
-    default: 
-      str = "";
+      locala = a.zNN;
+      AppMethodBeat.o(114589);
+      return locala;
     }
+    if (NetStatusUtil.is4G(MMApplicationContext.getContext()))
+    {
+      locala = a.zNO;
+      AppMethodBeat.o(114589);
+      return locala;
+    }
+    if ((NetStatusUtil.is3G(MMApplicationContext.getContext())) || (NetStatusUtil.is2G(MMApplicationContext.getContext())))
+    {
+      locala = a.zNP;
+      AppMethodBeat.o(114589);
+      return locala;
+    }
+    a locala = a.zNQ;
+    AppMethodBeat.o(114589);
+    return locala;
+  }
+  
+  public static boolean enZ()
+  {
+    AppMethodBeat.i(114590);
+    int i = ((Integer)g.aAh().azQ().get(ar.a.Ogl, Integer.valueOf(-1))).intValue();
+    long l = ((Long)g.aAh().azQ().get(ar.a.Ogm, Long.valueOf(-1L))).longValue();
+    if ((i > 0) && (l > 0L))
+    {
+      Log.i("MicroMsg.MultiTalkUtil", "checkMultiTalkAvailable, disableTime: %s, disableTimestamp: %s", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
+      if (Util.ticksToNow(l) <= i * 1000)
+      {
+        AppMethodBeat.o(114590);
+        return false;
+      }
+      g.aAh().azQ().set(ar.a.Ogl, Integer.valueOf(-1));
+      g.aAh().azQ().set(ar.a.Ogm, Long.valueOf(-1L));
+      AppMethodBeat.o(114590);
+      return true;
+    }
+    g.aAh().azQ().set(ar.a.Ogl, Integer.valueOf(-1));
+    g.aAh().azQ().set(ar.a.Ogm, Long.valueOf(-1L));
+    AppMethodBeat.o(114590);
+    return true;
+  }
+  
+  public static String g(MultiTalkGroup paramMultiTalkGroup)
+  {
+    AppMethodBeat.i(114579);
+    if (paramMultiTalkGroup == null)
+    {
+      AppMethodBeat.o(114579);
+      return "";
+    }
+    StringBuffer localStringBuffer = new StringBuffer();
+    Object localObject = paramMultiTalkGroup.RHa;
+    localStringBuffer.append("->[usernamelist]");
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)((Iterator)localObject).next();
+        localStringBuffer.append(localMultiTalkGroupMember.RHb + "|");
+        localStringBuffer.append(localMultiTalkGroupMember.status + ", ");
+      }
+    }
+    localStringBuffer.append(" ->createname:" + paramMultiTalkGroup.RGZ);
+    localStringBuffer.append(" ->talkgroupId:" + paramMultiTalkGroup.zHD);
+    localStringBuffer.append(" ->wxGroupId:" + paramMultiTalkGroup.zHE);
+    paramMultiTalkGroup = localStringBuffer.toString();
+    AppMethodBeat.o(114579);
+    return paramMultiTalkGroup;
+  }
+  
+  public static boolean h(MultiTalkGroup paramMultiTalkGroup)
+  {
+    AppMethodBeat.i(114581);
+    if (paramMultiTalkGroup == null)
+    {
+      AppMethodBeat.o(114581);
+      return false;
+    }
+    paramMultiTalkGroup = paramMultiTalkGroup.RHa.iterator();
+    int i = 0;
+    int j = 0;
+    while (paramMultiTalkGroup.hasNext())
+    {
+      MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)paramMultiTalkGroup.next();
+      if (localMultiTalkGroupMember.RHb.equals(z.aTY()))
+      {
+        if (localMultiTalkGroupMember.status != 10) {
+          break label119;
+        }
+        if (i != 0)
+        {
+          AppMethodBeat.o(114581);
+          return true;
+        }
+        j = 1;
+      }
+      else
+      {
+        if (localMultiTalkGroupMember.status != 10) {
+          break label119;
+        }
+        if (j != 0)
+        {
+          AppMethodBeat.o(114581);
+          return true;
+        }
+        i = 1;
+      }
+    }
+    label119:
     for (;;)
     {
-      ae.i("MicroMsg.MT.NetSceneMultiTalk", "netSceneMultiTalk cmdid %d cgiName %s", new Object[] { Integer.valueOf(paramInt2), str });
-      locala.uri = str;
-      locala.funcId = this.mCmdId;
-      locala.hQH = 0;
-      locala.respCmdId = 0;
-      this.rr = locala.aDS();
-      ((ccl)this.rr.hQD.hQJ).FTj = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
-      AppMethodBeat.o(114616);
-      return;
-      str = "/cgi-bin/qcwxmultitalk-bin/createtalkroom";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/entertalkroom";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/exittalkroom";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/cancelcreatetalkroom";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/rejectentertalkroom";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/addmembers";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/hellotalkroom";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/miscinfo";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/voiceackreq";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/oiceredirectreq";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/getgroupinfobatch";
-      continue;
-      str = "/cgi-bin/qcwxmultitalk-bin/memberwhisper";
+      break;
+      AppMethodBeat.o(114581);
+      return false;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public static boolean i(MultiTalkGroup paramMultiTalkGroup)
   {
-    AppMethodBeat.i(114617);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(114617);
-    return i;
+    AppMethodBeat.i(239428);
+    paramMultiTalkGroup = paramMultiTalkGroup.RHa.iterator();
+    int i = 0;
+    if (paramMultiTalkGroup.hasNext())
+    {
+      MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)paramMultiTalkGroup.next();
+      if ((localMultiTalkGroupMember.status != 10) && (localMultiTalkGroupMember.status != 1)) {
+        break label82;
+      }
+      i += 1;
+    }
+    label82:
+    for (;;)
+    {
+      break;
+      if (i > 1)
+      {
+        AppMethodBeat.o(239428);
+        return true;
+      }
+      AppMethodBeat.o(239428);
+      return false;
+    }
   }
   
-  public final int getType()
+  public static boolean j(MultiTalkGroup paramMultiTalkGroup)
   {
-    return this.mCmdId;
+    AppMethodBeat.i(114583);
+    boolean bool = paramMultiTalkGroup.RGZ.equals(z.aTY());
+    AppMethodBeat.o(114583);
+    return bool;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public static String k(MultiTalkGroup paramMultiTalkGroup)
   {
-    AppMethodBeat.i(114618);
-    ae.d("MicroMsg.MT.NetSceneMultiTalk", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " " + this.mCmdId);
-    this.dNz = z.a(((ccm)((b)paramq).hQE.hQJ).FTj);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(114618);
+    AppMethodBeat.i(114584);
+    if (paramMultiTalkGroup == null)
+    {
+      AppMethodBeat.o(114584);
+      return "";
+    }
+    String str2 = paramMultiTalkGroup.zHD;
+    String str1 = str2;
+    if (Util.isNullOrNil(str2)) {
+      str1 = paramMultiTalkGroup.RGY;
+    }
+    paramMultiTalkGroup = Util.nullAs(str1, "");
+    AppMethodBeat.o(114584);
+    return paramMultiTalkGroup;
+  }
+  
+  public static String l(MultiTalkGroup paramMultiTalkGroup)
+  {
+    AppMethodBeat.i(114586);
+    String str = null;
+    int i = 0;
+    if (i < paramMultiTalkGroup.RHa.size())
+    {
+      if (!((MultiTalkGroupMember)paramMultiTalkGroup.RHa.get(i)).RHb.equals(z.aTY())) {
+        break label80;
+      }
+      str = ((MultiTalkGroupMember)paramMultiTalkGroup.RHa.get(i)).RHc;
+    }
+    label80:
+    for (;;)
+    {
+      i += 1;
+      break;
+      AppMethodBeat.o(114586);
+      return str;
+    }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(114578);
+      zNN = new a("WIFI", 0);
+      zNO = new a("_4G", 1);
+      zNP = new a("_3GOr_2G", 2);
+      zNQ = new a("None", 3);
+      zNR = new a[] { zNN, zNO, zNP, zNQ };
+      AppMethodBeat.o(114578);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.v
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 public final class o
 {
-  public static void gY(View paramView)
+  public static void hp(View paramView)
   {
-    AppMethodBeat.i(224386);
-    gZ(paramView);
-    AppMethodBeat.o(224386);
+    AppMethodBeat.i(258468);
+    hq(paramView);
+    AppMethodBeat.o(258468);
   }
   
-  public static void gZ(View paramView)
+  public static void hq(View paramView)
   {
     AppMethodBeat.i(143210);
     if (paramView == null)
@@ -29,40 +27,31 @@ public final class o
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(143208);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/ui/tools/PressAlphaUtil$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
-        case 2: 
-        default: 
-          if ((paramAnonymousView.isClickable()) || (paramAnonymousView.isLongClickable())) {
-            break;
-          }
         }
-        for (boolean bool = true;; bool = false)
+        while ((!paramAnonymousView.isClickable()) && (!paramAnonymousView.isLongClickable()))
         {
-          a.a(bool, this, "com/tencent/mm/ui/tools/PressAlphaUtil$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(143208);
-          return bool;
-          paramAnonymousView.setAlpha(this.LgP);
-          break;
+          return true;
+          paramAnonymousView.setAlpha(this.QvN);
+          continue;
           paramAnonymousView.setAlpha(1.0F);
-          break;
         }
+        AppMethodBeat.o(143208);
+        return false;
       }
     });
     AppMethodBeat.o(143210);
   }
   
-  public static void ha(View paramView)
+  public static void hr(View paramView)
   {
-    AppMethodBeat.i(193757);
+    AppMethodBeat.i(205375);
     if (paramView != null) {
       paramView.setOnTouchListener(null);
     }
-    AppMethodBeat.o(193757);
+    AppMethodBeat.o(205375);
   }
 }
 

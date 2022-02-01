@@ -10,7 +10,7 @@ class GridHeadersGridView$SavedState
   extends View.BaseSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR;
-  boolean KXy;
+  boolean QkO;
   
   static
   {
@@ -26,7 +26,7 @@ class GridHeadersGridView$SavedState
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.KXy = bool;
+      this.QkO = bool;
       AppMethodBeat.o(142800);
       return;
     }
@@ -40,7 +40,7 @@ class GridHeadersGridView$SavedState
   public String toString()
   {
     AppMethodBeat.i(142801);
-    String str = "StickyGridHeadersGridView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " areHeadersSticky=" + this.KXy + "}";
+    String str = "StickyGridHeadersGridView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " areHeadersSticky=" + this.QkO + "}";
     AppMethodBeat.o(142801);
     return str;
   }
@@ -49,7 +49,7 @@ class GridHeadersGridView$SavedState
   {
     AppMethodBeat.i(142802);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.KXy) {}
+    if (this.QkO) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -60,7 +60,7 @@ class GridHeadersGridView$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.GridHeadersGridView.SavedState
  * JD-Core Version:    0.7.0.1
  */

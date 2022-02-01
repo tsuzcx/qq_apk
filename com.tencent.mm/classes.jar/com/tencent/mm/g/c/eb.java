@@ -2,34 +2,69 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class eb
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eJC = "title".hashCode();
-  private static final int flh = "loan_jump_url".hashCode();
-  private static final int fli = "red_dot_index".hashCode();
-  private static final int flj = "is_show_entry".hashCode();
-  private static final int flk = "tips".hashCode();
-  private static final int fll = "is_overdue".hashCode();
-  private static final int flm = "available_otb".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS lbsverifymessage_unread_index ON LBSVerifyMessage(status)", "CREATE INDEX IF NOT EXISTS lbsverifymessage_createtimeIndex ON LBSVerifyMessage(createtime)" };
+  private static final int content_HASHCODE;
+  private static final int fLi;
+  private static final int fNl;
+  private static final int fNm;
+  private static final int fNn;
+  private static final int fNo = "sayhiencryptuser".hashCode();
+  private static final int fjQ;
+  private static final int fjR = "ticket".hashCode();
+  private static final int fjl;
+  private static final int fni = "flag".hashCode();
+  private static final int foe;
+  private static final int fqw;
+  private static final int fyg = "svrid".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eJz = true;
-  public String field_available_otb;
-  public int field_is_overdue;
-  public int field_is_show_entry;
-  public String field_loan_jump_url;
-  public int field_red_dot_index;
-  public String field_tips;
-  public String field_title;
-  private boolean flb = true;
-  private boolean flc = true;
-  private boolean fld = true;
-  private boolean fle = true;
-  private boolean flf = true;
-  private boolean flg = true;
+  private static final int type_HASHCODE;
+  private boolean __hadSetcontent = true;
+  private boolean __hadSettype = true;
+  private boolean fKX = true;
+  private boolean fNh = true;
+  private boolean fNi = true;
+  private boolean fNj = true;
+  private boolean fNk = true;
+  public String field_content;
+  public long field_createtime;
+  public int field_flag;
+  public String field_imgpath;
+  public int field_isSend;
+  public String field_sayhicontent;
+  public String field_sayhiencryptuser;
+  public String field_sayhiuser;
+  public int field_scene;
+  public int field_status;
+  public long field_svrid;
+  public String field_talker;
+  public String field_ticket;
+  public int field_type;
+  private boolean fjO = true;
+  private boolean fjP = true;
+  private boolean fji = true;
+  private boolean fnP = true;
+  private boolean fng = true;
+  private boolean fqi = true;
+  private boolean fxu = true;
+  
+  static
+  {
+    fjl = "status".hashCode();
+    type_HASHCODE = "type".hashCode();
+    fjQ = "scene".hashCode();
+    fLi = "createtime".hashCode();
+    fqw = "talker".hashCode();
+    content_HASHCODE = "content".hashCode();
+    fNl = "sayhiuser".hashCode();
+    fNm = "sayhicontent".hashCode();
+    fNn = "imgpath".hashCode();
+    foe = "isSend".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,11 +79,11 @@ public abstract class eb
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eJC != k) {
+      if (fyg != k) {
         break label65;
       }
-      this.field_title = paramCursor.getString(i);
-      this.eJz = true;
+      this.field_svrid = paramCursor.getLong(i);
+      this.fxu = true;
     }
     for (;;)
     {
@@ -56,18 +91,32 @@ public abstract class eb
       break label20;
       break;
       label65:
-      if (flh == k) {
-        this.field_loan_jump_url = paramCursor.getString(i);
-      } else if (fli == k) {
-        this.field_red_dot_index = paramCursor.getInt(i);
-      } else if (flj == k) {
-        this.field_is_show_entry = paramCursor.getInt(i);
-      } else if (flk == k) {
-        this.field_tips = paramCursor.getString(i);
-      } else if (fll == k) {
-        this.field_is_overdue = paramCursor.getInt(i);
-      } else if (flm == k) {
-        this.field_available_otb = paramCursor.getString(i);
+      if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (fjQ == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (fLi == k) {
+        this.field_createtime = paramCursor.getLong(i);
+      } else if (fqw == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (content_HASHCODE == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (fNl == k) {
+        this.field_sayhiuser = paramCursor.getString(i);
+      } else if (fNm == k) {
+        this.field_sayhicontent = paramCursor.getString(i);
+      } else if (fNn == k) {
+        this.field_imgpath = paramCursor.getString(i);
+      } else if (foe == k) {
+        this.field_isSend = paramCursor.getInt(i);
+      } else if (fNo == k) {
+        this.field_sayhiencryptuser = paramCursor.getString(i);
+      } else if (fjR == k) {
+        this.field_ticket = paramCursor.getString(i);
+      } else if (fni == k) {
+        this.field_flag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -77,26 +126,47 @@ public abstract class eb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eJz) {
-      localContentValues.put("title", this.field_title);
+    if (this.fxu) {
+      localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
-    if (this.flb) {
-      localContentValues.put("loan_jump_url", this.field_loan_jump_url);
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.flc) {
-      localContentValues.put("red_dot_index", Integer.valueOf(this.field_red_dot_index));
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.fld) {
-      localContentValues.put("is_show_entry", Integer.valueOf(this.field_is_show_entry));
+    if (this.fjO) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.fle) {
-      localContentValues.put("tips", this.field_tips);
+    if (this.fKX) {
+      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.flf) {
-      localContentValues.put("is_overdue", Integer.valueOf(this.field_is_overdue));
+    if (this.fqi) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.flg) {
-      localContentValues.put("available_otb", this.field_available_otb);
+    if (this.__hadSetcontent) {
+      localContentValues.put("content", this.field_content);
+    }
+    if (this.fNh) {
+      localContentValues.put("sayhiuser", this.field_sayhiuser);
+    }
+    if (this.fNi) {
+      localContentValues.put("sayhicontent", this.field_sayhicontent);
+    }
+    if (this.fNj) {
+      localContentValues.put("imgpath", this.field_imgpath);
+    }
+    if (this.fnP) {
+      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
+    }
+    if (this.fNk) {
+      localContentValues.put("sayhiencryptuser", this.field_sayhiencryptuser);
+    }
+    if (this.fjP) {
+      localContentValues.put("ticket", this.field_ticket);
+    }
+    if (this.fng) {
+      localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -106,7 +176,7 @@ public abstract class eb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.eb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.aa.c;
 
 import android.content.Context;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.model.ad.b;
 
 public abstract interface a
 {
-  public abstract z.b aiA();
+  public abstract ad.b ayQ();
   
   public abstract Context getContext();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aa.c.a
  * JD-Core Version:    0.7.0.1
  */

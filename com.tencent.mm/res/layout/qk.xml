@@ -1,36 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/go"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gq">
-        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
-                <ImageView android:id="@id/ao3" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/hu">
-                <ImageView android:id="@id/ao4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a7a" />
-                <ImageView android:id="@id/alf" android:background="@drawable/ac7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <com.tencent.mm.ui.widget.MMPinProgressBtn android:layout_gravity="center" android:id="@id/alj" android:layout_width="22.0dip" android:layout_height="22.0dip" app:innerSize="22.0dip" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/glx" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <FrameLayout android:id="@id/al7" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:layout_gravity="center" android:id="@id/alb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                    <ImageView android:id="@id/ald" android:background="@drawable/ks" android:layout_width="@dimen/a3" android:layout_height="@dimen/w4" />
-                    <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/aoe" android:background="@drawable/l7" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:paddingBottom="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/c_">
-                        <TextView android:textSize="@dimen/a_" android:textColor="@color/a_u" android:layout_gravity="bottom" android:id="@id/any" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-                        <TextView android:textSize="@dimen/a_" android:textColor="@color/a_u" android:gravity="right" android:layout_gravity="bottom" android:id="@id/an2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-                    </LinearLayout>
-                    <ImageView android:layout_gravity="center" android:id="@id/ao2" android:background="@null" android:layout_width="@dimen/a9" android:layout_height="@dimen/a9" />
-                    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/gj_" android:background="@drawable/ks" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <ProgressBar android:layout_gravity="center" android:id="@id/aof" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4r" />
-                    </LinearLayout>
-                </FrameLayout>
-                <LinearLayout android:id="@id/aog" android:background="@drawable/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk">
-                    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hk" android:layout_marginRight="@dimen/hk" layout="@layout/qq" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-    <com.tencent.mm.ui.chatting.view.ChattingAvatarImageView android:id="@id/aku" android:focusable="false" android:visibility="gone" style="@style/gn" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageView android:gravity="center_vertical" android:id="@id/at_" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/bca" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/u_" android:ellipsize="end" android:id="@id/atb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_toRightOf="@id/at_" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/u_" android:id="@id/atk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:maxLines="1" />
 </LinearLayout>

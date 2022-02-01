@@ -24,7 +24,7 @@ public abstract class LiveData<T>
       synchronized (LiveData.a(LiveData.this))
       {
         Object localObject2 = LiveData.b(LiveData.this);
-        LiveData.a(LiveData.this, LiveData.X());
+        LiveData.a(LiveData.this, LiveData.aa());
         LiveData.this.setValue(localObject2);
         return;
       }
@@ -38,7 +38,7 @@ public abstract class LiveData<T>
     do
     {
       return;
-      if (!paramLiveData.Y())
+      if (!paramLiveData.ac())
       {
         paramLiveData.l(false);
         return;
@@ -71,7 +71,7 @@ public abstract class LiveData<T>
       }
       this.cS = false;
       return;
-      b.d locald = this.cO.S();
+      b.d locald = this.cO.V();
       do
       {
         localLiveData = paramLiveData;
@@ -86,12 +86,12 @@ public abstract class LiveData<T>
   
   private static void h(String paramString)
   {
-    if (!a.P().bK.isMainThread()) {
+    if (!a.S().bK.isMainThread()) {
       throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
     }
   }
   
-  protected void W() {}
+  protected void Z() {}
   
   public T getValue()
   {
@@ -158,7 +158,7 @@ public abstract class LiveData<T>
           return;
         }
       }
-      a.P().f(this.cU);
+      a.S().postToMainThread(this.cU);
       return;
       label47:
       int i = 0;
@@ -172,7 +172,7 @@ public abstract class LiveData<T>
     if (paramObserver == null) {
       return;
     }
-    paramObserver.Z();
+    paramObserver.ae();
     paramObserver.l(false);
   }
   
@@ -205,7 +205,7 @@ public abstract class LiveData<T>
       super(localObserver);
     }
     
-    final boolean Y()
+    final boolean ac()
     {
       return true;
     }
@@ -223,12 +223,12 @@ public abstract class LiveData<T>
       this.cW = paramObserver;
     }
     
-    final boolean Y()
+    final boolean ac()
     {
       return this.cW.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED);
     }
     
-    final void Z()
+    final void ae()
     {
       this.cW.getLifecycle().removeObserver(this);
     }
@@ -245,7 +245,7 @@ public abstract class LiveData<T>
         LiveData.this.removeObserver(this.cX);
         return;
       }
-      l(Y());
+      l(ac());
     }
   }
   
@@ -261,9 +261,9 @@ public abstract class LiveData<T>
       this.cX = localObject;
     }
     
-    abstract boolean Y();
+    abstract boolean ac();
     
-    void Z() {}
+    void ae() {}
     
     boolean c(LifecycleOwner paramLifecycleOwner)
     {
@@ -297,7 +297,7 @@ public abstract class LiveData<T>
           LiveData.this.onActive();
         }
         if ((LiveData.c(LiveData.this) == 0) && (!this.mActive)) {
-          LiveData.this.W();
+          LiveData.this.Z();
         }
         if (!this.mActive) {
           break;

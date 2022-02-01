@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.emoji.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -17,12 +17,12 @@ import org.xml.sax.InputSource;
 
 public final class d
 {
-  public static ArrayList<EmojiGroupInfo> acM(String paramString)
+  public static ArrayList<EmojiGroupInfo> amT(String paramString)
   {
     AppMethodBeat.i(108735);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] parse xml faild. xml is null.");
+      Log.w("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] parse xml faild. xml is null.");
       AppMethodBeat.o(108735);
       return null;
     }
@@ -56,60 +56,60 @@ public final class d
           if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("ProductID")))
           {
             localObject2 = ((Node)localObject2).getTextContent();
-            ae.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] productId:%s", new Object[] { localObject2 });
+            Log.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] productId:%s", new Object[] { localObject2 });
             localEmojiGroupInfo.field_productID = ((String)localObject2);
           }
           else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("RecType")))
           {
             localObject2 = ((Node)localObject2).getTextContent();
-            ae.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] RecType:%s", new Object[] { localObject2 });
+            Log.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] RecType:%s", new Object[] { localObject2 });
             localEmojiGroupInfo.field_recommandType = Integer.valueOf((String)localObject2).intValue();
           }
         }
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.emoji.EmojiRecommendXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+        Log.e("MicroMsg.emoji.EmojiRecommendXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
         AppMethodBeat.o(108735);
         return null;
       }
       if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("RecWord")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ae.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] recWord:%s", new Object[] { localObject2 });
+        Log.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] recWord:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_recommandWord = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("Name")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ae.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] Name:%s", new Object[] { localObject2 });
+        Log.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] Name:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_packName = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("Panel")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ae.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] iconUrl:%s", new Object[] { localObject2 });
+        Log.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] iconUrl:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_packGrayIconUrl = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("Icon")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ae.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] BigIconUrl:%s", new Object[] { localObject2 });
+        Log.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] BigIconUrl:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_BigIconUrl = ((String)localObject2);
       }
       else if ((localObject2 != null) && (((Node)localObject2).getNodeName() != null) && (((Node)localObject2).getNodeName().equals("ButtonType")))
       {
         localObject2 = ((Node)localObject2).getTextContent();
-        ae.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] buttonType:%s", new Object[] { localObject2 });
+        Log.d("MicroMsg.emoji.EmojiRecommendXMLParser", "[recommend emotion parser] buttonType:%s", new Object[] { localObject2 });
         localEmojiGroupInfo.field_buttonType = Integer.valueOf((String)localObject2).intValue();
         break label746;
         label653:
-        if (!bu.isNullOrNil(localEmojiGroupInfo.field_productID))
+        if (!Util.isNullOrNil(localEmojiGroupInfo.field_productID))
         {
           localEmojiGroupInfo.field_recommand = 1;
           localEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
           localEmojiGroupInfo.field_sort = 0;
-          g.yxI.f(12068, new Object[] { Integer.valueOf(1), localEmojiGroupInfo.field_productID, Integer.valueOf(localEmojiGroupInfo.field_recommandType) });
+          h.CyF.a(12068, new Object[] { Integer.valueOf(1), localEmojiGroupInfo.field_productID, Integer.valueOf(localEmojiGroupInfo.field_recommandType) });
           ((ArrayList)localObject1).add(localEmojiGroupInfo);
         }
         i += 1;

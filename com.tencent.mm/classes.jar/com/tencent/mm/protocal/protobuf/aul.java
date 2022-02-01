@@ -5,63 +5,115 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class aul
   extends com.tencent.mm.bw.a
 {
-  public int FZk;
-  public String urq;
+  public int LFn;
+  public long LFo;
+  public String dMW;
+  public String iAR;
+  public int likeFlag;
+  public String nickName;
+  public long tsR;
+  public int unreadFlag;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124491);
+    AppMethodBeat.i(209478);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FZk);
-      if (this.urq != null) {
-        paramVarArgs.d(2, this.urq);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.nickName != null) {
+        paramVarArgs.e(1, this.nickName);
       }
-      AppMethodBeat.o(124491);
+      if (this.iAR != null) {
+        paramVarArgs.e(2, this.iAR);
+      }
+      paramVarArgs.bb(3, this.tsR);
+      paramVarArgs.aM(4, this.likeFlag);
+      paramVarArgs.aM(5, this.LFn);
+      if (this.dMW != null) {
+        paramVarArgs.e(6, this.dMW);
+      }
+      paramVarArgs.bb(7, this.LFo);
+      paramVarArgs.aM(8, this.unreadFlag);
+      AppMethodBeat.o(209478);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.nickName == null) {
+        break label558;
+      }
+    }
+    label558:
+    for (paramInt = g.a.a.b.b.a.f(1, this.nickName) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(1, this.FZk) + 0;
+      int i = paramInt;
+      if (this.iAR != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.iAR);
+      }
+      i = i + g.a.a.b.b.a.r(3, this.tsR) + g.a.a.b.b.a.bu(4, this.likeFlag) + g.a.a.b.b.a.bu(5, this.LFn);
       paramInt = i;
-      if (this.urq != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.urq);
+      if (this.dMW != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.dMW);
       }
-      AppMethodBeat.o(124491);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
-      }
-      AppMethodBeat.o(124491);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      aul localaul = (aul)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      i = g.a.a.b.b.a.r(7, this.LFo);
+      int j = g.a.a.b.b.a.bu(8, this.unreadFlag);
+      AppMethodBeat.o(209478);
+      return paramInt + i + j;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(124491);
-        return -1;
-      case 1: 
-        localaul.FZk = locala.OmT.zc();
-        AppMethodBeat.o(124491);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        AppMethodBeat.o(209478);
         return 0;
       }
-      localaul.urq = locala.OmT.readString();
-      AppMethodBeat.o(124491);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        aul localaul = (aul)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(209478);
+          return -1;
+        case 1: 
+          localaul.nickName = locala.UbS.readString();
+          AppMethodBeat.o(209478);
+          return 0;
+        case 2: 
+          localaul.iAR = locala.UbS.readString();
+          AppMethodBeat.o(209478);
+          return 0;
+        case 3: 
+          localaul.tsR = locala.UbS.zl();
+          AppMethodBeat.o(209478);
+          return 0;
+        case 4: 
+          localaul.likeFlag = locala.UbS.zi();
+          AppMethodBeat.o(209478);
+          return 0;
+        case 5: 
+          localaul.LFn = locala.UbS.zi();
+          AppMethodBeat.o(209478);
+          return 0;
+        case 6: 
+          localaul.dMW = locala.UbS.readString();
+          AppMethodBeat.o(209478);
+          return 0;
+        case 7: 
+          localaul.LFo = locala.UbS.zl();
+          AppMethodBeat.o(209478);
+          return 0;
+        }
+        localaul.unreadFlag = locala.UbS.zi();
+        AppMethodBeat.o(209478);
+        return 0;
+      }
+      AppMethodBeat.o(209478);
+      return -1;
     }
-    AppMethodBeat.o(124491);
-    return -1;
   }
 }
 

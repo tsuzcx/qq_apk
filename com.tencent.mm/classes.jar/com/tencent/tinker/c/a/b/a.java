@@ -8,69 +8,69 @@ import java.util.Arrays;
 
 public final class a
 {
-  public static final byte[] nyA = { 68, 88, 68, 73, 70, 70 };
-  public int MCA;
-  public int MCB;
-  public int MCC;
-  public int MCD;
-  public int MCE;
-  public int MCF;
-  public int MCG;
-  public int MCH;
-  public int MCI;
-  public int MCJ;
-  public int MCK;
-  public int MCL;
-  public int MCM;
-  public int MCN;
-  public byte[] MCO;
-  public final com.tencent.tinker.a.a.a.a MCt;
-  private short MCu;
-  public int MCv;
-  private int MCw;
-  public int MCx;
-  public int MCy;
-  public int MCz;
+  public static final byte[] oJy = { 68, 88, 68, 73, 70, 70 };
+  public int SiA;
+  public int SiB;
+  public int SiC;
+  public int SiD;
+  public int SiE;
+  public int SiF;
+  public int SiG;
+  public int SiH;
+  public int SiI;
+  public int SiJ;
+  public int SiK;
+  public int SiL;
+  public int SiM;
+  public int SiN;
+  public int SiO;
+  public int SiP;
+  public byte[] SiQ;
+  public final com.tencent.tinker.a.a.a.a Siv;
+  private short Siw;
+  public int Six;
+  private int Siy;
+  public int Siz;
   
   public a(InputStream paramInputStream)
   {
-    this.MCt = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.s(paramInputStream)));
-    paramInputStream = this.MCt.aim(nyA.length);
-    if (c.q(paramInputStream, nyA) != 0) {
+    this.Siv = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.r(paramInputStream)));
+    paramInputStream = this.Siv.arM(oJy.length);
+    if (c.p(paramInputStream, oJy) != 0) {
       throw new IllegalStateException("bad dex patch file magic: " + Arrays.toString(paramInputStream));
     }
-    this.MCu = this.MCt.aKX.getShort();
-    if (c.a(this.MCu, (short)2) != 0) {
-      throw new IllegalStateException("bad dex patch file version: " + this.MCu + ", expected: 2");
+    this.Siw = this.Siv.aKP.getShort();
+    if (c.a(this.Siw, (short)2) != 0) {
+      throw new IllegalStateException("bad dex patch file version: " + this.Siw + ", expected: 2");
     }
-    this.MCv = this.MCt.aKX.getInt();
-    this.MCw = this.MCt.aKX.getInt();
-    this.MCx = this.MCt.aKX.getInt();
-    this.MCy = this.MCt.aKX.getInt();
-    this.MCz = this.MCt.aKX.getInt();
-    this.MCA = this.MCt.aKX.getInt();
-    this.MCB = this.MCt.aKX.getInt();
-    this.MCC = this.MCt.aKX.getInt();
-    this.MCD = this.MCt.aKX.getInt();
-    this.MCE = this.MCt.aKX.getInt();
-    this.MCF = this.MCt.aKX.getInt();
-    this.MCG = this.MCt.aKX.getInt();
-    this.MCH = this.MCt.aKX.getInt();
-    this.MCI = this.MCt.aKX.getInt();
-    this.MCJ = this.MCt.aKX.getInt();
-    this.MCK = this.MCt.aKX.getInt();
-    this.MCL = this.MCt.aKX.getInt();
-    this.MCM = this.MCt.aKX.getInt();
-    this.MCN = this.MCt.aKX.getInt();
-    this.MCO = this.MCt.aim(20);
-    paramInputStream = this.MCt;
-    int i = this.MCw;
-    paramInputStream.aKX.position(i);
+    this.Six = this.Siv.aKP.getInt();
+    this.Siy = this.Siv.aKP.getInt();
+    this.Siz = this.Siv.aKP.getInt();
+    this.SiA = this.Siv.aKP.getInt();
+    this.SiB = this.Siv.aKP.getInt();
+    this.SiC = this.Siv.aKP.getInt();
+    this.SiD = this.Siv.aKP.getInt();
+    this.SiE = this.Siv.aKP.getInt();
+    this.SiF = this.Siv.aKP.getInt();
+    this.SiG = this.Siv.aKP.getInt();
+    this.SiH = this.Siv.aKP.getInt();
+    this.SiI = this.Siv.aKP.getInt();
+    this.SiJ = this.Siv.aKP.getInt();
+    this.SiK = this.Siv.aKP.getInt();
+    this.SiL = this.Siv.aKP.getInt();
+    this.SiM = this.Siv.aKP.getInt();
+    this.SiN = this.Siv.aKP.getInt();
+    this.SiO = this.Siv.aKP.getInt();
+    this.SiP = this.Siv.aKP.getInt();
+    this.SiQ = this.Siv.arM(20);
+    paramInputStream = this.Siv;
+    int i = this.Siy;
+    paramInputStream.aKP.position(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.c.a.b.a
  * JD-Core Version:    0.7.0.1
  */

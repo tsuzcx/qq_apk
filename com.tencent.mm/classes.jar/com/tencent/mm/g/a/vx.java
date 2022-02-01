@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class vx
-  extends b
+  extends IEvent
 {
-  public a dLy;
+  public a ebX;
   
   public vx()
   {
@@ -16,22 +15,24 @@ public final class vx
   
   private vx(byte paramByte)
   {
-    AppMethodBeat.i(19838);
-    this.dLy = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125643);
+    this.ebX = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19838);
+    AppMethodBeat.o(125643);
   }
   
   public static final class a
   {
-    public Context context;
-    public String dLz;
+    public boolean ebY;
+    public boolean ebZ;
+    public boolean eca;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.vx
  * JD-Core Version:    0.7.0.1
  */

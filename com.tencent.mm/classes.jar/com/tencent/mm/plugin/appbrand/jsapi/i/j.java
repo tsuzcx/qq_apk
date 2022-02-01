@@ -1,90 +1,143 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.i;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.a.b;
+import com.tencent.mm.plugin.appbrand.a.c;
+import com.tencent.mm.plugin.appbrand.a.c.a;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
-public final class j
-  extends b
+public class j
+  extends h<com.tencent.mm.plugin.appbrand.s>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "eraseMapLines";
+  private static final int CTRL_INDEX = 586;
+  private static final String NAME = "enableLocationUpdateBackground";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public void b(final com.tencent.mm.plugin.appbrand.s params, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(143663);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(138196);
+    super.d(params, paramJSONObject, paramInt);
+    if (!(this.lXb instanceof t))
     {
-      ae.e("MicroMsg.JsApiEraseMapLines", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(143663);
+      Log.w("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      params.i(paramInt, h("fail:system error", null));
+      AppMethodBeat.o(138196);
       return;
     }
-    ae.i("MicroMsg.JsApiEraseMapLines", "data:%s", new Object[] { paramJSONObject });
-    com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
-    {
-      ae.e("MicroMsg.JsApiEraseMapLines", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(143663);
-      return;
+    final t localt = (t)this.lXb;
+    paramJSONObject = localt.lXi;
+    if (paramJSONObject != null) {
+      paramJSONObject.bGH();
     }
-    if (paramJSONObject.has("lines")) {}
-    for (;;)
+    if ((paramJSONObject == null) || (!localt.lXu)) {
+      paramJSONObject = new r();
+    }
+    localt.lXi = paramJSONObject;
+    paramJSONObject.W(params.getRuntime());
+    localt.lXv = new s.a()
     {
-      int i;
-      try
+      public final void ZO(String paramAnonymousString)
       {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("lines"));
-        i = 0;
-        if (i < localJSONArray.length())
+        AppMethodBeat.i(138194);
+        int i = -1;
+        switch (paramAnonymousString.hashCode())
         {
-          JSONObject localJSONObject1 = (JSONObject)localJSONArray.get(i);
-          String str = localJSONObject1.optString("id");
-          if (bu.isNullOrNil(str)) {
-            break label347;
+        default: 
+          switch (i)
+          {
           }
-          paramJSONObject = null;
-          JSONObject localJSONObject2 = localJSONObject1.optJSONObject("point");
-          if (localJSONObject2 != null) {
-            paramJSONObject = new b.i(bu.getDouble(localJSONObject2.optString("latitude"), 0.0D), bu.getDouble(localJSONObject2.optString("longitude"), 0.0D));
-          }
-          if (paramJSONObject == null) {
-            break label347;
-          }
-          localb.a(str, localJSONObject1.optInt("index", 0), paramJSONObject, localJSONObject1.optBoolean("clear", true));
-          break label347;
+          break;
         }
-        a(paramc, paramInt, e("ok", null), true, localb.blB());
-        AppMethodBeat.o(143663);
-        return;
+        for (;;)
+        {
+          AppMethodBeat.o(138194);
+          return;
+          if (!paramAnonymousString.equals("StateListening")) {
+            break;
+          }
+          i = 0;
+          break;
+          if (!paramAnonymousString.equals("StateNotListening")) {
+            break;
+          }
+          i = 1;
+          break;
+          if (!paramAnonymousString.equals("StateSuspend")) {
+            break;
+          }
+          i = 2;
+          break;
+          Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "STATE_LISTENING, start blink");
+          if (localt.lXi != null)
+          {
+            localt.lXi.W(params.getRuntime());
+            AppMethodBeat.o(138194);
+            return;
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "STATE_NOT_LISTENING, stop blink");
+            if (localt.lXi != null) {
+              localt.lXi.bGG();
+            }
+          }
+        }
       }
-      catch (JSONException paramJSONObject)
-      {
-        ae.m("MicroMsg.JsApiEraseMapLines", "", new Object[] { paramJSONObject });
-        a(paramc, paramInt, e("fail:internal error", null), false, localb.blB());
-        AppMethodBeat.o(143663);
-        return;
-      }
-      ae.e("MicroMsg.JsApiEraseMapLines", "data has not lines info");
-      a(paramc, paramInt, e("fail:invalid data", null), false, localb.blB());
-      AppMethodBeat.o(143663);
-      return;
-      label347:
-      i += 1;
+    };
+    paramJSONObject = localt.lXA;
+    if (paramJSONObject != null) {
+      params.getRuntime().kAH.b(paramJSONObject);
     }
+    if ((paramJSONObject == null) || (!localt.lXu)) {
+      paramJSONObject = new c.a()
+      {
+        public final void a(String paramAnonymousString, b paramAnonymousb)
+        {
+          AppMethodBeat.i(138195);
+          if (paramAnonymousb == b.kQK)
+          {
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.DESTROYED, uninit");
+            localt.quit();
+            AppMethodBeat.o(138195);
+            return;
+          }
+          if (paramAnonymousb == b.kQJ)
+          {
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.SUSPEND, suspendListening");
+            localt.bGI();
+            AppMethodBeat.o(138195);
+            return;
+          }
+          if (paramAnonymousb == b.kQH)
+          {
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.FOREGROUND, resumeListening");
+            localt.bGJ();
+            AppMethodBeat.o(138195);
+            return;
+          }
+          if (paramAnonymousb == b.kQI)
+          {
+            if (!localt.lXu)
+            {
+              Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.BACKGROUND, stopListening");
+              localt.stopListening();
+              AppMethodBeat.o(138195);
+              return;
+            }
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateBackgroundWxa", "AppRunningState.BACKGROUND, do nothing");
+          }
+          AppMethodBeat.o(138195);
+        }
+      };
+    }
+    params.getRuntime().kAH.a(paramJSONObject);
+    localt.lXA = paramJSONObject;
+    localt.lXu = true;
+    AppMethodBeat.o(138196);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.j
  * JD-Core Version:    0.7.0.1
  */

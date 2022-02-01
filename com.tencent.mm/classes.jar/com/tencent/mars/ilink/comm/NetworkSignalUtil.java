@@ -6,12 +6,14 @@ import android.net.wifi.WifiManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import com.tencent.mm.hellhoundlib.b.c;
 
 public class NetworkSignalUtil
 {
   public static final String TAG = "MicroMsg.NetworkSignalUtil";
   private static Context context = null;
   private static long strength = 10000L;
+  private byte _hellAccFlag_;
   
   public static void InitNetworkSignalUtil(Context paramContext)
   {
@@ -19,14 +21,18 @@ public class NetworkSignalUtil
     paramContext = (TelephonyManager)paramContext.getSystemService("phone");
     try
     {
-      paramContext.listen(new PhoneStateListener()
+      Object localObject = new PhoneStateListener()
       {
         public final void onSignalStrengthsChanged(SignalStrength paramAnonymousSignalStrength)
         {
           super.onSignalStrengthsChanged(paramAnonymousSignalStrength);
           NetworkSignalUtil.calSignalStrength(paramAnonymousSignalStrength);
         }
-      }, 256);
+      };
+      localObject = c.a(256, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mars/ilink/comm/NetworkSignalUtil", "InitNetworkSignalUtil", "(Landroid/content/Context;)V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      paramContext.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/ilink/comm/NetworkSignalUtil", "InitNetworkSignalUtil", "(Landroid/content/Context;)V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
       return;
     }
     catch (ArrayIndexOutOfBoundsException paramContext) {}
@@ -99,7 +105,7 @@ public class NetworkSignalUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mars.ilink.comm.NetworkSignalUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.platformtools.f;
-import com.tencent.mm.protocal.protobuf.akx;
-import com.tencent.mm.protocal.protobuf.aky;
-import com.tencent.mm.protocal.protobuf.akz;
-import com.tencent.mm.protocal.protobuf.ala;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.anl;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.ann;
+import com.tencent.mm.protocal.protobuf.ano;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -23,25 +23,25 @@ import java.util.Set;
 
 public final class l
 {
-  public HashMap<String, WeakReference<a>> bGq;
+  public HashMap<String, WeakReference<a>> bGH;
   private boolean dirty;
-  public akz rBb;
-  private HashSet<Integer> rBc;
-  private List<akx> rBd;
+  public ann taG;
+  private HashSet<Integer> taH;
+  private List<anl> taI;
   
   public l()
   {
     AppMethodBeat.i(103413);
-    this.rBb = new akz();
-    this.bGq = new HashMap();
-    this.rBc = new HashSet();
+    this.taG = new ann();
+    this.bGH = new HashMap();
+    this.taH = new HashSet();
     this.dirty = true;
-    this.rBd = new LinkedList();
-    byte[] arrayOfByte = bu.aSx((String)com.tencent.mm.kernel.g.ajR().ajA().get(225283, ""));
+    this.taI = new LinkedList();
+    byte[] arrayOfByte = Util.decodeHexString((String)com.tencent.mm.kernel.g.aAh().azQ().get(225283, ""));
     try
     {
-      this.rBb.parseFrom(arrayOfByte);
-      ae.i("MicroMsg.FavTagSetMgr", "tag:\n%s", new Object[] { this.rBb.uda });
+      this.taG.parseFrom(arrayOfByte);
+      Log.i("MicroMsg.FavTagSetMgr", "tag:\n%s", new Object[] { this.taG.xuO });
       AppMethodBeat.o(103413);
       return;
     }
@@ -49,25 +49,25 @@ public final class l
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.FavTagSetMgr", localException, "", new Object[0]);
-        ae.w("MicroMsg.FavTagSetMgr", "init tag info set fail, %s", new Object[] { localException.getMessage() });
-        this.rBb = new akz();
+        Log.printErrStackTrace("MicroMsg.FavTagSetMgr", localException, "", new Object[0]);
+        Log.w("MicroMsg.FavTagSetMgr", "init tag info set fail, %s", new Object[] { localException.getMessage() });
+        this.taG = new ann();
       }
     }
   }
   
-  private void lu(boolean paramBoolean)
+  private void mw(boolean paramBoolean)
   {
     AppMethodBeat.i(103415);
-    Iterator localIterator = this.bGq.values().iterator();
+    Iterator localIterator = this.bGH.values().iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
         if (paramBoolean) {
-          ((a)localWeakReference.get()).cwC();
+          ((a)localWeakReference.get()).cUG();
         } else {
-          ((a)localWeakReference.get()).cwD();
+          ((a)localWeakReference.get()).cUH();
         }
       }
     }
@@ -77,29 +77,29 @@ public final class l
   private void removeTag(final String paramString)
   {
     AppMethodBeat.i(103423);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(103423);
       return;
     }
-    this.rBc.remove(Integer.valueOf(paramString.hashCode()));
+    this.taH.remove(Integer.valueOf(paramString.hashCode()));
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      ae.d("MicroMsg.FavTagSetMgr", "remove tag %s, post", new Object[] { paramString });
-      ar.f(new Runnable()
+      Log.d("MicroMsg.FavTagSetMgr", "remove tag %s, post", new Object[] { paramString });
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103412);
-          l.this.ahp(paramString);
+          l.this.arX(paramString);
           AppMethodBeat.o(103412);
         }
       });
       AppMethodBeat.o(103423);
       return;
     }
-    ae.d("MicroMsg.FavTagSetMgr", "remove tag %s", new Object[] { paramString });
-    ahp(paramString);
+    Log.d("MicroMsg.FavTagSetMgr", "remove tag %s", new Object[] { paramString });
+    arX(paramString);
     AppMethodBeat.o(103423);
   }
   
@@ -108,8 +108,8 @@ public final class l
     AppMethodBeat.i(103416);
     try
     {
-      byte[] arrayOfByte = this.rBb.toByteArray();
-      com.tencent.mm.kernel.g.ajU().aw(new l.1(this, arrayOfByte));
+      byte[] arrayOfByte = this.taG.toByteArray();
+      com.tencent.mm.kernel.g.aAk().postToWorker(new l.1(this, arrayOfByte));
       this.dirty = true;
       AppMethodBeat.o(103416);
       return;
@@ -118,14 +118,14 @@ public final class l
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.FavTagSetMgr", localException, "", new Object[0]);
-        ae.w("MicroMsg.FavTagSetMgr", "save tag info set fail, %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("MicroMsg.FavTagSetMgr", localException, "", new Object[0]);
+        Log.w("MicroMsg.FavTagSetMgr", "save tag info set fail, %s", new Object[] { localException.getMessage() });
         Object localObject = null;
       }
     }
   }
   
-  public final List<akx> El(int paramInt)
+  public final List<anl> HW(int paramInt)
   {
     AppMethodBeat.i(103417);
     if ((paramInt < 0) || (paramInt > 1))
@@ -135,18 +135,18 @@ public final class l
     }
     if (this.dirty)
     {
-      ae.w("MicroMsg.FavTagSetMgr", "want get tag list, it is dirty, reload data");
-      this.rBd.clear();
-      localObject = this.rBb.uda.iterator();
+      Log.w("MicroMsg.FavTagSetMgr", "want get tag list, it is dirty, reload data");
+      this.taI.clear();
+      localObject = this.taG.xuO.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        aky localaky = (aky)((Iterator)localObject).next();
-        this.rBd.addAll(localaky.GCq);
+        anm localanm = (anm)((Iterator)localObject).next();
+        this.taI.addAll(localanm.Lym);
       }
       this.dirty = false;
     }
-    ae.i("MicroMsg.FavTagSetMgr", "want get tag list, tag list size is %d", new Object[] { Integer.valueOf(this.rBd.size()) });
-    Object localObject = this.rBd;
+    Log.i("MicroMsg.FavTagSetMgr", "want get tag list, tag list size is %d", new Object[] { Integer.valueOf(this.taI.size()) });
+    Object localObject = this.taI;
     AppMethodBeat.o(103417);
     return localObject;
   }
@@ -159,83 +159,83 @@ public final class l
       AppMethodBeat.o(103414);
       return;
     }
-    this.bGq.put(parama.toString(), new WeakReference(parama));
+    this.bGH.put(parama.toString(), new WeakReference(parama));
     AppMethodBeat.o(103414);
   }
   
-  public final void ahn(final String paramString)
+  public final void arV(final String paramString)
   {
     AppMethodBeat.i(103419);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(103419);
       return;
     }
-    if (this.rBc.contains(Integer.valueOf(paramString.hashCode())))
+    if (this.taH.contains(Integer.valueOf(paramString.hashCode())))
     {
-      ae.d("MicroMsg.FavTagSetMgr", "has add tag %s", new Object[] { paramString });
+      Log.d("MicroMsg.FavTagSetMgr", "has add tag %s", new Object[] { paramString });
       AppMethodBeat.o(103419);
       return;
     }
-    this.rBc.add(Integer.valueOf(paramString.hashCode()));
+    this.taH.add(Integer.valueOf(paramString.hashCode()));
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      ae.d("MicroMsg.FavTagSetMgr", "add tag %s, post", new Object[] { paramString });
-      ar.f(new Runnable()
+      Log.d("MicroMsg.FavTagSetMgr", "add tag %s, post", new Object[] { paramString });
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103411);
-          l.this.aho(paramString);
+          l.this.arW(paramString);
           AppMethodBeat.o(103411);
         }
       });
       AppMethodBeat.o(103419);
       return;
     }
-    ae.d("MicroMsg.FavTagSetMgr", "add tag %s", new Object[] { paramString });
-    aho(paramString);
+    Log.d("MicroMsg.FavTagSetMgr", "add tag %s", new Object[] { paramString });
+    arW(paramString);
     AppMethodBeat.o(103419);
   }
   
-  final void aho(String paramString)
+  final void arW(String paramString)
   {
     int k = 0;
     AppMethodBeat.i(103420);
-    String str = f.Jk(paramString.toLowerCase());
+    String str = f.Sh(paramString.toLowerCase());
     if ((str != null) && (str.length() > 0)) {}
     for (int i = str.charAt(0);; i = 35)
     {
-      Object localObject = this.rBb.uda.iterator();
+      Object localObject = this.taG.xuO.iterator();
       int j = 0;
-      aky localaky;
+      anm localanm;
       if (((Iterator)localObject).hasNext())
       {
-        localaky = (aky)((Iterator)localObject).next();
-        if (localaky.GCp != i) {}
+        localanm = (anm)((Iterator)localObject).next();
+        if (localanm.Lyl != i) {}
       }
       for (;;)
       {
         label83:
-        if (localaky == null)
+        if (localanm == null)
         {
-          localaky = new aky();
-          localaky.GCp = i;
-          this.rBb.uda.add(localaky);
+          localanm = new anm();
+          localanm.Lyl = i;
+          this.taG.xuO.add(localanm);
         }
         for (;;)
         {
-          localObject = localaky.GCq.iterator();
+          localObject = localanm.Lym.iterator();
           i = k;
           label129:
           if (((Iterator)localObject).hasNext())
           {
-            akx localakx = (akx)((Iterator)localObject).next();
-            j = localakx.GCo.compareTo(str);
+            anl localanl = (anl)((Iterator)localObject).next();
+            j = localanl.Lyk.compareTo(str);
             if (j != 0) {
               break label343;
             }
-            j = localakx.AUt.compareTo(paramString);
+            j = localanl.FeZ.compareTo(paramString);
           }
           label343:
           for (;;)
@@ -244,11 +244,11 @@ public final class l
             {
               AppMethodBeat.o(103420);
               return;
-              if (localaky.GCp > i)
+              if (localanm.Lyl > i)
               {
-                localaky = new aky();
-                localaky.GCp = i;
-                this.rBb.uda.add(j, localaky);
+                localanm = new anm();
+                localanm.Lyl = i;
+                this.taG.xuO.add(j, localanm);
                 break label83;
               }
               j += 1;
@@ -256,54 +256,54 @@ public final class l
             }
             if (j > 0)
             {
-              localObject = new akx();
-              ((akx)localObject).AUt = paramString;
-              ((akx)localObject).GCo = str;
-              localaky.GCq.add(i, localObject);
+              localObject = new anl();
+              ((anl)localObject).FeZ = paramString;
+              ((anl)localObject).Lyk = str;
+              localanm.Lym.add(i, localObject);
               save();
-              lu(true);
+              mw(true);
               AppMethodBeat.o(103420);
               return;
             }
             i += 1;
             break label129;
-            localObject = new akx();
-            ((akx)localObject).AUt = paramString;
-            ((akx)localObject).GCo = str;
-            localaky.GCq.add(localObject);
-            lu(true);
+            localObject = new anl();
+            ((anl)localObject).FeZ = paramString;
+            ((anl)localObject).Lyk = str;
+            localanm.Lym.add(localObject);
+            mw(true);
             save();
             AppMethodBeat.o(103420);
             return;
           }
         }
-        localaky = null;
+        localanm = null;
       }
     }
   }
   
-  final void ahp(String paramString)
+  final void arX(String paramString)
   {
     AppMethodBeat.i(103424);
-    String str = f.Jk(paramString.toLowerCase());
+    String str = f.Sh(paramString.toLowerCase());
     if ((str != null) && (str.length() > 0)) {}
     for (int j = str.charAt(0);; j = 35)
     {
-      Iterator localIterator = this.rBb.uda.iterator();
+      Iterator localIterator = this.taG.xuO.iterator();
       int i = 0;
-      aky localaky;
+      anm localanm;
       if (localIterator.hasNext())
       {
-        localaky = (aky)localIterator.next();
-        if (localaky.GCp != j) {}
+        localanm = (anm)localIterator.next();
+        if (localanm.Lyl != j) {}
       }
       for (;;)
       {
-        if (localaky == null)
+        if (localanm == null)
         {
           AppMethodBeat.o(103424);
           return;
-          if (localaky.GCp > j)
+          if (localanm.Lyl > j)
           {
             AppMethodBeat.o(103424);
             return;
@@ -311,25 +311,25 @@ public final class l
           i += 1;
           break;
         }
-        localIterator = localaky.GCq.iterator();
+        localIterator = localanm.Lym.iterator();
         j = 0;
         while (localIterator.hasNext())
         {
-          akx localakx = (akx)localIterator.next();
-          int m = localakx.GCo.compareTo(str);
+          anl localanl = (anl)localIterator.next();
+          int m = localanl.Lyk.compareTo(str);
           int k = m;
           if (m == 0) {
-            k = localakx.AUt.compareTo(paramString);
+            k = localanl.FeZ.compareTo(paramString);
           }
           if (k == 0)
           {
-            if (!((af)com.tencent.mm.kernel.g.ad(af.class)).getFavSearchStorage().ahu(localakx.AUt))
+            if (!((af)com.tencent.mm.kernel.g.ah(af.class)).getFavSearchStorage().asc(localanl.FeZ))
             {
-              localaky.GCq.remove(j);
-              if (localaky.GCq.isEmpty()) {
-                this.rBb.uda.remove(i);
+              localanm.Lym.remove(j);
+              if (localanm.Lym.isEmpty()) {
+                this.taG.xuO.remove(i);
               }
-              lu(false);
+              mw(false);
               save();
             }
             AppMethodBeat.o(103424);
@@ -344,16 +344,16 @@ public final class l
         }
         AppMethodBeat.o(103424);
         return;
-        localaky = null;
+        localanm = null;
       }
     }
   }
   
-  public final int cwB()
+  public final int cUF()
   {
     AppMethodBeat.i(103418);
-    Iterator localIterator = this.rBb.uda.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((aky)localIterator.next()).GCq.size() + i) {}
+    Iterator localIterator = this.taG.xuO.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((anm)localIterator.next()).Lym.size() + i) {}
     AppMethodBeat.o(103418);
     return i;
   }
@@ -366,7 +366,7 @@ public final class l
       AppMethodBeat.o(103422);
       return;
     }
-    ae.d("MicroMsg.FavTagSetMgr", "do remove tags: %s", new Object[] { paramSet });
+    Log.d("MicroMsg.FavTagSetMgr", "do remove tags: %s", new Object[] { paramSet });
     paramSet = paramSet.iterator();
     while (paramSet.hasNext()) {
       removeTag((String)paramSet.next());
@@ -382,7 +382,7 @@ public final class l
       AppMethodBeat.o(103421);
       return;
     }
-    paramg = paramg.field_tagProto.GCs.iterator();
+    paramg = paramg.field_tagProto.Lyo.iterator();
     while (paramg.hasNext()) {
       removeTag((String)paramg.next());
     }
@@ -391,14 +391,14 @@ public final class l
   
   public static abstract interface a
   {
-    public abstract void cwC();
+    public abstract void cUG();
     
-    public abstract void cwD();
+    public abstract void cUH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.l
  * JD-Core Version:    0.7.0.1
  */

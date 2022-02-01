@@ -1,74 +1,72 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.vt;
-import com.tencent.mm.protocal.protobuf.vu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bp;
+import com.tencent.mm.protocal.protobuf.bq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
+  private i callback;
+  private d rr;
   
-  public a(String paramString1, String paramString2, boolean paramBoolean)
+  public a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(97129);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new vt();
-    ((b.a)localObject).hQG = new vu();
-    ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/channelpkginfo";
-    ((b.a)localObject).funcId = 1210;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (vt)this.rr.hQD.hQJ;
-    ((vt)localObject).GnD = paramString2;
-    ((vt)localObject).FMg = paramString1;
-    ((vt)localObject).GnE = com.tencent.mm.sdk.platformtools.k.fnT();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((vt)localObject).GnF = i;
-      AppMethodBeat.o(97129);
-      return;
-    }
+    AppMethodBeat.i(203128);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bp();
+    ((d.a)localObject).iLO = new bq();
+    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/ad_anti_abuse";
+    ((d.a)localObject).funcId = 4679;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bp)this.rr.iLK.iLR;
+    ((bp)localObject).lAN = paramString1;
+    ((bp)localObject).uxInfo = paramString2;
+    ((bp)localObject).enterScene = paramInt;
+    ((bp)localObject).adExtInfo = paramString3;
+    AppMethodBeat.o(203128);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(97132);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(97132);
+    AppMethodBeat.i(203130);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(203130);
     return i;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(97131);
+    AppMethodBeat.i(203129);
     int i = this.rr.getType();
-    AppMethodBeat.o(97131);
+    AppMethodBeat.o(203129);
     return i;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(97130);
+    AppMethodBeat.i(203131);
+    Log.i("NetSceneAdAntiAbuse", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(97130);
+    AppMethodBeat.o(203131);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.a
  * JD-Core Version:    0.7.0.1
  */

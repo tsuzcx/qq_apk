@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/ph" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/ea2" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="14.0dip" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:gravity="center" android:id="@id/cqt" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip" android:text="{info_tv}" android:layout_below="@id/ea2" android:layout_centerInParent="true" />
-</RelativeLayout>
+<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/gy2" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <TextView android:gravity="center_horizontal" android:id="@id/gyq" android:paddingTop="184.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cij" style="@style/zy" />
+</com.tencent.mm.view.TouchableLayout>

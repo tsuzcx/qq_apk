@@ -5,45 +5,47 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.c;
+import com.tencent.luggage.h.f;
+import com.tencent.luggage.h.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.media.model.AppBrandMediaSource;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class m
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+  extends d<com.tencent.mm.plugin.appbrand.s>
 {
   public static final int CTRL_INDEX = 787;
   public static final String NAME = "previewMedia";
-  private final int kYJ;
-  final int kYK;
+  private final int mdT;
+  final int mdU;
   
   public m()
   {
     AppMethodBeat.i(180248);
-    this.kYJ = 524288;
-    this.kYK = com.tencent.luggage.sdk.g.a.aC(this);
+    this.mdT = 524288;
+    this.mdU = com.tencent.luggage.sdk.g.a.aK(this);
     AppMethodBeat.o(180248);
   }
   
-  private String a(Context paramContext, z paramz, String paramString, JSONObject paramJSONObject)
+  private String a(Context paramContext, ac paramac, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(180249);
     Object localObject2 = paramJSONObject.optJSONArray("sources");
     if (localObject2 == null)
     {
-      paramContext = e("fail:invalid data", null);
+      paramContext = h("fail:invalid data", null);
       AppMethodBeat.o(180249);
       return paramContext;
     }
@@ -56,23 +58,23 @@ public final class m
       Object localObject4 = ((JSONArray)localObject2).optJSONObject(i);
       localObject3 = new AppBrandMediaSource();
       ((AppBrandMediaSource)localObject3).url = ((JSONObject)localObject4).optString("url");
-      ((AppBrandMediaSource)localObject3).hnC = ((JSONObject)localObject4).optString("type");
-      ((AppBrandMediaSource)localObject3).hnD = ((JSONObject)localObject4).optString("poster");
+      ((AppBrandMediaSource)localObject3).igV = ((JSONObject)localObject4).optString("type");
+      ((AppBrandMediaSource)localObject3).igW = ((JSONObject)localObject4).optString("poster");
       arrayOfString[i] = ((AppBrandMediaSource)localObject3).url;
-      if (!TextUtils.isEmpty(((AppBrandMediaSource)localObject3).hnD))
+      if (!TextUtils.isEmpty(((AppBrandMediaSource)localObject3).igW))
       {
-        localObject4 = paramz.Fl().MP(((AppBrandMediaSource)localObject3).hnD);
+        localObject4 = paramac.getFileSystem().VY(((AppBrandMediaSource)localObject3).igW);
         if (localObject4 != null) {
-          ((AppBrandMediaSource)localObject3).hnD = w.B(((k)localObject4).fTh());
+          ((AppBrandMediaSource)localObject3).igW = aa.z(((o)localObject4).her());
         }
       }
       if (!TextUtils.isEmpty(((AppBrandMediaSource)localObject3).url))
       {
-        localObject4 = paramz.Fl().MP(((AppBrandMediaSource)localObject3).url);
+        localObject4 = paramac.getFileSystem().VY(((AppBrandMediaSource)localObject3).url);
         if (localObject4 != null)
         {
-          arrayOfString[i] = w.B(((k)localObject4).fTh());
-          ((AppBrandMediaSource)localObject3).url = w.B(((k)localObject4).fTh());
+          arrayOfString[i] = aa.z(((o)localObject4).her());
+          ((AppBrandMediaSource)localObject3).url = aa.z(((o)localObject4).her());
         }
       }
       ((ArrayList)localObject1).add(localObject3);
@@ -93,15 +95,15 @@ public final class m
       {
         i = 0;
       }
-      localObject3 = com.tencent.mm.plugin.appbrand.jsapi.aa.a.o(arrayOfString);
-      arrayOfString = com.tencent.mm.plugin.appbrand.jsapi.aa.a.a((String[])localObject3, arrayOfString);
+      localObject3 = com.tencent.mm.plugin.appbrand.jsapi.ac.a.q(arrayOfString);
+      arrayOfString = com.tencent.mm.plugin.appbrand.jsapi.ac.a.a((String[])localObject3, arrayOfString);
       j = i;
       if (i >= localObject3.length) {
         j = 0;
       }
       if (!(paramContext instanceof Activity))
       {
-        paramContext = e("fail:internal error invalid android context", null);
+        paramContext = h("fail:internal error invalid android context", null);
         AppMethodBeat.o(180249);
         return paramContext;
         if ((localObject2 instanceof String))
@@ -123,7 +125,7 @@ public final class m
       else
       {
         boolean bool = paramJSONObject.optBoolean("showmenu", true);
-        ae.i("MicroMsg.JsApiPreviewMedia", "showmenu:%b", new Object[] { Boolean.valueOf(bool) });
+        Log.i("MicroMsg.JsApiPreviewMedia", "showmenu:%b", new Object[] { Boolean.valueOf(bool) });
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("nowUrl", localObject3[j]);
         ((Intent)localObject2).putParcelableArrayListExtra("mediaSource", (ArrayList)localObject1);
@@ -132,9 +134,9 @@ public final class m
         ((Intent)localObject2).putExtra("isFromWebView", true);
         ((Intent)localObject2).putExtra("isFromAppBrand", true);
         ((Intent)localObject2).putExtra("showmenu", bool);
-        localObject1 = (com.tencent.mm.plugin.appbrand.o.a)paramz.ar(com.tencent.mm.plugin.appbrand.o.a.class);
-        if ((localObject1 != null) && (!bu.isNullOrNil(((com.tencent.mm.plugin.appbrand.o.a)localObject1).referer))) {
-          s.a(paramz, paramJSONObject, (Intent)localObject2, ((com.tencent.mm.plugin.appbrand.o.a)localObject1).referer);
+        localObject1 = (com.tencent.mm.plugin.appbrand.s.a)paramac.av(com.tencent.mm.plugin.appbrand.s.a.class);
+        if ((localObject1 != null) && (!Util.isNullOrNil(((com.tencent.mm.plugin.appbrand.s.a)localObject1).referer))) {
+          s.a(paramac, paramJSONObject, (Intent)localObject2, ((com.tencent.mm.plugin.appbrand.s.a)localObject1).referer);
         }
         for (;;)
         {
@@ -145,37 +147,37 @@ public final class m
           paramJSONObject = new Bundle();
           paramJSONObject.putInt("stat_scene", 6);
           paramJSONObject.putString("stat_app_id", paramString);
-          paramJSONObject.putString("stat_url", paramz.kxv);
+          paramJSONObject.putString("stat_url", paramac.lBI);
           ((Intent)localObject2).putExtra("_stat_obj", paramJSONObject);
-          ((Intent)localObject2).setClassName(paramContext, paramContext.getPackageName() + ".plugin.subapp.ui.gallery.GestureGalleryUI");
+          ((Intent)localObject2).setClassName(paramContext, MMApplicationContext.getSourcePackageName() + ".plugin.subapp.ui.gallery.GestureGalleryUI");
           try
           {
             i = ((Intent)localObject2).getExtras().toString().length();
             if (i <= 524288) {
               break;
             }
-            ae.e("MicroMsg.JsApiPreviewMedia", "data too large size:%d", new Object[] { Integer.valueOf(i) });
-            paramContext = e("fail:data too large", null);
+            Log.e("MicroMsg.JsApiPreviewMedia", "data too large size:%d", new Object[] { Integer.valueOf(i) });
+            paramContext = h("fail:data too large", null);
             AppMethodBeat.o(180249);
             return paramContext;
           }
           catch (Exception paramContext)
           {
-            ae.printErrStackTrace("MicroMsg.JsApiPreviewMedia", paramContext, "JsApiPreviewImage get size error", new Object[0]);
-            paramContext = e("fail", null);
+            Log.printErrStackTrace("MicroMsg.JsApiPreviewMedia", paramContext, "JsApiPreviewImage get size error", new Object[0]);
+            paramContext = h("fail", null);
             AppMethodBeat.o(180249);
             return paramContext;
           }
-          ae.w("MicroMsg.JsApiPreviewMedia", "config.referer is null");
+          Log.w("MicroMsg.JsApiPreviewMedia", "config.referer is null");
         }
-        e.aB(paramContext).b(new e.c()
+        f.aK(paramContext).b(new f.c()
         {
-          public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+          public final boolean c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
           {
             AppMethodBeat.i(180247);
-            if (m.this.kYK == paramAnonymousInt1)
+            if (m.this.mdU == paramAnonymousInt1)
             {
-              com.tencent.mm.plugin.appbrand.jsapi.aa.a.p(arrayOfString);
+              com.tencent.mm.plugin.appbrand.jsapi.ac.a.r(arrayOfString);
               AppMethodBeat.o(180247);
               return true;
             }
@@ -183,8 +185,8 @@ public final class m
             return false;
           }
         });
-        d.a(paramContext, "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject2, this.kYK, false);
-        paramContext = e("ok", null);
+        c.a(paramContext, "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject2, this.mdU, false);
+        paramContext = h("ok", null);
         AppMethodBeat.o(180249);
         return paramContext;
       }
@@ -193,7 +195,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.m
  * JD-Core Version:    0.7.0.1
  */

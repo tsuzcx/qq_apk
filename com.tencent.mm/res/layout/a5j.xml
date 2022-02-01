@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/f40" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/c9h" android:background="@color/fc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.view.AnimationLayout android:id="@id/kl" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/c9g" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="@dimen/ci" />
-    </com.tencent.mm.view.AnimationLayout>
-</FrameLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:gravity="left" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="123123" android:maxLines="1" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:gravity="right" android:id="@id/bn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="123123" android:layout_weight="1.0" />
+</LinearLayout>

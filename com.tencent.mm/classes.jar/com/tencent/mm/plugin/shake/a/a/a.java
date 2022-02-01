@@ -2,37 +2,32 @@ package com.tencent.mm.plugin.shake.a.a;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class a
-  extends c
+  extends IAutoDBItem
 {
+  private static final int Dgu;
+  private static final int Dgv = "reservedBuf".hashCode();
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEL;
-  private static final int eJC;
-  private static final int eUB = "svrid".hashCode();
-  private static final int eUG;
-  private static final int eUH;
-  private static final int eUI;
-  private static final int eVr;
-  private static final int eXL;
-  private static final int eXZ;
-  private static final int fgF;
+  private static final int fBC;
+  private static final int fBo;
+  private static final int fLi;
+  private static final int fjl;
+  private static final int fne;
+  private static final int fyW;
+  private static final int fyg = "svrid".hashCode();
+  private static final int fyl;
+  private static final int fym;
+  private static final int fyn;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
-  private static final int zbC;
-  private static final int zbD;
+  private boolean Dgs = true;
+  private boolean Dgt = true;
   private boolean __hadSettype = true;
-  private boolean eEI = true;
-  private boolean eJz = true;
-  private boolean eTP = true;
-  private boolean eTU = true;
-  private boolean eTV = true;
-  private boolean eTW = true;
-  private boolean eVn = true;
-  private boolean eXJ = true;
-  private boolean eXP = true;
-  private boolean fgu = true;
+  private boolean fBm = true;
+  private boolean fBs = true;
+  private boolean fKX = true;
   public long field_createtime;
   public String field_desc;
   public String field_reserved1;
@@ -46,22 +41,26 @@ public abstract class a
   public String field_thumburl;
   public String field_title;
   public int field_type;
-  private boolean zbA = true;
-  private boolean zbB = true;
+  private boolean fji = true;
+  private boolean fnb = true;
+  private boolean fxA = true;
+  private boolean fxB = true;
+  private boolean fxu = true;
+  private boolean fxz = true;
+  private boolean fyS = true;
   
   static
   {
-    eXL = "subtype".hashCode();
-    fgF = "createtime".hashCode();
-    eXZ = "tag".hashCode();
-    eEL = "status".hashCode();
-    eJC = "title".hashCode();
-    eVr = "desc".hashCode();
-    zbC = "thumburl".hashCode();
-    eUG = "reserved1".hashCode();
-    eUH = "reserved2".hashCode();
-    eUI = "reserved3".hashCode();
-    zbD = "reservedBuf".hashCode();
+    fBo = "subtype".hashCode();
+    fLi = "createtime".hashCode();
+    fBC = "tag".hashCode();
+    fjl = "status".hashCode();
+    fne = "title".hashCode();
+    fyW = "desc".hashCode();
+    Dgu = "thumburl".hashCode();
+    fyl = "reserved1".hashCode();
+    fym = "reserved2".hashCode();
+    fyn = "reserved3".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -77,11 +76,11 @@ public abstract class a
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eUB != k) {
+      if (fyg != k) {
         break label65;
       }
       this.field_svrid = paramCursor.getLong(i);
-      this.eTP = true;
+      this.fxu = true;
     }
     for (;;)
     {
@@ -91,27 +90,27 @@ public abstract class a
       label65:
       if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eXL == k) {
+      } else if (fBo == k) {
         this.field_subtype = paramCursor.getInt(i);
-      } else if (fgF == k) {
+      } else if (fLi == k) {
         this.field_createtime = paramCursor.getLong(i);
-      } else if (eXZ == k) {
+      } else if (fBC == k) {
         this.field_tag = paramCursor.getString(i);
-      } else if (eEL == k) {
+      } else if (fjl == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (eJC == k) {
+      } else if (fne == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (eVr == k) {
+      } else if (fyW == k) {
         this.field_desc = paramCursor.getString(i);
-      } else if (zbC == k) {
+      } else if (Dgu == k) {
         this.field_thumburl = paramCursor.getString(i);
-      } else if (eUG == k) {
+      } else if (fyl == k) {
         this.field_reserved1 = paramCursor.getString(i);
-      } else if (eUH == k) {
+      } else if (fym == k) {
         this.field_reserved2 = paramCursor.getString(i);
-      } else if (eUI == k) {
+      } else if (fyn == k) {
         this.field_reserved3 = paramCursor.getInt(i);
-      } else if (zbD == k) {
+      } else if (Dgv == k) {
         this.field_reservedBuf = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -122,43 +121,43 @@ public abstract class a
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eTP) {
+    if (this.fxu) {
       localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eXJ) {
+    if (this.fBm) {
       localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
-    if (this.fgu) {
+    if (this.fKX) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.eXP) {
+    if (this.fBs) {
       localContentValues.put("tag", this.field_tag);
     }
-    if (this.eEI) {
+    if (this.fji) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eJz) {
+    if (this.fnb) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.eVn) {
+    if (this.fyS) {
       localContentValues.put("desc", this.field_desc);
     }
-    if (this.zbA) {
+    if (this.Dgs) {
       localContentValues.put("thumburl", this.field_thumburl);
     }
-    if (this.eTU) {
+    if (this.fxz) {
       localContentValues.put("reserved1", this.field_reserved1);
     }
-    if (this.eTV) {
+    if (this.fxA) {
       localContentValues.put("reserved2", this.field_reserved2);
     }
-    if (this.eTW) {
+    if (this.fxB) {
       localContentValues.put("reserved3", Integer.valueOf(this.field_reserved3));
     }
-    if (this.zbB) {
+    if (this.Dgt) {
       localContentValues.put("reservedBuf", this.field_reservedBuf);
     }
     if (this.systemRowid > 0L) {
@@ -169,7 +168,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.a.a.a
  * JD-Core Version:    0.7.0.1
  */

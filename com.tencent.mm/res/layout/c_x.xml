@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/gfz" android:background="@color/afz" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ji5" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="wrap_content" android:layout_height="@dimen/b9" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/he" app:iconColor="@color/FG_0" />
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" android:layout_marginBottom="48.0dip">
+        <ImageView android:id="@id/ji6" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@raw/wallet_security_header_icon" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_below="@id/ji6" android:layout_centerHorizontal="true">
+            <TextView android:textSize="22.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/f68" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:text="@string/irm" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/bmr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="32.0dip" android:text="@string/iri" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/x3" android:gravity="center" android:id="@id/bot" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/r" android:text="@string/irb" android:drawableRight="@drawable/bt4" android:drawablePadding="@dimen/i2" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_marginBottom="0.0dip" />
+</LinearLayout>

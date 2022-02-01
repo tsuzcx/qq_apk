@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class xn
-  extends b
+  extends IEvent
 {
-  public a dMV;
+  public a edL;
+  public b edM;
   
   public xn()
   {
@@ -15,22 +17,31 @@ public final class xn
   
   private xn(byte paramByte)
   {
-    AppMethodBeat.i(155376);
-    this.dMV = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(116051);
+    this.edL = new a();
+    this.edM = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(155376);
+    AppMethodBeat.o(116051);
   }
   
   public static final class a
   {
-    public boolean dMW = false;
-    public boolean dMX = false;
+    public Context context;
+    public String edN;
+    public int opType = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean dFE = false;
+    public String dWc;
+    public String thumbPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.xn
  * JD-Core Version:    0.7.0.1
  */

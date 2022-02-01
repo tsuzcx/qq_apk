@@ -2,54 +2,54 @@ package com.tencent.mm.plugin.talkroom.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.w;
-import com.tencent.mm.model.x;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
 public final class h
 {
-  private static final int BEw = a.BEw;
+  private static final int FPn = a.FPn;
   
-  public static String bl(Context paramContext, String paramString)
+  public static String bC(Context paramContext, String paramString)
   {
     AppMethodBeat.i(29528);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(29528);
       return null;
     }
-    bc.aCg();
-    an localan = c.azF().BH(paramString);
-    if (localan == null)
+    bg.aVF();
+    as localas = c.aSN().Kn(paramString);
+    if (localas == null)
     {
       AppMethodBeat.o(29528);
       return null;
     }
-    if (x.wb(paramString))
+    if (ab.Eq(paramString))
     {
-      if (bu.isNullOrNil(localan.field_nickname))
+      if (Util.isNullOrNil(localas.field_nickname))
       {
-        paramContext = paramContext.getString(2131764368);
+        paramContext = paramContext.getString(2131766629);
         AppMethodBeat.o(29528);
         return paramContext;
       }
-      paramContext = localan.adF();
+      paramContext = localas.arI();
       AppMethodBeat.o(29528);
       return paramContext;
     }
-    paramContext = w.zP(paramString);
+    paramContext = aa.getDisplayName(paramString);
     AppMethodBeat.o(29528);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.h
  * JD-Core Version:    0.7.0.1
  */

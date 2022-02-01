@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/a05"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/uj" android:id="@id/g_y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ioh" />
+    <LinearLayout style="@style/a0y">
+        <com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView android:id="@id/g_x" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" app:tipmsg="@string/iol" />
+        <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/g_w" android:singleLine="false" android:imeOptions="actionNext" app:contentHint="@string/ioi" app:titleText="@string/ioj" style="@style/a10" />
+    </LinearLayout>
+    <Button android:id="@id/g_v" android:layout_marginTop="@dimen/hs" android:text="@string/ioe" style="@style/a0u" />
+</LinearLayout>

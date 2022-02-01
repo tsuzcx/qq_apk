@@ -13,7 +13,7 @@ final class CardAcceptCardListUI$6
   {
     AppMethodBeat.i(113154);
     paramDialogInterface.dismiss();
-    CardAcceptCardListUI.a(this.oLa, 2);
+    CardAcceptCardListUI.a(this.pYO, 2);
     AppMethodBeat.o(113154);
   }
 }

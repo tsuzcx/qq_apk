@@ -1,11 +1,22 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.fn;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Resettable;", "", "reset", "", "plugin-brandservice_release"})
-public abstract interface n
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"DELAY_TIME", "", "getBuffSize", "", "", "getContent", "hasContent", "", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "plugin-brandservice_release"})
+public final class n
 {
-  public abstract void reset();
+  public static final boolean b(fn paramfn)
+  {
+    AppMethodBeat.i(6725);
+    p.h(paramfn, "$this$hasContent");
+    m localm = m.pCU;
+    boolean bool = c.c(m.coe(), c.a(paramfn));
+    AppMethodBeat.o(6725);
+    return bool;
+  }
 }
 
 

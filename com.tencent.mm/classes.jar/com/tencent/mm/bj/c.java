@@ -1,21 +1,21 @@
 package com.tencent.mm.bj;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bn;
+import com.tencent.mm.storage.bo;
 
 public final class c
 {
-  public static long B(String paramString, long paramLong)
+  public static long C(String paramString, long paramLong)
   {
     AppMethodBeat.i(20662);
     long l2 = 0L;
     long l1 = l2;
     if (paramString != null)
     {
-      paramString = d.aML().aqR(paramString);
+      paramString = d.bgM().aEm(paramString);
       l1 = l2;
       if (paramString != null) {
         l1 = paramString.field_createTime + 1L;
@@ -33,15 +33,15 @@ public final class c
   public static void f(long paramLong, String paramString)
   {
     AppMethodBeat.i(20663);
-    ae.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, rowId: %d, talker: %s", new Object[] { Long.valueOf(paramLong), paramString });
-    ae.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, delete fconversation, ret = ".concat(String.valueOf(d.aMM().t(paramLong, paramString))));
-    ae.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, delete fmsginfo, ret = ".concat(String.valueOf(d.aML().aqS(paramString))));
+    Log.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, rowId: %d, talker: %s", new Object[] { Long.valueOf(paramLong), paramString });
+    Log.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, delete fconversation, ret = ".concat(String.valueOf(d.bgN().x(paramLong, paramString))));
+    Log.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, delete fmsginfo, ret = ".concat(String.valueOf(d.bgM().aEn(paramString))));
     AppMethodBeat.o(20663);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bj.c
  * JD-Core Version:    0.7.0.1
  */

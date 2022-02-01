@@ -5,38 +5,38 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.c.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.audio.mix.c.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/SimpleAudioRemuxer;", "", "()V", "remux", "", "src", "", "dest", "desSampleRate", "", "desChannels", "desBitDepth", "Companion", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/SimpleAudioRemuxer;", "", "()V", "remux", "", "src", "", "dest", "desSampleRate", "", "desChannels", "desBitDepth", "Companion", "plugin-vlog_release"})
 public final class d
 {
-  public static final a CiU;
+  public static final a GLV;
   
   static
   {
-    AppMethodBeat.i(192086);
-    CiU = new a((byte)0);
-    AppMethodBeat.o(192086);
+    AppMethodBeat.i(191811);
+    GLV = new a((byte)0);
+    AppMethodBeat.o(191811);
   }
   
-  public static boolean ag(String paramString1, String paramString2, int paramInt)
+  public static boolean ak(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(192085);
+    AppMethodBeat.i(191810);
     p.h(paramString1, "src");
     p.h(paramString2, "dest");
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
     MediaExtractor localMediaExtractor = new MediaExtractor();
-    o.deleteFile(paramString2);
-    o.aZV(paramString2);
+    s.deleteFile(paramString2);
+    s.bpa(paramString2);
     for (;;)
     {
       int i;
@@ -48,22 +48,28 @@ public final class d
         localMediaExtractor.setDataSource(paramString1);
         localMediaExtractor.selectTrack(0);
         Object localObject = localMediaExtractor.getTrackFormat(0);
+        p.g(localObject, "extractor.getTrackFormat(0)");
         localMediaCodec = MediaCodec.createDecoderByType(((MediaFormat)localObject).getString("mime"));
+        p.g(localMediaCodec, "MediaCodec.createDecoder…ng(MediaFormat.KEY_MIME))");
         localMediaCodec.configure((MediaFormat)localObject, null, null, 0);
         localMediaCodec.start();
         if (!((MediaFormat)localObject).containsKey("sample-rate")) {
-          break label491;
+          break label516;
         }
         i = ((MediaFormat)localObject).getInteger("sample-rate");
         if (!((MediaFormat)localObject).containsKey("channel-count")) {
-          break label497;
+          break label522;
         }
         j = ((MediaFormat)localObject).getInteger("channel-count");
-        paramString1 = new f(paramString1, i, j, 2, 44100, paramInt, 2);
+        paramString1 = new g(paramString1, i, j, 2, 44100, paramInt, 2);
         i = localMediaCodec.dequeueInputBuffer(1000L);
         if (i >= 0)
         {
-          j = localMediaExtractor.readSampleData(localMediaCodec.getInputBuffer(i), 0);
+          localObject = localMediaCodec.getInputBuffer(i);
+          if (localObject == null) {
+            p.hyc();
+          }
+          j = localMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
           if (j >= 0) {
             continue;
           }
@@ -82,56 +88,55 @@ public final class d
             ((ByteBuffer)localObject).clear();
           }
           localMediaCodec.releaseOutputBuffer(i, false);
-          localDataOutputStream.write(paramString1.J(arrayOfByte));
+          localDataOutputStream.write(paramString1.X(arrayOfByte));
         }
       }
       catch (IOException paramString1)
       {
         ByteArrayOutputStream localByteArrayOutputStream;
         MediaCodec localMediaCodec;
-        ae.e("MicroMsg.SimpleAudioRemuxer", "remux error:" + paramString1.getMessage());
-        AppMethodBeat.o(192085);
+        Log.e("MicroMsg.SimpleAudioRemuxer", "remux error:" + paramString1.getMessage());
+        AppMethodBeat.o(191810);
         return false;
-        p.g(localMediaCodec, "decoder");
-        localMediaCodec.getOutputFormat();
-        ae.d("MicroMsg.SimpleAudioRemuxer", "get output format");
+        p.g(localMediaCodec.getOutputFormat(), "decoder.outputFormat");
+        Log.d("MicroMsg.SimpleAudioRemuxer", "get output format");
         continue;
       }
       catch (Exception paramString1)
       {
-        ae.e("MicroMsg.SimpleAudioRemuxer", "remux error:" + paramString1.getMessage());
-        AppMethodBeat.o(192085);
+        Log.e("MicroMsg.SimpleAudioRemuxer", "remux error:" + paramString1.getMessage());
+        AppMethodBeat.o(191810);
         return false;
       }
       if (localBufferInfo.flags != 0)
       {
-        o.C(paramString2, c.aa(localByteArrayOutputStream.toByteArray(), paramInt));
+        s.C(paramString2, c.ad(localByteArrayOutputStream.toByteArray(), paramInt));
         localMediaCodec.stop();
         localMediaCodec.release();
         localMediaExtractor.release();
         paramString1.release();
-        ae.d("MicroMsg.SimpleAudioRemuxer", "remux success: ".concat(String.valueOf(paramString2)));
-        AppMethodBeat.o(192085);
+        Log.d("MicroMsg.SimpleAudioRemuxer", "remux success: ".concat(String.valueOf(paramString2)));
+        AppMethodBeat.o(191810);
         return true;
         localMediaCodec.queueInputBuffer(i, 0, j, localMediaExtractor.getSampleTime(), 0);
         localMediaExtractor.advance();
         continue;
         continue;
-        label491:
+        label516:
         i = 44100;
         continue;
-        label497:
+        label522:
         j = 1;
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/SimpleAudioRemuxer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/SimpleAudioRemuxer$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.read.d
  * JD-Core Version:    0.7.0.1
  */

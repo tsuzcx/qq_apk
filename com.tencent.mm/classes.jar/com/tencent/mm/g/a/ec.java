@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
+import org.json.JSONArray;
 
 public final class ec
-  extends b
+  extends IEvent
 {
-  public a dql;
-  public b dqm;
+  public a dHl;
+  public b dHm;
   
   public ec()
   {
@@ -16,23 +18,24 @@ public final class ec
   
   private ec(byte paramByte)
   {
-    AppMethodBeat.i(115989);
-    this.dql = new a();
-    this.dqm = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(115986);
+    this.dHl = new a();
+    this.dHm = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(115989);
+    AppMethodBeat.o(115986);
   }
   
   public static final class a
   {
-    public String dqc;
-    public long msgId;
+    public String brandName;
+    public Context context;
   }
   
   public static final class b
   {
-    public boolean dpK;
+    public boolean dGX;
+    public JSONArray dHk;
   }
 }
 

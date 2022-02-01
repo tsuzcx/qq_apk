@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/ccb" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <FrameLayout android:id="@id/cc_" android:background="@drawable/amv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/j6" android:layout_marginRight="@dimen/j6">
-        <TextView android:textColor="@color/s5" android:ellipsize="end" android:id="@id/cca" android:paddingTop="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-    </FrameLayout>
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/ce">
+        <RelativeLayout android:id="@id/co2" android:background="@drawable/zq" android:layout_width="@dimen/cn" android:layout_height="@dimen/cr">
+            <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/co4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="2.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" app:roundHeight="@dimen/bt" app:roundWidth="@dimen/bt" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@drawable/zr" android:id="@id/co3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_below="@id/co2" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

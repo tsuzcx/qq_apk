@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/buo" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b6v" />
-    <TextView android:textSize="@dimen/sb" android:textColor="@color/a_u" android:id="@id/bup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c11" />
-</LinearLayout>
+<RelativeLayout android:id="@id/htk" android:background="?km" android:paddingTop="@dimen/ajo" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/c13" android:layout_width="@dimen/ajr" android:layout_height="@dimen/ajr" android:layout_centerHorizontal="true" />
+    <android.support.v7.widget.AppCompatTextView android:textColor="@color/l4" android:gravity="center" android:id="@id/c12" android:layout_width="@dimen/ajm" android:layout_height="@dimen/aji" android:maxLines="1" android:layout_below="@id/c13" android:layout_centerHorizontal="true" app:autoSizeMaxTextSize="@dimen/ajj" app:autoSizeMinTextSize="@dimen/ajk" app:autoSizeStepGranularity="@dimen/ajl" app:autoSizeTextType="izx" />
+</RelativeLayout>

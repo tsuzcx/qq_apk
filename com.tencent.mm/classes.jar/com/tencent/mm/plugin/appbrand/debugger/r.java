@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.appbrand.debugger;
 import android.content.Context;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.b;
-import com.tencent.mm.protocal.protobuf.eay;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.w.b;
+import com.tencent.mm.protocal.protobuf.evf;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class r
 {
-  private static int kfh = -1;
+  private static int liQ = -1;
   
-  public static String OL(String paramString)
+  public static String XW(String paramString)
   {
     AppMethodBeat.i(147081);
     paramString = Pattern.compile("subscribeHandler\\(\"(.*)\" , ").matcher(paramString);
@@ -33,18 +33,18 @@ public final class r
   public static void a(c paramc, int paramInt)
   {
     AppMethodBeat.i(147079);
-    int i = (int)(System.currentTimeMillis() - paramc.kdZ);
-    ((b)e.L(b.class)).f(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paramc.size), Integer.valueOf(paramInt), Integer.valueOf(1), "", bu.nullAsNil(paramc.dmp), Integer.valueOf(bfD()), Integer.valueOf(bfE()) });
+    int i = (int)(System.currentTimeMillis() - paramc.lhG);
+    ((b)e.N(b.class)).a(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paramc.size), Integer.valueOf(paramInt), Integer.valueOf(1), "", Util.nullAsNil(paramc.event), Integer.valueOf(bAW()), Integer.valueOf(bAX()) });
     AppMethodBeat.o(147079);
   }
   
-  public static void a(eay parameay, l paraml)
+  public static void a(evf paramevf, l paraml)
   {
     AppMethodBeat.i(147078);
     if (paraml != null)
     {
-      int i = (int)(System.currentTimeMillis() - paraml.kdZ);
-      ((b)e.L(b.class)).f(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paraml.size), Integer.valueOf(parameay.computeSize()), Integer.valueOf(0), "", "", Integer.valueOf(bfD()), Integer.valueOf(bfE()) });
+      int i = (int)(System.currentTimeMillis() - paraml.lhG);
+      ((b)e.N(b.class)).a(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paraml.size), Integer.valueOf(paramevf.computeSize()), Integer.valueOf(0), "", "", Integer.valueOf(bAW()), Integer.valueOf(bAX()) });
     }
     AppMethodBeat.o(147078);
   }
@@ -56,46 +56,46 @@ public final class r
     for (paramLinkedList = (String)paramLinkedList.get(0);; paramLinkedList = "")
     {
       int i = (int)(System.currentTimeMillis() - paramLong);
-      ((b)e.L(b.class)).f(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(2), paramString, paramLinkedList, Integer.valueOf(bfD()), Integer.valueOf(bfE()) });
+      ((b)e.N(b.class)).a(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(2), paramString, paramLinkedList, Integer.valueOf(bAW()), Integer.valueOf(bAX()) });
       AppMethodBeat.o(147080);
       return;
     }
   }
   
-  private static int bfD()
+  private static int bAW()
   {
     AppMethodBeat.i(147082);
-    if (kfh >= 0)
+    if (liQ >= 0)
     {
-      i = kfh;
+      i = liQ;
       AppMethodBeat.o(147082);
       return i;
     }
-    int i = az.getISPCode(ak.getContext());
-    kfh = i;
+    int i = NetStatusUtil.getISPCode(MMApplicationContext.getContext());
+    liQ = i;
     AppMethodBeat.o(147082);
     return i;
   }
   
-  public static int bfE()
+  public static int bAX()
   {
     AppMethodBeat.i(147083);
-    Context localContext = ak.getContext();
+    Context localContext = MMApplicationContext.getContext();
     int i = 5;
-    if (!az.isConnected(localContext)) {
+    if (!NetStatusUtil.isConnected(localContext)) {
       i = 0;
     }
     for (;;)
     {
       AppMethodBeat.o(147083);
       return i;
-      if (az.is2G(localContext)) {
+      if (NetStatusUtil.is2G(localContext)) {
         i = 1;
-      } else if (az.is3G(localContext)) {
+      } else if (NetStatusUtil.is3G(localContext)) {
         i = 2;
-      } else if (az.is4G(localContext)) {
+      } else if (NetStatusUtil.is4G(localContext)) {
         i = 3;
-      } else if (az.isWifi(localContext)) {
+      } else if (NetStatusUtil.isWifi(localContext)) {
         i = 4;
       }
     }
@@ -103,7 +103,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.r
  * JD-Core Version:    0.7.0.1
  */

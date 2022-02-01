@@ -16,20 +16,20 @@ import javax.annotation.concurrent.GuardedBy;
 
 public final class o
 {
-  private static o bLv;
+  private static o bLL;
   @GuardedBy("serviceClassNames")
-  private final n<String, String> bLw;
-  private Boolean bLx;
-  final Queue<Intent> bLy;
-  public final Queue<Intent> bLz;
+  private final n<String, String> bLM;
+  private Boolean bLN;
+  final Queue<Intent> bLO;
+  public final Queue<Intent> bLP;
   
   private o()
   {
     AppMethodBeat.i(4181);
-    this.bLw = new n();
-    this.bLx = null;
-    this.bLy = new ArrayDeque();
-    this.bLz = new ArrayDeque();
+    this.bLM = new n();
+    this.bLN = null;
+    this.bLO = new ArrayDeque();
+    this.bLP = new ArrayDeque();
     AppMethodBeat.o(4181);
   }
   
@@ -47,9 +47,9 @@ public final class o
   private final int b(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(4184);
-    synchronized (this.bLw)
+    synchronized (this.bLM)
     {
-      ??? = (String)this.bLw.get(paramIntent.getAction());
+      ??? = (String)this.bLM.get(paramIntent.getAction());
       ??? = ???;
       if (??? == null)
       {
@@ -64,17 +64,17 @@ public final class o
     try
     {
       boolean bool;
-      if (this.bLx == null)
+      if (this.bLN == null)
       {
         if (paramContext.checkCallingOrSelfPermission("android.permission.WAKE_LOCK") == 0)
         {
           bool = true;
           label85:
-          this.bLx = Boolean.valueOf(bool);
+          this.bLN = Boolean.valueOf(bool);
         }
       }
       else {
-        if (!this.bLx.booleanValue()) {
+        if (!this.bLN.booleanValue()) {
           break label400;
         }
       }
@@ -111,9 +111,9 @@ public final class o
         }
         for (;;)
         {
-          synchronized (this.bLw)
+          synchronized (this.bLM)
           {
-            this.bLw.put(paramIntent.getAction(), ???);
+            this.bLM.put(paramIntent.getAction(), ???);
             if (Log.isLoggable("FirebaseInstanceId", 3))
             {
               ??? = String.valueOf(???);
@@ -152,15 +152,15 @@ public final class o
     return 402;
   }
   
-  public static o yj()
+  public static o yr()
   {
     try
     {
       AppMethodBeat.i(4180);
-      if (bLv == null) {
-        bLv = new o();
+      if (bLL == null) {
+        bLL = new o();
       }
-      o localo = bLv;
+      o localo = bLL;
       AppMethodBeat.o(4180);
       return localo;
     }
@@ -199,7 +199,7 @@ public final class o
       }
       i = 1;
       break;
-      this.bLy.offer(paramIntent);
+      this.bLO.offer(paramIntent);
       for (;;)
       {
         paramString = new Intent(paramString);
@@ -207,7 +207,7 @@ public final class o
         i = b(paramContext, paramString);
         AppMethodBeat.o(4183);
         return i;
-        this.bLz.offer(paramIntent);
+        this.bLP.offer(paramIntent);
       }
       new String("Unknown service action: ");
     }
@@ -215,7 +215,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.iid.o
  * JD-Core Version:    0.7.0.1
  */

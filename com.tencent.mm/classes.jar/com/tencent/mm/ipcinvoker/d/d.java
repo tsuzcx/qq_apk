@@ -6,8 +6,8 @@ import junit.framework.Assert;
 
 public class d
 {
-  public String dmp;
-  public f gAF;
+  public String event;
+  public f hnu;
   private String process;
   
   public <T extends b> d(String paramString, Class<T> paramClass)
@@ -16,14 +16,14 @@ public class d
     Assert.assertNotNull(paramString);
     Assert.assertNotNull(paramClass);
     this.process = paramString;
-    this.dmp = paramClass.getName();
-    this.gAF = new f(paramString);
+    this.event = paramClass.getName();
+    this.hnu = new f(paramString);
     AppMethodBeat.o(158789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.d
  * JD-Core Version:    0.7.0.1
  */

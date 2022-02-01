@@ -1,26 +1,34 @@
 package com.tencent.mm.api;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.ui.widget.MMWebView;
-
 public abstract interface x
-  extends a
 {
-  public abstract BaseWebViewController a(MMWebView paramMMWebView);
+  public abstract int VA();
   
-  public abstract boolean a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract int VB();
   
-  public abstract f b(MMWebView paramMMWebView);
+  public abstract boolean VC();
   
-  public abstract void c(Activity paramActivity, String paramString);
+  public abstract int VD();
+  
+  public abstract boolean VE();
+  
+  public abstract String VF();
+  
+  public abstract String VG();
+  
+  public abstract int Vx();
+  
+  public abstract int Vy();
+  
+  public abstract int Vz();
+  
+  public abstract int getTextColor();
+  
+  public abstract boolean isCropped();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.api.x
  * JD-Core Version:    0.7.0.1
  */

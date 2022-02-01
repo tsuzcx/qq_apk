@@ -5,12 +5,12 @@ public final class v
 {
   public v()
   {
-    this.Ony = 287;
+    this.Ucx = 287;
   }
   
-  public final Boolean gCy()
+  public final Boolean hPC()
   {
-    if (this.Ooi < 8) {
+    if (this.Udh < 8) {
       return Boolean.FALSE;
     }
     return Boolean.TRUE;

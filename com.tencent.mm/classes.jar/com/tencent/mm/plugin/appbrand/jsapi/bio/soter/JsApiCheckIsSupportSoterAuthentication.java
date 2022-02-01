@@ -3,30 +3,32 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jg;
-import com.tencent.mm.g.a.jg.a;
+import com.tencent.mm.g.a.jv;
+import com.tencent.mm.g.a.jv.a;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class JsApiCheckIsSupportSoterAuthentication
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends d
 {
   public static final int CTRL_INDEX = 276;
   public static final String NAME = "checkIsSupportSoterAuthentication";
-  private GetIsSupportSoterTask kFP = null;
+  private GetIsSupportSoterTask lKq = null;
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(106588);
-    ae.i("MicroMsg.JsApiCheckIsSupportSoterAuthentication", "hy: subapp start do check is support soter authentication");
-    this.kFP = new GetIsSupportSoterTask(paramc, paramInt, this);
-    this.kFP.biw();
-    AppBrandMainProcessService.a(this.kFP);
+    Log.i("MicroMsg.JsApiCheckIsSupportSoterAuthentication", "hy: subapp start do check is support soter authentication");
+    this.lKq = new GetIsSupportSoterTask(paramf, paramInt, this);
+    this.lKq.bDJ();
+    AppBrandMainProcessService.a(this.lKq);
     AppMethodBeat.o(106588);
   }
   
@@ -34,10 +36,10 @@ public final class JsApiCheckIsSupportSoterAuthentication
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetIsSupportSoterTask> CREATOR;
-    private int cgA;
-    private c jQp;
-    private JsApiCheckIsSupportSoterAuthentication kFQ;
-    private int kFR;
+    private int csv;
+    private f kSY;
+    private JsApiCheckIsSupportSoterAuthentication lKr;
+    private int lKs;
     
     static
     {
@@ -49,43 +51,43 @@ public final class JsApiCheckIsSupportSoterAuthentication
     protected GetIsSupportSoterTask(Parcel paramParcel)
     {
       AppMethodBeat.i(106585);
-      this.jQp = null;
-      this.cgA = -1;
-      this.kFR = 0;
-      e(paramParcel);
+      this.kSY = null;
+      this.csv = -1;
+      this.lKs = 0;
+      f(paramParcel);
       AppMethodBeat.o(106585);
     }
     
-    public GetIsSupportSoterTask(c paramc, int paramInt, JsApiCheckIsSupportSoterAuthentication paramJsApiCheckIsSupportSoterAuthentication)
+    public GetIsSupportSoterTask(f paramf, int paramInt, JsApiCheckIsSupportSoterAuthentication paramJsApiCheckIsSupportSoterAuthentication)
     {
-      this.jQp = null;
-      this.cgA = -1;
-      this.kFR = 0;
-      this.jQp = paramc;
-      this.cgA = paramInt;
-      this.kFQ = paramJsApiCheckIsSupportSoterAuthentication;
+      this.kSY = null;
+      this.csv = -1;
+      this.lKs = 0;
+      this.kSY = paramf;
+      this.csv = paramInt;
+      this.lKr = paramJsApiCheckIsSupportSoterAuthentication;
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(106583);
-      jg localjg = new jg();
-      com.tencent.mm.sdk.b.a.IvT.l(localjg);
-      this.kFR = localjg.dxg.dxh;
-      ae.i("MicroMsg.GetIsSupportSoterTask", "hy: supportMode: %d", new Object[] { Integer.valueOf(this.kFR) });
-      biG();
+      jv localjv = new jv();
+      EventCenter.instance.publish(localjv);
+      this.lKs = localjv.dON.dOO;
+      Log.i("MicroMsg.GetIsSupportSoterTask", "hy: supportMode: %d", new Object[] { Integer.valueOf(this.lKs) });
+      bDU();
       AppMethodBeat.o(106583);
     }
     
-    public final void aOY()
+    public final void bjk()
     {
       AppMethodBeat.i(106582);
-      super.aOY();
-      ae.d("MicroMsg.GetIsSupportSoterTask", "hy: callback. supportMode: %d", new Object[] { Integer.valueOf(this.kFR) });
+      super.bjk();
+      Log.d("MicroMsg.GetIsSupportSoterTask", "hy: callback. supportMode: %d", new Object[] { Integer.valueOf(this.lKs) });
       HashMap localHashMap = new HashMap(2);
-      localHashMap.put("supportMode", a.sS(this.kFR));
-      this.jQp.h(this.cgA, this.kFQ.n("ok", localHashMap));
-      bix();
+      localHashMap.put("supportMode", a.wO(this.lKs));
+      this.kSY.i(this.csv, this.lKr.n("ok", localHashMap));
+      bDK();
       AppMethodBeat.o(106582);
     }
     
@@ -94,11 +96,11 @@ public final class JsApiCheckIsSupportSoterAuthentication
       return 0;
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(106586);
-      super.e(paramParcel);
-      this.kFR = paramParcel.readInt();
+      super.f(paramParcel);
+      this.lKs = paramParcel.readInt();
       AppMethodBeat.o(106586);
     }
     
@@ -106,7 +108,7 @@ public final class JsApiCheckIsSupportSoterAuthentication
     {
       AppMethodBeat.i(106584);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.kFR);
+      paramParcel.writeInt(this.lKs);
       AppMethodBeat.o(106584);
     }
   }

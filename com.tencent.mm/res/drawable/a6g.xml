@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape>
-            <solid android:color="#7fffffff" />
-        </shape>
-    </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape>
-                <solid android:color="@color/Orange" />
-            </shape>
-        </clip>
-    </item>
-</layer-list>
+    <padding android:left="2.0dip" android:top="2.0dip" android:right="2.0dip" android:bottom="2.0dip" />
+    <stroke android:width="1.0px" android:color="#ffb2b2b2" />
+    <corners android:radius="3.0dip" />
+</shape>

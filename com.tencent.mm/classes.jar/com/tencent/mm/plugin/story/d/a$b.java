@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.story.d;
 
 import com.tencent.mm.plugin.story.i.j;
-import d.l;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "", "onIsAll", "", "isAll", "", "onLoadFavFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "isAllEmpty", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "", "onIsAll", "", "isAll", "", "onLoadFavFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "isAllEmpty", "plugin-story_release"})
 public abstract interface a$b
 {
-  public abstract void k(List<j> paramList, boolean paramBoolean);
+  public abstract void o(List<j> paramList, boolean paramBoolean);
   
-  public abstract void sp(boolean paramBoolean);
+  public abstract void vK(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.d.a.b
  * JD-Core Version:    0.7.0.1
  */

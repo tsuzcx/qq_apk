@@ -2,10 +2,10 @@ package com.tencent.mm.pluginsdk;
 
 public final class a
 {
-  public String Fbp = "";
-  public int Fbq;
-  public boolean Fbr = true;
-  public String dlj = "";
+  public String JSj = "";
+  public int JSk;
+  public boolean JSl = true;
+  public String dCw = "";
 }
 
 

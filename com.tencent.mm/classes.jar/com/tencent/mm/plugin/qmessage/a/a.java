@@ -2,58 +2,60 @@ package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ba.l;
-import com.tencent.mm.g.a.ak;
-import com.tencent.mm.g.a.ak.a;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.v;
+import com.tencent.mm.g.a.am;
+import com.tencent.mm.g.a.am.a;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 
 final class a
-  extends com.tencent.mm.sdk.b.c<ak>
+  extends IListener<am>
 {
   a()
   {
     AppMethodBeat.i(161424);
-    this.__eventId = ak.class.getName().hashCode();
+    this.__eventId = am.class.getName().hashCode();
     AppMethodBeat.o(161424);
   }
   
-  private static boolean a(ak paramak)
+  private static boolean a(am paramam)
   {
     AppMethodBeat.i(27710);
-    if (!(paramak instanceof ak))
+    if (!(paramam instanceof am))
     {
-      ae.f("MicroMsg.QMsg.EventListener", "not bind qq event");
+      Log.f("MicroMsg.QMsg.EventListener", "not bind qq event");
       AppMethodBeat.o(27710);
       return false;
     }
-    if (paramak.dlY.dma == 0) {}
+    if (paramam.dDo.dDq == 0) {}
     try
     {
-      int i = v.aAO() | 0x20;
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(34, Integer.valueOf(i));
-      bc.aCg();
-      com.tencent.mm.model.c.azE().d(new l("", "", "", "", "", "", "", "", i, "", ""));
-      g.dFm();
-      ae.d("MicroMsg.QMsg.EventListener", "doClearQQOffLineMessageHelper succ ");
+      int i = z.aUl() | 0x20;
+      bg.aVF();
+      c.azQ().set(34, Integer.valueOf(i));
+      bg.aVF();
+      c.aSM().d(new l("", "", "", "", "", "", "", "", i, "", ""));
+      g.eGb();
+      Log.d("MicroMsg.QMsg.EventListener", "doClearQQOffLineMessageHelper succ ");
       AppMethodBeat.o(27710);
       return false;
     }
-    catch (Exception paramak)
+    catch (Exception paramam)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.QMsg.EventListener", paramak, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.QMsg.EventListener", paramam, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.a.a
  * JD-Core Version:    0.7.0.1
  */

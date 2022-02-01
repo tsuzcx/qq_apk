@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/ld">
-        <ImageView android:id="@id/c7j" android:src="@drawable/ark" style="@style/jo" />
-        <TextView android:id="@id/c7k" android:text="正在获取Wi-Fi信息..." style="@style/ka" />
-        <Button android:textSize="15.0sp" android:id="@id/c7l" android:visibility="invisible" android:layout_width="220.0dip" android:layout_marginTop="70.0dip" android:minHeight="34.0dip" android:text="@string/cl7" style="@style/k_" />
-    </LinearLayout>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/cen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bz"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/cn" android:layout_marginBottom="@dimen/ci" android:src="@raw/icons_filled_error" app:iconColor="@color/a3b" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/bml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cmw" />
 </LinearLayout>

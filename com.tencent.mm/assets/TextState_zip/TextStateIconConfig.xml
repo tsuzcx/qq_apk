@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<textStateResource>
+  <version>10002</version>
+  <categoryArray>
+    <categoryItem categoryId="1">
+      <description>
+        <en><![CDATA[Feelings]]></en>
+        <zh_CN><![CDATA[心情想法]]></zh_CN>
+        <zh_HK><![CDATA[心情想法]]></zh_HK>
+        <zh_TW><![CDATA[心情想法]]></zh_TW>
+      </description>
+      <iconArray>
+          <iconItem iconId="1022">
+            <effectTime><![CDATA[]]></effectTime>
+            <description>
+              <en><![CDATA[WeChat 8.0]]></en>
+              <zh_CN><![CDATA[微信8.0]]></zh_CN>
+              <zh_HK><![CDATA[微信8.0]]></zh_HK>
+              <zh_TW><![CDATA[微信8.0]]></zh_TW>
+            </description>
+          </iconItem>
+          <iconItem iconId="1000">
+                <effectTime><![CDATA[0]]></effectTime>
+            <description>
+              <en><![CDATA[Happy]]></en>
+              <zh_CN><![CDATA[美滋滋]]></zh_CN>
+              <zh_HK><![CDATA[美滋滋]]></zh_HK>
+              <zh_TW><![CDATA[美滋滋]]></zh_TW>
+            </description>
+          </iconItem>
+        <iconItem iconId="1001">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Depressed]]></en>
+            <zh_CN><![CDATA[郁闷]]></zh_CN>
+            <zh_HK><![CDATA[冇癮]]></zh_HK>
+            <zh_TW><![CDATA[鬱卒]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1003">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Insomnia]]></en>
+            <zh_CN><![CDATA[数羊]]></zh_CN>
+            <zh_HK><![CDATA[瞓唔著]]></zh_HK>
+            <zh_TW><![CDATA[失眠]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1002">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Zoning Out]]></en>
+            <zh_CN><![CDATA[发呆]]></zh_CN>
+            <zh_HK><![CDATA[發吽哣]]></zh_HK>
+            <zh_TW><![CDATA[放空]]></zh_TW>
+          </description>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="2">
+      <description>
+        <en><![CDATA[Work & Study]]></en>
+        <zh_CN><![CDATA[工作学习]]></zh_CN>
+        <zh_HK><![CDATA[工作學習]]></zh_HK>
+        <zh_TW><![CDATA[工作學習]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1006">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Busy]]></en>
+            <zh_CN><![CDATA[忙]]></zh_CN>
+            <zh_HK><![CDATA[忙到爆]]></zh_HK>
+            <zh_TW><![CDATA[忙碌]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1007">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Slackin']]></en>
+            <zh_CN><![CDATA[摸鱼]]></zh_CN>
+            <zh_HK><![CDATA[摸魚]]></zh_HK>
+            <zh_TW><![CDATA[摸魚]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1008">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Hardworking]]></en>
+            <zh_CN><![CDATA[搬砖]]></zh_CN>
+            <zh_HK><![CDATA[開工]]></zh_HK>
+            <zh_TW><![CDATA[努力]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1023">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Work Trip]]></en>
+            <zh_CN><![CDATA[出差]]></zh_CN>
+            <zh_HK><![CDATA[出差]]></zh_HK>
+            <zh_TW><![CDATA[出差]]></zh_TW>
+          </description>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="3">
+      <description>
+        <en><![CDATA[Activities]]></en>
+        <zh_CN><![CDATA[活动]]></zh_CN>
+        <zh_HK><![CDATA[活動]]></zh_HK>
+        <zh_TW><![CDATA[活動]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1009">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Check In]]></en>
+            <zh_CN><![CDATA[打卡]]></zh_CN>
+            <zh_HK><![CDATA[打卡]]></zh_HK>
+            <zh_TW><![CDATA[打卡]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1010">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Eat]]></en>
+            <zh_CN><![CDATA[聚餐]]></zh_CN>
+            <zh_HK><![CDATA[聚餐]]></zh_HK>
+            <zh_TW><![CDATA[聚餐]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1011">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Coffee]]></en>
+            <zh_CN><![CDATA[喝咖啡]]></zh_CN>
+            <zh_HK><![CDATA[喝咖啡]]></zh_HK>
+            <zh_TW><![CDATA[喝咖啡]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1012">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Drink]]></en>
+            <zh_CN><![CDATA[喝酒]]></zh_CN>
+            <zh_HK><![CDATA[飲酒]]></zh_HK>
+            <zh_TW><![CDATA[喝酒]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1013">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Workout]]></en>
+            <zh_CN><![CDATA[运动]]></zh_CN>
+            <zh_HK><![CDATA[運動]]></zh_HK>
+            <zh_TW><![CDATA[運動]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1014">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Shopping]]></en>
+            <zh_CN><![CDATA[买买买]]></zh_CN>
+            <zh_HK><![CDATA[爆買]]></zh_HK>
+            <zh_TW><![CDATA[血拼]]></zh_TW>
+          </description>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="4">
+      <description>
+        <en><![CDATA[Breaks]]></en>
+        <zh_CN><![CDATA[休息]]></zh_CN>
+        <zh_HK><![CDATA[休息]]></zh_HK>
+        <zh_TW><![CDATA[休息]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1016">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Music]]></en>
+            <zh_CN><![CDATA[听歌]]></zh_CN>
+            <zh_HK><![CDATA[聽歌]]></zh_HK>
+            <zh_TW><![CDATA[聽歌]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1017">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Watching TV]]></en>
+            <zh_CN><![CDATA[追剧]]></zh_CN>
+            <zh_HK><![CDATA[追劇]]></zh_HK>
+            <zh_TW><![CDATA[追劇]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1018">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Fruits]]></en>
+            <zh_CN><![CDATA[吃瓜]]></zh_CN>
+            <zh_HK><![CDATA[食瓜]]></zh_HK>
+            <zh_TW><![CDATA[吃瓜]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1019">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Games]]></en>
+            <zh_CN><![CDATA[玩游戏]]></zh_CN>
+            <zh_HK><![CDATA[打機]]></zh_HK>
+            <zh_TW><![CDATA[打遊戲]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1020">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Streamin']]></en>
+            <zh_CN><![CDATA[看直播]]></zh_CN>
+            <zh_HK><![CDATA[睇Live]]></zh_HK>
+            <zh_TW><![CDATA[看直播]]></zh_TW>
+          </description>
+        </iconItem>
+        <iconItem iconId="1021">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[Sleep]]></en>
+            <zh_CN><![CDATA[睡觉]]></zh_CN>
+            <zh_HK><![CDATA[瞓覺]]></zh_HK>
+            <zh_TW><![CDATA[睡覺]]></zh_TW>
+          </description>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="5">
+      <description>
+        <en><![CDATA[Others]]></en>
+        <zh_CN><![CDATA[其他]]></zh_CN>
+        <zh_HK><![CDATA[其他]]></zh_HK>
+        <zh_TW><![CDATA[其他]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1024">
+          <effectTime><![CDATA[0]]></effectTime>
+          <description>
+            <en><![CDATA[(Mysterious)]]></en>
+            <zh_CN><![CDATA[(未知)]]></zh_CN>
+            <zh_HK><![CDATA[(未知)]]></zh_HK>
+            <zh_TW><![CDATA[(未知)]]></zh_TW>
+          </description>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+  </categoryArray>
+  <otherIcons categoryId="0">
+      <description>
+        <zh_CN><![CDATA[不显示在列表]]></zh_CN>
+      </description>
+      <iconArray>
+          <iconItem iconId="xxxxx">
+                <effectTime><![CDATA[0]]></effectTime>
+            <description>
+              <en><![CDATA[Attending...]]></en>
+              <zh_CN><![CDATA[在现场]]></zh_CN>
+              <zh_HK><![CDATA[係現場]]></zh_HK>
+              <zh_TW><![CDATA[在現場]]></zh_TW>
+            </description>
+          </iconItem>
+      </iconArray>
+  </otherIcons>
+</textStateResource>
+
+

@@ -6,7 +6,7 @@ import com.tencent.mm.aa.b.b.a;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.t;
 import org.json.JSONObject;
 
@@ -21,12 +21,12 @@ public final class n
   public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121344);
-    parama = parama.aiA();
+    parama = parama.ayQ();
     String str = parama.getString("__page_view_id", "");
     Bundle localBundle = new Bundle();
     localBundle.putString("id", str);
     localBundle.putString("data", paramJSONObject.toString());
-    XIPCInvoker.a(parama.getString("__process_name", ((h)com.tencent.mm.kernel.g.ajO().ajq()).mProcessName), localBundle, a.class, new com.tencent.mm.ipcinvoker.d() {});
+    XIPCInvoker.a(parama.getString("__process_name", ((h)com.tencent.mm.kernel.g.aAe().azG()).mProcessName), localBundle, a.class, new com.tencent.mm.ipcinvoker.d() {});
     AppMethodBeat.o(121344);
   }
   
@@ -36,7 +36,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.n
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class SwitchPhoneItemView
   extends RelativeLayout
 {
-  private TextView DDN;
-  private TextView DDO;
-  ImageView DDP;
-  private int DDQ;
+  private TextView ImZ;
+  private TextView Ina;
+  ImageView Inb;
+  private int Inc;
   
   public SwitchPhoneItemView(Context paramContext)
   {
@@ -28,9 +28,9 @@ public class SwitchPhoneItemView
   {
     super(paramContext);
     AppMethodBeat.i(71489);
-    this.DDQ = 0;
-    this.DDQ = paramInt;
-    aN(paramContext);
+    this.Inc = 0;
+    this.Inc = paramInt;
+    bh(paramContext);
     AppMethodBeat.o(71489);
   }
   
@@ -38,8 +38,8 @@ public class SwitchPhoneItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71490);
-    this.DDQ = 0;
-    aN(paramContext);
+    this.Inc = 0;
+    bh(paramContext);
     AppMethodBeat.o(71490);
   }
   
@@ -47,20 +47,20 @@ public class SwitchPhoneItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71491);
-    this.DDQ = 0;
-    aN(paramContext);
+    this.Inc = 0;
+    bh(paramContext);
     AppMethodBeat.o(71491);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(71492);
-    if (this.DDQ > 0) {}
-    for (paramContext = inflate(paramContext, this.DDQ, this);; paramContext = inflate(paramContext, 2131496033, this))
+    if (this.Inc > 0) {}
+    for (paramContext = inflate(paramContext, this.Inc, this);; paramContext = inflate(paramContext, 2131497013, this))
     {
-      this.DDN = ((TextView)paramContext.findViewById(2131303234));
-      this.DDO = ((TextView)paramContext.findViewById(2131303209));
-      this.DDP = ((ImageView)paramContext.findViewById(2131303208));
+      this.ImZ = ((TextView)paramContext.findViewById(2131305902));
+      this.Ina = ((TextView)paramContext.findViewById(2131305877));
+      this.Inb = ((ImageView)paramContext.findViewById(2131305876));
       AppMethodBeat.o(71492);
       return;
     }
@@ -69,27 +69,27 @@ public class SwitchPhoneItemView
   public final void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
     AppMethodBeat.i(71493);
-    if (!bu.ah(paramCharSequence1)) {
-      this.DDN.setText(paramCharSequence1);
+    if (!Util.isNullOrNil(paramCharSequence1)) {
+      this.ImZ.setText(paramCharSequence1);
     }
-    while (!bu.ah(paramCharSequence2))
+    while (!Util.isNullOrNil(paramCharSequence2))
     {
-      this.DDO.setMaxLines(2);
-      this.DDO.setSelected(true);
-      this.DDO.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-      this.DDO.setText(paramCharSequence2);
-      this.DDO.setMovementMethod(LinkMovementMethod.getInstance());
+      this.Ina.setMaxLines(2);
+      this.Ina.setSelected(true);
+      this.Ina.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+      this.Ina.setText(paramCharSequence2);
+      this.Ina.setMovementMethod(LinkMovementMethod.getInstance());
       AppMethodBeat.o(71493);
       return;
-      this.DDN.setVisibility(8);
+      this.ImZ.setVisibility(8);
     }
-    this.DDO.setVisibility(8);
+    this.Ina.setVisibility(8);
     AppMethodBeat.o(71493);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemView
  * JD-Core Version:    0.7.0.1
  */

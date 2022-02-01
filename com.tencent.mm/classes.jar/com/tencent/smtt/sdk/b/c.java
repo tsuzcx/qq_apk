@@ -2,7 +2,6 @@ package com.tencent.smtt.sdk.b;
 
 import android.content.Context;
 import android.os.Bundle;
-import java.util.Map;
 
 public abstract interface c
 {
@@ -13,8 +12,6 @@ public abstract interface c
   public abstract boolean canLoadX5FirstTimeThirdApp(Context paramContext);
   
   public abstract boolean canUseVideoFeatrue(Context paramContext, int paramInt);
-  
-  public abstract void dispatchX5EcCommands(Context paramContext, Integer paramInteger, Map<Integer, String> paramMap);
   
   public abstract String[] getDexLoaderFileList(Context paramContext1, Context paramContext2, String paramString);
   
@@ -36,7 +33,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.c
  * JD-Core Version:    0.7.0.1
  */

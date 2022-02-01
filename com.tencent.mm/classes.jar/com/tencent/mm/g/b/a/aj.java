@@ -6,135 +6,94 @@ import com.tencent.mm.plugin.report.a;
 public final class aj
   extends a
 {
-  private String dTr = "";
-  private String dWX = "";
-  private String dWY = "";
-  private String dWZ = "";
-  private String dWh = "";
-  private long dWm;
-  private long dXa;
-  private long dXb;
-  private long dXc;
+  public String eiB = "";
+  public long eoA;
+  public long eoq;
+  public long eor;
+  public long eos;
+  public long eot;
+  public long eou;
+  public long eov;
+  public long eow;
+  public long eox;
+  private String eoy = "";
+  public String eoz = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(189092);
+    AppMethodBeat.i(208838);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWh);
+    ((StringBuffer)localObject).append(this.eoq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTr);
+    ((StringBuffer)localObject).append(this.eor);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWX);
+    ((StringBuffer)localObject).append(this.eos);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWY);
+    ((StringBuffer)localObject).append(this.eot);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWZ);
+    ((StringBuffer)localObject).append(this.eou);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWm);
+    ((StringBuffer)localObject).append(this.eov);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXa);
+    ((StringBuffer)localObject).append(this.eow);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXb);
+    ((StringBuffer)localObject).append(this.eox);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXc);
+    ((StringBuffer)localObject).append(this.eoy);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eiB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoz);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoA);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(189092);
+    aMq((String)localObject);
+    AppMethodBeat.o(208838);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(189093);
+    AppMethodBeat.i(208839);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("FeedId:").append(this.dWh);
+    ((StringBuffer)localObject).append("ReddotFlag:").append(this.eoq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
+    ((StringBuffer)localObject).append("HasLocation:").append(this.eor);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PosterUsername:").append(this.dWX);
+    ((StringBuffer)localObject).append("HasLocationPermission:").append(this.eos);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ViewerUsername:").append(this.dWY);
+    ((StringBuffer)localObject).append("FollowInitPosition:").append(this.eot);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MentionedUsername:").append(this.dWZ);
+    ((StringBuffer)localObject).append("FriendInitPosition:").append(this.eou);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scene:").append(this.dWm);
+    ((StringBuffer)localObject).append("LBSInitPosition:").append(this.eov);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("recommendtype:").append(this.dXa);
+    ((StringBuffer)localObject).append("HotInitPosition:").append(this.eow);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("likecnt:").append(this.dXb);
+    ((StringBuffer)localObject).append("EnterTab:").append(this.eox);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("commcnt:").append(this.dXc);
+    ((StringBuffer)localObject).append("EnterRedDotId:").append(this.eoy);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SessionId:").append(this.eiB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ContextId:").append(this.eoz);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AutoRefresh:").append(this.eoA);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(189093);
+    AppMethodBeat.o(208839);
     return localObject;
-  }
-  
-  public final aj cJ(long paramLong)
-  {
-    this.dWm = paramLong;
-    return this;
-  }
-  
-  public final aj cK(long paramLong)
-  {
-    this.dXa = paramLong;
-    return this;
-  }
-  
-  public final aj cL(long paramLong)
-  {
-    this.dXb = paramLong;
-    return this;
-  }
-  
-  public final aj cM(long paramLong)
-  {
-    this.dXc = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 19793;
+    return 19025;
   }
   
-  public final aj ht(String paramString)
+  public final aj ip(String paramString)
   {
-    AppMethodBeat.i(189087);
-    this.dWh = t("FeedId", paramString, true);
-    AppMethodBeat.o(189087);
-    return this;
-  }
-  
-  public final aj hu(String paramString)
-  {
-    AppMethodBeat.i(189088);
-    this.dTr = t("SessionId", paramString, true);
-    AppMethodBeat.o(189088);
-    return this;
-  }
-  
-  public final aj hv(String paramString)
-  {
-    AppMethodBeat.i(189089);
-    this.dWX = t("PosterUsername", paramString, true);
-    AppMethodBeat.o(189089);
-    return this;
-  }
-  
-  public final aj hw(String paramString)
-  {
-    AppMethodBeat.i(189090);
-    this.dWY = t("ViewerUsername", paramString, true);
-    AppMethodBeat.o(189090);
-    return this;
-  }
-  
-  public final aj hx(String paramString)
-  {
-    AppMethodBeat.i(189091);
-    this.dWZ = t("MentionedUsername", paramString, true);
-    AppMethodBeat.o(189091);
+    AppMethodBeat.i(208837);
+    this.eoy = x("EnterRedDotId", paramString, true);
+    AppMethodBeat.o(208837);
     return this;
   }
 }

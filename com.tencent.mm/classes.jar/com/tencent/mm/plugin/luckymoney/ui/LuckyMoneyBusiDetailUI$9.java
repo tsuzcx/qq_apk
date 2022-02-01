@@ -12,19 +12,19 @@ final class LuckyMoneyBusiDetailUI$9
   public final void onBack()
   {
     AppMethodBeat.i(65458);
-    if (LuckyMoneyBusiDetailUI.f(this.vHt).getVisibility() == 0)
+    if (LuckyMoneyBusiDetailUI.f(this.zcr).getVisibility() == 0)
     {
-      LuckyMoneyBusiDetailUI.f(this.vHt).setVisibility(8);
+      LuckyMoneyBusiDetailUI.f(this.zcr).setVisibility(8);
       AppMethodBeat.o(65458);
       return;
     }
-    this.vHt.getContext().finish();
+    this.zcr.getContext().finish();
     AppMethodBeat.o(65458);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Icons/Filled/clip</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons/Filled/clip" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill="#000000" id="合并形状">
+            <path d="M18,60 L8.99715203,60 C7.34187067,60 6,58.6661074 6,56.997385 L6,15.002615 C6,13.3443165 7.34162278,12 8.99715203,12 L12,12 L60,12 L63.002848,12 C64.6581293,12 66,13.3338926 66,15.002615 L66,56.997385 C66,58.6556835 64.6583772,60 63.002848,60 L54,60 L18,60 Z M18,57 L54,57 L54,15 L18,15 L18,57 Z M10,33.3333333 L10,40.4444444 L14,40.4444444 L14,33.3333333 L10,33.3333333 Z M58,33.3333333 L58,40.4444444 L62,40.4444444 L62,33.3333333 L58,33.3333333 Z"></path>
+        </g>
+    </g>
+</svg>

@@ -5,28 +5,29 @@ import com.tencent.mm.aj.e;
 import com.tencent.mm.aj.i;
 import com.tencent.mm.aj.j;
 import com.tencent.mm.aj.p;
-import com.tencent.mm.g.a.go;
-import com.tencent.mm.g.a.go.a;
-import com.tencent.mm.g.a.go.b;
-import com.tencent.mm.g.a.ut;
-import com.tencent.mm.g.a.ut.a;
+import com.tencent.mm.g.a.gr;
+import com.tencent.mm.g.a.gr.a;
+import com.tencent.mm.g.a.gr.b;
+import com.tencent.mm.g.a.vr;
+import com.tencent.mm.g.a.vr.a;
 import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.plugin.websearch.api.ad;
+import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.j.a;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.vfs.s;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -38,29 +39,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
-  private volatile HashMap<String, HashSet<String>> EbG;
-  volatile HashMap<String, HashSet<String>> EbH;
-  volatile HashMap<String, HashSet<String>> EbI;
-  private volatile HashMap<String, Integer> EbJ;
-  volatile HashMap<String, Integer> EbK;
-  volatile HashMap<String, Integer> EbL;
-  public c<go> EbM;
-  public c zuZ;
+  public IListener DFm;
+  private volatile HashMap<String, HashSet<String>> IHg;
+  private volatile HashMap<String, HashSet<String>> IHh;
+  private volatile HashMap<String, HashSet<String>> INR;
+  private volatile HashMap<String, Integer> INS;
+  private volatile HashMap<String, Integer> INU;
+  private volatile HashMap<String, Integer> INV;
+  public IListener<gr> INW;
   
   public b()
   {
     AppMethodBeat.i(77880);
-    this.EbM = new c()
+    this.INW = new IListener()
     {
-      private boolean a(go paramAnonymousgo)
+      private boolean a(gr paramAnonymousgr)
       {
         AppMethodBeat.i(77876);
-        if (paramAnonymousgo.dty.dlO == 2)
+        if (paramAnonymousgr.dKH.dDe == 2)
         {
-          ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "Emoji Download callback %s", new Object[] { paramAnonymousgo.dty.md5 });
-          if (!b.this.EbI.containsKey(paramAnonymousgo.dty.md5)) {}
+          Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "Emoji Download callback %s", new Object[] { paramAnonymousgr.dKH.md5 });
+          if (!b.a(b.this).containsKey(paramAnonymousgr.dKH.md5)) {}
         }
         for (;;)
         {
@@ -69,16 +70,16 @@ public final class b
           String str1;
           String str2;
           JSONObject localJSONObject;
-          synchronized (b.this.EbI)
+          synchronized (b.a(b.this))
           {
-            i = ((Integer)b.this.EbL.get(paramAnonymousgo.dty.md5)).intValue();
-            Object localObject = (HashSet)b.this.EbI.get(paramAnonymousgo.dty.md5);
+            i = ((Integer)b.b(b.this).get(paramAnonymousgr.dKH.md5)).intValue();
+            Object localObject = (HashSet)b.a(b.this).get(paramAnonymousgr.dKH.md5);
             localJSONArray = new JSONArray();
             localObject = ((HashSet)localObject).iterator();
             if (((Iterator)localObject).hasNext())
             {
               str1 = (String)((Iterator)localObject).next();
-              str2 = "weixin://fts/emoji?path=" + paramAnonymousgo.dtz.path;
+              str2 = "weixin://fts/emoji?path=" + paramAnonymousgr.dKI.path;
               localJSONObject = new JSONObject();
             }
           }
@@ -89,12 +90,12 @@ public final class b
             label204:
             localJSONArray.put(localJSONObject);
             continue;
-            paramAnonymousgo = finally;
+            paramAnonymousgr = finally;
             AppMethodBeat.o(77876);
-            throw paramAnonymousgo;
-            com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(i).cz(0, localJSONArray.toString());
-            b.this.EbI.remove(paramAnonymousgo.dty.md5);
-            b.this.EbL.remove(paramAnonymousgo.dty.md5);
+            throw paramAnonymousgr;
+            com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(i).cQ(0, localJSONArray.toString());
+            b.a(b.this).remove(paramAnonymousgr.dKH.md5);
+            b.b(b.this).remove(paramAnonymousgr.dKH.md5);
             AppMethodBeat.o(77876);
             return false;
           }
@@ -105,15 +106,15 @@ public final class b
         }
       }
     };
-    this.zuZ = new c()
+    this.DFm = new IListener()
     {
-      private boolean a(ut paramAnonymousut)
+      private boolean a(vr paramAnonymousvr)
       {
         AppMethodBeat.i(77878);
-        if (((paramAnonymousut instanceof ut)) && (paramAnonymousut.dKd.dlO == 2))
+        if (((paramAnonymousvr instanceof vr)) && (paramAnonymousvr.ebQ.dDe == 2))
         {
-          ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "Download callback %s", new Object[] { paramAnonymousut.dKd.mediaId });
-          if (!b.this.EbH.containsKey(paramAnonymousut.dKd.mediaId)) {}
+          Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "Download callback %s", new Object[] { paramAnonymousvr.ebQ.mediaId });
+          if (!b.c(b.this).containsKey(paramAnonymousvr.ebQ.mediaId)) {}
         }
         for (;;)
         {
@@ -122,16 +123,16 @@ public final class b
           String str1;
           String str2;
           JSONObject localJSONObject;
-          synchronized (b.this.EbH)
+          synchronized (b.c(b.this))
           {
-            i = ((Integer)b.this.EbK.get(paramAnonymousut.dKd.mediaId)).intValue();
-            Object localObject = (HashSet)b.this.EbH.get(paramAnonymousut.dKd.mediaId);
+            i = ((Integer)b.d(b.this).get(paramAnonymousvr.ebQ.mediaId)).intValue();
+            Object localObject = (HashSet)b.c(b.this).get(paramAnonymousvr.ebQ.mediaId);
             localJSONArray = new JSONArray();
             localObject = ((HashSet)localObject).iterator();
             if (((Iterator)localObject).hasNext())
             {
               str1 = (String)((Iterator)localObject).next();
-              str2 = "weixin://fts/sns?path=" + o.k(paramAnonymousut.dKd.path, false);
+              str2 = "weixin://fts/sns?path=" + s.k(paramAnonymousvr.ebQ.path, false);
               localJSONObject = new JSONObject();
             }
           }
@@ -142,12 +143,12 @@ public final class b
             label215:
             localJSONArray.put(localJSONObject);
             continue;
-            paramAnonymousut = finally;
+            paramAnonymousvr = finally;
             AppMethodBeat.o(77878);
-            throw paramAnonymousut;
-            com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(i).cz(0, localJSONArray.toString());
-            b.this.EbH.remove(paramAnonymousut.dKd.mediaId);
-            b.this.EbK.remove(paramAnonymousut.dKd.mediaId);
+            throw paramAnonymousvr;
+            com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(i).cQ(0, localJSONArray.toString());
+            b.c(b.this).remove(paramAnonymousvr.ebQ.mediaId);
+            b.d(b.this).remove(paramAnonymousvr.ebQ.mediaId);
             AppMethodBeat.o(77878);
             return false;
           }
@@ -158,81 +159,24 @@ public final class b
         }
       }
     };
-    this.EbG = new HashMap();
-    this.EbH = new HashMap();
-    this.EbJ = new HashMap();
-    this.EbK = new HashMap();
-    this.EbI = new HashMap();
-    this.EbL = new HashMap();
-    this.zuZ.alive();
-    this.EbM.alive();
-    p.aEN().add(this);
+    this.IHh = new HashMap();
+    this.INR = new HashMap();
+    this.INS = new HashMap();
+    this.INU = new HashMap();
+    this.IHg = new HashMap();
+    this.INV = new HashMap();
+    this.DFm.alive();
+    this.INW.alive();
+    p.aYB().add(this);
     AppMethodBeat.o(77880);
   }
   
-  public final void a(String paramString, m paramm)
-  {
-    AppMethodBeat.i(77884);
-    if ((paramm == null) || (paramm.obj == null))
-    {
-      AppMethodBeat.o(77884);
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      String str1;
-      String str2;
-      JSONObject localJSONObject;
-      synchronized (this.EbG)
-      {
-        ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "event %s，eventData %s", new Object[] { paramString, paramm.toString() });
-        paramString = paramm.obj.toString();
-        if ((this.EbG.containsKey(paramString)) && (this.EbJ.containsKey(paramString)))
-        {
-          ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "notify avatar changed %s", new Object[] { paramString });
-          i = ((Integer)this.EbJ.get(paramString)).intValue();
-          Object localObject = new HashSet((HashSet)this.EbG.get(paramString));
-          paramm = new JSONArray();
-          localObject = ((HashSet)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            str1 = (String)((Iterator)localObject).next();
-            p.aEA();
-            str2 = "weixin://fts/avatar?path=".concat(String.valueOf(e.K(paramString, false)));
-            localJSONObject = new JSONObject();
-          }
-        }
-      }
-      try
-      {
-        localJSONObject.put("id", str1);
-        localJSONObject.put("src", str2);
-        label218:
-        paramm.put(localJSONObject);
-        continue;
-        paramString = finally;
-        AppMethodBeat.o(77884);
-        throw paramString;
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(i).cz(0, paramm.toString());
-        this.EbG.remove(paramString);
-        this.EbJ.remove(paramString);
-        AppMethodBeat.o(77884);
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        break label218;
-      }
-    }
-  }
-  
-  public final boolean bk(Map<String, Object> paramMap)
+  public final boolean bl(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(77881);
-    ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchAvatarList");
-    Object localObject1 = ad.A(paramMap, "data");
-    int j = bu.m(paramMap.get("webview_instance_id"), -1);
+    Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchAvatarList");
+    Object localObject1 = ai.N(paramMap, "data");
+    int j = Util.nullAsInt(paramMap.get("webview_instance_id"), -1);
     for (;;)
     {
       JSONArray localJSONArray2;
@@ -246,7 +190,7 @@ public final class b
         localObject1 = null;
         i = 0;
         if (i >= localJSONArray1.length()) {
-          break label431;
+          break label428;
         }
         paramMap = localJSONArray1.getJSONObject(i);
         str1 = paramMap.optString("id");
@@ -258,18 +202,18 @@ public final class b
         switch (k)
         {
         case 1: 
-          p.aEA();
-          paramMap = e.K(str2, false);
-          if (!o.fB(paramMap)) {
+          p.aYn();
+          paramMap = e.M(str2, false);
+          if (!s.YS(paramMap)) {
             break;
           }
-          ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file exist %s", new Object[] { paramMap });
+          Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file exist %s", new Object[] { paramMap });
           paramMap = "weixin://fts/avatar?path=".concat(String.valueOf(paramMap));
         case 4: 
         case 64: 
           localObject1 = paramMap;
           if (paramMap == null) {
-            break label458;
+            break label455;
           }
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("id", str1);
@@ -281,50 +225,50 @@ public final class b
       catch (JSONException paramMap)
       {
         String str3;
-        ae.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewImageLogic", paramMap, "", new Object[0]);
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(j).cz(-1, "");
+        Log.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewImageLogic", paramMap, "", new Object[0]);
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(j).cQ(-1, "");
         AppMethodBeat.o(77881);
         return false;
       }
       paramMap = new i();
       paramMap.username = str2;
-      paramMap.hPQ = str3;
-      paramMap.hPP = ((String)localObject2);
-      paramMap.dEu = -1;
-      paramMap.eQU = 3;
-      paramMap.eD(true);
-      p.aEN().b(paramMap);
+      paramMap.iKX = str3;
+      paramMap.iKW = ((String)localObject2);
+      paramMap.cSx = -1;
+      paramMap.fuz = 3;
+      paramMap.fv(true);
+      p.aYB().b(paramMap);
       continue;
-      ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file not exist %s", new Object[] { paramMap });
-      this.EbJ.put(str2, Integer.valueOf(j));
-      Object localObject2 = (HashSet)this.EbG.get(str2);
+      Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file not exist %s", new Object[] { paramMap });
+      this.INS.put(str2, Integer.valueOf(j));
+      Object localObject2 = (HashSet)this.IHh.get(str2);
       paramMap = (Map<String, Object>)localObject2;
       if (localObject2 == null) {
         paramMap = new HashSet();
       }
       paramMap.add(str1);
-      this.EbG.put(str2, paramMap);
-      a.b.ffl().fl(str2);
+      this.IHh.put(str2, paramMap);
+      a.b.gov().fZ(str2);
       paramMap = (Map<String, Object>)localObject1;
       continue;
-      label431:
+      label428:
       if (localJSONArray2.length() > 0)
       {
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(j).cz(0, localJSONArray2.toString());
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(j).cQ(0, localJSONArray2.toString());
         continue;
         continue;
-        label458:
+        label455:
         i += 1;
       }
     }
   }
   
-  public final boolean bl(Map<String, Object> paramMap)
+  public final boolean bm(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(77882);
-    ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchSnsImageList");
-    Object localObject1 = ad.A(paramMap, "data");
-    int j = bu.m(paramMap.get("webview_instance_id"), -1);
+    Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchSnsImageList");
+    Object localObject1 = ai.N(paramMap, "data");
+    int j = Util.nullAsInt(paramMap.get("webview_instance_id"), -1);
     for (;;)
     {
       JSONArray localJSONArray2;
@@ -341,19 +285,19 @@ public final class b
           String str = ((JSONObject)localObject1).getString("id");
           Object localObject2 = ((JSONObject)localObject1).getString("objectXmlDesc");
           int k = ((JSONObject)localObject1).getInt("index");
-          localObject1 = ((n)com.tencent.mm.kernel.g.ab(n.class)).GZ((String)localObject2);
-          if (((TimeLineObject)localObject1).HUG.Gtx.size() <= k) {
+          localObject1 = ((n)com.tencent.mm.kernel.g.af(n.class)).PM((String)localObject2);
+          if (((TimeLineObject)localObject1).ContentObj.LoV.size() <= k) {
             break label494;
           }
-          localObject2 = (bzh)((TimeLineObject)localObject1).HUG.Gtx.get(k);
-          localObject1 = new ut();
-          ((ut)localObject1).dKd.dlO = 3;
-          ((ut)localObject1).dKd.mediaId = ((bzh)localObject2).Id;
-          a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
-          ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "generatePath: %s", new Object[] { ((ut)localObject1).dKd.path });
-          if (o.fB(((ut)localObject1).dKd.path))
+          localObject2 = (cnb)((TimeLineObject)localObject1).ContentObj.LoV.get(k);
+          localObject1 = new vr();
+          ((vr)localObject1).ebQ.dDe = 3;
+          ((vr)localObject1).ebQ.mediaId = ((cnb)localObject2).Id;
+          EventCenter.instance.publish((IEvent)localObject1);
+          Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "generatePath: %s", new Object[] { ((vr)localObject1).ebQ.path });
+          if (s.YS(((vr)localObject1).ebQ.path))
           {
-            localObject1 = "weixin://fts/sns?path=" + o.k(((ut)localObject1).dKd.path, false);
+            localObject1 = "weixin://fts/sns?path=" + s.k(((vr)localObject1).ebQ.path, false);
             paramMap = (Map<String, Object>)localObject1;
             if (localObject1 == null) {
               break label494;
@@ -365,18 +309,18 @@ public final class b
             paramMap = null;
             break label494;
           }
-          synchronized (this.EbH)
+          synchronized (this.INR)
           {
-            if (this.EbH.containsKey(((bzh)localObject2).Id))
+            if (this.INR.containsKey(((cnb)localObject2).Id))
             {
-              localObject1 = (HashSet)this.EbH.get(((bzh)localObject2).Id);
+              localObject1 = (HashSet)this.INR.get(((cnb)localObject2).Id);
               ((HashSet)localObject1).add(str);
-              this.EbH.put(((bzh)localObject2).Id, localObject1);
-              this.EbK.put(((bzh)localObject2).Id, Integer.valueOf(j));
-              localObject1 = new ut();
-              ((ut)localObject1).dKd.dlO = 1;
-              ((ut)localObject1).dKd.dKe = ((bzh)localObject2);
-              a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
+              this.INR.put(((cnb)localObject2).Id, localObject1);
+              this.INU.put(((cnb)localObject2).Id, Integer.valueOf(j));
+              localObject1 = new vr();
+              ((vr)localObject1).ebQ.dDe = 1;
+              ((vr)localObject1).ebQ.ebR = ((cnb)localObject2);
+              EventCenter.instance.publish((IEvent)localObject1);
               localObject1 = paramMap;
               continue;
             }
@@ -392,21 +336,21 @@ public final class b
         AppMethodBeat.o(77882);
         return false;
       }
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(j).cz(0, localJSONArray2.toString());
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(j).cQ(0, localJSONArray2.toString());
       continue;
       label494:
       i += 1;
     }
   }
   
-  public final boolean bm(Map<String, Object> paramMap)
+  public final boolean bn(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(77883);
-    ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchImageList");
-    i = ad.b(paramMap, "requestType", 0);
-    Object localObject1 = ad.A(paramMap, "data");
-    int j = bu.m(paramMap.get("webview_instance_id"), -1);
-    boolean bool = az.isWifi(ak.getContext());
+    Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchImageList");
+    i = ai.b(paramMap, "requestType", 0);
+    Object localObject1 = ai.N(paramMap, "data");
+    int j = Util.nullAsInt(paramMap.get("webview_instance_id"), -1);
+    boolean bool = NetStatusUtil.isWifi(MMApplicationContext.getContext());
     switch (i)
     {
     }
@@ -454,20 +398,20 @@ public final class b
           localObject4 = ((JSONObject)localObject1).optString("id");
           if (k == 2)
           {
-            localObject5 = new go();
-            ((go)localObject5).dty.dlO = 3;
-            ((go)localObject5).dty.md5 = ((JSONObject)localObject1).optString("md5");
-            ((go)localObject5).dty.dtA = ((JSONObject)localObject1).optString("designerId");
-            ((go)localObject5).dty.aeskey = ((JSONObject)localObject1).optString("aesKey");
-            ((go)localObject5).dty.dtB = ((JSONObject)localObject1).optString("encryptUrl");
-            ((go)localObject5).dty.dpp = ((JSONObject)localObject1).optString("productID");
-            ((go)localObject5).dty.name = ((JSONObject)localObject1).optString("express");
-            ((go)localObject5).dty.thumbUrl = ((JSONObject)localObject1).optString("imageUrl");
-            a.IvT.l((com.tencent.mm.sdk.b.b)localObject5);
-            if (o.fB(((go)localObject5).dtz.path))
+            localObject5 = new gr();
+            ((gr)localObject5).dKH.dDe = 3;
+            ((gr)localObject5).dKH.md5 = ((JSONObject)localObject1).optString("md5");
+            ((gr)localObject5).dKH.dKJ = ((JSONObject)localObject1).optString("designerId");
+            ((gr)localObject5).dKH.aeskey = ((JSONObject)localObject1).optString("aesKey");
+            ((gr)localObject5).dKH.dKK = ((JSONObject)localObject1).optString("encryptUrl");
+            ((gr)localObject5).dKH.productId = ((JSONObject)localObject1).optString("productID");
+            ((gr)localObject5).dKH.name = ((JSONObject)localObject1).optString("express");
+            ((gr)localObject5).dKH.thumbUrl = ((JSONObject)localObject1).optString("imageUrl");
+            EventCenter.instance.publish((IEvent)localObject5);
+            if (s.YS(((gr)localObject5).dKI.path))
             {
-              localObject1 = "weixin://fts/emoji?path=" + ((go)localObject5).dtz.path;
-              ae.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "path=%s", new Object[] { ((go)localObject5).dtz.path });
+              localObject1 = "weixin://fts/emoji?path=" + ((gr)localObject5).dKI.path;
+              Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "path=%s", new Object[] { ((gr)localObject5).dKI.path });
               paramMap = (Map<String, Object>)localObject1;
               if (localObject1 == null) {
                 continue;
@@ -481,16 +425,16 @@ public final class b
             }
             if (bool)
             {
-              synchronized (this.EbI)
+              synchronized (this.IHg)
               {
-                if (this.EbI.containsKey(((go)localObject5).dty.md5))
+                if (this.IHg.containsKey(((gr)localObject5).dKH.md5))
                 {
-                  localObject1 = (HashSet)this.EbI.get(((go)localObject5).dty.md5);
+                  localObject1 = (HashSet)this.IHg.get(((gr)localObject5).dKH.md5);
                   ((HashSet)localObject1).add(localObject4);
-                  this.EbI.put(((go)localObject5).dty.md5, localObject1);
-                  this.EbL.put(((go)localObject5).dty.md5, Integer.valueOf(j));
-                  ((go)localObject5).dty.dlO = 1;
-                  a.IvT.l((com.tencent.mm.sdk.b.b)localObject5);
+                  this.IHg.put(((gr)localObject5).dKH.md5, localObject1);
+                  this.INV.put(((gr)localObject5).dKH.md5, Integer.valueOf(j));
+                  ((gr)localObject5).dKH.dDe = 1;
+                  EventCenter.instance.publish((IEvent)localObject5);
                   localObject1 = paramMap;
                   continue;
                 }
@@ -529,9 +473,66 @@ public final class b
       break label817;
       if (((JSONArray)localObject3).length() > 0)
       {
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(j).cz(0, ((JSONArray)localObject3).toString());
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(j).cQ(0, ((JSONArray)localObject3).toString());
         continue;
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.Yt(j).cz(0, ((JSONArray)localObject1).toString());
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(j).cQ(0, ((JSONArray)localObject1).toString());
+      }
+    }
+  }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(77884);
+    if ((paramMStorageEventData == null) || (paramMStorageEventData.obj == null))
+    {
+      AppMethodBeat.o(77884);
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      String str1;
+      String str2;
+      JSONObject localJSONObject;
+      synchronized (this.IHh)
+      {
+        Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "event %s，eventData %s", new Object[] { paramString, paramMStorageEventData.toString() });
+        paramString = paramMStorageEventData.obj.toString();
+        if ((this.IHh.containsKey(paramString)) && (this.INS.containsKey(paramString)))
+        {
+          Log.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "notify avatar changed %s", new Object[] { paramString });
+          i = ((Integer)this.INS.get(paramString)).intValue();
+          Object localObject = new HashSet((HashSet)this.IHh.get(paramString));
+          paramMStorageEventData = new JSONArray();
+          localObject = ((HashSet)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            str1 = (String)((Iterator)localObject).next();
+            p.aYn();
+            str2 = "weixin://fts/avatar?path=".concat(String.valueOf(e.M(paramString, false)));
+            localJSONObject = new JSONObject();
+          }
+        }
+      }
+      try
+      {
+        localJSONObject.put("id", str1);
+        localJSONObject.put("src", str2);
+        label222:
+        paramMStorageEventData.put(localJSONObject);
+        continue;
+        paramString = finally;
+        AppMethodBeat.o(77884);
+        throw paramString;
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(i).cQ(0, paramMStorageEventData.toString());
+        this.IHh.remove(paramString);
+        this.INS.remove(paramString);
+        AppMethodBeat.o(77884);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        break label222;
       }
     }
   }

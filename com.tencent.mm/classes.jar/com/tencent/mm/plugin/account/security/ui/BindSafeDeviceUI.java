@@ -20,13 +20,13 @@ public class BindSafeDeviceUI
 {
   public int getLayoutId()
   {
-    return 2131495331;
+    return 2131496192;
   }
   
   public void initView()
   {
     AppMethodBeat.i(125543);
-    setMMTitle(2131762744);
+    setMMTitle(2131764829);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -37,21 +37,21 @@ public class BindSafeDeviceUI
         return true;
       }
     });
-    ((ImageView)findViewById(2131304473)).setImageResource(2131689475);
-    ((TextView)findViewById(2131304474)).setText(2131762750);
-    ((TextView)findViewById(2131305879)).setText(2131762751);
-    findViewById(2131305879).setOnClickListener(new View.OnClickListener()
+    ((ImageView)findViewById(2131307467)).setImageResource(2131689477);
+    ((TextView)findViewById(2131307468)).setText(2131764835);
+    ((TextView)findViewById(2131309161)).setText(2131764836);
+    findViewById(2131309161).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(125541);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("bind_scene", 1);
         paramAnonymousView.setClass(BindSafeDeviceUI.this, BindMContactUI.class);
-        MMWizardActivity.al(BindSafeDeviceUI.this, paramAnonymousView);
+        MMWizardActivity.ay(BindSafeDeviceUI.this, paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(125541);
       }
@@ -75,7 +75,7 @@ public class BindSafeDeviceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.BindSafeDeviceUI
  * JD-Core Version:    0.7.0.1
  */

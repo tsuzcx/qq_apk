@@ -7,12 +7,12 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.setting.model.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.plugin.setting.model.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -23,82 +23,82 @@ public class SettingsPluginsNotifyUI
   private f screen;
   private int state;
   
-  private void PO(int paramInt)
+  private void Xr(int paramInt)
   {
     AppMethodBeat.i(74332);
     this.state = paramInt;
     if ((this.state == 1) || (this.state == 0))
     {
-      g.ajR().ajA().set(8200, Boolean.TRUE);
+      g.aAh().azQ().set(8200, Boolean.TRUE);
       if (this.state == 1)
       {
-        g.ajR().ajA().set(8201, Integer.valueOf(22));
-        g.ajR().ajA().set(8208, Integer.valueOf(8));
-        ((l)g.ab(l.class)).azE().d(new m(true, 22, 8));
+        g.aAh().azQ().set(8201, Integer.valueOf(22));
+        g.aAh().azQ().set(8208, Integer.valueOf(8));
+        ((l)g.af(l.class)).aSM().d(new n(true, 22, 8));
       }
     }
     for (;;)
     {
-      dRs();
+      eTt();
       AppMethodBeat.o(74332);
       return;
-      g.ajR().ajA().set(8201, Integer.valueOf(0));
-      g.ajR().ajA().set(8208, Integer.valueOf(0));
-      ((l)g.ab(l.class)).azE().d(new m(true, 0, 0));
+      g.aAh().azQ().set(8201, Integer.valueOf(0));
+      g.aAh().azQ().set(8208, Integer.valueOf(0));
+      ((l)g.af(l.class)).aSM().d(new n(true, 0, 0));
       continue;
-      g.ajR().ajA().set(8200, Boolean.FALSE);
-      ((l)g.ab(l.class)).azE().d(new m());
+      g.aAh().azQ().set(8200, Boolean.FALSE);
+      ((l)g.af(l.class)).aSM().d(new n());
     }
   }
   
-  private void dRs()
+  private void eTt()
   {
     AppMethodBeat.i(74331);
     this.screen.removeAll();
     Preference localPreference = new Preference(this);
-    localPreference.setTitle(2131763350);
+    localPreference.setTitle(2131765532);
     localPreference.setKey("settings_plugings_disturb_on");
-    localPreference.setLayoutResource(2131494804);
+    localPreference.setLayoutResource(2131495538);
     if (this.state == 0)
     {
-      localPreference.setWidgetLayoutResource(2131494878);
-      this.screen.b(localPreference);
+      localPreference.setWidgetLayoutResource(2131495615);
+      this.screen.c(localPreference);
       localPreference = new Preference(this);
-      localPreference.setTitle(2131763351);
+      localPreference.setTitle(2131765533);
       localPreference.setKey("settings_plugings_disturb_on_night");
-      localPreference.setLayoutResource(2131494804);
+      localPreference.setLayoutResource(2131495538);
       if (this.state != 1) {
         break label221;
       }
-      localPreference.setWidgetLayoutResource(2131494878);
+      localPreference.setWidgetLayoutResource(2131495615);
       label105:
-      this.screen.b(localPreference);
+      this.screen.c(localPreference);
       localPreference = new Preference(this);
-      localPreference.setTitle(2131763349);
+      localPreference.setTitle(2131765531);
       localPreference.setKey("settings_plugings_disturb_off");
-      localPreference.setLayoutResource(2131494804);
+      localPreference.setLayoutResource(2131495538);
       if (this.state != 2) {
         break label230;
       }
-      localPreference.setWidgetLayoutResource(2131494878);
+      localPreference.setWidgetLayoutResource(2131495615);
     }
     for (;;)
     {
-      this.screen.b(localPreference);
+      this.screen.c(localPreference);
       localPreference = new Preference(this);
-      localPreference.setTitle(2131763352);
-      localPreference.setLayoutResource(2131494863);
-      this.screen.b(localPreference);
+      localPreference.setTitle(2131765534);
+      localPreference.setLayoutResource(2131495599);
+      this.screen.c(localPreference);
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74331);
       return;
-      localPreference.setWidgetLayoutResource(2131494879);
+      localPreference.setWidgetLayoutResource(2131495616);
       break;
       label221:
-      localPreference.setWidgetLayoutResource(2131494879);
+      localPreference.setWidgetLayoutResource(2131495616);
       break label105;
       label230:
-      localPreference.setWidgetLayoutResource(2131494879);
+      localPreference.setWidgetLayoutResource(2131495616);
     }
   }
   
@@ -110,9 +110,9 @@ public class SettingsPluginsNotifyUI
   public void initView()
   {
     AppMethodBeat.i(74333);
-    Boolean localBoolean = Boolean.valueOf(v.aBc());
-    int j = v.aBm();
-    int k = v.aBn();
+    Boolean localBoolean = Boolean.valueOf(z.aUz());
+    int j = z.aUJ();
+    int k = z.aUK();
     int i;
     if (localBoolean.booleanValue()) {
       if (j == k) {
@@ -121,10 +121,10 @@ public class SettingsPluginsNotifyUI
     }
     for (this.state = i;; this.state = 2)
     {
-      ae.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
+      Log.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
       this.state = this.state;
       this.screen = getPreferenceScreen();
-      setMMTitle(2131763353);
+      setMMTitle(2131765535);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -156,13 +156,13 @@ public class SettingsPluginsNotifyUI
     AppMethodBeat.i(74330);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_plugings_disturb_on")) {
-      PO(0);
+      Xr(0);
     }
     if (paramf.equals("settings_plugings_disturb_on_night")) {
-      PO(1);
+      Xr(1);
     }
     if (paramf.equals("settings_plugings_disturb_off")) {
-      PO(2);
+      Xr(2);
     }
     AppMethodBeat.o(74330);
     return false;
@@ -172,7 +172,7 @@ public class SettingsPluginsNotifyUI
   {
     AppMethodBeat.i(74329);
     super.onResume();
-    dRs();
+    eTt();
     AppMethodBeat.o(74329);
   }
   

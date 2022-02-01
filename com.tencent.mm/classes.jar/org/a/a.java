@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public final class a
 {
-  private final Class<?> Otd;
+  private final Class<?> bWR;
   public final Object object;
   
   private a(Class<?> paramClass)
@@ -23,14 +23,38 @@ public final class a
   
   private a(Class<?> paramClass, Object paramObject)
   {
-    this.Otd = paramClass;
+    this.bWR = paramClass;
     this.object = paramObject;
+  }
+  
+  private static <T extends AccessibleObject> T a(T paramT)
+  {
+    AppMethodBeat.i(4274);
+    if (paramT == null)
+    {
+      AppMethodBeat.o(4274);
+      return null;
+    }
+    if ((paramT instanceof Member))
+    {
+      Member localMember = (Member)paramT;
+      if ((Modifier.isPublic(localMember.getModifiers())) && (Modifier.isPublic(localMember.getDeclaringClass().getModifiers())))
+      {
+        AppMethodBeat.o(4274);
+        return paramT;
+      }
+    }
+    if (!paramT.isAccessible()) {
+      paramT.setAccessible(true);
+    }
+    AppMethodBeat.o(4274);
+    return paramT;
   }
   
   private Method a(String paramString, Class<?>[] paramArrayOfClass)
   {
     AppMethodBeat.i(4281);
-    Object localObject = this.Otd;
+    Object localObject = this.bWR;
     try
     {
       Method localMethod1 = ((Class)localObject).getMethod(paramString, paramArrayOfClass);
@@ -57,31 +81,6 @@ public final class a
       paramString = new NoSuchMethodException();
       AppMethodBeat.o(4281);
       throw paramString;
-    }
-  }
-  
-  private static a a(Method paramMethod, Object paramObject, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(4290);
-    try
-    {
-      c(paramMethod);
-      if (paramMethod.getReturnType() == Void.TYPE)
-      {
-        paramMethod.invoke(paramObject, paramVarArgs);
-        paramMethod = gB(paramObject);
-        AppMethodBeat.o(4290);
-        return paramMethod;
-      }
-      paramMethod = gB(paramMethod.invoke(paramObject, paramVarArgs));
-      AppMethodBeat.o(4290);
-      return paramMethod;
-    }
-    catch (Exception paramMethod)
-    {
-      paramMethod = new b(paramMethod);
-      AppMethodBeat.o(4290);
-      throw paramMethod;
     }
   }
   
@@ -119,7 +118,7 @@ public final class a
     return false;
   }
   
-  private static Class<?>[] aj(Object... paramVarArgs)
+  private static Class<?>[] al(Object... paramVarArgs)
   {
     int i = 0;
     AppMethodBeat.i(4291);
@@ -149,7 +148,7 @@ public final class a
     AppMethodBeat.i(4289);
     try
     {
-      paramConstructor = e(paramConstructor.getDeclaringClass(), ((Constructor)c(paramConstructor)).newInstance(paramVarArgs));
+      paramConstructor = e(paramConstructor.getDeclaringClass(), ((Constructor)a(paramConstructor)).newInstance(paramVarArgs));
       AppMethodBeat.o(4289);
       return paramConstructor;
     }
@@ -229,13 +228,13 @@ public final class a
     return paramClass;
   }
   
-  private Field bfC(String paramString)
+  private Field bvs(String paramString)
   {
     AppMethodBeat.i(4278);
-    Class localClass = this.Otd;
+    Class localClass = this.bWR;
     try
     {
-      Field localField1 = (Field)c(localClass.getField(paramString));
+      Field localField1 = (Field)a(localClass.getField(paramString));
       AppMethodBeat.o(4278);
       return localField1;
     }
@@ -244,7 +243,7 @@ public final class a
     {
       try
       {
-        Field localField2 = (Field)c(localClass.getDeclaredField(paramString));
+        Field localField2 = (Field)a(localClass.getDeclaredField(paramString));
         AppMethodBeat.o(4278);
         return localField2;
       }
@@ -261,28 +260,29 @@ public final class a
     }
   }
   
-  private static <T extends AccessibleObject> T c(T paramT)
+  private static a c(Method paramMethod, Object paramObject, Object... paramVarArgs)
   {
-    AppMethodBeat.i(4274);
-    if (paramT == null)
+    AppMethodBeat.i(4290);
+    try
     {
-      AppMethodBeat.o(4274);
-      return null;
-    }
-    if ((paramT instanceof Member))
-    {
-      Member localMember = (Member)paramT;
-      if ((Modifier.isPublic(localMember.getModifiers())) && (Modifier.isPublic(localMember.getDeclaringClass().getModifiers())))
+      a(paramMethod);
+      if (paramMethod.getReturnType() == Void.TYPE)
       {
-        AppMethodBeat.o(4274);
-        return paramT;
+        paramMethod.invoke(paramObject, paramVarArgs);
+        paramMethod = gG(paramObject);
+        AppMethodBeat.o(4290);
+        return paramMethod;
       }
+      paramMethod = gG(paramMethod.invoke(paramObject, paramVarArgs));
+      AppMethodBeat.o(4290);
+      return paramMethod;
     }
-    if (!paramT.isAccessible()) {
-      paramT.setAccessible(true);
+    catch (Exception paramMethod)
+    {
+      paramMethod = new b(paramMethod);
+      AppMethodBeat.o(4290);
+      throw paramMethod;
     }
-    AppMethodBeat.o(4274);
-    return paramT;
   }
   
   private static a e(Class<?> paramClass, Object paramObject)
@@ -310,7 +310,7 @@ public final class a
     }
   }
   
-  public static a gB(Object paramObject)
+  public static a gG(Object paramObject)
   {
     AppMethodBeat.i(4272);
     if (paramObject == null) {}
@@ -322,13 +322,116 @@ public final class a
     }
   }
   
-  public final a A(String paramString, Object... paramVarArgs)
+  public final a ak(Object... paramVarArgs)
   {
-    AppMethodBeat.i(4280);
-    Class[] arrayOfClass = aj(paramVarArgs);
+    AppMethodBeat.i(4284);
+    Class[] arrayOfClass = al(paramVarArgs);
     try
     {
-      a locala = a(a(paramString, arrayOfClass), this.object, paramVarArgs);
+      a locala = b(this.bWR.getDeclaredConstructor(arrayOfClass), paramVarArgs);
+      AppMethodBeat.o(4284);
+      return locala;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      Constructor[] arrayOfConstructor = this.bWR.getDeclaredConstructors();
+      int j = arrayOfConstructor.length;
+      int i = 0;
+      while (i < j)
+      {
+        Constructor localConstructor = arrayOfConstructor[i];
+        if (a(localConstructor.getParameterTypes(), arrayOfClass))
+        {
+          paramVarArgs = b(localConstructor, paramVarArgs);
+          AppMethodBeat.o(4284);
+          return paramVarArgs;
+        }
+        i += 1;
+      }
+      paramVarArgs = new b(localNoSuchMethodException);
+      AppMethodBeat.o(4284);
+      throw paramVarArgs;
+    }
+  }
+  
+  public final a bvr(String paramString)
+  {
+    AppMethodBeat.i(4277);
+    try
+    {
+      paramString = bvs(paramString);
+      paramString = e(paramString.getType(), paramString.get(this.object));
+      AppMethodBeat.o(4277);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString = new b(paramString);
+      AppMethodBeat.o(4277);
+      throw paramString;
+    }
+  }
+  
+  public final a bvt(String paramString)
+  {
+    AppMethodBeat.i(4279);
+    paramString = u(paramString, new Object[0]);
+    AppMethodBeat.o(4279);
+    return paramString;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(4287);
+    if ((paramObject instanceof a))
+    {
+      boolean bool = this.object.equals(((a)paramObject).object);
+      AppMethodBeat.o(4287);
+      return bool;
+    }
+    AppMethodBeat.o(4287);
+    return false;
+  }
+  
+  public final <T> T get(String paramString)
+  {
+    AppMethodBeat.i(4276);
+    paramString = bvr(paramString).object;
+    AppMethodBeat.o(4276);
+    return paramString;
+  }
+  
+  public final a hPX()
+  {
+    AppMethodBeat.i(4283);
+    a locala = ak(new Object[0]);
+    AppMethodBeat.o(4283);
+    return locala;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(4286);
+    int i = this.object.hashCode();
+    AppMethodBeat.o(4286);
+    return i;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(4288);
+    String str = this.object.toString();
+    AppMethodBeat.o(4288);
+    return str;
+  }
+  
+  public final a u(String paramString, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(4280);
+    Class[] arrayOfClass = al(paramVarArgs);
+    try
+    {
+      a locala = c(a(paramString, arrayOfClass), this.object, paramVarArgs);
       AppMethodBeat.o(4280);
       return locala;
     }
@@ -337,7 +440,7 @@ public final class a
     {
       try
       {
-        Class localClass = this.Otd;
+        Class localClass = this.bWR;
         Method[] arrayOfMethod1 = localClass.getMethods();
         int j = arrayOfMethod1.length;
         int i = 0;
@@ -346,7 +449,7 @@ public final class a
           Object localObject = arrayOfMethod1[i];
           if (a((Method)localObject, paramString, arrayOfClass))
           {
-            paramString = a((Method)localObject, this.object, paramVarArgs);
+            paramString = c((Method)localObject, this.object, paramVarArgs);
             AppMethodBeat.o(4280);
             return paramString;
           }
@@ -368,7 +471,7 @@ public final class a
             localClass = localClass.getSuperclass();
             if (localClass == null)
             {
-              paramString = new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(arrayOfClass) + " could be found on type " + this.Otd + ".");
+              paramString = new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(arrayOfClass) + " could be found on type " + this.bWR + ".");
               AppMethodBeat.o(4280);
               throw paramString;
             }
@@ -383,113 +486,10 @@ public final class a
       }
     }
   }
-  
-  public final a ai(Object... paramVarArgs)
-  {
-    AppMethodBeat.i(4284);
-    Class[] arrayOfClass = aj(paramVarArgs);
-    try
-    {
-      a locala = b(this.Otd.getDeclaredConstructor(arrayOfClass), paramVarArgs);
-      AppMethodBeat.o(4284);
-      return locala;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      Constructor[] arrayOfConstructor = this.Otd.getDeclaredConstructors();
-      int j = arrayOfConstructor.length;
-      int i = 0;
-      while (i < j)
-      {
-        Constructor localConstructor = arrayOfConstructor[i];
-        if (a(localConstructor.getParameterTypes(), arrayOfClass))
-        {
-          paramVarArgs = b(localConstructor, paramVarArgs);
-          AppMethodBeat.o(4284);
-          return paramVarArgs;
-        }
-        i += 1;
-      }
-      paramVarArgs = new b(localNoSuchMethodException);
-      AppMethodBeat.o(4284);
-      throw paramVarArgs;
-    }
-  }
-  
-  public final a bfB(String paramString)
-  {
-    AppMethodBeat.i(4277);
-    try
-    {
-      paramString = bfC(paramString);
-      paramString = e(paramString.getType(), paramString.get(this.object));
-      AppMethodBeat.o(4277);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString = new b(paramString);
-      AppMethodBeat.o(4277);
-      throw paramString;
-    }
-  }
-  
-  public final a bfD(String paramString)
-  {
-    AppMethodBeat.i(4279);
-    paramString = A(paramString, new Object[0]);
-    AppMethodBeat.o(4279);
-    return paramString;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(4287);
-    if ((paramObject instanceof a))
-    {
-      boolean bool = this.object.equals(((a)paramObject).object);
-      AppMethodBeat.o(4287);
-      return bool;
-    }
-    AppMethodBeat.o(4287);
-    return false;
-  }
-  
-  public final a gCT()
-  {
-    AppMethodBeat.i(4283);
-    a locala = ai(new Object[0]);
-    AppMethodBeat.o(4283);
-    return locala;
-  }
-  
-  public final <T> T get(String paramString)
-  {
-    AppMethodBeat.i(4276);
-    paramString = bfB(paramString).object;
-    AppMethodBeat.o(4276);
-    return paramString;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(4286);
-    int i = this.object.hashCode();
-    AppMethodBeat.o(4286);
-    return i;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(4288);
-    String str = this.object.toString();
-    AppMethodBeat.o(4288);
-    return str;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     org.a.a
  * JD-Core Version:    0.7.0.1
  */

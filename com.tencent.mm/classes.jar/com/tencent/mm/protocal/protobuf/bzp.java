@@ -1,130 +1,110 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class bzp
   extends com.tencent.mm.bw.a
 {
-  public String GLO;
-  public int GbY;
-  public int HnA;
-  public int Hnz;
-  public String ThumbUrl;
+  public String Desc;
+  public String IconUrl;
+  public String Mfj;
+  public String Mfk;
   public String Title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89663);
+    AppMethodBeat.i(152610);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Title == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Title");
-        AppMethodBeat.o(89663);
-        throw paramVarArgs;
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Mfj != null) {
+        paramVarArgs.e(1, this.Mfj);
       }
-      if (this.ThumbUrl == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ThumbUrl");
-        AppMethodBeat.o(89663);
-        throw paramVarArgs;
+      if (this.IconUrl != null) {
+        paramVarArgs.e(2, this.IconUrl);
       }
-      paramVarArgs.aS(1, this.Hnz);
       if (this.Title != null) {
-        paramVarArgs.d(2, this.Title);
+        paramVarArgs.e(3, this.Title);
       }
-      if (this.ThumbUrl != null) {
-        paramVarArgs.d(3, this.ThumbUrl);
+      if (this.Desc != null) {
+        paramVarArgs.e(4, this.Desc);
       }
-      paramVarArgs.aS(4, this.GbY);
-      if (this.GLO != null) {
-        paramVarArgs.d(5, this.GLO);
+      if (this.Mfk != null) {
+        paramVarArgs.e(5, this.Mfk);
       }
-      paramVarArgs.aS(6, this.HnA);
-      AppMethodBeat.o(89663);
+      AppMethodBeat.o(152610);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.Mfj == null) {
+        break label454;
+      }
+    }
+    label454:
+    for (int i = g.a.a.b.b.a.f(1, this.Mfj) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bz(1, this.Hnz) + 0;
       paramInt = i;
-      if (this.Title != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Title);
+      if (this.IconUrl != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.IconUrl);
       }
       i = paramInt;
-      if (this.ThumbUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ThumbUrl);
+      if (this.Title != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.Title);
       }
-      i += f.a.a.b.b.a.bz(4, this.GbY);
       paramInt = i;
-      if (this.GLO != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.GLO);
+      if (this.Desc != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.Desc);
       }
-      i = f.a.a.b.b.a.bz(6, this.HnA);
-      AppMethodBeat.o(89663);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+      i = paramInt;
+      if (this.Mfk != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.Mfk);
+      }
+      AppMethodBeat.o(152610);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
         }
+        AppMethodBeat.o(152610);
+        return 0;
       }
-      if (this.Title == null)
+      if (paramInt == 3)
       {
-        paramVarArgs = new b("Not all required fields were included: Title");
-        AppMethodBeat.o(89663);
-        throw paramVarArgs;
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        bzp localbzp = (bzp)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(152610);
+          return -1;
+        case 1: 
+          localbzp.Mfj = locala.UbS.readString();
+          AppMethodBeat.o(152610);
+          return 0;
+        case 2: 
+          localbzp.IconUrl = locala.UbS.readString();
+          AppMethodBeat.o(152610);
+          return 0;
+        case 3: 
+          localbzp.Title = locala.UbS.readString();
+          AppMethodBeat.o(152610);
+          return 0;
+        case 4: 
+          localbzp.Desc = locala.UbS.readString();
+          AppMethodBeat.o(152610);
+          return 0;
+        }
+        localbzp.Mfk = locala.UbS.readString();
+        AppMethodBeat.o(152610);
+        return 0;
       }
-      if (this.ThumbUrl == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ThumbUrl");
-        AppMethodBeat.o(89663);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(89663);
-      return 0;
+      AppMethodBeat.o(152610);
+      return -1;
     }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      bzp localbzp = (bzp)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(89663);
-        return -1;
-      case 1: 
-        localbzp.Hnz = locala.OmT.zc();
-        AppMethodBeat.o(89663);
-        return 0;
-      case 2: 
-        localbzp.Title = locala.OmT.readString();
-        AppMethodBeat.o(89663);
-        return 0;
-      case 3: 
-        localbzp.ThumbUrl = locala.OmT.readString();
-        AppMethodBeat.o(89663);
-        return 0;
-      case 4: 
-        localbzp.GbY = locala.OmT.zc();
-        AppMethodBeat.o(89663);
-        return 0;
-      case 5: 
-        localbzp.GLO = locala.OmT.readString();
-        AppMethodBeat.o(89663);
-        return 0;
-      }
-      localbzp.HnA = locala.OmT.zc();
-      AppMethodBeat.o(89663);
-      return 0;
-    }
-    AppMethodBeat.o(89663);
-    return -1;
   }
 }
 

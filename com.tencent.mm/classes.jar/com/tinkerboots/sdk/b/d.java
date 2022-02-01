@@ -10,33 +10,33 @@ import java.util.HashSet;
 
 public final class d
 {
-  private static String MXE;
-  private static HashSet<String> MXF;
+  private static String SKM;
+  private static HashSet<String> SKN;
   
   static
   {
     AppMethodBeat.i(3466);
-    MXF = new HashSet();
+    SKN = new HashSet();
     AppMethodBeat.o(3466);
   }
   
-  public static String giB()
+  public static String hwb()
   {
-    if (MXE == null) {
+    if (SKM == null) {
       return "";
     }
-    return MXE;
+    return SKM;
   }
   
-  public static boolean giC()
+  public static boolean hwc()
   {
     AppMethodBeat.i(3465);
-    if (MXE == null)
+    if (SKM == null)
     {
       AppMethodBeat.o(3465);
       return false;
     }
-    boolean bool = MXF.contains(MXE);
+    boolean bool = SKN.contains(SKM);
     AppMethodBeat.o(3465);
     return bool;
   }
@@ -80,7 +80,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tinkerboots.sdk.b.d
  * JD-Core Version:    0.7.0.1
  */

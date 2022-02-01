@@ -3,57 +3,62 @@ package com.tencent.mm.plugin.finder.preload.tabPreload;
 import android.arch.lifecycle.Observer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o;
-import com.tencent.mm.g.a.ke;
+import com.tencent.mm.g.a.kt;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.g.a;
+import com.tencent.mm.plugin.finder.extension.reddot.h.a;
+import com.tencent.mm.plugin.finder.extension.reddot.k;
 import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM;
-import com.tencent.mm.protocal.protobuf.asg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.bbi;
+import com.tencent.mm.protocal.protobuf.bcy;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.component.UIComponentPlugin;
-import d.a.j;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "Landroid/arch/lifecycle/Observer;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "Lcom/tencent/mm/app/IAppForegroundListener;", "()V", "homeTabStateVM", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "getHomeTabStateVM", "()Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "homeTabStateVM$delegate", "Lkotlin/Lazy;", "lastTargetEnterTabType", "", "mainUiIndexChangeListener", "com/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore$mainUiIndexChangeListener$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore$mainUiIndexChangeListener$1;", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "getServerConfig", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "supportTabPreload", "", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "getAlivePreloadWorker", "getInnerTime", "", "tabType", "isRedDot", "", "getOuterTime", "getServer", "getTargetEnterTabType", "isAutoRefresh", "isEnable", "onAppBackground", "", "activity", "", "onAppForeground", "onChanged", "result", "onEnterFinder", "onExitFinder", "onRedDotRevoke", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "performConfigChange", "setup", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "Landroid/arch/lifecycle/Observer;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "Lcom/tencent/mm/app/IAppForegroundListener;", "()V", "homeTabStateVM", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "getHomeTabStateVM", "()Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "homeTabStateVM$delegate", "Lkotlin/Lazy;", "lastTargetEnterTabType", "", "mainUiIndexChangeListener", "com/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore$mainUiIndexChangeListener$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore$mainUiIndexChangeListener$1;", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "getServerConfig", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "supportTabPreload", "", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "clearPreloadCache", "", "T", "clazz", "Ljava/lang/Class;", "enterFinderLoad", "intent", "Landroid/content/Intent;", "getAlivePreloadWorker", "getInnerTime", "", "tabType", "isRedDot", "", "getOuterTime", "getServer", "getTargetEnterTabType", "isAutoRefresh", "isEnable", "source", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "onAppBackground", "activity", "", "onAppForeground", "onChanged", "result", "onEnterFinder", "onExitFinder", "onRedDotRevoke", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "performConfigChange", "setup", "Companion", "plugin-finder_release"})
 public final class FinderStreamTabPreloadCore
   extends UIComponentPlugin<PluginFinder>
-  implements Observer<g.a>, o
+  implements Observer<h.a>, o
 {
-  public static final FinderStreamTabPreloadCore.a suE;
-  public final List<f> suA;
-  private final d.f suB;
-  public final c suC;
-  private int suD;
+  public static final a uUR;
+  public final List<f> uUN;
+  private final kotlin.f uUO;
+  public final c uUP;
+  private int uUQ;
   
   static
   {
-    AppMethodBeat.i(203559);
-    suE = new FinderStreamTabPreloadCore.a((byte)0);
-    AppMethodBeat.o(203559);
+    AppMethodBeat.i(249571);
+    uUR = new a((byte)0);
+    AppMethodBeat.o(249571);
   }
   
   public FinderStreamTabPreloadCore()
   {
-    AppMethodBeat.i(203558);
-    this.suA = j.listOf(new f[] { (f)new d(this), (f)new b(this), (f)new c(this), (f)new e(this) });
-    this.suB = d.g.O((d.g.a.a)b.suF);
-    this.suC = new c(this);
-    this.suD = -1;
-    AppMethodBeat.o(203558);
+    AppMethodBeat.i(249570);
+    this.uUN = j.listOf(new f[] { (f)new d(this), (f)new b(this), (f)new c(this), (f)new e(this) });
+    this.uUO = kotlin.g.ah((kotlin.g.a.a)b.uUS);
+    this.uUP = new c(this);
+    this.uUQ = -1;
+    AppMethodBeat.o(249570);
   }
   
-  public static long EY(int paramInt)
+  public static long JO(int paramInt)
   {
-    AppMethodBeat.i(203557);
+    AppMethodBeat.i(249569);
     long l;
     switch (paramInt)
     {
@@ -62,63 +67,98 @@ public final class FinderStreamTabPreloadCore
     }
     for (;;)
     {
-      ae.i("Finder.StreamTabPreloadCore", "[getInnerTime] tabType=" + paramInt + " withRedDot=false time=" + l + 's');
+      Log.i("Finder.StreamTabPreloadCore", "[getInnerTime] tabType=" + paramInt + " withRedDot=false time=" + l + 's');
       if (l > 0L) {
         break;
       }
-      AppMethodBeat.o(203557);
+      AppMethodBeat.o(249569);
       return 9223372036854775807L;
-      com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cKw().value()).intValue() >= 0)
+      com.tencent.mm.plugin.finder.storage.c localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+      if (((Number)com.tencent.mm.plugin.finder.storage.c.duq().value()).intValue() >= 0)
       {
-        localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-        l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKw().value()).intValue();
+        localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+        l = ((Number)com.tencent.mm.plugin.finder.storage.c.duq().value()).intValue();
       }
       else
       {
-        l = cER().GJb * 1000L;
+        l = dlI().LMr * 1000L;
         continue;
-        localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-        if (((Number)com.tencent.mm.plugin.finder.storage.b.cKx().value()).intValue() >= 0)
+        localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+        if (((Number)com.tencent.mm.plugin.finder.storage.c.dur().value()).intValue() >= 0)
         {
-          localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-          l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKx().value()).intValue();
+          localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+          l = ((Number)com.tencent.mm.plugin.finder.storage.c.dur().value()).intValue();
         }
         else
         {
-          l = cER().GJc * 1000L;
+          l = dlI().LMs * 1000L;
           continue;
-          localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-          if (((Number)com.tencent.mm.plugin.finder.storage.b.cKy().value()).intValue() >= 0)
+          localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+          if (((Number)com.tencent.mm.plugin.finder.storage.c.dus().value()).intValue() >= 0)
           {
-            localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-            l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKy().value()).intValue();
+            localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+            l = ((Number)com.tencent.mm.plugin.finder.storage.c.dus().value()).intValue();
           }
           else
           {
-            l = cER().GJd * 1000L;
+            l = dlI().LMt * 1000L;
             continue;
-            localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-            if (((Number)com.tencent.mm.plugin.finder.storage.b.cKz().value()).intValue() >= 0)
+            localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+            if (((Number)com.tencent.mm.plugin.finder.storage.c.dut().value()).intValue() >= 0)
             {
-              localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-              l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKz().value()).intValue();
+              localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+              l = ((Number)com.tencent.mm.plugin.finder.storage.c.dut().value()).intValue();
             }
             else
             {
-              l = cER().GJe * 1000L;
+              l = dlI().LMu * 1000L;
             }
           }
         }
       }
     }
-    AppMethodBeat.o(203557);
+    AppMethodBeat.o(249569);
     return l;
   }
   
-  public static long ag(int paramInt, boolean paramBoolean)
+  public static boolean a(f.c paramc)
   {
-    AppMethodBeat.i(203556);
+    AppMethodBeat.i(249566);
+    p.h(paramc, "source");
+    if (!((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).showFinderEntry())
+    {
+      Log.i("Finder.StreamTabPreloadCore", "finder entry close then return");
+      AppMethodBeat.o(249566);
+      return false;
+    }
+    if (paramc == f.c.uVt)
+    {
+      paramc = com.tencent.mm.plugin.finder.storage.c.vCb;
+      boolean bool = com.tencent.mm.plugin.finder.storage.c.dwY();
+      AppMethodBeat.o(249566);
+      return bool;
+    }
+    if ((z.aUd() & 0x0) != 0L) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.i("Finder.StreamTabPreloadCore", "finder find more ui entry close then return");
+      AppMethodBeat.o(249566);
+      return false;
+    }
+    paramc = com.tencent.mm.plugin.finder.storage.c.vCb;
+    if (!com.tencent.mm.plugin.finder.storage.c.dsl())
+    {
+      Log.i("Finder.StreamTabPreloadCore", "isEnablePreloadStreamRefresh false then return");
+      AppMethodBeat.o(249566);
+      return false;
+    }
+    AppMethodBeat.o(249566);
+    return true;
+  }
+  
+  public static long al(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(249568);
     long l;
     switch (paramInt)
     {
@@ -127,112 +167,112 @@ public final class FinderStreamTabPreloadCore
     }
     for (;;)
     {
-      ae.i("Finder.StreamTabPreloadCore", "[getOuterTime] tabType=" + paramInt + " withRedDot=" + paramBoolean + " time=" + l + "s ");
+      Log.i("Finder.StreamTabPreloadCore", "[getOuterTime] tabType=" + paramInt + " withRedDot=" + paramBoolean + " time=" + l + "s ");
       if (l > 0L) {
         break;
       }
-      AppMethodBeat.o(203556);
+      AppMethodBeat.o(249568);
       return 9223372036854775807L;
-      com.tencent.mm.plugin.finder.storage.b localb;
+      com.tencent.mm.plugin.finder.storage.c localc;
       if (!paramBoolean)
       {
-        localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-        if (((Number)com.tencent.mm.plugin.finder.storage.b.cKo().value()).intValue() >= 0)
+        localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+        if (((Number)com.tencent.mm.plugin.finder.storage.c.dui().value()).intValue() >= 0)
         {
-          localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-          l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKo().value()).intValue();
+          localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+          l = ((Number)com.tencent.mm.plugin.finder.storage.c.dui().value()).intValue();
         }
         else
         {
-          l = cER().GIT * 1000L;
+          l = dlI().LMj * 1000L;
         }
       }
       else
       {
-        localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-        if (((Number)com.tencent.mm.plugin.finder.storage.b.cKk().value()).intValue() >= 0)
+        localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+        if (((Number)com.tencent.mm.plugin.finder.storage.c.due().value()).intValue() >= 0)
         {
-          localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-          l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKk().value()).intValue();
+          localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+          l = ((Number)com.tencent.mm.plugin.finder.storage.c.due().value()).intValue();
         }
         else
         {
-          l = cER().GIP * 1000L;
+          l = dlI().LMf * 1000L;
           continue;
           if (!paramBoolean)
           {
-            localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-            if (((Number)com.tencent.mm.plugin.finder.storage.b.cKp().value()).intValue() >= 0)
+            localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+            if (((Number)com.tencent.mm.plugin.finder.storage.c.duj().value()).intValue() >= 0)
             {
-              localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-              l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKp().value()).intValue();
+              localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+              l = ((Number)com.tencent.mm.plugin.finder.storage.c.duj().value()).intValue();
             }
             else
             {
-              l = cER().GIU * 1000L;
+              l = dlI().LMk * 1000L;
             }
           }
           else
           {
-            localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-            if (((Number)com.tencent.mm.plugin.finder.storage.b.cKl().value()).intValue() >= 0)
+            localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+            if (((Number)com.tencent.mm.plugin.finder.storage.c.duf().value()).intValue() >= 0)
             {
-              localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-              l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKl().value()).intValue();
+              localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+              l = ((Number)com.tencent.mm.plugin.finder.storage.c.duf().value()).intValue();
             }
             else
             {
-              l = cER().GIQ * 1000L;
+              l = dlI().LMg * 1000L;
               continue;
               if (!paramBoolean)
               {
-                localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                if (((Number)com.tencent.mm.plugin.finder.storage.b.cKq().value()).intValue() >= 0)
+                localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                if (((Number)com.tencent.mm.plugin.finder.storage.c.duk().value()).intValue() >= 0)
                 {
-                  localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                  l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKq().value()).intValue();
+                  localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                  l = ((Number)com.tencent.mm.plugin.finder.storage.c.duk().value()).intValue();
                 }
                 else
                 {
-                  l = cER().GIV * 1000L;
+                  l = dlI().LMl * 1000L;
                 }
               }
               else
               {
-                localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                if (((Number)com.tencent.mm.plugin.finder.storage.b.cKm().value()).intValue() >= 0)
+                localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                if (((Number)com.tencent.mm.plugin.finder.storage.c.dug().value()).intValue() >= 0)
                 {
-                  localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                  l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKm().value()).intValue();
+                  localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                  l = ((Number)com.tencent.mm.plugin.finder.storage.c.dug().value()).intValue();
                 }
                 else
                 {
-                  l = cER().GIR * 1000L;
+                  l = dlI().LMh * 1000L;
                   continue;
                   if (!paramBoolean)
                   {
-                    localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                    if (((Number)com.tencent.mm.plugin.finder.storage.b.cKr().value()).intValue() >= 0)
+                    localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                    if (((Number)com.tencent.mm.plugin.finder.storage.c.dul().value()).intValue() >= 0)
                     {
-                      localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                      l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKr().value()).intValue();
+                      localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                      l = ((Number)com.tencent.mm.plugin.finder.storage.c.dul().value()).intValue();
                     }
                     else
                     {
-                      l = cER().GIW * 1000L;
+                      l = dlI().LMm * 1000L;
                     }
                   }
                   else
                   {
-                    localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                    if (((Number)com.tencent.mm.plugin.finder.storage.b.cKn().value()).intValue() >= 0)
+                    localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                    if (((Number)com.tencent.mm.plugin.finder.storage.c.duh().value()).intValue() >= 0)
                     {
-                      localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-                      l = ((Number)com.tencent.mm.plugin.finder.storage.b.cKn().value()).intValue();
+                      localc = com.tencent.mm.plugin.finder.storage.c.vCb;
+                      l = ((Number)com.tencent.mm.plugin.finder.storage.c.duh().value()).intValue();
                     }
                     else
                     {
-                      l = cER().GIS * 1000L;
+                      l = dlI().LMi * 1000L;
                     }
                   }
                 }
@@ -242,75 +282,48 @@ public final class FinderStreamTabPreloadCore
         }
       }
     }
-    AppMethodBeat.o(203556);
+    AppMethodBeat.o(249568);
     return l;
   }
   
-  public static asg cER()
+  public static bcy dlI()
   {
-    AppMethodBeat.i(203555);
-    asg localasg = new asg();
+    AppMethodBeat.i(249567);
+    bcy localbcy = new bcy();
     try
     {
-      Object localObject = com.tencent.mm.kernel.g.ajR();
+      Object localObject = com.tencent.mm.kernel.g.aAh();
       p.g(localObject, "MMKernel.storage()");
-      localObject = ((com.tencent.mm.kernel.e)localObject).ajA().get(am.a.Jcc, "");
+      localObject = ((com.tencent.mm.kernel.e)localObject).azQ().get(ar.a.Old, "");
       if (localObject == null)
       {
-        localObject = new d.v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(203555);
+        localObject = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(249567);
         throw ((Throwable)localObject);
       }
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("Finder.StreamTabPreloadCore", (Throwable)localException, "", new Object[0]);
+      Log.printErrStackTrace("Finder.StreamTabPreloadCore", (Throwable)localException, "", new Object[0]);
     }
     for (;;)
     {
-      AppMethodBeat.o(203555);
-      return localasg;
-      localasg.parseFrom(bu.aSx((String)localException));
+      AppMethodBeat.o(249567);
+      return localbcy;
+      localbcy.parseFrom(Util.decodeHexString((String)localException));
     }
   }
   
-  public static boolean isEnable()
+  public final f JL(int paramInt)
   {
-    AppMethodBeat.i(203554);
-    if (!((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).showFinderEntry())
-    {
-      ae.i("Finder.StreamTabPreloadCore", "finder entry close then return");
-      AppMethodBeat.o(203554);
-      return false;
-    }
-    if ((com.tencent.mm.model.v.aAH() & 0x0) != 0L) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      ae.i("Finder.StreamTabPreloadCore", "finder find more ui entry close then return");
-      AppMethodBeat.o(203554);
-      return false;
-    }
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (!com.tencent.mm.plugin.finder.storage.b.cIF())
-    {
-      ae.i("Finder.StreamTabPreloadCore", "isEnablePreloadStreamRefresh false then return");
-      AppMethodBeat.o(203554);
-      return false;
-    }
-    AppMethodBeat.o(203554);
-    return true;
-  }
-  
-  public final f EV(int paramInt)
-  {
-    AppMethodBeat.i(203551);
-    Iterator localIterator = ((Iterable)this.suA).iterator();
+    AppMethodBeat.i(249562);
+    Iterator localIterator = ((Iterable)this.uUN).iterator();
     Object localObject;
     int i;
     if (localIterator.hasNext())
     {
       localObject = localIterator.next();
-      if (((f)localObject).dvm == paramInt)
+      if (((f)localObject).dLS == paramInt)
       {
         i = 1;
         label51:
@@ -322,7 +335,7 @@ public final class FinderStreamTabPreloadCore
     for (;;)
     {
       localObject = (f)localObject;
-      AppMethodBeat.o(203551);
+      AppMethodBeat.o(249562);
       return localObject;
       i = 0;
       break label51;
@@ -332,101 +345,148 @@ public final class FinderStreamTabPreloadCore
     }
   }
   
-  public final void EW(int paramInt)
+  public final void JM(int paramInt)
   {
-    AppMethodBeat.i(203552);
-    asg localasg = cER();
-    Iterator localIterator = ((Iterable)this.suA).iterator();
+    AppMethodBeat.i(249563);
+    bcy localbcy = dlI();
+    Iterator localIterator = ((Iterable)this.uUN).iterator();
     while (localIterator.hasNext()) {
-      ((f)localIterator.next()).a(paramInt, localasg);
+      ((f)localIterator.next()).a(paramInt, localbcy);
     }
-    AppMethodBeat.o(203552);
+    AppMethodBeat.o(249563);
   }
   
-  public final boolean EX(int paramInt)
+  public final boolean JN(int paramInt)
   {
-    AppMethodBeat.i(203553);
-    boolean bool = cEQ().EX(paramInt);
-    AppMethodBeat.o(203553);
+    AppMethodBeat.i(249564);
+    boolean bool = dlH().JN(paramInt);
+    AppMethodBeat.o(249564);
     return bool;
   }
   
-  final FinderHomeTabStateVM cEQ()
+  public final <T extends f> void aM(Class<T> paramClass)
   {
-    AppMethodBeat.i(203547);
-    FinderHomeTabStateVM localFinderHomeTabStateVM = (FinderHomeTabStateVM)this.suB.getValue();
-    AppMethodBeat.o(203547);
+    AppMethodBeat.i(249557);
+    p.h(paramClass, "clazz");
+    Iterator localIterator = ((Iterable)this.uUN).iterator();
+    while (localIterator.hasNext())
+    {
+      f localf = (f)localIterator.next();
+      if (p.j(localf.getClass(), paramClass)) {
+        localf.nM(true);
+      }
+    }
+    AppMethodBeat.o(249557);
+  }
+  
+  public final void c(k paramk)
+  {
+    AppMethodBeat.i(249565);
+    p.h(paramk, "ctrInfo");
+    int i;
+    switch (paramk.field_ctrInfo.type)
+    {
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      paramk = JL(i);
+      if (paramk != null) {
+        paramk.nM(true);
+      }
+      Log.i("Finder.StreamTabPreloadCore", "[onRedDotRevoke] tabType=".concat(String.valueOf(i)));
+      AppMethodBeat.o(249565);
+      return;
+      i = 3;
+      continue;
+      i = 1;
+      continue;
+      i = 4;
+      continue;
+      i = 2;
+    }
+  }
+  
+  public final FinderHomeTabStateVM dlH()
+  {
+    AppMethodBeat.i(249558);
+    FinderHomeTabStateVM localFinderHomeTabStateVM = (FinderHomeTabStateVM)this.uUO.getValue();
+    AppMethodBeat.o(249558);
     return localFinderHomeTabStateVM;
   }
   
   public final void onAppBackground(String paramString)
   {
-    AppMethodBeat.i(203550);
-    paramString = ((Iterable)this.suA).iterator();
+    AppMethodBeat.i(249561);
+    paramString = ((Iterable)this.uUN).iterator();
     while (paramString.hasNext())
     {
       Object localObject = (f)paramString.next();
-      if ((((f)localObject).suP.compareAndSet(false, true)) && (!((f)localObject).suN))
+      if ((((f)localObject).uVc.compareAndSet(false, true)) && (!((f)localObject).uVa))
       {
-        ae.i(((f)localObject).TAG, "[performBackground]");
-        a locala = ((f)localObject).suO;
-        localObject = ((f)localObject).suS;
+        Log.i(((f)localObject).TAG, "[performBackground]");
+        a locala = ((f)localObject).uVb;
+        localObject = ((f)localObject).uVf;
         p.h(localObject, "runnable");
-        locala.suz.set(localObject);
-        locala.stt.removeCallbacks((Runnable)localObject);
+        locala.uUM.set(localObject);
+        locala.uOI.removeCallbacks((Runnable)localObject);
         long l = System.currentTimeMillis() - ((a.a)localObject).time;
-        ((a.a)localObject).gW -= l;
-        ae.i(locala.TAG, "[pause] has cost=" + l + "ms delay=" + ((a.a)localObject).gW + "ms hash=" + ((a.a)localObject).hashCode());
+        ((a.a)localObject).gY -= l;
+        Log.i(locala.TAG, "[pause] has cost=" + l + "ms delay=" + ((a.a)localObject).gY + "ms hash=" + ((a.a)localObject).hashCode());
       }
     }
-    AppMethodBeat.o(203550);
+    AppMethodBeat.o(249561);
   }
   
   public final void onAppForeground(String paramString)
   {
-    AppMethodBeat.i(203549);
-    paramString = ((Iterable)this.suA).iterator();
+    AppMethodBeat.i(249560);
+    paramString = ((Iterable)this.uUN).iterator();
     label214:
     while (paramString.hasNext())
     {
       f localf = (f)paramString.next();
-      if (localf.suP.compareAndSet(true, false))
+      if (localf.uVc.compareAndSet(true, false))
       {
-        ae.i(localf.TAG, "[performForeground]");
-        a locala = localf.suO;
-        a.a locala1 = (a.a)locala.suz.getAndSet(null);
+        Log.i(localf.TAG, "[performForeground]");
+        a locala = localf.uVb;
+        a.a locala1 = (a.a)locala.uUM.getAndSet(null);
         if (locala1 != null)
         {
-          locala.stt.removeCallbacks((Runnable)locala1);
-          locala.a(locala1, locala1.gW, "resume");
-          ae.i(locala.TAG, "[resume] delay=" + locala1.gW + "ms hash=" + locala1.hashCode());
+          locala.uOI.removeCallbacks((Runnable)locala1);
+          locala.a(locala1, locala1.gY, "resume");
+          Log.i(locala.TAG, "[resume] delay=" + locala1.gY + "ms hash=" + locala1.hashCode());
         }
         for (int i = 1;; i = 0)
         {
-          if ((i != 0) || (!localf.suQ.get()) || (localf.suN)) {
+          if ((i != 0) || (!localf.uVd.get()) || (localf.uVa)) {
             break label214;
           }
-          localf.suO.a(localf.suS, localf.cET(), "performForeground");
+          localf.uVb.a(localf.uVf, localf.dlK(), "performForeground");
           break;
-          ae.i(locala.TAG, "[resume] failure. runnable is null");
+          Log.i(locala.TAG, "[resume] failure. runnable is null");
         }
       }
     }
-    AppMethodBeat.o(203549);
+    AppMethodBeat.o(249560);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<FinderHomeTabStateVM>
+    implements kotlin.g.a.a<FinderHomeTabStateVM>
   {
-    public static final b suF;
+    public static final b uUS;
     
     static
     {
-      AppMethodBeat.i(203545);
-      suF = new b();
-      AppMethodBeat.o(203545);
+      AppMethodBeat.i(249555);
+      uUS = new b();
+      AppMethodBeat.o(249555);
     }
     
     b()
@@ -435,14 +495,14 @@ public final class FinderStreamTabPreloadCore
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore$mainUiIndexChangeListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/HomeUITabChangeEvent;", "callback", "", "event", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore$mainUiIndexChangeListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/HomeUITabChangeEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class c
-    extends com.tencent.mm.sdk.b.c<ke>
+    extends IListener<kt>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.tabPreload.FinderStreamTabPreloadCore
  * JD-Core Version:    0.7.0.1
  */

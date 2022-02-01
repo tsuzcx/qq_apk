@@ -30,16 +30,16 @@ public class VideoComposition
   
   public VideoComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(214711);
+    AppMethodBeat.i(218044);
     this.asset = paramAsset;
     this.instructions = new ArrayList();
     fillSourceProperty();
-    AppMethodBeat.o(214711);
+    AppMethodBeat.o(218044);
   }
   
   private void fillSourceProperty()
   {
-    AppMethodBeat.i(214712);
+    AppMethodBeat.i(218045);
     Object localObject2 = this.asset.tracksWithMediaType(1);
     this.frameDuration = null;
     this.renderSize = null;
@@ -110,16 +110,16 @@ public class VideoComposition
       }
     }
     this.renderScale = 1.0F;
-    AppMethodBeat.o(214712);
+    AppMethodBeat.o(218045);
   }
   
   public static VideoCompositionInstruction findInstruction(VideoComposition paramVideoComposition, CMTime paramCMTime)
   {
     Object localObject = null;
-    AppMethodBeat.i(214714);
+    AppMethodBeat.i(218047);
     if (paramVideoComposition.getInstructions() == null)
     {
-      AppMethodBeat.o(214714);
+      AppMethodBeat.o(218047);
       return null;
     }
     Iterator localIterator = paramVideoComposition.getInstructions().iterator();
@@ -149,24 +149,24 @@ public class VideoComposition
           paramVideoComposition = (VideoComposition)localObject;
           if (localCMTimeRange.getEndUs() > paramCMTime.getTimeUs())
           {
-            AppMethodBeat.o(214714);
+            AppMethodBeat.o(218047);
             return localVideoCompositionInstruction;
           }
         }
       }
     }
-    AppMethodBeat.o(214714);
+    AppMethodBeat.o(218047);
     return paramVideoComposition;
   }
   
   public VideoCompositing getCustomVideoCompositor()
   {
-    AppMethodBeat.i(214713);
+    AppMethodBeat.i(218046);
     if (this.customVideoCompositorClass != null) {
       try
       {
         VideoCompositing localVideoCompositing = (VideoCompositing)this.customVideoCompositorClass.newInstance();
-        AppMethodBeat.o(214713);
+        AppMethodBeat.o(218046);
         return localVideoCompositing;
       }
       catch (InstantiationException localInstantiationException)
@@ -185,7 +185,7 @@ public class VideoComposition
       }
     }
     VideoCompositor localVideoCompositor2 = new VideoCompositor();
-    AppMethodBeat.o(214713);
+    AppMethodBeat.o(218046);
     return localVideoCompositor2;
   }
   
@@ -226,9 +226,9 @@ public class VideoComposition
   
   public String toString()
   {
-    AppMethodBeat.i(214715);
+    AppMethodBeat.i(218048);
     String str = "MutableVideoComposition{, frameDuration=" + this.frameDuration + ", renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", instructions=" + this.instructions + '}';
-    AppMethodBeat.o(214715);
+    AppMethodBeat.o(218048);
     return str;
   }
   
@@ -236,11 +236,11 @@ public class VideoComposition
   {
     static
     {
-      AppMethodBeat.i(214710);
+      AppMethodBeat.i(218043);
       aspectFit = new RenderLayoutMode("aspectFit", 0);
       aspectFill = new RenderLayoutMode("aspectFill", 1);
       $VALUES = new RenderLayoutMode[] { aspectFit, aspectFill };
-      AppMethodBeat.o(214710);
+      AppMethodBeat.o(218043);
     }
     
     private RenderLayoutMode() {}
@@ -248,7 +248,7 @@ public class VideoComposition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.core.composition.VideoComposition
  * JD-Core Version:    0.7.0.1
  */

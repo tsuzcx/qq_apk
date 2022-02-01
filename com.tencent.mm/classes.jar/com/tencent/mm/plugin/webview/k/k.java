@@ -1,184 +1,199 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.r;
-import com.tencent.mm.protocal.protobuf.brr;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.base.h;
-import d.g.b.p;
-import d.g.b.q;
-import d.g.b.y.a;
-import d.l;
-import d.n.n;
-import d.z;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.concurrent.ConcurrentLinkedDeque;
+import com.tencent.mm.compatible.loader.c;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.a;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptTagJsApiHandler;", "", "jsapi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;)V", "debugInfo", "", "getDebugInfo", "()Ljava/lang/String;", "debugListener", "Landroid/view/View$OnLongClickListener;", "getDebugListener", "()Landroid/view/View$OnLongClickListener;", "debugListener$delegate", "Lkotlin/Lazy;", "firstTimeConfig", "", "lastAppId", "webComponent", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "webComptSettings", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "clear", "", "config", "appId", "url", "webCompts", "Ljava/util/LinkedList;", "dispatchEvent", "webCompt", "event", "message", "getInterceptResponse", "Lcom/tencent/xweb/WebResourceResponse;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "sendMessage", "webview-sdk_release"})
 public final class k
 {
-  private final com.tencent.mm.plugin.webview.c.f DRx;
-  final c EOT;
-  private boolean EPb;
-  String EPc;
-  final HashMap<String, brr> EPd;
-  private final d.f EPe;
+  private static Pattern JBU = null;
+  private static String JBV = null;
+  private static Boolean JBW = null;
   
-  public k(com.tencent.mm.plugin.webview.c.f paramf)
+  public static boolean bbp(String paramString)
   {
-    AppMethodBeat.i(214261);
-    this.DRx = paramf;
-    this.EOT = new c(this.DRx);
-    this.EPb = true;
-    this.EPc = "";
-    this.EPd = new HashMap();
-    this.EPe = d.g.O((d.g.a.a)new c(this));
-    AppMethodBeat.o(214261);
-  }
-  
-  public final void aY(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(214259);
-    p.h(paramString1, "webCompt");
-    p.h(paramString2, "event");
-    this.EOT.aY(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(214259);
-  }
-  
-  public final void c(final String paramString1, final String paramString2, final LinkedList<brr> paramLinkedList)
-  {
-    AppMethodBeat.i(214260);
-    p.h(paramString1, "appId");
-    p.h(paramString2, "url");
-    p.h(paramLinkedList, "webCompts");
-    if (paramLinkedList.isEmpty())
+    AppMethodBeat.i(224519);
+    if ((WebView.isX5()) && (bbq(paramString)) && (!"true".equals(a.nS("disable_apk_hook", "tools"))))
     {
-      paramString1 = c.ENl;
-      ae.w(c.access$getTAG$cp(), "webCompt is null");
-      AppMethodBeat.o(214260);
+      AppMethodBeat.o(224519);
+      return true;
+    }
+    AppMethodBeat.o(224519);
+    return false;
+  }
+  
+  private static boolean bbq(String paramString)
+  {
+    AppMethodBeat.i(82385);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(82385);
+      return false;
+    }
+    try
+    {
+      paramString = Uri.parse(paramString).getPathSegments();
+      if (paramString != null)
+      {
+        int i = paramString.size();
+        if (i > 0) {}
+      }
+      else
+      {
+        AppMethodBeat.o(82385);
+        return false;
+      }
+      paramString = (String)paramString.get(paramString.size() - 1);
+      if (paramString != null)
+      {
+        boolean bool = paramString.toLowerCase().trim().endsWith(".apk");
+        if (bool)
+        {
+          AppMethodBeat.o(82385);
+          return true;
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(82385);
+    }
+    return false;
+  }
+  
+  public static boolean bbr(String paramString)
+  {
+    AppMethodBeat.i(82386);
+    boolean bool;
+    if ((JBW != null) && (Util.isEqual(paramString, JBV)))
+    {
+      bool = JBW.booleanValue();
+      AppMethodBeat.o(82386);
+      return bool;
+    }
+    JBV = paramString;
+    if (Pattern.compile("^(http|https)://" + WeChatHosts.domainString(2131761726) + "/(s|mp/author|mp/appmsg/show)", 2).matcher(paramString).find()) {
+      bool = true;
+    }
+    for (;;)
+    {
+      paramString = Boolean.valueOf(bool);
+      JBW = paramString;
+      bool = paramString.booleanValue();
+      AppMethodBeat.o(82386);
+      return bool;
+      if (Pattern.compile("^(http|https)://(sh.|hk.|sz.)?" + WeChatHosts.domainString(2131761728) + "/connect/(confirm|oauth2/(authorize|explorer_authorize))", 2).matcher(paramString).find())
+      {
+        bool = true;
+      }
+      else
+      {
+        if (JBU == null)
+        {
+          String str = ((b)g.af(b.class)).a(b.a.rSO, "^(http|https)://" + WeChatHosts.domainString(2131761726) + "/mp/(readtemplate\\?t=scanlogin/index_tmpl|scanlogin\\?action=index|relatedarticle\\?action=page|aboutbiz|infringement|qa)");
+          Log.i("MicroMsg.WebViewUIUtil", "mpHosts=:%s", new Object[] { str });
+          JBU = Pattern.compile(str);
+        }
+        if ((JBU != null) && (JBU.matcher(paramString).find())) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+      }
+    }
+  }
+  
+  public static void h(MMWebView paramMMWebView)
+  {
+    AppMethodBeat.i(224518);
+    if (paramMMWebView == null)
+    {
+      AppMethodBeat.o(224518);
       return;
     }
-    final r localr = new r();
-    if (this.EPd.isEmpty())
+    if (paramMMWebView.getIsX5Kernel())
     {
-      if (((Collection)paramLinkedList).isEmpty()) {
-        break label193;
-      }
-      i = 1;
-      if (i != 0) {
-        this.EOT.EMZ.a(b.EMu);
-      }
-    }
-    final y.a locala = new y.a();
-    locala.NiT = false;
-    if (this.EPb)
-    {
-      locala.NiT = true;
-      label128:
-      this.EPc = paramString1;
-      this.EPb = false;
-      if (((Collection)paramLinkedList).isEmpty()) {
-        break label255;
-      }
-    }
-    label193:
-    label255:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        c.b localb = c.ENl;
-        com.tencent.mm.ac.c.b(c.access$getTAG$cp(), (d.g.a.a)new a(this, paramLinkedList, localr, paramString1, paramString2, locala));
-      }
-      AppMethodBeat.o(214260);
+      AppMethodBeat.o(224518);
       return;
-      i = 0;
-      break;
-      if ((p.i(this.EPc, paramString1) ^ true))
+    }
+    if (d.oD(19))
+    {
+      AppMethodBeat.o(224518);
+      return;
+    }
+    try
+    {
+      paramMMWebView = new c(paramMMWebView, "mSysWebView", null).get();
+      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { paramMMWebView });
+      paramMMWebView = new c(paramMMWebView, "mProvider", null).get();
+      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { paramMMWebView });
+      paramMMWebView = new c(paramMMWebView, "mWebViewCore", null).get();
+      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { paramMMWebView });
+      paramMMWebView = new c(paramMMWebView, "sWebCoreHandler", null).get();
+      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { paramMMWebView });
+      paramMMWebView = new c(paramMMWebView, "mLooper", null).get();
+      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { paramMMWebView });
+      paramMMWebView = new c(paramMMWebView, "mThread", null).get();
+      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { paramMMWebView });
+      if ((paramMMWebView instanceof Thread))
       {
-        clear();
-        this.EOT.eZF();
-        this.EOT.EMZ.EOZ.clear();
-        break label128;
+        paramMMWebView = (Thread)paramMMWebView;
+        Log.i("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { paramMMWebView.getState() });
+        if (paramMMWebView.getState() == Thread.State.WAITING) {
+          paramMMWebView.interrupt();
+        }
       }
-      this.EOT.EMZ.a(b.EMv);
-      break label128;
+      AppMethodBeat.o(224518);
+      return;
     }
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(82969);
-    this.EPc = "";
-    this.EPb = true;
-    this.EPd.clear();
-    this.EOT.clear();
-    AppMethodBeat.o(82969);
-  }
-  
-  @android.webkit.JavascriptInterface
-  @org.xwalk.core.JavascriptInterface
-  public final void sendMessage(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(82968);
-    p.h(paramString1, "webCompt");
-    p.h(paramString2, "message");
-    c localc = this.EOT;
-    p.h(paramString1, "webCompt");
-    p.h(paramString2, "message");
-    ae.v(c.TAG, "postToBack " + paramString1 + ' ' + paramString2);
-    paramString1 = localc.aLd(paramString1);
-    if (paramString1 != null) {
-      c.c(paramString1, "WeixinWebCompt.onMessage(" + paramString2 + ')');
-    }
-    localc.EMZ.a(b.EMO);
-    AppMethodBeat.o(82968);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements d.g.a.a<z>
-  {
-    a(k paramk, LinkedList paramLinkedList, r paramr, String paramString1, String paramString2, y.a parama)
+    catch (Exception paramMMWebView)
     {
-      super();
+      Log.e("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { paramMMWebView });
+      AppMethodBeat.o(224518);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "invoke"})
-  static final class b
-    extends q
-    implements d.g.a.b<brr, String>
+  public static String ie(Context paramContext)
   {
-    public static final b EPi;
-    
-    static
-    {
-      AppMethodBeat.i(82964);
-      EPi = new b();
-      AppMethodBeat.o(82964);
-    }
-    
-    b()
-    {
-      super();
-    }
+    AppMethodBeat.i(224516);
+    paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).getString("url", null);
+    AppMethodBeat.o(224516);
+    return paramContext;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View$OnLongClickListener;", "invoke"})
-  static final class c
-    extends q
-    implements d.g.a.a<View.OnLongClickListener>
+  public static void jdMethod_if(Context paramContext)
   {
-    c(k paramk)
-    {
-      super();
-    }
+    AppMethodBeat.i(224517);
+    paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).edit();
+    paramContext.remove("url");
+    paramContext.apply();
+    AppMethodBeat.o(224517);
+  }
+  
+  public static void j(String paramString, Context paramContext)
+  {
+    AppMethodBeat.i(82384);
+    paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).edit();
+    paramContext.putString("url", paramString);
+    paramContext.apply();
+    AppMethodBeat.o(82384);
   }
 }
 

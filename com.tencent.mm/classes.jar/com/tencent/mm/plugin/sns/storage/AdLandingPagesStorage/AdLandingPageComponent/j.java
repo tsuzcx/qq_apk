@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import java.util.List;
 
 public final class j
-  extends p
+  extends q
 {
-  public List<String> zPW;
+  public List<String> DXU;
   
   public j(List<String> paramList)
   {
-    this.zPW = paramList;
+    this.DXU = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.j
  * JD-Core Version:    0.7.0.1
  */

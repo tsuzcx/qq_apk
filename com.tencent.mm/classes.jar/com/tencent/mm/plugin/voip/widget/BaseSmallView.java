@@ -8,59 +8,59 @@ import android.util.AttributeSet;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.d;
 import com.tencent.mm.plugin.voip.ui.c;
-import com.tencent.mm.plugin.voip.video.CaptureView;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.plugin.voip.video.camera.prev.CaptureView;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.lang.ref.WeakReference;
 
 public abstract class BaseSmallView
   extends FrameLayout
 {
-  protected WeakReference<c> CAv;
-  public d CBE;
-  Runnable CKS = new Runnable()
+  protected int GUk = -1;
+  protected long GUl;
+  public d GgP;
+  protected WeakReference<c> Hen;
+  private Point HpF = new Point();
+  private Point HpG = new Point();
+  private Point HpH = new Point();
+  private Point HpI;
+  Runnable HpJ = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(115757);
-      ar.f(new Runnable()
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(184093);
-          BaseSmallView.this.eCR();
+          BaseSmallView.this.eoL();
           AppMethodBeat.o(184093);
         }
       });
       AppMethodBeat.o(115757);
     }
   };
-  protected int Cqn = -1;
-  protected long Cqo;
-  private PointF gNg = new PointF();
-  private Point gNh = new Point();
-  private Point gNi = new Point();
-  private Point gNj = new Point();
-  private Point gNk;
-  private WindowManager gNl;
-  protected aq gNm;
+  protected MMHandler czp;
+  private WindowManager mWindowManager;
+  private PointF okA = new PointF();
   @Deprecated
-  CaptureView pdJ;
+  CaptureView qsJ;
   public SurfaceTexture surfaceTexture;
   
   public BaseSmallView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.gNl = ((WindowManager)paramContext.getSystemService("window"));
-    this.gNm = new aq();
-    this.gNk = new Point(this.gNl.getDefaultDisplay().getWidth(), this.gNl.getDefaultDisplay().getHeight());
+    this.mWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    this.czp = new MMHandler();
+    this.HpI = new Point(this.mWindowManager.getDefaultDisplay().getWidth(), this.mWindowManager.getDefaultDisplay().getHeight());
   }
   
   @Deprecated
@@ -69,35 +69,35 @@ public abstract class BaseSmallView
   @Deprecated
   public void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
-  public void aFc(String paramString) {}
+  public void aGx(String paramString) {}
   
-  public void aFd(String paramString) {}
+  public void aGy(String paramString) {}
   
-  public void dtu()
+  public void enR()
   {
-    h.MqF.bbc("resumeIcon");
-    h.MqF.a(this.CKS, 2000L, "resumeIcon");
+    h.RTc.bqo("resumeIcon");
+    h.RTc.a(this.HpJ, 2000L, "resumeIcon");
   }
   
-  @Deprecated
-  public void eCC() {}
-  
-  public boolean eCQ()
+  public boolean eoK()
   {
-    h.MqF.bbc("resumeIcon");
+    h.RTc.bqo("resumeIcon");
     return true;
   }
   
-  public void eCR() {}
+  public void eoL() {}
   
-  public void eCS() {}
-  
-  public void eCr() {}
-  
-  public void eEX() {}
+  public void eoM() {}
   
   @Deprecated
   public void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
+  
+  public void fJm() {}
+  
+  @Deprecated
+  public void fJx() {}
+  
+  public void fMf() {}
   
   @Deprecated
   public OpenGlRender getBeautyData()
@@ -106,7 +106,13 @@ public abstract class BaseSmallView
   }
   
   @Deprecated
-  public void iv(int paramInt1, int paramInt2) {}
+  public OpenGlRender getSpatioTemporalFilterData()
+  {
+    return null;
+  }
+  
+  @Deprecated
+  public void jA(int paramInt1, int paramInt2) {}
   
   @Deprecated
   protected void onAnimationEnd() {}
@@ -122,18 +128,21 @@ public abstract class BaseSmallView
   
   public void setConnectSec(long paramLong)
   {
-    this.Cqo = paramLong;
+    this.GUl = paramLong;
   }
   
   @Deprecated
   public void setHWDecMode(int paramInt) {}
   
+  @Deprecated
+  public void setSpatiotemporalDenosing(int paramInt) {}
+  
   public void setStatus(int paramInt) {}
   
   public void setVoicePlayDevice(int paramInt)
   {
-    h.MqF.bbc("resumeIcon");
-    h.MqF.a(this.CKS, 2000L, "resumeIcon");
+    h.RTc.bqo("resumeIcon");
+    h.RTc.a(this.HpJ, 2000L, "resumeIcon");
   }
   
   @Deprecated
@@ -141,24 +150,24 @@ public abstract class BaseSmallView
   
   public void setVoipUIListener(c paramc)
   {
-    ae.i("MicroMsg.Voip.BaseSmallView", "hwViewSmall setVoipUIListener, before initHWView");
-    this.CAv = new WeakReference(paramc);
-  }
-  
-  public void tC(boolean paramBoolean)
-  {
-    h.MqF.bbc("resumeIcon");
-    h.MqF.a(this.CKS, 2000L, "resumeIcon");
+    Log.i("MicroMsg.Voip.BaseSmallView", "hwViewSmall setVoipUIListener, before initHWView");
+    this.Hen = new WeakReference(paramc);
   }
   
   public void uninit()
   {
-    this.gNl = null;
+    this.mWindowManager = null;
+  }
+  
+  public void xm(boolean paramBoolean)
+  {
+    h.RTc.bqo("resumeIcon");
+    h.RTc.a(this.HpJ, 2000L, "resumeIcon");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.BaseSmallView
  * JD-Core Version:    0.7.0.1
  */

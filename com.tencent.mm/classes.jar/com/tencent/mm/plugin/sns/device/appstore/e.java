@@ -5,31 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public final String dGD;
-  public final String zsJ;
-  public final String zuU;
-  public final String zuV;
-  public final boolean zuW;
-  public final long zuX;
+  public final String DFh;
+  public final String DFi;
+  public final boolean DFj;
+  public final long DFk;
+  public final String adExtInfo;
+  public final String uxInfo;
   
   private e(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(219301);
-    this.zuU = paramString1;
-    this.zuV = paramString2;
+    AppMethodBeat.i(202662);
+    this.DFh = paramString1;
+    this.DFi = paramString2;
     if (paramString3 != null)
     {
-      this.dGD = paramString3;
+      this.uxInfo = paramString3;
       if (paramString4 == null) {
         break label63;
       }
     }
     for (;;)
     {
-      this.zsJ = paramString4;
-      this.zuW = true;
-      this.zuX = SystemClock.elapsedRealtime();
-      AppMethodBeat.o(219301);
+      this.adExtInfo = paramString4;
+      this.DFj = true;
+      this.DFk = SystemClock.elapsedRealtime();
+      AppMethodBeat.o(202662);
       return;
       paramString3 = "";
       break;
@@ -38,25 +38,25 @@ public final class e
     }
   }
   
-  public static e y(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static e C(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(219300);
+    AppMethodBeat.i(202661);
     try
     {
       paramString1 = new e(paramString1, paramString2, paramString3, paramString4);
-      AppMethodBeat.o(219300);
+      AppMethodBeat.o(202661);
       return paramString1;
     }
     catch (Throwable paramString1)
     {
-      AppMethodBeat.o(219300);
+      AppMethodBeat.o(202661);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.device.appstore.e
  * JD-Core Version:    0.7.0.1
  */

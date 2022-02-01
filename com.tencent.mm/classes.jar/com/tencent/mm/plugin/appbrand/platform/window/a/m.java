@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.platform.window.a;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
-import com.tencent.luggage.h.i;
+import com.tencent.luggage.h.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m
@@ -16,17 +16,17 @@ final class m
     this.mActivity = paramActivity;
   }
   
-  public final int bxL()
+  public final int bTW()
   {
     AppMethodBeat.i(176757);
-    int i = i.cre.aG(this.mActivity);
+    int i = j.cDv.aP(this.mActivity);
     AppMethodBeat.o(176757);
     return i;
   }
   
   public final void c(Configuration paramConfiguration) {}
   
-  public final boolean cx()
+  public final boolean cz()
   {
     AppMethodBeat.i(176756);
     if (Build.VERSION.SDK_INT < 21)
@@ -34,14 +34,14 @@ final class m
       AppMethodBeat.o(176756);
       return false;
     }
-    boolean bool = i.cre.aH(this.mActivity);
+    boolean bool = j.cDv.aQ(this.mActivity);
     AppMethodBeat.o(176756);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.m
  * JD-Core Version:    0.7.0.1
  */

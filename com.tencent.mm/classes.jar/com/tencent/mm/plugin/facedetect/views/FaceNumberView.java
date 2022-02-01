@@ -10,20 +10,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Timer;
 
 public class FaceNumberView
   extends LinearLayout
 {
-  private int rwA;
-  private ViewGroup rwB;
-  public FaceNumberItemView[] rwC;
-  private int rwD;
-  private Animation rwE;
-  private FaceNumberView.a rwF;
-  private String rwz;
+  private int sWA;
+  private Animation sWB;
+  private FaceNumberView.a sWC;
+  private String sWw;
+  private int sWx;
+  private ViewGroup sWy;
+  public FaceNumberItemView[] sWz;
   
   public FaceNumberView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,14 +34,14 @@ public class FaceNumberView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104176);
-    this.rwz = null;
-    this.rwC = null;
-    this.rwD = 0;
-    this.rwE = null;
-    this.rwF = FaceNumberView.a.rwH;
-    this.rwB = ((ViewGroup)inflate(getContext(), 2131493915, null));
-    addView(this.rwB);
-    this.rwE = AnimationUtils.loadAnimation(getContext(), 2130772095);
+    this.sWw = null;
+    this.sWz = null;
+    this.sWA = 0;
+    this.sWB = null;
+    this.sWC = FaceNumberView.a.sWE;
+    this.sWy = ((ViewGroup)inflate(getContext(), 2131494083, null));
+    addView(this.sWy);
+    this.sWB = AnimationUtils.loadAnimation(getContext(), 2130772119);
     AppMethodBeat.o(104176);
   }
   
@@ -55,103 +55,103 @@ public class FaceNumberView
     }
     if (paramString.equals("0"))
     {
-      paramFaceNumberItemView.setImageResource(2131232141);
+      paramFaceNumberItemView.setImageResource(2131232252);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("1"))
     {
-      paramFaceNumberItemView.setImageResource(2131232142);
+      paramFaceNumberItemView.setImageResource(2131232253);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("2"))
     {
-      paramFaceNumberItemView.setImageResource(2131232143);
+      paramFaceNumberItemView.setImageResource(2131232254);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("3"))
     {
-      paramFaceNumberItemView.setImageResource(2131232144);
+      paramFaceNumberItemView.setImageResource(2131232255);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("4"))
     {
-      paramFaceNumberItemView.setImageResource(2131232145);
+      paramFaceNumberItemView.setImageResource(2131232256);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("5"))
     {
-      paramFaceNumberItemView.setImageResource(2131232146);
+      paramFaceNumberItemView.setImageResource(2131232257);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("6"))
     {
-      paramFaceNumberItemView.setImageResource(2131232147);
+      paramFaceNumberItemView.setImageResource(2131232258);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("7"))
     {
-      paramFaceNumberItemView.setImageResource(2131232148);
+      paramFaceNumberItemView.setImageResource(2131232259);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("8"))
     {
-      paramFaceNumberItemView.setImageResource(2131232149);
+      paramFaceNumberItemView.setImageResource(2131232260);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("9"))
     {
-      paramFaceNumberItemView.setImageResource(2131232150);
+      paramFaceNumberItemView.setImageResource(2131232261);
       AppMethodBeat.o(104178);
       return;
     }
-    paramFaceNumberItemView.setImageResource(2131232151);
+    paramFaceNumberItemView.setImageResource(2131232262);
     AppMethodBeat.o(104178);
   }
   
-  private void cvK()
+  private void cTU()
   {
     int i = 0;
     AppMethodBeat.i(104177);
-    if ((this.rwC != null) && (this.rwC.length > 0))
+    if ((this.sWz != null) && (this.sWz.length > 0))
     {
-      if (!bu.isNullOrNil(this.rwz))
+      if (!Util.isNullOrNil(this.sWw))
       {
         i = 0;
-        if (i < this.rwC.length)
+        if (i < this.sWz.length)
         {
           String str;
           FaceNumberItemView localFaceNumberItemView;
-          if (this.rwA > i)
+          if (this.sWx > i)
           {
-            str = this.rwz.charAt(i);
-            if (this.rwA == i + 1)
+            str = this.sWw.charAt(i);
+            if (this.sWx == i + 1)
             {
-              localFaceNumberItemView = this.rwC[i];
-              if (localFaceNumberItemView.rwo != null) {
-                localFaceNumberItemView.cvJ();
+              localFaceNumberItemView = this.sWz[i];
+              if (localFaceNumberItemView.sWl != null) {
+                localFaceNumberItemView.cTT();
               }
-              localFaceNumberItemView.rwo = new Timer("FaceNumberItemView_karaoke", true);
-              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView, localFaceNumberItemView.rww, (byte)0);
-              localFaceNumberItemView.rwo.scheduleAtFixedRate(locala, 0L, FaceNumberItemView.rwp);
+              localFaceNumberItemView.sWl = new Timer("FaceNumberItemView_karaoke", true);
+              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView, localFaceNumberItemView.sWt, (byte)0);
+              localFaceNumberItemView.sWl.scheduleAtFixedRate(locala, 0L, FaceNumberItemView.sWm);
             }
           }
           for (;;)
           {
-            a(this.rwC[i], str);
+            a(this.sWz[i], str);
             i += 1;
             break;
-            this.rwC[i].cvJ();
-            localFaceNumberItemView = this.rwC[i];
-            localFaceNumberItemView.rwv = 30;
+            this.sWz[i].cTT();
+            localFaceNumberItemView = this.sWz[i];
+            localFaceNumberItemView.sWs = 30;
             localFaceNumberItemView.invalidate();
             continue;
             str = "";
@@ -160,34 +160,34 @@ public class FaceNumberView
         AppMethodBeat.o(104177);
         return;
       }
-      while (i < this.rwC.length)
+      while (i < this.sWz.length)
       {
-        a(this.rwC[i], "point");
+        a(this.sWz[i], "point");
         i += 1;
       }
     }
     AppMethodBeat.o(104177);
   }
   
-  private void cvL()
+  private void cTV()
   {
     AppMethodBeat.i(104179);
-    if (this.rwz != null)
+    if (this.sWw != null)
     {
-      this.rwA = this.rwz.length();
+      this.sWx = this.sWw.length();
       AppMethodBeat.o(104179);
       return;
     }
-    this.rwA = 0;
+    this.sWx = 0;
     AppMethodBeat.o(104179);
   }
   
-  public final void agW(String paramString)
+  public final void arF(String paramString)
   {
     AppMethodBeat.i(104180);
-    this.rwz = paramString;
-    cvL();
-    cvK();
+    this.sWw = paramString;
+    cTV();
+    cTU();
     AppMethodBeat.o(104180);
   }
   
@@ -196,54 +196,54 @@ public class FaceNumberView
     AppMethodBeat.i(104175);
     if (paramInt > 12)
     {
-      ae.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed max length: %d", new Object[] { Integer.valueOf(paramInt) });
+      Log.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed max length: %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(104175);
       return;
     }
     if (paramInt <= 0)
     {
-      ae.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed min length: %d", new Object[] { Integer.valueOf(paramInt) });
+      Log.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed min length: %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(104175);
       return;
     }
-    if (paramInt == this.rwD)
+    if (paramInt == this.sWA)
     {
-      ae.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
-      agW(null);
+      Log.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
+      arF(null);
       AppMethodBeat.o(104175);
       return;
     }
-    this.rwB.removeAllViews();
-    this.rwD = paramInt;
-    this.rwC = new FaceNumberItemView[this.rwD];
+    this.sWy.removeAllViews();
+    this.sWA = paramInt;
+    this.sWz = new FaceNumberItemView[this.sWA];
     int k = 0;
     if (k < paramInt)
     {
-      FaceNumberItemView localFaceNumberItemView = (FaceNumberItemView)inflate(getContext(), 2131493916, null);
-      localFaceNumberItemView.setImageResource(2131232151);
+      FaceNumberItemView localFaceNumberItemView = (FaceNumberItemView)inflate(getContext(), 2131494084, null);
+      localFaceNumberItemView.setImageResource(2131232262);
       int j;
       int i;
       if (k == 0)
       {
         j = 3;
-        i = (getResources().getDimensionPixelSize(2131166279) + a.fromDPToPix(getContext(), 48)) / 2;
+        i = (getResources().getDimensionPixelSize(2131166326) + a.fromDPToPix(getContext(), 48)) / 2;
       }
       for (;;)
       {
         localFaceNumberItemView.setGravity(j);
-        this.rwC[k] = localFaceNumberItemView;
-        this.rwB.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(2131166277)));
+        this.sWz[k] = localFaceNumberItemView;
+        this.sWy.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(2131166324)));
         k += 1;
         break;
         if (k == paramInt - 1)
         {
           j = 5;
-          i = (getResources().getDimensionPixelSize(2131166279) + a.fromDPToPix(getContext(), 48)) / 2;
+          i = (getResources().getDimensionPixelSize(2131166326) + a.fromDPToPix(getContext(), 48)) / 2;
         }
         else
         {
           j = 17;
-          i = getResources().getDimensionPixelSize(2131166279);
+          i = getResources().getDimensionPixelSize(2131166326);
         }
       }
     }

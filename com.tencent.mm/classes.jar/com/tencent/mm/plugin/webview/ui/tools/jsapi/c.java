@@ -4,68 +4,73 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.kinda.framework.jsapi.IPCInvoke_KindaJSInvoke;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetPhoneBindCardVerifySmsWeb;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetPhoneBindCardVerifySmsWeb;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class c
   extends a
 {
-  private static final int ECX = 370;
-  public static final c ECZ;
+  private static final int CDJ = 370;
+  public static final c JsB;
   private static final String TAG = "MicroMsg.JsApiGetPhoneBindCardVerifySmsWeb";
-  private static final String dLB = "phoneBindCardVerifySms";
+  private static final String edq = "phoneBindCardVerifySms";
   
   static
   {
-    AppMethodBeat.i(199358);
-    ECZ = new c();
+    AppMethodBeat.i(210550);
+    JsB = new c();
     TAG = "MicroMsg.JsApiGetPhoneBindCardVerifySmsWeb";
-    ECX = 370;
-    dLB = "phoneBindCardVerifySms";
-    AppMethodBeat.o(199358);
+    CDJ = 370;
+    edq = "phoneBindCardVerifySms";
+    AppMethodBeat.o(210550);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.c.d paramd, final com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, final n paramn)
   {
-    AppMethodBeat.i(199357);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    ae.i(TAG, "get data");
+    AppMethodBeat.i(210549);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Log.i(TAG, "get data");
     Bundle localBundle = new Bundle();
-    localBundle.putString("app_id", (String)paraml.xqN.get("appid"));
-    localBundle.putString("nonce_str", (String)paraml.xqN.get("noncestr"));
-    localBundle.putString("timeStamp", (String)paraml.xqN.get("timestamp"));
-    localBundle.putString("package", (String)paraml.xqN.get("package"));
-    localBundle.putString("signType", (String)paraml.xqN.get("signtype"));
-    localBundle.putString("paySign", (String)paraml.xqN.get("paysign"));
-    localBundle.putString("sessionid", (String)paraml.xqN.get("sessionid"));
+    localBundle.putString("app_id", (String)paramn.params.get("appid"));
+    localBundle.putString("nonce_str", (String)paramn.params.get("noncestr"));
+    localBundle.putString("timeStamp", (String)paramn.params.get("timestamp"));
+    localBundle.putString("package", (String)paramn.params.get("package"));
+    localBundle.putString("signType", (String)paramn.params.get("signtype"));
+    localBundle.putString("paySign", (String)paramn.params.get("paysign"));
+    localBundle.putString("sessionid", (String)paramn.params.get("sessionid"));
     localBundle.putString("jsapiName", "phoneBindCardVerifySms");
     localBundle.putInt("jsapi_type", 0);
-    paramd = (com.tencent.mm.ipcinvoker.d)new a(paramd, paraml);
-    h.a("com.tencent.mm", (Parcelable)localBundle, IPCInvoke_KindaJSInvoke.class, paramd);
-    AppMethodBeat.o(199357);
+    paramf = (d)new a(paramf, paramn);
+    h.a(MainProcessIPCService.dkO, (Parcelable)localBundle, IPCInvoke_KindaJSInvoke.class, paramf);
+    AppMethodBeat.o(210549);
     return true;
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
+    return edq;
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class a<T>
-    implements com.tencent.mm.ipcinvoker.d<Bundle>
+    implements d<Bundle>
   {
-    a(com.tencent.mm.plugin.webview.c.d paramd, com.tencent.mm.plugin.webview.c.l paraml) {}
+    a(f paramf, n paramn) {}
   }
 }
 

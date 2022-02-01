@@ -14,19 +14,19 @@ final class FavBaseUI$7
   public final void onGlobalLayout()
   {
     AppMethodBeat.i(106617);
-    this.rDJ.rDA.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    int i = this.rDJ.rDA.findViewById(2131299854).getWidth() / 4;
-    if ((i > 0) && (this.rDL.getWidth() < i))
+    this.tdo.tdf.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    int i = this.tdo.tdf.findViewById(2131300533).getWidth() / 4;
+    if ((i > 0) && (this.tdq.getWidth() < i))
     {
-      this.rDL.setWidth(i);
-      this.rDM.setWidth(i);
+      this.tdq.setWidth(i);
+      this.tdr.setWidth(i);
     }
     AppMethodBeat.o(106617);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavBaseUI.7
  * JD-Core Version:    0.7.0.1
  */

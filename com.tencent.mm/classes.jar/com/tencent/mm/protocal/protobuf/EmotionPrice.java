@@ -1,7 +1,7 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 
 public class EmotionPrice
   extends com.tencent.mm.bw.a
@@ -16,7 +16,7 @@ public class EmotionPrice
     AppMethodBeat.i(104779);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.Label == null)
       {
         paramVarArgs = new b("Not all required fields were included: Label");
@@ -36,16 +36,16 @@ public class EmotionPrice
         throw paramVarArgs;
       }
       if (this.Label != null) {
-        paramVarArgs.d(1, this.Label);
+        paramVarArgs.e(1, this.Label);
       }
       if (this.Number != null) {
-        paramVarArgs.d(2, this.Number);
+        paramVarArgs.e(2, this.Number);
       }
       if (this.Type != null) {
-        paramVarArgs.d(3, this.Type);
+        paramVarArgs.e(3, this.Type);
       }
       if (this.IapProductId != null) {
-        paramVarArgs.d(4, this.IapProductId);
+        paramVarArgs.e(4, this.IapProductId);
       }
       AppMethodBeat.o(104779);
       return 0;
@@ -56,28 +56,28 @@ public class EmotionPrice
       }
     }
     label538:
-    for (int i = f.a.a.b.b.a.e(1, this.Label) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.f(1, this.Label) + 0;; i = 0)
     {
       paramInt = i;
       if (this.Number != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Number);
+        paramInt = i + g.a.a.b.b.a.f(2, this.Number);
       }
       i = paramInt;
       if (this.Type != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Type);
+        i = paramInt + g.a.a.b.b.a.f(3, this.Type);
       }
       paramInt = i;
       if (this.IapProductId != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.IapProductId);
+        paramInt = i + g.a.a.b.b.a.f(4, this.IapProductId);
       }
       AppMethodBeat.o(104779);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.Label == null)
@@ -103,7 +103,7 @@ public class EmotionPrice
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         EmotionPrice localEmotionPrice = (EmotionPrice)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -111,19 +111,19 @@ public class EmotionPrice
           AppMethodBeat.o(104779);
           return -1;
         case 1: 
-          localEmotionPrice.Label = locala.OmT.readString();
+          localEmotionPrice.Label = locala.UbS.readString();
           AppMethodBeat.o(104779);
           return 0;
         case 2: 
-          localEmotionPrice.Number = locala.OmT.readString();
+          localEmotionPrice.Number = locala.UbS.readString();
           AppMethodBeat.o(104779);
           return 0;
         case 3: 
-          localEmotionPrice.Type = locala.OmT.readString();
+          localEmotionPrice.Type = locala.UbS.readString();
           AppMethodBeat.o(104779);
           return 0;
         }
-        localEmotionPrice.IapProductId = locala.OmT.readString();
+        localEmotionPrice.IapProductId = locala.UbS.readString();
         AppMethodBeat.o(104779);
         return 0;
       }
@@ -134,7 +134,7 @@ public class EmotionPrice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionPrice
  * JD-Core Version:    0.7.0.1
  */

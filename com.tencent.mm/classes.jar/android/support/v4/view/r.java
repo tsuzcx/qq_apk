@@ -6,14 +6,14 @@ import android.view.PointerIcon;
 
 public final class r
 {
-  Object Qt;
+  Object QG;
   
   private r(Object paramObject)
   {
-    this.Qt = paramObject;
+    this.QG = paramObject;
   }
   
-  public static r X(Context paramContext)
+  public static r Y(Context paramContext)
   {
     if (Build.VERSION.SDK_INT >= 24) {
       return new r(PointerIcon.getSystemIcon(paramContext, 1002));

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
 {
-  public static String uF(int paramInt)
+  public static String yw(int paramInt)
   {
     AppMethodBeat.i(146329);
     Object localObject = new StringBuilder();
@@ -69,10 +69,10 @@ public final class i
     }
   }
   
-  public static int uG(int paramInt)
+  public static int yx(int paramInt)
   {
     AppMethodBeat.i(146330);
-    ae.i("MicroMsg.Record.RecordErrorHandler", "getErrIdKey errType:%d", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.Record.RecordErrorHandler", "getErrIdKey errType:%d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     case 10: 

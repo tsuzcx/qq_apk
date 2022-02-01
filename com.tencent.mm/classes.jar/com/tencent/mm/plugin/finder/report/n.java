@@ -1,94 +1,106 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.support.v7.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.bt;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.finder.storage.data.k;
-import com.tencent.mm.plugin.finder.storage.data.k.a;
-import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
-import java.util.Collection;
+import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.event.base.f;
+import com.tencent.mm.plugin.finder.event.base.h;
+import com.tencent.mm.plugin.finder.event.base.i;
+import com.tencent.mm.plugin.finder.event.base.j;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.finder.utils.y.b;
+import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderSnsPostReporter;", "", "()V", "SCENE_ENTRANCE_CLICK", "", "SCENE_ENTRANCE_EXPOSE", "SCENE_NO_ACCOUNT_EXIT", "SCENE_NO_ACCOUNT_OK", "SCENE_NO_POST_EXIT", "SCENE_NO_POST_OK", "SCENE_SELECT_EXIT", "SCENE_SELECT_FEED", "SCENE_SNS_POST_CANCEL", "SCENE_SNS_POST_SUCCESS", "reportSessionID", "", "getReportSessionID", "()Ljava/lang/String;", "setReportSessionID", "(Ljava/lang/String;)V", "report20747", "", "sessionID", "scene", "wording", "haveFinderAccount", "", "havePostFinder", "feedId", "", "shootEntranceEndType", "entranceExposeMaxTimes", "entranceExposedTimes", "snsId", "timeStamp", "exposeType", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "lastCenterFeedId", "", "getLastCenterFeedId", "()J", "setLastCenterFeedId", "(J)V", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/SingleFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onInvisible", "", "plugin-finder_release"})
 public final class n
+  extends i
 {
-  private static String szU;
-  public static final n szV;
+  private long tCi = -1L;
   
-  static
+  public n(c paramc)
   {
-    AppMethodBeat.i(203896);
-    szV = new n();
-    AppMethodBeat.o(203896);
+    super(paramc);
   }
   
-  public static void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, long paramLong3, int paramInt5)
+  private static j Ky(int paramInt)
   {
-    AppMethodBeat.i(203895);
-    p.h(paramString1, "sessionID");
-    p.h(paramString2, "wording");
-    if (paramInt1 == 2) {
-      szU = paramString1;
-    }
-    bt localbt = new bt();
-    localbt.kV(paramString1);
-    localbt.gF(paramInt1);
-    localbt.gG(paramLong3);
-    localbt.gH(paramInt2);
-    paramString1 = i.syT;
-    localbt.kX(i.wL(paramLong2));
-    paramString1 = i.syT;
-    localbt.kW(i.wL(paramLong1));
-    paramString1 = v.aAK();
-    localbt.gK(paramInt3);
-    localbt.gL(paramInt4);
-    if (bu.isNullOrNil(paramString1))
+    AppMethodBeat.i(250715);
+    j localj = new j(paramInt);
+    AppMethodBeat.o(250715);
+    return localj;
+  }
+  
+  public final h h(RecyclerView paramRecyclerView, int paramInt)
+  {
+    AppMethodBeat.i(250713);
+    p.h(paramRecyclerView, "recyclerView");
+    Object localObject1 = super.h(paramRecyclerView, paramInt);
+    if (localObject1 == null)
     {
-      paramLong1 = 0L;
-      localbt.gI(paramLong1);
-      if (localbt.St() != 1L) {
-        break label241;
-      }
-      k.a locala = k.sLb;
-      p.g(paramString1, "username");
-      if (((Collection)k.a.dx(paramString1, 1)).isEmpty()) {
-        break label236;
-      }
-      paramInt1 = 1;
-      label175:
-      if (paramInt1 == 0) {
-        break label241;
-      }
+      paramRecyclerView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.SingleFeedFlowScrollEvent");
+      AppMethodBeat.o(250713);
+      throw paramRecyclerView;
     }
-    label236:
-    label241:
-    for (paramLong1 = 1L;; paramLong1 = 0L)
+    localObject1 = (j)localObject1;
+    ((j)localObject1).tCi = this.tCi;
+    ((j)localObject1).ptb = this.ptb;
+    ((j)localObject1).ptc = this.ptc;
+    Object localObject2 = y.vXH;
+    localObject2 = y.a(paramRecyclerView, this.tIf);
+    ((j)localObject1).tII = ((List)((y.b)localObject2).vXL);
+    ((j)localObject1).tIJ = ((y.b)localObject2).vXM;
+    int i;
+    if ((this.ptb != ((h)localObject1).tIy) || (this.ptc != ((h)localObject1).tIA))
     {
-      localbt.gJ(paramLong1);
-      localbt.kY(paramString2);
-      localbt.gM(paramInt5);
-      localbt.aLH();
-      paramString1 = i.syT;
-      i.a((a)localbt);
-      AppMethodBeat.o(203895);
-      return;
-      paramLong1 = 1L;
-      break;
-      paramInt1 = 0;
-      break label175;
+      if ((this.ptb != 2147483647) && (this.ptc != 2147483647)) {
+        break label223;
+      }
+      i = ((h)localObject1).tIy;
+      paramInt = ((h)localObject1).tIA;
+    }
+    for (;;)
+    {
+      localObject2 = y.vXH;
+      ((j)localObject1).tIH = y.a(i, paramInt, paramRecyclerView);
+      this.tCi = ((h)localObject1).tIC;
+      this.ptb = ((h)localObject1).tIy;
+      this.ptc = ((h)localObject1).tIA;
+      paramRecyclerView = (h)localObject1;
+      AppMethodBeat.o(250713);
+      return paramRecyclerView;
+      label223:
+      if (((h)localObject1).tIy < this.ptb) {}
+      for (paramInt = ((h)localObject1).tIy;; paramInt = this.ptb)
+      {
+        if (((h)localObject1).tIA <= this.ptc) {
+          break label276;
+        }
+        j = ((h)localObject1).tIA;
+        i = paramInt;
+        paramInt = j;
+        break;
+      }
+      label276:
+      int j = this.ptc;
+      i = paramInt;
+      paramInt = j;
     }
   }
   
-  public static String cFA()
+  public final void onInvisible()
   {
-    return szU;
+    AppMethodBeat.i(250718);
+    super.onInvisible();
+    this.tCi = -1L;
+    AppMethodBeat.o(250718);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.n
  * JD-Core Version:    0.7.0.1
  */

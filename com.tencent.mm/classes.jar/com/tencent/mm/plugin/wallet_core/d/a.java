@@ -3,29 +3,29 @@ package com.tencent.mm.plugin.wallet_core.d;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.n;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class a
-  extends j<n>
+  extends MAutoStorage<n>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(70581);
-    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "LoanEntryInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(n.info, "LoanEntryInfo") };
     AppMethodBeat.o(70581);
   }
   
-  public a(e parame)
+  public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, n.info, "LoanEntryInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, n.info, "LoanEntryInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final boolean aTi()
+  public final boolean bnU()
   {
     AppMethodBeat.i(70580);
     boolean bool = this.db.execSQL("LoanEntryInfo", "delete from LoanEntryInfo");
@@ -33,11 +33,11 @@ public final class a
     return bool;
   }
   
-  public final n eKH()
+  public final n fSm()
   {
     n localn = null;
     AppMethodBeat.i(70579);
-    Cursor localCursor = this.db.a("select * from LoanEntryInfo", null, 2);
+    Cursor localCursor = this.db.rawQuery("select * from LoanEntryInfo", null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(70579);
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.a
  * JD-Core Version:    0.7.0.1
  */

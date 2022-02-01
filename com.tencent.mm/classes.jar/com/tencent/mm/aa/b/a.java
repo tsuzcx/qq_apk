@@ -3,7 +3,7 @@ package com.tencent.mm.aa.b;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class a
     super(paramString, paramInt);
   }
   
-  private static void k(Map paramMap)
+  private static void m(Map paramMap)
   {
     AppMethodBeat.i(144802);
     Iterator localIterator = paramMap.entrySet().iterator();
@@ -31,7 +31,7 @@ public class a
       localObject2 = ((Map.Entry)localObject2).getValue();
       if (((localObject1 instanceof String)) && ((localObject2 instanceof Map)))
       {
-        k((Map)localObject2);
+        m((Map)localObject2);
         paramMap.put(localObject1, new JSONObject((Map)localObject2));
       }
     }
@@ -51,7 +51,7 @@ public class a
       if (!TextUtils.isEmpty(paramString))
       {
         ((StringBuilder)localObject2).append(":");
-        ((StringBuilder)localObject2).append(bu.nullAsNil(paramString));
+        ((StringBuilder)localObject2).append(Util.nullAsNil(paramString));
       }
       paramString = new HashMap();
       paramString.put("errMsg", ((StringBuilder)localObject2).toString());
@@ -69,7 +69,7 @@ public class a
         paramString.put(localObject2, paramBundle.get((String)localObject2));
       }
     }
-    k(paramString);
+    m(paramString);
     paramString = new JSONObject(paramString);
     AppMethodBeat.o(144801);
     return paramString;
@@ -88,14 +88,14 @@ public class a
       if (!TextUtils.isEmpty(paramString))
       {
         localStringBuilder.append(":");
-        localStringBuilder.append(bu.nullAsNil(paramString));
+        localStringBuilder.append(Util.nullAsNil(paramString));
       }
       paramString = new HashMap();
       paramString.put("errMsg", localStringBuilder.toString());
       if (paramMap != null) {
         paramString.putAll(paramMap);
       }
-      k(paramString);
+      m(paramString);
       paramString = new JSONObject(paramString);
       AppMethodBeat.o(144800);
       return paramString;
@@ -104,7 +104,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aa.b.a
  * JD-Core Version:    0.7.0.1
  */

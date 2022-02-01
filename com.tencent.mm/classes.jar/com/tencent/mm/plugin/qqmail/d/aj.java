@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 
 public final class aj
   extends com.tencent.mm.bw.a
@@ -10,15 +10,15 @@ public final class aj
   public String path;
   public long size;
   public int state;
-  public String uPr;
-  public long xsF;
+  public String svrId;
+  public long ulj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(122801);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.path == null)
       {
         paramVarArgs = new b("Not all required fields were included: path");
@@ -32,16 +32,16 @@ public final class aj
         throw paramVarArgs;
       }
       if (this.path != null) {
-        paramVarArgs.d(1, this.path);
+        paramVarArgs.e(1, this.path);
       }
       if (this.name != null) {
-        paramVarArgs.d(2, this.name);
+        paramVarArgs.e(2, this.name);
       }
-      paramVarArgs.aZ(3, this.size);
-      paramVarArgs.aS(4, this.state);
-      paramVarArgs.aZ(5, this.xsF);
-      if (this.uPr != null) {
-        paramVarArgs.d(6, this.uPr);
+      paramVarArgs.bb(3, this.size);
+      paramVarArgs.aM(4, this.state);
+      paramVarArgs.bb(5, this.ulj);
+      if (this.svrId != null) {
+        paramVarArgs.e(6, this.svrId);
       }
       AppMethodBeat.o(122801);
       return 0;
@@ -52,25 +52,25 @@ public final class aj
       }
     }
     label562:
-    for (paramInt = f.a.a.b.b.a.e(1, this.path) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.path) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.name != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.name);
+        i = paramInt + g.a.a.b.b.a.f(2, this.name);
       }
-      i = i + f.a.a.b.b.a.p(3, this.size) + f.a.a.b.b.a.bz(4, this.state) + f.a.a.b.b.a.p(5, this.xsF);
+      i = i + g.a.a.b.b.a.r(3, this.size) + g.a.a.b.b.a.bu(4, this.state) + g.a.a.b.b.a.r(5, this.ulj);
       paramInt = i;
-      if (this.uPr != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.uPr);
+      if (this.svrId != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.svrId);
       }
       AppMethodBeat.o(122801);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.path == null)
@@ -90,7 +90,7 @@ public final class aj
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         aj localaj = (aj)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -98,27 +98,27 @@ public final class aj
           AppMethodBeat.o(122801);
           return -1;
         case 1: 
-          localaj.path = locala.OmT.readString();
+          localaj.path = locala.UbS.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 2: 
-          localaj.name = locala.OmT.readString();
+          localaj.name = locala.UbS.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 3: 
-          localaj.size = locala.OmT.zd();
+          localaj.size = locala.UbS.zl();
           AppMethodBeat.o(122801);
           return 0;
         case 4: 
-          localaj.state = locala.OmT.zc();
+          localaj.state = locala.UbS.zi();
           AppMethodBeat.o(122801);
           return 0;
         case 5: 
-          localaj.xsF = locala.OmT.zd();
+          localaj.ulj = locala.UbS.zl();
           AppMethodBeat.o(122801);
           return 0;
         }
-        localaj.uPr = locala.OmT.readString();
+        localaj.svrId = locala.UbS.readString();
         AppMethodBeat.o(122801);
         return 0;
       }

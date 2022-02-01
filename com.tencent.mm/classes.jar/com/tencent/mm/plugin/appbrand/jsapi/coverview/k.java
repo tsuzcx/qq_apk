@@ -3,36 +3,38 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.e.a;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class k
   extends c
 {
-  private static final int CTRL_INDEX = 255;
-  public static final String NAME = "removeTextView";
+  private static final int CTRL_INDEX = 811;
+  public static final String NAME = "removeImagePreviewer";
   
-  public final int A(JSONObject paramJSONObject)
+  public final int H(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(137540);
+    AppMethodBeat.i(226741);
     int i = paramJSONObject.getInt("viewId");
-    AppMethodBeat.o(137540);
+    AppMethodBeat.o(226741);
     return i;
   }
   
-  public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean b(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(137541);
-    parame.fF(paramJSONObject.optBoolean("independent", false)).sG(paramInt);
-    boolean bool = super.b(parame, paramInt, paramView, paramJSONObject);
-    AppMethodBeat.o(137541);
+    AppMethodBeat.i(226740);
+    Log.d("MicroMsg.JsApiRemoveImagePreviewer", "insertImagePreviewer(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
+    paramh.getCustomViewContainer().wC(paramInt);
+    boolean bool = super.b(paramh, paramInt, paramView, paramJSONObject);
+    AppMethodBeat.o(226740);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.k
  * JD-Core Version:    0.7.0.1
  */

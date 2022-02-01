@@ -9,50 +9,59 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.aa;
+import com.tencent.mm.ak.aa.b;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.b;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.plugin.gamelife.PluginGameLife;
+import com.tencent.mm.plugin.gamelife.c.c;
 import com.tencent.mm.plugin.gamelife.c.g.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import d.a.j;
-import d.g.b.p;
-import d.l;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/ui/TestUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "FROM_USER_NAME", "", "getFROM_USER_NAME", "()Ljava/lang/String;", "setFROM_USER_NAME", "(Ljava/lang/String;)V", "TO_USER_NAME", "getTO_USER_NAME", "setTO_USER_NAME", "switchBlackList", "", "getSwitchBlackList", "()Z", "setSwitchBlackList", "(Z)V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setUpTestUsername", "Companion", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/TestUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "FROM_USER_NAME", "", "getFROM_USER_NAME", "()Ljava/lang/String;", "setFROM_USER_NAME", "(Ljava/lang/String;)V", "TO_USER_NAME", "getTO_USER_NAME", "setTO_USER_NAME", "switchBlackList", "", "getSwitchBlackList", "()Z", "setSwitchBlackList", "(Z)V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setUpTestUsername", "Companion", "plugin-gamelife_release"})
 public final class TestUI
   extends MMActivity
 {
   private static final String TAG = "MicroMsg.TestUI";
-  private static final String uLc = "U1_BgAAHED13WDGBipLzICG_mkIR7gtkryaxyn7Ed4@gamelife";
-  private static final String uLd = "U1_BgAAHED13WDGBipLsjCl-jj_DtzKiu7ntwVX5oE@gamelife";
-  private static String uLe;
-  public static final a uLf;
+  private static final String ydw = "U1_BgAAHED13WDGBipLzICG_mkIR7gtkryaxyn7Ed4@gamelife";
+  private static final String ydx = "U1_BgAAHED13WDGBipLsjCl-jj_DtzKiu7ntwVX5oE@gamelife";
+  private static String ydy;
+  public static final a ydz;
   private HashMap _$_findViewCache;
-  String uKZ = uLc;
-  String uLa = uLd;
-  boolean uLb = true;
+  String ydt = ydw;
+  String ydu = ydx;
+  boolean ydv = true;
   
   static
   {
-    AppMethodBeat.i(212314);
-    uLf = new a((byte)0);
+    AppMethodBeat.i(241557);
+    ydz = new a((byte)0);
     TAG = "MicroMsg.TestUI";
-    uLc = "U1_BgAAHED13WDGBipLzICG_mkIR7gtkryaxyn7Ed4@gamelife";
-    uLd = "U1_BgAAHED13WDGBipLsjCl-jj_DtzKiu7ntwVX5oE@gamelife";
-    uLe = "S1_BgAAdQoEcfnVwzCiSbiVnB7BOg@gamelifesess";
-    AppMethodBeat.o(212314);
+    ydw = "U1_BgAAHED13WDGBipLzICG_mkIR7gtkryaxyn7Ed4@gamelife";
+    ydx = "U1_BgAAHED13WDGBipLsjCl-jj_DtzKiu7ntwVX5oE@gamelife";
+    ydy = "S1_BgAAdQoEcfnVwzCiSbiVnB7BOg@gamelifesess";
+    AppMethodBeat.o(241557);
   }
   
-  private View _$_findCachedViewById(int paramInt)
+  public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(212315);
+    AppMethodBeat.i(241559);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(241559);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(241558);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -63,42 +72,42 @@ public final class TestUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(212315);
+    AppMethodBeat.o(241558);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131496406;
+    return 2131494974;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(212313);
+    AppMethodBeat.i(241556);
     super.onCreate(paramBundle);
-    p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
-    paramBundle = com.tencent.mm.kernel.a.aiF();
+    p.g(com.tencent.mm.kernel.g.aAf(), "MMKernel.account()");
+    paramBundle = com.tencent.mm.kernel.a.ayV();
     if (paramBundle == null) {}
     for (;;)
     {
-      ((Button)findViewById(2131308132)).setOnClickListener((View.OnClickListener)new b(this));
-      ((Button)findViewById(2131308131)).setOnClickListener((View.OnClickListener)new j(this));
-      ((Button)findViewById(2131308129)).setOnClickListener((View.OnClickListener)new k(this));
-      ((Button)findViewById(2131308200)).setOnClickListener((View.OnClickListener)new l(this));
-      ((Button)findViewById(2131308201)).setOnClickListener((View.OnClickListener)new m(this));
-      ((Button)findViewById(2131308130)).setOnClickListener((View.OnClickListener)n.uLk);
-      ((Button)findViewById(2131308202)).setOnClickListener((View.OnClickListener)o.uLl);
-      ((Button)findViewById(2131308223)).setOnClickListener((View.OnClickListener)p.uLm);
-      ((Button)findViewById(2131308096)).setOnClickListener((View.OnClickListener)q.uLn);
-      ((Button)findViewById(2131302575)).setOnClickListener((View.OnClickListener)c.uLh);
-      findViewById(2131308123);
-      ((Button)findViewById(2131308199)).setOnClickListener((View.OnClickListener)new d(this));
-      ((Button)_$_findCachedViewById(2131306894)).setOnClickListener((View.OnClickListener)new e(this));
-      ((Button)_$_findCachedViewById(2131305707)).setOnClickListener((View.OnClickListener)f.uLi);
-      ((Button)_$_findCachedViewById(2131308105)).setOnClickListener((View.OnClickListener)new g(this));
-      ((Button)_$_findCachedViewById(2131308214)).setOnClickListener((View.OnClickListener)new h(this));
-      ((Button)_$_findCachedViewById(2131308081)).setOnClickListener((View.OnClickListener)i.uLj);
-      AppMethodBeat.o(212313);
+      ((Button)findViewById(2131302125)).setOnClickListener((View.OnClickListener)new b(this));
+      ((Button)findViewById(2131302119)).setOnClickListener((View.OnClickListener)new j(this));
+      ((Button)findViewById(2131302116)).setOnClickListener((View.OnClickListener)new k(this));
+      ((Button)findViewById(2131307650)).setOnClickListener((View.OnClickListener)new l(this));
+      ((Button)findViewById(2131307651)).setOnClickListener((View.OnClickListener)new m(this));
+      ((Button)findViewById(2131302118)).setOnClickListener((View.OnClickListener)n.ydE);
+      ((Button)findViewById(2131307658)).setOnClickListener((View.OnClickListener)o.ydF);
+      ((Button)findViewById(2131309567)).setOnClickListener((View.OnClickListener)p.ydG);
+      ((Button)findViewById(2131299718)).setOnClickListener((View.OnClickListener)q.ydH);
+      ((Button)findViewById(2131297966)).setOnClickListener((View.OnClickListener)c.ydB);
+      findViewById(2131302021);
+      ((Button)findViewById(2131307631)).setOnClickListener((View.OnClickListener)new d(this));
+      ((Button)_$_findCachedViewById(2131299241)).setOnClickListener((View.OnClickListener)new e(this));
+      ((Button)_$_findCachedViewById(2131298742)).setOnClickListener((View.OnClickListener)f.ydC);
+      ((Button)_$_findCachedViewById(2131300695)).setOnClickListener((View.OnClickListener)new TestUI.g(this));
+      ((Button)_$_findCachedViewById(2131308362)).setOnClickListener((View.OnClickListener)new h(this));
+      ((Button)_$_findCachedViewById(2131299481)).setOnClickListener((View.OnClickListener)TestUI.i.ydD);
+      AppMethodBeat.o(241556);
       return;
       switch (paramBundle.hashCode())
       {
@@ -107,15 +116,15 @@ public final class TestUI
       case -1552608050: 
         if (paramBundle.equals("3191137690"))
         {
-          this.uLa = uLd;
-          this.uKZ = uLc;
+          this.ydu = ydx;
+          this.ydt = ydw;
         }
         break;
       case 226066304: 
         if (paramBundle.equals("3193176932"))
         {
-          this.uLa = uLc;
-          this.uKZ = uLd;
+          this.ydu = ydw;
+          this.ydt = ydx;
         }
         break;
       }
@@ -128,10 +137,10 @@ public final class TestUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/ui/TestUI$Companion;", "", "()V", "SESSION_ID", "", "getSESSION_ID", "()Ljava/lang/String;", "setSESSION_ID", "(Ljava/lang/String;)V", "T1_USERNAME", "getT1_USERNAME", "T2_USERNAME", "getT2_USERNAME", "TAG", "getTAG", "plugin-gamelife_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/TestUI$Companion;", "", "()V", "SESSION_ID", "", "getSESSION_ID", "()Ljava/lang/String;", "setSESSION_ID", "(Ljava/lang/String;)V", "T1_USERNAME", "getT1_USERNAME", "T2_USERNAME", "getT2_USERNAME", "TAG", "getTAG", "plugin-gamelife_release"})
   public static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -139,50 +148,50 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212290);
+      AppMethodBeat.i(241533);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = this.uLg.uLa;
-      localObject = this.uLg.uKZ;
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = this.ydA.ydu;
+      localObject = this.ydA.ydt;
       p.h(paramView, "fromUserName");
       p.h(localObject, "toUserName");
-      ae.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getChatSessionId, fromUsrName = " + paramView + " , toUserName = " + (String)localObject);
-      new com.tencent.mm.plugin.gamelife.c.c(paramView, (String)localObject).aET();
+      Log.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getChatSessionId, fromUsrName = " + paramView + " , toUserName = " + (String)localObject);
+      new c(paramView, (String)localObject, 0, null).aYI();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212290);
+      AppMethodBeat.o(241533);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
-    public static final c uLh;
+    public static final c ydB;
     
     static
     {
-      AppMethodBeat.i(212292);
-      uLh = new c();
-      AppMethodBeat.o(212292);
+      AppMethodBeat.i(241535);
+      ydB = new c();
+      AppMethodBeat.o(241535);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212291);
+      AppMethodBeat.i(241534);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = TestUI.uLf;
-      g.a.d(TestUI.ddM(), 2L, false);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = TestUI.ydz;
+      g.a.d(TestUI.dXv(), 2L, false);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212291);
+      AppMethodBeat.o(241534);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -190,19 +199,19 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212293);
+      AppMethodBeat.i(241536);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = TestUI.uLf;
-      paramView = new com.tencent.mm.plugin.byp.b.c(TestUI.ddM(), this.uLg.uLa, this.uLg.uKZ, "this is the first gamelife text");
-      x.hSf.ajk().b((n)paramView);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = TestUI.ydz;
+      paramView = new com.tencent.mm.plugin.byp.b.d(TestUI.dXv(), this.ydA.ydu, this.ydA.ydt, "this is the first gamelife text");
+      aa.iNn.azA().b((q)paramView);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212293);
+      AppMethodBeat.o(241536);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -210,78 +219,48 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212294);
+      AppMethodBeat.i(241537);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      paramView = this.uLg;
-      localObject = new Intent((Context)this.uLg, GameLifeConversationUI.class);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+      paramView = this.ydA;
+      localObject = new Intent((Context)this.ydA, GameLifeConversationUI.class);
       ((Intent)localObject).putExtra("TEST", true);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$12", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$12", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$12", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212294);
+      AppMethodBeat.o(241537);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class f
     implements View.OnClickListener
   {
-    public static final f uLi;
+    public static final f ydC;
     
     static
     {
-      AppMethodBeat.i(212296);
-      uLi = new f();
-      AppMethodBeat.o(212296);
+      AppMethodBeat.i(241539);
+      ydC = new f();
+      AppMethodBeat.o(241539);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212295);
+      AppMethodBeat.i(241538);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      ((PluginGameLife)com.tencent.mm.kernel.g.ad(PluginGameLife.class)).clearDB();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      ((PluginGameLife)com.tencent.mm.kernel.g.ah(PluginGameLife.class)).clearDB();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212295);
+      AppMethodBeat.o(241538);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class g
-    implements View.OnClickListener
-  {
-    g(TestUI paramTestUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(212297);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      paramView = ((PluginGameLife)com.tencent.mm.kernel.g.ad(PluginGameLife.class)).getConversationStorage();
-      int i = 0;
-      while (i <= 50)
-      {
-        localObject = new com.tencent.mm.plugin.gamelife.e.a();
-        ((com.tencent.mm.plugin.gamelife.e.a)localObject).field_sessionId = "test".concat(String.valueOf(i));
-        ((com.tencent.mm.plugin.gamelife.e.a)localObject).field_digest = "digest".concat(String.valueOf(i));
-        ((com.tencent.mm.plugin.gamelife.e.a)localObject).field_updateTime = System.currentTimeMillis();
-        ((com.tencent.mm.plugin.gamelife.e.a)localObject).field_talker = "talker".concat(String.valueOf(i));
-        ((com.tencent.mm.plugin.gamelife.e.a)localObject).field_selfUserName = this.uLg.uLa;
-        paramView.insert((com.tencent.mm.sdk.e.c)localObject);
-        i += 1;
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212297);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class h
     implements View.OnClickListener
   {
@@ -289,43 +268,17 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212298);
+      AppMethodBeat.i(241541);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      ((PluginGameLife)com.tencent.mm.kernel.g.ad(PluginGameLife.class)).enterChattingUI((Context)this.uLg, this.uLg.uLa, this.uLg.uKZ);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      ((PluginGameLife)com.tencent.mm.kernel.g.ah(PluginGameLife.class)).enterChattingUI((Context)this.ydA, this.ydA.ydu, this.ydA.ydt, 0, null);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212298);
+      AppMethodBeat.o(241541);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class i
-    implements View.OnClickListener
-  {
-    public static final i uLj;
-    
-    static
-    {
-      AppMethodBeat.i(212300);
-      uLj = new i();
-      AppMethodBeat.o(212300);
-    }
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(212299);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = ((PluginGameLife)com.tencent.mm.kernel.g.ad(PluginGameLife.class)).getConversationStorage();
-      ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.gamelife.a.c.class)).anA(((com.tencent.mm.plugin.gamelife.e.a)paramView.dE(0, 1).get(0)).field_sessionId);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212299);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class j
     implements View.OnClickListener
   {
@@ -333,21 +286,21 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212301);
+      AppMethodBeat.i(241544);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = new LinkedList((Collection)j.listOf(new String[] { this.uLg.uLa, this.uLg.uKZ }));
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = new LinkedList((Collection)j.listOf(new String[] { this.ydA.ydu, this.ydA.ydt }));
       p.h(paramView, "userNameList");
-      ae.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getChatUserInfo, userNameList = ".concat(String.valueOf(paramView)));
-      new com.tencent.mm.plugin.gamelife.c.d(paramView).aET();
+      Log.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getChatUserInfo, userNameList = ".concat(String.valueOf(paramView)));
+      new com.tencent.mm.plugin.gamelife.c.d(paramView).aYI();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212301);
+      AppMethodBeat.o(241544);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class k
     implements View.OnClickListener
   {
@@ -355,21 +308,21 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212302);
+      AppMethodBeat.i(241545);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = this.uLg.uKZ;
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = this.ydA.ydt;
       p.h(paramView, "userName");
-      ae.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getBlackList, userName = ".concat(String.valueOf(paramView)));
-      new com.tencent.mm.plugin.gamelife.c.a(paramView).aET();
+      Log.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getBlackList, userName = ".concat(String.valueOf(paramView)));
+      new com.tencent.mm.plugin.gamelife.c.a(paramView).aYI();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212302);
+      AppMethodBeat.o(241545);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class l
     implements View.OnClickListener
   {
@@ -377,25 +330,25 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212303);
+      AppMethodBeat.i(241546);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      g.a.g(this.uLg.uKZ, this.uLg.uLb, false);
-      paramView = this.uLg;
-      if (!this.uLg.uLb) {}
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      g.a.h(this.ydA.ydt, this.ydA.ydv, false);
+      paramView = this.ydA;
+      if (!this.ydA.ydv) {}
       for (boolean bool = true;; bool = false)
       {
-        paramView.uLb = bool;
+        paramView.ydv = bool;
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212303);
+        AppMethodBeat.o(241546);
         return;
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class m
     implements View.OnClickListener
   {
@@ -403,132 +356,132 @@ public final class TestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212304);
+      AppMethodBeat.i(241547);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      g.a.g(this.uLg.uKZ, this.uLg.uLb, true);
-      paramView = this.uLg;
-      if (!this.uLg.uLb) {}
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      g.a.h(this.ydA.ydt, this.ydA.ydv, true);
+      paramView = this.ydA;
+      if (!this.ydA.ydv) {}
       for (boolean bool = true;; bool = false)
       {
-        paramView.uLb = bool;
+        paramView.ydv = bool;
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212304);
+        AppMethodBeat.o(241547);
         return;
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class n
     implements View.OnClickListener
   {
-    public static final n uLk;
+    public static final n ydE;
     
     static
     {
-      AppMethodBeat.i(212306);
-      uLk = new n();
-      AppMethodBeat.o(212306);
+      AppMethodBeat.i(241549);
+      ydE = new n();
+      AppMethodBeat.o(241549);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212305);
+      AppMethodBeat.i(241548);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = TestUI.uLf;
-      paramView = new LinkedList((Collection)j.listOf(TestUI.ddM()));
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = TestUI.ydz;
+      paramView = new LinkedList((Collection)j.listOf(TestUI.dXv()));
       p.h(paramView, "sessionIdList");
-      ae.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getSessionData, sesseionIdList = ".concat(String.valueOf(paramView)));
-      new com.tencent.mm.plugin.gamelife.c.b(paramView).aET();
+      Log.i(com.tencent.mm.plugin.gamelife.c.g.access$getTAG$cp(), "getSessionData, sesseionIdList = ".concat(String.valueOf(paramView)));
+      new com.tencent.mm.plugin.gamelife.c.b(paramView).aYI();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212305);
+      AppMethodBeat.o(241548);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class o
     implements View.OnClickListener
   {
-    public static final o uLl;
+    public static final o ydF;
     
     static
     {
-      AppMethodBeat.i(212308);
-      uLl = new o();
-      AppMethodBeat.o(212308);
+      AppMethodBeat.i(241551);
+      ydF = new o();
+      AppMethodBeat.o(241551);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212307);
+      AppMethodBeat.i(241550);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = TestUI.uLf;
-      g.a.d(TestUI.ddM(), 1L, true);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = TestUI.ydz;
+      g.a.d(TestUI.dXv(), 1L, true);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212307);
+      AppMethodBeat.o(241550);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class p
     implements View.OnClickListener
   {
-    public static final p uLm;
+    public static final p ydG;
     
     static
     {
-      AppMethodBeat.i(212310);
-      uLm = new p();
-      AppMethodBeat.o(212310);
+      AppMethodBeat.i(241553);
+      ydG = new p();
+      AppMethodBeat.o(241553);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212309);
+      AppMethodBeat.i(241552);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = TestUI.uLf;
-      g.a.d(TestUI.ddM(), 1L, false);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = TestUI.ydz;
+      g.a.d(TestUI.dXv(), 1L, false);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212309);
+      AppMethodBeat.o(241552);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class q
     implements View.OnClickListener
   {
-    public static final q uLn;
+    public static final q ydH;
     
     static
     {
-      AppMethodBeat.i(212312);
-      uLn = new q();
-      AppMethodBeat.o(212312);
+      AppMethodBeat.i(241555);
+      ydH = new q();
+      AppMethodBeat.o(241555);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212311);
+      AppMethodBeat.i(241554);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = com.tencent.mm.plugin.gamelife.c.g.uJj;
-      paramView = TestUI.uLf;
-      g.a.d(TestUI.ddM(), 2L, true);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.gamelife.c.g.ybA;
+      paramView = TestUI.ydz;
+      g.a.d(TestUI.dXv(), 2L, true);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212311);
+      AppMethodBeat.o(241554);
     }
   }
 }

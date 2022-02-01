@@ -12,13 +12,13 @@ final class c$1
   public final void run()
   {
     AppMethodBeat.i(110366);
-    ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().p(this.fOj, this.val$key, true);
+    ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().r(this.gtu, this.val$key, true);
     AppMethodBeat.o(110366);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.b.c.1
  * JD-Core Version:    0.7.0.1
  */

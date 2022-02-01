@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.h5_interact;
 
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class b
-  extends a<c>
+  extends d<c>
 {
   private static final int CTRL_INDEX = 459;
   private static final String NAME = "sendDataToH5";

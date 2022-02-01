@@ -1,62 +1,115 @@
 package com.tencent.mm.plugin.audio.broadcast.bluetooth;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.audio.d.b;
+import com.tencent.mm.plugin.audio.d.f;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/broadcast/bluetooth/BluetoothMgr;", "", "()V", "TAG", "", "mIshappendActiveChanged", "", "mPreBTAddress", "onAclStateDisconnected", "", "intent", "Landroid/content/Intent;", "onActiveDeviceChanged", "onAdapterStateChanged", "onHeadsetStateChanged", "onScoStateUpdated", "plugin-audio_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/broadcast/bluetooth/BluetoothMgr;", "", "()V", "TAG", "", "mConnectRetryCount", "", "mCurrentBluetoothDevice", "Landroid/bluetooth/BluetoothDevice;", "mCurrentMacAddress", "mIshappendActiveChanged", "", "mLastConnectTime", "", "value", "mPreBTAddress", "setMPreBTAddress", "(Ljava/lang/String;)V", "checkBluetoothDevice", "", "intent", "Landroid/content/Intent;", "onAclStateDisconnected", "onActiveDeviceChanged", "onAdapterStateChanged", "onHeadsetStateChanged", "onScoStateUpdated", "refreshForbiddenCauseRequest", "type", "tickLastForbiddenTimes", "plugin-audio_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.BluetoothMgr";
-  private static String nwO;
-  private static boolean nwP;
-  public static final a nwQ;
+  private static int mConnectRetryCount;
+  private static String oHE;
+  private static boolean oHF;
+  private static String oHG;
+  private static BluetoothDevice oHH;
+  private static long oHI;
+  public static final a oHJ;
   
   static
   {
-    AppMethodBeat.i(201050);
-    nwQ = new a();
+    AppMethodBeat.i(223947);
+    oHJ = new a();
     TAG = "MicroMsg.BluetoothMgr";
-    AppMethodBeat.o(201050);
+    AppMethodBeat.o(223947);
+  }
+  
+  public static final void V(Intent paramIntent)
+  {
+    AppMethodBeat.i(223941);
+    p.h(paramIntent, "intent");
+    paramIntent = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
+    if (paramIntent == null)
+    {
+      Log.i(TAG, "device is unavailable");
+      AppMethodBeat.o(223941);
+      return;
+    }
+    Object localObject;
+    if (f.cew())
+    {
+      localObject = b.oIo;
+      localObject = paramIntent.getBluetoothClass();
+      p.g(localObject, "device.bluetoothClass");
+      if (((BluetoothClass)localObject).getDeviceClass() != 1032) {
+        break label176;
+      }
+    }
+    label176:
+    for (boolean bool = true;; bool = false)
+    {
+      b.jx(bool);
+      if ((p.j(oHG, paramIntent.getAddress()) ^ true))
+      {
+        localObject = paramIntent.getBluetoothClass();
+        if (localObject != null)
+        {
+          com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.oIj;
+          int i = ((BluetoothClass)localObject).getMajorDeviceClass();
+          int j = ((BluetoothClass)localObject).getDeviceClass();
+          localObject = com.tencent.mm.plugin.audio.c.a.oIh;
+          com.tencent.mm.plugin.audio.d.a.a(Integer.valueOf(i), Integer.valueOf(j), a.a.cek(), 0, paramIntent.getName(), paramIntent.getAddress());
+        }
+        oHG = paramIntent.getAddress();
+        mConnectRetryCount = 0;
+        paramIntent = b.oIo;
+        b.jx(true);
+      }
+      AppMethodBeat.o(223941);
+      return;
+    }
   }
   
   public static final void W(Intent paramIntent)
   {
-    AppMethodBeat.i(201045);
+    String str = null;
+    AppMethodBeat.i(223942);
     p.h(paramIntent, "intent");
-    if (!com.tencent.mm.kernel.g.ajM())
+    if (!g.aAc())
     {
-      AppMethodBeat.o(201045);
+      AppMethodBeat.o(223942);
       return;
     }
+    int i;
     try
     {
       i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
-      String str = TAG;
-      paramIntent = new StringBuilder("dkbt  action :").append(paramIntent.getAction()).append(" state:").append(i).append(" isBluetoothScoOn :");
-      Object localObject = com.tencent.mm.plugin.audio.d.a.nxr;
-      paramIntent = paramIntent.append(com.tencent.mm.plugin.audio.d.a.bHz()).append(" ");
-      localObject = com.tencent.mm.plugin.audio.c.a.nxo;
-      com.tencent.mm.sdk.platformtools.ae.d(str, a.a.bHy().bHx());
-      if ((nwO != null) && (i == 0) && (nwP))
+      Log.d(TAG, "dkbt  action :" + paramIntent.getAction() + " state:" + i);
+      if ((oHE != null) && (i == 0) && (oHF))
       {
-        com.tencent.mm.sdk.platformtools.ae.i(TAG, "current run a active device changed");
-        AppMethodBeat.o(201045);
+        Log.i(TAG, "current run a active device changed");
+        AppMethodBeat.o(223942);
         return;
       }
     }
     catch (Exception localException)
     {
-      int i;
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ae.e(TAG, "%s", new Object[] { bu.o((Throwable)localException) });
+        Log.e(TAG, "%s", new Object[] { Util.stackTraceToString((Throwable)localException) });
         i = 0;
       }
       switch (i)
@@ -65,141 +118,279 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(201045);
+      AppMethodBeat.o(223942);
       return;
-      com.tencent.mm.sdk.platformtools.ae.d(TAG, "sco connected!");
-      if (nwP) {
-        nwP = false;
+      if (f.cex() != 0)
+      {
+        if ((mConnectRetryCount >= f.cez()) && (Util.ticksToNow(oHI) < 1000L))
+        {
+          Log.i(TAG, "aim at the sco connect limited");
+          mConnectRetryCount = 0;
+          paramIntent = b.oIo;
+          b.jx(false);
+          paramIntent = oHH;
+          if (paramIntent != null)
+          {
+            paramIntent = paramIntent.getBluetoothClass();
+            if (paramIntent != null)
+            {
+              Object localObject = com.tencent.mm.plugin.audio.d.a.oIj;
+              i = paramIntent.getMajorDeviceClass();
+              int j = paramIntent.getDeviceClass();
+              paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+              localObject = a.a.cek();
+              paramIntent = oHH;
+              if (paramIntent == null) {
+                break label397;
+              }
+              paramIntent = paramIntent.getName();
+              BluetoothDevice localBluetoothDevice = oHH;
+              if (localBluetoothDevice != null) {
+                str = localBluetoothDevice.getAddress();
+              }
+              com.tencent.mm.plugin.audio.d.a.a(Integer.valueOf(i), Integer.valueOf(j), (String)localObject, 1, paramIntent, str);
+              paramIntent = com.tencent.mm.plugin.audio.d.a.oIj;
+              paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+              paramIntent = a.a.cek();
+              p.h(paramIntent, "caller");
+              switch (paramIntent.hashCode())
+              {
+              }
+            }
+          }
+          for (;;)
+          {
+            paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+            a.a.cea().iY(3);
+            AppMethodBeat.o(223942);
+            return;
+            label397:
+            paramIntent = null;
+            break;
+            if (paramIntent.equals("ipcall"))
+            {
+              com.tencent.mm.plugin.audio.d.a.cep();
+              continue;
+              if (paramIntent.equals("music"))
+              {
+                com.tencent.mm.plugin.audio.d.a.ceq();
+                continue;
+                if (paramIntent.equals("openvoice"))
+                {
+                  com.tencent.mm.plugin.audio.d.a.ceo();
+                  continue;
+                  if (paramIntent.equals("record"))
+                  {
+                    com.tencent.mm.plugin.audio.d.a.cem();
+                    continue;
+                    if (paramIntent.equals("voip"))
+                    {
+                      com.tencent.mm.plugin.audio.d.a.cel();
+                      continue;
+                      if (paramIntent.equals("voipcs"))
+                      {
+                        com.tencent.mm.plugin.audio.d.a.cer();
+                        continue;
+                        if (paramIntent.equals("multitalke")) {
+                          com.tencent.mm.plugin.audio.d.a.cen();
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        Log.i(TAG, "not aim at the sco connect limited " + mConnectRetryCount);
+        if (mConnectRetryCount == 0) {
+          oHI = Util.currentTicks();
+        }
+        mConnectRetryCount += 1;
+        Log.d(TAG, "sco connected!");
+        if (oHF) {
+          oHF = false;
+        }
       }
-      paramIntent = com.tencent.mm.plugin.audio.c.a.nxo;
-      a.a.bHy().hE(2);
-      AppMethodBeat.o(201045);
+      paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+      a.a.cea().iY(2);
+      AppMethodBeat.o(223942);
       return;
-      com.tencent.mm.sdk.platformtools.ae.d(TAG, "sco disconnected!getStopBluetoothInBR = %s", new Object[] { Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geX.aaj()) });
-      paramIntent = com.tencent.mm.plugin.audio.c.a.nxo;
-      a.a.bHy().hE(3);
+      Log.d(TAG, "sco disconnected!getStopBluetoothInBR = %s", new Object[] { Integer.valueOf(ae.gKE.aoi()) });
+      paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+      a.a.cea().iY(3);
     }
   }
   
   public static final void X(Intent paramIntent)
   {
-    AppMethodBeat.i(201046);
+    AppMethodBeat.i(223943);
     p.h(paramIntent, "intent");
     paramIntent = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
     if (paramIntent == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "device is unavailable");
-      AppMethodBeat.o(201046);
+      Log.i(TAG, "device is unavailable");
+      AppMethodBeat.o(223943);
       return;
     }
-    if ((p.i(nwO, paramIntent.getAddress()) ^ true))
+    if ((p.j(oHE, paramIntent.getAddress()) ^ true))
     {
-      nwO = paramIntent.getAddress();
-      nwP = true;
-      paramIntent = com.tencent.mm.plugin.audio.c.a.nxo;
-      a.a.bHy().hE(0);
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "android pie switch bt device,%s", new Object[] { nwO });
+      ago(paramIntent.getAddress());
+      oHF = true;
+      paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+      a.a.cea().iY(0);
+      Log.i(TAG, "android pie switch bt device,%s", new Object[] { oHE });
     }
-    AppMethodBeat.o(201046);
+    AppMethodBeat.o(223943);
   }
   
   public static final void Y(Intent paramIntent)
   {
-    AppMethodBeat.i(201047);
+    AppMethodBeat.i(223944);
     p.h(paramIntent, "intent");
     int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", 10);
     int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", 10);
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "onReceive bluetooth state changed: %s, prevState: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    Log.i(TAG, "onReceive bluetooth state changed: %s, prevState: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     if (i == 10)
     {
-      paramIntent = com.tencent.mm.plugin.audio.c.a.nxo;
-      a.a.bHy().hE(1);
+      paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+      a.a.cea().iY(1);
     }
-    com.tencent.mm.sdk.platformtools.ae.d(TAG, "BluetoothStateReceiver.onReceive()");
+    Log.d(TAG, "BluetoothStateReceiver.onReceive()");
     paramIntent = BluetoothAdapter.getDefaultAdapter();
     if (paramIntent != null)
     {
       if (paramIntent.getState() != 12) {
-        break label148;
+        break label155;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.f(11921, new Object[] { Integer.valueOf(1) });
+      h.CyF.a(11921, new Object[] { Integer.valueOf(1) });
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ae.e(TAG, "[oneliang]bluetoothAdapter state:" + paramIntent.getState());
-      AppMethodBeat.o(201047);
+      Log.e(TAG, "[oneliang]bluetoothAdapter state:" + paramIntent.getState());
+      AppMethodBeat.o(223944);
       return;
-      label148:
+      label155:
       if (paramIntent.getState() == 10) {
-        com.tencent.mm.plugin.report.service.g.yxI.f(11921, new Object[] { Integer.valueOf(0) });
+        h.CyF.a(11921, new Object[] { Integer.valueOf(0) });
       }
     }
   }
   
   public static final void Z(Intent paramIntent)
   {
-    AppMethodBeat.i(201048);
+    Object localObject1 = null;
+    AppMethodBeat.i(223945);
     p.h(paramIntent, "intent");
-    String str = paramIntent.getAction();
+    Object localObject2 = paramIntent.getAction();
     int i = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", -1);
-    paramIntent = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
-    if (paramIntent == null)
+    BluetoothDevice localBluetoothDevice = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
+    if (localBluetoothDevice == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "pre address is null");
-      AppMethodBeat.o(201048);
+      Log.i(TAG, "pre address is null");
+      AppMethodBeat.o(223945);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, " mPreBTAddress = device.address %s", new Object[] { paramIntent.getAddress() });
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "current bond state is %s", new Object[] { Integer.valueOf(paramIntent.getBondState()) });
-    if (nwO == null)
+    Log.i(TAG, " mPreBTAddress = device.address %s", new Object[] { localBluetoothDevice.getAddress() });
+    Log.i(TAG, "current bond state is %s", new Object[] { Integer.valueOf(localBluetoothDevice.getBondState()) });
+    if (oHE == null)
     {
-      nwO = paramIntent.getAddress();
-      AppMethodBeat.o(201048);
+      ago(localBluetoothDevice.getAddress());
+      AppMethodBeat.o(223945);
       return;
     }
-    if (p.i(paramIntent.getAddress(), nwO))
+    if (p.j(localBluetoothDevice.getAddress(), oHE))
     {
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "dkbt onReceive action[" + str + "] state:" + i);
+      Log.i(TAG, "dkbt onReceive action[" + (String)localObject2 + "] state:" + i);
       if (i == 2)
       {
-        paramIntent = com.tencent.mm.plugin.audio.c.a.nxo;
-        a.a.bHy().hE(5);
-        AppMethodBeat.o(201048);
+        if (oHH != null)
+        {
+          localObject2 = oHH;
+          paramIntent = localObject1;
+          if (localObject2 != null) {
+            paramIntent = ((BluetoothDevice)localObject2).getAddress();
+          }
+          if (!(p.j(paramIntent, localBluetoothDevice.getAddress()) ^ true)) {}
+        }
+        else
+        {
+          paramIntent = b.oIo;
+          b.jx(true);
+        }
+        paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+        a.a.cea().iY(5);
+        AppMethodBeat.o(223945);
         return;
       }
       if (i == 0)
       {
-        paramIntent = com.tencent.mm.plugin.audio.c.a.nxo;
-        a.a.bHy().hE(6);
-        nwO = null;
+        paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+        a.a.cea().iY(6);
+        ago(null);
       }
-      AppMethodBeat.o(201048);
+      AppMethodBeat.o(223945);
       return;
     }
-    nwP = false;
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "current run device change and not allow to stop");
-    AppMethodBeat.o(201048);
+    oHF = false;
+    Log.i(TAG, "current run device change and not allow to stop");
+    AppMethodBeat.o(223945);
   }
   
   public static final void aa(Intent paramIntent)
   {
-    AppMethodBeat.i(201049);
+    AppMethodBeat.i(223946);
     p.h(paramIntent, "intent");
     paramIntent = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
     if (paramIntent == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "pre address is null");
-      AppMethodBeat.o(201049);
+      Log.i(TAG, "pre address is null");
+      AppMethodBeat.o(223946);
       return;
     }
-    if (p.i(paramIntent.getAddress(), nwO))
+    if (p.j(paramIntent.getAddress(), oHE))
     {
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "dkbt onReceive action[ BluetoothDevice.ACTION_ACL_DISCONNECTED ] ");
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "pre connect device is " + paramIntent.getAddress());
-      paramIntent = com.tencent.mm.plugin.audio.c.a.nxo;
-      a.a.bHy().hE(7);
+      Log.i(TAG, "dkbt onReceive action[ BluetoothDevice.ACTION_ACL_DISCONNECTED ] ");
+      Log.i(TAG, "pre connect device is " + paramIntent.getAddress());
+      paramIntent = b.oIo;
+      b.jx(true);
+      paramIntent = com.tencent.mm.plugin.audio.c.a.oIh;
+      a.a.cea().iY(7);
     }
-    AppMethodBeat.o(201049);
+    AppMethodBeat.o(223946);
+  }
+  
+  private static void ago(String paramString)
+  {
+    AppMethodBeat.i(223938);
+    b localb = b.oIo;
+    b.agu(oHE);
+    oHE = paramString;
+    AppMethodBeat.o(223938);
+  }
+  
+  public static final void agp(String paramString)
+  {
+    AppMethodBeat.i(223940);
+    p.h(paramString, "type");
+    Log.i(TAG, "refreshForbiddenCauseVoipRequest，".concat(String.valueOf(paramString)));
+    paramString = b.oIo;
+    b.jx(true);
+    mConnectRetryCount = 0;
+    AppMethodBeat.o(223940);
+  }
+  
+  public static final void cdS()
+  {
+    AppMethodBeat.i(223939);
+    if ((Util.ticksToNow(oHI) > f.cey() * 1000) && (f.cex() == 1))
+    {
+      Log.i(TAG, "refresh forbidden time");
+      b localb = b.oIo;
+      b.jx(true);
+    }
+    mConnectRetryCount = 0;
+    AppMethodBeat.o(223939);
   }
 }
 

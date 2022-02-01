@@ -2,8 +2,9 @@ package com.tencent.mm.console;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.xweb.c;
 
 class b$a
@@ -11,17 +12,17 @@ class b$a
 {
   public void invoke(Object paramObject, com.tencent.mm.ipcinvoker.d paramd)
   {
-    AppMethodBeat.i(186343);
-    com.tencent.xweb.d.lB(ak.getContext());
-    ae.i("MicroMsg.CommandProcessor", "ClearGameA8keyCookie before, cookie : %s", new Object[] { c.geY().getCookie(".game.weixin.qq.com") });
-    c.geY().setCookie(".game.weixin.qq.com", "cookie_passkey=; max-age=0");
-    c.geY().setCookie(".game.weixin.qq.com", "uin=; max-age=0; httponly");
-    c.geY().setCookie(".game.weixin.qq.com", "key=; max-age=0; httponly");
-    c.geY().setCookie(".game.weixin.qq.com", "pass_ticket=; max-age=0; httponly");
-    com.tencent.xweb.d.gfa();
+    AppMethodBeat.i(231506);
+    com.tencent.xweb.d.lA(MMApplicationContext.getContext());
+    Log.i("MicroMsg.CommandProcessor", "ClearGameA8keyCookie before, cookie : %s", new Object[] { c.hsp().getCookie("." + WeChatHosts.domainString(2131761707)) });
+    c.hsp().setCookie("." + WeChatHosts.domainString(2131761707), "cookie_passkey=; max-age=0");
+    c.hsp().setCookie("." + WeChatHosts.domainString(2131761707), "uin=; max-age=0; httponly");
+    c.hsp().setCookie("." + WeChatHosts.domainString(2131761707), "key=; max-age=0; httponly");
+    c.hsp().setCookie("." + WeChatHosts.domainString(2131761707), "pass_ticket=; max-age=0; httponly");
+    com.tencent.xweb.d.hsr();
     com.tencent.xweb.d.sync();
-    ae.i("MicroMsg.CommandProcessor", "ClearGameA8keyCookie end, cookie : %s", new Object[] { c.geY().getCookie(".game.weixin.qq.com") });
-    AppMethodBeat.o(186343);
+    Log.i("MicroMsg.CommandProcessor", "ClearGameA8keyCookie end, cookie : %s", new Object[] { c.hsp().getCookie("." + WeChatHosts.domainString(2131761707)) });
+    AppMethodBeat.o(231506);
   }
 }
 

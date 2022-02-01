@@ -14,15 +14,13 @@ import android.view.View;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.a;
-import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.c;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.d;
+import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.f;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.f;
 import com.tencent.mm.plugin.expt.hellhound.a.b.c.a;
 import com.tencent.mm.plugin.expt.hellhound.a.b.c.a.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,48 +29,52 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import kotlin.g.b.af;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;", "", "activity", "Landroid/app/Activity;", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/app/Activity;Landroid/support/v4/app/Fragment;)V", "mActivityRef", "Ljava/lang/ref/WeakReference;", "mClickStatistics", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics;", "mDisAppearType", "", "mDisAppearTypeOnRefreshBegin", "mFeedMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "Lkotlin/collections/HashMap;", "mFeedMapOnRefreshBegin", "mFeedParamCatcher", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/params/IFeedParamCatcher;", "mLayoutManagerRef", "Landroid/support/v7/widget/StaggeredGridLayoutManager;", "mPageEntryTimestamp", "", "mRecyclerViewRef", "Landroid/support/v7/widget/RecyclerView;", "mRefreshEndTimestampLatested", "mRefreshTimestampOnRefresBegin", "mScene", "mScreenArea", "", "mScreenBottom", "mScreenMidX", "mScreenTop", "mScreenWidth", "mSessionPageId", "computeOnLoadMoreEnd", "", "computeOnRefreshBegin", "computeOnRefreshEnd", "args", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "computeOnScrolled", "recyclerView", "layoutManager", "fillFeedExposureAreaWeigth", "feed", "fillItemArrayIndex", "fillItemPosition", "fillTimestamp", "timestamp", "fuckNoScrollWhenEnterActivity", "getFeedParams", "feedView", "Landroid/view/View;", "position", "getFeedWhenClick", "getFeedsOfScreen", "", "initActivityFeedParamsCatcher", "initFeedParamsCatcher", "initFragmentFeedParamsCatcher", "initScreen", "isFeedAppear", "", "isFeedDisappear", "isFeedGone", "isFeedShow", "reGetViewParams", "reGetViewsParams", "feedMap", "report19944", "reportLeftFeed", "visitingFeedIdList", "", "startCompute", "eventId", "startStatisticsByHand", "page", "statisticsFeed", "stopCompute", "stopStatisticsByHand", "Companion", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;", "", "activity", "Landroid/app/Activity;", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/app/Activity;Landroid/support/v4/app/Fragment;)V", "mActivityRef", "Ljava/lang/ref/WeakReference;", "mClickStatistics", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics;", "mDisAppearType", "", "mDisAppearTypeOnRefreshBegin", "mFeedMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "Lkotlin/collections/HashMap;", "mFeedMapOnRefreshBegin", "mFeedParamCatcher", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/params/IFeedParamCatcher;", "mLayoutManagerRef", "Landroid/support/v7/widget/StaggeredGridLayoutManager;", "mPageEntryTimestamp", "", "mRecyclerViewRef", "Landroid/support/v7/widget/RecyclerView;", "mRefreshEndTimestampLatested", "mRefreshTimestampOnRefresBegin", "mScene", "mScreenArea", "", "mScreenBottom", "mScreenMidX", "mScreenTop", "mScreenWidth", "mSessionPageId", "computeOnLoadMoreEnd", "", "computeOnRefreshBegin", "computeOnRefreshEnd", "args", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "computeOnScrolled", "recyclerView", "layoutManager", "fillFeedExposureAreaWeigth", "feed", "fillItemArrayIndex", "fillItemPosition", "fillTimestamp", "timestamp", "fuckNoScrollWhenEnterActivity", "getFeedParams", "feedView", "Landroid/view/View;", "position", "getFeedWhenClick", "getFeedsOfScreen", "", "initActivityFeedParamsCatcher", "initFeedParamsCatcher", "initFragmentFeedParamsCatcher", "initScreen", "isFeedAppear", "", "isFeedDisappear", "isFeedGone", "isFeedShow", "reGetViewParams", "reGetViewsParams", "feedMap", "report19944", "reportLeftFeed", "visitingFeedIdList", "", "startCompute", "eventId", "startStatisticsByHand", "page", "statisticsFeed", "stopCompute", "stopStatisticsByHand", "Companion", "plugin-expt_release"})
 public final class j
 {
-  public static int rgr;
-  public static final j.a rgs;
+  public static int sHN;
+  public static final j.a sHO;
   private WeakReference<Activity> mActivityRef;
   private int mScene;
-  com.tencent.mm.plugin.expt.hellhound.a.a.a.b raX;
-  public WeakReference<RecyclerView> rbC;
-  public final HashMap<String, i> rgc;
-  private String rgd;
-  public long rge;
-  public final long rgf;
-  public int rgg;
-  private float rgh;
-  private float rgi;
-  public float rgj;
-  public float rgk;
-  private float rgl;
-  public final c rgm;
-  public WeakReference<StaggeredGridLayoutManager> rgn;
-  public HashMap<String, i> rgo;
-  public long rgp;
-  public int rgq;
+  com.tencent.mm.plugin.expt.hellhound.a.a.a.b sBo;
+  public WeakReference<RecyclerView> sCb;
+  public long sHA;
+  public final long sHB;
+  public int sHC;
+  private float sHD;
+  private float sHE;
+  public float sHF;
+  public float sHG;
+  private float sHH;
+  public final c sHI;
+  public WeakReference<StaggeredGridLayoutManager> sHJ;
+  public HashMap<String, i> sHK;
+  public long sHL;
+  public int sHM;
+  public final HashMap<String, i> sHy;
+  private String sHz;
   
   static
   {
-    AppMethodBeat.i(196621);
-    rgs = new j.a((byte)0);
-    AppMethodBeat.o(196621);
+    AppMethodBeat.i(221113);
+    sHO = new j.a((byte)0);
+    AppMethodBeat.o(221113);
   }
   
   public j(Activity paramActivity, Fragment paramFragment)
   {
-    AppMethodBeat.i(196620);
-    this.rgc = new HashMap();
-    this.rgf = System.currentTimeMillis();
+    AppMethodBeat.i(221112);
+    this.sHy = new HashMap();
+    this.sHB = System.currentTimeMillis();
     if (paramActivity != null) {
       this.mActivityRef = new WeakReference(paramActivity);
     }
-    this.rgd = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm().cos();
+    this.sHz = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU().cMD();
     paramActivity = this.mActivityRef;
     Object localObject2;
     label132:
@@ -84,12 +86,12 @@ public final class j
       {
         try
         {
-          Object localObject1 = ak.getContext().getSystemService("window");
+          Object localObject1 = MMApplicationContext.getContext().getSystemService("window");
           if (localObject1 != null) {
-            break label546;
+            break label611;
           }
-          localObject1 = new v("null cannot be cast to non-null type android.view.WindowManager");
-          AppMethodBeat.o(196620);
+          localObject1 = new t("null cannot be cast to non-null type android.view.WindowManager");
+          AppMethodBeat.o(221112);
           throw ((Throwable)localObject1);
         }
         catch (Exception localException)
@@ -106,268 +108,385 @@ public final class j
         if ((Build.VERSION.SDK_INT >= 17) && (localObject2 != null)) {
           ((Display)localObject2).getRealSize(localPoint2);
         }
-        this.rgh = localPoint1.x;
-        this.rgi = (this.rgh / 2.0F);
+        this.sHD = localPoint1.x;
+        this.sHE = (this.sHD / 2.0F);
         float f1 = localPoint1.y;
         i = localPoint2.y;
-        float f2 = com.tencent.mm.plugin.expt.hellhound.core.b.Q(paramActivity);
-        int j = Math.max(com.tencent.mm.plugin.expt.hellhound.core.b.u(paramActivity), paramActivity.getResources().getDimensionPixelSize(2131165252));
-        this.rgj = (j + f2);
-        this.rgk = f1;
-        this.rgl = (this.rgh * (this.rgk - this.rgj));
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.aZ(this.rgl);
-        com.tencent.mm.sdk.platformtools.ae.i("HABBYGE-MALI.WaterfallsFlowStatistics", "initScreen:\nmScreenMid=" + this.rgi + '\n' + "mScreenWidth=" + this.rgh + '\n' + "screenRealHeight=" + i + '\n' + "screenHeight=" + f1 + '\n' + "statusBarHeight=" + f2 + '\n' + "actionBarHeight=" + j + '\n' + "mScreenTop=" + this.rgj + '\n' + "mScreenBottom=" + this.rgk + '\n' + "mScreenArea=" + this.rgl);
+        float f2 = com.tencent.mm.plugin.expt.hellhound.core.b.O(paramActivity);
+        int j = Math.max(com.tencent.mm.plugin.expt.hellhound.core.b.u(paramActivity), paramActivity.getResources().getDimensionPixelSize(2131165256));
+        this.sHF = (j + f2);
+        this.sHG = f1;
+        this.sHH = (this.sHD * (this.sHG - this.sHF));
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.bg(this.sHH);
+        Log.i("HABBYGE-MALI.WaterfallsFlowStatistics", "initScreen:\nmScreenMid=" + this.sHE + '\n' + "mScreenWidth=" + this.sHD + '\n' + "screenRealHeight=" + i + '\n' + "screenHeight=" + f1 + '\n' + "statusBarHeight=" + f2 + '\n' + "actionBarHeight=" + j + '\n' + "mScreenTop=" + this.sHF + '\n' + "mScreenBottom=" + this.sHG + '\n' + "mScreenArea=" + this.sHH);
         if (paramFragment != null) {
-          break label955;
+          break label946;
         }
         paramFragment = paramActivity.getClass().getName();
-        if (paramFragment != null) {
-          break label561;
+        switch (paramFragment.hashCode())
+        {
+        default: 
+          label536:
+          Log.e("HABBYGE-MALI.WaterfallsFlowStatistics", "initFeedParamsCatcher, miss page: " + paramActivity.getClass().getName());
         }
-        com.tencent.mm.sdk.platformtools.ae.e("HABBYGE-MALI.WaterfallsFlowStatistics", "initFeedParamsCatcher, miss page: " + paramActivity.getClass().getName());
       }
     }
     for (;;)
     {
-      label500:
-      this.rgm = new c(this);
-      this.rgo = new HashMap();
-      this.rgp = -1L;
-      this.rgq = -1;
-      AppMethodBeat.o(196620);
+      label565:
+      this.sHI = new c(this);
+      this.sHK = new HashMap();
+      this.sHL = -1L;
+      this.sHM = -1;
+      AppMethodBeat.o(221112);
       return;
       paramActivity = null;
       break;
-      label546:
+      label611:
       localObject2 = ((WindowManager)localObject2).getDefaultDisplay();
       break label132;
-      label561:
-      switch (paramFragment.hashCode())
-      {
-      default: 
-        break;
-      case -1796598533: 
-        if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTimelineLbsUI")) {
-          break;
-        }
-        this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
-        rgr = 0;
-        this.mScene = c.d.reg.value;
-        break;
-      case 395150120: 
-        if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderProfileUI")) {
-          break;
-        }
-        this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new g(paramActivity));
-        rgr = 1;
-        this.mScene = c.d.rek.value;
-        break;
-      case -1570624296: 
-        if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFavFeedUI")) {
-          break;
-        }
-        this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new b());
-        rgr = 0;
-        this.mScene = c.d.rel.value;
-        break;
-      case 1251839313: 
-        if (!paramFragment.equals("com.tencent.mm.plugin.finder.search.FinderMixSearchUI")) {
-          break;
-        }
-        this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new e(paramActivity));
-        rgr = 5;
-        this.mScene = c.d.rej.value;
-        break;
-      case 782364972: 
-        if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTopicFeedUI")) {
-          break;
-        }
-        this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new h());
-        rgr = 1;
-        paramActivity = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-        if (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqD() != c.c.red.value) {}
-      case 786042180: 
-      case -1577760806: 
-        for (i = c.d.rei.value;; i = c.d.reh.value)
-        {
-          this.mScene = i;
-          break label500;
-          if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderNewUIC")) {
-            break;
-          }
-          this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
-          rgr = 0;
-          this.mScene = c.d.reg.value;
-          break label500;
-          if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.OccupyFinderUI2")) {
-            break;
-          }
-          this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
-          rgr = 0;
-          this.mScene = c.d.reg.value;
-          break label500;
-        }
-        label955:
-        paramActivity = paramFragment.getClass().getName();
-        if (paramActivity == null) {}
-        do
-        {
-          for (;;)
-          {
-            com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("HABBYGE-MALI.WaterfallsFlowStatistics", (Throwable)new NullPointerException("initFragmentFeedParamsCatcher miss !!"), "initFragmentFeedParamsCatcher miss !!", new Object[0]);
-            break;
-            switch (paramActivity.hashCode())
-            {
-            }
-          }
-        } while (!paramActivity.equals("com.tencent.mm.plugin.finder.ui.fragment.FinderLbsTabFragment"));
-        this.raX = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
-        rgr = 0;
-        this.mScene = c.d.reg.value;
+      if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTimelineLbsUI")) {
+        break label536;
       }
+      this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
+      sHN = 0;
+      this.mScene = c.f.sFt.value;
+      continue;
+      if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderProfileUI")) {
+        break label536;
+      }
+      this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new g(paramActivity));
+      sHN = 1;
+      this.mScene = c.f.sFx.value;
+      continue;
+      if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFavFeedUI")) {
+        break label536;
+      }
+      this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new b());
+      sHN = 0;
+      this.mScene = c.f.sFy.value;
+      continue;
+      if (!paramFragment.equals("com.tencent.mm.plugin.finder.search.FinderMixSearchUI")) {
+        break label536;
+      }
+      this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new e(paramActivity));
+      sHN = 5;
+      this.mScene = c.f.sFw.value;
+      continue;
+      if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTopicFeedUI")) {
+        break label536;
+      }
+      this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new h());
+      sHN = 1;
+      paramActivity = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      if (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cPf() == c.d.sFl.value) {}
+      for (i = c.f.sFv.value;; i = c.f.sFu.value)
+      {
+        this.mScene = i;
+        break label565;
+        if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.FinderNewUIC")) {
+          break;
+        }
+        this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
+        sHN = 0;
+        this.mScene = c.f.sFt.value;
+        break label565;
+        if (!paramFragment.equals("com.tencent.mm.plugin.finder.feed.ui.OccupyFinderUI2")) {
+          break;
+        }
+        this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
+        sHN = 0;
+        this.mScene = c.f.sFt.value;
+        break label565;
+      }
+      label946:
+      paramActivity = paramFragment.getClass().getName();
+      switch (paramActivity.hashCode())
+      {
+      }
+      do
+      {
+        Log.printErrStackTrace("HABBYGE-MALI.WaterfallsFlowStatistics", (Throwable)new NullPointerException("initFragmentFeedParamsCatcher miss !!"), "initFragmentFeedParamsCatcher miss !!", new Object[0]);
+        break;
+      } while (!paramActivity.equals("com.tencent.mm.plugin.finder.ui.fragment.FinderLbsTabFragment"));
+      this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)new f());
+      sHN = 0;
+      this.mScene = c.f.sFt.value;
     }
   }
   
   public static void b(i parami)
   {
-    AppMethodBeat.i(196612);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-    if (d.a.j.a((Iterable)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqu(), parami.feedId)) {
-      if (parami.kd >= 0) {}
+    AppMethodBeat.i(221104);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+    if (kotlin.a.j.a((Iterable)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOW(), parami.feedId)) {
+      if (parami.kf >= 0) {}
     }
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqu();
+        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOW();
         String str = parami.feedId;
         if (str == null) {
-          p.gkB();
+          p.hyc();
         }
         ((List)localObject).add(str);
       }
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-      parami.kd = d.a.j.a(com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqu(), parami.feedId);
-      AppMethodBeat.o(196612);
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      parami.kf = kotlin.a.j.a(com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOW(), parami.feedId);
+      AppMethodBeat.o(221104);
       return;
-      AppMethodBeat.o(196612);
+      AppMethodBeat.o(221104);
       return;
     }
   }
   
-  public static void cqM()
+  public static void cPu()
   {
-    AppMethodBeat.i(196609);
-    com.tencent.mm.sdk.platformtools.ae.d("HABBYGE-MALI.WaterfallsFlowStatistics", "computeOnLoadMoreEnd");
-    AppMethodBeat.o(196609);
+    AppMethodBeat.i(221101);
+    Log.d("HABBYGE-MALI.WaterfallsFlowStatistics", "computeOnLoadMoreEnd");
+    AppMethodBeat.o(221101);
+  }
+  
+  final void Do(long paramLong)
+  {
+    AppMethodBeat.i(221111);
+    Object localObject1 = this.sHJ;
+    StaggeredGridLayoutManager localStaggeredGridLayoutManager;
+    if (localObject1 != null)
+    {
+      localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)((WeakReference)localObject1).get();
+      if (localStaggeredGridLayoutManager != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(221111);
+      return;
+    }
+    p.g(localStaggeredGridLayoutManager, "mLayoutManagerRef?.get() ?: return");
+    localObject1 = this.sCb;
+    RecyclerView localRecyclerView;
+    if (localObject1 != null)
+    {
+      localRecyclerView = (RecyclerView)((WeakReference)localObject1).get();
+      if (localRecyclerView != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(221111);
+      return;
+    }
+    p.g(localRecyclerView, "mRecyclerViewRef?.get() ?: return");
+    localObject1 = localStaggeredGridLayoutManager.n(null);
+    int i = Math.min(localObject1[0], localObject1[1]);
+    localObject1 = localStaggeredGridLayoutManager.o(null);
+    int j = Math.max(Math.max(localObject1[0], localObject1[1]) - sHN, 0);
+    i = Math.max(i, sHN);
+    int k = sHN;
+    List localList = (List)new ArrayList();
+    i -= k;
+    if (i < j + 1)
+    {
+      Object localObject3 = localStaggeredGridLayoutManager.findViewByPosition(sHN + i);
+      Object localObject2;
+      if (localObject3 != null)
+      {
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.dJ((View)localObject3);
+        p.g(localObject2, "HellhoundUtil.getCoordinateOnScreen(feedView)");
+        localObject1 = (Integer)((Pair)localObject2).first;
+        localObject2 = (Integer)((Pair)localObject2).second;
+        localObject3 = a((View)localObject3, i, localRecyclerView);
+        if (localObject3 != null) {
+          break label250;
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label250:
+        if (((i)localObject3).feedId != null)
+        {
+          String str = ((i)localObject3).feedId;
+          if (str == null) {
+            p.hyc();
+          }
+          localList.add(str);
+          if (this.sHA <= 0L) {}
+          for (l = this.sHB;; l = this.sHA)
+          {
+            ((i)localObject3).sGJ = l;
+            p.g(localObject1, "x");
+            ((i)localObject3).x = ((Integer)localObject1).intValue();
+            p.g(localObject2, "y");
+            ((i)localObject3).y = ((Integer)localObject2).intValue();
+            ((i)localObject3).position = i;
+            b((i)localObject3);
+            c((i)localObject3);
+            d((i)localObject3);
+            if (e((i)localObject3)) {
+              break label440;
+            }
+            localObject1 = (Map)this.sHy;
+            localObject2 = ((i)localObject3).feedId;
+            if (localObject1 != null) {
+              break;
+            }
+            localObject1 = new t("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
+            AppMethodBeat.o(221111);
+            throw ((Throwable)localObject1);
+          }
+          af.fd(localObject1).remove(localObject2);
+        }
+      }
+      label440:
+      ((i)localObject3).sHt = this.sHB;
+      ((i)localObject3).sHu = paramLong;
+      localObject1 = this.sBo;
+      if (localObject1 != null)
+      {
+        localObject1 = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject1).GY(((i)localObject3).position);
+        label480:
+        ((i)localObject3).sGR = com.tencent.mm.plugin.expt.hellhound.core.b.aoU((String)localObject1);
+        ((i)localObject3).sHw = (((i)localObject3).sHu - ((i)localObject3).sHt);
+        ((i)localObject3).ddZ = true;
+        this.sHC = 1;
+        ((i)localObject3).sHv = 1;
+        if (((i)localObject3).sGJ <= 0L) {
+          if (this.sHA > 0L) {
+            break label611;
+          }
+        }
+      }
+      label611:
+      for (long l = this.sHB;; l = this.sHA)
+      {
+        ((i)localObject3).sGJ = l;
+        localObject2 = this.sHz;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU().cMD();
+        }
+        ((i)localObject3).sessionId = ((String)localObject1);
+        ((i)localObject3).scene = this.mScene;
+        ((i)localObject3).sGQ = com.tencent.mm.plugin.expt.hellhound.core.b.cNB();
+        break;
+        localObject1 = null;
+        break label480;
+      }
+    }
+    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+    c.a.cPk();
+    AppMethodBeat.o(221111);
   }
   
   public final i a(View paramView, int paramInt, RecyclerView paramRecyclerView)
   {
     com.tencent.mm.plugin.expt.hellhound.a.a.a.b localb = null;
     String str = null;
-    AppMethodBeat.i(196611);
-    Object localObject = this.raX;
+    AppMethodBeat.i(221103);
+    Object localObject = this.sBo;
     if (localObject != null) {
       ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject).setRecyclerView(paramRecyclerView);
     }
-    paramRecyclerView = this.raX;
+    paramRecyclerView = this.sBo;
     if (paramRecyclerView != null) {}
-    for (paramRecyclerView = paramRecyclerView.ad(paramView, paramInt); paramRecyclerView == null; paramRecyclerView = null)
+    for (paramRecyclerView = paramRecyclerView.ac(paramView, paramInt); paramRecyclerView == null; paramRecyclerView = null)
     {
-      AppMethodBeat.o(196611);
+      AppMethodBeat.o(221103);
       return null;
     }
-    i locali = (i)this.rgc.get(paramRecyclerView);
+    i locali = (i)this.sHy.get(paramRecyclerView);
     if (locali == null)
     {
       locali = new i((byte)0);
       locali.feedId = paramRecyclerView;
-      localObject = this.raX;
+      localObject = this.sBo;
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject).ae(paramView, paramInt);
+        localObject = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject).ad(paramView, paramInt);
         locali.userName = ((String)localObject);
-        localObject = this.raX;
+        localObject = this.sBo;
         if (localObject == null) {
           break label331;
         }
-        localObject = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject).af(paramView, paramInt);
+        localObject = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject).ae(paramView, paramInt);
         label151:
-        locali.bVF = ((String)localObject);
-        localb = this.raX;
+        locali.nickName = ((String)localObject);
+        localb = this.sBo;
         localObject = str;
         if (localb != null) {
-          localObject = localb.Dn(paramInt);
+          localObject = localb.GY(paramInt);
         }
-        locali.rfB = com.tencent.mm.plugin.expt.hellhound.core.b.aeH((String)localObject);
-        str = this.rgd;
+        locali.sGR = com.tencent.mm.plugin.expt.hellhound.core.b.aoU((String)localObject);
+        str = this.sHz;
         localObject = str;
         if (str == null) {
-          localObject = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm().cos();
+          localObject = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU().cMD();
         }
         locali.sessionId = ((String)localObject);
         locali.scene = this.mScene;
-        locali.rfA = com.tencent.mm.plugin.expt.hellhound.core.b.cpi();
-        paramView = com.tencent.mm.plugin.expt.hellhound.core.b.dS(paramView);
+        locali.sGQ = com.tencent.mm.plugin.expt.hellhound.core.b.cNB();
+        paramView = com.tencent.mm.plugin.expt.hellhound.core.b.dK(paramView);
         localObject = paramView.first;
         p.g(localObject, "widthHeightPair.first");
         locali.width = ((Number)localObject).floatValue();
         paramView = paramView.second;
         p.g(paramView, "widthHeightPair.second");
         locali.height = ((Number)paramView).floatValue();
-        ((Map)this.rgc).put(paramRecyclerView, locali);
+        ((Map)this.sHy).put(paramRecyclerView, locali);
         localObject = locali;
       }
     }
     label331:
     do
     {
-      AppMethodBeat.o(196611);
+      AppMethodBeat.o(221103);
       return localObject;
       localObject = null;
       break;
       localObject = null;
       break label151;
-      if ((locali.rfB == null) || (locali.height <= 0.0F)) {
+      if ((locali.sGR == null) || (locali.height <= 0.0F)) {
         break label367;
       }
       localObject = locali;
     } while (locali.y > 0);
     label367:
     locali.feedId = paramRecyclerView;
-    paramRecyclerView = this.raX;
+    paramRecyclerView = this.sBo;
     if (paramRecyclerView != null)
     {
-      paramRecyclerView = paramRecyclerView.ae(paramView, paramInt);
+      paramRecyclerView = paramRecyclerView.ad(paramView, paramInt);
       label391:
       locali.userName = paramRecyclerView;
-      paramRecyclerView = this.raX;
+      paramRecyclerView = this.sBo;
       if (paramRecyclerView == null) {
         break label562;
       }
     }
     label562:
-    for (paramRecyclerView = paramRecyclerView.af(paramView, paramInt);; paramRecyclerView = null)
+    for (paramRecyclerView = paramRecyclerView.ae(paramView, paramInt);; paramRecyclerView = null)
     {
-      locali.bVF = paramRecyclerView;
-      localObject = this.raX;
+      locali.nickName = paramRecyclerView;
+      localObject = this.sBo;
       paramRecyclerView = localb;
       if (localObject != null) {
-        paramRecyclerView = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject).Dn(paramInt);
+        paramRecyclerView = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject).GY(paramInt);
       }
-      locali.rfB = com.tencent.mm.plugin.expt.hellhound.core.b.aeH(paramRecyclerView);
-      localObject = this.rgd;
+      locali.sGR = com.tencent.mm.plugin.expt.hellhound.core.b.aoU(paramRecyclerView);
+      localObject = this.sHz;
       paramRecyclerView = (RecyclerView)localObject;
       if (localObject == null) {
-        paramRecyclerView = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm().cos();
+        paramRecyclerView = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU().cMD();
       }
       locali.sessionId = paramRecyclerView;
       locali.scene = this.mScene;
-      locali.rfA = com.tencent.mm.plugin.expt.hellhound.core.b.cpi();
-      paramView = com.tencent.mm.plugin.expt.hellhound.core.b.dS(paramView);
+      locali.sGQ = com.tencent.mm.plugin.expt.hellhound.core.b.cNB();
+      paramView = com.tencent.mm.plugin.expt.hellhound.core.b.dK(paramView);
       paramRecyclerView = paramView.first;
       p.g(paramRecyclerView, "widthHeightPair.first");
       locali.width = ((Number)paramRecyclerView).floatValue();
@@ -381,101 +500,38 @@ public final class j
     }
   }
   
-  public final void a(Object paramObject, long paramLong)
-  {
-    AppMethodBeat.i(196614);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-    if (paramObject == null) {
-      localObject = null;
-    }
-    int i;
-    while (localObject == null)
-    {
-      AppMethodBeat.o(196614);
-      return;
-      i = paramObject.hashCode();
-      Map localMap = (Map)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqr().get(Integer.valueOf(i));
-      localObject = localMap;
-      if (localMap == null) {
-        localObject = (Map)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqs().get(paramObject.getClass().getName());
-      }
-    }
-    com.tencent.mm.sdk.platformtools.ae.i("HABBYGE-MALI.WaterfallsFlowStatistics", "startStatisticsByHand, lastFeedMap: " + ((Map)localObject).size());
-    if (!((Map)localObject).isEmpty())
-    {
-      i = 1;
-      if (i == 0) {
-        break label310;
-      }
-      this.rgc.clear();
-      this.rgc.putAll((Map)localObject);
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-      if (paramObject != null)
-      {
-        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqr().remove(Integer.valueOf(paramObject.hashCode()));
-        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqs().remove(paramObject.getClass().getName());
-      }
-      paramObject = ((Map)this.rgc).entrySet().iterator();
-      label208:
-      do
-      {
-        if (!paramObject.hasNext()) {
-          break;
-        }
-        localObject = (i)((Map.Entry)paramObject.next()).getValue();
-        ((i)localObject).rfX = paramLong;
-        ((i)localObject).rfY = 0L;
-        ((i)localObject).rga = 0L;
-        ((i)localObject).rfZ = 0;
-      } while (((i)localObject).rft > 0L);
-      if (this.rge > 0L) {
-        break label301;
-      }
-    }
-    label301:
-    for (long l = this.rgf;; l = this.rge)
-    {
-      ((i)localObject).rft = l;
-      break label208;
-      i = 0;
-      break;
-    }
-    label310:
-    AppMethodBeat.o(196614);
-  }
-  
   public final void a(Map<String, i> paramMap, long paramLong)
   {
-    AppMethodBeat.i(196616);
+    AppMethodBeat.i(221108);
     Iterator localIterator = paramMap.entrySet().iterator();
     if (localIterator.hasNext())
     {
       i locali = (i)((Map.Entry)localIterator.next()).getValue();
-      locali.rfY = paramLong;
-      locali.rga = (locali.rfY - locali.rfX);
-      locali.rfZ = this.rgg;
-      if (locali.rft <= 0L) {
-        if (this.rge > 0L) {
+      locali.sHu = paramLong;
+      locali.sHw = (locali.sHu - locali.sHt);
+      locali.sHv = this.sHC;
+      if (locali.sGJ <= 0L) {
+        if (this.sHA > 0L) {
           break label125;
         }
       }
       label125:
-      for (long l = this.rgf;; l = this.rge)
+      for (long l = this.sHB;; l = this.sHA)
       {
-        locali.rft = l;
-        a.a locala = a.rff;
+        locali.sGJ = l;
+        a.a locala = a.sGv;
         a.a.a(locali);
         break;
       }
     }
     paramMap.clear();
-    AppMethodBeat.o(196616);
+    AppMethodBeat.o(221108);
   }
   
-  public final void ac(Map<String, i> paramMap)
+  public final void af(Map<String, i> paramMap)
   {
-    AppMethodBeat.i(196618);
-    Object localObject1 = this.rgn;
+    AppMethodBeat.i(221110);
+    Object localObject1 = this.sHJ;
     if (localObject1 != null)
     {
       localObject1 = (StaggeredGridLayoutManager)((WeakReference)localObject1).get();
@@ -483,7 +539,7 @@ public final class j
     }
     else
     {
-      AppMethodBeat.o(196618);
+      AppMethodBeat.o(221110);
       return;
     }
     p.g(localObject1, "mLayoutManagerRef?.get() ?: return");
@@ -491,11 +547,11 @@ public final class j
     while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      int i = rgr;
-      Object localObject2 = ((StaggeredGridLayoutManager)localObject1).bY(((i)localEntry.getValue()).position + i);
+      int i = sHN;
+      Object localObject2 = ((StaggeredGridLayoutManager)localObject1).findViewByPosition(((i)localEntry.getValue()).position + i);
       if (localObject2 != null)
       {
-        Object localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.dR((View)localObject2);
+        Object localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.dJ((View)localObject2);
         Object localObject4 = (i)localEntry.getValue();
         Object localObject5 = ((Pair)localObject3).first;
         p.g(localObject5, "xy.first");
@@ -504,7 +560,7 @@ public final class j
         localObject3 = ((Pair)localObject3).second;
         p.g(localObject3, "xy.second");
         ((i)localObject4).y = ((Number)localObject3).intValue();
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.dS((View)localObject2);
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.dK((View)localObject2);
         localObject3 = (i)localEntry.getValue();
         localObject4 = ((Pair)localObject2).first;
         p.g(localObject4, "widthHeightPair.first");
@@ -516,164 +572,98 @@ public final class j
         d((i)localEntry.getValue());
       }
     }
-    AppMethodBeat.o(196618);
+    AppMethodBeat.o(221110);
   }
   
-  public final void b(Object paramObject, long paramLong)
+  public final void c(i parami)
   {
-    AppMethodBeat.i(196615);
-    HashMap localHashMap = new HashMap();
-    localHashMap.putAll((Map)this.rgc);
-    Object localObject1 = ((Map)localHashMap).entrySet().iterator();
-    Object localObject2;
-    label132:
-    label294:
-    while (((Iterator)localObject1).hasNext())
+    AppMethodBeat.i(221105);
+    Object localObject;
+    String str;
+    if (parami.x <= this.sHE)
     {
-      localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      i locali = (i)((Map.Entry)localObject2).getValue();
-      Object localObject3 = this.rgn;
-      if (localObject3 != null)
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      if (!kotlin.a.j.a((Iterable)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOX(), parami.feedId))
       {
-        localObject3 = (StaggeredGridLayoutManager)((WeakReference)localObject3).get();
-        if (localObject3 != null) {
-          break label132;
+        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOX();
+        str = parami.feedId;
+        if (str == null) {
+          p.hyc();
         }
+        ((List)localObject).add(str);
       }
-      for (;;)
-      {
-        if (((i)((Map.Entry)localObject2).getValue()).rfv > 0.0F) {
-          break label294;
-        }
-        ((Iterator)localObject1).remove();
-        break;
-        p.g(localObject3, "mLayoutManagerRef?.get() ?: return");
-        localObject3 = ((StaggeredGridLayoutManager)localObject3).bY(rgr + locali.position);
-        if (localObject3 != null)
-        {
-          Object localObject4 = com.tencent.mm.plugin.expt.hellhound.core.b.dR((View)localObject3);
-          Object localObject5 = ((Pair)localObject4).first;
-          p.g(localObject5, "xy.first");
-          locali.x = ((Number)localObject5).intValue();
-          localObject4 = ((Pair)localObject4).second;
-          p.g(localObject4, "xy.second");
-          locali.y = ((Number)localObject4).intValue();
-          localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.dS((View)localObject3);
-          localObject4 = ((Pair)localObject3).first;
-          p.g(localObject4, "widthHeightPair.first");
-          locali.width = ((Number)localObject4).floatValue();
-          localObject3 = ((Pair)localObject3).second;
-          p.g(localObject3, "widthHeightPair.second");
-          locali.height = ((Number)localObject3).floatValue();
-          d(locali);
-        }
-      }
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      parami.sGS = kotlin.a.j.a(com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOX(), parami.feedId);
     }
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-    localObject1 = (Map)localHashMap;
-    p.h(localObject1, "feedMap");
-    if (paramObject != null)
+    for (int i = 0;; i = 1)
     {
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqr().put(Integer.valueOf(paramObject.hashCode()), localObject1);
-      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqs();
-      paramObject = paramObject.getClass().getName();
-      p.g(paramObject, "page.javaClass.name");
-      ((Map)localObject2).put(paramObject, localObject1);
+      parami.sHx = i;
+      AppMethodBeat.o(221105);
+      return;
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      if (!kotlin.a.j.a((Iterable)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOY(), parami.feedId))
+      {
+        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOY();
+        str = parami.feedId;
+        if (str == null) {
+          p.hyc();
+        }
+        ((List)localObject).add(str);
+      }
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      parami.sGS = kotlin.a.j.a(com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOY(), parami.feedId);
     }
-    com.tencent.mm.sdk.platformtools.ae.i("HABBYGE-MALI.WaterfallsFlowStatistics", "stopStatisticsByHand, realFeedMap=" + localHashMap.size() + ", mFeedMap=" + this.rgc.size());
-    a((Map)this.rgc, paramLong);
-    AppMethodBeat.o(196615);
   }
   
-  public final void b(List<String> paramList, long paramLong)
+  public final void c(List<String> paramList, long paramLong)
   {
-    AppMethodBeat.i(196610);
-    if (this.rgc.isEmpty())
+    AppMethodBeat.i(221102);
+    if (this.sHy.isEmpty())
     {
-      AppMethodBeat.o(196610);
+      AppMethodBeat.o(221102);
       return;
     }
-    Iterator localIterator = ((Map)this.rgc).entrySet().iterator();
+    Iterator localIterator = ((Map)this.sHy).entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (Map.Entry)localIterator.next();
       Object localObject1 = (String)((Map.Entry)localObject2).getKey();
       localObject2 = (i)((Map.Entry)localObject2).getValue();
-      if ((!paramList.contains(localObject1)) && (((i)localObject2).rfX > 0L))
+      if ((!paramList.contains(localObject1)) && (((i)localObject2).sHt > 0L))
       {
-        ((i)localObject2).rfY = paramLong;
-        ((i)localObject2).rga = (((i)localObject2).rfY - ((i)localObject2).rfX);
-        this.rgg = 0;
-        ((i)localObject2).rfZ = this.rgg;
-        if (((i)localObject2).rft <= 0L) {
-          if (this.rge > 0L) {
+        ((i)localObject2).sHu = paramLong;
+        ((i)localObject2).sHw = (((i)localObject2).sHu - ((i)localObject2).sHt);
+        this.sHC = 0;
+        ((i)localObject2).sHv = this.sHC;
+        if (((i)localObject2).sGJ <= 0L) {
+          if (this.sHA > 0L) {
             break label197;
           }
         }
         label197:
-        for (long l = this.rgf;; l = this.rge)
+        for (long l = this.sHB;; l = this.sHA)
         {
-          ((i)localObject2).rft = l;
-          localObject1 = a.rff;
+          ((i)localObject2).sGJ = l;
+          localObject1 = a.sGv;
           a.a.a((i)localObject2);
           localIterator.remove();
           break;
         }
       }
     }
-    AppMethodBeat.o(196610);
+    AppMethodBeat.o(221102);
   }
   
-  public final void c(i parami)
+  public final Map<String, i> cPv()
   {
-    AppMethodBeat.i(196613);
-    Object localObject;
-    String str;
-    if (parami.x <= this.rgi)
-    {
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-      if (!d.a.j.a((Iterable)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqv(), parami.feedId))
-      {
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqv();
-        str = parami.feedId;
-        if (str == null) {
-          p.gkB();
-        }
-        ((List)localObject).add(str);
-      }
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-      parami.rfC = d.a.j.a(com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqv(), parami.feedId);
-    }
-    for (int i = 0;; i = 1)
-    {
-      parami.rgb = i;
-      AppMethodBeat.o(196613);
-      return;
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-      if (!d.a.j.a((Iterable)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqw(), parami.feedId))
-      {
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqw();
-        str = parami.feedId;
-        if (str == null) {
-          p.gkB();
-        }
-        ((List)localObject).add(str);
-      }
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-      parami.rfC = d.a.j.a(com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqw(), parami.feedId);
-    }
-  }
-  
-  public final Map<String, i> cqN()
-  {
-    AppMethodBeat.i(196617);
+    AppMethodBeat.i(221109);
     Object localObject = new HashMap();
-    ((HashMap)localObject).putAll((Map)this.rgc);
-    ac((Map)localObject);
+    ((HashMap)localObject).putAll((Map)this.sHy);
+    af((Map)localObject);
     localObject = (Map)localObject;
-    AppMethodBeat.o(196617);
+    AppMethodBeat.o(221109);
     return localObject;
   }
   
@@ -682,24 +672,24 @@ public final class j
     float f1 = 0.0F;
     int i = parami.y;
     float f2 = i + parami.height;
-    if (i < this.rgj) {
-      if (f2 > this.rgk) {
-        f1 = this.rgk - this.rgj;
+    if (i < this.sHF) {
+      if (f2 > this.sHG) {
+        f1 = this.sHG - this.sHF;
       }
     }
     for (;;)
     {
-      parami.rfv = (f1 * 100.0F / parami.height);
-      parami.rfw = (f1 * parami.width * 100.0F / this.rgl);
+      parami.sGL = (f1 * 100.0F / parami.height);
+      parami.sGM = (f1 * parami.width * 100.0F / this.sHH);
       return;
-      if (f2 > this.rgj)
+      if (f2 > this.sHF)
       {
-        f1 = f2 - this.rgj;
+        f1 = f2 - this.sHF;
         continue;
-        if (f2 > this.rgk)
+        if (f2 > this.sHG)
         {
-          if (i < this.rgk) {
-            f1 = this.rgk - i;
+          if (i < this.sHG) {
+            f1 = this.sHG - i;
           }
         }
         else {
@@ -714,139 +704,136 @@ public final class j
     int i = parami.y;
     float f1 = i;
     float f2 = parami.height;
-    return (i < this.rgk) && (f1 + f2 > this.rgj);
+    return (i < this.sHG) && (f1 + f2 > this.sHF);
   }
   
-  final void vk(long paramLong)
+  public final void n(Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(196619);
-    Object localObject1 = this.rgn;
-    StaggeredGridLayoutManager localStaggeredGridLayoutManager;
-    if (localObject1 != null)
-    {
-      localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)((WeakReference)localObject1).get();
-      if (localStaggeredGridLayoutManager != null) {}
+    AppMethodBeat.i(221106);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+    if (paramObject == null) {
+      localObject = null;
     }
-    else
+    int i;
+    while (localObject == null)
     {
-      AppMethodBeat.o(196619);
+      AppMethodBeat.o(221106);
       return;
+      i = paramObject.hashCode();
+      Map localMap = (Map)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOT().get(Integer.valueOf(i));
+      localObject = localMap;
+      if (localMap == null) {
+        localObject = (Map)com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOU().get(paramObject.getClass().getName());
+      }
     }
-    p.g(localStaggeredGridLayoutManager, "mLayoutManagerRef?.get() ?: return");
-    localObject1 = this.rbC;
-    RecyclerView localRecyclerView;
-    if (localObject1 != null)
+    Log.i("HABBYGE-MALI.WaterfallsFlowStatistics", "startStatisticsByHand, lastFeedMap: " + ((Map)localObject).size());
+    if (!((Map)localObject).isEmpty())
     {
-      localRecyclerView = (RecyclerView)((WeakReference)localObject1).get();
-      if (localRecyclerView != null) {}
+      i = 1;
+      if (i == 0) {
+        break label310;
+      }
+      this.sHy.clear();
+      this.sHy.putAll((Map)localObject);
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      if (paramObject != null)
+      {
+        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOT().remove(Integer.valueOf(paramObject.hashCode()));
+        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOU().remove(paramObject.getClass().getName());
+      }
+      paramObject = ((Map)this.sHy).entrySet().iterator();
+      label208:
+      do
+      {
+        if (!paramObject.hasNext()) {
+          break;
+        }
+        localObject = (i)((Map.Entry)paramObject.next()).getValue();
+        ((i)localObject).sHt = paramLong;
+        ((i)localObject).sHu = 0L;
+        ((i)localObject).sHw = 0L;
+        ((i)localObject).sHv = 0;
+      } while (((i)localObject).sGJ > 0L);
+      if (this.sHA > 0L) {
+        break label301;
+      }
     }
-    else
+    label301:
+    for (long l = this.sHB;; l = this.sHA)
     {
-      AppMethodBeat.o(196619);
-      return;
+      ((i)localObject).sGJ = l;
+      break label208;
+      i = 0;
+      break;
     }
-    p.g(localRecyclerView, "mRecyclerViewRef?.get() ?: return");
-    localObject1 = localStaggeredGridLayoutManager.n(null);
-    int i = Math.min(localObject1[0], localObject1[1]);
-    localObject1 = localStaggeredGridLayoutManager.mA();
-    int j = Math.max(Math.max(localObject1[0], localObject1[1]) - rgr, 0);
-    i = Math.max(i, rgr);
-    int k = rgr;
-    List localList = (List)new ArrayList();
-    i -= k;
-    if (i < j + 1)
+    label310:
+    AppMethodBeat.o(221106);
+  }
+  
+  public final void o(Object paramObject, long paramLong)
+  {
+    AppMethodBeat.i(221107);
+    HashMap localHashMap = new HashMap();
+    localHashMap.putAll((Map)this.sHy);
+    Object localObject1 = ((Map)localHashMap).entrySet().iterator();
+    Object localObject2;
+    label132:
+    label294:
+    while (((Iterator)localObject1).hasNext())
     {
-      Object localObject3 = localStaggeredGridLayoutManager.bY(rgr + i);
-      Object localObject2;
+      localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      i locali = (i)((Map.Entry)localObject2).getValue();
+      Object localObject3 = this.sHJ;
       if (localObject3 != null)
       {
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.dR((View)localObject3);
-        p.g(localObject2, "HellhoundUtil.getCoordinateOnScreen(feedView)");
-        localObject1 = (Integer)((Pair)localObject2).first;
-        localObject2 = (Integer)((Pair)localObject2).second;
-        localObject3 = a((View)localObject3, i, localRecyclerView);
+        localObject3 = (StaggeredGridLayoutManager)((WeakReference)localObject3).get();
         if (localObject3 != null) {
-          break label249;
+          break label132;
         }
       }
       for (;;)
       {
-        i += 1;
+        if (((i)((Map.Entry)localObject2).getValue()).sGL > 0.0F) {
+          break label294;
+        }
+        ((Iterator)localObject1).remove();
         break;
-        label249:
-        if (((i)localObject3).feedId != null)
+        p.g(localObject3, "mLayoutManagerRef?.get() ?: return");
+        localObject3 = ((StaggeredGridLayoutManager)localObject3).findViewByPosition(sHN + locali.position);
+        if (localObject3 != null)
         {
-          String str = ((i)localObject3).feedId;
-          if (str == null) {
-            p.gkB();
-          }
-          localList.add(str);
-          if (this.rge <= 0L) {}
-          for (l = this.rgf;; l = this.rge)
-          {
-            ((i)localObject3).rft = l;
-            p.g(localObject1, "x");
-            ((i)localObject3).x = ((Integer)localObject1).intValue();
-            p.g(localObject2, "y");
-            ((i)localObject3).y = ((Integer)localObject2).intValue();
-            ((i)localObject3).position = i;
-            b((i)localObject3);
-            c((i)localObject3);
-            d((i)localObject3);
-            if (e((i)localObject3)) {
-              break label439;
-            }
-            localObject1 = (Map)this.rgc;
-            localObject2 = ((i)localObject3).feedId;
-            if (localObject1 != null) {
-              break;
-            }
-            localObject1 = new v("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
-            AppMethodBeat.o(196619);
-            throw ((Throwable)localObject1);
-          }
-          d.g.b.ae.eY(localObject1).remove(localObject2);
+          Object localObject4 = com.tencent.mm.plugin.expt.hellhound.core.b.dJ((View)localObject3);
+          Object localObject5 = ((Pair)localObject4).first;
+          p.g(localObject5, "xy.first");
+          locali.x = ((Number)localObject5).intValue();
+          localObject4 = ((Pair)localObject4).second;
+          p.g(localObject4, "xy.second");
+          locali.y = ((Number)localObject4).intValue();
+          localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.dK((View)localObject3);
+          localObject4 = ((Pair)localObject3).first;
+          p.g(localObject4, "widthHeightPair.first");
+          locali.width = ((Number)localObject4).floatValue();
+          localObject3 = ((Pair)localObject3).second;
+          p.g(localObject3, "widthHeightPair.second");
+          locali.height = ((Number)localObject3).floatValue();
+          d(locali);
         }
-      }
-      label439:
-      ((i)localObject3).rfX = this.rgf;
-      ((i)localObject3).rfY = paramLong;
-      localObject1 = this.raX;
-      if (localObject1 != null)
-      {
-        localObject1 = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject1).Dn(((i)localObject3).position);
-        label479:
-        ((i)localObject3).rfB = com.tencent.mm.plugin.expt.hellhound.core.b.aeH((String)localObject1);
-        ((i)localObject3).rga = (((i)localObject3).rfY - ((i)localObject3).rfX);
-        ((i)localObject3).cNB = true;
-        this.rgg = 1;
-        ((i)localObject3).rfZ = 1;
-        if (((i)localObject3).rft <= 0L) {
-          if (this.rge > 0L) {
-            break label610;
-          }
-        }
-      }
-      label610:
-      for (long l = this.rgf;; l = this.rge)
-      {
-        ((i)localObject3).rft = l;
-        localObject2 = this.rgd;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm().cos();
-        }
-        ((i)localObject3).sessionId = ((String)localObject1);
-        ((i)localObject3).scene = this.mScene;
-        ((i)localObject3).rfA = com.tencent.mm.plugin.expt.hellhound.core.b.cpi();
-        break;
-        localObject1 = null;
-        break label479;
       }
     }
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-    c.a.cqF();
-    AppMethodBeat.o(196619);
+    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+    localObject1 = (Map)localHashMap;
+    p.h(localObject1, "feedMap");
+    if (paramObject != null)
+    {
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOT().put(Integer.valueOf(paramObject.hashCode()), localObject1);
+      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOU();
+      paramObject = paramObject.getClass().getName();
+      p.g(paramObject, "page.javaClass.name");
+      ((Map)localObject2).put(paramObject, localObject1);
+    }
+    Log.i("HABBYGE-MALI.WaterfallsFlowStatistics", "stopStatisticsByHand, realFeedMap=" + localHashMap.size() + ", mFeedMap=" + this.sHy.size());
+    a((Map)this.sHy, paramLong);
+    AppMethodBeat.o(221107);
   }
 }
 

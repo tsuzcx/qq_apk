@@ -12,7 +12,7 @@ final class FreeWifiActivateStateUI$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(24972);
-    FreeWifiActivateStateUI.c(this.tzT);
+    FreeWifiActivateStateUI.c(this.wQV);
     AppMethodBeat.o(24972);
     return true;
   }

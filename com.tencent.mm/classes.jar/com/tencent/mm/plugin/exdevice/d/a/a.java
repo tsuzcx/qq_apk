@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.exdevice.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.exdevice.b.b;
-import com.tencent.mm.protocal.protobuf.abk;
-import com.tencent.mm.protocal.protobuf.abl;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.adj;
+import com.tencent.mm.protocal.protobuf.adk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 
 public final class a
-  extends com.tencent.mm.plugin.exdevice.b.a<abk, abl>
+  extends com.tencent.mm.plugin.exdevice.b.a<adj, adk>
 {
   String appId;
-  String cVh;
-  String dpB;
-  String qgT;
-  private WeakReference<b<a>> qgU;
+  String dGL;
+  String dGP;
+  String rxP;
+  private WeakReference<b<a>> rxQ;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, b<a> paramb)
   {
     AppMethodBeat.i(23175);
-    this.cVh = bu.nullAsNil(paramString1);
-    this.dpB = bu.nullAsNil(paramString2);
-    this.qgT = bu.nullAsNil(paramString3);
-    this.appId = bu.nullAsNil(paramString4);
-    this.qgU = new WeakReference(paramb);
+    this.dGL = Util.nullAsNil(paramString1);
+    this.dGP = Util.nullAsNil(paramString2);
+    this.rxP = Util.nullAsNil(paramString3);
+    this.appId = Util.nullAsNil(paramString4);
+    this.rxQ = new WeakReference(paramb);
     AppMethodBeat.o(23175);
   }
   
@@ -39,14 +39,14 @@ public final class a
     return "/cgi-bin/mmoc-bin/hardware/mydevice/connectedrouter";
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23176);
-    ae.d("MicroMsg.NetSceneConnectedRouter", "ap: connected router end. errType: %d, errCode: %d, errMsg: %s, resp: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramq.toString() });
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    paramq = (b)this.qgU.get();
-    if (paramq != null) {
-      paramq.a(paramInt2, paramInt3, paramString, this);
+    Log.d("MicroMsg.NetSceneConnectedRouter", "ap: connected router end. errType: %d, errCode: %d, errMsg: %s, resp: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, params.toString() });
+    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
+    params = (b)this.rxQ.get();
+    if (params != null) {
+      params.a(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(23176);
   }

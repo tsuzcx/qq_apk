@@ -9,7 +9,7 @@ public abstract interface b
   
   public abstract boolean a(String paramString, byte[] paramArrayOfByte, c paramc);
   
-  public abstract void aJv();
+  public abstract void bdw();
   
   public abstract boolean c(String paramString, c paramc);
   

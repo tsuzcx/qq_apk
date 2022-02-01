@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.csh;
-import com.tencent.mm.protocal.protobuf.csi;
+import com.tencent.mm.protocal.protobuf.dkj;
+import com.tencent.mm.protocal.protobuf.dkk;
 
 public final class d
-  extends a<csh, csi>
+  extends a<dkj, dkk>
 {
   public d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(64877);
-    csh localcsh = new csh();
-    localcsh.dwb = paramString1;
-    localcsh.HsF = paramString2;
-    this.vvd = localcsh;
+    dkj localdkj = new dkj();
+    localdkj.dNI = paramString1;
+    localdkj.MBB = paramString2;
+    this.yPr = localdkj;
     AppMethodBeat.o(64877);
   }
   

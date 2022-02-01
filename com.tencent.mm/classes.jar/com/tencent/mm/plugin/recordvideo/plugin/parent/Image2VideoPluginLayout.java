@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fr;
-import com.tencent.mm.g.b.a.gc;
+import com.tencent.mm.g.b.a.jf;
+import com.tencent.mm.g.b.a.jq;
 import com.tencent.mm.media.widget.camerarecordview.b.b;
 import com.tencent.mm.plugin.recordvideo.activity.a.a;
 import com.tencent.mm.plugin.recordvideo.d.c;
@@ -28,26 +28,26 @@ import com.tencent.mm.plugin.recordvideo.ui.editor.item.g;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.m;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.r;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.s;
-import com.tencent.mm.protocal.protobuf.bwm;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
-import d.n.n;
-import d.v;
+import com.tencent.mm.protocal.protobuf.cka;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
+import kotlin.l;
+import kotlin.n.n;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/Image2VideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "photoToViewPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin;", "createReportString", "", "city", "poiName", "getPlayerView", "Landroid/view/View;", "loadCurrentPage", "", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "", "prepareImageSizeReport", "prepareStoryBehaviorReport", "prepareStoryFailBehaviorReport", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/Image2VideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "photoToViewPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin;", "createReportString", "", "city", "poiName", "getPlayerView", "Landroid/view/View;", "loadCurrentPage", "", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "", "prepareImageSizeReport", "prepareStoryBehaviorReport", "prepareStoryFailBehaviorReport", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-recordvideo_release"})
 public final class Image2VideoPluginLayout
   extends BaseEditVideoPluginLayout
   implements d
 {
-  public static final Image2VideoPluginLayout.a xWo;
-  private o xWn;
+  public static final Image2VideoPluginLayout.a BWZ;
+  private o BWY;
   
   static
   {
     AppMethodBeat.i(75793);
-    xWo = new Image2VideoPluginLayout.a((byte)0);
+    BWZ = new Image2VideoPluginLayout.a((byte)0);
     AppMethodBeat.o(75793);
   }
   
@@ -58,7 +58,7 @@ public final class Image2VideoPluginLayout
     AppMethodBeat.o(75792);
   }
   
-  private final void dJX()
+  private final void eKS()
   {
     AppMethodBeat.i(75790);
     Object localObject1 = ((Iterable)getItemContainerPlugin().getEditorDataList()).iterator();
@@ -68,8 +68,8 @@ public final class Image2VideoPluginLayout
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)((Iterator)localObject1).next();
-      Object localObject3 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).ydv;
-      switch (e.gpL[localObject3.ordinal()])
+      Object localObject3 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).Cex;
+      switch (e.haE[localObject3.ordinal()])
       {
       default: 
         break;
@@ -80,23 +80,23 @@ public final class Image2VideoPluginLayout
         j += 1;
         break;
       case 3: 
-        localObject2 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).dLk();
+        localObject2 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2).eMk();
         if (localObject2 == null)
         {
-          localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LocationItemData");
+          localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LocationItemData");
           AppMethodBeat.o(75790);
           throw ((Throwable)localObject1);
         }
-        localObject2 = (bwm)localObject2;
-        localObject3 = c.xWV;
-        localObject3 = c.dKc();
-        String str1 = ((bwm)localObject2).yew;
-        d.g.b.p.g(str1, "poiData.cityName");
-        String str2 = ((bwm)localObject2).jGd;
-        d.g.b.p.g(str2, "poiData.poiName");
+        localObject2 = (cka)localObject2;
+        localObject3 = c.BXI;
+        localObject3 = c.eKX();
+        String str1 = ((cka)localObject2).Cfy;
+        kotlin.g.b.p.g(str1, "poiData.cityName");
+        String str2 = ((cka)localObject2).kHV;
+        kotlin.g.b.p.g(str2, "poiData.poiName");
         StringBuilder localStringBuilder = new StringBuilder();
         if (!TextUtils.isEmpty((CharSequence)str1)) {
-          localStringBuilder.append(n.h(str1, ",", " ", true));
+          localStringBuilder.append(n.j(str1, ",", " ", true));
         }
         if (!TextUtils.isEmpty((CharSequence)str2)) {
           if (((CharSequence)localStringBuilder).length() <= 0) {
@@ -108,52 +108,52 @@ public final class Image2VideoPluginLayout
           if (k != 0) {
             localStringBuilder.append("|");
           }
-          localStringBuilder.append(n.h(str2, ",", " ", true));
+          localStringBuilder.append(n.j(str2, ",", " ", true));
           str1 = localStringBuilder.toString();
-          d.g.b.p.g(str1, "reportPositionString.toString()");
-          ((fr)localObject3).oV(str1);
-          localObject3 = c.xWV;
-          c.dKc().oW(String.valueOf(((bwm)localObject2).dzE));
-          localObject3 = c.xWV;
-          c.dKc().oX(String.valueOf(((bwm)localObject2).dBu));
+          kotlin.g.b.p.g(str1, "reportPositionString.toString()");
+          ((jf)localObject3).wE(str1);
+          localObject3 = c.BXI;
+          c.eKX().wF(String.valueOf(((cka)localObject2).latitude));
+          localObject3 = c.BXI;
+          c.eKX().wG(String.valueOf(((cka)localObject2).dTj));
           break;
         }
       case 4: 
-        localObject2 = c.xWV;
-        c.dKc().Tw();
+        localObject2 = c.BXI;
+        c.eKX().ahl();
         break;
       case 5: 
         label348:
-        localObject2 = c.xWV;
-        c.dKc().Tx();
+        localObject2 = c.BXI;
+        c.eKX().ahm();
       }
     }
-    localObject1 = c.xWV;
-    c.dKc().kz(i);
-    localObject1 = c.xWV;
-    c.dKc().kA(j);
-    localObject1 = c.xWV;
-    localObject1 = c.dKc();
-    if (getMoreMenuPlugin().xQk)
+    localObject1 = c.BXI;
+    c.eKX().rB(i);
+    localObject1 = c.BXI;
+    c.eKX().rC(j);
+    localObject1 = c.BXI;
+    localObject1 = c.eKX();
+    if (getMoreMenuPlugin().BQn)
     {
       l = 1L;
-      ((fr)localObject1).kF(l);
-      localObject1 = c.xWV;
-      localObject1 = c.dKc();
-      localObject2 = getAddMusicPlugin().xNg;
+      ((jf)localObject1).rH(l);
+      localObject1 = c.BXI;
+      localObject1 = c.eKX();
+      localObject2 = getAddMusicPlugin().wgG;
       if (localObject2 == null) {
         break label507;
       }
-      i = ((AudioCacheInfo)localObject2).doj;
-      localObject2 = AudioCacheInfo.xPl;
-      if (i != AudioCacheInfo.dJp()) {
+      i = ((AudioCacheInfo)localObject2).source;
+      localObject2 = AudioCacheInfo.BPo;
+      if (i != AudioCacheInfo.eKc()) {
         break label507;
       }
     }
     label507:
     for (long l = 1L;; l = 0L)
     {
-      ((fr)localObject1).kE(l);
+      ((jf)localObject1).rG(l);
       AppMethodBeat.o(75790);
       return;
       l = 0L;
@@ -161,14 +161,14 @@ public final class Image2VideoPluginLayout
     }
   }
   
-  private final void dJY()
+  private final void eKT()
   {
     AppMethodBeat.i(75791);
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject = getCaptureInfo();
     if (localObject != null)
     {
-      localObject = ((b)localObject).hwK;
+      localObject = ((b)localObject).iqm;
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
@@ -187,8 +187,8 @@ public final class Image2VideoPluginLayout
     int i = localStringBuilder.lastIndexOf("||");
     if (i >= 0)
     {
-      localObject = c.xWV;
-      c.dKc().oZ(localStringBuilder.substring(0, i).toString());
+      localObject = c.BXI;
+      c.eKX().wI(localStringBuilder.substring(0, i).toString());
     }
     AppMethodBeat.o(75791);
   }
@@ -197,26 +197,26 @@ public final class Image2VideoPluginLayout
   {
     AppMethodBeat.i(75787);
     super.a(paramb);
-    ae.i("MicroMsg.Image2VideoPluginLayout", "loadCurrentPage info ".concat(String.valueOf(paramb)));
+    Log.i("MicroMsg.Image2VideoPluginLayout", "loadCurrentPage info ".concat(String.valueOf(paramb)));
     if (paramb != null)
     {
-      Object localObject = this.xWn;
+      Object localObject = this.BWY;
       if (localObject != null)
       {
-        d.g.b.p.h(paramb, "info");
-        ae.i("MicroMsg.EditPhotoToVideoPlugin", "start preview ".concat(String.valueOf(paramb)));
-        ((o)localObject).xQs = paramb;
-        ((o)localObject).xQQ.setVisibility(0);
-        ((o)localObject).xQQ.setAlpha(0.0F);
-        ((o)localObject).xQQ.setCallback((StoryFakeVideoPlayView.a)((o)localObject).xQP);
-        ((o)localObject).xQQ.at(paramb.hwK);
-        ((o)localObject).dez = paramb.dez;
-        ((o)localObject).hwE = paramb.hwE;
+        kotlin.g.b.p.h(paramb, "info");
+        Log.i("MicroMsg.EditPhotoToVideoPlugin", "start preview ".concat(String.valueOf(paramb)));
+        ((o)localObject).BQt = paramb;
+        ((o)localObject).BQN.setVisibility(0);
+        ((o)localObject).BQN.setAlpha(0.0F);
+        ((o)localObject).BQN.setCallback((StoryFakeVideoPlayView.a)((o)localObject).BQM);
+        ((o)localObject).BQN.aK(paramb.iqm);
+        ((o)localObject).dvv = paramb.dvv;
+        ((o)localObject).iqg = paramb.iqg;
       }
       localObject = getReMuxPlugin();
       RecordConfigProvider localRecordConfigProvider = getConfigProvider();
       if (localRecordConfigProvider == null) {
-        d.g.b.p.gkB();
+        kotlin.g.b.p.hyc();
       }
       ((ab)localObject).a(paramb, localRecordConfigProvider);
     }
@@ -227,11 +227,11 @@ public final class Image2VideoPluginLayout
   {
     int j = 0;
     AppMethodBeat.i(75788);
-    d.g.b.p.h(paramc, "status");
-    if (paramc != d.c.xUM) {
-      ae.i("MicroMsg.Image2VideoPluginLayout", "statusChange " + paramc + " ,param : " + paramBundle);
+    kotlin.g.b.p.h(paramc, "status");
+    if (paramc != d.c.BVq) {
+      Log.i("MicroMsg.Image2VideoPluginLayout", "statusChange " + paramc + " ,param : " + paramBundle);
     }
-    switch (e.cqt[paramc.ordinal()])
+    switch (e.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
       super.a(paramc, paramBundle);
@@ -240,32 +240,32 @@ public final class Image2VideoPluginLayout
     case 1: 
       getItemContainerPlugin().onPause();
       getAddMusicPlugin().onPause();
-      if (!getMoreMenuPlugin().xQk) {
+      if (!getMoreMenuPlugin().BQn) {
         break;
       }
     }
     for (int i = 1;; i = 0)
     {
-      paramc = CaptureDataManager.xNV;
-      d.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
+      paramc = CaptureDataManager.BOb;
+      kotlin.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
       paramc.getExtData().putInt("key_extra_feature_flag", i);
-      if (getMoreMenuPlugin().bxN == 2)
+      if (getMoreMenuPlugin().bxP == 2)
       {
-        paramc = CaptureDataManager.xNV;
-        d.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
-        paramc.getExtData().putString("key_group_list", getMoreMenuPlugin().dJJ());
-        boolean bool = getAddMusicPlugin().xTd.getMuteOrigin();
-        AudioCacheInfo localAudioCacheInfo = getAddMusicPlugin().xNg;
+        paramc = CaptureDataManager.BOb;
+        kotlin.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
+        paramc.getExtData().putString("key_group_list", getMoreMenuPlugin().eKy());
+        boolean bool = getAddMusicPlugin().wgL.getMuteOrigin();
+        AudioCacheInfo localAudioCacheInfo = getAddMusicPlugin().wgG;
         ArrayList localArrayList1 = h.a(getItemContainerPlugin());
         ArrayList localArrayList2 = getItemContainerPlugin().getEditorDataList();
-        float[] arrayOfFloat = getItemContainerPlugin().dJC();
-        paramc = this.xWn;
+        float[] arrayOfFloat = getItemContainerPlugin().eKr();
+        paramc = this.BWY;
         if (paramc != null)
         {
-          paramc = paramc.xQs;
+          paramc = paramc.BQt;
           if (paramc != null)
           {
-            paramBundle = paramc.hwK;
+            paramBundle = paramc.iqm;
             paramc = paramBundle;
             if (paramBundle != null) {
               break label273;
@@ -275,22 +275,22 @@ public final class Image2VideoPluginLayout
         paramc = new ArrayList();
         label273:
         getItemContainerPlugin();
-        paramc = new com.tencent.mm.plugin.recordvideo.b.f(bool, localAudioCacheInfo, localArrayList1, localArrayList2, arrayOfFloat, paramc, h.dJD());
-        ae.i("MicroMsg.Image2VideoPluginLayout", "edit config: ".concat(String.valueOf(paramc)));
+        paramc = new com.tencent.mm.plugin.recordvideo.b.f(bool, localAudioCacheInfo, localArrayList1, localArrayList2, arrayOfFloat, paramc, h.eKs());
+        Log.i("MicroMsg.Image2VideoPluginLayout", "edit config: ".concat(String.valueOf(paramc)));
         getReMuxPlugin().a(paramc);
-        paramc = c.xWV;
-        c.u("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(getItemContainerPlugin().dJF()));
-        paramc = c.xWV;
-        c.u("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(getItemContainerPlugin().dJG()));
-        paramc = c.xWV;
-        if (getAddMusicPlugin().xNg != null) {
+        paramc = c.BXI;
+        c.x("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(getItemContainerPlugin().eKu()));
+        paramc = c.BXI;
+        c.x("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(getItemContainerPlugin().eKv()));
+        paramc = c.BXI;
+        if (getAddMusicPlugin().wgG != null) {
           break label538;
         }
         i = 0;
         label380:
-        c.u("KEY_SELECT_MUSIC_INT", Integer.valueOf(i));
-        paramc = c.xWV;
-        if (!getAddMusicPlugin().xTd.getMuteOrigin()) {
+        c.x("KEY_SELECT_MUSIC_INT", Integer.valueOf(i));
+        paramc = c.BXI;
+        if (!getAddMusicPlugin().wgL.getMuteOrigin()) {
           break label543;
         }
       }
@@ -298,30 +298,30 @@ public final class Image2VideoPluginLayout
       label543:
       for (i = 0;; i = 1)
       {
-        c.u("KEY_SELECT_ORIGIN_INT", Integer.valueOf(i));
-        paramc = c.xWV;
-        c.u("KEY_AFTER_EDIT_INT", Integer.valueOf(1));
-        dJX();
-        dJY();
-        paramc = c.xWV;
-        c.Ot(13);
-        paramc = c.xWV;
-        c.dKc().kw(System.currentTimeMillis());
-        paramc = c.xWV;
+        c.x("KEY_SELECT_ORIGIN_INT", Integer.valueOf(i));
+        paramc = c.BXI;
+        c.x("KEY_AFTER_EDIT_INT", Integer.valueOf(1));
+        eKS();
+        eKT();
+        paramc = c.BXI;
+        c.VI(13);
+        paramc = c.BXI;
+        c.eKX().ry(System.currentTimeMillis());
+        paramc = c.BXI;
         paramc = getConfigProvider();
         i = j;
         if (paramc != null) {
           i = paramc.scene;
         }
-        c.Ou(i);
+        c.VJ(i);
         AppMethodBeat.o(75788);
         return;
-        if (getMoreMenuPlugin().bxN != 3) {
+        if (getMoreMenuPlugin().bxP != 3) {
           break;
         }
-        paramc = CaptureDataManager.xNV;
-        d.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
-        paramc.getExtData().putString("key_black_list", getMoreMenuPlugin().dJJ());
+        paramc = CaptureDataManager.BOb;
+        kotlin.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
+        paramc.getExtData().putString("key_black_list", getMoreMenuPlugin().eKy());
         break;
         i = 1;
         break label380;
@@ -331,18 +331,32 @@ public final class Image2VideoPluginLayout
     }
   }
   
-  public final boolean aoQ()
+  public final View getPlayerView()
+  {
+    AppMethodBeat.i(75786);
+    Object localObject = new StoryFakeVideoPlayView(getContext());
+    ((StoryFakeVideoPlayView)localObject).setAlpha(0.0F);
+    Log.i("MicroMsg.Image2VideoPluginLayout", "playerView :".concat(String.valueOf(localObject)));
+    o localo = new o((StoryFakeVideoPlayView)localObject, (d)this);
+    this.BWY = localo;
+    getPluginList().add(localo);
+    localObject = (View)localObject;
+    AppMethodBeat.o(75786);
+    return localObject;
+  }
+  
+  public final boolean onBackPress()
   {
     AppMethodBeat.i(75789);
     Object localObject1;
     int j;
     int i;
-    if (!super.aoQ())
+    if (!super.onBackPress())
     {
-      ae.i("MicroMsg.Image2VideoPluginLayout", "onBackPress");
-      localObject1 = c.xWV;
-      c.u("KEY_AFTER_EDIT_INT", Integer.valueOf(0));
-      localObject1 = ((Iterable)getItemContainerPlugin().xQe.getAllItemViews()).iterator();
+      Log.i("MicroMsg.Image2VideoPluginLayout", "onBackPress");
+      localObject1 = c.BXI;
+      c.x("KEY_AFTER_EDIT_INT", Integer.valueOf(0));
+      localObject1 = ((Iterable)getItemContainerPlugin().BQh.getAllItemViews()).iterator();
       j = 0;
       i = 0;
       while (((Iterator)localObject1).hasNext())
@@ -358,29 +372,29 @@ public final class Image2VideoPluginLayout
         }
         else if ((localObject2 instanceof com.tencent.mm.plugin.recordvideo.ui.editor.item.p))
         {
-          localObject2 = c.xWV;
-          c.dKd().TY();
+          localObject2 = c.BXI;
+          c.eKY().ahN();
         }
         else if ((!(localObject2 instanceof m)) && ((localObject2 instanceof s)))
         {
-          localObject2 = c.xWV;
-          c.dKd().Ua();
+          localObject2 = c.BXI;
+          c.eKY().ahP();
         }
       }
-      localObject1 = c.xWV;
-      localObject1 = c.dKd();
-      if (!getMoreMenuPlugin().xQk) {
+      localObject1 = c.BXI;
+      localObject1 = c.eKY();
+      if (!getMoreMenuPlugin().BQn) {
         break label248;
       }
     }
     label248:
     for (long l = 1L;; l = 0L)
     {
-      ((gc)localObject1).lH(l);
-      localObject1 = c.xWV;
-      c.dKd().lD(i);
-      localObject1 = c.xWV;
-      c.dKd().lE(j);
+      ((jq)localObject1).sJ(l);
+      localObject1 = c.BXI;
+      c.eKY().sF(i);
+      localObject1 = c.BXI;
+      c.eKY().sG(j);
       localObject1 = getNavigator();
       if (localObject1 != null) {
         a.a.a((com.tencent.mm.plugin.recordvideo.activity.a)localObject1);
@@ -389,24 +403,10 @@ public final class Image2VideoPluginLayout
       return true;
     }
   }
-  
-  public final View getPlayerView()
-  {
-    AppMethodBeat.i(75786);
-    Object localObject = new StoryFakeVideoPlayView(getContext());
-    ((StoryFakeVideoPlayView)localObject).setAlpha(0.0F);
-    ae.i("MicroMsg.Image2VideoPluginLayout", "playerView :".concat(String.valueOf(localObject)));
-    o localo = new o((StoryFakeVideoPlayView)localObject, (d)this);
-    this.xWn = localo;
-    getPluginList().add(localo);
-    localObject = (View)localObject;
-    AppMethodBeat.o(75786);
-    return localObject;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.parent.Image2VideoPluginLayout
  * JD-Core Version:    0.7.0.1
  */

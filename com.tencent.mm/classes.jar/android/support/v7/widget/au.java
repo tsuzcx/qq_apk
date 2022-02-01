@@ -39,30 +39,30 @@ final class au
   extends o
   implements View.OnClickListener
 {
-  private final SearchView awA;
-  private final SearchableInfo awl;
-  private final WeakHashMap<String, Drawable.ConstantState> awq;
-  private ColorStateList axA;
+  private final SearchableInfo awj;
+  private final WeakHashMap<String, Drawable.ConstantState> awo;
+  private final SearchView awy;
+  private int axA = -1;
   private int axB = -1;
   private int axC = -1;
   private int axD = -1;
   private int axE = -1;
-  private int axF = -1;
-  private int axG = -1;
-  private final SearchManager axw = (SearchManager)this.mContext.getSystemService("search");
-  private final Context axx;
-  private final int axy;
-  int axz = 1;
+  private final SearchManager axu = (SearchManager)this.mContext.getSystemService("search");
+  private final Context axv;
+  private final int axw;
+  int axx = 1;
+  private ColorStateList axy;
+  private int axz = -1;
   private boolean mClosed = false;
   
   public au(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap<String, Drawable.ConstantState> paramWeakHashMap)
   {
     super(paramContext, paramSearchView.getSuggestionRowLayout());
-    this.awA = paramSearchView;
-    this.awl = paramSearchableInfo;
-    this.axy = paramSearchView.getSuggestionCommitIconResId();
-    this.axx = paramContext;
-    this.awq = paramWeakHashMap;
+    this.awy = paramSearchView;
+    this.awj = paramSearchableInfo;
+    this.axw = paramSearchView.getSuggestionCommitIconResId();
+    this.axv = paramContext;
+    this.awo = paramWeakHashMap;
   }
   
   private Drawable H(String paramString)
@@ -77,12 +77,12 @@ final class au
       try
       {
         int i = Integer.parseInt(paramString);
-        String str = "android.resource://" + this.axx.getPackageName() + "/" + i;
+        String str = "android.resource://" + this.axv.getPackageName() + "/" + i;
         localDrawable = I(str);
         localObject1 = localDrawable;
         if (localDrawable == null)
         {
-          localObject1 = b.l(this.axx, i);
+          localObject1 = b.l(this.axv, i);
           a(str, (Drawable)localObject1);
           return localObject1;
         }
@@ -105,7 +105,7 @@ final class au
   
   private Drawable I(String paramString)
   {
-    paramString = (Drawable.ConstantState)this.awq.get(paramString);
+    paramString = (Drawable.ConstantState)this.awo.get(paramString);
     if (paramString == null) {
       return null;
     }
@@ -147,7 +147,7 @@ final class au
   private void a(String paramString, Drawable paramDrawable)
   {
     if (paramDrawable != null) {
-      this.awq.put(paramString, paramDrawable.getConstantState());
+      this.awo.put(paramString, paramDrawable.getConstantState());
     }
   }
   
@@ -188,7 +188,7 @@ final class au
           throw new FileNotFoundException("Resource does not exist: ".concat(String.valueOf(paramUri)));
         }
       }
-      localInputStream = this.axx.getContentResolver().openInputStream(paramUri);
+      localInputStream = this.axv.getContentResolver().openInputStream(paramUri);
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
@@ -299,93 +299,93 @@ final class au
   {
     Object localObject2 = null;
     a locala = (a)paramView.getTag();
-    if (this.axG != -1) {}
-    for (int i = paramCursor.getInt(this.axG);; i = 0)
+    if (this.axE != -1) {}
+    for (int i = paramCursor.getInt(this.axE);; i = 0)
     {
-      if (locala.axH != null)
+      if (locala.axF != null)
       {
-        paramView = a(paramCursor, this.axB);
-        b(locala.axH, paramView);
+        paramView = a(paramCursor, this.axz);
+        b(locala.axF, paramView);
       }
       Object localObject1;
-      if (locala.axI != null)
+      if (locala.axG != null)
       {
-        localObject1 = a(paramCursor, this.axD);
+        localObject1 = a(paramCursor, this.axB);
         if (localObject1 != null)
         {
-          if (this.axA == null)
+          if (this.axy == null)
           {
             paramView = new TypedValue();
-            this.mContext.getTheme().resolveAttribute(2130969561, paramView, true);
-            this.axA = this.mContext.getResources().getColorStateList(paramView.resourceId);
+            this.mContext.getTheme().resolveAttribute(2130969647, paramView, true);
+            this.axy = this.mContext.getResources().getColorStateList(paramView.resourceId);
           }
           paramView = new SpannableString((CharSequence)localObject1);
-          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.axA, null), 0, ((CharSequence)localObject1).length(), 33);
+          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.axy, null), 0, ((CharSequence)localObject1).length(), 33);
           if (!TextUtils.isEmpty(paramView)) {
             break label345;
           }
-          if (locala.axH != null)
+          if (locala.axF != null)
           {
-            locala.axH.setSingleLine(false);
-            locala.axH.setMaxLines(2);
+            locala.axF.setSingleLine(false);
+            locala.axF.setMaxLines(2);
           }
           label201:
-          b(locala.axI, paramView);
+          b(locala.axG, paramView);
         }
       }
       else
       {
-        if (locala.axJ != null)
+        if (locala.axH != null)
         {
-          ImageView localImageView = locala.axJ;
-          if (this.axE != -1) {
+          ImageView localImageView = locala.axH;
+          if (this.axC != -1) {
             break label374;
           }
           paramView = null;
           label235:
           a(localImageView, paramView, 4);
         }
-        if (locala.axK != null)
+        if (locala.axI != null)
         {
-          localObject1 = locala.axK;
-          if (this.axF != -1) {
+          localObject1 = locala.axI;
+          if (this.axD != -1) {
             break label519;
           }
         }
       }
       label519:
-      for (paramView = localObject2;; paramView = H(paramCursor.getString(this.axF)))
+      for (paramView = localObject2;; paramView = H(paramCursor.getString(this.axD)))
       {
         a((ImageView)localObject1, paramView, 8);
-        if ((this.axz != 2) && ((this.axz != 1) || ((i & 0x1) == 0))) {
+        if ((this.axx != 2) && ((this.axx != 1) || ((i & 0x1) == 0))) {
           break label537;
         }
-        locala.axL.setVisibility(0);
-        locala.axL.setTag(locala.axH.getText());
-        locala.axL.setOnClickListener(this);
+        locala.axJ.setVisibility(0);
+        locala.axJ.setTag(locala.axF.getText());
+        locala.axJ.setOnClickListener(this);
         return;
-        paramView = a(paramCursor, this.axC);
+        paramView = a(paramCursor, this.axA);
         break;
         label345:
-        if (locala.axH == null) {
+        if (locala.axF == null) {
           break label201;
         }
-        locala.axH.setSingleLine(true);
-        locala.axH.setMaxLines(1);
+        locala.axF.setSingleLine(true);
+        locala.axF.setMaxLines(1);
         break label201;
         label374:
-        localObject1 = H(paramCursor.getString(this.axE));
+        localObject1 = H(paramCursor.getString(this.axC));
         paramView = (View)localObject1;
         if (localObject1 != null) {
           break label235;
         }
-        paramView = this.awl.getSearchActivity();
+        paramView = this.awj.getSearchActivity();
         String str = paramView.flattenToShortString();
-        if (this.awq.containsKey(str))
+        if (this.awo.containsKey(str))
         {
-          paramView = (Drawable.ConstantState)this.awq.get(str);
+          paramView = (Drawable.ConstantState)this.awo.get(str);
           if (paramView == null) {}
-          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.axx.getResources()))
+          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.axv.getResources()))
           {
             paramView = (View)localObject1;
             if (localObject1 != null) {
@@ -399,12 +399,12 @@ final class au
         if (localObject1 == null) {}
         for (paramView = null;; paramView = ((Drawable)localObject1).getConstantState())
         {
-          this.awq.put(str, paramView);
+          this.awo.put(str, paramView);
           break;
         }
       }
       label537:
-      locala.axL.setVisibility(8);
+      locala.axJ.setVisibility(8);
       return;
     }
   }
@@ -424,12 +424,12 @@ final class au
         super.changeCursor(paramCursor);
         if (paramCursor != null)
         {
-          this.axB = paramCursor.getColumnIndex("suggest_text_1");
-          this.axC = paramCursor.getColumnIndex("suggest_text_2");
-          this.axD = paramCursor.getColumnIndex("suggest_text_2_url");
-          this.axE = paramCursor.getColumnIndex("suggest_icon_1");
-          this.axF = paramCursor.getColumnIndex("suggest_icon_2");
-          this.axG = paramCursor.getColumnIndex("suggest_flags");
+          this.axz = paramCursor.getColumnIndex("suggest_text_1");
+          this.axA = paramCursor.getColumnIndex("suggest_text_2");
+          this.axB = paramCursor.getColumnIndex("suggest_text_2_url");
+          this.axC = paramCursor.getColumnIndex("suggest_icon_1");
+          this.axD = paramCursor.getColumnIndex("suggest_icon_2");
+          this.axE = paramCursor.getColumnIndex("suggest_flags");
           return;
         }
       }
@@ -449,14 +449,14 @@ final class au
         if (str != null) {
           return str;
         }
-        if (this.awl.shouldRewriteQueryFromData())
+        if (this.awj.shouldRewriteQueryFromData())
         {
           str = a(paramCursor, "suggest_intent_data");
           if (str != null) {
             return str;
           }
         }
-      } while (!this.awl.shouldRewriteQueryFromText());
+      } while (!this.awj.shouldRewriteQueryFromText());
       paramCursor = a(paramCursor, "suggest_text_1");
     } while (paramCursor == null);
     return paramCursor;
@@ -471,9 +471,9 @@ final class au
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = newDropDownView(this.mContext, this.Tc, paramViewGroup);
+      paramViewGroup = newDropDownView(this.mContext, this.To, paramViewGroup);
       if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).axH.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).axF.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -488,9 +488,9 @@ final class au
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = newView(this.mContext, this.Tc, paramViewGroup);
+      paramViewGroup = newView(this.mContext, this.To, paramViewGroup);
       if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).axH.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).axF.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -505,7 +505,7 @@ final class au
   {
     paramContext = super.newView(paramContext, paramCursor, paramViewGroup);
     paramContext.setTag(new a(paramContext));
-    ((ImageView)paramContext.findViewById(2131299261)).setImageResource(this.axy);
+    ((ImageView)paramContext.findViewById(2131299838)).setImageResource(this.axw);
     return paramContext;
   }
   
@@ -525,19 +525,19 @@ final class au
   {
     paramView = paramView.getTag();
     if ((paramView instanceof CharSequence)) {
-      this.awA.setQuery((CharSequence)paramView);
+      this.awy.setQuery((CharSequence)paramView);
     }
   }
   
   public final Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
     if (paramCharSequence == null) {}
-    for (paramCharSequence = ""; (this.awA.getVisibility() != 0) || (this.awA.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString()) {
+    for (paramCharSequence = ""; (this.awy.getVisibility() != 0) || (this.awy.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString()) {
       return null;
     }
     try
     {
-      Object localObject1 = this.awl;
+      Object localObject1 = this.awj;
       if (localObject1 == null) {
         paramCharSequence = null;
       }
@@ -581,25 +581,25 @@ final class au
   
   static final class a
   {
-    public final TextView axH;
-    public final TextView axI;
+    public final TextView axF;
+    public final TextView axG;
+    public final ImageView axH;
+    public final ImageView axI;
     public final ImageView axJ;
-    public final ImageView axK;
-    public final ImageView axL;
     
     public a(View paramView)
     {
-      this.axH = ((TextView)paramView.findViewById(16908308));
-      this.axI = ((TextView)paramView.findViewById(16908309));
-      this.axJ = ((ImageView)paramView.findViewById(16908295));
-      this.axK = ((ImageView)paramView.findViewById(16908296));
-      this.axL = ((ImageView)paramView.findViewById(2131299261));
+      this.axF = ((TextView)paramView.findViewById(16908308));
+      this.axG = ((TextView)paramView.findViewById(16908309));
+      this.axH = ((ImageView)paramView.findViewById(16908295));
+      this.axI = ((ImageView)paramView.findViewById(16908296));
+      this.axJ = ((ImageView)paramView.findViewById(2131299838));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.widget.au
  * JD-Core Version:    0.7.0.1
  */

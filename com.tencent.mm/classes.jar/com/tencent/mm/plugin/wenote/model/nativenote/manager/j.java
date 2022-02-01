@@ -12,52 +12,52 @@ import java.util.regex.Pattern;
 public final class j
   implements Serializable
 {
-  private static final Pattern pCp;
-  int pCq;
-  public final ArrayList<n> pCr;
+  private static final Pattern qRH;
+  int qRI;
+  public final ArrayList<n> qRJ;
   
   static
   {
     AppMethodBeat.i(30523);
-    pCp = Pattern.compile("\\r\\n|\\r|\\n");
+    qRH = Pattern.compile("\\r\\n|\\r|\\n");
     AppMethodBeat.o(30523);
   }
   
   public j(Spanned paramSpanned)
   {
     AppMethodBeat.i(30520);
-    this.pCq = 0;
-    this.pCr = new ArrayList();
+    this.qRI = 0;
+    this.qRJ = new ArrayList();
     if (paramSpanned != null)
     {
       paramSpanned = paramSpanned.toString();
-      this.pCq = 1;
-      Matcher localMatcher = pCp.matcher(paramSpanned);
+      this.qRI = 1;
+      Matcher localMatcher = qRH.matcher(paramSpanned);
       int i = 0;
       int j;
       boolean bool1;
       if (localMatcher.find())
       {
         j = localMatcher.end();
-        if (this.pCq == 1) {}
+        if (this.qRI == 1) {}
         for (bool1 = true;; bool1 = false)
         {
           n localn = new n(i, j, bool1, false);
-          this.pCr.add(localn);
+          this.qRJ.add(localn);
           i = localMatcher.end();
-          this.pCq += 1;
+          this.qRI += 1;
           break;
         }
       }
-      if (this.pCr.size() < this.pCq)
+      if (this.qRJ.size() < this.qRI)
       {
         j = paramSpanned.length();
         bool1 = bool2;
-        if (this.pCq == 1) {
+        if (this.qRI == 1) {
           bool1 = true;
         }
         paramSpanned = new n(i, j, bool1, true);
-        this.pCr.add(paramSpanned);
+        this.qRJ.add(paramSpanned);
       }
     }
     AppMethodBeat.o(30520);
@@ -67,10 +67,10 @@ public final class j
   {
     AppMethodBeat.i(30521);
     int i = 0;
-    while ((i < this.pCq) && (paramInt >= ((n)this.pCr.get(i)).OQ)) {
+    while ((i < this.qRI) && (paramInt >= ((n)this.qRJ.get(i)).Pc)) {
       i += 1;
     }
-    paramInt = Math.min(Math.max(0, i), this.pCr.size() - 1);
+    paramInt = Math.min(Math.max(0, i), this.qRJ.size() - 1);
     AppMethodBeat.o(30521);
     return paramInt;
   }
@@ -79,13 +79,13 @@ public final class j
   {
     AppMethodBeat.i(30522);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Iterator localIterator = this.pCr.iterator();
+    Iterator localIterator = this.qRJ.iterator();
     int i = 1;
     if (localIterator.hasNext())
     {
       localObject = (n)localIterator.next();
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(i).append(": ").append(((e)localObject).avj).append("-").append(((e)localObject).OQ);
-      if (((n)localObject).pDT) {}
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(i).append(": ").append(((e)localObject).avh).append("-").append(((e)localObject).Pc);
+      if (((n)localObject).qTk) {}
       for (localObject = "";; localObject = ", ")
       {
         localStringBuilder2.append((String)localObject);
@@ -100,7 +100,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.j
  * JD-Core Version:    0.7.0.1
  */

@@ -18,63 +18,63 @@ public class g
   
   public void close()
   {
-    AppMethodBeat.i(192867);
+    AppMethodBeat.i(188530);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "closeIconDB", null, new Object[0]);
-    AppMethodBeat.o(192867);
+    AppMethodBeat.o(188530);
   }
   
   public Bitmap getIconForPageUrl(String paramString)
   {
-    AppMethodBeat.i(192872);
+    AppMethodBeat.i(188535);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getIconForPageUrl", new Class[] { String.class }, new Object[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(192872);
+      AppMethodBeat.o(188535);
       return null;
     }
     paramString = (Bitmap)paramString;
-    AppMethodBeat.o(192872);
+    AppMethodBeat.o(188535);
     return paramString;
   }
   
   public void open(String paramString)
   {
-    AppMethodBeat.i(192866);
+    AppMethodBeat.i(188529);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "openIconDB", new Class[] { String.class }, new Object[] { paramString });
-    AppMethodBeat.o(192866);
+    AppMethodBeat.o(188529);
   }
   
   public void releaseIconForPageUrl(String paramString)
   {
-    AppMethodBeat.i(192871);
+    AppMethodBeat.i(188534);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "releaseIconForPageUrl", new Class[] { String.class }, new Object[] { paramString });
-    AppMethodBeat.o(192871);
+    AppMethodBeat.o(188534);
   }
   
   public void removeAllIcons()
   {
-    AppMethodBeat.i(192868);
+    AppMethodBeat.i(188531);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "removeAllIcons", null, new Object[0]);
-    AppMethodBeat.o(192868);
+    AppMethodBeat.o(188531);
   }
   
   public void requestIconForPageUrl(String paramString, IconListener paramIconListener)
   {
-    AppMethodBeat.i(192869);
+    AppMethodBeat.i(188532);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "requestIconForPageUrl", new Class[] { String.class, IconListener.class }, new Object[] { paramString, paramIconListener });
-    AppMethodBeat.o(192869);
+    AppMethodBeat.o(188532);
   }
   
   public void retainIconForPageUrl(String paramString)
   {
-    AppMethodBeat.i(192870);
+    AppMethodBeat.i(188533);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "retainIconForPageUrl", new Class[] { String.class }, new Object[] { paramString });
-    AppMethodBeat.o(192870);
+    AppMethodBeat.o(188533);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.g
  * JD-Core Version:    0.7.0.1
  */

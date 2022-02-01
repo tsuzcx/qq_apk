@@ -1,16 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.storage.ca;
 
 public final class zf
-  extends b
+  extends IEvent
 {
-  public a dPl;
-  public b dPm;
+  public a efq;
   
   public zf()
   {
@@ -19,30 +16,23 @@ public final class zf
   
   private zf(byte paramByte)
   {
-    AppMethodBeat.i(19848);
-    this.dPl = new a();
-    this.dPm = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(19847);
+    this.efq = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19848);
+    AppMethodBeat.o(19847);
   }
   
   public static final class a
   {
-    public String callingPackage;
-    public Context context;
-    public int drH = 0;
-    public Uri uri;
-  }
-  
-  public static final class b
-  {
-    public Cursor drI;
+    public ca dCM;
+    public String description;
+    public String xml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.zf
  * JD-Core Version:    0.7.0.1
  */

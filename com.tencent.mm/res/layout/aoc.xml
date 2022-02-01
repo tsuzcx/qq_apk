@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/gam" style="@style/m8" />
-    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/bhn" android:imeOptions="actionDone" style="@style/m6" />
-</merge>
+    <ProgressBar android:layout_gravity="center" android:id="@id/ep4" android:paddingTop="15.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/bl" android:gravity="center|left" android:id="@id/bkk" android:background="@color/ac_" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/i2" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

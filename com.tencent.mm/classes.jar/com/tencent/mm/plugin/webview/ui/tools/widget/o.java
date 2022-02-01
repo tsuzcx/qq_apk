@@ -6,12 +6,12 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.b;
 import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"toColor", "", "context", "Landroid/content/Context;", "toDrawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"toColor", "", "context", "Landroid/content/Context;", "toDrawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"})
 public final class o
 {
-  static final int c(int paramInt, Context paramContext)
+  static final int e(int paramInt, Context paramContext)
   {
     AppMethodBeat.i(82750);
     TypedValue localTypedValue = new TypedValue();
@@ -21,11 +21,11 @@ public final class o
     return paramInt;
   }
   
-  static final Drawable hg(Context paramContext)
+  static final Drawable ia(Context paramContext)
   {
     AppMethodBeat.i(175713);
     TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2130968841, localTypedValue, true);
+    paramContext.getTheme().resolveAttribute(2130968856, localTypedValue, true);
     paramContext = b.l(paramContext, localTypedValue.resourceId);
     AppMethodBeat.o(175713);
     return paramContext;
@@ -33,7 +33,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.o
  * JD-Core Version:    0.7.0.1
  */

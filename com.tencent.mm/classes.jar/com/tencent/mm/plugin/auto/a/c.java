@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.auto.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class c
-  implements az
+  implements bd
 {
-  private a nxJ;
+  private a oIH;
   
   public c()
   {
     AppMethodBeat.i(21158);
-    this.nxJ = new a();
+    this.oIH = new a();
     AppMethodBeat.o(21158);
   }
   
@@ -28,18 +29,18 @@ public final class c
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(21159);
-    ae.i("MicroMsg.auto.SubCoreAuto", "onAccountPostReset");
-    a locala = this.nxJ;
-    com.tencent.mm.sdk.b.a.IvT.c(locala.nxF);
+    Log.i("MicroMsg.auto.SubCoreAuto", "onAccountPostReset");
+    a locala = this.oIH;
+    EventCenter.instance.addListener(locala.oID);
     AppMethodBeat.o(21159);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(21160);
-    ae.i("MicroMsg.auto.SubCoreAuto", "onAccountRelease");
-    a locala = this.nxJ;
-    com.tencent.mm.sdk.b.a.IvT.d(locala.nxF);
+    Log.i("MicroMsg.auto.SubCoreAuto", "onAccountRelease");
+    a locala = this.oIH;
+    EventCenter.instance.removeListener(locala.oID);
     AppMethodBeat.o(21160);
   }
   
@@ -47,7 +48,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.a.c
  * JD-Core Version:    0.7.0.1
  */

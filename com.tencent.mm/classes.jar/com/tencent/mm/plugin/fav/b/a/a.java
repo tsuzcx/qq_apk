@@ -3,73 +3,73 @@ package com.tencent.mm.plugin.fav.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.wcdb.database.SQLiteException;
 import com.tencent.wcdb.database.SQLiteStatement;
 
 public final class a
   extends com.tencent.mm.plugin.fts.a.a
 {
-  private SQLiteStatement rCi;
+  private SQLiteStatement tbN;
   
   public final void a(int paramInt1, long paramLong1, String paramString1, long paramLong2, String paramString2, int paramInt2)
   {
     AppMethodBeat.i(101560);
-    paramString2 = d.all(paramString2);
-    if (bu.isNullOrNil(paramString2))
+    paramString2 = d.ayp(paramString2);
+    if (Util.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(101560);
       return;
     }
-    boolean bool = this.tDu.inTransaction();
+    boolean bool = this.wUt.inTransaction();
     if (!bool) {
-      this.tDu.beginTransaction();
+      this.wUt.beginTransaction();
     }
     try
     {
-      this.tDv.bindString(1, paramString2);
-      this.tDv.execute();
-      this.rCi.bindLong(1, 196608L);
-      this.rCi.bindLong(2, paramInt1);
-      this.rCi.bindLong(3, paramLong1);
-      this.rCi.bindString(4, paramString1);
-      this.rCi.bindLong(5, paramLong2);
-      this.rCi.bindLong(6, paramInt2);
-      this.rCi.execute();
+      this.wUu.bindString(1, paramString2);
+      this.wUu.execute();
+      this.tbN.bindLong(1, 196608L);
+      this.tbN.bindLong(2, paramInt1);
+      this.tbN.bindLong(3, paramLong1);
+      this.tbN.bindString(4, paramString1);
+      this.tbN.bindLong(5, paramLong2);
+      this.tbN.bindLong(6, paramInt2);
+      this.tbN.execute();
       if (!bool) {
-        this.tDu.commit();
+        this.wUt.commit();
       }
       AppMethodBeat.o(101560);
       return;
     }
     catch (SQLiteException paramString2)
     {
-      ae.e("MicroMsg.FTS.FTS5FavoriteStorage", String.format("Failed inserting index: 0x%x, %d, %d, %s, %d", new Object[] { Integer.valueOf(196608), Integer.valueOf(paramInt1), Long.valueOf(paramLong1), paramString1, Long.valueOf(paramLong2) }));
-      paramString1 = this.tDC.simpleQueryForString();
+      Log.e("MicroMsg.FTS.FTS5FavoriteStorage", String.format("Failed inserting index: 0x%x, %d, %d, %s, %d", new Object[] { Integer.valueOf(196608), Integer.valueOf(paramInt1), Long.valueOf(paramLong1), paramString1, Long.valueOf(paramLong2) }));
+      paramString1 = this.wUB.simpleQueryForString();
       if ((paramString1 != null) && (paramString1.length() > 0)) {
-        ae.e("MicroMsg.FTS.FTS5FavoriteStorage", ">> ".concat(String.valueOf(paramString1)));
+        Log.e("MicroMsg.FTS.FTS5FavoriteStorage", ">> ".concat(String.valueOf(paramString1)));
       }
       AppMethodBeat.o(101560);
       throw paramString2;
     }
   }
   
-  public final void agM()
+  public final void awY()
   {
     AppMethodBeat.i(101557);
-    if (agN()) {
-      this.tDu.R(-106L, 4L);
+    if (awZ()) {
+      this.wUt.W(-106L, 4L);
     }
-    String str = String.format("INSERT INTO %s (docid, type, subtype, entity_id, aux_index, timestamp, fav_type) VALUES (last_insert_rowid(), ?, ?, ?, ?, ?, ?);", new Object[] { cVk() });
-    this.rCi = this.tDu.compileStatement(str);
+    String str = String.format("INSERT INTO %s (docid, type, subtype, entity_id, aux_index, timestamp, fav_type) VALUES (last_insert_rowid(), ?, ?, ?, ?, ?, ?);", new Object[] { dOt() });
+    this.tbN = this.wUt.compileStatement(str);
     AppMethodBeat.o(101557);
   }
   
-  public final boolean agN()
+  public final boolean awZ()
   {
     AppMethodBeat.i(101558);
-    if (!ge(-106, 4))
+    if (!gD(-106, 4))
     {
       AppMethodBeat.o(101558);
       return true;
@@ -78,10 +78,10 @@ public final class a
     return false;
   }
   
-  public final String cxl()
+  public final String cVp()
   {
     AppMethodBeat.i(101559);
-    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0, fav_type INT DEFAULT 0);", new Object[] { cVk() });
+    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0, fav_type INT DEFAULT 0);", new Object[] { dOt() });
     AppMethodBeat.o(101559);
     return str;
   }
@@ -108,7 +108,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.a.a
  * JD-Core Version:    0.7.0.1
  */

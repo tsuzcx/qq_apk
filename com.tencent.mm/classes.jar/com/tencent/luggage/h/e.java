@@ -1,292 +1,105 @@
 package com.tencent.luggage.h;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.support.v4.content.b;
-import android.util.SparseArray;
+import android.os.PersistableBundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.Random;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
-import java.util.WeakHashMap;
-import java.util.concurrent.ConcurrentHashMap;
-import junit.framework.Assert;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class e
 {
-  private static final WeakHashMap<Activity, e> cqX;
-  @SuppressLint({"StaticFieldLeak"})
-  private static final e cqY;
-  private final SparseArray<b> cqS;
-  private final SparseArray<f> cqT;
-  final Set<c> cqU;
-  public a cqV;
-  private Random cqW;
-  private Activity mActivity;
-  
-  static
+  public static JSONArray H(List<?> paramList)
   {
-    AppMethodBeat.i(140516);
-    cqX = new WeakHashMap();
-    cqY = new e(null);
-    AppMethodBeat.o(140516);
-  }
-  
-  private e(Activity paramActivity)
-  {
-    AppMethodBeat.i(140506);
-    this.cqS = new SparseArray();
-    this.cqT = new SparseArray();
-    this.cqU = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.mActivity = paramActivity;
-    this.cqW = new Random();
-    AppMethodBeat.o(140506);
-  }
-  
-  public static e aB(Context paramContext)
-  {
-    AppMethodBeat.i(140514);
-    Assert.assertFalse("must implements ILuggageActivityHelper", false);
-    if ((paramContext instanceof Activity))
+    AppMethodBeat.i(221202);
+    JSONArray localJSONArray = new JSONArray();
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      Activity localActivity = (Activity)paramContext;
-      if ((localActivity.isFinishing()) || (localActivity.isDestroyed()))
+      AppMethodBeat.o(221202);
+      return localJSONArray;
+    }
+    int i = 0;
+    while (i < paramList.size())
+    {
+      localJSONArray.put(paramList.get(i));
+      i += 1;
+    }
+    AppMethodBeat.o(221202);
+    return localJSONArray;
+  }
+  
+  public static JSONObject a(PersistableBundle paramPersistableBundle)
+  {
+    AppMethodBeat.i(221205);
+    if (paramPersistableBundle == null)
+    {
+      AppMethodBeat.o(221205);
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = paramPersistableBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject = paramPersistableBundle.get(str);
+      if ((localObject instanceof PersistableBundle)) {
+        localJSONObject.put(str, a((PersistableBundle)localObject));
+      } else {
+        localJSONObject.put(str, localObject);
+      }
+    }
+    AppMethodBeat.o(221205);
+    return localJSONObject;
+  }
+  
+  public static Boolean aL(Object paramObject)
+  {
+    AppMethodBeat.i(221204);
+    if ((paramObject instanceof Boolean))
+    {
+      paramObject = (Boolean)paramObject;
+      AppMethodBeat.o(221204);
+      return paramObject;
+    }
+    if ((paramObject instanceof String))
+    {
+      paramObject = (String)paramObject;
+      if ("true".equalsIgnoreCase(paramObject))
       {
-        ae.e("Luggage.LuggageActivityHelper", "FOR(%s) instance destroyed, return DUMMY", new Object[] { localActivity });
-        paramContext = cqY;
-        AppMethodBeat.o(140514);
-        return paramContext;
+        paramObject = Boolean.TRUE;
+        AppMethodBeat.o(221204);
+        return paramObject;
       }
-      if (!cqX.containsKey(localActivity)) {
-        cqX.put(localActivity, new e(localActivity));
-      }
-      paramContext = (e)cqX.get(paramContext);
-      AppMethodBeat.o(140514);
-      return paramContext;
-    }
-    Assert.assertFalse(false);
-    paramContext = cqY;
-    AppMethodBeat.o(140514);
-    return paramContext;
-  }
-  
-  public static void aC(Context paramContext)
-  {
-    AppMethodBeat.i(140515);
-    if ((paramContext instanceof Activity))
-    {
-      paramContext = (e)cqX.remove(paramContext);
-      if (paramContext != null)
+      if ("false".equalsIgnoreCase(paramObject))
       {
-        paramContext.cqS.clear();
-        paramContext.cqU.clear();
-        paramContext.cqT.clear();
+        paramObject = Boolean.FALSE;
+        AppMethodBeat.o(221204);
+        return paramObject;
       }
     }
-    AppMethodBeat.o(140515);
+    AppMethodBeat.o(221204);
+    return null;
   }
   
-  private int b(SparseArray paramSparseArray)
+  public static void m(Map paramMap)
   {
-    AppMethodBeat.i(140512);
-    int i;
-    do
+    AppMethodBeat.i(221203);
+    Iterator localIterator = paramMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      i = rand();
-    } while (paramSparseArray.get(i) != null);
-    AppMethodBeat.o(140512);
-    return i;
-  }
-  
-  private int rand()
-  {
-    AppMethodBeat.i(140513);
-    int i = this.cqW.nextInt(2147483646);
-    AppMethodBeat.o(140513);
-    return i + 1 & 0xFFFF;
-  }
-  
-  public final void a(Intent paramIntent, b paramb)
-  {
-    AppMethodBeat.i(140509);
-    if (this.mActivity == null)
-    {
-      AppMethodBeat.o(140509);
-      return;
-    }
-    int i = b(this.cqS);
-    this.cqS.put(i, paramb);
-    this.mActivity.startActivityForResult(paramIntent, i);
-    AppMethodBeat.o(140509);
-  }
-  
-  public final void a(c paramc)
-  {
-    AppMethodBeat.i(174618);
-    this.cqU.add(paramc);
-    AppMethodBeat.o(174618);
-  }
-  
-  @TargetApi(23)
-  public final void a(String[] paramArrayOfString, f paramf)
-  {
-    AppMethodBeat.i(140511);
-    if (this.mActivity == null)
-    {
-      AppMethodBeat.o(140511);
-      return;
-    }
-    if (Build.VERSION.SDK_INT < 23)
-    {
-      paramArrayOfString = new int[paramArrayOfString.length];
-      Arrays.fill(paramArrayOfString, 0);
-      paramf.p(paramArrayOfString);
-      AppMethodBeat.o(140511);
-      return;
-    }
-    int i = b(this.cqT);
-    this.cqT.put(i, paramf);
-    paramf = this.mActivity;
-    paramArrayOfString = c.a(i, new com.tencent.mm.hellhoundlib.b.a()).bc(paramArrayOfString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramArrayOfString.ahE(), "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-    paramf.requestPermissions((String[])paramArrayOfString.mt(0), ((Integer)paramArrayOfString.mt(1)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(paramf, "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-    AppMethodBeat.o(140511);
-  }
-  
-  public final boolean a(String paramString, f paramf)
-  {
-    AppMethodBeat.i(140510);
-    if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
-    {
-      AppMethodBeat.o(140510);
-      return true;
-    }
-    if (this.mActivity == null)
-    {
-      AppMethodBeat.o(140510);
-      return false;
-    }
-    try
-    {
-      int i = b.checkSelfPermission(this.mActivity, paramString);
-      if (i == 0)
+      Object localObject2 = (Map.Entry)localIterator.next();
+      Object localObject1 = ((Map.Entry)localObject2).getKey();
+      localObject2 = ((Map.Entry)localObject2).getValue();
+      if (((localObject1 instanceof String)) && ((localObject2 instanceof Map)))
       {
-        AppMethodBeat.o(140510);
-        return true;
+        m((Map)localObject2);
+        paramMap.put(localObject1, new JSONObject((Map)localObject2));
       }
     }
-    catch (Exception paramString)
-    {
-      ae.e("Luggage.LuggageActivityHelper", "check mpermission exception:%s.", new Object[] { paramString });
-      AppMethodBeat.o(140510);
-      return true;
-    }
-    a(new String[] { paramString }, paramf);
-    AppMethodBeat.o(140510);
-    return false;
-  }
-  
-  public final void b(int paramInt, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(140508);
-    d locald = (d)this.cqT.get(paramInt);
-    this.cqT.delete(paramInt);
-    if (locald != null) {
-      ((f)locald).p(paramArrayOfInt);
-    }
-    AppMethodBeat.o(140508);
-  }
-  
-  public final void b(Intent paramIntent, b paramb)
-  {
-    AppMethodBeat.i(174617);
-    a(paramIntent, paramb);
-    AppMethodBeat.o(174617);
-  }
-  
-  public final void b(final c paramc)
-  {
-    AppMethodBeat.i(174619);
-    a(new c()
-    {
-      public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(174616);
-        e.this.cqU.remove(this);
-        boolean bool = paramc.b(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
-        AppMethodBeat.o(174616);
-        return bool;
-      }
-    });
-    AppMethodBeat.o(174619);
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(201167);
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing()) && (!this.mActivity.isDestroyed()))
-    {
-      if (this.cqV != null) {
-        this.cqV.Fx();
-      }
-      this.mActivity.finish();
-    }
-    AppMethodBeat.o(201167);
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(140507);
-    Object localObject = this.cqU.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (((c)((Iterator)localObject).next()).b(paramInt1, paramInt2, paramIntent))
-      {
-        AppMethodBeat.o(140507);
-        return;
-      }
-    }
-    localObject = (d)this.cqS.get(paramInt1);
-    this.cqS.delete(paramInt1);
-    if (localObject != null) {
-      ((b)localObject).a(paramInt2, paramIntent);
-    }
-    AppMethodBeat.o(140507);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean Fx();
-  }
-  
-  public static abstract interface b
-    extends e.d
-  {
-    public abstract void a(int paramInt, Intent paramIntent);
-  }
-  
-  public static abstract interface c
-    extends e.d
-  {
-    public abstract boolean b(int paramInt1, int paramInt2, Intent paramIntent);
-  }
-  
-  static abstract interface d {}
-  
-  public static abstract interface e {}
-  
-  public static abstract interface f
-    extends e.d
-  {
-    public abstract void p(int[] paramArrayOfInt);
+    AppMethodBeat.o(221203);
   }
 }
 

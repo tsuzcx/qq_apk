@@ -1,104 +1,52 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import d.g.b.p;
-import d.l;
-import org.json.JSONObject;
-
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxaSharedKT;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxConfigPart;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "()V", "TAG", "", "isPreloaded", "", "()Z", "isPreloading", "attachCommonConfig", "", "config", "Lorg/json/JSONObject;", "generatePreloadConfig", "injectWxConfig", "__wxConfig", "callback", "Landroid/webkit/ValueCallback;", "put", "obj", "key", "val", "", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "scheduleToUiThreadDelayed", "delayMs", "", "luggage-wxa-app_release"})
-public abstract class i
-  extends d
-  implements h
+public abstract interface i
 {
-  private final String TAG = "AppBrandComponentWxaSharedKT";
+  public abstract void a(b paramb);
   
-  public final void K(Runnable paramRunnable)
+  public abstract void a(c paramc);
+  
+  public abstract void a(d paramd);
+  
+  public abstract void b(b paramb);
+  
+  public abstract void b(c paramc);
+  
+  public abstract void b(d paramd);
+  
+  public static abstract interface a
   {
-    if (paramRunnable == null) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = getRuntime();
-      if (localObject != null)
-      {
-        ((AppBrandRuntime)localObject).K(paramRunnable);
-        return;
-      }
-      localObject = (i)this;
-    } while ((!((i)localObject).aXQ()) && (!((i)localObject).aXP()));
-    ar.f(paramRunnable);
+    public abstract boolean onBackPressed();
   }
   
-  public abstract boolean aXP();
-  
-  public abstract boolean aXQ();
-  
-  public JSONObject aXY()
+  public static abstract interface b
   {
-    JSONObject localJSONObject = new JSONObject();
-    d(localJSONObject);
-    c(localJSONObject, "preload", Boolean.TRUE);
-    return localJSONObject;
+    public abstract void onBackground();
   }
   
-  public final void c(JSONObject paramJSONObject, String paramString, Object paramObject)
+  public static abstract interface c
   {
-    p.h(paramJSONObject, "obj");
-    p.h(paramString, "key");
-    try
-    {
-      paramJSONObject.put(paramString, paramObject);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      ae.printErrStackTrace(this.TAG, (Throwable)paramJSONObject, "put with key(" + paramString + ')', new Object[0]);
-    }
+    public abstract void onDestroy();
   }
   
-  public void d(JSONObject paramJSONObject)
+  public static abstract interface d
   {
-    p.h(paramJSONObject, "config");
-    c(paramJSONObject, "platform", "android");
-    c(paramJSONObject, "system", "Android " + Build.VERSION.RELEASE);
-    c(paramJSONObject, "brand", Build.BRAND);
-    c(paramJSONObject, "model", Build.MODEL);
-    Object localObject = getContext();
-    p.g(localObject, "context");
-    localObject = ((Context)localObject).getResources();
-    p.g(localObject, "context.resources");
-    c(paramJSONObject, "pixelRatio", Float.valueOf(((Resources)localObject).getDisplayMetrics().density));
+    public abstract void onForeground();
   }
   
-  public final void j(Runnable paramRunnable, long paramLong)
+  public static abstract interface e
   {
-    if (paramRunnable == null) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = getRuntime();
-      if (localObject != null)
-      {
-        ((AppBrandRuntime)localObject).j(paramRunnable, paramLong);
-        return;
-      }
-      localObject = (i)this;
-    } while ((!((i)localObject).aXQ()) && (!((i)localObject).aXP()));
-    ar.o(paramRunnable, paramLong);
+    public abstract void NZ();
+  }
+  
+  public static abstract interface f
+  {
+    public abstract void onReady();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i
  * JD-Core Version:    0.7.0.1
  */

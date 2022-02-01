@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="65.0dip">
-            <ImageView android:id="@id/qx" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:layout_marginStart="15.0dip" />
-            <TextView android:textSize="17.0sp" android:textColor="@color/fg" android:id="@id/qy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/p" android:layout_gravity="center_horizontal" android:id="@id/brb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" style="@style/ok" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="15.0dip">
-            <CheckBox android:gravity="center|left" android:id="@id/brc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:drawablePadding="@dimen/d" android:layout_alignParentTop="true" android:scaleX="0.8" android:scaleY="0.8" style="@style/oj" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/s5" android:id="@id/brd" android:paddingTop="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bwi" android:includeFontPadding="false" android:layout_toRightOf="@id/brc" android:layout_alignParentTop="true" android:lineSpacingMultiplier="1.25" />
-        </RelativeLayout>
-        <Button android:enabled="false" android:id="@id/fsb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="54.0dip" android:layout_marginRight="15.0dip" android:text="@string/bwg" style="@style/o6" />
-        <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="80.0dip" android:layout_marginBottom="@dimen/ha">
-            <TextView android:textSize="@dimen/jv" android:textColor="@color/to" android:gravity="center_horizontal" android:id="@id/bra" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ok" />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/bz4" android:visibility="invisible" android:layout_width="@dimen/a1x" android:layout_height="@dimen/a1x" android:layout_marginTop="@dimen/ag4" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer android:id="@id/byz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.sticker.ui.view.CaptureStickerHint android:gravity="center" android:orientation="vertical" android:id="@id/bzc" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/bz4" app:layout_constraintEnd_toEndOf="@id/bz4" app:layout_constraintStart_toStartOf="@id/bz4" app:layout_constraintTop_toTopOf="@id/bz4" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView android:id="@id/bzl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:layout_marginStart="@dimen/a1j" android:layout_marginEnd="@dimen/a1j" app:layout_constraintBottom_toBottomOf="@id/bz4" app:layout_constraintEnd_toEndOf="@id/bz4" app:layout_constraintStart_toStartOf="@id/bz4" />
+</merge>

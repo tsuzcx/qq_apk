@@ -1,23 +1,35 @@
 package com.tencent.mm.plugin.vlog.model.local;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Matrix;
 import android.graphics.Rect;
+import android.opengl.EGL14;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.util.Size;
+import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.k.c;
+import com.tencent.mm.media.k.c.a;
+import com.tencent.mm.media.k.c.b;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.recordvideo.res.f;
-import com.tencent.mm.plugin.vlog.model.g;
-import com.tencent.mm.plugin.vlog.model.w;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.xeffect.VLogEffectMgr;
-import com.tencent.mm.xeffect.VLogEffectMgr.a;
-import d.a.j;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.o;
-import d.u;
-import d.z;
+import com.tencent.mm.plugin.vlog.model.ac;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.mm.videocomposition.d;
+import com.tencent.mm.xeffect.GlobalContextCreator;
+import com.tencent.mm.xeffect.effect.EffectManager;
+import com.tencent.mm.xeffect.effect.n;
+import com.tencent.mm.xeffect.effect.n.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,53 +39,114 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import kotlin.a.ae;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.g.b.z.f;
+import kotlin.l;
+import kotlin.o;
+import kotlin.x;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager;", "", "()V", "TAG", "", "TEMPLATE_CONFIG", "TEMPLATE_PATH", "TransEffectList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "getTransEffectList", "()Ljava/util/LinkedList;", "TransEffectTime", "", "VideoTemplateList", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "getVideoTemplateList", "currentVideoTemplate", "getCurrentVideoTemplate", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "setCurrentVideoTemplate", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;)V", "transitionReady", "", "transitionResMap", "", "", "transitionView", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView;", "getTransitionView", "()Ljava/lang/ref/WeakReference;", "setTransitionView", "(Ljava/lang/ref/WeakReference;)V", "vLogEffectMgr", "Lcom/tencent/mm/xeffect/VLogEffectMgr;", "getVLogEffectMgr", "()Lcom/tencent/mm/xeffect/VLogEffectMgr;", "setVLogEffectMgr", "(Lcom/tencent/mm/xeffect/VLogEffectMgr;)V", "videoEnhancementEffectInfo", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;", "getVideoEnhancementEffectInfo", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;", "setVideoEnhancementEffectInfo", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;)V", "applyTransitionToAll", "", "trackList", "", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "effectId", "checkCreateTransEffect", "transEffectInfo", "checkRefreshView", "generateTemplateEffectTrack", "template", "sourceTrackList", "getLocalPath", "assetsPath", "init", "initTransEffect", "initTransResource", "initVideoEnhancementEffect", "initVideoTemplates", "removeVideoTemplate", "videoTemplate", "reset", "setTransition", "track", "setVideoEnhancement", "startMs", "endMs", "enable", "setVideoTemplate", "targets", "", "unInit", "MusicInfo", "TransEffectInfo", "VideoEnhancementEffectInfo", "VideoTemplateInfo", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager;", "", "()V", "ImageEnhancementResultImageSavePath", "", "getImageEnhancementResultImageSavePath", "()Ljava/lang/String;", "ImageEnhancementResultPathMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getImageEnhancementResultPathMap", "()Ljava/util/HashMap;", "setImageEnhancementResultPathMap", "(Ljava/util/HashMap;)V", "ImageEnhancementSceneValues", "", "", "getImageEnhancementSceneValues", "()Ljava/util/List;", "TAG", "TEMPLATE_CONFIG", "TEMPLATE_PATH", "TransEffectList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "getTransEffectList", "()Ljava/util/LinkedList;", "TransEffectTime", "", "VideoTemplateList", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "getVideoTemplateList", "value", "Landroid/util/Pair;", "VideoTrackLabel", "getVideoTrackLabel", "setVideoTrackLabel", "currentVideoTemplate", "getCurrentVideoTemplate", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "setCurrentVideoTemplate", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;)V", "globalContextCreated", "", "transitionReady", "transitionResMap", "", "transitionView", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/EditorEditTransitionView;", "getTransitionView", "()Ljava/lang/ref/WeakReference;", "setTransitionView", "(Ljava/lang/ref/WeakReference;)V", "vLogEffectMgr", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "getVLogEffectMgr", "()Lcom/tencent/mm/xeffect/effect/EffectManager;", "setVLogEffectMgr", "(Lcom/tencent/mm/xeffect/effect/EffectManager;)V", "videoEnhancementEffectInfo", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;", "getVideoEnhancementEffectInfo", "()Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;", "setVideoEnhancementEffectInfo", "(Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;)V", "applyTransition", "", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "trans", "applyTransitionToAll", "trackList", "order", "checkCreateTransEffect", "transEffectInfo", "checkRefreshView", "generateTemplateEffectTrack", "template", "sourceTrackList", "getImageEnhancementBitmap", "Landroid/graphics/Bitmap;", "path", "getLabel", "getLocalPath", "assetsPath", "init", "initTransEffect", "initTransResource", "initVideoEnhancementEffect", "initVideoTemplates", "isSvrVideoEnhancementEnable", "isVideoEnhancementEnable", "removeVideoTemplate", "videoTemplate", "reset", "saveAllImageEnhancementResultImage", "pathList", "setTransition", "setVideoEnhancement", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "enable", "setVideoEnhancementScene", "scene", "setVideoEnhancementSceneFilterSettingsByJson", "json", "setVideoEnhancementShowFaceLandmarks", "show", "setVideoTemplate", "targets", "", "tryCreateX3DGlobalContext", "tryCreateX3DGlobalContextImpl", "unInit", "TransEffectInfo", "VideoEnhancementEffectInfo", "VideoTemplateInfo", "plugin-vlog_release"})
 public final class a
 {
-  private static final Map<String, Integer> BYL;
-  private static final LinkedList<a> BYM;
-  private static final LinkedList<c> BYN;
-  private static b BYO;
-  public static c BYP;
-  public static VLogEffectMgr BYQ;
-  private static WeakReference<com.tencent.mm.plugin.vlog.ui.plugin.transition.b> BYR;
-  private static boolean BYS;
-  public static final a BYT;
+  private static boolean GAA;
+  private static HashMap<String, Pair<Integer, Long>> GAB;
+  private static final List<Integer> GAC;
+  public static final a GAD;
+  private static final String GAs;
+  private static final LinkedList<c> GAt;
+  private static b GAu;
+  private static c GAv;
+  private static EffectManager GAw;
+  private static WeakReference<com.tencent.mm.plugin.vlog.ui.plugin.transition.b> GAx;
+  private static HashMap<String, String> GAy;
+  private static boolean GAz;
+  private static final LinkedList<a> wKy;
+  private static final Map<String, Integer> wKz;
   
   static
   {
-    AppMethodBeat.i(191319);
-    BYT = new a();
-    BYL = d.a.ae.a(new o[] { u.R("diehua.svg", Integer.valueOf(2131691569)), u.R("shanhei.svg", Integer.valueOf(2131691610)), u.R("shanbai.svg", Integer.valueOf(2131691608)), u.R("zuoyi.svg", Integer.valueOf(2131691620)), u.R("youyi.svg", Integer.valueOf(2131691618)), u.R("shangyi.svg", Integer.valueOf(2131691609)), u.R("xiayi.svg", Integer.valueOf(2131691617)), u.R("fangda.svg", Integer.valueOf(2131691583)), u.R("suoxiao.svg", Integer.valueOf(2131691613)), u.R("youzhuan.svg", Integer.valueOf(2131691619)), u.R("zuozhuan.svg", Integer.valueOf(2131691621)) });
-    BYM = new LinkedList();
-    BYN = new LinkedList();
-    AppMethodBeat.o(191319);
+    int i = 0;
+    AppMethodBeat.i(190779);
+    GAD = new a();
+    GAs = com.tencent.mm.loader.j.b.aKB() + "image_enhancement_result";
+    wKz = ae.e(new o[] { kotlin.s.U("diehua.svg", Integer.valueOf(2131690086)), kotlin.s.U("shanhei.svg", Integer.valueOf(2131691476)), kotlin.s.U("shanbai.svg", Integer.valueOf(2131691474)), kotlin.s.U("zuoyi.svg", Integer.valueOf(2131691819)), kotlin.s.U("youyi.svg", Integer.valueOf(2131691817)), kotlin.s.U("shangyi.svg", Integer.valueOf(2131691475)), kotlin.s.U("xiayi.svg", Integer.valueOf(2131691816)), kotlin.s.U("fangda.svg", Integer.valueOf(2131690165)), kotlin.s.U("suoxiao.svg", Integer.valueOf(2131691597)), kotlin.s.U("youzhuan.svg", Integer.valueOf(2131691818)), kotlin.s.U("zuozhuan.svg", Integer.valueOf(2131691820)) });
+    wKy = new LinkedList();
+    GAt = new LinkedList();
+    GAy = new HashMap();
+    GAB = new HashMap();
+    n.a[] arrayOfa = n.a.values();
+    Collection localCollection = (Collection)new ArrayList(arrayOfa.length);
+    int j = arrayOfa.length;
+    while (i < j)
+    {
+      localCollection.add(Integer.valueOf(arrayOfa[i].ordinal()));
+      i += 1;
+    }
+    GAC = (List)localCollection;
+    AppMethodBeat.o(190779);
   }
   
-  public static List<w> a(c paramc, List<w> paramList)
+  public static void D(List<com.tencent.mm.plugin.vlog.model.ad> paramList, int paramInt)
   {
-    AppMethodBeat.i(191313);
+    AppMethodBeat.i(190765);
+    p.h(paramList, "trackList");
+    Iterator localIterator = ((Iterable)wKy).iterator();
+    Object localObject;
+    int i;
+    if (localIterator.hasNext())
+    {
+      localObject = localIterator.next();
+      if (((a)localObject).order == paramInt)
+      {
+        i = 1;
+        label57:
+        if (i == 0) {
+          break label115;
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject = (a)localObject;
+      paramList = ((Iterable)kotlin.a.j.N(paramList, paramList.size() - 1)).iterator();
+      while (paramList.hasNext()) {
+        a((com.tencent.mm.plugin.vlog.model.ad)paramList.next(), (a)localObject);
+      }
+      i = 0;
+      break label57;
+      label115:
+      break;
+      localObject = null;
+    }
+    AppMethodBeat.o(190765);
+  }
+  
+  public static List<com.tencent.mm.plugin.vlog.model.ad> a(c paramc, List<com.tencent.mm.plugin.vlog.model.ad> paramList)
+  {
+    AppMethodBeat.i(190764);
     p.h(paramc, "template");
     p.h(paramList, "sourceTrackList");
-    long l3 = bu.HQ();
+    long l3 = Util.currentTicks();
     HashMap localHashMap = new HashMap();
     Object localObject1 = ((Iterable)paramList).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (w)((Iterator)localObject1).next();
-      ((Map)localHashMap).put(((w)localObject2).path, Long.valueOf(0L));
+      localObject2 = (com.tencent.mm.plugin.vlog.model.ad)((Iterator)localObject1).next();
+      ((Map)localHashMap).put(((com.tencent.mm.plugin.vlog.model.ad)localObject2).path, Long.valueOf(0L));
     }
     Object localObject2 = new ArrayList();
-    ArrayList localArrayList = new ArrayList((Collection)paramc.BZa);
+    ArrayList localArrayList = new ArrayList((Collection)paramc.GAJ);
     localObject1 = (List)localArrayList;
     if (((List)localObject1).size() > 1) {
-      j.a((List)localObject1, (Comparator)new e());
+      kotlin.a.j.a((List)localObject1, (Comparator)new e());
     }
-    localArrayList.set(localArrayList.size() - 1, Pair.create(((Pair)j.jn((List)localArrayList)).first, Long.valueOf(paramc.duration)));
+    localArrayList.set(localArrayList.size() - 1, Pair.create(((Pair)kotlin.a.j.ku((List)localArrayList)).first, Long.valueOf(paramc.duration)));
     new HashMap();
     int m = ((Collection)localArrayList).size();
     int k = 0;
@@ -82,7 +155,7 @@ public final class a
     long l1;
     long l2;
     Object localObject3;
-    label320:
+    label323:
     int i;
     int j;
     if (k < m)
@@ -92,287 +165,570 @@ public final class a
       l1 = localLong2.longValue();
       p.g(localLong1, "replacementStart");
       l2 = l1 - localLong1.longValue();
-      localObject1 = (w)paramList.get(k % paramList.size());
-      localObject3 = (Long)localHashMap.get(((w)localObject1).path);
+      localObject1 = (com.tencent.mm.plugin.vlog.model.ad)paramList.get(k % paramList.size());
+      localObject3 = (Long)localHashMap.get(((com.tencent.mm.plugin.vlog.model.ad)localObject1).path);
       if (localObject3 != null)
       {
         l1 = ((Long)localObject3).longValue();
         i = 0;
         j = ((Collection)paramList).size();
-        label332:
+        label335:
         if (i >= j) {
-          break label1091;
+          break label1095;
         }
-        localObject1 = (w)paramList.get((k + i) % paramList.size());
-        localObject3 = (Long)localHashMap.get(((w)localObject1).path);
+        localObject1 = (com.tencent.mm.plugin.vlog.model.ad)paramList.get((k + i) % paramList.size());
+        localObject3 = (Long)localHashMap.get(((com.tencent.mm.plugin.vlog.model.ad)localObject1).path);
         if (localObject3 == null) {
-          break label787;
+          break label790;
         }
         l1 = ((Long)localObject3).longValue();
-        label386:
-        if ((l1 + l2 > ((w)localObject1).getDurationMs()) && (((w)localObject1).type != 1)) {
-          break label795;
+        label389:
+        if ((l1 + l2 > ((com.tencent.mm.plugin.vlog.model.ad)localObject1).getDurationMs()) && (((com.tencent.mm.plugin.vlog.model.ad)localObject1).type != 1)) {
+          break label798;
         }
       }
     }
-    label677:
-    label822:
-    label1088:
-    label1091:
+    label680:
+    label825:
+    label1092:
+    label1095:
     for (;;)
     {
-      localObject3 = new w(((w)localObject1).path, ((w)localObject1).type);
-      if (((w)localObject1).type == 1)
+      localObject3 = new com.tencent.mm.plugin.vlog.model.ad(((com.tencent.mm.plugin.vlog.model.ad)localObject1).path, ((com.tencent.mm.plugin.vlog.model.ad)localObject1).type);
+      if (((com.tencent.mm.plugin.vlog.model.ad)localObject1).type == 1)
       {
-        ((w)localObject3).BI(0L);
-        ((w)localObject3).BJ(l2);
-        ((w)localObject3).BXV.Cec = l2;
-        label460:
-        ((w)localObject3).BG(localLong1.longValue());
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).KQ(0L);
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).KR(l2);
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).GzA.GJB = l2;
+        label463:
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).KO(localLong1.longValue());
         p.g(localLong2, "replacementEnd");
-        ((w)localObject3).BH(localLong2.longValue());
-        ((w)localObject3).BXQ = ((w)localObject1).BXQ;
-        ((w)localObject3).BXR = ((w)localObject1).BXR;
-        ((w)localObject3).BXS = ((w)localObject1).BXS;
-        ((w)localObject3).BXV.LJk = false;
-        ((w)localObject3).BXT.qfO.set(((w)localObject1).BXT.qfO);
-        ((w)localObject3).BXT.viewRect.set(((w)localObject1).BXT.viewRect);
-        ((w)localObject3).BXT.hpa.set(((w)localObject1).BXT.hpa);
-        ((w)localObject3).BXT.tVV = ((w)localObject1).BXT.tVV;
-        ((w)localObject1).BXT.aXF *= 5.0F;
-        ((w)localObject1).BXT.aXE *= 5.0F;
-        ((w)localObject3).BXT.gR.set(((w)localObject1).BXT.gR);
-        Iterator localIterator = ((Iterable)paramc.BZa).iterator();
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).KP(localLong2.longValue());
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzu = ((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzu;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzv = ((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzv;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzw = ((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzw;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).GzA.Rhb = false;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzx.rwL.set(((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzx.rwL);
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzx.viewRect.set(((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzx.viewRect);
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzx.iiw.set(((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzx.iiw);
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzx.xnf = ((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzx.xnf;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzx.aXu *= 5.0F;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzx.aXt *= 5.0F;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).Gzx.gT.set(((com.tencent.mm.plugin.vlog.model.ad)localObject1).Gzx.gT);
+        Iterator localIterator = ((Iterable)paramc.GAJ).iterator();
         i = 0;
         j = -1;
         if (!localIterator.hasNext()) {
-          break label822;
+          break label825;
         }
         Object localObject4 = localIterator.next();
         if (i < 0) {
-          j.gkd();
+          kotlin.a.j.hxH();
         }
         localObject4 = (Pair)localObject4;
-        if ((!p.i((Long)((Pair)localObject4).first, (Long)((Pair)localArrayList.get(k)).first)) || (!p.i((Long)((Pair)localObject4).second, (Long)((Pair)localArrayList.get(k)).second))) {
-          break label1088;
+        if ((!p.j((Long)((Pair)localObject4).first, (Long)((Pair)localArrayList.get(k)).first)) || (!p.j((Long)((Pair)localObject4).second, (Long)((Pair)localArrayList.get(k)).second))) {
+          break label1092;
         }
         j = i;
       }
       for (;;)
       {
         i += 1;
-        break label677;
+        break label680;
         l1 = -1L;
-        break label320;
+        break label323;
         l1 = -1L;
-        break label386;
+        break label389;
         i += 1;
-        break label332;
-        ((w)localObject3).BI(l1);
-        ((w)localObject3).BJ(l1 + l2);
-        break label460;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LocalEffectManager", "add template track, time:[" + localLong1 + ", " + localLong2 + "], track time:[" + ((w)localObject3).BXV.HWH + ", " + ((w)localObject3).BXV.HWI + ", " + ((w)localObject3).BXV.Cec + "], path:" + ((w)localObject1).path + ", originIndex:" + j);
+        break label335;
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).KQ(l1);
+        ((com.tencent.mm.plugin.vlog.model.ad)localObject3).KR(l1 + l2);
+        break label463;
+        Log.i("MicroMsg.LocalEffectManager", "add template track, time:[" + localLong1 + ", " + localLong2 + "], track time:[" + ((com.tencent.mm.plugin.vlog.model.ad)localObject3).GzA.GGz + ", " + ((com.tencent.mm.plugin.vlog.model.ad)localObject3).GzA.GGA + ", " + ((com.tencent.mm.plugin.vlog.model.ad)localObject3).GzA.GJB + "], path:" + ((com.tencent.mm.plugin.vlog.model.ad)localObject1).path + ", originIndex:" + j);
         l2 = l1 + l2;
         l1 = l2;
-        if (l2 >= ((w)localObject1).getDurationMs()) {
+        if (l2 >= ((com.tencent.mm.plugin.vlog.model.ad)localObject1).getDurationMs()) {
           l1 = 0L;
         }
-        ((Map)localHashMap).put(((w)localObject1).path, Long.valueOf(l1));
+        ((Map)localHashMap).put(((com.tencent.mm.plugin.vlog.model.ad)localObject1).path, Long.valueOf(l1));
         ((ArrayList)localObject2).add(localObject3);
         k += 1;
         break;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LocalEffectManager", "finish generate template track name:" + paramc.name + ", result.size:" + ((ArrayList)localObject2).size() + ", replacementInfo:" + paramc.BZa + ", template.duration:" + paramc.duration + ", cost:" + bu.aO(l3));
+        Log.i("MicroMsg.LocalEffectManager", "finish generate template track name:" + paramc.name + ", result.size:" + ((ArrayList)localObject2).size() + ", replacementInfo:" + paramc.GAJ + ", template.duration:" + paramc.duration + ", cost:" + Util.ticksToNow(l3));
         paramc = (List)localObject2;
-        AppMethodBeat.o(191313);
+        AppMethodBeat.o(190764);
         return paramc;
       }
     }
   }
   
-  public static void a(w paramw, long paramLong)
+  public static void a(com.tencent.mm.plugin.vlog.model.ad paramad, int paramInt)
   {
-    AppMethodBeat.i(191315);
-    p.h(paramw, "track");
-    Iterator localIterator = ((Iterable)BYM).iterator();
+    AppMethodBeat.i(190766);
+    p.h(paramad, "track");
+    Iterator localIterator = ((Iterable)wKy).iterator();
     Object localObject;
     int i;
     if (localIterator.hasNext())
     {
       localObject = localIterator.next();
-      if (((a)localObject).yeZ == paramLong)
+      if (((a)localObject).order == paramInt)
       {
         i = 1;
-        label60:
+        label57:
         if (i == 0) {
-          break label83;
+          break label79;
         }
       }
     }
     for (;;)
     {
-      paramw.a((a)localObject);
-      AppMethodBeat.o(191315);
+      a(paramad, (a)localObject);
+      AppMethodBeat.o(190766);
       return;
       i = 0;
-      break label60;
-      label83:
+      break label57;
+      label79:
       break;
       localObject = null;
     }
   }
   
+  private static void a(com.tencent.mm.plugin.vlog.model.ad paramad, a parama)
+  {
+    AppMethodBeat.i(190767);
+    p.h(paramad, "track");
+    EffectManager localEffectManager = GAw;
+    if (localEffectManager != null) {
+      localEffectManager.Ot(paramad.fBI());
+    }
+    paramad.GzA.Rhc.GAn = null;
+    paramad.a(parama);
+    AppMethodBeat.o(190767);
+  }
+  
+  public static void a(c paramc, long[] paramArrayOfLong)
+  {
+    Long localLong = null;
+    AppMethodBeat.i(190768);
+    p.h(paramc, "videoTemplate");
+    p.h(paramArrayOfLong, "targets");
+    paramArrayOfLong = GAw;
+    if (paramArrayOfLong != null) {
+      paramArrayOfLong.hiv();
+    }
+    b(null, false);
+    paramArrayOfLong = GAv;
+    Object localObject1;
+    if (paramArrayOfLong != null)
+    {
+      localObject1 = new StringBuilder("setVideoTemplate: remove  ");
+      if (paramArrayOfLong == null) {
+        break label252;
+      }
+      paramArrayOfLong = Long.valueOf(paramArrayOfLong.GAI);
+      Log.i("MicroMsg.LocalEffectManager", paramArrayOfLong);
+      paramArrayOfLong = GAw;
+      if (paramArrayOfLong != null) {
+        paramArrayOfLong.b(com.tencent.mm.xeffect.effect.j.RxY);
+      }
+    }
+    paramArrayOfLong = GAw;
+    if (paramArrayOfLong != null)
+    {
+      localObject1 = com.tencent.mm.xeffect.effect.j.RxY;
+      Object localObject2 = MMApplicationContext.getContext();
+      p.g(localObject2, "MMApplicationContext.getContext()");
+      localObject2 = ((Context)localObject2).getAssets();
+      p.g(localObject2, "MMApplicationContext.getContext().assets");
+      paramArrayOfLong = paramArrayOfLong.a((com.tencent.mm.xeffect.effect.j)localObject1, (AssetManager)localObject2, paramc.path);
+      label156:
+      if (paramArrayOfLong != null) {
+        paramArrayOfLong.aH(0L, paramc.duration);
+      }
+      localObject1 = GAw;
+      if (localObject1 != null) {
+        ((EffectManager)localObject1).a(paramArrayOfLong);
+      }
+      localObject1 = new StringBuilder("setVideoTemplate: addEffect ");
+      if (paramArrayOfLong != null) {
+        localLong = Long.valueOf(paramArrayOfLong.id);
+      }
+      Log.i("MicroMsg.LocalEffectManager", localLong);
+      if (paramArrayOfLong == null) {
+        break label262;
+      }
+    }
+    label262:
+    for (long l = paramArrayOfLong.id;; l = 0L)
+    {
+      paramc.GAI = l;
+      GAv = paramc;
+      AppMethodBeat.o(190768);
+      return;
+      label252:
+      paramArrayOfLong = null;
+      break;
+      paramArrayOfLong = null;
+      break label156;
+    }
+  }
+  
+  public static int aUc(String paramString)
+  {
+    AppMethodBeat.i(190759);
+    if (TextUtils.isEmpty((CharSequence)paramString))
+    {
+      AppMethodBeat.o(190759);
+      return -1;
+    }
+    paramString = (Pair)((Map)GAB).get(paramString);
+    if (paramString != null)
+    {
+      paramString = (Integer)paramString.first;
+      if (paramString != null)
+      {
+        int i = paramString.intValue();
+        AppMethodBeat.o(190759);
+        return i;
+      }
+    }
+    AppMethodBeat.o(190759);
+    return -1;
+  }
+  
+  public static boolean aUd(String paramString)
+  {
+    AppMethodBeat.i(190772);
+    p.h(paramString, "json");
+    b localb = GAu;
+    if ((localb != null) && (localb.fCb() > 0L))
+    {
+      n localn = localb.GzV;
+      if (localn != null) {
+        localn.bpE(paramString);
+      }
+      Log.i("MicroMsg.LocalEffectManager", "setImageEnhancementSceneFilterSettingsByJson:".concat(String.valueOf(paramString)));
+      Log.i("MicroMsg.LocalEffectManager", "setImageEnhancementSceneFilterSettingsByJson, ret:true, effectId:" + localb.fCb());
+      AppMethodBeat.o(190772);
+      return true;
+    }
+    AppMethodBeat.o(190772);
+    return false;
+  }
+  
+  /* Error */
+  private static Bitmap aUe(final String paramString)
+  {
+    // Byte code:
+    //   0: ldc_w 714
+    //   3: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ldc_w 715
+    //   10: invokestatic 313	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   13: new 4	java/lang/Object
+    //   16: dup
+    //   17: invokespecial 303	java/lang/Object:<init>	()V
+    //   20: astore_2
+    //   21: ldc_w 524
+    //   24: ldc_w 717
+    //   27: aload_0
+    //   28: invokestatic 703	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   31: invokevirtual 707	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   34: invokestatic 557	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: new 343	com/tencent/mm/plugin/vlog/model/ad
+    //   40: dup
+    //   41: aload_0
+    //   42: iconst_1
+    //   43: invokespecial 436	com/tencent/mm/plugin/vlog/model/ad:<init>	(Ljava/lang/String;I)V
+    //   46: astore 4
+    //   48: new 719	com/tencent/mm/plugin/vlog/model/ac
+    //   51: dup
+    //   52: aload 4
+    //   54: invokestatic 723	kotlin/a/j:listOf	(Ljava/lang/Object;)Ljava/util/List;
+    //   57: invokespecial 726	com/tencent/mm/plugin/vlog/model/ac:<init>	(Ljava/util/List;)V
+    //   60: astore_3
+    //   61: aload_3
+    //   62: iconst_1
+    //   63: invokestatic 613	com/tencent/mm/plugin/vlog/model/local/a:b	(Lcom/tencent/mm/plugin/vlog/model/ac;Z)V
+    //   66: aload_0
+    //   67: invokestatic 728	com/tencent/mm/plugin/vlog/model/local/a:aUc	(Ljava/lang/String;)I
+    //   70: istore_1
+    //   71: getstatic 298	com/tencent/mm/plugin/vlog/model/local/a:GAC	Ljava/util/List;
+    //   74: iload_1
+    //   75: invokestatic 216	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   78: invokeinterface 731 2 0
+    //   83: ifeq +7 -> 90
+    //   86: iload_1
+    //   87: invokestatic 734	com/tencent/mm/plugin/vlog/model/local/a:acA	(I)V
+    //   90: new 736	kotlin/g/b/z$f
+    //   93: dup
+    //   94: invokespecial 737	kotlin/g/b/z$f:<init>	()V
+    //   97: astore_0
+    //   98: aload_0
+    //   99: aconst_null
+    //   100: putfield 740	kotlin/g/b/z$f:SYG	Ljava/lang/Object;
+    //   103: aload_3
+    //   104: getstatic 582	com/tencent/mm/plugin/vlog/model/local/a:GAw	Lcom/tencent/mm/xeffect/effect/EffectManager;
+    //   107: invokevirtual 742	com/tencent/mm/plugin/vlog/model/ac:a	(Lcom/tencent/mm/xeffect/effect/EffectManager;)V
+    //   110: getstatic 748	com/tencent/mm/videocomposition/c:RgU	Lcom/tencent/mm/videocomposition/c$a;
+    //   113: astore 5
+    //   115: aload_3
+    //   116: invokevirtual 752	com/tencent/mm/plugin/vlog/model/ac:getComposition	()Lcom/tencent/mm/videocomposition/n;
+    //   119: invokestatic 757	com/tencent/mm/videocomposition/c$a:b	(Lcom/tencent/mm/videocomposition/n;)Lcom/tencent/mm/videocomposition/c;
+    //   122: astore 5
+    //   124: aload 5
+    //   126: aload 4
+    //   128: getfield 447	com/tencent/mm/plugin/vlog/model/ad:GzA	Lcom/tencent/mm/videocomposition/d;
+    //   131: getfield 758	com/tencent/mm/videocomposition/d:Gzu	I
+    //   134: aload 4
+    //   136: getfield 447	com/tencent/mm/plugin/vlog/model/ad:GzA	Lcom/tencent/mm/videocomposition/d;
+    //   139: getfield 759	com/tencent/mm/videocomposition/d:Gzv	I
+    //   142: invokevirtual 763	com/tencent/mm/videocomposition/c:setSize	(II)V
+    //   145: aload 5
+    //   147: ldc2_w 764
+    //   150: invokestatic 367	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   153: invokestatic 723	kotlin/a/j:listOf	(Ljava/lang/Object;)Ljava/util/List;
+    //   156: new 19	com/tencent/mm/plugin/vlog/model/local/a$f
+    //   159: dup
+    //   160: aload 4
+    //   162: aload_0
+    //   163: aload_2
+    //   164: invokespecial 768	com/tencent/mm/plugin/vlog/model/local/a$f:<init>	(Lcom/tencent/mm/plugin/vlog/model/ad;Lkotlin/g/b/z$f;Ljava/lang/Object;)V
+    //   167: checkcast 770	kotlin/g/a/m
+    //   170: invokevirtual 773	com/tencent/mm/videocomposition/c:b	(Ljava/util/List;Lkotlin/g/a/m;)V
+    //   173: aload_2
+    //   174: monitorenter
+    //   175: aload_2
+    //   176: invokevirtual 776	java/lang/Object:wait	()V
+    //   179: getstatic 782	kotlin/x:SXb	Lkotlin/x;
+    //   182: astore 4
+    //   184: aload_2
+    //   185: monitorexit
+    //   186: aload_3
+    //   187: iconst_0
+    //   188: invokestatic 613	com/tencent/mm/plugin/vlog/model/local/a:b	(Lcom/tencent/mm/plugin/vlog/model/ac;Z)V
+    //   191: aload_0
+    //   192: getfield 740	kotlin/g/b/z$f:SYG	Ljava/lang/Object;
+    //   195: checkcast 784	android/graphics/Bitmap
+    //   198: astore_0
+    //   199: ldc_w 714
+    //   202: invokestatic 301	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   205: aload_0
+    //   206: areturn
+    //   207: astore_2
+    //   208: ldc_w 524
+    //   211: new 188	java/lang/StringBuilder
+    //   214: dup
+    //   215: ldc_w 786
+    //   218: invokespecial 529	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   221: aload_0
+    //   222: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: ldc_w 788
+    //   228: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: aload_2
+    //   232: invokevirtual 791	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   235: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 203	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 793	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   244: ldc_w 714
+    //   247: invokestatic 301	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   250: aconst_null
+    //   251: areturn
+    //   252: astore 4
+    //   254: ldc_w 524
+    //   257: aload 4
+    //   259: checkcast 795	java/lang/Throwable
+    //   262: ldc_w 796
+    //   265: iconst_0
+    //   266: anewarray 4	java/lang/Object
+    //   269: invokestatic 800	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   272: goto -93 -> 179
+    //   275: astore_0
+    //   276: aload_2
+    //   277: monitorexit
+    //   278: ldc_w 714
+    //   281: invokestatic 301	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   284: aload_0
+    //   285: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	286	0	paramString	String
+    //   70	17	1	i	int
+    //   20	165	2	localObject1	Object
+    //   207	70	2	localException1	java.lang.Exception
+    //   60	127	3	localac	ac
+    //   46	137	4	localObject2	Object
+    //   252	6	4	localException2	java.lang.Exception
+    //   113	33	5	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   37	48	207	java/lang/Exception
+    //   175	179	252	java/lang/Exception
+    //   175	179	275	finally
+    //   179	184	275	finally
+    //   254	272	275	finally
+  }
+  
+  public static void acA(int paramInt)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(190771);
+    if (paramInt < 0)
+    {
+      Log.e("MicroMsg.LocalEffectManager", "setVideoEnhancementScene error:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(190771);
+      return;
+    }
+    Object localObject = GAu;
+    if (localObject != null)
+    {
+      if (((b)localObject).fCb() > 0L)
+      {
+        Log.i("MicroMsg.LocalEffectManager", "setVideoEnhancementScene, effectId:" + ((b)localObject).fCb() + ", scene:" + paramInt);
+        n localn = ((b)localObject).GzV;
+        if (localn != null) {
+          localn.setScene(paramInt);
+        }
+        ((b)localObject).GAF = paramInt;
+      }
+      if (MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_SHOW_IMAGE_ENHANCEMENT_FACE_LANDMARKS_INT_SYNC", 0) == 1) {}
+      for (;;)
+      {
+        localObject = GAu;
+        if (localObject == null) {
+          break label190;
+        }
+        if (((b)localObject).fCb() <= 0L) {
+          break;
+        }
+        Log.i("MicroMsg.LocalEffectManager", "setVideoEnhancementShowFaceLandmarks, show:".concat(String.valueOf(bool)));
+        localObject = ((b)localObject).GzV;
+        if (localObject == null) {
+          break;
+        }
+        ((n)localObject).DL(bool);
+        AppMethodBeat.o(190771);
+        return;
+        bool = false;
+      }
+      AppMethodBeat.o(190771);
+      return;
+      label190:
+      AppMethodBeat.o(190771);
+      return;
+    }
+    AppMethodBeat.o(190771);
+  }
+  
+  public static void b(final ac paramac, boolean paramBoolean)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(190769);
+    b localb = GAu;
+    Object localObject2;
+    if (localb != null)
+    {
+      if ((!paramBoolean) || (localb.GzV != null)) {
+        break label232;
+      }
+      localObject1 = GAw;
+      if (localObject1 == null) {
+        break label226;
+      }
+      localObject1 = ((EffectManager)localObject1).a(com.tencent.mm.xeffect.effect.j.Ryg);
+      localObject2 = GAw;
+      if (localObject2 != null) {
+        ((EffectManager)localObject2).a((com.tencent.mm.xeffect.effect.ad)localObject1);
+      }
+      localObject2 = localObject1;
+      if (!(localObject1 instanceof n)) {
+        localObject2 = null;
+      }
+      localb.GzV = ((n)localObject2);
+      label94:
+      if (paramac != null) {
+        paramac.Gzp = paramBoolean;
+      }
+      if (paramBoolean)
+      {
+        com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.GLF.fDY();
+        if (paramac != null) {
+          paramac.a((com.tencent.mm.videocomposition.b.e)new i(paramBoolean, paramac));
+        }
+      }
+    }
+    Object localObject1 = new StringBuilder("setVideoEnhancement enable:").append(paramBoolean).append(", effectId:");
+    paramac = GAu;
+    if (paramac != null) {}
+    for (paramac = Long.valueOf(paramac.fCb());; paramac = null)
+    {
+      localObject1 = ((StringBuilder)localObject1).append(paramac).append(", rangeId:");
+      localObject2 = GAu;
+      paramac = localObject3;
+      if (localObject2 != null) {
+        paramac = ((b)localObject2).GzV;
+      }
+      Log.i("MicroMsg.LocalEffectManager", paramac);
+      AppMethodBeat.o(190769);
+      return;
+      label226:
+      localObject1 = null;
+      break;
+      label232:
+      if ((paramBoolean) || (localb.GzV == null)) {
+        break label94;
+      }
+      localObject1 = GAw;
+      if (localObject1 != null)
+      {
+        localObject2 = localb.GzV;
+        if (localObject2 == null) {
+          break label287;
+        }
+      }
+      label287:
+      for (long l = ((com.tencent.mm.xeffect.effect.ad)localObject2).id;; l = 0L)
+      {
+        ((EffectManager)localObject1).Ot(l);
+        localb.GzV = null;
+        break;
+      }
+    }
+  }
+  
   public static void b(a parama)
   {
-    AppMethodBeat.i(191312);
+    AppMethodBeat.i(190763);
     p.h(parama, "transEffectInfo");
-    long l2;
-    long l1;
-    if (parama.yeZ <= 0L)
+    if (parama.GAn == null)
     {
-      l2 = bu.HQ();
-      VLogEffectMgr localVLogEffectMgr = BYQ;
-      if (localVLogEffectMgr == null) {
-        break label95;
-      }
-      l1 = localVLogEffectMgr.a(VLogEffectMgr.a.LYm, parama.assetPath);
-      if (l1 != -1L) {
-        break label102;
-      }
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.LocalEffectManager", "effect load error. maybe so load fail!!!!!! path:" + parama.assetPath);
-    }
-    for (;;)
-    {
-      parama.yeZ = l1;
-      AppMethodBeat.o(191312);
-      return;
-      label95:
-      l1 = -1L;
-      break;
-      label102:
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LocalEffectManager", "checkCreateTransEffect effect:" + l1 + " cost:" + bu.aO(l2));
-    }
-  }
-  
-  public static void b(c paramc)
-  {
-    AppMethodBeat.i(191316);
-    VLogEffectMgr localVLogEffectMgr = BYQ;
-    if (localVLogEffectMgr != null)
-    {
-      if (paramc != null) {}
-      for (long l = paramc.BYZ;; l = -1L)
-      {
-        localVLogEffectMgr.Fl(l);
-        AppMethodBeat.o(191316);
-        return;
+      localObject = GAw;
+      if (localObject == null) {
+        break label52;
       }
     }
-    AppMethodBeat.o(191316);
-  }
-  
-  public static void e(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(191317);
-    Object localObject1 = BYO;
-    Object localObject2;
-    if (localObject1 != null)
+    label52:
+    for (Object localObject = ((EffectManager)localObject).a(com.tencent.mm.xeffect.effect.j.RxV, parama.assetPath);; localObject = null)
     {
-      if ((!paramBoolean) || (((b)localObject1).BYV > 0L)) {
-        break label171;
-      }
-      localObject2 = BYQ;
-      if (localObject2 != null)
-      {
-        paramLong1 = ((VLogEffectMgr)localObject2).a(paramLong1, paramLong2, ((b)localObject1).yeZ, new long[0]);
-        ((b)localObject1).BYV = paramLong1;
-      }
-    }
-    else
-    {
-      label63:
-      localObject2 = new StringBuilder("setVideoEnhancement enable:").append(paramBoolean).append(", effectId:");
-      localObject1 = BYO;
-      if (localObject1 == null) {
-        break label218;
-      }
-      localObject1 = Long.valueOf(((b)localObject1).yeZ);
-      label106:
-      localObject2 = ((StringBuilder)localObject2).append(localObject1).append(", rangeId:");
-      localObject1 = BYO;
-      if (localObject1 == null) {
-        break label224;
-      }
-    }
-    label171:
-    label218:
-    label224:
-    for (localObject1 = Long.valueOf(((b)localObject1).BYV);; localObject1 = null)
-    {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LocalEffectManager", localObject1);
-      AppMethodBeat.o(191317);
-      return;
-      paramLong1 = -1L;
-      break;
-      if ((paramBoolean) || (((b)localObject1).BYV < 0L)) {
-        break label63;
-      }
-      localObject2 = BYQ;
-      if (localObject2 != null) {
-        ((VLogEffectMgr)localObject2).Fl(((b)localObject1).BYV);
-      }
-      ((b)localObject1).BYV = -1L;
-      break label63;
-      localObject1 = null;
-      break label106;
-    }
-  }
-  
-  public static LinkedList<a> evZ()
-  {
-    return BYM;
-  }
-  
-  public static LinkedList<c> ewa()
-  {
-    return BYN;
-  }
-  
-  public static VLogEffectMgr ewb()
-  {
-    return BYQ;
-  }
-  
-  public static WeakReference<com.tencent.mm.plugin.vlog.ui.plugin.transition.b> ewc()
-  {
-    return BYR;
-  }
-  
-  private static void ewd()
-  {
-    AppMethodBeat.i(191310);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LocalEffectManager", "initTransResource: transition res " + f.xXx.xXi + '}');
-    if (f.xXx.xXi)
-    {
-      ewe();
-      AppMethodBeat.o(191310);
+      parama.GAn = ((com.tencent.mm.xeffect.effect.ad)localObject);
+      AppMethodBeat.o(190763);
       return;
     }
-    f.xXx.xXj = ((d.g.a.a)g.BZc);
-    AppMethodBeat.o(191310);
   }
   
-  private static void ewe()
+  private static void dMd()
   {
-    AppMethodBeat.i(191311);
-    BYS = true;
-    Object localObject1 = f.xXx.dKm();
+    AppMethodBeat.i(190762);
+    GAz = true;
+    Object localObject1 = f.BYo.eLk();
     for (;;)
     {
       try
       {
-        JSONArray localJSONArray = f.xXx.dKp();
+        JSONArray localJSONArray = f.BYo.eLn();
         if (localJSONArray == null) {
-          p.gkB();
+          p.hyc();
         }
         int k = localJSONArray.length();
         int i = 0;
@@ -381,76 +737,222 @@ public final class a
           Object localObject3 = localJSONArray.optJSONObject(i);
           String str1 = ((JSONObject)localObject3).optString("name");
           String str2 = ((JSONObject)localObject3).getString("pag");
-          Object localObject2 = (Integer)BYL.get(((JSONObject)localObject3).getString("svg"));
+          Object localObject2 = (Integer)wKz.get(((JSONObject)localObject3).getString("svg"));
           int m = ((JSONObject)localObject3).getInt("order");
           localObject3 = (String)localObject1 + str2;
           if (localObject2 != null)
           {
             j = ((Integer)localObject2).intValue();
-            localObject2 = BYM;
+            localObject2 = wKy;
             p.g(str1, "transEffectName");
-            ((LinkedList)localObject2).add(new a(str1, m, (String)localObject3, j, -1L));
+            ((LinkedList)localObject2).add(new a(str1, m, (String)localObject3, j, 500L, 32));
             i += 1;
           }
         }
         else
         {
-          localObject1 = (List)BYM;
+          localObject1 = (List)wKy;
           if (((List)localObject1).size() > 1) {
-            j.a((List)localObject1, (Comparator)new f());
+            kotlin.a.j.a((List)localObject1, (Comparator)new g());
           }
-          AppMethodBeat.o(191311);
+          AppMethodBeat.o(190762);
           return;
         }
       }
       catch (JSONException localJSONException)
       {
-        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.LocalEffectManager", (Throwable)localJSONException, "Cannot load transEffect config", new Object[0]);
-        AppMethodBeat.o(191311);
+        Log.printErrStackTrace("MicroMsg.LocalEffectManager", (Throwable)localJSONException, "Cannot load transEffect config", new Object[0]);
+        AppMethodBeat.o(190762);
         return;
       }
       int j = -1;
     }
   }
   
-  public static void f(List<w> paramList, long paramLong)
+  public static LinkedList<a> fBM()
   {
-    AppMethodBeat.i(191314);
-    p.h(paramList, "trackList");
-    Iterator localIterator = ((Iterable)BYM).iterator();
-    Object localObject;
-    int i;
-    if (localIterator.hasNext())
+    return wKy;
+  }
+  
+  public static LinkedList<c> fBN()
+  {
+    return GAt;
+  }
+  
+  public static b fBO()
+  {
+    return GAu;
+  }
+  
+  public static EffectManager fBP()
+  {
+    return GAw;
+  }
+  
+  public static WeakReference<com.tencent.mm.plugin.vlog.ui.plugin.transition.b> fBQ()
+  {
+    return GAx;
+  }
+  
+  public static HashMap<String, String> fBR()
+  {
+    return GAy;
+  }
+  
+  public static HashMap<String, Pair<Integer, Long>> fBS()
+  {
+    return GAB;
+  }
+  
+  private static void fBT()
+  {
+    AppMethodBeat.i(190761);
+    Log.i("MicroMsg.LocalEffectManager", "initTransResource: transition res " + f.BYo.BXZ + '}');
+    if (f.BYo.BXZ)
     {
-      localObject = localIterator.next();
-      if (((a)localObject).yeZ == paramLong)
+      dMd();
+      AppMethodBeat.o(190761);
+      return;
+    }
+    f.BYo.BYa = ((kotlin.g.a.a)h.GAM);
+    AppMethodBeat.o(190761);
+  }
+  
+  public static List<Integer> fBU()
+  {
+    return GAC;
+  }
+  
+  public static boolean fBV()
+  {
+    Object localObject = GAu;
+    if (localObject != null)
+    {
+      localObject = ((b)localObject).GzV;
+      if (localObject == null) {}
+    }
+    for (long l = ((com.tencent.mm.xeffect.effect.ad)localObject).id; l > 0L; l = -1L) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean fBW()
+  {
+    AppMethodBeat.i(190770);
+    boolean bool;
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (WeChatEnvironment.hasDebugger())) {
+      bool = true;
+    }
+    int i;
+    for (;;)
+    {
+      i = MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_ENABLE_IMAGE_ENHANCEMENT_SETTING_INT_SYNC", 0);
+      if (i != 0) {
+        break;
+      }
+      AppMethodBeat.o(190770);
+      return bool;
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.snm, 0) == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+    }
+    if (i == 1)
+    {
+      AppMethodBeat.o(190770);
+      return true;
+    }
+    AppMethodBeat.o(190770);
+    return false;
+  }
+  
+  public static void fBX()
+  {
+    AppMethodBeat.i(190775);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.plugin.xlabeffect.e locale = com.tencent.mm.plugin.xlabeffect.e.JRF;
+    localObject = ((StringBuilder)localObject).append(com.tencent.mm.plugin.xlabeffect.e.glu()).append("/");
+    locale = com.tencent.mm.plugin.xlabeffect.e.JRF;
+    localObject = com.tencent.mm.plugin.xlabeffect.e.glv();
+    if ((com.tencent.mm.plugin.recordvideo.res.g.BYp.eLz()) && (!com.tencent.mm.vfs.s.YS((String)localObject)))
+    {
+      com.tencent.mm.vfs.s.nx(com.tencent.mm.plugin.recordvideo.res.g.BYp.eLy(), (String)localObject);
+      Log.i("MicroMsg.LocalEffectManager", "tryCreateX3DGlobalContext, copy image label model path, from:" + com.tencent.mm.plugin.recordvideo.res.g.BYp.eLy() + " to " + (String)localObject);
+    }
+    if (!com.tencent.mm.vfs.s.YS((String)localObject))
+    {
+      Log.e("MicroMsg.LocalEffectManager", "tryCreateX3DGlobalContext model not exist!");
+      AppMethodBeat.o(190775);
+      return;
+    }
+    Log.i("MicroMsg.LocalEffectManager", "start tryCreateX3DGlobalContext");
+    localObject = com.tencent.mm.plugin.xlabeffect.e.JRF;
+    GAA = GlobalContextCreator.bpC(com.tencent.mm.plugin.xlabeffect.e.glu());
+    Log.i("MicroMsg.LocalEffectManager", "tryCreateX3DGlobalContext finish");
+    AppMethodBeat.o(190775);
+  }
+  
+  public static void fBY()
+  {
+    AppMethodBeat.i(190776);
+    h.RTc.aX((Runnable)j.GAP);
+    AppMethodBeat.o(190776);
+  }
+  
+  public static void hP(List<String> paramList)
+  {
+    AppMethodBeat.i(190774);
+    p.h(paramList, "pathList");
+    GAy.clear();
+    Object localObject = com.tencent.mm.videocomposition.i.Rhj;
+    int i = com.tencent.mm.videocomposition.i.hfl();
+    localObject = com.tencent.mm.videocomposition.i.Rhj;
+    com.tencent.mm.videocomposition.i.apL(2000);
+    com.tencent.mm.videocomposition.i.Rhj.clear();
+    localObject = ((Iterable)paramList).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str1 = (String)((Iterator)localObject).next();
+      Bitmap localBitmap = aUe(str1);
+      if (localBitmap != null)
       {
-        i = 1;
-        label60:
-        if (i == 0) {
-          break label121;
+        String str2 = GAs + '/' + Util.currentTicks();
+        BitmapUtil.saveBitmapToImage(localBitmap, 100, Bitmap.CompressFormat.JPEG, str2, false);
+        ((Map)GAy).put(str1, str2);
+        Log.i("MicroMsg.LocalEffectManager", "save enhancement image result in " + str2 + ", origin:" + str1);
+        if (GAy.size() == paramList.size()) {
+          Log.i("MicroMsg.LocalEffectManager", "save enhancement image result finish");
         }
       }
     }
-    for (;;)
-    {
-      localObject = (a)localObject;
-      paramList = ((Iterable)j.G(paramList, paramList.size() - 1)).iterator();
-      while (paramList.hasNext()) {
-        ((w)paramList.next()).a((a)localObject);
-      }
-      i = 0;
-      break label60;
-      label121:
-      break;
-      localObject = null;
-    }
-    AppMethodBeat.o(191314);
+    paramList = com.tencent.mm.videocomposition.i.Rhj;
+    com.tencent.mm.videocomposition.i.apL(i);
+    Log.i("MicroMsg.LocalEffectManager", "save enhancement image result finish return");
+    AppMethodBeat.o(190774);
   }
   
-  public static void h(WeakReference<com.tencent.mm.plugin.vlog.ui.plugin.transition.b> paramWeakReference)
+  public static void i(WeakReference<com.tencent.mm.plugin.vlog.ui.plugin.transition.b> paramWeakReference)
   {
-    BYR = paramWeakReference;
+    GAx = paramWeakReference;
+  }
+  
+  public static void p(HashMap<String, Pair<Integer, Long>> paramHashMap)
+  {
+    AppMethodBeat.i(190758);
+    p.h(paramHashMap, "value");
+    if (!((Map)paramHashMap).isEmpty()) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        GAB.clear();
+        GAB.putAll((Map)paramHashMap);
+      }
+      AppMethodBeat.o(190758);
+      return;
+    }
   }
   
   /* Error */
@@ -459,650 +961,316 @@ public final class a
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 683
-    //   5: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc_w 418
-    //   11: ldc_w 684
-    //   14: invokestatic 461	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   17: getstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
+    //   2: ldc_w 1170
+    //   5: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc_w 524
+    //   11: ldc_w 1171
+    //   14: invokestatic 557	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: getstatic 582	com/tencent/mm/plugin/vlog/model/local/a:GAw	Lcom/tencent/mm/xeffect/effect/EffectManager;
     //   20: ifnonnull +13 -> 33
-    //   23: new 508	com/tencent/mm/xeffect/VLogEffectMgr
+    //   23: new 587	com/tencent/mm/xeffect/effect/EffectManager
     //   26: dup
-    //   27: invokespecial 685	com/tencent/mm/xeffect/VLogEffectMgr:<init>	()V
-    //   30: putstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
-    //   33: invokestatic 657	com/tencent/mm/plugin/vlog/model/local/a:ewd	()V
-    //   36: invokestatic 690	com/tencent/mm/plugin/vlog/model/p:evE	()Z
-    //   39: ifeq +866 -> 905
-    //   42: new 218	java/util/HashMap
-    //   45: dup
-    //   46: invokespecial 219	java/util/HashMap:<init>	()V
-    //   49: astore 17
-    //   51: invokestatic 696	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   54: astore 13
-    //   56: aload 13
-    //   58: ldc_w 698
-    //   61: invokestatic 317	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   64: aload 13
-    //   66: invokevirtual 704	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   69: ldc_w 706
-    //   72: invokevirtual 712	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   75: astore 13
-    //   77: aload 13
-    //   79: ldc_w 714
-    //   82: invokestatic 317	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   85: aload 13
-    //   87: invokestatic 718	com/tencent/mm/sdk/platformtools/bu:S	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   90: astore 13
-    //   92: ldc_w 418
-    //   95: ldc_w 720
-    //   98: aload 13
-    //   100: invokestatic 725	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   103: invokevirtual 728	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   106: invokestatic 461	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   109: new 616	org/json/JSONObject
-    //   112: dup
-    //   113: aload 13
-    //   115: invokespecial 729	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   118: ldc_w 731
-    //   121: invokevirtual 735	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   124: astore 18
-    //   126: aload 18
-    //   128: invokevirtual 609	org/json/JSONArray:length	()I
-    //   131: istore 4
-    //   133: iconst_0
-    //   134: istore_1
-    //   135: iload_1
-    //   136: iload 4
-    //   138: if_icmpge +661 -> 799
-    //   141: aload 18
-    //   143: iload_1
-    //   144: invokevirtual 738	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   147: astore 13
-    //   149: aload 13
-    //   151: ldc_w 614
-    //   154: invokevirtual 620	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   157: astore 19
-    //   159: new 420	java/lang/StringBuilder
-    //   162: dup
-    //   163: ldc_w 740
-    //   166: invokespecial 425	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   169: aload 13
-    //   171: ldc_w 622
-    //   174: invokevirtual 620	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   177: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: astore 20
-    //   185: new 420	java/lang/StringBuilder
-    //   188: dup
-    //   189: ldc_w 740
-    //   192: invokespecial 425	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   195: aload 13
-    //   197: ldc_w 742
-    //   200: invokevirtual 620	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   203: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: astore 16
-    //   211: new 420	java/lang/StringBuilder
-    //   214: dup
-    //   215: ldc_w 740
-    //   218: invokespecial 425	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   221: aload 13
-    //   223: ldc_w 744
-    //   226: invokevirtual 620	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   229: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   235: astore 21
-    //   237: getstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
-    //   240: astore 13
-    //   242: aload 13
-    //   244: ifnull +492 -> 736
-    //   247: getstatic 747	com/tencent/mm/xeffect/VLogEffectMgr$a:LYr	Lcom/tencent/mm/xeffect/VLogEffectMgr$a;
-    //   250: astore 14
-    //   252: invokestatic 696	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   255: astore 15
-    //   257: aload 15
-    //   259: ldc_w 698
-    //   262: invokestatic 317	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   265: aload 13
-    //   267: aload 14
-    //   269: aload 15
-    //   271: invokevirtual 704	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   274: aload 20
-    //   276: invokevirtual 750	com/tencent/mm/xeffect/VLogEffectMgr:a	(Lcom/tencent/mm/xeffect/VLogEffectMgr$a;Landroid/content/res/AssetManager;Ljava/lang/String;)J
-    //   279: lstore 7
-    //   281: getstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
-    //   284: astore 13
-    //   286: aload 13
-    //   288: ifnull +36 -> 324
-    //   291: aload 13
-    //   293: lload 7
-    //   295: iconst_1
-    //   296: anewarray 136	d/o
-    //   299: dup
-    //   300: iconst_0
-    //   301: getstatic 756	com/tencent/mm/xeffect/VLogEffectMgr$b:LYB	Lcom/tencent/mm/xeffect/VLogEffectMgr$b;
-    //   304: invokevirtual 759	com/tencent/mm/xeffect/VLogEffectMgr$b:ordinal	()I
-    //   307: invokestatic 145	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   310: fconst_1
-    //   311: invokestatic 764	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   314: invokestatic 151	d/u:R	(Ljava/lang/Object;Ljava/lang/Object;)Ld/o;
-    //   317: aastore
-    //   318: invokestatic 767	d/a/ae:c	([Ld/o;)Ljava/util/HashMap;
-    //   321: invokevirtual 770	com/tencent/mm/xeffect/VLogEffectMgr:a	(JLjava/util/HashMap;)V
-    //   324: getstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
-    //   327: astore 13
-    //   329: aload 13
-    //   331: ifnull +21 -> 352
-    //   334: aload 13
-    //   336: lload 7
-    //   338: invokevirtual 774	com/tencent/mm/xeffect/VLogEffectMgr:Fp	(J)Landroid/util/Size;
-    //   341: astore 14
-    //   343: aload 14
-    //   345: astore 13
-    //   347: aload 14
-    //   349: ifnonnull +14 -> 363
-    //   352: new 776	android/util/Size
-    //   355: dup
-    //   356: iconst_0
-    //   357: iconst_0
-    //   358: invokespecial 779	android/util/Size:<init>	(II)V
-    //   361: astore 13
-    //   363: getstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
-    //   366: astore 14
-    //   368: aload 14
-    //   370: ifnull +374 -> 744
-    //   373: aload 14
-    //   375: lload 7
-    //   377: invokevirtual 783	com/tencent/mm/xeffect/VLogEffectMgr:Fo	(J)I
-    //   380: istore_2
-    //   381: getstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
-    //   384: astore 14
-    //   386: aload 14
-    //   388: ifnull +361 -> 749
-    //   391: aload 14
-    //   393: lload 7
-    //   395: invokevirtual 786	com/tencent/mm/xeffect/VLogEffectMgr:Fq	(J)J
-    //   398: lstore 9
-    //   400: getstatic 497	com/tencent/mm/plugin/vlog/model/local/a:BYQ	Lcom/tencent/mm/xeffect/VLogEffectMgr;
-    //   403: astore 14
-    //   405: aload 14
-    //   407: ifnull +21 -> 428
-    //   410: aload 14
-    //   412: lload 7
-    //   414: invokevirtual 790	com/tencent/mm/xeffect/VLogEffectMgr:Fr	(J)Ljava/util/List;
-    //   417: astore 15
-    //   419: aload 15
-    //   421: astore 14
-    //   423: aload 15
-    //   425: ifnonnull +11 -> 436
-    //   428: getstatic 796	d/a/v:NhH	Ld/a/v;
-    //   431: checkcast 266	java/util/List
-    //   434: astore 14
-    //   436: lconst_0
-    //   437: lstore 5
-    //   439: aload 16
-    //   441: checkcast 798	java/lang/CharSequence
-    //   444: invokeinterface 799 1 0
-    //   449: ifle +306 -> 755
-    //   452: iconst_1
-    //   453: istore_3
-    //   454: aload 16
-    //   456: astore 15
-    //   458: lload 5
-    //   460: lstore 11
-    //   462: iload_3
-    //   463: ifeq +93 -> 556
-    //   466: new 420	java/lang/StringBuilder
-    //   469: dup
-    //   470: invokespecial 635	java/lang/StringBuilder:<init>	()V
-    //   473: invokestatic 804	com/tencent/mm/loader/j/b:asb	()Ljava/lang/String;
-    //   476: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   479: aload 16
-    //   481: invokevirtual 807	java/lang/String:hashCode	()I
-    //   484: invokevirtual 452	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   487: ldc_w 809
-    //   490: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   493: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   496: astore 15
-    //   498: ldc_w 811
-    //   501: aload 16
-    //   503: invokestatic 725	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   506: invokevirtual 728	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   509: aload 15
-    //   511: invokestatic 817	com/tencent/mm/vfs/o:mF	(Ljava/lang/String;Ljava/lang/String;)J
-    //   514: pop2
-    //   515: new 819	com/tencent/mm/compatible/h/d
-    //   518: dup
-    //   519: invokespecial 820	com/tencent/mm/compatible/h/d:<init>	()V
-    //   522: astore 16
-    //   524: aload 16
-    //   526: aload 15
-    //   528: invokevirtual 823	com/tencent/mm/compatible/h/d:setDataSource	(Ljava/lang/String;)V
-    //   531: aload 16
-    //   533: bipush 9
-    //   535: invokevirtual 827	com/tencent/mm/compatible/h/d:extractMetadata	(I)Ljava/lang/String;
-    //   538: lconst_0
-    //   539: invokestatic 831	com/tencent/mm/sdk/platformtools/bu:getLong	(Ljava/lang/String;J)J
-    //   542: lstore 11
-    //   544: lload 11
-    //   546: lstore 5
-    //   548: aload 16
-    //   550: invokevirtual 834	com/tencent/mm/compatible/h/d:release	()V
-    //   553: goto +361 -> 914
-    //   556: ldc_w 418
-    //   559: ldc_w 836
-    //   562: aload 14
-    //   564: invokestatic 725	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   567: invokevirtual 728	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   570: invokestatic 461	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   573: ldc_w 418
-    //   576: new 420	java/lang/StringBuilder
-    //   579: dup
-    //   580: ldc_w 838
-    //   583: invokespecial 425	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   586: aload 20
-    //   588: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   591: ldc_w 840
-    //   594: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   597: aload 19
-    //   599: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   602: ldc_w 547
-    //   605: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   608: lload 7
-    //   610: invokevirtual 442	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   613: ldc_w 842
-    //   616: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   619: aload 13
-    //   621: invokevirtual 429	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   624: ldc_w 844
-    //   627: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   630: iload_2
-    //   631: invokevirtual 452	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   634: ldc_w 846
-    //   637: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   640: lload 9
-    //   642: invokevirtual 442	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   645: ldc_w 848
-    //   648: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   651: aload 15
-    //   653: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   656: ldc_w 850
-    //   659: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   662: lload 11
-    //   664: invokevirtual 442	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   667: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   670: invokestatic 461	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   673: aload 19
-    //   675: ldc_w 852
-    //   678: invokestatic 317	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   681: new 12	com/tencent/mm/plugin/vlog/model/local/a$c
-    //   684: dup
-    //   685: aload 20
-    //   687: aload 15
-    //   689: aload 13
-    //   691: lload 11
-    //   693: iload_2
-    //   694: lload 7
-    //   696: iconst_1
-    //   697: aload 19
-    //   699: aload 21
-    //   701: lconst_0
-    //   702: aload 14
-    //   704: sipush 512
-    //   707: invokespecial 855	com/tencent/mm/plugin/vlog/model/local/a$c:<init>	(Ljava/lang/String;Ljava/lang/String;Landroid/util/Size;JIJZLjava/lang/String;Ljava/lang/String;JLjava/util/List;I)V
-    //   710: astore 13
-    //   712: aload 17
-    //   714: checkcast 239	java/util/Map
-    //   717: iload_1
-    //   718: invokestatic 145	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   721: aload 13
-    //   723: invokeinterface 252 3 0
-    //   728: pop
-    //   729: iload_1
-    //   730: iconst_1
-    //   731: iadd
-    //   732: istore_1
-    //   733: goto -598 -> 135
-    //   736: ldc2_w 415
-    //   739: lstore 7
-    //   741: goto -460 -> 281
-    //   744: iconst_0
-    //   745: istore_2
-    //   746: goto -365 -> 381
-    //   749: lconst_0
-    //   750: lstore 9
-    //   752: goto -352 -> 400
-    //   755: iconst_0
-    //   756: istore_3
-    //   757: goto -303 -> 454
-    //   760: astore 22
-    //   762: ldc_w 418
-    //   765: aload 22
-    //   767: checkcast 647	java/lang/Throwable
-    //   770: ldc_w 857
-    //   773: iconst_0
-    //   774: anewarray 4	java/lang/Object
-    //   777: invokestatic 653	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   780: aload 16
-    //   782: invokevirtual 834	com/tencent/mm/compatible/h/d:release	()V
-    //   785: goto +129 -> 914
-    //   788: astore 13
-    //   790: ldc_w 418
-    //   793: ldc_w 859
-    //   796: invokestatic 516	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   799: getstatic 195	com/tencent/mm/plugin/vlog/model/local/a:BYN	Ljava/util/LinkedList;
-    //   802: invokevirtual 862	java/util/LinkedList:clear	()V
-    //   805: aload 17
-    //   807: invokevirtual 866	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   810: astore 13
-    //   812: aload 13
-    //   814: ldc_w 868
-    //   817: invokestatic 317	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   820: aload 13
-    //   822: checkcast 221	java/lang/Iterable
-    //   825: invokestatic 872	d/a/j:j	(Ljava/lang/Iterable;)Ljava/util/List;
-    //   828: invokeinterface 873 1 0
-    //   833: astore 13
-    //   835: aload 13
-    //   837: invokeinterface 231 1 0
-    //   842: ifeq +63 -> 905
-    //   845: aload 17
-    //   847: aload 13
-    //   849: invokeinterface 235 1 0
-    //   854: checkcast 141	java/lang/Integer
-    //   857: invokevirtual 321	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   860: checkcast 12	com/tencent/mm/plugin/vlog/model/local/a$c
-    //   863: astore 14
-    //   865: aload 14
-    //   867: ifnull -32 -> 835
-    //   870: getstatic 195	com/tencent/mm/plugin/vlog/model/local/a:BYN	Ljava/util/LinkedList;
-    //   873: aload 14
-    //   875: invokevirtual 644	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   878: pop
-    //   879: goto -44 -> 835
-    //   882: astore 13
-    //   884: aload_0
-    //   885: monitorexit
-    //   886: aload 13
-    //   888: athrow
-    //   889: astore 13
-    //   891: aload 16
-    //   893: invokevirtual 834	com/tencent/mm/compatible/h/d:release	()V
-    //   896: ldc_w 683
-    //   899: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   902: aload 13
-    //   904: athrow
-    //   905: ldc_w 683
-    //   908: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   911: aload_0
-    //   912: monitorexit
-    //   913: return
-    //   914: lload 5
-    //   916: lstore 11
-    //   918: goto -362 -> 556
+    //   27: invokespecial 1172	com/tencent/mm/xeffect/effect/EffectManager:<init>	()V
+    //   30: putstatic 582	com/tencent/mm/plugin/vlog/model/local/a:GAw	Lcom/tencent/mm/xeffect/effect/EffectManager;
+    //   33: invokestatic 1102	com/tencent/mm/plugin/vlog/model/local/a:fBT	()V
+    //   36: invokestatic 1177	com/tencent/mm/plugin/vlog/model/w:fBs	()Z
+    //   39: pop
+    //   40: new 9	com/tencent/mm/plugin/vlog/model/local/a$b
+    //   43: dup
+    //   44: invokespecial 1178	com/tencent/mm/plugin/vlog/model/local/a$b:<init>	()V
+    //   47: putstatic 684	com/tencent/mm/plugin/vlog/model/local/a:GAu	Lcom/tencent/mm/plugin/vlog/model/local/a$b;
+    //   50: new 188	java/lang/StringBuilder
+    //   53: dup
+    //   54: ldc_w 1180
+    //   57: invokespecial 529	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   60: astore_2
+    //   61: getstatic 684	com/tencent/mm/plugin/vlog/model/local/a:GAu	Lcom/tencent/mm/plugin/vlog/model/local/a$b;
+    //   64: astore_1
+    //   65: aload_1
+    //   66: ifnull +34 -> 100
+    //   69: aload_1
+    //   70: invokevirtual 687	com/tencent/mm/plugin/vlog/model/local/a$b:fCb	()J
+    //   73: invokestatic 367	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   76: astore_1
+    //   77: ldc_w 524
+    //   80: aload_2
+    //   81: aload_1
+    //   82: invokevirtual 532	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   85: invokevirtual 203	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: invokestatic 557	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: ldc_w 1170
+    //   94: invokestatic 301	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aload_0
+    //   98: monitorexit
+    //   99: return
+    //   100: aconst_null
+    //   101: astore_1
+    //   102: goto -25 -> 77
+    //   105: astore_1
+    //   106: aload_0
+    //   107: monitorexit
+    //   108: aload_1
+    //   109: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	921	0	this	a
-    //   134	599	1	i	int
-    //   380	366	2	j	int
-    //   453	304	3	k	int
-    //   131	8	4	m	int
-    //   437	478	5	l1	long
-    //   279	461	7	l2	long
-    //   398	353	9	l3	long
-    //   460	457	11	l4	long
-    //   54	668	13	localObject1	Object
-    //   788	1	13	localException1	java.lang.Exception
-    //   810	38	13	localObject2	Object
-    //   882	5	13	localObject3	Object
-    //   889	14	13	localObject4	Object
-    //   250	624	14	localObject5	Object
-    //   255	433	15	localObject6	Object
-    //   209	683	16	localObject7	Object
-    //   49	797	17	localHashMap	HashMap
-    //   124	18	18	localJSONArray	JSONArray
-    //   157	541	19	str1	String
-    //   183	503	20	str2	String
-    //   235	465	21	str3	String
-    //   760	6	22	localException2	java.lang.Exception
+    //   0	110	0	this	a
+    //   64	38	1	localObject1	Object
+    //   105	4	1	localObject2	Object
+    //   60	21	2	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   524	544	760	java/lang/Exception
-    //   109	133	788	java/lang/Exception
-    //   141	242	788	java/lang/Exception
-    //   247	281	788	java/lang/Exception
-    //   281	286	788	java/lang/Exception
-    //   291	324	788	java/lang/Exception
-    //   324	329	788	java/lang/Exception
-    //   334	343	788	java/lang/Exception
-    //   352	363	788	java/lang/Exception
-    //   363	368	788	java/lang/Exception
-    //   373	381	788	java/lang/Exception
-    //   381	386	788	java/lang/Exception
-    //   391	400	788	java/lang/Exception
-    //   400	405	788	java/lang/Exception
-    //   410	419	788	java/lang/Exception
-    //   428	436	788	java/lang/Exception
-    //   439	452	788	java/lang/Exception
-    //   466	524	788	java/lang/Exception
-    //   548	553	788	java/lang/Exception
-    //   556	729	788	java/lang/Exception
-    //   780	785	788	java/lang/Exception
-    //   891	905	788	java/lang/Exception
-    //   2	33	882	finally
-    //   33	109	882	finally
-    //   109	133	882	finally
-    //   141	242	882	finally
-    //   247	281	882	finally
-    //   281	286	882	finally
-    //   291	324	882	finally
-    //   324	329	882	finally
-    //   334	343	882	finally
-    //   352	363	882	finally
-    //   363	368	882	finally
-    //   373	381	882	finally
-    //   381	386	882	finally
-    //   391	400	882	finally
-    //   400	405	882	finally
-    //   410	419	882	finally
-    //   428	436	882	finally
-    //   439	452	882	finally
-    //   466	524	882	finally
-    //   548	553	882	finally
-    //   556	729	882	finally
-    //   780	785	882	finally
-    //   790	799	882	finally
-    //   799	835	882	finally
-    //   835	865	882	finally
-    //   870	879	882	finally
-    //   891	905	882	finally
-    //   905	911	882	finally
-    //   524	544	889	finally
-    //   762	780	889	finally
+    //   2	33	105	finally
+    //   33	65	105	finally
+    //   69	77	105	finally
+    //   77	97	105	finally
+  }
+  
+  public final void reset()
+  {
+    try
+    {
+      AppMethodBeat.i(190778);
+      Log.i("MicroMsg.LocalEffectManager", "reset");
+      EffectManager localEffectManager = GAw;
+      if (localEffectManager != null) {
+        localEffectManager.hiv();
+      }
+      GAy.clear();
+      AppMethodBeat.o(190778);
+      return;
+    }
+    finally {}
   }
   
   public final void unInit()
   {
     try
     {
-      AppMethodBeat.i(191318);
-      BYM.clear();
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LocalEffectManager", "clear");
-      VLogEffectMgr localVLogEffectMgr = BYQ;
-      if (localVLogEffectMgr != null) {
-        localVLogEffectMgr.destroy();
+      AppMethodBeat.i(190777);
+      wKy.clear();
+      Log.i("MicroMsg.LocalEffectManager", "clear");
+      GAB.clear();
+      EffectManager localEffectManager = GAw;
+      if (localEffectManager != null) {
+        localEffectManager.destroy();
       }
-      BYQ = null;
-      f.xXx.xXj = null;
-      BYR = null;
-      AppMethodBeat.o(191318);
+      GAw = null;
+      GAu = null;
+      f.BYo.BYa = null;
+      GAx = null;
+      com.tencent.mm.vfs.s.deleteDir(GAs);
+      GAy.clear();
+      if (GAA)
+      {
+        GlobalContextCreator.hir();
+        GAA = false;
+      }
+      AppMethodBeat.o(190777);
       return;
     }
     finally {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "", "name", "", "order", "", "assetPath", "svgPath", "duration", "", "effectId", "(Ljava/lang/String;ILjava/lang/String;IJJ)V", "getAssetPath", "()Ljava/lang/String;", "setAssetPath", "(Ljava/lang/String;)V", "getDuration", "()J", "setDuration", "(J)V", "getEffectId", "setEffectId", "getName", "setName", "getOrder", "()I", "setOrder", "(I)V", "getSvgPath", "setSvgPath", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "plugin-vlog_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "", "name", "", "order", "", "assetPath", "svgPath", "duration", "", "effect", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "(Ljava/lang/String;ILjava/lang/String;IJLcom/tencent/mm/xeffect/effect/VLogEffect;)V", "getAssetPath", "()Ljava/lang/String;", "setAssetPath", "(Ljava/lang/String;)V", "getDuration", "()J", "setDuration", "(J)V", "getEffect", "()Lcom/tencent/mm/xeffect/effect/VLogEffect;", "setEffect", "(Lcom/tencent/mm/xeffect/effect/VLogEffect;)V", "getName", "setName", "getOrder", "()I", "setOrder", "(I)V", "getSvgPath", "setSvgPath", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "plugin-vlog_release"})
   public static final class a
   {
-    public int BYU;
+    public int GAE;
+    com.tencent.mm.xeffect.effect.ad GAn;
     public String assetPath;
     public long duration;
     public String name;
-    int order;
-    public long yeZ;
+    public int order;
     
-    public a(String paramString1, int paramInt1, String paramString2, int paramInt2, long paramLong)
+    public a()
     {
-      AppMethodBeat.i(191292);
+      this(null, 0, null, 0, 0L, 63);
+    }
+    
+    private a(String paramString1, int paramInt1, String paramString2, int paramInt2, long paramLong)
+    {
+      AppMethodBeat.i(190734);
       this.name = paramString1;
       this.order = paramInt1;
       this.assetPath = paramString2;
-      this.BYU = paramInt2;
-      this.duration = 500L;
-      this.yeZ = paramLong;
-      AppMethodBeat.o(191292);
+      this.GAE = paramInt2;
+      this.duration = paramLong;
+      this.GAn = null;
+      AppMethodBeat.o(190734);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(191296);
+      AppMethodBeat.i(190738);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!p.i(this.name, paramObject.name)) || (this.order != paramObject.order) || (!p.i(this.assetPath, paramObject.assetPath)) || (this.BYU != paramObject.BYU) || (this.duration != paramObject.duration) || (this.yeZ != paramObject.yeZ)) {}
+          if ((!p.j(this.name, paramObject.name)) || (this.order != paramObject.order) || (!p.j(this.assetPath, paramObject.assetPath)) || (this.GAE != paramObject.GAE) || (this.duration != paramObject.duration) || (!p.j(this.GAn, paramObject.GAn))) {}
         }
       }
       else
       {
-        AppMethodBeat.o(191296);
+        AppMethodBeat.o(190738);
         return true;
       }
-      AppMethodBeat.o(191296);
+      AppMethodBeat.o(190738);
       return false;
     }
     
     public final int hashCode()
     {
-      int j = 0;
-      AppMethodBeat.i(191295);
-      String str = this.name;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
+      int k = 0;
+      AppMethodBeat.i(190737);
+      Object localObject = this.name;
+      int i;
+      int m;
+      if (localObject != null)
       {
-        int k = this.order;
-        str = this.assetPath;
-        if (str != null) {
-          j = str.hashCode();
+        i = localObject.hashCode();
+        m = this.order;
+        localObject = this.assetPath;
+        if (localObject == null) {
+          break label127;
         }
-        int m = this.BYU;
+      }
+      label127:
+      for (int j = localObject.hashCode();; j = 0)
+      {
+        int n = this.GAE;
         long l = this.duration;
-        int n = (int)(l ^ l >>> 32);
-        l = this.yeZ;
         int i1 = (int)(l ^ l >>> 32);
-        AppMethodBeat.o(191295);
-        return ((((i * 31 + k) * 31 + j) * 31 + m) * 31 + n) * 31 + i1;
+        localObject = this.GAn;
+        if (localObject != null) {
+          k = localObject.hashCode();
+        }
+        AppMethodBeat.o(190737);
+        return (((j + (i * 31 + m) * 31) * 31 + n) * 31 + i1) * 31 + k;
+        i = 0;
+        break;
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(191294);
-      String str = "TransEffectInfo(name=" + this.name + ", order=" + this.order + ", assetPath=" + this.assetPath + ", svgPath=" + this.BYU + ", duration=" + this.duration + ", effectId=" + this.yeZ + ")";
-      AppMethodBeat.o(191294);
+      AppMethodBeat.i(190736);
+      String str = "TransEffectInfo(name=" + this.name + ", order=" + this.order + ", assetPath=" + this.assetPath + ", svgPath=" + this.GAE + ", duration=" + this.duration + ", effect=" + this.GAn + ")";
+      AppMethodBeat.o(190736);
       return str;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;", "", "effectId", "", "effectRangeId", "(JJ)V", "getEffectId", "()J", "setEffectId", "(J)V", "getEffectRangeId", "setEffectRangeId", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-vlog_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoEnhancementEffectInfo;", "", "effect", "Lcom/tencent/mm/xeffect/effect/ImageEnhanceEffect;", "currentScene", "", "(Lcom/tencent/mm/xeffect/effect/ImageEnhanceEffect;I)V", "getCurrentScene", "()I", "setCurrentScene", "(I)V", "getEffect", "()Lcom/tencent/mm/xeffect/effect/ImageEnhanceEffect;", "setEffect", "(Lcom/tencent/mm/xeffect/effect/ImageEnhanceEffect;)V", "effectId", "", "getEffectId", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-vlog_release"})
   public static final class b
   {
-    long BYV = 0L;
-    long yeZ = 0L;
+    int GAF;
+    n GzV = null;
+    
+    private b(int paramInt)
+    {
+      this.GAF = paramInt;
+    }
     
     public final boolean equals(Object paramObject)
     {
+      AppMethodBeat.i(190742);
       if (this != paramObject)
       {
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((this.yeZ != paramObject.yeZ) || (this.BYV != paramObject.BYV)) {}
+          if ((!p.j(this.GzV, paramObject.GzV)) || (this.GAF != paramObject.GAF)) {}
         }
       }
-      else {
+      else
+      {
+        AppMethodBeat.o(190742);
         return true;
       }
+      AppMethodBeat.o(190742);
       return false;
+    }
+    
+    public final long fCb()
+    {
+      n localn = this.GzV;
+      if (localn != null) {
+        return localn.id;
+      }
+      return 0L;
     }
     
     public final int hashCode()
     {
-      long l = this.yeZ;
-      int i = (int)(l ^ l >>> 32);
-      l = this.BYV;
-      return i * 31 + (int)(l ^ l >>> 32);
+      AppMethodBeat.i(190741);
+      n localn = this.GzV;
+      if (localn != null) {}
+      for (int i = localn.hashCode();; i = 0)
+      {
+        int j = this.GAF;
+        AppMethodBeat.o(190741);
+        return i * 31 + j;
+      }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(191297);
-      String str = "VideoEnhancementEffectInfo(effectId=" + this.yeZ + ", effectRangeId=" + this.BYV + ")";
-      AppMethodBeat.o(191297);
+      AppMethodBeat.i(190740);
+      String str = "VideoEnhancementEffectInfo(effect=" + this.GzV + ", currentScene=" + this.GAF + ")";
+      AppMethodBeat.o(190740);
       return str;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "", "path", "", "musicPath", "size", "Landroid/util/Size;", "duration", "", "imageNums", "", "effectId", "trackCropToTemplateSize", "", "name", "icon", "templateEffectRangeId", "replacementInfo", "", "Landroid/util/Pair;", "(Ljava/lang/String;Ljava/lang/String;Landroid/util/Size;JIJZLjava/lang/String;Ljava/lang/String;JLjava/util/List;)V", "getDuration", "()J", "setDuration", "(J)V", "getEffectId", "getIcon", "()Ljava/lang/String;", "getImageNums", "()I", "setImageNums", "(I)V", "getMusicPath", "setMusicPath", "(Ljava/lang/String;)V", "getName", "getPath", "getReplacementInfo", "()Ljava/util/List;", "setReplacementInfo", "(Ljava/util/List;)V", "getSize", "()Landroid/util/Size;", "setSize", "(Landroid/util/Size;)V", "getTemplateEffectRangeId", "setTemplateEffectRangeId", "getTrackCropToTemplateSize", "()Z", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-vlog_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "", "path", "", "musicPath", "size", "Landroid/util/Size;", "duration", "", "imageNums", "", "effectId", "trackCropToTemplateSize", "", "name", "icon", "templateEffectRangeId", "replacementInfo", "", "Landroid/util/Pair;", "(Ljava/lang/String;Ljava/lang/String;Landroid/util/Size;JIJZLjava/lang/String;Ljava/lang/String;JLjava/util/List;)V", "getDuration", "()J", "setDuration", "(J)V", "getEffectId", "getIcon", "()Ljava/lang/String;", "getImageNums", "()I", "setImageNums", "(I)V", "getMusicPath", "setMusicPath", "(Ljava/lang/String;)V", "getName", "getPath", "getReplacementInfo", "()Ljava/util/List;", "setReplacementInfo", "(Ljava/util/List;)V", "getSize", "()Landroid/util/Size;", "setSize", "(Landroid/util/Size;)V", "getTemplateEffectRangeId", "setTemplateEffectRangeId", "getTrackCropToTemplateSize", "()Z", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-vlog_release"})
   public static final class c
   {
-    public Size BYW;
-    private int BYX;
-    public final boolean BYY;
-    public long BYZ;
-    List<Pair<Long, Long>> BZa;
-    public final String dEM;
+    public Size ApT;
+    private int GAG;
+    public final boolean GAH;
+    public long GAI;
+    List<Pair<Long, Long>> GAJ;
     public long duration;
-    public String hoZ;
+    public final String icon;
+    public String iiv;
     public final String name;
     public final String path;
-    public final long yeZ;
+    private final long wKD;
     
-    private c(String paramString1, String paramString2, Size paramSize, long paramLong1, int paramInt, long paramLong2, boolean paramBoolean, String paramString3, String paramString4, long paramLong3, List<Pair<Long, Long>> paramList)
+    private c(String paramString1, String paramString2, Size paramSize, long paramLong1, int paramInt, boolean paramBoolean, String paramString3, String paramString4, long paramLong2, List<Pair<Long, Long>> paramList)
     {
-      AppMethodBeat.i(191298);
+      AppMethodBeat.i(190743);
       this.path = paramString1;
-      this.hoZ = paramString2;
-      this.BYW = paramSize;
+      this.iiv = paramString2;
+      this.ApT = paramSize;
       this.duration = paramLong1;
-      this.BYX = paramInt;
-      this.yeZ = paramLong2;
-      this.BYY = paramBoolean;
+      this.GAG = paramInt;
+      this.wKD = 0L;
+      this.GAH = paramBoolean;
       this.name = paramString3;
-      this.dEM = paramString4;
-      this.BYZ = paramLong3;
-      this.BZa = paramList;
-      AppMethodBeat.o(191298);
+      this.icon = paramString4;
+      this.GAI = -1L;
+      this.GAJ = paramList;
+      AppMethodBeat.o(190743);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(191302);
+      AppMethodBeat.i(190747);
       if (this != paramObject)
       {
         if ((paramObject instanceof c))
         {
           paramObject = (c)paramObject;
-          if ((!p.i(this.path, paramObject.path)) || (!p.i(this.hoZ, paramObject.hoZ)) || (!p.i(this.BYW, paramObject.BYW)) || (this.duration != paramObject.duration) || (this.BYX != paramObject.BYX) || (this.yeZ != paramObject.yeZ) || (this.BYY != paramObject.BYY) || (!p.i(this.name, paramObject.name)) || (!p.i(this.dEM, paramObject.dEM)) || (this.BYZ != paramObject.BYZ) || (!p.i(this.BZa, paramObject.BZa))) {}
+          if ((!p.j(this.path, paramObject.path)) || (!p.j(this.iiv, paramObject.iiv)) || (!p.j(this.ApT, paramObject.ApT)) || (this.duration != paramObject.duration) || (this.GAG != paramObject.GAG) || (this.wKD != paramObject.wKD) || (this.GAH != paramObject.GAH) || (!p.j(this.name, paramObject.name)) || (!p.j(this.icon, paramObject.icon)) || (this.GAI != paramObject.GAI) || (!p.j(this.GAJ, paramObject.GAJ))) {}
         }
       }
       else
       {
-        AppMethodBeat.o(191302);
+        AppMethodBeat.o(190747);
         return true;
       }
-      AppMethodBeat.o(191302);
+      AppMethodBeat.o(190747);
       return false;
     }
     
@@ -1113,25 +1281,25 @@ public final class a
     
     public final String toString()
     {
-      AppMethodBeat.i(191300);
-      String str = "VideoTemplateInfo(path=" + this.path + ", musicPath=" + this.hoZ + ", size=" + this.BYW + ", duration=" + this.duration + ", imageNums=" + this.BYX + ", effectId=" + this.yeZ + ", trackCropToTemplateSize=" + this.BYY + ", name=" + this.name + ", icon=" + this.dEM + ", templateEffectRangeId=" + this.BYZ + ", replacementInfo=" + this.BZa + ")";
-      AppMethodBeat.o(191300);
+      AppMethodBeat.i(190745);
+      String str = "VideoTemplateInfo(path=" + this.path + ", musicPath=" + this.iiv + ", size=" + this.ApT + ", duration=" + this.duration + ", imageNums=" + this.GAG + ", effectId=" + this.wKD + ", trackCropToTemplateSize=" + this.GAH + ", name=" + this.name + ", icon=" + this.icon + ", templateEffectRangeId=" + this.GAI + ", replacementInfo=" + this.GAJ + ")";
+      AppMethodBeat.o(190745);
       return str;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class d
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    public static final d BZb;
+    public static final d GAK;
     
     static
     {
-      AppMethodBeat.i(191304);
-      BZb = new d();
-      AppMethodBeat.o(191304);
+      AppMethodBeat.i(190749);
+      GAK = new d();
+      AppMethodBeat.o(190749);
     }
     
     d()
@@ -1140,55 +1308,165 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
   public static final class e<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
-      AppMethodBeat.i(191305);
-      int i = d.b.a.a((Comparable)((Pair)paramT1).first, (Comparable)((Pair)paramT2).first);
-      AppMethodBeat.o(191305);
+      AppMethodBeat.i(190750);
+      int i = kotlin.b.a.a((Comparable)((Pair)paramT1).first, (Comparable)((Pair)paramT2).first);
+      AppMethodBeat.o(190750);
       return i;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
-  public static final class f<T>
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke"})
+  static final class f
+    extends q
+    implements m<Long, Bitmap, x>
+  {
+    f(com.tencent.mm.plugin.vlog.model.ad paramad, z.f paramf, Object paramObject)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  public static final class g<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
-      AppMethodBeat.i(191306);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((a.a)paramT1).order), (Comparable)Integer.valueOf(((a.a)paramT2).order));
-      AppMethodBeat.o(191306);
+      AppMethodBeat.i(190752);
+      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((a.a)paramT1).order), (Comparable)Integer.valueOf(((a.a)paramT2).order));
+      AppMethodBeat.o(190752);
       return i;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class g
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class h
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    public static final g BZc;
+    public static final h GAM;
     
     static
     {
-      AppMethodBeat.i(191308);
-      BZc = new g();
-      AppMethodBeat.o(191308);
+      AppMethodBeat.i(190754);
+      GAM = new h();
+      AppMethodBeat.o(190754);
     }
     
-    g()
+    h()
     {
       super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/model/local/LocalEffectManager$setVideoEnhancement$1$1", "Lcom/tencent/mm/videocomposition/render/RenderProcessCallback;", "lastTrackPath", "", "getLastTrackPath", "()Ljava/lang/String;", "setLastTrackPath", "(Ljava/lang/String;)V", "onFrameStart", "", "pts", "", "onRelease", "plugin-vlog_release"})
+  public static final class i
+    implements com.tencent.mm.videocomposition.b.e
+  {
+    private String GAN = "";
+    
+    i(boolean paramBoolean, ac paramac) {}
+    
+    public final void KM(long paramLong)
+    {
+      String str = null;
+      AppMethodBeat.i(190755);
+      Object localObject = a.GAD;
+      localObject = a.fBO();
+      com.tencent.mm.plugin.vlog.model.ad localad;
+      if (localObject != null)
+      {
+        localObject = ((a.b)localObject).GzV;
+        if (localObject != null)
+        {
+          localad = com.tencent.mm.plugin.vlog.model.i.a(paramac, paramLong);
+          if (localad == null) {
+            break label170;
+          }
+        }
+      }
+      label170:
+      for (localObject = localad.path;; localObject = null)
+      {
+        if ((p.j(localObject, this.GAN) ^ true))
+        {
+          localObject = a.GAD;
+          localObject = str;
+          if (localad != null) {
+            localObject = localad.path;
+          }
+          int i = a.aUc((String)localObject);
+          localObject = a.GAD;
+          if (a.fBU().contains(Integer.valueOf(i)))
+          {
+            localObject = a.GAD;
+            a.acA(i);
+          }
+          if (localad != null)
+          {
+            str = localad.path;
+            localObject = str;
+            if (str != null) {}
+          }
+          else
+          {
+            localObject = "";
+          }
+          this.GAN = ((String)localObject);
+        }
+        AppMethodBeat.o(190755);
+        return;
+        localObject = null;
+        break;
+      }
+    }
+    
+    public final void onRelease() {}
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class j
+    implements Runnable
+  {
+    public static final j GAP;
+    
+    static
+    {
+      AppMethodBeat.i(190757);
+      GAP = new j();
+      AppMethodBeat.o(190757);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(190756);
+      Object localObject = c.ilt;
+      localObject = c.a.aNa();
+      if (p.j(((c.b)localObject).ilv, EGL14.EGL_NO_CONTEXT))
+      {
+        Log.e("MicroMsg.LocalEffectManager", "tryCreateX3DGlobalContext, create EGLContext failed");
+        AppMethodBeat.o(190756);
+        return;
+      }
+      a locala = a.GAD;
+      a.fBX();
+      if ((p.j(((c.b)localObject).eglSurface, EGL14.EGL_NO_SURFACE) ^ true)) {
+        EGL14.eglDestroySurface(((c.b)localObject).ilu, ((c.b)localObject).eglSurface);
+      }
+      EGL14.eglDestroyContext(((c.b)localObject).ilu, ((c.b)localObject).ilv);
+      AppMethodBeat.o(190756);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.local.a
  * JD-Core Version:    0.7.0.1
  */

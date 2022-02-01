@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory mm:key="settings_netstat_info" />
-    <Preference mm:key="settings_netstat_mobile" mm:layout="@layout/aop" mm:title="@string/f8n" />
-    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_mobile_detail" mm:layout="@layout/aop" mm:srcType="dps" />
-    <PreferenceCategory />
-    <Preference mm:key="settings_netstat_wifi" mm:layout="@layout/aop" mm:title="@string/f8r" />
-    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_wifi_detail" mm:layout="@layout/aop" mm:srcType="geb" />
-    <Preference mm:key="settings_netstat_tip" mm:layout="@layout/aqa" mm:title="@string/fbh" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_my_username" android:title="@string/gw_" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="settings_show_username" android:summary="@string/gtx" android:title="@string/gtu" />
 </PreferenceScreen>

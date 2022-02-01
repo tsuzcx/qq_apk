@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.ipcall.model.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
 
 public final class e
   extends a
 {
-  public long uZx = 0L;
-  public long uZy = 0L;
+  public long yrX = 0L;
+  public long yrY = 0L;
   
-  public final void byD()
+  public final void bUV()
   {
     AppMethodBeat.i(25502);
-    g.yxI.f(12935, new Object[] { Long.valueOf(this.uZx), Long.valueOf(this.uZy) });
+    h.CyF.a(12935, new Object[] { Long.valueOf(this.yrX), Long.valueOf(this.yrY) });
     AppMethodBeat.o(25502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.e
  * JD-Core Version:    0.7.0.1
  */

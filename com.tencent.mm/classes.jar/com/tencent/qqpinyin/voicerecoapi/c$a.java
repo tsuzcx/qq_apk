@@ -2,11 +2,11 @@ package com.tencent.qqpinyin.voicerecoapi;
 
 public final class c$a
 {
-  public int Mij = 0;
-  public int Mik = 256;
-  public int Mil = 512;
-  private int Mim = 0;
-  public int Min = 0;
+  public int RKK = 0;
+  public int RKL = 256;
+  public int RKM = 512;
+  private int RKN = 0;
+  public int RKO = 0;
 }
 
 

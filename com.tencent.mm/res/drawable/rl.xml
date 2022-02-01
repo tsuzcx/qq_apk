@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animated-selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="4.0dip" android:topRightRadius="4.0dip" android:bottomLeftRadius="4.0dip" android:bottomRightRadius="4.0dip" />
-    <gradient android:startColor="#ff18bf81" android:endColor="#ff1494a3" android:angle="315.0" android:type="linear" />
-</shape>
+    <item android:state_checked="true" android:id="@id/j8m" android:drawable="@drawable/b8z" />
+    <item android:id="@id/fad" android:drawable="@drawable/b90" />
+    <transition android:drawable="@drawable/er" android:toId="@id/j8m" android:fromId="@id/fad" />
+    <transition android:drawable="@drawable/eq" android:toId="@id/fad" android:fromId="@id/j8m" />
+</animated-selector>

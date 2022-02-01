@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.h.a.c;
 import com.tencent.mm.plugin.gamelife.PluginGameLife;
-import com.tencent.mm.sdk.platformtools.aj;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "url", "", "(Ljava/lang/String;)V", "md5", "kotlin.jvm.PlatformType", "getMd5", "()Ljava/lang/String;", "getUrl", "getPath", "isLegal", "", "uniqueValue", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "url", "", "(Ljava/lang/String;)V", "md5", "kotlin.jvm.PlatformType", "getMd5", "()Ljava/lang/String;", "getUrl", "getPath", "isLegal", "", "uniqueValue", "plugin-gamelife_release"})
 public final class a
   implements c
 {
@@ -16,36 +16,36 @@ public final class a
   
   public a(String paramString)
   {
-    AppMethodBeat.i(212139);
+    AppMethodBeat.i(241382);
     this.url = paramString;
     String str = this.url;
     paramString = str;
     if (str == null) {
       paramString = "";
     }
-    this.md5 = aj.ej(paramString);
-    AppMethodBeat.o(212139);
+    this.md5 = MD5Util.getMD5String(paramString);
+    AppMethodBeat.o(241382);
   }
   
-  public final String aeM()
+  public final String auA()
   {
-    AppMethodBeat.i(212137);
+    AppMethodBeat.i(241380);
     String str = "gamelife_avatar_" + this.md5;
-    AppMethodBeat.o(212137);
+    AppMethodBeat.o(241380);
     return str;
   }
   
   public final String getPath()
   {
-    AppMethodBeat.i(212138);
-    String str = ((PluginGameLife)g.ad(PluginGameLife.class)).getAvatarPath() + aeM();
-    AppMethodBeat.o(212138);
+    AppMethodBeat.i(241381);
+    String str = ((PluginGameLife)g.ah(PluginGameLife.class)).getAvatarPath() + auA();
+    AppMethodBeat.o(241381);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.f.a
  * JD-Core Version:    0.7.0.1
  */

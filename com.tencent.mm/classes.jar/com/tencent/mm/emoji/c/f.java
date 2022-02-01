@@ -1,36 +1,64 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.g.b.a.j;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.protocal.protobuf.dtj;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.io.ByteArrayOutputStream;
+import com.tencent.mm.g.b.a.ap;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/report/EmojiResReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmojiResReportStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmojiResReportStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/EmojiResReportStruct;)V", "load", "", "success", "", "setVersion", "oldVersion", "", "newVersion", "unzip", "plugin-emojisdk_release"})
 public final class f
-  extends d
 {
-  int glf;
-  long startTime;
+  public ap hcm;
   
-  public f(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
+  public f()
   {
-    super(paramEmojiInfo, paramBoolean, parama);
-    AppMethodBeat.i(104493);
-    this.startTime = 0L;
-    this.glf = 0;
-    ae.i("MicroMsg.EmojiUploadCDN", "prepare: %s", new Object[] { this.glt.field_md5 });
-    new com.tencent.mm.emoji.a.f(this.glt, this.gmD).aET().g(new com.tencent.mm.vending.c.a() {});
-    AppMethodBeat.o(104493);
+    AppMethodBeat.i(200002);
+    this.hcm = new ap();
+    AppMethodBeat.o(200002);
+  }
+  
+  public final void cK(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(200001);
+    this.hcm.jP(paramInt1);
+    this.hcm.jQ(paramInt2);
+    AppMethodBeat.o(200001);
+  }
+  
+  public final void ee(boolean paramBoolean)
+  {
+    AppMethodBeat.i(199999);
+    this.hcm.jR(1);
+    if (paramBoolean)
+    {
+      this.hcm.cV(1L);
+      this.hcm.cW(0L);
+      AppMethodBeat.o(199999);
+      return;
+    }
+    this.hcm.cV(2L);
+    this.hcm.cW(1L);
+    AppMethodBeat.o(199999);
+  }
+  
+  public final void ef(boolean paramBoolean)
+  {
+    AppMethodBeat.i(200000);
+    this.hcm.jR(2);
+    if (paramBoolean)
+    {
+      this.hcm.cV(1L);
+      this.hcm.cW(0L);
+      AppMethodBeat.o(200000);
+      return;
+    }
+    this.hcm.cV(2L);
+    this.hcm.cW(1L);
+    AppMethodBeat.o(200000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.c.f
  * JD-Core Version:    0.7.0.1
  */

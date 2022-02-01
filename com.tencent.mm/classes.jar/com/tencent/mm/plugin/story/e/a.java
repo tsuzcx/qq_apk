@@ -3,47 +3,47 @@ package com.tencent.mm.plugin.story.e;
 import android.content.Context;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil;", "", "()V", "Companion", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil;", "", "()V", "Companion", "plugin-story_release"})
 public final class a
 {
-  private static final long BaA = 3600000L;
-  private static final long BaB = 86400000L;
-  public static final a BaC;
-  private static final long Bay = 1000L;
-  private static final long Baz = 60000L;
+  public static final a Flw;
+  private static final long MILLSECONDS_OF_DAY = 86400000L;
+  private static final long MILLSECONDS_OF_HOUR = 3600000L;
+  private static final long MILLSECONDS_OF_MINUTE = 60000L;
+  private static final long MILLSECONDS_OF_SECOND = 1000L;
   private static final String TAG = "MicroMsg.StoryTimeUtil";
   
   static
   {
     AppMethodBeat.i(118623);
-    BaC = new a((byte)0);
+    Flw = new a((byte)0);
     TAG = "MicroMsg.StoryTimeUtil";
-    Bay = 1000L;
-    Baz = Bay * 60L;
-    BaA = Baz * 60L;
-    BaB = 24L * BaA;
+    MILLSECONDS_OF_SECOND = 1000L;
+    MILLSECONDS_OF_MINUTE = MILLSECONDS_OF_SECOND * 60L;
+    MILLSECONDS_OF_HOUR = MILLSECONDS_OF_MINUTE * 60L;
+    MILLSECONDS_OF_DAY = 24L * MILLSECONDS_OF_HOUR;
     AppMethodBeat.o(118623);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil$Companion;", "", "()V", "MILLSECONDS_OF_DAY", "", "getMILLSECONDS_OF_DAY", "()J", "MILLSECONDS_OF_HOUR", "getMILLSECONDS_OF_HOUR", "MILLSECONDS_OF_MINUTE", "getMILLSECONDS_OF_MINUTE", "MILLSECONDS_OF_SECOND", "getMILLSECONDS_OF_SECOND", "TAG", "", "formatDateInGallery", "", "date", "formatDateInGrid", "formatDateToTimeSecond", "", "formatStoryCreateDate", "time", "formatTimeInGrid", "formatTimeSecondToDate", "(Ljava/lang/Integer;)Ljava/lang/String;", "formatTimeSecondToMD", "nowToYear", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil$Companion;", "", "()V", "MILLSECONDS_OF_DAY", "", "getMILLSECONDS_OF_DAY", "()J", "MILLSECONDS_OF_HOUR", "getMILLSECONDS_OF_HOUR", "MILLSECONDS_OF_MINUTE", "getMILLSECONDS_OF_MINUTE", "MILLSECONDS_OF_SECOND", "getMILLSECONDS_OF_SECOND", "TAG", "", "formatDateInGallery", "", "date", "formatDateInGrid", "formatDateToTimeSecond", "", "formatStoryCreateDate", "time", "formatTimeInGrid", "formatTimeSecondToDate", "(Ljava/lang/Integer;)Ljava/lang/String;", "formatTimeSecondToMD", "nowToYear", "plugin-story_release"})
   public static final class a
   {
-    public static int Bd(long paramLong)
+    public static int Ki(long paramLong)
     {
       AppMethodBeat.i(118620);
       try
       {
-        i = Integer.parseInt(DateFormat.format((CharSequence)ak.getContext().getString(2131764191), paramLong).toString());
+        i = Integer.parseInt(DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(2131766447), paramLong).toString());
         AppMethodBeat.o(118620);
         return i;
       }
@@ -51,13 +51,13 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace(a.access$getTAG$cp(), (Throwable)localNumberFormatException, "NumberFormatException", new Object[0]);
+          Log.printErrStackTrace(a.access$getTAG$cp(), (Throwable)localNumberFormatException, "NumberFormatException", new Object[0]);
           int i = 0;
         }
       }
     }
     
-    public static CharSequence aCP(String paramString)
+    public static CharSequence aRL(String paramString)
     {
       AppMethodBeat.i(118618);
       p.h(paramString, "date");
@@ -70,7 +70,7 @@ public final class a
         localGregorianCalendar.setTimeInMillis(l);
         if ((paramString.get(1) == localGregorianCalendar.get(1)) && (paramString.get(2) == localGregorianCalendar.get(2)))
         {
-          paramString = ak.getContext().getString(2131764194);
+          paramString = MMApplicationContext.getContext().getString(2131766450);
           p.g(paramString, "MMApplicationContext.get…ry_album_date_this_month)");
           paramString = (CharSequence)paramString;
           AppMethodBeat.o(118618);
@@ -82,18 +82,18 @@ public final class a
         long l;
         for (;;)
         {
-          ae.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, paramString.getMessage(), new Object[0]);
+          Log.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, paramString.getMessage(), new Object[0]);
           l = 0L;
         }
         new GregorianCalendar().setTimeInMillis(l);
-        paramString = DateFormat.format((CharSequence)ak.getContext().getString(2131764193), l);
+        paramString = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(2131766449), l);
         p.g(paramString, "DateFormat.format(MMAppl…_album_date_split), time)");
         AppMethodBeat.o(118618);
       }
       return paramString;
     }
     
-    public static CharSequence aCQ(String paramString)
+    public static CharSequence aRM(String paramString)
     {
       AppMethodBeat.i(118619);
       p.h(paramString, "date");
@@ -101,7 +101,7 @@ public final class a
       {
         paramString = n.a((CharSequence)paramString, new String[] { "-" });
         l = new GregorianCalendar(Integer.parseInt((String)paramString.get(0)), Integer.parseInt((String)paramString.get(1)) - 1, Integer.parseInt((String)paramString.get(2))).getTimeInMillis();
-        paramString = DateFormat.format((CharSequence)ak.getContext().getString(2131764272), l);
+        paramString = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(2131766530), l);
         p.g(paramString, "DateFormat.format(MMAppl…allery_date_split), time)");
         AppMethodBeat.o(118619);
         return paramString;
@@ -110,13 +110,13 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, paramString.getMessage(), new Object[0]);
+          Log.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, paramString.getMessage(), new Object[0]);
           long l = 0L;
         }
       }
     }
     
-    public static int aCR(String paramString)
+    public static int aRN(String paramString)
     {
       AppMethodBeat.i(118621);
       p.h(paramString, "date");
@@ -144,7 +144,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.e.a
  * JD-Core Version:    0.7.0.1
  */

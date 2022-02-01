@@ -11,7 +11,6 @@ public class XWalkDecompressor
   private static final int LZMA_OUTSIZE = 8;
   private static final int LZMA_PROP_SIZE = 5;
   private static final String[] MANDATORY_LIBRARIES = { "libxwalkcore.so" };
-  private static final String[] MANDATORY_RESOURCES = XWalkEnvironment.MANDATORY_RESOURCES;
   private static final int STREAM_BUFFER_SIZE = 1048576;
   private static final String TAG = "XWalkLib";
   
@@ -19,37 +18,37 @@ public class XWalkDecompressor
   public static void copyApkToLocal(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc 40
-    //   2: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 18
-    //   7: ldc 48
+    //   0: ldc 34
+    //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 17
+    //   7: ldc 42
     //   9: aload_0
-    //   10: invokestatic 52	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   13: invokevirtual 56	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   16: invokestatic 61	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: new 63	java/io/FileInputStream
+    //   10: invokestatic 46	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   13: invokevirtual 50	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   16: invokestatic 55	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: new 57	java/io/FileInputStream
     //   22: dup
-    //   23: new 65	java/io/File
+    //   23: new 59	java/io/File
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
-    //   31: invokespecial 71	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
+    //   31: invokespecial 65	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   34: astore_3
-    //   35: new 65	java/io/File
+    //   35: new 59	java/io/File
     //   38: dup
     //   39: aload_1
-    //   40: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   43: astore_0
     //   44: aload_0
-    //   45: invokevirtual 75	java/io/File:exists	()Z
+    //   45: invokevirtual 69	java/io/File:exists	()Z
     //   48: ifeq +8 -> 56
     //   51: aload_0
-    //   52: invokevirtual 78	java/io/File:delete	()Z
+    //   52: invokevirtual 72	java/io/File:delete	()Z
     //   55: pop
-    //   56: new 80	java/io/FileOutputStream
+    //   56: new 74	java/io/FileOutputStream
     //   59: dup
     //   60: aload_0
-    //   61: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   61: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   64: astore_0
     //   65: aload_0
     //   66: astore 4
@@ -64,7 +63,7 @@ public class XWalkDecompressor
     //   81: astore_1
     //   82: aload_3
     //   83: aload 5
-    //   85: invokevirtual 85	java/io/FileInputStream:read	([B)I
+    //   85: invokevirtual 79	java/io/FileInputStream:read	([B)I
     //   88: istore_2
     //   89: iload_2
     //   90: ifle +50 -> 140
@@ -76,30 +75,30 @@ public class XWalkDecompressor
     //   99: aload 5
     //   101: iconst_0
     //   102: iload_2
-    //   103: invokevirtual 89	java/io/FileOutputStream:write	([BII)V
+    //   103: invokevirtual 83	java/io/FileOutputStream:write	([BII)V
     //   106: goto -29 -> 77
     //   109: astore 5
     //   111: aload_0
     //   112: astore 4
     //   114: aload_3
     //   115: astore_1
-    //   116: ldc 91
+    //   116: ldc 85
     //   118: aload 5
-    //   120: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   123: invokestatic 98	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   120: invokevirtual 89	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   123: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   126: aload_3
-    //   127: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   127: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   130: aload_0
-    //   131: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   134: ldc 40
-    //   136: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   134: ldc 34
+    //   136: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: return
     //   140: aload_3
-    //   141: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   141: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   144: aload_0
-    //   145: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   148: ldc 40
-    //   150: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   148: ldc 34
+    //   150: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: return
     //   154: astore_0
     //   155: aconst_null
@@ -107,11 +106,11 @@ public class XWalkDecompressor
     //   158: aconst_null
     //   159: astore_1
     //   160: aload_1
-    //   161: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   161: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   164: aload 4
-    //   166: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   169: ldc 40
-    //   171: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   166: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   169: ldc 34
+    //   171: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   174: aload_0
     //   175: athrow
     //   176: astore_0
@@ -164,90 +163,90 @@ public class XWalkDecompressor
   public static boolean decompressDownloadFullZip(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: ldc 112
-    //   2: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 18
-    //   7: new 114	java/lang/StringBuilder
+    //   0: ldc 106
+    //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 17
+    //   7: new 108	java/lang/StringBuilder
     //   10: dup
-    //   11: ldc 116
-    //   13: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   11: ldc 110
+    //   13: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   16: aload_0
-    //   17: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: ldc 123
-    //   22: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: ldc 117
+    //   22: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: iload_1
-    //   26: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 131	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
+    //   26: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   35: invokestatic 131	android/os/SystemClock:uptimeMillis	()J
     //   38: lstore_3
-    //   39: new 139	java/util/zip/ZipFile
+    //   39: new 133	java/util/zip/ZipFile
     //   42: dup
     //   43: aload_0
-    //   44: invokespecial 140	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   44: invokespecial 134	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
     //   47: astore 7
     //   49: aload 7
-    //   51: invokevirtual 144	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   51: invokevirtual 138	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
     //   54: astore 6
     //   56: aload 6
-    //   58: invokeinterface 149 1 0
+    //   58: invokeinterface 143 1 0
     //   63: ifeq +385 -> 448
     //   66: aload 6
-    //   68: invokeinterface 153 1 0
-    //   73: checkcast 155	java/util/zip/ZipEntry
+    //   68: invokeinterface 147 1 0
+    //   73: checkcast 149	java/util/zip/ZipEntry
     //   76: astore 5
     //   78: aload 5
-    //   80: invokevirtual 158	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   83: ldc 160
-    //   85: invokestatic 166	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   80: invokevirtual 152	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   83: ldc 154
+    //   85: invokestatic 160	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   88: astore_0
-    //   89: ldc 18
-    //   91: ldc 168
+    //   89: ldc 17
+    //   91: ldc 162
     //   93: aload_0
-    //   94: invokestatic 52	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   97: invokevirtual 56	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   100: invokestatic 131	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   94: invokestatic 46	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   97: invokevirtual 50	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   100: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   103: aload_0
-    //   104: ldc 170
-    //   106: invokevirtual 174	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   104: ldc 164
+    //   106: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   109: ifne -53 -> 56
     //   112: aload_0
-    //   113: ldc 176
-    //   115: invokevirtual 174	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   113: ldc 170
+    //   115: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   118: ifne -62 -> 56
     //   121: aload 5
-    //   123: invokevirtual 179	java/util/zip/ZipEntry:isDirectory	()Z
+    //   123: invokevirtual 173	java/util/zip/ZipEntry:isDirectory	()Z
     //   126: ifne -70 -> 56
     //   129: aload 7
     //   131: aload 5
-    //   133: invokevirtual 183	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   133: invokevirtual 177	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   136: astore 5
     //   138: aload_0
-    //   139: ldc 185
-    //   141: invokevirtual 189	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   139: ldc 179
+    //   141: invokevirtual 183	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   144: ifeq +133 -> 277
-    //   147: new 65	java/io/File
+    //   147: new 59	java/io/File
     //   150: dup
     //   151: iload_1
-    //   152: invokestatic 193	org/xwalk/core/XWalkEnvironment:getDownloadApkPath	(I)Ljava/lang/String;
-    //   155: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
+    //   152: invokestatic 189	org/xwalk/core/XWalkEnvironment:getDownloadApkPath	(I)Ljava/lang/String;
+    //   155: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   158: astore_0
     //   159: aload_0
-    //   160: invokevirtual 75	java/io/File:exists	()Z
+    //   160: invokevirtual 69	java/io/File:exists	()Z
     //   163: ifne +205 -> 368
     //   166: aload_0
-    //   167: invokevirtual 197	java/io/File:getParentFile	()Ljava/io/File;
+    //   167: invokevirtual 193	java/io/File:getParentFile	()Ljava/io/File;
     //   170: astore 8
     //   172: aload 8
-    //   174: invokevirtual 75	java/io/File:exists	()Z
+    //   174: invokevirtual 69	java/io/File:exists	()Z
     //   177: ifne +9 -> 186
     //   180: aload 8
-    //   182: invokevirtual 200	java/io/File:mkdirs	()Z
+    //   182: invokevirtual 196	java/io/File:mkdirs	()Z
     //   185: pop
-    //   186: new 80	java/io/FileOutputStream
+    //   186: new 74	java/io/FileOutputStream
     //   189: dup
     //   190: aload_0
-    //   191: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   191: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   194: astore_0
     //   195: aload_0
     //   196: astore 10
@@ -255,7 +254,7 @@ public class XWalkDecompressor
     //   200: astore 9
     //   202: aload 7
     //   204: astore 8
-    //   206: ldc 14
+    //   206: ldc 13
     //   208: newarray byte
     //   210: astore 11
     //   212: aload_0
@@ -266,7 +265,7 @@ public class XWalkDecompressor
     //   221: astore 8
     //   223: aload 5
     //   225: aload 11
-    //   227: invokevirtual 203	java/io/InputStream:read	([B)I
+    //   227: invokevirtual 199	java/io/InputStream:read	([B)I
     //   230: istore_2
     //   231: iload_2
     //   232: iconst_m1
@@ -281,7 +280,7 @@ public class XWalkDecompressor
     //   248: aload 11
     //   250: iconst_0
     //   251: iload_2
-    //   252: invokevirtual 206	java/io/OutputStream:write	([BII)V
+    //   252: invokevirtual 202	java/io/OutputStream:write	([BII)V
     //   255: aload_0
     //   256: astore 10
     //   258: aload 5
@@ -290,15 +289,15 @@ public class XWalkDecompressor
     //   264: astore 8
     //   266: aload 5
     //   268: aload 11
-    //   270: invokevirtual 203	java/io/InputStream:read	([B)I
+    //   270: invokevirtual 199	java/io/InputStream:read	([B)I
     //   273: istore_2
     //   274: goto -43 -> 231
-    //   277: new 65	java/io/File
+    //   277: new 59	java/io/File
     //   280: dup
     //   281: iload_1
     //   282: aload_0
-    //   283: invokestatic 210	org/xwalk/core/XWalkEnvironment:getExtractedCoreFile	(ILjava/lang/String;)Ljava/lang/String;
-    //   286: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
+    //   283: invokestatic 206	org/xwalk/core/XWalkEnvironment:getExtractedCoreFile	(ILjava/lang/String;)Ljava/lang/String;
+    //   286: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   289: astore_0
     //   290: goto -131 -> 159
     //   293: astore 6
@@ -310,34 +309,34 @@ public class XWalkDecompressor
     //   302: astore 9
     //   304: aload 7
     //   306: astore 8
-    //   308: ldc 18
-    //   310: new 114	java/lang/StringBuilder
+    //   308: ldc 17
+    //   310: new 108	java/lang/StringBuilder
     //   313: dup
-    //   314: ldc 212
-    //   316: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   314: ldc 208
+    //   316: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   319: aload 6
-    //   321: invokevirtual 215	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   324: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   330: invokestatic 98	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   321: invokevirtual 211	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
+    //   324: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   327: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   330: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   333: aload 7
     //   335: ifnull +8 -> 343
     //   338: aload 7
-    //   340: invokevirtual 218	java/util/zip/ZipFile:close	()V
+    //   340: invokevirtual 214	java/util/zip/ZipFile:close	()V
     //   343: aload_0
     //   344: ifnull +7 -> 351
     //   347: aload_0
-    //   348: invokevirtual 219	java/io/OutputStream:close	()V
+    //   348: invokevirtual 215	java/io/OutputStream:close	()V
     //   351: aload 5
     //   353: ifnull +8 -> 361
     //   356: aload 5
-    //   358: invokevirtual 220	java/io/InputStream:close	()V
-    //   361: ldc 112
-    //   363: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   358: invokevirtual 216	java/io/InputStream:close	()V
+    //   361: ldc 106
+    //   363: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   366: iconst_0
     //   367: ireturn
     //   368: aload_0
-    //   369: invokevirtual 78	java/io/File:delete	()Z
+    //   369: invokevirtual 72	java/io/File:delete	()Z
     //   372: pop
     //   373: goto -187 -> 186
     //   376: astore_0
@@ -350,17 +349,17 @@ public class XWalkDecompressor
     //   388: aload 7
     //   390: ifnull +8 -> 398
     //   393: aload 7
-    //   395: invokevirtual 218	java/util/zip/ZipFile:close	()V
+    //   395: invokevirtual 214	java/util/zip/ZipFile:close	()V
     //   398: aload 5
     //   400: ifnull +8 -> 408
     //   403: aload 5
-    //   405: invokevirtual 219	java/io/OutputStream:close	()V
+    //   405: invokevirtual 215	java/io/OutputStream:close	()V
     //   408: aload 6
     //   410: ifnull +8 -> 418
     //   413: aload 6
-    //   415: invokevirtual 220	java/io/InputStream:close	()V
-    //   418: ldc 112
-    //   420: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   415: invokevirtual 216	java/io/InputStream:close	()V
+    //   418: ldc 106
+    //   420: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   423: aload_0
     //   424: athrow
     //   425: aload_0
@@ -370,28 +369,28 @@ public class XWalkDecompressor
     //   432: aload 7
     //   434: astore 8
     //   436: aload_0
-    //   437: invokevirtual 219	java/io/OutputStream:close	()V
+    //   437: invokevirtual 215	java/io/OutputStream:close	()V
     //   440: aload 5
-    //   442: invokevirtual 220	java/io/InputStream:close	()V
+    //   442: invokevirtual 216	java/io/InputStream:close	()V
     //   445: goto -389 -> 56
     //   448: aload 7
-    //   450: invokevirtual 218	java/util/zip/ZipFile:close	()V
-    //   453: invokestatic 225	java/lang/System:gc	()V
-    //   456: ldc 18
-    //   458: new 114	java/lang/StringBuilder
+    //   450: invokevirtual 214	java/util/zip/ZipFile:close	()V
+    //   453: invokestatic 221	java/lang/System:gc	()V
+    //   456: ldc 17
+    //   458: new 108	java/lang/StringBuilder
     //   461: dup
-    //   462: ldc 227
-    //   464: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   467: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
+    //   462: ldc 223
+    //   464: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   467: invokestatic 131	android/os/SystemClock:uptimeMillis	()J
     //   470: lload_3
     //   471: lsub
-    //   472: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   475: ldc 232
-    //   477: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   483: invokestatic 61	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   486: ldc 112
-    //   488: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   472: invokevirtual 226	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   475: ldc 228
+    //   477: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   480: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   483: invokestatic 55	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   486: ldc 106
+    //   488: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   491: iconst_1
     //   492: ireturn
     //   493: astore_0
@@ -502,23 +501,23 @@ public class XWalkDecompressor
   public static boolean decompressDownloadPatchZip(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc 237
-    //   2: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 18
-    //   7: ldc 239
+    //   0: ldc 233
+    //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 17
+    //   7: ldc 235
     //   9: aload_0
-    //   10: invokestatic 52	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   13: invokevirtual 56	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   16: invokestatic 61	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
+    //   10: invokestatic 46	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   13: invokevirtual 50	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   16: invokestatic 55	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: invokestatic 131	android/os/SystemClock:uptimeMillis	()J
     //   22: lstore_3
-    //   23: new 139	java/util/zip/ZipFile
+    //   23: new 133	java/util/zip/ZipFile
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 140	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   28: invokespecial 134	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
     //   31: astore 7
     //   33: aload 7
-    //   35: invokevirtual 144	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   35: invokevirtual 138	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
     //   38: astore 12
     //   40: aconst_null
     //   41: astore 6
@@ -533,7 +532,7 @@ public class XWalkDecompressor
     //   55: aload 7
     //   57: astore 8
     //   59: aload 12
-    //   61: invokeinterface 149 1 0
+    //   61: invokeinterface 143 1 0
     //   66: ifeq +454 -> 520
     //   69: aload_0
     //   70: astore 10
@@ -544,8 +543,8 @@ public class XWalkDecompressor
     //   79: aload 7
     //   81: astore 8
     //   83: aload 12
-    //   85: invokeinterface 153 1 0
-    //   90: checkcast 155	java/util/zip/ZipEntry
+    //   85: invokeinterface 147 1 0
+    //   90: checkcast 149	java/util/zip/ZipEntry
     //   93: astore 13
     //   95: aload_0
     //   96: astore 10
@@ -556,9 +555,9 @@ public class XWalkDecompressor
     //   105: aload 7
     //   107: astore 8
     //   109: aload 13
-    //   111: invokevirtual 158	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   114: ldc 160
-    //   116: invokestatic 166	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   111: invokevirtual 152	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   114: ldc 154
+    //   116: invokestatic 160	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   119: astore 11
     //   121: aload_0
     //   122: astore 10
@@ -569,8 +568,8 @@ public class XWalkDecompressor
     //   131: aload 7
     //   133: astore 8
     //   135: aload 11
-    //   137: ldc 170
-    //   139: invokevirtual 174	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   137: ldc 164
+    //   139: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   142: ifne -97 -> 45
     //   145: aload_0
     //   146: astore 10
@@ -581,8 +580,8 @@ public class XWalkDecompressor
     //   155: aload 7
     //   157: astore 8
     //   159: aload 11
-    //   161: ldc 176
-    //   163: invokevirtual 174	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   161: ldc 170
+    //   163: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   166: ifne -121 -> 45
     //   169: aload_0
     //   170: astore 10
@@ -593,7 +592,7 @@ public class XWalkDecompressor
     //   179: aload 7
     //   181: astore 8
     //   183: aload 13
-    //   185: invokevirtual 179	java/util/zip/ZipEntry:isDirectory	()Z
+    //   185: invokevirtual 173	java/util/zip/ZipEntry:isDirectory	()Z
     //   188: ifne -143 -> 45
     //   191: aload_0
     //   192: astore 10
@@ -604,7 +603,7 @@ public class XWalkDecompressor
     //   201: aload 7
     //   203: astore 8
     //   205: aload_0
-    //   206: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   206: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   209: aload_0
     //   210: astore 10
     //   212: aload 6
@@ -615,7 +614,7 @@ public class XWalkDecompressor
     //   221: astore 8
     //   223: aload 7
     //   225: aload 13
-    //   227: invokevirtual 183	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   227: invokevirtual 177	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   230: astore_0
     //   231: aload_0
     //   232: astore 10
@@ -625,11 +624,11 @@ public class XWalkDecompressor
     //   239: astore 5
     //   241: aload 7
     //   243: astore 8
-    //   245: new 65	java/io/File
+    //   245: new 59	java/io/File
     //   248: dup
     //   249: aload_1
     //   250: aload 11
-    //   252: invokespecial 241	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   252: invokespecial 237	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   255: astore 11
     //   257: aload_0
     //   258: astore 10
@@ -640,7 +639,7 @@ public class XWalkDecompressor
     //   267: aload 7
     //   269: astore 8
     //   271: aload 11
-    //   273: invokevirtual 75	java/io/File:exists	()Z
+    //   273: invokevirtual 69	java/io/File:exists	()Z
     //   276: ifne +147 -> 423
     //   279: aload_0
     //   280: astore 10
@@ -651,7 +650,7 @@ public class XWalkDecompressor
     //   289: aload 7
     //   291: astore 8
     //   293: aload 11
-    //   295: invokevirtual 197	java/io/File:getParentFile	()Ljava/io/File;
+    //   295: invokevirtual 193	java/io/File:getParentFile	()Ljava/io/File;
     //   298: astore 13
     //   300: aload_0
     //   301: astore 10
@@ -662,7 +661,7 @@ public class XWalkDecompressor
     //   310: aload 7
     //   312: astore 8
     //   314: aload 13
-    //   316: invokevirtual 75	java/io/File:exists	()Z
+    //   316: invokevirtual 69	java/io/File:exists	()Z
     //   319: ifne +23 -> 342
     //   322: aload_0
     //   323: astore 10
@@ -673,7 +672,7 @@ public class XWalkDecompressor
     //   332: aload 7
     //   334: astore 8
     //   336: aload 13
-    //   338: invokevirtual 200	java/io/File:mkdirs	()Z
+    //   338: invokevirtual 196	java/io/File:mkdirs	()Z
     //   341: pop
     //   342: aload_0
     //   343: astore 10
@@ -684,7 +683,7 @@ public class XWalkDecompressor
     //   352: aload 7
     //   354: astore 8
     //   356: aload 6
-    //   358: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   358: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   361: aload_0
     //   362: astore 10
     //   364: aload 6
@@ -693,17 +692,17 @@ public class XWalkDecompressor
     //   369: astore 5
     //   371: aload 7
     //   373: astore 8
-    //   375: new 80	java/io/FileOutputStream
+    //   375: new 74	java/io/FileOutputStream
     //   378: dup
     //   379: aload 11
-    //   381: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   381: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   384: astore 11
-    //   386: ldc 14
+    //   386: ldc 13
     //   388: newarray byte
     //   390: astore 5
     //   392: aload_0
     //   393: aload 5
-    //   395: invokevirtual 203	java/io/InputStream:read	([B)I
+    //   395: invokevirtual 199	java/io/InputStream:read	([B)I
     //   398: istore_2
     //   399: iload_2
     //   400: iconst_m1
@@ -712,10 +711,10 @@ public class XWalkDecompressor
     //   406: aload 5
     //   408: iconst_0
     //   409: iload_2
-    //   410: invokevirtual 206	java/io/OutputStream:write	([BII)V
+    //   410: invokevirtual 202	java/io/OutputStream:write	([BII)V
     //   413: aload_0
     //   414: aload 5
-    //   416: invokevirtual 203	java/io/InputStream:read	([B)I
+    //   416: invokevirtual 199	java/io/InputStream:read	([B)I
     //   419: istore_2
     //   420: goto -21 -> 399
     //   423: aload_0
@@ -727,7 +726,7 @@ public class XWalkDecompressor
     //   433: aload 7
     //   435: astore 8
     //   437: aload 11
-    //   439: invokevirtual 78	java/io/File:delete	()Z
+    //   439: invokevirtual 72	java/io/File:delete	()Z
     //   442: pop
     //   443: goto -101 -> 342
     //   446: astore 5
@@ -743,51 +742,51 @@ public class XWalkDecompressor
     //   462: astore 5
     //   464: aload 7
     //   466: astore 8
-    //   468: ldc 18
-    //   470: new 114	java/lang/StringBuilder
+    //   468: ldc 17
+    //   470: new 108	java/lang/StringBuilder
     //   473: dup
-    //   474: ldc 212
-    //   476: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   474: ldc 208
+    //   476: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   479: aload 6
-    //   481: invokevirtual 215	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   484: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   487: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   490: invokestatic 98	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   481: invokevirtual 211	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
+    //   484: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   487: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   490: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   493: aload 7
-    //   495: invokevirtual 218	java/util/zip/ZipFile:close	()V
+    //   495: invokevirtual 214	java/util/zip/ZipFile:close	()V
     //   498: aload_1
-    //   499: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   499: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   502: aload_0
-    //   503: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   506: ldc 237
-    //   508: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   503: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   506: ldc 233
+    //   508: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   511: iconst_0
     //   512: ireturn
     //   513: aload 11
     //   515: astore 6
     //   517: goto -472 -> 45
     //   520: aload 7
-    //   522: invokevirtual 218	java/util/zip/ZipFile:close	()V
+    //   522: invokevirtual 214	java/util/zip/ZipFile:close	()V
     //   525: aload 6
-    //   527: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   527: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   530: aload_0
-    //   531: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   534: invokestatic 225	java/lang/System:gc	()V
-    //   537: ldc 18
-    //   539: new 114	java/lang/StringBuilder
+    //   531: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   534: invokestatic 221	java/lang/System:gc	()V
+    //   537: ldc 17
+    //   539: new 108	java/lang/StringBuilder
     //   542: dup
-    //   543: ldc 227
-    //   545: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   548: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
+    //   543: ldc 223
+    //   545: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   548: invokestatic 131	android/os/SystemClock:uptimeMillis	()J
     //   551: lload_3
     //   552: lsub
-    //   553: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   556: ldc 232
-    //   558: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   561: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   564: invokestatic 61	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   567: ldc 237
-    //   569: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   553: invokevirtual 226	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   556: ldc 228
+    //   558: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   561: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   564: invokestatic 55	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   567: ldc 233
+    //   569: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   572: iconst_1
     //   573: ireturn
     //   574: astore_1
@@ -798,13 +797,13 @@ public class XWalkDecompressor
     //   580: aconst_null
     //   581: astore 7
     //   583: aload 7
-    //   585: invokevirtual 218	java/util/zip/ZipFile:close	()V
+    //   585: invokevirtual 214	java/util/zip/ZipFile:close	()V
     //   588: aload 6
-    //   590: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   590: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   593: aload_0
-    //   594: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   597: ldc 237
-    //   599: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   594: invokestatic 98	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   597: ldc 233
+    //   599: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   602: aload_1
     //   603: athrow
     //   604: astore_1
@@ -936,20 +935,20 @@ public class XWalkDecompressor
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
-    //   2: ldc 244
-    //   4: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 246	java/io/BufferedInputStream
+    //   2: ldc 240
+    //   4: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: new 242	java/io/BufferedInputStream
     //   10: dup
     //   11: aload_0
-    //   12: invokespecial 249	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   12: invokespecial 245	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   15: astore 6
-    //   17: new 251	java/io/BufferedOutputStream
+    //   17: new 247	java/io/BufferedOutputStream
     //   20: dup
-    //   21: new 80	java/io/FileOutputStream
+    //   21: new 74	java/io/FileOutputStream
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   29: invokespecial 254	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   26: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   29: invokespecial 250	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   32: astore_0
     //   33: aload_0
     //   34: astore 7
@@ -966,633 +965,625 @@ public class XWalkDecompressor
     //   54: aload 9
     //   56: iconst_0
     //   57: iconst_5
-    //   58: invokevirtual 257	java/io/InputStream:read	([BII)I
+    //   58: invokevirtual 253	java/io/InputStream:read	([BII)I
     //   61: iconst_5
-    //   62: if_icmpeq +121 -> 183
+    //   62: if_icmpeq +120 -> 182
     //   65: aload_0
     //   66: astore 7
     //   68: aload 6
     //   70: astore 8
-    //   72: new 111	java/io/IOException
+    //   72: new 105	java/io/IOException
     //   75: dup
-    //   76: ldc_w 259
-    //   79: invokespecial 260	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   82: astore 9
-    //   84: aload_0
-    //   85: astore 7
-    //   87: aload 6
-    //   89: astore 8
-    //   91: ldc 244
-    //   93: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   96: aload_0
-    //   97: astore 7
-    //   99: aload 6
-    //   101: astore 8
-    //   103: aload 9
-    //   105: athrow
-    //   106: astore 9
-    //   108: aload_0
-    //   109: astore 7
-    //   111: aload 6
-    //   113: astore 8
-    //   115: aload_1
-    //   116: invokevirtual 263	java/io/File:isFile	()Z
-    //   119: ifeq +15 -> 134
-    //   122: aload_0
-    //   123: astore 7
-    //   125: aload 6
-    //   127: astore 8
-    //   129: aload_1
-    //   130: invokevirtual 78	java/io/File:delete	()Z
-    //   133: pop
-    //   134: aload_0
-    //   135: astore 7
-    //   137: aload 6
-    //   139: astore 8
-    //   141: ldc 244
-    //   143: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   146: aload_0
-    //   147: astore 7
-    //   149: aload 6
-    //   151: astore 8
-    //   153: aload 9
-    //   155: athrow
-    //   156: astore_0
-    //   157: aload 8
-    //   159: astore 6
-    //   161: aload 7
-    //   163: invokevirtual 266	java/io/OutputStream:flush	()V
-    //   166: aload 7
-    //   168: invokevirtual 219	java/io/OutputStream:close	()V
-    //   171: aload 6
-    //   173: invokevirtual 220	java/io/InputStream:close	()V
-    //   176: ldc 244
-    //   178: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   181: aload_0
-    //   182: athrow
-    //   183: aload_0
-    //   184: astore 7
-    //   186: aload 6
-    //   188: astore 8
-    //   190: new 268	g/a/b/a
-    //   193: dup
-    //   194: invokespecial 269	g/a/b/a:<init>	()V
-    //   197: astore 10
-    //   199: aload_0
-    //   200: astore 7
-    //   202: aload 6
-    //   204: astore 8
-    //   206: aload 10
-    //   208: aload 9
-    //   210: invokevirtual 273	g/a/b/a:dx	([B)Z
-    //   213: ifne +250 -> 463
-    //   216: aload_0
-    //   217: astore 7
-    //   219: aload 6
-    //   221: astore 8
-    //   223: new 111	java/io/IOException
-    //   226: dup
-    //   227: ldc_w 275
-    //   230: invokespecial 260	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   233: astore 9
-    //   235: aload_0
-    //   236: astore 7
-    //   238: aload 6
-    //   240: astore 8
-    //   242: ldc 244
-    //   244: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   247: aload_0
-    //   248: astore 7
-    //   250: aload 6
-    //   252: astore 8
-    //   254: aload 9
-    //   256: athrow
-    //   257: iload_2
-    //   258: bipush 8
-    //   260: if_icmpge +38 -> 298
-    //   263: aload_0
-    //   264: astore 7
-    //   266: aload 6
-    //   268: astore 8
-    //   270: aload 6
-    //   272: invokevirtual 278	java/io/InputStream:read	()I
-    //   275: istore_3
-    //   276: iload_3
-    //   277: ifge +192 -> 469
-    //   280: aload_0
-    //   281: astore 7
-    //   283: aload 6
-    //   285: astore 8
-    //   287: ldc 18
-    //   289: ldc_w 280
-    //   292: invokestatic 283	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   295: goto +174 -> 469
-    //   298: aload_0
-    //   299: astore 7
-    //   301: aload 6
-    //   303: astore 8
-    //   305: aload 10
-    //   307: aload 6
-    //   309: aload_0
-    //   310: lload 4
-    //   312: invokevirtual 287	g/a/b/a:a	(Ljava/io/InputStream;Ljava/io/OutputStream;J)Z
-    //   315: ifne +44 -> 359
-    //   318: aload_0
-    //   319: astore 7
-    //   321: aload 6
-    //   323: astore 8
-    //   325: new 111	java/io/IOException
-    //   328: dup
-    //   329: ldc_w 289
-    //   332: invokespecial 260	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   335: astore 9
-    //   337: aload_0
-    //   338: astore 7
-    //   340: aload 6
-    //   342: astore 8
-    //   344: ldc 244
-    //   346: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   349: aload_0
-    //   350: astore 7
-    //   352: aload 6
-    //   354: astore 8
-    //   356: aload 9
-    //   358: athrow
-    //   359: aload_0
-    //   360: invokevirtual 266	java/io/OutputStream:flush	()V
-    //   363: aload_0
-    //   364: invokevirtual 219	java/io/OutputStream:close	()V
-    //   367: aload 6
-    //   369: invokevirtual 220	java/io/InputStream:close	()V
-    //   372: ldc 244
-    //   374: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   377: return
-    //   378: astore_0
-    //   379: ldc 244
-    //   381: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   384: return
-    //   385: astore_1
-    //   386: goto -23 -> 363
-    //   389: astore_1
-    //   390: goto -27 -> 363
-    //   393: astore_0
-    //   394: goto -27 -> 367
-    //   397: astore_0
-    //   398: goto -31 -> 367
-    //   401: astore_0
-    //   402: goto -23 -> 379
-    //   405: astore_1
-    //   406: goto -240 -> 166
-    //   409: astore_1
-    //   410: goto -244 -> 166
-    //   413: astore_1
-    //   414: goto -243 -> 171
-    //   417: astore_1
-    //   418: goto -247 -> 171
-    //   421: astore_1
-    //   422: goto -246 -> 176
-    //   425: astore_1
-    //   426: goto -250 -> 176
-    //   429: astore_0
-    //   430: aconst_null
-    //   431: astore 7
-    //   433: aconst_null
-    //   434: astore 6
-    //   436: goto -275 -> 161
-    //   439: astore_0
-    //   440: aconst_null
-    //   441: astore 7
-    //   443: goto -282 -> 161
-    //   446: astore 9
-    //   448: aconst_null
-    //   449: astore_0
-    //   450: aconst_null
-    //   451: astore 6
-    //   453: goto -345 -> 108
-    //   456: astore 9
-    //   458: aconst_null
-    //   459: astore_0
-    //   460: goto -352 -> 108
-    //   463: lconst_0
-    //   464: lstore 4
-    //   466: goto -209 -> 257
-    //   469: lload 4
-    //   471: iload_3
-    //   472: i2l
-    //   473: iload_2
-    //   474: bipush 8
-    //   476: imul
-    //   477: lshl
-    //   478: lor
-    //   479: lstore 4
-    //   481: iload_2
-    //   482: iconst_1
-    //   483: iadd
-    //   484: istore_2
-    //   485: goto -228 -> 257
+    //   76: ldc 255
+    //   78: invokespecial 256	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   81: astore 9
+    //   83: aload_0
+    //   84: astore 7
+    //   86: aload 6
+    //   88: astore 8
+    //   90: ldc 240
+    //   92: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   95: aload_0
+    //   96: astore 7
+    //   98: aload 6
+    //   100: astore 8
+    //   102: aload 9
+    //   104: athrow
+    //   105: astore 9
+    //   107: aload_0
+    //   108: astore 7
+    //   110: aload 6
+    //   112: astore 8
+    //   114: aload_1
+    //   115: invokevirtual 259	java/io/File:isFile	()Z
+    //   118: ifeq +15 -> 133
+    //   121: aload_0
+    //   122: astore 7
+    //   124: aload 6
+    //   126: astore 8
+    //   128: aload_1
+    //   129: invokevirtual 72	java/io/File:delete	()Z
+    //   132: pop
+    //   133: aload_0
+    //   134: astore 7
+    //   136: aload 6
+    //   138: astore 8
+    //   140: ldc 240
+    //   142: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: aload_0
+    //   146: astore 7
+    //   148: aload 6
+    //   150: astore 8
+    //   152: aload 9
+    //   154: athrow
+    //   155: astore_0
+    //   156: aload 8
+    //   158: astore 6
+    //   160: aload 7
+    //   162: invokevirtual 262	java/io/OutputStream:flush	()V
+    //   165: aload 7
+    //   167: invokevirtual 215	java/io/OutputStream:close	()V
+    //   170: aload 6
+    //   172: invokevirtual 216	java/io/InputStream:close	()V
+    //   175: ldc 240
+    //   177: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: aload_0
+    //   181: athrow
+    //   182: aload_0
+    //   183: astore 7
+    //   185: aload 6
+    //   187: astore 8
+    //   189: new 264	i/a/b/a
+    //   192: dup
+    //   193: invokespecial 265	i/a/b/a:<init>	()V
+    //   196: astore 10
+    //   198: aload_0
+    //   199: astore 7
+    //   201: aload 6
+    //   203: astore 8
+    //   205: aload 10
+    //   207: aload 9
+    //   209: invokevirtual 269	i/a/b/a:dz	([B)Z
+    //   212: ifne +250 -> 462
+    //   215: aload_0
+    //   216: astore 7
+    //   218: aload 6
+    //   220: astore 8
+    //   222: new 105	java/io/IOException
+    //   225: dup
+    //   226: ldc_w 271
+    //   229: invokespecial 256	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   232: astore 9
+    //   234: aload_0
+    //   235: astore 7
+    //   237: aload 6
+    //   239: astore 8
+    //   241: ldc 240
+    //   243: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   246: aload_0
+    //   247: astore 7
+    //   249: aload 6
+    //   251: astore 8
+    //   253: aload 9
+    //   255: athrow
+    //   256: iload_2
+    //   257: bipush 8
+    //   259: if_icmpge +38 -> 297
+    //   262: aload_0
+    //   263: astore 7
+    //   265: aload 6
+    //   267: astore 8
+    //   269: aload 6
+    //   271: invokevirtual 274	java/io/InputStream:read	()I
+    //   274: istore_3
+    //   275: iload_3
+    //   276: ifge +192 -> 468
+    //   279: aload_0
+    //   280: astore 7
+    //   282: aload 6
+    //   284: astore 8
+    //   286: ldc 17
+    //   288: ldc_w 276
+    //   291: invokestatic 279	org/xwalk/core/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   294: goto +174 -> 468
+    //   297: aload_0
+    //   298: astore 7
+    //   300: aload 6
+    //   302: astore 8
+    //   304: aload 10
+    //   306: aload 6
+    //   308: aload_0
+    //   309: lload 4
+    //   311: invokevirtual 283	i/a/b/a:a	(Ljava/io/InputStream;Ljava/io/OutputStream;J)Z
+    //   314: ifne +44 -> 358
+    //   317: aload_0
+    //   318: astore 7
+    //   320: aload 6
+    //   322: astore 8
+    //   324: new 105	java/io/IOException
+    //   327: dup
+    //   328: ldc_w 285
+    //   331: invokespecial 256	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   334: astore 9
+    //   336: aload_0
+    //   337: astore 7
+    //   339: aload 6
+    //   341: astore 8
+    //   343: ldc 240
+    //   345: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   348: aload_0
+    //   349: astore 7
+    //   351: aload 6
+    //   353: astore 8
+    //   355: aload 9
+    //   357: athrow
+    //   358: aload_0
+    //   359: invokevirtual 262	java/io/OutputStream:flush	()V
+    //   362: aload_0
+    //   363: invokevirtual 215	java/io/OutputStream:close	()V
+    //   366: aload 6
+    //   368: invokevirtual 216	java/io/InputStream:close	()V
+    //   371: ldc 240
+    //   373: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   376: return
+    //   377: astore_0
+    //   378: ldc 240
+    //   380: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   383: return
+    //   384: astore_1
+    //   385: goto -23 -> 362
+    //   388: astore_1
+    //   389: goto -27 -> 362
+    //   392: astore_0
+    //   393: goto -27 -> 366
+    //   396: astore_0
+    //   397: goto -31 -> 366
+    //   400: astore_0
+    //   401: goto -23 -> 378
+    //   404: astore_1
+    //   405: goto -240 -> 165
+    //   408: astore_1
+    //   409: goto -244 -> 165
+    //   412: astore_1
+    //   413: goto -243 -> 170
+    //   416: astore_1
+    //   417: goto -247 -> 170
+    //   420: astore_1
+    //   421: goto -246 -> 175
+    //   424: astore_1
+    //   425: goto -250 -> 175
+    //   428: astore_0
+    //   429: aconst_null
+    //   430: astore 7
+    //   432: aconst_null
+    //   433: astore 6
+    //   435: goto -275 -> 160
+    //   438: astore_0
+    //   439: aconst_null
+    //   440: astore 7
+    //   442: goto -282 -> 160
+    //   445: astore 9
+    //   447: aconst_null
+    //   448: astore_0
+    //   449: aconst_null
+    //   450: astore 6
+    //   452: goto -345 -> 107
+    //   455: astore 9
+    //   457: aconst_null
+    //   458: astore_0
+    //   459: goto -352 -> 107
+    //   462: lconst_0
+    //   463: lstore 4
+    //   465: goto -209 -> 256
+    //   468: lload 4
+    //   470: iload_3
+    //   471: i2l
+    //   472: iload_2
+    //   473: bipush 8
+    //   475: imul
+    //   476: lshl
+    //   477: lor
+    //   478: lstore 4
+    //   480: iload_2
+    //   481: iconst_1
+    //   482: iadd
+    //   483: istore_2
+    //   484: goto -228 -> 256
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	488	0	paramInputStream	InputStream
-    //   0	488	1	paramFile	java.io.File
-    //   1	484	2	i	int
-    //   275	197	3	j	int
-    //   310	1	4	localObject1	Object
-    //   464	16	4	l	long
-    //   15	437	6	localObject2	Object
-    //   34	408	7	localInputStream	InputStream
-    //   38	317	8	localObject3	Object
-    //   43	61	9	localObject4	Object
-    //   106	103	9	localIOException1	java.io.IOException
-    //   233	124	9	localIOException2	java.io.IOException
-    //   446	1	9	localIOException3	java.io.IOException
-    //   456	1	9	localIOException4	java.io.IOException
-    //   197	109	10	locala	g.a.b.a
+    //   0	487	0	paramInputStream	InputStream
+    //   0	487	1	paramFile	java.io.File
+    //   1	483	2	i	int
+    //   274	197	3	j	int
+    //   309	1	4	localObject1	Object
+    //   463	16	4	l	long
+    //   15	436	6	localObject2	Object
+    //   34	407	7	localInputStream	InputStream
+    //   38	316	8	localObject3	Object
+    //   43	60	9	localObject4	Object
+    //   105	103	9	localIOException1	java.io.IOException
+    //   232	124	9	localIOException2	java.io.IOException
+    //   445	1	9	localIOException3	java.io.IOException
+    //   455	1	9	localIOException4	java.io.IOException
+    //   196	109	10	locala	i.a.b.a
     // Exception table:
     //   from	to	target	type
-    //   40	45	106	java/io/IOException
-    //   52	65	106	java/io/IOException
-    //   72	84	106	java/io/IOException
-    //   91	96	106	java/io/IOException
-    //   103	106	106	java/io/IOException
-    //   190	199	106	java/io/IOException
-    //   206	216	106	java/io/IOException
-    //   223	235	106	java/io/IOException
-    //   242	247	106	java/io/IOException
-    //   254	257	106	java/io/IOException
-    //   270	276	106	java/io/IOException
-    //   287	295	106	java/io/IOException
-    //   305	318	106	java/io/IOException
-    //   325	337	106	java/io/IOException
-    //   344	349	106	java/io/IOException
-    //   356	359	106	java/io/IOException
-    //   40	45	156	finally
-    //   52	65	156	finally
-    //   72	84	156	finally
-    //   91	96	156	finally
-    //   103	106	156	finally
-    //   115	122	156	finally
-    //   129	134	156	finally
-    //   141	146	156	finally
-    //   153	156	156	finally
-    //   190	199	156	finally
-    //   206	216	156	finally
-    //   223	235	156	finally
-    //   242	247	156	finally
-    //   254	257	156	finally
-    //   270	276	156	finally
-    //   287	295	156	finally
-    //   305	318	156	finally
-    //   325	337	156	finally
-    //   344	349	156	finally
-    //   356	359	156	finally
-    //   367	372	378	java/io/IOException
-    //   359	363	385	java/io/IOException
-    //   359	363	389	java/lang/NullPointerException
-    //   363	367	393	java/io/IOException
-    //   363	367	397	java/lang/NullPointerException
-    //   367	372	401	java/lang/NullPointerException
-    //   161	166	405	java/io/IOException
-    //   161	166	409	java/lang/NullPointerException
-    //   166	171	413	java/io/IOException
-    //   166	171	417	java/lang/NullPointerException
-    //   171	176	421	java/io/IOException
-    //   171	176	425	java/lang/NullPointerException
-    //   7	17	429	finally
-    //   17	33	439	finally
-    //   7	17	446	java/io/IOException
-    //   17	33	456	java/io/IOException
+    //   40	45	105	java/io/IOException
+    //   52	65	105	java/io/IOException
+    //   72	83	105	java/io/IOException
+    //   90	95	105	java/io/IOException
+    //   102	105	105	java/io/IOException
+    //   189	198	105	java/io/IOException
+    //   205	215	105	java/io/IOException
+    //   222	234	105	java/io/IOException
+    //   241	246	105	java/io/IOException
+    //   253	256	105	java/io/IOException
+    //   269	275	105	java/io/IOException
+    //   286	294	105	java/io/IOException
+    //   304	317	105	java/io/IOException
+    //   324	336	105	java/io/IOException
+    //   343	348	105	java/io/IOException
+    //   355	358	105	java/io/IOException
+    //   40	45	155	finally
+    //   52	65	155	finally
+    //   72	83	155	finally
+    //   90	95	155	finally
+    //   102	105	155	finally
+    //   114	121	155	finally
+    //   128	133	155	finally
+    //   140	145	155	finally
+    //   152	155	155	finally
+    //   189	198	155	finally
+    //   205	215	155	finally
+    //   222	234	155	finally
+    //   241	246	155	finally
+    //   253	256	155	finally
+    //   269	275	155	finally
+    //   286	294	155	finally
+    //   304	317	155	finally
+    //   324	336	155	finally
+    //   343	348	155	finally
+    //   355	358	155	finally
+    //   366	371	377	java/io/IOException
+    //   358	362	384	java/io/IOException
+    //   358	362	388	java/lang/NullPointerException
+    //   362	366	392	java/io/IOException
+    //   362	366	396	java/lang/NullPointerException
+    //   366	371	400	java/lang/NullPointerException
+    //   160	165	404	java/io/IOException
+    //   160	165	408	java/lang/NullPointerException
+    //   165	170	412	java/io/IOException
+    //   165	170	416	java/lang/NullPointerException
+    //   170	175	420	java/io/IOException
+    //   170	175	424	java/lang/NullPointerException
+    //   7	17	428	finally
+    //   17	33	438	finally
+    //   7	17	445	java/io/IOException
+    //   17	33	455	java/io/IOException
   }
   
   /* Error */
-  public static boolean extractResource(String paramString1, String paramString2)
+  public static boolean extractResource(String paramString1, String paramString2, String[] paramArrayOfString)
   {
     // Byte code:
-    //   0: ldc_w 291
-    //   3: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 18
-    //   8: ldc_w 293
+    //   0: ldc_w 288
+    //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 17
+    //   8: ldc_w 290
     //   11: aload_0
-    //   12: invokestatic 52	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   15: invokevirtual 56	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   18: invokestatic 131	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
-    //   24: lstore 4
-    //   26: new 139	java/util/zip/ZipFile
+    //   12: invokestatic 46	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   15: invokevirtual 50	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   18: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokestatic 131	android/os/SystemClock:uptimeMillis	()J
+    //   24: lstore 5
+    //   26: new 133	java/util/zip/ZipFile
     //   29: dup
     //   30: aload_0
-    //   31: invokespecial 140	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   34: astore 7
-    //   36: aload 7
+    //   31: invokespecial 134	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   34: astore 8
+    //   36: aload 8
     //   38: astore_0
-    //   39: getstatic 31	org/xwalk/core/XWalkDecompressor:MANDATORY_RESOURCES	[Ljava/lang/String;
-    //   42: astore 8
-    //   44: aload 7
-    //   46: astore_0
-    //   47: aload 8
-    //   49: arraylength
-    //   50: istore_3
-    //   51: iconst_0
-    //   52: istore_2
-    //   53: iload_2
-    //   54: iload_3
-    //   55: if_icmpge +355 -> 410
-    //   58: aload 8
-    //   60: iload_2
-    //   61: aaload
-    //   62: astore 9
-    //   64: aload 7
-    //   66: astore_0
-    //   67: aload 9
-    //   69: invokestatic 297	org/xwalk/core/XWalkDecompressor:isNativeLibrary	(Ljava/lang/String;)Z
-    //   72: ifeq +97 -> 169
-    //   75: aload 7
-    //   77: astore_0
-    //   78: aload 7
-    //   80: new 114	java/lang/StringBuilder
-    //   83: dup
-    //   84: ldc_w 299
-    //   87: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   90: getstatic 302	java/io/File:separator	Ljava/lang/String;
-    //   93: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: ldc_w 304
-    //   99: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: getstatic 302	java/io/File:separator	Ljava/lang/String;
-    //   105: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: aload 9
-    //   110: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokevirtual 308	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   119: astore 6
-    //   121: aload 6
-    //   123: ifnonnull +151 -> 274
-    //   126: aload 7
-    //   128: astore_0
-    //   129: aload 9
-    //   131: invokestatic 311	org/xwalk/core/XWalkDecompressor:isClassesDex	(Ljava/lang/String;)Z
-    //   134: ifeq +98 -> 232
-    //   137: aload 7
-    //   139: astore_0
-    //   140: ldc 18
-    //   142: new 114	java/lang/StringBuilder
-    //   145: dup
-    //   146: invokespecial 312	java/lang/StringBuilder:<init>	()V
-    //   149: aload 9
-    //   151: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: ldc_w 314
-    //   157: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 131	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   166: goto +350 -> 516
-    //   169: aload 7
-    //   171: astore_0
-    //   172: aload 9
-    //   174: invokestatic 317	org/xwalk/core/XWalkDecompressor:isAsset	(Ljava/lang/String;)Z
-    //   177: ifeq +40 -> 217
-    //   180: aload 7
-    //   182: astore_0
-    //   183: aload 7
-    //   185: new 114	java/lang/StringBuilder
-    //   188: dup
-    //   189: ldc_w 319
-    //   192: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   195: getstatic 302	java/io/File:separator	Ljava/lang/String;
-    //   198: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: aload 9
-    //   203: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: invokevirtual 308	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   212: astore 6
-    //   214: goto -93 -> 121
-    //   217: aload 7
-    //   219: astore_0
-    //   220: aload 7
-    //   222: aload 9
-    //   224: invokevirtual 308	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   227: astore 6
-    //   229: goto -108 -> 121
-    //   232: aload 7
-    //   234: astore_0
-    //   235: ldc 18
-    //   237: new 114	java/lang/StringBuilder
-    //   240: dup
-    //   241: invokespecial 312	java/lang/StringBuilder:<init>	()V
-    //   244: aload 9
-    //   246: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: ldc_w 321
-    //   252: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   255: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   258: invokestatic 98	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   261: aload 7
-    //   263: invokevirtual 218	java/util/zip/ZipFile:close	()V
-    //   266: ldc_w 291
-    //   269: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   272: iconst_0
-    //   273: ireturn
-    //   274: aload 7
-    //   276: astore_0
-    //   277: ldc 18
-    //   279: ldc_w 323
-    //   282: aload 9
-    //   284: invokestatic 52	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   287: invokevirtual 56	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   290: invokestatic 61	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   293: aload 7
-    //   295: astore_0
-    //   296: new 65	java/io/File
-    //   299: dup
-    //   300: aload_1
-    //   301: aload 9
-    //   303: invokespecial 241	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   306: astore 10
-    //   308: aload 7
-    //   310: astore_0
-    //   311: aload 10
-    //   313: invokevirtual 263	java/io/File:isFile	()Z
-    //   316: ifeq +23 -> 339
-    //   319: aload 7
-    //   321: astore_0
-    //   322: aload 10
-    //   324: invokevirtual 75	java/io/File:exists	()Z
-    //   327: ifeq +12 -> 339
-    //   330: aload 7
-    //   332: astore_0
-    //   333: aload 10
-    //   335: invokevirtual 78	java/io/File:delete	()Z
-    //   338: pop
-    //   339: aload 7
-    //   341: astore_0
-    //   342: aload 7
-    //   344: aload 6
-    //   346: invokevirtual 183	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   349: new 65	java/io/File
-    //   352: dup
-    //   353: aload_1
-    //   354: aload 9
-    //   356: invokespecial 241	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   359: invokestatic 326	org/xwalk/core/XWalkDecompressor:extractStreamToFile	(Ljava/io/InputStream;Ljava/io/File;)V
-    //   362: goto +154 -> 516
-    //   365: astore 6
-    //   367: aload 7
-    //   369: astore_1
-    //   370: aload_1
-    //   371: astore_0
-    //   372: ldc 18
-    //   374: new 114	java/lang/StringBuilder
-    //   377: dup
-    //   378: ldc_w 328
-    //   381: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   384: aload 6
-    //   386: invokevirtual 215	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   389: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   392: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   395: invokestatic 98	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   398: aload_1
-    //   399: invokevirtual 218	java/util/zip/ZipFile:close	()V
-    //   402: ldc_w 291
-    //   405: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   408: iconst_0
-    //   409: ireturn
-    //   410: aload 7
-    //   412: invokevirtual 218	java/util/zip/ZipFile:close	()V
-    //   415: invokestatic 225	java/lang/System:gc	()V
-    //   418: ldc 18
-    //   420: new 114	java/lang/StringBuilder
-    //   423: dup
-    //   424: ldc_w 330
-    //   427: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   430: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
-    //   433: lload 4
-    //   435: lsub
-    //   436: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   439: ldc 232
-    //   441: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   447: invokestatic 61	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   450: ldc_w 291
-    //   453: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   456: iconst_1
-    //   457: ireturn
-    //   458: astore_1
-    //   459: aconst_null
-    //   460: astore_0
-    //   461: aload_0
-    //   462: invokevirtual 218	java/util/zip/ZipFile:close	()V
-    //   465: ldc_w 291
-    //   468: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   471: aload_1
-    //   472: athrow
-    //   473: astore_0
-    //   474: goto -208 -> 266
-    //   477: astore_0
-    //   478: goto -212 -> 266
-    //   481: astore_0
-    //   482: goto -67 -> 415
-    //   485: astore_0
-    //   486: goto -71 -> 415
-    //   489: astore_0
-    //   490: goto -88 -> 402
-    //   493: astore_0
-    //   494: goto -92 -> 402
-    //   497: astore_0
-    //   498: goto -33 -> 465
-    //   501: astore_0
-    //   502: goto -37 -> 465
-    //   505: astore_1
-    //   506: goto -45 -> 461
-    //   509: astore 6
-    //   511: aconst_null
-    //   512: astore_1
-    //   513: goto -143 -> 370
-    //   516: iload_2
-    //   517: iconst_1
-    //   518: iadd
-    //   519: istore_2
-    //   520: goto -467 -> 53
+    //   39: aload_2
+    //   40: arraylength
+    //   41: istore 4
+    //   43: iconst_0
+    //   44: istore_3
+    //   45: iload_3
+    //   46: iload 4
+    //   48: if_icmpge +352 -> 400
+    //   51: aload_2
+    //   52: iload_3
+    //   53: aaload
+    //   54: astore 9
+    //   56: aload 8
+    //   58: astore_0
+    //   59: aload 9
+    //   61: invokestatic 294	org/xwalk/core/XWalkDecompressor:isNativeLibrary	(Ljava/lang/String;)Z
+    //   64: ifeq +97 -> 161
+    //   67: aload 8
+    //   69: astore_0
+    //   70: aload 8
+    //   72: new 108	java/lang/StringBuilder
+    //   75: dup
+    //   76: ldc_w 296
+    //   79: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   82: getstatic 299	java/io/File:separator	Ljava/lang/String;
+    //   85: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: ldc_w 301
+    //   91: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: getstatic 299	java/io/File:separator	Ljava/lang/String;
+    //   97: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: aload 9
+    //   102: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: invokevirtual 305	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   111: astore 7
+    //   113: aload 7
+    //   115: ifnonnull +151 -> 266
+    //   118: aload 8
+    //   120: astore_0
+    //   121: aload 9
+    //   123: invokestatic 308	org/xwalk/core/XWalkDecompressor:isClassesDex	(Ljava/lang/String;)Z
+    //   126: ifeq +98 -> 224
+    //   129: aload 8
+    //   131: astore_0
+    //   132: ldc 17
+    //   134: new 108	java/lang/StringBuilder
+    //   137: dup
+    //   138: invokespecial 309	java/lang/StringBuilder:<init>	()V
+    //   141: aload 9
+    //   143: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: ldc_w 311
+    //   149: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   152: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   155: invokestatic 125	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   158: goto +347 -> 505
+    //   161: aload 8
+    //   163: astore_0
+    //   164: aload 9
+    //   166: invokestatic 314	org/xwalk/core/XWalkDecompressor:isAsset	(Ljava/lang/String;)Z
+    //   169: ifeq +40 -> 209
+    //   172: aload 8
+    //   174: astore_0
+    //   175: aload 8
+    //   177: new 108	java/lang/StringBuilder
+    //   180: dup
+    //   181: ldc_w 316
+    //   184: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   187: getstatic 299	java/io/File:separator	Ljava/lang/String;
+    //   190: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: aload 9
+    //   195: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokevirtual 305	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   204: astore 7
+    //   206: goto -93 -> 113
+    //   209: aload 8
+    //   211: astore_0
+    //   212: aload 8
+    //   214: aload 9
+    //   216: invokevirtual 305	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   219: astore 7
+    //   221: goto -108 -> 113
+    //   224: aload 8
+    //   226: astore_0
+    //   227: ldc 17
+    //   229: new 108	java/lang/StringBuilder
+    //   232: dup
+    //   233: invokespecial 309	java/lang/StringBuilder:<init>	()V
+    //   236: aload 9
+    //   238: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: ldc_w 318
+    //   244: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   253: aload 8
+    //   255: invokevirtual 214	java/util/zip/ZipFile:close	()V
+    //   258: ldc_w 288
+    //   261: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   264: iconst_0
+    //   265: ireturn
+    //   266: aload 8
+    //   268: astore_0
+    //   269: ldc 17
+    //   271: ldc_w 320
+    //   274: aload 9
+    //   276: invokestatic 46	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   279: invokevirtual 50	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   282: invokestatic 55	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   285: aload 8
+    //   287: astore_0
+    //   288: new 59	java/io/File
+    //   291: dup
+    //   292: aload_1
+    //   293: aload 9
+    //   295: invokespecial 237	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   298: astore 10
+    //   300: aload 8
+    //   302: astore_0
+    //   303: aload 10
+    //   305: invokevirtual 259	java/io/File:isFile	()Z
+    //   308: ifeq +23 -> 331
+    //   311: aload 8
+    //   313: astore_0
+    //   314: aload 10
+    //   316: invokevirtual 69	java/io/File:exists	()Z
+    //   319: ifeq +12 -> 331
+    //   322: aload 8
+    //   324: astore_0
+    //   325: aload 10
+    //   327: invokevirtual 72	java/io/File:delete	()Z
+    //   330: pop
+    //   331: aload 8
+    //   333: astore_0
+    //   334: aload 8
+    //   336: aload 7
+    //   338: invokevirtual 177	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   341: new 59	java/io/File
+    //   344: dup
+    //   345: aload_1
+    //   346: aload 9
+    //   348: invokespecial 237	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   351: invokestatic 323	org/xwalk/core/XWalkDecompressor:extractStreamToFile	(Ljava/io/InputStream;Ljava/io/File;)V
+    //   354: goto +151 -> 505
+    //   357: astore_2
+    //   358: aload 8
+    //   360: astore_1
+    //   361: aload_1
+    //   362: astore_0
+    //   363: ldc 17
+    //   365: new 108	java/lang/StringBuilder
+    //   368: dup
+    //   369: ldc_w 325
+    //   372: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   375: aload_2
+    //   376: invokevirtual 211	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
+    //   379: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   382: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   385: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   388: aload_1
+    //   389: invokevirtual 214	java/util/zip/ZipFile:close	()V
+    //   392: ldc_w 288
+    //   395: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   398: iconst_0
+    //   399: ireturn
+    //   400: aload 8
+    //   402: invokevirtual 214	java/util/zip/ZipFile:close	()V
+    //   405: invokestatic 221	java/lang/System:gc	()V
+    //   408: ldc 17
+    //   410: new 108	java/lang/StringBuilder
+    //   413: dup
+    //   414: ldc_w 327
+    //   417: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   420: invokestatic 131	android/os/SystemClock:uptimeMillis	()J
+    //   423: lload 5
+    //   425: lsub
+    //   426: invokevirtual 226	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   429: ldc 228
+    //   431: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   434: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   437: invokestatic 55	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   440: ldc_w 288
+    //   443: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   446: iconst_1
+    //   447: ireturn
+    //   448: astore_1
+    //   449: aconst_null
+    //   450: astore_0
+    //   451: aload_0
+    //   452: invokevirtual 214	java/util/zip/ZipFile:close	()V
+    //   455: ldc_w 288
+    //   458: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   461: aload_1
+    //   462: athrow
+    //   463: astore_0
+    //   464: goto -206 -> 258
+    //   467: astore_0
+    //   468: goto -210 -> 258
+    //   471: astore_0
+    //   472: goto -67 -> 405
+    //   475: astore_0
+    //   476: goto -71 -> 405
+    //   479: astore_0
+    //   480: goto -88 -> 392
+    //   483: astore_0
+    //   484: goto -92 -> 392
+    //   487: astore_0
+    //   488: goto -33 -> 455
+    //   491: astore_0
+    //   492: goto -37 -> 455
+    //   495: astore_1
+    //   496: goto -45 -> 451
+    //   499: astore_2
+    //   500: aconst_null
+    //   501: astore_1
+    //   502: goto -141 -> 361
+    //   505: iload_3
+    //   506: iconst_1
+    //   507: iadd
+    //   508: istore_3
+    //   509: goto -464 -> 45
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	523	0	paramString1	String
-    //   0	523	1	paramString2	String
-    //   52	468	2	i	int
-    //   50	6	3	j	int
-    //   24	410	4	l	long
-    //   119	226	6	localZipEntry	java.util.zip.ZipEntry
-    //   365	20	6	localIOException1	java.io.IOException
-    //   509	1	6	localIOException2	java.io.IOException
-    //   34	377	7	localZipFile	java.util.zip.ZipFile
-    //   42	17	8	arrayOfString	String[]
-    //   62	293	9	str	String
-    //   306	28	10	localFile	java.io.File
+    //   0	512	0	paramString1	String
+    //   0	512	1	paramString2	String
+    //   0	512	2	paramArrayOfString	String[]
+    //   44	465	3	i	int
+    //   41	8	4	j	int
+    //   24	400	5	l	long
+    //   111	226	7	localZipEntry	java.util.zip.ZipEntry
+    //   34	367	8	localZipFile	java.util.zip.ZipFile
+    //   54	293	9	str	String
+    //   298	28	10	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   39	44	365	java/io/IOException
-    //   47	51	365	java/io/IOException
-    //   67	75	365	java/io/IOException
-    //   78	121	365	java/io/IOException
-    //   129	137	365	java/io/IOException
-    //   140	166	365	java/io/IOException
-    //   172	180	365	java/io/IOException
-    //   183	214	365	java/io/IOException
-    //   220	229	365	java/io/IOException
-    //   235	261	365	java/io/IOException
-    //   277	293	365	java/io/IOException
-    //   296	308	365	java/io/IOException
-    //   311	319	365	java/io/IOException
-    //   322	330	365	java/io/IOException
-    //   333	339	365	java/io/IOException
-    //   342	362	365	java/io/IOException
-    //   26	36	458	finally
-    //   261	266	473	java/io/IOException
-    //   261	266	477	java/lang/NullPointerException
-    //   410	415	481	java/io/IOException
-    //   410	415	485	java/lang/NullPointerException
-    //   398	402	489	java/io/IOException
-    //   398	402	493	java/lang/NullPointerException
-    //   461	465	497	java/io/IOException
-    //   461	465	501	java/lang/NullPointerException
-    //   39	44	505	finally
-    //   47	51	505	finally
-    //   67	75	505	finally
-    //   78	121	505	finally
-    //   129	137	505	finally
-    //   140	166	505	finally
-    //   172	180	505	finally
-    //   183	214	505	finally
-    //   220	229	505	finally
-    //   235	261	505	finally
-    //   277	293	505	finally
-    //   296	308	505	finally
-    //   311	319	505	finally
-    //   322	330	505	finally
-    //   333	339	505	finally
-    //   342	362	505	finally
-    //   372	398	505	finally
-    //   26	36	509	java/io/IOException
+    //   39	43	357	java/io/IOException
+    //   59	67	357	java/io/IOException
+    //   70	113	357	java/io/IOException
+    //   121	129	357	java/io/IOException
+    //   132	158	357	java/io/IOException
+    //   164	172	357	java/io/IOException
+    //   175	206	357	java/io/IOException
+    //   212	221	357	java/io/IOException
+    //   227	253	357	java/io/IOException
+    //   269	285	357	java/io/IOException
+    //   288	300	357	java/io/IOException
+    //   303	311	357	java/io/IOException
+    //   314	322	357	java/io/IOException
+    //   325	331	357	java/io/IOException
+    //   334	354	357	java/io/IOException
+    //   26	36	448	finally
+    //   253	258	463	java/io/IOException
+    //   253	258	467	java/lang/NullPointerException
+    //   400	405	471	java/io/IOException
+    //   400	405	475	java/lang/NullPointerException
+    //   388	392	479	java/io/IOException
+    //   388	392	483	java/lang/NullPointerException
+    //   451	455	487	java/io/IOException
+    //   451	455	491	java/lang/NullPointerException
+    //   39	43	495	finally
+    //   59	67	495	finally
+    //   70	113	495	finally
+    //   121	129	495	finally
+    //   132	158	495	finally
+    //   164	172	495	finally
+    //   175	206	495	finally
+    //   212	221	495	finally
+    //   227	253	495	finally
+    //   269	285	495	finally
+    //   288	300	495	finally
+    //   303	311	495	finally
+    //   314	322	495	finally
+    //   325	331	495	finally
+    //   334	354	495	finally
+    //   363	388	495	finally
+    //   26	36	499	java/io/IOException
   }
   
   /* Error */
   private static void extractStreamToFile(InputStream paramInputStream, java.io.File paramFile)
   {
     // Byte code:
-    //   0: ldc_w 331
-    //   3: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 328
+    //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 334	java/io/InputStream:available	()I
+    //   7: invokevirtual 331	java/io/InputStream:available	()I
     //   10: pop
-    //   11: new 80	java/io/FileOutputStream
+    //   11: new 74	java/io/FileOutputStream
     //   14: dup
     //   15: aload_1
-    //   16: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   16: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   19: astore 4
     //   21: aload 4
     //   23: astore_3
-    //   24: ldc 14
+    //   24: ldc 13
     //   26: newarray byte
     //   28: astore 5
     //   30: aload 4
     //   32: astore_3
     //   33: aload_0
     //   34: aload 5
-    //   36: invokevirtual 203	java/io/InputStream:read	([B)I
+    //   36: invokevirtual 199	java/io/InputStream:read	([B)I
     //   39: istore_2
     //   40: iload_2
     //   41: iflt +74 -> 115
@@ -1602,50 +1593,50 @@ public class XWalkDecompressor
     //   49: aload 5
     //   51: iconst_0
     //   52: iload_2
-    //   53: invokevirtual 206	java/io/OutputStream:write	([BII)V
+    //   53: invokevirtual 202	java/io/OutputStream:write	([BII)V
     //   56: goto -26 -> 30
     //   59: astore 5
     //   61: aload 4
     //   63: astore_3
     //   64: aload_1
-    //   65: invokevirtual 263	java/io/File:isFile	()Z
+    //   65: invokevirtual 259	java/io/File:isFile	()Z
     //   68: ifeq +11 -> 79
     //   71: aload 4
     //   73: astore_3
     //   74: aload_1
-    //   75: invokevirtual 78	java/io/File:delete	()Z
+    //   75: invokevirtual 72	java/io/File:delete	()Z
     //   78: pop
     //   79: aload 4
     //   81: astore_3
-    //   82: ldc_w 331
-    //   85: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   82: ldc_w 328
+    //   85: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aload 4
     //   90: astore_3
     //   91: aload 5
     //   93: athrow
     //   94: astore_1
     //   95: aload_3
-    //   96: invokevirtual 266	java/io/OutputStream:flush	()V
+    //   96: invokevirtual 262	java/io/OutputStream:flush	()V
     //   99: aload_3
-    //   100: invokevirtual 219	java/io/OutputStream:close	()V
+    //   100: invokevirtual 215	java/io/OutputStream:close	()V
     //   103: aload_0
-    //   104: invokevirtual 220	java/io/InputStream:close	()V
-    //   107: ldc_w 331
-    //   110: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: invokevirtual 216	java/io/InputStream:close	()V
+    //   107: ldc_w 328
+    //   110: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_1
     //   114: athrow
     //   115: aload 4
-    //   117: invokevirtual 266	java/io/OutputStream:flush	()V
+    //   117: invokevirtual 262	java/io/OutputStream:flush	()V
     //   120: aload 4
-    //   122: invokevirtual 219	java/io/OutputStream:close	()V
+    //   122: invokevirtual 215	java/io/OutputStream:close	()V
     //   125: aload_0
-    //   126: invokevirtual 220	java/io/InputStream:close	()V
-    //   129: ldc_w 331
-    //   132: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: invokevirtual 216	java/io/InputStream:close	()V
+    //   129: ldc_w 328
+    //   132: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: return
     //   136: astore_0
-    //   137: ldc_w 331
-    //   140: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: ldc_w 328
+    //   140: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   143: return
     //   144: astore_1
     //   145: goto -25 -> 120
@@ -1766,7 +1757,7 @@ public class XWalkDecompressor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.xwalk.core.XWalkDecompressor
  * JD-Core Version:    0.7.0.1
  */

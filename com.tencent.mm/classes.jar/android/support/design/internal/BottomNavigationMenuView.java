@@ -10,7 +10,7 @@ import android.support.transition.TransitionSet;
 import android.support.v4.e.l.a;
 import android.support.v4.e.l.c;
 import android.support.v4.view.b.b;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v7.c.a.a;
 import android.support.v7.view.menu.h;
 import android.support.v7.view.menu.j;
@@ -28,31 +28,31 @@ public class BottomNavigationMenuView
   extends ViewGroup
   implements p
 {
-  private static final int[] jT = { 16842912 };
-  private static final int[] kf = { -16842910 };
-  int jY;
-  private int[] kA;
-  BottomNavigationPresenter kB;
-  h kC;
-  final TransitionSet kg;
-  private final int kh;
-  private final int ki;
+  private static final int[] jV = { 16842912 };
+  private static final int[] kh = { -16842910 };
+  private Drawable kA;
+  private int kB;
+  private int[] kC;
+  BottomNavigationPresenter kD;
+  h kE;
+  int ka;
+  final TransitionSet ki;
   private final int kj;
   private final int kk;
   private final int kl;
-  private final View.OnClickListener km;
-  private final l.a<BottomNavigationItemView> kn = new l.c(5);
-  public boolean ko;
-  BottomNavigationItemView[] kp;
-  int kq = 0;
-  int kr = 0;
-  private ColorStateList ks;
-  private int kt;
+  private final int km;
+  private final int kn;
+  private final View.OnClickListener ko;
+  private final l.a<BottomNavigationItemView> kp = new l.c(5);
+  public boolean kq;
+  BottomNavigationItemView[] kr;
+  int ks = 0;
+  int kt = 0;
   private ColorStateList ku;
-  private final ColorStateList kv;
-  private int kw;
-  private int kx;
-  private Drawable ky;
+  private int kv;
+  private ColorStateList kw;
+  private final ColorStateList kx;
+  private int ky;
   private int kz;
   
   public BottomNavigationMenuView(Context paramContext)
@@ -64,18 +64,18 @@ public class BottomNavigationMenuView
   {
     super(paramContext, paramAttributeSet);
     paramContext = getResources();
-    this.kh = paramContext.getDimensionPixelSize(2131166099);
-    this.ki = paramContext.getDimensionPixelSize(2131166100);
-    this.kj = paramContext.getDimensionPixelSize(2131166093);
-    this.kk = paramContext.getDimensionPixelSize(2131166094);
-    this.kl = paramContext.getDimensionPixelSize(2131166097);
-    this.kv = bB();
-    this.kg = new AutoTransition();
-    this.kg.ao(0);
-    this.kg.h(115L);
-    this.kg.c(new b());
-    this.kg.c(new e());
-    this.km = new View.OnClickListener()
+    this.kj = paramContext.getDimensionPixelSize(2131166140);
+    this.kk = paramContext.getDimensionPixelSize(2131166141);
+    this.kl = paramContext.getDimensionPixelSize(2131166134);
+    this.km = paramContext.getDimensionPixelSize(2131166135);
+    this.kn = paramContext.getDimensionPixelSize(2131166138);
+    this.kx = bD();
+    this.ki = new AutoTransition();
+    this.ki.ao(0);
+    this.ki.h(115L);
+    this.ki.c(new b());
+    this.ki.c(new e());
+    this.ko = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -85,12 +85,12 @@ public class BottomNavigationMenuView
         }
       }
     };
-    this.kA = new int[5];
+    this.kC = new int[5];
   }
   
   private BottomNavigationItemView getNewItem()
   {
-    BottomNavigationItemView localBottomNavigationItemView2 = (BottomNavigationItemView)this.kn.acquire();
+    BottomNavigationItemView localBottomNavigationItemView2 = (BottomNavigationItemView)this.kp.acquire();
     BottomNavigationItemView localBottomNavigationItemView1 = localBottomNavigationItemView2;
     if (localBottomNavigationItemView2 == null) {
       localBottomNavigationItemView1 = new BottomNavigationItemView(getContext());
@@ -113,10 +113,10 @@ public class BottomNavigationMenuView
   
   public final void a(h paramh)
   {
-    this.kC = paramh;
+    this.kE = paramh;
   }
   
-  public final ColorStateList bB()
+  public final ColorStateList bD()
   {
     Object localObject = new TypedValue();
     if (!getContext().getTheme().resolveAttribute(16842808, (TypedValue)localObject, true)) {}
@@ -125,124 +125,124 @@ public class BottomNavigationMenuView
     {
       return null;
       localColorStateList = a.m(getContext(), ((TypedValue)localObject).resourceId);
-    } while (!getContext().getTheme().resolveAttribute(2130968815, (TypedValue)localObject, true));
+    } while (!getContext().getTheme().resolveAttribute(2130968830, (TypedValue)localObject, true));
     int i = ((TypedValue)localObject).data;
     int j = localColorStateList.getDefaultColor();
-    localObject = kf;
-    int[] arrayOfInt1 = jT;
+    localObject = kh;
+    int[] arrayOfInt1 = jV;
     int[] arrayOfInt2 = EMPTY_STATE_SET;
-    int k = localColorStateList.getColorForState(kf, j);
+    int k = localColorStateList.getColorForState(kh, j);
     return new ColorStateList(new int[][] { localObject, arrayOfInt1, arrayOfInt2 }, new int[] { k, i, j });
   }
   
-  public final void bC()
+  public final void bE()
   {
     removeAllViews();
     Object localObject1;
-    if (this.kp != null)
+    if (this.kr != null)
     {
-      localObject1 = this.kp;
+      localObject1 = this.kr;
       int j = localObject1.length;
       i = 0;
       while (i < j)
       {
         Object localObject2 = localObject1[i];
         if (localObject2 != null) {
-          this.kn.release(localObject2);
+          this.kp.release(localObject2);
         }
         i += 1;
       }
     }
-    if (this.kC.size() == 0)
+    if (this.kE.size() == 0)
     {
-      this.kq = 0;
-      this.kr = 0;
-      this.kp = null;
+      this.ks = 0;
+      this.kt = 0;
+      this.kr = null;
       return;
     }
-    this.kp = new BottomNavigationItemView[this.kC.size()];
-    boolean bool = m(this.jY, this.kC.hV().size());
+    this.kr = new BottomNavigationItemView[this.kE.size()];
+    boolean bool = m(this.ka, this.kE.jdMethod_if().size());
     int i = 0;
-    if (i < this.kC.size())
+    if (i < this.kE.size())
     {
-      this.kB.kF = true;
-      this.kC.getItem(i).setCheckable(true);
-      this.kB.kF = false;
+      this.kD.kH = true;
+      this.kE.getItem(i).setCheckable(true);
+      this.kD.kH = false;
       localObject1 = getNewItem();
-      this.kp[i] = localObject1;
-      ((BottomNavigationItemView)localObject1).setIconTintList(this.ks);
-      ((BottomNavigationItemView)localObject1).setIconSize(this.kt);
-      ((BottomNavigationItemView)localObject1).setTextColor(this.kv);
-      ((BottomNavigationItemView)localObject1).setTextAppearanceInactive(this.kw);
-      ((BottomNavigationItemView)localObject1).setTextAppearanceActive(this.kx);
-      ((BottomNavigationItemView)localObject1).setTextColor(this.ku);
-      if (this.ky != null) {
-        ((BottomNavigationItemView)localObject1).setItemBackground(this.ky);
+      this.kr[i] = localObject1;
+      ((BottomNavigationItemView)localObject1).setIconTintList(this.ku);
+      ((BottomNavigationItemView)localObject1).setIconSize(this.kv);
+      ((BottomNavigationItemView)localObject1).setTextColor(this.kx);
+      ((BottomNavigationItemView)localObject1).setTextAppearanceInactive(this.ky);
+      ((BottomNavigationItemView)localObject1).setTextAppearanceActive(this.kz);
+      ((BottomNavigationItemView)localObject1).setTextColor(this.kw);
+      if (this.kA != null) {
+        ((BottomNavigationItemView)localObject1).setItemBackground(this.kA);
       }
       for (;;)
       {
         ((BottomNavigationItemView)localObject1).setShifting(bool);
-        ((BottomNavigationItemView)localObject1).setLabelVisibilityMode(this.jY);
-        ((BottomNavigationItemView)localObject1).a((j)this.kC.getItem(i));
+        ((BottomNavigationItemView)localObject1).setLabelVisibilityMode(this.ka);
+        ((BottomNavigationItemView)localObject1).a((j)this.kE.getItem(i));
         ((BottomNavigationItemView)localObject1).setItemPosition(i);
-        ((BottomNavigationItemView)localObject1).setOnClickListener(this.km);
+        ((BottomNavigationItemView)localObject1).setOnClickListener(this.ko);
         addView((View)localObject1);
         i += 1;
         break;
-        ((BottomNavigationItemView)localObject1).setItemBackground(this.kz);
+        ((BottomNavigationItemView)localObject1).setItemBackground(this.kB);
       }
     }
-    this.kr = Math.min(this.kC.size() - 1, this.kr);
-    this.kC.getItem(this.kr).setChecked(true);
+    this.kt = Math.min(this.kE.size() - 1, this.kt);
+    this.kE.getItem(this.kt).setChecked(true);
   }
   
   public ColorStateList getIconTintList()
   {
-    return this.ks;
+    return this.ku;
   }
   
   public Drawable getItemBackground()
   {
-    if ((this.kp != null) && (this.kp.length > 0)) {
-      return this.kp[0].getBackground();
+    if ((this.kr != null) && (this.kr.length > 0)) {
+      return this.kr[0].getBackground();
     }
-    return this.ky;
+    return this.kA;
   }
   
   @Deprecated
   public int getItemBackgroundRes()
   {
-    return this.kz;
+    return this.kB;
   }
   
   public int getItemIconSize()
   {
-    return this.kt;
+    return this.kv;
   }
   
   public int getItemTextAppearanceActive()
   {
-    return this.kx;
+    return this.kz;
   }
   
   public int getItemTextAppearanceInactive()
   {
-    return this.kw;
+    return this.ky;
   }
   
   public ColorStateList getItemTextColor()
   {
-    return this.ku;
+    return this.kw;
   }
   
   public int getLabelVisibilityMode()
   {
-    return this.jY;
+    return this.ka;
   }
   
   public int getSelectedItemId()
   {
-    return this.kq;
+    return this.ks;
   }
   
   public int getWindowAnimations()
@@ -263,7 +263,7 @@ public class BottomNavigationMenuView
       paramInt3 = paramInt2;
       if (localView.getVisibility() != 8)
       {
-        if (t.Y(this) != 1) {
+        if (u.Z(this) != 1) {
           break label97;
         }
         localView.layout(j - paramInt2 - localView.getMeasuredWidth(), 0, j - paramInt2, paramInt4);
@@ -285,32 +285,32 @@ public class BottomNavigationMenuView
     paramInt2 = 1;
     int i = 1;
     int i1 = View.MeasureSpec.getSize(paramInt1);
-    int j = this.kC.hV().size();
+    int j = this.kE.jdMethod_if().size();
     int m = getChildCount();
-    int n = View.MeasureSpec.makeMeasureSpec(this.kl, 1073741824);
+    int n = View.MeasureSpec.makeMeasureSpec(this.kn, 1073741824);
     Object localObject;
     label158:
     int k;
-    if ((m(this.jY, j)) && (this.ko))
+    if ((m(this.ka, j)) && (this.kq))
     {
-      localObject = getChildAt(this.kr);
-      paramInt2 = this.kk;
+      localObject = getChildAt(this.kt);
+      paramInt2 = this.km;
       paramInt1 = paramInt2;
       if (((View)localObject).getVisibility() != 8)
       {
-        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.kj, -2147483648), n);
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.kl, -2147483648), n);
         paramInt1 = Math.max(paramInt2, ((View)localObject).getMeasuredWidth());
       }
       if (((View)localObject).getVisibility() != 8)
       {
         paramInt2 = 1;
         paramInt2 = j - paramInt2;
-        j = Math.min(i1 - this.ki * paramInt2, Math.min(paramInt1, this.kj));
+        j = Math.min(i1 - this.kk * paramInt2, Math.min(paramInt1, this.kl));
         if (paramInt2 != 0) {
           break label264;
         }
         paramInt1 = i;
-        k = Math.min((i1 - j) / paramInt1, this.kh);
+        k = Math.min((i1 - j) / paramInt1, this.kj);
         paramInt1 = i1 - j - paramInt2 * k;
         paramInt2 = 0;
         label187:
@@ -320,8 +320,8 @@ public class BottomNavigationMenuView
         if (getChildAt(paramInt2).getVisibility() == 8) {
           break label275;
         }
-        localObject = this.kA;
-        if (paramInt2 != this.kr) {
+        localObject = this.kC;
+        if (paramInt2 != this.kt) {
           break label269;
         }
         i = j;
@@ -330,7 +330,7 @@ public class BottomNavigationMenuView
         if (paramInt1 <= 0) {
           break label282;
         }
-        localObject = this.kA;
+        localObject = this.kC;
         localObject[paramInt2] += 1;
         paramInt1 -= 1;
       }
@@ -348,7 +348,7 @@ public class BottomNavigationMenuView
         break label158;
         i = k;
         break label223;
-        this.kA[paramInt2] = 0;
+        this.kC[paramInt2] = 0;
       }
     }
     else
@@ -356,7 +356,7 @@ public class BottomNavigationMenuView
       if (j == 0)
       {
         paramInt1 = paramInt2;
-        k = Math.min(i1 / paramInt1, this.kj);
+        k = Math.min(i1 / paramInt1, this.kl);
         paramInt2 = i1 - k * j;
         paramInt1 = 0;
         label316:
@@ -366,11 +366,11 @@ public class BottomNavigationMenuView
         if (getChildAt(paramInt1).getVisibility() == 8) {
           break label384;
         }
-        this.kA[paramInt1] = k;
+        this.kC[paramInt1] = k;
         i = paramInt2;
         if (paramInt2 > 0)
         {
-          localObject = this.kA;
+          localObject = this.kC;
           localObject[paramInt1] += 1;
         }
       }
@@ -382,7 +382,7 @@ public class BottomNavigationMenuView
         paramInt1 = j;
         break;
         label384:
-        this.kA[paramInt1] = 0;
+        this.kC[paramInt1] = 0;
       }
     }
     label396:
@@ -393,21 +393,21 @@ public class BottomNavigationMenuView
       i = paramInt2;
       if (((View)localObject).getVisibility() != 8)
       {
-        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.kA[paramInt1], 1073741824), n);
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.kC[paramInt1], 1073741824), n);
         ((View)localObject).getLayoutParams().width = ((View)localObject).getMeasuredWidth();
         i = paramInt2 + ((View)localObject).getMeasuredWidth();
       }
       paramInt1 += 1;
     }
-    setMeasuredDimension(View.resolveSizeAndState(paramInt2, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824), 0), View.resolveSizeAndState(this.kl, n, 0));
+    setMeasuredDimension(View.resolveSizeAndState(paramInt2, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824), 0), View.resolveSizeAndState(this.kn, n, 0));
   }
   
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.ks = paramColorStateList;
-    if (this.kp != null)
+    this.ku = paramColorStateList;
+    if (this.kr != null)
     {
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kp;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kr;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -420,10 +420,10 @@ public class BottomNavigationMenuView
   
   public void setItemBackground(Drawable paramDrawable)
   {
-    this.ky = paramDrawable;
-    if (this.kp != null)
+    this.kA = paramDrawable;
+    if (this.kr != null)
     {
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kp;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kr;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -436,10 +436,10 @@ public class BottomNavigationMenuView
   
   public void setItemBackgroundRes(int paramInt)
   {
-    this.kz = paramInt;
-    if (this.kp != null)
+    this.kB = paramInt;
+    if (this.kr != null)
     {
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kp;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kr;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -452,15 +452,15 @@ public class BottomNavigationMenuView
   
   public void setItemHorizontalTranslationEnabled(boolean paramBoolean)
   {
-    this.ko = paramBoolean;
+    this.kq = paramBoolean;
   }
   
   public void setItemIconSize(int paramInt)
   {
-    this.kt = paramInt;
-    if (this.kp != null)
+    this.kv = paramInt;
+    if (this.kr != null)
     {
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kp;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kr;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -473,18 +473,18 @@ public class BottomNavigationMenuView
   
   public void setItemTextAppearanceActive(int paramInt)
   {
-    this.kx = paramInt;
-    if (this.kp != null)
+    this.kz = paramInt;
+    if (this.kr != null)
     {
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kp;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kr;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
       {
         BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i];
         localBottomNavigationItemView.setTextAppearanceActive(paramInt);
-        if (this.ku != null) {
-          localBottomNavigationItemView.setTextColor(this.ku);
+        if (this.kw != null) {
+          localBottomNavigationItemView.setTextColor(this.kw);
         }
         i += 1;
       }
@@ -493,18 +493,18 @@ public class BottomNavigationMenuView
   
   public void setItemTextAppearanceInactive(int paramInt)
   {
-    this.kw = paramInt;
-    if (this.kp != null)
+    this.ky = paramInt;
+    if (this.kr != null)
     {
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kp;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kr;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
       {
         BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i];
         localBottomNavigationItemView.setTextAppearanceInactive(paramInt);
-        if (this.ku != null) {
-          localBottomNavigationItemView.setTextColor(this.ku);
+        if (this.kw != null) {
+          localBottomNavigationItemView.setTextColor(this.kw);
         }
         i += 1;
       }
@@ -513,10 +513,10 @@ public class BottomNavigationMenuView
   
   public void setItemTextColor(ColorStateList paramColorStateList)
   {
-    this.ku = paramColorStateList;
-    if (this.kp != null)
+    this.kw = paramColorStateList;
+    if (this.kr != null)
     {
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kp;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.kr;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -529,17 +529,17 @@ public class BottomNavigationMenuView
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    this.jY = paramInt;
+    this.ka = paramInt;
   }
   
   public void setPresenter(BottomNavigationPresenter paramBottomNavigationPresenter)
   {
-    this.kB = paramBottomNavigationPresenter;
+    this.kD = paramBottomNavigationPresenter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.BottomNavigationMenuView
  * JD-Core Version:    0.7.0.1
  */

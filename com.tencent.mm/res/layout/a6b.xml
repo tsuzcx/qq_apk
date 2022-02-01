@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v4.view.ViewPager android:orientation="horizontal" android:id="@id/goy" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-</android.support.constraint.ConstraintLayout>
+<LinearLayout android:id="@id/h91" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hv">
+        <ImageView android:id="@id/c__" android:background="@drawable/c6h" android:layout_width="@dimen/x7" android:layout_height="@dimen/x7" android:layout_marginTop="@dimen/hw" />
+        <TextView android:textSize="24.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/c_a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/c5s" />
+        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ah7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="80.0dip">
+            <Button android:textSize="@dimen/l" android:id="@id/h6z" android:padding="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:text="@string/c5r" style="@style/ou" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

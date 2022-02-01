@@ -1,190 +1,114 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.cgi.au;
-import com.tencent.mm.plugin.i.a.s;
-import com.tencent.mm.protocal.protobuf.ama;
-import com.tencent.mm.protocal.protobuf.amb;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import d.z;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.finder.cgi.bx;
+import com.tencent.mm.plugin.finder.cgi.bx.a;
+import com.tencent.mm.plugin.i.a.ai;
+import com.tencent.mm.plugin.i.a.v;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.ayy;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "T", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "waitQueue", "Ljava/util/LinkedHashMap;", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "getWaitQueue", "()Ljava/util/LinkedHashMap;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "(Ljava/lang/Object;)Lcom/tencent/mm/protobuf/ByteString;", "getCmdId", "", "handleUpdateResult", "", "retCode", "(Ljava/lang/Object;I)V", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "tryDoNext", "callback", "(Ljava/lang/Object;Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;)V", "plugin-finder_release"})
-public abstract class h<T>
-  implements f
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyFeedSettingService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyFeedSetting;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "modUserInfo", "getCmdId", "", "handleUpdateResult", "", "cmdBufItem", "retCode", "modifyFeedComment", "feedId", "", "feedObj", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "objectNonceId", "openComment", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "modifyFeedPrivacy", "ifPrivate", "Companion", "plugin-finder_release"})
+public final class h
+  extends k<ayy>
+  implements i, v
 {
-  private final LinkedHashMap<T, WeakReference<s<T>>> rTw = new LinkedHashMap();
+  public static final a txM;
+  private final String TAG = "Finder.FinderModifyFeedSettingService";
   
-  public final void a(T paramT, s<T> params)
+  static
   {
-    synchronized (this.rTw)
-    {
-      ama localama = new ama();
-      localama.cmdId = getCmdId();
-      localama.GEu = db(paramT);
-      this.rTw.put(paramT, new WeakReference(params));
-      paramT = g.ajj();
-      params = com.tencent.mm.model.v.aAK();
-      if (params == null) {
-        p.gkB();
-      }
-      paramT.b((n)new au(params, j.listOf(localama)));
-      return;
-    }
+    AppMethodBeat.i(165306);
+    txM = new a((byte)0);
+    AppMethodBeat.o(165306);
   }
   
-  public abstract b db(T paramT);
-  
-  public abstract int getCmdId();
-  
-  public abstract String getTAG();
-  
-  public abstract void l(T paramT, int paramInt);
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void a(long paramLong, FinderObject paramFinderObject, String paramString, boolean paramBoolean, ai<ayy> paramai)
   {
-    int k = 0;
-    ae.i(getTAG(), "errType " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString);
-    if (paramn == null) {
-      throw new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderOplog");
-    }
-    Object localObject1 = ((au)paramn).czZ();
-    paramString = ((au)paramn).czY();
-    paramn = paramString.iterator();
-    int i = 0;
-    int j;
-    if (paramn.hasNext()) {
-      if (((ama)paramn.next()).cmdId == getCmdId())
-      {
-        j = 1;
-        label122:
-        if (j == 0) {
-          break label190;
-        }
-        label127:
-        if (i >= 0) {
-          break label210;
-        }
-        paramn = getTAG();
-        localObject1 = new StringBuilder("not cares cmdId: ");
-        paramString = (ama)j.jm(paramString);
-        if (paramString == null) {
-          break label205;
-        }
-      }
-    }
-    label190:
-    label205:
-    for (paramString = Integer.valueOf(paramString.cmdId);; paramString = null)
+    int j = 1;
+    AppMethodBeat.i(165302);
+    p.h(paramFinderObject, "feedObj");
+    p.h(paramString, "objectNonceId");
+    Object localObject = com.tencent.mm.plugin.finder.report.k.vfA;
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
     {
-      ae.i(paramn, paramString);
-      return;
-      j = 0;
-      break label122;
-      i += 1;
-      break;
-      i = -1;
-      break label127;
-    }
-    label210:
-    ae.i(getTAG(), "retList " + ((List)localObject1).size());
-    for (;;)
-    {
-      synchronized (this.rTw)
-      {
-        if (!((Map)this.rTw).isEmpty())
-        {
-          i = 1;
-          if (i == 0) {
-            break label625;
-          }
-          Object localObject3 = ((Map)this.rTw).entrySet().iterator();
-          paramn = (Map.Entry)((Iterator)localObject3).next();
-          paramString = paramn.getKey();
-          paramn = (s)((WeakReference)paramn.getValue()).get();
-          ((Iterator)localObject3).remove();
-          localObject3 = z.Nhr;
-          if ((paramInt1 != 0) || (paramInt2 != 0)) {
-            break label572;
-          }
-          ??? = ((List)localObject1).iterator();
-          paramInt1 = 0;
-          if (!((Iterator)???).hasNext()) {
-            break label567;
-          }
-          if (((amb)((Iterator)???).next()).cmdId != getCmdId()) {
-            break label555;
-          }
-          paramInt2 = 1;
-          if (paramInt2 == 0) {
-            break label560;
-          }
-          if ((paramInt1 != -1) && (paramString != null))
-          {
-            l(paramString, ((amb)((List)localObject1).get(paramInt1)).retCode);
-            if (paramn != null) {
-              paramn.a(paramString, (amb)((List)localObject1).get(paramInt1));
-            }
-          }
-          paramString = this.rTw;
-          paramInt1 = k;
-        }
-        try
-        {
-          if (!((Map)this.rTw).isEmpty()) {
-            paramInt1 = 1;
-          }
-          if (paramInt1 != 0)
-          {
-            paramn = (Map.Entry)((Map)this.rTw).entrySet().iterator().next();
-            a(paramn.getKey(), (s)((WeakReference)paramn.getValue()).get());
-          }
-          paramn = z.Nhr;
-          return;
-        }
-        finally {}
+      p.h(paramFinderObject, "finderObject");
+      localObject = ((c)g.af(c.class)).cMD();
+      paramFinderObject = (String)localObject + ',' + i + ',' + com.tencent.mm.plugin.finder.report.k.Fg(paramFinderObject.id) + ',' + paramFinderObject.username + ',' + paramFinderObject.likeCount + ',' + paramFinderObject.commentCount + ',' + paramFinderObject.friendLikeCount;
+      Log.i(com.tencent.mm.plugin.finder.report.k.TAG, "18952 ".concat(String.valueOf(paramFinderObject)));
+      e.Cxv.kvStat(18952, paramFinderObject);
+      paramFinderObject = new ayy();
+      paramFinderObject.LIV = paramLong;
+      paramFinderObject.scene = 1;
+      i = j;
+      if (paramBoolean) {
         i = 0;
       }
-      label555:
-      paramInt2 = 0;
-      continue;
-      label560:
-      paramInt1 += 1;
-      continue;
-      label567:
-      paramInt1 = -1;
-      continue;
-      label572:
-      if ((paramString != null) && (paramn != null))
-      {
-        localObject1 = new amb();
-        ((amb)localObject1).cmdId = getCmdId();
-        ((amb)localObject1).retCode = -1;
-        paramn.a(paramString, (amb)localObject1);
-        continue;
-        label625:
-        paramString = null;
-        paramn = null;
-      }
+      paramFinderObject.dYx = i;
+      paramFinderObject.objectNonceId = paramString;
+      a(paramFinderObject, paramai, false);
+      AppMethodBeat.o(165302);
+      return;
     }
   }
+  
+  public final void b(long paramLong, FinderObject paramFinderObject, String paramString, boolean paramBoolean, ai<ayy> paramai)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(242661);
+    p.h(paramString, "objectNonceId");
+    ayy localayy = new ayy();
+    localayy.LIV = paramLong;
+    localayy.scene = 2;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      localayy.dYx = i;
+      localayy.objectNonceId = paramString;
+      if (paramFinderObject != null) {
+        break label88;
+      }
+    }
+    label88:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      a(localayy, paramai, paramBoolean);
+      AppMethodBeat.o(242661);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public final int getCmdId()
+  {
+    AppMethodBeat.i(165305);
+    bx.a locala = bx.tvW;
+    int i = bx.cYQ();
+    AppMethodBeat.o(165305);
+    return i;
+  }
+  
+  public final String getTAG()
+  {
+    return this.TAG;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyFeedSettingService$Companion;", "", "()V", "CLOSE_COMMENT", "", "OPEN_COMMENT", "SCENE_CLOSE_COMMENT", "SCENE_SET_PRIVATE", "SET_PRIVATE", "SET_PUBLIC", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.oplog.h
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,7 @@ public class TbsWizard
   
   public TbsWizard(Context paramContext1, Context paramContext2, String paramString1, String paramString2, String[] paramArrayOfString, String paramString3, p paramp)
   {
-    AppMethodBeat.i(192713);
+    AppMethodBeat.i(188068);
     this.a = null;
     this.b = null;
     this.c = null;
@@ -50,7 +50,7 @@ public class TbsWizard
     if ((paramContext1 == null) || ((paramContext2 == null) && (TbsShareManager.getHostCorePathAppDefined() == null)) || (TextUtils.isEmpty(paramString1)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
       paramContext1 = new Exception("TbsWizard paramter error:-1callerContext:" + paramContext1 + "hostcontext" + paramContext2 + "isEmpty" + TextUtils.isEmpty(paramString1) + "dexfileList" + paramArrayOfString);
-      AppMethodBeat.o(192713);
+      AppMethodBeat.o(188068);
       throw paramContext1;
     }
     this.a = paramContext1.getApplicationContext();
@@ -90,11 +90,11 @@ public class TbsWizard
     if (i < 0)
     {
       paramContext1 = new Exception("TbsWizard init error: " + i + "; msg: " + this.f);
-      AppMethodBeat.o(192713);
+      AppMethodBeat.o(188068);
       throw paramContext1;
     }
     TbsLog.i("TbsWizard", "construction end...");
-    AppMethodBeat.o(192713);
+    AppMethodBeat.o(188068);
   }
   
   private void a()
@@ -145,7 +145,7 @@ public class TbsWizard
   private int b(Context paramContext)
   {
     AppMethodBeat.i(54639);
-    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionCode(43805);
+    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionCode(43809);
     TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionName("4.4.0.0006");
     TbsOneGreyInfoHelper.getCoreEntry().initRuntimeEnvironment();
     AppMethodBeat.o(54639);
@@ -194,7 +194,7 @@ public class TbsWizard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsWizard
  * JD-Core Version:    0.7.0.1
  */

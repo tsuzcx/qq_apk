@@ -1,68 +1,68 @@
 package com.tencent.mm.plugin.shake.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelstat.o;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ddw;
-import com.tencent.mm.protocal.protobuf.ddx;
-import com.tencent.mm.protocal.protobuf.eby;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.dxa;
+import com.tencent.mm.protocal.protobuf.dxb;
+import com.tencent.mm.protocal.protobuf.ewf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  byte[] dNz;
+  private i callback;
+  byte[] efs;
   int ret;
-  private final com.tencent.mm.ak.b rr;
+  private final com.tencent.mm.ak.d rr;
   
   public b(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     AppMethodBeat.i(28089);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new ddw();
-    ((b.a)localObject).hQG = new ddx();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/shakereport";
-    ((b.a)localObject).funcId = 161;
-    ((b.a)localObject).hQH = 56;
-    ((b.a)localObject).respCmdId = 1000000056;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (ddw)this.rr.hQD.hQJ;
-    ae.i("MicroMsg.NetSceneShakeReport", "share reprot %f %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
-    ((ddw)localObject).OpCode = 0;
-    ((ddw)localObject).GgZ = paramFloat1;
-    ((ddw)localObject).Gha = paramFloat2;
-    ((ddw)localObject).Gzf = paramInt1;
-    ((ddw)localObject).Gzg = paramString1;
-    ((ddw)localObject).Gzh = paramString2;
-    ((ddw)localObject).Gzi = paramInt2;
-    bc.aCg();
-    ((ddw)localObject).HLx = bu.a((Integer)c.ajA().get(4107, null), 0);
-    bc.aCg();
-    paramInt2 = bu.o((Integer)c.ajA().get(4106, null));
-    ((ddw)localObject).HLy = paramInt2;
-    bc.aCg();
-    c.ajA().set(4106, Integer.valueOf(paramInt2 + 1));
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dxa();
+    ((d.a)localObject).iLO = new dxb();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/shakereport";
+    ((d.a)localObject).funcId = 161;
+    ((d.a)localObject).iLP = 56;
+    ((d.a)localObject).respCmdId = 1000000056;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dxa)this.rr.iLK.iLR;
+    Log.i("MicroMsg.NetSceneShakeReport", "share reprot %f %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
+    ((dxa)localObject).OpCode = 0;
+    ((dxa)localObject).LbC = paramFloat1;
+    ((dxa)localObject).LbD = paramFloat2;
+    ((dxa)localObject).LuT = paramInt1;
+    ((dxa)localObject).LuU = paramString1;
+    ((dxa)localObject).LuV = paramString2;
+    ((dxa)localObject).LuW = paramInt2;
+    bg.aVF();
+    ((dxa)localObject).MXg = Util.nullAs((Integer)c.azQ().get(4107, null), 0);
+    bg.aVF();
+    paramInt2 = Util.nullAsNil((Integer)c.azQ().get(4106, null));
+    ((dxa)localObject).MXh = paramInt2;
+    bg.aVF();
+    c.azQ().set(4106, Integer.valueOf(paramInt2 + 1));
     try
     {
-      paramString1 = new eby();
-      paramString1.Ihs = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.wJt.dye());
-      ((ddw)localObject).FSj = new SKBuiltinBuffer_t().setBuffer(paramString1.toByteArray());
+      paramString1 = new ewf();
+      paramString1.NtQ = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.d.AEF.exJ());
+      ((dxa)localObject).KLQ = new SKBuiltinBuffer_t().setBuffer(paramString1.toByteArray());
       label291:
       o.a(2002, paramFloat1, paramFloat2, paramInt1);
       AppMethodBeat.o(28089);
@@ -74,19 +74,19 @@ public final class b
     }
   }
   
-  public final int dRN()
-  {
-    return ((ddw)this.rr.hQD.hQJ).Gzi;
-  }
-  
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(28090);
-    ae.d("MicroMsg.NetSceneShakeReport", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    Log.d("MicroMsg.NetSceneShakeReport", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(28090);
     return i;
+  }
+  
+  public final int eTO()
+  {
+    return ((dxa)this.rr.iLK.iLR).LuW;
   }
   
   public final int getType()
@@ -94,14 +94,14 @@ public final class b
     return 161;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28091);
-    ae.d("MicroMsg.NetSceneShakeReport", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramArrayOfByte = (ddx)this.rr.hQE.hQJ;
-    this.ret = paramq.getRespObj().getRetCode();
+    Log.d("MicroMsg.NetSceneShakeReport", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramArrayOfByte = (dxb)this.rr.iLL.iLR;
+    this.ret = params.getRespObj().getRetCode();
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.dNz = z.a(paramArrayOfByte.FTj);
+      this.efs = z.a(paramArrayOfByte.KMS);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(28091);
@@ -109,7 +109,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.b
  * JD-Core Version:    0.7.0.1
  */

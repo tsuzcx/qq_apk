@@ -14,28 +14,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RectView
   extends View
 {
+  private Bitmap CLS;
+  private Bitmap CLT;
+  private Bitmap CLU;
+  private Bitmap CLV;
+  private Paint CMr;
+  int CVa;
+  int CVb;
   private Paint paint;
   private Rect rect;
-  private Paint yIE;
-  private Bitmap yIf;
-  private Bitmap yIg;
-  private Bitmap yIh;
-  private Bitmap yIi;
-  int yQN;
-  int yQO;
   
   public RectView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(91085);
-    this.yIf = null;
-    this.yIg = null;
-    this.yIh = null;
-    this.yIi = null;
-    this.yQN = 0;
-    this.yQO = 0;
+    this.CLS = null;
+    this.CLT = null;
+    this.CLU = null;
+    this.CLV = null;
+    this.CVa = 0;
+    this.CVb = 0;
     this.paint = new Paint();
-    this.yIE = new Paint();
+    this.CMr = new Paint();
     init();
     AppMethodBeat.o(91085);
   }
@@ -44,14 +44,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(91086);
-    this.yIf = null;
-    this.yIg = null;
-    this.yIh = null;
-    this.yIi = null;
-    this.yQN = 0;
-    this.yQO = 0;
+    this.CLS = null;
+    this.CLT = null;
+    this.CLU = null;
+    this.CLV = null;
+    this.CVa = 0;
+    this.CVb = 0;
     this.paint = new Paint();
-    this.yIE = new Paint();
+    this.CMr = new Paint();
     init();
     AppMethodBeat.o(91086);
   }
@@ -60,14 +60,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(91087);
-    this.yIf = null;
-    this.yIg = null;
-    this.yIh = null;
-    this.yIi = null;
-    this.yQN = 0;
-    this.yQO = 0;
+    this.CLS = null;
+    this.CLT = null;
+    this.CLU = null;
+    this.CLV = null;
+    this.CVa = 0;
+    this.CVb = 0;
     this.paint = new Paint();
-    this.yIE = new Paint();
+    this.CMr = new Paint();
     init();
     AppMethodBeat.o(91087);
   }
@@ -75,14 +75,14 @@ public class RectView
   private void init()
   {
     AppMethodBeat.i(91088);
-    this.yIf = BitmapFactory.decodeResource(getResources(), 2131233910);
-    this.yIg = BitmapFactory.decodeResource(getResources(), 2131233911);
-    this.yIh = BitmapFactory.decodeResource(getResources(), 2131233912);
-    this.yIi = BitmapFactory.decodeResource(getResources(), 2131233913);
-    this.yQN = this.yIf.getWidth();
-    this.yQO = this.yIf.getHeight();
+    this.CLS = BitmapFactory.decodeResource(getResources(), 2131234738);
+    this.CLT = BitmapFactory.decodeResource(getResources(), 2131234739);
+    this.CLU = BitmapFactory.decodeResource(getResources(), 2131234740);
+    this.CLV = BitmapFactory.decodeResource(getResources(), 2131234741);
+    this.CVa = this.CLS.getWidth();
+    this.CVb = this.CLS.getHeight();
     this.paint.setAntiAlias(true);
-    this.yIE.setAntiAlias(true);
+    this.CMr.setAntiAlias(true);
     AppMethodBeat.o(91088);
   }
   
@@ -102,10 +102,10 @@ public class RectView
     paramCanvas.clipRect(this.rect, Region.Op.DIFFERENCE);
     paramCanvas.drawRect(this.rect, this.paint);
     paramCanvas.restore();
-    paramCanvas.drawBitmap(this.yIf, this.rect.left, this.rect.top, this.yIE);
-    paramCanvas.drawBitmap(this.yIg, this.rect.right - this.yQN, this.rect.top, this.yIE);
-    paramCanvas.drawBitmap(this.yIh, this.rect.left, this.rect.bottom - this.yQO, this.yIE);
-    paramCanvas.drawBitmap(this.yIi, this.rect.right - this.yQN, this.rect.bottom - this.yQO, this.yIE);
+    paramCanvas.drawBitmap(this.CLS, this.rect.left, this.rect.top, this.CMr);
+    paramCanvas.drawBitmap(this.CLT, this.rect.right - this.CVa, this.rect.top, this.CMr);
+    paramCanvas.drawBitmap(this.CLU, this.rect.left, this.rect.bottom - this.CVb, this.CMr);
+    paramCanvas.drawBitmap(this.CLV, this.rect.right - this.CVa, this.rect.bottom - this.CVb, this.CMr);
     AppMethodBeat.o(91090);
   }
   
@@ -116,7 +116,7 @@ public class RectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.RectView
  * JD-Core Version:    0.7.0.1
  */

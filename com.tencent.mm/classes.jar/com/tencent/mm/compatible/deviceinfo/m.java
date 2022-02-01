@@ -1,40 +1,41 @@
 package com.tencent.mm.compatible.deviceinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class m
 {
-  static int gcs = 0;
-  static String gct = null;
+  static int gHQ = 0;
+  static String gHR = null;
   
-  public static int aao()
+  public static int aon()
   {
     int m = 15;
     AppMethodBeat.i(155662);
     int i;
     int j;
     int k;
-    if (n.aau())
+    if (n.aot())
     {
       i = 7;
       j = i;
-      if (ae.geL.gcv)
+      if (ae.gKs.gHT)
       {
         j = i;
-        if (ae.geL.gcx == 0)
+        if (ae.gKs.gHV == 0)
         {
-          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CpuChecker", "disable armv6 by server ");
+          Log.d("MicroMsg.CpuChecker", "disable armv6 by server ");
           j = i & 0xFFFFFFFD;
         }
       }
       k = j;
-      if (ae.geL.gcv)
+      if (ae.gKs.gHT)
       {
         k = j;
-        if (ae.geL.gcw == 0)
+        if (ae.gKs.gHU == 0)
         {
-          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CpuChecker", "disable armv7 by server ");
+          Log.d("MicroMsg.CpuChecker", "disable armv7 by server ");
           k = j & 0xFFFFFFFB;
         }
       }
@@ -44,7 +45,7 @@ public final class m
       }
       j = 15;
       label98:
-      i = bu.getInt(aap(), 0) / 1000;
+      i = Util.getInt(aoo(), 0) / 1000;
       if (j < 8) {
         break label199;
       }
@@ -70,10 +71,10 @@ public final class m
       for (;;)
       {
         i = (k + (j << 4) << 8) + i;
-        gcs = i;
+        gHQ = i;
         AppMethodBeat.o(155662);
         return i;
-        if (n.aav())
+        if (n.aou())
         {
           i = 3;
           break;
@@ -107,17 +108,17 @@ public final class m
   }
   
   /* Error */
-  public static String aap()
+  public static String aoo()
   {
     // Byte code:
     //   0: ldc 82
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 84	java/io/BufferedReader
     //   8: dup
-    //   9: new 86	com/tencent/mm/vfs/q
+    //   9: new 86	com/tencent/mm/vfs/u
     //   12: dup
     //   13: ldc 88
-    //   15: invokespecial 92	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   15: invokespecial 92	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   18: invokespecial 95	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   21: astore_1
     //   22: aload_1
@@ -150,20 +151,20 @@ public final class m
     //   62: ldc 105
     //   64: iconst_0
     //   65: anewarray 4	java/lang/Object
-    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: aload_1
-    //   72: invokestatic 112	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   72: invokestatic 113	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   75: ldc 82
     //   77: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   80: ldc 114
+    //   80: ldc 115
     //   82: areturn
     //   83: aload_1
     //   84: astore_0
     //   85: aload_2
-    //   86: invokevirtual 119	java/lang/String:trim	()Ljava/lang/String;
+    //   86: invokevirtual 120	java/lang/String:trim	()Ljava/lang/String;
     //   89: astore_2
     //   90: aload_1
-    //   91: invokestatic 112	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   91: invokestatic 113	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   94: ldc 82
     //   96: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_2
@@ -172,7 +173,7 @@ public final class m
     //   102: aconst_null
     //   103: astore_0
     //   104: aload_0
-    //   105: invokestatic 112	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   105: invokestatic 113	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   108: ldc 82
     //   110: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_1
@@ -212,17 +213,17 @@ public final class m
   }
   
   /* Error */
-  public static String aaq()
+  public static String aop()
   {
     // Byte code:
-    //   0: ldc 123
+    //   0: ldc 124
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 84	java/io/BufferedReader
     //   8: dup
-    //   9: new 86	com/tencent/mm/vfs/q
+    //   9: new 86	com/tencent/mm/vfs/u
     //   12: dup
-    //   13: ldc 125
-    //   15: invokespecial 92	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   13: ldc 126
+    //   15: invokespecial 92	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   18: invokespecial 95	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   21: astore_1
     //   22: aload_1
@@ -236,12 +237,12 @@ public final class m
     //   34: astore_0
     //   35: new 100	java/lang/NullPointerException
     //   38: dup
-    //   39: ldc 127
+    //   39: ldc 128
     //   41: invokespecial 103	java/lang/NullPointerException:<init>	(Ljava/lang/String;)V
     //   44: astore_2
     //   45: aload_1
     //   46: astore_0
-    //   47: ldc 123
+    //   47: ldc 124
     //   49: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: aload_1
     //   53: astore_0
@@ -255,21 +256,21 @@ public final class m
     //   62: ldc 105
     //   64: iconst_0
     //   65: anewarray 4	java/lang/Object
-    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: aload_1
-    //   72: invokestatic 112	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   75: ldc 123
+    //   72: invokestatic 113	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   75: ldc 124
     //   77: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   80: ldc 114
+    //   80: ldc 115
     //   82: areturn
     //   83: aload_1
     //   84: astore_0
     //   85: aload_2
-    //   86: invokevirtual 119	java/lang/String:trim	()Ljava/lang/String;
+    //   86: invokevirtual 120	java/lang/String:trim	()Ljava/lang/String;
     //   89: astore_2
     //   90: aload_1
-    //   91: invokestatic 112	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   94: ldc 123
+    //   91: invokestatic 113	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   94: ldc 124
     //   96: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_2
     //   100: areturn
@@ -277,8 +278,8 @@ public final class m
     //   102: aconst_null
     //   103: astore_0
     //   104: aload_0
-    //   105: invokestatic 112	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   108: ldc 123
+    //   105: invokestatic 113	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   108: ldc 124
     //   110: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_1
     //   114: athrow
@@ -318,7 +319,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.m
  * JD-Core Version:    0.7.0.1
  */

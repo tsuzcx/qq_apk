@@ -1,16 +1,41 @@
 package android.support.transition;
 
-import android.support.v4.e.a;
-import android.support.v4.e.g;
-import android.util.SparseArray;
 import android.view.View;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-final class v
+public final class v
 {
-  final a<View, u> CX = new a();
-  final SparseArray<View> CY = new SparseArray();
-  final g<View> CZ = new g();
-  final a<String, View> Da = new a();
+  final ArrayList<Transition> Df = new ArrayList();
+  public final Map<String, Object> values = new HashMap();
+  public View view;
+  
+  public final boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof v)) && (this.view == ((v)paramObject).view) && (this.values.equals(((v)paramObject).values));
+  }
+  
+  public final int hashCode()
+  {
+    return this.view.hashCode() * 31 + this.values.hashCode();
+  }
+  
+  public final String toString()
+  {
+    String str1 = "TransitionValues@" + Integer.toHexString(hashCode()) + ":\n";
+    str1 = str1 + "    view = " + this.view + "\n";
+    str1 = str1 + "    values:";
+    Iterator localIterator = this.values.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str2 = (String)localIterator.next();
+      str1 = str1 + "    " + str2 + ": " + this.values.get(str2) + "\n";
+    }
+    return str1;
+  }
 }
 
 

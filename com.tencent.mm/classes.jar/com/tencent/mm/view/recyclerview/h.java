@@ -1,65 +1,130 @@
 package com.tencent.mm.view.recyclerview;
 
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.a;
+import android.support.v7.widget.RecyclerView.v;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import java.util.LinkedHashSet;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "", "convertData", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "exposeTimestamp", "", "(Lcom/tencent/mm/view/recyclerview/ConvertData;J)V", "getConvertData", "()Lcom/tencent/mm/view/recyclerview/ConvertData;", "dataPos", "", "getDataPos", "()I", "setDataPos", "(I)V", "getExposeTimestamp", "()J", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "libmmui_release"})
-public final class h
+public class h
+  extends RecyclerView.v
 {
-  public final a LSx;
-  public final long LSy;
-  public int rZC;
-  f rZD;
+  private final LinkedHashSet<Integer> RqY;
+  private final LinkedHashSet<Integer> RqZ;
+  public Object Rra;
+  private final Context context;
+  public RecyclerView hak;
+  private RecyclerView.a hbg;
+  private Object tag;
   
-  private h(a parama, long paramLong)
+  public h(View paramView)
   {
-    AppMethodBeat.i(193930);
-    this.LSx = parama;
-    this.LSy = paramLong;
-    AppMethodBeat.o(193930);
+    super(paramView);
+    AppMethodBeat.i(164329);
+    this.hak = null;
+    this.RqY = new LinkedHashSet();
+    this.RqZ = new LinkedHashSet();
+    this.context = paramView.getContext();
+    AppMethodBeat.o(164329);
   }
   
-  public final boolean equals(Object paramObject)
+  public final <T extends View> T Mn(int paramInt)
   {
-    AppMethodBeat.i(193934);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof h))
-      {
-        paramObject = (h)paramObject;
-        if ((!p.i(this.LSx, paramObject.LSx)) || (this.LSy != paramObject.LSy)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(193934);
-      return true;
-    }
-    AppMethodBeat.o(193934);
-    return false;
+    AppMethodBeat.i(164335);
+    View localView = this.aus.findViewById(paramInt);
+    AppMethodBeat.o(164335);
+    return localView;
   }
   
-  public final int hashCode()
+  public final h aqe(int paramInt)
   {
-    AppMethodBeat.i(193933);
-    a locala = this.LSx;
-    if (locala != null) {}
-    for (int i = locala.hashCode();; i = 0)
-    {
-      long l = this.LSy;
-      int j = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(193933);
-      return i * 31 + j;
-    }
+    AppMethodBeat.i(164332);
+    ((TextView)Mn(2131298942)).setText(paramInt);
+    AppMethodBeat.o(164332);
+    return this;
   }
   
-  public final String toString()
+  public final h b(RecyclerView.a parama)
   {
-    AppMethodBeat.i(193932);
-    String str = "WxRVDataItem(convertData=" + this.LSx + ", exposeTimestamp=" + this.LSy + ")";
-    AppMethodBeat.o(193932);
-    return str;
+    this.hbg = parama;
+    return this;
+  }
+  
+  public final h e(int paramInt, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(164331);
+    ((TextView)Mn(paramInt)).setText(paramCharSequence);
+    AppMethodBeat.o(164331);
+    return this;
+  }
+  
+  public final void et(Object paramObject)
+  {
+    this.Rra = paramObject;
+  }
+  
+  public final RecyclerView.a getAdapter()
+  {
+    return this.hbg;
+  }
+  
+  public final Context getContext()
+  {
+    return this.context;
+  }
+  
+  public final RecyclerView getRecyclerView()
+  {
+    AppMethodBeat.i(164330);
+    if ((this.hak == null) && ((this.aus.getParent() instanceof RecyclerView)))
+    {
+      this.hak = ((RecyclerView)this.aus.getParent());
+      localRecyclerView = this.hak;
+      AppMethodBeat.o(164330);
+      return localRecyclerView;
+    }
+    RecyclerView localRecyclerView = this.hak;
+    AppMethodBeat.o(164330);
+    return localRecyclerView;
+  }
+  
+  public final Object getTag()
+  {
+    return this.tag;
+  }
+  
+  public final <T> T hgv()
+  {
+    return this.Rra;
+  }
+  
+  public final h me(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(206185);
+    ((TextView)Mn(paramInt1)).setTextColor(paramInt2);
+    AppMethodBeat.o(206185);
+    return this;
+  }
+  
+  public final h mf(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(164334);
+    Mn(paramInt1).setVisibility(paramInt2);
+    AppMethodBeat.o(164334);
+    return this;
+  }
+  
+  public final void setRecyclerView(RecyclerView paramRecyclerView)
+  {
+    this.hak = paramRecyclerView;
+  }
+  
+  public final void setTag(Object paramObject)
+  {
+    this.tag = paramObject;
   }
 }
 

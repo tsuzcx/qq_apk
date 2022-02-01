@@ -4,10 +4,10 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 
 public final class l$6
   implements Runnable
@@ -18,20 +18,20 @@ public final class l$6
   {
     AppMethodBeat.i(106893);
     Context localContext = this.val$context;
-    String str1 = this.cXi;
-    Object localObject = this.rGg;
-    String str2 = this.idz;
-    int i = this.liC;
-    String str3 = this.rGh;
-    String str4 = this.rFg;
-    localObject = new k((String)localObject);
-    if (((k)localObject).exists())
+    String str1 = this.dnJ;
+    Object localObject = this.tfM;
+    String str2 = this.iYw;
+    int i = this.moi;
+    String str3 = this.tfN;
+    String str4 = this.teL;
+    localObject = new o((String)localObject);
+    if (((o)localObject).exists())
     {
-      k localk = new k(str2);
-      ae.i("MicroMsg.FavSendLogic", "sendVideo::data path[%s] thumb path[%s]", new Object[] { w.B(((k)localObject).fTh()), w.B(localk.fTh()) });
-      g.doC().a(localContext, str1, w.B(((k)localObject).fTh()), str2, 1, i, str3, str4);
+      o localo = new o(str2);
+      Log.i("MicroMsg.FavSendLogic", "sendVideo::data path[%s] thumb path[%s]", new Object[] { aa.z(((o)localObject).her()), aa.z(localo.her()) });
+      g.eir().a(localContext, str1, aa.z(((o)localObject).her()), str2, 1, i, str3, str4);
     }
-    ar.f(this.val$callback);
+    MMHandlerThread.postToMainThread(this.val$callback);
     AppMethodBeat.o(106893);
   }
   

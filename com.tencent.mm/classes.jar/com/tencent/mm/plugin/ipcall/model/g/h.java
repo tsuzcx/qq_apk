@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.ipcall.model.b.a;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.n;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
   extends a
 {
-  public int uZZ = 1;
-  public boolean vaa = false;
+  public boolean ysA = false;
+  public int ysz = 1;
   
-  public final void Dg() {}
+  public final void MC() {}
   
   public final void b(c paramc)
   {
     AppMethodBeat.i(25525);
     if (paramc != null)
     {
-      ae.d("MicroMsg.IPCallShutDownService", "call shutdown scene, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(paramc.roomId), Integer.valueOf(paramc.uXi) });
-      paramc = new n(paramc.roomId, paramc.uXg, paramc.uXh, this.uZZ);
-      bc.ajj().a(paramc, 0);
+      Log.d("MicroMsg.IPCallShutDownService", "call shutdown scene, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(paramc.roomId), Integer.valueOf(paramc.ypJ) });
+      paramc = new n(paramc.roomId, paramc.ypH, paramc.ypI, this.ysz);
+      bg.azz().a(paramc, 0);
     }
     AppMethodBeat.o(25525);
   }
   
-  public final int[] dgL()
+  public final int[] eaF()
   {
     return new int[] { 723 };
   }

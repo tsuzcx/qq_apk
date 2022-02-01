@@ -8,18 +8,18 @@ import com.tencent.stubs.logger.Log;
 final class d
   implements g.a
 {
-  public static g.a.a kV(int paramInt1, int paramInt2)
+  public static g.a.a mu(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(3544);
     g.a.a locala = new g.a.a();
-    locala.gdk = null;
+    locala.gII = null;
     try
     {
       l = System.currentTimeMillis();
       Log.i("CameraUtilImpl23", "Call Camera.open cameraID ".concat(String.valueOf(paramInt1)));
-      locala.gdk = Camera.open(paramInt1);
+      locala.gII = Camera.open(paramInt1);
       Log.i("CameraUtilImpl23", String.format("Call Camera.open back, use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-      if (locala.gdk == null)
+      if (locala.gII == null)
       {
         Log.e("CameraUtilImpl23", "open camera error, not exception, but camera null");
         AppMethodBeat.o(3544);
@@ -49,9 +49,9 @@ final class d
     {
       l = System.currentTimeMillis();
       Log.i("CameraUtilImpl23", "Call Camera.setDisplayOrientation ".concat(String.valueOf(paramInt1)));
-      localException.gdk.setDisplayOrientation(paramInt1);
+      localException.gII.setDisplayOrientation(paramInt1);
       Log.i("CameraUtilImpl23", String.format("Call Camera.setDisplayOrientation back, use %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-      localException.dHi = paramInt1;
+      localException.dYT = paramInt1;
       AppMethodBeat.o(3544);
       return localException;
       paramInt1 = 0;
@@ -67,7 +67,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.scanlib.a.d
  * JD-Core Version:    0.7.0.1
  */

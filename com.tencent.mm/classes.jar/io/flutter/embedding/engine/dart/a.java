@@ -13,18 +13,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 final class a
   implements b, c
 {
-  private final FlutterJNI MZl;
-  private final Map<String, c.a> Naf;
-  private final Map<Integer, c.b> Nag;
-  private int Nah;
+  private final FlutterJNI SNV;
+  private final Map<String, c.a> SOQ;
+  private final Map<Integer, c.b> SOR;
+  private int SOS;
   
   a(FlutterJNI paramFlutterJNI)
   {
     AppMethodBeat.i(10206);
-    this.Nah = 1;
-    this.MZl = paramFlutterJNI;
-    this.Naf = new HashMap();
-    this.Nag = new HashMap();
+    this.SOS = 1;
+    this.SNV = paramFlutterJNI;
+    this.SOQ = new HashMap();
+    this.SOR = new HashMap();
     AppMethodBeat.o(10206);
   }
   
@@ -34,14 +34,14 @@ final class a
     if (parama == null)
     {
       new StringBuilder("Removing handler for channel '").append(paramString).append("'");
-      io.flutter.a.giD();
-      this.Naf.remove(paramString);
+      io.flutter.a.hwd();
+      this.SOQ.remove(paramString);
       AppMethodBeat.o(10207);
       return;
     }
     new StringBuilder("Setting handler for channel '").append(paramString).append("'");
-    io.flutter.a.giD();
-    this.Naf.put(paramString, parama);
+    io.flutter.a.hwd();
+    this.SOQ.put(paramString, parama);
     AppMethodBeat.o(10207);
   }
   
@@ -49,7 +49,7 @@ final class a
   {
     AppMethodBeat.i(10208);
     new StringBuilder("Sending message over channel '").append(paramString).append("'");
-    io.flutter.a.giD();
+    io.flutter.a.hwd();
     a(paramString, paramByteBuffer, null);
     AppMethodBeat.o(10208);
   }
@@ -58,21 +58,21 @@ final class a
   {
     AppMethodBeat.i(10209);
     new StringBuilder("Sending message with callback over channel '").append(paramString).append("'");
-    io.flutter.a.giD();
+    io.flutter.a.hwd();
     int i = 0;
     if (paramb != null)
     {
-      i = this.Nah;
-      this.Nah = (i + 1);
-      this.Nag.put(Integer.valueOf(i), paramb);
+      i = this.SOS;
+      this.SOS = (i + 1);
+      this.SOR.put(Integer.valueOf(i), paramb);
     }
     if (paramByteBuffer == null)
     {
-      this.MZl.dispatchEmptyPlatformMessage(paramString, i);
+      this.SNV.dispatchEmptyPlatformMessage(paramString, i);
       AppMethodBeat.o(10209);
       return;
     }
-    this.MZl.dispatchPlatformMessage(paramString, paramByteBuffer, paramByteBuffer.position(), i);
+    this.SNV.dispatchPlatformMessage(paramString, paramByteBuffer, paramByteBuffer.position(), i);
     AppMethodBeat.o(10209);
   }
   
@@ -80,42 +80,42 @@ final class a
   {
     AppMethodBeat.i(10210);
     new StringBuilder("Received message from Dart over channel '").append(paramString).append("'");
-    io.flutter.a.giD();
-    c.a locala = (c.a)this.Naf.get(paramString);
+    io.flutter.a.hwd();
+    c.a locala = (c.a)this.SOQ.get(paramString);
     if (locala != null) {
       try
       {
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         if (paramArrayOfByte == null) {}
         for (paramString = null;; paramString = ByteBuffer.wrap(paramArrayOfByte))
         {
-          locala.a(paramString, new a(this.MZl, paramInt));
+          locala.a(paramString, new a(this.SNV, paramInt));
           AppMethodBeat.o(10210);
           return;
         }
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
       }
       catch (Exception paramString)
       {
-        io.flutter.a.giI();
-        this.MZl.invokePlatformMessageEmptyResponseCallback(paramInt);
+        io.flutter.a.hwh();
+        this.SNV.invokePlatformMessageEmptyResponseCallback(paramInt);
         AppMethodBeat.o(10210);
         return;
       }
     }
-    this.MZl.invokePlatformMessageEmptyResponseCallback(paramInt);
+    this.SNV.invokePlatformMessageEmptyResponseCallback(paramInt);
     AppMethodBeat.o(10210);
   }
   
   public final void handlePlatformMessageResponse(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(10211);
-    io.flutter.a.giD();
-    c.b localb = (c.b)this.Nag.remove(Integer.valueOf(paramInt));
+    io.flutter.a.hwd();
+    c.b localb = (c.b)this.SOR.remove(Integer.valueOf(paramInt));
     if (localb != null) {
       try
       {
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         if (paramArrayOfByte == null) {}
         for (paramArrayOfByte = null;; paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte))
         {
@@ -127,7 +127,7 @@ final class a
       }
       catch (Exception paramArrayOfByte)
       {
-        io.flutter.a.giI();
+        io.flutter.a.hwh();
       }
     }
   }
@@ -135,23 +135,23 @@ final class a
   static final class a
     implements c.b
   {
-    private final FlutterJNI MZl;
-    private final int Nai;
-    private final AtomicBoolean Naj;
+    private final FlutterJNI SNV;
+    private final int SOT;
+    private final AtomicBoolean SOU;
     
     a(FlutterJNI paramFlutterJNI, int paramInt)
     {
       AppMethodBeat.i(10215);
-      this.Naj = new AtomicBoolean(false);
-      this.MZl = paramFlutterJNI;
-      this.Nai = paramInt;
+      this.SOU = new AtomicBoolean(false);
+      this.SNV = paramFlutterJNI;
+      this.SOT = paramInt;
       AppMethodBeat.o(10215);
     }
     
     public final void I(ByteBuffer paramByteBuffer)
     {
       AppMethodBeat.i(10216);
-      if (this.Naj.getAndSet(true))
+      if (this.SOU.getAndSet(true))
       {
         paramByteBuffer = new IllegalStateException("Reply already submitted");
         AppMethodBeat.o(10216);
@@ -159,18 +159,18 @@ final class a
       }
       if (paramByteBuffer == null)
       {
-        this.MZl.invokePlatformMessageEmptyResponseCallback(this.Nai);
+        this.SNV.invokePlatformMessageEmptyResponseCallback(this.SOT);
         AppMethodBeat.o(10216);
         return;
       }
-      this.MZl.invokePlatformMessageResponseCallback(this.Nai, paramByteBuffer, paramByteBuffer.position());
+      this.SNV.invokePlatformMessageResponseCallback(this.SOT, paramByteBuffer, paramByteBuffer.position());
       AppMethodBeat.o(10216);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.a
  * JD-Core Version:    0.7.0.1
  */

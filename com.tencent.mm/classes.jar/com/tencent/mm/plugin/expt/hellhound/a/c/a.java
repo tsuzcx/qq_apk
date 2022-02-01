@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.expt.hellhound.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.auh;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bfq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static void Dv(int paramInt)
+  public static void Hi(int paramInt)
   {
     AppMethodBeat.i(122027);
-    auh localauh2 = cqO();
-    auh localauh1 = localauh2;
-    if (localauh2 == null) {
-      localauh1 = new auh();
+    bfq localbfq2 = cPw();
+    bfq localbfq1 = localbfq2;
+    if (localbfq2 == null) {
+      localbfq1 = new bfq();
     }
-    localauh1.GLd = paramInt;
-    a(localauh1);
+    localbfq1.LPh = paramInt;
+    a(localbfq1);
     AppMethodBeat.o(122027);
   }
   
-  static void a(auh paramauh)
+  static void a(bfq parambfq)
   {
     AppMethodBeat.i(122028);
     try
     {
-      b.p("hell_fntbck_pter_mmkv_key", paramauh.toByteArray());
+      b.o("hell_fntbck_pter_mmkv_key", parambfq.toByteArray());
       AppMethodBeat.o(122028);
       return;
     }
-    catch (Exception paramauh)
+    catch (Exception parambfq)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.FrontBackDao", paramauh, "writeBackFrontBack", new Object[0]);
+      Log.printErrStackTrace("HABBYGE-MALI.FrontBackDao", parambfq, "writeBackFrontBack", new Object[0]);
       AppMethodBeat.o(122028);
     }
   }
   
-  public static auh cqO()
+  public static bfq cPw()
   {
     AppMethodBeat.i(122029);
     byte[] arrayOfByte = b.getBytes("hell_fntbck_pter_mmkv_key");
@@ -45,34 +45,34 @@ public final class a
       AppMethodBeat.o(122029);
       return null;
     }
-    auh localauh = new auh();
+    bfq localbfq = new bfq();
     try
     {
-      localauh.parseFrom(arrayOfByte);
+      localbfq.parseFrom(arrayOfByte);
       AppMethodBeat.o(122029);
-      return localauh;
+      return localbfq;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FrontBackDao", localException, "_doReadFrontBack parse", new Object[0]);
+        Log.printErrStackTrace("HABBYGE-MALI.FrontBackDao", localException, "_doReadFrontBack parse", new Object[0]);
         Object localObject = null;
       }
     }
   }
   
-  public static void la(boolean paramBoolean)
+  public static void mi(boolean paramBoolean)
   {
     AppMethodBeat.i(122026);
-    auh localauh2 = cqO();
-    auh localauh1 = localauh2;
-    if (localauh2 == null) {
-      localauh1 = new auh();
+    bfq localbfq2 = cPw();
+    bfq localbfq1 = localbfq2;
+    if (localbfq2 == null) {
+      localbfq1 = new bfq();
     }
-    localauh1.GLh = paramBoolean;
-    ae.d("HABBYGE-MALI.FrontBackDao", "logout8EventFromAdd: %b", new Object[] { Boolean.valueOf(localauh1.GLh) });
-    a(localauh1);
+    localbfq1.LPl = paramBoolean;
+    Log.d("HABBYGE-MALI.FrontBackDao", "logout8EventFromAdd: %b", new Object[] { Boolean.valueOf(localbfq1.LPl) });
+    a(localbfq1);
     AppMethodBeat.o(122026);
   }
 }

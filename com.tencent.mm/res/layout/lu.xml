@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@drawable/pc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="25.0dip" android:layerType="software" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/rk" android:gravity="center" android:id="@id/afy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/rk" android:gravity="center" android:layout_gravity="center" android:id="@id/afz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:drawableRight="@drawable/bd8" android:drawablePadding="@dimen/d" />
-    <TextView android:textSize="@dimen/gx" android:textColor="#ffadadad" android:gravity="center" android:id="@id/afv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
-</LinearLayout>
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jm5" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/cb" android:src="@raw/icons_outlined_back" android:layout_centerVertical="true" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/fr" android:gravity="center" android:id="@id/ahr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2b" android:singleLine="false" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/ce" android:layout_toRightOf="@id/ahr" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <LinearLayout android:gravity="center|right" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/h6x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/cq">
+            <ImageView android:gravity="center_vertical" android:id="@id/jmi" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/wecoin_balance_icons" android:layout_centerVertical="true" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/fr" android:gravity="center|right" android:id="@id/gv8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.5dip" android:text=" " android:layout_toRightOf="@id/jmg" android:layout_centerVertical="true" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

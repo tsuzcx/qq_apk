@@ -1,13 +1,13 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface i
-  extends ad
+  extends af
 {
-  public abstract boolean fHq();
+  public abstract boolean gPw();
   
-  public abstract void fHr();
+  public abstract void gPx();
 }
 
 

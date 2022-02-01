@@ -1,23 +1,17 @@
 package android.support.transition;
 
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
+import android.view.View;
 
-final class aa
+abstract interface aa
+  extends ag
 {
-  static void c(ViewGroup paramViewGroup, boolean paramBoolean)
-  {
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      ac.c(paramViewGroup, paramBoolean);
-      return;
-    }
-    ab.c(paramViewGroup, paramBoolean);
-  }
+  public abstract void add(View paramView);
+  
+  public abstract void remove(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.aa
  * JD-Core Version:    0.7.0.1
  */

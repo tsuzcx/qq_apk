@@ -5,36 +5,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  public long hmW = 0L;
+  public long igp = 0L;
   public String query = "";
-  public int tEX = 0;
-  public String tEY = "";
-  public long tGd = 0L;
-  public long tGe = 0L;
-  public long tGf = 0L;
-  public String tGg = "";
   public long timestamp = 0L;
   public int type = 0;
+  public int wVW = 0;
+  public String wVX = "";
+  public long wXc = 0L;
+  public long wXd = 0L;
+  public long wXe = 0L;
+  public String wXf = "";
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(131710);
-    this.tGd = paramCursor.getLong(0);
+    this.wXc = paramCursor.getLong(0);
     this.query = paramCursor.getString(1);
-    this.tGe = paramCursor.getLong(2);
-    this.hmW = paramCursor.getLong(3);
-    this.tEY = paramCursor.getString(4);
-    this.tGf = paramCursor.getLong(5);
+    this.wXd = paramCursor.getLong(2);
+    this.igp = paramCursor.getLong(3);
+    this.wVX = paramCursor.getString(4);
+    this.wXe = paramCursor.getLong(5);
     this.type = paramCursor.getInt(6);
-    this.tEX = paramCursor.getInt(7);
+    this.wVW = paramCursor.getInt(7);
     this.timestamp = paramCursor.getLong(8);
-    this.tGg = paramCursor.getString(9);
+    this.wXf = paramCursor.getString(9);
     AppMethodBeat.o(131710);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.l
  * JD-Core Version:    0.7.0.1
  */

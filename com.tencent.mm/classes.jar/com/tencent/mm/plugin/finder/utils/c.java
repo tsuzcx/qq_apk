@@ -1,113 +1,149 @@
 package com.tencent.mm.plugin.finder.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.ac.b;
+import com.tencent.mm.ac.b.a;
+import com.tencent.mm.ac.f;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker;", "", "()V", "TAG", "", "configs", "", "Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker$CheckerConfig;", "getConfigs", "()Ljava/util/List;", "uploadBigFileConfig", "getUploadBigFileConfig", "()Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker$CheckerConfig;", "checkAll", "", "clean", "config", "mark", "CheckerConfig", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderAssertCat;", "Lcom/tencent/mm/kt/IAssert;", "()V", "assertEquals", "", "key", "", "expected", "", "actual", "isReport", "", "isThrow", "message", "Lkotlin/Function0;", "assertFalse", "condition", "assertNotNull", "assertNotSame", "assertNull", "assertSame", "assertTrue", "plugin-finder_release"})
 public final class c
+  implements f
 {
-  private static final String TAG = "Finder.FinderCrashChecker";
-  private static final a sWe;
-  private static final List<a> sWf;
-  public static final c sWg;
+  public static final c vVc;
   
   static
   {
-    AppMethodBeat.i(205087);
-    sWg = new c();
-    TAG = "Finder.FinderCrashChecker";
-    a locala = new a("Finder_UploadBigFileConfig");
-    sWe = locala;
-    sWf = j.listOf(locala);
-    AppMethodBeat.o(205087);
+    AppMethodBeat.i(253356);
+    vVc = new c();
+    AppMethodBeat.o(253356);
   }
   
-  public static void a(a parama)
+  private c()
   {
-    AppMethodBeat.i(205084);
-    p.h(parama, "config");
-    ay localay = ay.fpb();
-    p.g(localay, "mmkv");
-    p.h(localay, "mmkv");
-    localay.putLong(parama.sWh, System.currentTimeMillis());
-    localay.commit();
-    ae.i(TAG, "mark " + parama.sWh);
-    AppMethodBeat.o(205084);
-  }
-  
-  public static void b(a parama)
-  {
-    AppMethodBeat.i(205085);
-    p.h(parama, "config");
-    ay localay = ay.fpb();
-    p.g(localay, "mmkv");
-    parama.a(localay);
-    AppMethodBeat.o(205085);
-  }
-  
-  public static a cNE()
-  {
-    return sWe;
-  }
-  
-  public static void cNF()
-  {
-    AppMethodBeat.i(205086);
-    ay localay = ay.fpb();
-    Iterator localIterator = ((Iterable)sWf).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(253355);
+    b.a locala = (b.a)new b.a()
     {
-      a locala = (a)localIterator.next();
-      p.g(localay, "mmkv");
-      p.h(localay, "mmkv");
-      if (localay.getLong(locala.sWh, 0L) != 0L)
+      public final int getId(String paramAnonymousString)
       {
-        locala.a(localay);
-        g.yxI.n(locala.id, locala.key, 1L);
-        ae.i(TAG, "check " + locala.sWh + ", hit!");
+        AppMethodBeat.i(253354);
+        p.h(paramAnonymousString, "key");
+        switch (paramAnonymousString.hashCode())
+        {
+        }
+        while (BuildInfo.DEBUG)
+        {
+          paramAnonymousString = (Throwable)new RuntimeException("this key[" + paramAnonymousString + "] never define.");
+          AppMethodBeat.o(253354);
+          throw paramAnonymousString;
+          if (paramAnonymousString.equals("layoutIdError"))
+          {
+            AppMethodBeat.o(253354);
+            return 3;
+            if (paramAnonymousString.equals("liveInitContentViewError"))
+            {
+              AppMethodBeat.o(253354);
+              return 13;
+              if (paramAnonymousString.equals("opt_moov_fail"))
+              {
+                AppMethodBeat.o(253354);
+                return 1;
+                if (paramAnonymousString.equals("liveInvalidBadgeTag"))
+                {
+                  AppMethodBeat.o(253354);
+                  return 9;
+                  if (paramAnonymousString.equals("finderStreamReturnInvalidFeed"))
+                  {
+                    AppMethodBeat.o(253354);
+                    return 15;
+                    if (paramAnonymousString.equals("cgiReportNormal"))
+                    {
+                      AppMethodBeat.o(253354);
+                      return 12;
+                      if (paramAnonymousString.equals("NetSceneFinderFollow_fromCommentScene_0"))
+                      {
+                        AppMethodBeat.o(253354);
+                        return 2;
+                        if (paramAnonymousString.equals("liveVisitorUIParamsInvalid"))
+                        {
+                          AppMethodBeat.o(253354);
+                          return 6;
+                          if (paramAnonymousString.equals("cgiReportError"))
+                          {
+                            AppMethodBeat.o(253354);
+                            return 11;
+                            if (paramAnonymousString.equals("liveInvalidBadgeInfoColor"))
+                            {
+                              AppMethodBeat.o(253354);
+                              return 8;
+                              if (paramAnonymousString.equals("liveCheckCommentMsgErr"))
+                              {
+                                AppMethodBeat.o(253354);
+                                return 10;
+                                if (paramAnonymousString.equals("liveHeartBeatLocalErr"))
+                                {
+                                  AppMethodBeat.o(253354);
+                                  return 5;
+                                  if (paramAnonymousString.equals("liveHeartBeatSvrErr"))
+                                  {
+                                    AppMethodBeat.o(253354);
+                                    return 4;
+                                    if (paramAnonymousString.equals("iconPreferenceError"))
+                                    {
+                                      AppMethodBeat.o(253354);
+                                      return 15;
+                                      if (paramAnonymousString.equals("optimizeMP4VFS_fail"))
+                                      {
+                                        AppMethodBeat.o(253354);
+                                        return 7;
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        AppMethodBeat.o(253354);
+        return 0;
       }
-    }
-    AppMethodBeat.o(205086);
+    };
+    this.vVd = new b(new Long[] { Long.valueOf(1535L), Long.valueOf(1536L) }, "FinderAssertCat", locala);
+    AppMethodBeat.o(253355);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker$CheckerConfig;", "", "id", "", "key", "mmkvKey", "", "(JJLjava/lang/String;)V", "getId", "()J", "getKey", "getMmkvKey", "()Ljava/lang/String;", "check", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "clean", "mark", "plugin-finder_release"})
-  public static final class a
+  public final void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, a<String> parama)
   {
-    final long id;
-    final long key;
-    final String sWh;
-    
-    public a(String paramString)
-    {
-      AppMethodBeat.i(205083);
-      this.id = 1253L;
-      this.key = 37L;
-      this.sWh = paramString;
-      AppMethodBeat.o(205083);
-    }
-    
-    public final void a(ay paramay)
-    {
-      AppMethodBeat.i(205082);
-      p.h(paramay, "mmkv");
-      paramay.putLong(this.sWh, 0L);
-      paramay.commit();
-      paramay = c.sWg;
-      ae.i(c.cNG(), "clean " + this.sWh);
-      AppMethodBeat.o(205082);
-    }
+    AppMethodBeat.i(253358);
+    p.h(paramString, "key");
+    p.h(parama, "message");
+    this.vVd.a(paramString, paramBoolean1, paramBoolean2, paramBoolean3, parama);
+    AppMethodBeat.o(253358);
+  }
+  
+  public final void b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, a<String> parama)
+  {
+    AppMethodBeat.i(253357);
+    p.h(paramString, "key");
+    p.h(parama, "message");
+    this.vVd.b(paramString, paramBoolean1, paramBoolean2, paramBoolean3, parama);
+    AppMethodBeat.o(253357);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.c
  * JD-Core Version:    0.7.0.1
  */

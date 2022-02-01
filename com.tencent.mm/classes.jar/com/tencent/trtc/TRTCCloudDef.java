@@ -16,9 +16,13 @@ public class TRTCCloudDef
   public static final int TRTC_APP_SCENE_VIDEOCALL = 0;
   public static final int TRTC_APP_SCENE_VOICE_CHATROOM = 3;
   public static final int TRTC_AUDIO_FRAME_FORMAT_PCM = 1;
+  public static final int TRTC_AUDIO_QUALITY_DEFAULT = 2;
+  public static final int TRTC_AUDIO_QUALITY_MUSIC = 3;
+  public static final int TRTC_AUDIO_QUALITY_SPEECH = 1;
   public static final int TRTC_AUDIO_ROUTE_EARPIECE = 1;
   public static final int TRTC_AUDIO_ROUTE_SPEAKER = 0;
   public static final int TRTC_BEAUTY_STYLE_NATURE = 1;
+  public static final int TRTC_BEAUTY_STYLE_PITU = 2;
   public static final int TRTC_BEAUTY_STYLE_SMOOTH = 0;
   public static final int TRTC_DEBUG_VIEW_LEVEL_ALL = 2;
   public static final int TRTC_DEBUG_VIEW_LEVEL_GONE = 0;
@@ -75,6 +79,7 @@ public class TRTCCloudDef
   public static final int TRTC_VIDEO_RESOLUTION_160_120 = 50;
   public static final int TRTC_VIDEO_RESOLUTION_160_160 = 3;
   public static final int TRTC_VIDEO_RESOLUTION_160_90 = 100;
+  public static final int TRTC_VIDEO_RESOLUTION_1920_1080 = 114;
   public static final int TRTC_VIDEO_RESOLUTION_240_180 = 52;
   public static final int TRTC_VIDEO_RESOLUTION_256_144 = 102;
   public static final int TRTC_VIDEO_RESOLUTION_270_270 = 5;

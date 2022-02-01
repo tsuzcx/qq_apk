@@ -7,14 +7,16 @@ import android.text.style.MetricAffectingSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class SnsTextView
   extends TextView
 {
-  private char AAO = '\000';
-  private String vpE = "";
+  private char EKj = '\000';
+  private String yJu = "";
   
   public SnsTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,7 +34,7 @@ public class SnsTextView
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(99220);
     }
     return -1;
@@ -49,7 +51,7 @@ public class SnsTextView
     }
     catch (Throwable paramCanvas)
     {
-      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(99219);
     }
   }
@@ -64,17 +66,17 @@ public class SnsTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(99218);
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geX.gbA == 1) || (com.tencent.mm.compatible.deviceinfo.ae.geX.gbA == -1)) {
+    if ((ae.gKE.gGS == 1) || (ae.gKE.gGS == -1)) {
       try
       {
         super.onMeasure(paramInt1, paramInt2);
-        this.AAO = '\000';
+        this.EKj = '\000';
         AppMethodBeat.o(99218);
         return;
       }
       catch (IndexOutOfBoundsException localIndexOutOfBoundsException1)
       {
-        if (this.AAO < '\003')
+        if (this.EKj < '\003')
         {
           try
           {
@@ -83,33 +85,33 @@ public class SnsTextView
             if ((arrayOfMetricAffectingSpan != null) && (arrayOfMetricAffectingSpan.length > 0)) {
               localSpannableStringBuilder.insert(localSpannableStringBuilder.getSpanStart(arrayOfMetricAffectingSpan[0]) - 1, " ");
             }
-            for (this.AAO = ((char)(this.AAO + '\001'));; this.AAO = 'd')
+            for (this.EKj = ((char)(this.EKj + '\001'));; this.EKj = 'd')
             {
               setText(localSpannableStringBuilder);
               onMeasure(paramInt1, paramInt2);
               AppMethodBeat.o(99218);
               return;
             }
-            if (this.AAO != '\003') {
+            if (this.EKj != '\003') {
               break label269;
             }
           }
           catch (IndexOutOfBoundsException localIndexOutOfBoundsException2)
           {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + bu.isNullOrNil(this.vpE));
-            setText(this.vpE);
+            Log.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + Util.isNullOrNil(this.yJu));
+            setText(this.yJu);
             onMeasure(paramInt1, paramInt2);
-            this.AAO = ((char)(this.AAO + '\001'));
+            this.EKj = ((char)(this.EKj + '\001'));
             AppMethodBeat.o(99218);
             return;
           }
         }
         else
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsTextView", "fix error set origintext " + bu.isNullOrNil(this.vpE));
-          setText(this.vpE);
+          Log.i("MicroMsg.SnsTextView", "fix error set origintext " + Util.isNullOrNil(this.yJu));
+          setText(this.yJu);
           onMeasure(paramInt1, paramInt2);
-          this.AAO = ((char)(this.AAO + '\001'));
+          this.EKj = ((char)(this.EKj + '\001'));
           AppMethodBeat.o(99218);
           return;
         }
@@ -148,12 +150,12 @@ public class SnsTextView
   
   public void setOriginText(String paramString)
   {
-    this.vpE = paramString;
+    this.yJu = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTextView
  * JD-Core Version:    0.7.0.1
  */

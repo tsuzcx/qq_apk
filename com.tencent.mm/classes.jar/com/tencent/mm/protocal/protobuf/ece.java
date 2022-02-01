@@ -5,56 +5,89 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class ece
   extends com.tencent.mm.bw.a
 {
-  public String IhB;
+  public String Nco;
+  public boolean Ncp;
+  public boolean Ncq;
+  public String appName;
+  public int cmD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32509);
+    AppMethodBeat.i(116816);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.IhB != null) {
-        paramVarArgs.d(1, this.IhB);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Nco != null) {
+        paramVarArgs.e(1, this.Nco);
       }
-      AppMethodBeat.o(32509);
+      if (this.appName != null) {
+        paramVarArgs.e(2, this.appName);
+      }
+      paramVarArgs.aM(3, this.cmD);
+      paramVarArgs.cc(4, this.Ncp);
+      paramVarArgs.cc(5, this.Ncq);
+      AppMethodBeat.o(116816);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.IhB == null) {
-        break label220;
+      if (this.Nco == null) {
+        break label406;
       }
     }
-    label220:
-    for (paramInt = f.a.a.b.b.a.e(1, this.IhB) + 0;; paramInt = 0)
+    label406:
+    for (paramInt = g.a.a.b.b.a.f(1, this.Nco) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(32509);
-      return paramInt;
+      int i = paramInt;
+      if (this.appName != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.appName);
+      }
+      paramInt = g.a.a.b.b.a.bu(3, this.cmD);
+      int j = g.a.a.b.b.a.fS(4);
+      int k = g.a.a.b.b.a.fS(5);
+      AppMethodBeat.o(116816);
+      return i + paramInt + (j + 1) + (k + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(32509);
+        AppMethodBeat.o(116816);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         ece localece = (ece)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32509);
+          AppMethodBeat.o(116816);
           return -1;
+        case 1: 
+          localece.Nco = locala.UbS.readString();
+          AppMethodBeat.o(116816);
+          return 0;
+        case 2: 
+          localece.appName = locala.UbS.readString();
+          AppMethodBeat.o(116816);
+          return 0;
+        case 3: 
+          localece.cmD = locala.UbS.zi();
+          AppMethodBeat.o(116816);
+          return 0;
+        case 4: 
+          localece.Ncp = locala.UbS.yZ();
+          AppMethodBeat.o(116816);
+          return 0;
         }
-        localece.IhB = locala.OmT.readString();
-        AppMethodBeat.o(32509);
+        localece.Ncq = locala.UbS.yZ();
+        AppMethodBeat.o(116816);
         return 0;
       }
-      AppMethodBeat.o(32509);
+      AppMethodBeat.o(116816);
       return -1;
     }
   }

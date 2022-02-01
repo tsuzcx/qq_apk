@@ -11,15 +11,15 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.b;
 public final class i
   extends ArrowKeyMovementMethod
 {
-  private static i ETi;
+  private static i JIW;
   
-  public static i faV()
+  public static i gka()
   {
     AppMethodBeat.i(30637);
-    if (ETi == null) {
-      ETi = new i();
+    if (JIW == null) {
+      JIW = new i();
     }
-    i locali = ETi;
+    i locali = JIW;
     AppMethodBeat.o(30637);
     return locali;
   }
@@ -39,7 +39,7 @@ public final class i
       Object localObject = paramTextView.getLayout();
       j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(n + (j - k)), m);
       localObject = (k[])paramSpannable.getSpans(j, j + 1, k.class);
-      if ((m < b.cfO()) && (localObject.length != 0))
+      if ((m < b.cDE()) && (localObject.length != 0))
       {
         if (i == 0) {
           localObject[0].a(paramTextView, paramSpannable, paramMotionEvent, localObject[0]);
@@ -54,7 +54,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.i
  * JD-Core Version:    0.7.0.1
  */

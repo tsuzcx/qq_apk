@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.appbrand.config.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsUtils;", "", "()V", "TAG", "", "collectBatchSyncVersionReqList", "", "Lcom/tencent/mm/protocal/protobuf/SyncVersionSingleReqInfo;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsUtils;", "", "()V", "TAG", "", "collectBatchSyncVersionReqList", "", "Lcom/tencent/mm/protocal/protobuf/SyncVersionSingleReqInfo;", "plugin-appbrand-integration_release"})
 public final class c
 {
-  public static final c kdO;
+  public static final c lhu;
   
   static
   {
-    AppMethodBeat.i(223284);
-    kdO = new c();
-    AppMethodBeat.o(223284);
+    AppMethodBeat.i(228186);
+    lhu = new c();
+    AppMethodBeat.o(228186);
   }
   
   /* Error */
-  public static final java.util.List<com.tencent.mm.protocal.protobuf.dmi> bfc()
+  public static final java.util.List<com.tencent.mm.protocal.protobuf.efw> bwS()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
     //   3: ldc 43
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 49	com/tencent/mm/plugin/appbrand/app/j:aZh	()Lcom/tencent/mm/platformtools/r$a;
+    //   8: invokestatic 49	com/tencent/mm/plugin/appbrand/app/n:buy	()Lcom/tencent/mm/platformtools/r$a;
     //   11: astore 6
     //   13: aload 6
     //   15: ifnonnull +17 -> 32
-    //   18: getstatic 55	d/a/v:NhH	Ld/a/v;
+    //   18: getstatic 55	kotlin/a/v:SXr	Lkotlin/a/v;
     //   21: checkcast 57	java/util/List
     //   24: astore_3
     //   25: ldc 43
     //   27: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aload_3
     //   31: areturn
-    //   32: invokestatic 63	com/tencent/mm/sdk/platformtools/bu:aRi	()J
+    //   32: invokestatic 63	com/tencent/mm/sdk/platformtools/Util:nowSecond	()J
     //   35: getstatic 69	java/util/concurrent/TimeUnit:DAYS	Ljava/util/concurrent/TimeUnit;
     //   38: ldc2_w 70
     //   41: invokevirtual 75	java/util/concurrent/TimeUnit:toSeconds	(J)J
@@ -52,7 +52,7 @@ public final class c
     //   66: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   69: aconst_null
     //   70: iconst_2
-    //   71: invokevirtual 99	com/tencent/mm/platformtools/r$a:a	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   71: invokevirtual 99	com/tencent/mm/platformtools/r$a:rawQuery	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   74: astore_3
     //   75: aload_3
     //   76: ifnull +44 -> 120
@@ -65,83 +65,83 @@ public final class c
     //   91: aload_3
     //   92: invokeinterface 107 1 0
     //   97: ifeq +90 -> 187
-    //   100: getstatic 55	d/a/v:NhH	Ld/a/v;
+    //   100: getstatic 55	kotlin/a/v:SXr	Lkotlin/a/v;
     //   103: checkcast 57	java/util/List
     //   106: astore_3
     //   107: aload 5
     //   109: aconst_null
-    //   110: invokestatic 112	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   110: invokestatic 113	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   113: aload_3
     //   114: astore 4
     //   116: aload_3
     //   117: ifnonnull +11 -> 128
-    //   120: getstatic 55	d/a/v:NhH	Ld/a/v;
+    //   120: getstatic 55	kotlin/a/v:SXr	Lkotlin/a/v;
     //   123: checkcast 57	java/util/List
     //   126: astore 4
     //   128: aload 6
-    //   130: ldc 114
-    //   132: ldc 116
+    //   130: ldc 115
+    //   132: ldc 117
     //   134: iconst_1
-    //   135: anewarray 118	java/lang/String
+    //   135: anewarray 119	java/lang/String
     //   138: dup
     //   139: iconst_0
     //   140: lload_1
-    //   141: invokestatic 122	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   141: invokestatic 123	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   144: aastore
-    //   145: invokevirtual 126	com/tencent/mm/platformtools/r$a:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   145: invokevirtual 127	com/tencent/mm/platformtools/r$a:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   148: istore_0
-    //   149: ldc 128
+    //   149: ldc 129
     //   151: new 77	java/lang/StringBuilder
     //   154: dup
-    //   155: ldc 130
+    //   155: ldc 131
     //   157: invokespecial 82	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   160: lload_1
     //   161: invokevirtual 86	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   164: ldc 132
-    //   166: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: ldc 133
+    //   166: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: iload_0
-    //   170: invokevirtual 138	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 139	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   173: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   176: invokestatic 143	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   176: invokestatic 144	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   179: ldc 43
     //   181: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   184: aload 4
     //   186: areturn
-    //   187: new 145	java/util/LinkedList
+    //   187: new 146	java/util/LinkedList
     //   190: dup
-    //   191: invokespecial 146	java/util/LinkedList:<init>	()V
+    //   191: invokespecial 147	java/util/LinkedList:<init>	()V
     //   194: astore 7
     //   196: aload_3
-    //   197: invokeinterface 149 1 0
+    //   197: invokeinterface 150 1 0
     //   202: ifeq +70 -> 272
-    //   205: new 151	com/tencent/mm/protocal/protobuf/dmi
+    //   205: new 152	com/tencent/mm/protocal/protobuf/efw
     //   208: dup
-    //   209: invokespecial 152	com/tencent/mm/protocal/protobuf/dmi:<init>	()V
+    //   209: invokespecial 153	com/tencent/mm/protocal/protobuf/efw:<init>	()V
     //   212: astore 8
     //   214: aload 8
     //   216: aload_3
     //   217: iconst_0
-    //   218: invokeinterface 156 2 0
-    //   223: putfield 160	com/tencent/mm/protocal/protobuf/dmi:Hhh	Ljava/lang/String;
+    //   218: invokeinterface 157 2 0
+    //   223: putfield 161	com/tencent/mm/protocal/protobuf/efw:Mmv	Ljava/lang/String;
     //   226: aload_3
     //   227: iconst_1
-    //   228: invokeinterface 156 2 0
-    //   233: invokestatic 166	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:Oy	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
+    //   228: invokeinterface 157 2 0
+    //   233: invokestatic 167	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:XJ	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
     //   236: astore 9
     //   238: aload 9
     //   240: ifnull +41 -> 281
     //   243: aload 9
-    //   245: getfield 170	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:aDD	I
+    //   245: getfield 171	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:appVersion	I
     //   248: istore_0
     //   249: aload 8
     //   251: iload_0
-    //   252: putfield 173	com/tencent/mm/protocal/protobuf/dmi:HTI	I
+    //   252: putfield 174	com/tencent/mm/protocal/protobuf/efw:NfQ	I
     //   255: aload 7
     //   257: aload 8
-    //   259: invokevirtual 177	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   259: invokevirtual 178	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   262: pop
     //   263: aload_3
-    //   264: invokeinterface 180 1 0
+    //   264: invokeinterface 181 1 0
     //   269: ifne -64 -> 205
     //   272: aload 7
     //   274: checkcast 57	java/util/List
@@ -158,7 +158,7 @@ public final class c
     //   296: astore_3
     //   297: aload 5
     //   299: aload 4
-    //   301: invokestatic 112	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   301: invokestatic 113	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   304: ldc 43
     //   306: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   309: aload_3
@@ -177,7 +177,7 @@ public final class c
     //   83	215	5	localCloseable	java.io.Closeable
     //   11	118	6	locala	com.tencent.mm.platformtools.r.a
     //   194	79	7	localLinkedList	java.util.LinkedList
-    //   212	46	8	localdmi	com.tencent.mm.protocal.protobuf.dmi
+    //   212	46	8	localefw	com.tencent.mm.protocal.protobuf.efw
     //   236	8	9	localWxaVersionInfo	com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo
     // Exception table:
     //   from	to	target	type
@@ -198,7 +198,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.a.c
  * JD-Core Version:    0.7.0.1
  */

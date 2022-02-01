@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import java.util.List;
@@ -20,26 +20,26 @@ final class WelabAppInfoUI$5
   {
     AppMethodBeat.i(146274);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
     localObject = paramView.getTag().toString();
     paramView = new Intent();
     paramView.putExtra("nowUrl", (String)localObject);
-    paramView.putExtra("urlList", (String[])((WelabAppInfoUI.a)WelabAppInfoUI.e(this.EQC).getAdapter()).pkh.toArray(new String[0]));
-    localObject = this.EQC;
+    paramView.putExtra("urlList", (String[])((WelabAppInfoUI.a)WelabAppInfoUI.e(this.JGp).getAdapter()).qzs.toArray(new String[0]));
+    localObject = this.JGp;
     Intent localIntent = new Intent();
     localIntent.putExtras(paramView.getExtras());
     if (paramView.getFlags() != 0) {
       localIntent.addFlags(paramView.getFlags());
     }
-    d.b((Context)localObject, "subapp", ".ui.gallery.GestureGalleryUI", localIntent);
+    c.b((Context)localObject, "subapp", ".ui.gallery.GestureGalleryUI", localIntent);
     a.a(this, "com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(146274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.WelabAppInfoUI.5
  * JD-Core Version:    0.7.0.1
  */

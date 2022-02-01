@@ -8,12 +8,12 @@ import com.tencent.stubs.logger.Log;
 public final class b$g
   extends b.b
 {
-  private f MlP;
+  private f ROm;
   private int rotation;
   
   public b$g(f paramf, int paramInt)
   {
-    this.MlP = paramf;
+    this.ROm = paramf;
     this.rotation = paramInt;
   }
   
@@ -22,11 +22,11 @@ public final class b$g
     AppMethodBeat.i(174584);
     try
     {
-      if (!this.MlP.isOpen())
+      if (!this.ROm.isOpen())
       {
         Log.i("CameraTask.DefaultOpenTask", "open camera");
-        this.MlP.ahq(this.rotation);
-        this.MlP.a(new Camera.PreviewCallback()
+        this.ROm.aqD(this.rotation);
+        this.ROm.a(new Camera.PreviewCallback()
         {
           public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera) {}
         });

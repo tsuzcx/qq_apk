@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a25" android:paddingTop="@dimen/hd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/x8" android:showDividers="middle"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:profile="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ay4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" profile:title="@string/b59" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/fir" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b_a" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/c8k" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bap" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/bdg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b5i" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/d2_" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/cz6" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/h3c" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b_j" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/cfm" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b_d" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/elh" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b_h" />
-    <View android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" />
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/u_" android:id="@id/e2l" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/u_" android:gravity="right" android:id="@id/e43" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
 </LinearLayout>

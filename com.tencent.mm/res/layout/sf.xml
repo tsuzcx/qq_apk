@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
-        <TextView android:id="@id/gzv" android:layout_width="125.0dip" style="@style/z3" />
-        <TextView android:id="@id/gzd" style="@style/z1" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:id="@id/gwo" style="@style/yy" />
-        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/gxf" android:src="@drawable/axy" style="@style/yz" />
+    <LinearLayout android:orientation="vertical" android:id="@id/auf" android:background="@drawable/o9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/hs" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip">
+            <ImageView android:focusable="false" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginRight="0.0dip" android:src="@drawable/c4_" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center_vertical" android:paddingLeft="@dimen/i2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fif" android:maxLines="1" android:singleLine="false" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fih" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:id="@id/g3e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="30.0dip" android:text="@string/fie" />
+            </LinearLayout>
+            <TextView android:background="@color/j8" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <RelativeLayout android:orientation="horizontal" android:id="@id/g3d" android:layout_width="fill_parent" android:layout_height="44.0dip">
+                <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/fig" android:singleLine="true" android:layout_alignParentLeft="true" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/arrow_right" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-</merge>
+</LinearLayout>

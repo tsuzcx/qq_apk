@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.scanner.box;
 
-import android.content.DialogInterface;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogEventListener;", "", "onCancel", "", "dialog", "Landroid/content/DialogInterface;", "onDismiss", "exitType", "", "onShow", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel;", "", "getVieHeight", "", "onZoomStateChanged", "", "zoomState", "release", "setOpListener", "listener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel$OpListener;", "OpListener", "ZoomState", "plugin-scan_release"})
 public abstract interface b
 {
-  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
+  public abstract void Ws(int paramInt);
   
-  public abstract void onCancel(DialogInterface paramDialogInterface);
+  public abstract int getVieHeight();
   
-  public abstract void onShow(DialogInterface paramDialogInterface);
+  public abstract void release();
+  
+  public abstract void setOpListener(b.a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.b
  * JD-Core Version:    0.7.0.1
  */

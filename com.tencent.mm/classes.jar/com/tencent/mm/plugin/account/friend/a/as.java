@@ -6,121 +6,134 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class as
 {
-  int dEu;
-  String hPK;
-  String hPL;
-  public int hPM;
-  public int hPN;
-  public long jhK;
-  public int jhL;
-  int jhM;
-  String jhN;
-  String jhO;
-  String jhP;
-  String jhQ;
-  String jhR;
-  public String jhS;
-  String jhT;
-  String jhU;
+  int cSx;
+  String iKR;
+  String iKS;
+  public int iKT;
+  public int iKU;
+  public long kfN;
+  public int kfO;
+  int kfP;
+  String kfQ;
+  String kfR;
+  String kfS;
+  String kfT;
+  String kfU;
+  public String kfV;
+  String kfW;
+  String kfX;
   public String nickname;
   public String username;
   
   public as()
   {
     AppMethodBeat.i(131159);
-    this.dEu = -1;
-    this.jhK = 0L;
-    this.jhL = 0;
-    this.jhM = 0;
+    this.cSx = -1;
+    this.kfN = 0L;
+    this.kfO = 0;
+    this.kfP = 0;
     this.username = "";
     this.nickname = "";
-    this.jhN = "";
-    this.jhO = "";
-    this.jhP = "";
-    this.jhQ = "";
-    this.jhR = "";
-    this.jhS = "";
-    this.jhT = "";
-    this.jhU = "";
-    this.hPK = "";
-    this.hPL = "";
-    this.hPM = 0;
-    this.hPN = 0;
+    this.kfQ = "";
+    this.kfR = "";
+    this.kfS = "";
+    this.kfT = "";
+    this.kfU = "";
+    this.kfV = "";
+    this.kfW = "";
+    this.kfX = "";
+    this.iKR = "";
+    this.iKS = "";
+    this.iKT = 0;
+    this.iKU = 0;
     AppMethodBeat.o(131159);
   }
   
-  public final String VK()
+  public final String boA()
   {
-    if (this.nickname == null) {
+    if (this.kfW == null) {
       return "";
     }
-    return this.nickname;
+    return this.kfW;
   }
   
-  public final ContentValues aTJ()
+  public final String boB()
+  {
+    if (this.kfX == null) {
+      return "";
+    }
+    return this.kfX;
+  }
+  
+  public final void boC()
+  {
+    this.iKT |= 0x1;
+  }
+  
+  public final ContentValues bov()
   {
     AppMethodBeat.i(131161);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dEu & 0x1) != 0) {
-      localContentValues.put("qq", Long.valueOf(this.jhK));
+    if ((this.cSx & 0x1) != 0) {
+      localContentValues.put("qq", Long.valueOf(this.kfN));
     }
     int i;
-    if ((this.dEu & 0x2) != 0)
+    if ((this.cSx & 0x2) != 0)
     {
-      i = this.jhL;
+      i = this.kfO;
       if (i == 0) {
         localContentValues.put("wexinstatus", Integer.valueOf(65536));
       }
     }
     else
     {
-      if ((this.dEu & 0x4) != 0) {
-        localContentValues.put("groupid", Integer.valueOf(this.jhM));
+      if ((this.cSx & 0x4) != 0) {
+        localContentValues.put("groupid", Integer.valueOf(this.kfP));
       }
-      if ((this.dEu & 0x8) != 0) {
+      if ((this.cSx & 0x8) != 0) {
         localContentValues.put("username", getUsername());
       }
-      if ((this.dEu & 0x10) != 0) {
-        localContentValues.put("nickname", VK());
+      if ((this.cSx & 0x10) != 0) {
+        localContentValues.put("nickname", getNickname());
       }
-      if ((this.dEu & 0x20) != 0)
+      if ((this.cSx & 0x20) != 0)
       {
-        if (this.jhN != null) {
+        if (this.kfQ != null) {
           break label400;
         }
         str = "";
         label146:
         localContentValues.put("pyinitial", str);
       }
-      if ((this.dEu & 0x40) != 0)
+      if ((this.cSx & 0x40) != 0)
       {
-        if (this.jhO != null) {
+        if (this.kfR != null) {
           break label408;
         }
         str = "";
         label173:
         localContentValues.put("quanpin", str);
       }
-      if ((this.dEu & 0x80) != 0) {
-        localContentValues.put("qqnickname", aTK());
+      if ((this.cSx & 0x80) != 0) {
+        localContentValues.put("qqnickname", bow());
       }
-      if ((this.dEu & 0x100) != 0) {
-        localContentValues.put("qqpyinitial", aTL());
+      if ((this.cSx & 0x100) != 0) {
+        localContentValues.put("qqpyinitial", box());
       }
-      if ((this.dEu & 0x200) != 0) {
-        localContentValues.put("qqquanpin", aTM());
+      if ((this.cSx & 0x200) != 0) {
+        localContentValues.put("qqquanpin", boy());
       }
-      if ((this.dEu & 0x400) != 0) {
-        localContentValues.put("qqremark", aTN());
+      if ((this.cSx & 0x400) != 0) {
+        localContentValues.put("qqremark", boz());
       }
-      if ((this.dEu & 0x800) != 0) {
-        localContentValues.put("qqremarkpyinitial", aTO());
+      if ((this.cSx & 0x800) != 0) {
+        localContentValues.put("qqremarkpyinitial", boA());
       }
-      if ((this.dEu & 0x1000) != 0) {
-        localContentValues.put("qqremarkquanpin", aTP());
+      if ((this.cSx & 0x1000) != 0) {
+        localContentValues.put("qqremarkquanpin", boB());
       }
-      if ((this.dEu & 0x4000) != 0) {
-        if (this.hPL != null) {
+      if ((this.cSx & 0x4000) != 0) {
+        if (this.iKS != null) {
           break label416;
         }
       }
@@ -128,102 +141,81 @@ public final class as
     label400:
     label408:
     label416:
-    for (String str = "";; str = this.hPL)
+    for (String str = "";; str = this.iKS)
     {
       localContentValues.put("reserved2", str);
-      if ((this.dEu & 0x8000) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.hPM));
+      if ((this.cSx & 0x8000) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.iKT));
       }
-      if ((this.dEu & 0x10000) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.hPN));
+      if ((this.cSx & 0x10000) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.iKU));
       }
       AppMethodBeat.o(131161);
       return localContentValues;
       localContentValues.put("wexinstatus", Integer.valueOf(i));
       break;
-      str = this.jhN;
+      str = this.kfQ;
       break label146;
-      str = this.jhO;
+      str = this.kfR;
       break label173;
     }
   }
   
-  public final String aTK()
+  public final String bow()
   {
-    if (this.jhP == null) {
+    if (this.kfS == null) {
       return "";
     }
-    return this.jhP;
+    return this.kfS;
   }
   
-  public final String aTL()
+  public final String box()
   {
-    if (this.jhQ == null) {
+    if (this.kfT == null) {
       return "";
     }
-    return this.jhQ;
+    return this.kfT;
   }
   
-  public final String aTM()
+  public final String boy()
   {
-    if (this.jhR == null) {
+    if (this.kfU == null) {
       return "";
     }
-    return this.jhR;
+    return this.kfU;
   }
   
-  public final String aTN()
+  public final String boz()
   {
-    if (this.jhS == null) {
+    if (this.kfV == null) {
       return "";
     }
-    return this.jhS;
-  }
-  
-  public final String aTO()
-  {
-    if (this.jhT == null) {
-      return "";
-    }
-    return this.jhT;
-  }
-  
-  public final String aTP()
-  {
-    if (this.jhU == null) {
-      return "";
-    }
-    return this.jhU;
-  }
-  
-  public final void aTQ()
-  {
-    this.hPM |= 0x1;
+    return this.kfV;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(131160);
-    this.jhK = paramCursor.getLong(0);
+    this.kfN = paramCursor.getLong(0);
     int i = paramCursor.getInt(1);
     if (i == 65536) {}
-    for (this.jhL = 0;; this.jhL = i)
+    for (this.kfO = 0;; this.kfO = i)
     {
-      this.jhM = paramCursor.getInt(2);
+      this.kfP = paramCursor.getInt(2);
       this.username = paramCursor.getString(3);
       this.nickname = paramCursor.getString(4);
-      this.jhN = paramCursor.getString(5);
-      this.jhO = paramCursor.getString(6);
-      this.jhP = paramCursor.getString(7);
-      this.jhQ = paramCursor.getString(8);
-      this.jhR = paramCursor.getString(9);
-      this.jhS = paramCursor.getString(10);
-      this.jhT = paramCursor.getString(11);
-      this.jhU = paramCursor.getString(12);
-      this.hPK = paramCursor.getString(13);
-      this.hPL = paramCursor.getString(14);
-      this.hPM = paramCursor.getInt(15);
-      this.hPN = paramCursor.getInt(16);
+      this.kfQ = paramCursor.getString(5);
+      this.kfR = paramCursor.getString(6);
+      this.kfS = paramCursor.getString(7);
+      this.kfT = paramCursor.getString(8);
+      this.kfU = paramCursor.getString(9);
+      this.kfV = paramCursor.getString(10);
+      this.kfW = paramCursor.getString(11);
+      this.kfX = paramCursor.getString(12);
+      this.iKR = paramCursor.getString(13);
+      this.iKS = paramCursor.getString(14);
+      this.iKT = paramCursor.getInt(15);
+      this.iKU = paramCursor.getInt(16);
       AppMethodBeat.o(131160);
       return;
     }
@@ -232,15 +224,23 @@ public final class as
   public final String getDisplayName()
   {
     AppMethodBeat.i(131162);
-    if ((aTN() == null) || (aTN().length() <= 0))
+    if ((boz() == null) || (boz().length() <= 0))
     {
-      str = aTK();
+      str = bow();
       AppMethodBeat.o(131162);
       return str;
     }
-    String str = aTN();
+    String str = boz();
     AppMethodBeat.o(131162);
     return str;
+  }
+  
+  public final String getNickname()
+  {
+    if (this.nickname == null) {
+      return "";
+    }
+    return this.nickname;
   }
   
   public final String getUsername()
@@ -255,13 +255,13 @@ public final class as
   {
     AppMethodBeat.i(131163);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("groupID\t:").append(this.jhM).append("\n");
-    ((StringBuilder)localObject).append("qq\t:").append(this.jhK).append("\n");
+    ((StringBuilder)localObject).append("groupID\t:").append(this.kfP).append("\n");
+    ((StringBuilder)localObject).append("qq\t:").append(this.kfN).append("\n");
     ((StringBuilder)localObject).append("username\t:").append(this.username).append("\n");
     ((StringBuilder)localObject).append("nickname\t:").append(this.nickname).append("\n");
-    ((StringBuilder)localObject).append("wexinStatus\t:").append(this.jhL).append("\n");
-    ((StringBuilder)localObject).append("reserved3\t:").append(this.hPM).append("\n");
-    ((StringBuilder)localObject).append("reserved4\t:").append(this.hPN).append("\n");
+    ((StringBuilder)localObject).append("wexinStatus\t:").append(this.kfO).append("\n");
+    ((StringBuilder)localObject).append("reserved3\t:").append(this.iKT).append("\n");
+    ((StringBuilder)localObject).append("reserved4\t:").append(this.iKU).append("\n");
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(131163);
     return localObject;
@@ -269,7 +269,7 @@ public final class as
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.as
  * JD-Core Version:    0.7.0.1
  */

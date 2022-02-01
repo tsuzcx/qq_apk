@@ -13,52 +13,52 @@ import com.tencent.mm.hellhoundlib.b.b;
 
 public final class k
 {
-  a BME;
-  c BMF;
-  boolean BMG;
-  boolean BMH;
-  int MG;
-  float lnw;
-  View lwK;
-  private GestureDetector lwM;
-  private float lwO;
-  int lwP;
-  int lwQ;
-  Runnable lwR;
+  a Gnk;
+  c Gnl;
+  boolean Gnm;
+  boolean Gnn;
+  int MQ;
   Context mContext;
+  View mDH;
+  private GestureDetector mDJ;
+  private float mDL;
+  int mDM;
+  int mDN;
+  Runnable mDO;
+  float mue;
   
   public k(Context paramContext, View paramView, c paramc)
   {
     AppMethodBeat.i(126104);
-    this.BME = a.BMJ;
-    this.lnw = 0.0F;
-    this.MG = 0;
-    this.lwO = 0.0F;
-    this.lwP = -1;
-    this.lwQ = 0;
-    this.lwR = new Runnable()
+    this.Gnk = a.Gnp;
+    this.mue = 0.0F;
+    this.MQ = 0;
+    this.mDL = 0.0F;
+    this.mDM = -1;
+    this.mDN = 0;
+    this.mDO = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126097);
-        k.this.BMF.bnF();
+        k.this.Gnl.bJj();
         AppMethodBeat.o(126097);
       }
     };
     this.mContext = paramContext;
-    this.BMF = paramc;
-    this.lwK = paramView;
-    this.lwM = new GestureDetector(this.mContext, new GestureDetector.SimpleOnGestureListener()
+    this.Gnl = paramc;
+    this.mDH = paramView;
+    this.mDJ = new GestureDetector(this.mContext, new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(220239);
+        AppMethodBeat.i(236390);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(220239);
+        AppMethodBeat.o(236390);
         return bool;
       }
       
@@ -66,10 +66,10 @@ public final class k
       {
         AppMethodBeat.i(126099);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
-        k.this.lwK.removeCallbacks(k.this.lwR);
-        k.this.BMF.bnG();
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        k.this.mDH.removeCallbacks(k.this.mDO);
+        k.this.Gnl.bJk();
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(126099);
         return true;
@@ -77,13 +77,13 @@ public final class k
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(220238);
+        AppMethodBeat.i(236389);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(220238);
+        AppMethodBeat.o(236389);
       }
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
@@ -96,12 +96,12 @@ public final class k
           AppMethodBeat.o(126100);
           return true;
         }
-        if (k.this.BME == k.a.BMJ)
+        if (k.this.Gnk == k.a.Gnp)
         {
           if (Math.abs(paramAnonymousFloat1) <= Math.abs(paramAnonymousFloat2)) {
             break label153;
           }
-          k.this.BME = k.a.BMM;
+          k.this.Gnk = k.a.Gns;
         }
         float f3;
         for (;;)
@@ -110,34 +110,34 @@ public final class k
           paramAnonymousFloat2 = paramAnonymousMotionEvent1.getX();
           f3 = paramAnonymousMotionEvent2.getY() - paramAnonymousMotionEvent1.getY();
           paramAnonymousMotionEvent1 = k.this;
-          if (paramAnonymousMotionEvent1.BME != k.a.BMM) {
+          if (paramAnonymousMotionEvent1.Gnk != k.a.Gns) {
             break;
           }
-          if (paramAnonymousMotionEvent1.lwP == -1)
+          if (paramAnonymousMotionEvent1.mDM == -1)
           {
-            paramAnonymousMotionEvent1.BMF.bnH();
-            paramAnonymousMotionEvent1.lwP = paramAnonymousMotionEvent1.BMF.getCurrentPosition();
+            paramAnonymousMotionEvent1.Gnl.bJl();
+            paramAnonymousMotionEvent1.mDM = paramAnonymousMotionEvent1.Gnl.getCurrentPosition();
           }
-          paramAnonymousMotionEvent1.lwQ = paramAnonymousMotionEvent1.BMF.bH(paramAnonymousFloat1 - paramAnonymousFloat2);
+          paramAnonymousMotionEvent1.mDN = paramAnonymousMotionEvent1.Gnl.ce(paramAnonymousFloat1 - paramAnonymousFloat2);
           AppMethodBeat.o(126100);
           return true;
           label153:
-          if (paramAnonymousMotionEvent1.getX() < k.this.lwK.getMeasuredWidth() / 2) {
-            k.this.BME = k.a.BML;
+          if (paramAnonymousMotionEvent1.getX() < k.this.mDH.getMeasuredWidth() / 2) {
+            k.this.Gnk = k.a.Gnr;
           } else {
-            k.this.BME = k.a.BMK;
+            k.this.Gnk = k.a.Gnq;
           }
         }
-        if ((paramAnonymousMotionEvent1.BME == k.a.BML) && (paramAnonymousMotionEvent1.BMH))
+        if ((paramAnonymousMotionEvent1.Gnk == k.a.Gnr) && (paramAnonymousMotionEvent1.Gnn))
         {
-          paramAnonymousFloat1 = f3 * -1.0F / paramAnonymousMotionEvent1.lwK.getMeasuredHeight() * 1.2F + paramAnonymousMotionEvent1.lnw;
+          paramAnonymousFloat1 = f3 * -1.0F / paramAnonymousMotionEvent1.mDH.getMeasuredHeight() * 1.2F + paramAnonymousMotionEvent1.mue;
           if (paramAnonymousFloat1 < 0.0F) {
             paramAnonymousFloat1 = f2;
           }
         }
         label317:
-        label486:
-        label489:
+        label487:
+        label490:
         for (;;)
         {
           paramAnonymousMotionEvent1 = paramAnonymousMotionEvent1.mContext;
@@ -157,7 +157,7 @@ public final class k
             AppMethodBeat.o(126100);
             return true;
             if (paramAnonymousFloat1 <= 1.0F) {
-              break label489;
+              break label490;
             }
             paramAnonymousFloat1 = 1.0F;
             break;
@@ -166,11 +166,11 @@ public final class k
               paramAnonymousFloat2 = paramAnonymousFloat1;
             }
           }
-          if ((paramAnonymousMotionEvent1.BME != k.a.BMK) || (!paramAnonymousMotionEvent1.BMG)) {
+          if ((paramAnonymousMotionEvent1.Gnk != k.a.Gnq) || (!paramAnonymousMotionEvent1.Gnm)) {
             break;
           }
           paramAnonymousFloat1 = f3 * -1.0F;
-          paramAnonymousFloat2 = paramAnonymousFloat1 / paramAnonymousMotionEvent1.lwK.getMeasuredHeight();
+          paramAnonymousFloat2 = paramAnonymousFloat1 / paramAnonymousMotionEvent1.mDH.getMeasuredHeight();
           paramAnonymousMotionEvent2 = (AudioManager)paramAnonymousMotionEvent1.mContext.getSystemService("audio");
           int j = paramAnonymousMotionEvent2.getStreamMaxVolume(3);
           paramAnonymousFloat2 = 1.2F * (paramAnonymousFloat2 * j);
@@ -182,16 +182,16 @@ public final class k
           }
           for (;;)
           {
-            int k = i + paramAnonymousMotionEvent1.MG;
+            int k = i + paramAnonymousMotionEvent1.MQ;
             if (k < 0) {
               i = 0;
             }
             for (;;)
             {
-              com.tencent.mm.compatible.b.a.b(paramAnonymousMotionEvent2, 3, i);
+              com.tencent.mm.compatible.b.a.a(paramAnonymousMotionEvent2, 3, i, 0);
               break;
               if (paramAnonymousFloat1 >= 0.0F) {
-                break label486;
+                break label487;
               }
               i = -1;
               break label429;
@@ -208,70 +208,70 @@ public final class k
       {
         AppMethodBeat.i(126098);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
-        k.this.lwK.postDelayed(k.this.lwR, 200L);
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        k.this.mDH.postDelayed(k.this.mDO, 200L);
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(126098);
         return true;
       }
     });
-    this.lnw = com.tencent.mm.plugin.websearch.ui.a.dA(paramContext);
+    this.mue = com.tencent.mm.plugin.websearch.ui.a.dV(paramContext);
     AppMethodBeat.o(126104);
   }
   
-  public final void bpt()
-  {
-    this.lwP = -1;
-    this.lwQ = 0;
-    this.lwO = 0.0F;
-  }
-  
-  public final void w(MotionEvent paramMotionEvent)
+  public final void A(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(126105);
-    if (!this.BMF.etx())
+    if (!this.Gnl.fyT())
     {
-      this.BME = a.BMJ;
+      this.Gnk = a.Gnp;
       AppMethodBeat.o(126105);
       return;
     }
     int i = paramMotionEvent.getActionMasked();
     if (i == 0)
     {
-      this.lwO = paramMotionEvent.getRawX();
-      this.MG = ((AudioManager)this.mContext.getSystemService("audio")).getStreamVolume(3);
-      this.lnw = com.tencent.mm.plugin.websearch.ui.a.dA(this.mContext);
+      this.mDL = paramMotionEvent.getRawX();
+      this.MQ = ((AudioManager)this.mContext.getSystemService("audio")).getStreamVolume(3);
+      this.mue = com.tencent.mm.plugin.websearch.ui.a.dV(this.mContext);
     }
-    Object localObject = this.lwM;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController", "handleTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.mt(0)), "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController", "handleTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    Object localObject = this.mDJ;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController", "handleTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/plugin/topstory/ui/video/TopStoryGestureController", "handleTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     if ((i == 1) || (i == 3))
     {
-      if (this.BME != a.BMM) {
+      if (this.Gnk != a.Gns) {
         break label217;
       }
-      localObject = this.BMF;
-      i = this.lwQ;
+      localObject = this.Gnl;
+      i = this.mDN;
       paramMotionEvent.getRawX();
-      ((c)localObject).TH(i);
-      this.lwP = -1;
-      this.lwQ = 0;
-      this.lwO = 0.0F;
+      ((c)localObject).abX(i);
+      this.mDM = -1;
+      this.mDN = 0;
+      this.mDL = 0.0F;
     }
     for (;;)
     {
-      this.BME = a.BMJ;
+      this.Gnk = a.Gnp;
       AppMethodBeat.o(126105);
       return;
       label217:
-      if (this.BME == a.BMK) {
+      if (this.Gnk == a.Gnq) {
         ((AudioManager)this.mContext.getSystemService("audio")).getStreamMaxVolume(3);
       } else {
-        paramMotionEvent = a.BML;
+        paramMotionEvent = a.Gnr;
       }
     }
+  }
+  
+  public final void bKZ()
+  {
+    this.mDM = -1;
+    this.mDN = 0;
+    this.mDL = 0.0F;
   }
   
   static enum a
@@ -279,11 +279,11 @@ public final class k
     static
     {
       AppMethodBeat.i(126103);
-      BMJ = new a("None", 0);
-      BMK = new a("Volume", 1);
-      BML = new a("Brightness", 2);
-      BMM = new a("FastBackwardOrForward", 3);
-      BMN = new a[] { BMJ, BMK, BML, BMM };
+      Gnp = new a("None", 0);
+      Gnq = new a("Volume", 1);
+      Gnr = new a("Brightness", 2);
+      Gns = new a("FastBackwardOrForward", 3);
+      Gnt = new a[] { Gnp, Gnq, Gnr, Gns };
       AppMethodBeat.o(126103);
     }
     
@@ -292,7 +292,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.k
  * JD-Core Version:    0.7.0.1
  */

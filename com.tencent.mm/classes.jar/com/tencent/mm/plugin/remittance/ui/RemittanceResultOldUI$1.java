@@ -15,9 +15,9 @@ final class RemittanceResultOldUI$1
   {
     AppMethodBeat.i(68304);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceResultOldUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    RemittanceResultOldUI.a(this.ywj);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceResultOldUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    RemittanceResultOldUI.a(this.Cxf);
     a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceResultOldUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(68304);
   }

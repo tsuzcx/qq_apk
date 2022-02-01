@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.cmd;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,29 +10,29 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  private static final HashMap<String, a> Fcj;
-  private static final HashMap<String, a> Fck;
-  private static final Pattern Fcl;
+  private static final HashMap<String, a> JTi;
+  private static final HashMap<String, a> JTj;
+  private static final Pattern JTk;
   
   static
   {
     AppMethodBeat.i(151624);
-    Fcj = new HashMap();
-    Fck = new HashMap();
-    Fcl = Pattern.compile(" +");
+    JTi = new HashMap();
+    JTj = new HashMap();
+    JTk = Pattern.compile(" +");
     AppMethodBeat.o(151624);
   }
   
-  public static boolean L(Context paramContext, String arg1, String paramString2)
+  public static boolean Q(Context paramContext, String arg1, String paramString2)
   {
     AppMethodBeat.i(151622);
-    String[] arrayOfString = Fcl.split(???);
-    synchronized (Fcj)
+    String[] arrayOfString = JTk.split(???);
+    synchronized (JTi)
     {
-      a locala = (a)Fcj.get(arrayOfString[0]);
+      a locala = (a)JTi.get(arrayOfString[0]);
       if (locala != null)
       {
-        ae.i("MicroMsg.UnifiedCommandProcessor", "Command: %s", new Object[] { arrayOfString[0] });
+        Log.i("MicroMsg.UnifiedCommandProcessor", "Command: %s", new Object[] { arrayOfString[0] });
         boolean bool = locala.a(paramContext, arrayOfString, paramString2);
         AppMethodBeat.o(151622);
         return bool;
@@ -42,18 +42,18 @@ public final class b
     return false;
   }
   
-  public static void S(String... paramVarArgs)
+  public static void V(String... paramVarArgs)
   {
     int i = 0;
     AppMethodBeat.i(151621);
-    synchronized (Fcj)
+    synchronized (JTi)
     {
       int j = paramVarArgs.length;
       while (i < j)
       {
         String str = paramVarArgs[i];
-        Fcj.remove(str);
-        ae.i("MicroMsg.UnifiedCommandProcessor", "Unregistered command: %s", new Object[] { str });
+        JTi.remove(str);
+        Log.i("MicroMsg.UnifiedCommandProcessor", "Unregistered command: %s", new Object[] { str });
         i += 1;
       }
       AppMethodBeat.o(151621);
@@ -65,14 +65,14 @@ public final class b
   {
     int i = 0;
     AppMethodBeat.i(151620);
-    synchronized (Fcj)
+    synchronized (JTi)
     {
       int j = paramVarArgs.length;
       while (i < j)
       {
         String str = paramVarArgs[i];
-        Fcj.put(str, parama);
-        ae.i("MicroMsg.UnifiedCommandProcessor", "Registered command: %s", new Object[] { str });
+        JTi.put(str, parama);
+        Log.i("MicroMsg.UnifiedCommandProcessor", "Registered command: %s", new Object[] { str });
         i += 1;
       }
       AppMethodBeat.o(151620);
@@ -80,12 +80,12 @@ public final class b
     }
   }
   
-  static List<a> fcP()
+  static List<a> gmb()
   {
     AppMethodBeat.i(151623);
-    synchronized (Fck)
+    synchronized (JTj)
     {
-      ArrayList localArrayList = new ArrayList(Fck.values());
+      ArrayList localArrayList = new ArrayList(JTj.values());
       AppMethodBeat.o(151623);
       return localArrayList;
     }
@@ -93,9 +93,9 @@ public final class b
   
   static final class a
   {
-    a Fcm;
-    String dPH;
-    int mqT;
+    a JTl;
+    String ehK;
+    int nBF;
   }
 }
 

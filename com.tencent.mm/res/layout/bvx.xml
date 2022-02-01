@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/i3n" android:focusable="false" android:focusableInTouchMode="false" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:orientation="horizontal" android:background="@color/fm" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/i3o" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/e9u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/bo3" />
+</FrameLayout>

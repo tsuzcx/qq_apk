@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/yc" android:background="@drawable/zf" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/dwo" android:background="@drawable/amv" android:layout_width="fill_parent" android:layout_height="@dimen/aiu">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/jr" android:layout_height="@dimen/jr" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_music" app:iconColor="@color/BW_50" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/a6w" android:id="@id/dwn" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/lw" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/be9" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:id="@id/f_w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <FrameLayout android:gravity="center" android:layout_gravity="center" android:id="@id/bfr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                    <ViewStub android:id="@id/eqd" android:layout="@layout/bfu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <RelativeLayout android:id="@id/iox" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                </LinearLayout>
+                <com.tencent.mm.plugin.location.ui.MyLocationButton android:id="@id/eq5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginBottom="@dimen/hv" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+                <View android:id="@id/f_t" android:background="@color/zp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/icv" android:background="@drawable/aof" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="@dimen/k" android:layout_marginBottom="@dimen/hv" android:text="@string/hyg" android:layout_toRightOf="@id/eq5" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/a2x" android:id="@id/fke" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:text="@string/f3f" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+                <Button android:textSize="@dimen/hc" android:id="@id/i4q" android:background="@drawable/aof" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="42.0dip" android:layout_marginRight="@dimen/hs" android:layout_marginBottom="@dimen/hv" android:text="@string/el7" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+                <RelativeLayout android:id="@id/jcq" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <com.tencent.mm.plugin.location.ui.VolumeMeter android:id="@id/jcr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hv" android:layout_alignParentBottom="true" layout="@layout/c4j" />
+                <com.tencent.mm.plugin.location.ui.TipSayingWidget android:id="@id/h_q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </FrameLayout>
+        <RelativeLayout android:id="@id/bu3" android:background="@color/ac8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="24.0dip" android:layout_centerInParent="true" style="@style/a5t" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/f_u" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ProgressBar android:id="@id/f_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <TextView android:textColor="@color/a2x" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fa3" android:layout_below="@id/f_v" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <include layout="@layout/b7b" />
+    <com.tencent.mm.plugin.location.ui.ShareHeader android:id="@id/hpg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</RelativeLayout>

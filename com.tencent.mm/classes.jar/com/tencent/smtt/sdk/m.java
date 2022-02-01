@@ -61,7 +61,7 @@ class m
   
   public m(Context paramContext)
   {
-    AppMethodBeat.i(192500);
+    AppMethodBeat.i(188346);
     this.m = 30000;
     this.n = 20000;
     this.B = d;
@@ -76,29 +76,29 @@ class m
     if (this.k == null)
     {
       paramContext = new NullPointerException("TbsCorePrivateDir is null!");
-      AppMethodBeat.o(192500);
+      AppMethodBeat.o(188346);
       throw paramContext;
     }
     e();
     this.w = null;
     this.x = -1;
-    AppMethodBeat.o(192500);
+    AppMethodBeat.o(188346);
   }
   
   private long a(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(192508);
+    AppMethodBeat.i(188354);
     long l1 = System.currentTimeMillis();
     this.v.setDownConsumeTime(l1 - paramLong1);
     this.v.setDownloadSize(paramLong2);
-    AppMethodBeat.o(192508);
+    AppMethodBeat.o(188354);
     return l1;
   }
   
   @TargetApi(8)
   static File a(Context paramContext)
   {
-    AppMethodBeat.i(192525);
+    AppMethodBeat.i(188371);
     for (;;)
     {
       try
@@ -109,14 +109,14 @@ class m
           if ((paramContext != null) && (!paramContext.exists()) && (!paramContext.isDirectory())) {
             paramContext.mkdirs();
           }
-          AppMethodBeat.o(192525);
+          AppMethodBeat.o(188371);
           return paramContext;
         }
       }
       catch (Exception paramContext)
       {
         TbsLog.e("TbsDownload", "[TbsApkDownloader.backupApkPath] Exception is " + paramContext.getMessage());
-        AppMethodBeat.o(192525);
+        AppMethodBeat.o(188371);
         return null;
       }
       paramContext = null;
@@ -125,45 +125,45 @@ class m
   
   private static File a(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192527);
+    AppMethodBeat.i(188373);
     File localFile = new File(f.a(paramContext, paramInt));
     if ((!localFile.exists()) || (!localFile.isDirectory()))
     {
-      AppMethodBeat.o(192527);
+      AppMethodBeat.o(188373);
       return null;
     }
     if (TbsDownloader.getOverSea(paramContext)) {}
     for (paramContext = "x5.oversea.tbs.org"; new File(localFile, paramContext).exists(); paramContext = TbsDownloader.getBackupFileName(false))
     {
-      AppMethodBeat.o(192527);
+      AppMethodBeat.o(188373);
       return localFile;
     }
-    AppMethodBeat.o(192527);
+    AppMethodBeat.o(188373);
     return null;
   }
   
   private String a(Throwable paramThrowable)
   {
-    AppMethodBeat.i(192510);
+    AppMethodBeat.i(188356);
     paramThrowable = Log.getStackTraceString(paramThrowable);
     if (paramThrowable.length() > 1024)
     {
       paramThrowable = paramThrowable.substring(0, 1024);
-      AppMethodBeat.o(192510);
+      AppMethodBeat.o(188356);
       return paramThrowable;
     }
-    AppMethodBeat.o(192510);
+    AppMethodBeat.o(188356);
     return paramThrowable;
   }
   
   private String a(URL paramURL)
   {
-    AppMethodBeat.i(192524);
+    AppMethodBeat.i(188370);
     String str = "";
     try
     {
       paramURL = InetAddress.getByName(paramURL.getHost()).getHostAddress();
-      AppMethodBeat.o(192524);
+      AppMethodBeat.o(188370);
       return paramURL;
     }
     catch (Error paramURL)
@@ -184,18 +184,18 @@ class m
   
   private void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(192509);
+    AppMethodBeat.i(188355);
     if ((paramBoolean) || (this.p > this.B))
     {
       this.v.setErrorCode(paramInt);
       this.v.setFailDetail(paramString);
     }
-    AppMethodBeat.o(192509);
+    AppMethodBeat.o(188355);
   }
   
   private void a(long paramLong)
   {
-    AppMethodBeat.i(192515);
+    AppMethodBeat.i(188361);
     this.p += 1;
     long l1 = paramLong;
     if (paramLong <= 0L) {}
@@ -203,34 +203,34 @@ class m
     {
       l1 = l();
       Thread.sleep(l1);
-      AppMethodBeat.o(192515);
+      AppMethodBeat.o(188361);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(192515);
+      AppMethodBeat.o(188361);
     }
   }
   
   private void a(Closeable paramCloseable)
   {
-    AppMethodBeat.i(192514);
+    AppMethodBeat.i(188360);
     if (paramCloseable != null) {
       try
       {
         paramCloseable.close();
-        AppMethodBeat.o(192514);
+        AppMethodBeat.o(188360);
         return;
       }
       catch (IOException paramCloseable) {}
     }
-    AppMethodBeat.o(192514);
+    AppMethodBeat.o(188360);
   }
   
   public static void a(File paramFile, Context paramContext)
   {
     int i1 = 0;
-    AppMethodBeat.i(192532);
+    AppMethodBeat.i(188378);
     if (paramFile != null) {}
     label516:
     for (;;)
@@ -310,14 +310,14 @@ class m
       }
       finally
       {
-        AppMethodBeat.o(192532);
+        AppMethodBeat.o(188378);
       }
     }
   }
   
   private void a(String paramString)
   {
-    AppMethodBeat.i(192501);
+    AppMethodBeat.i(188347);
     paramString = new URL(paramString);
     if (this.t != null) {}
     try
@@ -330,7 +330,7 @@ class m
       this.t.setInstanceFollowRedirects(false);
       this.t.setConnectTimeout(this.n);
       this.t.setReadTimeout(this.m);
-      AppMethodBeat.o(192501);
+      AppMethodBeat.o(188347);
       return;
     }
     catch (Throwable localThrowable)
@@ -344,21 +344,21 @@ class m
   
   private boolean a(File paramFile)
   {
-    AppMethodBeat.i(192517);
+    AppMethodBeat.i(188363);
     int i2 = TbsDownloadConfig.getInstance(this.g).mPreferences.getInt("use_backup_version", 0);
     int i1 = i2;
     if (i2 == 0) {
       i1 = TbsDownloadConfig.getInstance(this.g).mPreferences.getInt("tbs_download_version", 0);
     }
     boolean bool = a.a(this.g, paramFile, 0L, i1);
-    AppMethodBeat.o(192517);
+    AppMethodBeat.o(188363);
     return bool;
   }
   
   @TargetApi(8)
   static File b(Context paramContext)
   {
-    AppMethodBeat.i(192526);
+    AppMethodBeat.i(188372);
     for (;;)
     {
       try
@@ -378,14 +378,14 @@ class m
           if (localObject2 == null) {
             localObject1 = a(paramContext, 1);
           }
-          AppMethodBeat.o(192526);
+          AppMethodBeat.o(188372);
           return localObject1;
         }
       }
       catch (Exception paramContext)
       {
         TbsLog.e("TbsDownload", "[TbsApkDownloader.backupApkPath] Exception is " + paramContext.getMessage());
-        AppMethodBeat.o(192526);
+        AppMethodBeat.o(188372);
         return null;
       }
       Object localObject1 = null;
@@ -394,7 +394,7 @@ class m
   
   private boolean b(int paramInt)
   {
-    AppMethodBeat.i(192503);
+    AppMethodBeat.i(188349);
     try
     {
       File localFile1 = new File(this.k, "x5.tbs");
@@ -411,27 +411,27 @@ class m
             break;
           }
           TbsLog.i("TbsDownload", "[TbsApkDownloader.copyTbsApkFromBackupToInstall] verifyTbsApk error!!");
-          AppMethodBeat.o(192503);
+          AppMethodBeat.o(188349);
           return false;
         }
       }
-      AppMethodBeat.o(192503);
+      AppMethodBeat.o(188349);
       return false;
     }
     catch (Exception localException)
     {
       TbsLog.e("TbsDownload", "[TbsApkDownloader.copyTbsApkFromBackupToInstall] Exception is " + localException.getMessage());
-      AppMethodBeat.o(192503);
+      AppMethodBeat.o(188349);
       return false;
     }
-    AppMethodBeat.o(192503);
+    AppMethodBeat.o(188349);
     return true;
   }
   
   public static void c(Context paramContext)
   {
     int i2 = 0;
-    AppMethodBeat.i(192533);
+    AppMethodBeat.i(188379);
     for (;;)
     {
       int i1;
@@ -473,12 +473,12 @@ class m
             continue;
           }
         }
-        AppMethodBeat.o(192533);
+        AppMethodBeat.o(188379);
         return;
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(192533);
+        AppMethodBeat.o(188379);
         return;
       }
       label281:
@@ -488,7 +488,7 @@ class m
   
   private void c(boolean paramBoolean)
   {
-    AppMethodBeat.i(192511);
+    AppMethodBeat.i(188357);
     com.tencent.smtt.utils.q.a(this.g);
     Object localObject1 = TbsDownloadConfig.getInstance(this.g);
     ((TbsDownloadConfig)localObject1).mSyncMap.put("request_full_package", Boolean.FALSE);
@@ -509,11 +509,11 @@ class m
       if (localObject1 != null) {
         break;
       }
-      AppMethodBeat.o(192511);
+      AppMethodBeat.o(188357);
       return;
     }
     q.a().b(this.g, (Bundle)localObject1);
-    AppMethodBeat.o(192511);
+    AppMethodBeat.o(188357);
     return;
     label165:
     if ((i1 == 3) || (i1 > 10000))
@@ -523,25 +523,25 @@ class m
       {
         localObject1 = a(i1, (File)localObject2, paramBoolean);
         q.a().b(this.g, (Bundle)localObject1);
-        AppMethodBeat.o(192511);
+        AppMethodBeat.o(188357);
         return;
       }
       c();
       ((TbsDownloadConfig)localObject1).mSyncMap.put("tbs_needdownload", Boolean.TRUE);
       ((TbsDownloadConfig)localObject1).commit();
-      AppMethodBeat.o(192511);
+      AppMethodBeat.o(188357);
       return;
     }
     i1 = ((TbsDownloadConfig)localObject1).mPreferences.getInt("tbs_download_version", 0);
     q.a().a(this.g, new File(this.k, "x5.tbs").getAbsolutePath(), i1);
     a(new File(this.k, "x5.tbs"), this.g);
-    AppMethodBeat.o(192511);
+    AppMethodBeat.o(188357);
   }
   
   private boolean c(boolean paramBoolean1, boolean paramBoolean2)
   {
     long l2 = 0L;
-    AppMethodBeat.i(192518);
+    AppMethodBeat.i(188364);
     TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] isTempFile=".concat(String.valueOf(paramBoolean1)));
     Object localObject2 = this.k;
     if (!paramBoolean1) {}
@@ -551,7 +551,7 @@ class m
       if (((File)localObject1).exists()) {
         break;
       }
-      AppMethodBeat.o(192518);
+      AppMethodBeat.o(188364);
       return false;
     }
     localObject2 = TbsDownloadConfig.getInstance(this.g).mPreferences.getString("tbs_apk_md5", null);
@@ -562,7 +562,7 @@ class m
       if (paramBoolean1) {
         this.v.setCheckErrorDetail("fileMd5 not match");
       }
-      AppMethodBeat.o(192518);
+      AppMethodBeat.o(188364);
       return false;
     }
     TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] md5(" + (String)localObject3 + ") successful!");
@@ -585,7 +585,7 @@ class m
     {
       TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] isTempFile=" + paramBoolean1 + " filelength failed");
       this.v.setCheckErrorDetail("fileLength:" + l1 + ",contentLength:" + l3);
-      AppMethodBeat.o(192518);
+      AppMethodBeat.o(188364);
       return false;
       TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] length(" + l1 + ") successful!");
       int i2 = -1;
@@ -604,7 +604,7 @@ class m
             if (paramBoolean1) {
               this.v.setCheckErrorDetail("fileVersion:" + i2 + ",configVersion:" + i3);
             }
-            AppMethodBeat.o(192518);
+            AppMethodBeat.o(188364);
             return false;
           }
         }
@@ -628,7 +628,7 @@ class m
           for (localObject1 = "null";; localObject1 = Integer.valueOf(str.length()))
           {
             ((TbsLogReport.TbsLogInfo)localObject2).setCheckErrorDetail(localObject1);
-            AppMethodBeat.o(192518);
+            AppMethodBeat.o(188364);
             return false;
           }
         }
@@ -653,13 +653,13 @@ class m
           break label723;
         }
         a(109, a((Throwable)localObject1), true);
-        AppMethodBeat.o(192518);
+        AppMethodBeat.o(188364);
         return false;
       }
       paramBoolean2 = false;
       label723:
       TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] rename(" + paramBoolean2 + ") successful!");
-      AppMethodBeat.o(192518);
+      AppMethodBeat.o(188364);
       return true;
       label759:
       l1 = 0L;
@@ -668,7 +668,7 @@ class m
   
   private boolean d(boolean paramBoolean)
   {
-    AppMethodBeat.i(192519);
+    AppMethodBeat.i(188365);
     TbsLog.i("TbsDownload", "[TbsApkDownloader.deleteFile] isApk=".concat(String.valueOf(paramBoolean)));
     if (paramBoolean) {}
     for (File localFile = new File(this.k, "x5.tbs");; localFile = new File(this.k, "x5.tbs.temp"))
@@ -676,7 +676,7 @@ class m
       if (localFile.exists()) {
         f.b(localFile);
       }
-      AppMethodBeat.o(192519);
+      AppMethodBeat.o(188365);
       return true;
     }
   }
@@ -695,7 +695,7 @@ class m
   
   private void f()
   {
-    AppMethodBeat.i(192502);
+    AppMethodBeat.i(188348);
     TbsLog.i("TbsDownload", "[TbsApkDownloader.closeHttpRequest]");
     if (this.t != null) {
       if (!this.r) {
@@ -737,7 +737,7 @@ class m
           if (i1 != 100) {
             QbSdk.l.onDownloadFinish(i1);
           }
-          AppMethodBeat.o(192502);
+          AppMethodBeat.o(188348);
           return;
         }
       }
@@ -757,13 +757,13 @@ class m
         }
       }
       TbsDownloader.a = false;
-      AppMethodBeat.o(192502);
+      AppMethodBeat.o(188348);
     }
   }
   
   private File g()
   {
-    AppMethodBeat.i(192516);
+    AppMethodBeat.i(188362);
     String str = f.a(this.g, 4);
     Object localObject;
     if (TbsDownloader.getOverSea(this.g))
@@ -778,7 +778,7 @@ class m
     label84:
     for (;;)
     {
-      AppMethodBeat.o(192516);
+      AppMethodBeat.o(188362);
       return localObject;
       localObject = TbsDownloader.getBackupFileName(false);
       break;
@@ -787,7 +787,7 @@ class m
   
   private void h()
   {
-    AppMethodBeat.i(192520);
+    AppMethodBeat.i(188366);
     try
     {
       Object localObject = g();
@@ -807,35 +807,35 @@ class m
           i1 += 1;
         }
       }
-      AppMethodBeat.o(192520);
+      AppMethodBeat.o(188366);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(192520);
+      AppMethodBeat.o(188366);
     }
   }
   
   private boolean i()
   {
-    AppMethodBeat.i(192521);
+    AppMethodBeat.i(188367);
     boolean bool = false;
     if (new File(this.k, "x5.tbs.temp").exists()) {
       bool = true;
     }
-    AppMethodBeat.o(192521);
+    AppMethodBeat.o(188367);
     return bool;
   }
   
   private long j()
   {
-    AppMethodBeat.i(192522);
+    AppMethodBeat.i(188368);
     long l1 = 0L;
     File localFile = new File(this.k, "x5.tbs.temp");
     if (localFile.exists()) {
       l1 = localFile.length();
     }
-    AppMethodBeat.o(192522);
+    AppMethodBeat.o(188368);
     return l1;
   }
   
@@ -1237,26 +1237,26 @@ class m
   
   private void n()
   {
-    AppMethodBeat.i(192535);
+    AppMethodBeat.i(188381);
     if (this.z == null) {
       this.z = new Handler(o.a().getLooper())
       {
         public void handleMessage(Message paramAnonymousMessage)
         {
-          AppMethodBeat.i(192598);
+          AppMethodBeat.i(188246);
           if (paramAnonymousMessage.what == 150) {
             m.a(m.this);
           }
-          AppMethodBeat.o(192598);
+          AppMethodBeat.o(188246);
         }
       };
     }
-    AppMethodBeat.o(192535);
+    AppMethodBeat.o(188381);
   }
   
   public Bundle a(int paramInt, File paramFile, boolean paramBoolean)
   {
-    AppMethodBeat.i(192513);
+    AppMethodBeat.i(188359);
     int i1;
     if (paramBoolean)
     {
@@ -1278,7 +1278,7 @@ class m
       localBundle.putString("old_apk_location", paramFile.getAbsolutePath());
       localBundle.putString("new_apk_location", (String)localObject);
       localBundle.putString("diff_file_location", (String)localObject);
-      AppMethodBeat.o(192513);
+      AppMethodBeat.o(188359);
       return localBundle;
       if (TbsDownloader.getOverSea(this.g)) {}
       for (localObject = "x5.oversea.tbs.org";; localObject = TbsDownloader.getBackupFileName(false))
@@ -1291,7 +1291,7 @@ class m
   
   public Bundle a(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(192512);
+    AppMethodBeat.i(188358);
     Object localObject1;
     int i1;
     if (paramBoolean)
@@ -1309,7 +1309,7 @@ class m
       if (localObject2 != null) {
         break label109;
       }
-      AppMethodBeat.o(192512);
+      AppMethodBeat.o(188358);
       return null;
       localObject1 = q.a().r(this.g);
       i1 = q.a().j(this.g);
@@ -1333,14 +1333,14 @@ class m
         ((File)localObject2).mkdirs();
       }
       localBundle.putString("backup_apk", new File((String)localObject1, i2 + ".tbs").getAbsolutePath());
-      AppMethodBeat.o(192512);
+      AppMethodBeat.o(188358);
       return localBundle;
     }
   }
   
   public void a(int paramInt)
   {
-    AppMethodBeat.i(192531);
+    AppMethodBeat.i(188377);
     if (q.a().u(this.g))
     {
       q.a().b();
@@ -1351,17 +1351,17 @@ class m
         if ((-1 == i1) || ((paramInt > 0) && (paramInt == i1))) {
           f.b(localFile);
         }
-        AppMethodBeat.o(192531);
+        AppMethodBeat.o(188377);
         return;
       }
       catch (Exception localException) {}
     }
-    AppMethodBeat.o(192531);
+    AppMethodBeat.o(188377);
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(192505);
+    AppMethodBeat.i(188351);
     TbsLog.i("TbsApkDownloader", "verifyAndInstallDecoupleCoreFromBackup #1");
     try
     {
@@ -1373,7 +1373,7 @@ class m
       {
         TbsLog.i("TbsApkDownloader", "verifyAndInstallDecoupleCoreFromBackup #3");
         boolean bool = q.a().f(this.g);
-        AppMethodBeat.o(192505);
+        AppMethodBeat.o(188351);
         return bool;
         File localFile2 = TbsDownloader.b(TbsDownloadConfig.getInstance(this.g).mPreferences.getInt("tbs_decouplecoreversion", -1));
         if ((localFile2 != null) && (localFile2.exists())) {
@@ -1384,16 +1384,16 @@ class m
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(192505);
+      AppMethodBeat.o(188351);
     }
   }
   
   public boolean a(boolean paramBoolean)
   {
-    AppMethodBeat.i(192507);
+    AppMethodBeat.i(188353);
     if ((paramBoolean) && (!m()) && ((!QbSdk.getDownloadWithoutWifi()) || (!Apn.isNetworkAvailable(this.g))))
     {
-      AppMethodBeat.o(192507);
+      AppMethodBeat.o(188353);
       return false;
     }
     if ((this.b != null) && (this.c >= 0) && (this.c < this.b.length))
@@ -1409,19 +1409,19 @@ class m
       this.r = false;
       this.s = false;
       this.y = false;
-      AppMethodBeat.o(192507);
+      AppMethodBeat.o(188353);
       return true;
     }
-    AppMethodBeat.o(192507);
+    AppMethodBeat.o(188353);
     return false;
   }
   
   public boolean a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(192504);
+    AppMethodBeat.i(188350);
     if (Build.VERSION.SDK_INT == 23)
     {
-      AppMethodBeat.o(192504);
+      AppMethodBeat.o(188350);
       return false;
     }
     int i1 = TbsDownloadConfig.getInstance(this.g).mPreferences.getInt("use_backup_version", 0);
@@ -1431,7 +1431,7 @@ class m
     }
     for (this.a = "by default key"; (i1 == 0) || (i1 == i2); this.a = "by new key")
     {
-      AppMethodBeat.o(192504);
+      AppMethodBeat.o(188350);
       return false;
     }
     if (paramBoolean2)
@@ -1475,7 +1475,7 @@ class m
             TbsLogReport.getInstance(this.g).eventReport(TbsLogReport.EventType.TYPE_DOWNLOAD_DECOUPLE, this.v);
             this.v.resetArgs();
           }
-          AppMethodBeat.o(192504);
+          AppMethodBeat.o(188350);
           return true;
         }
         catch (Exception localException) {}
@@ -1499,7 +1499,7 @@ class m
       TbsDownloadConfig.getInstance(this.g).mSyncMap.put("tbs_download_interrupt_code_reason", Integer.valueOf(-214));
       TbsDownloadConfig.getInstance(this.g).setDownloadInterruptCode(-214);
       c(false);
-      AppMethodBeat.o(192504);
+      AppMethodBeat.o(188350);
       return true;
     }
     if ((!d(true)) && (!d(true)))
@@ -1507,29 +1507,29 @@ class m
       TbsLog.e("TbsDownload", "[TbsApkDownloader] delete file failed!");
       TbsDownloadConfig.getInstance(this.g).setDownloadInterruptCode(-301);
     }
-    AppMethodBeat.o(192504);
+    AppMethodBeat.o(188350);
     return false;
   }
   
   public int b(boolean paramBoolean)
   {
-    AppMethodBeat.i(192528);
+    AppMethodBeat.i(188374);
     File localFile = a(this.g);
     int i1;
     if (paramBoolean)
     {
       if (localFile == null)
       {
-        AppMethodBeat.o(192528);
+        AppMethodBeat.o(188374);
         return 0;
       }
       i1 = a.a(this.g, new File(localFile, TbsDownloader.getBackupFileName(true)));
-      AppMethodBeat.o(192528);
+      AppMethodBeat.o(188374);
       return i1;
     }
     if (localFile == null)
     {
-      AppMethodBeat.o(192528);
+      AppMethodBeat.o(188374);
       return 0;
     }
     Context localContext = this.g;
@@ -1537,14 +1537,14 @@ class m
     for (String str = "x5.oversea.tbs.org";; str = TbsDownloader.getBackupFileName(false))
     {
       i1 = a.a(localContext, new File(localFile, str));
-      AppMethodBeat.o(192528);
+      AppMethodBeat.o(188374);
       return i1;
     }
   }
   
   public void b()
   {
-    AppMethodBeat.i(192529);
+    AppMethodBeat.i(188375);
     this.r = true;
     if (TbsShareManager.isThirdPartyApp(this.g))
     {
@@ -1554,12 +1554,12 @@ class m
       if (TbsDownloader.a(this.g))
       {
         TbsLogReport.getInstance(this.g).eventReport(TbsLogReport.EventType.TYPE_DOWNLOAD_DECOUPLE, localTbsLogInfo);
-        AppMethodBeat.o(192529);
+        AppMethodBeat.o(188375);
         return;
       }
       TbsLogReport.getInstance(this.g).eventReport(TbsLogReport.EventType.TYPE_DOWNLOAD, localTbsLogInfo);
     }
-    AppMethodBeat.o(192529);
+    AppMethodBeat.o(188375);
   }
   
   /* Error */
@@ -5085,25 +5085,25 @@ class m
   
   public void c()
   {
-    AppMethodBeat.i(192530);
+    AppMethodBeat.i(188376);
     b();
     d(false);
     d(true);
-    AppMethodBeat.o(192530);
+    AppMethodBeat.o(188376);
   }
   
   public boolean d()
   {
-    AppMethodBeat.i(192536);
+    AppMethodBeat.i(188382);
     TbsLog.i("TbsDownload", "[TbsApkDownloader.isDownloadForeground] mIsDownloadForeground=" + this.C);
     boolean bool = this.C;
-    AppMethodBeat.o(192536);
+    AppMethodBeat.o(188382);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.m
  * JD-Core Version:    0.7.0.1
  */

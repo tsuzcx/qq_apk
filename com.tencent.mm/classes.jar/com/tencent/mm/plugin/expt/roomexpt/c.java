@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   implements Comparable<c>
 {
-  String dnW;
+  String dFl;
   String nickname;
   float score;
   
   public final String toString()
   {
     AppMethodBeat.i(122426);
-    String str = String.format("chatroom[%s %s] score[%f]", new Object[] { this.dnW, this.nickname, Float.valueOf(this.score) });
+    String str = String.format("chatroom[%s %s] score[%f]", new Object[] { this.dFl, this.nickname, Float.valueOf(this.score) });
     AppMethodBeat.o(122426);
     return str;
   }

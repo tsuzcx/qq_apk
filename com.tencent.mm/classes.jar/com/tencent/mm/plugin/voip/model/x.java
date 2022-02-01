@@ -2,38 +2,36 @@ package com.tencent.mm.plugin.voip.model;
 
 public abstract interface x
 {
-  public static final x Cwi = new x()
+  public static final x GZW = new x()
   {
-    public final void Ux(int paramAnonymousInt) {}
+    public final void aUw(String paramAnonymousString) {}
     
-    public final void Uy(int paramAnonymousInt) {}
+    public final void acQ(int paramAnonymousInt) {}
     
-    public final void Uz(int paramAnonymousInt) {}
+    public final void acR(int paramAnonymousInt) {}
     
-    public final void aEW(String paramAnonymousString) {}
+    public final void acS(int paramAnonymousInt) {}
     
-    public final void dfQ() {}
-    
-    public final void dtu() {}
+    public final void dZK() {}
     
     public final void e(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte) {}
     
-    public final void eyY() {}
+    public final void enR() {}
     
-    public final void ezb() {}
+    public final void fFO() {}
     
-    public final void ezc() {}
+    public final void fFR() {}
     
-    public final void ezd() {}
+    public final void fFS() {}
     
-    public final void eze() {}
+    public final void fFT() {}
     
-    public final long ezf()
+    public final long fFU()
     {
       return 0L;
     }
     
-    public final void iv(int paramAnonymousInt1, int paramAnonymousInt2) {}
+    public final void jA(int paramAnonymousInt1, int paramAnonymousInt2) {}
     
     public final void onConnected() {}
     
@@ -43,36 +41,38 @@ public abstract interface x
     
     public final void setHWDecMode(int paramAnonymousInt) {}
     
+    public final void setSpatiotemporalDenosing(int paramAnonymousInt) {}
+    
     public final void setVoipBeauty(int paramAnonymousInt) {}
+    
+    public final void wW(boolean paramAnonymousBoolean) {}
   };
   
-  public abstract void Ux(int paramInt);
+  public abstract void aUw(String paramString);
   
-  public abstract void Uy(int paramInt);
+  public abstract void acQ(int paramInt);
   
-  public abstract void Uz(int paramInt);
+  public abstract void acR(int paramInt);
   
-  public abstract void aEW(String paramString);
+  public abstract void acS(int paramInt);
   
-  public abstract void dfQ();
-  
-  public abstract void dtu();
+  public abstract void dZK();
   
   public abstract void e(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract void eyY();
+  public abstract void enR();
   
-  public abstract void ezb();
+  public abstract void fFO();
   
-  public abstract void ezc();
+  public abstract void fFR();
   
-  public abstract void ezd();
+  public abstract void fFS();
   
-  public abstract void eze();
+  public abstract void fFT();
   
-  public abstract long ezf();
+  public abstract long fFU();
   
-  public abstract void iv(int paramInt1, int paramInt2);
+  public abstract void jA(int paramInt1, int paramInt2);
   
   public abstract void onConnected();
   
@@ -82,7 +82,11 @@ public abstract interface x
   
   public abstract void setHWDecMode(int paramInt);
   
+  public abstract void setSpatiotemporalDenosing(int paramInt);
+  
   public abstract void setVoipBeauty(int paramInt);
+  
+  public abstract void wW(boolean paramBoolean);
 }
 
 

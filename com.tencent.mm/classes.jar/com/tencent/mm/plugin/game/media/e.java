@@ -1,85 +1,89 @@
 package com.tencent.mm.plugin.game.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cs;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.cx;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends cs
+  extends cx
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(40951);
-    c.a locala = new c.a();
-    locala.IBL = new Field[12];
-    locala.columns = new String[13];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[13];
+    localMAutoDBInfo.columns = new String[14];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "taskId";
-    locala.IBN.put("taskId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "taskId";
+    localMAutoDBInfo.colsMap.put("taskId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" taskId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "taskId";
-    locala.columns[1] = "createTime";
-    locala.IBN.put("createTime", "LONG");
+    localMAutoDBInfo.primaryKey = "taskId";
+    localMAutoDBInfo.columns[1] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "publishSource";
-    locala.IBN.put("publishSource", "INTEGER");
+    localMAutoDBInfo.columns[2] = "publishSource";
+    localMAutoDBInfo.colsMap.put("publishSource", "INTEGER");
     localStringBuilder.append(" publishSource INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "mediaType";
-    locala.IBN.put("mediaType", "INTEGER");
+    localMAutoDBInfo.columns[3] = "mediaType";
+    localMAutoDBInfo.colsMap.put("mediaType", "INTEGER");
     localStringBuilder.append(" mediaType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "localIdList";
-    locala.IBN.put("localIdList", "TEXT");
+    localMAutoDBInfo.columns[4] = "localIdList";
+    localMAutoDBInfo.colsMap.put("localIdList", "TEXT");
     localStringBuilder.append(" localIdList TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "mediaList";
-    locala.IBN.put("mediaList", "TEXT");
+    localMAutoDBInfo.columns[5] = "mediaList";
+    localMAutoDBInfo.colsMap.put("mediaList", "TEXT");
     localStringBuilder.append(" mediaList TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "BusinessData";
-    locala.IBN.put("BusinessData", "TEXT");
+    localMAutoDBInfo.columns[6] = "BusinessData";
+    localMAutoDBInfo.colsMap.put("BusinessData", "TEXT");
     localStringBuilder.append(" BusinessData TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "uploadState";
-    locala.IBN.put("uploadState", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[7] = "uploadState";
+    localMAutoDBInfo.colsMap.put("uploadState", "INTEGER default '0' ");
     localStringBuilder.append(" uploadState INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "publishState";
-    locala.IBN.put("publishState", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[8] = "publishState";
+    localMAutoDBInfo.colsMap.put("publishState", "INTEGER default '0' ");
     localStringBuilder.append(" publishState INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[9] = "compressImg";
-    locala.IBN.put("compressImg", "INTEGER default 'true' ");
+    localMAutoDBInfo.columns[9] = "compressImg";
+    localMAutoDBInfo.colsMap.put("compressImg", "INTEGER default 'true' ");
     localStringBuilder.append(" compressImg INTEGER default 'true' ");
     localStringBuilder.append(", ");
-    locala.columns[10] = "mixState";
-    locala.IBN.put("mixState", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[10] = "mixState";
+    localMAutoDBInfo.colsMap.put("mixState", "INTEGER default '0' ");
     localStringBuilder.append(" mixState INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[11] = "bgMixTaskId";
-    locala.IBN.put("bgMixTaskId", "TEXT");
+    localMAutoDBInfo.columns[11] = "bgMixTaskId";
+    localMAutoDBInfo.colsMap.put("bgMixTaskId", "TEXT");
     localStringBuilder.append(" bgMixTaskId TEXT");
-    locala.columns[12] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[12] = "sourceSceneId";
+    localMAutoDBInfo.colsMap.put("sourceSceneId", "INTEGER default '0' ");
+    localStringBuilder.append(" sourceSceneId INTEGER default '0' ");
+    localMAutoDBInfo.columns[13] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(40951);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.e
  * JD-Core Version:    0.7.0.1
  */

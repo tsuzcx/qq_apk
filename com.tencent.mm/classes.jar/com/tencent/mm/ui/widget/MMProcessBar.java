@@ -1,6 +1,11 @@
 package com.tencent.mm.ui.widget;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.support.v4.graphics.drawable.a;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
@@ -8,22 +13,30 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class MMProcessBar
   extends View
 {
-  private Animation FD;
-  private boolean LnU;
-  private float LnV;
+  private Animation FN;
+  private float QDe;
+  
+  public MMProcessBar(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(205404);
+    this.QDe = 0.0F;
+    this.FN = new RotateAnimation(0.0F, 360.0F);
+    AppMethodBeat.o(205404);
+  }
   
   public MMProcessBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164211);
-    this.LnU = true;
-    this.LnV = 0.0F;
-    this.FD = new RotateAnimation(0.0F, 360.0F);
+    this.QDe = 0.0F;
+    this.FN = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164211);
   }
   
@@ -31,40 +44,51 @@ public class MMProcessBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164212);
-    this.LnU = true;
-    this.LnV = 0.0F;
-    this.FD = new RotateAnimation(0.0F, 360.0F);
+    this.QDe = 0.0F;
+    this.FN = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164212);
   }
   
-  private void fPM()
+  public final void gYO()
   {
     AppMethodBeat.i(164217);
-    if (this.FD != null) {
-      this.FD.cancel();
+    if (this.FN != null) {
+      this.FN.cancel();
     }
     clearAnimation();
     AppMethodBeat.o(164217);
   }
   
-  public final void fPN()
+  public final void gYP()
   {
     AppMethodBeat.i(164218);
     if (getVisibility() == 0)
     {
-      startAnimation(this.FD);
+      startAnimation(this.FN);
       AppMethodBeat.o(164218);
       return;
     }
-    ae.w("MicroMsg.MMProcessBar", "[startRotate] startRotate fail. this view Visibility=%s", new Object[] { Integer.valueOf(getVisibility()) });
+    Log.w("MicroMsg.MMProcessBar", "[startRotate] startRotate fail. this view Visibility=%s", new Object[] { Integer.valueOf(getVisibility()) });
     AppMethodBeat.o(164218);
+  }
+  
+  public final boolean gYQ()
+  {
+    AppMethodBeat.i(205406);
+    if ((this.FN != null) && (!this.FN.hasEnded()) && (this.FN.hasStarted()))
+    {
+      AppMethodBeat.o(205406);
+      return true;
+    }
+    AppMethodBeat.o(205406);
+    return false;
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(164215);
     super.onAttachedToWindow();
-    fPN();
+    gYP();
     AppMethodBeat.o(164215);
   }
   
@@ -72,7 +96,7 @@ public class MMProcessBar
   {
     AppMethodBeat.i(164214);
     super.onDetachedFromWindow();
-    fPM();
+    gYO();
     AppMethodBeat.o(164214);
   }
   
@@ -82,16 +106,16 @@ public class MMProcessBar
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean)
     {
-      float f1 = getWidth() / 2;
-      float f2 = getHeight() / 2;
-      fPM();
-      this.FD = new RotateAnimation(0.0F, 72000.0F, f1, f2);
-      this.FD.setRepeatMode(-1);
-      this.FD.setRepeatCount(-1);
-      this.FD.setDuration(75000L);
-      this.FD.setInterpolator(new LinearInterpolator());
-      if ((getVisibility() == 0) && (this.LnU)) {
-        fPN();
+      float f1 = getWidth() / 2.0F;
+      float f2 = getHeight() / 2.0F;
+      gYO();
+      this.FN = new RotateAnimation(0.0F, 72000.0F, f1, f2);
+      this.FN.setRepeatMode(-1);
+      this.FN.setRepeatCount(-1);
+      this.FN.setDuration(70000L);
+      this.FN.setInterpolator(new LinearInterpolator());
+      if (getVisibility() == 0) {
+        gYP();
       }
     }
     AppMethodBeat.o(164216);
@@ -100,30 +124,45 @@ public class MMProcessBar
   public final void rotate(float paramFloat)
   {
     AppMethodBeat.i(164219);
-    if ((this.FD != null) && (!this.FD.hasEnded())) {
-      this.FD.cancel();
+    if ((this.FN != null) && (!this.FN.hasEnded())) {
+      this.FN.cancel();
     }
-    this.LnV += paramFloat;
-    setRotation(this.LnV * 360.0F);
+    this.QDe += paramFloat;
+    setRotation(this.QDe * 360.0F);
     AppMethodBeat.o(164219);
+  }
+  
+  public final void setBackground$255f295(int paramInt)
+  {
+    AppMethodBeat.i(205405);
+    try
+    {
+      Drawable localDrawable = getResources().getDrawable(2131690268);
+      localDrawable.setColorFilter(MMApplicationContext.getContext().getResources().getColor(2131099685), PorterDuff.Mode.SRC_ATOP);
+      if (paramInt != 0) {
+        a.a(localDrawable, ColorStateList.valueOf(paramInt));
+      }
+      setBackground(localDrawable);
+      AppMethodBeat.o(205405);
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(205405);
+    }
   }
   
   public void setDuration(long paramLong)
   {
     AppMethodBeat.i(164220);
-    this.FD.setDuration(paramLong);
+    this.FN.setDuration(paramLong);
     AppMethodBeat.o(164220);
-  }
-  
-  public void setIfVisibleRotate(boolean paramBoolean)
-  {
-    this.LnU = paramBoolean;
   }
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
     AppMethodBeat.i(164221);
-    this.FD.setInterpolator(paramInterpolator);
+    this.FN.setInterpolator(paramInterpolator);
     AppMethodBeat.o(164221);
   }
   
@@ -133,15 +172,11 @@ public class MMProcessBar
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      if (this.LnU)
-      {
-        fPN();
-        AppMethodBeat.o(164213);
-      }
+      gYP();
+      AppMethodBeat.o(164213);
+      return;
     }
-    else {
-      fPM();
-    }
+    gYO();
     AppMethodBeat.o(164213);
   }
 }

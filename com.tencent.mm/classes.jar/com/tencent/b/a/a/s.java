@@ -22,28 +22,28 @@ import org.json.JSONObject;
 
 public final class s
 {
-  static void JS()
+  static void Uf()
   {
-    if (i.cPq != null) {
-      h localh = i.cPq;
+    if (i.dfP != null) {
+      h localh = i.dfP;
     }
   }
   
-  static void JT()
+  static void Ug()
   {
-    if (i.cPq != null) {
-      h localh = i.cPq;
+    if (i.dfP != null) {
+      h localh = i.dfP;
     }
   }
   
-  public static void JU()
+  public static void Uh()
   {
-    if (i.cPq != null) {
-      h localh = i.cPq;
+    if (i.dfP != null) {
+      h localh = i.dfP;
     }
   }
   
-  static String JV()
+  static String Ui()
   {
     AppMethodBeat.i(87650);
     try
@@ -57,7 +57,7 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      JT();
+      Ug();
       AppMethodBeat.o(87650);
     }
     return "";
@@ -93,33 +93,10 @@ public final class s
   static void a(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
     AppMethodBeat.i(87640);
-    if (ep(paramString2)) {
+    if (eY(paramString2)) {
       paramJSONObject.put(paramString1, paramString2);
     }
     AppMethodBeat.o(87640);
-  }
-  
-  static boolean aZ(Context paramContext)
-  {
-    AppMethodBeat.i(87639);
-    try
-    {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((paramContext != null) && (paramContext.getTypeName() != null))
-      {
-        boolean bool = paramContext.getTypeName().equalsIgnoreCase("WIFI");
-        if (bool)
-        {
-          AppMethodBeat.o(87639);
-          return true;
-        }
-      }
-    }
-    catch (Exception paramContext)
-    {
-      AppMethodBeat.o(87639);
-    }
-    return false;
   }
   
   static boolean b(g paramg1, g paramg2)
@@ -144,7 +121,86 @@ public final class s
     return false;
   }
   
-  static String ba(Context paramContext)
+  static String bA(Context paramContext)
+  {
+    AppMethodBeat.i(87651);
+    for (;;)
+    {
+      try
+      {
+        if ((!checkPermission(paramContext, "android.permission.INTERNET")) || (!checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE"))) {
+          continue;
+        }
+        paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+        if ((paramContext == null) || (!paramContext.isConnected())) {
+          continue;
+        }
+        str1 = paramContext.getTypeName();
+        str2 = paramContext.getExtraInfo();
+        if (str1 == null) {
+          continue;
+        }
+        if (!str1.equalsIgnoreCase("WIFI")) {
+          continue;
+        }
+        paramContext = "WIFI";
+      }
+      catch (Throwable paramContext)
+      {
+        String str1;
+        String str2;
+        paramContext = null;
+        Ug();
+        continue;
+        paramContext = null;
+        continue;
+        paramContext = str2;
+        if (str2 != null) {
+          continue;
+        }
+        paramContext = str1;
+        continue;
+      }
+      AppMethodBeat.o(87651);
+      return paramContext;
+      if (!str1.equalsIgnoreCase("MOBILE")) {
+        continue;
+      }
+      paramContext = str2;
+      if (str2 == null)
+      {
+        paramContext = "MOBILE";
+        continue;
+        Uf();
+        paramContext = null;
+      }
+    }
+  }
+  
+  static boolean bt(Context paramContext)
+  {
+    AppMethodBeat.i(87639);
+    try
+    {
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if ((paramContext != null) && (paramContext.getTypeName() != null))
+      {
+        boolean bool = paramContext.getTypeName().equalsIgnoreCase("WIFI");
+        if (bool)
+        {
+          AppMethodBeat.o(87639);
+          return true;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(87639);
+    }
+    return false;
+  }
+  
+  static String bu(Context paramContext)
   {
     AppMethodBeat.i(87643);
     try
@@ -160,21 +216,21 @@ public final class s
       }
       else
       {
-        JS();
+        Uf();
       }
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        JT();
+        Ug();
       }
     }
     AppMethodBeat.o(87643);
     return "";
   }
   
-  static String bb(Context paramContext)
+  static String bv(Context paramContext)
   {
     AppMethodBeat.i(87644);
     if (checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE")) {
@@ -193,17 +249,17 @@ public final class s
       catch (Exception paramContext)
       {
         "get wifi address error".concat(String.valueOf(paramContext));
-        JS();
+        Uf();
         AppMethodBeat.o(87644);
         return "";
       }
     }
-    JS();
+    Uf();
     AppMethodBeat.o(87644);
     return "";
   }
   
-  static String bc(Context paramContext)
+  static String bw(Context paramContext)
   {
     AppMethodBeat.i(87646);
     try
@@ -218,13 +274,13 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      JT();
+      Ug();
       AppMethodBeat.o(87646);
     }
     return null;
   }
   
-  static String bd(Context paramContext)
+  static String bx(Context paramContext)
   {
     AppMethodBeat.i(87647);
     try
@@ -239,13 +295,13 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      JT();
+      Ug();
       AppMethodBeat.o(87647);
     }
     return null;
   }
   
-  static JSONArray be(Context paramContext)
+  static JSONArray by(Context paramContext)
   {
     AppMethodBeat.i(87648);
     try
@@ -282,21 +338,21 @@ public final class s
       }
       else
       {
-        JS();
+        Uf();
       }
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        JT();
+        Ug();
       }
     }
     AppMethodBeat.o(87648);
     return null;
   }
   
-  static String bf(Context paramContext)
+  static String bz(Context paramContext)
   {
     AppMethodBeat.i(87649);
     try
@@ -320,73 +376,17 @@ public final class s
       }
       else
       {
-        JS();
+        Uf();
         AppMethodBeat.o(87649);
         return null;
       }
     }
     catch (Throwable paramContext)
     {
-      JU();
+      Uh();
       AppMethodBeat.o(87649);
     }
     return null;
-  }
-  
-  static String bg(Context paramContext)
-  {
-    AppMethodBeat.i(87651);
-    for (;;)
-    {
-      try
-      {
-        if ((!checkPermission(paramContext, "android.permission.INTERNET")) || (!checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE"))) {
-          continue;
-        }
-        paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-        if ((paramContext == null) || (!paramContext.isConnected())) {
-          continue;
-        }
-        str1 = paramContext.getTypeName();
-        str2 = paramContext.getExtraInfo();
-        if (str1 == null) {
-          continue;
-        }
-        if (!str1.equalsIgnoreCase("WIFI")) {
-          continue;
-        }
-        paramContext = "WIFI";
-      }
-      catch (Throwable paramContext)
-      {
-        String str1;
-        String str2;
-        paramContext = null;
-        JT();
-        continue;
-        paramContext = null;
-        continue;
-        paramContext = str2;
-        if (str2 != null) {
-          continue;
-        }
-        paramContext = str1;
-        continue;
-      }
-      AppMethodBeat.o(87651);
-      return paramContext;
-      if (!str1.equalsIgnoreCase("MOBILE")) {
-        continue;
-      }
-      paramContext = str2;
-      if (str2 == null)
-      {
-        paramContext = "MOBILE";
-        continue;
-        JS();
-        paramContext = null;
-      }
-    }
   }
   
   static boolean checkPermission(Context paramContext, String paramString)
@@ -404,7 +404,7 @@ public final class s
     {
       for (;;)
       {
-        JU();
+        Uh();
       }
     }
     AppMethodBeat.o(87638);
@@ -432,10 +432,34 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      JU();
+      Uh();
       AppMethodBeat.o(87641);
     }
     return paramString;
+  }
+  
+  static boolean eY(String paramString)
+  {
+    AppMethodBeat.i(87634);
+    if ((paramString == null) || (paramString.trim().length() == 0))
+    {
+      AppMethodBeat.o(87634);
+      return false;
+    }
+    AppMethodBeat.o(87634);
+    return true;
+  }
+  
+  static boolean eZ(String paramString)
+  {
+    AppMethodBeat.i(87635);
+    if ((paramString != null) && (paramString.trim().length() >= 40))
+    {
+      AppMethodBeat.o(87635);
+      return true;
+    }
+    AppMethodBeat.o(87635);
+    return false;
   }
   
   static String encode(String paramString)
@@ -459,34 +483,10 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      JU();
+      Uh();
       AppMethodBeat.o(87642);
     }
     return paramString;
-  }
-  
-  static boolean ep(String paramString)
-  {
-    AppMethodBeat.i(87634);
-    if ((paramString == null) || (paramString.trim().length() == 0))
-    {
-      AppMethodBeat.o(87634);
-      return false;
-    }
-    AppMethodBeat.o(87634);
-    return true;
-  }
-  
-  static boolean eq(String paramString)
-  {
-    AppMethodBeat.i(87635);
-    if ((paramString != null) && (paramString.trim().length() >= 40))
-    {
-      AppMethodBeat.o(87635);
-      return true;
-    }
-    AppMethodBeat.o(87635);
-    return false;
   }
   
   private static WifiInfo getWifiInfo(Context paramContext)
@@ -508,7 +508,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.s
  * JD-Core Version:    0.7.0.1
  */

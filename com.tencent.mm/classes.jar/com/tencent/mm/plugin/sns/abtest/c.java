@@ -4,94 +4,75 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.un;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.g.a.vl;
 import com.tencent.mm.model.a.e;
 import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
-import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class c
 {
-  private static String zmR;
-  private static Set<Long> zmS;
-  private static View.OnClickListener zmT;
-  private static boolean zmg;
-  private static com.tencent.mm.sdk.b.c zmp;
+  private static boolean DqY;
+  private static String DrJ;
+  private static Set<Long> DrK;
+  private static View.OnClickListener DrL;
+  private static IListener Drh;
   
   static
   {
     AppMethodBeat.i(94961);
-    zmR = "0";
-    zmS = new HashSet();
-    zmp = new com.tencent.mm.sdk.b.c() {};
-    zmg = false;
+    DrJ = "0";
+    DrK = new HashSet();
+    Drh = new IListener() {};
+    DqY = false;
     AppMethodBeat.o(94961);
   }
   
   public static void b(View paramView, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(94958);
-    if (zmg)
+    if (DqY)
     {
-      paramBaseViewHolder.AMU = false;
-      paramBaseViewHolder.AMS = ((ViewStub)paramView.findViewById(2131305042));
-      paramBaseViewHolder.AMS.setVisibility(8);
+      paramBaseViewHolder.EXe = false;
+      paramBaseViewHolder.EXc = ((ViewStub)paramView.findViewById(2131308193));
+      paramBaseViewHolder.EXc.setVisibility(8);
     }
     AppMethodBeat.o(94958);
   }
   
-  public static void dUA()
+  public static void eWA()
   {
     AppMethodBeat.i(94957);
-    zmT = null;
-    com.tencent.mm.sdk.b.a.IvT.d(zmp);
-    if (zmg)
+    DrL = null;
+    EventCenter.instance.removeListener(Drh);
+    if (DqY)
     {
-      g.aDh().Cg("6").hmW = 2L;
-      g.aDh().Cg("6").result = zmS.size();
-      f.a(g.aDh().Cg("6"));
-      ae.d("MicroMsg.SellerABTestManager", "endABTestWhenExitTimeline, scene:%d, result:%s", new Object[] { Integer.valueOf(2), zmS.size() });
+      g.aWT().KR("6").igp = 2L;
+      g.aWT().KR("6").result = DrK.size();
+      f.a(g.aWT().KR("6"));
+      Log.d("MicroMsg.SellerABTestManager", "endABTestWhenExitTimeline, scene:%d, result:%s", new Object[] { Integer.valueOf(2), DrK.size() });
     }
-    zmR = "0";
-    zmg = false;
-    zmS.clear();
+    DrJ = "0";
+    DqY = false;
+    DrK.clear();
     AppMethodBeat.o(94957);
   }
   
-  public static void dUz()
+  public static void eWz()
   {
     AppMethodBeat.i(94956);
-    if (g.aDh().Cg("6") != null)
+    if (g.aWT().KR("6") != null)
     {
-      zmR = g.aDh().Cg("6").value;
-      ae.d("MicroMsg.SellerABTestManager", "startABTest, value:%s", new Object[] { zmR });
-      zmg = true;
-      com.tencent.mm.sdk.b.a.IvT.c(zmp);
-      zmT = new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(94955);
-          Object localObject = new b();
-          ((b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/abtest/SellerABTestManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-          if ((paramAnonymousView.getTag() instanceof p))
-          {
-            localObject = (p)paramAnonymousView.getTag();
-            if ((localObject != null) && (!bu.isNullOrNil(((p)localObject).getSnsId()))) {
-              c.S(paramAnonymousView.getContext(), ((p)localObject).getSnsId());
-            }
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/abtest/SellerABTestManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(94955);
-        }
-      };
+      DrJ = g.aWT().KR("6").value;
+      Log.d("MicroMsg.SellerABTestManager", "startABTest, value:%s", new Object[] { DrJ });
+      DqY = true;
+      EventCenter.instance.addListener(Drh);
+      DrL = new c.2();
     }
     AppMethodBeat.o(94956);
   }

@@ -8,41 +8,41 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.plugin.appbrand.ab;
+import com.tencent.mm.plugin.appbrand.ac;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.ao;
 
 public final class AppBrandNearbyWebViewUI
   extends WebViewUI
 {
-  private static Boolean gfH = null;
+  private static Boolean isMIUIV8 = null;
   
   /* Error */
-  public static boolean abu()
+  public static boolean isMIUIV8()
   {
     // Byte code:
     //   0: sipush 21123
-    //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
+    //   3: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:isMIUIV8	Ljava/lang/Boolean;
     //   9: ifnonnull +78 -> 87
     //   12: aconst_null
     //   13: astore_2
     //   14: aconst_null
     //   15: astore_1
-    //   16: new 26	com/tencent/mm/vfs/k
+    //   16: new 25	com/tencent/mm/vfs/o
     //   19: dup
-    //   20: invokestatic 32	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   23: ldc 34
-    //   25: invokespecial 37	com/tencent/mm/vfs/k:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   28: invokestatic 43	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
+    //   20: invokestatic 31	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   23: ldc 33
+    //   25: invokespecial 36	com/tencent/mm/vfs/o:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   28: invokestatic 42	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
     //   31: astore_3
     //   32: aload_3
     //   33: astore_1
     //   34: aload_3
     //   35: astore_2
-    //   36: new 45	java/util/Properties
+    //   36: new 44	java/util/Properties
     //   39: dup
-    //   40: invokespecial 46	java/util/Properties:<init>	()V
+    //   40: invokespecial 45	java/util/Properties:<init>	()V
     //   43: astore 4
     //   45: aload_3
     //   46: astore_1
@@ -50,39 +50,39 @@ public final class AppBrandNearbyWebViewUI
     //   48: astore_2
     //   49: aload 4
     //   51: aload_3
-    //   52: invokevirtual 50	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   52: invokevirtual 49	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   55: aload_3
     //   56: astore_1
     //   57: aload_3
     //   58: astore_2
     //   59: aload 4
-    //   61: ldc 52
-    //   63: ldc 54
-    //   65: invokevirtual 58	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   68: ldc 60
-    //   70: invokevirtual 66	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   73: invokestatic 72	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   76: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
+    //   61: ldc 51
+    //   63: ldc 53
+    //   65: invokevirtual 57	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   68: ldc 59
+    //   70: invokevirtual 65	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   73: invokestatic 71	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   76: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:isMIUIV8	Ljava/lang/Boolean;
     //   79: aload_3
     //   80: ifnull +7 -> 87
     //   83: aload_3
-    //   84: invokevirtual 77	java/io/InputStream:close	()V
-    //   87: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
-    //   90: invokevirtual 80	java/lang/Boolean:booleanValue	()Z
+    //   84: invokevirtual 76	java/io/InputStream:close	()V
+    //   87: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:isMIUIV8	Ljava/lang/Boolean;
+    //   90: invokevirtual 79	java/lang/Boolean:booleanValue	()Z
     //   93: istore_0
     //   94: sipush 21123
-    //   97: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   100: iload_0
     //   101: ireturn
     //   102: astore_2
     //   103: aload_1
     //   104: astore_2
-    //   105: getstatic 86	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   108: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gfH	Ljava/lang/Boolean;
+    //   105: getstatic 85	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   108: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:isMIUIV8	Ljava/lang/Boolean;
     //   111: aload_1
     //   112: ifnull -25 -> 87
     //   115: aload_1
-    //   116: invokevirtual 77	java/io/InputStream:close	()V
+    //   116: invokevirtual 76	java/io/InputStream:close	()V
     //   119: goto -32 -> 87
     //   122: astore_1
     //   123: goto -36 -> 87
@@ -90,9 +90,9 @@ public final class AppBrandNearbyWebViewUI
     //   127: aload_2
     //   128: ifnull +7 -> 135
     //   131: aload_2
-    //   132: invokevirtual 77	java/io/InputStream:close	()V
+    //   132: invokevirtual 76	java/io/InputStream:close	()V
     //   135: sipush 21123
-    //   138: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: aload_1
     //   142: athrow
     //   143: astore_1
@@ -128,35 +128,35 @@ public final class AppBrandNearbyWebViewUI
     //   131	135	147	java/lang/Exception
   }
   
-  public final void bAi()
+  public final void bXg()
   {
     AppMethodBeat.i(21121);
-    super.bAi();
+    super.bXg();
     setActionbarColor(-855310);
     AppMethodBeat.o(21121);
   }
   
-  public final int bAj()
+  public final int bXh()
   {
     AppMethodBeat.i(21122);
-    if ((Build.VERSION.SDK_INT >= 23) && ((!g.abt()) || (!abu())))
+    if ((Build.VERSION.SDK_INT >= 23) && ((!g.isMIUI()) || (!isMIUIV8())))
     {
-      al.d(getWindow());
+      ao.d(getWindow(), true);
       AppMethodBeat.o(21122);
       return -855310;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      i = ab.jDE;
+      i = ac.kEM;
       AppMethodBeat.o(21122);
       return i;
     }
-    int i = super.bAj();
+    int i = super.bXh();
     AppMethodBeat.o(21122);
     return i;
   }
   
-  public final boolean bAk()
+  public final boolean bXi()
   {
     return true;
   }
@@ -194,13 +194,13 @@ public final class AppBrandNearbyWebViewUI
   {
     AppMethodBeat.i(21119);
     super.setMMTitle(paramString);
-    setMMTitleColor(getContext().getResources().getColor(2131099732));
+    setMMTitleColor(getContext().getResources().getColor(2131099746));
     AppMethodBeat.o(21119);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyWebViewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import com.tencent.neattextview.textview.view.NeatTextView;
 public final class c
   implements LineBackgroundSpan
 {
-  private View JDg;
+  private View ONY;
   private final int color;
   private int end;
   private Rect rect;
@@ -24,7 +24,7 @@ public final class c
   public c(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159148);
-    this.JDg = paramView;
+    this.ONY = paramView;
     this.color = paramInt1;
     this.start = paramInt2;
     this.end = paramInt3;
@@ -46,8 +46,8 @@ public final class c
       return;
     }
     int i = paramPaint.getColor();
-    int k = b.aM(this.JDg, this.start);
-    int j = b.aM(this.JDg, this.end);
+    int k = b.aQ(this.ONY, this.start);
+    int j = b.aQ(this.ONY, this.end);
     paramInt7 = paramInt1;
     paramInt5 = paramInt2;
     float f;
@@ -60,7 +60,7 @@ public final class c
         if (k != paramInt8) {
           break label269;
         }
-        f = b.aN(this.JDg, this.start);
+        f = b.aR(this.ONY, this.start);
         paramInt7 = (int)f;
         if (j != paramInt8) {
           break label360;
@@ -70,7 +70,7 @@ public final class c
     label269:
     label354:
     label360:
-    for (paramInt5 = (int)b.aN(this.JDg, this.end);; paramInt5 = (int)b.aQ(this.JDg, paramInt8) + paramInt7)
+    for (paramInt5 = (int)b.aR(this.ONY, this.end);; paramInt5 = (int)b.aU(this.ONY, paramInt8) + paramInt7)
     {
       paramInt1 = (int)(paramInt4 + paramPaint.descent());
       this.rect.left = paramInt7;
@@ -92,7 +92,7 @@ public final class c
       paramPaint.setColor(i);
       AppMethodBeat.o(159149);
       return;
-      paramCharSequence = this.JDg;
+      paramCharSequence = this.ONY;
       if ((paramCharSequence instanceof NeatTextView))
       {
         paramCharSequence = ((NeatTextView)paramCharSequence).getLayout();
@@ -124,7 +124,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.c
  * JD-Core Version:    0.7.0.1
  */

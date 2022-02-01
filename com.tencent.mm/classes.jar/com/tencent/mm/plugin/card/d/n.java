@@ -18,10 +18,10 @@ import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.av.a.c.h;
 import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.protocal.protobuf.tu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 public final class n
@@ -37,18 +37,18 @@ public final class n
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.asj();
-      q.aJc();
-      ((c.a)localObject).igB = null;
-      ((c.a)localObject).hgD = m.Zk(paramString);
-      ((c.a)localObject).igk = true;
-      ((c.a)localObject).hhW = false;
-      ((c.a)localObject).igi = true;
-      ((c.a)localObject).hgG = paramInt1;
-      ((c.a)localObject).hgF = paramInt1;
-      ((c.a)localObject).igv = 2131231506;
-      localObject = ((c.a)localObject).aJu();
-      q.aJb().a(paramString, paramImageView, (c)localObject, new h()
+      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aKJ();
+      q.bcW();
+      ((c.a)localObject).jbw = null;
+      ((c.a)localObject).fullPath = m.ajp(paramString);
+      ((c.a)localObject).jbf = true;
+      ((c.a)localObject).iaT = false;
+      ((c.a)localObject).jbd = true;
+      ((c.a)localObject).hZA = paramInt1;
+      ((c.a)localObject).hZz = paramInt1;
+      ((c.a)localObject).jbq = 2131231570;
+      localObject = ((c.a)localObject).bdv();
+      q.bcV().a(paramString, paramImageView, (c)localObject, new h()
       {
         public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
         {
@@ -62,27 +62,27 @@ public final class n
           AppMethodBeat.i(113855);
           if (paramAnonymousb.bitmap != null)
           {
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(113854);
-                n.1.this.oWi.setImageBitmap(this.iXM);
-                n.1.this.oWi.setColorFilter(n.1.this.mcX, PorterDuff.Mode.SRC_IN);
+                n.1.this.qlc.setImageBitmap(this.jUL);
+                n.1.this.qlc.setColorFilter(n.1.this.nnl, PorterDuff.Mode.SRC_IN);
                 AppMethodBeat.o(113854);
               }
             });
             AppMethodBeat.o(113855);
             return;
           }
-          n.b(this.oWi, this.oWj, paramInt2);
+          n.b(this.qlc, this.qld, paramInt2);
           AppMethodBeat.o(113855);
         }
       });
       AppMethodBeat.o(113862);
       return;
     }
-    b(paramImageView, 2131231506, paramInt2);
+    b(paramImageView, 2131231570, paramInt2);
     AppMethodBeat.o(113862);
   }
   
@@ -105,18 +105,18 @@ public final class n
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.asj();
-      q.aJc();
-      ((c.a)localObject).igB = null;
-      ((c.a)localObject).hgD = m.Zk(paramString);
-      ((c.a)localObject).igk = true;
-      ((c.a)localObject).hhW = paramBoolean;
-      ((c.a)localObject).igi = true;
-      ((c.a)localObject).hgG = paramInt1;
-      ((c.a)localObject).hgF = paramInt1;
-      ((c.a)localObject).igv = paramInt2;
-      localObject = ((c.a)localObject).aJu();
-      q.aJb().a(paramString, paramImageView, (c)localObject);
+      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aKJ();
+      q.bcW();
+      ((c.a)localObject).jbw = null;
+      ((c.a)localObject).fullPath = m.ajp(paramString);
+      ((c.a)localObject).jbf = true;
+      ((c.a)localObject).iaT = paramBoolean;
+      ((c.a)localObject).jbd = true;
+      ((c.a)localObject).hZA = paramInt1;
+      ((c.a)localObject).hZz = paramInt1;
+      ((c.a)localObject).jbq = paramInt2;
+      localObject = ((c.a)localObject).bdv();
+      q.bcV().a(paramString, paramImageView, (c)localObject);
       AppMethodBeat.o(113861);
       return;
     }
@@ -127,16 +127,16 @@ public final class n
   public static void a(MMActivity paramMMActivity, com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113864);
-    paramMMActivity.setActionbarColor(l.ZY(paramb.bVc().hDr));
+    paramMMActivity.setActionbarColor(l.ake(paramb.csQ().ixw));
     AppMethodBeat.o(113864);
   }
   
-  public static String aaf(String paramString)
+  public static String akl(String paramString)
   {
     AppMethodBeat.i(113860);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.CardViewUtil", "toApply is null");
+      Log.e("MicroMsg.CardViewUtil", "toApply is null");
       AppMethodBeat.o(113860);
       return "";
     }
@@ -158,13 +158,13 @@ public final class n
   public static void b(ImageView paramImageView, final int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(113863);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(113856);
-        this.oWi.setImageResource(paramInt1);
-        this.oWi.setColorFilter(paramInt2, PorterDuff.Mode.SRC_IN);
+        this.qlc.setImageResource(paramInt1);
+        this.qlc.setColorFilter(paramInt2, PorterDuff.Mode.SRC_IN);
         AppMethodBeat.o(113856);
       }
     });
@@ -174,11 +174,11 @@ public final class n
   public static void d(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(113865);
-    paramMMActivity.setActionbarColor(paramMMActivity.getResources().getColor(2131101179));
+    paramMMActivity.setActionbarColor(paramMMActivity.getResources().getColor(2131101424));
     AppMethodBeat.o(113865);
   }
   
-  public static Rect dK(View paramView)
+  public static Rect dC(View paramView)
   {
     AppMethodBeat.i(113858);
     Rect localRect = new Rect();
@@ -188,6 +188,13 @@ public final class n
     localRect.bottom = paramView.getPaddingBottom();
     AppMethodBeat.o(113858);
     return localRect;
+  }
+  
+  public static void f(View paramView, Rect paramRect)
+  {
+    AppMethodBeat.i(113859);
+    paramView.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+    AppMethodBeat.o(113859);
   }
   
   public static void h(TextView paramTextView, int paramInt)
@@ -200,41 +207,34 @@ public final class n
     {
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757006);
+      paramTextView.setText(2131757176);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757001);
+      paramTextView.setText(2131757171);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757004);
+      paramTextView.setText(2131757174);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757003);
+      paramTextView.setText(2131757173);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757007);
+      paramTextView.setText(2131757177);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757008);
+      paramTextView.setText(2131757178);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757002);
+      paramTextView.setText(2131757172);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757005);
+      paramTextView.setText(2131757175);
     }
-  }
-  
-  public static void j(View paramView, Rect paramRect)
-  {
-    AppMethodBeat.i(113859);
-    paramView.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-    AppMethodBeat.o(113859);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.n
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,22 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/CommentInputDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentInputView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "getCommentInputView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "setCommentInputView", "(Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;)V", "params", "Landroid/view/ViewGroup$LayoutParams;", "getParams", "()Landroid/view/ViewGroup$LayoutParams;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/CommentInputDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentInputView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "getCommentInputView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;", "setCommentInputView", "(Lcom/tencent/mm/plugin/story/ui/view/StoryCommentInputView;)V", "params", "Landroid/view/ViewGroup$LayoutParams;", "getParams", "()Landroid/view/ViewGroup$LayoutParams;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "plugin-story_release"})
 public final class c
   extends e
 {
-  StoryCommentInputView BpS;
-  private final ViewGroup.LayoutParams wgm;
+  StoryCommentInputView FAE;
+  private final ViewGroup.LayoutParams zAM;
   
   public c(Context paramContext)
   {
-    super(paramContext, 2131820846);
+    super(paramContext, 2131820850);
     AppMethodBeat.i(120021);
-    this.BpS = new StoryCommentInputView(paramContext);
-    this.wgm = new ViewGroup.LayoutParams(-1, -1);
-    gK();
+    this.FAE = new StoryCommentInputView(paramContext);
+    this.zAM = new ViewGroup.LayoutParams(-1, -1);
+    gR();
     AppMethodBeat.o(120021);
   }
   
@@ -36,7 +36,7 @@ public final class c
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(120018);
-    setContentView((View)this.BpS, this.wgm);
+    setContentView((View)this.FAE, this.zAM);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null)
@@ -54,13 +54,13 @@ public final class c
   {
     AppMethodBeat.i(120019);
     super.onStart();
-    this.BpS.requestFocus();
+    this.FAE.requestFocus();
     AppMethodBeat.o(120019);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.c
  * JD-Core Version:    0.7.0.1
  */

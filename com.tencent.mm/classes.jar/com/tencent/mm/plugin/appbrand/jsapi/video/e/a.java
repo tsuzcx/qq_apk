@@ -1,186 +1,194 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e;
 
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class a
-  implements c
+  implements d
 {
-  protected b.h luA;
-  protected b.c luB;
-  private final Set<b.f> luC = Collections.newSetFromMap(new ConcurrentHashMap());
-  private final Set<b.g> luD = Collections.newSetFromMap(new ConcurrentHashMap());
-  private final Set<b.b> luE = Collections.newSetFromMap(new ConcurrentHashMap());
-  protected int lur = 0;
-  private volatile boolean lus;
-  protected b.e lut;
-  protected b.d luu;
-  protected b.f luv;
-  protected b.b luw;
-  protected b.g luy;
-  protected b.a luz;
+  protected int mAT = 0;
+  private volatile boolean mAU;
+  protected c.f mAV;
+  protected c.e mAW;
+  protected c.g mAX;
+  protected c.b mAY;
+  protected c.h mAZ;
+  protected c.a mBa;
+  protected c.i mBb;
+  protected c.d mBc;
+  private final Set<c.g> mBd = Collections.newSetFromMap(new ConcurrentHashMap());
+  private final Set<c.h> mBe = Collections.newSetFromMap(new ConcurrentHashMap());
+  private final Set<c.b> mBf = Collections.newSetFromMap(new ConcurrentHashMap());
   
-  public final void RO(String paramString)
+  public final void a(c.a parama)
   {
-    ae.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnDownStreamChanged, selectIndex:%s", new Object[] { paramString });
+    this.mBa = parama;
+  }
+  
+  public final void a(c.b paramb)
+  {
+    this.mAY = paramb;
+  }
+  
+  public final void a(c.d paramd)
+  {
+    this.mBc = paramd;
+  }
+  
+  public final void a(c.e parame)
+  {
+    this.mAW = parame;
+  }
+  
+  public final void a(c.f paramf)
+  {
+    this.mAV = paramf;
+  }
+  
+  public final void a(c.g paramg)
+  {
+    this.mAX = paramg;
+  }
+  
+  public final void a(c.h paramh)
+  {
+    this.mAZ = paramh;
+  }
+  
+  public final void a(c.i parami)
+  {
+    this.mBb = parami;
+  }
+  
+  public void a(String paramString1, String paramString2, c.c paramc)
+  {
+    dU(paramString1, paramString2);
+    if (paramc != null) {
+      paramc.bKA();
+    }
+  }
+  
+  public final void abt(String paramString)
+  {
+    Log.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnDownStreamChanged, selectIndex:%s", new Object[] { paramString });
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return;
       }
-      if (this.luB != null)
+      if (this.mBc != null)
       {
-        this.luB.RP(paramString);
+        this.mBc.abu(paramString);
         return;
       }
     }
     finally {}
   }
   
-  public final void a(b.a parama)
+  public final void b(c.b paramb)
   {
-    this.luz = parama;
+    this.mBf.add(paramb);
   }
   
-  public final void a(b.b paramb)
+  public final void b(c.g paramg)
   {
-    this.luw = paramb;
+    this.mBd.add(paramg);
   }
   
-  public final void a(b.c paramc)
+  public final void b(c.h paramh)
   {
-    this.luB = paramc;
+    this.mBe.add(paramh);
   }
   
-  public final void a(b.d paramd)
+  protected final void bKx()
   {
-    this.luu = paramd;
-  }
-  
-  public final void a(b.e parame)
-  {
-    this.lut = parame;
-  }
-  
-  public final void a(b.f paramf)
-  {
-    this.luv = paramf;
-  }
-  
-  public final void a(b.g paramg)
-  {
-    this.luy = paramg;
-  }
-  
-  public final void a(b.h paramh)
-  {
-    this.luA = paramh;
-  }
-  
-  public final void b(b.b paramb)
-  {
-    this.luE.add(paramb);
-  }
-  
-  public final void b(b.f paramf)
-  {
-    this.luC.add(paramf);
-  }
-  
-  public final void b(b.g paramg)
-  {
-    this.luD.add(paramg);
-  }
-  
-  protected final void boU()
-  {
-    ae.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnPrepared");
+    Log.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnPrepared");
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return;
       }
-      if (this.luv != null) {
-        this.luv.a(this);
+      if (this.mAX != null) {
+        this.mAX.a(this);
       }
-      Iterator localIterator = this.luC.iterator();
+      Iterator localIterator = this.mBd.iterator();
       while (localIterator.hasNext()) {
-        ((b.f)localIterator.next()).a(this);
+        ((c.g)localIterator.next()).a(this);
       }
       return;
     }
     finally {}
   }
   
-  protected final void boV()
+  protected final void bKy()
   {
-    ae.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnCompletion");
+    Log.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnCompletion");
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return;
       }
-      if (this.luw != null) {
-        this.luw.GH();
+      if (this.mAY != null) {
+        this.mAY.QA();
       }
-      Iterator localIterator = this.luE.iterator();
+      Iterator localIterator = this.mBf.iterator();
       while (localIterator.hasNext()) {
-        ((b.b)localIterator.next()).GH();
+        ((c.b)localIterator.next()).QA();
       }
       return;
     }
     finally {}
   }
   
-  protected final void boW()
+  protected final void bKz()
   {
-    ae.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnSeekComplete");
+    Log.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnSeekComplete");
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return;
       }
-      if (this.luy != null) {
-        this.luy.b(this);
+      if (this.mAZ != null) {
+        this.mAZ.b(this);
       }
-      Iterator localIterator = this.luD.iterator();
+      Iterator localIterator = this.mBe.iterator();
       while (localIterator.hasNext()) {
-        ((b.g)localIterator.next()).b(this);
+        ((c.h)localIterator.next()).b(this);
       }
       return;
     }
     finally {}
   }
   
-  public final void dW(int paramInt1, int paramInt2)
+  public final void ei(int paramInt1, int paramInt2)
   {
-    ae.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnVideoSizeChanged, width:%d, height:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnVideoSizeChanged, width:%d, height:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return;
       }
-      if (this.luA != null)
+      if (this.mBb != null)
       {
-        this.luA.a(this, paramInt1, paramInt2);
+        this.mBb.a(this, paramInt1, paramInt2);
         return;
       }
     }
     finally {}
   }
   
-  protected boolean dX(int paramInt1, int paramInt2)
+  protected boolean ej(int paramInt1, int paramInt2)
   {
-    ae.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnError, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnError, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return false;
       }
-      if ((this.luu != null) && (this.luu.cc(paramInt1, paramInt2))) {
+      if ((this.mAW != null) && (this.mAW.cc(paramInt1, paramInt2))) {
         return true;
       }
     }
@@ -188,15 +196,15 @@ public abstract class a
     return false;
   }
   
-  public final boolean dY(int paramInt1, int paramInt2)
+  public final boolean ek(int paramInt1, int paramInt2)
   {
-    ae.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnInfo, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnInfo, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return false;
       }
-      if ((this.lut != null) && (this.lut.cb(paramInt1, paramInt2))) {
+      if ((this.mAV != null) && (this.mAV.cb(paramInt1, paramInt2))) {
         return true;
       }
     }
@@ -206,24 +214,24 @@ public abstract class a
   
   public final int getState()
   {
-    return this.lur;
+    return this.mAT;
   }
   
   public void release()
   {
-    this.lus = true;
+    this.mAU = true;
   }
   
-  public final void tH(int paramInt)
+  public final void xF(int paramInt)
   {
     try
     {
-      if (this.lus) {
+      if (this.mAU) {
         return;
       }
-      if (this.luz != null)
+      if (this.mBa != null)
       {
-        this.luz.gN(paramInt);
+        this.mBa.id(paramInt);
         return;
       }
     }

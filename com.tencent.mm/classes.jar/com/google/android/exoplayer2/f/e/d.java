@@ -6,27 +6,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  int bCT;
-  boolean bCU;
-  boolean bCV;
-  int bCW = -1;
-  int bCX = -1;
+  int bCV;
+  boolean bCW;
+  boolean bCX;
   int bCY = -1;
   int bCZ = -1;
   int bDa = -1;
-  d bDb;
-  Layout.Alignment bDc;
+  int bDb = -1;
+  int bDc = -1;
+  d bDd;
+  Layout.Alignment bDe;
   int backgroundColor;
   String fontFamily;
   float fontSize;
   String id;
   
-  public final d aV(boolean paramBoolean)
+  public final d aU(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92858);
     boolean bool;
-    if (this.bDb == null)
+    if (this.bDd == null)
     {
       bool = true;
       a.checkState(bool);
@@ -36,7 +36,7 @@ final class d
     }
     for (;;)
     {
-      this.bCW = i;
+      this.bCY = i;
       AppMethodBeat.o(92858);
       return this;
       bool = false;
@@ -46,12 +46,12 @@ final class d
     }
   }
   
-  public final d aW(boolean paramBoolean)
+  public final d aV(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92859);
     boolean bool;
-    if (this.bDb == null)
+    if (this.bDd == null)
     {
       bool = true;
       a.checkState(bool);
@@ -61,7 +61,7 @@ final class d
     }
     for (;;)
     {
-      this.bCX = i;
+      this.bCZ = i;
       AppMethodBeat.o(92859);
       return this;
       bool = false;
@@ -76,8 +76,17 @@ final class d
     AppMethodBeat.i(92861);
     if (paramd != null)
     {
-      if ((!this.bCU) && (paramd.bCU)) {
-        eT(paramd.bCT);
+      if ((!this.bCW) && (paramd.bCW)) {
+        eS(paramd.bCV);
+      }
+      if (this.bDa == -1) {
+        this.bDa = paramd.bDa;
+      }
+      if (this.bDb == -1) {
+        this.bDb = paramd.bDb;
+      }
+      if (this.fontFamily == null) {
+        this.fontFamily = paramd.fontFamily;
       }
       if (this.bCY == -1) {
         this.bCY = paramd.bCY;
@@ -85,62 +94,53 @@ final class d
       if (this.bCZ == -1) {
         this.bCZ = paramd.bCZ;
       }
-      if (this.fontFamily == null) {
-        this.fontFamily = paramd.fontFamily;
+      if (this.bDe == null) {
+        this.bDe = paramd.bDe;
       }
-      if (this.bCW == -1) {
-        this.bCW = paramd.bCW;
-      }
-      if (this.bCX == -1) {
-        this.bCX = paramd.bCX;
-      }
-      if (this.bDc == null) {
-        this.bDc = paramd.bDc;
-      }
-      if (this.bDa == -1)
+      if (this.bDc == -1)
       {
-        this.bDa = paramd.bDa;
+        this.bDc = paramd.bDc;
         this.fontSize = paramd.fontSize;
       }
-      if ((!this.bCV) && (paramd.bCV)) {
-        eU(paramd.backgroundColor);
+      if ((!this.bCX) && (paramd.bCX)) {
+        eT(paramd.backgroundColor);
       }
     }
     AppMethodBeat.o(92861);
     return this;
   }
   
-  public final d eT(int paramInt)
+  public final d eS(int paramInt)
   {
     AppMethodBeat.i(92860);
-    if (this.bDb == null) {}
+    if (this.bDd == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bCT = paramInt;
-      this.bCU = true;
+      this.bCV = paramInt;
+      this.bCW = true;
       AppMethodBeat.o(92860);
       return this;
     }
   }
   
-  public final d eU(int paramInt)
+  public final d eT(int paramInt)
   {
     this.backgroundColor = paramInt;
-    this.bCV = true;
+    this.bCX = true;
     return this;
   }
   
   public final int getStyle()
   {
     int j = 0;
-    if ((this.bCY == -1) && (this.bCZ == -1)) {
+    if ((this.bDa == -1) && (this.bDb == -1)) {
       return -1;
     }
-    if (this.bCY == 1) {}
+    if (this.bDa == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.bCZ == 1) {
+      if (this.bDb == 1) {
         j = 2;
       }
       return i | j;
@@ -149,7 +149,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.d
  * JD-Core Version:    0.7.0.1
  */

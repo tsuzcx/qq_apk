@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.qbar.ScanDecodeFrameData;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class ScanCodeMaskView$j
   implements Runnable
 {
@@ -20,29 +20,29 @@ final class ScanCodeMaskView$j
   {
     AppMethodBeat.i(170053);
     long l = System.currentTimeMillis();
-    ScanCodeMaskView.a(this.yNL, ScanCodeMaskView.a(this.yNL, this.yNW));
-    ae.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    ar.f((Runnable)new Runnable()
+    ScanCodeMaskView.a(this.CRD, ScanCodeMaskView.a(this.CRD, this.CRN));
+    Log.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    MMHandlerThread.postToMainThread((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(170052);
-        if ((!ScanCodeMaskView.o(this.yNX.yNL)) && (ScanCodeMaskView.n(this.yNX.yNL) != null))
+        if ((!ScanCodeMaskView.o(this.CRO.CRD)) && (ScanCodeMaskView.n(this.CRO.CRD) != null))
         {
-          Object localObject = ScanCodeMaskView.n(this.yNX.yNL);
+          Object localObject = ScanCodeMaskView.n(this.CRO.CRD);
           if (localObject == null) {
-            p.gkB();
+            p.hyc();
           }
           if (!((Bitmap)localObject).isRecycled())
           {
-            ScanCodeMaskView.p(this.yNX.yNL).setImageBitmap(ScanCodeMaskView.n(this.yNX.yNL));
-            ScanCodeMaskView.p(this.yNX.yNL).setVisibility(0);
-            ScanCodeMaskView.p(this.yNX.yNL).setAlpha(0.0F);
-            localObject = ScanCodeMaskView.p(this.yNX.yNL).animate();
+            ScanCodeMaskView.p(this.CRO.CRD).setImageBitmap(ScanCodeMaskView.n(this.CRO.CRD));
+            ScanCodeMaskView.p(this.CRO.CRD).setVisibility(0);
+            ScanCodeMaskView.p(this.CRO.CRD).setAlpha(0.0F);
+            localObject = ScanCodeMaskView.p(this.CRO.CRD).animate();
             if (localObject != null) {
               ((ViewPropertyAnimator)localObject).cancel();
             }
-            localObject = ScanCodeMaskView.p(this.yNX.yNL).animate();
+            localObject = ScanCodeMaskView.p(this.CRO.CRD).animate();
             if (localObject != null)
             {
               localObject = ((ViewPropertyAnimator)localObject).alpha(1.0F);
@@ -67,7 +67,7 @@ final class ScanCodeMaskView$j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanCodeMaskView.j
  * JD-Core Version:    0.7.0.1
  */

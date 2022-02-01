@@ -1,68 +1,65 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bdi;
-import com.tencent.mm.protocal.protobuf.bdj;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bya;
+import com.tencent.mm.protocal.protobuf.byb;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
+  private i callback;
+  private d rr;
   
-  public c(long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public c(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(97137);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bdi();
-    ((b.a)localObject).hQG = new bdj();
-    ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/get_landpage_smartphone";
-    ((b.a)localObject).funcId = 2605;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bdi)this.rr.hQD.hQJ;
-    ((bdi)localObject).zQo = paramLong;
-    ((bdi)localObject).GSK = paramInt1;
-    ((bdi)localObject).GRl = paramString1;
-    ((bdi)localObject).zot = paramString2;
-    ((bdi)localObject).zQm = paramInt2;
-    AppMethodBeat.o(97137);
+    AppMethodBeat.i(203132);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bya();
+    ((d.a)localObject).iLO = new byb();
+    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/get_wx_user_name";
+    ((d.a)localObject).funcId = 4353;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bya)this.rr.iLK.iLR;
+    ((bya)localObject).gTk = paramString1;
+    ((bya)localObject).MdB = paramString2;
+    AppMethodBeat.o(203132);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(97140);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(97140);
+    AppMethodBeat.i(203135);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(203135);
     return i;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(97139);
+    AppMethodBeat.i(203134);
     int i = this.rr.getType();
-    AppMethodBeat.o(97139);
+    AppMethodBeat.o(203134);
     return i;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(97138);
-    ae.i("NetSceneAdGetSmartPhoneNumber", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
+    AppMethodBeat.i(203133);
+    Log.i("NetSceneAdGetBtnPersonalUserName", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(97138);
+    AppMethodBeat.o(203133);
   }
 }
 

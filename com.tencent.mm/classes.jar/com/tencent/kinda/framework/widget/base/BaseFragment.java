@@ -32,13 +32,13 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.LeftBarButtonType;
 import com.tencent.kinda.gen.NavigationBarConfig;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.u;
+import com.tencent.mm.ui.b.b;
+import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.v;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,16 +49,17 @@ public abstract class BaseFragment
   implements View.OnTouchListener, FragmentLifecycle
 {
   public static final String TAG = "MicroMsg.BaseFragment";
-  private byte _hellAccFlag_;
   protected IEventFragment fragEvent;
   private boolean isActive = false;
   private boolean isEnterBackground = false;
+  public boolean isTinyApp = false;
   private FrLifeController.IFrLife life;
   private ActionBarContainer mActionBarContainer = null;
   private BaseFragment mCoveredFragment;
-  public u mCustomActioinBarController = null;
+  public v mCustomActioinBarController = null;
   protected UIPagePlatformDelegateImpl pagePlatformDelegate;
   protected UIPagePlatformFuncDelegateImpl pagePlatformFuncDelegate;
+  public String tinyAppUserName = "";
   private boolean willBeRemoved = false;
   
   public BaseFragment()
@@ -113,11 +114,11 @@ public abstract class BaseFragment
     if (isSupportCustomActionBar())
     {
       if (this.mActionBarContainer == null) {
-        this.mActionBarContainer = ((ActionBarContainer)((ViewStub)paramView.findViewById(2131301269)).inflate());
+        this.mActionBarContainer = ((ActionBarContainer)((ViewStub)paramView.findViewById(2131302966)).inflate());
       }
-      u localu = this.mCustomActioinBarController;
+      v localv = this.mCustomActioinBarController;
       paramView = (ViewGroup)paramView;
-      localu.JwZ.WA = paramView;
+      localv.OHt.WN = paramView;
     }
   }
   
@@ -146,7 +147,7 @@ public abstract class BaseFragment
   
   public int getLayoutId()
   {
-    return 2131494538;
+    return 2131495146;
   }
   
   protected Fragment getPrevFragment()
@@ -178,18 +179,24 @@ public abstract class BaseFragment
   
   protected abstract void initOnCreate();
   
+  public void initPagePlatformDelegate()
+  {
+    this.pagePlatformDelegate = new UIPagePlatformDelegateImpl(getActivity());
+    this.pagePlatformFuncDelegate = new UIPagePlatformFuncDelegateImpl(this);
+  }
+  
   protected void initPageView()
   {
     YogaLayout localYogaLayout = new YogaLayout(getActivity());
     localYogaLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    ((ViewGroup)getView().findViewById(2131298736)).addView(localYogaLayout);
-    ae.i("MicroMsg.BaseFragment", "initPageView rootLayout %s", new Object[] { localYogaLayout });
+    ((ViewGroup)getView().findViewById(2131299174)).addView(localYogaLayout);
+    Log.i("MicroMsg.BaseFragment", "initPageView rootLayout %s", new Object[] { localYogaLayout });
     onCreateLayout(new PlatformWrapLayout(localYogaLayout));
   }
   
   public void initWithNavigationBarConfig(NavigationBarConfig paramNavigationBarConfig)
   {
-    ae.i("MicroMsg.BaseFragment", "NavigationBarConfig: %s", new Object[] { paramNavigationBarConfig });
+    Log.i("MicroMsg.BaseFragment", "NavigationBarConfig: %s", new Object[] { paramNavigationBarConfig });
     if ((paramNavigationBarConfig != null) && (getController().mActionBar != null))
     {
       if (paramNavigationBarConfig.mBackgroundColor != null)
@@ -200,17 +207,17 @@ public abstract class BaseFragment
       if (paramNavigationBarConfig.mBarTitle != null) {
         setMMTitle(paramNavigationBarConfig.mBarTitle);
       }
-      if (bu.isNullOrNil(paramNavigationBarConfig.mLeftButtonColor)) {}
+      if (Util.isNullOrNil(paramNavigationBarConfig.mLeftButtonColor)) {}
     }
     for (;;)
     {
       try
       {
-        localObject = getResources().getDrawable(2131230837).mutate();
+        localObject = getResources().getDrawable(2131230849).mutate();
         if (!(localObject instanceof StateListDrawable)) {
           continue;
         }
-        localObject = getResources().getDrawable(2131689726);
+        localObject = getResources().getDrawable(2131689733);
         ((Drawable)localObject).setColorFilter(Color.parseColor(paramNavigationBarConfig.mLeftButtonColor), PorterDuff.Mode.SRC_ATOP);
         getController().updateBackBtn((Drawable)localObject);
         getController().setBackBtnColorFilter(Color.parseColor(paramNavigationBarConfig.mLeftButtonColor));
@@ -231,7 +238,7 @@ public abstract class BaseFragment
             AppMethodBeat.o(18763);
             return true;
           }
-        }, 2131689492);
+        }, 2131689494);
         continue;
         if (paramNavigationBarConfig.mLeftBarButtonType != LeftBarButtonType.NONE) {
           continue;
@@ -276,12 +283,12 @@ public abstract class BaseFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    ae.d("MicroMsg.BaseFragment", "onActivityCreated %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onActivityCreated %s %s", new Object[] { getTagName(), this });
   }
   
   public void onAttach(Activity paramActivity)
   {
-    ae.d("MicroMsg.BaseFragment", "onAttach %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onAttach %s %s", new Object[] { getTagName(), this });
     super.onAttach(paramActivity);
     try
     {
@@ -290,7 +297,7 @@ public abstract class BaseFragment
     }
     catch (ClassCastException paramActivity)
     {
-      ae.e("MicroMsg.BaseFragment", "error IEventFragment");
+      Log.e("MicroMsg.BaseFragment", "error IEventFragment");
     }
   }
   
@@ -299,10 +306,10 @@ public abstract class BaseFragment
     super.onAttach(paramContext);
     if (isSupportCustomActionBar())
     {
-      this.mCustomActioinBarController = new u();
+      this.mCustomActioinBarController = new v();
       paramContext = this.mCustomActioinBarController;
-      paramContext.JwY = this;
-      paramContext.JwZ = new com.tencent.mm.ui.b.b(thisActivity(), paramContext);
+      paramContext.OHs = this;
+      paramContext.OHt = new b(thisActivity(), paramContext);
       setActivityController(this.mCustomActioinBarController);
     }
   }
@@ -311,7 +318,7 @@ public abstract class BaseFragment
   
   public void onCreate(Bundle paramBundle)
   {
-    ae.d("MicroMsg.BaseFragment", "onCreate %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onCreate %s %s", new Object[] { getTagName(), this });
     super.onCreate(paramBundle);
   }
   
@@ -319,14 +326,14 @@ public abstract class BaseFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    KindaActionBarColorManager.getInstance().pushActionBarColorItem(this, getController().fAS());
+    KindaActionBarColorManager.getInstance().pushActionBarColorItem(this, getController().gIN());
     return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    ae.d("MicroMsg.BaseFragment", "onDestroyView %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onDestroyView %s %s", new Object[] { getTagName(), this });
     this.pagePlatformDelegate = null;
     this.pagePlatformFuncDelegate = null;
     restoreActionBarColor();
@@ -338,7 +345,7 @@ public abstract class BaseFragment
   
   public void onDetach()
   {
-    ae.d("MicroMsg.BaseFragment", "onDetach %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onDetach %s %s", new Object[] { getTagName(), this });
     super.onDetach();
     this.fragEvent = null;
   }
@@ -353,7 +360,7 @@ public abstract class BaseFragment
   public void onHiddenChanged(boolean paramBoolean)
   {
     super.onHiddenChanged(paramBoolean);
-    ae.i("MicroMsg.BaseFragment", "onHiddenChanged %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.BaseFragment", "onHiddenChanged %s", new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public abstract void onKeyboardShow(boolean paramBoolean, int paramInt);
@@ -361,7 +368,7 @@ public abstract class BaseFragment
   public void onPause()
   {
     super.onPause();
-    ae.d("MicroMsg.BaseFragment", "onPause %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onPause %s %s", new Object[] { getTagName(), this });
     if (this.life != null) {
       this.life.onPause();
     }
@@ -369,7 +376,7 @@ public abstract class BaseFragment
   
   public void onResume()
   {
-    ae.d("MicroMsg.BaseFragment", "onResume %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onResume %s %s", new Object[] { getTagName(), this });
     super.onResume();
     if (this.life != null) {
       this.life.onResume();
@@ -379,25 +386,20 @@ public abstract class BaseFragment
   public void onSwipeBack()
   {
     super.onSwipeBack();
-    ae.d("MicroMsg.BaseFragment", "onSwipeBack %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onSwipeBack %s %s", new Object[] { getTagName(), this });
     this.fragEvent.popFragment();
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    localb.bd(paramMotionEvent);
-    a.b("com/tencent/kinda/framework/widget/base/BaseFragment", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-    ae.v("MicroMsg.BaseFragment", "on touch");
-    a.a(true, this, "com/tencent/kinda/framework/widget/base/BaseFragment", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+    Log.v("MicroMsg.BaseFragment", "on touch");
     return true;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    ae.d("MicroMsg.BaseFragment", "onViewCreated %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "onViewCreated %s %s", new Object[] { getTagName(), this });
     this.pagePlatformDelegate = new UIPagePlatformDelegateImpl(getActivity());
     this.pagePlatformFuncDelegate = new UIPagePlatformFuncDelegateImpl(this);
     initOnCreate();
@@ -467,19 +469,19 @@ public abstract class BaseFragment
   
   public void willActive()
   {
-    ae.d("MicroMsg.BaseFragment", "willActive %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "willActive %s %s", new Object[] { getTagName(), this });
     this.isActive = true;
   }
   
   public void willDeActive()
   {
     this.isActive = false;
-    ae.d("MicroMsg.BaseFragment", "willDeActive %s %s", new Object[] { getTagName(), this });
+    Log.d("MicroMsg.BaseFragment", "willDeActive %s %s", new Object[] { getTagName(), this });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.BaseFragment
  * JD-Core Version:    0.7.0.1
  */

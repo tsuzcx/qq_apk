@@ -6,11 +6,11 @@ public enum WheelView$b
 {
   static
   {
-    AppMethodBeat.i(200515);
-    Lyi = new b("FILL", 0);
-    Lyj = new b("WRAP", 1);
-    Lyk = new b[] { Lyi, Lyj };
-    AppMethodBeat.o(200515);
+    AppMethodBeat.i(198473);
+    QTY = new b("FILL", 0);
+    QTZ = new b("WRAP", 1);
+    QUa = new b[] { QTY, QTZ };
+    AppMethodBeat.o(198473);
   }
   
   private WheelView$b() {}

@@ -1,89 +1,45 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
-import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.game.api.b;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class i
-  extends bq
+  extends br
 {
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
-    AppMethodBeat.i(83064);
-    Object localObject = ((c)g.ab(c.class)).cdV();
-    if (bu.ht((List)localObject))
+    AppMethodBeat.i(186856);
+    try
     {
-      parama.f(null, null);
-      AppMethodBeat.o(83064);
+      paramContext = new JSONObject(paramString);
+      paramContext = paramContext.optString("appId", "");
+      com.tencent.mm.plugin.game.api.b.a.dSQ().azk(paramContext);
+      parama.i(null, null);
+      AppMethodBeat.o(186856);
       return;
     }
-    paramContext = new JSONObject();
-    paramString = new JSONArray();
-    localObject = ((LinkedList)localObject).iterator();
-    for (;;)
+    catch (JSONException paramContext)
     {
-      DownloadWidgetTaskInfo localDownloadWidgetTaskInfo;
-      JSONObject localJSONObject;
-      if (((Iterator)localObject).hasNext())
-      {
-        localDownloadWidgetTaskInfo = (DownloadWidgetTaskInfo)((Iterator)localObject).next();
-        localJSONObject = new JSONObject();
-      }
-      try
-      {
-        localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
-        localJSONObject.put("status", localDownloadWidgetTaskInfo.puH);
-        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.dkO);
-        localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
-        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.kyA);
-        if (localDownloadWidgetTaskInfo.ptD) {
-          localJSONObject.put("reserve_for_wifi", 1);
-        }
-        label177:
-        paramString.put(localJSONObject);
-        continue;
-        try
-        {
-          paramContext.put("result", paramString.toString());
-          label198:
-          parama.f(null, paramContext);
-          AppMethodBeat.o(83064);
-          return;
-        }
-        catch (JSONException paramString)
-        {
-          break label198;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        break label177;
-      }
+      parama.i("fail", null);
+      AppMethodBeat.o(186856);
     }
   }
   
-  public final void b(b.a parama) {}
+  public final void b(com.tencent.luggage.d.b.a parama) {}
   
-  public final int ced()
+  public final int dTs()
   {
-    return 1;
+    return 2;
   }
   
   public final String name()
   {
-    return "getDownloadWidgetTaskInfos";
+    return "downloadGameResource";
   }
 }
 

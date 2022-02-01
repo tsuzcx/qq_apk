@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.widget.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.widget.g;
-import com.tencent.mm.plugin.appbrand.widget.j;
-import com.tencent.mm.plugin.appbrand.widget.o;
+import com.tencent.mm.plugin.appbrand.widget.f;
+import com.tencent.mm.plugin.appbrand.widget.i;
+import com.tencent.mm.plugin.appbrand.widget.n;
 
 public abstract interface b
   extends a
 {
-  public abstract j aZn();
+  public abstract i buE();
   
-  public abstract o aZq();
+  public abstract n buH();
   
-  public abstract g aZv();
+  public abstract f buM();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.a.b
  * JD-Core Version:    0.7.0.1
  */

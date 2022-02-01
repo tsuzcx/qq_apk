@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.ui.detail;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a.a;
+import com.tencent.mm.ak.c.a;
 import com.tencent.mm.plugin.luckymoney.appbrand.a.c;
 import com.tencent.mm.plugin.luckymoney.appbrand.a.f;
-import com.tencent.mm.protocal.protobuf.bnr;
-import com.tencent.mm.protocal.protobuf.cgz;
-import com.tencent.mm.protocal.protobuf.cqo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cai;
+import com.tencent.mm.protocal.protobuf.cxg;
+import com.tencent.mm.protocal.protobuf.din;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,96 +17,96 @@ public final class d
 {
   private String appId;
   boolean isLoading;
-  b vwp;
-  private String vwq;
-  int vwr;
-  final List<bnr> vws;
+  b yQD;
+  private String yQE;
+  int yQF;
+  final List<cai> yQG;
   
   public d()
   {
     AppMethodBeat.i(64933);
-    this.vwr = 0;
+    this.yQF = 0;
     this.isLoading = false;
-    this.vws = new LinkedList();
+    this.yQG = new LinkedList();
     AppMethodBeat.o(64933);
   }
   
-  private void JB(final int paramInt)
+  private void PD(final int paramInt)
   {
     AppMethodBeat.i(64937);
-    new c(this.appId, this.vwq, paramInt).b(new f() {});
+    new c(this.appId, this.yQE, paramInt).b(new f() {});
     AppMethodBeat.o(64937);
   }
   
-  private static cgz bq(byte[] paramArrayOfByte)
+  private static cxg bH(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(64934);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ae.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. No data found.");
+      Log.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. No data found.");
       AppMethodBeat.o(64934);
       return null;
     }
-    cgz localcgz = new cgz();
+    cxg localcxg = new cxg();
     try
     {
-      localcgz.parseFrom(paramArrayOfByte);
-      ae.i("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom succeed.");
+      localcxg.parseFrom(paramArrayOfByte);
+      Log.i("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom succeed.");
       AppMethodBeat.o(64934);
-      return localcgz;
+      return localcxg;
     }
     catch (IOException paramArrayOfByte)
     {
-      ae.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. IOException: %s", new Object[] { paramArrayOfByte });
+      Log.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. IOException: %s", new Object[] { paramArrayOfByte });
       AppMethodBeat.o(64934);
     }
     return null;
   }
   
-  public final void Jz(int paramInt)
+  public final void PB(int paramInt)
   {
     AppMethodBeat.i(64936);
-    if (this.vwp == null)
+    if (this.yQD == null)
     {
-      ae.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage ui == null");
+      Log.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage ui == null");
       AppMethodBeat.o(64936);
       return;
     }
-    if (paramInt < this.vws.size())
+    if (paramInt < this.yQG.size())
     {
-      ae.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage. offset = [%d], list.size() = [%d], skip load", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.vws.size()) });
+      Log.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage. offset = [%d], list.size() = [%d], skip load", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.yQG.size()) });
       AppMethodBeat.o(64936);
       return;
     }
     if (this.isLoading)
     {
-      ae.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. is loading now...");
+      Log.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. is loading now...");
       AppMethodBeat.o(64936);
       return;
     }
-    if (this.vwr == 0)
+    if (this.yQF == 0)
     {
-      ae.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. do not has more...");
+      Log.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. do not has more...");
       AppMethodBeat.o(64936);
       return;
     }
-    ae.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage load");
+    Log.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage load");
     this.isLoading = true;
-    JB(paramInt);
+    PD(paramInt);
     AppMethodBeat.o(64936);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(64935);
-    ae.i("MicroMsg.WxaLuckyMoneyLogicDetail", "onDestroy() called");
-    this.vwp = null;
+    Log.i("MicroMsg.WxaLuckyMoneyLogicDetail", "onDestroy() called");
+    this.yQD = null;
     AppMethodBeat.o(64935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.d
  * JD-Core Version:    0.7.0.1
  */

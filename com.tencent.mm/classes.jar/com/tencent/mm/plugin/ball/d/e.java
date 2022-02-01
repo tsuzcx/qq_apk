@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ball.d;
 
 public abstract interface e
 {
-  public abstract int aS(float paramFloat);
+  public abstract int aZ(float paramFloat);
   
   public abstract void setFloatBallAlpha(float paramFloat);
 }

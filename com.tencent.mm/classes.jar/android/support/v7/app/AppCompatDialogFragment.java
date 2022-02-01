@@ -25,7 +25,7 @@ public class AppCompatDialogFragment
       case 3: 
         paramDialog.getWindow().addFlags(24);
       }
-      locale.gK();
+      locale.gR();
       return;
     }
     super.setupDialog(paramDialog, paramInt);
@@ -33,7 +33,7 @@ public class AppCompatDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.app.AppCompatDialogFragment
  * JD-Core Version:    0.7.0.1
  */

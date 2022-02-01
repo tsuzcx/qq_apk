@@ -1,17 +1,26 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.view.KeyEvent;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 
-public abstract class aj
+public abstract interface aj
 {
-  int jDN;
-  public int jDO = -1;
+  public static final aj kEU = new aj()
+  {
+    public final Boolean b(AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC)
+    {
+      return null;
+    }
+    
+    public final void c(AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC) {}
+  };
   
-  public abstract boolean c(KeyEvent paramKeyEvent);
+  public abstract Boolean b(AppBrandInitConfigWC paramAppBrandInitConfigWC);
+  
+  public abstract void c(AppBrandInitConfigWC paramAppBrandInitConfigWC);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aj
  * JD-Core Version:    0.7.0.1
  */

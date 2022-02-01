@@ -6,19 +6,19 @@ abstract interface h
 {
   public abstract void a(c paramc);
   
-  public abstract void ayY(String paramString);
+  public abstract void aNH(String paramString);
   
-  public abstract void dVu();
+  public abstract void eWN();
   
-  public abstract void fa(int paramInt1, int paramInt2);
+  public abstract void fn(int paramInt1, int paramInt2);
   
-  public abstract void fmr();
+  public abstract void gwe();
   
-  public abstract void fms();
+  public abstract void gwf();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.h
  * JD-Core Version:    0.7.0.1
  */

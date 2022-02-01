@@ -5,78 +5,79 @@ import android.view.View;
 import com.tencent.luggage.xweb_ext.extendplugin.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.video.b;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewUIProxyImpl;", "Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/IWebViewUIProxy;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "activityLifecycleCallbacks", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext$LifecycleListener;", "kotlin.jvm.PlatformType", "", "getContext", "()Landroid/content/Context;", "webViewFullscreenImpl", "Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenImpl;", "getWebViewFullscreenImpl", "()Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenImpl;", "setWebViewFullscreenImpl", "(Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenImpl;)V", "addFullScreenListener", "", "listener", "Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenStatusListener;", "addWebViewLifeCycleCallback", "callback", "exitFullScreen", "", "ct", "getWebViewPluginClientProxy", "Lcom/tencent/luggage/xweb_ext/extendplugin/proxy/IExtendPluginClientProxy;", "isInFullScreen", "onDestroy", "onPause", "onResume", "removeFullScreenListener", "removeWebViewLifeCycleCallback", "webviewEnterFullscreen", "view", "Landroid/view/View;", "direction", "", "webviewExitFullscreen", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewUIProxyImpl;", "Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/IWebViewUIProxy;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "activityLifecycleCallbacks", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext$LifecycleListener;", "kotlin.jvm.PlatformType", "", "getContext", "()Landroid/content/Context;", "setContext", "webViewFullscreenImpl", "Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenImpl;", "getWebViewFullscreenImpl", "()Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenImpl;", "setWebViewFullscreenImpl", "(Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenImpl;)V", "addFullScreenListener", "", "listener", "Lcom/tencent/mm/plugin/webview/ui/tools/video/WebViewFullscreenStatusListener;", "addWebViewLifeCycleCallback", "callback", "exitFullScreen", "", "force", "ct", "getWebViewPluginClientProxy", "Lcom/tencent/luggage/xweb_ext/extendplugin/proxy/IExtendPluginClientProxy;", "isInFullScreen", "onDestroy", "onKeyBoardHide", "activity", "Landroid/app/Activity;", "(Landroid/app/Activity;)Lkotlin/Unit;", "onKeyBoardShow", "onPause", "onResume", "removeFullScreenListener", "removeWebViewLifeCycleCallback", "resetContext", "webviewEnterFullscreen", "view", "Landroid/view/View;", "direction", "", "webviewExitFullscreen", "plugin-webview_release"})
 public final class h
   implements e
 {
-  private final Set<a.a> EIf;
-  private b EIg;
+  private final Set<a.a> JxU;
+  public b JxV;
   private final String TAG;
-  private final Context context;
+  public Context context;
   
   public h(Context paramContext)
   {
-    AppMethodBeat.i(199474);
+    AppMethodBeat.i(210697);
     this.context = paramContext;
     this.TAG = "MicroMsg.WebViewUIProxyImpl";
-    this.EIf = Collections.newSetFromMap((Map)new ConcurrentHashMap());
-    AppMethodBeat.o(199474);
+    this.JxU = Collections.newSetFromMap((Map)new ConcurrentHashMap());
+    AppMethodBeat.o(210697);
   }
   
-  private final b hc(Context paramContext)
+  private final b hX(Context paramContext)
   {
-    AppMethodBeat.i(199469);
-    if (this.EIg == null) {
-      this.EIg = new b(paramContext);
+    AppMethodBeat.i(210692);
+    if (this.JxV == null) {
+      this.JxV = new b(paramContext);
     }
-    paramContext = this.EIg;
+    paramContext = this.JxV;
     if (paramContext == null) {
-      p.gkB();
+      p.hyc();
     }
-    AppMethodBeat.o(199469);
+    AppMethodBeat.o(210692);
     return paramContext;
   }
   
   public final void a(com.tencent.mm.plugin.webview.ui.tools.video.c paramc)
   {
-    AppMethodBeat.i(199465);
-    hc(this.context).c(paramc);
-    AppMethodBeat.o(199465);
+    AppMethodBeat.i(210688);
+    hX(this.context).c(paramc);
+    AppMethodBeat.o(210688);
   }
   
-  public final void aw(View paramView, int paramInt)
+  public final void aB(View paramView, int paramInt)
   {
-    AppMethodBeat.i(199471);
-    hc(this.context).O(paramView, paramInt);
-    AppMethodBeat.o(199471);
+    AppMethodBeat.i(210694);
+    hX(this.context).N(paramView, paramInt);
+    AppMethodBeat.o(210694);
   }
   
   public final void b(com.tencent.mm.plugin.webview.ui.tools.video.c paramc)
   {
-    AppMethodBeat.i(199464);
-    hc(this.context).d(paramc);
-    AppMethodBeat.o(199464);
+    AppMethodBeat.i(210687);
+    hX(this.context).d(paramc);
+    AppMethodBeat.o(210687);
   }
   
-  public final boolean bnx()
+  public final boolean bJb()
   {
-    AppMethodBeat.i(199473);
-    b localb = this.EIg;
+    AppMethodBeat.i(210696);
+    b localb = this.JxV;
     if (localb != null)
     {
-      boolean bool = localb.bnx();
-      AppMethodBeat.o(199473);
+      boolean bool = localb.bJb();
+      AppMethodBeat.o(210696);
       return bool;
     }
-    AppMethodBeat.o(199473);
+    AppMethodBeat.o(210696);
     return false;
   }
   
@@ -84,12 +85,12 @@ public final class h
   {
     try
     {
-      AppMethodBeat.i(199462);
+      AppMethodBeat.i(210685);
       p.h(parama, "callback");
-      if (!this.EIf.contains(parama)) {
-        this.EIf.add(parama);
+      if (!this.JxU.contains(parama)) {
+        this.JxU.add(parama);
       }
-      AppMethodBeat.o(199462);
+      AppMethodBeat.o(210685);
       return;
     }
     finally {}
@@ -99,10 +100,10 @@ public final class h
   {
     try
     {
-      AppMethodBeat.i(199463);
+      AppMethodBeat.i(210686);
       p.h(parama, "callback");
-      this.EIf.remove(parama);
-      AppMethodBeat.o(199463);
+      this.JxU.remove(parama);
+      AppMethodBeat.o(210686);
       return;
     }
     finally
@@ -112,37 +113,17 @@ public final class h
     }
   }
   
-  public final boolean eWo()
-  {
-    AppMethodBeat.i(199472);
-    boolean bool = hc(this.context).aYo();
-    AppMethodBeat.o(199472);
-    return bool;
-  }
-  
-  public final boolean eYX()
-  {
-    AppMethodBeat.i(199470);
-    if (this.EIg != null)
-    {
-      b localb = this.EIg;
-      if (localb == null) {
-        p.gkB();
-      }
-      if (localb.bnx())
-      {
-        boolean bool = hc(this.context).aYo();
-        AppMethodBeat.o(199470);
-        return bool;
-      }
-    }
-    AppMethodBeat.o(199470);
-    return false;
-  }
-  
   public final com.tencent.luggage.xweb_ext.extendplugin.b.c getWebViewPluginClientProxy()
   {
     return null;
+  }
+  
+  public final boolean gfl()
+  {
+    AppMethodBeat.i(210695);
+    boolean bool = hX(this.context).zr(false);
+    AppMethodBeat.o(210695);
+    return bool;
   }
   
   /* Error */
@@ -151,49 +132,49 @@ public final class h
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 162
-    //   4: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 169
+    //   4: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 95	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:EIf	Ljava/util/Set;
-    //   11: invokeinterface 166 1 0
+    //   8: getfield 103	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:JxU	Ljava/util/Set;
+    //   11: invokeinterface 173 1 0
     //   16: astore_1
     //   17: aload_1
-    //   18: invokeinterface 171 1 0
+    //   18: invokeinterface 178 1 0
     //   23: ifeq +47 -> 70
     //   26: aload_1
-    //   27: invokeinterface 175 1 0
-    //   32: checkcast 177	com/tencent/luggage/xweb_ext/extendplugin/a$a
-    //   35: invokeinterface 179 1 0
+    //   27: invokeinterface 182 1 0
+    //   32: checkcast 184	com/tencent/luggage/xweb_ext/extendplugin/a$a
+    //   35: invokeinterface 186 1 0
     //   40: goto -23 -> 17
     //   43: astore_1
     //   44: aload_0
-    //   45: getfield 82	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:TAG	Ljava/lang/String;
-    //   48: new 181	java/lang/StringBuilder
+    //   45: getfield 90	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:TAG	Ljava/lang/String;
+    //   48: new 188	java/lang/StringBuilder
     //   51: dup
-    //   52: ldc 183
-    //   54: invokespecial 186	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   52: ldc 190
+    //   54: invokespecial 193	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   57: aload_1
-    //   58: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   61: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   67: invokestatic 203	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   58: invokevirtual 197	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   61: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 210	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   70: aload_0
-    //   71: getfield 95	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:EIf	Ljava/util/Set;
-    //   74: invokeinterface 206 1 0
+    //   71: getfield 103	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:JxU	Ljava/util/Set;
+    //   74: invokeinterface 213 1 0
     //   79: aload_0
-    //   80: getfield 104	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:EIg	Lcom/tencent/mm/plugin/webview/ui/tools/video/b;
+    //   80: getfield 112	com/tencent/mm/plugin/webview/ui/tools/video/samelayer/h:JxV	Lcom/tencent/mm/plugin/webview/ui/tools/video/b;
     //   83: astore_1
     //   84: aload_1
     //   85: ifnull +15 -> 100
     //   88: aload_1
-    //   89: invokevirtual 209	com/tencent/mm/plugin/webview/ui/tools/video/b:release	()V
-    //   92: ldc 162
-    //   94: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: invokevirtual 216	com/tencent/mm/plugin/webview/ui/tools/video/b:release	()V
+    //   92: ldc 169
+    //   94: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   97: aload_0
     //   98: monitorexit
     //   99: return
-    //   100: ldc 162
-    //   102: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: ldc 169
+    //   102: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   105: goto -8 -> 97
     //   108: astore_1
     //   109: aload_0
@@ -204,7 +185,7 @@ public final class h
     //   start	length	slot	name	signature
     //   0	113	0	this	h
     //   16	11	1	localIterator	Iterator
-    //   43	15	1	localException	java.lang.Exception
+    //   43	15	1	localException	Exception
     //   83	6	1	localb	b
     //   108	4	1	localObject	Object
     // Exception table:
@@ -224,12 +205,12 @@ public final class h
   {
     try
     {
-      AppMethodBeat.i(199467);
-      Iterator localIterator = this.EIf.iterator();
+      AppMethodBeat.i(210690);
+      Iterator localIterator = this.JxU.iterator();
       while (localIterator.hasNext()) {
-        ((a.a)localIterator.next()).gF(0);
+        ((a.a)localIterator.next()).hU(0);
       }
-      AppMethodBeat.o(199467);
+      AppMethodBeat.o(210690);
     }
     finally {}
   }
@@ -238,14 +219,40 @@ public final class h
   {
     try
     {
-      AppMethodBeat.i(199466);
-      Iterator localIterator = this.EIf.iterator();
+      AppMethodBeat.i(210689);
+      Iterator localIterator = this.JxU.iterator();
       while (localIterator.hasNext()) {
         ((a.a)localIterator.next()).onForeground();
       }
-      AppMethodBeat.o(199466);
+      AppMethodBeat.o(210689);
     }
     finally {}
+  }
+  
+  public final boolean zs(boolean paramBoolean)
+  {
+    AppMethodBeat.i(210693);
+    if (this.JxV != null)
+    {
+      b localb = this.JxV;
+      if (localb == null) {
+        p.hyc();
+      }
+      if (localb.bJb()) {
+        try
+        {
+          paramBoolean = hX(this.context).zr(paramBoolean);
+          AppMethodBeat.o(210693);
+          return paramBoolean;
+        }
+        catch (Exception localException)
+        {
+          Log.e(this.TAG, "exitFullScreen ex=" + localException.getMessage());
+        }
+      }
+    }
+    AppMethodBeat.o(210693);
+    return false;
   }
 }
 

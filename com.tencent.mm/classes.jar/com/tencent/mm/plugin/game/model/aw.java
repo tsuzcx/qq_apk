@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.game.model;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.ac.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
@@ -14,16 +14,16 @@ import org.json.JSONObject;
 
 public class aw
 {
-  private static aw upO;
-  private static TMQQDownloaderOpenSDK upP;
+  private static aw xIh;
+  private static TMQQDownloaderOpenSDK xIi;
   
   public static int a(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam)
   {
     AppMethodBeat.i(41657);
     try
     {
-      dcr();
-      paramTMQQDownloaderOpenSDKParam = dcs().getDownloadTaskState(paramTMQQDownloaderOpenSDKParam);
+      dVY();
+      paramTMQQDownloaderOpenSDKParam = dVZ().getDownloadTaskState(paramTMQQDownloaderOpenSDKParam);
       if (paramTMQQDownloaderOpenSDKParam != null)
       {
         int i = paramTMQQDownloaderOpenSDKParam.mState;
@@ -33,53 +33,53 @@ public class aw
     }
     catch (Exception paramTMQQDownloaderOpenSDKParam)
     {
-      ae.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus failed : %s", new Object[] { paramTMQQDownloaderOpenSDKParam.getMessage() });
+      Log.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus failed : %s", new Object[] { paramTMQQDownloaderOpenSDKParam.getMessage() });
       AppMethodBeat.o(41657);
     }
     return -1;
   }
   
-  public static void aC(Context paramContext, String paramString)
+  public static void aP(Context paramContext, String paramString)
   {
     AppMethodBeat.i(41656);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.QQDownloaderSDKWrapper", "add download task failed, params is null or nil");
+      Log.e("MicroMsg.QQDownloaderSDKWrapper", "add download task failed, params is null or nil");
       AppMethodBeat.o(41656);
       return;
     }
     if (paramContext == null)
     {
-      ae.e("MicroMsg.QQDownloaderSDKWrapper", "add download task failed, context is null");
+      Log.e("MicroMsg.QQDownloaderSDKWrapper", "add download task failed, context is null");
       AppMethodBeat.o(41656);
       return;
     }
-    ae.i("MicroMsg.QQDownloaderSDKWrapper", "add download task to qqdownloader:[%s]", new Object[] { paramString });
-    paramString = new a((byte)0).amY(paramString);
+    Log.i("MicroMsg.QQDownloaderSDKWrapper", "add download task to qqdownloader:[%s]", new Object[] { paramString });
+    paramString = new a((byte)0).aAp(paramString);
     try
     {
-      dcr();
-      dcs().startToDownloadTaskList(paramContext, paramString, true, true);
+      dVY();
+      dVZ().startToDownloadTaskList(paramContext, paramString, true, true);
       AppMethodBeat.o(41656);
       return;
     }
     catch (Exception paramContext)
     {
-      ae.printErrStackTrace("MicroMsg.QQDownloaderSDKWrapper", paramContext, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.QQDownloaderSDKWrapper", paramContext, "", new Object[0]);
       AppMethodBeat.o(41656);
     }
   }
   
-  public static aw dcr()
+  public static aw dVY()
   {
     AppMethodBeat.i(41653);
-    if (upO == null) {}
+    if (xIh == null) {}
     try
     {
-      if (upO == null) {
-        upO = new aw();
+      if (xIh == null) {
+        xIh = new aw();
       }
-      aw localaw = upO;
+      aw localaw = xIh;
       AppMethodBeat.o(41653);
       return localaw;
     }
@@ -89,36 +89,36 @@ public class aw
     }
   }
   
-  private static TMQQDownloaderOpenSDK dcs()
+  private static TMQQDownloaderOpenSDK dVZ()
   {
     AppMethodBeat.i(41654);
-    if (upP == null)
+    if (xIi == null)
     {
       localTMQQDownloaderOpenSDK = TMQQDownloaderOpenSDK.getInstance();
-      upP = localTMQQDownloaderOpenSDK;
-      localTMQQDownloaderOpenSDK.initQQDownloaderOpenSDK(ak.getContext());
+      xIi = localTMQQDownloaderOpenSDK;
+      localTMQQDownloaderOpenSDK.initQQDownloaderOpenSDK(MMApplicationContext.getContext());
     }
-    TMQQDownloaderOpenSDK localTMQQDownloaderOpenSDK = upP;
+    TMQQDownloaderOpenSDK localTMQQDownloaderOpenSDK = xIi;
     AppMethodBeat.o(41654);
     return localTMQQDownloaderOpenSDK;
   }
   
-  public static void dct()
+  public static void dWa()
   {
     boolean bool2 = false;
     AppMethodBeat.i(41655);
-    if (upP == null) {}
+    if (xIi == null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (upO == null) {
+      if (xIh == null) {
         bool2 = true;
       }
-      ae.i("MicroMsg.QQDownloaderSDKWrapper", "destroyQQDownloader, sdk is null : [%b], instance is null : [%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      if (upP != null) {
-        upP.destroyQQDownloaderOpenSDK();
+      Log.i("MicroMsg.QQDownloaderSDKWrapper", "destroyQQDownloader, sdk is null : [%b], instance is null : [%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if (xIi != null) {
+        xIi.destroyQQDownloaderOpenSDK();
       }
-      upP = null;
-      upO = null;
+      xIi = null;
+      xIh = null;
       AppMethodBeat.o(41655);
       return;
     }
@@ -128,9 +128,9 @@ public class aw
   {
     i = -1;
     AppMethodBeat.i(41658);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState fail, packageName is null");
+      Log.e("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState fail, packageName is null");
       AppMethodBeat.o(41658);
       return -1;
     }
@@ -147,14 +147,14 @@ public class aw
       catch (Exception paramContext)
       {
         int j;
-        ae.e("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState fail, ex = %s", new Object[] { paramContext.getMessage() });
+        Log.e("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState fail, ex = %s", new Object[] { paramContext.getMessage() });
         paramInt = i;
         continue;
       }
-      ae.d("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState, ret = %d", new Object[] { Integer.valueOf(paramInt) });
+      Log.d("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState, ret = %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(41658);
       return paramInt;
-      ae.d("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState, installed versionCode = %d", new Object[] { Integer.valueOf(paramContext.versionCode) });
+      Log.d("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState, installed versionCode = %d", new Object[] { Integer.valueOf(paramContext.versionCode) });
       j = paramContext.versionCode;
       if (j >= paramInt) {
         paramInt = 0;
@@ -167,23 +167,23 @@ public class aw
   public static void startToAuthorized(Context paramContext, String paramString)
   {
     AppMethodBeat.i(41659);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus, params is null or nil");
+      Log.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus, params is null or nil");
       AppMethodBeat.o(41659);
       return;
     }
-    paramString = new a((byte)0).amY(paramString);
+    paramString = new a((byte)0).aAp(paramString);
     try
     {
-      dcr();
-      dcs().startToAuthorized(paramContext, paramString, "1");
+      dVY();
+      dVZ().startToAuthorized(paramContext, paramString, "1");
       AppMethodBeat.o(41659);
       return;
     }
     catch (Exception paramContext)
     {
-      ae.e("MicroMsg.QQDownloaderSDKWrapper", "startToAuthorized fail, ex = %s", new Object[] { paramContext.getMessage() });
+      Log.e("MicroMsg.QQDownloaderSDKWrapper", "startToAuthorized fail, ex = %s", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(41659);
     }
   }
@@ -198,16 +198,16 @@ public class aw
     public int taskVersion;
     public String uin;
     public String uinType;
-    public String upQ;
     public String via;
+    public String xIj;
     
-    private void amX(String paramString)
+    private void aAo(String paramString)
     {
       AppMethodBeat.i(41651);
-      ae.i("MicroMsg.QQDownloaderSDKWrapper", "params is : [%s]", new Object[] { paramString });
-      if (bu.isNullOrNil(paramString))
+      Log.i("MicroMsg.QQDownloaderSDKWrapper", "params is : [%s]", new Object[] { paramString });
+      if (Util.isNullOrNil(paramString))
       {
-        ae.e("MicroMsg.QQDownloaderSDKWrapper", "params is null or nil");
+        Log.e("MicroMsg.QQDownloaderSDKWrapper", "params is null or nil");
         AppMethodBeat.o(41651);
         return;
       }
@@ -217,7 +217,7 @@ public class aw
         this.taskApkId = paramString.optString("taskApkId");
         this.via = paramString.optString("via");
         this.taskVersion = paramString.optInt("taskVersion");
-        this.upQ = paramString.optString("channelID");
+        this.xIj = paramString.optString("channelID");
         this.uin = paramString.optString("uin");
         this.SNGAppId = paramString.optString("SNGAppId");
         this.taskAppId = paramString.optString("taskAppId");
@@ -229,16 +229,16 @@ public class aw
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.QQDownloaderSDKWrapper", "parse parms failed:[%s]", new Object[] { paramString.getMessage() });
+        Log.e("MicroMsg.QQDownloaderSDKWrapper", "parse parms failed:[%s]", new Object[] { paramString.getMessage() });
         AppMethodBeat.o(41651);
       }
     }
     
-    public final TMQQDownloaderOpenSDKParam amY(String paramString)
+    public final TMQQDownloaderOpenSDKParam aAp(String paramString)
     {
       AppMethodBeat.i(41652);
-      amX(paramString);
-      paramString = new TMQQDownloaderOpenSDKParam(this.SNGAppId, this.taskAppId, this.taskApkId, this.taskVersion, this.via, this.taskPackageName, this.uin, this.uinType, this.upQ, this.actionFlag);
+      aAo(paramString);
+      paramString = new TMQQDownloaderOpenSDKParam(this.SNGAppId, this.taskAppId, this.taskApkId, this.taskVersion, this.via, this.taskPackageName, this.uin, this.uinType, this.xIj, this.actionFlag);
       AppMethodBeat.o(41652);
       return paramString;
     }

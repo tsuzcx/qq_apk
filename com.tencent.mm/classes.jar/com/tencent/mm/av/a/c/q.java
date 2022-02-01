@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 public abstract interface q
 {
-  public abstract InputStream aJy();
+  public abstract InputStream bdz();
 }
 
 

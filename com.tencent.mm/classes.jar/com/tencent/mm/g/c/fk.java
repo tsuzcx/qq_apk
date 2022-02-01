@@ -2,31 +2,41 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class fk
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eKy = "isSend".hashCode();
-  private static final int eMP = "talker".hashCode();
-  private static final int eSx = "transferId".hashCode();
-  private static final int frH = "locaMsgId".hashCode();
-  private static final int frI = "receiveStatus".hashCode();
-  private static final int frJ = "invalidtime".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
+  private static final int fUR = "sceneList".hashCode();
+  private static final int fUS = "cgiList".hashCode();
+  private static final int fjx;
+  private static final int fjy;
+  private static final int fkj;
+  private static final int flJ = "reportId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eKj = true;
-  private boolean eMB = true;
-  private boolean eSw = true;
-  public long field_invalidtime;
-  public boolean field_isSend;
-  public long field_locaMsgId;
-  public int field_receiveStatus;
-  public String field_talker;
-  public String field_transferId;
-  private boolean frE = true;
-  private boolean frF = true;
-  private boolean frG = true;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetusername = true;
+  private boolean fUP = true;
+  private boolean fUQ = true;
+  public String field_appId;
+  public String field_cgiList;
+  public long field_endTime;
+  public int field_reportId;
+  public String field_sceneList;
+  public long field_startTime;
+  public String field_username;
+  private boolean fjS = true;
+  private boolean fjq = true;
+  private boolean fjr = true;
+  private boolean flE = true;
+  
+  static
+  {
+    fkj = "appId".hashCode();
+    fjx = "startTime".hashCode();
+    fjy = "endTime".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -34,18 +44,18 @@ public abstract class fk
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eSx != k) {
+      if (username_HASHCODE != k) {
         break label65;
       }
-      this.field_transferId = paramCursor.getString(i);
-      this.eSw = true;
+      this.field_username = paramCursor.getString(i);
+      this.__hadSetusername = true;
     }
     for (;;)
     {
@@ -53,32 +63,20 @@ public abstract class fk
       break label20;
       break;
       label65:
-      if (frH == k)
-      {
-        this.field_locaMsgId = paramCursor.getLong(i);
-      }
-      else if (frI == k)
-      {
-        this.field_receiveStatus = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (eKy == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSend = bool;
-            break;
-          }
-        }
-        if (eMP == k) {
-          this.field_talker = paramCursor.getString(i);
-        } else if (frJ == k) {
-          this.field_invalidtime = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (fkj == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (fjx == k) {
+        this.field_startTime = paramCursor.getLong(i);
+      } else if (fjy == k) {
+        this.field_endTime = paramCursor.getLong(i);
+      } else if (fUR == k) {
+        this.field_sceneList = paramCursor.getString(i);
+      } else if (fUS == k) {
+        this.field_cgiList = paramCursor.getString(i);
+      } else if (flJ == k) {
+        this.field_reportId = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -86,23 +84,26 @@ public abstract class fk
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eSw) {
-      localContentValues.put("transferId", this.field_transferId);
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.frE) {
-      localContentValues.put("locaMsgId", Long.valueOf(this.field_locaMsgId));
+    if (this.fjS) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.frF) {
-      localContentValues.put("receiveStatus", Integer.valueOf(this.field_receiveStatus));
+    if (this.fjq) {
+      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eKj) {
-      localContentValues.put("isSend", Boolean.valueOf(this.field_isSend));
+    if (this.fjr) {
+      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
-    if (this.eMB) {
-      localContentValues.put("talker", this.field_talker);
+    if (this.fUP) {
+      localContentValues.put("sceneList", this.field_sceneList);
     }
-    if (this.frG) {
-      localContentValues.put("invalidtime", Long.valueOf(this.field_invalidtime));
+    if (this.fUQ) {
+      localContentValues.put("cgiList", this.field_cgiList);
+    }
+    if (this.flE) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

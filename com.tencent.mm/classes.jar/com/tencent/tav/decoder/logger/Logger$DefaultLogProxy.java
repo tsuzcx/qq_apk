@@ -17,7 +17,7 @@ class Logger$DefaultLogProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.decoder.logger.Logger.DefaultLogProxy
  * JD-Core Version:    0.7.0.1
  */

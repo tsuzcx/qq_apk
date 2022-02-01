@@ -2,29 +2,46 @@ package com.tencent.mm.plugin.api.recordView;
 
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  private static int aa(String paramString, int paramInt)
+  public static int aB(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89208);
+    AppMethodBeat.i(89209);
     int[] arrayOfInt = new int[1];
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString);
-    GLES20.glCompileShader(paramInt);
-    GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
+    int i = ac(paramString1, 35633);
+    if (i == 0)
     {
-      ae.e("loadShader error, infoLog: %s", GLES20.glGetShaderInfoLog(paramInt));
-      AppMethodBeat.o(89208);
+      Log.e("MicroMsg.MMSightCameraGLUtil", "load vertex shader failed");
+      AppMethodBeat.o(89209);
       return 0;
     }
-    AppMethodBeat.o(89208);
-    return paramInt;
+    int j = ac(paramString2, 35632);
+    if (j == 0)
+    {
+      Log.e("MicroMsg.MMSightCameraGLUtil", "load fragment shader failed");
+      AppMethodBeat.o(89209);
+      return 0;
+    }
+    int k = GLES20.glCreateProgram();
+    GLES20.glAttachShader(k, i);
+    GLES20.glAttachShader(k, j);
+    GLES20.glLinkProgram(k);
+    GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
+    if (arrayOfInt[0] <= 0)
+    {
+      Log.e("MicroMsg.MMSightCameraGLUtil", "link program failed");
+      AppMethodBeat.o(89209);
+      return 0;
+    }
+    GLES20.glDeleteShader(i);
+    GLES20.glDeleteShader(j);
+    AppMethodBeat.o(89209);
+    return k;
   }
   
-  public static int auw()
+  public static int aMZ()
   {
     AppMethodBeat.i(89207);
     int[] arrayOfInt = new int[1];
@@ -39,44 +56,27 @@ public final class b
     return i;
   }
   
-  public static int az(String paramString1, String paramString2)
+  private static int ac(String paramString, int paramInt)
   {
-    AppMethodBeat.i(89209);
+    AppMethodBeat.i(89208);
     int[] arrayOfInt = new int[1];
-    int i = aa(paramString1, 35633);
-    if (i == 0)
+    paramInt = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(paramInt, paramString);
+    GLES20.glCompileShader(paramInt);
+    GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0)
     {
-      ae.e("MicroMsg.MMSightCameraGLUtil", "load vertex shader failed");
-      AppMethodBeat.o(89209);
+      Log.e("loadShader error, infoLog: %s", GLES20.glGetShaderInfoLog(paramInt));
+      AppMethodBeat.o(89208);
       return 0;
     }
-    int j = aa(paramString2, 35632);
-    if (j == 0)
-    {
-      ae.e("MicroMsg.MMSightCameraGLUtil", "load fragment shader failed");
-      AppMethodBeat.o(89209);
-      return 0;
-    }
-    int k = GLES20.glCreateProgram();
-    GLES20.glAttachShader(k, i);
-    GLES20.glAttachShader(k, j);
-    GLES20.glLinkProgram(k);
-    GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
-    if (arrayOfInt[0] <= 0)
-    {
-      ae.e("MicroMsg.MMSightCameraGLUtil", "link program failed");
-      AppMethodBeat.o(89209);
-      return 0;
-    }
-    GLES20.glDeleteShader(i);
-    GLES20.glDeleteShader(j);
-    AppMethodBeat.o(89209);
-    return k;
+    AppMethodBeat.o(89208);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.b
  * JD-Core Version:    0.7.0.1
  */

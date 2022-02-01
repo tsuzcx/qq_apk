@@ -2,79 +2,79 @@ package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.cyn;
-import com.tencent.mm.protocal.protobuf.cyp;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.dri;
+import com.tencent.mm.protocal.protobuf.drk;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "", "ilink_auth_buffer", "Lcom/tencent/mm/protobuf/ByteString;", "redirect_url", "", "Factory", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "", "ilink_auth_buffer", "Lcom/tencent/mm/protobuf/ByteString;", "redirect_url", "", "Factory", "plugin-webview_release"})
 public abstract interface ai
 {
-  public abstract String eTX();
+  public abstract String gcK();
   
-  public abstract b eTY();
+  public abstract b gcL();
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy$Factory;", "", "()V", "wrap", "Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "resp", "Lcom/tencent/mm/protocal/protobuf/SdkOauthAuthorizeConfirmResp;", "Lcom/tencent/mm/protocal/protobuf/SdkOauthAuthorizeResp;", "plugin-webview_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy$Factory;", "", "()V", "wrap", "Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "resp", "Lcom/tencent/mm/protocal/protobuf/SdkOauthAuthorizeConfirmResp;", "Lcom/tencent/mm/protocal/protobuf/SdkOauthAuthorizeResp;", "plugin-webview_release"})
   public static final class a
   {
-    public static final a ElW;
+    public static final a IYW;
     
     static
     {
-      AppMethodBeat.i(199340);
-      ElW = new a();
-      AppMethodBeat.o(199340);
+      AppMethodBeat.i(210350);
+      IYW = new a();
+      AppMethodBeat.o(210350);
     }
     
-    public static final ai a(cyn paramcyn)
+    public static final ai a(dri paramdri)
     {
-      AppMethodBeat.i(199338);
-      p.h(paramcyn, "resp");
-      paramcyn = (ai)new a(paramcyn);
-      AppMethodBeat.o(199338);
-      return paramcyn;
+      AppMethodBeat.i(210348);
+      p.h(paramdri, "resp");
+      paramdri = (ai)new a(paramdri);
+      AppMethodBeat.o(210348);
+      return paramdri;
     }
     
-    public static final ai a(cyp paramcyp)
+    public static final ai a(drk paramdrk)
     {
-      AppMethodBeat.i(199339);
-      p.h(paramcyp, "resp");
-      paramcyp = (ai)new b(paramcyp);
-      AppMethodBeat.o(199339);
-      return paramcyp;
+      AppMethodBeat.i(210349);
+      p.h(paramdrk, "resp");
+      paramdrk = (ai)new b(paramdrk);
+      AppMethodBeat.o(210349);
+      return paramdrk;
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy$Factory$wrap$1", "Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "ilink_auth_buffer", "Lcom/tencent/mm/protobuf/ByteString;", "redirect_url", "", "plugin-webview_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy$Factory$wrap$1", "Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "ilink_auth_buffer", "Lcom/tencent/mm/protobuf/ByteString;", "redirect_url", "", "plugin-webview_release"})
     public static final class a
       implements ai
     {
-      a(cyn paramcyn) {}
+      a(dri paramdri) {}
       
-      public final String eTX()
+      public final String gcK()
       {
-        return this.ElX.FPO;
+        return this.IYX.KJw;
       }
       
-      public final b eTY()
+      public final b gcL()
       {
-        return this.ElX.HIK;
+        return this.IYX.MTX;
       }
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy$Factory$wrap$2", "Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "ilink_auth_buffer", "Lcom/tencent/mm/protobuf/ByteString;", "redirect_url", "", "plugin-webview_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy$Factory$wrap$2", "Lcom/tencent/mm/plugin/webview/model/SDKOauthAuthorizeRespProxy;", "ilink_auth_buffer", "Lcom/tencent/mm/protobuf/ByteString;", "redirect_url", "", "plugin-webview_release"})
     public static final class b
       implements ai
     {
-      b(cyp paramcyp) {}
+      b(drk paramdrk) {}
       
-      public final String eTX()
+      public final String gcK()
       {
-        return this.ElY.FPO;
+        return this.IYY.KJw;
       }
       
-      public final b eTY()
+      public final b gcL()
       {
-        return this.ElY.HIK;
+        return this.IYY.MTX;
       }
     }
   }

@@ -1,30 +1,27 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/VideoMaterial;", "Lcom/tencent/mm/plugin/vlog/model/Material;", "path", "", "videoStartTime", "", "videoEndTime", "reverse", "", "playSpeed", "", "startTime", "endTime", "(Ljava/lang/String;JJZFJJ)V", "getPlaySpeed", "()F", "getReverse", "()Z", "getVideoEndTime", "()J", "setVideoEndTime", "(J)V", "getVideoStartTime", "setVideoStartTime", "plugin-vlog_release"})
-public final class ab
-  extends l
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "", "(Ljava/lang/String;I)V", "NONE", "FADE", "plugin-vlog_release"})
+public enum ab
 {
-  public long BYp;
-  public long BYq;
-  private final float BYr;
-  private final boolean reverse;
-  
-  public ab(String paramString, long paramLong1, boolean paramBoolean, float paramFloat, long paramLong2, long paramLong3)
+  static
   {
-    super(r.BXu, h.BWD, u.BXF, paramLong2, paramLong3, 0L - paramLong1, paramString, 384);
-    AppMethodBeat.i(110950);
-    this.BYp = paramLong1;
-    this.BYq = 0L;
-    this.reverse = paramBoolean;
-    this.BYr = paramFloat;
-    AppMethodBeat.o(110950);
+    AppMethodBeat.i(110931);
+    ab localab1 = new ab("NONE", 0);
+    Gzk = localab1;
+    ab localab2 = new ab("FADE", 1);
+    Gzl = localab2;
+    Gzm = new ab[] { localab1, localab2 };
+    AppMethodBeat.o(110931);
   }
+  
+  private ab() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.ab
  * JD-Core Version:    0.7.0.1
  */

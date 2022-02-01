@@ -1,135 +1,135 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.i;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m.a;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
 import org.json.JSONObject;
 
 public final class am
-  extends a
+  extends d
 {
   public static final int CTRL_INDEX = 51;
   public static final String NAME = "saveFile";
   
-  public static String a(c paramc, k paramk, String paramString, i<String> parami)
+  public static String a(f paramf, o paramo, String paramString, i<String> parami)
   {
     AppMethodBeat.i(170099);
-    if ((paramk == null) || (!paramk.exists()))
+    if ((paramo == null) || (!paramo.exists()))
     {
       AppMethodBeat.o(170099);
       return "fail:file not exists";
     }
-    Object localObject2 = paramc.Fl().Mc(paramString);
+    Object localObject2 = paramf.getFileSystem().Vl(paramString);
     Object localObject1 = localObject2;
-    if (localObject2 != m.jPM) {}
+    if (localObject2 != m.kSu) {}
     try
     {
       localObject2 = new i();
-      paramc = paramc.Fl().a(paramk, paramString, (i)localObject2);
-      localObject1 = paramc;
+      paramf = paramf.getFileSystem().a(paramo, paramString, (i)localObject2);
+      localObject1 = paramf;
       if (parami != null)
       {
         parami.value = ((i)localObject2).value;
-        localObject1 = paramc;
+        localObject1 = paramf;
       }
-      switch (2.kQn[localObject1.ordinal()])
+      switch (2.lVs[localObject1.ordinal()])
       {
       default: 
-        paramc = "fail " + ((m)localObject1).name();
+        paramf = "fail " + ((m)localObject1).name();
         AppMethodBeat.o(170099);
-        return paramc;
+        return paramf;
       }
     }
-    catch (Exception paramc)
+    catch (Exception paramf)
     {
-      paramc = "fail:writeFile exception: " + paramc.toString();
+      paramf = "fail:writeFile exception: " + paramf.toString();
       AppMethodBeat.o(170099);
-      return paramc;
+      return paramf;
     }
-    paramc = String.format("fail permission denied, open \"%s\"", new Object[] { paramString });
+    paramf = String.format("fail permission denied, open \"%s\"", new Object[] { paramString });
     AppMethodBeat.o(170099);
-    return paramc;
-    paramc = String.format("fail no such file or directory \"%s\"", new Object[] { paramString });
+    return paramf;
+    paramf = String.format("fail no such file or directory \"%s\"", new Object[] { paramString });
     AppMethodBeat.o(170099);
-    return paramc;
-    paramc = String.format("fail illegal operation on a directory, open \"%s\"", new Object[] { paramString });
+    return paramf;
+    paramf = String.format("fail illegal operation on a directory, open \"%s\"", new Object[] { paramString });
     AppMethodBeat.o(170099);
-    return paramc;
+    return paramf;
     AppMethodBeat.o(170099);
     return "fail the maximum size of the file storage limit is exceeded";
     AppMethodBeat.o(170099);
     return "ok";
   }
   
-  static m.a f(c paramc, JSONObject paramJSONObject)
+  static p.a f(f paramf, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(128899);
     Object localObject2 = paramJSONObject.optString("tempFilePath");
     Object localObject1 = paramJSONObject.optString("filePath");
-    if (bu.isNullOrNil((String)localObject2))
+    if (Util.isNullOrNil((String)localObject2))
     {
-      ae.e("MicroMsg.JsApiSaveFile", "temp localId is null or nil");
-      paramc = new m.a("fail", new Object[0]);
+      Log.e("MicroMsg.JsApiSaveFile", "temp localId is null or nil");
+      paramf = new p.a("fail", new Object[0]);
       AppMethodBeat.o(128899);
-      return paramc;
+      return paramf;
     }
-    localObject2 = paramc.Fl().MP((String)localObject2);
-    if ((localObject2 == null) || (!((k)localObject2).exists()))
+    localObject2 = paramf.getFileSystem().VY((String)localObject2);
+    if ((localObject2 == null) || (!((o)localObject2).exists()))
     {
-      paramc = new m.a("fail tempFilePath file not exist", new Object[0]);
+      paramf = new p.a("fail tempFilePath file not exist", new Object[0]);
       AppMethodBeat.o(128899);
-      return paramc;
+      return paramf;
     }
     paramJSONObject = new i();
-    paramc = a(paramc, (k)localObject2, (String)localObject1, paramJSONObject);
+    paramf = a(paramf, (o)localObject2, (String)localObject1, paramJSONObject);
     localObject1 = new HashMap();
-    if ("ok".equals(paramc)) {
+    if ("ok".equals(paramf)) {
       ((Map)localObject1).put("savedFilePath", paramJSONObject.value);
     }
-    paramc = new m.a(paramc, new Object[0]).F((Map)localObject1);
+    paramf = new p.a(paramf, new Object[0]).I((Map)localObject1);
     AppMethodBeat.o(128899);
-    return paramc;
+    return paramf;
   }
   
-  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128898);
-    e.kPL.execute(new Runnable()
+    e.lUJ.execute(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(128896);
-        if (!paramc.isRunning())
+        if (!paramf.isRunning())
         {
           AppMethodBeat.o(128896);
           return;
         }
-        m.a locala = am.f(paramc, paramJSONObject);
-        paramc.h(paramInt, am.this.n(locala.errMsg, locala.values));
+        p.a locala = am.f(paramf, paramJSONObject);
+        paramf.i(paramInt, am.this.n(locala.errMsg, locala.values));
         AppMethodBeat.o(128896);
       }
     });
     AppMethodBeat.o(128898);
   }
   
-  public final boolean biK()
+  public final boolean bEa()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.am
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.kinda.gen.KindaPasswordManager;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.pwd.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public class KindaPasswordManagerImpl
@@ -25,7 +25,7 @@ public class KindaPasswordManagerImpl
     if (!(localContext instanceof MMActivity))
     {
       if (localContext.getClass() != null) {
-        ae.e("KindaPasswordManagerImpl", "Fail to start ResetPasswordImpl due to incompatible context(%s)", new Object[] { localContext.getClass().getName() });
+        Log.e("KindaPasswordManagerImpl", "Fail to start ResetPasswordImpl due to incompatible context(%s)", new Object[] { localContext.getClass().getName() });
       }
       AppMethodBeat.o(18459);
       return;
@@ -36,14 +36,14 @@ public class KindaPasswordManagerImpl
     localBundle.putBoolean("isFromKinda", true);
     localBundle.putBoolean("isDomesticUser", paramBoolean);
     com.tencent.mm.wallet_core.a.a((Activity)localObject, com.tencent.mm.plugin.wallet.pwd.a.class, localBundle, null);
-    localObject = com.tencent.mm.wallet_core.a.bs((Activity)localObject);
+    localObject = com.tencent.mm.wallet_core.a.by((Activity)localObject);
     if (!(localObject instanceof com.tencent.mm.plugin.wallet.pwd.a))
     {
-      ae.e("KindaPasswordManagerImpl", "Fail to get correct wallet process in ResetPasswordImpl, expect ForgotPwdProcess got %s", new Object[] { localObject.getClass().getName() });
+      Log.e("KindaPasswordManagerImpl", "Fail to get correct wallet process in ResetPasswordImpl, expect ForgotPwdProcess got %s", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18459);
       return;
     }
-    ((com.tencent.mm.plugin.wallet.pwd.a)localObject).Dca = new a.a()
+    ((com.tencent.mm.plugin.wallet.pwd.a)localObject).HHO = new a.a()
     {
       public void run(int paramAnonymousInt)
       {
@@ -64,7 +64,7 @@ public class KindaPasswordManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaPasswordManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandOptionButton
   extends FrameLayout
 {
-  private ImageButton mZm;
+  private ImageButton omr;
   
   public AppBrandOptionButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,7 +38,7 @@ public class AppBrandOptionButton
   private int getActionBarHeight()
   {
     AppMethodBeat.i(135462);
-    int i = getResources().getDimensionPixelSize(2131165250);
+    int i = getResources().getDimensionPixelSize(2131165254);
     AppMethodBeat.o(135462);
     return i;
   }
@@ -46,31 +46,31 @@ public class AppBrandOptionButton
   private void init(Context paramContext)
   {
     AppMethodBeat.i(135463);
-    this.mZm = new ImageButton(paramContext);
-    this.mZm.setClickable(false);
-    this.mZm.setBackground(null);
-    addView(this.mZm, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
+    this.omr = new ImageButton(paramContext);
+    this.omr.setClickable(false);
+    this.omr.setBackground(null);
+    addView(this.omr, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
     setAccessibilityLabel(getDefaultAccessibilityLabel());
     AppMethodBeat.o(135463);
   }
   
   public ImageView getButtonImage()
   {
-    return this.mZm;
+    return this.omr;
   }
   
   protected String getDefaultAccessibilityLabel()
   {
-    AppMethodBeat.i(208020);
-    String str = getContext().getString(2131755290);
-    AppMethodBeat.o(208020);
+    AppMethodBeat.i(219627);
+    String str = getContext().getString(2131755326);
+    AppMethodBeat.o(219627);
     return str;
   }
   
   protected Drawable getDefaultImageDrawable()
   {
     AppMethodBeat.i(135468);
-    Drawable localDrawable = b.l(getContext(), 2131230952);
+    Drawable localDrawable = b.l(getContext(), 2131230975);
     AppMethodBeat.o(135468);
     return localDrawable;
   }
@@ -78,17 +78,17 @@ public class AppBrandOptionButton
   public final void reset()
   {
     AppMethodBeat.i(135467);
-    this.mZm.setVisibility(0);
-    this.mZm.setAlpha(1.0F);
-    this.mZm.setImageDrawable(getDefaultImageDrawable());
+    this.omr.setVisibility(0);
+    this.omr.setAlpha(1.0F);
+    this.omr.setImageDrawable(getDefaultImageDrawable());
     AppMethodBeat.o(135467);
   }
   
   public final void setAccessibilityLabel(String paramString)
   {
     AppMethodBeat.i(135464);
-    if ((this.mZm != null) && (this.mZm.getVisibility() == 0)) {
-      this.mZm.setContentDescription(paramString);
+    if ((this.omr != null) && (this.omr.getVisibility() == 0)) {
+      this.omr.setContentDescription(paramString);
     }
     AppMethodBeat.o(135464);
   }
@@ -96,11 +96,11 @@ public class AppBrandOptionButton
   public void setColor(int paramInt)
   {
     AppMethodBeat.i(135466);
-    this.mZm.setImageDrawable(getDefaultImageDrawable());
-    this.mZm.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-    this.mZm.setBackground(getBackground());
-    if (this.mZm.getBackground() != null) {
-      this.mZm.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.omr.setImageDrawable(getDefaultImageDrawable());
+    this.omr.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.omr.setBackground(getBackground());
+    if (this.omr.getBackground() != null) {
+      this.omr.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(135466);
   }
@@ -113,14 +113,14 @@ public class AppBrandOptionButton
       AppMethodBeat.o(135465);
       return;
     }
-    this.mZm.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
-    this.mZm.setVisibility(0);
+    this.omr.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
+    this.omr.setVisibility(0);
     AppMethodBeat.o(135465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton
  * JD-Core Version:    0.7.0.1
  */

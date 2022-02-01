@@ -1,145 +1,252 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 
-import android.text.TextUtils;
-import android.util.Pair;
-import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cie;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "", "()V", "hasMore_Field", "Ljava/lang/reflect/Field;", "incrementList_Field", "isNeedClear_Field", "lastBuffer_Field", "pullType_Field", "getArgsOnFetchDone", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "args", "", "([Ljava/lang/Object;)Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "startMonitor", "", "ArgsOnFetchDone", "Companion", "FinderPullType", "plugin-expt_release"})
 public final class m
 {
-  private Map<String, Map<String, List<Pair<String, String>>>> rai;
-  private final com.tencent.mm.hellhoundlib.a.c reZ;
+  public static final b sGi;
+  private Field sGd;
+  private Field sGe;
+  private Field sGf;
+  private Field sGg;
+  private Field sGh;
+  
+  static
+  {
+    AppMethodBeat.i(221014);
+    sGi = new b((byte)0);
+    AppMethodBeat.o(221014);
+  }
   
   public m()
   {
-    AppMethodBeat.i(196098);
-    this.rai = new HashMap();
-    this.reZ = new com.tencent.mm.hellhoundlib.a.c()
+    AppMethodBeat.i(221013);
+    try
     {
-      public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject1, Object paramAnonymousObject2)
-      {
-        AppMethodBeat.i(196097);
-        if ((TextUtils.isEmpty(paramAnonymousString1)) || (!paramAnonymousString1.startsWith("com/tencent/mm/plugin/sns/ui/SnsTimeLineUI$")))
-        {
-          AppMethodBeat.o(196097);
-          return;
-        }
-        if ((!"onMMMenuItemSelected".equals(paramAnonymousString2)) || (!"(Landroid/view/MenuItem;I)V".equals(paramAnonymousString3)))
-        {
-          AppMethodBeat.o(196097);
-          return;
-        }
-        ae.i("HABBYGE-MALI.SnsFinderMonitor", "mSnsFinderListener, runOnExit: %b", new Object[] { Boolean.valueOf(c.rdE) });
-        AppMethodBeat.o(196097);
+      Object localObject = Class.forName("com.tencent.mm.plugin.finder.feed.model.internal.IResponse");
+      p.g(localObject, "Class.forName(\"com.tence…odel.internal.IResponse\")");
+      Field localField = ((Class)localObject).getDeclaredField("incrementList");
+      p.g(localField, "clazz.getDeclaredField(\"incrementList\")");
+      this.sGd = localField;
+      localField = this.sGd;
+      if (localField == null) {
+        p.btv("incrementList_Field");
       }
-      
-      public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
-      {
-        AppMethodBeat.i(196096);
-        if ((TextUtils.isEmpty(paramAnonymousString1)) || (!paramAnonymousString1.startsWith("com/tencent/mm/plugin/sns/ui/SnsTimeLineUI$")))
-        {
-          AppMethodBeat.o(196096);
-          return;
-        }
-        if ((!"onMMMenuItemSelected".equals(paramAnonymousString2)) || (!"(Landroid/view/MenuItem;I)V".equals(paramAnonymousString3)))
-        {
-          AppMethodBeat.o(196096);
-          return;
-        }
-        if ((paramAnonymousArrayOfObject == null) || (paramAnonymousArrayOfObject.length < 2))
-        {
-          AppMethodBeat.o(196096);
-          return;
-        }
-        if (!(paramAnonymousArrayOfObject[0] instanceof MenuItem))
-        {
-          AppMethodBeat.o(196096);
-          return;
-        }
-        int i = ((MenuItem)paramAnonymousArrayOfObject[0]).getItemId();
-        if (i == 6) {}
-        for (boolean bool = true;; bool = false)
-        {
-          c.rdE = bool;
-          ae.i("HABBYGE-MALI.SnsFinderMonitor", "mSnsFinderListener, runOnEnter: itemId=%d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(c.rdE) });
-          AppMethodBeat.o(196096);
-          return;
-        }
+      localField.setAccessible(true);
+      localField = ((Class)localObject).getDeclaredField("lastBuffer");
+      p.g(localField, "clazz.getDeclaredField(\"lastBuffer\")");
+      this.sGe = localField;
+      localField = this.sGe;
+      if (localField == null) {
+        p.btv("lastBuffer_Field");
       }
-    };
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Pair.create("onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("com/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener", localArrayList);
-    this.rai.put("com/tencent/mm/plugin/sns/ui/SnsTimeLineUI$", localHashMap);
-    AppMethodBeat.o(196098);
-  }
-  
-  static void c(cie paramcie)
-  {
-    AppMethodBeat.i(196101);
-    if (paramcie == null)
-    {
-      AppMethodBeat.o(196101);
+      localField.setAccessible(true);
+      localField = ((Class)localObject).getDeclaredField("pullType");
+      p.g(localField, "clazz.getDeclaredField(\"pullType\")");
+      this.sGf = localField;
+      localField = this.sGf;
+      if (localField == null) {
+        p.btv("pullType_Field");
+      }
+      localField.setAccessible(true);
+      localField = ((Class)localObject).getDeclaredField("hasMore");
+      p.g(localField, "clazz.getDeclaredField(\"hasMore\")");
+      this.sGg = localField;
+      localField = this.sGg;
+      if (localField == null) {
+        p.btv("hasMore_Field");
+      }
+      localField.setAccessible(true);
+      localObject = ((Class)localObject).getDeclaredField("isNeedClear");
+      p.g(localObject, "clazz.getDeclaredField(\"isNeedClear\")");
+      this.sGh = ((Field)localObject);
+      localObject = this.sGh;
+      if (localObject == null) {
+        p.btv("isNeedClear_Field");
+      }
+      ((Field)localObject).setAccessible(true);
+      AppMethodBeat.o(221013);
       return;
     }
-    if (("143".equals(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramcie.sessionId))) && (c.rdE)) {
-      ae.d("HABBYGE-MALI.SnsFinderMonitor", "begin19943, sessionId=%s, startTime=%s, endTime=%s", new Object[] { paramcie.sessionId, Long.valueOf(paramcie.startTime), Long.valueOf(paramcie.endTime) });
-    }
-    AppMethodBeat.o(196101);
-  }
-  
-  static void d(cie paramcie)
-  {
-    AppMethodBeat.i(196102);
-    if (paramcie == null)
+    catch (Exception localException)
     {
-      AppMethodBeat.o(196102);
-      return;
+      Log.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)localException, "init crash: " + localException.getMessage(), new Object[0]);
+      AppMethodBeat.o(221013);
     }
-    String str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramcie.sessionId);
-    if (("143".equals(str)) && (c.rdE))
+  }
+  
+  public final a p(Object[] paramArrayOfObject)
+  {
+    AppMethodBeat.i(221012);
+    p.h(paramArrayOfObject, "args");
+    Object localObject2 = paramArrayOfObject[0];
+    Object localObject1;
+    for (;;)
     {
-      ae.d("HABBYGE-MALI.SnsFinderMonitor", "stop19943, sessionId=%s, startTime=%s, endTime=%s", new Object[] { paramcie.sessionId, Long.valueOf(paramcie.startTime), Long.valueOf(paramcie.endTime) });
-      com.tencent.mm.plugin.expt.hellhound.a.b.c.b localb = new com.tencent.mm.plugin.expt.hellhound.a.b.c.b((byte)0);
-      localb.sessionId = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm().cos();
-      localb.duQ = "All-Sns";
-      localb.rfm = paramcie.startTime;
-      localb.rfn = paramcie.endTime;
-      localb.rfl = (paramcie.endTime - paramcie.startTime);
-      localb.rfo = com.tencent.mm.plugin.expt.hellhound.core.b.cpi();
-      localb.rfp = str;
-      localb.dGC = c.b.rdZ.value;
-      com.tencent.mm.plugin.expt.hellhound.a.b.c.a.a(localb);
+      try
+      {
+        paramArrayOfObject = this.sGd;
+        if (paramArrayOfObject == null) {
+          p.btv("incrementList_Field");
+        }
+        localObject1 = paramArrayOfObject.get(localObject2);
+        paramArrayOfObject = (Object[])localObject1;
+        if (!(localObject1 instanceof List)) {
+          paramArrayOfObject = null;
+        }
+        localObject1 = (List)paramArrayOfObject;
+        paramArrayOfObject = this.sGe;
+        if (paramArrayOfObject == null) {
+          p.btv("lastBuffer_Field");
+        }
+        paramArrayOfObject = paramArrayOfObject.get(localObject2);
+        if (paramArrayOfObject == null)
+        {
+          paramArrayOfObject = null;
+          localObject3 = this.sGf;
+          if (localObject3 == null) {
+            p.btv("pullType_Field");
+          }
+          localObject3 = ((Field)localObject3).get(localObject2);
+          if (localObject3 != null) {
+            break;
+          }
+          paramArrayOfObject = new t("null cannot be cast to non-null type kotlin.Int");
+          AppMethodBeat.o(221012);
+          throw paramArrayOfObject;
+        }
+      }
+      catch (Exception paramArrayOfObject)
+      {
+        Log.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)paramArrayOfObject, "getArgsOnFetchDone crash: " + paramArrayOfObject.getMessage(), new Object[0]);
+        AppMethodBeat.o(221012);
+        return null;
+      }
+      paramArrayOfObject = (b)paramArrayOfObject;
     }
-    AppMethodBeat.o(196102);
+    int i = ((Integer)localObject3).intValue();
+    Object localObject3 = this.sGg;
+    if (localObject3 == null) {
+      p.btv("hasMore_Field");
+    }
+    localObject3 = ((Field)localObject3).get(localObject2);
+    if (localObject3 == null)
+    {
+      paramArrayOfObject = new t("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(221012);
+      throw paramArrayOfObject;
+    }
+    boolean bool = ((Boolean)localObject3).booleanValue();
+    localObject3 = this.sGh;
+    if (localObject3 == null) {
+      p.btv("isNeedClear_Field");
+    }
+    localObject2 = ((Field)localObject3).get(localObject2);
+    if (localObject2 == null)
+    {
+      paramArrayOfObject = new t("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(221012);
+      throw paramArrayOfObject;
+    }
+    paramArrayOfObject = new a((List)localObject1, paramArrayOfObject, i, bool, ((Boolean)localObject2).booleanValue());
+    AppMethodBeat.o(221012);
+    return paramArrayOfObject;
   }
   
-  public final void cov()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "", "incrementList", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "hasMore", "", "isNeedClear", "(Ljava/util/List;Lcom/tencent/mm/protobuf/ByteString;IZZ)V", "getHasMore", "()Z", "setHasMore", "(Z)V", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "setNeedClear", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getPullType", "()I", "setPullType", "(I)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-expt_release"})
+  public static final class a
   {
-    AppMethodBeat.i(196099);
-    com.tencent.mm.hellhoundlib.a.ahD();
-    com.tencent.mm.hellhoundlib.a.e(this.rai, this.reZ);
-    AppMethodBeat.o(196099);
+    private boolean hasMore;
+    public List<?> incrementList;
+    private boolean isNeedClear;
+    private b lastBuffer;
+    public int pullType;
+    
+    public a(List<?> paramList, b paramb, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      this.incrementList = paramList;
+      this.lastBuffer = paramb;
+      this.pullType = paramInt;
+      this.hasMore = paramBoolean1;
+      this.isNeedClear = paramBoolean2;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(221008);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((!p.j(this.incrementList, paramObject.incrementList)) || (!p.j(this.lastBuffer, paramObject.lastBuffer)) || (this.pullType != paramObject.pullType) || (this.hasMore != paramObject.hasMore) || (this.isNeedClear != paramObject.isNeedClear)) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(221008);
+        return true;
+      }
+      AppMethodBeat.o(221008);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(221006);
+      String str = "ArgsOnFetchDone(incrementList=" + this.incrementList + ", lastBuffer=" + this.lastBuffer + ", pullType=" + this.pullType + ", hasMore=" + this.hasMore + ", isNeedClear=" + this.isNeedClear + ")";
+      AppMethodBeat.o(221006);
+      return str;
+    }
   }
   
-  public final void cqo()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
+  public static final class b {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$FinderPullType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "PULL_TYPE_ENTER", "PULL_TYPE_TOP", "PULL_TYPE_BOTTOM", "PULL_TYPE_PRE_FETCH", "PULL_TYPE_REFRESH", "plugin-expt_release"})
+  public static enum c
   {
-    AppMethodBeat.i(196100);
-    com.tencent.mm.hellhoundlib.a.ahD();
-    com.tencent.mm.hellhoundlib.a.f(this.rai, this.reZ);
-    AppMethodBeat.o(196100);
+    final int value;
+    
+    static
+    {
+      AppMethodBeat.i(221009);
+      c localc1 = new c("PULL_TYPE_ENTER", 0, 0);
+      sGj = localc1;
+      c localc2 = new c("PULL_TYPE_TOP", 1, 1);
+      sGk = localc2;
+      c localc3 = new c("PULL_TYPE_BOTTOM", 2, 2);
+      sGl = localc3;
+      c localc4 = new c("PULL_TYPE_PRE_FETCH", 3, 3);
+      sGm = localc4;
+      c localc5 = new c("PULL_TYPE_REFRESH", 4, 4);
+      sGn = localc5;
+      sGo = new c[] { localc1, localc2, localc3, localc4, localc5 };
+      AppMethodBeat.o(221009);
+    }
+    
+    private c(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.b.m
  * JD-Core Version:    0.7.0.1
  */

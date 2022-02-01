@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class NetStatGroup
   extends LinearLayout
 {
-  LinearLayout yUk;
-  final TextView yUl;
+  LinearLayout CZd;
+  final TextView CZe;
   
   public NetStatGroup(Context paramContext)
   {
@@ -23,16 +23,16 @@ public class NetStatGroup
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(73893);
-    View.inflate(paramContext, 2131495007, this);
-    this.yUk = ((LinearLayout)findViewById(2131300621));
-    this.yUl = ((TextView)findViewById(2131298928));
-    this.yUl.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165466));
+    View.inflate(paramContext, 2131495837, this);
+    this.CZd = ((LinearLayout)findViewById(2131302176));
+    this.CZe = ((TextView)findViewById(2131299412));
+    this.CZe.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165482));
     AppMethodBeat.o(73893);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.NetStatGroup
  * JD-Core Version:    0.7.0.1
  */

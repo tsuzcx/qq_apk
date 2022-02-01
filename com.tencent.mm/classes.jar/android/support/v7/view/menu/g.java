@@ -9,53 +9,53 @@ import java.util.ArrayList;
 public final class g
   extends BaseAdapter
 {
-  private final int aeV;
-  private int afX = -1;
-  public h afZ;
-  private final boolean afe;
-  boolean aft;
+  boolean afG;
+  private final int afi;
+  private final boolean afr;
+  private int agk = -1;
+  public h agm;
   private final LayoutInflater mInflater;
   
   public g(h paramh, LayoutInflater paramLayoutInflater, boolean paramBoolean, int paramInt)
   {
-    this.afe = paramBoolean;
+    this.afr = paramBoolean;
     this.mInflater = paramLayoutInflater;
-    this.afZ = paramh;
-    this.aeV = paramInt;
-    hM();
+    this.agm = paramh;
+    this.afi = paramInt;
+    hV();
   }
   
-  private void hM()
+  private void hV()
   {
-    j localj = this.afZ.agv;
+    j localj = this.agm.agI;
     if (localj != null)
     {
-      ArrayList localArrayList = this.afZ.hX();
+      ArrayList localArrayList = this.agm.ih();
       int j = localArrayList.size();
       int i = 0;
       while (i < j)
       {
         if ((j)localArrayList.get(i) == localj)
         {
-          this.afX = i;
+          this.agk = i;
           return;
         }
         i += 1;
       }
     }
-    this.afX = -1;
+    this.agk = -1;
   }
   
-  public final j bu(int paramInt)
+  public final j bv(int paramInt)
   {
-    if (this.afe) {}
-    for (ArrayList localArrayList = this.afZ.hX();; localArrayList = this.afZ.hV())
+    if (this.afr) {}
+    for (ArrayList localArrayList = this.agm.ih();; localArrayList = this.agm.jdMethod_if())
     {
       int i = paramInt;
-      if (this.afX >= 0)
+      if (this.agk >= 0)
       {
         i = paramInt;
-        if (paramInt >= this.afX) {
+        if (paramInt >= this.agk) {
           i = paramInt + 1;
         }
       }
@@ -65,8 +65,8 @@ public final class g
   
   public final int getCount()
   {
-    if (this.afe) {}
-    for (ArrayList localArrayList = this.afZ.hX(); this.afX < 0; localArrayList = this.afZ.hV()) {
+    if (this.afr) {}
+    for (ArrayList localArrayList = this.agm.ih(); this.agk < 0; localArrayList = this.agm.jdMethod_if()) {
       return localArrayList.size();
     }
     return localArrayList.size() - 1;
@@ -80,17 +80,17 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = this.mInflater.inflate(this.aeV, paramViewGroup, false);
+      paramView = this.mInflater.inflate(this.afi, paramViewGroup, false);
     }
     for (;;)
     {
-      int j = bu(paramInt).getGroupId();
+      int j = bv(paramInt).getGroupId();
       int i;
       if (paramInt - 1 >= 0)
       {
-        i = bu(paramInt - 1).getGroupId();
+        i = bv(paramInt - 1).getGroupId();
         paramViewGroup = (ListMenuItemView)paramView;
-        if ((!this.afZ.hO()) || (j == i)) {
+        if ((!this.agm.hX()) || (j == i)) {
           break label117;
         }
       }
@@ -99,10 +99,10 @@ public final class g
       {
         paramViewGroup.setGroupDividerEnabled(bool);
         paramViewGroup = (p.a)paramView;
-        if (this.aft) {
+        if (this.afG) {
           ((ListMenuItemView)paramView).setForceShowIcon(true);
         }
-        paramViewGroup.a(bu(paramInt));
+        paramViewGroup.a(bv(paramInt));
         return paramView;
         i = j;
         break;
@@ -112,7 +112,7 @@ public final class g
   
   public final void notifyDataSetChanged()
   {
-    hM();
+    hV();
     super.notifyDataSetChanged();
   }
 }

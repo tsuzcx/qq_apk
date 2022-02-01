@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.canvas.b;
 import android.graphics.Path;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathArcToActionArg;
-import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class c
@@ -90,7 +90,7 @@ public final class c
       AppMethodBeat.o(145352);
       return false;
     }
-    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.mh, paramBasePathActionArg.jWY, paramBasePathActionArg.jWZ);
+    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.mj, paramBasePathActionArg.kZU, paramBasePathActionArg.kZV);
     AppMethodBeat.o(145352);
     return bool;
   }
@@ -108,7 +108,7 @@ public final class c
     return bool;
   }
   
-  public final BasePathActionArg bee()
+  public final BasePathActionArg bzv()
   {
     AppMethodBeat.i(145353);
     PathArcToActionArg localPathArcToActionArg = new PathArcToActionArg();
@@ -123,7 +123,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.c
  * JD-Core Version:    0.7.0.1
  */

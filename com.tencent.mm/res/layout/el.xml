@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:layout_width="300.0dip" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/pv" android:background="@drawable/d8" android:paddingLeft="@dimen/ce" android:paddingRight="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/fhz" android:background="@drawable/d_" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="13.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center" android:id="@id/gam" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="@dimen/h" android:layout_marginRight="20.0dip" android:layout_marginBottom="@dimen/h" android:maxLines="2" />
-    </LinearLayout>
+    <TextView android:textSize="@dimen/h_" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center|left" android:id="@id/px" android:paddingTop="22.0dip" android:paddingBottom="22.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:maxLines="1" />
+    <View android:id="@id/pw" android:background="@color/BW_0_Alpha_0_1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <View android:id="@id/py" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ce" />
+    <FrameLayout android:id="@id/q0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" />
+    <include layout="@layout/em" />
 </LinearLayout>

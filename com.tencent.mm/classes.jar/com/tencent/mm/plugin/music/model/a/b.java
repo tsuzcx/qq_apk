@@ -2,44 +2,31 @@ package com.tencent.mm.plugin.music.model.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.i;
+import com.tencent.mm.ay.j;
 import com.tencent.mm.plugin.music.cache.e;
 import com.tencent.mm.plugin.music.cache.h;
 import com.tencent.mm.plugin.music.h.c;
 import com.tencent.mm.plugin.music.model.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.LruCache;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.vfs.o;
 
 public final class b
 {
-  private static ah<String, String> wAK;
-  private static ah<String, Long> wAL;
+  private static LruCache<String, String> AkR;
+  private static LruCache<String, Long> AkS;
   
   static
   {
     AppMethodBeat.i(63047);
-    wAK = new ah(20);
-    wAL = new ah(20);
+    AkR = new LruCache(20);
+    AkS = new LruCache(20);
     AppMethodBeat.o(63047);
   }
   
-  public static String YI(String paramString)
-  {
-    AppMethodBeat.i(63042);
-    if ((!TextUtils.isEmpty(paramString)) && (wAK.aM(paramString))) {}
-    for (String str = (String)wAK.get(paramString); str == null; str = null)
-    {
-      AppMethodBeat.o(63042);
-      return paramString;
-    }
-    AppMethodBeat.o(63042);
-    return str;
-  }
-  
-  public static boolean atR(String paramString)
+  public static boolean aHR(String paramString)
   {
     AppMethodBeat.i(63044);
     if (TextUtils.isEmpty(paramString))
@@ -56,10 +43,10 @@ public final class b
     return false;
   }
   
-  public static String atS(String paramString)
+  public static String aHS(String paramString)
   {
     AppMethodBeat.i(63045);
-    if (atR(paramString))
+    if (aHR(paramString))
     {
       int i = paramString.lastIndexOf("wxshakemusic");
       if (i > 1)
@@ -75,20 +62,20 @@ public final class b
     return paramString;
   }
   
-  public static String atu(String paramString)
+  public static String aHr(String paramString)
   {
     AppMethodBeat.i(63046);
-    String str = YI(paramString);
+    String str = aiK(paramString);
     if ((!TextUtils.isEmpty(str)) && (!str.equalsIgnoreCase(paramString)))
     {
-      ae.i("MicroMsg.Music.MusicUrlParser", "use temp shake music url to play:%s", new Object[] { str });
+      Log.i("MicroMsg.Music.MusicUrlParser", "use temp shake music url to play:%s", new Object[] { str });
       AppMethodBeat.o(63046);
       return str;
     }
-    if (atR(paramString))
+    if (aHR(paramString))
     {
-      paramString = atS(str);
-      ae.i("MicroMsg.Music.MusicUrlParser", "play url :%s", new Object[] { paramString });
+      paramString = aHS(str);
+      Log.i("MicroMsg.Music.MusicUrlParser", "play url :%s", new Object[] { paramString });
       AppMethodBeat.o(63046);
       return paramString;
     }
@@ -96,7 +83,20 @@ public final class b
     return "";
   }
   
-  public static boolean b(a parama)
+  public static String aiK(String paramString)
+  {
+    AppMethodBeat.i(63042);
+    if ((!TextUtils.isEmpty(paramString)) && (AkR.check(paramString))) {}
+    for (String str = (String)AkR.get(paramString); str == null; str = null)
+    {
+      AppMethodBeat.o(63042);
+      return paramString;
+    }
+    AppMethodBeat.o(63042);
+    return str;
+  }
+  
+  public static boolean c(a parama)
   {
     AppMethodBeat.i(63043);
     if ((parama == null) || (TextUtils.isEmpty(parama.playUrl)))
@@ -104,17 +104,17 @@ public final class b
       AppMethodBeat.o(63043);
       return false;
     }
-    if (!atR(parama.playUrl))
+    if (!aHR(parama.playUrl))
     {
       AppMethodBeat.o(63043);
       return false;
     }
-    if (c.Mi(parama.field_musicType))
+    if (c.Th(parama.field_musicType))
     {
       if ((parama == null) || (TextUtils.isEmpty(parama.playUrl)))
       {
         i = 0;
-        if ((i == 0) || (!h.atK(parama.playUrl))) {
+        if ((i == 0) || (!h.aHG(parama.playUrl))) {
           break label139;
         }
       }
@@ -124,11 +124,11 @@ public final class b
         if (i == 0) {
           break label238;
         }
-        ae.i("MicroMsg.Music.MusicUrlParser", "qq music pieceFile cache is valid");
+        Log.i("MicroMsg.Music.MusicUrlParser", "qq music pieceFile cache is valid");
         AppMethodBeat.o(63043);
         return false;
-        i locali = e.atv(com.tencent.mm.plugin.music.h.b.auc(parama.playUrl));
-        if ((locali != null) && (locali.ikC == 1))
+        j localj = e.aHs(com.tencent.mm.plugin.music.h.b.aId(parama.playUrl));
+        if ((localj != null) && (localj.jfB == 1))
         {
           i = 1;
           break;
@@ -137,12 +137,12 @@ public final class b
         break;
       }
     }
-    boolean bool = az.isWifi(ak.getContext());
+    boolean bool = NetStatusUtil.isWifi(MMApplicationContext.getContext());
     if (bool) {
       if (parama.field_wifiEndFlag == 1)
       {
         i = 1;
-        if ((i == 0) || (!new k(com.tencent.mm.plugin.music.h.b.bD(parama.field_musicId, bool)).exists())) {
+        if ((i == 0) || (!new o(com.tencent.mm.plugin.music.h.b.bT(parama.field_musicId, bool)).exists())) {
           break label233;
         }
       }
@@ -153,7 +153,7 @@ public final class b
       if (i == 0) {
         break label238;
       }
-      ae.i("MicroMsg.Music.MusicUrlParser", "music cache is valid");
+      Log.i("MicroMsg.Music.MusicUrlParser", "music cache is valid");
       AppMethodBeat.o(63043);
       return false;
       i = 0;
@@ -167,20 +167,20 @@ public final class b
       break;
     }
     label238:
-    if (!wAK.aM(parama.playUrl))
+    if (!AkR.check(parama.playUrl))
     {
       AppMethodBeat.o(63043);
       return true;
     }
     long l = 0L;
-    if (wAL.aM(parama.playUrl)) {
-      l = ((Long)wAL.get(parama.playUrl)).longValue();
+    if (AkS.check(parama.playUrl)) {
+      l = ((Long)AkS.get(parama.playUrl)).longValue();
     }
     if (System.currentTimeMillis() - l > 86400000L)
     {
-      wAK.remove(parama.playUrl);
-      wAL.remove(parama.playUrl);
-      ae.i("MicroMsg.Music.MusicUrlParser", "shake music url in cache is timeout");
+      AkR.remove(parama.playUrl);
+      AkS.remove(parama.playUrl);
+      Log.i("MicroMsg.Music.MusicUrlParser", "shake music url in cache is timeout");
       AppMethodBeat.o(63043);
       return true;
     }
@@ -188,7 +188,7 @@ public final class b
     return false;
   }
   
-  public static void ip(String paramString1, String paramString2)
+  public static void ja(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63041);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -196,14 +196,14 @@ public final class b
       AppMethodBeat.o(63041);
       return;
     }
-    wAK.put(paramString1, paramString2);
-    wAL.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    AkR.put(paramString1, paramString2);
+    AkS.put(paramString1, Long.valueOf(System.currentTimeMillis()));
     AppMethodBeat.o(63041);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/awl" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="contact_info_top_story_not_disturb" android:layout="@layout/aop" android:title="@string/bb1" />
+    <Preference android:key="contact_info_go_to_sport" android:layout="@layout/b8j" android:title="@string/bbk" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_go_to_top_story" android:layout="@layout/aop" android:title="@string/b6l" />
+    <Preference android:key="contact_info_go_to_my_profile" android:layout="@layout/b8j" android:title="@string/bbj" />
+    <Preference android:key="contact_info_invite_friend" android:layout="@layout/b8j" android:title="@string/bbs" />
+    <Preference android:key="contact_info_common_problem" android:layout="@layout/b8j" android:title="@string/bab" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_top_story_install" android:layout="@layout/ag2" android:title="@string/f9r" />
-    <Preference android:key="contact_info_top_story_uninstall" android:layout="@layout/ajc" android:title="@string/f9x" />
+    <Preference android:defaultValue="true" android:key="contact_info_record_data" android:layout="@layout/b8j" android:persistent="false" android:title="@string/ben" />
+    <Preference android:key="contact_info_privacy_and_notification" android:layout="@layout/b8j" android:title="@string/bdk" />
+    <CheckBoxPreference android:key="contact_info_top_sport" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bh_" />
+    <CheckBoxPreference android:key="contact_info_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bdd" />
+    <Preference android:key="contact_info_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsq" android:key="contact_info_sport_install" android:title_color="@color/ts" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsv" android:key="contact_info_sport_uninstall" android:layout="@layout/b2o" android:title_color="@color/a5e" />
     <PreferenceCategory />
 </PreferenceScreen>

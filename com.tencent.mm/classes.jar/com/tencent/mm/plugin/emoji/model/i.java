@@ -8,25 +8,25 @@ import com.tencent.mm.av.a.c.k;
 public final class i
   implements k
 {
-  public k pLk;
+  public k rbC;
   
   public i(k paramk)
   {
-    this.pLk = paramk;
+    this.rbC = paramk;
   }
   
   public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
   {
     AppMethodBeat.i(108632);
-    if (this.pLk != null) {
-      this.pLk.a(paramString, paramView, paramBitmap, paramVarArgs);
+    if (this.rbC != null) {
+      this.rbC.a(paramString, paramView, paramBitmap, paramVarArgs);
     }
     AppMethodBeat.o(108632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.i
  * JD-Core Version:    0.7.0.1
  */

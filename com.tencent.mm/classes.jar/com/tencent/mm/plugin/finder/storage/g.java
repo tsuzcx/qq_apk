@@ -1,195 +1,125 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.f;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
-import d.n.n;
-import d.v;
-import java.util.ArrayList;
+import com.tencent.mm.g.c.cg;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.aud;
+import com.tencent.mm.protocal.protobuf.cjh;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.protocal.protobuf.csp;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "", "jsonStr", "", "(Ljava/lang/String;)V", "configList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Config;", "getConfigList", "()Ljava/util/List;", "Companion", "Config", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "Lcom/tencent/mm/autogen/table/BaseFinderDraftItem;", "()V", "_finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "value", "", "createTime", "getCreateTime", "()I", "setCreateTime", "(I)V", "finderItem", "getFinderItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "localFlag", "getLocalFlag", "setLocalFlag", "", "localId", "getLocalId", "()J", "setLocalId", "(J)V", "objectType", "getObjectType", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "info", "", "isFinderFeed", "", "isMvFeed", "Companion", "plugin-finder_release"})
 public final class g
+  extends cg
 {
-  private static final String TAG = "Finder.FinderFakeVideoConfig";
-  private static boolean sIC;
-  public static final a sID;
-  final List<b> sIB;
+  private static final IAutoDBItem.MAutoDBInfo info;
+  public static final a vDm;
+  private FinderItem vDl;
   
   static
   {
-    AppMethodBeat.i(166965);
-    sID = new a((byte)0);
-    TAG = "Finder.FinderFakeVideoConfig";
-    AppMethodBeat.o(166965);
+    AppMethodBeat.i(251715);
+    vDm = new a((byte)0);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = cg.ajs();
+    p.g(localMAutoDBInfo, "initAutoDBInfo(FinderDraftItem::class.java)");
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(251715);
   }
   
-  public g(String paramString)
+  public final FinderItem dxn()
   {
-    AppMethodBeat.i(166964);
-    this.sIB = ((List)new ArrayList());
-    for (;;)
+    AppMethodBeat.i(251714);
+    FinderItem localFinderItem = this.vDl;
+    Object localObject = localFinderItem;
+    if (localFinderItem == null)
     {
-      int i;
-      try
-      {
-        paramString = new i(paramString).xw("configs");
-        if (paramString != null)
-        {
-          int j = paramString.length();
-          i = 0;
-          if (i < j)
-          {
-            Object localObject = paramString.mM(i);
-            String str1 = ((i)localObject).optString("brands");
-            String str2 = ((i)localObject).optString("models");
-            int k = ((i)localObject).optInt("maxSize", 0);
-            if (k > 0)
-            {
-              localObject = this.sIB;
-              p.g(str1, "brands");
-              p.g(str2, "models");
-              ((List)localObject).add(new b(str1, str2, k));
-            }
-          }
-          else
-          {
-            AppMethodBeat.o(166964);
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(166964);
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        AppMethodBeat.o(166964);
-        return;
-      }
-      i += 1;
+      localObject = FinderItem.Companion;
+      localObject = this.field_finderItem;
+      p.g(localObject, "field_finderItem");
+      localObject = FinderItem.a.a((aud)localObject, this.field_localId);
+      this.vDl = ((FinderItem)localObject);
     }
+    AppMethodBeat.o(251714);
+    return localObject;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugEnable", "", "getDebugEnable", "()Z", "setDebugEnable", "(Z)V", "getConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "hitConfig", "videoSize", "", "plugin-finder_release"})
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "createDraftItem", "Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "createFinderItem", "draftItem", "createMvData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "plugin-finder_release"})
   public static final class a
   {
-    public static boolean FK(int paramInt)
+    public static csp a(g paramg)
     {
-      AppMethodBeat.i(166959);
-      Object localObject1 = Build.BRAND;
-      p.g(localObject1, "Build.BRAND");
-      if (localObject1 == null)
+      AppMethodBeat.i(251713);
+      p.h(paramg, "draftItem");
+      csp localcsp = new csp();
+      FinderItem localFinderItem = paramg.dxn();
+      Object localObject1 = (cjl)j.kt((List)localFinderItem.getMediaList());
+      Object localObject2;
+      if (localObject1 != null)
       {
-        localObject1 = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(166959);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = ((String)localObject1).toLowerCase();
-      p.g(localObject1, "(this as java.lang.String).toLowerCase()");
-      String str = Build.MODEL;
-      p.g(str, "Build.MODEL");
-      if (str == null)
-      {
-        localObject1 = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(166959);
-        throw ((Throwable)localObject1);
-      }
-      str = str.toLowerCase();
-      p.g(str, "(this as java.lang.String).toLowerCase()");
-      Object localObject2 = b.sHP;
-      localObject2 = b.cHZ();
-      p.g(localObject2, "FinderConfig.FAKE_VIDEO_CONFIG_JSON");
-      Object localObject3 = ((Iterable)new g((String)localObject2).sIB).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject2 = (g.b)((Iterator)localObject3).next();
-        if (((n.a((CharSequence)((g.b)localObject2).sIE, (CharSequence)localObject1, false)) || (n.a((CharSequence)((g.b)localObject2).sIF, (CharSequence)str, false)) || (bu.isNullOrNil(((g.b)localObject2).sIE))) && (paramInt > ((g.b)localObject2).maxSize) && (((g.b)localObject2).maxSize > 0))
-        {
-          localObject3 = g.sID;
-          ae.i(g.access$getTAG$cp(), "hitConfig brand:" + (String)localObject1 + ", model:" + str + ", videoSize:" + paramInt + "; config brands:" + ((g.b)localObject2).sIE + ", models:" + ((g.b)localObject2).sIF + ", maxSize:" + ((g.b)localObject2).maxSize);
-          AppMethodBeat.o(166959);
-          return true;
-        }
-      }
-      if (ae.getLogLevel() <= 1)
-      {
-        boolean bool = g.cKV();
-        AppMethodBeat.o(166959);
-        return bool;
-      }
-      AppMethodBeat.o(166959);
-      return false;
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Config;", "", "brands", "", "models", "maxSize", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "getBrands", "()Ljava/lang/String;", "getMaxSize", "()I", "getModels", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-finder_release"})
-  public static final class b
-  {
-    final int maxSize;
-    final String sIE;
-    final String sIF;
-    
-    public b(String paramString1, String paramString2, int paramInt)
-    {
-      AppMethodBeat.i(166960);
-      this.sIE = paramString1;
-      this.sIF = paramString2;
-      this.maxSize = paramInt;
-      AppMethodBeat.o(166960);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(166963);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.i(this.sIE, paramObject.sIE)) || (!p.i(this.sIF, paramObject.sIF)) || (this.maxSize != paramObject.maxSize)) {}
-        }
+        localObject2 = ((cjl)localObject1).url;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
       }
       else
       {
-        AppMethodBeat.o(166963);
-        return true;
+        localObject1 = "";
       }
-      AppMethodBeat.o(166963);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      int j = 0;
-      AppMethodBeat.i(166962);
-      String str = this.sIE;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
+      localcsp.MxF = ((String)localObject1);
+      localcsp.MxE = localFinderItem.getFeedObject();
+      localObject1 = localcsp.MxE;
+      if (localObject1 != null)
       {
-        str = this.sIF;
-        if (str != null) {
-          j = str.hashCode();
+        localObject1 = ((FinderObject)localObject1).objectDesc;
+        if (localObject1 != null) {
+          ((FinderObjectDesc)localObject1).media = new LinkedList();
         }
-        int k = this.maxSize;
-        AppMethodBeat.o(166962);
-        return (i * 31 + j) * 31 + k;
       }
+      localObject1 = localFinderItem.field_clipList;
+      if (localObject1 != null)
+      {
+        localObject1 = ((cjh)localObject1).MoH;
+        if (localObject1 != null)
+        {
+          localObject1 = ((Iterable)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (aud)((Iterator)localObject1).next();
+            localcsp.LDi.add(((aud)localObject2).tuO);
+          }
+        }
+      }
+      localcsp.localId = paramg.field_localId;
+      localcsp.MxG = paramg.field_originMvInfo;
+      AppMethodBeat.o(251713);
+      return localcsp;
     }
     
-    public final String toString()
+    public static g j(FinderItem paramFinderItem)
     {
-      AppMethodBeat.i(166961);
-      String str = "Config(brands=" + this.sIE + ", models=" + this.sIF + ", maxSize=" + this.maxSize + ")";
-      AppMethodBeat.o(166961);
-      return str;
+      AppMethodBeat.i(251712);
+      p.h(paramFinderItem, "finderItem");
+      g localg = new g();
+      localg.field_createTime = paramFinderItem.getCreateTime();
+      localg.field_localFlag = 1;
+      FinderItem.a locala = FinderItem.Companion;
+      localg.field_finderItem = FinderItem.a.l(paramFinderItem);
+      localg.field_objectType = 0;
+      localg.field_localId = paramFinderItem.getLocalId();
+      AppMethodBeat.o(251712);
+      return localg;
     }
   }
 }

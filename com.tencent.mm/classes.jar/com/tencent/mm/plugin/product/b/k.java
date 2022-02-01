@@ -1,47 +1,48 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dfr;
-import com.tencent.mm.protocal.protobuf.dlh;
-import com.tencent.mm.protocal.protobuf.dli;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.eeu;
+import com.tencent.mm.protocal.protobuf.eev;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
-  public String xbU;
+  public String AZw;
+  private i callback;
+  private d rr;
   
-  public k(dfr paramdfr)
+  public k(dyy paramdyy)
   {
     AppMethodBeat.i(66903);
-    b.a locala = new b.a();
-    locala.hQF = new dlh();
-    locala.hQG = new dli();
+    d.a locala = new d.a();
+    locala.iLN = new eeu();
+    locala.iLO = new eev();
     locala.uri = "/cgi-bin/micromsg-bin/submitmallfreeorder";
     locala.funcId = 557;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((dlh)this.rr.hQD.hQJ).HSN = paramdfr;
+    this.rr = locala.aXF();
+    ((eeu)this.rr.iLK.iLR).NeQ = paramdyy;
     AppMethodBeat.o(66903);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(66905);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(66905);
     return i;
   }
@@ -51,16 +52,16 @@ public final class k
     return 557;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66904);
-    paramq = (dli)((b)paramq).hQE.hQJ;
+    params = (eev)((d)params).iLL.iLR;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ae.d("MicroMsg.NetSceneMallSubmitMallFreeOrder", "resp.PrepareId " + paramq.HSO);
-      this.xbU = paramq.HSO;
+      Log.d("MicroMsg.NetSceneMallSubmitMallFreeOrder", "resp.PrepareId " + params.NeR);
+      this.AZw = params.NeR;
     }
-    ae.d("MicroMsg.NetSceneMallSubmitMallFreeOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
+    Log.d("MicroMsg.NetSceneMallSubmitMallFreeOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(66904);
   }

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.voip_cs.c;
 
 public abstract interface b
 {
-  public abstract void VI(int paramInt);
+  public abstract void aeh(int paramInt);
   
-  public abstract void kv(String paramString1, String paramString2);
+  public abstract void ln(String paramString1, String paramString2);
   
   public abstract void onError(int paramInt);
 }

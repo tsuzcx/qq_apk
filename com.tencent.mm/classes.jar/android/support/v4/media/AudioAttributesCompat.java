@@ -6,20 +6,20 @@ import androidx.versionedparcelable.c;
 public class AudioAttributesCompat
   implements c
 {
-  private static final SparseIntArray Ky;
-  private static final int[] Kz = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16 };
-  AudioAttributesImpl KA;
+  private static final SparseIntArray KI;
+  private static final int[] KJ = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16 };
+  AudioAttributesImpl KK;
   
   static
   {
     SparseIntArray localSparseIntArray = new SparseIntArray();
-    Ky = localSparseIntArray;
+    KI = localSparseIntArray;
     localSparseIntArray.put(5, 1);
-    Ky.put(6, 2);
-    Ky.put(7, 2);
-    Ky.put(8, 1);
-    Ky.put(9, 1);
-    Ky.put(10, 1);
+    KI.put(6, 2);
+    KI.put(7, 2);
+    KI.put(8, 1);
+    KI.put(9, 1);
+    KI.put(10, 1);
   }
   
   static String ay(int paramInt)
@@ -112,27 +112,27 @@ public class AudioAttributesCompat
     {
       return false;
       paramObject = (AudioAttributesCompat)paramObject;
-      if (this.KA != null) {
+      if (this.KK != null) {
         break;
       }
-    } while (paramObject.KA != null);
+    } while (paramObject.KK != null);
     return true;
-    return this.KA.equals(paramObject.KA);
+    return this.KK.equals(paramObject.KK);
   }
   
   public int hashCode()
   {
-    return this.KA.hashCode();
+    return this.KK.hashCode();
   }
   
   public String toString()
   {
-    return this.KA.toString();
+    return this.KK.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.media.AudioAttributesCompat
  * JD-Core Version:    0.7.0.1
  */

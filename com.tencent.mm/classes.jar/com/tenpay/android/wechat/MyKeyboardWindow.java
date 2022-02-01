@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.View.OnClickListener;
@@ -38,6 +39,7 @@ public class MyKeyboardWindow
   private Button mKey9;
   private RelativeLayout mKeyD;
   private Button mKeyX;
+  private MyKeyboardWindow.OnTouchListener mOnTouchListener;
   private int mXMode;
   
   public MyKeyboardWindow(Context paramContext)
@@ -84,8 +86,8 @@ public class MyKeyboardWindow
       {
         AppMethodBeat.i(130946);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (MyKeyboardWindow.this.mInputEditText == null)
         {
           a.a(this, "com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -176,6 +178,25 @@ public class MyKeyboardWindow
     AppMethodBeat.o(130949);
   }
   
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(256167);
+    try
+    {
+      if (this.mOnTouchListener != null) {
+        this.mOnTouchListener.onTouch(this, paramMotionEvent);
+      }
+      label24:
+      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(256167);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label24;
+    }
+  }
+  
   protected int getDrawableId(String paramString)
   {
     AppMethodBeat.i(130955);
@@ -244,6 +265,11 @@ public class MyKeyboardWindow
     }
   }
   
+  public void setOnTouchListener(MyKeyboardWindow.OnTouchListener paramOnTouchListener)
+  {
+    this.mOnTouchListener = paramOnTouchListener;
+  }
+  
   public void setSecureAccessibility(View.AccessibilityDelegate paramAccessibilityDelegate)
   {
     AppMethodBeat.i(130950);
@@ -290,7 +316,7 @@ public class MyKeyboardWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tenpay.android.wechat.MyKeyboardWindow
  * JD-Core Version:    0.7.0.1
  */

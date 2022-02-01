@@ -1,16 +1,16 @@
 package com.tencent.mm.live.view.a;
 
 import android.view.View.OnClickListener;
-import d.g.a.b;
-import d.l;
+import kotlin.g.a.b;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 final class e
   implements View.OnClickListener
 {
   e(b paramb)
   {
-    this.heQ = paramb;
+    this.hXF = paramb;
   }
 }
 

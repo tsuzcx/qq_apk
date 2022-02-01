@@ -6,97 +6,162 @@ import com.tencent.mm.plugin.report.a;
 public final class eg
   extends a
 {
-  public long dTO;
-  public long dWm;
-  private String eeX = "";
-  public long eiW;
-  private long ejt;
-  private String eju = "";
-  private String ejv = "";
+  private long eCD;
+  private String eiB = "";
+  private long ers;
+  private long ert;
+  private long eru;
+  private String erv = "";
+  private long erw;
+  private String esS = "";
+  private String esT = "";
+  private long esU;
+  private long esV;
+  private String euI = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(184769);
+    AppMethodBeat.i(168919);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eeX);
+    ((StringBuffer)localObject).append(this.eiB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTO);
+    ((StringBuffer)localObject).append(this.erv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiW);
+    ((StringBuffer)localObject).append(this.erw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWm);
+    ((StringBuffer)localObject).append(this.euI);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejt);
+    ((StringBuffer)localObject).append(this.eCD);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eju);
+    ((StringBuffer)localObject).append(this.esS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejv);
+    ((StringBuffer)localObject).append(this.esT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.esU);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.esV);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ers);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ert);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eru);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(184769);
+    aMq((String)localObject);
+    AppMethodBeat.o(168919);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(184770);
+    AppMethodBeat.i(168920);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomId:").append(this.eeX);
+    ((StringBuffer)localObject).append("SessionId:").append(this.eiB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("role:").append(this.dTO);
+    ((StringBuffer)localObject).append("CurrentPageName:").append(this.erv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgType:").append(this.eiW);
+    ((StringBuffer)localObject).append("scene:").append(this.erw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scene:").append(this.dWm);
+    ((StringBuffer)localObject).append("feedid:").append(this.euI);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("exit:").append(this.ejt);
+    ((StringBuffer)localObject).append("feedtype:").append(this.eCD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("todoid:").append(this.eju);
+    ((StringBuffer)localObject).append("Tag:").append(this.esS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appusername:").append(this.ejv);
+    ((StringBuffer)localObject).append("TagId:").append(this.esT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsPoi:").append(this.esU);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TagFeedCnt:").append(this.esV);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FeedLikeCount:").append(this.ers);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FeedCommentCount:").append(this.ert);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FeedFriLikeCount:").append(this.eru);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184770);
+    AppMethodBeat.o(168920);
     return localObject;
-  }
-  
-  public final eg Tp()
-  {
-    this.ejt = 2L;
-    return this;
   }
   
   public final int getId()
   {
-    return 19443;
+    return 19186;
   }
   
-  public final eg nQ(String paramString)
+  public final eg lK(long paramLong)
   {
-    AppMethodBeat.i(184767);
-    this.eeX = t("roomId", paramString, true);
-    AppMethodBeat.o(184767);
+    this.erw = paramLong;
     return this;
   }
   
-  public final eg nR(String paramString)
+  public final eg lL(long paramLong)
   {
-    AppMethodBeat.i(184768);
-    this.eju = t("todoid", paramString, true);
-    AppMethodBeat.o(184768);
+    this.eCD = paramLong;
     return this;
   }
   
-  public final eg nS(String paramString)
+  public final eg lM(long paramLong)
   {
-    AppMethodBeat.i(217087);
-    this.ejv = t("appusername", paramString, true);
-    AppMethodBeat.o(217087);
+    this.ers = paramLong;
+    return this;
+  }
+  
+  public final eg lN(long paramLong)
+  {
+    this.ert = paramLong;
+    return this;
+  }
+  
+  public final eg lO(long paramLong)
+  {
+    this.eru = paramLong;
+    return this;
+  }
+  
+  public final eg qM(String paramString)
+  {
+    AppMethodBeat.i(168914);
+    this.eiB = x("SessionId", paramString, true);
+    AppMethodBeat.o(168914);
+    return this;
+  }
+  
+  public final eg qN(String paramString)
+  {
+    AppMethodBeat.i(168915);
+    this.erv = x("CurrentPageName", paramString, true);
+    AppMethodBeat.o(168915);
+    return this;
+  }
+  
+  public final eg qO(String paramString)
+  {
+    AppMethodBeat.i(168916);
+    this.euI = x("feedid", paramString, true);
+    AppMethodBeat.o(168916);
+    return this;
+  }
+  
+  public final eg qP(String paramString)
+  {
+    AppMethodBeat.i(168917);
+    this.esS = x("Tag", paramString, true);
+    AppMethodBeat.o(168917);
+    return this;
+  }
+  
+  public final eg qQ(String paramString)
+  {
+    AppMethodBeat.i(168918);
+    this.esT = x("TagId", paramString, true);
+    AppMethodBeat.o(168918);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.g.b.a.eg
  * JD-Core Version:    0.7.0.1
  */

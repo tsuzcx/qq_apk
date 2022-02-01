@@ -5,13 +5,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.tools.t;
+import com.tencent.mm.ui.tools.u;
 
 public class SwitchKeyValuePreference
   extends Preference
 {
+  private TextView BfZ;
   private boolean enable;
-  private TextView xif;
   
   public SwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,43 +23,43 @@ public class SwitchKeyValuePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142675);
     this.enable = true;
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(142675);
   }
   
   private void updateView()
   {
     AppMethodBeat.i(142678);
-    if (this.xif == null)
+    if (this.BfZ == null)
     {
       AppMethodBeat.o(142678);
       return;
     }
     if (this.enable)
     {
-      this.xif.setTextColor(t.kJ(this.mContext));
+      this.BfZ.setTextColor(u.kF(this.mContext));
       AppMethodBeat.o(142678);
       return;
     }
-    this.xif.setTextColor(t.kK(this.mContext));
+    this.BfZ.setTextColor(u.kG(this.mContext));
     AppMethodBeat.o(142678);
+  }
+  
+  public final void BE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142677);
+    this.enable = paramBoolean;
+    updateView();
+    AppMethodBeat.o(142677);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(142676);
     super.onBindView(paramView);
-    this.xif = ((TextView)paramView.findViewById(16908304));
+    this.BfZ = ((TextView)paramView.findViewById(16908304));
     updateView();
     AppMethodBeat.o(142676);
-  }
-  
-  public final void xP(boolean paramBoolean)
-  {
-    AppMethodBeat.i(142677);
-    this.enable = paramBoolean;
-    updateView();
-    AppMethodBeat.o(142677);
   }
 }
 

@@ -1,143 +1,139 @@
 package com.tencent.mm.live.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.live.b.a.o;
-import com.tencent.mm.live.core.core.b.c;
-import com.tencent.mm.live.core.core.b.d;
-import com.tencent.mm.live.core.core.c.a;
-import com.tencent.mm.protocal.protobuf.bsj;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.trtc.TRTCCloudDef.TRTCParams;
-import d.g.a.r;
-import d.g.b.p;
-import d.k.j;
-import d.l;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/JoinLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "liveId", "", "wechatRoomId", "", "liveName", "isAnchor", "", "(JLjava/lang/String;Ljava/lang/String;Z)V", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "ret", "errMsg", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "", "join", "onSceneEnd", "errType", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/AcceptLiveMicInfo;", "", "liveId", "", "micId", "", "userId", "sdkAppId", "", "roleId", "sdkLiveId", "userSig", "privateMapKey", "expireForPmk", "sdkParam", "micType", "seq", "(JLjava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/Integer;J)V", "getExpireForPmk", "()J", "getLiveId", "getMicId", "()Ljava/lang/String;", "getMicType", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "getPrivateMapKey", "getRoleId", "()I", "getSdkAppId", "getSdkLiveId", "getSdkParam", "getSeq", "getUserId", "getUserSig", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(JLjava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/Integer;J)Lcom/tencent/mm/live/model/AcceptLiveMicInfo;", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"})
 public final class a
-  implements f
 {
-  public static final a gPo;
-  private final boolean dzz;
-  private final long gJh;
-  private final String gJj;
-  private r<? super Integer, ? super String, ? super c, ? super TRTCCloudDef.TRTCParams, z> gPm;
-  private final String gPn;
+  public final int hFA;
+  public final int hFB;
+  public final long hFC;
+  public final String hFD;
+  public final Integer hFE;
+  public final String hFz;
+  public final long liveId;
+  public final String privateMapKey;
+  public final int sdkAppId;
+  public final long seq;
+  public final String userId;
+  public final String userSig;
   
-  static
+  public a(long paramLong1, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, long paramLong2, String paramString5, Integer paramInteger, long paramLong3)
   {
-    AppMethodBeat.i(215639);
-    gPo = new a((byte)0);
-    AppMethodBeat.o(215639);
+    this.liveId = paramLong1;
+    this.hFz = paramString1;
+    this.userId = paramString2;
+    this.sdkAppId = paramInt1;
+    this.hFA = paramInt2;
+    this.hFB = paramInt3;
+    this.userSig = paramString3;
+    this.privateMapKey = paramString4;
+    this.hFC = paramLong2;
+    this.hFD = paramString5;
+    this.hFE = paramInteger;
+    this.seq = paramLong3;
   }
   
-  private a(long paramLong, String paramString1, String paramString2)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(215638);
-    this.gJh = paramLong;
-    this.gPn = paramString1;
-    this.gJj = paramString2;
-    this.dzz = false;
-    AppMethodBeat.o(215638);
-  }
-  
-  public final void a(r<? super Integer, ? super String, ? super c, ? super TRTCCloudDef.TRTCParams, z> paramr)
-  {
-    AppMethodBeat.i(215636);
-    Object localObject1 = com.tencent.mm.kernel.g.ajQ();
-    p.g(localObject1, "MMKernel.network()");
-    ((b)localObject1).ajj().a(3797, (f)this);
-    long l = this.gJh;
-    localObject1 = this.gPn;
-    Object localObject2 = g.gQZ;
-    localObject1 = new o(l, (String)localObject1, g.anG());
-    localObject2 = com.tencent.mm.kernel.g.ajQ();
-    p.g(localObject2, "MMKernel.network()");
-    ((b)localObject2).ajj().b((n)localObject1);
-    this.gPm = paramr;
-    AppMethodBeat.o(215636);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
-  {
-    AppMethodBeat.i(215637);
-    Object localObject1;
-    Object localObject2;
-    if ((paramn instanceof o))
+    AppMethodBeat.i(207552);
+    if (this != paramObject)
     {
-      ae.i("MicroMsg.JoinLiveRoom", "JoinLiveRoom on SceneEnd");
-      if ((paramInt1 != 0) || (paramInt2 != 0))
+      if ((paramObject instanceof a))
       {
-        ae.i("MicroMsg.JoinLiveRoom", "join live room failed " + paramInt1 + ' ' + paramInt2);
-        localObject1 = this.gPm;
-        if (localObject1 != null)
-        {
-          paramn = paramString;
-          if (paramString == null) {
-            paramn = "";
-          }
-          paramString = d.gKq;
-          paramString = d.alQ();
-          localObject2 = d.gKq;
-          ((r)localObject1).a(Integer.valueOf(paramInt2), paramn, paramString, d.alP());
-        }
-        paramString = com.tencent.mm.kernel.g.ajQ();
-        p.g(paramString, "MMKernel.network()");
-        paramString.ajj().b(3797, (f)this);
+        paramObject = (a)paramObject;
+        if ((this.liveId != paramObject.liveId) || (!p.j(this.hFz, paramObject.hFz)) || (!p.j(this.userId, paramObject.userId)) || (this.sdkAppId != paramObject.sdkAppId) || (this.hFA != paramObject.hFA) || (this.hFB != paramObject.hFB) || (!p.j(this.userSig, paramObject.userSig)) || (!p.j(this.privateMapKey, paramObject.privateMapKey)) || (this.hFC != paramObject.hFC) || (!p.j(this.hFD, paramObject.hFD)) || (!p.j(this.hFE, paramObject.hFE)) || (this.seq != paramObject.seq)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(215637);
-      return;
+      AppMethodBeat.o(207552);
+      return true;
     }
-    paramString = ((o)paramn).gSR;
-    paramn = g.gQZ;
-    if (paramString != null) {}
-    for (paramString = paramString.Hgi;; paramString = null)
+    AppMethodBeat.o(207552);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    int i1 = 0;
+    AppMethodBeat.i(207551);
+    long l = this.liveId;
+    int i2 = (int)(l ^ l >>> 32);
+    Object localObject = this.hFz;
+    int i;
+    int j;
+    label59:
+    int i3;
+    int i4;
+    int i5;
+    int k;
+    label94:
+    int m;
+    label112:
+    int i6;
+    if (localObject != null)
     {
-      g.a(paramString);
-      paramString = g.gQZ;
-      bvq localbvq = g.anI();
-      if (localbvq == null) {
-        break;
+      i = localObject.hashCode();
+      localObject = this.userId;
+      if (localObject == null) {
+        break label258;
       }
-      localObject1 = new TRTCCloudDef.TRTCParams();
-      localObject2 = new c(null, 0L, null, 0, null, 0L, 0L, 127);
-      paramString = e.gPA;
-      paramString = g.gQZ;
-      paramn = g.anH().Gud;
-      paramString = paramn;
-      if (paramn == null) {
-        paramString = "";
+      j = localObject.hashCode();
+      i3 = this.sdkAppId;
+      i4 = this.hFA;
+      i5 = this.hFB;
+      localObject = this.userSig;
+      if (localObject == null) {
+        break label263;
       }
-      paramn = g.gQZ;
-      e.a(paramString, localbvq, g.anH(), (TRTCCloudDef.TRTCParams)localObject1, (c)localObject2);
-      if (this.dzz)
-      {
-        paramString = c.a.gJD;
-        ((c)localObject2).gKh = c.a.alz();
+      k = localObject.hashCode();
+      localObject = this.privateMapKey;
+      if (localObject == null) {
+        break label268;
       }
-      long l = j.aG((localbvq.HiE - 60L) * 1000L, 60000L);
-      i.gRP.rx(l);
-      paramString = this.gPm;
-      if (paramString == null) {
-        break;
+      m = localObject.hashCode();
+      l = this.hFC;
+      i6 = (int)(l ^ l >>> 32);
+      localObject = this.hFD;
+      if (localObject == null) {
+        break label274;
       }
-      paramString.a(Integer.valueOf(0), "", localObject2, localObject1);
+    }
+    label258:
+    label263:
+    label268:
+    label274:
+    for (int n = localObject.hashCode();; n = 0)
+    {
+      localObject = this.hFE;
+      if (localObject != null) {
+        i1 = localObject.hashCode();
+      }
+      l = this.seq;
+      int i7 = (int)(l ^ l >>> 32);
+      AppMethodBeat.o(207551);
+      return ((n + ((m + (k + ((((j + (i + i2 * 31) * 31) * 31 + i3) * 31 + i4) * 31 + i5) * 31) * 31) * 31 + i6) * 31) * 31 + i1) * 31 + i7;
+      i = 0;
       break;
+      j = 0;
+      break label59;
+      k = 0;
+      break label94;
+      m = 0;
+      break label112;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/JoinLiveRoom$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
-  public static final class a {}
+  public final String toString()
+  {
+    AppMethodBeat.i(207550);
+    String str = "AcceptLiveMicInfo(liveId=" + this.liveId + ", micId=" + this.hFz + ", userId=" + this.userId + ", sdkAppId=" + this.sdkAppId + ", roleId=" + this.hFA + ", sdkLiveId=" + this.hFB + ", userSig=" + this.userSig + ", privateMapKey=" + this.privateMapKey + ", expireForPmk=" + this.hFC + ", sdkParam=" + this.hFD + ", micType=" + this.hFE + ", seq=" + this.seq + ")";
+    AppMethodBeat.o(207550);
+    return str;
+  }
 }
 
 

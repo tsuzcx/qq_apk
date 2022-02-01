@@ -17,47 +17,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.api.n.a;
 import com.tencent.mm.plugin.story.ui.a.d;
 import com.tencent.mm.plugin.story.ui.layout.AvatarLayoutManager;
-import com.tencent.mm.ui.ao;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allFavBtn", "Landroid/widget/ImageView;", "avatarRecycler", "Landroid/support/v7/widget/RecyclerView;", "value", "", "chatRoom", "getChatRoom", "()Ljava/lang/String;", "setChatRoom", "(Ljava/lang/String;)V", "checkedChangeListener", "Lkotlin/Function2;", "Landroid/widget/CompoundButton;", "", "", "closeView", "dataAdapter", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "dataLayoutManager", "Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "favCheckBox", "Landroid/widget/CheckBox;", "galleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "itemStatusGroup", "Landroid/view/View;", "menuBtn", "onAllFav", "Lkotlin/Function0;", "getOnAllFav", "()Lkotlin/jvm/functions/Function0;", "setOnAllFav", "(Lkotlin/jvm/functions/Function0;)V", "onCheckedFav", "Lkotlin/ParameterName;", "name", "checkBox", "isChecked", "getOnCheckedFav", "()Lkotlin/jvm/functions/Function2;", "setOnCheckedFav", "(Lkotlin/jvm/functions/Function2;)V", "onClickRangeIcon", "getOnClickRangeIcon", "setOnClickRangeIcon", "onClose", "getOnClose", "setOnClose", "onMenu", "getOnMenu", "setOnMenu", "privacyIcon", "rangeIcon", "recyclerViewContainer", "Landroid/widget/FrameLayout;", "snsIcon", "initWithGalleryType", "needAction", "relayoutDateRecyclerView", "relayoutProfileRecyclerView", "relayoutSelfFavBtn", "removeUser", "userIndex", "setScrollOffset", "position", "offset", "", "setShowClose", "setUserList", "userList", "", "showFavoriteIcon", "isShow", "showPrivacyIcon", "showRangeIcon", "showSnsIcon", "toggleActiveState", "active", "updateFavCheckedStatus", "Companion", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allFavBtn", "Landroid/widget/ImageView;", "avatarRecycler", "Landroid/support/v7/widget/RecyclerView;", "value", "", "chatRoom", "getChatRoom", "()Ljava/lang/String;", "setChatRoom", "(Ljava/lang/String;)V", "checkedChangeListener", "Lkotlin/Function2;", "Landroid/widget/CompoundButton;", "", "", "closeView", "dataAdapter", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "dataLayoutManager", "Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "favCheckBox", "Landroid/widget/CheckBox;", "galleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "itemStatusGroup", "Landroid/view/View;", "menuBtn", "onAllFav", "Lkotlin/Function0;", "getOnAllFav", "()Lkotlin/jvm/functions/Function0;", "setOnAllFav", "(Lkotlin/jvm/functions/Function0;)V", "onCheckedFav", "Lkotlin/ParameterName;", "name", "checkBox", "isChecked", "getOnCheckedFav", "()Lkotlin/jvm/functions/Function2;", "setOnCheckedFav", "(Lkotlin/jvm/functions/Function2;)V", "onClickRangeIcon", "getOnClickRangeIcon", "setOnClickRangeIcon", "onClose", "getOnClose", "setOnClose", "onMenu", "getOnMenu", "setOnMenu", "privacyIcon", "rangeIcon", "recyclerViewContainer", "Landroid/widget/FrameLayout;", "snsIcon", "initWithGalleryType", "needAction", "relayoutDateRecyclerView", "relayoutProfileRecyclerView", "relayoutSelfFavBtn", "removeUser", "userIndex", "setScrollOffset", "position", "offset", "", "setShowClose", "setUserList", "userList", "", "showFavoriteIcon", "isShow", "showPrivacyIcon", "showRangeIcon", "showSnsIcon", "toggleActiveState", "active", "updateFavCheckedStatus", "Companion", "plugin-story_release"})
 public final class GalleryVerticalControlView
   extends RelativeLayout
 {
-  public static final GalleryVerticalControlView.a Bvd;
+  public static final GalleryVerticalControlView.a FFQ;
   private static final String TAG = "MicroMsg.GalleryVerticalControlView";
-  private final ImageView BtK;
-  final ImageView BuO;
-  final ImageView BuP;
-  final RecyclerView BuQ;
-  private final View BuR;
-  final ImageView BuS;
-  final CheckBox BuT;
-  n.a BuU;
-  d<?> BuV;
-  AvatarLayoutManager BuW;
-  private m<? super CompoundButton, ? super Boolean, z> BuX;
-  private d.g.a.a<z> BuY;
-  private d.g.a.a<z> BuZ;
-  private d.g.a.a<z> Bva;
-  m<? super CompoundButton, ? super Boolean, z> Bvb;
-  private d.g.a.a<z> Bvc;
-  final FrameLayout iFL;
-  private String jaD;
-  final ImageView ycn;
-  final ImageView zjh;
+  final ImageView Cdq;
+  final ImageView DnY;
+  private final ImageView FEx;
+  final ImageView FFB;
+  final ImageView FFC;
+  final RecyclerView FFD;
+  private final View FFE;
+  final ImageView FFF;
+  final CheckBox FFG;
+  n.a FFH;
+  d<?> FFI;
+  AvatarLayoutManager FFJ;
+  private m<? super CompoundButton, ? super Boolean, x> FFK;
+  private kotlin.g.a.a<x> FFL;
+  private kotlin.g.a.a<x> FFM;
+  private kotlin.g.a.a<x> FFN;
+  m<? super CompoundButton, ? super Boolean, x> FFO;
+  private kotlin.g.a.a<x> FFP;
+  final FrameLayout jBO;
+  private String jVv;
   
   static
   {
     AppMethodBeat.i(120392);
-    Bvd = new GalleryVerticalControlView.a((byte)0);
+    FFQ = new GalleryVerticalControlView.a((byte)0);
     TAG = "MicroMsg.GalleryVerticalControlView";
     AppMethodBeat.o(120392);
   }
@@ -73,50 +73,50 @@ public final class GalleryVerticalControlView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120390);
-    this.BuX = ((m)new b(this));
-    View.inflate(paramContext, 2131495723, (ViewGroup)this);
-    paramAttributeSet = findViewById(2131305420);
+    this.FFK = ((m)new b(this));
+    View.inflate(paramContext, 2131496628, (ViewGroup)this);
+    paramAttributeSet = findViewById(2131308626);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_close)");
-    this.BuO = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305439);
+    this.FFB = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308645);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_privacy)");
-    this.BtK = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305418);
+    this.FEx = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308624);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_avatar_recycler)");
-    this.BuQ = ((RecyclerView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305419);
+    this.FFD = ((RecyclerView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308625);
     p.g(paramAttributeSet, "findViewById(R.id.story_…vatar_recycler_container)");
-    this.iFL = ((FrameLayout)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305435);
+    this.jBO = ((FrameLayout)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308641);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_menu)");
-    this.zjh = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305444);
+    this.DnY = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308650);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_sns)");
-    this.BuP = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305417);
+    this.FFC = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308623);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_all_fav)");
-    this.BuS = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305433);
+    this.FFF = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308639);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_item_status_group)");
-    this.BuR = paramAttributeSet;
-    paramAttributeSet = findViewById(2131305443);
+    this.FFE = paramAttributeSet;
+    paramAttributeSet = findViewById(2131308649);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_select_fav)");
-    this.BuT = ((CheckBox)paramAttributeSet);
-    paramAttributeSet = findViewById(2131305440);
+    this.FFG = ((CheckBox)paramAttributeSet);
+    paramAttributeSet = findViewById(2131308646);
     p.g(paramAttributeSet, "findViewById(R.id.story_gallery_range)");
-    this.ycn = ((ImageView)paramAttributeSet);
-    this.BuQ.setItemAnimator(null);
-    this.zjh.setImageDrawable(ao.k(paramContext, 2131690436, -1));
-    this.BuS.setImageDrawable(ao.k(paramContext, 2131690380, -1));
-    this.BuO.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.Cdq = ((ImageView)paramAttributeSet);
+    this.FFD.setItemAnimator(null);
+    this.DnY.setImageDrawable(ar.m(paramContext, 2131690612, -1));
+    this.FFF.setImageDrawable(ar.m(paramContext, 2131690523, -1));
+    this.FFB.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120379);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = this.Bve.getOnClose();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = this.FFR.getOnClose();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -124,15 +124,15 @@ public final class GalleryVerticalControlView
         AppMethodBeat.o(120379);
       }
     });
-    this.zjh.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.DnY.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120380);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = this.Bve.getOnMenu();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = this.FFR.getOnMenu();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -140,15 +140,15 @@ public final class GalleryVerticalControlView
         AppMethodBeat.o(120380);
       }
     });
-    this.BuS.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.FFF.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120381);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = this.Bve.getOnAllFav();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = this.FFR.getOnAllFav();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -156,23 +156,23 @@ public final class GalleryVerticalControlView
         AppMethodBeat.o(120381);
       }
     });
-    paramAttributeSet = this.BuT;
-    paramContext = this.Bvb;
+    paramAttributeSet = this.FFG;
+    paramContext = this.FFO;
     if (paramContext != null) {
       paramContext = new h(paramContext);
     }
     for (;;)
     {
       paramAttributeSet.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)paramContext);
-      this.ycn.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.Cdq.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(120382);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          paramAnonymousView = this.Bve.getOnClickRangeIcon();
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryVerticalControlView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          paramAnonymousView = this.FFR.getOnClickRangeIcon();
           if (paramAnonymousView != null) {
             paramAnonymousView.invoke();
           }
@@ -187,63 +187,125 @@ public final class GalleryVerticalControlView
   
   public final String getChatRoom()
   {
-    return this.jaD;
+    return this.jVv;
   }
   
-  public final d.g.a.a<z> getOnAllFav()
+  public final kotlin.g.a.a<x> getOnAllFav()
   {
-    return this.Bva;
+    return this.FFN;
   }
   
-  public final m<CompoundButton, Boolean, z> getOnCheckedFav()
+  public final m<CompoundButton, Boolean, x> getOnCheckedFav()
   {
-    return this.Bvb;
+    return this.FFO;
   }
   
-  public final d.g.a.a<z> getOnClickRangeIcon()
+  public final kotlin.g.a.a<x> getOnClickRangeIcon()
   {
-    return this.Bvc;
+    return this.FFP;
   }
   
-  public final d.g.a.a<z> getOnClose()
+  public final kotlin.g.a.a<x> getOnClose()
   {
-    return this.BuY;
+    return this.FFL;
   }
   
-  public final d.g.a.a<z> getOnMenu()
+  public final kotlin.g.a.a<x> getOnMenu()
   {
-    return this.BuZ;
+    return this.FFM;
   }
   
-  public final void sE(boolean paramBoolean)
+  public final void setChatRoom(String paramString)
+  {
+    this.jVv = paramString;
+    d locald = this.FFI;
+    Object localObject = locald;
+    if (!(locald instanceof com.tencent.mm.plugin.story.ui.a.b)) {
+      localObject = null;
+    }
+    localObject = (com.tencent.mm.plugin.story.ui.a.b)localObject;
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.story.ui.a.b)localObject).jVv = paramString;
+    }
+  }
+  
+  public final void setOnAllFav(kotlin.g.a.a<x> parama)
+  {
+    this.FFN = parama;
+  }
+  
+  public final void setOnCheckedFav(m<? super CompoundButton, ? super Boolean, x> paramm)
+  {
+    this.FFO = paramm;
+  }
+  
+  public final void setOnClickRangeIcon(kotlin.g.a.a<x> parama)
+  {
+    this.FFP = parama;
+  }
+  
+  public final void setOnClose(kotlin.g.a.a<x> parama)
+  {
+    this.FFL = parama;
+  }
+  
+  public final void setOnMenu(kotlin.g.a.a<x> parama)
+  {
+    this.FFM = parama;
+  }
+  
+  public final void setUserList(List<String> paramList)
+  {
+    AppMethodBeat.i(120386);
+    p.h(paramList, "userList");
+    d locald = this.FFI;
+    if (locald != null)
+    {
+      p.h(paramList, "users");
+      locald.kgc.clear();
+      locald.kgc.add("");
+      locald.kgc.addAll((Collection)paramList);
+      locald.kgc.add("");
+    }
+    paramList = this.FFI;
+    if (paramList != null)
+    {
+      paramList.notifyDataSetChanged();
+      AppMethodBeat.o(120386);
+      return;
+    }
+    AppMethodBeat.o(120386);
+  }
+  
+  public final void vY(boolean paramBoolean)
   {
     AppMethodBeat.i(120387);
     if (paramBoolean)
     {
-      this.BtK.setVisibility(0);
-      this.BtK.setImageDrawable(ao.k(getContext(), 2131690423, getResources().getColor(2131100987)));
+      this.FEx.setVisibility(0);
+      this.FEx.setImageDrawable(ar.m(getContext(), 2131690590, getResources().getColor(2131101217)));
       AppMethodBeat.o(120387);
       return;
     }
-    this.BtK.setVisibility(8);
+    this.FEx.setVisibility(8);
     AppMethodBeat.o(120387);
   }
   
-  public final void sF(boolean paramBoolean)
+  public final void vZ(boolean paramBoolean)
   {
     AppMethodBeat.i(120388);
-    if ((paramBoolean) && (com.tencent.mm.plugin.story.c.a.a.AZY.ekC()))
+    if ((paramBoolean) && (com.tencent.mm.plugin.story.c.a.a.FkW.fnd()))
     {
-      this.BtK.setVisibility(0);
-      this.BtK.setImageDrawable(ao.k(getContext(), 2131690480, getResources().getColor(2131100987)));
+      this.FEx.setVisibility(0);
+      this.FEx.setImageDrawable(ar.m(getContext(), 2131690677, getResources().getColor(2131101217)));
       AppMethodBeat.o(120388);
       return;
     }
-    this.BtK.setVisibility(8);
+    this.FEx.setVisibility(8);
     AppMethodBeat.o(120388);
   }
   
-  public final void sG(boolean paramBoolean)
+  public final void wa(boolean paramBoolean)
   {
     AppMethodBeat.i(120389);
     if (paramBoolean)
@@ -256,72 +318,10 @@ public final class GalleryVerticalControlView
     AppMethodBeat.o(120389);
   }
   
-  public final void setChatRoom(String paramString)
-  {
-    this.jaD = paramString;
-    d locald = this.BuV;
-    Object localObject = locald;
-    if (!(locald instanceof com.tencent.mm.plugin.story.ui.a.b)) {
-      localObject = null;
-    }
-    localObject = (com.tencent.mm.plugin.story.ui.a.b)localObject;
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.story.ui.a.b)localObject).jaD = paramString;
-    }
-  }
-  
-  public final void setOnAllFav(d.g.a.a<z> parama)
-  {
-    this.Bva = parama;
-  }
-  
-  public final void setOnCheckedFav(m<? super CompoundButton, ? super Boolean, z> paramm)
-  {
-    this.Bvb = paramm;
-  }
-  
-  public final void setOnClickRangeIcon(d.g.a.a<z> parama)
-  {
-    this.Bvc = parama;
-  }
-  
-  public final void setOnClose(d.g.a.a<z> parama)
-  {
-    this.BuY = parama;
-  }
-  
-  public final void setOnMenu(d.g.a.a<z> parama)
-  {
-    this.BuZ = parama;
-  }
-  
-  public final void setUserList(List<String> paramList)
-  {
-    AppMethodBeat.i(120386);
-    p.h(paramList, "userList");
-    d locald = this.BuV;
-    if (locald != null)
-    {
-      p.h(paramList, "users");
-      locald.jhZ.clear();
-      locald.jhZ.add("");
-      locald.jhZ.addAll((Collection)paramList);
-      locald.jhZ.add("");
-    }
-    paramList = this.BuV;
-    if (paramList != null)
-    {
-      paramList.notifyDataSetChanged();
-      AppMethodBeat.o(120386);
-      return;
-    }
-    AppMethodBeat.o(120386);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "checkBox", "Landroid/widget/CompoundButton;", "isChecked", "", "invoke", "(Landroid/widget/CompoundButton;Z)Lkotlin/Unit;"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "checkBox", "Landroid/widget/CompoundButton;", "isChecked", "", "invoke", "(Landroid/widget/CompoundButton;Z)Lkotlin/Unit;"})
   static final class b
     extends q
-    implements m<CompoundButton, Boolean, z>
+    implements m<CompoundButton, Boolean, x>
   {
     b(GalleryVerticalControlView paramGalleryVerticalControlView)
     {
@@ -331,7 +331,7 @@ public final class GalleryVerticalControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.GalleryVerticalControlView
  * JD-Core Version:    0.7.0.1
  */

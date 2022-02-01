@@ -9,15 +9,15 @@ import com.tencent.mm.hellhoundlib.b.b;
 final class AppBrandMenuHeader$4
   implements View.OnClickListener
 {
-  AppBrandMenuHeader$4(AppBrandMenuHeader paramAppBrandMenuHeader, h paramh, ad paramad) {}
+  AppBrandMenuHeader$4(AppBrandMenuHeader paramAppBrandMenuHeader, k paramk, ag paramag) {}
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(47774);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    new h.6(this.mdz, this.mdA).run();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    new k.6(this.nnR, this.nnS).run();
     a.a(this, "com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(47774);
   }

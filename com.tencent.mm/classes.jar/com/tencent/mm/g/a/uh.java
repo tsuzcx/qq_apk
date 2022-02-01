@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class uh
-  extends b
+  extends IEvent
 {
-  public a dJQ;
+  public a eaG;
   
   public uh()
   {
@@ -16,24 +15,22 @@ public final class uh
   
   private uh(byte paramByte)
   {
-    AppMethodBeat.i(218971);
-    this.dJQ = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(121037);
+    this.eaG = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(218971);
+    AppMethodBeat.o(121037);
   }
   
   public static final class a
   {
-    public int EN;
-    public int bZU;
-    public Intent dyD;
-    public int requestCode;
+    public String dNA;
+    public Boolean eaz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.uh
  * JD-Core Version:    0.7.0.1
  */

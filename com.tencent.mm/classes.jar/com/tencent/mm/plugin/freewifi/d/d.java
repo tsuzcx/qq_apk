@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.protocal.protobuf.xg;
-import com.tencent.mm.protocal.protobuf.xh;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.protocal.protobuf.yq;
+import com.tencent.mm.protocal.protobuf.yr;
 
 public final class d
   extends c
@@ -14,36 +13,36 @@ public final class d
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7)
   {
     AppMethodBeat.i(24849);
-    cUl();
-    xg localxg = (xg)this.rr.hQD.hQJ;
-    localxg.GoX = paramString1;
-    localxg.GoY = paramString2;
-    localxg.GoZ = paramString3;
-    localxg.Gpa = paramString4;
-    localxg.Gpb = paramString5;
-    localxg.Gpc = paramLong;
-    localxg.Gpd = paramString6;
-    localxg.Gpe = paramString7;
+    dNu();
+    yq localyq = (yq)this.rr.iLK.iLR;
+    localyq.LjI = paramString1;
+    localyq.LjJ = paramString2;
+    localyq.LjK = paramString3;
+    localyq.LjL = paramString4;
+    localyq.LjM = paramString5;
+    localyq.LjN = paramLong;
+    localyq.LjO = paramString6;
+    localyq.LjP = paramString7;
     AppMethodBeat.o(24849);
   }
   
-  protected final void cUl()
+  public final yr dNA()
   {
-    AppMethodBeat.i(24848);
-    b.a locala = new b.a();
-    locala.hQF = new xg();
-    locala.hQG = new xh();
-    locala.uri = "/cgi-bin/mmo2o-bin/checkifcallup";
-    locala.funcId = getType();
-    locala.hQH = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    AppMethodBeat.o(24848);
+    return (yr)this.rr.iLL.iLR;
   }
   
-  public final xh cUr()
+  protected final void dNu()
   {
-    return (xh)this.rr.hQE.hQJ;
+    AppMethodBeat.i(24848);
+    d.a locala = new d.a();
+    locala.iLN = new yq();
+    locala.iLO = new yr();
+    locala.uri = "/cgi-bin/mmo2o-bin/checkifcallup";
+    locala.funcId = getType();
+    locala.iLP = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.aXF();
+    AppMethodBeat.o(24848);
   }
   
   public final int getType()
@@ -53,7 +52,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.d
  * JD-Core Version:    0.7.0.1
  */

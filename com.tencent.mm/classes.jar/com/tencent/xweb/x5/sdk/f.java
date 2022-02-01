@@ -7,7 +7,7 @@ import org.xwalk.core.Log;
 
 public final class f
 {
-  static b MSD;
+  static b SFJ;
   
   static
   {
@@ -18,15 +18,15 @@ public final class f
   
   public static void a(b paramb)
   {
-    MSD = paramb;
+    SFJ = paramb;
   }
   
   public static boolean a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, a parama)
   {
     AppMethodBeat.i(157151);
-    if (MSD != null)
+    if (SFJ != null)
     {
-      paramBoolean1 = MSD.a(paramContext, paramBoolean1, paramBoolean2, parama);
+      paramBoolean1 = SFJ.a(paramContext, paramBoolean1, paramBoolean2, parama);
       AppMethodBeat.o(157151);
       return paramBoolean1;
     }
@@ -38,9 +38,9 @@ public final class f
   public static boolean isDownloadForeground()
   {
     AppMethodBeat.i(157156);
-    if (MSD != null)
+    if (SFJ != null)
     {
-      boolean bool = MSD.isDownloadForeground();
+      boolean bool = SFJ.isDownloadForeground();
       AppMethodBeat.o(157156);
       return bool;
     }
@@ -57,9 +57,9 @@ public final class f
     //   2: monitorenter
     //   3: ldc 55
     //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 30	com/tencent/xweb/x5/sdk/f:MSD	Lcom/tencent/xweb/x5/sdk/b;
+    //   8: getstatic 30	com/tencent/xweb/x5/sdk/f:SFJ	Lcom/tencent/xweb/x5/sdk/b;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 30	com/tencent/xweb/x5/sdk/f:MSD	Lcom/tencent/xweb/x5/sdk/b;
+    //   14: getstatic 30	com/tencent/xweb/x5/sdk/f:SFJ	Lcom/tencent/xweb/x5/sdk/b;
     //   17: invokeinterface 57 1 0
     //   22: istore_0
     //   23: ldc 55
@@ -92,12 +92,12 @@ public final class f
     //   42	47	50	finally
   }
   
-  public static boolean lF(Context paramContext)
+  public static boolean lE(Context paramContext)
   {
     AppMethodBeat.i(157149);
-    if (MSD != null)
+    if (SFJ != null)
     {
-      boolean bool = MSD.lF(paramContext);
+      boolean bool = SFJ.lE(paramContext);
       AppMethodBeat.o(157149);
       return bool;
     }
@@ -129,9 +129,9 @@ public final class f
     //   2: monitorenter
     //   3: ldc 77
     //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 30	com/tencent/xweb/x5/sdk/f:MSD	Lcom/tencent/xweb/x5/sdk/b;
+    //   8: getstatic 30	com/tencent/xweb/x5/sdk/f:SFJ	Lcom/tencent/xweb/x5/sdk/b;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 30	com/tencent/xweb/x5/sdk/f:MSD	Lcom/tencent/xweb/x5/sdk/b;
+    //   14: getstatic 30	com/tencent/xweb/x5/sdk/f:SFJ	Lcom/tencent/xweb/x5/sdk/b;
     //   17: aload_0
     //   18: iload_1
     //   19: invokeinterface 78 3 0
@@ -164,9 +164,9 @@ public final class f
   public static void stopDownload()
   {
     AppMethodBeat.i(157154);
-    if (MSD != null)
+    if (SFJ != null)
     {
-      MSD.stopDownload();
+      SFJ.stopDownload();
       AppMethodBeat.o(157154);
       return;
     }
@@ -181,7 +181,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.f
  * JD-Core Version:    0.7.0.1
  */

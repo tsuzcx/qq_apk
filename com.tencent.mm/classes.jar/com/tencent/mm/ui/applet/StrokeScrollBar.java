@@ -13,29 +13,29 @@ public class StrokeScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void ZA()
+  public final void ann()
   {
     AppMethodBeat.i(33837);
-    this.vcx = new String[18];
+    this.yuX = new String[18];
     int i = 0;
-    while (i < this.vcx.length)
+    while (i < this.yuX.length)
     {
-      this.vcx[i] = (Integer.toString(i + 3) + "劃");
+      this.yuX[i] = (Integer.toString(i + 3) + "劃");
       i += 1;
     }
-    this.vcv = 2.0F;
-    this.vcw = 79;
+    this.yuV = 2.0F;
+    this.yuW = 79;
     AppMethodBeat.o(33837);
   }
   
   public int getToastLayoutId()
   {
-    return 2131495440;
+    return 2131496312;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.applet.StrokeScrollBar
  * JD-Core Version:    0.7.0.1
  */

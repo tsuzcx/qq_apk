@@ -20,11 +20,11 @@ import java.util.Map;
 public class PreviewContactView
   extends LinearLayout
 {
-  private TableLayout Amh;
-  private final Map<Integer, View> Ami;
+  private TableLayout EuT;
+  private final Map<Integer, View> EuU;
   @SuppressLint({"UseSparseArrays"})
-  private final Map<Integer, TableRow> Amj;
-  private int Amk;
+  private final Map<Integer, TableRow> EuV;
+  private int EuW;
   private final Context context;
   private List<String> list;
   
@@ -33,11 +33,11 @@ public class PreviewContactView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98190);
     this.list = new ArrayList();
-    this.Ami = new HashMap();
-    this.Amj = new HashMap();
-    this.Amk = 5;
+    this.EuU = new HashMap();
+    this.EuV = new HashMap();
+    this.EuW = 5;
     this.context = paramContext;
-    this.Amh = ((TableLayout)LayoutInflater.from(this.context).inflate(2131495580, this, true).findViewById(2131298739));
+    this.EuT = ((TableLayout)LayoutInflater.from(this.context).inflate(2131496477, this, true).findViewById(2131299180));
     AppMethodBeat.o(98190);
   }
   
@@ -46,7 +46,7 @@ public class PreviewContactView
   public void setLineNum(int paramInt)
   {
     AppMethodBeat.i(98191);
-    this.Amk = paramInt;
+    this.EuW = paramInt;
     setList(this.list);
     AppMethodBeat.o(98191);
   }
@@ -60,7 +60,7 @@ public class PreviewContactView
       return;
     }
     this.list = paramList;
-    this.Amh.removeAllViews();
+    this.EuT.removeAllViews();
     if (paramList.size() == 0)
     {
       AppMethodBeat.o(98192);
@@ -72,29 +72,29 @@ public class PreviewContactView
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.Amj.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.EuV.get(Integer.valueOf(j));
       if (localTableRow != null) {
         break label284;
       }
       localTableRow = new TableRow(this.context);
-      this.Amj.put(Integer.valueOf(j), localTableRow);
+      this.EuV.put(Integer.valueOf(j), localTableRow);
     }
     label284:
     for (;;)
     {
       localTableRow.removeAllViews();
       int k = 0;
-      while ((k < this.Amk) && (i < m))
+      while ((k < this.EuW) && (i < m))
       {
-        Object localObject2 = (View)this.Ami.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.EuU.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = View.inflate(this.context, 2131495579, null);
-          this.Ami.put(Integer.valueOf(i), localObject1);
+          localObject1 = View.inflate(this.context, 2131496476, null);
+          this.EuU.put(Integer.valueOf(i), localObject1);
         }
         localObject2 = (String)paramList.get(i);
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131301202);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131302874);
         localImageView.setBackgroundDrawable(null);
         a.b.c(localImageView, (String)localObject2);
         ((View)localObject1).setTag(Integer.valueOf(0));
@@ -103,7 +103,7 @@ public class PreviewContactView
         k += 1;
         i += 1;
       }
-      this.Amh.addView(localTableRow);
+      this.EuT.addView(localTableRow);
       j += 1;
       break;
       AppMethodBeat.o(98192);

@@ -5,15 +5,15 @@ import com.tencent.mm.al.ag;
 import com.tencent.mm.al.f;
 import com.tencent.mm.al.g;
 import com.tencent.mm.api.c;
-import com.tencent.mm.api.o;
+import com.tencent.mm.api.p;
 
 public final class m
-  implements o
+  implements p
 {
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(123965);
-    boolean bool = ag.aGp().g(paramc);
+    boolean bool = ag.bah().h(paramc);
     AppMethodBeat.o(123965);
     return bool;
   }
@@ -21,23 +21,23 @@ public final class m
   public final boolean b(c paramc)
   {
     AppMethodBeat.i(123968);
-    boolean bool = ag.aGp().f(paramc);
+    boolean bool = ag.bah().g(paramc);
     AppMethodBeat.o(123968);
     return bool;
   }
   
-  public final c eX(String paramString)
+  public final c fJ(String paramString)
   {
     AppMethodBeat.i(123966);
-    paramString = g.eX(paramString);
+    paramString = g.fJ(paramString);
     AppMethodBeat.o(123966);
     return paramString;
   }
   
-  public final void eY(String paramString)
+  public final void fK(String paramString)
   {
     AppMethodBeat.i(123967);
-    ag.aGp().delete(paramString);
+    ag.bah().delete(paramString);
     AppMethodBeat.o(123967);
   }
 }

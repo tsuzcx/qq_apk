@@ -1,19 +1,31 @@
 package com.tencent.mm.plugin.appbrand.task;
 
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.appbrand.config.GetOnLineInfoInfoResult;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.FrameLayout;
 
-public final class k
+public abstract interface k
 {
-  public static class a
-    implements b<IPCString, GetOnLineInfoInfoResult>
-  {}
+  public abstract void a(a parama);
+  
+  public abstract FrameLayout bWl();
+  
+  public abstract boolean bsc();
+  
+  public abstract void finish();
+  
+  public abstract Activity getActivity();
+  
+  public abstract Context getContext();
+  
+  public static abstract interface a
+  {
+    public abstract void proceed();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.k
  * JD-Core Version:    0.7.0.1
  */

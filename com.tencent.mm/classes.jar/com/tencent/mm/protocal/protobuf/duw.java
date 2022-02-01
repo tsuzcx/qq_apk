@@ -5,68 +5,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class duw
   extends com.tencent.mm.bw.a
 {
-  public String GuH;
-  public String nIJ;
+  public boolean HIl;
+  public String lHM;
+  public String nickname;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32490);
+    AppMethodBeat.i(153296);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nIJ != null) {
-        paramVarArgs.d(1, this.nIJ);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.username != null) {
+        paramVarArgs.e(1, this.username);
       }
-      if (this.GuH != null) {
-        paramVarArgs.d(2, this.GuH);
+      paramVarArgs.cc(2, this.HIl);
+      if (this.nickname != null) {
+        paramVarArgs.e(3, this.nickname);
       }
-      AppMethodBeat.o(32490);
+      if (this.lHM != null) {
+        paramVarArgs.e(4, this.lHM);
+      }
+      AppMethodBeat.o(153296);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nIJ == null) {
-        break label282;
+      if (this.username == null) {
+        break label378;
       }
     }
-    label282:
-    for (paramInt = f.a.a.b.b.a.e(1, this.nIJ) + 0;; paramInt = 0)
+    label378:
+    for (paramInt = g.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.GuH != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.GuH);
+      int i = paramInt + (g.a.a.b.b.a.fS(2) + 1);
+      paramInt = i;
+      if (this.nickname != null) {
+        paramInt = i + g.a.a.b.b.a.f(3, this.nickname);
       }
-      AppMethodBeat.o(32490);
+      i = paramInt;
+      if (this.lHM != null) {
+        i = paramInt + g.a.a.b.b.a.f(4, this.lHM);
+      }
+      AppMethodBeat.o(153296);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(32490);
+        AppMethodBeat.o(153296);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         duw localduw = (duw)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32490);
+          AppMethodBeat.o(153296);
           return -1;
         case 1: 
-          localduw.nIJ = locala.OmT.readString();
-          AppMethodBeat.o(32490);
+          localduw.username = locala.UbS.readString();
+          AppMethodBeat.o(153296);
+          return 0;
+        case 2: 
+          localduw.HIl = locala.UbS.yZ();
+          AppMethodBeat.o(153296);
+          return 0;
+        case 3: 
+          localduw.nickname = locala.UbS.readString();
+          AppMethodBeat.o(153296);
           return 0;
         }
-        localduw.GuH = locala.OmT.readString();
-        AppMethodBeat.o(32490);
+        localduw.lHM = locala.UbS.readString();
+        AppMethodBeat.o(153296);
         return 0;
       }
-      AppMethodBeat.o(32490);
+      AppMethodBeat.o(153296);
       return -1;
     }
   }

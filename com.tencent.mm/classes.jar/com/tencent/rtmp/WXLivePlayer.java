@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Surface;
-import com.tencent.liteav.audio.a;
+import com.tencent.liteav.audio.TXCAudioEngine;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -101,16 +101,16 @@ public class WXLivePlayer
         {
           CharSequence localCharSequence = paramString[i];
           if (localCharSequence.indexOf("=") == -1) {
-            break label179;
+            break label187;
           }
           Object localObject = localCharSequence.split("[=]");
           if (localObject.length != 2) {
-            break label179;
+            break label187;
           }
           localCharSequence = localObject[0];
           localObject = localObject[1];
           if ((TextUtils.isEmpty(localCharSequence)) || (TextUtils.isEmpty((CharSequence)localObject))) {
-            break label179;
+            break label187;
           }
           if (localCharSequence.equalsIgnoreCase("userid")) {
             this.mUserId = ((String)localObject);
@@ -121,6 +121,7 @@ public class WXLivePlayer
       }
       catch (Exception paramString)
       {
+        TXCLog.e("WXLivePlayer", "parse trtc params failed.", paramString);
         if (TextUtils.isEmpty(this.mStreamType)) {
           this.mStreamType = "main";
         }
@@ -132,7 +133,7 @@ public class WXLivePlayer
         AppMethodBeat.o(14123);
         return true;
       }
-      label179:
+      label187:
       i += 1;
     }
   }
@@ -232,7 +233,7 @@ public class WXLivePlayer
   {
     AppMethodBeat.i(14113);
     TXCLog.i("WXLivePlayer", "setAudioRoute audioRoute = ".concat(String.valueOf(paramInt)));
-    a.c(paramInt);
+    TXCAudioEngine.setAudioRoute(paramInt);
     AppMethodBeat.o(14113);
   }
   
@@ -535,7 +536,7 @@ public class WXLivePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePlayer
  * JD-Core Version:    0.7.0.1
  */

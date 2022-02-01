@@ -7,40 +7,40 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.a.a;
-import com.tencent.mm.plugin.emoji.model.d;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.emoji.model.e;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
   extends f
 {
-  private int pHN = 0;
-  private int pHO = 0;
-  private int pHP = 0;
+  private int qXA = 0;
+  private int qXB = 0;
+  private int qXz = 0;
   
   public g(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void Cb(int paramInt)
+  public final void FK(int paramInt)
   {
-    this.pHN = paramInt;
+    this.qXz = paramInt;
   }
   
-  public final void Cc(int paramInt)
+  public final void FL(int paramInt)
   {
-    this.pHO = paramInt;
+    this.qXA = paramInt;
   }
   
-  public final void Cd(int paramInt)
+  public final void FM(int paramInt)
   {
-    this.pHP = paramInt;
+    this.qXB = paramInt;
   }
   
-  public final com.tencent.mm.plugin.emoji.a.a.f Ce(int paramInt)
+  public final com.tencent.mm.plugin.emoji.a.a.f FN(int paramInt)
   {
     AppMethodBeat.i(108329);
-    com.tencent.mm.plugin.emoji.a.a.f localf = super.Ce(paramInt);
+    com.tencent.mm.plugin.emoji.a.a.f localf = super.FN(paramInt);
     AppMethodBeat.o(108329);
     return localf;
   }
@@ -49,22 +49,22 @@ public final class g
   {
     AppMethodBeat.i(108328);
     final f.a locala = (f.a)paramView.getTag();
-    if (this.pHN > 0) {
+    if (this.qXz > 0) {
       if (paramInt == 0)
       {
-        locala.pHm.setVisibility(0);
-        locala.pHm.setText(this.mContext.getString(2131758329));
+        locala.qWY.setVisibility(0);
+        locala.qWY.setText(this.mContext.getString(2131758623));
       }
     }
     for (;;)
     {
-      if (locala.pHo != null) {
-        locala.pHo.postDelayed(new Runnable()
+      if (locala.qXa != null) {
+        locala.qXa.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(108326);
-            locala.pHo.setPressed(false);
+            locala.qXa.setPressed(false);
             AppMethodBeat.o(108326);
           }
         }, 100L);
@@ -72,81 +72,81 @@ public final class g
       paramView = super.b(paramInt, paramView, paramViewGroup);
       AppMethodBeat.o(108328);
       return paramView;
-      if ((this.pHO > 0) && (paramInt == this.pHN))
+      if ((this.qXA > 0) && (paramInt == this.qXz))
       {
-        locala.pHm.setVisibility(0);
-        locala.pHm.setText(this.mContext.getString(2131758350));
+        locala.qWY.setVisibility(0);
+        locala.qWY.setText(this.mContext.getString(2131758644));
       }
-      else if (paramInt == this.pHN + this.pHO)
+      else if (paramInt == this.qXz + this.qXA)
       {
-        locala.pHm.setVisibility(0);
-        if (!bu.isNullOrNil(d.chY().pKJ)) {
-          locala.pHm.setText(d.chY().pKJ);
-        } else if (d.chY().pKH) {
-          locala.pHm.setText(2131758349);
+        locala.qWY.setVisibility(0);
+        if (!Util.isNullOrNil(e.cFX().rbp)) {
+          locala.qWY.setText(e.cFX().rbp);
+        } else if (e.cFX().rbn) {
+          locala.qWY.setText(2131758643);
         } else {
-          locala.pHm.setText(this.mContext.getString(2131758309));
+          locala.qWY.setText(this.mContext.getString(2131758603));
         }
       }
       else
       {
-        locala.pHm.setVisibility(8);
+        locala.qWY.setVisibility(8);
         continue;
-        if (this.pHO > 0)
+        if (this.qXA > 0)
         {
           if (paramInt == 0)
           {
-            locala.pHm.setVisibility(0);
-            locala.pHm.setText(this.mContext.getString(2131758350));
+            locala.qWY.setVisibility(0);
+            locala.qWY.setText(this.mContext.getString(2131758644));
           }
-          else if (paramInt == this.pHN + this.pHO)
+          else if (paramInt == this.qXz + this.qXA)
           {
-            locala.pHm.setVisibility(0);
-            if (!bu.isNullOrNil(d.chY().pKJ)) {
-              locala.pHm.setText(d.chY().pKJ);
-            } else if (d.chY().pKH) {
-              locala.pHm.setText(2131758349);
+            locala.qWY.setVisibility(0);
+            if (!Util.isNullOrNil(e.cFX().rbp)) {
+              locala.qWY.setText(e.cFX().rbp);
+            } else if (e.cFX().rbn) {
+              locala.qWY.setText(2131758643);
             } else {
-              locala.pHm.setText(this.mContext.getString(2131758309));
+              locala.qWY.setText(this.mContext.getString(2131758603));
             }
           }
           else
           {
-            locala.pHm.setVisibility(8);
+            locala.qWY.setVisibility(8);
           }
         }
         else if (paramInt == 0)
         {
-          locala.pHm.setVisibility(0);
-          if (!bu.isNullOrNil(d.chY().pKJ)) {
-            locala.pHm.setText(d.chY().pKJ);
-          } else if (d.chY().pKH) {
-            locala.pHm.setText(2131758349);
+          locala.qWY.setVisibility(0);
+          if (!Util.isNullOrNil(e.cFX().rbp)) {
+            locala.qWY.setText(e.cFX().rbp);
+          } else if (e.cFX().rbn) {
+            locala.qWY.setText(2131758643);
           } else {
-            locala.pHm.setText(this.mContext.getString(2131758309));
+            locala.qWY.setText(this.mContext.getString(2131758603));
           }
         }
         else
         {
-          locala.pHm.setVisibility(8);
+          locala.qWY.setVisibility(8);
         }
       }
     }
   }
   
-  public final int chA()
+  public final int cFk()
   {
-    return this.pHP;
+    return this.qXz;
   }
   
-  public final int chy()
+  public final int cFl()
   {
-    return this.pHN;
+    return this.qXA;
   }
   
-  public final int chz()
+  public final int cFm()
   {
-    return this.pHO;
+    return this.qXB;
   }
   
   public final int getCount()
@@ -159,7 +159,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.g
  * JD-Core Version:    0.7.0.1
  */

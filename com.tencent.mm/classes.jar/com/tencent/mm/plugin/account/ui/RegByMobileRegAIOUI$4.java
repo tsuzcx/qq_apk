@@ -12,9 +12,9 @@ final class RegByMobileRegAIOUI$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(169147);
-    this.jsc.hideVKB();
-    RegByMobileRegAIOUI.o(this.jsc);
-    this.jsc.finish();
+    this.kqp.hideVKB();
+    RegByMobileRegAIOUI.p(this.kqp);
+    this.kqp.finish();
     AppMethodBeat.o(169147);
     return true;
   }

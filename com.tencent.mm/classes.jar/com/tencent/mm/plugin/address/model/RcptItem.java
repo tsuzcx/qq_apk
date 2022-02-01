@@ -10,8 +10,8 @@ public class RcptItem
 {
   public static final Parcelable.Creator<RcptItem> CREATOR;
   public String code;
-  public String juG;
-  public boolean juH;
+  public String ksV;
+  public boolean ksW;
   public String name;
   
   static
@@ -25,8 +25,8 @@ public class RcptItem
   {
     this.name = "";
     this.code = "";
-    this.juG = "";
-    this.juH = false;
+    this.ksV = "";
+    this.ksW = false;
   }
   
   public RcptItem(Parcel paramParcel)
@@ -34,11 +34,11 @@ public class RcptItem
     AppMethodBeat.i(20798);
     this.name = "";
     this.code = "";
-    this.juG = "";
-    this.juH = false;
+    this.ksV = "";
+    this.ksW = false;
     this.name = paramParcel.readString();
     this.code = paramParcel.readString();
-    this.juG = paramParcel.readString();
+    this.ksV = paramParcel.readString();
     AppMethodBeat.o(20798);
   }
   
@@ -46,11 +46,11 @@ public class RcptItem
   {
     this.name = "";
     this.code = "";
-    this.juG = "";
-    this.juH = false;
+    this.ksV = "";
+    this.ksW = false;
     this.name = paramString1;
     this.code = paramString2;
-    this.juG = paramString3;
+    this.ksV = paramString3;
   }
   
   public int describeContents()
@@ -63,7 +63,7 @@ public class RcptItem
     AppMethodBeat.i(20799);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.code);
-    paramParcel.writeString(this.juG);
+    paramParcel.writeString(this.ksV);
     AppMethodBeat.o(20799);
   }
 }

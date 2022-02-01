@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private int iBI;
-  private int iBJ;
-  int iBK;
-  private short[] iBL;
+  private int jwX;
+  private int jwY;
+  int jwZ;
+  private short[] jxa;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(148600);
-    this.iBI = 0;
-    this.iBJ = 0;
-    this.iBK = 0;
+    this.jwX = 0;
+    this.jwY = 0;
+    this.jwZ = 0;
     int i = paramInt;
     if (paramInt <= 1) {
       i = 512;
     }
-    this.iBL = new short[i];
+    this.jxa = new short[i];
     AppMethodBeat.o(148600);
   }
   
@@ -36,29 +36,29 @@ public final class a
         AppMethodBeat.o(148601);
         return 0;
       }
-      int i = this.iBL.length;
-      if (paramInt < this.iBK)
+      int i = this.jxa.length;
+      if (paramInt < this.jwZ)
       {
-        if (paramInt > i - this.iBI) {
+        if (paramInt > i - this.jwX) {
           break label111;
         }
-        System.arraycopy(this.iBL, this.iBI, paramArrayOfShort, 0, paramInt);
-        this.iBI += paramInt;
-        if (this.iBI < i) {}
+        System.arraycopy(this.jxa, this.jwX, paramArrayOfShort, 0, paramInt);
+        this.jwX += paramInt;
+        if (this.jwX < i) {}
       }
       label111:
       int j;
-      for (this.iBI = 0;; this.iBI = j)
+      for (this.jwX = 0;; this.jwX = j)
       {
-        this.iBK -= paramInt;
+        this.jwZ -= paramInt;
         AppMethodBeat.o(148601);
         return paramInt;
-        paramInt = this.iBK;
+        paramInt = this.jwZ;
         break;
-        i -= this.iBI;
-        System.arraycopy(this.iBL, this.iBI, paramArrayOfShort, 0, i);
+        i -= this.jwX;
+        System.arraycopy(this.jxa, this.jwX, paramArrayOfShort, 0, i);
         j = paramInt - i;
-        System.arraycopy(this.iBL, 0, paramArrayOfShort, i, j);
+        System.arraycopy(this.jxa, 0, paramArrayOfShort, i, j);
       }
     }
   }
@@ -81,55 +81,55 @@ public final class a
         AppMethodBeat.o(148602);
         return 0;
       }
-      int i = this.iBL.length - this.iBK;
+      int i = this.jxa.length - this.jwZ;
       if (paramInt > i)
       {
         i = paramInt - i;
         if (i != 0)
         {
-          if (i >= this.iBK) {
+          if (i >= this.jwZ) {
             break label221;
           }
-          if (i > this.iBL.length - this.iBI) {
+          if (i > this.jxa.length - this.jwX) {
             break label229;
           }
-          this.iBI += i;
-          if (this.iBI >= this.iBL.length) {
-            this.iBI = 0;
+          this.jwX += i;
+          if (this.jwX >= this.jxa.length) {
+            this.jwX = 0;
           }
           label114:
-          this.iBK -= i;
+          this.jwZ -= i;
         }
       }
-      if (paramInt > this.iBL.length)
+      if (paramInt > this.jxa.length)
       {
-        i = paramInt - this.iBL.length + 0;
-        paramInt = this.iBL.length;
+        i = paramInt - this.jxa.length + 0;
+        paramInt = this.jxa.length;
       }
       for (;;)
       {
-        if (paramInt <= this.iBL.length - this.iBJ)
+        if (paramInt <= this.jxa.length - this.jwY)
         {
-          System.arraycopy(paramArrayOfShort, i, this.iBL, this.iBJ, paramInt);
-          this.iBJ += paramInt;
-          if (this.iBJ < this.iBL.length) {}
+          System.arraycopy(paramArrayOfShort, i, this.jxa, this.jwY, paramInt);
+          this.jwY += paramInt;
+          if (this.jwY < this.jxa.length) {}
         }
         label221:
         label229:
         int k;
-        for (this.iBJ = 0;; this.iBJ = k)
+        for (this.jwY = 0;; this.jwY = k)
         {
-          this.iBK += paramInt;
+          this.jwZ += paramInt;
           AppMethodBeat.o(148602);
           return paramInt;
-          i = this.iBK;
+          i = this.jwZ;
           break;
-          this.iBI = (i - (this.iBL.length - this.iBI));
+          this.jwX = (i - (this.jxa.length - this.jwX));
           break label114;
-          int j = this.iBL.length - this.iBJ;
-          System.arraycopy(paramArrayOfShort, i, this.iBL, this.iBJ, j);
+          int j = this.jxa.length - this.jwY;
+          System.arraycopy(paramArrayOfShort, i, this.jxa, this.jwY, j);
           k = paramInt - j;
-          System.arraycopy(paramArrayOfShort, i + j, this.iBL, 0, k);
+          System.arraycopy(paramArrayOfShort, i + j, this.jxa, 0, k);
         }
         i = 0;
       }

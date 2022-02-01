@@ -1,133 +1,97 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.plugin.webview.model.ay;
-import com.tencent.mm.plugin.webview.model.ay.h;
-import com.tencent.mm.plugin.webview.model.ay.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.qqvideo.proxy.api.IUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.a.f.c;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/SMSQueryHelper;", "", "()V", "Companion", "plugin-webview_release"})
 public final class f
-  extends a
-  implements IUtils
 {
-  public f(WebViewUI paramWebViewUI)
+  public static final a Jfx;
+  private static final String TAG = "MicroMsg.WebViewUI.SMSQueryHelper";
+  
+  static
   {
-    super(paramWebViewUI);
+    AppMethodBeat.i(210375);
+    Jfx = new a((byte)0);
+    TAG = "MicroMsg.WebViewUI.SMSQueryHelper";
+    AppMethodBeat.o(210375);
   }
   
-  public final void httpproxyReport(String... paramVarArgs)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/SMSQueryHelper$Companion;", "", "()V", "TAG", "", "getMsgText", "context", "Landroid/content/Context;", "url", "handleSMSQuery", "", "showDialog", "msg", "plugin-webview_release"})
+  public static final class a
   {
-    AppMethodBeat.i(79800);
-    Object localObject = eVw().Eae.eUt();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    public static final class a
+      extends q
+      implements kotlin.g.a.a<x>
     {
-      paramVarArgs = eVw().Eae.eUt();
-      if ((paramVarArgs.Eni == null) || (paramVarArgs.Eni.size() == 0)) {
-        AppMethodBeat.o(79800);
-      }
-    }
-    else
-    {
-      if (((ay.i)localObject).Eni == null) {
-        ((ay.i)localObject).Eni = new ArrayList();
-      }
-      for (;;)
+      public a(Context paramContext, String paramString1, String paramString2)
       {
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          ae.i("MicroMsg.WebviewReporter", "WebViewVideoProxyReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((ay.i)localObject).Eni.add(paramVarArgs[i]);
-          i += 1;
-        }
-        break;
-        ((ay.i)localObject).Eni.clear();
+        super();
       }
     }
-    localObject = g.yxI;
-    g.m(12033, paramVarArgs.Eni);
-    paramVarArgs.Eni.clear();
-    AppMethodBeat.o(79800);
-  }
-  
-  public final void idKeyReport(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(79801);
-    ae.i("MicroMsg.WebViewUI.UtilsImpl", "idkey report, id = %s, key = %s, value = %s", new Object[] { paramString1, paramString2, paramString3 });
-    if ((!bu.isNullOrNil(paramString1)) && (!bu.isNullOrNil(paramString2)) && (!bu.isNullOrNil(paramString3)))
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+    static final class b
+      implements f.c
     {
-      int i = bu.getInt(paramString1, 0);
-      int j = bu.getInt(paramString2, 0);
-      int k = bu.getInt(paramString3, 0);
-      g.yxI.idkeyStat(i, j, k, false);
-    }
-    AppMethodBeat.o(79801);
-  }
-  
-  public final void javaUtilLog(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(79799);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(79799);
-      return;
-      ae.d(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      ae.e(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      ae.i(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      ae.v(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      ae.w(paramString1, paramString2);
-    }
-  }
-  
-  public final void kvReport(String... paramVarArgs)
-  {
-    AppMethodBeat.i(79802);
-    Object localObject = eVw().Eae.eUu();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
-    {
-      paramVarArgs = eVw().Eae.eUu();
-      if ((paramVarArgs.Eni == null) || (paramVarArgs.Eni.size() == 0)) {
-        AppMethodBeat.o(79802);
-      }
-    }
-    else
-    {
-      if (((ay.h)localObject).Eni == null) {
-        ((ay.h)localObject).Eni = new ArrayList();
-      }
-      for (;;)
+      b(Uri paramUri, Context paramContext) {}
+      
+      public final void e(boolean paramBoolean, String paramString)
       {
-        int i = 0;
-        while (i < paramVarArgs.length)
+        AppMethodBeat.i(210372);
+        if (paramBoolean)
         {
-          ae.i("MicroMsg.WebviewReporter", "WebViewVideoDownloadReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((ay.h)localObject).Eni.add(paramVarArgs[i]);
-          i += 1;
+          Object localObject = new Intent("android.intent.action.SENDTO", this.IMQ);
+          ((Intent)localObject).addFlags(268435456);
+          try
+          {
+            paramString = this.$context;
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/webview/ui/tools/SMSQueryHelper$Companion$showDialog$build$1", "onDialogClick", "(ZLjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/webview/ui/tools/SMSQueryHelper$Companion$showDialog$build$1", "onDialogClick", "(ZLjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            AppMethodBeat.o(210372);
+            return;
+          }
+          catch (Exception paramString)
+          {
+            Log.e(f.access$getTAG$cp(), "start sms app failed:[%s]", new Object[] { paramString.getMessage() });
+          }
         }
-        break;
-        ((ay.h)localObject).Eni.clear();
+        AppMethodBeat.o(210372);
       }
     }
-    localObject = g.yxI;
-    g.m(12666, paramVarArgs.Eni);
-    paramVarArgs.Eni.clear();
-    AppMethodBeat.o(79802);
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+    static final class c
+      implements DialogInterface.OnDismissListener
+    {
+      public static final c Jfy;
+      
+      static
+      {
+        AppMethodBeat.i(210374);
+        Jfy = new c();
+        AppMethodBeat.o(210374);
+      }
+      
+      public final void onDismiss(DialogInterface paramDialogInterface)
+      {
+        AppMethodBeat.i(210373);
+        Log.d(f.access$getTAG$cp(), "OnDismissListener ");
+        AppMethodBeat.o(210373);
+      }
+    }
   }
 }
 

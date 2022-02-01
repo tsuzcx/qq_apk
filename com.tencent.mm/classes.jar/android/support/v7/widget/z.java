@@ -7,65 +7,45 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.view.MotionEvent;
 
 final class z
   extends RecyclerView.h
-  implements RecyclerView.l
+  implements RecyclerView.k
 {
   private static final int[] EMPTY_STATE_SET = new int[0];
   private static final int[] PRESSED_STATE_SET = { 16842919 };
-  private int Wk = 0;
-  final int amU;
-  final StateListDrawable amV;
-  final Drawable amW;
-  private final int amX;
-  private final int amY;
-  private final StateListDrawable amZ;
-  private final Drawable ana;
-  private final int anb;
-  private final int anc;
-  int and;
-  int ane;
-  float anf;
-  int ang;
-  int anh;
-  float ani;
-  int anj = 0;
-  int ank = 0;
-  RecyclerView anl;
-  boolean anm = false;
-  boolean ann = false;
-  private final int[] ano = new int[2];
-  private final int[] anp = new int[2];
-  final ValueAnimator anq = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-  int anr = 0;
-  private final RecyclerView.m ans = new RecyclerView.m()
+  private int Wx = 0;
+  private final int[] anA = new int[2];
+  private final int[] anB = new int[2];
+  final ValueAnimator anC = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+  int anD = 0;
+  private final RecyclerView.l anE = new RecyclerView.l()
   {
-    public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
+    public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
     {
       z localz = z.this;
       paramAnonymousInt1 = paramAnonymousRecyclerView.computeHorizontalScrollOffset();
       paramAnonymousInt2 = paramAnonymousRecyclerView.computeVerticalScrollOffset();
-      int i = localz.anl.computeVerticalScrollRange();
-      int j = localz.ank;
+      int i = localz.mRecyclerView.computeVerticalScrollRange();
+      int j = localz.anx;
       boolean bool;
       int k;
       int m;
-      if ((i - j > 0) && (localz.ank >= localz.amU))
+      if ((i - j > 0) && (localz.anx >= localz.anh))
       {
         bool = true;
-        localz.anm = bool;
-        k = localz.anl.computeHorizontalScrollRange();
-        m = localz.anj;
-        if ((k - m <= 0) || (localz.anj < localz.amU)) {
+        localz.any = bool;
+        k = localz.mRecyclerView.computeHorizontalScrollRange();
+        m = localz.anw;
+        if ((k - m <= 0) || (localz.anw < localz.anh)) {
           break label149;
         }
         bool = true;
         label105:
-        localz.ann = bool;
-        if ((localz.anm) || (localz.ann)) {
+        localz.anz = bool;
+        if ((localz.any) || (localz.anz)) {
           break label155;
         }
         if (localz.mState != 0) {
@@ -81,72 +61,92 @@ final class z
         break;
         bool = false;
         break label105;
-        if (localz.anm)
+        if (localz.any)
         {
-          localz.ane = ((int)((paramAnonymousInt2 + j / 2.0F) * j / i));
-          localz.and = Math.min(j, j * j / i);
+          localz.anr = ((int)((paramAnonymousInt2 + j / 2.0F) * j / i));
+          localz.anq = Math.min(j, j * j / i);
         }
-        if (localz.ann)
+        if (localz.anz)
         {
-          localz.anh = ((int)((paramAnonymousInt1 + m / 2.0F) * m / k));
-          localz.ang = Math.min(m, m * m / k);
+          localz.anu = ((int)((paramAnonymousInt1 + m / 2.0F) * m / k));
+          localz.ant = Math.min(m, m * m / k);
         }
       } while ((localz.mState != 0) && (localz.mState != 1));
       localz.setState(1);
     }
   };
+  final int anh;
+  final StateListDrawable ani;
+  final Drawable anj;
+  private final int ank;
+  private final int anl;
+  private final StateListDrawable anm;
+  private final Drawable ann;
+  private final int ano;
+  private final int anp;
+  int anq;
+  int anr;
+  float ans;
+  int ant;
+  int anu;
+  float anv;
+  int anw = 0;
+  int anx = 0;
+  boolean any = false;
+  boolean anz = false;
   private final Runnable mHideRunnable = new Runnable()
   {
     public final void run()
     {
       z localz = z.this;
-      switch (localz.anr)
+      switch (localz.anD)
       {
       default: 
         return;
       case 1: 
-        localz.anq.cancel();
+        localz.anC.cancel();
       }
-      localz.anr = 3;
-      localz.anq.setFloatValues(new float[] { ((Float)localz.anq.getAnimatedValue()).floatValue(), 0.0F });
-      localz.anq.setDuration(500L);
-      localz.anq.start();
+      localz.anD = 3;
+      localz.anC.setFloatValues(new float[] { ((Float)localz.anC.getAnimatedValue()).floatValue(), 0.0F });
+      localz.anC.setDuration(500L);
+      localz.anC.start();
     }
   };
   private final int mMargin;
+  RecyclerView mRecyclerView;
   int mState = 0;
   
   z(RecyclerView paramRecyclerView, StateListDrawable paramStateListDrawable1, Drawable paramDrawable1, StateListDrawable paramStateListDrawable2, Drawable paramDrawable2, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.amV = paramStateListDrawable1;
-    this.amW = paramDrawable1;
-    this.amZ = paramStateListDrawable2;
-    this.ana = paramDrawable2;
-    this.amX = Math.max(paramInt1, paramStateListDrawable1.getIntrinsicWidth());
-    this.amY = Math.max(paramInt1, paramDrawable1.getIntrinsicWidth());
-    this.anb = Math.max(paramInt1, paramStateListDrawable2.getIntrinsicWidth());
-    this.anc = Math.max(paramInt1, paramDrawable2.getIntrinsicWidth());
-    this.amU = paramInt2;
+    this.ani = paramStateListDrawable1;
+    this.anj = paramDrawable1;
+    this.anm = paramStateListDrawable2;
+    this.ann = paramDrawable2;
+    this.ank = Math.max(paramInt1, paramStateListDrawable1.getIntrinsicWidth());
+    this.anl = Math.max(paramInt1, paramDrawable1.getIntrinsicWidth());
+    this.ano = Math.max(paramInt1, paramStateListDrawable2.getIntrinsicWidth());
+    this.anp = Math.max(paramInt1, paramDrawable2.getIntrinsicWidth());
+    this.anh = paramInt2;
     this.mMargin = paramInt3;
-    this.amV.setAlpha(255);
-    this.amW.setAlpha(255);
-    this.anq.addListener(new a());
-    this.anq.addUpdateListener(new b());
-    if (this.anl != paramRecyclerView)
+    this.ani.setAlpha(255);
+    this.anj.setAlpha(255);
+    this.anC.addListener(new a());
+    this.anC.addUpdateListener(new b());
+    if (this.mRecyclerView != paramRecyclerView)
     {
-      if (this.anl != null)
+      if (this.mRecyclerView != null)
       {
-        this.anl.c(this);
-        this.anl.b(this);
-        this.anl.b(this.ans);
-        jz();
+        this.mRecyclerView.c(this);
+        this.mRecyclerView.b(this);
+        this.mRecyclerView.b(this.anE);
+        jI();
       }
-      this.anl = paramRecyclerView;
-      if (this.anl != null)
+      this.mRecyclerView = paramRecyclerView;
+      if (this.mRecyclerView != null)
       {
-        this.anl.a(this);
-        this.anl.a(this);
-        this.anl.a(this.ans);
+        this.mRecyclerView.a(this);
+        this.mRecyclerView.a(this);
+        this.mRecyclerView.a(this.anE);
       }
     }
   }
@@ -166,32 +166,32 @@ final class z
     return paramInt3;
   }
   
-  private void bN(int paramInt)
+  private void bO(int paramInt)
   {
-    jz();
-    this.anl.postDelayed(this.mHideRunnable, paramInt);
+    jI();
+    this.mRecyclerView.postDelayed(this.mHideRunnable, paramInt);
   }
   
-  private boolean jy()
+  private boolean jH()
   {
-    return t.Y(this.anl) == 1;
+    return u.Z(this.mRecyclerView) == 1;
   }
   
-  private void jz()
+  private void jI()
   {
-    this.anl.removeCallbacks(this.mHideRunnable);
+    this.mRecyclerView.removeCallbacks(this.mHideRunnable);
   }
   
   private boolean m(float paramFloat1, float paramFloat2)
   {
-    if (jy())
+    if (jH())
     {
-      if (paramFloat1 > this.amX / 2) {}
+      if (paramFloat1 > this.ank / 2) {}
     }
     else {
-      while (paramFloat1 >= this.anj - this.amX)
+      while (paramFloat1 >= this.anw - this.ank)
       {
-        if ((paramFloat2 < this.ane - this.and / 2) || (paramFloat2 > this.ane + this.and / 2)) {
+        if ((paramFloat2 < this.anr - this.anq / 2) || (paramFloat2 > this.anr + this.anq / 2)) {
           break;
         }
         return true;
@@ -202,25 +202,25 @@ final class z
   
   private boolean n(float paramFloat1, float paramFloat2)
   {
-    return (paramFloat2 >= this.ank - this.anb) && (paramFloat1 >= this.anh - this.ang / 2) && (paramFloat1 <= this.anh + this.ang / 2);
+    return (paramFloat2 >= this.anx - this.ano) && (paramFloat1 >= this.anu - this.ant / 2) && (paramFloat1 <= this.anu + this.ant / 2);
   }
   
   private void show()
   {
-    switch (this.anr)
+    switch (this.anD)
     {
     case 1: 
     case 2: 
     default: 
       return;
     case 3: 
-      this.anq.cancel();
+      this.anC.cancel();
     }
-    this.anr = 1;
-    this.anq.setFloatValues(new float[] { ((Float)this.anq.getAnimatedValue()).floatValue(), 1.0F });
-    this.anq.setDuration(500L);
-    this.anq.setStartDelay(0L);
-    this.anq.start();
+    this.anD = 1;
+    this.anC.setFloatValues(new float[] { ((Float)this.anC.getAnimatedValue()).floatValue(), 1.0F });
+    this.anC.setDuration(500L);
+    this.anC.setStartDelay(0L);
+    this.anC.start();
   }
   
   public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
@@ -232,8 +232,8 @@ final class z
       if ((paramMotionEvent.getAction() == 0) && ((bool1) || (bool2))) {
         if (bool2)
         {
-          this.Wk = 1;
-          this.ani = ((int)paramMotionEvent.getX());
+          this.Wx = 1;
+          this.anv = ((int)paramMotionEvent.getX());
           setState(2);
         }
       }
@@ -247,8 +247,8 @@ final class z
         return true;
         if (bool1)
         {
-          this.Wk = 2;
-          this.anf = ((int)paramMotionEvent.getY());
+          this.Wx = 2;
+          this.ans = ((int)paramMotionEvent.getY());
         }
       }
       return false;
@@ -256,56 +256,56 @@ final class z
     return false;
   }
   
-  public final void ai(boolean paramBoolean) {}
+  public final void ah(boolean paramBoolean) {}
   
-  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    if ((this.anj != this.anl.getWidth()) || (this.ank != this.anl.getHeight()))
+    if ((this.anw != this.mRecyclerView.getWidth()) || (this.anx != this.mRecyclerView.getHeight()))
     {
-      this.anj = this.anl.getWidth();
-      this.ank = this.anl.getHeight();
+      this.anw = this.mRecyclerView.getWidth();
+      this.anx = this.mRecyclerView.getHeight();
       setState(0);
     }
     for (;;)
     {
       return;
-      if (this.anr != 0)
+      if (this.anD != 0)
       {
         int i;
         int j;
-        if (this.anm)
+        if (this.any)
         {
-          i = this.anj - this.amX;
-          j = this.ane - this.and / 2;
-          this.amV.setBounds(0, 0, this.amX, this.and);
-          this.amW.setBounds(0, 0, this.amY, this.ank);
-          if (!jy()) {
+          i = this.anw - this.ank;
+          j = this.anr - this.anq / 2;
+          this.ani.setBounds(0, 0, this.ank, this.anq);
+          this.anj.setBounds(0, 0, this.anl, this.anx);
+          if (!jH()) {
             break label301;
           }
-          this.amW.draw(paramCanvas);
-          paramCanvas.translate(this.amX, j);
+          this.anj.draw(paramCanvas);
+          paramCanvas.translate(this.ank, j);
           paramCanvas.scale(-1.0F, 1.0F);
-          this.amV.draw(paramCanvas);
+          this.ani.draw(paramCanvas);
           paramCanvas.scale(1.0F, 1.0F);
-          paramCanvas.translate(-this.amX, -j);
+          paramCanvas.translate(-this.ank, -j);
         }
-        while (this.ann)
+        while (this.anz)
         {
-          i = this.ank - this.anb;
-          j = this.anh - this.ang / 2;
-          this.amZ.setBounds(0, 0, this.ang, this.anb);
-          this.ana.setBounds(0, 0, this.anj, this.anc);
+          i = this.anx - this.ano;
+          j = this.anu - this.ant / 2;
+          this.anm.setBounds(0, 0, this.ant, this.ano);
+          this.ann.setBounds(0, 0, this.anw, this.anp);
           paramCanvas.translate(0.0F, i);
-          this.ana.draw(paramCanvas);
+          this.ann.draw(paramCanvas);
           paramCanvas.translate(j, 0.0F);
-          this.amZ.draw(paramCanvas);
+          this.anm.draw(paramCanvas);
           paramCanvas.translate(-j, -i);
           return;
           label301:
           paramCanvas.translate(i, 0.0F);
-          this.amW.draw(paramCanvas);
+          this.anj.draw(paramCanvas);
           paramCanvas.translate(0.0F, j);
-          this.amV.draw(paramCanvas);
+          this.ani.draw(paramCanvas);
           paramCanvas.translate(-i, -j);
         }
       }
@@ -335,8 +335,8 @@ final class z
           } while ((!bool1) && (!bool2));
           if (bool2)
           {
-            this.Wk = 1;
-            this.ani = ((int)paramMotionEvent.getX());
+            this.Wx = 1;
+            this.anv = ((int)paramMotionEvent.getX());
           }
           for (;;)
           {
@@ -344,65 +344,65 @@ final class z
             return;
             if (bool1)
             {
-              this.Wk = 2;
-              this.anf = ((int)paramMotionEvent.getY());
+              this.Wx = 2;
+              this.ans = ((int)paramMotionEvent.getY());
             }
           }
           if ((paramMotionEvent.getAction() == 1) && (this.mState == 2))
           {
-            this.anf = 0.0F;
-            this.ani = 0.0F;
+            this.ans = 0.0F;
+            this.anv = 0.0F;
             setState(1);
-            this.Wk = 0;
+            this.Wx = 0;
             return;
           }
         } while ((paramMotionEvent.getAction() != 2) || (this.mState != 2));
         show();
-        if (this.Wk == 1)
+        if (this.Wx == 1)
         {
           f = paramMotionEvent.getX();
-          this.anp[0] = this.mMargin;
-          this.anp[1] = (this.anj - this.mMargin);
-          paramRecyclerView = this.anp;
+          this.anB[0] = this.mMargin;
+          this.anB[1] = (this.anw - this.mMargin);
+          paramRecyclerView = this.anB;
           f = Math.max(paramRecyclerView[0], Math.min(paramRecyclerView[1], f));
-          if (Math.abs(this.anh - f) >= 2.0F)
+          if (Math.abs(this.anu - f) >= 2.0F)
           {
-            i = a(this.ani, f, paramRecyclerView, this.anl.computeHorizontalScrollRange(), this.anl.computeHorizontalScrollOffset(), this.anj);
+            i = a(this.anv, f, paramRecyclerView, this.mRecyclerView.computeHorizontalScrollRange(), this.mRecyclerView.computeHorizontalScrollOffset(), this.anw);
             if (i != 0) {
-              this.anl.scrollBy(i, 0);
+              this.mRecyclerView.scrollBy(i, 0);
             }
-            this.ani = f;
+            this.anv = f;
           }
         }
-      } while (this.Wk != 2);
+      } while (this.Wx != 2);
       f = paramMotionEvent.getY();
-      this.ano[0] = this.mMargin;
-      this.ano[1] = (this.ank - this.mMargin);
-      paramRecyclerView = this.ano;
+      this.anA[0] = this.mMargin;
+      this.anA[1] = (this.anx - this.mMargin);
+      paramRecyclerView = this.anA;
       f = Math.max(paramRecyclerView[0], Math.min(paramRecyclerView[1], f));
-    } while (Math.abs(this.ane - f) < 2.0F);
-    int i = a(this.anf, f, paramRecyclerView, this.anl.computeVerticalScrollRange(), this.anl.computeVerticalScrollOffset(), this.ank);
+    } while (Math.abs(this.anr - f) < 2.0F);
+    int i = a(this.ans, f, paramRecyclerView, this.mRecyclerView.computeVerticalScrollRange(), this.mRecyclerView.computeVerticalScrollOffset(), this.anx);
     if (i != 0) {
-      this.anl.scrollBy(0, i);
+      this.mRecyclerView.scrollBy(0, i);
     }
-    this.anf = f;
+    this.ans = f;
   }
   
   final void setState(int paramInt)
   {
     if ((paramInt == 2) && (this.mState != 2))
     {
-      this.amV.setState(PRESSED_STATE_SET);
-      jz();
+      this.ani.setState(PRESSED_STATE_SET);
+      jI();
     }
     if (paramInt == 0)
     {
-      this.anl.invalidate();
+      this.mRecyclerView.invalidate();
       if ((this.mState != 2) || (paramInt == 2)) {
         break label83;
       }
-      this.amV.setState(EMPTY_STATE_SET);
-      bN(1200);
+      this.ani.setState(EMPTY_STATE_SET);
+      bO(1200);
     }
     for (;;)
     {
@@ -412,7 +412,7 @@ final class z
       break;
       label83:
       if (paramInt == 1) {
-        bN(1500);
+        bO(1500);
       }
     }
   }
@@ -436,14 +436,14 @@ final class z
         this.mCanceled = false;
         return;
       }
-      if (((Float)z.this.anq.getAnimatedValue()).floatValue() == 0.0F)
+      if (((Float)z.this.anC.getAnimatedValue()).floatValue() == 0.0F)
       {
-        z.this.anr = 0;
+        z.this.anD = 0;
         z.this.setState(0);
         return;
       }
-      z.this.anr = 2;
-      z.this.anl.invalidate();
+      z.this.anD = 2;
+      z.this.mRecyclerView.invalidate();
     }
   }
   
@@ -455,9 +455,9 @@ final class z
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
       int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F);
-      z.this.amV.setAlpha(i);
-      z.this.amW.setAlpha(i);
-      z.this.anl.invalidate();
+      z.this.ani.setAlpha(i);
+      z.this.anj.setAlpha(i);
+      z.this.mRecyclerView.invalidate();
     }
   }
 }

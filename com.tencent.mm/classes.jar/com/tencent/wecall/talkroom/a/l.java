@@ -1,8 +1,8 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.a.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.af;
+import com.tencent.pb.common.b.a.a.a.ag;
 import com.tencent.pb.common.b.a.a.a.h;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
@@ -11,9 +11,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class l
   extends d
 {
-  public long CCU;
-  public String uwq;
-  public int vdk;
+  public long HgX;
+  public String xOr;
+  public int yvK;
   
   public l(String paramString1, int paramInt, long paramLong, String paramString2)
   {
@@ -23,16 +23,16 @@ public final class l
     try
     {
       localh.groupId = paramString1;
-      this.uwq = paramString1;
+      this.xOr = paramString1;
       localh.roomId = paramInt;
-      this.vdk = paramInt;
-      localh.uXg = paramLong;
-      this.CCU = paramLong;
-      localh.fUU = paramString2;
+      this.yvK = paramInt;
+      localh.ypH = paramLong;
+      this.HgX = paramLong;
+      localh.gAb = paramString2;
       localh.timestamp = System.currentTimeMillis();
-      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.uXg), localh.groupId, localh.fUU, Long.valueOf(localh.timestamp) });
+      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.ypH), localh.groupId, localh.gAb, Long.valueOf(localh.timestamp) });
       this.mNetType = 3;
-      this.Mcu = c.gdW().bbF(paramString1);
+      this.RCJ = c.hqY().brj(paramString1);
       c(245, localh);
       AppMethodBeat.o(62540);
       return;
@@ -46,7 +46,7 @@ public final class l
     }
   }
   
-  public final Object cL(byte[] paramArrayOfByte)
+  public final Object cO(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62541);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -55,7 +55,7 @@ public final class l
     {
       try
       {
-        paramArrayOfByte = (a.af)e.a(new a.af(), paramArrayOfByte, paramArrayOfByte.length);
+        paramArrayOfByte = (a.ag)e.a(new a.ag(), paramArrayOfByte, paramArrayOfByte.length);
         AppMethodBeat.o(62541);
         return paramArrayOfByte;
       }
@@ -69,19 +69,19 @@ public final class l
     }
   }
   
-  public final String fXq()
-  {
-    return "CsCmd.Cmd_V_CSSubscribeLargeVideoReq";
-  }
-  
   public final int getType()
   {
     return 800;
   }
+  
+  public final String hiV()
+  {
+    return "CsCmd.Cmd_V_CSSubscribeLargeVideoReq";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.l
  * JD-Core Version:    0.7.0.1
  */

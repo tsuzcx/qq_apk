@@ -1,128 +1,128 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.bnc;
-import com.tencent.mm.protocal.protobuf.csl;
-import com.tencent.mm.protocal.protobuf.ze;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.j;
-import d.a.e;
-import d.f;
-import d.g.a.a;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.protocal.protobuf.aat;
+import com.tencent.mm.protocal.protobuf.bud;
+import com.tencent.mm.protocal.protobuf.bzt;
+import com.tencent.mm.protocal.protobuf.dko;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.a.e;
+import kotlin.f;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "", "()V", "cache_seconds", "", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "getCallback", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "setCallback", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;)V", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getDataList", "()Ljava/util/LinkedList;", "dataList$delegate", "Lkotlin/Lazy;", "lastUpdateTime", "lastVisiblePos", "", "listener", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "result", "recommendCardList", "remainCount", "", "getListener", "()Lkotlin/jvm/functions/Function3;", "setListener", "(Lkotlin/jvm/functions/Function3;)V", "loadFromMemory", "", "locationGet", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLocationGet;", "mockData", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "pageNum", "rList", "getRList", "rList$delegate", "remain_count", "sessionId", "strategy", "testData", "delAllDB", "doGetRecommendCard", "fLongitude", "", "fLatitude", "fetchFromDB", "kotlin.jvm.PlatformType", "fetchPageData", "fetchPageDataFromMemory", "forceRefreshPageData", "getLastVisiblePos", "getPageNum", "getRemainCount", "getSessionId", "handleResponse", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "isDataEmpty", "isDataTimeOut", "needStoreToDB", "onFetchFinish", "list", "removeListener", "resetStrategy", "setLastVisiblePos", "pos", "setLoadFromMemory", "fromMemory", "shouldLoadFromMemory", "storeToDB", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "", "()V", "cache_seconds", "", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "getCallback", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "setCallback", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;)V", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getDataList", "()Ljava/util/LinkedList;", "dataList$delegate", "Lkotlin/Lazy;", "lastUpdateTime", "lastVisiblePos", "", "listener", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "result", "recommendCardList", "remainCount", "", "getListener", "()Lkotlin/jvm/functions/Function3;", "setListener", "(Lkotlin/jvm/functions/Function3;)V", "loadFromMemory", "", "locationGet", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLocationGet;", "mockData", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "pageNum", "rList", "getRList", "rList$delegate", "remain_count", "sessionId", "strategy", "testData", "delAllDB", "doGetRecommendCard", "fLongitude", "", "fLatitude", "fetchFromDB", "kotlin.jvm.PlatformType", "fetchPageData", "fetchPageDataFromMemory", "forceRefreshPageData", "getLastVisiblePos", "getPageNum", "getRemainCount", "getSessionId", "handleResponse", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "isDataEmpty", "isDataTimeOut", "needStoreToDB", "onFetchFinish", "list", "removeListener", "resetStrategy", "setLastVisiblePos", "pos", "setLoadFromMemory", "fromMemory", "shouldLoadFromMemory", "storeToDB", "Companion", "plugin-appbrand-integration_release"})
 public final class d
 {
-  private static d jUk;
-  public static final a jUl;
-  public int dMM;
-  private final k jTY;
-  public final c jTZ;
-  private final f jUa;
-  long jUb;
-  public int jUc;
-  public int jUd;
-  public boolean jUe;
-  public int jUf;
-  private final f jUg;
-  private boolean jUh;
-  private h.a jUi;
-  public d.g.a.q<? super Integer, ? super LinkedList<csl>, ? super Integer, z> jUj;
+  private static d kXg;
+  public static final a kXh;
+  public int eeE;
+  private final k kWU;
+  public final c kWV;
+  private final f kWW;
+  long kWX;
+  public int kWY;
+  public int kWZ;
+  public boolean kXa;
+  public int kXb;
+  private final f kXc;
+  private boolean kXd;
+  private h.a kXe;
+  public kotlin.g.a.q<? super Integer, ? super LinkedList<dko>, ? super Integer, x> kXf;
   long lastUpdateTime;
   public long sessionId;
   
   static
   {
     AppMethodBeat.i(50317);
-    jUl = new a((byte)0);
+    kXh = new a((byte)0);
     AppMethodBeat.o(50317);
   }
   
   private d()
   {
     AppMethodBeat.i(50323);
-    this.jTY = new k();
-    this.jTZ = new c();
-    this.jUa = d.g.O((a)d.h.jUq);
-    this.jUf = 1;
-    this.jUg = d.g.O((a)d.c.jUn);
-    this.jUi = ((h.a)new b(this));
-    this.jUj = ((d.g.a.q)d.g.jUp);
+    this.kWU = new k();
+    this.kWV = new c();
+    this.kWW = kotlin.g.ah((a)d.h.kXm);
+    this.kXb = 1;
+    this.kXc = kotlin.g.ah((a)d.c.kXj);
+    this.kXe = ((h.a)new b(this));
+    this.kXf = ((kotlin.g.a.q)d.g.kXl);
     AppMethodBeat.o(50323);
   }
   
   private final void a(int paramInt, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(50322);
-    if (!com.tencent.mm.kernel.g.ajM())
+    if (!com.tencent.mm.kernel.g.aAc())
     {
       AppMethodBeat.o(50322);
       return;
     }
-    Object localObject1 = new ze();
-    ((ze)localObject1).Grf = az.getNetTypeString(ak.getContext());
-    ((ze)localObject1).longitude = paramFloat1;
-    ((ze)localObject1).latitude = paramFloat2;
-    if ((j.DEBUG) && (paramInt != 0) && (this.jUh))
+    Object localObject1 = new aat();
+    ((aat)localObject1).Lmb = NetStatusUtil.getNetTypeString(MMApplicationContext.getContext());
+    ((aat)localObject1).longitude = paramFloat1;
+    ((aat)localObject1).latitude = paramFloat2;
+    if ((BuildInfo.DEBUG) && (paramInt != 0) && (this.kXd))
     {
-      localObject1 = this.jTY;
+      localObject1 = this.kWU;
       LinkedList localLinkedList = new LinkedList();
-      Object localObject2 = new csl();
-      ((k)localObject1).a((csl)localObject2);
-      ((csl)localObject2).prd = "####客户端mock数据####大视频";
-      ((csl)localObject2).mwj = 6;
-      ((csl)localObject2).HDB = "http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4";
-      ((csl)localObject2).HDD = "http://ent.chinadaily.com.cn/att/site1/20140818/0023ae72898c155ba5db5b.jpeg";
+      Object localObject2 = new dko();
+      ((k)localObject1).a((dko)localObject2);
+      ((dko)localObject2).qGI = "####客户端mock数据####大视频";
+      ((dko)localObject2).nHh = 6;
+      ((dko)localObject2).MOv = "http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4";
+      ((dko)localObject2).MOx = "http://ent.chinadaily.com.cn/att/site1/20140818/0023ae72898c155ba5db5b.jpeg";
       localLinkedList.addLast(localObject2);
       localObject2 = (Collection)localLinkedList;
-      csl[] arrayOfcsl = new csl[4];
+      dko[] arrayOfdko = new dko[4];
       int i = 0;
       if (i < 4)
       {
-        csl localcsl = new csl();
-        ((k)localObject1).a(localcsl);
-        localcsl.HDF = new bnc();
-        localcsl.HDF.Hap = 1500;
-        localcsl.HDF.Hao = 1750;
-        localcsl.mwj = 5;
+        dko localdko = new dko();
+        ((k)localObject1).a(localdko);
+        localdko.MOz = new bzt();
+        localdko.MOz.Mfp = 1500;
+        localdko.MOz.Mfo = 1750;
+        localdko.nHh = 5;
         switch (i)
         {
         default: 
-          localcsl.prd = "####客户端mock数据####商品ft";
-          localcsl.HDF.Har = false;
-          localcsl.HDF.Haq = true;
+          localdko.qGI = "####客户端mock数据####商品ft";
+          localdko.MOz.Mfr = false;
+          localdko.MOz.Mfq = true;
         }
         for (;;)
         {
-          String str = localcsl.prd;
-          localcsl.prd = (str + paramInt);
-          arrayOfcsl[i] = localcsl;
+          String str = localdko.qGI;
+          localdko.qGI = (str + paramInt);
+          arrayOfdko[i] = localdko;
           i += 1;
           break;
-          localcsl.prd = "####客户端mock数据####商品tt";
-          localcsl.HDF.Har = true;
-          localcsl.HDF.Haq = true;
+          localdko.qGI = "####客户端mock数据####商品tt";
+          localdko.MOz.Mfr = true;
+          localdko.MOz.Mfq = true;
           continue;
-          localcsl.prd = "####客户端mock数据####商品tf";
-          localcsl.HDF.Har = true;
-          localcsl.HDF.Haq = false;
+          localdko.qGI = "####客户端mock数据####商品tf";
+          localdko.MOz.Mfr = true;
+          localdko.MOz.Mfq = false;
           continue;
-          localcsl.prd = "####客户端mock数据####商品ff";
-          localcsl.HDF.Har = false;
-          localcsl.HDF.Haq = false;
+          localdko.qGI = "####客户端mock数据####商品ff";
+          localdko.MOz.Mfr = false;
+          localdko.MOz.Mfq = false;
         }
       }
       p.h(localObject2, "$this$addAll");
-      p.h(arrayOfcsl, "elements");
-      ((Collection)localObject2).addAll((Collection)e.asList(arrayOfcsl));
+      p.h(arrayOfdko, "elements");
+      ((Collection)localObject2).addAll((Collection)e.asList(arrayOfdko));
       if (paramInt == 2) {}
       for (paramInt = 0;; paramInt = localLinkedList.size())
       {
@@ -132,14 +132,14 @@ public final class d
         return;
       }
     }
-    h.a(paramInt, (ze)localObject1, this.sessionId, this.jUi, this.jUf);
+    h.a(paramInt, (aat)localObject1, this.sessionId, this.kXe, this.kXb);
     AppMethodBeat.o(50322);
   }
   
-  private final void a(int paramInt1, LinkedList<csl> paramLinkedList, int paramInt2)
+  private final void a(int paramInt1, LinkedList<dko> paramLinkedList, int paramInt2)
   {
     AppMethodBeat.i(50320);
-    d.g.a.q localq = this.jUj;
+    kotlin.g.a.q localq = this.kXf;
     if (localq != null)
     {
       localq.d(Integer.valueOf(paramInt1), paramLinkedList, Integer.valueOf(paramInt2));
@@ -149,36 +149,36 @@ public final class d
     AppMethodBeat.o(50320);
   }
   
-  private final LinkedList<Integer> bdr()
+  private final LinkedList<Integer> byJ()
   {
     AppMethodBeat.i(50318);
-    LinkedList localLinkedList = (LinkedList)this.jUa.getValue();
+    LinkedList localLinkedList = (LinkedList)this.kWW.getValue();
     AppMethodBeat.o(50318);
     return localLinkedList;
   }
   
-  public final LinkedList<csl> bds()
+  public final LinkedList<dko> byK()
   {
     AppMethodBeat.i(50319);
-    LinkedList localLinkedList = (LinkedList)this.jUg.getValue();
+    LinkedList localLinkedList = (LinkedList)this.kXc.getValue();
     AppMethodBeat.o(50319);
     return localLinkedList;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$Companion;", "", "()V", "RESULT_FAIL", "", "RESULT_FROM_DB", "RESULT_FROM_MEMORY_CACHE", "RESULT_SUCCESS", "TAG", "", "instance", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "getInstance", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "setInstance", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;)V", "get", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$Companion;", "", "()V", "RESULT_FAIL", "", "RESULT_FROM_DB", "RESULT_FROM_MEMORY_CACHE", "RESULT_SUCCESS", "TAG", "", "instance", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "getInstance", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "setInstance", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;)V", "get", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public final d bdu()
+    public final d byM()
     {
       try
       {
         AppMethodBeat.i(50305);
-        if (d.bdt() == null) {
+        if (d.byL() == null) {
           d.h(new d((byte)0));
         }
-        d locald = d.bdt();
+        d locald = d.byL();
         if (locald == null) {
-          p.gkB();
+          p.hyc();
         }
         AppMethodBeat.o(50305);
         return locald;
@@ -187,52 +187,52 @@ public final class d
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$callback$1", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "onFail", "", "onSuccess", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$callback$1", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "onFail", "", "onSuccess", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "plugin-appbrand-integration_release"})
   public static final class b
     implements h.a
   {
-    public final void a(bid parambid)
+    public final void a(bud parambud)
     {
       AppMethodBeat.i(50306);
-      p.h(parambid, "response");
-      d.a(this.jUm, parambid);
+      p.h(parambud, "response");
+      d.a(this.kXi, parambud);
       AppMethodBeat.o(50306);
     }
     
-    public final void bdv()
+    public final void byN()
     {
       AppMethodBeat.i(50307);
-      d.a(this.jUm, 1, null, 6);
+      d.a(this.kXi, 1, null, 6);
       AppMethodBeat.o(50307);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "fLongitude", "", "fLatitude", "onCallbackLocation"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "fLongitude", "", "fLatitude", "onCallbackLocation"})
   static final class d
     implements c.a
   {
     d(d paramd) {}
     
-    public final void F(float paramFloat1, float paramFloat2)
+    public final void J(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(50310);
-      Iterator localIterator = d.g(this.jUm).iterator();
+      Iterator localIterator = d.g(this.kXi).iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        d locald = this.jUm;
+        d locald = this.kXi;
         p.g(localInteger, "item");
         d.a(locald, localInteger.intValue(), paramFloat1, paramFloat2);
       }
-      d.g(this.jUm).clear();
+      d.g(this.kXi).clear();
       AppMethodBeat.o(50310);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   public static final class e
-    extends d.g.b.q
-    implements a<z>
+    extends kotlin.g.b.q
+    implements a<x>
   {
     public e(d paramd, int paramInt)
     {
@@ -240,10 +240,10 @@ public final class d
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   public static final class f
-    extends d.g.b.q
-    implements a<z>
+    extends kotlin.g.b.q
+    implements a<x>
   {
     public f(d paramd)
     {
@@ -253,7 +253,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.d
  * JD-Core Version:    0.7.0.1
  */

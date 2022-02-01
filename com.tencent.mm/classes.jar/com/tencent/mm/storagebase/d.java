@@ -16,18 +16,20 @@ import java.util.HashMap;
 public final class d
   implements Cursor, com.tencent.mm.storagebase.a.d
 {
-  private static Cursor Jji;
+  private static Cursor Ota;
   
-  public static Cursor fxH()
+  public static Cursor gFu()
   {
     AppMethodBeat.i(133330);
-    if (Jji == null) {
-      Jji = new d();
+    if (Ota == null) {
+      Ota = new d();
     }
-    Cursor localCursor = Jji;
+    Cursor localCursor = Ota;
     AppMethodBeat.o(133330);
     return localCursor;
   }
+  
+  public final void AO(boolean paramBoolean) {}
   
   public final void a(f.a parama) {}
   
@@ -36,45 +38,45 @@ public final class d
     return false;
   }
   
-  public final boolean abQ(int paramInt)
+  public final void akA(int paramInt) {}
+  
+  public final boolean aky(int paramInt)
   {
     return false;
   }
   
-  public final a abR(int paramInt)
+  public final a akz(int paramInt)
   {
     return null;
   }
-  
-  public final void abS(int paramInt) {}
   
   public final void close() {}
   
   public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
-  public final boolean dY(Object paramObject)
+  public final void deactivate() {}
+  
+  public final boolean ed(Object paramObject)
   {
     return false;
   }
   
-  public final a dZ(Object paramObject)
+  public final a ee(Object paramObject)
   {
     return null;
   }
   
-  public final void deactivate() {}
-  
-  public final SparseArray[] fxI()
+  public final SparseArray[] gFv()
   {
     return null;
   }
   
-  public final HashMap fxJ()
+  public final HashMap gFw()
   {
     return null;
   }
   
-  public final boolean fxK()
+  public final boolean gFx()
   {
     return false;
   }
@@ -250,8 +252,6 @@ public final class d
   public final void unregisterContentObserver(ContentObserver paramContentObserver) {}
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
-  
-  public final void xa(boolean paramBoolean) {}
 }
 
 

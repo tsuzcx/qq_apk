@@ -12,14 +12,14 @@ public class ExdeviceExpireUI
 {
   public int getLayoutId()
   {
-    return 2131493864;
+    return 2131494020;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(24036);
     super.onCreate(paramBundle);
-    setMMTitle(2131758591);
+    setMMTitle(2131758892);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -41,7 +41,7 @@ public class ExdeviceExpireUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceExpireUI
  * JD-Core Version:    0.7.0.1
  */

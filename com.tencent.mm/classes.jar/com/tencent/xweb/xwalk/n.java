@@ -1,84 +1,59 @@
 package com.tencent.xweb.xwalk;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.a;
 import com.tencent.xweb.internal.f;
 import com.tencent.xweb.m;
 import org.xwalk.core.Log;
-import org.xwalk.core.ReflectMethod;
-import org.xwalk.core.XWalkCoreWrapper;
 
 public final class n
   implements f
 {
-  private boolean MUz;
+  private boolean SHG;
   
-  public final m ggl()
+  public final m htD()
   {
     AppMethodBeat.i(183742);
-    s locals = s.a.ghE();
+    s locals = s.a.hvb();
     AppMethodBeat.o(183742);
     return locals;
   }
   
-  public final void ggm()
+  public final void htE()
   {
     AppMethodBeat.i(183743);
-    Object localObject1;
-    int j;
-    Object localObject2;
-    if (!this.MUz)
+    String str1;
+    int k;
+    String str2;
+    int i;
+    if (!this.SHG)
     {
-      localObject1 = a.bcd(WebView.getCurStrModule());
-      j = a.bcc(WebView.getCurStrModule());
-      localObject2 = a.nb("enableWindowPerformanceSampleRatio", WebView.getCurStrModule());
+      str1 = a.brI(WebView.getCurStrModule());
+      k = a.brH(WebView.getCurStrModule());
+      str2 = a.nS("enableWindowPerformanceSampleRatio", WebView.getCurStrModule());
+      i = 0;
     }
     try
     {
-      i = Integer.parseInt((String)localObject2);
-      s.a.ghE();
-      Log.d("XWalkExtensionInternal", "setProfileConfig with enabledTraceCategory: " + (String)localObject1 + " traceSampleRatio: " + j + " enableWindowPerformanceSampleRatio: " + i);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("enabledTraceCategory", (String)localObject1);
-      ((Bundle)localObject2).putInt("traceSampleRatio", j);
-      ((Bundle)localObject2).putInt("enableWindowPerformanceSampleRatio", i);
-      if (XWalkCoreWrapper.getInstance().hasFeature(4))
-      {
-        Log.d("XWebProfilerController", "setProfileConfig via INTERNAL_XPROFILE_NG");
-        XWalkCoreWrapper.invokeRuntimeChannel(80012, new Object[] { localObject2 });
-        this.MUz = true;
-        AppMethodBeat.o(183743);
-        return;
-      }
+      int j = Integer.parseInt(str2);
+      i = j;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        if (XWalkCoreWrapper.getInstance().hasFeature(0)) {
-          try
-          {
-            localObject1 = XWalkCoreWrapper.getInstance().getClass("com.tencent.xweb.xprofile.XProfileManager");
-            if (localObject1 != null) {
-              new ReflectMethod((Class)localObject1, "setProfileConfig", new Class[] { Bundle.class }).invoke(new Object[] { localNumberFormatException });
-            }
-          }
-          catch (Exception localException)
-          {
-            Log.e("XWebProfilerController", "setProfileConfig reflect failed");
-          }
-        }
-      }
+      label47:
+      break label47;
     }
+    s.a.hvb();
+    Log.d("XWalkExtensionInternal", "setProfileConfig with enabledTraceCategory: " + str1 + " traceSampleRatio: " + k + " enableWindowPerformanceSampleRatio: " + i);
+    s.bb(str1, k, i);
+    this.SHG = true;
+    AppMethodBeat.o(183743);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.n
  * JD-Core Version:    0.7.0.1
  */

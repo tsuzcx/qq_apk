@@ -1,116 +1,80 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.media.ExifInterface;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.n.k;
-import d.v;
-import java.util.Collection;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.i.a.ai;
+import com.tencent.mm.plugin.i.a.v;
+import com.tencent.mm.protocal.protobuf.ayy;
+import com.tencent.mm.ui.base.m;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "", "exif", "Landroid/media/ExifInterface;", "(Landroid/media/ExifInterface;)V", "Latitude", "", "getLatitude", "()Ljava/lang/Float;", "setLatitude", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "Longitude", "getLongitude", "setLongitude", "TAG", "", "isValid", "", "()Z", "setValid", "(Z)V", "convertToDegree", "stringDMS", "(Ljava/lang/String;)Ljava/lang/Float;", "toString", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderPrivateUtil;", "", "()V", "MMFinder_ModSticky_Err_Sticky_NotAllow_Private", "", "getMMFinder_ModSticky_Err_Sticky_NotAllow_Private", "()I", "TAG", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "getCallback", "()Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "addPrivateMenuItem", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "context", "Landroid/content/Context;", "mediaType", "PUBLIC_ID", "PRIVATE_ID", "ifPrivate", "", "disable", "changeFeedPrivacy", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setPrivate", "changeMegaVideoFeedPrivacy", "megaVideoId", "", "finderFeedId", "objectNonceId", "plugin-finder_release"})
 public final class q
 {
-  private final String TAG;
-  private boolean cKB;
-  Float sXX;
-  Float sXY;
+  private static final ai<ayy> tUo;
+  private static final int vWa = -4052;
+  public static final q vWb;
   
-  public q(ExifInterface paramExifInterface)
+  static
   {
-    AppMethodBeat.i(167973);
-    this.TAG = "Finder.GeoDegree";
-    Object localObject = paramExifInterface.getAttribute("GPSLatitude");
-    String str2 = paramExifInterface.getAttribute("GPSLatitudeRef");
-    String str1 = paramExifInterface.getAttribute("GPSLongitude");
-    paramExifInterface = paramExifInterface.getAttribute("GPSLongitudeRef");
-    if ((localObject != null) && (str2 != null) && (str1 != null) && (paramExifInterface != null))
-    {
-      this.cKB = true;
-      if (p.i(str2, "N")) {}
-      for (this.sXX = ajZ((String)localObject); p.i(paramExifInterface, "E"); this.sXX = Float.valueOf(0.0F - ((Float)localObject).floatValue()))
-      {
-        this.sXY = ajZ(str1);
-        AppMethodBeat.o(167973);
-        return;
-        localObject = ajZ((String)localObject);
-        if (localObject == null) {
-          p.gkB();
-        }
-      }
-      paramExifInterface = ajZ(str1);
-      if (paramExifInterface == null) {
-        p.gkB();
-      }
-      this.sXY = Float.valueOf(0.0F - paramExifInterface.floatValue());
-    }
-    AppMethodBeat.o(167973);
+    AppMethodBeat.i(253475);
+    vWb = new q();
+    vWa = -4052;
+    tUo = (ai)new a();
+    AppMethodBeat.o(253475);
   }
   
-  private final Float ajZ(String paramString)
+  public static void a(final Context paramContext, long paramLong1, long paramLong2, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(167971);
-    try
-    {
-      paramString = (CharSequence)paramString;
-      paramString = ((Collection)new k(",").q(paramString, 3)).toArray(new String[0]);
-      if (paramString == null)
-      {
-        paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-        AppMethodBeat.o(167971);
-        throw paramString;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      ae.printErrStackTrace(this.TAG, paramString, "convertToDegree", new Object[0]);
-      AppMethodBeat.o(167971);
-      return null;
-    }
-    paramString = (String[])paramString;
-    Object localObject = (CharSequence)paramString[0];
-    localObject = ((Collection)new k("/").q((CharSequence)localObject, 2)).toArray(new String[0]);
-    if (localObject == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    localObject = (String[])localObject;
-    double d1 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
-    localObject = (CharSequence)paramString[1];
-    localObject = ((Collection)new k("/").q((CharSequence)localObject, 2)).toArray(new String[0]);
-    if (localObject == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    localObject = (String[])localObject;
-    double d3 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
-    paramString = (CharSequence)paramString[2];
-    paramString = ((Collection)new k("/").q(paramString, 2)).toArray(new String[0]);
-    if (paramString == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    paramString = (String[])paramString;
-    double d2 = Double.parseDouble(paramString[0]) / Double.parseDouble(paramString[1]);
-    d3 /= 60.0D;
-    float f = (float)(d2 / 3600.0D + (d1 + d3));
-    AppMethodBeat.o(167971);
-    return Float.valueOf(f);
+    AppMethodBeat.i(253474);
+    p.h(paramContext, "context");
+    p.h(paramString, "objectNonceId");
+    ((v)g.af(v.class)).b(paramLong2, null, paramString, paramBoolean, (ai)new b(paramLong1, paramBoolean, paramContext));
+    AppMethodBeat.o(253474);
   }
   
-  public final String toString()
+  public static void a(Context paramContext, FinderItem paramFinderItem, boolean paramBoolean)
   {
-    AppMethodBeat.i(167972);
-    String str = String.valueOf(this.sXX) + ", " + String.valueOf(this.sXY);
-    AppMethodBeat.o(167972);
-    return str;
+    AppMethodBeat.i(253473);
+    p.h(paramContext, "context");
+    p.h(paramFinderItem, "feed");
+    ((v)g.af(v.class)).b(paramFinderItem.getId(), paramFinderItem.getFeedObject(), paramFinderItem.getObjectNonceId(), paramBoolean, tUo);
+    AppMethodBeat.o(253473);
+  }
+  
+  public static void a(m paramm, Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(253471);
+    p.h(paramm, "menu");
+    p.h(paramContext, "context");
+    if (paramBoolean1)
+    {
+      paramm.a(paramInt1, (CharSequence)paramContext.getString(2131760553), 2131690927, paramBoolean2);
+      AppMethodBeat.o(253471);
+      return;
+    }
+    paramm.a(paramInt2, (CharSequence)paramContext.getString(2131760551), 2131690827, paramBoolean2);
+    AppMethodBeat.o(253471);
+  }
+  
+  public static int dCb()
+  {
+    return vWa;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/utils/FinderPrivateUtil$callback$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+  public static final class a
+    implements ai<ayy>
+  {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/utils/FinderPrivateUtil$changeMegaVideoFeedPrivacy$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+  public static final class b
+    implements ai<ayy>
+  {
+    b(long paramLong, boolean paramBoolean, Context paramContext) {}
   }
 }
 

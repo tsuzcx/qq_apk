@@ -2,62 +2,62 @@ package com.tencent.mm.plugin.appbrand.launching.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.protocal.protobuf.eja;
-import com.tencent.mm.protocal.protobuf.ekg;
+import com.tencent.mm.protocal.protobuf.fds;
+import com.tencent.mm.protocal.protobuf.fez;
 
 public final class d
 {
-  public static ekg b(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  public static fez b(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
   {
-    ekg localekg = null;
+    fez localfez = null;
     AppMethodBeat.i(147319);
     if (paramAppBrandLaunchReferrer == null)
     {
       AppMethodBeat.o(147319);
       return null;
     }
-    if (2 == paramAppBrandLaunchReferrer.kbg)
+    if (2 == paramAppBrandLaunchReferrer.leo)
     {
-      localekg = new ekg();
-      localekg.FNs = paramAppBrandLaunchReferrer.appId;
-      localekg.Url = paramAppBrandLaunchReferrer.url;
+      localfez = new fez();
+      localfez.KGX = paramAppBrandLaunchReferrer.appId;
+      localfez.Url = paramAppBrandLaunchReferrer.url;
     }
     AppMethodBeat.o(147319);
-    return localekg;
+    return localfez;
   }
   
-  public static eja c(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  public static fds c(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
   {
-    eja localeja1 = null;
+    fds localfds1 = null;
     AppMethodBeat.i(147320);
     if (paramAppBrandLaunchReferrer == null)
     {
       AppMethodBeat.o(147320);
       return null;
     }
-    if (1 == paramAppBrandLaunchReferrer.kbg)
+    if (1 == paramAppBrandLaunchReferrer.leo)
     {
-      localeja1 = new eja();
-      localeja1.HeF = paramAppBrandLaunchReferrer.appId;
-      localeja1.Hew = paramAppBrandLaunchReferrer.sourceType;
-      localeja1.Imk = paramAppBrandLaunchReferrer.kbi;
+      localfds1 = new fds();
+      localfds1.MjN = paramAppBrandLaunchReferrer.appId;
+      localfds1.LEg = paramAppBrandLaunchReferrer.sourceType;
+      localfds1.Nzn = paramAppBrandLaunchReferrer.leq;
     }
-    eja localeja2 = localeja1;
+    fds localfds2 = localfds1;
     if (paramAppBrandLaunchReferrer.sourceType != 0)
     {
-      localeja2 = localeja1;
-      if (localeja1 == null) {
-        localeja2 = new eja();
+      localfds2 = localfds1;
+      if (localfds1 == null) {
+        localfds2 = new fds();
       }
-      localeja2.Hew = paramAppBrandLaunchReferrer.sourceType;
+      localfds2.LEg = paramAppBrandLaunchReferrer.sourceType;
     }
     AppMethodBeat.o(147320);
-    return localeja2;
+    return localfds2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.d
  * JD-Core Version:    0.7.0.1
  */

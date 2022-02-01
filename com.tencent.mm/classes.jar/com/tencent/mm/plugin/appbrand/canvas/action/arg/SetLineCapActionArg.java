@@ -11,7 +11,7 @@ public class SetLineCapActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineCapActionArg> CREATOR;
-  public String jWO;
+  public String kZK;
   
   static
   {
@@ -51,32 +51,32 @@ public class SetLineCapActionArg
       return false;
     }
     paramObject = (SetLineCapActionArg)paramObject;
-    boolean bool = Objects.equals(this.jWO, paramObject.jWO);
+    boolean bool = Objects.equals(this.kZK, paramObject.kZK);
     AppMethodBeat.o(145193);
     return bool;
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145190);
-    super.h(paramParcel);
-    this.jWO = paramParcel.readString();
-    AppMethodBeat.o(145190);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145194);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jWO });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.kZK });
     AppMethodBeat.o(145194);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145190);
+    super.i(paramParcel);
+    this.kZK = paramParcel.readString();
+    AppMethodBeat.o(145190);
   }
   
   public final void parse(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145191);
     super.parse(paramJSONObject);
-    this.jWO = paramJSONObject.optJSONArray("data").optString(0);
+    this.kZK = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145191);
   }
   
@@ -84,13 +84,13 @@ public class SetLineCapActionArg
   {
     AppMethodBeat.i(145192);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jWO);
+    paramParcel.writeString(this.kZK);
     AppMethodBeat.o(145192);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineCapActionArg
  * JD-Core Version:    0.7.0.1
  */

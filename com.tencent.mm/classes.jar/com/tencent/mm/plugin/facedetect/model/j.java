@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.facedetect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jf;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.ju;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class j
-  extends c<jf>
+  extends IListener<ju>
 {
   public j()
   {
     AppMethodBeat.i(161645);
-    this.__eventId = jf.class.getName().hashCode();
+    this.__eventId = ju.class.getName().hashCode();
     AppMethodBeat.o(161645);
   }
 }

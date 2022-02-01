@@ -16,13 +16,13 @@ public final class HeaderGridView$b
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141651);
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.JDw.getMeasuredWidth() - this.JDw.getPaddingLeft() - this.JDw.getPaddingRight(), 1073741824), paramInt2);
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.OOo.getMeasuredWidth() - this.OOo.getPaddingLeft() - this.OOo.getPaddingRight(), 1073741824), paramInt2);
     AppMethodBeat.o(141651);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.HeaderGridView.b
  * JD-Core Version:    0.7.0.1
  */

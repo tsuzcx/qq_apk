@@ -1,64 +1,44 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.exdevice.g.a.h;
-import com.tencent.mm.plugin.exdevice.g.b.b.a;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 
 final class ad$9
-  implements n.b
+  implements MStorageEx.IOnStorageChange
 {
   ad$9(ad paramad) {}
   
-  public final void a(int paramInt, n paramn, final Object paramObject)
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
     AppMethodBeat.i(23452);
     try
     {
-      if (!bc.ajM())
+      if (!bg.aAc())
       {
-        ae.w("MicroMsg.exdevice.SubCoreExDevice", "onNotifyChange,acc has not ready");
+        Log.w("MicroMsg.exdevice.SubCoreExDevice", "onNotifyChange,acc has not ready");
         AppMethodBeat.o(23452);
         return;
       }
       if ((paramObject instanceof String)) {
-        bc.ajU().n(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(23451);
-            String str = (String)paramObject;
-            if (ad.cmL().adu(str))
-            {
-              bc.aCg();
-              if (!c.azF().aUH(str)) {
-                bc.ajj().a(new h(str, null), 0);
-              }
-            }
-            AppMethodBeat.o(23451);
-          }
-        }, 2000L);
+        bg.aAk().postToWorkerDelayed(new ad.9.1(this, paramObject), 2000L);
       }
       AppMethodBeat.o(23452);
       return;
     }
-    catch (Exception paramn)
+    catch (Exception paramMStorageEx)
     {
-      ae.e("MicroMsg.exdevice.SubCoreExDevice", "ap : onNotifyChange exception %s", new Object[] { paramn.getMessage() });
+      Log.e("MicroMsg.exdevice.SubCoreExDevice", "ap : onNotifyChange exception %s", new Object[] { paramMStorageEx.getMessage() });
       AppMethodBeat.o(23452);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.ad.9
  * JD-Core Version:    0.7.0.1
  */

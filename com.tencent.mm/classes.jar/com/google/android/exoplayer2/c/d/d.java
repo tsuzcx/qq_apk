@@ -14,7 +14,7 @@ final class d
     int m;
     for (int i = 0; j < k; i = m + i)
     {
-      m = x.bo(paramArrayOfInt[j], i1);
+      m = x.bi(paramArrayOfInt[j], i1);
       j += 1;
     }
     long[] arrayOfLong1 = new long[i];
@@ -51,25 +51,25 @@ final class d
   
   public static final class a
   {
-    public final int[] bhJ;
-    public final int bnb;
-    public final long[] bnc;
-    public final int[] bnd;
+    public final int[] bhG;
+    public final int bmW;
+    public final long[] bmX;
+    public final int[] bmY;
     public final long[] offsets;
     
     private a(long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
     {
       this.offsets = paramArrayOfLong1;
-      this.bhJ = paramArrayOfInt1;
-      this.bnb = paramInt;
-      this.bnc = paramArrayOfLong2;
-      this.bnd = paramArrayOfInt2;
+      this.bhG = paramArrayOfInt1;
+      this.bmW = paramInt;
+      this.bmX = paramArrayOfLong2;
+      this.bmY = paramArrayOfInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.d
  * JD-Core Version:    0.7.0.1
  */

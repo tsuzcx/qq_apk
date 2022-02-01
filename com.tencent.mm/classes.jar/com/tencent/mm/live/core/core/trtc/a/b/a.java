@@ -6,32 +6,32 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
-  String fIQ;
-  private boolean gLK;
-  private boolean gLZ;
-  private boolean gMh;
-  private int gMi;
+  String goe;
+  private boolean hBH;
+  private int hBI;
+  private boolean hBi;
+  private boolean hBz;
   private int mRotation;
   int mStreamType;
   
   public a(String paramString)
   {
-    AppMethodBeat.i(197090);
-    this.fIQ = "";
+    AppMethodBeat.i(196279);
+    this.goe = "";
     this.mStreamType = 0;
-    this.gLZ = true;
-    this.gLK = true;
-    this.gMh = false;
+    this.hBz = true;
+    this.hBi = true;
+    this.hBH = false;
     this.mRotation = 0;
-    this.gMi = 50;
-    this.fIQ = paramString;
+    this.hBI = 50;
+    this.goe = paramString;
     this.mStreamType = 0;
-    AppMethodBeat.o(197090);
+    AppMethodBeat.o(196279);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.b.a
  * JD-Core Version:    0.7.0.1
  */

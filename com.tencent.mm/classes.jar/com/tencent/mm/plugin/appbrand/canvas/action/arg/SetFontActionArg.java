@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -62,21 +62,21 @@ public class SetFontActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145141);
-    super.h(paramParcel);
-    this.name = paramParcel.readString();
-    this.size = paramParcel.readFloat();
-    AppMethodBeat.o(145141);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145145);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.name, Float.valueOf(this.size) });
     AppMethodBeat.o(145145);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145141);
+    super.i(paramParcel);
+    this.name = paramParcel.readString();
+    this.size = paramParcel.readFloat();
+    AppMethodBeat.o(145141);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -105,7 +105,7 @@ public class SetFontActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontActionArg
  * JD-Core Version:    0.7.0.1
  */

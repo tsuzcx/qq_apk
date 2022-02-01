@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/biz" android:layout_width="47.0dip" android:layout_height="24.0dip" android:layout_marginTop="24.0dip" android:layout_marginBottom="24.0dip" android:src="@raw/icons_panel_close" app:layout_constraintBottom_toTopOf="@id/bix" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <android.support.v7.widget.RecyclerView android:id="@id/bix" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintTop_toBottomOf="@id/biz" />
-</merge>
+    <View android:background="@color/lx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/a2w" android:id="@id/a6a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/ce" />
+    <com.tencent.mm.ui.widget.happybubble.LabelsView android:id="@id/a6e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/cb" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" app:labelBackground="@drawable/hm" app:labelTextColor="@drawable/hn" app:labelTextHeight="@dimen/cf" app:labelTextPaddingBottom="@dimen/g" app:labelTextPaddingLeft="@dimen/k5" app:labelTextPaddingRight="@dimen/k5" app:labelTextPaddingTop="@dimen/g" app:labelTextSize="@dimen/hc" app:labelTextWidth="jr2" app:lineMargin="@dimen/c5" app:selectType="l" app:wordMargin="@dimen/ct" />
+</LinearLayout>

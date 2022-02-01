@@ -10,8 +10,8 @@ import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.IUIPage;
 import com.tencent.kinda.gen.NavigationBarConfig;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.t;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 public class MainFragment
@@ -32,10 +32,10 @@ public class MainFragment
       initWithNavigationBarConfig(this.page.defaultNavigationBarConfig());
       if ((this.page.fullPageMode()) && (getController().mActionBar != null))
       {
-        ae.i("MicroMsg.MainFragment", "UIPage is fullPageMode, so hide Actionbar.");
+        Log.i("MicroMsg.MainFragment", "UIPage is fullPageMode, so hide Actionbar.");
         getController().mActionBar.hide();
       }
-      ae.i("MicroMsg.MainFragment", "finish init page");
+      Log.i("MicroMsg.MainFragment", "finish init page");
     }
     AppMethodBeat.o(18531);
   }
@@ -56,7 +56,7 @@ public class MainFragment
   {
     AppMethodBeat.i(18539);
     super.finalize();
-    ae.i("MicroMsg.MainFragment", "finalize " + this.page);
+    Log.i("MicroMsg.MainFragment", "finalize " + this.page);
     AppMethodBeat.o(18539);
   }
   
@@ -75,7 +75,7 @@ public class MainFragment
   
   public int getLayoutId()
   {
-    return 2131494538;
+    return 2131495146;
   }
   
   public String getTagName()
@@ -93,6 +93,18 @@ public class MainFragment
       initPageView();
     }
     AppMethodBeat.o(18537);
+  }
+  
+  public void initPagePlatformDelegate()
+  {
+    AppMethodBeat.i(214428);
+    super.initPagePlatformDelegate();
+    if (this.page != null)
+    {
+      this.page.setPlatformFuncDelegate(this.pagePlatformFuncDelegate);
+      this.page.setPlatformDelegate(this.pagePlatformDelegate);
+    }
+    AppMethodBeat.o(214428);
   }
   
   public boolean onBackPressed()
@@ -139,11 +151,11 @@ public class MainFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(193138);
+    AppMethodBeat.i(214429);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(193138);
+    AppMethodBeat.o(214429);
   }
   
   public void onPause()
@@ -199,7 +211,7 @@ public class MainFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.app.MainFragment
  * JD-Core Version:    0.7.0.1
  */

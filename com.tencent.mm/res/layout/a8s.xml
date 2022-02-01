@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/jy"
+<LinearLayout android:orientation="horizontal" android:padding="@dimen/ee" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:src="@drawable/arv" style="@style/jo" />
-    <TextView android:text="@string/ck_" style="@style/k5" />
-    <LinearLayout android:id="@id/c80" android:layout_marginTop="@dimen/eg" style="@style/k2">
-        <RelativeLayout android:id="@id/c7z" style="@style/jz">
-            <TextView android:id="@id/c81" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/k1" />
-            <CheckBox android:id="@id/c7y" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="false" android:text="@string/ckr" android:layout_alignParentRight="true" style="@style/oj" />
-        </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout android:id="@id/c7v" style="@style/k2">
-        <LinearLayout android:background="@null" style="@style/jx">
-            <TextView android:id="@id/c7w" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/k0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <include layout="@layout/a8t" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/cc2" style="@style/j4" />
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/e_">
+                    <TextView android:id="@id/cdm" android:text="{title}" style="@style/ja" />
+                    <TextView android:id="@id/cbo" android:layout_marginTop="@dimen/ej" android:text="{detail}" style="@style/j8" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <RelativeLayout android:id="@id/c82" android:visibility="gone" android:layout_marginTop="@dimen/eg" style="@style/k3">
-        <TextView android:id="@id/c7x" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/k1" />
-        <TextView android:id="@id/c83" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/clg" android:layout_alignParentRight="true" style="@style/k4" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_marginTop="@dimen/ee" style="@style/mz">
-        <Button android:id="@id/ayy" android:text="@string/ckp" style="@style/k_" />
-    </LinearLayout>
-    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <Button android:id="@id/c84" android:visibility="gone" android:layout_height="20.0dip" android:layout_marginBottom="0.0dip" android:text="查看更多三星服务" android:layout_alignParentBottom="true" style="@style/k6" />
-    </RelativeLayout>
 </LinearLayout>

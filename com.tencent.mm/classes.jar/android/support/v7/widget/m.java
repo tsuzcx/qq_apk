@@ -26,30 +26,30 @@ import java.util.concurrent.ConcurrentHashMap;
 
 final class m
 {
-  private static final RectF alj = new RectF();
-  private static ConcurrentHashMap<String, Method> alk = new ConcurrentHashMap();
-  private final TextView Wf;
-  int all = 0;
-  private boolean alm = false;
-  float aln = -1.0F;
-  float alo = -1.0F;
-  float alp = -1.0F;
-  int[] alq = new int[0];
-  private boolean alr = false;
-  private TextPaint als;
+  private static final RectF alw = new RectF();
+  private static ConcurrentHashMap<String, Method> alx = new ConcurrentHashMap();
+  private final TextView Ws;
+  float alA = -1.0F;
+  float alB = -1.0F;
+  float alC = -1.0F;
+  int[] alD = new int[0];
+  private boolean alE = false;
+  private TextPaint alF;
+  int aly = 0;
+  private boolean alz = false;
   private final Context mContext;
   
   m(TextView paramTextView)
   {
-    this.Wf = paramTextView;
-    this.mContext = this.Wf.getContext();
+    this.Ws = paramTextView;
+    this.mContext = this.Ws.getContext();
   }
   
-  private static Method D(String paramString)
+  private static Method E(String paramString)
   {
     try
     {
-      Method localMethod2 = (Method)alk.get(paramString);
+      Method localMethod2 = (Method)alx.get(paramString);
       Method localMethod1 = localMethod2;
       if (localMethod2 == null)
       {
@@ -58,7 +58,7 @@ final class m
         if (localMethod2 != null)
         {
           localMethod2.setAccessible(true);
-          alk.put(paramString, localMethod2);
+          alx.put(paramString, localMethod2);
           localMethod1 = localMethod2;
         }
       }
@@ -77,21 +77,21 @@ final class m
     float f2;
     if (Build.VERSION.SDK_INT >= 16)
     {
-      f1 = this.Wf.getLineSpacingMultiplier();
-      f2 = this.Wf.getLineSpacingExtra();
+      f1 = this.Ws.getLineSpacingMultiplier();
+      f2 = this.Ws.getLineSpacingExtra();
     }
-    for (boolean bool = this.Wf.getIncludeFontPadding();; bool = ((Boolean)a(this.Wf, "getIncludeFontPadding", Boolean.TRUE)).booleanValue())
+    for (boolean bool = this.Ws.getIncludeFontPadding();; bool = ((Boolean)a(this.Ws, "getIncludeFontPadding", Boolean.TRUE)).booleanValue())
     {
-      return new StaticLayout(paramCharSequence, this.als, paramInt, paramAlignment, f1, f2, bool);
-      f1 = ((Float)a(this.Wf, "getLineSpacingMultiplier", Float.valueOf(1.0F))).floatValue();
-      f2 = ((Float)a(this.Wf, "getLineSpacingExtra", Float.valueOf(0.0F))).floatValue();
+      return new StaticLayout(paramCharSequence, this.alF, paramInt, paramAlignment, f1, f2, bool);
+      f1 = ((Float)a(this.Ws, "getLineSpacingMultiplier", Float.valueOf(1.0F))).floatValue();
+      f2 = ((Float)a(this.Ws, "getLineSpacingExtra", Float.valueOf(0.0F))).floatValue();
     }
   }
   
   private StaticLayout a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, int paramInt1, int paramInt2)
   {
-    TextDirectionHeuristic localTextDirectionHeuristic = (TextDirectionHeuristic)a(this.Wf, "getTextDirectionHeuristic", TextDirectionHeuristics.FIRSTSTRONG_LTR);
-    paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), this.als, paramInt1).setAlignment(paramAlignment).setLineSpacing(this.Wf.getLineSpacingExtra(), this.Wf.getLineSpacingMultiplier()).setIncludePad(this.Wf.getIncludeFontPadding()).setBreakStrategy(this.Wf.getBreakStrategy()).setHyphenationFrequency(this.Wf.getHyphenationFrequency());
+    TextDirectionHeuristic localTextDirectionHeuristic = (TextDirectionHeuristic)a(this.Ws, "getTextDirectionHeuristic", TextDirectionHeuristics.FIRSTSTRONG_LTR);
+    paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), this.alF, paramInt1).setAlignment(paramAlignment).setLineSpacing(this.Ws.getLineSpacingExtra(), this.Ws.getLineSpacingMultiplier()).setIncludePad(this.Ws.getIncludeFontPadding()).setBreakStrategy(this.Ws.getBreakStrategy()).setHyphenationFrequency(this.Ws.getHyphenationFrequency());
     paramInt1 = paramInt2;
     if (paramInt2 == -1) {
       paramInt1 = 2147483647;
@@ -103,7 +103,7 @@ final class m
   {
     try
     {
-      paramObject = D(paramString).invoke(paramObject, new Object[0]);
+      paramObject = E(paramString).invoke(paramObject, new Object[0]);
       if (paramObject == null) {}
       return paramObject;
     }
@@ -118,12 +118,12 @@ final class m
   
   private boolean a(int paramInt, RectF paramRectF)
   {
-    Object localObject2 = this.Wf.getText();
-    Object localObject3 = this.Wf.getTransformationMethod();
+    Object localObject2 = this.Ws.getText();
+    Object localObject3 = this.Ws.getTransformationMethod();
     Object localObject1 = localObject2;
     if (localObject3 != null)
     {
-      localObject3 = ((TransformationMethod)localObject3).getTransformation((CharSequence)localObject2, this.Wf);
+      localObject3 = ((TransformationMethod)localObject3).getTransformation((CharSequence)localObject2, this.Ws);
       localObject1 = localObject2;
       if (localObject3 != null) {
         localObject1 = localObject3;
@@ -132,15 +132,15 @@ final class m
     int i;
     if (Build.VERSION.SDK_INT >= 16)
     {
-      i = this.Wf.getMaxLines();
-      if (this.als != null) {
+      i = this.Ws.getMaxLines();
+      if (this.alF != null) {
         break label199;
       }
-      this.als = new TextPaint();
+      this.alF = new TextPaint();
       label89:
-      this.als.set(this.Wf.getPaint());
-      this.als.setTextSize(paramInt);
-      localObject2 = (Layout.Alignment)a(this.Wf, "getLayoutAlignment", Layout.Alignment.ALIGN_NORMAL);
+      this.alF.set(this.Ws.getPaint());
+      this.alF.setTextSize(paramInt);
+      localObject2 = (Layout.Alignment)a(this.Ws, "getLayoutAlignment", Layout.Alignment.ALIGN_NORMAL);
       if (Build.VERSION.SDK_INT < 23) {
         break label209;
       }
@@ -155,7 +155,7 @@ final class m
       return false;
       i = -1;
       break;
-      this.als.reset();
+      this.alF.reset();
       break label89;
     }
     label229:
@@ -174,14 +174,14 @@ final class m
         arrayOfInt[i] = paramTypedArray.getDimensionPixelSize(i, -1);
         i += 1;
       }
-      this.alq = i(arrayOfInt);
-      ji();
+      this.alD = i(arrayOfInt);
+      jr();
     }
   }
   
   private int d(RectF paramRectF)
   {
-    int j = this.alq.length;
+    int j = this.alD.length;
     if (j == 0) {
       throw new IllegalStateException("No available text sizes to choose from.");
     }
@@ -191,7 +191,7 @@ final class m
     while (i <= k)
     {
       int m = (i + k) / 2;
-      if (a(this.alq[m], paramRectF))
+      if (a(this.alD[m], paramRectF))
       {
         j = i;
         i = m + 1;
@@ -202,7 +202,7 @@ final class m
         j = k;
       }
     }
-    return this.alq[j];
+    return this.alD[j];
   }
   
   private void g(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -216,11 +216,11 @@ final class m
     if (paramFloat3 <= 0.0F) {
       throw new IllegalArgumentException("The auto-size step granularity (" + paramFloat3 + "px) is less or equal to (0px)");
     }
-    this.all = 1;
-    this.alo = paramFloat1;
-    this.alp = paramFloat2;
-    this.aln = paramFloat3;
-    this.alr = false;
+    this.aly = 1;
+    this.alB = paramFloat1;
+    this.alC = paramFloat2;
+    this.alA = paramFloat3;
+    this.alE = false;
   }
   
   private static int[] i(int[] paramArrayOfInt)
@@ -257,90 +257,90 @@ final class m
     }
   }
   
-  private boolean ji()
+  private boolean jr()
   {
-    int i = this.alq.length;
+    int i = this.alD.length;
     if (i > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.alr = bool;
-      if (this.alr)
+      this.alE = bool;
+      if (this.alE)
       {
-        this.all = 1;
-        this.alo = this.alq[0];
-        this.alp = this.alq[(i - 1)];
-        this.aln = -1.0F;
+        this.aly = 1;
+        this.alB = this.alD[0];
+        this.alC = this.alD[(i - 1)];
+        this.alA = -1.0F;
       }
-      return this.alr;
+      return this.alE;
     }
   }
   
-  private boolean jj()
+  private boolean js()
   {
-    if ((jn()) && (this.all == 1)) {
-      if ((!this.alr) || (this.alq.length == 0))
+    if ((jw()) && (this.aly == 1)) {
+      if ((!this.alE) || (this.alD.length == 0))
       {
-        float f1 = Math.round(this.alo);
+        float f1 = Math.round(this.alB);
         int i = 1;
-        while (Math.round(this.aln + f1) <= Math.round(this.alp))
+        while (Math.round(this.alA + f1) <= Math.round(this.alC))
         {
           i += 1;
-          f1 += this.aln;
+          f1 += this.alA;
         }
         int[] arrayOfInt = new int[i];
-        f1 = this.alo;
+        f1 = this.alB;
         int j = 0;
         while (j < i)
         {
           arrayOfInt[j] = Math.round(f1);
-          float f2 = this.aln;
+          float f2 = this.alA;
           j += 1;
           f1 = f2 + f1;
         }
-        this.alq = i(arrayOfInt);
+        this.alD = i(arrayOfInt);
       }
     }
-    for (this.alm = true;; this.alm = false) {
-      return this.alm;
+    for (this.alz = true;; this.alz = false) {
+      return this.alz;
     }
   }
   
-  private void jl()
+  private void ju()
   {
-    this.all = 0;
-    this.alo = -1.0F;
-    this.alp = -1.0F;
-    this.aln = -1.0F;
-    this.alq = new int[0];
-    this.alm = false;
+    this.aly = 0;
+    this.alB = -1.0F;
+    this.alC = -1.0F;
+    this.alA = -1.0F;
+    this.alD = new int[0];
+    this.alz = false;
   }
   
-  private boolean jn()
+  private boolean jw()
   {
-    return !(this.Wf instanceof AppCompatEditText);
+    return !(this.Ws instanceof AppCompatEditText);
   }
   
   private void setRawTextSize(float paramFloat)
   {
-    if (paramFloat != this.Wf.getPaint().getTextSize())
+    if (paramFloat != this.Ws.getPaint().getTextSize())
     {
-      this.Wf.getPaint().setTextSize(paramFloat);
+      this.Ws.getPaint().setTextSize(paramFloat);
       if (Build.VERSION.SDK_INT < 18) {
         break label114;
       }
     }
     label81:
     label114:
-    for (boolean bool = this.Wf.isInLayout();; bool = false)
+    for (boolean bool = this.Ws.isInLayout();; bool = false)
     {
-      if (this.Wf.getLayout() != null) {
-        this.alm = false;
+      if (this.Ws.getLayout() != null) {
+        this.alz = false;
       }
       try
       {
-        Method localMethod = D("nullLayouts");
+        Method localMethod = E("nullLayouts");
         if (localMethod != null) {
-          localMethod.invoke(this.Wf, new Object[0]);
+          localMethod.invoke(this.Ws, new Object[0]);
         }
       }
       catch (Exception localException)
@@ -348,13 +348,13 @@ final class m
         break label81;
       }
       if (!bool) {
-        this.Wf.requestLayout();
+        this.Ws.requestLayout();
       }
       for (;;)
       {
-        this.Wf.invalidate();
+        this.Ws.invalidate();
         return;
-        this.Wf.forceLayout();
+        this.Ws.forceLayout();
       }
     }
   }
@@ -363,7 +363,7 @@ final class m
   {
     paramAttributeSet = this.mContext.obtainStyledAttributes(paramAttributeSet, a.a.AppCompatTextView, paramInt, 0);
     if (paramAttributeSet.hasValue(5)) {
-      this.all = paramAttributeSet.getInt(5, 0);
+      this.aly = paramAttributeSet.getInt(5, 0);
     }
     if (paramAttributeSet.hasValue(4)) {}
     for (float f1 = paramAttributeSet.getDimension(4, -1.0F);; f1 = -1.0F)
@@ -385,11 +385,11 @@ final class m
             }
           }
           paramAttributeSet.recycle();
-          if (jn())
+          if (jw())
           {
-            if (this.all == 1)
+            if (this.aly == 1)
             {
-              if (!this.alr)
+              if (!this.alE)
               {
                 paramAttributeSet = this.mContext.getResources().getDisplayMetrics();
                 float f4 = f2;
@@ -406,11 +406,11 @@ final class m
                 }
                 g(f4, f2, f3);
               }
-              jj();
+              js();
             }
             return;
           }
-          this.all = 0;
+          this.aly = 0;
           return;
         }
       }
@@ -427,55 +427,55 @@ final class m
     }
   }
   
-  final void jk()
+  final void jt()
   {
-    if (!jm()) {}
+    if (!jv()) {}
     do
     {
       return;
-      if (!this.alm) {
+      if (!this.alz) {
         break;
       }
-    } while ((this.Wf.getMeasuredHeight() <= 0) || (this.Wf.getMeasuredWidth() <= 0));
+    } while ((this.Ws.getMeasuredHeight() <= 0) || (this.Ws.getMeasuredWidth() <= 0));
     int i;
-    if (((Boolean)a(this.Wf, "getHorizontallyScrolling", Boolean.FALSE)).booleanValue()) {
+    if (((Boolean)a(this.Ws, "getHorizontallyScrolling", Boolean.FALSE)).booleanValue()) {
       i = 1048576;
     }
     for (;;)
     {
-      int j = this.Wf.getHeight() - this.Wf.getCompoundPaddingBottom() - this.Wf.getCompoundPaddingTop();
+      int j = this.Ws.getHeight() - this.Ws.getCompoundPaddingBottom() - this.Ws.getCompoundPaddingTop();
       if ((i <= 0) || (j <= 0)) {
         break;
       }
-      synchronized (alj)
+      synchronized (alw)
       {
-        alj.setEmpty();
-        alj.right = i;
-        alj.bottom = j;
-        float f = d(alj);
-        if (f != this.Wf.getTextSize()) {
+        alw.setEmpty();
+        alw.right = i;
+        alw.bottom = j;
+        float f = d(alw);
+        if (f != this.Ws.getTextSize()) {
           e(0, f);
         }
-        this.alm = true;
+        this.alz = true;
         return;
-        i = this.Wf.getMeasuredWidth() - this.Wf.getTotalPaddingLeft() - this.Wf.getTotalPaddingRight();
+        i = this.Ws.getMeasuredWidth() - this.Ws.getTotalPaddingLeft() - this.Ws.getTotalPaddingRight();
       }
     }
   }
   
-  final boolean jm()
+  final boolean jv()
   {
-    return (jn()) && (this.all != 0);
+    return (jw()) && (this.aly != 0);
   }
   
   final void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (jn())
+    if (jw())
     {
       DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
       g(TypedValue.applyDimension(paramInt4, paramInt1, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt2, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt3, localDisplayMetrics));
-      if (jj()) {
-        jk();
+      if (js()) {
+        jt();
       }
     }
   }
@@ -483,7 +483,7 @@ final class m
   final void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
     int i = 0;
-    if (jn())
+    if (jw())
     {
       int j = paramArrayOfInt.length;
       if (j > 0)
@@ -493,8 +493,8 @@ final class m
         if (paramInt == 0)
         {
           arrayOfInt1 = Arrays.copyOf(paramArrayOfInt, j);
-          this.alq = i(arrayOfInt1);
-          if (!ji()) {
+          this.alD = i(arrayOfInt1);
+          if (!jr()) {
             throw new IllegalArgumentException("None of the preset sizes is valid: " + Arrays.toString(paramArrayOfInt));
           }
         }
@@ -514,23 +514,23 @@ final class m
       }
       else
       {
-        this.alr = false;
+        this.alE = false;
       }
-      if (jj()) {
-        jk();
+      if (js()) {
+        jt();
       }
     }
   }
   
   final void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    if (jn()) {
+    if (jw()) {
       switch (paramInt)
       {
       default: 
         throw new IllegalArgumentException("Unknown auto-size text type: ".concat(String.valueOf(paramInt)));
       case 0: 
-        jl();
+        ju();
       }
     }
     do
@@ -538,8 +538,8 @@ final class m
       return;
       DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
       g(TypedValue.applyDimension(2, 12.0F, localDisplayMetrics), TypedValue.applyDimension(2, 112.0F, localDisplayMetrics), 1.0F);
-    } while (!jj());
-    jk();
+    } while (!js());
+    jt();
   }
 }
 

@@ -6,40 +6,37 @@ import android.net.Uri.Builder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.g.b.a.dc;
-import com.tencent.mm.g.b.a.jw;
-import com.tencent.mm.g.b.a.jx;
+import com.tencent.mm.ak.aa;
+import com.tencent.mm.g.b.a.fr;
+import com.tencent.mm.g.b.a.nu;
+import com.tencent.mm.g.b.a.nv;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
 import com.tencent.mm.plugin.websearch.api.WidgetData.MoreFooter;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.ab;
 import com.tencent.mm.plugin.websearch.api.ad;
+import com.tencent.mm.plugin.websearch.api.ae;
+import com.tencent.mm.plugin.websearch.api.af;
+import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.d;
+import com.tencent.mm.plugin.websearch.api.e;
 import com.tencent.mm.plugin.websearch.api.j;
 import com.tencent.mm.plugin.websearch.api.m;
 import com.tencent.mm.plugin.websearch.api.n;
-import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.plugin.websearch.widget.b.a.1;
-import com.tencent.mm.plugin.websearch.widget.b.a.2;
 import com.tencent.mm.plugin.websearch.widget.view.footer.BtnSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.DirectionSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.DownArrowSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.MoreFooter;
-import com.tencent.mm.protocal.protobuf.cvj;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.protocal.protobuf.doc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.c;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
@@ -54,82 +51,82 @@ import java.util.Set;
 public final class b
   implements m
 {
-  com.tencent.mm.plugin.websearch.api.e DWH;
-  b DWK;
-  View DWO;
-  LinearLayout DWP;
-  d DWQ;
-  String DWR;
-  String DWS;
-  View DWT;
-  private com.tencent.mm.plugin.websearch.widget.view.footer.a DWU;
-  LinearLayout DWV;
-  MoreFooter DWW;
-  float[] DWX;
-  int DWY;
-  com.tencent.mm.plugin.websearch.api.g DWZ;
-  a DXa;
-  WidgetData DXb;
-  private WidgetData DXc;
-  ThreeDotsLoadingView DXd;
-  View DXe;
-  View DXf;
-  private com.tencent.mm.plugin.websearch.widget.view.footer.a.a DXg;
-  View.OnClickListener DXh;
+  TextView CkP;
+  b IIB;
+  View IIF;
+  LinearLayout IIG;
+  d IIH;
+  String III;
+  String IIJ;
+  View IIK;
+  private com.tencent.mm.plugin.websearch.widget.view.footer.a IIL;
+  LinearLayout IIM;
+  MoreFooter IIN;
+  float[] IIO;
+  int IIP;
+  com.tencent.mm.plugin.websearch.api.g IIQ;
+  a IIR;
+  WidgetData IIS;
+  private WidgetData IIT;
+  ThreeDotsLoadingView IIU;
+  View IIV;
+  View IIW;
+  private com.tencent.mm.plugin.websearch.widget.view.footer.a.a IIX;
+  View.OnClickListener IIY;
+  e IIy;
   MMActivity activity;
-  ViewGroup gsV;
   volatile boolean isLoading;
   boolean isRetry;
   boolean isSelected;
-  View sQh;
-  boolean ulU;
+  ViewGroup parent;
+  View uGQ;
   View view;
-  TextView yjO;
+  boolean xEm;
   
   public b()
   {
     AppMethodBeat.i(116713);
-    this.DWX = new float[2];
-    this.DXg = new com.tencent.mm.plugin.websearch.widget.view.footer.a.a()
+    this.IIO = new float[2];
+    this.IIX = new com.tencent.mm.plugin.websearch.widget.view.footer.a.a()
     {
-      public final void eQL()
+      public final void fZk()
       {
         AppMethodBeat.i(116689);
-        List localList = b.this.DXa.eQC();
+        List localList = b.this.IIR.fZb();
         if ((localList == null) || (localList.isEmpty()) || (localList.size() == 1))
         {
           AppMethodBeat.o(116689);
           return;
         }
-        com.tencent.mm.plugin.websearch.widget.f.a(1, b.this.DXb, null);
-        b.this.DWY = ((com.tencent.mm.plugin.websearch.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.f.class)).a(b.this.activity, ak.getContext().getString(2131763084), "", localList, new aa()
+        com.tencent.mm.plugin.websearch.widget.f.a(1, b.this.IIS, null);
+        b.this.IIP = ((com.tencent.mm.plugin.websearch.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.websearch.api.f.class)).a(b.this.activity, MMApplicationContext.getContext().getString(2131765244), "", localList, new ae()
         {
-          public final void iU(int paramAnonymous2Int1, int paramAnonymous2Int2)
+          public final void ka(int paramAnonymous2Int1, int paramAnonymous2Int2)
           {
-            if (paramAnonymous2Int2 != b.this.DWY) {}
+            if (paramAnonymous2Int2 != b.this.IIP) {}
           }
         });
         AppMethodBeat.o(116689);
       }
       
-      public final void eQM()
+      public final void fZl()
       {
         AppMethodBeat.i(116690);
-        b.this.DWZ.ePB();
+        b.this.IIQ.fXH();
         AppMethodBeat.o(116690);
       }
       
-      public final void eQN()
+      public final void fZm()
       {
         AppMethodBeat.i(116691);
-        b.this.DWZ.ePC();
+        b.this.IIQ.fXI();
         AppMethodBeat.o(116691);
       }
       
       public final int getItemCount()
       {
         AppMethodBeat.i(116694);
-        int i = b.this.DXa.eQB();
+        int i = b.this.IIR.fZa();
         AppMethodBeat.o(116694);
         return i;
       }
@@ -137,7 +134,7 @@ public final class b
       public final boolean hasNext()
       {
         AppMethodBeat.i(116692);
-        boolean bool = b.this.DXa.hasNext();
+        boolean bool = b.this.IIR.hasNext();
         AppMethodBeat.o(116692);
         return bool;
       }
@@ -145,23 +142,23 @@ public final class b
       public final boolean hasPrevious()
       {
         AppMethodBeat.i(116693);
-        boolean bool = b.this.DXa.eQD();
+        boolean bool = b.this.IIR.fZc();
         AppMethodBeat.o(116693);
         return bool;
       }
     };
-    this.DXh = new View.OnClickListener()
+    this.IIY = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116695);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (b.this.DXb.DUL != null)
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if (b.this.IIS.IFF != null)
         {
-          b.this.ai(b.this.DXb.DUL.DUX, b.this.DXb.DUL.DUW, b.this.DXb.DUM.DUS);
-          b.this.nR(true);
+          b.this.am(b.this.IIS.IFF.IFQ, b.this.IIS.IFF.IFP, b.this.IIS.IFG.nbf);
+          b.this.qA(true);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/WidgetView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116695);
@@ -170,16 +167,16 @@ public final class b
     AppMethodBeat.o(116713);
   }
   
-  private static void bg(Map<String, String> paramMap)
+  private static void bi(Map<String, String> paramMap)
   {
     AppMethodBeat.i(116726);
-    cvj localcvj = new cvj();
-    localcvj.HFU = bh(paramMap);
-    x.a(new z(localcvj).hZD, null);
+    doc localdoc = new doc();
+    localdoc.MRe = bj(paramMap);
+    aa.a(new ad(localdoc).iUB, null);
     AppMethodBeat.o(116726);
   }
   
-  private static String bh(Map<String, String> paramMap)
+  private static String bj(Map<String, String> paramMap)
   {
     AppMethodBeat.i(116727);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -194,169 +191,169 @@ public final class b
     return paramMap;
   }
   
-  private void dUo()
-  {
-    AppMethodBeat.i(116719);
-    switch (this.DXb.DUO)
-    {
-    default: 
-      ae.w("WidgetView", "unknown footer type %d", new Object[] { Integer.valueOf(this.DXb.DUO) });
-      AppMethodBeat.o(116719);
-      return;
-    case 2: 
-      this.DWV.setVisibility(8);
-      this.DWW.setVisibility(0);
-      eQG();
-      AppMethodBeat.o(116719);
-      return;
-    }
-    this.DWW.setVisibility(8);
-    this.DWV.setVisibility(0);
-    eQH();
-    AppMethodBeat.o(116719);
-  }
-  
   private void e(WidgetData paramWidgetData)
   {
     AppMethodBeat.i(116717);
     if (paramWidgetData != null)
     {
       this.isLoading = true;
-      this.DXe.setVisibility(8);
-      this.DXd.fQe();
-      this.DWP.removeView(this.DXd);
-      this.DXc = paramWidgetData;
-      this.DWO.setVisibility(8);
-      this.DWP.setVisibility(0);
-      this.DWQ.aHe(this.DWR);
-      this.DXb = paramWidgetData;
-      this.DWR = ("widgetid_" + System.currentTimeMillis());
-      this.DWQ.a(paramWidgetData, this.DWR, ((j)com.tencent.mm.kernel.g.ab(j.class)).ePr(), 47);
+      this.IIV.setVisibility(8);
+      this.IIU.gZi();
+      this.IIG.removeView(this.IIU);
+      this.IIT = paramWidgetData;
+      this.IIF.setVisibility(8);
+      this.IIG.setVisibility(0);
+      this.IIH.aWZ(this.III);
+      this.IIS = paramWidgetData;
+      this.III = ("widgetid_" + System.currentTimeMillis());
+      this.IIH.a(paramWidgetData, this.III, ((j)com.tencent.mm.kernel.g.af(j.class)).fXx(), 47);
       updateView();
-      ae.v("WidgetView", "%s, last %s, cur %s", new Object[] { toString(), this.DXc.toString(), this.DXb.toString() });
+      Log.v("WidgetView", "%s, last %s, cur %s", new Object[] { toString(), this.IIT.toString(), this.IIS.toString() });
     }
     AppMethodBeat.o(116717);
   }
   
-  private void eQG()
+  private void eWo()
+  {
+    AppMethodBeat.i(116719);
+    switch (this.IIS.IFI)
+    {
+    default: 
+      Log.w("WidgetView", "unknown footer type %d", new Object[] { Integer.valueOf(this.IIS.IFI) });
+      AppMethodBeat.o(116719);
+      return;
+    case 2: 
+      this.IIM.setVisibility(8);
+      this.IIN.setVisibility(0);
+      fZf();
+      AppMethodBeat.o(116719);
+      return;
+    }
+    this.IIN.setVisibility(8);
+    this.IIM.setVisibility(0);
+    fZg();
+    AppMethodBeat.o(116719);
+  }
+  
+  private void fZf()
   {
     AppMethodBeat.i(116720);
-    if (this.DXb.DUL != null)
+    if (this.IIS.IFF != null)
     {
-      this.DWW.setTitle(this.DXb.DUL.title);
+      this.IIN.setTitle(this.IIS.IFF.title);
       AppMethodBeat.o(116720);
       return;
     }
-    this.DWW.setVisibility(8);
-    ae.e("WidgetView", "more footer has empty title");
+    this.IIN.setVisibility(8);
+    Log.e("WidgetView", "more footer has empty title");
     AppMethodBeat.o(116720);
   }
   
-  private void eQH()
+  private void fZg()
   {
     AppMethodBeat.i(116721);
-    Object localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.a.gAX;
-    localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.xi("100443");
+    Object localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.a.hnM;
+    localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.Fu("100443");
     if (localObject == null)
     {
-      ae.i("WidgetView", "openSearchPreload item is null");
+      Log.i("WidgetView", "openSearchPreload item is null");
       AppMethodBeat.o(116721);
       return;
     }
     int i = 3;
     if (((c)localObject).isValid()) {
-      i = bu.aSB((String)((c)localObject).fsy().get("switchType"));
+      i = Util.safeParseInt((String)((c)localObject).gzz().get("switchType"));
     }
     switch (i)
     {
     default: 
-      if (!(this.DWU instanceof DownArrowSwitchFooter))
+      if (!(this.IIL instanceof DownArrowSwitchFooter))
       {
-        this.DWV.removeView((View)this.DWU);
-        this.DWU = new DownArrowSwitchFooter(this.DWV.getContext());
-        this.DWV.addView((View)this.DWU);
+        this.IIM.removeView((View)this.IIL);
+        this.IIL = new DownArrowSwitchFooter(this.IIM.getContext());
+        this.IIM.addView((View)this.IIL);
       }
       break;
     }
     for (;;)
     {
-      this.DWU.setCallback(this.DXg);
-      this.DWU.setTitle(eQJ());
-      this.DWU.setIcon(this.DXb.DUM.iconUrl);
+      this.IIL.setCallback(this.IIX);
+      this.IIL.setTitle(fZi());
+      this.IIL.setIcon(this.IIS.IFG.iconUrl);
       AppMethodBeat.o(116721);
       return;
-      if (!(this.DWU instanceof BtnSwitchFooter))
+      if (!(this.IIL instanceof BtnSwitchFooter))
       {
-        this.DWV.removeView((View)this.DWU);
-        this.DWU = new BtnSwitchFooter(this.DWV.getContext());
-        this.DWV.addView((View)this.DWU);
+        this.IIM.removeView((View)this.IIL);
+        this.IIL = new BtnSwitchFooter(this.IIM.getContext());
+        this.IIM.addView((View)this.IIL);
         continue;
-        if (!(this.DWU instanceof DirectionSwitchFooter))
+        if (!(this.IIL instanceof DirectionSwitchFooter))
         {
-          this.DWV.removeView((View)this.DWU);
-          this.DWU = new DirectionSwitchFooter(this.DWV.getContext());
-          this.DWV.addView((View)this.DWU);
+          this.IIM.removeView((View)this.IIL);
+          this.IIL = new DirectionSwitchFooter(this.IIM.getContext());
+          this.IIM.addView((View)this.IIL);
         }
       }
     }
   }
   
-  private String eQI()
+  private String fZh()
   {
     AppMethodBeat.i(116722);
-    if (!TextUtils.isEmpty(this.DXb.DUM.DUV))
+    if (!TextUtils.isEmpty(this.IIS.IFG.IFO))
     {
-      str = this.DXb.DUM.DUV;
+      str = this.IIS.IFG.IFO;
       AppMethodBeat.o(116722);
       return str;
     }
-    String str = ak.getContext().getString(2131763087);
+    String str = MMApplicationContext.getContext().getString(2131765247);
     AppMethodBeat.o(116722);
     return str;
   }
   
-  private String eQJ()
+  private String fZi()
   {
     AppMethodBeat.i(116723);
-    if (!TextUtils.isEmpty(this.DXb.DUM.footerWording))
+    if (!TextUtils.isEmpty(this.IIS.IFG.footerWording))
     {
-      str = this.DXb.DUM.footerWording;
+      str = this.IIS.IFG.footerWording;
       AppMethodBeat.o(116723);
       return str;
     }
-    String str = ak.getContext().getString(2131763085, new Object[] { this.DXb.DUM.bVF });
+    String str = MMApplicationContext.getContext().getString(2131765245, new Object[] { this.IIS.IFG.nickName });
     AppMethodBeat.o(116723);
     return str;
   }
   
-  private void eQK()
+  private void fZj()
   {
     AppMethodBeat.i(116725);
-    ae.i("WidgetView", "exposure");
-    String str1 = String.format("262144:%s:%d:%s;", new Object[] { this.DXb.DUM.tFc, Long.valueOf(System.currentTimeMillis() / 1000L), this.DXb.DUM.DUT });
-    String str2 = this.DXb.DUM.cRx + ";";
-    String str3 = "262144:" + this.DXb.DUM.cRx + ";";
+    Log.i("WidgetView", "exposure");
+    String str1 = String.format("262144:%s:%d:%s;", new Object[] { this.IIS.IFG.wWb, Long.valueOf(System.currentTimeMillis() / 1000L), this.IIS.IFG.IFM });
+    String str2 = this.IIS.IFG.serviceType + ";";
+    String str3 = "262144:" + this.IIS.IFG.serviceType + ";";
     HashMap localHashMap = new HashMap();
     localHashMap.put("isexpose", "1");
     localHashMap.put("content", str1);
-    localHashMap.put("searchid", this.DXb.DUM.kid);
+    localHashMap.put("searchid", this.IIS.IFG.hes);
     localHashMap.put("scene", "47");
-    localHashMap.put("query", this.DXb.query);
-    localHashMap.put("sessionid", this.DXb.dEJ);
+    localHashMap.put("query", this.IIS.query);
+    localHashMap.put("sessionid", this.IIS.dWw);
     localHashMap.put("resulttype", str3);
     localHashMap.put("resultsubtypelist", str2);
     localHashMap.put("ishomepage", "1");
-    localHashMap.put("height", this.DWP.getHeight() + ";");
+    localHashMap.put("height", this.IIG.getHeight() + ";");
     localHashMap.put("requestid", System.currentTimeMillis());
-    bg(localHashMap);
-    new jx().sJ(str1).sM(this.DXb.query).sO(str2).sN(str3).sK(this.DXb.DUM.kid).sL(this.DXb.dEJ).VB().aLH();
+    bi(localHashMap);
+    new nv().AU(str1).AX(this.IIS.query).AZ(str2).AY(str3).AV(this.IIS.IFG.hes).AW(this.IIS.dWw).ajr().bfK();
     AppMethodBeat.o(116725);
   }
   
-  final void ai(String paramString1, String paramString2, int paramInt)
+  final void am(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(116714);
-    if (this.DXb == null)
+    if (this.IIS == null)
     {
       AppMethodBeat.o(116714);
       return;
@@ -381,36 +378,36 @@ public final class b
     u.i("WidgetView", "open app with path %s", new Object[] { localObject1 });
     Object localObject2 = new AppBrandStatObject();
     ((AppBrandStatObject)localObject2).scene = 1108;
-    paramString1 = String.format("1:%s:%d:%s:%s:%s:%s:%d:%s", new Object[] { "", Long.valueOf(System.currentTimeMillis()), this.DXb.DUM.DUT, "isWidget=1", this.DWR, this.DXb.DUM.hNv, Integer.valueOf(this.DXb.DUM.cRx), Integer.valueOf(0) });
-    ((AppBrandStatObject)localObject2).dlj = (this.DXb.dEJ + "::" + this.DXb.DUM.kid + ":" + this.DXb.DUM.tFc + ":1:" + paramString1);
+    paramString1 = String.format("1:%s:%d:%s:%s:%s:%s:%d:%s", new Object[] { "", Long.valueOf(System.currentTimeMillis()), this.IIS.IFG.IFM, "isWidget=1", this.III, this.IIS.IFG.iIA, Integer.valueOf(this.IIS.IFG.serviceType), Integer.valueOf(0) });
+    ((AppBrandStatObject)localObject2).dCw = (this.IIS.dWw + "::" + this.IIS.IFG.hes + ":" + this.IIS.IFG.wWb + ":1:" + paramString1);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      paramString1 = this.DXb.DUM.dlk;
+      paramString1 = this.IIS.IFG.dCx;
       if (!TextUtils.isEmpty(paramString2)) {
         break label502;
       }
-      paramString2 = this.DXb.DUM.userName;
+      paramString2 = this.IIS.IFG.userName;
       label341:
-      localObject1 = (p)com.tencent.mm.kernel.g.ab(p.class);
-      localObject3 = ak.getContext();
+      localObject1 = (r)com.tencent.mm.kernel.g.af(r.class);
+      localObject3 = MMApplicationContext.getContext();
       if (paramInt != -1) {
         break label505;
       }
-      paramInt = this.DXb.DUM.DUS;
+      paramInt = this.IIS.IFG.nbf;
     }
     label502:
     label505:
     for (;;)
     {
-      ((p)localObject1).a((Context)localObject3, paramString2, null, paramInt, this.DXb.DUM.version, paramString1, (AppBrandStatObject)localObject2);
-      localObject1 = this.DXb;
-      localObject2 = new dc();
-      ((dc)localObject2).efx = 1L;
-      paramString1 = ((dc)localObject2).mI(paramString1).mH(((WidgetData)localObject1).query).Ta().mF(((WidgetData)localObject1).DUM.kid);
-      paramString1.efA = ((WidgetData)localObject1).DUM.cRx;
-      paramString1 = paramString1.mG(((WidgetData)localObject1).dEJ);
-      paramString1.efz = paramString1.t("WeappUsrname", paramString2, true);
-      paramString1.aLH();
+      ((r)localObject1).a((Context)localObject3, paramString2, null, paramInt, this.IIS.IFG.version, paramString1, (AppBrandStatObject)localObject2);
+      localObject1 = this.IIS;
+      localObject2 = new fr();
+      ((fr)localObject2).eGU = 1L;
+      paramString1 = ((fr)localObject2).sI(paramString1).sH(((WidgetData)localObject1).query).agD().sF(((WidgetData)localObject1).IFG.hes);
+      paramString1.eGX = ((WidgetData)localObject1).IFG.serviceType;
+      paramString1 = paramString1.sG(((WidgetData)localObject1).dWw);
+      paramString1.eGW = paramString1.x("WeappUsrname", paramString2, true);
+      paramString1.bfK();
       AppMethodBeat.o(116714);
       return;
       paramString1 = (String)localObject1;
@@ -419,7 +416,7 @@ public final class b
     }
   }
   
-  final void eQE()
+  final void fZd()
   {
     AppMethodBeat.i(116715);
     if (this.view == null)
@@ -427,76 +424,76 @@ public final class b
       AppMethodBeat.o(116715);
       return;
     }
-    boolean bool = this.ulU;
+    boolean bool = this.xEm;
     if (this.view.getVisibility() != 0)
     {
-      this.ulU = false;
+      this.xEm = false;
       AppMethodBeat.o(116715);
       return;
     }
     int[] arrayOfInt = new int[2];
     this.view.getLocationOnScreen(arrayOfInt);
-    if ((this.DWH != null) && (this.DWH.ePA())) {}
-    for (this.ulU = true;; this.ulU = false)
+    if ((this.IIy != null) && (this.IIy.fXG())) {}
+    for (this.xEm = true;; this.xEm = false)
     {
-      if ((bool != this.ulU) && (this.ulU)) {
-        eQK();
+      if ((bool != this.xEm) && (this.xEm)) {
+        fZj();
       }
       AppMethodBeat.o(116715);
       return;
     }
   }
   
-  final void eQF()
+  final void fZe()
   {
     AppMethodBeat.i(116716);
-    if ((this.gsV == null) || (this.DXc == this.DXb))
+    if ((this.parent == null) || (this.IIT == this.IIS))
     {
-      ae.v("WidgetView", "%s same widgetData", new Object[] { toString() });
+      Log.v("WidgetView", "%s same widgetData", new Object[] { toString() });
       AppMethodBeat.o(116716);
       return;
     }
-    this.DWO.setVisibility(8);
-    this.DWP.setVisibility(0);
-    e(this.DXb);
+    this.IIF.setVisibility(8);
+    this.IIG.setVisibility(0);
+    e(this.IIS);
     AppMethodBeat.o(116716);
   }
   
-  public final void nR(boolean paramBoolean)
+  public final void qA(boolean paramBoolean)
   {
     AppMethodBeat.i(116728);
-    ae.i("WidgetView", "report click");
+    Log.i("WidgetView", "report click");
     HashMap localHashMap = new HashMap();
-    localHashMap.put("content", String.format("262144:%s:%d:%s", new Object[] { this.DXb.DUM.tFc, Long.valueOf(System.currentTimeMillis() / 1000L), this.DXb.DUM.DUT }));
-    localHashMap.put("searchid", this.DXb.DUM.kid);
+    localHashMap.put("content", String.format("262144:%s:%d:%s", new Object[] { this.IIS.IFG.wWb, Long.valueOf(System.currentTimeMillis() / 1000L), this.IIS.IFG.IFM }));
+    localHashMap.put("searchid", this.IIS.IFG.hes);
     localHashMap.put("scene", "47");
-    localHashMap.put("query", this.DXb.query);
-    localHashMap.put("sessionid", this.DXb.dEJ);
-    localHashMap.put("docid", this.DXb.DUM.tFc);
+    localHashMap.put("query", this.IIS.query);
+    localHashMap.put("sessionid", this.IIS.dWw);
+    localHashMap.put("docid", this.IIS.IFG.wWb);
     localHashMap.put("timestamp", System.currentTimeMillis() / 1000L);
-    localHashMap.put("jumpurl", this.DXb.DUM.dlk);
-    String str1 = this.DXb.DUM.DUT;
+    localHashMap.put("jumpurl", this.IIS.IFG.dCx);
+    String str1 = this.IIS.IFG.IFM;
     String str2 = System.currentTimeMillis();
     if (paramBoolean) {}
     for (Object localObject = "1";; localObject = "0")
     {
       localHashMap.put("expand2", String.format("{\"statBuffer\":\"%s\";\"adBuffer\":\"\";\"clickId\":%s;\"isMore\":%s}", new Object[] { str1, str2, localObject }));
       localHashMap.put("businesstype", "262144");
-      localHashMap.put("h5version", ad.WL(0));
+      localHashMap.put("h5version", ai.aft(0));
       localHashMap.put("resulttype", "262144");
-      localHashMap.put("resultsubtype", this.DXb.DUM.cRx);
-      bg(localHashMap);
-      localObject = new jw();
-      ((jw)localObject).eDZ = bu.aSB((String)localHashMap.get("businesstype"));
-      ((jw)localObject).eEa = ((jw)localObject).t("docid", (String)localHashMap.get("docid"), true);
-      ((jw)localObject).eEc = ((jw)localObject).t("expand2", (String)localHashMap.get("expand2"), true);
-      ((jw)localObject).ejP = ((jw)localObject).t("query", (String)localHashMap.get("query"), true);
-      ((jw)localObject).eEd = bu.aSB((String)localHashMap.get("resultsubtype"));
-      ((jw)localObject).eEb = System.currentTimeMillis();
-      ((jw)localObject).eDY = ((jw)localObject).t("searchid", this.DXb.DUM.kid, true);
-      ((jw)localObject).dRJ = ((jw)localObject).t("sessionid", this.DXb.dEJ, true);
-      ((jw)localObject).dWm = 47L;
-      ((jw)localObject).aLH();
+      localHashMap.put("resultsubtype", this.IIS.IFG.serviceType);
+      bi(localHashMap);
+      localObject = new nu();
+      ((nu)localObject).fiy = Util.safeParseInt((String)localHashMap.get("businesstype"));
+      ((nu)localObject).fiz = ((nu)localObject).x("docid", (String)localHashMap.get("docid"), true);
+      ((nu)localObject).fiB = ((nu)localObject).x("expand2", (String)localHashMap.get("expand2"), true);
+      ((nu)localObject).eBQ = ((nu)localObject).x("query", (String)localHashMap.get("query"), true);
+      ((nu)localObject).fiC = Util.safeParseInt((String)localHashMap.get("resultsubtype"));
+      ((nu)localObject).fiA = System.currentTimeMillis();
+      ((nu)localObject).fix = ((nu)localObject).x("searchid", this.IIS.IFG.hes, true);
+      ((nu)localObject).els = ((nu)localObject).x("sessionid", this.IIS.dWw, true);
+      ((nu)localObject).erw = 47L;
+      ((nu)localObject).bfK();
       AppMethodBeat.o(116728);
       return;
     }
@@ -505,50 +502,50 @@ public final class b
   public final void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(116724);
-    ae.v("WidgetView", "%s selected %b", new Object[] { toString(), Boolean.valueOf(paramBoolean) });
+    Log.v("WidgetView", "%s selected %b", new Object[] { toString(), Boolean.valueOf(paramBoolean) });
     this.isSelected = paramBoolean;
     if (this.isSelected)
     {
-      eQF();
-      eQE();
+      fZe();
+      fZd();
       AppMethodBeat.o(116724);
       return;
     }
-    this.ulU = false;
+    this.xEm = false;
     AppMethodBeat.o(116724);
   }
   
   final void updateView()
   {
     AppMethodBeat.i(116718);
-    if (this.DXb == null)
+    if (this.IIS == null)
     {
       AppMethodBeat.o(116718);
       return;
     }
-    if (this.DXb.DUM.tdN)
+    if (this.IIS.IFG.wkz)
     {
-      this.DWT.setVisibility(0);
-      this.sQh.setVisibility(0);
-      dUo();
+      this.IIK.setVisibility(0);
+      this.uGQ.setVisibility(0);
+      eWo();
     }
     for (;;)
     {
-      this.yjO.setText(eQI());
+      this.CkP.setText(fZh());
       AppMethodBeat.o(116718);
       return;
-      this.DWT.setVisibility(8);
-      this.sQh.setVisibility(8);
+      this.IIK.setVisibility(8);
+      this.uGQ.setVisibility(8);
     }
   }
   
   public static abstract interface a
   {
-    public abstract int eQB();
+    public abstract int fZa();
     
-    public abstract List<ab> eQC();
+    public abstract List<af> fZb();
     
-    public abstract boolean eQD();
+    public abstract boolean fZc();
     
     public abstract boolean hasNext();
   }
@@ -557,7 +554,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.b
  * JD-Core Version:    0.7.0.1
  */

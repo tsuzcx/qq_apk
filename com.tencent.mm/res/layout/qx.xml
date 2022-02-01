@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/avn" android:background="@drawable/o9" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/dsm" android:background="@drawable/ael" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/jm">
-        <ImageView android:gravity="center_vertical" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="4.0dip" android:src="@raw/monitor_banner_icon" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/a6w" android:ellipsize="marquee" android:gravity="left" android:id="@id/ane" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:maxLines="1" android:marqueeRepeatLimit="marquee_forever" style="@style/lw" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/wy">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/x0" android:textColor="@color/a2x" android:ellipsize="end" android:layout_gravity="left" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="title" android:maxLines="2" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5">
+                <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/gd2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" />
+                <ImageView android:id="@id/jja" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:src="@raw/chatting_item_biz_qq_music_watermark" />
+            </LinearLayout>
         </LinearLayout>
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/atb" android:padding="10.0dip" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/ht" android:adjustViewBounds="true" />
+        <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/bgx" android:layout_width="67.0dip" android:layout_height="67.0dip" android:layout_marginRight="@dimen/hs">
+            <ImageView android:id="@id/bgv" android:background="@color/wt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <ImageView android:id="@id/bh9" android:background="#33000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/gcf" android:layout_width="38.0dip" android:layout_height="38.0dip" android:src="@drawable/nn" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

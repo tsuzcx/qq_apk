@@ -7,24 +7,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.b.h;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class NewBizInfoAllMessagePreference
   extends Preference
 {
-  private MMActivity fNT;
-  private TextView heV;
+  private LinearLayout Bjo;
+  private h Bjp;
+  private MMActivity gte;
+  private TextView hXK;
   private TextView titleTv;
-  private LinearLayout xln;
-  private h xlo;
   
   public NewBizInfoAllMessagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27492);
-    this.fNT = ((MMActivity)paramContext);
+    this.gte = ((MMActivity)paramContext);
     AppMethodBeat.o(27492);
   }
   
@@ -32,29 +32,29 @@ public class NewBizInfoAllMessagePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27493);
-    this.fNT = ((MMActivity)paramContext);
+    this.gte = ((MMActivity)paramContext);
     AppMethodBeat.o(27493);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27494);
-    this.xln = ((LinearLayout)paramView.findViewById(2131302728));
-    this.titleTv = ((TextView)paramView.findViewById(2131302736));
-    this.heV = ((TextView)paramView.findViewById(2131302729));
-    if (this.xlo != null)
+    this.Bjo = ((LinearLayout)paramView.findViewById(2131305295));
+    this.titleTv = ((TextView)paramView.findViewById(2131305303));
+    this.hXK = ((TextView)paramView.findViewById(2131305296));
+    if (this.Bjp != null)
     {
-      if (!bu.isNullOrNil(this.xlo.field_allArticleWording)) {}
+      if (!Util.isNullOrNil(this.Bjp.field_allArticleWording)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        this.xln.setVisibility(0);
-        this.titleTv.setText(this.fNT.getString(2131757594));
-        this.heV.setText(this.xlo.field_allArticleWording);
+        this.Bjo.setVisibility(0);
+        this.titleTv.setText(this.gte.getString(2131757821));
+        this.hXK.setText(this.Bjp.field_allArticleWording);
         AppMethodBeat.o(27494);
         return;
       }
     }
-    this.xln.setVisibility(8);
+    this.Bjo.setVisibility(8);
     AppMethodBeat.o(27494);
   }
 }

@@ -1,0 +1,24 @@
+package com.tencent.mm.plugin.handoff.c;
+
+import android.os.Bundle;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
+
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/os/Bundle;", "invoke"})
+final class b$a
+  extends q
+  implements b<Bundle, x>
+{
+  b$a(String paramString, int paramInt)
+  {
+    super(1);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.plugin.handoff.c.b.a
+ * JD-Core Version:    0.7.0.1
+ */

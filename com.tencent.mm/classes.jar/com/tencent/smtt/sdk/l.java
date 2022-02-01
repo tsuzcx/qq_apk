@@ -22,7 +22,7 @@ public class l
   
   public static File a(Context paramContext)
   {
-    AppMethodBeat.i(192925);
+    AppMethodBeat.i(188249);
     if ((b == null) && (paramContext != null)) {
       b = new File(paramContext.getDir("webview", 0), "Cookies");
     }
@@ -30,13 +30,13 @@ public class l
       b = new File("/data/data/" + paramContext.getPackageName() + File.separator + "app_webview" + File.separator + "Cookies");
     }
     paramContext = b;
-    AppMethodBeat.o(192925);
+    AppMethodBeat.o(188249);
     return paramContext;
   }
   
   private static String a(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    AppMethodBeat.i(192929);
+    AppMethodBeat.i(188253);
     paramSQLiteDatabase = paramSQLiteDatabase.rawQuery("select * from ".concat(String.valueOf(paramString)), null);
     int i = paramSQLiteDatabase.getCount();
     int j = paramSQLiteDatabase.getColumnCount();
@@ -68,7 +68,7 @@ public class l
     else
     {
       paramSQLiteDatabase = paramString.toString();
-      AppMethodBeat.o(192929);
+      AppMethodBeat.o(188253);
       return paramSQLiteDatabase;
     }
   }
@@ -77,10 +77,10 @@ public class l
   {
     Object localObject3 = null;
     localObject1 = null;
-    AppMethodBeat.i(192928);
+    AppMethodBeat.i(188252);
     if (paramSQLiteDatabase == null)
     {
-      AppMethodBeat.o(192928);
+      AppMethodBeat.o(188252);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -146,37 +146,37 @@ public class l
         break label275;
       }
       paramSQLiteDatabase.close();
-      AppMethodBeat.o(192928);
+      AppMethodBeat.o(188252);
     }
-    AppMethodBeat.o(192928);
+    AppMethodBeat.o(188252);
     return localArrayList;
   }
   
   public static void a(Context paramContext, CookieManager.a parama, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(192931);
+    AppMethodBeat.i(188255);
     if (paramContext == null)
     {
-      AppMethodBeat.o(192931);
+      AppMethodBeat.o(188255);
       return;
     }
     new StringBuilder("transformCookies:").append(paramString).append(", mode:").append(parama.ordinal());
     long l = System.currentTimeMillis();
     if ((parama == CookieManager.a.b) && (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(192931);
+      AppMethodBeat.o(188255);
       return;
     }
     String[] arrayOfString = paramString.split(",");
     if ((arrayOfString == null) || (arrayOfString.length <= 0))
     {
-      AppMethodBeat.o(192931);
+      AppMethodBeat.o(188255);
       return;
     }
     SQLiteDatabase localSQLiteDatabase = c(paramContext);
     if (localSQLiteDatabase == null)
     {
-      AppMethodBeat.o(192931);
+      AppMethodBeat.o(188255);
       return;
     }
     Object localObject1 = null;
@@ -287,11 +287,11 @@ public class l
           continue;
         }
         localSQLiteDatabase.close();
-        AppMethodBeat.o(192931);
+        AppMethodBeat.o(188255);
       }
       if (localHashMap.isEmpty())
       {
-        AppMethodBeat.o(192931);
+        AppMethodBeat.o(188255);
         return;
         i += 1;
       }
@@ -323,7 +323,7 @@ public class l
             }
           }
           new StringBuilder("transformCookies,timeused:").append(System.currentTimeMillis() - l);
-          AppMethodBeat.o(192931);
+          AppMethodBeat.o(188255);
           return;
           CookieSyncManager.getInstance().sync();
         }
@@ -335,30 +335,30 @@ public class l
   
   public static boolean b(Context paramContext)
   {
-    AppMethodBeat.i(192926);
+    AppMethodBeat.i(188250);
     if (paramContext == null)
     {
-      AppMethodBeat.o(192926);
+      AppMethodBeat.o(188250);
       return false;
     }
     f.a(a(paramContext), false);
-    AppMethodBeat.o(192926);
+    AppMethodBeat.o(188250);
     return true;
   }
   
   public static SQLiteDatabase c(Context paramContext)
   {
     Object localObject = null;
-    AppMethodBeat.i(192927);
+    AppMethodBeat.i(188251);
     if (paramContext == null)
     {
-      AppMethodBeat.o(192927);
+      AppMethodBeat.o(188251);
       return null;
     }
     paramContext = a(paramContext);
     if (paramContext == null)
     {
-      AppMethodBeat.o(192927);
+      AppMethodBeat.o(188251);
       return null;
     }
     try
@@ -367,7 +367,7 @@ public class l
       if (paramContext == null) {
         TbsLog.i(a, "dbPath is not exist!");
       }
-      AppMethodBeat.o(192927);
+      AppMethodBeat.o(188251);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -615,7 +615,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.l
  * JD-Core Version:    0.7.0.1
  */

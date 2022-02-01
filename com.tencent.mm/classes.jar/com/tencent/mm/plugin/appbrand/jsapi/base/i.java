@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 
 public final class i
 {
-  c kFA;
-  int kmu;
+  f lKb;
+  int lqe;
   
-  public i(c paramc, int paramInt)
+  public i(f paramf, int paramInt)
   {
-    this.kFA = paramc;
-    this.kmu = paramInt;
+    this.lKb = paramf;
+    this.lqe = paramInt;
   }
   
-  public final void PZ(String paramString)
+  public final void ZA(String paramString)
   {
     AppMethodBeat.i(140655);
-    this.kFA.h(this.kmu, paramString);
+    this.lKb.i(this.lqe, paramString);
     AppMethodBeat.o(140655);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.base.i
  * JD-Core Version:    0.7.0.1
  */

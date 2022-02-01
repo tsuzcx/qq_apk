@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.fts.a.a.j;
 public final class c$f
   extends j
 {
-  public int Ecl;
+  public int IOx;
   
   private c$f(c paramc) {}
 }

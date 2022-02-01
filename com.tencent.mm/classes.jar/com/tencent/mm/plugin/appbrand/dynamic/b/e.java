@@ -8,17 +8,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e kjp;
-  private Map<String, SoftReference<WxaPkgWrappingInfo>> gAE;
+  private static volatile e lmX;
+  private Map<String, SoftReference<WxaPkgWrappingInfo>> mMap;
   
   private e()
   {
     AppMethodBeat.i(121271);
-    this.gAE = new ConcurrentHashMap();
+    this.mMap = new ConcurrentHashMap();
     AppMethodBeat.o(121271);
   }
   
-  public static WxaPkgWrappingInfo Pj(String paramString)
+  public static WxaPkgWrappingInfo Yu(String paramString)
   {
     AppMethodBeat.i(121273);
     if ((paramString == null) || (paramString.length() == 0))
@@ -26,7 +26,7 @@ public class e
       AppMethodBeat.o(121273);
       return null;
     }
-    paramString = (SoftReference)bgF().gAE.get(paramString);
+    paramString = (SoftReference)bBY().mMap.get(paramString);
     if (paramString != null)
     {
       paramString = (WxaPkgWrappingInfo)paramString.get();
@@ -45,21 +45,21 @@ public class e
       AppMethodBeat.o(121272);
       return false;
     }
-    bgF().gAE.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
+    bBY().mMap.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
     AppMethodBeat.o(121272);
     return true;
   }
   
-  private static e bgF()
+  private static e bBY()
   {
     AppMethodBeat.i(121270);
-    if (kjp == null) {}
+    if (lmX == null) {}
     try
     {
-      if (kjp == null) {
-        kjp = new e();
+      if (lmX == null) {
+        lmX = new e();
       }
-      e locale = kjp;
+      e locale = lmX;
       AppMethodBeat.o(121270);
       return locale;
     }
@@ -72,13 +72,13 @@ public class e
   public static void removeAll()
   {
     AppMethodBeat.i(121274);
-    bgF().gAE.clear();
+    bBY().mMap.clear();
     AppMethodBeat.o(121274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.e
  * JD-Core Version:    0.7.0.1
  */

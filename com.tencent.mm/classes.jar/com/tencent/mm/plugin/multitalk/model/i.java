@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "", "markPause", "", "wxUserName", "", "markRestart", "markResume", "markStart", "markStop", "plugin-multitalk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "", "markPause", "", "wxUserName", "", "markRestart", "markResume", "markStart", "markStop", "plugin-multitalk_release"})
 public abstract interface i
 {
-  public abstract void asi(String paramString);
+  public abstract void aFC(String paramString);
   
-  public abstract void asj(String paramString);
+  public abstract void aFD(String paramString);
   
-  public abstract void ask(String paramString);
+  public abstract void aFE(String paramString);
   
-  public abstract void asl(String paramString);
+  public abstract void aFF(String paramString);
   
-  public abstract void asm(String paramString);
+  public abstract void afd(String paramString);
 }
 
 

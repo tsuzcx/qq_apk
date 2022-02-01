@@ -3,22 +3,22 @@ package com.tencent.magicbrush.utils;
 import android.os.SystemClock;
 import com.github.henryye.nativeiv.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/utils/Util;", "", "()V", "TAG", "", "currentTicks", "", "format", "args", "", "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "isNullOrNil", "", "str", "loadLibrary", "", "libName", "loader", "Ljava/lang/ClassLoader;", "nullAsNil", "qualityClose", "c", "Ljava/io/Closeable;", "quietlyClose", "closeable", "ticksToNow", "tick", "forEachCopyOnWrite", "T", "", "action", "Lkotlin/Function1;", "lock", "lib-magicbrush-nano_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/utils/Util;", "", "()V", "TAG", "", "currentTicks", "", "findLibPath", "libName", "format", "args", "", "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "isNullOrNil", "", "str", "loadLibrary", "", "loader", "Ljava/lang/ClassLoader;", "nullAsNil", "qualityClose", "c", "Ljava/io/Closeable;", "quietlyClose", "closeable", "ticksToNow", "tick", "forEachCopyOnWrite", "T", "", "action", "Lkotlin/Function1;", "lock", "lib-magicbrush-nano_release"})
 public final class h
 {
-  public static final h cBy;
+  public static final h cPz;
   
   static
   {
     AppMethodBeat.i(140303);
-    cBy = new h();
+    cPz = new h();
     AppMethodBeat.o(140303);
   }
   
-  public static final long HQ()
+  public static final long currentTicks()
   {
     AppMethodBeat.i(140300);
     long l = SystemClock.elapsedRealtime();
@@ -26,15 +26,7 @@ public final class h
     return l;
   }
   
-  public static final long aO(long paramLong)
-  {
-    AppMethodBeat.i(140301);
-    long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(140301);
-    return l - paramLong;
-  }
-  
-  public static final void dK(String paramString)
+  public static final void ef(String paramString)
   {
     AppMethodBeat.i(140302);
     p.h(paramString, "libName");
@@ -43,10 +35,19 @@ public final class h
     AppMethodBeat.o(140302);
   }
   
+  public static final String findLibPath(String paramString)
+  {
+    AppMethodBeat.i(206889);
+    p.h(paramString, "libName");
+    b.d("MagicBrush.Util", "hy: try find lib path " + paramString + " with dummy imp", new Object[0]);
+    AppMethodBeat.o(206889);
+    return "";
+  }
+  
   public static final boolean isNullOrNil(String paramString)
   {
     AppMethodBeat.i(140299);
-    if ((paramString == null) || (p.i("", paramString)))
+    if ((paramString == null) || (p.j("", paramString)))
     {
       AppMethodBeat.o(140299);
       return true;
@@ -54,10 +55,18 @@ public final class h
     AppMethodBeat.o(140299);
     return false;
   }
+  
+  public static final long ticksToNow(long paramLong)
+  {
+    AppMethodBeat.i(140301);
+    long l = SystemClock.elapsedRealtime();
+    AppMethodBeat.o(140301);
+    return l - paramLong;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.utils.h
  * JD-Core Version:    0.7.0.1
  */

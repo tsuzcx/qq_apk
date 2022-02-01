@@ -2,8 +2,8 @@ package com.tencent.mm.ba;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.bth;
-import com.tencent.mm.protocal.protobuf.bti;
+import com.tencent.mm.protocal.protobuf.cga;
+import com.tencent.mm.protocal.protobuf.cgb;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public final class i
   extends k.b
 {
-  private bti iln;
+  private cgb jgm;
   
   public i(List<a> paramList)
   {
@@ -21,18 +21,18 @@ public final class i
     LinkedList localLinkedList = new LinkedList();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext()) {
-      localLinkedList.add(((a)localIterator.next()).ilo);
+      localLinkedList.add(((a)localIterator.next()).jgn);
     }
-    this.iln = new bti();
-    this.iln.nID = paramList.size();
-    this.iln.nIE = localLinkedList;
-    this.vWq = this.iln;
+    this.jgm = new cgb();
+    this.jgm.oTz = paramList.size();
+    this.jgm.oTA = localLinkedList;
+    this.zqv = this.jgm;
     AppMethodBeat.o(43056);
   }
   
   public static final class a
   {
-    bth ilo;
+    cga jgn;
     private int key;
     private String value;
     
@@ -41,9 +41,9 @@ public final class i
       AppMethodBeat.i(43054);
       this.key = 0;
       this.value = "";
-      this.ilo = new bth();
-      this.ilo.yxe = 0;
-      this.ilo.yxn = "";
+      this.jgn = new cga();
+      this.jgn.Cya = 0;
+      this.jgn.Cyk = "";
       AppMethodBeat.o(43054);
     }
     
@@ -52,16 +52,16 @@ public final class i
       AppMethodBeat.i(43055);
       this.key = paramInt;
       this.value = paramString;
-      this.ilo = new bth();
-      this.ilo.yxe = paramInt;
-      this.ilo.yxn = paramString;
+      this.jgn = new cga();
+      this.jgn.Cya = paramInt;
+      this.jgn.Cyk = paramString;
       AppMethodBeat.o(43055);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ba.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a7c" android:layout_width="@dimen/c_" android:layout_height="@dimen/b5"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/ecu" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MMLoadMoreListView android:id="@id/fcl" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hi9" android:layout_width="fill_parent" android:layout_height="200.0dip">
+        <ProgressBar android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/c6" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ezs" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hi8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0dip" android:textColor="@color/c6" android:gravity="center" android:id="@id/hi7" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/fdv" android:layout_weight="0.5" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5" />
+    </LinearLayout>
+</RelativeLayout>

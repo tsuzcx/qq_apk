@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.fts;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public final class a
   extends CursorWrapper
 {
-  private static HashSet<Cursor> tCl;
+  private static HashSet<Cursor> wTm;
   
   static
   {
     AppMethodBeat.i(52498);
-    tCl = new HashSet();
+    wTm = new HashSet();
     AppMethodBeat.o(52498);
   }
   
@@ -23,15 +23,15 @@ public final class a
   {
     super(paramCursor);
     AppMethodBeat.i(52495);
-    tCl.add(paramCursor);
-    ae.v("MicroMsg.FTS.FTSCursor", "add cursor %d", new Object[] { Integer.valueOf(paramCursor.hashCode()) });
+    wTm.add(paramCursor);
+    Log.v("MicroMsg.FTS.FTSCursor", "add cursor %d", new Object[] { Integer.valueOf(paramCursor.hashCode()) });
     AppMethodBeat.o(52495);
   }
   
-  public static final void cVa()
+  public static final void dOj()
   {
     AppMethodBeat.i(52497);
-    Iterator localIterator = tCl.iterator();
+    Iterator localIterator = wTm.iterator();
     for (;;)
     {
       Cursor localCursor;
@@ -46,9 +46,9 @@ public final class a
       {
         localCursor.close();
         label46:
-        ae.e("MicroMsg.FTS.FTSCursor", "not close cursor!!! %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
+        Log.e("MicroMsg.FTS.FTSCursor", "not close cursor!!! %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
         continue;
-        tCl.clear();
+        wTm.clear();
         AppMethodBeat.o(52497);
         return;
       }
@@ -64,8 +64,8 @@ public final class a
     AppMethodBeat.i(52496);
     super.close();
     Cursor localCursor = getWrappedCursor();
-    tCl.remove(localCursor);
-    ae.v("MicroMsg.FTS.FTSCursor", "remove cursor %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
+    wTm.remove(localCursor);
+    Log.v("MicroMsg.FTS.FTSCursor", "remove cursor %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
     AppMethodBeat.o(52496);
   }
 }

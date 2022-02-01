@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -20,21 +20,21 @@ public final class c
     AppMethodBeat.i(121309);
     parama = parama.getContext();
     paramJSONObject = new HashMap();
-    if (!az.isConnected(parama)) {
+    if (!NetStatusUtil.isConnected(parama)) {
       paramJSONObject.put("networkType", "none");
     }
     for (;;)
     {
-      parama1.bk(a(true, "", paramJSONObject));
+      parama1.bt(a(true, "", paramJSONObject));
       AppMethodBeat.o(121309);
       return;
-      if (az.is2G(parama)) {
+      if (NetStatusUtil.is2G(parama)) {
         paramJSONObject.put("networkType", "2g");
-      } else if (az.is3G(parama)) {
+      } else if (NetStatusUtil.is3G(parama)) {
         paramJSONObject.put("networkType", "3g");
-      } else if (az.is4G(parama)) {
+      } else if (NetStatusUtil.is4G(parama)) {
         paramJSONObject.put("networkType", "4g");
-      } else if (az.isWifi(parama)) {
+      } else if (NetStatusUtil.isWifi(parama)) {
         paramJSONObject.put("networkType", "wifi");
       } else {
         paramJSONObject.put("networkType", "unknown");
@@ -44,7 +44,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.c
  * JD-Core Version:    0.7.0.1
  */

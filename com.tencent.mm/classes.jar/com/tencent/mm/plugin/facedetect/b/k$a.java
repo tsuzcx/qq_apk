@@ -7,19 +7,19 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dvj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.epl;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class k$a
   extends l.d
   implements l.b
 {
-  public dvj rog;
+  public epl sPL;
   
   public k$a()
   {
     AppMethodBeat.i(103599);
-    this.rog = new dvj();
+    this.sPL = new epl();
     AppMethodBeat.o(103599);
   }
   
@@ -36,18 +36,18 @@ public final class k$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(103600);
-    setRsaInfo(ac.fkn());
-    this.rog.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
-    this.rog.setBaseRequest(l.a(this));
-    setPassKey(this.rog.FWl.getBuffer().toByteArray());
-    byte[] arrayOfByte = this.rog.toByteArray();
+    setRsaInfo(ac.gtR());
+    this.sPL.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
+    this.sPL.setBaseRequest(l.a(this));
+    setPassKey(this.sPL.KPW.getBuffer().toByteArray());
+    byte[] arrayOfByte = this.sPL.toByteArray();
     AppMethodBeat.o(103600);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.k.a
  * JD-Core Version:    0.7.0.1
  */

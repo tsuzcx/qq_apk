@@ -1,38 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class f
-  extends a
+  extends d
 {
   public static final int CTRL_INDEX = 680;
   public static final String NAME = "openWCPayOverseaPaymentReceive";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(46721);
-    ae.i("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "invoke JsApiOpenWCPayOverseaPaymentReceive!");
-    if (paramc == null)
+    Log.i("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "invoke JsApiOpenWCPayOverseaPaymentReceive!");
+    if (paramf == null)
     {
-      ae.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:component is null");
+      Log.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:component is null");
       AppMethodBeat.o(46721);
       return;
     }
-    paramJSONObject = paramc.getContext();
+    paramJSONObject = paramf.getContext();
     if (paramJSONObject == null)
     {
-      ae.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:context is null");
-      paramc.h(paramInt, e("fail", null));
+      Log.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:context is null");
+      paramf.i(paramInt, h("fail", null));
       AppMethodBeat.o(46721);
       return;
     }
-    com.tencent.mm.pluginsdk.wallet.f.au(paramJSONObject, 7);
-    paramc.h(paramInt, e("ok", null));
+    com.tencent.mm.pluginsdk.wallet.f.aD(paramJSONObject, 7);
+    paramf.i(paramInt, h("ok", null));
     AppMethodBeat.o(46721);
   }
 }

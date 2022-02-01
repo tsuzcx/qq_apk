@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.appbrand.appstorage.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 import org.apache.commons.a.b;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandTransferTask;", "", "legacyPath", "", "targetPath", "(Ljava/lang/String;Ljava/lang/String;)V", "dirSpaceUsage", "dir", "Ljava/io/File;", "executeSync", "Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/TransferTaskResult;", "hasLocalRecord", "", "hasSyncRecord", "fakeNative", "legacyDisapprove", "moveDir", "needLogSpaceForTest", "recursiveDelete", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandTransferTask;", "", "legacyPath", "", "targetPath", "(Ljava/lang/String;Ljava/lang/String;)V", "dirSpaceUsage", "dir", "Ljava/io/File;", "executeSync", "Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/TransferTaskResult;", "hasLocalRecord", "", "hasSyncRecord", "fakeNative", "legacyDisapprove", "moveDir", "needLogSpaceForTest", "recursiveDelete", "Companion", "plugin-appbrand-integration_release"})
 public final class c
 {
   @Deprecated
-  public static final a jRh;
-  private final String jRf;
-  private final String jRg;
+  public static final a kTR;
+  private final String kTP;
+  private final String kTQ;
   
   static
   {
     AppMethodBeat.i(175122);
-    jRh = new a((byte)0);
+    kTR = new a((byte)0);
     AppMethodBeat.o(175122);
   }
   
   public c(String paramString1, String paramString2)
   {
     AppMethodBeat.i(175120);
-    this.jRf = paramString1;
-    this.jRg = paramString2;
+    this.kTP = paramString1;
+    this.kTQ = paramString2;
     AppMethodBeat.o(175120);
   }
   
   private static boolean G(File paramFile)
   {
-    AppMethodBeat.i(223247);
+    AppMethodBeat.i(228122);
     try
     {
-      a.jRb.deleteDirectory(paramFile);
-      AppMethodBeat.o(223247);
+      a.kTL.deleteDirectory(paramFile);
+      AppMethodBeat.o(228122);
       return true;
     }
     catch (IOException paramFile)
     {
-      ae.w("MicroMsg.AppBrand.AppBrandTransferTask", "recursiveDelete: [%s]", new Object[] { paramFile.getMessage() });
-      AppMethodBeat.o(223247);
+      Log.w("MicroMsg.AppBrand.AppBrandTransferTask", "recursiveDelete: [%s]", new Object[] { paramFile.getMessage() });
+      AppMethodBeat.o(228122);
     }
     return false;
   }
   
-  private static boolean cx(String paramString1, String paramString2)
+  private static boolean cL(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(223246);
+    AppMethodBeat.i(228121);
     paramString1 = new File(paramString1);
     paramString2 = new File(paramString2);
     Object localObject;
@@ -73,51 +73,51 @@ public final class c
         break label123;
       }
       paramString1 = (Throwable)new IllegalStateException("transfer src dir is not exists");
-      AppMethodBeat.o(223246);
+      AppMethodBeat.o(228121);
       throw paramString1;
     }
     paramString1 = (Throwable)new IllegalStateException("transfer desc dir is exists");
-    AppMethodBeat.o(223246);
+    AppMethodBeat.o(228121);
     throw paramString1;
     try
     {
       label123:
-      localObject = a.jRb;
+      localObject = a.kTL;
       p.h(paramString1, "srcDir");
       p.h(paramString2, "destDir");
       if (!paramString1.exists())
       {
         paramString1 = (Throwable)new FileNotFoundException("Source '" + paramString1 + "' does not exist");
-        AppMethodBeat.o(223246);
+        AppMethodBeat.o(228121);
         throw paramString1;
       }
     }
     catch (IOException paramString1)
     {
-      ae.w("MicroMsg.AppBrand.AppBrandTransferTask", "moveDir: [%s]", new Object[] { paramString1.getMessage() });
-      AppMethodBeat.o(223246);
+      Log.w("MicroMsg.AppBrand.AppBrandTransferTask", "moveDir: [%s]", new Object[] { paramString1.getMessage() });
+      AppMethodBeat.o(228121);
       return false;
     }
     if (!paramString1.isDirectory())
     {
       paramString1 = (Throwable)new IOException("Source '" + paramString1 + "' is not a directory");
-      AppMethodBeat.o(223246);
+      AppMethodBeat.o(228121);
       throw paramString1;
     }
     if (paramString2.exists())
     {
       paramString1 = (Throwable)new b("Destination '" + paramString2 + "' already exists");
-      AppMethodBeat.o(223246);
+      AppMethodBeat.o(228121);
       throw paramString1;
     }
     if (!paramString1.renameTo(paramString2))
     {
       String str = paramString2.getCanonicalPath();
       p.g(str, "destDir.canonicalPath");
-      if (n.nF(str, paramString1.getCanonicalPath() + File.separator))
+      if (n.J(str, paramString1.getCanonicalPath() + File.separator, false))
       {
         paramString1 = (Throwable)new IOException("Cannot move directory: " + paramString1 + " to a subdirectory of itself: " + paramString2);
-        AppMethodBeat.o(223246);
+        AppMethodBeat.o(228121);
         throw paramString1;
       }
       org.apache.commons.a.c.h(paramString1, paramString2);
@@ -125,19 +125,19 @@ public final class c
       if (paramString1.exists())
       {
         paramString1 = (Throwable)new IOException("Failed to delete original directory '" + paramString1 + "' after copy to '" + paramString2 + "'");
-        AppMethodBeat.o(223246);
+        AppMethodBeat.o(228121);
         throw paramString1;
       }
     }
-    AppMethodBeat.o(223246);
+    AppMethodBeat.o(228121);
     return true;
   }
   
   public final e d(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     boolean bool3 = true;
-    AppMethodBeat.i(223245);
-    Object localObject = new File(this.jRf);
+    AppMethodBeat.i(228120);
+    Object localObject = new File(this.kTP);
     int i;
     label68:
     boolean bool1;
@@ -158,7 +158,7 @@ public final class c
           break label302;
         }
         bool1 = true;
-        localObject = new File(this.jRg);
+        localObject = new File(this.kTQ);
         if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
           break label320;
         }
@@ -179,18 +179,18 @@ public final class c
         }
         bool2 = true;
         label144:
-        ae.i("MicroMsg.AppBrand.AppBrandTransferTask", "legacyDisapprove: oldDirExists [%b], targetDirExists [%b], hasLocalRecord [%b], hasSyncRecord [%b], fakeNative [%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) });
+        Log.i("MicroMsg.AppBrand.AppBrandTransferTask", "legacyDisapprove: oldDirExists [%b], targetDirExists [%b], hasLocalRecord [%b], hasSyncRecord [%b], fakeNative [%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) });
         if ((!bool1) || (!bool2)) {
           break label326;
         }
-        ae.i("MicroMsg.AppBrand.AppBrandTransferTask", "legacyDisapprove: delDirRes = [%b]", new Object[] { Boolean.valueOf(G(new File(this.jRf))) });
+        Log.i("MicroMsg.AppBrand.AppBrandTransferTask", "legacyDisapprove: delDirRes = [%b]", new Object[] { Boolean.valueOf(G(new File(this.kTP))) });
         i = 1;
         label236:
         if (i == 0) {
           break label478;
         }
-        g.yxI.dD(1323, 4);
-        if (new File(this.jRf).exists()) {
+        h.CyF.dN(1323, 4);
+        if (new File(this.kTP).exists()) {
           break label473;
         }
       }
@@ -205,7 +205,7 @@ public final class c
     for (paramBoolean1 = bool3;; paramBoolean1 = false)
     {
       localObject = new e(paramBoolean1, false);
-      AppMethodBeat.o(223245);
+      AppMethodBeat.o(228120);
       return localObject;
       i = 0;
       break;
@@ -232,11 +232,11 @@ public final class c
           if (i == 0) {
             break label422;
           }
-          g.yxI.dD(1323, 5);
+          h.CyF.dN(1323, 5);
           break;
-          ae.i("MicroMsg.AppBrand.AppBrandTransferTask", "legacyDisapprove: delDirRes = [%b]", new Object[] { Boolean.valueOf(G(new File(this.jRf))) });
+          Log.i("MicroMsg.AppBrand.AppBrandTransferTask", "legacyDisapprove: delDirRes = [%b]", new Object[] { Boolean.valueOf(G(new File(this.kTP))) });
         }
-        g.yxI.dD(1323, 4);
+        h.CyF.dN(1323, 4);
         break label236;
       }
       if ((!bool2) && (!bool1))
@@ -245,27 +245,27 @@ public final class c
         break label236;
       }
       localObject = (Throwable)new IllegalStateException("impossible");
-      AppMethodBeat.o(223245);
+      AppMethodBeat.o(228120);
       throw ((Throwable)localObject);
     }
     label422:
     label478:
-    if (cx(this.jRf, this.jRg))
+    if (cL(this.kTP, this.kTQ))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandTransferTask", this.jRf + " -> " + this.jRg + " successful");
+      Log.i("MicroMsg.AppBrand.AppBrandTransferTask", this.kTP + " -> " + this.kTQ + " successful");
       localObject = new e(true, true);
-      AppMethodBeat.o(223245);
+      AppMethodBeat.o(228120);
       return localObject;
     }
-    localObject = new File(this.jRg);
+    localObject = new File(this.kTQ);
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory())) {}
     try
     {
-      a.jRb.deleteDirectory((File)localObject);
+      a.kTL.deleteDirectory((File)localObject);
       label587:
-      ae.i("MicroMsg.AppBrand.AppBrandTransferTask", this.jRf + " -> " + this.jRg + " fail, try del target dir");
+      Log.i("MicroMsg.AppBrand.AppBrandTransferTask", this.kTP + " -> " + this.kTQ + " fail, try del target dir");
       localObject = new e(false, true, "move fail");
-      AppMethodBeat.o(223245);
+      AppMethodBeat.o(228120);
       return localObject;
     }
     catch (IOException localIOException)
@@ -274,12 +274,12 @@ public final class c
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandTransferTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandTransferTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.b.c
  * JD-Core Version:    0.7.0.1
  */

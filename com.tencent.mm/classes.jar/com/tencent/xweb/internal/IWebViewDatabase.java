@@ -8,7 +8,7 @@ public abstract interface IWebViewDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.internal.IWebViewDatabase
  * JD-Core Version:    0.7.0.1
  */

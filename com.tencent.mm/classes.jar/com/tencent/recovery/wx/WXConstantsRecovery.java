@@ -1,12 +1,13 @@
 package com.tencent.recovery.wx;
 
 import android.os.Environment;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.io.File;
 
 public class WXConstantsRecovery
 {
   public static final String PublicKeyString = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC0oMW80k4h7zmBbHGhzQzs5Jv1uy5j0JVUG//dWHeu0q6PF/xCU97h/e6h2Q9SXLu0M4TTd89QMXbab9MMUXrxqIqVjzm92A4WyNbAElAwhE9AGO16ryYn+tNzDfmwyjVz6dwLzZbNjjH7akYZRopJYqo17kKn+xrnqM+GRKMOJQIDAQAB";
-  public static final String RecoveryConfigURL = "http://dldir1.qq.com/weixin/android/recovery-%s.conf";
+  public static final String RecoveryConfigURL = "http://" + WeChatHosts.domainString(2131761706) + "/weixin/android/recovery-%s.conf";
   public static final String RecoverySDCardDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MicroMsg/recovery/";
   public static final String VersionInfoFile = "version.info";
   

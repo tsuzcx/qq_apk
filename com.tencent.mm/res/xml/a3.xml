@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_masssend_header_helper" android:layout="@layout/awl" />
+    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/xf" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_masssend_view" android:layout="@layout/aop" android:title="@string/b7m" />
-    <Preference android:key="contact_info_masssend_clear_data" android:layout="@layout/aop" android:title="@string/b55" />
+    <Preference android:key="contact_info_linkedin_account" android:layout="@layout/b8j" android:title="@string/bc8" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_masssend_install" android:layout="@layout/ag2" android:title="@string/f9r" />
-    <Preference android:key="contact_info_masssend_uninstall" android:layout="@layout/ajc" android:title="@string/f9x" />
+    <Preference android:key="contact_info_linkedin_install" android:layout="@layout/aw2" android:title="@string/gsq" android:widgetLayout="@layout/b_p" />
+    <Preference android:key="contact_info_linkedin_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
     <PreferenceCategory />
 </PreferenceScreen>

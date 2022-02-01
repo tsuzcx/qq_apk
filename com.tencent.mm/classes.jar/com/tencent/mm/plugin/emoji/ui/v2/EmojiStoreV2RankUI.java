@@ -7,40 +7,40 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.z;
+import com.tencent.mm.g.b.a.as;
 import com.tencent.mm.plugin.emoji.a.a.a;
 import com.tencent.mm.plugin.emoji.a.a.f.a;
 import com.tencent.mm.plugin.emoji.e.k;
-import com.tencent.mm.plugin.emoji.f.n;
+import com.tencent.mm.plugin.emoji.f.o;
 import com.tencent.mm.plugin.emoji.ui.BaseEmojiStoreUI;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.protocal.protobuf.cna;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.protocal.protobuf.deu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.io.IOException;
 
 public class EmojiStoreV2RankUI
   extends BaseEmojiStoreUI
 {
-  protected z pLv;
-  private boolean pTO;
+  protected as rbN;
+  private boolean rkN;
   
   public EmojiStoreV2RankUI()
   {
     AppMethodBeat.i(109236);
-    this.pLv = new z();
-    this.pTO = true;
+    this.rbN = new as();
+    this.rkN = true;
     AppMethodBeat.o(109236);
   }
   
-  public final void a(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void a(int paramInt1, int paramInt2, String paramString, o paramo)
   {
     AppMethodBeat.i(109239);
-    super.a(paramInt1, paramInt2, paramString, paramn);
-    if (this.pTO)
+    super.a(paramInt1, paramInt2, paramString, paramo);
+    if (this.rkN)
     {
-      ar.o(new Runnable()
+      MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
@@ -49,7 +49,7 @@ public class EmojiStoreV2RankUI
           AppMethodBeat.o(109235);
         }
       }, 300L);
-      this.pTO = false;
+      this.rkN = false;
     }
     AppMethodBeat.o(109239);
   }
@@ -59,16 +59,16 @@ public class EmojiStoreV2RankUI
     AppMethodBeat.i(109240);
     if (paramf == null)
     {
-      ae.i("MicroMsg.EmojiStoreV2RankUI", "item is null.");
+      Log.i("MicroMsg.EmojiStoreV2RankUI", "item is null.");
       AppMethodBeat.o(109240);
       return;
     }
-    if (paramf.pIy == f.a.pIH)
+    if (paramf.qYk == f.a.qYt)
     {
-      paramf = paramf.pIA;
+      paramf = paramf.qYm;
       if (paramf == null)
       {
-        ae.i("MicroMsg.EmojiStoreV2RankUI", "banner set is null. do nothing");
+        Log.i("MicroMsg.EmojiStoreV2RankUI", "banner set is null. do nothing");
         AppMethodBeat.o(109240);
         return;
       }
@@ -76,34 +76,34 @@ public class EmojiStoreV2RankUI
       AppMethodBeat.o(109240);
       return;
     }
-    EmotionSummary localEmotionSummary = paramf.pIz;
+    EmotionSummary localEmotionSummary = paramf.qYl;
     if (localEmotionSummary == null)
     {
-      ae.i("MicroMsg.EmojiStoreV2RankUI", "summary is null. do nothing");
+      Log.i("MicroMsg.EmojiStoreV2RankUI", "summary is null. do nothing");
       AppMethodBeat.o(109240);
       return;
     }
-    this.pLv.hc(String.valueOf(paramInt + 1));
-    this.pLv.ha(localEmotionSummary.ProductID);
-    this.pLv.hb(localEmotionSummary.Introduce);
-    this.pLv.dVT = 3;
-    this.pLv.aLH();
+    this.rbN.iz(String.valueOf(paramInt + 1));
+    this.rbN.ix(localEmotionSummary.ProductID);
+    this.rbN.iy(localEmotionSummary.Introduce);
+    this.rbN.eqm = 3;
+    this.rbN.bfK();
     String str = getIntent().getStringExtra("to_talker_name");
-    k.a(getContext(), localEmotionSummary, 5, paramf.mStatus, paramf.Hx, str, 105, this.pLv);
+    k.a(getContext(), localEmotionSummary, 5, paramf.mStatus, paramf.HH, str, 105, this.rbN);
     AppMethodBeat.o(109240);
   }
   
-  public final int ciJ()
+  public final int cGH()
   {
     return 5;
   }
   
-  public final int ciK()
+  public final int cGI()
   {
     return 105;
   }
   
-  public final a ciL()
+  public final a cGJ()
   {
     AppMethodBeat.i(109241);
     com.tencent.mm.plugin.emoji.a.f localf = new com.tencent.mm.plugin.emoji.a.f(getContext());
@@ -111,7 +111,7 @@ public class EmojiStoreV2RankUI
     return localf;
   }
   
-  public final int ciS()
+  public final int cGQ()
   {
     return 10;
   }
@@ -125,7 +125,7 @@ public class EmojiStoreV2RankUI
   {
     AppMethodBeat.i(109238);
     super.initView();
-    setMMTitle(2131758339);
+    setMMTitle(2131758633);
     this.mListView.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
@@ -146,23 +146,23 @@ public class EmojiStoreV2RankUI
   {
     AppMethodBeat.i(109237);
     super.onCreate(paramBundle);
-    g.yxI.f(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(5), Integer.valueOf(5) });
-    this.pLv.dVS = 3;
-    this.pNZ.pLv = this.pLv;
+    h.CyF.a(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(5), Integer.valueOf(5) });
+    this.rbN.eql = 3;
+    this.rew.rbN = this.rbN;
     long l = System.currentTimeMillis();
-    paramBundle = new cna();
-    paramBundle.Hzb = l;
-    this.pLv.dVR = l;
-    ae.i("MicroMsg.EmojiStoreV2RankUI", "initeData: %s", new Object[] { Long.valueOf(paramBundle.Hzb) });
+    paramBundle = new deu();
+    paramBundle.MJN = l;
+    this.rbN.eqk = l;
+    Log.i("MicroMsg.EmojiStoreV2RankUI", "initeData: %s", new Object[] { Long.valueOf(paramBundle.MJN) });
     try
     {
-      this.pNM = paramBundle.toByteArray();
+      this.reh = paramBundle.toByteArray();
       AppMethodBeat.o(109237);
       return;
     }
     catch (IOException paramBundle)
     {
-      ae.printErrStackTrace("MicroMsg.EmojiStoreV2RankUI", paramBundle, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.EmojiStoreV2RankUI", paramBundle, "", new Object[0]);
       AppMethodBeat.o(109237);
     }
   }
@@ -175,7 +175,7 @@ public class EmojiStoreV2RankUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RankUI
  * JD-Core Version:    0.7.0.1
  */

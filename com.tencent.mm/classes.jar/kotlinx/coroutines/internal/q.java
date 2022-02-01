@@ -1,26 +1,15 @@
 package kotlinx.coroutines.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/Removed;", "", "ref", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "toString", "", "kotlinx-coroutines-core"})
-final class q
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/OpDescriptor;", "", "()V", "atomicOp", "Lkotlinx/coroutines/internal/AtomicOp;", "getAtomicOp", "()Lkotlinx/coroutines/internal/AtomicOp;", "isEarlierThan", "", "that", "perform", "affected", "toString", "", "kotlinx-coroutines-core"})
+public abstract class q
 {
-  public final j Ohg;
+  public abstract Object ge(Object paramObject);
   
-  public q(j paramj)
+  public String toString()
   {
-    AppMethodBeat.i(118077);
-    this.Ohg = paramj;
-    AppMethodBeat.o(118077);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118076);
-    String str = "Removed[" + this.Ohg + ']';
-    AppMethodBeat.o(118076);
-    return str;
+    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
   }
 }
 

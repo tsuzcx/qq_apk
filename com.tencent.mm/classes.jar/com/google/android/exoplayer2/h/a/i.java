@@ -6,7 +6,7 @@ import java.util.TreeSet;
 
 final class i
 {
-  final TreeSet<m> bGd;
+  final TreeSet<m> bGu;
   public final int id;
   public final String key;
   long length;
@@ -17,7 +17,7 @@ final class i
     this.id = paramInt;
     this.key = paramString;
     this.length = paramLong;
-    this.bGd = new TreeSet();
+    this.bGu = new TreeSet();
     AppMethodBeat.o(92977);
   }
   
@@ -31,24 +31,24 @@ final class i
   public final void a(m paramm)
   {
     AppMethodBeat.i(92978);
-    this.bGd.add(paramm);
+    this.bGu.add(paramm);
     AppMethodBeat.o(92978);
   }
   
   public final m am(long paramLong)
   {
     AppMethodBeat.i(92979);
-    m localm1 = m.j(this.key, paramLong);
-    m localm2 = (m)this.bGd.floor(localm1);
+    m localm1 = m.k(this.key, paramLong);
+    m localm2 = (m)this.bGu.floor(localm1);
     if ((localm2 != null) && (localm2.position + localm2.length > paramLong))
     {
       AppMethodBeat.o(92979);
       return localm2;
     }
-    localm1 = (m)this.bGd.ceiling(localm1);
+    localm1 = (m)this.bGu.ceiling(localm1);
     if (localm1 == null)
     {
-      localm1 = m.k(this.key, paramLong);
+      localm1 = m.l(this.key, paramLong);
       AppMethodBeat.o(92979);
       return localm1;
     }
@@ -57,7 +57,7 @@ final class i
     return localm1;
   }
   
-  public final int wL()
+  public final int wT()
   {
     AppMethodBeat.i(92980);
     int i = this.id;
@@ -69,7 +69,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.i
  * JD-Core Version:    0.7.0.1
  */

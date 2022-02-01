@@ -15,7 +15,7 @@ public final class h<E>
     AppMethodBeat.o(111324);
   }
   
-  private boolean aM(E paramE)
+  private boolean check(E paramE)
   {
     AppMethodBeat.i(111326);
     synchronized (this.lock)
@@ -37,7 +37,18 @@ public final class h<E>
     }
   }
   
-  public final E cXS()
+  public final void clear()
+  {
+    AppMethodBeat.i(111330);
+    synchronized (this.lock)
+    {
+      super.clear();
+      AppMethodBeat.o(111330);
+      return;
+    }
+  }
+  
+  public final E dRl()
   {
     AppMethodBeat.i(111325);
     synchronized (this.lock)
@@ -53,23 +64,12 @@ public final class h<E>
     }
   }
   
-  public final void clear()
-  {
-    AppMethodBeat.i(111330);
-    synchronized (this.lock)
-    {
-      super.clear();
-      AppMethodBeat.o(111330);
-      return;
-    }
-  }
-  
-  public final void dk(E paramE)
+  public final void dr(E paramE)
   {
     AppMethodBeat.i(111327);
     synchronized (this.lock)
     {
-      if (aM(paramE)) {
+      if (check(paramE)) {
         super.remove(paramE);
       }
       AppMethodBeat.o(111327);
@@ -90,7 +90,7 @@ public final class h<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.h
  * JD-Core Version:    0.7.0.1
  */

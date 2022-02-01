@@ -9,47 +9,47 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class d
   implements j
 {
-  private static final ScheduledExecutorService[] Owp;
-  private static final ScheduledExecutorService Owq;
-  public static final d Owr;
-  private static int Owt;
-  private final AtomicReference<ScheduledExecutorService[]> Ows;
+  private static final ScheduledExecutorService[] Umd;
+  private static final ScheduledExecutorService Ume;
+  public static final d Umf;
+  private static int Umh;
+  private final AtomicReference<ScheduledExecutorService[]> Umg;
   
   static
   {
     AppMethodBeat.i(90373);
-    Owp = new ScheduledExecutorService[0];
+    Umd = new ScheduledExecutorService[0];
     ScheduledExecutorService localScheduledExecutorService = Executors.newScheduledThreadPool(0);
-    Owq = localScheduledExecutorService;
+    Ume = localScheduledExecutorService;
     localScheduledExecutorService.shutdown();
-    Owr = new d();
+    Umf = new d();
     AppMethodBeat.o(90373);
   }
   
   private d()
   {
     AppMethodBeat.i(90369);
-    this.Ows = new AtomicReference(Owp);
+    this.Umg = new AtomicReference(Umd);
     start();
     AppMethodBeat.o(90369);
   }
   
-  public static ScheduledExecutorService gDD()
+  public static ScheduledExecutorService hQL()
   {
     AppMethodBeat.i(90372);
-    Object localObject = (ScheduledExecutorService[])Owr.Ows.get();
-    if (localObject == Owp)
+    Object localObject = (ScheduledExecutorService[])Umf.Umg.get();
+    if (localObject == Umd)
     {
-      localObject = Owq;
+      localObject = Ume;
       AppMethodBeat.o(90372);
       return localObject;
     }
-    int j = Owt + 1;
+    int j = Umh + 1;
     int i = j;
     if (j >= localObject.length) {
       i = 0;
     }
-    Owt = i;
+    Umh = i;
     localObject = localObject[i];
     AppMethodBeat.o(90372);
     return localObject;
@@ -61,13 +61,13 @@ public final class d
     ScheduledExecutorService[] arrayOfScheduledExecutorService;
     do
     {
-      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.Ows.get();
-      if (arrayOfScheduledExecutorService == Owp)
+      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.Umg.get();
+      if (arrayOfScheduledExecutorService == Umd)
       {
         AppMethodBeat.o(90371);
         return;
       }
-    } while (!this.Ows.compareAndSet(arrayOfScheduledExecutorService, Owp));
+    } while (!this.Umg.compareAndSet(arrayOfScheduledExecutorService, Umd));
     int j = arrayOfScheduledExecutorService.length;
     int i = 0;
     while (i < j)
@@ -99,10 +99,10 @@ public final class d
       j = 0;
       while (j < i)
       {
-        arrayOfScheduledExecutorService[j] = e.gDE();
+        arrayOfScheduledExecutorService[j] = e.hQM();
         j += 1;
       }
-      if (this.Ows.compareAndSet(Owp, arrayOfScheduledExecutorService))
+      if (this.Umg.compareAndSet(Umd, arrayOfScheduledExecutorService))
       {
         j = arrayOfScheduledExecutorService.length;
         i = k;

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.security.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.security.a.b;
 
@@ -15,7 +15,7 @@ final class MySafeDeviceListUI$2
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(125555);
-    g.ajj().a(this.jlg);
+    g.azz().a(this.kjj);
     AppMethodBeat.o(125555);
   }
 }

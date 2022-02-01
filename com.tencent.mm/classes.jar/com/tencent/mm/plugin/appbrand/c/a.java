@@ -10,8 +10,8 @@ import com.tencent.mm.modelappbrand.b;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandSearchUI;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.Map;
 
 public enum a
@@ -19,43 +19,43 @@ public enum a
   static
   {
     AppMethodBeat.i(174716);
-    jYt = new a("INSTANCE");
-    jYu = new a[] { jYt };
+    lbr = new a("INSTANCE");
+    lbs = new a[] { lbr };
     AppMethodBeat.o(174716);
   }
   
   private a() {}
   
-  public static Intent I(Context paramContext, int paramInt)
+  public static Intent M(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(21061);
     Intent localIntent = new Intent();
-    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FGb);
-    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.FFX);
+    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
+    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Kzg);
     localIntent.putExtra("neverGetA8Key", true);
     localIntent.setClass(paramContext, AppBrandSearchUI.class);
     localIntent.putExtra("key_trust_url", true);
-    localIntent.putExtra("title", paramContext.getString(2131755430));
-    localIntent.putExtra("searchbar_tips", paramContext.getString(2131755430));
+    localIntent.putExtra("title", paramContext.getString(2131755468));
+    localIntent.putExtra("searchbar_tips", paramContext.getString(2131755468));
     localIntent.putExtra("KRightBtn", true);
     localIntent.putExtra("ftsneedkeyboard", true);
     localIntent.putExtra("ftsType", 64);
     localIntent.putExtra("ftsbizscene", paramInt);
-    Object localObject = com.tencent.mm.plugin.websearch.b.a.aY(paramInt, true);
-    String str = b.aDR();
+    Object localObject = com.tencent.mm.plugin.websearch.c.a.br(paramInt, true);
+    String str = b.aXE();
     ((Map)localObject).put("WASessionId", str);
     ((Map)localObject).put("sessionId", str);
     ((Map)localObject).put("subSessionId", str);
-    localIntent.putExtra("rawUrl", com.tencent.mm.plugin.websearch.b.a.be((Map)localObject));
+    localIntent.putExtra("rawUrl", com.tencent.mm.plugin.websearch.c.a.bd((Map)localObject));
     localIntent.putExtra("key_load_js_without_delay", true);
     localIntent.addFlags(67108864);
     localIntent.putExtra("key_session_id", str);
     localIntent.putExtra("sessionId", str);
     localIntent.putExtra("subSessionId", str);
-    localObject = g.ajR().ajA();
+    localObject = g.aAh().azQ();
     if (paramInt == 52)
     {
-      localObject = ((aj)localObject).get(am.a.ISj, null);
+      localObject = ((ao)localObject).get(ar.a.Oal, null);
       if (!(localObject instanceof String)) {
         break label339;
       }
@@ -73,7 +73,7 @@ public enum a
       localIntent.putExtra("key_preload_biz", 5);
       AppMethodBeat.o(21061);
       return localIntent;
-      localObject = ((aj)localObject).get(am.a.ISh, null);
+      localObject = ((ao)localObject).get(ar.a.Oaj, null);
       if ((localObject != null) && ((localObject instanceof String)))
       {
         localObject = (String)localObject;

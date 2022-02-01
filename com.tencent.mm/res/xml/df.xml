@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="^_^" />
+    <Preference android:key="wallet_realname_verify" android:layout="@layout/b8j" android:title="@string/iml" />
+    <PreferenceSmallCategory />
+    <Preference android:key="wallet_modify_password" android:layout="@layout/b8j" android:title="@string/imh" />
+    <Preference android:key="wallet_forget_password" android:layout="@layout/b8j" android:title="@string/imc" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference android:key="wallet_biometric_pay" android:layout="@layout/b_v" android:title="" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="mobile_remit_switch" android:persistent="false" />
+    <PreferenceSmallCategory />
+    <IconPreference android:key="wallet_open_auto_pay" android:layout="@layout/b8j" android:title="@string/im1" />
+    <Preference android:key="wallet_delay_transfer_date" android:layout="@layout/b8j" android:title="@string/ila" />
+    <Preference android:key="wallet_universal_pay_order" android:layout="@layout/b8j" android:title="@string/imu" />
+    <IconPreference android:key="wallet_lucky_money_refund_way" android:layout="@layout/b8j" android:title="@string/ilz" />
+    <PreferenceSmallCategory />
+    <Preference android:key="wallet_function_settings" android:layout="@layout/b8j" android:title="@string/ie1" />
+    <Preference android:key="wallet_switch_currency" android:layout="@layout/b8j" android:title="@string/ie5" />
+    <Preference android:key="wallet_im_mch" android:layout="@layout/b8j" android:title="" />
+    <PreferenceSmallCategory android:key="wallet_switch_category" />
+    <Preference android:key="wallet_digitalcert" android:layout="@layout/b8j" android:title="@string/ilb" />
+    <Preference android:key="wallet_password_setting_un_reg" android:layout="@layout/b8j" android:title="@string/imt" />
 </PreferenceScreen>

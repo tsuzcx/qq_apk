@@ -1,100 +1,105 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cbr
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public int CZN;
-  public String GSy;
+  public String aeskey;
+  public String fileid;
+  public String filemd5;
+  public int guR;
+  public int guS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72519);
+    AppMethodBeat.i(194544);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.fileid != null) {
+        paramVarArgs.e(1, this.fileid);
       }
-      paramVarArgs.aS(2, this.CZN);
-      if (this.GSy != null) {
-        paramVarArgs.d(3, this.GSy);
+      if (this.aeskey != null) {
+        paramVarArgs.e(2, this.aeskey);
       }
-      AppMethodBeat.o(72519);
+      if (this.filemd5 != null) {
+        paramVarArgs.e(3, this.filemd5);
+      }
+      paramVarArgs.aM(4, this.guR);
+      paramVarArgs.aM(5, this.guS);
+      AppMethodBeat.o(194544);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label414;
+      if (this.fileid == null) {
+        break label426;
       }
     }
-    label414:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label426:
+    for (int i = g.a.a.b.b.a.f(1, this.fileid) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.CZN);
       paramInt = i;
-      if (this.GSy != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.GSy);
+      if (this.aeskey != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.aeskey);
       }
-      AppMethodBeat.o(72519);
-      return paramInt;
+      i = paramInt;
+      if (this.filemd5 != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.filemd5);
+      }
+      paramInt = g.a.a.b.b.a.bu(4, this.guR);
+      int j = g.a.a.b.b.a.bu(5, this.guS);
+      AppMethodBeat.o(194544);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(72519);
+        AppMethodBeat.o(194544);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         cbr localcbr = (cbr)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(72519);
+          AppMethodBeat.o(194544);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcbr.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(72519);
+          localcbr.fileid = locala.UbS.readString();
+          AppMethodBeat.o(194544);
           return 0;
         case 2: 
-          localcbr.CZN = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(72519);
+          localcbr.aeskey = locala.UbS.readString();
+          AppMethodBeat.o(194544);
+          return 0;
+        case 3: 
+          localcbr.filemd5 = locala.UbS.readString();
+          AppMethodBeat.o(194544);
+          return 0;
+        case 4: 
+          localcbr.guR = locala.UbS.zi();
+          AppMethodBeat.o(194544);
           return 0;
         }
-        localcbr.GSy = ((f.a.a.a.a)localObject1).OmT.readString();
-        AppMethodBeat.o(72519);
+        localcbr.guS = locala.UbS.zi();
+        AppMethodBeat.o(194544);
         return 0;
       }
-      AppMethodBeat.o(72519);
+      AppMethodBeat.o(194544);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cbr
  * JD-Core Version:    0.7.0.1
  */

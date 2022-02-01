@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class op
-  extends b
+  extends IEvent
 {
-  public a dDB;
-  public b dDC;
+  public a dUD;
   
   public op()
   {
@@ -17,32 +15,22 @@ public final class op
   
   private op(byte paramByte)
   {
-    AppMethodBeat.i(91210);
-    this.dDB = new a();
-    this.dDC = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(121051);
+    this.dUD = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91210);
+    AppMethodBeat.o(121051);
   }
   
   public static final class a
   {
-    public int channel;
-    public Context context;
-    public int scene;
-    public String source;
-    public int sourceType = 0;
-    public String url;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public String dCl;
+    public int dUE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.op
  * JD-Core Version:    0.7.0.1
  */

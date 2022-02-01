@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.wallet_payu.pwd.a;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUSetPasswordUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.i;
@@ -21,14 +21,14 @@ public class g
     AppMethodBeat.i(72159);
     if ((paramMMActivity instanceof WalletPayUCheckPwdUI))
     {
-      paramMMActivity = new a(paramMMActivity, parami, this.dyY)
+      paramMMActivity = new a(paramMMActivity, parami, this.dQL)
       {
         public final CharSequence getTips(int paramAnonymousInt)
         {
           AppMethodBeat.i(72154);
           if (paramAnonymousInt == 0)
           {
-            localObject = this.activity.getString(2131765201);
+            localObject = this.activity.getString(2131767644);
             AppMethodBeat.o(72154);
             return localObject;
           }
@@ -44,16 +44,16 @@ public class g
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(72155);
-          if ((paramAnonymousn instanceof b))
+          if ((paramAnonymousq instanceof b))
           {
-            ae.d("MicroMsg.PayUModifyPasswordProcess", "hy: change pwd user success");
+            Log.d("MicroMsg.PayUModifyPasswordProcess", "hy: change pwd user success");
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
               g.a(g.this).putInt("key_errcode_payu", 0);
-              com.tencent.mm.wallet_core.a.b(this.activity, g.this.dyY, 0);
+              com.tencent.mm.wallet_core.a.c(this.activity, g.this.dQL, 0);
               AppMethodBeat.o(72155);
               return true;
             }
@@ -67,8 +67,8 @@ public class g
           AppMethodBeat.i(72156);
           Object localObject = (v)paramAnonymousVarArgs[0];
           paramAnonymousVarArgs = g.b(g.this).getString("key_pwd1");
-          localObject = ((v)localObject).jfC;
-          this.LVJ.b(new b(paramAnonymousVarArgs, (String)localObject), true);
+          localObject = ((v)localObject).kdF;
+          this.Ruz.b(new b(paramAnonymousVarArgs, (String)localObject), true);
           AppMethodBeat.o(72156);
           return true;
         }
@@ -102,14 +102,14 @@ public class g
     AppMethodBeat.o(72158);
   }
   
-  public final String cSH()
+  public final String dKC()
   {
     return "PayUModifyPasswordProcess";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.a.g
  * JD-Core Version:    0.7.0.1
  */

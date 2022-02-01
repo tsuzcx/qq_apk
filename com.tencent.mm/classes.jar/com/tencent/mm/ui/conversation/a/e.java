@@ -4,17 +4,17 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.b.b.b;
 import com.tencent.mm.model.b.d;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.bk;
-import com.tencent.mm.model.bk.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bn;
+import com.tencent.mm.model.bo;
+import com.tencent.mm.model.bo.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class e
 {
-  public static com.tencent.mm.pluginsdk.ui.b.a a(Context paramContext, a parama, Object[] paramArrayOfObject)
+  public static com.tencent.mm.pluginsdk.ui.b.a a(Context paramContext, e.a parama, Object[] paramArrayOfObject)
   {
     Object localObject = null;
     boolean bool2 = false;
@@ -24,7 +24,7 @@ public final class e
     label132:
     label224:
     String str2;
-    switch (1.KUp[parama.ordinal()])
+    switch (e.1.QhF[parama.ordinal()])
     {
     default: 
       parama = localObject;
@@ -53,17 +53,17 @@ public final class e
           }
           for (paramArrayOfObject = paramArrayOfObject[1].toString();; paramArrayOfObject = null)
           {
-            if (bc.aCg().aAe() == null) {
-              ae.w("MicroMsg.BannerFactory", "recommend banner stg is null. this may be caused by account async init.");
+            if (bg.aVF().aTm() == null) {
+              Log.w("MicroMsg.BannerFactory", "recommend banner stg is null. this may be caused by account async init.");
             }
             parama = localObject;
-            if (bc.aCg().aAe() == null) {
+            if (bg.aVF().aTm() == null) {
               break;
             }
-            if (!bc.aCg().aAe().Cm(str1))
+            if (!bg.aVF().aTm().KX(str1))
             {
               parama = localObject;
-              if (!bc.aCg().aAe().Cm(paramArrayOfObject)) {
+              if (!bg.aVF().aTm().KX(paramArrayOfObject)) {
                 break;
               }
             }
@@ -94,10 +94,10 @@ public final class e
     label825:
     for (bool1 = ((Boolean)paramArrayOfObject[2]).booleanValue();; bool1 = false)
     {
-      if ((!bc.ajM()) || (bc.aCg().aAf() == null) || (!bc.aCg().aAf().Cm(str1)))
+      if ((!bg.aAc()) || (bg.aVF().aTn() == null) || (!bg.aVF().aTn().KX(str1)))
       {
         parama = localObject;
-        if (!bc.aCg().aAf().Cm(str2)) {
+        if (!bg.aVF().aTn().KX(str2)) {
           break;
         }
       }
@@ -120,22 +120,22 @@ public final class e
       break;
       parama = new a(paramContext);
       break;
-      bk.aCm();
-      paramArrayOfObject = bk.aCn();
+      bo.aVL();
+      paramArrayOfObject = bo.aVM();
       parama = localObject;
       if (paramArrayOfObject == null) {
         break;
       }
       parama = new l(paramContext, paramArrayOfObject);
       break;
-      paramArrayOfObject = com.tencent.mm.model.a.g.aDh().Cg("4");
+      paramArrayOfObject = com.tencent.mm.model.a.g.aWT().KR("4");
       parama = localObject;
       if (paramArrayOfObject == null) {
         break;
       }
       paramArrayOfObject = paramArrayOfObject.value;
       parama = localObject;
-      if (bu.isNullOrNil(paramArrayOfObject)) {
+      if (Util.isNullOrNil(paramArrayOfObject)) {
         break;
       }
       parama = localObject;
@@ -144,26 +144,26 @@ public final class e
       }
       if (paramArrayOfObject.equals("1"))
       {
-        bc.aCg();
-        parama = com.tencent.mm.model.c.ajA().get(328195, Boolean.FALSE);
+        bg.aVF();
+        parama = com.tencent.mm.model.c.azQ().get(328195, Boolean.FALSE);
         if ((parama instanceof Boolean)) {
           bool1 = ((Boolean)parama).booleanValue();
         }
         if (!bool1)
         {
-          bk.aCm();
-          parama = bk.aCp();
-          if ((parama == bk.a.hJs) || (parama == bk.a.hJt))
+          bo.aVL();
+          parama = bo.aVN();
+          if ((parama == bo.a.iEc) || (parama == bo.a.iEd))
           {
-            ae.i("MicroMsg.BannerFactory", "already Bind the Mobile");
+            Log.i("MicroMsg.BannerFactory", "already Bind the Mobile");
             parama = localObject;
             break;
           }
-          parama = new l(paramContext, new bj(1, 1, ""));
-          com.tencent.mm.model.a.f.Ck("4");
+          parama = new l(paramContext, new bn(1, 1, ""));
+          com.tencent.mm.model.a.f.KV("4");
           break;
         }
-        ae.i("MicroMsg.BannerFactory", "[cpan] banner type bind mobile has clicked.");
+        Log.i("MicroMsg.BannerFactory", "[cpan] banner type bind mobile has clicked.");
         parama = localObject;
         break;
       }
@@ -171,26 +171,26 @@ public final class e
       if (!paramArrayOfObject.equals("2")) {
         break;
       }
-      bc.aCg();
-      parama = com.tencent.mm.model.c.ajA().get(328196, Boolean.FALSE);
+      bg.aVF();
+      parama = com.tencent.mm.model.c.azQ().get(328196, Boolean.FALSE);
       bool1 = bool2;
       if ((parama instanceof Boolean)) {
         bool1 = ((Boolean)parama).booleanValue();
       }
       if (!bool1)
       {
-        bk.aCm();
-        if (bk.aCp() == bk.a.hJs)
+        bo.aVL();
+        if (bo.aVN() == bo.a.iEc)
         {
-          ae.i("MicroMsg.BannerFactory", "already upload the Mobile");
+          Log.i("MicroMsg.BannerFactory", "already upload the Mobile");
           parama = localObject;
           break;
         }
-        parama = new l(paramContext, new bj(2, 1, ""));
-        com.tencent.mm.model.a.f.Ck("4");
+        parama = new l(paramContext, new bn(2, 1, ""));
+        com.tencent.mm.model.a.f.KV("4");
         break;
       }
-      ae.i("MicroMsg.BannerFactory", "[cpan] banner type upload contact has clicked.");
+      Log.i("MicroMsg.BannerFactory", "[cpan] banner type upload contact has clicked.");
       parama = localObject;
       break;
       parama = new m(paramContext);
@@ -200,43 +200,17 @@ public final class e
       parama = new k(paramContext);
       break;
       if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0)) {}
-      for (parama = (b.b)paramArrayOfObject[0];; parama = b.b.hLH)
+      for (parama = (b.b)paramArrayOfObject[0];; parama = b.b.iGJ)
       {
         parama = new com.tencent.mm.ui.d.a(paramContext, parama);
         break;
       }
     }
   }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(38775);
-      KUq = new a("MAIN_FRAME_BANNER", 0);
-      KUr = new a("CHATTING_RECOMMEND_BANNER", 1);
-      KUs = new a("CHATTING_SECURITY_BANNER", 2);
-      KUt = new a("NET_WARN_BANNER", 3);
-      KUu = new a("OTHER_ONLINE_BANNER", 4);
-      KUv = new a("FORCE_NOTIFY_BANNER", 5);
-      KUw = new a("STORAGE_PERMISSION_BANNER", 6);
-      KUx = new a("FACEBOOK_BANNER", 7);
-      KUy = new a("AD_BANNER", 8);
-      KUz = new a("ABTEST_BANNER", 9);
-      KUA = new a("MASS_SEND_SIGHT_BANNER", 10);
-      KUB = new a("TRY_NEW_INIT_BANNER", 11);
-      KUC = new a("MAIN_FRAME_AND_ABTEST_BANNER", 12);
-      KUD = new a("CHATTING_MONITORED_HINT", 13);
-      KUE = new a[] { KUq, KUr, KUs, KUt, KUu, KUv, KUw, KUx, KUy, KUz, KUA, KUB, KUC, KUD };
-      AppMethodBeat.o(38775);
-    }
-    
-    private a() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.e
  * JD-Core Version:    0.7.0.1
  */

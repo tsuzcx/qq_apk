@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/b6u" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.CropImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b6v" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:scaleType="fitCenter" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/b6t">
-        <View android:id="@id/b6z" android:visibility="invisible" android:layout_width="312.0dip" android:layout_height="312.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b74" android:background="@drawable/avs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" android:layout_above="@id/b6t" />
-    <com.tencent.mm.ui.base.MMHorList android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/b6s" android:background="@drawable/aou" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spacing="0.0dip" android:layout_above="@id/b6t" />
+<RelativeLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="76.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/xv" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@raw/icons_outlined_close" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/fr" android:id="@id/b6i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
 </RelativeLayout>

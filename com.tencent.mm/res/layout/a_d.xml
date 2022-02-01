@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/BW_0_Alpha_0_0_5" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="72.0dip"
+<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/cbx" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/game_icon_tips_info" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/cby" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/game_icon_tips_close" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/km" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/cq4" android:layout_toLeftOf="@id/cby" android:layout_toRightOf="@id/cbx" android:layout_centerVertical="true" />
+    <com.tencent.mm.plugin.finder.widget.edit.FinderEditTextView android:id="@id/bwb" android:background="@color/a74" android:padding="@dimen/cl" android:layout_width="fill_parent" android:layout_height="400.0dip" />
+    <com.tencent.mm.plugin.finder.widget.edit.FinderEditFooter android:id="@id/bvr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
 </RelativeLayout>

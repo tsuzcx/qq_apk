@@ -2,11 +2,9 @@ package com.tencent.mm.plugin.masssend.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.modelcontrol.d;
-import com.tencent.mm.plugin.mmsight.model.e;
 import com.tencent.mm.plugin.mmsight.model.m;
-import com.tencent.mm.protocal.protobuf.byg;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.protocal.protobuf.cly;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 final class MassSendMsgUI$2
   implements Runnable
@@ -16,30 +14,30 @@ final class MassSendMsgUI$2
   public final void run()
   {
     AppMethodBeat.i(26448);
-    VideoTransPara localVideoTransPara = d.aHh().aHi();
-    byg localbyg = new byg();
-    localbyg.Hlb = true;
-    if (m.a(this.rNA, localVideoTransPara, localbyg, new e()
+    VideoTransPara localVideoTransPara = com.tencent.mm.modelcontrol.e.baZ().bba();
+    cly localcly = new cly();
+    localcly.Mrn = true;
+    if (m.a(this.tnl, localVideoTransPara, localcly, new com.tencent.mm.plugin.mmsight.model.e()
     {
-      public final boolean dog()
+      public final boolean ehT()
       {
         return false;
       }
     })) {
-      m.b(this.rNA, localVideoTransPara, localbyg, new e()
+      m.b(this.tnl, localVideoTransPara, localcly, new com.tencent.mm.plugin.mmsight.model.e()
       {
-        public final boolean dog()
+        public final boolean ehT()
         {
           return false;
         }
       });
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(26447);
-        MassSendMsgUI.a(MassSendMsgUI.2.this.vUi, MassSendMsgUI.2.this.rNA, MassSendMsgUI.2.this.liC);
+        MassSendMsgUI.a(MassSendMsgUI.2.this.zoo, MassSendMsgUI.2.this.tnl, MassSendMsgUI.2.this.moi);
         AppMethodBeat.o(26447);
       }
     });
@@ -48,7 +46,7 @@ final class MassSendMsgUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.MassSendMsgUI.2
  * JD-Core Version:    0.7.0.1
  */

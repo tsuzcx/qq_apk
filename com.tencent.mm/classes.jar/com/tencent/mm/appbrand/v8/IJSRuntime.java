@@ -1,22 +1,20 @@
 package com.tencent.mm.appbrand.v8;
 
-import com.tencent.mm.plugin.appbrand.jsruntime.h;
+import com.tencent.mm.plugin.appbrand.m.h;
 
 public abstract interface IJSRuntime
 {
-  public abstract String Cx();
+  public abstract String LP();
   
-  public abstract IJSRuntime.Config Nf();
+  public abstract IJSRuntime.Config Xr();
   
-  public abstract boolean Nk();
+  public abstract boolean Xw();
   
   public abstract void a(int paramInt, h paramh);
   
   public abstract void a(Runnable paramRunnable, long paramLong, boolean paramBoolean);
   
-  public abstract void b(Runnable paramRunnable, boolean paramBoolean);
-  
-  public abstract void cj(boolean paramBoolean);
+  public abstract void cS(boolean paramBoolean);
   
   public abstract boolean doInnerLoopTask();
   
@@ -26,7 +24,7 @@ public abstract interface IJSRuntime
   
   public abstract long getUVLoopPtr();
   
-  public abstract m hv(int paramInt);
+  public abstract m iP(int paramInt);
   
   public abstract void pause();
   
@@ -41,6 +39,8 @@ public abstract interface IJSRuntime
   public abstract void s(Runnable paramRunnable);
   
   public abstract void setThreadPriority(int paramInt);
+  
+  public abstract void t(Runnable paramRunnable);
   
   public abstract void waitForDebugger(String paramString);
 }

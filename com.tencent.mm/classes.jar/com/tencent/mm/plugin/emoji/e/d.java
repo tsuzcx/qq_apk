@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.emoji.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class d
 {
-  public static d pJe;
-  public boolean pJf;
-  private Pattern pJg;
+  public static d qZz;
+  public boolean qZA;
+  private Pattern qZB;
   
   public d()
   {
     AppMethodBeat.i(108423);
-    this.pJf = false;
-    this.pJg = Pattern.compile("_\\d");
+    this.qZA = false;
+    this.qZB = Pattern.compile("_\\d");
     AppMethodBeat.o(108423);
   }
   
-  public static d chI()
+  public static d cFF()
   {
     AppMethodBeat.i(108424);
-    if (pJe == null) {}
+    if (qZz == null) {}
     try
     {
-      pJe = new d();
-      d locald = pJe;
+      qZz = new d();
+      d locald = qZz;
       AppMethodBeat.o(108424);
       return locald;
     }
@@ -42,13 +42,13 @@ public class d
     }
   }
   
-  public final void acg(String paramString)
+  public final void amj(String paramString)
   {
     AppMethodBeat.i(108425);
-    paramString = new k(paramString);
+    paramString = new o(paramString);
     if ((paramString.exists()) && (paramString.isDirectory()))
     {
-      paramString = paramString.fTj();
+      paramString = paramString.het();
       if ((paramString != null) && (paramString.length > 0))
       {
         int j = paramString.length;
@@ -56,22 +56,22 @@ public class d
         if (i < j)
         {
           Object localObject = paramString[i];
-          if (this.pJf)
+          if (this.qZA)
           {
             if (localObject.isDirectory()) {
-              acg(w.B(localObject.mUri));
+              amj(aa.z(localObject.mUri));
             }
             for (;;)
             {
               i += 1;
               break;
               String str = localObject.getName();
-              if ((this.pJg.matcher(str).find()) || (str.startsWith("temp"))) {
+              if ((this.qZB.matcher(str).find()) || (str.startsWith("temp"))) {
                 localObject.delete();
               }
             }
           }
-          ae.i("MicroMsg.emoji.EmojiFileCleanTaskManager", "stop run");
+          Log.i("MicroMsg.emoji.EmojiFileCleanTaskManager", "stop run");
           AppMethodBeat.o(108425);
           return;
         }
@@ -80,13 +80,13 @@ public class d
     AppMethodBeat.o(108425);
   }
   
-  public final void ach(String paramString)
+  public final void amk(String paramString)
   {
     AppMethodBeat.i(108426);
-    paramString = new k(paramString);
+    paramString = new o(paramString);
     if ((paramString.exists()) && (paramString.isDirectory()))
     {
-      paramString = paramString.fTj();
+      paramString = paramString.het();
       if ((paramString != null) && (paramString.length > 0))
       {
         int j = paramString.length;
@@ -95,7 +95,7 @@ public class d
         {
           Object localObject = paramString[i];
           if (localObject.isDirectory()) {
-            ach(w.B(localObject.mUri));
+            amk(aa.z(localObject.mUri));
           }
           for (;;)
           {
@@ -112,7 +112,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.d
  * JD-Core Version:    0.7.0.1
  */

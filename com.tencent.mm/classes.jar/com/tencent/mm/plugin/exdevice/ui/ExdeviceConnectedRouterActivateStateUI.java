@@ -9,53 +9,53 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.exdevice.b.b;
 import com.tencent.mm.plugin.exdevice.d.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 public class ExdeviceConnectedRouterActivateStateUI
   extends MMActivity
 {
   private String appId;
-  private String cVh;
-  private String dpB;
-  private String qgT;
-  private final int qqr;
-  private ExdeviceConnectedRouterStateView qqs;
-  private TextView qqt;
-  private TextView qqu;
-  private b<a> qqv;
+  private String dGL;
+  private String dGP;
+  private TextView rHA;
+  private TextView rHB;
+  private b<a> rHC;
+  private final int rHy;
+  private ExdeviceConnectedRouterStateView rHz;
+  private String rxP;
   private String ssid;
   
   public ExdeviceConnectedRouterActivateStateUI()
   {
     AppMethodBeat.i(23989);
-    this.qqr = 90000;
-    this.qqv = new b() {};
+    this.rHy = 90000;
+    this.rHC = new b() {};
     AppMethodBeat.o(23989);
   }
   
-  private void cnv()
+  private void cLI()
   {
     AppMethodBeat.i(23995);
     finish();
     Intent localIntent = new Intent();
     localIntent.putExtra("From_fail_notify", true);
-    ae.d("MicroMsg.ConnectedRouterActivateStateUi", "startMainUI");
-    d.f(this, "com.tencent.mm.ui.LauncherUI", localIntent);
+    Log.d("MicroMsg.ConnectedRouterActivateStateUi", "startMainUI");
+    c.f(this, "com.tencent.mm.ui.LauncherUI", localIntent);
     AppMethodBeat.o(23995);
   }
   
-  protected final void CT(int paramInt)
+  protected final void GE(int paramInt)
   {
     AppMethodBeat.i(23992);
-    this.qqs.setOnClickListener(null);
-    ae.d("MicroMsg.ConnectedRouterActivateStateUi", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
+    this.rHz.setOnClickListener(null);
+    Log.d("MicroMsg.ConnectedRouterActivateStateUi", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
@@ -63,31 +63,31 @@ public class ExdeviceConnectedRouterActivateStateUI
     {
       AppMethodBeat.o(23992);
       return;
-      this.qqs.setImageResource(2131689986);
-      this.qqs.setState(3);
-      this.qqs.qqy = 2;
-      this.qqt.setText(2131758521);
-      this.qqu.setText(getString(2131758522, new Object[] { this.ssid }));
+      this.rHz.setImageResource(2131690015);
+      this.rHz.setState(3);
+      this.rHz.rHF = 2;
+      this.rHA.setText(2131758820);
+      this.rHB.setText(getString(2131758821, new Object[] { this.ssid }));
       AppMethodBeat.o(23992);
       return;
-      this.qqs.setImageResource(2131689986);
-      this.qqs.setState(3);
-      this.qqs.qqy = 2;
-      this.qqt.setText(2131758521);
-      this.qqu.setText(getString(2131758523));
+      this.rHz.setImageResource(2131690015);
+      this.rHz.setState(3);
+      this.rHz.rHF = 2;
+      this.rHA.setText(2131758820);
+      this.rHB.setText(getString(2131758822));
       AppMethodBeat.o(23992);
       return;
-      this.qqs.setImageResource(2131689986);
-      this.qqs.setState(3);
-      this.qqs.qqy = 2;
-      this.qqt.setText(2131758521);
-      this.qqu.setText(getString(2131758525));
+      this.rHz.setImageResource(2131690015);
+      this.rHz.setState(3);
+      this.rHz.rHF = 2;
+      this.rHA.setText(2131758820);
+      this.rHB.setText(getString(2131758824));
       AppMethodBeat.o(23992);
       return;
-      this.qqs.setImageResource(2131689988);
-      this.qqs.setState(2);
-      this.qqt.setText(getString(2131758524, new Object[] { this.ssid }));
-      addTextOptionMenu(0, getString(2131758519), new MenuItem.OnMenuItemClickListener()
+      this.rHz.setImageResource(2131690017);
+      this.rHz.setState(2);
+      this.rHA.setText(getString(2131758823, new Object[] { this.ssid }));
+      addTextOptionMenu(0, getString(2131758818), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
@@ -99,9 +99,9 @@ public class ExdeviceConnectedRouterActivateStateUI
       });
       AppMethodBeat.o(23992);
       return;
-      this.qqs.setImageResource(2131689987);
-      this.qqs.setState(1);
-      this.qqt.setText(2131758520);
+      this.rHz.setImageResource(2131690016);
+      this.rHz.setState(1);
+      this.rHA.setText(2131758819);
     }
   }
   
@@ -112,15 +112,15 @@ public class ExdeviceConnectedRouterActivateStateUI
   
   public int getLayoutId()
   {
-    return 2131493862;
+    return 2131494018;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(23990);
     super.onCreate(paramBundle);
-    ae.d("MicroMsg.ConnectedRouterActivateStateUi", "create activity");
-    setMMTitle(2131758526);
+    Log.d("MicroMsg.ConnectedRouterActivateStateUi", "create activity");
+    setMMTitle(2131758825);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -131,23 +131,23 @@ public class ExdeviceConnectedRouterActivateStateUI
         return true;
       }
     });
-    this.qqs = ((ExdeviceConnectedRouterStateView)findViewById(2131299547));
-    this.qqt = ((TextView)findViewById(2131299546));
-    this.qqu = ((TextView)findViewById(2131299548));
+    this.rHz = ((ExdeviceConnectedRouterStateView)findViewById(2131300195));
+    this.rHA = ((TextView)findViewById(2131300194));
+    this.rHB = ((TextView)findViewById(2131300196));
     try
     {
       paramBundle = Uri.parse(getIntent().getStringExtra("key_connected_router"));
-      this.cVh = paramBundle.getQueryParameter("deviceid");
-      this.dpB = paramBundle.getQueryParameter("devicetype");
-      this.qgT = paramBundle.getQueryParameter("clientinfo");
+      this.dGL = paramBundle.getQueryParameter("deviceid");
+      this.dGP = paramBundle.getQueryParameter("devicetype");
+      this.rxP = paramBundle.getQueryParameter("clientinfo");
       this.appId = paramBundle.getQueryParameter("appid");
-      if ((bu.isNullOrNil(this.cVh)) || (bu.isNullOrNil(this.dpB)) || (bu.isNullOrNil(this.qgT)) || (bu.isNullOrNil(this.appId)))
+      if ((Util.isNullOrNil(this.dGL)) || (Util.isNullOrNil(this.dGP)) || (Util.isNullOrNil(this.rxP)) || (Util.isNullOrNil(this.appId)))
       {
-        ae.e("MicroMsg.ConnectedRouterActivateStateUi", "loss param %s", new Object[] { paramBundle.toString() });
+        Log.e("MicroMsg.ConnectedRouterActivateStateUi", "loss param %s", new Object[] { paramBundle.toString() });
         finish();
       }
       this.ssid = paramBundle.getQueryParameter("ssid");
-      ae.d("MicroMsg.ConnectedRouterActivateStateUi", "uri: %s, deviceid: %s, devicetype: %s, clientinfo: %s. ssid: %s", new Object[] { paramBundle.toString(), this.cVh, this.dpB, this.qgT, this.ssid });
+      Log.d("MicroMsg.ConnectedRouterActivateStateUi", "uri: %s, deviceid: %s, devicetype: %s, clientinfo: %s. ssid: %s", new Object[] { paramBundle.toString(), this.dGL, this.dGP, this.rxP, this.ssid });
       if (this.ssid == null) {
         this.ssid = "";
       }
@@ -156,11 +156,11 @@ public class ExdeviceConnectedRouterActivateStateUI
     {
       for (;;)
       {
-        ae.d("MicroMsg.ConnectedRouterActivateStateUi", paramBundle.toString());
+        Log.d("MicroMsg.ConnectedRouterActivateStateUi", paramBundle.toString());
       }
     }
-    CT(1);
-    bc.ajj().a(new a(this.cVh, this.dpB, this.qgT, this.appId, this.qqv), 0);
+    GE(1);
+    bg.azz().a(new a(this.dGL, this.dGP, this.rxP, this.appId, this.rHC), 0);
     AppMethodBeat.o(23990);
   }
   
@@ -176,7 +176,7 @@ public class ExdeviceConnectedRouterActivateStateUI
     AppMethodBeat.i(23994);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      cnv();
+      cLI();
       AppMethodBeat.o(23994);
       return true;
     }
@@ -200,7 +200,7 @@ public class ExdeviceConnectedRouterActivateStateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterActivateStateUI
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.backup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class PluginBackup
   extends f
@@ -12,12 +12,12 @@ public class PluginBackup
   public void configure(g paramg)
   {
     AppMethodBeat.i(21164);
-    if (paramg.akL())
+    if (paramg.aBb())
     {
-      com.tencent.mm.vfs.u.b("msgsynchronize", "msgsynchronize", 2592000000L, 107);
-      ae.i("VFS.Debug", "msgsynchronize FS registered");
-      com.tencent.mm.vfs.u.b("backupRecover", "backupRecover", 2592000000L, 99);
-      ae.i("VFS.Debug", "backupRecover FS registered");
+      com.tencent.mm.vfs.y.b("msgsynchronize", "msgsynchronize", 2592000000L, 107);
+      Log.i("VFS.Debug", "msgsynchronize FS registered");
+      com.tencent.mm.vfs.y.b("backupRecover", "backupRecover", 2592000000L, 99);
+      Log.i("VFS.Debug", "backupRecover FS registered");
     }
     AppMethodBeat.o(21164);
   }
@@ -25,10 +25,10 @@ public class PluginBackup
   public void execute(g paramg)
   {
     AppMethodBeat.i(21165);
-    if (paramg.akL())
+    if (paramg.aBb())
     {
-      ae.i("MicroMsg.PluginBackup", "PluginMonitor execute PluginMonitor new BackupCore");
-      pin(new com.tencent.mm.model.u(com.tencent.mm.plugin.backup.j.a.class));
+      Log.i("MicroMsg.PluginBackup", "PluginMonitor execute PluginMonitor new BackupCore");
+      pin(new com.tencent.mm.model.y(com.tencent.mm.plugin.backup.j.a.class));
     }
     AppMethodBeat.o(21165);
   }
@@ -40,7 +40,7 @@ public class PluginBackup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.PluginBackup
  * JD-Core Version:    0.7.0.1
  */

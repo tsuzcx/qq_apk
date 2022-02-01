@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.lo;
-import com.tencent.mm.protocal.protobuf.lp;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.mf;
+import com.tencent.mm.protocal.protobuf.mg;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class y
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public b gRX;
+  private i callback;
+  public d hJu;
   
   public y(String paramString)
   {
     AppMethodBeat.i(184422);
-    b.a locala = new b.a();
+    d.a locala = new d.a();
     locala.funcId = getType();
-    lo locallo = new lo();
-    locallo.dBI = paramString;
-    locala.hQF = locallo;
+    mf localmf = new mf();
+    localmf.dTx = paramString;
+    locala.iLN = localmf;
     locala.uri = "/cgi-bin/micromsg-bin/bindoldwx";
-    locala.hQG = new lp();
-    this.gRX = locala.aDS();
+    locala.iLO = new mg();
+    this.hJu = locala.aXF();
     AppMethodBeat.o(184422);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(184423);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
     AppMethodBeat.o(184423);
     return i;
   }
@@ -47,10 +47,10 @@ public final class y
     return 870;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184424);
-    ae.i("MicroMsg.NetSceneBindOldWx", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.NetSceneBindOldWx", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(184424);
   }

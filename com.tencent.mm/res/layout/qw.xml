@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/d2i" android:focusable="false" android:focusableInTouchMode="false" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/isf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bh1" android:layout_width="fill_parent" android:layout_height="@dimen/x1">
+        <ImageView android:id="@id/bgv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/bhd" android:background="@drawable/bzh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/x0" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/ir0" android:background="@drawable/h7" android:paddingLeft="@dimen/hs" android:paddingTop="20.0dip" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/ib" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wx" android:maxLines="2" android:layout_alignParentBottom="true" android:lineSpacingExtra="@dimen/kb" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/aah" android:background="@drawable/o4" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bh1">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/x0" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/ipm" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wx" android:maxLines="4" />
+        <TextView android:ellipsize="end" android:id="@id/br_" android:paddingTop="@dimen/g" android:layout_width="fill_parent" android:text="@string/wx" android:maxLines="15" style="@style/zx" />
+    </LinearLayout>
+    <ImageView android:orientation="vertical" android:id="@id/ggb" android:background="@drawable/oj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/x1" android:layout_alignTop="@id/bh1" android:layout_alignBottom="@id/aah" />
+</RelativeLayout>

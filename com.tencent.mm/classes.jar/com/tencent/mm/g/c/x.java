@@ -2,27 +2,20 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class x
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int eHT = "version".hashCode();
-  private static final int eId = "packageType".hashCode();
-  private static final int eIe = "packageKey".hashCode();
-  private static final int eIf = "source".hashCode();
-  private static final int eIg = "hitCount".hashCode();
-  private static final int eIh = "reportId".hashCode();
+  private static final int fkj = "appId".hashCode();
+  private static final int flF = "packageType".hashCode();
+  private static final int flG = "packageKey".hashCode();
+  private static final int flH = "source".hashCode();
+  private static final int flI = "hitCount".hashCode();
+  private static final int flJ = "reportId".hashCode();
+  private static final int flv = "version".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGm = true;
-  private boolean eHO = true;
-  private boolean eHY = true;
-  private boolean eHZ = true;
-  private boolean eIa = true;
-  private boolean eIb = true;
-  private boolean eIc = true;
   public String field_appId;
   public int field_hitCount;
   public String field_packageKey;
@@ -30,6 +23,13 @@ public abstract class x
   public int field_reportId;
   public int field_source;
   public int field_version;
+  private boolean fjS = true;
+  private boolean flA = true;
+  private boolean flB = true;
+  private boolean flC = true;
+  private boolean flD = true;
+  private boolean flE = true;
+  private boolean flq = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,7 +44,7 @@ public abstract class x
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGD != k) {
+      if (fkj != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -55,17 +55,17 @@ public abstract class x
       break label20;
       break;
       label60:
-      if (eHT == k) {
+      if (flv == k) {
         this.field_version = paramCursor.getInt(i);
-      } else if (eId == k) {
+      } else if (flF == k) {
         this.field_packageType = paramCursor.getInt(i);
-      } else if (eIe == k) {
+      } else if (flG == k) {
         this.field_packageKey = paramCursor.getString(i);
-      } else if (eIf == k) {
+      } else if (flH == k) {
         this.field_source = paramCursor.getInt(i);
-      } else if (eIg == k) {
+      } else if (flI == k) {
         this.field_hitCount = paramCursor.getInt(i);
-      } else if (eIh == k) {
+      } else if (flJ == k) {
         this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -76,25 +76,25 @@ public abstract class x
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eHO) {
+    if (this.flq) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.eHY) {
+    if (this.flA) {
       localContentValues.put("packageType", Integer.valueOf(this.field_packageType));
     }
-    if (this.eHZ) {
+    if (this.flB) {
       localContentValues.put("packageKey", this.field_packageKey);
     }
-    if (this.eIa) {
+    if (this.flC) {
       localContentValues.put("source", Integer.valueOf(this.field_source));
     }
-    if (this.eIb) {
+    if (this.flD) {
       localContentValues.put("hitCount", Integer.valueOf(this.field_hitCount));
     }
-    if (this.eIc) {
+    if (this.flE) {
       localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
@@ -105,7 +105,7 @@ public abstract class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.x
  * JD-Core Version:    0.7.0.1
  */

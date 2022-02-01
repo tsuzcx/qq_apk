@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<transition
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/b5e" />
-    <item android:state_pressed="true" android:drawable="@drawable/b5g" />
-    <item android:state_focused="true" android:state_pressed="false" android:drawable="@drawable/b5f" />
-    <item android:drawable="@drawable/b5d" />
-</selector>
+    <item android:drawable="@drawable/b7t" />
+    <item android:drawable="@drawable/b7r" />
+</transition>

@@ -1,47 +1,49 @@
 package com.tencent.mm.plugin.scanner.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.of;
-import com.tencent.mm.protocal.protobuf.og;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.pb;
+import com.tencent.mm.protocal.protobuf.pc;
 
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public String dAa;
-  public com.tencent.mm.ak.b rr;
+  private i callback;
+  public String dRM;
+  public d rr;
   
   public a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(118333);
-    this.dAa = paramString;
-    b.a locala = new b.a();
+    this.dRM = paramString;
+    d.a locala = new d.a();
     locala.funcId = getType();
-    of localof = new of();
-    localof.FXp = new com.tencent.mm.bw.b(paramArrayOfByte);
-    localof.FXs = paramString;
-    localof.GbS = 3;
-    localof.doj = 101;
-    localof.FTU = paramInt;
-    locala.hQF = localof;
+    pb localpb = new pb();
+    localpb.KRc = new b(paramArrayOfByte);
+    localpb.KRf = paramString;
+    localpb.KVV = 3;
+    localpb.source = 101;
+    localpb.KND = paramInt;
+    locala.iLN = localpb;
     locala.uri = "/cgi-bin/mmpay-bin/ocrgetbankcardinfo";
-    locala.hQG = new og();
-    this.rr = locala.aDS();
+    locala.iLO = new pc();
+    this.rr = locala.aXF();
     AppMethodBeat.o(118333);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(118335);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(118335);
     return i;
   }
@@ -51,7 +53,7 @@ public final class a
     return 2693;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(118334);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

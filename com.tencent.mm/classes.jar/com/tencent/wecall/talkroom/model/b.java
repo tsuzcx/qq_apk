@@ -7,29 +7,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  talk MIo;
+  talk Suj;
   
   public b()
   {
     AppMethodBeat.i(62557);
-    this.MIo = new talk();
-    com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.MIo });
+    this.Suj = new talk();
+    com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.Suj });
     AppMethodBeat.o(62557);
   }
   
   public final int Close()
   {
     AppMethodBeat.i(62559);
-    if (!a.MbV)
+    if (!a.RCk)
     {
       AppMethodBeat.o(62559);
       return 0;
     }
     try
     {
-      if (this.MIo != null)
+      if (this.Suj != null)
       {
-        i = this.MIo.close();
+        i = this.Suj.close();
         com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "Close ret: ", Integer.valueOf(i) });
         AppMethodBeat.o(62559);
         return i;
@@ -48,39 +48,39 @@ public final class b
   public final void OnMembersChanged(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(62560);
-    if ((!a.MbV) || (this.MIo == null))
+    if ((!a.RCk) || (this.Suj == null))
     {
       AppMethodBeat.o(62560);
       return;
     }
-    this.MIo.OnMembersChanged(paramArrayOfInt);
+    this.Suj.OnMembersChanged(paramArrayOfInt);
     AppMethodBeat.o(62560);
   }
   
-  public final byte[] gdT()
+  public final byte[] hqV()
   {
-    if ((!a.MbV) || (this.MIo == null)) {
+    if ((!a.RCk) || (this.Suj == null)) {
       return new byte[0];
     }
-    return this.MIo.field_capInfo;
+    return this.Suj.field_capInfo;
   }
   
-  public final void gdU()
+  public final void hqW()
   {
-    if ((!a.MbV) || (this.MIo == null)) {
+    if ((!a.RCk) || (this.Suj == null)) {
       return;
     }
-    this.MIo.field_capInfo = null;
+    this.Suj.field_capInfo = null;
   }
   
-  public final int gdV()
+  public final int hqX()
   {
     AppMethodBeat.i(62561);
     try
     {
-      if (a.MbV)
+      if (a.RCk)
       {
-        localObject = this.MIo;
+        localObject = this.Suj;
         if (localObject != null) {}
       }
       else
@@ -90,7 +90,7 @@ public final class b
       }
       Object localObject = new AtomicInteger();
       AtomicInteger localAtomicInteger = new AtomicInteger();
-      this.MIo.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
+      this.Suj.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
       int i = localAtomicInteger.get();
       AppMethodBeat.o(62561);
       return i;
@@ -106,16 +106,16 @@ public final class b
   public final int uninitLive()
   {
     AppMethodBeat.i(62558);
-    if (!a.MbV)
+    if (!a.RCk)
     {
       AppMethodBeat.o(62558);
       return 0;
     }
     try
     {
-      if (this.MIo != null)
+      if (this.Suj != null)
       {
-        i = this.MIo.uninit();
+        i = this.Suj.uninit();
         com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "uninitLive ret: ", Integer.valueOf(i) });
         AppMethodBeat.o(62558);
         return i;
@@ -133,7 +133,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.b
  * JD-Core Version:    0.7.0.1
  */

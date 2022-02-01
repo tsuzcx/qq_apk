@@ -1,39 +1,40 @@
 package com.tencent.mm.be;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cm;
+import com.tencent.mm.g.a.cp;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class a
 {
-  private static final a inb;
-  public long ina;
+  private static final a jij;
+  public long jii;
   
   static
   {
     AppMethodBeat.i(116858);
-    inb = new a();
+    jij = new a();
     AppMethodBeat.o(116858);
   }
   
   public a()
   {
     AppMethodBeat.i(116857);
-    if (g.ajM())
+    if (g.aAc())
     {
-      this.ina = v.aAH();
+      this.jii = z.aUd();
       AppMethodBeat.o(116857);
       return;
     }
-    com.tencent.mm.sdk.b.a.IvT.b(new c() {});
+    EventCenter.instance.add(new IListener() {});
     AppMethodBeat.o(116857);
   }
   
-  public static a aKx()
+  public static a beA()
   {
-    return inb;
+    return jij;
   }
 }
 

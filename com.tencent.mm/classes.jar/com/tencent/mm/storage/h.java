@@ -14,19 +14,19 @@ public final class h
   {
     super(parami);
     AppMethodBeat.i(32815);
-    d(getDB(), "appbrandmessage");
+    e(getDB(), "appbrandmessage");
     a(new i.b(256, "appbrandmessage", i.b.a(3000001L, 3500000L, 102000001L, 105000000L)));
     AppMethodBeat.o(32815);
   }
   
-  public final String ajr(String paramString)
+  public final String avu(String paramString)
   {
     AppMethodBeat.i(32816);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!an.zd(paramString)) {
+      if (!as.HF(paramString)) {
         break;
       }
       AppMethodBeat.o(32816);
@@ -38,7 +38,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.h
  * JD-Core Version:    0.7.0.1
  */

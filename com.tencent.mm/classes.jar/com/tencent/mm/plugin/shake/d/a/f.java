@@ -1,80 +1,84 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelstat.o;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.ag;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cwj;
-import com.tencent.mm.protocal.protobuf.ddu;
-import com.tencent.mm.protocal.protobuf.ddv;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.protocal.protobuf.dwy;
+import com.tencent.mm.protocal.protobuf.dwz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class f
   extends e
 {
-  private com.tencent.mm.ak.f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   
   public f(byte[] paramArrayOfByte, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean, int paramInt3)
   {
     super(paramLong);
     AppMethodBeat.i(28283);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new ddu();
-    ((b.a)localObject).hQG = new ddv();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/shakemusic";
-    ((b.a)localObject).funcId = 367;
-    ((b.a)localObject).hQH = 177;
-    ((b.a)localObject).respCmdId = 1000000177;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (ddu)this.rr.hQD.hQJ;
-    ((ddu)localObject).xsE = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
-    ((ddu)localObject).HLm = paramInt2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dwy();
+    ((d.a)localObject).iLO = new dwz();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/shakemusic";
+    ((d.a)localObject).funcId = 367;
+    ((d.a)localObject).iLP = 177;
+    ((d.a)localObject).respCmdId = 1000000177;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dwy)this.rr.iLK.iLR;
+    ((dwy)localObject).BsI = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    ((dwy)localObject).MWV = paramInt2;
     if (paramBoolean)
     {
       paramInt2 = 1;
-      ((ddu)localObject).ijY = paramInt2;
-      ((ddu)localObject).HLn = paramInt1;
-      if (!com.tencent.mm.network.ae.cR(ak.getContext())) {
+      ((dwy)localObject).jeU = paramInt2;
+      ((dwy)localObject).MWW = paramInt1;
+      if (!ag.dm(MMApplicationContext.getContext())) {
         break label372;
       }
     }
     label372:
     for (paramInt1 = 1;; paramInt1 = 2)
     {
-      ((ddu)localObject).GqB = paramInt1;
-      ((ddu)localObject).FOQ = paramInt3;
+      ((dwy)localObject).Llx = paramInt1;
+      ((dwy)localObject).KIy = paramInt3;
       float f3 = 0.0F;
       float f4 = 0.0F;
       float f2 = f4;
       float f1 = f3;
       try
       {
-        bc.aCg();
+        bg.aVF();
         f2 = f4;
         f1 = f3;
-        f3 = bu.getFloat((String)c.ajA().get(am.a.ILJ, null), 0.0F);
+        f3 = Util.getFloat((String)c.azQ().get(ar.a.NTL, null), 0.0F);
         f2 = f4;
         f1 = f3;
-        bc.aCg();
+        bg.aVF();
         f2 = f4;
         f1 = f3;
-        f4 = bu.getFloat((String)c.ajA().get(am.a.ILK, null), 0.0F);
+        f4 = Util.getFloat((String)c.azQ().get(ar.a.NTM, null), 0.0F);
         f2 = f4;
         f1 = f3;
-        bc.aCg();
+        bg.aVF();
         f2 = f4;
         f1 = f3;
-        paramInt1 = bu.aSB((String)c.ajA().get(am.a.IOq, null));
+        paramInt1 = Util.safeParseInt((String)c.azQ().get(ar.a.NWs, null));
         f1 = f3;
         f2 = f4;
       }
@@ -89,19 +93,19 @@ public final class f
           paramInt2 = 0;
         }
       }
-      ((ddu)localObject).Gha = f1;
-      ((ddu)localObject).HLo = f2;
-      if (!com.tencent.mm.ay.e.aKj()) {
+      ((dwy)localObject).LbD = f1;
+      ((dwy)localObject).MWX = f2;
+      if (!com.tencent.mm.ay.e.bem()) {
         break label383;
       }
       paramInt2 = 0;
-      ((ddu)localObject).GVy = paramInt2;
-      if (!com.tencent.mm.ay.e.aKi()) {
+      ((dwy)localObject).LZS = paramInt2;
+      if (!com.tencent.mm.ay.e.bel()) {
         break label389;
       }
       paramInt2 = 1;
-      ((ddu)localObject).GVz = paramInt2;
-      o.a(2014, ((ddu)localObject).HLo, ((ddu)localObject).Gha, paramInt1);
+      ((dwy)localObject).LZT = paramInt2;
+      o.a(2014, ((dwy)localObject).MWX, ((dwy)localObject).LbD, paramInt1);
       AppMethodBeat.o(28283);
       return;
       paramInt2 = 0;
@@ -109,20 +113,20 @@ public final class f
     }
   }
   
-  public final cwj dSO()
-  {
-    return (ddv)this.rr.hQE.hQJ;
-  }
-  
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(28284);
-    ddu localddu = (ddu)this.rr.hQD.hQJ;
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetSceneShakeMusic", "MusicFingerPrintRecorder doscene dataid:%d data:%d endflag:%d voice:%f nettype:%d ver:%d", new Object[] { Integer.valueOf(localddu.HLm), Integer.valueOf(localddu.xsE.getILen()), Integer.valueOf(localddu.ijY), Float.valueOf(localddu.HLn), Integer.valueOf(localddu.GqB), Integer.valueOf(localddu.FOQ) });
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    dwy localdwy = (dwy)this.rr.iLK.iLR;
+    Log.d("MicroMsg.NetSceneShakeMusic", "MusicFingerPrintRecorder doscene dataid:%d data:%d endflag:%d voice:%f nettype:%d ver:%d", new Object[] { Integer.valueOf(localdwy.MWV), Integer.valueOf(localdwy.BsI.getILen()), Integer.valueOf(localdwy.jeU), Float.valueOf(localdwy.MWW), Integer.valueOf(localdwy.Llx), Integer.valueOf(localdwy.KIy) });
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(28284);
     return i;
+  }
+  
+  public final dpc eUP()
+  {
+    return (dwz)this.rr.iLL.iLR;
   }
   
   public final int getType()
@@ -130,14 +134,14 @@ public final class f
     return 367;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28285);
-    paramq = (ddu)this.rr.hQD.hQJ;
-    paramArrayOfByte = (ddv)this.rr.hQE.hQJ;
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetSceneShakeMusic", "MusicFingerPrintRecorder onGYNetEnd [%d,%d] dataid:%d endflag:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramq.HLm), Integer.valueOf(paramArrayOfByte.ijY) });
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.ijY == 1)) {
-      this.dyL = true;
+    params = (dwy)this.rr.iLK.iLR;
+    paramArrayOfByte = (dwz)this.rr.iLL.iLR;
+    Log.d("MicroMsg.NetSceneShakeMusic", "MusicFingerPrintRecorder onGYNetEnd [%d,%d] dataid:%d endflag:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(params.MWV), Integer.valueOf(paramArrayOfByte.jeU) });
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.jeU == 1)) {
+      this.dQA = true;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(28285);
@@ -145,7 +149,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.f
  * JD-Core Version:    0.7.0.1
  */

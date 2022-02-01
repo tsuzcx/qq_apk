@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.TabLayout android:id="@id/hc4" android:background="@color/a7c" android:layout_width="0.0dip" android:layout_height="@dimen/ce" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" app:tabGravity="ahg" app:tabIndicator="@drawable/c52" app:tabIndicatorColor="@color/aj" app:tabIndicatorFullWidth="@dimen/c8" app:tabIndicatorHeight="2.0dip" app:tabPadding="@dimen/c5" app:tabSelectedTextColor="@color/aj" app:tabTextColor="@color/BW_100_Alpha_0_3" />
-    <android.support.v4.view.ViewPager android:id="@id/hc5" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toBottomOf="@id/hc4" />
-</merge>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/hdg" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentTop="true" />
+    <TextView android:id="@id/c33" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/gfg" style="@style/mh" />
+    <TextView android:id="@id/hdf" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

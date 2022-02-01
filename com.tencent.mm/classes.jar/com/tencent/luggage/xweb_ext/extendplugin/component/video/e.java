@@ -5,48 +5,48 @@ import android.view.View;
 import com.tencent.luggage.xweb_ext.extendplugin.component.i;
 import com.tencent.luggage.xweb_ext.extendplugin.component.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ad.e.j;
-import com.tencent.mm.plugin.appbrand.jsapi.q.g;
-import com.tencent.mm.plugin.appbrand.jsapi.q.h;
-import com.tencent.mm.plugin.appbrand.jsapi.q.h.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.ag.e.j;
+import com.tencent.mm.plugin.appbrand.jsapi.s.g;
+import com.tencent.mm.plugin.appbrand.jsapi.s.h;
+import com.tencent.mm.plugin.appbrand.jsapi.s.h.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class e
   extends com.tencent.luggage.xweb_ext.extendplugin.component.c<j, View>
 {
-  private h.a<j, View> ctz;
-  final c cvU;
-  private final d cvV;
+  private h.a<j, View> cFR;
+  final c cJT;
+  private final d cJU;
   
   public e(c paramc)
   {
     super(paramc);
-    AppMethodBeat.i(220541);
-    this.ctz = new h.a() {};
-    this.cvU = paramc;
-    this.cvV = new d(paramc);
-    AppMethodBeat.o(220541);
+    AppMethodBeat.i(215747);
+    this.cFR = new h.a() {};
+    this.cJT = paramc;
+    this.cJU = new d(paramc);
+    AppMethodBeat.o(215747);
   }
   
-  public final g FZ()
+  public final g PI()
   {
-    return this.cvV.ctt;
+    return this.cJU.cFM;
   }
   
-  public final h.a<j, View> Ga()
+  public final h.a<j, View> PJ()
   {
-    return this.ctz;
+    return this.cFR;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.q.c Gb()
+  public final com.tencent.mm.plugin.appbrand.jsapi.s.c PK()
   {
-    return d.cts;
+    return d.cFL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.e
  * JD-Core Version:    0.7.0.1
  */

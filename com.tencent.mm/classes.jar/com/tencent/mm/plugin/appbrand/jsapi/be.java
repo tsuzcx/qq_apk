@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class be
-  extends a<r>
+  extends d<c>
 {
-  public static final int CTRL_INDEX = 102;
-  public static final String NAME = "makePhoneCall";
+  public static final int CTRL_INDEX = 101;
+  public static final String NAME = "getAppConfig";
 }
 
 

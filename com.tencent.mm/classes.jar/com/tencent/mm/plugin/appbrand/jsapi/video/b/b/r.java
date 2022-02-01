@@ -11,52 +11,47 @@ import java.util.Map;
 public final class r
   implements e
 {
-  private String lqQ;
-  private final e lrK;
-  private final d lrL;
-  private boolean lrM;
-  private boolean lrN;
+  private String mxw;
+  private final e myq;
+  private final d myr;
+  private boolean mys;
+  private boolean myt;
   
   public r(e parame, d paramd)
   {
-    AppMethodBeat.i(211104);
-    this.lqQ = "";
-    this.lrK = ((e)a.checkNotNull(parame));
-    this.lrL = ((d)a.checkNotNull(paramd));
-    AppMethodBeat.o(211104);
+    AppMethodBeat.i(234773);
+    this.mxw = "";
+    this.myq = ((e)a.checkNotNull(parame));
+    this.myr = ((d)a.checkNotNull(paramd));
+    AppMethodBeat.o(234773);
   }
   
   private String getLogTag()
   {
-    AppMethodBeat.i(211111);
-    String str = this.lqQ + "TeeDataSource";
-    AppMethodBeat.o(211111);
+    AppMethodBeat.i(234780);
+    String str = this.mxw + "TeeDataSource";
+    AppMethodBeat.o(234780);
     return str;
-  }
-  
-  public final void Ru(String paramString)
-  {
-    this.lqQ = paramString;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(211105);
-    long l3 = this.lrK.a(paramg);
+    AppMethodBeat.i(234774);
+    long l3 = this.myq.a(paramg);
     long l1 = -1L;
-    c localc = c.lrO;
+    c localc = c.myu;
     long l2;
     Object localObject;
-    if ((this.lrK instanceof l))
+    if ((this.myq instanceof l))
     {
-      l2 = this.lrK.bbj();
-      localObject = (List)((l)this.lrK).getResponseHeaders().get("Content-Type");
+      l2 = this.myq.getTotalLength();
+      localObject = (List)((l)this.myq).getResponseHeaders().get("Content-Type");
       l1 = l2;
       if (localObject != null)
       {
         l1 = l2;
         if (!((List)localObject).isEmpty()) {
-          localc = c.Rx((String)((List)localObject).get(0));
+          localc = c.abd((String)((List)localObject).get(0));
         }
       }
     }
@@ -67,27 +62,27 @@ public final class r
       {
         localObject = paramg;
         if (l3 != -1L) {
-          localObject = new g(paramg.uri, paramg.absoluteStreamPosition, paramg.position, l3, paramg.key, paramg.flags, paramg.uuid, paramg.priority);
+          localObject = new g(paramg.uri, paramg.bEP, paramg.position, l3, paramg.key, paramg.flags, paramg.uuid, paramg.priority);
         }
       }
-      this.lrM = false;
+      this.mys = false;
       if (l2 != -1L) {}
       for (;;)
       {
         try
         {
-          this.lrL.a((g)localObject, l2, localc);
-          this.lrN = true;
-          AppMethodBeat.o(211105);
+          this.myr.a((g)localObject, l2, localc);
+          this.myt = true;
+          AppMethodBeat.o(234774);
           return l3;
         }
         catch (b.a paramg)
         {
-          this.lrM = true;
+          this.mys = true;
           h.a(5, getLogTag(), "error open dataSink " + paramg.toString(), paramg);
           continue;
         }
-        this.lrM = true;
+        this.mys = true;
       }
       l2 = l1;
     }
@@ -95,54 +90,46 @@ public final class r
   
   public final long available()
   {
-    AppMethodBeat.i(211107);
-    long l = this.lrK.available();
-    AppMethodBeat.o(211107);
+    AppMethodBeat.i(234776);
+    long l = this.myq.available();
+    AppMethodBeat.o(234776);
     return l;
   }
   
-  public final long bbj()
+  public final c bJP()
   {
-    AppMethodBeat.i(211110);
-    long l = this.lrK.bbj();
-    AppMethodBeat.o(211110);
-    return l;
-  }
-  
-  public final c bom()
-  {
-    AppMethodBeat.i(211109);
-    c localc = this.lrK.bom();
-    AppMethodBeat.o(211109);
+    AppMethodBeat.i(234778);
+    c localc = this.myq.bJP();
+    AppMethodBeat.o(234778);
     return localc;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(211108);
+    AppMethodBeat.i(234777);
     try
     {
-      this.lrK.close();
+      this.myq.close();
       try
       {
-        if (this.lrN) {
-          this.lrL.close();
+        if (this.myt) {
+          this.myr.close();
         }
-        AppMethodBeat.o(211108);
+        AppMethodBeat.o(234777);
         return;
       }
       catch (b.a locala1)
       {
         h.a(5, getLogTag(), "error close dataSink " + locala1.toString(), locala1);
-        AppMethodBeat.o(211108);
+        AppMethodBeat.o(234777);
         return;
       }
       try
       {
-        if (this.lrN) {
-          this.lrL.close();
+        if (this.myt) {
+          this.myr.close();
         }
-        AppMethodBeat.o(211108);
+        AppMethodBeat.o(234777);
         throw localObject;
       }
       catch (b.a locala2)
@@ -156,38 +143,51 @@ public final class r
     finally {}
   }
   
+  public final long getTotalLength()
+  {
+    AppMethodBeat.i(234779);
+    long l = this.myq.getTotalLength();
+    AppMethodBeat.o(234779);
+    return l;
+  }
+  
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(211106);
-    paramInt2 = this.lrK.read(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(234775);
+    paramInt2 = this.myq.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      if (this.lrM)
+      if (this.mys)
       {
-        AppMethodBeat.o(211106);
+        AppMethodBeat.o(234775);
         return paramInt2;
       }
     }
     try
     {
-      if (this.lrN) {
-        this.lrL.write(paramArrayOfByte, paramInt1, paramInt2);
+      if (this.myt) {
+        this.myr.write(paramArrayOfByte, paramInt1, paramInt2);
       }
-      AppMethodBeat.o(211106);
+      AppMethodBeat.o(234775);
       return paramInt2;
     }
     catch (b.a paramArrayOfByte)
     {
       for (;;)
       {
-        this.lrM = true;
+        this.mys = true;
         h.a(5, getLogTag(), "error write dataSink " + paramArrayOfByte.toString(), paramArrayOfByte);
       }
     }
   }
+  
+  public final void setLogTag(String paramString)
+  {
+    this.mxw = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.r
  * JD-Core Version:    0.7.0.1
  */

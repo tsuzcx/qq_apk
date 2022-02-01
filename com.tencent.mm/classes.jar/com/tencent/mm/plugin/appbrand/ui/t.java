@@ -1,165 +1,106 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
+import android.content.ComponentName;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import java.lang.ref.WeakReference;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIMoveTaskToBackGuardIPCHelper;", "", "()V", "TAG", "", "register", "", "activity", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "unregister", "makeKey", "plugin-appbrand-integration_release"})
 public final class t
-  extends q
 {
-  static int a(Window paramWindow, boolean paramBoolean)
+  public static final t nXI;
+  
+  static
   {
-    AppMethodBeat.i(135330);
-    int i = paramWindow.getDecorView().getSystemUiVisibility();
-    int j;
-    if (paramBoolean)
-    {
-      j = i | 0x400 | 0x100;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j | 0x200 | 0x2;
-      }
-      j = i | 0x4;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j | 0x1000;
-      }
-    }
-    for (;;)
-    {
-      ae.i("MicroMsg.AppBrandUIUtil", "hy: setting ui visibility: %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(135330);
-      return i;
-      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
-      }
-      j = i & 0xFFFFFFFB;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j & 0xFFFFEFFF;
-      }
-    }
+    AppMethodBeat.i(229521);
+    nXI = new t();
+    AppMethodBeat.o(229521);
   }
   
-  public static void a(Window paramWindow, boolean paramBoolean1, boolean paramBoolean2)
+  private static String j(AppBrandUI paramAppBrandUI)
   {
-    AppMethodBeat.i(176775);
-    if (paramBoolean1)
+    AppMethodBeat.i(229518);
+    StringBuilder localStringBuilder = new StringBuilder();
+    ComponentName localComponentName = paramAppBrandUI.getComponentName();
+    p.g(localComponentName, "this.componentName");
+    paramAppBrandUI = localComponentName.getShortClassName() + '@' + paramAppBrandUI.hashCode();
+    AppMethodBeat.o(229518);
+    return paramAppBrandUI;
+  }
+  
+  public static final void k(AppBrandUI paramAppBrandUI)
+  {
+    AppMethodBeat.i(229519);
+    p.h(paramAppBrandUI, "activity");
+    if ((paramAppBrandUI instanceof AppBrandPluginUI))
     {
-      i = a(paramWindow, true);
-      paramWindow.getDecorView().setSystemUiVisibility(i);
-      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-      {
-        public final void onSystemUiVisibilityChange(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(176773);
-          ae.d("MicroMsg.AppBrandUIUtil", "visibility = ".concat(String.valueOf(paramAnonymousInt)));
-          if ((paramAnonymousInt & 0x4) == 0) {
-            this.loq.getDecorView().setSystemUiVisibility(t.a(this.loq, true));
-          }
-          AppMethodBeat.o(176773);
-        }
-      });
-      paramWindow.addFlags(1024);
-      if ((paramBoolean2) && (Build.VERSION.SDK_INT >= 28))
-      {
-        paramWindow.getAttributes().layoutInDisplayCutoutMode = 1;
-        paramWindow.setAttributes(paramWindow.getAttributes());
-      }
-      AppMethodBeat.o(176775);
+      AppMethodBeat.o(229519);
       return;
     }
-    int i = a(paramWindow, false);
-    paramWindow.getDecorView().setSystemUiVisibility(i);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    try
+    final WeakReference localWeakReference = new WeakReference(paramAppBrandUI);
+    paramAppBrandUI = j(paramAppBrandUI);
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(paramAppBrandUI), (b)a.nXJ, (d)new b(paramAppBrandUI, localWeakReference));
+    AppMethodBeat.o(229519);
+  }
+  
+  public static final void l(AppBrandUI paramAppBrandUI)
+  {
+    AppMethodBeat.i(229520);
+    p.h(paramAppBrandUI, "activity");
+    if ((paramAppBrandUI instanceof AppBrandPluginUI))
     {
-      paramWindow.clearFlags(1024);
-      AppMethodBeat.o(176775);
+      AppMethodBeat.o(229520);
       return;
     }
-    catch (Exception paramWindow)
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(j(paramAppBrandUI)), (b)c.nXK, null);
+    AppMethodBeat.o(229520);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements b<IPCString, IPCVoid>
+  {
+    public static final a nXJ;
+    
+    static
     {
-      ae.printErrStackTrace("MicroMsg.AppBrandUIUtil", paramWindow, "[CAUGHT CRASH]", new Object[0]);
-      AppMethodBeat.o(176775);
+      AppMethodBeat.i(229514);
+      nXJ = new a();
+      AppMethodBeat.o(229514);
     }
   }
   
-  public static boolean cP(View paramView)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class b<T>
+    implements d<IPCVoid>
   {
-    AppMethodBeat.i(135329);
-    if (Build.VERSION.SDK_INT < 24)
-    {
-      AppMethodBeat.o(135329);
-      return false;
-    }
-    if (paramView == null)
-    {
-      AppMethodBeat.o(135329);
-      return false;
-    }
-    paramView = a.jw(paramView.getContext());
-    if ((paramView != null) && (paramView.isInMultiWindowMode()))
-    {
-      AppMethodBeat.o(135329);
-      return true;
-    }
-    AppMethodBeat.o(135329);
-    return false;
+    b(String paramString, WeakReference paramWeakReference) {}
   }
   
-  public static boolean dT(Context paramContext)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class c<InputType, ResultType>
+    implements b<IPCString, IPCVoid>
   {
-    AppMethodBeat.i(178640);
-    if (!(paramContext instanceof Activity))
+    public static final c nXK;
+    
+    static
     {
-      AppMethodBeat.o(178640);
-      return false;
+      AppMethodBeat.i(229517);
+      nXK = new c();
+      AppMethodBeat.o(229517);
     }
-    try
-    {
-      if ((((Activity)paramContext).getWindow().getAttributes().flags & 0x400) == 1024)
-      {
-        AppMethodBeat.o(178640);
-        return true;
-      }
-      AppMethodBeat.o(178640);
-      return false;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(178640);
-    }
-    return false;
-  }
-  
-  public static void u(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(176774);
-    Activity localActivity = a.jw(paramContext);
-    if ((localActivity != null) && (localActivity.getWindow() != null))
-    {
-      a(localActivity.getWindow(), paramBoolean, false);
-      AppMethodBeat.o(176774);
-      return;
-    }
-    ae.w("MicroMsg.AppBrandUIUtil", "configFullScreen with context(%s), get NULL activity", new Object[] { paramContext });
-    AppMethodBeat.o(176774);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.t
  * JD-Core Version:    0.7.0.1
  */

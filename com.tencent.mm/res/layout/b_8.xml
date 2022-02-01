@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:paddingLeft="@dimen/r" android:paddingRight="@dimen/jv" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/fpr" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/n3" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/fpm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fq7" />
-    </FrameLayout>
+    <TextView android:textColor="@color/tx" android:gravity="bottom|center|left" android:id="@android:id/title" style="@style/or" />
 </LinearLayout>

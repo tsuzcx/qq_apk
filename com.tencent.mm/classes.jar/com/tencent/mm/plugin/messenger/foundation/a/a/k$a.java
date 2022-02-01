@@ -11,7 +11,7 @@ public final class k$a
   {
     super(paramInt);
     this.cmdId = paramInt;
-    this.vWq = parama;
+    this.zqv = parama;
   }
   
   public final int getCmdId()

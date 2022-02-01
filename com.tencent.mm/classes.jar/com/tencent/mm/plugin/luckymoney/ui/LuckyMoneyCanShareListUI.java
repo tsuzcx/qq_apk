@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.luckymoney.model.ak;
-import com.tencent.mm.plugin.luckymoney.model.s;
-import com.tencent.mm.plugin.luckymoney.model.t;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.luckymoney.model.at;
+import com.tencent.mm.plugin.luckymoney.model.x;
+import com.tencent.mm.plugin.luckymoney.model.y;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 import com.tencent.mm.ui.base.MMLoadMoreListView.a;
 import java.util.LinkedList;
@@ -23,39 +23,39 @@ import java.util.List;
 public class LuckyMoneyCanShareListUI
   extends LuckyMoneyBaseUI
 {
-  private int fq;
-  private boolean lpM;
-  private MMLoadMoreListView vHP;
-  private e vHQ;
-  private boolean vHj;
-  private String vHr;
-  private List<t> vvQ;
+  private int fs;
+  private boolean mwr;
+  private List<y> yQe;
+  private MMLoadMoreListView zcN;
+  private f zcO;
+  private boolean zci;
+  private String zcp;
   
   public LuckyMoneyCanShareListUI()
   {
     AppMethodBeat.i(65508);
-    this.fq = 0;
-    this.vvQ = new LinkedList();
-    this.vHj = true;
-    this.lpM = false;
-    this.vHr = "";
+    this.fs = 0;
+    this.yQe = new LinkedList();
+    this.zci = true;
+    this.mwr = false;
+    this.zcp = "";
     AppMethodBeat.o(65508);
   }
   
-  private void dmh()
+  private void egc()
   {
     AppMethodBeat.i(65512);
-    this.lpM = true;
-    if (this.fq == 0) {
-      this.vHr = "";
+    this.mwr = true;
+    if (this.fs == 0) {
+      this.zcp = "";
     }
-    doSceneProgress(new ak(10, this.fq, 3, "", "v1.0", this.vHr));
+    doSceneProgress(new at(10, this.fs, 3, "", "v1.0", this.zcp));
     AppMethodBeat.o(65512);
   }
   
   public int getLayoutId()
   {
-    return 2131494649;
+    return 2131495372;
   }
   
   public void initView()
@@ -71,40 +71,40 @@ public class LuckyMoneyCanShareListUI
         return true;
       }
     });
-    this.vHP = ((MMLoadMoreListView)findViewById(2131301853));
-    setMMTitle(getString(2131760886));
-    this.vHQ = new f(getContext());
-    this.vHP.setAdapter(this.vHQ);
-    this.vHP.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.zcN = ((MMLoadMoreListView)findViewById(2131304172));
+    setMMTitle(getString(2131762655));
+    this.zcO = new g(getContext());
+    this.zcN.setAdapter(this.zcO);
+    this.zcN.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(65506);
         b localb = new b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyCanShareListUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-        paramAnonymousView = LuckyMoneyCanShareListUI.a(LuckyMoneyCanShareListUI.this).JR((int)paramAnonymousLong);
-        if ((paramAnonymousView != null) && (!bu.isNullOrNil(paramAnonymousView.vwq)))
+        localb.bm(paramAnonymousAdapterView);
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.zo(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyCanShareListUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        paramAnonymousView = LuckyMoneyCanShareListUI.a(LuckyMoneyCanShareListUI.this).PT((int)paramAnonymousLong);
+        if ((paramAnonymousView != null) && (!Util.isNullOrNil(paramAnonymousView.yQE)))
         {
           paramAnonymousAdapterView = new Intent();
           paramAnonymousAdapterView.setClass(LuckyMoneyCanShareListUI.this.getContext(), LuckyMoneyBeforeDetailUI.class);
-          paramAnonymousAdapterView.putExtra("key_sendid", paramAnonymousView.vwq);
+          paramAnonymousAdapterView.putExtra("key_sendid", paramAnonymousView.yQE);
           paramAnonymousView = LuckyMoneyCanShareListUI.this;
-          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahE(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyCanShareListUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mt(0));
+          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousAdapterView);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.axQ(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyCanShareListUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyCanShareListUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyCanShareListUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(65506);
       }
     });
-    this.vHP.setOnLoadMoreListener(new MMLoadMoreListView.a()
+    this.zcN.setOnLoadMoreListener(new MMLoadMoreListView.a()
     {
-      public final void ZC()
+      public final void onLoadMore()
       {
         AppMethodBeat.i(65507);
         if ((LuckyMoneyCanShareListUI.b(LuckyMoneyCanShareListUI.this)) && (!LuckyMoneyCanShareListUI.c(LuckyMoneyCanShareListUI.this))) {
@@ -121,39 +121,39 @@ public class LuckyMoneyCanShareListUI
     AppMethodBeat.i(65509);
     super.onCreate(paramBundle);
     initView();
-    dmh();
+    egc();
     AppMethodBeat.o(65509);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(65511);
-    if (((paramn instanceof ak)) && (paramInt1 == 0) && (paramInt2 == 0))
+    if (((paramq instanceof at)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = (ak)paramn;
-      paramn = paramString.vCw.vAC;
-      this.vHr = paramString.vCf;
-      if (paramn != null)
+      paramString = (at)paramq;
+      paramq = paramString.yXx.yVw;
+      this.zcp = paramString.yXg;
+      if (paramq != null)
       {
         paramInt1 = 0;
-        while (paramInt1 < paramn.size())
+        while (paramInt1 < paramq.size())
         {
-          this.vvQ.add(paramn.get(paramInt1));
+          this.yQe.add(paramq.get(paramInt1));
           paramInt1 += 1;
         }
-        this.fq += paramn.size();
-        this.vHj = paramString.dlq();
-        this.lpM = false;
-        this.vHQ.ew(this.vvQ);
+        this.fs += paramq.size();
+        this.zci = paramString.efl();
+        this.mwr = false;
+        this.zcO.fq(this.yQe);
       }
-      if (this.vHj) {
-        this.vHP.fCN();
+      if (this.zci) {
+        this.zcN.gKM();
       }
       for (;;)
       {
         AppMethodBeat.o(65511);
         return true;
-        this.vHP.fCO();
+        this.zcN.gKN();
       }
     }
     AppMethodBeat.o(65511);
@@ -168,7 +168,7 @@ public class LuckyMoneyCanShareListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyCanShareListUI
  * JD-Core Version:    0.7.0.1
  */

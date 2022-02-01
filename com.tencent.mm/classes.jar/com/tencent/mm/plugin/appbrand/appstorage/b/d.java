@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appstorage.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/LegacyFolder;", "", "dir", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getDir", "()Ljava/lang/String;", "imagecache", "wxafiles", "wxanewfiles", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/LegacyFolder;", "", "dir", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getDir", "()Ljava/lang/String;", "imagecache", "wxafiles", "wxanewfiles", "plugin-appbrand-integration_release"})
 public enum d
 {
   public final String dir;
@@ -12,12 +12,12 @@ public enum d
   {
     AppMethodBeat.i(175124);
     d locald1 = new d("imagecache", 0, "wxacache");
-    jRi = locald1;
+    kTS = locald1;
     d locald2 = new d("wxafiles", 1, "wxafiles");
-    jRj = locald2;
+    kTT = locald2;
     d locald3 = new d("wxanewfiles", 2, "wxanewfiles");
-    jRk = locald3;
-    jRl = new d[] { locald1, locald2, locald3 };
+    kTU = locald3;
+    kTV = new d[] { locald1, locald2, locald3 };
     AppMethodBeat.o(175124);
   }
   
@@ -28,7 +28,7 @@ public enum d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.b.d
  * JD-Core Version:    0.7.0.1
  */

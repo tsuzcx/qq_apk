@@ -1,144 +1,115 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.content.Context;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
 import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
-import d.g.b.p;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetNetWorkType;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetLocalImgData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class i
   extends a
 {
-  private static final int ECX = 16;
-  public static final i EHD;
-  private static final String TAG = "MicroMsg.JsApiGetNetWorkType";
-  private static final String dLB = "getNetworkType";
+  private static final int CDJ = 249;
+  public static final i Jxk;
+  private static final String edq = "getLocalImgData";
   
   static
   {
-    AppMethodBeat.i(199402);
-    EHD = new i();
-    TAG = "MicroMsg.JsApiGetNetWorkType";
-    ECX = 16;
-    dLB = "getNetworkType";
-    AppMethodBeat.o(199402);
+    AppMethodBeat.i(210595);
+    Jxk = new i();
+    CDJ = 249;
+    edq = "getLocalImgData";
+    AppMethodBeat.o(210595);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(199401);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Context localContext = paramd.context;
-    if (!az.isConnected(localContext))
+    AppMethodBeat.i(210594);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Object localObject1 = (String)paramn.params.get("localId");
+    float f = Util.getFloat((String)paramn.params.get("compressionRatio"), 0.0F);
+    if (Util.isNullOrNil((String)localObject1))
     {
-      ae.i(TAG, "getNetworkType, not connected");
-      paramd.DQe.i(paraml.Efy, "network_type:fail", null);
-      AppMethodBeat.o(199401);
-      return true;
+      paramf.IQZ.h(paramn.ISe, "getLocalImgData:fail_invaild_localid", null);
+      AppMethodBeat.o(210594);
+      return false;
     }
-    if (paramd.lzT != null) {}
-    int i;
+    label360:
     for (;;)
     {
       try
       {
-        Object localObject = paramd.lzT;
-        if (localObject == null) {
-          p.gkB();
-        }
-        localObject = ((e)localObject).k(110, new Bundle());
-        p.g(localObject, "env.invoker!!.invokeAsRe…_SIM_CARD_TYPE, Bundle())");
-        i = ((Bundle)localObject).getInt("sim_card_type", 0);
-        if (i == 0)
+        Object localObject2 = paramf.mHh;
+        if (localObject2 != null)
         {
-          i = 0;
-          int j = az.getNetType(localContext);
-          ae.i(TAG, "getNetworkType, type = %s, simType = %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-          localObject = (Map)new HashMap();
-          if (!az.is2G(localContext)) {
-            break;
+          localObject1 = ((e)localObject2).gu((String)localObject1, 2);
+          if (localObject1 != null)
+          {
+            localObject1 = BitmapUtil.decodeFile((String)localObject1);
+            if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+            {
+              localObject2 = new ByteArrayOutputStream();
+              double d = f;
+              if ((d < 0.1D) || (d > 0.99D)) {
+                break label360;
+              }
+              i = (int)(100.0F * f);
+              ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, i, (OutputStream)localObject2);
+              Object localObject3 = ((ByteArrayOutputStream)localObject2).toByteArray();
+              localObject2 = Base64.encodeToString((byte[])localObject3, 0);
+              Log.i("MicroMsg.JsApiGetLocalImgData", "rawData lenght = %d, base64 lenght = %d compressionRatio=".concat(String.valueOf(f)), new Object[] { Integer.valueOf(localObject3.length), Integer.valueOf(((String)localObject2).length()) });
+              localObject3 = new HashMap();
+              Map localMap = (Map)localObject3;
+              p.g(localObject2, "base64Content");
+              localMap.put("localData", localObject2);
+              paramf.IQZ.h(paramn.ISe, "getLocalImgData:ok", (Map)localObject3);
+              Log.i("MicroMsg.JsApiGetLocalImgData", "bitmap recycle %s", new Object[] { ((Bitmap)localObject1).toString() });
+              ((Bitmap)localObject1).recycle();
+              AppMethodBeat.o(210594);
+              return true;
+            }
           }
-          ae.i(TAG, "getNetworkType, 2g");
-          ((Map)localObject).put("subtype", "2g");
-          ((Map)localObject).put("simtype", Integer.valueOf(i));
-          paramd.DQe.i(paraml.Efy, "network_type:wwan", (Map)localObject);
-          AppMethodBeat.o(199401);
-          return true;
-        }
-        if (i == 1)
-        {
-          i = 1;
         }
         else
         {
-          i = 2;
+          localObject1 = null;
           continue;
-          i = 0;
         }
+        int i = 90;
       }
       catch (Exception localException)
       {
-        ae.e(TAG, "invokeAsResult ex %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.JsApiGetLocalImgData", localException.getMessage());
+        paramf.IQZ.h(paramn.ISe, "getLocalImgData:fail", null);
+        AppMethodBeat.o(210594);
+        return false;
       }
     }
-    if (az.is3G(localContext))
-    {
-      ae.i(TAG, "getNetworkType, 3g");
-      localException.put("subtype", "3g");
-      localException.put("simtype", Integer.valueOf(i));
-      paramd.DQe.i(paraml.Efy, "network_type:wwan", localException);
-      AppMethodBeat.o(199401);
-      return true;
-    }
-    if (az.is4G(localContext))
-    {
-      ae.i(TAG, "getNetworkType, 4g");
-      localException.put("subtype", "4g");
-      localException.put("simtype", Integer.valueOf(i));
-      paramd.DQe.i(paraml.Efy, "network_type:wwan", localException);
-      AppMethodBeat.o(199401);
-      return true;
-    }
-    if (az.is5G(localContext))
-    {
-      ae.i(TAG, "getNetworkType, 5g");
-      localException.put("subtype", "5g");
-      localException.put("simtype", Integer.valueOf(i));
-      paramd.DQe.i(paraml.Efy, "network_type:wwan", localException);
-      AppMethodBeat.o(199401);
-      return true;
-    }
-    if (az.isWifi(localContext))
-    {
-      ae.i(TAG, "getNetworkType, wifi");
-      localException.put("simtype", Integer.valueOf(i));
-      paramd.DQe.i(paraml.Efy, "network_type:wifi", localException);
-      AppMethodBeat.o(199401);
-      return true;
-    }
-    ae.w(TAG, "getNetworkType, unknown");
-    paramd.DQe.i(paraml.Efy, "network_type:fail", null);
-    AppMethodBeat.o(199401);
-    return true;
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
+    return edq;
   }
 }
 

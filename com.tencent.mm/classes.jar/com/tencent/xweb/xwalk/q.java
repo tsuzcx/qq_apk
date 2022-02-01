@@ -8,74 +8,74 @@ import org.xwalk.core.XWalkNavigationHistory;
 public final class q
   extends WebBackForwardList
 {
-  XWalkNavigationHistory MUD;
+  XWalkNavigationHistory SHK;
   
   public q(XWalkNavigationHistory paramXWalkNavigationHistory)
   {
-    this.MUD = paramXWalkNavigationHistory;
+    this.SHK = paramXWalkNavigationHistory;
   }
   
   protected final WebBackForwardList clone()
   {
-    AppMethodBeat.i(207589);
-    q localq = new q(this.MUD);
-    AppMethodBeat.o(207589);
+    AppMethodBeat.i(207319);
+    q localq = new q(this.SHK);
+    AppMethodBeat.o(207319);
     return localq;
   }
   
   public final int getCurrentIndex()
   {
-    AppMethodBeat.i(207586);
-    if (this.MUD == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.MUD.getCurrentIndex()))
+    AppMethodBeat.i(207316);
+    if (this.SHK == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.SHK.getCurrentIndex()))
     {
       int i = localInteger.intValue();
-      AppMethodBeat.o(207586);
+      AppMethodBeat.o(207316);
       return i;
     }
   }
   
   public final WebHistoryItem getCurrentItem()
   {
-    AppMethodBeat.i(207585);
-    if (this.MUD == null)
+    AppMethodBeat.i(207315);
+    if (this.SHK == null)
     {
-      AppMethodBeat.o(207585);
+      AppMethodBeat.o(207315);
       return null;
     }
-    r localr = new r(this.MUD.getCurrentItem());
-    AppMethodBeat.o(207585);
+    r localr = new r(this.SHK.getCurrentItem());
+    AppMethodBeat.o(207315);
     return localr;
   }
   
   public final WebHistoryItem getItemAtIndex(int paramInt)
   {
-    AppMethodBeat.i(207587);
-    if (this.MUD == null)
+    AppMethodBeat.i(207317);
+    if (this.SHK == null)
     {
-      AppMethodBeat.o(207587);
+      AppMethodBeat.o(207317);
       return null;
     }
-    r localr = new r(this.MUD.getItemAt(paramInt));
-    AppMethodBeat.o(207587);
+    r localr = new r(this.SHK.getItemAt(paramInt));
+    AppMethodBeat.o(207317);
     return localr;
   }
   
   public final int getSize()
   {
-    AppMethodBeat.i(207588);
-    if (this.MUD == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.MUD.size()))
+    AppMethodBeat.i(207318);
+    if (this.SHK == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.SHK.size()))
     {
       int i = localInteger.intValue();
-      AppMethodBeat.o(207588);
+      AppMethodBeat.o(207318);
       return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.q
  * JD-Core Version:    0.7.0.1
  */

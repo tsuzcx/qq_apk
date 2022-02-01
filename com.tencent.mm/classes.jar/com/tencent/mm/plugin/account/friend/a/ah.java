@@ -1,71 +1,71 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bqu;
-import com.tencent.mm.protocal.protobuf.bqv;
-import com.tencent.mm.protocal.protobuf.bqw;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cdn;
+import com.tencent.mm.protocal.protobuf.cdo;
+import com.tencent.mm.protocal.protobuf.cdp;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class ah
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private LinkedList<bqu> jhp;
-  public String jhq;
-  private final b rr;
+  private i callback;
+  private LinkedList<cdn> kft;
+  public String kfu;
+  private final d rr;
   
   public ah(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(131123);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bqv();
-    ((b.a)localObject).hQG = new bqw();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/invitegooglecontact";
-    ((b.a)localObject).funcId = 489;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    this.jhp = new LinkedList();
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cdo();
+    ((d.a)localObject).iLO = new cdp();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/invitegooglecontact";
+    ((d.a)localObject).funcId = 489;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    this.kft = new LinkedList();
     if (paramArrayList.size() > 0)
     {
       int i = 0;
       while (i < paramArrayList.size())
       {
-        localObject = new bqu();
-        ((bqu)localObject).FVP = ((String)paramArrayList.get(i));
-        this.jhp.add(localObject);
+        localObject = new cdn();
+        ((cdn)localObject).KPA = ((String)paramArrayList.get(i));
+        this.kft.add(localObject);
         i += 1;
       }
     }
     AppMethodBeat.o(131123);
   }
   
-  public final bqw aTD()
+  public final cdp bop()
   {
-    return (bqw)this.rr.hQE.hQJ;
+    return (cdp)this.rr.iLL.iLR;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(131124);
-    ae.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "doScene");
-    this.callback = paramf;
-    paramf = (bqv)this.rr.hQD.hQJ;
-    paramf.nID = this.jhp.size();
-    paramf.nIE = this.jhp;
-    int i = dispatch(parame, this.rr, this);
+    Log.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "doScene");
+    this.callback = parami;
+    parami = (cdo)this.rr.iLK.iLR;
+    parami.oTz = this.kft.size();
+    parami.oTA = this.kft;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(131124);
     return i;
   }
@@ -75,10 +75,10 @@ public final class ah
     return 489;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131125);
-    ae.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "NetId:%d, ErrType:%d, ErrCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "NetId:%d, ErrType:%d, ErrCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

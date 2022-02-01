@@ -18,41 +18,43 @@ import android.view.inputmethod.InputConnection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.utils.a;
-import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.plugin.finder.utils.al;
 import com.tencent.mm.plugin.finder.widget.edit.FinderEditFooter;
 import com.tencent.mm.plugin.finder.widget.edit.FinderEditFooter.a;
 import com.tencent.mm.plugin.finder.widget.edit.FinderEditTextView;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.t.b;
 import com.tencent.mm.ui.widget.MMEditText;
-import d.g.b.p;
-import d.l;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderEditTextUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "editFooter", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter;", "editView", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditTextView;", "getLayoutId", "", "goBack", "", "initView", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "restore", "saveTextData", "switchAlignMode", "alignMode", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderEditTextUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "editFooter", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter;", "editView", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditTextView;", "getLayoutId", "", "goBack", "", "initView", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "restore", "saveTextData", "switchAlignMode", "alignMode", "plugin-finder_release"})
 public final class FinderEditTextUI
   extends MMFinderUI
 {
   final String TAG = "Finder.FinderEditTextUI";
   private HashMap _$_findViewCache;
-  private FinderEditTextView sNo;
-  private FinderEditFooter sNp;
+  private FinderEditTextView vJJ;
+  private FinderEditFooter vJK;
   
-  private final void FY(int paramInt)
+  private final void Ll(int paramInt)
   {
     AppMethodBeat.i(167232);
-    Object localObject = FinderEditFooter.tpi;
-    if (paramInt == FinderEditFooter.cRi())
+    Object localObject = FinderEditFooter.wBZ;
+    if (paramInt == FinderEditFooter.dIT())
     {
-      localObject = this.sNo;
+      localObject = this.vJJ;
       if (localObject == null) {
-        p.bdF("editView");
+        p.btv("editView");
       }
       ((FinderEditTextView)localObject).setTextGravity(8388611);
     }
@@ -61,12 +63,12 @@ public final class FinderEditTextUI
       getIntent().putExtra("saveAlign", paramInt);
       AppMethodBeat.o(167232);
       return;
-      localObject = FinderEditFooter.tpi;
-      if (paramInt == FinderEditFooter.cRj())
+      localObject = FinderEditFooter.wBZ;
+      if (paramInt == FinderEditFooter.dIU())
       {
-        localObject = this.sNo;
+        localObject = this.vJJ;
         if (localObject == null) {
-          p.bdF("editView");
+          p.btv("editView");
         }
         ((FinderEditTextView)localObject).setTextGravity(1);
       }
@@ -76,23 +78,32 @@ public final class FinderEditTextUI
   private final void goBack()
   {
     AppMethodBeat.i(167231);
-    FinderEditTextView localFinderEditTextView = this.sNo;
+    FinderEditTextView localFinderEditTextView = this.vJJ;
     if (localFinderEditTextView == null) {
-      p.bdF("editView");
+      p.btv("editView");
     }
-    if (bu.isNullOrNil(localFinderEditTextView.getText().toString()))
+    if (Util.isNullOrNil(localFinderEditTextView.getText().toString()))
     {
       finish();
       AppMethodBeat.o(167231);
       return;
     }
-    com.tencent.mm.ui.base.h.a((Context)this, 2131759390, 0, 2131759392, 2131759391, true, (DialogInterface.OnClickListener)new a(this), (DialogInterface.OnClickListener)new b(this), 2131099903);
+    h.a((Context)this, 2131760661, 0, 2131760665, 2131760664, true, (DialogInterface.OnClickListener)new a(this), (DialogInterface.OnClickListener)new b(this), 2131099921);
     AppMethodBeat.o(167231);
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(252310);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252310);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204551);
+    AppMethodBeat.i(252309);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -103,86 +114,86 @@ public final class FinderEditTextUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204551);
+    AppMethodBeat.o(252309);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494028;
+    return 2131494237;
   }
   
   public final void initView()
   {
     AppMethodBeat.i(167229);
     setMMTitle("");
-    setActionbarColor(getResources().getColor(2131101179));
-    addTextOptionMenu(1, getString(2131755830), (MenuItem.OnMenuItemClickListener)new c(this), null, s.b.JwA);
-    Object localObject1 = findViewById(2131299268);
+    setActionbarColor(getResources().getColor(2131101424));
+    addTextOptionMenu(1, getString(2131755916), (MenuItem.OnMenuItemClickListener)new c(this), null, t.b.OGU);
+    Object localObject1 = findViewById(2131299849);
     p.g(localObject1, "findViewById(R.id.edit_view)");
-    this.sNo = ((FinderEditTextView)localObject1);
-    localObject1 = findViewById(2131299256);
+    this.vJJ = ((FinderEditTextView)localObject1);
+    localObject1 = findViewById(2131299828);
     p.g(localObject1, "findViewById(R.id.edit_footer)");
-    this.sNp = ((FinderEditFooter)localObject1);
-    localObject1 = this.sNo;
+    this.vJK = ((FinderEditFooter)localObject1);
+    localObject1 = this.vJJ;
     if (localObject1 == null) {
-      p.bdF("editView");
+      p.btv("editView");
     }
     ((FinderEditTextView)localObject1).setTextMaxLines(10);
-    localObject1 = this.sNo;
+    localObject1 = this.vJJ;
     if (localObject1 == null) {
-      p.bdF("editView");
+      p.btv("editView");
     }
-    ((FinderEditTextView)localObject1).setTextCursorDrawable(2131232606);
-    localObject1 = this.sNo;
+    ((FinderEditTextView)localObject1).setTextCursorDrawable(2131233002);
+    localObject1 = this.vJJ;
     if (localObject1 == null) {
-      p.bdF("editView");
+      p.btv("editView");
     }
     ((FinderEditTextView)localObject1).setTextGravity(8388611);
-    localObject1 = this.sNo;
+    localObject1 = this.vJJ;
     if (localObject1 == null) {
-      p.bdF("editView");
+      p.btv("editView");
     }
     ((FinderEditTextView)localObject1).setTextInputType(147457);
-    localObject1 = this.sNo;
+    localObject1 = this.vJJ;
     if (localObject1 == null) {
-      p.bdF("editView");
+      p.btv("editView");
     }
-    Object localObject2 = getString(2131759303);
+    Object localObject2 = getString(2131760418);
     p.g(localObject2, "getString(R.string.finder_post_text_hint)");
     ((FinderEditTextView)localObject1).setTextHint((String)localObject2);
-    localObject1 = this.sNo;
+    localObject1 = this.vJJ;
     if (localObject1 == null) {
-      p.bdF("editView");
+      p.btv("editView");
     }
-    localObject1 = ((FinderEditTextView)localObject1).tei;
+    localObject1 = ((FinderEditTextView)localObject1).wkS;
     if (localObject1 == null) {
-      p.bdF("editText");
+      p.btv("editText");
     }
     ((MMEditText)localObject1).requestFocus();
     localObject1 = getIntent().getStringExtra("saveText");
-    if (!bu.isNullOrNil((String)localObject1))
+    if (!Util.isNullOrNil((String)localObject1))
     {
-      localObject2 = this.sNo;
+      localObject2 = this.vJJ;
       if (localObject2 == null) {
-        p.bdF("editView");
+        p.btv("editView");
       }
       p.g(localObject1, "textStr");
-      ((FinderEditTextView)localObject2).akn((String)localObject1);
+      ((FinderEditTextView)localObject2).awW((String)localObject1);
     }
     int i = getIntent().getIntExtra("saveAlign", -1);
     if (i > 0) {
-      FY(i);
+      Ll(i);
     }
     showVKB();
-    localObject1 = this.sNp;
+    localObject1 = this.vJK;
     if (localObject1 == null) {
-      p.bdF("editFooter");
+      p.btv("editFooter");
     }
     ((FinderEditFooter)localObject1).setAlignModeChangeListener((FinderEditFooter.a)new d(this));
-    localObject1 = this.sNp;
+    localObject1 = this.vJK;
     if (localObject1 == null) {
-      p.bdF("editFooter");
+      p.btv("editFooter");
     }
     ((FinderEditFooter)localObject1).setSmileyTextOperationListener((ChatFooterPanel.a)new e(this));
     setBackBtn((MenuItem.OnMenuItemClickListener)new f(this));
@@ -210,7 +221,7 @@ public final class FinderEditTextUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class a
     implements DialogInterface.OnClickListener
   {
@@ -220,18 +231,19 @@ public final class FinderEditTextUI
     {
       AppMethodBeat.i(167221);
       paramDialogInterface = Parcel.obtain();
-      FinderEditTextUI.c(this.sNq);
-      this.sNq.getIntent().writeToParcel(paramDialogInterface, 0);
+      p.g(paramDialogInterface, "Parcel.obtain()");
+      FinderEditTextUI.c(this.vJL);
+      this.vJL.getIntent().writeToParcel(paramDialogInterface, 0);
       paramDialogInterface = paramDialogInterface.marshall();
-      com.tencent.mm.kernel.e locale = g.ajR();
+      com.tencent.mm.kernel.e locale = g.aAh();
       p.g(locale, "MMKernel.storage()");
-      locale.ajA().set(am.a.Jcv, com.tencent.d.f.e.bytesToHexString(paramDialogInterface));
-      this.sNq.finish();
+      locale.azQ().set(ar.a.Oly, com.tencent.e.f.e.bytesToHexString(paramDialogInterface));
+      this.vJL.finish();
       AppMethodBeat.o(167221);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class b
     implements DialogInterface.OnClickListener
   {
@@ -240,15 +252,15 @@ public final class FinderEditTextUI
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(167222);
-      paramDialogInterface = g.ajR();
+      paramDialogInterface = g.aAh();
       p.g(paramDialogInterface, "MMKernel.storage()");
-      paramDialogInterface.ajA().set(am.a.Jcv, "");
-      this.sNq.finish();
+      paramDialogInterface.azQ().set(ar.a.Oly, "");
+      this.vJL.finish();
       AppMethodBeat.o(167222);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class c
     implements MenuItem.OnMenuItemClickListener
   {
@@ -257,51 +269,51 @@ public final class FinderEditTextUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167223);
-      FinderEditTextUI.a(this.sNq).setTextCursorVisible(false);
-      paramMenuItem = com.tencent.mm.sdk.platformtools.h.fZ((View)FinderEditTextUI.a(this.sNq));
+      FinderEditTextUI.a(this.vJL).setTextCursorVisible(false);
+      paramMenuItem = BitmapUtil.getBitmapFromView((View)FinderEditTextUI.a(this.vJL));
       if (paramMenuItem != null)
       {
-        Object localObject = r.sYn;
-        localObject = r.cOx() + "text_" + System.nanoTime() + ".tmp";
-        com.tencent.mm.sdk.platformtools.h.a(paramMenuItem, 80, Bitmap.CompressFormat.JPEG, (String)localObject, true);
+        Object localObject = al.waC;
+        localObject = al.dEG() + "text_" + System.nanoTime() + ".tmp";
+        BitmapUtil.saveBitmapToImage(paramMenuItem, 80, Bitmap.CompressFormat.JPEG, (String)localObject, true);
         paramMenuItem = new ArrayList();
         paramMenuItem.add(localObject);
         localObject = new Intent();
         ((Intent)localObject).putExtra("postType", 7);
         ((Intent)localObject).putExtra("hideDescEdit", true);
         ((Intent)localObject).putExtra("postMediaList", (Serializable)paramMenuItem);
-        paramMenuItem = a.sVQ;
-        a.enterFinderPostUI((Context)this.sNq, (Intent)localObject);
-        this.sNq.finish();
+        paramMenuItem = a.vUU;
+        a.enterFinderPostUI((Context)this.vJL, (Intent)localObject);
+        this.vJL.finish();
       }
       AppMethodBeat.o(167223);
       return true;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderEditTextUI$initView$2", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$AlignModeChangeListener;", "onAlignModeChange", "", "alignMode", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderEditTextUI$initView$2", "Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditFooter$AlignModeChangeListener;", "onAlignModeChange", "", "alignMode", "", "plugin-finder_release"})
   public static final class d
     implements FinderEditFooter.a
   {
-    public final void FZ(int paramInt)
+    public final void Lm(int paramInt)
     {
       AppMethodBeat.i(167224);
-      ae.i(this.sNq.TAG, "alignMode changed to ".concat(String.valueOf(paramInt)));
-      FinderEditTextUI.a(this.sNq, paramInt);
+      Log.i(this.vJL.TAG, "alignMode changed to ".concat(String.valueOf(paramInt)));
+      FinderEditTextUI.a(this.vJL, paramInt);
       AppMethodBeat.o(167224);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderEditTextUI$initView$3", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderEditTextUI$initView$3", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-finder_release"})
   public static final class e
     implements ChatFooterPanel.a
   {
-    public final void apc()
+    public final void aHC()
     {
       AppMethodBeat.i(167226);
-      Object localObject = FinderEditTextUI.a(this.sNq).tei;
+      Object localObject = FinderEditTextUI.a(this.vJL).wkS;
       if (localObject == null) {
-        p.bdF("editText");
+        p.btv("editText");
       }
       localObject = ((MMEditText)localObject).getInputConnection();
       if (localObject != null)
@@ -314,26 +326,26 @@ public final class FinderEditTextUI
       AppMethodBeat.o(167226);
     }
     
-    public final void apd() {}
+    public final void aHD() {}
     
     public final void append(String paramString)
     {
       AppMethodBeat.i(167225);
-      if (!bu.isNullOrNil(paramString))
+      if (!Util.isNullOrNil(paramString))
       {
-        FinderEditTextView localFinderEditTextView = FinderEditTextUI.a(this.sNq);
+        FinderEditTextView localFinderEditTextView = FinderEditTextUI.a(this.vJL);
         if (paramString == null) {
-          p.gkB();
+          p.hyc();
         }
-        localFinderEditTextView.akn(paramString);
+        localFinderEditTextView.awW(paramString);
       }
       AppMethodBeat.o(167225);
     }
     
-    public final void dW(boolean paramBoolean) {}
+    public final void eP(boolean paramBoolean) {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class f
     implements MenuItem.OnMenuItemClickListener
   {
@@ -342,7 +354,7 @@ public final class FinderEditTextUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167227);
-      FinderEditTextUI.b(this.sNq);
+      FinderEditTextUI.b(this.vJL);
       AppMethodBeat.o(167227);
       return true;
     }
@@ -350,7 +362,7 @@ public final class FinderEditTextUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderEditTextUI
  * JD-Core Version:    0.7.0.1
  */

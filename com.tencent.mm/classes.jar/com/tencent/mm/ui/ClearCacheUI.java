@@ -6,13 +6,13 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bz;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.g.a.cb;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public class ClearCacheUI
   extends MMBaseActivity
@@ -23,7 +23,7 @@ public class ClearCacheUI
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_message");
     final long l = getIntent().getLongExtra("key_mask", 0L);
-    h.a(this, paramBundle, getString(2131757423), getString(2131757422), getString(2131757420), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    h.a(this, paramBundle, getString(2131757640), getString(2131757639), getString(2131757637), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -52,7 +52,7 @@ public class ClearCacheUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.ClearCacheUI
  * JD-Core Version:    0.7.0.1
  */

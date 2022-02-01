@@ -1,87 +1,100 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bbe;
-import com.tencent.mm.protocal.protobuf.bbf;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.EmotionDetail;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailRequest;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.bj;
 
 public final class m
-  extends n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  private f callback;
-  public byte[] pME;
-  private String pMF;
-  private final b rr;
+  private int cR;
+  private i callback;
+  private int mScene;
+  public String rcD;
+  private final com.tencent.mm.ak.d rr;
   
-  public m(String paramString, byte[] paramArrayOfByte)
+  public m(String paramString, int paramInt)
   {
-    AppMethodBeat.i(108703);
-    this.pME = null;
-    b.a locala = new b.a();
-    locala.hQF = new bbe();
-    locala.hQG = new bbf();
-    locala.uri = "/cgi-bin/micromsg-bin/mmgetemotiondonorlist";
-    locala.funcId = 299;
-    locala.hQH = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.pME = paramArrayOfByte;
-    this.pMF = paramString;
-    AppMethodBeat.o(108703);
+    this(paramString, paramInt, -1);
   }
   
-  public final bbf ciy()
+  public m(String paramString, int paramInt1, int paramInt2)
   {
-    return (bbf)this.rr.hQE.hQJ;
+    AppMethodBeat.i(108699);
+    this.rcD = paramString;
+    this.mScene = paramInt1;
+    this.cR = paramInt2;
+    paramString = new d.a();
+    paramString.iLN = new GetEmotionDetailRequest();
+    paramString.iLO = new GetEmotionDetailResponse();
+    paramString.uri = "/cgi-bin/micromsg-bin/getemotiondetail";
+    paramString.funcId = 412;
+    paramString.iLP = 211;
+    paramString.respCmdId = 1000000211;
+    this.rr = paramString.aXF();
+    AppMethodBeat.o(108699);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final EmotionDetail cGv()
   {
-    AppMethodBeat.i(108705);
-    this.callback = paramf;
-    paramf = (bbe)this.rr.hQD.hQJ;
-    if (this.pME != null) {}
-    for (paramf.ReqBuf = z.al(this.pME);; paramf.ReqBuf = new SKBuiltinBuffer_t())
-    {
-      paramf.ProductID = this.pMF;
-      int i = dispatch(parame, this.rr, this);
-      AppMethodBeat.o(108705);
-      return i;
-    }
+    AppMethodBeat.i(108702);
+    new EmotionDetail();
+    EmotionDetail localEmotionDetail = ((GetEmotionDetailResponse)this.rr.iLL.iLR).EmotionDetail;
+    AppMethodBeat.o(108702);
+    return localEmotionDetail;
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  {
+    AppMethodBeat.i(108700);
+    Log.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ProductID:%s, Scene:%d, Version:%d", new Object[] { this.rcD, Integer.valueOf(this.mScene), Integer.valueOf(this.cR) });
+    this.callback = parami;
+    parami = (GetEmotionDetailRequest)this.rr.iLK.iLR;
+    parami.ProductID = this.rcD;
+    parami.Scene = this.mScene;
+    parami.Version = this.cR;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(108700);
+    return i;
   }
   
   public final int getType()
   {
-    return 299;
+    return 412;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(108704);
-    ae.d("MicroMsg.emoji.NetSceneGetEmotionDonorList", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
-    paramq = (bbf)((b)paramq).hQE.hQJ;
-    if (paramq.FOC != null) {
-      this.pME = z.a(paramq.FOC);
+    AppMethodBeat.i(108701);
+    Log.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
+    if ((paramInt2 != 0) && (paramInt3 != 0) && (paramInt3 != 5))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108701);
+      return;
+    }
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().OpR.a(this.rcD, (GetEmotionDetailResponse)this.rr.iLL.iLR, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(108704);
+    AppMethodBeat.o(108701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.m
  * JD-Core Version:    0.7.0.1
  */

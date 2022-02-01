@@ -9,7 +9,7 @@ public class EventLocationBackgroundStateChanged
   implements Parcelable
 {
   public static final Parcelable.Creator<EventLocationBackgroundStateChanged> CREATOR;
-  public boolean jVr;
+  public boolean kYn;
   
   static
   {
@@ -24,7 +24,7 @@ public class EventLocationBackgroundStateChanged
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jVr = bool;
+      this.kYn = bool;
       AppMethodBeat.o(134871);
       return;
     }
@@ -32,7 +32,7 @@ public class EventLocationBackgroundStateChanged
   
   public EventLocationBackgroundStateChanged(boolean paramBoolean)
   {
-    this.jVr = paramBoolean;
+    this.kYn = paramBoolean;
   }
   
   public int describeContents()
@@ -43,7 +43,7 @@ public class EventLocationBackgroundStateChanged
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134872);
-    if (this.jVr) {}
+    if (this.kYn) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -54,7 +54,7 @@ public class EventLocationBackgroundStateChanged
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.EventLocationBackgroundStateChanged
  * JD-Core Version:    0.7.0.1
  */

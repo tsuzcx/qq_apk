@@ -5,43 +5,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.c;
 import com.tencent.mm.plugin.expt.hellhound.core.b.c.d;
 import com.tencent.mm.plugin.expt.hellhound.core.b.c.e;
-import com.tencent.mm.protocal.protobuf.dwx;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
-import d.v;
+import com.tencent.mm.protocal.protobuf.erd;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor;", "", "()V", "Companion", "SubMenuListener", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor;", "", "()V", "Companion", "SubMenuListener", "plugin-expt_release"})
 public final class a
 {
-  private static boolean rhV;
-  private static final b rhW;
-  private static boolean rhX;
-  public static final a.a rhY;
+  private static final b sJA;
+  private static boolean sJB;
+  public static final a.a sJC;
+  private static boolean sJz;
   
   static
   {
     AppMethodBeat.i(169403);
-    rhY = new a.a((byte)0);
-    rhW = new b();
+    sJC = new a.a((byte)0);
+    sJA = new b();
     AppMethodBeat.o(169403);
   }
   
-  public static final void cqn()
+  public static final void startMonitor()
   {
     AppMethodBeat.i(169404);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("processOnItemClick", "(II)V"));
     HashMap localHashMap = new HashMap();
     ((Map)localHashMap).put("com/tencent/mm/ui/PlusSubMenuHelper", localArrayList);
-    com.tencent.mm.hellhoundlib.a.ahD();
-    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)rhW);
+    com.tencent.mm.hellhoundlib.a.axP();
+    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)sJA);
     AppMethodBeat.o(169404);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "viewCallback", "id", "", "plugin-expt_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "viewCallback", "id", "", "plugin-expt_release"})
   static final class b
     implements c
   {
@@ -65,17 +65,17 @@ public final class a
       paramString1 = paramArrayOfObject[0];
       if (paramString1 == null)
       {
-        paramString1 = new v("null cannot be cast to non-null type kotlin.Int");
+        paramString1 = new t("null cannot be cast to non-null type kotlin.Int");
         AppMethodBeat.o(184286);
         throw paramString1;
       }
       i = ((Integer)paramString1).intValue();
-      paramString1 = a.rhY;
+      paramString1 = a.sJC;
       if (10 == i)
       {
         bool1 = true;
-        a.lg(bool1);
-        paramString1 = a.rhY;
+        a.mo(bool1);
+        paramString1 = a.sJC;
         if (2147483647 != i) {
           break label256;
         }
@@ -83,17 +83,17 @@ public final class a
       label256:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        a.lh(bool1);
-        paramString1 = new dwx();
+        a.mp(bool1);
+        paramString1 = new erd();
         paramString1.id = String.valueOf(i);
         paramString1.timestamp = System.currentTimeMillis();
-        paramString1.Icn = paramString1.id;
+        paramString1.NoL = paramString1.id;
         paramString1.typeName = "MMPopupWindow$PopupViewContainer";
-        paramString1.Ico = "MMPopupWindow$PopupViewContainer";
-        paramString1.duP = d.rao.value;
+        paramString1.NoM = "MMPopupWindow$PopupViewContainer";
+        paramString1.eventId = d.sAF.value;
         paramString1.type = 0;
-        ae.i("HABBYGE-MALI.SubMenuMonitor", "SubMenuMonitor, viewCallback:\nid=" + paramString1.id + '\n' + "timestamp=" + paramString1.timestamp + '\n' + "eventId=" + paramString1.duP);
-        paramString2 = e.raD;
+        Log.i("HABBYGE-MALI.SubMenuMonitor", "SubMenuMonitor, viewCallback:\nid=" + paramString1.id + '\n' + "timestamp=" + paramString1.timestamp + '\n' + "eventId=" + paramString1.eventId);
+        paramString2 = e.sAU;
         e.a(paramString1);
         AppMethodBeat.o(184286);
         return;

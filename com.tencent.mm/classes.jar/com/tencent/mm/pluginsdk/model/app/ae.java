@@ -1,52 +1,53 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bwy;
-import com.tencent.mm.protocal.protobuf.bwz;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ckq;
+import com.tencent.mm.protocal.protobuf.ckr;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class ae
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public b rr;
+  private i callback;
+  public d rr;
   
   public ae(int paramInt, String paramString)
   {
     AppMethodBeat.i(151818);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bwy();
-    ((b.a)localObject).hQG = new bwz();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/getserviceapplist";
-    ((b.a)localObject).funcId = 1060;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bwy)this.rr.hQD.hQJ;
-    ((bwy)localObject).offset = paramInt;
-    ((bwy)localObject).limit = 20;
-    ((bwy)localObject).lang = paramString;
-    g.ajS();
-    ((bwy)localObject).HjM = String.valueOf(((Integer)g.ajR().ajA().get(am.a.IPF, Integer.valueOf(0))).intValue());
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ckq();
+    ((d.a)localObject).iLO = new ckr();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/getserviceapplist";
+    ((d.a)localObject).funcId = 1060;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (ckq)this.rr.iLK.iLR;
+    ((ckq)localObject).offset = paramInt;
+    ((ckq)localObject).limit = 20;
+    ((ckq)localObject).lang = paramString;
+    com.tencent.mm.kernel.g.aAi();
+    ((ckq)localObject).Mqa = String.valueOf(((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue());
     AppMethodBeat.o(151818);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(151820);
-    this.callback = paramf;
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.NetSceneGetServiceAppList", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.NetSceneGetServiceAppList", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151820);
     return i;
   }
@@ -56,10 +57,10 @@ public final class ae
     return 1060;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151819);
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.NetSceneGetServiceAppList", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.NetSceneGetServiceAppList", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

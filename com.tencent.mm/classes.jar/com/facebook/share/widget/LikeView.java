@@ -88,7 +88,7 @@ public class LikeView
     AppMethodBeat.i(8691);
     this.likeActionController = paramLikeActionController;
     this.broadcastReceiver = new LikeControllerBroadcastReceiver(null);
-    paramLikeActionController = d.V(getContext());
+    paramLikeActionController = d.W(getContext());
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.facebook.sdk.LikeActionController.UPDATED");
     localIntentFilter.addAction("com.facebook.sdk.LikeActionController.DID_ERROR");
@@ -128,10 +128,10 @@ public class LikeView
   private void initialize(Context paramContext)
   {
     AppMethodBeat.i(8683);
-    this.edgePadding = getResources().getDimensionPixelSize(2131166059);
-    this.internalPadding = getResources().getDimensionPixelSize(2131166060);
+    this.edgePadding = getResources().getDimensionPixelSize(2131166099);
+    this.internalPadding = getResources().getDimensionPixelSize(2131166100);
     if (this.foregroundColor == -1) {
-      this.foregroundColor = getResources().getColor(2131100177);
+      this.foregroundColor = getResources().getColor(2131100210);
     }
     setBackgroundColor(0);
     this.containerView = new LinearLayout(paramContext);
@@ -185,7 +185,7 @@ public class LikeView
   {
     AppMethodBeat.i(8685);
     this.socialSentenceView = new TextView(paramContext);
-    this.socialSentenceView.setTextSize(0, getResources().getDimension(2131166061));
+    this.socialSentenceView.setTextSize(0, getResources().getDimension(2131166101));
     this.socialSentenceView.setMaxLines(2);
     this.socialSentenceView.setTextColor(this.foregroundColor);
     this.socialSentenceView.setGravity(17);
@@ -259,7 +259,7 @@ public class LikeView
     AppMethodBeat.i(8692);
     if (this.broadcastReceiver != null)
     {
-      d.V(getContext()).unregisterReceiver(this.broadcastReceiver);
+      d.W(getContext()).unregisterReceiver(this.broadcastReceiver);
       this.broadcastReceiver = null;
     }
     if (this.creationCallback != null)
@@ -867,7 +867,7 @@ public class LikeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.share.widget.LikeView
  * JD-Core Version:    0.7.0.1
  */

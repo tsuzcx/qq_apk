@@ -6,28 +6,28 @@ import rx.d;
 public final class b$a
   extends com.tencent.mm.plugin.appbrand.g.d.b<com.tencent.mm.plugin.appbrand.g.b.b>
 {
-  private com.tencent.mm.plugin.appbrand.g.c.b.b kgO;
-  private a kgP;
+  private com.tencent.mm.plugin.appbrand.g.c.b.b lkx;
+  private a lky;
   
   public b$a(com.tencent.mm.plugin.appbrand.g.c.b.b paramb)
   {
     AppMethodBeat.i(158950);
-    this.kgO = paramb;
-    this.kgP = a.bgb();
+    this.lkx = paramb;
+    this.lky = a.bBu();
     AppMethodBeat.o(158950);
   }
   
-  public final d<com.tencent.mm.plugin.appbrand.g.b.b> bgc()
+  public final d<com.tencent.mm.plugin.appbrand.g.b.b> bBv()
   {
     AppMethodBeat.i(158951);
-    d locald = d.a(new a.1(this.kgP, this.kgO)).a(this.khK);
+    d locald = d.a(new a.1(this.lky, this.lkx)).a(this.llt);
     AppMethodBeat.o(158951);
     return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.b.a
  * JD-Core Version:    0.7.0.1
  */

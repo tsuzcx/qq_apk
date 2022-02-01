@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ib
-  extends b
+  extends IEvent
 {
-  public a dvE;
+  public a dMF;
   
   public ib()
   {
@@ -15,21 +16,24 @@ public final class ib
   
   private ib(byte paramByte)
   {
-    AppMethodBeat.i(125616);
-    this.dvE = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(208807);
+    this.dMF = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125616);
+    AppMethodBeat.o(208807);
   }
   
   public static final class a
   {
-    public int scene;
+    public WXMediaMessage dCE;
+    public int dMG;
+    public String dMH;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ib
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public abstract class QrRewardBaseUI
         AppMethodBeat.o(63922);
         return false;
       }
-    }, 2131689490);
+    }, 2131689492);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

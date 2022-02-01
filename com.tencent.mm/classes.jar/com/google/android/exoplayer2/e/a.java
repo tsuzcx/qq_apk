@@ -10,10 +10,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @TargetApi(16)
 public final class a
 {
-  public final boolean bga;
-  public final boolean btc;
-  public final boolean btd;
-  public final MediaCodecInfo.CodecCapabilities bte;
+  public final boolean bfX;
+  public final boolean bsX;
+  public final boolean bsY;
+  public final MediaCodecInfo.CodecCapabilities bsZ;
   public final String mimeType;
   public final String name;
   
@@ -22,7 +22,7 @@ public final class a
     AppMethodBeat.i(92353);
     this.name = ((String)com.google.android.exoplayer2.i.a.checkNotNull(paramString1));
     this.mimeType = paramString2;
-    this.bte = paramCodecCapabilities;
+    this.bsZ = paramCodecCapabilities;
     if ((!paramBoolean1) && (paramCodecCapabilities != null)) {
       if ((x.SDK_INT >= 19) && (paramCodecCapabilities.isFeatureSupported("adaptive-playback")))
       {
@@ -32,7 +32,7 @@ public final class a
         }
         paramBoolean1 = true;
         label70:
-        this.btc = paramBoolean1;
+        this.bsX = paramBoolean1;
         if (paramCodecCapabilities == null) {
           break label189;
         }
@@ -46,7 +46,7 @@ public final class a
         }
         paramBoolean1 = true;
         label108:
-        this.bga = paramBoolean1;
+        this.bfX = paramBoolean1;
         if (!paramBoolean2)
         {
           paramBoolean1 = bool;
@@ -70,7 +70,7 @@ public final class a
       if (i != 0) {
         paramBoolean1 = true;
       }
-      this.btd = paramBoolean1;
+      this.bsY = paramBoolean1;
       AppMethodBeat.o(92353);
       return;
       i = 0;
@@ -111,13 +111,13 @@ public final class a
   public final boolean a(int paramInt1, int paramInt2, double paramDouble)
   {
     AppMethodBeat.i(92354);
-    if (this.bte == null)
+    if (this.bsZ == null)
     {
       bh("sizeAndRate.caps");
       AppMethodBeat.o(92354);
       return false;
     }
-    Object localObject = this.bte.getVideoCapabilities();
+    Object localObject = this.bsZ.getVideoCapabilities();
     if (localObject == null)
     {
       bh("sizeAndRate.vCaps");
@@ -133,7 +133,7 @@ public final class a
         return false;
       }
       localObject = "sizeAndRate.rotated, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble;
-      new StringBuilder("AssumedSupport [").append((String)localObject).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHq).append("]");
+      new StringBuilder("AssumedSupport [").append((String)localObject).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHH).append("]");
     }
     AppMethodBeat.o(92354);
     return true;
@@ -142,21 +142,21 @@ public final class a
   public final void bh(String paramString)
   {
     AppMethodBeat.i(92355);
-    new StringBuilder("NoSupport [").append(paramString).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHq).append("]");
+    new StringBuilder("NoSupport [").append(paramString).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHH).append("]");
     AppMethodBeat.o(92355);
   }
   
-  public final MediaCodecInfo.CodecProfileLevel[] uU()
+  public final MediaCodecInfo.CodecProfileLevel[] uZ()
   {
-    if ((this.bte == null) || (this.bte.profileLevels == null)) {
+    if ((this.bsZ == null) || (this.bsZ.profileLevels == null)) {
       return new MediaCodecInfo.CodecProfileLevel[0];
     }
-    return this.bte.profileLevels;
+    return this.bsZ.profileLevels;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.e.a
  * JD-Core Version:    0.7.0.1
  */

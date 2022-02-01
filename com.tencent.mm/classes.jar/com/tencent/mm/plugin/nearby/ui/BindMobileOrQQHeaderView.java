@@ -20,38 +20,38 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class BindMobileOrQQHeaderView
   extends LinearLayout
 {
-  private WeImageView soo;
-  private TextView wEa;
-  private a wEb;
-  private View.OnClickListener wEc;
+  private TextView AzH;
+  private a AzI;
+  private View.OnClickListener AzJ;
+  private WeImageView ubT;
   
   public BindMobileOrQQHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(89803);
-    this.wEc = new View.OnClickListener()
+    this.AzJ = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(89797);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.al(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.aDh().Cg("3") != null)
+        MMWizardActivity.ay(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.aWT().KR("3") != null)
         {
-          g.aDh().Cg("3").result = "1";
-          f.Cl("3");
+          g.aWT().KR("3").result = "1";
+          f.KW("3");
         }
         a.a(this, "com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(89797);
       }
     };
-    this.wEb = a.wEf;
-    aN(paramContext);
+    this.AzI = a.AzM;
+    bh(paramContext);
     AppMethodBeat.o(89803);
   }
   
@@ -59,50 +59,50 @@ public class BindMobileOrQQHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(89802);
-    this.wEc = new View.OnClickListener()
+    this.AzJ = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(89797);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.al(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.aDh().Cg("3") != null)
+        MMWizardActivity.ay(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.aWT().KR("3") != null)
         {
-          g.aDh().Cg("3").result = "1";
-          f.Cl("3");
+          g.aWT().KR("3").result = "1";
+          f.KW("3");
         }
         a.a(this, "com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(89797);
       }
     };
-    aN(paramContext);
+    bh(paramContext);
     AppMethodBeat.o(89802);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(89804);
-    paramContext = View.inflate(paramContext, 2131494999, this);
-    this.wEa = ((TextView)paramContext.findViewById(2131302701));
-    this.soo = ((WeImageView)paramContext.findViewById(2131302683));
-    switch (2.wEe[this.wEb.ordinal()])
+    paramContext = View.inflate(paramContext, 2131495812, this);
+    this.AzH = ((TextView)paramContext.findViewById(2131305255));
+    this.ubT = ((WeImageView)paramContext.findViewById(2131305237));
+    switch (2.AzL[this.AzI.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.wEc);
-      this.soo.setImageResource(2131690530);
+      setOnClickListener(this.AzJ);
+      this.ubT.setImageResource(2131690755);
       AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.wEc);
-      this.soo.setImageResource(2131690548);
+      setOnClickListener(this.AzJ);
+      this.ubT.setImageResource(2131690776);
     }
   }
   
@@ -111,9 +111,9 @@ public class BindMobileOrQQHeaderView
     static
     {
       AppMethodBeat.i(89801);
-      wEf = new a("Mobile", 0);
-      wEg = new a("UploadContact", 1);
-      wEh = new a[] { wEf, wEg };
+      AzM = new a("Mobile", 0);
+      AzN = new a("UploadContact", 1);
+      AzO = new a[] { AzM, AzN };
       AppMethodBeat.o(89801);
     }
     

@@ -1,112 +1,122 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.plugin.finder.cgi.bg;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.plugin.finder.cgi.co;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader.a;
+import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.a;
 import com.tencent.mm.plugin.finder.feed.model.internal.g;
-import com.tencent.mm.plugin.finder.model.am;
+import com.tencent.mm.plugin.finder.feed.model.internal.n;
+import com.tencent.mm.plugin.finder.model.bo;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.FinderItem.a;
-import com.tencent.mm.plugin.finder.storage.data.k;
-import com.tencent.mm.plugin.finder.storage.data.k.a;
-import com.tencent.mm.plugin.finder.storage.logic.b.a;
+import com.tencent.mm.plugin.finder.storage.data.l.a;
+import com.tencent.mm.plugin.finder.storage.logic.c;
+import com.tencent.mm.plugin.finder.storage.logic.c.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aoa;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import d.v;
-import d.z;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "finderUserName", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isTimeline", "", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Z)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "getHasMore", "()Z", "setHasMore", "(Z)V", "refObjectId", "", "getRefObjectId", "()J", "setRefObjectId", "(J)V", "totalCount", "", "getTotalCount", "()I", "setTotalCount", "(I)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "onFetchDone", "response", "FavDataFetcher", "FinderFavListResponse", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "finderUserName", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isTimeline", "", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Z)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "getHasMore", "()Z", "setHasMore", "(Z)V", "refObjectId", "", "getRefObjectId", "()J", "setRefObjectId", "(J)V", "totalCount", "", "getTotalCount", "()I", "setTotalCount", "(I)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getPageName", "onFetchDone", "response", "FavDataFetcher", "FinderFavListResponse", "plugin-finder_release"})
 public final class FinderFavFeedLoader
   extends BaseFinderFeedLoader
 {
-  public int fVS;
-  public d.g.a.b<? super IResponse<am>, z> fetchEndCallback;
+  public kotlin.g.a.b<? super IResponse<bo>, x> fetchEndCallback;
+  public int gAZ;
   public boolean hasMore;
-  private final String sjZ;
-  final boolean ska;
+  private final String sBN;
+  final boolean tUS;
   
-  public FinderFavFeedLoader(String paramString, arn paramarn, boolean paramBoolean)
+  public FinderFavFeedLoader(String paramString, bbn parambbn, boolean paramBoolean)
   {
-    super(paramarn);
-    AppMethodBeat.i(202805);
-    this.sjZ = paramString;
-    this.ska = paramBoolean;
-    AppMethodBeat.o(202805);
+    super(parambbn);
+    AppMethodBeat.i(244576);
+    this.sBN = paramString;
+    this.tUS = paramBoolean;
+    AppMethodBeat.o(244576);
   }
   
-  public final g<am> createDataFetch()
+  public final g<bo> createDataFetch()
   {
-    AppMethodBeat.i(202802);
+    AppMethodBeat.i(244573);
     g localg = (g)new a();
-    AppMethodBeat.o(202802);
+    AppMethodBeat.o(244573);
     return localg;
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.internal.b<am> createDataMerger()
+  public final com.tencent.mm.plugin.finder.feed.model.internal.b<bo> createDataMerger()
   {
-    AppMethodBeat.i(202803);
-    com.tencent.mm.plugin.finder.feed.model.internal.b localb = (com.tencent.mm.plugin.finder.feed.model.internal.b)new FinderFavFeedLoader.c(this);
-    AppMethodBeat.o(202803);
+    AppMethodBeat.i(244574);
+    com.tencent.mm.plugin.finder.feed.model.internal.b localb = (com.tencent.mm.plugin.finder.feed.model.internal.b)new c(this);
+    AppMethodBeat.o(244574);
     return localb;
   }
   
-  public final void onFetchDone(IResponse<am> paramIResponse)
+  public final int getPageName()
   {
-    AppMethodBeat.i(202804);
+    return 10;
+  }
+  
+  public final void onFetchDone(IResponse<bo> paramIResponse)
+  {
+    AppMethodBeat.i(244575);
     p.h(paramIResponse, "response");
     super.onFetchDone(paramIResponse);
     if (isInitOperation(paramIResponse))
     {
-      AppMethodBeat.o(202804);
+      AppMethodBeat.o(244575);
       return;
     }
     if ((paramIResponse.getPullType() == 0) && ((paramIResponse instanceof b))) {
-      this.fVS = ((b)paramIResponse).fVS;
+      this.gAZ = ((b)paramIResponse).gAZ;
     }
     this.hasMore = paramIResponse.getHasMore();
-    d.g.a.b localb = this.fetchEndCallback;
+    kotlin.g.a.b localb = this.fetchEndCallback;
     if (localb != null)
     {
       localb.invoke(paramIResponse);
-      AppMethodBeat.o(202804);
+      AppMethodBeat.o(244575);
       return;
     }
-    AppMethodBeat.o(202804);
+    AppMethodBeat.o(244575);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FavDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdId", "plugin-finder_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FavDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "plugin-finder_release"})
   public final class a
-    extends a
+    extends com.tencent.mm.plugin.finder.feed.model.internal.a
   {
-    public final IResponse<am> callInit()
+    public final IResponse<bo> callInit()
     {
       Object localObject2 = null;
-      AppMethodBeat.i(202799);
-      ae.i(getTAG(), "fetchInit initCount ");
-      FinderFavFeedLoader.b localb = new FinderFavFeedLoader.b(0, 0, "", 0);
+      AppMethodBeat.i(244570);
+      Log.i(getTAG(), "fetchInit initCount ");
+      FinderFavFeedLoader.b localb = new FinderFavFeedLoader.b(0, 0, "", 0, (byte)0);
       Object localObject1;
-      if (this.skb.ska)
+      if (this.tUT.tUS)
       {
-        localObject1 = this.skb.getCache();
+        localObject1 = this.tUT.getCache();
         if (localObject1 != null)
         {
-          localObject1 = ((e)localObject1).jhZ;
+          localObject1 = ((h)localObject1).kgc;
           localb.setIncrementList((List)localObject1);
-          e locale = this.skb.getCache();
+          h localh = this.tUT.getCache();
           localObject1 = localObject2;
-          if (locale != null) {
-            localObject1 = locale.lastBuffer;
+          if (localh != null) {
+            localObject1 = localh.lastBuffer;
           }
           localb.setLastBuffer((com.tencent.mm.bw.b)localObject1);
         }
@@ -114,143 +124,201 @@ public final class FinderFavFeedLoader
       for (;;)
       {
         localObject1 = (IResponse)localb;
-        AppMethodBeat.o(202799);
+        AppMethodBeat.o(244570);
         return localObject1;
         localObject1 = null;
         break;
-        localObject1 = k.sLb;
-        localb.setIncrementList(k.a.FR(10));
+        localb.setIncrementList(l.a.a(com.tencent.mm.plugin.finder.storage.data.l.vGw, this.tUT.getPageName()));
       }
     }
     
-    public final IResponse<am> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+    public final IResponse<bo> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
     {
-      AppMethodBeat.i(202798);
-      p.h(paramn, "scene");
-      if ((paramn instanceof bg))
+      AppMethodBeat.i(244569);
+      p.h(paramq, "scene");
+      if ((paramq instanceof co))
       {
-        if ((paramInt1 == 0) && (paramInt2 == 0))
-        {
-          localObject1 = ((bg)paramn).rr.aEV();
-          if (localObject1 == null)
-          {
-            paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
-            AppMethodBeat.o(202798);
-            throw paramString;
-          }
-          if (((aoa)localObject1).continueFlag != 0) {}
-        }
-        Object localObject4;
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (((co)paramq).cYA() == 0)) {}
+        FinderFavFeedLoader.b localb;
         for (boolean bool = false;; bool = true)
         {
-          localObject1 = (bg)paramn;
-          localObject2 = ((bg)localObject1).TAG;
-          localObject3 = new StringBuilder("favCount = ");
-          localObject4 = ((bg)localObject1).rr.aEV();
-          if (localObject4 != null) {
-            break;
+          localb = new FinderFavFeedLoader.b(paramInt1, paramInt2, paramString, ((co)paramq).cZm(), (byte)0);
+          localObject1 = (Iterable)((co)paramq).cYD();
+          paramString = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
+          localObject1 = ((Iterable)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (FinderObject)((Iterator)localObject1).next();
+            Object localObject3 = FinderItem.Companion;
+            localObject2 = FinderItem.a.a((FinderObject)localObject2, 256);
+            localObject3 = c.vGN;
+            paramString.add(c.a.s((FinderItem)localObject2));
           }
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
-          AppMethodBeat.o(202798);
-          throw paramString;
         }
-        ae.i((String)localObject2, ((aoa)localObject4).fVS);
-        Object localObject1 = ((bg)localObject1).rr.aEV();
-        if (localObject1 == null)
+        localb.setIncrementList((List)paramString);
+        paramString = c.vGN;
+        c.a.a(((co)paramq).cYD(), 256, this.tUT.getContextObj());
+        if (((co)paramq).pullType != 2)
         {
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
-          AppMethodBeat.o(202798);
-          throw paramString;
-        }
-        localObject1 = new FinderFavFeedLoader.b(paramInt1, paramInt2, paramString, ((aoa)localObject1).fVS);
-        Object localObject2 = (Iterable)((bg)paramn).czU();
-        paramString = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-        localObject2 = ((Iterable)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (FinderObject)((Iterator)localObject2).next();
-          localObject4 = FinderItem.sJb;
-          localObject3 = FinderItem.a.a((FinderObject)localObject3, 256);
-          localObject4 = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
-          paramString.add(b.a.j((FinderItem)localObject3));
-        }
-        ((FinderFavFeedLoader.b)localObject1).setIncrementList((List)paramString);
-        paramString = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
-        b.a.a(((bg)paramn).czU(), 256, this.skb.getContextObj(), 4);
-        if (((bg)paramn).pullType != 2)
-        {
-          paramString = com.tencent.mm.plugin.finder.storage.logic.b.sLq;
-          paramString = ((FinderFavFeedLoader.b)localObject1).getIncrementList();
+          paramString = c.vGN;
+          paramString = localb.getIncrementList();
           if (paramString == null)
           {
-            paramString = new v("null cannot be cast to non-null type kotlin.collections.List<com.tencent.mm.plugin.finder.model.BaseFinderFeed>");
-            AppMethodBeat.o(202798);
+            paramString = new t("null cannot be cast to non-null type kotlin.collections.List<com.tencent.mm.plugin.finder.model.BaseFinderFeed>");
+            AppMethodBeat.o(244569);
             throw paramString;
           }
-          b.a.b(paramString, 256, true);
+          c.a.b(paramString, 256, true);
+          localb.gAZ = ((co)paramq).cZm();
+          localb.tUU = ((co)paramq).cYy();
         }
-        localObject2 = getTAG();
-        Object localObject3 = new StringBuilder("incrementList size: ");
-        paramString = ((FinderFavFeedLoader.b)localObject1).getIncrementList();
+        Object localObject1 = getTAG();
+        Object localObject2 = new StringBuilder("incrementList size: ");
+        paramString = localb.getIncrementList();
         if (paramString != null) {}
         for (paramString = Integer.valueOf(paramString.size());; paramString = null)
         {
-          ae.i((String)localObject2, paramString);
-          ((FinderFavFeedLoader.b)localObject1).setPullType(((bg)paramn).pullType);
-          paramString = ((bg)paramn).rr.aEV();
-          if (paramString != null) {
-            break;
-          }
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
-          AppMethodBeat.o(202798);
-          throw paramString;
+          Log.i((String)localObject1, paramString);
+          localb.setPullType(((co)paramq).pullType);
+          localb.setLastBuffer(((co)paramq).cYz());
+          localb.setHasMore(bool);
+          paramString = (IResponse)localb;
+          AppMethodBeat.o(244569);
+          return paramString;
         }
-        ((FinderFavFeedLoader.b)localObject1).setLastBuffer(((aoa)paramString).lastBuffer);
-        ((FinderFavFeedLoader.b)localObject1).setHasMore(bool);
-        paramString = (IResponse)localObject1;
-        AppMethodBeat.o(202798);
-        return paramString;
       }
-      AppMethodBeat.o(202798);
+      AppMethodBeat.o(244569);
       return null;
     }
     
-    public final n genLoadMoreNetScene()
+    public final com.tencent.mm.ak.q genLoadMoreNetScene()
     {
-      AppMethodBeat.i(202797);
-      Object localObject = new bg(FinderFavFeedLoader.a(this.skb), this.skb.getLastBuffer(), this.skb.getContextObj());
-      ((bg)localObject).pullType = 2;
-      localObject = (n)localObject;
-      AppMethodBeat.o(202797);
+      AppMethodBeat.i(244568);
+      Object localObject = new co(FinderFavFeedLoader.a(this.tUT), this.tUT.getLastBuffer(), this.tUT.getContextObj());
+      ((co)localObject).pullType = 2;
+      localObject = (com.tencent.mm.ak.q)localObject;
+      AppMethodBeat.o(244568);
       return localObject;
     }
     
-    public final n genRefreshNetScene()
+    public final com.tencent.mm.ak.q genRefreshNetScene()
     {
-      AppMethodBeat.i(202796);
-      Object localObject = new bg(FinderFavFeedLoader.a(this.skb), this.skb.getLastBuffer(), this.skb.getContextObj());
-      ((bg)localObject).pullType = 0;
-      localObject = (n)localObject;
-      AppMethodBeat.o(202796);
+      AppMethodBeat.i(244567);
+      Object localObject = new co(FinderFavFeedLoader.a(this.tUT), this.tUT.getLastBuffer(), this.tUT.getContextObj());
+      ((co)localObject).pullType = 0;
+      localObject = (com.tencent.mm.ak.q)localObject;
+      AppMethodBeat.o(244567);
       return localObject;
     }
     
-    public final int getCmdId()
+    public final List<Integer> getCmdIds()
     {
-      return 3966;
+      AppMethodBeat.i(244566);
+      List localList = j.listOf(Integer.valueOf(3966));
+      AppMethodBeat.o(244566);
+      return localList;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "totalCount", "(IILjava/lang/String;I)V", "getTotalCount", "()I", "setTotalCount", "(I)V", "plugin-finder_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "totalCount", "megaVideoCount", "(IILjava/lang/String;II)V", "getMegaVideoCount", "()I", "setMegaVideoCount", "(I)V", "getTotalCount", "setTotalCount", "plugin-finder_release"})
   public static final class b
-    extends IResponse<am>
+    extends IResponse<bo>
   {
-    int fVS;
+    int gAZ;
+    public int tUU;
     
-    public b(int paramInt1, int paramInt2, String paramString, int paramInt3)
+    private b(int paramInt1, int paramInt2, String paramString, int paramInt3)
     {
       super(paramInt2, paramString);
-      this.fVS = paramInt3;
+      this.gAZ = paramInt3;
+      this.tUU = 0;
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeRefresh", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"})
+  public static final class c
+    extends BaseFeedLoader<bo>.a
+  {
+    c()
+    {
+      super();
+    }
+    
+    public final void mergeRefresh(final IResponse<bo> paramIResponse, final kotlin.g.a.b<? super IResponse<bo>, x> paramb)
+    {
+      int i = 0;
+      AppMethodBeat.i(244572);
+      p.h(paramIResponse, "response");
+      final RefreshLoadMoreLayout.c localc = new RefreshLoadMoreLayout.c(paramIResponse.getPullType());
+      Object localObject;
+      boolean bool;
+      if ((paramIResponse.getErrType() == 0) && (paramIResponse.getErrCode() == 0))
+      {
+        localObject = MMApplicationContext.getContext();
+        p.g(localObject, "MMApplicationContext.getContext()");
+        localc.Rmi = ((CharSequence)((Context)localObject).getResources().getString(2131760628));
+        localc.Rmh = 1;
+        if (paramIResponse.getPullType() == 0) {
+          break label291;
+        }
+        bool = true;
+        label86:
+        localc.jLE = bool;
+        localc.Rmj = paramIResponse.getHasMore();
+        if (((localc.actionType == 0) || (localc.actionType == 4)) && (localc.Rmk > 0)) {
+          localc.Rmi = null;
+        }
+        localc.iMa = Integer.valueOf(((FinderFavFeedLoader.b)paramIResponse).gAZ);
+        Log.i(this.tUT.getTAG(), "[onFetchRefreshDone]  reason=".concat(String.valueOf(localc)));
+        localObject = paramIResponse.getIncrementList();
+        if (localObject != null) {
+          i = ((List)localObject).size();
+        }
+        if (!paramIResponse.getHasMore()) {
+          break label297;
+        }
+        if (i > this.tUT.getDataList().size()) {
+          break label372;
+        }
+        i = 2;
+      }
+      for (;;)
+      {
+        d.h((kotlin.g.a.a)new a(this, new n(i, paramIResponse.getIncrementList(), paramIResponse.isNeedClear(), 8), localc, paramb, paramIResponse));
+        AppMethodBeat.o(244572);
+        return;
+        localObject = MMApplicationContext.getContext();
+        p.g(localObject, "MMApplicationContext.getContext()");
+        localc.Rmi = ((CharSequence)((Context)localObject).getResources().getString(2131760645));
+        localc.Rmh = -1;
+        break;
+        label291:
+        bool = false;
+        break label86;
+        label297:
+        if ((this.tUT.getDataList().size() == 0) || (i == 0) || (this.tUT.getDataList().size() <= i))
+        {
+          localObject = paramIResponse.getIncrementList();
+          if ((localObject != null) && (((List)localObject).containsAll((Collection)j.p((Iterable)this.tUT.getDataList())) == true))
+          {
+            i = 6;
+            continue;
+          }
+        }
+        label372:
+        i = 4;
+      }
+    }
+    
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    static final class a
+      extends kotlin.g.b.q
+      implements kotlin.g.a.a<x>
+    {
+      a(FinderFavFeedLoader.c paramc, n paramn, RefreshLoadMoreLayout.c paramc1, kotlin.g.a.b paramb, IResponse paramIResponse)
+      {
+        super();
+      }
     }
   }
 }

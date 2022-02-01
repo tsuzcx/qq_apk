@@ -5,122 +5,217 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.expt.i.c;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class a
 {
-  private static PBool qYt = null;
-  private static PBool qYu = null;
-  private static PBool qYv = null;
-  private static PBool qYw = null;
-  private static PBool qYx = null;
-  private static PBool qYy = null;
-  private static PBool qYz = null;
+  private static PBool syC;
+  private static PBool syD;
+  private static PBool syE;
+  private static PBool syF;
+  private static PBool syG;
+  private static PBool syH;
+  private static PBool syI;
+  private static PInt syJ;
+  private static String syK;
+  private static final List<String> syL;
+  private static boolean syM;
+  private static boolean syN;
+  private static int syO;
+  private static String syP;
+  public static boolean syQ;
   
-  public static boolean coV()
+  static
+  {
+    AppMethodBeat.i(220382);
+    syC = null;
+    syD = null;
+    syE = null;
+    syF = null;
+    syG = null;
+    syH = null;
+    syI = null;
+    syJ = null;
+    syK = null;
+    syL = new ArrayList();
+    syM = false;
+    syN = false;
+    syO = 0;
+    syP = "";
+    syQ = false;
+    AppMethodBeat.o(220382);
+  }
+  
+  public static void aov(String paramString)
+  {
+    syK = paramString;
+  }
+  
+  public static boolean aow(String paramString)
+  {
+    AppMethodBeat.i(220379);
+    if (!syM)
+    {
+      syL.clear();
+      AppMethodBeat.o(220379);
+      return false;
+    }
+    if (syL.contains(paramString))
+    {
+      AppMethodBeat.o(220379);
+      return true;
+    }
+    syL.add(paramString);
+    AppMethodBeat.o(220379);
+    return false;
+  }
+  
+  public static void aox(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    syP = str;
+  }
+  
+  public static String cNi()
+  {
+    return syK;
+  }
+  
+  public static boolean cNj()
+  {
+    return syN;
+  }
+  
+  public static void cNk()
+  {
+    syO += 1;
+  }
+  
+  public static boolean cNl()
+  {
+    return syO > 0;
+  }
+  
+  public static void cNm()
+  {
+    syO = 0;
+  }
+  
+  public static String cNn()
+  {
+    return syP;
+  }
+  
+  public static boolean cNo()
   {
     boolean bool = false;
     AppMethodBeat.i(121797);
-    if (qYt == null)
+    if (syC == null)
     {
-      c.ctt();
-      String str = c.b(b.a.qAd, "1");
+      c.cSa();
+      String str = c.c(b.a.rSo, "1");
       PBool localPBool = new PBool();
-      qYt = localPBool;
-      if (bu.getInt(str, 0) > 0) {
+      syC = localPBool;
+      if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!qYt.value) {
-      ae.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, hellhoundSwitch: [false]");
+    if (!syC.value) {
+      Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, hellhoundSwitch: [false]");
     }
-    bool = qYt.value;
+    bool = syC.value;
     AppMethodBeat.o(121797);
     return bool;
   }
   
-  public static boolean coW()
+  public static boolean cNp()
   {
     boolean bool = false;
     AppMethodBeat.i(121798);
-    if (qYu == null)
+    if (syD == null)
     {
-      c.ctt();
-      String str = c.b(b.a.qAe, "1");
+      c.cSa();
+      String str = c.c(b.a.rSp, "1");
       PBool localPBool = new PBool();
-      qYu = localPBool;
-      if (bu.getInt(str, 0) > 0) {
+      syD = localPBool;
+      if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!qYu.value) {
-      ae.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, frontbackSwitch: [false]");
+    if (!syD.value) {
+      Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, frontbackSwitch: [false]");
     }
-    bool = qYu.value;
+    bool = syD.value;
     AppMethodBeat.o(121798);
     return bool;
   }
   
-  public static boolean coX()
+  public static boolean cNq()
   {
     boolean bool = false;
     AppMethodBeat.i(121799);
-    if (qYv == null)
+    if (syE == null)
     {
-      c.ctt();
-      String str = c.b(b.a.qAe, "1");
+      c.cSa();
+      String str = c.c(b.a.rSp, "1");
       PBool localPBool = new PBool();
-      qYv = localPBool;
-      if (bu.getInt(str, 0) > 0) {
+      syE = localPBool;
+      if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!qYv.value) {
-      ae.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, sessionSwitch: [false]");
+    if (!syE.value) {
+      Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, sessionSwitch: [false]");
     }
-    bool = qYv.value;
+    bool = syE.value;
     AppMethodBeat.o(121799);
     return bool;
   }
   
-  public static boolean coY()
+  public static boolean cNr()
   {
     boolean bool = false;
     AppMethodBeat.i(169255);
-    if (qYx == null)
+    if (syG == null)
     {
-      c.ctt();
-      String str = c.b(b.a.qAh, "1");
+      c.cSa();
+      String str = c.c(b.a.rSs, "1");
       PBool localPBool = new PBool();
-      qYx = localPBool;
-      if (bu.getInt(str, 0) > 0) {
+      syG = localPBool;
+      if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!qYx.value) {
-      ae.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchFinderSwitch: [false]");
+    if (!syG.value) {
+      Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchFinderSwitch: [false]");
     }
-    bool = qYx.value;
+    bool = syG.value;
     AppMethodBeat.o(169255);
     return bool;
   }
   
-  public static boolean coZ()
+  public static boolean cNs()
   {
     AppMethodBeat.i(121800);
     PBool localPBool;
-    if (qYw == null)
+    if (syF == null)
     {
-      c.ctt();
-      String str = c.b(b.a.qAg, "1");
+      c.cSa();
+      String str = c.c(b.a.rSr, "1");
       localPBool = new PBool();
-      qYw = localPBool;
-      if (bu.getInt(str, 0) <= 0) {
+      syF = localPBool;
+      if (Util.getInt(str, 0) <= 0) {
         break label83;
       }
     }
@@ -129,58 +224,89 @@ public final class a
     {
       localPBool.value = bool;
       if (Build.BRAND.equalsIgnoreCase("meizu")) {
-        qYw.value = false;
+        syF.value = false;
       }
-      bool = qYw.value;
+      bool = syF.value;
       AppMethodBeat.o(121800);
       return bool;
     }
   }
   
-  public static boolean cpa()
+  public static boolean cNt()
   {
     boolean bool = false;
     AppMethodBeat.i(121801);
-    if (qYy == null)
+    if (syH == null)
     {
-      c.ctt();
-      String str = c.b(b.a.qAi, "1");
+      c.cSa();
+      String str = c.c(b.a.rSt, "1");
       PBool localPBool = new PBool();
-      qYy = localPBool;
-      if (bu.getInt(str, 0) > 0) {
+      syH = localPBool;
+      if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!qYy.value) {
-      ae.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchAsyncEventSwitch: [false]");
+    if (!syH.value) {
+      Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchAsyncEventSwitch: [false]");
     }
-    bool = qYy.value;
+    bool = syH.value;
     AppMethodBeat.o(121801);
     return bool;
   }
   
-  public static boolean cpb()
+  public static boolean cNu()
   {
     boolean bool = false;
-    AppMethodBeat.i(195955);
-    if (qYz == null)
+    AppMethodBeat.i(220380);
+    if (syI == null)
     {
-      c.ctt();
-      String str = c.b(b.a.qAj, "1");
+      c.cSa();
+      String str = c.c(b.a.rSu, "1");
       PBool localPBool = new PBool();
-      qYz = localPBool;
-      if (bu.getInt(str, 0) > 0) {
+      syI = localPBool;
+      if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!qYz.value) {
-      ae.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchHellCgiSwitch: [false]");
+    if (!syI.value) {
+      Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchHellCgiSwitch: [false]");
     }
-    bool = qYz.value;
-    AppMethodBeat.o(195955);
+    bool = syI.value;
+    AppMethodBeat.o(220380);
     return bool;
+  }
+  
+  public static int cNv()
+  {
+    AppMethodBeat.i(220381);
+    if (syJ == null)
+    {
+      c.cSa();
+      String str = c.c(b.a.rSv, "50");
+      PInt localPInt = new PInt();
+      syJ = localPInt;
+      localPInt.value = Util.getInt(str, 50);
+    }
+    int i = syJ.value;
+    AppMethodBeat.o(220381);
+    return i;
+  }
+  
+  public static void lW(boolean paramBoolean)
+  {
+    AppMethodBeat.i(220378);
+    syM = paramBoolean;
+    if (!paramBoolean) {
+      syL.clear();
+    }
+    AppMethodBeat.o(220378);
+  }
+  
+  public static void lX(boolean paramBoolean)
+  {
+    syN = paramBoolean;
   }
 }
 

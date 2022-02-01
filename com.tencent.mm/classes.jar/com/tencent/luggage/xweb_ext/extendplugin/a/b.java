@@ -8,7 +8,7 @@ import com.tencent.luggage.xweb_ext.extendplugin.b.c;
 
 public abstract interface b
 {
-  public abstract void Gh();
+  public abstract void PQ();
   
   public abstract void a(c paramc);
   
@@ -18,7 +18,7 @@ public abstract interface b
   
   public abstract String h(a parama);
   
-  public abstract void l(MotionEvent paramMotionEvent);
+  public abstract void o(MotionEvent paramMotionEvent);
   
   public abstract void s(Bitmap paramBitmap);
   
@@ -28,7 +28,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.a.b
  * JD-Core Version:    0.7.0.1
  */

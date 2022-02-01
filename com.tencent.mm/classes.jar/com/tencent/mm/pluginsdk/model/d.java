@@ -1,96 +1,148 @@
 package com.tencent.mm.pluginsdk.model;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.ak.e.c;
-import com.tencent.mm.g.a.lc;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.bl.b;
-import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.bs;
-import com.tencent.mm.storage.bt;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.List;
 
 public final class d
-  implements e
+  extends t
 {
-  public final e.b b(e.a parama)
+  private final d.a JUM;
+  private final Intent JUN;
+  private final y JUO;
+  
+  public d(Bundle paramBundle)
   {
-    AppMethodBeat.i(30937);
-    cv localcv = parama.gte;
-    if ((localcv == null) || (localcv.urJ != 47))
-    {
-      ae.f("MicroMsg.EmojiExtension", "parseEmojiMsg failed, invalid cmdAM");
-      AppMethodBeat.o(30937);
-      return null;
+    AppMethodBeat.i(109457);
+    this.JUO = new y();
+    if ((paramBundle == null) || (paramBundle.getParcelable("key_target_intent") == null)) {
+      this.JUM = d.a.JUQ;
     }
-    Object localObject1 = z.a(localcv.FNG);
-    Object localObject2 = z.a(localcv.FNH);
-    bc.aCg();
-    if (((String)c.ajA().get(2, null)).equals(localObject1))
+    while (this.JUM == d.a.JUQ)
     {
-      localObject1 = localObject2;
-      localObject2 = z.a(localcv.FNI);
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a((String)localObject1, (String)localObject2, localcv.xrk, localcv.FNL, parama);
-      localObject1 = bl.BS(localcv.FNL);
-      if (localObject1 != null)
-      {
-        ae.i("MicroMsg.EmojiExtension", "bizClientMsgId = %s", new Object[] { ((bl.b)localObject1).hJH });
-        if ((((bl.b)localObject1).hJM != null) && (((bl.b)localObject1).scene == 1))
-        {
-          parama = z.a(localcv.FNG);
-          bc.aCg();
-          c.ajA().set(73729, Integer.valueOf(1));
-          localObject2 = new bs();
-          ((bs)localObject2).field_content = ak.getContext().getString(2131761527);
-          ((bs)localObject2).field_createtime = bu.aRi();
-          ((bs)localObject2).field_imgpath = "";
-          ((bs)localObject2).field_sayhicontent = ((bs)localObject2).field_content;
-          ((bs)localObject2).field_sayhiuser = parama;
-          ((bs)localObject2).field_scene = 18;
-          if (localcv.nJb <= 3) {
-            break label372;
-          }
-        }
+      this.JUN = null;
+      AppMethodBeat.o(109457);
+      return;
+      d.a locala = d.a.ahC(paramBundle.getInt("key_map_app", d.a.JUQ.code));
+      if (a(MMApplicationContext.getContext(), locala, null) == null) {
+        this.JUM = d.a.JUQ;
+      } else {
+        this.JUM = locala;
       }
     }
-    label372:
-    for (int i = localcv.nJb;; i = 3)
-    {
-      ((bs)localObject2).field_status = i;
-      ((bs)localObject2).field_svrid = localcv.xrk;
-      ((bs)localObject2).field_talker = parama;
-      ((bs)localObject2).field_type = localcv.urJ;
-      ((bs)localObject2).field_isSend = 0;
-      ((bs)localObject2).field_sayhiencryptuser = parama;
-      ((bs)localObject2).field_ticket = ((bl.b)localObject1).hJM;
-      com.tencent.mm.bj.d.aMN().a((bs)localObject2);
-      localObject1 = new lc();
-      ((lc)localObject1).dzq.dzr = parama;
-      a.IvT.l((b)localObject1);
-      AppMethodBeat.o(30937);
-      return null;
-      break;
-    }
+    this.JUN = ((Intent)paramBundle.getParcelable("key_target_intent"));
+    AppMethodBeat.o(109457);
   }
   
-  public final void b(e.c paramc) {}
+  private static ResolveInfo a(Context paramContext, d.a parama, Intent paramIntent)
+  {
+    AppMethodBeat.i(109458);
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F) })));
+    }
+    paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0);
+    if (Util.isNullOrNil(paramContext))
+    {
+      AppMethodBeat.o(109458);
+      return null;
+    }
+    paramContext = paramContext.iterator();
+    while (paramContext.hasNext())
+    {
+      paramIntent = (ResolveInfo)paramContext.next();
+      if ((paramIntent != null) && (paramIntent.activityInfo != null) && (parama.getPackage().equals(paramIntent.activityInfo.packageName)))
+      {
+        AppMethodBeat.o(109458);
+        return paramIntent;
+      }
+    }
+    AppMethodBeat.o(109458);
+    return null;
+  }
+  
+  public final boolean bdn(String paramString)
+  {
+    AppMethodBeat.i(109460);
+    boolean bool = this.JUM.getPackage().equals(paramString);
+    AppMethodBeat.o(109460);
+    return bool;
+  }
+  
+  public final String blB()
+  {
+    if (this.JUM == d.a.JUQ) {
+      return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
+    }
+    return null;
+  }
+  
+  public final String c(Context paramContext, ResolveInfo paramResolveInfo)
+  {
+    AppMethodBeat.i(109462);
+    paramContext = this.JUO.c(paramContext, paramResolveInfo);
+    AppMethodBeat.o(109462);
+    return paramContext;
+  }
+  
+  public final String gmq()
+  {
+    if (this.JUM == d.a.JUQ) {
+      return "TencentMap.apk";
+    }
+    return null;
+  }
+  
+  public final u.a gmr()
+  {
+    AppMethodBeat.i(109461);
+    if (this.JUM == d.a.JUQ)
+    {
+      locala = this.JUO.gmr();
+      AppMethodBeat.o(109461);
+      return locala;
+    }
+    u.a locala = new u.a();
+    locala.JVD = -1;
+    locala.JVA = -1;
+    ResolveInfo localResolveInfo = a(MMApplicationContext.getContext(), this.JUM, this.JUN);
+    if (localResolveInfo != null) {
+      locala.JVE = c(MMApplicationContext.getContext(), localResolveInfo);
+    }
+    AppMethodBeat.o(109461);
+    return locala;
+  }
+  
+  public final boolean in(Context paramContext)
+  {
+    AppMethodBeat.i(109459);
+    if (this.JUM == d.a.JUQ)
+    {
+      boolean bool = this.JUO.in(paramContext);
+      AppMethodBeat.o(109459);
+      return bool;
+    }
+    if (a(paramContext, this.JUM, this.JUN) != null)
+    {
+      AppMethodBeat.o(109459);
+      return true;
+    }
+    AppMethodBeat.o(109459);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.d
  * JD-Core Version:    0.7.0.1
  */

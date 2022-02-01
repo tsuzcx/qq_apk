@@ -2,30 +2,41 @@ package com.tencent.mm.vfs.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public final class e<T>
-  extends a<Iterable<? extends T>, T>
+  implements Iterable<T>
 {
-  private static final a<?> LIU;
+  private static final a<?> ReX;
+  private final List<Iterable<? extends T>> ReW;
   
   static
   {
-    AppMethodBeat.i(193463);
-    LIU = new a((byte)0);
-    AppMethodBeat.o(193463);
+    AppMethodBeat.i(187778);
+    ReX = new a((byte)0);
+    AppMethodBeat.o(187778);
   }
   
   private e(List<Iterable<? extends T>> paramList)
   {
-    super(paramList, LIU);
+    this.ReW = paramList;
   }
   
+  @SafeVarargs
   public e(Iterable<? extends T>... paramVarArgs)
   {
     this(Arrays.asList(paramVarArgs));
-    AppMethodBeat.i(193462);
-    AppMethodBeat.o(193462);
+    AppMethodBeat.i(187776);
+    AppMethodBeat.o(187776);
+  }
+  
+  public final Iterator<T> iterator()
+  {
+    AppMethodBeat.i(187777);
+    b localb = new b(this.ReW.iterator(), ReX);
+    AppMethodBeat.o(187777);
+    return localb;
   }
   
   static final class a<T>

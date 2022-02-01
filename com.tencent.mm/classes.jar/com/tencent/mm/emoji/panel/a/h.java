@@ -4,65 +4,65 @@ import android.support.v7.widget.RecyclerView.a;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.b.aa;
-import com.tencent.mm.emoji.a.b.ac;
-import d.a.j;
+import com.tencent.mm.emoji.b.b.aa;
+import com.tencent.mm.emoji.b.b.w;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import kotlin.a.j;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "()V", "TAG", "", "clickListener", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "getClickListener", "()Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "setClickListener", "(Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "itemList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Lkotlin/collections/ArrayList;", "addData", "", "items", "", "addDataByIndex", "index", "", "item", "getItem", "position", "getItemCount", "getItemViewType", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateData", "ListenerToAdapter", "plugin-emojisdk_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "()V", "TAG", "", "clickListener", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "getClickListener", "()Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "setClickListener", "(Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "itemList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Lkotlin/collections/ArrayList;", "addData", "", "items", "", "addDataByIndex", "index", "", "item", "clearData", "getItem", "position", "getItemCount", "getItemViewType", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateData", "ListenerToAdapter", "plugin-emojisdk_release"})
 public class h
   extends RecyclerView.a<q<?>>
 {
   private final String TAG;
-  public n gpR;
-  private final ArrayList<ac> gqc;
+  public final ArrayList<com.tencent.mm.emoji.b.b.ac> gUV;
+  public n haK;
   
   public h()
   {
     AppMethodBeat.i(105665);
     this.TAG = "MicroMsg.EmojiPanelItemAdapter";
-    this.gqc = new ArrayList();
+    this.gUV = new ArrayList();
     AppMethodBeat.o(105665);
   }
   
-  public final void V(List<? extends ac> paramList)
-  {
-    AppMethodBeat.i(105656);
-    d.g.b.p.h(paramList, "items");
-    this.gqc.clear();
-    this.gqc.addAll((Collection)paramList);
-    AppMethodBeat.o(105656);
-  }
-  
-  public final void a(int paramInt, ac paramac)
+  public final void a(int paramInt, com.tencent.mm.emoji.b.b.ac paramac)
   {
     AppMethodBeat.i(105657);
-    d.g.b.p.h(paramac, "item");
-    this.gqc.add(paramInt, paramac);
+    kotlin.g.b.p.h(paramac, "item");
+    this.gUV.add(paramInt, paramac);
     AppMethodBeat.o(105657);
   }
   
   public void a(q<?> paramq, int paramInt)
   {
     AppMethodBeat.i(105663);
-    d.g.b.p.h(paramq, "holder");
-    Object localObject = this.gqc.get(paramInt);
-    d.g.b.p.g(localObject, "itemList[position]");
-    paramq.a((ac)localObject);
+    kotlin.g.b.p.h(paramq, "holder");
+    Object localObject = this.gUV.get(paramInt);
+    kotlin.g.b.p.g(localObject, "itemList[position]");
+    paramq.a((com.tencent.mm.emoji.b.b.ac)localObject);
     AppMethodBeat.o(105663);
+  }
+  
+  public final void ad(List<? extends com.tencent.mm.emoji.b.b.ac> paramList)
+  {
+    AppMethodBeat.i(105656);
+    kotlin.g.b.p.h(paramList, "items");
+    this.gUV.clear();
+    this.gUV.addAll((Collection)paramList);
+    AppMethodBeat.o(105656);
   }
   
   public q<?> f(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(105661);
-    d.g.b.p.h(paramViewGroup, "parent");
-    Object localObject = com.tencent.mm.emoji.a.b.q.gnP;
-    localObject = com.tencent.mm.emoji.a.b.q.mc(paramInt);
+    kotlin.g.b.p.h(paramViewGroup, "parent");
+    Object localObject = com.tencent.mm.emoji.b.b.q.gYK;
+    localObject = com.tencent.mm.emoji.b.b.q.pk(paramInt);
     if (localObject != null)
     {
-      paramViewGroup = ((com.tencent.mm.emoji.a.b.p)localObject).d(paramViewGroup);
+      paramViewGroup = ((com.tencent.mm.emoji.b.b.p)localObject).d(paramViewGroup);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     }
@@ -70,51 +70,51 @@ public class h
     switch (paramInt)
     {
     default: 
-      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493781, paramViewGroup, false);
-      d.g.b.p.g(paramViewGroup, "itemView");
-      paramViewGroup = (q)new k(paramViewGroup, this.gpR);
+      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493930, paramViewGroup, false);
+      kotlin.g.b.p.g(paramViewGroup, "itemView");
+      paramViewGroup = (q)new k(paramViewGroup, this.haK);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     case 1: 
-      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493784, paramViewGroup, false);
-      d.g.b.p.g(paramViewGroup, "itemView");
-      paramViewGroup = (q)new w(paramViewGroup, this.gpR);
+      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493937, paramViewGroup, false);
+      kotlin.g.b.p.g(paramViewGroup, "itemView");
+      paramViewGroup = (q)new ac(paramViewGroup, this.haK);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     case 2: 
-      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493785, paramViewGroup, false);
-      d.g.b.p.g(paramViewGroup, "itemView");
-      paramViewGroup = (q)new y(paramViewGroup, this.gpR);
+      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493938, paramViewGroup, false);
+      kotlin.g.b.p.g(paramViewGroup, "itemView");
+      paramViewGroup = (q)new ae(paramViewGroup, this.haK);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     case 3: 
-      paramViewGroup = ((LayoutInflater)localObject).inflate(2131495478, paramViewGroup, false);
-      d.g.b.p.g(paramViewGroup, "itemView");
-      paramViewGroup = (q)new l(paramViewGroup, this.gpR);
+      paramViewGroup = ((LayoutInflater)localObject).inflate(2131496353, paramViewGroup, false);
+      kotlin.g.b.p.g(paramViewGroup, "itemView");
+      paramViewGroup = (q)new l(paramViewGroup, this.haK);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     case 4: 
-      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493783, paramViewGroup, false);
-      d.g.b.p.g(paramViewGroup, "itemView");
-      paramViewGroup = (q)new m(paramViewGroup, this.gpR);
+      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493932, paramViewGroup, false);
+      kotlin.g.b.p.g(paramViewGroup, "itemView");
+      paramViewGroup = (q)new m(paramViewGroup, this.haK);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     case 5: 
-      paramViewGroup = ((LayoutInflater)localObject).inflate(2131495479, paramViewGroup, false);
-      d.g.b.p.g(paramViewGroup, "itemView");
-      paramViewGroup = new q(paramViewGroup, this.gpR);
+      paramViewGroup = ((LayoutInflater)localObject).inflate(2131496354, paramViewGroup, false);
+      kotlin.g.b.p.g(paramViewGroup, "itemView");
+      paramViewGroup = new q(paramViewGroup, this.haK);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     case 6: 
-      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493782, paramViewGroup, false);
-      d.g.b.p.g(paramViewGroup, "itemView");
-      paramViewGroup = (q)new b(paramViewGroup, this.gpR);
+      paramViewGroup = ((LayoutInflater)localObject).inflate(2131493931, paramViewGroup, false);
+      kotlin.g.b.p.g(paramViewGroup, "itemView");
+      paramViewGroup = (q)new b(paramViewGroup, this.haK);
       AppMethodBeat.o(105661);
       return paramViewGroup;
     }
-    paramViewGroup = ((LayoutInflater)localObject).inflate(2131493780, paramViewGroup, false);
-    d.g.b.p.g(paramViewGroup, "itemView");
-    paramViewGroup = (q)new a(paramViewGroup, this.gpR);
+    paramViewGroup = ((LayoutInflater)localObject).inflate(2131493929, paramViewGroup, false);
+    kotlin.g.b.p.g(paramViewGroup, "itemView");
+    paramViewGroup = (q)new a(paramViewGroup, this.haK);
     AppMethodBeat.o(105661);
     return paramViewGroup;
   }
@@ -122,7 +122,7 @@ public class h
   public final int getItemCount()
   {
     AppMethodBeat.i(105659);
-    int i = this.gqc.size();
+    int i = this.gUV.size();
     AppMethodBeat.o(105659);
     return i;
   }
@@ -130,7 +130,7 @@ public class h
   public int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(105660);
-    ac localac = me(paramInt);
+    com.tencent.mm.emoji.b.b.ac localac = pm(paramInt);
     if (localac != null)
     {
       paramInt = localac.type;
@@ -141,67 +141,67 @@ public class h
     return 0;
   }
   
-  public final ac me(int paramInt)
+  public final com.tencent.mm.emoji.b.b.ac pm(int paramInt)
   {
     AppMethodBeat.i(105658);
-    ac localac = (ac)j.F((List)this.gqc, paramInt);
+    com.tencent.mm.emoji.b.b.ac localac = (com.tencent.mm.emoji.b.b.ac)j.L((List)this.gUV, paramInt);
     AppMethodBeat.o(105658);
     return localac;
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter$ListenerToAdapter;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupDataListener;", "adapter", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter;", "(Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter;)V", "onGroupItemsChange", "", "start", "", "count", "onGroupItemsInsert", "onGroupItemsMoved", "from", "to", "onGroupItemsRemove", "onUpdateData", "data", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "plugin-emojisdk_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter$ListenerToAdapter;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupDataListener;", "adapter", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter;", "(Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemAdapter;)V", "onGroupItemsChange", "", "start", "", "count", "onGroupItemsInsert", "onGroupItemsMoved", "from", "to", "onGroupItemsRemove", "onUpdateData", "data", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "plugin-emojisdk_release"})
   public static final class a
     implements aa
   {
-    private final h gpV;
+    private final h haQ;
     
     public a(h paramh)
     {
       AppMethodBeat.i(105655);
-      this.gpV = paramh;
+      this.haQ = paramh;
       AppMethodBeat.o(105655);
     }
     
-    public final void b(com.tencent.mm.emoji.a.b.w paramw)
+    public final void b(w paramw)
     {
       AppMethodBeat.i(105650);
-      d.g.b.p.h(paramw, "data");
-      this.gpV.V(paramw.afz());
+      kotlin.g.b.p.h(paramw, "data");
+      this.haQ.ad(paramw.avn());
       AppMethodBeat.o(105650);
-    }
-    
-    public final void cA(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(105651);
-      this.gpV.ar(paramInt1, paramInt2);
-      AppMethodBeat.o(105651);
-    }
-    
-    public final void cB(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(105652);
-      this.gpV.as(paramInt1, paramInt2);
-      AppMethodBeat.o(105652);
-    }
-    
-    public final void cC(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(105653);
-      this.gpV.aq(paramInt1, paramInt2);
-      AppMethodBeat.o(105653);
     }
     
     public final void cD(int paramInt1, int paramInt2)
     {
+      AppMethodBeat.i(105651);
+      this.haQ.as(paramInt1, paramInt2);
+      AppMethodBeat.o(105651);
+    }
+    
+    public final void cE(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(105652);
+      this.haQ.at(paramInt1, paramInt2);
+      AppMethodBeat.o(105652);
+    }
+    
+    public final void cF(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(105653);
+      this.haQ.ar(paramInt1, paramInt2);
+      AppMethodBeat.o(105653);
+    }
+    
+    public final void cG(int paramInt1, int paramInt2)
+    {
       AppMethodBeat.i(105654);
-      this.gpV.ap(paramInt1, paramInt2);
+      this.haQ.aq(paramInt1, paramInt2);
       AppMethodBeat.o(105654);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.h
  * JD-Core Version:    0.7.0.1
  */

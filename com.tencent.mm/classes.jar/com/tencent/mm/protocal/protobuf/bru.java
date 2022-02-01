@@ -1,154 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bru
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> HeP;
-  public int HeR;
-  public eio HeS;
-  public String HeV;
-  public String ikm;
-  
-  public bru()
-  {
-    AppMethodBeat.i(123607);
-    this.HeP = new LinkedList();
-    AppMethodBeat.o(123607);
-  }
+  public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123608);
+    AppMethodBeat.i(152586);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.userName != null) {
+        paramVarArgs.e(1, this.userName);
       }
-      if (this.ikm != null) {
-        paramVarArgs.d(2, this.ikm);
-      }
-      paramVarArgs.e(3, 1, this.HeP);
-      paramVarArgs.aS(4, this.HeR);
-      if (this.HeS != null)
-      {
-        paramVarArgs.lJ(5, this.HeS.computeSize());
-        this.HeS.writeFields(paramVarArgs);
-      }
-      if (this.HeV != null) {
-        paramVarArgs.d(6, this.HeV);
-      }
-      AppMethodBeat.o(123608);
+      AppMethodBeat.o(152586);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label686;
+      if (this.userName == null) {
+        break label213;
       }
     }
-    label686:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.f(1, this.userName) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.ikm != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ikm);
-      }
-      i = i + f.a.a.a.c(3, 1, this.HeP) + f.a.a.b.b.a.bz(4, this.HeR);
-      paramInt = i;
-      if (this.HeS != null) {
-        paramInt = i + f.a.a.a.lI(5, this.HeS.computeSize());
-      }
-      i = paramInt;
-      if (this.HeV != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.HeV);
-      }
-      AppMethodBeat.o(123608);
-      return i;
+      AppMethodBeat.o(152586);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.HeP.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(123608);
+        AppMethodBeat.o(152586);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         bru localbru = (bru)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123608);
+          AppMethodBeat.o(152586);
           return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbru.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(123608);
-          return 0;
-        case 2: 
-          localbru.ikm = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(123608);
-          return 0;
-        case 3: 
-          localbru.HeP.add(((f.a.a.a.a)localObject1).OmT.readString());
-          AppMethodBeat.o(123608);
-          return 0;
-        case 4: 
-          localbru.HeR = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(123608);
-          return 0;
-        case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new eio();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((eio)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbru.HeS = ((eio)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(123608);
-          return 0;
         }
-        localbru.HeV = ((f.a.a.a.a)localObject1).OmT.readString();
-        AppMethodBeat.o(123608);
+        localbru.userName = locala.UbS.readString();
+        AppMethodBeat.o(152586);
         return 0;
       }
-      AppMethodBeat.o(123608);
+      AppMethodBeat.o(152586);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bru
  * JD-Core Version:    0.7.0.1
  */

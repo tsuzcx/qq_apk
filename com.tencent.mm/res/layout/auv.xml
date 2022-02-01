@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/e5p" android:background="@color/a_r" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:background="@color/ul" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/bga" layout="@layout/aus" />
-    <android.support.v7.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/h3x" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bga" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/Link_100" android:id="@id/e5c" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/e0o" android:layout_alignBottom="@id/h3x" android:layout_centerHorizontal="true" />
-    <RelativeLayout android:orientation="horizontal" android:id="@id/h3m" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
-        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/dsy" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a2t" android:gravity="bottom" android:layout_gravity="center_horizontal" android:id="@id/a8" android:paddingBottom="26.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="" android:layout_below="@id/dsy" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
     </RelativeLayout>
-</RelativeLayout>
+</ScrollView>

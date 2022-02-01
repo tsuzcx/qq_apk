@@ -6,28 +6,27 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.te;
+import com.tencent.mm.g.a.uc;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.b;
-import com.tencent.mm.plugin.expt.hellhound.a.f.c.k;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.l;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.m;
 import com.tencent.mm.plugin.expt.hellhound.a.f.f.i;
 import com.tencent.mm.plugin.expt.hellhound.core.b.b.h;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.d;
-import com.tencent.mm.protocal.protobuf.atn;
-import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.bow;
-import com.tencent.mm.protocal.protobuf.btm;
-import com.tencent.mm.protocal.protobuf.cia;
-import com.tencent.mm.protocal.protobuf.cib;
-import com.tencent.mm.protocal.protobuf.cie;
-import com.tencent.mm.protocal.protobuf.dce;
-import com.tencent.mm.protocal.protobuf.dch;
-import com.tencent.mm.protocal.protobuf.dcj;
-import com.tencent.mm.protocal.protobuf.dol;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bn;
+import com.tencent.mm.protocal.protobuf.cbl;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.cbo;
+import com.tencent.mm.protocal.protobuf.cgh;
+import com.tencent.mm.protocal.protobuf.cyh;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.protocal.protobuf.dvi;
+import com.tencent.mm.protocal.protobuf.dvl;
+import com.tencent.mm.protocal.protobuf.dvn;
+import com.tencent.mm.protocal.protobuf.eih;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,395 +38,398 @@ import java.util.Set;
 
 public final class b
 {
-  private static b rgS;
-  public final com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a rgT;
-  public final com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c rgU;
-  public String rgV;
-  private int rgW;
-  private int rgX;
-  private long rgY;
-  private cie rgZ;
+  private static b sIo;
+  public final com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a sIp;
+  public final com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c sIq;
+  public String sIr;
+  private int sIs;
+  private int sIt;
+  private long sIu;
+  private cyl sIv;
   
   private b()
   {
     AppMethodBeat.i(122045);
-    this.rgV = null;
-    this.rgW = -1;
-    this.rgX = -1;
-    this.rgY = -1L;
-    this.rgZ = null;
-    this.rgT = new com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a();
-    this.rgU = new com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c();
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.cpe()) {
-      k.crT();
+    this.sIr = null;
+    this.sIs = -1;
+    this.sIt = -1;
+    this.sIu = -1L;
+    this.sIv = null;
+    this.sIp = new com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a();
+    this.sIq = new com.tencent.mm.plugin.expt.hellhound.a.f.g.a.c();
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.isMMProcess()) {
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.k.cQB();
     }
     AppMethodBeat.o(122045);
   }
   
-  private void W(int paramInt, long paramLong)
+  private void Dr(long paramLong)
   {
-    AppMethodBeat.i(196115);
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+    AppMethodBeat.i(122056);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "openStoryGalleryView");
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localcyl == null)
+    {
+      localcyl = a(null, "MoreTabUI", "StoryGalleryView", 0, paramLong);
+      if (localcyl == null)
+      {
+        Log.e("HABBYGE-MALI.HellSessionMonitor", "openStoryGalleryView, 不是合法session ~~~");
+        AppMethodBeat.o(122056);
+        return;
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, "StoryGalleryView", 0, paramLong);
+      if (i == 0) {
+        break;
+      }
+      localcyl.iOu = 0;
+      String str2 = m.cPR();
+      String str1 = str2;
+      if (str2 == null) {
+        str1 = "";
+      }
+      localcyl.kvy = str1;
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(localcyl);
+      e(localcyl);
+      AppMethodBeat.o(122056);
+      return;
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "openStoryGalleryView, curSession: %s", new Object[] { localcyl.sessionId });
+    }
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(localcyl);
+    AppMethodBeat.o(122056);
+  }
+  
+  private void Ds(long paramLong)
+  {
+    AppMethodBeat.i(122057);
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localcyl == null)
+    {
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "closeStoryGalleryView, 不是合法session !!!");
+      AppMethodBeat.o(122057);
+      return;
+    }
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "closeStoryGalleryView, curSession: %s", new Object[] { localcyl.sessionId });
+    if ("142".equals(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(localcyl.sessionId)))
+    {
+      a(localcyl, paramLong);
+      AppMethodBeat.o(122057);
+      return;
+    }
+    if (!"StoryGalleryView".equals(localcyl.MDn))
+    {
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "curActivity: %s IS NOT curSession: %s startPage: %s", new Object[] { "StoryGalleryView", localcyl.sessionId, localcyl.MDn });
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(localcyl);
+    }
+    AppMethodBeat.o(122057);
+  }
+  
+  private void Dt(long paramLong)
+  {
+    AppMethodBeat.i(122079);
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localcyl == null)
+    {
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose, curSession不合法");
+      AppMethodBeat.o(122079);
+      return;
+    }
+    com.tencent.mm.vending.j.c localc = a.cPN();
+    String str = (String)localc.get(0);
+    int i = ((Integer)localc.get(1)).intValue();
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose: %s, %d", new Object[] { str, Integer.valueOf(i) });
+    if (i == localcyl.MDo)
+    {
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose, ==");
+      a(localcyl, paramLong);
+      AppMethodBeat.o(122079);
+      return;
+    }
+    Log.e("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose, != %d", new Object[] { Integer.valueOf(localcyl.MDo) });
+    AppMethodBeat.o(122079);
+  }
+  
+  private void Z(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(220545);
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
     if (localObject1 == null)
     {
-      localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dg(100);
-      localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dg(101);
-      String str1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dg(102);
-      String str2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dg(104);
-      if ((com.tencent.mm.plugin.expt.hellhound.core.b.aeo((String)localObject1)) && (com.tencent.mm.plugin.expt.hellhound.core.b.ael((String)localObject2)) && (com.tencent.mm.plugin.expt.hellhound.core.b.aeo(str1)) && (com.tencent.mm.plugin.expt.hellhound.core.b.ael(str2)))
+      localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GR(100);
+      localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GR(101);
+      String str1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GR(102);
+      String str2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GR(104);
+      if ((com.tencent.mm.plugin.expt.hellhound.core.b.aoB((String)localObject1)) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoy((String)localObject2)) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoB(str1)) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoy(str2)))
       {
-        Y(paramInt, paramLong);
-        AppMethodBeat.o(196115);
+        ab(paramInt, paramLong);
+        AppMethodBeat.o(220545);
         return;
       }
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, 不是合法session !!!");
-      AppMethodBeat.o(196115);
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, 不是合法session !!!");
+      AppMethodBeat.o(220545);
       return;
     }
-    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(((cie)localObject1).sessionId);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, curSessionId: %s", new Object[] { localObject2 });
-    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afJ((String)localObject2))
+    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(((cyl)localObject1).sessionId);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, curSessionId: %s", new Object[] { localObject2 });
+    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqu((String)localObject2))
     {
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cie)localObject1, "com.tencent.mm.ui.chatting.ChattingUI", paramInt, paramLong);
-      AppMethodBeat.o(196115);
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cyl)localObject1, "com.tencent.mm.ui.chatting.ChattingUI", paramInt, paramLong);
+      AppMethodBeat.o(220545);
       return;
     }
-    localObject2 = a.cre();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, userName: %s", new Object[] { (String)((com.tencent.mm.vending.j.b)localObject2).get(0) });
+    localObject2 = a.cPM();
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, userName: %s", new Object[] { (String)((com.tencent.mm.vending.j.b)localObject2).get(0) });
     int i = ((Integer)((com.tencent.mm.vending.j.c)localObject2).get(1)).intValue();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, newChattingType: %d", new Object[] { Integer.valueOf(i) });
-    if (i == ((cie)localObject1).Huq)
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, newChattingType: %d", new Object[] { Integer.valueOf(i) });
+    if (i == ((cyl)localObject1).MDo)
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, newChattingType same !!!");
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cie)localObject1, "com.tencent.mm.ui.chatting.ChattingUI", paramInt, paramLong);
-      AppMethodBeat.o(196115);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, newChattingType same !!!");
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cyl)localObject1, "com.tencent.mm.ui.chatting.ChattingUI", paramInt, paramLong);
+      AppMethodBeat.o(220545);
       return;
     }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, newChattingType difference !!!");
-    a((cie)localObject1, paramLong);
-    Y(paramInt, paramLong);
-    AppMethodBeat.o(196115);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIIn, newChattingType difference !!!");
+    a((cyl)localObject1, paramLong);
+    ab(paramInt, paramLong);
+    AppMethodBeat.o(220545);
   }
   
-  private void X(int paramInt, long paramLong)
+  private static Pair<String, String> a(cyl paramcyl1, cyl paramcyl2, cbo paramcbo)
   {
-    AppMethodBeat.i(122074);
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localcie == null)
-    {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, 不是合法session !!!");
-      AppMethodBeat.o(122074);
-      return;
-    }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, curSessionId: %s", new Object[] { localcie.sessionId });
-    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afJ(localcie.sessionId))
-    {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, not chat session: %s", new Object[] { localcie.sessionId });
-      d.cpt();
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
-      if (localObject != null)
-      {
-        String str = ((bj)localObject).FLG.activityName;
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, not chat session, page: %s", new Object[] { str });
-        if (paramInt != 2) {
-          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, str, ((bj)localObject).FLG.aHQ, paramLong);
-        }
-      }
-      AppMethodBeat.o(122074);
-      return;
-    }
-    Object localObject = a.cre();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, userName: %s", new Object[] { (String)((com.tencent.mm.vending.j.b)localObject).get(0) });
-    int i = ((Integer)((com.tencent.mm.vending.j.c)localObject).get(1)).intValue();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, newChattingType: %s, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(localcie.Huq) });
-    if (i == localcie.Huq)
-    {
-      if ("ChattingUI".equals(localcie.Hup))
-      {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIOut, CHATTING_UI");
-        a(localcie, paramLong);
-        AppMethodBeat.o(122074);
-        return;
-      }
-      if (paramInt == 2)
-      {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIOut, SLIENCE: %s", new Object[] { localcie.Hup });
-        a(localcie, paramLong);
-        AppMethodBeat.o(122074);
-        return;
-      }
-      d.cpt();
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
-      if (localObject != null)
-      {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, ((bj)localObject).FLG.activityName, ((bj)localObject).FLG.aHQ, paramLong);
-        com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(localcie);
-      }
-      AppMethodBeat.o(122074);
-      return;
-    }
-    ae.e("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, curChattingType不等: %d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(122074);
-  }
-  
-  private void Y(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(196116);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "newChattingUISession");
-    cie localcie = a(null, com.tencent.mm.plugin.expt.hellhound.core.b.qYK, "ChattingUI", paramInt, paramLong);
-    if (localcie == null)
-    {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "_doChattingUIInContinue, 不是合法session ~~~");
-      AppMethodBeat.o(196116);
-      return;
-    }
-    String str2 = m.crj();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localcie.sCx = str1;
-    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, "com.tencent.mm.ui.chatting.ChattingUI", paramInt, paramLong);
-    localcie.hTf = 0;
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(localcie);
-    e(localcie);
-    AppMethodBeat.o(196116);
-  }
-  
-  private static Pair<String, String> a(cie paramcie1, cie paramcie2, bow parambow)
-  {
-    AppMethodBeat.i(196122);
-    int j = parambow.Hcq.size();
+    AppMethodBeat.i(220552);
+    int j = paramcbo.Mht.size();
     int i;
-    if ((paramcie1 == null) && (paramcie2 == null))
+    if ((paramcyl1 == null) && (paramcyl2 == null))
     {
       if (j <= 0)
       {
-        AppMethodBeat.o(196122);
+        AppMethodBeat.o(220552);
         return null;
       }
       if (j < 2)
       {
-        paramcie1 = (cia)parambow.Hcq.getLast();
-        paramcie1 = Pair.create(paramcie1.duQ + "_" + paramcie1.startTime, null);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = (cyh)paramcbo.Mht.getLast();
+        paramcyl1 = Pair.create(paramcyl1.dMl + "_" + paramcyl1.startTime, null);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
       if (j == 2)
       {
-        paramcie1 = (cia)parambow.Hcq.getLast();
-        paramcie2 = (cia)parambow.Hcq.get(0);
-        paramcie1 = Pair.create(paramcie1.duQ + "_" + paramcie1.startTime, paramcie2.duQ + "_" + paramcie2.startTime);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = (cyh)paramcbo.Mht.getLast();
+        paramcyl2 = (cyh)paramcbo.Mht.get(0);
+        paramcyl1 = Pair.create(paramcyl1.dMl + "_" + paramcyl1.startTime, paramcyl2.dMl + "_" + paramcyl2.startTime);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
-      paramcie1 = (cia)parambow.Hcq.getLast();
+      paramcyl1 = (cyh)paramcbo.Mht.getLast();
       i = j - 2;
       while (i >= 0)
       {
-        paramcie2 = (cia)parambow.Hcq.get(i);
-        if (!paramcie1.duQ.equals(paramcie2.duQ))
+        paramcyl2 = (cyh)paramcbo.Mht.get(i);
+        if (!paramcyl1.dMl.equals(paramcyl2.dMl))
         {
-          paramcie1 = Pair.create(paramcie1.duQ + "_" + paramcie1.startTime, paramcie2.duQ + "_" + paramcie2.startTime);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcyl1.dMl + "_" + paramcyl1.startTime, paramcyl2.dMl + "_" + paramcyl2.startTime);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
         i -= 1;
       }
-      paramcie2 = (cia)parambow.Hcq.get(j - 2);
-      paramcie1 = Pair.create(paramcie1.duQ + "_" + paramcie1.startTime, paramcie2.duQ + "_" + paramcie2.startTime);
-      AppMethodBeat.o(196122);
-      return paramcie1;
+      paramcyl2 = (cyh)paramcbo.Mht.get(j - 2);
+      paramcyl1 = Pair.create(paramcyl1.dMl + "_" + paramcyl1.startTime, paramcyl2.dMl + "_" + paramcyl2.startTime);
+      AppMethodBeat.o(220552);
+      return paramcyl1;
     }
-    cia localcia;
-    if ((paramcie1 != null) && (paramcie2 == null))
+    cyh localcyh;
+    if ((paramcyl1 != null) && (paramcyl2 == null))
     {
       if (j <= 0)
       {
-        paramcie1 = Pair.create(paramcie1.sessionId, null);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl1.sessionId, null);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
       if (j < 2)
       {
-        paramcie2 = (cia)parambow.Hcq.getLast();
-        if (paramcie2.startTime <= paramcie1.startTime)
+        paramcyl2 = (cyh)paramcbo.Mht.getLast();
+        if (paramcyl2.startTime <= paramcyl1.startTime)
         {
-          paramcie1 = Pair.create(paramcie1.sessionId, paramcie2.duQ + "_" + paramcie2.startTime);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcyl1.sessionId, paramcyl2.dMl + "_" + paramcyl2.startTime);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
-        paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, paramcie1.sessionId);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, paramcyl1.sessionId);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
       if (j == 2)
       {
-        paramcie2 = (cia)parambow.Hcq.getLast();
-        parambow = (cia)parambow.Hcq.get(j - 2);
-        if (paramcie2.startTime <= paramcie1.startTime)
+        paramcyl2 = (cyh)paramcbo.Mht.getLast();
+        paramcbo = (cyh)paramcbo.Mht.get(j - 2);
+        if (paramcyl2.startTime <= paramcyl1.startTime)
         {
-          paramcie1 = Pair.create(paramcie1.sessionId, paramcie2.duQ + "_" + paramcie2.startTime);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcyl1.sessionId, paramcyl2.dMl + "_" + paramcyl2.startTime);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
-        if (parambow.startTime <= paramcie1.startTime)
+        if (paramcbo.startTime <= paramcyl1.startTime)
         {
-          paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, paramcie1.sessionId);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, paramcyl1.sessionId);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
-        paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, parambow.duQ + "_" + parambow.startTime);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, paramcbo.dMl + "_" + paramcbo.startTime);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
-      paramcie2 = (cia)parambow.Hcq.getLast();
-      if (paramcie2.startTime <= paramcie1.startTime)
+      paramcyl2 = (cyh)paramcbo.Mht.getLast();
+      if (paramcyl2.startTime <= paramcyl1.startTime)
       {
-        paramcie1 = Pair.create(paramcie1.sessionId, paramcie2.duQ + "_" + paramcie2.startTime);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl1.sessionId, paramcyl2.dMl + "_" + paramcyl2.startTime);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
-      localcia = (cia)parambow.Hcq.get(j - 2);
-      if (localcia.startTime <= paramcie1.startTime)
+      localcyh = (cyh)paramcbo.Mht.get(j - 2);
+      if (localcyh.startTime <= paramcyl1.startTime)
       {
-        paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, paramcie1.sessionId);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, paramcyl1.sessionId);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
-      if (!paramcie2.duQ.equals(localcia.duQ))
+      if (!paramcyl2.dMl.equals(localcyh.dMl))
       {
-        paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, localcia.duQ + "_" + localcia.startTime);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, localcyh.dMl + "_" + localcyh.startTime);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
       i = j - 2;
       while (i >= 0)
       {
-        localcia = (cia)parambow.Hcq.get(i);
-        if (localcia.duQ.equals(paramcie2.duQ))
+        localcyh = (cyh)paramcbo.Mht.get(i);
+        if (localcyh.dMl.equals(paramcyl2.dMl))
         {
-          if (localcia.startTime <= paramcie1.startTime)
+          if (localcyh.startTime <= paramcyl1.startTime)
           {
-            paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, paramcie1.sessionId);
-            AppMethodBeat.o(196122);
-            return paramcie1;
+            paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, paramcyl1.sessionId);
+            AppMethodBeat.o(220552);
+            return paramcyl1;
           }
         }
         else
         {
-          if (localcia.startTime <= paramcie1.startTime)
+          if (localcyh.startTime <= paramcyl1.startTime)
           {
-            paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, paramcie1.sessionId);
-            AppMethodBeat.o(196122);
-            return paramcie1;
+            paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, paramcyl1.sessionId);
+            AppMethodBeat.o(220552);
+            return paramcyl1;
           }
-          paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, localcia.duQ + "_" + localcia.startTime);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, localcyh.dMl + "_" + localcyh.startTime);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
         i -= 1;
       }
-      paramcie1 = Pair.create(paramcie2.duQ + "_" + paramcie2.startTime, paramcie1.sessionId);
-      AppMethodBeat.o(196122);
-      return paramcie1;
+      paramcyl1 = Pair.create(paramcyl2.dMl + "_" + paramcyl2.startTime, paramcyl1.sessionId);
+      AppMethodBeat.o(220552);
+      return paramcyl1;
     }
-    if (paramcie1 != null)
+    if (paramcyl1 != null)
     {
       if (j <= 0)
       {
-        paramcie1 = Pair.create(paramcie1.sessionId, paramcie2.sessionId);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl1.sessionId, paramcyl2.sessionId);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
       if (j < 2)
       {
-        parambow = (cia)parambow.Hcq.getLast();
-        if (parambow.startTime > paramcie1.startTime)
+        paramcbo = (cyh)paramcbo.Mht.getLast();
+        if (paramcbo.startTime > paramcyl1.startTime)
         {
-          paramcie1 = Pair.create(parambow.duQ + "_" + parambow.startTime, paramcie1.sessionId);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcbo.dMl + "_" + paramcbo.startTime, paramcyl1.sessionId);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
-        if (parambow.startTime > paramcie2.startTime)
+        if (paramcbo.startTime > paramcyl2.startTime)
         {
-          paramcie1 = Pair.create(paramcie1.sessionId, parambow.duQ + "_" + parambow.startTime);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcyl1.sessionId, paramcbo.dMl + "_" + paramcbo.startTime);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
-        paramcie1 = Pair.create(paramcie1.sessionId, paramcie2.sessionId);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl1.sessionId, paramcyl2.sessionId);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
-      localcia = (cia)parambow.Hcq.getLast();
-      parambow = (cia)parambow.Hcq.get(j - 2);
-      if (localcia.startTime <= paramcie1.startTime)
+      localcyh = (cyh)paramcbo.Mht.getLast();
+      paramcbo = (cyh)paramcbo.Mht.get(j - 2);
+      if (localcyh.startTime <= paramcyl1.startTime)
       {
-        if (localcia.startTime <= paramcie2.startTime)
+        if (localcyh.startTime <= paramcyl2.startTime)
         {
-          paramcie1 = Pair.create(paramcie1.sessionId, paramcie2.sessionId);
-          AppMethodBeat.o(196122);
-          return paramcie1;
+          paramcyl1 = Pair.create(paramcyl1.sessionId, paramcyl2.sessionId);
+          AppMethodBeat.o(220552);
+          return paramcyl1;
         }
-        paramcie1 = Pair.create(paramcie1.sessionId, localcia.duQ + "_" + localcia.startTime);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(paramcyl1.sessionId, localcyh.dMl + "_" + localcyh.startTime);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
-      if (paramcie1.startTime >= parambow.startTime)
+      if (paramcyl1.startTime >= paramcbo.startTime)
       {
-        paramcie1 = Pair.create(localcia.duQ + "_" + localcia.startTime, paramcie1.sessionId);
-        AppMethodBeat.o(196122);
-        return paramcie1;
+        paramcyl1 = Pair.create(localcyh.dMl + "_" + localcyh.startTime, paramcyl1.sessionId);
+        AppMethodBeat.o(220552);
+        return paramcyl1;
       }
-      paramcie1 = Pair.create(localcia.duQ + "_" + localcia.startTime, parambow.duQ + "_" + parambow.startTime);
-      AppMethodBeat.o(196122);
-      return paramcie1;
+      paramcyl1 = Pair.create(localcyh.dMl + "_" + localcyh.startTime, paramcbo.dMl + "_" + paramcbo.startTime);
+      AppMethodBeat.o(220552);
+      return paramcyl1;
     }
-    AppMethodBeat.o(196122);
+    AppMethodBeat.o(220552);
     return null;
   }
   
-  private void a(int paramInt, bj parambj, long paramLong)
+  private void a(int paramInt, bn parambn, long paramLong)
   {
     int i = 0;
     AppMethodBeat.i(122077);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorChatUIFragment: %d", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorChatUIFragment: %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 6)
     {
-      Fragment localFragment = h.aeV(com.tencent.mm.plugin.expt.hellhound.core.b.qYJ);
+      Fragment localFragment = h.apl(com.tencent.mm.plugin.expt.hellhound.core.b.sza);
       if (localFragment == null) {}
       for (paramInt = i;; paramInt = localFragment.hashCode())
       {
-        b(parambj, paramInt, paramLong);
+        b(parambn, paramInt, paramLong);
         AppMethodBeat.o(122077);
         return;
       }
     }
     if (paramInt == 7) {
-      vp(paramLong);
+      Dt(paramLong);
     }
     AppMethodBeat.o(122077);
   }
   
-  private void a(Activity paramActivity, bj parambj1, bj parambj2, int paramInt)
+  private void a(Activity paramActivity, bn parambn1, bn parambn2, int paramInt)
   {
     AppMethodBeat.i(184368);
-    if (parambj1 == null)
+    if (parambn1 == null)
     {
       AppMethodBeat.o(184368);
       return;
     }
-    if ("ChattingUI".equals(com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj1.FLG.activityName)))
+    if ("ChattingUI".equals(com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn1.KFh.activityName)))
     {
-      i(paramInt, parambj1.FLG.aHQ, parambj1.FLG.timestamp);
+      j(paramInt, parambn1.KFh.aHK, parambn1.KFh.timestamp);
       AppMethodBeat.o(184368);
       return;
     }
-    a(paramActivity, parambj1, parambj2, paramInt, parambj1.FLG.timestamp);
+    a(paramActivity, parambn1, parambn2, paramInt, parambn1.KFh.timestamp);
     AppMethodBeat.o(184368);
   }
   
-  private void a(Activity paramActivity, bj parambj1, bj parambj2, int paramInt, long paramLong)
+  private void a(Activity paramActivity, bn parambn1, bn parambn2, int paramInt, long paramLong)
   {
     AppMethodBeat.i(122068);
     switch (paramInt)
@@ -437,88 +439,88 @@ public final class b
     {
       AppMethodBeat.o(122068);
       return;
-      a(paramActivity, parambj1, parambj2, paramLong);
+      a(paramActivity, parambn1, parambn2, paramLong);
       AppMethodBeat.o(122068);
       return;
-      a(parambj1, paramInt, paramLong);
+      a(parambn1, paramInt, paramLong);
     }
   }
   
-  private void a(Activity paramActivity, bj parambj1, bj parambj2, long paramLong)
+  private void a(Activity paramActivity, bn parambn1, bn parambn2, long paramLong)
   {
     AppMethodBeat.i(122069);
-    if (parambj1 == null)
+    if (parambn1 == null)
     {
       AppMethodBeat.o(122069);
       return;
     }
-    String str = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj1.FLG.activityName);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, curActivityName: %s", new Object[] { str });
-    if (parambj1.FLG.timestamp <= 0L) {}
-    cie localcie;
+    String str = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn1.KFh.activityName);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, curActivityName: %s", new Object[] { str });
+    if (parambn1.KFh.timestamp <= 0L) {}
+    cyl localcyl;
     for (;;)
     {
-      localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-      parambj2 = e(parambj1, parambj2);
-      if (localcie != null) {
+      localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+      parambn2 = e(parambn1, parambn2);
+      if (localcyl != null) {
         break label240;
       }
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityIn, newSession: %s, %s", new Object[] { str, parambj2 });
-      paramActivity = a(paramActivity, parambj2, str, parambj1.FLG.aHQ, paramLong);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityIn, newSession: %s, %s", new Object[] { str, parambn2 });
+      paramActivity = a(paramActivity, parambn2, str, parambn1.KFh.aHK, paramLong);
       if (paramActivity != null) {
         break;
       }
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "_activityIn, illegal session ~~~");
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "_activityIn, illegal session ~~~");
       AppMethodBeat.o(122069);
       return;
-      paramLong = parambj1.FLG.timestamp;
+      paramLong = parambn1.KFh.timestamp;
     }
     int i = 1;
     for (;;)
     {
       if ((str != null) && (!str.equals("LauncherUI"))) {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramActivity, str, parambj1.FLG.aHQ, paramLong);
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramActivity, str, parambn1.KFh.aHK, paramLong);
       }
       if (i != 0)
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, isNewSession: %s", new Object[] { paramActivity.sessionId });
-        paramActivity.hTf = 0;
-        parambj2 = m.crj();
-        parambj1 = parambj2;
-        if (parambj2 == null) {
-          parambj1 = "";
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, isNewSession: %s", new Object[] { paramActivity.sessionId });
+        paramActivity.iOu = 0;
+        parambn2 = m.cPR();
+        parambn1 = parambn2;
+        if (parambn2 == null) {
+          parambn1 = "";
         }
-        paramActivity.sCx = parambj1;
+        paramActivity.kvy = parambn1;
         com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(paramActivity);
         e(paramActivity);
         AppMethodBeat.o(122069);
         return;
         label240:
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityIn, curSession: %s, %s, %s", new Object[] { localcie.sessionId, parambj2, str });
-        if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(localcie.sessionId))
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityIn, curSession: %s, %s, %s", new Object[] { localcyl.sessionId, parambn2, str });
+        if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(localcyl.sessionId))
         {
           AppMethodBeat.o(122069);
           return;
         }
-        if (com.tencent.mm.plugin.expt.hellhound.core.b.aeG(parambj2))
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.aoT(parambn2))
         {
-          paramActivity = a(paramActivity, parambj2, str, parambj1.FLG.aHQ, paramLong);
+          paramActivity = a(paramActivity, parambn2, str, parambn1.KFh.aHK, paramLong);
           if (paramActivity != null)
           {
-            paramActivity.Huv = true;
-            a(localcie, paramLong);
-            h(localcie);
+            paramActivity.MDt = true;
+            a(localcyl, paramLong);
+            h(localcyl);
             i = 1;
           }
         }
       }
       else
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, setPageFlow: %s", new Object[] { paramActivity.sessionId });
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, setPageFlow: %s", new Object[] { paramActivity.sessionId });
         AppMethodBeat.o(122069);
         return;
       }
-      paramActivity = localcie;
+      paramActivity = localcyl;
       i = 0;
     }
   }
@@ -526,9 +528,9 @@ public final class b
   public static void a(Fragment paramFragment, int paramInt)
   {
     AppMethodBeat.i(122054);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, catchParamsOnFragment: FALSE");
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, catchParamsOnFragment: FALSE");
       AppMethodBeat.o(122054);
       return;
     }
@@ -538,50 +540,50 @@ public final class b
   }
   
   @SuppressLint({"NewApi"})
-  private void a(bj parambj, int paramInt, long paramLong)
+  private void a(bn parambn, int paramInt, long paramLong)
   {
     AppMethodBeat.i(122071);
-    if (parambj == null)
+    if (parambn == null)
     {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "HelLSessionMonitor, activityOut: NULL");
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "HelLSessionMonitor, activityOut: NULL");
       AppMethodBeat.o(122071);
       return;
     }
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localcie == null)
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localcyl == null)
     {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "_activityOut, 不是合法session !!!");
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "_activityOut, 不是合法session !!!");
       AppMethodBeat.o(122071);
       return;
     }
-    String str1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj.FLG.activityName);
+    String str1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn.KFh.activityName);
     if (str1 == null)
     {
       AppMethodBeat.o(122071);
       return;
     }
-    String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(localcie.sessionId);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "activityOut, curSesssion: %s, %s", new Object[] { str2, str1 });
+    String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(localcyl.sessionId);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "activityOut, curSesssion: %s, %s", new Object[] { str2, str1 });
     int i;
-    if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afH(str2)) || ("131".equals(str2)) || ("144".equals(str2))) {
+    if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqs(str2)) || ("131".equals(str2)) || ("144".equals(str2))) {
       i = 1;
     }
     while (i != 0) {
-      if (com.tencent.mm.plugin.expt.hellhound.core.b.aex(localcie.Huu))
+      if (com.tencent.mm.plugin.expt.hellhound.core.b.aoK(localcyl.MDs))
       {
-        if (com.tencent.mm.plugin.expt.hellhound.core.b.aex(str1))
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.aoK(str1))
         {
-          a(localcie, paramLong);
+          a(localcyl, paramLong);
           AppMethodBeat.o(122071);
           return;
           i = 0;
         }
         else
         {
-          d.cpt();
-          parambj = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
-          if (parambj != null) {
-            com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, parambj.FLG.activityName, parambj.FLG.aHQ, paramLong);
+          d.cNM();
+          parambn = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+          if (parambn != null) {
+            com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, parambn.KFh.activityName, parambn.KFh.aHK, paramLong);
           }
           AppMethodBeat.o(122071);
         }
@@ -590,21 +592,21 @@ public final class b
       {
         if ("AppBrandLaunchProxyUI".equals(str1))
         {
-          ae.e("HABBYGE-MALI.HellSessionMonitor", "_activityOut, AppBrandLaunchProxyUI out ~~");
+          Log.e("HABBYGE-MALI.HellSessionMonitor", "_activityOut, AppBrandLaunchProxyUI out ~~");
           AppMethodBeat.o(122071);
           return;
         }
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, AppBrand cur: %s, start: %s", new Object[] { str1, localcie.Huu });
-        if ((com.tencent.mm.plugin.expt.hellhound.core.b.aew(str1)) && (str1.equals(localcie.Huu)))
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, AppBrand cur: %s, start: %s", new Object[] { str1, localcyl.MDs });
+        if ((com.tencent.mm.plugin.expt.hellhound.core.b.aoJ(str1)) && (str1.equals(localcyl.MDs)))
         {
-          a(localcie, paramLong);
+          a(localcyl, paramLong);
           AppMethodBeat.o(122071);
           return;
         }
-        if ((!com.tencent.mm.plugin.expt.hellhound.core.b.aew(str1)) || (!"AppBrandLaunchProxyUI".equals(localcie.Huu))) {
+        if ((!com.tencent.mm.plugin.expt.hellhound.core.b.aoJ(str1)) || (!"AppBrandLaunchProxyUI".equals(localcyl.MDs))) {
           break label374;
         }
-        a(localcie, paramLong);
+        a(localcyl, paramLong);
       }
     }
     label374:
@@ -612,39 +614,39 @@ public final class b
     while ("132".equals(str2)) {
       if ("GameCenterUI".equals(str1))
       {
-        ae.e("HABBYGE-MALI.HellSessionMonitor", "_activityOut, GameCenterUI out ~~");
+        Log.e("HABBYGE-MALI.HellSessionMonitor", "_activityOut, GameCenterUI out ~~");
         AppMethodBeat.o(122071);
         return;
-        d.cpt();
-        localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
+        d.cNM();
+        localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
         if (localObject != null) {
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, dstAR: %s", new Object[] { ((bj)localObject).FLG.activityName });
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, dstAR: %s", new Object[] { ((bn)localObject).KFh.activityName });
         }
-        if ((com.tencent.mm.plugin.expt.hellhound.core.b.aew(str1)) && (localObject != null) && (com.tencent.mm.plugin.expt.hellhound.core.b.aem(((bj)localObject).FLG.activityName)))
+        if ((com.tencent.mm.plugin.expt.hellhound.core.b.aoJ(str1)) && (localObject != null) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(((bn)localObject).KFh.activityName)))
         {
-          a(localcie, paramLong);
+          a(localcyl, paramLong);
           AppMethodBeat.o(122071);
           return;
         }
-        if ((localObject != null) && (!com.tencent.mm.plugin.expt.hellhound.core.b.aem(((bj)localObject).FLG.activityName))) {
-          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, ((bj)localObject).FLG.activityName, ((bj)localObject).FLG.aHQ, paramLong);
+        if ((localObject != null) && (!com.tencent.mm.plugin.expt.hellhound.core.b.aoz(((bn)localObject).KFh.activityName))) {
+          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, ((bn)localObject).KFh.activityName, ((bn)localObject).KFh.aHK, paramLong);
         }
       }
       else if (("GameWebViewUI".equals(str1)) || ("LuggageGameWebViewUI".equals(str1)) || ("GameWebViewMpUI".equals(str1)) || ("LuggageGameWebViewMpUI".equals(str1)))
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, GameWebViewUI: %s", new Object[] { str1 });
-        a(localcie, paramLong);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, GameWebViewUI: %s", new Object[] { str1 });
+        a(localcyl, paramLong);
         AppMethodBeat.o(122071);
         return;
       }
     }
     if ("142".equals(str2))
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, StoryGallery Session(142)");
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, StoryGallery Session(142)");
       if ("StoryCaptureUI".equals(str1))
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, GameWebViewUI: %s", new Object[] { str1 });
-        a(localcie, paramLong);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, GameWebViewUI: %s", new Object[] { str1 });
+        a(localcyl, paramLong);
         AppMethodBeat.o(122071);
         return;
       }
@@ -653,37 +655,37 @@ public final class b
     {
       if ((!"WalletOfflineCoinPurseUI".equals(str1)) && (!"WalletOfflineEntranceUI".equals(str1)))
       {
-        d.cpt();
-        parambj = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
-        if (parambj != null) {
-          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, parambj.FLG.activityName, parambj.FLG.aHQ, paramLong);
+        d.cNM();
+        parambn = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+        if (parambn != null) {
+          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, parambn.KFh.activityName, parambn.KFh.aHK, paramLong);
         }
         AppMethodBeat.o(122071);
         return;
       }
       if (paramInt != 2) {
-        a(localcie, paramLong);
+        a(localcyl, paramLong);
       }
       AppMethodBeat.o(122071);
       return;
     }
-    if ((parambj.FLJ != null) && (!parambj.FLJ.isEmpty()))
+    if ((parambn.KFk != null) && (!parambn.KFk.isEmpty()))
     {
-      parambj = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj.FLJ);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, nextActivity: %s, %d", new Object[] { parambj, Integer.valueOf(paramInt) });
-      if ((paramInt != 2) && (!"LauncherUI".equals(parambj))) {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, parambj, 0, paramLong);
+      parambn = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn.KFk);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, nextActivity: %s, %d", new Object[] { parambn, Integer.valueOf(paramInt) });
+      if ((paramInt != 2) && (!"LauncherUI".equals(parambn))) {
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, parambn, 0, paramLong);
       }
     }
     for (;;)
     {
-      if (!str1.equals(localcie.Hup))
+      if (!str1.equals(localcyl.MDn))
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, curActivity: %s is not curSession: %s preActivity %s", new Object[] { str1, localcie.sessionId, localcie.Hup });
-        if ((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.agq(str2)) && ("WebViewUI".equals(str1)))
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, curActivity: %s is not curSession: %s preActivity %s", new Object[] { str1, localcyl.sessionId, localcyl.MDn });
+        if ((com.tencent.mm.plugin.expt.hellhound.a.f.g.a.arb(str2)) && ("WebViewUI".equals(str1)))
         {
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, isScanSession true !!");
-          a(localcie, paramLong);
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, isScanSession true !!");
+          a(localcyl, paramLong);
         }
         AppMethodBeat.o(122071);
         return;
@@ -691,16 +693,16 @@ public final class b
       int j = 1;
       int m;
       int k;
-      btm localbtm;
+      cgh localcgh;
       if ("WebViewUI".equals(str1))
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, WebViewUI: %s, %s", new Object[] { com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.aeU("minimize_secene"), com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.aeU("KPublisherId") });
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOut, WebViewUI: %s, %s", new Object[] { com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.apk("minimize_secene"), com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.apk("KPublisherId") });
         m = 0;
         j = 0;
-        if (localcie.Hur == null) {
-          break label1437;
+        if (localcyl.MDp == null) {
+          break label1436;
         }
-        localObject = localcie.Hur.Huj.iterator();
+        localObject = localcyl.MDp.MDh.iterator();
         i = 0;
         do
         {
@@ -709,25 +711,25 @@ public final class b
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
-          localbtm = (btm)((Iterator)localObject).next();
-        } while (localbtm == null);
-        if ((!"minimize_secene".equals(localbtm.key)) || (!"1".equals(localbtm.value))) {
-          break label1309;
+          localcgh = (cgh)((Iterator)localObject).next();
+        } while (localcgh == null);
+        if ((!"minimize_secene".equals(localcgh.key)) || (!"1".equals(localcgh.value))) {
+          break label1308;
         }
         if (i == 0) {
-          break label1431;
+          break label1430;
         }
         m = 1;
         k = i;
       }
       for (;;)
       {
-        label1030:
+        label1029:
         if ((m != 0) && (k != 0)) {}
         for (i = 1;; i = 0)
         {
           j = i;
-          if ("LauncherUI".equals(parambj))
+          if ("LauncherUI".equals(parambn))
           {
             j = i;
             if ("148".equals(str2)) {
@@ -736,50 +738,50 @@ public final class b
           }
           if (j != 0)
           {
-            ae.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, isStartPageOfSession true: %s", new Object[] { str1 });
-            if (com.tencent.mm.plugin.expt.hellhound.a.f.g.a.agq(str2))
+            Log.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, isStartPageOfSession true: %s", new Object[] { str1 });
+            if (com.tencent.mm.plugin.expt.hellhound.a.f.g.a.arb(str2))
             {
-              boolean bool = com.tencent.mm.plugin.expt.hellhound.a.e.a.crc();
-              ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, scan session: %s", new Object[] { Boolean.valueOf(bool) });
+              boolean bool = com.tencent.mm.plugin.expt.hellhound.a.e.a.cPK();
+              Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, scan session: %s", new Object[] { Boolean.valueOf(bool) });
               if (bool)
               {
-                com.tencent.mm.plugin.expt.hellhound.a.e.a.crd();
-                d.cpt();
-                parambj = com.tencent.mm.plugin.expt.hellhound.core.b.aer(com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy().FLG.activityName);
-                ae.d("HABBYGE-MALI.HellSessionMonitor", "scan session: %s, %s", new Object[] { str1, parambj });
-                if ((!"BaseScanUI".equals(str1)) || (!"LauncherUI".equals(parambj))) {
-                  break label1378;
+                com.tencent.mm.plugin.expt.hellhound.a.e.a.cPL();
+                d.cNM();
+                parambn = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR().KFh.activityName);
+                Log.d("HABBYGE-MALI.HellSessionMonitor", "scan session: %s, %s", new Object[] { str1, parambn });
+                if ((!"BaseScanUI".equals(str1)) || (!"LauncherUI".equals(parambn))) {
+                  break label1377;
                 }
-                ae.i("HABBYGE-MALI.HellSessionMonitor", "BaseScanUI, LauncherUI");
+                Log.i("HABBYGE-MALI.HellSessionMonitor", "BaseScanUI, LauncherUI");
               }
             }
             else
             {
               if ((!"ContactInfoUI".equals(str1)) || (!"122".equals(str2)) || (paramInt != 2)) {
-                break label1385;
+                break label1384;
               }
-              ae.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, EVENT_ACTIVITY_OUT_SLIENCE: ContactInfoUI");
-              parambj = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dg(100);
-              str2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dg(101);
-              ae.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, from: %s, to: %s", new Object[] { parambj, str2 });
-              if ((!"com.tencent.mm.plugin.profile.ui.ContactInfoUI".equals(parambj)) || (!"com.tencent.mm.ui.chatting.ChattingUI".equals(str2))) {
-                break label1385;
+              Log.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, EVENT_ACTIVITY_OUT_SLIENCE: ContactInfoUI");
+              parambn = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GR(100);
+              str2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GR(101);
+              Log.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, from: %s, to: %s", new Object[] { parambn, str2 });
+              if ((!"com.tencent.mm.plugin.profile.ui.ContactInfoUI".equals(parambn)) || (!"com.tencent.mm.ui.chatting.ChattingUI".equals(str2))) {
+                break label1384;
               }
-              ae.i("HABBYGE-MALI.HellSessionMonitor", "ContactInfoUI->ChattingUI YES");
+              Log.i("HABBYGE-MALI.HellSessionMonitor", "ContactInfoUI->ChattingUI YES");
               AppMethodBeat.o(122071);
               return;
-              label1309:
+              label1308:
               k = i;
-              if ("KPublisherId".equals(localbtm.key))
+              if ("KPublisherId".equals(localcgh.key))
               {
                 k = i;
-                if ("jd_store".equals(localbtm.value))
+                if ("jd_store".equals(localcgh.value))
                 {
                   i = 1;
                   k = 1;
                   m = j;
                   if (j != 0) {
-                    break label1030;
+                    break label1029;
                   }
                   k = i;
                 }
@@ -789,192 +791,564 @@ public final class b
             }
             AppMethodBeat.o(122071);
             return;
-            label1378:
+            label1377:
             AppMethodBeat.o(122071);
             return;
-            label1385:
+            label1384:
             if ("FinderSelfUI".equals(str1))
             {
-              ae.w("HABBYGE-MALI.HellSessionMonitor", "123-session -> 60s finder share path...");
+              Log.w("HABBYGE-MALI.HellSessionMonitor", "123-session -> 60s finder share path...");
               AppMethodBeat.o(122071);
               return;
             }
-            a(localcie, paramLong);
+            a(localcyl, paramLong);
           }
           AppMethodBeat.o(122071);
           return;
         }
-        label1431:
+        label1430:
         j = 1;
         break;
-        label1437:
+        label1436:
         k = 0;
       }
-      parambj = null;
+      parambn = null;
     }
   }
   
-  private void a(bj parambj1, int paramInt, bj parambj2)
+  private void a(bn parambn1, int paramInt, bn parambn2)
   {
     int i = 0;
     AppMethodBeat.i(184370);
-    Object localObject = b(parambj1, paramInt, parambj2);
+    Object localObject = b(parambn1, paramInt, parambn2);
     if (localObject == null)
     {
       AppMethodBeat.o(184370);
       return;
     }
     String str = (String)((com.tencent.mm.vending.j.b)localObject).get(0);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment: %s, %s, %d", new Object[] { str, (String)((com.tencent.mm.vending.j.c)localObject).get(1), Integer.valueOf(paramInt) });
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment: %s, %s, %d", new Object[] { str, (String)((com.tencent.mm.vending.j.c)localObject).get(1), Integer.valueOf(paramInt) });
     if (paramInt == 4) {
-      if ("ChattingUIFragment".equals(com.tencent.mm.plugin.expt.hellhound.core.b.aer(str)))
+      if ("ChattingUIFragment".equals(com.tencent.mm.plugin.expt.hellhound.core.b.aoE(str)))
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment, EVENT_CHATTINGUIFRAGMENT_IN");
-        a(6, parambj2, parambj1.FLK);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment, EVENT_CHATTINGUIFRAGMENT_IN");
+        a(6, parambn2, parambn1.KFl);
       }
     }
     for (;;)
     {
-      if (this.rgW != -1) {
-        this.rgW = -1;
+      if (this.sIs != -1) {
+        this.sIs = -1;
       }
       AppMethodBeat.o(184370);
       return;
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-      if ((localObject != null) && (((cie)localObject).sessionId.startsWith("142")))
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+      if ((localObject != null) && (((cyl)localObject).sessionId.startsWith("142")))
       {
         AppMethodBeat.o(184370);
         return;
       }
-      if ((localObject != null) && (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.afb(parambj1.FLH)))
+      if ((localObject != null) && (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.apB(parambn1.KFi)))
       {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cie)localObject, parambj1.FLH, parambj1.FLL, parambj1.FLK);
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cyl)localObject, parambn1.KFi, parambn1.KFm, parambn1.KFl);
         AppMethodBeat.o(184370);
         return;
       }
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(null, parambj1.FLH, parambj1.FLL, parambj1.FLK);
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(null, parambn1.KFi, parambn1.KFm, parambn1.KFl);
       if (localObject == null)
       {
-        localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj1.FLH);
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment, curSession == null: %s", new Object[] { localObject });
+        localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn1.KFi);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment, curSession == null: %s", new Object[] { localObject });
         if ("ChattingUIFragment".equals(localObject))
         {
-          a(6, parambj2, parambj1.FLK);
+          a(6, parambn2, parambn1.KFl);
         }
         else
         {
-          parambj2 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), parambj1.FLH);
-          if (parambj2 == null) {}
-          for (paramInt = 0;; paramInt = parambj2.hashCode())
+          parambn2 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), parambn1.KFi);
+          if (parambn2 == null) {}
+          for (paramInt = 0;; paramInt = parambn2.hashCode())
           {
-            x(parambj1.FLH, paramInt, parambj1.FLK);
+            w(parambn1.KFi, paramInt, parambn1.KFl);
             break;
           }
         }
       }
-      else if (com.tencent.mm.plugin.expt.hellhound.core.b.aeF(parambj1.FLH))
+      else if (com.tencent.mm.plugin.expt.hellhound.core.b.aoS(parambn1.KFi))
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "curAR.currFragment: %s", new Object[] { parambj1.FLH });
-        a((cie)localObject, parambj1.FLK);
-        parambj2 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), parambj1.FLH);
-        if (parambj2 == null) {}
-        for (paramInt = i;; paramInt = parambj2.hashCode())
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "curAR.currFragment: %s", new Object[] { parambn1.KFi });
+        a((cyl)localObject, parambn1.KFl);
+        parambn2 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), parambn1.KFi);
+        if (parambn2 == null) {}
+        for (paramInt = i;; paramInt = parambn2.hashCode())
         {
-          x(parambj1.FLH, paramInt, parambj1.FLK);
+          w(parambn1.KFi, paramInt, parambn1.KFl);
           break;
         }
         if (paramInt == 5)
         {
-          if (("ChattingUIFragment".equals(str)) || (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.afb(str)))
+          if (("ChattingUIFragment".equals(str)) || (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.apB(str)))
           {
-            ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment, out event, no need handle, curFragment=%s", new Object[] { str });
+            Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorFragment, out event, no need handle, curFragment=%s", new Object[] { str });
             AppMethodBeat.o(184370);
             return;
           }
-          if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cri()))
+          if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPQ()))
           {
-            ae.i("HABBYGE-MALI.HellSessionMonitor", "isFloatSession, out event, no need handle, curFragment=%s", new Object[] { str });
+            Log.i("HABBYGE-MALI.HellSessionMonitor", "isFloatSession, out event, no need handle, curFragment=%s", new Object[] { str });
             AppMethodBeat.o(184370);
             return;
           }
-          am(str, parambj1.FLK);
+          al(str, parambn1.KFl);
         }
       }
     }
   }
   
-  private static void a(cie paramcie, String paramString)
+  private static void a(cyl paramcyl, String paramString)
   {
     AppMethodBeat.i(122066);
-    if (paramcie == null)
+    if (paramcyl == null)
     {
       AppMethodBeat.o(122066);
       return;
     }
-    if (paramcie.sessionId.startsWith("142"))
+    if (paramcyl.sessionId.startsWith("142"))
     {
-      if ((paramString == null) || (com.tencent.mm.plugin.expt.hellhound.core.b.aem(paramString))) {}
+      if ((paramString == null) || (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramString))) {}
       for (int i = 1; i != 0; i = 0)
       {
-        boolean bool = com.tencent.mm.plugin.expt.hellhound.core.b.b.g.b(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), com.tencent.mm.plugin.expt.hellhound.core.b.qYI);
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession, 142: isActive: %b", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = com.tencent.mm.plugin.expt.hellhound.core.b.b.g.b(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), com.tencent.mm.plugin.expt.hellhound.core.b.syZ);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession, 142: isActive: %b", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          break label100;
+          break label99;
         }
         AppMethodBeat.o(122066);
         return;
       }
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession, 142: isStoryGalleryViewShow: FALSE");
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession, 142: isStoryGalleryViewShow: FALSE");
     }
-    label100:
-    paramString = new bow();
-    cie localcie = new cie();
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.i(paramcie);
-    localcie.sessionId = paramcie.sessionId;
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession, curSession.session: %s", new Object[] { paramcie.sessionId });
-    localcie.Hut = true;
-    localcie.hTf = 1;
-    localcie.Huv = paramcie.Huv;
-    localcie.Hup = paramcie.Hup;
-    localcie.Huq = paramcie.Huq;
-    localcie.userName = paramcie.userName;
-    localcie.Hur = paramcie.Hur;
-    localcie.Hus = paramcie.Hus;
-    localcie.seq = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crE();
-    paramString.Hco.addLast(localcie);
-    paramString.Hcp = (paramString.Hco.size() - 1);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession.session: %s, %s", new Object[] { localcie.sessionId, localcie.Hup });
+    label99:
+    paramString = new cbo();
+    cyl localcyl = new cyl();
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.i(paramcyl);
+    localcyl.sessionId = paramcyl.sessionId;
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession, curSession.session: %s", new Object[] { paramcyl.sessionId });
+    localcyl.MDr = true;
+    localcyl.iOu = 1;
+    localcyl.MDt = paramcyl.MDt;
+    localcyl.MDn = paramcyl.MDn;
+    localcyl.MDo = paramcyl.MDo;
+    localcyl.userName = paramcyl.userName;
+    localcyl.MDp = paramcyl.MDp;
+    localcyl.MDq = paramcyl.MDq;
+    localcyl.seq = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQm();
+    paramString.Mhr.addLast(localcyl);
+    paramString.Mhs = (paramString.Mhr.size() - 1);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "retainCurSession.session: %s, %s", new Object[] { localcyl.sessionId, localcyl.MDn });
     com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b(paramString);
     AppMethodBeat.o(122066);
   }
   
-  private void a(String paramString, int paramInt1, int paramInt2, long paramLong)
+  private void aa(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196111);
-    switch (paramInt2)
+    AppMethodBeat.i(122074);
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localcyl == null)
     {
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, 不是合法session !!!");
+      AppMethodBeat.o(122074);
+      return;
+    }
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, curSessionId: %s", new Object[] { localcyl.sessionId });
+    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqu(localcyl.sessionId))
+    {
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, not chat session: %s", new Object[] { localcyl.sessionId });
+      d.cNM();
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+      if (localObject != null)
+      {
+        String str = ((bn)localObject).KFh.activityName;
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, not chat session, page: %s", new Object[] { str });
+        if (paramInt != 2) {
+          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, str, ((bn)localObject).KFh.aHK, paramLong);
+        }
+      }
+      AppMethodBeat.o(122074);
+      return;
+    }
+    Object localObject = a.cPM();
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, userName: %s", new Object[] { (String)((com.tencent.mm.vending.j.b)localObject).get(0) });
+    int i = ((Integer)((com.tencent.mm.vending.j.c)localObject).get(1)).intValue();
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, newChattingType: %s, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(localcyl.MDo) });
+    if (i == localcyl.MDo)
+    {
+      if ("ChattingUI".equals(localcyl.MDn))
+      {
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIOut, CHATTING_UI");
+        a(localcyl, paramLong);
+        AppMethodBeat.o(122074);
+        return;
+      }
+      if (paramInt == 2)
+      {
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "chattingUIOut, SLIENCE: %s", new Object[] { localcyl.MDn });
+        a(localcyl, paramLong);
+        AppMethodBeat.o(122074);
+        return;
+      }
+      d.cNM();
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+      if (localObject != null)
+      {
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, ((bn)localObject).KFh.activityName, ((bn)localObject).KFh.aHK, paramLong);
+        com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(localcyl);
+      }
+      AppMethodBeat.o(122074);
+      return;
+    }
+    Log.e("HABBYGE-MALI.HellSessionMonitor", "_chattingUIOut, curChattingType不等: %d", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.o(122074);
+  }
+  
+  private void ab(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(220546);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "newChattingUISession");
+    cyl localcyl = a(null, com.tencent.mm.plugin.expt.hellhound.core.b.szb, "ChattingUI", paramInt, paramLong);
+    if (localcyl == null)
+    {
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "_doChattingUIInContinue, 不是合法session ~~~");
+      AppMethodBeat.o(220546);
+      return;
+    }
+    String str2 = m.cPR();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localcyl.kvy = str1;
+    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, "com.tencent.mm.ui.chatting.ChattingUI", paramInt, paramLong);
+    localcyl.iOu = 0;
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(localcyl);
+    e(localcyl);
+    AppMethodBeat.o(220546);
+  }
+  
+  private void ai(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(122059);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(122059);
+      return;
+    }
+    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new cbo();
+    }
+    ((cbo)localObject1).Mhp = paramLong;
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((cbo)localObject1);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event: %s, %s", new Object[] { paramString, Long.valueOf(((cbo)localObject1).Mhp) });
+    localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localObject2 != null)
+    {
+      if (((cyl)localObject2).MDr)
+      {
+        String str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(((cyl)localObject2).sessionId);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, curSid: %s", new Object[] { str });
+        if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqs(str)) || ("131".equals(str)) || ("144".equals(str))) {}
+        for (int i = 1; (i != 0) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramString)); i = 0)
+        {
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, AppBrand 7Event !!!");
+          com.tencent.mm.plugin.expt.hellhound.a.f.c.c.aqH(((cyl)localObject2).sessionId);
+          AppMethodBeat.o(122059);
+          return;
+        }
+        if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(str))
+        {
+          paramString = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQL();
+          if (paramString != null)
+          {
+            Log.w("HABBYGE-MALI.HellSessionMonitor", "lstItem: %s, %s", new Object[] { paramString.dRM, paramString.dMl });
+            if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(paramString.dRM)) && ((paramString.dMl.equals("FloatBall")) || (com.tencent.mm.plugin.expt.hellhound.core.b.aoJ(paramString.dMl))))
+            {
+              paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPQ();
+              localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQq();
+              Log.w("HABBYGE-MALI.HellSessionMonitor", "lstSessionId: %s", new Object[] { paramString });
+              if (localObject1 != null) {
+                Log.w("HABBYGE-MALI.HellSessionMonitor", "lstSession: %s", new Object[] { ((cyl)localObject1).sessionId });
+              }
+              ((cyl)localObject2).startTime = paramLong;
+              ((cyl)localObject2).endTime = paramLong;
+              ((cyl)localObject2).MDn = "FloatBall";
+              ((cyl)localObject2).iOu = 1;
+              com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cyl)localObject2);
+              a((cyl)localObject2, paramLong);
+              AppMethodBeat.o(122059);
+              return;
+            }
+          }
+        }
+        ((cyl)localObject2).MDr = false;
+        ((cyl)localObject2).iOu = 0;
+        ((cyl)localObject2).startTime = paramLong;
+        localObject1 = m.cPR();
+        paramString = (String)localObject1;
+        if (localObject1 == null) {
+          paramString = "";
+        }
+        ((cyl)localObject2).kvy = paramString;
+        if ("142".equals(str))
+        {
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "launcherUIOn7Event, addPageFlow: StoryGalleryView");
+          paramString = "StoryGalleryView";
+          i = 0;
+        }
+        for (;;)
+        {
+          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cyl)localObject2, paramString, i, paramLong);
+          com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cyl)localObject2);
+          e((cyl)localObject2);
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, curSession: %s, %s, %s, %d", new Object[] { ((cyl)localObject2).sessionId, ((cyl)localObject2).MDn, ((cyl)localObject2).MDq, Integer.valueOf(((cyl)localObject2).MDo) });
+          AppMethodBeat.o(122059);
+          return;
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "launcherUIOn7Event, addPageFlow: ChattingUIFragment");
+          localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), com.tencent.mm.plugin.expt.hellhound.core.b.sza);
+          paramString = com.tencent.mm.plugin.expt.hellhound.core.b.sza;
+          if (localObject1 == null) {
+            i = 0;
+          } else {
+            i = ((Fragment)localObject1).hashCode();
+          }
+        }
+      }
+    }
+    else {
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, no Session: %s", new Object[] { paramString });
+    }
+    AppMethodBeat.o(122059);
+  }
+  
+  private void aj(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(122060);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localObject != null)
+    {
+      ((cyl)localObject).MDr = true;
+      ((cyl)localObject).endTime = paramLong;
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "launcherUIOn8Event, curSession: %s, %s", new Object[] { ((cyl)localObject).sessionId, paramString });
+      cbo localcbo = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
+      if (localcbo == null)
+      {
+        AppMethodBeat.o(122060);
+        return;
+      }
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.ap(paramString, paramLong);
+      localcbo.Mhq = paramLong;
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b(localcbo);
+      a((cyl)localObject, paramLong);
+      g((cyl)localObject);
+      a((cyl)localObject, paramString);
+      AppMethodBeat.o(122060);
+      return;
+    }
+    d.cNM();
+    localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.g.apc(paramString);
+    if (localObject != null)
+    {
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn8Event, curAR: %s, %s, %s, %s", new Object[] { ((bn)localObject).KFh.activityName, ((bn)localObject).KFk, ((bn)localObject).KFi, ((bn)localObject).KFj });
+      if (!TextUtils.isEmpty(((bn)localObject).KFi)) {
+        break label229;
+      }
+    }
+    label229:
+    for (paramString = ((bn)localObject).KFh.activityName;; paramString = ((bn)localObject).KFi)
+    {
+      localObject = paramString;
+      if (!TextUtils.isEmpty(paramString)) {
+        localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
+      }
+      al((String)localObject, paramLong);
+      paramString = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
+      if (paramString != null) {
+        break;
+      }
+      AppMethodBeat.o(122060);
+      return;
+    }
+    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.ap((String)localObject, paramLong);
+    paramString.Mhq = paramLong;
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b(paramString);
+    g(null);
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.reset();
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn8Event, 无Session: %s", new Object[] { localObject });
+    AppMethodBeat.o(122060);
+  }
+  
+  private void ak(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(122063);
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      ((cyl)localObject1).MDr = true;
+      ((cyl)localObject1).endTime = paramLong;
+      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
+      if (localObject2 == null)
+      {
+        AppMethodBeat.o(122063);
+        return;
+      }
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.ap(paramString, paramLong);
+      ((cbo)localObject2).Mhq = paramLong;
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((cbo)localObject2);
+      a((cyl)localObject1, paramLong);
+      g((cyl)localObject1);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn8Event: %s, %s", new Object[] { ((cyl)localObject1).sessionId, ((cyl)localObject1).MDn });
+      a((cyl)localObject1, paramString);
+      AppMethodBeat.o(122063);
+      return;
+    }
+    if (paramString == null)
+    {
+      AppMethodBeat.o(122063);
+      return;
+    }
+    d.cNM();
+    localObject1 = com.tencent.mm.plugin.expt.hellhound.core.stack.g.apc(paramString);
+    if (localObject1 != null)
+    {
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn8Event, curAR: %s, %s, %s, %s", new Object[] { ((bn)localObject1).KFh.activityName, ((bn)localObject1).KFk, ((bn)localObject1).KFi, ((bn)localObject1).KFj });
+      if (TextUtils.isEmpty(((bn)localObject1).KFi)) {
+        localObject1 = ((bn)localObject1).KFh.activityName;
+      }
     }
     for (;;)
     {
-      AppMethodBeat.o(196111);
+      localObject2 = localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE((String)localObject1);
+      }
+      al((String)localObject2, paramLong);
+      localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
+      if (localObject1 != null) {
+        break;
+      }
+      AppMethodBeat.o(122063);
       return;
-      w(paramString, paramInt1, paramLong);
-      AppMethodBeat.o(196111);
-      return;
-      al(paramString, paramLong);
+      localObject1 = ((bn)localObject1).KFi;
+      continue;
+      localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
     }
+    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.ap(paramString, paramLong);
+    ((cbo)localObject1).Mhq = paramLong;
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((cbo)localObject1);
+    g(null);
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.reset();
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn8Event, 无Session: %s", new Object[] { localObject2 });
+    AppMethodBeat.o(122063);
   }
   
-  public static Map<Long, Long> afy(String paramString)
+  public static void al(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(184367);
+    cyh localcyh = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQr();
+    if (localcyh == null)
+    {
+      AppMethodBeat.o(184367);
+      return;
+    }
+    localcyh.endTime = paramLong;
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "onSessionClose, unknow: %s, %s, %s, %s", new Object[] { paramString, localcyh.dMl, Long.valueOf(localcyh.startTime), Long.valueOf(localcyh.endTime) });
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b(localcyh);
+    an(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqy(localcyh.dMl), paramLong);
+    AppMethodBeat.o(184367);
+  }
+  
+  private static void am(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(220553);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "notify session start [%s] [%d]", new Object[] { paramString, Long.valueOf(paramLong) });
+    uc localuc = new uc();
+    localuc.eav.sessionId = paramString;
+    localuc.eav.eaw = paramLong;
+    localuc.eav.type = 0;
+    EventCenter.instance.publish(localuc);
+    AppMethodBeat.o(220553);
+  }
+  
+  private static void an(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(220554);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "notify session close [%s] [%d]", new Object[] { paramString, Long.valueOf(paramLong) });
+    uc localuc = new uc();
+    localuc.eav.sessionId = paramString;
+    localuc.eav.eaw = paramLong;
+    localuc.eav.type = 1;
+    EventCenter.instance.publish(localuc);
+    AppMethodBeat.o(220554);
+  }
+  
+  private void ao(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(220556);
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.a.a.cNT() == 8)
+    {
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, restoreLastSession 8Event!!");
+      this.sIv = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.aqG(paramString);
+      AppMethodBeat.o(220556);
+      return;
+    }
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, restoreLastSession: %s", new Object[] { paramString });
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.aqG(paramString);
+    paramString = (String)localObject;
+    if (localObject == null)
+    {
+      if (this.sIv != null)
+      {
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, mLastSession4Nested: %s", new Object[] { this.sIv.sessionId });
+        paramString = this.sIv;
+      }
+    }
+    else
+    {
+      paramString.iOu = 0;
+      paramString.MDt = false;
+      paramString.startTime = paramLong;
+      paramString.endTime = 0L;
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString.MDn);
+      if ((localObject != null) && (!((String)localObject).equals("LauncherUI"))) {
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramString, (String)localObject, paramString.MDu, paramLong);
+      }
+      String str = m.cPR();
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      paramString.kvy = ((String)localObject);
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(paramString);
+      e(paramString);
+      AppMethodBeat.o(220556);
+      return;
+    }
+    Log.e("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, restoreLastSession: LastSession NULL !!");
+    AppMethodBeat.o(220556);
+  }
+  
+  public static Map<Long, Long> aqj(String paramString)
   {
     AppMethodBeat.i(122087);
-    Object localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.agf(paramString);
+    Object localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.aqQ(paramString);
     if ((localObject3 == null) || (((List)localObject3).isEmpty()))
     {
       AppMethodBeat.o(122087);
       return null;
     }
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramString);
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramString);
     if (localObject1 == null) {
       paramString = null;
     }
@@ -983,7 +1357,7 @@ public final class b
     {
       AppMethodBeat.o(122087);
       return null;
-      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afL((String)localObject1);
+      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqw((String)localObject1);
       if ((localObject2 == null) || (((List)localObject2).isEmpty()))
       {
         paramString = null;
@@ -994,8 +1368,8 @@ public final class b
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          bou localbou = (bou)((Iterator)localObject3).next();
-          Object localObject4 = i.a(localbou, (List)localObject2);
+          cbm localcbm = (cbm)((Iterator)localObject3).next();
+          Object localObject4 = i.a(localcbm, (List)localObject2);
           if (localObject4 != null)
           {
             localObject4 = ((Map)localObject4).entrySet().iterator();
@@ -1003,38 +1377,38 @@ public final class b
             {
               Object localObject5 = (Map.Entry)((Iterator)localObject4).next();
               long l = ((Long)((Map.Entry)localObject5).getKey()).longValue();
-              localObject5 = (dce)((Map.Entry)localObject5).getValue();
-              dce localdce;
+              localObject5 = (dvi)((Map.Entry)localObject5).getValue();
+              dvi localdvi;
               if (((Map)localObject1).containsKey(Long.valueOf(l)))
               {
-                localdce = (dce)((Map)localObject1).get(Long.valueOf(l));
-                if (localdce != null) {
-                  if (((dce)localObject5).index < 0)
+                localdvi = (dvi)((Map)localObject1).get(Long.valueOf(l));
+                if (localdvi != null) {
+                  if (((dvi)localObject5).index < 0)
                   {
-                    localdce.HKG.clear();
+                    localdvi.MWp.clear();
                     ((Map)localObject1).remove(Long.valueOf(l));
                   }
-                  else if (((dce)localObject5).index == 0)
+                  else if (((dvi)localObject5).index == 0)
                   {
-                    localdce.HKG.clear();
-                    localdce.HKG.add(localbou);
+                    localdvi.MWp.clear();
+                    localdvi.MWp.add(localcbm);
                   }
                   else
                   {
-                    localdce.HKG.add(localbou);
+                    localdvi.MWp.add(localcbm);
                   }
                 }
               }
-              else if ((((dce)localObject5).index >= 0) && (!((dce)localObject5).HKF))
+              else if ((((dvi)localObject5).index >= 0) && (!((dvi)localObject5).MWo))
               {
-                localdce = new dce();
-                localdce.index = ((dce)localObject5).index;
-                localdce.GLI = ((dce)localObject5).GLI;
-                localdce.sDg = ((dce)localObject5).sDg;
-                localdce.GLJ = l;
-                localdce.dAa = paramString;
-                localdce.HKG.add(localbou);
-                ((Map)localObject1).put(Long.valueOf(l), localdce);
+                localdvi = new dvi();
+                localdvi.index = ((dvi)localObject5).index;
+                localdvi.LPM = ((dvi)localObject5).LPM;
+                localdvi.vtY = ((dvi)localObject5).vtY;
+                localdvi.LPN = l;
+                localdvi.dRM = paramString;
+                localdvi.MWp.add(localcbm);
+                ((Map)localObject1).put(Long.valueOf(l), localdvi);
               }
             }
           }
@@ -1047,19 +1421,19 @@ public final class b
     while (paramString.hasNext())
     {
       localObject2 = (Map.Entry)paramString.next();
-      localObject3 = ((dce)((Map.Entry)localObject2).getValue()).HKG;
+      localObject3 = ((dvi)((Map.Entry)localObject2).getValue()).MWp;
       if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
-        ((Map)localObject1).put(((Map.Entry)localObject2).getKey(), Long.valueOf(((bou)((List)localObject3).get(0)).startTime));
+        ((Map)localObject1).put(((Map.Entry)localObject2).getKey(), Long.valueOf(((cbm)((List)localObject3).get(0)).startTime));
       }
     }
     AppMethodBeat.o(122087);
     return localObject1;
   }
   
-  public static Map<Long, Long> afz(String paramString)
+  public static Map<Long, Long> aqk(String paramString)
   {
     AppMethodBeat.i(185583);
-    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.agf(paramString);
+    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.aqQ(paramString);
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -1067,14 +1441,14 @@ public final class b
     }
     else
     {
-      localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.j.agd(paramString);
+      localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.j.aqO(paramString);
     }
     if ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
       AppMethodBeat.o(185583);
       return null;
     }
-    localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramString);
+    localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramString);
     if (localObject2 == null) {
       localObject1 = null;
     }
@@ -1082,10 +1456,10 @@ public final class b
     Object localObject3;
     while ((localObject1 == null) || (((Map)localObject1).isEmpty()))
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "getMatchedSessionPages, Empty !!");
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "getMatchedSessionPages, Empty !!");
       AppMethodBeat.o(185583);
       return null;
-      localObject4 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afL((String)localObject2);
+      localObject4 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqw((String)localObject2);
       if ((localObject4 == null) || (((List)localObject4).isEmpty()))
       {
         localObject1 = null;
@@ -1096,8 +1470,8 @@ public final class b
         Iterator localIterator1 = ((List)localObject1).iterator();
         while (localIterator1.hasNext())
         {
-          bou localbou = (bou)localIterator1.next();
-          localObject1 = i.a(localbou, (List)localObject4);
+          cbm localcbm = (cbm)localIterator1.next();
+          localObject1 = i.a(localcbm, (List)localObject4);
           if (localObject1 != null)
           {
             Iterator localIterator2 = ((Map)localObject1).entrySet().iterator();
@@ -1105,30 +1479,30 @@ public final class b
             {
               localObject1 = (Map.Entry)localIterator2.next();
               long l = ((Long)((Map.Entry)localObject1).getKey()).longValue();
-              localObject1 = (dce)((Map.Entry)localObject1).getValue();
+              localObject1 = (dvi)((Map.Entry)localObject1).getValue();
               if (((Map)localObject2).containsKey(Long.valueOf(l)))
               {
-                if (((dce)localObject1).HKF)
+                if (((dvi)localObject1).MWo)
                 {
-                  localObject3 = (dce)((Map)localObject2).get(Long.valueOf(l));
+                  localObject3 = (dvi)((Map)localObject2).get(Long.valueOf(l));
                   localObject1 = localObject3;
                   if (localObject3 == null)
                   {
-                    localObject1 = new dce();
+                    localObject1 = new dvi();
                     ((Map)localObject2).put(Long.valueOf(l), localObject1);
                   }
-                  ((dce)localObject1).HKG.add(localbou);
+                  ((dvi)localObject1).MWp.add(localcbm);
                 }
               }
-              else if (((dce)localObject1).HKF)
+              else if (((dvi)localObject1).MWo)
               {
-                localObject3 = new dce();
-                ((dce)localObject3).index = ((dce)localObject1).index;
-                ((dce)localObject3).GLI = ((dce)localObject1).GLI;
-                ((dce)localObject3).sDg = ((dce)localObject1).sDg;
-                ((dce)localObject3).GLJ = l;
-                ((dce)localObject3).dAa = paramString;
-                ((dce)localObject3).HKG.add(localbou);
+                localObject3 = new dvi();
+                ((dvi)localObject3).index = ((dvi)localObject1).index;
+                ((dvi)localObject3).LPM = ((dvi)localObject1).LPM;
+                ((dvi)localObject3).vtY = ((dvi)localObject1).vtY;
+                ((dvi)localObject3).LPN = l;
+                ((dvi)localObject3).dRM = paramString;
+                ((dvi)localObject3).MWp.add(localcbm);
                 ((Map)localObject2).put(Long.valueOf(l), localObject3);
               }
             }
@@ -1142,559 +1516,209 @@ public final class b
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (Map.Entry)((Iterator)localObject1).next();
-      localObject4 = ((dce)((Map.Entry)localObject3).getValue()).HKG;
+      localObject4 = ((dvi)((Map.Entry)localObject3).getValue()).MWp;
       if ((localObject4 != null) && (!((List)localObject4).isEmpty())) {
-        ((Map)localObject2).put(((Map.Entry)localObject3).getKey(), Long.valueOf(((bou)((List)localObject4).get(0)).startTime));
+        ((Map)localObject2).put(((Map.Entry)localObject3).getKey(), Long.valueOf(((cbm)((List)localObject4).get(0)).startTime));
       }
     }
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.j.aaB(paramString);
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.j.akH(paramString);
     AppMethodBeat.o(185583);
     return localObject2;
   }
   
-  private void aj(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(122059);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(122059);
-      return;
-    }
-    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new bow();
-    }
-    ((bow)localObject1).Hcm = paramLong;
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((bow)localObject1);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event: %s, %s", new Object[] { paramString, Long.valueOf(((bow)localObject1).Hcm) });
-    localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localObject2 != null)
-    {
-      if (((cie)localObject2).Hut)
-      {
-        String str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(((cie)localObject2).sessionId);
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, curSid: %s", new Object[] { str });
-        if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afH(str)) || ("131".equals(str)) || ("144".equals(str))) {}
-        for (int i = 1; (i != 0) && (com.tencent.mm.plugin.expt.hellhound.core.b.aem(paramString)); i = 0)
-        {
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, AppBrand 7Event !!!");
-          com.tencent.mm.plugin.expt.hellhound.a.f.c.c.afW(((cie)localObject2).sessionId);
-          AppMethodBeat.o(122059);
-          return;
-        }
-        if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(str))
-        {
-          paramString = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csd();
-          if (paramString != null)
-          {
-            ae.w("HABBYGE-MALI.HellSessionMonitor", "lstItem: %s, %s", new Object[] { paramString.dAa, paramString.duQ });
-            if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(paramString.dAa)) && ((paramString.duQ.equals("FloatBall")) || (com.tencent.mm.plugin.expt.hellhound.core.b.aew(paramString.duQ))))
-            {
-              paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cri();
-              localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crI();
-              ae.w("HABBYGE-MALI.HellSessionMonitor", "lstSessionId: %s", new Object[] { paramString });
-              if (localObject1 != null) {
-                ae.w("HABBYGE-MALI.HellSessionMonitor", "lstSession: %s", new Object[] { ((cie)localObject1).sessionId });
-              }
-              ((cie)localObject2).startTime = paramLong;
-              ((cie)localObject2).endTime = paramLong;
-              ((cie)localObject2).Hup = "FloatBall";
-              ((cie)localObject2).hTf = 1;
-              com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cie)localObject2);
-              a((cie)localObject2, paramLong);
-              AppMethodBeat.o(122059);
-              return;
-            }
-          }
-        }
-        ((cie)localObject2).Hut = false;
-        ((cie)localObject2).hTf = 0;
-        ((cie)localObject2).startTime = paramLong;
-        localObject1 = m.crj();
-        paramString = (String)localObject1;
-        if (localObject1 == null) {
-          paramString = "";
-        }
-        ((cie)localObject2).sCx = paramString;
-        if ("142".equals(str))
-        {
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "launcherUIOn7Event, addPageFlow: StoryGalleryView");
-          paramString = "StoryGalleryView";
-          i = 0;
-        }
-        for (;;)
-        {
-          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cie)localObject2, paramString, i, paramLong);
-          com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cie)localObject2);
-          e((cie)localObject2);
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, curSession: %s, %s, %s, %d", new Object[] { ((cie)localObject2).sessionId, ((cie)localObject2).Hup, ((cie)localObject2).Hus, Integer.valueOf(((cie)localObject2).Huq) });
-          AppMethodBeat.o(122059);
-          return;
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "launcherUIOn7Event, addPageFlow: ChattingUIFragment");
-          localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), com.tencent.mm.plugin.expt.hellhound.core.b.qYJ);
-          paramString = com.tencent.mm.plugin.expt.hellhound.core.b.qYJ;
-          if (localObject1 == null) {
-            i = 0;
-          } else {
-            i = ((Fragment)localObject1).hashCode();
-          }
-        }
-      }
-    }
-    else {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn7Event, no Session: %s", new Object[] { paramString });
-    }
-    AppMethodBeat.o(122059);
-  }
-  
-  private void ak(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(122060);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localObject != null)
-    {
-      ((cie)localObject).Hut = true;
-      ((cie)localObject).endTime = paramLong;
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "launcherUIOn8Event, curSession: %s, %s", new Object[] { ((cie)localObject).sessionId, paramString });
-      bow localbow = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
-      if (localbow == null)
-      {
-        AppMethodBeat.o(122060);
-        return;
-      }
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.aq(paramString, paramLong);
-      localbow.Hcn = paramLong;
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b(localbow);
-      a((cie)localObject, paramLong);
-      g((cie)localObject);
-      a((cie)localObject, paramString);
-      AppMethodBeat.o(122060);
-      return;
-    }
-    d.cpt();
-    localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.g.aeM(paramString);
-    if (localObject != null)
-    {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn8Event, curAR: %s, %s, %s, %s", new Object[] { ((bj)localObject).FLG.activityName, ((bj)localObject).FLJ, ((bj)localObject).FLH, ((bj)localObject).FLI });
-      if (!TextUtils.isEmpty(((bj)localObject).FLH)) {
-        break label229;
-      }
-    }
-    label229:
-    for (paramString = ((bj)localObject).FLG.activityName;; paramString = ((bj)localObject).FLH)
-    {
-      localObject = paramString;
-      if (!TextUtils.isEmpty(paramString)) {
-        localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
-      }
-      am((String)localObject, paramLong);
-      paramString = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
-      if (paramString != null) {
-        break;
-      }
-      AppMethodBeat.o(122060);
-      return;
-    }
-    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.aq((String)localObject, paramLong);
-    paramString.Hcn = paramLong;
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b(paramString);
-    g(null);
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.reset();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOn8Event, 无Session: %s", new Object[] { localObject });
-    AppMethodBeat.o(122060);
-  }
-  
-  private void al(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(122063);
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      ((cie)localObject1).Hut = true;
-      ((cie)localObject1).endTime = paramLong;
-      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
-      if (localObject2 == null)
-      {
-        AppMethodBeat.o(122063);
-        return;
-      }
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.aq(paramString, paramLong);
-      ((bow)localObject2).Hcn = paramLong;
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((bow)localObject2);
-      a((cie)localObject1, paramLong);
-      g((cie)localObject1);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn8Event: %s, %s", new Object[] { ((cie)localObject1).sessionId, ((cie)localObject1).Hup });
-      a((cie)localObject1, paramString);
-      AppMethodBeat.o(122063);
-      return;
-    }
-    if (paramString == null)
-    {
-      AppMethodBeat.o(122063);
-      return;
-    }
-    d.cpt();
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.core.stack.g.aeM(paramString);
-    if (localObject1 != null)
-    {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn8Event, curAR: %s, %s, %s, %s", new Object[] { ((bj)localObject1).FLG.activityName, ((bj)localObject1).FLJ, ((bj)localObject1).FLH, ((bj)localObject1).FLI });
-      if (TextUtils.isEmpty(((bj)localObject1).FLH)) {
-        localObject1 = ((bj)localObject1).FLG.activityName;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer((String)localObject1);
-      }
-      am((String)localObject2, paramLong);
-      localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
-      if (localObject1 != null) {
-        break;
-      }
-      AppMethodBeat.o(122063);
-      return;
-      localObject1 = ((bj)localObject1).FLH;
-      continue;
-      localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
-    }
-    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.aq(paramString, paramLong);
-    ((bow)localObject1).Hcn = paramLong;
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((bow)localObject1);
-    g(null);
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.reset();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn8Event, 无Session: %s", new Object[] { localObject2 });
-    AppMethodBeat.o(122063);
-  }
-  
-  public static void am(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(184367);
-    cia localcia = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crJ();
-    if (localcia == null)
-    {
-      AppMethodBeat.o(184367);
-      return;
-    }
-    localcia.endTime = paramLong;
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "onSessionClose, unknow: %s, %s, %s, %s", new Object[] { paramString, localcia.duQ, Long.valueOf(localcia.startTime), Long.valueOf(localcia.endTime) });
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b(localcia);
-    ao(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afN(localcia.duQ), paramLong);
-    AppMethodBeat.o(184367);
-  }
-  
-  private static void an(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(196123);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "notify session start [%s] [%d]", new Object[] { paramString, Long.valueOf(paramLong) });
-    te localte = new te();
-    localte.dII.sessionId = paramString;
-    localte.dII.dIJ = paramLong;
-    localte.dII.type = 0;
-    com.tencent.mm.sdk.b.a.IvT.l(localte);
-    AppMethodBeat.o(196123);
-  }
-  
-  private static void ao(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(196124);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "notify session close [%s] [%d]", new Object[] { paramString, Long.valueOf(paramLong) });
-    te localte = new te();
-    localte.dII.sessionId = paramString;
-    localte.dII.dIJ = paramLong;
-    localte.dII.type = 1;
-    com.tencent.mm.sdk.b.a.IvT.l(localte);
-    AppMethodBeat.o(196124);
-  }
-  
-  private void ap(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(196126);
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.a.a.cpA() == 8)
-    {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, restoreLastSession 8Event!!");
-      this.rgZ = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.afV(paramString);
-      AppMethodBeat.o(196126);
-      return;
-    }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, restoreLastSession: %s", new Object[] { paramString });
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.afV(paramString);
-    paramString = (String)localObject;
-    if (localObject == null)
-    {
-      if (this.rgZ != null)
-      {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, mLastSession4Nested: %s", new Object[] { this.rgZ.sessionId });
-        paramString = this.rgZ;
-      }
-    }
-    else
-    {
-      paramString.hTf = 0;
-      paramString.Huv = false;
-      paramString.startTime = paramLong;
-      paramString.endTime = 0L;
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString.Hup);
-      if ((localObject != null) && (!((String)localObject).equals("LauncherUI"))) {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramString, (String)localObject, paramString.Huw, paramLong);
-      }
-      String str = m.crj();
-      localObject = str;
-      if (str == null) {
-        localObject = "";
-      }
-      paramString.sCx = ((String)localObject);
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(paramString);
-      e(paramString);
-      AppMethodBeat.o(196126);
-      return;
-    }
-    ae.e("HABBYGE-MALI.HellSessionMonitor", "hellSessionMonitor, restoreLastSession: LastSession NULL !!");
-    AppMethodBeat.o(196126);
-  }
-  
-  private static com.tencent.mm.vending.j.c<String, String> b(bj parambj1, int paramInt, bj parambj2)
+  private static com.tencent.mm.vending.j.c<String, String> b(bn parambn1, int paramInt, bn parambn2)
   {
     AppMethodBeat.i(122081);
-    if (parambj1 == null)
+    if (parambn1 == null)
     {
       AppMethodBeat.o(122081);
       return null;
     }
-    String str3 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj1.FLG.activityName);
+    String str3 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn1.KFh.activityName);
     String str1;
     if (paramInt == 4)
     {
-      String str2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj1.FLH);
+      String str2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn1.KFi);
       str1 = str2;
-      if (TextUtils.isEmpty(parambj1.FLI)) {
+      if (TextUtils.isEmpty(parambn1.KFj)) {
         break label138;
       }
       str1 = str2;
-      if (parambj2 == null) {
+      if (parambn2 == null) {
         break label138;
       }
       str1 = str2;
-      if (TextUtils.isEmpty(parambj2.FLI)) {
+      if (TextUtils.isEmpty(parambn2.KFj)) {
         break label138;
       }
-      parambj1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj2.FLI);
+      parambn1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn2.KFj);
       str1 = str2;
     }
     for (;;)
     {
-      if (parambj1 == null) {
-        parambj1 = str3;
+      if (parambn1 == null) {
+        parambn1 = str3;
       }
       for (;;)
       {
-        parambj1 = com.tencent.mm.vending.j.a.N(str1, parambj1);
+        parambn1 = com.tencent.mm.vending.j.a.Q(str1, parambn1);
         AppMethodBeat.o(122081);
-        return parambj1;
+        return parambn1;
         if (paramInt != 5) {
           break label146;
         }
-        str1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj1.FLI);
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "_getCurLastFragment, EVENT_FRAGMENT_OUT: %s", new Object[] { str1 });
+        str1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn1.KFj);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "_getCurLastFragment, EVENT_FRAGMENT_OUT: %s", new Object[] { str1 });
         label138:
-        parambj1 = null;
+        parambn1 = null;
         break;
       }
       label146:
-      parambj1 = null;
+      parambn1 = null;
       str1 = null;
     }
   }
   
-  private void b(bj parambj, int paramInt, long paramLong)
+  private void b(bn parambn, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196117);
+    AppMethodBeat.i(220547);
     int i = 0;
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
     if (localObject1 == null)
     {
       localObject1 = null;
-      if (parambj != null) {
-        localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj.FLI);
+      if (parambn != null) {
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn.KFj);
       }
-      parambj = a(null, (String)localObject1, "ChattingUIFragment", paramInt, paramLong);
-      if (parambj == null)
+      parambn = a(null, (String)localObject1, "ChattingUIFragment", paramInt, paramLong);
+      if (parambn == null)
       {
-        ae.e("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, curSession == null");
-        AppMethodBeat.o(196117);
+        Log.e("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, curSession == null");
+        AppMethodBeat.o(220547);
         return;
       }
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, lastPage: %s", new Object[] { localObject1 });
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, lastPage: %s", new Object[] { localObject1 });
       i = 1;
     }
     for (;;)
     {
       if (i != 0)
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart new Session: %s", new Object[] { Long.valueOf(paramLong) });
-        localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), com.tencent.mm.plugin.expt.hellhound.core.b.qYJ);
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.qYJ;
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart new Session: %s", new Object[] { Long.valueOf(paramLong) });
+        localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), com.tencent.mm.plugin.expt.hellhound.core.b.sza);
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.sza;
         if (localObject1 == null) {}
         for (paramInt = 0;; paramInt = ((Fragment)localObject1).hashCode())
         {
-          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(parambj, (String)localObject2, paramInt, paramLong);
-          parambj.hTf = 0;
-          localObject2 = m.crj();
+          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(parambn, (String)localObject2, paramInt, paramLong);
+          parambn.iOu = 0;
+          localObject2 = m.cPR();
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = "";
           }
-          parambj.sCx = ((String)localObject1);
-          com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(parambj);
-          e(parambj);
-          AppMethodBeat.o(196117);
+          parambn.kvy = ((String)localObject1);
+          com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(parambn);
+          e(parambn);
+          AppMethodBeat.o(220547);
           return;
         }
       }
-      if (com.tencent.mm.plugin.expt.hellhound.a.f.g.a.agq(parambj.sessionId))
+      if (com.tencent.mm.plugin.expt.hellhound.a.f.g.a.arb(parambn.sessionId))
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, NOT, sessionId: %s", new Object[] { parambj.sessionId });
-        localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), com.tencent.mm.plugin.expt.hellhound.core.b.qYJ);
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.qYJ;
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, NOT, sessionId: %s", new Object[] { parambn.sessionId });
+        localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), com.tencent.mm.plugin.expt.hellhound.core.b.sza);
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.sza;
         if (localObject1 == null) {}
         for (paramInt = 0;; paramInt = ((Fragment)localObject1).hashCode())
         {
-          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(parambj, (String)localObject2, paramInt, paramLong);
-          AppMethodBeat.o(196117);
+          com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(parambn, (String)localObject2, paramInt, paramLong);
+          AppMethodBeat.o(220547);
           return;
         }
       }
-      localObject1 = a.crf();
+      localObject1 = a.cPN();
       Object localObject2 = (String)((com.tencent.mm.vending.j.b)localObject1).get(0);
       i = ((Integer)((com.tencent.mm.vending.j.c)localObject1).get(1)).intValue();
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart: %s, %d", new Object[] { localObject2, Integer.valueOf(i) });
-      if (i == parambj.Huq)
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart: %s, %d", new Object[] { localObject2, Integer.valueOf(i) });
+      if (i == parambn.MDo)
       {
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, curChatType == chatType");
-        if (this.rgW != 7)
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, curChatType == chatType");
+        if (this.sIs != 7)
         {
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, 7-Event-NOT");
-          localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), com.tencent.mm.plugin.expt.hellhound.core.b.qYJ);
-          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.qYJ;
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, 7-Event-NOT");
+          localObject1 = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), com.tencent.mm.plugin.expt.hellhound.core.b.sza);
+          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.sza;
           if (localObject1 == null) {}
           for (paramInt = 0;; paramInt = ((Fragment)localObject1).hashCode())
           {
-            com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(parambj, (String)localObject2, paramInt, paramLong);
-            AppMethodBeat.o(196117);
+            com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(parambn, (String)localObject2, paramInt, paramLong);
+            AppMethodBeat.o(220547);
             return;
           }
         }
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, 7-Event");
-        AppMethodBeat.o(196117);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, 7-Event");
+        AppMethodBeat.o(220547);
         return;
       }
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, curChatType!=chatType: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(parambj.Huq) });
-      a(parambj, paramLong);
-      localObject2 = a(null, com.tencent.mm.plugin.expt.hellhound.core.b.qYK, "ChattingUIFragment", paramInt, paramLong);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionStart, curChatType!=chatType: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(parambn.MDo) });
+      a(parambn, paramLong);
+      localObject2 = a(null, com.tencent.mm.plugin.expt.hellhound.core.b.szb, "ChattingUIFragment", paramInt, paramLong);
       if (localObject2 != null)
       {
-        parambj = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), com.tencent.mm.plugin.expt.hellhound.core.b.qYJ);
-        localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.qYJ;
-        if (parambj != null) {
+        parambn = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), com.tencent.mm.plugin.expt.hellhound.core.b.sza);
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.sza;
+        if (parambn != null) {
           break label553;
         }
       }
       label553:
-      for (paramInt = 0;; paramInt = parambj.hashCode())
+      for (paramInt = 0;; paramInt = parambn.hashCode())
       {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cie)localObject2, (String)localObject1, paramInt, paramLong);
-        ((cie)localObject2).hTf = 0;
-        localObject1 = m.crj();
-        parambj = (bj)localObject1;
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cyl)localObject2, (String)localObject1, paramInt, paramLong);
+        ((cyl)localObject2).iOu = 0;
+        localObject1 = m.cPR();
+        parambn = (bn)localObject1;
         if (localObject1 == null) {
-          parambj = "";
+          parambn = "";
         }
-        ((cie)localObject2).sCx = parambj;
-        com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l((cie)localObject2);
-        e((cie)localObject2);
-        AppMethodBeat.o(196117);
+        ((cyl)localObject2).kvy = parambn;
+        com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l((cyl)localObject2);
+        e((cyl)localObject2);
+        AppMethodBeat.o(220547);
         return;
       }
-      parambj = (bj)localObject1;
+      parambn = (bn)localObject1;
     }
   }
   
-  public static void b(boolean paramBoolean, String paramString, long paramLong)
+  private void b(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(196125);
-    Object localObject;
-    if (paramBoolean)
+    AppMethodBeat.i(220541);
+    switch (paramInt2)
     {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
-      if (("AppBrandLaunchProxyUI".equals(localObject)) || ("AppBrandPreLoadingUI".equals(localObject)))
-      {
-        AppMethodBeat.o(196125);
-        return;
-      }
     }
-    ae.w("HABBYGE-MALI.HellSessionMonitor", "onFloatSessionExit: %b, %s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
-    com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.lc(false);
-    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csf();
-    if (paramString != null)
+    for (;;)
     {
-      int j = ((Integer)paramString.first).intValue();
-      int k = ((Integer)paramString.second).intValue();
-      ae.i("HABBYGE-MALI.FloatBallSessionHandler", "onFloatSessionExit, finish: %b, %d, %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(j), Integer.valueOf(k) });
-      if ((j == 2) && (k != 3) && (k != 4))
-      {
-        ae.w("HABBYGE-MALI.FloatBallSessionHandler", "FoatBall, onFloatSessionExit: onFloatMenuItemClicked");
-        AppMethodBeat.o(196125);
-        return;
-      }
-      paramString = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-      if (paramString == null)
-      {
-        ae.w("HABBYGE-MALI.FloatBallSessionHandler", "onFloatSessionExit, curSession == null");
-        AppMethodBeat.o(196125);
-        return;
-      }
-      if (paramBoolean)
-      {
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramString.sessionId);
-        if ((localObject == null) || (!((String)localObject).equals("145")))
-        {
-          ae.w("HABBYGE-MALI.FloatBallSessionHandler", "onFloatSessionExit, sid: %s, %s", new Object[] { localObject, paramString.sessionId });
-          AppMethodBeat.o(196125);
-          return;
-        }
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csg();
-        if (localObject == null) {}
-        for (int i = -1;; i = ((atn)localObject).type)
-        {
-          if ((i == 3) || (i == 4))
-          {
-            ae.i("HABBYGE-MALI.FloatBallSessionHandler", "FloatBall, state, read %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cse()) });
-            if (com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cse() == 8) {
-              com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a.a(paramString, true, j, k, paramLong);
-            }
-          }
-          AppMethodBeat.o(196125);
-          return;
-        }
-      }
-      com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a.a(paramString, false, j, k, paramLong);
+      AppMethodBeat.o(220541);
+      return;
+      v(paramString, paramInt1, paramLong);
+      AppMethodBeat.o(220541);
+      return;
+      ak(paramString, paramLong);
     }
-    AppMethodBeat.o(196125);
   }
   
-  public static b crg()
+  public static b cPO()
   {
     AppMethodBeat.i(122044);
-    if (rgS == null) {}
+    if (sIo == null) {}
     try
     {
-      if (rgS == null) {
-        rgS = new b();
+      if (sIo == null) {
+        sIo = new b();
       }
-      b localb = rgS;
+      b localb = sIo;
       AppMethodBeat.o(122044);
       return localb;
     }
@@ -1704,251 +1728,252 @@ public final class b
     }
   }
   
-  public static void crh()
+  public static void cPP()
   {
     AppMethodBeat.i(122055);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, handleMMProcessRestart: FALSE");
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, handleMMProcessRestart: FALSE");
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.a.reset();
       AppMethodBeat.o(122055);
       return;
     }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "handleMMProcessRestart");
-    bow localbow = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
-    if (localbow == null)
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "handleMMProcessRestart");
+    cbo localcbo = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
+    if (localcbo == null)
     {
       AppMethodBeat.o(122055);
       return;
     }
-    if ((localbow.Hcq.isEmpty()) && (localbow.Hco.isEmpty()))
+    if ((localcbo.Mht.isEmpty()) && (localcbo.Mhr.isEmpty()))
     {
       AppMethodBeat.o(122055);
       return;
     }
     com.tencent.mm.plugin.expt.hellhound.a.f.c.c.reset();
-    bot localbot = com.tencent.mm.plugin.expt.hellhound.a.f.d.a.crZ();
-    if (localbot.Hck.isEmpty())
+    cbl localcbl = com.tencent.mm.plugin.expt.hellhound.a.f.d.a.cQH();
+    if (localcbl.Mhn.isEmpty())
     {
       AppMethodBeat.o(122055);
       return;
     }
     com.tencent.mm.plugin.expt.hellhound.a.f.d.a.reset();
-    ae.i("HABBYGE-MALI.HellSessionReport", "reportWhenMMProcessRestart BEGIN !!");
-    ae.i("HABBYGE-MALI.HellSessionReportProcessRestart", "HellSessionReportProcessRestart.report()");
-    com.tencent.mm.plugin.expt.hellhound.a.f.f.j.a(localbot, localbow, true);
-    bou localbou = (bou)localbot.Hck.getLast();
-    if (localbow.Hcn <= 0L) {
-      localbow.Hcn = localbou.startTime;
+    Log.i("HABBYGE-MALI.HellSessionReport", "reportWhenMMProcessRestart BEGIN !!");
+    Log.i("HABBYGE-MALI.HellSessionReportProcessRestart", "HellSessionReportProcessRestart.report()");
+    com.tencent.mm.plugin.expt.hellhound.a.f.f.j.a(localcbl, localcbo, true);
+    cbm localcbm = (cbm)localcbl.Mhn.getLast();
+    if (localcbo.Mhq <= 0L) {
+      localcbo.Mhq = localcbm.startTime;
     }
-    Iterator localIterator = localbow.Hco.iterator();
+    Iterator localIterator = localcbo.Mhr.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
-      localObject = (cie)localIterator.next();
-      if (((cie)localObject).endTime <= 0L) {
-        ((cie)localObject).endTime = localbou.startTime;
+      localObject = (cyl)localIterator.next();
+      if (((cyl)localObject).endTime <= 0L) {
+        ((cyl)localObject).endTime = localcbm.startTime;
       }
     }
-    localIterator = localbow.Hcq.iterator();
+    localIterator = localcbo.Mht.iterator();
     while (localIterator.hasNext())
     {
-      localObject = (cia)localIterator.next();
-      if (((cia)localObject).endTime <= 0L) {
-        ((cia)localObject).endTime = localbou.startTime;
+      localObject = (cyh)localIterator.next();
+      if (((cyh)localObject).endTime <= 0L) {
+        ((cyh)localObject).endTime = localcbm.startTime;
       }
     }
-    com.tencent.mm.plugin.expt.hellhound.a.f.f.j.a(localbow, (bou)localbot.Hck.getFirst());
-    localbot.Hck.removeLast();
-    com.tencent.mm.plugin.expt.hellhound.a.f.f.j.d(localbow, localbot, null);
+    com.tencent.mm.plugin.expt.hellhound.a.f.f.j.a(localcbo, (cbm)localcbl.Mhn.getFirst());
+    localcbl.Mhn.removeLast();
+    com.tencent.mm.plugin.expt.hellhound.a.f.f.j.d(localcbo, localcbl, null);
     AppMethodBeat.o(122055);
   }
   
-  public static Pair<String, String> crk()
+  public static Pair<String, String> cPS()
   {
-    AppMethodBeat.i(196121);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.coV()) || (!com.tencent.mm.plugin.expt.hellhound.a.coX()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
+    AppMethodBeat.i(220551);
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.cNo()) || (!com.tencent.mm.plugin.expt.hellhound.a.cNq()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
     {
-      AppMethodBeat.o(196121);
+      AppMethodBeat.o(220551);
       return null;
     }
-    Object localObject3 = m.crX();
-    if ((localObject3 == null) || (((dcj)localObject3).Hco.isEmpty()))
+    Object localObject3 = m.cQF();
+    if ((localObject3 == null) || (((dvn)localObject3).Mhr.isEmpty()))
     {
-      localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
+      localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
       if (localObject3 == null)
       {
-        AppMethodBeat.o(196121);
+        AppMethodBeat.o(220551);
         return null;
       }
-      i = ((bow)localObject3).Hco.size();
+      i = ((cbo)localObject3).Mhr.size();
       if (i <= 0)
       {
-        localObject1 = a(null, null, (bow)localObject3);
-        AppMethodBeat.o(196121);
+        localObject1 = a(null, null, (cbo)localObject3);
+        AppMethodBeat.o(220551);
         return localObject1;
       }
       if (i < 2)
       {
-        localObject1 = a((cie)((bow)localObject3).Hco.getLast(), null, (bow)localObject3);
-        AppMethodBeat.o(196121);
+        localObject1 = a((cyl)((cbo)localObject3).Mhr.getLast(), null, (cbo)localObject3);
+        AppMethodBeat.o(220551);
         return localObject1;
       }
       if (i == 2)
       {
-        cie localcie = (cie)((bow)localObject3).Hco.getLast();
-        localObject2 = (cie)((bow)localObject3).Hco.get(0);
+        cyl localcyl = (cyl)((cbo)localObject3).Mhr.getLast();
+        localObject2 = (cyl)((cbo)localObject3).Mhr.get(0);
         localObject1 = localObject2;
-        if (localcie.sessionId.equals(((cie)localObject2).sessionId)) {
+        if (localcyl.sessionId.equals(((cyl)localObject2).sessionId)) {
           localObject1 = null;
         }
-        localObject1 = a(localcie, (cie)localObject1, (bow)localObject3);
-        AppMethodBeat.o(196121);
+        localObject1 = a(localcyl, (cyl)localObject1, (cbo)localObject3);
+        AppMethodBeat.o(220551);
         return localObject1;
       }
-      localObject1 = (cie)((bow)localObject3).Hco.getLast();
+      localObject1 = (cyl)((cbo)localObject3).Mhr.getLast();
       i -= 2;
       while (i >= 0)
       {
-        localObject2 = (cie)((bow)localObject3).Hco.get(i);
-        if (!((cie)localObject1).sessionId.equals(((cie)localObject2).sessionId))
+        localObject2 = (cyl)((cbo)localObject3).Mhr.get(i);
+        if (!((cyl)localObject1).sessionId.equals(((cyl)localObject2).sessionId))
         {
-          localObject1 = a((cie)localObject1, (cie)localObject2, (bow)localObject3);
-          AppMethodBeat.o(196121);
+          localObject1 = a((cyl)localObject1, (cyl)localObject2, (cbo)localObject3);
+          AppMethodBeat.o(220551);
           return localObject1;
         }
         i -= 1;
       }
-      localObject1 = a((cie)localObject1, null, (bow)localObject3);
-      AppMethodBeat.o(196121);
+      localObject1 = a((cyl)localObject1, null, (cbo)localObject3);
+      AppMethodBeat.o(220551);
       return localObject1;
     }
-    int i = ((dcj)localObject3).Hco.size();
+    int i = ((dvn)localObject3).Mhr.size();
     if (i < 2)
     {
-      localObject1 = Pair.create(((dcj)localObject3).Hco.getLast(), ((dcj)localObject3).Hco.getLast());
-      AppMethodBeat.o(196121);
+      localObject1 = Pair.create(((dvn)localObject3).Mhr.getLast(), ((dvn)localObject3).Mhr.getLast());
+      AppMethodBeat.o(220551);
       return localObject1;
     }
     if (i == 2)
     {
-      localObject1 = Pair.create(((dcj)localObject3).Hco.getLast(), ((dcj)localObject3).Hco.get(i - 2));
-      AppMethodBeat.o(196121);
+      localObject1 = Pair.create(((dvn)localObject3).Mhr.getLast(), ((dvn)localObject3).Mhr.get(i - 2));
+      AppMethodBeat.o(220551);
       return localObject1;
     }
-    Object localObject2 = (String)((dcj)localObject3).Hco.getLast();
+    Object localObject2 = (String)((dvn)localObject3).Mhr.getLast();
     i -= 2;
     Object localObject1 = localObject2;
     while (i >= 0)
     {
-      localObject1 = (String)((dcj)localObject3).Hco.get(i);
+      localObject1 = (String)((dvn)localObject3).Mhr.get(i);
       if (!((String)localObject2).equals(localObject1))
       {
         localObject1 = Pair.create(localObject2, localObject1);
-        AppMethodBeat.o(196121);
+        AppMethodBeat.o(220551);
         return localObject1;
       }
       i -= 1;
     }
     localObject1 = Pair.create(localObject2, localObject1);
-    AppMethodBeat.o(196121);
+    AppMethodBeat.o(220551);
     return localObject1;
   }
   
   public static void d(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196107);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    AppMethodBeat.i(220537);
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, notifyToBizEnter: FALSE");
-      AppMethodBeat.o(196107);
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, notifyToBizEnter: FALSE");
+      AppMethodBeat.o(220537);
       return;
     }
-    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crq())
+    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPY())
     {
-      ae.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentEnter, NOT 104-Biz Session !!");
-      AppMethodBeat.o(196107);
+      Log.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentEnter, NOT 104-Biz Session !!");
+      AppMethodBeat.o(220537);
       return;
     }
     if ("Biz".equals(paramString1))
     {
-      ae.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentEnter: %s -> %s", new Object[] { paramString2, com.tencent.mm.plugin.expt.hellhound.core.b.qYJ });
+      Log.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentEnter: %s -> %s", new Object[] { paramString2, com.tencent.mm.plugin.expt.hellhound.core.b.sza });
       if (!paramString2.contains("BizTimeLineUI")) {
         paramString2.contains("BizConversationUI");
       }
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.y(com.tencent.mm.plugin.expt.hellhound.core.b.qYJ, paramInt, paramLong);
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.x(com.tencent.mm.plugin.expt.hellhound.core.b.sza, paramInt, paramLong);
     }
-    AppMethodBeat.o(196107);
+    AppMethodBeat.o(220537);
   }
   
-  private static String e(bj parambj1, bj parambj2)
+  private static String e(bn parambn1, bn parambn2)
   {
     AppMethodBeat.i(184369);
-    bj localbj = null;
-    if ((parambj1 != null) && (!TextUtils.isEmpty(parambj1.FLI)))
+    bn localbn = null;
+    if ((parambn1 != null) && (!TextUtils.isEmpty(parambn1.KFj)))
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, curAR.lastPageName: %s", new Object[] { parambj1.FLI });
-      parambj1 = parambj1.FLI;
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, curAR.lastPageName: %s", new Object[] { parambn1.KFj });
+      parambn1 = parambn1.KFj;
       AppMethodBeat.o(184369);
-      return parambj1;
+      return parambn1;
     }
-    parambj1 = localbj;
-    if (parambj2 != null)
+    parambn1 = localbn;
+    if (parambn2 != null)
     {
-      if (TextUtils.isEmpty(parambj2.FLH)) {
+      if (TextUtils.isEmpty(parambn2.KFi)) {
         break label109;
       }
-      parambj1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj2.FLH);
+      parambn1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn2.KFi);
     }
-    while (!TextUtils.isEmpty(parambj1))
+    while (!TextUtils.isEmpty(parambn1))
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lnARA, lastPageName: %s", new Object[] { parambj1 });
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lnARA, lastPageName: %s", new Object[] { parambn1 });
       AppMethodBeat.o(184369);
-      return parambj1;
+      return parambn1;
       label109:
-      parambj1 = localbj;
-      if (!TextUtils.isEmpty(parambj2.FLI)) {
-        parambj1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj2.FLH);
+      parambn1 = localbn;
+      if (!TextUtils.isEmpty(parambn2.KFj)) {
+        parambn1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn2.KFi);
       }
     }
-    parambj1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cpF().qZz.cpD();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lastPageName-1: %s", new Object[] { parambj1 });
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.aem(parambj1))
+    parambn1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cNY().szQ.cNW();
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lastPageName-1: %s", new Object[] { parambn1 });
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(parambn1))
     {
-      d.cpt();
-      localbj = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
-      if (localbj != null)
+      d.cNM();
+      localbn = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+      if (localbn != null)
       {
-        parambj2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(localbj.FLH);
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lastPageName-2: %s", new Object[] { parambj2 });
-        parambj1 = parambj2;
-        if (TextUtils.isEmpty(parambj2))
+        parambn2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(localbn.KFi);
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lastPageName-2: %s", new Object[] { parambn2 });
+        parambn1 = parambn2;
+        if (TextUtils.isEmpty(parambn2))
         {
-          parambj1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(localbj.FLI);
-          ae.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, lastPageName-3: %s", new Object[] { parambj1 });
+          parambn1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(localbn.KFj);
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "activityIn, lastPageName-3: %s", new Object[] { parambn1 });
         }
       }
     }
     for (;;)
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lastPageName: %s", new Object[] { parambj1 });
-      if (!TextUtils.isEmpty(parambj1)) {
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "getLastPageName, lastPageName: %s", new Object[] { parambn1 });
+      if (!TextUtils.isEmpty(parambn1)) {
         break;
       }
-      parambj1 = com.tencent.mm.plugin.expt.hellhound.core.b.qYK;
+      parambn1 = com.tencent.mm.plugin.expt.hellhound.core.b.szb;
       AppMethodBeat.o(184369);
-      return parambj1;
-      parambj1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(parambj1);
+      return parambn1;
+      parambn1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambn1);
     }
     AppMethodBeat.o(184369);
-    return parambj1;
+    return parambn1;
   }
   
   public static void e(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(122053);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, catchParamsOnActivityAsync: FALSE");
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, catchParamsOnActivityAsync: FALSE");
       AppMethodBeat.o(122053);
       return;
     }
@@ -1957,138 +1982,138 @@ public final class b
     AppMethodBeat.o(122053);
   }
   
-  public static void e(cie paramcie)
+  public static void e(cyl paramcyl)
   {
     AppMethodBeat.i(122082);
-    if (paramcie == null)
+    if (paramcyl == null)
     {
       AppMethodBeat.o(122082);
       return;
     }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "onSessionStart: %s, %s, %s", new Object[] { paramcie.sessionId, Long.valueOf(paramcie.startTime), paramcie.sCx });
-    com.tencent.mm.plugin.expt.hellhound.a.b.b.j.a(paramcie);
-    m.EL(paramcie.sessionId);
-    l.o(paramcie);
-    com.tencent.mm.plugin.expt.hellhound.a.d.a locala = com.tencent.mm.plugin.expt.hellhound.a.d.a.rgA;
-    com.tencent.mm.plugin.expt.hellhound.a.d.a.afp(paramcie.sessionId);
-    an(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramcie.sessionId), paramcie.startTime);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "onSessionStart: %s, %s, %s", new Object[] { paramcyl.sessionId, Long.valueOf(paramcyl.startTime), paramcyl.kvy });
+    com.tencent.mm.plugin.expt.hellhound.a.b.b.k.a(paramcyl);
+    m.add(paramcyl.sessionId);
+    l.o(paramcyl);
+    com.tencent.mm.plugin.expt.hellhound.a.d.a locala = com.tencent.mm.plugin.expt.hellhound.a.d.a.sHW;
+    com.tencent.mm.plugin.expt.hellhound.a.d.a.aqa(paramcyl.sessionId);
+    am(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramcyl.sessionId), paramcyl.startTime);
     AppMethodBeat.o(122082);
   }
   
   public static void e(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196108);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    AppMethodBeat.i(220538);
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, notifyToBizExit: FALSE");
-      AppMethodBeat.o(196108);
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, notifyToBizExit: FALSE");
+      AppMethodBeat.o(220538);
       return;
     }
-    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crq())
+    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPY())
     {
-      ae.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentExit, NOT 104-Biz Session !!");
-      AppMethodBeat.o(196108);
+      Log.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentExit, NOT 104-Biz Session !!");
+      AppMethodBeat.o(220538);
       return;
     }
     if ("Biz".equals(paramString1))
     {
-      ae.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentExit: %s", new Object[] { paramString2 });
+      Log.i("HABBYGE-MALI.HellBizSessionHandler", "whenChattingUIFragmentExit: %s", new Object[] { paramString2 });
       if (paramString2.contains("BizTimeLineUI"))
       {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.y(paramString2, paramInt, paramLong);
-        AppMethodBeat.o(196108);
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.x(paramString2, paramInt, paramLong);
+        AppMethodBeat.o(220538);
         return;
       }
       if (paramString2.contains("BizConversationUI")) {
-        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.y(paramString2, paramInt, paramLong);
+        com.tencent.mm.plugin.expt.hellhound.a.f.d.b.x(paramString2, paramInt, paramLong);
       }
     }
-    AppMethodBeat.o(196108);
+    AppMethodBeat.o(220538);
   }
   
-  private static void f(cie paramcie)
+  private static void f(cyl paramcyl)
   {
-    AppMethodBeat.i(196119);
-    if ((paramcie.sessionId.startsWith("143")) && (!com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdE))
+    AppMethodBeat.i(220549);
+    if ((paramcyl.sessionId.startsWith("143")) && (!com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEl))
     {
       com.tencent.mm.plugin.expt.hellhound.a.b.c.b localb = new com.tencent.mm.plugin.expt.hellhound.a.b.c.b((byte)0);
-      localb.sessionId = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm().cos();
-      localb.duQ = "All";
-      localb.rfm = paramcie.startTime;
-      localb.rfn = paramcie.endTime;
-      localb.rfl = (paramcie.endTime - paramcie.startTime);
-      localb.rfo = com.tencent.mm.plugin.expt.hellhound.core.b.cpi();
-      localb.rfp = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramcie.sessionId);
-      localb.dGC = c.b.rdZ.value;
+      localb.sessionId = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU().cMD();
+      localb.dMl = "All";
+      localb.sGC = paramcyl.startTime;
+      localb.sGD = paramcyl.endTime;
+      localb.sGB = (paramcyl.endTime - paramcyl.startTime);
+      localb.sGE = com.tencent.mm.plugin.expt.hellhound.core.b.cNB();
+      localb.sGF = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramcyl.sessionId);
+      localb.dYn = c.b.sFc.value;
       com.tencent.mm.plugin.expt.hellhound.a.b.c.a.a(localb);
     }
-    AppMethodBeat.o(196119);
+    AppMethodBeat.o(220549);
   }
   
-  private static void g(cie paramcie)
+  private static void g(cyl paramcyl)
   {
     AppMethodBeat.i(177388);
-    if (paramcie == null) {}
-    for (Object localObject = "NULL";; localObject = paramcie.sessionId)
+    if (paramcyl == null) {}
+    for (Object localObject = "NULL";; localObject = paramcyl.sessionId)
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, report: %s", new Object[] { localObject });
-      localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, report: %s", new Object[] { localObject });
+      localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
       if (localObject != null) {
         break;
       }
       AppMethodBeat.o(177388);
       return;
     }
-    bot localbot = com.tencent.mm.plugin.expt.hellhound.a.f.d.a.crZ();
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.a((bow)localObject);
-    i.c((bow)localObject, localbot, paramcie);
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crF();
+    cbl localcbl = com.tencent.mm.plugin.expt.hellhound.a.f.d.a.cQH();
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.a((cbo)localObject);
+    i.c((cbo)localObject, localcbl, paramcyl);
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQn();
     com.tencent.mm.plugin.expt.hellhound.a.f.d.a.reset();
     AppMethodBeat.o(177388);
   }
   
-  private void h(cie paramcie)
+  private void h(cyl paramcyl)
   {
-    if (paramcie == null) {
+    if (paramcyl == null) {
       return;
     }
-    this.rgZ = paramcie;
+    this.sIv = paramcyl;
   }
   
-  private void i(int paramInt1, int paramInt2, long paramLong)
+  private void j(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(196114);
+    AppMethodBeat.i(220544);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(196114);
+      AppMethodBeat.o(220544);
       return;
-      W(paramInt2, paramLong);
-      AppMethodBeat.o(196114);
+      Z(paramInt2, paramLong);
+      AppMethodBeat.o(220544);
       return;
-      X(paramInt1, paramLong);
+      aa(paramInt1, paramLong);
     }
   }
   
-  public static void u(String paramString, int paramInt, long paramLong)
+  public static void t(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196110);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    AppMethodBeat.i(220540);
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, monitorScanSession: FALSE");
-      AppMethodBeat.o(196110);
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, monitorScanSession: FALSE");
+      AppMethodBeat.o(220540);
       return;
     }
-    com.tencent.mm.plugin.expt.hellhound.a.f.g.a.z(paramString, paramInt, paramLong);
-    AppMethodBeat.o(196110);
+    com.tencent.mm.plugin.expt.hellhound.a.f.g.a.y(paramString, paramInt, paramLong);
+    AppMethodBeat.o(220540);
   }
   
-  private void v(String paramString, int paramInt, long paramLong)
+  private void u(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(122058);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOnFrontBack, pageName: %s", new Object[] { paramString });
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "_launcherUIOnFrontBack, pageName: %s", new Object[] { paramString });
     switch (paramInt)
     {
     }
@@ -2096,410 +2121,340 @@ public final class b
     {
       AppMethodBeat.o(122058);
       return;
-      this.rgW = 7;
-      aj(paramString, paramLong);
+      this.sIs = 7;
+      ai(paramString, paramLong);
       AppMethodBeat.o(122058);
       return;
-      this.rgW = 8;
-      ak(paramString, paramLong);
+      this.sIs = 8;
+      aj(paramString, paramLong);
     }
   }
   
-  private void vn(long paramLong)
+  private void v(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(122056);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "openStoryGalleryView");
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localcie == null)
-    {
-      localcie = a(null, "MoreTabUI", "StoryGalleryView", 0, paramLong);
-      if (localcie == null)
-      {
-        ae.e("HABBYGE-MALI.HellSessionMonitor", "openStoryGalleryView, 不是合法session ~~~");
-        AppMethodBeat.o(122056);
-        return;
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, "StoryGalleryView", 0, paramLong);
-      if (i == 0) {
-        break;
-      }
-      localcie.hTf = 0;
-      String str2 = m.crj();
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = "";
-      }
-      localcie.sCx = str1;
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(localcie);
-      e(localcie);
-      AppMethodBeat.o(122056);
-      return;
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "openStoryGalleryView, curSession: %s", new Object[] { localcie.sessionId });
-    }
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(localcie);
-    AppMethodBeat.o(122056);
-  }
-  
-  private void vo(long paramLong)
-  {
-    AppMethodBeat.i(122057);
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localcie == null)
-    {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "closeStoryGalleryView, 不是合法session !!!");
-      AppMethodBeat.o(122057);
-      return;
-    }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "closeStoryGalleryView, curSession: %s", new Object[] { localcie.sessionId });
-    if ("142".equals(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(localcie.sessionId)))
-    {
-      a(localcie, paramLong);
-      AppMethodBeat.o(122057);
-      return;
-    }
-    if (!"StoryGalleryView".equals(localcie.Hup))
-    {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "curActivity: %s IS NOT curSession: %s startPage: %s", new Object[] { "StoryGalleryView", localcie.sessionId, localcie.Hup });
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m(localcie);
-    }
-    AppMethodBeat.o(122057);
-  }
-  
-  private void vp(long paramLong)
-  {
-    AppMethodBeat.i(122079);
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localcie == null)
-    {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose, curSession不合法");
-      AppMethodBeat.o(122079);
-      return;
-    }
-    com.tencent.mm.vending.j.c localc = a.crf();
-    String str = (String)localc.get(0);
-    int i = ((Integer)localc.get(1)).intValue();
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose: %s, %d", new Object[] { str, Integer.valueOf(i) });
-    if (i == localcie.Huq)
-    {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose, ==");
-      a(localcie, paramLong);
-      AppMethodBeat.o(122079);
-      return;
-    }
-    ae.e("HABBYGE-MALI.HellSessionMonitor", "chatUIFragmentSessionClose, != %d", new Object[] { Integer.valueOf(localcie.Huq) });
-    AppMethodBeat.o(122079);
-  }
-  
-  private void w(String paramString, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(196112);
-    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crK();
+    AppMethodBeat.i(220542);
+    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQs();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new bow();
+      localObject1 = new cbo();
     }
-    ((bow)localObject1).Hcm = paramLong;
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((bow)localObject1);
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+    ((cbo)localObject1).Mhp = paramLong;
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.b((cbo)localObject1);
+    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
     Object localObject3;
     if (localObject1 != null)
     {
-      if (!((cie)localObject1).Hut) {
+      if (!((cyl)localObject1).MDr) {
         break label544;
       }
-      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.csd();
-      if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(((cie)localObject1).sessionId)) && (localObject2 != null))
+      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.cQL();
+      if ((com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(((cyl)localObject1).sessionId)) && (localObject2 != null))
       {
-        localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
-        ae.w("HABBYGE-MALI.HellSessionMonitor", "activityOn7Event, lstItem: %s, %s, %s", new Object[] { ((bou)localObject2).dAa, ((bou)localObject2).duQ, localObject3 });
-        if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(((bou)localObject2).dAa))
+        localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
+        Log.w("HABBYGE-MALI.HellSessionMonitor", "activityOn7Event, lstItem: %s, %s, %s", new Object[] { ((cbm)localObject2).dRM, ((cbm)localObject2).dMl, localObject3 });
+        if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(((cbm)localObject2).dRM))
         {
-          dch localdch = l.crV();
-          if ((localdch == null) || (!localdch.HKN)) {}
-          for (int i = 1; (((bou)localObject2).duQ.equals("FloatBall")) || ((com.tencent.mm.plugin.expt.hellhound.core.b.aew(((bou)localObject2).duQ)) && (i != 0)) || ((((bou)localObject2).duQ.equals(localObject3)) && (!((String)localObject3).equals("WebViewUI")) && (!((String)localObject3).equals("WebviewMpUI"))); i = 0)
+          dvl localdvl = l.cQD();
+          if ((localdvl == null) || (!localdvl.MWw)) {}
+          for (int i = 1; (((cbm)localObject2).dMl.equals("FloatBall")) || ((com.tencent.mm.plugin.expt.hellhound.core.b.aoJ(((cbm)localObject2).dMl)) && (i != 0)) || ((((cbm)localObject2).dMl.equals(localObject3)) && (!((String)localObject3).equals("WebViewUI")) && (!((String)localObject3).equals("WebviewMpUI"))); i = 0)
           {
-            ((cie)localObject1).startTime = paramLong;
-            ((cie)localObject1).endTime = paramLong;
-            ((cie)localObject1).Hup = "FloatBall";
-            ((cie)localObject1).hTf = 1;
-            com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cie)localObject1);
-            a((cie)localObject1, paramLong);
-            AppMethodBeat.o(196112);
+            ((cyl)localObject1).startTime = paramLong;
+            ((cyl)localObject1).endTime = paramLong;
+            ((cyl)localObject1).MDn = "FloatBall";
+            ((cyl)localObject1).iOu = 1;
+            com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cyl)localObject1);
+            a((cyl)localObject1, paramLong);
+            AppMethodBeat.o(220542);
             return;
           }
         }
       }
-      if ((localObject2 == null) || (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(((cie)localObject1).sessionId))) {
+      if ((localObject2 == null) || (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(((cyl)localObject1).sessionId))) {
         break label551;
       }
-      localObject3 = l.crV();
-      if ((localObject3 == null) || (!com.tencent.mm.plugin.expt.hellhound.core.b.aew(((bou)localObject2).duQ)) || (!"FloatingBall".equals(((cie)localObject1).Hup)) || (!((dch)localObject3).HKN) || (((dch)localObject3).HKJ == null)) {
+      localObject3 = l.cQD();
+      if ((localObject3 == null) || (!com.tencent.mm.plugin.expt.hellhound.core.b.aoJ(((cbm)localObject2).dMl)) || (!"FloatingBall".equals(((cyl)localObject1).MDn)) || (!((dvl)localObject3).MWw) || (((dvl)localObject3).MWs == null)) {
         break label551;
       }
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "activityOn7Event, floatSession, lastSession: %s", new Object[] { ((dch)localObject3).HKJ });
-      localObject1 = ((dch)localObject3).HKJ;
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "activityOn7Event, floatSession, lastSession: %s", new Object[] { ((dvl)localObject3).MWs });
+      localObject1 = ((dvl)localObject3).MWs;
     }
     label544:
     label551:
     for (;;)
     {
-      ((cie)localObject1).Hut = false;
-      ((cie)localObject1).hTf = 0;
-      ((cie)localObject1).startTime = paramLong;
-      localObject3 = m.crj();
+      ((cyl)localObject1).MDr = false;
+      ((cyl)localObject1).iOu = 0;
+      ((cyl)localObject1).startTime = paramLong;
+      localObject3 = m.cPR();
       localObject2 = localObject3;
       if (localObject3 == null) {
         localObject2 = "";
       }
-      ((cie)localObject1).sCx = ((String)localObject2);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "activityOn7Event, curSession: %s, %s", new Object[] { ((cie)localObject1).Hup, paramString });
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cie)localObject1, paramString, paramInt, paramLong);
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cie)localObject1);
-      e((cie)localObject1);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn7Event, curSession: %s, %s, %s, %d", new Object[] { ((cie)localObject1).sessionId, ((cie)localObject1).Hup, ((cie)localObject1).Hus, Integer.valueOf(((cie)localObject1).Huq) });
-      AppMethodBeat.o(196112);
+      ((cyl)localObject1).kvy = ((String)localObject2);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "activityOn7Event, curSession: %s, %s", new Object[] { ((cyl)localObject1).MDn, paramString });
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cyl)localObject1, paramString, paramInt, paramLong);
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cyl)localObject1);
+      e((cyl)localObject1);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn7Event, curSession: %s, %s, %s, %d", new Object[] { ((cyl)localObject1).sessionId, ((cyl)localObject1).MDn, ((cyl)localObject1).MDq, Integer.valueOf(((cyl)localObject1).MDo) });
+      AppMethodBeat.o(220542);
       return;
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn7Event, 无Session: %s", new Object[] { paramString });
-      paramString = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "_activityOn7Event, 无Session: %s", new Object[] { paramString });
+      paramString = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
       if (!"LauncherUI".equals(paramString))
       {
-        x(paramString, paramInt, paramLong);
+        w(paramString, paramInt, paramLong);
         com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(null, paramString, paramInt, paramLong);
       }
-      AppMethodBeat.o(196112);
+      AppMethodBeat.o(220542);
       return;
     }
   }
   
-  public final cie a(Activity paramActivity, String paramString1, String paramString2, int paramInt, long paramLong)
+  public final cyl a(Activity paramActivity, String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196118);
+    AppMethodBeat.i(220548);
     if (paramString2 == null)
     {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "newSession: dstPageName is NULL");
-      AppMethodBeat.o(196118);
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "newSession: dstPageName is NULL");
+      AppMethodBeat.o(220548);
       return null;
     }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "newSession: srcPageName: %s, dstPageName: %s", new Object[] { paramString1, paramString2 });
-    btm localbtm = null;
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "newSession: srcPageName: %s, dstPageName: %s", new Object[] { paramString1, paramString2 });
+    cgh localcgh = null;
     Object localObject2 = null;
     Object localObject1;
     if ("WebViewUI".equals(paramString2))
     {
-      localbtm = new btm();
-      localbtm.key = "minimize_secene";
-      localbtm.value = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.aeU("minimize_secene");
-      localObject2 = new btm();
-      ((btm)localObject2).key = "KPublisherId";
-      ((btm)localObject2).value = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.aeU("KPublisherId");
+      localcgh = new cgh();
+      localcgh.key = "minimize_secene";
+      localcgh.value = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.apk("minimize_secene");
+      localObject2 = new cgh();
+      ((cgh)localObject2).key = "KPublisherId";
+      ((cgh)localObject2).value = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.apk("KPublisherId");
       localObject1 = new ArrayList();
-      ((List)localObject1).add(localbtm.value);
-      ((List)localObject1).add(((btm)localObject2).value);
+      ((List)localObject1).add(localcgh.value);
+      ((List)localObject1).add(((cgh)localObject2).value);
       localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.a(paramActivity, paramString1, paramString2, (List)localObject1);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "newSession(WebViewUI)sid = %s, %s", new Object[] { localObject1, Long.valueOf(paramLong) });
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "newSession(WebViewUI)sid = %s, %s", new Object[] { localObject1, Long.valueOf(paramLong) });
     }
     for (paramActivity = (Activity)localObject2; TextUtils.isEmpty((CharSequence)localObject1); paramActivity = (Activity)localObject2)
     {
-      AppMethodBeat.o(196118);
+      AppMethodBeat.o(220548);
       return null;
       localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.a(paramActivity, paramString1, paramString2, null);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "newSession(no args)sid = %s, %s", new Object[] { localObject1, Long.valueOf(paramLong) });
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "newSession(no args)sid = %s, %s", new Object[] { localObject1, Long.valueOf(paramLong) });
     }
-    localObject2 = new cie();
-    ((cie)localObject2).sessionId = ((String)localObject1 + "_" + paramLong);
-    ((cie)localObject2).seq = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crE();
-    ((cie)localObject2).Hup = paramString2;
-    ((cie)localObject2).Huw = paramInt;
-    ((cie)localObject2).Hus = paramString1;
-    ((cie)localObject2).startTime = paramLong;
-    if ("WebViewUI".equals(((cie)localObject2).Hup))
+    localObject2 = new cyl();
+    ((cyl)localObject2).sessionId = ((String)localObject1 + "_" + paramLong);
+    ((cyl)localObject2).seq = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQm();
+    ((cyl)localObject2).MDn = paramString2;
+    ((cyl)localObject2).MDu = paramInt;
+    ((cyl)localObject2).MDq = paramString1;
+    ((cyl)localObject2).startTime = paramLong;
+    if ("WebViewUI".equals(((cyl)localObject2).MDn))
     {
-      ((cie)localObject2).Hur = new cib();
-      ((cie)localObject2).Hur.Huj.add(localbtm);
-      ((cie)localObject2).Hur.Huj.add(paramActivity);
-      ((cie)localObject2).Huu = paramString2;
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "newSession: %s, %s", new Object[] { ((cie)localObject2).sessionId, ((cie)localObject2).Huu });
-      this.rgV = ((cie)localObject2).sessionId;
-      AppMethodBeat.o(196118);
+      ((cyl)localObject2).MDp = new cyi();
+      ((cyl)localObject2).MDp.MDh.add(localcgh);
+      ((cyl)localObject2).MDp.MDh.add(paramActivity);
+      ((cyl)localObject2).MDs = paramString2;
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "newSession: %s, %s", new Object[] { ((cyl)localObject2).sessionId, ((cyl)localObject2).MDs });
+      this.sIr = ((cyl)localObject2).sessionId;
+      AppMethodBeat.o(220548);
       return localObject2;
     }
-    if ("ChattingUI".equals(((cie)localObject2).Hup))
+    if ("ChattingUI".equals(((cyl)localObject2).MDn))
     {
-      paramActivity = a.cre();
-      ((cie)localObject2).userName = ((String)paramActivity.get(0));
-      ((cie)localObject2).Huq = ((Integer)paramActivity.get(1)).intValue();
+      paramActivity = a.cPM();
+      ((cyl)localObject2).userName = ((String)paramActivity.get(0));
+      ((cyl)localObject2).MDo = ((Integer)paramActivity.get(1)).intValue();
     }
     for (;;)
     {
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.b.i((cie)localObject2);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "newSession, %s", new Object[] { ((cie)localObject2).sessionId });
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.b.i((cyl)localObject2);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "newSession, %s", new Object[] { ((cyl)localObject2).sessionId });
       break;
-      if ("ChattingUIFragment".equals(((cie)localObject2).Hup))
+      if ("ChattingUIFragment".equals(((cyl)localObject2).MDn))
       {
-        paramActivity = a.crf();
-        ((cie)localObject2).userName = ((String)paramActivity.get(0));
-        ((cie)localObject2).Huq = ((Integer)paramActivity.get(1)).intValue();
+        paramActivity = a.cPN();
+        ((cyl)localObject2).userName = ((String)paramActivity.get(0));
+        ((cyl)localObject2).MDo = ((Integer)paramActivity.get(1)).intValue();
       }
     }
   }
   
-  public final void a(Activity paramActivity, bj parambj1, int paramInt, bj parambj2)
+  public final void a(Activity paramActivity, bn parambn1, int paramInt, bn parambn2)
   {
     AppMethodBeat.i(122049);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, monitor, needSessionMonitor: FALSE");
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, monitor, needSessionMonitor: FALSE");
       AppMethodBeat.o(122049);
       return;
     }
-    if (parambj1 == null)
+    if (parambn1 == null)
     {
       AppMethodBeat.o(122049);
       return;
     }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor monitor: %s", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor monitor: %s", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.rgX = -1;
+      this.sIt = -1;
       AppMethodBeat.o(122049);
       return;
-      a(paramActivity, parambj1, parambj2, paramInt);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "monitor, activity: %s, %d", new Object[] { parambj1.FLG.activityName, Integer.valueOf(paramInt) });
+      a(paramActivity, parambn1, parambn2, paramInt);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "monitor, activity: %s, %d", new Object[] { parambn1.KFh.activityName, Integer.valueOf(paramInt) });
       continue;
-      a(parambj1, paramInt, parambj2);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "monitor, fragment: %s, %d", new Object[] { parambj1.FLH, Integer.valueOf(paramInt) });
+      a(parambn1, paramInt, parambn2);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "monitor, fragment: %s, %d", new Object[] { parambn1.KFi, Integer.valueOf(paramInt) });
       continue;
-      a(paramInt, parambj2, parambj1.FLK);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "monitor, session end: ChattingUIFragment");
+      a(paramInt, parambn2, parambn1.KFl);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "monitor, session end: ChattingUIFragment");
     }
   }
   
-  public final void a(cie paramcie, long paramLong)
+  public final void a(cyl paramcyl, long paramLong)
   {
     AppMethodBeat.i(122084);
-    if (paramcie == null)
+    if (paramcyl == null)
     {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "HABBYGE-MLAI, onSessionClose, curSession == null");
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "HABBYGE-MLAI, onSessionClose, curSession == null");
       AppMethodBeat.o(122084);
       return;
     }
-    if ((paramcie.Hut) && (paramcie.hTf == 1))
+    if ((paramcyl.MDr) && (paramcyl.iOu == 1))
     {
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "onSessionClose: The Repeated sesson close Event: %s", new Object[] { paramcie.sessionId });
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.afW(paramcie.sessionId);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "onSessionClose: The Repeated sesson close Event: %s", new Object[] { paramcyl.sessionId });
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.aqH(paramcyl.sessionId);
       AppMethodBeat.o(122084);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.d.a.crZ();
-    if (!((bot)localObject).Hck.isEmpty())
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.d.a.cQH();
+    if (!((cbl)localObject).Mhn.isEmpty())
     {
-      localObject = (bou)((bot)localObject).Hck.getLast();
-      if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afI(((bou)localObject).dAa)) {
-        com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.b((bou)localObject);
+      localObject = (cbm)((cbl)localObject).Mhn.getLast();
+      if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqt(((cbm)localObject).dRM)) {
+        com.tencent.mm.plugin.expt.hellhound.a.f.g.a.b.b((cbm)localObject);
       }
     }
-    paramcie.endTime = paramLong;
-    paramcie.hTf = 1;
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.i(paramcie);
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "onSessionClose: %s, %s, %s, %b, %d", new Object[] { paramcie.sessionId, Long.valueOf(paramcie.startTime), Long.valueOf(paramcie.endTime), Boolean.valueOf(paramcie.Hut), Integer.valueOf(paramcie.hTf) });
-    com.tencent.mm.plugin.expt.hellhound.a.d.a.rgA.a(paramcie.Hup, paramLong, com.tencent.mm.plugin.expt.hellhound.a.d.g.rgL);
-    ao(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramcie.sessionId), paramLong);
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.n(paramcie);
-    if (paramcie.Huv) {
-      ap(paramcie.sessionId, paramLong);
+    paramcyl.endTime = paramLong;
+    paramcyl.iOu = 1;
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.i(paramcyl);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "onSessionClose temp: %s, %s, %s, %b, %d", new Object[] { paramcyl.sessionId, Long.valueOf(paramcyl.startTime), Long.valueOf(paramcyl.endTime), Boolean.valueOf(paramcyl.MDr), Integer.valueOf(paramcyl.iOu) });
+    com.tencent.mm.plugin.expt.hellhound.a.d.a.sHW.a(paramcyl.MDn, paramLong, com.tencent.mm.plugin.expt.hellhound.a.d.g.sIh);
+    an(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramcyl.sessionId), paramLong);
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.n(paramcyl);
+    if (paramcyl.MDt) {
+      ao(paramcyl.sessionId, paramLong);
     }
-    com.tencent.mm.plugin.expt.hellhound.a.e.a.crd();
-    com.tencent.mm.plugin.expt.hellhound.a.b.b.j.b(paramcie);
-    f(paramcie);
+    com.tencent.mm.plugin.expt.hellhound.a.e.a.cPL();
+    com.tencent.mm.plugin.expt.hellhound.a.b.b.k.b(paramcyl);
+    f(paramcyl);
     AppMethodBeat.o(122084);
   }
   
-  public final void a(String paramString, int paramInt1, long paramLong, int paramInt2)
+  public final void b(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    AppMethodBeat.i(196109);
-    this.rgX = paramInt2;
-    this.rgY = paramLong;
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    AppMethodBeat.i(220539);
+    this.sIt = paramInt2;
+    this.sIu = paramLong;
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, frontbackEvent, needSessionMonitor: FALSE");
-      AppMethodBeat.o(196109);
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, frontbackEvent, needSessionMonitor: FALSE");
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.a.reset();
+      AppMethodBeat.o(220539);
       return;
     }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "frontbackEvent: %s, %d, %s", new Object[] { paramString, Integer.valueOf(paramInt2), Long.valueOf(this.rgY) });
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.aem(paramString))
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "frontbackEvent: %s, %d, %s", new Object[] { paramString, Integer.valueOf(paramInt2), Long.valueOf(this.sIu) });
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramString))
     {
-      v(paramString, paramInt2, this.rgY);
-      AppMethodBeat.o(196109);
+      u(paramString, paramInt2, this.sIu);
+      AppMethodBeat.o(220539);
       return;
     }
-    a(paramString, paramInt1, paramInt2, this.rgY);
-    AppMethodBeat.o(196109);
+    b(paramString, paramInt1, paramInt2, this.sIu);
+    AppMethodBeat.o(220539);
   }
   
-  public final String cri()
+  public final void b(boolean paramBoolean, String paramString, long paramLong)
   {
-    AppMethodBeat.i(196120);
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localcie != null)
+    AppMethodBeat.i(220555);
+    if (paramBoolean)
     {
-      str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(localcie.sessionId);
-      if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afJ(localcie.sessionId)) {
-        str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.k(localcie);
+      String str = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
+      if (("AppBrandLaunchProxyUI".equals(str)) || ("AppBrandPreLoadingUI".equals(str)))
+      {
+        AppMethodBeat.o(220555);
+        return;
       }
-      AppMethodBeat.o(196120);
+    }
+    Log.w("HABBYGE-MALI.HellSessionMonitor", "onFloatSessionExit: %b, %s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+    com.tencent.mm.plugin.expt.hellhound.a.f.g.a.a.g(paramBoolean, paramLong);
+    AppMethodBeat.o(220555);
+  }
+  
+  public final String cPQ()
+  {
+    AppMethodBeat.i(220550);
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localcyl != null)
+    {
+      str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(localcyl.sessionId);
+      if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqu(localcyl.sessionId)) {
+        str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.k(localcyl);
+      }
+      AppMethodBeat.o(220550);
       return str;
     }
     String str = null;
-    if (this.rgV != null) {
-      str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(this.rgV);
+    if (this.sIr != null) {
+      str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(this.sIr);
     }
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(196120);
+      AppMethodBeat.o(220550);
       return "-2";
     }
-    AppMethodBeat.o(196120);
+    AppMethodBeat.o(220550);
     return str;
   }
   
-  public final String crj()
+  public final String cPR()
   {
     AppMethodBeat.i(122086);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.coV()) || (!com.tencent.mm.plugin.expt.hellhound.a.coX()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.cNo()) || (!com.tencent.mm.plugin.expt.hellhound.a.cNq()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
     {
       AppMethodBeat.o(122086);
       return "-1";
     }
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
     if (localObject != null)
     {
-      localObject = ((cie)localObject).sessionId;
+      localObject = ((cyl)localObject).sessionId;
       AppMethodBeat.o(122086);
       return localObject;
     }
-    if (this.rgV == null)
+    if (this.sIr == null)
     {
       AppMethodBeat.o(122086);
       return "-2";
     }
-    localObject = this.rgV;
+    localObject = this.sIr;
     AppMethodBeat.o(122086);
     return localObject;
   }
   
-  public final void h(int paramInt1, int paramInt2, long paramLong)
+  public final void i(int paramInt1, int paramInt2, long paramLong)
   {
     int i = 0;
     AppMethodBeat.i(184364);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.crp())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cPX())
     {
-      ae.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, monitorStorySession: FALSE");
+      Log.w("HABBYGE-MALI.HellSessionMonitor", "HellSessionMonitor, monitorStorySession: FALSE");
       AppMethodBeat.o(184364);
       return;
     }
@@ -2517,109 +2472,109 @@ public final class b
         AppMethodBeat.o(184364);
         return;
       case 2: 
-        ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: IN, FROM_RESUME, Event-7, !!");
+        Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: IN, FROM_RESUME, Event-7, !!");
         AppMethodBeat.o(184364);
         return;
       }
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: IN, FROM_StoryGallery_SHOW");
-      am(com.tencent.mm.plugin.expt.hellhound.core.b.qYI, paramLong);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "关闭(闭环)MoreTabUI无效页之后，再开启动态视频session");
-      vn(paramLong);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: IN, FROM_StoryGallery_SHOW");
+      al(com.tencent.mm.plugin.expt.hellhound.core.b.syZ, paramLong);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "关闭(闭环)MoreTabUI无效页之后，再开启动态视频session");
+      Dr(paramLong);
       AppMethodBeat.o(184364);
       return;
       switch (paramInt2)
       {
       }
     }
-    ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: OUT, FROM_StoryGallery_GONE");
-    vo(paramLong);
-    Object localObject = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cph(), com.tencent.mm.plugin.expt.hellhound.core.b.qYI);
+    Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: OUT, FROM_StoryGallery_GONE");
+    Ds(paramLong);
+    Object localObject = h.c(com.tencent.mm.plugin.expt.hellhound.core.b.cNA(), com.tencent.mm.plugin.expt.hellhound.core.b.syZ);
     if (localObject == null) {}
     for (paramInt1 = i;; paramInt1 = ((Fragment)localObject).hashCode())
     {
-      x(com.tencent.mm.plugin.expt.hellhound.core.b.qYI, paramInt1, paramLong);
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(null, com.tencent.mm.plugin.expt.hellhound.core.b.qYN, paramInt1, paramLong);
+      w(com.tencent.mm.plugin.expt.hellhound.core.b.syZ, paramInt1, paramLong);
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(null, com.tencent.mm.plugin.expt.hellhound.core.b.sze, paramInt1, paramLong);
       break;
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: OUT, FROM_PAUSE Event-8, !!");
-      d.cpt();
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cpy();
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGallery: OUT, FROM_PAUSE Event-8, !!");
+      d.cNM();
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
       if (localObject == null)
       {
         AppMethodBeat.o(184364);
         return;
       }
-      if (((bj)localObject).FLG == null)
+      if (((bn)localObject).KFh == null)
       {
         AppMethodBeat.o(184364);
         return;
       }
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((bj)localObject).FLG.activityName);
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGalleryViewSession, topActivity: %s", new Object[] { localObject });
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((bn)localObject).KFh.activityName);
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "monitorStoryGalleryViewSession, topActivity: %s", new Object[] { localObject });
       if ("StoryCaptureUI".equals(localObject))
       {
-        localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
+        localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
         if (localObject == null)
         {
           AppMethodBeat.o(184364);
           return;
         }
-        com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cie)localObject);
+        com.tencent.mm.plugin.expt.hellhound.a.f.c.c.m((cyl)localObject);
       }
       AppMethodBeat.o(184364);
       return;
     }
   }
   
-  public final void x(String paramString, int paramInt, long paramLong)
+  public final void w(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196113);
+    AppMethodBeat.i(220543);
     if (TextUtils.isEmpty(paramString))
     {
-      ae.e("HABBYGE-MALI.HellSessionMonitor", "addUnknownPage: page is NULL");
-      AppMethodBeat.o(196113);
+      Log.e("HABBYGE-MALI.HellSessionMonitor", "addUnknownPage: page is NULL");
+      AppMethodBeat.o(220543);
       return;
     }
-    cia localcia = new cia();
-    localcia.duQ = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramString);
-    localcia.aHQ = paramInt;
-    if (this.rgX == 7)
+    cyh localcyh = new cyh();
+    localcyh.dMl = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
+    localcyh.aHK = paramInt;
+    if (this.sIt == 7)
     {
-      localcia.startTime = this.rgY;
-      this.rgX = -1;
-      localcia.seq = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crE();
-      if (!"LauncherUI".equals(localcia.duQ)) {
+      localcyh.startTime = this.sIu;
+      this.sIt = -1;
+      localcyh.seq = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQm();
+      if (!"LauncherUI".equals(localcyh.dMl)) {
         break label263;
       }
-      paramString = h.aeW("com.tencent.mm.ui.LauncherUI");
+      paramString = h.apm("com.tencent.mm.ui.LauncherUI");
       if (paramString != null)
       {
-        localcia.duQ = paramString.getClass().getSimpleName();
-        localcia.aHQ = paramString.hashCode();
+        localcyh.dMl = paramString.getClass().getSimpleName();
+        localcyh.aHK = paramString.hashCode();
       }
     }
     for (;;)
     {
-      String str = m.crj();
+      String str = m.cPR();
       paramString = str;
       if (str == null) {
         paramString = "";
       }
-      localcia.sCx = paramString;
-      ae.i("HABBYGE-MALI.HellSessionMonitor", "onSessionStart, unknow: %s, %s, %s", new Object[] { localcia.duQ, Long.valueOf(localcia.startTime), localcia.sCx });
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.a(localcia);
-      m.EL(localcia.duQ + "_" + localcia.startTime);
-      l.c(localcia);
-      an(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afN(localcia.duQ), paramLong);
-      AppMethodBeat.o(196113);
+      localcyh.kvy = paramString;
+      Log.i("HABBYGE-MALI.HellSessionMonitor", "onSessionStart, unknow: %s, %s, %s", new Object[] { localcyh.dMl, Long.valueOf(localcyh.startTime), localcyh.kvy });
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.c.a(localcyh);
+      m.add(localcyh.dMl + "_" + localcyh.startTime);
+      l.c(localcyh);
+      am(com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqy(localcyh.dMl), paramLong);
+      AppMethodBeat.o(220543);
       return;
-      localcia.startTime = paramLong;
+      localcyh.startTime = paramLong;
       break;
       label263:
-      if (("FinderHomeUI".equals(localcia.duQ)) || ("FinderConversationUI".equals(localcia.duQ)))
+      if (("FinderHomeUI".equals(localcyh.dMl)) || ("FinderConversationUI".equals(localcyh.dMl)))
       {
-        paramString = com.tencent.mm.plugin.expt.hellhound.a.b.b.j.cpR();
+        paramString = com.tencent.mm.plugin.expt.hellhound.a.b.b.k.cOk();
         if (paramString != null) {
-          localcia.duQ = paramString.getClass().getSimpleName();
+          localcyh.dMl = paramString.getClass().getSimpleName();
         }
       }
     }

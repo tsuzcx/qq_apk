@@ -8,18 +8,18 @@ import java.util.Map;
 
 final class f
 {
-  float bWc;
-  private final Paint bWm;
-  private final Map<Character, Float> bWn;
-  float bWo;
-  TickerView.a bWp;
+  float cgK;
+  private final Paint cgU;
+  private final Map<Character, Float> cgV;
+  float cgW;
+  TickerView.a cgX;
   
   f(Paint paramPaint)
   {
     AppMethodBeat.i(39856);
-    this.bWn = new HashMap(256);
-    this.bWp = TickerView.a.bWB;
-    this.bWm = paramPaint;
+    this.cgV = new HashMap(256);
+    this.cgX = TickerView.a.chj;
+    this.cgU = paramPaint;
     invalidate();
     AppMethodBeat.o(39856);
   }
@@ -27,10 +27,10 @@ final class f
   final void invalidate()
   {
     AppMethodBeat.i(39857);
-    this.bWn.clear();
-    Paint.FontMetrics localFontMetrics = this.bWm.getFontMetrics();
-    this.bWc = (localFontMetrics.bottom - localFontMetrics.top);
-    this.bWo = (-localFontMetrics.top);
+    this.cgV.clear();
+    Paint.FontMetrics localFontMetrics = this.cgU.getFontMetrics();
+    this.cgK = (localFontMetrics.bottom - localFontMetrics.top);
+    this.cgW = (-localFontMetrics.top);
     AppMethodBeat.o(39857);
   }
   
@@ -42,22 +42,22 @@ final class f
       AppMethodBeat.o(39858);
       return 0.0F;
     }
-    Float localFloat = (Float)this.bWn.get(Character.valueOf(paramChar));
+    Float localFloat = (Float)this.cgV.get(Character.valueOf(paramChar));
     if (localFloat != null)
     {
       f = localFloat.floatValue();
       AppMethodBeat.o(39858);
       return f;
     }
-    float f = this.bWm.measureText(Character.toString(paramChar));
-    this.bWn.put(Character.valueOf(paramChar), Float.valueOf(f));
+    float f = this.cgU.measureText(Character.toString(paramChar));
+    this.cgV.put(Character.valueOf(paramChar), Float.valueOf(f));
     AppMethodBeat.o(39858);
     return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.robinhood.ticker.f
  * JD-Core Version:    0.7.0.1
  */

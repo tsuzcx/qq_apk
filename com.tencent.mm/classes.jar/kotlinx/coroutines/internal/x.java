@@ -1,147 +1,17 @@
 package kotlinx.coroutines.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
-import d.d.f.b;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
-import kotlinx.coroutines.ch;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"ZERO", "Lkotlinx/coroutines/internal/Symbol;", "countAll", "Lkotlin/Function2;", "", "Lkotlin/coroutines/CoroutineContext$Element;", "findOne", "Lkotlinx/coroutines/ThreadContextElement;", "restoreState", "Lkotlinx/coroutines/internal/ThreadState;", "updateState", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "threadContextElements", "updateThreadContext", "countOrElement", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"systemProp", "", "propertyName", "", "defaultValue", "", "minValue", "maxValue", "", "kotlinx-coroutines-core"})
 public final class x
 {
-  private static final t Ohm;
-  private static final m<Object, f.b, Object> Ohn;
-  private static final m<ch<?>, f.b, ch<?>> Oho;
-  private static final m<aa, f.b, aa> Ohp;
-  private static final m<aa, f.b, aa> Ohq;
+  public static final boolean buD(String arg0) {}
   
-  static
-  {
-    AppMethodBeat.i(118075);
-    Ohm = new t("ZERO");
-    Ohn = (m)x.a.Ohr;
-    Oho = (m)x.b.Ohs;
-    Ohp = (m)d.Ohu;
-    Ohq = (m)c.Oht;
-    AppMethodBeat.o(118075);
-  }
-  
-  public static final Object a(f paramf, Object paramObject)
-  {
-    AppMethodBeat.i(118073);
-    if (paramObject == null) {
-      paramObject = d(paramf);
-    }
-    for (;;)
-    {
-      if (paramObject == Integer.valueOf(0))
-      {
-        paramf = Ohm;
-        AppMethodBeat.o(118073);
-        return paramf;
-      }
-      if ((paramObject instanceof Integer))
-      {
-        paramf = paramf.fold(new aa(paramf, ((Number)paramObject).intValue()), Ohp);
-        AppMethodBeat.o(118073);
-        return paramf;
-      }
-      if (paramObject == null)
-      {
-        paramf = new v("null cannot be cast to non-null type kotlinx.coroutines.ThreadContextElement<kotlin.Any?>");
-        AppMethodBeat.o(118073);
-        throw paramf;
-      }
-      paramf = ((ch)paramObject).b(paramf);
-      AppMethodBeat.o(118073);
-      return paramf;
-    }
-  }
-  
-  public static final void b(f paramf, Object paramObject)
-  {
-    AppMethodBeat.i(118074);
-    if (paramObject == Ohm)
-    {
-      AppMethodBeat.o(118074);
-      return;
-    }
-    if ((paramObject instanceof aa))
-    {
-      ((aa)paramObject).i = 0;
-      paramf.fold(paramObject, Ohq);
-      AppMethodBeat.o(118074);
-      return;
-    }
-    paramf = paramf.fold(null, Oho);
-    if (paramf == null)
-    {
-      paramf = new v("null cannot be cast to non-null type kotlinx.coroutines.ThreadContextElement<kotlin.Any?>");
-      AppMethodBeat.o(118074);
-      throw paramf;
-    }
-    ((ch)paramf).fN(paramObject);
-    AppMethodBeat.o(118074);
-  }
-  
-  public static final Object d(f paramf)
-  {
-    AppMethodBeat.i(118072);
-    paramf = paramf.fold(Integer.valueOf(0), Ohn);
-    if (paramf == null) {
-      p.gkB();
-    }
-    AppMethodBeat.o(118072);
-    return paramf;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "Lkotlinx/coroutines/internal/ThreadState;", "state", "element", "Lkotlin/coroutines/CoroutineContext$Element;", "invoke"})
-  static final class c
-    extends q
-    implements m<aa, f.b, aa>
-  {
-    public static final c Oht;
-    
-    static
-    {
-      AppMethodBeat.i(118079);
-      Oht = new c();
-      AppMethodBeat.o(118079);
-    }
-    
-    c()
-    {
-      super();
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "Lkotlinx/coroutines/internal/ThreadState;", "state", "element", "Lkotlin/coroutines/CoroutineContext$Element;", "invoke"})
-  static final class d
-    extends q
-    implements m<aa, f.b, aa>
-  {
-    public static final d Ohu;
-    
-    static
-    {
-      AppMethodBeat.i(118110);
-      Ohu = new d();
-      AppMethodBeat.o(118110);
-    }
-    
-    d()
-    {
-      super();
-    }
-  }
+  public static final long e(String arg0, long arg1, long arg3, long arg5) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.internal.x
  * JD-Core Version:    0.7.0.1
  */

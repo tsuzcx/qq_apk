@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.exdevice.f.c;
 import com.tencent.mm.plugin.exdevice.f.n;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
   extends j
@@ -13,53 +13,53 @@ public final class h
   {
     AppMethodBeat.i(23157);
     n localn = new n();
-    localn.qlf = new c();
-    localn.qlj = paramInt1;
-    localn.qlk = paramInt2;
-    this.qgD = localn;
-    this.nZd = paramLong;
-    this.qgB = 30002;
+    localn.rCa = new c();
+    localn.rCe = paramInt1;
+    localn.rCf = paramInt2;
+    this.rxz = localn;
+    this.pkb = paramLong;
+    this.rxx = 30002;
     AppMethodBeat.o(23157);
   }
   
-  public final byte[] cmg()
+  public final byte[] cKi()
   {
     AppMethodBeat.i(23158);
     Object localObject = null;
     try
     {
-      byte[] arrayOfByte = this.qgD.toByteArray();
+      byte[] arrayOfByte = this.rxz.toByteArray();
       localObject = arrayOfByte;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.e("MicroMsg.exdevice.ExDeviceCmdSwitchViewPush", "mResp.toByteArray() Failed!!! %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.exdevice.ExDeviceCmdSwitchViewPush", "mResp.toByteArray() Failed!!! %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(23158);
     return localObject;
   }
   
-  public final int cmi()
+  public final int cKk()
   {
     AppMethodBeat.i(23159);
-    n localn = (n)this.qgD;
+    n localn = (n)this.rxz;
     if (localn == null)
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdSwitchViewPush", "null = pushReq");
+      Log.e("MicroMsg.exdevice.ExDeviceCmdSwitchViewPush", "null = pushReq");
       AppMethodBeat.o(23159);
       return -1;
     }
-    int i = localn.qlj;
+    int i = localn.rCe;
     AppMethodBeat.o(23159);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.h
  * JD-Core Version:    0.7.0.1
  */

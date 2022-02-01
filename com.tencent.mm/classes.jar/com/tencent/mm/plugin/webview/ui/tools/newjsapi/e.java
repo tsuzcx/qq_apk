@@ -3,57 +3,59 @@ package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.webview.ui.tools.n;
-import d.g.b.p;
+import com.tencent.mm.plugin.webview.ui.tools.o;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoHide;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoHide;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class e
   extends a
 {
-  private static final int ECX = 347;
-  public static final e EHx;
+  private static final int CDJ = 347;
+  public static final e Jxe;
   private static final String TAG = "MicroMsg.JsApiCurrentMpInfoHide";
-  private static final String dLB = "currentMpInfoHide";
+  private static final String edq = "currentMpInfoHide";
   
   static
   {
     AppMethodBeat.i(175680);
-    EHx = new e();
+    Jxe = new e();
     TAG = "MicroMsg.JsApiCurrentMpInfoHide";
-    ECX = 347;
-    dLB = "currentMpInfoHide";
+    CDJ = 347;
+    edq = "currentMpInfoHide";
     AppMethodBeat.o(175680);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(199393);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Context localContext = paramd.context;
-    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).Ewa != null))
+    AppMethodBeat.i(210585);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Context localContext = paramf.context;
+    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).ILE != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("key_current_info_show", false);
-      ((WebViewUI)localContext).Ewa.aR(localBundle);
+      ((WebViewUI)localContext).ILE.bd(localBundle);
     }
-    paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", null);
-    AppMethodBeat.o(199393);
+    paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
+    AppMethodBeat.o(210585);
     return true;
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
+    return edq;
   }
 }
 

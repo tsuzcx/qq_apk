@@ -1,44 +1,44 @@
 package com.tencent.luggage.bridge;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class f
 {
-  private s cgw;
-  private LinkedList<e> cgx;
-  private boolean cgy;
+  private s csr;
+  private LinkedList<e> css;
+  private boolean cst;
   
   f(s params)
   {
     AppMethodBeat.i(140319);
-    this.cgw = params;
-    this.cgx = new LinkedList();
-    this.cgy = false;
+    this.csr = params;
+    this.css = new LinkedList();
+    this.cst = false;
     AppMethodBeat.o(140319);
   }
   
   private void b(e parame)
   {
     AppMethodBeat.i(140321);
-    this.cgw.evaluateJavascript(String.format("if(typeof luggageBridge !== 'undefined') luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }), null);
+    this.csr.evaluateJavascript(String.format("if(typeof luggageBridge !== 'undefined') luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }), null);
     AppMethodBeat.o(140321);
   }
   
-  final void BJ()
+  final void KY()
   {
     try
     {
       AppMethodBeat.i(140322);
-      ae.i("Java2JsMessageQueue", "ready");
-      this.cgy = true;
-      Iterator localIterator = this.cgx.iterator();
+      Log.i("Java2JsMessageQueue", "ready");
+      this.cst = true;
+      Iterator localIterator = this.css.iterator();
       while (localIterator.hasNext()) {
         b((e)localIterator.next());
       }
-      this.cgx.clear();
+      this.css.clear();
     }
     finally {}
     AppMethodBeat.o(140322);
@@ -53,7 +53,7 @@ public final class f
     //   2: ldc 91
     //   4: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/luggage/bridge/f:cgy	Z
+    //   8: getfield 32	com/tencent/luggage/bridge/f:cst	Z
     //   11: ifeq +16 -> 27
     //   14: aload_0
     //   15: aload_1
@@ -64,7 +64,7 @@ public final class f
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: getfield 30	com/tencent/luggage/bridge/f:cgx	Ljava/util/LinkedList;
+    //   28: getfield 30	com/tencent/luggage/bridge/f:css	Ljava/util/LinkedList;
     //   31: aload_1
     //   32: invokevirtual 95	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   35: pop

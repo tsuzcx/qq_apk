@@ -1,20 +1,27 @@
 package com.tencent.mm.plugin.handoff.b;
 
-import d.g.a.a;
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.handoff.model.HandOffFile;
+import kotlin.g.b.p;
+import kotlin.l;
+import org.xmlpull.v1.XmlPullParser;
 
-@l(gjZ={1, 1, 16})
-final class b
-  implements Runnable
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/handoff/parser/HandOffFileParser;", "Lcom/tencent/mm/plugin/handoff/parser/HandOffParser;", "Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "()V", "newHandOff", "parseTag", "", "tag", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "api-handoff_release"})
+public final class b
+  extends f<HandOffFile>
 {
-  b(a parama)
+  protected final void a(String paramString, XmlPullParser paramXmlPullParser)
   {
-    this.cix = parama;
+    AppMethodBeat.i(238076);
+    p.h(paramString, "tag");
+    p.h(paramXmlPullParser, "parser");
+    super.a(paramString, paramXmlPullParser);
+    AppMethodBeat.o(238076);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.b.b
  * JD-Core Version:    0.7.0.1
  */

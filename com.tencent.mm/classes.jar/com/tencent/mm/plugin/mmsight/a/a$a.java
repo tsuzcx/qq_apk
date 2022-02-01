@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  int doj;
   int scene;
+  int source;
   
   public a$a(int paramInt)
   {
     AppMethodBeat.i(94384);
-    this.doj = 2;
+    this.source = 2;
     if (paramInt == 1)
     {
       this.scene = 1;
@@ -25,7 +25,7 @@ public final class a$a
     }
     if (paramInt == 512)
     {
-      this.doj = 1;
+      this.source = 1;
       this.scene = 2;
       AppMethodBeat.o(94384);
       return;
@@ -39,14 +39,14 @@ public final class a$a
   public final String toString()
   {
     AppMethodBeat.i(94385);
-    String str = "VideoEditCountData{scene=" + this.scene + ", source=" + this.doj + '}';
+    String str = "VideoEditCountData{scene=" + this.scene + ", source=" + this.source + '}';
     AppMethodBeat.o(94385);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,55 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.a.a.b;
+import com.google.a.a.e;
 
 public final class a$ad
   extends e
 {
-  public a.aw Mdb = null;
-  public int MeH = 0;
+  public int GXO = 0;
+  public long GXP = 0L;
   public String groupId = "";
   
   public a$ad()
   {
-    this.bQO = -1;
+    this.cbo = -1;
+  }
+  
+  public final int Ig()
+  {
+    int j = super.Ig();
+    int i = j;
+    if (!this.groupId.equals("")) {
+      i = j + b.f(1, this.groupId);
+    }
+    j = i;
+    if (this.GXO != 0) {
+      j = i + b.bu(2, this.GXO);
+    }
+    i = j;
+    if (this.GXP != 0L) {
+      i = j + b.r(3, this.GXP);
+    }
+    return i;
   }
   
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.Mdb != null) {
-      paramb.a(2, this.Mdb);
+    if (this.GXO != 0) {
+      paramb.bs(2, this.GXO);
     }
-    if (this.MeH != 0) {
-      paramb.bx(3, this.MeH);
+    if (this.GXP != 0L) {
+      paramb.q(3, this.GXP);
     }
     super.a(paramb);
-  }
-  
-  public final int zq()
-  {
-    int j = super.zq();
-    int i = j;
-    if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
-    }
-    j = i;
-    if (this.Mdb != null) {
-      j = i + b.b(2, this.Mdb);
-    }
-    i = j;
-    if (this.MeH != 0) {
-      i = j + b.bz(3, this.MeH);
-    }
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ad
  * JD-Core Version:    0.7.0.1
  */

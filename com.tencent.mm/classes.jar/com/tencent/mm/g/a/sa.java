@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.modelsns.SnsAdClick;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class sa
-  extends b
+  extends IEvent
 {
-  public a dHE;
+  public a dYC;
   
   public sa()
   {
@@ -16,25 +16,23 @@ public final class sa
   
   private sa(byte paramByte)
   {
-    AppMethodBeat.i(94799);
-    this.dHE = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125628);
+    this.dYC = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(94799);
+    AppMethodBeat.o(125628);
   }
   
   public static final class a
   {
-    public bv dCi;
-    public String dHF;
-    public bv dHG;
-    public long dHH = 0L;
-    public long msgId = 0L;
+    public int dYD;
+    public SnsAdClick dYl;
+    public String uxInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.sa
  * JD-Core Version:    0.7.0.1
  */

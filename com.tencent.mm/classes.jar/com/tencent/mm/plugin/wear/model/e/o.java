@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zj;
+import com.tencent.mm.g.a.aaq;
+import com.tencent.mm.sdk.event.EventCenter;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class o
   extends a
 {
-  private static void Uw(int paramInt)
+  private static void acP(int paramInt)
   {
     AppMethodBeat.i(30100);
-    zj localzj = new zj();
-    localzj.dPA.dlO = paramInt;
-    com.tencent.mm.sdk.b.a.IvT.l(localzj);
+    aaq localaaq = new aaq();
+    localaaq.ehD.dDe = paramInt;
+    EventCenter.instance.publish(localaaq);
     AppMethodBeat.o(30100);
   }
   
-  public final List<Integer> eOv()
+  public final List<Integer> fWe()
   {
     AppMethodBeat.i(30098);
     ArrayList localArrayList = new ArrayList();
@@ -37,9 +38,9 @@ public final class o
     {
       AppMethodBeat.o(30099);
       return null;
-      Uw(1);
+      acP(1);
       continue;
-      Uw(2);
+      acP(2);
     }
   }
 }

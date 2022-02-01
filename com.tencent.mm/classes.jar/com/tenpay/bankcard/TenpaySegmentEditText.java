@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import com.tenpay.android.wechat.TenpayUtil;
 import com.tenpay.ndk.Encrypt;
@@ -128,7 +128,7 @@ public final class TenpaySegmentEditText
   private void init()
   {
     AppMethodBeat.i(73274);
-    setBackgroundColor(getResources().getColor(2131101179));
+    setBackgroundColor(getResources().getColor(2131101424));
     setOrientation(0);
     setIsBankcardFormat(true);
     this.mPaintSplit = new Paint();
@@ -239,8 +239,8 @@ public final class TenpaySegmentEditText
     if (mTimeStamp != null) {
       ((Encrypt)localObject2).setTimeStamp(mTimeStamp);
     }
-    com.tencent.mm.wallet_core.b.fVf();
-    if (com.tencent.mm.wallet_core.b.fVg())
+    com.tencent.mm.wallet_core.b.hgC();
+    if (com.tencent.mm.wallet_core.b.hgD())
     {
       localObject1 = ((Encrypt)localObject2).encryptPasswdWithRSA2048((String)localObject1);
       AppMethodBeat.o(73281);
@@ -342,7 +342,7 @@ public final class TenpaySegmentEditText
     AppMethodBeat.i(73276);
     Encrypt localEncrypt = new Encrypt();
     String str = paramString2;
-    if (bu.isNullOrNil(paramString2)) {
+    if (Util.isNullOrNil(paramString2)) {
       str = localEncrypt.getRandomKey();
     }
     paramString1 = localEncrypt.desedeDecode(paramString1, str).split("-");
@@ -368,8 +368,8 @@ public final class TenpaySegmentEditText
         {
           AppMethodBeat.i(73267);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tenpay/bankcard/TenpaySegmentEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          a.b("com/tenpay/bankcard/TenpaySegmentEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           if (TenpaySegmentEditText.this.mOnClickListener != null) {
             TenpaySegmentEditText.this.mOnClickListener.onClick(paramAnonymousView);
           }
@@ -416,7 +416,7 @@ public final class TenpaySegmentEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tenpay.bankcard.TenpaySegmentEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/h9a" android:background="@color/afz" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/jhx" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/hs">
+                    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="left" android:id="@id/b47" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/hv" android:src="@raw/actionbar_icon_close_black" />
+                </LinearLayout>
+                <TextView android:textSize="@dimen/he" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/jhz" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="44.0dip" android:layout_marginRight="@dimen/hs" android:text="@string/iss" style="@style/a0r" />
+                <TextView android:textSize="@dimen/h6" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/jhu" android:layout_marginLeft="69.0dip" android:layout_marginTop="18.0dip" android:layout_marginRight="69.0dip" android:layout_marginBottom="69.0dip" android:text="@string/isl" style="@style/a0r" />
+            </LinearLayout>
+            <com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView android:id="@id/dyp" android:layout_marginLeft="47.0dip" android:layout_marginRight="47.0dip" wallet:format="g8w" style="@style/qn" />
+            <TextView android:id="@id/a4v" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:text="@string/isu" style="@style/a0r" />
+            <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/dyo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/hs" android:text="@string/isp" android:drawableLeft="@drawable/bk1" android:drawablePadding="5.0dip" />
+            <TextView android:id="@id/dyr" android:visibility="gone" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/hs" android:text="@string/vl" style="@style/qf" />
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />
+</LinearLayout>

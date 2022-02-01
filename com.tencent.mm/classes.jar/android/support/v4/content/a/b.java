@@ -17,14 +17,14 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class b
 {
-  public final Shader Jt;
-  private final ColorStateList Ju;
+  public final Shader JC;
+  private final ColorStateList JD;
   public int mColor;
   
   private b(Shader paramShader, ColorStateList paramColorStateList, int paramInt)
   {
-    this.Jt = paramShader;
-    this.Ju = paramColorStateList;
+    this.JC = paramShader;
+    this.JD = paramColorStateList;
     this.mColor = paramInt;
   }
   
@@ -33,7 +33,7 @@ public final class b
     return new b(null, null, paramInt);
   }
   
-  public static b b(Resources paramResources, int paramInt, Resources.Theme paramTheme)
+  public static b b(Resources paramResources, @android.support.annotation.a int paramInt, Resources.Theme paramTheme)
   {
     try
     {
@@ -110,7 +110,7 @@ public final class b
     }
     for (;;)
     {
-      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.mColors, paramResources.JD, d.au(m));
+      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.mColors, paramResources.JN, d.au(m));
       for (;;)
       {
         return new b(paramResources, null, 0);
@@ -124,9 +124,9 @@ public final class b
         if (f7 <= 0.0F) {
           throw new XmlPullParserException("<gradient> tag requires 'gradientRadius' attribute with radial type");
         }
-        paramResources = new RadialGradient(f5, f6, f7, paramResources.mColors, paramResources.JD, d.au(m));
+        paramResources = new RadialGradient(f5, f6, f7, paramResources.mColors, paramResources.JN, d.au(m));
         continue;
-        paramResources = new SweepGradient(f5, f6, paramResources.mColors, paramResources.JD);
+        paramResources = new SweepGradient(f5, f6, paramResources.mColors, paramResources.JN);
       }
       label586:
       switch (paramInt)
@@ -146,7 +146,7 @@ public final class b
     boolean bool1 = bool2;
     if (isStateful())
     {
-      int i = this.Ju.getColorForState(paramArrayOfInt, this.Ju.getDefaultColor());
+      int i = this.JD.getColorForState(paramArrayOfInt, this.JD.getDefaultColor());
       bool1 = bool2;
       if (i != this.mColor)
       {
@@ -157,19 +157,19 @@ public final class b
     return bool1;
   }
   
-  public final boolean et()
+  public final boolean ex()
   {
-    return this.Jt != null;
+    return this.JC != null;
   }
   
-  public final boolean eu()
+  public final boolean ey()
   {
-    return (et()) || (this.mColor != 0);
+    return (ex()) || (this.mColor != 0);
   }
   
   public final boolean isStateful()
   {
-    return (this.Jt == null) && (this.Ju != null) && (this.Ju.isStateful());
+    return (this.JC == null) && (this.JD != null) && (this.JD.isStateful());
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.zero.b;
 
-import com.tencent.mm.n.c;
-import com.tencent.mm.n.e;
+import com.tencent.mm.n.d;
+import com.tencent.mm.n.f;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract e acL();
+  public abstract f aqJ();
   
-  public abstract c acM();
+  public abstract d aqK();
 }
 
 

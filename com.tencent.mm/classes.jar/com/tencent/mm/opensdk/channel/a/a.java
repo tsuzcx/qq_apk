@@ -12,31 +12,31 @@ public class a
 {
   public static Object a(int paramInt, String paramString)
   {
-    AppMethodBeat.i(194070);
+    AppMethodBeat.i(190382);
     switch (paramInt)
     {
     }
     try
     {
       Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unknown type");
-      AppMethodBeat.o(194070);
+      AppMethodBeat.o(190382);
       return null;
       paramString = Double.valueOf(paramString);
-      AppMethodBeat.o(194070);
+      AppMethodBeat.o(190382);
       return paramString;
       paramString = Float.valueOf(paramString);
-      AppMethodBeat.o(194070);
+      AppMethodBeat.o(190382);
       return paramString;
       paramString = Boolean.valueOf(paramString);
-      AppMethodBeat.o(194070);
+      AppMethodBeat.o(190382);
       return paramString;
-      AppMethodBeat.o(194070);
+      AppMethodBeat.o(190382);
       return paramString;
       paramString = Long.valueOf(paramString);
-      AppMethodBeat.o(194070);
+      AppMethodBeat.o(190382);
       return paramString;
       paramString = Integer.valueOf(paramString);
-      AppMethodBeat.o(194070);
+      AppMethodBeat.o(190382);
       return paramString;
     }
     catch (Exception paramString)
@@ -51,16 +51,16 @@ public class a
   public static String a(Bundle paramBundle, String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(194069);
+    AppMethodBeat.i(190381);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(194069);
+      AppMethodBeat.o(190381);
       return null;
     }
     try
     {
       paramBundle = paramBundle.getString(paramString);
-      AppMethodBeat.o(194069);
+      AppMethodBeat.o(190381);
       return paramBundle;
     }
     catch (Exception paramBundle)
@@ -634,7 +634,7 @@ public class a
   
   public static byte[] a(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(194067);
+    AppMethodBeat.i(190379);
     Object localObject = new StringBuffer();
     if (paramString1 != null) {
       ((StringBuffer)localObject).append(paramString1);
@@ -681,7 +681,7 @@ public class a
       }
       paramString1 = new String((char[])localObject);
       paramString1 = paramString1.getBytes();
-      AppMethodBeat.o(194067);
+      AppMethodBeat.o(190379);
       return paramString1;
       while (paramInt < j)
       {
@@ -706,7 +706,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.channel.a.a
  * JD-Core Version:    0.7.0.1
  */

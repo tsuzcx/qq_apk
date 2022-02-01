@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class z
   extends com.tencent.mm.bw.a
 {
-  public String nIB;
-  public long nJL;
-  public long nJM;
-  public String nJN;
-  public String nJO;
-  public LinkedList<String> nJs;
+  public String oTx;
+  public long oUG;
+  public long oUH;
+  public String oUI;
+  public String oUJ;
+  public LinkedList<String> oUn;
   
   public z()
   {
     AppMethodBeat.i(22131);
-    this.nJs = new LinkedList();
+    this.oUn = new LinkedList();
     AppMethodBeat.o(22131);
   }
   
@@ -26,83 +26,83 @@ public final class z
     AppMethodBeat.i(22132);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nIB == null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.oTx == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22132);
         throw paramVarArgs;
       }
-      if (this.nJN == null)
+      if (this.oUI == null)
       {
         paramVarArgs = new b("Not all required fields were included: MsgDataID");
         AppMethodBeat.o(22132);
         throw paramVarArgs;
       }
-      if (this.nJO == null)
+      if (this.oUJ == null)
       {
         paramVarArgs = new b("Not all required fields were included: NickName");
         AppMethodBeat.o(22132);
         throw paramVarArgs;
       }
-      if (this.nIB != null) {
-        paramVarArgs.d(1, this.nIB);
+      if (this.oTx != null) {
+        paramVarArgs.e(1, this.oTx);
       }
-      paramVarArgs.aZ(2, this.nJL);
-      paramVarArgs.aZ(3, this.nJM);
-      if (this.nJN != null) {
-        paramVarArgs.d(4, this.nJN);
+      paramVarArgs.bb(2, this.oUG);
+      paramVarArgs.bb(3, this.oUH);
+      if (this.oUI != null) {
+        paramVarArgs.e(4, this.oUI);
       }
-      if (this.nJO != null) {
-        paramVarArgs.d(5, this.nJO);
+      if (this.oUJ != null) {
+        paramVarArgs.e(5, this.oUJ);
       }
-      paramVarArgs.e(6, 1, this.nJs);
+      paramVarArgs.e(6, 1, this.oUn);
       AppMethodBeat.o(22132);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nIB == null) {
+      if (this.oTx == null) {
         break label642;
       }
     }
     label642:
-    for (paramInt = f.a.a.b.b.a.e(1, this.nIB) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.oTx) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.p(2, this.nJL) + f.a.a.b.b.a.p(3, this.nJM);
+      int i = paramInt + g.a.a.b.b.a.r(2, this.oUG) + g.a.a.b.b.a.r(3, this.oUH);
       paramInt = i;
-      if (this.nJN != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.nJN);
+      if (this.oUI != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.oUI);
       }
       i = paramInt;
-      if (this.nJO != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.nJO);
+      if (this.oUJ != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.oUJ);
       }
-      paramInt = f.a.a.a.c(6, 1, this.nJs);
+      paramInt = g.a.a.a.c(6, 1, this.oUn);
       AppMethodBeat.o(22132);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.nJs.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        this.oUn.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.nIB == null)
+        if (this.oTx == null)
         {
           paramVarArgs = new b("Not all required fields were included: BakChatName");
           AppMethodBeat.o(22132);
           throw paramVarArgs;
         }
-        if (this.nJN == null)
+        if (this.oUI == null)
         {
           paramVarArgs = new b("Not all required fields were included: MsgDataID");
           AppMethodBeat.o(22132);
           throw paramVarArgs;
         }
-        if (this.nJO == null)
+        if (this.oUJ == null)
         {
           paramVarArgs = new b("Not all required fields were included: NickName");
           AppMethodBeat.o(22132);
@@ -113,7 +113,7 @@ public final class z
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         z localz = (z)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -121,27 +121,27 @@ public final class z
           AppMethodBeat.o(22132);
           return -1;
         case 1: 
-          localz.nIB = locala.OmT.readString();
+          localz.oTx = locala.UbS.readString();
           AppMethodBeat.o(22132);
           return 0;
         case 2: 
-          localz.nJL = locala.OmT.zd();
+          localz.oUG = locala.UbS.zl();
           AppMethodBeat.o(22132);
           return 0;
         case 3: 
-          localz.nJM = locala.OmT.zd();
+          localz.oUH = locala.UbS.zl();
           AppMethodBeat.o(22132);
           return 0;
         case 4: 
-          localz.nJN = locala.OmT.readString();
+          localz.oUI = locala.UbS.readString();
           AppMethodBeat.o(22132);
           return 0;
         case 5: 
-          localz.nJO = locala.OmT.readString();
+          localz.oUJ = locala.UbS.readString();
           AppMethodBeat.o(22132);
           return 0;
         }
-        localz.nJs.add(locala.OmT.readString());
+        localz.oUn.add(locala.UbS.readString());
         AppMethodBeat.o(22132);
         return 0;
       }
@@ -152,7 +152,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.z
  * JD-Core Version:    0.7.0.1
  */

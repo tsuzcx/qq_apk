@@ -1,29 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
 
-import com.google.android.exoplayer2.c.d.g;
-import com.google.android.exoplayer2.c.e;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.net.Uri;
+import kotlin.l;
 
-public final class h
-  implements com.google.android.exoplayer2.c.h
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/exo/IContentTypeInferer;", "", "infer", "", "uri", "Landroid/net/Uri;", "luggage-commons-jsapi-video-ext_release"})
+public abstract interface h
 {
-  private int bhU;
-  
-  public final e[] us()
-  {
-    try
-    {
-      AppMethodBeat.i(211378);
-      g localg = new g(this.bhU);
-      AppMethodBeat.o(211378);
-      return new e[] { localg };
-    }
-    finally {}
-  }
+  public abstract int r(Uri paramUri);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b.h
  * JD-Core Version:    0.7.0.1
  */

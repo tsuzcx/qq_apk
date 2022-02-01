@@ -5,40 +5,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.b.b.g;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.d;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 @TargetApi(14)
 public class a
 {
-  private static volatile a qYB;
-  public final c qYC;
-  public final e qYD;
-  private WeakReference<Object> qYE;
+  private static volatile a syS;
+  public final c syT;
+  public final e syU;
+  private WeakReference<Object> syV;
   
   private a()
   {
     AppMethodBeat.i(121841);
-    this.qYE = null;
-    this.qYC = new com.tencent.mm.plugin.expt.hellhound.core.b.a.b();
-    this.qYD = new g();
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.cpm();
-    d.cpt();
-    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cpF();
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-    ae.i("HABBYGE-MALI.ActivityBundleDao", "ActivityBundleDao reset");
-    if (b.cpe()) {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_ac_ble_mmkv_key", new byte[0]);
+    this.syV = null;
+    this.syT = new com.tencent.mm.plugin.expt.hellhound.core.b.a.b();
+    this.syU = new g();
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.cNF();
+    d.cNM();
+    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cNY();
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+    Log.i("HABBYGE-MALI.ActivityBundleDao", "ActivityBundleDao reset");
+    if (b.isMMProcess()) {
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_ac_ble_mmkv_key", new byte[0]);
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_key_page_se_dao", new byte[0]);
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_page_se_dao", new byte[0]);
       AppMethodBeat.o(121841);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.PageStateDao", localException, "PageStateDao writeBack", new Object[0]);
+      Log.printErrStackTrace("HABBYGE-MALI.PageStateDao", localException, "PageStateDao writeBack", new Object[0]);
       AppMethodBeat.o(121841);
     }
   }
@@ -46,20 +46,20 @@ public class a
   public static void a(f paramf)
   {
     AppMethodBeat.i(121844);
-    d.cpt().qZj.qZk.qZn = paramf;
+    d.cNM().szA.szB.szE = paramf;
     AppMethodBeat.o(121844);
   }
   
-  public static a cpd()
+  public static a cNx()
   {
     AppMethodBeat.i(121840);
-    if (qYB == null) {}
+    if (syS == null) {}
     try
     {
-      if (qYB == null) {
-        qYB = new a();
+      if (syS == null) {
+        syS = new a();
       }
-      a locala = qYB;
+      a locala = syS;
       AppMethodBeat.o(121840);
       return locala;
     }
@@ -69,25 +69,25 @@ public class a
     }
   }
   
-  public final void cY(Object paramObject)
+  public final Object cNw()
   {
-    AppMethodBeat.i(195971);
-    ae.w("HABBYGE-MALI.HellhoundMonitor", "HellhoundMonitor-setPageObj: %s", new Object[] { paramObject.getClass().getSimpleName() });
-    this.qYE = new WeakReference(paramObject);
-    AppMethodBeat.o(195971);
-  }
-  
-  public final Object cpc()
-  {
-    AppMethodBeat.i(195972);
-    if (this.qYE == null)
+    AppMethodBeat.i(220399);
+    if (this.syV == null)
     {
-      AppMethodBeat.o(195972);
+      AppMethodBeat.o(220399);
       return null;
     }
-    Object localObject = this.qYE.get();
-    AppMethodBeat.o(195972);
+    Object localObject = this.syV.get();
+    AppMethodBeat.o(220399);
     return localObject;
+  }
+  
+  public final void df(Object paramObject)
+  {
+    AppMethodBeat.i(220398);
+    Log.w("HABBYGE-MALI.HellhoundMonitor", "HellhoundMonitor-setPageObj: %s", new Object[] { paramObject.getClass().getSimpleName() });
+    this.syV = new WeakReference(paramObject);
+    AppMethodBeat.o(220398);
   }
 }
 

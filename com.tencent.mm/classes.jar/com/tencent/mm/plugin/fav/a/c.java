@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bu;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.bv;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class c
-  extends bu
+  extends bv
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(103362);
-    info = bu.VD();
+    info = bv.ajs();
     AppMethodBeat.o(103362);
   }
   
-  public final boolean cwo()
+  public final boolean cUr()
   {
     return this.field_dataType == 4;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -41,7 +41,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.c
  * JD-Core Version:    0.7.0.1
  */

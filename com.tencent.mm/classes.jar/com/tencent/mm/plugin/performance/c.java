@@ -1,49 +1,57 @@
 package com.tencent.mm.plugin.performance;
 
-import android.os.Environment;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
-import java.io.File;
+import com.tencent.mm.vfs.s;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public final class c
 {
-  public static void N(k paramk)
+  public static String HF(long paramLong)
   {
-    AppMethodBeat.i(215410);
-    k localk1 = new k(Environment.getExternalStorageDirectory().getAbsolutePath(), "tencent/MicroMsg/Diagnostic");
-    k localk2 = new k(localk1, paramk.getName());
-    ae.i("MicroMsg.performance.Utils", "DevEnv: copy [%s] to sdcard [%s]", new Object[] { w.B(paramk.fTh()), w.B(localk2.fTh()) });
-    if (!localk1.exists()) {
-      localk1.mkdirs();
+    AppMethodBeat.i(201014);
+    String str = new SimpleDateFormat("yy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date(paramLong));
+    AppMethodBeat.o(201014);
+    return str;
+  }
+  
+  public static void T(o paramo)
+  {
+    AppMethodBeat.i(201016);
+    o localo1 = new o(MMApplicationContext.getContext().getExternalCacheDir() + "/Diagnostic");
+    o localo2 = new o(localo1, paramo.getName());
+    Log.i("MicroMsg.performance.Utils", "DevEnv: copy [%s] to sdcard [%s]", new Object[] { aa.z(paramo.her()), aa.z(localo2.her()) });
+    if (!localo1.exists()) {
+      localo1.mkdirs();
     }
-    o.mG(w.B(paramk.fTh()), w.B(localk2.fTh()));
-    AppMethodBeat.o(215410);
+    s.nx(aa.z(paramo.her()), aa.z(localo2.her()));
+    AppMethodBeat.o(201016);
   }
   
   /* Error */
   public static String a(String paramString, java.nio.charset.Charset paramCharset)
   {
     // Byte code:
-    //   0: ldc 82
+    //   0: ldc 123
     //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 23	java/io/File
+    //   5: new 125	java/io/File
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 85	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 126	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_0
-    //   14: new 87	java/io/FileInputStream
+    //   14: new 128	java/io/FileInputStream
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 90	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   22: astore 4
     //   24: aload_0
-    //   25: invokevirtual 94	java/io/File:length	()J
+    //   25: invokevirtual 135	java/io/File:length	()J
     //   28: l2i
     //   29: newarray byte
     //   31: astore_0
@@ -60,7 +68,7 @@ public final class c
     //   45: arraylength
     //   46: iload_2
     //   47: isub
-    //   48: invokevirtual 100	java/io/InputStream:read	([BII)I
+    //   48: invokevirtual 141	java/io/InputStream:read	([BII)I
     //   51: istore_3
     //   52: iload_3
     //   53: iconst_m1
@@ -70,49 +78,49 @@ public final class c
     //   59: iadd
     //   60: istore_2
     //   61: goto -27 -> 34
-    //   64: new 102	java/lang/String
+    //   64: new 143	java/lang/String
     //   67: dup
     //   68: aload_0
     //   69: aload_1
-    //   70: invokespecial 105	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
+    //   70: invokespecial 146	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
     //   73: astore_0
     //   74: aload 4
-    //   76: invokevirtual 109	java/io/InputStream:close	()V
-    //   79: ldc 82
-    //   81: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: invokevirtual 149	java/io/InputStream:close	()V
+    //   79: ldc 123
+    //   81: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   84: aload_0
     //   85: areturn
     //   86: astore_1
-    //   87: ldc 82
-    //   89: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: ldc 123
+    //   89: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   92: aload_1
     //   93: athrow
     //   94: astore_0
     //   95: aload_1
     //   96: ifnull +44 -> 140
     //   99: aload 4
-    //   101: invokevirtual 109	java/io/InputStream:close	()V
-    //   104: ldc 82
-    //   106: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   101: invokevirtual 149	java/io/InputStream:close	()V
+    //   104: ldc 123
+    //   106: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   109: aload_0
     //   110: athrow
     //   111: astore_1
     //   112: aconst_null
     //   113: astore_0
-    //   114: ldc 41
+    //   114: ldc 86
     //   116: aload_1
-    //   117: ldc 111
+    //   117: ldc 151
     //   119: iconst_0
     //   120: anewarray 4	java/lang/Object
-    //   123: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   123: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   126: goto -47 -> 79
     //   129: astore 4
     //   131: aload_1
     //   132: aload 4
-    //   134: invokevirtual 119	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   134: invokevirtual 159	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   137: goto -33 -> 104
     //   140: aload 4
-    //   142: invokevirtual 109	java/io/InputStream:close	()V
+    //   142: invokevirtual 149	java/io/InputStream:close	()V
     //   145: goto -41 -> 104
     //   148: astore_1
     //   149: goto -35 -> 114
@@ -147,44 +155,44 @@ public final class c
   }
   
   /* Error */
-  public static java.util.Set<String> dBN()
+  public static java.util.Set<String> eBB()
   {
     // Byte code:
-    //   0: ldc 122
+    //   0: ldc 162
     //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 124	java/util/HashSet
+    //   5: new 164	java/util/HashSet
     //   8: dup
-    //   9: invokespecial 126	java/util/HashSet:<init>	()V
+    //   9: invokespecial 165	java/util/HashSet:<init>	()V
     //   12: astore_2
-    //   13: new 128	java/io/BufferedReader
+    //   13: new 167	java/io/BufferedReader
     //   16: dup
-    //   17: new 130	java/io/InputStreamReader
+    //   17: new 169	java/io/InputStreamReader
     //   20: dup
-    //   21: new 87	java/io/FileInputStream
+    //   21: new 128	java/io/FileInputStream
     //   24: dup
-    //   25: ldc 132
-    //   27: invokespecial 133	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   30: invokespecial 136	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   33: invokespecial 139	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   25: ldc 171
+    //   27: invokespecial 172	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   30: invokespecial 175	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   33: invokespecial 178	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   36: astore_3
     //   37: aconst_null
     //   38: astore_1
     //   39: aload_3
-    //   40: invokevirtual 142	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   40: invokevirtual 181	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   43: astore_0
     //   44: aload_0
     //   45: ifnull +88 -> 133
     //   48: aload_0
-    //   49: ldc 144
-    //   51: invokevirtual 148	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   49: ldc 183
+    //   51: invokevirtual 187	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   54: ifeq -15 -> 39
     //   57: aload_0
-    //   58: ldc 150
-    //   60: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   58: ldc 189
+    //   60: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   63: ifeq -24 -> 39
     //   66: aload_0
-    //   67: ldc 156
-    //   69: invokevirtual 160	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   67: ldc 195
+    //   69: invokevirtual 199	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   72: astore_0
     //   73: aload_2
     //   74: aload_0
@@ -193,44 +201,44 @@ public final class c
     //   77: iconst_1
     //   78: isub
     //   79: aaload
-    //   80: invokeinterface 166 2 0
+    //   80: invokeinterface 205 2 0
     //   85: pop
     //   86: goto -47 -> 39
     //   89: astore_1
-    //   90: ldc 122
-    //   92: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: ldc 162
+    //   92: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: aload_1
     //   96: athrow
     //   97: astore_0
     //   98: aload_1
     //   99: ifnull +50 -> 149
     //   102: aload_3
-    //   103: invokevirtual 167	java/io/BufferedReader:close	()V
-    //   106: ldc 122
-    //   108: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: invokevirtual 206	java/io/BufferedReader:close	()V
+    //   106: ldc 162
+    //   108: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: aload_0
     //   112: athrow
     //   113: astore_0
-    //   114: ldc 41
+    //   114: ldc 86
     //   116: aload_0
-    //   117: ldc 111
+    //   117: ldc 151
     //   119: iconst_0
     //   120: anewarray 4	java/lang/Object
-    //   123: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   126: ldc 122
-    //   128: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   123: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: ldc 162
+    //   128: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   131: aload_2
     //   132: areturn
     //   133: aload_3
-    //   134: invokevirtual 167	java/io/BufferedReader:close	()V
+    //   134: invokevirtual 206	java/io/BufferedReader:close	()V
     //   137: goto -11 -> 126
     //   140: astore_3
     //   141: aload_1
     //   142: aload_3
-    //   143: invokevirtual 119	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   143: invokevirtual 159	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   146: goto -40 -> 106
     //   149: aload_3
-    //   150: invokevirtual 167	java/io/BufferedReader:close	()V
+    //   150: invokevirtual 206	java/io/BufferedReader:close	()V
     //   153: goto -47 -> 106
     //   156: astore_0
     //   157: goto -59 -> 98
@@ -260,18 +268,10 @@ public final class c
     //   39	44	156	finally
     //   48	86	156	finally
   }
-  
-  public static String yN(long paramLong)
-  {
-    AppMethodBeat.i(215408);
-    String str = new SimpleDateFormat("yy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date(paramLong));
-    AppMethodBeat.o(215408);
-    return str;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.c
  * JD-Core Version:    0.7.0.1
  */

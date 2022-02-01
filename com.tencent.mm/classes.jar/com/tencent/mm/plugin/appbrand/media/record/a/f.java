@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -11,26 +11,26 @@ import java.io.OutputStream;
 public class f
   extends c
 {
-  protected k ggb;
-  private OutputStream zp;
+  protected o mFile;
+  private OutputStream zw;
   
-  private boolean Ti(String paramString)
+  private boolean acM(String paramString)
   {
     AppMethodBeat.i(146353);
     try
     {
-      this.ggb = new k(paramString);
-      if (this.ggb.exists()) {
-        this.ggb.delete();
+      this.mFile = new o(paramString);
+      if (this.mFile.exists()) {
+        this.mFile.delete();
       }
-      this.ggb.createNewFile();
-      this.zp = new DataOutputStream(o.db(paramString, false));
+      this.mFile.createNewFile();
+      this.zw = new DataOutputStream(s.dw(paramString, false));
       AppMethodBeat.o(146353);
       return true;
     }
     catch (Exception paramString)
     {
-      ae.m("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
+      Log.printInfoStack("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
       AppMethodBeat.o(146353);
     }
     return false;
@@ -42,8 +42,8 @@ public class f
     d(paramArrayOfByte, paramInt, paramBoolean);
     try
     {
-      if (this.zp != null) {
-        this.zp.write(paramArrayOfByte);
+      if (this.zw != null) {
+        this.zw.write(paramArrayOfByte);
       }
       label27:
       AppMethodBeat.o(146350);
@@ -58,13 +58,13 @@ public class f
   public void close()
   {
     AppMethodBeat.i(146352);
-    if (this.zp != null) {}
+    if (this.zw != null) {}
     try
     {
-      this.zp.flush();
-      this.zp.close();
+      this.zw.flush();
+      this.zw.close();
       label26:
-      this.zp = null;
+      this.zw = null;
       AppMethodBeat.o(146352);
       return;
     }
@@ -84,14 +84,14 @@ public class f
   public boolean i(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(146349);
-    Ti(paramString);
+    acM(paramString);
     AppMethodBeat.o(146349);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.f
  * JD-Core Version:    0.7.0.1
  */

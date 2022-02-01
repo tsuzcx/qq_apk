@@ -2,7 +2,7 @@ package com.tencent.mm.av.a.c;
 
 public abstract interface l
 {
-  public abstract void sw(long paramLong);
+  public abstract void AC(long paramLong);
 }
 
 

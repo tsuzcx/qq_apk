@@ -6,52 +6,52 @@ import java.util.LinkedList;
 public final class d
   extends com.tencent.mm.bw.a
 {
-  public String Gpk;
-  public String OmA;
-  public String OmB;
-  public int Oms;
-  public String Omt;
-  public String Omu;
-  public String Omv;
-  public long Omw;
-  public int Omx;
-  public h Omy;
-  public String Omz;
+  public String LjW;
+  public int Ubo;
+  public String Ubp;
+  public String Ubq;
+  public String Ubr;
+  public long Ubs;
+  public int Ubt;
+  public h Ubu;
+  public String Ubv;
+  public String Ubw;
+  public String Ubx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(91742);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Oms);
-      if (this.Omt != null) {
-        paramVarArgs.d(2, this.Omt);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.Ubo);
+      if (this.Ubp != null) {
+        paramVarArgs.e(2, this.Ubp);
       }
-      if (this.Omu != null) {
-        paramVarArgs.d(3, this.Omu);
+      if (this.Ubq != null) {
+        paramVarArgs.e(3, this.Ubq);
       }
-      if (this.Omv != null) {
-        paramVarArgs.d(5, this.Omv);
+      if (this.Ubr != null) {
+        paramVarArgs.e(5, this.Ubr);
       }
-      paramVarArgs.aZ(6, this.Omw);
-      if (this.Gpk != null) {
-        paramVarArgs.d(7, this.Gpk);
+      paramVarArgs.bb(6, this.Ubs);
+      if (this.LjW != null) {
+        paramVarArgs.e(7, this.LjW);
       }
-      paramVarArgs.aS(8, this.Omx);
-      if (this.Omy != null)
+      paramVarArgs.aM(8, this.Ubt);
+      if (this.Ubu != null)
       {
-        paramVarArgs.lJ(9, this.Omy.computeSize());
-        this.Omy.writeFields(paramVarArgs);
+        paramVarArgs.ni(9, this.Ubu.computeSize());
+        this.Ubu.writeFields(paramVarArgs);
       }
-      if (this.Omz != null) {
-        paramVarArgs.d(10, this.Omz);
+      if (this.Ubv != null) {
+        paramVarArgs.e(10, this.Ubv);
       }
-      if (this.OmA != null) {
-        paramVarArgs.d(11, this.OmA);
+      if (this.Ubw != null) {
+        paramVarArgs.e(11, this.Ubw);
       }
-      if (this.OmB != null) {
-        paramVarArgs.d(12, this.OmB);
+      if (this.Ubx != null) {
+        paramVarArgs.e(12, this.Ubx);
       }
       AppMethodBeat.o(91742);
       return 0;
@@ -59,50 +59,50 @@ public final class d
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bz(1, this.Oms) + 0;
+      i = g.a.a.b.b.a.bu(1, this.Ubo) + 0;
       paramInt = i;
-      if (this.Omt != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Omt);
+      if (this.Ubp != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.Ubp);
       }
       i = paramInt;
-      if (this.Omu != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Omu);
+      if (this.Ubq != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.Ubq);
       }
       paramInt = i;
-      if (this.Omv != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.Omv);
+      if (this.Ubr != null) {
+        paramInt = i + g.a.a.b.b.a.f(5, this.Ubr);
       }
-      i = paramInt + f.a.a.b.b.a.p(6, this.Omw);
+      i = paramInt + g.a.a.b.b.a.r(6, this.Ubs);
       paramInt = i;
-      if (this.Gpk != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.Gpk);
+      if (this.LjW != null) {
+        paramInt = i + g.a.a.b.b.a.f(7, this.LjW);
       }
-      i = paramInt + f.a.a.b.b.a.bz(8, this.Omx);
+      i = paramInt + g.a.a.b.b.a.bu(8, this.Ubt);
       paramInt = i;
-      if (this.Omy != null) {
-        paramInt = i + f.a.a.a.lI(9, this.Omy.computeSize());
+      if (this.Ubu != null) {
+        paramInt = i + g.a.a.a.nh(9, this.Ubu.computeSize());
       }
       i = paramInt;
-      if (this.Omz != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.Omz);
+      if (this.Ubv != null) {
+        i = paramInt + g.a.a.b.b.a.f(10, this.Ubv);
       }
       paramInt = i;
-      if (this.OmA != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.OmA);
+      if (this.Ubw != null) {
+        paramInt = i + g.a.a.b.b.a.f(11, this.Ubw);
       }
       i = paramInt;
-      if (this.OmB != null) {
-        i = paramInt + f.a.a.b.b.a.e(12, this.OmB);
+      if (this.Ubx != null) {
+        i = paramInt + g.a.a.b.b.a.f(12, this.Ubx);
       }
       AppMethodBeat.o(91742);
       return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(91742);
@@ -110,7 +110,7 @@ public final class d
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
       d locald = (d)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
@@ -120,58 +120,58 @@ public final class d
         AppMethodBeat.o(91742);
         return -1;
       case 1: 
-        locald.Oms = ((f.a.a.a.a)localObject1).OmT.zc();
+        locald.Ubo = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(91742);
         return 0;
       case 2: 
-        locald.Omt = ((f.a.a.a.a)localObject1).OmT.readString();
+        locald.Ubp = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(91742);
         return 0;
       case 3: 
-        locald.Omu = ((f.a.a.a.a)localObject1).OmT.readString();
+        locald.Ubq = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(91742);
         return 0;
       case 5: 
-        locald.Omv = ((f.a.a.a.a)localObject1).OmT.readString();
+        locald.Ubr = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(91742);
         return 0;
       case 6: 
-        locald.Omw = ((f.a.a.a.a)localObject1).OmT.zd();
+        locald.Ubs = ((g.a.a.a.a)localObject1).UbS.zl();
         AppMethodBeat.o(91742);
         return 0;
       case 7: 
-        locald.Gpk = ((f.a.a.a.a)localObject1).OmT.readString();
+        locald.LjW = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(91742);
         return 0;
       case 8: 
-        locald.Omx = ((f.a.a.a.a)localObject1).OmT.zc();
+        locald.Ubt = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(91742);
         return 0;
       case 9: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new h();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((h)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          locald.Omy = ((h)localObject1);
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((h)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          locald.Ubu = ((h)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(91742);
         return 0;
       case 10: 
-        locald.Omz = ((f.a.a.a.a)localObject1).OmT.readString();
+        locald.Ubv = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(91742);
         return 0;
       case 11: 
-        locald.OmA = ((f.a.a.a.a)localObject1).OmT.readString();
+        locald.Ubw = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(91742);
         return 0;
       }
-      locald.OmB = ((f.a.a.a.a)localObject1).OmT.readString();
+      locald.Ubx = ((g.a.a.a.a)localObject1).UbS.readString();
       AppMethodBeat.o(91742);
       return 0;
     }
@@ -181,7 +181,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     e.a.a.d
  * JD-Core Version:    0.7.0.1
  */

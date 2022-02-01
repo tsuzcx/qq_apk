@@ -9,7 +9,7 @@ import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,26 +24,26 @@ public final class e
       return;
     }
     paramImageView.setImageBitmap(null);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).hgD = m.Gc(paramString);
-      ((c.a)localObject).igk = true;
-      ((c.a)localObject).hgL = true;
-      ((c.a)localObject).hhW = paramBoolean;
+      ((c.a)localObject).fullPath = m.ON(paramString);
+      ((c.a)localObject).jbf = true;
+      ((c.a)localObject).hZF = true;
+      ((c.a)localObject).iaT = paramBoolean;
       if (paramInt != 0) {
-        ((c.a)localObject).igy = paramInt;
+        ((c.a)localObject).jbt = paramInt;
       }
-      localObject = ((c.a)localObject).aJu();
-      q.aJb().a(paramString, paramImageView, (c)localObject);
+      localObject = ((c.a)localObject).bdv();
+      q.bcV().a(paramString, paramImageView, (c)localObject);
     }
     AppMethodBeat.o(28577);
   }
   
-  public static String dTl()
+  public static String eVk()
   {
     AppMethodBeat.i(28578);
-    Object localObject2 = m.dSm().dSd();
+    Object localObject2 = m.eUn().eUe();
     Object localObject1 = new StringBuilder();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -58,7 +58,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.e
  * JD-Core Version:    0.7.0.1
  */

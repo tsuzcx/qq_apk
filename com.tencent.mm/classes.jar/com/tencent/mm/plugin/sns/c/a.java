@@ -7,24 +7,24 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  public static l iUA;
-  public static m iUz;
-  public static int zsC = 2147483647;
-  public static String zsD = "";
+  public static int DCT = 2147483647;
+  public static String DCU = "";
+  public static m jRt;
+  public static l jRu;
   
   public final void a(l paraml)
   {
-    iUA = paraml;
+    jRu = paraml;
   }
   
   public final void a(m paramm)
   {
-    iUz = paramm;
+    jRt = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.c.a
  * JD-Core Version:    0.7.0.1
  */

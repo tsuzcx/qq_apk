@@ -2,25 +2,25 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class a
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEC = "payMsgId".hashCode();
-  private static final int eED = "insertmsg".hashCode();
-  private static final int eEE = "chatroom".hashCode();
-  private static final int eEF = "msgId".hashCode();
+  private static final int fjc = "payMsgId".hashCode();
+  private static final int fjd = "insertmsg".hashCode();
+  private static final int fje = "chatroom".hashCode();
+  private static final int fjf = "msgId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEA = true;
-  private boolean eEB = true;
-  private boolean eEy = true;
-  private boolean eEz = true;
+  private boolean fiY = true;
+  private boolean fiZ = true;
   public String field_chatroom;
   public boolean field_insertmsg;
   public long field_msgId;
   public String field_payMsgId;
+  private boolean fja = true;
+  private boolean fjb = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +35,11 @@ public abstract class a
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEC != k) {
+      if (fjc != k) {
         break label65;
       }
       this.field_payMsgId = paramCursor.getString(i);
-      this.eEy = true;
+      this.fiY = true;
     }
     for (;;)
     {
@@ -47,7 +47,7 @@ public abstract class a
       break label20;
       break;
       label65:
-      if (eED == k)
+      if (fjd == k)
       {
         if (paramCursor.getInt(i) != 0) {}
         for (boolean bool = true;; bool = false)
@@ -56,9 +56,9 @@ public abstract class a
           break;
         }
       }
-      if (eEE == k) {
+      if (fje == k) {
         this.field_chatroom = paramCursor.getString(i);
-      } else if (eEF == k) {
+      } else if (fjf == k) {
         this.field_msgId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -69,16 +69,16 @@ public abstract class a
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eEy) {
+    if (this.fiY) {
       localContentValues.put("payMsgId", this.field_payMsgId);
     }
-    if (this.eEz) {
+    if (this.fiZ) {
       localContentValues.put("insertmsg", Boolean.valueOf(this.field_insertmsg));
     }
-    if (this.eEA) {
+    if (this.fja) {
       localContentValues.put("chatroom", this.field_chatroom);
     }
-    if (this.eEB) {
+    if (this.fjb) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
     if (this.systemRowid > 0L) {
@@ -89,7 +89,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.a
  * JD-Core Version:    0.7.0.1
  */

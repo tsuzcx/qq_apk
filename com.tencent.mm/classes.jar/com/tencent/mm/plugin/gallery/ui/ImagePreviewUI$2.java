@@ -16,16 +16,16 @@ final class ImagePreviewUI$2
   {
     AppMethodBeat.i(111560);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/gallery/ui/ImagePreviewUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ImagePreviewUI.e(this.tZM).performClick();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/gallery/ui/ImagePreviewUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    ImagePreviewUI.e(this.xrb).performClick();
     a.a(this, "com/tencent/mm/plugin/gallery/ui/ImagePreviewUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(111560);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.ImagePreviewUI.2
  * JD-Core Version:    0.7.0.1
  */

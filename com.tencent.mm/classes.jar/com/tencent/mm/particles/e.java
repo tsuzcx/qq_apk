@@ -7,23 +7,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static final Paint iMq;
-  private static Interpolator iMr;
+  private static final Paint jJe;
+  private static Interpolator jJf;
   
   static
   {
     AppMethodBeat.i(151370);
     Paint localPaint = new Paint();
-    iMq = localPaint;
+    jJe = localPaint;
     localPaint.setStyle(Paint.Style.FILL);
     AppMethodBeat.o(151370);
   }
   
-  public static Interpolator aQl()
+  public static Interpolator bkO()
   {
     AppMethodBeat.i(151369);
-    if (iMr == null) {
-      iMr = new Interpolator()
+    if (jJf == null) {
+      jJf = new Interpolator()
       {
         public final float getInterpolation(float paramAnonymousFloat)
         {
@@ -35,14 +35,14 @@ public final class e
         }
       };
     }
-    Interpolator localInterpolator = iMr;
+    Interpolator localInterpolator = jJf;
     AppMethodBeat.o(151369);
     return localInterpolator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.particles.e
  * JD-Core Version:    0.7.0.1
  */

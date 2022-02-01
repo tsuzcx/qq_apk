@@ -6,37 +6,40 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.d.a.c;
-import com.tencent.d.a.c.a;
+import com.tencent.e.a.c;
+import com.tencent.e.a.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
 
 public class RiskScannerReqBufferProvider
   extends ContentProvider
 {
+  public static final String AUTHORITY;
   public static final Uri CONTENT_URI;
   
   static
   {
     AppMethodBeat.i(138303);
-    CONTENT_URI = Uri.parse("content://com.tencent.mm.lib.riskscanner.RiskScannerReqBufferProvider");
+    AUTHORITY = WeChatAuthorities.AUTHORITIES_LIB_RISHSCANNER_RISKSCANNERREQBUFFERPROVIDER();
+    CONTENT_URI = Uri.parse("content://" + AUTHORITY);
     AppMethodBeat.o(138303);
   }
   
-  private Bundle cq(Context paramContext)
+  private Bundle cM(Context paramContext)
   {
     AppMethodBeat.i(138302);
     final Bundle[] arrayOfBundle = new Bundle[1];
     arrayOfBundle[0] = null;
     try
     {
-      a.alh();
+      a.aBA();
       c.a(paramContext, new c.a()
       {
         public final void g(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(138299);
-          a.mZ(paramAnonymousInt);
+          a.qn(paramAnonymousInt);
           Bundle[] arrayOfBundle = arrayOfBundle;
           Bundle localBundle = new Bundle();
           arrayOfBundle[0] = localBundle;
@@ -66,12 +69,12 @@ public class RiskScannerReqBufferProvider
     AppMethodBeat.i(138301);
     if ("prepareReqBuffer".equals(paramString1))
     {
-      ae.i("MicroMsg.RiskScannerReqBufferProvider", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
-      paramString1 = cq(getContext());
+      Log.i("MicroMsg.RiskScannerReqBufferProvider", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
+      paramString1 = cM(getContext());
       AppMethodBeat.o(138301);
       return paramString1;
     }
-    ae.w("MicroMsg.RiskScannerReqBufferProvider", "unknown method: %s", new Object[] { paramString1 });
+    Log.w("MicroMsg.RiskScannerReqBufferProvider", "unknown method: %s", new Object[] { paramString1 });
     paramString1 = new Bundle[] { null }[0];
     AppMethodBeat.o(138301);
     return paramString1;
@@ -95,7 +98,7 @@ public class RiskScannerReqBufferProvider
   public boolean onCreate()
   {
     AppMethodBeat.i(138300);
-    ae.i("MicroMsg.RiskScannerReqBufferProvider", "onCreate called.");
+    Log.i("MicroMsg.RiskScannerReqBufferProvider", "onCreate called.");
     AppMethodBeat.o(138300);
     return true;
   }
@@ -112,7 +115,7 @@ public class RiskScannerReqBufferProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.RiskScannerReqBufferProvider
  * JD-Core Version:    0.7.0.1
  */

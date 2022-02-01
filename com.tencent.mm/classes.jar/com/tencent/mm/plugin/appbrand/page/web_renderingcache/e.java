@@ -1,35 +1,32 @@
 package com.tencent.mm.plugin.appbrand.page.web_renderingcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.m;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "f", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "accept"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "f", "Lcom/tencent/mm/vfs/VFSFile;", "accept"})
 final class e
-  implements m
+  implements q
 {
-  public static final e mlO;
+  public static final e nwm;
   
   static
   {
     AppMethodBeat.i(50965);
-    mlO = new e();
+    nwm = new e();
     AppMethodBeat.o(50965);
   }
   
-  public final boolean accept(k paramk)
+  public final boolean accept(o paramo)
   {
     AppMethodBeat.i(50964);
-    if (paramk.exists())
+    p.h(paramo, "f");
+    if ((paramo.exists()) && (paramo.isFile()))
     {
-      p.g(paramk, "f");
-      if (paramk.isFile())
-      {
-        AppMethodBeat.o(50964);
-        return true;
-      }
+      AppMethodBeat.o(50964);
+      return true;
     }
     AppMethodBeat.o(50964);
     return false;
@@ -37,7 +34,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.web_renderingcache.e
  * JD-Core Version:    0.7.0.1
  */

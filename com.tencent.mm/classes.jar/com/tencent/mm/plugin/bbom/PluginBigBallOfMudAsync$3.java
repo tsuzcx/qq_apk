@@ -4,23 +4,23 @@ import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.d;
-import com.tencent.mm.pluginsdk.ui.span.m;
-import com.tencent.mm.pluginsdk.ui.span.m.3;
-import com.tencent.mm.pluginsdk.ui.span.m.4;
+import com.tencent.mm.pluginsdk.ui.span.e;
+import com.tencent.mm.pluginsdk.ui.span.n;
+import com.tencent.mm.pluginsdk.ui.span.n.3;
+import com.tencent.mm.pluginsdk.ui.span.n.4;
 import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.ui.widget.a.e.b;
 import java.util.List;
 
 final class PluginBigBallOfMudAsync$3
-  implements d
+  implements e
 {
   PluginBigBallOfMudAsync$3(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
   public final void a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener, Bundle paramBundle)
   {
     AppMethodBeat.i(22421);
-    m.a(paramContext, paramString, paramOnDismissListener, paramBundle);
+    n.a(paramContext, paramString, paramOnDismissListener, paramBundle);
     AppMethodBeat.o(22421);
   }
   
@@ -32,7 +32,7 @@ final class PluginBigBallOfMudAsync$3
       AppMethodBeat.o(22420);
       return;
     }
-    new l(paramContext).a(null, new m.3(paramList), new m.4(paramContext), paramb);
+    new l(paramContext).a(null, new n.3(paramList), new n.4(paramContext), paramb);
     AppMethodBeat.o(22420);
   }
 }

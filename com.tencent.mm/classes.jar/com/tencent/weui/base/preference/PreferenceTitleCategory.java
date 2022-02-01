@@ -18,8 +18,8 @@ public class PreferenceTitleCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159995);
-    if (getLayoutResource() != 2131494867) {
-      setLayoutResource(2131494864);
+    if (getLayoutResource() != 2131495603) {
+      setLayoutResource(2131495600);
     }
     AppMethodBeat.o(159995);
   }

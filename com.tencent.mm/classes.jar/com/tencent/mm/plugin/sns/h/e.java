@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.sns.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.c;
 
 public final class e
 {
-  public static void aAQ(String paramString)
+  public static void aPM(String paramString)
   {
     AppMethodBeat.i(96132);
-    ae.i("MicroMsg.SnsABTestStrategy", "dump id ".concat(String.valueOf(paramString)));
-    paramString = com.tencent.mm.model.c.d.aDI().xi(paramString);
+    Log.i("MicroMsg.SnsABTestStrategy", "dump id ".concat(String.valueOf(paramString)));
+    paramString = com.tencent.mm.model.c.d.aXu().Fu(paramString);
     if (!paramString.isValid()) {
-      ae.i("MicroMsg.SnsABTestStrategy", "abtest is invalid");
+      Log.i("MicroMsg.SnsABTestStrategy", "abtest is invalid");
     }
-    if (paramString.fsy() != null) {
-      ae.i("MicroMsg.SnsABTestStrategy", "dump feed abtest " + paramString.field_rawXML);
+    if (paramString.gzz() != null) {
+      Log.i("MicroMsg.SnsABTestStrategy", "dump feed abtest " + paramString.field_rawXML);
     }
     AppMethodBeat.o(96132);
   }

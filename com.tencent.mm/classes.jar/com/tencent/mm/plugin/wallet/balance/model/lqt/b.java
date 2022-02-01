@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.zr;
-import com.tencent.mm.protocal.protobuf.zs;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.abh;
+import com.tencent.mm.protocal.protobuf.abi;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends a<zs>
+  extends c<abi>
 {
   public b(String paramString)
   {
     AppMethodBeat.i(68399);
-    zr localzr = new zr();
-    localzr.Gro = paramString;
-    localzr.time_stamp = ((int)System.currentTimeMillis());
-    localzr.CPZ = ae.eFT();
-    paramString = new b.a();
-    paramString.hQF = localzr;
-    paramString.hQG = new zs();
+    abh localabh = new abh();
+    localabh.Lmm = paramString;
+    localabh.time_stamp = ((int)System.currentTimeMillis());
+    localabh.HuS = ag.fNb();
+    paramString = new d.a();
+    paramString.iLN = localabh;
+    paramString.iLO = new abi();
     paramString.funcId = 2512;
     paramString.uri = "/cgi-bin/mmpay-bin/lqtlqautoin/closeautolqtolqt";
-    paramString.hQH = 0;
+    paramString.iLP = 0;
     paramString.respCmdId = 0;
-    c(paramString.aDS());
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CgiLqtAutoChargeClose", "close ");
+    c(paramString.aXF());
+    Log.d("MicroMsg.CgiLqtAutoChargeClose", "close ");
     AppMethodBeat.o(68399);
   }
 }

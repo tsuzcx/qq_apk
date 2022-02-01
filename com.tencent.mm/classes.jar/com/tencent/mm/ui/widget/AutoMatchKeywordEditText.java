@@ -7,14 +7,14 @@ import android.util.AttributeSet;
 import android.view.DragEvent;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class AutoMatchKeywordEditText
   extends MMEditText
 {
-  private int LmA;
-  private a Lmy;
-  private int Lmz;
+  private a QBG;
+  private int QBH;
+  private int QBI;
   
   public AutoMatchKeywordEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,30 +35,30 @@ public class AutoMatchKeywordEditText
   private void init()
   {
     AppMethodBeat.i(143306);
-    this.Lmz = getSelectionStart();
-    this.LmA = getSelectionEnd();
+    this.QBH = getSelectionStart();
+    this.QBI = getSelectionEnd();
     AppMethodBeat.o(143306);
   }
   
   public void extendSelection(int paramInt)
   {
     AppMethodBeat.i(143310);
-    ae.d("MicroMsg.AutoMatchKeywordEditText", "extendSelection");
+    Log.d("MicroMsg.AutoMatchKeywordEditText", "extendSelection");
     super.extendSelection(paramInt);
-    this.Lmz = getSelectionStart();
-    this.LmA = getSelectionEnd();
+    this.QBH = getSelectionStart();
+    this.QBI = getSelectionEnd();
     AppMethodBeat.o(143310);
   }
   
   public a getOnSelectionChangeListener()
   {
-    return this.Lmy;
+    return this.QBG;
   }
   
   public boolean moveCursorToVisibleOffset()
   {
     AppMethodBeat.i(143311);
-    ae.d("MicroMsg.AutoMatchKeywordEditText", "moveCursorToVisibleOffset");
+    Log.d("MicroMsg.AutoMatchKeywordEditText", "moveCursorToVisibleOffset");
     boolean bool = super.moveCursorToVisibleOffset();
     AppMethodBeat.o(143311);
     return bool;
@@ -67,7 +67,7 @@ public class AutoMatchKeywordEditText
   public boolean onDragEvent(DragEvent paramDragEvent)
   {
     AppMethodBeat.i(143313);
-    ae.d("MicroMsg.AutoMatchKeywordEditText", "onDragEvent");
+    Log.d("MicroMsg.AutoMatchKeywordEditText", "onDragEvent");
     boolean bool = super.onDragEvent(paramDragEvent);
     AppMethodBeat.o(143313);
     return bool;
@@ -79,12 +79,12 @@ public class AutoMatchKeywordEditText
     super.onDraw(paramCanvas);
     int i = getSelectionStart();
     int j = getSelectionEnd();
-    if ((this.Lmz != i) || (this.LmA != j))
+    if ((this.QBH != i) || (this.QBI != j))
     {
-      this.Lmz = i;
-      this.LmA = j;
-      if (this.Lmy != null) {
-        this.Lmy.b(this, getSelectionStart(), getSelectionEnd());
+      this.QBH = i;
+      this.QBI = j;
+      if (this.QBG != null) {
+        this.QBG.b(this, getSelectionStart(), getSelectionEnd());
       }
     }
     AppMethodBeat.o(143307);
@@ -93,7 +93,7 @@ public class AutoMatchKeywordEditText
   public boolean performAccessibilityAction(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(143312);
-    ae.d("MicroMsg.AutoMatchKeywordEditText", "performAccessibilityAction");
+    Log.d("MicroMsg.AutoMatchKeywordEditText", "performAccessibilityAction");
     boolean bool = super.performAccessibilityAction(paramInt, paramBundle);
     AppMethodBeat.o(143312);
     return bool;
@@ -101,20 +101,20 @@ public class AutoMatchKeywordEditText
   
   public void setOnSelectionChangeListener(a parama)
   {
-    this.Lmy = parama;
+    this.QBG = parama;
   }
   
   public void setSelection(int paramInt)
   {
     AppMethodBeat.i(143308);
-    ae.d("MicroMsg.AutoMatchKeywordEditText", "setSelection");
+    Log.d("MicroMsg.AutoMatchKeywordEditText", "setSelection");
     int i = getSelectionStart();
     int j = getSelectionEnd();
     super.setSelection(paramInt);
-    this.Lmz = getSelectionStart();
-    this.LmA = getSelectionEnd();
-    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.Lmy != null)) {
-      this.Lmy.b(this, getSelectionStart(), getSelectionEnd());
+    this.QBH = getSelectionStart();
+    this.QBI = getSelectionEnd();
+    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.QBG != null)) {
+      this.QBG.b(this, getSelectionStart(), getSelectionEnd());
     }
     AppMethodBeat.o(143308);
   }
@@ -122,14 +122,14 @@ public class AutoMatchKeywordEditText
   public void setSelection(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143309);
-    ae.d("MicroMsg.AutoMatchKeywordEditText", "setSelection.");
+    Log.d("MicroMsg.AutoMatchKeywordEditText", "setSelection.");
     int i = getSelectionStart();
     int j = getSelectionEnd();
     super.setSelection(paramInt1, paramInt2);
-    this.Lmz = getSelectionStart();
-    this.LmA = getSelectionEnd();
-    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.Lmy != null)) {
-      this.Lmy.b(this, getSelectionStart(), getSelectionEnd());
+    this.QBH = getSelectionStart();
+    this.QBI = getSelectionEnd();
+    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.QBG != null)) {
+      this.QBG.b(this, getSelectionStart(), getSelectionEnd());
     }
     AppMethodBeat.o(143309);
   }

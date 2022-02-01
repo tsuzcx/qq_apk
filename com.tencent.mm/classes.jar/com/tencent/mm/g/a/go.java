@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class go
-  extends b
+  extends IEvent
 {
-  public a dty;
-  public b dtz;
+  public a dKw;
+  public b dKx;
   
   public go()
   {
@@ -16,34 +16,29 @@ public final class go
   
   private go(byte paramByte)
   {
-    AppMethodBeat.i(104417);
-    this.dty = new a();
-    this.dtz = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(127288);
+    this.dKw = new a();
+    this.dKx = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(104417);
+    AppMethodBeat.o(127288);
   }
   
   public static final class a
   {
-    public String aeskey;
-    public int dlO;
-    public String dpp;
-    public String dtA;
-    public String dtB;
-    public String md5;
-    public String name;
-    public String thumbUrl;
+    public int dKy = 0;
+    public int state = -1;
+    public String talker;
   }
   
   public static final class b
   {
-    public String path;
+    public int state = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.go
  * JD-Core Version:    0.7.0.1
  */

@@ -3,40 +3,31 @@ package com.tencent.mm.emoji.panel.layout;
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView.o;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.n;
+import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/layout/SmileyLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollVerticallyBy", "dy", "updateChildren", "updateHideArea", "rect", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/layout/SmileyLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollVerticallyBy", "dy", "updateChildren", "updateHideArea", "rect", "plugin-emojisdk_release"})
 public final class SmileyLayoutManager
   extends GridLayoutManager
 {
-  public final Rect gpv;
+  public final Rect hao;
   
   public SmileyLayoutManager(Context paramContext, int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(105722);
-    this.gpv = new Rect();
+    this.hao = new Rect();
     AppMethodBeat.o(105722);
   }
   
-  public final int a(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
-  {
-    AppMethodBeat.i(105719);
-    paramInt = super.a(paramInt, paramo, paramt);
-    agi();
-    AppMethodBeat.o(105719);
-    return paramInt;
-  }
-  
-  public final void agi()
+  public final void avX()
   {
     AppMethodBeat.i(105721);
-    if (this.gpv.isEmpty())
+    if (this.hao.isEmpty())
     {
       AppMethodBeat.o(105721);
       return;
@@ -55,7 +46,7 @@ public final class SmileyLayoutManager
       {
         p.g(localView, "getChildAt(i) ?: continue");
         boolean bool;
-        if (bC(localView) != 1)
+        if (getItemViewType(localView) != 1)
         {
           localView.setAlpha(1.0F);
           bool = true;
@@ -64,22 +55,22 @@ public final class SmileyLayoutManager
         {
           localView.setEnabled(bool);
           break;
-          c(localView, localRect);
-          int m = bI(localView);
-          int k = bJ(localView);
-          if ((m > this.gpv.left) && (k > this.gpv.top)) {
-            m = bH(localView);
+          getDecoratedBoundsWithMargins(localView, localRect);
+          int m = getDecoratedRight(localView);
+          int k = getDecoratedBottom(localView);
+          if ((m > this.hao.left) && (k > this.hao.top)) {
+            m = getDecoratedTop(localView);
           }
-          for (float f = 1.0F - (k - this.gpv.top) / ((k - m) * 0.4F);; f = 1.0F)
+          for (float f = 1.0F - (k - this.hao.top) / ((k - m) * 0.4F);; f = 1.0F)
           {
             localView.setAlpha(f);
             if (f <= 0.7D) {
-              break label198;
+              break label203;
             }
             bool = true;
             break;
           }
-          label198:
+          label203:
           bool = false;
         }
       }
@@ -87,26 +78,35 @@ public final class SmileyLayoutManager
     AppMethodBeat.o(105721);
   }
   
-  public final int b(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
+  public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(105720);
-    paramInt = super.b(paramInt, paramo, paramt);
-    agi();
-    AppMethodBeat.o(105720);
+    AppMethodBeat.i(105718);
+    super.onLayoutChildren(paramn, params);
+    avX();
+    AppMethodBeat.o(105718);
+  }
+  
+  public final int scrollHorizontallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
+  {
+    AppMethodBeat.i(105719);
+    paramInt = super.scrollHorizontallyBy(paramInt, paramn, params);
+    avX();
+    AppMethodBeat.o(105719);
     return paramInt;
   }
   
-  public final void c(RecyclerView.o paramo, RecyclerView.t paramt)
+  public final int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(105718);
-    super.c(paramo, paramt);
-    agi();
-    AppMethodBeat.o(105718);
+    AppMethodBeat.i(105720);
+    paramInt = super.scrollVerticallyBy(paramInt, paramn, params);
+    avX();
+    AppMethodBeat.o(105720);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.layout.SmileyLayoutManager
  * JD-Core Version:    0.7.0.1
  */

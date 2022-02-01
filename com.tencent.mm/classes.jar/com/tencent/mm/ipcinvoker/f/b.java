@@ -9,15 +9,52 @@ import java.util.Set;
 
 public final class b
 {
-  private static final Map<String, Set<c>> gAA;
-  private static final Set<Object> gAN;
+  private static final Set<Object> hnC;
+  private static final Map<String, Set<c>> hno;
   
   static
   {
     AppMethodBeat.i(158826);
-    gAN = new HashSet();
-    gAA = new HashMap();
+    hnC = new HashSet();
+    hno = new HashMap();
     AppMethodBeat.o(158826);
+  }
+  
+  public static void Ft(String paramString)
+  {
+    AppMethodBeat.i(158825);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(158825);
+      return;
+    }
+    Set localSet;
+    synchronized (hno)
+    {
+      localSet = (Set)hno.remove(paramString);
+      if (localSet == null)
+      {
+        AppMethodBeat.o(158825);
+        return;
+      }
+    }
+    com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "recycleAll(%s)", new Object[] { paramString });
+    try
+    {
+      paramString = localSet.iterator();
+      while (paramString.hasNext())
+      {
+        ??? = (c)paramString.next();
+        com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "recycle(%s)", new Object[] { Integer.valueOf(???.hashCode()) });
+        ((c)???).recycle();
+      }
+      localSet.clear();
+    }
+    finally
+    {
+      AppMethodBeat.o(158825);
+    }
+    AppMethodBeat.o(158825);
   }
   
   public static boolean a(String paramString, c paramc)
@@ -32,14 +69,14 @@ public final class b
     label125:
     for (;;)
     {
-      synchronized (gAA)
+      synchronized (hno)
       {
-        localObject = (Set)gAA.get(paramString);
+        localObject = (Set)hno.get(paramString);
         if (localObject != null) {
           break label125;
         }
         localObject = new HashSet();
-        gAA.put(paramString, localObject);
+        hno.put(paramString, localObject);
         com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "addIntoSet(%s)", new Object[] { paramString });
       }
       try
@@ -66,9 +103,9 @@ public final class b
       return false;
     }
     Set localSet;
-    synchronized (gAA)
+    synchronized (hno)
     {
-      localSet = (Set)gAA.get(paramString);
+      localSet = (Set)hno.get(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158824);
@@ -87,60 +124,23 @@ public final class b
     }
   }
   
-  public static void bi(Object paramObject)
+  public static void br(Object paramObject)
   {
     AppMethodBeat.i(158821);
-    gAN.add(paramObject);
+    hnC.add(paramObject);
     AppMethodBeat.o(158821);
   }
   
-  public static void bj(Object paramObject)
+  public static void bs(Object paramObject)
   {
     AppMethodBeat.i(158822);
-    gAN.remove(paramObject);
+    hnC.remove(paramObject);
     AppMethodBeat.o(158822);
-  }
-  
-  public static void xh(String paramString)
-  {
-    AppMethodBeat.i(158825);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(158825);
-      return;
-    }
-    Set localSet;
-    synchronized (gAA)
-    {
-      localSet = (Set)gAA.remove(paramString);
-      if (localSet == null)
-      {
-        AppMethodBeat.o(158825);
-        return;
-      }
-    }
-    com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "recycleAll(%s)", new Object[] { paramString });
-    try
-    {
-      paramString = localSet.iterator();
-      while (paramString.hasNext())
-      {
-        ??? = (c)paramString.next();
-        com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "recycle(%s)", new Object[] { Integer.valueOf(???.hashCode()) });
-        ((c)???).recycle();
-      }
-      localSet.clear();
-    }
-    finally
-    {
-      AppMethodBeat.o(158825);
-    }
-    AppMethodBeat.o(158825);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.f.b
  * JD-Core Version:    0.7.0.1
  */

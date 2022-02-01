@@ -11,161 +11,161 @@ import com.tencent.mm.hellhoundlib.a.a;
 
 public final class b
 {
-  private boolean rMB = false;
-  private View rMC;
-  private ImageButton rMG;
-  private ImageButton rMH;
-  private ImageButton rMI;
-  private View rMJ;
-  private View rMK;
-  private View rML;
-  public a rMM;
+  private boolean tmn = false;
+  private View tmo;
+  private ImageButton tms;
+  private ImageButton tmt;
+  private ImageButton tmu;
+  private View tmv;
+  private View tmw;
+  private View tmx;
+  public a tmy;
   
-  public final void dY(View paramView)
+  public final void dQ(View paramView)
   {
-    this.rMB = false;
-    this.rMC = paramView;
+    this.tmn = false;
+    this.tmo = paramView;
+  }
+  
+  public final void gf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(107519);
+    if (!this.tmn)
+    {
+      AppMethodBeat.o(107519);
+      return;
+    }
+    this.tms.setEnabled(paramBoolean);
+    this.tmt.setEnabled(paramBoolean);
+    this.tmu.setEnabled(paramBoolean);
+    AppMethodBeat.o(107519);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(107518);
-    if (!this.rMB)
+    if (!this.tmn)
     {
       AppMethodBeat.o(107518);
       return;
     }
-    if (this.rMC.getVisibility() != 8)
+    if (this.tmo.getVisibility() != 8)
     {
-      this.rMC.setVisibility(8);
-      this.rMC.startAnimation(AnimationUtils.loadAnimation(this.rMC.getContext(), 2130772048));
+      this.tmo.setVisibility(8);
+      this.tmo.startAnimation(AnimationUtils.loadAnimation(this.tmo.getContext(), 2130772060));
     }
     AppMethodBeat.o(107518);
   }
   
-  public final void lF(boolean paramBoolean)
+  public final void mI(boolean paramBoolean)
   {
     AppMethodBeat.i(107517);
-    if (!this.rMB)
+    if (!this.tmn)
     {
-      if (this.rMC == null)
+      if (this.tmo == null)
       {
         AppMethodBeat.o(107517);
         return;
       }
-      if ((this.rMC instanceof ViewStub)) {
-        this.rMC = ((ViewStub)this.rMC).inflate();
+      if ((this.tmo instanceof ViewStub)) {
+        this.tmo = ((ViewStub)this.tmo).inflate();
       }
-      this.rMJ = this.rMC.findViewById(2131299826);
-      this.rMK = this.rMC.findViewById(2131299827);
-      this.rML = this.rMC.findViewById(2131299828);
-      this.rMG = ((ImageButton)this.rMC.findViewById(2131299787));
-      this.rMG.setEnabled(false);
-      this.rMG.setContentDescription(this.rMG.getContext().getString(2131764539));
-      this.rMG.setOnClickListener(new View.OnClickListener()
+      this.tmv = this.tmo.findViewById(2131300504);
+      this.tmw = this.tmo.findViewById(2131300505);
+      this.tmx = this.tmo.findViewById(2131300506);
+      this.tms = ((ImageButton)this.tmo.findViewById(2131300460));
+      this.tms.setEnabled(false);
+      this.tms.setContentDescription(this.tms.getContext().getString(2131766884));
+      this.tms.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107514);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if (b.this.rMM == null)
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if (b.this.tmy == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107514);
             return;
           }
-          b.this.rMM.cxO();
+          b.this.tmy.cVS();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107514);
         }
       });
-      this.rMH = ((ImageButton)this.rMC.findViewById(2131299784));
-      this.rMH.setEnabled(false);
-      this.rMH.setContentDescription(this.rMH.getContext().getString(2131758179));
-      this.rMH.setOnClickListener(new View.OnClickListener()
+      this.tmt = ((ImageButton)this.tmo.findViewById(2131300457));
+      this.tmt.setEnabled(false);
+      this.tmt.setContentDescription(this.tmt.getContext().getString(2131758457));
+      this.tmt.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107515);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if (b.this.rMM == null)
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if (b.this.tmy == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107515);
             return;
           }
-          b.this.rMM.cxP();
+          b.this.tmy.cVT();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107515);
         }
       });
       if (paramBoolean)
       {
-        this.rMK.setVisibility(8);
-        this.rMH.setVisibility(8);
+        this.tmw.setVisibility(8);
+        this.tmt.setVisibility(8);
       }
-      this.rMI = ((ImageButton)this.rMC.findViewById(2131299785));
-      this.rMI.setEnabled(false);
-      this.rMI.setContentDescription(this.rMI.getContext().getString(2131758030));
-      this.rMI.setOnClickListener(new View.OnClickListener()
+      this.tmu = ((ImageButton)this.tmo.findViewById(2131300458));
+      this.tmu.setEnabled(false);
+      this.tmu.setContentDescription(this.tmu.getContext().getString(2131758282));
+      this.tmu.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107516);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if (b.this.rMM == null)
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if (b.this.tmy == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107516);
             return;
           }
-          b.this.rMM.cxB();
+          b.this.tmy.cVF();
           a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavEditFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107516);
         }
       });
-      this.rMB = true;
+      this.tmn = true;
     }
-    if (this.rMC.getVisibility() != 0)
+    if (this.tmo.getVisibility() != 0)
     {
-      this.rMC.setVisibility(0);
-      this.rMC.startAnimation(AnimationUtils.loadAnimation(this.rMC.getContext(), 2130772047));
+      this.tmo.setVisibility(0);
+      this.tmo.startAnimation(AnimationUtils.loadAnimation(this.tmo.getContext(), 2130772059));
     }
     AppMethodBeat.o(107517);
   }
   
-  public final void lG(boolean paramBoolean)
-  {
-    AppMethodBeat.i(107519);
-    if (!this.rMB)
-    {
-      AppMethodBeat.o(107519);
-      return;
-    }
-    this.rMG.setEnabled(paramBoolean);
-    this.rMH.setEnabled(paramBoolean);
-    this.rMI.setEnabled(paramBoolean);
-    AppMethodBeat.o(107519);
-  }
-  
   public static abstract interface a
   {
-    public abstract void cxB();
+    public abstract void cVF();
     
-    public abstract void cxO();
+    public abstract void cVS();
     
-    public abstract void cxP();
+    public abstract void cVT();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

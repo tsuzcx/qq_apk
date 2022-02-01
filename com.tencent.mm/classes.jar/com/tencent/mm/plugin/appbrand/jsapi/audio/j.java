@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.luggage.sdk.b.a.c.c;
+import com.tencent.luggage.sdk.b.a.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.appbrand.h;
 import com.tencent.mm.plugin.appbrand.h.b;
 import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class j
-  extends JsApiOperateBackgroundAudio<c>
+  extends JsApiOperateBackgroundAudio<d>
 {}
 
 

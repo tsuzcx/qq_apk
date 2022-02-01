@@ -10,15 +10,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cp.d;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.cr.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.q;
 import com.tencent.xweb.ah;
 import com.tencent.xweb.w;
 import com.tencent.xweb.xwalk.c;
@@ -27,17 +25,17 @@ import com.tencent.xweb.xwalk.c;
 public final class AppBrandXWebDownloadProxyUI
   extends MMActivity
 {
-  private static boolean mHi;
+  private static boolean nUg;
   private Handler mHandler;
-  private Runnable mHm;
-  private c mLv = null;
-  p tipDialog;
+  private Runnable nUk;
+  private c nYD = null;
+  q tipDialog;
   
   static
   {
     AppMethodBeat.i(48908);
-    d.kX(ak.getContext());
-    mHi = false;
+    d.kT(MMApplicationContext.getContext());
+    nUg = false;
     AppMethodBeat.o(48908);
   }
   
@@ -45,19 +43,19 @@ public final class AppBrandXWebDownloadProxyUI
   {
     AppMethodBeat.i(48904);
     this.mHandler = new Handler();
-    this.mHm = new Runnable()
+    this.nUk = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(48891);
-        AppBrandXWebDownloadProxyUI.bay();
+        AppBrandXWebDownloadProxyUI.bvM();
         Intent localIntent = new Intent();
         AppBrandXWebDownloadProxyUI.this.setResult(0, localIntent);
         AppBrandXWebDownloadProxyUI.this.finish();
         AppMethodBeat.o(48891);
       }
     };
-    this.mHandler.postDelayed(this.mHm, 20000L);
+    this.mHandler.postDelayed(this.nUk, 20000L);
     AppMethodBeat.o(48904);
   }
   
@@ -70,30 +68,30 @@ public final class AppBrandXWebDownloadProxyUI
   {
     AppMethodBeat.i(48903);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onCreate");
-    t.b(getWindow());
-    ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onCreate, kill tool");
-    d.bax("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+    Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onCreate");
+    y.e(getWindow());
+    Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onCreate, kill tool");
+    d.bpG("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
     boolean bool = w.isBusy();
-    ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "now status, downloading = %b", new Object[] { Boolean.valueOf(bool) });
+    Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "now status, downloading = %b", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "is foreground download");
-      if (mHi)
+      Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "is foreground download");
+      if (nUg)
       {
         setResult(0, new Intent());
         finish();
         AppMethodBeat.o(48903);
         return;
       }
-      if (this.mLv == null) {
-        this.mLv = new a((byte)0);
+      if (this.nYD == null) {
+        this.nYD = new a((byte)0);
       }
-      ah.a(this.mLv);
-      ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "is foreground download xweb already downloading, ignore duplicated request");
+      ah.a(this.nYD);
+      Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "is foreground download xweb already downloading, ignore duplicated request");
       paramBundle = getContext();
-      getContext().getString(2131755906);
-      this.tipDialog = h.b(paramBundle, getContext().getString(2131755689), true, null);
+      getContext().getString(2131755998);
+      this.tipDialog = com.tencent.mm.ui.base.h.a(paramBundle, getContext().getString(2131755759), true, null);
       if (this.tipDialog.getWindow() != null)
       {
         paramBundle = this.tipDialog.getWindow().getAttributes();
@@ -105,7 +103,7 @@ public final class AppBrandXWebDownloadProxyUI
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(48890);
-          ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "xweb already downloading, user cancel");
+          Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "xweb already downloading, user cancel");
           paramAnonymousDialogInterface = new Intent();
           AppBrandXWebDownloadProxyUI.this.setResult(2, paramAnonymousDialogInterface);
           AppBrandXWebDownloadProxyUI.this.finish();
@@ -116,35 +114,35 @@ public final class AppBrandXWebDownloadProxyUI
       AppMethodBeat.o(48903);
       return;
     }
-    this.tipDialog = h.b(getContext(), null, true, null);
+    this.tipDialog = com.tencent.mm.ui.base.h.a(getContext(), null, true, null);
     this.tipDialog.setOnCancelListener(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(48892);
-        ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "user cancel download");
+        Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "user cancel download");
         paramAnonymousDialogInterface = new Intent();
         AppBrandXWebDownloadProxyUI.this.setResult(2, paramAnonymousDialogInterface);
         AppBrandXWebDownloadProxyUI.this.finish();
         AppMethodBeat.o(48892);
       }
     });
-    if (this.mLv == null) {
-      this.mLv = new a((byte)0);
+    if (this.nYD == null) {
+      this.nYD = new a((byte)0);
     }
-    ah.a(this.mLv);
-    w.gfk();
+    ah.a(this.nYD);
+    w.hsB();
     AppMethodBeat.o(48903);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(48905);
-    ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onDestroy");
-    this.mLv = null;
-    ah.a(this.mLv);
-    if ((this.mHandler != null) && (this.mHm != null)) {
-      this.mHandler.removeCallbacks(this.mHm);
+    Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onDestroy");
+    this.nYD = null;
+    ah.a(this.nYD);
+    if ((this.mHandler != null) && (this.nUk != null)) {
+      this.mHandler.removeCallbacks(this.nUk);
     }
     super.onDestroy();
     AppMethodBeat.o(48905);
@@ -159,15 +157,15 @@ public final class AppBrandXWebDownloadProxyUI
   final class a
     implements c
   {
-    boolean mLy = false;
+    boolean nYG = false;
     
     private a() {}
     
-    public final boolean bAE()
+    public final boolean bXJ()
     {
       AppMethodBeat.i(48898);
-      this.mLy = true;
-      ar.f(new Runnable()
+      this.nYG = true;
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -180,7 +178,7 @@ public final class AppBrandXWebDownloadProxyUI
       return true;
     }
     
-    public final void bAF()
+    public final void bXK()
     {
       AppMethodBeat.i(48900);
       AppBrandXWebDownloadProxyUI.c(AppBrandXWebDownloadProxyUI.this);
@@ -191,7 +189,7 @@ public final class AppBrandXWebDownloadProxyUI
       AppMethodBeat.o(48900);
     }
     
-    public final void bAG()
+    public final void bXL()
     {
       AppMethodBeat.i(48901);
       AppBrandXWebDownloadProxyUI.c(AppBrandXWebDownloadProxyUI.this);
@@ -202,7 +200,7 @@ public final class AppBrandXWebDownloadProxyUI
       AppMethodBeat.o(48901);
     }
     
-    public final void bAH()
+    public final void bXM()
     {
       AppMethodBeat.i(48902);
       AppBrandXWebDownloadProxyUI.c(AppBrandXWebDownloadProxyUI.this);
@@ -213,22 +211,22 @@ public final class AppBrandXWebDownloadProxyUI
       AppMethodBeat.o(48902);
     }
     
-    public final void vC(final int paramInt)
+    public final void zq(final int paramInt)
     {
       AppMethodBeat.i(48899);
-      if (!this.mLy)
+      if (!this.nYG)
       {
         AppMethodBeat.o(48899);
         return;
       }
-      ae.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onDownloadProgress, percent = %d", new Object[] { Integer.valueOf(paramInt) });
+      Log.i("MicroMsg.AppBrandXWebDownloadProxyUI", "onDownloadProgress, percent = %d", new Object[] { Integer.valueOf(paramInt) });
       if (AppBrandXWebDownloadProxyUI.this.tipDialog != null) {
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(48897);
-            AppBrandXWebDownloadProxyUI.this.tipDialog.setMessage(AppBrandXWebDownloadProxyUI.this.getContext().getString(2131755690, new Object[] { String.valueOf(paramInt) }));
+            AppBrandXWebDownloadProxyUI.this.tipDialog.setMessage(AppBrandXWebDownloadProxyUI.this.getContext().getString(2131755760, new Object[] { String.valueOf(paramInt) }));
             AppMethodBeat.o(48897);
           }
         });
@@ -239,7 +237,7 @@ public final class AppBrandXWebDownloadProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandXWebDownloadProxyUI
  * JD-Core Version:    0.7.0.1
  */

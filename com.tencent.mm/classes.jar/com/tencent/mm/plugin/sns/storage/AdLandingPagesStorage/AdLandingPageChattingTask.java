@@ -8,19 +8,19 @@ import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.service.o;
-import com.tencent.mm.plugin.appbrand.service.o.a;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.appbrand.service.q.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
 public class AdLandingPageChattingTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<AdLandingPageChattingTask> CREATOR;
-  public String kNe;
-  public Runnable kuv;
+  public String lRW;
+  public Runnable lyv;
   public String nickname;
   public String username;
   
@@ -36,36 +36,36 @@ public class AdLandingPageChattingTask
   public AdLandingPageChattingTask(Parcel paramParcel)
   {
     AppMethodBeat.i(96306);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(96306);
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(96307);
-    if (!g.ajP().gDk)
+    if (!g.aAf().hpY)
     {
-      biG();
+      bDU();
       AppMethodBeat.o(96307);
       return;
     }
-    an localan = ((l)g.ab(l.class)).azF().BH(this.username);
-    ae.d("MicroMsg.AdLandingPageChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.kNe, this.username, this.nickname });
-    if ((localan == null) || ((int)localan.ght == 0))
+    as localas = ((l)g.af(l.class)).aSN().Kn(this.username);
+    Log.d("MicroMsg.AdLandingPageChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.lRW, this.username, this.nickname });
+    if ((localas == null) || ((int)localas.gMZ == 0))
     {
-      localan = new an(this.username);
-      localan.setType(0);
-      localan.to(this.nickname);
-      ((l)g.ab(l.class)).azF().an(localan);
-      ae.i("MicroMsg.AdLandingPageChattingTask", "%s save to contact_table", new Object[] { this.username });
+      localas = new as(this.username);
+      localas.setType(0);
+      localas.setNickname(this.nickname);
+      ((l)g.af(l.class)).aSN().ap(localas);
+      Log.i("MicroMsg.AdLandingPageChattingTask", "%s save to contact_table", new Object[] { this.username });
     }
-    ((o)g.ab(o.class)).b(this.username, new o.a()
+    ((q)g.af(q.class)).c(this.username, new q.a()
     {
       public final void b(WxaAttributes paramAnonymousWxaAttributes)
       {
         AppMethodBeat.i(96304);
         if (paramAnonymousWxaAttributes == null) {
-          ae.w("MicroMsg.AdLandingPageChattingTask", "info is null, err");
+          Log.w("MicroMsg.AdLandingPageChattingTask", "info is null, err");
         }
         AdLandingPageChattingTask.a(AdLandingPageChattingTask.this);
         AppMethodBeat.o(96304);
@@ -74,19 +74,19 @@ public class AdLandingPageChattingTask
     AppMethodBeat.o(96307);
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(96308);
-    if (this.kuv != null) {
-      this.kuv.run();
+    if (this.lyv != null) {
+      this.lyv.run();
     }
     AppMethodBeat.o(96308);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(96309);
-    this.kNe = paramParcel.readString();
+    this.lRW = paramParcel.readString();
     this.username = paramParcel.readString();
     this.nickname = paramParcel.readString();
     AppMethodBeat.o(96309);
@@ -95,7 +95,7 @@ public class AdLandingPageChattingTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(96310);
-    paramParcel.writeString(this.kNe);
+    paramParcel.writeString(this.lRW);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.nickname);
     AppMethodBeat.o(96310);
@@ -103,7 +103,7 @@ public class AdLandingPageChattingTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageChattingTask
  * JD-Core Version:    0.7.0.1
  */

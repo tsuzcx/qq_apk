@@ -11,30 +11,30 @@ import com.eclipsesource.v8.V8Function;
 import com.eclipsesource.v8.V8Object;
 import com.eclipsesource.v8.utils.V8ObjectUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 final class t
   extends o
 {
-  int dad;
-  final SparseArray<b> dae;
-  volatile Looper daf;
-  private final boolean dag;
+  int dqH;
+  final SparseArray<b> dqI;
+  volatile Looper dqJ;
+  private final boolean dqK;
   
   t()
   {
     AppMethodBeat.i(144098);
-    this.dad = 0;
-    this.dae = new SparseArray();
-    this.dag = false;
+    this.dqH = 0;
+    this.dqI = new SparseArray();
+    this.dqK = false;
     AppMethodBeat.o(144098);
   }
   
-  static int fM(String paramString)
+  static int gy(String paramString)
   {
     AppMethodBeat.i(144099);
     if (paramString != null) {}
@@ -51,7 +51,7 @@ final class t
     }
     catch (NumberFormatException paramString)
     {
-      ae.printErrStackTrace("MicroMsg.J2V8.V8DirectApiTimer", paramString, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.J2V8.V8DirectApiTimer", paramString, "", new Object[0]);
       AppMethodBeat.o(144099);
     }
     return -2147483648;
@@ -60,12 +60,12 @@ final class t
   protected final void a(final m paramm, V8Object paramV8Object)
   {
     AppMethodBeat.i(144100);
-    if (!(paramm.cZl instanceof b)) {
-      this.daf = Looper.getMainLooper();
+    if (!(paramm.dpQ instanceof b)) {
+      this.dqJ = Looper.getMainLooper();
     }
-    if ((!(paramm.cZl instanceof h)) || (!((h)paramm.cZl).cYx))
+    if ((!(paramm.dpQ instanceof h)) || (!((h)paramm.dpQ).dpc))
     {
-      ae.i("MicroMsg.J2V8.V8DirectApiTimer", "hy: not node. need to inject direct timer");
+      Log.i("MicroMsg.J2V8.V8DirectApiTimer", "hy: not node. need to inject direct timer");
       paramV8Object.registerJavaMethod(new JavaCallback()
       {
         public final Object invoke(V8Object paramAnonymousV8Object, V8Array paramAnonymousV8Array)
@@ -73,7 +73,7 @@ final class t
           AppMethodBeat.i(144086);
           if ((paramAnonymousV8Array.length() <= 0) || (paramAnonymousV8Array.getType(0) != 7))
           {
-            ae.w("MicroMsg.J2V8.V8DirectApiTimer", "setTimeout parameters invalid length:%d type[0]:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.length()), Integer.valueOf(paramAnonymousV8Array.getType(0)) });
+            Log.w("MicroMsg.J2V8.V8DirectApiTimer", "setTimeout parameters invalid length:%d type[0]:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.length()), Integer.valueOf(paramAnonymousV8Array.getType(0)) });
             AppMethodBeat.o(144086);
             return null;
           }
@@ -89,22 +89,22 @@ final class t
                 break label304;
               }
               paramAnonymousV8Object = V8ObjectUtils.toList(paramAnonymousV8Array);
-              paramAnonymousV8Object = V8ObjectUtils.toV8Array(paramm.Ny(), paramAnonymousV8Object.subList(1, paramAnonymousV8Object.size()));
+              paramAnonymousV8Object = V8ObjectUtils.toV8Array(paramm.XJ(), paramAnonymousV8Object.subList(1, paramAnonymousV8Object.size()));
               paramAnonymousV8Array = t.this;
               localm = paramm;
-              paramAnonymousV8Array.dad += 1;
-              if (!(localm.cZl instanceof b)) {
+              paramAnonymousV8Array.dqH += 1;
+              if (!(localm.dpQ instanceof b)) {
                 break label320;
               }
             }
           }
           label304:
           label320:
-          for (paramAnonymousV8Object = new t.c(paramAnonymousV8Array, localm, paramAnonymousV8Array.dad, localV8Function, paramAnonymousV8Object, false, i);; paramAnonymousV8Object = new t.a(paramAnonymousV8Array, localm, paramAnonymousV8Array.dad, localV8Function, paramAnonymousV8Object, false, i))
+          for (paramAnonymousV8Object = new t.c(paramAnonymousV8Array, localm, paramAnonymousV8Array.dqH, localV8Function, paramAnonymousV8Object, false, i);; paramAnonymousV8Object = new t.a(paramAnonymousV8Array, localm, paramAnonymousV8Array.dqH, localV8Function, paramAnonymousV8Object, false, i))
           {
             paramAnonymousV8Object.schedule();
-            paramAnonymousV8Array.dae.put(paramAnonymousV8Array.dad, paramAnonymousV8Object);
-            i = paramAnonymousV8Array.dad;
+            paramAnonymousV8Array.dqI.put(paramAnonymousV8Array.dqH, paramAnonymousV8Object);
+            i = paramAnonymousV8Array.dqH;
             AppMethodBeat.o(144086);
             return Integer.valueOf(i);
             if (paramAnonymousV8Array.getType(1) == 2)
@@ -114,7 +114,7 @@ final class t
             }
             if (paramAnonymousV8Array.getType(1) == 4)
             {
-              int j = t.fM(paramAnonymousV8Array.getString(1));
+              int j = t.gy(paramAnonymousV8Array.getString(1));
               i = j;
               if (j != -2147483648) {
                 break;
@@ -122,12 +122,12 @@ final class t
               AppMethodBeat.o(144086);
               return null;
             }
-            ae.w("MicroMsg.J2V8.V8DirectApiTimer", "setTimeout parameters[1] type:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getType(1)) });
+            Log.w("MicroMsg.J2V8.V8DirectApiTimer", "setTimeout parameters[1] type:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getType(1)) });
             AppMethodBeat.o(144086);
             return null;
             i = 0;
             break;
-            paramAnonymousV8Object = paramm.Ny().newV8Array();
+            paramAnonymousV8Object = paramm.XJ().newV8Array();
             break label131;
           }
         }
@@ -139,7 +139,7 @@ final class t
           AppMethodBeat.i(144087);
           if ((paramAnonymousV8Array.length() < 2) || (paramAnonymousV8Array.getType(0) != 7))
           {
-            ae.w("MicroMsg.J2V8.V8DirectApiTimer", "setInterval parameters invalid length:%d type[0]:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.length()), Integer.valueOf(paramAnonymousV8Array.getType(0)) });
+            Log.w("MicroMsg.J2V8.V8DirectApiTimer", "setInterval parameters invalid length:%d type[0]:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.length()), Integer.valueOf(paramAnonymousV8Array.getType(0)) });
             AppMethodBeat.o(144087);
             return null;
           }
@@ -154,21 +154,21 @@ final class t
               break label292;
             }
             paramAnonymousV8Object = V8ObjectUtils.toList(paramAnonymousV8Array);
-            paramAnonymousV8Object = V8ObjectUtils.toV8Array(paramm.Ny(), paramAnonymousV8Object.subList(1, paramAnonymousV8Object.size()));
+            paramAnonymousV8Object = V8ObjectUtils.toV8Array(paramm.XJ(), paramAnonymousV8Object.subList(1, paramAnonymousV8Object.size()));
             paramAnonymousV8Array = t.this;
             localm = paramm;
-            paramAnonymousV8Array.dad += 1;
-            if (!(localm.cZl instanceof b)) {
+            paramAnonymousV8Array.dqH += 1;
+            if (!(localm.dpQ instanceof b)) {
               break label308;
             }
           }
           label292:
           label308:
-          for (paramAnonymousV8Object = new t.c(paramAnonymousV8Array, localm, paramAnonymousV8Array.dad, localV8Function, paramAnonymousV8Object, true, i);; paramAnonymousV8Object = new t.a(paramAnonymousV8Array, localm, paramAnonymousV8Array.dad, localV8Function, paramAnonymousV8Object, true, i))
+          for (paramAnonymousV8Object = new t.c(paramAnonymousV8Array, localm, paramAnonymousV8Array.dqH, localV8Function, paramAnonymousV8Object, true, i);; paramAnonymousV8Object = new t.a(paramAnonymousV8Array, localm, paramAnonymousV8Array.dqH, localV8Function, paramAnonymousV8Object, true, i))
           {
             paramAnonymousV8Object.schedule();
-            paramAnonymousV8Array.dae.put(paramAnonymousV8Array.dad, paramAnonymousV8Object);
-            i = paramAnonymousV8Array.dad;
+            paramAnonymousV8Array.dqI.put(paramAnonymousV8Array.dqH, paramAnonymousV8Object);
+            i = paramAnonymousV8Array.dqH;
             AppMethodBeat.o(144087);
             return Integer.valueOf(i);
             if (paramAnonymousV8Array.getType(1) == 2)
@@ -178,7 +178,7 @@ final class t
             }
             if (paramAnonymousV8Array.getType(1) == 4)
             {
-              int j = t.fM(paramAnonymousV8Array.getString(1));
+              int j = t.gy(paramAnonymousV8Array.getString(1));
               i = j;
               if (j != -2147483648) {
                 break;
@@ -186,10 +186,10 @@ final class t
               AppMethodBeat.o(144087);
               return null;
             }
-            ae.w("MicroMsg.J2V8.V8DirectApiTimer", "setInterval parameters[1] type:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getType(1)) });
+            Log.w("MicroMsg.J2V8.V8DirectApiTimer", "setInterval parameters[1] type:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getType(1)) });
             AppMethodBeat.o(144087);
             return null;
-            paramAnonymousV8Object = paramm.Ny().newV8Array();
+            paramAnonymousV8Object = paramm.XJ().newV8Array();
             break label124;
           }
         }
@@ -225,7 +225,7 @@ final class t
       AppMethodBeat.o(144100);
       return;
     }
-    ae.i("MicroMsg.J2V8.V8DirectApiTimer", "hy: node env do not need java imp timer");
+    Log.i("MicroMsg.J2V8.V8DirectApiTimer", "hy: node env do not need java imp timer");
     AppMethodBeat.o(144100);
   }
   
@@ -233,17 +233,17 @@ final class t
   {
     AppMethodBeat.i(144101);
     int i = 0;
-    while (i < this.dae.size())
+    while (i < this.dqI.size())
     {
-      ((b)this.dae.valueAt(i)).cancel();
+      ((b)this.dqI.valueAt(i)).cancel();
       i += 1;
     }
-    this.dae.clear();
-    Looper localLooper = this.daf;
+    this.dqI.clear();
+    Looper localLooper = this.dqJ;
     if ((localLooper != null) && (Looper.getMainLooper() != localLooper))
     {
       localLooper.quit();
-      this.daf = null;
+      this.dqJ = null;
     }
     AppMethodBeat.o(144101);
   }
@@ -252,21 +252,21 @@ final class t
     extends t.c
     implements Runnable
   {
-    private final aw cYd;
-    private long dai;
-    private long daj;
+    private long dqM;
+    private long dqN;
+    private final MTimerHandler timer;
     
     a(final m paramm, int paramInt, V8Function paramV8Function, V8Array paramV8Array, boolean paramBoolean, long paramLong)
     {
       super(paramm, paramInt, paramV8Function, paramV8Array, paramBoolean, paramLong);
       AppMethodBeat.i(144091);
-      this.cYd = new aw(t.this.daf, new aw.a()
+      this.timer = new MTimerHandler(t.this.dqJ, new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(144090);
           t.a.a(t.a.this, SystemClock.elapsedRealtimeNanos());
-          paramm.cZl.r(t.a.this);
+          paramm.dpQ.r(t.a.this);
           AppMethodBeat.o(144090);
           return false;
         }
@@ -277,7 +277,7 @@ final class t
     final void cancel()
     {
       AppMethodBeat.i(144094);
-      this.cYd.stopTimer();
+      this.timer.stopTimer();
       super.cancel();
       AppMethodBeat.o(144094);
     }
@@ -290,28 +290,28 @@ final class t
         AppMethodBeat.o(144093);
         return;
       }
-      a(this.daq);
+      a(this.dqU);
       if (!isValid())
       {
         AppMethodBeat.o(144093);
         return;
       }
-      if (!this.dap)
+      if (!this.dqT)
       {
         cleanup();
         AppMethodBeat.o(144093);
         return;
       }
       long l1 = SystemClock.elapsedRealtimeNanos();
-      if (0L == this.dai) {}
-      for (this.dai = (l1 - this.daj);; this.dai = ((l1 + this.dai - this.daj) / 2L))
+      if (0L == this.dqM) {}
+      for (this.dqM = (l1 - this.dqN);; this.dqM = ((l1 + this.dqM - this.dqN) / 2L))
       {
-        long l2 = this.dao - TimeUnit.NANOSECONDS.toMillis(this.dai);
+        long l2 = this.dqS - TimeUnit.NANOSECONDS.toMillis(this.dqM);
         l1 = l2;
         if (l2 <= 0L) {
-          l1 = this.dao;
+          l1 = this.dqS;
         }
-        this.cYd.ay(l1, l1);
+        this.timer.startTimer(l1, l1);
         AppMethodBeat.o(144093);
         return;
       }
@@ -320,28 +320,28 @@ final class t
     final void schedule()
     {
       AppMethodBeat.i(144092);
-      this.cYd.ay(this.dao, this.dao);
+      this.timer.startTimer(this.dqS, this.dqS);
       AppMethodBeat.o(144092);
     }
   }
   
   abstract class b
   {
-    m dam;
-    V8Function dan;
+    m dqQ;
+    V8Function dqR;
     int id;
     
     b(m paramm, int paramInt, V8Function paramV8Function)
     {
-      this.dam = paramm;
-      this.dan = paramV8Function;
+      this.dqQ = paramm;
+      this.dqR = paramV8Function;
       this.id = paramInt;
     }
     
     final void a(V8Array paramV8Array)
     {
-      if ((!this.dan.isReleased()) && (!this.dam.Ny().isReleased())) {
-        this.dan.call(this.dam.Ny().getGlobalObject(), paramV8Array);
+      if ((!this.dqR.isReleased()) && (!this.dqQ.XJ().isReleased())) {
+        this.dqR.call(this.dqQ.XJ().getGlobalObject(), paramV8Array);
       }
     }
     
@@ -352,13 +352,13 @@ final class t
     
     void cleanup()
     {
-      t.this.dae.remove(this.id);
-      this.dan.release();
+      t.this.dqI.remove(this.id);
+      this.dqR.release();
     }
     
     final boolean isValid()
     {
-      return (!this.dan.isReleased()) && (!this.dam.Ny().isReleased());
+      return (!this.dqR.isReleased()) && (!this.dqQ.XJ().isReleased());
     }
     
     abstract void schedule();
@@ -368,23 +368,23 @@ final class t
     extends t.b
     implements Runnable
   {
-    final long dao;
-    final boolean dap;
-    final V8Array daq;
+    final long dqS;
+    final boolean dqT;
+    final V8Array dqU;
     
     c(m paramm, int paramInt, V8Function paramV8Function, V8Array paramV8Array, boolean paramBoolean, long paramLong)
     {
       super(paramm, paramInt, paramV8Function);
-      this.dao = paramLong;
-      this.dap = paramBoolean;
-      this.daq = paramV8Array;
+      this.dqS = paramLong;
+      this.dqT = paramBoolean;
+      this.dqU = paramV8Array;
     }
     
     final void cleanup()
     {
       AppMethodBeat.i(144097);
       super.cleanup();
-      this.daq.release();
+      this.dqU.release();
       AppMethodBeat.o(144097);
     }
     
@@ -396,13 +396,13 @@ final class t
         AppMethodBeat.o(144096);
         return;
       }
-      a(this.daq);
+      a(this.dqU);
       if (!isValid())
       {
         AppMethodBeat.o(144096);
         return;
       }
-      if (this.dap)
+      if (this.dqT)
       {
         schedule();
         AppMethodBeat.o(144096);
@@ -415,7 +415,7 @@ final class t
     void schedule()
     {
       AppMethodBeat.i(144095);
-      this.dam.cZl.e(this, this.dao);
+      this.dqQ.dpQ.e(this, this.dqS);
       AppMethodBeat.o(144095);
     }
   }

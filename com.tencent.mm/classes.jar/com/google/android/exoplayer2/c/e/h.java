@@ -10,17 +10,17 @@ import java.util.Arrays;
 
 abstract class h
 {
-  private g biu;
-  private com.google.android.exoplayer2.c.m bkD;
-  private final d bpE = new d();
-  private f bpF;
-  long bpG;
-  private long bpH;
-  private a bpI;
-  private long bpJ;
-  private boolean bpK;
-  private boolean bpL;
-  private long bpb;
+  private g bir;
+  private com.google.android.exoplayer2.c.m bky;
+  private long boW;
+  private f bpA;
+  long bpB;
+  private long bpC;
+  private a bpD;
+  private long bpE;
+  private boolean bpF;
+  private boolean bpG;
+  private final d bpz = new d();
   private int sampleRate;
   int state;
   
@@ -36,13 +36,13 @@ abstract class h
   
   protected void U(long paramLong)
   {
-    this.bpH = paramLong;
+    this.bpC = paramLong;
   }
   
   final void a(g paramg, com.google.android.exoplayer2.c.m paramm)
   {
-    this.biu = paramg;
-    this.bkD = paramm;
+    this.bir = paramg;
+    this.bky = paramm;
     reset(true);
   }
   
@@ -50,7 +50,7 @@ abstract class h
   
   final int b(com.google.android.exoplayer2.c.f paramf, k paramk)
   {
-    long l1 = this.bpF.i(paramf);
+    long l1 = this.bpA.i(paramf);
     if (l1 >= 0L)
     {
       paramk.position = l1;
@@ -59,25 +59,25 @@ abstract class h
     if (l1 < -1L) {
       U(-(l1 + 2L));
     }
-    if (!this.bpK)
+    if (!this.bpF)
     {
-      paramk = this.bpF.uC();
-      this.biu.a(paramk);
-      this.bpK = true;
+      paramk = this.bpA.uH();
+      this.bir.a(paramk);
+      this.bpF = true;
     }
-    if ((this.bpJ > 0L) || (this.bpE.k(paramf)))
+    if ((this.bpE > 0L) || (this.bpz.k(paramf)))
     {
-      this.bpJ = 0L;
-      paramf = this.bpE.bpo;
+      this.bpE = 0L;
+      paramf = this.bpz.bpj;
       l1 = s(paramf);
-      if ((l1 >= 0L) && (this.bpH + l1 >= this.bpb))
+      if ((l1 >= 0L) && (this.bpC + l1 >= this.boW))
       {
-        long l2 = S(this.bpH);
-        this.bkD.a(paramf, paramf.limit);
-        this.bkD.a(l2, 1, paramf.limit, 0, null);
-        this.bpb = -1L;
+        long l2 = S(this.bpC);
+        this.bky.a(paramf, paramf.limit);
+        this.bky.a(l2, 1, paramf.limit, 0, null);
+        this.boW = -1L;
       }
-      this.bpH += l1;
+      this.bpC += l1;
       return 0;
     }
     this.state = 3;
@@ -87,14 +87,14 @@ abstract class h
   final void f(long paramLong1, long paramLong2)
   {
     boolean bool = false;
-    d locald = this.bpE;
-    locald.boW.reset();
-    locald.bpo.reset();
-    locald.bpp = -1;
-    locald.bpr = false;
+    d locald = this.bpz;
+    locald.boR.reset();
+    locald.bpj.reset();
+    locald.bpk = -1;
+    locald.bpm = false;
     if (paramLong1 == 0L)
     {
-      if (!this.bpK) {
+      if (!this.bpF) {
         bool = true;
       }
       reset(bool);
@@ -102,7 +102,7 @@ abstract class h
     while (this.state == 0) {
       return;
     }
-    this.bpb = this.bpF.R(paramLong2);
+    this.boW = this.bpA.R(paramLong2);
     this.state = 2;
   }
   
@@ -112,48 +112,48 @@ abstract class h
     int j = 1;
     while (j != 0)
     {
-      if (!this.bpE.k(paramf))
+      if (!this.bpz.k(paramf))
       {
         this.state = 3;
         i = -1;
         return i;
       }
-      this.bpJ = (paramf.getPosition() - this.bpG);
-      boolean bool = a(this.bpE.bpo, this.bpG, this.bpI);
+      this.bpE = (paramf.getPosition() - this.bpB);
+      boolean bool = a(this.bpz.bpj, this.bpB, this.bpD);
       j = bool;
       if (bool)
       {
-        this.bpG = paramf.getPosition();
+        this.bpB = paramf.getPosition();
         j = bool;
       }
     }
-    this.sampleRate = this.bpI.bdI.sampleRate;
-    if (!this.bpL)
+    this.sampleRate = this.bpD.bdF.sampleRate;
+    if (!this.bpG)
     {
-      this.bkD.f(this.bpI.bdI);
-      this.bpL = true;
+      this.bky.f(this.bpD.bdF);
+      this.bpG = true;
     }
-    if (this.bpI.bpF != null) {
-      this.bpF = this.bpI.bpF;
+    if (this.bpD.bpA != null) {
+      this.bpA = this.bpD.bpA;
     }
     for (;;)
     {
-      this.bpI = null;
+      this.bpD = null;
       this.state = 2;
-      paramf = this.bpE;
-      if (paramf.bpo.data.length == 65025) {
+      paramf = this.bpz;
+      if (paramf.bpj.data.length == 65025) {
         break;
       }
-      paramf.bpo.data = Arrays.copyOf(paramf.bpo.data, Math.max(65025, paramf.bpo.limit));
+      paramf.bpj.data = Arrays.copyOf(paramf.bpj.data, Math.max(65025, paramf.bpj.limit));
       return 0;
       if (paramf.getLength() == -1L)
       {
-        this.bpF = new b((byte)0);
+        this.bpA = new b((byte)0);
       }
       else
       {
-        e locale = this.bpE.boW;
-        this.bpF = new a(this.bpG, paramf.getLength(), this, locale.bkN + locale.bpz, locale.bpu);
+        e locale = this.bpz.boR;
+        this.bpA = new a(this.bpB, paramf.getLength(), this, locale.bkI + locale.bpu, locale.bpp);
       }
     }
   }
@@ -162,13 +162,13 @@ abstract class h
   {
     if (paramBoolean)
     {
-      this.bpI = new a();
-      this.bpG = 0L;
+      this.bpD = new a();
+      this.bpB = 0L;
     }
     for (this.state = 0;; this.state = 1)
     {
-      this.bpb = -1L;
-      this.bpH = 0L;
+      this.boW = -1L;
+      this.bpC = 0L;
       return;
     }
   }
@@ -177,8 +177,8 @@ abstract class h
   
   static final class a
   {
-    Format bdI;
-    f bpF;
+    Format bdF;
+    f bpA;
   }
   
   static final class b
@@ -194,7 +194,7 @@ abstract class h
       return -1L;
     }
     
-    public final l uC()
+    public final l uH()
     {
       AppMethodBeat.i(92166);
       l.a locala = new l.a(-9223372036854775807L);
@@ -205,7 +205,7 @@ abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.h
  * JD-Core Version:    0.7.0.1
  */

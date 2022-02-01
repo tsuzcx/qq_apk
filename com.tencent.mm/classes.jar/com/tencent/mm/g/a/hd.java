@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class hd
-  extends b
+  extends IEvent
 {
-  public a duA;
-  
   public hd()
   {
     this((byte)0);
@@ -15,22 +12,13 @@ public final class hd
   
   private hd(byte paramByte)
   {
-    AppMethodBeat.i(189050);
-    this.duA = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(189050);
-  }
-  
-  public static final class a
-  {
-    public int duB;
-    public String duC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.hd
  * JD-Core Version:    0.7.0.1
  */

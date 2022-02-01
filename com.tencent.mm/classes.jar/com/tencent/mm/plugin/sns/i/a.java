@@ -1,264 +1,183 @@
 package com.tencent.mm.plugin.sns.i;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bni;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.protocal.protobuf.bzj;
-import com.tencent.mm.protocal.protobuf.dm;
-import com.tencent.mm.protocal.protobuf.gr;
-import com.tencent.mm.protocal.protobuf.gs;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mm.plugin.secdata.d;
+import com.tencent.mm.plugin.secdata.f;
+import com.tencent.mm.plugin.secdata.ui.SecDataUIC;
+import com.tencent.mm.plugin.secdata.ui.SecDataUIC.a;
+import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.ui.widget.SnsComment2LinePreloadTextView;
+import com.tencent.mm.plugin.sns.ui.widget.SnsCommentCollapseLayout;
+import com.tencent.mm.plugin.sns.ui.widget.SnsCommentPreloadTextView;
+import com.tencent.mm.protocal.protobuf.dzo;
+import com.tencent.mm.protocal.protobuf.egl;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/sns/reportflow/SnsTagSearchSpanClickReportFlow;", "", "()V", "Companion", "plugin-sns_release"})
 public final class a
 {
-  private static float GX(String paramString)
+  public static final a DRI;
+  private static final String TAG = "MicroMsg.Sns.SnsTagSearchSpanClickReportFlow";
+  
+  static
   {
-    float f1 = 0.0F;
-    AppMethodBeat.i(96144);
-    if (paramString == null)
+    AppMethodBeat.i(201806);
+    DRI = new a((byte)0);
+    TAG = "MicroMsg.Sns.SnsTagSearchSpanClickReportFlow";
+    AppMethodBeat.o(201806);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/sns/reportflow/SnsTagSearchSpanClickReportFlow$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "onDetailPageDescSpanBindView", "", "snsInfo", "Lcom/tencent/mm/plugin/sns/storage/SnsInfo;", "view", "Landroid/view/View;", "onItemCommentSpanBindView", "comment", "Lcom/tencent/mm/protocal/protobuf/SnsCommentInfo;", "onItemCommentSpanGenerate", "context", "Landroid/content/Context;", "scene", "", "onItemDescSpanBindView", "childViewId", "struct", "Lcom/tencent/mm/plugin/sns/ui/SnsTimeLineVendingStruct;", "onItemDescSpanGenerate", "onSnsSingleTextViewBindView", "commentInfo", "registerReporterData", "plugin-sns_release"})
+  public static final class a
+  {
+    public static void a(Context paramContext, dzo paramdzo, SnsInfo paramSnsInfo, int paramInt)
     {
-      AppMethodBeat.o(96144);
-      return 0.0F;
-    }
-    try
-    {
-      float f2 = bu.getFloat(paramString, 0.0F);
-      f1 = f2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      AppMethodBeat.i(201803);
+      p.h(paramContext, "context");
+      p.h(paramdzo, "comment");
+      p.h(paramSnsInfo, "snsInfo");
+      egl localegl = new egl();
+      int i;
+      if (r.a(paramdzo))
       {
-        ae.e("MicroMsg.AlbumBgHelper", "parseFloat error ".concat(String.valueOf(paramString)));
+        i = 5;
+        localegl.Ngu = i;
+        localegl.Ngv = (paramSnsInfo.getUserName() + "#" + r.Jb(paramSnsInfo.field_snsId) + "#" + paramdzo.Username + "#" + paramdzo.MYT);
+        localegl.KMc = paramdzo.CreateTime;
+        if (paramInt != 2) {
+          break label240;
+        }
       }
-    }
-    AppMethodBeat.o(96144);
-    return f1;
-  }
-  
-  private static String GY(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    return str;
-  }
-  
-  private static dm a(Map<String, String> paramMap, dm paramdm)
-  {
-    AppMethodBeat.i(96146);
-    gr localgr = new gr();
-    localgr.Name = GY((String)paramMap.get(".albumList.album.author.name"));
-    localgr.Title = GY((String)paramMap.get(".albumList.album.author.title"));
-    localgr.FNF = GY((String)paramMap.get(".albumList.album.author.description"));
-    localgr.FRg = GY((String)paramMap.get(".albumList.album.author.quote"));
-    localgr.FRh = aO(paramMap);
-    paramdm.FOm = localgr;
-    AppMethodBeat.o(96146);
-    return paramdm;
-  }
-  
-  private static int aAR(String paramString)
-  {
-    int i = 0;
-    AppMethodBeat.i(96143);
-    try
-    {
-      int j = bu.getInt(paramString, 0);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      label240:
+      for (paramInt = 3;; paramInt = 1)
       {
-        ae.e("MicroMsg.AlbumBgHelper", "parserInt error ".concat(String.valueOf(paramString)));
+        localegl.Ngw = paramInt;
+        localegl.Ngx = paramSnsInfo.field_type;
+        localegl.Ngy = paramSnsInfo.localid;
+        paramSnsInfo = SecDataUIC.CWq;
+        paramContext = SecDataUIC.a.gU(paramContext);
+        if (paramContext != null)
+        {
+          paramContext = paramContext.eSr();
+          if (paramContext != null) {
+            paramContext.c("Comment_" + paramdzo.hashCode(), (com.tencent.mm.bw.a)localegl);
+          }
+        }
+        Log.i(a.access$getTAG$cp(), "onItemCommentSpanGenerate Comment_" + paramdzo.hashCode());
+        AppMethodBeat.o(201803);
+        return;
+        i = 4;
+        break;
       }
     }
-    AppMethodBeat.o(96143);
-    return i;
-  }
-  
-  public static dm aAS(String paramString)
-  {
-    AppMethodBeat.i(96145);
-    Map localMap = bx.M(paramString, "albumList");
-    paramString = new dm();
-    if (localMap != null)
+    
+    public static void a(View paramView, dzo paramdzo)
     {
-      paramString.usS = GY((String)localMap.get(".albumList.$lang"));
-      paramString = b(localMap, a(localMap, paramString));
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(96145);
-      return paramString;
-    }
-  }
-  
-  private static gs aO(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(96147);
-    gs localgs = new gs();
-    bzj localbzj = r(paramMap, ".albumList.album.author.icon.media");
-    String str1 = (String)paramMap.get(".albumList.album.author.icon.media.id");
-    String str2 = (String)paramMap.get(".albumList.album.author.icon.media.type");
-    String str3 = (String)paramMap.get(".albumList.album.author.icon.media.title");
-    String str4 = (String)paramMap.get(".albumList.album.author.icon.media.desc");
-    String str5 = (String)paramMap.get(".albumList.album.author.icon.media.url");
-    String str6 = (String)paramMap.get(".albumList.album.author.icon.media.private");
-    String str7 = (String)paramMap.get(".albumList.album.author.icon.media.thumb");
-    String str8 = (String)paramMap.get(".albumList.album.author.icon.media.url.$type");
-    paramMap = (String)paramMap.get(".albumList.album.author.icon.media.thumb.$type");
-    bzh localbzh = new bzh();
-    localbzh.Id = GY(str1);
-    localbzh.nJA = aAR(str2);
-    localbzh.Title = GY(str3);
-    localbzh.Desc = GY(str4);
-    localbzh.Url = GY(str5);
-    localbzh.GXH = aAR(str8);
-    localbzh.Hmj = GY(str7);
-    localbzh.Hmk = aAR(paramMap);
-    localbzh.Hml = aAR(str6);
-    localbzh.Hmm = localbzj;
-    localgs.FRi = localbzh;
-    AppMethodBeat.o(96147);
-    return localgs;
-  }
-  
-  private static dm b(Map<String, String> paramMap, dm paramdm)
-  {
-    AppMethodBeat.i(96149);
-    int i = 0;
-    bni localbni = new bni();
-    String str2;
-    if (i == 0) {
-      str2 = ".albumList.album.groupList.group.name";
-    }
-    for (String str1 = ".albumList.album.groupList.group.mediaList";; str1 = ".albumList.album.groupList.group" + i + ".mediaList")
-    {
-      str2 = (String)paramMap.get(str2);
-      if (str2 == null) {
-        break label130;
+      AppMethodBeat.i(201804);
+      p.h(paramView, "view");
+      p.h(paramdzo, "comment");
+      Object localObject;
+      if ((paramView instanceof SnsCommentCollapseLayout))
+      {
+        localObject = SecDataUIC.CWq;
+        localObject = ((SnsCommentCollapseLayout)paramView).getContext();
+        p.g(localObject, "view.context");
+        localObject = SecDataUIC.a.gU((Context)localObject);
+        if (localObject != null)
+        {
+          localObject = ((SecDataUIC)localObject).eSr();
+          if (localObject != null) {
+            ((f)localObject).jS("Comment_" + paramdzo.hashCode(), String.valueOf(((SnsCommentCollapseLayout)paramView).getNormalCommentTv().hashCode()));
+          }
+        }
+        localObject = SecDataUIC.CWq;
+        localObject = ((SnsCommentCollapseLayout)paramView).getContext();
+        p.g(localObject, "view.context");
+        localObject = SecDataUIC.a.gU((Context)localObject);
+        if (localObject != null)
+        {
+          localObject = ((SecDataUIC)localObject).eSr();
+          if (localObject != null)
+          {
+            ((f)localObject).jS("Comment_" + paramdzo.hashCode(), String.valueOf(((SnsCommentCollapseLayout)paramView).get2LineCommentTv().hashCode()));
+            AppMethodBeat.o(201804);
+            return;
+          }
+        }
+        AppMethodBeat.o(201804);
+        return;
       }
-      localbni.Name = GY(str2);
-      localbni.Gtx = s(paramMap, str1);
-      paramdm.GroupList.add(localbni);
-      i += 1;
-      break;
-      str2 = ".albumList.album.groupList.group" + i + ".name";
-    }
-    label130:
-    AppMethodBeat.o(96149);
-    return paramdm;
-  }
-  
-  private static bzj r(Map<String, String> paramMap, String paramString)
-  {
-    AppMethodBeat.i(96148);
-    String str2 = paramString + ".size.$width";
-    String str1 = paramString + ".size.$height";
-    Object localObject = paramString + ".size.$totalSize";
-    paramString = (String)paramMap.get(str2);
-    str1 = (String)paramMap.get(str1);
-    paramMap = (String)paramMap.get(localObject);
-    localObject = new bzj();
-    ((bzj)localObject).Hnb = 0.0F;
-    ((bzj)localObject).Hna = 0.0F;
-    ((bzj)localObject).Hnc = 0.0F;
-    if (paramString != null) {
-      ((bzj)localObject).Hna = GX(paramString);
-    }
-    if (str1 != null) {
-      ((bzj)localObject).Hnb = GX(str1);
-    }
-    if (paramMap != null) {
-      ((bzj)localObject).Hnc = GX(paramMap);
-    }
-    AppMethodBeat.o(96148);
-    return localObject;
-  }
-  
-  private static LinkedList<bzh> s(Map<String, String> paramMap, String paramString)
-  {
-    AppMethodBeat.i(96150);
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    String str9;
-    String str8;
-    String str7;
-    String str6;
-    String str5;
-    String str3;
-    String str2;
-    String str1;
-    String str4;
-    if (i != 0)
-    {
-      str9 = paramString + ".media" + i + ".id";
-      str8 = paramString + ".media" + i + ".type";
-      str7 = paramString + ".media" + i + ".title";
-      str6 = paramString + ".media" + i + ".desc";
-      str5 = paramString + ".media" + i + ".url";
-      str3 = paramString + ".media" + i + ".thumb";
-      str2 = paramString + ".media" + i + ".url.$type";
-      str1 = paramString + ".media" + i + ".thumb.$type";
-      str4 = paramString + ".media" + i + ".private";
-    }
-    for (Object localObject = paramString + ".media" + i;; localObject = paramString + ".media")
-    {
-      if ((str9 == null) || (str8 == null)) {
-        break label819;
+      if ((paramView instanceof TextView))
+      {
+        localObject = SecDataUIC.CWq;
+        localObject = ((TextView)paramView).getContext();
+        p.g(localObject, "view.context");
+        localObject = SecDataUIC.a.gU((Context)localObject);
+        if (localObject != null)
+        {
+          localObject = ((SecDataUIC)localObject).eSr();
+          if (localObject != null) {
+            ((f)localObject).jS("Comment_" + paramdzo.hashCode(), String.valueOf(paramView.hashCode()));
+          }
+        }
+        Log.i(a.access$getTAG$cp(), "onItemCommentSpanBindView Comment_" + paramdzo.hashCode() + ' ' + paramView.hashCode());
       }
-      localObject = r(paramMap, (String)localObject);
-      str9 = (String)paramMap.get(str9);
-      str8 = (String)paramMap.get(str8);
-      str7 = (String)paramMap.get(str7);
-      str6 = (String)paramMap.get(str6);
-      str5 = (String)paramMap.get(str5);
-      str4 = (String)paramMap.get(str4);
-      str3 = (String)paramMap.get(str3);
-      str2 = (String)paramMap.get(str2);
-      str1 = (String)paramMap.get(str1);
-      if ((str9 == null) || (str8 == null)) {
-        break label819;
-      }
-      bzh localbzh = new bzh();
-      localbzh.Id = GY(str9);
-      localbzh.nJA = aAR(str8);
-      localbzh.Title = GY(str7);
-      localbzh.Desc = GY(str6);
-      localbzh.Url = GY(str5);
-      localbzh.GXH = aAR(str2);
-      localbzh.Hmj = GY(str3);
-      localbzh.Hmk = aAR(str1);
-      localbzh.Hml = aAR(str4);
-      localbzh.Hmm = ((bzj)localObject);
-      localLinkedList.add(localbzh);
-      i += 1;
-      break;
-      str9 = paramString + ".media.id";
-      str8 = paramString + ".media.type";
-      str7 = paramString + ".media.title";
-      str6 = paramString + ".media.desc";
-      str5 = paramString + ".media.url";
-      str3 = paramString + ".media.thumb";
-      str2 = paramString + ".media.url.$type";
-      str1 = paramString + ".media.thumb.$type";
-      str4 = paramString + ".media.private";
+      AppMethodBeat.o(201804);
     }
-    label819:
-    AppMethodBeat.o(96150);
-    return localLinkedList;
+    
+    public static void a(SnsInfo paramSnsInfo, View paramView)
+    {
+      AppMethodBeat.i(201805);
+      p.h(paramSnsInfo, "snsInfo");
+      p.h(paramView, "view");
+      egl localegl = new egl();
+      localegl.Ngu = 3;
+      localegl.Ngv = (paramSnsInfo.getUserName() + "#" + r.Jb(paramSnsInfo.field_snsId));
+      localegl.KMc = paramSnsInfo.field_createTime;
+      localegl.Ngw = 3;
+      localegl.Ngx = paramSnsInfo.field_type;
+      paramSnsInfo = SecDataUIC.CWq;
+      paramSnsInfo = paramView.getContext();
+      p.g(paramSnsInfo, "view.context");
+      paramSnsInfo = SecDataUIC.a.gU(paramSnsInfo);
+      if (paramSnsInfo != null)
+      {
+        paramSnsInfo = paramSnsInfo.eSr();
+        if (paramSnsInfo != null)
+        {
+          paramSnsInfo.c(String.valueOf(paramView.hashCode()), (com.tencent.mm.bw.a)localegl);
+          AppMethodBeat.o(201805);
+          return;
+        }
+      }
+      AppMethodBeat.o(201805);
+    }
+    
+    public static void gZ(Context paramContext)
+    {
+      AppMethodBeat.i(201802);
+      p.h(paramContext, "context");
+      SecDataUIC.a locala = SecDataUIC.CWq;
+      paramContext = SecDataUIC.a.gU(paramContext);
+      if (paramContext != null)
+      {
+        paramContext.a((f)new d());
+        AppMethodBeat.o(201802);
+        return;
+      }
+      AppMethodBeat.o(201802);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.i.a
  * JD-Core Version:    0.7.0.1
  */

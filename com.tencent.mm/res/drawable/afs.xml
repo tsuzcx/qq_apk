@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle" android:useLevel="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/Red" />
-    <corners android:radius="9.0dip" />
-    <padding android:left="5.5dip" android:right="5.5dip" />
-    <size android:height="18.0dip" />
-</shape>
+    <item android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/cfa" />
+</selector>

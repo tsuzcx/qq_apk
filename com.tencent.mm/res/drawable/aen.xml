@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="@dimen/ci" />
-    <solid android:color="@color/b" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/cbu" />
+    <item android:drawable="@drawable/cbt" />
+</selector>

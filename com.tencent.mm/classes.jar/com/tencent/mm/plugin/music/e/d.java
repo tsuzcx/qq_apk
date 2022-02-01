@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.music.f.c.a;
 public abstract interface d
   extends a
 {
-  public abstract void LQ(int paramInt);
+  public abstract void SN(int paramInt);
   
   public abstract void a(com.tencent.mm.ay.d paramd);
   
@@ -25,13 +25,13 @@ public abstract interface d
   
   public abstract void d(f paramf, int paramInt1, int paramInt2);
   
-  public abstract void dwd();
+  public abstract void etX();
   
   public abstract void v(f paramf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.d
  * JD-Core Version:    0.7.0.1
  */

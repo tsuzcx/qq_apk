@@ -6,15 +6,15 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ad;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
+import com.tencent.mm.plugin.sns.model.ae;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.an;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(32)
@@ -22,145 +22,161 @@ public class VideoFullScreenActivity
   extends MMActivity
   implements com.tencent.mm.plugin.sns.ui.d.a
 {
-  private SightVideoFullScreenView AIj;
-  private LongVideoFullScreenView AIk;
-  private g AIl;
-  public ah AIm;
-  private String AjE;
-  private int AjF;
-  private int AjG;
-  private String AjH;
-  private int AjI;
-  private FrameLayout Apl;
+  private String DYR;
+  private SightVideoFullScreenView ESg;
+  private LongVideoFullScreenView ESh;
+  private g ESi;
+  public aj ESj;
+  private boolean ESk;
+  private boolean EeY;
+  private int EgO;
+  private String Esm;
+  private int Esn;
+  private int Eso;
+  private String Esp;
+  private int Esq;
+  private FrameLayout ExV;
+  private long dUy = 0L;
+  private boolean gVd;
   private boolean isWaiting;
-  private int ivg;
-  private boolean lVw;
-  private int lxZ;
-  private int lya;
-  private String zQQ;
-  private boolean zWP;
-  private int zYx;
+  private int jqs;
+  private int mEX;
+  private int mEY;
+  private long startTime = 0L;
   
-  private void a(ah paramah)
+  private void a(aj paramaj)
   {
-    AppMethodBeat.i(220060);
-    if ((paramah != null) && (this.Apl != null) && (this.AIl == null))
+    AppMethodBeat.i(203849);
+    if ((paramaj != null) && (this.ExV != null) && (this.ESi == null))
     {
-      if ((bu.isNullOrNil(paramah.desc)) || (paramah.zRB == null))
+      if ((Util.isNullOrNil(paramaj.desc)) || (paramaj.DZH == null))
       {
-        AppMethodBeat.o(220060);
+        AppMethodBeat.o(203849);
         return;
       }
-      this.AIl = new g(this, paramah, this.Apl);
+      this.ESi = new g(this, paramaj, this.ExV);
       if (getResources().getConfiguration().orientation != 1) {
         break label95;
       }
-      this.AIl.ean();
+      this.ESi.fdb();
     }
     for (;;)
     {
-      se(false);
-      AppMethodBeat.o(220060);
+      vA(false);
+      AppMethodBeat.o(203849);
       return;
       label95:
       if (getResources().getConfiguration().orientation == 2) {
-        this.AIl.eam();
+        this.ESi.fda();
       }
     }
   }
   
-  public static af eal()
+  public static ah fcZ()
   {
-    AppMethodBeat.i(220059);
-    if (ad.zAi != null)
+    AppMethodBeat.i(203848);
+    if (ae.DJT != null)
     {
-      localaf = ad.zAi;
-      AppMethodBeat.o(220059);
-      return localaf;
+      localah = ae.DJT;
+      AppMethodBeat.o(203848);
+      return localah;
     }
-    af localaf = new af();
-    AppMethodBeat.o(220059);
-    return localaf;
+    ah localah = new ah();
+    AppMethodBeat.o(203848);
+    return localah;
   }
   
-  private void se(boolean paramBoolean)
+  private void vA(boolean paramBoolean)
   {
-    AppMethodBeat.i(220061);
-    if (this.AIl != null)
+    AppMethodBeat.i(203850);
+    if (this.ESi != null)
     {
-      ae.d("NonFullOrFullVideoType", "hideFloatBarView");
-      this.AIl.rJ(paramBoolean);
+      Log.d("VideoFullScreenActivity", "hideFloatBarView");
+      this.ESi.vf(paramBoolean);
     }
-    AppMethodBeat.o(220061);
+    AppMethodBeat.o(203850);
   }
   
   public void finish()
   {
-    AppMethodBeat.i(220067);
+    AppMethodBeat.i(203856);
     Intent localIntent = null;
     for (;;)
     {
       try
       {
-        if (this.ivg != 0) {
+        if (this.jqs != 0) {
           continue;
         }
-        localIntent = this.AIj.eew();
-        if ((this.AIl != null) && (localIntent != null))
+        localIntent = this.ESg.fgN();
+        if (localIntent != null)
         {
-          this.AIl.dUM();
-          localIntent.putExtra("KComponentFullVideoFloatBarReportInfo", this.AIl.eao());
+          this.dUy += System.currentTimeMillis() - this.startTime;
+          localIntent.putExtra("KComponentFullScreenStayTime", this.dUy);
+          if (this.ESi != null)
+          {
+            this.ESi.eXd();
+            localIntent.putExtra("KComponentFullVideoFloatBarReportInfo", this.ESi.fdc());
+          }
         }
         setResult(1000, localIntent);
       }
       catch (Throwable localThrowable)
       {
-        ae.e("NonFullOrFullVideoType", localThrowable.toString());
+        Log.e("VideoFullScreenActivity", localThrowable.toString());
         continue;
       }
       super.finish();
-      AppMethodBeat.o(220067);
+      AppMethodBeat.o(203856);
       return;
-      if (this.ivg == 1) {
-        localIntent = this.AIk.edE();
+      if (this.jqs == 1) {
+        localIntent = this.ESh.ffW();
       }
     }
   }
   
   public int getLayoutId()
   {
-    return 2131496133;
+    return 2131492964;
+  }
+  
+  public void onCancel()
+  {
+    AppMethodBeat.i(203859);
+    super.onCancel();
+    setRequestedOrientation(4);
+    AppMethodBeat.o(203859);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(220069);
+    AppMethodBeat.i(203858);
     super.onConfigurationChanged(paramConfiguration);
     try
     {
       if (paramConfiguration.orientation == 2)
       {
-        ae.i("NonFullOrFullVideoType", "ORIENTATION_LANDSCAPE");
-        if (this.AIl != null)
+        Log.i("VideoFullScreenActivity", "ORIENTATION_LANDSCAPE");
+        if (this.ESi != null)
         {
-          this.AIl.eam();
-          AppMethodBeat.o(220069);
+          this.ESi.fda();
+          AppMethodBeat.o(203858);
         }
       }
       else if (paramConfiguration.orientation == 1)
       {
-        ae.i("NonFullOrFullVideoType", "ORIENTATION_PORTRAIT");
-        if (this.AIl != null) {
-          this.AIl.ean();
+        Log.i("VideoFullScreenActivity", "ORIENTATION_PORTRAIT");
+        if (this.ESi != null) {
+          this.ESi.fdb();
         }
       }
-      AppMethodBeat.o(220069);
+      AppMethodBeat.o(203858);
       return;
     }
     catch (Throwable paramConfiguration)
     {
-      ae.e("NonFullOrFullVideoType", paramConfiguration.toString());
-      AppMethodBeat.o(220069);
+      Log.e("VideoFullScreenActivity", paramConfiguration.toString());
+      AppMethodBeat.o(203858);
     }
   }
   
@@ -168,1077 +184,1108 @@ public class VideoFullScreenActivity
   public void onCreate(android.os.Bundle paramBundle)
   {
     // Byte code:
-    //   0: ldc 192
-    //   2: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 220
+    //   2: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: aload_1
-    //   7: invokespecial 194	com/tencent/mm/ui/MMActivity:onCreate	(Landroid/os/Bundle;)V
+    //   7: invokespecial 222	com/tencent/mm/ui/MMActivity:onCreate	(Landroid/os/Bundle;)V
     //   10: aload_0
-    //   11: invokestatic 200	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/an:aH	(Landroid/app/Activity;)V
-    //   14: aload_0
-    //   15: getfield 204	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mController	Lcom/tencent/mm/ui/s;
-    //   18: invokevirtual 209	com/tencent/mm/ui/s:hideTitleView	()V
+    //   11: invokestatic 157	java/lang/System:currentTimeMillis	()J
+    //   14: putfield 47	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:startTime	J
+    //   17: aload_0
+    //   18: invokestatic 228	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/ap:aL	(Landroid/app/Activity;)V
     //   21: aload_0
-    //   22: aload_0
-    //   23: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   26: ldc 214
-    //   28: iconst_0
-    //   29: invokevirtual 218	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   32: putfield 133	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ivg	I
-    //   35: aload_0
-    //   36: aload_0
-    //   37: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   40: ldc 220
-    //   42: invokevirtual 224	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   45: putfield 226	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjE	Ljava/lang/String;
-    //   48: aload_0
-    //   49: aload_0
-    //   50: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   53: ldc 228
-    //   55: iconst_0
-    //   56: invokevirtual 218	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   59: putfield 230	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjF	I
-    //   62: aload_0
-    //   63: aload_0
-    //   64: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   67: ldc 232
-    //   69: iconst_0
-    //   70: invokevirtual 218	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   73: putfield 234	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjG	I
-    //   76: aload_0
-    //   77: aload_0
-    //   78: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   81: ldc 236
-    //   83: iconst_0
-    //   84: invokevirtual 240	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   87: putfield 242	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zWP	Z
-    //   90: aload_0
-    //   91: aload_0
-    //   92: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   95: ldc 244
-    //   97: iconst_0
-    //   98: invokevirtual 240	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   101: putfield 246	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lVw	Z
-    //   104: aload_0
-    //   105: aload_0
-    //   106: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   109: ldc 248
-    //   111: invokevirtual 224	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   114: putfield 250	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zQQ	Ljava/lang/String;
-    //   117: aload_0
-    //   118: aload_0
-    //   119: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   122: ldc 252
-    //   124: invokevirtual 224	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   127: putfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjH	Ljava/lang/String;
+    //   22: getfield 232	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mController	Lcom/tencent/mm/ui/t;
+    //   25: invokevirtual 237	com/tencent/mm/ui/t:hideTitleView	()V
+    //   28: aload_0
+    //   29: aload_0
+    //   30: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   33: ldc 242
+    //   35: iconst_0
+    //   36: invokevirtual 246	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   39: putfield 143	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:jqs	I
+    //   42: aload_0
+    //   43: aload_0
+    //   44: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   47: ldc 248
+    //   49: invokevirtual 252	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   52: putfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esm	Ljava/lang/String;
+    //   55: aload_0
+    //   56: aload_0
+    //   57: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   60: ldc_w 256
+    //   63: iconst_0
+    //   64: invokevirtual 246	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   67: putfield 258	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esn	I
+    //   70: aload_0
+    //   71: aload_0
+    //   72: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   75: ldc_w 260
+    //   78: iconst_0
+    //   79: invokevirtual 246	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   82: putfield 262	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Eso	I
+    //   85: aload_0
+    //   86: aload_0
+    //   87: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   90: ldc_w 264
+    //   93: iconst_0
+    //   94: invokevirtual 268	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   97: putfield 270	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:EeY	Z
+    //   100: aload_0
+    //   101: aload_0
+    //   102: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   105: ldc_w 272
+    //   108: iconst_0
+    //   109: invokevirtual 268	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   112: putfield 274	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:gVd	Z
+    //   115: aload_0
+    //   116: aload_0
+    //   117: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   120: ldc_w 276
+    //   123: invokevirtual 252	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: putfield 278	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:DYR	Ljava/lang/String;
+    //   129: aload_0
     //   130: aload_0
-    //   131: aload_0
-    //   132: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   135: ldc_w 256
-    //   138: iconst_0
-    //   139: invokevirtual 240	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   142: putfield 258	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:isWaiting	Z
-    //   145: aload_0
-    //   146: aload_0
-    //   147: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   150: ldc_w 260
-    //   153: iconst_0
-    //   154: invokevirtual 218	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   157: putfield 262	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zYx	I
-    //   160: aload_0
-    //   161: aload_0
-    //   162: invokevirtual 212	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
-    //   165: ldc_w 264
-    //   168: iconst_0
-    //   169: invokevirtual 218	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   172: putfield 266	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjI	I
-    //   175: ldc 116
-    //   177: new 268	java/lang/StringBuilder
-    //   180: dup
-    //   181: ldc_w 270
-    //   184: invokespecial 273	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   187: aload_0
-    //   188: getfield 133	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ivg	I
-    //   191: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   194: ldc_w 279
-    //   197: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: aload_0
-    //   201: getfield 226	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjE	Ljava/lang/String;
-    //   204: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: ldc_w 284
-    //   210: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: aload_0
-    //   214: getfield 230	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjF	I
-    //   217: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   220: ldc_w 286
-    //   223: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   226: aload_0
-    //   227: getfield 234	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjG	I
-    //   230: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   233: ldc_w 288
-    //   236: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: aload_0
-    //   240: getfield 242	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zWP	Z
-    //   243: invokevirtual 291	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   246: ldc_w 293
-    //   249: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: aload_0
-    //   253: getfield 246	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lVw	Z
-    //   256: invokevirtual 291	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   259: ldc_w 295
-    //   262: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: aload_0
-    //   266: getfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjH	Ljava/lang/String;
-    //   269: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: ldc_w 297
-    //   275: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: aload_0
-    //   279: getfield 258	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:isWaiting	Z
-    //   282: invokevirtual 291	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   285: ldc_w 299
-    //   288: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: aload_0
-    //   292: getfield 262	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zYx	I
-    //   295: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   298: invokevirtual 300	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   301: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   304: aload_0
-    //   305: invokestatic 304	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/an:gp	(Landroid/content/Context;)[I
-    //   308: astore_1
-    //   309: aload_0
-    //   310: aload_1
-    //   311: iconst_0
-    //   312: iaload
-    //   313: putfield 306	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lxZ	I
-    //   316: aload_0
-    //   317: aload_1
-    //   318: iconst_1
-    //   319: iaload
-    //   320: putfield 308	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lya	I
-    //   323: aload_0
-    //   324: invokestatic 313	com/tencent/mm/ui/al:aH	(Landroid/content/Context;)Z
-    //   327: ifeq +666 -> 993
-    //   330: aload_0
-    //   331: invokevirtual 80	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getResources	()Landroid/content/res/Resources;
-    //   334: invokevirtual 86	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
-    //   337: getfield 91	android/content/res/Configuration:orientation	I
-    //   340: iconst_1
-    //   341: if_icmpne +652 -> 993
-    //   344: aload_0
+    //   131: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   134: ldc_w 280
+    //   137: invokevirtual 252	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   140: putfield 282	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esp	Ljava/lang/String;
+    //   143: aload_0
+    //   144: aload_0
+    //   145: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   148: ldc_w 284
+    //   151: iconst_0
+    //   152: invokevirtual 268	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   155: putfield 286	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:isWaiting	Z
+    //   158: aload_0
+    //   159: aload_0
+    //   160: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   163: ldc_w 288
+    //   166: iconst_0
+    //   167: invokevirtual 246	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   170: putfield 290	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:EgO	I
+    //   173: aload_0
+    //   174: aload_0
+    //   175: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   178: ldc_w 292
+    //   181: iconst_0
+    //   182: invokevirtual 246	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   185: putfield 294	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esq	I
+    //   188: aload_0
+    //   189: aload_0
+    //   190: invokevirtual 240	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getIntent	()Landroid/content/Intent;
+    //   193: ldc_w 296
+    //   196: iconst_0
+    //   197: invokevirtual 268	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   200: putfield 298	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESk	Z
+    //   203: ldc 126
+    //   205: new 300	java/lang/StringBuilder
+    //   208: dup
+    //   209: ldc_w 302
+    //   212: invokespecial 305	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   215: aload_0
+    //   216: getfield 143	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:jqs	I
+    //   219: invokevirtual 309	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   222: ldc_w 311
+    //   225: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: aload_0
+    //   229: getfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esm	Ljava/lang/String;
+    //   232: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: ldc_w 316
+    //   238: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: aload_0
+    //   242: getfield 258	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esn	I
+    //   245: invokevirtual 309	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   248: ldc_w 318
+    //   251: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: aload_0
+    //   255: getfield 262	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Eso	I
+    //   258: invokevirtual 309	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   261: ldc_w 320
+    //   264: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: aload_0
+    //   268: getfield 270	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:EeY	Z
+    //   271: invokevirtual 323	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   274: ldc_w 325
+    //   277: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: aload_0
+    //   281: getfield 274	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:gVd	Z
+    //   284: invokevirtual 323	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   287: ldc_w 327
+    //   290: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   293: aload_0
+    //   294: getfield 282	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esp	Ljava/lang/String;
+    //   297: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: ldc_w 329
+    //   303: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   306: aload_0
+    //   307: getfield 286	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:isWaiting	Z
+    //   310: invokevirtual 323	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   313: ldc_w 331
+    //   316: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   319: aload_0
+    //   320: getfield 290	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:EgO	I
+    //   323: invokevirtual 309	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   326: ldc_w 333
+    //   329: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: aload_0
+    //   333: getfield 298	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESk	Z
+    //   336: invokevirtual 323	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   339: invokevirtual 334	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   342: invokestatic 215	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   345: aload_0
-    //   346: getfield 308	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lya	I
-    //   349: aload_0
-    //   350: invokestatic 317	com/tencent/mm/ui/al:aG	(Landroid/content/Context;)I
-    //   353: isub
-    //   354: putfield 308	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lya	I
-    //   357: ldc 116
-    //   359: new 268	java/lang/StringBuilder
-    //   362: dup
-    //   363: ldc_w 319
-    //   366: invokespecial 273	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   346: getfield 143	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:jqs	I
+    //   349: iconst_1
+    //   350: if_icmpne +29 -> 379
+    //   353: aload_0
+    //   354: getfield 298	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESk	Z
+    //   357: ifeq +22 -> 379
+    //   360: aload_0
+    //   361: iconst_0
+    //   362: invokevirtual 206	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:setRequestedOrientation	(I)V
+    //   365: new 8	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity$1
+    //   368: dup
     //   369: aload_0
-    //   370: getfield 308	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lya	I
-    //   373: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   376: ldc_w 321
-    //   379: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   382: aload_0
-    //   383: getfield 306	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lxZ	I
-    //   386: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 300	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   395: aload_0
-    //   396: getfield 133	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ivg	I
-    //   399: ifne +811 -> 1210
-    //   402: aload_0
-    //   403: aload_0
-    //   404: ldc_w 322
-    //   407: invokevirtual 326	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:findViewById	(I)Landroid/view/View;
-    //   410: checkcast 328	android/widget/FrameLayout
-    //   413: putfield 51	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Apl	Landroid/widget/FrameLayout;
-    //   416: aload_0
-    //   417: new 137	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView
-    //   420: dup
-    //   421: aload_0
-    //   422: invokespecial 331	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:<init>	(Landroid/content/Context;)V
-    //   425: putfield 135	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIj	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
-    //   428: aload_0
-    //   429: getfield 51	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Apl	Landroid/widget/FrameLayout;
-    //   432: aload_0
-    //   433: getfield 135	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIj	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
-    //   436: invokevirtual 335	android/widget/FrameLayout:addView	(Landroid/view/View;)V
-    //   439: aload_0
-    //   440: getfield 135	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIj	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
-    //   443: astore_1
+    //   370: invokespecial 337	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity$1:<init>	(Lcom/tencent/mm/plugin/sns/ui/VideoFullScreenActivity;)V
+    //   373: ldc2_w 338
+    //   376: invokestatic 345	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThreadDelayed	(Ljava/lang/Runnable;J)V
+    //   379: aload_0
+    //   380: invokestatic 349	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/ap:ha	(Landroid/content/Context;)[I
+    //   383: astore_1
+    //   384: aload_0
+    //   385: aload_1
+    //   386: iconst_0
+    //   387: iaload
+    //   388: putfield 351	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEX	I
+    //   391: aload_0
+    //   392: aload_1
+    //   393: iconst_1
+    //   394: iaload
+    //   395: putfield 353	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEY	I
+    //   398: aload_0
+    //   399: invokestatic 359	com/tencent/mm/ui/ao:aQ	(Landroid/content/Context;)Z
+    //   402: ifeq +666 -> 1068
+    //   405: aload_0
+    //   406: invokevirtual 90	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getResources	()Landroid/content/res/Resources;
+    //   409: invokevirtual 96	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
+    //   412: getfield 101	android/content/res/Configuration:orientation	I
+    //   415: iconst_1
+    //   416: if_icmpne +652 -> 1068
+    //   419: aload_0
+    //   420: aload_0
+    //   421: getfield 353	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEY	I
+    //   424: aload_0
+    //   425: invokestatic 363	com/tencent/mm/ui/ao:aP	(Landroid/content/Context;)I
+    //   428: isub
+    //   429: putfield 353	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEY	I
+    //   432: ldc 126
+    //   434: new 300	java/lang/StringBuilder
+    //   437: dup
+    //   438: ldc_w 365
+    //   441: invokespecial 305	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   444: aload_0
-    //   445: getfield 306	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lxZ	I
-    //   448: istore_2
-    //   449: aload_0
-    //   450: getfield 308	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lya	I
-    //   453: istore_3
-    //   454: iload_3
-    //   455: iload_2
-    //   456: if_icmplt +587 -> 1043
-    //   459: aload_1
-    //   460: iload_2
-    //   461: putfield 336	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:lxZ	I
-    //   464: aload_1
-    //   465: iload_3
-    //   466: putfield 337	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:lya	I
-    //   469: aload_1
-    //   470: aload_1
-    //   471: getfield 341	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
-    //   474: bipush 32
-    //   476: invokestatic 347	com/tencent/mm/cb/a:fromDPToPix	(Landroid/content/Context;I)I
-    //   479: putfield 350	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:length	I
-    //   482: aload_0
-    //   483: getfield 135	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIj	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
-    //   486: astore_1
-    //   487: aload_0
-    //   488: getfield 133	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ivg	I
-    //   491: istore_2
-    //   492: aload_0
-    //   493: getfield 226	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjE	Ljava/lang/String;
-    //   496: astore 10
-    //   498: aload_0
-    //   499: getfield 230	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjF	I
-    //   502: istore_3
+    //   445: getfield 353	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEY	I
+    //   448: invokevirtual 309	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   451: ldc_w 367
+    //   454: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: aload_0
+    //   458: getfield 351	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEX	I
+    //   461: invokevirtual 309	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   464: invokevirtual 334	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   467: invokestatic 215	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   470: aload_0
+    //   471: getfield 143	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:jqs	I
+    //   474: ifne +811 -> 1285
+    //   477: aload_0
+    //   478: aload_0
+    //   479: ldc_w 368
+    //   482: invokevirtual 372	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:findViewById	(I)Landroid/view/View;
+    //   485: checkcast 374	android/widget/FrameLayout
+    //   488: putfield 61	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ExV	Landroid/widget/FrameLayout;
+    //   491: aload_0
+    //   492: new 147	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView
+    //   495: dup
+    //   496: aload_0
+    //   497: invokespecial 377	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:<init>	(Landroid/content/Context;)V
+    //   500: putfield 145	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESg	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
     //   503: aload_0
-    //   504: getfield 234	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjG	I
-    //   507: istore 4
-    //   509: aload_0
-    //   510: getfield 242	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zWP	Z
-    //   513: istore 7
-    //   515: aload_0
-    //   516: getfield 246	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lVw	Z
-    //   519: istore 8
-    //   521: aload_0
-    //   522: getfield 250	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zQQ	Ljava/lang/String;
-    //   525: astore 11
-    //   527: aload_0
-    //   528: getfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjH	Ljava/lang/String;
-    //   531: astore 12
-    //   533: aload_1
-    //   534: iconst_1
-    //   535: putfield 353	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:cBE	Z
-    //   538: aload_1
-    //   539: iconst_1
-    //   540: putfield 356	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:isFirst	Z
-    //   543: aload_1
-    //   544: iload_2
-    //   545: putfield 357	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:ivg	I
-    //   548: aload_1
-    //   549: aload 10
-    //   551: putfield 358	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjE	Ljava/lang/String;
-    //   554: aload_1
-    //   555: iload_3
-    //   556: putfield 359	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjF	I
-    //   559: aload_1
-    //   560: iload 4
-    //   562: putfield 360	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjG	I
-    //   565: aload_1
-    //   566: iload 7
-    //   568: putfield 361	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWP	Z
-    //   571: aload_1
-    //   572: iload 8
-    //   574: putfield 362	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:lVw	Z
-    //   577: aload_1
-    //   578: aload 11
-    //   580: putfield 363	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zQQ	Ljava/lang/String;
-    //   583: aload_1
-    //   584: aload 12
-    //   586: putfield 364	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjH	Ljava/lang/String;
-    //   589: aload_0
-    //   590: getfield 135	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIj	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
-    //   593: astore_1
-    //   594: aload_1
-    //   595: aload_1
-    //   596: getfield 341	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
-    //   599: invokestatic 370	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
-    //   602: ldc_w 371
-    //   605: aload_1
-    //   606: iconst_1
-    //   607: invokevirtual 375	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;Z)Landroid/view/View;
-    //   610: putfield 379	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
+    //   504: getfield 61	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ExV	Landroid/widget/FrameLayout;
+    //   507: aload_0
+    //   508: getfield 145	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESg	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
+    //   511: invokevirtual 381	android/widget/FrameLayout:addView	(Landroid/view/View;)V
+    //   514: aload_0
+    //   515: getfield 145	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESg	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
+    //   518: astore_1
+    //   519: aload_0
+    //   520: getfield 351	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEX	I
+    //   523: istore_2
+    //   524: aload_0
+    //   525: getfield 353	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEY	I
+    //   528: istore_3
+    //   529: iload_3
+    //   530: iload_2
+    //   531: if_icmplt +587 -> 1118
+    //   534: aload_1
+    //   535: iload_2
+    //   536: putfield 382	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mEX	I
+    //   539: aload_1
+    //   540: iload_3
+    //   541: putfield 383	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mEY	I
+    //   544: aload_1
+    //   545: aload_1
+    //   546: getfield 387	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
+    //   549: bipush 32
+    //   551: invokestatic 393	com/tencent/mm/cb/a:fromDPToPix	(Landroid/content/Context;I)I
+    //   554: putfield 396	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:length	I
+    //   557: aload_0
+    //   558: getfield 145	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESg	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
+    //   561: astore_1
+    //   562: aload_0
+    //   563: getfield 143	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:jqs	I
+    //   566: istore_2
+    //   567: aload_0
+    //   568: getfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esm	Ljava/lang/String;
+    //   571: astore 10
+    //   573: aload_0
+    //   574: getfield 258	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esn	I
+    //   577: istore_3
+    //   578: aload_0
+    //   579: getfield 262	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Eso	I
+    //   582: istore 4
+    //   584: aload_0
+    //   585: getfield 270	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:EeY	Z
+    //   588: istore 7
+    //   590: aload_0
+    //   591: getfield 274	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:gVd	Z
+    //   594: istore 8
+    //   596: aload_0
+    //   597: getfield 278	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:DYR	Ljava/lang/String;
+    //   600: astore 11
+    //   602: aload_0
+    //   603: getfield 282	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esp	Ljava/lang/String;
+    //   606: astore 12
+    //   608: aload_1
+    //   609: iconst_1
+    //   610: putfield 399	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:isInit	Z
     //   613: aload_1
-    //   614: aload_1
-    //   615: getfield 379	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
-    //   618: ldc_w 380
-    //   621: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   624: checkcast 328	android/widget/FrameLayout
-    //   627: putfield 386	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjA	Landroid/widget/FrameLayout;
-    //   630: aload_1
-    //   631: aload_1
-    //   632: getfield 379	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
-    //   635: ldc_w 387
-    //   638: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   641: putfield 390	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjB	Landroid/view/View;
-    //   644: aload_1
-    //   645: aload_1
-    //   646: getfield 379	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
-    //   649: ldc_w 391
-    //   652: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   655: putfield 394	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjC	Landroid/view/View;
+    //   614: iconst_1
+    //   615: putfield 402	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:isFirst	Z
+    //   618: aload_1
+    //   619: iload_2
+    //   620: putfield 403	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:jqs	I
+    //   623: aload_1
+    //   624: aload 10
+    //   626: putfield 404	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esm	Ljava/lang/String;
+    //   629: aload_1
+    //   630: iload_3
+    //   631: putfield 405	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esn	I
+    //   634: aload_1
+    //   635: iload 4
+    //   637: putfield 406	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Eso	I
+    //   640: aload_1
+    //   641: iload 7
+    //   643: putfield 407	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeY	Z
+    //   646: aload_1
+    //   647: iload 8
+    //   649: putfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:gVd	Z
+    //   652: aload_1
+    //   653: aload 11
+    //   655: putfield 409	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:DYR	Ljava/lang/String;
     //   658: aload_1
-    //   659: aload_1
-    //   660: getfield 379	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
-    //   663: ldc_w 395
-    //   666: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   669: checkcast 397	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar
-    //   672: putfield 401	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   675: aload_1
-    //   676: new 403	com/tencent/mm/plugin/sns/ui/OfflineVideoView
-    //   679: dup
+    //   659: aload 12
+    //   661: putfield 410	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esp	Ljava/lang/String;
+    //   664: aload_0
+    //   665: getfield 145	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESg	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
+    //   668: astore_1
+    //   669: aload_1
+    //   670: aload_1
+    //   671: getfield 387	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
+    //   674: invokestatic 416	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    //   677: ldc_w 417
     //   680: aload_1
-    //   681: getfield 341	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
-    //   684: invokespecial 404	com/tencent/mm/plugin/sns/ui/OfflineVideoView:<init>	(Landroid/content/Context;)V
-    //   687: putfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AnC	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
-    //   690: aload_1
-    //   691: getfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AnC	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
-    //   694: iconst_1
-    //   695: invokevirtual 411	com/tencent/mm/plugin/sns/ui/OfflineVideoView:setClickable	(Z)V
-    //   698: aload_1
-    //   699: getfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AnC	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
-    //   702: aload_1
-    //   703: invokevirtual 415	com/tencent/mm/plugin/sns/ui/OfflineVideoView:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
+    //   681: iconst_1
+    //   682: invokevirtual 421	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    //   685: putfield 425	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
+    //   688: aload_1
+    //   689: aload_1
+    //   690: getfield 425	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
+    //   693: ldc_w 426
+    //   696: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   699: checkcast 374	android/widget/FrameLayout
+    //   702: putfield 432	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esi	Landroid/widget/FrameLayout;
+    //   705: aload_1
     //   706: aload_1
-    //   707: getfield 386	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjA	Landroid/widget/FrameLayout;
-    //   710: aload_1
-    //   711: getfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AnC	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
-    //   714: invokevirtual 335	android/widget/FrameLayout:addView	(Landroid/view/View;)V
-    //   717: aload_1
-    //   718: getfield 401	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   721: iconst_0
-    //   722: invokevirtual 418	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setVisibility	(I)V
-    //   725: aload_1
-    //   726: getfield 401	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   729: aload_1
-    //   730: getfield 422	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zXc	Landroid/view/View$OnClickListener;
-    //   733: invokevirtual 426	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setOnPlayButtonClickListener	(Landroid/view/View$OnClickListener;)V
-    //   736: aload_1
-    //   737: getfield 401	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   740: aload_1
-    //   741: getfield 430	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:rNx	Lcom/tencent/mm/plugin/sight/decode/ui/b;
-    //   744: invokevirtual 434	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setIplaySeekCallback	(Lcom/tencent/mm/plugin/sight/decode/ui/b;)V
-    //   747: aload_1
-    //   748: aload_1
-    //   749: ldc_w 435
-    //   752: invokevirtual 436	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:findViewById	(I)Landroid/view/View;
-    //   755: checkcast 438	android/widget/ImageView
-    //   758: putfield 442	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zXO	Landroid/widget/ImageView;
-    //   761: aload_1
-    //   762: getfield 442	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zXO	Landroid/widget/ImageView;
-    //   765: iconst_0
-    //   766: invokevirtual 443	android/widget/ImageView:setVisibility	(I)V
-    //   769: aload_1
-    //   770: getfield 442	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zXO	Landroid/widget/ImageView;
+    //   707: getfield 425	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
+    //   710: ldc_w 433
+    //   713: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   716: putfield 436	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esj	Landroid/view/View;
+    //   719: aload_1
+    //   720: aload_1
+    //   721: getfield 425	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
+    //   724: ldc_w 437
+    //   727: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   730: putfield 440	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esk	Landroid/view/View;
+    //   733: aload_1
+    //   734: aload_1
+    //   735: getfield 425	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
+    //   738: ldc_w 441
+    //   741: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   744: checkcast 443	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar
+    //   747: putfield 447	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   750: aload_1
+    //   751: new 449	com/tencent/mm/plugin/sns/ui/OfflineVideoView
+    //   754: dup
+    //   755: aload_1
+    //   756: getfield 387	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
+    //   759: invokespecial 450	com/tencent/mm/plugin/sns/ui/OfflineVideoView:<init>	(Landroid/content/Context;)V
+    //   762: putfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ewn	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
+    //   765: aload_1
+    //   766: getfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ewn	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
+    //   769: iconst_1
+    //   770: invokevirtual 457	com/tencent/mm/plugin/sns/ui/OfflineVideoView:setClickable	(Z)V
     //   773: aload_1
-    //   774: invokevirtual 446	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   774: getfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ewn	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
     //   777: aload_1
-    //   778: aload_1
-    //   779: ldc_w 447
-    //   782: invokevirtual 436	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:findViewById	(I)Landroid/view/View;
-    //   785: checkcast 438	android/widget/ImageView
-    //   788: putfield 450	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWH	Landroid/widget/ImageView;
-    //   791: aload_1
-    //   792: getfield 450	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWH	Landroid/widget/ImageView;
-    //   795: iconst_0
-    //   796: invokevirtual 443	android/widget/ImageView:setVisibility	(I)V
-    //   799: aload_1
-    //   800: getfield 450	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWH	Landroid/widget/ImageView;
-    //   803: aload_1
-    //   804: invokevirtual 446	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   807: aload_1
-    //   808: aload_1
-    //   809: getfield 379	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
-    //   812: ldc_w 451
-    //   815: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   818: putfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zXP	Landroid/view/View;
-    //   821: aload_1
-    //   822: getfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zXP	Landroid/view/View;
-    //   825: bipush 8
-    //   827: invokevirtual 455	android/view/View:setVisibility	(I)V
-    //   830: aload_1
-    //   831: getfield 341	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
-    //   834: invokevirtual 458	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   837: invokevirtual 86	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
-    //   840: getfield 91	android/content/res/Configuration:orientation	I
-    //   843: iconst_2
-    //   844: if_icmpne +256 -> 1100
-    //   847: ldc_w 460
-    //   850: ldc 185
-    //   852: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   855: aload_1
-    //   856: invokevirtual 461	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:eam	()V
-    //   859: aload_1
-    //   860: getfield 401	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   863: invokevirtual 464	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:getVideoTotalTime	()I
+    //   778: invokevirtual 461	com/tencent/mm/plugin/sns/ui/OfflineVideoView:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
+    //   781: aload_1
+    //   782: getfield 432	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esi	Landroid/widget/FrameLayout;
+    //   785: aload_1
+    //   786: getfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ewn	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
+    //   789: invokevirtual 381	android/widget/FrameLayout:addView	(Landroid/view/View;)V
+    //   792: aload_1
+    //   793: getfield 447	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   796: iconst_0
+    //   797: invokevirtual 464	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setVisibility	(I)V
+    //   800: aload_1
+    //   801: getfield 447	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   804: aload_1
+    //   805: getfield 468	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Efl	Landroid/view/View$OnClickListener;
+    //   808: invokevirtual 472	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setOnPlayButtonClickListener	(Landroid/view/View$OnClickListener;)V
+    //   811: aload_1
+    //   812: getfield 447	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   815: aload_1
+    //   816: getfield 476	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:tni	Lcom/tencent/mm/plugin/sight/decode/ui/b;
+    //   819: invokevirtual 480	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setIplaySeekCallback	(Lcom/tencent/mm/plugin/sight/decode/ui/b;)V
+    //   822: aload_1
+    //   823: aload_1
+    //   824: ldc_w 481
+    //   827: invokevirtual 482	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:findViewById	(I)Landroid/view/View;
+    //   830: checkcast 484	android/widget/ImageView
+    //   833: putfield 488	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Egd	Landroid/widget/ImageView;
+    //   836: aload_1
+    //   837: getfield 488	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Egd	Landroid/widget/ImageView;
+    //   840: iconst_0
+    //   841: invokevirtual 489	android/widget/ImageView:setVisibility	(I)V
+    //   844: aload_1
+    //   845: getfield 488	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Egd	Landroid/widget/ImageView;
+    //   848: aload_1
+    //   849: invokevirtual 492	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   852: aload_1
+    //   853: aload_1
+    //   854: ldc_w 493
+    //   857: invokevirtual 482	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:findViewById	(I)Landroid/view/View;
+    //   860: checkcast 484	android/widget/ImageView
+    //   863: putfield 496	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeQ	Landroid/widget/ImageView;
     //   866: aload_1
-    //   867: getfield 360	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjG	I
-    //   870: sipush 1000
-    //   873: idiv
-    //   874: if_icmpeq +18 -> 892
-    //   877: aload_1
-    //   878: getfield 401	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   881: aload_1
-    //   882: getfield 360	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjG	I
-    //   885: sipush 1000
-    //   888: idiv
-    //   889: invokevirtual 467	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setVideoTotalTime	(I)V
-    //   892: aload_1
-    //   893: getfield 401	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   867: getfield 496	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeQ	Landroid/widget/ImageView;
+    //   870: iconst_0
+    //   871: invokevirtual 489	android/widget/ImageView:setVisibility	(I)V
+    //   874: aload_1
+    //   875: getfield 496	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeQ	Landroid/widget/ImageView;
+    //   878: aload_1
+    //   879: invokevirtual 492	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   882: aload_1
+    //   883: aload_1
+    //   884: getfield 425	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:contentView	Landroid/view/View;
+    //   887: ldc_w 497
+    //   890: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   893: putfield 500	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ege	Landroid/view/View;
     //   896: aload_1
-    //   897: getfield 359	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AjF	I
-    //   900: sipush 1000
-    //   903: idiv
-    //   904: invokevirtual 470	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:seek	(I)V
-    //   907: aload_1
-    //   908: aload_1
-    //   909: getfield 362	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:lVw	Z
-    //   912: invokevirtual 473	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:rL	(Z)V
-    //   915: aload_1
-    //   916: getfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AnC	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
-    //   919: new 475	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView$2
-    //   922: dup
-    //   923: aload_1
-    //   924: invokespecial 478	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView$2:<init>	(Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;)V
-    //   927: invokevirtual 482	com/tencent/mm/plugin/sns/ui/OfflineVideoView:setVideoCallback	(Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView$a;)V
+    //   897: getfield 500	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ege	Landroid/view/View;
+    //   900: bipush 8
+    //   902: invokevirtual 501	android/view/View:setVisibility	(I)V
+    //   905: aload_1
+    //   906: getfield 387	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
+    //   909: invokevirtual 504	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   912: invokevirtual 96	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
+    //   915: getfield 101	android/content/res/Configuration:orientation	I
+    //   918: iconst_2
+    //   919: if_icmpne +256 -> 1175
+    //   922: ldc_w 506
+    //   925: ldc 213
+    //   927: invokestatic 215	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   930: aload_1
-    //   931: getfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:AnC	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
-    //   934: invokevirtual 485	com/tencent/mm/plugin/sns/ui/OfflineVideoView:cyW	()V
-    //   937: aload_1
-    //   938: iconst_1
-    //   939: invokevirtual 488	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:setFocus	(Z)V
-    //   942: aload_0
-    //   943: getfield 135	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIj	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
-    //   946: aload_0
-    //   947: invokevirtual 492	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:setProgressBarStatusListener	(Lcom/tencent/mm/plugin/sns/ui/d/a;)V
-    //   950: getstatic 498	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/af$b:zYe	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/u;
-    //   953: ifnull +21 -> 974
-    //   956: aload_0
-    //   957: getstatic 498	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/af$b:zYe	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/u;
-    //   960: getfield 503	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/u:zRa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;
-    //   963: putfield 505	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIm	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;
-    //   966: aload_0
-    //   967: aload_0
-    //   968: getfield 505	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIm	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;
-    //   971: invokespecial 507	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:a	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;)V
-    //   974: ldc 192
-    //   976: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   979: return
-    //   980: astore_1
-    //   981: ldc 116
+    //   931: invokevirtual 507	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:fda	()V
+    //   934: aload_1
+    //   935: getfield 447	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   938: invokevirtual 510	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:getVideoTotalTime	()I
+    //   941: aload_1
+    //   942: getfield 406	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Eso	I
+    //   945: sipush 1000
+    //   948: idiv
+    //   949: if_icmpeq +18 -> 967
+    //   952: aload_1
+    //   953: getfield 447	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   956: aload_1
+    //   957: getfield 406	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Eso	I
+    //   960: sipush 1000
+    //   963: idiv
+    //   964: invokevirtual 513	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setVideoTotalTime	(I)V
+    //   967: aload_1
+    //   968: getfield 447	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   971: aload_1
+    //   972: getfield 405	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Esn	I
+    //   975: sipush 1000
+    //   978: idiv
+    //   979: invokevirtual 516	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:seek	(I)V
+    //   982: aload_1
     //   983: aload_1
-    //   984: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   987: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   990: goto -686 -> 304
-    //   993: aload_0
-    //   994: invokestatic 313	com/tencent/mm/ui/al:aH	(Landroid/content/Context;)Z
-    //   997: ifeq -640 -> 357
-    //   1000: aload_0
-    //   1001: invokevirtual 80	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getResources	()Landroid/content/res/Resources;
-    //   1004: invokevirtual 86	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
-    //   1007: getfield 91	android/content/res/Configuration:orientation	I
-    //   1010: iconst_2
-    //   1011: if_icmpne -654 -> 357
-    //   1014: aload_0
-    //   1015: aload_0
-    //   1016: getfield 306	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lxZ	I
-    //   1019: aload_0
-    //   1020: invokestatic 317	com/tencent/mm/ui/al:aG	(Landroid/content/Context;)I
-    //   1023: isub
-    //   1024: putfield 306	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lxZ	I
-    //   1027: goto -670 -> 357
-    //   1030: astore_1
-    //   1031: ldc 116
-    //   1033: aload_1
-    //   1034: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1037: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1040: goto -645 -> 395
-    //   1043: aload_1
-    //   1044: iload_2
-    //   1045: putfield 337	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:lya	I
-    //   1048: aload_1
-    //   1049: iload_3
-    //   1050: putfield 336	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:lxZ	I
-    //   1053: goto -584 -> 469
-    //   1056: astore_1
-    //   1057: ldc_w 460
-    //   1060: aload_1
-    //   1061: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1064: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1067: goto -585 -> 482
-    //   1070: astore_1
-    //   1071: ldc 116
-    //   1073: aload_1
-    //   1074: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1077: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1080: ldc 192
-    //   1082: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1085: return
-    //   1086: astore_1
-    //   1087: ldc_w 460
-    //   1090: aload_1
-    //   1091: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1094: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1097: goto -508 -> 589
-    //   1100: aload_1
-    //   1101: getfield 341	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
-    //   1104: invokevirtual 458	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   1107: invokevirtual 86	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
-    //   1110: getfield 91	android/content/res/Configuration:orientation	I
-    //   1113: iconst_1
-    //   1114: if_icmpne -255 -> 859
-    //   1117: ldc_w 460
-    //   1120: ldc 189
-    //   1122: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1125: aload_1
-    //   1126: invokevirtual 508	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:ean	()V
-    //   1129: goto -270 -> 859
-    //   1132: astore 10
-    //   1134: ldc_w 460
-    //   1137: aload 10
-    //   1139: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1142: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1145: goto -286 -> 859
-    //   1148: astore_1
-    //   1149: ldc_w 460
-    //   1152: aload_1
-    //   1153: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1156: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1159: goto -217 -> 942
-    //   1162: astore 10
-    //   1164: ldc_w 460
-    //   1167: aload 10
-    //   1169: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1172: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1175: goto -260 -> 915
-    //   1178: astore 10
-    //   1180: ldc_w 460
-    //   1183: aload 10
-    //   1185: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1188: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1191: goto -261 -> 930
-    //   1194: astore_1
-    //   1195: ldc 116
-    //   1197: aload_1
-    //   1198: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1201: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1204: ldc 192
-    //   1206: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1209: return
-    //   1210: aload_0
-    //   1211: getfield 133	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ivg	I
-    //   1214: iconst_1
-    //   1215: if_icmpne +649 -> 1864
-    //   1218: aload_0
-    //   1219: aload_0
-    //   1220: ldc_w 322
-    //   1223: invokevirtual 326	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:findViewById	(I)Landroid/view/View;
-    //   1226: checkcast 328	android/widget/FrameLayout
-    //   1229: putfield 51	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Apl	Landroid/widget/FrameLayout;
-    //   1232: aload_0
-    //   1233: new 166	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView
-    //   1236: dup
-    //   1237: aload_0
-    //   1238: invokespecial 509	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:<init>	(Landroid/content/Context;)V
-    //   1241: putfield 164	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIk	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
-    //   1244: aload_0
-    //   1245: getfield 51	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Apl	Landroid/widget/FrameLayout;
-    //   1248: aload_0
-    //   1249: getfield 164	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIk	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
-    //   1252: invokevirtual 335	android/widget/FrameLayout:addView	(Landroid/view/View;)V
-    //   1255: aload_0
-    //   1256: getfield 164	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIk	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
-    //   1259: astore_1
-    //   1260: aload_0
-    //   1261: getfield 306	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lxZ	I
-    //   1264: istore_2
-    //   1265: aload_0
-    //   1266: getfield 308	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lya	I
-    //   1269: istore_3
-    //   1270: iload_3
-    //   1271: iload_2
-    //   1272: if_icmplt +598 -> 1870
-    //   1275: aload_1
-    //   1276: iload_2
-    //   1277: putfield 510	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:lxZ	I
-    //   1280: aload_1
-    //   1281: iload_3
-    //   1282: putfield 511	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:lya	I
-    //   1285: aload_1
-    //   1286: aload_1
-    //   1287: getfield 512	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
-    //   1290: bipush 32
-    //   1292: invokestatic 347	com/tencent/mm/cb/a:fromDPToPix	(Landroid/content/Context;I)I
-    //   1295: putfield 513	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:length	I
-    //   1298: aload_0
-    //   1299: getfield 164	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIk	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
-    //   1302: astore_1
-    //   1303: aload_0
-    //   1304: getfield 133	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ivg	I
-    //   1307: istore_2
-    //   1308: aload_0
-    //   1309: getfield 226	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjE	Ljava/lang/String;
-    //   1312: astore 10
-    //   1314: aload_0
-    //   1315: getfield 230	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjF	I
-    //   1318: istore_3
+    //   984: getfield 408	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:gVd	Z
+    //   987: invokevirtual 519	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:vh	(Z)V
+    //   990: aload_1
+    //   991: getfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ewn	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
+    //   994: new 521	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView$2
+    //   997: dup
+    //   998: aload_1
+    //   999: invokespecial 524	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView$2:<init>	(Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;)V
+    //   1002: invokevirtual 528	com/tencent/mm/plugin/sns/ui/OfflineVideoView:setVideoCallback	(Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView$a;)V
+    //   1005: aload_1
+    //   1006: getfield 454	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:Ewn	Lcom/tencent/mm/plugin/sns/ui/OfflineVideoView;
+    //   1009: invokevirtual 531	com/tencent/mm/plugin/sns/ui/OfflineVideoView:cWZ	()V
+    //   1012: aload_1
+    //   1013: iconst_1
+    //   1014: invokevirtual 534	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:setFocus	(Z)V
+    //   1017: aload_0
+    //   1018: getfield 145	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESg	Lcom/tencent/mm/plugin/sns/ui/SightVideoFullScreenView;
+    //   1021: aload_0
+    //   1022: invokevirtual 538	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:setProgressBarStatusListener	(Lcom/tencent/mm/plugin/sns/ui/d/a;)V
+    //   1025: getstatic 544	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/ah$b:Egv	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/v;
+    //   1028: ifnull +21 -> 1049
+    //   1031: aload_0
+    //   1032: getstatic 544	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/ah$b:Egv	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/v;
+    //   1035: getfield 549	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/v:DZc	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;
+    //   1038: putfield 551	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESj	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;
+    //   1041: aload_0
+    //   1042: aload_0
+    //   1043: getfield 551	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESj	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;
+    //   1046: invokespecial 553	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:a	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;)V
+    //   1049: ldc 220
+    //   1051: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1054: return
+    //   1055: astore_1
+    //   1056: ldc 126
+    //   1058: aload_1
+    //   1059: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1062: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1065: goto -720 -> 345
+    //   1068: aload_0
+    //   1069: invokestatic 359	com/tencent/mm/ui/ao:aQ	(Landroid/content/Context;)Z
+    //   1072: ifeq -640 -> 432
+    //   1075: aload_0
+    //   1076: invokevirtual 90	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:getResources	()Landroid/content/res/Resources;
+    //   1079: invokevirtual 96	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
+    //   1082: getfield 101	android/content/res/Configuration:orientation	I
+    //   1085: iconst_2
+    //   1086: if_icmpne -654 -> 432
+    //   1089: aload_0
+    //   1090: aload_0
+    //   1091: getfield 351	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEX	I
+    //   1094: aload_0
+    //   1095: invokestatic 363	com/tencent/mm/ui/ao:aP	(Landroid/content/Context;)I
+    //   1098: isub
+    //   1099: putfield 351	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEX	I
+    //   1102: goto -670 -> 432
+    //   1105: astore_1
+    //   1106: ldc 126
+    //   1108: aload_1
+    //   1109: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1112: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1115: goto -645 -> 470
+    //   1118: aload_1
+    //   1119: iload_2
+    //   1120: putfield 383	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mEY	I
+    //   1123: aload_1
+    //   1124: iload_3
+    //   1125: putfield 382	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mEX	I
+    //   1128: goto -584 -> 544
+    //   1131: astore_1
+    //   1132: ldc_w 506
+    //   1135: aload_1
+    //   1136: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1139: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1142: goto -585 -> 557
+    //   1145: astore_1
+    //   1146: ldc 126
+    //   1148: aload_1
+    //   1149: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1152: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1155: ldc 220
+    //   1157: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1160: return
+    //   1161: astore_1
+    //   1162: ldc_w 506
+    //   1165: aload_1
+    //   1166: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1169: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1172: goto -508 -> 664
+    //   1175: aload_1
+    //   1176: getfield 387	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:mContext	Landroid/content/Context;
+    //   1179: invokevirtual 504	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   1182: invokevirtual 96	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
+    //   1185: getfield 101	android/content/res/Configuration:orientation	I
+    //   1188: iconst_1
+    //   1189: if_icmpne -255 -> 934
+    //   1192: ldc_w 506
+    //   1195: ldc 217
+    //   1197: invokestatic 215	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1200: aload_1
+    //   1201: invokevirtual 554	com/tencent/mm/plugin/sns/ui/SightVideoFullScreenView:fdb	()V
+    //   1204: goto -270 -> 934
+    //   1207: astore 10
+    //   1209: ldc_w 506
+    //   1212: aload 10
+    //   1214: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1217: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1220: goto -286 -> 934
+    //   1223: astore_1
+    //   1224: ldc_w 506
+    //   1227: aload_1
+    //   1228: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1231: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1234: goto -217 -> 1017
+    //   1237: astore 10
+    //   1239: ldc_w 506
+    //   1242: aload 10
+    //   1244: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1247: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1250: goto -260 -> 990
+    //   1253: astore 10
+    //   1255: ldc_w 506
+    //   1258: aload 10
+    //   1260: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1263: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1266: goto -261 -> 1005
+    //   1269: astore_1
+    //   1270: ldc 126
+    //   1272: aload_1
+    //   1273: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1276: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1279: ldc 220
+    //   1281: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1284: return
+    //   1285: aload_0
+    //   1286: getfield 143	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:jqs	I
+    //   1289: iconst_1
+    //   1290: if_icmpne +649 -> 1939
+    //   1293: aload_0
+    //   1294: aload_0
+    //   1295: ldc_w 368
+    //   1298: invokevirtual 372	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:findViewById	(I)Landroid/view/View;
+    //   1301: checkcast 374	android/widget/FrameLayout
+    //   1304: putfield 61	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ExV	Landroid/widget/FrameLayout;
+    //   1307: aload_0
+    //   1308: new 187	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView
+    //   1311: dup
+    //   1312: aload_0
+    //   1313: invokespecial 555	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:<init>	(Landroid/content/Context;)V
+    //   1316: putfield 185	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESh	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
     //   1319: aload_0
-    //   1320: getfield 234	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjG	I
-    //   1323: istore 4
-    //   1325: aload_0
-    //   1326: getfield 242	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zWP	Z
-    //   1329: istore 7
-    //   1331: aload_0
-    //   1332: getfield 246	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:lVw	Z
-    //   1335: istore 8
-    //   1337: aload_0
-    //   1338: getfield 250	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zQQ	Ljava/lang/String;
-    //   1341: astore 11
-    //   1343: aload_0
-    //   1344: getfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjH	Ljava/lang/String;
-    //   1347: astore 12
-    //   1349: aload_0
-    //   1350: getfield 258	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:isWaiting	Z
-    //   1353: istore 9
-    //   1355: aload_0
-    //   1356: getfield 262	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:zYx	I
-    //   1359: istore 5
-    //   1361: aload_0
-    //   1362: getfield 266	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AjI	I
-    //   1365: istore 6
-    //   1367: aload_1
-    //   1368: iconst_1
-    //   1369: putfield 516	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:gHg	Z
-    //   1372: aload_1
-    //   1373: iconst_1
-    //   1374: putfield 517	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:isFirst	Z
-    //   1377: aload_1
-    //   1378: iload_2
-    //   1379: putfield 518	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:ivg	I
-    //   1382: aload_1
-    //   1383: aload 10
-    //   1385: putfield 519	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjE	Ljava/lang/String;
-    //   1388: aload_1
-    //   1389: iload_3
-    //   1390: putfield 520	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjF	I
-    //   1393: aload_1
-    //   1394: iload 4
-    //   1396: putfield 521	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjG	I
-    //   1399: aload_1
-    //   1400: iload 7
-    //   1402: putfield 522	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWP	Z
-    //   1405: aload_1
-    //   1406: iload 8
-    //   1408: putfield 523	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:lVw	Z
-    //   1411: aload_1
-    //   1412: aload 11
-    //   1414: putfield 524	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zQQ	Ljava/lang/String;
-    //   1417: aload_1
-    //   1418: aload 12
-    //   1420: putfield 525	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjH	Ljava/lang/String;
-    //   1423: aload_1
-    //   1424: iload 9
-    //   1426: putfield 526	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:isWaiting	Z
-    //   1429: aload_1
-    //   1430: iload 5
-    //   1432: putfield 527	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zYx	I
-    //   1435: aload_1
-    //   1436: iload 6
-    //   1438: putfield 528	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjI	I
-    //   1441: aload_0
-    //   1442: getfield 164	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIk	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
-    //   1445: astore_1
-    //   1446: aload_1
+    //   1320: getfield 61	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ExV	Landroid/widget/FrameLayout;
+    //   1323: aload_0
+    //   1324: getfield 185	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESh	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
+    //   1327: invokevirtual 381	android/widget/FrameLayout:addView	(Landroid/view/View;)V
+    //   1330: aload_0
+    //   1331: getfield 185	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESh	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
+    //   1334: astore_1
+    //   1335: aload_0
+    //   1336: getfield 351	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEX	I
+    //   1339: istore_2
+    //   1340: aload_0
+    //   1341: getfield 353	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:mEY	I
+    //   1344: istore_3
+    //   1345: iload_3
+    //   1346: iload_2
+    //   1347: if_icmplt +598 -> 1945
+    //   1350: aload_1
+    //   1351: iload_2
+    //   1352: putfield 556	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mEX	I
+    //   1355: aload_1
+    //   1356: iload_3
+    //   1357: putfield 557	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mEY	I
+    //   1360: aload_1
+    //   1361: aload_1
+    //   1362: getfield 558	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
+    //   1365: bipush 32
+    //   1367: invokestatic 393	com/tencent/mm/cb/a:fromDPToPix	(Landroid/content/Context;I)I
+    //   1370: putfield 559	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:length	I
+    //   1373: aload_0
+    //   1374: getfield 185	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESh	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
+    //   1377: astore_1
+    //   1378: aload_0
+    //   1379: getfield 143	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:jqs	I
+    //   1382: istore_2
+    //   1383: aload_0
+    //   1384: getfield 254	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esm	Ljava/lang/String;
+    //   1387: astore 10
+    //   1389: aload_0
+    //   1390: getfield 258	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esn	I
+    //   1393: istore_3
+    //   1394: aload_0
+    //   1395: getfield 262	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Eso	I
+    //   1398: istore 4
+    //   1400: aload_0
+    //   1401: getfield 270	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:EeY	Z
+    //   1404: istore 7
+    //   1406: aload_0
+    //   1407: getfield 274	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:gVd	Z
+    //   1410: istore 8
+    //   1412: aload_0
+    //   1413: getfield 278	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:DYR	Ljava/lang/String;
+    //   1416: astore 11
+    //   1418: aload_0
+    //   1419: getfield 282	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esp	Ljava/lang/String;
+    //   1422: astore 12
+    //   1424: aload_0
+    //   1425: getfield 286	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:isWaiting	Z
+    //   1428: istore 9
+    //   1430: aload_0
+    //   1431: getfield 290	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:EgO	I
+    //   1434: istore 5
+    //   1436: aload_0
+    //   1437: getfield 294	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:Esq	I
+    //   1440: istore 6
+    //   1442: aload_1
+    //   1443: iconst_1
+    //   1444: putfield 562	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:htU	Z
     //   1447: aload_1
-    //   1448: getfield 512	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
-    //   1451: invokestatic 370	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
-    //   1454: ldc_w 529
+    //   1448: iconst_1
+    //   1449: putfield 563	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:isFirst	Z
+    //   1452: aload_1
+    //   1453: iload_2
+    //   1454: putfield 564	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:jqs	I
     //   1457: aload_1
-    //   1458: iconst_1
-    //   1459: invokevirtual 375	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;Z)Landroid/view/View;
-    //   1462: putfield 530	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
-    //   1465: aload_1
-    //   1466: aload_1
-    //   1467: getfield 530	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
-    //   1470: ldc_w 380
-    //   1473: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   1476: checkcast 328	android/widget/FrameLayout
-    //   1479: putfield 531	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjA	Landroid/widget/FrameLayout;
-    //   1482: aload_1
-    //   1483: new 533	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper
-    //   1486: dup
-    //   1487: aload_1
-    //   1488: getfield 512	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
-    //   1491: invokespecial 534	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:<init>	(Landroid/content/Context;)V
-    //   1494: putfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1497: aload_1
-    //   1498: getfield 531	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjA	Landroid/widget/FrameLayout;
-    //   1501: aload_1
-    //   1502: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1505: invokevirtual 335	android/widget/FrameLayout:addView	(Landroid/view/View;)V
-    //   1508: aload_1
-    //   1509: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1512: aload_1
-    //   1513: invokevirtual 542	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setIMMVideoViewCallback	(Lcom/tencent/mm/pluginsdk/ui/i$b;)V
-    //   1516: aload_1
-    //   1517: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1520: iconst_1
-    //   1521: invokevirtual 545	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setFullScreen	(Z)V
-    //   1524: aload_1
-    //   1525: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1528: iconst_0
-    //   1529: aload_1
-    //   1530: getfield 525	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjH	Ljava/lang/String;
-    //   1533: iconst_0
-    //   1534: invokevirtual 549	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:c	(ZLjava/lang/String;I)V
-    //   1537: aload_1
-    //   1538: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1541: iconst_1
-    //   1542: invokevirtual 550	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setClickable	(Z)V
-    //   1545: aload_1
-    //   1546: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1549: aload_1
-    //   1550: invokevirtual 551	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
-    //   1553: aload_1
-    //   1554: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1557: iconst_1
-    //   1558: invokevirtual 554	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setLoop	(Z)V
-    //   1561: aload_1
-    //   1562: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1565: aload_1
-    //   1566: invokevirtual 558	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setLoopCompletionCallback	(Lcom/tencent/mm/pluginsdk/ui/i$d;)V
-    //   1569: aload_1
-    //   1570: aload_1
-    //   1571: getfield 530	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
-    //   1574: ldc_w 387
-    //   1577: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   1580: putfield 559	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjB	Landroid/view/View;
+    //   1458: aload 10
+    //   1460: putfield 565	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esm	Ljava/lang/String;
+    //   1463: aload_1
+    //   1464: iload_3
+    //   1465: putfield 566	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esn	I
+    //   1468: aload_1
+    //   1469: iload 4
+    //   1471: putfield 567	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Eso	I
+    //   1474: aload_1
+    //   1475: iload 7
+    //   1477: putfield 568	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeY	Z
+    //   1480: aload_1
+    //   1481: iload 8
+    //   1483: putfield 569	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:gVd	Z
+    //   1486: aload_1
+    //   1487: aload 11
+    //   1489: putfield 570	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:DYR	Ljava/lang/String;
+    //   1492: aload_1
+    //   1493: aload 12
+    //   1495: putfield 571	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esp	Ljava/lang/String;
+    //   1498: aload_1
+    //   1499: iload 9
+    //   1501: putfield 572	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:isWaiting	Z
+    //   1504: aload_1
+    //   1505: iload 5
+    //   1507: putfield 573	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EgO	I
+    //   1510: aload_1
+    //   1511: iload 6
+    //   1513: putfield 574	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esq	I
+    //   1516: aload_0
+    //   1517: getfield 185	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESh	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
+    //   1520: astore_1
+    //   1521: aload_1
+    //   1522: aload_1
+    //   1523: getfield 558	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
+    //   1526: invokestatic 416	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    //   1529: ldc_w 575
+    //   1532: aload_1
+    //   1533: iconst_1
+    //   1534: invokevirtual 421	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    //   1537: putfield 576	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
+    //   1540: aload_1
+    //   1541: aload_1
+    //   1542: getfield 576	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
+    //   1545: ldc_w 426
+    //   1548: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1551: checkcast 374	android/widget/FrameLayout
+    //   1554: putfield 577	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esi	Landroid/widget/FrameLayout;
+    //   1557: aload_1
+    //   1558: new 579	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper
+    //   1561: dup
+    //   1562: aload_1
+    //   1563: getfield 558	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
+    //   1566: invokespecial 580	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:<init>	(Landroid/content/Context;)V
+    //   1569: putfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1572: aload_1
+    //   1573: getfield 577	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esi	Landroid/widget/FrameLayout;
+    //   1576: aload_1
+    //   1577: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1580: invokevirtual 381	android/widget/FrameLayout:addView	(Landroid/view/View;)V
     //   1583: aload_1
-    //   1584: aload_1
-    //   1585: getfield 530	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
-    //   1588: ldc_w 391
-    //   1591: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   1594: putfield 560	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjC	Landroid/view/View;
-    //   1597: aload_1
-    //   1598: aload_1
-    //   1599: getfield 530	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
-    //   1602: ldc_w 395
-    //   1605: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   1608: checkcast 397	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar
-    //   1611: putfield 561	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   1614: aload_1
-    //   1615: getfield 561	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   1618: iconst_0
-    //   1619: invokevirtual 418	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setVisibility	(I)V
-    //   1622: aload_1
-    //   1623: getfield 561	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   1626: aload_1
-    //   1627: getfield 562	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zXc	Landroid/view/View$OnClickListener;
-    //   1630: invokevirtual 426	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setOnPlayButtonClickListener	(Landroid/view/View$OnClickListener;)V
-    //   1633: aload_1
-    //   1634: getfield 561	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   1637: aload_1
-    //   1638: getfield 563	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:rNx	Lcom/tencent/mm/plugin/sight/decode/ui/b;
-    //   1641: invokevirtual 434	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setIplaySeekCallback	(Lcom/tencent/mm/plugin/sight/decode/ui/b;)V
+    //   1584: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1587: aload_1
+    //   1588: invokevirtual 588	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setIMMVideoViewCallback	(Lcom/tencent/mm/pluginsdk/ui/i$b;)V
+    //   1591: aload_1
+    //   1592: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1595: iconst_1
+    //   1596: invokevirtual 591	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setFullScreen	(Z)V
+    //   1599: aload_1
+    //   1600: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1603: iconst_0
+    //   1604: aload_1
+    //   1605: getfield 571	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esp	Ljava/lang/String;
+    //   1608: iconst_0
+    //   1609: invokevirtual 595	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:c	(ZLjava/lang/String;I)V
+    //   1612: aload_1
+    //   1613: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1616: iconst_1
+    //   1617: invokevirtual 596	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setClickable	(Z)V
+    //   1620: aload_1
+    //   1621: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1624: aload_1
+    //   1625: invokevirtual 597	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
+    //   1628: aload_1
+    //   1629: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1632: iconst_1
+    //   1633: invokevirtual 600	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setLoop	(Z)V
+    //   1636: aload_1
+    //   1637: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1640: aload_1
+    //   1641: invokevirtual 604	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setLoopCompletionCallback	(Lcom/tencent/mm/pluginsdk/ui/i$d;)V
     //   1644: aload_1
     //   1645: aload_1
-    //   1646: ldc_w 435
-    //   1649: invokevirtual 564	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:findViewById	(I)Landroid/view/View;
-    //   1652: checkcast 438	android/widget/ImageView
-    //   1655: putfield 565	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zXO	Landroid/widget/ImageView;
+    //   1646: getfield 576	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
+    //   1649: ldc_w 433
+    //   1652: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1655: putfield 605	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esj	Landroid/view/View;
     //   1658: aload_1
-    //   1659: getfield 565	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zXO	Landroid/widget/ImageView;
-    //   1662: iconst_0
-    //   1663: invokevirtual 443	android/widget/ImageView:setVisibility	(I)V
-    //   1666: aload_1
-    //   1667: getfield 565	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zXO	Landroid/widget/ImageView;
-    //   1670: aload_1
-    //   1671: invokevirtual 446	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   1674: aload_1
-    //   1675: aload_1
-    //   1676: ldc_w 447
-    //   1679: invokevirtual 564	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:findViewById	(I)Landroid/view/View;
-    //   1682: checkcast 438	android/widget/ImageView
-    //   1685: putfield 566	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWH	Landroid/widget/ImageView;
-    //   1688: aload_1
-    //   1689: getfield 566	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWH	Landroid/widget/ImageView;
-    //   1692: iconst_0
-    //   1693: invokevirtual 443	android/widget/ImageView:setVisibility	(I)V
-    //   1696: aload_1
-    //   1697: getfield 566	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWH	Landroid/widget/ImageView;
-    //   1700: aload_1
-    //   1701: invokevirtual 446	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   1704: aload_1
-    //   1705: aload_1
-    //   1706: getfield 530	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
-    //   1709: ldc_w 451
-    //   1712: invokevirtual 383	android/view/View:findViewById	(I)Landroid/view/View;
-    //   1715: putfield 567	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zXP	Landroid/view/View;
-    //   1718: aload_1
-    //   1719: getfield 567	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zXP	Landroid/view/View;
-    //   1722: bipush 8
-    //   1724: invokevirtual 455	android/view/View:setVisibility	(I)V
-    //   1727: aload_1
-    //   1728: getfield 561	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   1731: invokevirtual 571	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:getParent	()Landroid/view/ViewParent;
-    //   1734: astore 10
-    //   1736: aload 10
-    //   1738: instanceof 573
-    //   1741: ifeq +15 -> 1756
-    //   1744: aload 10
-    //   1746: checkcast 573	android/view/ViewGroup
+    //   1659: aload_1
+    //   1660: getfield 576	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
+    //   1663: ldc_w 437
+    //   1666: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1669: putfield 606	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esk	Landroid/view/View;
+    //   1672: aload_1
+    //   1673: aload_1
+    //   1674: getfield 576	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
+    //   1677: ldc_w 441
+    //   1680: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1683: checkcast 443	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar
+    //   1686: putfield 607	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   1689: aload_1
+    //   1690: getfield 607	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   1693: iconst_0
+    //   1694: invokevirtual 464	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setVisibility	(I)V
+    //   1697: aload_1
+    //   1698: getfield 607	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   1701: aload_1
+    //   1702: getfield 608	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Efl	Landroid/view/View$OnClickListener;
+    //   1705: invokevirtual 472	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setOnPlayButtonClickListener	(Landroid/view/View$OnClickListener;)V
+    //   1708: aload_1
+    //   1709: getfield 607	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   1712: aload_1
+    //   1713: getfield 609	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:tni	Lcom/tencent/mm/plugin/sight/decode/ui/b;
+    //   1716: invokevirtual 480	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:setIplaySeekCallback	(Lcom/tencent/mm/plugin/sight/decode/ui/b;)V
+    //   1719: aload_1
+    //   1720: aload_1
+    //   1721: ldc_w 481
+    //   1724: invokevirtual 610	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:findViewById	(I)Landroid/view/View;
+    //   1727: checkcast 484	android/widget/ImageView
+    //   1730: putfield 611	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Egd	Landroid/widget/ImageView;
+    //   1733: aload_1
+    //   1734: getfield 611	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Egd	Landroid/widget/ImageView;
+    //   1737: iconst_0
+    //   1738: invokevirtual 489	android/widget/ImageView:setVisibility	(I)V
+    //   1741: aload_1
+    //   1742: getfield 611	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Egd	Landroid/widget/ImageView;
+    //   1745: aload_1
+    //   1746: invokevirtual 492	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   1749: aload_1
-    //   1750: getfield 561	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   1753: invokevirtual 576	android/view/ViewGroup:removeView	(Landroid/view/View;)V
-    //   1756: aload_1
-    //   1757: getfield 538	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:AjD	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
-    //   1760: aload_1
-    //   1761: getfield 561	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWG	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
-    //   1764: invokevirtual 580	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setVideoFooterView	(Lcom/tencent/mm/pluginsdk/ui/h;)V
-    //   1767: aload_1
-    //   1768: getfield 512	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
-    //   1771: invokevirtual 458	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   1774: invokevirtual 86	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
-    //   1777: getfield 91	android/content/res/Configuration:orientation	I
-    //   1780: iconst_2
-    //   1781: if_icmpne +160 -> 1941
-    //   1784: ldc_w 582
-    //   1787: ldc 185
-    //   1789: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1792: aload_1
-    //   1793: invokevirtual 583	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:eam	()V
-    //   1796: aload_1
-    //   1797: getfield 522	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:zWP	Z
-    //   1800: ifeq +189 -> 1989
-    //   1803: aload_1
-    //   1804: invokevirtual 586	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:dZN	()V
-    //   1807: aload_1
-    //   1808: invokevirtual 589	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:cbC	()V
-    //   1811: aload_1
-    //   1812: iconst_1
-    //   1813: invokevirtual 590	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:setFocus	(Z)V
-    //   1816: aload_0
-    //   1817: getfield 164	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIk	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
-    //   1820: aload_0
-    //   1821: invokevirtual 591	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:setProgressBarStatusListener	(Lcom/tencent/mm/plugin/sns/ui/d/a;)V
-    //   1824: getstatic 597	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/aj$a:zYC	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ak;
-    //   1827: ifnull +21 -> 1848
-    //   1830: aload_0
-    //   1831: getstatic 597	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/aj$a:zYC	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ak;
-    //   1834: getfield 600	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ak:zRa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;
-    //   1837: putfield 505	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIm	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;
-    //   1840: aload_0
-    //   1841: aload_0
-    //   1842: getfield 505	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:AIm	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;
-    //   1845: invokespecial 507	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:a	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;)V
-    //   1848: ldc 192
-    //   1850: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1853: return
-    //   1854: astore_1
-    //   1855: ldc 116
-    //   1857: aload_1
-    //   1858: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1861: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1864: ldc 192
-    //   1866: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1869: return
-    //   1870: aload_1
-    //   1871: iload_2
-    //   1872: putfield 511	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:lya	I
-    //   1875: aload_1
-    //   1876: iload_3
-    //   1877: putfield 510	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:lxZ	I
-    //   1880: goto -595 -> 1285
-    //   1883: astore_1
-    //   1884: ldc_w 582
-    //   1887: aload_1
-    //   1888: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1891: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1894: goto -596 -> 1298
-    //   1897: astore_1
-    //   1898: ldc_w 582
-    //   1901: aload_1
-    //   1902: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1905: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1908: goto -467 -> 1441
-    //   1911: astore 10
-    //   1913: ldc_w 582
-    //   1916: aload 10
-    //   1918: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1921: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1924: goto -355 -> 1569
-    //   1927: astore_1
-    //   1928: ldc_w 582
-    //   1931: aload_1
-    //   1932: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1935: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1938: goto -122 -> 1816
-    //   1941: aload_1
-    //   1942: getfield 512	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
-    //   1945: invokevirtual 458	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   1948: invokevirtual 86	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
-    //   1951: getfield 91	android/content/res/Configuration:orientation	I
-    //   1954: iconst_1
-    //   1955: if_icmpne -159 -> 1796
-    //   1958: ldc_w 582
-    //   1961: ldc 189
-    //   1963: invokestatic 187	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1966: aload_1
-    //   1967: invokevirtual 601	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:ean	()V
-    //   1970: goto -174 -> 1796
-    //   1973: astore 10
-    //   1975: ldc_w 582
-    //   1978: aload 10
-    //   1980: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   1983: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1986: goto -190 -> 1796
-    //   1989: aload_1
-    //   1990: invokevirtual 604	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:dZP	()V
-    //   1993: goto -186 -> 1807
-    //   1996: astore 10
-    //   1998: ldc_w 582
-    //   2001: aload 10
-    //   2003: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   2006: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2009: goto -198 -> 1811
-    //   2012: astore_1
-    //   2013: ldc 116
-    //   2015: aload_1
-    //   2016: invokevirtual 172	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   2019: invokestatic 175	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2022: ldc 192
-    //   2024: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2027: return
+    //   1750: aload_1
+    //   1751: ldc_w 493
+    //   1754: invokevirtual 610	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:findViewById	(I)Landroid/view/View;
+    //   1757: checkcast 484	android/widget/ImageView
+    //   1760: putfield 612	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeQ	Landroid/widget/ImageView;
+    //   1763: aload_1
+    //   1764: getfield 612	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeQ	Landroid/widget/ImageView;
+    //   1767: iconst_0
+    //   1768: invokevirtual 489	android/widget/ImageView:setVisibility	(I)V
+    //   1771: aload_1
+    //   1772: getfield 612	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeQ	Landroid/widget/ImageView;
+    //   1775: aload_1
+    //   1776: invokevirtual 492	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   1779: aload_1
+    //   1780: aload_1
+    //   1781: getfield 576	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:contentView	Landroid/view/View;
+    //   1784: ldc_w 497
+    //   1787: invokevirtual 429	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1790: putfield 613	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Ege	Landroid/view/View;
+    //   1793: aload_1
+    //   1794: getfield 613	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Ege	Landroid/view/View;
+    //   1797: bipush 8
+    //   1799: invokevirtual 501	android/view/View:setVisibility	(I)V
+    //   1802: aload_1
+    //   1803: getfield 607	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   1806: invokevirtual 617	com/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar:getParent	()Landroid/view/ViewParent;
+    //   1809: astore 10
+    //   1811: aload 10
+    //   1813: instanceof 619
+    //   1816: ifeq +15 -> 1831
+    //   1819: aload 10
+    //   1821: checkcast 619	android/view/ViewGroup
+    //   1824: aload_1
+    //   1825: getfield 607	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   1828: invokevirtual 622	android/view/ViewGroup:removeView	(Landroid/view/View;)V
+    //   1831: aload_1
+    //   1832: getfield 584	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:Esl	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper;
+    //   1835: aload_1
+    //   1836: getfield 607	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeP	Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerSeekBar;
+    //   1839: invokevirtual 626	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/AdLandingVideoWrapper:setVideoFooterView	(Lcom/tencent/mm/pluginsdk/ui/h;)V
+    //   1842: aload_1
+    //   1843: getfield 558	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
+    //   1846: invokevirtual 504	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   1849: invokevirtual 96	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
+    //   1852: getfield 101	android/content/res/Configuration:orientation	I
+    //   1855: iconst_2
+    //   1856: if_icmpne +160 -> 2016
+    //   1859: ldc_w 628
+    //   1862: ldc 213
+    //   1864: invokestatic 215	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1867: aload_1
+    //   1868: invokevirtual 629	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:fda	()V
+    //   1871: aload_1
+    //   1872: getfield 568	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:EeY	Z
+    //   1875: ifeq +189 -> 2064
+    //   1878: aload_1
+    //   1879: invokevirtual 632	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:fcJ	()V
+    //   1882: aload_1
+    //   1883: invokevirtual 635	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:czw	()V
+    //   1886: aload_1
+    //   1887: iconst_1
+    //   1888: invokevirtual 636	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:setFocus	(Z)V
+    //   1891: aload_0
+    //   1892: getfield 185	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESh	Lcom/tencent/mm/plugin/sns/ui/LongVideoFullScreenView;
+    //   1895: aload_0
+    //   1896: invokevirtual 637	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:setProgressBarStatusListener	(Lcom/tencent/mm/plugin/sns/ui/d/a;)V
+    //   1899: getstatic 643	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/al$a:EgT	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/am;
+    //   1902: ifnull +21 -> 1923
+    //   1905: aload_0
+    //   1906: getstatic 643	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/al$a:EgT	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/am;
+    //   1909: getfield 646	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/am:DZc	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;
+    //   1912: putfield 551	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESj	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;
+    //   1915: aload_0
+    //   1916: aload_0
+    //   1917: getfield 551	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:ESj	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;
+    //   1920: invokespecial 553	com/tencent/mm/plugin/sns/ui/VideoFullScreenActivity:a	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aj;)V
+    //   1923: ldc 220
+    //   1925: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1928: return
+    //   1929: astore_1
+    //   1930: ldc 126
+    //   1932: aload_1
+    //   1933: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1936: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1939: ldc 220
+    //   1941: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1944: return
+    //   1945: aload_1
+    //   1946: iload_2
+    //   1947: putfield 557	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mEY	I
+    //   1950: aload_1
+    //   1951: iload_3
+    //   1952: putfield 556	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mEX	I
+    //   1955: goto -595 -> 1360
+    //   1958: astore_1
+    //   1959: ldc_w 628
+    //   1962: aload_1
+    //   1963: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1966: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1969: goto -596 -> 1373
+    //   1972: astore_1
+    //   1973: ldc_w 628
+    //   1976: aload_1
+    //   1977: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1980: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1983: goto -467 -> 1516
+    //   1986: astore 10
+    //   1988: ldc_w 628
+    //   1991: aload 10
+    //   1993: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1996: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1999: goto -355 -> 1644
+    //   2002: astore_1
+    //   2003: ldc_w 628
+    //   2006: aload_1
+    //   2007: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   2010: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2013: goto -122 -> 1891
+    //   2016: aload_1
+    //   2017: getfield 558	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:mContext	Landroid/content/Context;
+    //   2020: invokevirtual 504	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   2023: invokevirtual 96	android/content/res/Resources:getConfiguration	()Landroid/content/res/Configuration;
+    //   2026: getfield 101	android/content/res/Configuration:orientation	I
+    //   2029: iconst_1
+    //   2030: if_icmpne -159 -> 1871
+    //   2033: ldc_w 628
+    //   2036: ldc 217
+    //   2038: invokestatic 215	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2041: aload_1
+    //   2042: invokevirtual 647	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:fdb	()V
+    //   2045: goto -174 -> 1871
+    //   2048: astore 10
+    //   2050: ldc_w 628
+    //   2053: aload 10
+    //   2055: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   2058: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2061: goto -190 -> 1871
+    //   2064: aload_1
+    //   2065: invokevirtual 650	com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView:fcK	()V
+    //   2068: goto -186 -> 1882
+    //   2071: astore 10
+    //   2073: ldc_w 628
+    //   2076: aload 10
+    //   2078: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   2081: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2084: goto -198 -> 1886
+    //   2087: astore_1
+    //   2088: ldc 126
+    //   2090: aload_1
+    //   2091: invokevirtual 193	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   2094: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2097: ldc 220
+    //   2099: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2102: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2028	0	this	VideoFullScreenActivity
-    //   0	2028	1	paramBundle	android.os.Bundle
-    //   448	1424	2	i	int
-    //   453	1424	3	j	int
-    //   507	888	4	k	int
-    //   1359	72	5	m	int
-    //   1365	72	6	n	int
-    //   513	888	7	bool1	boolean
-    //   519	888	8	bool2	boolean
-    //   1353	72	9	bool3	boolean
-    //   496	54	10	str1	String
-    //   1132	6	10	localThrowable1	Throwable
-    //   1162	6	10	localThrowable2	Throwable
-    //   1178	6	10	localThrowable3	Throwable
-    //   1312	433	10	localObject	java.lang.Object
-    //   1911	6	10	localThrowable4	Throwable
-    //   1973	6	10	localThrowable5	Throwable
-    //   1996	6	10	localThrowable6	Throwable
-    //   525	888	11	str2	String
-    //   531	888	12	str3	String
+    //   0	2103	0	this	VideoFullScreenActivity
+    //   0	2103	1	paramBundle	android.os.Bundle
+    //   523	1424	2	i	int
+    //   528	1424	3	j	int
+    //   582	888	4	k	int
+    //   1434	72	5	m	int
+    //   1440	72	6	n	int
+    //   588	888	7	bool1	boolean
+    //   594	888	8	bool2	boolean
+    //   1428	72	9	bool3	boolean
+    //   571	54	10	str1	String
+    //   1207	6	10	localThrowable1	Throwable
+    //   1237	6	10	localThrowable2	Throwable
+    //   1253	6	10	localThrowable3	Throwable
+    //   1387	433	10	localObject	Object
+    //   1986	6	10	localThrowable4	Throwable
+    //   2048	6	10	localThrowable5	Throwable
+    //   2071	6	10	localThrowable6	Throwable
+    //   600	888	11	str2	String
+    //   606	888	12	str3	String
     // Exception table:
     //   from	to	target	type
-    //   21	304	980	java/lang/Throwable
-    //   304	357	1030	java/lang/Throwable
-    //   357	395	1030	java/lang/Throwable
-    //   993	1027	1030	java/lang/Throwable
-    //   459	469	1056	java/lang/Throwable
-    //   469	482	1056	java/lang/Throwable
-    //   1043	1053	1056	java/lang/Throwable
-    //   402	454	1070	java/lang/Throwable
-    //   482	533	1070	java/lang/Throwable
-    //   589	594	1070	java/lang/Throwable
-    //   942	950	1070	java/lang/Throwable
-    //   974	979	1070	java/lang/Throwable
-    //   1057	1067	1070	java/lang/Throwable
-    //   1087	1097	1070	java/lang/Throwable
-    //   1149	1159	1070	java/lang/Throwable
-    //   1195	1204	1070	java/lang/Throwable
-    //   533	589	1086	java/lang/Throwable
-    //   594	859	1132	java/lang/Throwable
-    //   1100	1129	1132	java/lang/Throwable
-    //   930	942	1148	java/lang/Throwable
-    //   1134	1145	1148	java/lang/Throwable
-    //   1164	1175	1148	java/lang/Throwable
-    //   1180	1191	1148	java/lang/Throwable
-    //   859	892	1162	java/lang/Throwable
-    //   892	915	1162	java/lang/Throwable
-    //   915	930	1178	java/lang/Throwable
-    //   950	974	1194	java/lang/Throwable
-    //   1218	1270	1854	java/lang/Throwable
-    //   1298	1367	1854	java/lang/Throwable
-    //   1441	1446	1854	java/lang/Throwable
-    //   1816	1824	1854	java/lang/Throwable
-    //   1848	1853	1854	java/lang/Throwable
-    //   1884	1894	1854	java/lang/Throwable
-    //   1898	1908	1854	java/lang/Throwable
-    //   1928	1938	1854	java/lang/Throwable
-    //   2013	2022	1854	java/lang/Throwable
-    //   1275	1285	1883	java/lang/Throwable
-    //   1285	1298	1883	java/lang/Throwable
-    //   1870	1880	1883	java/lang/Throwable
-    //   1367	1441	1897	java/lang/Throwable
-    //   1446	1569	1911	java/lang/Throwable
-    //   1811	1816	1927	java/lang/Throwable
-    //   1913	1924	1927	java/lang/Throwable
-    //   1975	1986	1927	java/lang/Throwable
-    //   1998	2009	1927	java/lang/Throwable
-    //   1569	1756	1973	java/lang/Throwable
-    //   1756	1796	1973	java/lang/Throwable
-    //   1941	1970	1973	java/lang/Throwable
-    //   1796	1807	1996	java/lang/Throwable
-    //   1807	1811	1996	java/lang/Throwable
-    //   1989	1993	1996	java/lang/Throwable
-    //   1824	1848	2012	java/lang/Throwable
+    //   28	345	1055	java/lang/Throwable
+    //   379	432	1105	java/lang/Throwable
+    //   432	470	1105	java/lang/Throwable
+    //   1068	1102	1105	java/lang/Throwable
+    //   534	544	1131	java/lang/Throwable
+    //   544	557	1131	java/lang/Throwable
+    //   1118	1128	1131	java/lang/Throwable
+    //   477	529	1145	java/lang/Throwable
+    //   557	608	1145	java/lang/Throwable
+    //   664	669	1145	java/lang/Throwable
+    //   1017	1025	1145	java/lang/Throwable
+    //   1049	1054	1145	java/lang/Throwable
+    //   1132	1142	1145	java/lang/Throwable
+    //   1162	1172	1145	java/lang/Throwable
+    //   1224	1234	1145	java/lang/Throwable
+    //   1270	1279	1145	java/lang/Throwable
+    //   608	664	1161	java/lang/Throwable
+    //   669	934	1207	java/lang/Throwable
+    //   1175	1204	1207	java/lang/Throwable
+    //   1005	1017	1223	java/lang/Throwable
+    //   1209	1220	1223	java/lang/Throwable
+    //   1239	1250	1223	java/lang/Throwable
+    //   1255	1266	1223	java/lang/Throwable
+    //   934	967	1237	java/lang/Throwable
+    //   967	990	1237	java/lang/Throwable
+    //   990	1005	1253	java/lang/Throwable
+    //   1025	1049	1269	java/lang/Throwable
+    //   1293	1345	1929	java/lang/Throwable
+    //   1373	1442	1929	java/lang/Throwable
+    //   1516	1521	1929	java/lang/Throwable
+    //   1891	1899	1929	java/lang/Throwable
+    //   1923	1928	1929	java/lang/Throwable
+    //   1959	1969	1929	java/lang/Throwable
+    //   1973	1983	1929	java/lang/Throwable
+    //   2003	2013	1929	java/lang/Throwable
+    //   2088	2097	1929	java/lang/Throwable
+    //   1350	1360	1958	java/lang/Throwable
+    //   1360	1373	1958	java/lang/Throwable
+    //   1945	1955	1958	java/lang/Throwable
+    //   1442	1516	1972	java/lang/Throwable
+    //   1521	1644	1986	java/lang/Throwable
+    //   1886	1891	2002	java/lang/Throwable
+    //   1988	1999	2002	java/lang/Throwable
+    //   2050	2061	2002	java/lang/Throwable
+    //   2073	2084	2002	java/lang/Throwable
+    //   1644	1831	2048	java/lang/Throwable
+    //   1831	1871	2048	java/lang/Throwable
+    //   2016	2045	2048	java/lang/Throwable
+    //   1871	1882	2071	java/lang/Throwable
+    //   1882	1886	2071	java/lang/Throwable
+    //   2064	2068	2071	java/lang/Throwable
+    //   1899	1923	2087	java/lang/Throwable
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(220066);
+    AppMethodBeat.i(203855);
     for (;;)
     {
       try
       {
-        ad.zAi = null;
-        if (this.ivg != 0) {
+        ae.DJT = null;
+        if (this.jqs != 0) {
           continue;
         }
-        localSightVideoFullScreenView = this.AIj;
+        localSightVideoFullScreenView = this.ESg;
       }
       catch (Throwable localThrowable2)
       {
         SightVideoFullScreenView localSightVideoFullScreenView;
-        ae.e("NonFullOrFullVideoType", localThrowable2.toString());
+        Log.e("VideoFullScreenActivity", localThrowable2.toString());
         continue;
-        if (this.ivg != 1) {
+        if (this.jqs != 1) {
           continue;
         }
-        localLongVideoFullScreenView = this.AIk;
+        localLongVideoFullScreenView = this.ESh;
       }
       try
       {
-        ar.ay(localSightVideoFullScreenView.zWL);
-        ar.ay(localSightVideoFullScreenView.zXR);
-        localSightVideoFullScreenView.AnC.onDestroy();
-        com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.af.b.zYe = null;
+        MMHandlerThread.removeRunnable(localSightVideoFullScreenView.EeU);
+        MMHandlerThread.removeRunnable(localSightVideoFullScreenView.Egg);
+        localSightVideoFullScreenView.Ewn.onDestroy();
+        com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ah.b.Egv = null;
         super.onDestroy();
-        AppMethodBeat.o(220066);
+        AppMethodBeat.o(203855);
         return;
       }
       catch (Throwable localThrowable1)
       {
-        ae.e("SightVideoFullScreenView", localThrowable1.toString());
+        Log.e("SightVideoFullScreenView", localThrowable1.toString());
         continue;
       }
       try
       {
         LongVideoFullScreenView localLongVideoFullScreenView;
-        ar.ay(localLongVideoFullScreenView.zWL);
-        ar.ay(localLongVideoFullScreenView.zXR);
-        localLongVideoFullScreenView.AjD.onUIDestroy();
-        com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.aj.a.zYC = null;
+        MMHandlerThread.removeRunnable(localLongVideoFullScreenView.EeU);
+        MMHandlerThread.removeRunnable(localLongVideoFullScreenView.Egg);
+        localLongVideoFullScreenView.Esl.onUIDestroy();
+        com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.al.a.EgT = null;
       }
       catch (Throwable localThrowable3)
       {
         for (;;)
         {
-          ae.e("LongVideoFullScreenView", localThrowable3.toString());
+          Log.e("LongVideoFullScreenView", localThrowable3.toString());
         }
       }
     }
@@ -1246,194 +1293,196 @@ public class VideoFullScreenActivity
   
   public void onPause()
   {
-    AppMethodBeat.i(220064);
+    AppMethodBeat.i(203853);
     super.onPause();
     try
     {
-      if (this.ivg == 0)
+      this.dUy += System.currentTimeMillis() - this.startTime;
+      if (this.jqs == 0)
       {
-        SightVideoFullScreenView localSightVideoFullScreenView = this.AIj;
+        SightVideoFullScreenView localSightVideoFullScreenView = this.ESg;
         try
         {
-          localSightVideoFullScreenView.zPy = false;
-          ar.ay(localSightVideoFullScreenView.zWL);
-          ar.ay(localSightVideoFullScreenView.zXR);
-          AppMethodBeat.o(220064);
+          localSightVideoFullScreenView.DXw = false;
+          MMHandlerThread.removeRunnable(localSightVideoFullScreenView.EeU);
+          MMHandlerThread.removeRunnable(localSightVideoFullScreenView.Egg);
+          AppMethodBeat.o(203853);
           return;
         }
         catch (Throwable localThrowable1)
         {
-          ae.e("SightVideoFullScreenView", localThrowable1.toString());
-          AppMethodBeat.o(220064);
+          Log.e("SightVideoFullScreenView", localThrowable1.toString());
+          AppMethodBeat.o(203853);
           return;
         }
       }
-      if (this.ivg != 1) {
-        break label133;
+      if (this.jqs != 1) {
+        break label150;
       }
     }
     catch (Throwable localThrowable2)
     {
-      ae.e("NonFullOrFullVideoType", localThrowable2.toString());
-      AppMethodBeat.o(220064);
+      Log.e("VideoFullScreenActivity", localThrowable2.toString());
+      AppMethodBeat.o(203853);
       return;
     }
-    LongVideoFullScreenView localLongVideoFullScreenView = this.AIk;
+    LongVideoFullScreenView localLongVideoFullScreenView = this.ESh;
     try
     {
-      localLongVideoFullScreenView.zPy = false;
-      ar.ay(localLongVideoFullScreenView.zWL);
-      ar.ay(localLongVideoFullScreenView.zXR);
-      AppMethodBeat.o(220064);
+      localLongVideoFullScreenView.DXw = false;
+      MMHandlerThread.removeRunnable(localLongVideoFullScreenView.EeU);
+      MMHandlerThread.removeRunnable(localLongVideoFullScreenView.Egg);
+      AppMethodBeat.o(203853);
       return;
     }
     catch (Throwable localThrowable3)
     {
-      ae.e("LongVideoFullScreenView", localThrowable3.toString());
+      Log.e("LongVideoFullScreenView", localThrowable3.toString());
     }
-    label133:
-    AppMethodBeat.o(220064);
+    label150:
+    AppMethodBeat.o(203853);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(220063);
+    AppMethodBeat.i(203852);
     super.onResume();
     try
     {
-      an.aH(this);
-      if (this.ivg == 0)
+      this.startTime = System.currentTimeMillis();
+      ap.aL(this);
+      if (this.jqs == 0)
       {
-        this.AIj.zPy = true;
-        AppMethodBeat.o(220063);
+        this.ESg.DXw = true;
+        AppMethodBeat.o(203852);
         return;
       }
-      if (this.ivg == 1) {
-        this.AIk.zPy = true;
+      if (this.jqs == 1) {
+        this.ESh.DXw = true;
       }
-      AppMethodBeat.o(220063);
+      AppMethodBeat.o(203852);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ae.e("NonFullOrFullVideoType", localThrowable.toString());
-      AppMethodBeat.o(220063);
+      Log.e("VideoFullScreenActivity", localThrowable.toString());
+      AppMethodBeat.o(203852);
     }
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(220062);
+    AppMethodBeat.i(203851);
     super.onStart();
     try
     {
-      an.aH(this);
-      if (this.ivg == 0)
+      ap.aL(this);
+      if (this.jqs == 0)
       {
-        SightVideoFullScreenView localSightVideoFullScreenView = this.AIj;
+        SightVideoFullScreenView localSightVideoFullScreenView = this.ESg;
         try
         {
-          if ((!localSightVideoFullScreenView.isFirst) && (!localSightVideoFullScreenView.AnC.isPlaying()) && (localSightVideoFullScreenView.AjL))
+          if ((!localSightVideoFullScreenView.isFirst) && (!localSightVideoFullScreenView.Ewn.isPlaying()) && (localSightVideoFullScreenView.Est))
           {
-            localSightVideoFullScreenView.eeu();
-            localSightVideoFullScreenView.AjL = false;
+            localSightVideoFullScreenView.fgL();
+            localSightVideoFullScreenView.Est = false;
           }
           localSightVideoFullScreenView.isFirst = false;
-          AppMethodBeat.o(220062);
+          AppMethodBeat.o(203851);
           return;
         }
         catch (Throwable localThrowable1)
         {
-          ae.e("SightVideoFullScreenView", localThrowable1.toString());
-          AppMethodBeat.o(220062);
+          Log.e("SightVideoFullScreenView", localThrowable1.toString());
+          AppMethodBeat.o(203851);
           return;
         }
       }
-      if (this.ivg != 1) {
+      if (this.jqs != 1) {
         break label175;
       }
     }
     catch (Throwable localThrowable2)
     {
-      ae.e("NonFullOrFullVideoType", localThrowable2.toString());
-      AppMethodBeat.o(220062);
+      Log.e("VideoFullScreenActivity", localThrowable2.toString());
+      AppMethodBeat.o(203851);
       return;
     }
-    LongVideoFullScreenView localLongVideoFullScreenView = this.AIk;
+    LongVideoFullScreenView localLongVideoFullScreenView = this.ESh;
     try
     {
-      if ((!localLongVideoFullScreenView.isFirst) && (!localLongVideoFullScreenView.AjD.isPlaying()) && (localLongVideoFullScreenView.AjL))
+      if ((!localLongVideoFullScreenView.isFirst) && (!localLongVideoFullScreenView.Esl.isPlaying()) && (localLongVideoFullScreenView.Est))
       {
-        localLongVideoFullScreenView.cbC();
-        localLongVideoFullScreenView.AjL = false;
+        localLongVideoFullScreenView.czw();
+        localLongVideoFullScreenView.Est = false;
       }
       localLongVideoFullScreenView.isFirst = false;
-      AppMethodBeat.o(220062);
+      AppMethodBeat.o(203851);
       return;
     }
     catch (Throwable localThrowable3)
     {
-      ae.e("LongVideoFullScreenView", localThrowable3.toString());
+      Log.e("LongVideoFullScreenView", localThrowable3.toString());
     }
     label175:
-    AppMethodBeat.o(220062);
+    AppMethodBeat.o(203851);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(220065);
+    AppMethodBeat.i(203854);
     super.onStop();
     try
     {
-      if (this.ivg == 0)
+      if (this.jqs == 0)
       {
-        SightVideoFullScreenView localSightVideoFullScreenView = this.AIj;
+        SightVideoFullScreenView localSightVideoFullScreenView = this.ESg;
         try
         {
           localSightVideoFullScreenView.isFirst = false;
-          if (localSightVideoFullScreenView.AnC.isPlaying())
+          if (localSightVideoFullScreenView.Ewn.isPlaying())
           {
-            localSightVideoFullScreenView.eev();
-            localSightVideoFullScreenView.AjL = true;
+            localSightVideoFullScreenView.fgM();
+            localSightVideoFullScreenView.Est = true;
           }
-          AppMethodBeat.o(220065);
+          AppMethodBeat.o(203854);
           return;
         }
         catch (Throwable localThrowable1)
         {
-          ae.e("SightVideoFullScreenView", localThrowable1.toString());
-          AppMethodBeat.o(220065);
+          Log.e("SightVideoFullScreenView", localThrowable1.toString());
+          AppMethodBeat.o(203854);
           return;
         }
       }
-      if (this.ivg != 1) {
+      if (this.jqs != 1) {
         break label143;
       }
     }
     catch (Throwable localThrowable2)
     {
-      ae.e("NonFullOrFullVideoType", localThrowable2.toString());
-      AppMethodBeat.o(220065);
+      Log.e("VideoFullScreenActivity", localThrowable2.toString());
+      AppMethodBeat.o(203854);
       return;
     }
-    LongVideoFullScreenView localLongVideoFullScreenView = this.AIk;
+    LongVideoFullScreenView localLongVideoFullScreenView = this.ESh;
     try
     {
       localLongVideoFullScreenView.isFirst = false;
-      if (localLongVideoFullScreenView.AjD.isPlaying())
+      if (localLongVideoFullScreenView.Esl.isPlaying())
       {
-        localLongVideoFullScreenView.cyX();
-        localLongVideoFullScreenView.AjL = true;
+        localLongVideoFullScreenView.cXa();
+        localLongVideoFullScreenView.Est = true;
       }
-      AppMethodBeat.o(220065);
+      AppMethodBeat.o(203854);
       return;
     }
     catch (Throwable localThrowable3)
     {
-      ae.e("LongVideoFullScreenView", localThrowable3.toString());
+      Log.e("LongVideoFullScreenView", localThrowable3.toString());
     }
     label143:
-    AppMethodBeat.o(220065);
+    AppMethodBeat.o(203854);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -1444,27 +1493,27 @@ public class VideoFullScreenActivity
   
   public void setMMOrientation() {}
   
-  public final void sf(boolean paramBoolean)
+  public final void vB(boolean paramBoolean)
   {
-    AppMethodBeat.i(220068);
-    ae.i("NonFullOrFullVideoType", "progressBarStatus visiblity = ".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.i(203857);
+    Log.i("VideoFullScreenActivity", "progressBarStatus visiblity = ".concat(String.valueOf(paramBoolean)));
     if (paramBoolean)
     {
-      se(true);
-      AppMethodBeat.o(220068);
+      vA(true);
+      AppMethodBeat.o(203857);
       return;
     }
-    if (this.AIl != null)
+    if (this.ESi != null)
     {
-      ae.d("NonFullOrFullVideoType", "showFloatBarView");
-      this.AIl.eak();
+      Log.d("VideoFullScreenActivity", "showFloatBarView");
+      this.ESi.fcY();
     }
-    AppMethodBeat.o(220068);
+    AppMethodBeat.o(203857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.VideoFullScreenActivity
  * JD-Core Version:    0.7.0.1
  */

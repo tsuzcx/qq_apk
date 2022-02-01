@@ -13,64 +13,66 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.model.x;
+import com.tencent.mm.bj.d;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.a.a;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bv.d;
-import com.tencent.mm.storage.cg;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bn;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca.d;
+import com.tencent.mm.storage.cn;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.ui.base.MaskLayout;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.r;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.s;
 import java.util.LinkedList;
 
 public final class b
-  extends r<bg>
+  extends s<bl>
 {
-  private View.OnClickListener BzM;
-  private View.OnClickListener BzN;
+  private View.OnClickListener FKx;
+  private View.OnClickListener FKy;
   private Context context;
   
   public b(Context paramContext)
   {
-    super(paramContext, new bg());
+    super(paramContext, new bl());
     AppMethodBeat.i(29030);
-    this.BzM = new View.OnClickListener()
+    this.FKx = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(29026);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
         if ((paramAnonymousView.getTag() instanceof com.tencent.mm.pluginsdk.ui.preference.b))
         {
-          ae.d("MicroMsg.FMessageConversationUI", "addOnClick onClick");
+          Log.d("MicroMsg.FMessageConversationUI", "addOnClick onClick");
           paramAnonymousView = (com.tencent.mm.pluginsdk.ui.preference.b)paramAnonymousView.getTag();
-          if ((paramAnonymousView == null) || (bu.isNullOrNil(paramAnonymousView.username)))
+          if ((paramAnonymousView == null) || (Util.isNullOrNil(paramAnonymousView.username)))
           {
-            ae.e("MicroMsg.FMessageConversationUI", "cpan add contact failed. username is null.");
+            Log.e("MicroMsg.FMessageConversationUI", "cpan add contact failed. username is null.");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(29026);
             return;
           }
-          localObject = com.tencent.mm.pluginsdk.ui.preference.b.a(com.tencent.mm.bj.d.aML().aVx(paramAnonymousView.username));
+          localObject = com.tencent.mm.pluginsdk.ui.preference.b.a(d.bgM().bkv(paramAnonymousView.username));
           com.tencent.mm.pluginsdk.ui.applet.a locala = new com.tencent.mm.pluginsdk.ui.applet.a(b.a(b.this), new a.a()
           {
             public final void a(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2, String paramAnonymous2String1, String paramAnonymous2String2)
@@ -78,32 +80,32 @@ public final class b
               AppMethodBeat.i(29025);
               if (paramAnonymous2Boolean1)
               {
-                if (bu.isNullOrNil(paramAnonymous2String1))
+                if (Util.isNullOrNil(paramAnonymous2String1))
                 {
-                  ae.w("MicroMsg.FMessageConversationUI", "addContact respUsername is empty");
-                  com.tencent.mm.plugin.report.service.g.yxI.dD(931, 21);
+                  Log.w("MicroMsg.FMessageConversationUI", "addContact respUsername is empty");
+                  com.tencent.mm.plugin.report.service.h.CyF.dN(931, 21);
                 }
-                bc.aCg();
-                an localan = com.tencent.mm.model.c.azF().BH(paramAnonymousView.username);
-                paramAnonymous2String2 = localan;
-                if ((int)localan.ght == 0)
+                bg.aVF();
+                as localas = com.tencent.mm.model.c.aSN().Kn(paramAnonymousView.username);
+                paramAnonymous2String2 = localas;
+                if ((int)localas.gMZ == 0)
                 {
-                  localan = this.BzQ;
-                  if (!bu.isNullOrNil(paramAnonymous2String1)) {
-                    localan.setUsername(paramAnonymous2String1);
+                  localas = this.FKB;
+                  if (!Util.isNullOrNil(paramAnonymous2String1)) {
+                    localas.setUsername(paramAnonymous2String1);
                   }
-                  bc.aCg();
-                  paramAnonymous2String2 = localan;
-                  if (!com.tencent.mm.model.c.azF().an(localan))
+                  bg.aVF();
+                  paramAnonymous2String2 = localas;
+                  if (!com.tencent.mm.model.c.aSN().ap(localas))
                   {
-                    ae.e("MicroMsg.FMessageConversationUI", "canAddContact fail, insert fail");
+                    Log.e("MicroMsg.FMessageConversationUI", "canAddContact fail, insert fail");
                     AppMethodBeat.o(29025);
                     return;
                   }
                 }
-                x.B(paramAnonymous2String2);
-                com.tencent.mm.bj.d.aMM().gw(paramAnonymousView.username, 1);
-                h.cm(b.a(b.this), b.a(b.this).getString(2131755275));
+                ab.B(paramAnonymous2String2);
+                d.bgN().gP(paramAnonymousView.username, 1);
+                com.tencent.mm.ui.base.h.cD(b.a(b.this), b.a(b.this).getString(2131755310));
                 b.a(b.this, paramAnonymousView.username);
               }
               for (;;)
@@ -114,53 +116,52 @@ public final class b
                 if (!paramAnonymous2Boolean2) {
                   break;
                 }
-                com.tencent.mm.bj.d.aMM().gw(paramAnonymousView.username, 2);
+                d.bgN().gP(paramAnonymousView.username, 2);
               }
-              ae.e("MicroMsg.FMessageConversationUI", "canAddContact fail, username = " + paramAnonymousView.username);
+              Log.e("MicroMsg.FMessageConversationUI", "canAddContact fail, username = " + paramAnonymousView.username);
               AppMethodBeat.o(29025);
             }
           });
-          ae.d("MicroMsg.FMessageConversationUI", "try to addcontact, username = " + paramAnonymousView.username + ", opcode = MM_VERIFYUSER_ADDCONTACT");
+          Log.d("MicroMsg.FMessageConversationUI", "try to addcontact, username = " + paramAnonymousView.username + ", opcode = MM_VERIFYUSER_ADDCONTACT");
           LinkedList localLinkedList = new LinkedList();
-          localLinkedList.add(Integer.valueOf(paramAnonymousView.zfk));
-          locala.aOa(((aw)localObject).eRv);
+          localLinkedList.add(Integer.valueOf(paramAnonymousView.Dkc));
+          locala.beC(((ax)localObject).fuY);
           locala.b(paramAnonymousView.username, localLinkedList, true);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(29026);
       }
     };
-    this.BzN = new View.OnClickListener()
+    this.FKy = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(29028);
-        Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
-        int i;
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
         if ((paramAnonymousView.getTag() instanceof com.tencent.mm.pluginsdk.ui.preference.b))
         {
-          ae.d("MicroMsg.FMessageConversationUI", "verifyOkOnClick onClick");
-          paramAnonymousView = (com.tencent.mm.pluginsdk.ui.preference.b)paramAnonymousView.getTag();
-          localObject1 = com.tencent.mm.bj.d.aML().aVx(paramAnonymousView.username);
-          if ((localObject1 == null) || (((bi)localObject1).field_msgContent == null))
+          Log.d("MicroMsg.FMessageConversationUI", "verifyOkOnClick onClick");
+          com.tencent.mm.pluginsdk.ui.preference.b localb = (com.tencent.mm.pluginsdk.ui.preference.b)paramAnonymousView.getTag();
+          localObject = d.bgM().bkv(localb.username);
+          if ((localObject == null) || (((bn)localObject).field_msgContent == null))
           {
-            ae.e("MicroMsg.FMessageConversationUI", "lastRecvFmsg is null, verify fail, talker = " + paramAnonymousView.username);
+            Log.e("MicroMsg.FMessageConversationUI", "lastRecvFmsg is null, verify fail, talker = " + localb.username);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(29028);
             return;
           }
-          bv.d locald = bv.d.aVF(((bi)localObject1).field_msgContent);
-          ae.d("MicroMsg.FMessageConversationUI", "try to addcontact, username = " + paramAnonymousView.username + ", opcode = MM_VERIFYUSER_VERIFYOK");
-          if (locald.Jhj == 1)
+          paramAnonymousView = ca.d.bkD(((bn)localObject).field_msgContent);
+          Log.d("MicroMsg.FMessageConversationUI", "try to addcontact, username = " + localb.username + ", opcode = MM_VERIFYUSER_VERIFYOK");
+          if (paramAnonymousView.Ora == 1)
           {
-            h.a(b.a(b.this), locald.Jhk, null, b.a(b.this).getString(2131759472), b.a(b.this).getString(2131755691), true, new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.a(b.a(b.this), paramAnonymousView.Orb, null, b.a(b.this).getString(2131760787), b.a(b.this).getString(2131755761), true, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(29027);
-                a.b(b.a(b.this), this.BzS);
+                a.b(b.a(b.this), this.FKD);
                 AppMethodBeat.o(29027);
               }
             }, null);
@@ -168,72 +169,81 @@ public final class b
             AppMethodBeat.o(29028);
             return;
           }
-          bc.aCg();
-          Object localObject2 = com.tencent.mm.model.c.azG().arE(paramAnonymousView.username);
-          localObject1 = new Intent();
-          ((Intent)localObject1).putExtra("Contact_User", paramAnonymousView.username);
-          ((Intent)localObject1).putExtra("Contact_Nick", paramAnonymousView.nickname);
-          if (localObject2 != null) {
-            ((Intent)localObject1).putExtra("Contact_RemarkName", ((cg)localObject2).field_conRemark);
+          bg.aVF();
+          localObject = com.tencent.mm.model.c.aSO().aEZ(localb.username);
+          Intent localIntent = new Intent();
+          localIntent.putExtra("Contact_User", localb.username);
+          localIntent.putExtra("Contact_Nick", localb.nickname);
+          if (localObject != null) {
+            localIntent.putExtra("Contact_RemarkName", ((cn)localObject).field_conRemark);
           }
-          if (!bu.isNullOrNil(locald.chatroomName))
+          if (!Util.isNullOrNil(paramAnonymousView.chatroomName))
           {
-            bc.aCg();
-            localObject2 = com.tencent.mm.model.c.azP().Bx(locald.chatroomName);
-            if (localObject2 != null)
+            bg.aVF();
+            localObject = com.tencent.mm.model.c.aSX().Kd(paramAnonymousView.chatroomName);
+            if (localObject != null)
             {
-              ((Intent)localObject1).putExtra("Contact_RoomNickname", ((ac)localObject2).zP(locald.cUA));
-              ((Intent)localObject1).putExtra("room_name", locald.chatroomName);
+              localIntent.putExtra("Contact_RoomNickname", ((ah)localObject).getDisplayName(paramAnonymousView.dkU));
+              localIntent.putExtra("room_name", paramAnonymousView.chatroomName);
             }
           }
-          ((Intent)localObject1).putExtra("Contact_Scene", locald.scene);
-          ((Intent)localObject1).putExtra("Verify_ticket", locald.tIA);
-          ((Intent)localObject1).putExtra("sayhi_with_sns_perm_send_verify", false);
-          ((Intent)localObject1).putExtra("sayhi_with_sns_perm_add_remark", true);
-          ((Intent)localObject1).putExtra("sayhi_with_sns_perm_set_label", true);
-          ((Intent)localObject1).putExtra("sayhi_with_jump_to_profile", true);
-          ((Intent)localObject1).putExtra("CONTACT_INFO_UI_SOURCE", 7);
-          i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qOK, 0);
-          if ((an.aUq(paramAnonymousView.username)) || (i != 1)) {
-            break label508;
+          localIntent.putExtra("Contact_Scene", paramAnonymousView.scene);
+          localIntent.putExtra("Verify_ticket", paramAnonymousView.wZz);
+          localIntent.putExtra("sayhi_with_sns_perm_send_verify", false);
+          localIntent.putExtra("sayhi_with_sns_perm_add_remark", true);
+          localIntent.putExtra("sayhi_with_sns_perm_set_label", true);
+          localIntent.putExtra("sayhi_with_jump_to_profile", true);
+          localIntent.putExtra("CONTACT_INFO_UI_SOURCE", 7);
+          int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.slQ, 2);
+          int j = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.slT, 1000);
+          localObject = ".ui.SayHiWithSnsPermissionUI";
+          if ((!as.bjp(localb.username)) && (i == 1)) {
+            paramAnonymousView = ".ui.SayHiWithSnsPermissionUI2";
           }
-          paramAnonymousView = ".ui.SayHiWithSnsPermissionUI2";
-        }
-        for (;;)
-        {
-          com.tencent.mm.br.d.b(b.a(b.this), "profile", paramAnonymousView, (Intent)localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(29028);
-          return;
-          label508:
-          if ((!an.aUq(paramAnonymousView.username)) && (i == 2)) {
-            paramAnonymousView = ".ui.SayHiWithSnsPermissionUI3";
-          } else {
-            paramAnonymousView = ".ui.SayHiWithSnsPermissionUI";
+          while (((as.bjp(localb.username)) || (as.bjq(localb.username))) && (!WeChatBrands.Business.Entries.ContactNewFriendWeWeCom.checkAvailable(b.a(b.this))))
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(29028);
+            return;
+            paramAnonymousView = (View)localObject;
+            if (!as.bjp(localb.username))
+            {
+              paramAnonymousView = (View)localObject;
+              if (i == 2)
+              {
+                paramAnonymousView = (View)localObject;
+                if (ab.aVc() >= j) {
+                  paramAnonymousView = ".ui.SayHiWithSnsPermissionUI3";
+                }
+              }
+            }
           }
+          com.tencent.mm.br.c.b(b.a(b.this), "profile", paramAnonymousView, localIntent);
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(29028);
       }
     };
     this.context = paramContext;
     AppMethodBeat.o(29030);
   }
   
-  public final void ZD()
+  public final void anp()
   {
     AppMethodBeat.i(29032);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      setCursor(com.tencent.mm.bj.d.aMM().getAll());
+      setCursor(d.bgN().getAll());
       notifyDataSetChanged();
       AppMethodBeat.o(29032);
       return;
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(29024);
-        b.a(b.this, com.tencent.mm.bj.d.aMM().getAll());
+        b.a(b.this, d.bgN().getAll());
         b.this.notifyDataSetChanged();
         AppMethodBeat.o(29024);
       }
@@ -241,11 +251,11 @@ public final class b
     AppMethodBeat.o(29032);
   }
   
-  public final void ZE()
+  public final void anq()
   {
     AppMethodBeat.i(29033);
-    dhl();
-    ZD();
+    ebf();
+    anp();
     AppMethodBeat.o(29033);
   }
   
@@ -254,100 +264,100 @@ public final class b
     AppMethodBeat.i(29031);
     if (paramView == null)
     {
-      paramView = z.jV(this.context).inflate(2131494151, null);
+      paramView = aa.jQ(this.context).inflate(2131494706, null);
       paramViewGroup = new a();
-      paramViewGroup.BzU = ((MaskLayout)paramView.findViewById(2131300151));
-      paramViewGroup.jjZ = ((TextView)paramView.findViewById(2131300157));
-      paramViewGroup.BzZ = ((TextView)paramView.findViewById(2131300153));
-      paramViewGroup.jkb = ((Button)paramView.findViewById(2131300148));
-      paramViewGroup.jkb.setOnClickListener(this.BzM);
-      paramViewGroup.BzV = ((Button)paramView.findViewById(2131300161));
-      paramViewGroup.BzV.setOnClickListener(this.BzN);
-      paramViewGroup.BzW = ((TextView)paramView.findViewById(2131300159));
-      paramViewGroup.BzX = ((TextView)paramView.findViewById(2131300150));
-      paramViewGroup.iXP = ((TextView)paramView.findViewById(2131300152));
-      paramViewGroup.BzY = ((TextView)paramView.findViewById(2131300154));
+      paramViewGroup.FKF = ((MaskLayout)paramView.findViewById(2131301602));
+      paramViewGroup.kib = ((TextView)paramView.findViewById(2131301608));
+      paramViewGroup.FKK = ((TextView)paramView.findViewById(2131301604));
+      paramViewGroup.kid = ((Button)paramView.findViewById(2131301599));
+      paramViewGroup.kid.setOnClickListener(this.FKx);
+      paramViewGroup.FKG = ((Button)paramView.findViewById(2131301612));
+      paramViewGroup.FKG.setOnClickListener(this.FKy);
+      paramViewGroup.FKH = ((TextView)paramView.findViewById(2131301610));
+      paramViewGroup.FKI = ((TextView)paramView.findViewById(2131301601));
+      paramViewGroup.jUO = ((TextView)paramView.findViewById(2131301603));
+      paramViewGroup.FKJ = ((TextView)paramView.findViewById(2131301605));
       paramView.setTag(paramViewGroup);
     }
-    bg localbg;
+    bl localbl;
     for (;;)
     {
-      localbg = (bg)getItem(paramInt);
-      a.b.c((ImageView)paramViewGroup.BzU.getContentView(), localbg.field_talker);
-      paramViewGroup.jjZ.setText(k.b(this.context, localbg.field_displayName, paramViewGroup.jjZ.getTextSize()));
-      if (localbg.field_fmsgSysRowId > 0L) {
+      localbl = (bl)getItem(paramInt);
+      a.b.c((ImageView)paramViewGroup.FKF.getContentView(), localbl.field_talker);
+      paramViewGroup.kib.setText(l.b(this.context, localbl.field_displayName, paramViewGroup.kib.getTextSize()));
+      if (localbl.field_fmsgSysRowId > 0L) {
         break label541;
       }
-      ae.w("MicroMsg.FMessageConversationUI", "getView, fconv fmsgSysRowId is invalid, try getLastFmsg");
-      localObject1 = com.tencent.mm.bj.d.aML().aqR(localbg.field_talker);
+      Log.w("MicroMsg.FMessageConversationUI", "getView, fconv fmsgSysRowId is invalid, try getLastFmsg");
+      localObject1 = d.bgM().aEm(localbl.field_talker);
       if (localObject1 != null) {
         break;
       }
-      ae.e("MicroMsg.FMessageConversationUI", "getView, lastFmsg is null, talker = " + localbg.field_talker);
-      paramViewGroup.jkb.setVisibility(8);
-      paramViewGroup.BzV.setVisibility(8);
-      paramViewGroup.BzW.setVisibility(8);
-      paramViewGroup.BzX.setVisibility(8);
-      paramViewGroup.BzZ.setVisibility(8);
+      Log.e("MicroMsg.FMessageConversationUI", "getView, lastFmsg is null, talker = " + localbl.field_talker);
+      paramViewGroup.kid.setVisibility(8);
+      paramViewGroup.FKG.setVisibility(8);
+      paramViewGroup.FKH.setVisibility(8);
+      paramViewGroup.FKI.setVisibility(8);
+      paramViewGroup.FKK.setVisibility(8);
       AppMethodBeat.o(29031);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
     }
-    Object localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.c(this.context, (bi)localObject1);
-    ae.i("MicroMsg.FMessageConversationUI", "getView, lastFmsg talker = " + localbg.field_talker);
+    Object localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.c(this.context, (bn)localObject1);
+    Log.i("MicroMsg.FMessageConversationUI", "getView, lastFmsg talker = " + localbl.field_talker);
     Object localObject2;
-    if (localbg.field_state == 1)
+    if (localbl.field_state == 1)
     {
-      bc.aCg();
-      localObject2 = com.tencent.mm.model.c.azF().BH(localbg.field_talker);
-      if ((localObject2 != null) && ((int)((com.tencent.mm.contact.c)localObject2).ght != 0) && (!com.tencent.mm.contact.c.lO(((aw)localObject2).field_type))) {
-        com.tencent.mm.bj.d.aMM().gw(localbg.field_talker, 0);
+      bg.aVF();
+      localObject2 = com.tencent.mm.model.c.aSN().Kn(localbl.field_talker);
+      if ((localObject2 != null) && ((int)((com.tencent.mm.contact.c)localObject2).gMZ != 0) && (!com.tencent.mm.contact.c.oR(((ax)localObject2).field_type))) {
+        d.bgN().gP(localbl.field_talker, 0);
       }
     }
     label541:
     long l;
     if (localObject1 == null)
     {
-      ae.e("MicroMsg.FMessageConversationUI", "getView, fProvider is null, talker = " + localbg.field_talker);
-      paramViewGroup.jkb.setVisibility(8);
-      paramViewGroup.BzV.setVisibility(8);
-      paramViewGroup.BzW.setVisibility(8);
-      paramViewGroup.BzX.setVisibility(8);
-      paramViewGroup.BzZ.setVisibility(8);
+      Log.e("MicroMsg.FMessageConversationUI", "getView, fProvider is null, talker = " + localbl.field_talker);
+      paramViewGroup.kid.setVisibility(8);
+      paramViewGroup.FKG.setVisibility(8);
+      paramViewGroup.FKH.setVisibility(8);
+      paramViewGroup.FKI.setVisibility(8);
+      paramViewGroup.FKK.setVisibility(8);
       AppMethodBeat.o(29031);
       return paramView;
       localObject1 = this.context;
-      l = localbg.field_fmsgSysRowId;
-      if (localbg.field_fmsgIsSend % 2 == 0) {}
+      l = localbl.field_fmsgSysRowId;
+      if (localbl.field_fmsgIsSend % 2 == 0) {}
       for (boolean bool = true;; bool = false)
       {
-        localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a((Context)localObject1, l, bool, localbg.field_talker, localbg.field_fmsgContent, localbg.field_fmsgType, localbg.field_contentFromUsername, localbg.field_contentNickname, localbg.field_contentPhoneNumMD5, localbg.field_contentFullPhoneNumMD5, localbg.field_contentVerifyContent, localbg.field_addScene);
-        ae.i("MicroMsg.FMessageConversationUI", "getView, lastFmsg sysrowid = " + localbg.field_fmsgSysRowId + ", talker = " + localbg.field_talker);
+        localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a((Context)localObject1, l, bool, localbl.field_talker, localbl.field_fmsgContent, localbl.field_fmsgType, localbl.field_contentFromUsername, localbl.field_contentNickname, localbl.field_contentPhoneNumMD5, localbl.field_contentFullPhoneNumMD5, localbl.field_contentVerifyContent, localbl.field_addScene);
+        Log.i("MicroMsg.FMessageConversationUI", "getView, lastFmsg sysrowid = " + localbl.field_fmsgSysRowId + ", talker = " + localbl.field_talker);
         break;
       }
     }
-    ((com.tencent.mm.pluginsdk.ui.preference.b)localObject1).zfk = localbg.field_addScene;
-    paramViewGroup.BzZ.setText(k.b(this.context, ((com.tencent.mm.pluginsdk.ui.preference.b)localObject1).hGg, paramViewGroup.BzZ.getTextSize()));
+    ((com.tencent.mm.pluginsdk.ui.preference.b)localObject1).Dkc = localbl.field_addScene;
+    paramViewGroup.FKK.setText(l.b(this.context, ((com.tencent.mm.pluginsdk.ui.preference.b)localObject1).iAq, paramViewGroup.FKK.getTextSize()));
     int i;
-    if ((localbg.field_state == 0) && (ch.aDb() - localbg.field_lastModifiedTime >= 259200000L))
+    if ((localbl.field_state == 0) && (cl.aWz() - localbl.field_lastModifiedTime >= 259200000L))
     {
       i = 3;
-      localbg.field_state = i;
-      switch (localbg.field_state)
+      localbl.field_state = i;
+      switch (localbl.field_state)
       {
       default: 
-        paramViewGroup.BzY.setVisibility(8);
-        paramViewGroup.jkb.setVisibility(8);
-        paramViewGroup.BzV.setVisibility(8);
-        paramViewGroup.BzW.setVisibility(8);
-        paramViewGroup.BzX.setVisibility(8);
+        paramViewGroup.FKJ.setVisibility(8);
+        paramViewGroup.kid.setVisibility(8);
+        paramViewGroup.FKG.setVisibility(8);
+        paramViewGroup.FKH.setVisibility(8);
+        paramViewGroup.FKI.setVisibility(8);
         label821:
-        paramView.findViewById(2131300156).setBackgroundResource(2131234801);
-        l = ch.aDb();
-        if ((paramInt == 0) && (localbg.field_lastModifiedTime + 259200000L >= l))
+        paramView.findViewById(2131301607).setBackgroundResource(2131235784);
+        l = cl.aWz();
+        if ((paramInt == 0) && (localbl.field_lastModifiedTime + 259200000L >= l))
         {
-          paramViewGroup.iXP.setVisibility(0);
-          paramViewGroup.iXP.setText(this.context.getString(2131759481));
+          paramViewGroup.jUO.setVisibility(0);
+          paramViewGroup.jUO.setText(this.context.getString(2131760796));
         }
         break;
       }
@@ -356,12 +366,12 @@ public final class b
     {
       AppMethodBeat.o(29031);
       return paramView;
-      i = localbg.field_state;
+      i = localbl.field_state;
       break;
-      if (localbg.field_fmsgSysRowId <= 0L)
+      if (localbl.field_fmsgSysRowId <= 0L)
       {
-        ae.w("MicroMsg.FMessageConversationUI", "getView, fmsgSysRowId invalid, try use lastRecvFmsg");
-        localObject2 = com.tencent.mm.bj.d.aML().aVx(((com.tencent.mm.pluginsdk.ui.preference.b)localObject1).username);
+        Log.w("MicroMsg.FMessageConversationUI", "getView, fmsgSysRowId invalid, try use lastRecvFmsg");
+        localObject2 = d.bgM().bkv(((com.tencent.mm.pluginsdk.ui.preference.b)localObject1).username);
         if (localObject2 == null)
         {
           i = 0;
@@ -369,72 +379,72 @@ public final class b
           if ((i != 0) && (i != 3)) {
             break label1027;
           }
-          paramViewGroup.jkb.setVisibility(0);
-          paramViewGroup.jkb.setTag(localObject1);
-          paramViewGroup.BzV.setVisibility(8);
+          paramViewGroup.kid.setVisibility(0);
+          paramViewGroup.kid.setTag(localObject1);
+          paramViewGroup.FKG.setVisibility(8);
         }
       }
       for (;;)
       {
-        paramViewGroup.BzW.setVisibility(8);
-        paramViewGroup.BzX.setVisibility(8);
-        paramViewGroup.BzY.setVisibility(8);
+        paramViewGroup.FKH.setVisibility(8);
+        paramViewGroup.FKI.setVisibility(8);
+        paramViewGroup.FKJ.setVisibility(8);
         break;
-        i = ((bi)localObject2).field_type;
+        i = ((bn)localObject2).field_type;
         break label940;
-        i = localbg.field_recvFmsgType;
+        i = localbl.field_recvFmsgType;
         break label940;
         label1027:
-        paramViewGroup.BzV.setVisibility(0);
-        paramViewGroup.BzV.setTag(localObject1);
-        paramViewGroup.jkb.setVisibility(8);
+        paramViewGroup.FKG.setVisibility(0);
+        paramViewGroup.FKG.setTag(localObject1);
+        paramViewGroup.kid.setVisibility(8);
       }
-      paramViewGroup.BzW.setVisibility(0);
-      paramViewGroup.jkb.setVisibility(8);
-      paramViewGroup.BzV.setVisibility(8);
-      paramViewGroup.BzX.setVisibility(8);
-      paramViewGroup.BzY.setVisibility(8);
+      paramViewGroup.FKH.setVisibility(0);
+      paramViewGroup.kid.setVisibility(8);
+      paramViewGroup.FKG.setVisibility(8);
+      paramViewGroup.FKI.setVisibility(8);
+      paramViewGroup.FKJ.setVisibility(8);
       break label821;
-      paramViewGroup.BzX.setVisibility(0);
-      paramViewGroup.jkb.setVisibility(8);
-      paramViewGroup.BzV.setVisibility(8);
-      paramViewGroup.BzW.setVisibility(8);
-      paramViewGroup.BzY.setVisibility(8);
+      paramViewGroup.FKI.setVisibility(0);
+      paramViewGroup.kid.setVisibility(8);
+      paramViewGroup.FKG.setVisibility(8);
+      paramViewGroup.FKH.setVisibility(8);
+      paramViewGroup.FKJ.setVisibility(8);
       break label821;
-      paramViewGroup.BzY.setVisibility(0);
-      paramViewGroup.jkb.setVisibility(8);
-      paramViewGroup.BzV.setVisibility(8);
-      paramViewGroup.BzW.setVisibility(8);
-      paramViewGroup.BzX.setVisibility(8);
+      paramViewGroup.FKJ.setVisibility(0);
+      paramViewGroup.kid.setVisibility(8);
+      paramViewGroup.FKG.setVisibility(8);
+      paramViewGroup.FKH.setVisibility(8);
+      paramViewGroup.FKI.setVisibility(8);
       break label821;
-      if (((paramInt == 0) || (((bg)getItem(paramInt - 1)).field_lastModifiedTime + 259200000L >= l)) && (((bg)getItem(paramInt)).field_lastModifiedTime + 259200000L < l))
+      if (((paramInt == 0) || (((bl)getItem(paramInt - 1)).field_lastModifiedTime + 259200000L >= l)) && (((bl)getItem(paramInt)).field_lastModifiedTime + 259200000L < l))
       {
-        paramViewGroup.iXP.setVisibility(0);
-        paramViewGroup.iXP.setText(this.context.getString(2131759480));
+        paramViewGroup.jUO.setVisibility(0);
+        paramViewGroup.jUO.setText(this.context.getString(2131760795));
       }
       else
       {
-        paramViewGroup.iXP.setVisibility(8);
+        paramViewGroup.jUO.setVisibility(8);
       }
     }
   }
   
   static final class a
   {
-    public MaskLayout BzU;
-    public Button BzV;
-    public TextView BzW;
-    public TextView BzX;
-    public TextView BzY;
-    public TextView BzZ;
-    public TextView iXP;
-    public TextView jjZ;
-    public Button jkb;
+    public MaskLayout FKF;
+    public Button FKG;
+    public TextView FKH;
+    public TextView FKI;
+    public TextView FKJ;
+    public TextView FKK;
+    public TextView jUO;
+    public TextView kib;
+    public Button kid;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.friend.b
  * JD-Core Version:    0.7.0.1
  */

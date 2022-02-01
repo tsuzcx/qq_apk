@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:id="@id/bt3" android:background="@color/fc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <Button android:id="@id/d0t" style="@style/io" />
-        <android.support.v4.view.ViewPager android:id="@id/ea6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</merge>

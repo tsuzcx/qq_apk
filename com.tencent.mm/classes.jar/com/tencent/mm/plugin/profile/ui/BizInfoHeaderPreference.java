@@ -12,48 +12,48 @@ import com.tencent.mm.aj.e;
 import com.tencent.mm.aj.e.a;
 import com.tencent.mm.aj.p;
 import com.tencent.mm.al.g;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.x;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.brandservice.b.d;
 import com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 import junit.framework.Assert;
 
 public class BizInfoHeaderPreference
   extends Preference
-  implements e.a, n.b
+  implements e.a, MStorageEx.IOnStorageChange
 {
-  private an contact;
-  private MMActivity fNT;
-  private boolean qnX;
-  private TextView uAJ;
-  private TextView uRZ;
-  private ImageView xfA;
-  private ImageView xfB;
-  private View xfC;
-  private String xfD;
-  private com.tencent.mm.api.c xfE;
-  private com.tencent.mm.plugin.profile.ui.b.a xfF;
-  private com.tencent.mm.plugin.profile.ui.b.b xfG;
+  private ImageView Bdg;
+  private ImageView Bdh;
+  private View Bdi;
+  private String Bdj;
+  private com.tencent.mm.api.c Bdk;
+  private com.tencent.mm.plugin.profile.ui.b.a Bdl;
+  private com.tencent.mm.plugin.profile.ui.b.b Bdm;
+  private as contact;
+  private MMActivity gte;
+  private boolean rFe;
+  private TextView rMV;
+  private TextView ykC;
   
   public BizInfoHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(26927);
-    this.qnX = false;
-    this.xfF = new com.tencent.mm.plugin.profile.ui.b.a(this);
-    this.xfG = new com.tencent.mm.plugin.profile.ui.b.b(this);
-    this.fNT = ((MMActivity)paramContext);
-    this.qnX = false;
+    this.rFe = false;
+    this.Bdl = new com.tencent.mm.plugin.profile.ui.b.a(this);
+    this.Bdm = new com.tencent.mm.plugin.profile.ui.b.b(this);
+    this.gte = ((MMActivity)paramContext);
+    this.rFe = false;
     AppMethodBeat.o(26927);
   }
   
@@ -61,112 +61,112 @@ public class BizInfoHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(26928);
-    this.qnX = false;
-    this.xfF = new com.tencent.mm.plugin.profile.ui.b.a(this);
-    this.xfG = new com.tencent.mm.plugin.profile.ui.b.b(this);
-    this.fNT = ((MMActivity)paramContext);
-    this.qnX = false;
+    this.rFe = false;
+    this.Bdl = new com.tencent.mm.plugin.profile.ui.b.a(this);
+    this.Bdm = new com.tencent.mm.plugin.profile.ui.b.b(this);
+    this.gte = ((MMActivity)paramContext);
+    this.rFe = false;
     AppMethodBeat.o(26928);
   }
   
-  private boolean KB()
+  private boolean UL()
   {
     AppMethodBeat.i(26935);
-    if (this.xfE == null)
+    if (this.Bdk == null)
     {
       AppMethodBeat.o(26935);
       return true;
     }
-    boolean bool = this.xfE.KB();
+    boolean bool = this.Bdk.UL();
     AppMethodBeat.o(26935);
     return bool;
   }
   
-  private boolean dDJ()
+  private boolean eEa()
   {
-    return (this.qnX) && (this.contact != null);
+    return (this.rFe) && (this.contact != null);
   }
   
   private void initView()
   {
     AppMethodBeat.i(26930);
-    if (!dDJ())
+    if (!eEa())
     {
-      ae.w("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.qnX + "contact = " + this.contact);
+      Log.w("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.rFe + "contact = " + this.contact);
       AppMethodBeat.o(26930);
       return;
     }
-    this.uAJ.setText(k.b(this.fNT, bu.nullAsNil(this.contact.adF()) + " ", this.uAJ.getTextSize()));
-    if (this.xfE == null) {
-      this.xfE = g.eX(this.contact.field_username);
+    this.rMV.setText(l.b(this.gte, Util.nullAsNil(this.contact.arI()) + " ", this.rMV.getTextSize()));
+    if (this.Bdk == null) {
+      this.Bdk = g.fJ(this.contact.field_username);
     }
-    if (this.xfE != null) {
-      this.xfD = this.xfE.field_brandIconURL;
+    if (this.Bdk != null) {
+      this.Bdj = this.Bdk.field_brandIconURL;
     }
-    d.a(this.xfA, this.contact, this.xfD, false);
-    this.xfA.setTag(this.contact.field_username);
-    this.xfC.setOnClickListener(new View.OnClickListener()
+    d.a(this.Bdg, this.contact, this.Bdj, false);
+    this.Bdg.setTag(this.contact.field_username);
+    this.Bdi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(26926);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
         localObject = BizInfoHeaderPreference.a(BizInfoHeaderPreference.this).field_username;
         paramAnonymousView = new Intent(BizInfoHeaderPreference.b(BizInfoHeaderPreference.this), ProfileHdHeadImg.class);
         paramAnonymousView.putExtra("username", (String)localObject);
         paramAnonymousView.putExtra("brand_icon_url", BizInfoHeaderPreference.c(BizInfoHeaderPreference.this));
         localObject = BizInfoHeaderPreference.b(BizInfoHeaderPreference.this);
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((MMActivity)localObject).startActivity((Intent)paramAnonymousView.mt(0));
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.axQ(), "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((MMActivity)localObject).startActivity((Intent)paramAnonymousView.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(26926);
       }
     });
-    if ((com.tencent.mm.contact.c.lO(this.contact.field_type)) && (KB())) {
-      if (!bu.isNullOrNil(this.contact.VI()))
+    if ((com.tencent.mm.contact.c.oR(this.contact.field_type)) && (UL())) {
+      if (!Util.isNullOrNil(this.contact.ajx()))
       {
-        this.uRZ.setVisibility(0);
-        this.uRZ.setText(this.mContext.getString(2131755760) + this.contact.VI());
+        this.ykC.setVisibility(0);
+        this.ykC.setText(com.tencent.mm.plugin.profile.c.br(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.ju(this.contact.field_username, this.contact.ajx()));
       }
     }
-    while (this.contact.adx())
+    while (this.contact.arA())
     {
-      this.xfB.setVisibility(0);
+      this.Bdh.setVisibility(0);
       AppMethodBeat.o(26930);
       return;
-      if ((!an.aUy(this.contact.field_username)) && (!x.Am(this.contact.field_username)))
+      if ((!as.bjx(this.contact.field_username)) && (!ab.IR(this.contact.field_username)))
       {
-        String str = bu.nullAsNil(this.contact.adH());
-        this.uRZ.setText(this.mContext.getString(2131755760) + str);
-        this.uRZ.setVisibility(0);
+        String str = Util.nullAsNil(this.contact.arK());
+        this.ykC.setText(com.tencent.mm.plugin.profile.c.br(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.ju(this.contact.field_username, str));
+        this.ykC.setVisibility(0);
       }
       else
       {
-        this.uRZ.setVisibility(8);
+        this.ykC.setVisibility(8);
         continue;
-        this.uRZ.setVisibility(8);
+        this.ykC.setVisibility(8);
       }
     }
-    this.xfB.setVisibility(8);
+    this.Bdh.setVisibility(8);
     AppMethodBeat.o(26930);
   }
   
-  public final void DG(String paramString)
+  public final void Mr(String paramString)
   {
     AppMethodBeat.i(26933);
-    if (!dDJ())
+    if (!eEa())
     {
-      ae.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.qnX + "contact = " + this.contact);
+      Log.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.rFe + "contact = " + this.contact);
       AppMethodBeat.o(26933);
       return;
     }
-    if (bu.nullAsNil(paramString).length() <= 0)
+    if (Util.nullAsNil(paramString).length() <= 0)
     {
-      ae.e("MicroMsg.BizInfoHeaderPreference", "notifyChanged: user = ".concat(String.valueOf(paramString)));
+      Log.e("MicroMsg.BizInfoHeaderPreference", "notifyChanged: user = ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(26933);
       return;
     }
@@ -176,46 +176,17 @@ public class BizInfoHeaderPreference
     AppMethodBeat.o(26933);
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(26934);
-    if ((paramObject == null) || (!(paramObject instanceof String)))
-    {
-      ae.d("MicroMsg.BizInfoHeaderPreference", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-      AppMethodBeat.o(26934);
-      return;
-    }
-    if (!dDJ())
-    {
-      ae.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.qnX + "contact = " + this.contact);
-      AppMethodBeat.o(26934);
-      return;
-    }
-    paramn = (String)paramObject;
-    if (bu.nullAsNil(paramn).length() <= 0)
-    {
-      AppMethodBeat.o(26934);
-      return;
-    }
-    if ((this.contact != null) && (this.contact.field_username.equals(paramn)))
-    {
-      bc.aCg();
-      this.contact = com.tencent.mm.model.c.azF().BH(paramn);
-    }
-    AppMethodBeat.o(26934);
-  }
-  
-  public final void a(an paraman, String paramString, com.tencent.mm.api.c paramc)
+  public final void a(as paramas, String paramString, com.tencent.mm.api.c paramc)
   {
     AppMethodBeat.i(26931);
-    this.xfD = paramString;
-    this.xfE = paramc;
+    this.Bdj = paramString;
+    this.Bdk = paramc;
     onDetach();
-    bc.aCg();
-    com.tencent.mm.model.c.azF().a(this.xfG);
-    p.aEA().d(this.xfF);
-    this.contact = paraman;
-    if (bu.nullAsNil(paraman.field_username).length() > 0) {}
+    bg.aVF();
+    com.tencent.mm.model.c.aSN().add(this.Bdm);
+    p.aYn().d(this.Bdl);
+    this.contact = paramas;
+    if (Util.nullAsNil(paramas.field_username).length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("initView: contact username is null", bool);
@@ -228,13 +199,13 @@ public class BizInfoHeaderPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(26929);
-    ae.d("MicroMsg.BizInfoHeaderPreference", "onBindView");
-    this.uAJ = ((TextView)paramView.findViewById(2131298631));
-    this.uRZ = ((TextView)paramView.findViewById(2131298662));
-    this.xfB = ((ImageView)paramView.findViewById(2131297286));
-    this.xfA = ((ImageView)paramView.findViewById(2131298597));
-    this.xfC = paramView.findViewById(2131298598);
-    this.qnX = true;
+    Log.d("MicroMsg.BizInfoHeaderPreference", "onBindView");
+    this.rMV = ((TextView)paramView.findViewById(2131299068));
+    this.ykC = ((TextView)paramView.findViewById(2131299099));
+    this.Bdh = ((ImageView)paramView.findViewById(2131297443));
+    this.Bdg = ((ImageView)paramView.findViewById(2131299034));
+    this.Bdi = paramView.findViewById(2131299035);
+    this.rFe = true;
     initView();
     super.onBindView(paramView);
     AppMethodBeat.o(26929);
@@ -243,10 +214,39 @@ public class BizInfoHeaderPreference
   public final void onDetach()
   {
     AppMethodBeat.i(26932);
-    bc.aCg();
-    com.tencent.mm.model.c.azF().b(this.xfG);
-    p.aEA().e(this.xfF);
+    bg.aVF();
+    com.tencent.mm.model.c.aSN().remove(this.Bdm);
+    p.aYn().e(this.Bdl);
     AppMethodBeat.o(26932);
+  }
+  
+  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(26934);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
+    {
+      Log.d("MicroMsg.BizInfoHeaderPreference", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
+      AppMethodBeat.o(26934);
+      return;
+    }
+    if (!eEa())
+    {
+      Log.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.rFe + "contact = " + this.contact);
+      AppMethodBeat.o(26934);
+      return;
+    }
+    paramMStorageEx = (String)paramObject;
+    if (Util.nullAsNil(paramMStorageEx).length() <= 0)
+    {
+      AppMethodBeat.o(26934);
+      return;
+    }
+    if ((this.contact != null) && (this.contact.field_username.equals(paramMStorageEx)))
+    {
+      bg.aVF();
+      this.contact = com.tencent.mm.model.c.aSN().Kn(paramMStorageEx);
+    }
+    AppMethodBeat.o(26934);
   }
 }
 

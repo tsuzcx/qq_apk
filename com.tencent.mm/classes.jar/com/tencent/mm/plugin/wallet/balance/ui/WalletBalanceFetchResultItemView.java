@@ -6,15 +6,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.utils.g;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class WalletBalanceFetchResultItemView
   extends LinearLayout
 {
-  private TextView lHT;
-  private TextView lHk;
-  private boolean yjt;
+  private boolean Cku;
+  private TextView jVn;
+  private TextView mPa;
   
   public WalletBalanceFetchResultItemView(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class WalletBalanceFetchResultItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(68564);
-    this.yjt = false;
+    this.Cku = false;
     init();
     AppMethodBeat.o(68564);
   }
@@ -34,7 +34,7 @@ public class WalletBalanceFetchResultItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(68565);
-    this.yjt = false;
+    this.Cku = false;
     init();
     AppMethodBeat.o(68565);
   }
@@ -43,8 +43,8 @@ public class WalletBalanceFetchResultItemView
   {
     super(paramContext);
     AppMethodBeat.i(68563);
-    this.yjt = false;
-    this.yjt = paramBoolean;
+    this.Cku = false;
+    this.Cku = paramBoolean;
     init();
     AppMethodBeat.o(68563);
   }
@@ -52,37 +52,37 @@ public class WalletBalanceFetchResultItemView
   private void init()
   {
     AppMethodBeat.i(68566);
-    if (this.yjt) {
-      inflate(getContext(), 2131493152, this);
+    if (this.Cku) {
+      inflate(getContext(), 2131493198, this);
     }
     for (;;)
     {
-      this.lHk = ((TextView)findViewById(2131297519));
-      this.lHT = ((TextView)findViewById(2131297518));
+      this.mPa = ((TextView)findViewById(2131297745));
+      this.jVn = ((TextView)findViewById(2131297744));
       AppMethodBeat.o(68566);
       return;
-      inflate(getContext(), 2131493151, this);
+      inflate(getContext(), 2131493197, this);
     }
   }
   
   public final void a(String paramString1, CharSequence paramCharSequence, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(68567);
-    this.lHk.setText(paramString1);
-    if (!bu.isNullOrNil(paramString2)) {
-      this.lHk.setTextColor(g.cp(paramString2, true));
+    this.mPa.setText(paramString1);
+    if (!Util.isNullOrNil(paramString2)) {
+      this.mPa.setTextColor(g.cI(paramString2, true));
     }
     if (paramBoolean) {
-      this.lHT.setText(k.b(getContext(), paramCharSequence, this.lHT.getTextSize()));
+      this.jVn.setText(l.b(getContext(), paramCharSequence, this.jVn.getTextSize()));
     }
     for (;;)
     {
-      if (!bu.isNullOrNil(paramString3)) {
-        this.lHT.setTextColor(g.cp(paramString3, true));
+      if (!Util.isNullOrNil(paramString3)) {
+        this.jVn.setTextColor(g.cI(paramString3, true));
       }
       AppMethodBeat.o(68567);
       return;
-      this.lHT.setText(paramCharSequence);
+      this.jVn.setText(paramCharSequence);
     }
   }
   
@@ -95,7 +95,7 @@ public class WalletBalanceFetchResultItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceFetchResultItemView
  * JD-Core Version:    0.7.0.1
  */

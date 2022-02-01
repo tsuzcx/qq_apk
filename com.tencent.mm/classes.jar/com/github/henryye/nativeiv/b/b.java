@@ -8,11 +8,11 @@ public abstract interface b
   
   public abstract boolean accept(Object paramObject);
   
-  public abstract String sP();
+  public abstract String sS();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.b.b
  * JD-Core Version:    0.7.0.1
  */

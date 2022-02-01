@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class ai
-  extends bq<s>
+  extends br<s>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(final b.a parama)
   {
     AppMethodBeat.i(78579);
-    parama = parama.chh.cgn;
-    h.MqF.aO(new Runnable()
+    parama = parama.ctb.csi;
+    h.RTc.aX(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(198089);
-        ae.i("MicroMsg.JsApiLog", "jslog : " + parama.optString("msg"));
-        AppMethodBeat.o(198089);
+        AppMethodBeat.i(210947);
+        Log.i("MicroMsg.JsApiLog", "jslog : " + parama.optString("msg"));
+        AppMethodBeat.o(210947);
       }
     });
     AppMethodBeat.o(78579);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

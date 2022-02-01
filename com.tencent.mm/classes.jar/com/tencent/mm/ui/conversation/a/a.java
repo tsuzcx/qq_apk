@@ -7,65 +7,65 @@ import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ba.m;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.pluginsdk.q;
 import com.tencent.mm.pluginsdk.q.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.ao;
 import java.lang.ref.WeakReference;
 
 public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  b KUh;
-  private d KUi;
-  a KUj;
-  int baa;
-  private View rY;
+  b Qhx;
+  private d Qhy;
+  a Qhz;
+  int aZW;
+  private View sc;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38759);
-    this.baa = 0;
-    this.rY = null;
+    this.aZW = 0;
+    this.sc = null;
     if (this.view != null)
     {
-      this.rY = this.view.findViewById(2131296508);
-      this.KUi = new d();
-      this.KUi.KUn = this.rY;
-      this.KUi.KUo = ((Button)this.view.findViewById(2131296429));
-      this.KUi.KUo.setOnClickListener(new View.OnClickListener()
+      this.sc = this.view.findViewById(2131296582);
+      this.Qhy = new d();
+      this.Qhy.QhD = this.sc;
+      this.Qhy.QhE = ((Button)this.view.findViewById(2131296485));
+      this.Qhy.QhE.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38755);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/ADBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if ((a.this.KUh != null) && (a.this.KUj != null))
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/ADBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if ((a.this.Qhx != null) && (a.this.Qhz != null))
           {
-            paramAnonymousView = a.this.KUh.afq(a.this.baa);
-            a.this.KUj.aJl(paramAnonymousView.KUm.id);
+            paramAnonymousView = a.this.Qhx.aoa(a.this.aZW);
+            a.this.Qhz.aZq(paramAnonymousView.QhC.id);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/ADBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38755);
         }
       });
-      this.rY.setOnClickListener(new View.OnClickListener()
+      this.sc.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38756);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/ADBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if ((a.this.KUh != null) && (a.this.KUj != null))
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/ADBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if ((a.this.Qhx != null) && (a.this.Qhz != null))
           {
-            paramAnonymousView = a.this.KUh.afq(a.this.baa);
-            a.this.KUj.mw(paramAnonymousView.KUm.id, paramAnonymousView.KUm.url);
+            paramAnonymousView = a.this.Qhx.aoa(a.this.aZW);
+            a.this.Qhz.nk(paramAnonymousView.QhC.id, paramAnonymousView.QhC.url);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/ADBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38756);
@@ -75,43 +75,43 @@ public final class a
     AppMethodBeat.o(38759);
   }
   
-  public final boolean bAV()
+  public final boolean bYa()
   {
     AppMethodBeat.i(38762);
-    this.KUh = new b((Context)this.FpA.get());
-    this.KUj = new a()
+    this.Qhx = new b((Context)this.Kgr.get());
+    this.Qhz = new a()
     {
-      public final void aJl(String paramAnonymousString)
+      public final void aZq(String paramAnonymousString)
       {
         AppMethodBeat.i(38758);
-        com.tencent.mm.pluginsdk.k.a.a.feV();
-        bc.aCg();
-        com.tencent.mm.model.c.azE().d(new m(3, paramAnonymousString));
+        com.tencent.mm.pluginsdk.k.a.a.gof();
+        bg.aVF();
+        com.tencent.mm.model.c.aSM().d(new m(3, paramAnonymousString));
         AppMethodBeat.o(38758);
       }
       
-      public final void mw(String paramAnonymousString1, String paramAnonymousString2)
+      public final void nk(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(38757);
-        com.tencent.mm.pluginsdk.k.a.a.feV();
-        bc.aCg();
-        com.tencent.mm.model.c.azE().d(new m(2, paramAnonymousString1));
-        ae.d("MicroMsg.ADBanner", "jump to ".concat(String.valueOf(paramAnonymousString2)));
-        q.a.Fca.a((Context)a.this.FpA.get(), paramAnonymousString2, true);
+        com.tencent.mm.pluginsdk.k.a.a.gof();
+        bg.aVF();
+        com.tencent.mm.model.c.aSM().d(new m(2, paramAnonymousString1));
+        Log.d("MicroMsg.ADBanner", "jump to ".concat(String.valueOf(paramAnonymousString2)));
+        q.a.JSZ.a((Context)a.this.Kgr.get(), paramAnonymousString2, true);
         AppMethodBeat.o(38757);
       }
     };
-    com.tencent.mm.pluginsdk.k.a.a locala = com.tencent.mm.pluginsdk.k.a.a.hD(ak.getContext());
-    if (this.KUh != null)
+    com.tencent.mm.pluginsdk.k.a.a locala = com.tencent.mm.pluginsdk.k.a.a.ix(MMApplicationContext.getContext());
+    if (this.Qhx != null)
     {
       if (locala != null)
       {
-        this.KUh.KUl = locala;
-        this.KUh.ZD();
-        if ((this.KUh != null) && (this.KUh.getCount() > 0) && (this.KUh.afq(0).a(this.KUi) == 0)) {}
+        this.Qhx.QhB = locala;
+        this.Qhx.anp();
+        if ((this.Qhx != null) && (this.Qhx.getCount() > 0) && (this.Qhx.aoa(0).a(this.Qhy) == 0)) {}
         for (int i = 1; i != 0; i = 0)
         {
-          ae.i("MicroMsg.ADBanner", "refreshAndReturnIsVisible[true]");
+          Log.i("MicroMsg.ADBanner", "refreshAndReturnIsVisible[true]");
           setVisibility(0);
           AppMethodBeat.o(38762);
           return true;
@@ -127,43 +127,43 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(38760);
-    if (g.ajP().aiZ())
+    if (g.aAf().azp())
     {
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().b(this.KUh);
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().remove(this.Qhx);
     }
     AppMethodBeat.o(38760);
   }
   
   public final int getLayoutId()
   {
-    return 2131492953;
+    return 2131492986;
   }
   
   public final void release()
   {
-    this.KUh = null;
+    this.Qhx = null;
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(38761);
-    if (this.rY != null) {
-      this.rY.setVisibility(paramInt);
+    if (this.sc != null) {
+      this.sc.setVisibility(paramInt);
     }
     AppMethodBeat.o(38761);
   }
   
   public static abstract interface a
   {
-    public abstract void aJl(String paramString);
+    public abstract void aZq(String paramString);
     
-    public abstract void mw(String paramString1, String paramString2);
+    public abstract void nk(String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.a
  * JD-Core Version:    0.7.0.1
  */

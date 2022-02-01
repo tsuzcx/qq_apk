@@ -1,513 +1,446 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
-import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.Size;
+import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Button;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
-import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
-import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout;
-import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.i;
-import com.tencent.mm.plugin.vlog.model.g;
-import com.tencent.mm.plugin.vlog.model.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.widget.cropview.CropLayout;
-import com.tencent.mm.ui.widget.cropview.CropLayout.c;
-import com.tencent.mm.ui.widget.cropview.CropLayout.d;
-import com.tencent.mm.ui.widget.cropview.CropLayout.e;
-import com.tencent.mm.videocomposition.play.VideoCompositionPlayView;
-import d.a.j;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
-import java.util.Iterator;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.plugin.recordvideo.plugin.t;
+import com.tencent.mm.plugin.recordvideo.plugin.t.a;
+import com.tencent.mm.plugin.vlog.model.ac;
+import com.tencent.mm.plugin.vlog.model.ad;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.videocomposition.c;
+import com.tencent.mm.videocomposition.c.a;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.f;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewImpl;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "provider", "Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;)V", "TAG", "", "audioSeekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "getAudioSeekable", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "setAudioSeekable", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;)V", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "cropChangeListener", "com/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl$cropChangeListener$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl$cropChangeListener$1;", "darkDelayRunnable", "Ljava/lang/Runnable;", "isActive", "", "maxVisibleRect", "Landroid/graphics/RectF;", "operationCallback", "com/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl$operationCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl$operationCallback$1;", "playingTime", "", "playingTrack", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "getProvider", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;", "videoCropView", "Landroid/view/View;", "visibleRect", "getCropChangeListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "getCropInView", "Landroid/graphics/Rect;", "getCropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "path", "getOperationCallback", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "onActiveChange", "", "active", "onFinish", "onPreview", "onProgress", "timeMs", "onStart", "seekable", "onUpdate", "playAfterUpdate", "seekToOriginPosition", "seekTo", "setMaxVisibleRect", "rect", "setVideoSize", "size", "Landroid/util/Size;", "setVisibleRect", "updateVideoCrop", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "context", "Landroid/content/Context;", "dialogView", "Landroid/view/View;", "getDialogView", "()Landroid/view/View;", "dialogView$delegate", "Lkotlin/Lazy;", "editorControlIconsContainer", "kotlin.jvm.PlatformType", "getEditorControlIconsContainer", "editorControlIconsContainer$delegate", "enable", "", "finishBtn", "Landroid/widget/Button;", "getFinishBtn", "()Landroid/widget/Button;", "finishBtn$delegate", "fullScreenThumbView", "Landroid/widget/ImageView;", "getFullScreenThumbView", "()Landroid/widget/ImageView;", "fullScreenThumbView$delegate", "halfScreenHeader", "halfScreenSelectBtn", "halfScreenThumbView", "getHalfScreenThumbView", "halfScreenThumbView$delegate", "helpDialog", "Landroid/support/design/widget/BottomSheetDialog;", "getHelpDialog", "()Landroid/support/design/widget/BottomSheetDialog;", "helpDialog$delegate", "value", "isFirstEnter", "()Z", "setFirstEnter", "(Z)V", "isNeedCropFullScreen", "isPreviewHalfScreen", "getLayout", "()Landroid/view/ViewGroup;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbHeight", "", "thumbPath", "", "thumbWidth", "changePreviewMode", "", "halfScreen", "enablePreview", "ensureThumb", "hide", "isEnablePreview", "isInHalfScreenMode", "need", "onBackPress", "onUpdate", "seekTo", "", "seekToOriginPosition", "onUpdateImage", "show", "showHelpDialogIfNeed", "Companion", "plugin-vlog_release"})
 public final class s
-  implements c.c, v
+  implements t, e.d
 {
-  com.tencent.mm.plugin.vlog.model.v BWB;
-  final RectF BWY;
-  final RectF BWZ;
-  c.e Cef;
-  private final View Cfm;
-  com.tencent.mm.plugin.vlog.model.w Cfn;
-  private long Cfo;
-  final Runnable Cfp;
-  private final a Cfq;
-  private final e Cfr;
-  final w Cfs;
-  final String TAG;
-  private boolean isActive;
+  public static final s.a GHT;
+  public boolean GGS;
+  private final View GHL;
+  private final View GHM;
+  private final f GHN;
+  private final f GHO;
+  private final f GHP;
+  private final f GHQ;
+  public boolean GHR;
+  private final f GHS;
+  private ac GxA;
+  private final MultiProcessMMKV cQe;
+  private final Context context;
+  private boolean enable;
+  private final int thumbHeight;
+  public String thumbPath;
+  private final int thumbWidth;
+  private final f vJA;
+  private com.tencent.mm.videocomposition.g vNj;
+  final ViewGroup wgq;
+  private final d wgr;
   
-  public s(w paramw)
+  static
   {
-    AppMethodBeat.i(191783);
-    this.Cfs = paramw;
-    this.TAG = "MicroMsg.MultiVideoPreview";
-    this.Cfm = new View(this.Cfs.ewT().getContext());
-    this.BWZ = new RectF();
-    this.BWY = new RectF();
-    this.Cfp = ((Runnable)new b(this));
-    this.Cfq = new a(this);
-    this.Cfr = new e(this);
-    AppMethodBeat.o(191783);
+    AppMethodBeat.i(191381);
+    GHT = new s.a((byte)0);
+    AppMethodBeat.o(191381);
   }
   
-  public final void BO(long paramLong)
+  public s(ViewGroup paramViewGroup, d paramd)
   {
-    Iterator localIterator = null;
-    AppMethodBeat.i(191781);
-    if (!this.isActive)
+    AppMethodBeat.i(191380);
+    this.wgq = paramViewGroup;
+    this.wgr = paramd;
+    paramViewGroup = this.wgq.getContext();
+    p.g(paramViewGroup, "layout.context");
+    this.context = paramViewGroup;
+    this.cQe = MultiProcessMMKV.getMMKV("MultiEditPostPreviewPlugin");
+    paramViewGroup = this.wgq.findViewById(2131302243);
+    p.g(paramViewGroup, "layout.findViewById(R.id.half_screen_select_btn)");
+    this.GHL = paramViewGroup;
+    paramViewGroup = this.wgq.findViewById(2131302239);
+    p.g(paramViewGroup, "layout.findViewById(R.id.half_screen_header)");
+    this.GHM = paramViewGroup;
+    this.GHN = kotlin.g.ah((kotlin.g.a.a)new c(this));
+    this.vJA = kotlin.g.ah((kotlin.g.a.a)new e(this));
+    this.GHO = kotlin.g.ah((kotlin.g.a.a)new b(this));
+    this.GHP = kotlin.g.ah((kotlin.g.a.a)new g(this));
+    this.GHQ = kotlin.g.ah((kotlin.g.a.a)new f(this));
+    this.thumbWidth = com.tencent.mm.cb.a.aG(this.context, 2131165281);
+    this.thumbHeight = com.tencent.mm.cb.a.aG(this.context, 2131165292);
+    this.GHS = kotlin.g.ah((kotlin.g.a.a)new h(this));
+    this.GHL.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
-      AppMethodBeat.o(191781);
-      return;
-    }
-    this.Cfo = paramLong;
-    Object localObject2 = this.BWB;
-    Object localObject1 = localIterator;
-    int i;
-    if (localObject2 != null)
-    {
-      localObject2 = (List)((com.tencent.mm.plugin.vlog.model.v)localObject2).BXJ;
-      localObject1 = localIterator;
-      if (localObject2 != null)
+      public final void onClick(View paramAnonymousView)
       {
-        localIterator = ((Iterable)localObject2).iterator();
-        if (!localIterator.hasNext()) {
-          break label178;
-        }
-        localObject1 = localIterator.next();
-        localObject2 = (com.tencent.mm.plugin.vlog.model.w)localObject1;
-        if ((((com.tencent.mm.plugin.vlog.model.w)localObject2).BXV.startTimeMs > paramLong) || (((com.tencent.mm.plugin.vlog.model.w)localObject2).BXV.hlm <= paramLong)) {
-          break label173;
-        }
-        i = 1;
-        label126:
-        if (i == 0) {
-          break label176;
+        AppMethodBeat.i(191358);
+        b localb = new b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = this.GHU;
+        if (!s.e(this.GHU)) {}
+        for (boolean bool = true;; bool = false)
+        {
+          s.a(paramAnonymousView, bool);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(191358);
+          return;
         }
       }
+    });
+    this.GHM.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(191359);
+        b localb = new b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        s.f(this.GHU);
+        s.g(this.GHU).show();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(191359);
+      }
+    });
+    AppMethodBeat.o(191380);
+  }
+  
+  private final boolean fDq()
+  {
+    AppMethodBeat.i(191368);
+    boolean bool = this.cQe.getBoolean("isFirstEnter", false);
+    AppMethodBeat.o(191368);
+    return bool;
+  }
+  
+  private final void fDr()
+  {
+    AppMethodBeat.i(191369);
+    this.cQe.putBoolean("isFirstEnter", true);
+    AppMethodBeat.o(191369);
+  }
+  
+  private final View fDs()
+  {
+    AppMethodBeat.i(191370);
+    View localView = (View)this.GHN.getValue();
+    AppMethodBeat.o(191370);
+    return localView;
+  }
+  
+  private final Button fDt()
+  {
+    AppMethodBeat.i(191371);
+    Button localButton = (Button)this.vJA.getValue();
+    AppMethodBeat.o(191371);
+    return localButton;
+  }
+  
+  private final ImageView fDu()
+  {
+    AppMethodBeat.i(191372);
+    ImageView localImageView = (ImageView)this.GHP.getValue();
+    AppMethodBeat.o(191372);
+    return localImageView;
+  }
+  
+  private final ImageView fDv()
+  {
+    AppMethodBeat.i(191373);
+    ImageView localImageView = (ImageView)this.GHQ.getValue();
+    AppMethodBeat.o(191373);
+    return localImageView;
+  }
+  
+  private final android.support.design.widget.a fDw()
+  {
+    AppMethodBeat.i(191374);
+    android.support.design.widget.a locala = (android.support.design.widget.a)this.GHS.getValue();
+    AppMethodBeat.o(191374);
+    return locala;
+  }
+  
+  private final void fDx()
+  {
+    AppMethodBeat.i(191377);
+    Object localObject3 = this.thumbPath;
+    Object localObject2;
+    if (localObject3 != null)
+    {
+      localObject2 = com.tencent.mm.plugin.gallery.a.a.dZ(com.tencent.mm.vfs.s.k(this.thumbPath, false), Math.max(this.thumbWidth, this.thumbHeight));
+      if (localObject2 == null) {}
     }
     for (;;)
     {
-      localObject1 = (com.tencent.mm.plugin.vlog.model.w)localObject1;
-      if ((p.i(localObject1, this.Cfn) ^ true)) {
-        c.h((d.g.a.a)new c(this, (com.tencent.mm.plugin.vlog.model.w)localObject1));
-      }
-      AppMethodBeat.o(191781);
-      return;
-      label173:
-      i = 0;
-      break label126;
-      label176:
-      break;
-      label178:
-      localObject1 = null;
-    }
-  }
-  
-  public final void a(Size paramSize)
-  {
-    AppMethodBeat.i(191782);
-    p.h(paramSize, "size");
-    AppMethodBeat.o(191782);
-  }
-  
-  public final void a(com.tencent.mm.plugin.vlog.model.v paramv, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
-  {
-    AppMethodBeat.i(191778);
-    p.h(paramv, "composition");
-    ae.i(this.TAG, "onUpdate: playRange:" + paramv.evI() + ", trackList.size:" + ((List)paramv.BXJ).size() + ", playAfterUpdate:" + paramBoolean1);
-    this.Cfs.ewU().za(true);
-    this.Cfs.ewU().setEnableScale(true);
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Cfs.ewO();
-    if ((p.i(localVideoCompositionPlayView.getParent(), this.Cfs.ewT()) ^ true))
-    {
-      localObject2 = localVideoCompositionPlayView.getParent();
-      localObject1 = localObject2;
-      if (!(localObject2 instanceof ViewGroup)) {
-        localObject1 = null;
-      }
-      localObject1 = (ViewGroup)localObject1;
-      if (localObject1 != null) {
-        ((ViewGroup)localObject1).removeView((View)localVideoCompositionPlayView);
-      }
-      localVideoCompositionPlayView.setScaleX(1.0F);
-      localVideoCompositionPlayView.setScaleY(1.0F);
-      localVideoCompositionPlayView.setTranslationX(0.0F);
-      localVideoCompositionPlayView.setTranslationY(0.0F);
-      ae.i(this.TAG, "videoView size width:" + this.BWZ.width() + " height:" + this.BWZ.height());
-      localObject1 = new RelativeLayout.LayoutParams((int)this.BWZ.width(), (int)this.BWZ.height());
-      ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)this.BWZ.top);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(14);
-      this.Cfs.ewT().addView((View)localVideoCompositionPlayView, 0, (ViewGroup.LayoutParams)localObject1);
-    }
-    this.Cfs.ewU().getVisibilityRect().set(this.BWY);
-    this.Cfs.getOperationLayout().getVisibilityRect().set(this.BWY);
-    this.BWB = paramv;
-    this.Cfn = ((com.tencent.mm.plugin.vlog.model.w)j.F((List)paramv.BXJ, 0));
-    exj();
-    if ((paramBoolean1) && (!paramBoolean2) && (paramLong == -1L))
-    {
-      this.Cfs.ewO().a(paramv.getComposition());
-      this.Cfs.getOperationLayout().postDelayed((Runnable)new d(this), 3000L);
-      AppMethodBeat.o(191778);
-      return;
-    }
-    Object localObject1 = com.tencent.mm.plugin.vlog.model.report.b.BZo;
-    com.tencent.mm.plugin.vlog.model.report.b.report(10L);
-    localObject1 = this.Cfs.ewO();
-    paramv = paramv.getComposition();
-    p.h(paramv, "composition");
-    com.tencent.mm.videocomposition.c.b.i(VideoCompositionPlayView.TAG, "updateComposition, playAfterUpdate:" + paramBoolean1 + ", seekToOriginPosition:" + paramBoolean2 + ", seekTo:" + paramLong, new Object[0]);
-    Object localObject2 = ((VideoCompositionPlayView)localObject1).LJJ;
-    if (localObject2 != null) {
-      ((com.tencent.mm.videocomposition.play.a)localObject2).a(paramv, paramBoolean1, paramBoolean2, paramLong);
-    }
-    ((VideoCompositionPlayView)localObject1).BXI = paramv;
-    paramv = this.Cfs.getOperationLayout();
-    localObject1 = paramv.xYA;
-    if (localObject1 != null) {
-      ((ValueAnimator)localObject1).cancel();
-    }
-    paramv.xYj = 0;
-    paramv.invalidate();
-    AppMethodBeat.o(191778);
-  }
-  
-  public final void a(c.e parame) {}
-  
-  public final Rect ewP()
-  {
-    AppMethodBeat.i(191779);
-    Rect localRect = new Rect();
-    this.Cfs.ewU().getVisibilityRect().round(localRect);
-    localRect.offset(0, -(int)this.BWZ.top);
-    AppMethodBeat.o(191779);
-    return localRect;
-  }
-  
-  public final CropLayout.c exh()
-  {
-    return (CropLayout.c)this.Cfq;
-  }
-  
-  public final WxCropOperationLayout.i exi()
-  {
-    return (WxCropOperationLayout.i)this.Cfr;
-  }
-  
-  public final void exj()
-  {
-    AppMethodBeat.i(191780);
-    Object localObject = this.Cfn;
-    if (localObject == null)
-    {
-      AppMethodBeat.o(191780);
-      return;
-    }
-    int i = ((com.tencent.mm.plugin.vlog.model.w)localObject).BXQ;
-    int j = ((com.tencent.mm.plugin.vlog.model.w)localObject).BXR;
-    localObject = ((com.tencent.mm.plugin.vlog.model.w)localObject).BXT;
-    this.Cfs.ewU().setMaxScaleValue(((g)localObject).aXE);
-    this.Cfs.ewU().setMinScaleValue(((g)localObject).aXF);
-    boolean bool = this.Cfs.ewU().getContentRect().isEmpty();
-    this.Cfs.ewU().getContentRect().set(((g)localObject).qfO);
-    this.Cfs.ewU().getContentRect().offset(0, (int)this.BWZ.top);
-    this.Cfs.ewU().a(this.Cfm, i, j, ((g)localObject).gR, CropLayout.e.LrM, (d.g.a.b)new s.f(bool));
-    ae.i(this.TAG, "updateVideoCrop, viewWidth:" + i + ", viewHeight:" + j);
-    AppMethodBeat.o(191780);
-  }
-  
-  public final void g(RectF paramRectF)
-  {
-    AppMethodBeat.i(191777);
-    p.h(paramRectF, "rect");
-    this.BWY.set(paramRectF);
-    AppMethodBeat.o(191777);
-  }
-  
-  public final void h(RectF paramRectF)
-  {
-    AppMethodBeat.i(191776);
-    p.h(paramRectF, "rect");
-    this.BWZ.set(paramRectF);
-    AppMethodBeat.o(191776);
-  }
-  
-  public final void tb(boolean paramBoolean)
-  {
-    this.isActive = paramBoolean;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl$cropChangeListener$1", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeStartEndListener;", "startScale", "", "onChange", "", "onChangeEnd", "onChangeStart", "plugin-vlog_release"})
-  public static final class a
-    implements CropLayout.d
-  {
-    private float CeG = 1.0F;
-    
-    public final void ewW()
-    {
-      AppMethodBeat.i(191767);
-      Object localObject = this.Cft.TAG;
-      StringBuilder localStringBuilder = new StringBuilder("onChangeStart: audioSeekable:");
-      c.e locale = this.Cft.Cef;
-      int i;
-      if (locale != null)
+      try
       {
-        i = locale.hashCode();
-        ae.i((String)localObject, i);
-        this.Cft.Cfs.ewO().pause();
-        localObject = this.Cft.Cef;
-        if (localObject != null) {
-          ((c.e)localObject).pause();
-        }
-        localObject = this.Cft.Cfn;
-        if (localObject == null) {
-          break label167;
-        }
-        localObject = ((com.tencent.mm.plugin.vlog.model.w)localObject).BXT;
-        if (localObject == null) {
-          break label167;
-        }
-        localObject = ((g)localObject).gR;
-        if (localObject == null) {
-          break label167;
-        }
-      }
-      label167:
-      for (float f = m.e((Matrix)localObject);; f = 1.0F)
-      {
-        this.CeG = f;
-        c.z(this.Cft.Cfp);
-        this.Cft.Cfs.getOperationLayout().dKH();
-        AppMethodBeat.o(191767);
-        return;
-        i = 0;
-        break;
-      }
-    }
-    
-    public final void ewX()
-    {
-      AppMethodBeat.i(191768);
-      Object localObject = this.Cft.TAG;
-      StringBuilder localStringBuilder = new StringBuilder("onChangeEnd: audioSeekable:");
-      c.e locale = this.Cft.Cef;
-      int i;
-      if (locale != null)
-      {
-        i = locale.hashCode();
-        ae.i((String)localObject, i);
-        this.Cft.Cfs.ewV();
-        localObject = this.Cft.Cfn;
-        if (localObject != null)
+        int i = new android.support.e.a(com.tencent.mm.vfs.s.openRead((String)localObject3)).l("Orientation");
+        localObject3 = new Matrix();
+        switch (i)
         {
-          if (this.CeG == m.e(((com.tencent.mm.plugin.vlog.model.w)localObject).BXT.gR)) {
-            break label136;
-          }
-          localObject = ((com.tencent.mm.plugin.vlog.model.w)localObject).BXU;
-          ((MediaEditReportInfo.EditItem)localObject).scaleCount += 1;
+        case 6: 
+          Object localObject1;
+          ((Matrix)localObject3).postRotate(localObject1);
+          localObject2 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject3, true);
+          fDu().setImageBitmap((Bitmap)localObject2);
+          fDv().setImageBitmap((Bitmap)localObject2);
         }
       }
-      for (;;)
+      catch (Exception localException)
       {
-        c.a(3000L, this.Cft.Cfp);
-        AppMethodBeat.o(191768);
-        return;
-        i = 0;
-        break;
-        label136:
-        localObject = ((com.tencent.mm.plugin.vlog.model.w)localObject).BXU;
-        ((MediaEditReportInfo.EditItem)localObject).dragCount += 1;
-      }
-    }
-    
-    public final void onChange()
-    {
-      AppMethodBeat.i(191766);
-      ae.i(this.Cft.TAG, "onChange: " + this.Cft.Cfs.ewU().getContentRect());
-      if (this.Cft.Cfs.ewU().getContentRect().isEmpty())
-      {
-        AppMethodBeat.o(191766);
+        Log.e("MicroMsg.MultiEditPostPreviewPlugin", "cannot decode thumbnail from " + this.thumbPath + ", " + localException.getLocalizedMessage());
+        continue;
+        AppMethodBeat.o(191377);
         return;
       }
-      com.tencent.mm.plugin.vlog.model.w localw = this.Cft.Cfn;
-      if (localw != null)
+      localObject2 = this.GxA;
+      if (localObject2 != null)
       {
-        localw.BXT.qfO.set(this.Cft.Cfs.ewU().getContentRect());
-        localw.BXV.hpa.set(this.Cft.Cfs.ewU().getContentRect());
-        localw.BXT.qfO.offset(0, -(int)this.Cft.BWZ.top);
-        localw.BXV.hpa.offset(0, -(int)this.Cft.BWZ.top);
+        localObject3 = this.vNj;
+        if (localObject3 != null) {
+          ((com.tencent.mm.videocomposition.g)localObject3).destroy();
+        }
+        localObject3 = c.RgU;
+        this.vNj = ((com.tencent.mm.videocomposition.g)c.a.b(((ad)j.ks((List)((ac)localObject2).Gzn)).GzA));
+        localObject2 = this.vNj;
+        if (localObject2 != null) {
+          ((com.tencent.mm.videocomposition.g)localObject2).setSize(this.thumbWidth, this.thumbHeight);
+        }
+        localObject2 = this.vNj;
+        if (localObject2 != null)
+        {
+          ((com.tencent.mm.videocomposition.g)localObject2).b(j.listOf(Long.valueOf(0L)), (m)new d(this));
+          AppMethodBeat.o(191377);
+          return;
+          f = 90.0F;
+          continue;
+          f = 180.0F;
+          continue;
+          f = 270.0F;
+          continue;
+        }
       }
-      if (!this.Cft.Cfs.ewO().isPlaying()) {
-        this.Cft.Cfs.ewO().bpy();
-      }
-      AppMethodBeat.o(191766);
+      AppMethodBeat.o(191377);
+      return;
+      float f = 0.0F;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  public final void a(ac paramac, long paramLong, boolean paramBoolean)
+  {
+    this.GxA = paramac;
+  }
+  
+  public final void aSs() {}
+  
+  public final void fDy()
+  {
+    AppMethodBeat.i(191378);
+    if ((!fDq()) && (this.enable))
+    {
+      fDr();
+      fDx();
+      fDw().show();
+    }
+    AppMethodBeat.o(191378);
+  }
+  
+  public final String name()
+  {
+    return null;
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(191379);
+    if (this.GGS)
+    {
+      wG(false);
+      AppMethodBeat.o(191379);
+      return true;
+    }
+    AppMethodBeat.o(191379);
+    return false;
+  }
+  
+  public final void onDetach() {}
+  
+  public final void onPause() {}
+  
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(191382);
+    p.h(paramArrayOfString, "permissions");
+    p.h(paramArrayOfInt, "grantResults");
+    t.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(191382);
+  }
+  
+  public final void onResume() {}
+  
+  public final void release() {}
+  
+  public final void reset() {}
+  
+  public final void setVisibility(int paramInt) {}
+  
+  public final void wF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(191375);
+    this.enable = paramBoolean;
+    if (paramBoolean)
+    {
+      this.GHL.setVisibility(0);
+      AppMethodBeat.o(191375);
+      return;
+    }
+    this.GHL.setVisibility(8);
+    AppMethodBeat.o(191375);
+  }
+  
+  public final void wG(boolean paramBoolean)
+  {
+    AppMethodBeat.i(191376);
+    this.GGS = paramBoolean;
+    Object localObject;
+    d.c localc;
+    Bundle localBundle;
+    if (this.GGS)
+    {
+      this.GHM.setVisibility(0);
+      this.GHL.setVisibility(8);
+      localObject = fDs();
+      p.g(localObject, "editorControlIconsContainer");
+      ((View)localObject).setVisibility(8);
+      localObject = fDt();
+      p.g(localObject, "finishBtn");
+      ((Button)localObject).setText((CharSequence)this.context.getString(2131755921));
+      localObject = this.wgr;
+      localc = d.c.BVA;
+      localBundle = new Bundle();
+      if (!this.GGS) {
+        break label202;
+      }
+    }
+    label202:
+    for (int i = 2;; i = 1)
+    {
+      localBundle.putInt("PARAM_1_INT", i);
+      ((d)localObject).a(localc, localBundle);
+      AppMethodBeat.o(191376);
+      return;
+      this.GHM.setVisibility(8);
+      this.GHL.setVisibility(0);
+      localObject = fDs();
+      p.g(localObject, "editorControlIconsContainer");
+      ((View)localObject).setVisibility(0);
+      localObject = fDt();
+      p.g(localObject, "finishBtn");
+      ((Button)localObject).setText((CharSequence)this.context.getString(2131755916));
+      break;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
-    implements Runnable
-  {
-    b(s params) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(191769);
-      this.Cft.Cfs.getOperationLayout().dKG();
-      AppMethodBeat.o(191769);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class c
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<View>
   {
-    c(s params, com.tencent.mm.plugin.vlog.model.w paramw)
+    b(s params)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.a<View>
   {
-    d(s params) {}
-    
-    public final void run()
+    c(s params)
     {
-      AppMethodBeat.i(191771);
-      WxCropOperationLayout.a(this.Cft.Cfs.getOperationLayout());
-      AppMethodBeat.o(191771);
+      super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl$operationCallback$1", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "onBlockDownClick", "", "isTopBlock", "", "onBlockTouchUp", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-vlog_release"})
-  public static final class e
-    implements WxCropOperationLayout.i
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "thumb", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditPostPreviewPlugin$ensureThumb$2$1"})
+  static final class d
+    extends q
+    implements m<Long, Bitmap, x>
   {
-    public final void e(RectF paramRectF)
+    d(s params)
     {
-      AppMethodBeat.i(191772);
-      p.h(paramRectF, "rectF");
-      this.Cft.Cfs.ewO().pause();
-      this.Cft.BWY.set(paramRectF);
-      ae.i(this.Cft.TAG, "operationCallback onChange:".concat(String.valueOf(paramRectF)));
-      Object localObject = this.Cft.BWB;
-      com.tencent.mm.plugin.vlog.model.w localw;
-      g localg;
-      float f1;
-      Matrix localMatrix;
-      RectF localRectF;
-      float f2;
-      if (localObject != null)
-      {
-        localObject = (List)((com.tencent.mm.plugin.vlog.model.v)localObject).BXJ;
-        if (localObject != null)
-        {
-          localObject = ((Iterable)localObject).iterator();
-          for (;;)
-          {
-            if (((Iterator)localObject).hasNext())
-            {
-              localw = (com.tencent.mm.plugin.vlog.model.w)((Iterator)localObject).next();
-              localg = localw.BXT;
-              paramRectF.round(localg.hpa);
-              localg.hpa.offset(0, -(int)this.Cft.BWZ.top);
-              if (!p.i(this.Cft.Cfn, localw))
-              {
-                localg.qfO.offset(0, (int)this.Cft.BWZ.top);
-                f1 = paramRectF.bottom - localg.qfO.bottom;
-                float f3 = paramRectF.top - localg.qfO.top;
-                if ((f1 > 0.0F) || (f3 < 0.0F))
-                {
-                  localMatrix = new Matrix();
-                  localRectF = new RectF(localg.qfO);
-                  f2 = paramRectF.height() / localRectF.height();
-                  if (f2 < 1.0F)
-                  {
-                    if (f3 >= 0.0F) {
-                      break label594;
-                    }
-                    f1 = f3;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      label288:
-      label594:
-      for (;;)
-      {
-        f2 = 1.0F;
-        localMatrix.postTranslate(0.0F, f1);
-        localMatrix.postScale(f2, f2, paramRectF.centerX(), paramRectF.centerY());
-        localMatrix.mapRect(localRectF);
-        localRectF.round(localg.qfO);
-        localRectF.round(localw.BXV.hpa);
-        localw.BXT.qfO.offset(0, -(int)this.Cft.BWZ.top);
-        localw.BXV.hpa.offset(0, -(int)this.Cft.BWZ.top);
-        localg.gR.postConcat(localMatrix);
-        for (;;)
-        {
-          ae.i(this.Cft.TAG, "operationCallback track info, id:" + localw.id + ", contentRect:" + localw.BXT.qfO);
-          break;
-          f1 = paramRectF.centerY() - localRectF.centerY();
-          break label288;
-          localw.BXT.qfO.offset(0, -(int)this.Cft.BWZ.top);
-        }
-        localObject = this.Cft.Cfn;
-        if (localObject != null)
-        {
-          localObject = ((com.tencent.mm.plugin.vlog.model.w)localObject).BXT;
-          if (localObject == null) {}
-        }
-        for (localObject = ((g)localObject).qfO;; localObject = null)
-        {
-          if ((localObject == null) || (!this.Cft.Cfs.ewU().getContentRect().isEmpty())) {
-            this.Cft.Cfs.ewU().i(paramRectF);
-          }
-          this.Cft.Cfs.ewO().resume();
-          AppMethodBeat.o(191772);
-          return;
-        }
-      }
+      super();
     }
-    
-    public final void mS(boolean paramBoolean)
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class e
+    extends q
+    implements kotlin.g.a.a<Button>
+  {
+    e(s params)
     {
-      AppMethodBeat.i(191773);
-      c.z(this.Cft.Cfp);
-      this.Cft.Cfs.getOperationLayout().dKH();
-      AppMethodBeat.o(191773);
+      super();
     }
-    
-    public final void mT(boolean paramBoolean)
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class f
+    extends q
+    implements kotlin.g.a.a<ImageView>
+  {
+    f(s params)
     {
-      AppMethodBeat.i(191774);
-      c.a(3000L, this.Cft.Cfp);
-      AppMethodBeat.o(191774);
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class g
+    extends q
+    implements kotlin.g.a.a<ImageView>
+  {
+    g(s params)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/design/widget/BottomSheetDialog;", "invoke"})
+  static final class h
+    extends q
+    implements kotlin.g.a.a<android.support.design.widget.a>
+  {
+    h(s params)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.s
  * JD-Core Version:    0.7.0.1
  */

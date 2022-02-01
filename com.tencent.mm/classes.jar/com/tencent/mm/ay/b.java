@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static boolean GC(String paramString)
+  public static boolean Po(String paramString)
   {
     AppMethodBeat.i(137007);
-    f localf = a.aKc();
-    if ((localf != null) && (localf.ikf.equals(paramString)))
+    f localf = a.bef();
+    if ((localf != null) && (localf.jfb.equals(paramString)))
     {
       AppMethodBeat.o(137007);
       return true;
@@ -17,12 +17,12 @@ public final class b
     return false;
   }
   
-  public static boolean aKe()
+  public static boolean beh()
   {
     AppMethodBeat.i(137004);
-    if ((a.aKb()) && (!a.aJZ()))
+    if ((a.bee()) && (!a.bec()))
     {
-      a.aJW();
+      a.bdZ();
       AppMethodBeat.o(137004);
       return true;
     }
@@ -30,12 +30,12 @@ public final class b
     return false;
   }
   
-  public static boolean aKf()
+  public static boolean bei()
   {
     AppMethodBeat.i(137005);
-    if (a.aJZ())
+    if (a.bec())
     {
-      a.aJV();
+      a.bdY();
       AppMethodBeat.o(137005);
       return true;
     }
@@ -43,12 +43,12 @@ public final class b
     return false;
   }
   
-  public static boolean aKg()
+  public static boolean bej()
   {
     AppMethodBeat.i(137006);
-    if (a.aKb())
+    if (a.bee())
     {
-      a.aJX();
+      a.bea();
       AppMethodBeat.o(137006);
       return true;
     }

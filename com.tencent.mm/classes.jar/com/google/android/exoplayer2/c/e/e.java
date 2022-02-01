@@ -9,31 +9,31 @@ import java.io.EOFException;
 
 final class e
 {
-  private static final int bps;
-  private final m biq;
-  public int bkN;
-  public final int[] bpA;
+  private static final int bpn;
+  private final m bin;
+  public int bkI;
+  public int bpo;
+  public long bpp;
+  public long bpq;
+  public long bpr;
+  public long bps;
   public int bpt;
-  public long bpu;
-  public long bpv;
-  public long bpw;
-  public long bpx;
-  public int bpy;
-  public int bpz;
+  public int bpu;
+  public final int[] bpv;
   public int type;
   
   static
   {
     AppMethodBeat.i(92159);
-    bps = x.bJ("OggS");
+    bpn = x.bJ("OggS");
     AppMethodBeat.o(92159);
   }
   
   e()
   {
     AppMethodBeat.i(92157);
-    this.bpA = new int['ÿ'];
-    this.biq = new m(255);
+    this.bpv = new int['ÿ'];
+    this.bin = new m(255);
     AppMethodBeat.o(92157);
   }
   
@@ -41,12 +41,12 @@ final class e
   {
     int j = 0;
     AppMethodBeat.i(92158);
-    this.biq.reset();
+    this.bin.reset();
     reset();
-    if ((paramf.getLength() == -1L) || (paramf.getLength() - paramf.ur() >= 27L)) {
+    if ((paramf.getLength() == -1L) || (paramf.getLength() - paramf.uw() >= 27L)) {
       i = 1;
     }
-    while ((i == 0) || (!paramf.b(this.biq.data, 0, 27, true))) {
+    while ((i == 0) || (!paramf.b(this.bin.data, 0, 27, true))) {
       if (paramBoolean)
       {
         AppMethodBeat.o(92158);
@@ -60,7 +60,7 @@ final class e
         throw paramf;
       }
     }
-    if (this.biq.dB() != bps)
+    if (this.bin.dE() != bpn)
     {
       if (paramBoolean)
       {
@@ -71,8 +71,8 @@ final class e
       AppMethodBeat.o(92158);
       throw paramf;
     }
-    this.bpt = this.biq.readUnsignedByte();
-    if (this.bpt != 0)
+    this.bpo = this.bin.readUnsignedByte();
+    if (this.bpo != 0)
     {
       if (paramBoolean)
       {
@@ -83,20 +83,20 @@ final class e
       AppMethodBeat.o(92158);
       throw paramf;
     }
-    this.type = this.biq.readUnsignedByte();
-    this.bpu = this.biq.xa();
-    this.bpv = this.biq.wY();
-    this.bpw = this.biq.wY();
-    this.bpx = this.biq.wY();
-    this.bpy = this.biq.readUnsignedByte();
-    this.bkN = (this.bpy + 27);
-    this.biq.reset();
-    paramf.b(this.biq.data, 0, this.bpy);
+    this.type = this.bin.readUnsignedByte();
+    this.bpp = this.bin.xi();
+    this.bpq = this.bin.xg();
+    this.bpr = this.bin.xg();
+    this.bps = this.bin.xg();
+    this.bpt = this.bin.readUnsignedByte();
+    this.bkI = (this.bpt + 27);
+    this.bin.reset();
+    paramf.b(this.bin.data, 0, this.bpt);
     int i = j;
-    while (i < this.bpy)
+    while (i < this.bpt)
     {
-      this.bpA[i] = this.biq.readUnsignedByte();
-      this.bpz += this.bpA[i];
+      this.bpv[i] = this.bin.readUnsignedByte();
+      this.bpu += this.bpv[i];
       i += 1;
     }
     AppMethodBeat.o(92158);
@@ -105,20 +105,20 @@ final class e
   
   public final void reset()
   {
-    this.bpt = 0;
+    this.bpo = 0;
     this.type = 0;
-    this.bpu = 0L;
-    this.bpv = 0L;
-    this.bpw = 0L;
-    this.bpx = 0L;
-    this.bpy = 0;
-    this.bkN = 0;
-    this.bpz = 0;
+    this.bpp = 0L;
+    this.bpq = 0L;
+    this.bpr = 0L;
+    this.bps = 0L;
+    this.bpt = 0;
+    this.bkI = 0;
+    this.bpu = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.e
  * JD-Core Version:    0.7.0.1
  */

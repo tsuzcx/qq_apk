@@ -9,19 +9,19 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g oJM;
+  private g pXA;
   
   public h(g paramg)
   {
-    this.oJM = paramg;
+    this.pXA = paramg;
   }
   
-  public final b Ay(int paramInt)
+  public final b Ed(int paramInt)
   {
     AppMethodBeat.i(113099);
-    if (this.oJM != null)
+    if (this.pXA != null)
     {
-      b localb = this.oJM.Ay(paramInt);
+      b localb = this.pXA.Ed(paramInt);
       AppMethodBeat.o(113099);
       return localb;
     }
@@ -32,21 +32,21 @@ public final class h
   public final void onCreate()
   {
     AppMethodBeat.i(113096);
-    this.oJM.notifyDataSetChanged();
+    this.pXA.notifyDataSetChanged();
     AppMethodBeat.o(113096);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(113097);
-    if (this.oJM != null)
+    if (this.pXA != null)
     {
-      g localg = this.oJM;
-      localg.oJA.release();
-      localg.oJA = null;
-      localg.oJL.clear();
+      g localg = this.pXA;
+      localg.pXo.release();
+      localg.pXo = null;
+      localg.pXz.clear();
       localg.mContext = null;
-      this.oJM = null;
+      this.pXA = null;
     }
     AppMethodBeat.o(113097);
   }
@@ -54,15 +54,15 @@ public final class h
   public final void onNotify()
   {
     AppMethodBeat.i(113098);
-    if (this.oJM != null) {
-      this.oJM.notifyDataSetChanged();
+    if (this.pXA != null) {
+      this.pXA.notifyDataSetChanged();
     }
     AppMethodBeat.o(113098);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.h
  * JD-Core Version:    0.7.0.1
  */

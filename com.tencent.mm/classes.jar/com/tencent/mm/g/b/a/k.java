@@ -6,98 +6,124 @@ import com.tencent.mm.plugin.report.a;
 public final class k
   extends a
 {
-  public int dTg = 0;
-  public int dTh = 0;
-  public int dTi = 0;
-  public int dTj = 0;
-  private String dTk = "";
-  public int dTl;
-  public long dTm = 0L;
-  public long dTn = 0L;
-  private String dTo = "";
-  public long dTp = 0L;
+  private int eki;
+  private long ekj;
+  private long ekk;
+  private long ekl;
+  private long ekm;
+  private String ekn = "";
+  private String eko = "";
+  private long ekp;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(149905);
+    AppMethodBeat.i(224144);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTg);
+    ((StringBuffer)localObject).append(this.eki);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTh);
+    ((StringBuffer)localObject).append(this.ekj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTi);
+    ((StringBuffer)localObject).append(this.ekk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTj);
+    ((StringBuffer)localObject).append(this.ekl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTk);
+    ((StringBuffer)localObject).append(this.ekm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTl);
+    ((StringBuffer)localObject).append(this.ekn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTm);
+    ((StringBuffer)localObject).append(this.eko);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTn);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTo);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTp);
+    ((StringBuffer)localObject).append(this.ekp);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(149905);
+    aMq((String)localObject);
+    AppMethodBeat.o(224144);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(149906);
+    AppMethodBeat.i(224145);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("optype:").append(this.dTg);
+    ((StringBuffer)localObject).append("Action:").append(this.eki);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errtype:").append(this.dTh);
+    ((StringBuffer)localObject).append("ReqNum:").append(this.ekj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errcode:").append(this.dTi);
+    ((StringBuffer)localObject).append("RespNum:").append(this.ekk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("mapederror:").append(this.dTj);
+    ((StringBuffer)localObject).append("DataStartTime:").append(this.ekl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("filekey:").append(this.dTk);
+    ((StringBuffer)localObject).append("DataEndTime:").append(this.ekm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("filetype:").append(this.dTl);
+    ((StringBuffer)localObject).append("ReqContent:").append(this.ekn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TryWritenBytes:").append(this.dTm);
+    ((StringBuffer)localObject).append("RespContent:").append(this.eko);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AvailableBytes:").append(this.dTn);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SystemErrorDescribe:").append(this.dTo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrentFileSize:").append(this.dTp);
+    ((StringBuffer)localObject).append("DataNum:").append(this.ekp);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149906);
+    AppMethodBeat.o(224145);
     return localObject;
   }
   
-  public final k gM(String paramString)
+  public final k bM(long paramLong)
   {
-    AppMethodBeat.i(149903);
-    this.dTk = t("filekey", paramString, true);
-    AppMethodBeat.o(149903);
+    this.ekj = paramLong;
     return this;
   }
   
-  public final k gN(String paramString)
+  public final k bN(long paramLong)
   {
-    AppMethodBeat.i(149904);
-    this.dTo = t("SystemErrorDescribe", paramString, true);
-    AppMethodBeat.o(149904);
+    this.ekk = paramLong;
+    return this;
+  }
+  
+  public final k bO(long paramLong)
+  {
+    this.ekl = paramLong;
+    return this;
+  }
+  
+  public final k bP(long paramLong)
+  {
+    this.ekm = paramLong;
+    return this;
+  }
+  
+  public final k bQ(long paramLong)
+  {
+    this.ekp = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 17473;
+    return 20808;
+  }
+  
+  public final k hN(String paramString)
+  {
+    AppMethodBeat.i(224142);
+    this.ekn = x("ReqContent", paramString, true);
+    AppMethodBeat.o(224142);
+    return this;
+  }
+  
+  public final k hO(String paramString)
+  {
+    AppMethodBeat.i(224143);
+    this.eko = x("RespContent", paramString, true);
+    AppMethodBeat.o(224143);
+    return this;
+  }
+  
+  public final k jB(int paramInt)
+  {
+    this.eki = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.b.a.k
  * JD-Core Version:    0.7.0.1
  */

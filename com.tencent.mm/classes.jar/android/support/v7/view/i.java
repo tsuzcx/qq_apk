@@ -17,139 +17,139 @@ import java.util.List;
 public class i
   implements Window.Callback
 {
-  final Window.Callback aeq;
+  final Window.Callback aeD;
   
   public i(Window.Callback paramCallback)
   {
     if (paramCallback == null) {
       throw new IllegalArgumentException("Window callback may not be null");
     }
-    this.aeq = paramCallback;
+    this.aeD = paramCallback;
   }
   
   public boolean dispatchGenericMotionEvent(MotionEvent paramMotionEvent)
   {
-    return this.aeq.dispatchGenericMotionEvent(paramMotionEvent);
+    return this.aeD.dispatchGenericMotionEvent(paramMotionEvent);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    return this.aeq.dispatchKeyEvent(paramKeyEvent);
+    return this.aeD.dispatchKeyEvent(paramKeyEvent);
   }
   
   public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
   {
-    return this.aeq.dispatchKeyShortcutEvent(paramKeyEvent);
+    return this.aeD.dispatchKeyShortcutEvent(paramKeyEvent);
   }
   
   public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
-    return this.aeq.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+    return this.aeD.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.aeq.dispatchTouchEvent(paramMotionEvent);
+    return this.aeD.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean dispatchTrackballEvent(MotionEvent paramMotionEvent)
   {
-    return this.aeq.dispatchTrackballEvent(paramMotionEvent);
+    return this.aeD.dispatchTrackballEvent(paramMotionEvent);
   }
   
   public void onActionModeFinished(ActionMode paramActionMode)
   {
-    this.aeq.onActionModeFinished(paramActionMode);
+    this.aeD.onActionModeFinished(paramActionMode);
   }
   
   public void onActionModeStarted(ActionMode paramActionMode)
   {
-    this.aeq.onActionModeStarted(paramActionMode);
+    this.aeD.onActionModeStarted(paramActionMode);
   }
   
   public void onAttachedToWindow()
   {
-    this.aeq.onAttachedToWindow();
+    this.aeD.onAttachedToWindow();
   }
   
   public void onContentChanged()
   {
-    this.aeq.onContentChanged();
+    this.aeD.onContentChanged();
   }
   
   public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
   {
-    return this.aeq.onCreatePanelMenu(paramInt, paramMenu);
+    return this.aeD.onCreatePanelMenu(paramInt, paramMenu);
   }
   
   public View onCreatePanelView(int paramInt)
   {
-    return this.aeq.onCreatePanelView(paramInt);
+    return this.aeD.onCreatePanelView(paramInt);
   }
   
   public void onDetachedFromWindow()
   {
-    this.aeq.onDetachedFromWindow();
+    this.aeD.onDetachedFromWindow();
   }
   
   public boolean onMenuItemSelected(int paramInt, MenuItem paramMenuItem)
   {
-    return this.aeq.onMenuItemSelected(paramInt, paramMenuItem);
+    return this.aeD.onMenuItemSelected(paramInt, paramMenuItem);
   }
   
   public boolean onMenuOpened(int paramInt, Menu paramMenu)
   {
-    return this.aeq.onMenuOpened(paramInt, paramMenu);
+    return this.aeD.onMenuOpened(paramInt, paramMenu);
   }
   
   public void onPanelClosed(int paramInt, Menu paramMenu)
   {
-    this.aeq.onPanelClosed(paramInt, paramMenu);
+    this.aeD.onPanelClosed(paramInt, paramMenu);
   }
   
   public void onPointerCaptureChanged(boolean paramBoolean)
   {
-    this.aeq.onPointerCaptureChanged(paramBoolean);
+    this.aeD.onPointerCaptureChanged(paramBoolean);
   }
   
   public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
   {
-    return this.aeq.onPreparePanel(paramInt, paramView, paramMenu);
+    return this.aeD.onPreparePanel(paramInt, paramView, paramMenu);
   }
   
   public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
   {
-    this.aeq.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
+    this.aeD.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
   }
   
   public boolean onSearchRequested()
   {
-    return this.aeq.onSearchRequested();
+    return this.aeD.onSearchRequested();
   }
   
   public boolean onSearchRequested(SearchEvent paramSearchEvent)
   {
-    return this.aeq.onSearchRequested(paramSearchEvent);
+    return this.aeD.onSearchRequested(paramSearchEvent);
   }
   
   public void onWindowAttributesChanged(WindowManager.LayoutParams paramLayoutParams)
   {
-    this.aeq.onWindowAttributesChanged(paramLayoutParams);
+    this.aeD.onWindowAttributesChanged(paramLayoutParams);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    this.aeq.onWindowFocusChanged(paramBoolean);
+    this.aeD.onWindowFocusChanged(paramBoolean);
   }
   
   public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
   {
-    return this.aeq.onWindowStartingActionMode(paramCallback);
+    return this.aeD.onWindowStartingActionMode(paramCallback);
   }
   
   public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
   {
-    return this.aeq.onWindowStartingActionMode(paramCallback, paramInt);
+    return this.aeD.onWindowStartingActionMode(paramCallback, paramInt);
   }
 }
 

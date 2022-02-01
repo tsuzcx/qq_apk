@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.walletlock.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
 {
   private static long sessionId = -1L;
   
-  public static void aB(int paramInt1, int paramInt2, int paramInt3)
+  public static void aJ(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(129939);
     if (sessionId == -1L)
     {
-      ae.e("MicroMsg.WalletLockReportManager", "alvinluo wallet lock report sessionId is -1, not create session, ignore");
+      Log.e("MicroMsg.WalletLockReportManager", "alvinluo wallet lock report sessionId is -1, not create session, ignore");
       AppMethodBeat.o(129939);
       return;
     }
@@ -22,36 +21,36 @@ public final class h
       AppMethodBeat.o(129939);
       return;
     }
-    ae.i("MicroMsg.WalletLockReportManager", "alvinluo reportVerifyWalletLock session: %d, protectScene: %d, walletLockType: %d, result: %d", new Object[] { Long.valueOf(sessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    g.yxI.f(14839, new Object[] { Long.valueOf(sessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.WalletLockReportManager", "alvinluo reportVerifyWalletLock session: %d, protectScene: %d, walletLockType: %d, result: %d", new Object[] { Long.valueOf(sessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    com.tencent.mm.plugin.report.service.h.CyF.a(14839, new Object[] { Long.valueOf(sessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(129939);
   }
   
-  public static void eNN()
+  public static void fVw()
   {
     AppMethodBeat.i(129936);
-    ae.i("MicroMsg.WalletLockReportManager", "alvinluo idkey report fingerprintlock verify by passwd success");
-    g.yxI.idkeyStat(713L, 2L, 1L, false);
+    Log.i("MicroMsg.WalletLockReportManager", "alvinluo idkey report fingerprintlock verify by passwd success");
+    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(713L, 2L, 1L, false);
     AppMethodBeat.o(129936);
   }
   
-  public static void eNO()
+  public static void fVx()
   {
     AppMethodBeat.i(129937);
-    ae.i("MicroMsg.WalletLockReportManager", "alvinluo idkey report close wallet lock success");
-    g.yxI.idkeyStat(713L, 3L, 1L, false);
+    Log.i("MicroMsg.WalletLockReportManager", "alvinluo idkey report close wallet lock success");
+    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(713L, 3L, 1L, false);
     AppMethodBeat.o(129937);
   }
   
-  public static void eNP()
+  public static void fVy()
   {
     AppMethodBeat.i(129938);
     sessionId = System.currentTimeMillis();
-    ae.i("MicroMsg.WalletLockReportManager", "alvinluo wallet lock report create session: %d", new Object[] { Long.valueOf(sessionId) });
+    Log.i("MicroMsg.WalletLockReportManager", "alvinluo wallet lock report create session: %d", new Object[] { Long.valueOf(sessionId) });
     AppMethodBeat.o(129938);
   }
   
-  public static void iS(int paramInt1, int paramInt2)
+  public static void jY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(129934);
     switch (paramInt2)
@@ -63,8 +62,8 @@ public final class h
     {
       if (paramInt1 != -1)
       {
-        ae.i("MicroMsg.WalletLockReportManager", "alvinluo wallet lock idkey report id: %d, key: %d, value: %d", new Object[] { Integer.valueOf(713), Integer.valueOf(paramInt1), Long.valueOf(1L) });
-        g.yxI.idkeyStat(713L, paramInt1, 1L, false);
+        Log.i("MicroMsg.WalletLockReportManager", "alvinluo wallet lock idkey report id: %d, key: %d, value: %d", new Object[] { Integer.valueOf(713), Integer.valueOf(paramInt1), Long.valueOf(1L) });
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(713L, paramInt1, 1L, false);
       }
       AppMethodBeat.o(129934);
       return;
@@ -83,15 +82,15 @@ public final class h
     }
   }
   
-  public static void uR(boolean paramBoolean)
+  public static void yG(boolean paramBoolean)
   {
     AppMethodBeat.i(129935);
-    ae.i("MicroMsg.WalletLockReportManager", "alvinluo idkey fingerprint open result: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    g localg = g.yxI;
+    Log.i("MicroMsg.WalletLockReportManager", "alvinluo idkey fingerprint open result: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.CyF;
     if (paramBoolean) {}
     for (long l = 0L;; l = 1L)
     {
-      localg.idkeyStat(713L, l, 1L, false);
+      localh.idkeyStat(713L, l, 1L, false);
       AppMethodBeat.o(129935);
       return;
     }
@@ -99,7 +98,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.c.h
  * JD-Core Version:    0.7.0.1
  */

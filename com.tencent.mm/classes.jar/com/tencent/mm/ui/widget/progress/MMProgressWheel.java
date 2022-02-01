@@ -26,29 +26,29 @@ public class MMProgressWheel
   extends View
 {
   private static final String TAG;
-  private final int LyT;
-  private final int LyU;
-  private final long LyV;
-  private int LyW;
-  private int LyX;
-  private boolean LyY;
-  private double LyZ;
-  private double Lza;
-  private float Lzb;
-  private boolean Lzc;
-  private long Lzd;
-  private int Lze;
-  private int Lzf;
-  private Paint Lzg;
-  private Paint Lzh;
-  private RectF Lzi;
-  private float Lzj;
-  private long Lzk;
-  private boolean Lzl;
-  private float Lzm;
-  private boolean Lzn;
-  private a Lzo;
-  private boolean Lzp;
+  private final int QUJ;
+  private final int QUK;
+  private final long QUL;
+  private int QUM;
+  private int QUN;
+  private boolean QUO;
+  private double QUP;
+  private double QUQ;
+  private float QUR;
+  private boolean QUS;
+  private long QUT;
+  private int QUU;
+  private int QUV;
+  private Paint QUW;
+  private Paint QUX;
+  private RectF QUY;
+  private float QUZ;
+  private long QVa;
+  private boolean QVb;
+  private float QVc;
+  private boolean QVd;
+  private a QVe;
+  private boolean QVf;
   private int circleRadius;
   private float mProgress;
   
@@ -63,46 +63,46 @@ public class MMProgressWheel
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159665);
-    this.LyT = 16;
-    this.LyU = 270;
-    this.LyV = 200L;
+    this.QUJ = 16;
+    this.QUK = 270;
+    this.QUL = 200L;
     this.circleRadius = 28;
-    this.LyW = 4;
-    this.LyX = 4;
-    this.LyY = false;
-    this.LyZ = 0.0D;
-    this.Lza = 460.0D;
-    this.Lzb = 0.0F;
-    this.Lzc = true;
-    this.Lzd = 0L;
-    this.Lze = -1442840576;
-    this.Lzf = 16777215;
-    this.Lzg = new Paint();
-    this.Lzh = new Paint();
-    this.Lzi = new RectF();
-    this.Lzj = 230.0F;
-    this.Lzk = 0L;
+    this.QUM = 4;
+    this.QUN = 4;
+    this.QUO = false;
+    this.QUP = 0.0D;
+    this.QUQ = 460.0D;
+    this.QUR = 0.0F;
+    this.QUS = true;
+    this.QUT = 0L;
+    this.QUU = -1442840576;
+    this.QUV = 16777215;
+    this.QUW = new Paint();
+    this.QUX = new Paint();
+    this.QUY = new RectF();
+    this.QUZ = 230.0F;
+    this.QVa = 0L;
     this.mProgress = 0.0F;
-    this.Lzm = 0.0F;
-    this.Lzn = false;
+    this.QVc = 0.0F;
+    this.QVd = false;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMProgressWheel);
     paramAttributeSet = getContext().getResources().getDisplayMetrics();
-    this.LyW = ((int)TypedValue.applyDimension(1, this.LyW, paramAttributeSet));
-    this.LyX = ((int)TypedValue.applyDimension(1, this.LyX, paramAttributeSet));
+    this.QUM = ((int)TypedValue.applyDimension(1, this.QUM, paramAttributeSet));
+    this.QUN = ((int)TypedValue.applyDimension(1, this.QUN, paramAttributeSet));
     this.circleRadius = ((int)TypedValue.applyDimension(1, this.circleRadius, paramAttributeSet));
     this.circleRadius = ((int)paramContext.getDimension(3, this.circleRadius));
-    this.LyY = paramContext.getBoolean(4, false);
-    this.LyW = ((int)paramContext.getDimension(2, this.LyW));
-    this.LyX = ((int)paramContext.getDimension(8, this.LyX));
-    this.Lzj = (paramContext.getFloat(9, this.Lzj / 360.0F) * 360.0F);
-    this.Lza = paramContext.getInt(1, (int)this.Lza);
-    this.Lze = paramContext.getColor(0, this.Lze);
-    this.Lzf = paramContext.getColor(7, this.Lzf);
-    this.Lzl = paramContext.getBoolean(5, false);
+    this.QUO = paramContext.getBoolean(4, false);
+    this.QUM = ((int)paramContext.getDimension(2, this.QUM));
+    this.QUN = ((int)paramContext.getDimension(8, this.QUN));
+    this.QUZ = (paramContext.getFloat(9, this.QUZ / 360.0F) * 360.0F);
+    this.QUQ = paramContext.getInt(1, (int)this.QUQ);
+    this.QUU = paramContext.getColor(0, this.QUU);
+    this.QUV = paramContext.getColor(7, this.QUV);
+    this.QVb = paramContext.getBoolean(5, false);
     if (paramContext.getBoolean(6, false))
     {
-      this.Lzk = SystemClock.uptimeMillis();
-      this.Lzn = true;
+      this.QVa = SystemClock.uptimeMillis();
+      this.QVd = true;
       invalidate();
     }
     paramContext.recycle();
@@ -116,7 +116,7 @@ public class MMProgressWheel
     }
     for (;;)
     {
-      this.Lzp = bool;
+      this.QVf = bool;
       AppMethodBeat.o(159665);
       return;
       f = Settings.System.getFloat(getContext().getContentResolver(), "animator_duration_scale", 1.0F);
@@ -126,24 +126,24 @@ public class MMProgressWheel
     }
   }
   
-  private void fRw()
+  private void hcy()
   {
     AppMethodBeat.i(159668);
-    this.Lzg.setColor(this.Lze);
-    this.Lzg.setAntiAlias(true);
-    this.Lzg.setStyle(Paint.Style.STROKE);
-    this.Lzg.setStrokeWidth(this.LyW);
-    this.Lzh.setColor(this.Lzf);
-    this.Lzh.setAntiAlias(true);
-    this.Lzh.setStyle(Paint.Style.STROKE);
-    this.Lzh.setStrokeWidth(this.LyX);
+    this.QUW.setColor(this.QUU);
+    this.QUW.setAntiAlias(true);
+    this.QUW.setStyle(Paint.Style.STROKE);
+    this.QUW.setStrokeWidth(this.QUM);
+    this.QUX.setColor(this.QUV);
+    this.QUX.setAntiAlias(true);
+    this.QUX.setStyle(Paint.Style.STROKE);
+    this.QUX.setStrokeWidth(this.QUN);
     AppMethodBeat.o(159668);
   }
   
-  private void fRx()
+  private void hcz()
   {
     AppMethodBeat.i(159672);
-    if (this.Lzo != null) {
+    if (this.QVe != null) {
       Math.round(this.mProgress * 100.0F / 360.0F);
     }
     AppMethodBeat.o(159672);
@@ -151,12 +151,12 @@ public class MMProgressWheel
   
   public int getBarColor()
   {
-    return this.Lze;
+    return this.QUU;
   }
   
   public int getBarWidth()
   {
-    return this.LyW;
+    return this.QUM;
   }
   
   public int getCircleRadius()
@@ -166,7 +166,7 @@ public class MMProgressWheel
   
   public float getProgress()
   {
-    if (this.Lzn) {
+    if (this.QVd) {
       return -1.0F;
     }
     return this.mProgress / 360.0F;
@@ -174,17 +174,17 @@ public class MMProgressWheel
   
   public int getRimColor()
   {
-    return this.Lzf;
+    return this.QUV;
   }
   
   public int getRimWidth()
   {
-    return this.LyX;
+    return this.QUN;
   }
   
   public float getSpinSpeed()
   {
-    return this.Lzj / 360.0F;
+    return this.QUZ / 360.0F;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -193,39 +193,39 @@ public class MMProgressWheel
     int i = 1;
     AppMethodBeat.i(159670);
     super.onDraw(paramCanvas);
-    paramCanvas.drawArc(this.Lzi, 360.0F, 360.0F, false, this.Lzh);
-    if (!this.Lzp)
+    paramCanvas.drawArc(this.QUY, 360.0F, 360.0F, false, this.QUX);
+    if (!this.QVf)
     {
       AppMethodBeat.o(159670);
       return;
     }
     float f2;
-    if (this.Lzn)
+    if (this.QVd)
     {
-      long l = SystemClock.uptimeMillis() - this.Lzk;
-      f1 = (float)l * this.Lzj / 1000.0F;
+      long l = SystemClock.uptimeMillis() - this.QVa;
+      f1 = (float)l * this.QUZ / 1000.0F;
       boolean bool;
-      if (this.Lzd >= 200L)
+      if (this.QUT >= 200L)
       {
-        double d = this.LyZ;
-        this.LyZ = (l + d);
-        if (this.LyZ > this.Lza)
+        double d = this.QUP;
+        this.QUP = (l + d);
+        if (this.QUP > this.QUQ)
         {
-          this.LyZ -= this.Lza;
-          this.Lzd = 0L;
-          if (!this.Lzc)
+          this.QUP -= this.QUQ;
+          this.QUT = 0L;
+          if (!this.QUS)
           {
             bool = true;
-            this.Lzc = bool;
+            this.QUS = bool;
           }
         }
         else
         {
-          f2 = (float)Math.cos((this.LyZ / this.Lza + 1.0D) * 3.141592653589793D) / 2.0F + 0.5F;
-          if (!this.Lzc) {
+          f2 = (float)Math.cos((this.QUP / this.QUQ + 1.0D) * 3.141592653589793D) / 2.0F + 0.5F;
+          if (!this.QUS) {
             break label307;
           }
-          this.Lzb = (f2 * 254.0F);
+          this.QUR = (f2 * 254.0F);
         }
       }
       for (;;)
@@ -234,15 +234,15 @@ public class MMProgressWheel
         if (this.mProgress > 360.0F) {
           this.mProgress -= 360.0F;
         }
-        this.Lzk = SystemClock.uptimeMillis();
+        this.QVa = SystemClock.uptimeMillis();
         f1 = this.mProgress - 90.0F;
-        f2 = 16.0F + this.Lzb;
+        f2 = 16.0F + this.QUR;
         if (isInEditMode())
         {
           f1 = 0.0F;
           f2 = 135.0F;
         }
-        paramCanvas.drawArc(this.Lzi, f1, f2, false, this.Lzg);
+        paramCanvas.drawArc(this.QUY, f1, f2, false, this.QUW);
         if (i != 0) {
           invalidate();
         }
@@ -252,26 +252,26 @@ public class MMProgressWheel
         break;
         label307:
         f2 = (1.0F - f2) * 254.0F;
-        this.mProgress += this.Lzb - f2;
-        this.Lzb = f2;
+        this.mProgress += this.QUR - f2;
+        this.QUR = f2;
         continue;
-        this.Lzd = (l + this.Lzd);
+        this.QUT = (l + this.QUT);
       }
     }
     float f1 = this.mProgress;
-    if (this.mProgress != this.Lzm)
+    if (this.mProgress != this.QVc)
     {
-      this.mProgress = Math.min((float)(SystemClock.uptimeMillis() - this.Lzk) / 1000.0F * this.Lzj + this.mProgress, this.Lzm);
-      this.Lzk = SystemClock.uptimeMillis();
+      this.mProgress = Math.min((float)(SystemClock.uptimeMillis() - this.QVa) / 1000.0F * this.QUZ + this.mProgress, this.QVc);
+      this.QVa = SystemClock.uptimeMillis();
     }
     for (i = j;; i = 0)
     {
       if (f1 != this.mProgress) {
-        fRx();
+        hcz();
       }
       f2 = 0.0F;
       f1 = this.mProgress;
-      if (!this.Lzl)
+      if (!this.QVb)
       {
         f2 = (float)(1.0D - Math.pow(1.0F - this.mProgress / 360.0F, 4.0D)) * 360.0F;
         f1 = (float)(1.0D - Math.pow(1.0F - this.mProgress / 360.0F, 2.0D)) * 360.0F;
@@ -281,7 +281,7 @@ public class MMProgressWheel
       }
       for (;;)
       {
-        paramCanvas.drawArc(this.Lzi, f2 - 90.0F, f1, false, this.Lzg);
+        paramCanvas.drawArc(this.QUY, f2 - 90.0F, f1, false, this.QUW);
         break;
       }
     }
@@ -332,17 +332,17 @@ public class MMProgressWheel
     paramParcelable = (WheelSavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     this.mProgress = paramParcelable.mProgress;
-    this.Lzm = paramParcelable.Lzm;
-    this.Lzn = paramParcelable.Lzn;
-    this.Lzj = paramParcelable.Lzj;
-    this.LyW = paramParcelable.LyW;
-    this.Lze = paramParcelable.Lze;
-    this.LyX = paramParcelable.LyX;
-    this.Lzf = paramParcelable.Lzf;
+    this.QVc = paramParcelable.QVc;
+    this.QVd = paramParcelable.QVd;
+    this.QUZ = paramParcelable.QUZ;
+    this.QUM = paramParcelable.QUM;
+    this.QUU = paramParcelable.QUU;
+    this.QUN = paramParcelable.QUN;
+    this.QUV = paramParcelable.QUV;
     this.circleRadius = paramParcelable.circleRadius;
-    this.Lzl = paramParcelable.Lzl;
-    this.LyY = paramParcelable.LyY;
-    this.Lzk = SystemClock.uptimeMillis();
+    this.QVb = paramParcelable.QVb;
+    this.QUO = paramParcelable.QUO;
+    this.QVa = SystemClock.uptimeMillis();
     AppMethodBeat.o(159675);
   }
   
@@ -351,16 +351,16 @@ public class MMProgressWheel
     AppMethodBeat.i(159674);
     WheelSavedState localWheelSavedState = new WheelSavedState(super.onSaveInstanceState());
     localWheelSavedState.mProgress = this.mProgress;
-    localWheelSavedState.Lzm = this.Lzm;
-    localWheelSavedState.Lzn = this.Lzn;
-    localWheelSavedState.Lzj = this.Lzj;
-    localWheelSavedState.LyW = this.LyW;
-    localWheelSavedState.Lze = this.Lze;
-    localWheelSavedState.LyX = this.LyX;
-    localWheelSavedState.Lzf = this.Lzf;
+    localWheelSavedState.QVc = this.QVc;
+    localWheelSavedState.QVd = this.QVd;
+    localWheelSavedState.QUZ = this.QUZ;
+    localWheelSavedState.QUM = this.QUM;
+    localWheelSavedState.QUU = this.QUU;
+    localWheelSavedState.QUN = this.QUN;
+    localWheelSavedState.QUV = this.QUV;
     localWheelSavedState.circleRadius = this.circleRadius;
-    localWheelSavedState.Lzl = this.Lzl;
-    localWheelSavedState.LyY = this.LyY;
+    localWheelSavedState.QVb = this.QVb;
+    localWheelSavedState.QUO = this.QUO;
     AppMethodBeat.o(159674);
     return localWheelSavedState;
   }
@@ -373,15 +373,15 @@ public class MMProgressWheel
     int i = getPaddingBottom();
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    if (!this.LyY)
+    if (!this.QUO)
     {
-      paramInt3 = Math.min(Math.min(paramInt1 - j - k, paramInt2 - i - paramInt4), this.circleRadius * 2 - this.LyW * 2);
+      paramInt3 = Math.min(Math.min(paramInt1 - j - k, paramInt2 - i - paramInt4), this.circleRadius * 2 - this.QUM * 2);
       paramInt1 = j + (paramInt1 - j - k - paramInt3) / 2;
       paramInt2 = paramInt4 + (paramInt2 - paramInt4 - i - paramInt3) / 2;
     }
-    for (this.Lzi = new RectF(this.LyW + paramInt1, this.LyW + paramInt2, paramInt1 + paramInt3 - this.LyW, paramInt2 + paramInt3 - this.LyW);; this.Lzi = new RectF(j + this.LyW, paramInt4 + this.LyW, paramInt1 - k - this.LyW, paramInt2 - i - this.LyW))
+    for (this.QUY = new RectF(this.QUM + paramInt1, this.QUM + paramInt2, paramInt1 + paramInt3 - this.QUM, paramInt2 + paramInt3 - this.QUM);; this.QUY = new RectF(j + this.QUM, paramInt4 + this.QUM, paramInt1 - k - this.QUM, paramInt2 - i - this.QUM))
     {
-      fRw();
+      hcy();
       invalidate();
       AppMethodBeat.o(159667);
       return;
@@ -393,7 +393,7 @@ public class MMProgressWheel
     AppMethodBeat.i(159671);
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt == 0) {
-      this.Lzk = SystemClock.uptimeMillis();
+      this.QVa = SystemClock.uptimeMillis();
     }
     AppMethodBeat.o(159671);
   }
@@ -401,9 +401,9 @@ public class MMProgressWheel
   public void setBarColor(int paramInt)
   {
     AppMethodBeat.i(159680);
-    this.Lze = paramInt;
-    fRw();
-    if (!this.Lzn) {
+    this.QUU = paramInt;
+    hcy();
+    if (!this.QVd) {
       invalidate();
     }
     AppMethodBeat.o(159680);
@@ -412,8 +412,8 @@ public class MMProgressWheel
   public void setBarWidth(int paramInt)
   {
     AppMethodBeat.i(159679);
-    this.LyW = paramInt;
-    if (!this.Lzn) {
+    this.QUM = paramInt;
+    if (!this.QVd) {
       invalidate();
     }
     AppMethodBeat.o(159679);
@@ -422,9 +422,9 @@ public class MMProgressWheel
   public void setCallback(a parama)
   {
     AppMethodBeat.i(159669);
-    this.Lzo = parama;
-    if (!this.Lzn) {
-      fRx();
+    this.QVe = parama;
+    if (!this.QVd) {
+      hcz();
     }
     AppMethodBeat.o(159669);
   }
@@ -433,7 +433,7 @@ public class MMProgressWheel
   {
     AppMethodBeat.i(159678);
     this.circleRadius = paramInt;
-    if (!this.Lzn) {
+    if (!this.QVd) {
       invalidate();
     }
     AppMethodBeat.o(159678);
@@ -442,16 +442,16 @@ public class MMProgressWheel
   public void setInstantProgress(float paramFloat)
   {
     AppMethodBeat.i(159673);
-    if (this.Lzn)
+    if (this.QVd)
     {
       this.mProgress = 0.0F;
-      this.Lzn = false;
+      this.QVd = false;
     }
     float f;
     if (paramFloat > 1.0F) {
       f = paramFloat - 1.0F;
     }
-    while (Math.abs(f - this.Lzm) <= 0.0F)
+    while (Math.abs(f - this.QVc) <= 0.0F)
     {
       AppMethodBeat.o(159673);
       return;
@@ -460,9 +460,9 @@ public class MMProgressWheel
         f = 0.0F;
       }
     }
-    this.Lzm = Math.min(f * 360.0F, 360.0F);
-    this.mProgress = this.Lzm;
-    this.Lzk = SystemClock.uptimeMillis();
+    this.QVc = Math.min(f * 360.0F, 360.0F);
+    this.mProgress = this.QVc;
+    this.QVa = SystemClock.uptimeMillis();
     invalidate();
     AppMethodBeat.o(159673);
   }
@@ -470,8 +470,8 @@ public class MMProgressWheel
   public void setLinearProgress(boolean paramBoolean)
   {
     AppMethodBeat.i(159677);
-    this.Lzl = paramBoolean;
-    if (!this.Lzn) {
+    this.QVb = paramBoolean;
+    if (!this.QVd) {
       invalidate();
     }
     AppMethodBeat.o(159677);
@@ -480,17 +480,17 @@ public class MMProgressWheel
   public void setProgress(float paramFloat)
   {
     AppMethodBeat.i(159676);
-    if (this.Lzn)
+    if (this.QVd)
     {
       this.mProgress = 0.0F;
-      this.Lzn = false;
-      fRx();
+      this.QVd = false;
+      hcz();
     }
     float f;
     if (paramFloat > 1.0F) {
       f = paramFloat - 1.0F;
     }
-    while (Math.abs(f - this.Lzm) <= 0.0F)
+    while (Math.abs(f - this.QVc) <= 0.0F)
     {
       AppMethodBeat.o(159676);
       return;
@@ -499,10 +499,10 @@ public class MMProgressWheel
         f = 0.0F;
       }
     }
-    if (this.mProgress == this.Lzm) {
-      this.Lzk = SystemClock.uptimeMillis();
+    if (this.mProgress == this.QVc) {
+      this.QVa = SystemClock.uptimeMillis();
     }
-    this.Lzm = Math.min(f * 360.0F, 360.0F);
+    this.QVc = Math.min(f * 360.0F, 360.0F);
     invalidate();
     AppMethodBeat.o(159676);
   }
@@ -510,9 +510,9 @@ public class MMProgressWheel
   public void setRimColor(int paramInt)
   {
     AppMethodBeat.i(159681);
-    this.Lzf = paramInt;
-    fRw();
-    if (!this.Lzn) {
+    this.QUV = paramInt;
+    hcy();
+    if (!this.QVd) {
       invalidate();
     }
     AppMethodBeat.o(159681);
@@ -521,8 +521,8 @@ public class MMProgressWheel
   public void setRimWidth(int paramInt)
   {
     AppMethodBeat.i(159682);
-    this.LyX = paramInt;
-    if (!this.Lzn) {
+    this.QUN = paramInt;
+    if (!this.QVd) {
       invalidate();
     }
     AppMethodBeat.o(159682);
@@ -530,22 +530,22 @@ public class MMProgressWheel
   
   public void setSpinSpeed(float paramFloat)
   {
-    this.Lzj = (360.0F * paramFloat);
+    this.QUZ = (360.0F * paramFloat);
   }
   
   static class WheelSavedState
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<WheelSavedState> CREATOR;
-    int LyW;
-    int LyX;
-    boolean LyY;
-    int Lze;
-    int Lzf;
-    float Lzj;
-    boolean Lzl;
-    float Lzm;
-    boolean Lzn;
+    int QUM;
+    int QUN;
+    boolean QUO;
+    int QUU;
+    int QUV;
+    float QUZ;
+    boolean QVb;
+    float QVc;
+    boolean QVd;
     int circleRadius;
     float mProgress;
     
@@ -561,23 +561,23 @@ public class MMProgressWheel
       super();
       AppMethodBeat.i(159662);
       this.mProgress = paramParcel.readFloat();
-      this.Lzm = paramParcel.readFloat();
+      this.QVc = paramParcel.readFloat();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.Lzn = bool1;
-        this.Lzj = paramParcel.readFloat();
-        this.LyW = paramParcel.readInt();
-        this.Lze = paramParcel.readInt();
-        this.LyX = paramParcel.readInt();
-        this.Lzf = paramParcel.readInt();
+        this.QVd = bool1;
+        this.QUZ = paramParcel.readFloat();
+        this.QUM = paramParcel.readInt();
+        this.QUU = paramParcel.readInt();
+        this.QUN = paramParcel.readInt();
+        this.QUV = paramParcel.readInt();
         this.circleRadius = paramParcel.readInt();
         if (paramParcel.readByte() == 0) {
           break label129;
         }
         bool1 = true;
         label99:
-        this.Lzl = bool1;
+        this.QVb = bool1;
         if (paramParcel.readByte() == 0) {
           break label134;
         }
@@ -586,7 +586,7 @@ public class MMProgressWheel
       label134:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.LyY = bool1;
+        this.QUO = bool1;
         AppMethodBeat.o(159662);
         return;
         bool1 = false;
@@ -607,24 +607,24 @@ public class MMProgressWheel
       AppMethodBeat.i(159663);
       super.writeToParcel(paramParcel, paramInt);
       paramParcel.writeFloat(this.mProgress);
-      paramParcel.writeFloat(this.Lzm);
-      if (this.Lzn)
+      paramParcel.writeFloat(this.QVc);
+      if (this.QVd)
       {
         paramInt = 1;
         paramParcel.writeByte((byte)paramInt);
-        paramParcel.writeFloat(this.Lzj);
-        paramParcel.writeInt(this.LyW);
-        paramParcel.writeInt(this.Lze);
-        paramParcel.writeInt(this.LyX);
-        paramParcel.writeInt(this.Lzf);
+        paramParcel.writeFloat(this.QUZ);
+        paramParcel.writeInt(this.QUM);
+        paramParcel.writeInt(this.QUU);
+        paramParcel.writeInt(this.QUN);
+        paramParcel.writeInt(this.QUV);
         paramParcel.writeInt(this.circleRadius);
-        if (!this.Lzl) {
+        if (!this.QVb) {
           break label133;
         }
         paramInt = 1;
         label101:
         paramParcel.writeByte((byte)paramInt);
-        if (!this.LyY) {
+        if (!this.QUO) {
           break label138;
         }
       }
@@ -647,7 +647,7 @@ public class MMProgressWheel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.progress.MMProgressWheel
  * JD-Core Version:    0.7.0.1
  */

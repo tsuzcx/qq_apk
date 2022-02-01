@@ -15,17 +15,17 @@ public class LuckMoneyEnvelopeTempTagImageView
   extends ImageView
 {
   private String mText;
-  private Paint vGu;
-  private Path xN;
+  private Path xT;
+  private Paint zbt;
   
   public LuckMoneyEnvelopeTempTagImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65417);
-    this.vGu = new Paint();
-    this.xN = new Path();
+    this.zbt = new Paint();
+    this.xT = new Path();
     this.mText = "";
-    this.vGu.setAntiAlias(true);
+    this.zbt.setAntiAlias(true);
     c(paramContext, paramAttributeSet, -1);
     AppMethodBeat.o(65417);
   }
@@ -34,10 +34,10 @@ public class LuckMoneyEnvelopeTempTagImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(65418);
-    this.vGu = new Paint();
-    this.xN = new Path();
+    this.zbt = new Paint();
+    this.xT = new Path();
     this.mText = "";
-    this.vGu.setAntiAlias(true);
+    this.zbt.setAntiAlias(true);
     c(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(65418);
   }
@@ -48,9 +48,9 @@ public class LuckMoneyEnvelopeTempTagImageView
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.LuckMoneyEnvelopeTempTagImageView, paramInt, 0);
     this.mText = paramContext.getString(0);
     paramInt = paramContext.getColor(1, 0);
-    this.vGu.setColor(paramInt);
+    this.zbt.setColor(paramInt);
     paramInt = paramContext.getDimensionPixelSize(2, 0);
-    this.vGu.setTextSize(paramInt);
+    this.zbt.setTextSize(paramInt);
     paramContext.recycle();
     AppMethodBeat.o(65419);
   }
@@ -59,17 +59,17 @@ public class LuckMoneyEnvelopeTempTagImageView
   {
     AppMethodBeat.i(65420);
     super.onDraw(paramCanvas);
-    this.xN.moveTo(0.0F, 0.0F);
+    this.xT.moveTo(0.0F, 0.0F);
     int i = a.fromDPToPix(getContext(), 98);
-    this.xN.lineTo(i, i);
-    i = (int)((a.fromDPToPix(getContext(), 139) - this.vGu.measureText(this.mText)) / 2.0F);
-    paramCanvas.drawTextOnPath(this.mText, this.xN, i, -30.0F, this.vGu);
+    this.xT.lineTo(i, i);
+    i = (int)((a.fromDPToPix(getContext(), 139) - this.zbt.measureText(this.mText)) / 2.0F);
+    paramCanvas.drawTextOnPath(this.mText, this.xT, i, -30.0F, this.zbt);
     AppMethodBeat.o(65420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckMoneyEnvelopeTempTagImageView
  * JD-Core Version:    0.7.0.1
  */

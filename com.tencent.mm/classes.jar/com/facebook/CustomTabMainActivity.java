@@ -2,6 +2,7 @@ package com.facebook;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ public class CustomTabMainActivity
   private void sendResult(int paramInt, Intent paramIntent)
   {
     AppMethodBeat.i(7610);
-    d.V(this).unregisterReceiver(this.redirectReceiver);
+    d.W(this).unregisterReceiver(this.redirectReceiver);
     if (paramIntent != null) {
       setResult(paramInt, paramIntent);
     }
@@ -72,8 +73,26 @@ public class CustomTabMainActivity
       String str = getIntent().getStringExtra(EXTRA_CHROME_PACKAGE);
       new CustomTab("oauth", paramBundle).openCustomTab(this, str);
       this.shouldCloseCustomTab = false;
-      this.redirectReceiver = new CustomTabMainActivity.1(this);
-      d.V(this).a(this.redirectReceiver, new IntentFilter(CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION));
+      this.redirectReceiver = new BroadcastReceiver()
+      {
+        private byte _hellAccFlag_;
+        
+        public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+        {
+          AppMethodBeat.i(7605);
+          paramAnonymousContext = new Intent(CustomTabMainActivity.this, CustomTabMainActivity.class);
+          paramAnonymousContext.setAction(CustomTabMainActivity.REFRESH_ACTION);
+          paramAnonymousContext.putExtra(CustomTabMainActivity.EXTRA_URL, paramAnonymousIntent.getStringExtra(CustomTabMainActivity.EXTRA_URL));
+          paramAnonymousContext.addFlags(603979776);
+          paramAnonymousIntent = CustomTabMainActivity.this;
+          paramAnonymousContext = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousContext);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousIntent, paramAnonymousContext.axQ(), "com/facebook/CustomTabMainActivity$1", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousIntent.startActivity((Intent)paramAnonymousContext.pG(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousIntent, "com/facebook/CustomTabMainActivity$1", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(7605);
+        }
+      };
+      d.W(this).a(this.redirectReceiver, new IntentFilter(CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION));
     }
     AppMethodBeat.o(7607);
   }
@@ -85,7 +104,7 @@ public class CustomTabMainActivity
     if (REFRESH_ACTION.equals(paramIntent.getAction()))
     {
       Intent localIntent = new Intent(CustomTabActivity.DESTROY_ACTION);
-      d.V(this).b(localIntent);
+      d.W(this).b(localIntent);
       sendResult(-1, paramIntent);
       AppMethodBeat.o(7608);
       return;
@@ -115,7 +134,7 @@ public class CustomTabMainActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.facebook.CustomTabMainActivity
  * JD-Core Version:    0.7.0.1
  */

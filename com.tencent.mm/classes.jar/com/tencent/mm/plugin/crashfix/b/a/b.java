@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.crashfix.b.a;
 
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public final class b
   implements InvocationHandler
 {
-  protected Object pmZ;
+  protected Object qCx;
   
   public b(WindowManager paramWindowManager)
   {
-    this.pmZ = paramWindowManager;
+    this.qCx = paramWindowManager;
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
@@ -49,20 +49,20 @@ public final class b
       }
       try
       {
-        ae.i("MicroMsg.WindowManagerInvocationHandler", "removeViewImmediate");
-        paramObject = paramMethod.invoke(this.pmZ, paramArrayOfObject);
+        Log.i("MicroMsg.WindowManagerInvocationHandler", "removeViewImmediate");
+        paramObject = paramMethod.invoke(this.qCx, paramArrayOfObject);
         AppMethodBeat.o(145623);
         return paramObject;
       }
       catch (Exception paramObject)
       {
-        ae.e("MicroMsg.WindowManagerInvocationHandler", "catch it");
+        Log.e("MicroMsg.WindowManagerInvocationHandler", "catch it");
         AppMethodBeat.o(145623);
         return null;
       }
       i += 1;
     }
-    paramObject = paramMethod.invoke(this.pmZ, paramArrayOfObject);
+    paramObject = paramMethod.invoke(this.qCx, paramArrayOfObject);
     AppMethodBeat.o(145623);
     return paramObject;
   }

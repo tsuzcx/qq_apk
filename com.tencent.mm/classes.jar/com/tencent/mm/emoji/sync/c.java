@@ -2,24 +2,24 @@ package com.tencent.mm.emoji.sync;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/sync/EmojiDownLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "call", "", "checkUpdate", "uniqueId", "", "Companion", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/sync/EmojiDownLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "call", "", "checkUpdate", "uniqueId", "", "Companion", "plugin-emojisdk_release"})
 public final class c
   extends com.tencent.mm.loader.g.c
 {
   private static final String TAG = "MicroMsg.EmojiDownLoadTask";
-  public static final c.a grq;
-  final EmojiInfo glt;
+  public static final c.a hcB;
+  final EmojiInfo gWm;
   
   static
   {
     AppMethodBeat.i(105734);
-    grq = new c.a((byte)0);
+    hcB = new c.a((byte)0);
     TAG = "MicroMsg.EmojiDownLoadTask";
     AppMethodBeat.o(105734);
   }
@@ -27,14 +27,14 @@ public final class c
   public c(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105733);
-    this.glt = paramEmojiInfo;
+    this.gWm = paramEmojiInfo;
     AppMethodBeat.o(105733);
   }
   
-  public final String aeW()
+  public final String auK()
   {
     AppMethodBeat.i(105732);
-    String str = this.glt.Lj();
+    String str = this.gWm.getMd5();
     p.g(str, "emojiInfo.md5");
     AppMethodBeat.o(105732);
     return str;
@@ -43,14 +43,14 @@ public final class c
   public final void call()
   {
     AppMethodBeat.i(105731);
-    new com.tencent.mm.emoji.loader.c.c().a(this.glt, (b)new b(this));
+    new com.tencent.mm.emoji.loader.c.c().a(this.gWm, (b)new b(this));
     AppMethodBeat.o(105731);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
   static final class b
     extends q
-    implements b<Boolean, z>
+    implements b<Boolean, x>
   {
     b(c paramc)
     {
@@ -60,7 +60,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.sync.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.xweb;
 
 public abstract interface v
 {
-  public abstract void bpR();
+  public abstract void bLx();
   
   public abstract void onVideoEnded();
   
@@ -28,11 +28,11 @@ public abstract interface v
   
   public abstract void onVideoWaiting();
   
-  public abstract boolean tL(int paramInt);
+  public abstract boolean xJ(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.v
  * JD-Core Version:    0.7.0.1
  */

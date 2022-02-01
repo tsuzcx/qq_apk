@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
@@ -19,37 +20,43 @@ import com.tencent.mm.plugin.story.PluginStory;
 import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.j;
 import com.tencent.mm.plugin.story.api.n;
+import com.tencent.mm.plugin.textstatus.a.d;
+import com.tencent.mm.plugin.textstatus.a.p;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.u;
-import com.tencent.mm.y.c;
+import com.tencent.mm.ui.tools.v;
 
 public class AccountInfoPreference
   extends Preference
 {
-  public SpannableString FxL;
-  public String FxM;
-  private RelativeLayout FxN;
-  private View FxO;
-  private boolean FxP;
-  private int FxQ;
-  private NoMeasuredTextView FxR;
-  public ImageView FxS;
-  private RelativeLayout FxT;
-  private FrameLayout FxU;
-  private LinearLayout FxV;
-  public boolean FxW;
-  public boolean FxX;
-  public View.OnClickListener FxY;
-  public View.OnClickListener FxZ;
-  private View.OnClickListener Fya;
-  private View.OnClickListener Fyb;
+  public View.OnClickListener AmH;
+  private boolean BdH;
+  private boolean BdI;
+  private boolean BdJ;
+  public d BgU;
+  public SpannableString KoG;
+  public String KoH;
+  private RelativeLayout KoI;
+  private View KoJ;
+  private View KoK;
+  public View KoL;
+  private boolean KoM;
+  private int KoN;
+  private NoMeasuredTextView KoO;
+  public ImageView KoP;
+  private RelativeLayout KoQ;
+  private FrameLayout KoR;
+  private LinearLayout KoS;
+  public boolean KoT;
+  public boolean KoU;
+  public View.OnClickListener KoV;
+  private View.OnClickListener KoW;
+  private View.OnClickListener KoX;
   private final String TAG;
-  public boolean qnX;
+  public boolean rFe;
   public String userName;
-  private boolean xga;
   
   public AccountInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -61,114 +68,80 @@ public class AccountInfoPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31806);
     this.TAG = "MicroMsg.AccountInfoPreference";
-    this.xga = false;
-    this.FxP = true;
-    this.FxR = null;
-    this.FxS = null;
-    this.FxT = null;
-    this.FxU = null;
-    this.FxV = null;
-    this.FxW = false;
-    this.FxX = true;
-    this.qnX = false;
-    this.FxY = null;
-    this.FxZ = null;
-    this.Fya = null;
-    this.Fyb = new AccountInfoPreference.1(this);
+    this.BgU = null;
+    this.BdJ = false;
+    this.BdI = false;
+    this.BdH = false;
+    this.KoM = true;
+    this.KoO = null;
+    this.KoP = null;
+    this.KoQ = null;
+    this.KoR = null;
+    this.KoS = null;
+    this.KoT = false;
+    this.KoU = true;
+    this.rFe = false;
+    this.AmH = null;
+    this.KoV = null;
+    this.KoW = null;
+    this.KoX = new AccountInfoPreference.1(this);
     AppMethodBeat.o(31806);
   }
   
-  public final void aN(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(31808);
-    this.xga = paramBoolean1;
-    this.FxP = paramBoolean2;
-    LinearLayout.LayoutParams localLayoutParams;
-    if (this.FxR != null)
-    {
-      if (paramBoolean1)
-      {
-        this.FxR.setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131101182));
-        localLayoutParams = (LinearLayout.LayoutParams)this.FxN.getLayoutParams();
-        localLayoutParams.gravity = 8388693;
-        this.FxN.setLayoutParams(localLayoutParams);
-        this.FxN.setGravity(16);
-      }
-    }
-    else if (this.FxO != null) {
-      if ((paramBoolean1) || (!paramBoolean2)) {
-        break label200;
-      }
-    }
-    label200:
-    for (int i = com.tencent.mm.cb.a.ay(this.mContext, 2131166722);; i = com.tencent.mm.cb.a.ay(this.mContext, 2131166721))
-    {
-      this.FxO.setPadding(this.FxO.getPaddingLeft(), i, this.FxO.getPaddingRight(), this.FxO.getPaddingBottom());
-      AppMethodBeat.o(31808);
-      return;
-      this.FxR.setTextColor(this.mContext.getResources().getColor(2131099732));
-      localLayoutParams = (LinearLayout.LayoutParams)this.FxN.getLayoutParams();
-      localLayoutParams.gravity = 8388693;
-      this.FxN.setGravity(16);
-      this.FxN.setLayoutParams(localLayoutParams);
-      break;
-    }
-  }
-  
-  public final void fit()
+  public final void grF()
   {
     AppMethodBeat.i(169793);
-    ae.i("MicroMsg.AccountInfoPreference", "forceStopBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.qnX) });
-    if (!this.qnX)
+    Log.i("MicroMsg.AccountInfoPreference", "forceStopBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.rFe) });
+    if (!this.rFe)
     {
       AppMethodBeat.o(169793);
       return;
     }
-    this.FxT.setVisibility(8);
-    if (((PluginStory)g.ad(PluginStory.class)).getStoryNewFeatureConfig().ekF())
+    this.KoQ.setVisibility(8);
+    if (((PluginStory)g.ah(PluginStory.class)).getStoryNewFeatureConfig().fng())
     {
-      this.FxV.setVisibility(8);
+      this.KoS.setVisibility(8);
       AppMethodBeat.o(169793);
       return;
     }
-    this.FxS.setVisibility(8);
-    this.FxU.setVisibility(8);
-    ((e)g.ad(e.class)).getStoryUIFactory().fA(this.FxS);
+    this.KoP.setVisibility(8);
+    this.KoR.setVisibility(8);
+    ((e)g.ah(e.class)).getStoryUIFactory().fR(this.KoP);
     AppMethodBeat.o(169793);
   }
   
-  public final void fiu()
+  public final void grG()
   {
     AppMethodBeat.i(169794);
-    ae.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip hasUnreadComment:%s, isListVisible:%s", new Object[] { Boolean.valueOf(this.FxW), Boolean.valueOf(this.FxX) });
-    if ((this.FxW) && (this.FxX))
+    Log.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip hasUnreadComment:%s, isListVisible:%s", new Object[] { Boolean.valueOf(this.KoT), Boolean.valueOf(this.KoU) });
+    if ((this.KoT) && (this.KoU))
     {
-      ae.i("MicroMsg.AccountInfoPreference", "activeBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.qnX) });
-      if (this.qnX)
+      Log.i("MicroMsg.AccountInfoPreference", "activeBubbleTip this:%s, bindView:%s", new Object[] { this, Boolean.valueOf(this.rFe) });
+      if (this.rFe)
       {
-        this.FxT.setVisibility(0);
-        if (!((e)g.ad(e.class)).getStoryNewFeatureConfig().ekF()) {
+        this.KoQ.setVisibility(0);
+        if (!((e)g.ah(e.class)).getStoryNewFeatureConfig().fng()) {
           break label186;
         }
-        this.FxS.setVisibility(8);
-        this.FxU.setVisibility(4);
-        this.FxV.setVisibility(0);
+        this.KoP.setVisibility(8);
+        this.KoR.setVisibility(4);
+        this.KoS.setVisibility(0);
       }
     }
     for (;;)
     {
-      if (this.qnX) {
-        ae.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip mBubbleContentNewGroup.visible:%s, mStoryBubbleTipViews.visible:%s", new Object[] { Integer.valueOf(this.FxV.getVisibility()), Integer.valueOf(this.FxS.getVisibility()) });
+      if (this.rFe) {
+        Log.i("MicroMsg.AccountInfoPreference", "checkUnreadBubbleTip mBubbleContentNewGroup.visible:%s, mStoryBubbleTipViews.visible:%s", new Object[] { Integer.valueOf(this.KoS.getVisibility()), Integer.valueOf(this.KoP.getVisibility()) });
       }
       AppMethodBeat.o(169794);
       return;
       label186:
-      this.FxS.setVisibility(0);
-      this.FxU.setVisibility(0);
-      this.FxV.setVisibility(8);
-      ((e)g.ad(e.class)).getStoryUIFactory().fz(this.FxS);
+      this.KoP.setVisibility(0);
+      this.KoR.setVisibility(0);
+      this.KoS.setVisibility(8);
+      ((e)g.ah(e.class)).getStoryUIFactory().fQ(this.KoP);
       continue;
-      fit();
+      grF();
     }
   }
   
@@ -176,63 +149,91 @@ public class AccountInfoPreference
   {
     AppMethodBeat.i(31807);
     super.onBindView(paramView);
-    Object localObject = (ImageView)paramView.findViewById(2131297008);
-    if ((this.userName != null) && (localObject != null) && (g.ajM())) {
-      a.b.c((ImageView)localObject, this.userName);
+    Object localObject1 = (ImageView)paramView.findViewById(2131297134);
+    if ((this.userName != null) && (localObject1 != null) && (g.aAc())) {
+      a.b.c((ImageView)localObject1, this.userName);
     }
-    ((ImageView)localObject).setOnClickListener(this.Fyb);
-    this.FxR = ((NoMeasuredTextView)paramView.findViewById(2131302860));
-    if ((this.userName != null) && (this.FxR != null))
+    ((ImageView)localObject1).setOnClickListener(this.KoX);
+    this.KoO = ((NoMeasuredTextView)paramView.findViewById(2131305433));
+    Object localObject2;
+    if ((this.userName != null) && (this.KoO != null))
     {
-      this.FxR.setShouldEllipsize(true);
-      this.FxR.setTextSize(0, com.tencent.mm.cb.a.ax(this.mContext, 2131165467));
-      if (!this.xga) {
-        break label427;
-      }
-      this.FxR.setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131101182));
-      NoMeasuredTextView localNoMeasuredTextView = this.FxR;
-      if (this.FxL != null) {
-        break label449;
-      }
-      localObject = this.userName;
-      label151:
-      localNoMeasuredTextView.setText((CharSequence)localObject);
-      if (this.FxR.getPaint() != null) {
-        this.FxR.getPaint().setFakeBoldText(true);
-      }
-    }
-    localObject = (TextView)paramView.findViewById(2131306244);
-    if ((this.FxM != null) && (localObject != null))
-    {
-      ((TextView)localObject).setText(paramView.getResources().getString(2131755271, new Object[] { this.FxM }));
-      label225:
-      ((TextView)localObject).setOnClickListener(this.Fyb);
-      localObject = (TextView)paramView.findViewById(2131304190);
-      if (localObject != null)
+      this.KoO.setShouldEllipsize(true);
+      this.KoO.setTextSize(0, com.tencent.mm.cb.a.aG(this.mContext, 2131165483));
+      if (!this.BdJ)
       {
-        if (this.FxQ <= 99) {
-          break label470;
+        if (!this.BdH) {
+          break label605;
         }
-        ((TextView)localObject).setText(this.mContext.getString(2131764343));
-        ((TextView)localObject).setBackgroundResource(u.kL(this.mContext));
-        ((TextView)localObject).setVisibility(0);
+        this.KoO.setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131101427));
       }
-      label287:
-      this.FxN = ((RelativeLayout)paramView.findViewById(2131303604));
-      this.FxN.setOnClickListener(this.Fyb);
-      this.FxO = paramView.findViewById(2131300699);
-      if (this.FxO != null) {
-        if ((this.xga) || (!this.FxP)) {
-          break label530;
-        }
+      localObject2 = this.KoO;
+      if (this.KoG != null) {
+        break label628;
+      }
+      localObject1 = this.userName;
+      label155:
+      ((NoMeasuredTextView)localObject2).setText((CharSequence)localObject1);
+      if (this.KoO.getPaint() != null) {
+        this.KoO.getPaint().setFakeBoldText(true);
       }
     }
-    label530:
-    for (int i = com.tencent.mm.cb.a.ay(this.mContext, 2131166722);; i = com.tencent.mm.cb.a.ay(this.mContext, 2131166721))
+    localObject1 = (TextView)paramView.findViewById(2131309643);
+    label229:
+    int i;
+    if ((this.KoH != null) && (localObject1 != null))
     {
-      this.FxO.setPadding(this.FxO.getPaddingLeft(), i, this.FxO.getPaddingRight(), this.FxO.getPaddingBottom());
-      this.FxO.setOnClickListener(this.FxZ);
-      aN(this.xga, this.FxP);
+      ((TextView)localObject1).setText(paramView.getResources().getString(2131755306, new Object[] { this.KoH }));
+      ((TextView)localObject1).setOnClickListener(this.KoX);
+      localObject1 = (TextView)paramView.findViewById(2131307102);
+      if (localObject1 != null)
+      {
+        if (this.KoN <= 99) {
+          break label649;
+        }
+        ((TextView)localObject1).setText(this.mContext.getString(2131766602));
+        ((TextView)localObject1).setBackgroundResource(v.kH(this.mContext));
+        ((TextView)localObject1).setVisibility(0);
+      }
+      label291:
+      this.KoI = ((RelativeLayout)paramView.findViewById(2131306382));
+      this.KoI.setOnClickListener(this.KoX);
+      this.KoJ = paramView.findViewById(2131302265);
+      this.KoK = paramView.findViewById(2131302267);
+      this.KoL = paramView.findViewById(2131302270);
+      if (this.KoL != null)
+      {
+        if ((this.BdH) || (!this.KoM)) {
+          break label709;
+        }
+        i = com.tencent.mm.cb.a.aH(this.mContext, 2131166842);
+        label381:
+        if (this.BdJ) {
+          i = com.tencent.mm.cb.a.aH(this.mContext, 2131166842);
+        }
+        this.KoL.setPadding(this.KoL.getPaddingLeft(), i, this.KoL.getPaddingRight(), this.KoL.getPaddingBottom());
+        if (!this.BdJ) {
+          break label723;
+        }
+        this.KoL.setOnClickListener(this.KoX);
+      }
+    }
+    for (;;)
+    {
+      localObject2 = this.KoL;
+      if ((this.BgU == null) && (p.fvC()) && ((paramView instanceof RelativeLayout)))
+      {
+        localObject1 = (RelativeLayout)paramView;
+        localObject2 = ((com.tencent.mm.plugin.textstatus.a.c)g.ah(com.tencent.mm.plugin.textstatus.a.c.class)).getMoreTabCardView(this.mContext, (RelativeLayout)paramView, (LinearLayout)localObject2);
+        ((RelativeLayout)localObject1).addView(((d)localObject2).getView());
+        localObject1 = (RelativeLayout.LayoutParams)((d)localObject2).getView().getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject1).width = -2;
+        ((RelativeLayout.LayoutParams)localObject1).height = -2;
+        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131302270);
+        ((d)localObject2).DV(this.userName);
+        this.BgU = ((d)localObject2);
+      }
+      p(this.BdH, this.KoM, this.BdI);
       paramView.post(new Runnable()
       {
         public final void run()
@@ -241,31 +242,31 @@ public class AccountInfoPreference
           AppMethodBeat.i(169792);
           if (!AccountInfoPreference.a(AccountInfoPreference.this))
           {
-            AccountInfoPreference.a(AccountInfoPreference.this, (ImageView)paramView.findViewById(2131298651));
-            AccountInfoPreference.a(AccountInfoPreference.this, (RelativeLayout)paramView.findViewById(2131298649));
-            AccountInfoPreference.a(AccountInfoPreference.this, (FrameLayout)paramView.findViewById(2131298648));
-            AccountInfoPreference.a(AccountInfoPreference.this, (LinearLayout)paramView.findViewById(2131298661));
+            AccountInfoPreference.a(AccountInfoPreference.this, (ImageView)paramView.findViewById(2131299088));
+            AccountInfoPreference.a(AccountInfoPreference.this, (RelativeLayout)paramView.findViewById(2131299086));
+            AccountInfoPreference.a(AccountInfoPreference.this, (FrameLayout)paramView.findViewById(2131299085));
+            AccountInfoPreference.a(AccountInfoPreference.this, (LinearLayout)paramView.findViewById(2131299098));
             AccountInfoPreference.b(AccountInfoPreference.this);
             if (AccountInfoPreference.c(AccountInfoPreference.this)) {
               break label316;
             }
           }
           label316:
-          for (int i = com.tencent.mm.cb.a.ay(AccountInfoPreference.this.mContext, 2131166721) - com.tencent.mm.cb.a.ay(AccountInfoPreference.this.mContext, 2131166722);; i = 0)
+          for (int i = com.tencent.mm.cb.a.aH(AccountInfoPreference.this.mContext, 2131166841) - com.tencent.mm.cb.a.aH(AccountInfoPreference.this.mContext, 2131166842);; i = 0)
           {
-            ae.d("MicroMsg.AccountInfoPreference", "root.width:%s, root.height:%s, tip.width:%s, tip.height:%s, offsetY:%s", new Object[] { Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getHeight()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getHeight()), Integer.valueOf(i) });
-            ((e)g.ad(e.class)).getStoryUIFactory().b(AccountInfoPreference.d(AccountInfoPreference.this), AccountInfoPreference.e(AccountInfoPreference.this), i);
+            Log.d("MicroMsg.AccountInfoPreference", "root.width:%s, root.height:%s, tip.width:%s, tip.height:%s, offsetY:%s", new Object[] { Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.d(AccountInfoPreference.this).getHeight()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getWidth()), Integer.valueOf(AccountInfoPreference.e(AccountInfoPreference.this).getHeight()), Integer.valueOf(i) });
+            ((e)g.ah(e.class)).getStoryUIFactory().b(AccountInfoPreference.d(AccountInfoPreference.this), AccountInfoPreference.e(AccountInfoPreference.this), i);
             AccountInfoPreference localAccountInfoPreference = AccountInfoPreference.this;
             boolean bool1 = bool2;
-            if (((e)g.ad(e.class)).isShowStoryCheck())
+            if (((e)g.ah(e.class)).isShowStoryCheck())
             {
               bool1 = bool2;
-              if (c.ahI().cI(352279, 266241)) {
+              if (com.tencent.mm.y.c.axV().cO(352279, 266241)) {
                 bool1 = true;
               }
             }
-            localAccountInfoPreference.FxW = bool1;
-            AccountInfoPreference.this.fiu();
+            localAccountInfoPreference.KoT = bool1;
+            AccountInfoPreference.this.grG();
             AppMethodBeat.o(169792);
             return;
           }
@@ -273,33 +274,112 @@ public class AccountInfoPreference
       });
       AppMethodBeat.o(31807);
       return;
-      label427:
-      this.FxR.setTextColor(this.mContext.getResources().getColor(2131099732));
+      label605:
+      this.KoO.setTextColor(this.mContext.getResources().getColor(2131099746));
       break;
-      label449:
-      localObject = this.FxL;
-      break label151;
-      if (localObject == null) {
-        break label225;
+      label628:
+      localObject1 = this.KoG;
+      break label155;
+      if (localObject1 == null) {
+        break label229;
       }
-      ((TextView)localObject).setVisibility(8);
-      break label225;
-      label470:
-      if (this.FxQ > 0)
+      ((TextView)localObject1).setVisibility(8);
+      break label229;
+      label649:
+      if (this.KoN > 0)
       {
-        ((TextView)localObject).setText(this.FxQ);
-        ((TextView)localObject).setBackgroundResource(u.aP(this.mContext, this.FxQ));
-        ((TextView)localObject).setVisibility(0);
-        break label287;
+        ((TextView)localObject1).setText(this.KoN);
+        ((TextView)localObject1).setBackgroundResource(v.aQ(this.mContext, this.KoN));
+        ((TextView)localObject1).setVisibility(0);
+        break label291;
       }
-      ((TextView)localObject).setVisibility(8);
-      break label287;
+      ((TextView)localObject1).setVisibility(8);
+      break label291;
+      label709:
+      i = com.tencent.mm.cb.a.aH(this.mContext, 2131166841);
+      break label381;
+      label723:
+      this.KoL.setOnClickListener(this.KoV);
+    }
+  }
+  
+  public final void p(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(232332);
+    this.BdH = paramBoolean1;
+    this.KoM = paramBoolean2;
+    this.BdI = paramBoolean3;
+    this.BdJ = p.fvC();
+    if (this.KoO != null)
+    {
+      if (!this.BdJ)
+      {
+        if (paramBoolean1) {
+          this.KoO.setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131101427));
+        }
+      }
+      else
+      {
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.KoI.getLayoutParams();
+        localLayoutParams.gravity = 8388693;
+        this.KoI.setGravity(16);
+        this.KoI.setLayoutParams(localLayoutParams);
+      }
+    }
+    else
+    {
+      if ((!this.BdJ) || (!paramBoolean3)) {
+        break label284;
+      }
+      if (this.KoK != null) {
+        this.KoK.setVisibility(8);
+      }
+      label127:
+      if ((!this.BdJ) || (paramBoolean3)) {
+        break label302;
+      }
+      if (this.KoJ != null) {
+        this.KoJ.setVisibility(0);
+      }
+      label153:
+      if ((this.BdJ) && (this.KoL != null)) {
+        this.KoL.setOnClickListener(this.KoX);
+      }
+      if (this.KoL != null) {
+        if ((paramBoolean1) || (!paramBoolean2)) {
+          break label321;
+        }
+      }
+    }
+    label284:
+    label302:
+    label321:
+    for (int i = com.tencent.mm.cb.a.aH(this.mContext, 2131166842);; i = com.tencent.mm.cb.a.aH(this.mContext, 2131166841))
+    {
+      if (this.BdJ) {
+        i = com.tencent.mm.cb.a.aH(this.mContext, 2131166842);
+      }
+      this.KoL.setPadding(this.KoL.getPaddingLeft(), i, this.KoL.getPaddingRight(), this.KoL.getPaddingBottom());
+      AppMethodBeat.o(232332);
+      return;
+      this.KoO.setTextColor(this.mContext.getResources().getColor(2131099746));
+      break;
+      if (this.KoK == null) {
+        break label127;
+      }
+      this.KoK.setVisibility(0);
+      break label127;
+      if (this.KoJ == null) {
+        break label153;
+      }
+      this.KoJ.setVisibility(8);
+      break label153;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.AccountInfoPreference
  * JD-Core Version:    0.7.0.1
  */

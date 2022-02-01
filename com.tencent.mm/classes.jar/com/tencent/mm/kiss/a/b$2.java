@@ -1,16 +1,16 @@
 package com.tencent.mm.kiss.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hw;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.il;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class b$2
-  extends c<hw>
+  extends IListener<il>
 {
   public b$2(b paramb)
   {
     AppMethodBeat.i(161103);
-    this.__eventId = hw.class.getName().hashCode();
+    this.__eventId = il.class.getName().hashCode();
     AppMethodBeat.o(161103);
   }
 }

@@ -6,7 +6,7 @@ import java.util.Map;
 
 public abstract interface a$a
 {
-  public abstract String BN();
+  public abstract String Lb();
   
   public abstract void a(String paramString, Map<String, String> paramMap, a.c paramc);
   
@@ -16,7 +16,7 @@ public abstract interface a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.f.a.a
  * JD-Core Version:    0.7.0.1
  */

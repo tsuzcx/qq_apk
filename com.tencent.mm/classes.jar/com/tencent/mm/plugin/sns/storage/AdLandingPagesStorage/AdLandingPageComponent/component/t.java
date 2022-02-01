@@ -8,8 +8,8 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
 import com.tencent.mm.ui.base.CustomScrollView;
 import com.tencent.mm.ui.base.CustomScrollView.a;
@@ -21,38 +21,38 @@ import java.util.List;
 public final class t
   extends a
 {
-  List<m> aQH;
-  private l zUn;
-  private w zWb;
-  private CustomScrollView zWc;
+  private l Dtq;
+  private x Eei;
+  private CustomScrollView Eej;
+  List<m> aQz;
   
-  public t(Context paramContext, w paramw, ViewGroup paramViewGroup)
+  public t(Context paramContext, x paramx, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramw, paramViewGroup);
+    super(paramContext, paramx, paramViewGroup);
     AppMethodBeat.i(96563);
-    this.zWb = paramw;
-    this.aQH = new ArrayList();
+    this.Eei = paramx;
+    this.aQz = new ArrayList();
     AppMethodBeat.o(96563);
   }
   
-  public final void a(y paramy)
+  public final void b(z paramz)
   {
     AppMethodBeat.i(96572);
-    if ((paramy instanceof w)) {
-      this.zWb = ((w)paramy);
+    if ((paramz instanceof x)) {
+      this.Eei = ((x)paramz);
     }
-    super.a(paramy);
+    super.b(paramz);
     AppMethodBeat.o(96572);
   }
   
-  protected final void dUJ()
+  protected final void eWT()
   {
     AppMethodBeat.i(96564);
-    if (this.zUn == null)
+    if (this.Dtq == null)
     {
-      this.zUn = new l(this.zWb.aQH, this.context, this.zWc);
-      this.zUn.layout();
-      this.aQH = eaj();
+      this.Dtq = new l(this.Eei.aQz, this.context, this.Eej);
+      this.Dtq.layout();
+      this.aQz = eWU();
     }
     for (;;)
     {
@@ -60,136 +60,136 @@ public final class t
       {
         ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
         if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zUP.paddingLeft, (int)this.zUP.paddingTop, (int)this.zUP.paddingRight, (int)this.zUP.paddingBottom);
+          ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.EcX.paddingLeft, (int)this.EcX.paddingTop, (int)this.EcX.paddingRight, (int)this.EcX.paddingBottom);
         }
         this.contentView.setLayoutParams(localLayoutParams);
       }
       AppMethodBeat.o(96564);
       return;
-      this.zUn.fY(this.zWb.aQH);
+      this.Dtq.gV(this.Eei.aQz);
     }
   }
   
-  public final void dUK()
+  public final List<m> eWU()
   {
-    AppMethodBeat.i(96566);
-    Iterator localIterator = this.aQH.iterator();
-    while (localIterator.hasNext())
-    {
-      m localm = (m)localIterator.next();
-      if (localm.eay()) {
-        localm.dUK();
-      }
-    }
-    super.dUK();
-    AppMethodBeat.o(96566);
+    AppMethodBeat.i(96571);
+    ArrayList localArrayList = new ArrayList(this.Dtq.fdY());
+    AppMethodBeat.o(96571);
+    return localArrayList;
   }
   
-  public final void dUL()
-  {
-    AppMethodBeat.i(96567);
-    Iterator localIterator = this.aQH.iterator();
-    while (localIterator.hasNext()) {
-      ((m)localIterator.next()).dUL();
-    }
-    super.dUL();
-    AppMethodBeat.o(96567);
-  }
-  
-  public final void dUM()
-  {
-    AppMethodBeat.i(96570);
-    super.dUM();
-    Iterator localIterator = this.aQH.iterator();
-    while (localIterator.hasNext()) {
-      ((m)localIterator.next()).dUM();
-    }
-    AppMethodBeat.o(96570);
-  }
-  
-  public final void dZO()
-  {
-    AppMethodBeat.i(96568);
-    Iterator localIterator = this.aQH.iterator();
-    while (localIterator.hasNext())
-    {
-      m localm = (m)localIterator.next();
-      if (localm.eay()) {
-        localm.dZO();
-      }
-    }
-    super.dZO();
-    AppMethodBeat.o(96568);
-  }
-  
-  protected final View eae()
+  protected final View eWY()
   {
     AppMethodBeat.i(96565);
     RoundedCornerFrameLayout localRoundedCornerFrameLayout = new RoundedCornerFrameLayout(this.context);
-    this.zWc = new CustomScrollView(this.context);
-    this.zWc.setOverScrollMode(2);
-    this.zWc.setHorizontalScrollBarEnabled(false);
-    this.zWc.setVerticalScrollBarEnabled(false);
-    this.zWc.setOnScrollChangeListener(new CustomScrollView.a()
+    this.Eej = new CustomScrollView(this.context);
+    this.Eej.setOverScrollMode(2);
+    this.Eej.setHorizontalScrollBarEnabled(false);
+    this.Eej.setVerticalScrollBarEnabled(false);
+    this.Eej.setOnScrollChangeListener(new CustomScrollView.a()
     {
       public final void a(ScrollView paramAnonymousScrollView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(96562);
-        paramAnonymousScrollView = t.this.aQH.iterator();
+        paramAnonymousScrollView = t.this.aQz.iterator();
         while (paramAnonymousScrollView.hasNext())
         {
           m localm = (m)paramAnonymousScrollView.next();
-          if (localm.eay())
+          if (localm.fdm())
           {
-            localm.dUK();
-            localm.dZO();
+            localm.eWZ();
+            localm.eXb();
           }
           else
           {
-            localm.dUL();
+            localm.eXa();
           }
         }
         AppMethodBeat.o(96562);
       }
     });
     localRoundedCornerFrameLayout.setBackgroundColor(this.backgroundColor);
-    localRoundedCornerFrameLayout.addView(this.zWc);
-    localRoundedCornerFrameLayout.setRadius(this.zWb.hF);
+    localRoundedCornerFrameLayout.addView(this.Eej);
+    localRoundedCornerFrameLayout.setRadius(this.Eei.hH);
     AppMethodBeat.o(96565);
     return localRoundedCornerFrameLayout;
   }
   
-  public final void eai()
+  public final void eWZ()
   {
-    AppMethodBeat.i(96569);
-    Iterator localIterator = this.aQH.iterator();
+    AppMethodBeat.i(96566);
+    Iterator localIterator = this.aQz.iterator();
     while (localIterator.hasNext())
     {
       m localm = (m)localIterator.next();
-      if (localm.eay())
+      if (localm.fdm()) {
+        localm.eWZ();
+      }
+    }
+    super.eWZ();
+    AppMethodBeat.o(96566);
+  }
+  
+  public final void eXa()
+  {
+    AppMethodBeat.i(96567);
+    Iterator localIterator = this.aQz.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).eXa();
+    }
+    super.eXa();
+    AppMethodBeat.o(96567);
+  }
+  
+  public final void eXb()
+  {
+    AppMethodBeat.i(96568);
+    Iterator localIterator = this.aQz.iterator();
+    while (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      if (localm.fdm()) {
+        localm.eXb();
+      }
+    }
+    super.eXb();
+    AppMethodBeat.o(96568);
+  }
+  
+  public final void eXc()
+  {
+    AppMethodBeat.i(96569);
+    Iterator localIterator = this.aQz.iterator();
+    while (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      if (localm.fdm())
       {
-        localm.dUK();
-        localm.dZO();
+        localm.eWZ();
+        localm.eXb();
       }
       else
       {
-        localm.dUL();
+        localm.eXa();
       }
     }
     AppMethodBeat.o(96569);
   }
   
-  public final List<m> eaj()
+  public final void eXd()
   {
-    AppMethodBeat.i(96571);
-    ArrayList localArrayList = new ArrayList(this.zUn.ebh());
-    AppMethodBeat.o(96571);
-    return localArrayList;
+    AppMethodBeat.i(96570);
+    super.eXd();
+    Iterator localIterator = this.aQz.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).eXd();
+    }
+    AppMethodBeat.o(96570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.t
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.m;
+import android.support.v7.widget.RecyclerView.l;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -16,26 +16,24 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.multitalk.b.l;
-import com.tencent.mm.plugin.multitalk.b.p;
-import com.tencent.mm.plugin.multitalk.b.p.21;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.plugin.multitalk.b.m;
 import com.tencent.mm.plugin.multitalk.b.p.22;
 import com.tencent.mm.plugin.multitalk.b.p.24;
 import com.tencent.mm.plugin.multitalk.b.p.25;
 import com.tencent.mm.plugin.multitalk.b.p.26;
+import com.tencent.mm.plugin.multitalk.b.p.27;
 import com.tencent.mm.plugin.multitalk.b.p.b;
-import com.tencent.mm.plugin.multitalk.model.n;
+import com.tencent.mm.plugin.multitalk.model.ac;
 import com.tencent.mm.plugin.multitalk.model.o;
-import com.tencent.mm.plugin.multitalk.model.t;
-import com.tencent.mm.plugin.multitalk.model.z;
+import com.tencent.mm.plugin.multitalk.model.q;
+import com.tencent.mm.plugin.multitalk.model.v;
 import com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.au;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 import java.util.ArrayList;
@@ -44,60 +42,77 @@ import java.util.List;
 public final class g
   implements View.OnClickListener
 {
-  private TextView ocU;
-  private MultiTalkMainUI wvC;
-  private View wvD;
-  private TextView wvE;
-  private ImageView wvF;
-  private RecyclerView wvG;
-  private View wvH;
-  private ImageButton wvI;
-  private ImageButton wvJ;
-  private boolean wvK;
-  private int wvL;
+  private TextView pnR;
+  private MultiTalkMainUI zSH;
+  private View zSI;
+  private View zSJ;
+  private TextView zSK;
+  private ImageView zSL;
+  private RecyclerView zSM;
+  private View zSN;
+  private ImageButton zSO;
+  private ImageButton zSP;
+  private boolean zSQ;
+  private int zSR;
   
   public g(MultiTalkMainUI paramMultiTalkMainUI)
   {
     AppMethodBeat.i(114722);
-    this.wvK = false;
-    this.wvL = 0;
-    this.wvC = paramMultiTalkMainUI;
-    this.wvD = paramMultiTalkMainUI.findViewById(2131301066);
-    this.wvH = paramMultiTalkMainUI.findViewById(2131304842);
-    Object localObject1 = paramMultiTalkMainUI.findViewById(2131301068);
+    this.zSQ = false;
+    this.zSR = 0;
+    this.zSH = paramMultiTalkMainUI;
+    this.zSI = paramMultiTalkMainUI.findViewById(2131302720);
+    this.zSN = paramMultiTalkMainUI.findViewById(2131307928);
+    Object localObject1 = paramMultiTalkMainUI.findViewById(2131302722);
     Object localObject2 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(com.tencent.mm.cb.a.iv(paramMultiTalkMainUI) * 15.9D / 100.0D));
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(com.tencent.mm.cb.a.jo(paramMultiTalkMainUI) * 15.9D / 100.0D));
     ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    this.wvE = ((TextView)paramMultiTalkMainUI.findViewById(2131301069));
-    this.wvF = ((ImageView)paramMultiTalkMainUI.findViewById(2131301067));
-    this.wvG = ((RecyclerView)paramMultiTalkMainUI.findViewById(2131304843));
-    this.wvL = (com.tencent.mm.cb.a.iv(paramMultiTalkMainUI) - com.tencent.mm.cb.a.fromDPToPix(paramMultiTalkMainUI, 382) - (int)(com.tencent.mm.cb.a.iv(paramMultiTalkMainUI) * 21.899999999999999D / 100.0D));
+    this.zSK = ((TextView)paramMultiTalkMainUI.findViewById(2131302723));
+    this.zSL = ((ImageView)paramMultiTalkMainUI.findViewById(2131302721));
+    this.zSM = ((RecyclerView)paramMultiTalkMainUI.findViewById(2131307929));
+    this.zSJ = paramMultiTalkMainUI.findViewById(2131305039);
+    this.zSR = (com.tencent.mm.cb.a.jo(paramMultiTalkMainUI) - com.tencent.mm.cb.a.fromDPToPix(paramMultiTalkMainUI, 382) - (int)(com.tencent.mm.cb.a.jo(paramMultiTalkMainUI) * 21.899999999999999D / 100.0D));
     localObject1 = new LinearLayoutManager();
-    localObject2 = (RelativeLayout.LayoutParams)this.wvG.getLayoutParams();
-    if (this.wvL >= f.wvo * 3 + f.wvh * 2) {}
-    for (((RelativeLayout.LayoutParams)localObject2).height = (f.wvo * 3 + f.wvh * 2);; ((RelativeLayout.LayoutParams)localObject2).height = this.wvL)
+    localObject2 = (RelativeLayout.LayoutParams)this.zSM.getLayoutParams();
+    if (this.zSR >= f.zSo * 3 + f.zSg * 2) {}
+    for (((RelativeLayout.LayoutParams)localObject2).height = (f.zSo * 3 + f.zSg * 2);; ((RelativeLayout.LayoutParams)localObject2).height = this.zSR)
     {
-      this.wvG.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject2 = (RelativeLayout.LayoutParams)this.wvH.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ((int)(com.tencent.mm.cb.a.iv(paramMultiTalkMainUI) * 21.899999999999999D / 100.0D));
-      this.wvH.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject2 = paramMultiTalkMainUI.findViewById(2131301048);
+      this.zSM.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      localObject2 = (RelativeLayout.LayoutParams)this.zSN.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ((int)(com.tencent.mm.cb.a.jo(paramMultiTalkMainUI) * 21.899999999999999D / 100.0D));
+      this.zSN.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      localObject2 = paramMultiTalkMainUI.findViewById(2131302702);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject2).getLayoutParams();
-      localLayoutParams.bottomMargin = ((int)(com.tencent.mm.cb.a.iv(paramMultiTalkMainUI) * 3.6D / 100.0D));
+      localLayoutParams.bottomMargin = ((int)(com.tencent.mm.cb.a.jo(paramMultiTalkMainUI) * 3.6D / 100.0D));
       ((View)localObject2).setLayoutParams(localLayoutParams);
-      this.wvG.setLayoutManager((RecyclerView.i)localObject1);
-      this.wvG.setAdapter(new m(paramMultiTalkMainUI));
-      this.wvG.setOnScrollListener(new RecyclerView.m()
+      this.zSM.setLayoutManager((RecyclerView.LayoutManager)localObject1);
+      this.zSM.setAdapter(new s(paramMultiTalkMainUI));
+      this.zSM.setOnScrollListener(new RecyclerView.l()
       {
-        public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(178925);
+          b localb = new b();
+          localb.bm(paramAnonymousRecyclerView);
+          localb.pH(paramAnonymousInt);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+          super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
+          if ((paramAnonymousInt == 0) && (g.a(g.this))) {
+            com.tencent.mm.plugin.multitalk.model.p.rE(false);
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
+          AppMethodBeat.o(178925);
+        }
+        
+        public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(178926);
           b localb = new b();
-          localb.bd(paramAnonymousRecyclerView);
-          localb.mu(paramAnonymousInt1);
-          localb.mu(paramAnonymousInt2);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
-          super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
+          localb.bm(paramAnonymousRecyclerView);
+          localb.pH(paramAnonymousInt1);
+          localb.pH(paramAnonymousInt2);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+          super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
           paramAnonymousRecyclerView = g.this;
           if (paramAnonymousInt2 != 0) {}
           for (boolean bool = true;; bool = false)
@@ -108,37 +123,22 @@ public final class g
             return;
           }
         }
-        
-        public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(178925);
-          b localb = new b();
-          localb.bd(paramAnonymousRecyclerView);
-          localb.mu(paramAnonymousInt);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
-          super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-          if ((paramAnonymousInt == 0) && (g.a(g.this))) {
-            n.oW(false);
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-          AppMethodBeat.o(178925);
-        }
       });
-      this.ocU = ((TextView)paramMultiTalkMainUI.findViewById(2131301046));
-      this.wvI = ((ImageButton)paramMultiTalkMainUI.findViewById(2131301070));
-      this.wvJ = ((ImageButton)paramMultiTalkMainUI.findViewById(2131301065));
-      this.wvI.setOnClickListener(this);
-      this.wvJ.setOnClickListener(this);
+      this.pnR = ((TextView)paramMultiTalkMainUI.findViewById(2131302700));
+      this.zSO = ((ImageButton)paramMultiTalkMainUI.findViewById(2131302724));
+      this.zSP = ((ImageButton)paramMultiTalkMainUI.findViewById(2131302719));
+      this.zSO.setOnClickListener(this);
+      this.zSP.setOnClickListener(this);
       AppMethodBeat.o(114722);
       return;
     }
   }
   
-  public final void dtW()
+  public final void eoG()
   {
     AppMethodBeat.i(114724);
-    this.wvD.setVisibility(8);
-    this.wvC.bKN().removeView(this.wvD);
+    this.zSI.setVisibility(8);
+    this.zSH.chG().removeView(this.zSI);
     AppMethodBeat.o(114724);
   }
   
@@ -146,51 +146,52 @@ public final class g
   {
     int j = 0;
     AppMethodBeat.i(114723);
-    this.wvD.setVisibility(0);
-    String str = t.dtz();
+    this.zSI.setVisibility(0);
+    this.zSJ.setVisibility(0);
+    String str = v.enX();
     ArrayList localArrayList = new ArrayList();
     int i;
-    if (!bu.isNullOrNil(str))
+    if (!Util.isNullOrNil(str))
     {
       i = 0;
-      while (i < paramMultiTalkGroup.MgI.size())
+      while (i < paramMultiTalkGroup.RHa.size())
       {
-        if (!((MultiTalkGroupMember)paramMultiTalkGroup.MgI.get(i)).MgJ.equals(str)) {
-          localArrayList.add(((MultiTalkGroupMember)paramMultiTalkGroup.MgI.get(i)).MgJ);
+        if (!((MultiTalkGroupMember)paramMultiTalkGroup.RHa.get(i)).RHb.equals(str)) {
+          localArrayList.add(((MultiTalkGroupMember)paramMultiTalkGroup.RHa.get(i)).RHb);
         }
         i += 1;
       }
-      this.wvE.setText(k.c(this.wvC, w.zP(str)));
-      this.wvF.setContentDescription(k.c(this.wvC, w.zP(str)));
-      a.b.a(this.wvF, str, 0.1F, true);
+      this.zSK.setText(com.tencent.mm.pluginsdk.ui.span.l.c(this.zSH, aa.getDisplayName(str)));
+      this.zSL.setContentDescription(com.tencent.mm.pluginsdk.ui.span.l.c(this.zSH, aa.getDisplayName(str)));
+      a.b.a(this.zSL, str, 0.1F, true);
     }
-    if ((this.wvC.bKN() != null) && (this.wvC.bKN().findViewById(2131304253) != null))
+    if ((this.zSH.chG() != null) && (this.zSH.chG().findViewById(2131307175) != null))
     {
       paramMultiTalkGroup = new RelativeLayout.LayoutParams(-1, -1);
-      paramMultiTalkGroup.bottomMargin = ar.en(this.wvC);
-      this.wvC.bKN().findViewById(2131304253).setLayoutParams(paramMultiTalkGroup);
+      paramMultiTalkGroup.bottomMargin = au.aD(this.zSH);
+      this.zSH.chG().findViewById(2131307175).setLayoutParams(paramMultiTalkGroup);
     }
     if (localArrayList.size() > 0)
     {
-      this.ocU.setVisibility(0);
-      this.ocU.setText(2131761422);
-      this.wvG.getLayoutParams();
-      this.wvG.setVisibility(0);
-      this.wvG.removeAllViews();
+      this.pnR.setVisibility(0);
+      this.pnR.setText(2131763277);
+      this.zSM.getLayoutParams();
+      this.zSM.setVisibility(0);
+      this.zSM.removeAllViews();
       i = j;
       while (i < localArrayList.size())
       {
-        if (!((m)this.wvG.getAdapter()).asU((String)localArrayList.get(i))) {
-          ((m)this.wvG.getAdapter()).eA((String)localArrayList.get(i), i);
+        if (!((s)this.zSM.getAdapter()).aGC((String)localArrayList.get(i))) {
+          ((s)this.zSM.getAdapter()).eO((String)localArrayList.get(i), i);
         }
         i += 1;
       }
-      this.wvG.getAdapter().asY.notifyChanged();
+      this.zSM.getAdapter().atj.notifyChanged();
       AppMethodBeat.o(114723);
       return;
     }
-    this.ocU.setVisibility(8);
-    this.wvG.setVisibility(8);
+    this.pnR.setVisibility(8);
+    this.zSM.setVisibility(8);
     AppMethodBeat.o(114723);
   }
   
@@ -198,57 +199,65 @@ public final class g
   {
     AppMethodBeat.i(114725);
     b localb = new b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    if (paramView.getId() == 2131301065) {
-      z.dtK().j(true, false, false);
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if (paramView.getId() == 2131302719) {
+      ac.eom().j(true, false, false);
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkInvitingUILogic", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(114725);
       return;
-      if (paramView.getId() == 2131301070)
+      if (paramView.getId() == 2131302724)
       {
-        paramView = z.dtK();
-        if (paramView.dsk())
+        paramView = ac.eom();
+        if (paramView.ems())
         {
-          boolean bool = paramView.asB(paramView.wqU.wmA);
-          ae.i("MicroMsg.MT.MultiTalkManager", "acceptCurrentMultiTalk: %s, wifigateway:%d, isILink:%b", new Object[] { t.g(paramView.wqU), Integer.valueOf(v2protocal.eCg()), Boolean.valueOf(bool) });
+          boolean bool = paramView.aFW(paramView.zME.zHE);
+          Log.i("MicroMsg.MT.MultiTalkManager", "acceptCurrentMultiTalk: %s, wifigateway:%d, isILink:%b", new Object[] { v.g(paramView.zME), Integer.valueOf(v2protocal.fJa()), Boolean.valueOf(bool) });
           if (bool)
           {
-            paramView = p.wmO;
-            paramView.wnI = p.b.wpi;
-            paramView.peE = false;
-            paramView.wnt = new p.21(paramView);
-            paramView.wnu = new p.22(paramView);
-            paramView.wnh = new p.24(paramView);
-            paramView.wni = new p.25(paramView);
-            paramView.wmQ.a(14, paramView.wnt);
-            paramView.wmQ.a(15, paramView.wnu);
-            paramView.wmQ.a(21, paramView.wnh);
-            paramView.wmQ.a(22, paramView.wni);
-            paramView.cbp();
-            if (com.tencent.mm.plugin.multitalk.b.m.KZ(paramView.pej) != 0)
+            paramView = com.tencent.mm.plugin.multitalk.b.p.zHS;
+            if (paramView.qtM)
             {
-              paramView.gE(-10086, -4);
+              Log.i("MicroMsg.Multitalk.ILinkService", "steve: already accept!!!");
             }
             else
             {
-              paramView.peJ = true;
-              paramView.d(new p.26(paramView));
+              paramView.zIP = p.b.zKv;
+              paramView.qtH = false;
+              paramView.zIy = new p.22(paramView);
+              paramView.zIz = new p.24(paramView);
+              paramView.zIm = new p.25(paramView);
+              paramView.zIn = new p.26(paramView);
+              paramView.zHU.a(14, paramView.zIy);
+              paramView.zHU.a(15, paramView.zIz);
+              paramView.zHU.a(22, paramView.zIm);
+              paramView.zHU.a(23, paramView.zIn);
+              paramView.czf();
+              paramView.elV();
+              if (m.elJ() != 0)
+              {
+                paramView.hg(-10086, -4);
+              }
+              else
+              {
+                paramView.qtM = true;
+                paramView.d(new p.27(paramView));
+              }
             }
           }
           else
           {
-            z.dtJ().wqE.c(paramView.wqU.wmz, paramView.wqU.Mcu, paramView.wqU.wmA, v2protocal.eCg());
-            paramView = com.tencent.mm.plugin.multitalk.d.d.wxl;
+            ac.eol().zMd.c(paramView.zME.zHD, paramView.zME.RCJ, paramView.zME.zHE, v2protocal.fJa());
+            paramView = com.tencent.mm.plugin.multitalk.d.d.zZa;
             com.tencent.mm.plugin.multitalk.d.d.reset();
           }
         }
         else
         {
-          ae.e("MicroMsg.MT.MultiTalkManager", "acceptCurrentMultiTalk: Not in MultiTalking");
+          Log.e("MicroMsg.MT.MultiTalkManager", "acceptCurrentMultiTalk: Not in MultiTalking");
         }
       }
     }

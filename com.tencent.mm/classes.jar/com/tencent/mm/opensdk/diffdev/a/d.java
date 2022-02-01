@@ -8,7 +8,7 @@ public enum d
   
   static
   {
-    AppMethodBeat.i(194098);
+    AppMethodBeat.i(190410);
     b = new d("UUID_EXPIRED", 0, 402);
     c = new d("UUID_CANCELED", 1, 403);
     d = new d("UUID_SCANED", 2, 404);
@@ -17,14 +17,14 @@ public enum d
     d locald = new d("UUID_ERROR", 5, 500);
     g = locald;
     h = new d[] { b, c, d, e, f, locald };
-    AppMethodBeat.o(194098);
+    AppMethodBeat.o(190410);
   }
   
   private d(int paramInt)
   {
-    AppMethodBeat.i(194097);
+    AppMethodBeat.i(190409);
     this.a = paramInt;
-    AppMethodBeat.o(194097);
+    AppMethodBeat.o(190409);
   }
   
   public final int a()
@@ -34,9 +34,9 @@ public enum d
   
   public final String toString()
   {
-    AppMethodBeat.i(194099);
+    AppMethodBeat.i(190411);
     String str = "UUIDStatusCode:" + this.a;
-    AppMethodBeat.o(194099);
+    AppMethodBeat.o(190411);
     return str;
   }
 }

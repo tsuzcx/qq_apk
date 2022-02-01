@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class WebSearchDotPercentIndicator
   extends LinearLayout
 {
-  private int lwJ;
+  private int mDG;
   private LayoutInflater mInflater;
   
   public WebSearchDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,12 +43,12 @@ public class WebSearchDotPercentIndicator
     if (paramInt > 1) {}
     for (;;)
     {
-      this.lwJ = paramInt;
+      this.mDG = paramInt;
       removeAllViews();
       paramInt = 0;
-      while (paramInt < this.lwJ)
+      while (paramInt < this.mDG)
       {
-        addView((ImageView)this.mInflater.inflate(2131494223, this, false));
+        addView((ImageView)this.mInflater.inflate(2131494779, this, false));
         paramInt += 1;
       }
       paramInt = 8;
@@ -73,8 +73,8 @@ public class WebSearchDotPercentIndicator
     label118:
     for (;;)
     {
-      int k = (int)Math.rint(this.lwJ * paramFloat);
-      ae.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
+      int k = (int)Math.rint(this.mDG * paramFloat);
+      Log.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
       int i = 0;
       for (;;)
       {
@@ -86,14 +86,14 @@ public class WebSearchDotPercentIndicator
         if (i >= getChildCount()) {
           break;
         }
-        ((ImageView)getChildAt(i)).setImageResource(2131232474);
+        ((ImageView)getChildAt(i)).setImageResource(2131232856);
         i += 1;
       }
       break;
     }
     while (j < getChildCount())
     {
-      ((ImageView)getChildAt(j)).setImageResource(2131232473);
+      ((ImageView)getChildAt(j)).setImageResource(2131232855);
       j += 1;
     }
     AppMethodBeat.o(110224);
@@ -101,7 +101,7 @@ public class WebSearchDotPercentIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.WebSearchDotPercentIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -19,16 +19,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 abstract class e<Params, Progress, Result>
 {
-  private static final ThreadFactory Ja = new e.1();
-  private static final BlockingQueue<Runnable> Jb = new LinkedBlockingQueue(10);
-  private static b Jc;
-  private static volatile Executor Jd;
+  private static final ThreadFactory Jj = new e.1();
+  private static final BlockingQueue<Runnable> Jk = new LinkedBlockingQueue(10);
+  private static b Jl;
+  private static volatile Executor Jm;
   public static final Executor THREAD_POOL_EXECUTOR;
-  final d<Params, Result> Je = new d()
+  final d<Params, Result> Jn = new d()
   {
     public final Result call()
     {
-      e.this.Ji.set(true);
+      e.this.Jr.set(true);
       Object localObject5 = null;
       Object localObject4 = null;
       Object localObject2 = localObject4;
@@ -38,7 +38,7 @@ abstract class e<Params, Progress, Result>
         Process.setThreadPriority(10);
         localObject2 = localObject4;
         localObject1 = localObject5;
-        localObject4 = e.this.es();
+        localObject4 = e.this.ew();
         localObject2 = localObject4;
         localObject1 = localObject4;
         Binder.flushPendingCommands();
@@ -47,7 +47,7 @@ abstract class e<Params, Progress, Result>
       catch (Throwable localThrowable)
       {
         localObject1 = localObject2;
-        e.this.Jh.set(true);
+        e.this.Jq.set(true);
         localObject1 = localObject2;
         throw localThrowable;
       }
@@ -57,7 +57,7 @@ abstract class e<Params, Progress, Result>
       }
     }
   };
-  final FutureTask<Result> Jf = new FutureTask(this.Je)
+  final FutureTask<Result> Jo = new FutureTask(this.Jn)
   {
     protected final void done()
     {
@@ -83,35 +83,35 @@ abstract class e<Params, Progress, Result>
       catch (InterruptedException localInterruptedException) {}
     }
   };
-  volatile c Jg = c.Jo;
-  final AtomicBoolean Jh = new AtomicBoolean();
-  final AtomicBoolean Ji = new AtomicBoolean();
+  volatile c Jp = c.Jx;
+  final AtomicBoolean Jq = new AtomicBoolean();
+  final AtomicBoolean Jr = new AtomicBoolean();
   
   static
   {
-    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(5, 128, 1L, TimeUnit.SECONDS, Jb, Ja);
+    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(5, 128, 1L, TimeUnit.SECONDS, Jk, Jj);
     THREAD_POOL_EXECUTOR = localThreadPoolExecutor;
-    Jd = localThreadPoolExecutor;
+    Jm = localThreadPoolExecutor;
   }
   
   private static Handler getHandler()
   {
     try
     {
-      if (Jc == null) {
-        Jc = new b();
+      if (Jl == null) {
+        Jl = new b();
       }
-      b localb = Jc;
+      b localb = Jl;
       return localb;
     }
     finally {}
   }
   
-  protected abstract Result es();
+  protected abstract Result ew();
   
   final void n(Result paramResult)
   {
-    if (!this.Ji.get()) {
+    if (!this.Jr.get()) {
       o(paramResult);
     }
   }
@@ -128,12 +128,12 @@ abstract class e<Params, Progress, Result>
   
   final void p(Result paramResult)
   {
-    if (this.Jh.get()) {
+    if (this.Jq.get()) {
       onCancelled(paramResult);
     }
     for (;;)
     {
-      this.Jg = c.Jq;
+      this.Jp = c.Jz;
       return;
       onPostExecute(paramResult);
     }
@@ -141,13 +141,13 @@ abstract class e<Params, Progress, Result>
   
   static final class a<Data>
   {
-    final e Jm;
-    final Data[] Jn;
+    final e Jv;
+    final Data[] Jw;
     
     a(e parame, Data... paramVarArgs)
     {
-      this.Jm = parame;
-      this.Jn = paramVarArgs;
+      this.Jv = parame;
+      this.Jw = paramVarArgs;
     }
   }
   
@@ -167,7 +167,7 @@ abstract class e<Params, Progress, Result>
       default: 
         return;
       }
-      locala.Jm.p(locala.Jn[0]);
+      locala.Jv.p(locala.Jw[0]);
     }
   }
   
@@ -179,12 +179,12 @@ abstract class e<Params, Progress, Result>
   static abstract class d<Params, Result>
     implements Callable<Result>
   {
-    Params[] Js;
+    Params[] JB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.content.e
  * JD-Core Version:    0.7.0.1
  */

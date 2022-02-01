@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 
 public final class a
   extends com.tencent.mm.bw.a
@@ -13,7 +13,7 @@ public final class a
     AppMethodBeat.i(22101);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.ID == null)
       {
         paramVarArgs = new b("Not all required fields were included: ID");
@@ -21,7 +21,7 @@ public final class a
         throw paramVarArgs;
       }
       if (this.ID != null) {
-        paramVarArgs.d(1, this.ID);
+        paramVarArgs.e(1, this.ID);
       }
       AppMethodBeat.o(22101);
       return 0;
@@ -32,16 +32,16 @@ public final class a
       }
     }
     label268:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ID) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.ID) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(22101);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.ID == null)
@@ -55,7 +55,7 @@ public final class a
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         a locala1 = (a)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -63,7 +63,7 @@ public final class a
           AppMethodBeat.o(22101);
           return -1;
         }
-        locala1.ID = locala.OmT.readString();
+        locala1.ID = locala.UbS.readString();
         AppMethodBeat.o(22101);
         return 0;
       }
@@ -74,7 +74,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.a
  * JD-Core Version:    0.7.0.1
  */

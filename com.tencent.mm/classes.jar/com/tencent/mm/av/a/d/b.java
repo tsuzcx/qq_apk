@@ -8,9 +8,9 @@ public final class b
   public String contentType;
   public byte[] data;
   public int from;
-  public int igM = 0;
-  public boolean igN = false;
-  public boolean igO = false;
+  public int jbH = 0;
+  public boolean jbI = false;
+  public boolean jbJ = false;
   public int status;
   
   public b()
@@ -38,9 +38,9 @@ public final class b
     this.contentType = paramString;
   }
   
-  public final void pM(int paramInt)
+  public final void tA(int paramInt)
   {
-    this.igM = paramInt;
+    this.jbH = paramInt;
   }
 }
 

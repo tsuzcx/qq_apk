@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.sns.b;
 
-import com.tencent.mm.model.ax;
+import com.tencent.mm.model.bb;
 
 public abstract interface k
 {
-  public abstract void a(ax paramax);
+  public abstract void a(bb parambb);
   
-  public abstract void b(ax paramax);
+  public abstract void b(bb parambb);
 }
 
 

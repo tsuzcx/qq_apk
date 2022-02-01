@@ -11,27 +11,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.game.model.ai;
-import com.tencent.mm.plugin.s.a;
+import com.tencent.mm.plugin.r.a;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 
 public final class j
   extends BitmapDrawable
   implements u.a
 {
-  private static Bitmap cUb;
-  private static aq hAA;
-  private Runnable hAC;
+  private static Bitmap dku;
+  private static MMHandler iuH;
+  private Runnable iuJ;
   private String mUrl;
-  private Bitmap uzT;
+  private Bitmap xRS;
   
   static
   {
     AppMethodBeat.i(42083);
-    hAA = new aq(Looper.getMainLooper());
+    iuH = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(42083);
   }
   
@@ -41,7 +41,7 @@ public final class j
   {
     super(paramBitmap);
     AppMethodBeat.i(42079);
-    this.hAC = new Runnable()
+    this.iuJ = new Runnable()
     {
       public final void run()
       {
@@ -61,11 +61,11 @@ public final class j
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(42081);
-    if ((this.uzT != null) && (!this.uzT.isRecycled()))
+    if ((this.xRS != null) && (!this.xRS.isRecycled()))
     {
       Rect localRect1 = getBounds();
-      Rect localRect2 = new Rect(0, 0, this.uzT.getWidth(), this.uzT.getHeight());
-      paramCanvas.drawBitmap(this.uzT, localRect2, localRect1, getPaint());
+      Rect localRect2 = new Rect(0, 0, this.xRS.getWidth(), this.xRS.getHeight());
+      paramCanvas.drawBitmap(this.xRS, localRect2, localRect1, getPaint());
       AppMethodBeat.o(42081);
       return;
     }
@@ -78,9 +78,9 @@ public final class j
     AppMethodBeat.i(42080);
     if ((this.mUrl != null) && (this.mUrl.hashCode().equals(paramString)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      ae.i("MicroMsg.GameDrawable", "onGerPictureFinish() function has been invoke.");
-      this.uzT = paramBitmap;
-      hAA.post(this.hAC);
+      Log.i("MicroMsg.GameDrawable", "onGerPictureFinish() function has been invoke.");
+      this.xRS = paramBitmap;
+      iuH.post(this.iuJ);
     }
     AppMethodBeat.o(42080);
   }
@@ -90,20 +90,20 @@ public final class j
     AppMethodBeat.i(42082);
     if ((paramString != null) && (!paramString.equals(this.mUrl)))
     {
-      ae.i("MicroMsg.GameDrawable", "set a new url for the drawable,url:[%s]", new Object[] { paramString });
+      Log.i("MicroMsg.GameDrawable", "set a new url for the drawable,url:[%s]", new Object[] { paramString });
       this.mUrl = paramString;
       paramString = u.a(new ai(this.mUrl));
       if ((paramString != null) && (!paramString.isRecycled())) {
-        this.uzT = paramString;
+        this.xRS = paramString;
       }
-      hAA.post(this.hAC);
+      iuH.post(this.iuJ);
     }
     AppMethodBeat.o(42082);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.j
  * JD-Core Version:    0.7.0.1
  */

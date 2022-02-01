@@ -2,13 +2,13 @@ package com.tencent.soter.core.d;
 
 public abstract interface e
 {
-  public abstract void ejA();
+  public abstract void flY();
   
-  public abstract void ejB();
+  public abstract void flZ();
   
-  public abstract void ejy();
+  public abstract void fma();
   
-  public abstract void ejz();
+  public abstract void fmb();
   
   public abstract void onServiceConnected();
 }

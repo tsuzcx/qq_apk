@@ -1,200 +1,250 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.finder.model.h;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
+import com.tencent.mm.plugin.finder.model.ah;
+import com.tencent.mm.plugin.finder.model.f;
+import com.tencent.mm.ui.aa;
+import com.tencent.mm.view.d;
 import com.tencent.mm.view.recyclerview.e;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.view.recyclerview.h;
+import java.util.HashSet;
+import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderSearchData;", "()V", "rect", "Landroid/graphics/Rect;", "scrollListener", "com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$scrollListener$1", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$scrollListener$1;", "view", "Landroid/view/View;", "getLayoutId", "", "onAttachedToRecyclerView", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedFullMergedHeaderConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderHeaderFullMergedData;", "()V", "feedCommentFailedNotifyConvert", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedCommentFailedNotifyConvert;", "feedMsgNotifyConvert", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedMsgNotifyConvert;", "feedMsgNotifyHolder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "privateMsgNotifyConvert", "Lcom/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert;", "privateMsgNotifyHolder", "getLayoutId", "", "handleCommentFailed", "", "parent", "Landroid/view/ViewGroup;", "item", "holder", "position", "type", "isHotPatch", "", "payloads", "", "", "onBindViewHolder", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
 public final class s
-  extends com.tencent.mm.view.recyclerview.b<h>
+  extends e<ah>
 {
-  public static final s.a rWH;
-  private final c rWG;
-  private final Rect rect;
-  private View view;
+  public static final a tCO;
+  private final ab tCJ;
+  private final bx tCK;
+  private final i tCL;
+  private h tCM;
+  private h tCN;
   
   static
   {
-    AppMethodBeat.i(165417);
-    rWH = new s.a((byte)0);
-    AppMethodBeat.o(165417);
+    AppMethodBeat.i(242996);
+    tCO = new a((byte)0);
+    AppMethodBeat.o(242996);
   }
   
   public s()
   {
-    AppMethodBeat.i(201831);
-    this.rect = new Rect();
-    this.rWG = new c(this);
-    AppMethodBeat.o(201831);
+    AppMethodBeat.i(242995);
+    this.tCJ = new ab();
+    this.tCK = new bx();
+    this.tCL = new i();
+    AppMethodBeat.o(242995);
   }
   
-  public final void a(RecyclerView paramRecyclerView, WxRecyclerAdapter<?> paramWxRecyclerAdapter)
+  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
   {
-    AppMethodBeat.i(201830);
+    AppMethodBeat.i(242992);
     p.h(paramRecyclerView, "recyclerView");
-    p.h(paramWxRecyclerAdapter, "adapter");
-    super.a(paramRecyclerView, paramWxRecyclerAdapter);
-    paramRecyclerView.b((RecyclerView.m)this.rWG);
-    paramRecyclerView.a((RecyclerView.m)this.rWG);
-    AppMethodBeat.o(201830);
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
-  {
-    AppMethodBeat.i(165415);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(parame, "holder");
-    Object localObject = parame.auu;
-    p.g(localObject, "holder.itemView");
-    localObject = ((View)localObject).getLayoutParams();
-    if ((localObject instanceof StaggeredGridLayoutManager.LayoutParams)) {
-      ((StaggeredGridLayoutManager.LayoutParams)localObject).aE(true);
+    p.h(paramh, "holder");
+    Object localObject1 = aa.jQ(paramh.getContext());
+    Object localObject2 = paramh.aus;
+    if (localObject2 == null)
+    {
+      paramRecyclerView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(242992);
+      throw paramRecyclerView;
     }
-    parame.auu.setOnClickListener((View.OnClickListener)new b(paramRecyclerView));
-    AppMethodBeat.o(165415);
+    localObject1 = ((LayoutInflater)localObject1).inflate(2131492872, (ViewGroup)localObject2, false);
+    localObject2 = aa.jQ(paramh.getContext());
+    View localView = paramh.aus;
+    if (localView == null)
+    {
+      paramRecyclerView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(242992);
+      throw paramRecyclerView;
+    }
+    localObject2 = ((LayoutInflater)localObject2).inflate(2131492873, (ViewGroup)localView, false);
+    paramInt = d.e(paramRecyclerView.getContext(), 6.0F);
+    localView = ((View)localObject2).findViewById(2131304963);
+    Object localObject3;
+    if (localView != null)
+    {
+      localObject3 = localView.getLayoutParams();
+      if (localObject3 == null)
+      {
+        paramRecyclerView = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        AppMethodBeat.o(242992);
+        throw paramRecyclerView;
+      }
+      localObject3 = (FrameLayout.LayoutParams)localObject3;
+      ((FrameLayout.LayoutParams)localObject3).topMargin = (paramInt * 2);
+      ((FrameLayout.LayoutParams)localObject3).bottomMargin = paramInt;
+      localView.setBackgroundResource(2131232408);
+    }
+    localView = ((View)localObject2).findViewById(2131304963);
+    if (localView != null)
+    {
+      localObject3 = localView.getLayoutParams();
+      if (localObject3 == null)
+      {
+        paramRecyclerView = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        AppMethodBeat.o(242992);
+        throw paramRecyclerView;
+      }
+      localObject3 = (FrameLayout.LayoutParams)localObject3;
+      ((FrameLayout.LayoutParams)localObject3).topMargin = paramInt;
+      ((FrameLayout.LayoutParams)localObject3).bottomMargin = paramInt;
+      localView.setBackgroundResource(2131232408);
+    }
+    localView = paramh.aus;
+    if (localView == null)
+    {
+      paramRecyclerView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(242992);
+      throw paramRecyclerView;
+    }
+    ((ViewGroup)localView).addView((View)localObject1);
+    paramh = paramh.aus;
+    if (paramh == null)
+    {
+      paramRecyclerView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(242992);
+      throw paramRecyclerView;
+    }
+    ((ViewGroup)paramh).addView((View)localObject2);
+    paramh = new h((View)localObject1);
+    paramh.setRecyclerView(paramRecyclerView);
+    this.tCM = paramh;
+    paramh = new h((View)localObject2);
+    paramh.setRecyclerView(paramRecyclerView);
+    this.tCN = paramh;
+    paramh = this.tCJ;
+    localObject1 = this.tCM;
+    if (localObject1 == null) {
+      p.btv("feedMsgNotifyHolder");
+    }
+    paramh.a(paramRecyclerView, (h)localObject1, -5);
+    paramh = this.tCK;
+    localObject1 = this.tCN;
+    if (localObject1 == null) {
+      p.btv("privateMsgNotifyHolder");
+    }
+    paramh.a(paramRecyclerView, (h)localObject1, -6);
+    AppMethodBeat.o(242992);
+  }
+  
+  public final void a(h paramh, ah paramah, int paramInt)
+  {
+    AppMethodBeat.i(242993);
+    p.h(paramh, "holder");
+    p.h(paramah, "item");
+    Object localObject1 = this.tCM;
+    if (localObject1 == null) {
+      p.btv("feedMsgNotifyHolder");
+    }
+    ((h)localObject1).et(paramah.msgNotifyData);
+    localObject1 = this.tCN;
+    if (localObject1 == null) {
+      p.btv("privateMsgNotifyHolder");
+    }
+    ((h)localObject1).et(paramah.tSf);
+    localObject1 = this.tCM;
+    if (localObject1 == null) {
+      p.btv("feedMsgNotifyHolder");
+    }
+    ab.a((h)localObject1, paramah.msgNotifyData);
+    localObject1 = this.tCK;
+    Object localObject2 = this.tCN;
+    if (localObject2 == null) {
+      p.btv("privateMsgNotifyHolder");
+    }
+    ((bx)localObject1).a((h)localObject2, paramah.tSf, paramInt);
+    localObject1 = paramh.aus;
+    if (localObject1 == null)
+    {
+      paramh = new t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(242993);
+      throw paramh;
+    }
+    localObject1 = (ViewGroup)localObject1;
+    localObject2 = new HashSet();
+    int i = ((ViewGroup)localObject1).getChildCount();
+    paramInt = 0;
+    Object localObject3;
+    while (paramInt < i)
+    {
+      localObject3 = ((ViewGroup)localObject1).getChildAt(paramInt);
+      p.g(localObject3, "child");
+      if (((View)localObject3).getId() == 2131298944) {
+        ((HashSet)localObject2).add(localObject3);
+      }
+      paramInt += 1;
+    }
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((ViewGroup)localObject1).removeView((View)((Iterator)localObject2).next());
+    }
+    paramInt = d.e(((ViewGroup)localObject1).getContext(), 6.0F);
+    paramah = ((Iterable)paramah.tSj).iterator();
+    while (paramah.hasNext())
+    {
+      localObject2 = (f)paramah.next();
+      if (((f)localObject2).uNO != 1)
+      {
+        localObject3 = aa.jQ(paramh.getContext()).inflate(2131492869, (ViewGroup)localObject1, false);
+        Object localObject4 = ((View)localObject3).findViewById(2131304963);
+        if (localObject4 != null)
+        {
+          localObject5 = ((View)localObject4).getLayoutParams();
+          if (localObject5 == null)
+          {
+            paramh = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+            AppMethodBeat.o(242993);
+            throw paramh;
+          }
+          localObject5 = (FrameLayout.LayoutParams)localObject5;
+          ((FrameLayout.LayoutParams)localObject5).topMargin = paramInt;
+          ((FrameLayout.LayoutParams)localObject5).bottomMargin = paramInt;
+          ((View)localObject4).setBackgroundResource(2131232408);
+        }
+        localObject4 = paramh.aus;
+        if (localObject4 == null)
+        {
+          paramh = new t("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(242993);
+          throw paramh;
+        }
+        ((ViewGroup)localObject4).addView((View)localObject3);
+        localObject3 = new h((View)localObject3);
+        ((h)localObject3).setRecyclerView(paramh.getRecyclerView());
+        ((h)localObject3).et(localObject2);
+        localObject4 = this.tCL;
+        Object localObject5 = ((h)localObject3).getRecyclerView();
+        p.g(localObject5, "h.recyclerView");
+        ((i)localObject4).a((RecyclerView)localObject5, (h)localObject3, -4);
+        localObject4 = this.tCL;
+        p.g(localObject2, "data");
+        ((i)localObject4).a((h)localObject3, (f)localObject2);
+      }
+    }
+    AppMethodBeat.o(242993);
   }
   
   public final int getLayoutId()
   {
-    return 2131492869;
+    return 2131492868;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(RecyclerView paramRecyclerView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(165414);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      paramView = new Intent();
-      localObject = v.aAK();
-      p.g(localObject, "ConfigStorageLogic.getMyFinderUsername()");
-      if (((CharSequence)localObject).length() > 0)
-      {
-        i = 1;
-        localObject = g.yxI;
-        if (i == 0) {
-          break label182;
-        }
-      }
-      label182:
-      for (int i = 1;; i = 2)
-      {
-        ((g)localObject).f(20971, new Object[] { Integer.valueOf(2), Integer.valueOf(i), Integer.valueOf(2) });
-        localObject = FinderReporterUIC.tnG;
-        localObject = this.rWI.getContext();
-        p.g(localObject, "recyclerView.context");
-        FinderReporterUIC.a.a((Context)localObject, paramView, 0L, 0, false, 124);
-        localObject = com.tencent.mm.plugin.finder.utils.a.sVQ;
-        localObject = this.rWI.getContext();
-        p.g(localObject, "recyclerView.context");
-        com.tencent.mm.plugin.finder.utils.a.A((Context)localObject, paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(165414);
-        return;
-        i = 0;
-        break;
-      }
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$scrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "plugin-finder_release"})
-  public static final class c
-    extends RecyclerView.m
-  {
-    public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(201829);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramRecyclerView);
-      localb.mu(paramInt1);
-      localb.mu(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
-      super.a(paramRecyclerView, paramInt1, paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(201829);
-    }
-    
-    public final void b(RecyclerView paramRecyclerView, int paramInt)
-    {
-      AppMethodBeat.i(201828);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramRecyclerView);
-      localb.mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
-      p.h(paramRecyclerView, "recyclerView");
-      super.b(paramRecyclerView, paramInt);
-      if (paramInt == 0) {
-        paramRecyclerView.post((Runnable)new a(this));
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFeedSearchConvert$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(201828);
-    }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(s.c paramc) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(201827);
-        Object localObject = s.a(this.rWK.rWJ);
-        if (localObject != null)
-        {
-          if ((((View)localObject).getGlobalVisibleRect(s.b(this.rWK.rWJ))) && (s.b(this.rWK.rWJ).height() >= ((View)localObject).getHeight()) && (((View)localObject).getHeight() > 0))
-          {
-            localObject = v.aAK();
-            p.g(localObject, "ConfigStorageLogic.getMyFinderUsername()");
-            if (((CharSequence)localObject).length() <= 0) {
-              break label136;
-            }
-            i = 1;
-            localObject = g.yxI;
-            if (i == 0) {
-              break label141;
-            }
-          }
-          label136:
-          label141:
-          for (int i = 1;; i = 2)
-          {
-            ((g)localObject).f(20971, new Object[] { Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(2) });
-            AppMethodBeat.o(201827);
-            return;
-            i = 0;
-            break;
-          }
-        }
-        AppMethodBeat.o(201827);
-      }
-    }
-  }
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedFullMergedHeaderConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.s
  * JD-Core Version:    0.7.0.1
  */

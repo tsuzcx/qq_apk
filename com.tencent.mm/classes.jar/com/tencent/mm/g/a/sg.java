@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.facedetect.model.r;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class sg
-  extends b
+  extends IEvent
 {
-  public a dHO;
-  public b dHP;
+  public a dYR;
   
   public sg()
   {
@@ -17,27 +17,26 @@ public final class sg
   
   private sg(byte paramByte)
   {
-    AppMethodBeat.i(91218);
-    this.dHO = new a();
-    this.dHP = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(103547);
+    this.dYR = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91218);
+    AppMethodBeat.o(103547);
   }
   
   public static final class a
   {
-    public LinkedList dHQ;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public Rect dYS;
+    public int dYT = 90;
+    public r dYU;
+    public int height = -1;
+    public int width = -1;
+    public byte[] yuvData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.sg
  * JD-Core Version:    0.7.0.1
  */

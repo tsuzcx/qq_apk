@@ -42,13 +42,13 @@ public abstract class SQLiteLintBaseActivity
   
   protected void onCreateView()
   {
-    setContentView(2131492936);
-    Object localObject = (FrameLayout)findViewById(2131298739);
+    setContentView(2131492963);
+    Object localObject = (FrameLayout)findViewById(2131299180);
     LayoutInflater localLayoutInflater = LayoutInflater.from(this);
     int i = getLayoutId();
     assert (i != 0);
     localLayoutInflater.inflate(i, (ViewGroup)localObject);
-    this.mToolBar = ((Toolbar)findViewById(2131305986));
+    this.mToolBar = ((Toolbar)findViewById(2131309291));
     this.mToolBar.setNavigationOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -77,7 +77,7 @@ public abstract class SQLiteLintBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.SQLiteLintBaseActivity
  * JD-Core Version:    0.7.0.1
  */

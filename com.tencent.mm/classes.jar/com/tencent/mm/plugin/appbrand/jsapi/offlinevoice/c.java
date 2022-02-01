@@ -2,61 +2,62 @@ package com.tencent.mm.plugin.appbrand.jsapi.offlinevoice;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import org.json.JSONObject;
 
 public final class c
-  extends a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d
 {
   public static final int CTRL_INDEX = 634;
   public static final String NAME = "setCurrentPaySpeech";
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46660);
-    ae.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "invoke JsApiSetCurrentPaySpeech!");
-    if (paramc == null)
+    Log.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "invoke JsApiSetCurrentPaySpeech!");
+    if (paramf == null)
     {
-      ae.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:component is null");
+      Log.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:component is null");
       AppMethodBeat.o(46660);
       return;
     }
-    if (paramc.getContext() == null)
+    if (paramf.getContext() == null)
     {
-      ae.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:context is null");
-      paramc.h(paramInt, e("fail：service.getContext() is null ", null));
+      Log.e("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:context is null");
+      paramf.i(paramInt, h("fail：service.getContext() is null ", null));
       AppMethodBeat.o(46660);
       return;
     }
     String str1 = paramJSONObject.optString("dialectPackId");
     String str2 = paramJSONObject.optString("tempFilePath");
     String str3 = paramJSONObject.optString("md5Sum");
+    String str4 = paramJSONObject.optString("version");
     boolean bool = paramJSONObject.optBoolean("isOnlyDownload");
-    ae.d("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "tempFilePath:%s dialectPackId:%s md5Sum:%s isOnlyDownload:%s", new Object[] { str2, str1, str3, Boolean.valueOf(bool) });
+    Log.d("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "tempFilePath:%s dialectPackId:%s md5Sum:%s isOnlyDownload:%s", new Object[] { str2, str1, str3, Boolean.valueOf(bool) });
     paramJSONObject = "";
-    if (!bu.isNullOrNil(str2))
+    if (!Util.isNullOrNil(str2))
     {
-      paramJSONObject = paramc.Fl().MP(str2);
+      paramJSONObject = paramf.getFileSystem().VY(str2);
       if ((paramJSONObject != null) && (paramJSONObject.exists())) {
-        paramJSONObject = w.B(paramJSONObject.fTh());
+        paramJSONObject = aa.z(paramJSONObject.her());
       }
     }
     else
     {
-      h.a("com.tencent.mm", new IPCSetCurrentPaySpeech.IPCSetCurrentPaySpeechParam(str1, str2, paramJSONObject, bool, str3), IPCSetCurrentPaySpeech.class, new d() {});
+      h.a(MainProcessIPCService.dkO, new IPCSetCurrentPaySpeech.IPCSetCurrentPaySpeechParam(str1, str2, paramJSONObject, bool, str3, str4), IPCSetCurrentPaySpeech.class, new com.tencent.mm.ipcinvoker.d() {});
       AppMethodBeat.o(46660);
       return;
     }
-    ae.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:tempFile no exist");
-    paramc.h(paramInt, e("fail:tempFile no exist", null));
+    Log.i("MicroMsg.OfflineVoice.JsApiSetCurrentPaySpeech", "fail:tempFile no exist");
+    paramf.i(paramInt, h("fail:tempFile no exist", null));
     AppMethodBeat.o(46660);
   }
 }

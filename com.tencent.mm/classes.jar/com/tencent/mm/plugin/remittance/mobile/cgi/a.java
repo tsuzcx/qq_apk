@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.remittance.mobile.cgi;
 
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
 import com.tencent.mm.wallet_core.c.r;
 
 public abstract class a
   extends r
 {
   private final String TAG = "MicroMsg.mobileRemit.NetSceneMobileRemitBase";
-  protected f callback;
-  protected b rr;
+  protected i callback;
+  protected d rr;
   
-  public int doScene(e parame, f paramf)
+  public int doScene(g paramg, i parami)
   {
-    this.callback = paramf;
-    return dispatch(parame, this.rr, this);
+    this.callback = parami;
+    return dispatch(paramg, this.rr, this);
   }
 }
 

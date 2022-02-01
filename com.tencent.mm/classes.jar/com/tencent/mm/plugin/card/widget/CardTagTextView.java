@@ -14,21 +14,21 @@ public class CardTagTextView
   extends TextView
 {
   private int fillColor;
-  private int oKn;
-  private Paint oSC;
-  private RectF oWr;
-  private int oWs;
-  private int oWt;
+  private int pYb;
+  private Paint qgr;
+  private RectF qll;
+  private int qlm;
+  private int qln;
   
   public CardTagTextView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(113879);
-    this.oWr = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.oSC = new Paint();
-    this.oKn = 3;
-    this.oWs = 9;
-    this.oWt = 0;
+    this.qll = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.qgr = new Paint();
+    this.pYb = 3;
+    this.qlm = 9;
+    this.qln = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113879);
@@ -38,11 +38,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113880);
-    this.oWr = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.oSC = new Paint();
-    this.oKn = 3;
-    this.oWs = 9;
-    this.oWt = 0;
+    this.qll = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.qgr = new Paint();
+    this.pYb = 3;
+    this.qlm = 9;
+    this.qln = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113880);
@@ -52,11 +52,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(113881);
-    this.oWr = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.oSC = new Paint();
-    this.oKn = 3;
-    this.oWs = 9;
-    this.oWt = 0;
+    this.qll = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.qgr = new Paint();
+    this.pYb = 3;
+    this.qlm = 9;
+    this.qln = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113881);
@@ -65,30 +65,30 @@ public class CardTagTextView
   private void init()
   {
     AppMethodBeat.i(113882);
-    this.oKn = Math.round(a.getDensity(getContext()) * 0.5F);
-    this.oWs = a.fromDPToPix(getContext(), 3);
-    this.oWt = getCurrentTextColor();
+    this.pYb = Math.round(a.getDensity(getContext()) * 0.5F);
+    this.qlm = a.fromDPToPix(getContext(), 3);
+    this.qln = getCurrentTextColor();
     AppMethodBeat.o(113882);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(113884);
-    this.oWr.left = this.oWs;
-    this.oWr.top = this.oKn;
-    this.oWr.right = (getWidth() - this.oWs);
-    this.oWr.bottom = (getHeight() - this.oKn);
-    this.oSC.setAntiAlias(true);
+    this.qll.left = this.qlm;
+    this.qll.top = this.pYb;
+    this.qll.right = (getWidth() - this.qlm);
+    this.qll.bottom = (getHeight() - this.pYb);
+    this.qgr.setAntiAlias(true);
     if (this.fillColor != 0)
     {
-      this.oSC.setColor(this.fillColor);
-      this.oSC.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.oWr, getHeight() / 2 - this.oKn, getHeight() / 2 - this.oKn, this.oSC);
+      this.qgr.setColor(this.fillColor);
+      this.qgr.setStyle(Paint.Style.FILL);
+      paramCanvas.drawRoundRect(this.qll, getHeight() / 2 - this.pYb, getHeight() / 2 - this.pYb, this.qgr);
     }
-    this.oSC.setColor(this.oWt);
-    this.oSC.setStrokeWidth(this.oKn);
-    this.oSC.setStyle(Paint.Style.STROKE);
-    paramCanvas.drawRoundRect(this.oWr, getHeight() / 2 - this.oKn, getHeight() / 2 - this.oKn, this.oSC);
+    this.qgr.setColor(this.qln);
+    this.qgr.setStrokeWidth(this.pYb);
+    this.qgr.setStyle(Paint.Style.STROKE);
+    paramCanvas.drawRoundRect(this.qll, getHeight() / 2 - this.pYb, getHeight() / 2 - this.pYb, this.qgr);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(113884);
   }
@@ -101,14 +101,14 @@ public class CardTagTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(113883);
-    this.oWt = paramInt;
+    this.qln = paramInt;
     super.setTextColor(paramInt);
     AppMethodBeat.o(113883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.CardTagTextView
  * JD-Core Version:    0.7.0.1
  */

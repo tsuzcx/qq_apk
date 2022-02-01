@@ -7,13 +7,13 @@ import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.f;
 import com.tencent.mm.loader.h.b.a;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaHDProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "plugin-gallery_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaHDProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "plugin-gallery_release"})
 public final class c
   extends b
 {
@@ -26,19 +26,19 @@ public final class c
     paramg = parama.getTag();
     if (paramg == null)
     {
-      paramg = new v("null cannot be cast to non-null type com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem");
+      paramg = new t("null cannot be cast to non-null type com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem");
       AppMethodBeat.o(164899);
       throw paramg;
     }
     paramg = (GalleryItem.MediaItem)paramg;
-    int i = paramf.hfd.hgG;
-    int j = paramf.hfd.hgF;
-    paramf = h.d(paramg.tRJ, i, j, false);
-    i = h.aRB(paramg.tRJ);
-    paramg = h.d(h.aRB(paramg.tRJ), paramf);
+    int i = paramf.hXX.hZA;
+    int j = paramf.hXX.hZz;
+    paramf = BitmapUtil.extractThumbNail(paramg.xiW, i, j, false);
+    i = BitmapUtil.checkDegree(paramg.xiW);
+    paramg = BitmapUtil.handleDegree(BitmapUtil.checkDegree(paramg.xiW), paramf);
     paramf = new StringBuilder("bitmapW=");
     p.g(paramg, "result");
-    ae.i("MicroMsg.Loader.ImageBitmapProducer", paramg.getWidth() + " bitmapH=" + paramg.getHeight() + " degree=" + i);
+    Log.i("MicroMsg.Loader.ImageBitmapProducer", paramg.getWidth() + " bitmapH=" + paramg.getHeight() + " degree=" + i);
     paramg = new com.tencent.mm.loader.h.e(paramg);
     AppMethodBeat.o(164899);
     return paramg;
@@ -46,7 +46,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.c.c
  * JD-Core Version:    0.7.0.1
  */

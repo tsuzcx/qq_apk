@@ -1,55 +1,69 @@
 package com.tencent.mm.app.plugin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fz;
+import com.tencent.mm.audio.b.c;
+import com.tencent.mm.g.a.gb;
+import com.tencent.mm.g.a.gc;
 import com.tencent.mm.modelvoice.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public final class a
 {
   public static final class f
-    extends com.tencent.mm.sdk.b.c<fz>
+    extends IListener<gc>
   {
-    m cYc;
-    aw cYd;
-    boolean cYe;
-    boolean cYf;
-    boolean cYg;
-    fz cYh;
-    Runnable cYi;
+    m doF;
+    boolean doG;
+    boolean doH;
+    gc doI;
+    Runnable doJ;
     String fileName;
+    boolean isTimeout;
+    MTimerHandler timer;
     
     public f()
     {
       AppMethodBeat.i(161265);
       this.fileName = "";
-      this.__eventId = fz.class.getName().hashCode();
+      this.__eventId = gc.class.getName().hashCode();
       AppMethodBeat.o(161265);
     }
     
-    final void stopRecord()
+    private void stopRecord()
     {
       AppMethodBeat.i(19781);
-      if (this.cYc != null)
+      if (this.doF != null)
       {
-        this.cYf = this.cYc.PF();
-        if (this.cYi != null)
+        this.doH = this.doF.ZZ();
+        if (this.doJ != null)
         {
-          if (this.cYh != null)
+          if (this.doI != null)
           {
-            this.cYh.dsx.dsy = this.cYc.dhw.dio;
-            this.cYh = null;
+            this.doI.dJI.dJJ = this.doF.dyI.dzA;
+            this.doI = null;
           }
-          if (this.cYg) {
-            this.cYi.run();
+          if (this.isTimeout) {
+            this.doJ.run();
           }
-          this.cYi = null;
+          this.doJ = null;
         }
-        this.cYe = true;
+        this.doG = true;
       }
       AppMethodBeat.o(19781);
+    }
+  }
+  
+  public static final class i
+    extends IListener<gb>
+  {
+    public i()
+    {
+      AppMethodBeat.i(161268);
+      this.__eventId = gb.class.getName().hashCode();
+      AppMethodBeat.o(161268);
     }
   }
 }

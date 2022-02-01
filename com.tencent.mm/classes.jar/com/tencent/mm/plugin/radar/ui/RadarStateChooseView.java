@@ -7,29 +7,29 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.radar.b.e.a;
-import d.f;
-import d.g;
-import d.g.a.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isShowing", "", "mStatus", "Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "getMStatus", "()Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "setMStatus", "(Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;)V", "mTrunOn", "slideInAnim", "Landroid/view/animation/Animation;", "getSlideInAnim", "()Landroid/view/animation/Animation;", "slideInAnim$delegate", "Lkotlin/Lazy;", "slideOutAnim", "getSlideOutAnim", "slideOutAnim$delegate", "hide", "", "show", "stateAlignment", "trunOff", "trunOn", "trunToStatus", "status", "Companion", "plugin-radar_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isShowing", "", "mStatus", "Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "getMStatus", "()Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "setMStatus", "(Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;)V", "mTrunOn", "slideInAnim", "Landroid/view/animation/Animation;", "getSlideInAnim", "()Landroid/view/animation/Animation;", "slideInAnim$delegate", "Lkotlin/Lazy;", "slideOutAnim", "getSlideOutAnim", "slideOutAnim$delegate", "hide", "", "show", "stateAlignment", "trunOff", "trunOn", "trunToStatus", "status", "Companion", "plugin-radar_release"})
 public final class RadarStateChooseView
   extends RelativeLayout
 {
+  public static final a BAm;
   private static final String TAG = "MicroMsg.Radar.RadarStateChooseView";
-  public static final a xAl;
-  boolean cNB;
-  private final f xAh;
-  private final f xAi;
-  boolean xAj;
-  e.a xAk;
+  private final f BAi;
+  private final f BAj;
+  boolean BAk;
+  e.a BAl;
+  boolean ddZ;
   
   static
   {
     AppMethodBeat.i(138673);
-    xAl = new a((byte)0);
+    BAm = new a((byte)0);
     TAG = "MicroMsg.Radar.RadarStateChooseView";
     AppMethodBeat.o(138673);
   }
@@ -38,10 +38,10 @@ public final class RadarStateChooseView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138678);
-    this.xAh = g.O((a)new c(this));
-    this.xAi = g.O((a)new b(this));
-    this.xAj = true;
-    this.xAk = e.a.xyY;
+    this.BAi = g.ah((a)new c(this));
+    this.BAj = g.ah((a)new b(this));
+    this.BAk = true;
+    this.BAl = e.a.ByZ;
     AppMethodBeat.o(138678);
   }
   
@@ -49,18 +49,18 @@ public final class RadarStateChooseView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(138679);
-    this.xAh = g.O((a)new c(this));
-    this.xAi = g.O((a)new b(this));
-    this.xAj = true;
-    this.xAk = e.a.xyY;
+    this.BAi = g.ah((a)new c(this));
+    this.BAj = g.ah((a)new b(this));
+    this.BAk = true;
+    this.BAl = e.a.ByZ;
     AppMethodBeat.o(138679);
   }
   
-  final void dGF()
+  final void eHt()
   {
     AppMethodBeat.i(138677);
-    e.a locala = this.xAk;
-    switch (e.cqt[locala.ordinal()])
+    e.a locala = this.BAl;
+    switch (e.$EnumSwitchMapping$0[locala.ordinal()])
     {
     default: 
       setVisibility(4);
@@ -71,20 +71,20 @@ public final class RadarStateChooseView
       AppMethodBeat.o(138677);
       return;
     }
-    setBackgroundResource(2131691074);
+    setBackgroundResource(2131691376);
     setVisibility(0);
     AppMethodBeat.o(138677);
   }
   
   public final e.a getMStatus()
   {
-    return this.xAk;
+    return this.BAl;
   }
   
   final Animation getSlideInAnim()
   {
     AppMethodBeat.i(138675);
-    Animation localAnimation = (Animation)this.xAi.getValue();
+    Animation localAnimation = (Animation)this.BAj.getValue();
     AppMethodBeat.o(138675);
     return localAnimation;
   }
@@ -92,7 +92,7 @@ public final class RadarStateChooseView
   final Animation getSlideOutAnim()
   {
     AppMethodBeat.i(138674);
-    Animation localAnimation = (Animation)this.xAh.getValue();
+    Animation localAnimation = (Animation)this.BAi.getValue();
     AppMethodBeat.o(138674);
     return localAnimation;
   }
@@ -101,14 +101,14 @@ public final class RadarStateChooseView
   {
     AppMethodBeat.i(138676);
     p.h(parama, "<set-?>");
-    this.xAk = parama;
+    this.BAl = parama;
     AppMethodBeat.o(138676);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
   public static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements a<Animation>
@@ -118,7 +118,7 @@ public final class RadarStateChooseView
       super();
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideInAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideInAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
     public static final class a
       implements Animation.AnimationListener
     {
@@ -128,8 +128,8 @@ public final class RadarStateChooseView
       {
         AppMethodBeat.i(138666);
         p.h(paramAnimation, "animation");
-        RadarStateChooseView.a(this.xAn.xAm);
-        this.xAn.xAm.setVisibility(8);
+        RadarStateChooseView.a(this.BAo.BAn);
+        this.BAo.BAn.setVisibility(8);
         AppMethodBeat.o(138666);
       }
       
@@ -149,7 +149,7 @@ public final class RadarStateChooseView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends q
     implements a<Animation>
@@ -159,7 +159,7 @@ public final class RadarStateChooseView
       super();
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideOutAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideOutAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
     public static final class a
       implements Animation.AnimationListener
     {

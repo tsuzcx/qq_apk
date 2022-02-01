@@ -1,311 +1,201 @@
 package com.tencent.mm.plugin.finder.storage;
 
+import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alr;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.bwd;
-import d.g.b.ad;
-import d.l;
-import d.v;
-import java.util.Arrays;
+import com.tencent.mm.g.c.ce;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.api.g.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storage.bv;
+import kotlin.g.b.p;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "()V", "value", "", "blacklist_flag", "getBlacklist_flag", "()I", "setBlacklist_flag", "(I)V", "canRemove", "getCanRemove", "setCanRemove", "", "clientId", "getClientId", "()Ljava/lang/String;", "setClientId", "(Ljava/lang/String;)V", "", "commentId", "getCommentId", "()J", "setCommentId", "(J)V", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "commentInfo", "getCommentInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "setCommentInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;)V", "content", "getContent", "setContent", "continueFlag", "getContinueFlag", "setContinueFlag", "createtime", "getCreatetime", "setCreatetime", "deleteFlag", "getDeleteFlag", "setDeleteFlag", "displayFlag", "getDisplayFlag", "setDisplayFlag", "displayid", "getDisplayid", "setDisplayid", "displayidDiscarded", "getDisplayidDiscarded", "setDisplayidDiscarded", "expandCommentCount", "getExpandCommentCount", "setExpandCommentCount", "extFlag", "getExtFlag", "setExtFlag", "failedFlag", "getFailedFlag", "setFailedFlag", "feedId", "getFeedId", "setFeedId", "headUrl", "getHeadUrl", "setHeadUrl", "Lcom/tencent/mm/protobuf/ByteString;", "lastBuffer", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "Ljava/util/LinkedList;", "kotlin.jvm.PlatformType", "levelTwoComment", "getLevelTwoComment", "()Ljava/util/LinkedList;", "setLevelTwoComment", "(Ljava/util/LinkedList;)V", "likeCount", "getLikeCount", "setLikeCount", "likeFlag", "getLikeFlag", "setLikeFlag", "nickname", "getNickname", "setNickname", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "postCommentReason", "getPostCommentReason", "setPostCommentReason", "replyCommentId", "getReplyCommentId", "setReplyCommentId", "replyNickname", "getReplyNickname", "setReplyNickname", "reply_content", "getReply_content", "setReply_content", "reply_username", "getReply_username", "setReply_username", "rootCommentId", "getRootCommentId", "setRootCommentId", "state", "getState", "setState", "upContinueFlag", "getUpContinueFlag", "setUpContinueFlag", "username", "getUsername", "setUsername", "isAuthorMentioned", "", "isCommentCanDelete", "isCommentSent", "isExtFlagFriend", "isFinderComment", "isPoster", "isReplyerFinder", "isReplyerPoster", "toString", "Companion", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "removeCacheFromWx", "", "replaceContact", "", "ct", "isUpdateTime", "updateContact", "Companion", "plugin-finder_release"})
 public final class ab
-  extends aa
+  extends MAutoStorage<ce>
 {
-  public static final ab.a sKh;
+  private static final String[] INDEX_CREATE;
+  private static final String[] SQL_CREATE;
+  public static final a vEP;
+  private final ISQLiteDatabase vDi;
   
   static
   {
-    AppMethodBeat.i(167037);
-    sKh = new ab.a((byte)0);
-    AppMethodBeat.o(167037);
+    AppMethodBeat.i(251823);
+    vEP = new a((byte)0);
+    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS FinderMsgContactStorage_username_index ON FinderMsgContactStorage(username)" };
+    g.a locala = com.tencent.mm.plugin.finder.api.g.tsD;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.plugin.finder.api.g.access$getInfo$cp(), "FinderMsgContactStorage") };
+    AppMethodBeat.o(251823);
   }
   
-  public ab()
+  public ab(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(167036);
-    alr localalr = new alr();
-    localalr.GDK = new FinderCommentInfo();
-    localalr.GDL = new bwc();
-    localalr.GDM = new bwd();
-    this.field_actionInfo = localalr;
-    AppMethodBeat.o(167036);
+    super(paramISQLiteDatabase, com.tencent.mm.plugin.finder.api.g.access$getInfo$cp(), "FinderMsgContactStorage", INDEX_CREATE);
+    AppMethodBeat.i(251822);
+    this.vDi = paramISQLiteDatabase;
+    AppMethodBeat.o(251822);
   }
   
-  public final void FL(int paramInt)
+  private static void g(com.tencent.mm.plugin.finder.api.g paramg)
   {
-    AppMethodBeat.i(204326);
-    cLl().expandCommentCount = paramInt;
-    AppMethodBeat.o(204326);
+    AppMethodBeat.i(251821);
+    Object localObject = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
+    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aSN();
+    String str = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getSessionInfoStorage().avA(paramg.getUsername());
+    ((bv)localObject).ayf(paramg.getUsername());
+    ((bv)localObject).ayf(str);
+    AppMethodBeat.o(251821);
   }
   
-  public final void FM(int paramInt)
+  public final boolean a(com.tencent.mm.plugin.finder.api.g paramg, boolean paramBoolean)
   {
-    AppMethodBeat.i(204327);
-    cLl().displayFlag = paramInt;
-    AppMethodBeat.o(204327);
-  }
-  
-  public final String VK()
-  {
-    AppMethodBeat.i(204320);
-    String str2 = cLl().nickname;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    boolean bool = true;
+    AppMethodBeat.i(251819);
+    p.h(paramg, "ct");
+    if (paramBoolean) {
+      paramg.field_updateTime = cl.aWA();
     }
-    d.g.b.p.g(str1, "commentInfo.nickname?:\"\"");
-    AppMethodBeat.o(204320);
-    return str1;
-  }
-  
-  public final void ajw(String paramString)
-  {
-    AppMethodBeat.i(167034);
-    d.g.b.p.h(paramString, "value");
-    cLl().headUrl = paramString;
-    AppMethodBeat.o(167034);
-  }
-  
-  public final FinderCommentInfo cLl()
-  {
-    AppMethodBeat.i(204318);
-    FinderCommentInfo localFinderCommentInfo2 = this.field_actionInfo.GDK;
-    FinderCommentInfo localFinderCommentInfo1 = localFinderCommentInfo2;
-    if (localFinderCommentInfo2 == null) {
-      localFinderCommentInfo1 = new FinderCommentInfo();
-    }
-    d.g.b.p.g(localFinderCommentInfo1, "field_actionInfo.comment…fo ?: FinderCommentInfo()");
-    AppMethodBeat.o(204318);
-    return localFinderCommentInfo1;
-  }
-  
-  public final String cLm()
-  {
-    AppMethodBeat.i(204322);
-    String str2 = cLl().headUrl;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    d.g.b.p.g(str1, "commentInfo.headUrl?:\"\"");
-    AppMethodBeat.o(204322);
-    return str1;
-  }
-  
-  public final String cLn()
-  {
-    AppMethodBeat.i(204324);
-    String str2 = cLl().replyNickname;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    d.g.b.p.g(str1, "commentInfo.replyNickname?:\"\"");
-    AppMethodBeat.o(204324);
-    return str1;
-  }
-  
-  public final String cLo()
-  {
-    AppMethodBeat.i(204328);
-    String str2 = cLl().reply_content;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    d.g.b.p.g(str1, "commentInfo.reply_content?:\"\"");
-    AppMethodBeat.o(204328);
-    return str1;
-  }
-  
-  public final String cLp()
-  {
-    AppMethodBeat.i(204329);
-    String str2 = cLl().reply_username;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    d.g.b.p.g(str1, "commentInfo.reply_username?:\"\"");
-    AppMethodBeat.o(204329);
-    return str1;
-  }
-  
-  public final String cLq()
-  {
-    AppMethodBeat.i(204330);
-    String str2 = cLl().client_id;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    d.g.b.p.g(str1, "commentInfo.client_id?:\"\"");
-    AppMethodBeat.o(204330);
-    return str1;
-  }
-  
-  public final boolean cLr()
-  {
-    AppMethodBeat.i(204331);
-    if ((cLl().extFlag & 0x1) > 0)
+    ContentValues localContentValues;
+    if (asG(paramg.getUsername()) == null)
     {
-      AppMethodBeat.o(204331);
-      return true;
-    }
-    AppMethodBeat.o(204331);
-    return false;
-  }
-  
-  public final boolean cLs()
-  {
-    return (this.field_state != 1) && (this.field_state != -1);
-  }
-  
-  public final boolean cLt()
-  {
-    AppMethodBeat.i(178419);
-    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sXz;
-    boolean bool = com.tencent.mm.plugin.finder.utils.p.Gn(cLl().displayFlag);
-    AppMethodBeat.o(178419);
-    return bool;
-  }
-  
-  public final boolean cLu()
-  {
-    AppMethodBeat.i(178420);
-    com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sXz;
-    boolean bool = com.tencent.mm.plugin.finder.utils.p.Go(cLl().displayFlag);
-    AppMethodBeat.o(178420);
-    return bool;
-  }
-  
-  public final boolean cLv()
-  {
-    AppMethodBeat.i(178421);
-    if ((cLl().displayFlag & 0x4) != 0)
-    {
-      AppMethodBeat.o(178421);
-      return true;
-    }
-    AppMethodBeat.o(178421);
-    return false;
-  }
-  
-  public final String getContent()
-  {
-    AppMethodBeat.i(204321);
-    String str2 = cLl().content;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    d.g.b.p.g(str1, "commentInfo.content?:\"\"");
-    AppMethodBeat.o(204321);
-    return str1;
-  }
-  
-  public final String getObjectNonceId()
-  {
-    String str2 = this.field_objectNonceId;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String getUsername()
-  {
-    AppMethodBeat.i(204319);
-    String str2 = cLl().username;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    d.g.b.p.g(str1, "commentInfo.username?:\"\"");
-    AppMethodBeat.o(204319);
-    return str1;
-  }
-  
-  public final void setLikeCount(int paramInt)
-  {
-    AppMethodBeat.i(204325);
-    cLl().likeCount = paramInt;
-    AppMethodBeat.o(204325);
-  }
-  
-  public final void setUsername(String paramString)
-  {
-    AppMethodBeat.i(167033);
-    d.g.b.p.h(paramString, "value");
-    cLl().username = paramString;
-    AppMethodBeat.o(167033);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(167035);
-    Object localObject1 = ad.Njc;
-    Object localObject2 = new StringBuilder("field_commentInfo{commentId:").append(cLl().commentId).append(", displayid:");
-    localObject1 = cLl();
-    if (localObject1 != null) {}
-    Object[] arrayOfObject;
-    int i;
-    for (localObject1 = Long.valueOf(((FinderCommentInfo)localObject1).displayid);; localObject1 = null)
-    {
-      localObject2 = ((Long)localObject1).longValue() + " try_count " + this.field_tryCount + " conetent:%s}";
-      arrayOfObject = new Object[1];
-      localObject1 = cLl();
-      if (localObject1 == null) {
-        break label171;
+      p.h(paramg, "contact");
+      localContentValues = paramg.convertTo();
+      long l = this.vDi.insert("FinderContact", "", localContentValues);
+      Log.i("Finder.MsgContactStorage", "insert contact " + paramg + ' ' + l);
+      paramg.systemRowid = l;
+      if (l > 0L) {
+        paramBoolean = bool;
       }
-      localObject1 = ((FinderCommentInfo)localObject1).content;
-      if (localObject1 == null) {
-        break label171;
-      }
-      d.g.b.p.g(localObject1, "it");
-      i = Math.min(((String)localObject1).length(), 2);
-      if (localObject1 != null) {
-        break;
-      }
-      localObject1 = new v("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(167035);
-      throw ((Throwable)localObject1);
-    }
-    localObject1 = ((String)localObject1).substring(0, i);
-    d.g.b.p.g(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    if (localObject1 == null) {
-      label171:
-      localObject1 = "";
     }
     for (;;)
     {
-      arrayOfObject[0] = localObject1;
-      localObject1 = String.format((String)localObject2, Arrays.copyOf(arrayOfObject, 1));
-      d.g.b.p.g(localObject1, "java.lang.String.format(format, *args)");
-      AppMethodBeat.o(167035);
-      return localObject1;
+      if (paramBoolean)
+      {
+        g(paramg);
+        doNotify("FinderContact", 4, paramg.getUsername());
+      }
+      AppMethodBeat.o(251819);
+      return paramBoolean;
+      paramBoolean = false;
+      continue;
+      p.h(paramg, "contact");
+      localContentValues = paramg.convertTo();
+      localContentValues.remove("rowid");
+      int i = this.vDi.update("FinderContact", localContentValues, "username=?", new String[] { paramg.field_username });
+      Log.i("Finder.MsgContactStorage", "updateContact " + paramg.cXL() + ' ' + i);
+      if (i > 0) {
+        g(paramg);
+      }
+      paramBoolean = bool;
+      if (i <= 0) {
+        paramBoolean = false;
+      }
     }
   }
   
-  public final void xi(long paramLong)
+  /* Error */
+  public final com.tencent.mm.plugin.finder.api.g asG(String paramString)
   {
-    this.field_actionInfo.rQN = paramLong;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: ldc 248
+    //   4: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_1
+    //   8: ldc 249
+    //   10: invokestatic 92	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   13: new 184	java/lang/StringBuilder
+    //   16: dup
+    //   17: ldc 251
+    //   19: invokespecial 188	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   22: aload_1
+    //   23: invokestatic 256	com/tencent/mm/storagebase/h:Fl	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: astore_1
+    //   33: aload_0
+    //   34: getfield 98	com/tencent/mm/plugin/finder/storage/ab:vDi	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   37: aload_1
+    //   38: aconst_null
+    //   39: iconst_2
+    //   40: invokeinterface 260 4 0
+    //   45: checkcast 262	java/io/Closeable
+    //   48: astore_3
+    //   49: aload_3
+    //   50: checkcast 264	android/database/Cursor
+    //   53: astore 4
+    //   55: aload 4
+    //   57: ifnull +45 -> 102
+    //   60: aload 4
+    //   62: invokeinterface 268 1 0
+    //   67: iconst_1
+    //   68: if_icmpne +64 -> 132
+    //   71: new 65	com/tencent/mm/plugin/finder/api/g
+    //   74: dup
+    //   75: invokespecial 269	com/tencent/mm/plugin/finder/api/g:<init>	()V
+    //   78: astore_1
+    //   79: aload_1
+    //   80: aload 4
+    //   82: invokevirtual 273	com/tencent/mm/plugin/finder/api/g:convertFrom	(Landroid/database/Cursor;)V
+    //   85: getstatic 279	kotlin/x:SXb	Lkotlin/x;
+    //   88: astore 4
+    //   90: aload_3
+    //   91: aconst_null
+    //   92: invokestatic 284	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   95: ldc 248
+    //   97: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: aload_1
+    //   101: areturn
+    //   102: aconst_null
+    //   103: astore_1
+    //   104: goto -19 -> 85
+    //   107: astore_2
+    //   108: ldc 248
+    //   110: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: aload_2
+    //   114: athrow
+    //   115: astore_1
+    //   116: aload_3
+    //   117: aload_2
+    //   118: invokestatic 284	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   121: ldc 248
+    //   123: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: aload_1
+    //   127: athrow
+    //   128: astore_1
+    //   129: goto -13 -> 116
+    //   132: aconst_null
+    //   133: astore_1
+    //   134: goto -49 -> 85
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	137	0	this	ab
+    //   0	137	1	paramString	String
+    //   1	1	2	localObject1	Object
+    //   107	11	2	localThrowable	java.lang.Throwable
+    //   48	69	3	localCloseable	java.io.Closeable
+    //   53	36	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   49	55	107	java/lang/Throwable
+    //   60	85	107	java/lang/Throwable
+    //   85	90	107	java/lang/Throwable
+    //   108	115	115	finally
+    //   49	55	128	finally
+    //   60	85	128	finally
+    //   85	90	128	finally
   }
   
-  public final void xj(long paramLong)
-  {
-    AppMethodBeat.i(204323);
-    cLl().createtime = paramLong;
-    AppMethodBeat.o(204323);
-  }
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "TABLE_NAME", "TAG", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.ab
  * JD-Core Version:    0.7.0.1
  */

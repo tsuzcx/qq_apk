@@ -995,7 +995,7 @@ public class MMBitmapFactory
   static final class a
     extends FilterInputStream
   {
-    private long gwZ = 0L;
+    private long hjN = 0L;
     
     public a(FileInputStream paramFileInputStream)
     {
@@ -1009,7 +1009,7 @@ public class MMBitmapFactory
         AppMethodBeat.i(978);
         try
         {
-          this.gwZ = ((FileInputStream)this.in).getChannel().position();
+          this.hjN = ((FileInputStream)this.in).getChannel().position();
           AppMethodBeat.o(978);
         }
         catch (IOException localIOException)
@@ -1017,7 +1017,7 @@ public class MMBitmapFactory
           for (;;)
           {
             Log.e("MicroMsg.MMBitmapFactory", localIOException, "fail to mark position.");
-            this.gwZ = -1L;
+            this.hjN = -1L;
             AppMethodBeat.o(978);
           }
         }
@@ -1036,15 +1036,15 @@ public class MMBitmapFactory
       try
       {
         AppMethodBeat.i(979);
-        if (this.gwZ < 0L)
+        if (this.hjN < 0L)
         {
-          IOException localIOException = new IOException("Illegal marked position: " + this.gwZ);
+          IOException localIOException = new IOException("Illegal marked position: " + this.hjN);
           AppMethodBeat.o(979);
           throw localIOException;
         }
       }
       finally {}
-      ((FileInputStream)this.in).getChannel().position(this.gwZ);
+      ((FileInputStream)this.in).getChannel().position(this.hjN);
       AppMethodBeat.o(979);
     }
   }

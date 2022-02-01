@@ -45,7 +45,7 @@ final class d
             paramIntent = String.valueOf(localBundle);
             new StringBuilder(String.valueOf(paramString).length() + 22 + String.valueOf(paramIntent).length()).append("Sending event=").append(paramString).append(" params=").append(paramIntent);
           }
-          paramIntent = (com.google.firebase.analytics.connector.a)com.google.firebase.a.xK().w(com.google.firebase.analytics.connector.a.class);
+          paramIntent = (com.google.firebase.analytics.connector.a)com.google.firebase.a.xS().y(com.google.firebase.analytics.connector.a.class);
           if (paramIntent != null)
           {
             paramIntent.logEvent("fcm", paramString, localBundle);
@@ -71,7 +71,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.messaging.d
  * JD-Core Version:    0.7.0.1
  */

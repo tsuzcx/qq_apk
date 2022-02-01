@@ -25,7 +25,7 @@ public final class f
     return true;
   }
   
-  public final BasePathActionArg bee()
+  public final BasePathActionArg bzv()
   {
     AppMethodBeat.i(145368);
     PathClosePathActionArg localPathClosePathActionArg = new PathClosePathActionArg();
@@ -40,7 +40,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.f
  * JD-Core Version:    0.7.0.1
  */

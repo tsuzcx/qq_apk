@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class g
 {
-  private static g Dnl;
-  public int Dnm = 0;
-  private JSONObject Dnn;
-  public String wRu;
+  private static g HWD;
+  public String ANp;
+  public int HWE = 0;
+  private JSONObject HWF;
   
-  public static g eII()
+  public static g fQl()
   {
     AppMethodBeat.i(70243);
-    if (Dnl == null) {
-      Dnl = new g();
+    if (HWD == null) {
+      HWD = new g();
     }
-    g localg = Dnl;
+    g localg = HWD;
     AppMethodBeat.o(70243);
     return localg;
   }
   
-  public final void bc(JSONObject paramJSONObject)
+  public final void bC(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70244);
-    this.Dnn = paramJSONObject;
+    this.HWF = paramJSONObject;
     try
     {
-      if (this.Dnn != null)
+      if (this.HWF != null)
       {
-        paramJSONObject = this.Dnn.optJSONObject("bind_newcard_switch");
-        this.Dnm = paramJSONObject.optInt("forbid_bind_card");
+        paramJSONObject = this.HWF.optJSONObject("bind_newcard_switch");
+        this.HWE = paramJSONObject.optInt("forbid_bind_card");
       }
-      for (this.wRu = paramJSONObject.optString("forbid_word");; this.wRu = "")
+      for (this.ANp = paramJSONObject.optString("forbid_word");; this.ANp = "")
       {
-        ae.i("MicroMsg.BindQueryComplexSwitchInfo", "feed result %s forbid_bind_card %s forbid_word %s", new Object[] { this.Dnn, Integer.valueOf(this.Dnm), this.wRu });
+        Log.i("MicroMsg.BindQueryComplexSwitchInfo", "feed result %s forbid_bind_card %s forbid_word %s", new Object[] { this.HWF, Integer.valueOf(this.HWE), this.ANp });
         AppMethodBeat.o(70244);
         return;
-        this.Dnm = 0;
+        this.HWE = 0;
       }
     }
     catch (Exception paramJSONObject)
     {
       for (;;)
       {
-        this.Dnm = 0;
-        this.wRu = "";
-        ae.printErrStackTrace("MicroMsg.BindQueryComplexSwitchInfo", paramJSONObject, "", new Object[0]);
+        this.HWE = 0;
+        this.ANp = "";
+        Log.printErrStackTrace("MicroMsg.BindQueryComplexSwitchInfo", paramJSONObject, "", new Object[0]);
       }
     }
   }
   
-  public final boolean bnS()
+  public final boolean bJw()
   {
     AppMethodBeat.i(70245);
-    if ((this.Dnm == 1) && (!bu.isNullOrNil(this.wRu)))
+    if ((this.HWE == 1) && (!Util.isNullOrNil(this.ANp)))
     {
       AppMethodBeat.o(70245);
       return true;
@@ -67,7 +67,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.g
  * JD-Core Version:    0.7.0.1
  */

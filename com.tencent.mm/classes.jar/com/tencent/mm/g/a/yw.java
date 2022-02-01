@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class yw
-  extends b
+  extends IEvent
 {
-  public a dOR;
+  public a efe;
+  public b eff;
   
   public yw()
   {
@@ -16,25 +16,29 @@ public final class yw
   
   private yw(byte paramByte)
   {
-    AppMethodBeat.i(91228);
-    this.dOR = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(121052);
+    this.efe = new a();
+    this.eff = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91228);
+    AppMethodBeat.o(121052);
   }
   
   public static final class a
   {
-    public int dOQ = 0;
-    public String dmw;
-    public Intent intent;
-    public int requestCode = 0;
-    public int result = 0;
+    public int action;
+    public String dCl;
+    public int option;
+  }
+  
+  public static final class b
+  {
+    public boolean efg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.yw
  * JD-Core Version:    0.7.0.1
  */

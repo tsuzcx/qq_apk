@@ -16,15 +16,15 @@ public class MDrawableView
   extends View
   implements a
 {
-  private final b jXK;
-  private final Set<View.OnAttachStateChangeListener> jXL;
+  private final b laI;
+  private final Set<View.OnAttachStateChangeListener> laJ;
   
   public MDrawableView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145420);
-    this.jXK = new b(this);
-    this.jXL = new LinkedHashSet();
+    this.laI = new b(this);
+    this.laJ = new LinkedHashSet();
     setLayerType(1, null);
     AppMethodBeat.o(145420);
   }
@@ -33,8 +33,8 @@ public class MDrawableView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145421);
-    this.jXK = new b(this);
-    this.jXL = new LinkedHashSet();
+    this.laI = new b(this);
+    this.laJ = new LinkedHashSet();
     setLayerType(1, null);
     AppMethodBeat.o(145421);
   }
@@ -43,13 +43,13 @@ public class MDrawableView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145422);
-    this.jXK = new b(this);
-    this.jXL = new LinkedHashSet();
+    this.laI = new b(this);
+    this.laJ = new LinkedHashSet();
     setLayerType(1, null);
     AppMethodBeat.o(145422);
   }
   
-  public final void P(Runnable paramRunnable)
+  public final void U(Runnable paramRunnable)
   {
     AppMethodBeat.i(145425);
     post(paramRunnable);
@@ -59,26 +59,26 @@ public class MDrawableView
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145433);
-    this.jXK.a(paramDrawCanvasArg, parama);
+    this.laI.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145433);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145431);
-    this.jXK.a(paramJSONArray, parama);
+    this.laI.a(paramJSONArray, parama);
     AppMethodBeat.o(145431);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145436);
-    if (this.jXL.contains(paramOnAttachStateChangeListener))
+    if (this.laJ.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145436);
       return;
     }
-    this.jXL.add(paramOnAttachStateChangeListener);
+    this.laJ.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145436);
   }
@@ -86,42 +86,42 @@ public class MDrawableView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145434);
-    this.jXK.b(paramDrawCanvasArg, parama);
+    this.laI.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145434);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145432);
-    this.jXK.b(paramJSONArray, parama);
+    this.laI.b(paramJSONArray, parama);
     AppMethodBeat.o(145432);
   }
   
-  public final void bdP()
+  public final void bzg()
   {
     AppMethodBeat.i(145424);
     postInvalidate();
     AppMethodBeat.o(145424);
   }
   
-  public final void bdQ()
+  public final void bzh()
   {
     AppMethodBeat.i(145435);
-    this.jXK.bdQ();
+    this.laI.bzh();
     AppMethodBeat.o(145435);
   }
   
-  public final void bdR()
+  public final void bzi()
   {
     AppMethodBeat.i(145442);
-    this.jXK.bdR();
+    this.laI.bzi();
     AppMethodBeat.o(145442);
   }
   
   public d getDrawContext()
   {
     AppMethodBeat.i(145426);
-    d locald = this.jXK.getDrawContext();
+    d locald = this.laI.getDrawContext();
     AppMethodBeat.o(145426);
     return locald;
   }
@@ -129,7 +129,7 @@ public class MDrawableView
   public String getSessionId()
   {
     AppMethodBeat.i(145439);
-    String str = this.jXK.getSessionId();
+    String str = this.laI.getSessionId();
     AppMethodBeat.o(145439);
     return str;
   }
@@ -137,42 +137,42 @@ public class MDrawableView
   public String getTraceId()
   {
     AppMethodBeat.i(145429);
-    String str = this.jXK.getTraceId();
+    String str = this.laI.getTraceId();
     AppMethodBeat.o(145429);
     return str;
   }
   
-  public final boolean h(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(145430);
-    boolean bool = this.jXK.h(paramCanvas);
-    AppMethodBeat.o(145430);
-    return bool;
-  }
-  
   public final boolean isPaused()
   {
-    return this.jXK.mPause;
+    return this.laI.mPause;
+  }
+  
+  public final boolean o(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(145430);
+    boolean bool = this.laI.o(paramCanvas);
+    AppMethodBeat.o(145430);
+    return bool;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(145423);
-    h(paramCanvas);
+    o(paramCanvas);
     AppMethodBeat.o(145423);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(145438);
-    this.jXK.onResume();
+    this.laI.onResume();
     AppMethodBeat.o(145438);
   }
   
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145437);
-    this.jXL.remove(paramOnAttachStateChangeListener);
+    this.laJ.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145437);
   }
@@ -180,34 +180,34 @@ public class MDrawableView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145427);
-    this.jXK.setDrawActionReportable(parama);
+    this.laI.setDrawActionReportable(parama);
     AppMethodBeat.o(145427);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145440);
-    this.jXK.setSessionId(paramString);
+    this.laI.setSessionId(paramString);
     AppMethodBeat.o(145440);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145441);
-    this.jXK.setStartTime(paramLong);
+    this.laI.setStartTime(paramLong);
     AppMethodBeat.o(145441);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145428);
-    this.jXK.setTraceId(paramString);
+    this.laI.setTraceId(paramString);
     AppMethodBeat.o(145428);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.MDrawableView
  * JD-Core Version:    0.7.0.1
  */

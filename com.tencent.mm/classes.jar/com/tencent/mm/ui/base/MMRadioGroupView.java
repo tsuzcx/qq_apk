@@ -11,23 +11,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMRadioGroupView
   extends LinearLayout
 {
-  private int JHK;
-  private MMRadioImageButton.a JHL;
-  private b JHM;
-  private c JHN;
-  private MMRadioImageButton JHO;
-  private d JHP;
-  private int gMC;
+  private int OSD;
+  private MMRadioImageButton.a OSE;
+  private b OSF;
+  private c OSG;
+  private MMRadioImageButton OSH;
+  private d OSI;
+  private int hCc;
   
   public MMRadioGroupView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142106);
-    this.gMC = -1;
-    this.JHK = -1;
-    this.JHL = new a();
-    this.JHN = new c((byte)0);
-    super.setOnHierarchyChangeListener(this.JHN);
+    this.hCc = -1;
+    this.OSD = -1;
+    this.OSE = new a();
+    this.OSG = new c((byte)0);
+    super.setOnHierarchyChangeListener(this.OSG);
     AppMethodBeat.o(142106);
   }
   
@@ -43,17 +43,17 @@ public class MMRadioGroupView
   
   private void setCheckedButton(MMRadioImageButton paramMMRadioImageButton)
   {
-    this.JHO = paramMMRadioImageButton;
+    this.OSH = paramMMRadioImageButton;
   }
   
   private void setCheckedId(int paramInt)
   {
-    this.gMC = paramInt;
+    this.hCc = paramInt;
   }
   
   private void setClickedId(int paramInt)
   {
-    this.JHK = paramInt;
+    this.OSD = paramInt;
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
@@ -64,8 +64,8 @@ public class MMRadioGroupView
       MMRadioImageButton localMMRadioImageButton = (MMRadioImageButton)paramView;
       if (localMMRadioImageButton.isChecked())
       {
-        if (this.gMC != -1) {
-          c(this.gMC, false);
+        if (this.hCc != -1) {
+          c(this.hCc, false);
         }
         setCheckedId(localMMRadioImageButton.getId());
         setCheckedButton(localMMRadioImageButton);
@@ -77,27 +77,27 @@ public class MMRadioGroupView
   
   public MMRadioImageButton getCheckedRadioButton()
   {
-    return this.JHO;
+    return this.OSH;
   }
   
   public int getCheckedRadioButtonId()
   {
-    return this.gMC;
+    return this.hCc;
   }
   
   public int getClickedRadioButtonId()
   {
-    return this.JHK;
+    return this.OSD;
   }
   
   protected void onFinishInflate()
   {
     AppMethodBeat.i(142107);
     super.onFinishInflate();
-    if (this.gMC != -1)
+    if (this.hCc != -1)
     {
-      c(this.gMC, true);
-      setCheckedId(this.gMC);
+      c(this.hCc, true);
+      setCheckedId(this.hCc);
     }
     AppMethodBeat.o(142107);
   }
@@ -111,12 +111,12 @@ public class MMRadioGroupView
   
   public void setOnMMRadioGroupCheckedChangeListener(b paramb)
   {
-    this.JHM = paramb;
+    this.OSF = paramb;
   }
   
   public void setOnSizeChangeObserver(d paramd)
   {
-    this.JHP = paramd;
+    this.OSI = paramd;
   }
   
   final class a
@@ -149,7 +149,7 @@ public class MMRadioGroupView
   final class c
     implements ViewGroup.OnHierarchyChangeListener
   {
-    private ViewGroup.OnHierarchyChangeListener qw;
+    private ViewGroup.OnHierarchyChangeListener qy;
     
     private c() {}
     
@@ -169,8 +169,8 @@ public class MMRadioGroupView
         }
         ((MMRadioImageButton)paramView2).setOnOtherMMRadioButtonCheckedChangeListener(MMRadioGroupView.b(MMRadioGroupView.this));
       }
-      if (this.qw != null) {
-        this.qw.onChildViewAdded(paramView1, paramView2);
+      if (this.qy != null) {
+        this.qy.onChildViewAdded(paramView1, paramView2);
       }
       AppMethodBeat.o(142104);
     }
@@ -181,8 +181,8 @@ public class MMRadioGroupView
       if ((paramView1 == MMRadioGroupView.this) && ((paramView2 instanceof MMRadioImageButton))) {
         ((MMRadioImageButton)paramView2).setOnOtherMMRadioButtonCheckedChangeListener(null);
       }
-      if (this.qw != null) {
-        this.qw.onChildViewRemoved(paramView1, paramView2);
+      if (this.qy != null) {
+        this.qy.onChildViewRemoved(paramView1, paramView2);
       }
       AppMethodBeat.o(142105);
     }
@@ -192,7 +192,7 @@ public class MMRadioGroupView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMRadioGroupView
  * JD-Core Version:    0.7.0.1
  */

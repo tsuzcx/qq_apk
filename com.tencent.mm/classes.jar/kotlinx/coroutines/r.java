@@ -1,60 +1,49 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
-import java.util.concurrent.CancellationException;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/ChildHandle;", "parent", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/ChildJob;)V", "childCancelled", "", "cause", "", "invoke", "", "toString", "", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/ChildHandle;", "parent", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/ChildJob;)V", "childCancelled", "", "cause", "", "invoke", "", "toString", "", "kotlinx-coroutines-core"})
 public final class r
-  extends bt<bv>
+  extends bw<ca>
   implements q
 {
-  public final s OeN;
+  public final s TTH;
   
-  public r(bv parambv, s params)
+  public r(ca paramca, s params)
   {
-    super((br)parambv);
+    super((bu)paramca);
     AppMethodBeat.i(118196);
-    this.OeN = params;
+    this.TTH = params;
     AppMethodBeat.o(118196);
   }
   
-  public final boolean A(Throwable paramThrowable)
+  public final boolean B(Throwable paramThrowable)
   {
     AppMethodBeat.i(118194);
-    bv localbv = (bv)this.OfU;
-    if ((paramThrowable instanceof CancellationException))
-    {
-      AppMethodBeat.o(118194);
-      return true;
-    }
-    if (localbv.fR(paramThrowable))
-    {
-      AppMethodBeat.o(118194);
-      return true;
-    }
+    boolean bool = ((ca)this.TUQ).B(paramThrowable);
     AppMethodBeat.o(118194);
-    return false;
+    return bool;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(118195);
-    String str = "ChildHandle[" + this.OeN + ']';
+    String str = "ChildHandle[" + this.TTH + ']';
     AppMethodBeat.o(118195);
     return str;
   }
   
-  public final void x(Throwable paramThrowable)
+  public final void y(Throwable paramThrowable)
   {
     AppMethodBeat.i(118192);
-    this.OeN.a((cd)this.OfU);
+    this.TTH.a((ci)this.TUQ);
     AppMethodBeat.o(118192);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.r
  * JD-Core Version:    0.7.0.1
  */

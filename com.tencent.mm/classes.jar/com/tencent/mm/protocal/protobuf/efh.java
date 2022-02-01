@@ -5,113 +5,207 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class efh
   extends com.tencent.mm.bw.a
 {
-  public com.tencent.mm.bw.b FQS;
-  public String HGP;
-  public long Ijj;
-  public int Scene;
+  public String NfC;
+  public String NfD;
+  public String jyH;
+  public String jyI;
+  public String jyJ;
+  public String jyK;
+  public String jyL;
+  public String jyM;
+  public String jyN;
+  public String jyO;
+  public String jyP;
+  public String jyQ;
+  public String jyR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32559);
+    AppMethodBeat.i(152710);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HGP == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: Talker");
-        AppMethodBeat.o(32559);
-        throw paramVarArgs;
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.jyH != null) {
+        paramVarArgs.e(1, this.jyH);
       }
-      if (this.FQS == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: VoiceData");
-        AppMethodBeat.o(32559);
-        throw paramVarArgs;
+      if (this.jyI != null) {
+        paramVarArgs.e(2, this.jyI);
       }
-      if (this.HGP != null) {
-        paramVarArgs.d(1, this.HGP);
+      if (this.jyJ != null) {
+        paramVarArgs.e(3, this.jyJ);
       }
-      paramVarArgs.aZ(2, this.Ijj);
-      if (this.FQS != null) {
-        paramVarArgs.c(3, this.FQS);
+      if (this.jyK != null) {
+        paramVarArgs.e(4, this.jyK);
       }
-      paramVarArgs.aS(4, this.Scene);
-      AppMethodBeat.o(32559);
+      if (this.jyL != null) {
+        paramVarArgs.e(5, this.jyL);
+      }
+      if (this.jyM != null) {
+        paramVarArgs.e(6, this.jyM);
+      }
+      if (this.jyN != null) {
+        paramVarArgs.e(7, this.jyN);
+      }
+      if (this.jyO != null) {
+        paramVarArgs.e(8, this.jyO);
+      }
+      if (this.jyP != null) {
+        paramVarArgs.e(9, this.jyP);
+      }
+      if (this.jyQ != null) {
+        paramVarArgs.e(10, this.jyQ);
+      }
+      if (this.jyR != null) {
+        paramVarArgs.e(11, this.jyR);
+      }
+      if (this.NfC != null) {
+        paramVarArgs.e(12, this.NfC);
+      }
+      if (this.NfD != null) {
+        paramVarArgs.e(13, this.NfD);
+      }
+      AppMethodBeat.o(152710);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HGP == null) {
-        break label472;
+      if (this.jyH == null) {
+        break label950;
       }
     }
-    label472:
-    for (paramInt = f.a.a.b.b.a.e(1, this.HGP) + 0;; paramInt = 0)
+    label950:
+    for (int i = g.a.a.b.b.a.f(1, this.jyH) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.p(2, this.Ijj);
       paramInt = i;
-      if (this.FQS != null) {
-        paramInt = i + f.a.a.b.b.a.b(3, this.FQS);
+      if (this.jyI != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.jyI);
       }
-      i = f.a.a.b.b.a.bz(4, this.Scene);
-      AppMethodBeat.o(32559);
-      return paramInt + i;
+      i = paramInt;
+      if (this.jyJ != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.jyJ);
+      }
+      paramInt = i;
+      if (this.jyK != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.jyK);
+      }
+      i = paramInt;
+      if (this.jyL != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.jyL);
+      }
+      paramInt = i;
+      if (this.jyM != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.jyM);
+      }
+      i = paramInt;
+      if (this.jyN != null) {
+        i = paramInt + g.a.a.b.b.a.f(7, this.jyN);
+      }
+      paramInt = i;
+      if (this.jyO != null) {
+        paramInt = i + g.a.a.b.b.a.f(8, this.jyO);
+      }
+      i = paramInt;
+      if (this.jyP != null) {
+        i = paramInt + g.a.a.b.b.a.f(9, this.jyP);
+      }
+      paramInt = i;
+      if (this.jyQ != null) {
+        paramInt = i + g.a.a.b.b.a.f(10, this.jyQ);
+      }
+      i = paramInt;
+      if (this.jyR != null) {
+        i = paramInt + g.a.a.b.b.a.f(11, this.jyR);
+      }
+      paramInt = i;
+      if (this.NfC != null) {
+        paramInt = i + g.a.a.b.b.a.f(12, this.NfC);
+      }
+      i = paramInt;
+      if (this.NfD != null) {
+        i = paramInt + g.a.a.b.b.a.f(13, this.NfD);
+      }
+      AppMethodBeat.o(152710);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.HGP == null)
-        {
-          paramVarArgs = new f.a.a.b("Not all required fields were included: Talker");
-          AppMethodBeat.o(32559);
-          throw paramVarArgs;
-        }
-        if (this.FQS == null)
-        {
-          paramVarArgs = new f.a.a.b("Not all required fields were included: VoiceData");
-          AppMethodBeat.o(32559);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32559);
+        AppMethodBeat.o(152710);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         efh localefh = (efh)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32559);
+          AppMethodBeat.o(152710);
           return -1;
         case 1: 
-          localefh.HGP = locala.OmT.readString();
-          AppMethodBeat.o(32559);
+          localefh.jyH = locala.UbS.readString();
+          AppMethodBeat.o(152710);
           return 0;
         case 2: 
-          localefh.Ijj = locala.OmT.zd();
-          AppMethodBeat.o(32559);
+          localefh.jyI = locala.UbS.readString();
+          AppMethodBeat.o(152710);
           return 0;
         case 3: 
-          localefh.FQS = locala.OmT.gCk();
-          AppMethodBeat.o(32559);
+          localefh.jyJ = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 4: 
+          localefh.jyK = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 5: 
+          localefh.jyL = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 6: 
+          localefh.jyM = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 7: 
+          localefh.jyN = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 8: 
+          localefh.jyO = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 9: 
+          localefh.jyP = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 10: 
+          localefh.jyQ = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 11: 
+          localefh.jyR = locala.UbS.readString();
+          AppMethodBeat.o(152710);
+          return 0;
+        case 12: 
+          localefh.NfC = locala.UbS.readString();
+          AppMethodBeat.o(152710);
           return 0;
         }
-        localefh.Scene = locala.OmT.zc();
-        AppMethodBeat.o(32559);
+        localefh.NfD = locala.UbS.readString();
+        AppMethodBeat.o(152710);
         return 0;
       }
-      AppMethodBeat.o(32559);
+      AppMethodBeat.o(152710);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.efh
  * JD-Core Version:    0.7.0.1
  */

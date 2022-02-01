@@ -1,38 +1,41 @@
 package com.tencent.mm.plugin.recordvideo.background.provider;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hi;
-import com.tencent.mm.sdk.e.c.a;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.g.c.hu;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeProviderInfo;", "Lcom/tencent/mm/autogen/table/BaseWeseeProviderInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeProviderInfo;", "Lcom/tencent/mm/autogen/table/BaseWeseeProviderInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-recordvideo_release"})
 public final class b
-  extends hi
+  extends hu
 {
+  public static final a BMF;
   private static final String[] INDEX_CREATE;
   private static final String TABLE = "WeseeProviderInfo";
-  private static final c.a hGW;
-  public static final b.a xMz;
+  private static final IAutoDBItem.MAutoDBInfo iBg;
   
   static
   {
     AppMethodBeat.i(75340);
-    xMz = new b.a((byte)0);
-    hGW = hi.VD();
+    BMF = new a((byte)0);
+    iBg = hu.ajs();
     TABLE = "WeseeProviderInfo";
-    INDEX_CREATE = hi.INDEX_CREATE;
+    INDEX_CREATE = hu.INDEX_CREATE;
     AppMethodBeat.o(75340);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     AppMethodBeat.i(75339);
-    c.a locala = hGW;
-    p.g(locala, "INFO");
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = iBg;
+    p.g(localMAutoDBInfo, "INFO");
     AppMethodBeat.o(75339);
-    return locala;
+    return localMAutoDBInfo;
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeProviderInfo$Companion;", "", "()V", "INDEX_CREATE", "", "", "kotlin.jvm.PlatformType", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "INFO", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getINFO", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "TABLE", "getTABLE", "()Ljava/lang/String;", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 

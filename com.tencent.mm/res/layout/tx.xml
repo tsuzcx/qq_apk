@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/c" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/ado" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/c6u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ha">
-        <ImageView android:layout_gravity="center" android:id="@id/azh" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:src="@drawable/aoo" android:scaleType="fitXY" android:layout_centerInParent="true" />
-        <View android:id="@id/azi" android:background="@drawable/fm" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:layout_centerInParent="true" android:contentDescription="@string/a1d" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/c6u" android:layout_alignTop="@id/c6u">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bq">
-            <TextView android:textSize="@dimen/gy" android:textColor="@color/fg" android:ellipsize="end" android:id="@id/b0e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick_name}" style="@style/lw" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/fjk" android:background="@drawable/azq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
+        <ImageView android:gravity="center_vertical" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="4.0dip" android:src="@raw/monitor_banner_icon" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/abs" android:ellipsize="marquee" android:gravity="left" android:id="@id/ax9" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:maxLines="1" android:marqueeRepeatLimit="marquee_forever" style="@style/mi" />
         </LinearLayout>
-        <TextView android:textColor="@color/km" android:id="@id/b19" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{user_name}" style="@style/lw" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/b4d" android:padding="10.0dip" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/jb" android:adjustViewBounds="true" />
     </LinearLayout>
-    <ImageView android:id="@id/a15" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/star_mark" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+</LinearLayout>

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.report.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
   
   static
   {
     AppMethodBeat.i(143780);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "DuplicateKVLog") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "DuplicateKVLog") };
     AppMethodBeat.o(143780);
   }
 }

@@ -22,18 +22,18 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.setting.model.UserAuthItemParcelable;
 import com.tencent.mm.plugin.setting.model.d;
-import com.tencent.mm.protocal.protobuf.bkl;
-import com.tencent.mm.protocal.protobuf.dun;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.bwu;
+import com.tencent.mm.protocal.protobuf.eom;
+import com.tencent.mm.protocal.protobuf.eon;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -43,61 +43,61 @@ import java.util.List;
 
 public class SettingsManageAuthUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.ak.i
 {
+  private byte[] CXN;
+  private a Dcj;
+  private List<eom> Dck;
+  private boolean Dcl;
   private ListView mListView;
-  private ProgressDialog sMH;
-  private View tuW;
-  private byte[] ySV;
-  private a yXs;
-  private List<dun> yXt;
-  private boolean yXu;
+  private ProgressDialog vIA;
+  private View wMd;
   
   public SettingsManageAuthUI()
   {
     AppMethodBeat.i(74195);
-    this.yXt = new ArrayList();
+    this.Dck = new ArrayList();
     AppMethodBeat.o(74195);
   }
   
-  private static void bJ(byte[] paramArrayOfByte)
+  private static void cb(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(74201);
-    paramArrayOfByte = new com.tencent.mm.plugin.setting.model.h(paramArrayOfByte);
-    g.ajj().a(paramArrayOfByte, 0);
+    paramArrayOfByte = new com.tencent.mm.plugin.setting.model.i(paramArrayOfByte);
+    g.azz().a(paramArrayOfByte, 0);
     AppMethodBeat.o(74201);
   }
   
-  private void dRf()
+  private void eTg()
   {
     AppMethodBeat.i(74198);
     removeAllOptionMenu();
-    addIconOptionMenu(800, 2131689510, new MenuItem.OnMenuItemClickListener()
+    addIconOptionMenu(800, 2131689512, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(74186);
         Object localObject = new Intent(SettingsManageAuthUI.this, SettingsSearchAuthUI.class);
         paramAnonymousMenuItem = SettingsManageAuthUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.ui.base.b.kj(SettingsManageAuthUI.this);
+        com.tencent.mm.ui.base.b.kb(SettingsManageAuthUI.this);
         AppMethodBeat.o(74186);
         return true;
       }
     });
-    if (this.yXt.isEmpty())
+    if (this.Dck.isEmpty())
     {
-      this.tuW.setVisibility(0);
+      this.wMd.setVisibility(0);
       AppMethodBeat.o(74198);
       return;
     }
-    this.tuW.setVisibility(8);
-    if (this.yXu)
+    this.wMd.setVisibility(8);
+    if (this.Dcl)
     {
-      addTextOptionMenu(700, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+      addTextOptionMenu(700, getString(2131755858), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
@@ -115,7 +115,7 @@ public class SettingsManageAuthUI
       AppMethodBeat.o(74198);
       return;
     }
-    addTextOptionMenu(700, getString(2131755808), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(700, getString(2131755890), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -135,16 +135,16 @@ public class SettingsManageAuthUI
   
   public int getLayoutId()
   {
-    return 2131495395;
+    return 2131496256;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74197);
-    this.mListView = ((ListView)findViewById(2131296982));
-    this.tuW = findViewById(2131296981);
-    this.yXs = new a((byte)0);
-    this.mListView.setAdapter(this.yXs);
+    this.mListView = ((ListView)findViewById(2131297100));
+    this.wMd = findViewById(2131297099);
+    this.Dcj = new a((byte)0);
+    this.mListView.setAdapter(this.Dcj);
     this.mListView.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
@@ -152,10 +152,10 @@ public class SettingsManageAuthUI
         AppMethodBeat.i(74183);
         if (paramAnonymousInt1 + paramAnonymousInt2 == paramAnonymousInt3)
         {
-          ae.i("MicroMsg.SettingsManageAuthUI", "scroll to the end");
+          Log.i("MicroMsg.SettingsManageAuthUI", "scroll to the end");
           if (SettingsManageAuthUI.a(SettingsManageAuthUI.this) != null)
           {
-            SettingsManageAuthUI.bK(SettingsManageAuthUI.a(SettingsManageAuthUI.this));
+            SettingsManageAuthUI.cc(SettingsManageAuthUI.a(SettingsManageAuthUI.this));
             SettingsManageAuthUI.b(SettingsManageAuthUI.this);
           }
         }
@@ -170,38 +170,38 @@ public class SettingsManageAuthUI
       {
         AppMethodBeat.i(74184);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousAdapterView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramAnonymousInt);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).zo(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
         if (!SettingsManageAuthUI.c(SettingsManageAuthUI.this))
         {
-          paramAnonymousView = SettingsManageAuthUI.d(SettingsManageAuthUI.this).PM(paramAnonymousInt);
+          paramAnonymousView = SettingsManageAuthUI.d(SettingsManageAuthUI.this).Xp(paramAnonymousInt);
           if (paramAnonymousView != null)
           {
             paramAnonymousAdapterView = new Intent(SettingsManageAuthUI.this, SettingsModifyUserAuthUI.class);
-            localObject = (UserAuthItemParcelable[])UserAuthItemParcelable.CREATOR.newArray(paramAnonymousView.Iag.size());
+            localObject = (UserAuthItemParcelable[])UserAuthItemParcelable.CREATOR.newArray(paramAnonymousView.Nmn.size());
             paramAnonymousInt = 0;
-            while (paramAnonymousInt < paramAnonymousView.Iag.size())
+            while (paramAnonymousInt < paramAnonymousView.Nmn.size())
             {
-              duo localduo = (duo)paramAnonymousView.Iag.get(paramAnonymousInt);
+              eon localeon = (eon)paramAnonymousView.Nmn.get(paramAnonymousInt);
               UserAuthItemParcelable localUserAuthItemParcelable = new UserAuthItemParcelable();
-              localUserAuthItemParcelable.scope = localduo.scope;
-              localUserAuthItemParcelable.yTx = localduo.yTx;
-              localUserAuthItemParcelable.state = localduo.state;
-              localUserAuthItemParcelable.yTy = localduo.yTy;
+              localUserAuthItemParcelable.scope = localeon.scope;
+              localUserAuthItemParcelable.CYp = localeon.CYp;
+              localUserAuthItemParcelable.state = localeon.state;
+              localUserAuthItemParcelable.CYq = localeon.CYq;
               localObject[paramAnonymousInt] = localUserAuthItemParcelable;
               paramAnonymousInt += 1;
             }
-            paramAnonymousAdapterView.putExtra("app_id", paramAnonymousView.dwb);
-            paramAnonymousAdapterView.putExtra("app_name", paramAnonymousView.hDU);
+            paramAnonymousAdapterView.putExtra("app_id", paramAnonymousView.dNI);
+            paramAnonymousAdapterView.putExtra("app_name", paramAnonymousView.ixZ);
             paramAnonymousAdapterView.putExtra("modify_scene", 1);
             paramAnonymousAdapterView.putParcelableArrayListExtra("app_auth_items", new ArrayList(Arrays.asList((Object[])localObject)));
             paramAnonymousView = SettingsManageAuthUI.this;
-            paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mt(0));
+            paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousAdapterView);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.pG(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
         }
@@ -209,8 +209,8 @@ public class SettingsManageAuthUI
         AppMethodBeat.o(74184);
       }
     });
-    dRf();
-    setMMTitle(2131763175);
+    eTg();
+    setMMTitle(2131765343);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -236,8 +236,8 @@ public class SettingsManageAuthUI
   {
     AppMethodBeat.i(74200);
     super.onPause();
-    g.ajj().b(1146, this);
-    g.ajj().b(1127, this);
+    g.azz().b(1146, this);
+    g.azz().b(1127, this);
     AppMethodBeat.o(74200);
   }
   
@@ -245,51 +245,51 @@ public class SettingsManageAuthUI
   {
     AppMethodBeat.i(74199);
     super.onResume();
-    g.ajj().a(1146, this);
-    g.ajj().a(1127, this);
-    bJ(null);
+    g.azz().a(1146, this);
+    g.azz().a(1127, this);
+    cb(null);
     AppMethodBeat.o(74199);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(74202);
-    ae.i("MicroMsg.SettingsManageAuthUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.sMH != null) {
-      this.sMH.dismiss();
+    Log.i("MicroMsg.SettingsManageAuthUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.vIA != null) {
+      this.vIA.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramn.getType() == 1146)
+      if (paramq.getType() == 1146)
       {
-        paramString = (com.tencent.mm.plugin.setting.model.h)paramn;
+        paramString = (com.tencent.mm.plugin.setting.model.i)paramq;
         label120:
         List localList;
-        if ((paramString.ySU != null) && (paramString.ySU.GXM == 1))
+        if ((paramString.CXM != null) && (paramString.CXM.McB == 1))
         {
-          paramString = paramString.ySU.GXK.toByteArray();
-          this.ySV = paramString;
-          if (((com.tencent.mm.plugin.setting.model.h)paramn).ySV == null) {
+          paramString = paramString.CXM.Mcz.toByteArray();
+          this.CXN = paramString;
+          if (((com.tencent.mm.plugin.setting.model.i)paramq).CXN == null) {
             break label202;
           }
           paramInt1 = 1;
           if (paramInt1 == 0) {
-            this.yXt.clear();
+            this.Dck.clear();
           }
-          localList = this.yXt;
-          paramString = (com.tencent.mm.plugin.setting.model.h)paramn;
-          if (paramString.ySU == null) {
+          localList = this.Dck;
+          paramString = (com.tencent.mm.plugin.setting.model.i)paramq;
+          if (paramString.CXM == null) {
             break label207;
           }
         }
         label202:
         label207:
-        for (paramString = paramString.ySU.GXL;; paramString = Collections.emptyList())
+        for (paramString = paramString.CXM.McA;; paramString = Collections.emptyList())
         {
           localList.addAll(paramString);
-          this.yXs.yXw = this.yXt;
-          this.yXs.notifyDataSetChanged();
-          dRf();
+          this.Dcj.Dcn = this.Dck;
+          this.Dcj.notifyDataSetChanged();
+          eTg();
           AppMethodBeat.o(74202);
           return;
           paramString = null;
@@ -298,28 +298,28 @@ public class SettingsManageAuthUI
           break label120;
         }
       }
-      if (paramn.getType() == 1127)
+      if (paramq.getType() == 1127)
       {
-        paramString = ((d)paramn).appId;
-        if (!bu.isNullOrNil(paramString))
+        paramString = ((d)paramq).appId;
+        if (!Util.isNullOrNil(paramString))
         {
-          if (!this.yXt.isEmpty())
+          if (!this.Dck.isEmpty())
           {
-            paramn = this.yXt.iterator();
-            while (paramn.hasNext()) {
-              if (((dun)paramn.next()).dwb.equals(paramString)) {
-                paramn.remove();
+            paramq = this.Dck.iterator();
+            while (paramq.hasNext()) {
+              if (((eom)paramq.next()).dNI.equals(paramString)) {
+                paramq.remove();
               }
             }
           }
-          this.yXs.notifyDataSetChanged();
+          this.Dcj.notifyDataSetChanged();
         }
         AppMethodBeat.o(74202);
       }
     }
     else
     {
-      com.tencent.mm.ui.base.h.cm(this, paramString);
+      h.cD(this, paramString);
     }
     AppMethodBeat.o(74202);
   }
@@ -333,18 +333,18 @@ public class SettingsManageAuthUI
   final class a
     extends BaseAdapter
   {
-    List<dun> yXw;
+    List<eom> Dcn;
     
     private a() {}
     
-    public final dun PM(int paramInt)
+    public final eom Xp(int paramInt)
     {
       AppMethodBeat.i(74192);
       if ((paramInt >= 0) && (paramInt < getCount()))
       {
-        dun localdun = (dun)this.yXw.get(paramInt);
+        eom localeom = (eom)this.Dcn.get(paramInt);
         AppMethodBeat.o(74192);
-        return localdun;
+        return localeom;
       }
       AppMethodBeat.o(74192);
       return null;
@@ -353,9 +353,9 @@ public class SettingsManageAuthUI
     public final int getCount()
     {
       AppMethodBeat.i(74191);
-      if ((this.yXw != null) && (!this.yXw.isEmpty()))
+      if ((this.Dcn != null) && (!this.Dcn.isEmpty()))
       {
-        int i = this.yXw.size();
+        int i = this.Dcn.size();
         AppMethodBeat.o(74191);
         return i;
       }
@@ -374,35 +374,35 @@ public class SettingsManageAuthUI
       View localView;
       if (paramView == null)
       {
-        localView = SettingsManageAuthUI.this.getLayoutInflater().inflate(2131495388, null);
+        localView = SettingsManageAuthUI.this.getLayoutInflater().inflate(2131496249, null);
         paramView = new a((byte)0);
         localView.setTag(paramView);
         paramViewGroup = paramView;
-        paramViewGroup.mRG = ((TextView)localView.findViewById(2131304638));
-        paramViewGroup.yXA = ((TextView)localView.findViewById(2131304639));
-        paramViewGroup.yXB = ((TextView)localView.findViewById(2131304637));
-        paramViewGroup.jll = ((Button)localView.findViewById(2131304636));
-        paramViewGroup.jll.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.oeJ = ((TextView)localView.findViewById(2131307691));
+        paramViewGroup.Dcr = ((TextView)localView.findViewById(2131307692));
+        paramViewGroup.Dcs = ((TextView)localView.findViewById(2131307690));
+        paramViewGroup.kjo = ((Button)localView.findViewById(2131307689));
+        paramViewGroup.kjo.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(final View paramAnonymousView)
           {
             AppMethodBeat.i(74190);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$AuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            if (SettingsManageAuthUI.a.this.PM(paramInt) != null)
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$AuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            if (SettingsManageAuthUI.a.this.Xp(paramInt) != null)
             {
-              paramAnonymousView = new d(SettingsManageAuthUI.a.this.PM(paramInt).dwb, 1);
+              paramAnonymousView = new d(SettingsManageAuthUI.a.this.Xp(paramInt).dNI, 1);
               if (SettingsManageAuthUI.f(SettingsManageAuthUI.this) != null) {
                 SettingsManageAuthUI.f(SettingsManageAuthUI.this).dismiss();
               }
-              g.ajj().a(paramAnonymousView, 0);
-              SettingsManageAuthUI.a(SettingsManageAuthUI.this, com.tencent.mm.ui.base.h.b(SettingsManageAuthUI.this, SettingsManageAuthUI.this.getString(2131755886), true, new DialogInterface.OnCancelListener()
+              g.azz().a(paramAnonymousView, 0);
+              SettingsManageAuthUI.a(SettingsManageAuthUI.this, h.a(SettingsManageAuthUI.this, SettingsManageAuthUI.this.getString(2131755978), true, new DialogInterface.OnCancelListener()
               {
                 public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                 {
                   AppMethodBeat.i(74189);
-                  g.ajj().a(paramAnonymousView);
+                  g.azz().a(paramAnonymousView);
                   AppMethodBeat.o(74189);
                 }
               }));
@@ -414,15 +414,15 @@ public class SettingsManageAuthUI
         if (!SettingsManageAuthUI.c(SettingsManageAuthUI.this)) {
           break label210;
         }
-        paramViewGroup.jll.setVisibility(0);
+        paramViewGroup.kjo.setVisibility(0);
       }
       for (;;)
       {
-        if (PM(paramInt) != null)
+        if (Xp(paramInt) != null)
         {
-          paramViewGroup.mRG.setText(PM(paramInt).hDU);
-          paramViewGroup.yXA.setText(PM(paramInt).Iah);
-          paramViewGroup.yXB.setText(SettingsManageAuthUI.fH(PM(paramInt).Iag));
+          paramViewGroup.oeJ.setText(Xp(paramInt).ixZ);
+          paramViewGroup.Dcr.setText(Xp(paramInt).Nmo);
+          paramViewGroup.Dcs.setText(SettingsManageAuthUI.gG(Xp(paramInt).Nmn));
         }
         AppMethodBeat.o(74193);
         return localView;
@@ -430,16 +430,16 @@ public class SettingsManageAuthUI
         localView = paramView;
         break;
         label210:
-        paramViewGroup.jll.setVisibility(8);
+        paramViewGroup.kjo.setVisibility(8);
       }
     }
     
     final class a
     {
-      Button jll;
-      TextView mRG;
-      TextView yXA;
-      TextView yXB;
+      TextView Dcr;
+      TextView Dcs;
+      Button kjo;
+      TextView oeJ;
       
       private a() {}
     }
@@ -447,7 +447,7 @@ public class SettingsManageAuthUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsManageAuthUI
  * JD-Core Version:    0.7.0.1
  */

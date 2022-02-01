@@ -8,111 +8,112 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.q;
-import com.tencent.mm.plugin.topstory.ui.d;
+import com.tencent.mm.plugin.topstory.ui.c;
 import com.tencent.mm.plugin.topstory.ui.video.b;
+import com.tencent.mm.plugin.topstory.ui.video.n;
 import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class k
   extends e
 {
-  public ImageView BLU;
-  public View BNX;
-  public View BNY;
-  public ImageView BNZ;
-  public View BOP;
-  public View BOQ;
-  public View BOR;
-  public TextView BOa;
-  public View BOm;
-  public TextView uGl;
+  public ImageView GmA;
+  public View GoE;
+  public View GoF;
+  public ImageView GoG;
+  public TextView GoH;
+  public View GoT;
+  public View Gpw;
+  public View Gpx;
+  public View Gpy;
+  public TextView xYx;
   
   public k(Context paramContext, b paramb, com.tencent.mm.plugin.topstory.ui.video.a parama)
   {
     super(paramContext, paramb, parama);
   }
   
-  protected final void bnu()
+  protected final void bIY()
   {
     AppMethodBeat.i(126404);
-    this.BNH = new com.tencent.mm.plugin.topstory.ui.video.k(getContext(), this, new a());
+    this.Goo = new com.tencent.mm.plugin.topstory.ui.video.k(getContext(), this, new a());
     AppMethodBeat.o(126404);
   }
   
-  public final i.e c(dpa paramdpa)
+  public final i.e c(eiw parameiw)
   {
     AppMethodBeat.i(126401);
-    float f1 = com.tencent.mm.cb.a.iu(ak.getContext());
-    float f2 = com.tencent.mm.cb.a.iv(ak.getContext()) - com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 64);
+    float f1 = com.tencent.mm.cb.a.jn(MMApplicationContext.getContext());
+    float f2 = com.tencent.mm.cb.a.jo(MMApplicationContext.getContext()) - com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 64);
     float f3 = f1 / f2;
-    float f4 = paramdpa.thumbWidth / paramdpa.thumbHeight;
-    ae.i("MicroMsg.TopStory.TopStoryVerticalFSVideoContainer", "getScaleType playAreaRatio %.2f videoRatio %.2f playAreaWidth %.2f playAreaHeight %.2f", new Object[] { Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f1), Float.valueOf(f2) });
+    float f4 = parameiw.thumbWidth / parameiw.thumbHeight;
+    Log.i("MicroMsg.TopStory.TopStoryVerticalFSVideoContainer", "getScaleType playAreaRatio %.2f videoRatio %.2f playAreaWidth %.2f playAreaHeight %.2f", new Object[] { Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f1), Float.valueOf(f2) });
     if (f3 <= f4)
     {
-      paramdpa = i.e.Flj;
+      parameiw = i.e.Kcb;
       AppMethodBeat.o(126401);
-      return paramdpa;
+      return parameiw;
     }
-    paramdpa = i.e.Flk;
+    parameiw = i.e.Kcc;
     AppMethodBeat.o(126401);
-    return paramdpa;
+    return parameiw;
   }
   
-  protected final void eun()
+  protected final void fzI()
   {
     AppMethodBeat.i(126403);
-    if ((this.BIY.HWq & 0x80) > 0)
+    if ((this.GjH.Nix & 0x80) > 0)
     {
-      this.BNY.setVisibility(0);
-      if (this.BIY.HWv)
+      this.GoF.setVisibility(0);
+      if (this.GjH.NiC)
       {
-        this.BNZ.setImageResource(2131691329);
-        this.BOa.setTextColor(getResources().getColor(2131101051));
+        this.GoG.setImageResource(2131691661);
+        this.GoH.setTextColor(getResources().getColor(2131101284));
       }
       for (;;)
       {
-        this.BOa.setText(d.TB(this.BIY.HWA));
+        this.GoH.setText(c.abR(this.GjH.NiH));
         AppMethodBeat.o(126403);
         return;
-        this.BNZ.setImageResource(2131691330);
-        this.BOa.setTextColor(getResources().getColor(2131101182));
+        this.GoG.setImageResource(2131691662);
+        this.GoH.setTextColor(getResources().getColor(2131101427));
       }
     }
-    this.BNY.setVisibility(8);
+    this.GoF.setVisibility(8);
     AppMethodBeat.o(126403);
   }
   
-  public final boolean euo()
+  public final boolean fzJ()
   {
     return true;
   }
   
   public final int getLayoutId()
   {
-    return 2131495775;
+    return 2131496733;
   }
   
   public final void init()
   {
     AppMethodBeat.i(126400);
     super.init();
-    this.BNX = findViewById(2131304744);
-    this.BOP = findViewById(2131302474);
-    this.BOQ = findViewById(2131302464);
-    this.BNY = findViewById(2131307019);
-    this.BNZ = ((ImageView)findViewById(2131307018));
-    this.BOa = ((TextView)findViewById(2131307017));
-    this.BOR = findViewById(2131305131);
-    this.BLU = ((ImageView)findViewById(2131305130));
-    this.uGl = ((TextView)findViewById(2131305134));
-    this.BOm = findViewById(2131305129);
-    this.BOP.setOnClickListener(this.BNJ);
-    this.BNY.setOnClickListener(this.BNL);
-    this.BOR.setOnClickListener(this.BNN);
-    this.BNX.setOnClickListener(this.BNK);
+    this.GoE = findViewById(2131307810);
+    this.Gpw = findViewById(2131304887);
+    this.Gpx = findViewById(2131304874);
+    this.GoF = findViewById(2131310543);
+    this.GoG = ((ImageView)findViewById(2131310542));
+    this.GoH = ((TextView)findViewById(2131310541));
+    this.Gpy = findViewById(2131308309);
+    this.GmA = ((ImageView)findViewById(2131308308));
+    this.xYx = ((TextView)findViewById(2131308313));
+    this.GoT = findViewById(2131308307);
+    this.Gpw.setOnClickListener(this.Goq);
+    this.GoF.setOnClickListener(this.Gos);
+    this.Gpy.setOnClickListener(this.Gou);
+    this.GoE.setOnClickListener(this.Gor);
     AppMethodBeat.o(126400);
   }
   
@@ -120,53 +121,53 @@ public final class k
   {
     AppMethodBeat.i(126402);
     super.updateView();
-    i.e locale = c(this.BIY);
-    ViewGroup.LayoutParams localLayoutParams = this.oZd.getLayoutParams();
-    if (locale == i.e.Flj)
+    i.e locale = c(this.GjH);
+    ViewGroup.LayoutParams localLayoutParams = this.puw.getLayoutParams();
+    if (locale == i.e.Kcb)
     {
-      localLayoutParams.width = com.tencent.mm.cb.a.iu(ak.getContext());
-      localLayoutParams.height = ((int)(localLayoutParams.width / (this.BIY.thumbWidth / this.BIY.thumbHeight)));
-      this.oZd.setLayoutParams(localLayoutParams);
-      if ((this.BOm != null) && (this.uGl != null) && (this.BLU != null))
+      localLayoutParams.width = com.tencent.mm.cb.a.jn(MMApplicationContext.getContext());
+      localLayoutParams.height = ((int)(localLayoutParams.width / (this.GjH.thumbWidth / this.GjH.thumbHeight)));
+      this.puw.setLayoutParams(localLayoutParams);
+      if ((this.GoT != null) && (this.xYx != null) && (this.GmA != null))
       {
-        this.BOm.setVisibility(8);
-        this.uGl.setVisibility(8);
-        this.BLU.setVisibility(8);
-        if (!bu.isNullOrNil(this.BIY.source))
+        this.GoT.setVisibility(8);
+        this.xYx.setVisibility(8);
+        this.GmA.setVisibility(8);
+        if (!Util.isNullOrNil(this.GjH.source))
         {
-          this.uGl.setText(this.BIY.source);
-          this.uGl.setVisibility(0);
-          if (!bu.isNullOrNil(this.BIY.dJL)) {
-            this.BOm.setVisibility(0);
+          this.xYx.setText(this.GjH.source);
+          this.xYx.setVisibility(0);
+          if (n.i(this.GjH)) {
+            this.GoT.setVisibility(0);
           }
-          if (bu.isNullOrNil(this.BIY.HWm)) {
-            break label275;
+          if (Util.isNullOrNil(this.GjH.MwR)) {
+            break label272;
           }
-          q.aJb().a(this.BIY.HWm, this.BLU, d.BJp);
-          label216:
-          this.BLU.setVisibility(0);
+          q.bcV().a(this.GjH.MwR, this.GmA, c.GjU);
+          label213:
+          this.GmA.setVisibility(0);
         }
       }
-      if (!this.BLm.etn()) {
-        break label288;
+      if (!this.GlS.fyJ()) {
+        break label285;
       }
-      this.BOQ.setVisibility(0);
-      this.BOP.setVisibility(0);
+      this.Gpx.setVisibility(0);
+      this.Gpw.setVisibility(0);
     }
     for (;;)
     {
-      eun();
+      fzI();
       AppMethodBeat.o(126402);
       return;
       localLayoutParams.width = -1;
       localLayoutParams.height = -1;
       break;
-      label275:
-      this.BLU.setImageResource(2131231875);
-      break label216;
-      label288:
-      this.BOQ.setVisibility(8);
-      this.BOP.setVisibility(8);
+      label272:
+      this.GmA.setImageResource(2131231957);
+      break label213;
+      label285:
+      this.Gpx.setVisibility(8);
+      this.Gpw.setVisibility(8);
     }
   }
   
@@ -178,17 +179,17 @@ public final class k
       super();
     }
     
-    public final void TH(int paramInt) {}
+    public final void abX(int paramInt) {}
     
-    public final int bH(float paramFloat)
+    public final void bJl() {}
+    
+    public final int ce(float paramFloat)
     {
       AppMethodBeat.i(126399);
       int i = getCurrentPosition();
       AppMethodBeat.o(126399);
       return i;
     }
-    
-    public final void bnH() {}
   }
 }
 

@@ -5,15 +5,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public final class a
 {
-  public static void N(View paramView, boolean paramBoolean)
+  public static void T(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(133798);
-    paramView = gX(paramView);
+    paramView = ho(paramView);
     if (paramView != null) {
-      paramView.yL(paramBoolean);
+      paramView.CF(paramBoolean);
     }
     AppMethodBeat.o(133798);
   }
@@ -26,28 +27,28 @@ public final class a
       AppMethodBeat.o(133797);
       return;
     }
-    if (!c.KZw)
+    if (!c.Qow)
     {
       AppMethodBeat.o(133797);
       return;
     }
-    b localb = gX(paramView);
+    b localb = ho(paramView);
     if (localb != null)
     {
-      localb.M(paramInt, paramBoolean);
+      localb.S(paramInt, paramBoolean);
       AppMethodBeat.o(133797);
       return;
     }
-    paramView = com.tencent.mm.sdk.f.a.jw(paramView.getContext());
+    paramView = AndroidContextUtil.castActivityOrNull(paramView.getContext());
     if (paramView != null)
     {
       paramView.getWindow().setStatusBarColor(paramInt);
-      d.c(paramView.getWindow(), paramBoolean);
+      d.d(paramView.getWindow(), paramBoolean);
     }
     AppMethodBeat.o(133797);
   }
   
-  private static b gX(View paramView)
+  private static b ho(View paramView)
   {
     AppMethodBeat.i(133796);
     if (paramView == null)

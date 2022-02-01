@@ -15,7 +15,7 @@ public abstract class BaseBizConversationUI
   {
     if (this.onActResult != null)
     {
-      this.onActResult.c(paramInt1, paramInt2, paramIntent);
+      this.onActResult.d(paramInt1, paramInt2, paramIntent);
       this.onActResult = null;
       return;
     }
@@ -30,7 +30,7 @@ public abstract class BaseBizConversationUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.presenter.BaseBizConversationUI
  * JD-Core Version:    0.7.0.1
  */

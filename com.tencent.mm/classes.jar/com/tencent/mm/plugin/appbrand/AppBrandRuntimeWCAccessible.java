@@ -3,25 +3,26 @@ package com.tencent.mm.plugin.appbrand;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import d.l;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"getUsername", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "isGame", "", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "isPluginApp", "isWeishiApp", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"getUsername", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "isGame", "", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "isPluginApp", "isWeishiApp", "plugin-appbrand-integration_release"})
 public final class AppBrandRuntimeWCAccessible
 {
   public static final boolean D(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(50150);
-    if (!(paramAppBrandRuntime instanceof p)) {
+    if (!(paramAppBrandRuntime instanceof q)) {
       paramAppBrandRuntime = null;
     }
     for (;;)
     {
-      paramAppBrandRuntime = (p)paramAppBrandRuntime;
+      paramAppBrandRuntime = (q)paramAppBrandRuntime;
       if (paramAppBrandRuntime != null)
       {
-        boolean bool = paramAppBrandRuntime.aXo();
+        boolean bool = paramAppBrandRuntime.bsr();
         AppMethodBeat.o(50150);
         return bool;
       }
@@ -32,64 +33,64 @@ public final class AppBrandRuntimeWCAccessible
   
   public static final boolean E(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(223191);
+    AppMethodBeat.i(227895);
     if (paramAppBrandRuntime != null) {}
     for (paramAppBrandRuntime = paramAppBrandRuntime.getAppId();; paramAppBrandRuntime = null)
     {
-      boolean bool = d.g.b.p.i(paramAppBrandRuntime, "wxfe02ecfe70800f46");
-      AppMethodBeat.o(223191);
+      boolean bool = p.j(paramAppBrandRuntime, "wxfe02ecfe70800f46");
+      AppMethodBeat.o(227895);
       return bool;
     }
   }
   
-  public static final String c(c paramc)
+  public static final String c(f paramf)
   {
     AppMethodBeat.i(50147);
-    if (!(paramc instanceof h)) {
-      paramc = null;
+    if (!(paramf instanceof k)) {
+      paramf = null;
     }
     for (;;)
     {
-      paramc = (h)paramc;
-      if (paramc != null) {}
-      for (paramc = paramc.getRuntime();; paramc = null)
+      paramf = (k)paramf;
+      if (paramf != null) {}
+      for (paramf = paramf.getRuntime();; paramf = null)
       {
-        c localc = paramc;
-        if (!(paramc instanceof p)) {
-          localc = null;
+        f localf = paramf;
+        if (!(paramf instanceof q)) {
+          localf = null;
         }
-        paramc = (p)localc;
-        if (paramc == null) {
+        paramf = (q)localf;
+        if (paramf == null) {
           break;
         }
-        paramc = paramc.aXx();
-        if (paramc == null) {
+        paramf = paramf.bsC();
+        if (paramf == null) {
           break;
         }
-        paramc = paramc.username;
+        paramf = paramf.username;
         AppMethodBeat.o(50147);
-        return paramc;
+        return paramf;
       }
       AppMethodBeat.o(50147);
       return null;
     }
   }
   
-  public static final boolean d(c paramc)
+  public static final boolean d(f paramf)
   {
     AppMethodBeat.i(50151);
-    if (!(paramc instanceof h)) {
-      paramc = null;
+    if (!(paramf instanceof k)) {
+      paramf = null;
     }
     for (;;)
     {
-      paramc = (h)paramc;
-      if (paramc != null)
+      paramf = (k)paramf;
+      if (paramf != null)
       {
-        paramc = paramc.getRuntime();
-        if (paramc != null)
+        paramf = paramf.getRuntime();
+        if (paramf != null)
         {
-          boolean bool = isGame(paramc);
+          boolean bool = isGame(paramf);
           AppMethodBeat.o(50151);
           return bool;
         }
@@ -110,7 +111,7 @@ public final class AppBrandRuntimeWCAccessible
       paramAppBrandInitConfig = (AppBrandInitConfigWC)paramAppBrandInitConfig;
       if (paramAppBrandInitConfig != null)
       {
-        boolean bool = paramAppBrandInitConfig.Ee();
+        boolean bool = paramAppBrandInitConfig.NA();
         AppMethodBeat.o(50149);
         return bool;
       }
@@ -122,15 +123,15 @@ public final class AppBrandRuntimeWCAccessible
   public static final boolean isGame(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(50148);
-    if (!(paramAppBrandRuntime instanceof p)) {
+    if (!(paramAppBrandRuntime instanceof q)) {
       paramAppBrandRuntime = null;
     }
     for (;;)
     {
-      paramAppBrandRuntime = (p)paramAppBrandRuntime;
+      paramAppBrandRuntime = (q)paramAppBrandRuntime;
       if (paramAppBrandRuntime != null)
       {
-        boolean bool = paramAppBrandRuntime.Ee();
+        boolean bool = paramAppBrandRuntime.NA();
         AppMethodBeat.o(50148);
         return bool;
       }
@@ -141,7 +142,7 @@ public final class AppBrandRuntimeWCAccessible
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.AppBrandRuntimeWCAccessible
  * JD-Core Version:    0.7.0.1
  */

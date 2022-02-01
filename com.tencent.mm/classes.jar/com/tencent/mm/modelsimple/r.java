@@ -1,49 +1,49 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.bin;
-import com.tencent.mm.protocal.protobuf.bio;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.buo;
+import com.tencent.mm.protocal.protobuf.bup;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class r
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public final b hKp;
+  private i callback;
+  public final d iFd;
   
   public r()
   {
     AppMethodBeat.i(20638);
-    b.a locala = new b.a();
-    locala.hQF = new bin();
-    locala.hQG = new bio();
+    d.a locala = new d.a();
+    locala.iLN = new buo();
+    locala.iLO = new bup();
     locala.uri = "/cgi-bin/micromsg-bin/getresourcecontrolinfo";
     locala.funcId = 725;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.hKp = locala.aDS();
-    ((bin)this.hKp.hQD.hQJ).nJA = 0;
-    ae.i("MicroMsg.NetSceneGetResourceControlInfo", "summerupdate GetResourceControlInfo type[%d], stack[%s]", new Object[] { Integer.valueOf(0), bu.fpN() });
+    this.iFd = locala.aXF();
+    ((buo)this.iFd.iLK.iLR).oUv = 0;
+    Log.i("MicroMsg.NetSceneGetResourceControlInfo", "summerupdate GetResourceControlInfo type[%d], stack[%s]", new Object[] { Integer.valueOf(0), Util.getStack() });
     AppMethodBeat.o(20638);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(20640);
-    this.callback = paramf;
-    g.yxI.idkeyStat(405L, 1L, 1L, true);
-    int i = dispatch(parame, this.hKp, this);
+    this.callback = parami;
+    h.CyF.idkeyStat(405L, 1L, 1L, true);
+    int i = dispatch(paramg, this.iFd, this);
     AppMethodBeat.o(20640);
     return i;
   }
@@ -53,12 +53,12 @@ public final class r
     return 725;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20639);
-    ae.i("MicroMsg.NetSceneGetResourceControlInfo", "summerupdate GetResourceControlInfo onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.NetSceneGetResourceControlInfo", "summerupdate GetResourceControlInfo onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      g.yxI.idkeyStat(405L, 2L, 1L, true);
+      h.CyF.idkeyStat(405L, 2L, 1L, true);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(20639);

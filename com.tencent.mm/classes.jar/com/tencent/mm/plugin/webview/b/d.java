@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.webview.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hd;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.ho;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends hd
+  extends ho
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(77856);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "recordId";
-    locala.IBN.put("recordId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "recordId";
+    localMAutoDBInfo.colsMap.put("recordId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" recordId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "recordId";
-    locala.columns[1] = "link";
-    locala.IBN.put("link", "TEXT");
+    localMAutoDBInfo.primaryKey = "recordId";
+    localMAutoDBInfo.columns[1] = "link";
+    localMAutoDBInfo.colsMap.put("link", "TEXT");
     localStringBuilder.append(" link TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "title";
-    locala.IBN.put("title", "TEXT");
+    localMAutoDBInfo.columns[2] = "title";
+    localMAutoDBInfo.colsMap.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "source";
-    locala.IBN.put("source", "TEXT");
+    localMAutoDBInfo.columns[3] = "source";
+    localMAutoDBInfo.colsMap.put("source", "TEXT");
     localStringBuilder.append(" source TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "imgUrl";
-    locala.IBN.put("imgUrl", "TEXT");
+    localMAutoDBInfo.columns[4] = "imgUrl";
+    localMAutoDBInfo.colsMap.put("imgUrl", "TEXT");
     localStringBuilder.append(" imgUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "timeStamp";
-    locala.IBN.put("timeStamp", "LONG");
+    localMAutoDBInfo.columns[5] = "timeStamp";
+    localMAutoDBInfo.colsMap.put("timeStamp", "LONG");
     localStringBuilder.append(" timeStamp LONG");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(77856);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

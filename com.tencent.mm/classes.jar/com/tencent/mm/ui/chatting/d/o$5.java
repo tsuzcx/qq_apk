@@ -2,8 +2,8 @@ package com.tencent.mm.ui.chatting.d;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.g.b.a.dq;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.g.b.a.gs;
 import com.tencent.mm.plugin.messenger.a.e.c;
 import com.tencent.mm.ui.chatting.e.a;
 import java.util.Map;
@@ -13,17 +13,17 @@ final class o$5
 {
   o$5(o paramo) {}
   
-  public final void a(Map<String, String> paramMap, e.a parama)
+  public final void a(Map<String, String> paramMap, h.a parama)
   {
-    AppMethodBeat.i(187327);
-    paramMap = new dq();
-    paramMap.nn(this.Kdh.cXJ.Kki);
-    paramMap.no(this.Kdh.cXJ.getTalkerUserName());
-    paramMap.eit = 1L;
-    paramMap.eiu = 1L;
-    paramMap.eiy = 1L;
-    paramMap.aLH();
-    AppMethodBeat.o(187327);
+    AppMethodBeat.i(233087);
+    paramMap = new gs();
+    paramMap.uu(this.PoG.dom.Pwh);
+    paramMap.uv(this.PoG.dom.getTalkerUserName());
+    paramMap.eKO = 1L;
+    paramMap.eKP = 1L;
+    paramMap.eKT = 1L;
+    paramMap.bfK();
+    AppMethodBeat.o(233087);
   }
   
   public final void b(String paramString, Map<String, String> paramMap, Bundle paramBundle) {}

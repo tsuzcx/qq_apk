@@ -1,109 +1,63 @@
 package com.tencent.mm.pluginsdk.ui.span;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class b
 {
-  public static b Fzy;
-  public int Fzv;
-  public int Fzw;
-  public a Fzx;
-  
-  static
+  public static u a(Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(152264);
-    Fzy = new b();
-    AppMethodBeat.o(152264);
+    AppMethodBeat.i(152260);
+    paramContext = a(paramContext, paramString, paramInt1, paramInt2, 0, 0);
+    AppMethodBeat.o(152260);
+    return paramContext;
   }
   
-  public final void aOD(String paramString)
+  public static u a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(152262);
-    if (this.Fzx == null) {
-      this.Fzx = new a((byte)0);
+    AppMethodBeat.i(152261);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = MMApplicationContext.getContext();
     }
-    char[] arrayOfChar = paramString.toUpperCase().toCharArray();
-    paramString = this.Fzx;
-    int i = 0;
-    if (i < arrayOfChar.length)
+    paramContext = d.a.KqD.w(localContext, paramString);
+    if (paramContext != null)
     {
-      int j = arrayOfChar[i];
-      this.Fzv += 1;
-      if (j <= 57) {
-        j -= 48;
-      }
-      for (;;)
-      {
-        if (paramString.Fzz == null)
-        {
-          paramString.Fzz = new a[36];
-          this.Fzw += 36;
-        }
-        if (paramString.Fzz[j] == null)
-        {
-          paramString.Fzz[j] = new a(0);
-          this.Fzw += 1;
-        }
-        paramString = paramString.Fzz[j];
-        if (i == arrayOfChar.length - 1) {
-          paramString.tGt = true;
-        }
-        i += 1;
-        break;
-        j = j - 65 + 10;
-      }
+      paramContext.start = paramInt1;
+      paramContext.end = paramInt2;
+      paramContext.linkColor = paramInt3;
+      paramContext.backgroundColor = paramInt4;
     }
-    AppMethodBeat.o(152262);
+    AppMethodBeat.o(152261);
+    return paramContext;
   }
   
-  public final boolean aOE(String paramString)
+  public static ArrayList<u> cn(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(152263);
-    if (this.Fzx == null)
+    AppMethodBeat.i(152259);
+    ArrayList localArrayList = new ArrayList();
+    paramString = k.a.KqO.matcher(paramString);
+    while (paramString.find())
     {
-      AppMethodBeat.o(152263);
-      return false;
-    }
-    a locala = this.Fzx;
-    char[] arrayOfChar = paramString.toUpperCase().toCharArray();
-    int i = 0;
-    paramString = locala;
-    while (i < arrayOfChar.length)
-    {
-      int j = arrayOfChar[i];
-      if (j <= 57) {
-        j -= 48;
+      int i = paramString.start();
+      int j = paramString.end();
+      u localu = a(paramContext, paramString.group(), i, j);
+      if (localu != null) {
+        localArrayList.add(localu);
       }
-      while ((paramString == null) || (paramString.Fzz == null))
-      {
-        AppMethodBeat.o(152263);
-        return false;
-        j = j - 65 + 10;
-      }
-      paramString = paramString.Fzz[j];
-      i += 1;
     }
-    if (paramString != null)
-    {
-      boolean bool = paramString.tGt;
-      AppMethodBeat.o(152263);
-      return bool;
-    }
-    AppMethodBeat.o(152263);
-    return false;
-  }
-  
-  final class a
-  {
-    a[] Fzz;
-    boolean tGt;
-    
-    private a() {}
+    AppMethodBeat.o(152259);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.b
  * JD-Core Version:    0.7.0.1
  */

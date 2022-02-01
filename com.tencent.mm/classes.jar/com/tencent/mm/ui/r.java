@@ -1,218 +1,226 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
-import android.os.Looper;
-import android.widget.BaseAdapter;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.view.Display;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import java.util.HashMap;
-import java.util.Map;
-import junit.framework.Assert;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.compatible.util.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.vendor.MIUI;
+import java.lang.reflect.Method;
 
-public abstract class r<T>
-  extends BaseAdapter
-  implements k.a, n.b
+public class r
 {
-  protected T Jvk;
-  private Cursor Jvl = null;
-  protected Map<Integer, T> Jvm = null;
-  protected a Jvn;
-  private int Jvo = 0;
-  private int Jvp = 0;
-  private int Jvq = 0;
-  private Runnable Jvr = new Runnable()
+  private static int aM(Context paramContext, int paramInt)
   {
-    public final void run()
+    AppMethodBeat.i(175975);
+    Rect localRect = new Rect();
+    ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (localRect.top > paramInt)
     {
-      AppMethodBeat.i(141316);
-      if (r.a(r.this) != 0)
-      {
-        ae.v("MicroMsg.MListAdapter", "ashutest:: onResetCursorJobRun, current AbsListViewScrollType %d, post resetCursorJob, retryTimes %d", new Object[] { Integer.valueOf(r.a(r.this)), Integer.valueOf(r.b(r.this)) });
-        r.d(r.this).removeCallbacks(r.c(r.this));
-        if (20 > r.e(r.this))
+      Log.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(175975);
+      return 0;
+    }
+    AppMethodBeat.o(175975);
+    return paramInt;
+  }
+  
+  public static int agC(int paramInt)
+  {
+    return ((int)((paramInt >> 24 & 0xFF) * 0.78F + 56.100006F) & 0xFF) << 24 | ((int)((paramInt >> 16 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 16 | ((int)((paramInt >> 8 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 8 | ((int)((paramInt & 0xFF) * 0.78F + 0.0F) & 0xFF) << 0;
+  }
+  
+  public static Point az(Context paramContext)
+  {
+    AppMethodBeat.i(175980);
+    Point localPoint = new Point();
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(175980);
+      return localPoint;
+    }
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    if (Build.VERSION.SDK_INT >= 17) {
+      paramContext.getRealSize(localPoint);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(175980);
+      return localPoint;
+      if (Build.VERSION.SDK_INT >= 14) {
+        try
         {
-          r.d(r.this).postDelayed(r.c(r.this), 100L);
-          AppMethodBeat.o(141316);
-          return;
+          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
+          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
         }
-        ae.w("MicroMsg.MListAdapter", "ashutest:: onResetCursorJobRun, current AbsListViewScrollType %d, do resetCursorJob, retryTimes %d", new Object[] { Integer.valueOf(r.a(r.this)), Integer.valueOf(r.e(r.this)) });
+        catch (Exception localException) {}
+      } else {
+        paramContext.getSize(localPoint);
       }
-      ae.d("MicroMsg.MListAdapter", "ashutest:: do resetCursorJob");
-      r.f(r.this);
-      r.g(r.this);
-      AppMethodBeat.o(141316);
-    }
-  };
-  public Context context;
-  protected int count;
-  private aq tvo = new aq(Looper.getMainLooper());
-  
-  public r(Context paramContext, T paramT)
-  {
-    this.Jvk = paramT;
-    this.context = paramContext;
-    this.count = -1;
-  }
-  
-  private void fAR()
-  {
-    ae.v("MicroMsg.MListAdapter", "ashutest:: on UI, directly call resetCursor Job");
-    dhl();
-    ZD();
-    if (this.Jvn != null) {
-      this.Jvn.aSR();
     }
   }
   
-  public boolean Iw(int paramInt)
+  private static boolean blR(String paramString)
   {
-    return (paramInt >= this.count) && (paramInt < this.count + dcN());
-  }
-  
-  public abstract void ZD();
-  
-  protected abstract void ZE();
-  
-  public abstract T a(T paramT, Cursor paramCursor);
-  
-  public void a(int paramInt, n paramn, Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof String)))
+    AppMethodBeat.i(196227);
+    String str1 = Build.MODEL;
+    String str2 = Build.DEVICE;
+    if ((str1 == null) && (str2 == null))
     {
-      ae.d("MicroMsg.MListAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-      return;
+      AppMethodBeat.o(196227);
+      return false;
     }
-    a((String)paramObject, null);
-  }
-  
-  public final void a(a parama)
-  {
-    this.Jvn = parama;
-  }
-  
-  public void a(String paramString, m paramm)
-  {
-    fAR();
-  }
-  
-  protected int dcN()
-  {
-    return 0;
-  }
-  
-  protected T dcP()
-  {
-    return this.Jvk;
-  }
-  
-  public void dhl()
-  {
-    if (this.Jvm != null) {
-      this.Jvm.clear();
-    }
-    if (this.Jvl != null) {
-      this.Jvl.close();
-    }
-    this.count = -1;
-  }
-  
-  public final void fzh()
-  {
-    this.Jvn = null;
-  }
-  
-  public int getCount()
-  {
-    if (this.count < 0) {
-      this.count = getCursor().getCount();
-    }
-    return this.count + dcN();
-  }
-  
-  protected Cursor getCursor()
-  {
-    if ((this.Jvl == null) || (this.Jvl.isClosed()))
+    if ((ne(str1, paramString)) || (ne(str2, paramString)))
     {
-      ZE();
-      Assert.assertNotNull(this.Jvl);
+      AppMethodBeat.o(196227);
+      return true;
     }
-    return this.Jvl;
+    AppMethodBeat.o(196227);
+    return false;
   }
   
-  public T getItem(int paramInt)
+  public static boolean d(Window paramWindow, boolean paramBoolean)
   {
-    if (Iw(paramInt)) {
-      localObject1 = dcP();
-    }
-    Object localObject2;
-    do
+    AppMethodBeat.i(175978);
+    if ((paramWindow == null) || (paramWindow.getDecorView() == null))
     {
-      return localObject1;
-      if (this.Jvm == null) {
-        break;
+      AppMethodBeat.o(175978);
+      return false;
+    }
+    if (gIJ())
+    {
+      paramWindow = paramWindow.getDecorView();
+      int i = paramWindow.getSystemUiVisibility();
+      if (paramBoolean) {
+        i |= 0x2000;
       }
-      localObject2 = this.Jvm.get(Integer.valueOf(paramInt));
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
-      return null;
-    }
-    if (this.Jvm == null) {
-      return a(this.Jvk, getCursor());
-    }
-    Object localObject1 = a(null, getCursor());
-    this.Jvm.put(Integer.valueOf(paramInt), localObject1);
-    return localObject1;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final int getRealCount()
-  {
-    if (this.count < 0) {
-      this.count = getCursor().getCount();
-    }
-    return this.count;
-  }
-  
-  public final void setCursor(Cursor paramCursor)
-  {
-    this.Jvl = paramCursor;
-    this.count = -1;
-  }
-  
-  public void xs(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      if (this.Jvm != null)
+      for (;;)
       {
-        this.Jvm.clear();
-        this.Jvm = null;
+        paramWindow.setSystemUiVisibility(i);
+        AppMethodBeat.o(175978);
+        return true;
+        i &= 0xFFFFDFFF;
       }
     }
-    while (this.Jvm != null) {
-      return;
-    }
-    this.Jvm = new HashMap();
+    AppMethodBeat.o(175978);
+    return false;
   }
   
-  public static abstract interface a
+  public static void e(Window paramWindow)
   {
-    public abstract void aSR();
+    AppMethodBeat.i(175977);
+    if (paramWindow == null)
+    {
+      AppMethodBeat.o(175977);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramWindow.addFlags(-2147483648);
+      paramWindow.setStatusBarColor(0);
+    }
+    AppMethodBeat.o(175977);
+  }
+  
+  public static boolean gII()
+  {
+    AppMethodBeat.i(196229);
+    if ((blR("y83a")) || (blR("y83")) || (blR("v1732a")) || (blR("v1732t")))
+    {
+      AppMethodBeat.o(196229);
+      return true;
+    }
+    AppMethodBeat.o(196229);
+    return false;
+  }
+  
+  public static boolean gIJ()
+  {
+    AppMethodBeat.i(175979);
+    if ((Build.VERSION.SDK_INT >= 23) && (!MIUI.isMIUIV8()))
+    {
+      AppMethodBeat.o(175979);
+      return true;
+    }
+    AppMethodBeat.o(175979);
+    return false;
+  }
+  
+  public static int getStatusBarHeight(Context paramContext)
+  {
+    AppMethodBeat.i(175973);
+    int i = n.D(paramContext, 25);
+    AppMethodBeat.o(175973);
+    return i;
+  }
+  
+  public static int jJ(Context paramContext)
+  {
+    AppMethodBeat.i(175974);
+    int i = n.D(paramContext, -1);
+    if (i > 0)
+    {
+      i = aM(paramContext, i);
+      AppMethodBeat.o(175974);
+      return i;
+    }
+    if ((paramContext instanceof Activity))
+    {
+      Rect localRect = new Rect();
+      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+      i = ((Activity)paramContext).getWindow().getDecorView().getHeight();
+      int[] arrayOfInt = new int[2];
+      ((Activity)paramContext).getWindow().getDecorView().getLocationOnScreen(arrayOfInt);
+      if ((i - localRect.height() >= 0) && (arrayOfInt[1] > 200))
+      {
+        int j = localRect.height();
+        AppMethodBeat.o(175974);
+        return i - j;
+      }
+      i = localRect.top;
+      AppMethodBeat.o(175974);
+      return i;
+    }
+    i = a.fromDPToPix(paramContext, 20);
+    AppMethodBeat.o(175974);
+    return i;
+  }
+  
+  public static int jK(Context paramContext)
+  {
+    AppMethodBeat.i(175976);
+    int i = n.D(paramContext, 0);
+    AppMethodBeat.o(175976);
+    return i;
+  }
+  
+  private static boolean ne(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(196228);
+    if ((paramString1 == null) || (paramString2 == null))
+    {
+      AppMethodBeat.o(196228);
+      return false;
+    }
+    boolean bool = Util.isEqual(paramString1.toLowerCase(), paramString2.toLowerCase());
+    AppMethodBeat.o(196228);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.r
  * JD-Core Version:    0.7.0.1
  */

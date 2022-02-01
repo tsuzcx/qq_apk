@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ay.f;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.shake.d.b.a;
-import com.tencent.mm.protocal.protobuf.ddv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.protocal.protobuf.dwz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 
 public final class i
 {
-  public static f d(byte[] paramArrayOfByte, long paramLong)
+  public static f e(byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(28307);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
@@ -24,61 +24,61 @@ public final class i
     }
     try
     {
-      paramArrayOfByte = (ddv)new ddv().parseFrom(paramArrayOfByte);
+      paramArrayOfByte = (dwz)new dwz().parseFrom(paramArrayOfByte);
       f localf = new f();
-      localf.ijX = 4;
-      localf.ijZ = String.valueOf(paramArrayOfByte.HLp);
-      localf.ika = paramArrayOfByte.ika;
-      localf.ikd = z.b(paramArrayOfByte.GVC);
-      localf.ike = z.b(paramArrayOfByte.GVD);
-      localf.ikj = a.avR(localf.ike);
-      localf.ijY = paramArrayOfByte.ijY;
-      localf.iki = z.b(paramArrayOfByte.GVB);
-      localf.ikb = z.b(paramArrayOfByte.HLq);
-      localf.ikc = z.b(paramArrayOfByte.HLr);
-      localf.ikh = z.b(paramArrayOfByte.HLu);
-      localf.ikf = z.b(paramArrayOfByte.HLs);
-      localf.ikg = z.b(paramArrayOfByte.HLt);
-      localf.iks = paramLong;
+      localf.jeT = 4;
+      localf.jeV = String.valueOf(paramArrayOfByte.MWY);
+      localf.jeW = paramArrayOfByte.jeW;
+      localf.jeZ = z.b(paramArrayOfByte.LZW);
+      localf.jfa = z.b(paramArrayOfByte.LZX);
+      localf.jff = a.aKj(localf.jfa);
+      localf.jeU = paramArrayOfByte.jeU;
+      localf.jfe = z.b(paramArrayOfByte.LZV);
+      localf.jeX = z.b(paramArrayOfByte.MWZ);
+      localf.jeY = z.b(paramArrayOfByte.MXa);
+      localf.jfd = z.b(paramArrayOfByte.MXd);
+      localf.jfb = z.b(paramArrayOfByte.MXb);
+      localf.jfc = z.b(paramArrayOfByte.MXc);
+      localf.jfo = paramLong;
       AppMethodBeat.o(28307);
       return localf;
     }
     catch (Exception paramArrayOfByte)
     {
-      ae.printErrStackTrace("MicroMsg.ShakeMusicLogic", paramArrayOfByte, "", new Object[0]);
-      ae.w("MicroMsg.ShakeMusicLogic", "get music wrapper bytes fail");
+      Log.printErrStackTrace("MicroMsg.ShakeMusicLogic", paramArrayOfByte, "", new Object[0]);
+      Log.w("MicroMsg.ShakeMusicLogic", "get music wrapper bytes fail");
       AppMethodBeat.o(28307);
     }
     return null;
   }
   
-  public static String dSP()
+  public static String eUQ()
   {
     AppMethodBeat.i(28306);
-    if (!bc.ajM())
+    if (!bg.aAc())
     {
-      ae.w("MicroMsg.ShakeMusicLogic", "getSaveDirPath: acc stg has not set uin");
+      Log.w("MicroMsg.ShakeMusicLogic", "getSaveDirPath: acc stg has not set uin");
       AppMethodBeat.o(28306);
       return null;
     }
     Object localObject = new StringBuilder();
-    bc.aCg();
-    localObject = new k(c.getAccPath() + "shakemusic/");
-    if ((!((k)localObject).exists()) || (!((k)localObject).isDirectory()))
+    bg.aVF();
+    localObject = new o(c.getAccPath() + "shakemusic/");
+    if ((!((o)localObject).exists()) || (!((o)localObject).isDirectory()))
     {
-      ae.w("MicroMsg.ShakeMusicLogic", "storage dir[%s] not perpare, try to create it", new Object[] { w.B(((k)localObject).fTh()) });
-      ((k)localObject).mkdirs();
+      Log.w("MicroMsg.ShakeMusicLogic", "storage dir[%s] not perpare, try to create it", new Object[] { aa.z(((o)localObject).her()) });
+      ((o)localObject).mkdirs();
     }
-    k localk = new k((k)localObject, ".nomedia");
-    if (!localk.exists()) {
-      ae.w("MicroMsg.ShakeMusicLogic", "no media file[%s] not exists, try to create it", new Object[] { w.B(((k)localObject).fTh()) });
+    o localo = new o((o)localObject, ".nomedia");
+    if (!localo.exists()) {
+      Log.w("MicroMsg.ShakeMusicLogic", "no media file[%s] not exists, try to create it", new Object[] { aa.z(((o)localObject).her()) });
     }
     try
     {
-      localk.createNewFile();
-      if (!((k)localObject).exists())
+      localo.createNewFile();
+      if (!((o)localObject).exists())
       {
-        ae.w("MicroMsg.ShakeMusicLogic", "create storage dir fail");
+        Log.w("MicroMsg.ShakeMusicLogic", "create storage dir fail");
         AppMethodBeat.o(28306);
         return null;
       }
@@ -87,9 +87,9 @@ public final class i
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.ShakeMusicLogic", localIOException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ShakeMusicLogic", localIOException, "", new Object[0]);
       }
-      localObject = w.B(((k)localObject).fTh()) + "/";
+      localObject = aa.z(((o)localObject).her()) + "/";
       AppMethodBeat.o(28306);
     }
     return localObject;
@@ -97,7 +97,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 
 final class r
   implements HelperHeaderPreference.a
@@ -16,21 +16,21 @@ final class r
   
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
-    AppMethodBeat.i(27261);
-    if ((v.aAO() & 0x1000000) == 0) {}
+    AppMethodBeat.i(27231);
+    if ((z.aUl() & 0x8000) == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramHelperHeaderPreference.pB(bool);
-      AppMethodBeat.o(27261);
+      paramHelperHeaderPreference.sK(bool);
+      AppMethodBeat.o(27231);
       return;
     }
   }
   
   public final CharSequence getHint()
   {
-    AppMethodBeat.i(27260);
-    String str = this.context.getString(2131757716);
-    AppMethodBeat.o(27260);
+    AppMethodBeat.i(27230);
+    String str = this.context.getString(2131757903);
+    AppMethodBeat.o(27230);
     return str;
   }
 }

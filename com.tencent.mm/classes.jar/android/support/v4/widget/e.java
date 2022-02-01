@@ -9,31 +9,31 @@ import java.lang.reflect.Field;
 
 public final class e
 {
-  private static Field ST;
-  private static boolean SU;
+  private static Field Tf;
+  private static boolean Tg;
   
   public static Drawable a(CompoundButton paramCompoundButton)
   {
     if (Build.VERSION.SDK_INT >= 23) {
       return paramCompoundButton.getButtonDrawable();
     }
-    if (!SU) {}
+    if (!Tg) {}
     try
     {
       Field localField = CompoundButton.class.getDeclaredField("mButtonDrawable");
-      ST = localField;
+      Tf = localField;
       localField.setAccessible(true);
       label36:
-      SU = true;
-      if (ST != null) {
+      Tg = true;
+      if (Tf != null) {
         try
         {
-          paramCompoundButton = (Drawable)ST.get(paramCompoundButton);
+          paramCompoundButton = (Drawable)Tf.get(paramCompoundButton);
           return paramCompoundButton;
         }
         catch (IllegalAccessException paramCompoundButton)
         {
-          ST = null;
+          Tf = null;
         }
       }
       return null;

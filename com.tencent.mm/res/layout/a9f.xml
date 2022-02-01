@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="60.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/fu" android:gravity="center" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cke" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

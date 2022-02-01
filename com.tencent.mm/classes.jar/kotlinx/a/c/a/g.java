@@ -1,11 +1,11 @@
 package kotlinx.a.c.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"BEGIN_LIST", "", "BEGIN_OBJ", "C2TC", "", "C2TC$annotations", "()V", "getC2TC", "()[B", "COLON", "COMMA", "CTC_MAX", "", "END_LIST", "END_OBJ", "ESC2C_MAX", "INVALID", "NULL", "", "STRING", "STRING_ESC", "TC_BEGIN_LIST", "", "TC_BEGIN_OBJ", "TC_COLON", "TC_COMMA", "TC_END_LIST", "TC_END_OBJ", "TC_EOF", "TC_INVALID", "TC_NULL", "TC_OTHER", "TC_STRING", "TC_STRING_ESC", "TC_WS", "UNICODE_ESC", "charToTokenClass", "c", "escapeToChar", "rangeEquals", "", "source", "start", "length", "str", "initC2TC", "", "cl", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"BEGIN_LIST", "", "BEGIN_OBJ", "C2TC", "", "C2TC$annotations", "()V", "getC2TC", "()[B", "COLON", "COMMA", "CTC_MAX", "", "END_LIST", "END_OBJ", "ESC2C_MAX", "INVALID", "NULL", "", "STRING", "STRING_ESC", "TC_BEGIN_LIST", "", "TC_BEGIN_OBJ", "TC_COLON", "TC_COMMA", "TC_END_LIST", "TC_END_OBJ", "TC_EOF", "TC_INVALID", "TC_NULL", "TC_OTHER", "TC_STRING", "TC_STRING_ESC", "TC_WS", "UNICODE_ESC", "charToTokenClass", "c", "escapeToChar", "rangeEquals", "", "source", "start", "length", "str", "initC2TC", "", "cl", "kotlinx-serialization-runtime"})
 public final class g
 {
-  private static final byte[] Olq;
+  private static final byte[] Uan;
   
   static
   {
@@ -28,21 +28,21 @@ public final class g
     arrayOfByte[93] = 9;
     arrayOfByte[34] = 1;
     arrayOfByte[92] = 2;
-    Olq = arrayOfByte;
+    Uan = arrayOfByte;
   }
   
-  public static final byte I(char paramChar)
+  public static final byte G(char paramChar)
   {
     if (paramChar < '~') {
-      return Olq[paramChar];
+      return Uan[paramChar];
     }
     return 0;
   }
   
-  public static final char amw(int paramInt)
+  public static final char awf(int paramInt)
   {
     if (paramInt < 117) {
-      return c.Olk[paramInt];
+      return c.Uah[paramInt];
     }
     return '\000';
   }

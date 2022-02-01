@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <View android:id="@id/ea2" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-        <ListView android:id="@id/fa_" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ea2" style="@style/n3" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b1n" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ea2">
-            <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/b1m" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <Button android:id="@id/f_t" android:layout_marginRight="@dimen/jn" android:text="@string/doj" style="@style/of" />
-        </LinearLayout>
-        <ImageView android:id="@id/feo" android:background="@drawable/bhf" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/b1n" />
-        <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/fab" android:visibility="gone" android:layout_width="@dimen/b" android:layout_height="wrap_content" android:layout_below="@id/b1n" android:layout_alignParentRight="true" />
-        <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/fa9" android:background="@color/a_r" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/d" android:paddingRight="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b1n">
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <include layout="@layout/b37" />
-                <com.tencent.mm.ui.base.MMTagPanel android:id="@id/b1i" android:paddingTop="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/jn" flowlayout:verticalSpacing="@dimen/d" />
-            </LinearLayout>
-        </com.tencent.mm.ui.contact.LabelContainerView>
-        <LinearLayout android:gravity="center_horizontal" android:id="@id/e4e" android:background="@color/a_r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b1n">
-            <TextView android:id="@id/e4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/dlk" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+<RelativeLayout android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center" android:id="@id/g02" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+    <ListView android:id="@id/hf1" android:background="@color/kz" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" android:layout_below="@id/g02" style="@style/np" />
+</RelativeLayout>

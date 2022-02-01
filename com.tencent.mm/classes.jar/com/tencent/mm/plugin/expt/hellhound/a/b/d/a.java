@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/ClickFeed;", "", "height", "", "width", "sessionId", "", "clickFeedId", "nickName", "scene", "", "updateTimeMs", "", "clickTimeMs", "itemExposureAreaWeigth", "screenExposureAreaWeigth", "itemDirection", "itemIndex", "shotScreenJson", "contextId", "itemBufffer", "itemArrayIndex", "position", "(FFLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IJJFFIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V", "getClickFeedId", "()Ljava/lang/String;", "setClickFeedId", "(Ljava/lang/String;)V", "getClickTimeMs", "()J", "setClickTimeMs", "(J)V", "getContextId", "setContextId", "getHeight", "()F", "setHeight", "(F)V", "getItemArrayIndex", "()I", "setItemArrayIndex", "(I)V", "getItemBufffer", "setItemBufffer", "getItemDirection", "setItemDirection", "getItemExposureAreaWeigth", "setItemExposureAreaWeigth", "getItemIndex", "setItemIndex", "getNickName", "setNickName", "getPosition", "setPosition", "getScene", "setScene", "getScreenExposureAreaWeigth", "setScreenExposureAreaWeigth", "getSessionId", "setSessionId", "getShotScreenJson", "setShotScreenJson", "getUpdateTimeMs", "setUpdateTimeMs", "getWidth", "setWidth", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "toString", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/ClickFeed;", "", "height", "", "width", "sessionId", "", "clickFeedId", "nickName", "scene", "", "updateTimeMs", "", "clickTimeMs", "itemExposureAreaWeigth", "screenExposureAreaWeigth", "itemDirection", "itemIndex", "shotScreenJson", "contextId", "itemBufffer", "itemArrayIndex", "position", "(FFLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IJJFFIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V", "getClickFeedId", "()Ljava/lang/String;", "setClickFeedId", "(Ljava/lang/String;)V", "getClickTimeMs", "()J", "setClickTimeMs", "(J)V", "getContextId", "setContextId", "getHeight", "()F", "setHeight", "(F)V", "getItemArrayIndex", "()I", "setItemArrayIndex", "(I)V", "getItemBufffer", "setItemBufffer", "getItemDirection", "setItemDirection", "getItemExposureAreaWeigth", "setItemExposureAreaWeigth", "getItemIndex", "setItemIndex", "getNickName", "setNickName", "getPosition", "setPosition", "getScene", "setScene", "getScreenExposureAreaWeigth", "setScreenExposureAreaWeigth", "getSessionId", "setSessionId", "getShotScreenJson", "setShotScreenJson", "getUpdateTimeMs", "setUpdateTimeMs", "getWidth", "setWidth", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "toString", "plugin-expt_release"})
 public final class a
 {
-  public String bVF = null;
   public float height = 0.0F;
+  public String nickName = null;
   public int position = 0;
-  public String rfA = null;
-  public String rfB = null;
-  public int rfC = 0;
-  public String rfs = null;
-  public long rft = 0L;
-  public long rfu = 0L;
-  public float rfv = 0.0F;
-  public float rfw = 0.0F;
-  public int rfx = 0;
-  public int rfy = 0;
-  public String rfz = null;
+  public String sGI = null;
+  public long sGJ = 0L;
+  public long sGK = 0L;
+  public float sGL = 0.0F;
+  public float sGM = 0.0F;
+  public int sGN = 0;
+  public int sGO = 0;
+  public String sGP = null;
+  public String sGQ = null;
+  public String sGR = null;
+  public int sGS = 0;
   public int scene = 0;
   public String sessionId = null;
   public float width = 0.0F;
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(196541);
+    AppMethodBeat.i(221033);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((Float.compare(this.height, paramObject.height) != 0) || (Float.compare(this.width, paramObject.width) != 0) || (!p.i(this.sessionId, paramObject.sessionId)) || (!p.i(this.rfs, paramObject.rfs)) || (!p.i(this.bVF, paramObject.bVF)) || (this.scene != paramObject.scene) || (this.rft != paramObject.rft) || (this.rfu != paramObject.rfu) || (Float.compare(this.rfv, paramObject.rfv) != 0) || (Float.compare(this.rfw, paramObject.rfw) != 0) || (this.rfx != paramObject.rfx) || (this.rfy != paramObject.rfy) || (!p.i(this.rfz, paramObject.rfz)) || (!p.i(this.rfA, paramObject.rfA)) || (!p.i(this.rfB, paramObject.rfB)) || (this.rfC != paramObject.rfC) || (this.position != paramObject.position)) {}
+        if ((Float.compare(this.height, paramObject.height) != 0) || (Float.compare(this.width, paramObject.width) != 0) || (!p.j(this.sessionId, paramObject.sessionId)) || (!p.j(this.sGI, paramObject.sGI)) || (!p.j(this.nickName, paramObject.nickName)) || (this.scene != paramObject.scene) || (this.sGJ != paramObject.sGJ) || (this.sGK != paramObject.sGK) || (Float.compare(this.sGL, paramObject.sGL) != 0) || (Float.compare(this.sGM, paramObject.sGM) != 0) || (this.sGN != paramObject.sGN) || (this.sGO != paramObject.sGO) || (!p.j(this.sGP, paramObject.sGP)) || (!p.j(this.sGQ, paramObject.sGQ)) || (!p.j(this.sGR, paramObject.sGR)) || (this.sGS != paramObject.sGS) || (this.position != paramObject.position)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(196541);
+      AppMethodBeat.o(221033);
       return true;
     }
-    AppMethodBeat.o(196541);
+    AppMethodBeat.o(221033);
     return false;
   }
   
   public final int hashCode()
   {
     int i1 = 0;
-    AppMethodBeat.i(196540);
+    AppMethodBeat.i(221032);
     int i2 = Float.floatToIntBits(this.height);
     int i3 = Float.floatToIntBits(this.width);
     String str = this.sessionId;
@@ -68,32 +68,32 @@ public final class a
     if (str != null)
     {
       i = str.hashCode();
-      str = this.rfs;
+      str = this.sGI;
       if (str == null) {
         break label319;
       }
       j = str.hashCode();
-      str = this.bVF;
+      str = this.nickName;
       if (str == null) {
         break label324;
       }
       k = str.hashCode();
       i4 = this.scene;
-      long l = this.rft;
+      long l = this.sGJ;
       i5 = (int)(l ^ l >>> 32);
-      l = this.rfu;
+      l = this.sGK;
       i6 = (int)(l ^ l >>> 32);
-      i7 = Float.floatToIntBits(this.rfv);
-      i8 = Float.floatToIntBits(this.rfw);
-      i9 = this.rfx;
-      i10 = this.rfy;
-      str = this.rfz;
+      i7 = Float.floatToIntBits(this.sGL);
+      i8 = Float.floatToIntBits(this.sGM);
+      i9 = this.sGN;
+      i10 = this.sGO;
+      str = this.sGP;
       if (str == null) {
         break label329;
       }
       m = str.hashCode();
       label165:
-      str = this.rfA;
+      str = this.sGQ;
       if (str == null) {
         break label335;
       }
@@ -104,13 +104,13 @@ public final class a
     label335:
     for (int n = str.hashCode();; n = 0)
     {
-      str = this.rfB;
+      str = this.sGR;
       if (str != null) {
         i1 = str.hashCode();
       }
-      int i11 = this.rfC;
+      int i11 = this.sGS;
       int i12 = this.position;
-      AppMethodBeat.o(196540);
+      AppMethodBeat.o(221032);
       return (((n + (m + ((((((((k + (j + (i + (i2 * 31 + i3) * 31) * 31) * 31) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + i8) * 31 + i9) * 31 + i10) * 31) * 31) * 31 + i1) * 31 + i11) * 31 + i12;
       i = 0;
       break;
@@ -125,9 +125,9 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(196539);
-    String str = "ClickFeed(height=" + this.height + ", width=" + this.width + ", sessionId=" + this.sessionId + ", clickFeedId=" + this.rfs + ", nickName=" + this.bVF + ", scene=" + this.scene + ", updateTimeMs=" + this.rft + ", clickTimeMs=" + this.rfu + ", itemExposureAreaWeigth=" + this.rfv + ", screenExposureAreaWeigth=" + this.rfw + ", itemDirection=" + this.rfx + ", itemIndex=" + this.rfy + ", shotScreenJson=" + this.rfz + ", contextId=" + this.rfA + ", itemBufffer=" + this.rfB + ", itemArrayIndex=" + this.rfC + ", position=" + this.position + ")";
-    AppMethodBeat.o(196539);
+    AppMethodBeat.i(221031);
+    String str = "ClickFeed(height=" + this.height + ", width=" + this.width + ", sessionId=" + this.sessionId + ", clickFeedId=" + this.sGI + ", nickName=" + this.nickName + ", scene=" + this.scene + ", updateTimeMs=" + this.sGJ + ", clickTimeMs=" + this.sGK + ", itemExposureAreaWeigth=" + this.sGL + ", screenExposureAreaWeigth=" + this.sGM + ", itemDirection=" + this.sGN + ", itemIndex=" + this.sGO + ", shotScreenJson=" + this.sGP + ", contextId=" + this.sGQ + ", itemBufffer=" + this.sGR + ", itemArrayIndex=" + this.sGS + ", position=" + this.position + ")";
+    AppMethodBeat.o(221031);
     return str;
   }
 }

@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
-        <Button android:id="@id/cf5" android:layout_marginLeft="5.0dip" android:text="getDB" style="@style/o8" />
-        <Button android:id="@id/aal" android:layout_marginLeft="5.0dip" android:text="calcExpt" style="@style/o8" />
-        <Button android:id="@id/b97" android:layout_marginLeft="5.0dip" android:text="delDB" style="@style/oa" />
-        <Button android:id="@id/f0n" android:layout_marginLeft="5.0dip" android:text="reset" style="@style/oa" />
-        <Button android:id="@id/fhk" android:layout_marginLeft="5.0dip" android:text="experience" style="@style/o8" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/gx" android:id="@id/bpw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
-    <ListView android:id="@id/f3e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/a_j" android:dividerHeight="1.0dip" />
+    <TextView android:textAppearance="@style/w4" android:textColor="?a3i" android:ellipsize="end" android:id="@id/fdt" android:background="?a3j" android:paddingLeft="@dimen/amn" android:paddingTop="@dimen/amr" android:paddingRight="@dimen/amn" android:paddingBottom="@dimen/amr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/amo" android:maxWidth="256.0dip" android:maxLines="3" android:paddingStart="@dimen/amn" android:paddingEnd="@dimen/amn" />
 </LinearLayout>

@@ -1,166 +1,187 @@
 package com.tencent.mm.modelsimple;
 
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.z;
+import com.tencent.mm.ak.ac;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.b.p;
-import com.tencent.mm.bw.b;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.model.aj;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.network.b.a;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.j.c;
 import com.tencent.mm.protocal.j.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ccx;
-import com.tencent.mm.protocal.protobuf.drp;
-import com.tencent.mm.protocal.protobuf.ecj;
-import com.tencent.mm.protocal.protobuf.ehi;
-import com.tencent.mm.protocal.protobuf.hk;
-import com.tencent.mm.protocal.protobuf.hl;
-import com.tencent.mm.protocal.protobuf.hn;
-import com.tencent.mm.protocal.protobuf.ix;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.ctc;
+import com.tencent.mm.protocal.protobuf.dfx;
+import com.tencent.mm.protocal.protobuf.ell;
+import com.tencent.mm.protocal.protobuf.ewr;
+import com.tencent.mm.protocal.protobuf.fca;
+import com.tencent.mm.protocal.protobuf.hx;
+import com.tencent.mm.protocal.protobuf.hy;
+import com.tencent.mm.protocal.protobuf.ia;
+import com.tencent.mm.protocal.protobuf.jk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f gCo;
-  private final q hRG;
+  private i heq;
+  private final s iMO;
   
   public c()
   {
     AppMethodBeat.i(134149);
-    this.hRG = new d();
-    j.c localc = (j.c)this.hRG.getReqObj();
-    this.hRG.getRespObj();
-    hk localhk = new hk();
-    Object localObject1 = new hn();
-    localc.FGj.FSm = ((hn)localObject1);
-    localc.FGj.FSn = localhk;
-    Object localObject2 = bd.aCl();
-    Object localObject3 = ((SharedPreferences)localObject2).getString("_auth_key", "");
+    this.iMO = new d();
+    j.c localc = (j.c)this.iMO.getReqObj();
+    this.iMO.getRespObj();
+    hx localhx = new hx();
+    Object localObject1 = new ia();
+    localc.Kzu.KLV = ((ia)localObject1);
+    localc.Kzu.KLW = localhx;
+    localhx.KLS = new dfx();
+    Object localObject2 = com.tencent.mm.network.b.bjq().bjr();
+    Object localObject3;
     int i;
     Object localObject4;
-    if (localObject3 == null)
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      i = -1;
-      ae.i("MicroMsg.MMDisasterAuth", "disasterauths KEY_SP_SUFFIX keyStr[%s]", new Object[] { Integer.valueOf(i) });
-      localObject4 = bu.aSx((String)localObject3);
-      localObject3 = new hl();
-      if (bu.cF((byte[])localObject4)) {
-        break label550;
+      localhx.KLS.LrO = com.tencent.mm.network.b.bjq().jDB.LrO;
+      localhx.KLS.KLU = new SKBuiltinBuffer_t().setBuffer(((String)localObject2).getBytes(StandardCharsets.ISO_8859_1));
+      Log.i("MicroMsg.MMDisasterAuth", "disaster auth add public key , length " + ((String)localObject2).length());
+      localObject2 = bh.aVK();
+      localObject3 = ((SharedPreferences)localObject2).getString("_auth_key", "");
+      if (localObject3 != null) {
+        break label642;
       }
-      localhk.FRs = new SKBuiltinBuffer_t().setBuffer((byte[])localObject4);
-      ae.i("MicroMsg.MMDisasterAuth", "disasterauths keyBuf[%s, %s]", new Object[] { Integer.valueOf(localhk.FRs.getBuffer().zr.length), Integer.valueOf(localObject4.length) });
+      i = -1;
+      Log.i("MicroMsg.MMDisasterAuth", "disasterauths KEY_SP_SUFFIX keyStr[%s]", new Object[] { Integer.valueOf(i) });
+      localObject4 = Util.decodeHexString((String)localObject3);
+      localObject3 = new hy();
+      if (Util.isNullOrNil((byte[])localObject4)) {
+        break label684;
+      }
+      localhx.KKZ = new SKBuiltinBuffer_t().setBuffer((byte[])localObject4);
+      Log.i("MicroMsg.MMDisasterAuth", "disasterauths keyBuf[%s, %s]", new Object[] { Integer.valueOf(localhx.KKZ.getBuffer().zy.length), Integer.valueOf(localObject4.length) });
     }
-    label768:
-    label774:
+    label642:
+    label684:
+    label940:
+    label952:
+    label958:
     for (;;)
     {
-      ix localix;
+      jk localjk;
       try
       {
-        ((hl)localObject3).parseFrom((byte[])localObject4);
-        if (((hl)localObject3).FSk == null) {
-          break label585;
+        ((hy)localObject3).parseFrom((byte[])localObject4);
+        if (((hy)localObject3).KLT == null) {
+          break label719;
         }
-        ((hn)localObject1).FSo = ((hl)localObject3).FSk;
-        ae.w("MicroMsg.MMDisasterAuth", "disasterauths AesEncryptKey [%s][%s]", new Object[] { Integer.valueOf(((hl)localObject3).FSk.getBuffer().zr.length), bu.cE(((hl)localObject3).FSk.getBuffer().zr) });
-        g.ajS();
-        localObject1 = bu.nullAsNil((String)g.ajR().ajA().get(2, null));
-        g.ajS();
-        localObject4 = new p(bu.a((Integer)g.ajR().ajA().get(9, null), 0));
-        if (!bu.isNullOrNil((String)localObject1)) {
-          break label774;
+        ((ia)localObject1).KLX = ((hy)localObject3).KLT;
+        Log.w("MicroMsg.MMDisasterAuth", "disasterauths AesEncryptKey [%s][%s]", new Object[] { Integer.valueOf(((hy)localObject3).KLT.getBuffer().zy.length), Util.dumpHex(((hy)localObject3).KLT.getBuffer().zy) });
+        com.tencent.mm.kernel.g.aAi();
+        localObject1 = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(2, null));
+        com.tencent.mm.kernel.g.aAi();
+        localObject4 = new p(Util.nullAs((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(9, null), 0));
+        if (!Util.isNullOrNil((String)localObject1)) {
+          break label958;
         }
         localObject1 = ((p)localObject4).toString();
-        ae.d("MicroMsg.MMDisasterAuth", "disasterauths updateVersion:%d, clientVersion:%d", new Object[] { Integer.valueOf(((SharedPreferences)localObject2).getInt("key_auth_update_version", 0)), Integer.valueOf(com.tencent.mm.protocal.d.FFH) });
+        Log.d("MicroMsg.MMDisasterAuth", "disasterauths updateVersion:%d, clientVersion:%d", new Object[] { Integer.valueOf(((SharedPreferences)localObject2).getInt("key_auth_update_version", 0)), Integer.valueOf(com.tencent.mm.protocal.d.KyO) });
         localc.setSceneStatus(2);
-        localix = new ix();
-        localix.FUr = 1;
-        localix.FRy = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-        localix.FRx = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-        localObject2 = new ecj();
-        localix.FUp = ((ecj)localObject2);
-        ((ecj)localObject2).FWL = "";
-        ((ecj)localObject2).FWK = "";
-        ((ecj)localObject2).IhI = "";
-        localObject2 = new ehi();
-        localix.FUq = ((ehi)localObject2);
-        ((ehi)localObject2).GXa = "";
-        ((ehi)localObject2).GWZ = "";
-        if (g.ajM()) {
-          break label627;
+        localjk = new jk();
+        localjk.KOa = 1;
+        localjk.KLf = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+        localjk.KLe = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+        localObject2 = new ewr();
+        localjk.KNY = ((ewr)localObject2);
+        ((ewr)localObject2).KQx = "";
+        ((ewr)localObject2).KQw = "";
+        ((ewr)localObject2).Num = "";
+        localObject2 = new fca();
+        localjk.KNZ = ((fca)localObject2);
+        ((fca)localObject2).MbK = "";
+        ((fca)localObject2).MbJ = "";
+        if (com.tencent.mm.kernel.g.aAc()) {
+          break label761;
         }
-        ae.e("MicroMsg.MMDisasterAuth", "disasterauths build autoauth Req  , failed  acc not ready");
+        Log.e("MicroMsg.MMDisasterAuth", "disasterauths build autoauth Req  , failed  acc not ready");
         AppMethodBeat.o(134149);
         return;
+        localhx.KLS.LrO = 0;
+        localhx.KLS.KLU = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+        Log.e("MicroMsg.MMDisasterAuth", "get sign key failed");
+        break;
         i = ((String)localObject3).length();
       }
       catch (IOException localIOException)
       {
-        com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 15L, 1L, false);
-        ae.printErrStackTrace("MicroMsg.MMDisasterAuth", localIOException, "summerauthkey Failed parse autoauthkey buf", new Object[0]);
+        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 15L, 1L, false);
+        Log.printErrStackTrace("MicroMsg.MMDisasterAuth", localIOException, "summerauthkey Failed parse autoauthkey buf", new Object[0]);
         continue;
       }
-      label550:
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 16L, 1L, false);
-      localhk.FRs = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 16L, 1L, false);
+      localhx.KKZ = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
       continue;
-      label585:
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 17L, 1L, false);
-      ((hn)localObject1).FSo = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-      ae.w("MicroMsg.MMDisasterAuth", "disasterauths AesEncryptKey null!");
+      label719:
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 17L, 1L, false);
+      ((ia)localObject1).KLX = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+      Log.w("MicroMsg.MMDisasterAuth", "disasterauths AesEncryptKey null!");
       continue;
-      label627:
-      g.ajS();
-      localObject3 = g.ajP().aiR().a(localIOException.longValue(), "", false);
-      label666:
+      label761:
+      com.tencent.mm.kernel.g.aAi();
+      localObject3 = com.tencent.mm.kernel.g.aAf().azh().a(localIOException.longValue(), "", false);
+      localhx.KFu = MMApplicationContext.getApplicationId();
       SKBuiltinBuffer_t localSKBuiltinBuffer_t;
       if (localObject3 == null)
       {
         i = -1;
         if (localObject3 != null) {
-          break label756;
+          break label940;
         }
         localObject2 = "null";
-        ae.i("MicroMsg.MMDisasterAuth", "disasterauths loginbuf username:%s, qq:%s, len:%d, content:[%s]", new Object[] { localObject1, localIOException, Integer.valueOf(i), localObject2 });
+        Log.i("MicroMsg.MMDisasterAuth", "disasterauths loginbuf username:%s, qq:%s, len:%d, content:[%s], AndroidPackageName:%s", new Object[] { localObject1, localIOException, Integer.valueOf(i), localObject2, localhx.KFu });
         localSKBuiltinBuffer_t = new SKBuiltinBuffer_t();
-        if (!bu.cF((byte[])localObject3)) {
-          break label768;
+        if (!Util.isNullOrNil((byte[])localObject3)) {
+          break label952;
         }
       }
       for (localObject2 = new byte[0];; localObject2 = localObject3)
       {
-        localix.FUo = localSKBuiltinBuffer_t.setBuffer((byte[])localObject2);
-        localhk.FSd = localix;
+        localjk.KNX = localSKBuiltinBuffer_t.setBuffer((byte[])localObject2);
+        localhx.KLK = localjk;
         localc.username = ((String)localObject1);
+        localObject1 = new b.a();
+        ((b.a)localObject1).jDD = com.tencent.mm.network.b.bjq().bjr();
+        ((b.a)localObject1).jDC = com.tencent.mm.network.b.bjq().jDC;
+        localc.setCGiVerifyKey((b.a)localObject1);
         AppMethodBeat.o(134149);
         return;
         i = localObject3.length;
         break;
-        label756:
-        localObject2 = bu.aSM(bu.cE((byte[])localObject3));
-        break label666;
+        localObject2 = Util.secPrint(Util.dumpHex((byte[])localObject3));
+        break label808;
       }
     }
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(134150);
-    this.gCo = paramf;
-    com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 126L, 1L, false);
-    int i = dispatch(parame, this.hRG, this);
+    this.heq = parami;
+    com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 126L, 1L, false);
+    int i = dispatch(paramg, this.iMO, this);
     AppMethodBeat.o(134150);
     return i;
   }
@@ -168,42 +189,42 @@ public final class c
   public final int getType()
   {
     AppMethodBeat.i(134152);
-    int i = this.hRG.getType();
+    int i = this.iMO.getType();
     AppMethodBeat.o(134152);
     return i;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(134151);
-    paramq = ((j.d)paramq.getRespObj()).FGl;
-    if (paramq != null)
+    params = ((j.d)params.getRespObj()).Kzw;
+    if (params != null)
     {
-      paramArrayOfByte = paramq.HYu;
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.FWy != null) && (paramArrayOfByte.FWz != null) && (paramArrayOfByte.FWx != null)) {
+      paramArrayOfByte = params.NkA;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.KQk != null) && (paramArrayOfByte.KQl != null) && (paramArrayOfByte.KQj != null)) {
         break label113;
       }
     }
     for (;;)
     {
-      af.a(paramq.HYv);
-      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      aj.a(params.NkB);
+      this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
       if ((paramInt3 != 0) || (paramInt2 != 0)) {
         break;
       }
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 127L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 127L, 1L, false);
       AppMethodBeat.o(134151);
       return;
       label113:
-      bd.a(false, paramArrayOfByte.FWy, paramArrayOfByte.FWz, paramArrayOfByte.FWx);
+      bh.a(false, paramArrayOfByte.KQk, paramArrayOfByte.KQl, paramArrayOfByte.KQj);
     }
-    com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 128L, 1L, false);
+    com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 128L, 1L, false);
     AppMethodBeat.o(134151);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.c
  * JD-Core Version:    0.7.0.1
  */

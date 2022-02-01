@@ -1,52 +1,54 @@
 package com.tencent.mm.plugin.account;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.d;
-import com.tencent.mm.g.a.bf;
-import com.tencent.mm.g.a.iw;
-import com.tencent.mm.g.a.ji;
-import com.tencent.mm.g.a.tl;
+import com.tencent.mm.ak.ac.a;
+import com.tencent.mm.ak.h.d;
+import com.tencent.mm.g.a.bh;
+import com.tencent.mm.g.a.jl;
+import com.tencent.mm.g.a.uj;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.account.friend.a.ap;
 import com.tencent.mm.plugin.account.friend.a.ar;
 import com.tencent.mm.plugin.account.friend.a.at;
-import com.tencent.mm.plugin.account.friend.a.b;
-import com.tencent.mm.plugin.account.friend.a.d;
+import com.tencent.mm.plugin.account.friend.a.c;
 import com.tencent.mm.plugin.account.friend.a.f;
 import com.tencent.mm.plugin.account.friend.a.h;
-import com.tencent.mm.plugin.account.friend.a.k;
 import com.tencent.mm.plugin.account.friend.a.o;
 import com.tencent.mm.plugin.account.friend.a.q;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.fts.a.i;
 import com.tencent.mm.plugin.fts.a.m;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.protocal.protobuf.bvd;
+import com.tencent.mm.protocal.protobuf.cik;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class a
-  implements az
+  implements bd
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private b jbe;
-  private h jbf;
-  private k jbg;
-  private ar jbh;
-  private at jbi;
-  private q jbj;
-  private o jbk;
-  private ap jbl;
-  private d jbm;
-  private LinkedList<bvd> jbn;
-  private com.tencent.mm.plugin.account.friend.a.c jbo;
-  private com.tencent.mm.plugin.account.friend.a.e jbp;
-  private f jbq;
-  private com.tencent.mm.sdk.b.c jbr;
-  private com.tencent.mm.sdk.b.c jbs;
-  private com.tencent.mm.sdk.b.c jbt;
-  private com.tencent.mm.sdk.b.c jbu;
+  private com.tencent.mm.plugin.account.friend.a.b jZh;
+  private h jZi;
+  private com.tencent.mm.plugin.account.friend.a.k jZj;
+  private ar jZk;
+  private at jZl;
+  private q jZm;
+  private o jZn;
+  private ap jZo;
+  private com.tencent.mm.plugin.account.friend.a.d jZp;
+  private LinkedList<cik> jZq;
+  private c jZr;
+  private com.tencent.mm.plugin.account.friend.a.e jZs;
+  private f jZt;
+  private IListener jZu;
+  private IListener jZv;
+  private IListener jZw;
+  private IListener jZx;
   
   static
   {
@@ -57,7 +59,7 @@ public class a
     {
       public final String[] getSQLs()
       {
-        return b.SQL_CREATE;
+        return com.tencent.mm.plugin.account.friend.a.b.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("FACE_BOOK_FIREND_TABLE".hashCode()), new h.b()
@@ -71,7 +73,7 @@ public class a
     {
       public final String[] getSQLs()
       {
-        return k.SQL_CREATE;
+        return com.tencent.mm.plugin.account.friend.a.k.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("QQ_GROUP_TABLE".hashCode()), new h.b()
@@ -102,37 +104,31 @@ public class a
         return o.SQL_CREATE;
       }
     });
-    baseDBFactories.put(Integer.valueOf("OLD_ACCOUNT_FRIEND_TABLE".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return ap.SQL_CREATE;
-      }
-    });
+    baseDBFactories.put(Integer.valueOf("OLD_ACCOUNT_FRIEND_TABLE".hashCode()), new a.3());
     AppMethodBeat.o(127798);
   }
   
   public a()
   {
     AppMethodBeat.i(127784);
-    this.jbm = new d();
-    this.jbn = null;
-    this.jbo = new com.tencent.mm.plugin.account.friend.a.c();
-    this.jbp = new com.tencent.mm.plugin.account.friend.a.e();
-    this.jbq = new f();
-    this.jbr = new com.tencent.mm.sdk.b.c() {};
-    this.jbs = new com.tencent.mm.sdk.b.c() {};
-    this.jbt = new com.tencent.mm.sdk.b.c() {};
-    this.jbu = new com.tencent.mm.sdk.b.c() {};
+    this.jZp = new com.tencent.mm.plugin.account.friend.a.d();
+    this.jZq = null;
+    this.jZr = new c();
+    this.jZs = new com.tencent.mm.plugin.account.friend.a.e();
+    this.jZt = new f();
+    this.jZu = new IListener() {};
+    this.jZv = new a.7(this);
+    this.jZw = new IListener() {};
+    this.jZx = new IListener() {};
     AppMethodBeat.o(127784);
   }
   
-  private static a aSo()
+  private static a bnb()
   {
     try
     {
       AppMethodBeat.i(127785);
-      a locala = (a)u.ap(a.class);
+      a locala = (a)y.at(a.class);
       AppMethodBeat.o(127785);
       return locala;
     }
@@ -146,19 +142,19 @@ public class a
   public static void clearFriendData()
   {
     AppMethodBeat.i(127794);
-    g.ajP().aiU();
-    aSo().jbn = null;
+    g.aAf().azk();
+    bnb().jZq = null;
     AppMethodBeat.o(127794);
   }
   
-  public static b getAddrUploadStg()
+  public static com.tencent.mm.plugin.account.friend.a.b getAddrUploadStg()
   {
     AppMethodBeat.i(127786);
-    g.ajP().aiU();
-    if (aSo().jbe == null) {
-      aSo().jbe = new b(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZh == null) {
+      bnb().jZh = new com.tencent.mm.plugin.account.friend.a.b(g.aAh().hqK);
     }
-    b localb = aSo().jbe;
+    com.tencent.mm.plugin.account.friend.a.b localb = bnb().jZh;
     AppMethodBeat.o(127786);
     return localb;
   }
@@ -166,32 +162,32 @@ public class a
   public static h getFacebookFrdStg()
   {
     AppMethodBeat.i(127787);
-    g.ajP().aiU();
-    if (aSo().jbf == null) {
-      aSo().jbf = new h(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZi == null) {
+      bnb().jZi = new h(g.aAh().hqK);
     }
-    h localh = aSo().jbf;
+    h localh = bnb().jZi;
     AppMethodBeat.o(127787);
     return localh;
   }
   
-  public static k getFrdExtStg()
+  public static com.tencent.mm.plugin.account.friend.a.k getFrdExtStg()
   {
     AppMethodBeat.i(127788);
-    g.ajP().aiU();
-    if (aSo().jbg == null) {
-      aSo().jbg = new k(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZj == null) {
+      bnb().jZj = new com.tencent.mm.plugin.account.friend.a.k(g.aAh().hqK);
     }
-    k localk = aSo().jbg;
+    com.tencent.mm.plugin.account.friend.a.k localk = bnb().jZj;
     AppMethodBeat.o(127788);
     return localk;
   }
   
-  public static LinkedList<bvd> getFriendData()
+  public static LinkedList<cik> getFriendData()
   {
     AppMethodBeat.i(127793);
-    g.ajP().aiU();
-    LinkedList localLinkedList = aSo().jbn;
+    g.aAf().azk();
+    LinkedList localLinkedList = bnb().jZq;
     AppMethodBeat.o(127793);
     return localLinkedList;
   }
@@ -199,11 +195,11 @@ public class a
   public static o getGoogleFriendStorage()
   {
     AppMethodBeat.i(127797);
-    g.ajP().aiU();
-    if (aSo().jbk == null) {
-      aSo().jbk = new o(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZn == null) {
+      bnb().jZn = new o(g.aAh().hqK);
     }
-    o localo = aSo().jbk;
+    o localo = bnb().jZn;
     AppMethodBeat.o(127797);
     return localo;
   }
@@ -211,11 +207,11 @@ public class a
   public static q getInviteFriendOpenStg()
   {
     AppMethodBeat.i(127790);
-    g.ajP().aiU();
-    if (aSo().jbj == null) {
-      aSo().jbj = new q(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZm == null) {
+      bnb().jZm = new q(g.aAh().hqK);
     }
-    q localq = aSo().jbj;
+    q localq = bnb().jZm;
     AppMethodBeat.o(127790);
     return localq;
   }
@@ -223,11 +219,11 @@ public class a
   public static ap getOldAccountFriendStorage()
   {
     AppMethodBeat.i(184137);
-    g.ajP().aiU();
-    if (aSo().jbl == null) {
-      aSo().jbl = new ap(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZo == null) {
+      bnb().jZo = new ap(g.aAh().hqK);
     }
-    ap localap = aSo().jbl;
+    ap localap = bnb().jZo;
     AppMethodBeat.o(184137);
     return localap;
   }
@@ -235,11 +231,11 @@ public class a
   public static ar getQQGroupStg()
   {
     AppMethodBeat.i(127789);
-    g.ajP().aiU();
-    if (aSo().jbh == null) {
-      aSo().jbh = new ar(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZk == null) {
+      bnb().jZk = new ar(g.aAh().hqK);
     }
-    ar localar = aSo().jbh;
+    ar localar = bnb().jZk;
     AppMethodBeat.o(127789);
     return localar;
   }
@@ -247,20 +243,20 @@ public class a
   public static at getQQListStg()
   {
     AppMethodBeat.i(127791);
-    g.ajP().aiU();
-    if (aSo().jbi == null) {
-      aSo().jbi = new at(g.ajR().gDX);
+    g.aAf().azk();
+    if (bnb().jZl == null) {
+      bnb().jZl = new at(g.aAh().hqK);
     }
-    at localat = aSo().jbi;
+    at localat = bnb().jZl;
     AppMethodBeat.o(127791);
     return localat;
   }
   
-  public static void setFriendData(LinkedList<bvd> paramLinkedList)
+  public static void setFriendData(LinkedList<cik> paramLinkedList)
   {
     AppMethodBeat.i(127792);
-    g.ajP().aiU();
-    aSo().jbn = paramLinkedList;
+    g.aAf().azk();
+    bnb().jZq = paramLinkedList;
     AppMethodBeat.o(127792);
   }
   
@@ -274,32 +270,67 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(127796);
-    e.d.a(Integer.valueOf(42), this.jbm);
-    e.d.a(Integer.valueOf(66), this.jbm);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jbu);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jbt);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jbo);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jbp);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jbq);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jbr);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jbs);
-    ((n)g.ad(n.class)).getFTSTaskDaemon().a(-86016, new a.5(this));
+    h.d.a(Integer.valueOf(42), this.jZp);
+    h.d.a(Integer.valueOf(66), this.jZp);
+    EventCenter.instance.addListener(this.jZx);
+    EventCenter.instance.addListener(this.jZw);
+    EventCenter.instance.addListener(this.jZr);
+    EventCenter.instance.addListener(this.jZs);
+    EventCenter.instance.addListener(this.jZt);
+    EventCenter.instance.addListener(this.jZu);
+    EventCenter.instance.addListener(this.jZv);
+    ((n)g.ah(n.class)).getFTSTaskDaemon().a(-86016, new com.tencent.mm.plugin.fts.a.a.a()
+    {
+      public final boolean execute()
+      {
+        AppMethodBeat.i(184136);
+        Object localObject = new com.tencent.mm.w.a();
+        ((n)g.ah(n.class)).registerIndexStorage((i)localObject);
+        ((i)localObject).create();
+        localObject = new com.tencent.mm.w.b();
+        ((n)g.ah(n.class)).registerNativeLogic(9, (com.tencent.mm.plugin.fts.a.k)localObject);
+        ((com.tencent.mm.plugin.fts.a.k)localObject).create();
+        localObject = new com.tencent.mm.w.a.a();
+        ((n)g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+        AppMethodBeat.o(184136);
+        return true;
+      }
+      
+      public final String getName()
+      {
+        return "InitFTSFriendPluginTask";
+      }
+    });
+    com.tencent.mm.ak.ac.iNB = new ac.a()
+    {
+      public final boolean aZy()
+      {
+        AppMethodBeat.i(196845);
+        if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.spm, 0) == 0)
+        {
+          AppMethodBeat.o(196845);
+          return true;
+        }
+        AppMethodBeat.o(196845);
+        return false;
+      }
+    };
     AppMethodBeat.o(127796);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(127795);
-    com.tencent.mm.sdk.b.a.IvT.d(this.jbu);
-    com.tencent.mm.sdk.b.a.IvT.d(this.jbt);
-    com.tencent.mm.sdk.b.a.IvT.d(this.jbo);
-    com.tencent.mm.sdk.b.a.IvT.d(this.jbp);
-    com.tencent.mm.sdk.b.a.IvT.d(this.jbq);
-    com.tencent.mm.sdk.b.a.IvT.d(this.jbr);
-    com.tencent.mm.sdk.b.a.IvT.d(this.jbs);
-    e.d.b(Integer.valueOf(42), this.jbm);
-    e.d.b(Integer.valueOf(66), this.jbm);
-    this.jbn = null;
+    EventCenter.instance.removeListener(this.jZx);
+    EventCenter.instance.removeListener(this.jZw);
+    EventCenter.instance.removeListener(this.jZr);
+    EventCenter.instance.removeListener(this.jZs);
+    EventCenter.instance.removeListener(this.jZt);
+    EventCenter.instance.removeListener(this.jZu);
+    EventCenter.instance.removeListener(this.jZv);
+    h.d.b(Integer.valueOf(42), this.jZp);
+    h.d.b(Integer.valueOf(66), this.jZp);
+    this.jZq = null;
     AppMethodBeat.o(127795);
   }
   
@@ -307,7 +338,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.a
  * JD-Core Version:    0.7.0.1
  */

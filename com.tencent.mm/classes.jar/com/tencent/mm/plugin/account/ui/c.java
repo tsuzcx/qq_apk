@@ -1,178 +1,34 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import android.widget.Filterable;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.ui.applet.SecurityImage;
+import com.tencent.mm.ui.applet.SecurityImage.b;
+import com.tencent.mm.ui.base.h;
 
-public final class c
-  extends BaseAdapter
-  implements Filterable
+public abstract class c
+  extends SecurityImage.b
 {
-  private List<String> jlP;
-  private ArrayList<String> jlQ;
-  private a jlR;
-  private String jlS;
-  private Context mContext;
-  private final Object mLock;
+  SecurityImage kdp = null;
+  q kjU = null;
   
-  public c(Context paramContext, String[] paramArrayOfString, String paramString)
-  {
-    AppMethodBeat.i(127871);
-    this.mLock = new Object();
-    this.mContext = paramContext;
-    this.jlP = Arrays.asList(paramArrayOfString);
-    this.jlS = paramString;
-    AppMethodBeat.o(127871);
-  }
+  public abstract q a(q paramq, String paramString);
   
-  private String getItem(int paramInt)
+  public final void bnH()
   {
-    AppMethodBeat.i(127873);
-    String str = (String)this.jlP.get(paramInt);
-    AppMethodBeat.o(127873);
-    return str;
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(127872);
-    int i = this.jlP.size();
-    AppMethodBeat.o(127872);
-    return i;
-  }
-  
-  public final Filter getFilter()
-  {
-    AppMethodBeat.i(127875);
-    if (this.jlR == null) {
-      this.jlR = new a((byte)0);
-    }
-    a locala = this.jlR;
-    AppMethodBeat.o(127875);
-    return locala;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(127874);
-    if (paramView == null)
-    {
-      paramView = View.inflate(this.mContext, 2131493123, null);
-      paramViewGroup = new b();
-      paramViewGroup.vk = ((TextView)paramView.findViewById(2131305754));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      String str = getItem(paramInt);
-      paramViewGroup.vk.setText(str);
-      paramView.setBackgroundResource(2131231818);
-      AppMethodBeat.o(127874);
-      return paramView;
-      paramViewGroup = (b)paramView.getTag();
-    }
-  }
-  
-  final class a
-    extends Filter
-  {
-    private a() {}
-    
-    protected final Filter.FilterResults performFiltering(CharSequence arg1)
-    {
-      int i = 0;
-      AppMethodBeat.i(127869);
-      Filter.FilterResults localFilterResults = new Filter.FilterResults();
-      if (c.a(c.this) == null) {}
-      synchronized (c.b(c.this))
-      {
-        c.a(c.this, new ArrayList(c.c(c.this)));
-        if (??? != null) {
-          if (???.length() != 0) {
-            break label152;
-          }
-        }
-      }
-      synchronized (c.b(c.this))
-      {
-        ??? = new ArrayList(c.a(c.this));
-        localFilterResults.values = ???;
-        localFilterResults.count = ((ArrayList)???).size();
-        AppMethodBeat.o(127869);
-        return localFilterResults;
-        ??? = finally;
-        AppMethodBeat.o(127869);
-        throw ???;
-      }
-      label152:
-      ??? = ???.toString().toLowerCase();
-      String str1 = "";
-      Object localObject3;
-      if ((c.d(c.this) != null) && (c.d(c.this).length() > 0))
-      {
-        localObject3 = ???.split(c.d(c.this));
-        if ((localObject3 != null) && (localObject3.length > 1))
-        {
-          str1 = localObject3[0] + c.d(c.this);
-          ??? = localObject3[1];
-        }
-      }
-      for (;;)
-      {
-        localObject3 = c.a(c.this);
-        int j = ((ArrayList)localObject3).size();
-        ArrayList localArrayList = new ArrayList(j);
-        while (i < j)
-        {
-          String str2 = (String)((ArrayList)localObject3).get(i);
-          if (str2.toString().toLowerCase().startsWith(???)) {
-            localArrayList.add(str1 + str2);
-          }
-          i += 1;
-        }
-        localFilterResults.values = localArrayList;
-        localFilterResults.count = localArrayList.size();
-        break;
-      }
-    }
-    
-    protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-    {
-      AppMethodBeat.i(127870);
-      c.a(c.this, (List)paramFilterResults.values);
-      if (paramFilterResults.count > 0)
-      {
-        c.this.notifyDataSetChanged();
-        AppMethodBeat.o(127870);
-        return;
-      }
-      c.this.notifyDataSetInvalidated();
-      AppMethodBeat.o(127870);
-    }
-  }
-  
-  static final class b
-  {
-    public TextView vk;
+    g.azz().a(a(this.kjU, ""), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.c
  * JD-Core Version:    0.7.0.1
  */

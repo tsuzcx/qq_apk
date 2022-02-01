@@ -1,489 +1,617 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
-import android.widget.ImageView;
+import android.net.Uri;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.v;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI;
-import com.tencent.mm.pluginsdk.model.r;
-import com.tencent.mm.pluginsdk.ui.applet.e;
-import com.tencent.mm.pluginsdk.ui.applet.g;
-import com.tencent.mm.pluginsdk.ui.applet.l;
-import com.tencent.mm.pluginsdk.ui.applet.m;
-import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import com.tencent.mm.pluginsdk.ui.applet.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.w;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.dqz;
+import com.tencent.mm.protocal.protobuf.dra;
+import com.tencent.mm.protocal.protobuf.fn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMFileSlotManager;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import kotlin.a.ae;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"domainHashMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "getDomainHashMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setDomainHashMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "fullUrlHashCache", "getFullUrlHashCache", "setFullUrlHashCache", "urlHashCache", "getUrlHashCache", "setUrlHashCache", "host", "getHost", "(Ljava/lang/String;)Ljava/lang/String;", "path", "getPath", "clearDomain", "", "domain", "clearDomainCache", "getContentId", "url", "getDomainId", "fetch", "", "getFullInfoId", "getFullWebId", "prefetch", "getInfoId", "getInvalidId", "getShortUrlId", "getStrip", "", "openScene", "getUrlId", "getWebId", "getWebResId", "resUrl", "hashFullUrl", "hashUrl", "mpDataMmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setShortUrlId", "shortUrl", "longUrl", "contains", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "contentId", "create", "Lcom/tencent/mm/vfs/VFSFile;", "findContentFile", "getContentFile", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "getContentPath", "plugin-brandservice_release"})
 public final class c
 {
-  private static Boolean onC;
-  private static Boolean onD;
-  private static HashSet<Long> onw;
-  private static HashSet<String> onx;
-  public BizTimeLineUI ofS;
-  private boolean onA;
-  public boolean onB;
-  private int ont;
-  private int onu;
-  public int onv;
-  public List<w> ony;
-  private List<w> onz;
+  private static ConcurrentHashMap<String, String> pAn;
+  private static ConcurrentHashMap<String, String> pAo;
+  private static ConcurrentHashMap<String, ConcurrentLinkedDeque<String>> pAp;
   
   static
   {
-    AppMethodBeat.i(6181);
-    onw = new HashSet();
-    onx = new HashSet();
-    onC = null;
-    onD = null;
-    AppMethodBeat.o(6181);
+    AppMethodBeat.i(6575);
+    pAn = new ConcurrentHashMap();
+    pAo = new ConcurrentHashMap();
+    pAp = new ConcurrentHashMap();
+    AppMethodBeat.o(6575);
   }
   
-  public c(BizTimeLineUI paramBizTimeLineUI, int paramInt1, int paramInt2, List<w> paramList)
+  public static final int Dm(int paramInt)
   {
-    AppMethodBeat.i(6160);
-    this.onv = 0;
-    this.ony = new LinkedList();
-    this.onA = false;
-    this.onB = false;
-    this.ofS = paramBizTimeLineUI;
-    this.ont = paramInt1;
-    this.onu = paramInt2;
-    this.onz = paramList;
-    if (this.onz.size() <= 10) {
-      Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
+    int j = 0;
+    AppMethodBeat.i(6571);
+    Object localObject1 = u.coo().decodeBytes("_msg_scene_strip");
+    if (localObject1 != null)
+    {
+      if (localObject1.length == 0) {}
+      Object localObject2;
+      for (int i = 1;; i = 0)
       {
-        public final boolean queueIdle()
-        {
-          AppMethodBeat.i(6154);
-          c.this.ZC();
-          AppMethodBeat.o(6154);
-          return false;
+        if (i == 0) {
+          j = 1;
         }
-      });
+        if (j != 1) {
+          break label204;
+        }
+        localObject2 = new dra();
+        ((dra)localObject2).parseFrom((byte[])localObject1);
+        localObject1 = ((dra)localObject2).KOB;
+        p.g(localObject1, "SceneControlSets().apply…(buff) }.SceneControlList");
+        localObject1 = ((Iterable)localObject1).iterator();
+        for (;;)
+        {
+          if (!((Iterator)localObject1).hasNext()) {
+            break label204;
+          }
+          localObject2 = (dqz)((Iterator)localObject1).next();
+          if (((dqz)localObject2).Scene == paramInt)
+          {
+            if (((dqz)localObject2).MTH > 0) {
+              break;
+            }
+            Log.e("MicroMsg.AppMsgContextEx", "strip error " + paramInt + ':' + ((dqz)localObject2).MTH);
+          }
+        }
+      }
+      Log.i("MicroMsg.AppMsgContextEx", "strip " + paramInt + ':' + ((dqz)localObject2).MTH);
+      paramInt = ((dqz)localObject2).MTH;
+      AppMethodBeat.o(6571);
+      return paramInt;
     }
-    AppMethodBeat.o(6160);
+    label204:
+    AppMethodBeat.o(6571);
+    return 10;
   }
   
-  public static String Gd(String paramString)
+  public static final o H(o paramo)
   {
-    AppMethodBeat.i(224136);
-    paramString = com.tencent.mm.api.b.t(paramString, 1);
-    AppMethodBeat.o(224136);
+    AppMethodBeat.i(175480);
+    p.h(paramo, "$this$create");
+    if (!paramo.exists())
+    {
+      String str = paramo.getParent();
+      if (str == null) {
+        p.hyc();
+      }
+      new o(str).mkdirs();
+      paramo.createNewFile();
+    }
+    AppMethodBeat.o(175480);
+    return paramo;
+  }
+  
+  public static final o a(MMFileSlotManager paramMMFileSlotManager, String paramString)
+  {
+    AppMethodBeat.i(175483);
+    p.h(paramMMFileSlotManager, "$this$getContentFile");
+    p.h(paramString, "contentId");
+    paramMMFileSlotManager = e((o)paramMMFileSlotManager.getSlot(), paramString);
+    AppMethodBeat.o(175483);
+    return paramMMFileSlotManager;
+  }
+  
+  public static final String a(fn paramfn)
+  {
+    AppMethodBeat.i(6570);
+    p.h(paramfn, "$this$getContentId");
+    paramfn = paramfn.Url;
+    p.g(paramfn, "this.Url");
+    paramfn = aib(paramfn);
+    AppMethodBeat.o(6570);
+    return paramfn;
+  }
+  
+  private static final String aI(final String paramString, boolean paramBoolean)
+  {
+    int i = 0;
+    AppMethodBeat.i(195553);
+    String str1 = paramString + '-' + paramBoolean;
+    Object localObject3;
+    for (;;)
+    {
+      String str2;
+      String str3;
+      try
+      {
+        if (pAo.containsKey(str1))
+        {
+          paramString = (String)ae.e((Map)pAo, str1);
+          return paramString;
+        }
+        localObject1 = x.SXb;
+        localObject1 = ahZ(getHost(paramString));
+        localObject2 = new c(paramBoolean, paramString);
+        localObject3 = new StringBuilder("matched_");
+        if (i >= 3) {
+          break;
+        }
+        str2 = new String[] { "__biz", "mid", "idx" }[i];
+        str3 = UrlExKt.getUrlParam(paramString, str2);
+        if (str3 != null) {
+          break label370;
+        }
+        localObject3 = UrlExKt.clearShortUrl(paramString, true);
+        str2 = aid((String)localObject3);
+        if (!Util.isNullOrNil(str2))
+        {
+          ((Map)pAo).put(paramString, str2);
+          AppMethodBeat.o(195553);
+          return str2;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(195553);
+      }
+      Object localObject2 = Integer.toString("not_matched_".concat(String.valueOf(((c)localObject2).aif((String)localObject3))).hashCode(), kotlin.n.a.avR(16));
+      p.g(localObject2, "java.lang.Integer.toStri…(this, checkRadix(radix))");
+      if (paramBoolean)
+      {
+        if (!pAp.containsKey(localObject1)) {
+          ((Map)pAp).put(localObject1, new ConcurrentLinkedDeque());
+        }
+        localObject1 = pAp.get(localObject1);
+        if (localObject1 == null) {
+          p.hyc();
+        }
+        ((ConcurrentLinkedDeque)localObject1).add(str1);
+        ((Map)pAo).put(str1, localObject2);
+        Log.d("AppMsgContextEx", "#" + (String)localObject2 + " hash from:" + paramString);
+      }
+      AppMethodBeat.o(195553);
+      return localObject2;
+      label370:
+      ((StringBuilder)localObject3).append(str2 + ':' + str3 + '-');
+      i += 1;
+    }
+    paramString = ((StringBuilder)localObject3).toString();
+    if (!pAp.containsKey(localObject1)) {
+      ((Map)pAp).put(localObject1, new ConcurrentLinkedDeque());
+    }
+    Object localObject1 = pAp.get(localObject1);
+    if (localObject1 == null) {
+      p.hyc();
+    }
+    ((ConcurrentLinkedDeque)localObject1).add(str1);
+    localObject1 = (Map)pAo;
+    p.g(paramString, "this");
+    ((Map)localObject1).put(str1, paramString);
+    p.g(paramString, "key.toString()\n        .…acheKey] = this\n        }");
+    AppMethodBeat.o(195553);
     return paramString;
   }
   
-  private boolean a(v paramv, String paramString, final long paramLong, int paramInt, boolean paramBoolean)
+  public static final String aJ(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(6165);
-    if (a(paramString, paramLong, paramInt))
-    {
-      AppMethodBeat.o(6165);
-      return false;
-    }
-    ae.v("MicroMsg.BizTimeLineImgLoader", "doPreLoadNext pos %d", new Object[] { Integer.valueOf(paramInt) });
-    ImageView localImageView = new ImageView(this.ofS);
-    this.onv += 1;
-    if ((paramInt == 0) && (paramBoolean)) {
-      a(paramLong, paramInt, paramv, paramString, localImageView, getContentWidth(), this.ont, true, new m.a()
-      {
-        public final void onFinish()
-        {
-          AppMethodBeat.i(6156);
-          c.e(c.this);
-          c.this.p(paramLong, this.jgx);
-          AppMethodBeat.o(6156);
-        }
-        
-        public final void onStart() {}
-      }, false, -1);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(6165);
-      return true;
-      a(paramLong, paramInt, paramv, paramString, localImageView, this.onu, this.onu, true, new m.a()
-      {
-        public final void onFinish()
-        {
-          AppMethodBeat.i(6157);
-          c.e(c.this);
-          c.this.p(paramLong, this.jgx);
-          AppMethodBeat.o(6157);
-        }
-        
-        public final void onStart() {}
-      }, -1, 2.0F);
-    }
+    AppMethodBeat.i(195558);
+    p.h(paramString, "url");
+    paramString = "_web_" + aI(paramString, paramBoolean);
+    AppMethodBeat.o(195558);
+    return paramString;
   }
   
-  public static boolean a(w paramw, v paramv)
+  public static final void ahS(String paramString)
   {
-    AppMethodBeat.i(6174);
-    if ((paramw == null) || (paramv == null))
-    {
-      AppMethodBeat.o(6174);
-      return false;
-    }
-    boolean bool = com.tencent.mm.plugin.brandservice.ui.b.a.a(paramw, paramv);
-    AppMethodBeat.o(6174);
-    return bool;
-  }
-  
-  private static boolean a(String paramString, long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(6169);
-    if (onx.contains(paramLong + "_" + paramInt))
-    {
-      AppMethodBeat.o(6169);
-      return true;
-    }
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(6169);
-      return false;
-    }
-    if (!o.fB(r.aMY(com.tencent.mm.api.b.t(paramString, 1))))
-    {
-      AppMethodBeat.o(6169);
-      return false;
-    }
-    onx.add(paramLong + "_" + paramInt);
-    AppMethodBeat.o(6169);
-    return true;
-  }
-  
-  private w bPW()
-  {
-    AppMethodBeat.i(6167);
-    int i = 0;
+    AppMethodBeat.i(195552);
+    p.h(paramString, "domain");
+    String str1 = ahZ(paramString);
+    LinkedList localLinkedList = new LinkedList();
     try
     {
-      while (i < this.onz.size() + this.ony.size())
+      Object localObject = (ConcurrentLinkedDeque)pAp.get(str1);
+      if (localObject != null)
       {
-        w localw = zz(i);
-        if ((localw != null) && (localw.fta()) && (localw.field_isRead != 1) && (!onw.contains(Long.valueOf(localw.field_msgId))))
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          ae.v("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo pos=%d,msg id=%d", new Object[] { Integer.valueOf(i), Long.valueOf(localw.field_msgId) });
-          AppMethodBeat.o(6167);
-          return localw;
-        }
-        i += 1;
-        tC(localw.field_msgId);
-      }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      ae.w("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(6167);
-    }
-  }
-  
-  private static boolean bPY()
-  {
-    AppMethodBeat.i(6175);
-    if (onC == null) {
-      bQa();
-    }
-    boolean bool = onC.booleanValue();
-    AppMethodBeat.o(6175);
-    return bool;
-  }
-  
-  public static boolean bPZ()
-  {
-    AppMethodBeat.i(6176);
-    if (onD == null) {
-      bQa();
-    }
-    boolean bool = onD.booleanValue();
-    AppMethodBeat.o(6176);
-    return bool;
-  }
-  
-  private static void bQa()
-  {
-    AppMethodBeat.i(6177);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aDI().xi("100461");
-    if ((localc.isValid()) && ("1".equals(localc.fsy().get("isOpenBizMsgPreDownloadCover"))))
-    {
-      bool = true;
-      onC = Boolean.valueOf(bool);
-      if ((!localc.isValid()) || (!"1".equals(localc.fsy().get("isOnlyPreloadInWifi")))) {
-        break label126;
-      }
-    }
-    label126:
-    for (boolean bool = true;; bool = false)
-    {
-      onD = Boolean.valueOf(bool);
-      ae.i("MicroMsg.BizTimeLineImgLoader", "BizTimeLineImg initABTest %b/%b", new Object[] { onC, onD });
-      AppMethodBeat.o(6177);
-      return;
-      bool = false;
-      break;
-    }
-  }
-  
-  private static void tC(long paramLong)
-  {
-    AppMethodBeat.i(6166);
-    onw.add(Long.valueOf(paramLong));
-    AppMethodBeat.o(6166);
-  }
-  
-  private w zz(int paramInt)
-  {
-    AppMethodBeat.i(6173);
-    try
-    {
-      w localw;
-      if (paramInt < this.onz.size())
-      {
-        localw = (w)this.onz.get(paramInt);
-        AppMethodBeat.o(6173);
-        return localw;
-      }
-      if (paramInt < this.onz.size() + this.ony.size())
-      {
-        localw = (w)this.ony.get(paramInt - this.onz.size());
-        AppMethodBeat.o(6173);
-        return localw;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      ae.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
-      AppMethodBeat.o(6173);
-    }
-    return null;
-  }
-  
-  public final void ZC()
-  {
-    AppMethodBeat.i(6171);
-    if (!bPY())
-    {
-      AppMethodBeat.o(6171);
-      return;
-    }
-    com.tencent.mm.plugin.brandservice.b.a("BizTimeLineImgLoaderThread", new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(6159);
-        if ((c.b(c.this) == null) || (c.b(c.this).isFinishing()))
-        {
-          AppMethodBeat.o(6159);
-          return;
-        }
-        w localw = c.this.bPX();
-        if (localw == null)
-        {
-          AppMethodBeat.o(6159);
-          return;
-        }
-        ar.f(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(6158);
-            c.f(c.this).clear();
-            c.f(c.this).addAll(this.gww);
-            AppMethodBeat.o(6158);
+          String str2 = (String)((Iterator)localObject).next();
+          String str3 = (String)pAn.remove(str2);
+          if (str3 != null) {
+            localLinkedList.add(str3);
           }
-        });
-        AppMethodBeat.o(6159);
-      }
-    }, 0L);
-    AppMethodBeat.o(6171);
-  }
-  
-  public final void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, int paramInt3, boolean paramBoolean, m.a parama, int paramInt4, float paramFloat)
-  {
-    AppMethodBeat.i(208511);
-    paramImageView.setContentDescription(this.ofS.getString(2131757186));
-    paramString = com.tencent.mm.api.b.t(paramString, 1);
-    Object localObject = g.FnF;
-    if (g.Zv(1))
-    {
-      localObject = com.tencent.mm.pluginsdk.model.a.Fdw;
-      com.tencent.mm.pluginsdk.model.a.l(paramLong, paramInt1, paramv.url);
-    }
-    localObject = com.tencent.mm.pluginsdk.model.b.FdV;
-    localObject = new c.a();
-    ((c.a)localObject).igy = 2131100141;
-    ((c.a)localObject).igk = true;
-    localObject = ((c.a)localObject).dh(paramInt2, paramInt3);
-    ((c.a)localObject).igA = "2131231255";
-    ((c.a)localObject).ifZ = new n(1);
-    ((c.a)localObject).igH = new e(1);
-    ((c.a)localObject).igI = new l();
-    ((c.a)localObject).hgD = r.aMY(paramString);
-    com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean, ((c.a)localObject).aJu(), new m(1, paramInt2, paramInt3, true, true, paramFloat, parama));
-    AppMethodBeat.o(208511);
-  }
-  
-  public final void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, int paramInt3, boolean paramBoolean1, m.a parama, boolean paramBoolean2, int paramInt4)
-  {
-    AppMethodBeat.i(6161);
-    paramImageView.setContentDescription(this.ofS.getString(2131757186));
-    paramString = com.tencent.mm.api.b.t(paramString, 1);
-    Object localObject = g.FnF;
-    if (g.Zv(1))
-    {
-      localObject = com.tencent.mm.pluginsdk.model.a.Fdw;
-      com.tencent.mm.pluginsdk.model.a.l(paramLong, paramInt1, paramv.url);
-    }
-    int i;
-    if (paramBoolean2)
-    {
-      i = 2131231250;
-      if (!paramBoolean2) {
-        break label236;
+          str2 = (String)pAo.remove(str2);
+          if (str2 != null) {
+            localLinkedList.add(str2);
+          }
+        }
+        localObject = x.SXb;
       }
     }
-    label236:
-    for (int j = 2131231247;; j = 2131231252)
+    finally
     {
-      float f = com.tencent.mm.cb.a.fromDPToPix(this.ofS, 8);
-      localObject = com.tencent.mm.pluginsdk.model.b.FdV;
-      localObject = new c.a();
-      ((c.a)localObject).igy = j;
-      ((c.a)localObject).igk = true;
-      localObject = ((c.a)localObject).dh(paramInt2, paramInt3);
-      ((c.a)localObject).igA = String.valueOf(i);
-      ((c.a)localObject).ifZ = new n(1);
-      ((c.a)localObject).igH = new e(1);
-      ((c.a)localObject).igI = new l();
-      ((c.a)localObject).hgD = r.aMY(paramString);
-      com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean1, ((c.a)localObject).aJu(), new m(1, paramInt2, paramInt3, false, paramBoolean2, f, parama));
-      AppMethodBeat.o(6161);
-      return;
-      i = 0;
-      break;
+      AppMethodBeat.o(195552);
     }
+    Log.i("AppMsgContextEx", "clearDomain:" + paramString + '#' + str1 + ", [" + j.a((Iterable)localLinkedList, (CharSequence)",", null, null, 0, null, null, 62) + ']');
+    AppMethodBeat.o(195552);
   }
   
-  public final void a(String paramString, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3)
+  public static final void ahT(String paramString)
   {
-    AppMethodBeat.i(208512);
-    paramImageView.setContentDescription(this.ofS.getString(2131757186));
-    Object localObject = com.tencent.mm.pluginsdk.model.b.FdV;
-    localObject = new c.a();
-    ((c.a)localObject).igi = true;
-    ((c.a)localObject).igv = 2131100141;
-    localObject = ((c.a)localObject).dh(paramInt1, paramInt2);
-    ((c.a)localObject).ign = 4;
-    com.tencent.mm.pluginsdk.model.b.a(-1L, -1, null, paramString, paramImageView, paramInt3, false, ((c.a)localObject).aJu(), new m());
-    AppMethodBeat.o(208512);
-  }
-  
-  public final void bPV()
-  {
-    AppMethodBeat.i(6164);
-    if (!bPY())
-    {
-      AppMethodBeat.o(6164);
-      return;
-    }
-    if ((this.onA) || (this.onB))
-    {
-      ae.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext loading %b, onPause %b", new Object[] { Boolean.valueOf(this.onA), Boolean.valueOf(this.onB) });
-      AppMethodBeat.o(6164);
-      return;
-    }
-    this.onA = true;
-    ae.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext");
-    com.tencent.mm.plugin.brandservice.b.a("BizTimeLineImgLoaderThread", new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(6155);
-        c.a(c.this);
-        if ((c.b(c.this) == null) || (c.b(c.this).isFinishing()))
-        {
-          AppMethodBeat.o(6155);
-          return;
-        }
-        if ((c.bPZ()) && (!az.isWifi(c.b(c.this))))
-        {
-          AppMethodBeat.o(6155);
-          return;
-        }
-        if (!c.c(c.this))
-        {
-          ae.v("MicroMsg.BizTimeLineImgLoader", "not all visibleItem loaded");
-          AppMethodBeat.o(6155);
-          return;
-        }
-        w localw = c.d(c.this);
-        if (localw == null)
-        {
-          ae.v("MicroMsg.BizTimeLineImgLoader", "not loading");
-          AppMethodBeat.o(6155);
-          return;
-        }
-        c.a(c.this, localw);
-        AppMethodBeat.o(6155);
-      }
-    }, 500L);
-    AppMethodBeat.o(6164);
-  }
-  
-  public final w bPX()
-  {
-    AppMethodBeat.i(6172);
     try
     {
-      if (this.onz.size() > 0)
-      {
-        w localw = (w)this.onz.get(this.onz.size() - 1);
-        AppMethodBeat.o(6172);
-        return localw;
-      }
+      AppMethodBeat.i(6557);
+      p.h(paramString, "domain");
+      String str = MainProcessIPCService.dkO;
+      p.g(str, "MainProcessIPCService.PROCESS_NAME");
+      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)new IPCString(paramString), (com.tencent.mm.ipcinvoker.b)a.pAq, null);
+      str = ToolsProcessIPCService.dkO;
+      p.g(str, "ToolsProcessIPCService.PROCESS_NAME");
+      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)new IPCString(paramString), (com.tencent.mm.ipcinvoker.b)b.pAr, null);
+      AppMethodBeat.o(6557);
+      return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      ae.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
-      AppMethodBeat.o(6172);
+      paramString = finally;
+      throw paramString;
     }
+  }
+  
+  public static final String ahW(String paramString)
+  {
+    AppMethodBeat.i(195556);
+    p.h(paramString, "url");
+    paramString = "_info_" + aI(paramString, false);
+    AppMethodBeat.o(195556);
+    return paramString;
+  }
+  
+  public static final String ahX(String paramString)
+  {
+    AppMethodBeat.i(6560);
+    p.h(paramString, "url");
+    paramString = "_info_" + ahV(paramString);
+    AppMethodBeat.o(6560);
+    return paramString;
+  }
+  
+  private static String ahZ(String paramString)
+  {
+    AppMethodBeat.i(195560);
+    p.h(paramString, "domain");
+    paramString = "_domain_" + paramString.hashCode();
+    AppMethodBeat.o(195560);
+    return paramString;
+  }
+  
+  public static final String aib(String paramString)
+  {
+    AppMethodBeat.i(6568);
+    p.h(paramString, "url");
+    paramString = "_content_" + ahV(paramString);
+    AppMethodBeat.o(6568);
+    return paramString;
+  }
+  
+  public static final String aic(String paramString)
+  {
+    AppMethodBeat.i(6569);
+    p.h(paramString, "url");
+    paramString = "_invalid_" + ahV(paramString);
+    AppMethodBeat.o(6569);
+    return paramString;
+  }
+  
+  private static String aid(String paramString)
+  {
+    AppMethodBeat.i(195561);
+    p.h(paramString, "url");
+    paramString = cny().decodeString("short_url_".concat(String.valueOf(paramString)), "");
+    p.g(paramString, "mpDataMmkv().decodeString(\"short_url_$url\", \"\")");
+    AppMethodBeat.o(195561);
+    return paramString;
+  }
+  
+  public static final String aie(String paramString)
+  {
+    AppMethodBeat.i(6573);
+    p.h(paramString, "url");
+    paramString = ahV(paramString);
+    AppMethodBeat.o(6573);
+    return paramString;
+  }
+  
+  public static final o b(MMFileSlotManager paramMMFileSlotManager, String paramString)
+  {
+    AppMethodBeat.i(175484);
+    p.h(paramMMFileSlotManager, "$this$findContentFile");
+    p.h(paramString, "contentId");
+    paramMMFileSlotManager = (o)paramMMFileSlotManager.findSlot(paramString);
+    if (paramMMFileSlotManager != null)
+    {
+      paramMMFileSlotManager = e(paramMMFileSlotManager, paramString);
+      AppMethodBeat.o(175484);
+      return paramMMFileSlotManager;
+    }
+    AppMethodBeat.o(175484);
     return null;
   }
   
-  public final int getContentWidth()
+  public static final boolean c(MMFileSlotManager paramMMFileSlotManager, String paramString)
   {
-    AppMethodBeat.i(6163);
-    int i = com.tencent.mm.cb.a.iu(this.ofS);
-    int j = com.tencent.mm.plugin.brandservice.ui.timeline.b.oge;
-    AppMethodBeat.o(6163);
-    return i - j;
+    AppMethodBeat.i(6556);
+    p.h(paramMMFileSlotManager, "$this$contains");
+    p.h(paramString, "contentId");
+    if (paramMMFileSlotManager.findSlot(paramString) != null)
+    {
+      AppMethodBeat.o(6556);
+      return true;
+    }
+    AppMethodBeat.o(6556);
+    return false;
   }
   
-  public final void p(long paramLong, int paramInt)
+  public static final ConcurrentHashMap<String, String> cnw()
   {
-    AppMethodBeat.i(6168);
-    ae.v("MicroMsg.BizTimeLineImgLoader", "onLoadFinish mLoadingCount %d", new Object[] { Integer.valueOf(this.onv) });
-    onx.add(paramLong + "_" + paramInt);
-    if (this.onv <= 0) {
-      bPV();
+    return pAn;
+  }
+  
+  public static final ConcurrentHashMap<String, ConcurrentLinkedDeque<String>> cnx()
+  {
+    return pAp;
+  }
+  
+  private static MultiProcessMMKV cny()
+  {
+    AppMethodBeat.i(6572);
+    if (MMApplicationContext.isMainProcess()) {
+      p.g(g.aAf(), "MMKernel.account()");
     }
-    AppMethodBeat.o(6168);
+    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.azs())
+    {
+      MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("mpRelateData_".concat(String.valueOf(i)), 2);
+      p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV…sMMKV.MULTI_PROCESS_MODE)");
+      AppMethodBeat.o(6572);
+      return localMultiProcessMMKV;
+    }
+  }
+  
+  private static final o e(o paramo, String paramString)
+  {
+    AppMethodBeat.i(175482);
+    paramo = new o(paramo.getPath() + '/' + paramString);
+    AppMethodBeat.o(175482);
+    return paramo;
+  }
+  
+  public static final String ff(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(6564);
+    p.h(paramString1, "host");
+    p.h(paramString2, "resUrl");
+    paramString1 = paramString1 + "/_web_res_" + ahV(paramString2);
+    AppMethodBeat.o(6564);
+    return paramString1;
+  }
+  
+  public static final void fg(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(6574);
+    p.h(paramString1, "shortUrl");
+    p.h(paramString2, "longUrl");
+    paramString1 = UrlExKt.clearShortUrl$default(paramString1, false, 2, null);
+    paramString2 = aie(paramString2);
+    String str = "short_url_".concat(String.valueOf(paramString1));
+    cny().encode(str, paramString2);
+    pAn.put(paramString1, paramString2);
+    AppMethodBeat.o(6574);
+  }
+  
+  public static final String getHost(String paramString)
+  {
+    AppMethodBeat.i(6561);
+    p.h(paramString, "$this$host");
+    try
+    {
+      paramString = Uri.parse(UrlExKt.getWithProtocol(paramString));
+      p.g(paramString, "Uri.parse(this.withProtocol)");
+      String str = paramString.getHost();
+      paramString = str;
+      if (str == null) {
+        paramString = "unknow";
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString = "unknow";
+      }
+    }
+    AppMethodBeat.o(6561);
+    return paramString;
+  }
+  
+  public static final String getPath(String paramString)
+  {
+    AppMethodBeat.i(195557);
+    p.h(paramString, "$this$path");
+    try
+    {
+      paramString = Uri.parse(UrlExKt.getWithProtocol(paramString));
+      p.g(paramString, "Uri.parse(this.withProtocol)");
+      String str = paramString.getPath();
+      paramString = str;
+      if (str == null) {
+        paramString = "";
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString = "";
+      }
+    }
+    AppMethodBeat.o(195557);
+    return paramString;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "ipcDomain", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
+  {
+    public static final a pAq;
+    
+    static
+    {
+      AppMethodBeat.i(195545);
+      pAq = new a();
+      AppMethodBeat.o(195545);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "ipcDomain", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class b<InputType, ResultType>
+    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
+  {
+    public static final b pAr;
+    
+    static
+    {
+      AppMethodBeat.i(195547);
+      pAr = new b();
+      AppMethodBeat.o(195547);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"toHash", "", "", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.b<String, Integer>
+  {
+    c(boolean paramBoolean, String paramString)
+    {
+      super();
+    }
+    
+    public final int aif(String paramString)
+    {
+      AppMethodBeat.i(258333);
+      p.h(paramString, "$this$toHash");
+      for (;;)
+      {
+        try
+        {
+          localObject = Uri.parse(paramString);
+          if (!this.pAs) {
+            continue;
+          }
+          String str = ((Uri)localObject).getScheme();
+          if ((str == null) || (com.tencent.luggage.h.c.a(str, "http", true) != true)) {
+            continue;
+          }
+          localObject = y.pFf;
+          localObject = y.aiu(paramString);
+          if (localObject != null)
+          {
+            str = y.pFf.a(paramString, (com.tencent.mm.plugin.ad.a)localObject);
+            localObject = str;
+            if (str != null) {}
+          }
+          else
+          {
+            localObject = paramString;
+          }
+          i = ((String)localObject).hashCode();
+        }
+        catch (Exception localException)
+        {
+          Object localObject;
+          Log.printErrStackTrace("hashUrl", (Throwable)localException, "hash url".concat(String.valueOf(paramString)), new Object[0]);
+          int i = 0;
+          continue;
+        }
+        AppMethodBeat.o(258333);
+        return i;
+        localObject = ((Uri)localObject).toString();
+        p.g(localObject, "toString()");
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"toHash", "", "", "invoke"})
+  static final class d
+    extends q
+    implements kotlin.g.a.b<String, Integer>
+  {
+    d(String paramString)
+    {
+      super();
+    }
+    
+    public final int aif(String paramString)
+    {
+      AppMethodBeat.i(195551);
+      p.h(paramString, "$this$toHash");
+      for (;;)
+      {
+        try
+        {
+          localObject = Uri.parse(paramString);
+          if (!this.pAs) {
+            continue;
+          }
+          String str = ((Uri)localObject).getScheme();
+          if ((str == null) || (com.tencent.luggage.h.c.a(str, "http", true) != true)) {
+            continue;
+          }
+          localObject = y.pFf;
+          localObject = y.aiu(this.mkH);
+          if (localObject != null)
+          {
+            str = y.pFf.a(this.mkH, (com.tencent.mm.plugin.ad.a)localObject);
+            localObject = str;
+            if (str != null) {}
+          }
+          else
+          {
+            localObject = this.mkH;
+          }
+          i = ((String)localObject).hashCode();
+        }
+        catch (Exception localException)
+        {
+          Object localObject;
+          Log.printErrStackTrace("hashUrl", (Throwable)localException, "hash url".concat(String.valueOf(paramString)), new Object[0]);
+          int i = 0;
+          continue;
+        }
+        AppMethodBeat.o(195551);
+        return i;
+        localObject = ((Uri)localObject).toString();
+        p.g(localObject, "toString()");
+      }
+    }
   }
 }
 

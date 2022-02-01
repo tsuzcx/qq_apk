@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class ad
   extends HellActivity
@@ -13,7 +13,7 @@ final class ad
   {
     AppMethodBeat.i(160031);
     super.onCreate(paramBundle);
-    ae.i("WxSplash.SuicideHackActivity", "onCreate");
+    Log.i("WxSplash.SuicideHackActivity", "onCreate");
     finish();
     AppMethodBeat.o(160031);
   }

@@ -2,40 +2,31 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class as
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGG = "mediaId".hashCode();
-  private static final int eOK = "downloadUrlHashCode".hashCode();
-  private static final int eOL = "downloadUrl".hashCode();
-  private static final int eOM = "httpsUrl".hashCode();
-  private static final int eON = "filePath".hashCode();
-  private static final int eOO = "verifyHeaders".hashCode();
-  private static final int eOP = "game_package_download".hashCode();
-  private static final int eOQ = "allowMobileNetDownload".hashCode();
-  private static final int eOR = "wifiAutoDownload".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS CardQrCodeDataInfo_card_id_index ON CardQrCodeDataInfo(card_id)" };
+  private static final int fjl = "status".hashCode();
+  private static final int frD;
+  private static final int fsh = "code_id".hashCode();
+  private static final int fsi;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGp = true;
-  private boolean eOC = true;
-  private boolean eOD = true;
-  private boolean eOE = true;
-  private boolean eOF = true;
-  private boolean eOG = true;
-  private boolean eOH = true;
-  private boolean eOI = true;
-  private boolean eOJ = true;
-  public Boolean field_allowMobileNetDownload;
-  public String field_downloadUrl;
-  public int field_downloadUrlHashCode;
-  public String field_filePath;
-  public Boolean field_game_package_download;
-  public String field_httpsUrl;
-  public String field_mediaId;
-  public String field_verifyHeaders;
-  public Boolean field_wifiAutoDownload;
+  public String field_card_id;
+  public String field_code;
+  public String field_code_id;
+  public int field_status;
+  private boolean fji = true;
+  private boolean frk = true;
+  private boolean fsf = true;
+  private boolean fsg = true;
+  
+  static
+  {
+    frD = "card_id".hashCode();
+    fsi = "code".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -43,17 +34,17 @@ public abstract class as
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGG != k) {
+      if (fsh != k) {
         break label60;
       }
-      this.field_mediaId = paramCursor.getString(i);
+      this.field_code_id = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -61,60 +52,14 @@ public abstract class as
       break label20;
       break;
       label60:
-      if (eOK == k)
-      {
-        this.field_downloadUrlHashCode = paramCursor.getInt(i);
-        this.eOC = true;
-      }
-      else if (eOL == k)
-      {
-        this.field_downloadUrl = paramCursor.getString(i);
-      }
-      else if (eOM == k)
-      {
-        this.field_httpsUrl = paramCursor.getString(i);
-      }
-      else if (eON == k)
-      {
-        this.field_filePath = paramCursor.getString(i);
-      }
-      else if (eOO == k)
-      {
-        this.field_verifyHeaders = paramCursor.getString(i);
-      }
-      else
-      {
-        boolean bool;
-        if (eOP == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_game_package_download = Boolean.valueOf(bool);
-            break;
-          }
-        }
-        if (eOQ == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_allowMobileNetDownload = Boolean.valueOf(bool);
-            break;
-          }
-        }
-        if (eOR == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_wifiAutoDownload = Boolean.valueOf(bool);
-            break;
-          }
-        }
-        if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (frD == k) {
+        this.field_card_id = paramCursor.getString(i);
+      } else if (fsi == k) {
+        this.field_code = paramCursor.getString(i);
+      } else if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -122,32 +67,17 @@ public abstract class as
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGp) {
-      localContentValues.put("mediaId", this.field_mediaId);
+    if (this.fsf) {
+      localContentValues.put("code_id", this.field_code_id);
     }
-    if (this.eOC) {
-      localContentValues.put("downloadUrlHashCode", Integer.valueOf(this.field_downloadUrlHashCode));
+    if (this.frk) {
+      localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.eOD) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
+    if (this.fsg) {
+      localContentValues.put("code", this.field_code);
     }
-    if (this.eOE) {
-      localContentValues.put("httpsUrl", this.field_httpsUrl);
-    }
-    if (this.eOF) {
-      localContentValues.put("filePath", this.field_filePath);
-    }
-    if (this.eOG) {
-      localContentValues.put("verifyHeaders", this.field_verifyHeaders);
-    }
-    if (this.eOH) {
-      localContentValues.put("game_package_download", this.field_game_package_download);
-    }
-    if (this.eOI) {
-      localContentValues.put("allowMobileNetDownload", this.field_allowMobileNetDownload);
-    }
-    if (this.eOJ) {
-      localContentValues.put("wifiAutoDownload", this.field_wifiAutoDownload);
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -157,7 +87,7 @@ public abstract class as
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.as
  * JD-Core Version:    0.7.0.1
  */

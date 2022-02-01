@@ -3,88 +3,88 @@ package android.arch.b;
 import android.support.v7.h.c.c;
 import android.support.v7.h.d;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import java.util.concurrent.Executor;
 
-public abstract class i<T, VH extends RecyclerView.w>
+public abstract class i<T, VH extends RecyclerView.v>
   extends RecyclerView.a<VH>
 {
-  private final a.a<T> dD = new a.a() {};
-  private final a<T> eY;
+  private final a.a<T> dC = new a.a() {};
+  private final a<T> eX;
   
   protected i(c.c<T> paramc)
   {
-    this.eY = new a(this, paramc);
-    this.eY.dD = this.dD;
+    this.eX = new a(this, paramc);
+    this.eX.dC = this.dC;
   }
   
   public final void a(h<T> paramh)
   {
-    a locala = this.eY;
+    a locala = this.eX;
     int i;
     if (paramh != null)
     {
-      if ((locala.dF == null) && (locala.dG == null)) {
-        locala.dE = paramh.am();
+      if ((locala.dE == null) && (locala.dF == null)) {
+        locala.dD = paramh.ao();
       }
     }
-    else if (paramh != locala.dF)
+    else if (paramh != locala.dE)
     {
-      i = locala.dH + 1;
-      locala.dH = i;
+      i = locala.dG + 1;
+      locala.dG = i;
       if (paramh != null) {
         break label131;
       }
       i = locala.getItemCount();
-      if (locala.dF == null) {
+      if (locala.dE == null) {
         break label116;
       }
-      locala.dF.a(locala.dI);
-      locala.dF = null;
+      locala.dE.a(locala.dH);
+      locala.dE = null;
     }
     for (;;)
     {
-      locala.dA.k(0, i);
+      locala.dz.k(0, i);
       return;
-      if (paramh.am() == locala.dE) {
+      if (paramh.ao() == locala.dD) {
         break;
       }
       throw new IllegalArgumentException("AsyncPagedListDiffer cannot handle both contiguous and non-contiguous lists.");
       label116:
-      if (locala.dG != null) {
-        locala.dG = null;
+      if (locala.dF != null) {
+        locala.dF = null;
       }
     }
     label131:
-    if ((locala.dF == null) && (locala.dG == null))
+    if ((locala.dE == null) && (locala.dF == null))
     {
-      locala.dF = paramh;
-      paramh.a(null, locala.dI);
-      locala.dA.f(0, paramh.size());
+      locala.dE = paramh;
+      paramh.a(null, locala.dH);
+      locala.dz.f(0, paramh.size());
       return;
     }
-    if (locala.dF != null)
+    if (locala.dE != null)
     {
-      locala.dF.a(locala.dI);
-      locala.dG = ((h)locala.dF.ar());
-      locala.dF = null;
+      locala.dE.a(locala.dH);
+      locala.dF = ((h)locala.dE.at());
+      locala.dE = null;
     }
-    if ((locala.dG == null) || (locala.dF != null)) {
+    if ((locala.dF == null) || (locala.dE != null)) {
       throw new IllegalStateException("must be in snapshot state to diff");
     }
-    h localh1 = locala.dG;
-    h localh2 = (h)paramh.ar();
-    locala.dB.eF.execute(new a.2(locala, localh1, localh2, i, paramh));
+    h localh1 = locala.dF;
+    h localh2 = (h)paramh.at();
+    locala.dA.eE.execute(new a.2(locala, localh1, localh2, i, paramh));
   }
   
   public final int getItemCount()
   {
-    return this.eY.getItemCount();
+    return this.eX.getItemCount();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.arch.b.i
  * JD-Core Version:    0.7.0.1
  */

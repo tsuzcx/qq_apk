@@ -15,110 +15,112 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class n
 {
-  public String gcZ;
-  private View iFK;
+  android.support.design.widget.a Edb;
+  private int Edc;
+  private int Edd;
+  private boolean Ede;
+  private boolean Edf;
+  public a Edg;
+  public String gIx;
+  private View jBN;
   private Context mContext;
   public String mTitle;
-  public String pMn;
-  android.support.design.widget.a zUU;
-  private int zUV;
-  private int zUW;
-  private boolean zUX;
-  private boolean zUY;
-  public a zUZ;
+  public String rcG;
   
   public n(final Context paramContext, m paramm, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(96483);
-    this.gcZ = "";
+    this.gIx = "";
     this.mTitle = "";
-    this.pMn = "";
-    this.zUV = -1;
-    this.zUW = -1;
-    this.zUX = false;
-    this.zUY = false;
-    this.gcZ = paramString1;
+    this.rcG = "";
+    this.Edc = -1;
+    this.Edd = -1;
+    this.Ede = false;
+    this.Edf = false;
+    this.gIx = paramString1;
     this.mTitle = paramString2;
-    this.pMn = paramString3;
+    this.rcG = paramString3;
     this.mContext = paramContext;
-    this.zUX = paramBoolean1;
-    this.zUY = paramBoolean2;
+    this.Ede = paramBoolean1;
+    this.Edf = paramBoolean2;
     if ((paramm != null) && (paramm.getView() != null))
     {
-      this.zUU = new android.support.design.widget.a(paramContext);
-      this.zUU.setCanceledOnTouchOutside(true);
-      this.iFK = View.inflate(paramContext, 2131495496, null);
-      if (this.iFK == null)
+      this.Edb = new android.support.design.widget.a(paramContext);
+      this.Edb.setCanceledOnTouchOutside(true);
+      this.jBN = View.inflate(paramContext, 2131496379, null);
+      if (this.jBN == null)
       {
-        ae.e("MicroMsg.AdLandingPageBottomSheet", "mRootView init fail!");
+        Log.e("MicroMsg.AdLandingPageBottomSheet", "mRootView init fail!");
         AppMethodBeat.o(96483);
         return;
       }
-      paramContext = (LinearLayout)this.iFK.findViewById(2131298549);
+      paramContext = (LinearLayout)this.jBN.findViewById(2131298982);
       paramString1 = paramm.getView();
       if (paramString1.getParent() != null) {
         ((ViewGroup)paramString1.getParent()).removeView(paramString1);
       }
-      this.zUV = ((int)paramm.eaw().zRi);
-      this.zUW = ((int)paramm.eaw().zRj);
+      this.Edc = ((int)paramm.fdk().DZk);
+      this.Edd = ((int)paramm.fdk().DZl);
       paramm = new LinearLayout.LayoutParams(-1, -1);
-      if ((this.zUV != 2147483647) && (this.zUW != 2147483647)) {}
+      if ((this.Edc != 2147483647) && (this.Edd != 2147483647)) {}
       for (int i = 1;; i = 0)
       {
         if (i != 0)
         {
-          paramm.width = this.zUV;
-          paramm.height = this.zUW;
+          paramm.width = this.Edc;
+          paramm.height = this.Edd;
         }
         paramContext.addView(paramString1, paramm);
-        ((TextView)this.iFK.findViewById(2131297466)).setText(paramString2);
-        paramContext = this.iFK.findViewById(2131298368);
+        ((TextView)this.jBN.findViewById(2131297701)).setText(paramString2);
+        paramContext = this.jBN.findViewById(2131298774);
         paramContext.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(96478);
             b localb = new b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            n.this.zUU.cancel();
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            n.this.Edb.cancel();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(96478);
           }
         });
-        paramm = this.iFK.findViewById(2131297460);
+        paramm = this.jBN.findViewById(2131297694);
         paramm.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(96479);
             b localb = new b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            n.this.zUU.cancel();
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            n.this.Edb.cancel();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(96479);
           }
         });
-        if (!this.zUY) {
+        if (!this.Edf) {
           paramm.setVisibility(8);
         }
-        if (this.zUX) {
+        if (this.Ede) {
           paramContext.setVisibility(8);
         }
-        paramContext = (ImageView)this.iFK.findViewById(2131305894);
+        paramContext = (ImageView)this.jBN.findViewById(2131309180);
         paramContext.setVisibility(8);
-        if (bu.isNullOrNil(paramString3)) {
+        if (Util.isNullOrNil(paramString3)) {
           break label424;
         }
-        paramm = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jP("adId", paramString3);
+        paramm = h.kD("adId", paramString3);
         if (paramm == null) {
           break;
         }
@@ -127,14 +129,14 @@ public final class n
         AppMethodBeat.o(96483);
         return;
       }
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramString3, 0, new f.a()
+      h.a(paramString3, 0, new f.a()
       {
-        public final void ayY(String paramAnonymousString)
+        public final void aNH(String paramAnonymousString)
         {
           AppMethodBeat.i(96480);
           try
           {
-            paramAnonymousString = com.tencent.mm.sdk.platformtools.h.decodeFile(paramAnonymousString);
+            paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString);
             paramContext.setImageBitmap(paramAnonymousString);
             paramContext.setVisibility(0);
             AppMethodBeat.o(96480);
@@ -142,76 +144,76 @@ public final class n
           }
           catch (Exception paramAnonymousString)
           {
-            ae.e("MicroMsg.AdLandingPageBottomSheet", "%s" + bu.o(paramAnonymousString));
+            Log.e("MicroMsg.AdLandingPageBottomSheet", "%s" + Util.stackTraceToString(paramAnonymousString));
             AppMethodBeat.o(96480);
           }
         }
         
-        public final void dVu() {}
+        public final void eWN() {}
         
-        public final void dVv() {}
+        public final void eWO() {}
       });
     }
     label424:
     AppMethodBeat.o(96483);
   }
   
-  public final void bqD()
+  public final void bMo()
   {
     AppMethodBeat.i(96485);
-    if (this.zUU != null) {
-      this.zUU.dismiss();
+    if (this.Edb != null) {
+      this.Edb.dismiss();
     }
     AppMethodBeat.o(96485);
   }
   
-  public final void cPF()
+  public final void dGm()
   {
     AppMethodBeat.i(96484);
-    if ((this.iFK == null) || (this.zUU == null))
+    if ((this.jBN == null) || (this.Edb == null))
     {
       AppMethodBeat.o(96484);
       return;
     }
-    this.zUU.getWindow().setFlags(8, 8);
-    this.zUU.getWindow().addFlags(131200);
-    if (this.zUZ != null)
+    this.Edb.getWindow().setFlags(8, 8);
+    this.Edb.getWindow().addFlags(131200);
+    if (this.Edg != null)
     {
-      this.zUU.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.Edb.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(96481);
-          n.this.zUZ.eaE();
+          n.this.Edg.fdt();
           AppMethodBeat.o(96481);
         }
       });
-      this.zUU.setOnCancelListener(new DialogInterface.OnCancelListener()
+      this.Edb.setOnCancelListener(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(96482);
-          n.this.zUZ.eaF();
+          n.this.Edg.fdu();
           AppMethodBeat.o(96482);
         }
       });
     }
-    this.zUU.setContentView(this.iFK);
-    BottomSheetBehavior.l((View)this.iFK.getParent()).J(an.gp(this.mContext)[1]);
-    this.zUU.show();
+    this.Edb.setContentView(this.jBN);
+    BottomSheetBehavior.l((View)this.jBN.getParent()).J(ap.ha(this.mContext)[1]);
+    this.Edb.show();
     AppMethodBeat.o(96484);
   }
   
   public static abstract interface a
   {
-    public abstract void eaE();
+    public abstract void fdt();
     
-    public abstract void eaF();
+    public abstract void fdu();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n
  * JD-Core Version:    0.7.0.1
  */

@@ -827,7 +827,7 @@ public class GraphRequest
     throw paramObject;
   }
   
-  private static void processGraphObject(JSONObject paramJSONObject, String paramString, KeyValueSerializer paramKeyValueSerializer)
+  private static void processGraphObject(JSONObject paramJSONObject, String paramString, GraphRequest.KeyValueSerializer paramKeyValueSerializer)
   {
     AppMethodBeat.i(17148);
     int i;
@@ -862,7 +862,7 @@ public class GraphRequest
     }
   }
   
-  private static void processGraphObjectProperty(String paramString, Object paramObject, KeyValueSerializer paramKeyValueSerializer, boolean paramBoolean)
+  private static void processGraphObjectProperty(String paramString, Object paramObject, GraphRequest.KeyValueSerializer paramKeyValueSerializer, boolean paramBoolean)
   {
     AppMethodBeat.i(17149);
     Object localObject;
@@ -1066,7 +1066,7 @@ public class GraphRequest
     AppMethodBeat.o(17152);
   }
   
-  private void serializeToBatch(JSONArray paramJSONArray, final Map<String, Attachment> paramMap)
+  private void serializeToBatch(JSONArray paramJSONArray, Map<String, Attachment> paramMap)
   {
     AppMethodBeat.i(17139);
     JSONObject localJSONObject = new JSONObject();
@@ -1103,15 +1103,7 @@ public class GraphRequest
     if (this.graphObject != null)
     {
       paramMap = new ArrayList();
-      processGraphObject(this.graphObject, str1, new KeyValueSerializer()
-      {
-        public void writeString(String paramAnonymousString1, String paramAnonymousString2)
-        {
-          AppMethodBeat.i(17081);
-          paramMap.add(String.format(Locale.US, "%s=%s", new Object[] { paramAnonymousString1, URLEncoder.encode(paramAnonymousString2, "UTF-8") }));
-          AppMethodBeat.o(17081);
-        }
-      });
+      processGraphObject(this.graphObject, str1, new GraphRequest.6(this, paramMap));
       localJSONObject.put("body", TextUtils.join("&", paramMap));
     }
     paramJSONArray.put(localJSONObject);
@@ -1123,87 +1115,87 @@ public class GraphRequest
   {
     // Byte code:
     //   0: sipush 17145
-    //   3: invokestatic 194	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 319	com/facebook/internal/Logger
+    //   3: invokestatic 191	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 316	com/facebook/internal/Logger
     //   9: dup
-    //   10: getstatic 1045	com/facebook/LoggingBehavior:REQUESTS	Lcom/facebook/LoggingBehavior;
-    //   13: ldc_w 1047
-    //   16: invokespecial 1050	com/facebook/internal/Logger:<init>	(Lcom/facebook/LoggingBehavior;Ljava/lang/String;)V
+    //   10: getstatic 1044	com/facebook/LoggingBehavior:REQUESTS	Lcom/facebook/LoggingBehavior;
+    //   13: ldc_w 1046
+    //   16: invokespecial 1049	com/facebook/internal/Logger:<init>	(Lcom/facebook/LoggingBehavior;Ljava/lang/String;)V
     //   19: astore 7
     //   21: aload_0
-    //   22: invokevirtual 570	com/facebook/GraphRequestBatch:size	()I
+    //   22: invokevirtual 567	com/facebook/GraphRequestBatch:size	()I
     //   25: istore_3
     //   26: aload_0
-    //   27: invokestatic 1052	com/facebook/GraphRequest:isGzipCompressible	(Lcom/facebook/GraphRequestBatch;)Z
+    //   27: invokestatic 1051	com/facebook/GraphRequest:isGzipCompressible	(Lcom/facebook/GraphRequestBatch;)Z
     //   30: istore 4
     //   32: iload_3
     //   33: iconst_1
     //   34: if_icmpne +144 -> 178
     //   37: aload_0
     //   38: iconst_0
-    //   39: invokevirtual 903	com/facebook/GraphRequestBatch:get	(I)Lcom/facebook/GraphRequest;
-    //   42: getfield 371	com/facebook/GraphRequest:httpMethod	Lcom/facebook/HttpMethod;
+    //   39: invokevirtual 900	com/facebook/GraphRequestBatch:get	(I)Lcom/facebook/GraphRequest;
+    //   42: getfield 368	com/facebook/GraphRequest:httpMethod	Lcom/facebook/HttpMethod;
     //   45: astore 5
     //   47: aload_1
     //   48: aload 5
-    //   50: invokevirtual 1054	com/facebook/HttpMethod:name	()Ljava/lang/String;
-    //   53: invokevirtual 1057	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   50: invokevirtual 1053	com/facebook/HttpMethod:name	()Ljava/lang/String;
+    //   53: invokevirtual 1056	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   56: aload_1
     //   57: iload 4
-    //   59: invokestatic 1061	com/facebook/GraphRequest:setConnectionContentType	(Ljava/net/HttpURLConnection;Z)V
+    //   59: invokestatic 1060	com/facebook/GraphRequest:setConnectionContentType	(Ljava/net/HttpURLConnection;Z)V
     //   62: aload_1
-    //   63: invokevirtual 1065	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
+    //   63: invokevirtual 1064	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
     //   66: astore 8
     //   68: aload 7
-    //   70: ldc_w 1067
-    //   73: invokevirtual 919	com/facebook/internal/Logger:append	(Ljava/lang/String;)V
+    //   70: ldc_w 1066
+    //   73: invokevirtual 916	com/facebook/internal/Logger:append	(Ljava/lang/String;)V
     //   76: aload 7
-    //   78: ldc_w 1069
+    //   78: ldc_w 1068
     //   81: aload_0
-    //   82: invokevirtual 1072	com/facebook/GraphRequestBatch:getId	()Ljava/lang/String;
-    //   85: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   82: invokevirtual 1071	com/facebook/GraphRequestBatch:getId	()Ljava/lang/String;
+    //   85: invokevirtual 1075	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   88: aload 7
-    //   90: ldc_w 1078
+    //   90: ldc_w 1077
     //   93: aload 8
-    //   95: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   95: invokevirtual 1075	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   98: aload 7
-    //   100: ldc_w 1080
+    //   100: ldc_w 1079
     //   103: aload_1
-    //   104: invokevirtual 1083	java/net/HttpURLConnection:getRequestMethod	()Ljava/lang/String;
-    //   107: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   104: invokevirtual 1082	java/net/HttpURLConnection:getRequestMethod	()Ljava/lang/String;
+    //   107: invokevirtual 1075	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   110: aload 7
-    //   112: ldc 159
+    //   112: ldc 156
     //   114: aload_1
-    //   115: ldc 159
-    //   117: invokevirtual 1086	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   120: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   115: ldc 156
+    //   117: invokevirtual 1085	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   120: invokevirtual 1075	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   123: aload 7
-    //   125: ldc 88
+    //   125: ldc 85
     //   127: aload_1
-    //   128: ldc 88
-    //   130: invokevirtual 1086	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   133: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   128: ldc 85
+    //   130: invokevirtual 1085	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   133: invokevirtual 1075	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   136: aload_1
     //   137: aload_0
-    //   138: invokevirtual 1089	com/facebook/GraphRequestBatch:getTimeout	()I
-    //   141: invokevirtual 1092	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   138: invokevirtual 1088	com/facebook/GraphRequestBatch:getTimeout	()I
+    //   141: invokevirtual 1091	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   144: aload_1
     //   145: aload_0
-    //   146: invokevirtual 1089	com/facebook/GraphRequestBatch:getTimeout	()I
-    //   149: invokevirtual 1095	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   146: invokevirtual 1088	com/facebook/GraphRequestBatch:getTimeout	()I
+    //   149: invokevirtual 1094	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   152: aload 5
-    //   154: getstatic 374	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
+    //   154: getstatic 371	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
     //   157: if_acmpne +29 -> 186
     //   160: iconst_1
     //   161: istore_2
     //   162: iload_2
     //   163: ifne +28 -> 191
     //   166: aload 7
-    //   168: invokevirtual 1098	com/facebook/internal/Logger:log	()V
+    //   168: invokevirtual 1097	com/facebook/internal/Logger:log	()V
     //   171: sipush 17145
-    //   174: invokestatic 244	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   174: invokestatic 241	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   177: return
-    //   178: getstatic 374	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
+    //   178: getstatic 371	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
     //   181: astore 5
     //   183: goto -136 -> 47
     //   186: iconst_0
@@ -1211,12 +1203,12 @@ public class GraphRequest
     //   188: goto -26 -> 162
     //   191: aload_1
     //   192: iconst_1
-    //   193: invokevirtual 1102	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   196: new 1104	java/io/BufferedOutputStream
+    //   193: invokevirtual 1101	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   196: new 1103	java/io/BufferedOutputStream
     //   199: dup
     //   200: aload_1
-    //   201: invokevirtual 1108	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   204: invokespecial 1111	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   201: invokevirtual 1107	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   204: invokespecial 1110	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   207: astore 6
     //   209: aload 6
     //   211: astore_1
@@ -1224,23 +1216,23 @@ public class GraphRequest
     //   214: ifeq +17 -> 231
     //   217: aload 6
     //   219: astore 5
-    //   221: new 1113	java/util/zip/GZIPOutputStream
+    //   221: new 1112	java/util/zip/GZIPOutputStream
     //   224: dup
     //   225: aload 6
-    //   227: invokespecial 1114	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   227: invokespecial 1113	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   230: astore_1
     //   231: aload_1
     //   232: astore 5
     //   234: aload_0
-    //   235: invokestatic 1116	com/facebook/GraphRequest:hasOnProgressCallbacks	(Lcom/facebook/GraphRequestBatch;)Z
+    //   235: invokestatic 1115	com/facebook/GraphRequest:hasOnProgressCallbacks	(Lcom/facebook/GraphRequestBatch;)Z
     //   238: ifeq +124 -> 362
     //   241: aload_1
     //   242: astore 5
-    //   244: new 1118	com/facebook/ProgressNoopOutputStream
+    //   244: new 1117	com/facebook/ProgressNoopOutputStream
     //   247: dup
     //   248: aload_0
-    //   249: invokevirtual 964	com/facebook/GraphRequestBatch:getCallbackHandler	()Landroid/os/Handler;
-    //   252: invokespecial 1120	com/facebook/ProgressNoopOutputStream:<init>	(Landroid/os/Handler;)V
+    //   249: invokevirtual 961	com/facebook/GraphRequestBatch:getCallbackHandler	()Landroid/os/Handler;
+    //   252: invokespecial 1119	com/facebook/ProgressNoopOutputStream:<init>	(Landroid/os/Handler;)V
     //   255: astore 6
     //   257: aload_1
     //   258: astore 5
@@ -1250,23 +1242,23 @@ public class GraphRequest
     //   263: aload 8
     //   265: aload 6
     //   267: iload 4
-    //   269: invokestatic 1122	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
+    //   269: invokestatic 1121	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
     //   272: aload_1
     //   273: astore 5
     //   275: aload 6
-    //   277: invokevirtual 1125	com/facebook/ProgressNoopOutputStream:getMaxProgress	()I
+    //   277: invokevirtual 1124	com/facebook/ProgressNoopOutputStream:getMaxProgress	()I
     //   280: istore_2
     //   281: aload_1
     //   282: astore 5
-    //   284: new 1127	com/facebook/ProgressOutputStream
+    //   284: new 1126	com/facebook/ProgressOutputStream
     //   287: dup
     //   288: aload_1
     //   289: aload_0
     //   290: aload 6
-    //   292: invokevirtual 1131	com/facebook/ProgressNoopOutputStream:getProgressMap	()Ljava/util/Map;
+    //   292: invokevirtual 1130	com/facebook/ProgressNoopOutputStream:getProgressMap	()Ljava/util/Map;
     //   295: iload_2
     //   296: i2l
-    //   297: invokespecial 1134	com/facebook/ProgressOutputStream:<init>	(Ljava/io/OutputStream;Lcom/facebook/GraphRequestBatch;Ljava/util/Map;J)V
+    //   297: invokespecial 1133	com/facebook/ProgressOutputStream:<init>	(Ljava/io/OutputStream;Lcom/facebook/GraphRequestBatch;Ljava/util/Map;J)V
     //   300: astore_1
     //   301: aload_0
     //   302: aload 7
@@ -1274,13 +1266,13 @@ public class GraphRequest
     //   305: aload 8
     //   307: aload_1
     //   308: iload 4
-    //   310: invokestatic 1122	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
+    //   310: invokestatic 1121	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
     //   313: aload_1
-    //   314: invokevirtual 1139	java/io/OutputStream:close	()V
+    //   314: invokevirtual 1138	java/io/OutputStream:close	()V
     //   317: aload 7
-    //   319: invokevirtual 1098	com/facebook/internal/Logger:log	()V
+    //   319: invokevirtual 1097	com/facebook/internal/Logger:log	()V
     //   322: sipush 17145
-    //   325: invokestatic 244	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   325: invokestatic 241	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   328: return
     //   329: astore_0
     //   330: aconst_null
@@ -1288,9 +1280,9 @@ public class GraphRequest
     //   333: aload 5
     //   335: ifnull +8 -> 343
     //   338: aload 5
-    //   340: invokevirtual 1139	java/io/OutputStream:close	()V
+    //   340: invokevirtual 1138	java/io/OutputStream:close	()V
     //   343: sipush 17145
-    //   346: invokestatic 244	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   346: invokestatic 241	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   349: aload_0
     //   350: athrow
     //   351: astore_0
@@ -1764,11 +1756,6 @@ public class GraphRequest
     public abstract void onCompleted(JSONObject paramJSONObject, GraphResponse paramGraphResponse);
   }
   
-  static abstract interface KeyValueSerializer
-  {
-    public abstract void writeString(String paramString1, String paramString2);
-  }
-  
   public static abstract interface OnProgressCallback
     extends GraphRequest.Callback
   {
@@ -2115,7 +2102,7 @@ public class GraphRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.GraphRequest
  * JD-Core Version:    0.7.0.1
  */

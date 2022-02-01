@@ -32,48 +32,48 @@ final class ActionMenuPresenter
   extends android.support.v7.view.menu.b
   implements b.a
 {
-  d aie;
-  Drawable aif;
-  boolean aig;
-  private boolean aih;
-  private boolean aii;
-  private int aij;
-  private int aik;
-  private int ail;
-  private boolean aim;
-  private boolean ain;
-  private boolean aio;
-  boolean aip;
-  private int aiq;
-  private final SparseBooleanArray air = new SparseBooleanArray();
-  private View ais;
-  e ait;
-  a aiu;
-  c aiv;
-  private b aiw;
-  final f aix = new f();
-  int aiy;
+  private boolean aiA;
+  private boolean aiB;
+  boolean aiC;
+  private int aiD;
+  private final SparseBooleanArray aiE = new SparseBooleanArray();
+  private View aiF;
+  e aiG;
+  a aiH;
+  c aiI;
+  private b aiJ;
+  final f aiK = new f();
+  int aiL;
+  d air;
+  Drawable ais;
+  boolean ait;
+  private boolean aiu;
+  private boolean aiv;
+  private int aiw;
+  private int aix;
+  private int aiy;
+  private boolean aiz;
   
   public ActionMenuPresenter(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void L(boolean paramBoolean)
+  public final void K(boolean paramBoolean)
   {
     if (paramBoolean) {
       super.a(null);
     }
-    while (this.aaD == null) {
+    while (this.aaQ == null) {
       return;
     }
-    this.aaD.ab(false);
+    this.aaQ.aa(false);
   }
   
   public final View a(j paramj, View paramView, ViewGroup paramViewGroup)
   {
     View localView = paramj.getActionView();
-    if ((localView == null) || (paramj.ij())) {
+    if ((localView == null) || (paramj.it())) {
       localView = super.a(paramj, paramView, paramViewGroup);
     }
     if (paramj.isActionViewExpanded()) {}
@@ -94,45 +94,45 @@ final class ActionMenuPresenter
     boolean bool = true;
     super.a(paramContext, paramh);
     paramh = paramContext.getResources();
-    paramContext = android.support.v7.view.a.aa(paramContext);
+    paramContext = android.support.v7.view.a.ab(paramContext);
     int i;
-    if (!this.aii)
+    if (!this.aiv)
     {
       if (Build.VERSION.SDK_INT >= 19) {
-        this.aih = bool;
+        this.aiu = bool;
       }
     }
     else
     {
-      if (!this.aio) {
-        this.aij = (paramContext.mContext.getResources().getDisplayMetrics().widthPixels / 2);
+      if (!this.aiB) {
+        this.aiw = (paramContext.mContext.getResources().getDisplayMetrics().widthPixels / 2);
       }
-      if (!this.aim) {
-        this.ail = paramContext.hs();
+      if (!this.aiz) {
+        this.aiy = paramContext.hB();
       }
-      i = this.aij;
-      if (!this.aih) {
+      i = this.aiw;
+      if (!this.aiu) {
         break label217;
       }
-      if (this.aie == null)
+      if (this.air == null)
       {
-        this.aie = new d(this.aeR);
-        if (this.aig)
+        this.air = new d(this.afe);
+        if (this.ait)
         {
-          this.aie.setImageDrawable(this.aif);
-          this.aif = null;
-          this.aig = false;
+          this.air.setImageDrawable(this.ais);
+          this.ais = null;
+          this.ait = false;
         }
         int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-        this.aie.measure(j, j);
+        this.air.measure(j, j);
       }
-      i -= this.aie.getMeasuredWidth();
+      i -= this.air.getMeasuredWidth();
     }
     for (;;)
     {
-      this.aik = i;
-      this.aiq = ((int)(56.0F * paramh.getDisplayMetrics().density));
-      this.ais = null;
+      this.aix = i;
+      this.aiD = ((int)(56.0F * paramh.getDisplayMetrics().density));
+      this.aiF = null;
       return;
       if (!ViewConfiguration.get(paramContext.mContext).hasPermanentMenuKey()) {
         break;
@@ -140,32 +140,32 @@ final class ActionMenuPresenter
       bool = false;
       break;
       label217:
-      this.aie = null;
+      this.air = null;
     }
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    ix();
+    iG();
     super.a(paramh, paramBoolean);
   }
   
   public final void a(j paramj, p.a parama)
   {
     parama.a(paramj);
-    paramj = (ActionMenuView)this.aeW;
+    paramj = (ActionMenuView)this.afj;
     parama = (ActionMenuItemView)parama;
     parama.setItemInvoker(paramj);
-    if (this.aiw == null) {
-      this.aiw = new b();
+    if (this.aiJ == null) {
+      this.aiJ = new b();
     }
-    parama.setPopupCallback(this.aiw);
+    parama.setPopupCallback(this.aiJ);
   }
   
   public final void a(ActionMenuView paramActionMenuView)
   {
-    this.aeW = paramActionMenuView;
-    paramActionMenuView.aaD = this.aaD;
+    this.afj = paramActionMenuView;
+    paramActionMenuView.aaQ = this.aaQ;
   }
   
   public final boolean a(u paramu)
@@ -173,9 +173,9 @@ final class ActionMenuPresenter
     if (!paramu.hasVisibleItems()) {
       return false;
     }
-    for (Object localObject = paramu; ((u)localObject).ahb != this.aaD; localObject = (u)((u)localObject).ahb) {}
+    for (Object localObject = paramu; ((u)localObject).aho != this.aaQ; localObject = (u)((u)localObject).aho) {}
     MenuItem localMenuItem = ((u)localObject).getItem();
-    ViewGroup localViewGroup = (ViewGroup)this.aeW;
+    ViewGroup localViewGroup = (ViewGroup)this.afj;
     int i;
     if (localViewGroup != null)
     {
@@ -191,7 +191,7 @@ final class ActionMenuPresenter
           if (localObject == null) {
             break label222;
           }
-          this.aiy = paramu.getItem().getItemId();
+          this.aiL = paramu.getItem().getItemId();
           j = paramu.size();
           i = 0;
           label127:
@@ -210,9 +210,9 @@ final class ActionMenuPresenter
     label239:
     for (boolean bool = true;; bool = false)
     {
-      this.aiu = new a(this.mContext, paramu, (View)localObject);
-      this.aiu.setForceShowIcon(bool);
-      if (!this.aiu.il())
+      this.aiH = new a(this.mContext, paramu, (View)localObject);
+      this.aiH.setForceShowIcon(bool);
+      if (!this.aiH.iv())
       {
         throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
         i += 1;
@@ -228,7 +228,7 @@ final class ActionMenuPresenter
     }
   }
   
-  public final boolean bD()
+  public final boolean bF()
   {
     ArrayList localArrayList;
     int i1;
@@ -242,14 +242,14 @@ final class ActionMenuPresenter
     int j;
     label60:
     Object localObject1;
-    if (this.aaD != null)
+    if (this.aaQ != null)
     {
-      localArrayList = this.aaD.hV();
+      localArrayList = this.aaQ.jdMethod_if();
       i1 = localArrayList.size();
-      i = this.ail;
-      i4 = this.aik;
+      i = this.aiy;
+      i4 = this.aix;
       i5 = View.MeasureSpec.makeMeasureSpec(0, 0);
-      localViewGroup = (ViewGroup)this.aeW;
+      localViewGroup = (ViewGroup)this.afj;
       k = 0;
       m = 0;
       n = 0;
@@ -258,12 +258,12 @@ final class ActionMenuPresenter
         break label145;
       }
       localObject1 = (j)localArrayList.get(j);
-      if (!((j)localObject1).ih()) {
+      if (!((j)localObject1).ir()) {
         break label122;
       }
       k += 1;
       label89:
-      if ((!this.aip) || (!((j)localObject1).isActionViewExpanded())) {
+      if ((!this.aiC) || (!((j)localObject1).isActionViewExpanded())) {
         break label756;
       }
       i = 0;
@@ -283,7 +283,7 @@ final class ActionMenuPresenter
       localArrayList = null;
       break;
       label122:
-      if (((j)localObject1).ig())
+      if (((j)localObject1).iq())
       {
         m += 1;
         break label89;
@@ -291,7 +291,7 @@ final class ActionMenuPresenter
       n = 1;
       break label89;
       j = i;
-      if (this.aih) {
+      if (this.aiu) {
         if (n == 0)
         {
           j = i;
@@ -303,14 +303,14 @@ final class ActionMenuPresenter
         }
       }
       j -= k;
-      localObject1 = this.air;
+      localObject1 = this.aiE;
       ((SparseBooleanArray)localObject1).clear();
       i = 0;
-      if (this.ain)
+      if (this.aiA)
       {
-        i = i4 / this.aiq;
-        k = this.aiq;
-        m = this.aiq;
+        i = i4 / this.aiD;
+        k = this.aiD;
+        m = this.aiD;
       }
       for (int i2 = i4 % k / i + m;; i2 = 0)
       {
@@ -322,13 +322,13 @@ final class ActionMenuPresenter
         if (i3 < i1)
         {
           localj = (j)localArrayList.get(i3);
-          if (localj.ih())
+          if (localj.ir())
           {
-            localObject2 = a(localj, this.ais, localViewGroup);
-            if (this.ais == null) {
-              this.ais = ((View)localObject2);
+            localObject2 = a(localj, this.aiF, localViewGroup);
+            if (this.aiF == null) {
+              this.aiF = ((View)localObject2);
             }
-            if (this.ain)
+            if (this.aiA)
             {
               i -= ActionMenuView.f((View)localObject2, i2, i, i5, 0);
               n = ((View)localObject2).getMeasuredWidth();
@@ -345,7 +345,7 @@ final class ActionMenuPresenter
           if (i4 != 0) {
             ((SparseBooleanArray)localObject1).put(i4, true);
           }
-          localj.af(true);
+          localj.ae(true);
           m -= n;
           i3 += 1;
           break;
@@ -354,21 +354,21 @@ final class ActionMenuPresenter
           int i6;
           boolean bool;
           int i7;
-          if (localj.ig())
+          if (localj.iq())
           {
             i6 = localj.getGroupId();
             bool = ((SparseBooleanArray)localObject1).get(i6);
-            if (((j > 0) || (bool)) && (m > 0) && ((!this.ain) || (i > 0)))
+            if (((j > 0) || (bool)) && (m > 0) && ((!this.aiA) || (i > 0)))
             {
               i7 = 1;
               if (i7 == 0) {
                 break label744;
               }
-              localObject2 = a(localj, this.ais, localViewGroup);
-              if (this.ais == null) {
-                this.ais = ((View)localObject2);
+              localObject2 = a(localj, this.aiF, localViewGroup);
+              if (this.aiF == null) {
+                this.aiF = ((View)localObject2);
               }
-              if (!this.ain) {
+              if (!this.aiA) {
                 break label601;
               }
               i4 = ActionMenuView.f((View)localObject2, i2, i, i5, 0);
@@ -386,7 +386,7 @@ final class ActionMenuPresenter
               if (k == 0) {
                 n = i4;
               }
-              if (!this.ain) {
+              if (!this.aiA) {
                 break label618;
               }
               if (m < 0) {
@@ -408,7 +408,7 @@ final class ActionMenuPresenter
               if (i7 != 0) {
                 n = j - 1;
               }
-              localj.af(i7);
+              localj.ae(i7);
               j = n;
               break;
               int i8 = 0;
@@ -437,15 +437,15 @@ final class ActionMenuPresenter
                     if (((j)localObject2).getGroupId() == i6)
                     {
                       n = j;
-                      if (((j)localObject2).jdMethod_if()) {
+                      if (((j)localObject2).ip()) {
                         n = j + 1;
                       }
-                      ((j)localObject2).af(false);
+                      ((j)localObject2).ae(false);
                     }
                     i4 += 1;
                     j = n;
                     continue;
-                    localj.af(false);
+                    localj.ae(false);
                     break;
                     return true;
                   }
@@ -460,7 +460,7 @@ final class ActionMenuPresenter
   
   public final p c(ViewGroup paramViewGroup)
   {
-    p localp = this.aeW;
+    p localp = this.afj;
     paramViewGroup = super.c(paramViewGroup);
     if (localp != paramViewGroup) {
       ((ActionMenuView)paramViewGroup).setPresenter(this);
@@ -470,7 +470,7 @@ final class ActionMenuPresenter
   
   public final boolean c(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramViewGroup.getChildAt(paramInt) == this.aie) {
+    if (paramViewGroup.getChildAt(paramInt) == this.air) {
       return false;
     }
     return super.c(paramViewGroup, paramInt);
@@ -478,18 +478,18 @@ final class ActionMenuPresenter
   
   public final boolean e(j paramj)
   {
-    return paramj.jdMethod_if();
+    return paramj.ip();
   }
   
   public final boolean hideOverflowMenu()
   {
-    if ((this.aiv != null) && (this.aeW != null))
+    if ((this.aiI != null) && (this.afj != null))
     {
-      ((View)this.aeW).removeCallbacks(this.aiv);
-      this.aiv = null;
+      ((View)this.afj).removeCallbacks(this.aiI);
+      this.aiI = null;
       return true;
     }
-    e locale = this.ait;
+    e locale = this.aiG;
     if (locale != null)
     {
       locale.dismiss();
@@ -498,40 +498,40 @@ final class ActionMenuPresenter
     return false;
   }
   
-  public final boolean isOverflowMenuShowing()
+  public final void iE()
   {
-    return (this.ait != null) && (this.ait.isShowing());
-  }
-  
-  public final void iv()
-  {
-    if (!this.aim) {
-      this.ail = android.support.v7.view.a.aa(this.mContext).hs();
+    if (!this.aiz) {
+      this.aiy = android.support.v7.view.a.ab(this.mContext).hB();
     }
-    if (this.aaD != null) {
-      this.aaD.r(true);
+    if (this.aaQ != null) {
+      this.aaQ.r(true);
     }
   }
   
-  public final void iw()
+  public final void iF()
   {
-    this.aih = true;
-    this.aii = true;
+    this.aiu = true;
+    this.aiv = true;
   }
   
-  public final boolean ix()
+  public final boolean iG()
   {
-    return hideOverflowMenu() | iy();
+    return hideOverflowMenu() | iH();
   }
   
-  public final boolean iy()
+  public final boolean iH()
   {
-    if (this.aiu != null)
+    if (this.aiH != null)
     {
-      this.aiu.dismiss();
+      this.aiH.dismiss();
       return true;
     }
     return false;
+  }
+  
+  public final boolean isOverflowMenuShowing()
+  {
+    return (this.aiG != null) && (this.aiG.isShowing());
   }
   
   public final void onRestoreInstanceState(Parcelable paramParcelable)
@@ -543,8 +543,8 @@ final class ActionMenuPresenter
       {
         return;
         paramParcelable = (SavedState)paramParcelable;
-      } while (paramParcelable.aiE <= 0);
-      paramParcelable = this.aaD.findItem(paramParcelable.aiE);
+      } while (paramParcelable.aiR <= 0);
+      paramParcelable = this.aaQ.findItem(paramParcelable.aiR);
     } while (paramParcelable == null);
     a((u)paramParcelable.getSubMenu());
   }
@@ -552,7 +552,7 @@ final class ActionMenuPresenter
   public final Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState();
-    localSavedState.aiE = this.aiy;
+    localSavedState.aiR = this.aiL;
     return localSavedState;
   }
   
@@ -561,30 +561,30 @@ final class ActionMenuPresenter
     int j = 1;
     int k = 0;
     super.p(paramBoolean);
-    ((View)this.aeW).requestLayout();
+    ((View)this.afj).requestLayout();
     Object localObject;
     int i;
-    if (this.aaD != null)
+    if (this.aaQ != null)
     {
-      localObject = this.aaD;
-      ((h)localObject).hW();
-      localObject = ((h)localObject).agg;
+      localObject = this.aaQ;
+      ((h)localObject).ig();
+      localObject = ((h)localObject).agt;
       int m = ((ArrayList)localObject).size();
       i = 0;
       while (i < m)
       {
-        android.support.v4.view.b localb = ((j)((ArrayList)localObject).get(i)).agF;
+        android.support.v4.view.b localb = ((j)((ArrayList)localObject).get(i)).agS;
         if (localb != null) {
-          localb.Pc = this;
+          localb.Po = this;
         }
         i += 1;
       }
     }
-    if (this.aaD != null)
+    if (this.aaQ != null)
     {
-      localObject = this.aaD.hX();
+      localObject = this.aaQ.ih();
       i = k;
-      if (this.aih)
+      if (this.aiu)
       {
         i = k;
         if (localObject != null)
@@ -603,21 +603,21 @@ final class ActionMenuPresenter
       if (i == 0) {
         break label273;
       }
-      if (this.aie == null) {
-        this.aie = new d(this.aeR);
+      if (this.air == null) {
+        this.air = new d(this.afe);
       }
-      localObject = (ViewGroup)this.aie.getParent();
-      if (localObject != this.aeW)
+      localObject = (ViewGroup)this.air.getParent();
+      if (localObject != this.afj)
       {
         if (localObject != null) {
-          ((ViewGroup)localObject).removeView(this.aie);
+          ((ViewGroup)localObject).removeView(this.air);
         }
-        ((ActionMenuView)this.aeW).addView(this.aie, ActionMenuView.iB());
+        ((ActionMenuView)this.afj).addView(this.air, ActionMenuView.iK());
       }
     }
     for (;;)
     {
-      ((ActionMenuView)this.aeW).setOverflowReserved(this.aih);
+      ((ActionMenuView)this.afj).setOverflowReserved(this.aiu);
       return;
       localObject = null;
       break;
@@ -630,18 +630,18 @@ final class ActionMenuPresenter
         break;
       }
       label273:
-      if ((this.aie != null) && (this.aie.getParent() == this.aeW)) {
-        ((ViewGroup)this.aeW).removeView(this.aie);
+      if ((this.air != null) && (this.air.getParent() == this.afj)) {
+        ((ViewGroup)this.afj).removeView(this.air);
       }
     }
   }
   
   public final boolean showOverflowMenu()
   {
-    if ((this.aih) && (!isOverflowMenuShowing()) && (this.aaD != null) && (this.aeW != null) && (this.aiv == null) && (!this.aaD.hX().isEmpty()))
+    if ((this.aiu) && (!isOverflowMenuShowing()) && (this.aaQ != null) && (this.afj != null) && (this.aiI == null) && (!this.aaQ.ih().isEmpty()))
     {
-      this.aiv = new c(new e(this.mContext, this.aaD, this.aie));
-      ((View)this.aeW).post(this.aiv);
+      this.aiI = new c(new e(this.mContext, this.aaQ, this.air));
+      ((View)this.afj).post(this.aiI);
       super.a(null);
       return true;
     }
@@ -652,13 +652,13 @@ final class ActionMenuPresenter
     implements Parcelable
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-    public int aiE;
+    public int aiR;
     
     SavedState() {}
     
     SavedState(Parcel paramParcel)
     {
-      this.aiE = paramParcel.readInt();
+      this.aiR = paramParcel.readInt();
     }
     
     public int describeContents()
@@ -668,7 +668,7 @@ final class ActionMenuPresenter
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      paramParcel.writeInt(this.aiE);
+      paramParcel.writeInt(this.aiR);
     }
   }
   
@@ -678,24 +678,24 @@ final class ActionMenuPresenter
     public a(Context paramContext, u paramu, View paramView)
     {
       super(paramu, paramView, false);
-      if (!((j)paramu.getItem()).jdMethod_if()) {
-        if (ActionMenuPresenter.this.aie != null) {
+      if (!((j)paramu.getItem()).ip()) {
+        if (ActionMenuPresenter.this.air != null) {
           break label56;
         }
       }
       label56:
-      for (paramContext = (View)ActionMenuPresenter.this.aeW;; paramContext = ActionMenuPresenter.this.aie)
+      for (paramContext = (View)ActionMenuPresenter.this.afj;; paramContext = ActionMenuPresenter.this.air)
       {
-        this.qI = paramContext;
-        c(ActionMenuPresenter.this.aix);
+        this.qK = paramContext;
+        c(ActionMenuPresenter.this.aiK);
         return;
       }
     }
     
     public final void onDismiss()
     {
-      ActionMenuPresenter.this.aiu = null;
-      ActionMenuPresenter.this.aiy = 0;
+      ActionMenuPresenter.this.aiH = null;
+      ActionMenuPresenter.this.aiL = 0;
       super.onDismiss();
     }
   }
@@ -705,10 +705,10 @@ final class ActionMenuPresenter
   {
     b() {}
     
-    public final s hF()
+    public final s hO()
     {
-      if (ActionMenuPresenter.this.aiu != null) {
-        return ActionMenuPresenter.this.aiu.ik();
+      if (ActionMenuPresenter.this.aiH != null) {
+        return ActionMenuPresenter.this.aiH.iu();
       }
       return null;
     }
@@ -717,27 +717,27 @@ final class ActionMenuPresenter
   final class c
     implements Runnable
   {
-    private ActionMenuPresenter.e aiA;
+    private ActionMenuPresenter.e aiN;
     
     public c(ActionMenuPresenter.e parame)
     {
-      this.aiA = parame;
+      this.aiN = parame;
     }
     
     public final void run()
     {
-      if (ActionMenuPresenter.this.aaD != null)
+      if (ActionMenuPresenter.this.aaQ != null)
       {
-        localObject = ActionMenuPresenter.this.aaD;
-        if (((h)localObject).agd != null) {
-          ((h)localObject).agd.b((h)localObject);
+        localObject = ActionMenuPresenter.this.aaQ;
+        if (((h)localObject).agq != null) {
+          ((h)localObject).agq.b((h)localObject);
         }
       }
-      Object localObject = (View)ActionMenuPresenter.this.aeW;
-      if ((localObject != null) && (((View)localObject).getWindowToken() != null) && (this.aiA.il())) {
-        ActionMenuPresenter.this.ait = this.aiA;
+      Object localObject = (View)ActionMenuPresenter.this.afj;
+      if ((localObject != null) && (((View)localObject).getWindowToken() != null) && (this.aiN.iv())) {
+        ActionMenuPresenter.this.aiG = this.aiN;
       }
-      ActionMenuPresenter.this.aiv = null;
+      ActionMenuPresenter.this.aiI = null;
     }
   }
   
@@ -745,11 +745,11 @@ final class ActionMenuPresenter
     extends AppCompatImageView
     implements ActionMenuView.a
   {
-    private final float[] aiB = new float[2];
+    private final float[] aiO = new float[2];
     
     public d(Context paramContext)
     {
-      super(null, 2130968626);
+      super(null, 2130968627);
       setClickable(true);
       setFocusable(true);
       setVisibility(0);
@@ -757,23 +757,23 @@ final class ActionMenuPresenter
       bb.a(this, getContentDescription());
       setOnTouchListener(new ab(this)
       {
-        public final s hF()
+        public final s hO()
         {
-          if (ActionMenuPresenter.this.ait == null) {
+          if (ActionMenuPresenter.this.aiG == null) {
             return null;
           }
-          return ActionMenuPresenter.this.ait.ik();
+          return ActionMenuPresenter.this.aiG.iu();
         }
         
-        public final boolean hG()
+        public final boolean hP()
         {
           ActionMenuPresenter.this.showOverflowMenu();
           return true;
         }
         
-        public final boolean iz()
+        public final boolean iI()
         {
-          if (ActionMenuPresenter.this.aiv != null) {
+          if (ActionMenuPresenter.this.aiI != null) {
             return false;
           }
           ActionMenuPresenter.this.hideOverflowMenu();
@@ -782,12 +782,12 @@ final class ActionMenuPresenter
       });
     }
     
-    public final boolean hD()
+    public final boolean hM()
     {
       return false;
     }
     
-    public final boolean hE()
+    public final boolean hN()
     {
       return false;
     }
@@ -830,16 +830,16 @@ final class ActionMenuPresenter
     public e(Context paramContext, h paramh, View paramView)
     {
       super(paramh, paramView, true);
-      this.afm = 8388613;
-      c(ActionMenuPresenter.this.aix);
+      this.afz = 8388613;
+      c(ActionMenuPresenter.this.aiK);
     }
     
     public final void onDismiss()
     {
-      if (ActionMenuPresenter.this.aaD != null) {
-        ActionMenuPresenter.this.aaD.close();
+      if (ActionMenuPresenter.this.aaQ != null) {
+        ActionMenuPresenter.this.aaQ.close();
       }
-      ActionMenuPresenter.this.ait = null;
+      ActionMenuPresenter.this.aiG = null;
       super.onDismiss();
     }
   }
@@ -852,9 +852,9 @@ final class ActionMenuPresenter
     public final void a(h paramh, boolean paramBoolean)
     {
       if ((paramh instanceof u)) {
-        paramh.hY().ab(false);
+        paramh.ii().aa(false);
       }
-      o.a locala = ActionMenuPresenter.this.aeT;
+      o.a locala = ActionMenuPresenter.this.afg;
       if (locala != null) {
         locala.a(paramh, paramBoolean);
       }
@@ -865,8 +865,8 @@ final class ActionMenuPresenter
       if (paramh == null) {
         return false;
       }
-      ActionMenuPresenter.this.aiy = ((u)paramh).getItem().getItemId();
-      o.a locala = ActionMenuPresenter.this.aeT;
+      ActionMenuPresenter.this.aiL = ((u)paramh).getItem().getItemId();
+      o.a locala = ActionMenuPresenter.this.afg;
       if (locala != null) {
         return locala.d(paramh);
       }

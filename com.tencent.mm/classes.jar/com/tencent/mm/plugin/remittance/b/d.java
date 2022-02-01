@@ -2,56 +2,56 @@ package com.tencent.mm.plugin.remittance.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iWL;
-  private static Map<String, c> iWM;
-  private e db;
+  private static final String[] jTH;
+  private static Map<String, c> jTI;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(67625);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "RemittanceRecord") };
-    iWL = new String[] { "*", "rowid" };
-    iWM = new HashMap();
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "RemittanceRecord") };
+    jTH = new String[] { "*", "rowid" };
+    jTI = new HashMap();
     AppMethodBeat.o(67625);
   }
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "RemittanceRecord", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, c.info, "RemittanceRecord", null);
+    this.db = paramISQLiteDatabase;
   }
   
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(67621);
-    if ((paramc != null) && (iWM.containsKey(paramc.field_transferId))) {
-      iWM.put(paramc.field_transferId, paramc);
+    if ((paramc != null) && (jTI.containsKey(paramc.field_transferId))) {
+      jTI.put(paramc.field_transferId, paramc);
     }
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(67621);
     return bool;
   }
   
-  public final c axw(String paramString)
+  public final c aLW(String paramString)
   {
     AppMethodBeat.i(67620);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(67620);
       return null;
     }
-    paramString = this.db.a("RemittanceRecord", iWL, "transferId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("RemittanceRecord", jTH, "transferId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -66,7 +66,7 @@ public final class d
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
         paramString.close();
       }
     }
@@ -79,44 +79,44 @@ public final class d
     return null;
   }
   
-  public final c axx(String paramString)
+  public final c aLX(String paramString)
   {
-    AppMethodBeat.i(189959);
-    if ((!bu.isNullOrNil(paramString)) && (iWM.containsKey(paramString)))
+    AppMethodBeat.i(213703);
+    if ((!Util.isNullOrNil(paramString)) && (jTI.containsKey(paramString)))
     {
-      paramString = (c)iWM.get(paramString);
-      AppMethodBeat.o(189959);
+      paramString = (c)jTI.get(paramString);
+      AppMethodBeat.o(213703);
       return paramString;
     }
-    c localc = axw(paramString);
+    c localc = aLW(paramString);
     if (localc != null)
     {
-      iWM.put(paramString, localc);
-      AppMethodBeat.o(189959);
+      jTI.put(paramString, localc);
+      AppMethodBeat.o(213703);
       return localc;
     }
-    AppMethodBeat.o(189959);
+    AppMethodBeat.o(213703);
     return null;
   }
   
   /* Error */
-  public final java.util.List<c> axy(String paramString)
+  public final java.util.List<c> aLY(String paramString)
   {
     // Byte code:
-    //   0: ldc 143
+    //   0: ldc 144
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 93	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 93	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +10 -> 19
-    //   12: ldc 143
+    //   12: ldc 144
     //   14: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   17: aconst_null
     //   18: areturn
     //   19: aload_0
-    //   20: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/e/e;
+    //   20: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   23: ldc 32
-    //   25: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iWL	[Ljava/lang/String;
-    //   28: ldc 145
+    //   25: getstatic 44	com/tencent/mm/plugin/remittance/b/d:jTH	[Ljava/lang/String;
+    //   28: ldc 146
     //   30: iconst_1
     //   31: anewarray 24	java/lang/String
     //   34: dup
@@ -127,280 +127,286 @@ public final class d
     //   39: aconst_null
     //   40: aconst_null
     //   41: iconst_2
-    //   42: invokeinterface 100 9 0
-    //   47: astore 4
-    //   49: aload 4
-    //   51: invokeinterface 106 1 0
-    //   56: ifeq +62 -> 118
-    //   59: new 147	java/util/ArrayList
-    //   62: dup
-    //   63: invokespecial 148	java/util/ArrayList:<init>	()V
-    //   66: astore_1
-    //   67: new 26	com/tencent/mm/plugin/remittance/b/c
-    //   70: dup
-    //   71: invokespecial 107	com/tencent/mm/plugin/remittance/b/c:<init>	()V
-    //   74: astore_3
-    //   75: aload_3
-    //   76: aload 4
-    //   78: invokevirtual 111	com/tencent/mm/plugin/remittance/b/c:convertFrom	(Landroid/database/Cursor;)V
-    //   81: aload_1
-    //   82: aload_3
-    //   83: invokevirtual 151	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   86: pop
-    //   87: aload 4
-    //   89: invokeinterface 154 1 0
-    //   94: istore_2
-    //   95: iload_2
-    //   96: ifne -29 -> 67
-    //   99: aload 4
-    //   101: ifnull +10 -> 111
-    //   104: aload 4
-    //   106: invokeinterface 114 1 0
-    //   111: ldc 143
-    //   113: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   116: aload_1
-    //   117: areturn
-    //   118: aload 4
-    //   120: ifnull +10 -> 130
-    //   123: aload 4
-    //   125: invokeinterface 114 1 0
-    //   130: ldc 143
-    //   132: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   135: aconst_null
-    //   136: areturn
-    //   137: astore_3
-    //   138: ldc 143
-    //   140: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   143: aload_3
-    //   144: athrow
-    //   145: astore_1
-    //   146: aload 4
-    //   148: ifnull +14 -> 162
-    //   151: aload_3
-    //   152: ifnull +51 -> 203
-    //   155: aload 4
-    //   157: invokeinterface 114 1 0
-    //   162: ldc 143
+    //   42: invokeinterface 101 9 0
+    //   47: astore_3
+    //   48: aload_3
+    //   49: invokeinterface 107 1 0
+    //   54: ifeq +62 -> 116
+    //   57: new 148	java/util/ArrayList
+    //   60: dup
+    //   61: invokespecial 149	java/util/ArrayList:<init>	()V
+    //   64: astore_1
+    //   65: new 26	com/tencent/mm/plugin/remittance/b/c
+    //   68: dup
+    //   69: invokespecial 108	com/tencent/mm/plugin/remittance/b/c:<init>	()V
+    //   72: astore_2
+    //   73: aload_2
+    //   74: aload_3
+    //   75: invokevirtual 112	com/tencent/mm/plugin/remittance/b/c:convertFrom	(Landroid/database/Cursor;)V
+    //   78: aload_1
+    //   79: aload_2
+    //   80: invokevirtual 152	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   83: pop
+    //   84: aload_3
+    //   85: invokeinterface 155 1 0
+    //   90: ifne -25 -> 65
+    //   93: aload_3
+    //   94: invokeinterface 115 1 0
+    //   99: aload_3
+    //   100: ifnull +9 -> 109
+    //   103: aload_3
+    //   104: invokeinterface 115 1 0
+    //   109: ldc 144
+    //   111: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   114: aload_1
+    //   115: areturn
+    //   116: aload_3
+    //   117: invokeinterface 115 1 0
+    //   122: aload_3
+    //   123: ifnull +9 -> 132
+    //   126: aload_3
+    //   127: invokeinterface 115 1 0
+    //   132: ldc 144
+    //   134: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: aconst_null
+    //   138: areturn
+    //   139: astore_2
+    //   140: ldc 144
+    //   142: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: aload_2
+    //   146: athrow
+    //   147: astore_1
+    //   148: aload_3
+    //   149: ifnull +13 -> 162
+    //   152: aload_2
+    //   153: ifnull +48 -> 201
+    //   156: aload_3
+    //   157: invokeinterface 115 1 0
+    //   162: ldc 144
     //   164: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   167: aload_1
     //   168: athrow
     //   169: astore_1
-    //   170: ldc 116
+    //   170: ldc 117
     //   172: aload_1
-    //   173: ldc 118
+    //   173: ldc 119
     //   175: iconst_1
-    //   176: anewarray 120	java/lang/Object
+    //   176: anewarray 121	java/lang/Object
     //   179: dup
     //   180: iconst_0
     //   181: aload_1
-    //   182: invokevirtual 124	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   182: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   185: aastore
-    //   186: invokestatic 130	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   189: goto -59 -> 130
-    //   192: astore 4
+    //   186: invokestatic 131	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   189: goto -57 -> 132
+    //   192: astore_3
+    //   193: aload_2
     //   194: aload_3
-    //   195: aload 4
-    //   197: invokevirtual 158	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   200: goto -38 -> 162
-    //   203: aload 4
-    //   205: invokeinterface 114 1 0
-    //   210: goto -48 -> 162
-    //   213: astore_1
-    //   214: aconst_null
-    //   215: astore_3
-    //   216: goto -70 -> 146
+    //   195: invokevirtual 159	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   198: goto -36 -> 162
+    //   201: aload_3
+    //   202: invokeinterface 115 1 0
+    //   207: goto -45 -> 162
+    //   210: astore_1
+    //   211: aconst_null
+    //   212: astore_2
+    //   213: goto -65 -> 148
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	219	0	this	d
-    //   0	219	1	paramString	String
-    //   94	2	2	bool	boolean
-    //   74	9	3	localc	c
-    //   137	58	3	localThrowable1	java.lang.Throwable
-    //   215	1	3	localObject	Object
-    //   47	109	4	localCursor	Cursor
-    //   192	12	4	localThrowable2	java.lang.Throwable
+    //   0	216	0	this	d
+    //   0	216	1	paramString	String
+    //   72	8	2	localc	c
+    //   139	55	2	localThrowable1	java.lang.Throwable
+    //   212	1	2	localObject	Object
+    //   47	110	3	localCursor	Cursor
+    //   192	10	3	localThrowable2	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   49	67	137	java/lang/Throwable
-    //   67	95	137	java/lang/Throwable
-    //   138	145	145	finally
-    //   19	49	169	java/lang/Exception
-    //   104	111	169	java/lang/Exception
-    //   123	130	169	java/lang/Exception
-    //   155	162	169	java/lang/Exception
+    //   48	65	139	java/lang/Throwable
+    //   65	99	139	java/lang/Throwable
+    //   116	122	139	java/lang/Throwable
+    //   140	147	147	finally
+    //   19	48	169	java/lang/Exception
+    //   103	109	169	java/lang/Exception
+    //   126	132	169	java/lang/Exception
+    //   156	162	169	java/lang/Exception
     //   162	169	169	java/lang/Exception
-    //   194	200	169	java/lang/Exception
-    //   203	210	169	java/lang/Exception
-    //   155	162	192	java/lang/Throwable
-    //   49	67	213	finally
-    //   67	95	213	finally
+    //   193	198	169	java/lang/Exception
+    //   201	207	169	java/lang/Exception
+    //   156	162	192	java/lang/Throwable
+    //   48	65	210	finally
+    //   65	99	210	finally
+    //   116	122	210	finally
   }
   
   /* Error */
-  public final java.util.List<c> dMl()
+  public final java.util.List<c> eNl()
   {
     // Byte code:
-    //   0: ldc 163
+    //   0: ldc 172
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 147	java/util/ArrayList
+    //   5: new 148	java/util/ArrayList
     //   8: dup
-    //   9: invokespecial 148	java/util/ArrayList:<init>	()V
-    //   12: astore 4
-    //   14: new 165	java/lang/StringBuilder
-    //   17: dup
-    //   18: invokespecial 166	java/lang/StringBuilder:<init>	()V
-    //   21: astore_2
-    //   22: aload_2
-    //   23: ldc 168
-    //   25: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: pop
-    //   29: aload_2
-    //   30: ldc 174
-    //   32: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: pop
-    //   36: aload_2
-    //   37: ldc 176
-    //   39: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: pop
-    //   43: aload_2
-    //   44: ldc 168
-    //   46: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: pop
-    //   50: aload_2
-    //   51: ldc 174
-    //   53: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: aload_0
-    //   58: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/e/e;
-    //   61: ldc 32
-    //   63: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iWL	[Ljava/lang/String;
-    //   66: aload_2
-    //   67: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: iconst_2
-    //   71: anewarray 24	java/lang/String
-    //   74: dup
-    //   75: iconst_0
-    //   76: ldc 181
-    //   78: aastore
-    //   79: dup
-    //   80: iconst_1
-    //   81: ldc 183
-    //   83: aastore
+    //   9: invokespecial 149	java/util/ArrayList:<init>	()V
+    //   12: astore_3
+    //   13: new 174	java/lang/StringBuilder
+    //   16: dup
+    //   17: invokespecial 175	java/lang/StringBuilder:<init>	()V
+    //   20: astore_1
+    //   21: aload_1
+    //   22: ldc 177
+    //   24: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: pop
+    //   28: aload_1
+    //   29: ldc 183
+    //   31: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: pop
+    //   35: aload_1
+    //   36: ldc 185
+    //   38: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: pop
+    //   42: aload_1
+    //   43: ldc 177
+    //   45: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload_1
+    //   50: ldc 183
+    //   52: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: aload_0
+    //   57: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   60: ldc 32
+    //   62: getstatic 44	com/tencent/mm/plugin/remittance/b/d:jTH	[Ljava/lang/String;
+    //   65: aload_1
+    //   66: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: iconst_2
+    //   70: anewarray 24	java/lang/String
+    //   73: dup
+    //   74: iconst_0
+    //   75: ldc 190
+    //   77: aastore
+    //   78: dup
+    //   79: iconst_1
+    //   80: ldc 192
+    //   82: aastore
+    //   83: aconst_null
     //   84: aconst_null
     //   85: aconst_null
-    //   86: aconst_null
-    //   87: iconst_2
-    //   88: invokeinterface 100 9 0
-    //   93: astore 5
-    //   95: aload 5
-    //   97: invokeinterface 106 1 0
-    //   102: ifeq +58 -> 160
-    //   105: new 26	com/tencent/mm/plugin/remittance/b/c
-    //   108: dup
-    //   109: invokespecial 107	com/tencent/mm/plugin/remittance/b/c:<init>	()V
-    //   112: astore_2
-    //   113: aload_2
-    //   114: aload 5
-    //   116: invokevirtual 111	com/tencent/mm/plugin/remittance/b/c:convertFrom	(Landroid/database/Cursor;)V
-    //   119: aload 4
-    //   121: aload_2
-    //   122: invokeinterface 186 2 0
-    //   127: pop
-    //   128: aload 5
-    //   130: invokeinterface 154 1 0
-    //   135: istore_1
-    //   136: iload_1
-    //   137: ifne -32 -> 105
-    //   140: aload 5
-    //   142: ifnull +10 -> 152
-    //   145: aload 5
-    //   147: invokeinterface 114 1 0
-    //   152: ldc 163
-    //   154: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   157: aload 4
-    //   159: areturn
-    //   160: aload 5
-    //   162: ifnull +10 -> 172
-    //   165: aload 5
-    //   167: invokeinterface 114 1 0
-    //   172: ldc 163
-    //   174: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   177: aload 4
-    //   179: areturn
-    //   180: astore_3
-    //   181: ldc 163
+    //   86: iconst_2
+    //   87: invokeinterface 101 9 0
+    //   92: astore 4
+    //   94: aload 4
+    //   96: invokeinterface 107 1 0
+    //   101: ifeq +61 -> 162
+    //   104: new 26	com/tencent/mm/plugin/remittance/b/c
+    //   107: dup
+    //   108: invokespecial 108	com/tencent/mm/plugin/remittance/b/c:<init>	()V
+    //   111: astore_1
+    //   112: aload_1
+    //   113: aload 4
+    //   115: invokevirtual 112	com/tencent/mm/plugin/remittance/b/c:convertFrom	(Landroid/database/Cursor;)V
+    //   118: aload_3
+    //   119: aload_1
+    //   120: invokeinterface 195 2 0
+    //   125: pop
+    //   126: aload 4
+    //   128: invokeinterface 155 1 0
+    //   133: ifne -29 -> 104
+    //   136: aload 4
+    //   138: invokeinterface 115 1 0
+    //   143: aload 4
+    //   145: ifnull +10 -> 155
+    //   148: aload 4
+    //   150: invokeinterface 115 1 0
+    //   155: ldc 172
+    //   157: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   160: aload_3
+    //   161: areturn
+    //   162: aload 4
+    //   164: invokeinterface 115 1 0
+    //   169: aload 4
+    //   171: ifnull +10 -> 181
+    //   174: aload 4
+    //   176: invokeinterface 115 1 0
+    //   181: ldc 172
     //   183: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   186: aload_3
-    //   187: athrow
+    //   187: areturn
     //   188: astore_2
-    //   189: aload 5
-    //   191: ifnull +14 -> 205
-    //   194: aload_3
-    //   195: ifnull +51 -> 246
-    //   198: aload 5
-    //   200: invokeinterface 114 1 0
-    //   205: ldc 163
-    //   207: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   210: aload_2
-    //   211: athrow
-    //   212: astore_2
-    //   213: ldc 116
-    //   215: aload_2
-    //   216: ldc 118
-    //   218: iconst_1
-    //   219: anewarray 120	java/lang/Object
-    //   222: dup
-    //   223: iconst_0
-    //   224: aload_2
-    //   225: invokevirtual 124	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   228: aastore
-    //   229: invokestatic 130	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   232: goto -60 -> 172
-    //   235: astore 5
-    //   237: aload_3
-    //   238: aload 5
-    //   240: invokevirtual 158	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   243: goto -38 -> 205
-    //   246: aload 5
-    //   248: invokeinterface 114 1 0
-    //   253: goto -48 -> 205
-    //   256: astore_2
-    //   257: aconst_null
-    //   258: astore_3
-    //   259: goto -70 -> 189
+    //   189: ldc 172
+    //   191: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: aload_2
+    //   195: athrow
+    //   196: astore_1
+    //   197: aload 4
+    //   199: ifnull +14 -> 213
+    //   202: aload_2
+    //   203: ifnull +51 -> 254
+    //   206: aload 4
+    //   208: invokeinterface 115 1 0
+    //   213: ldc 172
+    //   215: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   218: aload_1
+    //   219: athrow
+    //   220: astore_1
+    //   221: ldc 117
+    //   223: aload_1
+    //   224: ldc 119
+    //   226: iconst_1
+    //   227: anewarray 121	java/lang/Object
+    //   230: dup
+    //   231: iconst_0
+    //   232: aload_1
+    //   233: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   236: aastore
+    //   237: invokestatic 131	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   240: goto -59 -> 181
+    //   243: astore 4
+    //   245: aload_2
+    //   246: aload 4
+    //   248: invokevirtual 159	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   251: goto -38 -> 213
+    //   254: aload 4
+    //   256: invokeinterface 115 1 0
+    //   261: goto -48 -> 213
+    //   264: astore_1
+    //   265: aconst_null
+    //   266: astore_2
+    //   267: goto -70 -> 197
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	262	0	this	d
-    //   135	2	1	bool	boolean
-    //   21	101	2	localObject1	Object
-    //   188	23	2	localObject2	Object
-    //   212	13	2	localException	Exception
-    //   256	1	2	localObject3	Object
-    //   180	58	3	localThrowable1	java.lang.Throwable
-    //   258	1	3	localObject4	Object
-    //   12	166	4	localArrayList	java.util.ArrayList
-    //   93	106	5	localCursor	Cursor
-    //   235	12	5	localThrowable2	java.lang.Throwable
+    //   0	270	0	this	d
+    //   20	100	1	localObject1	Object
+    //   196	23	1	localObject2	Object
+    //   220	13	1	localException	Exception
+    //   264	1	1	localObject3	Object
+    //   188	58	2	localThrowable1	java.lang.Throwable
+    //   266	1	2	localObject4	Object
+    //   12	175	3	localArrayList	java.util.ArrayList
+    //   92	115	4	localCursor	Cursor
+    //   243	12	4	localThrowable2	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   95	105	180	java/lang/Throwable
-    //   105	136	180	java/lang/Throwable
-    //   181	188	188	finally
-    //   57	95	212	java/lang/Exception
-    //   145	152	212	java/lang/Exception
-    //   165	172	212	java/lang/Exception
-    //   198	205	212	java/lang/Exception
-    //   205	212	212	java/lang/Exception
-    //   237	243	212	java/lang/Exception
-    //   246	253	212	java/lang/Exception
-    //   198	205	235	java/lang/Throwable
-    //   95	105	256	finally
-    //   105	136	256	finally
+    //   94	104	188	java/lang/Throwable
+    //   104	143	188	java/lang/Throwable
+    //   162	169	188	java/lang/Throwable
+    //   189	196	196	finally
+    //   56	94	220	java/lang/Exception
+    //   148	155	220	java/lang/Exception
+    //   174	181	220	java/lang/Exception
+    //   206	213	220	java/lang/Exception
+    //   213	220	220	java/lang/Exception
+    //   245	251	220	java/lang/Exception
+    //   254	261	220	java/lang/Exception
+    //   206	213	243	java/lang/Throwable
+    //   94	104	264	finally
+    //   104	143	264	finally
+    //   162	169	264	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.b.d
  * JD-Core Version:    0.7.0.1
  */

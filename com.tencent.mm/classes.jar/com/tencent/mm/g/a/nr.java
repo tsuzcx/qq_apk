@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class nr
-  extends b
+  extends IEvent
 {
-  public a dCG;
+  public a dTO;
   
   public nr()
   {
@@ -16,21 +17,24 @@ public final class nr
   
   private nr(byte paramByte)
   {
-    AppMethodBeat.i(116037);
-    this.dCG = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(89647);
+    this.dTO = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116037);
+    AppMethodBeat.o(89647);
   }
   
   public static final class a
   {
-    public ArrayList dwq;
+    public Context context;
+    public String group;
+    public Intent intent;
+    public int type = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.nr
  * JD-Core Version:    0.7.0.1
  */

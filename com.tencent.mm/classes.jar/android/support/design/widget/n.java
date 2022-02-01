@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 
 final class n
 {
-  private static n tB;
+  private static n tI;
   private final Handler handler = new Handler(Looper.getMainLooper(), new Handler.Callback()
   {
     public final boolean handleMessage(Message arg1)
@@ -22,7 +22,7 @@ final class n
       n.b localb = (n.b)???.obj;
       synchronized (localn.lock)
       {
-        if ((localn.tC == localb) || (localn.tD == localb)) {
+        if ((localn.tJ == localb) || (localn.tK == localb)) {
           localn.a(localb);
         }
         return true;
@@ -30,8 +30,8 @@ final class n
     }
   });
   final Object lock = new Object();
-  b tC;
-  b tD;
+  b tJ;
+  b tK;
   
   private void b(b paramb)
   {
@@ -53,12 +53,12 @@ final class n
     }
   }
   
-  static n cT()
+  static n cV()
   {
-    if (tB == null) {
-      tB = new n();
+    if (tI == null) {
+      tI = new n();
     }
-    return tB;
+    return tI;
   }
   
   public final void a(a parama)
@@ -66,7 +66,7 @@ final class n
     synchronized (this.lock)
     {
       if (e(parama)) {
-        b(this.tC);
+        b(this.tJ);
       }
       return;
     }
@@ -74,7 +74,7 @@ final class n
   
   final boolean a(b paramb)
   {
-    if ((a)paramb.tF.get() != null)
+    if ((a)paramb.tM.get() != null)
     {
       this.handler.removeCallbacksAndMessages(paramb);
       return true;
@@ -86,10 +86,10 @@ final class n
   {
     synchronized (this.lock)
     {
-      if ((e(parama)) && (!this.tC.tG))
+      if ((e(parama)) && (!this.tJ.tN))
       {
-        this.tC.tG = true;
-        this.handler.removeCallbacksAndMessages(this.tC);
+        this.tJ.tN = true;
+        this.handler.removeCallbacksAndMessages(this.tJ);
       }
       return;
     }
@@ -99,10 +99,10 @@ final class n
   {
     synchronized (this.lock)
     {
-      if ((e(parama)) && (this.tC.tG))
+      if ((e(parama)) && (this.tJ.tN))
       {
-        this.tC.tG = false;
-        b(this.tC);
+        this.tJ.tN = false;
+        b(this.tJ);
       }
       return;
     }
@@ -133,12 +133,12 @@ final class n
   
   final boolean e(a parama)
   {
-    return (this.tC != null) && (this.tC.g(parama));
+    return (this.tJ != null) && (this.tJ.g(parama));
   }
   
   final boolean f(a parama)
   {
-    return (this.tD != null) && (this.tD.g(parama));
+    return (this.tK != null) && (this.tK.g(parama));
   }
   
   static abstract interface a {}
@@ -146,18 +146,18 @@ final class n
   static final class b
   {
     int duration;
-    final WeakReference<n.a> tF;
-    boolean tG;
+    final WeakReference<n.a> tM;
+    boolean tN;
     
     final boolean g(n.a parama)
     {
-      return (parama != null) && (this.tF.get() == parama);
+      return (parama != null) && (this.tM.get() == parama);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.design.widget.n
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import android.text.Selection;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.f.a;
 import com.tencent.mm.wallet_core.f.b;
 import java.util.regex.Matcher;
@@ -23,9 +22,8 @@ public class WalletTextView
   extends TextView
 {
   private static final String TAG;
-  private Object IyB;
-  private Object LWV;
-  private int LWW;
+  private Object RvL;
+  private int RvM;
   private String mPrefix;
   
   static
@@ -44,13 +42,12 @@ public class WalletTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73071);
-    this.IyB = "";
-    this.LWV = "";
+    this.RvL = "";
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WalletTextViewAttrs, paramInt, 0);
-    this.LWW = paramContext.getInteger(1, 4);
+    this.RvM = paramContext.getInteger(1, 4);
     this.mPrefix = paramContext.getString(0);
     paramContext.recycle();
-    paramContext = f.agY(this.LWW);
+    paramContext = f.aqk(this.RvM);
     try
     {
       setTypeface(Typeface.createFromAsset(getContext().getAssets(), paramContext));
@@ -59,49 +56,33 @@ public class WalletTextView
     }
     catch (Exception paramContext)
     {
-      ae.e(TAG, "updateWalletTypeface() Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      Log.e(TAG, "updateWalletTypeface() Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
       AppMethodBeat.o(73071);
     }
-  }
-  
-  public int getSelectionEnd()
-  {
-    AppMethodBeat.i(73076);
-    int i = Selection.getSelectionEnd((CharSequence)this.IyB);
-    AppMethodBeat.o(73076);
-    return i;
-  }
-  
-  public int getSelectionStart()
-  {
-    AppMethodBeat.i(73075);
-    int i = Selection.getSelectionStart((CharSequence)this.IyB);
-    AppMethodBeat.o(73075);
-    return i;
   }
   
   @Deprecated
   public CharSequence getText()
   {
     AppMethodBeat.i(73074);
-    if (a.fWj().es(this))
+    if (a.hhH().ew(this))
     {
-      localObject = (CharSequence)this.IyB;
+      localObject = super.getText();
       AppMethodBeat.o(73074);
       return localObject;
     }
-    ae.printErrStackTrace(TAG, new Throwable(), "check point 0.", new Object[0]);
-    if ((b.fWm()) || (g.abt()))
+    Log.printErrStackTrace(TAG, new Throwable(), "check point 0.", new Object[0]);
+    if ((b.hhK()) || (g.isMIUI()))
     {
-      if (b.fWl()) {}
-      for (localObject = this.LWV;; localObject = this.IyB)
+      if (b.hhJ()) {}
+      for (localObject = this.RvL;; localObject = super.getText())
       {
         localObject = (CharSequence)localObject;
         AppMethodBeat.o(73074);
         return localObject;
       }
     }
-    Object localObject = (CharSequence)this.IyB;
+    Object localObject = super.getText();
     AppMethodBeat.o(73074);
     return localObject;
   }
@@ -114,30 +95,29 @@ public class WalletTextView
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     AppMethodBeat.i(73072);
-    this.IyB = paramCharSequence;
     Object localObject = paramCharSequence.toString();
     if ((localObject == null) || (((String)localObject).length() == 0))
     {
       localObject = "";
-      this.LWV = localObject;
-      if (bu.isNullOrNil(this.mPrefix)) {
-        break label237;
+      this.RvL = localObject;
+      if (Util.isNullOrNil(this.mPrefix)) {
+        break label232;
       }
       paramCharSequence = this.mPrefix + paramCharSequence;
     }
-    label237:
+    label232:
     for (;;)
     {
       localObject = paramCharSequence;
-      if (this.LWW < 4)
+      if (this.RvM < 4)
       {
         localObject = paramCharSequence;
-        if (!bu.ah(paramCharSequence))
+        if (!Util.isNullOrNil(paramCharSequence))
         {
           localObject = paramCharSequence;
           if (Pattern.compile(".*?[a-zA-Z]+.*?").matcher(paramCharSequence).matches())
           {
-            ae.i(TAG, "force use std font");
+            Log.i(TAG, "force use std font");
             localObject = paramCharSequence;
             if ((paramCharSequence instanceof String)) {
               localObject = ((String)paramCharSequence).toLowerCase();
@@ -165,8 +145,8 @@ public class WalletTextView
   public void setTypeface(int paramInt)
   {
     AppMethodBeat.i(73073);
-    this.LWW = paramInt;
-    String str = f.agY(paramInt);
+    this.RvM = paramInt;
+    String str = f.aqk(paramInt);
     try
     {
       setTypeface(Typeface.createFromAsset(getContext().getAssets(), str));
@@ -175,7 +155,7 @@ public class WalletTextView
     }
     catch (Exception localException)
     {
-      ae.e(TAG, "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+      Log.e(TAG, "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
       AppMethodBeat.o(73073);
     }
   }

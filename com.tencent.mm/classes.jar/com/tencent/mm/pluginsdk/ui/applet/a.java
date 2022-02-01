@@ -8,85 +8,84 @@ import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.lz;
-import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.protocal.protobuf.dvx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.mp;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.model.p;
+import com.tencent.mm.protocal.protobuf.eqb;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
 import java.util.LinkedList;
 import junit.framework.Assert;
 
 public final class a
-  implements f
+  implements i
 {
-  private a Fnh;
-  public b Fni;
-  private LinkedList<String> Fnj;
-  public String Fnk;
-  String Fnl;
-  private String Fnm;
-  public boolean Fnn;
-  public boolean Fno;
-  boolean Fnp;
-  public boolean Fnq;
-  public String Fnr;
-  public dvx Fns;
+  private LinkedList<String> Byl;
+  private LinkedList<Integer> Bym;
+  private a KdZ;
+  public b Kea;
+  private LinkedList<String> Keb;
+  String Kec;
+  public boolean Ked;
+  public boolean Kee;
+  boolean Kef;
+  public boolean Keg;
+  public String Keh;
+  public eqb Kei;
   private String chatroomName;
   private Context context;
-  private String gzz;
-  public String jjG;
-  private String kbH;
-  public int otZ;
-  public String tIA;
-  private p tipDialog;
-  private LinkedList<String> xyi;
-  private LinkedList<Integer> xyj;
+  private String hmm;
+  public String khI;
+  public int pHw;
+  private String sourceNickName;
+  private String sourceUserName;
+  private com.tencent.mm.ui.base.q tipDialog;
+  public String wHV;
+  public String wZz;
   
   public a(Context paramContext, a parama)
   {
     AppMethodBeat.i(152151);
-    this.gzz = "";
-    this.tIA = "";
-    this.Fnl = "";
+    this.hmm = "";
+    this.wZz = "";
+    this.Kec = "";
     this.chatroomName = "";
-    this.Fnn = true;
-    this.Fno = true;
-    this.Fnp = true;
-    this.jjG = "";
-    this.Fnq = false;
-    this.Fnr = "";
-    this.otZ = 0;
+    this.Ked = true;
+    this.Kee = true;
+    this.Kef = true;
+    this.khI = "";
+    this.Keg = false;
+    this.Keh = "";
+    this.pHw = 0;
     this.context = paramContext;
-    this.Fnh = parama;
-    this.xyi = new LinkedList();
-    this.Fnj = new LinkedList();
+    this.KdZ = parama;
+    this.Byl = new LinkedList();
+    this.Keb = new LinkedList();
     this.tipDialog = null;
     AppMethodBeat.o(152151);
   }
   
-  private void P(int paramInt1, int paramInt2, String paramString)
+  private void R(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(152162);
-    if ((this.Fnq) && (!bu.isNullOrNil(paramString))) {
-      h.c(this.context, paramString, "", true);
+    if ((this.Keg) && (!Util.isNullOrNil(paramString))) {
+      com.tencent.mm.ui.base.h.c(this.context, paramString, "", true);
     }
     for (;;)
     {
-      c(false, false, this.Fnl, this.jjG);
+      c(false, false, this.Kec, this.khI);
       AppMethodBeat.o(152162);
       return;
       if ((paramInt1 == 4) && (paramInt2 == -22)) {
-        Toast.makeText(this.context, this.context.getString(2131755167), 1).show();
-      } else if ((paramInt1 == 4) && (paramInt2 == -24) && (!bu.isNullOrNil(paramString))) {
+        Toast.makeText(this.context, this.context.getString(2131755185), 1).show();
+      } else if ((paramInt1 == 4) && (paramInt2 == -24) && (!Util.isNullOrNil(paramString))) {
         Toast.makeText(this.context, paramString, 1).show();
       } else {
-        Toast.makeText(this.context, this.context.getString(2131755166), 1).show();
+        Toast.makeText(this.context, this.context.getString(2131755184), 1).show();
       }
     }
   }
@@ -107,12 +106,12 @@ public final class a
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      this.Fnn = paramBoolean;
-      this.gzz = paramString2;
-      this.xyj = paramLinkedList;
-      this.xyi.add(paramString1);
-      this.Fnl = paramString1;
-      ffW();
+      this.Ked = paramBoolean;
+      this.hmm = paramString2;
+      this.Bym = paramLinkedList;
+      this.Byl.add(paramString1);
+      this.Kec = paramString1;
+      gpf();
       AppMethodBeat.o(152157);
       return;
       bool1 = false;
@@ -123,14 +122,14 @@ public final class a
   private void c(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
     AppMethodBeat.i(152159);
-    if (this.Fnh != null) {
-      this.Fnh.a(paramBoolean1, paramBoolean2, paramString1, paramString2);
+    if (this.KdZ != null) {
+      this.KdZ.a(paramBoolean1, paramBoolean2, paramString1, paramString2);
     }
     if (paramBoolean1)
     {
-      paramString2 = new lz();
-      paramString2.dAr.username = paramString1;
-      com.tencent.mm.sdk.b.a.IvT.l(paramString2);
+      paramString2 = new mp();
+      paramString2.dSe.username = paramString1;
+      EventCenter.instance.publish(paramString2);
     }
     AppMethodBeat.o(152159);
   }
@@ -138,8 +137,8 @@ public final class a
   private void onStart()
   {
     AppMethodBeat.i(152160);
-    com.tencent.mm.kernel.g.ajQ().gDv.a(30, this);
-    com.tencent.mm.kernel.g.ajQ().gDv.a(667, this);
+    g.aAg().hqi.a(30, this);
+    g.aAg().hqi.a(667, this);
     AppMethodBeat.o(152160);
   }
   
@@ -150,20 +149,20 @@ public final class a
     AppMethodBeat.o(152154);
   }
   
-  public final void aOa(String paramString)
-  {
-    AppMethodBeat.i(152155);
-    if (!TextUtils.isEmpty(paramString)) {
-      this.Fnj.add(paramString);
-    }
-    AppMethodBeat.o(152155);
-  }
-  
   public final void b(String paramString, LinkedList<Integer> paramLinkedList, boolean paramBoolean)
   {
     AppMethodBeat.i(152156);
     a(paramString, paramLinkedList, paramBoolean, "");
     AppMethodBeat.o(152156);
+  }
+  
+  public final void beC(String paramString)
+  {
+    AppMethodBeat.i(152155);
+    if (!TextUtils.isEmpty(paramString)) {
+      this.Keb.add(paramString);
+    }
+    AppMethodBeat.o(152155);
   }
   
   public final void d(String paramString1, String paramString2, LinkedList<Integer> paramLinkedList)
@@ -174,45 +173,45 @@ public final class a
     AppMethodBeat.o(152152);
   }
   
-  final void ffW()
+  final void gpf()
   {
     AppMethodBeat.i(152158);
     onStart();
-    if (this.Fno)
+    if (this.Kee)
     {
       localObject = this.context;
-      this.context.getString(2131755906);
-      this.tipDialog = h.b((Context)localObject, this.context.getString(2131757579), true, new DialogInterface.OnCancelListener()
+      this.context.getString(2131755998);
+      this.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, this.context.getString(2131757806), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(152147);
-          a.a(a.this, false, a.this.Fnl, a.this.jjG);
+          a.a(a.this, false, a.this.Kec, a.this.khI);
           AppMethodBeat.o(152147);
         }
       });
     }
-    if (an.aUq((String)this.xyi.getFirst()))
+    if (as.bjp((String)this.Byl.getFirst()))
     {
-      String str = (String)this.xyi.getFirst();
-      if (this.Fnj.isEmpty()) {}
-      for (localObject = "";; localObject = (String)this.Fnj.getFirst())
+      String str = (String)this.Byl.getFirst();
+      if (this.Keb.isEmpty()) {}
+      for (localObject = "";; localObject = (String)this.Keb.getFirst())
       {
         localObject = new com.tencent.mm.openim.b.b(str, (String)localObject);
-        com.tencent.mm.kernel.g.ajQ().gDv.a((n)localObject, 0);
+        g.aAg().hqi.a((com.tencent.mm.ak.q)localObject, 0);
         AppMethodBeat.o(152158);
         return;
       }
     }
-    Object localObject = new o(1, this.xyi, this.xyj, this.Fnj, "", this.tIA, null, this.chatroomName, this.gzz);
-    if (!bu.isNullOrNil(this.kbH)) {
-      ((o)localObject).ly(this.kbH, this.Fnm);
+    Object localObject = new p(1, this.Byl, this.Bym, this.Keb, "", this.wZz, null, this.chatroomName, this.hmm);
+    if (!Util.isNullOrNil(this.sourceUserName)) {
+      ((p)localObject).mw(this.sourceUserName, this.sourceNickName);
     }
-    ((o)localObject).GN(this.Fnr);
-    ((o)localObject).setSubScene(this.otZ);
-    ((o)localObject).a(this.Fns);
-    ((o)localObject).vM(this.Fnp);
-    com.tencent.mm.kernel.g.ajQ().gDv.a((n)localObject, 0);
+    ((p)localObject).Pz(this.Keh);
+    ((p)localObject).setSubScene(this.pHw);
+    ((p)localObject).a(this.Kei);
+    ((p)localObject).zJ(this.Kef);
+    g.aAg().hqi.a((com.tencent.mm.ak.q)localObject, 0);
     AppMethodBeat.o(152158);
   }
   
@@ -223,25 +222,25 @@ public final class a
     AppMethodBeat.o(152153);
   }
   
-  public final void lB(String paramString1, String paramString2)
+  public final void mz(String paramString1, String paramString2)
   {
-    this.kbH = paramString1;
-    this.Fnm = paramString2;
+    this.sourceUserName = paramString1;
+    this.sourceNickName = paramString2;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(152161);
-    ae.d("MicroMsg.AddContact", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2 + "," + paramString);
-    if ((paramn.getType() != 30) && (paramn.getType() != 667))
+    Log.d("MicroMsg.AddContact", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2 + "," + paramString);
+    if ((paramq.getType() != 30) && (paramq.getType() != 667))
     {
-      ae.w("MicroMsg.AddContact", "not expected scene,  type = " + paramn.getType());
+      Log.w("MicroMsg.AddContact", "not expected scene,  type = " + paramq.getType());
       AppMethodBeat.o(152161);
       return;
     }
-    if (((paramn instanceof o)) && (((o)paramn).dto != 1))
+    if (((paramq instanceof p)) && (((p)paramq).dKy != 1))
     {
-      ae.e("MicroMsg.AddContact", "not opcode addcontact!");
+      Log.e("MicroMsg.AddContact", "not opcode addcontact!");
       AppMethodBeat.o(152161);
       return;
     }
@@ -250,87 +249,87 @@ public final class a
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    com.tencent.mm.kernel.g.ajQ().gDv.b(30, this);
-    com.tencent.mm.kernel.g.ajQ().gDv.b(667, this);
+    g.aAg().hqi.b(30, this);
+    g.aAg().hqi.b(667, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramn.getType() == 30)
+      if (paramq.getType() == 30)
       {
-        this.Fnl = ((o)paramn).fdt();
-        c(true, false, this.Fnl, this.jjG);
-        paramString = com.tencent.mm.plugin.report.service.g.yxI;
-        paramn = this.kbH;
-        if (this.xyj.size() <= 0) {
+        this.Kec = ((p)paramq).gmD();
+        c(true, false, this.Kec, this.khI);
+        paramString = com.tencent.mm.plugin.report.service.h.CyF;
+        paramq = this.sourceUserName;
+        if (this.Bym.size() <= 0) {
           break label355;
         }
       }
       label355:
-      for (paramInt1 = ((Integer)this.xyj.getLast()).intValue();; paramInt1 = 0)
+      for (paramInt1 = ((Integer)this.Bym.getLast()).intValue();; paramInt1 = 0)
       {
-        paramString.f(18713, new Object[] { paramn, Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(1), Integer.valueOf(0) });
+        paramString.a(18713, new Object[] { paramq, Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(1), Integer.valueOf(0) });
         AppMethodBeat.o(152161);
         return;
-        if (paramn.getType() != 667) {
+        if (paramq.getType() != 667) {
           break;
         }
-        this.Fnl = ((com.tencent.mm.openim.b.b)paramn).iKt;
+        this.Kec = ((com.tencent.mm.openim.b.b)paramq).jGZ;
         break;
       }
     }
     if (paramInt2 == -44)
     {
-      paramn = this.jjG;
-      if (this.Fni != null)
+      paramq = this.khI;
+      if (this.Kea != null)
       {
-        b localb = this.Fni;
-        if (this.Fnj.isEmpty()) {}
-        for (paramString = "";; paramString = (String)this.Fnj.getFirst())
+        b localb = this.Kea;
+        if (this.Keb.isEmpty()) {}
+        for (paramString = "";; paramString = (String)this.Keb.getFirst())
         {
-          localb.aA(paramString, paramInt2);
-          c(false, false, this.Fnl, paramn);
+          localb.aE(paramString, paramInt2);
+          c(false, false, this.Kec, paramq);
           AppMethodBeat.o(152161);
           return;
         }
       }
       paramString = new aa(this.context, new aa.a()
       {
-        public final void cF(boolean paramAnonymousBoolean)
+        public final void jdMethod_do(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(152150);
-          String str = a.this.jjG;
+          String str = a.this.khI;
           a locala = a.this;
-          a.a(locala, paramAnonymousBoolean, locala.Fnl, str);
+          a.a(locala, paramAnonymousBoolean, locala.Kec, str);
           AppMethodBeat.o(152150);
         }
       });
-      if (this.Fnk != null) {
-        paramString.Fnk = this.Fnk;
+      if (this.wHV != null) {
+        paramString.wHV = this.wHV;
       }
-      if (this.Fnn)
+      if (this.Ked)
       {
-        paramString.D(this.xyi, this.xyj);
+        paramString.z(this.Byl, this.Bym);
         AppMethodBeat.o(152161);
         return;
       }
-      paramString.a(this.xyi, this.xyj, this.Fnj);
+      paramString.a(this.Byl, this.Bym, this.Keb);
       AppMethodBeat.o(152161);
       return;
     }
     if (paramInt2 == -87)
     {
-      h.c(this.context, this.context.getString(2131757604), "", true);
+      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(2131757832), "", true);
       AppMethodBeat.o(152161);
       return;
     }
-    if ((paramInt2 == -101) && (!bu.isNullOrNil(paramString)))
+    if ((paramInt2 == -101) && (!Util.isNullOrNil(paramString)))
     {
-      ae.d("MicroMsg.AddContact", "jacks catch add Contact errCode: %d && errMsg: %s", new Object[] { Integer.valueOf(paramInt2), paramString });
-      h.a(this.context, paramString, "", false, new DialogInterface.OnClickListener()
+      Log.d("MicroMsg.AddContact", "jacks catch add Contact errCode: %d && errMsg: %s", new Object[] { Integer.valueOf(paramInt2), paramString });
+      com.tencent.mm.ui.base.h.a(this.context, paramString, "", false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(152148);
-          a.a(a.this, false, a.this.Fnl, a.this.jjG);
+          a.a(a.this, false, a.this.Kec, a.this.khI);
           AppMethodBeat.o(152148);
         }
       });
@@ -339,38 +338,38 @@ public final class a
     }
     if (paramInt2 == -2)
     {
-      if (!bu.isNullOrNil(paramString))
+      if (!Util.isNullOrNil(paramString))
       {
-        h.a(this.context, paramString, this.context.getString(2131755906), this.context.getString(2131755835), null);
+        com.tencent.mm.ui.base.h.a(this.context, paramString, this.context.getString(2131755998), this.context.getString(2131755921), null);
         AppMethodBeat.o(152161);
         return;
       }
-      P(paramInt1, paramInt2, null);
+      R(paramInt1, paramInt2, null);
       AppMethodBeat.o(152161);
       return;
     }
     if (paramInt2 == -160)
     {
-      if (!bu.isNullOrNil(paramString))
+      if (!Util.isNullOrNil(paramString))
       {
-        h.e(this.context, paramString, "", this.context.getResources().getString(2131755700), this.context.getResources().getString(2131755691), new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.c(this.context, paramString, "", this.context.getResources().getString(2131755771), this.context.getResources().getString(2131755761), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(152149);
-            a.this.Fnp = false;
-            a.this.ffW();
+            a.this.Kef = false;
+            a.this.gpf();
             AppMethodBeat.o(152149);
           }
         }, null);
         AppMethodBeat.o(152161);
         return;
       }
-      P(paramInt1, paramInt2, paramString);
+      R(paramInt1, paramInt2, paramString);
       AppMethodBeat.o(152161);
       return;
     }
-    P(paramInt1, paramInt2, paramString);
+    R(paramInt1, paramInt2, paramString);
     AppMethodBeat.o(152161);
   }
   
@@ -381,12 +380,12 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract boolean aA(String paramString, int paramInt);
+    public abstract boolean aE(String paramString, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.a
  * JD-Core Version:    0.7.0.1
  */

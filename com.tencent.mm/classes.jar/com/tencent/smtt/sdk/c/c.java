@@ -31,10 +31,10 @@ public class c
   
   public static int a(Context paramContext, String paramString, HashMap<String, String> paramHashMap, WebView paramWebView)
   {
-    AppMethodBeat.i(192755);
+    AppMethodBeat.i(188208);
     if (paramContext == null)
     {
-      AppMethodBeat.o(192755);
+      AppMethodBeat.o(188208);
       return 3;
     }
     Object localObject1 = paramString;
@@ -46,24 +46,24 @@ public class c
       localObject1 = Uri.parse((String)localObject1);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(192755);
+        AppMethodBeat.o(188208);
         return 2;
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(192755);
+      AppMethodBeat.o(188208);
       return 2;
     }
     Object localObject2 = a(paramContext);
     if (((a)localObject2).a == -1)
     {
-      AppMethodBeat.o(192755);
+      AppMethodBeat.o(188208);
       return 4;
     }
     if ((((a)localObject2).a == 2) && (((a)localObject2).b < 33))
     {
-      AppMethodBeat.o(192755);
+      AppMethodBeat.o(188208);
       return 5;
     }
     paramString = new Intent("android.intent.action.VIEW");
@@ -156,16 +156,16 @@ public class c
           paramString.putExtra("AnchorPoint", new Point(paramWebView.getScrollX(), paramWebView.getScrollY()));
           paramString.putExtra("ContentSize", new Point(paramWebView.getContentWidth(), paramWebView.getContentHeight()));
         }
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;Lcom/tencent/smtt/sdk/WebView;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramString.mt(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;Lcom/tencent/smtt/sdk/WebView;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramString.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;Lcom/tencent/smtt/sdk/WebView;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(192755);
+        AppMethodBeat.o(188208);
         return 0;
       }
       catch (ActivityNotFoundException paramContext)
       {
-        AppMethodBeat.o(192755);
+        AppMethodBeat.o(188208);
         return 4;
       }
     }
@@ -174,7 +174,7 @@ public class c
   public static int a(Context paramContext, String paramString1, HashMap<String, String> paramHashMap, String paramString2, WebView paramWebView)
   {
     j = 0;
-    AppMethodBeat.i(192754);
+    AppMethodBeat.i(188207);
     StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
@@ -221,27 +221,27 @@ public class c
       localObject = ",encoded=1";
       localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=TBS,packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=4.4.0.0006").append((String)localObject);
       i = a(paramContext, localStringBuilder.toString(), paramHashMap, paramWebView);
-      AppMethodBeat.o(192754);
+      AppMethodBeat.o(188207);
       return i;
     }
   }
   
   private static Uri a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192752);
+    AppMethodBeat.i(188205);
     paramContext = Uri.fromFile(new File(paramString));
-    AppMethodBeat.o(192752);
+    AppMethodBeat.o(188205);
     return paramContext;
   }
   
   public static a a(Context paramContext)
   {
-    AppMethodBeat.i(192758);
+    AppMethodBeat.i(188211);
     boolean bool = paramContext.getApplicationContext().getSharedPreferences("x5_proxy_setting", 0).getBoolean("qb_install_status", false);
     locala = new a();
     if (bool)
     {
-      AppMethodBeat.o(192758);
+      AppMethodBeat.o(188211);
       return locala;
     }
     for (;;)
@@ -272,7 +272,7 @@ public class c
               locala.c += ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
               localObject1 = localObject6;
               locala.d = ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
-              AppMethodBeat.o(192758);
+              AppMethodBeat.o(188211);
               return locala;
             }
           }
@@ -382,19 +382,19 @@ public class c
       locala.c += paramContext.versionName.replaceAll("\\.", "");
       locala.d = paramContext.versionName.replaceAll("\\.", "");
     }
-    AppMethodBeat.o(192758);
+    AppMethodBeat.o(188211);
     return locala;
   }
   
   private static b a(Context paramContext, Uri paramUri)
   {
-    AppMethodBeat.i(192757);
+    AppMethodBeat.i(188210);
     Object localObject = new Intent("com.tencent.QQBrowser.action.VIEW");
     ((Intent)localObject).setData(paramUri);
     paramUri = paramContext.getPackageManager().queryIntentActivities((Intent)localObject, 0);
     if (paramUri.size() <= 0)
     {
-      AppMethodBeat.o(192757);
+      AppMethodBeat.o(188210);
       return null;
     }
     paramContext = new b(null);
@@ -407,7 +407,7 @@ public class c
       {
         paramContext.a = ((ResolveInfo)localObject).activityInfo.name;
         paramContext.b = ((ResolveInfo)localObject).activityInfo.packageName;
-        AppMethodBeat.o(192757);
+        AppMethodBeat.o(188210);
         return paramContext;
       }
       if (str.contains("com.tencent.qbx"))
@@ -416,14 +416,14 @@ public class c
         paramContext.b = ((ResolveInfo)localObject).activityInfo.packageName;
       }
     }
-    AppMethodBeat.o(192757);
+    AppMethodBeat.o(188210);
     return paramContext;
   }
   
   public static boolean a(Context paramContext, long paramLong1, long paramLong2)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(192762);
+    AppMethodBeat.i(188215);
     paramContext = a(paramContext);
     boolean bool1 = false;
     try
@@ -440,14 +440,14 @@ public class c
     if (paramContext.b >= paramLong2)
     {
       bool1 = bool2;
-      AppMethodBeat.o(192762);
+      AppMethodBeat.o(188215);
       return bool1;
     }
   }
   
   public static boolean a(Context paramContext, String paramString1, int paramInt, String paramString2, HashMap<String, String> paramHashMap, Bundle paramBundle)
   {
-    AppMethodBeat.i(192751);
+    AppMethodBeat.i(188204);
     Intent localIntent;
     try
     {
@@ -472,7 +472,7 @@ public class c
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(192751);
+      AppMethodBeat.o(188204);
       return false;
     }
     localIntent.putExtra("key_reader_sdk_id", 3);
@@ -490,7 +490,7 @@ public class c
       if (paramString1 != null) {
         break;
       }
-      AppMethodBeat.o(192751);
+      AppMethodBeat.o(188204);
       return false;
       if (paramInt == 1) {
         localIntent.putExtra("key_reader_sdk_url", paramString1);
@@ -501,17 +501,17 @@ public class c
     if (paramBundle != null) {
       localIntent.putExtra("key_reader_sdk_extrals", paramBundle);
     }
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahE(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;Ljava/util/HashMap;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.mt(0));
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.axQ(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;Ljava/util/HashMap;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;Ljava/util/HashMap;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(192751);
+    AppMethodBeat.o(188204);
     return true;
   }
   
   public static boolean a(Context paramContext, String paramString, HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(192753);
+    AppMethodBeat.i(188206);
     Object localObject = Uri.parse(paramString);
     paramString = new Intent("android.intent.action.VIEW");
     paramString.setFlags(268435456);
@@ -536,9 +536,9 @@ public class c
     {
       paramString.putExtra("loginType", d(paramContext));
       paramString.setComponent(new ComponentName("com.tencent.mtt", "com.tencent.mtt.browser.video.H5VideoThrdcallActivity"));
-      paramHashMap = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramHashMap.ahE(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramHashMap.mt(0));
+      paramHashMap = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramHashMap.axQ(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramHashMap.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       i = 1;
     }
@@ -549,17 +549,17 @@ public class c
         try
         {
           paramString.setComponent(null);
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramString.mt(0));
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramString.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/c/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          AppMethodBeat.o(192753);
+          AppMethodBeat.o(188206);
           return true;
         }
         catch (Throwable paramContext)
         {
           int i;
-          AppMethodBeat.o(192753);
+          AppMethodBeat.o(188206);
         }
         paramHashMap = paramHashMap;
         i = 0;
@@ -571,10 +571,10 @@ public class c
   
   private static boolean a(String paramString)
   {
-    AppMethodBeat.i(192759);
+    AppMethodBeat.i(188212);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(192759);
+      AppMethodBeat.o(188212);
       return false;
     }
     paramString = paramString.trim();
@@ -582,30 +582,30 @@ public class c
     int j = paramString.toLowerCase().indexOf('.');
     if ((i > 0) && (j > 0) && (i > j))
     {
-      AppMethodBeat.o(192759);
+      AppMethodBeat.o(188212);
       return false;
     }
     boolean bool = paramString.toLowerCase().contains("://");
-    AppMethodBeat.o(192759);
+    AppMethodBeat.o(188212);
     return bool;
   }
   
   public static boolean b(Context paramContext)
   {
-    AppMethodBeat.i(192760);
+    AppMethodBeat.i(188213);
     if (a(paramContext).a == -1)
     {
-      AppMethodBeat.o(192760);
+      AppMethodBeat.o(188213);
       return false;
     }
-    AppMethodBeat.o(192760);
+    AppMethodBeat.o(188213);
     return true;
   }
   
   public static boolean c(Context paramContext)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(192761);
+    AppMethodBeat.i(188214);
     paramContext = a(paramContext);
     boolean bool1 = false;
     try
@@ -622,14 +622,14 @@ public class c
     if (paramContext.b >= 601500)
     {
       bool1 = bool2;
-      AppMethodBeat.o(192761);
+      AppMethodBeat.o(188214);
       return bool1;
     }
   }
   
   private static int d(Context paramContext)
   {
-    AppMethodBeat.i(192756);
+    AppMethodBeat.i(188209);
     int i = 26;
     paramContext = paramContext.getApplicationInfo().processName;
     if (paramContext.equals("com.tencent.mobileqq")) {
@@ -637,7 +637,7 @@ public class c
     }
     for (;;)
     {
-      AppMethodBeat.o(192756);
+      AppMethodBeat.o(188209);
       return i;
       if (paramContext.equals("com.qzone")) {
         i = 14;
@@ -666,7 +666,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.c.c
  * JD-Core Version:    0.7.0.1
  */

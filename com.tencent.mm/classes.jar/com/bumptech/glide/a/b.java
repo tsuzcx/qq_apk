@@ -44,7 +44,7 @@ final class b
     AppMethodBeat.o(100640);
   }
   
-  private void nY()
+  private void oe()
   {
     AppMethodBeat.i(100643);
     int i = this.in.read(this.buf, 0, this.buf.length);
@@ -87,7 +87,7 @@ final class b
       }
     }
     if (this.pos >= this.end) {
-      nY();
+      oe();
     }
     int i = this.pos;
     while (i != this.end)
@@ -131,7 +131,7 @@ final class b
     {
       ((ByteArrayOutputStream)localObject2).write(this.buf, this.pos, this.end - this.pos);
       this.end = -1;
-      nY();
+      oe();
       i = this.pos;
       while (i != this.end)
       {
@@ -152,7 +152,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.a.b
  * JD-Core Version:    0.7.0.1
  */

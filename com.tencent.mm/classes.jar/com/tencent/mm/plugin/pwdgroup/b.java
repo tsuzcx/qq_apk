@@ -13,19 +13,19 @@ public final class b
 {
   private b(String paramString)
   {
-    super(a.xnS, paramString);
+    super(a.Boe, paramString);
   }
   
-  public final void DG(String paramString)
+  public final void Mr(String paramString)
   {
     AppMethodBeat.i(27614);
-    super.DG(paramString);
+    super.Mr(paramString);
     AppMethodBeat.o(27614);
   }
   
   public static final class a
   {
-    static j.a xnS;
+    static j.a Boe;
     
     public static void c(ImageView paramImageView, String paramString)
     {
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,44 +5,105 @@ import android.database.Cursor;
 import android.preference.PreferenceManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.h.b;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 
 public final class e
-  extends j<d>
+  extends MAutoStorage<d>
   implements g.a
 {
   private static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public SharedPreferences JiM;
-  public com.tencent.mm.sdk.e.e db;
+  public SharedPreferences OsE;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(105057);
-    SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "EmojiInfoDesc") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(d.info, "EmojiInfoDesc") };
     INDEX_CREATE = new String[] { "create index if not exists descGroupIdIndex on EmojiInfoDesc ( groupId )" };
     AppMethodBeat.o(105057);
   }
   
-  public e(com.tencent.mm.sdk.e.e parame)
+  public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(parame, d.info, "EmojiInfoDesc", INDEX_CREATE);
+    this(paramISQLiteDatabase, d.info, "EmojiInfoDesc", INDEX_CREATE);
   }
   
-  private e(com.tencent.mm.sdk.e.e parame, c.a parama, String paramString, String[] paramArrayOfString)
+  private e(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
   {
-    super(parame, parama, paramString, paramArrayOfString);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
     AppMethodBeat.i(105050);
-    this.db = parame;
-    this.JiM = PreferenceManager.getDefaultSharedPreferences(ak.getContext());
+    this.db = paramISQLiteDatabase;
+    this.OsE = PreferenceManager.getDefaultSharedPreferences(MMApplicationContext.getContext());
     AppMethodBeat.o(105050);
+  }
+  
+  private boolean blh(String paramString)
+  {
+    bool4 = false;
+    boolean bool3 = false;
+    AppMethodBeat.i(105054);
+    bool2 = bool4;
+    String str2;
+    if (b.anh(paramString))
+    {
+      str2 = String.format("select %s from %s where %s=?", new Object[] { "desc", "EmojiInfoDesc", "groupId" });
+      localObject = null;
+      str1 = null;
+    }
+    try
+    {
+      paramString = this.db.rawQuery(str2, new String[] { paramString }, 2);
+      boolean bool1 = bool3;
+      if (paramString != null)
+      {
+        str1 = paramString;
+        localObject = paramString;
+        bool2 = paramString.moveToFirst();
+        bool1 = bool3;
+        if (bool2) {
+          bool1 = true;
+        }
+      }
+      bool2 = bool1;
+      if (paramString != null)
+      {
+        paramString.close();
+        bool2 = bool1;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        localObject = str1;
+        Log.w("MicroMsg.emoji.EmojiInfoDescStorage", paramString.toString());
+        bool2 = bool4;
+        if (str1 != null)
+        {
+          str1.close();
+          bool2 = bool4;
+        }
+      }
+    }
+    finally
+    {
+      if (localObject == null) {
+        break label172;
+      }
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(105054);
+    }
+    AppMethodBeat.o(105054);
+    return bool2;
   }
   
   public final int a(g paramg)
@@ -51,7 +112,33 @@ public final class e
     return 0;
   }
   
-  public final boolean aWh(String paramString)
+  public final String amp(String paramString)
+  {
+    AppMethodBeat.i(105051);
+    String str1 = null;
+    String str2 = String.format("select %s from %s where %s=?", new Object[] { "desc", "EmojiInfoDesc", "md5_lang" });
+    Object localObject = paramString + LocaleUtil.getApplicationLanguage().toLowerCase();
+    localObject = this.db.rawQuery(str2, new String[] { localObject }, 2);
+    if (((Cursor)localObject).moveToFirst()) {
+      str1 = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("desc"));
+    }
+    ((Cursor)localObject).close();
+    if (!Util.isNullOrNil(str1))
+    {
+      AppMethodBeat.o(105051);
+      return str1;
+    }
+    paramString = paramString + "default";
+    paramString = this.db.rawQuery(str2, new String[] { paramString }, 2);
+    if (paramString.moveToFirst()) {
+      str1 = paramString.getString(paramString.getColumnIndex("desc"));
+    }
+    paramString.close();
+    AppMethodBeat.o(105051);
+    return str1;
+  }
+  
+  public final boolean blf(String paramString)
   {
     bool2 = true;
     bool3 = false;
@@ -64,7 +151,7 @@ public final class e
     {
       try
       {
-        paramString = this.db.a(str2, new String[] { paramString }, 2);
+        paramString = this.db.rawQuery(str2, new String[] { paramString }, 2);
         bool1 = bool4;
         if (paramString != null)
         {
@@ -93,7 +180,7 @@ public final class e
       {
         boolean bool1;
         localObject = str1;
-        ae.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
+        Log.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
         bool2 = bool3;
         if (str1 == null) {
           continue;
@@ -116,7 +203,7 @@ public final class e
     }
   }
   
-  public final boolean aWi(String paramString)
+  public final boolean blg(String paramString)
   {
     bool2 = true;
     bool3 = false;
@@ -129,7 +216,7 @@ public final class e
     {
       try
       {
-        paramString = this.db.a(str2, new String[] { paramString }, 2);
+        paramString = this.db.rawQuery(str2, new String[] { paramString }, 2);
         bool1 = bool4;
         if (paramString != null)
         {
@@ -158,7 +245,7 @@ public final class e
       {
         boolean bool1;
         localObject = str1;
-        ae.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
+        Log.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
         bool2 = bool3;
         if (str1 == null) {
           continue;
@@ -181,126 +268,88 @@ public final class e
     }
   }
   
-  public final boolean aWj(String paramString)
+  public final boolean bli(String paramString)
   {
-    bool4 = false;
-    boolean bool3 = false;
-    AppMethodBeat.i(105054);
-    bool2 = bool4;
-    String str2;
-    if (b.acZ(paramString))
+    AppMethodBeat.i(199822);
+    if (b.anh(paramString))
     {
-      str2 = String.format("select %s from %s where %s=?", new Object[] { "desc", "EmojiInfoDesc", "groupId" });
-      localObject = null;
-      str1 = null;
-    }
-    try
-    {
-      paramString = this.db.a(str2, new String[] { paramString }, 2);
-      boolean bool1 = bool3;
-      if (paramString != null)
+      long l1 = this.OsE.getLong("274544".concat(String.valueOf(paramString)), 0L);
+      long l2 = System.currentTimeMillis();
+      if (l2 - l1 >= 86400000L)
       {
-        str1 = paramString;
-        localObject = paramString;
-        bool2 = paramString.moveToFirst();
-        bool1 = bool3;
-        if (bool2) {
-          bool1 = true;
-        }
+        AppMethodBeat.o(199822);
+        return true;
       }
-      bool2 = bool1;
-      if (paramString != null)
+      if ((!blh(paramString)) && (l2 - l1 >= 3600000L))
       {
-        paramString.close();
-        bool2 = bool1;
+        AppMethodBeat.o(199822);
+        return true;
       }
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        localObject = str1;
-        ae.w("MicroMsg.emoji.EmojiInfoDescStorage", paramString.toString());
-        bool2 = bool4;
-        if (str1 != null)
-        {
-          str1.close();
-          bool2 = bool4;
-        }
-      }
-    }
-    finally
-    {
-      if (localObject == null) {
-        break label172;
-      }
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(105054);
-    }
-    AppMethodBeat.o(105054);
-    return bool2;
+    AppMethodBeat.o(199822);
+    return false;
   }
   
   /* Error */
-  public final java.util.ArrayList<d> aWk(String paramString)
+  public final java.util.ArrayList<d> blj(String paramString)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: ldc 146
+    //   2: ldc 209
     //   4: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 148	java/util/ArrayList
+    //   7: new 211	java/util/ArrayList
     //   10: dup
-    //   11: invokespecial 150	java/util/ArrayList:<init>	()V
+    //   11: invokespecial 212	java/util/ArrayList:<init>	()V
     //   14: astore 4
-    //   16: new 152	java/lang/StringBuilder
+    //   16: new 128	java/lang/StringBuilder
     //   19: dup
-    //   20: ldc 154
-    //   22: invokespecial 157	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: ldc 214
+    //   22: invokespecial 217	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   25: aload_1
-    //   26: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc 163
-    //   31: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc 219
+    //   31: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   37: astore_1
     //   38: aload_0
-    //   39: getfield 56	com/tencent/mm/storage/emotion/e:db	Lcom/tencent/mm/sdk/e/e;
+    //   39: getfield 56	com/tencent/mm/storage/emotion/e:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   42: aload_1
     //   43: aconst_null
     //   44: iconst_2
-    //   45: invokeinterface 94 4 0
+    //   45: invokeinterface 98 4 0
     //   50: astore 5
     //   52: aload 5
     //   54: ifnull +46 -> 100
     //   57: aload 5
-    //   59: invokeinterface 100 1 0
+    //   59: invokeinterface 104 1 0
     //   64: ifeq +36 -> 100
     //   67: new 27	com/tencent/mm/storage/emotion/d
     //   70: dup
-    //   71: invokespecial 165	com/tencent/mm/storage/emotion/d:<init>	()V
+    //   71: invokespecial 220	com/tencent/mm/storage/emotion/d:<init>	()V
     //   74: astore_1
     //   75: aload_1
     //   76: aload 5
-    //   78: invokevirtual 169	com/tencent/mm/storage/emotion/d:convertFrom	(Landroid/database/Cursor;)V
+    //   78: invokevirtual 224	com/tencent/mm/storage/emotion/d:convertFrom	(Landroid/database/Cursor;)V
     //   81: aload 4
     //   83: aload_1
-    //   84: invokevirtual 173	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   84: invokevirtual 228	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   87: pop
     //   88: aload 5
-    //   90: invokeinterface 176 1 0
+    //   90: invokeinterface 231 1 0
     //   95: istore_2
     //   96: iload_2
     //   97: ifne -30 -> 67
     //   100: aload 5
     //   102: ifnull +10 -> 112
     //   105: aload 5
-    //   107: invokeinterface 111 1 0
-    //   112: ldc 146
+    //   107: invokeinterface 107 1 0
+    //   112: ldc 209
     //   114: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: aload 4
     //   119: areturn
     //   120: astore_3
-    //   121: ldc 146
+    //   121: ldc 209
     //   123: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: aload_3
     //   127: athrow
@@ -310,26 +359,26 @@ public final class e
     //   134: aload_3
     //   135: ifnull +44 -> 179
     //   138: aload 5
-    //   140: invokeinterface 111 1 0
-    //   145: ldc 146
+    //   140: invokeinterface 107 1 0
+    //   145: ldc 209
     //   147: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   150: aload_1
     //   151: athrow
     //   152: astore_1
-    //   153: ldc 113
+    //   153: ldc 109
     //   155: aload_1
-    //   156: ldc 178
+    //   156: ldc 233
     //   158: iconst_0
-    //   159: anewarray 81	java/lang/Object
-    //   162: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   159: anewarray 84	java/lang/Object
+    //   162: invokestatic 237	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   165: goto -53 -> 112
     //   168: astore 5
     //   170: aload_3
     //   171: aload 5
-    //   173: invokevirtual 186	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   173: invokevirtual 241	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   176: goto -31 -> 145
     //   179: aload 5
-    //   181: invokeinterface 111 1 0
+    //   181: invokeinterface 107 1 0
     //   186: goto -41 -> 145
     //   189: astore_1
     //   190: goto -61 -> 129
@@ -358,36 +407,10 @@ public final class e
     //   57	67	189	finally
     //   67	96	189	finally
   }
-  
-  public final String acm(String paramString)
-  {
-    AppMethodBeat.i(105051);
-    String str1 = null;
-    String str2 = String.format("select %s from %s where %s=?", new Object[] { "desc", "EmojiInfoDesc", "md5_lang" });
-    Object localObject = paramString + ad.fom().toLowerCase();
-    localObject = this.db.a(str2, new String[] { localObject }, 2);
-    if (((Cursor)localObject).moveToFirst()) {
-      str1 = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("desc"));
-    }
-    ((Cursor)localObject).close();
-    if (!bu.isNullOrNil(str1))
-    {
-      AppMethodBeat.o(105051);
-      return str1;
-    }
-    paramString = paramString + "default";
-    paramString = this.db.a(str2, new String[] { paramString }, 2);
-    if (paramString.moveToFirst()) {
-      str1 = paramString.getString(paramString.getColumnIndex("desc"));
-    }
-    paramString.close();
-    AppMethodBeat.o(105051);
-    return str1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.e
  * JD-Core Version:    0.7.0.1
  */

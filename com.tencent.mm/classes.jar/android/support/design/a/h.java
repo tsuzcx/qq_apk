@@ -12,7 +12,7 @@ import java.util.List;
 
 public final class h
 {
-  private final n<String, i> gV = new n();
+  private final n<String, i> gX = new n();
   
   public static h a(Context paramContext, TypedArray paramTypedArray, int paramInt)
   {
@@ -39,7 +39,7 @@ public final class h
   
   private void a(String paramString, i parami)
   {
-    this.gV.put(paramString, parami);
+    this.gX.put(paramString, parami);
   }
   
   private static h c(List<Animator> paramList)
@@ -88,18 +88,18 @@ public final class h
       return false;
     }
     paramObject = (h)paramObject;
-    return this.gV.equals(paramObject.gV);
+    return this.gX.equals(paramObject.gX);
   }
   
   public final long getTotalDuration()
   {
     long l = 0L;
-    int j = this.gV.size();
+    int j = this.gX.size();
     int i = 0;
     while (i < j)
     {
-      i locali = (i)this.gV.valueAt(i);
-      l = Math.max(l, locali.gW + locali.duration);
+      i locali = (i)this.gX.valueAt(i);
+      l = Math.max(l, locali.gY + locali.duration);
       i += 1;
     }
     return l;
@@ -107,16 +107,16 @@ public final class h
   
   public final int hashCode()
   {
-    return this.gV.hashCode();
+    return this.gX.hashCode();
   }
   
   public final i j(String paramString)
   {
-    if (this.gV.get(paramString) != null) {}
+    if (this.gX.get(paramString) != null) {}
     for (int i = 1; i == 0; i = 0) {
       throw new IllegalArgumentException();
     }
-    return (i)this.gV.get(paramString);
+    return (i)this.gX.get(paramString);
   }
   
   public final String toString()
@@ -127,7 +127,7 @@ public final class h
     localStringBuilder.append('{');
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" timings: ");
-    localStringBuilder.append(this.gV);
+    localStringBuilder.append(this.gX);
     localStringBuilder.append("}\n");
     return localStringBuilder.toString();
   }

@@ -1,83 +1,104 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
-import com.tencent.mm.plugin.appbrand.jsruntime.o;
-import java.util.Map;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cz;
+import com.tencent.mm.g.a.cz.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.plugin.fav.a.ad;
+import com.tencent.mm.plugin.fav.ui.e;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.snackbar.a.c;
+import kotlin.l;
 
-public abstract interface c
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/AddVideoToFavoritesTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
+final class c
+  extends AppBrandProxyUIProcessTask
 {
-  public abstract i EM();
-  
-  public abstract Map<String, m> EN();
-  
-  public abstract q Fl();
-  
-  public abstract <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass);
-  
-  public abstract void K(Runnable paramRunnable);
-  
-  public abstract void a(at paramat);
-  
-  public abstract void a(at paramat, o paramo);
-  
-  public abstract boolean a(k paramk);
-  
-  public abstract com.tencent.mm.plugin.appbrand.a.b aWc();
-  
-  public abstract com.tencent.mm.plugin.appbrand.widget.dialog.m aWd();
-  
-  public abstract boolean aXO();
-  
-  public abstract int aXX();
-  
-  public abstract Handler aYA();
-  
-  public abstract i aYB();
-  
-  public abstract <T extends j> T ar(Class<T> paramClass);
-  
-  public abstract <T extends k> T as(Class<T> paramClass);
-  
-  public abstract void b(at paramat);
-  
-  public abstract void b(String paramString1, String paramString2, int[] paramArrayOfInt);
-  
-  public abstract void cb(String paramString1, String paramString2);
-  
-  public abstract String getAppId();
-  
-  public abstract Context getContext();
-  
-  public abstract void h(int paramInt, String paramString);
-  
-  public abstract boolean isRunning();
-  
-  public abstract void j(Runnable paramRunnable, long paramLong);
-  
-  public static abstract interface a
+  public final void a(final AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    public abstract void PL(String paramString);
-    
-    public abstract void proceed();
+    AppMethodBeat.i(228259);
+    if (!(paramProcessRequest instanceof AddVideoToFavoritesRequest))
+    {
+      Log.w("MicroMsg.AppBrand.JsApiAddVideoToFavorites", "handleRequest#AddVideoToFavoritesTask, request is not AddVideoToFavoritesRequest");
+      AppMethodBeat.o(228259);
+      return;
+    }
+    cz localcz = new cz();
+    int j = dc.Zj(((AddVideoToFavoritesRequest)paramProcessRequest).videoPath);
+    if (j <= 0)
+    {
+      Log.w("MicroMsg.AppBrand.JsApiAddVideoToFavorites", "handleRequest#AddVideoToFavoritesTask, durationS: ".concat(String.valueOf(j)));
+      b((AppBrandProxyUIProcessTask.ProcessResult)new AddToFavoritesResult(false));
+      AppMethodBeat.o(228259);
+      return;
+    }
+    String str = dc.dm(((AddVideoToFavoritesRequest)paramProcessRequest).videoPath, ((AddVideoToFavoritesRequest)paramProcessRequest).thumbPath);
+    CharSequence localCharSequence = (CharSequence)str;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.w("MicroMsg.AppBrand.JsApiAddVideoToFavorites", "handleRequest#AddVideoToFavoritesTask, thumbPath is empty");
+      b((AppBrandProxyUIProcessTask.ProcessResult)new AddToFavoritesResult(false));
+      AppMethodBeat.o(228259);
+      return;
+    }
+    ((ad)g.af(ad.class)).a(localcz, ((AddVideoToFavoritesRequest)paramProcessRequest).videoPath, str, j, "", "");
+    EventCenter.instance.publish((IEvent)localcz);
+    if (localcz.dGa.ret == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.AppBrand.JsApiAddVideoToFavorites", "handleRequest#AddVideoToFavoritesTask, success: ".concat(String.valueOf(bool)));
+      paramProcessRequest = new AddToFavoritesResult(bool);
+      e.a(localcz.dGa.ret, (Activity)bDF(), (a.c)new a(this, paramProcessRequest), (DialogInterface.OnClickListener)new b(this, paramProcessRequest), null);
+      AppMethodBeat.o(228259);
+      return;
+    }
   }
   
-  public static abstract interface b
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/jsapi/AddVideoToFavoritesTask$handleRequest$1", "Lcom/tencent/mm/ui/widget/snackbar/SnackBar$OnVisibilityChangeListener;", "onHide", "", "onShow", "startHide", "plugin-appbrand-integration_release"})
+  public static final class a
+    implements a.c
   {
-    public abstract void S(int paramInt, String paramString);
+    a(AddToFavoritesResult paramAddToFavoritesResult) {}
     
-    public abstract void a(at paramat, c.a parama);
+    public final void bDY() {}
     
-    public abstract void a(m paramm, String paramString1, int paramInt, String paramString2);
+    public final void onHide()
+    {
+      AppMethodBeat.i(228257);
+      c.a(this.lxj, (AppBrandProxyUIProcessTask.ProcessResult)paramProcessRequest);
+      AppMethodBeat.o(228257);
+    }
     
-    public abstract boolean a(m paramm, String paramString, int paramInt, c.a parama);
+    public final void onShow() {}
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+  static final class b
+    implements DialogInterface.OnClickListener
+  {
+    b(c paramc, AddToFavoritesResult paramAddToFavoritesResult) {}
+    
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(228258);
+      paramDialogInterface.dismiss();
+      c.a(this.lxj, (AppBrandProxyUIProcessTask.ProcessResult)paramProcessRequest);
+      AppMethodBeat.o(228258);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,326 +1,279 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.af;
-import com.tencent.mm.g.b.a.ai;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.bv;
-import d.g.b.p;
+import com.tencent.mm.plugin.finder.api.g;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderChatReporter;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "recordChatEmpty", "Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatEmpty;", "getRecordChatEmpty", "()Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatEmpty;", "recordChatEnter", "Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatEnter;", "getRecordChatEnter", "()Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatEnter;", "recordChatSendClick", "Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordChatSendClick;", "getRecordChatSendClick", "()Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordChatSendClick;", "recordFinderChatList", "Lcom/tencent/mm/plugin/finder/report/RecordFinderChatList;", "getRecordFinderChatList", "()Lcom/tencent/mm/plugin/finder/report/RecordFinderChatList;", "recordFinderChatListInner", "getRecordFinderChatListInner", "recordFinderChatProfile", "Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatProfile;", "getRecordFinderChatProfile", "()Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatProfile;", "onChatListExit", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "recordChatClickExpose", "key", "recordChatExpose", "pageSet", "", "structLog", "tag", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "ChatListRecord", "RecordChatSendClick", "RecordFinderChatEmpty", "RecordFinderChatEnter", "RecordFinderChatProfile", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher;", "Lcom/tencent/mm/plugin/finder/report/IReportWatcher;", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "()V", "isWatch", "", "objAllocateMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$ReportRecord;", "watchedLogId", "calc", "", "getObjHashCode", "", "obj", "", "getRecord", "logId", "isBlock", "onAllocate", "record", "onRelease", "printBriefLog", "feed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "prefixLog", "startWatch", "stopWatch", "vertify", "Companion", "ReportRecord", "plugin-finder_release"})
 public final class b
+  implements aa<p>
 {
-  private static final String TAG = "FinderChatReporter";
-  private static final y swV;
-  private static final y swW;
-  private static final e swX;
-  private static final c swY;
-  private static final d swZ;
-  private static final b sxa;
-  public static final b sxb;
+  public static final a vcY;
+  private boolean vcV;
+  private int vcW;
+  private final ConcurrentHashMap<Integer, List<b>> vcX;
   
   static
   {
-    AppMethodBeat.i(203739);
-    sxb = new b();
-    TAG = "FinderChatReporter";
-    swV = new y();
-    swW = new y();
-    swX = new e();
-    swY = new c();
-    swZ = new d();
-    sxa = new b();
-    AppMethodBeat.o(203739);
+    AppMethodBeat.i(250516);
+    vcY = new a((byte)0);
+    AppMethodBeat.o(250516);
   }
   
-  public static void aiH(String paramString)
+  public b()
   {
-    AppMethodBeat.i(203738);
-    p.h(paramString, "key");
-    if (swW.sCH)
+    AppMethodBeat.i(250515);
+    this.vcX = new ConcurrentHashMap();
+    AppMethodBeat.o(250515);
+  }
+  
+  private final boolean Kb(int paramInt)
+  {
+    return (!this.vcV) && ((this.vcW == 0) || (this.vcW != paramInt));
+  }
+  
+  static String dl(Object paramObject)
+  {
+    AppMethodBeat.i(250513);
+    k localk = k.vfA;
+    paramObject = k.Fg(paramObject.hashCode());
+    AppMethodBeat.o(250513);
+    return paramObject;
+  }
+  
+  private final List<b> dnE()
+  {
+    AppMethodBeat.i(250512);
+    List localList2 = (List)this.vcX.get(Integer.valueOf(18054));
+    List localList1 = localList2;
+    if (localList2 == null)
     {
-      swW.aiH(paramString);
-      AppMethodBeat.o(203738);
+      localList1 = (List)new ArrayList();
+      ((Map)this.vcX).put(Integer.valueOf(18054), localList1);
+    }
+    AppMethodBeat.o(250512);
+    return localList1;
+  }
+  
+  public final void a(bo parambo, String paramString, p paramp)
+  {
+    AppMethodBeat.i(250509);
+    kotlin.g.b.p.h(paramString, "prefixLog");
+    kotlin.g.b.p.h(paramp, "record");
+    if (Kb(0))
+    {
+      AppMethodBeat.o(250509);
       return;
     }
-    swV.aiH(paramString);
-    AppMethodBeat.o(203738);
+    if ((parambo instanceof BaseFinderFeed))
+    {
+      parambo = (BaseFinderFeed)parambo;
+      Object localObject = k.vfA;
+      String str = k.Fg(parambo.lT());
+      parambo = parambo.contact;
+      if (parambo != null)
+      {
+        localObject = parambo.field_nickname;
+        parambo = (bo)localObject;
+        if (localObject != null) {}
+      }
+      else
+      {
+        parambo = "";
+      }
+      Log.i("FeedReportWatcher", paramString + " --- nickName:" + parambo + " feedId:" + str + "        record obj:" + dl(paramp));
+    }
+    AppMethodBeat.o(250509);
   }
   
-  public static void b(arn paramarn)
+  public final void a(p paramp)
   {
-    AppMethodBeat.i(203736);
-    if (swW.sCH)
+    AppMethodBeat.i(250510);
+    if (Kb(18054))
     {
-      swW.e(paramarn);
-      AppMethodBeat.o(203736);
+      AppMethodBeat.o(250510);
       return;
     }
-    swV.e(paramarn);
-    AppMethodBeat.o(203736);
+    Object localObject = new StringBuilder("feedId:");
+    k localk = k.vfA;
+    localObject = k.Fg(paramp.feedId) + "  obj:" + dl(paramp);
+    paramp = new b(paramp.hashCode(), (String)localObject);
+    dnE().add(paramp);
+    AppMethodBeat.o(250510);
   }
   
-  public static y cFb()
+  public final void b(p paramp)
   {
-    return swV;
-  }
-  
-  public static y cFc()
-  {
-    return swW;
-  }
-  
-  public static e cFd()
-  {
-    return swX;
-  }
-  
-  public static c cFe()
-  {
-    return swY;
-  }
-  
-  public static d cFf()
-  {
-    return swZ;
-  }
-  
-  public static b cFg()
-  {
-    return sxa;
-  }
-  
-  public static String getTAG()
-  {
-    return TAG;
-  }
-  
-  public static void l(Set<String> paramSet)
-  {
-    AppMethodBeat.i(203737);
-    p.h(paramSet, "pageSet");
-    if (swW.sCH)
+    AppMethodBeat.i(250511);
+    if (Kb(18054))
     {
-      swW.l(paramSet);
-      AppMethodBeat.o(203737);
+      AppMethodBeat.o(250511);
       return;
     }
-    swV.l(paramSet);
-    AppMethodBeat.o(203737);
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$ChatListRecord;", "", "()V", "accountType", "", "getAccountType", "()J", "setAccountType", "(J)V", "chatSessionId", "", "getChatSessionId", "()Ljava/lang/String;", "setChatSessionId", "(Ljava/lang/String;)V", "enterTimeStamp", "getEnterTimeStamp", "setEnterTimeStamp", "isGreetSession", "setGreetSession", "plugin-finder_release"})
-  public static final class a
-  {
-    public long sxc;
-    public String sxd = "";
-    long sxe;
-    long sxf;
-    
-    public final void aiI(String paramString)
+    if (paramp != null)
     {
-      AppMethodBeat.i(203730);
-      p.h(paramString, "<set-?>");
-      this.sxd = paramString;
-      AppMethodBeat.o(203730);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordChatSendClick;", "", "()V", "finderUserNameL", "", "toFinderUsernameL", "toUsernameL", "onClickFinderChat", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "clickScene", "", "result", "onExpose", "scene", "setUserInfo", "finderUserName", "toUserName", "toFinderUserName", "plugin-finder_release"})
-  public static final class b
-  {
-    private String sxg = "";
-    private String sxh = "";
-    private String sxi = "";
-    
-    public final void a(arn paramarn, long paramLong)
-    {
-      AppMethodBeat.i(203733);
-      ai localai = new ai();
-      localai.ho(this.sxg);
-      localai.hp(this.sxh);
-      localai.hq(this.sxi);
-      localai.cG(1L);
-      localai.cH(0L);
-      if (paramarn != null)
+      Object localObject1 = (Iterable)dnE();
+      Collection localCollection = (Collection)new ArrayList();
+      localObject1 = ((Iterable)localObject1).iterator();
+      int i;
+      label109:
+      while (((Iterator)localObject1).hasNext())
       {
-        String str2 = paramarn.sessionId;
-        String str1 = str2;
-        if (str2 == null) {
-          str1 = "";
-        }
-        localai.hr(str1);
-        str1 = paramarn.rfo;
-        paramarn = str1;
-        if (str1 == null) {
-          paramarn = "";
-        }
-        localai.hs(paramarn);
-      }
-      localai.cI(paramLong);
-      localai.aLH();
-      paramarn = b.sxb;
-      b.a("onExpose", (a)localai);
-      AppMethodBeat.o(203733);
-    }
-    
-    public final void a(arn paramarn, long paramLong1, long paramLong2)
-    {
-      AppMethodBeat.i(203732);
-      ai localai = new ai();
-      localai.ho(this.sxg);
-      localai.hp(this.sxh);
-      localai.hq(this.sxi);
-      localai.cG(2L);
-      localai.cH(paramLong2);
-      localai.cI(paramLong1);
-      if (paramarn != null)
-      {
-        String str2 = paramarn.sessionId;
-        str1 = str2;
-        if (str2 == null) {
-          str1 = "";
-        }
-        localai.hr(str1);
-        str1 = paramarn.rfo;
-        paramarn = str1;
-        if (str1 == null) {
-          paramarn = "";
-        }
-        localai.hs(paramarn);
-      }
-      String str1 = localai.RJ();
-      paramarn = str1;
-      if (str1 == null) {
-        paramarn = "";
-      }
-      localai.hr(paramarn);
-      str1 = localai.RK();
-      paramarn = str1;
-      if (str1 == null) {
-        paramarn = "";
-      }
-      localai.hs(paramarn);
-      localai.aLH();
-      paramarn = b.sxb;
-      b.a("onClickFinderChat", (a)localai);
-      AppMethodBeat.o(203732);
-    }
-    
-    public final void ab(String paramString1, String paramString2, String paramString3)
-    {
-      AppMethodBeat.i(203731);
-      p.h(paramString1, "finderUserName");
-      p.h(paramString2, "toUserName");
-      p.h(paramString3, "toFinderUserName");
-      this.sxg = paramString1;
-      this.sxh = paramString2;
-      this.sxi = paramString3;
-      AppMethodBeat.o(203731);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatEmpty;", "", "()V", "accountTypeL", "", "getAccountTypeL", "()J", "setAccountTypeL", "(J)V", "chatListSessionIdL", "", "getChatListSessionIdL", "()Ljava/lang/String;", "setChatListSessionIdL", "(Ljava/lang/String;)V", "onEnterFinderInnerChat", "", "accountType", "onFinderChatEmpty", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "delSessionCount", "resetValues", "plugin-finder_release"})
-  public static final class c
-  {
-    public String sxj = "";
-    public long sxk;
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatEnter;", "", "()V", "TAG", "", "accountTypeL", "", "asyncExecutor", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "chatListSessionidL", "chatNameL", "getChatNameL", "()Ljava/lang/String;", "setChatNameL", "(Ljava/lang/String;)V", "chatSessionidL", "enterTimeStamp", "getEnterTimeStamp", "()J", "setEnterTimeStamp", "(J)V", "newReceiveMsgCountL", "getNewReceiveMsgCountL", "setNewReceiveMsgCountL", "newSendMsgCountL", "getNewSendMsgCountL", "setNewSendMsgCountL", "openChatInfoCountL", "getOpenChatInfoCountL", "setOpenChatInfoCountL", "reddotCountL", "getReddotCountL", "setReddotCountL", "stayDurationL", "getStayDurationL", "setStayDurationL", "talkUserNameL", "incOpenChatInfoCount", "", "onEnterChat", "accountType", "talkUserName", "chatName", "onExitChat", "talker", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "fromCommentScene", "sessionId", "clickTabcontextid", "report20691", "startTime", "chatEnterStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/FinderChatEnterStruct;", "resetValues", "setChatListSessionId", "setUnreadCont", "count", "plugin-finder_release"})
-  public static final class d
-  {
-    public final String TAG;
-    public long sxe;
-    public long sxk;
-    public final aq sxl;
-    public String sxm;
-    public String sxn;
-    public String sxo;
-    public long sxp;
-    public String sxq;
-    public long sxr;
-    public long sxs;
-    public long sxt;
-    public long sxu;
-    
-    public d()
-    {
-      AppMethodBeat.i(203735);
-      this.TAG = "RecordFinderChatEnter";
-      this.sxl = new aq(this.TAG);
-      this.sxm = "";
-      this.sxn = "";
-      this.sxo = "";
-      this.sxq = "";
-      AppMethodBeat.o(203735);
-    }
-    
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-    public static final class a
-      implements Runnable
-    {
-      public a(b.d paramd, String paramString, long paramLong, af paramaf) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(203734);
-        Object localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-        p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-        localObject = ((Iterable)((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).doJ().g(this.sxw, this.sxx, 2147483647)).iterator();
-        long l1 = 0L;
-        long l2 = 0L;
-        while (((Iterator)localObject).hasNext())
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (((b)localObject2).vcZ == paramp.hashCode()) {}
+        for (i = 1;; i = 0)
         {
-          bv localbv = (bv)((Iterator)localObject).next();
-          if ((localbv.getType() != 570425393) && (localbv.getType() != 10000) && (localbv.getType() != 10001) && (localbv.getType() != 10002))
-          {
-            switch (localbv.VZ())
-            {
-            }
-            for (;;)
-            {
-              break;
-              l2 += 1L;
-              break;
-              l1 += 1L;
-            }
+          if (i == 0) {
+            break label109;
+          }
+          localCollection.add(localObject2);
+          break;
+        }
+      }
+      paramp = (List)localCollection;
+      if (!((Collection)paramp).isEmpty())
+      {
+        i = 1;
+        if (i == 0) {
+          break label169;
+        }
+        label134:
+        if (paramp == null) {
+          break label174;
+        }
+      }
+      label169:
+      label174:
+      for (paramp = (b)paramp.get(0);; paramp = null)
+      {
+        if (paramp == null) {
+          break label179;
+        }
+        paramp.isReleased = true;
+        AppMethodBeat.o(250511);
+        return;
+        i = 0;
+        break;
+        paramp = null;
+        break label134;
+      }
+      label179:
+      AppMethodBeat.o(250511);
+      return;
+    }
+    AppMethodBeat.o(250511);
+  }
+  
+  public final void dnC()
+  {
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.vcV = bool;
+      this.vcW = 0;
+      return;
+    }
+  }
+  
+  public final void dnD()
+  {
+    AppMethodBeat.i(250508);
+    if (!Kb(0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = ((Map)this.vcX).entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (Map.Entry)localIterator.next();
+        int j = ((Number)((Map.Entry)localObject2).getKey()).intValue();
+        ((Map.Entry)localObject2).getValue();
+        int i = ((List)((Map.Entry)localObject2).getValue()).size();
+        Object localObject3 = (Iterable)((Map.Entry)localObject2).getValue();
+        Object localObject1 = (Collection)new ArrayList();
+        localObject3 = ((Iterable)localObject3).iterator();
+        Object localObject4;
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = ((Iterator)localObject3).next();
+          if (((b)localObject4).isReleased) {
+            ((Collection)localObject1).add(localObject4);
           }
         }
-        localObject = this.sxy;
-        ((af)localObject).cu(l2);
-        ((af)localObject).cv(l1);
-        this.sxy.aLH();
-        localObject = b.sxb;
-        b.a(this.sxv.TAG, (a)this.sxy);
-        AppMethodBeat.o(203734);
+        int k = ((List)localObject1).size();
+        int m = i - k;
+        localObject1 = "logId:" + j + " -- allocateCount:" + i + " releasedCount:" + k + " unReleaseCount:" + m;
+        if (m > 0)
+        {
+          localObject3 = (Iterable)((Map.Entry)localObject2).getValue();
+          localObject2 = (Collection)new ArrayList();
+          localObject3 = ((Iterable)localObject3).iterator();
+          label334:
+          while (((Iterator)localObject3).hasNext())
+          {
+            localObject4 = ((Iterator)localObject3).next();
+            if (!((b)localObject4).isReleased) {}
+            for (i = 1;; i = 0)
+            {
+              if (i == 0) {
+                break label334;
+              }
+              ((Collection)localObject2).add(localObject4);
+              break;
+            }
+          }
+          localObject2 = ((Iterable)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (b)((Iterator)localObject2).next();
+            Log.w("FeedReportWatcher", "not released logId:" + j + " -- " + ((b)localObject3).vda);
+          }
+        }
+        localStringBuilder.append((String)localObject1 + "\n");
       }
+      Log.i("FeedReportWatcher", dl(this) + " calc result:\n" + localStringBuilder);
+      this.vcX.clear();
+      this.vcV = false;
     }
+    AppMethodBeat.o(250508);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$RecordFinderChatProfile;", "", "()V", "TAG", "", "accountTypeL", "", "getAccountTypeL", "()J", "setAccountTypeL", "(J)V", "chatNameL", "getChatNameL", "()Ljava/lang/String;", "setChatNameL", "(Ljava/lang/String;)V", "chatSessionidL", "getChatSessionidL", "setChatSessionidL", "clearMsgHistoryClickCountL", "getClearMsgHistoryClickCountL", "setClearMsgHistoryClickCountL", "companionClickCountL", "getCompanionClickCountL", "setCompanionClickCountL", "openChatInfoCountL", "getOpenChatInfoCountL", "setOpenChatInfoCountL", "rejectMsgStatusL", "getRejectMsgStatusL", "setRejectMsgStatusL", "talkUserNameL", "getTalkUserNameL", "setTalkUserNameL", "incChatInfoClickCount", "", "incClearHistoryCount", "incCompanionCount", "onEnterChat", "accountType", "chatName", "talkUserName", "onExitProfile", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "report20692", "resetValues", "plugin-finder_release"})
-  public static final class e
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$ReportRecord;", "", "objHashCode", "", "isReleased", "", "simpleDesc", "", "complexDesc", "(IZLjava/lang/String;Ljava/lang/String;)V", "getComplexDesc", "()Ljava/lang/String;", "setComplexDesc", "(Ljava/lang/String;)V", "()Z", "setReleased", "(Z)V", "getObjHashCode", "()I", "setObjHashCode", "(I)V", "getSimpleDesc", "setSimpleDesc", "plugin-finder_release"})
+  public static final class b
   {
-    public final String TAG = "RecordFinderChatProfile";
-    public long sxA;
-    public long sxB;
-    public long sxk;
-    public String sxm = "";
-    public String sxo = "";
-    public String sxq = "";
-    public long sxu;
-    public long sxz;
+    boolean isReleased;
+    int vcZ;
+    String vda;
+    private String vdb;
+    
+    private b(int paramInt, String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(250506);
+      this.vcZ = paramInt;
+      this.isReleased = false;
+      this.vda = paramString1;
+      this.vdb = paramString2;
+      AppMethodBeat.o(250506);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.b
  * JD-Core Version:    0.7.0.1
  */

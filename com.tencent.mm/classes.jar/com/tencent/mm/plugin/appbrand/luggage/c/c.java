@@ -1,61 +1,74 @@
 package com.tencent.mm.plugin.appbrand.luggage.c;
 
-import android.content.Context;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.page.bq;
-import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.config.l;
+import com.tencent.mm.plugin.appbrand.dynamic.f;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.mm.plugin.appbrand.s.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.UnsupportedEncodingException;
 
 public final class c
-  extends u
+  implements o
 {
-  private final bq lUV;
-  
-  public c(Context paramContext, p paramp)
+  public final void Yl(String paramString)
   {
-    super(paramContext, paramp);
-    AppMethodBeat.i(47554);
-    this.lUV = new bq()
-    {
-      private final bq lUW;
-      
-      public final <WIDGET extends View> WIDGET c(Context paramAnonymousContext, Class<WIDGET> paramAnonymousClass)
-      {
-        AppMethodBeat.i(47553);
-        if (com.tencent.mm.plugin.appbrand.widget.tabbar.a.class == paramAnonymousClass)
-        {
-          paramAnonymousContext = (View)paramAnonymousClass.cast(new com.tencent.mm.plugin.m.a.d.a(paramAnonymousContext));
-          AppMethodBeat.o(47553);
-          return paramAnonymousContext;
-        }
-        paramAnonymousContext = this.lUW.c(paramAnonymousContext, paramAnonymousClass);
-        AppMethodBeat.o(47553);
-        return paramAnonymousContext;
-      }
-    };
-    super.setDecorWidgetFactory(this.lUV);
-    AppMethodBeat.o(47554);
+    AppMethodBeat.i(47583);
+    paramString = com.tencent.mm.plugin.appbrand.a.TS(paramString);
+    if (paramString != null) {
+      f.Yl(Util.nullAsNil(paramString.dCw));
+    }
+    AppMethodBeat.o(47583);
   }
   
-  public final ad bsT()
+  public final void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(175010);
-    d locald = e.ST(getAppId());
-    if (locald != null)
+    AppMethodBeat.i(47582);
+    Object localObject = com.tencent.mm.plugin.appbrand.a.TR(paramString1);
+    if (localObject != null)
     {
-      AppMethodBeat.o(175010);
-      return locald;
+      try
+      {
+        str = q.encode(paramString4, "utf-8");
+        paramString4 = str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          String str;
+          int i;
+          int j;
+          int k;
+          Log.w("MicroMsg.AppBrand.Report.kv_14510", "kv_14510 report UnsupportedEncodingException");
+        }
+      }
+      i = ((l)localObject).leE.pkgVersion;
+      j = ((l)localObject).leE.kNW + 1;
+      str = i.getNetworkType(MMApplicationContext.getContext());
+      k = i.aeH(paramString1);
+      com.tencent.mm.plugin.appbrand.report.a.nFX.a(14510, new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(j), str, paramString2, paramString4, paramString3, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString5, paramString6, Integer.valueOf(k) });
+      if (Log.getLogLevel() <= 1)
+      {
+        localObject = new StringBuilder("report kv_14510{");
+        ((StringBuilder)localObject).append("appId='").append(paramString1).append('\'').append(", appVersion=").append(i).append(", appState=").append(j).append(", appType=").append(k).append(", networkType='").append(str).append('\'').append(", functionName='").append(paramString2).append('\'').append(", url='").append(paramString4).append('\'').append(", method='").append(paramString3).append('\'').append(", sentsize=").append(paramLong1).append(", receivedsize=").append(paramLong2).append(", statusCode=").append(paramInt1).append(", result=").append(paramInt2).append(", costtime=").append(paramInt3).append(", dstPath=").append(paramString5).append(", contentType=").append(paramString6).append('}');
+        Log.d("MicroMsg.AppBrand.Report.kv_14510", ((StringBuilder)localObject).toString());
+      }
+      AppMethodBeat.o(47582);
+      return;
     }
-    locald = new d();
-    AppMethodBeat.o(175010);
-    return locald;
+    Log.w("MicroMsg.AppBrand.Report.kv_14510", "kv_14510 report config is null. %s", new Object[] { paramString1 });
+    AppMethodBeat.o(47582);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.c
  * JD-Core Version:    0.7.0.1
  */

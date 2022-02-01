@@ -1,18 +1,18 @@
 package com.tencent.mm.appbrand.v8;
 
+import com.eclipsesource.v8.V8ScriptException;
+
 abstract interface c
 {
-  public abstract String Cx();
+  public abstract String LP();
   
-  public abstract boolean Nk();
+  public abstract boolean Xw();
   
-  public abstract void a(c.a parama);
+  public abstract void a(a parama);
   
   public abstract void b(Runnable paramRunnable, long paramLong, boolean paramBoolean);
   
-  public abstract void c(Runnable paramRunnable, boolean paramBoolean);
-  
-  public abstract void cj(boolean paramBoolean);
+  public abstract void cS(boolean paramBoolean);
   
   public abstract boolean doInnerLoopTask();
   
@@ -25,6 +25,13 @@ abstract interface c
   public abstract void resume();
   
   public abstract void resumeLoopTasks();
+  
+  public abstract void u(Runnable paramRunnable);
+  
+  public static abstract interface a
+  {
+    public abstract void b(V8ScriptException paramV8ScriptException);
+  }
 }
 
 

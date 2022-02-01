@@ -8,18 +8,18 @@ import org.xwalk.core.XWalkNavigationItem;
 public final class r
   extends WebHistoryItem
 {
-  XWalkNavigationItem MUE;
+  XWalkNavigationItem SHL;
   
   public r(XWalkNavigationItem paramXWalkNavigationItem)
   {
-    this.MUE = paramXWalkNavigationItem;
+    this.SHL = paramXWalkNavigationItem;
   }
   
   protected final WebHistoryItem clone()
   {
-    AppMethodBeat.i(207595);
-    r localr = new r(this.MUE);
-    AppMethodBeat.o(207595);
+    AppMethodBeat.i(207325);
+    r localr = new r(this.SHL);
+    AppMethodBeat.o(207325);
     return localr;
   }
   
@@ -30,46 +30,46 @@ public final class r
   
   public final String getOriginalUrl()
   {
-    AppMethodBeat.i(207593);
-    if (this.MUE == null)
+    AppMethodBeat.i(207323);
+    if (this.SHL == null)
     {
-      AppMethodBeat.o(207593);
+      AppMethodBeat.o(207323);
       return null;
     }
-    String str = this.MUE.getOriginalUrl();
-    AppMethodBeat.o(207593);
+    String str = this.SHL.getOriginalUrl();
+    AppMethodBeat.o(207323);
     return str;
   }
   
   public final String getTitle()
   {
-    AppMethodBeat.i(207594);
-    if (this.MUE == null)
+    AppMethodBeat.i(207324);
+    if (this.SHL == null)
     {
-      AppMethodBeat.o(207594);
+      AppMethodBeat.o(207324);
       return null;
     }
-    String str = this.MUE.getTitle();
-    AppMethodBeat.o(207594);
+    String str = this.SHL.getTitle();
+    AppMethodBeat.o(207324);
     return str;
   }
   
   public final String getUrl()
   {
-    AppMethodBeat.i(207592);
-    if (this.MUE == null)
+    AppMethodBeat.i(207322);
+    if (this.SHL == null)
     {
-      AppMethodBeat.o(207592);
+      AppMethodBeat.o(207322);
       return null;
     }
-    String str = this.MUE.getUrl();
-    AppMethodBeat.o(207592);
+    String str = this.SHL.getUrl();
+    AppMethodBeat.o(207322);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.r
  * JD-Core Version:    0.7.0.1
  */

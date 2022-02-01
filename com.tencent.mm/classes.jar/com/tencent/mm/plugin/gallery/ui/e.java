@@ -10,10 +10,10 @@ import com.tencent.mm.b.f.a;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.memory.a.b;
 import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bf.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -21,176 +21,176 @@ import java.util.LinkedList;
 
 final class e
 {
-  private bf hTx;
+  private QueueWorkerThread iOL;
   private int mScrollState;
-  private SparseArray<WeakReference<MultiTouchImageView>> tYR;
-  HashMap<String, Integer> tYS;
-  private SparseArray<String> tYT;
-  SparseArray<Bitmap> tYU;
-  protected f<String, Bitmap> tYV;
-  protected SparseIntArray tYW;
-  private LinkedList<String> tYX;
-  d tYY;
-  boolean tYZ;
+  private SparseArray<WeakReference<MultiTouchImageView>> xqf;
+  HashMap<String, Integer> xqg;
+  private SparseArray<String> xqh;
+  SparseArray<Bitmap> xqi;
+  protected f<String, Bitmap> xqj;
+  protected SparseIntArray xqk;
+  private LinkedList<String> xql;
+  d xqm;
+  boolean xqn;
   
   public e(d paramd)
   {
     AppMethodBeat.i(111549);
-    this.hTx = new bf(1, "album-image-gallery-lazy-loader");
-    this.tYR = new SparseArray();
-    this.tYS = new HashMap();
-    this.tYT = new SparseArray();
-    this.tYU = new SparseArray();
+    this.iOL = new QueueWorkerThread(1, "album-image-gallery-lazy-loader");
+    this.xqf = new SparseArray();
+    this.xqg = new HashMap();
+    this.xqh = new SparseArray();
+    this.xqi = new SparseArray();
     this.mScrollState = 0;
-    this.tYV = new b(5, new f.b() {}, getClass());
-    this.tYW = new SparseIntArray();
-    this.tYX = new LinkedList();
-    this.tYZ = false;
-    this.tYY = paramd;
+    this.xqj = new b(5, new f.b() {}, getClass());
+    this.xqk = new SparseIntArray();
+    this.xql = new LinkedList();
+    this.xqn = false;
+    this.xqm = paramd;
     AppMethodBeat.o(111549);
   }
   
-  private void HQ(int paramInt)
+  private void NT(int paramInt)
   {
     AppMethodBeat.i(111553);
-    if (this.tYT.get(paramInt) != null)
+    if (this.xqh.get(paramInt) != null)
     {
-      String str = (String)this.tYT.get(paramInt);
-      this.tYR.remove(paramInt);
-      this.tYT.remove(paramInt);
-      this.tYS.remove(str);
-      this.tYU.remove(paramInt);
+      String str = (String)this.xqh.get(paramInt);
+      this.xqf.remove(paramInt);
+      this.xqh.remove(paramInt);
+      this.xqg.remove(str);
+      this.xqi.remove(paramInt);
     }
     AppMethodBeat.o(111553);
   }
   
   private void a(int paramInt, MultiTouchImageView paramMultiTouchImageView, String paramString)
   {
-    AppMethodBeat.i(186191);
-    this.tYS.put(paramString, Integer.valueOf(paramInt));
-    this.tYT.put(paramInt, paramString);
-    this.tYR.put(paramInt, new WeakReference(paramMultiTouchImageView));
-    AppMethodBeat.o(186191);
+    AppMethodBeat.i(257752);
+    this.xqg.put(paramString, Integer.valueOf(paramInt));
+    this.xqh.put(paramInt, paramString);
+    this.xqf.put(paramInt, new WeakReference(paramMultiTouchImageView));
+    AppMethodBeat.o(257752);
   }
   
   private void b(int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(111554);
-    if (this.tYR.get(paramInt) == null)
+    if (this.xqf.get(paramInt) == null)
     {
       AppMethodBeat.o(111554);
       return;
     }
-    MultiTouchImageView localMultiTouchImageView = (MultiTouchImageView)((WeakReference)this.tYR.get(paramInt)).get();
-    String str = (String)this.tYT.get(paramInt);
+    MultiTouchImageView localMultiTouchImageView = (MultiTouchImageView)((WeakReference)this.xqf.get(paramInt)).get();
+    String str = (String)this.xqh.get(paramInt);
     if ((paramBitmap != null) && (localMultiTouchImageView != null))
     {
       int i = paramBitmap.hashCode();
-      int j = this.tYW.indexOfValue(paramInt);
+      int j = this.xqk.indexOfValue(paramInt);
       if (j >= 0) {
-        this.tYW.removeAt(j);
+        this.xqk.removeAt(j);
       }
-      this.tYW.put(i, paramInt);
+      this.xqk.put(i, paramInt);
     }
-    this.tYY.a(localMultiTouchImageView, str, paramBitmap);
-    HQ(paramInt);
+    this.xqm.a(localMultiTouchImageView, str, paramBitmap);
+    NT(paramInt);
     AppMethodBeat.o(111554);
   }
   
-  private void cYL()
+  private void dSj()
   {
     AppMethodBeat.i(111551);
-    this.tYV.a(new f.a() {});
+    this.xqj.a(new f.a() {});
     AppMethodBeat.o(111551);
   }
   
-  final void Ov()
+  final void YC()
   {
     AppMethodBeat.i(111555);
-    if (this.tYZ)
+    if (this.xqn)
     {
       AppMethodBeat.o(111555);
       return;
     }
-    if (this.tYX.size() == 0)
+    if (this.xql.size() == 0)
     {
       AppMethodBeat.o(111555);
       return;
     }
-    Object localObject = (String)this.tYX.removeLast();
-    if (!this.tYS.containsKey(localObject))
+    Object localObject = (String)this.xql.removeLast();
+    if (!this.xqg.containsKey(localObject))
     {
       AppMethodBeat.o(111555);
       return;
     }
-    this.tYZ = true;
-    localObject = new bf.a()
+    this.xqn = true;
+    localObject = new QueueWorkerThread.ThreadObject()
     {
-      private Bitmap tZb = null;
+      private Bitmap xqp = null;
       
-      public final boolean aEC()
+      public final boolean doInBackground()
       {
         AppMethodBeat.i(111547);
-        if ((e.this.tYY == null) || (TextUtils.isEmpty(this.tZc)))
+        if ((e.this.xqm == null) || (TextUtils.isEmpty(this.xqq)))
         {
           AppMethodBeat.o(111547);
           return false;
         }
-        String str = this.tZc;
-        long l = bu.HQ();
-        Bitmap localBitmap = r.azs(str);
-        ae.v("MicroMsg.ImageAdapter", "test decode: %d filePath:%s", new Object[] { Long.valueOf(bu.aO(l)), str });
-        this.tZb = localBitmap;
+        String str = this.xqq;
+        long l = Util.currentTicks();
+        Bitmap localBitmap = r.aOp(str);
+        Log.v("MicroMsg.ImageAdapter", "test decode: %d filePath:%s", new Object[] { Long.valueOf(Util.ticksToNow(l)), str });
+        this.xqp = localBitmap;
         AppMethodBeat.o(111547);
         return true;
       }
       
-      public final boolean aED()
+      public final boolean onPostExecute()
       {
         AppMethodBeat.i(111548);
-        e.this.tYZ = false;
+        e.this.xqn = false;
         int i;
-        if (e.this.tYS.containsKey(this.tZc))
+        if (e.this.xqg.containsKey(this.xqq))
         {
-          i = ((Integer)e.this.tYS.get(this.tZc)).intValue();
-          if (e.this.cYM()) {
+          i = ((Integer)e.this.xqg.get(this.xqq)).intValue();
+          if (e.this.dSk()) {
             break label115;
           }
-          e.this.tYU.put(i, this.tZb);
+          e.this.xqi.put(i, this.xqp);
         }
         for (;;)
         {
-          e.this.tYV.q(this.tZc, this.tZb);
-          this.tZb = null;
-          e.this.Ov();
+          e.this.xqj.x(this.xqq, this.xqp);
+          this.xqp = null;
+          e.this.YC();
           AppMethodBeat.o(111548);
           return false;
           label115:
-          e.a(e.this, i, this.tZb);
+          e.a(e.this, i, this.xqp);
         }
       }
     };
-    this.hTx.c((bf.a)localObject);
+    this.iOL.add((QueueWorkerThread.ThreadObject)localObject);
     AppMethodBeat.o(111555);
   }
   
   public final void a(MultiTouchImageView paramMultiTouchImageView, String paramString)
   {
-    AppMethodBeat.i(186192);
-    if (this.tYX.contains(paramString))
+    AppMethodBeat.i(257753);
+    if (this.xql.contains(paramString))
     {
-      AppMethodBeat.o(186192);
+      AppMethodBeat.o(257753);
       return;
     }
     int i = paramMultiTouchImageView.hashCode();
-    HQ(i);
+    NT(i);
     a(i, paramMultiTouchImageView, paramString);
-    this.tYX.add(paramString);
-    Ov();
-    AppMethodBeat.o(186192);
+    this.xql.add(paramString);
+    YC();
+    AppMethodBeat.o(257753);
   }
   
-  final boolean cYM()
+  final boolean dSk()
   {
     return this.mScrollState == 0;
   }
@@ -198,12 +198,12 @@ final class e
   public final void detach()
   {
     AppMethodBeat.i(111550);
-    this.tYY = null;
-    this.tYR.clear();
-    this.tYU.clear();
-    this.tYT.clear();
-    this.tYS.clear();
-    cYL();
+    this.xqm = null;
+    this.xqf.clear();
+    this.xqi.clear();
+    this.xqh.clear();
+    this.xqg.clear();
+    dSj();
     AppMethodBeat.o(111550);
   }
   
@@ -212,9 +212,9 @@ final class e
     int j = 0;
     AppMethodBeat.i(111552);
     this.mScrollState = paramInt;
-    if (cYM())
+    if (dSk())
     {
-      int[] arrayOfInt = new int[this.tYU.size()];
+      int[] arrayOfInt = new int[this.xqi.size()];
       int i = 0;
       for (;;)
       {
@@ -222,13 +222,13 @@ final class e
         if (i >= arrayOfInt.length) {
           break;
         }
-        arrayOfInt[i] = this.tYU.keyAt(i);
+        arrayOfInt[i] = this.xqi.keyAt(i);
         i += 1;
       }
       while (paramInt < arrayOfInt.length)
       {
         i = arrayOfInt[paramInt];
-        b(i, (Bitmap)this.tYU.get(i));
+        b(i, (Bitmap)this.xqi.get(i));
         paramInt += 1;
       }
     }
@@ -237,7 +237,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.e
  * JD-Core Version:    0.7.0.1
  */

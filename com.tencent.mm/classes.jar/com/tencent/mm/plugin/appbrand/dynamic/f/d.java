@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.dynamic.f;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aa.b.c;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -26,8 +26,8 @@ public final class d
   {
     AppMethodBeat.i(121394);
     Object localObject = new HashMap();
-    Context localContext = ak.getContext();
-    boolean bool = az.isConnected(localContext);
+    Context localContext = MMApplicationContext.getContext();
+    boolean bool = NetStatusUtil.isConnected(localContext);
     ((HashMap)localObject).put("isConnected", Boolean.valueOf(bool));
     if (!bool) {
       ((HashMap)localObject).put("networkType", "none");
@@ -37,13 +37,13 @@ public final class d
       localObject = new JSONObject((Map)localObject);
       AppMethodBeat.o(121394);
       return localObject;
-      if (az.is2G(localContext)) {
+      if (NetStatusUtil.is2G(localContext)) {
         ((HashMap)localObject).put("networkType", "2g");
-      } else if (az.is3G(localContext)) {
+      } else if (NetStatusUtil.is3G(localContext)) {
         ((HashMap)localObject).put("networkType", "3g");
-      } else if (az.is4G(localContext)) {
+      } else if (NetStatusUtil.is4G(localContext)) {
         ((HashMap)localObject).put("networkType", "4g");
-      } else if (az.isWifi(localContext)) {
+      } else if (NetStatusUtil.isWifi(localContext)) {
         ((HashMap)localObject).put("networkType", "wifi");
       } else {
         ((HashMap)localObject).put("networkType", "unknown");
@@ -53,7 +53,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.d
  * JD-Core Version:    0.7.0.1
  */

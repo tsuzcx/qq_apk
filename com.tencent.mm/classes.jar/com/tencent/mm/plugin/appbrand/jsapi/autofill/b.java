@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.protocal.protobuf.aes;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.protocal.protobuf.agw;
+import com.tencent.mm.vending.c.a;
 
 public final class b
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<z>
+  extends d<ac>
 {
   public static final int CTRL_INDEX = 206;
   public static final String NAME = "deleteUserAutoFillData";

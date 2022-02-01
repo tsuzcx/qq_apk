@@ -1,36 +1,53 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.d.f;
+import kotlin.d.f.c;
+import kotlin.l;
+import kotlinx.coroutines.internal.e;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CoroutineStart;", "", "(Ljava/lang/String;I)V", "isLazy", "", "isLazy$annotations", "()V", "()Z", "invoke", "", "T", "block", "Lkotlin/Function1;", "Lkotlin/coroutines/Continuation;", "", "completion", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "DEFAULT", "LAZY", "ATOMIC", "UNDISPATCHED", "kotlinx-coroutines-core"})
-public enum aj
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"isActive", "", "Lkotlinx/coroutines/CoroutineScope;", "isActive$annotations", "(Lkotlinx/coroutines/CoroutineScope;)V", "(Lkotlinx/coroutines/CoroutineScope;)Z", "CoroutineScope", "context", "Lkotlin/coroutines/CoroutineContext;", "MainScope", "coroutineScope", "R", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "cancel", "", "message", "", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "ensureActive", "plus", "kotlinx-coroutines-core"})
+public final class aj
 {
-  static
+  public static final boolean a(ai paramai)
   {
-    AppMethodBeat.i(118175);
-    aj localaj1 = new aj("DEFAULT", 0);
-    Ofd = localaj1;
-    aj localaj2 = new aj("LAZY", 1);
-    Ofe = localaj2;
-    aj localaj3 = new aj("ATOMIC", 2);
-    Off = localaj3;
-    aj localaj4 = new aj("UNDISPATCHED", 3);
-    Ofg = localaj4;
-    Ofh = new aj[] { localaj1, localaj2, localaj3, localaj4 };
-    AppMethodBeat.o(118175);
+    AppMethodBeat.i(192512);
+    paramai = (bu)paramai.hMk().get((f.c)bu.TUO);
+    if (paramai != null)
+    {
+      boolean bool = paramai.isActive();
+      AppMethodBeat.o(192512);
+      return bool;
+    }
+    AppMethodBeat.o(192512);
+    return true;
   }
   
-  private aj() {}
-  
-  public final boolean gzE()
+  public static final void b(ai paramai)
   {
-    return (aj)this == Ofe;
+    AppMethodBeat.i(192513);
+    bu localbu = (bu)paramai.hMk().get((f.c)bu.TUO);
+    if (localbu == null)
+    {
+      paramai = (Throwable)new IllegalStateException("Scope cannot be cancelled because it does not have a job: ".concat(String.valueOf(paramai)).toString());
+      AppMethodBeat.o(192513);
+      throw paramai;
+    }
+    localbu.a(null);
+    AppMethodBeat.o(192513);
+  }
+  
+  public static final ai hMI()
+  {
+    AppMethodBeat.i(192511);
+    ai localai = (ai)new e(cn.hNy().plus((f)ba.hMV()));
+    AppMethodBeat.o(192511);
+    return localai;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.aj
  * JD-Core Version:    0.7.0.1
  */

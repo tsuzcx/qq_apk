@@ -3,23 +3,30 @@ package com.tencent.mm.plugin.appbrand.widget.b;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.s.c;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.appbrand.jsapi.u.c;
 
 @SuppressLint({"AppCompatCustomView"})
 public final class e
   extends f
   implements a
 {
-  private c csx = null;
+  private c cEN = null;
+  private ad.b nal;
   
   public e(Context paramContext)
   {
     super(paramContext);
   }
   
+  public final ad.b getKeyValueSet()
+  {
+    return this.nal;
+  }
+  
   public final c getReferrerPolicy()
   {
-    return this.csx;
+    return this.cEN;
   }
   
   public final View getView()
@@ -31,9 +38,14 @@ public final class e
   
   public final void setImageFilePath(String paramString) {}
   
+  public final void setKeyValueSet(ad.b paramb)
+  {
+    this.nal = paramb;
+  }
+  
   public final void setReferrerPolicy(c paramc)
   {
-    this.csx = paramc;
+    this.cEN = paramc;
   }
 }
 

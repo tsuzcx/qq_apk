@@ -3,100 +3,100 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 import android.net.Uri;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.f.a;
+import com.tencent.mm.g.b.a.t.a;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.n;
-import com.tencent.mm.t.c;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.s.c;
+import com.tencent.mm.sdk.platformtools.FilePathGenerator;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AppBrandVideoDownLoadMgr
 {
-  public static final String loX;
-  private static HashMap<String, String> loY;
-  static final Map<String, a> loZ;
-  public static AppBrandVideoDownLoadMgr lpa;
-  static com.tencent.mm.t.d lpb;
+  public static final String mvD;
+  private static HashMap<String, String> mvE;
+  static final Map<String, a> mvF;
+  public static AppBrandVideoDownLoadMgr mvG;
+  static com.tencent.mm.s.d mvH;
   
   static
   {
     AppMethodBeat.i(46861);
-    loY = new HashMap();
-    loZ = new ConcurrentHashMap();
-    lpa = null;
-    lpb = null;
-    if (lpa == null) {
-      lpa = new AppBrandVideoDownLoadMgr();
+    mvE = new HashMap();
+    mvF = new ConcurrentHashMap();
+    mvG = null;
+    mvH = null;
+    if (mvG == null) {
+      mvG = new AppBrandVideoDownLoadMgr();
     }
-    String str = b.asj();
+    String str = b.aKJ();
     Object localObject = str;
     if (!str.endsWith("/")) {
       localObject = str + "/";
     }
-    loX = (String)localObject + "wagamefiles/";
-    com.tencent.mm.t.d.a(com.tencent.mm.plugin.cdndownloader.h.a.car());
-    localObject = new com.tencent.mm.t.d();
-    lpb = (com.tencent.mm.t.d)localObject;
-    ((com.tencent.mm.t.d)localObject).ghM = new c()
+    mvD = (String)localObject + "wagamefiles/";
+    com.tencent.mm.s.d.a(com.tencent.mm.plugin.cdndownloader.h.a.cyi());
+    localObject = new com.tencent.mm.s.d();
+    mvH = (com.tencent.mm.s.d)localObject;
+    ((com.tencent.mm.s.d)localObject).gRe = new c()
     {
       public final void onTaskFail(String paramAnonymousString, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(46851);
-        ae.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskFail err_code = %s, url = %s,is_resume = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
-        AppBrandVideoDownLoadMgr localAppBrandVideoDownLoadMgr = AppBrandVideoDownLoadMgr.lpa;
-        AppBrandVideoDownLoadMgr.as(paramAnonymousString, false);
-        if ((AppBrandVideoDownLoadMgr.abc() != null) && (AppBrandVideoDownLoadMgr.abc().get(paramAnonymousString) != null) && (((a)AppBrandVideoDownLoadMgr.abc().get(paramAnonymousString)).loW != null))
+        Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskFail err_code = %s, url = %s,is_resume = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+        AppBrandVideoDownLoadMgr localAppBrandVideoDownLoadMgr = AppBrandVideoDownLoadMgr.mvG;
+        AppBrandVideoDownLoadMgr.au(paramAnonymousString, false);
+        if ((AppBrandVideoDownLoadMgr.apb() != null) && (AppBrandVideoDownLoadMgr.apb().get(paramAnonymousString) != null) && (((a)AppBrandVideoDownLoadMgr.apb().get(paramAnonymousString)).mvC != null))
         {
-          ((a)AppBrandVideoDownLoadMgr.abc().get(paramAnonymousString)).loW.bJ(paramAnonymousString, paramAnonymousInt);
+          ((a)AppBrandVideoDownLoadMgr.apb().get(paramAnonymousString)).mvC.bO(paramAnonymousString, paramAnonymousInt);
           AppMethodBeat.o(46851);
           return;
         }
-        ae.e("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskFail callback is null");
+        Log.e("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskFail callback is null");
         AppMethodBeat.o(46851);
       }
       
       public final void onTaskSucc(String paramAnonymousString1, String paramAnonymousString2, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(46850);
-        ae.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskSucc save_path = %s, url = %s, is_resume = %s", new Object[] { paramAnonymousString2, paramAnonymousString1, Boolean.valueOf(paramAnonymousBoolean) });
-        AppBrandVideoDownLoadMgr localAppBrandVideoDownLoadMgr = AppBrandVideoDownLoadMgr.lpa;
-        AppBrandVideoDownLoadMgr.as(paramAnonymousString1, true);
-        if ((AppBrandVideoDownLoadMgr.abc() != null) && (AppBrandVideoDownLoadMgr.abc().get(paramAnonymousString1) != null) && (((a)AppBrandVideoDownLoadMgr.abc().get(paramAnonymousString1)).loW != null))
+        Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskSucc save_path = %s, url = %s, is_resume = %s", new Object[] { paramAnonymousString2, paramAnonymousString1, Boolean.valueOf(paramAnonymousBoolean) });
+        AppBrandVideoDownLoadMgr localAppBrandVideoDownLoadMgr = AppBrandVideoDownLoadMgr.mvG;
+        AppBrandVideoDownLoadMgr.au(paramAnonymousString1, true);
+        if ((AppBrandVideoDownLoadMgr.apb() != null) && (AppBrandVideoDownLoadMgr.apb().get(paramAnonymousString1) != null) && (((a)AppBrandVideoDownLoadMgr.apb().get(paramAnonymousString1)).mvC != null))
         {
-          ((a)AppBrandVideoDownLoadMgr.abc().get(paramAnonymousString1)).loW.dy(paramAnonymousString1, paramAnonymousString2);
+          ((a)AppBrandVideoDownLoadMgr.apb().get(paramAnonymousString1)).mvC.dN(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(46850);
           return;
         }
-        ae.e("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskSucc callback is null");
+        Log.e("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo onTaskSucc callback is null");
         AppMethodBeat.o(46850);
       }
     };
     AppMethodBeat.o(46861);
   }
   
-  private static String MH(String paramString)
+  private static String VQ(String paramString)
   {
     AppMethodBeat.i(46856);
-    paramString = loX + paramString + "/";
+    paramString = mvD + paramString + "/";
     AppMethodBeat.o(46856);
     return paramString;
   }
   
-  private static String MI(String paramString)
+  private static String VR(String paramString)
   {
     AppMethodBeat.i(46857);
-    paramString = MH(paramString);
-    n.aMy(paramString);
+    paramString = VQ(paramString);
+    FilePathGenerator.checkMkdir(paramString);
     try
     {
-      o.aZV(paramString + ".nomedia");
+      s.bpa(paramString + ".nomedia");
       label38:
       AppMethodBeat.o(46857);
       return paramString;
@@ -107,14 +107,14 @@ public class AppBrandVideoDownLoadMgr
     }
   }
   
-  private static String Rm(String paramString)
+  private static String aaR(String paramString)
   {
     AppMethodBeat.i(46855);
-    synchronized (loY)
+    synchronized (mvE)
     {
-      if (loY.containsKey(paramString))
+      if (mvE.containsKey(paramString))
       {
-        paramString = (String)loY.get(paramString);
+        paramString = (String)mvE.get(paramString);
         AppMethodBeat.o(46855);
         return paramString;
       }
@@ -123,7 +123,7 @@ public class AppBrandVideoDownLoadMgr
     }
   }
   
-  private static String Rn(String paramString)
+  private static String aaS(String paramString)
   {
     AppMethodBeat.i(46859);
     localObject1 = null;
@@ -141,46 +141,46 @@ public class AppBrandVideoDownLoadMgr
       catch (Exception localException)
       {
         Object localObject2;
-        ae.printErrStackTrace("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", localException, "leonlad:getUrlFileMd5 failed videoUrl:%s", new Object[] { paramString });
+        Log.printErrStackTrace("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", localException, "leonlad:getUrlFileMd5 failed videoUrl:%s", new Object[] { paramString });
         paramString = localObject1;
         continue;
       }
       AppMethodBeat.o(46859);
       return paramString;
-      localObject2 = "unverify" + aj.ej(paramString);
+      localObject2 = "unverify" + MD5Util.getMD5String(paramString);
       paramString = (String)localObject2;
     }
   }
   
-  static void ar(String paramString, boolean paramBoolean)
+  static void at(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(46854);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(46854);
       return;
     }
-    String str = Rn(paramString);
-    synchronized (loY)
+    String str = aaS(paramString);
+    synchronized (mvE)
     {
-      if (loY.containsKey(str)) {
-        loY.remove(str);
+      if (mvE.containsKey(str)) {
+        mvE.remove(str);
       }
-      ??? = (a)loZ.get(paramString);
+      ??? = (a)mvF.get(paramString);
       if (??? == null) {
         break label131;
       }
-      if ((((a)???).url.equalsIgnoreCase(paramString)) && (((a)???).loT > 0L)) {
-        ((a)???).loU = bu.aO(((a)???).loT);
+      if ((((a)???).url.equalsIgnoreCase(paramString)) && (((a)???).mvz > 0L)) {
+        ((a)???).mvA = Util.ticksToNow(((a)???).mvz);
       }
       if (paramBoolean)
       {
-        ((a)???).loV = f.a.dRw;
+        ((a)???).mvB = t.a.elf;
         AppMethodBeat.o(46854);
         return;
       }
     }
-    ((a)???).loV = f.a.dRx;
+    ((a)???).mvB = t.a.elg;
     label131:
     AppMethodBeat.o(46854);
   }
@@ -189,31 +189,31 @@ public class AppBrandVideoDownLoadMgr
   String genAdFileExist(String paramString, a parama)
   {
     AppMethodBeat.i(46852);
-    if ((bu.isNullOrNil(paramString)) || (bu.isNullOrNil(parama.url)))
+    if ((Util.isNullOrNil(paramString)) || (Util.isNullOrNil(parama.url)))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFileExist error source or videoUrl = %s", new Object[] { parama.url });
+      Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFileExist error source or videoUrl = %s", new Object[] { parama.url });
       AppMethodBeat.o(46852);
       return null;
     }
-    String str1 = Rn(parama.url);
-    if (bu.isNullOrNil(str1))
+    String str1 = aaS(parama.url);
+    if (Util.isNullOrNil(str1))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFileExist error urlFileMd5 = %s or videoUrl = %s", new Object[] { str1, parama.url });
+      Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFileExist error urlFileMd5 = %s or videoUrl = %s", new Object[] { str1, parama.url });
       AppMethodBeat.o(46852);
       return null;
     }
-    if (!bu.isNullOrNil(Rm(str1)))
+    if (!Util.isNullOrNil(aaR(str1)))
     {
       AppMethodBeat.o(46852);
       return "downloading";
     }
-    paramString = MH(paramString) + str1 + ".gad";
-    k localk = new k(paramString);
-    String str2 = o.aRh(w.B(localk.mUri));
-    if ((localk.exists()) && ((str1.startsWith("unverify")) || ((str2 != null) && (str2.equalsIgnoreCase(str1)))))
+    paramString = VQ(paramString) + str1 + ".gad";
+    o localo = new o(paramString);
+    String str2 = s.bhK(aa.z(localo.mUri));
+    if ((localo.exists()) && ((str1.startsWith("unverify")) || ((str2 != null) && (str2.equalsIgnoreCase(str1)))))
     {
-      parama.loU = 0L;
-      parama.loV = f.a.dRw;
+      parama.mvA = 0L;
+      parama.mvB = t.a.elf;
       AppMethodBeat.o(46852);
       return paramString;
     }
@@ -225,30 +225,30 @@ public class AppBrandVideoDownLoadMgr
   String genAdFilePath(String arg1, a parama)
   {
     AppMethodBeat.i(46853);
-    if ((bu.isNullOrNil(???)) || (bu.isNullOrNil(parama.url)))
+    if ((Util.isNullOrNil(???)) || (Util.isNullOrNil(parama.url)))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFilePath error source or videoUrl = %s", new Object[] { parama.url });
+      Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFilePath error source or videoUrl = %s", new Object[] { parama.url });
       AppMethodBeat.o(46853);
       return null;
     }
-    String str = Rn(parama.url);
-    if (bu.isNullOrNil(str))
+    String str = aaS(parama.url);
+    if (Util.isNullOrNil(str))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFilePath error urlFileMd5 = %s or videoUrl = %s", new Object[] { str, parama.url });
+      Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genAdFilePath error urlFileMd5 = %s or videoUrl = %s", new Object[] { str, parama.url });
       AppMethodBeat.o(46853);
       return null;
     }
-    if (!bu.isNullOrNil(Rm(str)))
+    if (!Util.isNullOrNil(aaR(str)))
     {
       AppMethodBeat.o(46853);
       return null;
     }
-    parama.loT = bu.HQ();
-    parama.loV = f.a.dRv;
-    parama = MI(???) + str + ".gad";
-    synchronized (loY)
+    parama.mvz = Util.currentTicks();
+    parama.mvB = t.a.ele;
+    parama = VR(???) + str + ".gad";
+    synchronized (mvE)
     {
-      loY.put(str, parama);
+      mvE.put(str, parama);
       AppMethodBeat.o(46853);
       return parama;
     }
@@ -263,17 +263,17 @@ public class AppBrandVideoDownLoadMgr
     //   2: ldc_w 279
     //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: invokestatic 177	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: invokestatic 177	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   12: ifeq +20 -> 32
     //   15: ldc 159
     //   17: ldc_w 281
-    //   20: invokestatic 284	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: invokestatic 284	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: ldc_w 279
     //   26: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: aload_0
     //   30: monitorexit
     //   31: return
-    //   32: getstatic 39	com/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoDownLoadMgr:loZ	Ljava/util/Map;
+    //   32: getstatic 39	com/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoDownLoadMgr:mvF	Ljava/util/Map;
     //   35: aload_1
     //   36: invokeinterface 185 2 0
     //   41: checkcast 187	com/tencent/mm/plugin/appbrand/jsapi/video/a
@@ -281,7 +281,7 @@ public class AppBrandVideoDownLoadMgr
     //   45: aload_2
     //   46: ifnull +23 -> 69
     //   49: aload_2
-    //   50: getfield 201	com/tencent/mm/plugin/appbrand/jsapi/video/a:loU	J
+    //   50: getfield 201	com/tencent/mm/plugin/appbrand/jsapi/video/a:mvA	J
     //   53: lconst_0
     //   54: lcmp
     //   55: iflt +14 -> 69
@@ -292,7 +292,7 @@ public class AppBrandVideoDownLoadMgr
     //   66: ifne +25 -> 91
     //   69: ldc 159
     //   71: ldc_w 286
-    //   74: invokestatic 284	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   74: invokestatic 284	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   77: ldc_w 279
     //   80: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: goto -54 -> 29
@@ -308,36 +308,36 @@ public class AppBrandVideoDownLoadMgr
     //   100: dup
     //   101: iconst_0
     //   102: aload_2
-    //   103: getfield 201	com/tencent/mm/plugin/appbrand/jsapi/video/a:loU	J
+    //   103: getfield 201	com/tencent/mm/plugin/appbrand/jsapi/video/a:mvA	J
     //   106: invokestatic 294	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   109: aastore
     //   110: dup
     //   111: iconst_1
     //   112: aload_2
-    //   113: getfield 210	com/tencent/mm/plugin/appbrand/jsapi/video/a:loV	Lcom/tencent/mm/g/b/a/f$a;
+    //   113: getfield 210	com/tencent/mm/plugin/appbrand/jsapi/video/a:mvB	Lcom/tencent/mm/g/b/a/t$a;
     //   116: aastore
-    //   117: invokestatic 226	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   120: new 296	com/tencent/mm/g/b/a/f
+    //   117: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   120: new 296	com/tencent/mm/g/b/a/t
     //   123: dup
-    //   124: invokespecial 297	com/tencent/mm/g/b/a/f:<init>	()V
+    //   124: invokespecial 297	com/tencent/mm/g/b/a/t:<init>	()V
     //   127: astore_3
     //   128: aload_3
     //   129: aload_3
     //   130: ldc_w 299
     //   133: aload_1
     //   134: iconst_1
-    //   135: invokevirtual 303	com/tencent/mm/g/b/a/f:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   138: putfield 306	com/tencent/mm/g/b/a/f:dRr	Ljava/lang/String;
+    //   135: invokevirtual 303	com/tencent/mm/g/b/a/t:x	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   138: putfield 306	com/tencent/mm/g/b/a/t:ela	Ljava/lang/String;
     //   141: aload_3
     //   142: aload_2
-    //   143: getfield 201	com/tencent/mm/plugin/appbrand/jsapi/video/a:loU	J
-    //   146: putfield 309	com/tencent/mm/g/b/a/f:dRs	J
+    //   143: getfield 201	com/tencent/mm/plugin/appbrand/jsapi/video/a:mvA	J
+    //   146: putfield 309	com/tencent/mm/g/b/a/t:elb	J
     //   149: aload_3
     //   150: aload_2
-    //   151: getfield 210	com/tencent/mm/plugin/appbrand/jsapi/video/a:loV	Lcom/tencent/mm/g/b/a/f$a;
-    //   154: putfield 312	com/tencent/mm/g/b/a/f:dRt	Lcom/tencent/mm/g/b/a/f$a;
+    //   151: getfield 210	com/tencent/mm/plugin/appbrand/jsapi/video/a:mvB	Lcom/tencent/mm/g/b/a/t$a;
+    //   154: putfield 312	com/tencent/mm/g/b/a/t:elc	Lcom/tencent/mm/g/b/a/t$a;
     //   157: aload_3
-    //   158: invokevirtual 315	com/tencent/mm/g/b/a/f:aLH	()Z
+    //   158: invokevirtual 315	com/tencent/mm/g/b/a/t:bfK	()Z
     //   161: pop
     //   162: ldc_w 279
     //   165: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -347,7 +347,7 @@ public class AppBrandVideoDownLoadMgr
     //   0	171	0	this	AppBrandVideoDownLoadMgr
     //   0	171	1	paramString	String
     //   44	107	2	locala	a
-    //   127	31	3	localf	com.tencent.mm.g.b.a.f
+    //   127	31	3	localt	com.tencent.mm.g.b.a.t
     // Exception table:
     //   from	to	target	type
     //   2	29	86	finally
@@ -359,7 +359,7 @@ public class AppBrandVideoDownLoadMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoDownLoadMgr
  * JD-Core Version:    0.7.0.1
  */

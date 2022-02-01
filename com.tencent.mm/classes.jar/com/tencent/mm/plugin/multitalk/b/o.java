@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.multitalk.b;
 
 public final class o
 {
-  static int pdP;
-  static int pdQ;
-  static int pdR;
-  static int pdS;
-  static int pdT;
-  static int pdU;
-  static int pdV;
-  static int pdW;
-  static int pdX;
+  static int qsR;
+  static int qsS;
+  static int qsT;
+  static int qsU;
+  static int qsV;
+  static int qsW;
+  static int qsX;
+  static int qsY;
+  static int qsZ;
 }
 
 

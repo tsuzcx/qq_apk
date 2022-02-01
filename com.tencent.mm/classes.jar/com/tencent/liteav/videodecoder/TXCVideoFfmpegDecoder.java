@@ -2,17 +2,16 @@ package com.tencent.liteav.videodecoder;
 
 import android.view.Surface;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import org.json.JSONArray;
 
 public class TXCVideoFfmpegDecoder
-  implements a
+  implements b
 {
   private boolean mFirstDec;
-  private c mListener;
+  private f mListener;
   private long mNativeDecoder;
   private long mNativeNotify;
   private ByteBuffer mPps;
@@ -24,7 +23,7 @@ public class TXCVideoFfmpegDecoder
   static
   {
     AppMethodBeat.i(16646);
-    f.f();
+    com.tencent.liteav.basic.util.f.f();
     nativeClassInit();
     AppMethodBeat.o(16646);
   }
@@ -73,6 +72,8 @@ public class TXCVideoFfmpegDecoder
     AppMethodBeat.o(16642);
   }
   
+  public void enableLimitDecCache(boolean paramBoolean) {}
+  
   public boolean isHevc()
   {
     return false;
@@ -85,12 +86,12 @@ public class TXCVideoFfmpegDecoder
     AppMethodBeat.o(16645);
   }
   
-  public void setListener(c paramc)
+  public void setListener(f paramf)
   {
-    this.mListener = paramc;
+    this.mListener = paramf;
   }
   
-  public void setNotifyListener(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference) {}
+  public void setNotifyListener(WeakReference<com.tencent.liteav.basic.b.b> paramWeakReference) {}
   
   public int start(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -114,7 +115,7 @@ public class TXCVideoFfmpegDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.TXCVideoFfmpegDecoder
  * JD-Core Version:    0.7.0.1
  */

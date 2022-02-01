@@ -16,9 +16,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import com.tencent.tmassistantsdk.channel.TMAssistantSDKChannel;
 import com.tencent.tmassistantsdk.channel.TMAssistantSDKChannelDataItem;
 import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
@@ -55,10 +55,10 @@ public class TMOpenSDKToMsdkManager
   protected ITMAssistantDownloadSDKClientListener mDownloadSDKListener;
   protected String mDownloadUrl;
   protected GetAuthorizedHttpRequest mHttpRequest;
-  protected aq mMainMessageHandler;
+  protected MMHandler mMainMessageHandler;
   protected TMQQDownloaderOpenSDK mOpenSDK;
   protected IGetAuthorizedHttpRequestListenner mRequestListener;
-  protected aq mSubMessageHandler;
+  protected MMHandler mSubMessageHandler;
   protected HandlerThread mSubMessagehandlerThread;
   protected int mSupportVersionCode;
   protected ITMOpenSDKToMsdkListener mToMsdkListener;
@@ -119,8 +119,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102169);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (TMOpenSDKToMsdkManager.this.mAuthorizedInfo == null)
         {
           a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -143,8 +143,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102170);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (TMOpenSDKToMsdkManager.this.dialog.isShowing())
         {
           TMOpenSDKToMsdkManager.this.dialog.dismiss();
@@ -170,7 +170,7 @@ public class TMOpenSDKToMsdkManager
         {
           for (;;)
           {
-            ae.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
+            Log.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
             continue;
             TMOpenSDKToMsdkManager.this.notifyAuthorizedFinished(false, TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
           }
@@ -185,8 +185,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102171);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (TMOpenSDKToMsdkManager.this.mContext == null)
         {
           a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -205,7 +205,7 @@ public class TMOpenSDKToMsdkManager
           }
           catch (Exception paramAnonymousView)
           {
-            ae.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
+            Log.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
             continue;
             TMOpenSDKToMsdkManager.this.startDownloadTask(TMOpenSDKToMsdkManager.this.mDownloadUrl, paramAnonymousView.jumpUrl);
             continue;
@@ -221,7 +221,7 @@ public class TMOpenSDKToMsdkManager
           }
           catch (Exception paramAnonymousView)
           {
-            ae.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
+            Log.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
           }
         }
       }
@@ -272,7 +272,7 @@ public class TMOpenSDKToMsdkManager
               }
               catch (Exception localException)
               {
-                ae.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+                Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
                 AppMethodBeat.o(102174);
               }
             }
@@ -361,7 +361,7 @@ public class TMOpenSDKToMsdkManager
         }
         catch (Exception localException)
         {
-          ae.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+          Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
           AppMethodBeat.o(102168);
           return;
         }
@@ -520,8 +520,8 @@ public class TMOpenSDKToMsdkManager
     this.mOpenSDK.initQQDownloaderOpenSDK(this.mContext);
     this.mToMsdkListener = paramITMOpenSDKToMsdkListener;
     this.sdkChannel = new TMAssistantSDKChannel();
-    this.mSubMessageHandler = new aq("OpenSDKToMsdkManager");
-    this.mMainMessageHandler = new aq(Looper.getMainLooper(), new aq.a()
+    this.mSubMessageHandler = new MMHandler("OpenSDKToMsdkManager");
+    this.mMainMessageHandler = new MMHandler(Looper.getMainLooper(), new MMHandler.Callback()
     {
       public boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -807,7 +807,7 @@ public class TMOpenSDKToMsdkManager
         }
         catch (Exception localException)
         {
-          ae.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+          Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
           AppMethodBeat.o(102173);
         }
       }
@@ -876,7 +876,7 @@ public class TMOpenSDKToMsdkManager
             catch (Exception localException)
             {
               TipsInfoLog localTipsInfoLog;
-              ae.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+              Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
               continue;
               this.dialog.setPositiveBtnText(this.mContext.getString(localRes.string("white_list_positive_update")));
               continueDownload();
@@ -947,7 +947,7 @@ public class TMOpenSDKToMsdkManager
           }
           catch (Exception localException)
           {
-            ae.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+            Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
             AppMethodBeat.o(102172);
             return;
           }
@@ -1035,14 +1035,14 @@ public class TMOpenSDKToMsdkManager
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+      Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
       AppMethodBeat.o(102190);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKToMsdkManager
  * JD-Core Version:    0.7.0.1
  */

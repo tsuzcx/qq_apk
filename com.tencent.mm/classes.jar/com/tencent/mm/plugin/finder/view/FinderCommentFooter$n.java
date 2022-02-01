@@ -5,29 +5,29 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class FinderCommentFooter$n
   implements View.OnClickListener
 {
-  public static final n teG;
+  public static final n wlp;
   
   static
   {
-    AppMethodBeat.i(205738);
-    teG = new n();
-    AppMethodBeat.o(205738);
+    AppMethodBeat.i(254753);
+    wlp = new n();
+    AppMethodBeat.o(254753);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(205737);
+    AppMethodBeat.i(254752);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     a.a(this, "com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(205737);
+    AppMethodBeat.o(254752);
   }
 }
 

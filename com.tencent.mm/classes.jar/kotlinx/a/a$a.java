@@ -1,16 +1,16 @@
 package kotlinx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/CompositeDecoder$Companion;", "", "()V", "READ_ALL", "", "READ_ALL$annotations", "READ_DONE", "UNKNOWN_NAME", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/CompositeDecoder$Companion;", "", "()V", "READ_ALL", "", "READ_ALL$annotations", "READ_DONE", "UNKNOWN_NAME", "kotlinx-serialization-runtime"})
 public final class a$a
 {
   static
   {
-    AppMethodBeat.i(199584);
-    Oip = new a();
-    AppMethodBeat.o(199584);
+    AppMethodBeat.i(225356);
+    TXl = new a();
+    AppMethodBeat.o(225356);
   }
 }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public final class c
 {
-  private static final Comparator<f> adc = new Comparator() {};
+  private static final Comparator<f> adp = new Comparator() {};
   
   public static b a(a parama)
   {
@@ -19,8 +19,8 @@ public final class c
   
   public static b a(a parama, boolean paramBoolean)
   {
-    int i = parama.az();
-    int j = parama.aA();
+    int i = parama.aB();
+    int j = parama.aC();
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     localArrayList2.add(new e(i, j));
@@ -31,36 +31,36 @@ public final class c
     while (!localArrayList2.isEmpty())
     {
       e locale2 = (e)localArrayList2.remove(localArrayList2.size() - 1);
-      f localf = a(parama, locale2.adn, locale2.ado, locale2.adp, locale2.adq, arrayOfInt1, arrayOfInt2, i);
+      f localf = a(parama, locale2.adA, locale2.adB, locale2.adC, locale2.adD, arrayOfInt1, arrayOfInt2, i);
       if (localf != null)
       {
         if (localf.size > 0) {
           localArrayList1.add(localf);
         }
-        localf.x += locale2.adn;
-        localf.y += locale2.adp;
+        localf.x += locale2.adA;
+        localf.y += locale2.adC;
         e locale1;
         if (localArrayList3.isEmpty())
         {
           locale1 = new e();
           label215:
-          locale1.adn = locale2.adn;
-          locale1.adp = locale2.adp;
+          locale1.adA = locale2.adA;
+          locale1.adC = locale2.adC;
           if (!localf.reverse) {
             break label360;
           }
-          locale1.ado = localf.x;
-          locale1.adq = localf.y;
+          locale1.adB = localf.x;
+          locale1.adD = localf.y;
           label263:
           localArrayList2.add(locale1);
           if (!localf.reverse) {
             break label455;
           }
-          if (!localf.adm) {
+          if (!localf.adz) {
             break label418;
           }
-          locale2.adn = (localf.x + localf.size + 1);
-          locale2.adp = (localf.y + localf.size);
+          locale2.adA = (localf.x + localf.size + 1);
+          locale2.adC = (localf.y + localf.size);
         }
         for (;;)
         {
@@ -69,27 +69,27 @@ public final class c
           locale1 = (e)localArrayList3.remove(localArrayList3.size() - 1);
           break label215;
           label360:
-          if (localf.adm)
+          if (localf.adz)
           {
-            locale1.ado = (localf.x - 1);
-            locale1.adq = localf.y;
+            locale1.adB = (localf.x - 1);
+            locale1.adD = localf.y;
             break label263;
           }
-          locale1.ado = localf.x;
-          locale1.adq = (localf.y - 1);
+          locale1.adB = localf.x;
+          locale1.adD = (localf.y - 1);
           break label263;
           label418:
-          locale2.adn = (localf.x + localf.size);
-          locale2.adp = (localf.y + localf.size + 1);
+          locale2.adA = (localf.x + localf.size);
+          locale2.adC = (localf.y + localf.size + 1);
           continue;
           label455:
-          locale2.adn = (localf.x + localf.size);
-          locale2.adp = (localf.y + localf.size);
+          locale2.adA = (localf.x + localf.size);
+          locale2.adC = (localf.y + localf.size);
         }
       }
       localArrayList3.add(locale2);
     }
-    Collections.sort(localArrayList1, adc);
+    Collections.sort(localArrayList1, adp);
     return new b(parama, localArrayList1, arrayOfInt1, arrayOfInt2, paramBoolean);
   }
   
@@ -148,7 +148,7 @@ public final class c
           parama.x = paramArrayOfInt2[(paramInt5 + j)];
           parama.y = (parama.x - j);
           parama.size = (paramArrayOfInt1[(paramInt5 + j)] - paramArrayOfInt2[(paramInt5 + j)]);
-          parama.adm = bool;
+          parama.adz = bool;
           parama.reverse = false;
           return parama;
         }
@@ -181,7 +181,7 @@ public final class c
           parama.x = paramArrayOfInt2[(paramInt5 + i4)];
           parama.y = (parama.x - i4);
           parama.size = (paramArrayOfInt1[(paramInt5 + i4)] - paramArrayOfInt2[(paramInt5 + i4)]);
-          parama.adm = bool;
+          parama.adz = bool;
           parama.reverse = true;
           return parama;
         }
@@ -195,9 +195,9 @@ public final class c
   
   public static abstract class a
   {
-    public abstract int aA();
+    public abstract int aB();
     
-    public abstract int az();
+    public abstract int aC();
     
     public Object h(int paramInt1, int paramInt2)
     {
@@ -211,39 +211,39 @@ public final class c
   
   public static final class b
   {
-    private final List<c.f> add;
-    private final int[] ade;
-    private final int[] adf;
-    private final c.a adg;
-    private final int adh;
-    private final int adi;
-    private final boolean adj;
+    private final List<c.f> adq;
+    private final int[] adr;
+    private final int[] ads;
+    private final c.a adt;
+    private final int adu;
+    private final int adv;
+    private final boolean adw;
     
     b(c.a parama, List<c.f> paramList, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean paramBoolean)
     {
-      this.add = paramList;
-      this.ade = paramArrayOfInt1;
-      this.adf = paramArrayOfInt2;
-      Arrays.fill(this.ade, 0);
-      Arrays.fill(this.adf, 0);
-      this.adg = parama;
-      this.adh = parama.az();
-      this.adi = parama.aA();
-      this.adj = paramBoolean;
-      if (this.add.isEmpty()) {}
-      for (parama = null;; parama = (c.f)this.add.get(0))
+      this.adq = paramList;
+      this.adr = paramArrayOfInt1;
+      this.ads = paramArrayOfInt2;
+      Arrays.fill(this.adr, 0);
+      Arrays.fill(this.ads, 0);
+      this.adt = parama;
+      this.adu = parama.aB();
+      this.adv = parama.aC();
+      this.adw = paramBoolean;
+      if (this.adq.isEmpty()) {}
+      for (parama = null;; parama = (c.f)this.adq.get(0))
       {
         if ((parama == null) || (parama.x != 0) || (parama.y != 0))
         {
           parama = new c.f();
           parama.x = 0;
           parama.y = 0;
-          parama.adm = false;
+          parama.adz = false;
           parama.size = 0;
           parama.reverse = false;
-          this.add.add(0, parama);
+          this.adq.add(0, parama);
         }
-        hr();
+        hA();
         return;
       }
     }
@@ -254,7 +254,7 @@ public final class c
       while (i >= 0)
       {
         c.d locald2 = (c.d)paramList.get(i);
-        if ((locald2.adk == paramInt) && (locald2.adm == paramBoolean))
+        if ((locald2.adx == paramInt) && (locald2.adz == paramBoolean))
         {
           paramList.remove(i);
           paramInt = i;
@@ -263,11 +263,11 @@ public final class c
             break label123;
           }
           locald1 = (c.d)paramList.get(paramInt);
-          int j = locald1.adl;
+          int j = locald1.ady;
           if (paramBoolean) {}
           for (i = 1;; i = -1)
           {
-            locald1.adl = (i + j);
+            locald1.ady = (i + j);
             paramInt += 1;
             break;
           }
@@ -281,7 +281,7 @@ public final class c
     
     private void a(List<c.d> paramList, d paramd, int paramInt1, int paramInt2, int paramInt3)
     {
-      if (!this.adj) {
+      if (!this.adw) {
         paramd.f(paramInt1, paramInt2);
       }
       do
@@ -289,7 +289,7 @@ public final class c
         return;
         paramInt2 -= 1;
       } while (paramInt2 < 0);
-      int i = this.adf[(paramInt3 + paramInt2)] & 0x1F;
+      int i = this.ads[(paramInt3 + paramInt2)] & 0x1F;
       Iterator localIterator;
       switch (i)
       {
@@ -303,12 +303,12 @@ public final class c
         while (localIterator.hasNext())
         {
           c.d locald = (c.d)localIterator.next();
-          locald.adl += 1;
+          locald.ady += 1;
           continue;
-          int j = this.adf[(paramInt3 + paramInt2)] >> 5;
-          paramd.l(a(paramList, j, true).adl, paramInt1);
+          int j = this.ads[(paramInt3 + paramInt2)] >> 5;
+          paramd.l(a(paramList, j, true).ady, paramInt1);
           if (i == 4) {
-            paramd.c(paramInt1, 1, this.adg.h(j, paramInt3 + paramInt2));
+            paramd.c(paramInt1, 1, this.adt.h(j, paramInt3 + paramInt2));
           }
         }
       }
@@ -336,7 +336,7 @@ public final class c
       }
       while (paramInt3 >= 0)
       {
-        c.f localf = (c.f)this.add.get(paramInt3);
+        c.f localf = (c.f)this.adq.get(paramInt3);
         m = localf.x;
         int n = localf.size;
         int i1 = localf.y;
@@ -349,13 +349,13 @@ public final class c
             if (paramInt2 < m + n) {
               break label259;
             }
-            if (this.adg.i(paramInt2, j))
+            if (this.adt.i(paramInt2, j))
             {
-              if (this.adg.j(paramInt2, j)) {}
+              if (this.adt.j(paramInt2, j)) {}
               for (paramInt1 = 8;; paramInt1 = 4)
               {
-                this.adf[j] = (paramInt2 << 5 | 0x10);
-                this.ade[paramInt2] = (paramInt1 | j << 5);
+                this.ads[j] = (paramInt2 << 5 | 0x10);
+                this.adr[paramInt2] = (paramInt1 | j << 5);
                 return true;
                 j = paramInt1 - 1;
                 i = paramInt1 - 1;
@@ -368,13 +368,13 @@ public final class c
         paramInt2 -= 1;
         while (paramInt2 >= i1 + i2)
         {
-          if (this.adg.i(j, paramInt2))
+          if (this.adt.i(j, paramInt2))
           {
-            if (this.adg.j(j, paramInt2)) {}
+            if (this.adt.j(j, paramInt2)) {}
             for (paramInt3 = k;; paramInt3 = 4)
             {
-              this.ade[(paramInt1 - 1)] = (paramInt2 << 5 | 0x10);
-              this.adf[paramInt2] = (paramInt3 | paramInt1 - 1 << 5);
+              this.adr[(paramInt1 - 1)] = (paramInt2 << 5 | 0x10);
+              this.ads[paramInt2] = (paramInt3 | paramInt1 - 1 << 5);
               return true;
             }
           }
@@ -390,7 +390,7 @@ public final class c
     
     private void b(List<c.d> paramList, d paramd, int paramInt1, int paramInt2, int paramInt3)
     {
-      if (!this.adj) {
+      if (!this.adw) {
         paramd.k(paramInt1, paramInt2);
       }
       do
@@ -398,7 +398,7 @@ public final class c
         return;
         paramInt2 -= 1;
       } while (paramInt2 < 0);
-      int i = this.ade[(paramInt3 + paramInt2)] & 0x1F;
+      int i = this.adr[(paramInt3 + paramInt2)] & 0x1F;
       Object localObject;
       switch (i)
       {
@@ -412,13 +412,13 @@ public final class c
         while (((Iterator)localObject).hasNext())
         {
           c.d locald = (c.d)((Iterator)localObject).next();
-          locald.adl -= 1;
+          locald.ady -= 1;
           continue;
-          int j = this.ade[(paramInt3 + paramInt2)] >> 5;
+          int j = this.adr[(paramInt3 + paramInt2)] >> 5;
           localObject = a(paramList, j, false);
-          paramd.l(paramInt1 + paramInt2, ((c.d)localObject).adl - 1);
+          paramd.l(paramInt1 + paramInt2, ((c.d)localObject).ady - 1);
           if (i == 4) {
-            paramd.c(((c.d)localObject).adl - 1, 1, this.adg.h(paramInt3 + paramInt2, j));
+            paramd.c(((c.d)localObject).ady - 1, 1, this.adt.h(paramInt3 + paramInt2, j));
           }
         }
       }
@@ -430,20 +430,20 @@ public final class c
       }
     }
     
-    private void hr()
+    private void hA()
     {
-      int j = this.adh;
-      int i = this.adi;
-      int k = this.add.size() - 1;
+      int j = this.adu;
+      int i = this.adv;
+      int k = this.adq.size() - 1;
       while (k >= 0)
       {
-        c.f localf = (c.f)this.add.get(k);
+        c.f localf = (c.f)this.adq.get(k);
         int i2 = localf.x;
         int i3 = localf.size;
         int n = localf.y;
         int i1 = localf.size;
         int m;
-        if (this.adj)
+        if (this.adw)
         {
           for (;;)
           {
@@ -451,14 +451,14 @@ public final class c
             if (j <= i2 + i3) {
               break;
             }
-            if (this.ade[(j - 1)] == 0) {
+            if (this.adr[(j - 1)] == 0) {
               a(j, i, k, false);
             }
             j -= 1;
           }
           while (m > n + i1)
           {
-            if (this.adf[(m - 1)] == 0) {
+            if (this.ads[(m - 1)] == 0) {
               a(j, m, k, true);
             }
             m -= 1;
@@ -469,11 +469,11 @@ public final class c
         {
           m = localf.x + i;
           n = localf.y + i;
-          if (this.adg.j(m, n)) {}
+          if (this.adt.j(m, n)) {}
           for (j = 1;; j = 2)
           {
-            this.ade[m] = (n << 5 | j);
-            this.adf[n] = (j | m << 5);
+            this.adr[m] = (n << 5 | j);
+            this.ads[n] = (j | m << 5);
             i += 1;
             break;
           }
@@ -494,16 +494,16 @@ public final class c
       {
         paramd = (b)paramd;
         localArrayList = new ArrayList();
-        j = this.adh;
-        k = this.adi;
-        i = this.add.size() - 1;
+        j = this.adu;
+        k = this.adv;
+        i = this.adq.size() - 1;
       }
       for (;;)
       {
         if (i < 0) {
           break label234;
         }
-        c.f localf = (c.f)this.add.get(i);
+        c.f localf = (c.f)this.adq.get(i);
         int m = localf.size;
         int n = localf.x + m;
         int i1 = localf.y + m;
@@ -518,8 +518,8 @@ public final class c
         {
           if (j >= 0)
           {
-            if ((this.ade[(localf.x + j)] & 0x1F) == 2) {
-              paramd.c(localf.x + j, 1, this.adg.h(localf.x + j, localf.y + j));
+            if ((this.adr[(localf.x + j)] & 0x1F) == 2) {
+              paramd.c(localf.x + j, 1, this.adt.h(localf.x + j, localf.y + j));
             }
             j -= 1;
             continue;
@@ -532,7 +532,7 @@ public final class c
         i -= 1;
       }
       label234:
-      paramd.hq();
+      paramd.hz();
     }
     
     public final void a(RecyclerView.a parama)
@@ -541,41 +541,48 @@ public final class c
     }
   }
   
+  public static abstract class c<T>
+  {
+    public abstract boolean d(T paramT1, T paramT2);
+    
+    public abstract boolean e(T paramT1, T paramT2);
+  }
+  
   static final class d
   {
-    int adk;
-    int adl;
-    boolean adm;
+    int adx;
+    int ady;
+    boolean adz;
     
     public d(int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      this.adk = paramInt1;
-      this.adl = paramInt2;
-      this.adm = paramBoolean;
+      this.adx = paramInt1;
+      this.ady = paramInt2;
+      this.adz = paramBoolean;
     }
   }
   
   static final class e
   {
-    int adn;
-    int ado;
-    int adp;
-    int adq;
+    int adA;
+    int adB;
+    int adC;
+    int adD;
     
     public e() {}
     
     public e(int paramInt1, int paramInt2)
     {
-      this.adn = 0;
-      this.ado = paramInt1;
-      this.adp = 0;
-      this.adq = paramInt2;
+      this.adA = 0;
+      this.adB = paramInt1;
+      this.adC = 0;
+      this.adD = paramInt2;
     }
   }
   
   static final class f
   {
-    boolean adm;
+    boolean adz;
     boolean reverse;
     int size;
     int x;
@@ -584,7 +591,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v7.h.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.HashSet;
 
 public final class b
@@ -17,7 +17,7 @@ public final class b
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(aq paramaq, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(MMHandler paramMMHandler, HashSet<String> paramHashSet)
   {
     return null;
   }
@@ -26,9 +26,9 @@ public final class b
   {
     AppMethodBeat.i(127651);
     c localc = new c(paramInt2);
-    localc.kno = paramm;
-    localc.tFe = parama.tFe;
-    localc.gf(paramm.type, paramm.tEX);
+    localc.lqW = paramm;
+    localc.wWd = parama.wWd;
+    localc.gE(paramm.type, paramm.wVW);
     AppMethodBeat.o(127651);
     return localc;
   }
@@ -47,7 +47,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.w.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.c.d;
 
 public final class i
 {
-  public d Dnx;
+  public d HWP;
   public String crt_token;
   public String crt_wording;
   public int is_gen_cert;
@@ -22,7 +22,7 @@ public final class i
     this.is_hint_cert = 0;
     this.crt_wording = "";
     this.is_ignore_cert = 0;
-    this.Dnx = new d();
+    this.HWP = new d();
     AppMethodBeat.o(70256);
   }
   
@@ -34,20 +34,20 @@ public final class i
     this.is_hint_cert = 0;
     this.crt_wording = "";
     this.is_ignore_cert = 0;
-    this.Dnx = new d();
+    this.HWP = new d();
     this.is_gen_cert = paramBundle.getInt("key_is_gen_cert", 0);
     this.is_hint_cert = paramBundle.getInt("key_is_hint_crt", 0);
     this.is_ignore_cert = paramBundle.getInt("key_is_ignore_cert", 0);
     this.crt_token = paramBundle.getString("key_crt_token", "");
     this.crt_wording = paramBundle.getString("key_crt_wording", "");
-    this.Dnx = new d(this.crt_wording);
+    this.HWP = new d(this.crt_wording);
     AppMethodBeat.o(70257);
   }
   
-  public final boolean eIJ()
+  public final boolean fQm()
   {
     AppMethodBeat.i(70258);
-    if ((this.is_hint_cert != 0) && (!bu.isNullOrNil(this.crt_wording)))
+    if ((this.is_hint_cert != 0) && (!Util.isNullOrNil(this.crt_wording)))
     {
       AppMethodBeat.o(70258);
       return true;
@@ -56,15 +56,15 @@ public final class i
     return false;
   }
   
-  public final boolean eIK()
+  public final boolean fQn()
   {
     return this.is_gen_cert == 1;
   }
   
-  public final boolean eIL()
+  public final boolean fQo()
   {
     AppMethodBeat.i(70259);
-    if ((eIK()) && (this.is_ignore_cert == 0))
+    if ((fQn()) && (this.is_ignore_cert == 0))
     {
       AppMethodBeat.o(70259);
       return true;
@@ -75,7 +75,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.i
  * JD-Core Version:    0.7.0.1
  */

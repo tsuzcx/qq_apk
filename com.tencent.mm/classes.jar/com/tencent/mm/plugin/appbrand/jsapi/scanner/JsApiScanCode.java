@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi.scanner;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class JsApiScanCode
-  extends a<c>
+  extends d<c>
 {
   public static final int CTRL_INDEX = 148;
   public static final String NAME = "scanCode";
-  private static volatile boolean ljY = false;
+  private static volatile boolean mpG = false;
 }
 
 

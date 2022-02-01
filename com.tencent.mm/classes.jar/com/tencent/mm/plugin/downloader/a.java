@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.downloader;
 import android.os.FileObserver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
   extends FileObserver
 {
-  private String ppv;
+  private String qFa;
   
   public a(String paramString)
   {
     super(q.k(paramString, false), 618);
-    AppMethodBeat.i(207149);
-    this.ppv = paramString;
-    AppMethodBeat.o(207149);
+    AppMethodBeat.i(192243);
+    this.qFa = paramString;
+    AppMethodBeat.o(192243);
   }
   
   public final void onEvent(int paramInt, String paramString)
@@ -23,11 +23,11 @@ public final class a
     AppMethodBeat.i(88814);
     if (paramString == null)
     {
-      ae.e("DownloadsObserver", "path should be null");
+      Log.e("DownloadsObserver", "path should be null");
       AppMethodBeat.o(88814);
       return;
     }
-    paramString = this.ppv + paramString;
+    paramString = this.qFa + paramString;
     switch (paramInt)
     {
     }
@@ -35,22 +35,22 @@ public final class a
     {
       AppMethodBeat.o(88814);
       return;
-      ae.i("DownloadsObserver", "close write file: %s", new Object[] { paramString });
+      Log.i("DownloadsObserver", "close write file: %s", new Object[] { paramString });
       AppMethodBeat.o(88814);
       return;
-      ae.i("DownloadsObserver", "open file: %s", new Object[] { paramString });
+      Log.i("DownloadsObserver", "open file: %s", new Object[] { paramString });
       AppMethodBeat.o(88814);
       return;
-      ae.i("DownloadsObserver", "delete file: %s", new Object[] { paramString });
+      Log.i("DownloadsObserver", "delete file: %s", new Object[] { paramString });
       AppMethodBeat.o(88814);
       return;
-      ae.i("DownloadsObserver", "move from file: %s", new Object[] { paramString });
+      Log.i("DownloadsObserver", "move from file: %s", new Object[] { paramString });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.a
  * JD-Core Version:    0.7.0.1
  */

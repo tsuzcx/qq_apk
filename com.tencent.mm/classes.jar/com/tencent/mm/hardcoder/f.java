@@ -4,38 +4,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
+  private static long Fk(String paramString)
+  {
+    AppMethodBeat.i(62484);
+    if (paramString != null) {}
+    try
+    {
+      if (paramString.length() <= 0)
+      {
+        AppMethodBeat.o(62484);
+        return 0L;
+      }
+      long l = Long.decode(paramString).longValue();
+      AppMethodBeat.o(62484);
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      d.printErrStackTrace("Hardcoder.HardCoderUtil", paramString, "getLong", new Object[0]);
+      AppMethodBeat.o(62484);
+    }
+    return 0L;
+  }
+  
   /* Error */
-  public static long[] ahC()
+  public static long[] axO()
   {
     // Byte code:
-    //   0: ldc 9
+    //   0: ldc 50
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 17	java/io/FileReader
+    //   5: new 52	java/io/FileReader
     //   8: dup
-    //   9: new 19	java/lang/StringBuilder
+    //   9: new 54	java/lang/StringBuilder
     //   12: dup
-    //   13: ldc 21
-    //   15: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   18: invokestatic 31	android/os/Process:myPid	()I
-    //   21: invokevirtual 35	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   24: ldc 37
-    //   26: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokespecial 45	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   13: ldc 56
+    //   15: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   18: invokestatic 65	android/os/Process:myPid	()I
+    //   21: invokevirtual 69	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   24: ldc 71
+    //   26: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokespecial 79	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   35: astore 5
-    //   37: new 47	java/io/BufferedReader
+    //   37: new 81	java/io/BufferedReader
     //   40: dup
     //   41: aload 5
-    //   43: invokespecial 50	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   43: invokespecial 84	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   46: astore 4
     //   48: aload 4
     //   50: astore 7
     //   52: aload 5
     //   54: astore 6
     //   56: aload 4
-    //   58: invokevirtual 53	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   61: ldc 55
-    //   63: invokevirtual 61	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   58: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   61: ldc 89
+    //   63: invokevirtual 93	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   66: astore 8
     //   68: aload 4
     //   70: astore 7
@@ -44,7 +67,7 @@ public final class f
     //   76: aload 8
     //   78: bipush 13
     //   80: aaload
-    //   81: invokestatic 67	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   81: invokestatic 96	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   84: lstore_0
     //   85: aload 4
     //   87: astore 7
@@ -53,14 +76,14 @@ public final class f
     //   93: aload 8
     //   95: bipush 14
     //   97: aaload
-    //   98: invokestatic 67	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   98: invokestatic 96	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   101: lstore_2
     //   102: aload 5
-    //   104: invokevirtual 71	java/io/FileReader:close	()V
+    //   104: invokevirtual 100	java/io/FileReader:close	()V
     //   107: aload 4
-    //   109: invokevirtual 72	java/io/BufferedReader:close	()V
-    //   112: ldc 9
-    //   114: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: invokevirtual 101	java/io/BufferedReader:close	()V
+    //   112: ldc 50
+    //   114: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: iconst_2
     //   118: newarray long
     //   120: dup
@@ -73,28 +96,28 @@ public final class f
     //   127: lastore
     //   128: areturn
     //   129: astore 5
-    //   131: ldc 77
-    //   133: new 19	java/lang/StringBuilder
+    //   131: ldc 36
+    //   133: new 54	java/lang/StringBuilder
     //   136: dup
-    //   137: ldc 79
-    //   139: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   137: ldc 103
+    //   139: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   142: aload 5
-    //   144: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   147: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   147: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   156: goto -49 -> 107
     //   159: astore 4
-    //   161: ldc 77
-    //   163: new 19	java/lang/StringBuilder
+    //   161: ldc 36
+    //   163: new 54	java/lang/StringBuilder
     //   166: dup
-    //   167: ldc 90
-    //   169: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   167: ldc 112
+    //   169: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   172: aload 4
-    //   174: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   177: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   174: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   177: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   183: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   186: goto -74 -> 112
     //   189: astore 8
     //   191: aconst_null
@@ -105,51 +128,51 @@ public final class f
     //   199: astore 7
     //   201: aload 5
     //   203: astore 6
-    //   205: ldc 77
-    //   207: new 19	java/lang/StringBuilder
+    //   205: ldc 36
+    //   207: new 54	java/lang/StringBuilder
     //   210: dup
-    //   211: ldc 92
-    //   213: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   211: ldc 114
+    //   213: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   216: aload 8
-    //   218: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   221: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   218: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   221: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   227: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   230: aload 5
     //   232: ifnull +8 -> 240
     //   235: aload 5
-    //   237: invokevirtual 71	java/io/FileReader:close	()V
+    //   237: invokevirtual 100	java/io/FileReader:close	()V
     //   240: aload 4
     //   242: ifnull +8 -> 250
     //   245: aload 4
-    //   247: invokevirtual 72	java/io/BufferedReader:close	()V
-    //   250: ldc 9
-    //   252: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   247: invokevirtual 101	java/io/BufferedReader:close	()V
+    //   250: ldc 50
+    //   252: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   255: aconst_null
     //   256: areturn
     //   257: astore 5
-    //   259: ldc 77
-    //   261: new 19	java/lang/StringBuilder
+    //   259: ldc 36
+    //   261: new 54	java/lang/StringBuilder
     //   264: dup
-    //   265: ldc 79
-    //   267: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   265: ldc 103
+    //   267: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   270: aload 5
-    //   272: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   275: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   281: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   272: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   275: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   281: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   284: goto -44 -> 240
     //   287: astore 4
-    //   289: ldc 77
-    //   291: new 19	java/lang/StringBuilder
+    //   289: ldc 36
+    //   291: new 54	java/lang/StringBuilder
     //   294: dup
-    //   295: ldc 90
-    //   297: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   295: ldc 112
+    //   297: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   300: aload 4
-    //   302: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   305: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   311: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   302: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   305: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   311: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   314: goto -64 -> 250
     //   317: astore 4
     //   319: aconst_null
@@ -159,38 +182,38 @@ public final class f
     //   325: aload 5
     //   327: ifnull +8 -> 335
     //   330: aload 5
-    //   332: invokevirtual 71	java/io/FileReader:close	()V
+    //   332: invokevirtual 100	java/io/FileReader:close	()V
     //   335: aload 7
     //   337: ifnull +8 -> 345
     //   340: aload 7
-    //   342: invokevirtual 72	java/io/BufferedReader:close	()V
-    //   345: ldc 9
-    //   347: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   342: invokevirtual 101	java/io/BufferedReader:close	()V
+    //   345: ldc 50
+    //   347: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   350: aload 4
     //   352: athrow
     //   353: astore 5
-    //   355: ldc 77
-    //   357: new 19	java/lang/StringBuilder
+    //   355: ldc 36
+    //   357: new 54	java/lang/StringBuilder
     //   360: dup
-    //   361: ldc 79
-    //   363: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   361: ldc 103
+    //   363: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   366: aload 5
-    //   368: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   371: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   374: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   377: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   368: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   371: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   374: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   377: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   380: goto -45 -> 335
     //   383: astore 5
-    //   385: ldc 77
-    //   387: new 19	java/lang/StringBuilder
+    //   385: ldc 36
+    //   387: new 54	java/lang/StringBuilder
     //   390: dup
-    //   391: ldc 90
-    //   393: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   391: ldc 112
+    //   393: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   396: aload 5
-    //   398: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   401: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   404: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   407: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   398: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   401: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   404: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   407: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   410: goto -65 -> 345
     //   413: astore 4
     //   415: aconst_null
@@ -253,7 +276,7 @@ public final class f
     //   93	102	438	java/lang/Exception
   }
   
-  private static int fe(String paramString)
+  private static int cL(String paramString)
   {
     AppMethodBeat.i(62483);
     if (paramString != null) {}
@@ -277,116 +300,116 @@ public final class f
   }
   
   /* Error */
-  public static int mr(int paramInt)
+  public static int pE(int paramInt)
   {
     // Byte code:
-    //   0: ldc 119
+    //   0: ldc 130
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 17	java/io/FileReader
+    //   5: new 52	java/io/FileReader
     //   8: dup
-    //   9: new 19	java/lang/StringBuilder
+    //   9: new 54	java/lang/StringBuilder
     //   12: dup
-    //   13: ldc 21
-    //   15: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   18: invokestatic 31	android/os/Process:myPid	()I
-    //   21: invokevirtual 35	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   24: ldc 121
-    //   26: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: ldc 56
+    //   15: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   18: invokestatic 65	android/os/Process:myPid	()I
+    //   21: invokevirtual 69	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   24: ldc 132
+    //   26: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: iload_0
-    //   30: invokevirtual 35	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   33: ldc 37
-    //   35: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokespecial 45	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   30: invokevirtual 69	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   33: ldc 71
+    //   35: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokespecial 79	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   44: astore_2
-    //   45: new 47	java/io/BufferedReader
+    //   45: new 81	java/io/BufferedReader
     //   48: dup
     //   49: aload_2
-    //   50: invokespecial 50	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   50: invokespecial 84	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   53: astore_1
     //   54: aload_1
     //   55: astore 4
     //   57: aload_2
     //   58: astore_3
     //   59: aload_1
-    //   60: invokevirtual 53	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   60: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   63: astore 5
     //   65: aload 5
     //   67: ifnonnull +74 -> 141
     //   70: aload_2
-    //   71: invokevirtual 71	java/io/FileReader:close	()V
+    //   71: invokevirtual 100	java/io/FileReader:close	()V
     //   74: aload_1
-    //   75: invokevirtual 72	java/io/BufferedReader:close	()V
-    //   78: ldc 119
-    //   80: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: invokevirtual 101	java/io/BufferedReader:close	()V
+    //   78: ldc 130
+    //   80: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: iconst_m1
     //   84: ireturn
     //   85: astore_2
-    //   86: ldc 77
-    //   88: new 19	java/lang/StringBuilder
+    //   86: ldc 36
+    //   88: new 54	java/lang/StringBuilder
     //   91: dup
-    //   92: ldc 123
-    //   94: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   92: ldc 134
+    //   94: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   97: aload_2
-    //   98: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   101: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   101: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   110: goto -36 -> 74
     //   113: astore_1
-    //   114: ldc 77
-    //   116: new 19	java/lang/StringBuilder
+    //   114: ldc 36
+    //   116: new 54	java/lang/StringBuilder
     //   119: dup
-    //   120: ldc 125
-    //   122: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   120: ldc 136
+    //   122: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   125: aload_1
-    //   126: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   129: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   129: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: goto -60 -> 78
     //   141: aload_1
     //   142: astore 4
     //   144: aload_2
     //   145: astore_3
     //   146: aload 5
-    //   148: ldc 55
-    //   150: invokevirtual 61	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   148: ldc 89
+    //   150: invokevirtual 93	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   153: bipush 38
     //   155: aaload
-    //   156: invokestatic 127	com/tencent/mm/hardcoder/f:fe	(Ljava/lang/String;)I
+    //   156: invokestatic 138	com/tencent/mm/hardcoder/f:cL	(Ljava/lang/String;)I
     //   159: istore_0
     //   160: aload_2
-    //   161: invokevirtual 71	java/io/FileReader:close	()V
+    //   161: invokevirtual 100	java/io/FileReader:close	()V
     //   164: aload_1
-    //   165: invokevirtual 72	java/io/BufferedReader:close	()V
-    //   168: ldc 119
-    //   170: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   165: invokevirtual 101	java/io/BufferedReader:close	()V
+    //   168: ldc 130
+    //   170: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   173: iload_0
     //   174: ireturn
     //   175: astore_2
-    //   176: ldc 77
-    //   178: new 19	java/lang/StringBuilder
+    //   176: ldc 36
+    //   178: new 54	java/lang/StringBuilder
     //   181: dup
-    //   182: ldc 123
-    //   184: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   182: ldc 134
+    //   184: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   187: aload_2
-    //   188: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   191: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   191: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   200: goto -36 -> 164
     //   203: astore_1
-    //   204: ldc 77
-    //   206: new 19	java/lang/StringBuilder
+    //   204: ldc 36
+    //   206: new 54	java/lang/StringBuilder
     //   209: dup
-    //   210: ldc 125
-    //   212: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   210: ldc 136
+    //   212: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   215: aload_1
-    //   216: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   219: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   225: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   216: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   219: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   225: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   228: goto -60 -> 168
     //   231: astore 5
     //   233: aconst_null
@@ -397,51 +420,51 @@ public final class f
     //   238: astore 4
     //   240: aload_2
     //   241: astore_3
-    //   242: ldc 77
-    //   244: new 19	java/lang/StringBuilder
+    //   242: ldc 36
+    //   244: new 54	java/lang/StringBuilder
     //   247: dup
-    //   248: ldc 129
-    //   250: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   248: ldc 140
+    //   250: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   253: aload 5
-    //   255: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   258: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   264: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   258: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   264: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   267: aload_2
     //   268: ifnull +7 -> 275
     //   271: aload_2
-    //   272: invokevirtual 71	java/io/FileReader:close	()V
+    //   272: invokevirtual 100	java/io/FileReader:close	()V
     //   275: aload_1
     //   276: ifnull +7 -> 283
     //   279: aload_1
-    //   280: invokevirtual 72	java/io/BufferedReader:close	()V
-    //   283: ldc 119
-    //   285: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   280: invokevirtual 101	java/io/BufferedReader:close	()V
+    //   283: ldc 130
+    //   285: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   288: iconst_m1
     //   289: ireturn
     //   290: astore_2
-    //   291: ldc 77
-    //   293: new 19	java/lang/StringBuilder
+    //   291: ldc 36
+    //   293: new 54	java/lang/StringBuilder
     //   296: dup
-    //   297: ldc 123
-    //   299: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   297: ldc 134
+    //   299: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   302: aload_2
-    //   303: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   306: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   309: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   312: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   303: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   306: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   312: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   315: goto -40 -> 275
     //   318: astore_1
-    //   319: ldc 77
-    //   321: new 19	java/lang/StringBuilder
+    //   319: ldc 36
+    //   321: new 54	java/lang/StringBuilder
     //   324: dup
-    //   325: ldc 125
-    //   327: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   325: ldc 136
+    //   327: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   330: aload_1
-    //   331: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   334: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   331: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   334: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   337: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   343: goto -60 -> 283
     //   346: astore_1
     //   347: aconst_null
@@ -451,38 +474,38 @@ public final class f
     //   352: aload_2
     //   353: ifnull +7 -> 360
     //   356: aload_2
-    //   357: invokevirtual 71	java/io/FileReader:close	()V
+    //   357: invokevirtual 100	java/io/FileReader:close	()V
     //   360: aload 4
     //   362: ifnull +8 -> 370
     //   365: aload 4
-    //   367: invokevirtual 72	java/io/BufferedReader:close	()V
-    //   370: ldc 119
-    //   372: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   367: invokevirtual 101	java/io/BufferedReader:close	()V
+    //   370: ldc 130
+    //   372: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   375: aload_1
     //   376: athrow
     //   377: astore_2
-    //   378: ldc 77
-    //   380: new 19	java/lang/StringBuilder
+    //   378: ldc 36
+    //   380: new 54	java/lang/StringBuilder
     //   383: dup
-    //   384: ldc 123
-    //   386: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   384: ldc 134
+    //   386: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   389: aload_2
-    //   390: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   393: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   399: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   390: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   393: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   399: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   402: goto -42 -> 360
     //   405: astore_2
-    //   406: ldc 77
-    //   408: new 19	java/lang/StringBuilder
+    //   406: ldc 36
+    //   408: new 54	java/lang/StringBuilder
     //   411: dup
-    //   412: ldc 125
-    //   414: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   412: ldc 136
+    //   414: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   417: aload_2
-    //   418: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   421: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   424: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   427: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   418: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   421: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   424: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   427: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   430: goto -60 -> 370
     //   433: astore_1
     //   434: aconst_null
@@ -547,82 +570,82 @@ public final class f
   }
   
   /* Error */
-  public static long ms(int paramInt)
+  public static long pF(int paramInt)
   {
     // Byte code:
-    //   0: ldc 132
+    //   0: ldc 143
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 134	java/io/File
+    //   5: new 145	java/io/File
     //   8: dup
-    //   9: new 19	java/lang/StringBuilder
+    //   9: new 54	java/lang/StringBuilder
     //   12: dup
-    //   13: ldc 136
-    //   15: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   13: ldc 147
+    //   15: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   18: iload_0
-    //   19: invokevirtual 35	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   22: ldc 138
-    //   24: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokespecial 139	java/io/File:<init>	(Ljava/lang/String;)V
+    //   19: invokevirtual 69	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   22: ldc 149
+    //   24: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokespecial 150	java/io/File:<init>	(Ljava/lang/String;)V
     //   33: astore 4
     //   35: aload 4
-    //   37: invokevirtual 143	java/io/File:exists	()Z
+    //   37: invokevirtual 154	java/io/File:exists	()Z
     //   40: istore_1
     //   41: iload_1
     //   42: ifne +12 -> 54
-    //   45: ldc 132
-    //   47: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   50: ldc2_w 144
+    //   45: ldc 143
+    //   47: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: ldc2_w 155
     //   53: lreturn
-    //   54: new 17	java/io/FileReader
+    //   54: new 52	java/io/FileReader
     //   57: dup
     //   58: aload 4
-    //   60: invokespecial 148	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   60: invokespecial 159	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   63: astore 5
-    //   65: new 47	java/io/BufferedReader
+    //   65: new 81	java/io/BufferedReader
     //   68: dup
     //   69: aload 5
-    //   71: invokespecial 50	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   71: invokespecial 84	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   74: astore 4
     //   76: aload 4
     //   78: astore 7
     //   80: aload 5
     //   82: astore 6
     //   84: aload 4
-    //   86: invokevirtual 53	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   89: invokestatic 151	com/tencent/mm/hardcoder/f:wW	(Ljava/lang/String;)J
+    //   86: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   89: invokestatic 161	com/tencent/mm/hardcoder/f:Fk	(Ljava/lang/String;)J
     //   92: lstore_2
     //   93: aload 4
-    //   95: invokevirtual 72	java/io/BufferedReader:close	()V
+    //   95: invokevirtual 101	java/io/BufferedReader:close	()V
     //   98: aload 5
-    //   100: invokevirtual 71	java/io/FileReader:close	()V
-    //   103: ldc 132
-    //   105: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: invokevirtual 100	java/io/FileReader:close	()V
+    //   103: ldc 143
+    //   105: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   108: lload_2
     //   109: lreturn
     //   110: astore 4
-    //   112: ldc 77
-    //   114: new 19	java/lang/StringBuilder
+    //   112: ldc 36
+    //   114: new 54	java/lang/StringBuilder
     //   117: dup
-    //   118: ldc 153
-    //   120: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   118: ldc 163
+    //   120: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   123: aload 4
-    //   125: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   128: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   125: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   137: goto -39 -> 98
     //   140: astore 4
-    //   142: ldc 77
-    //   144: new 19	java/lang/StringBuilder
+    //   142: ldc 36
+    //   144: new 54	java/lang/StringBuilder
     //   147: dup
-    //   148: ldc 155
-    //   150: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   148: ldc 165
+    //   150: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   153: aload 4
-    //   155: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   158: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   158: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   167: goto -64 -> 103
     //   170: astore 8
     //   172: aconst_null
@@ -633,51 +656,51 @@ public final class f
     //   180: astore 7
     //   182: aload 5
     //   184: astore 6
-    //   186: ldc 77
-    //   188: new 19	java/lang/StringBuilder
+    //   186: ldc 36
+    //   188: new 54	java/lang/StringBuilder
     //   191: dup
-    //   192: ldc 157
-    //   194: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   192: ldc 167
+    //   194: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   197: aload 8
-    //   199: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   202: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   208: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   199: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   202: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   205: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   208: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   211: aload 4
     //   213: ifnull +8 -> 221
     //   216: aload 4
-    //   218: invokevirtual 72	java/io/BufferedReader:close	()V
+    //   218: invokevirtual 101	java/io/BufferedReader:close	()V
     //   221: aload 5
     //   223: ifnull +8 -> 231
     //   226: aload 5
-    //   228: invokevirtual 71	java/io/FileReader:close	()V
-    //   231: ldc 132
-    //   233: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   236: ldc2_w 144
+    //   228: invokevirtual 100	java/io/FileReader:close	()V
+    //   231: ldc 143
+    //   233: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   236: ldc2_w 155
     //   239: lreturn
     //   240: astore 4
-    //   242: ldc 77
-    //   244: new 19	java/lang/StringBuilder
+    //   242: ldc 36
+    //   244: new 54	java/lang/StringBuilder
     //   247: dup
-    //   248: ldc 153
-    //   250: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   248: ldc 163
+    //   250: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   253: aload 4
-    //   255: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   258: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   264: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   258: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   264: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   267: goto -46 -> 221
     //   270: astore 4
-    //   272: ldc 77
-    //   274: new 19	java/lang/StringBuilder
+    //   272: ldc 36
+    //   274: new 54	java/lang/StringBuilder
     //   277: dup
-    //   278: ldc 155
-    //   280: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   278: ldc 165
+    //   280: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   283: aload 4
-    //   285: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   288: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   294: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   285: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   288: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   294: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   297: goto -66 -> 231
     //   300: astore 4
     //   302: aconst_null
@@ -687,38 +710,38 @@ public final class f
     //   308: aload 7
     //   310: ifnull +8 -> 318
     //   313: aload 7
-    //   315: invokevirtual 72	java/io/BufferedReader:close	()V
+    //   315: invokevirtual 101	java/io/BufferedReader:close	()V
     //   318: aload 5
     //   320: ifnull +8 -> 328
     //   323: aload 5
-    //   325: invokevirtual 71	java/io/FileReader:close	()V
-    //   328: ldc 132
-    //   330: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   325: invokevirtual 100	java/io/FileReader:close	()V
+    //   328: ldc 143
+    //   330: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   333: aload 4
     //   335: athrow
     //   336: astore 6
-    //   338: ldc 77
-    //   340: new 19	java/lang/StringBuilder
+    //   338: ldc 36
+    //   340: new 54	java/lang/StringBuilder
     //   343: dup
-    //   344: ldc 153
-    //   346: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   344: ldc 163
+    //   346: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   349: aload 6
-    //   351: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   354: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   357: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   360: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   351: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   354: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   357: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   360: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   363: goto -45 -> 318
     //   366: astore 5
-    //   368: ldc 77
-    //   370: new 19	java/lang/StringBuilder
+    //   368: ldc 36
+    //   370: new 54	java/lang/StringBuilder
     //   373: dup
-    //   374: ldc 155
-    //   376: invokespecial 25	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   374: ldc 165
+    //   376: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   379: aload 5
-    //   381: invokevirtual 82	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   384: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   390: invokestatic 88	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   381: invokevirtual 106	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   384: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   387: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   390: invokestatic 110	com/tencent/mm/hardcoder/d:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   393: goto -65 -> 328
     //   396: astore 4
     //   398: aconst_null
@@ -775,29 +798,6 @@ public final class f
     //   186	211	404	finally
     //   65	76	413	java/lang/Exception
     //   84	93	421	java/lang/Exception
-  }
-  
-  private static long wW(String paramString)
-  {
-    AppMethodBeat.i(62484);
-    if (paramString != null) {}
-    try
-    {
-      if (paramString.length() <= 0)
-      {
-        AppMethodBeat.o(62484);
-        return 0L;
-      }
-      long l = Long.decode(paramString).longValue();
-      AppMethodBeat.o(62484);
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      d.printErrStackTrace("Hardcoder.HardCoderUtil", paramString, "getLong", new Object[0]);
-      AppMethodBeat.o(62484);
-    }
-    return 0L;
   }
 }
 

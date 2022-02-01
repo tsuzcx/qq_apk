@@ -1,0 +1,12 @@
+package com.tencent.mm.emoji.b.b;
+
+import kotlin.l;
+
+@l(hxD={1, 1, 16})
+public final class ae {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.emoji.b.b.ae
+ * JD-Core Version:    0.7.0.1
+ */

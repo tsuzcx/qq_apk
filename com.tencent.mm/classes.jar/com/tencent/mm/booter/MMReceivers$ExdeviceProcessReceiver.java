@@ -8,20 +8,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMReceivers$ExdeviceProcessReceiver
   extends BroadcastReceiver
 {
-  private static MMReceivers.a fGo = null;
+  private static MMReceivers.a glx = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(131891);
-    if (fGo != null) {
-      fGo.onReceive(paramContext, paramIntent);
+    if (glx != null) {
+      glx.onReceive(paramContext, paramIntent);
     }
     AppMethodBeat.o(131891);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.MMReceivers.ExdeviceProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

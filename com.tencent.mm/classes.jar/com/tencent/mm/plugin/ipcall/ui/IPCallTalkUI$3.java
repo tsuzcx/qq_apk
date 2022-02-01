@@ -13,13 +13,13 @@ final class IPCallTalkUI$3
   {
     AppMethodBeat.i(25983);
     paramDialogInterface.dismiss();
-    this.vgz.finish();
+    this.yyY.finish();
     AppMethodBeat.o(25983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallTalkUI.3
  * JD-Core Version:    0.7.0.1
  */

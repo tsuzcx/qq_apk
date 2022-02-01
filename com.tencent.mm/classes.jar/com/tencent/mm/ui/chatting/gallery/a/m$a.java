@@ -4,11 +4,11 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "listener", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/ui/chatting/gallery/scan/QuickButtonAnimationHelper$doAlphaAnimation$1$1"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "listener", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/ui/chatting/gallery/scan/QuickButtonAnimationHelper$doAlphaAnimation$1$1"})
 final class m$a
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -16,23 +16,23 @@ final class m$a
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(188339);
-    View localView = this.tiK;
+    AppMethodBeat.i(231292);
+    View localView = this.tBN;
     p.g(paramValueAnimator, "listener");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
     {
-      paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Float");
-      AppMethodBeat.o(188339);
+      paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(231292);
       throw paramValueAnimator;
     }
     localView.setAlpha(((Float)paramValueAnimator).floatValue());
-    AppMethodBeat.o(188339);
+    AppMethodBeat.o(231292);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.a.m.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  private int GbL;
-  private transient a[] Oqv;
-  private final float Oqw;
+  private int KVM;
+  private transient a[] Uft;
+  private final float Ufu;
   private transient int count;
   
   public d()
@@ -17,19 +17,19 @@ final class d
   private d(byte paramByte)
   {
     AppMethodBeat.i(40732);
-    this.Oqw = 0.75F;
-    this.Oqv = new a[20];
-    this.GbL = 15;
+    this.Ufu = 0.75F;
+    this.Uft = new a[20];
+    this.KVM = 15;
     AppMethodBeat.o(40732);
   }
   
-  public final Object d(int paramInt, Object paramObject)
+  public final Object e(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(40733);
-    Object localObject2 = this.Oqv;
+    Object localObject2 = this.Uft;
     int i = (paramInt & 0x7FFFFFFF) % localObject2.length;
-    for (Object localObject1 = localObject2[i]; localObject1 != null; localObject1 = ((a)localObject1).Oqx) {
-      if (((a)localObject1).xrv == paramInt)
+    for (Object localObject1 = localObject2[i]; localObject1 != null; localObject1 = ((a)localObject1).Ufv) {
+      if (((a)localObject1).bNi == paramInt)
       {
         localObject2 = ((a)localObject1).value;
         ((a)localObject1).value = paramObject;
@@ -38,14 +38,14 @@ final class d
       }
     }
     localObject1 = localObject2;
-    if (this.count >= this.GbL)
+    if (this.count >= this.KVM)
     {
-      i = this.Oqv.length;
-      a[] arrayOfa1 = this.Oqv;
+      i = this.Uft.length;
+      a[] arrayOfa1 = this.Uft;
       int k = i * 2 + 1;
       a[] arrayOfa2 = new a[k];
-      this.GbL = ((int)(k * this.Oqw));
-      this.Oqv = arrayOfa2;
+      this.KVM = ((int)(k * this.Ufu));
+      this.Uft = arrayOfa2;
       for (;;)
       {
         int j = i - 1;
@@ -54,14 +54,14 @@ final class d
         }
         for (localObject1 = arrayOfa1[j]; localObject1 != null; localObject1 = localObject2)
         {
-          localObject2 = ((a)localObject1).Oqx;
-          i = (((a)localObject1).xrv & 0x7FFFFFFF) % k;
-          ((a)localObject1).Oqx = arrayOfa2[i];
+          localObject2 = ((a)localObject1).Ufv;
+          i = (((a)localObject1).bNi & 0x7FFFFFFF) % k;
+          ((a)localObject1).Ufv = arrayOfa2[i];
           arrayOfa2[i] = localObject1;
         }
         i = j;
       }
-      localObject1 = this.Oqv;
+      localObject1 = this.Uft;
       i = (paramInt & 0x7FFFFFFF) % localObject1.length;
     }
     localObject1[i] = new a(paramInt, paramInt, paramObject, localObject1[i]);
@@ -72,23 +72,23 @@ final class d
   
   static final class a
   {
-    a Oqx;
+    a Ufv;
+    final int bNi;
     final int key;
     Object value;
-    final int xrv;
     
     protected a(int paramInt1, int paramInt2, Object paramObject, a parama)
     {
-      this.xrv = paramInt1;
+      this.bNi = paramInt1;
       this.key = paramInt2;
       this.value = paramObject;
-      this.Oqx = parama;
+      this.Ufv = parama;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.apache.commons.b.d
  * JD-Core Version:    0.7.0.1
  */

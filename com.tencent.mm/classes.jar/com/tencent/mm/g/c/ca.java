@@ -2,57 +2,76 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class ca
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eJC;
-  private static final int eJV = "url".hashCode();
-  private static final int eXW = "featureId".hashCode();
-  private static final int eXX;
-  private static final int eXY;
-  private static final int eXZ;
-  private static final int eYa;
-  private static final int eYb = "helpUrl".hashCode();
-  private static final int eYc = "updateUrl".hashCode();
-  private static final int eYd = "androidUrl".hashCode();
-  private static final int eYe = "iconPath".hashCode();
-  private static final int eYf = "timestamp".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavSearchInfo_Content_Index ON FavSearchInfo(content)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_TagContent_Index ON FavSearchInfo(tagContent)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_SubType_Index ON FavSearchInfo(subtype)" };
+  private static final int content_HASHCODE;
+  private static final int fBn;
+  private static final int fBo = "subtype".hashCode();
+  private static final int frC;
+  private static final int localId_HASHCODE = "localId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eJR = true;
-  private boolean eJz = true;
-  private boolean eXM = true;
-  private boolean eXN = true;
-  private boolean eXO = true;
-  private boolean eXP = true;
-  private boolean eXQ = true;
-  private boolean eXR = true;
-  private boolean eXS = true;
-  private boolean eXT = true;
-  private boolean eXU = true;
-  private boolean eXV = true;
-  public int field_actionType;
-  public String field_androidUrl;
-  public int field_featureId;
-  public String field_helpUrl;
-  public String field_iconPath;
-  public String field_tag;
-  public long field_timestamp;
-  public String field_title;
-  public String field_titlePY;
-  public String field_titleShortPY;
-  public String field_updateUrl;
-  public String field_url;
+  private static final int type_HASHCODE;
+  private boolean __hadSetcontent = true;
+  private boolean __hadSetlocalId = true;
+  private boolean __hadSettype = true;
+  private boolean fBl = true;
+  private boolean fBm = true;
+  public String field_content;
+  public long field_localId;
+  public int field_subtype;
+  public String field_tagContent;
+  public long field_time;
+  public int field_type;
+  private boolean frj = true;
   
   static
   {
-    eJC = "title".hashCode();
-    eXX = "titlePY".hashCode();
-    eXY = "titleShortPY".hashCode();
-    eXZ = "tag".hashCode();
-    eYa = "actionType".hashCode();
+    content_HASHCODE = "content".hashCode();
+    fBn = "tagContent".hashCode();
+    frC = "time".hashCode();
+    type_HASHCODE = "type".hashCode();
+  }
+  
+  public static IAutoDBItem.MAutoDBInfo ajs()
+  {
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "localId";
+    localMAutoDBInfo.colsMap.put("localId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" localId LONG PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "localId";
+    localMAutoDBInfo.columns[1] = "content";
+    localMAutoDBInfo.colsMap.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "tagContent";
+    localMAutoDBInfo.colsMap.put("tagContent", "TEXT");
+    localStringBuilder.append(" tagContent TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "time";
+    localMAutoDBInfo.colsMap.put("time", "LONG");
+    localStringBuilder.append(" time LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "subtype";
+    localMAutoDBInfo.colsMap.put("subtype", "INTEGER default '0' ");
+    localStringBuilder.append(" subtype INTEGER default '0' ");
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -68,11 +87,11 @@ public abstract class ca
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eXW != k) {
+      if (localId_HASHCODE != k) {
         break label65;
       }
-      this.field_featureId = paramCursor.getInt(i);
-      this.eXM = true;
+      this.field_localId = paramCursor.getLong(i);
+      this.__hadSetlocalId = true;
     }
     for (;;)
     {
@@ -80,28 +99,16 @@ public abstract class ca
       break label20;
       break;
       label65:
-      if (eJC == k) {
-        this.field_title = paramCursor.getString(i);
-      } else if (eXX == k) {
-        this.field_titlePY = paramCursor.getString(i);
-      } else if (eXY == k) {
-        this.field_titleShortPY = paramCursor.getString(i);
-      } else if (eXZ == k) {
-        this.field_tag = paramCursor.getString(i);
-      } else if (eYa == k) {
-        this.field_actionType = paramCursor.getInt(i);
-      } else if (eJV == k) {
-        this.field_url = paramCursor.getString(i);
-      } else if (eYb == k) {
-        this.field_helpUrl = paramCursor.getString(i);
-      } else if (eYc == k) {
-        this.field_updateUrl = paramCursor.getString(i);
-      } else if (eYd == k) {
-        this.field_androidUrl = paramCursor.getString(i);
-      } else if (eYe == k) {
-        this.field_iconPath = paramCursor.getString(i);
-      } else if (eYf == k) {
-        this.field_timestamp = paramCursor.getLong(i);
+      if (content_HASHCODE == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (fBn == k) {
+        this.field_tagContent = paramCursor.getString(i);
+      } else if (frC == k) {
+        this.field_time = paramCursor.getLong(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (fBo == k) {
+        this.field_subtype = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -111,41 +118,23 @@ public abstract class ca
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eXM) {
-      localContentValues.put("featureId", Integer.valueOf(this.field_featureId));
+    if (this.__hadSetlocalId) {
+      localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.eJz) {
-      localContentValues.put("title", this.field_title);
+    if (this.__hadSetcontent) {
+      localContentValues.put("content", this.field_content);
     }
-    if (this.eXN) {
-      localContentValues.put("titlePY", this.field_titlePY);
+    if (this.fBl) {
+      localContentValues.put("tagContent", this.field_tagContent);
     }
-    if (this.eXO) {
-      localContentValues.put("titleShortPY", this.field_titleShortPY);
+    if (this.frj) {
+      localContentValues.put("time", Long.valueOf(this.field_time));
     }
-    if (this.eXP) {
-      localContentValues.put("tag", this.field_tag);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eXQ) {
-      localContentValues.put("actionType", Integer.valueOf(this.field_actionType));
-    }
-    if (this.eJR) {
-      localContentValues.put("url", this.field_url);
-    }
-    if (this.eXR) {
-      localContentValues.put("helpUrl", this.field_helpUrl);
-    }
-    if (this.eXS) {
-      localContentValues.put("updateUrl", this.field_updateUrl);
-    }
-    if (this.eXT) {
-      localContentValues.put("androidUrl", this.field_androidUrl);
-    }
-    if (this.eXU) {
-      localContentValues.put("iconPath", this.field_iconPath);
-    }
-    if (this.eXV) {
-      localContentValues.put("timestamp", Long.valueOf(this.field_timestamp));
+    if (this.fBm) {
+      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -155,7 +144,7 @@ public abstract class ca
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ca
  * JD-Core Version:    0.7.0.1
  */

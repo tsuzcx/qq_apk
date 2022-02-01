@@ -5,12 +5,12 @@ import java.io.Serializable;
 
 public final class e
 {
-  public static final a Oqy;
+  public static final a Ufw;
   
   static
   {
     AppMethodBeat.i(40736);
-    Oqy = new a();
+    Ufw = new a();
     AppMethodBeat.o(40736);
   }
   
@@ -45,13 +45,13 @@ public final class e
   {
     private Object readResolve()
     {
-      return e.Oqy;
+      return e.Ufw;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.b.e
  * JD-Core Version:    0.7.0.1
  */

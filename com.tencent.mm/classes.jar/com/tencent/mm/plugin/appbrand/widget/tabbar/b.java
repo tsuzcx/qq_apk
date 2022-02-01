@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.tabbar;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import com.tencent.e.i;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
@@ -14,12 +14,12 @@ public final class b
     super(paramString, paramc);
   }
   
-  public final void bGG()
+  public final void cdf()
   {
     AppMethodBeat.i(135541);
-    if (this.nva != null)
+    if (this.oFe != null)
     {
-      com.tencent.e.h.MqF.aO(new com.tencent.e.i.h()
+      com.tencent.f.h.RTc.aX(new com.tencent.f.i.h()
       {
         public final String getKey()
         {
@@ -32,18 +32,18 @@ public final class b
           try
           {
             b localb = b.this;
-            Object localObject = Base64.decode(b.this.nva, 0);
+            Object localObject = Base64.decode(b.this.oFe, 0);
             localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
             if (localObject == null) {
-              localb.nvb.a("Failed to load icon via base64 icon", localb);
+              localb.oFf.a("Failed to load icon via base64 icon", localb);
             }
-            b.this.S((Bitmap)localObject);
+            b.this.X((Bitmap)localObject);
             AppMethodBeat.o(135540);
             return;
           }
           catch (Exception localException)
           {
-            b.this.nvb.a("Failed to load icon via base64 icon", b.this);
+            b.this.oFf.a("Failed to load icon via base64 icon", b.this);
             AppMethodBeat.o(135540);
           }
         }
@@ -51,13 +51,13 @@ public final class b
       AppMethodBeat.o(135541);
       return;
     }
-    this.nvb.a("Failed to load icon via base64 icon", this);
+    this.oFf.a("Failed to load icon via base64 icon", this);
     AppMethodBeat.o(135541);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,27 +7,27 @@ import java.util.LinkedList;
 
 public final class e
 {
-  public final ViewGroup gsV;
-  public final LinkedList<View> mZw;
-  public a mZx;
+  public final LinkedList<View> omB;
+  public a omC;
+  public final ViewGroup parent;
   
   public e(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(131473);
-    this.mZw = new LinkedList();
-    this.gsV = paramViewGroup;
+    this.omB = new LinkedList();
+    this.parent = paramViewGroup;
     AppMethodBeat.o(131473);
   }
   
   public static final class a
   {
-    public final long gOH;
-    public final long kOp;
+    public final long hET;
+    public final long lTl;
     
     private a(long paramLong1, long paramLong2)
     {
-      this.gOH = paramLong1;
-      this.kOp = paramLong2;
+      this.hET = paramLong1;
+      this.lTl = paramLong2;
     }
   }
 }

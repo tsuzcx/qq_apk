@@ -14,167 +14,180 @@ import android.os.MessageQueue.IdleHandler;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.cf;
-import com.tencent.mm.game.report.c.a;
+import com.tencent.mm.g.a.iy;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.game.d.ba;
-import com.tencent.mm.plugin.game.d.dk;
+import com.tencent.mm.plugin.game.protobuf.bb;
+import com.tencent.mm.plugin.game.protobuf.dk;
 import com.tencent.mm.plugin.gamelife.ui.GameLifeConversationUI;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.ar;
 
 public class GameChatTabUI
   extends GameLifeConversationUI
 {
-  private GameTabWidget2 uEU;
-  private String uEV;
-  private k.a uEW;
-  private BroadcastReceiver uEX;
+  private GameTabWidget2 xWR;
+  private String xWS;
+  private MStorage.IOnStorageChange xWT;
+  private com.tencent.mm.pluginsdk.c.a xWU;
+  private BroadcastReceiver xWV;
   
   public GameChatTabUI()
   {
-    AppMethodBeat.i(195671);
-    this.uEW = new k.a()
+    AppMethodBeat.i(204194);
+    this.xWT = new MStorage.IOnStorageChange()
     {
-      public final void a(String paramAnonymousString, m paramAnonymousm)
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
       {
-        AppMethodBeat.i(195669);
-        if ((paramAnonymousm.obj instanceof com.tencent.mm.plugin.gamelife.e.a)) {
+        AppMethodBeat.i(204191);
+        if ((paramAnonymousMStorageEventData.obj instanceof com.tencent.mm.plugin.gamelife.e.a)) {
           GameChatTabUI.d(GameChatTabUI.this);
         }
-        AppMethodBeat.o(195669);
+        AppMethodBeat.o(204191);
       }
     };
-    this.uEX = new BroadcastReceiver()
+    this.xWU = new com.tencent.mm.pluginsdk.c.a()
+    {
+      public final void g(IEvent paramAnonymousIEvent)
+      {
+        AppMethodBeat.i(204192);
+        if ((paramAnonymousIEvent instanceof iy))
+        {
+          GameChatTabUI.e(GameChatTabUI.this);
+          GameChatTabUI.d(GameChatTabUI.this);
+        }
+        AppMethodBeat.o(204192);
+      }
+    };
+    this.xWV = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(195670);
+        AppMethodBeat.i(204193);
         if ((paramAnonymousIntent != null) && ("com.tencent.mm.game.ACTION_EXIT".equals(paramAnonymousIntent.getAction())) && (GameChatTabUI.this != null) && (!GameChatTabUI.this.isFinishing()))
         {
-          ae.i("MicroMsg.GameChatTabUI", "GameWebTabUI exit!");
+          Log.i("MicroMsg.GameChatTabUI", "GameWebTabUI exit!");
           GameChatTabUI.this.finish();
         }
-        AppMethodBeat.o(195670);
+        AppMethodBeat.o(204193);
       }
     };
-    AppMethodBeat.o(195671);
+    AppMethodBeat.o(204194);
   }
   
-  private void dcS()
+  private void dWz()
   {
-    AppMethodBeat.i(195680);
-    int i = ((com.tencent.mm.plugin.gamelife.a.c)g.ab(com.tencent.mm.plugin.gamelife.a.c.class)).ddp();
-    ae.d("MicroMsg.GameChatTabUI", "get unread count: %d", new Object[] { Integer.valueOf(i) });
-    if (this.uEU != null) {
-      this.uEU.setChatMsgUnreadCount(i);
+    AppMethodBeat.i(204203);
+    int i = ((com.tencent.mm.plugin.gamelife.a.c)g.af(com.tencent.mm.plugin.gamelife.a.c.class)).dWZ();
+    int j = ((com.tencent.mm.plugin.game.api.c)g.af(com.tencent.mm.plugin.game.api.c.class)).NY(1);
+    int k = ((com.tencent.mm.plugin.game.api.c)g.af(com.tencent.mm.plugin.game.api.c.class)).NY(2);
+    Log.d("MicroMsg.GameChatTabUI", "get chat unread count: %d, interactiveUnreadCount:%d, notifyUnreadCount:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+    GameTabWidget2 localGameTabWidget2;
+    if (this.xWR != null)
+    {
+      localGameTabWidget2 = this.xWR;
+      if (k <= 0) {
+        break label117;
+      }
     }
-    AppMethodBeat.o(195680);
+    label117:
+    for (boolean bool = true;; bool = false)
+    {
+      localGameTabWidget2.aA(i + j, bool);
+      AppMethodBeat.o(204203);
+      return;
+    }
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(195676);
+    AppMethodBeat.i(204199);
     super.onBackPressed();
-    a.fE(this);
-    AppMethodBeat.o(195676);
+    a.gk(this);
+    AppMethodBeat.o(204199);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(195679);
+    AppMethodBeat.i(204202);
     super.onConfigurationChanged(paramConfiguration);
     setRequestedOrientation(1);
-    AppMethodBeat.o(195679);
+    AppMethodBeat.o(204202);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(195672);
+    AppMethodBeat.i(204195);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.GameChatTabUI", "onCreate");
-    this.uEU = a.b(this, getContentView());
-    this.uEU.post(new Runnable()
+    Log.i("MicroMsg.GameChatTabUI", "onCreate");
+    this.xWR = a.b(this, getContentView());
+    this.xWR.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195665);
+        AppMethodBeat.i(204187);
         GameChatTabUI.a(GameChatTabUI.this, GameChatTabUI.a(GameChatTabUI.this).getHeight());
-        AppMethodBeat.o(195665);
+        AppMethodBeat.o(204187);
       }
     });
-    if (com.tencent.mm.plugin.game.commlib.a.cZy() != null)
+    if (com.tencent.mm.plugin.game.commlib.a.dSY() != null)
     {
-      paramBundle = com.tencent.mm.plugin.game.commlib.a.cZy().usH;
+      paramBundle = com.tencent.mm.plugin.game.commlib.a.dSY().xKZ;
       if (paramBundle == null) {}
     }
-    for (paramBundle = paramBundle.uuq;; paramBundle = null)
+    for (paramBundle = paramBundle.xMs;; paramBundle = null)
     {
       Object localObject = paramBundle;
-      if (bu.isNullOrNil(paramBundle)) {
-        localObject = "https://game.weixin.qq.com/cgi-bin/h5/static/gamelife/homepage.html";
+      if (Util.isNullOrNil(paramBundle)) {
+        localObject = "https://" + WeChatHosts.domainString(2131761707) + "/cgi-bin/h5/static/gamelife/homepage.html";
       }
-      this.uEV = ((String)localObject);
-      ae.i("MicroMsg.GameChatTabUI", "profile entrance: %s", new Object[] { this.uEV });
-      setMMTitle(2131760012);
+      this.xWS = ((String)localObject);
+      Log.i("MicroMsg.GameChatTabUI", "profile entrance: %s", new Object[] { this.xWS });
+      setMMTitle(2131761376);
       paramBundle = new IntentFilter();
       paramBundle.addAction("com.tencent.mm.game.ACTION_EXIT");
-      registerReceiver(this.uEX, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
-      dcS();
-      ((com.tencent.mm.plugin.gamelife.a.c)g.ab(com.tencent.mm.plugin.gamelife.a.c.class)).m(this.uEW);
+      registerReceiver(this.xWV, paramBundle, com.tencent.mm.plugin.game.a.xtn, null);
+      ((com.tencent.mm.plugin.gamelife.a.c)g.af(com.tencent.mm.plugin.gamelife.a.c.class)).m(this.xWT);
+      com.tencent.mm.pluginsdk.c.a.a(iy.class.getName(), this.xWU);
       paramBundle = getSupportActionBar().getCustomView();
       if ((paramBundle != null) && ((paramBundle instanceof LinearLayout)))
       {
         localObject = paramBundle.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = -1;
         paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = LayoutInflater.from(this).inflate(2131496404, (LinearLayout)paramBundle, false);
+        localObject = LayoutInflater.from(this).inflate(2131494900, (LinearLayout)paramBundle, false);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((View)localObject).getLayoutParams();
         localLayoutParams.gravity = 16;
         ((LinearLayout)paramBundle).addView((View)localObject, localLayoutParams);
-        ((View)localObject).setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(195668);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/chat_tab/GameChatTabUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            paramAnonymousView = com.tencent.mm.game.report.c.guw;
-            c.a.a(2L, 201L, 0L, 7L, GameChatTabUI.this.getIntent().getIntExtra("game_report_from_scene", 0)).aLH();
-            com.tencent.mm.plugin.game.f.c.aD(GameChatTabUI.this, GameChatTabUI.c(GameChatTabUI.this));
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/chat_tab/GameChatTabUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(195668);
-          }
-        });
+        ((View)localObject).setOnClickListener(new GameChatTabUI.4(this));
       }
       setRequestedOrientation(1);
-      if (this.uEU != null) {
-        this.uEU.dcW();
+      if (this.xWR != null) {
+        this.xWR.dWE();
       }
-      boolean bool = ao.acF(getResources().getColor(2131101179));
+      boolean bool = ar.aln(getResources().getColor(2131101424));
       paramBundle = getContentView();
-      int i = getResources().getColor(2131101179);
+      int i = getResources().getColor(2131101424);
       if (!bool) {}
       for (bool = true;; bool = false)
       {
         com.tencent.mm.ui.statusbar.a.e(paramBundle, i, bool);
-        getSupportActionBar().getCustomView().setBackgroundColor(getResources().getColor(2131101179));
-        AppMethodBeat.o(195672);
+        getSupportActionBar().getCustomView().setBackgroundColor(getResources().getColor(2131101424));
+        AppMethodBeat.o(204195);
         return;
       }
     }
@@ -182,94 +195,96 @@ public class GameChatTabUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(195677);
+    AppMethodBeat.i(204200);
     super.onDestroy();
-    ae.i("MicroMsg.GameChatTabUI", "onDestroy");
-    unregisterReceiver(this.uEX);
-    ((com.tencent.mm.plugin.gamelife.a.c)g.ab(com.tencent.mm.plugin.gamelife.a.c.class)).l(this.uEW);
-    a.fE(this);
-    AppMethodBeat.o(195677);
+    Log.i("MicroMsg.GameChatTabUI", "onDestroy");
+    unregisterReceiver(this.xWV);
+    ((com.tencent.mm.plugin.gamelife.a.c)g.af(com.tencent.mm.plugin.gamelife.a.c.class)).l(this.xWT);
+    com.tencent.mm.pluginsdk.c.a.b(iy.class.getName(), this.xWU);
+    a.gk(this);
+    AppMethodBeat.o(204200);
   }
   
   public final void onFinish()
   {
-    AppMethodBeat.i(195678);
-    a.fE(this);
-    AppMethodBeat.o(195678);
+    AppMethodBeat.i(204201);
+    a.gk(this);
+    AppMethodBeat.o(204201);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(195675);
+    AppMethodBeat.i(204198);
     super.onNewIntent(paramIntent);
-    overridePendingTransition(2130772069, 2130772069);
-    ae.i("MicroMsg.GameChatTabUI", "onNewIntent");
+    overridePendingTransition(2130772082, 2130772082);
+    Log.i("MicroMsg.GameChatTabUI", "onNewIntent");
     if (paramIntent == null)
     {
-      AppMethodBeat.o(195675);
+      AppMethodBeat.o(204198);
       return;
     }
     setIntent(paramIntent);
     String str = paramIntent.getStringExtra("game_tab_key");
     paramIntent = paramIntent.getStringExtra("game_red_dot_tab_key");
-    if (this.uEU != null) {
-      this.uEU.hi(str, paramIntent);
+    if (this.xWR != null) {
+      this.xWR.hP(str, paramIntent);
     }
-    AppMethodBeat.o(195675);
+    AppMethodBeat.o(204198);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(195674);
+    AppMethodBeat.i(204197);
     super.onPause();
-    ae.i("MicroMsg.GameChatTabUI", "onPause");
-    g.ajR().ajA().set(am.a.IUN, Long.valueOf(((com.tencent.mm.plugin.gamelife.a.c)g.ab(com.tencent.mm.plugin.gamelife.a.c.class)).ddr()));
-    AppMethodBeat.o(195674);
+    Log.i("MicroMsg.GameChatTabUI", "onPause");
+    g.aAh().azQ().set(ar.a.Odb, Long.valueOf(((com.tencent.mm.plugin.gamelife.a.c)g.af(com.tencent.mm.plugin.gamelife.a.c.class)).dXa().msgId));
+    AppMethodBeat.o(204197);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(195673);
+    AppMethodBeat.i(204196);
     super.onResume();
+    dWz();
     if (getIntent().getBooleanExtra("disable_game_tab_home_swipe", false)) {
       Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
       {
         public final boolean queueIdle()
         {
-          AppMethodBeat.i(195666);
+          AppMethodBeat.i(204188);
           if ((GameChatTabUI.this.isDestroyed()) || (GameChatTabUI.this.isFinishing()))
           {
-            AppMethodBeat.o(195666);
+            AppMethodBeat.o(204188);
             return false;
           }
           GameChatTabUI.b(GameChatTabUI.this);
-          AppMethodBeat.o(195666);
+          AppMethodBeat.o(204188);
           return false;
         }
       });
     }
-    if (((com.tencent.mm.game.report.a.b)g.ab(com.tencent.mm.game.report.a.b.class)).a(b.a.qxd, 0) == 1) {}
+    if (((com.tencent.mm.game.report.a.b)g.af(com.tencent.mm.game.report.a.b.class)).a(b.a.rOQ, 0) == 1) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        ae.i("MicroMsg.GameChatTabUI", "preload profile");
-        h.MqF.q(new Runnable()
+        Log.i("MicroMsg.GameChatTabUI", "preload profile");
+        h.RTc.n(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(195667);
+            AppMethodBeat.i(204189);
             if ((GameChatTabUI.this.isDestroyed()) || (GameChatTabUI.this.isFinishing()))
             {
-              AppMethodBeat.o(195667);
+              AppMethodBeat.o(204189);
               return;
             }
-            GameChatTabUI.ann(GameChatTabUI.c(GameChatTabUI.this));
-            AppMethodBeat.o(195667);
+            GameChatTabUI.aAE(GameChatTabUI.c(GameChatTabUI.this));
+            AppMethodBeat.o(204189);
           }
         }, 500L);
       }
-      AppMethodBeat.o(195673);
+      AppMethodBeat.o(204196);
       return;
     }
   }

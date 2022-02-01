@@ -4,7 +4,7 @@ public abstract interface c<T>
 {
   public abstract void a(f.a<T> parama);
   
-  public abstract f.a<T> akt();
+  public abstract f.a<T> aAJ();
   
   public abstract void prepare();
 }

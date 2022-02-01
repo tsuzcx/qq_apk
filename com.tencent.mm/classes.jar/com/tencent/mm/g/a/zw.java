@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.pluginsdk.j.a.c.m;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class zw
-  extends b
+  extends IEvent
 {
-  public a dQq;
+  public b egA;
+  public a egz;
   
   public zw()
   {
@@ -17,23 +17,35 @@ public final class zw
   
   private zw(byte paramByte)
   {
-    AppMethodBeat.i(212483);
-    this.dQq = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(153020);
+    this.egz = new a();
+    this.egA = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(212483);
+    AppMethodBeat.o(153020);
   }
   
   public static final class a
   {
-    public int dQr = 0;
-    public a dQs;
-    public m dQt;
+    public Activity activity;
+    public int egB;
+  }
+  
+  public static final class b
+  {
+    public Object data;
+    
+    public b()
+    {
+      AppMethodBeat.i(153019);
+      this.data = Integer.valueOf(0);
+      AppMethodBeat.o(153019);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.zw
  * JD-Core Version:    0.7.0.1
  */

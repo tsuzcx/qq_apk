@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "", "sessionId", "", "startExposureMs", "", "endExposureMs", "disAppearType", "", "itemExposureAreaWeigth", "", "screenExposureAreaWeigth", "contextId", "scene", "updateTimeMs", "itemExposureTimeMs", "isShowing", "", "x", "y", "height", "width", "position", "itemPosition", "itemPos", "itemArrayIndex", "feedId", "userName", "nickName", "commentCount", "likeCount", "itemBufffer", "(Ljava/lang/String;JJIFFLjava/lang/String;IJJZIIFFIIIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)V", "getCommentCount", "()I", "setCommentCount", "(I)V", "getContextId", "()Ljava/lang/String;", "setContextId", "(Ljava/lang/String;)V", "getDisAppearType", "setDisAppearType", "getEndExposureMs", "()J", "setEndExposureMs", "(J)V", "getFeedId", "setFeedId", "getHeight", "()F", "setHeight", "(F)V", "()Z", "setShowing", "(Z)V", "getItemArrayIndex", "setItemArrayIndex", "getItemBufffer", "setItemBufffer", "getItemExposureAreaWeigth", "setItemExposureAreaWeigth", "getItemExposureTimeMs", "setItemExposureTimeMs", "getItemPos", "setItemPos", "getItemPosition", "setItemPosition", "getLikeCount", "setLikeCount", "getNickName", "setNickName", "getPosition", "setPosition", "getScene", "setScene", "getScreenExposureAreaWeigth", "setScreenExposureAreaWeigth", "getSessionId", "setSessionId", "getStartExposureMs", "setStartExposureMs", "getUpdateTimeMs", "setUpdateTimeMs", "getUserName", "setUserName", "getWidth", "setWidth", "getX", "setX", "getY", "setY", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component18", "component19", "component2", "component20", "component21", "component22", "component23", "component24", "component25", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "", "sessionId", "", "startExposureMs", "", "endExposureMs", "disAppearType", "", "itemExposureAreaWeigth", "", "screenExposureAreaWeigth", "contextId", "scene", "updateTimeMs", "itemExposureTimeMs", "isShowing", "", "x", "y", "height", "width", "position", "itemPosition", "itemPos", "itemArrayIndex", "feedId", "userName", "nickName", "commentCount", "likeCount", "itemBufffer", "(Ljava/lang/String;JJIFFLjava/lang/String;IJJZIIFFIIIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)V", "getCommentCount", "()I", "setCommentCount", "(I)V", "getContextId", "()Ljava/lang/String;", "setContextId", "(Ljava/lang/String;)V", "getDisAppearType", "setDisAppearType", "getEndExposureMs", "()J", "setEndExposureMs", "(J)V", "getFeedId", "setFeedId", "getHeight", "()F", "setHeight", "(F)V", "()Z", "setShowing", "(Z)V", "getItemArrayIndex", "setItemArrayIndex", "getItemBufffer", "setItemBufffer", "getItemExposureAreaWeigth", "setItemExposureAreaWeigth", "getItemExposureTimeMs", "setItemExposureTimeMs", "getItemPos", "setItemPos", "getItemPosition", "setItemPosition", "getLikeCount", "setLikeCount", "getNickName", "setNickName", "getPosition", "setPosition", "getScene", "setScene", "getScreenExposureAreaWeigth", "setScreenExposureAreaWeigth", "getSessionId", "setSessionId", "getStartExposureMs", "setStartExposureMs", "getUpdateTimeMs", "setUpdateTimeMs", "getUserName", "setUserName", "getWidth", "setWidth", "getX", "setX", "getY", "setY", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component18", "component19", "component2", "component20", "component21", "component22", "component23", "component24", "component25", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-expt_release"})
 public final class i
 {
-  public String bVF = null;
-  public boolean cNB = false;
   private int commentCount = 0;
+  public boolean ddZ = false;
   public String feedId = null;
   public float height = 0.0F;
-  public int kd = -1;
+  public int kf = -1;
   private int likeCount = 0;
+  public String nickName = null;
   public int position = -1;
-  public String rfA = null;
-  public String rfB = null;
-  int rfC = -1;
-  public long rfX = 0L;
-  public long rfY = 0L;
-  public int rfZ = 0;
-  public long rft = 0L;
-  public float rfv = 0.0F;
-  public float rfw = 0.0F;
-  public long rga = 0L;
-  public int rgb = -1;
+  public long sGJ = 0L;
+  public float sGL = 0.0F;
+  public float sGM = 0.0F;
+  public String sGQ = null;
+  public String sGR = null;
+  int sGS = -1;
+  public long sHt = 0L;
+  public long sHu = 0L;
+  public int sHv = 0;
+  public long sHw = 0L;
+  public int sHx = -1;
   public int scene = 0;
   public String sessionId = null;
   String userName = null;
@@ -35,21 +35,21 @@ public final class i
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(196608);
+    AppMethodBeat.i(221100);
     if (this != paramObject)
     {
       if ((paramObject instanceof i))
       {
         paramObject = (i)paramObject;
-        if ((!p.i(this.sessionId, paramObject.sessionId)) || (this.rfX != paramObject.rfX) || (this.rfY != paramObject.rfY) || (this.rfZ != paramObject.rfZ) || (Float.compare(this.rfv, paramObject.rfv) != 0) || (Float.compare(this.rfw, paramObject.rfw) != 0) || (!p.i(this.rfA, paramObject.rfA)) || (this.scene != paramObject.scene) || (this.rft != paramObject.rft) || (this.rga != paramObject.rga) || (this.cNB != paramObject.cNB) || (this.x != paramObject.x) || (this.y != paramObject.y) || (Float.compare(this.height, paramObject.height) != 0) || (Float.compare(this.width, paramObject.width) != 0) || (this.position != paramObject.position) || (this.kd != paramObject.kd) || (this.rgb != paramObject.rgb) || (this.rfC != paramObject.rfC) || (!p.i(this.feedId, paramObject.feedId)) || (!p.i(this.userName, paramObject.userName)) || (!p.i(this.bVF, paramObject.bVF)) || (this.commentCount != paramObject.commentCount) || (this.likeCount != paramObject.likeCount) || (!p.i(this.rfB, paramObject.rfB))) {}
+        if ((!p.j(this.sessionId, paramObject.sessionId)) || (this.sHt != paramObject.sHt) || (this.sHu != paramObject.sHu) || (this.sHv != paramObject.sHv) || (Float.compare(this.sGL, paramObject.sGL) != 0) || (Float.compare(this.sGM, paramObject.sGM) != 0) || (!p.j(this.sGQ, paramObject.sGQ)) || (this.scene != paramObject.scene) || (this.sGJ != paramObject.sGJ) || (this.sHw != paramObject.sHw) || (this.ddZ != paramObject.ddZ) || (this.x != paramObject.x) || (this.y != paramObject.y) || (Float.compare(this.height, paramObject.height) != 0) || (Float.compare(this.width, paramObject.width) != 0) || (this.position != paramObject.position) || (this.kf != paramObject.kf) || (this.sHx != paramObject.sHx) || (this.sGS != paramObject.sGS) || (!p.j(this.feedId, paramObject.feedId)) || (!p.j(this.userName, paramObject.userName)) || (!p.j(this.nickName, paramObject.nickName)) || (this.commentCount != paramObject.commentCount) || (this.likeCount != paramObject.likeCount) || (!p.j(this.sGR, paramObject.sGR))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(196608);
+      AppMethodBeat.o(221100);
       return true;
     }
-    AppMethodBeat.o(196608);
+    AppMethodBeat.o(221100);
     return false;
   }
   
@@ -60,9 +60,9 @@ public final class i
   
   public final String toString()
   {
-    AppMethodBeat.i(196606);
-    String str = "WaterFeed(sessionId=" + this.sessionId + ", startExposureMs=" + this.rfX + ", endExposureMs=" + this.rfY + ", disAppearType=" + this.rfZ + ", itemExposureAreaWeigth=" + this.rfv + ", screenExposureAreaWeigth=" + this.rfw + ", contextId=" + this.rfA + ", scene=" + this.scene + ", updateTimeMs=" + this.rft + ", itemExposureTimeMs=" + this.rga + ", isShowing=" + this.cNB + ", x=" + this.x + ", y=" + this.y + ", height=" + this.height + ", width=" + this.width + ", position=" + this.position + ", itemPosition=" + this.kd + ", itemPos=" + this.rgb + ", itemArrayIndex=" + this.rfC + ", feedId=" + this.feedId + ", userName=" + this.userName + ", nickName=" + this.bVF + ", commentCount=" + this.commentCount + ", likeCount=" + this.likeCount + ", itemBufffer=" + this.rfB + ")";
-    AppMethodBeat.o(196606);
+    AppMethodBeat.i(221098);
+    String str = "WaterFeed(sessionId=" + this.sessionId + ", startExposureMs=" + this.sHt + ", endExposureMs=" + this.sHu + ", disAppearType=" + this.sHv + ", itemExposureAreaWeigth=" + this.sGL + ", screenExposureAreaWeigth=" + this.sGM + ", contextId=" + this.sGQ + ", scene=" + this.scene + ", updateTimeMs=" + this.sGJ + ", itemExposureTimeMs=" + this.sHw + ", isShowing=" + this.ddZ + ", x=" + this.x + ", y=" + this.y + ", height=" + this.height + ", width=" + this.width + ", position=" + this.position + ", itemPosition=" + this.kf + ", itemPos=" + this.sHx + ", itemArrayIndex=" + this.sGS + ", feedId=" + this.feedId + ", userName=" + this.userName + ", nickName=" + this.nickName + ", commentCount=" + this.commentCount + ", likeCount=" + this.likeCount + ", itemBufffer=" + this.sGR + ")";
+    AppMethodBeat.o(221098);
     return str;
   }
 }

@@ -1,75 +1,74 @@
 package com.tencent.mm.openim.b;
 
-import android.os.HandlerThread;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.i;
 import com.tencent.mm.aj.j;
 import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.openim.a.a;
 import com.tencent.mm.openim.room.a.a.1;
 import com.tencent.mm.openim.room.a.a.2;
+import com.tencent.mm.openim.room.a.b.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bfo;
-import com.tencent.mm.protocal.protobuf.bfp;
-import com.tencent.mm.protocal.protobuf.cfl;
-import com.tencent.mm.protocal.protobuf.cfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.protocal.protobuf.brk;
+import com.tencent.mm.protocal.protobuf.brl;
+import com.tencent.mm.protocal.protobuf.cvs;
+import com.tencent.mm.protocal.protobuf.cvv;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class f
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private com.tencent.mm.ak.f callback;
-  private final String dwx;
-  private final b rr;
+  private com.tencent.mm.ak.i callback;
+  private final String dOe;
+  private final d rr;
   private final int version;
   
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(151193);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bfo();
-    ((b.a)localObject).hQG = new bfp();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getopenimchatroommemberdetail";
-    ((b.a)localObject).funcId = 942;
-    this.rr = ((b.a)localObject).aDS();
-    this.dwx = paramString;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new brk();
+    ((d.a)localObject).iLO = new brl();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getopenimchatroommemberdetail";
+    ((d.a)localObject).funcId = 942;
+    this.rr = ((d.a)localObject).aXF();
+    this.dOe = paramString;
     this.version = paramInt;
-    localObject = (bfo)this.rr.hQD.hQJ;
-    ((bfo)localObject).iKu = paramString;
-    ((bfo)localObject).GUw = paramInt;
-    ae.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "get roomname:%s, version=%d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    localObject = (brk)this.rr.iLK.iLR;
+    ((brk)localObject).jHa = paramString;
+    ((brk)localObject).LYO = paramInt;
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "get roomname:%s, version=%d", new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(151193);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
   {
     AppMethodBeat.i(151195);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151195);
     return i;
   }
@@ -79,61 +78,61 @@ public final class f
     return 942;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151194);
-    ae.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname:%s, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dwx, Integer.valueOf(this.version) });
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname:%s, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dOe, Integer.valueOf(this.version) });
     if (paramInt3 == 0)
     {
-      paramArrayOfByte = (bfp)((b)paramq).hQE.hQJ;
-      Object localObject = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().By(this.dwx);
-      long l = paramArrayOfByte.GUx;
-      ae.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "updateMemberDetail svrVer:%d, localVer:%d", new Object[] { Integer.valueOf(paramArrayOfByte.GUx), Integer.valueOf(this.version) });
+      paramArrayOfByte = (brl)((d)params).iLL.iLR;
+      Object localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Ke(this.dOe);
+      long l = paramArrayOfByte.LYP;
+      Log.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "updateMemberDetail svrVer:%d, localVer:%d", new Object[] { Integer.valueOf(paramArrayOfByte.LYP), Integer.valueOf(this.version) });
       if (this.version < (0xFFFFFFFF & l))
       {
-        ((ac)localObject).abv(paramArrayOfByte.GUx);
+        ((ah)localObject).akd(paramArrayOfByte.LYP);
         label182:
         com.tencent.mm.openim.room.a.c localc;
-        bq localbq;
+        bv localbv;
         j localj;
         LinkedList localLinkedList1;
         LinkedList localLinkedList2;
         label307:
         Iterator localIterator;
-        if (paramArrayOfByte.GUy == null)
+        if (paramArrayOfByte.LYQ == null)
         {
-          paramq = null;
-          if (paramq != null) {
+          params = null;
+          if (params != null) {
             break label545;
           }
           paramInt1 = -1;
-          ae.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "updateMemberDetail memInfoList size[%d]", new Object[] { Integer.valueOf(paramInt1) });
-          ((ac)localObject).C(v.aAC(), com.tencent.mm.openim.room.a.b.c.aF(paramq));
-          ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().replace((com.tencent.mm.sdk.e.c)localObject);
-          localObject = paramArrayOfByte.GUy;
+          Log.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomMemberDetail", "updateMemberDetail memInfoList size[%d]", new Object[] { Integer.valueOf(paramInt1) });
+          ((ah)localObject).I(z.aTY(), b.c.aN(params));
+          ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().replace((IAutoDBItem)localObject);
+          localObject = paramArrayOfByte.LYQ;
           localc = new com.tencent.mm.openim.room.a.c();
           if (localObject == null) {
-            break label913;
+            break label901;
           }
-          paramq = ((cfl)localObject).FNS;
-          localbq = ((l)g.ab(l.class)).azF();
-          localj = p.aEN();
+          params = ((cvs)localObject).KHx;
+          localbv = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN();
+          localj = p.aYB();
           localLinkedList1 = new LinkedList();
           localLinkedList2 = new LinkedList();
-          if (paramq != null) {
+          if (params != null) {
             break label556;
           }
           paramInt1 = -1;
-          ae.i("OpenIMChatRoomContactLogic", "updateMemberDetail memInfoList size[%d]", new Object[] { Integer.valueOf(paramInt1) });
+          Log.i("OpenIMChatRoomContactLogic", "updateMemberDetail memInfoList size[%d]", new Object[] { Integer.valueOf(paramInt1) });
           if (paramInt1 < 0) {
-            break label913;
+            break label901;
           }
           if (paramInt1 <= WXHardCoderJNI.hcUpdateChatroomMemberCount) {
             break label567;
           }
           paramInt1 = 0;
-          localc.fMX = paramInt1;
-          localIterator = paramq.iterator();
+          localc.gsi = paramInt1;
+          localIterator = params.iterator();
         }
         for (;;)
         {
@@ -141,20 +140,20 @@ public final class f
           if (!localIterator.hasNext()) {
             break label773;
           }
-          cfo localcfo = (cfo)localIterator.next();
-          if ((((cfl)localObject).Hsq == 0) && (!bu.isNullOrNil(localcfo.userName)) && (!bu.isNullOrNil(localcfo.Gug)))
+          cvv localcvv = (cvv)localIterator.next();
+          if ((((cvs)localObject).MBn == 0) && (!Util.isNullOrNil(localcvv.userName)) && (!Util.isNullOrNil(localcvv.LpI)))
           {
-            paramArrayOfByte = localj.DL(localcfo.userName);
-            paramq = paramArrayOfByte;
+            paramArrayOfByte = localj.Mx(localcvv.userName);
+            params = paramArrayOfByte;
             if (paramArrayOfByte == null)
             {
-              paramq = new i();
-              paramq.username = localcfo.userName;
+              params = new com.tencent.mm.aj.i();
+              params.username = localcvv.userName;
             }
-            paramq.hPQ = localcfo.Guf;
-            paramq.hPP = localcfo.Gug;
-            paramq.eQU = 3;
-            if (bu.isNullOrNil(localcfo.Guf)) {
+            params.iKX = localcvv.LpH;
+            params.iKW = localcvv.LpI;
+            params.fuz = 3;
+            if (Util.isNullOrNil(localcvv.LpH)) {
               break label633;
             }
           }
@@ -164,63 +163,63 @@ public final class f
           label633:
           for (boolean bool = true;; bool = false)
           {
-            paramq.eD(bool);
-            localLinkedList2.add(paramq);
-            paramq = localbq.BH(localcfo.userName);
-            if (paramq != null) {
+            params.fv(bool);
+            localLinkedList2.add(params);
+            params = localbv.Kn(localcvv.userName);
+            if (params != null) {
               break label639;
             }
-            ae.e("OpenIMChatRoomContactLogic", "updateMemberDetail memberlist username is null");
+            Log.e("OpenIMChatRoomContactLogic", "updateMemberDetail memberlist username is null");
             break label355;
-            paramq = paramArrayOfByte.GUy.FNS;
+            params = paramArrayOfByte.LYQ.KHx;
             break;
-            paramInt1 = paramq.size();
+            paramInt1 = params.size();
             break label182;
-            paramInt1 = paramq.size();
+            paramInt1 = params.size();
             break label307;
             bool = WXHardCoderJNI.hcUpdateChatroomEnable;
             int i = WXHardCoderJNI.hcUpdateChatroomDelay;
             int j = WXHardCoderJNI.hcUpdateChatroomCPU;
             int k = WXHardCoderJNI.hcUpdateChatroomIO;
             if (WXHardCoderJNI.hcUpdateChatroomThr) {}
-            for (paramInt1 = g.ajU().foN();; paramInt1 = 0)
+            for (paramInt1 = com.tencent.mm.kernel.g.aAk().getProcessTid();; paramInt1 = 0)
             {
               paramInt1 = WXHardCoderJNI.startPerformance(bool, i, j, k, paramInt1, WXHardCoderJNI.hcUpdateChatroomTimeout, 401, WXHardCoderJNI.hcUpdateChatroomAction, "PerfTrace");
               break;
             }
           }
           label639:
-          if (paramq.adu())
+          if (params.arx())
           {
-            paramq.to(localcfo.bVF);
-            localLinkedList1.add(new Pair(localcfo.userName, paramq));
+            params.setNickname(localcvv.nickName);
+            localLinkedList1.add(new Pair(localcvv.userName, params));
           }
-          if (!bu.isNullOrNil(localcfo.appId)) {
-            paramq.tx(localcfo.appId);
+          if (!Util.isNullOrNil(localcvv.appId)) {
+            params.BN(localcvv.appId);
           }
-          if (!bu.isNullOrNil(localcfo.Hss)) {
-            paramq.tw(localcfo.Hss);
+          if (!Util.isNullOrNil(localcvv.MBp)) {
+            params.BM(localcvv.MBp);
           }
-          localbq.am(paramq);
-          if (!bu.isNullOrNil(localcfo.appId)) {
-            ((a)g.ab(a.class)).s(localcfo.appId, ad.iR(ak.getContext()), localcfo.Hss);
+          localbv.ao(params);
+          if (!Util.isNullOrNil(localcvv.appId)) {
+            ((a)com.tencent.mm.kernel.g.af(a.class)).s(localcvv.appId, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()), localcvv.MBp);
           }
         }
         label773:
-        ae.d("OpenIMChatRoomContactLogic", "updateMemberDetail update newImgFlagList size:%d, updateList size:%d", new Object[] { Integer.valueOf(localLinkedList2.size()), Integer.valueOf(localLinkedList1.size()) });
+        Log.d("OpenIMChatRoomContactLogic", "updateMemberDetail update newImgFlagList size:%d, updateList size:%d", new Object[] { Integer.valueOf(localLinkedList2.size()), Integer.valueOf(localLinkedList1.size()) });
         if (!localLinkedList2.isEmpty())
         {
-          localc.qL(1);
-          new aw(g.ajU().IxZ.getLooper(), new a.1(localLinkedList2, localc, localj), true).ay(100L, 100L);
+          localc.uD(1);
+          new MTimerHandler(com.tencent.mm.kernel.g.aAk().getLooper(), new a.1(localLinkedList2, localc, localj), true).startTimer(100L);
         }
         if (!localLinkedList1.isEmpty())
         {
-          localc.qL(2);
-          new aw(g.ajU().IxZ.getLooper(), new a.2(localLinkedList1, localc, localbq), true).ay(100L, 100L);
+          localc.uD(2);
+          new MTimerHandler(com.tencent.mm.kernel.g.aAk().getLooper(), new a.2(localLinkedList1, localc, localbv), true).startTimer(100L);
         }
       }
     }
-    label913:
+    label901:
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -229,7 +228,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.openim.b.f
  * JD-Core Version:    0.7.0.1
  */

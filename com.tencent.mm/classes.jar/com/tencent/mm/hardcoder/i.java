@@ -3,8 +3,8 @@ package com.tencent.mm.hardcoder;
 public final class i
   extends h
 {
-  public final long gyO;
-  public final long gys;
+  public final long hlB;
+  public final long hlf;
   public final long interval;
   public final int scene;
   public final int type;
@@ -12,9 +12,9 @@ public final class i
   public i(int paramInt1, long paramLong1, int paramInt2, long paramLong2, long paramLong3)
   {
     this.scene = paramInt1;
-    this.gys = paramLong1;
+    this.hlf = paramLong1;
     this.type = paramInt2;
-    this.gyO = paramLong2;
+    this.hlB = paramLong2;
     this.interval = paramLong3;
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.story.f.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/cgi/StoryFavoriteOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "favorite", "(JII)V", "getFavorite", "()I", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/cgi/StoryFavoriteOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "favorite", "(JII)V", "getFavorite", "()I", "plugin-story_release"})
 public final class k
   extends a
 {
-  public final int Bdc;
+  public final int FnT;
   
   public k(long paramLong, int paramInt1, int paramInt2)
   {
     super(paramLong, paramInt1);
-    this.Bdc = paramInt2;
+    this.FnT = paramInt2;
   }
 }
 

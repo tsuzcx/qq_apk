@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.webview.core;
 
 import com.tencent.mm.plugin.webview.stub.e;
-import d.l;
 import java.io.Closeable;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "Ljava/io/Closeable;", "invoker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getInvoker", "()Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "webview-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "Ljava/io/Closeable;", "invoker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getInvoker", "()Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "webview-sdk_release"})
 public abstract interface c
   extends Closeable
 {
-  public abstract e eQS();
+  public abstract e fZs();
 }
 
 

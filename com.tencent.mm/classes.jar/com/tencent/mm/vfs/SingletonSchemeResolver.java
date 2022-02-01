@@ -10,12 +10,12 @@ public abstract class SingletonSchemeResolver
     return 0;
   }
   
-  public final SchemeResolver.a fTc()
+  public final SchemeResolver.a hel()
   {
     return this;
   }
   
-  public final SchemeResolver fTd()
+  public final SchemeResolver hem()
   {
     return this;
   }

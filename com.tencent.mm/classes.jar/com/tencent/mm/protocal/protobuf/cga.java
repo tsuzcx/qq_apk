@@ -5,75 +5,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cga
   extends com.tencent.mm.bw.a
 {
-  public String iKt;
-  public String iWF;
+  public int Cya;
+  public String Cyk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152649);
+    AppMethodBeat.i(43100);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.iKt != null) {
-        paramVarArgs.d(1, this.iKt);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.Cya);
+      if (this.Cyk != null) {
+        paramVarArgs.e(2, this.Cyk);
       }
-      if (this.iWF != null) {
-        paramVarArgs.d(2, this.iWF);
-      }
-      AppMethodBeat.o(152649);
+      AppMethodBeat.o(43100);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.iKt == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.iKt) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.iWF != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.iWF);
+      int i = g.a.a.b.b.a.bu(1, this.Cya) + 0;
+      paramInt = i;
+      if (this.Cyk != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.Cyk);
       }
-      AppMethodBeat.o(152649);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        AppMethodBeat.o(152649);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cga localcga = (cga)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(152649);
-          return -1;
-        case 1: 
-          localcga.iKt = locala.OmT.readString();
-          AppMethodBeat.o(152649);
-          return 0;
-        }
-        localcga.iWF = locala.OmT.readString();
-        AppMethodBeat.o(152649);
-        return 0;
-      }
-      AppMethodBeat.o(152649);
-      return -1;
+      AppMethodBeat.o(43100);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(43100);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      cga localcga = (cga)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(43100);
+        return -1;
+      case 1: 
+        localcga.Cya = locala.UbS.zi();
+        AppMethodBeat.o(43100);
+        return 0;
+      }
+      localcga.Cyk = locala.UbS.readString();
+      AppMethodBeat.o(43100);
+      return 0;
+    }
+    AppMethodBeat.o(43100);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cga
  * JD-Core Version:    0.7.0.1
  */

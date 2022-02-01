@@ -2,7 +2,7 @@ package com.tencent.liteav.videoencoder;
 
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.module.a;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,6 +12,7 @@ import org.json.JSONArray;
 public class c
   extends a
 {
+  protected boolean mEnableXMirror = false;
   protected JSONArray mEncFmt = null;
   protected h mEncodeFilter;
   private boolean mEncodeFirstGOP = false;
@@ -129,13 +130,13 @@ public class c
     return this.mOutputWidth;
   }
   
-  protected void onEncodeFinished(long paramLong1, long paramLong2, long paramLong3)
+  protected void onEncodeFinished(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(14855);
+    AppMethodBeat.i(221370);
     if (this.mListener != null) {
-      this.mListener.a(paramLong1, paramLong2, paramLong3);
+      this.mListener.a(paramInt, paramLong1, paramLong2);
     }
-    AppMethodBeat.o(14855);
+    AppMethodBeat.o(221370);
   }
   
   public long pushVideoFrame(int paramInt1, int paramInt2, int paramInt3, long paramLong)
@@ -175,6 +176,11 @@ public class c
     this.mRotation = paramInt;
   }
   
+  public void setXMirror(boolean paramBoolean)
+  {
+    this.mEnableXMirror = paramBoolean;
+  }
+  
   public void signalEOSAndFlush() {}
   
   public int start(TXSVideoEncoderParam paramTXSVideoEncoderParam)
@@ -198,7 +204,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.c
  * JD-Core Version:    0.7.0.1
  */

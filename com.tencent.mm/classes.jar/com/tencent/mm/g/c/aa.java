@@ -2,22 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class aa
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int eJG = "flag".hashCode();
-  private static final int eJH = "sortId".hashCode();
+  private static final int fkj = "appId".hashCode();
+  private static final int fni = "flag".hashCode();
+  private static final int fnj = "sortId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGm = true;
-  private boolean eJE = true;
-  private boolean eJF = true;
   public String field_appId;
   public long field_flag;
   public int field_sortId;
+  private boolean fjS = true;
+  private boolean fng = true;
+  private boolean fnh = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,7 +32,7 @@ public abstract class aa
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eJG != k) {
+      if (fni != k) {
         break label60;
       }
       this.field_flag = paramCursor.getLong(i);
@@ -43,9 +43,9 @@ public abstract class aa
       break label20;
       break;
       label60:
-      if (eGD == k) {
+      if (fkj == k) {
         this.field_appId = paramCursor.getString(i);
-      } else if (eJH == k) {
+      } else if (fnj == k) {
         this.field_sortId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,16 +56,16 @@ public abstract class aa
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eJE) {
+    if (this.fng) {
       localContentValues.put("flag", Long.valueOf(this.field_flag));
     }
     if (this.field_appId == null) {
       this.field_appId = "";
     }
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eJF) {
+    if (this.fnh) {
       localContentValues.put("sortId", Integer.valueOf(this.field_sortId));
     }
     if (this.systemRowid > 0L) {
@@ -76,7 +76,7 @@ public abstract class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.aa
  * JD-Core Version:    0.7.0.1
  */

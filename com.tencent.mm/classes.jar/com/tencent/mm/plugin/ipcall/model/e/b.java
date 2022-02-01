@@ -1,56 +1,57 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cnn;
-import com.tencent.mm.protocal.protobuf.cno;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dfh;
+import com.tencent.mm.protocal.protobuf.dfi;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private com.tencent.mm.ak.b rr;
-  private cnn uYP;
-  public cno uYQ;
+  private i callback;
+  private d rr;
+  private dfh yrp;
+  public dfi yrq;
   
   public b(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     AppMethodBeat.i(25454);
     this.rr = null;
-    this.uYP = null;
-    this.uYQ = null;
-    b.a locala = new b.a();
-    locala.hQF = new cnn();
-    locala.hQG = new cno();
+    this.yrp = null;
+    this.yrq = null;
+    d.a locala = new d.a();
+    locala.iLN = new dfh();
+    locala.iLO = new dfi();
     locala.funcId = 807;
     locala.uri = "/cgi-bin/micromsg-bin/pstnchecknumber";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.uYP = ((cnn)this.rr.hQD.hQJ);
-    this.uYP.HzA = paramString1;
-    this.uYP.HzC = paramString2;
-    this.uYP.HzE = paramString3;
-    this.uYP.HzD = paramString4;
-    this.uYP.HzF = paramInt;
-    ae.i("MicroMsg.NetSceneIPCallCheckNumber", "NetSceneIPCallCheckNumber pureNumber:%s,lastCountry:%s,osCountry:%s,simCountry:%s,dialScene:%d", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt) });
+    this.rr = locala.aXF();
+    this.yrp = ((dfh)this.rr.iLK.iLR);
+    this.yrp.MKj = paramString1;
+    this.yrp.MKl = paramString2;
+    this.yrp.MKn = paramString3;
+    this.yrp.MKm = paramString4;
+    this.yrp.MKo = paramInt;
+    Log.i("MicroMsg.NetSceneIPCallCheckNumber", "NetSceneIPCallCheckNumber pureNumber:%s,lastCountry:%s,osCountry:%s,simCountry:%s,dialScene:%d", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt) });
     AppMethodBeat.o(25454);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(25455);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25455);
     return i;
   }
@@ -60,11 +61,11 @@ public final class b
     return 807;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25456);
-    ae.i("MicroMsg.NetSceneIPCallCheckNumber", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.uYQ = ((cno)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneIPCallCheckNumber", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.yrq = ((dfi)((d)params).iLL.iLR);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -73,7 +74,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.b
  * JD-Core Version:    0.7.0.1
  */

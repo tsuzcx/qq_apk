@@ -8,22 +8,22 @@ import java.util.Map;
 
 public final class m
 {
+  public ArrayList<String> DEq;
+  public ArrayList<List<String>> DEr;
   public Map<String, Map<String, Long>> map;
-  public ArrayList<String> zug;
-  public ArrayList<List<String>> zuh;
   
   public m()
   {
     AppMethodBeat.i(95085);
-    this.zug = new ArrayList();
-    this.zuh = new ArrayList();
+    this.DEq = new ArrayList();
+    this.DEr = new ArrayList();
     this.map = new HashMap();
     AppMethodBeat.o(95085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.m
  * JD-Core Version:    0.7.0.1
  */

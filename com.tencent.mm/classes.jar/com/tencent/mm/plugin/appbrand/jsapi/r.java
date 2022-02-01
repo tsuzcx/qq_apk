@@ -1,29 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.s;
+import java.util.Map;
+import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnCopyUrlEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
-public final class r
-  extends p
+public abstract class r
 {
-  public static final int CTRL_INDEX = 754;
-  public static final String NAME = "onCopyUrl";
-  public static final a kuj;
+  protected s kGT;
+  private int lqe;
+  private p lqf;
+  protected ac lxR;
+  protected JSONObject lxS;
   
-  static
+  public r(p paramp, s params, ac paramac, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(169553);
-    kuj = new a((byte)0);
-    AppMethodBeat.o(169553);
+    if ((paramp == null) || (params == null) || (paramJSONObject == null)) {
+      throw new IllegalArgumentException("JsApiAsyncRequest");
+    }
+    this.lqf = paramp;
+    this.kGT = params;
+    this.lxR = paramac;
+    this.lqe = paramInt;
+    this.lxS = paramJSONObject;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnCopyUrlEvent$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "WEBVIEW_ID", "dispatch", "", "webviewId", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
+  protected final void J(Map<String, ? extends Object> paramMap)
+  {
+    this.kGT.i(this.lqe, this.lqf.n("ok", paramMap));
+  }
+  
+  public final s NY()
+  {
+    return this.kGT;
+  }
+  
+  public final JSONObject bEj()
+  {
+    return this.lxS;
+  }
+  
+  protected final void o(String paramString, Map<String, ? extends Object> paramMap)
+  {
+    this.kGT.i(this.lqe, this.lqf.n(paramString, paramMap));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.r
  * JD-Core Version:    0.7.0.1
  */

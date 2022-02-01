@@ -21,7 +21,7 @@ import java.util.List;
 final class i
   extends h
 {
-  private InsetDrawable rR;
+  private InsetDrawable rU;
   
   i(VisibilityAwareImageButton paramVisibilityAwareImageButton, m paramm)
   {
@@ -31,90 +31,90 @@ final class i
   private Animator d(float paramFloat1, float paramFloat2)
   {
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.play(ObjectAnimator.ofFloat(this.rH, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.rH, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
-    localAnimatorSet.setInterpolator(rn);
+    localAnimatorSet.play(ObjectAnimator.ofFloat(this.rK, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.rK, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
+    localAnimatorSet.setInterpolator(rq);
     return localAnimatorSet;
   }
   
   final void a(ColorStateList paramColorStateList1, PorterDuff.Mode paramMode, ColorStateList paramColorStateList2, int paramInt)
   {
-    this.rv = android.support.v4.graphics.drawable.a.i(cG());
-    android.support.v4.graphics.drawable.a.a(this.rv, paramColorStateList1);
+    this.ry = android.support.v4.graphics.drawable.a.i(cI());
+    android.support.v4.graphics.drawable.a.a(this.ry, paramColorStateList1);
     if (paramMode != null) {
-      android.support.v4.graphics.drawable.a.a(this.rv, paramMode);
+      android.support.v4.graphics.drawable.a.a(this.ry, paramMode);
     }
     if (paramInt > 0) {
-      this.rx = a(paramInt, paramColorStateList1);
+      this.rA = a(paramInt, paramColorStateList1);
     }
-    for (paramColorStateList1 = new LayerDrawable(new Drawable[] { this.rx, this.rv });; paramColorStateList1 = this.rv)
+    for (paramColorStateList1 = new LayerDrawable(new Drawable[] { this.rA, this.ry });; paramColorStateList1 = this.ry)
     {
-      this.rw = new RippleDrawable(android.support.design.e.a.b(paramColorStateList2), paramColorStateList1, null);
-      this.ry = this.rw;
-      this.rI.setBackgroundDrawable(this.rw);
+      this.rz = new RippleDrawable(android.support.design.e.a.b(paramColorStateList2), paramColorStateList1, null);
+      this.rB = this.rz;
+      this.rL.setBackgroundDrawable(this.rz);
       return;
-      this.rx = null;
+      this.rA = null;
     }
   }
   
   final void c(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     if (Build.VERSION.SDK_INT == 21) {
-      this.rH.refreshDrawableState();
+      this.rK.refreshDrawableState();
     }
     for (;;)
     {
-      if (this.rI.cz()) {
-        cD();
+      if (this.rL.cB()) {
+        cF();
       }
       return;
       StateListAnimator localStateListAnimator = new StateListAnimator();
       localStateListAnimator.addState(PRESSED_ENABLED_STATE_SET, d(paramFloat1, paramFloat3));
-      localStateListAnimator.addState(rE, d(paramFloat1, paramFloat2));
-      localStateListAnimator.addState(rF, d(paramFloat1, paramFloat2));
-      localStateListAnimator.addState(rG, d(paramFloat1, paramFloat2));
+      localStateListAnimator.addState(rH, d(paramFloat1, paramFloat2));
+      localStateListAnimator.addState(rI, d(paramFloat1, paramFloat2));
+      localStateListAnimator.addState(rJ, d(paramFloat1, paramFloat2));
       AnimatorSet localAnimatorSet = new AnimatorSet();
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(ObjectAnimator.ofFloat(this.rH, "elevation", new float[] { paramFloat1 }).setDuration(0L));
+      localArrayList.add(ObjectAnimator.ofFloat(this.rK, "elevation", new float[] { paramFloat1 }).setDuration(0L));
       if ((Build.VERSION.SDK_INT >= 22) && (Build.VERSION.SDK_INT <= 24)) {
-        localArrayList.add(ObjectAnimator.ofFloat(this.rH, View.TRANSLATION_Z, new float[] { this.rH.getTranslationZ() }).setDuration(100L));
+        localArrayList.add(ObjectAnimator.ofFloat(this.rK, View.TRANSLATION_Z, new float[] { this.rK.getTranslationZ() }).setDuration(100L));
       }
-      localArrayList.add(ObjectAnimator.ofFloat(this.rH, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(100L));
+      localArrayList.add(ObjectAnimator.ofFloat(this.rK, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(100L));
       localAnimatorSet.playSequentially((Animator[])localArrayList.toArray(new Animator[0]));
-      localAnimatorSet.setInterpolator(rn);
+      localAnimatorSet.setInterpolator(rq);
       localStateListAnimator.addState(ENABLED_STATE_SET, localAnimatorSet);
       localStateListAnimator.addState(EMPTY_STATE_SET, d(0.0F, 0.0F));
-      this.rH.setStateListAnimator(localStateListAnimator);
+      this.rK.setStateListAnimator(localStateListAnimator);
     }
   }
   
-  final void cB() {}
+  final void cD() {}
   
-  final void cC()
+  final void cE()
   {
-    cD();
+    cF();
   }
   
-  final boolean cE()
+  final boolean cG()
   {
     return false;
   }
   
-  final b cF()
+  final b cH()
   {
     return new c();
   }
   
-  final GradientDrawable cH()
+  final GradientDrawable cJ()
   {
     return new a();
   }
   
   final void d(Rect paramRect)
   {
-    if (this.rI.cz())
+    if (this.rL.cB())
     {
-      float f1 = this.rI.getRadius();
-      float f2 = this.rH.getElevation() + this.rA;
+      float f1 = this.rL.getRadius();
+      float f2 = this.rK.getElevation() + this.rD;
       int i = (int)Math.ceil(l.b(f2, f1, false));
       int j = (int)Math.ceil(l.a(f2, f1, false));
       paramRect.set(i, j, i, j);
@@ -127,51 +127,51 @@ final class i
   {
     if (Build.VERSION.SDK_INT == 21)
     {
-      if (!this.rH.isEnabled()) {
+      if (!this.rK.isEnabled()) {
         break label92;
       }
-      this.rH.setElevation(this.elevation);
-      if (this.rH.isPressed()) {
-        this.rH.setTranslationZ(this.rA);
+      this.rK.setElevation(this.elevation);
+      if (this.rK.isPressed()) {
+        this.rK.setTranslationZ(this.rD);
       }
     }
     else
     {
       return;
     }
-    if ((this.rH.isFocused()) || (this.rH.isHovered()))
+    if ((this.rK.isFocused()) || (this.rK.isHovered()))
     {
-      this.rH.setTranslationZ(this.rz);
+      this.rK.setTranslationZ(this.rC);
       return;
     }
-    this.rH.setTranslationZ(0.0F);
+    this.rK.setTranslationZ(0.0F);
     return;
     label92:
-    this.rH.setElevation(0.0F);
-    this.rH.setTranslationZ(0.0F);
+    this.rK.setElevation(0.0F);
+    this.rK.setTranslationZ(0.0F);
   }
   
   final void e(Rect paramRect)
   {
-    if (this.rI.cz())
+    if (this.rL.cB())
     {
-      this.rR = new InsetDrawable(this.rw, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-      this.rI.setBackgroundDrawable(this.rR);
+      this.rU = new InsetDrawable(this.rz, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+      this.rL.setBackgroundDrawable(this.rU);
       return;
     }
-    this.rI.setBackgroundDrawable(this.rw);
+    this.rL.setBackgroundDrawable(this.rz);
   }
   
   public final float getElevation()
   {
-    return this.rH.getElevation();
+    return this.rK.getElevation();
   }
   
   final void setRippleColor(ColorStateList paramColorStateList)
   {
-    if ((this.rw instanceof RippleDrawable))
+    if ((this.rz instanceof RippleDrawable))
     {
-      ((RippleDrawable)this.rw).setColor(android.support.design.e.a.b(paramColorStateList));
+      ((RippleDrawable)this.rz).setColor(android.support.design.e.a.b(paramColorStateList));
       return;
     }
     super.setRippleColor(paramColorStateList);

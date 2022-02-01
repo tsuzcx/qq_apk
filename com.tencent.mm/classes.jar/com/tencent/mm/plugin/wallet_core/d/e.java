@@ -2,25 +2,26 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.y;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class e
-  extends j<y>
+  extends MAutoStorage<y>
 {
   public static final String[] SQL_CREATE;
-  public com.tencent.mm.sdk.e.e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(70612);
-    SQL_CREATE = new String[] { j.getCreateSQLs(y.info, "WalletBulletin") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(y.info, "WalletBulletin") };
     AppMethodBeat.o(70612);
   }
   
-  public e(com.tencent.mm.sdk.e.e parame)
+  public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, y.info, "WalletBulletin", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, y.info, "WalletBulletin", null);
+    this.db = paramISQLiteDatabase;
   }
 }
 

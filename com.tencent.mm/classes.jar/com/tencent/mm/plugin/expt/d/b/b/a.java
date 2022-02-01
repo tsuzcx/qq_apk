@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.expt.d.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.d.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -12,28 +12,28 @@ import org.apache.commons.b.g;
 
 public final class a
 {
-  public Map<String, Long> qXS;
+  public Map<String, Long> syc;
   
   public a()
   {
-    AppMethodBeat.i(195894);
-    this.qXS = new HashMap();
-    coM();
-    AppMethodBeat.o(195894);
+    AppMethodBeat.i(220316);
+    this.syc = new HashMap();
+    cMY();
+    AppMethodBeat.o(220316);
   }
   
-  private void coM()
+  private void cMY()
   {
-    AppMethodBeat.i(195895);
-    Object localObject = b.coF();
+    AppMethodBeat.i(220317);
+    Object localObject = b.cMR();
     if (localObject == null)
     {
-      AppMethodBeat.o(195895);
+      AppMethodBeat.o(220317);
       return;
     }
-    localObject = ((ay)localObject).getString("mmkv_key_run_record", "");
+    localObject = ((MultiProcessMMKV)localObject).getString("mmkv_key_run_record", "");
     String str;
-    if (!g.ef((String)localObject))
+    if (!g.eP((String)localObject))
     {
       localObject = ((String)localObject).split(";");
       if ((localObject != null) && (localObject.length > 0))
@@ -48,11 +48,11 @@ public final class a
           str = localObject[i];
           try
           {
-            if (!g.ef(str))
+            if (!g.eP(str))
             {
               String[] arrayOfString = str.split(",");
               if ((arrayOfString != null) && (arrayOfString.length > 0)) {
-                this.qXS.put(arrayOfString[0], Long.valueOf(Long.parseLong(arrayOfString[1])));
+                this.syc.put(arrayOfString[0], Long.valueOf(Long.parseLong(arrayOfString[1])));
               }
             }
           }
@@ -60,7 +60,7 @@ public final class a
           {
             for (;;)
             {
-              ae.e("EdgeComputingRunRecord", "[EdgeComputingConfigRecord] initRecord throw Exception : " + localException.getMessage() + ", rr : " + str);
+              Log.e("EdgeComputingRunRecord", "[EdgeComputingConfigRecord] initRecord throw Exception : " + localException.getMessage() + ", rr : " + str);
             }
           }
           i += 1;
@@ -68,49 +68,49 @@ public final class a
       }
     }
     label165:
-    AppMethodBeat.o(195895);
+    AppMethodBeat.o(220317);
   }
   
-  public final long aed(String paramString)
+  public final long aon(String paramString)
   {
-    AppMethodBeat.i(195897);
-    if (g.ef(paramString))
+    AppMethodBeat.i(220319);
+    if (g.eP(paramString))
     {
-      AppMethodBeat.o(195897);
+      AppMethodBeat.o(220319);
       return 0L;
     }
-    synchronized (this.qXS)
+    synchronized (this.syc)
     {
-      paramString = (Long)this.qXS.get(paramString);
+      paramString = (Long)this.syc.get(paramString);
       if (paramString != null)
       {
         long l = paramString.longValue();
-        AppMethodBeat.o(195897);
+        AppMethodBeat.o(220319);
         return l;
       }
-      AppMethodBeat.o(195897);
+      AppMethodBeat.o(220319);
       return 0L;
     }
   }
   
-  public final void coN()
+  public final void cMZ()
   {
-    AppMethodBeat.i(195896);
-    ay localay = b.coF();
-    if (localay == null)
+    AppMethodBeat.i(220318);
+    MultiProcessMMKV localMultiProcessMMKV = b.cMR();
+    if (localMultiProcessMMKV == null)
     {
-      AppMethodBeat.o(195896);
+      AppMethodBeat.o(220318);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.qXS.keySet().iterator();
+    Iterator localIterator = this.syc.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localStringBuilder.append(str).append(",").append(this.qXS.get(str)).append(";");
+      localStringBuilder.append(str).append(",").append(this.syc.get(str)).append(";");
     }
-    localay.putString("mmkv_key_run_record", localStringBuilder.toString());
-    AppMethodBeat.o(195896);
+    localMultiProcessMMKV.putString("mmkv_key_run_record", localStringBuilder.toString());
+    AppMethodBeat.o(220318);
   }
 }
 

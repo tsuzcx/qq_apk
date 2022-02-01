@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
+import java.lang.ref.WeakReference;
 
 public final class ou
-  extends b
+  extends IEvent
 {
-  public a dDQ;
+  public a dUO;
   
   public ou()
   {
@@ -15,21 +16,22 @@ public final class ou
   
   private ou(byte paramByte)
   {
-    AppMethodBeat.i(148770);
-    this.dDQ = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(130927);
+    this.dUO = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(148770);
+    AppMethodBeat.o(130927);
   }
   
   public static final class a
   {
-    public int dlO;
+    public WeakReference aWF;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ou
  * JD-Core Version:    0.7.0.1
  */

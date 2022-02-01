@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/voip_cs_hangup_press" />
-    <item android:state_pressed="false" android:drawable="@raw/voip_cs_hangup" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/a7t" />
+            <corners android:radius="8.0dip" />
+        </shape>
+    </item>
+    <item android:drawable="@color/ac_" />
 </selector>

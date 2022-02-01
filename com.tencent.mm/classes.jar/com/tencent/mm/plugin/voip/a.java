@@ -5,34 +5,33 @@ import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import com.tencent.mm.plugin.voip.model.r.a;
 import com.tencent.mm.plugin.voip.model.x;
 import com.tencent.mm.plugin.voip.ui.c;
-import com.tencent.mm.plugin.voip.video.f;
-import com.tencent.mm.plugin.voip.video.k.a;
-import com.tencent.mm.sdk.platformtools.SensorController.a;
-import d.l;
+import com.tencent.mm.plugin.voip.video.camera.a.b;
+import com.tencent.mm.plugin.voip.video.f.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/BaseVoipMgr;", "Lcom/tencent/mm/plugin/voip/ui/IVoipUIListener;", "Lcom/tencent/mm/plugin/voip/model/VoipUiCallBacks;", "Lcom/tencent/mm/plugin/voip/video/ICaptureRenderListener;", "Lcom/tencent/mm/plugin/voip/video/VoipFaceDetector$FaceDetectCallback;", "Lcom/tencent/mm/plugin/voip/model/VoipNetStatusChecker$OnNetStatusChangeCallback;", "Lcom/tencent/mm/sdk/platformtools/SensorController$SensorEventCallBack;", "Landroid/graphics/SurfaceTexture$OnFrameAvailableListener;", "()V", "getRiskTips", "", "getState", "", "getUserName", "getiInterruptCnt", "getlInterruptEndTime", "", "getlInterruptStartTime", "isOutCall", "", "isVideoCall", "resetStateMachine", "", "startVoIP", "context", "Landroid/content/Context;", "userName", "roomKey", "plugin-voip_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/BaseVoipMgr;", "Lcom/tencent/mm/plugin/voip/ui/IVoipUIListener;", "Lcom/tencent/mm/plugin/voip/model/VoipUiCallBacks;", "Lcom/tencent/mm/plugin/voip/video/camera/common/ICaptureRenderListener;", "Lcom/tencent/mm/plugin/voip/video/VoipFaceDetector$FaceDetectCallback;", "Lcom/tencent/mm/plugin/voip/model/VoipNetStatusChecker$OnNetStatusChangeCallback;", "Landroid/graphics/SurfaceTexture$OnFrameAvailableListener;", "()V", "getRiskTips", "", "getState", "", "getUserName", "getiInterruptCnt", "getlInterruptEndTime", "", "getlInterruptStartTime", "isOutCall", "", "isVideoCall", "resetStateMachine", "", "startVoIP", "context", "Landroid/content/Context;", "userName", "roomKey", "plugin-voip_release"})
 public abstract class a
-  implements SurfaceTexture.OnFrameAvailableListener, r.a, x, c, f, k.a, SensorController.a
+  implements SurfaceTexture.OnFrameAvailableListener, r.a, x, c, b, f.a
 {
   public abstract void a(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong);
   
-  public abstract boolean eyl();
+  public abstract boolean fEZ();
   
-  public abstract boolean eym();
+  public abstract boolean fFa();
   
-  public abstract String eyn();
+  public abstract String fFb();
   
-  public abstract long eyo();
+  public abstract long fFc();
   
-  public abstract long eyp();
+  public abstract long fFd();
   
-  public abstract int eyq();
+  public abstract int fFe();
   
   public abstract int getState();
   
   public abstract String getUserName();
   
-  public abstract void th(boolean paramBoolean);
+  public abstract void wQ(boolean paramBoolean);
 }
 
 

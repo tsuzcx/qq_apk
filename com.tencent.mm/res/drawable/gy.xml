@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@raw/biz_voice_playing_icon_inner3" />
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="32.0dip" />
+            <solid android:color="@color/u_" />
+        </shape>
+    </item>
+    <item android:drawable="@color/ac_" />
 </selector>

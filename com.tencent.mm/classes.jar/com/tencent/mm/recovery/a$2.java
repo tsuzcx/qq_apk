@@ -10,16 +10,16 @@ final class a$2
     super(paramString);
   }
   
-  public final void fkI()
+  public final void guu()
   {
-    AppMethodBeat.i(186139);
-    aQX("JE_KEY_ENABLE_BOOLEAN");
-    AppMethodBeat.o(186139);
+    AppMethodBeat.i(193890);
+    bhA("JE_KEY_ENABLE_BOOLEAN");
+    AppMethodBeat.o(193890);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.recovery.a.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,48 +6,48 @@ import oicq.wlogin_sdk.tools.util;
 public final class b
   extends a
 {
-  int Ooj;
-  int Ook;
-  int Ool;
-  int Oom;
-  byte[] Oon;
+  int Udi;
+  int Udj;
+  int Udk;
+  int Udl;
+  byte[] Udm;
   
   public b()
   {
     AppMethodBeat.i(88137);
-    this.Ooj = 4;
-    this.Ook = 14;
-    this.Ool = 1;
-    this.Oom = 20;
-    this.Oon = new byte[2];
-    this.Ony = 1;
+    this.Udi = 4;
+    this.Udj = 14;
+    this.Udk = 1;
+    this.Udl = 20;
+    this.Udm = new byte[2];
+    this.Ucx = 1;
     AppMethodBeat.o(88137);
   }
   
-  public final Boolean gCy()
+  public final byte[] g(long paramLong, byte[] paramArrayOfByte)
   {
-    if (this.Ooi < 20) {
+    AppMethodBeat.i(88138);
+    byte[] arrayOfByte = new byte[this.Udl];
+    util.ah(arrayOfByte, 0, this.Udk);
+    util.ai(arrayOfByte, 2, util.hPI());
+    util.ai(arrayOfByte, 6, (int)paramLong);
+    util.d(arrayOfByte, 10, util.hPK());
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 14, paramArrayOfByte.length);
+    util.ah(arrayOfByte, paramArrayOfByte.length + 14, 0);
+    super.awj(this.Ucx);
+    super.ak(arrayOfByte, this.Udl);
+    super.hPB();
+    paramArrayOfByte = super.hPx();
+    AppMethodBeat.o(88138);
+    return paramArrayOfByte;
+  }
+  
+  public final Boolean hPC()
+  {
+    if (this.Udh < 20) {
       return Boolean.FALSE;
     }
     return Boolean.TRUE;
-  }
-  
-  public final byte[] h(long paramLong, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(88138);
-    byte[] arrayOfByte = new byte[this.Oom];
-    util.X(arrayOfByte, 0, this.Ool);
-    util.Y(arrayOfByte, 2, util.gCE());
-    util.Y(arrayOfByte, 6, (int)paramLong);
-    util.d(arrayOfByte, 10, util.gCG());
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 14, paramArrayOfByte.length);
-    util.X(arrayOfByte, paramArrayOfByte.length + 14, 0);
-    super.amG(this.Ony);
-    super.aj(arrayOfByte, this.Oom);
-    super.gCx();
-    paramArrayOfByte = super.gCt();
-    AppMethodBeat.o(88138);
-    return paramArrayOfByte;
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.atomic.AtomicInteger;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/OneshotCancelableCountDownAbleRunnable;", "Ljava/lang/Runnable;", "Lcom/tencent/mm/plugin/appbrand/utils/CountDownAble;", "runnable", "totalCount", "", "extraRunnable", "(Ljava/lang/Runnable;ILjava/lang/Runnable;)V", "_hasRun", "", "count", "Ljava/util/concurrent/atomic/AtomicInteger;", "getExtraRunnable", "()Ljava/lang/Runnable;", "hasRun", "getHasRun", "()Z", "isCanceled", "reach0", "getReach0", "getTotalCount", "()I", "cancel", "", "countdown", "forceReach0", "run", "luggage-wxa-app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/OneshotCancelableCountDownAbleRunnable;", "Ljava/lang/Runnable;", "Lcom/tencent/mm/plugin/appbrand/utils/CountDownAble;", "runnable", "totalCount", "", "extraRunnable", "(Ljava/lang/Runnable;ILjava/lang/Runnable;)V", "_hasRun", "", "count", "Ljava/util/concurrent/atomic/AtomicInteger;", "getExtraRunnable", "()Ljava/lang/Runnable;", "hasRun", "getHasRun", "()Z", "isCanceled", "reach0", "getReach0", "getTotalCount", "()I", "cancel", "", "countdown", "forceReach0", "run", "luggage-wxa-app_release"})
 public final class z
   implements Runnable
 {
-  private final Runnable cEv;
-  private final int fVS;
+  private final Runnable dQN;
+  private final int gAZ;
   private volatile boolean isCanceled;
-  private volatile boolean mUq;
-  public AtomicInteger mUr;
-  public final Runnable mUs;
+  private volatile boolean ohr;
+  public AtomicInteger ohs;
+  public final Runnable oht;
   
   public z(Runnable paramRunnable, byte paramByte)
   {
@@ -23,65 +23,65 @@ public final class z
   
   public z(Runnable paramRunnable1, int paramInt, Runnable paramRunnable2)
   {
-    AppMethodBeat.i(208171);
-    this.cEv = paramRunnable1;
-    this.fVS = paramInt;
-    this.mUs = paramRunnable2;
-    this.mUr = new AtomicInteger(this.fVS);
-    AppMethodBeat.o(208171);
+    AppMethodBeat.i(219789);
+    this.dQN = paramRunnable1;
+    this.gAZ = paramInt;
+    this.oht = paramRunnable2;
+    this.ohs = new AtomicInteger(this.gAZ);
+    AppMethodBeat.o(219789);
   }
   
-  public final boolean bCq()
+  public final boolean bZu()
   {
-    AppMethodBeat.i(208168);
-    if (this.mUr.get() <= 0)
+    AppMethodBeat.i(219786);
+    if (this.ohs.get() <= 0)
     {
-      AppMethodBeat.o(208168);
+      AppMethodBeat.o(219786);
       return true;
     }
-    AppMethodBeat.o(208168);
+    AppMethodBeat.o(219786);
     return false;
   }
   
-  public final void bCr()
+  public final void bZv()
   {
-    AppMethodBeat.i(208169);
-    ae.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "countdown, curCount: " + this.mUr.decrementAndGet());
-    if (bCq()) {
+    AppMethodBeat.i(219787);
+    Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "countdown, curCount: " + this.ohs.decrementAndGet());
+    if (bZu()) {
       run();
     }
-    AppMethodBeat.o(208169);
+    AppMethodBeat.o(219787);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(208170);
+    AppMethodBeat.i(219788);
     if (this.isCanceled)
     {
-      ae.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, isCanceled");
-      AppMethodBeat.o(208170);
+      Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, isCanceled");
+      AppMethodBeat.o(219788);
       return;
     }
-    if (!bCq())
+    if (!bZu())
     {
-      ae.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, reach0 is false, just return");
-      AppMethodBeat.o(208170);
+      Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, reach0 is false, just return");
+      AppMethodBeat.o(219788);
       return;
     }
-    if (this.mUq)
+    if (this.ohr)
     {
-      ae.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, hasRun");
-      AppMethodBeat.o(208170);
+      Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, hasRun");
+      AppMethodBeat.o(219788);
       return;
     }
-    this.cEv.run();
-    this.mUq = true;
-    AppMethodBeat.o(208170);
+    this.dQN.run();
+    this.ohr = true;
+    AppMethodBeat.o(219788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.z
  * JD-Core Version:    0.7.0.1
  */

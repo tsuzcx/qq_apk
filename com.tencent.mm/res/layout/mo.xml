@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/hl" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/h42" layout="@layout/mv" />
-    <View android:id="@id/aca" android:background="@drawable/pc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/o" android:layout_marginRight="@dimen/o" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/h42" android:layerType="software" />
-</RelativeLayout>
+    <TextView android:background="@color/af" android:layout_width="fill_parent" android:layout_height="@dimen/jv" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/hm" android:ellipsize="end" android:gravity="left" android:id="@id/bok" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/hs" android:singleLine="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/boj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/hj" android:ellipsize="end" android:gravity="left" android:id="@id/boi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/r" android:layout_marginRight="@dimen/hs" android:text="@string/aok" android:singleLine="true" />
+    <View android:id="@id/akq" android:background="@drawable/rc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="0.0dip" android:layerType="software" />
+</LinearLayout>

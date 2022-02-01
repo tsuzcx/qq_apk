@@ -5,10 +5,10 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.or;
-import com.tencent.mm.g.a.or.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.a.pj;
+import com.tencent.mm.g.a.pj.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -20,35 +20,35 @@ public class WalletJsapiData
   implements Parcelable
 {
   public static final Parcelable.Creator<WalletJsapiData> CREATOR;
-  public int FEA;
-  public int FEB;
-  public int FEC;
-  public String FED;
-  public int FEE;
-  public String FEF;
-  public String FEG;
-  public String FEH;
-  public boolean FEI;
-  public String FEJ;
-  public Map<String, String> FEK;
-  public ResultReceiver FEL;
+  public String DWX;
+  public int KxF;
+  public int KxG;
+  public int KxH;
+  public String KxI;
+  public int KxJ;
+  public String KxK;
+  public String KxL;
+  public String KxM;
+  public boolean KxN;
+  public String KxO;
+  public Map<String, String> KxP;
+  public ResultReceiver KxQ;
   public String appId;
-  public String dDF;
-  public String dDG;
-  public int dDH;
-  public int dDI;
-  public String dmw;
-  public int dpc;
+  public String dDL;
+  public String dVt;
+  public String dVu;
+  public int dVv;
+  public int dVw;
   public String extInfo;
-  public String hIA;
-  public int hLO;
+  public String iDk;
+  public int iGQ;
   public String nonceStr;
   public String packageExt;
   public String partnerId;
+  public int payChannel;
   public String signType;
   public String timeStamp;
   public String url;
-  public String zOZ;
   
   static
   {
@@ -59,156 +59,156 @@ public class WalletJsapiData
   
   public WalletJsapiData()
   {
-    this.FEC = 0;
-    this.FEE = 0;
+    this.KxH = 0;
+    this.KxJ = 0;
   }
   
   protected WalletJsapiData(Parcel paramParcel)
   {
     AppMethodBeat.i(117573);
-    this.FEC = 0;
-    this.FEE = 0;
+    this.KxH = 0;
+    this.KxJ = 0;
     this.appId = paramParcel.readString();
     this.partnerId = paramParcel.readString();
     this.signType = paramParcel.readString();
     this.nonceStr = paramParcel.readString();
     this.timeStamp = paramParcel.readString();
     this.packageExt = paramParcel.readString();
-    this.dmw = paramParcel.readString();
-    this.FEA = paramParcel.readInt();
-    this.hLO = paramParcel.readInt();
-    this.dDF = paramParcel.readString();
-    this.hIA = paramParcel.readString();
+    this.dDL = paramParcel.readString();
+    this.KxF = paramParcel.readInt();
+    this.iGQ = paramParcel.readInt();
+    this.dVt = paramParcel.readString();
+    this.iDk = paramParcel.readString();
     this.url = paramParcel.readString();
-    this.dDG = paramParcel.readString();
-    this.dDH = paramParcel.readInt();
-    this.dDI = paramParcel.readInt();
-    this.dpc = paramParcel.readInt();
-    this.FEB = paramParcel.readInt();
+    this.dVu = paramParcel.readString();
+    this.dVv = paramParcel.readInt();
+    this.dVw = paramParcel.readInt();
+    this.payChannel = paramParcel.readInt();
+    this.KxG = paramParcel.readInt();
     this.extInfo = paramParcel.readString();
-    this.FEC = paramParcel.readInt();
-    this.FED = paramParcel.readString();
-    this.FEE = paramParcel.readInt();
-    this.FEF = paramParcel.readString();
-    this.FEG = paramParcel.readString();
-    this.FEH = paramParcel.readString();
+    this.KxH = paramParcel.readInt();
+    this.KxI = paramParcel.readString();
+    this.KxJ = paramParcel.readInt();
+    this.KxK = paramParcel.readString();
+    this.KxL = paramParcel.readString();
+    this.KxM = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.FEI = bool;
-      this.zOZ = paramParcel.readString();
+      this.KxN = bool;
+      this.DWX = paramParcel.readString();
       int j = paramParcel.readInt();
       if (j <= 0) {
         break;
       }
-      this.FEK = new HashMap();
+      this.KxP = new HashMap();
       while (i < j)
       {
         String str1 = paramParcel.readString();
         String str2 = paramParcel.readString();
-        this.FEK.put(str1, str2);
+        this.KxP.put(str1, str2);
         i += 1;
       }
       bool = false;
     }
-    this.FEJ = paramParcel.readString();
+    this.KxO = paramParcel.readString();
     if ("PAY_SUCCESS_AHEAD_CALLBACK_RESULT_RECEIVER_MAGIC_WORD".equals(paramParcel.readString())) {
-      this.FEL = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
+      this.KxQ = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
     }
     AppMethodBeat.o(117573);
   }
   
-  public WalletJsapiData(or paramor)
+  public WalletJsapiData(pj parampj)
   {
     AppMethodBeat.i(117570);
-    this.FEC = 0;
-    this.FEE = 0;
-    if ((paramor == null) || (paramor.dDE == null))
+    this.KxH = 0;
+    this.KxJ = 0;
+    if ((parampj == null) || (parampj.dVs == null))
     {
       AppMethodBeat.o(117570);
       return;
     }
-    this.appId = paramor.dDE.appId;
-    this.partnerId = paramor.dDE.partnerId;
-    this.signType = paramor.dDE.signType;
-    this.nonceStr = paramor.dDE.nonceStr;
-    this.timeStamp = paramor.dDE.timeStamp;
-    this.packageExt = paramor.dDE.packageExt;
-    this.dDF = paramor.dDE.dDF;
-    this.url = paramor.dDE.url;
-    this.dDG = paramor.dDE.dDG;
-    this.dDH = paramor.dDE.dDH;
-    this.dpc = paramor.dDE.dpc;
-    this.dDI = paramor.dDE.dDI;
+    this.appId = parampj.dVs.appId;
+    this.partnerId = parampj.dVs.partnerId;
+    this.signType = parampj.dVs.signType;
+    this.nonceStr = parampj.dVs.nonceStr;
+    this.timeStamp = parampj.dVs.timeStamp;
+    this.packageExt = parampj.dVs.packageExt;
+    this.dVt = parampj.dVs.dVt;
+    this.url = parampj.dVs.url;
+    this.dVu = parampj.dVs.dVu;
+    this.dVv = parampj.dVs.dVv;
+    this.payChannel = parampj.dVs.payChannel;
+    this.dVw = parampj.dVs.dVw;
     AppMethodBeat.o(117570);
   }
   
   public WalletJsapiData(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(117568);
-    this.FEC = 0;
-    this.FEE = 0;
+    this.KxH = 0;
+    this.KxJ = 0;
     this.appId = ((String)paramMap.get("appId"));
     this.partnerId = ((String)paramMap.get("partnerId"));
     this.signType = ((String)paramMap.get("signType"));
     this.nonceStr = ((String)paramMap.get("nonceStr"));
     this.timeStamp = ((String)paramMap.get("timeStamp"));
     this.packageExt = ((String)paramMap.get("package"));
-    this.dmw = ((String)paramMap.get("reqKey"));
-    this.FEA = bu.getInt((String)paramMap.get("payScene"), 1);
-    this.hLO = bu.getInt((String)paramMap.get("businessScene"), 1);
-    this.dDF = ((String)paramMap.get("paySign"));
+    this.dDL = ((String)paramMap.get("reqKey"));
+    this.KxF = Util.getInt((String)paramMap.get("payScene"), 1);
+    this.iGQ = Util.getInt((String)paramMap.get("businessScene"), 1);
+    this.dVt = ((String)paramMap.get("paySign"));
     this.url = ((String)paramMap.get("url"));
-    this.dDG = ((String)paramMap.get("src_username"));
-    this.dDH = bu.getInt((String)paramMap.get("scene"), 0);
-    if (this.dDH == 0) {
-      this.dDH = bu.getInt((String)paramMap.get("pay_scene"), 0);
+    this.dVu = ((String)paramMap.get("src_username"));
+    this.dVv = Util.getInt((String)paramMap.get("scene"), 0);
+    if (this.dVv == 0) {
+      this.dVv = Util.getInt((String)paramMap.get("pay_scene"), 0);
     }
-    this.dpc = bu.getInt((String)paramMap.get("pay_channel"), 0);
-    this.extInfo = bu.nullAsNil((String)paramMap.get("ext_info"));
-    this.FED = bu.nullAsNil((String)paramMap.get("token"));
-    this.FEE = bu.getInt(bu.bI((String)paramMap.get("result_jump_mode"), "0"), 0);
-    this.FEF = bu.nullAsNil((String)paramMap.get("key_appbrand_from_path"));
-    this.FEG = bu.nullAsNil((String)paramMap.get("key_appbrand_from_username"));
-    this.FEH = bu.nullAsNil((String)paramMap.get("key_appbrand_from_scene"));
+    this.payChannel = Util.getInt((String)paramMap.get("pay_channel"), 0);
+    this.extInfo = Util.nullAsNil((String)paramMap.get("ext_info"));
+    this.KxI = Util.nullAsNil((String)paramMap.get("token"));
+    this.KxJ = Util.getInt(Util.nullAs((String)paramMap.get("result_jump_mode"), "0"), 0);
+    this.KxK = Util.nullAsNil((String)paramMap.get("key_appbrand_from_path"));
+    this.KxL = Util.nullAsNil((String)paramMap.get("key_appbrand_from_username"));
+    this.KxM = Util.nullAsNil((String)paramMap.get("key_appbrand_from_scene"));
     AppMethodBeat.o(117568);
   }
   
   public WalletJsapiData(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(117569);
-    this.FEC = 0;
-    this.FEE = 0;
+    this.KxH = 0;
+    this.KxJ = 0;
     this.appId = paramJSONObject.optString("appId");
     this.partnerId = paramJSONObject.optString("partnerId");
     this.signType = paramJSONObject.optString("signType");
     this.nonceStr = paramJSONObject.optString("nonceStr");
     this.timeStamp = paramJSONObject.optString("timeStamp");
     this.packageExt = paramJSONObject.optString("package");
-    this.dmw = paramJSONObject.optString("reqKey");
-    this.FEA = paramJSONObject.optInt("payScene", 1);
-    this.hLO = paramJSONObject.optInt("businessScene", 1);
-    this.dDF = paramJSONObject.optString("paySign");
-    this.hIA = paramJSONObject.optString("cookie");
+    this.dDL = paramJSONObject.optString("reqKey");
+    this.KxF = paramJSONObject.optInt("payScene", 1);
+    this.iGQ = paramJSONObject.optInt("businessScene", 1);
+    this.dVt = paramJSONObject.optString("paySign");
+    this.iDk = paramJSONObject.optString("cookie");
     this.url = paramJSONObject.optString("url");
-    this.dDG = paramJSONObject.optString("src_username");
-    this.dDH = paramJSONObject.optInt("scene", 0);
-    if (this.dDH == 0) {
-      this.dDH = paramJSONObject.optInt("pay_scene", 0);
+    this.dVu = paramJSONObject.optString("src_username");
+    this.dVv = paramJSONObject.optInt("scene", 0);
+    if (this.dVv == 0) {
+      this.dVv = paramJSONObject.optInt("pay_scene", 0);
     }
-    this.dpc = paramJSONObject.optInt("pay_channel", 0);
+    this.payChannel = paramJSONObject.optInt("pay_channel", 0);
     this.extInfo = paramJSONObject.optString("ext_info", "");
-    this.FED = paramJSONObject.optString("token", "");
-    this.FEE = bu.getInt(paramJSONObject.optString("result_jump_mode", "0"), 0);
-    this.FEC = paramJSONObject.optInt("pay_for_wallet_type", 0);
-    this.FEF = bu.nullAsNil(paramJSONObject.optString("key_appbrand_from_path"));
-    this.FEG = bu.nullAsNil(paramJSONObject.optString("key_appbrand_from_username"));
-    this.FEH = bu.nullAsNil(paramJSONObject.optString("key_appbrand_from_scene"));
-    this.FEI = paramJSONObject.optBoolean("key_joint_pay", false);
+    this.KxI = paramJSONObject.optString("token", "");
+    this.KxJ = Util.getInt(paramJSONObject.optString("result_jump_mode", "0"), 0);
+    this.KxH = paramJSONObject.optInt("pay_for_wallet_type", 0);
+    this.KxK = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_path"));
+    this.KxL = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_username"));
+    this.KxM = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_scene"));
+    this.KxN = paramJSONObject.optBoolean("key_joint_pay", false);
     AppMethodBeat.o(117569);
   }
   
-  public static int ju(int paramInt1, int paramInt2)
+  public static int kG(int paramInt1, int paramInt2)
   {
     if (paramInt1 != 1037) {}
     while (paramInt2 <= 0) {
@@ -217,17 +217,17 @@ public class WalletJsapiData
     return paramInt2;
   }
   
-  public static int jv(int paramInt1, int paramInt2)
+  public static int kH(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(117571);
-    int j = ju(paramInt1, paramInt2);
+    int j = kG(paramInt1, paramInt2);
     int i;
     if ((j == 1000) || (j == 1018) || (j == 1017) || (j == 1033)) {
       i = 0;
     }
     for (;;)
     {
-      ae.i("MicroMsg.WalletJsapiData", "parsePayChannelByScene, scene: %s, rawScene: %s, resultChannel: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+      Log.i("MicroMsg.WalletJsapiData", "parsePayChannelByScene, scene: %s, rawScene: %s, resultChannel: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
       AppMethodBeat.o(117571);
       return i;
       if (j == 1019)
@@ -328,34 +328,34 @@ public class WalletJsapiData
     paramParcel.writeString(this.nonceStr);
     paramParcel.writeString(this.timeStamp);
     paramParcel.writeString(this.packageExt);
-    paramParcel.writeString(this.dmw);
-    paramParcel.writeInt(this.FEA);
-    paramParcel.writeInt(this.hLO);
-    paramParcel.writeString(this.dDF);
-    paramParcel.writeString(this.hIA);
+    paramParcel.writeString(this.dDL);
+    paramParcel.writeInt(this.KxF);
+    paramParcel.writeInt(this.iGQ);
+    paramParcel.writeString(this.dVt);
+    paramParcel.writeString(this.iDk);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.dDG);
-    paramParcel.writeInt(this.dDH);
-    paramParcel.writeInt(this.dDI);
-    paramParcel.writeInt(this.dpc);
-    paramParcel.writeInt(this.FEB);
+    paramParcel.writeString(this.dVu);
+    paramParcel.writeInt(this.dVv);
+    paramParcel.writeInt(this.dVw);
+    paramParcel.writeInt(this.payChannel);
+    paramParcel.writeInt(this.KxG);
     paramParcel.writeString(this.extInfo);
-    paramParcel.writeInt(this.FEC);
-    paramParcel.writeString(this.FED);
-    paramParcel.writeInt(this.FEE);
-    paramParcel.writeString(this.FEF);
-    paramParcel.writeString(this.FEG);
-    paramParcel.writeString(this.FEH);
-    if (this.FEI) {}
+    paramParcel.writeInt(this.KxH);
+    paramParcel.writeString(this.KxI);
+    paramParcel.writeInt(this.KxJ);
+    paramParcel.writeString(this.KxK);
+    paramParcel.writeString(this.KxL);
+    paramParcel.writeString(this.KxM);
+    if (this.KxN) {}
     for (int i = 1;; i = 0)
     {
       paramParcel.writeInt(i);
-      paramParcel.writeString(this.zOZ);
-      if (this.FEK == null) {
+      paramParcel.writeString(this.DWX);
+      if (this.KxP == null) {
         break;
       }
-      paramParcel.writeInt(this.FEK.size());
-      Iterator localIterator = this.FEK.entrySet().iterator();
+      paramParcel.writeInt(this.KxP.size());
+      Iterator localIterator = this.KxP.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -364,12 +364,15 @@ public class WalletJsapiData
       }
     }
     paramParcel.writeInt(0);
-    paramParcel.writeString(this.FEJ);
-    if (this.FEL != null)
+    paramParcel.writeString(this.KxO);
+    if (this.KxQ != null)
     {
       paramParcel.writeString("PAY_SUCCESS_AHEAD_CALLBACK_RESULT_RECEIVER_MAGIC_WORD");
-      this.FEL.writeToParcel(paramParcel, paramInt);
+      this.KxQ.writeToParcel(paramParcel, paramInt);
+      AppMethodBeat.o(117572);
+      return;
     }
+    paramParcel.writeString(null);
     AppMethodBeat.o(117572);
   }
 }

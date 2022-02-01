@@ -9,28 +9,30 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.memory.ui.QPictureView;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.pluginsdk.ui.tools.h.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.tools.j.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 
 public class AdlandingSightPlayImageView
   extends QPictureView
 {
-  public h.a qbr;
-  b zZs;
-  private int ziC;
-  private int ziD;
-  private int ziE;
-  private int ziF;
-  public boolean ziG;
-  private boolean ziH;
-  private boolean ziI;
+  private int Dnt;
+  private int Dnu;
+  private int Dnv;
+  private int Dnw;
+  public boolean Dnx;
+  private boolean Dny;
+  private boolean Dnz;
+  b EhJ;
+  public j.a rso;
   
   public AdlandingSightPlayImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,40 +43,40 @@ public class AdlandingSightPlayImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(96901);
-    this.ziG = true;
-    this.ziH = false;
-    this.ziI = false;
-    this.zZs = new a(this);
-    ae.i("MicroMsg.SightPlayImageView", "mController %s", new Object[] { bu.fpN().toString() });
+    this.Dnx = true;
+    this.Dny = false;
+    this.Dnz = false;
+    this.EhJ = new a(this);
+    Log.i("MicroMsg.SightPlayImageView", "mController %s", new Object[] { Util.getStack().toString() });
     AppMethodBeat.o(96901);
   }
   
-  public final void aj(Bitmap paramBitmap)
+  public final void au(Bitmap paramBitmap)
   {
     AppMethodBeat.i(96904);
     super.setImageBitmap(paramBitmap);
     AppMethodBeat.o(96904);
   }
   
-  public final void bL(String paramString, boolean paramBoolean)
+  public final void cd(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(96905);
-    b localb = this.zZs;
-    ae.i("MicroMsg.SightPlayController", "#0x%x data: set video[%s], old path[%s], fling[%B], last video id %d, recording %B, canPlay %B", new Object[] { Integer.valueOf(localb.hashCode()), paramString, localb.cvr, Boolean.valueOf(paramBoolean), Integer.valueOf(localb.zhA), Boolean.valueOf(localb.zig), Boolean.valueOf(localb.zhV) });
-    if (localb.zig)
+    b localb = this.EhJ;
+    Log.i("MicroMsg.SightPlayController", "#0x%x data: set video[%s], old path[%s], fling[%B], last video id %d, recording %B, canPlay %B", new Object[] { Integer.valueOf(localb.hashCode()), paramString, localb.cJp, Boolean.valueOf(paramBoolean), Integer.valueOf(localb.Dmr), Boolean.valueOf(localb.DmX), Boolean.valueOf(localb.DmM) });
+    if (localb.DmX)
     {
-      localb.rh(false);
+      localb.uD(false);
       AppMethodBeat.o(96905);
       return;
     }
-    if (localb.dTA())
+    if (localb.eVz())
     {
-      ae.e("MicroMsg.SightPlayController", "is bad fps, do nothing when set video path");
+      Log.e("MicroMsg.SightPlayController", "is bad fps, do nothing when set video path");
       localb.clear();
       AppMethodBeat.o(96905);
       return;
     }
-    if (!localb.zhV)
+    if (!localb.DmM)
     {
       localb.clear();
       AppMethodBeat.o(96905);
@@ -82,15 +84,15 @@ public class AdlandingSightPlayImageView
     }
     if (paramBoolean)
     {
-      localb.zhz = paramString;
-      localb.rh(false);
+      localb.Dmq = paramString;
+      localb.uD(false);
       AppMethodBeat.o(96905);
       return;
     }
-    if (localb.cvr.equals(paramString))
+    if (localb.cJp.equals(paramString))
     {
-      localb.zhz = "ERROR#PATH";
-      localb.rh(false);
+      localb.Dmq = "ERROR#PATH";
+      localb.uD(false);
       localb.restart();
       AppMethodBeat.o(96905);
       return;
@@ -100,42 +102,42 @@ public class AdlandingSightPlayImageView
     if (paramString == null) {
       str = "";
     }
-    localb.cvr = str;
-    if (bu.isNullOrNil(localb.cvr))
+    localb.cJp = str;
+    if (Util.isNullOrNil(localb.cJp))
     {
-      ae.w("MicroMsg.SightPlayController", "empty video path, do draw empty thumb and return");
-      localb.eba();
+      Log.w("MicroMsg.SightPlayController", "empty video path, do draw empty thumb and return");
+      localb.fdR();
       AppMethodBeat.o(96905);
       return;
     }
-    if (!b.ayO(localb.cvr))
+    if (!b.aNy(localb.cJp))
     {
-      ae.w("MicroMsg.SightPlayController", "Check Sight Fail!!! return");
+      Log.w("MicroMsg.SightPlayController", "Check Sight Fail!!! return");
       localb.clear();
       AppMethodBeat.o(96905);
       return;
     }
-    localb.zZb = new b.h(localb, (byte)0);
-    o.i(localb.zZb, 0L);
+    localb.Ehs = new b.h(localb, (byte)0);
+    o.g(localb.Ehs, 0L);
     AppMethodBeat.o(96905);
   }
   
   public b getController()
   {
-    return this.zZs;
+    return this.EhJ;
   }
   
   public int getDuration()
   {
     AppMethodBeat.i(96916);
-    if (this.zZs == null)
+    if (this.EhJ == null)
     {
       AppMethodBeat.o(96916);
       return 0;
     }
-    b localb = this.zZs;
-    if (localb.zhA == -1) {}
-    for (double d = 0.0D;; d = SightVideoJNI.getVideoDuration(localb.zhA))
+    b localb = this.EhJ;
+    if (localb.Dmr == -1) {}
+    for (double d = 0.0D;; d = SightVideoJNI.getVideoDuration(localb.Dmr))
     {
       int i = (int)d;
       AppMethodBeat.o(96916);
@@ -161,15 +163,15 @@ public class AdlandingSightPlayImageView
   
   public String getVideoPath()
   {
-    return this.zZs.cvr;
+    return this.EhJ.cJp;
   }
   
   public void onAttachedToWindow()
   {
     AppMethodBeat.i(96907);
-    ae.d("MicroMsg.SightPlayImageView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
+    Log.d("MicroMsg.SightPlayImageView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
     super.onAttachedToWindow();
-    com.tencent.mm.sdk.b.a.IvT.c(this.zZs.dTC());
+    EventCenter.instance.addListener(this.EhJ.eVB());
     AppMethodBeat.o(96907);
   }
   
@@ -177,9 +179,9 @@ public class AdlandingSightPlayImageView
   {
     AppMethodBeat.i(96906);
     super.onDetachedFromWindow();
-    ae.i("MicroMsg.SightPlayImageView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
-    this.zZs.clear();
-    com.tencent.mm.sdk.b.a.IvT.d(this.zZs.dTC());
+    Log.i("MicroMsg.SightPlayImageView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
+    this.EhJ.clear();
+    EventCenter.instance.removeListener(this.EhJ.eVB());
     AppMethodBeat.o(96906);
   }
   
@@ -190,49 +192,24 @@ public class AdlandingSightPlayImageView
     AppMethodBeat.o(96917);
   }
   
-  public final void ri(boolean paramBoolean)
-  {
-    AppMethodBeat.i(96915);
-    b localb = this.zZs;
-    ae.i("MicroMsg.SightPlayController", "configure: need sound %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
-    {
-      if (localb.zZd == null)
-      {
-        localb.zZd = new b.i(localb, (byte)0);
-        AppMethodBeat.o(96915);
-      }
-    }
-    else
-    {
-      if (localb.zZd != null)
-      {
-        localb.zZd.type = 0;
-        o.i(localb.zZd, 0L);
-      }
-      localb.zZd = null;
-    }
-    AppMethodBeat.o(96915);
-  }
-  
   public void setCanPlay(boolean paramBoolean)
   {
-    this.zZs.zhV = paramBoolean;
+    this.EhJ.DmM = paramBoolean;
   }
   
   public void setDrawableWidth(int paramInt)
   {
     AppMethodBeat.i(96908);
-    this.ziG = false;
-    this.ziC = paramInt;
-    if ((this.ziE > 0) && (this.ziF > 0))
+    this.Dnx = false;
+    this.Dnt = paramInt;
+    if ((this.Dnv > 0) && (this.Dnw > 0))
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-      this.ziD = (this.ziC * this.ziF / this.ziE);
-      if ((localLayoutParams.width != this.ziC) || (localLayoutParams.height != this.ziD))
+      this.Dnu = (this.Dnt * this.Dnw / this.Dnv);
+      if ((localLayoutParams.width != this.Dnt) || (localLayoutParams.height != this.Dnu))
       {
-        localLayoutParams.width = this.ziC;
-        localLayoutParams.height = this.ziD;
+        localLayoutParams.width = this.Dnt;
+        localLayoutParams.height = this.Dnu;
         setLayoutParams(localLayoutParams);
       }
     }
@@ -245,7 +222,7 @@ public class AdlandingSightPlayImageView
   {
     AppMethodBeat.i(96902);
     super.setImageBitmap(paramBitmap);
-    if (this.ziI)
+    if (this.Dnz)
     {
       AppMethodBeat.o(96902);
       return;
@@ -253,13 +230,13 @@ public class AdlandingSightPlayImageView
     int i;
     int j;
     if (paramBitmap == null) {
-      if (this.ziD == 0)
+      if (this.Dnu == 0)
       {
         i = 240;
         if (paramBitmap != null) {
           break label145;
         }
-        if (this.ziC != 0) {
+        if (this.Dnt != 0) {
           break label136;
         }
         j = 320;
@@ -268,21 +245,21 @@ public class AdlandingSightPlayImageView
     for (;;)
     {
       paramBitmap = getLayoutParams();
-      if (paramBitmap.height != this.ziC * i / j)
+      if (paramBitmap.height != this.Dnt * i / j)
       {
-        paramBitmap.width = this.ziC;
-        float f = this.ziC;
+        paramBitmap.width = this.Dnt;
+        float f = this.Dnt;
         paramBitmap.height = ((int)(i * f / j));
         setLayoutParams(paramBitmap);
       }
       AppMethodBeat.o(96902);
       return;
-      i = this.ziD;
+      i = this.Dnu;
       break;
       i = paramBitmap.getHeight();
       break;
       label136:
-      j = this.ziC;
+      j = this.Dnt;
       continue;
       label145:
       j = paramBitmap.getWidth();
@@ -293,7 +270,7 @@ public class AdlandingSightPlayImageView
   {
     AppMethodBeat.i(96903);
     super.setImageDrawable(paramDrawable);
-    if (this.ziI)
+    if (this.Dnz)
     {
       AppMethodBeat.o(96903);
       return;
@@ -301,13 +278,13 @@ public class AdlandingSightPlayImageView
     int i;
     int j;
     if (paramDrawable == null) {
-      if (this.ziD == 0)
+      if (this.Dnu == 0)
       {
         i = 240;
         if (paramDrawable != null) {
           break label155;
         }
-        if (this.ziC != 0) {
+        if (this.Dnt != 0) {
           break label146;
         }
         j = 320;
@@ -318,22 +295,22 @@ public class AdlandingSightPlayImageView
       if ((i != 0) && (j != 0))
       {
         paramDrawable = getLayoutParams();
-        if (paramDrawable.height != this.ziC * i / j)
+        if (paramDrawable.height != this.Dnt * i / j)
         {
-          paramDrawable.width = this.ziC;
-          float f = this.ziC;
+          paramDrawable.width = this.Dnt;
+          float f = this.Dnt;
           paramDrawable.height = ((int)(i * f / j));
           setLayoutParams(paramDrawable);
         }
       }
       AppMethodBeat.o(96903);
       return;
-      i = this.ziD;
+      i = this.Dnu;
       break;
       i = paramDrawable.getIntrinsicHeight();
       break;
       label146:
-      j = this.ziC;
+      j = this.Dnt;
       continue;
       label155:
       j = paramDrawable.getIntrinsicWidth();
@@ -342,13 +319,13 @@ public class AdlandingSightPlayImageView
   
   public void setIsWhatsNew(boolean paramBoolean)
   {
-    this.zZs.zia = paramBoolean;
+    this.EhJ.DmR = paramBoolean;
   }
   
   public void setLoopImp(boolean paramBoolean)
   {
-    if (this.zZs != null) {
-      this.zZs.iuX = paramBoolean;
+    if (this.EhJ != null) {
+      this.EhJ.jqj = paramBoolean;
     }
   }
   
@@ -356,28 +333,28 @@ public class AdlandingSightPlayImageView
   
   public void setOnCompletionListener(b.e parame)
   {
-    this.zZs.zZj = parame;
+    this.EhJ.EhA = parame;
   }
   
   public void setOnDecodeDurationListener(b.f paramf)
   {
-    this.zZs.zZk = paramf;
+    this.EhJ.EhB = paramf;
   }
   
   public void setOnSightCompletionAction(b.g paramg)
   {
-    this.zZs.zZl = paramg;
+    this.EhJ.EhC = paramg;
   }
   
   public void setPosition(int paramInt)
   {
-    this.zZs.position = paramInt;
+    this.EhJ.position = paramInt;
   }
   
   public void setSightInfoView(TextView paramTextView)
   {
     AppMethodBeat.i(96914);
-    this.zZs.zhH = new WeakReference(paramTextView);
+    this.EhJ.Dmy = new WeakReference(paramTextView);
     AppMethodBeat.o(96914);
   }
   
@@ -391,7 +368,7 @@ public class AdlandingSightPlayImageView
   public void setThumbBgView(View paramView)
   {
     AppMethodBeat.i(96913);
-    this.zZs.zhG = new WeakReference(paramView);
+    this.EhJ.Dmx = new WeakReference(paramView);
     AppMethodBeat.o(96913);
   }
   
@@ -402,26 +379,51 @@ public class AdlandingSightPlayImageView
     AppMethodBeat.o(96909);
   }
   
+  public final void uE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(96915);
+    b localb = this.EhJ;
+    Log.i("MicroMsg.SightPlayController", "configure: need sound %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      if (localb.Ehu == null)
+      {
+        localb.Ehu = new b.i(localb, (byte)0);
+        AppMethodBeat.o(96915);
+      }
+    }
+    else
+    {
+      if (localb.Ehu != null)
+      {
+        localb.Ehu.type = 0;
+        o.g(localb.Ehu, 0L);
+      }
+      localb.Ehu = null;
+    }
+    AppMethodBeat.o(96915);
+  }
+  
   static final class a
     extends b
   {
-    private WeakReference<AdlandingSightPlayImageView> ziB;
+    private WeakReference<AdlandingSightPlayImageView> Dns;
     
     public a(AdlandingSightPlayImageView paramAdlandingSightPlayImageView)
     {
       super();
       AppMethodBeat.i(96898);
-      this.ziB = new WeakReference(paramAdlandingSightPlayImageView);
+      this.Dns = new WeakReference(paramAdlandingSightPlayImageView);
       AppMethodBeat.o(96898);
     }
     
-    public final void ai(Bitmap paramBitmap)
+    public final void at(Bitmap paramBitmap)
     {
       AppMethodBeat.i(96900);
-      AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.ziB.get();
+      AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.Dns.get();
       if (localAdlandingSightPlayImageView == null)
       {
-        ae.e("MicroMsg.SightPlayImageView", "onGetFrameBmp, imageView is null, do clear");
+        Log.e("MicroMsg.SightPlayImageView", "onGetFrameBmp, imageView is null, do clear");
         clear();
         AppMethodBeat.o(96900);
         return;
@@ -430,18 +432,18 @@ public class AdlandingSightPlayImageView
       AppMethodBeat.o(96900);
     }
     
-    protected final int dTy()
+    protected final int eVx()
     {
-      return 2130772136;
+      return 2130772160;
     }
     
-    public final void eb(int paramInt1, int paramInt2)
+    public final void eo(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(96899);
-      final AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.ziB.get();
+      final AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.Dns.get();
       if (localAdlandingSightPlayImageView == null)
       {
-        ae.e("MicroMsg.SightPlayImageView", "onGetVideoSizeEnd, imageView is null, do clear");
+        Log.e("MicroMsg.SightPlayImageView", "onGetVideoSizeEnd, imageView is null, do clear");
         clear();
         AppMethodBeat.o(96899);
         return;
@@ -453,15 +455,15 @@ public class AdlandingSightPlayImageView
       }
       AdlandingSightPlayImageView.a(localAdlandingSightPlayImageView, paramInt1);
       AdlandingSightPlayImageView.b(localAdlandingSightPlayImageView, paramInt2);
-      if (localAdlandingSightPlayImageView.qbr != null) {
-        localAdlandingSightPlayImageView.qbr.eb(paramInt1, paramInt2);
+      if (localAdlandingSightPlayImageView.rso != null) {
+        localAdlandingSightPlayImageView.rso.eo(paramInt1, paramInt2);
       }
       if (AdlandingSightPlayImageView.b(localAdlandingSightPlayImageView))
       {
         if (AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView) < AdlandingSightPlayImageView.d(localAdlandingSightPlayImageView)) {
           break label268;
         }
-        AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, com.tencent.mm.cb.a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 150));
+        AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 150));
       }
       for (;;)
       {
@@ -472,7 +474,7 @@ public class AdlandingSightPlayImageView
           {
             localLayoutParams.width = AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView);
             localLayoutParams.height = (AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView) * paramInt2 / paramInt1);
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
@@ -483,20 +485,20 @@ public class AdlandingSightPlayImageView
             });
             localAdlandingSightPlayImageView.postInvalidate();
           }
-          ae.i("MicroMsg.SightPlayImageView", "onGetVideoSize::params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
+          Log.i("MicroMsg.SightPlayImageView", "onGetVideoSize::params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
         }
-        ae.i("MicroMsg.SightPlayImageView", "onGetVideoSize::DrawWidth %d, video size %d*%d", new Object[] { Integer.valueOf(AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView)), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        Log.i("MicroMsg.SightPlayImageView", "onGetVideoSize::DrawWidth %d, video size %d*%d", new Object[] { Integer.valueOf(AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView)), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
         AppMethodBeat.o(96899);
         return;
         label268:
-        AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, com.tencent.mm.cb.a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 85));
+        AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 85));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdlandingSightPlayImageView
  * JD-Core Version:    0.7.0.1
  */

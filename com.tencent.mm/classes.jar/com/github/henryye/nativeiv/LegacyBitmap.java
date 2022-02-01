@@ -17,12 +17,12 @@ import java.io.InputStream;
 public class LegacyBitmap
   implements IBitmap<Bitmap>
 {
-  private Bitmap baM = null;
+  private Bitmap baI = null;
   private long lastDecodeUsing = -1L;
   
   protected Bitmap a(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(209418);
+    AppMethodBeat.i(219804);
     paramc = new BitmapFactory.Options();
     paramc.inPreferredConfig = paramImageDecodeConfig.mConfig;
     paramc.inPremultiplied = paramImageDecodeConfig.mPremultiplyAlpha;
@@ -37,7 +37,7 @@ public class LegacyBitmap
     }
     for (;;)
     {
-      AppMethodBeat.o(209418);
+      AppMethodBeat.o(219804);
       return paramInputStream;
     }
   }
@@ -46,7 +46,7 @@ public class LegacyBitmap
   {
     AppMethodBeat.i(127349);
     long l = SystemClock.elapsedRealtime();
-    this.baM = a(paramInputStream, paramImageDecodeConfig, paramc);
+    this.baI = a(paramInputStream, paramImageDecodeConfig, paramc);
     this.lastDecodeUsing = (SystemClock.elapsedRealtime() - l);
     AppMethodBeat.o(127349);
   }
@@ -65,22 +65,22 @@ public class LegacyBitmap
   @Keep
   public Bitmap provide()
   {
-    return this.baM;
+    return this.baI;
   }
   
   @Keep
   public void recycle()
   {
     AppMethodBeat.i(127350);
-    if (this.baM != null) {
-      this.baM.recycle();
+    if (this.baI != null) {
+      this.baI.recycle();
     }
     AppMethodBeat.o(127350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.LegacyBitmap
  * JD-Core Version:    0.7.0.1
  */

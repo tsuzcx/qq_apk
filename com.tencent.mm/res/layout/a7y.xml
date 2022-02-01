@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/c4f" android:paddingLeft="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc"
+<RelativeLayout android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c4s" android:layout_width="fill_parent" android:layout_height="@dimen/av">
-        <com.tencent.mm.ui.base.MaskLayout android:id="@id/c4a" android:layout_width="@dimen/at" android:layout_height="@dimen/at" android:layout_marginRight="@dimen/c0">
-            <ImageView android:id="@id/b3b" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        </com.tencent.mm.ui.base.MaskLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?rd" android:paddingRight="@dimen/b" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:gravity="center_vertical" android:paddingRight="@dimen/ha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ec" android:singleLine="true" style="@style/m3" />
-            <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:gravity="center" android:id="@id/c4q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:id="@id/ih_" android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
+    <ListView android:id="@id/hf0" android:background="@color/p_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oy" android:dividerHeight="@dimen/ec" style="@style/np" />
+    <include android:id="@id/ccl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a7r" />
+    <TextView android:textColor="@color/l4" android:gravity="center_horizontal" android:id="@id/he0" android:background="@color/afz" android:paddingTop="@dimen/hw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cac" />
+    <include layout="@layout/a73" />
+</RelativeLayout>

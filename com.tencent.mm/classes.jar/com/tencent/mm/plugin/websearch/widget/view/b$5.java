@@ -14,16 +14,16 @@ final class b$5
   {
     AppMethodBeat.i(116707);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    b.b(this.DXi);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    b.b(this.IIZ);
     a.a(this, "com/tencent/mm/plugin/websearch/widget/view/WidgetView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(116707);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.b.5
  * JD-Core Version:    0.7.0.1
  */

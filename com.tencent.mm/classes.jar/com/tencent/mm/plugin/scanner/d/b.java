@@ -1,21 +1,33 @@
 package com.tencent.mm.plugin.scanner.d;
 
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.qbar.a.a;
-import d.g.b.p;
-import d.l;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/result/DefaultScanCodeResultFilter;", "Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "()V", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "scan-sdk_release"})
 public final class b
-  implements c
 {
-  public final List<a.a> fE(List<? extends a.a> paramList)
+  private static b CEu;
+  Object CCt;
+  Map CDO;
+  private Rect CDR;
+  Object CEk;
+  
+  static
   {
-    AppMethodBeat.i(196702);
-    p.h(paramList, "codeResultList");
-    AppMethodBeat.o(196702);
-    return paramList;
+    AppMethodBeat.i(51586);
+    CEu = new b();
+    AppMethodBeat.o(51586);
+  }
+  
+  public b()
+  {
+    AppMethodBeat.i(51585);
+    this.CCt = new Object();
+    this.CEk = new Object();
+    this.CDR = new Rect();
+    this.CDO = new HashMap();
+    AppMethodBeat.o(51585);
   }
 }
 

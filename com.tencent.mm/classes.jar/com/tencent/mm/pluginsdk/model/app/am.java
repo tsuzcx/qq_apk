@@ -5,45 +5,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class am
   implements al
 {
-  a Fge;
-  volatile boolean dzj;
-  volatile boolean hRI;
-  volatile boolean kvU;
-  volatile boolean kvV;
+  a JWV;
+  volatile boolean dQW;
+  volatile boolean iMQ;
+  volatile boolean lzY;
+  volatile boolean lzZ;
   
   public am(a parama)
   {
-    this.Fge = parama;
+    this.JWV = parama;
   }
   
-  public final void gm(boolean paramBoolean)
+  public final void hj(boolean paramBoolean)
   {
     AppMethodBeat.i(151833);
-    this.dzj = paramBoolean;
-    this.kvV = true;
-    if ((this.hRI) && (this.Fge != null)) {
-      this.Fge.u(paramBoolean, this.kvU);
+    this.dQW = paramBoolean;
+    this.lzZ = true;
+    if ((this.iMQ) && (this.JWV != null)) {
+      this.JWV.u(paramBoolean, this.lzY);
     }
     AppMethodBeat.o(151833);
   }
   
   public final void reset()
   {
-    this.hRI = false;
-    this.kvU = false;
-    this.kvV = false;
-    this.dzj = false;
+    this.iMQ = false;
+    this.lzY = false;
+    this.lzZ = false;
+    this.dQW = false;
   }
   
   public final void v(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(218830);
-    this.hRI = true;
-    this.kvU = paramBoolean1;
-    if ((this.kvV) && (this.Fge != null)) {
-      this.Fge.u(this.dzj, paramBoolean1);
+    AppMethodBeat.i(223766);
+    this.iMQ = true;
+    this.lzY = paramBoolean1;
+    if ((this.lzZ) && (this.JWV != null)) {
+      this.JWV.u(this.dQW, paramBoolean1);
     }
-    AppMethodBeat.o(218830);
+    AppMethodBeat.o(223766);
   }
   
   public static abstract interface a

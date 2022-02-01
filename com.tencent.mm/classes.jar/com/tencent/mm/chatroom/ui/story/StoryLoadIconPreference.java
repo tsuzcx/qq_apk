@@ -15,14 +15,14 @@ import java.util.ArrayList;
 public class StoryLoadIconPreference
   extends Preference
 {
-  private StoryAvatarDotsView fXc;
-  private b.h fXd;
-  private int fXe;
-  private int fXf;
-  private int fXg;
-  private int fXh;
-  private int fXi;
-  private ArrayList<String> fXj;
+  private StoryAvatarDotsView gCi;
+  private b.h gCj;
+  private int gCk;
+  private int gCl;
+  private int gCm;
+  private int gCn;
+  private int gCo;
+  private ArrayList<String> gCp;
   private Context mContext;
   private View mView;
   
@@ -31,10 +31,10 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(13018);
     this.mView = null;
-    this.fXh = -1;
-    this.fXi = -1;
-    this.fXj = new ArrayList();
-    bX(paramContext);
+    this.gCn = -1;
+    this.gCo = -1;
+    this.gCp = new ArrayList();
+    cs(paramContext);
     AppMethodBeat.o(13018);
   }
   
@@ -43,17 +43,17 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13019);
     this.mView = null;
-    this.fXh = -1;
-    this.fXi = -1;
-    this.fXj = new ArrayList();
-    bX(paramContext);
+    this.gCn = -1;
+    this.gCo = -1;
+    this.gCp = new ArrayList();
+    cs(paramContext);
     AppMethodBeat.o(13019);
   }
   
-  private void bX(Context paramContext)
+  private void cs(Context paramContext)
   {
     AppMethodBeat.i(13020);
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     this.mContext = paramContext;
     AppMethodBeat.o(13020);
   }
@@ -62,32 +62,32 @@ public class StoryLoadIconPreference
   {
     AppMethodBeat.i(13022);
     super.onBindView(paramView);
-    this.fXe = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 21);
-    this.fXg = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 2);
-    this.fXf = com.tencent.mm.cb.a.fromDPToPix(this.mContext, this.fXe);
-    this.fXh = this.mContext.getResources().getColor(2131100498);
-    this.fXc = ((StoryAvatarDotsView)paramView.findViewById(2131305458));
-    this.fXc.setIconSize(this.fXe + this.fXg * 2);
-    this.fXc.setIconGap(this.fXf / 2);
-    if (this.fXc != null)
+    this.gCk = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 21);
+    this.gCm = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 2);
+    this.gCl = com.tencent.mm.cb.a.fromDPToPix(this.mContext, this.gCk);
+    this.gCn = this.mContext.getResources().getColor(2131100633);
+    this.gCi = ((StoryAvatarDotsView)paramView.findViewById(2131308664));
+    this.gCi.setIconSize(this.gCk + this.gCm * 2);
+    this.gCi.setIconGap(this.gCl / 2);
+    if (this.gCi != null)
     {
-      if (this.fXj.size() > 0)
+      if (this.gCp.size() > 0)
       {
-        this.fXc.setVisibility(0);
-        this.fXc.setIconLayerCount(Math.min(this.fXj.size(), 3));
-        if (this.fXd == null) {
-          this.fXd = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.fXe, this.fXg, this.fXh);
+        this.gCi.setVisibility(0);
+        this.gCi.setIconLayerCount(Math.min(this.gCp.size(), 3));
+        if (this.gCj == null) {
+          this.gCj = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.gCk, this.gCm, this.gCn);
         }
         int i = 0;
-        while (i < this.fXc.getChildCount())
+        while (i < this.gCi.getChildCount())
         {
-          a.b.a(this.fXc.vV(i), (String)this.fXj.get(i), 0.5F, false);
+          a.b.a(this.gCi.zK(i), (String)this.gCp.get(i), 0.5F, false);
           i += 1;
         }
         AppMethodBeat.o(13022);
         return;
       }
-      this.fXc.setVisibility(8);
+      this.gCi.setVisibility(8);
     }
     AppMethodBeat.o(13022);
   }
@@ -98,9 +98,9 @@ public class StoryLoadIconPreference
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
       localViewGroup.removeAllViews();
-      View.inflate(this.mContext, 2131495706, localViewGroup);
+      View.inflate(this.mContext, 2131496611, localViewGroup);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;

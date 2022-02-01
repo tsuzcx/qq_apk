@@ -5,68 +5,80 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class diy
   extends com.tencent.mm.bw.a
 {
-  public String HQD;
-  public String oFI;
+  public String LRO;
+  public String LuX;
+  public String UserName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114081);
+    AppMethodBeat.i(127291);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.HQD != null) {
-        paramVarArgs.d(1, this.HQD);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.UserName != null) {
+        paramVarArgs.e(1, this.UserName);
       }
-      if (this.oFI != null) {
-        paramVarArgs.d(2, this.oFI);
+      if (this.LRO != null) {
+        paramVarArgs.e(2, this.LRO);
       }
-      AppMethodBeat.o(114081);
+      if (this.LuX != null) {
+        paramVarArgs.e(3, this.LuX);
+      }
+      AppMethodBeat.o(127291);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HQD == null) {
-        break label274;
+      if (this.UserName == null) {
+        break label334;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.HQD) + 0;; paramInt = 0)
+    label334:
+    for (int i = g.a.a.b.b.a.f(1, this.UserName) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.oFI != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.oFI);
+      paramInt = i;
+      if (this.LRO != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.LRO);
       }
-      AppMethodBeat.o(114081);
+      i = paramInt;
+      if (this.LuX != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.LuX);
+      }
+      AppMethodBeat.o(127291);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(114081);
+        AppMethodBeat.o(127291);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         diy localdiy = (diy)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(114081);
+          AppMethodBeat.o(127291);
           return -1;
         case 1: 
-          localdiy.HQD = locala.OmT.readString();
-          AppMethodBeat.o(114081);
+          localdiy.UserName = locala.UbS.readString();
+          AppMethodBeat.o(127291);
+          return 0;
+        case 2: 
+          localdiy.LRO = locala.UbS.readString();
+          AppMethodBeat.o(127291);
           return 0;
         }
-        localdiy.oFI = locala.OmT.readString();
-        AppMethodBeat.o(114081);
+        localdiy.LuX = locala.UbS.readString();
+        AppMethodBeat.o(127291);
         return 0;
       }
-      AppMethodBeat.o(114081);
+      AppMethodBeat.o(127291);
       return -1;
     }
   }

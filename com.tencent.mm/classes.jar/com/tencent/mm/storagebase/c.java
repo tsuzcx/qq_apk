@@ -3,14 +3,14 @@ package com.tencent.mm.storagebase;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class c
 {
-  private static f.a Jjf = null;
-  private static long Jjg = 0L;
-  private static int Jjh = 0;
+  private static f.a OsX = null;
+  private static long OsY = 0L;
+  private static int OsZ = 0;
   private static int index;
   private static boolean on = false;
   
@@ -27,7 +27,7 @@ final class c
       AppMethodBeat.o(133329);
       return;
     }
-    long l = Jjf.abs();
+    long l = OsX.apr();
     Object localObject1 = "Thread:[" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]";
     Object localObject2 = (String)localObject1 + "[" + index + "][" + l + "]";
     localObject1 = localObject2;
@@ -38,10 +38,10 @@ final class c
     if (paramCursor != null)
     {
       r(paramCursor);
-      localObject2 = (String)localObject1 + "[cuCnt:" + Jjh + ",cuTime:" + Jjg + "]";
+      localObject2 = (String)localObject1 + "[cuCnt:" + OsZ + ",cuTime:" + OsY + "]";
     }
     paramString = (String)localObject2 + "[" + paramString + "]--";
-    ae.v("MicroMsg.dbtest", paramString + bu.fpN());
+    Log.v("MicroMsg.dbtest", paramString + Util.getStack());
     AppMethodBeat.o(133329);
   }
   
@@ -53,7 +53,7 @@ final class c
       AppMethodBeat.o(133327);
       return;
     }
-    Jjf = new f.a();
+    OsX = new f.a();
     index += 1;
     AppMethodBeat.o(133327);
   }
@@ -62,7 +62,7 @@ final class c
   {
     AppMethodBeat.i(133326);
     if (on) {
-      ae.e("MicroMsg.DKTest", "exception:%s", new Object[] { bu.o(paramException) });
+      Log.e("MicroMsg.DKTest", "exception:%s", new Object[] { Util.stackTraceToString(paramException) });
     }
     AppMethodBeat.o(133326);
   }
@@ -80,16 +80,16 @@ final class c
       AppMethodBeat.o(133328);
       return;
     }
-    Jjh = paramCursor.getCount();
+    OsZ = paramCursor.getCount();
     f.a locala = new f.a();
     int i = 0;
-    while (i < Jjh)
+    while (i < OsZ)
     {
       paramCursor.moveToPosition(i);
       i += 1;
     }
     paramCursor.moveToPosition(-1);
-    Jjg = locala.abs();
+    OsY = locala.apr();
     AppMethodBeat.o(133328);
   }
 }

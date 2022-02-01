@@ -34,67 +34,67 @@ public class VoiceInputBehavior
     AppMethodBeat.i(151541);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.cancel);
-      paramVarArgs.aS(2, this.send);
-      paramVarArgs.aS(3, this.click);
-      paramVarArgs.aS(4, this.longClick);
-      paramVarArgs.aZ(5, this.longClickTime);
-      paramVarArgs.aS(6, this.textClick);
-      paramVarArgs.aS(7, this.textChangeCount);
-      paramVarArgs.aZ(8, this.textChangeTime);
-      paramVarArgs.aS(9, this.textChangeReturn);
-      paramVarArgs.aZ(10, this.voiceInputTime);
-      paramVarArgs.aS(11, this.fail);
-      paramVarArgs.aS(12, this.clear);
-      paramVarArgs.aS(13, this.smileIconClick);
-      paramVarArgs.aS(14, this.voiceIconClick);
-      paramVarArgs.aS(15, this.fullScreenVoiceLongClick);
-      paramVarArgs.aZ(16, this.fullScreenVoiceLongClickTime);
-      paramVarArgs.aS(17, this.showInit);
-      paramVarArgs.aZ(18, this.initChoose);
-      paramVarArgs.aS(19, this.chooseArea);
-      paramVarArgs.aS(20, this.chooseCantonese);
-      paramVarArgs.aS(21, this.setlanguage);
-      paramVarArgs.aS(22, this.setSwitchCantonese);
-      paramVarArgs.aS(23, this.setDefaultLanguage);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.cancel);
+      paramVarArgs.aM(2, this.send);
+      paramVarArgs.aM(3, this.click);
+      paramVarArgs.aM(4, this.longClick);
+      paramVarArgs.bb(5, this.longClickTime);
+      paramVarArgs.aM(6, this.textClick);
+      paramVarArgs.aM(7, this.textChangeCount);
+      paramVarArgs.bb(8, this.textChangeTime);
+      paramVarArgs.aM(9, this.textChangeReturn);
+      paramVarArgs.bb(10, this.voiceInputTime);
+      paramVarArgs.aM(11, this.fail);
+      paramVarArgs.aM(12, this.clear);
+      paramVarArgs.aM(13, this.smileIconClick);
+      paramVarArgs.aM(14, this.voiceIconClick);
+      paramVarArgs.aM(15, this.fullScreenVoiceLongClick);
+      paramVarArgs.bb(16, this.fullScreenVoiceLongClickTime);
+      paramVarArgs.aM(17, this.showInit);
+      paramVarArgs.bb(18, this.initChoose);
+      paramVarArgs.aM(19, this.chooseArea);
+      paramVarArgs.aM(20, this.chooseCantonese);
+      paramVarArgs.aM(21, this.setlanguage);
+      paramVarArgs.aM(22, this.setSwitchCantonese);
+      paramVarArgs.aM(23, this.setDefaultLanguage);
       AppMethodBeat.o(151541);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.cancel);
-      int i = f.a.a.b.b.a.bz(2, this.send);
-      int j = f.a.a.b.b.a.bz(3, this.click);
-      int k = f.a.a.b.b.a.bz(4, this.longClick);
-      int m = f.a.a.b.b.a.p(5, this.longClickTime);
-      int n = f.a.a.b.b.a.bz(6, this.textClick);
-      int i1 = f.a.a.b.b.a.bz(7, this.textChangeCount);
-      int i2 = f.a.a.b.b.a.p(8, this.textChangeTime);
-      int i3 = f.a.a.b.b.a.bz(9, this.textChangeReturn);
-      int i4 = f.a.a.b.b.a.p(10, this.voiceInputTime);
-      int i5 = f.a.a.b.b.a.bz(11, this.fail);
-      int i6 = f.a.a.b.b.a.bz(12, this.clear);
-      int i7 = f.a.a.b.b.a.bz(13, this.smileIconClick);
-      int i8 = f.a.a.b.b.a.bz(14, this.voiceIconClick);
-      int i9 = f.a.a.b.b.a.bz(15, this.fullScreenVoiceLongClick);
-      int i10 = f.a.a.b.b.a.p(16, this.fullScreenVoiceLongClickTime);
-      int i11 = f.a.a.b.b.a.bz(17, this.showInit);
-      int i12 = f.a.a.b.b.a.p(18, this.initChoose);
-      int i13 = f.a.a.b.b.a.bz(19, this.chooseArea);
-      int i14 = f.a.a.b.b.a.bz(20, this.chooseCantonese);
-      int i15 = f.a.a.b.b.a.bz(21, this.setlanguage);
-      int i16 = f.a.a.b.b.a.bz(22, this.setSwitchCantonese);
-      int i17 = f.a.a.b.b.a.bz(23, this.setDefaultLanguage);
+      paramInt = g.a.a.b.b.a.bu(1, this.cancel);
+      int i = g.a.a.b.b.a.bu(2, this.send);
+      int j = g.a.a.b.b.a.bu(3, this.click);
+      int k = g.a.a.b.b.a.bu(4, this.longClick);
+      int m = g.a.a.b.b.a.r(5, this.longClickTime);
+      int n = g.a.a.b.b.a.bu(6, this.textClick);
+      int i1 = g.a.a.b.b.a.bu(7, this.textChangeCount);
+      int i2 = g.a.a.b.b.a.r(8, this.textChangeTime);
+      int i3 = g.a.a.b.b.a.bu(9, this.textChangeReturn);
+      int i4 = g.a.a.b.b.a.r(10, this.voiceInputTime);
+      int i5 = g.a.a.b.b.a.bu(11, this.fail);
+      int i6 = g.a.a.b.b.a.bu(12, this.clear);
+      int i7 = g.a.a.b.b.a.bu(13, this.smileIconClick);
+      int i8 = g.a.a.b.b.a.bu(14, this.voiceIconClick);
+      int i9 = g.a.a.b.b.a.bu(15, this.fullScreenVoiceLongClick);
+      int i10 = g.a.a.b.b.a.r(16, this.fullScreenVoiceLongClickTime);
+      int i11 = g.a.a.b.b.a.bu(17, this.showInit);
+      int i12 = g.a.a.b.b.a.r(18, this.initChoose);
+      int i13 = g.a.a.b.b.a.bu(19, this.chooseArea);
+      int i14 = g.a.a.b.b.a.bu(20, this.chooseCantonese);
+      int i15 = g.a.a.b.b.a.bu(21, this.setlanguage);
+      int i16 = g.a.a.b.b.a.bu(22, this.setSwitchCantonese);
+      int i17 = g.a.a.b.b.a.bu(23, this.setDefaultLanguage);
       AppMethodBeat.o(151541);
       return paramInt + 0 + i + j + k + m + n + i1 + i2 + i3 + i4 + i5 + i6 + i7 + i8 + i9 + i10 + i11 + i12 + i13 + i14 + i15 + i16 + i17;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(151541);
@@ -102,7 +102,7 @@ public class VoiceInputBehavior
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       VoiceInputBehavior localVoiceInputBehavior = (VoiceInputBehavior)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -110,95 +110,95 @@ public class VoiceInputBehavior
         AppMethodBeat.o(151541);
         return -1;
       case 1: 
-        localVoiceInputBehavior.cancel = locala.OmT.zc();
+        localVoiceInputBehavior.cancel = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 2: 
-        localVoiceInputBehavior.send = locala.OmT.zc();
+        localVoiceInputBehavior.send = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 3: 
-        localVoiceInputBehavior.click = locala.OmT.zc();
+        localVoiceInputBehavior.click = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 4: 
-        localVoiceInputBehavior.longClick = locala.OmT.zc();
+        localVoiceInputBehavior.longClick = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 5: 
-        localVoiceInputBehavior.longClickTime = locala.OmT.zd();
+        localVoiceInputBehavior.longClickTime = locala.UbS.zl();
         AppMethodBeat.o(151541);
         return 0;
       case 6: 
-        localVoiceInputBehavior.textClick = locala.OmT.zc();
+        localVoiceInputBehavior.textClick = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 7: 
-        localVoiceInputBehavior.textChangeCount = locala.OmT.zc();
+        localVoiceInputBehavior.textChangeCount = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 8: 
-        localVoiceInputBehavior.textChangeTime = locala.OmT.zd();
+        localVoiceInputBehavior.textChangeTime = locala.UbS.zl();
         AppMethodBeat.o(151541);
         return 0;
       case 9: 
-        localVoiceInputBehavior.textChangeReturn = locala.OmT.zc();
+        localVoiceInputBehavior.textChangeReturn = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 10: 
-        localVoiceInputBehavior.voiceInputTime = locala.OmT.zd();
+        localVoiceInputBehavior.voiceInputTime = locala.UbS.zl();
         AppMethodBeat.o(151541);
         return 0;
       case 11: 
-        localVoiceInputBehavior.fail = locala.OmT.zc();
+        localVoiceInputBehavior.fail = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 12: 
-        localVoiceInputBehavior.clear = locala.OmT.zc();
+        localVoiceInputBehavior.clear = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 13: 
-        localVoiceInputBehavior.smileIconClick = locala.OmT.zc();
+        localVoiceInputBehavior.smileIconClick = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 14: 
-        localVoiceInputBehavior.voiceIconClick = locala.OmT.zc();
+        localVoiceInputBehavior.voiceIconClick = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 15: 
-        localVoiceInputBehavior.fullScreenVoiceLongClick = locala.OmT.zc();
+        localVoiceInputBehavior.fullScreenVoiceLongClick = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 16: 
-        localVoiceInputBehavior.fullScreenVoiceLongClickTime = locala.OmT.zd();
+        localVoiceInputBehavior.fullScreenVoiceLongClickTime = locala.UbS.zl();
         AppMethodBeat.o(151541);
         return 0;
       case 17: 
-        localVoiceInputBehavior.showInit = locala.OmT.zc();
+        localVoiceInputBehavior.showInit = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 18: 
-        localVoiceInputBehavior.initChoose = locala.OmT.zd();
+        localVoiceInputBehavior.initChoose = locala.UbS.zl();
         AppMethodBeat.o(151541);
         return 0;
       case 19: 
-        localVoiceInputBehavior.chooseArea = locala.OmT.zc();
+        localVoiceInputBehavior.chooseArea = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 20: 
-        localVoiceInputBehavior.chooseCantonese = locala.OmT.zc();
+        localVoiceInputBehavior.chooseCantonese = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 21: 
-        localVoiceInputBehavior.setlanguage = locala.OmT.zc();
+        localVoiceInputBehavior.setlanguage = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       case 22: 
-        localVoiceInputBehavior.setSwitchCantonese = locala.OmT.zc();
+        localVoiceInputBehavior.setSwitchCantonese = locala.UbS.zi();
         AppMethodBeat.o(151541);
         return 0;
       }
-      localVoiceInputBehavior.setDefaultLanguage = locala.OmT.zc();
+      localVoiceInputBehavior.setDefaultLanguage = locala.UbS.zi();
       AppMethodBeat.o(151541);
       return 0;
     }
@@ -208,7 +208,7 @@ public class VoiceInputBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.VoiceInputBehavior
  * JD-Core Version:    0.7.0.1
  */

@@ -1,123 +1,115 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class cq
-  extends cvw
+  extends dop
 {
-  public String FNA;
-  public int FNy;
-  public String FNz;
-  public String hFO;
-  public int nJA;
+  public String KGO;
+  public LinkedList<String> KGP;
+  
+  public cq()
+  {
+    AppMethodBeat.i(138165);
+    this.KGP = new LinkedList();
+    AppMethodBeat.o(138165);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127430);
+    AppMethodBeat.i(138166);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.KGO == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ChatRoomName");
+        AppMethodBeat.o(138166);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.hFO != null) {
-        paramVarArgs.d(2, this.hFO);
+      if (this.KGO != null) {
+        paramVarArgs.e(2, this.KGO);
       }
-      paramVarArgs.aS(3, this.nJA);
-      paramVarArgs.aS(4, this.FNy);
-      if (this.FNz != null) {
-        paramVarArgs.d(5, this.FNz);
-      }
-      if (this.FNA != null) {
-        paramVarArgs.d(6, this.FNA);
-      }
-      AppMethodBeat.o(127430);
+      paramVarArgs.e(3, 1, this.KGP);
+      AppMethodBeat.o(138166);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label578;
+        break label478;
       }
     }
-    label578:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label478:
+    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.hFO != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.hFO);
+      if (this.KGO != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.KGO);
       }
-      i = i + f.a.a.b.b.a.bz(3, this.nJA) + f.a.a.b.b.a.bz(4, this.FNy);
-      paramInt = i;
-      if (this.FNz != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.FNz);
-      }
-      i = paramInt;
-      if (this.FNA != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.FNA);
-      }
-      AppMethodBeat.o(127430);
-      return i;
+      paramInt = g.a.a.a.c(3, 1, this.KGP);
+      AppMethodBeat.o(138166);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.KGP.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(127430);
+        if (this.KGO == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ChatRoomName");
+          AppMethodBeat.o(138166);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(138166);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         cq localcq = (cq)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(127430);
+          AppMethodBeat.o(138166);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcq.BaseRequest = ((jc)localObject1);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localcq.BaseRequest = ((jr)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(127430);
+          AppMethodBeat.o(138166);
           return 0;
         case 2: 
-          localcq.hFO = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(127430);
-          return 0;
-        case 3: 
-          localcq.nJA = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(127430);
-          return 0;
-        case 4: 
-          localcq.FNy = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(127430);
-          return 0;
-        case 5: 
-          localcq.FNz = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(127430);
+          localcq.KGO = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(138166);
           return 0;
         }
-        localcq.FNA = ((f.a.a.a.a)localObject1).OmT.readString();
-        AppMethodBeat.o(127430);
+        localcq.KGP.add(((g.a.a.a.a)localObject1).UbS.readString());
+        AppMethodBeat.o(138166);
         return 0;
       }
-      AppMethodBeat.o(127430);
+      AppMethodBeat.o(138166);
       return -1;
     }
   }

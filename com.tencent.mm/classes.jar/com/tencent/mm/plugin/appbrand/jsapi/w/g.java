@@ -1,31 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.w;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.plugin.appbrand.utils.ad.a;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 
-final class g
-  extends at
+public final class g
+  extends d<k>
 {
-  static final int CTRL_INDEX = 473;
-  static final String NAME = "onDeviceOrientationChange";
-  
-  final void b(ad.a parama)
-  {
-    AppMethodBeat.i(137639);
-    parama = parama.name().replace("_", "");
-    HashMap localHashMap = new HashMap(2);
-    localHashMap.put("errMsg", "ok");
-    localHashMap.put("value", parama);
-    I(localHashMap).bja();
-    AppMethodBeat.o(137639);
-  }
+  public static final int CTRL_INDEX = 108;
+  public static final String NAME = "reportRealtimeAction";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w.g
  * JD-Core Version:    0.7.0.1
  */

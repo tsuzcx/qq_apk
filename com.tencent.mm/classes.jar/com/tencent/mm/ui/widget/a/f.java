@@ -14,35 +14,35 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.AlertActivity;
-import com.tencent.mm.ui.aq;
-import com.tencent.mm.ui.f.c.b;
+import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.g.c.b;
 import java.util.ArrayList;
 
 public final class f
 {
   public static final class a
   {
-    public boolean EyN;
-    public final d.a Fop;
-    private String LtH;
-    private String LtI;
-    private boolean LtJ;
-    private RadioGroup LtK;
-    public d jfl;
+    public boolean JnN;
+    public final d.a Kfg;
+    private String QOJ;
+    private String QOK;
+    private boolean QOL;
+    private RadioGroup QOM;
+    public d kdo;
     Context mContext;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(159373);
-      this.LtH = null;
-      this.LtI = null;
-      this.LtJ = false;
-      this.EyN = false;
+      this.QOJ = null;
+      this.QOK = null;
+      this.QOL = false;
+      this.JnN = false;
       this.mContext = paramContext;
-      this.Fop = new d.a(this.mContext);
-      this.Fop.zf(false);
-      this.Fop.zg(false);
-      this.Fop.a(new d.a.d()
+      this.Kfg = new d.a(this.mContext);
+      this.Kfg.Dk(false);
+      this.Kfg.Dl(false);
+      this.Kfg.a(new d.a.d()
       {
         public final CharSequence a(CharSequence paramAnonymousCharSequence, float paramAnonymousFloat)
         {
@@ -52,22 +52,31 @@ public final class f
           return paramAnonymousCharSequence;
         }
       });
-      this.LtI = this.mContext.getResources().getString(2131756755);
-      this.LtH = this.mContext.getResources().getString(2131756757);
+      this.QOK = this.mContext.getResources().getString(2131756918);
+      this.QOJ = this.mContext.getResources().getString(2131756920);
       AppMethodBeat.o(159373);
+    }
+    
+    public final a Dq(boolean paramBoolean)
+    {
+      AppMethodBeat.i(159374);
+      this.Kfg.Dk(paramBoolean);
+      this.Kfg.Dl(paramBoolean);
+      AppMethodBeat.o(159374);
+      return this;
     }
     
     public final a a(final f.b paramb)
     {
       AppMethodBeat.i(159389);
-      if (this.LtK != null) {
-        this.LtK.setTag(this.jfl);
+      if (this.QOM != null) {
+        this.QOM.setTag(this.kdo);
       }
-      if ((this.LtH == null) || ((this.LtH != null) && (this.LtH.length() == 0))) {
-        this.LtH = this.mContext.getResources().getString(2131756757);
+      if ((this.QOJ == null) || ((this.QOJ != null) && (this.QOJ.length() == 0))) {
+        this.QOJ = this.mContext.getResources().getString(2131756920);
       }
-      this.Fop.aZo(this.LtH);
-      this.Fop.c(new DialogInterface.OnClickListener()
+      this.Kfg.bou(this.QOJ);
+      this.Kfg.c(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -75,27 +84,27 @@ public final class f
           if (paramb != null)
           {
             if (paramAnonymousDialogInterface != null) {
-              ((d)paramAnonymousDialogInterface).fQs();
+              ((d)paramAnonymousDialogInterface).hbk();
             }
             if (paramAnonymousDialogInterface != null) {
               break label47;
             }
           }
           label47:
-          for (boolean bool = false;; bool = ((d)paramAnonymousDialogInterface).afH.isChecked())
+          for (boolean bool = false;; bool = ((d)paramAnonymousDialogInterface).afU.isChecked())
           {
-            paramb.E(true, bool);
+            paramb.D(true, bool);
             AppMethodBeat.o(159371);
             return;
           }
         }
       });
-      if ((this.LtI == null) || ((this.LtI != null) && (this.LtI.length() == 0))) {
-        this.LtI = this.mContext.getResources().getString(2131756755);
+      if ((this.QOK == null) || ((this.QOK != null) && (this.QOK.length() == 0))) {
+        this.QOK = this.mContext.getResources().getString(2131756918);
       }
-      this.Fop.aZp(this.LtI);
-      if (!this.EyN) {
-        this.Fop.d(new DialogInterface.OnClickListener()
+      this.Kfg.bov(this.QOK);
+      if (!this.JnN) {
+        this.Kfg.d(new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -106,9 +115,9 @@ public final class f
               }
             }
             label35:
-            for (boolean bool = false;; bool = ((d)paramAnonymousDialogInterface).afH.isChecked())
+            for (boolean bool = false;; bool = ((d)paramAnonymousDialogInterface).afU.isChecked())
             {
-              paramb.E(false, bool);
+              paramb.D(false, bool);
               AppMethodBeat.o(159372);
               return;
             }
@@ -122,18 +131,18 @@ public final class f
     public final a a(final f.c paramc)
     {
       AppMethodBeat.i(159386);
-      if ((this.LtI == null) || ((this.LtI != null) && (this.LtI.length() == 0))) {
-        this.LtI = this.mContext.getResources().getString(2131756755);
+      if ((this.QOK == null) || ((this.QOK != null) && (this.QOK.length() == 0))) {
+        this.QOK = this.mContext.getResources().getString(2131756918);
       }
-      this.Fop.aZp(this.LtI);
-      if (!this.EyN) {
-        this.Fop.d(new DialogInterface.OnClickListener()
+      this.Kfg.bov(this.QOK);
+      if (!this.JnN) {
+        this.Kfg.d(new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(159369);
             if (paramc != null) {
-              paramc.d(false, null);
+              paramc.e(false, null);
             }
             AppMethodBeat.o(159369);
           }
@@ -146,13 +155,13 @@ public final class f
     public final a a(f.c paramc1, f.c paramc2)
     {
       AppMethodBeat.i(159385);
-      if (this.LtK != null) {
-        this.LtK.setTag(this.jfl);
+      if (this.QOM != null) {
+        this.QOM.setTag(this.kdo);
       }
       a(paramc1);
       b(paramc2);
-      if (this.LtJ) {
-        this.Fop.afX(this.mContext.getResources().getColor(2131100035));
+      if (this.QOL) {
+        this.Kfg.aoY(this.mContext.getResources().getColor(2131100063));
       }
       AppMethodBeat.o(159385);
       return this;
@@ -161,129 +170,87 @@ public final class f
     public final a a(ArrayList<String> paramArrayList, RadioGroup.OnCheckedChangeListener paramOnCheckedChangeListener, int paramInt)
     {
       AppMethodBeat.i(175622);
-      View localView = View.inflate(this.mContext, 2131493715, null);
-      this.LtK = ((RadioGroup)localView.findViewById(2131303707));
+      View localView = View.inflate(this.mContext, 2131493848, null);
+      this.QOM = ((RadioGroup)localView.findViewById(2131306493));
       if (paramArrayList != null) {}
       for (int i = paramArrayList.size();; i = 0)
       {
         int j = 0;
         while (j < i)
         {
-          RadioButton localRadioButton = (RadioButton)View.inflate(this.mContext, 2131493714, null);
+          RadioButton localRadioButton = (RadioButton)View.inflate(this.mContext, 2131493847, null);
           localRadioButton.setId(j);
           if (j == paramInt) {
             localRadioButton.setChecked(true);
           }
           localRadioButton.setText((CharSequence)paramArrayList.get(j));
-          this.LtK.addView(localRadioButton);
+          this.QOM.addView(localRadioButton);
           j += 1;
         }
-        this.LtK.setOnCheckedChangeListener(paramOnCheckedChangeListener);
-        this.Fop.hd(localView);
+        this.QOM.setOnCheckedChangeListener(paramOnCheckedChangeListener);
+        this.Kfg.hs(localView);
         AppMethodBeat.o(175622);
         return this;
       }
     }
     
-    public final a aZq(String paramString)
-    {
-      AppMethodBeat.i(159376);
-      this.Fop.aZi(paramString);
-      AppMethodBeat.o(159376);
-      return this;
-    }
-    
-    public final a aZr(String paramString)
-    {
-      AppMethodBeat.i(159378);
-      this.Fop.aZk(paramString);
-      AppMethodBeat.o(159378);
-      return this;
-    }
-    
-    public final a aZs(String paramString)
-    {
-      AppMethodBeat.i(159381);
-      this.Fop.aZm(paramString);
-      AppMethodBeat.o(159381);
-      return this;
-    }
-    
-    public final a aZt(String paramString)
-    {
-      AppMethodBeat.i(159382);
-      this.Fop.aZn(paramString);
-      AppMethodBeat.o(159382);
-      return this;
-    }
-    
-    public final a aZu(String paramString)
-    {
-      AppMethodBeat.i(200364);
-      this.LtH = paramString;
-      this.Fop.aZo(this.LtH);
-      AppMethodBeat.o(200364);
-      return this;
-    }
-    
-    public final a aZv(String paramString)
-    {
-      AppMethodBeat.i(200365);
-      this.LtI = paramString;
-      this.Fop.aZp(this.LtI);
-      AppMethodBeat.o(200365);
-      return this;
-    }
-    
-    public final a afY(int paramInt)
-    {
-      AppMethodBeat.i(159383);
-      this.LtH = this.mContext.getResources().getString(paramInt);
-      this.Fop.aZo(this.LtH);
-      AppMethodBeat.o(159383);
-      return this;
-    }
-    
-    public final a afZ(int paramInt)
-    {
-      AppMethodBeat.i(159384);
-      this.Fop.afW(paramInt);
-      AppMethodBeat.o(159384);
-      return this;
-    }
-    
-    public final a au(CharSequence paramCharSequence)
+    public final a aC(CharSequence paramCharSequence)
     {
       AppMethodBeat.i(159375);
-      int i = aq.fromDPToPix(this.mContext, (int)(20.0F * aq.ef(this.mContext)));
+      int i = at.fromDPToPix(this.mContext, (int)(20.0F * at.ez(this.mContext)));
       if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
       {
-        CharSequence localCharSequence = b.h(this.mContext, paramCharSequence.toString(), i);
-        this.Fop.ar(localCharSequence);
+        CharSequence localCharSequence = b.a(this.mContext, paramCharSequence.toString(), i);
+        this.Kfg.az(localCharSequence);
       }
-      this.Fop.ar(paramCharSequence);
+      this.Kfg.az(paramCharSequence);
       AppMethodBeat.o(159375);
       return this;
     }
     
-    public final a av(CharSequence paramCharSequence)
+    public final a aD(CharSequence paramCharSequence)
     {
       AppMethodBeat.i(159377);
-      int i = aq.fromDPToPix(this.mContext, (int)(14.0F * aq.ef(this.mContext)));
+      int i = at.fromDPToPix(this.mContext, (int)(14.0F * at.ez(this.mContext)));
       if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
       {
-        CharSequence localCharSequence = b.h(this.mContext, paramCharSequence.toString(), i);
-        this.Fop.at(localCharSequence);
+        CharSequence localCharSequence = b.a(this.mContext, paramCharSequence.toString(), i);
+        this.Kfg.aB(localCharSequence);
       }
-      this.Fop.at(paramCharSequence);
+      this.Kfg.aB(paramCharSequence);
       AppMethodBeat.o(159377);
+      return this;
+    }
+    
+    public final a apa(int paramInt)
+    {
+      AppMethodBeat.i(159383);
+      this.QOJ = this.mContext.getResources().getString(paramInt);
+      this.Kfg.bou(this.QOJ);
+      AppMethodBeat.o(159383);
+      return this;
+    }
+    
+    public final a apb(int paramInt)
+    {
+      AppMethodBeat.i(159384);
+      this.Kfg.aoX(paramInt);
+      AppMethodBeat.o(159384);
+      return this;
+    }
+    
+    public final a apc(int paramInt)
+    {
+      AppMethodBeat.i(198249);
+      this.Kfg.aoY(paramInt);
+      AppMethodBeat.o(198249);
       return this;
     }
     
     public final a b(DialogInterface.OnDismissListener paramOnDismissListener)
     {
       AppMethodBeat.i(159390);
-      this.Fop.a(paramOnDismissListener);
+      this.Kfg.a(paramOnDismissListener);
       AppMethodBeat.o(159390);
       return this;
     }
@@ -291,11 +258,11 @@ public final class f
     public final a b(final f.c paramc)
     {
       AppMethodBeat.i(159387);
-      if ((this.LtH == null) || ((this.LtH != null) && (this.LtH.length() == 0))) {
-        this.LtH = this.mContext.getResources().getString(2131756757);
+      if ((this.QOJ == null) || ((this.QOJ != null) && (this.QOJ.length() == 0))) {
+        this.QOJ = this.mContext.getResources().getString(2131756920);
       }
-      this.Fop.aZo(this.LtH);
-      this.Fop.c(new DialogInterface.OnClickListener()
+      this.Kfg.bou(this.QOJ);
+      this.Kfg.c(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -306,9 +273,9 @@ public final class f
             }
           }
           label35:
-          for (paramAnonymousDialogInterface = null;; paramAnonymousDialogInterface = ((d)paramAnonymousDialogInterface).fQs())
+          for (paramAnonymousDialogInterface = null;; paramAnonymousDialogInterface = ((d)paramAnonymousDialogInterface).hbk())
           {
-            paramc.d(true, paramAnonymousDialogInterface);
+            paramc.e(true, paramAnonymousDialogInterface);
             AppMethodBeat.o(159370);
             return;
           }
@@ -318,11 +285,61 @@ public final class f
       return this;
     }
     
+    public final a boA(String paramString)
+    {
+      AppMethodBeat.i(198247);
+      this.QOJ = paramString;
+      this.Kfg.bou(this.QOJ);
+      AppMethodBeat.o(198247);
+      return this;
+    }
+    
+    public final a boB(String paramString)
+    {
+      AppMethodBeat.i(198248);
+      this.QOK = paramString;
+      this.Kfg.bov(this.QOK);
+      AppMethodBeat.o(198248);
+      return this;
+    }
+    
+    public final a bow(String paramString)
+    {
+      AppMethodBeat.i(159376);
+      this.Kfg.boo(paramString);
+      AppMethodBeat.o(159376);
+      return this;
+    }
+    
+    public final a box(String paramString)
+    {
+      AppMethodBeat.i(159378);
+      this.Kfg.boq(paramString);
+      AppMethodBeat.o(159378);
+      return this;
+    }
+    
+    public final a boy(String paramString)
+    {
+      AppMethodBeat.i(159381);
+      this.Kfg.bos(paramString);
+      AppMethodBeat.o(159381);
+      return this;
+    }
+    
+    public final a boz(String paramString)
+    {
+      AppMethodBeat.i(159382);
+      this.Kfg.bot(paramString);
+      AppMethodBeat.o(159382);
+      return this;
+    }
+    
     public final a c(f.c paramc)
     {
       AppMethodBeat.i(159388);
-      if (this.LtK != null) {
-        this.LtK.setTag(this.jfl);
+      if (this.QOM != null) {
+        this.QOM.setTag(this.kdo);
       }
       b(paramc);
       a(paramc);
@@ -330,30 +347,22 @@ public final class f
       return this;
     }
     
-    public final a fQD()
+    public final a hbu()
     {
-      this.EyN = true;
+      this.JnN = true;
       return this;
     }
     
-    public final d fQE()
+    public final d hbv()
     {
-      return this.jfl;
+      return this.kdo;
     }
     
-    public final a hg(View paramView)
+    public final a hu(View paramView)
     {
       AppMethodBeat.i(159379);
-      this.Fop.hd(paramView);
+      this.Kfg.hs(paramView);
       AppMethodBeat.o(159379);
-      return this;
-    }
-    
-    public final a s(Boolean paramBoolean)
-    {
-      AppMethodBeat.i(159380);
-      this.Fop.ze(paramBoolean.booleanValue());
-      AppMethodBeat.o(159380);
       return this;
     }
     
@@ -362,42 +371,41 @@ public final class f
       AppMethodBeat.i(159391);
       if ((this.mContext instanceof Activity))
       {
-        if (this.jfl == null) {
-          this.jfl = this.Fop.fQv();
+        if (this.kdo == null) {
+          this.kdo = this.Kfg.hbn();
         }
-        this.jfl.show();
+        this.kdo.show();
         AppMethodBeat.o(159391);
         return;
       }
-      AlertActivity.a(this.Fop);
+      AlertActivity.a(this.Kfg);
       Object localObject = new Intent(this.mContext, AlertActivity.class);
       ((Intent)localObject).setFlags(335544320);
       Context localContext = this.mContext;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/ui/widget/dialog/MMConfirmDialog$Builder", "show", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/widget/dialog/MMConfirmDialog$Builder", "show", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/ui/widget/dialog/MMConfirmDialog$Builder", "show", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(159391);
     }
     
-    public final a zi(boolean paramBoolean)
+    public final a u(Boolean paramBoolean)
     {
-      AppMethodBeat.i(159374);
-      this.Fop.zf(paramBoolean);
-      this.Fop.zg(paramBoolean);
-      AppMethodBeat.o(159374);
+      AppMethodBeat.i(159380);
+      this.Kfg.Dj(paramBoolean.booleanValue());
+      AppMethodBeat.o(159380);
       return this;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void E(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void D(boolean paramBoolean1, boolean paramBoolean2);
   }
   
   public static abstract interface c
   {
-    public abstract void d(boolean paramBoolean, String paramString);
+    public abstract void e(boolean paramBoolean, String paramString);
   }
 }
 

@@ -4,36 +4,36 @@ import java.util.HashSet;
 
 public class d
 {
-  private final a cFI;
-  private final HashSet<String> cFJ = new HashSet();
+  private final a cWg;
+  private final HashSet<String> cWh = new HashSet();
   
   public d(a parama)
   {
-    this.cFI = parama;
+    this.cWg = parama;
   }
   
   protected final void b(c paramc)
   {
-    if (this.cFI == null) {
+    if (this.cWg == null) {
       throw new RuntimeException("publish issue, but issue listener is null");
     }
-    this.cFI.onDetectIssue(paramc);
+    this.cWg.onDetectIssue(paramc);
   }
   
-  protected void dR(String paramString)
+  protected void eB(String paramString)
   {
     if (paramString == null) {
       return;
     }
-    this.cFJ.add(paramString);
+    this.cWh.add(paramString);
   }
   
-  protected boolean dS(String paramString)
+  protected boolean eC(String paramString)
   {
     if (paramString == null) {
       return false;
     }
-    return this.cFJ.contains(paramString);
+    return this.cWh.contains(paramString);
   }
   
   public static abstract interface a
@@ -43,7 +43,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.report.d
  * JD-Core Version:    0.7.0.1
  */

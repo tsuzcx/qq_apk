@@ -10,20 +10,20 @@ class SnsTextUtil
   static String getReceiverText(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(18718);
-    String str = f.zP(paramString1);
+    String str = f.getDisplayName(paramString1);
     paramString1 = str;
     if (str != null)
     {
       paramString1 = str;
       if (str.length() > 10) {
-        paramString1 = str.substring(0, 10) + paramContext.getString(2131765743);
+        paramString1 = str.substring(0, 10) + paramContext.getString(2131768196);
       }
     }
     if (!Util.isNullOrNil(paramString2))
     {
       paramContext = paramString2;
       if (!Util.isNullOrNil(paramString1)) {
-        paramContext = f.bak(paramString2);
+        paramContext = f.bps(paramString2);
       }
     }
     for (paramContext = paramString1 + "(" + paramContext + ")";; paramContext = paramString1)

@@ -24,7 +24,7 @@ public class b
   private static int v;
   private c a;
   private d b;
-  private WeakReference<com.tencent.liteav.basic.c.a> c;
+  private WeakReference<com.tencent.liteav.basic.b.b> c;
   private int d;
   private int e;
   private int f;
@@ -37,7 +37,7 @@ public class b
   private float m;
   private int n;
   private int o;
-  private com.tencent.liteav.basic.d.b p;
+  private com.tencent.liteav.basic.c.b p;
   private g q;
   private boolean s;
   private k t;
@@ -80,8 +80,8 @@ public class b
       AppMethodBeat.o(14812);
       return;
     }
-    com.tencent.liteav.basic.c.a locala = (com.tencent.liteav.basic.c.a)this.c.get();
-    if (locala == null)
+    com.tencent.liteav.basic.b.b localb = (com.tencent.liteav.basic.b.b)this.c.get();
+    if (localb == null)
     {
       AppMethodBeat.o(14812);
       return;
@@ -90,7 +90,7 @@ public class b
     localBundle.putInt("EVT_ID", paramInt);
     localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
     localBundle.putCharSequence("EVT_MSG", paramString);
-    locala.onNotifyEvent(paramInt, localBundle);
+    localb.onNotifyEvent(paramInt, localBundle);
     AppMethodBeat.o(14812);
   }
   
@@ -102,8 +102,8 @@ public class b
       AppMethodBeat.o(14813);
       return;
     }
-    com.tencent.liteav.basic.c.a locala = (com.tencent.liteav.basic.c.a)this.c.get();
-    if (locala == null)
+    com.tencent.liteav.basic.b.b localb = (com.tencent.liteav.basic.b.b)this.c.get();
+    if (localb == null)
     {
       AppMethodBeat.o(14813);
       return;
@@ -113,7 +113,7 @@ public class b
     localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
     localBundle.putCharSequence("EVT_MSG", paramString);
     localBundle.putInt("EVT_PARAM1", paramInt2);
-    locala.onNotifyEvent(paramInt1, localBundle);
+    localb.onNotifyEvent(paramInt1, localBundle);
     AppMethodBeat.o(14813);
   }
   
@@ -141,20 +141,20 @@ public class b
     return true;
   }
   
-  private void e()
+  private void f()
   {
-    AppMethodBeat.i(14810);
+    AppMethodBeat.i(14811);
     if (this.h == null) {
       this.h = new a(this);
     }
     this.g = new Timer();
     this.g.schedule(this.h, 1000L, 1000L);
-    AppMethodBeat.o(14810);
+    AppMethodBeat.o(14811);
   }
   
-  private void f()
+  private void g()
   {
-    AppMethodBeat.i(14811);
+    AppMethodBeat.i(14814);
     if (this.g != null)
     {
       this.g.cancel();
@@ -163,18 +163,18 @@ public class b
     if (this.h != null) {
       this.h = null;
     }
-    AppMethodBeat.o(14811);
+    AppMethodBeat.o(14814);
   }
   
-  private void g()
+  private void h()
   {
-    AppMethodBeat.i(14814);
+    AppMethodBeat.i(221377);
     a(new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(14821);
-        b.a(b.this, 1107, "软编切硬编");
+        b.a(b.this, 1107, "Switches from software encoding to hardware encoding");
         if (b.d(b.this) != null)
         {
           b.d(b.this).setListener(null);
@@ -195,7 +195,7 @@ public class b
       }
     });
     TXCLog.w("TXCVideoEncoder", "switchSWToHW");
-    AppMethodBeat.o(14814);
+    AppMethodBeat.o(221377);
   }
   
   public int a(TXSVideoEncoderParam paramTXSVideoEncoderParam)
@@ -205,17 +205,17 @@ public class b
     int i1;
     if (paramTXSVideoEncoderParam.enableBlackList)
     {
-      i1 = com.tencent.liteav.basic.e.b.a().c();
+      i1 = com.tencent.liteav.basic.d.c.a().d();
       if ((this.e != 1) || (i1 == 0)) {
-        break label187;
+        break label188;
       }
       this.a = new a();
       this.f = 1;
-      a(1008, "启动硬编", 1);
-      label63:
+      a(1008, "Enables hardware encoding", 1);
+      label64:
       setStatusValue(4007, Long.valueOf(this.f));
       if (this.a == null) {
-        break label335;
+        break label337;
       }
       if (this.b != null) {
         this.a.setListener(this.b);
@@ -226,13 +226,13 @@ public class b
       this.a.setID(getID());
       i1 = this.a.start(paramTXSVideoEncoderParam);
       if (i1 == 0) {
-        break label285;
+        break label287;
       }
       if (this.f != 1) {
-        break label278;
+        break label280;
       }
     }
-    label278:
+    label280:
     for (paramTXSVideoEncoderParam = "hw";; paramTXSVideoEncoderParam = "sw")
     {
       TXCLog.i(u, "start video encode ".concat(String.valueOf(paramTXSVideoEncoderParam)));
@@ -240,34 +240,34 @@ public class b
       return i1;
       i1 = 2;
       break;
-      label187:
+      label188:
       if ((this.e == 3) && (paramTXSVideoEncoderParam.width == 720) && (paramTXSVideoEncoderParam.height == 1280) && (i1 != 0))
       {
         this.a = new a();
         this.f = 1;
-        a(1008, "启动硬编", 1);
-        break label63;
+        a(1008, "Enables hardware encoding", 1);
+        break label64;
       }
       this.a = new TXCSWVideoEncoder();
       this.f = 2;
-      a(1008, "启动软编", 2);
-      break label63;
+      a(1008, "Enables software encoding", 2);
+      break label64;
     }
     for (;;)
     {
-      label285:
+      label287:
       if (this.e == 3)
       {
         this.k = 0.0F;
         this.l = 0.0F;
         this.m = 0.0F;
         this.n = 0;
-        this.o = com.tencent.liteav.basic.e.b.a().f();
-        e();
+        this.o = com.tencent.liteav.basic.d.c.a().g();
+        f();
       }
       AppMethodBeat.o(14791);
       return i1;
-      label335:
+      label337:
       i1 = 10000002;
     }
   }
@@ -279,10 +279,10 @@ public class b
     while (a(this.i)) {}
     if (this.a != null)
     {
-      setStatusValue(4002, Long.valueOf(c()));
-      setStatusValue(4001, this.j.streamType, Double.valueOf(b()));
+      setStatusValue(4002, Long.valueOf(d()));
+      setStatusValue(4001, this.j.streamType, Double.valueOf(c()));
       if (this.f == 1) {
-        setStatusValue(8002, this.j.streamType, Integer.valueOf(d()));
+        setStatusValue(8002, this.j.streamType, Integer.valueOf(e()));
       }
       l1 = this.a.pushVideoFrame(paramInt1, paramInt2, paramInt3, paramLong);
     }
@@ -355,7 +355,7 @@ public class b
           public void run()
           {
             AppMethodBeat.i(14899);
-            b.a(b.this, com.tencent.liteav.basic.d.b.a(null, null, null, paramInt1, paramInt2));
+            b.a(b.this, com.tencent.liteav.basic.c.b.a(null, null, null, paramInt1, paramInt2));
             boolean[] arrayOfBoolean = this.c;
             if (b.a(b.this) != null) {}
             for (int i = 1;; i = 0)
@@ -391,7 +391,7 @@ public class b
     AppMethodBeat.i(14797);
     if (this.q != null)
     {
-      final com.tencent.liteav.basic.d.b localb = this.p;
+      final com.tencent.liteav.basic.c.b localb = this.p;
       this.q.b(new Runnable()
       {
         public void run()
@@ -423,7 +423,7 @@ public class b
         this.l = 0.0F;
         this.m = 0.0F;
         this.n = 0;
-        f();
+        g();
       }
       this.b = null;
       this.d = 0;
@@ -445,11 +445,11 @@ public class b
     AppMethodBeat.o(14798);
   }
   
-  public void a(com.tencent.liteav.basic.c.a parama)
+  public void a(com.tencent.liteav.basic.b.b paramb)
   {
-    AppMethodBeat.i(14801);
-    this.c = new WeakReference(parama);
-    AppMethodBeat.o(14801);
+    AppMethodBeat.i(221373);
+    this.c = new WeakReference(paramb);
+    AppMethodBeat.o(221373);
   }
   
   public void a(d paramd)
@@ -481,15 +481,22 @@ public class b
     }
   }
   
-  public double b()
+  public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(14807);
-    double d1 = 0.0D;
+    AppMethodBeat.i(221371);
     if (this.a != null) {
-      d1 = this.a.getRealFPS();
+      this.a.setXMirror(paramBoolean);
     }
-    AppMethodBeat.o(14807);
-    return d1;
+    AppMethodBeat.o(221371);
+  }
+  
+  public void b()
+  {
+    AppMethodBeat.i(221372);
+    if (this.a != null) {
+      this.a.restartIDR();
+    }
+    AppMethodBeat.o(221372);
   }
   
   public boolean b(int paramInt)
@@ -519,15 +526,15 @@ public class b
     return false;
   }
   
-  public long c()
+  public double c()
   {
-    AppMethodBeat.i(14808);
-    long l1 = 0L;
+    AppMethodBeat.i(221374);
+    double d1 = 0.0D;
     if (this.a != null) {
-      l1 = this.a.getRealBitrate();
+      d1 = this.a.getRealFPS();
     }
-    AppMethodBeat.o(14808);
-    return l1;
+    AppMethodBeat.o(221374);
+    return d1;
   }
   
   public void c(int paramInt)
@@ -548,15 +555,15 @@ public class b
     AppMethodBeat.o(14803);
   }
   
-  public int d()
+  public long d()
   {
-    AppMethodBeat.i(14809);
-    int i1 = 0;
+    AppMethodBeat.i(221375);
+    long l1 = 0L;
     if (this.a != null) {
-      i1 = this.a.getEncodeCost();
+      l1 = this.a.getRealBitrate();
     }
-    AppMethodBeat.o(14809);
-    return i1;
+    AppMethodBeat.o(221375);
+    return l1;
   }
   
   public boolean d(int paramInt)
@@ -570,6 +577,17 @@ public class b
     }
     AppMethodBeat.o(14805);
     return false;
+  }
+  
+  public int e()
+  {
+    AppMethodBeat.i(221376);
+    int i1 = 0;
+    if (this.a != null) {
+      i1 = this.a.getEncodeCost();
+    }
+    AppMethodBeat.o(221376);
+    return i1;
   }
   
   public void e(final int paramInt)
@@ -633,13 +651,13 @@ public class b
         b.a(localb, b.l(localb) + arrayOfInt[0] / 10);
         float f = b.m(localb);
         b.b(localb, arrayOfInt[1] / 10 + f);
-        b.c(localb, (float)(b.n(localb) + localb.b() * 100.0D / b.h(localb).fps));
+        b.c(localb, (float)(b.n(localb) + localb.c() * 100.0D / b.h(localb).fps));
         AppMethodBeat.o(14824);
         return;
       }
-      if ((com.tencent.liteav.basic.e.b.a().a(b.l(localb) / b.j(localb), b.m(localb) / b.j(localb), b.n(localb) / b.j(localb))) && (com.tencent.liteav.basic.e.b.a().c() != 0))
+      if ((com.tencent.liteav.basic.d.c.a().a(b.l(localb) / b.j(localb), b.m(localb) / b.j(localb), b.n(localb) / b.j(localb))) && (com.tencent.liteav.basic.d.c.a().d() != 0))
       {
-        Monitor.a(2, "VideoEncoder: 性能不足，软编切硬编 [appCPU:" + b.l(localb) + "][sysCPU:" + b.m(localb) + "][fps:" + b.n(localb) + "][checkCount:" + b.j(localb) + "]", "", 0);
+        Monitor.a(2, "VideoEncoder: Insufficient performance, switching software encoding to hardware encoding [appCPU:" + b.l(localb) + "][sysCPU:" + b.m(localb) + "][fps:" + b.n(localb) + "][checkCount:" + b.j(localb) + "]", "", 0);
         b.o(localb);
       }
       b.p(localb);
@@ -649,7 +667,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.b
  * JD-Core Version:    0.7.0.1
  */

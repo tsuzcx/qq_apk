@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class jx
-  extends b
+  extends IEvent
 {
-  public a dxV;
+  public a dOQ;
   
   public jx()
   {
@@ -16,23 +15,21 @@ public final class jx
   
   private jx(byte paramByte)
   {
-    AppMethodBeat.i(19813);
-    this.dxV = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(155369);
+    this.dOQ = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19813);
+    AppMethodBeat.o(155369);
   }
   
   public static final class a
   {
-    public Context context;
-    public String[] dkL;
-    public String[] selectionArgs;
+    public int scene = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.jx
  * JD-Core Version:    0.7.0.1
  */

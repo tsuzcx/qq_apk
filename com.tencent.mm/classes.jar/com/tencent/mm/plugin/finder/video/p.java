@@ -1,49 +1,28 @@
 package com.tencent.mm.plugin.finder.video;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.bvz;
-import d.l;
+import android.graphics.Bitmap;
+import android.view.View;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "", "downloadUrl", "", "path", "mediaId", "localFinderMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/loader/FinderVideo;Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "getDownloadUrl", "()Ljava/lang/String;", "getFinderItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getLocalFinderMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaId", "getPath", "getVideo", "()Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "toString", "plugin-finder_release"})
-public final class p
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
+public abstract interface p
 {
-  final String downloadUrl;
-  public final String mediaId;
-  public final String path;
-  public final FinderItem rSd;
-  public final m rYW;
-  final bvz tbA;
+  public abstract void a(a<x> parama1, a<x> parama2, b<? super Long, x> paramb);
   
-  public p(String paramString1, String paramString2, String paramString3, bvz parambvz, m paramm, FinderItem paramFinderItem)
-  {
-    AppMethodBeat.i(205507);
-    this.downloadUrl = paramString1;
-    this.path = paramString2;
-    this.mediaId = paramString3;
-    this.tbA = parambvz;
-    this.rYW = paramm;
-    this.rSd = paramFinderItem;
-    AppMethodBeat.o(205507);
-  }
+  public abstract void destroy();
   
-  public final String toString()
-  {
-    AppMethodBeat.i(205506);
-    Object localObject = new StringBuilder("downloadUrl='").append(this.downloadUrl).append("', path='").append(this.path).append("', mediaId='").append(this.mediaId).append("' localFinderMedia is null? ");
-    if (this.tbA == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localObject = bool + ' ';
-      AppMethodBeat.o(205506);
-      return localObject;
-    }
-  }
+  public abstract Bitmap getBitmap();
+  
+  public abstract View getView();
+  
+  public abstract void seekTo(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.p
  * JD-Core Version:    0.7.0.1
  */

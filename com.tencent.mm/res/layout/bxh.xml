@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="@drawable/c_g" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/i3w" layout="@layout/bxi" />
-    <include android:id="@id/i3y" layout="@layout/bxi" />
-    <include android:id="@id/i42" layout="@layout/bxi" />
-    <include android:id="@id/i41" layout="@layout/bxi" />
+    <ListView android:id="@id/i12" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/np" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/i0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hal" />
+    </FrameLayout>
 </LinearLayout>

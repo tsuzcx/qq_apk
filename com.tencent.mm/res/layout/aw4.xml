@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/xo" android:paddingTop="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMAutoHeightViewPager android:id="@id/ea6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.ui.base.MMPageControlView android:gravity="center" android:id="@id/b4n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" />
+    <ScrollView style="@style/om">
+        <RelativeLayout android:id="@id/bdl" style="@style/lz">
+            <ImageView android:id="@id/dzm" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:layout_marginRight="@dimen/hs" android:src="@drawable/bca" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@string/a4u" />
+            <TextView android:id="@id/dzr" android:layout_toRightOf="@id/dzm" style="@style/mi" />
+            <TextView android:id="@id/dzt" android:layout_toRightOf="@id/dzm" android:layout_below="@id/dzr" style="@style/mk" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/l4" android:gravity="center" android:id="@id/dzs" android:background="@drawable/c_p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_below="@id/dzm" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:minHeight="@dimen/im" android:layout_below="@id/dzs">
+                <Button android:id="@id/dzp" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/e3y" android:layout_weight="1.0" style="@style/ou" />
+                <View android:id="@id/dzq" android:layout_width="@dimen/k5" android:layout_height="fill_parent" />
+                <Button android:id="@id/dzu" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/e41" android:layout_weight="1.0" style="@style/p1" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

@@ -6,9 +6,9 @@ import java.util.LinkedList;
 public class b
 {
   public int channels;
-  public int dcY;
-  public byte[] dcZ;
-  public volatile LinkedList<String> dda;
+  public int dtP;
+  public byte[] dtQ;
+  public volatile LinkedList<String> dtR;
   public int sampleRate;
   
   public b()
@@ -16,14 +16,14 @@ public class b
     AppMethodBeat.i(136708);
     this.sampleRate = 0;
     this.channels = 0;
-    this.dcY = 2;
-    this.dda = new LinkedList();
+    this.dtP = 2;
+    this.dtR = new LinkedList();
     AppMethodBeat.o(136708);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.a.b
  * JD-Core Version:    0.7.0.1
  */

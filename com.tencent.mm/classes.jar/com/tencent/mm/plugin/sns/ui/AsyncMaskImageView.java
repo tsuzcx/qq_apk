@@ -8,17 +8,15 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import junit.framework.Assert;
 
 public class AsyncMaskImageView
   extends ImageView
 {
-  aq AfN;
-  Runnable AfO;
+  MMHandler Eok;
+  Runnable Eol;
   private int a;
   private int b;
   private boolean enable;
@@ -34,8 +32,8 @@ public class AsyncMaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.AfN = new aq();
-    this.AfO = new Runnable()
+    this.Eok = new MMHandler();
+    this.Eol = new Runnable()
     {
       public final void run()
       {
@@ -50,37 +48,27 @@ public class AsyncMaskImageView
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(97754);
-        Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        ((b)localObject).bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahF());
         if (!AsyncMaskImageView.a(AsyncMaskImageView.this))
         {
-          a.a(false, this, "com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(97754);
           return false;
         }
-        localObject = AsyncMaskImageView.this;
+        AsyncMaskImageView localAsyncMaskImageView = AsyncMaskImageView.this;
         switch (paramAnonymousMotionEvent.getAction())
         {
-        case 2: 
-        default: 
-          if ((((AsyncMaskImageView)localObject).isClickable()) || (((AsyncMaskImageView)localObject).isLongClickable())) {
-            break;
-          }
         }
-        for (boolean bool = true;; bool = false)
+        while ((!localAsyncMaskImageView.isClickable()) && (!localAsyncMaskImageView.isLongClickable()))
         {
-          a.a(bool, this, "com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(97754);
-          return bool;
+          return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          ((AsyncMaskImageView)localObject).AfN.removeCallbacks(((AsyncMaskImageView)localObject).AfO);
-          break;
-          ((AsyncMaskImageView)localObject).AfN.post(((AsyncMaskImageView)localObject).AfO);
-          break;
+          localAsyncMaskImageView.Eok.removeCallbacks(localAsyncMaskImageView.Eol);
+          continue;
+          localAsyncMaskImageView.Eok.post(localAsyncMaskImageView.Eol);
         }
+        AppMethodBeat.o(97754);
+        return false;
       }
     });
     AppMethodBeat.o(97755);
@@ -90,7 +78,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97758);
     super.onAttachedToWindow();
-    ae.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    Log.d("MicroMsg.MaskImageView", "onAttachedToWindow");
     AppMethodBeat.o(97758);
   }
   
@@ -98,7 +86,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97759);
     super.onDetachedFromWindow();
-    ae.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    Log.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
     AppMethodBeat.o(97759);
   }
   
@@ -127,7 +115,7 @@ public class AsyncMaskImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncMaskImageView
  * JD-Core Version:    0.7.0.1
  */

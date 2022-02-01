@@ -6,90 +6,90 @@ import android.view.View.OnClickListener;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.pluginsdk.model.app.k.a;
 import com.tencent.mm.pluginsdk.ui.chat.l;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.ab;
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.ac;
+import com.tencent.mm.ui.chatting.d.af;
 import com.tencent.mm.ui.chatting.h.d.a;
 import com.tencent.mm.ui.chatting.t.f;
 import com.tencent.mm.ui.chatting.t.g;
 import java.util.Set;
 
 public abstract interface k
-  extends k.a, ad
+  extends k.a, af
 {
-  public abstract boolean Eq(long paramLong);
+  public abstract boolean Nu(long paramLong);
   
-  public abstract View Er(long paramLong);
-  
-  public abstract void L(long paramLong, boolean paramBoolean);
+  public abstract void Q(long paramLong, boolean paramBoolean);
   
   public abstract void a(int paramInt, d.a parama);
   
-  public abstract void a(long paramLong, bv parambv, boolean paramBoolean);
+  public abstract void a(long paramLong, ca paramca, boolean paramBoolean);
   
   public abstract void a(long paramLong, boolean paramBoolean, d.a parama);
   
-  public abstract bv adI(int paramInt);
+  public abstract ca amt(int paramInt);
   
-  public abstract void adJ(int paramInt);
+  public abstract void amu(int paramInt);
   
-  public abstract void adK(int paramInt);
+  public abstract void amv(int paramInt);
   
-  public abstract boolean bD(bv parambv);
+  public abstract boolean bT(ca paramca);
   
-  public abstract void cxI();
+  public abstract void cVM();
   
-  public abstract int dGd();
+  public abstract int cZm();
   
-  public abstract void e(View.OnClickListener paramOnClickListener);
+  public abstract int eGR();
   
-  public abstract long fGA();
+  public abstract t.a gOA();
   
-  public abstract com.tencent.mm.av.a.a.c fGB();
+  public abstract t.f gOB();
   
-  public abstract SparseArray<bv> fGk();
+  public abstract t.g gOC();
   
-  public abstract Set<Long> fGm();
+  public abstract ac gOD();
   
-  public abstract void fGn();
+  public abstract l gOE();
   
-  public abstract void fGo();
+  public abstract com.tencent.mm.ui.chatting.c gOF();
   
-  public abstract void fGp();
+  public abstract long gOG();
   
-  public abstract void fGq();
+  public abstract com.tencent.mm.av.a.a.c gOH();
   
-  public abstract void fGr();
+  public abstract SparseArray<ca> gOq();
   
-  public abstract void fGs();
+  public abstract Set<Long> gOs();
   
-  public abstract void fGt();
+  public abstract void gOt();
   
-  public abstract t.a fGu();
+  public abstract void gOu();
   
-  public abstract t.f fGv();
+  public abstract void gOv();
   
-  public abstract t.g fGw();
+  public abstract void gOw();
   
-  public abstract ab fGx();
+  public abstract void gOx();
   
-  public abstract l fGy();
+  public abstract void gOy();
   
-  public abstract com.tencent.mm.ui.chatting.c fGz();
-  
-  public abstract int ftv();
+  public abstract void gOz();
   
   public abstract int getCount();
   
+  public abstract void i(View.OnClickListener paramOnClickListener);
+  
   public abstract boolean isInEditMode();
   
-  public abstract void qT(boolean paramBoolean);
+  public abstract void s(long paramLong, int paramInt1, int paramInt2);
   
-  public abstract void r(long paramLong, int paramInt1, int paramInt2);
+  public abstract void uo(boolean paramBoolean);
+  
+  public abstract View zh(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.k
  * JD-Core Version:    0.7.0.1
  */

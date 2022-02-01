@@ -7,8 +7,8 @@ import java.lang.ref.WeakReference;
 public final class c
 {
   public int height;
-  public WeakReference<ImageView> hhI;
-  public final int hhK;
+  public WeakReference<ImageView> iaF;
+  public final int iaH;
   private String url;
   public int width;
   
@@ -18,24 +18,24 @@ public final class c
     this.width = 0;
     this.height = 0;
     this.url = "";
-    this.hhI = new WeakReference(paramImageView);
+    this.iaF = new WeakReference(paramImageView);
     this.url = paramString;
     if (paramImageView != null)
     {
-      this.hhK = paramImageView.hashCode();
+      this.iaH = paramImageView.hashCode();
       AppMethodBeat.o(130375);
       return;
     }
-    this.hhK = hashCode();
+    this.iaH = hashCode();
     AppMethodBeat.o(130375);
   }
   
   public final ImageView getImageView()
   {
     AppMethodBeat.i(130376);
-    if (this.hhI != null)
+    if (this.iaF != null)
     {
-      ImageView localImageView = (ImageView)this.hhI.get();
+      ImageView localImageView = (ImageView)this.iaF.get();
       if (localImageView != null)
       {
         AppMethodBeat.o(130376);
@@ -48,7 +48,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.av.a.c
  * JD-Core Version:    0.7.0.1
  */

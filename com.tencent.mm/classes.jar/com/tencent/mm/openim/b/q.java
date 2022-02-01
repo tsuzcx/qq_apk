@@ -1,51 +1,51 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.dvm;
-import com.tencent.mm.protocal.protobuf.dvn;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.epo;
+import com.tencent.mm.protocal.protobuf.epp;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class q
-  extends n
-  implements k
+  extends com.tencent.mm.ak.q
+  implements m
 {
-  private f callback;
-  public String iKC;
-  public String iKD;
-  public String iKt;
-  private final b rr;
+  private i callback;
+  public String jGZ;
+  public String jHi;
+  public String jHj;
+  private final d rr;
   
   public q(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(218746);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dvm();
-    ((b.a)localObject).hQG = new dvn();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyopenimcontact";
-    ((b.a)localObject).funcId = 853;
-    this.rr = ((b.a)localObject).aDS();
-    this.iKt = paramString1;
-    this.iKC = paramString2;
-    localObject = (dvm)this.rr.hQD.hQJ;
-    ((dvm)localObject).iKt = paramString1;
-    ((dvm)localObject).iKC = paramString2;
-    ((dvm)localObject).FNV = paramInt;
-    ae.i("MicroMsg.FreeWifi.NetSceneVerifyOpenIMContact", "tp_username: %s, verify_ticket:%s", new Object[] { paramString1, paramString2 });
-    AppMethodBeat.o(218746);
+    AppMethodBeat.i(223646);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new epo();
+    ((d.a)localObject).iLO = new epp();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyopenimcontact";
+    ((d.a)localObject).funcId = 853;
+    this.rr = ((d.a)localObject).aXF();
+    this.jGZ = paramString1;
+    this.jHi = paramString2;
+    localObject = (epo)this.rr.iLK.iLR;
+    ((epo)localObject).jGZ = paramString1;
+    ((epo)localObject).jHi = paramString2;
+    ((epo)localObject).KHA = paramInt;
+    Log.i("MicroMsg.FreeWifi.NetSceneVerifyOpenIMContact", "tp_username: %s, verify_ticket:%s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.o(223646);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151227);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151227);
     return i;
   }
@@ -55,10 +55,10 @@ public final class q
     return 853;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151226);
-    ae.i("MicroMsg.FreeWifi.NetSceneVerifyOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.iKt });
+    Log.i("MicroMsg.FreeWifi.NetSceneVerifyOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.jGZ });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f40" android:background="@drawable/amv" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/ci" android:paddingRight="@dimen/c5" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:layout_gravity="center_vertical" android:id="@id/dxd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

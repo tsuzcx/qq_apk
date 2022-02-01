@@ -6,48 +6,48 @@ import oicq.wlogin_sdk.tools.util;
 public final class ai
   extends a
 {
-  public int OoQ = 0;
-  public int OoR = 0;
-  public int OoS = 0;
+  public int UdP = 0;
+  public int UdQ = 0;
+  public int UdR = 0;
   
   public ai()
   {
-    this.Ony = 326;
+    this.Ucx = 326;
   }
   
-  public final Boolean gCy()
+  public final Boolean hPC()
   {
     AppMethodBeat.i(88111);
-    if (this.Ooi < 12)
+    if (this.Udh < 12)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    int i = util.am(this.Ons, this.Ooh + 4);
-    if (this.Ooi < i + 12)
+    int i = util.an(this.Ucr, this.Udg + 4);
+    if (this.Udh < i + 12)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.OoQ = i;
-    i = util.am(this.Ons, this.Ooh + 6 + this.OoQ);
-    if (this.Ooi < this.OoQ + 12 + i)
+    this.UdP = i;
+    i = util.an(this.Ucr, this.Udg + 6 + this.UdP);
+    if (this.Udh < this.UdP + 12 + i)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.OoR = i;
-    i = util.am(this.Ons, this.Ooh + 10 + this.OoQ + this.OoR);
-    if (this.Ooi < this.OoQ + 12 + this.OoR + i)
+    this.UdQ = i;
+    i = util.an(this.Ucr, this.Udg + 10 + this.UdP + this.UdQ);
+    if (this.Udh < this.UdP + 12 + this.UdQ + i)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.OoS = i;
+    this.UdR = i;
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88111);
     return localBoolean;

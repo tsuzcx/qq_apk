@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/a7o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="79.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e2t" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/big_select_tick" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/c8" android:layout_alignParentEnd="true" app:iconColor="@color/t7" />
-    <View android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/e2y" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/dqu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="20.0dip" android:textColor="@color/a2x" android:id="@id/dqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/FG_1" />
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:id="@id/dqt" android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="20.0dip" />
+</LinearLayout>

@@ -5,39 +5,39 @@ import com.tencent.luggage.bridge.a.a.b;
 import com.tencent.luggage.bridge.a.a.c;
 import com.tencent.luggage.bridge.impl.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.g;
 
 public class a
   implements a.b
 {
-  final com.tencent.mm.plugin.appbrand.f.a chd;
+  final com.tencent.mm.plugin.appbrand.f.a csX;
   
   public a()
   {
     AppMethodBeat.i(140359);
-    this.chd = new b();
+    this.csX = new b();
     AppMethodBeat.o(140359);
   }
   
   public void a(a.a parama)
   {
     AppMethodBeat.i(140361);
-    parama.a(com.tencent.mm.plugin.appbrand.f.a.class, this.chd);
+    parama.a(com.tencent.mm.plugin.appbrand.f.a.class, this.csX);
     AppMethodBeat.o(140361);
   }
   
   public void a(a.c paramc)
   {
     AppMethodBeat.i(140360);
-    e.setContext(ak.getContext());
-    paramc.a(com.tencent.mm.plugin.appbrand.f.a.class, this.chd);
+    g.setContext(MMApplicationContext.getContext());
+    paramc.a(com.tencent.mm.plugin.appbrand.f.a.class, this.csX);
     AppMethodBeat.o(140360);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,38 +8,38 @@ import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 public class c
   extends a<l>
 {
-  private final long oYJ;
+  private final long qnI;
   
   public c(g paramg, long paramLong)
   {
     super(paramg);
-    this.oYJ = paramLong;
+    this.qnI = paramLong;
   }
   
   public void a(l paraml, int paramInt, a parama)
   {
     AppMethodBeat.i(162325);
-    if ((paramInt == this.oYF.getItemCount() - 1) || (com.tencent.mm.plugin.choosemsgfile.b.d.c.tY(this.oYF.Be(paramInt + 1).getTimeStamp()) != com.tencent.mm.plugin.choosemsgfile.b.d.c.tY(this.oYJ)))
+    if ((paramInt == this.qnE.getItemCount() - 1) || (com.tencent.mm.plugin.choosemsgfile.b.d.c.Cd(this.qnE.EM(paramInt + 1).getTimeStamp()) != com.tencent.mm.plugin.choosemsgfile.b.d.c.Cd(this.qnI)))
     {
-      paraml.iXP.setVisibility(8);
+      paraml.jUO.setVisibility(8);
       AppMethodBeat.o(162325);
       return;
     }
-    paraml.iXP.setVisibility(0);
-    paraml.iXP.setText(com.tencent.mm.plugin.choosemsgfile.b.d.c.tX(this.oYJ));
-    if (this.oYF.caN())
+    paraml.jUO.setVisibility(0);
+    paraml.jUO.setText(com.tencent.mm.plugin.choosemsgfile.b.d.c.Cc(this.qnI));
+    if (this.qnE.cyD())
     {
-      paraml.oZb.setVisibility(0);
+      paraml.qoa.setVisibility(0);
       AppMethodBeat.o(162325);
       return;
     }
-    paraml.oZb.setVisibility(8);
+    paraml.qoa.setVisibility(8);
     AppMethodBeat.o(162325);
   }
   
   public final long getTimeStamp()
   {
-    return this.oYJ;
+    return this.qnI;
   }
   
   public final int getType()
@@ -49,7 +49,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.c
  * JD-Core Version:    0.7.0.1
  */

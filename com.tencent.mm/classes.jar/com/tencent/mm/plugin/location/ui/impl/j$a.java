@@ -5,37 +5,46 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.lang.ref.WeakReference;
 
 final class j$a
   extends AsyncTask<String, Integer, String>
 {
-  private final WeakReference<Context> vul;
-  private final WeakReference<View> vum;
+  private static final String yOb;
+  private final WeakReference<Context> yNZ;
+  private final WeakReference<View> yOa;
+  
+  static
+  {
+    AppMethodBeat.i(201732);
+    yOb = "https://" + WeChatHosts.domainString(2131761701) + "/tencentMapTouch/app/download/wx_android_download_ico.png";
+    AppMethodBeat.o(201732);
+  }
   
   j$a(Context paramContext, View paramView)
   {
     AppMethodBeat.i(56163);
-    this.vul = new WeakReference(paramContext);
-    this.vum = new WeakReference(paramView);
+    this.yNZ = new WeakReference(paramContext);
+    this.yOa = new WeakReference(paramView);
     AppMethodBeat.o(56163);
   }
   
   /* Error */
-  private static String apS(String paramString)
+  private static String aDl(String paramString)
   {
     // Byte code:
-    //   0: ldc 47
-    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 77
+    //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aconst_null
     //   6: astore_2
     //   7: aconst_null
     //   8: astore_3
-    //   9: new 49	java/net/URL
+    //   9: new 79	java/net/URL
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 52	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   17: invokevirtual 56	java/net/URL:openStream	()Ljava/io/InputStream;
+    //   14: invokespecial 80	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   17: invokevirtual 84	java/net/URL:openStream	()Ljava/io/InputStream;
     //   20: astore_0
     //   21: aload_0
     //   22: astore_3
@@ -50,53 +59,53 @@ final class j$a
     //   35: astore_2
     //   36: aload_0
     //   37: aload 4
-    //   39: invokevirtual 62	java/io/InputStream:read	([B)I
+    //   39: invokevirtual 90	java/io/InputStream:read	([B)I
     //   42: istore_1
     //   43: aload_0
     //   44: astore_3
     //   45: aload_0
     //   46: astore_2
-    //   47: new 64	java/lang/String
+    //   47: new 92	java/lang/String
     //   50: dup
     //   51: aload 4
-    //   53: invokespecial 67	java/lang/String:<init>	([B)V
+    //   53: invokespecial 95	java/lang/String:<init>	([B)V
     //   56: astore 4
     //   58: aload_0
     //   59: astore_2
-    //   60: ldc 69
-    //   62: ldc 71
+    //   60: ldc 97
+    //   62: ldc 99
     //   64: iload_1
-    //   65: invokestatic 75	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   68: invokevirtual 78	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   71: invokestatic 84	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   65: invokestatic 102	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   68: invokevirtual 105	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   71: invokestatic 111	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   74: aload 4
     //   76: astore_2
     //   77: aload_0
     //   78: ifnull +10 -> 88
     //   81: aload_0
-    //   82: invokevirtual 87	java/io/InputStream:close	()V
+    //   82: invokevirtual 114	java/io/InputStream:close	()V
     //   85: aload 4
     //   87: astore_2
-    //   88: ldc 47
-    //   90: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   88: ldc 77
+    //   90: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: aload_2
     //   94: areturn
     //   95: astore_0
-    //   96: ldc 69
-    //   98: ldc 89
+    //   96: ldc 97
+    //   98: ldc 116
     //   100: iconst_1
-    //   101: anewarray 91	java/lang/Object
+    //   101: anewarray 118	java/lang/Object
     //   104: dup
     //   105: iconst_0
     //   106: aload_0
-    //   107: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   107: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   110: aastore
-    //   111: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   111: invokestatic 125	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   114: aload 4
     //   116: astore_2
     //   117: goto -29 -> 88
     //   120: astore 4
-    //   122: ldc 101
+    //   122: ldc 127
     //   124: astore_2
     //   125: aload_3
     //   126: astore_0
@@ -104,36 +113,36 @@ final class j$a
     //   128: astore_3
     //   129: aload_0
     //   130: astore_2
-    //   131: ldc 69
-    //   133: ldc 103
+    //   131: ldc 97
+    //   133: ldc 129
     //   135: iconst_1
-    //   136: anewarray 91	java/lang/Object
+    //   136: anewarray 118	java/lang/Object
     //   139: dup
     //   140: iconst_0
     //   141: aload 4
-    //   143: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   143: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   146: aastore
-    //   147: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: invokestatic 125	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   150: aload_3
     //   151: astore_2
     //   152: aload_0
     //   153: ifnull -65 -> 88
     //   156: aload_0
-    //   157: invokevirtual 87	java/io/InputStream:close	()V
+    //   157: invokevirtual 114	java/io/InputStream:close	()V
     //   160: aload_3
     //   161: astore_2
     //   162: goto -74 -> 88
     //   165: astore_0
-    //   166: ldc 69
-    //   168: ldc 89
+    //   166: ldc 97
+    //   168: ldc 116
     //   170: iconst_1
-    //   171: anewarray 91	java/lang/Object
+    //   171: anewarray 118	java/lang/Object
     //   174: dup
     //   175: iconst_0
     //   176: aload_0
-    //   177: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   177: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   180: aastore
-    //   181: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   181: invokestatic 125	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   184: aload_3
     //   185: astore_2
     //   186: goto -98 -> 88
@@ -141,22 +150,22 @@ final class j$a
     //   190: aload_2
     //   191: ifnull +7 -> 198
     //   194: aload_2
-    //   195: invokevirtual 87	java/io/InputStream:close	()V
-    //   198: ldc 47
-    //   200: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   195: invokevirtual 114	java/io/InputStream:close	()V
+    //   198: ldc 77
+    //   200: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   203: aload_0
     //   204: athrow
     //   205: astore_2
-    //   206: ldc 69
-    //   208: ldc 89
+    //   206: ldc 97
+    //   208: ldc 116
     //   210: iconst_1
-    //   211: anewarray 91	java/lang/Object
+    //   211: anewarray 118	java/lang/Object
     //   214: dup
     //   215: iconst_0
     //   216: aload_2
-    //   217: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   217: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   220: aastore
-    //   221: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   221: invokestatic 125	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   224: goto -26 -> 198
     //   227: astore_2
     //   228: aload 4
@@ -196,7 +205,7 @@ final class j$a
   protected final void onPreExecute()
   {
     AppMethodBeat.i(56164);
-    View localView = (View)this.vum.get();
+    View localView = (View)this.yOa.get();
     if (localView != null) {
       localView.setVisibility(0);
     }

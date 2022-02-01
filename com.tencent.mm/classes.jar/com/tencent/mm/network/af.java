@@ -1,183 +1,301 @@
 package com.tencent.mm.network;
 
-import android.os.Build.VERSION;
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class af
-  extends i.a
 {
-  private aw hPc;
-  private int iJp;
-  private long iJq;
-  private int iJr;
-  private final RemoteCallbackList<n> iJs;
+  private static boolean hasInit = false;
+  private static af jFH;
+  private static boolean jFP = false;
+  private static a jFQ = null;
+  private v glb;
+  private MMHandler handler;
+  private ag jFI;
+  private ah jFJ;
+  private Context jFK;
+  private b jFL;
+  private ae jFM;
+  private ad jFN;
+  private ab jFO;
   
-  public af()
+  public static void a(ab paramab)
   {
-    AppMethodBeat.i(132934);
-    this.iJp = 4;
-    this.iJr = 0;
-    this.iJs = new RemoteCallbackList();
-    this.hPc = new aw(new aw.a()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(132933);
-        int i = af.b(af.this).beginBroadcast();
-        ae.i("MicroMsg.NetworkEvent", "listeners ct : %d", new Object[] { Integer.valueOf(i) });
-        i -= 1;
-        for (;;)
-        {
-          if (i >= 0)
-          {
-            n localn = (n)af.b(af.this).getBroadcastItem(i);
-            try
-            {
-              localn.onNetworkChange(af.c(af.this));
-              i -= 1;
-            }
-            catch (RemoteException localRemoteException)
-            {
-              for (;;)
-              {
-                ae.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bu.o(localRemoteException) });
-              }
-            }
-          }
-        }
-        af.b(af.this).finishBroadcast();
-        AppMethodBeat.o(132933);
-        return false;
-      }
-    }, false);
-    AppMethodBeat.o(132934);
+    AppMethodBeat.i(132930);
+    bkc().jFO = paramab;
+    AppMethodBeat.o(132930);
   }
   
-  private boolean qJ(int paramInt)
+  public static void a(ad paramad)
   {
-    if (paramInt == this.iJp) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (3 != paramInt) {
-          break;
-        }
-      } while (this.iJp != 2);
-      this.iJp = paramInt;
-      return true;
-      if (2 != paramInt) {
-        break;
-      }
-    } while ((this.iJp == 0) || (this.iJp == 1));
-    this.iJr += 1;
-    if (this.iJr > 0)
-    {
-      this.iJp = 2;
-      return true;
-      if (4 == paramInt)
-      {
-        this.iJr = 0;
-        this.iJp = 4;
-        return true;
-      }
-      if ((Build.VERSION.SDK_INT >= 26) && (paramInt == -1))
-      {
-        this.iJp = 0;
-        return true;
-      }
+    AppMethodBeat.i(132927);
+    bkc().jFN = paramad;
+    AppMethodBeat.o(132927);
+  }
+  
+  public static void a(ae paramae)
+  {
+    AppMethodBeat.i(132925);
+    bkc().jFM = paramae;
+    AppMethodBeat.o(132925);
+  }
+  
+  public static void a(a parama)
+  {
+    jFQ = parama;
+  }
+  
+  public static void a(b paramb)
+  {
+    AppMethodBeat.i(132921);
+    bkc().jFL = paramb;
+    AppMethodBeat.o(132921);
+  }
+  
+  public static void a(ag paramag)
+  {
+    AppMethodBeat.i(132913);
+    bkc().jFI = paramag;
+    AppMethodBeat.o(132913);
+  }
+  
+  public static void a(ah paramah)
+  {
+    AppMethodBeat.i(132915);
+    bkc().jFJ = paramah;
+    AppMethodBeat.o(132915);
+  }
+  
+  public static void a(MMHandler paramMMHandler)
+  {
+    AppMethodBeat.i(132919);
+    bkc().handler = paramMMHandler;
+    AppMethodBeat.o(132919);
+  }
+  
+  private static af bkc()
+  {
+    AppMethodBeat.i(132907);
+    if (jFH == null) {
+      jFH = new af();
     }
-    this.iJp = paramInt;
-    return true;
+    af localaf = jFH;
+    AppMethodBeat.o(132907);
+    return localaf;
   }
   
-  public final int aPh()
+  private static SharedPreferences bkd()
   {
-    AppMethodBeat.i(132935);
-    if (0L > bu.rZ(this.iJq)) {}
-    for (int i = 5;; i = this.iJp)
+    AppMethodBeat.i(132908);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("notify_key_pref_no_account", g.aps());
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("notify_key_pref_no_account");
+    MultiProcessMMKV.transport2MMKV(localSharedPreferences, localMultiProcessMMKV);
+    AppMethodBeat.o(132908);
+    return localMultiProcessMMKV;
+  }
+  
+  public static SharedPreferences bke()
+  {
+    AppMethodBeat.i(132909);
+    Object localObject2 = bkd().getString("login_weixin_username", "");
+    Object localObject1 = localObject2;
+    if (Util.isNullOrNil((String)localObject2))
     {
-      ae.i("MicroMsg.NetworkEvent", "getNowStatus = %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(132935);
-      return i;
-    }
-  }
-  
-  public final void aPi()
-  {
-    AppMethodBeat.i(132938);
-    this.iJs.kill();
-    AppMethodBeat.o(132938);
-  }
-  
-  public final long aPj()
-  {
-    return this.iJq;
-  }
-  
-  public final boolean c(n paramn)
-  {
-    AppMethodBeat.i(132936);
-    try
-    {
-      this.iJs.register(paramn);
-      AppMethodBeat.o(132936);
-      return true;
-    }
-    catch (Exception paramn)
-    {
-      for (;;)
+      localObject2 = bf.iDu.aA("login_weixin_username", "");
+      localObject1 = localObject2;
+      if (!Util.isNullOrNil((String)localObject2))
       {
-        ae.e("MicroMsg.NetworkEvent", "addListener %s", new Object[] { paramn });
-        ae.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bu.o(paramn) });
+        bkd().edit().putString("login_weixin_username", (String)localObject2).commit();
+        localObject1 = localObject2;
       }
     }
+    localObject2 = localObject1;
+    if (localObject1 != null) {
+      localObject2 = ((String)localObject1).replace("[\\/\\\\]", "#").trim();
+    }
+    localObject1 = "notify_key_pref".concat(String.valueOf(localObject2));
+    localObject2 = MultiProcessMMKV.getMMKV((String)localObject1);
+    MultiProcessMMKV.transport2MMKV(MMApplicationContext.getContext().getSharedPreferences((String)localObject1, g.aps()), (MultiProcessMMKV)localObject2);
+    AppMethodBeat.o(132909);
+    return localObject2;
   }
   
-  public final boolean d(n paramn)
+  public static void bkf()
   {
-    boolean bool1 = false;
-    AppMethodBeat.i(132937);
-    try
+    AppMethodBeat.i(132910);
+    SharedPreferences localSharedPreferences;
+    int i;
+    if (!hasInit)
     {
-      boolean bool2 = this.iJs.unregister(paramn);
-      bool1 = bool2;
-    }
-    catch (Exception paramn)
-    {
-      for (;;)
+      localSharedPreferences = bke();
+      long l = localSharedPreferences.getLong("wakeup_alarm_last_tick", 0L);
+      i = localSharedPreferences.getInt("wakeup_alarm_last_cnt", 0);
+      if ((l == 0L) || (l > Util.nowMilliSecond()))
       {
-        ae.e("MicroMsg.NetworkEvent", "removeListener %s", new Object[] { paramn });
-        ae.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bu.o(paramn) });
+        Log.i("MicroMsg.MMPushCore", "dealWithOnCreate, invalid time, thisCnt:%d", new Object[] { Integer.valueOf(i) });
+        localSharedPreferences.edit().putLong("wakeup_alarm_last_tick", Util.nowMilliSecond()).commit();
+        localSharedPreferences.edit().putInt("wakeup_alarm_last_cnt", 1).commit();
+        AppMethodBeat.o(132910);
+        return;
       }
+      if (Util.milliSecondsToNow(l) <= 86400000L) {
+        break label216;
+      }
+      localSharedPreferences.edit().putInt("wakeup_alarm_launch_cnt", i).commit();
+      localSharedPreferences.edit().putLong("wakeup_alarm_last_tick", Util.nowMilliSecond()).commit();
+      localSharedPreferences.edit().putInt("wakeup_alarm_last_cnt", 1).commit();
+      Log.i("MicroMsg.MMPushCore", "dealWithOnCreate, statistics cycle expire, thisCnt:%d", new Object[] { Integer.valueOf(i) });
     }
-    AppMethodBeat.o(132937);
-    return bool1;
-  }
-  
-  public final void qK(int paramInt)
-  {
-    AppMethodBeat.i(132939);
-    ae.i("MicroMsg.NetworkEvent", "networkChange : %d", new Object[] { Integer.valueOf(paramInt) });
-    if (!qJ(paramInt))
+    for (;;)
     {
-      AppMethodBeat.o(132939);
+      hasInit = true;
+      AppMethodBeat.o(132910);
       return;
+      label216:
+      localSharedPreferences.edit().putInt("wakeup_alarm_last_cnt", i + 1).commit();
+      Log.i("MicroMsg.MMPushCore", "dealWithOnCreate, add up launch count to:%d", new Object[] { Integer.valueOf(i + 1) });
     }
-    if ((this.iJp != 0) && (this.iJp != 4) && (this.iJp != 6))
+  }
+  
+  public static boolean bkg()
+  {
+    AppMethodBeat.i(132911);
+    String str = bf.iDu.aA("login_user_name", "");
+    Object localObject = str;
+    if (str != null) {
+      localObject = str.replaceAll("[/\\\\]", "#").trim();
+    }
+    localObject = MMApplicationContext.getContext().getSharedPreferences("notify_key_pref".concat(String.valueOf(localObject)), g.aps());
+    int i = ((SharedPreferences)localObject).getInt("wakeup_alarm_launch_cnt", 0);
+    int j = ((SharedPreferences)localObject).getInt("wakeup_alarm_last_cnt", 0);
+    Log.i("MicroMsg.MMPushCore", "isFrequentlyLaunch cnt:%d, thisCnt:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    if (i > 10)
     {
-      AppMethodBeat.o(132939);
-      return;
+      i = 1;
+      if (j <= 10) {
+        break label129;
+      }
     }
-    this.hPc.ay(1000L, 1000L);
-    AppMethodBeat.o(132939);
+    label129:
+    for (j = 1;; j = 0)
+    {
+      AppMethodBeat.o(132911);
+      return j | i;
+      i = 0;
+      break;
+    }
+  }
+  
+  public static ag bkh()
+  {
+    AppMethodBeat.i(132912);
+    ag localag = bkc().jFI;
+    AppMethodBeat.o(132912);
+    return localag;
+  }
+  
+  public static ah bki()
+  {
+    AppMethodBeat.i(132914);
+    ah localah = bkc().jFJ;
+    AppMethodBeat.o(132914);
+    return localah;
+  }
+  
+  public static MMHandler bkj()
+  {
+    AppMethodBeat.i(132918);
+    MMHandler localMMHandler = bkc().handler;
+    AppMethodBeat.o(132918);
+    return localMMHandler;
+  }
+  
+  public static b bkk()
+  {
+    AppMethodBeat.i(132920);
+    b localb = bkc().jFL;
+    AppMethodBeat.o(132920);
+    return localb;
+  }
+  
+  public static v bkl()
+  {
+    AppMethodBeat.i(132922);
+    v localv = bkc().glb;
+    AppMethodBeat.o(132922);
+    return localv;
+  }
+  
+  public static ae bkm()
+  {
+    AppMethodBeat.i(132924);
+    ae localae = bkc().jFM;
+    AppMethodBeat.o(132924);
+    return localae;
+  }
+  
+  public static ad bkn()
+  {
+    AppMethodBeat.i(132926);
+    ad localad = bkc().jFN;
+    AppMethodBeat.o(132926);
+    return localad;
+  }
+  
+  public static ab bko()
+  {
+    AppMethodBeat.i(132929);
+    ab localab = bkc().jFO;
+    AppMethodBeat.o(132929);
+    return localab;
+  }
+  
+  public static a bkp()
+  {
+    return jFQ;
+  }
+  
+  public static void g(v paramv)
+  {
+    AppMethodBeat.i(132923);
+    bkc().glb = paramv;
+    AppMethodBeat.o(132923);
+  }
+  
+  public static Context getContext()
+  {
+    AppMethodBeat.i(132916);
+    Context localContext = bkc().jFK;
+    AppMethodBeat.o(132916);
+    return localContext;
+  }
+  
+  public static void setContext(Context paramContext)
+  {
+    AppMethodBeat.i(132917);
+    bkc().jFK = paramContext;
+    AppMethodBeat.o(132917);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void F(int paramInt, long paramLong);
+    
+    public abstract void K(String paramString, long paramLong);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void df(boolean paramBoolean);
   }
 }
 

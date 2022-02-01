@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.exdevice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.exdevice.f.f;
 import com.tencent.mm.plugin.exdevice.f.g;
 import com.tencent.mm.plugin.exdevice.k.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.util.Date;
 import java.util.TimeZone;
@@ -21,53 +21,53 @@ public final class e
   {
     super(paramLong, paramInt1, paramInt2, paramArrayOfByte);
     AppMethodBeat.i(23150);
-    ae.i("MicroMsg.exdevice.ExDeviceCmdInit", "onDeviceRequest deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
+    Log.i("MicroMsg.exdevice.ExDeviceCmdInit", "onDeviceRequest deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
     AppMethodBeat.o(23150);
   }
   
   public final void a(int paramInt1, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(23152);
-    ae.i("MicroMsg.exdevice.ExDeviceCmdInit", "------initResponse------ errorCode = %d, errMsg = %s, filter = %s, challenge = %s, initScene = %d, second = %d", new Object[] { Integer.valueOf(paramInt1), paramString, b.bf(paramArrayOfByte1), b.bf(paramArrayOfByte2), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.exdevice.ExDeviceCmdInit", "------initResponse------ errorCode = %d, errMsg = %s, filter = %s, challenge = %s, initScene = %d, second = %d", new Object[] { Integer.valueOf(paramInt1), paramString, b.bw(paramArrayOfByte1), b.bw(paramArrayOfByte2), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     g localg = new g();
-    localg.qlh = aL(0, "ok");
-    paramString = v.aAC();
+    localg.rCc = aQ(0, "ok");
+    paramString = z.aTY();
     long l;
     label159:
     label196:
     int i;
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
-      paramString = aj.ej(paramString).toLowerCase();
-      ae.i("MicroMsg.exdevice.Util", "user md5 : [%s]", new Object[] { paramString });
-      if (bu.isNullOrNil(paramString))
+      paramString = MD5Util.getMD5String(paramString).toLowerCase();
+      Log.i("MicroMsg.exdevice.Util", "user md5 : [%s]", new Object[] { paramString });
+      if (Util.isNullOrNil(paramString))
       {
-        ae.e("MicroMsg.exdevice.Util", "get hash code failed, value is null or nill");
+        Log.e("MicroMsg.exdevice.Util", "get hash code failed, value is null or nill");
         l = 0L;
         paramString = new int[] { (int)(l >> 32 & 0xFFFFFFFF), (int)(l & 0xFFFFFFFF) };
-        localg.qkU = paramString[0];
-        localg.qkV = paramString[1];
-        if (!bu.cF(paramArrayOfByte2))
+        localg.rBP = paramString[0];
+        localg.rBQ = paramString[1];
+        if (!Util.isNullOrNil(paramArrayOfByte2))
         {
           if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length != 0)) {
             break label532;
           }
           paramInt1 = 0;
-          localg.qkW = paramInt1;
+          localg.rBR = paramInt1;
         }
-        if (!bu.cF(paramArrayOfByte1))
+        if (!Util.isNullOrNil(paramArrayOfByte1))
         {
           if ((paramArrayOfByte1[0] & 0x4) != 0) {
-            localg.nIO = com.tencent.mm.protocal.d.FFC;
+            localg.oTJ = com.tencent.mm.protocal.d.KyJ;
           }
           if ((paramArrayOfByte1[0] & 0x8) != 0) {
-            localg.qlb = com.tencent.mm.protocal.d.FFF;
+            localg.rBW = com.tencent.mm.protocal.d.KyM;
           }
           if ((paramArrayOfByte1[0] & 0x2) != 0) {
-            localg.qla = 2;
+            localg.rBV = 2;
           }
           if ((paramArrayOfByte1[0] & 0x10) != 0) {
-            localg.qlc = ((int)bu.aRi());
+            localg.rBX = ((int)Util.nowSecond());
           }
           if ((paramArrayOfByte1[0] & 0x20) != 0)
           {
@@ -85,18 +85,18 @@ public final class e
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       int j = i / 3600 + paramInt1;
-      ae.i("MicroMsg.exdevice.Util", "getTimeZone, rawSecond = %d, dt = %d, re = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(j) });
-      localg.qld = j;
+      Log.i("MicroMsg.exdevice.Util", "getTimeZone, rawSecond = %d, dt = %d, re = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(j) });
+      localg.rBY = j;
       if ((paramArrayOfByte1[0] & 0x40) != 0) {
-        localg.qle = b.cnW();
+        localg.rBZ = b.cMi();
       }
       if ((paramArrayOfByte1[0] & 0x1) != 0) {
-        localg.qkZ = v.aAE();
+        localg.rBU = z.aUa();
       }
-      localg.qkX = paramInt2;
-      localg.qkY = paramInt3;
-      this.qgD = localg;
-      this.qgB = 20003;
+      localg.rBS = paramInt2;
+      localg.rBT = paramInt3;
+      this.rxz = localg;
+      this.rxx = 20003;
       AppMethodBeat.o(23152);
       return;
       j = 0;
@@ -116,7 +116,7 @@ public final class e
         }
       }
       l = j & 0xFFFFFFFF;
-      ae.i("MicroMsg.exdevice.Util", "get int hashcode value = %d, long hashcode = %d", new Object[] { Integer.valueOf(j), Long.valueOf(l) });
+      Log.i("MicroMsg.exdevice.Util", "get int hashcode value = %d, long hashcode = %d", new Object[] { Integer.valueOf(j), Long.valueOf(l) });
       break;
       paramString = null;
       break label159;
@@ -127,12 +127,12 @@ public final class e
     }
   }
   
-  protected final a bd(byte[] paramArrayOfByte)
+  protected final a bu(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23151);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdInit", "data is null");
+      Log.e("MicroMsg.exdevice.ExDeviceCmdInit", "data is null");
       AppMethodBeat.o(23151);
       return null;
     }
@@ -140,15 +140,15 @@ public final class e
     try
     {
       localf.parseFrom(paramArrayOfByte);
-      ae.i("MicroMsg.exdevice.ExDeviceCmdInit", "------Init Request parse is ok------ ");
-      this.qgE = localf;
+      Log.i("MicroMsg.exdevice.ExDeviceCmdInit", "------Init Request parse is ok------ ");
+      this.rxA = localf;
       AppMethodBeat.o(23151);
       return localf;
     }
     catch (IOException paramArrayOfByte)
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdInit", "pase error : " + paramArrayOfByte.getMessage());
-      ae.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdInit", paramArrayOfByte, "", new Object[0]);
+      Log.e("MicroMsg.exdevice.ExDeviceCmdInit", "pase error : " + paramArrayOfByte.getMessage());
+      Log.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdInit", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(23151);
     }
     return null;
@@ -156,7 +156,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.e
  * JD-Core Version:    0.7.0.1
  */

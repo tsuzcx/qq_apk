@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.backup.i.u;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.cxo;
-import com.tencent.mm.protocal.protobuf.if;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.dqj;
+import com.tencent.mm.protocal.protobuf.is;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.LinkedList;
 
 public final class i
@@ -17,70 +17,70 @@ public final class i
   public static int a(a parama)
   {
     AppMethodBeat.i(21858);
-    if (parama.nCO == null)
+    if (parama.oNL == null)
     {
-      ae.e("MicroMsg.BakOldPackUtil", "packBackupItem %s is null!", new Object[] { "backupItemInfo.backupitem" });
+      Log.e("MicroMsg.BakOldPackUtil", "packBackupItem %s is null!", new Object[] { "backupItemInfo.backupitem" });
       AppMethodBeat.o(21858);
       return 0;
     }
-    int i = (int)o.aZR(parama.filePath);
+    int i = (int)s.boW(parama.filePath);
     if (i <= 0)
     {
-      ae.e("MicroMsg.BakOldPackUtil", "packBackupItem filePath error:" + parama.filePath);
+      Log.e("MicroMsg.BakOldPackUtil", "packBackupItem filePath error:" + parama.filePath);
       AppMethodBeat.o(21858);
       return 0;
     }
-    if (parama.nCQ)
+    if (parama.oNN)
     {
       AppMethodBeat.o(21858);
       return i;
     }
-    if ((i < 8192) && (parama.nCO.FTj.getILen() == 0))
+    if ((i < 8192) && (parama.oNL.KMS.getILen() == 0))
     {
       if (parama.mediaType == 5) {
-        if (parama.glt == null)
+        if (parama.gWm == null)
         {
-          ae.e("MicroMsg.BakOldPackUtil", "packBackupItem BACKUPITEM_EMOJI type but emojiInfo is null!");
+          Log.e("MicroMsg.BakOldPackUtil", "packBackupItem BACKUPITEM_EMOJI type but emojiInfo is null!");
           localObject = null;
         }
       }
       for (;;)
       {
         localObject = new SKBuiltinBuffer_t().setBuffer((byte[])localObject);
-        parama.nCO.FTk = i;
-        parama.nCO.FTl = parama.mediaType;
-        parama.nCO.FTj = ((SKBuiltinBuffer_t)localObject);
+        parama.oNL.KMT = i;
+        parama.oNL.KMU = parama.mediaType;
+        parama.oNL.KMS = ((SKBuiltinBuffer_t)localObject);
         AppMethodBeat.o(21858);
         return i;
-        localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(parama.glt);
+        localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(parama.gWm);
         continue;
-        localObject = o.bb(parama.filePath, 0, -1);
+        localObject = s.aW(parama.filePath, 0, -1);
       }
     }
-    if (parama.nCP == null)
+    if (parama.oNM == null)
     {
-      ae.e("MicroMsg.BakOldPackUtil", "packBackupItem error mediaInfoList null");
+      Log.e("MicroMsg.BakOldPackUtil", "packBackupItem error mediaInfoList null");
       AppMethodBeat.o(21858);
       return 0;
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(parama.nCO.FNG.toString()).append("_").append(parama.nCO.FNH.toString()).append("_").append(parama.nCO.xrk).append("_backup_");
-    if (parama.nCR == null) {}
-    for (Object localObject = "";; localObject = parama.nCR)
+    StringBuilder localStringBuilder = new StringBuilder().append(parama.oNL.KHl.toString()).append("_").append(parama.oNL.KHm.toString()).append("_").append(parama.oNL.Brn).append("_backup_");
+    if (parama.oNO == null) {}
+    for (Object localObject = "";; localObject = parama.oNO)
     {
       localObject = (String)localObject;
-      ae.d("MicroMsg.BakOldPackUtil", "packBackupItem mediaId:%s, filePath:%s", new Object[] { localObject, parama.filePath });
-      parama.nCO.FTh.add(new cxn().aQV((String)localObject));
-      parama.nCO.FTi.add(new cxo().aaA(parama.mediaType));
-      parama.nCO.FTg = parama.nCO.FTh.size();
-      if (parama.nCL == null) {
-        parama.nCL = new u();
+      Log.d("MicroMsg.BakOldPackUtil", "packBackupItem mediaId:%s, filePath:%s", new Object[] { localObject, parama.filePath });
+      parama.oNL.KMQ.add(new dqi().bhy((String)localObject));
+      parama.oNL.KMR.add(new dqj().ajp(parama.mediaType));
+      parama.oNL.KMP = parama.oNL.KMQ.size();
+      if (parama.oNI == null) {
+        parama.oNI = new u();
       }
-      parama.nCL.nJy = parama.nCO.xrk;
-      parama.nCL.mediaId = ((String)localObject);
-      parama.nCL.path = parama.filePath;
-      parama.nCL.type = parama.mediaType;
-      if (!parama.nCS) {
-        parama.nCP.add(parama.nCL);
+      parama.oNI.oUt = parama.oNL.Brn;
+      parama.oNI.mediaId = ((String)localObject);
+      parama.oNI.path = parama.filePath;
+      parama.oNI.type = parama.mediaType;
+      if (!parama.oNP) {
+        parama.oNM.add(parama.oNI);
       }
       AppMethodBeat.o(21858);
       return 0;
@@ -90,54 +90,54 @@ public final class i
   public static final class a
   {
     String filePath;
-    EmojiInfo glt;
+    EmojiInfo gWm;
     int mediaType;
-    u nCL;
-    if nCO;
-    LinkedList<u> nCP;
-    boolean nCQ = true;
-    String nCR;
-    boolean nCS;
+    u oNI;
+    is oNL;
+    LinkedList<u> oNM;
+    boolean oNN = true;
+    String oNO;
+    boolean oNP;
     
-    public a(String paramString1, if paramif, LinkedList<u> paramLinkedList, int paramInt, String paramString2)
+    public a(String paramString1, is paramis, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
     {
       this.filePath = paramString1;
-      this.nCO = paramif;
-      this.nCP = paramLinkedList;
+      this.oNL = paramis;
+      this.oNM = paramLinkedList;
       this.mediaType = paramInt;
-      this.nCQ = false;
-      this.nCR = paramString2;
-      this.nCS = false;
-      this.nCL = null;
+      this.oNN = paramBoolean1;
+      this.oNO = paramString2;
+      this.oNP = paramBoolean2;
+      this.oNI = null;
     }
     
-    public a(String paramString, if paramif, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean, u paramu)
+    public a(String paramString, is paramis, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, boolean paramBoolean2, u paramu)
     {
       this.filePath = paramString;
-      this.nCO = paramif;
-      this.nCP = paramLinkedList;
+      this.oNL = paramis;
+      this.oNM = paramLinkedList;
       this.mediaType = paramInt;
-      this.nCQ = false;
-      this.nCS = paramBoolean;
-      this.nCL = paramu;
+      this.oNN = paramBoolean1;
+      this.oNP = paramBoolean2;
+      this.oNI = paramu;
     }
     
-    public a(String paramString, if paramif, LinkedList<u> paramLinkedList, EmojiInfo paramEmojiInfo)
+    public a(String paramString, is paramis, LinkedList<u> paramLinkedList, boolean paramBoolean1, boolean paramBoolean2, EmojiInfo paramEmojiInfo)
     {
       this.filePath = paramString;
-      this.nCO = paramif;
-      this.nCP = paramLinkedList;
+      this.oNL = paramis;
+      this.oNM = paramLinkedList;
       this.mediaType = 5;
-      this.nCQ = false;
-      this.nCS = false;
-      this.nCL = null;
-      this.glt = paramEmojiInfo;
+      this.oNN = false;
+      this.oNP = false;
+      this.oNI = null;
+      this.gWm = paramEmojiInfo;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.i
  * JD-Core Version:    0.7.0.1
  */

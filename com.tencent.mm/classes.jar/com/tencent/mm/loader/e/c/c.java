@@ -4,32 +4,37 @@ import android.graphics.Bitmap;
 import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.f;
 import com.tencent.mm.loader.h.e;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 
 public final class c
   extends b<Bitmap>
 {
-  private boolean hhW = true;
-  private float hhX;
+  private boolean iaT = true;
+  private float iaU;
   
   public c()
   {
-    this.hhX = 0.1F;
+    this.iaU = 0.1F;
   }
   
   public c(float paramFloat)
   {
-    this.hhX = paramFloat;
+    this.iaU = paramFloat;
+  }
+  
+  public final String Hi(String paramString)
+  {
+    return String.format("_round_%.2f_", new Object[] { Float.valueOf(this.iaU) });
   }
   
   public final e<? extends Bitmap> a(g<?> paramg, f<?, Bitmap> paramf, e<Bitmap> parame)
   {
     paramg = (Bitmap)parame.value;
     paramf = paramg;
-    if (this.hhW)
+    if (this.iaT)
     {
       paramf = paramg;
-      if (this.hhX == 0.0F)
+      if (this.iaU == 0.0F)
       {
         paramf = paramg;
         if (paramg.getWidth() != paramg.getHeight())
@@ -39,22 +44,17 @@ public final class c
           if (j <= 0) {
             i = Math.max(paramg.getWidth(), paramg.getHeight());
           }
-          paramf = h.b(paramg, i, i, true);
+          paramf = BitmapUtil.getCenterCropBitmap(paramg, i, i, true);
         }
       }
-      paramf = h.a(paramf, false, paramf.getWidth() * this.hhX);
+      paramf = BitmapUtil.getRoundedCornerBitmap(paramf, false, paramf.getWidth() * this.iaU);
     }
     return new e(paramf);
-  }
-  
-  public final String yJ(String paramString)
-  {
-    return String.format("_round_%.2f_", new Object[] { Float.valueOf(this.hhX) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.e.c.c
  * JD-Core Version:    0.7.0.1
  */

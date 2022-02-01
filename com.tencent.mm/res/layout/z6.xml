@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:scrollbars="none" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp">
-        <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardBannerView android:id="@id/g7w" android:background="@drawable/r5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
-        <LinearLayout android:orientation="vertical" android:id="@id/dfo" android:padding="@dimen/hj" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textStyle="bold" android:textColor="@color/y4" android:layout_gravity="left" android:id="@id/dfp" android:paddingTop="@dimen/ju" android:paddingBottom="@dimen/ju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bnh" android:drawableLeft="@drawable/bx4" style="@style/m3" />
-            <com.tencent.mm.plugin.emoji.ui.widget.MMCopiableTextView android:textSize="@dimen/gx" android:textColor="@color/km" android:id="@id/dfq" android:background="@drawable/afj" android:paddingTop="@dimen/ju" android:paddingBottom="@dimen/ju" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:id="@id/dfn" android:paddingTop="@dimen/ju" android:paddingBottom="@dimen/ju" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+<Button android:layout_gravity="center|right" android:id="@id/bln" android:layout_marginLeft="6.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="10.0dip" android:minWidth="60.0dip" android:text="@string/ga1" style="@style/p0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

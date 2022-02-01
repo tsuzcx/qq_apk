@@ -6,23 +6,23 @@ public enum e
 {
   static
   {
-    AppMethodBeat.i(207909);
-    msl = new e("PIP_CLICKED", 0);
-    msm = new e("PIP_CLOSE_BUTTON_CLICKED", 1);
-    msn = new e("OTHER_VIDEO_AUTO_PLAY", 2);
-    mso = new e("OTHER_VIDEO_PLAY", 3);
-    msp = new e("PAGE_RE_LAUNCH", 4);
-    msq = new e("EXIT_PIP_CALLED", 5);
-    msr = new e("OTHERS", 6);
-    mss = new e[] { msl, msm, msn, mso, msp, msq, msr };
-    AppMethodBeat.o(207909);
+    AppMethodBeat.i(219511);
+    nCV = new e("PIP_CLICKED", 0);
+    nCW = new e("PIP_CLOSE_BUTTON_CLICKED", 1);
+    nCX = new e("OTHER_VIDEO_AUTO_PLAY", 2);
+    nCY = new e("OTHER_VIDEO_PLAY", 3);
+    nCZ = new e("PAGE_RE_LAUNCH", 4);
+    nDa = new e("EXIT_PIP_CALLED", 5);
+    nDb = new e("OTHERS", 6);
+    nDc = new e[] { nCV, nCW, nCX, nCY, nCZ, nDa, nDb };
+    AppMethodBeat.o(219511);
   }
   
   private e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.e
  * JD-Core Version:    0.7.0.1
  */

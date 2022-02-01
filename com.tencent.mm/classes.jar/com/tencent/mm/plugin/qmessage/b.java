@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.qmessage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pk;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.qc;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class b
-  extends c<pk>
+  extends IListener<qc>
 {
   public b()
   {
     AppMethodBeat.i(161423);
-    this.__eventId = pk.class.getName().hashCode();
+    this.__eventId = qc.class.getName().hashCode();
     AppMethodBeat.o(161423);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.b
  * JD-Core Version:    0.7.0.1
  */

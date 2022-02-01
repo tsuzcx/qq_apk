@@ -265,11 +265,11 @@ public class d
     AppMethodBeat.o(53980);
   }
   
-  public void a(String paramString, WebView paramWebView, Context paramContext)
+  public void a(final String paramString, final WebView paramWebView, final Context paramContext)
   {
     AppMethodBeat.i(53979);
-    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
-    TextView localTextView = new TextView(paramContext);
+    final RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
+    final TextView localTextView = new TextView(paramContext);
     Object localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     localTextView.setText("加载中，请稍后...");
@@ -277,7 +277,47 @@ public class d
     paramWebView.addView(localRelativeLayout, new FrameLayout.LayoutParams(-1, -1));
     localObject = this.a + File.separator + "DebugPlugin.tbs";
     f.b(new File((String)localObject));
-    a((String)localObject, new d.1(this, paramWebView, paramContext, localRelativeLayout, paramString, localTextView));
+    a((String)localObject, new a()
+    {
+      public void a()
+      {
+        AppMethodBeat.i(53870);
+        paramWebView.post(new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(53948);
+            Toast.makeText(d.1.this.b, "下载成功", 0).show();
+            d.1.this.c.setVisibility(4);
+            d.this.a(d.1.this.d, d.1.this.a, d.1.this.b, d.a());
+            AppMethodBeat.o(53948);
+          }
+        });
+        AppMethodBeat.o(53870);
+      }
+      
+      public void a(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(53871);
+        paramWebView.post(new d.1.2(this, paramAnonymousInt));
+        AppMethodBeat.o(53871);
+      }
+      
+      public void a(Throwable paramAnonymousThrowable)
+      {
+        AppMethodBeat.i(53872);
+        paramWebView.post(new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(53881);
+            Toast.makeText(d.1.this.b, "下载失败，请检查网络", 0).show();
+            AppMethodBeat.o(53881);
+          }
+        });
+        AppMethodBeat.o(53872);
+      }
+    });
     AppMethodBeat.o(53979);
   }
   
@@ -362,7 +402,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.utils.d
  * JD-Core Version:    0.7.0.1
  */

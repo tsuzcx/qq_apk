@@ -1,112 +1,91 @@
 package com.tencent.mm.plugin.appbrand;
 
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.platform.window.e.a;
+import com.tencent.mm.plugin.appbrand.platform.window.e.b;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/FakeNativeRuntimeAutoReLaunchLogic;", "Lcom/tencent/mm/plugin/appbrand/IRuntimeAutoReLaunchLogicInterceptor;", "initialConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)V", "appId", "", "kotlin.jvm.PlatformType", "getAppId", "()Ljava/lang/String;", "mCurrentConfig", "mLastAcceptableEnterScene", "", "scene", "getScene", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "onConfigUpdated", "", "newConfig", "shouldReLaunchOnConfigWillUpdate", "", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/DefaultWindowOrientationHandlerViewImpl;", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler;", "mView", "Landroid/view/View;", "(Landroid/view/View;)V", "LANDSCAPE_ENUMS", "", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "[Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "getCurrentOrientation", "hasExecutingOrPendingRequests", "", "requestDeviceOrientation", "", "reqOrientation", "listener", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$OnOrientationChangedListener;", "luggage-wxa-app_release"})
 public final class ad
-  implements ah
+  implements com.tencent.mm.plugin.appbrand.platform.window.e
 {
-  @Deprecated
-  public static final a jDJ;
-  private AppBrandInitConfigWC jDH;
-  private int jDI;
+  private final e.b[] kEN;
+  private final View mView;
   
-  static
+  public ad(View paramView)
   {
-    AppMethodBeat.i(175104);
-    jDJ = new a((byte)0);
-    AppMethodBeat.o(175104);
+    AppMethodBeat.i(219647);
+    this.mView = paramView;
+    this.kEN = new e.b[] { e.b.nEn, e.b.nEo, e.b.nEp, e.b.nEq };
+    AppMethodBeat.o(219647);
   }
   
-  public ad(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  public final void a(e.b paramb, e.a parama)
   {
-    AppMethodBeat.i(175103);
-    this.jDH = paramAppBrandInitConfigWC;
-    this.jDI = paramAppBrandInitConfigWC.Ed().scene;
-    AppMethodBeat.o(175103);
-  }
-  
-  public final Boolean b(AppBrandInitConfigWC paramAppBrandInitConfigWC)
-  {
-    AppMethodBeat.i(175101);
-    p.h(paramAppBrandInitConfigWC, "newConfig");
-    if (!this.jDH.kaJ)
+    AppMethodBeat.i(219645);
+    if (paramb == null)
     {
-      AppMethodBeat.o(175101);
-      return null;
+      ((a)new a(parama)).invoke();
+      AppMethodBeat.o(219645);
+      return;
     }
-    label318:
-    for (;;)
+    if (paramb == e.b.nEl)
     {
-      try
+      if (parama != null)
       {
-        if (1038 == paramAppBrandInitConfigWC.Ed().scene)
+        e.b localb = btm();
+        if (btm() == paramb) {}
+        for (boolean bool = true;; bool = false)
         {
-          ae.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return false. appId[" + this.jDH.appId + "], reason=1038 back from other MiniProgram");
-          localObject1 = Boolean.FALSE;
-          return localObject1;
+          parama.a(localb, bool);
+          AppMethodBeat.o(219645);
+          return;
         }
-        Object localObject1 = (CharSequence)paramAppBrandInitConfigWC.jFL;
-        if (localObject1 != null)
-        {
-          if (((CharSequence)localObject1).length() == 0)
-          {
-            break label318;
-            if (i == 0)
-            {
-              ae.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return true appId[" + this.jDH.appId + "] enterPath[" + paramAppBrandInitConfigWC.jFL + ']');
-              localObject1 = Boolean.TRUE;
-              return localObject1;
-            }
-          }
-          else
-          {
-            i = 0;
-            continue;
-          }
-          if (this.jDI != paramAppBrandInitConfigWC.Ed().scene)
-          {
-            bool = true;
-            localObject1 = Boolean.valueOf(bool);
-            bool = ((Boolean)localObject1).booleanValue();
-            ae.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return " + bool + " appId[" + this.jDH.appId + "] mLastAcceptableScene[" + this.jDI + "] newScene[" + paramAppBrandInitConfigWC.Ed().scene + ']');
-            return localObject1;
-          }
-          boolean bool = false;
-          continue;
-        }
-        int i = 1;
       }
-      finally
-      {
-        c(paramAppBrandInitConfigWC);
-        AppMethodBeat.o(175101);
-      }
+      AppMethodBeat.o(219645);
+      return;
     }
+    if ((kotlin.a.e.contains(this.kEN, paramb)) && (parama != null))
+    {
+      parama.a(btm(), kotlin.a.e.contains(this.kEN, btm()));
+      AppMethodBeat.o(219645);
+      return;
+    }
+    AppMethodBeat.o(219645);
   }
   
-  public final void c(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  public final e.b btm()
   {
-    AppMethodBeat.i(175102);
-    p.h(paramAppBrandInitConfigWC, "newConfig");
-    this.jDH = paramAppBrandInitConfigWC;
-    if (1038 != paramAppBrandInitConfigWC.Ed().scene) {
-      this.jDI = paramAppBrandInitConfigWC.Ed().scene;
+    AppMethodBeat.i(219646);
+    if (this.mView.getHeight() >= this.mView.getWidth())
+    {
+      localb = e.b.nEl;
+      AppMethodBeat.o(219646);
+      return localb;
     }
-    AppMethodBeat.o(175102);
+    e.b localb = e.b.nEo;
+    AppMethodBeat.o(219646);
+    return localb;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/FakeNativeRuntimeAutoReLaunchLogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  static final class a {}
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class a
+    extends q
+    implements a<x>
+  {
+    a(e.a parama)
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad
  * JD-Core Version:    0.7.0.1
  */

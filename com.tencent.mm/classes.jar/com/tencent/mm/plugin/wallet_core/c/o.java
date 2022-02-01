@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahr;
-import com.tencent.mm.protocal.protobuf.ahs;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.ake;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private boolean Dgt;
-  private ahr Dgy;
-  public ahs Dgz;
-  private f callback;
-  private b gRX;
+  private boolean HPM;
+  private akd HPR;
+  public ake HPS;
+  private i callback;
+  private d hJu;
   
   public o(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(69920);
-    this.Dgt = paramBoolean;
-    b.a locala = new b.a();
-    locala.hQF = new ahr();
-    locala.hQG = new ahs();
+    this.HPM = paramBoolean;
+    d.a locala = new d.a();
+    locala.iLN = new akd();
+    locala.iLO = new ake();
     if (paramBoolean) {
       locala.funcId = 2529;
     }
     for (locala.uri = "/cgi-bin/mmpay-bin/mktf2fmodifyexposure";; locala.uri = "/cgi-bin/mmpay-bin/mktmodifyexposure")
     {
-      locala.hQH = 0;
+      locala.iLP = 0;
       locala.respCmdId = 0;
-      this.gRX = locala.aDS();
-      this.Dgy = ((ahr)this.gRX.hQD.hQJ);
-      this.Dgy.GxC = paramString;
+      this.hJu = locala.aXF();
+      this.HPR = ((akd)this.hJu.iLK.iLR);
+      this.HPR.Ltl = paramString;
       AppMethodBeat.o(69920);
       return;
       locala.funcId = 2888;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(69921);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
     AppMethodBeat.o(69921);
     return i;
   }
   
   public final int getType()
   {
-    if (this.Dgt) {
+    if (this.HPM) {
       return 2529;
     }
     return 2888;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69922);
-    ae.i("MicroMsg.NetSceneMktModifyExposure", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.Dgz = ((ahs)((b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneMktModifyExposure", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.HPS = ((ake)((d)params).iLL.iLR);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

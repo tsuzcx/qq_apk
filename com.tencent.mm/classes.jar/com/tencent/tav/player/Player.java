@@ -49,7 +49,7 @@ public class Player
   
   public Player(PlayerItem paramPlayerItem)
   {
-    AppMethodBeat.i(215206);
+    AppMethodBeat.i(218557);
     this.mPlayerStatus = IPlayer.PlayerStatus.IDLE;
     this.loop = false;
     this.released = false;
@@ -59,25 +59,25 @@ public class Player
     this.asset = this.currentItem.getAsset();
     this.currentItem.start(this);
     this.mPlayThread = this.currentItem.getPlayerThreadMain();
-    AppMethodBeat.o(215206);
+    AppMethodBeat.o(218557);
   }
   
   public Player(String paramString)
   {
     this(new PlayerItem(paramString));
-    AppMethodBeat.i(215205);
-    AppMethodBeat.o(215205);
+    AppMethodBeat.i(218556);
+    AppMethodBeat.o(218556);
   }
   
   private void checkAndReady()
   {
     try
     {
-      AppMethodBeat.i(215239);
+      AppMethodBeat.i(218590);
       if (this.mPlayerStatus == IPlayer.PlayerStatus.IDLE) {
         this.mPlayThread.sendMessage(1, "main");
       }
-      AppMethodBeat.o(215239);
+      AppMethodBeat.o(218590);
       return;
     }
     finally {}
@@ -85,10 +85,10 @@ public class Player
   
   void bindLayer(PlayerLayer paramPlayerLayer)
   {
-    AppMethodBeat.i(215221);
+    AppMethodBeat.i(218572);
     this.playerLayer = paramPlayerLayer;
     this.currentItem.bindLayer(paramPlayerLayer);
-    AppMethodBeat.o(215221);
+    AppMethodBeat.o(218572);
   }
   
   public IPlayer.PlayerStatus currentStatus()
@@ -107,15 +107,15 @@ public class Player
   
   public CMTime currentTime()
   {
-    AppMethodBeat.i(215209);
+    AppMethodBeat.i(218560);
     if (this.mPlayThread == null)
     {
       localCMTime = CMTime.CMTimeZero;
-      AppMethodBeat.o(215209);
+      AppMethodBeat.o(218560);
       return localCMTime;
     }
     CMTime localCMTime = this.mPlayThread.getPosition();
-    AppMethodBeat.o(215209);
+    AppMethodBeat.o(218560);
     return localCMTime;
   }
   
@@ -163,19 +163,19 @@ public class Player
   
   public void enAbleAudioFocus(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(215218);
+    AppMethodBeat.i(218569);
     if (paramBoolean)
     {
       if (this.mAudioFocuser == null)
       {
         this.mAudioFocuser = new AudioFocusHelper(paramContext, this);
-        AppMethodBeat.o(215218);
+        AppMethodBeat.o(218569);
       }
     }
     else if (this.mAudioFocuser != null) {
       this.mAudioFocuser.release();
     }
-    AppMethodBeat.o(215218);
+    AppMethodBeat.o(218569);
   }
   
   public int getBgColor()
@@ -195,14 +195,14 @@ public class Player
   
   public CGRect getGlViewport()
   {
-    AppMethodBeat.i(215224);
+    AppMethodBeat.i(218575);
     if (this.mPlayThread == null)
     {
-      AppMethodBeat.o(215224);
+      AppMethodBeat.o(218575);
       return null;
     }
     CGRect localCGRect = this.mPlayThread.getGlViewportRect();
-    AppMethodBeat.o(215224);
+    AppMethodBeat.o(218575);
     return localCGRect;
   }
   
@@ -213,14 +213,14 @@ public class Player
   
   public RenderContextParams getRenderContextParams()
   {
-    AppMethodBeat.i(215210);
+    AppMethodBeat.i(218561);
     if (this.mPlayThread != null)
     {
       RenderContextParams localRenderContextParams = this.mPlayThread.getRenderContextParams();
-      AppMethodBeat.o(215210);
+      AppMethodBeat.o(218561);
       return localRenderContextParams;
     }
-    AppMethodBeat.o(215210);
+    AppMethodBeat.o(218561);
     return null;
   }
   
@@ -231,16 +231,16 @@ public class Player
   
   public boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(215240);
+    AppMethodBeat.i(218591);
     if (this.released)
     {
-      AppMethodBeat.o(215240);
+      AppMethodBeat.o(218591);
       return false;
     }
     switch (paramMessage.what)
     {
     default: 
-      AppMethodBeat.o(215240);
+      AppMethodBeat.o(218591);
       return false;
     case 2: 
       this.mPosition = ((CMTime)paramMessage.obj);
@@ -261,7 +261,7 @@ public class Player
     }
     for (;;)
     {
-      AppMethodBeat.o(215240);
+      AppMethodBeat.o(218591);
       return true;
       label172:
       pause();
@@ -279,7 +279,7 @@ public class Player
         }
         finally
         {
-          AppMethodBeat.o(215240);
+          AppMethodBeat.o(218591);
         }
         if ((this.mPlayRange != null) && (this.mPlayRange.getDuration().getValue() > 0L)) {
           seekToTime(this.mPlayRange.getStart());
@@ -523,35 +523,35 @@ public class Player
   
   public void readSnapShootBitmap(OnReadSnapShootListener paramOnReadSnapShootListener)
   {
-    AppMethodBeat.i(215227);
+    AppMethodBeat.i(218578);
     if (this.mPlayThread == null)
     {
-      AppMethodBeat.o(215227);
+      AppMethodBeat.o(218578);
       return;
     }
     this.mPlayThread.sendMessage(24, paramOnReadSnapShootListener, "readSnapShootBitmap");
-    AppMethodBeat.o(215227);
+    AppMethodBeat.o(218578);
   }
   
   public void refreshSurface(Callback paramCallback)
   {
-    AppMethodBeat.i(215217);
+    AppMethodBeat.i(218568);
     if (this.released)
     {
-      AppMethodBeat.o(215217);
+      AppMethodBeat.o(218568);
       return;
     }
     this.mPlayThread.sendMessage(26, paramCallback, "main");
-    AppMethodBeat.o(215217);
+    AppMethodBeat.o(218568);
   }
   
   public void release()
   {
     try
     {
-      AppMethodBeat.i(215241);
+      AppMethodBeat.i(218592);
       release(null);
-      AppMethodBeat.o(215241);
+      AppMethodBeat.o(218592);
       return;
     }
     finally
@@ -565,7 +565,7 @@ public class Player
   {
     try
     {
-      AppMethodBeat.i(215242);
+      AppMethodBeat.i(218593);
       if (!this.released)
       {
         this.released = true;
@@ -582,7 +582,7 @@ public class Player
         }
         this.currentItem = null;
       }
-      AppMethodBeat.o(215242);
+      AppMethodBeat.o(218593);
       return;
     }
     finally {}
@@ -590,31 +590,31 @@ public class Player
   
   public void replaceCurrentItemWithPlayerItem(PlayerItem paramPlayerItem)
   {
-    AppMethodBeat.i(215212);
+    AppMethodBeat.i(218563);
     update(paramPlayerItem, position());
-    AppMethodBeat.o(215212);
+    AppMethodBeat.o(218563);
   }
   
   public void seekToTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(215213);
+    AppMethodBeat.i(218564);
     seekToTime(paramCMTime, null);
-    AppMethodBeat.o(215213);
+    AppMethodBeat.o(218564);
   }
   
   public void seekToTime(CMTime paramCMTime1, CMTime paramCMTime2, CMTime paramCMTime3)
   {
-    AppMethodBeat.i(215214);
+    AppMethodBeat.i(218565);
     seekToTime(paramCMTime1, paramCMTime2, paramCMTime3, null);
-    AppMethodBeat.o(215214);
+    AppMethodBeat.o(218565);
   }
   
   public void seekToTime(CMTime paramCMTime1, CMTime paramCMTime2, CMTime paramCMTime3, Callback paramCallback)
   {
-    AppMethodBeat.i(215216);
+    AppMethodBeat.i(218567);
     if (this.released)
     {
-      AppMethodBeat.o(215216);
+      AppMethodBeat.o(218567);
       return;
     }
     this.mSeekTargetTimeUs = paramCMTime1;
@@ -623,15 +623,15 @@ public class Player
     this.mPlayThread.enableScheduleNext(true);
     this.mPlayThread.cancelAllPendingSeeks();
     this.mPlayThread.sendMessage(5, this.mSeekTargetTimeUs, "main", paramCallback);
-    AppMethodBeat.o(215216);
+    AppMethodBeat.o(218567);
   }
   
   public void seekToTime(CMTime paramCMTime, Callback paramCallback)
   {
-    AppMethodBeat.i(215215);
+    AppMethodBeat.i(218566);
     CMTime localCMTime = CMTime.CMTimeZero;
     seekToTime(paramCMTime, localCMTime, localCMTime, paramCallback);
-    AppMethodBeat.o(215215);
+    AppMethodBeat.o(218566);
   }
   
   public void setBgColor(int paramInt)
@@ -641,11 +641,11 @@ public class Player
   
   public void setGetTavExtraListener(OnGetTavExtraListener paramOnGetTavExtraListener)
   {
-    AppMethodBeat.i(215228);
+    AppMethodBeat.i(218579);
     if (this.mPlayThread != null) {
       this.mPlayThread.sendMessage(25, paramOnGetTavExtraListener, "setGetTavExtraListener");
     }
-    AppMethodBeat.o(215228);
+    AppMethodBeat.o(218579);
   }
   
   public void setLoop(boolean paramBoolean)
@@ -671,13 +671,13 @@ public class Player
   {
     try
     {
-      AppMethodBeat.i(215230);
+      AppMethodBeat.i(218581);
       this.mPlayRange = paramCMTimeRange;
       if ((paramCMTimeRange != null) && (!paramCMTimeRange.containsTime(currentTime())) && (isPlaying())) {
         seekToTime(paramCMTimeRange.getStart());
       }
       this.mPlayThread.setPlayRange(paramCMTimeRange);
-      AppMethodBeat.o(215230);
+      AppMethodBeat.o(218581);
       return;
     }
     finally {}
@@ -690,31 +690,31 @@ public class Player
   
   public void setRate(float paramFloat)
   {
-    AppMethodBeat.i(215207);
+    AppMethodBeat.i(218558);
     setRate(paramFloat, 60);
-    AppMethodBeat.o(215207);
+    AppMethodBeat.o(218558);
   }
   
   public void setRate(float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(215208);
+    AppMethodBeat.i(218559);
     if ((this.mPlayerStatus != IPlayer.PlayerStatus.PLAYING) && (this.mPlayerStatus != IPlayer.PlayerStatus.PAUSED))
     {
       this.rate = paramFloat;
       this.currentItem.setRate(paramFloat, paramInt);
     }
-    AppMethodBeat.o(215208);
+    AppMethodBeat.o(218559);
   }
   
   public void setRateAtTimeAndHostTime(float paramFloat, CMTime paramCMTime1, CMTime paramCMTime2) {}
   
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(215211);
+    AppMethodBeat.i(218562);
     if (this.mPlayThread != null) {
       this.mPlayThread.setRenderContextParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(215211);
+    AppMethodBeat.o(218562);
   }
   
   public void setViewportUpdateListener(OnViewportUpdateListener paramOnViewportUpdateListener)
@@ -831,47 +831,54 @@ public class Player
     //   38: getfield 102	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
     //   41: invokevirtual 455	com/tencent/tav/player/PlayerItem:updateDecoderTrack	()V
     //   44: aload_0
-    //   45: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   48: aload_2
-    //   49: invokevirtual 393	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   45: getfield 115	com/tencent/tav/player/Player:mMainHandler	Landroid/os/Handler;
+    //   48: iconst_2
+    //   49: invokevirtual 458	android/os/Handler:removeMessages	(I)V
     //   52: aload_0
     //   53: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   56: invokevirtual 331	com/tencent/tav/player/PlayerThread:removeReadSampleMessage	()V
+    //   56: invokevirtual 461	com/tencent/tav/player/PlayerThread:removePendingUpdateCompositionMessage	()V
     //   59: aload_0
     //   60: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   63: iconst_0
-    //   64: invokevirtual 335	com/tencent/tav/player/PlayerThread:enableScheduleNext	(Z)V
+    //   63: aload_2
+    //   64: invokevirtual 393	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
     //   67: aload_0
     //   68: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   71: bipush 11
-    //   73: new 457	com/tencent/tav/player/UpdateCompositionMessage
-    //   76: dup
-    //   77: aload_1
-    //   78: aload_0
-    //   79: getfield 146	com/tencent/tav/player/Player:onCompositionUpdateListener	Lcom/tencent/tav/player/OnCompositionUpdateListener;
-    //   82: invokespecial 460	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
-    //   85: ldc_w 462
-    //   88: invokevirtual 355	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
-    //   91: aload_0
-    //   92: getstatic 173	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
-    //   95: putfield 390	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
-    //   98: ldc_w 452
-    //   101: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   104: goto -83 -> 21
-    //   107: astore_1
-    //   108: aload_0
-    //   109: monitorexit
-    //   110: aload_1
-    //   111: athrow
+    //   71: invokevirtual 331	com/tencent/tav/player/PlayerThread:removeReadSampleMessage	()V
+    //   74: aload_0
+    //   75: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   78: iconst_0
+    //   79: invokevirtual 335	com/tencent/tav/player/PlayerThread:enableScheduleNext	(Z)V
+    //   82: aload_0
+    //   83: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   86: bipush 11
+    //   88: new 463	com/tencent/tav/player/UpdateCompositionMessage
+    //   91: dup
+    //   92: aload_1
+    //   93: aload_0
+    //   94: getfield 146	com/tencent/tav/player/Player:onCompositionUpdateListener	Lcom/tencent/tav/player/OnCompositionUpdateListener;
+    //   97: invokespecial 466	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
+    //   100: ldc_w 468
+    //   103: invokevirtual 355	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
+    //   106: aload_0
+    //   107: getstatic 173	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
+    //   110: putfield 390	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
+    //   113: ldc_w 452
+    //   116: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   119: goto -98 -> 21
+    //   122: astore_1
+    //   123: aload_0
+    //   124: monitorexit
+    //   125: aload_1
+    //   126: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	112	0	this	Player
-    //   0	112	1	paramPlayerItem	PlayerItem
-    //   0	112	2	paramCMTime	CMTime
+    //   0	127	0	this	Player
+    //   0	127	1	paramPlayerItem	PlayerItem
+    //   0	127	2	paramCMTime	CMTime
     // Exception table:
     //   from	to	target	type
-    //   2	21	107	finally
-    //   24	104	107	finally
+    //   2	21	122	finally
+    //   24	119	122	finally
   }
   
   /* Error */
@@ -880,12 +887,12 @@ public class Player
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 464
+    //   2: ldc_w 470
     //   5: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 97	com/tencent/tav/player/Player:released	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 464
+    //   15: ldc_w 470
     //   18: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
@@ -901,51 +908,58 @@ public class Player
     //   38: getfield 102	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
     //   41: invokevirtual 455	com/tencent/tav/player/PlayerItem:updateDecoderTrack	()V
     //   44: aload_0
-    //   45: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   48: aload_2
-    //   49: invokevirtual 393	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   45: getfield 115	com/tencent/tav/player/Player:mMainHandler	Landroid/os/Handler;
+    //   48: iconst_2
+    //   49: invokevirtual 458	android/os/Handler:removeMessages	(I)V
     //   52: aload_0
     //   53: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   56: invokevirtual 331	com/tencent/tav/player/PlayerThread:removeReadSampleMessage	()V
+    //   56: invokevirtual 461	com/tencent/tav/player/PlayerThread:removePendingUpdateCompositionMessage	()V
     //   59: aload_0
     //   60: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   63: iconst_0
-    //   64: invokevirtual 335	com/tencent/tav/player/PlayerThread:enableScheduleNext	(Z)V
+    //   63: aload_2
+    //   64: invokevirtual 393	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
     //   67: aload_0
     //   68: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   71: bipush 11
-    //   73: new 457	com/tencent/tav/player/UpdateCompositionMessage
-    //   76: dup
-    //   77: aload_1
-    //   78: new 10	com/tencent/tav/player/Player$1
-    //   81: dup
+    //   71: invokevirtual 331	com/tencent/tav/player/PlayerThread:removeReadSampleMessage	()V
+    //   74: aload_0
+    //   75: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   78: iconst_0
+    //   79: invokevirtual 335	com/tencent/tav/player/PlayerThread:enableScheduleNext	(Z)V
     //   82: aload_0
-    //   83: aload_3
-    //   84: invokespecial 467	com/tencent/tav/player/Player$1:<init>	(Lcom/tencent/tav/player/Player;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
-    //   87: invokespecial 460	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
-    //   90: ldc_w 462
-    //   93: invokevirtual 355	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
-    //   96: aload_0
-    //   97: getstatic 173	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
-    //   100: putfield 390	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
-    //   103: ldc_w 464
-    //   106: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   109: goto -88 -> 21
-    //   112: astore_1
-    //   113: aload_0
-    //   114: monitorexit
-    //   115: aload_1
-    //   116: athrow
+    //   83: getfield 133	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   86: bipush 11
+    //   88: new 463	com/tencent/tav/player/UpdateCompositionMessage
+    //   91: dup
+    //   92: aload_1
+    //   93: new 10	com/tencent/tav/player/Player$1
+    //   96: dup
+    //   97: aload_0
+    //   98: aload_3
+    //   99: invokespecial 473	com/tencent/tav/player/Player$1:<init>	(Lcom/tencent/tav/player/Player;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
+    //   102: invokespecial 466	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
+    //   105: ldc_w 468
+    //   108: invokevirtual 355	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
+    //   111: aload_0
+    //   112: getstatic 173	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
+    //   115: putfield 390	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
+    //   118: ldc_w 470
+    //   121: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   124: goto -103 -> 21
+    //   127: astore_1
+    //   128: aload_0
+    //   129: monitorexit
+    //   130: aload_1
+    //   131: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	117	0	this	Player
-    //   0	117	1	paramPlayerItem	PlayerItem
-    //   0	117	2	paramCMTime	CMTime
-    //   0	117	3	paramOnCompositionUpdateListener	OnCompositionUpdateListener
+    //   0	132	0	this	Player
+    //   0	132	1	paramPlayerItem	PlayerItem
+    //   0	132	2	paramCMTime	CMTime
+    //   0	132	3	paramOnCompositionUpdateListener	OnCompositionUpdateListener
     // Exception table:
     //   from	to	target	type
-    //   2	21	112	finally
-    //   24	109	112	finally
+    //   2	21	127	finally
+    //   24	124	127	finally
   }
   
   /* Error */
@@ -954,12 +968,12 @@ public class Player
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 469
+    //   2: ldc_w 475
     //   5: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 97	com/tencent/tav/player/Player:released	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 469
+    //   15: ldc_w 475
     //   18: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
@@ -969,7 +983,7 @@ public class Player
     //   28: bipush 20
     //   30: ldc 150
     //   32: invokevirtual 156	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
-    //   35: ldc_w 469
+    //   35: ldc_w 475
     //   38: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -20 -> 21
     //   44: astore_1
@@ -993,12 +1007,12 @@ public class Player
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 471
+    //   2: ldc_w 477
     //   5: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 97	com/tencent/tav/player/Player:released	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 471
+    //   15: ldc_w 477
     //   18: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
@@ -1008,7 +1022,7 @@ public class Player
     //   28: bipush 22
     //   30: ldc 150
     //   32: invokevirtual 156	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
-    //   35: ldc_w 471
+    //   35: ldc_w 477
     //   38: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -20 -> 21
     //   44: astore_1
@@ -1032,12 +1046,12 @@ public class Player
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 473
+    //   2: ldc_w 479
     //   5: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 97	com/tencent/tav/player/Player:released	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 473
+    //   15: ldc_w 479
     //   18: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
@@ -1047,7 +1061,7 @@ public class Player
     //   28: bipush 23
     //   30: ldc 150
     //   32: invokevirtual 156	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
-    //   35: ldc_w 473
+    //   35: ldc_w 479
     //   38: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -20 -> 21
     //   44: astore_1
@@ -1071,12 +1085,12 @@ public class Player
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 475
+    //   2: ldc_w 481
     //   5: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 97	com/tencent/tav/player/Player:released	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 475
+    //   15: ldc_w 481
     //   18: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
@@ -1086,7 +1100,7 @@ public class Player
     //   28: bipush 10
     //   30: ldc 150
     //   32: invokevirtual 156	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
-    //   35: ldc_w 475
+    //   35: ldc_w 481
     //   38: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -20 -> 21
     //   44: astore_1
@@ -1106,39 +1120,39 @@ public class Player
   
   public void updateViewport(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215237);
+    AppMethodBeat.i(218588);
     if (this.released)
     {
-      AppMethodBeat.o(215237);
+      AppMethodBeat.o(218588);
       return;
     }
     this.mPlayThread.sendMessage(21, new CGSize(paramInt1, paramInt2), "main");
-    AppMethodBeat.o(215237);
+    AppMethodBeat.o(218588);
   }
   
   public int videoHeight()
   {
-    AppMethodBeat.i(215220);
+    AppMethodBeat.i(218571);
     if (this.currentItem == null)
     {
-      AppMethodBeat.o(215220);
+      AppMethodBeat.o(218571);
       return 0;
     }
     int i = (int)this.currentItem.getPresentationSize().height;
-    AppMethodBeat.o(215220);
+    AppMethodBeat.o(218571);
     return i;
   }
   
   public int videoWidth()
   {
-    AppMethodBeat.i(215219);
+    AppMethodBeat.i(218570);
     if (this.currentItem == null)
     {
-      AppMethodBeat.o(215219);
+      AppMethodBeat.o(218570);
       return 0;
     }
     int i = (int)this.currentItem.getPresentationSize().width;
-    AppMethodBeat.o(215219);
+    AppMethodBeat.o(218570);
     return i;
   }
   
@@ -1146,7 +1160,7 @@ public class Player
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.player.Player
  * JD-Core Version:    0.7.0.1
  */

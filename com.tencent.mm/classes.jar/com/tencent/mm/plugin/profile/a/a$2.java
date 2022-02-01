@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.a;
 import com.tencent.mm.av.q;
 import com.tencent.mm.openim.a.b.b;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 
 public final class a$2
@@ -25,8 +25,8 @@ public final class a$2
   {
     AppMethodBeat.i(26867);
     super.onBindView(paramView);
-    if (this.xif != null) {
-      if ((this.xfe.action != 2) && (this.xfe.action != 3)) {
+    if (this.BfZ != null) {
+      if ((this.BcI.action != 2) && (this.BcI.action != 3)) {
         break label113;
       }
     }
@@ -34,12 +34,12 @@ public final class a$2
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.xif.setTextColor(ak.getResources().getColorStateList(2131100733));
+        this.BfZ.setTextColor(MMApplicationContext.getResources().getColorStateList(2131100927));
       }
-      if ((this.JNF != null) && (!TextUtils.isEmpty(this.xfe.dEM)))
+      if ((this.OYH != null) && (!TextUtils.isEmpty(this.BcI.icon)))
       {
-        this.JNF.setVisibility(0);
-        q.aJb().loadImage(this.xfe.dEM, this.JNF);
+        this.OYH.setVisibility(0);
+        q.bcV().loadImage(this.BcI.icon, this.OYH);
       }
       AppMethodBeat.o(26867);
       return;
@@ -48,7 +48,7 @@ public final class a$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.a.a.2
  * JD-Core Version:    0.7.0.1
  */

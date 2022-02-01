@@ -4,22 +4,22 @@ import android.content.Context;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bq.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.service.MMService;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureService;", "Lcom/tencent/mm/service/MMService;", "()V", "TAG", "", "onCreate", "", "onDestroy", "Companion", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureService;", "Lcom/tencent/mm/service/MMService;", "()V", "TAG", "", "onCreate", "", "onDestroy", "Companion", "plugin-emojicapture_release"})
 public final class EmojiCaptureService
   extends MMService
 {
-  public static final EmojiCaptureService.a qaK;
+  public static final EmojiCaptureService.a rrH;
   private final String TAG = "MicroMsg.EmojiCaptureService";
   
   static
   {
     AppMethodBeat.i(420);
-    qaK = new EmojiCaptureService.a((byte)0);
+    rrH = new EmojiCaptureService.a((byte)0);
     AppMethodBeat.o(420);
   }
   
@@ -27,17 +27,17 @@ public final class EmojiCaptureService
   {
     AppMethodBeat.i(418);
     super.onCreate();
-    ae.i(this.TAG, "onCreate: ");
-    if (com.tencent.mm.compatible.util.d.lA(26)) {
-      startForeground(-2564, a.bJ(ak.getContext(), "reminder_channel_id").as(a.dzu()).g((CharSequence)ak.getContext().getString(2131758227)).build());
+    Log.i(this.TAG, "onCreate: ");
+    if (com.tencent.mm.compatible.util.d.oD(26)) {
+      startForeground(-2564, a.cd(MMApplicationContext.getContext(), "reminder_channel_id").as(a.ezb()).g((CharSequence)MMApplicationContext.getContext().getString(2131758515)).build());
     }
-    Object localObject = EmojiCaptureProxy.qaI;
-    EmojiCaptureProxy.a.cly();
-    localObject = EmojiCaptureProxy.qaI;
+    Object localObject = EmojiCaptureProxy.rrF;
+    EmojiCaptureProxy.a.cJA();
+    localObject = EmojiCaptureProxy.rrF;
     localObject = EmojiCaptureProxy.access$getInstance$cp().getServerProxy();
     if (localObject != null)
     {
-      ((com.tencent.mm.remoteservice.d)localObject).connect((Runnable)EmojiCaptureService.b.qaL);
+      ((com.tencent.mm.remoteservice.d)localObject).connect((Runnable)EmojiCaptureService.b.rrI);
       AppMethodBeat.o(418);
       return;
     }
@@ -48,16 +48,16 @@ public final class EmojiCaptureService
   {
     AppMethodBeat.i(419);
     super.onDestroy();
-    ae.i(this.TAG, "onDestroy: ");
-    fqI();
-    EmojiCaptureProxy.a locala = EmojiCaptureProxy.qaI;
-    EmojiCaptureProxy.a.clz();
+    Log.i(this.TAG, "onDestroy: ");
+    gxF();
+    EmojiCaptureProxy.a locala = EmojiCaptureProxy.rrF;
+    EmojiCaptureProxy.a.cJB();
     AppMethodBeat.o(419);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.proxy.EmojiCaptureService
  * JD-Core Version:    0.7.0.1
  */

@@ -10,48 +10,48 @@ public class MallFunction
   implements Parcelable
 {
   public static final Parcelable.Creator<MallFunction> CREATOR;
-  public String DsR;
-  public ArrayList<String> DsS;
-  public MallNews DsT;
-  public String DsU;
-  public int DsV;
-  public String dLB;
-  public String dPb;
-  public String jFZ;
+  public String Icd;
+  public ArrayList<String> Ice;
+  public MallNews Icf;
+  public String Icg;
+  public int Ich;
+  public String edq;
+  public String egX;
+  public String h5Url;
+  public String kHR;
   public int type;
-  public String uEo;
-  public String vQp;
-  public String vQq;
+  public String zkt;
+  public String zku;
   
   static
   {
     AppMethodBeat.i(70538);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new MallFunction.1();
     AppMethodBeat.o(70538);
   }
   
   public MallFunction()
   {
-    this.DsV = 0;
+    this.Ich = 0;
   }
   
   public MallFunction(Parcel paramParcel)
   {
     AppMethodBeat.i(70536);
-    this.DsV = 0;
-    this.jFZ = paramParcel.readString();
-    this.dLB = paramParcel.readString();
-    this.DsR = paramParcel.readString();
-    this.vQp = paramParcel.readString();
-    this.vQq = paramParcel.readString();
-    this.dPb = paramParcel.readString();
-    this.uEo = paramParcel.readString();
-    this.DsS = new ArrayList();
-    paramParcel.readStringList(this.DsS);
-    this.DsT = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
+    this.Ich = 0;
+    this.kHR = paramParcel.readString();
+    this.edq = paramParcel.readString();
+    this.Icd = paramParcel.readString();
+    this.zkt = paramParcel.readString();
+    this.zku = paramParcel.readString();
+    this.egX = paramParcel.readString();
+    this.h5Url = paramParcel.readString();
+    this.Ice = new ArrayList();
+    paramParcel.readStringList(this.Ice);
+    this.Icf = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
     this.type = paramParcel.readInt();
-    this.DsU = paramParcel.readString();
-    this.DsV = paramParcel.readInt();
+    this.Icg = paramParcel.readString();
+    this.Ich = paramParcel.readInt();
     AppMethodBeat.o(70536);
   }
   
@@ -63,24 +63,24 @@ public class MallFunction
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70537);
-    paramParcel.writeString(this.jFZ);
-    paramParcel.writeString(this.dLB);
-    paramParcel.writeString(this.DsR);
-    paramParcel.writeString(this.vQp);
-    paramParcel.writeString(this.vQq);
-    paramParcel.writeString(this.dPb);
-    paramParcel.writeString(this.uEo);
-    paramParcel.writeStringList(this.DsS);
-    paramParcel.writeParcelable(this.DsT, paramInt);
+    paramParcel.writeString(this.kHR);
+    paramParcel.writeString(this.edq);
+    paramParcel.writeString(this.Icd);
+    paramParcel.writeString(this.zkt);
+    paramParcel.writeString(this.zku);
+    paramParcel.writeString(this.egX);
+    paramParcel.writeString(this.h5Url);
+    paramParcel.writeStringList(this.Ice);
+    paramParcel.writeParcelable(this.Icf, paramInt);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.DsU);
-    paramParcel.writeInt(this.DsV);
+    paramParcel.writeString(this.Icg);
+    paramParcel.writeInt(this.Ich);
     AppMethodBeat.o(70537);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.MallFunction
  * JD-Core Version:    0.7.0.1
  */

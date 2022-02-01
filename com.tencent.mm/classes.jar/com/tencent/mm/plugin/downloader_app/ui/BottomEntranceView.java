@@ -16,17 +16,17 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.au;
 
 public class BottomEntranceView
   extends RelativeLayout
 {
-  private f pwC;
-  private TextView pwD;
-  private int pwE;
-  private int pwF;
+  private f qLT;
+  private TextView qLU;
+  private int qLV;
+  private int qLW;
   
   public BottomEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +36,7 @@ public class BottomEntranceView
   private int getDisplayHeight()
   {
     AppMethodBeat.i(8975);
-    int i = ar.ck(getContext()).y;
+    int i = au.az(getContext()).y;
     AppMethodBeat.o(8975);
     return i;
   }
@@ -45,10 +45,10 @@ public class BottomEntranceView
   {
     AppMethodBeat.i(8973);
     super.onFinishInflate();
-    this.pwD = ((TextView)findViewById(2131299510));
-    this.pwF = (getDisplayHeight() - ar.dX(getContext()) - ar.jN(getContext()) - ar.en(getContext()));
-    this.pwE = getResources().getDimensionPixelSize(2131165922);
-    ae.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.pwF) });
+    this.qLU = ((TextView)findViewById(2131300147));
+    this.qLW = (getDisplayHeight() - au.eu(getContext()) - au.getStatusBarHeight(getContext()) - au.aD(getContext()));
+    this.qLV = getResources().getDimensionPixelSize(2131165949);
+    Log.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.qLW) });
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
@@ -64,13 +64,13 @@ public class BottomEntranceView
       {
         AppMethodBeat.i(8972);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bu.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).oGf)))
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!Util.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).pTL)))
         {
           paramAnonymousView = new Bundle();
-          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).oGf);
-          ((c)g.ab(c.class)).e(BottomEntranceView.this.getContext(), paramAnonymousView);
+          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).pTL);
+          ((c)g.af(c.class)).e(BottomEntranceView.this.getContext(), paramAnonymousView);
           com.tencent.mm.plugin.downloader_app.b.a.a(10, 1005, 1, 40, "", "", "");
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -83,21 +83,21 @@ public class BottomEntranceView
   public void setData(f paramf)
   {
     AppMethodBeat.i(8974);
-    if ((paramf == null) || (bu.isNullOrNil(paramf.desc)) || (bu.isNullOrNil(paramf.oGf)))
+    if ((paramf == null) || (Util.isNullOrNil(paramf.desc)) || (Util.isNullOrNil(paramf.pTL)))
     {
       setVisibility(8);
       AppMethodBeat.o(8974);
       return;
     }
-    this.pwC = paramf;
+    this.qLT = paramf;
     setVisibility(0);
-    this.pwD.setText(this.pwC.desc);
+    this.qLU.setText(this.qLT.desc);
     AppMethodBeat.o(8974);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView
  * JD-Core Version:    0.7.0.1
  */

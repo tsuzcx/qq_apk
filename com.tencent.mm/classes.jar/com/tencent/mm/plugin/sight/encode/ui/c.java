@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.contact.a.a.a;
 import com.tencent.mm.ui.contact.a.a.b;
 import com.tencent.mm.ui.contact.a.e;
@@ -29,38 +29,25 @@ import java.util.List;
 public final class c
   extends q
 {
-  public static boolean zkQ = true;
-  public static boolean zkR = false;
-  List<String> zkO;
-  boolean zkP;
+  public static boolean DpH = true;
+  public static boolean DpI = false;
+  List<String> DpF;
+  boolean DpG;
   
   public c(n paramn)
   {
     super(paramn, new ArrayList(), true, true);
     AppMethodBeat.i(28735);
-    this.zkP = true;
-    this.zkP = true;
-    this.zkO = null;
+    this.DpG = true;
+    this.DpG = true;
+    this.DpF = null;
     AppMethodBeat.o(28735);
   }
   
-  public static boolean ayP(String paramString)
-  {
-    AppMethodBeat.i(28739);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(28739);
-      return false;
-    }
-    boolean bool = paramString.endsWith("@sns.tencent");
-    AppMethodBeat.o(28739);
-    return bool;
-  }
-  
-  public static boolean ayQ(String paramString)
+  public static boolean aNA(String paramString)
   {
     AppMethodBeat.i(28740);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(28740);
       return false;
@@ -70,10 +57,10 @@ public final class c
     return bool;
   }
   
-  public static boolean ayR(String paramString)
+  public static boolean aNB(String paramString)
   {
     AppMethodBeat.i(28741);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(28741);
       return false;
@@ -83,70 +70,83 @@ public final class c
     return bool;
   }
   
-  public final void cg(List<String> paramList)
+  public static boolean aNz(String paramString)
+  {
+    AppMethodBeat.i(28739);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(28739);
+      return false;
+    }
+    boolean bool = paramString.endsWith("@sns.tencent");
+    AppMethodBeat.o(28739);
+    return bool;
+  }
+  
+  public final void cv(List<String> paramList)
   {
     AppMethodBeat.i(28737);
     clearCache();
-    this.zkO = paramList;
+    this.DpF = paramList;
     notifyDataSetChanged();
     AppMethodBeat.o(28737);
   }
   
-  public final boolean dUh()
+  public final boolean eWh()
   {
-    return this.zkP;
+    return this.DpG;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(28736);
-    if (this.zkO == null)
+    if (this.DpF == null)
     {
       AppMethodBeat.o(28736);
       return 0;
     }
-    int i = this.zkO.size();
+    int i = this.DpF.size();
     AppMethodBeat.o(28736);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a rk(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a va(int paramInt)
   {
     AppMethodBeat.i(28738);
-    if (this.zkO == null)
+    if (this.DpF == null)
     {
       AppMethodBeat.o(28738);
       return null;
     }
     if ((paramInt < 0) || (paramInt >= getCount()))
     {
-      ae.e("MicroMsg.MainSightSelectContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+      Log.e("MicroMsg.MainSightSelectContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(28738);
       return null;
     }
     a locala = new a(paramInt);
-    Object localObject = (String)this.zkO.get(paramInt);
-    if (ayP((String)localObject)) {
-      localObject = new an("@sns.tencent");
+    Object localObject = (String)this.DpF.get(paramInt);
+    if (aNz((String)localObject)) {
+      localObject = new as("@sns.tencent");
     }
     for (;;)
     {
-      locala.contact = ((an)localObject);
-      locala.KJj = this.zkP;
+      locala.contact = ((as)localObject);
+      locala.PWh = this.DpG;
       AppMethodBeat.o(28738);
       return locala;
-      if (ayQ((String)localObject))
+      if (aNA((String)localObject))
       {
-        localObject = new an("@search.tencent");
+        localObject = new as("@search.tencent");
       }
-      else if (ayR((String)localObject))
+      else if (aNB((String)localObject))
       {
-        localObject = new an("@draft.tencent");
+        localObject = new as("@draft.tencent");
       }
       else
       {
-        bc.aCg();
-        localObject = com.tencent.mm.model.c.azF().BH((String)this.zkO.get(paramInt));
+        bg.aVF();
+        localObject = com.tencent.mm.model.c.aSN().Kn((String)this.DpF.get(paramInt));
       }
     }
   }
@@ -159,7 +159,7 @@ public final class c
       super();
     }
     
-    public final a.b aRR()
+    public final a.b bmx()
     {
       AppMethodBeat.i(28733);
       b localb = new b();
@@ -167,7 +167,7 @@ public final class c
       return localb;
     }
     
-    public final a.a dNf()
+    public final a.a eOf()
     {
       AppMethodBeat.i(28734);
       a locala = new a();
@@ -178,8 +178,8 @@ public final class c
     public final class a
       extends e.a
     {
-      public View zjN;
-      public View zkT;
+      public View Bnt;
+      public View DpK;
       
       public a()
       {
@@ -198,21 +198,21 @@ public final class c
       public final View a(Context paramContext, ViewGroup paramViewGroup)
       {
         AppMethodBeat.i(28731);
-        paramContext = LayoutInflater.from(paramContext).inflate(2131495460, paramViewGroup, false);
-        paramViewGroup = (c.a.a)c.a.this.dNf();
-        paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
-        paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
-        paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
-        paramViewGroup.contentView = paramContext.findViewById(2131304518);
-        paramViewGroup.iYl = ((CheckBox)paramContext.findViewById(2131304502));
-        paramViewGroup.zjN = paramContext.findViewById(2131301189);
-        paramViewGroup.zkT = paramContext.findViewById(2131304452);
+        paramContext = LayoutInflater.from(paramContext).inflate(2131496333, paramViewGroup, false);
+        paramViewGroup = (c.a.a)c.a.this.eOf();
+        paramViewGroup.gvv = ((ImageView)paramContext.findViewById(2131297134));
+        paramViewGroup.jVO = ((TextView)paramContext.findViewById(2131309249));
+        paramViewGroup.jBR = ((TextView)paramContext.findViewById(2131299510));
+        paramViewGroup.contentView = paramContext.findViewById(2131307533);
+        paramViewGroup.jVQ = ((CheckBox)paramContext.findViewById(2131307508));
+        paramViewGroup.Bnt = paramContext.findViewById(2131302861);
+        paramViewGroup.DpK = paramContext.findViewById(2131307428);
         paramContext.setTag(paramViewGroup);
-        paramViewGroup.iYj.setTextColor(-1);
+        paramViewGroup.jVO.setTextColor(-1);
         paramViewGroup = (AbsListView.LayoutParams)paramContext.getLayoutParams();
         paramViewGroup.width = -1;
         paramContext.setLayoutParams(paramViewGroup);
-        paramContext.setBackgroundResource(2131100017);
+        paramContext.setBackgroundResource(2131100042);
         AppMethodBeat.o(28731);
         return paramContext;
       }
@@ -220,84 +220,84 @@ public final class c
       public final void a(Context paramContext, a.a parama, com.tencent.mm.ui.contact.a.a parama1, boolean paramBoolean1, boolean paramBoolean2)
       {
         AppMethodBeat.i(28732);
-        an localan = parama1.contact;
+        as localas = parama1.contact;
         c.a.a locala = (c.a.a)parama;
         locala.contentView.setVisibility(0);
-        locala.zkT.setVisibility(8);
-        locala.zjN.setVisibility(8);
-        if (c.ayR(localan.field_username))
+        locala.DpK.setVisibility(8);
+        locala.Bnt.setVisibility(8);
+        if (c.aNB(localas.field_username))
         {
-          locala.fQl.setImageResource(2131691172);
-          locala.iYj.setText(2131763703);
-          locala.iFO.setText(2131763701);
-          locala.iFO.setVisibility(0);
-          locala.iYl.setEnabled(false);
-          if (c.zkR)
+          locala.gvv.setImageResource(2131691488);
+          locala.jVO.setText(2131765894);
+          locala.jBR.setText(2131765892);
+          locala.jBR.setVisibility(0);
+          locala.jVQ.setEnabled(false);
+          if (c.DpI)
           {
-            locala.contentView.setBackgroundResource(2131234043);
-            locala.iYl.setVisibility(0);
-            locala.iYl.setBackgroundResource(2131691180);
-            locala.zjN.setVisibility(0);
+            locala.contentView.setBackgroundResource(2131234885);
+            locala.jVQ.setVisibility(0);
+            locala.jVQ.setBackgroundResource(2131691496);
+            locala.Bnt.setVisibility(0);
           }
           for (;;)
           {
             c.e(paramContext, locala.contentView);
-            parama = locala.fQl.getLayoutParams();
-            parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
-            parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
-            locala.fQl.setLayoutParams(parama);
-            parama = (LinearLayout.LayoutParams)locala.iYl.getLayoutParams();
-            parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
-            parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
+            parama = locala.gvv.getLayoutParams();
+            parama.width = com.tencent.mm.cb.a.aG(paramContext, 2131166919);
+            parama.height = com.tencent.mm.cb.a.aG(paramContext, 2131166919);
+            locala.gvv.setLayoutParams(parama);
+            parama = (LinearLayout.LayoutParams)locala.jVQ.getLayoutParams();
+            parama.height = com.tencent.mm.cb.a.aG(paramContext, 2131166925);
+            parama.width = com.tencent.mm.cb.a.aG(paramContext, 2131166925);
             parama.setMargins(parama.leftMargin, parama.topMargin, 0, parama.bottomMargin);
-            locala.iYl.setLayoutParams(parama);
+            locala.jVQ.setLayoutParams(parama);
             AppMethodBeat.o(28732);
             return;
-            locala.contentView.setBackgroundResource(2131234047);
-            locala.iYl.setVisibility(8);
-            locala.iYl.setBackgroundResource(2131691182);
-            locala.zjN.setVisibility(8);
+            locala.contentView.setBackgroundResource(2131234889);
+            locala.jVQ.setVisibility(8);
+            locala.jVQ.setBackgroundResource(2131691498);
+            locala.Bnt.setVisibility(8);
           }
         }
-        if (c.ayP(localan.field_username))
+        if (c.aNz(localas.field_username))
         {
-          locala.fQl.setImageResource(2131691179);
-          locala.iYl.setVisibility(8);
-          locala.iYj.setText(paramContext.getString(2131763713));
-          locala.iFO.setVisibility(8);
-          if (c.zkQ)
+          locala.gvv.setImageResource(2131691495);
+          locala.jVQ.setVisibility(8);
+          locala.jVO.setText(paramContext.getString(2131765904));
+          locala.jBR.setVisibility(8);
+          if (c.DpH)
           {
-            locala.contentView.setBackgroundResource(2131234047);
-            locala.zjN.setVisibility(8);
+            locala.contentView.setBackgroundResource(2131234889);
+            locala.Bnt.setVisibility(8);
             c.e(paramContext, locala.contentView);
           }
         }
         for (;;)
         {
-          parama = locala.fQl.getLayoutParams();
-          parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
-          parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166795);
-          locala.fQl.setLayoutParams(parama);
-          parama = (LinearLayout.LayoutParams)locala.iYl.getLayoutParams();
-          parama.height = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
-          parama.width = com.tencent.mm.cb.a.ax(paramContext, 2131166801);
+          parama = locala.gvv.getLayoutParams();
+          parama.width = com.tencent.mm.cb.a.aG(paramContext, 2131166919);
+          parama.height = com.tencent.mm.cb.a.aG(paramContext, 2131166919);
+          locala.gvv.setLayoutParams(parama);
+          parama = (LinearLayout.LayoutParams)locala.jVQ.getLayoutParams();
+          parama.height = com.tencent.mm.cb.a.aG(paramContext, 2131166925);
+          parama.width = com.tencent.mm.cb.a.aG(paramContext, 2131166925);
           parama.setMargins(parama.leftMargin, parama.topMargin, 0, parama.bottomMargin);
-          locala.iYl.setLayoutParams(parama);
-          locala.iYl.setBackgroundResource(2131234042);
+          locala.jVQ.setLayoutParams(parama);
+          locala.jVQ.setBackgroundResource(2131234884);
           AppMethodBeat.o(28732);
           return;
-          locala.contentView.setBackgroundResource(2131234043);
-          locala.zjN.setVisibility(0);
+          locala.contentView.setBackgroundResource(2131234885);
+          locala.Bnt.setVisibility(0);
           break;
-          if (c.ayQ(localan.field_username))
+          if (c.aNA(localas.field_username))
           {
             locala.contentView.setVisibility(8);
-            locala.zkT.setVisibility(0);
+            locala.DpK.setVisibility(0);
             AppMethodBeat.o(28732);
             return;
           }
           super.a(paramContext, parama, parama1, paramBoolean1, paramBoolean2);
-          locala.contentView.setBackgroundResource(2131234047);
+          locala.contentView.setBackgroundResource(2131234889);
           c.e(paramContext, locala.contentView);
         }
       }
@@ -306,7 +306,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.c
  * JD-Core Version:    0.7.0.1
  */

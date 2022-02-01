@@ -1,140 +1,42 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.widget.TextView;
+import com.tencent.kinda.gen.ITransmitKvData;
+import com.tencent.kinda.gen.KUserService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public final class b
+public class b
+  implements KUserService
 {
-  private List<c> vJu;
-  private boolean vJv;
-  private boolean vJw;
-  private TextView vJx;
-  
-  public b()
+  public void updateUserInfo(ITransmitKvData paramITransmitKvData)
   {
-    AppMethodBeat.i(65609);
-    this.vJu = new LinkedList();
-    this.vJv = false;
-    this.vJw = false;
-    AppMethodBeat.o(65609);
-  }
-  
-  private void aqh(String paramString)
-  {
-    AppMethodBeat.i(65614);
-    if ((this.vJx != null) && (!bu.isNullOrNil(paramString)))
+    AppMethodBeat.i(213354);
+    Log.i("KindaUserInfoService", "updateUserInfo");
+    am localam = t.fQI().fRN();
+    localam.field_is_reg = paramITransmitKvData.getInt("is_reg");
+    localam.field_true_name = Util.nullAs(paramITransmitKvData.getString("true_name"), "");
+    if (paramITransmitKvData.getInt("icard_user_flag") == 2) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (!this.vJv) {
-        this.vJx.setText(paramString);
-      }
-      this.vJx.setVisibility(0);
-      this.vJv = true;
-    }
-    AppMethodBeat.o(65614);
-  }
-  
-  public final void UG(String paramString)
-  {
-    AppMethodBeat.i(65615);
-    if ((this.vJx != null) && (!bu.isNullOrNil(paramString)))
-    {
-      this.vJx.setText(paramString);
-      this.vJx.setVisibility(0);
-      this.vJv = true;
-      AppMethodBeat.o(65615);
+      localam.field_isDomesticUser = bool;
+      localam.field_cre_name = Util.nullAs(paramITransmitKvData.getString("cre_name"), "");
+      localam.field_cre_type = Util.getInt(paramITransmitKvData.getString("cre_type"), -1);
+      localam.field_main_card_bind_serialno = Util.nullAs(paramITransmitKvData.getString("last_card_bind_serialno"), "");
+      s.fOg();
+      s.fOh().a(localam);
+      AppMethodBeat.o(213354);
       return;
-    }
-    if (this.vJx != null)
-    {
-      this.vJx.setVisibility(8);
-      this.vJv = false;
-    }
-    AppMethodBeat.o(65615);
-  }
-  
-  public final void a(c paramc)
-  {
-    AppMethodBeat.i(65610);
-    if (paramc == null)
-    {
-      AppMethodBeat.o(65610);
-      return;
-    }
-    this.vJu.add(paramc);
-    AppMethodBeat.o(65610);
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(65611);
-    this.vJu.clear();
-    this.vJx = null;
-    AppMethodBeat.o(65611);
-  }
-  
-  public final boolean dmo()
-  {
-    AppMethodBeat.i(65612);
-    this.vJw = false;
-    this.vJv = false;
-    int i = 0;
-    if (i < this.vJu.size())
-    {
-      c localc = (c)this.vJu.get(i);
-      int j = localc.dkP();
-      if (j != 0)
-      {
-        localc.onError();
-        aqh(localc.Jy(j));
-        this.vJw = true;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localc.restore();
-      }
-    }
-    if ((!this.vJw) && (this.vJx != null))
-    {
-      this.vJx.setVisibility(8);
-      this.vJv = false;
-    }
-    boolean bool = this.vJw;
-    AppMethodBeat.o(65612);
-    return bool;
-  }
-  
-  public final boolean dmp()
-  {
-    AppMethodBeat.i(65613);
-    int i = 0;
-    while (i < this.vJu.size())
-    {
-      if (((c)this.vJu.get(i)).dkP() != 0)
-      {
-        AppMethodBeat.o(65613);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(65613);
-    return false;
-  }
-  
-  public final void m(TextView paramTextView)
-  {
-    if (paramTextView != null) {
-      this.vJx = paramTextView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.b
  * JD-Core Version:    0.7.0.1
  */

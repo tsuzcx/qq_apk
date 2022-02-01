@@ -2,9 +2,7 @@ package com.tencent.wework.api.model;
 
 public abstract class WWBaseRespMessage
   extends BaseMessage
-{
-  public String transaction;
-}
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

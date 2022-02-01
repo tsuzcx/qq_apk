@@ -7,11 +7,11 @@ import android.os.Bundle;
 public abstract interface c
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void g(Activity paramActivity, Bundle paramBundle);
+  public abstract void h(Activity paramActivity, Bundle paramBundle);
   
-  public abstract com.tencent.mm.pluginsdk.b.a gO(Context paramContext);
+  public abstract com.tencent.mm.pluginsdk.b.a hK(Context paramContext);
   
-  public abstract com.tencent.mm.pluginsdk.b.a gP(Context paramContext);
+  public abstract com.tencent.mm.pluginsdk.b.a hL(Context paramContext);
 }
 
 

@@ -1,47 +1,51 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.i.a.aj;
 
 final class m$a
   extends c.a
 {
-  public int KwJ;
-  ImageView KxY;
-  TextView KxZ;
-  TextView Kya;
-  public ImageView Kyb;
-  TextView fQm;
+  public TextView PKo;
+  public TextView finderDesc;
+  public ImageView finderIcon;
+  public ImageView tickIV;
   
-  public final a G(View paramView, boolean paramBoolean)
+  public final a I(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(163329);
-    super.gs(paramView);
-    this.KxY = ((ImageView)this.uan.findViewById(2131298057));
-    this.fVV = ((TextView)this.uan.findViewById(2131298178));
-    this.KxZ = ((TextView)this.uan.findViewById(2131298182));
-    this.Kya = ((TextView)this.uan.findViewById(2131298186));
-    this.fQm = ((TextView)this.uan.findViewById(2131298152));
-    this.yUp = ((TextView)this.uan.findViewById(2131298185));
-    this.olI = this.uan.findViewById(2131298069);
-    this.hcH = this.uan.findViewById(2131298147);
-    if (paramBoolean)
+    AppMethodBeat.i(233630);
+    super.create(paramView);
+    this.PKo = ((TextView)paramView.findViewById(2131298483));
+    this.finderIcon = ((ImageView)paramView.findViewById(2131298485));
+    this.finderDesc = ((TextView)paramView.findViewById(2131298484));
+    this.userTV = ((TextView)paramView.findViewById(2131298566));
+    if (!((aj)g.ah(aj.class)).showFinderEntry()) {}
+    for (int i = 1;; i = 0)
     {
-      this.xvJ = ((ProgressBar)paramView.findViewById(2131306220));
-      this.Kyb = ((ImageView)paramView.findViewById(2131298176));
+      if (i == 0)
+      {
+        this.checkBox = ((CheckBox)paramView.findViewById(2131298410));
+        this.maskView = paramView.findViewById(2131298508);
+      }
+      if (paramBoolean)
+      {
+        this.uploadingPB = ((ProgressBar)paramView.findViewById(2131309619));
+        this.tickIV = ((ImageView)paramView.findViewById(2131298556));
+      }
+      AppMethodBeat.o(233630);
+      return this;
     }
-    this.KwJ = c.ku(ak.getContext());
-    AppMethodBeat.o(163329);
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.m.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.w;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -28,206 +28,176 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.c.a;
 import com.tencent.mm.kernel.i;
-import com.tencent.mm.plugin.card.d.m;
-import com.tencent.mm.plugin.card.model.a.a.a.c;
-import com.tencent.mm.plugin.card.model.b.d;
+import com.tencent.mm.plugin.card.model.a.a.a;
+import com.tencent.mm.plugin.card.model.a.a.a.e;
 import com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView;
-import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.beu;
-import com.tencent.mm.protocal.protobuf.cuc;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.sz;
-import com.tencent.mm.protocal.protobuf.ta;
-import com.tencent.mm.protocal.protobuf.tb;
-import com.tencent.mm.protocal.protobuf.td;
-import com.tencent.mm.protocal.protobuf.te;
-import com.tencent.mm.protocal.protobuf.tf;
-import com.tencent.mm.protocal.protobuf.ti;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.bqq;
+import com.tencent.mm.protocal.protobuf.dmt;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.ue;
+import com.tencent.mm.protocal.protobuf.uf;
+import com.tencent.mm.protocal.protobuf.ug;
+import com.tencent.mm.protocal.protobuf.ui;
+import com.tencent.mm.protocal.protobuf.uj;
+import com.tencent.mm.protocal.protobuf.uk;
+import com.tencent.mm.protocal.protobuf.un;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout.a;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import d.g.b.p;
-import d.g.b.q;
-import d.v;
-import d.z;
+import com.tencent.mm.view.recyclerview.f;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
 @i
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "loadCount", "", "loadingDialog", "Landroid/app/Dialog;", "mCardDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConvertData;", "Lkotlin/collections/ArrayList;", "mCardHomePageTopCellGroup", "Lcom/tencent/mm/protocal/protobuf/CardHomePageTopCellGroup;", "mFAQItem", "Lcom/tencent/mm/protocal/protobuf/CardHomePageFAQItem;", "mHasLoadedSuccess", "", "mHeaderContainerLayout", "Landroid/view/ViewGroup;", "mHeaderView", "mHomePageEmptyView", "Landroid/view/View;", "mHomePageRecentlyUsedCardTitleTv", "Landroid/widget/TextView;", "mIsAll", "mIsLoading", "mNeedRefreshPage", "mOffset", "mPageAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "mPageRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "mViewHeight", "doLoadHomePage", "", "refresh", "doRemoveRecentlyCard", "cardId", "userCardId", "getLayoutId", "gotoCardDetailUI", "gotoCertListUI", "gotoCouponCardListUI", "title", "gotoVipCardListUI", "hideLoading", "initView", "loadSnapshot", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "removeCardByCardId", "saveSnapshot", "showLoading", "updateCardList", "cardList", "Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedList;", "updateFAQ", "faqItem", "updateHeader", "topCellGroup", "updateRecentlyUsedCardTitleLayout", "updateRecentlyUsedTitle", "CardConvertData", "CardConverter", "Companion", "plugin-card_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "loadCount", "", "loadingDialog", "Landroid/app/Dialog;", "mCardDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConvertData;", "Lkotlin/collections/ArrayList;", "mCardHomePageTopCellGroup", "Lcom/tencent/mm/protocal/protobuf/CardHomePageTopCellGroup;", "mFAQItem", "Lcom/tencent/mm/protocal/protobuf/CardHomePageFAQItem;", "mHasLoadedSuccess", "", "mHeaderContainerLayout", "Landroid/view/ViewGroup;", "mHeaderView", "mHomePageEmptyView", "Landroid/view/View;", "mHomePageRecentlyUsedCardTitleTv", "Landroid/widget/TextView;", "mIsAll", "mIsLoading", "mNeedRefreshPage", "mOffset", "mPageAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "mPageRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "mViewHeight", "mViewWidth", "doLoadHomePage", "", "refresh", "doRemoveRecentlyCard", "cardId", "userCardId", "getLayoutId", "gotoCardDetailUI", "gotoCertListUI", "gotoCouponCardListUI", "title", "gotoCouponGiftCardListUI", "gotoVipCardListUI", "hideLoading", "initView", "loadSnapshot", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "removeCardByCardId", "saveSnapshot", "showLoading", "updateCardList", "cardList", "Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedList;", "updateFAQ", "faqItem", "updateHeader", "topCellGroup", "updateRecentlyUsedCardTitleLayout", "updateRecentlyUsedTitle", "CardConvertData", "CardConverter", "Companion", "plugin-card_release"})
 public final class CardHomePageV3UI
   extends MMActivity
 {
-  private static final int oTA = 4;
-  public static final CardHomePageV3UI.c oTB;
-  private static final int oTv = 1;
-  private static final int oTw = 2;
-  private static final int oTx = 1;
-  private static final int oTy = 2;
-  private static final int oTz = 3;
+  public static final CardHomePageV3UI.c qhl;
   String TAG;
-  private int aYT;
-  private int fq;
-  private boolean lpM;
-  private WxRecyclerView oTh;
-  private RefreshLoadMoreLayout oTi;
-  private ViewGroup oTj;
-  private ViewGroup oTk;
-  private TextView oTl;
-  private View oTm;
-  private WxRecyclerAdapter<a> oTn;
-  private ArrayList<a> oTo;
-  private boolean oTp;
-  private boolean oTq;
-  private boolean oTr;
-  private te oTs;
-  private sz oTt;
-  private int oTu;
+  private int aYN;
+  private int aYO;
+  private int fs;
+  private boolean mwr;
+  private WxRecyclerView qgX;
+  private RefreshLoadMoreLayout qgY;
+  private ViewGroup qgZ;
+  private ViewGroup qha;
+  private TextView qhb;
+  private View qhc;
+  private WxRecyclerAdapter<a> qhd;
+  private ArrayList<a> qhe;
+  private boolean qhf;
+  private boolean qhg;
+  private boolean qhh;
+  private uj qhi;
+  private ue qhj;
+  private int qhk;
   
   static
   {
-    AppMethodBeat.i(218462);
-    oTB = new CardHomePageV3UI.c((byte)0);
-    oTv = 1;
-    oTw = 2;
-    oTx = 1;
-    oTy = 2;
-    oTz = 3;
-    oTA = 4;
-    AppMethodBeat.o(218462);
+    AppMethodBeat.i(201468);
+    qhl = new CardHomePageV3UI.c((byte)0);
+    AppMethodBeat.o(201468);
   }
   
   public CardHomePageV3UI()
   {
-    AppMethodBeat.i(218461);
+    AppMethodBeat.i(201467);
     this.TAG = "MicroMsg.CardHomePageV3UI";
-    this.oTo = new ArrayList();
-    AppMethodBeat.o(218461);
+    this.qhe = new ArrayList();
+    AppMethodBeat.o(201467);
   }
   
-  private final void ZN(String paramString)
+  private final void a(ue paramue)
   {
-    AppMethodBeat.i(218459);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(201462);
+    if (paramue != null)
     {
-      if (i == 0)
-      {
-        localObject = this.oTl;
-        if (localObject == null) {
-          p.bdF("mHomePageRecentlyUsedCardTitleTv");
-        }
-        ((TextView)localObject).setText((CharSequence)paramString);
-      }
-      AppMethodBeat.o(218459);
-      return;
-    }
-  }
-  
-  private final void a(sz paramsz)
-  {
-    AppMethodBeat.i(218456);
-    if (paramsz != null)
-    {
-      this.oTt = paramsz;
-      if (!bu.isNullOrNil(paramsz.GiX))
+      this.qhj = paramue;
+      if (!Util.isNullOrNil(paramue.LdB))
       {
         removeAllOptionMenu();
-        addIconOptionMenu(0, 0, 2131690603, (MenuItem.OnMenuItemClickListener)new i(paramsz, this));
+        addIconOptionMenu(0, 0, 2131690843, (MenuItem.OnMenuItemClickListener)new i(paramue, this));
       }
-      AppMethodBeat.o(218456);
+      AppMethodBeat.o(201462);
       return;
     }
-    AppMethodBeat.o(218456);
+    AppMethodBeat.o(201462);
   }
   
-  private final void a(tb paramtb)
+  private final void a(ug paramug)
   {
-    AppMethodBeat.i(218457);
-    if (paramtb != null)
+    AppMethodBeat.i(201463);
+    if (paramug != null)
     {
-      paramtb = paramtb.Gjc.iterator();
-      while (paramtb.hasNext())
+      paramug = paramug.LdH.iterator();
+      while (paramug.hasNext())
       {
-        ta localta = (ta)paramtb.next();
+        uf localuf = (uf)paramug.next();
         a locala = new a();
-        p.g(localta, "cell");
-        locala.a(localta);
-        this.oTo.add(locala);
+        p.g(localuf, "cell");
+        locala.a(localuf);
+        this.qhe.add(locala);
       }
-      paramtb = this.oTn;
-      if (paramtb == null) {
-        p.bdF("mPageAdapter");
+      paramug = this.qhd;
+      if (paramug == null) {
+        p.btv("mPageAdapter");
       }
-      paramtb.notifyDataSetChanged();
+      paramug.notifyDataSetChanged();
     }
-    bZv();
-    AppMethodBeat.o(218457);
+    cxk();
+    AppMethodBeat.o(201463);
   }
   
-  private final void a(te paramte)
+  private final void a(uj paramuj)
   {
-    AppMethodBeat.i(218460);
-    ae.i(this.TAG, "do update header");
-    if (paramte == null)
+    AppMethodBeat.i(201466);
+    Log.i(this.TAG, "do update header");
+    if (paramuj == null)
     {
-      AppMethodBeat.o(218460);
+      AppMethodBeat.o(201466);
       return;
     }
-    this.oTs = paramte;
-    Object localObject1 = this.oTk;
+    this.qhi = paramuj;
+    Object localObject1 = this.qha;
     if (localObject1 == null) {
-      p.bdF("mHeaderContainerLayout");
+      p.btv("mHeaderContainerLayout");
     }
     ((ViewGroup)localObject1).removeAllViews();
-    int k = getResources().getDimensionPixelSize(2131165303);
-    paramte = paramte.Gjn;
-    p.g(paramte, "topCellGroup.card_home_page_top_cell_list");
-    paramte = ((Iterable)paramte).iterator();
-    while (paramte.hasNext())
+    int k = getResources().getDimensionPixelSize(2131165314);
+    paramuj = paramuj.LdS;
+    p.g(paramuj, "topCellGroup.card_home_page_top_cell_list");
+    paramuj = ((Iterable)paramuj).iterator();
+    while (paramuj.hasNext())
     {
-      Object localObject2 = (tf)paramte.next();
+      Object localObject2 = (uk)paramuj.next();
       localObject1 = new LinearLayout((Context)getContext());
       ((LinearLayout)localObject1).setOrientation(1);
       ((LinearLayout)localObject1).setPadding(0, 0, 0, k);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      Object localObject3 = ((tf)localObject2).Gjo;
+      Object localObject3 = ((uk)localObject2).LdT;
       p.g(localObject3, "group.card_home_page_top_cell");
       localObject3 = ((Iterable)localObject3).iterator();
       int i = 0;
       if (((Iterator)localObject3).hasNext())
       {
-        final td localtd = (td)((Iterator)localObject3).next();
-        View localView = getLayoutInflater().inflate(2131493301, (ViewGroup)localObject1, false);
-        Object localObject4 = (ImageView)localView.findViewById(2131298284);
-        TextView localTextView1 = (TextView)localView.findViewById(2131298285);
-        Object localObject5 = (TextView)localView.findViewById(2131298282);
-        TextView localTextView2 = (TextView)localView.findViewById(2131298289);
-        ImageView localImageView1 = (ImageView)localView.findViewById(2131298290);
-        ImageView localImageView2 = (ImageView)localView.findViewById(2131298291);
-        CharSequence localCharSequence = (CharSequence)localtd.Gjg;
+        final ui localui = (ui)((Iterator)localObject3).next();
+        View localView = getLayoutInflater().inflate(2131493391, (ViewGroup)localObject1, false);
+        Object localObject4 = (ImageView)localView.findViewById(2131298675);
+        TextView localTextView1 = (TextView)localView.findViewById(2131298676);
+        Object localObject5 = (TextView)localView.findViewById(2131298673);
+        TextView localTextView2 = (TextView)localView.findViewById(2131298680);
+        ImageView localImageView1 = (ImageView)localView.findViewById(2131298681);
+        ImageView localImageView2 = (ImageView)localView.findViewById(2131298682);
+        CharSequence localCharSequence = (CharSequence)localui.LdL;
         int j;
         if ((localCharSequence == null) || (localCharSequence.length() == 0))
         {
           j = 1;
           label326:
-          if ((j != 0) || (localtd.Gjl != 1)) {
+          if ((j != 0) || (localui.LdQ != 1)) {
             break label534;
           }
           p.g(localObject5, "descTv");
-          ((TextView)localObject5).setText((CharSequence)localtd.Gjg);
+          ((TextView)localObject5).setText((CharSequence)localui.LdL);
           p.g(localImageView2, "reddot2Iv");
           localImageView2.setVisibility(0);
           p.g(localImageView1, "reddot1Iv");
@@ -237,28 +207,28 @@ public final class CardHomePageV3UI
         }
         for (;;)
         {
-          localObject5 = localtd.Gje;
+          localObject5 = localui.LdJ;
           if (localObject5 != null)
           {
             p.g(localObject4, "iconIv");
-            m.a((ImageView)localObject4, (String)localObject5, false, 0, 0, 0, 124);
+            com.tencent.mm.plugin.card.d.m.a((ImageView)localObject4, (String)localObject5, false, 0, 0, 0, 124);
           }
           p.g(localTextView1, "titleTv");
-          localTextView1.setText((CharSequence)localtd.Gjf);
-          if (i == ((tf)localObject2).Gjo.size() - 1)
+          localTextView1.setText((CharSequence)localui.LdK);
+          if (i == ((uk)localObject2).LdT.size() - 1)
           {
-            localObject4 = localView.findViewById(2131298283);
+            localObject4 = localView.findViewById(2131298674);
             p.g(localObject4, "cellView.findViewById<Vi…header_cell_divider_view)");
             ((View)localObject4).setVisibility(8);
           }
-          localView.setOnClickListener((View.OnClickListener)new j(this, localtd));
+          localView.setOnClickListener((View.OnClickListener)new j(this, localui));
           ((LinearLayout)localObject1).addView(localView);
           i += 1;
           break;
           j = 0;
           break label326;
           label534:
-          if (localtd.Gjm == 1)
+          if (localui.LdR == 1)
           {
             p.g(localTextView2, "newIv");
             localTextView2.setVisibility(0);
@@ -269,7 +239,7 @@ public final class CardHomePageV3UI
             p.g(localImageView1, "reddot1Iv");
             localImageView1.setVisibility(8);
           }
-          else if (localtd.Gjl == 1)
+          else if (localui.LdQ == 1)
           {
             p.g(localObject5, "descTv");
             ((TextView)localObject5).setText((CharSequence)"");
@@ -293,85 +263,105 @@ public final class CardHomePageV3UI
           }
         }
       }
-      localObject2 = this.oTk;
+      localObject2 = this.qha;
       if (localObject2 == null) {
-        p.bdF("mHeaderContainerLayout");
+        p.btv("mHeaderContainerLayout");
       }
       ((ViewGroup)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)localLayoutParams);
     }
-    AppMethodBeat.o(218460);
+    AppMethodBeat.o(201466);
   }
   
-  private final void bZv()
+  private final void ajS(String paramString)
   {
-    AppMethodBeat.i(218458);
-    if (this.oTo.isEmpty())
+    AppMethodBeat.i(201465);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1;; i = 0)
     {
-      localObject = this.oTm;
+      if (i == 0)
+      {
+        localObject = this.qhb;
+        if (localObject == null) {
+          p.btv("mHomePageRecentlyUsedCardTitleTv");
+        }
+        ((TextView)localObject).setText((CharSequence)paramString);
+      }
+      AppMethodBeat.o(201465);
+      return;
+    }
+  }
+  
+  private final void cxk()
+  {
+    AppMethodBeat.i(201464);
+    if (this.qhe.isEmpty())
+    {
+      localObject = this.qhc;
       if (localObject == null) {
-        p.bdF("mHomePageEmptyView");
+        p.btv("mHomePageEmptyView");
       }
       ((View)localObject).setVisibility(0);
-      localObject = this.oTl;
+      localObject = this.qhb;
       if (localObject == null) {
-        p.bdF("mHomePageRecentlyUsedCardTitleTv");
+        p.btv("mHomePageRecentlyUsedCardTitleTv");
       }
       ((TextView)localObject).setVisibility(8);
-      AppMethodBeat.o(218458);
+      AppMethodBeat.o(201464);
       return;
     }
-    Object localObject = this.oTm;
+    Object localObject = this.qhc;
     if (localObject == null) {
-      p.bdF("mHomePageEmptyView");
+      p.btv("mHomePageEmptyView");
     }
     ((View)localObject).setVisibility(8);
-    localObject = this.oTl;
+    localObject = this.qhb;
     if (localObject == null) {
-      p.bdF("mHomePageRecentlyUsedCardTitleTv");
+      p.btv("mHomePageRecentlyUsedCardTitleTv");
     }
     ((TextView)localObject).setVisibility(0);
-    AppMethodBeat.o(218458);
+    AppMethodBeat.o(201464);
   }
   
-  private final void jw(final boolean paramBoolean)
+  private final void kz(final boolean paramBoolean)
   {
     int i = 0;
-    AppMethodBeat.i(218455);
-    ae.i(this.TAG, "do load home page");
+    AppMethodBeat.i(201461);
+    Log.i(this.TAG, "do load home page");
     Object localObject;
-    if ((this.oTp) && (!paramBoolean))
+    if ((this.qhf) && (!paramBoolean))
     {
-      ae.w(this.TAG, "already load complete");
-      localObject = this.oTi;
+      Log.w(this.TAG, "already load complete");
+      localObject = this.qgY;
       if (localObject == null) {
-        p.bdF("mRefreshLayout");
+        p.btv("mRefreshLayout");
       }
-      ((RefreshLoadMoreLayout)localObject).agI(0);
-      AppMethodBeat.o(218455);
+      ((RefreshLoadMoreLayout)localObject).apT(0);
+      AppMethodBeat.o(201461);
       return;
     }
-    if (this.lpM)
+    if (this.mwr)
     {
-      ae.w(this.TAG, "is loading");
-      AppMethodBeat.o(218455);
+      Log.w(this.TAG, "is loading");
+      AppMethodBeat.o(201461);
       return;
     }
-    this.lpM = true;
-    int j = this.fq;
+    this.mwr = true;
+    int j = this.fs;
     if (paramBoolean)
     {
-      localObject = this.oTi;
+      localObject = this.qgY;
       if (localObject == null) {
-        p.bdF("mRefreshLayout");
+        p.btv("mRefreshLayout");
       }
       ((RefreshLoadMoreLayout)localObject).setHasBottomMore(true);
     }
     for (;;)
     {
-      localObject = new com.tencent.mm.plugin.card.model.b.c(i).aET();
+      localObject = new com.tencent.mm.plugin.card.model.b.c(i).aYI();
       p.g(localObject, "CgiGetMktCardHomePageV3(offset, 10).run()");
-      com.tencent.mm.ac.c.b((com.tencent.mm.vending.g.c)localObject, (d.g.a.b)new d(this, paramBoolean));
-      AppMethodBeat.o(218455);
+      com.tencent.mm.ac.d.b((com.tencent.mm.vending.g.c)localObject, (kotlin.g.a.b)new d(this, paramBoolean));
+      AppMethodBeat.o(201461);
       return;
       i = j;
     }
@@ -379,208 +369,213 @@ public final class CardHomePageV3UI
   
   public final int getLayoutId()
   {
-    return 2131493304;
+    return 2131493394;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(218451);
-    Object localObject1 = findViewById(2131298315);
+    AppMethodBeat.i(201457);
+    Object localObject1 = findViewById(2131298707);
     p.g(localObject1, "findViewById(R.id.chpuv3_rv)");
-    this.oTh = ((WxRecyclerView)localObject1);
-    localObject1 = findViewById(2131298314);
+    this.qgX = ((WxRecyclerView)localObject1);
+    localObject1 = findViewById(2131298706);
     p.g(localObject1, "findViewById(R.id.chpuv3_refresh_layout)");
-    this.oTi = ((RefreshLoadMoreLayout)localObject1);
-    localObject1 = this.oTh;
+    this.qgY = ((RefreshLoadMoreLayout)localObject1);
+    localObject1 = this.qgX;
     if (localObject1 == null) {
-      p.bdF("mPageRv");
+      p.btv("mPageRv");
     }
     getContext();
-    ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.i)new LinearLayoutManager(1));
-    this.oTn = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.c)new f(this), this.oTo);
-    localObject1 = this.oTh;
+    ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
+    this.qhd = new WxRecyclerAdapter((f)new f(this), this.qhe);
+    localObject1 = this.qhd;
     if (localObject1 == null) {
-      p.bdF("mPageRv");
+      p.btv("mPageAdapter");
     }
-    Object localObject2 = this.oTn;
+    ((WxRecyclerAdapter)localObject1).au(true);
+    localObject1 = this.qgX;
+    if (localObject1 == null) {
+      p.btv("mPageRv");
+    }
+    Object localObject2 = this.qhd;
     if (localObject2 == null) {
-      p.bdF("mPageAdapter");
+      p.btv("mPageAdapter");
     }
     ((WxRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-    localObject1 = new w((Context)getContext());
-    ((w)localObject1).setDrawable(getResources().getDrawable(2131231470));
-    localObject2 = this.oTh;
+    localObject1 = new w((Context)getContext(), 1);
+    ((w)localObject1).setDrawable(getResources().getDrawable(2131231535));
+    localObject2 = this.qgX;
     if (localObject2 == null) {
-      p.bdF("mPageRv");
+      p.btv("mPageRv");
     }
     ((WxRecyclerView)localObject2).b((RecyclerView.h)localObject1);
     localObject1 = getLayoutInflater();
-    localObject2 = this.oTh;
+    localObject2 = this.qgX;
     if (localObject2 == null) {
-      p.bdF("mPageRv");
+      p.btv("mPageRv");
     }
-    localObject1 = ((LayoutInflater)localObject1).inflate(2131493302, (ViewGroup)localObject2, false);
+    localObject1 = ((LayoutInflater)localObject1).inflate(2131493392, (ViewGroup)localObject2, false);
     if (localObject1 == null)
     {
-      localObject1 = new v("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(218451);
+      localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(201457);
       throw ((Throwable)localObject1);
     }
-    this.oTj = ((ViewGroup)localObject1);
-    localObject1 = this.oTj;
+    this.qgZ = ((ViewGroup)localObject1);
+    localObject1 = this.qgZ;
     if (localObject1 == null) {
-      p.bdF("mHeaderView");
+      p.btv("mHeaderView");
     }
-    localObject1 = ((ViewGroup)localObject1).findViewById(2131298286);
+    localObject1 = ((ViewGroup)localObject1).findViewById(2131298677);
     p.g(localObject1, "mHeaderView.findViewById…_header_container_layout)");
-    this.oTk = ((ViewGroup)localObject1);
-    localObject1 = this.oTj;
+    this.qha = ((ViewGroup)localObject1);
+    localObject1 = this.qgZ;
     if (localObject1 == null) {
-      p.bdF("mHeaderView");
+      p.btv("mHeaderView");
     }
-    localObject1 = ((ViewGroup)localObject1).findViewById(2131298288);
+    localObject1 = ((ViewGroup)localObject1).findViewById(2131298679);
     p.g(localObject1, "mHeaderView.findViewById…hphv3_home_page_title_tv)");
-    this.oTl = ((TextView)localObject1);
-    localObject1 = this.oTj;
+    this.qhb = ((TextView)localObject1);
+    localObject1 = this.qgZ;
     if (localObject1 == null) {
-      p.bdF("mHeaderView");
+      p.btv("mHeaderView");
     }
-    localObject1 = ((ViewGroup)localObject1).findViewById(2131298287);
+    localObject1 = ((ViewGroup)localObject1).findViewById(2131298678);
     p.g(localObject1, "mHeaderView.findViewById…3_home_page_empty_layout)");
-    this.oTm = ((View)localObject1);
-    localObject1 = this.oTn;
+    this.qhc = ((View)localObject1);
+    localObject1 = this.qhd;
     if (localObject1 == null) {
-      p.bdF("mPageAdapter");
+      p.btv("mPageAdapter");
     }
-    localObject2 = this.oTj;
+    localObject2 = this.qgZ;
     if (localObject2 == null) {
-      p.bdF("mHeaderView");
+      p.btv("mHeaderView");
     }
-    ((WxRecyclerAdapter)localObject1).f((View)localObject2, oTw, false);
-    localObject1 = this.oTi;
+    ((WxRecyclerAdapter)localObject1).f((View)localObject2, 2, false);
+    localObject1 = this.qgY;
     if (localObject1 == null) {
-      p.bdF("mRefreshLayout");
+      p.btv("mRefreshLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setEnableRefresh(false);
-    localObject1 = this.oTi;
+    localObject1 = this.qgY;
     if (localObject1 == null) {
-      p.bdF("mRefreshLayout");
+      p.btv("mRefreshLayout");
     }
     int i = com.tencent.mm.cb.a.fromDPToPix((Context)getContext(), 1200);
-    localObject2 = ak.getContext();
+    localObject2 = MMApplicationContext.getContext();
     p.g(localObject2, "MMApplicationContext.getContext()");
-    ((RefreshLoadMoreLayout)localObject1).setLimitTopRequest(i - (int)((Context)localObject2).getResources().getDimension(2131165277));
-    localObject1 = this.oTi;
+    ((RefreshLoadMoreLayout)localObject1).setLimitTopRequest(i - (int)((Context)localObject2).getResources().getDimension(2131165281));
+    localObject1 = this.qgY;
     if (localObject1 == null) {
-      p.bdF("mRefreshLayout");
+      p.btv("mRefreshLayout");
     }
-    localObject2 = ak.getContext();
+    localObject2 = MMApplicationContext.getContext();
     p.g(localObject2, "MMApplicationContext.getContext()");
-    ((RefreshLoadMoreLayout)localObject1).setRefreshTargetY((int)((Context)localObject2).getResources().getDimension(2131165299) - com.tencent.mm.cb.a.fromDPToPix((Context)getContext(), 1200));
-    localObject1 = this.oTi;
+    ((RefreshLoadMoreLayout)localObject1).setRefreshTargetY((int)((Context)localObject2).getResources().getDimension(2131165310) - com.tencent.mm.cb.a.fromDPToPix((Context)getContext(), 1200));
+    localObject1 = this.qgY;
     if (localObject1 == null) {
-      p.bdF("mRefreshLayout");
+      p.btv("mRefreshLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setDamping(1.85F);
-    localObject1 = this.oTi;
+    localObject1 = this.qgY;
     if (localObject1 == null) {
-      p.bdF("mRefreshLayout");
+      p.btv("mRefreshLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setActionCallback((RefreshLoadMoreLayout.a)new g(this));
-    AppMethodBeat.o(218451);
+    AppMethodBeat.o(201457);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(218454);
-    if (paramInt1 == oTx) {
-      jw(true);
+    AppMethodBeat.i(201460);
+    switch (paramInt1)
+    {
     }
     for (;;)
     {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
-      AppMethodBeat.o(218454);
+      AppMethodBeat.o(201460);
       return;
-      if (paramInt1 == oTz) {
-        jw(true);
-      } else if (paramInt1 == oTy) {
-        jw(true);
-      } else if (paramInt1 == oTA) {
-        jw(true);
-      }
+      kz(true);
+      continue;
+      kz(true);
+      continue;
+      kz(true);
+      continue;
+      kz(true);
     }
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(218450);
+    AppMethodBeat.i(201456);
     super.onCreate(paramBundle);
     initView();
-    setMMTitle(2131756891);
+    setMMTitle(2131757061);
     setActionbarColor(getResources().getColor(2131099648));
     hideActionbarLine();
     setBackBtn((MenuItem.OnMenuItemClickListener)new h(this));
-    paramBundle = com.tencent.mm.plugin.card.model.a.a.oHA;
-    paramBundle = com.tencent.mm.plugin.card.model.a.a.a.bWt();
+    paramBundle = com.tencent.mm.plugin.card.model.a.a.pVg;
+    paramBundle = a.a.cuh();
     if (paramBundle != null)
     {
-      this.fq = paramBundle.pqB;
-      ZN(paramBundle.GTU);
-      a(paramBundle.GTS);
-      a(paramBundle.GTT);
-      a(paramBundle.GTP);
+      this.fs = paramBundle.qGg;
+      ajS(paramBundle.LYm);
+      a(paramBundle.LYk);
+      a(paramBundle.LYl);
+      a(paramBundle.LYh);
     }
-    jw(true);
-    AppMethodBeat.o(218450);
+    kz(true);
+    AppMethodBeat.o(201456);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(218453);
+    AppMethodBeat.i(201459);
     super.onDestroy();
-    if (!this.oTq)
+    if (!this.qhg)
     {
-      ae.i(this.TAG, "no data to save snapshot");
-      AppMethodBeat.o(218453);
+      Log.i(this.TAG, "no data to save snapshot");
+      AppMethodBeat.o(201459);
       return;
     }
-    beu localbeu = new beu();
-    localbeu.BaseResponse = new BaseResponse();
-    localbeu.BaseResponse.ErrMsg = new cxn();
-    localbeu.GTS = this.oTs;
-    Object localObject = this.oTl;
+    bqq localbqq = new bqq();
+    localbqq.BaseResponse = new BaseResponse();
+    localbqq.BaseResponse.ErrMsg = new dqi();
+    localbqq.LYk = this.qhi;
+    Object localObject = this.qhb;
     if (localObject == null) {
-      p.bdF("mHomePageRecentlyUsedCardTitleTv");
+      p.btv("mHomePageRecentlyUsedCardTitleTv");
     }
-    localbeu.GTU = ((TextView)localObject).getText().toString();
-    localbeu.GTT = new tb();
-    localbeu.pqB = this.fq;
-    localbeu.GTP = this.oTt;
-    localObject = this.oTo.iterator();
+    localbqq.LYm = ((TextView)localObject).getText().toString();
+    localbqq.LYl = new ug();
+    localbqq.qGg = this.fs;
+    localbqq.LYh = this.qhj;
+    localObject = this.qhe.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      ta localta = ((a)((Iterator)localObject).next()).bZy();
-      if (localta != null) {
-        localbeu.GTT.Gjc.add(localta);
+      uf localuf = ((a)((Iterator)localObject).next()).cxm();
+      if (localuf != null) {
+        localbqq.LYl.LdH.add(localuf);
       }
     }
-    localObject = com.tencent.mm.plugin.card.model.a.a.oHA;
-    p.h(localbeu, "response");
-    ae.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save home page v3 snapshot");
-    com.tencent.mm.ac.c.b(null, (d.g.a.a)new a.a.c(localbeu));
-    AppMethodBeat.o(218453);
+    localObject = com.tencent.mm.plugin.card.model.a.a.pVg;
+    p.h(localbqq, "response");
+    Log.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save home page v3 snapshot");
+    com.tencent.mm.ac.d.i((kotlin.g.a.a)new a.a.e(localbqq));
+    AppMethodBeat.o(201459);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(218452);
+    AppMethodBeat.i(201458);
     super.onResume();
-    if (this.oTr)
+    if (this.qhh)
     {
-      jw(true);
-      this.oTr = false;
+      kz(true);
+      this.qhh = false;
     }
-    AppMethodBeat.o(218452);
+    AppMethodBeat.o(201458);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -589,154 +584,154 @@ public final class CardHomePageV3UI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "()V", "recentlyUsedCell", "Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedCell;", "getRecentlyUsedCell", "()Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedCell;", "setRecentlyUsedCell", "(Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedCell;)V", "getItemId", "", "getItemType", "", "plugin-card_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "()V", "recentlyUsedCell", "Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedCell;", "getRecentlyUsedCell", "()Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedCell;", "setRecentlyUsedCell", "(Lcom/tencent/mm/protocal/protobuf/CardHomePageRecentlyUsedCell;)V", "getItemId", "", "getItemType", "", "plugin-card_release"})
   public static final class a
     implements com.tencent.mm.view.recyclerview.a
   {
-    public ta oTC;
+    public uf qhm;
     
-    public final void a(ta paramta)
+    public final void a(uf paramuf)
     {
-      AppMethodBeat.i(218422);
-      p.h(paramta, "<set-?>");
-      this.oTC = paramta;
-      AppMethodBeat.o(218422);
+      AppMethodBeat.i(201429);
+      p.h(paramuf, "<set-?>");
+      this.qhm = paramuf;
+      AppMethodBeat.o(201429);
     }
     
-    public final ta bZy()
+    public final uf cxm()
     {
-      AppMethodBeat.i(218421);
-      ta localta = this.oTC;
-      if (localta == null) {
-        p.bdF("recentlyUsedCell");
+      AppMethodBeat.i(201428);
+      uf localuf = this.qhm;
+      if (localuf == null) {
+        p.btv("recentlyUsedCell");
       }
-      AppMethodBeat.o(218421);
-      return localta;
+      AppMethodBeat.o(201428);
+      return localuf;
     }
     
-    public final int bZz()
+    public final int cxn()
     {
-      AppMethodBeat.i(218424);
-      CardHomePageV3UI.c localc = CardHomePageV3UI.oTB;
-      int i = CardHomePageV3UI.bZx();
-      AppMethodBeat.o(218424);
-      return i;
+      return 1;
     }
     
-    public final long lP()
+    public final long lT()
     {
-      AppMethodBeat.i(218423);
-      ta localta = this.oTC;
-      if (localta == null) {
-        p.bdF("recentlyUsedCell");
+      AppMethodBeat.i(201430);
+      uf localuf = this.qhm;
+      if (localuf == null) {
+        p.btv("recentlyUsedCell");
       }
-      long l = localta.dJb.hashCode();
-      AppMethodBeat.o(218423);
+      long l = localuf.eaO.hashCode();
+      AppMethodBeat.o(201430);
       return l;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConvertData;", "(Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI;)V", "clearShadowLayer", "", "textview", "Landroid/widget/TextView;", "getLayoutId", "", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "setShadowLayer", "showDeleteConfirmDialog", "cardId", "", "userCardId", "plugin-card_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConvertData;", "(Lcom/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI;)V", "clearShadowLayer", "", "textview", "Landroid/widget/TextView;", "getLayoutId", "", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "setShadowLayer", "showDeleteConfirmDialog", "cardId", "", "userCardId", "plugin-card_release"})
   public final class b
-    extends com.tencent.mm.view.recyclerview.b<CardHomePageV3UI.a>
+    extends com.tencent.mm.view.recyclerview.e<CardHomePageV3UI.a>
   {
-    private static void i(TextView paramTextView)
+    private static void j(TextView paramTextView)
     {
-      AppMethodBeat.i(218435);
+      AppMethodBeat.i(201441);
       paramTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-      AppMethodBeat.o(218435);
+      AppMethodBeat.o(201441);
     }
     
-    private final void j(TextView paramTextView)
+    private final void k(TextView paramTextView)
     {
-      AppMethodBeat.i(218436);
-      paramTextView.setShadowLayer(com.tencent.mm.cb.a.fromDPToPix(paramTextView.getContext(), 4), 0.0F, 0.0F, this.oTD.getResources().getColor(2131099817));
-      AppMethodBeat.o(218436);
+      AppMethodBeat.i(201442);
+      paramTextView.setShadowLayer(com.tencent.mm.cb.a.fromDPToPix(paramTextView.getContext(), 4), 0.0F, 0.0F, this.qhn.getResources().getColor(2131099833));
+      AppMethodBeat.o(201442);
     }
     
-    public final void a(RecyclerView paramRecyclerView, final com.tencent.mm.view.recyclerview.e parame, int paramInt)
+    public final void a(RecyclerView paramRecyclerView, final com.tencent.mm.view.recyclerview.h paramh, int paramInt)
     {
-      AppMethodBeat.i(218433);
+      AppMethodBeat.i(201439);
       p.h(paramRecyclerView, "recyclerView");
-      p.h(parame, "holder");
-      paramRecyclerView = (ViewGroup)parame.GD(2131298309);
-      paramRecyclerView.setOnClickListener((View.OnClickListener)new c(this, parame));
-      paramRecyclerView.setOnLongClickListener((View.OnLongClickListener)new d(this, parame));
-      AppMethodBeat.o(218433);
+      p.h(paramh, "holder");
+      paramRecyclerView = (ViewGroup)paramh.Mn(2131298701);
+      paramRecyclerView.setOnClickListener((View.OnClickListener)new c(this, paramh));
+      paramRecyclerView.setOnLongClickListener((View.OnLongClickListener)new d(this, paramh));
+      AppMethodBeat.o(201439);
     }
     
     public final int getLayoutId()
     {
-      return 2131493303;
+      return 2131493393;
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(CardHomePageV3UI.b paramb, com.tencent.mm.view.recyclerview.e parame, d.g.a.a parama) {}
+      a(CardHomePageV3UI.b paramb, com.tencent.mm.view.recyclerview.h paramh, kotlin.g.a.a parama) {}
       
       public final void run()
       {
-        AppMethodBeat.i(218425);
-        CardHomePageV3UI localCardHomePageV3UI = this.oTE.oTD;
-        View localView = this.oTF.auu;
+        AppMethodBeat.i(201431);
+        CardHomePageV3UI localCardHomePageV3UI = this.qho.qhn;
+        View localView = this.qhp.aus;
         p.g(localView, "holder.itemView");
         CardHomePageV3UI.a(localCardHomePageV3UI, localView.getHeight());
-        this.oTG.invoke();
-        AppMethodBeat.o(218425);
+        localCardHomePageV3UI = this.qho.qhn;
+        localView = this.qhp.aus;
+        p.g(localView, "holder.itemView");
+        CardHomePageV3UI.b(localCardHomePageV3UI, localView.getWidth());
+        this.qgW.invoke();
+        AppMethodBeat.o(201431);
       }
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
     static final class b
       extends q
-      implements d.g.a.a<z>
+      implements kotlin.g.a.a<x>
     {
-      b(CardHomePageV3UI.b paramb, MemberCardTopCropImageView paramMemberCardTopCropImageView, CardHomePageV3UI.a parama, com.tencent.mm.view.recyclerview.e parame)
+      b(CardHomePageV3UI.b paramb, com.tencent.mm.view.recyclerview.h paramh, MemberCardTopCropImageView paramMemberCardTopCropImageView, CardHomePageV3UI.a parama)
       {
         super();
       }
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class c
       implements View.OnClickListener
     {
-      c(CardHomePageV3UI.b paramb, com.tencent.mm.view.recyclerview.e parame) {}
+      c(CardHomePageV3UI.b paramb, com.tencent.mm.view.recyclerview.h paramh) {}
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(218427);
+        AppMethodBeat.i(201433);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        paramView = (CardHomePageV3UI.a)parame.fUY();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        paramView = (CardHomePageV3UI.a)paramh.hgv();
         String str;
-        switch (paramView.bZy().Giz)
+        switch (paramView.cxm().Ldc)
         {
         default: 
-          ae.w(CardHomePageV3UI.a(this.oTE.oTD), "unknown type " + paramView.bZy().Giz);
-          localObject = this.oTE.oTD;
-          str = paramView.bZy().FKu;
+          Log.w(CardHomePageV3UI.a(this.qho.qhn), "unknown type " + paramView.cxm().Ldc);
+          localObject = this.qho.qhn;
+          str = paramView.cxm().KDM;
           p.g(str, "cardConvertData.recentlyUsedCell.user_card_id");
           CardHomePageV3UI.a((CardHomePageV3UI)localObject, str);
         }
         for (;;)
         {
-          g.yxI.f(19674, new Object[] { Integer.valueOf(1), Integer.valueOf(paramView.bZy().mwj), paramView.bZy().FKu, Long.valueOf(System.currentTimeMillis() / 1000L) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(19674, new Object[] { Integer.valueOf(1), Integer.valueOf(paramView.cxm().nHh), paramView.cxm().KDM, Long.valueOf(System.currentTimeMillis() / 1000L) });
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(218427);
+          AppMethodBeat.o(201433);
           return;
-          com.tencent.mm.plugin.card.d.b.a((MMActivity)this.oTE.oTD.getContext(), paramView.bZy().GiA);
+          com.tencent.mm.plugin.card.d.b.a((MMActivity)this.qho.qhn.getContext(), paramView.cxm().Ldd);
           continue;
-          localObject = paramView.bZy().GiB;
+          localObject = paramView.cxm().Lde;
           if (localObject != null)
           {
-            com.tencent.mm.plugin.card.d.b.I(((ti)localObject).CRv, ((ti)localObject).CRw, ((ti)localObject).DyO);
+            com.tencent.mm.plugin.card.d.b.H(((un)localObject).Hwr, ((un)localObject).Hws, ((un)localObject).IhZ);
             continue;
-            localObject = this.oTE.oTD;
-            str = paramView.bZy().FKu;
+            localObject = this.qho.qhn;
+            str = paramView.cxm().KDM;
             p.g(str, "cardConvertData.recentlyUsedCell.user_card_id");
             CardHomePageV3UI.a((CardHomePageV3UI)localObject, str);
           }
@@ -744,114 +739,114 @@ public final class CardHomePageV3UI
       }
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
     static final class d
       implements View.OnLongClickListener
     {
-      d(CardHomePageV3UI.b paramb, com.tencent.mm.view.recyclerview.e parame) {}
+      d(CardHomePageV3UI.b paramb, com.tencent.mm.view.recyclerview.h paramh) {}
       
       public final boolean onLongClick(View paramView)
       {
-        AppMethodBeat.i(218430);
+        AppMethodBeat.i(201436);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter$onCreateViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        final CardHomePageV3UI.a locala = (CardHomePageV3UI.a)parame.fUY();
-        localObject = new com.tencent.mm.ui.widget.b.a((Context)this.oTE.oTD.getContext(), paramView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter$onCreateViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        final CardHomePageV3UI.a locala = (CardHomePageV3UI.a)paramh.hgv();
+        localObject = new com.tencent.mm.ui.widget.b.a((Context)this.qho.qhn.getContext(), paramView);
         ((com.tencent.mm.ui.widget.b.a)localObject).a((View.OnCreateContextMenuListener)new View.OnCreateContextMenuListener()
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
           {
-            AppMethodBeat.i(218428);
-            paramAnonymousContextMenu.add(0, 1, 0, (CharSequence)this.oTJ.oTE.oTD.getString(2131760291));
-            AppMethodBeat.o(218428);
+            AppMethodBeat.i(201434);
+            paramAnonymousContextMenu.add(0, 1, 0, (CharSequence)this.qhs.qho.qhn.getString(2131757060));
+            AppMethodBeat.o(201434);
           }
         });
-        ((com.tencent.mm.ui.widget.b.a)localObject).a((n.e)new n.e()
+        ((com.tencent.mm.ui.widget.b.a)localObject).a((o.g)new o.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
-            AppMethodBeat.i(218429);
-            paramAnonymousMenuItem = this.oTJ.oTE;
-            String str1 = locala.bZy().dJb;
+            AppMethodBeat.i(201435);
+            paramAnonymousMenuItem = this.qhs.qho;
+            String str1 = locala.cxm().eaO;
             p.g(str1, "cardConvertData.recentlyUsedCell.card_id");
-            String str2 = locala.bZy().FKu;
+            String str2 = locala.cxm().KDM;
             p.g(str2, "cardConvertData.recentlyUsedCell.user_card_id");
-            com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e((Context)paramAnonymousMenuItem.oTD.getContext(), 1, true);
-            TextView localTextView = new TextView((Context)paramAnonymousMenuItem.oTD.getContext());
-            localTextView.setText((CharSequence)paramAnonymousMenuItem.oTD.getString(2131756890));
+            com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e((Context)paramAnonymousMenuItem.qhn.getContext(), 1, true);
+            TextView localTextView = new TextView((Context)paramAnonymousMenuItem.qhn.getContext());
+            localTextView.setText((CharSequence)paramAnonymousMenuItem.qhn.getString(2131757059));
             localTextView.setTextSize(1, 14.0F);
-            localTextView.setTextColor(paramAnonymousMenuItem.oTD.getResources().getColor(2131100482));
+            localTextView.setTextColor(paramAnonymousMenuItem.qhn.getResources().getColor(2131100584));
             localTextView.setGravity(17);
-            paramAnonymousInt = paramAnonymousMenuItem.oTD.getResources().getDimensionPixelSize(2131165303);
-            int i = paramAnonymousMenuItem.oTD.getResources().getDimensionPixelSize(2131165289);
+            paramAnonymousInt = paramAnonymousMenuItem.qhn.getResources().getDimensionPixelSize(2131165314);
+            int i = paramAnonymousMenuItem.qhn.getResources().getDimensionPixelSize(2131165296);
             localTextView.setPadding(paramAnonymousInt, i, paramAnonymousInt, i);
-            locale.P((View)localTextView, false);
-            locale.a((n.d)new CardHomePageV3UI.b.e(paramAnonymousMenuItem));
-            locale.a((n.e)new CardHomePageV3UI.b.f(paramAnonymousMenuItem, str1, str2));
-            locale.cPF();
-            g.yxI.f(19674, new Object[] { Integer.valueOf(2), Integer.valueOf(locala.bZy().mwj), locala.bZy().FKu, Long.valueOf(System.currentTimeMillis() / 1000L) });
-            AppMethodBeat.o(218429);
+            locale.V((View)localTextView, false);
+            locale.a((o.f)new CardHomePageV3UI.b.e(paramAnonymousMenuItem));
+            locale.a((o.g)new CardHomePageV3UI.b.f(paramAnonymousMenuItem, str1, str2));
+            locale.dGm();
+            com.tencent.mm.plugin.report.service.h.CyF.a(19674, new Object[] { Integer.valueOf(2), Integer.valueOf(locala.cxm().nHh), locala.cxm().KDM, Long.valueOf(System.currentTimeMillis() / 1000L) });
+            AppMethodBeat.o(201435);
           }
         });
         p.g(paramView, "it");
-        paramView = m.dJ(paramView);
-        ((com.tencent.mm.ui.widget.b.a)localObject).el(paramView.x, paramView.y);
+        paramView = com.tencent.mm.plugin.card.d.m.dB(paramView);
+        ((com.tencent.mm.ui.widget.b.a)localObject).ez(paramView.x, paramView.y);
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$CardConverter$onCreateViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(218430);
+        AppMethodBeat.o(201436);
         return false;
       }
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
     static final class e
-      implements n.d
+      implements o.f
     {
       e(CardHomePageV3UI.b paramb) {}
       
-      public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
+      public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramm)
       {
-        AppMethodBeat.i(218431);
-        paraml.a(1, this.oTE.oTD.getResources().getColor(2131100800), (CharSequence)this.oTE.oTD.getString(2131755835));
-        AppMethodBeat.o(218431);
+        AppMethodBeat.i(201437);
+        paramm.a(1, this.qho.qhn.getResources().getColor(2131100996), (CharSequence)this.qho.qhn.getString(2131755921));
+        AppMethodBeat.o(201437);
       }
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
     static final class f
-      implements n.e
+      implements o.g
     {
       f(CardHomePageV3UI.b paramb, String paramString1, String paramString2) {}
       
       public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
       {
-        AppMethodBeat.i(218432);
+        AppMethodBeat.i(201438);
         p.g(paramMenuItem, "menuItem");
         switch (paramMenuItem.getItemId())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(218432);
+          AppMethodBeat.o(201438);
           return;
-          paramMenuItem = this.oTE.oTD;
-          Object localObject = this.oSx;
-          String str = this.oTL;
+          paramMenuItem = this.qho.qhn;
+          Object localObject = this.qgl;
+          String str = this.qhu;
           p.h(localObject, "cardId");
           p.h(str, "userCardId");
-          ae.i(paramMenuItem.TAG, "do remove recently: " + (String)localObject + ", " + str);
-          localObject = new d((String)localObject, str).aES().aET();
+          Log.i(paramMenuItem.TAG, "do remove recently: " + (String)localObject + ", " + str);
+          localObject = new com.tencent.mm.plugin.card.model.b.d((String)localObject, str).aYH().aYI();
           p.g(localObject, "CgiRemoveCardInRecentlyU…ntCancelAfterDead().run()");
-          com.tencent.mm.ac.c.b((com.tencent.mm.vending.g.c)localObject, (d.g.a.b)new CardHomePageV3UI.e(paramMenuItem, str)).b((com.tencent.mm.vending.e.b)paramMenuItem);
+          com.tencent.mm.ac.d.b((com.tencent.mm.vending.g.c)localObject, (kotlin.g.a.b)new CardHomePageV3UI.e(paramMenuItem, str)).b((com.tencent.mm.vending.e.b)paramMenuItem);
         }
       }
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMktCardHomePageV2Response;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMktCardHomePageV2Response;", "kotlin.jvm.PlatformType", "invoke"})
   static final class d
     extends q
-    implements d.g.a.b<com.tencent.mm.ak.a.a<beu>, z>
+    implements kotlin.g.a.b<c.a<bqq>, x>
   {
     d(CardHomePageV3UI paramCardHomePageV3UI, boolean paramBoolean)
     {
@@ -859,10 +854,10 @@ public final class CardHomePageV3UI
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/RemoveCardInRecentlyUsedListResponse;", "kotlin.jvm.PlatformType", "invoke", "(Lcom/tencent/mm/modelbase/Cgi$CgiBack;)Lkotlin/Unit;"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/RemoveCardInRecentlyUsedListResponse;", "kotlin.jvm.PlatformType", "invoke", "(Lcom/tencent/mm/modelbase/Cgi$CgiBack;)Lkotlin/Unit;"})
   static final class e
     extends q
-    implements d.g.a.b<com.tencent.mm.ak.a.a<cuc>, z>
+    implements kotlin.g.a.b<c.a<dmt>, x>
   {
     e(CardHomePageV3UI paramCardHomePageV3UI, String paramString)
     {
@@ -870,75 +865,75 @@ public final class CardHomePageV3UI
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-card_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-card_release"})
   public static final class f
-    implements com.tencent.mm.view.recyclerview.c
+    implements f
   {
-    public final com.tencent.mm.view.recyclerview.b<?> AX(int paramInt)
+    public final com.tencent.mm.view.recyclerview.e<?> EC(int paramInt)
     {
-      AppMethodBeat.i(218439);
-      com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)new CardHomePageV3UI.b(this.oTD);
-      AppMethodBeat.o(218439);
-      return localb;
+      AppMethodBeat.i(201445);
+      com.tencent.mm.view.recyclerview.e locale = (com.tencent.mm.view.recyclerview.e)new CardHomePageV3UI.b(this.qhn);
+      AppMethodBeat.o(201445);
+      return locale;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshBegin", "refreshType", "", "onRefreshEnd", "plugin-card_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshBegin", "refreshType", "", "onRefreshEnd", "plugin-card_release"})
   public static final class g
     extends RefreshLoadMoreLayout.a
   {
-    public final void AY(int paramInt)
+    public final void ED(int paramInt)
     {
-      AppMethodBeat.i(218443);
+      AppMethodBeat.i(201449);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.ahF());
-      ae.d(CardHomePageV3UI.a(this.oTD), "on begin refresh");
+      localb.pH(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.axR());
+      Log.d(CardHomePageV3UI.a(this.qhn), "on begin refresh");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(218443);
+      AppMethodBeat.o(201449);
     }
     
     public final void a(RefreshLoadMoreLayout.c<Object> paramc)
     {
-      AppMethodBeat.i(218442);
+      AppMethodBeat.i(201448);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
+      localb.bm(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
       p.h(paramc, "reason");
-      ae.d(CardHomePageV3UI.a(this.oTD), "on load more end: " + CardHomePageV3UI.d(this.oTD));
-      if (CardHomePageV3UI.e(this.oTD)) {
-        CardHomePageV3UI.f(this.oTD).k(null);
+      Log.d(CardHomePageV3UI.a(this.qhn), "on load more end: " + CardHomePageV3UI.e(this.qhn));
+      if (CardHomePageV3UI.f(this.qhn)) {
+        CardHomePageV3UI.g(this.qhn).h(null);
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(218442);
+      AppMethodBeat.o(201448);
     }
     
-    public final void b(RefreshLoadMoreLayout.c<Object> paramc)
+    public final void cxo()
     {
-      AppMethodBeat.i(218444);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
-      p.h(paramc, "reason");
-      ae.d(CardHomePageV3UI.a(this.oTD), "on refresh end");
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(218444);
-    }
-    
-    public final void bZA()
-    {
-      AppMethodBeat.i(218441);
+      AppMethodBeat.i(201447);
       com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      ae.d(CardHomePageV3UI.a(this.oTD), "on load more");
-      com.tencent.mm.ac.c.h((d.g.a.a)new a(this));
+      Log.d(CardHomePageV3UI.a(this.qhn), "on load more");
+      com.tencent.mm.ac.d.h((kotlin.g.a.a)new a(this));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-      AppMethodBeat.o(218441);
+      AppMethodBeat.o(201447);
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+    public final void onRefreshEnd(RefreshLoadMoreLayout.c<Object> paramc)
+    {
+      AppMethodBeat.i(201450);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
+      p.h(paramc, "reason");
+      Log.d(CardHomePageV3UI.a(this.qhn), "on refresh end");
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
+      AppMethodBeat.o(201450);
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
     static final class a
       extends q
-      implements d.g.a.a<z>
+      implements kotlin.g.a.a<x>
     {
       a(CardHomePageV3UI.g paramg)
       {
@@ -947,7 +942,7 @@ public final class CardHomePageV3UI
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class h
     implements MenuItem.OnMenuItemClickListener
   {
@@ -955,98 +950,100 @@ public final class CardHomePageV3UI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(218445);
-      this.oTD.finish();
-      AppMethodBeat.o(218445);
+      AppMethodBeat.i(201451);
+      this.qhn.finish();
+      AppMethodBeat.o(201451);
       return false;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$updateFAQ$1$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$updateFAQ$1$1"})
   static final class i
     implements MenuItem.OnMenuItemClickListener
   {
-    i(sz paramsz, CardHomePageV3UI paramCardHomePageV3UI) {}
+    i(ue paramue, CardHomePageV3UI paramCardHomePageV3UI) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(218448);
+      AppMethodBeat.i(201454);
       paramMenuItem = new com.tencent.mm.ui.widget.a.e((Context)jdField_this.getContext(), 1, false);
-      paramMenuItem.a((n.d)new n.d()
+      paramMenuItem.a((o.f)new o.f()
       {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
+        public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymousm)
         {
-          AppMethodBeat.i(218446);
-          paramAnonymousl.add(0, 0, 1, (CharSequence)this.oTO.oSo.GiX);
-          AppMethodBeat.o(218446);
+          AppMethodBeat.i(201452);
+          paramAnonymousm.add(0, 0, 1, (CharSequence)this.qhw.qgc.LdB);
+          AppMethodBeat.o(201452);
         }
       });
-      paramMenuItem.a((n.e)new n.e()
+      paramMenuItem.a((o.g)new o.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(218447);
+          AppMethodBeat.i(201453);
           p.g(paramAnonymousMenuItem, "menuItem");
           if (paramAnonymousMenuItem.getItemId() == 0) {
-            switch (this.oTO.oSo.GiY)
+            switch (this.qhw.qgc.LdC)
             {
             }
           }
           for (;;)
           {
-            AppMethodBeat.o(218447);
+            AppMethodBeat.o(201453);
             return;
-            com.tencent.mm.plugin.card.d.b.a((MMActivity)this.oTO.oTD.getContext(), this.oTO.oSo.GiZ);
-            AppMethodBeat.o(218447);
+            com.tencent.mm.plugin.card.d.b.a((MMActivity)this.qhw.qhn.getContext(), this.qhw.qgc.LdD);
+            AppMethodBeat.o(201453);
             return;
-            paramAnonymousMenuItem = this.oTO.oSo.Gja;
-            com.tencent.mm.plugin.card.d.b.I(paramAnonymousMenuItem.CRv, paramAnonymousMenuItem.CRw, paramAnonymousMenuItem.DyO);
+            paramAnonymousMenuItem = this.qhw.qgc.LdE;
+            com.tencent.mm.plugin.card.d.b.H(paramAnonymousMenuItem.Hwr, paramAnonymousMenuItem.Hws, paramAnonymousMenuItem.IhZ);
           }
         }
       });
-      paramMenuItem.cPF();
-      AppMethodBeat.o(218448);
+      paramMenuItem.dGm();
+      AppMethodBeat.o(201454);
       return false;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class j
     implements View.OnClickListener
   {
-    j(CardHomePageV3UI paramCardHomePageV3UI, td paramtd) {}
+    j(CardHomePageV3UI paramCardHomePageV3UI, ui paramui) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(218449);
+      AppMethodBeat.i(201455);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$updateHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      switch (localtd.Gjh)
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$updateHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      switch (localui.LdM)
       {
       default: 
-        ae.w(CardHomePageV3UI.a(this.oTD), "unknown type " + localtd.Gjh);
+        Log.w(CardHomePageV3UI.a(this.qhn), "unknown type " + localui.LdM);
       }
       for (;;)
       {
-        g.yxI.f(19673, new Object[] { localtd.Gjf, Long.valueOf(System.currentTimeMillis() / 1000L) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(19673, new Object[] { localui.LdK, Long.valueOf(System.currentTimeMillis() / 1000L) });
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CardHomePageV3UI$updateHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(218449);
+        AppMethodBeat.o(201455);
         return;
-        com.tencent.mm.plugin.card.d.b.a((MMActivity)this.oTD.getContext(), localtd.Gji);
+        com.tencent.mm.plugin.card.d.b.a((MMActivity)this.qhn.getContext(), localui.LdN);
         continue;
-        paramView = localtd.Gjj;
+        paramView = localui.LdO;
         if (paramView != null)
         {
-          com.tencent.mm.plugin.card.d.b.I(paramView.CRv, paramView.CRw, paramView.DyO);
-          CardHomePageV3UI.k(this.oTD);
+          com.tencent.mm.plugin.card.d.b.H(paramView.Hwr, paramView.Hws, paramView.IhZ);
+          CardHomePageV3UI.l(this.qhn);
           continue;
-          if ("weixin://mktcard/cert".equals(localtd.Gjk)) {
-            CardHomePageV3UI.l(this.oTD);
-          } else if ("weixin://mktcard/membercard".equals(localtd.Gjk)) {
-            CardHomePageV3UI.m(this.oTD);
-          } else if ("weixin://mktcard/coupon".equals(localtd.Gjk)) {
-            CardHomePageV3UI.d(this.oTD, localtd.Gjf);
+          if ("weixin://mktcard/cert".equals(localui.LdP)) {
+            CardHomePageV3UI.m(this.qhn);
+          } else if ("weixin://mktcard/membercard".equals(localui.LdP)) {
+            CardHomePageV3UI.n(this.qhn);
+          } else if ("weixin://mktcard/coupon".equals(localui.LdP)) {
+            CardHomePageV3UI.d(this.qhn, localui.LdK);
+          } else if ("weixin://mktcard/couponv2".equals(localui.LdP)) {
+            CardHomePageV3UI.e(this.qhn, localui.LdK);
           }
         }
       }

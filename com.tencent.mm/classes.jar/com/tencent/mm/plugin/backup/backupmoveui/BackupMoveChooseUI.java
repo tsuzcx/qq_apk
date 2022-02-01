@@ -16,18 +16,17 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.backup.b.f.b;
+import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.backupui.BackupSelectExtUI;
 import com.tencent.mm.plugin.backup.c.b.b;
 import com.tencent.mm.plugin.backup.d.a.2;
 import com.tencent.mm.plugin.backup.d.d;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,34 +38,34 @@ import java.util.LinkedList;
 public class BackupMoveChooseUI
   extends MMWizardActivity
 {
-  private static int beN = 0;
+  private static int beK = 0;
   private static long endTime;
-  private static int nBZ = 0;
+  private static int oMY = 0;
   private static long startTime;
-  private a nBK;
-  private ListView nBL;
-  private TextView nBM;
-  private TextView nBN;
-  private TextView nBO;
-  private ProgressBar nBP;
-  private View nBQ;
-  private LinearLayout nBR;
-  private LinearLayout nBS;
-  private LinearLayout nBT;
-  private LinearLayout nBU;
-  private TextView nBV;
-  private TextView nBW;
-  private TextView nBX;
-  private Button nBY;
-  private SimpleDateFormat nCa;
-  private b.b nCb;
+  private a oMJ;
+  private ListView oMK;
+  private TextView oML;
+  private TextView oMM;
+  private TextView oMN;
+  private ProgressBar oMO;
+  private View oMP;
+  private LinearLayout oMQ;
+  private LinearLayout oMR;
+  private LinearLayout oMS;
+  private LinearLayout oMT;
+  private TextView oMU;
+  private TextView oMV;
+  private TextView oMW;
+  private Button oMX;
+  private SimpleDateFormat oMZ;
+  private b.b oNa;
   
   public BackupMoveChooseUI()
   {
     AppMethodBeat.i(21387);
-    this.nBK = new a(this);
-    this.nCa = new SimpleDateFormat("yyyy.MM.dd");
-    this.nCb = new b.b()
+    this.oMJ = new a(this);
+    this.oMZ = new SimpleDateFormat("yyyy.MM.dd");
+    this.oNa = new b.b()
     {
       public final void C(LinkedList<f.b> paramAnonymousLinkedList)
       {
@@ -80,21 +79,21 @@ public class BackupMoveChooseUI
         {
           BackupMoveChooseUI.b(BackupMoveChooseUI.this).setVisibility(8);
           BackupMoveChooseUI.c(BackupMoveChooseUI.this).setVisibility(0);
-          switch (BackupMoveChooseUI.nBZ)
+          switch (BackupMoveChooseUI.oMY)
           {
           }
           for (;;)
           {
             AppMethodBeat.o(21386);
             return;
-            BackupMoveChooseUI.c(BackupMoveChooseUI.this).setText(2131756101);
+            BackupMoveChooseUI.c(BackupMoveChooseUI.this).setText(2131756235);
             AppMethodBeat.o(21386);
             return;
-            BackupMoveChooseUI.c(BackupMoveChooseUI.this).setText(2131756255);
+            BackupMoveChooseUI.c(BackupMoveChooseUI.this).setText(2131756389);
           }
         }
         BackupMoveChooseUI.d(BackupMoveChooseUI.this).setClickable(true);
-        BackupMoveChooseUI.d(BackupMoveChooseUI.this).setTextColor(BackupMoveChooseUI.this.getResources().getColor(2131099990));
+        BackupMoveChooseUI.d(BackupMoveChooseUI.this).setTextColor(BackupMoveChooseUI.this.getResources().getColor(2131100014));
         BackupMoveChooseUI.b(BackupMoveChooseUI.this).setVisibility(8);
         BackupMoveChooseUI.a(BackupMoveChooseUI.this).notifyDataSetChanged();
         AppMethodBeat.o(21386);
@@ -107,69 +106,69 @@ public class BackupMoveChooseUI
     AppMethodBeat.o(21387);
   }
   
-  private void bIY()
+  private void cfQ()
   {
     AppMethodBeat.i(21394);
-    if ((this.nBS.getVisibility() == 8) && (this.nBT.getVisibility() == 8) && (this.nBU.getVisibility() == 8))
+    if ((this.oMR.getVisibility() == 8) && (this.oMS.getVisibility() == 8) && (this.oMT.getVisibility() == 8))
     {
-      this.nBQ.setVisibility(8);
-      this.nBR.setVisibility(8);
+      this.oMP.setVisibility(8);
+      this.oMQ.setVisibility(8);
       AppMethodBeat.o(21394);
       return;
     }
-    this.nBQ.setVisibility(0);
-    this.nBR.setVisibility(0);
+    this.oMP.setVisibility(0);
+    this.oMQ.setVisibility(0);
     AppMethodBeat.o(21394);
   }
   
-  private void iB(boolean paramBoolean)
+  private void jC(boolean paramBoolean)
   {
     AppMethodBeat.i(21392);
     if (paramBoolean)
     {
-      com.tencent.mm.plugin.backup.d.b.bIE();
-      SharedPreferences localSharedPreferences = com.tencent.mm.plugin.backup.d.b.bIa();
-      nBZ = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0);
-      beN = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0);
+      com.tencent.mm.plugin.backup.d.b.cfv();
+      SharedPreferences localSharedPreferences = com.tencent.mm.plugin.backup.d.b.ceR();
+      oMY = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0);
+      beK = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0);
       startTime = localSharedPreferences.getLong("BACKUP_MOVE_CHOOSE_SELECT_START_TIME", 0L);
       endTime = localSharedPreferences.getLong("BACKUP_MOVE_CHOOSE_SELECT_END_TIME", 0L);
     }
-    switch (nBZ)
+    switch (oMY)
     {
     default: 
-      switch (beN)
+      switch (beK)
       {
       }
       break;
     }
     for (;;)
     {
-      bIY();
+      cfQ();
       AppMethodBeat.o(21392);
       return;
-      this.nBT.setVisibility(8);
+      this.oMS.setVisibility(8);
       break;
-      this.nBQ.setVisibility(0);
-      this.nBR.setVisibility(0);
-      this.nBT.setVisibility(0);
-      this.nBW.setText(this.nCa.format(new Date(startTime)) + "~" + this.nCa.format(new Date(endTime - 86400000L)));
+      this.oMP.setVisibility(0);
+      this.oMQ.setVisibility(0);
+      this.oMS.setVisibility(0);
+      this.oMV.setText(this.oMZ.format(new Date(startTime)) + "~" + this.oMZ.format(new Date(endTime - 86400000L)));
       break;
-      this.nBU.setVisibility(8);
+      this.oMT.setVisibility(8);
       continue;
-      this.nBQ.setVisibility(0);
-      this.nBR.setVisibility(0);
-      this.nBU.setVisibility(0);
-      this.nBX.setText(getContext().getResources().getString(2131756164));
+      this.oMP.setVisibility(0);
+      this.oMQ.setVisibility(0);
+      this.oMT.setVisibility(0);
+      this.oMW.setText(getContext().getResources().getString(2131756298));
     }
   }
   
   public final void a(HashSet<Integer> paramHashSet)
   {
     AppMethodBeat.i(21393);
-    Object localObject = com.tencent.mm.plugin.backup.d.b.bIE().bII().bIA();
+    Object localObject = com.tencent.mm.plugin.backup.d.b.cfv().cfz().cfr();
     if (localObject == null)
     {
-      ae.e("MicroMsg.BackupMoveChooseUI", "onClickCheckBox convInfo is null.");
+      Log.e("MicroMsg.BackupMoveChooseUI", "onClickCheckBox convInfo is null.");
       AppMethodBeat.o(21393);
       return;
     }
@@ -180,7 +179,7 @@ public class BackupMoveChooseUI
     {
       int i = ((Integer)localIterator.next()).intValue();
       if (i < ((LinkedList)localObject).size()) {
-        l = ((f.b)((LinkedList)localObject).get(i)).nyv + l;
+        l = ((f.b)((LinkedList)localObject).get(i)).oJt + l;
       } else {
         localHashSet.add(Integer.valueOf(i));
       }
@@ -191,57 +190,57 @@ public class BackupMoveChooseUI
     }
     if ((paramHashSet.size() != 0) || (l > 0L))
     {
-      this.nBY.setEnabled(true);
-      if (paramHashSet.size() == this.nBK.getCount())
+      this.oMX.setEnabled(true);
+      if (paramHashSet.size() == this.oMJ.getCount())
       {
-        this.nBM.setText(2131756092);
-        this.nBQ.setVisibility(0);
-        this.nBR.setVisibility(0);
-        this.nBS.setVisibility(0);
-        this.nBV.setText(getString(2131756094, new Object[] { Integer.valueOf(paramHashSet.size()) }));
+        this.oML.setText(2131756226);
+        this.oMP.setVisibility(0);
+        this.oMQ.setVisibility(0);
+        this.oMR.setVisibility(0);
+        this.oMU.setText(getString(2131756228, new Object[] { Integer.valueOf(paramHashSet.size()) }));
       }
     }
     for (;;)
     {
-      bIY();
+      cfQ();
       AppMethodBeat.o(21393);
       return;
-      this.nBM.setText(2131756091);
+      this.oML.setText(2131756225);
       break;
-      this.nBY.setEnabled(false);
-      this.nBM.setText(2131756091);
-      this.nBS.setVisibility(8);
-      this.nBV.setText("");
+      this.oMX.setEnabled(false);
+      this.oML.setText(2131756225);
+      this.oMR.setVisibility(8);
+      this.oMU.setText("");
     }
   }
   
   public int getLayoutId()
   {
-    return 2131493129;
+    return 2131493172;
   }
   
   public void initView()
   {
     AppMethodBeat.i(21391);
-    setMMTitle(2131756266);
-    this.nBL = ((ListView)findViewById(2131297038));
-    this.nBL.setAdapter(this.nBK);
-    this.nBL.setEmptyView(findViewById(2131297040));
-    this.nBM = ((TextView)findViewById(2131297046));
-    this.nBN = ((TextView)findViewById(2131297039));
-    this.nBP = ((ProgressBar)findViewById(2131297045));
-    this.nBO = ((TextView)findViewById(2131297041));
-    this.nBQ = findViewById(2131297044);
-    this.nBR = ((LinearLayout)findViewById(2131297042));
-    this.nBS = ((LinearLayout)findViewById(2131297047));
-    this.nBT = ((LinearLayout)findViewById(2131297050));
-    this.nBU = ((LinearLayout)findViewById(2131297035));
-    this.nBV = ((TextView)findViewById(2131297049));
-    this.nBW = ((TextView)findViewById(2131297052));
-    this.nBX = ((TextView)findViewById(2131297037));
-    ((TextView)findViewById(2131297048)).setText(2131756102);
-    ((TextView)findViewById(2131297051)).setText(2131756104);
-    ((TextView)findViewById(2131297036)).setText(2131756100);
+    setMMTitle(2131756400);
+    this.oMK = ((ListView)findViewById(2131297184));
+    this.oMK.setAdapter(this.oMJ);
+    this.oMK.setEmptyView(findViewById(2131297186));
+    this.oML = ((TextView)findViewById(2131297192));
+    this.oMM = ((TextView)findViewById(2131297185));
+    this.oMO = ((ProgressBar)findViewById(2131297191));
+    this.oMN = ((TextView)findViewById(2131297187));
+    this.oMP = findViewById(2131297190);
+    this.oMQ = ((LinearLayout)findViewById(2131297188));
+    this.oMR = ((LinearLayout)findViewById(2131297193));
+    this.oMS = ((LinearLayout)findViewById(2131297196));
+    this.oMT = ((LinearLayout)findViewById(2131297181));
+    this.oMU = ((TextView)findViewById(2131297195));
+    this.oMV = ((TextView)findViewById(2131297198));
+    this.oMW = ((TextView)findViewById(2131297183));
+    ((TextView)findViewById(2131297194)).setText(2131756236);
+    ((TextView)findViewById(2131297197)).setText(2131756238);
+    ((TextView)findViewById(2131297182)).setText(2131756234);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -252,182 +251,159 @@ public class BackupMoveChooseUI
         return false;
       }
     });
-    this.nBY = ((Button)findViewById(2131297043));
-    this.nBY.setOnClickListener(new View.OnClickListener()
+    this.oMX = ((Button)findViewById(2131297189));
+    this.oMX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(21383);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
         localObject1 = new PLong();
         Object localObject2 = new PInt();
         a locala = BackupMoveChooseUI.a(BackupMoveChooseUI.this);
         paramAnonymousView = new LinkedList();
         label117:
         int j;
-        if (locala.nBH.size() <= 0)
+        if (locala.oMG.size() <= 0)
         {
-          localObject1 = com.tencent.mm.plugin.backup.b.g.B(paramAnonymousView);
-          localObject2 = com.tencent.mm.plugin.backup.d.b.bIE().bII();
+          localObject1 = g.B(paramAnonymousView);
+          localObject2 = com.tencent.mm.plugin.backup.d.b.cfv().cfz();
           if (paramAnonymousView.size() != 0) {
-            break label735;
+            break label573;
           }
-          ((com.tencent.mm.plugin.backup.d.a)localObject2).nAj = new LinkedList();
-          localObject2 = com.tencent.mm.plugin.backup.d.b.bIE().bIG();
-          ((d)localObject2).nBd = ((LinkedList)localObject1);
-          com.tencent.mm.plugin.backup.d.b.bIE();
-          if (com.tencent.mm.plugin.backup.d.b.bIa().getInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0) != 1) {
-            break label788;
+          ((com.tencent.mm.plugin.backup.d.a)localObject2).oLh = new LinkedList();
+          com.tencent.mm.plugin.backup.d.b.cfv().cfx().G((LinkedList)localObject1);
+          localObject1 = com.tencent.mm.plugin.backup.d.b.cfv().cfz();
+          if (((com.tencent.mm.plugin.backup.d.a)localObject1).oLc != null) {
+            ((com.tencent.mm.plugin.backup.d.a)localObject1).oLc.cancel();
           }
-          d.nBk = true;
-          label155:
-          com.tencent.mm.plugin.backup.d.b.bIE();
-          ((d)localObject2).nBg = com.tencent.mm.plugin.backup.d.b.bIa().getLong("BACKUP_MOVE_CHOOSE_SELECT_START_TIME", 0L);
-          com.tencent.mm.plugin.backup.d.b.bIE();
-          ((d)localObject2).nBh = com.tencent.mm.plugin.backup.d.b.bIa().getLong("BACKUP_MOVE_CHOOSE_SELECT_END_TIME", 0L);
-          com.tencent.mm.plugin.backup.d.b.bIE();
-          if (com.tencent.mm.plugin.backup.d.b.bIa().getInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0) != 1) {
-            break label795;
-          }
-          d.nzM = true;
-          label218:
-          ae.i("MicroMsg.BackupMoveServer", "setBakupChooseData users size[%d], selectStartTime[%d], selectEndTime[%d], isQuickBackup[%b]", new Object[] { Integer.valueOf(((LinkedList)localObject1).size()), Long.valueOf(((d)localObject2).nBg), Long.valueOf(((d)localObject2).nBh), Boolean.valueOf(d.nzM) });
-          bc.aCg();
-          c.ajA().set(am.a.IRD, Boolean.TRUE);
-          localObject1 = com.tencent.mm.plugin.backup.d.b.bIE().bII();
-          if (((com.tencent.mm.plugin.backup.d.a)localObject1).nAe != null) {
-            ((com.tencent.mm.plugin.backup.d.a)localObject1).nAe.cancel();
-          }
-          com.tencent.mm.sdk.g.b.c(new a.2((com.tencent.mm.plugin.backup.d.a)localObject1), "BackupMoveChooseServer.calculateChooseConvSize");
+          ThreadPool.post(new a.2((com.tencent.mm.plugin.backup.d.a)localObject1), "BackupMoveChooseServer.calculateChooseConvSize");
           i = 0;
-          if ((BackupMoveChooseUI.nBZ != 1) || (BackupMoveChooseUI.beN != 1)) {
-            break label802;
+          if ((BackupMoveChooseUI.oMY != 1) || (BackupMoveChooseUI.Tp() != 1)) {
+            break label626;
           }
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 26L, 1L, false);
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 27L, 1L, false);
-          com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(7) });
-          com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(14), Long.valueOf(System.currentTimeMillis()), Long.valueOf(BackupMoveChooseUI.It()), Long.valueOf(BackupMoveChooseUI.endTime) });
+          h.CyF.idkeyStat(485L, 26L, 1L, false);
+          h.CyF.idkeyStat(485L, 27L, 1L, false);
+          h.CyF.a(11788, new Object[] { Integer.valueOf(7) });
+          h.CyF.a(11788, new Object[] { Integer.valueOf(14), Long.valueOf(System.currentTimeMillis()), Long.valueOf(BackupMoveChooseUI.cfR()), Long.valueOf(BackupMoveChooseUI.endTime) });
           i = 0;
-          label440:
-          localObject1 = com.tencent.mm.plugin.report.service.g.yxI;
+          label281:
+          localObject1 = h.CyF;
           j = paramAnonymousView.size();
           if (i == 0) {
-            break label1018;
+            break label842;
           }
         }
-        label735:
-        label1018:
+        label573:
+        label842:
         for (int i = 1;; i = 0)
         {
-          ((com.tencent.mm.plugin.report.service.g)localObject1).f(11788, new Object[] { Integer.valueOf(13), Integer.valueOf(j), Integer.valueOf(i) });
-          com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(8) });
+          ((h)localObject1).a(11788, new Object[] { Integer.valueOf(13), Integer.valueOf(j), Integer.valueOf(i) });
+          h.CyF.a(11788, new Object[] { Integer.valueOf(8) });
           paramAnonymousView = new Intent(BackupMoveChooseUI.this, BackupMoveQRCodeUI.class);
-          MMWizardActivity.al(BackupMoveChooseUI.this, paramAnonymousView);
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 23L, 1L, false);
+          MMWizardActivity.ay(BackupMoveChooseUI.this, paramAnonymousView);
+          h.CyF.idkeyStat(485L, 23L, 1L, false);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(21383);
           return;
           ((PLong)localObject1).value = 0L;
           ((PInt)localObject2).value = 0;
-          LinkedList localLinkedList = com.tencent.mm.plugin.backup.d.b.bIE().bII().bIA();
+          LinkedList localLinkedList = com.tencent.mm.plugin.backup.d.b.cfv().cfz().cfr();
           if (localLinkedList != null)
           {
             i = 0;
             while (i < locala.getCount())
             {
-              if (locala.nBH.contains(Integer.valueOf(i)))
+              if (locala.oMG.contains(Integer.valueOf(i)))
               {
                 paramAnonymousView.add(localLinkedList.get(i));
-                ((PLong)localObject1).value += ((f.b)localLinkedList.get(i)).nyv;
-                ((PInt)localObject2).value = ((int)(((PInt)localObject2).value + ((f.b)localLinkedList.get(i)).nyw));
+                ((PLong)localObject1).value += ((f.b)localLinkedList.get(i)).oJt;
+                ((PInt)localObject2).value = ((int)(((PInt)localObject2).value + ((f.b)localLinkedList.get(i)).oJu));
               }
               i += 1;
             }
           }
-          ae.i("MicroMsg.BackupMoveChooseAdapter", "finishSelected usernameSize:%d, convSize:%d, convMsgCount:%d", new Object[] { Integer.valueOf(paramAnonymousView.size()), Long.valueOf(((PLong)localObject1).value), Integer.valueOf(((PInt)localObject2).value) });
+          Log.i("MicroMsg.BackupMoveChooseAdapter", "finishSelected usernameSize:%d, convSize:%d, convMsgCount:%d", new Object[] { Integer.valueOf(paramAnonymousView.size()), Long.valueOf(((PLong)localObject1).value), Integer.valueOf(((PInt)localObject2).value) });
           break;
-          ((com.tencent.mm.plugin.backup.d.a)localObject2).nAj = new LinkedList(paramAnonymousView.subList(paramAnonymousView.size() * 3 / 4, paramAnonymousView.size()));
-          ((com.tencent.mm.plugin.backup.d.a)localObject2).nAj.addAll(paramAnonymousView.subList(0, paramAnonymousView.size() * 3 / 4));
+          ((com.tencent.mm.plugin.backup.d.a)localObject2).oLh = new LinkedList(paramAnonymousView.subList(paramAnonymousView.size() * 3 / 4, paramAnonymousView.size()));
+          ((com.tencent.mm.plugin.backup.d.a)localObject2).oLh.addAll(paramAnonymousView.subList(0, paramAnonymousView.size() * 3 / 4));
           break label117;
-          d.nBk = false;
-          break label155;
-          d.nzM = false;
-          break label218;
-          if (BackupMoveChooseUI.nBZ == 1)
+          label626:
+          if (BackupMoveChooseUI.oMY == 1)
           {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 26L, 1L, false);
-            com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(5) });
-            com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(14), Long.valueOf(System.currentTimeMillis()), Long.valueOf(BackupMoveChooseUI.It()), Long.valueOf(BackupMoveChooseUI.endTime) });
+            h.CyF.idkeyStat(485L, 26L, 1L, false);
+            h.CyF.a(11788, new Object[] { Integer.valueOf(5) });
+            h.CyF.a(11788, new Object[] { Integer.valueOf(14), Long.valueOf(System.currentTimeMillis()), Long.valueOf(BackupMoveChooseUI.cfR()), Long.valueOf(BackupMoveChooseUI.endTime) });
             i = 0;
-            break label440;
+            break label281;
           }
-          if (BackupMoveChooseUI.beN == 1)
+          if (BackupMoveChooseUI.Tp() == 1)
           {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 27L, 1L, false);
-            com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(6) });
+            h.CyF.idkeyStat(485L, 27L, 1L, false);
+            h.CyF.a(11788, new Object[] { Integer.valueOf(6) });
             i = 0;
-            break label440;
+            break label281;
           }
           localObject1 = BackupMoveChooseUI.a(BackupMoveChooseUI.this);
-          if (((a)localObject1).nBH.size() == ((a)localObject1).getCount()) {}
+          if (((a)localObject1).oMG.size() == ((a)localObject1).getCount()) {}
           for (j = 1;; j = 0)
           {
             if (j != 0)
             {
               i = 1;
-              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 22L, 1L, false);
-              com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(4) });
+              h.CyF.idkeyStat(485L, 22L, 1L, false);
+              h.CyF.a(11788, new Object[] { Integer.valueOf(4) });
             }
             break;
           }
         }
       }
     });
-    this.nBY.setEnabled(false);
-    iB(true);
-    this.nBO.setOnClickListener(new View.OnClickListener()
+    this.oMX.setEnabled(false);
+    jC(true);
+    this.oMN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(21384);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Intent(BackupMoveChooseUI.this, BackupSelectExtUI.class);
         paramAnonymousView.putExtra("BACKUP_MODE", 2);
-        paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MODE", BackupMoveChooseUI.nBZ);
+        paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MODE", BackupMoveChooseUI.oMY);
         paramAnonymousView.putExtra("BACKUP_SELECT_SUPPORT_CONTENT_TYPE", true);
-        paramAnonymousView.putExtra("BACKUP_SELECT_CONTENT_TYPE", BackupMoveChooseUI.beN);
-        paramAnonymousView.putExtra("BACKUP_SELECT_TIME_START_TIME", BackupMoveChooseUI.It());
+        paramAnonymousView.putExtra("BACKUP_SELECT_CONTENT_TYPE", BackupMoveChooseUI.Tp());
+        paramAnonymousView.putExtra("BACKUP_SELECT_TIME_START_TIME", BackupMoveChooseUI.cfR());
         paramAnonymousView.putExtra("BACKUP_SELECT_TIME_END_TIME", BackupMoveChooseUI.endTime);
-        paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MIN_CONVERSATION_TIME", com.tencent.mm.plugin.backup.d.b.bIE().bII().nAg);
+        paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MIN_CONVERSATION_TIME", com.tencent.mm.plugin.backup.d.b.cfv().cfz().oLe);
         BackupMoveChooseUI.this.startActivityForResult(paramAnonymousView, 0);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(21384);
       }
     });
-    this.nBM.setOnClickListener(new View.OnClickListener()
+    this.oML.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(21385);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (com.tencent.mm.plugin.backup.d.b.bIE().bII().nAk)
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if (com.tencent.mm.plugin.backup.d.b.cfv().cfz().oLi)
         {
           paramAnonymousView = BackupMoveChooseUI.a(BackupMoveChooseUI.this);
-          if (paramAnonymousView.nBH.size() != paramAnonymousView.getCount()) {
+          if (paramAnonymousView.oMG.size() != paramAnonymousView.getCount()) {
             break label110;
           }
-          paramAnonymousView.nBH.clear();
+          paramAnonymousView.oMG.clear();
         }
         for (;;)
         {
           paramAnonymousView.notifyDataSetChanged();
-          paramAnonymousView.nBG.a(paramAnonymousView.nBH);
+          paramAnonymousView.oMF.a(paramAnonymousView.oMG);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveChooseUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(21385);
           return;
@@ -435,39 +411,39 @@ public class BackupMoveChooseUI
           int i = 0;
           while (i < paramAnonymousView.getCount())
           {
-            paramAnonymousView.nBH.add(Integer.valueOf(i));
+            paramAnonymousView.oMG.add(Integer.valueOf(i));
             i += 1;
           }
         }
       }
     });
-    if (com.tencent.mm.plugin.backup.d.b.bIE().bII().nAk)
+    if (com.tencent.mm.plugin.backup.d.b.cfv().cfz().oLi)
     {
-      if ((com.tencent.mm.plugin.backup.d.b.bIE().bII().bIA() == null) || (com.tencent.mm.plugin.backup.d.b.bIE().bII().bIA().size() == 0)) {
-        switch (nBZ)
+      if ((com.tencent.mm.plugin.backup.d.b.cfv().cfz().cfr() == null) || (com.tencent.mm.plugin.backup.d.b.cfv().cfz().cfr().size() == 0)) {
+        switch (oMY)
         {
         }
       }
       for (;;)
       {
-        this.nBN.setVisibility(0);
-        this.nBP.setVisibility(4);
+        this.oMM.setVisibility(0);
+        this.oMO.setVisibility(4);
         AppMethodBeat.o(21391);
         return;
-        this.nBN.setText(2131756101);
+        this.oMM.setText(2131756235);
         continue;
-        this.nBN.setText(2131756255);
+        this.oMM.setText(2131756389);
       }
     }
-    if (!com.tencent.mm.plugin.backup.d.b.bIE().bII().nAk)
+    if (!com.tencent.mm.plugin.backup.d.b.cfv().cfz().oLi)
     {
-      this.nBM.setTextColor(getResources().getColor(2131099992));
-      this.nBM.setClickable(false);
-      this.nBP.setVisibility(0);
+      this.oML.setTextColor(getResources().getColor(2131100016));
+      this.oML.setClickable(false);
+      this.oMO.setVisibility(0);
       AppMethodBeat.o(21391);
       return;
     }
-    this.nBP.setVisibility(4);
+    this.oMO.setVisibility(4);
     AppMethodBeat.o(21391);
   }
   
@@ -476,47 +452,47 @@ public class BackupMoveChooseUI
     AppMethodBeat.i(21395);
     if (paramInt2 != -1)
     {
-      ae.e("MicroMsg.BackupMoveChooseUI", "onActivityResult result error! resultCode:%d", new Object[] { Integer.valueOf(paramInt2) });
+      Log.e("MicroMsg.BackupMoveChooseUI", "onActivityResult result error! resultCode:%d", new Object[] { Integer.valueOf(paramInt2) });
       AppMethodBeat.o(21395);
       return;
     }
-    paramInt1 = nBZ;
+    paramInt1 = oMY;
     long l1 = startTime;
     long l2 = endTime;
-    nBZ = paramIntent.getIntExtra("BACKUP_SELECT_TIME_MODE", nBZ);
+    oMY = paramIntent.getIntExtra("BACKUP_SELECT_TIME_MODE", oMY);
     startTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_START_TIME", 0L);
     endTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_END_TIME", 0L);
-    beN = paramIntent.getIntExtra("BACKUP_SELECT_CONTENT_TYPE", beN);
-    ae.i("MicroMsg.BackupMoveChooseUI", "onActivityResult timeMode/preTimeMode[%d/%d], startTime/preStartTime[%d/%d], endTime/preEndTime[%d/%d], contentType[%d]", new Object[] { Integer.valueOf(nBZ), Integer.valueOf(paramInt1), Long.valueOf(startTime), Long.valueOf(l1), Long.valueOf(endTime), Long.valueOf(l2), Integer.valueOf(beN) });
-    com.tencent.mm.plugin.backup.d.b.bIE().bIG();
-    d.e(nBZ, startTime, endTime, beN);
-    iB(false);
-    if ((paramInt1 == nBZ) && ((nBZ == 0) || ((nBZ == 1) && (startTime == l1) && (endTime == l2))))
+    beK = paramIntent.getIntExtra("BACKUP_SELECT_CONTENT_TYPE", beK);
+    Log.i("MicroMsg.BackupMoveChooseUI", "onActivityResult timeMode/preTimeMode[%d/%d], startTime/preStartTime[%d/%d], endTime/preEndTime[%d/%d], contentType[%d]", new Object[] { Integer.valueOf(oMY), Integer.valueOf(paramInt1), Long.valueOf(startTime), Long.valueOf(l1), Long.valueOf(endTime), Long.valueOf(l2), Integer.valueOf(beK) });
+    com.tencent.mm.plugin.backup.d.b.cfv().cfx();
+    d.e(oMY, startTime, endTime, beK);
+    jC(false);
+    if ((paramInt1 == oMY) && ((oMY == 0) || ((oMY == 1) && (startTime == l1) && (endTime == l2))))
     {
       AppMethodBeat.o(21395);
       return;
     }
-    com.tencent.mm.plugin.backup.d.b.bIE().bII().a(nBZ, startTime, endTime, com.tencent.mm.plugin.backup.d.b.bIE().bII().bIz());
-    paramIntent = this.nBK;
-    paramIntent.nBH.clear();
-    paramIntent.nBG.a(paramIntent.nBH);
-    if ((com.tencent.mm.plugin.backup.d.b.bIE().bII().bIA() == null) || (com.tencent.mm.plugin.backup.d.b.bIE().bII().bIA().size() == 0)) {
-      switch (nBZ)
+    com.tencent.mm.plugin.backup.d.b.cfv().cfz().a(oMY, startTime, endTime, com.tencent.mm.plugin.backup.d.b.cfv().cfz().cfq());
+    paramIntent = this.oMJ;
+    paramIntent.oMG.clear();
+    paramIntent.oMF.a(paramIntent.oMG);
+    if ((com.tencent.mm.plugin.backup.d.b.cfv().cfz().cfr() == null) || (com.tencent.mm.plugin.backup.d.b.cfv().cfz().cfr().size() == 0)) {
+      switch (oMY)
       {
       default: 
-        this.nBN.setVisibility(0);
+        this.oMM.setVisibility(0);
       }
     }
     for (;;)
     {
-      this.nBK.notifyDataSetChanged();
+      this.oMJ.notifyDataSetChanged();
       AppMethodBeat.o(21395);
       return;
-      this.nBN.setText(2131756101);
+      this.oMM.setText(2131756235);
       break;
-      this.nBN.setText(2131756255);
+      this.oMM.setText(2131756389);
       break;
-      this.nBN.setVisibility(4);
+      this.oMM.setVisibility(4);
     }
   }
   
@@ -532,7 +508,7 @@ public class BackupMoveChooseUI
   {
     AppMethodBeat.i(21389);
     super.onStart();
-    com.tencent.mm.plugin.backup.d.b.bIE().bII().nAf = this.nCb;
+    com.tencent.mm.plugin.backup.d.b.cfv().cfz().oLd = this.oNa;
     AppMethodBeat.o(21389);
   }
   
@@ -540,7 +516,7 @@ public class BackupMoveChooseUI
   {
     AppMethodBeat.i(21390);
     super.onStop();
-    com.tencent.mm.plugin.backup.d.b.bIE().bII().nAf = null;
+    com.tencent.mm.plugin.backup.d.b.cfv().cfz().oLd = null;
     AppMethodBeat.o(21390);
   }
   
@@ -552,7 +528,7 @@ public class BackupMoveChooseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.BackupMoveChooseUI
  * JD-Core Version:    0.7.0.1
  */

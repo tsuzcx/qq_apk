@@ -6,9 +6,9 @@ import org.json.JSONArray;
 public abstract interface d
   extends a
 {
-  public abstract String a(int paramInt1, int paramInt2, JSONArray paramJSONArray, String paramString, boolean paramBoolean);
+  public abstract String a(int paramInt1, int paramInt2, JSONArray paramJSONArray, String paramString, boolean paramBoolean, int paramInt3);
   
-  public abstract String ami(String paramString);
+  public abstract String azm(String paramString);
   
   public abstract JSONArray b(JSONArray paramJSONArray, boolean paramBoolean);
   

@@ -31,18 +31,18 @@ public class IOCanaryCore
   private void initDetectorsAndHookers(com.tencent.matrix.iocanary.a.a parama)
   {
     assert (parama != null);
-    if ((parama.Iw()) || (parama.Iy()) || (parama.Ix())) {
+    if ((parama.St()) || (parama.Sv()) || (parama.Su())) {
       IOCanaryJniBridge.install(parama, this);
     }
-    if (parama.Iz())
+    if (parama.Sw())
     {
       this.mCloseGuardHooker = new com.tencent.matrix.iocanary.b.a(this);
       parama = this.mCloseGuardHooker;
-      com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook sIsTryHook=%b", new Object[] { Boolean.valueOf(parama.cEF) });
-      if (!parama.cEF)
+      com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook sIsTryHook=%b", new Object[] { Boolean.valueOf(parama.cUz) });
+      if (!parama.cUz)
       {
-        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook hookRet=%b", new Object[] { Boolean.valueOf(parama.IA()) });
-        parama.cEF = true;
+        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook hookRet=%b", new Object[] { Boolean.valueOf(parama.Sx()) });
+        parama.cUz = true;
       }
     }
   }
@@ -100,8 +100,8 @@ public class IOCanaryCore
       if (this.mCloseGuardHooker != null)
       {
         com.tencent.matrix.iocanary.b.a locala = this.mCloseGuardHooker;
-        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "unHook unHookRet=%b", new Object[] { Boolean.valueOf(com.tencent.matrix.iocanary.b.a.IB()) });
-        locala.cEF = false;
+        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "unHook unHookRet=%b", new Object[] { Boolean.valueOf(com.tencent.matrix.iocanary.b.a.Sy()) });
+        locala.cUz = false;
       }
       IOCanaryJniBridge.uninstall();
       return;
@@ -111,7 +111,7 @@ public class IOCanaryCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.iocanary.core.IOCanaryCore
  * JD-Core Version:    0.7.0.1
  */

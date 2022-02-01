@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.radar.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
 public final class d
 {
-  private static final int xzP = 1000;
-  private static final int xzQ = 500;
-  public static final d xzR;
+  private static final int BzQ = 1000;
+  private static final int BzR = 500;
+  public static final d BzS;
   
   static
   {
     AppMethodBeat.i(138634);
-    xzR = new d();
-    xzP = 1000;
-    xzQ = 500;
+    BzS = new d();
+    BzQ = 1000;
+    BzR = 500;
     AppMethodBeat.o(138634);
   }
   
-  public static int dGC()
+  public static boolean HO(long paramLong)
   {
-    return xzP;
+    return paramLong <= BzR;
   }
   
-  public static boolean yY(long paramLong)
+  public static int eHq()
   {
-    return paramLong <= xzQ;
+    return BzQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.d
  * JD-Core Version:    0.7.0.1
  */

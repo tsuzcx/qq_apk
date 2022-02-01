@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class re
-  extends b
+  extends IEvent
 {
-  public a dGN;
+  public a dXU;
   
   public re()
   {
@@ -16,32 +15,22 @@ public final class re
   
   private re(byte paramByte)
   {
-    AppMethodBeat.i(116044);
-    this.dGN = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(184120);
+    this.dXU = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116044);
+    AppMethodBeat.o(184120);
   }
   
   public static final class a
   {
-    public Context context;
-    public long dCd;
-    public int dGO;
-    public String dGP;
-    public int dGQ;
-    public String dlj;
-    public String dwb;
-    public String dzZ;
-    public String mediaTagName;
-    public int msgType;
-    public String packageName;
-    public int scene;
+    public int type = 0;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.re
  * JD-Core Version:    0.7.0.1
  */

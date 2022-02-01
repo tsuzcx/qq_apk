@@ -12,13 +12,13 @@ final class WalletSecuritySettingUI$6
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(69795);
-    this.Dfs.finish();
+    this.HLl.finish();
     AppMethodBeat.o(69795);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletSecuritySettingUI.6
  * JD-Core Version:    0.7.0.1
  */

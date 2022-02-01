@@ -5,40 +5,39 @@ import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.embedding.engine.FlutterJNI.AccessibilityDelegate;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.a.b;
-import io.flutter.plugin.a.b.a;
 import io.flutter.plugin.a.b.b;
-import io.flutter.plugin.a.c;
+import io.flutter.plugin.a.b.c;
 import io.flutter.plugin.a.n;
 import io.flutter.view.a.b;
 import java.util.HashMap;
 
 public final class a
 {
-  public final FlutterJNI MZl;
-  public final b<Object> NaX;
-  a NaY;
-  private final b.b<Object> NaZ;
+  public final FlutterJNI SNV;
+  public final b<Object> SPQ;
+  a SPR;
+  private final b.b<Object> SPS;
   
   public a(DartExecutor paramDartExecutor, FlutterJNI paramFlutterJNI)
   {
     AppMethodBeat.i(10262);
-    this.NaZ = new b.b()
+    this.SPS = new b.b()
     {
-      public final void eH(Object paramAnonymousObject)
+      public final void a(Object paramAnonymousObject, b.c<Object> paramAnonymousc)
       {
-        AppMethodBeat.i(10285);
-        if (a.this.NaY == null)
+        AppMethodBeat.i(214983);
+        if (a.this.SPR == null)
         {
-          AppMethodBeat.o(10285);
+          AppMethodBeat.o(214983);
           return;
         }
         paramAnonymousObject = (HashMap)paramAnonymousObject;
-        String str = (String)paramAnonymousObject.get("type");
+        paramAnonymousc = (String)paramAnonymousObject.get("type");
         HashMap localHashMap = (HashMap)paramAnonymousObject.get("data");
-        new StringBuilder("Received ").append(str).append(" message.");
-        io.flutter.a.giD();
+        new StringBuilder("Received ").append(paramAnonymousc).append(" message.");
+        io.flutter.a.hwd();
         int i;
-        switch (str.hashCode())
+        switch (paramAnonymousc.hashCode())
         {
         default: 
           i = -1;
@@ -50,24 +49,24 @@ public final class a
         }
         for (;;)
         {
-          AppMethodBeat.o(10285);
+          AppMethodBeat.o(214983);
           return;
-          if (!str.equals("announce")) {
+          if (!paramAnonymousc.equals("announce")) {
             break;
           }
           i = 0;
           break label118;
-          if (!str.equals("tap")) {
+          if (!paramAnonymousc.equals("tap")) {
             break;
           }
           i = 1;
           break label118;
-          if (!str.equals("longPress")) {
+          if (!paramAnonymousc.equals("longPress")) {
             break;
           }
           i = 2;
           break label118;
-          if (!str.equals("tooltip")) {
+          if (!paramAnonymousc.equals("tooltip")) {
             break;
           }
           i = 3;
@@ -75,24 +74,24 @@ public final class a
           paramAnonymousObject = (String)localHashMap.get("message");
           if (paramAnonymousObject != null)
           {
-            a.this.NaY.bdq(paramAnonymousObject);
-            AppMethodBeat.o(10285);
+            a.this.SPR.bte(paramAnonymousObject);
+            AppMethodBeat.o(214983);
             return;
             paramAnonymousObject = (Integer)paramAnonymousObject.get("nodeId");
             if (paramAnonymousObject != null)
             {
-              a.this.NaY.ajH(paramAnonymousObject.intValue());
-              AppMethodBeat.o(10285);
+              a.this.SPR.atq(paramAnonymousObject.intValue());
+              AppMethodBeat.o(214983);
               return;
               paramAnonymousObject = (Integer)paramAnonymousObject.get("nodeId");
               if (paramAnonymousObject != null)
               {
-                a.this.NaY.ajI(paramAnonymousObject.intValue());
-                AppMethodBeat.o(10285);
+                a.this.SPR.atr(paramAnonymousObject.intValue());
+                AppMethodBeat.o(214983);
                 return;
                 paramAnonymousObject = (String)localHashMap.get("message");
                 if (paramAnonymousObject != null) {
-                  a.this.NaY.bdr(paramAnonymousObject);
+                  a.this.SPR.btf(paramAnonymousObject);
                 }
               }
             }
@@ -100,58 +99,49 @@ public final class a
         }
       }
     };
-    this.NaX = new b(paramDartExecutor, "flutter/accessibility", n.Nde);
-    paramDartExecutor = this.NaX;
-    b.b localb = this.NaZ;
-    c localc = paramDartExecutor.vOl;
-    String str = paramDartExecutor.name;
-    if (localb == null) {}
-    for (paramDartExecutor = null;; paramDartExecutor = new b.a(paramDartExecutor, localb, (byte)0))
-    {
-      localc.a(str, paramDartExecutor);
-      this.MZl = paramFlutterJNI;
-      AppMethodBeat.o(10262);
-      return;
-    }
+    this.SPQ = new b(paramDartExecutor, "flutter/accessibility", n.SSp);
+    this.SPQ.a(this.SPS);
+    this.SNV = paramFlutterJNI;
+    AppMethodBeat.o(10262);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(10265);
-    this.NaY = parama;
-    this.MZl.setAccessibilityDelegate(parama);
+    this.SPR = parama;
+    this.SNV.setAccessibilityDelegate(parama);
     AppMethodBeat.o(10265);
   }
   
   public final void dispatchSemanticsAction(int paramInt, a.b paramb)
   {
     AppMethodBeat.i(10263);
-    this.MZl.dispatchSemanticsAction(paramInt, paramb);
+    this.SNV.dispatchSemanticsAction(paramInt, paramb);
     AppMethodBeat.o(10263);
   }
   
   public final void dispatchSemanticsAction(int paramInt, a.b paramb, Object paramObject)
   {
     AppMethodBeat.i(10264);
-    this.MZl.dispatchSemanticsAction(paramInt, paramb, paramObject);
+    this.SNV.dispatchSemanticsAction(paramInt, paramb, paramObject);
     AppMethodBeat.o(10264);
   }
   
   public static abstract interface a
     extends FlutterJNI.AccessibilityDelegate
   {
-    public abstract void ajH(int paramInt);
+    public abstract void atq(int paramInt);
     
-    public abstract void ajI(int paramInt);
+    public abstract void atr(int paramInt);
     
-    public abstract void bdq(String paramString);
+    public abstract void bte(String paramString);
     
-    public abstract void bdr(String paramString);
+    public abstract void btf(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.engine.c.a
  * JD-Core Version:    0.7.0.1
  */

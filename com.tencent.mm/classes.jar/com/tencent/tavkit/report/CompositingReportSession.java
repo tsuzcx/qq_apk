@@ -23,7 +23,7 @@ public final class CompositingReportSession
   
   public CompositingReportSession(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(200968);
+    AppMethodBeat.i(197638);
     this.beginTimeMs = 0L;
     this.successCount = 0;
     this.failureCount = 0;
@@ -32,7 +32,7 @@ public final class CompositingReportSession
     this.renderHeight = paramFloat2;
     this.filterChainReporter = new FilterChainReporter(null);
     FilterChainReportSession.setReporter(this.filterChainReporter);
-    AppMethodBeat.o(200968);
+    AppMethodBeat.o(197638);
   }
   
   private void commit() {}
@@ -60,17 +60,17 @@ public final class CompositingReportSession
   
   public final void flush()
   {
-    AppMethodBeat.i(200969);
+    AppMethodBeat.i(197639);
     if (this.beginTimeMs == 0L)
     {
-      AppMethodBeat.o(200969);
+      AppMethodBeat.o(197639);
       return;
     }
     if (this.successCount >= 10) {
       commit();
     }
     reset();
-    AppMethodBeat.o(200969);
+    AppMethodBeat.o(197639);
   }
   
   public final void tickFailed()
@@ -80,13 +80,13 @@ public final class CompositingReportSession
   
   public final void tickSuccess(long paramLong)
   {
-    AppMethodBeat.i(200970);
+    AppMethodBeat.i(197640);
     if (this.beginTimeMs == 0L) {
       this.beginTimeMs = (System.currentTimeMillis() - paramLong / 1000L / 1000L);
     }
     this.successCount += 1;
     this.totalCostUs += paramLong / 1000L;
-    AppMethodBeat.o(200970);
+    AppMethodBeat.o(197640);
   }
   
   static class FilterChainReporter
@@ -96,22 +96,22 @@ public final class CompositingReportSession
     
     private FilterChainReporter()
     {
-      AppMethodBeat.i(200966);
+      AppMethodBeat.i(197636);
       this.values = new HashMap();
-      AppMethodBeat.o(200966);
+      AppMethodBeat.o(197636);
     }
     
     public void onCommit(Map<String, Long> paramMap)
     {
-      AppMethodBeat.i(200967);
+      AppMethodBeat.i(197637);
       paramMap.putAll(paramMap);
-      AppMethodBeat.o(200967);
+      AppMethodBeat.o(197637);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tavkit.report.CompositingReportSession
  * JD-Core Version:    0.7.0.1
  */

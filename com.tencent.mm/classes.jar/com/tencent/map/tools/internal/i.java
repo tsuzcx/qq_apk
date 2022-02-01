@@ -19,22 +19,57 @@ public class i
 {
   public Context a;
   public a b;
-  private String c;
-  private boolean d;
-  private o e;
-  private SheetNetworkStateMonitor f;
+  boolean c;
+  SheetNetworkStateMonitor d;
+  private String e;
+  private o f;
   private List<p> g;
   
   public i(Context paramContext, Looper paramLooper)
   {
     AppMethodBeat.i(180800);
-    this.c = i.class.getSimpleName();
-    this.d = false;
+    this.e = i.class.getSimpleName();
+    this.c = false;
     this.a = paramContext;
     this.b = new a(paramLooper);
-    this.e = new o(paramContext);
-    this.f = new SheetNetworkStateMonitor(paramContext);
+    this.f = new o(paramContext);
+    this.d = new SheetNetworkStateMonitor(paramContext);
     AppMethodBeat.o(180800);
+  }
+  
+  private boolean a()
+  {
+    AppMethodBeat.i(180803);
+    Object localObject = b();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(180803);
+      return false;
+    }
+    localObject = ((String)localObject).getBytes();
+    if (localObject != null)
+    {
+      new HashMap();
+      int j;
+      for (int i = 0;; i = j)
+      {
+        j = i + 1;
+        if (i >= 3) {
+          break;
+        }
+        byte[] arrayOfByte = r.a("https://cc.map.qq.com?desc_c", (byte[])localObject);
+        if (arrayOfByte != null)
+        {
+          localObject = new String(arrayOfByte);
+          g.a(this.a).a("DRG", "response suc,try:".concat(String.valueOf(j)));
+          boolean bool = a((String)localObject);
+          AppMethodBeat.o(180803);
+          return bool;
+        }
+      }
+    }
+    AppMethodBeat.o(180803);
+    return false;
   }
   
   private boolean a(String paramString)
@@ -53,7 +88,7 @@ public class i
       label53:
       AppMethodBeat.o(180801);
       return false;
-      int m = s.a(this.a).a();
+      int m = s.a(this.a).a;
       paramString = new ArrayList();
       localObject1 = ((List)localObject1).iterator();
       int i = 0;
@@ -100,6 +135,69 @@ public class i
     q.a(this.b, 10007, paramString);
     AppMethodBeat.o(180801);
     return true;
+  }
+  
+  private String b()
+  {
+    AppMethodBeat.i(180804);
+    Object localObject = x.a(x.b(this.a, t.q, "default"));
+    if (((List)localObject).isEmpty())
+    {
+      AppMethodBeat.o(180804);
+      return null;
+    }
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray;
+    for (;;)
+    {
+      try
+      {
+        localJSONObject1.put("projName", a.a);
+        localJSONObject1.put("appkey", x.a(this.a));
+        localJSONObject1.put("appversion", x.b(this.a));
+        localJSONObject1.put("imei", x.c(this.a));
+        localJSONObject1.put("coverSDKver", t.k);
+        localJSONObject1.put("model", x.b() + "_" + x.a());
+        localJSONObject1.put("APILevel", x.c());
+        localJSONArray = new JSONArray();
+        Iterator localIterator = ((List)localObject).iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (p)localIterator.next();
+        if (localObject != null)
+        {
+          JSONObject localJSONObject2 = new JSONObject();
+          localJSONObject2.put("compId", ((p)localObject).a);
+          localJSONObject2.put("compVer", ((p)localObject).b);
+          localJSONObject2.put("size", ((p)localObject).d);
+          Context localContext = this.a;
+          int i = s.a(localContext).a;
+          if (x.a(((p)localObject).a))
+          {
+            localObject = x.b(localContext, x.c + File.separator + t.F[i] + File.separator + ((p)localObject).c);
+            localJSONObject2.put("md5", x.a(new File((String)localObject)));
+            localJSONArray.put(localJSONObject2);
+          }
+          else
+          {
+            str = x.b(localContext, x.a + File.separator + localException.c);
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        g.a(this.a).a("DRG", "reqDerror:" + localException.toString());
+        AppMethodBeat.o(180804);
+        return null;
+      }
+    }
+    localJSONObject1.put("compList", localJSONArray);
+    String str = localJSONObject1.toString();
+    g.a(this.a).a("DRG", "req:".concat(String.valueOf(str)));
+    str = EncryptAesUtils.encryptAes256Base64(str, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q", t.G);
+    AppMethodBeat.o(180804);
+    return str;
   }
   
   private static String b(String paramString)
@@ -168,113 +266,6 @@ public class i
     return null;
   }
   
-  private boolean b()
-  {
-    AppMethodBeat.i(224081);
-    Object localObject = c();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(224081);
-      return false;
-    }
-    localObject = ((String)localObject).getBytes();
-    if (localObject != null)
-    {
-      new HashMap();
-      int j;
-      for (int i = 0;; i = j)
-      {
-        j = i + 1;
-        if (i >= 3) {
-          break;
-        }
-        byte[] arrayOfByte = r.a("https://cc.map.qq.com?desc_c", (byte[])localObject);
-        if (arrayOfByte != null)
-        {
-          localObject = new String(arrayOfByte);
-          g.a(this.a).a("DRG", "response suc,try:".concat(String.valueOf(j)));
-          boolean bool = a((String)localObject);
-          AppMethodBeat.o(224081);
-          return bool;
-        }
-      }
-    }
-    AppMethodBeat.o(224081);
-    return false;
-  }
-  
-  private String c()
-  {
-    AppMethodBeat.i(224082);
-    Object localObject = x.a(x.b(this.a, t.q, "default"));
-    if (((List)localObject).isEmpty())
-    {
-      AppMethodBeat.o(224082);
-      return null;
-    }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray;
-    for (;;)
-    {
-      try
-      {
-        localJSONObject1.put("projName", a.a);
-        localJSONObject1.put("appkey", x.a(this.a));
-        localJSONObject1.put("appversion", x.b(this.a));
-        localJSONObject1.put("imei", x.c(this.a));
-        localJSONObject1.put("coverSDKver", t.k);
-        localJSONObject1.put("model", x.b() + "_" + x.a());
-        localJSONObject1.put("APILevel", x.c());
-        localJSONArray = new JSONArray();
-        Iterator localIterator = ((List)localObject).iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (p)localIterator.next();
-        if (localObject != null)
-        {
-          JSONObject localJSONObject2 = new JSONObject();
-          localJSONObject2.put("compId", ((p)localObject).a);
-          localJSONObject2.put("compVer", ((p)localObject).b);
-          localJSONObject2.put("size", ((p)localObject).d);
-          Context localContext = this.a;
-          int i = s.a(localContext).a();
-          if (x.a(((p)localObject).a))
-          {
-            localObject = x.b(localContext, x.c + File.separator + t.F[i] + File.separator + ((p)localObject).c);
-            localJSONObject2.put("md5", x.a(new File((String)localObject)));
-            localJSONArray.put(localJSONObject2);
-          }
-          else
-          {
-            str = x.b(localContext, x.a + File.separator + localException.c);
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        g.a(this.a).a("DRG", "reqDerror:" + localException.toString());
-        AppMethodBeat.o(224082);
-        return null;
-      }
-    }
-    localJSONObject1.put("compList", localJSONArray);
-    String str = localJSONObject1.toString();
-    g.a(this.a).a("DRG", "req:".concat(String.valueOf(str)));
-    str = EncryptAesUtils.encryptAes256Base64(str, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q", t.G);
-    AppMethodBeat.o(224082);
-    return str;
-  }
-  
-  public final void a()
-  {
-    AppMethodBeat.i(224080);
-    this.d = false;
-    q.a(this.b, 10006, 0L);
-    this.f.startup(this.b);
-    AppMethodBeat.o(224080);
-  }
-  
   final class a
     extends Handler
   {
@@ -310,23 +301,23 @@ public class i
         return;
         paramMessage = (List)paramMessage.obj;
         i.a(i.this, paramMessage);
-        i.b(i.this).a(paramMessage);
-        i.b(i.this).b();
+        i.b(i.this).a = paramMessage;
+        i.b(i.this).a();
         AppMethodBeat.o(180799);
         return;
-        if ((i.c(i.this) != null) && (i.b(i.this).a() < 4))
+        if ((i.c(i.this) != null) && (i.b(i.this).b < 4))
         {
-          i.b(i.this).a(i.c(i.this));
-          i.b(i.this).b();
+          i.b(i.this).a = i.c(i.this);
+          i.b(i.this).a();
         }
-        g.a(i.this.a).d();
+        q.a(g.a(i.this.a).b, 10005, 0L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.i
  * JD-Core Version:    0.7.0.1
  */

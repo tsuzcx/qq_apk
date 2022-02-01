@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/ha" android:layout_width="255.0dip" android:layout_height="wrap_content" android:minHeight="220.0dip"
+<LinearLayout android:orientation="vertical" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/be4" android:layout_width="220.0dip" android:layout_height="106.599976dip" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/anv" />
+    <TextView android:textSize="@dimen/s" android:textColor="@color/a2x" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/b5f" android:background="@drawable/qd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="@dimen/hs" android:singleLine="true" />
+    <Button android:textSize="@dimen/is" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/b57" android:background="@drawable/kb" android:visibility="gone" android:layout_width="141.0dip" android:layout_height="35.0dip" android:text="@string/ar6" android:maxLines="3" />
+    <View android:id="@id/alr" android:background="@drawable/rc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/r" android:layerType="software" />
 </LinearLayout>

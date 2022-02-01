@@ -28,21 +28,23 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.y;
+import com.tencent.mm.ag.y;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.bo.a.a;
 import com.tencent.mm.bo.a.b;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar;
-import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.protocal.protobuf.cru;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.tools.e.b;
 import com.tencent.mm.ui.tools.e.c;
 import com.tencent.mm.ui.tools.e.d;
@@ -52,221 +54,222 @@ import com.tencent.mm.ui.tools.o;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.u;
-import d.g.b.p;
-import d.l;
+import com.tencent.xweb.v;
 import java.util.Arrays;
+import kotlin.g.b.p;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView;", "Landroid/widget/RelativeLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "ENTER_HIDE_MIL_SEC", "", "INVALID_ORIENTATION", "", "TAG", "", "avatarIv", "Landroid/widget/ImageView;", "avatarLayout", "Landroid/view/View;", "centerPlayIv", "closeIv", "currentPlayTime", "", "enterId", "getEnterId", "()I", "setEnterId", "(I)V", "enterTimeInMs", "getEnterTimeInMs", "()J", "setEnterTimeInMs", "(J)V", "footerLayout", "forbidForward", "", "getForbidForward", "()Z", "setForbidForward", "(Z)V", "forwardUiVisibility", "hasAddVideoView", "hasAdjustOrientation", "hideToolBarTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "imagePreviewAnimation", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation;", "isLandScapeVideo", "isPlaying", "isRunningExitAnimation", "loadingBar", "Landroid/widget/ProgressBar;", "mCurrentOrientation", "mIsShowOpLayout", "mPreOrientation", "moreIv", "moreLayout", "mpInfoLayout", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "mpShareVideoReport", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoShareReport;", "getMpShareVideoReport", "()Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoShareReport;", "needDoAnimation", "nicknameTv", "Landroid/widget/TextView;", "orientationListenerHelper", "Lcom/tencent/mm/orientation/OrientationListenerHelper;", "preDeltaX", "preDeltaY", "preScale", "", "shareIv", "subScene", "getSubScene", "()Ljava/lang/Integer;", "setSubScene", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "toolBarMask", "touchLayout", "videoContainerLayout", "Landroid/view/ViewGroup;", "videoControl", "Lcom/tencent/xweb/VideoControl;", "videoPlayOpLayout", "videoPlayRootLayout", "videoPlayerSeekBar", "Lcom/tencent/mm/pluginsdk/ui/tools/RedesignVideoPlayerSeekBar;", "videoRootLayout", "addVideoView", "", "view", "adjustOrientation", "exit", "fadeInAnimation", "Landroid/view/animation/Animation;", "fadeInOpLayout", "fadeOutAnimation", "duration", "fadeOutOpLayout", "force", "handleAnimation", "handleFullScreenStatusBar", "fullScreen", "handleHorizontalUI", "handleScreenSize", "handleVerticalUI", "hideLoading", "hideToolBar", "initData", "initReportData", "initSeekBar", "initVideoController", "initView", "isInFullScreen", "loadAvatar", "onClick", "v", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onExit", "onExitMpVideoFullPage", "onResume", "opPlay", "postHandleVerticalUI", "removeVideoView", "resetOrientation", "runDragAnimation", "runEnterAnimation", "runExitAnimation", "bm", "Landroid/graphics/Bitmap;", "callback", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation$ICallback;", "showLoading", "showToolBar", "starHideToolBar", "startHideToolBarTimer", "stopHideToolBarTimer", "supportFullScreen", "updatePlayBtn", "playing", "plugin-webview_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView;", "Landroid/widget/RelativeLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "ENTER_HIDE_MIL_SEC", "", "INVALID_ORIENTATION", "", "TAG", "", "avatarIv", "Landroid/widget/ImageView;", "avatarLayout", "Landroid/view/View;", "centerPlayIv", "closeIv", "currentPlayTime", "", "enterId", "getEnterId", "()I", "setEnterId", "(I)V", "enterTimeInMs", "getEnterTimeInMs", "()J", "setEnterTimeInMs", "(J)V", "footerLayout", "forbidForward", "", "getForbidForward", "()Z", "setForbidForward", "(Z)V", "forwardUiVisibility", "hasAddVideoView", "hasAdjustOrientation", "hideToolBarTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "imagePreviewAnimation", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation;", "isLandScapeVideo", "isPlaying", "isRunningExitAnimation", "loadingBar", "Landroid/widget/ProgressBar;", "mCurrentOrientation", "mIsShowOpLayout", "mPreOrientation", "moreIv", "moreLayout", "mpInfoLayout", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "mpShareVideoReport", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoShareReport;", "getMpShareVideoReport", "()Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoShareReport;", "needDoAnimation", "nicknameTv", "Landroid/widget/TextView;", "orientationListenerHelper", "Lcom/tencent/mm/orientation/OrientationListenerHelper;", "preDeltaX", "preDeltaY", "preScale", "", "shareIv", "subScene", "getSubScene", "()Ljava/lang/Integer;", "setSubScene", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "toolBarMask", "touchLayout", "videoContainerLayout", "Landroid/view/ViewGroup;", "videoControl", "Lcom/tencent/xweb/VideoControl;", "videoPlayOpLayout", "videoPlayRootLayout", "videoPlayerSeekBar", "Lcom/tencent/mm/pluginsdk/ui/tools/RedesignVideoPlayerSeekBar;", "videoRootLayout", "addVideoView", "", "view", "adjustOrientation", "exit", "fadeInAnimation", "Landroid/view/animation/Animation;", "fadeInOpLayout", "fadeOutAnimation", "duration", "fadeOutOpLayout", "force", "handleAnimation", "handleFullScreenStatusBar", "fullScreen", "handleHorizontalUI", "handleScreenSize", "handleVerticalUI", "hideLoading", "hideToolBar", "initData", "initReportData", "initSeekBar", "initVideoController", "initView", "isInFullScreen", "loadAvatar", "onClick", "v", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onExit", "onExitMpVideoFullPage", "onResume", "opPlay", "postHandleVerticalUI", "removeVideoView", "resetOrientation", "runDragAnimation", "runEnterAnimation", "runExitAnimation", "bm", "Landroid/graphics/Bitmap;", "callback", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation$ICallback;", "showLoading", "showToolBar", "starHideToolBar", "startHideToolBarTimer", "stopHideToolBarTimer", "supportFullScreen", "updatePlayBtn", "playing", "plugin-webview_release"})
 public final class MPVideoPlayFullScreenView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  public int ArA;
-  public float Ary;
-  public int Arz;
-  private RedesignVideoPlayerSeekBar BAO;
-  public boolean BAY;
-  private boolean EGA;
-  public View EGe;
-  private View EGf;
-  private ViewGroup EGg;
-  public ViewGroup EGh;
-  private View EGi;
-  private View EGj;
-  private View EGk;
-  private View EGl;
-  private View EGm;
-  private View EGn;
-  public u EGo;
-  private double EGp;
-  private final int EGq;
-  private int EGr;
-  private boolean EGs;
-  private boolean EGt;
-  private boolean EGu;
-  private final h EGv;
-  private boolean EGw;
-  private Integer EGx;
-  private aw EGy;
-  private final long EGz;
-  private com.tencent.mm.bo.a EuP;
-  private View Jip;
+  public float EAC;
+  public int EAD;
+  public int EAE;
+  public boolean FLK;
+  private RedesignVideoPlayerSeekBar FLz;
+  private com.tencent.mm.bo.a Jii;
+  public View JvH;
+  private View JvI;
+  private ViewGroup JvJ;
+  public ViewGroup JvK;
+  private View JvL;
+  private View JvM;
+  private View JvN;
+  private View JvO;
+  private View JvP;
+  private View JvQ;
+  public u JvR;
+  private View JvS;
+  private double JvT;
+  private final int JvU;
+  private int JvV;
+  private boolean JvW;
+  private boolean JvX;
+  private boolean JvY;
+  private final h JvZ;
+  private boolean Jwa;
+  private Integer Jwb;
+  private MTimerHandler Jwc;
+  private final long Jwd;
+  private boolean Jwe;
   public final String TAG;
-  private ImageView fTj;
-  private ProgressBar gYT;
-  public y hCc;
-  private boolean hGJ;
-  private boolean lVw;
+  private boolean gVd;
+  private ImageView gyr;
+  private ProgressBar hRO;
+  private boolean iAS;
+  public y iwi;
   private int mCurrentOrientation;
-  private int oAb;
-  public com.tencent.mm.ui.tools.e oMQ;
-  private View ojN;
-  private View oln;
-  private int otX;
-  private TextView ovs;
-  private MMNeat7extView ovt;
-  private long oyj;
-  private View rYg;
+  private int pHu;
+  private TextView pIN;
+  private MMNeat7extView pIO;
+  private long pLN;
+  private int pNM;
+  private View pvJ;
+  private View pxG;
+  public com.tencent.mm.ui.tools.e qaE;
+  private View tFX;
   
   public MPVideoPlayFullScreenView(final Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(82641);
     this.TAG = "MicroMsg.MPVideoPlayFullScreenView";
-    this.EGq = -3;
-    this.EGr = this.EGq;
+    this.JvU = -3;
+    this.JvV = this.JvU;
     this.mCurrentOrientation = -1;
-    this.EuP = new com.tencent.mm.bo.a(paramContext, (a.b)new j(this, paramContext));
-    this.EGv = new h();
-    View.inflate(paramContext, 2131494955, (ViewGroup)this);
-    paramAttributeSet = findViewById(2131306368);
+    this.Jii = new com.tencent.mm.bo.a(paramContext, (a.b)new j(this, paramContext));
+    this.JvZ = new h();
+    View.inflate(paramContext, 2131495698, (ViewGroup)this);
+    paramAttributeSet = findViewById(2131309797);
     p.g(paramAttributeSet, "findViewById(R.id.video_play_root_layout)");
-    this.EGe = paramAttributeSet;
-    paramAttributeSet = findViewById(2131306366);
+    this.JvH = paramAttributeSet;
+    paramAttributeSet = findViewById(2131309795);
     p.g(paramAttributeSet, "findViewById(R.id.video_play_op_layout)");
-    this.EGf = paramAttributeSet;
-    paramAttributeSet = findViewById(2131306318);
+    this.JvI = paramAttributeSet;
+    paramAttributeSet = findViewById(2131309737);
     p.g(paramAttributeSet, "findViewById(R.id.video_container_layout)");
-    this.EGg = ((ViewGroup)paramAttributeSet);
-    paramAttributeSet = findViewById(2131306372);
+    this.JvJ = ((ViewGroup)paramAttributeSet);
+    paramAttributeSet = findViewById(2131309801);
     p.g(paramAttributeSet, "findViewById(R.id.video_player_footer)");
-    this.EGi = paramAttributeSet;
-    paramAttributeSet = findViewById(2131302495);
+    this.JvL = paramAttributeSet;
+    paramAttributeSet = findViewById(2131304922);
     p.g(paramAttributeSet, "findViewById(R.id.mp_info_layout)");
-    this.EGj = paramAttributeSet;
-    paramAttributeSet = findViewById(2131306408);
+    this.JvM = paramAttributeSet;
+    paramAttributeSet = findViewById(2131309839);
     p.g(paramAttributeSet, "findViewById(R.id.video_touch_layout)");
-    this.EGk = paramAttributeSet;
-    paramAttributeSet = findViewById(2131302498);
+    this.JvN = paramAttributeSet;
+    paramAttributeSet = findViewById(2131304926);
     p.g(paramAttributeSet, "findViewById(R.id.mp_video_avatar_layout)");
-    this.rYg = paramAttributeSet;
-    paramAttributeSet = findViewById(2131302497);
+    this.tFX = paramAttributeSet;
+    paramAttributeSet = findViewById(2131304925);
     p.g(paramAttributeSet, "findViewById(R.id.mp_video_avatar_iv)");
-    this.fTj = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131302508);
+    this.gyr = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131304936);
     p.g(paramAttributeSet, "findViewById(R.id.mp_video_nickname_tv)");
-    this.ovs = ((TextView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131302513);
+    this.pIN = ((TextView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131304941);
     p.g(paramAttributeSet, "findViewById(R.id.mp_video_title_tv)");
-    this.ovt = ((MMNeat7extView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131302514);
+    this.pIO = ((MMNeat7extView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131304942);
     p.g(paramAttributeSet, "findViewById(R.id.mp_video_view_article_layout)");
-    this.oln = paramAttributeSet;
-    this.BAO = ((RedesignVideoPlayerSeekBar)findViewById(2131306375));
-    this.Jip = findViewById(2131308530);
-    this.gYT = ((ProgressBar)findViewById(2131306374));
-    paramAttributeSet = this.BAO;
+    this.pxG = paramAttributeSet;
+    this.FLz = ((RedesignVideoPlayerSeekBar)findViewById(2131309804));
+    this.JvS = findViewById(2131309282);
+    this.hRO = ((ProgressBar)findViewById(2131309803));
+    paramAttributeSet = this.FLz;
     if (paramAttributeSet != null) {
       paramAttributeSet.setOnClickListener((View.OnClickListener)this);
     }
-    paramAttributeSet = this.EGi;
+    paramAttributeSet = this.JvL;
     if (paramAttributeSet != null) {
-      paramAttributeSet.setOnClickListener((View.OnClickListener)1.EGB);
+      paramAttributeSet.setOnClickListener((View.OnClickListener)1.Jwf);
     }
-    paramAttributeSet = this.EGj;
+    paramAttributeSet = this.JvM;
     if (paramAttributeSet != null) {
-      paramAttributeSet.setOnClickListener((View.OnClickListener)2.EGC);
+      paramAttributeSet.setOnClickListener((View.OnClickListener)2.Jwg);
     }
-    this.rYg.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.tFX.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         Object localObject1 = null;
         AppMethodBeat.i(82585);
         Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject2).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject2).ahF());
-        if (MPVideoPlayFullScreenView.g(this.EGD) != null)
+        ((com.tencent.mm.hellhoundlib.b.b)localObject2).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject2).axR());
+        if (MPVideoPlayFullScreenView.g(this.Jwh) != null)
         {
-          paramAnonymousView = MPVideoPlayFullScreenView.g(this.EGD);
+          paramAnonymousView = MPVideoPlayFullScreenView.g(this.Jwh);
           if (paramAnonymousView == null) {
             break label203;
           }
         }
         label203:
-        for (paramAnonymousView = paramAnonymousView.dpP;; paramAnonymousView = null)
+        for (paramAnonymousView = paramAnonymousView.dHc;; paramAnonymousView = null)
         {
-          if (bu.isNullOrNil(paramAnonymousView)) {
-            ae.w(MPVideoPlayFullScreenView.a(this.EGD), "srcUserName is null");
+          if (Util.isNullOrNil(paramAnonymousView)) {
+            Log.w(MPVideoPlayFullScreenView.a(this.Jwh), "srcUserName is null");
           }
           localObject2 = new Intent();
-          y localy = MPVideoPlayFullScreenView.g(this.EGD);
+          y localy = MPVideoPlayFullScreenView.g(this.Jwh);
           paramAnonymousView = localObject1;
           if (localy != null) {
-            paramAnonymousView = localy.dpP;
+            paramAnonymousView = localy.dHc;
           }
           ((Intent)localObject2).putExtra("Contact_User", paramAnonymousView);
           ((Intent)localObject2).putExtra("Contact_Scene", 163);
           ((Intent)localObject2).putExtra("force_get_contact", true);
           ((Intent)localObject2).putExtra("key_use_new_contact_profile", true);
-          com.tencent.mm.br.d.b(paramContext, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
-          com.tencent.mm.plugin.report.service.g.yxI.f(18589, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
+          c.b(paramContext, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
+          com.tencent.mm.plugin.report.service.h.CyF.a(18589, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(82585);
           return;
         }
       }
     });
-    o.gY(this.rYg);
-    paramAttributeSet = findViewById(2131306371);
+    o.hp(this.tFX);
+    paramAttributeSet = findViewById(2131309800);
     p.g(paramAttributeSet, "findViewById(R.id.video_player_close)");
-    this.ojN = paramAttributeSet;
-    this.ojN.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.pvJ = paramAttributeSet;
+    this.pvJ.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82586);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        this.EGD.exit();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        this.Jwh.exit();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82586);
       }
     });
-    paramAttributeSet = findViewById(2131306373);
+    paramAttributeSet = findViewById(2131309802);
     p.g(paramAttributeSet, "findViewById(R.id.video_player_more_iv)");
-    this.EGl = paramAttributeSet;
-    this.EGl.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.JvO = paramAttributeSet;
+    this.JvO.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82587);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        paramAnonymousView = MPVideoPlayFullScreenView.g(this.EGD);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        paramAnonymousView = MPVideoPlayFullScreenView.g(this.Jwh);
         if (paramAnonymousView != null)
         {
-          localObject = g.EHb;
+          localObject = g.JwF;
           g.a(paramContext, paramAnonymousView, 4);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82587);
       }
     });
-    paramAttributeSet = findViewById(2131306376);
+    paramAttributeSet = findViewById(2131309805);
     p.g(paramAttributeSet, "findViewById(R.id.video_player_share_iv)");
-    this.EGn = paramAttributeSet;
-    this.EGn.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.JvQ = paramAttributeSet;
+    this.JvQ.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82588);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
         paramAnonymousView = paramContext;
-        if (((paramAnonymousView instanceof WebViewUI)) && (MPVideoPlayFullScreenView.g(this.EGD) != null)) {
-          if (x.fjm())
+        if (((paramAnonymousView instanceof WebViewUI)) && (MPVideoPlayFullScreenView.g(this.Jwh) != null)) {
+          if (z.gsM())
           {
-            localObject1 = g.EHb;
-            localObject1 = MPVideoPlayFullScreenView.g(this.EGD);
+            localObject1 = g.JwF;
+            localObject1 = MPVideoPlayFullScreenView.g(this.Jwh);
             if (localObject1 == null) {
-              p.gkB();
+              p.hyc();
             }
             g.a(paramAnonymousView, (y)localObject1, 5);
-            com.tencent.mm.plugin.report.service.g.yxI.f(18589, new Object[] { Integer.valueOf(16), Integer.valueOf(3) });
+            com.tencent.mm.plugin.report.service.h.CyF.a(18589, new Object[] { Integer.valueOf(16), Integer.valueOf(3) });
           }
         }
         for (;;)
@@ -274,301 +277,57 @@ public final class MPVideoPlayFullScreenView
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(82588);
           return;
-          ((WebViewUI)paramAnonymousView).Ewq.hCc = MPVideoPlayFullScreenView.g(this.EGD);
-          localObject1 = d.EGT;
-          localObject1 = MPVideoPlayFullScreenView.g(this.EGD);
+          ((WebViewUI)paramAnonymousView).JjJ.iwi = MPVideoPlayFullScreenView.g(this.Jwh);
+          localObject1 = d.Jwx;
+          localObject1 = MPVideoPlayFullScreenView.g(this.Jwh);
           if (localObject1 == null) {
-            p.gkB();
+            p.hyc();
           }
-          localObject1 = ((y)localObject1).hGe;
-          Object localObject2 = MPVideoPlayFullScreenView.g(this.EGD);
+          localObject1 = ((y)localObject1).iAo;
+          Object localObject2 = MPVideoPlayFullScreenView.g(this.Jwh);
           if (localObject2 == null) {
-            p.gkB();
+            p.hyc();
           }
           localObject2 = ((y)localObject2).title;
-          y localy = MPVideoPlayFullScreenView.g(this.EGD);
+          y localy = MPVideoPlayFullScreenView.g(this.Jwh);
           if (localy == null) {
-            p.gkB();
+            p.hyc();
           }
-          d.a(paramAnonymousView, (String)localObject1, "", (String)localObject2, localy.FUw, 2);
+          d.a(paramAnonymousView, (String)localObject1, "", (String)localObject2, localy.KOe, 2);
           break;
-          ae.w(MPVideoPlayFullScreenView.a(this.EGD), "should not be here");
+          Log.w(MPVideoPlayFullScreenView.a(this.Jwh), "should not be here");
         }
       }
     });
-    paramContext = findViewById(2131306413);
+    paramContext = findViewById(2131309844);
     p.g(paramContext, "findViewById(R.id.video_wait_play_btn)");
-    this.EGm = paramContext;
-    this.EGm.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.JvP = paramContext;
+    this.JvP.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82589);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        MPVideoPlayFullScreenView.B(this.EGD);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        MPVideoPlayFullScreenView.C(this.Jwh);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82589);
       }
     });
-    this.oln.setVisibility(8);
-    paramContext = this.BAO;
+    this.pxG.setVisibility(8);
+    paramContext = this.FLz;
     if (paramContext != null) {
       paramContext.setPlayBtnOnClickListener((View.OnClickListener)this);
     }
-    paramContext = this.BAO;
+    paramContext = this.FLz;
     if (paramContext != null) {
       paramContext.setIplaySeekCallback((com.tencent.mm.plugin.sight.decode.ui.b)new h(this));
     }
-    this.Ary = 1.0F;
-    this.EGy = new aw((aw.a)new g(this), true);
-    this.EGz = 4000L;
+    this.EAC = 1.0F;
+    this.Jwc = new MTimerHandler((MTimerHandler.CallBack)new g(this), true);
+    this.Jwd = 4000L;
     AppMethodBeat.o(82641);
-  }
-  
-  private final void eYC()
-  {
-    AppMethodBeat.i(82626);
-    if (this.oMQ == null) {
-      this.oMQ = new com.tencent.mm.ui.tools.e(getContext());
-    }
-    if (this.hCc == null)
-    {
-      this.EGw = true;
-      AppMethodBeat.o(82626);
-      return;
-    }
-    this.EGw = false;
-    Object localObject = this.hCc;
-    if (localObject == null) {
-      p.gkB();
-    }
-    int i = ((y)localObject).hGC;
-    localObject = this.hCc;
-    if (localObject == null) {
-      p.gkB();
-    }
-    int j = ((y)localObject).hGD;
-    localObject = this.hCc;
-    if (localObject == null) {
-      p.gkB();
-    }
-    int k = ((y)localObject).hGE;
-    localObject = this.hCc;
-    if (localObject == null) {
-      p.gkB();
-    }
-    int m = ((y)localObject).hGF;
-    localObject = this.oMQ;
-    if (localObject != null) {
-      ((com.tencent.mm.ui.tools.e)localObject).R(i, j, k, m);
-    }
-    localObject = this.oMQ;
-    if (localObject != null) {
-      ((com.tencent.mm.ui.tools.e)localObject).fOM();
-    }
-    localObject = this.oMQ;
-    if (localObject != null) {
-      ((com.tencent.mm.ui.tools.e)localObject).ki(0, 0);
-    }
-    eYD();
-    AppMethodBeat.o(82626);
-  }
-  
-  private final void eYD()
-  {
-    AppMethodBeat.i(82627);
-    Object localObject = this.EGh;
-    if (localObject != null)
-    {
-      localObject = ((ViewGroup)localObject).getViewTreeObserver();
-      if (localObject != null)
-      {
-        ((ViewTreeObserver)localObject).addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new p(this));
-        AppMethodBeat.o(82627);
-        return;
-      }
-    }
-    AppMethodBeat.o(82627);
-  }
-  
-  private final void eYE()
-  {
-    AppMethodBeat.i(82631);
-    if (this.lVw)
-    {
-      localu = this.EGo;
-      if (localu != null)
-      {
-        localu.ewR();
-        AppMethodBeat.o(82631);
-        return;
-      }
-      AppMethodBeat.o(82631);
-      return;
-    }
-    u localu = this.EGo;
-    if (localu != null)
-    {
-      localu.gfi();
-      AppMethodBeat.o(82631);
-      return;
-    }
-    AppMethodBeat.o(82631);
-  }
-  
-  private final void eYF()
-  {
-    try
-    {
-      AppMethodBeat.i(199366);
-      Object localObject1 = getContext();
-      if (localObject1 == null)
-      {
-        localObject1 = new d.v("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(199366);
-        throw ((Throwable)localObject1);
-      }
-    }
-    finally {}
-    Activity localActivity = (Activity)localObject2;
-    if (this.hCc == null)
-    {
-      ae.d(this.TAG, "adjustOrientation mpShareVideoInfo is null");
-      AppMethodBeat.o(199366);
-    }
-    for (;;)
-    {
-      return;
-      if ((!this.EGt) && (this.EGu)) {
-        break;
-      }
-      ae.i(this.TAG, "adjustOrientation hasAdjustOrientation=" + this.EGt + ", hasAddVideoView=" + this.EGu);
-      AppMethodBeat.o(199366);
-    }
-    this.EGt = true;
-    if (this.EGr == this.EGq) {
-      this.EGr = localActivity.getRequestedOrientation();
-    }
-    Object localObject3 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("adjustOrientation width = ");
-    y localy = this.hCc;
-    if (localy == null) {
-      p.gkB();
-    }
-    localStringBuilder = localStringBuilder.append(localy.width).append(", height=");
-    localy = this.hCc;
-    if (localy == null) {
-      p.gkB();
-    }
-    ae.i((String)localObject3, localy.height);
-    localObject3 = this.hCc;
-    if (localObject3 == null) {
-      p.gkB();
-    }
-    int i = ((y)localObject3).width;
-    localObject3 = this.hCc;
-    if (localObject3 == null) {
-      p.gkB();
-    }
-    if (i <= ((y)localObject3).height)
-    {
-      this.mCurrentOrientation = 1;
-      localActivity.setRequestedOrientation(this.mCurrentOrientation);
-      this.EGs = false;
-    }
-    for (;;)
-    {
-      eYM();
-      AppMethodBeat.o(199366);
-      break;
-      this.EGs = true;
-      this.mCurrentOrientation = 0;
-      localActivity.setRequestedOrientation(this.mCurrentOrientation);
-      this.EuP.enable();
-    }
-  }
-  
-  private final void eYI()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(82635);
-    Object localObject = this.TAG;
-    if (this.EGf.getVisibility() == 0) {}
-    for (;;)
-    {
-      ae.d((String)localObject, "fadeOutOpLayout: %b", new Object[] { Boolean.valueOf(bool) });
-      localObject = eYJ();
-      ((Animation)localObject).setFillAfter(false);
-      ((Animation)localObject).setAnimationListener((Animation.AnimationListener)new b(this));
-      this.EGf.clearAnimation();
-      this.EGf.startAnimation((Animation)localObject);
-      AppMethodBeat.o(82635);
-      return;
-      bool = false;
-    }
-  }
-  
-  private static Animation eYJ()
-  {
-    AppMethodBeat.i(82636);
-    Object localObject = new AlphaAnimation(1.0F, 0.0F);
-    ((AlphaAnimation)localObject).setDuration(150L);
-    ((AlphaAnimation)localObject).setFillAfter(true);
-    ((AlphaAnimation)localObject).setInterpolator((Interpolator)new AccelerateInterpolator(10.0F));
-    localObject = (Animation)localObject;
-    AppMethodBeat.o(82636);
-    return localObject;
-  }
-  
-  private final void eYK()
-  {
-    AppMethodBeat.i(82638);
-    Object localObject = getContext();
-    if (localObject == null)
-    {
-      localObject = new d.v("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(82638);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((Activity)localObject).getWindow();
-    p.g(localObject, "(context as Activity).window");
-    localObject = ((Window)localObject).getDecorView();
-    p.g(localObject, "contentRoot");
-    ((View)localObject).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new e(this, (View)localObject));
-    AppMethodBeat.o(82638);
-  }
-  
-  private final void eYL()
-  {
-    AppMethodBeat.i(82639);
-    Object localObject = getContext();
-    if (localObject == null)
-    {
-      localObject = new d.v("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(82639);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((Activity)localObject).getWindow();
-    p.g(localObject, "(context as Activity).window");
-    localObject = ((Window)localObject).getDecorView();
-    p.g(localObject, "contentRoot");
-    ((View)localObject).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new d(this, (View)localObject));
-    AppMethodBeat.o(82639);
-  }
-  
-  private final void eYM()
-  {
-    AppMethodBeat.i(182654);
-    if ((this.mCurrentOrientation == 0) || (this.mCurrentOrientation == 8))
-    {
-      eYL();
-      AppMethodBeat.o(182654);
-      return;
-    }
-    eYK();
-    AppMethodBeat.o(182654);
   }
   
   private final int getSubScene$1385f2()
@@ -578,7 +337,7 @@ public final class MPVideoPlayFullScreenView
     Object localObject1 = getContext();
     if (localObject1 == null)
     {
-      localObject1 = new d.v("null cannot be cast to non-null type android.app.Activity");
+      localObject1 = new t("null cannot be cast to non-null type android.app.Activity");
       AppMethodBeat.o(82633);
       throw ((Throwable)localObject1);
     }
@@ -593,14 +352,14 @@ public final class MPVideoPlayFullScreenView
       localObject3 = (com.tencent.mm.plugin.webview.core.b)localObject1;
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = ((com.tencent.mm.plugin.webview.core.b)localObject3).bRn();
+        localObject1 = ((com.tencent.mm.plugin.webview.core.b)localObject3).coX();
       }
     }
     for (;;)
     {
       try
       {
-        int j = bu.getInt(Uri.parse((String)localObject1).getQueryParameter("scene"), 10000);
+        int j = Util.getInt(Uri.parse((String)localObject1).getQueryParameter("scene"), 10000);
         i = j;
         AppMethodBeat.o(82633);
         return i;
@@ -609,14 +368,258 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  private void removeVideoView()
+  private final void ghH()
   {
-    AppMethodBeat.i(82632);
-    this.EGg.removeAllViews();
+    AppMethodBeat.i(82626);
+    if (this.qaE == null) {
+      this.qaE = new com.tencent.mm.ui.tools.e(getContext());
+    }
+    if (this.iwi == null)
+    {
+      this.Jwa = true;
+      AppMethodBeat.o(82626);
+      return;
+    }
+    this.Jwa = false;
+    Object localObject = this.iwi;
+    if (localObject == null) {
+      p.hyc();
+    }
+    int i = ((y)localObject).iAL;
+    localObject = this.iwi;
+    if (localObject == null) {
+      p.hyc();
+    }
+    int j = ((y)localObject).iAM;
+    localObject = this.iwi;
+    if (localObject == null) {
+      p.hyc();
+    }
+    int k = ((y)localObject).iAN;
+    localObject = this.iwi;
+    if (localObject == null) {
+      p.hyc();
+    }
+    int m = ((y)localObject).iAO;
+    localObject = this.qaE;
+    if (localObject != null) {
+      ((com.tencent.mm.ui.tools.e)localObject).Q(i, j, k, m);
+    }
+    localObject = this.qaE;
+    if (localObject != null) {
+      ((com.tencent.mm.ui.tools.e)localObject).gXF();
+    }
+    localObject = this.qaE;
+    if (localObject != null) {
+      ((com.tencent.mm.ui.tools.e)localObject).lu(0, 0);
+    }
+    ghI();
+    AppMethodBeat.o(82626);
+  }
+  
+  private final void ghI()
+  {
+    AppMethodBeat.i(82627);
+    Object localObject = this.JvK;
+    if (localObject != null)
+    {
+      localObject = ((ViewGroup)localObject).getViewTreeObserver();
+      if (localObject != null)
+      {
+        ((ViewTreeObserver)localObject).addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new p(this));
+        AppMethodBeat.o(82627);
+        return;
+      }
+    }
+    AppMethodBeat.o(82627);
+  }
+  
+  private final void ghJ()
+  {
+    AppMethodBeat.i(82631);
+    if (this.gVd)
+    {
+      localu = this.JvR;
+      if (localu != null)
+      {
+        localu.fDd();
+        AppMethodBeat.o(82631);
+        return;
+      }
+      AppMethodBeat.o(82631);
+      return;
+    }
+    u localu = this.JvR;
+    if (localu != null)
+    {
+      localu.hsz();
+      AppMethodBeat.o(82631);
+      return;
+    }
+    AppMethodBeat.o(82631);
+  }
+  
+  private final void ghK()
+  {
+    try
+    {
+      AppMethodBeat.i(210558);
+      Object localObject1 = getContext();
+      if (localObject1 == null)
+      {
+        localObject1 = new t("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(210558);
+        throw ((Throwable)localObject1);
+      }
+    }
+    finally {}
+    Activity localActivity = (Activity)localObject2;
+    if (this.iwi == null)
+    {
+      Log.d(this.TAG, "adjustOrientation mpShareVideoInfo is null");
+      AppMethodBeat.o(210558);
+    }
+    for (;;)
+    {
+      return;
+      if ((!this.JvX) && (this.JvY)) {
+        break;
+      }
+      Log.i(this.TAG, "adjustOrientation hasAdjustOrientation=" + this.JvX + ", hasAddVideoView=" + this.JvY);
+      AppMethodBeat.o(210558);
+    }
+    this.JvX = true;
+    if (this.JvV == this.JvU) {
+      this.JvV = localActivity.getRequestedOrientation();
+    }
+    Object localObject3 = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("adjustOrientation width = ");
+    y localy = this.iwi;
+    if (localy == null) {
+      p.hyc();
+    }
+    localStringBuilder = localStringBuilder.append(localy.width).append(", height=");
+    localy = this.iwi;
+    if (localy == null) {
+      p.hyc();
+    }
+    Log.i((String)localObject3, localy.height);
+    localObject3 = this.iwi;
+    if (localObject3 == null) {
+      p.hyc();
+    }
+    int i = ((y)localObject3).width;
+    localObject3 = this.iwi;
+    if (localObject3 == null) {
+      p.hyc();
+    }
+    if (i <= ((y)localObject3).height)
+    {
+      this.mCurrentOrientation = 1;
+      localActivity.setRequestedOrientation(this.mCurrentOrientation);
+      this.JvW = false;
+    }
+    for (;;)
+    {
+      ghR();
+      AppMethodBeat.o(210558);
+      break;
+      this.JvW = true;
+      this.mCurrentOrientation = 0;
+      localActivity.setRequestedOrientation(this.mCurrentOrientation);
+      this.Jii.enable();
+    }
+  }
+  
+  private final void ghN()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(82635);
+    Object localObject = this.TAG;
+    if (this.JvI.getVisibility() == 0) {}
+    for (;;)
+    {
+      Log.d((String)localObject, "fadeOutOpLayout: %b", new Object[] { Boolean.valueOf(bool) });
+      localObject = ghO();
+      ((Animation)localObject).setFillAfter(false);
+      ((Animation)localObject).setAnimationListener((Animation.AnimationListener)new b(this));
+      this.JvI.clearAnimation();
+      this.JvI.startAnimation((Animation)localObject);
+      AppMethodBeat.o(82635);
+      return;
+      bool = false;
+    }
+  }
+  
+  private static Animation ghO()
+  {
+    AppMethodBeat.i(82636);
+    Object localObject = new AlphaAnimation(1.0F, 0.0F);
+    ((AlphaAnimation)localObject).setDuration(150L);
+    ((AlphaAnimation)localObject).setFillAfter(true);
+    ((AlphaAnimation)localObject).setInterpolator((Interpolator)new AccelerateInterpolator(10.0F));
+    localObject = (Animation)localObject;
+    AppMethodBeat.o(82636);
+    return localObject;
+  }
+  
+  private final void ghP()
+  {
+    AppMethodBeat.i(82638);
     Object localObject = getContext();
     if (localObject == null)
     {
-      localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
+      localObject = new t("null cannot be cast to non-null type android.app.Activity");
+      AppMethodBeat.o(82638);
+      throw ((Throwable)localObject);
+    }
+    localObject = ((Activity)localObject).getWindow();
+    p.g(localObject, "(context as Activity).window");
+    localObject = ((Window)localObject).getDecorView();
+    p.g(localObject, "(context as Activity).window.decorView");
+    ((View)localObject).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new e(this, (View)localObject));
+    AppMethodBeat.o(82638);
+  }
+  
+  private final void ghQ()
+  {
+    AppMethodBeat.i(82639);
+    Object localObject = getContext();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type android.app.Activity");
+      AppMethodBeat.o(82639);
+      throw ((Throwable)localObject);
+    }
+    localObject = ((Activity)localObject).getWindow();
+    p.g(localObject, "(context as Activity).window");
+    localObject = ((Window)localObject).getDecorView();
+    p.g(localObject, "(context as Activity).window.decorView");
+    ((View)localObject).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new d(this, (View)localObject));
+    AppMethodBeat.o(82639);
+  }
+  
+  private final void ghR()
+  {
+    AppMethodBeat.i(182654);
+    if ((this.mCurrentOrientation == 0) || (this.mCurrentOrientation == 8))
+    {
+      ghQ();
+      AppMethodBeat.o(182654);
+      return;
+    }
+    ghP();
+    AppMethodBeat.o(182654);
+  }
+  
+  private void removeVideoView()
+  {
+    AppMethodBeat.i(82632);
+    this.JvJ.removeAllViews();
+    Object localObject = getContext();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
       AppMethodBeat.o(82632);
       throw ((Throwable)localObject);
     }
@@ -624,16 +627,16 @@ public final class MPVideoPlayFullScreenView
     AppMethodBeat.o(82632);
   }
   
-  private final void vw(boolean paramBoolean)
+  private final void zq(boolean paramBoolean)
   {
     AppMethodBeat.i(182653);
-    ae.i(this.TAG, "handleFullScreenStatusBar forwardUiVisibility " + this.oAb);
+    Log.i(this.TAG, "handleFullScreenStatusBar forwardUiVisibility " + this.pNM);
     if (paramBoolean)
     {
       localObject1 = getContext();
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.app.Activity");
+        localObject1 = new t("null cannot be cast to non-null type android.app.Activity");
         AppMethodBeat.o(182653);
         throw ((Throwable)localObject1);
       }
@@ -643,12 +646,12 @@ public final class MPVideoPlayFullScreenView
       localObject2 = ((Window)localObject2).getDecorView();
       if (localObject2 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.view.ViewGroup");
+        localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
         AppMethodBeat.o(182653);
         throw ((Throwable)localObject1);
       }
       localObject2 = (ViewGroup)localObject2;
-      this.oAb = ((ViewGroup)localObject2).getSystemUiVisibility();
+      this.pNM = ((ViewGroup)localObject2).getSystemUiVisibility();
       ((ViewGroup)localObject2).setOnSystemUiVisibilityChangeListener((View.OnSystemUiVisibilityChangeListener)new c(this, (ViewGroup)localObject2));
       ((ViewGroup)localObject2).setSystemUiVisibility(4102);
       ((Activity)localObject1).getWindow().addFlags(1024);
@@ -658,7 +661,7 @@ public final class MPVideoPlayFullScreenView
     Object localObject1 = getContext();
     if (localObject1 == null)
     {
-      localObject1 = new d.v("null cannot be cast to non-null type android.app.Activity");
+      localObject1 = new t("null cannot be cast to non-null type android.app.Activity");
       AppMethodBeat.o(182653);
       throw ((Throwable)localObject1);
     }
@@ -668,11 +671,11 @@ public final class MPVideoPlayFullScreenView
     localObject2 = ((Window)localObject2).getDecorView();
     if (localObject2 == null)
     {
-      localObject1 = new d.v("null cannot be cast to non-null type android.view.ViewGroup");
+      localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
       AppMethodBeat.o(182653);
       throw ((Throwable)localObject1);
     }
-    ((ViewGroup)localObject2).setSystemUiVisibility(this.oAb);
+    ((ViewGroup)localObject2).setSystemUiVisibility(this.pNM);
     ((Activity)localObject1).getWindow().clearFlags(1024);
     AppMethodBeat.o(182653);
   }
@@ -684,58 +687,58 @@ public final class MPVideoPlayFullScreenView
       Object localObject;
       try
       {
-        AppMethodBeat.i(199363);
+        AppMethodBeat.i(210555);
         p.h(paramy, "mpShareVideoInfo");
-        this.hCc = paramy;
-        this.hGJ = paramy.hGJ;
-        paramy = this.ovt.getPaint();
+        this.iwi = paramy;
+        this.iAS = paramy.iAS;
+        paramy = this.pIO.getPaint();
         p.g(paramy, "titleTv.paint");
         paramy.setFakeBoldText(true);
-        paramy = this.ovs.getPaint();
+        paramy = this.pIN.getPaint();
         p.g(paramy, "nicknameTv.paint");
         paramy.setFakeBoldText(true);
-        localObject = this.ovt;
-        paramy = this.hCc;
+        localObject = this.pIO;
+        paramy = this.iwi;
         if (paramy != null)
         {
           paramy = paramy.title;
-          ((MMNeat7extView)localObject).aq((CharSequence)paramy);
-          localObject = this.ovs;
+          ((MMNeat7extView)localObject).aw((CharSequence)paramy);
+          localObject = this.pIN;
           Context localContext = getContext();
-          paramy = this.hCc;
+          paramy = this.iwi;
           if (paramy != null)
           {
-            paramy = paramy.hFW;
-            ((TextView)localObject).setText((CharSequence)k.b(localContext, (CharSequence)paramy, this.ovs.getTextSize()));
-            if (!this.hGJ) {
+            paramy = paramy.iAg;
+            ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(localContext, (CharSequence)paramy, this.pIN.getTextSize()));
+            if (!this.iAS) {
               continue;
             }
-            this.EGl.setVisibility(8);
-            this.EGn.setVisibility(8);
+            this.JvO.setVisibility(8);
+            this.JvQ.setVisibility(8);
             localObject = getContext();
             if ((localObject instanceof WebViewUI))
             {
-              paramy = this.hCc;
+              paramy = this.iwi;
               if (paramy == null) {
                 break label311;
               }
-              paramy = paramy.hGI;
-              if (bu.isNullOrNil(paramy)) {
+              paramy = paramy.iAR;
+              if (Util.isNullOrNil(paramy)) {
                 break label321;
               }
-              paramy = this.hCc;
+              paramy = this.iwi;
               if (paramy == null) {
                 break label316;
               }
-              paramy = paramy.hGI;
-              com.tencent.mm.av.a.a.aJh().a(paramy, this.fTj, new c.a().aJs().pK(2131231342).aJu());
+              paramy = paramy.iAR;
+              com.tencent.mm.av.a.a.bdb().a(paramy, this.gyr, new c.a().bdt().ty(2131231405).bdv());
             }
-            if (this.EGw) {
-              eYC();
+            if (this.Jwa) {
+              ghH();
             }
-            ae.d(this.TAG, "initData");
-            eYF();
-            AppMethodBeat.o(199363);
+            Log.d(this.TAG, "initData");
+            ghK();
+            AppMethodBeat.o(210555);
           }
         }
         else
@@ -745,8 +748,8 @@ public final class MPVideoPlayFullScreenView
         }
         paramy = null;
         continue;
-        this.EGl.setVisibility(0);
-        this.EGn.setVisibility(0);
+        this.JvO.setVisibility(0);
+        this.JvQ.setVisibility(0);
         continue;
         paramy = null;
       }
@@ -757,193 +760,197 @@ public final class MPVideoPlayFullScreenView
       paramy = null;
       continue;
       label321:
-      paramy = ((WebViewUI)localObject).eWi();
+      paramy = ((WebViewUI)localObject).gff();
       if (paramy != null)
       {
-        paramy = paramy.bLE();
+        paramy = paramy.Abp;
         if (paramy != null)
         {
-          paramy = paramy.dEM;
-          continue;
+          paramy = paramy.erh();
+          if (paramy != null)
+          {
+            paramy = paramy.MwR;
+            continue;
+          }
         }
       }
       paramy = null;
     }
   }
   
-  public final boolean bnx()
+  public final boolean bJb()
   {
-    AppMethodBeat.i(199365);
+    AppMethodBeat.i(210557);
     if (getVisibility() == 0)
     {
-      AppMethodBeat.o(199365);
+      AppMethodBeat.o(210557);
       return true;
     }
-    AppMethodBeat.o(199365);
+    AppMethodBeat.o(210557);
     return false;
-  }
-  
-  @SuppressLint({"WrongConstant"})
-  public final void eYG()
-  {
-    AppMethodBeat.i(182652);
-    if (this.EGr != this.EGq)
-    {
-      Object localObject = getContext();
-      if (localObject == null)
-      {
-        localObject = new d.v("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(182652);
-        throw ((Throwable)localObject);
-      }
-      ((Activity)localObject).setRequestedOrientation(this.EGr);
-      this.EGr = this.EGq;
-      this.EuP.disable();
-    }
-    vw(false);
-    AppMethodBeat.o(182652);
-  }
-  
-  public final void eYH()
-  {
-    AppMethodBeat.i(82634);
-    if (j.IS_FLAVOR_RED) {
-      ae.d(this.TAG, "hideOpLayer %s", new Object[] { bu.fpN() });
-    }
-    if (!this.EGA)
-    {
-      AppMethodBeat.o(82634);
-      return;
-    }
-    this.EGA = false;
-    eYI();
-    AppMethodBeat.o(82634);
   }
   
   public final void exit()
   {
     AppMethodBeat.i(82628);
     Context localContext = getContext();
-    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).eWY() != null))
+    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).gfW() != null))
     {
-      if (((WebViewUI)localContext).eWY() != null)
+      if (((WebViewUI)localContext).gfW() != null)
       {
-        ae.i(this.TAG, "close click");
-        eYG();
-        ((WebViewUI)localContext).eWY().leaveFullscreen();
-        com.tencent.mm.sdk.platformtools.ar.o((Runnable)new a(this), 500L);
+        Log.i(this.TAG, "close click");
+        ghL();
+        ((WebViewUI)localContext).gfW().leaveFullscreen();
+        MMHandlerThread.postToMainThreadDelayed((Runnable)new a(this), 500L);
         AppMethodBeat.o(82628);
       }
     }
     else {
-      ae.w(this.TAG, "should not be here");
+      Log.w(this.TAG, "should not be here");
     }
     AppMethodBeat.o(82628);
   }
   
-  public final void fN(View paramView)
+  public final int getEnterId()
+  {
+    return this.pHu;
+  }
+  
+  public final long getEnterTimeInMs()
+  {
+    return this.pLN;
+  }
+  
+  public final boolean getForbidForward()
+  {
+    return this.iAS;
+  }
+  
+  public final h getMpShareVideoReport()
+  {
+    return this.JvZ;
+  }
+  
+  public final Integer getSubScene()
+  {
+    return this.Jwb;
+  }
+  
+  public final void gg(View paramView)
   {
     try
     {
-      AppMethodBeat.i(199364);
+      AppMethodBeat.i(210556);
       p.h(paramView, "view");
-      if (this.hCc == null) {
+      if (this.iwi == null) {
         break label209;
       }
-      localObject1 = this.hCc;
+      localObject1 = this.iwi;
       if (localObject1 == null) {
-        p.gkB();
+        p.hyc();
       }
-      ((y)localObject1).hGG = this.otX;
+      ((y)localObject1).iAP = this.pHu;
       localObject1 = getContext();
       if (localObject1 == null)
       {
-        paramView = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
-        AppMethodBeat.o(199364);
+        paramView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
+        AppMethodBeat.o(210556);
         throw paramView;
       }
     }
     finally {}
     Object localObject2 = (WebViewUI)localObject1;
-    Object localObject1 = ((WebViewUI)localObject2).lzT;
+    Object localObject1 = ((WebViewUI)localObject2).mHh;
     if (localObject1 != null) {}
     try
     {
-      localObject1 = this.EGv;
-      localObject2 = ((WebViewUI)localObject2).lzT;
-      y localy = this.hCc;
+      localObject1 = this.JvZ;
+      localObject2 = ((WebViewUI)localObject2).mHh;
+      y localy = this.iwi;
       if (localy == null) {
-        p.gkB();
+        p.hyc();
       }
-      ((h)localObject1).oya = ((com.tencent.mm.plugin.webview.stub.e)localObject2).An(localy.dpP);
-      this.EGv.scene = 141;
-      this.EGv.otZ = getSubScene$1385f2();
+      ((h)localObject1).pLE = ((com.tencent.mm.plugin.webview.stub.e)localObject2).IS(localy.dHc);
+      this.JvZ.scene = 141;
+      this.JvZ.pHw = getSubScene$1385f2();
     }
     catch (Exception localException)
     {
       label149:
       break label149;
     }
-    this.oyj = System.currentTimeMillis();
-    this.otX = ((int)(this.oyj / 1000L));
-    this.EGv.a(this.hCc, 1, this.otX);
-    this.EGv.a(this.hCc, 5, this.otX);
-    this.EGv.iuK = 0;
+    this.pLN = System.currentTimeMillis();
+    this.pHu = ((int)(this.pLN / 1000L));
+    this.JvZ.a(this.iwi, 1, this.pHu);
+    this.JvZ.a(this.iwi, 5, this.pHu);
+    this.JvZ.jpW = 0;
     label209:
     removeVideoView();
-    vw(true);
-    this.EGe.setAlpha(1.0F);
-    this.EGe.setBackgroundColor(-16777216);
+    zq(true);
+    this.JvH.setAlpha(1.0F);
+    this.JvH.setBackgroundColor(-16777216);
     setVisibility(0);
     localObject1 = new FrameLayout(getContext());
     ((FrameLayout)localObject1).addView(paramView, new ViewGroup.LayoutParams(-1, -2));
-    this.EGh = ((ViewGroup)localObject1);
-    paramView = this.EGg;
-    localObject1 = (View)this.EGh;
+    this.JvK = ((ViewGroup)localObject1);
+    paramView = this.JvJ;
+    localObject1 = (View)this.JvK;
     localObject2 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(15);
     paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    eYC();
-    this.BAY = false;
-    ae.d(this.TAG, "addVideoView");
-    this.EGu = true;
-    eYF();
-    AppMethodBeat.o(199364);
+    ghH();
+    this.FLK = false;
+    Log.d(this.TAG, "addVideoView");
+    this.JvY = true;
+    ghK();
+    AppMethodBeat.o(210556);
   }
   
-  public final int getEnterId()
+  @SuppressLint({"WrongConstant"})
+  public final void ghL()
   {
-    return this.otX;
+    AppMethodBeat.i(182652);
+    if (this.JvV != this.JvU)
+    {
+      Object localObject = getContext();
+      if (localObject == null)
+      {
+        localObject = new t("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(182652);
+        throw ((Throwable)localObject);
+      }
+      ((Activity)localObject).setRequestedOrientation(this.JvV);
+      this.JvV = this.JvU;
+      this.Jii.disable();
+    }
+    zq(false);
+    AppMethodBeat.o(182652);
   }
   
-  public final long getEnterTimeInMs()
+  public final void ghM()
   {
-    return this.oyj;
-  }
-  
-  public final boolean getForbidForward()
-  {
-    return this.hGJ;
-  }
-  
-  public final h getMpShareVideoReport()
-  {
-    return this.EGv;
-  }
-  
-  public final Integer getSubScene()
-  {
-    return this.EGx;
+    AppMethodBeat.i(82634);
+    if (BuildInfo.IS_FLAVOR_RED) {
+      Log.d(this.TAG, "hideOpLayer %s", new Object[] { Util.getStack() });
+    }
+    if (!this.Jwe)
+    {
+      AppMethodBeat.o(82634);
+      return;
+    }
+    this.Jwe = false;
+    ghN();
+    AppMethodBeat.o(82634);
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(82630);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    if ((paramView != null) && (paramView.getId() == 2131303281)) {
-      eYE();
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if ((paramView != null) && (paramView.getId() == 2131305954)) {
+      ghJ();
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(82630);
@@ -956,15 +963,15 @@ public final class MPVideoPlayFullScreenView
     super.onConfigurationChanged(paramConfiguration);
     if (paramConfiguration.orientation == 1)
     {
-      ae.d(this.TAG, "%d image gallery ui is vertical screen", new Object[] { Integer.valueOf(hashCode()) });
-      eYK();
+      Log.d(this.TAG, "%d image gallery ui is vertical screen", new Object[] { Integer.valueOf(hashCode()) });
+      ghP();
       AppMethodBeat.o(82637);
       return;
     }
     if (paramConfiguration.orientation == 2)
     {
-      ae.d(this.TAG, "%d image gallery ui is horizontal screen", new Object[] { Integer.valueOf(hashCode()) });
-      eYL();
+      Log.d(this.TAG, "%d image gallery ui is horizontal screen", new Object[] { Integer.valueOf(hashCode()) });
+      ghQ();
       AppMethodBeat.o(82637);
       return;
     }
@@ -981,51 +988,51 @@ public final class MPVideoPlayFullScreenView
     }
     setVisibility(8);
     removeVideoView();
-    ae.i(this.TAG, "onExitMpVideoFullPage");
-    this.EGt = false;
-    this.EGu = false;
-    if (this.hCc != null)
+    Log.i(this.TAG, "onExitMpVideoFullPage");
+    this.JvX = false;
+    this.JvY = false;
+    if (this.iwi != null)
     {
-      this.EGv.oxY = ((int)(System.currentTimeMillis() - this.oyj));
-      this.EGv.oxX = ((int)(this.EGp * 1000.0D));
-      this.EGv.a(this.hCc, 6, this.otX);
-      this.EGv.a(this.hCc, 2, this.otX);
+      this.JvZ.pLC = ((int)(System.currentTimeMillis() - this.pLN));
+      this.JvZ.pLB = ((int)(this.JvT * 1000.0D));
+      this.JvZ.a(this.iwi, 6, this.pHu);
+      this.JvZ.a(this.iwi, 2, this.pHu);
       Object localObject = getContext();
-      if (((localObject instanceof WebViewUI)) && (((WebViewUI)localObject).DRx != null))
+      if (((localObject instanceof WebViewUI)) && (((WebViewUI)localObject).IBw != null))
       {
-        localObject = ((WebViewUI)localObject).DRx;
-        y localy = this.hCc;
+        localObject = ((WebViewUI)localObject).IBw;
+        y localy = this.iwi;
         if (localy == null) {
-          p.gkB();
+          p.hyc();
         }
-        ((f)localObject).fK(localy.FUx, (int)this.EGp);
+        ((com.tencent.mm.plugin.webview.d.h)localObject).gh(localy.KOf, (int)this.JvT);
       }
-      this.hCc = null;
+      this.iwi = null;
     }
     AppMethodBeat.o(82629);
   }
   
   public final void setEnterId(int paramInt)
   {
-    this.otX = paramInt;
+    this.pHu = paramInt;
   }
   
   public final void setEnterTimeInMs(long paramLong)
   {
-    this.oyj = paramLong;
+    this.pLN = paramLong;
   }
   
   public final void setForbidForward(boolean paramBoolean)
   {
-    this.hGJ = paramBoolean;
+    this.iAS = paramBoolean;
   }
   
   public final void setSubScene(Integer paramInteger)
   {
-    this.EGx = paramInteger;
+    this.Jwb = paramInteger;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -1034,12 +1041,12 @@ public final class MPVideoPlayFullScreenView
     public final void run()
     {
       AppMethodBeat.i(82590);
-      this.EGD.onExit();
+      this.Jwh.onExit();
       AppMethodBeat.o(82590);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$fadeOutOpLayout$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-webview_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$fadeOutOpLayout$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-webview_release"})
   public static final class b
     implements Animation.AnimationListener
   {
@@ -1047,8 +1054,8 @@ public final class MPVideoPlayFullScreenView
     {
       AppMethodBeat.i(82592);
       p.h(paramAnimation, "animation");
-      if (!MPVideoPlayFullScreenView.r(this.EGD)) {
-        MPVideoPlayFullScreenView.s(this.EGD);
+      if (!MPVideoPlayFullScreenView.r(this.Jwh)) {
+        MPVideoPlayFullScreenView.s(this.Jwh);
       }
       AppMethodBeat.o(82592);
     }
@@ -1068,7 +1075,7 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "visibility", "", "onSystemUiVisibilityChange"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "visibility", "", "onSystemUiVisibilityChange"})
   static final class c
     implements View.OnSystemUiVisibilityChangeListener
   {
@@ -1076,15 +1083,15 @@ public final class MPVideoPlayFullScreenView
     
     public final void onSystemUiVisibilityChange(int paramInt)
     {
-      AppMethodBeat.i(199362);
-      if (((paramInt & 0x4) == 0) && (this.EGD.bnx())) {
-        this.EGE.setSystemUiVisibility(5894);
+      AppMethodBeat.i(210554);
+      if (((paramInt & 0x4) == 0) && (this.Jwh.bJb())) {
+        this.Jwi.setSystemUiVisibility(5894);
       }
-      AppMethodBeat.o(199362);
+      AppMethodBeat.o(210554);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$handleHorizontalUI$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-webview_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$handleHorizontalUI$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-webview_release"})
   public static final class d
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
@@ -1093,51 +1100,49 @@ public final class MPVideoPlayFullScreenView
     public final void onGlobalLayout()
     {
       AppMethodBeat.i(82594);
-      Object localObject1 = this.EGF;
-      p.g(localObject1, "contentRoot");
-      ((View)localObject1).getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-      if (com.tencent.mm.compatible.util.d.lA(24))
+      this.Jwj.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      if (com.tencent.mm.compatible.util.d.oD(24))
       {
-        localObject1 = this.EGD.getContext();
+        localObject1 = this.Jwh.getContext();
         if (localObject1 == null)
         {
-          localObject1 = new d.v("null cannot be cast to non-null type android.app.Activity");
+          localObject1 = new t("null cannot be cast to non-null type android.app.Activity");
           AppMethodBeat.o(82594);
           throw ((Throwable)localObject1);
         }
         if (((Activity)localObject1).isInMultiWindowMode())
         {
-          MPVideoPlayFullScreenView.t(this.EGD);
+          MPVideoPlayFullScreenView.t(this.Jwh);
           AppMethodBeat.o(82594);
           return;
         }
       }
-      int n = com.tencent.mm.ui.ar.en(this.EGD.getContext());
-      int i = com.tencent.mm.cb.a.ay(this.EGD.getContext(), 2131165303);
+      int n = au.aD(this.Jwh.getContext());
+      int i = com.tencent.mm.cb.a.aH(this.Jwh.getContext(), 2131165314);
       int j = i * 3;
       int k = i * 4;
       int m = i * 7;
       n = Math.max(n - i * 3, 0);
-      MPVideoPlayFullScreenView.u(this.EGD).setPadding(n, i * 2, n - i, i * 2);
-      localObject1 = MPVideoPlayFullScreenView.C(this.EGD);
+      MPVideoPlayFullScreenView.u(this.Jwh).setPadding(n, i * 2, n - i, i * 2);
+      Object localObject1 = MPVideoPlayFullScreenView.v(this.Jwh);
       if (localObject1 != null)
       {
         ((View)localObject1).setPadding(0, 0, 0, 0);
         localObject2 = ((View)localObject1).getLayoutParams();
         if (localObject2 == null)
         {
-          localObject1 = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+          localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
           AppMethodBeat.o(82594);
           throw ((Throwable)localObject1);
         }
         localObject2 = (RelativeLayout.LayoutParams)localObject2;
-        ((RelativeLayout.LayoutParams)localObject2).height = com.tencent.mm.cb.a.ax(this.EGD.getContext(), 2131165279);
+        ((RelativeLayout.LayoutParams)localObject2).height = com.tencent.mm.cb.a.aG(this.Jwh.getContext(), 2131165283);
         ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
-      localObject1 = MPVideoPlayFullScreenView.v(this.EGD).getLayoutParams();
+      localObject1 = MPVideoPlayFullScreenView.w(this.Jwh).getLayoutParams();
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+        localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
         AppMethodBeat.o(82594);
         throw ((Throwable)localObject1);
       }
@@ -1145,11 +1150,11 @@ public final class MPVideoPlayFullScreenView
       ((RelativeLayout.LayoutParams)localObject1).removeRule(3);
       ((RelativeLayout.LayoutParams)localObject1).setMargins(k, j, 0, j);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-      MPVideoPlayFullScreenView.v(this.EGD).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = MPVideoPlayFullScreenView.w(this.EGD).getLayoutParams();
+      MPVideoPlayFullScreenView.w(this.Jwh).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = MPVideoPlayFullScreenView.x(this.Jwh).getLayoutParams();
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+        localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
         AppMethodBeat.o(82594);
         throw ((Throwable)localObject1);
       }
@@ -1157,11 +1162,11 @@ public final class MPVideoPlayFullScreenView
       ((RelativeLayout.LayoutParams)localObject1).removeRule(3);
       ((RelativeLayout.LayoutParams)localObject1).setMargins(0, j, k, j);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-      MPVideoPlayFullScreenView.w(this.EGD).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = MPVideoPlayFullScreenView.x(this.EGD).getLayoutParams();
+      MPVideoPlayFullScreenView.x(this.Jwh).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = MPVideoPlayFullScreenView.y(this.Jwh).getLayoutParams();
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+        localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
         AppMethodBeat.o(82594);
         throw ((Throwable)localObject1);
       }
@@ -1169,24 +1174,24 @@ public final class MPVideoPlayFullScreenView
       ((RelativeLayout.LayoutParams)localObject1).removeRule(3);
       ((RelativeLayout.LayoutParams)localObject1).setMargins(0, j, k, j);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-      MPVideoPlayFullScreenView.x(this.EGD).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = MPVideoPlayFullScreenView.m(this.EGD);
+      MPVideoPlayFullScreenView.y(this.Jwh).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = MPVideoPlayFullScreenView.m(this.Jwh);
       if (localObject1 == null) {
-        p.gkB();
+        p.hyc();
       }
       localObject1 = ((RedesignVideoPlayerSeekBar)localObject1).getLayoutParams();
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+        localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
         AppMethodBeat.o(82594);
         throw ((Throwable)localObject1);
       }
       localObject1 = (RelativeLayout.LayoutParams)localObject1;
-      ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131306371);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131306376);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131309800);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131309805);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
       ((RelativeLayout.LayoutParams)localObject1).setMargins(m, j, m, j);
-      Object localObject2 = MPVideoPlayFullScreenView.m(this.EGD);
+      Object localObject2 = MPVideoPlayFullScreenView.m(this.Jwh);
       if (localObject2 != null)
       {
         ((RedesignVideoPlayerSeekBar)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
@@ -1197,7 +1202,7 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$handleVerticalUI$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-webview_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$handleVerticalUI$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-webview_release"})
   public static final class e
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
@@ -1206,15 +1211,13 @@ public final class MPVideoPlayFullScreenView
     public final void onGlobalLayout()
     {
       AppMethodBeat.i(82595);
-      View localView = this.EGF;
-      p.g(localView, "contentRoot");
-      localView.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-      MPVideoPlayFullScreenView.t(this.EGD);
+      this.Jwj.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      MPVideoPlayFullScreenView.t(this.Jwh);
       AppMethodBeat.o(82595);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -1223,50 +1226,50 @@ public final class MPVideoPlayFullScreenView
     public final void run()
     {
       AppMethodBeat.i(82596);
-      ProgressBar localProgressBar = MPVideoPlayFullScreenView.l(this.EGD);
+      ProgressBar localProgressBar = MPVideoPlayFullScreenView.l(this.Jwh);
       if ((localProgressBar != null) && (localProgressBar.getVisibility() == 0))
       {
-        localProgressBar = MPVideoPlayFullScreenView.l(this.EGD);
+        localProgressBar = MPVideoPlayFullScreenView.l(this.Jwh);
         if (localProgressBar != null) {
           localProgressBar.setVisibility(8);
         }
       }
-      if (!MPVideoPlayFullScreenView.n(this.EGD)) {
-        MPVideoPlayFullScreenView.k(this.EGD).setVisibility(0);
+      if (!MPVideoPlayFullScreenView.n(this.Jwh)) {
+        MPVideoPlayFullScreenView.k(this.Jwh).setVisibility(0);
       }
       AppMethodBeat.o(82596);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
   static final class g
-    implements aw.a
+    implements MTimerHandler.CallBack
   {
     g(MPVideoPlayFullScreenView paramMPVideoPlayFullScreenView) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(82597);
-      MPVideoPlayFullScreenView.i(this.EGD);
+      MPVideoPlayFullScreenView.i(this.Jwh);
       AppMethodBeat.o(82597);
       return false;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$initSeekBar$1", "Lcom/tencent/mm/plugin/sight/decode/ui/IVideoPlaySeekCallback;", "onSeekPre", "", "onSeekTo", "time", "", "plugin-webview_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$initSeekBar$1", "Lcom/tencent/mm/plugin/sight/decode/ui/IVideoPlaySeekCallback;", "onSeekPre", "", "onSeekTo", "time", "", "plugin-webview_release"})
   public static final class h
     implements com.tencent.mm.plugin.sight.decode.ui.b
   {
-    public final void aqS() {}
+    public final void aJq() {}
     
-    public final void nP(int paramInt)
+    public final void rk(int paramInt)
     {
       AppMethodBeat.i(82598);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "initSeekBar onSeekTo ".concat(String.valueOf(paramInt)));
-      u localu = MPVideoPlayFullScreenView.o(this.EGD);
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "initSeekBar onSeekTo ".concat(String.valueOf(paramInt)));
+      u localu = MPVideoPlayFullScreenView.o(this.Jwh);
       if (localu != null)
       {
-        localu.G(paramInt);
+        localu.F(paramInt);
         AppMethodBeat.o(82598);
         return;
       }
@@ -1274,45 +1277,45 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$initVideoController$1", "Lcom/tencent/xweb/VideoJsCallback;", "lastUpdateTime", "", "getLastUpdateTime", "()J", "setLastUpdateTime", "(J)V", "onSetRequestedOrientation", "", "orientation", "", "onVideoEmptied", "", "onVideoEnded", "onVideoEnterFullscreen", "isVideoTag", "id", "width", "", "height", "paused", "seeking", "currentTime", "duration", "buffered", "", "onVideoError", "error", "msg", "", "onVideoExitFullscreen", "onVideoPause", "onVideoPlay", "onVideoPlaying", "onVideoSeeked", "onVideoSeeking", "onVideoSizeUpdate", "onVideoTimeUpdate", "onVideoWaiting", "plugin-webview_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$initVideoController$1", "Lcom/tencent/xweb/VideoJsCallback;", "lastUpdateTime", "", "getLastUpdateTime", "()J", "setLastUpdateTime", "(J)V", "onSetRequestedOrientation", "", "orientation", "", "onVideoEmptied", "", "onVideoEnded", "onVideoEnterFullscreen", "isVideoTag", "id", "width", "", "height", "paused", "seeking", "currentTime", "duration", "buffered", "", "onVideoError", "error", "msg", "", "onVideoExitFullscreen", "onVideoPause", "onVideoPlay", "onVideoPlaying", "onVideoSeeked", "onVideoSeeking", "onVideoSizeUpdate", "onVideoTimeUpdate", "onVideoWaiting", "plugin-webview_release"})
   public static final class i
-    implements com.tencent.xweb.v
+    implements v
   {
     private long lastUpdateTime;
     
-    public final void bpR()
+    public final void bLx()
     {
       AppMethodBeat.i(82602);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoEmptied");
-      MPVideoPlayFullScreenView.p(this.EGD);
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoEmptied");
+      MPVideoPlayFullScreenView.p(this.Jwh);
       AppMethodBeat.o(82602);
     }
     
     public final void onVideoEnded()
     {
       AppMethodBeat.i(82600);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoEnded");
-      MPVideoPlayFullScreenView.c(this.EGD, false);
-      MPVideoPlayFullScreenView.p(this.EGD);
-      this.EGD.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.EGD), 7, this.EGD.getEnterId());
-      this.EGD.getMpShareVideoReport().iuK = 4;
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoEnded");
+      MPVideoPlayFullScreenView.c(this.Jwh, false);
+      MPVideoPlayFullScreenView.p(this.Jwh);
+      this.Jwh.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.Jwh), 7, this.Jwh.getEnterId());
+      this.Jwh.getMpShareVideoReport().jpW = 4;
       AppMethodBeat.o(82600);
     }
     
     public final void onVideoEnterFullscreen(boolean paramBoolean1, long paramLong, double paramDouble1, double paramDouble2, boolean paramBoolean2, boolean paramBoolean3, double paramDouble3, double paramDouble4, double[] paramArrayOfDouble)
     {
       AppMethodBeat.i(82609);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoEnterFullscreen isVideoTag:" + paramBoolean1 + ", id:" + paramLong + ", width:" + paramDouble1 + ", height:" + paramDouble2 + ", paused:" + paramBoolean2 + ", seeking:" + paramBoolean3 + ", currentTime:" + paramDouble3 + ", duration:" + paramDouble4 + ", buffered:" + Arrays.toString(paramArrayOfDouble));
-      paramArrayOfDouble = this.EGD;
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoEnterFullscreen isVideoTag:" + paramBoolean1 + ", id:" + paramLong + ", width:" + paramDouble1 + ", height:" + paramDouble2 + ", paused:" + paramBoolean2 + ", seeking:" + paramBoolean3 + ", currentTime:" + paramDouble3 + ", duration:" + paramDouble4 + ", buffered:" + Arrays.toString(paramArrayOfDouble));
+      paramArrayOfDouble = this.Jwh;
       if (!paramBoolean2) {}
       for (paramBoolean1 = true;; paramBoolean1 = false)
       {
         MPVideoPlayFullScreenView.b(paramArrayOfDouble, paramBoolean1);
-        MPVideoPlayFullScreenView.c(this.EGD, MPVideoPlayFullScreenView.n(this.EGD));
-        if (MPVideoPlayFullScreenView.n(this.EGD))
+        MPVideoPlayFullScreenView.c(this.Jwh, MPVideoPlayFullScreenView.n(this.Jwh));
+        if (MPVideoPlayFullScreenView.n(this.Jwh))
         {
-          this.EGD.getMpShareVideoReport().iuK = 1;
-          this.EGD.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.EGD), this.EGD.getMpShareVideoReport().eYQ(), this.EGD.getEnterId());
+          this.Jwh.getMpShareVideoReport().jpW = 1;
+          this.Jwh.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.Jwh), this.Jwh.getMpShareVideoReport().getPlayType(), this.Jwh.getEnterId());
         }
         AppMethodBeat.o(82609);
         return;
@@ -1322,85 +1325,85 @@ public final class MPVideoPlayFullScreenView
     public final void onVideoError(int paramInt, String paramString)
     {
       AppMethodBeat.i(82601);
-      ae.e(MPVideoPlayFullScreenView.a(this.EGD), "onVideoError " + paramInt + ", " + paramString);
-      MPVideoPlayFullScreenView.c(this.EGD, false);
-      MPVideoPlayFullScreenView.p(this.EGD);
-      this.EGD.getMpShareVideoReport().iuK = 4;
-      this.EGD.getMpShareVideoReport().oxZ = paramString;
-      this.EGD.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.EGD), 11, this.EGD.getEnterId());
+      Log.e(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoError " + paramInt + ", " + paramString);
+      MPVideoPlayFullScreenView.c(this.Jwh, false);
+      MPVideoPlayFullScreenView.p(this.Jwh);
+      this.Jwh.getMpShareVideoReport().jpW = 4;
+      this.Jwh.getMpShareVideoReport().pLD = paramString;
+      this.Jwh.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.Jwh), 11, this.Jwh.getEnterId());
       AppMethodBeat.o(82601);
     }
     
     public final void onVideoExitFullscreen()
     {
       AppMethodBeat.i(82610);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoExitFullscreen");
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoExitFullscreen");
       AppMethodBeat.o(82610);
     }
     
     public final void onVideoPause()
     {
       AppMethodBeat.i(82608);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoPause");
-      MPVideoPlayFullScreenView.c(this.EGD, false);
-      MPVideoPlayFullScreenView.p(this.EGD);
-      if (this.EGD.getMpShareVideoReport().iuK != 3) {
-        this.EGD.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.EGD), 8, this.EGD.getEnterId());
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoPause");
+      MPVideoPlayFullScreenView.c(this.Jwh, false);
+      MPVideoPlayFullScreenView.p(this.Jwh);
+      if (this.Jwh.getMpShareVideoReport().jpW != 3) {
+        this.Jwh.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.Jwh), 8, this.Jwh.getEnterId());
       }
-      this.EGD.getMpShareVideoReport().iuK = 3;
+      this.Jwh.getMpShareVideoReport().jpW = 3;
       AppMethodBeat.o(82608);
     }
     
     public final void onVideoPlay()
     {
       AppMethodBeat.i(82607);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoPlay");
-      MPVideoPlayFullScreenView.c(this.EGD, true);
-      MPVideoPlayFullScreenView.p(this.EGD);
-      if (this.EGD.getMpShareVideoReport().iuK != 2) {
-        this.EGD.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.EGD), this.EGD.getMpShareVideoReport().eYQ(), this.EGD.getEnterId());
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoPlay");
+      MPVideoPlayFullScreenView.c(this.Jwh, true);
+      MPVideoPlayFullScreenView.p(this.Jwh);
+      if (this.Jwh.getMpShareVideoReport().jpW != 2) {
+        this.Jwh.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.Jwh), this.Jwh.getMpShareVideoReport().getPlayType(), this.Jwh.getEnterId());
       }
-      this.EGD.getMpShareVideoReport().iuK = 2;
+      this.Jwh.getMpShareVideoReport().jpW = 2;
       AppMethodBeat.o(82607);
     }
     
     public final void onVideoPlaying()
     {
       AppMethodBeat.i(82603);
-      ae.d(MPVideoPlayFullScreenView.a(this.EGD), "onVideoPlaying");
-      if (!MPVideoPlayFullScreenView.n(this.EGD))
+      Log.d(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoPlaying");
+      if (!MPVideoPlayFullScreenView.n(this.Jwh))
       {
-        MPVideoPlayFullScreenView.c(this.EGD, true);
-        MPVideoPlayFullScreenView.p(this.EGD);
+        MPVideoPlayFullScreenView.c(this.Jwh, true);
+        MPVideoPlayFullScreenView.p(this.Jwh);
       }
-      this.EGD.getMpShareVideoReport().iuK = 2;
+      this.Jwh.getMpShareVideoReport().jpW = 2;
       AppMethodBeat.o(82603);
     }
     
     public final void onVideoSeeked()
     {
       AppMethodBeat.i(82606);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoSeeked");
-      MPVideoPlayFullScreenView.p(this.EGD);
-      this.EGD.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.EGD), 13, this.EGD.getEnterId());
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoSeeked");
+      MPVideoPlayFullScreenView.p(this.Jwh);
+      this.Jwh.getMpShareVideoReport().a(MPVideoPlayFullScreenView.g(this.Jwh), 13, this.Jwh.getEnterId());
       AppMethodBeat.o(82606);
     }
     
     public final void onVideoSeeking()
     {
       AppMethodBeat.i(82605);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoSeeking");
-      MPVideoPlayFullScreenView.q(this.EGD);
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoSeeking");
+      MPVideoPlayFullScreenView.q(this.Jwh);
       AppMethodBeat.o(82605);
     }
     
     public final void onVideoSizeUpdate(double paramDouble1, double paramDouble2)
     {
       AppMethodBeat.i(82612);
-      y localy = MPVideoPlayFullScreenView.g(this.EGD);
+      y localy = MPVideoPlayFullScreenView.g(this.Jwh);
       if ((localy == null) || (localy.width != 0))
       {
-        localy = MPVideoPlayFullScreenView.g(this.EGD);
+        localy = MPVideoPlayFullScreenView.g(this.Jwh);
         if (localy != null) {
           if (localy.height != 0) {
             break label103;
@@ -1409,11 +1412,11 @@ public final class MPVideoPlayFullScreenView
       }
       else
       {
-        localy = MPVideoPlayFullScreenView.g(this.EGD);
+        localy = MPVideoPlayFullScreenView.g(this.Jwh);
         if (localy != null) {
           localy.width = ((int)paramDouble1);
         }
-        localy = MPVideoPlayFullScreenView.g(this.EGD);
+        localy = MPVideoPlayFullScreenView.g(this.Jwh);
         if (localy == null) {
           break label103;
         }
@@ -1433,27 +1436,27 @@ public final class MPVideoPlayFullScreenView
       if (System.currentTimeMillis() - this.lastUpdateTime >= 500L)
       {
         this.lastUpdateTime = System.currentTimeMillis();
-        com.tencent.mm.sdk.platformtools.ar.f((Runnable)new a(this, paramDouble2, paramDouble1, paramArrayOfDouble));
+        MMHandlerThread.postToMainThread((Runnable)new a(this, paramDouble2, paramDouble1, paramArrayOfDouble));
       }
-      MPVideoPlayFullScreenView.a(this.EGD, paramDouble1);
-      MPVideoPlayFullScreenView.p(this.EGD);
+      MPVideoPlayFullScreenView.a(this.Jwh, paramDouble1);
+      MPVideoPlayFullScreenView.p(this.Jwh);
       AppMethodBeat.o(82611);
     }
     
     public final void onVideoWaiting()
     {
       AppMethodBeat.i(82604);
-      ae.i(MPVideoPlayFullScreenView.a(this.EGD), "onVideoWaiting");
-      MPVideoPlayFullScreenView.q(this.EGD);
+      Log.i(MPVideoPlayFullScreenView.a(this.Jwh), "onVideoWaiting");
+      MPVideoPlayFullScreenView.q(this.Jwh);
       AppMethodBeat.o(82604);
     }
     
-    public final boolean tL(int paramInt)
+    public final boolean xJ(int paramInt)
     {
       return false;
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -1463,15 +1466,15 @@ public final class MPVideoPlayFullScreenView
       {
         int j = 1;
         AppMethodBeat.i(82599);
-        Object localObject = MPVideoPlayFullScreenView.m(this.EGG.EGD);
+        Object localObject = MPVideoPlayFullScreenView.m(this.Jwk.Jwh);
         if (localObject != null) {
           ((RedesignVideoPlayerSeekBar)localObject).setVideoTotalTime((int)paramDouble2);
         }
-        localObject = MPVideoPlayFullScreenView.m(this.EGG.EGD);
+        localObject = MPVideoPlayFullScreenView.m(this.Jwk.Jwh);
         if (localObject != null) {
-          ((RedesignVideoPlayerSeekBar)localObject).tx((int)paramArrayOfDouble);
+          ((RedesignVideoPlayerSeekBar)localObject).xv((int)paramArrayOfDouble);
         }
-        localObject = this.EGJ;
+        localObject = this.Jwn;
         if (localObject != null)
         {
           if (localObject.length == 0)
@@ -1487,12 +1490,12 @@ public final class MPVideoPlayFullScreenView
             if (i == 0) {
               break label133;
             }
-            RedesignVideoPlayerSeekBar localRedesignVideoPlayerSeekBar = MPVideoPlayFullScreenView.m(this.EGG.EGD);
+            RedesignVideoPlayerSeekBar localRedesignVideoPlayerSeekBar = MPVideoPlayFullScreenView.m(this.Jwk.Jwh);
             if (localRedesignVideoPlayerSeekBar == null) {
               break label133;
             }
             p.h(localObject, "$this$lastIndex");
-            localRedesignVideoPlayerSeekBar.aac((int)localObject[(localObject.length - 1)]);
+            localRedesignVideoPlayerSeekBar.aiS((int)localObject[(localObject.length - 1)]);
             AppMethodBeat.o(82599);
             return;
             i = 0;
@@ -1507,7 +1510,7 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/orientation/OrientationListenerHelper$Orientation;", "kotlin.jvm.PlatformType", "newOrientation", "onFourOrientationsChange"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/orientation/OrientationListenerHelper$Orientation;", "kotlin.jvm.PlatformType", "newOrientation", "onFourOrientationsChange"})
   static final class j
     implements a.b
   {
@@ -1516,15 +1519,15 @@ public final class MPVideoPlayFullScreenView
     public final void a(a.a parama1, a.a parama2)
     {
       AppMethodBeat.i(182651);
-      if (MPVideoPlayFullScreenView.y(this.EGD))
+      if (MPVideoPlayFullScreenView.z(this.Jwh))
       {
-        parama1 = this.EGD;
+        parama1 = this.Jwh;
         if (parama2 == null)
         {
           AppMethodBeat.o(182651);
           return;
         }
-        switch (b.cqt[parama2.ordinal()])
+        switch (b.$EnumSwitchMapping$0[parama2.ordinal()])
         {
         default: 
           AppMethodBeat.o(182651);
@@ -1537,18 +1540,18 @@ public final class MPVideoPlayFullScreenView
           if (parama1 != null) {
             break;
           }
-          parama1 = new d.v("null cannot be cast to non-null type android.app.Activity");
+          parama1 = new t("null cannot be cast to non-null type android.app.Activity");
           AppMethodBeat.o(182651);
           throw parama1;
         }
-        ((Activity)parama1).setRequestedOrientation(MPVideoPlayFullScreenView.z(this.EGD));
-        MPVideoPlayFullScreenView.A(this.EGD);
+        ((Activity)parama1).setRequestedOrientation(MPVideoPlayFullScreenView.A(this.Jwh));
+        MPVideoPlayFullScreenView.B(this.Jwh);
       }
       AppMethodBeat.o(182651);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onExit"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onExit"})
   static final class k
     implements e.b
   {
@@ -1557,27 +1560,27 @@ public final class MPVideoPlayFullScreenView
     public final void onExit()
     {
       AppMethodBeat.i(82613);
-      this.EGD.exit();
+      this.Jwh.exit();
       AppMethodBeat.o(82613);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "longClickOver"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "longClickOver"})
   static final class l
     implements e.d
   {
     l(MPVideoPlayFullScreenView paramMPVideoPlayFullScreenView) {}
     
-    public final void aRP()
+    public final void bmu()
     {
       AppMethodBeat.i(82614);
-      if (!this.EGD.getForbidForward())
+      if (!this.Jwh.getForbidForward())
       {
-        y localy = MPVideoPlayFullScreenView.g(this.EGD);
+        y localy = MPVideoPlayFullScreenView.g(this.Jwh);
         if (localy != null)
         {
-          Object localObject = g.EHb;
-          localObject = this.EGD.getContext();
+          Object localObject = g.JwF;
+          localObject = this.Jwh.getContext();
           p.g(localObject, "context");
           g.a((Context)localObject, localy, 3);
           AppMethodBeat.o(82614);
@@ -1588,7 +1591,7 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onClick"})
   static final class m
     implements e.f
   {
@@ -1597,49 +1600,49 @@ public final class MPVideoPlayFullScreenView
     public final void onClick()
     {
       AppMethodBeat.i(82615);
-      if (MPVideoPlayFullScreenView.h(this.EGD).getVisibility() == 0)
+      if (MPVideoPlayFullScreenView.h(this.Jwh).getVisibility() == 0)
       {
-        MPVideoPlayFullScreenView.i(this.EGD);
+        MPVideoPlayFullScreenView.i(this.Jwh);
         AppMethodBeat.o(82615);
         return;
       }
-      MPVideoPlayFullScreenView.f(this.EGD);
+      MPVideoPlayFullScreenView.f(this.Jwh);
       AppMethodBeat.o(82615);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "tx", "", "ty", "onGalleryScale"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "tx", "", "ty", "onGalleryScale"})
   static final class n
     implements e.e
   {
     n(MPVideoPlayFullScreenView paramMPVideoPlayFullScreenView) {}
     
-    public final void O(float paramFloat1, float paramFloat2)
+    public final void S(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(82616);
       if ((paramFloat1 == 0.0F) && (paramFloat2 == 0.0F))
       {
-        MPVideoPlayFullScreenView.f(this.EGD);
+        MPVideoPlayFullScreenView.f(this.Jwh);
         AppMethodBeat.o(82616);
         return;
       }
       if ((Math.abs(paramFloat1) > 10.0F) || (Math.abs(paramFloat2) > 10.0F)) {
-        MPVideoPlayFullScreenView.i(this.EGD);
+        MPVideoPlayFullScreenView.i(this.Jwh);
       }
       AppMethodBeat.o(82616);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class o
     implements View.OnClickListener
   {
-    public static final o EGK;
+    public static final o Jwo;
     
     static
     {
       AppMethodBeat.i(82618);
-      EGK = new o();
+      Jwo = new o();
       AppMethodBeat.o(82618);
     }
     
@@ -1647,22 +1650,22 @@ public final class MPVideoPlayFullScreenView
     {
       AppMethodBeat.i(82617);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runDragAnimation$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runDragAnimation$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runDragAnimation$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(82617);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runEnterAnimation$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-webview_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runEnterAnimation$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-webview_release"})
   public static final class p
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
     public final void onGlobalLayout()
     {
       AppMethodBeat.i(82620);
-      ae.d(MPVideoPlayFullScreenView.a(this.EGD), "runEnterAnimation");
-      Object localObject = MPVideoPlayFullScreenView.b(this.EGD);
+      Log.d(MPVideoPlayFullScreenView.a(this.Jwh), "runEnterAnimation");
+      Object localObject = MPVideoPlayFullScreenView.b(this.Jwh);
       if (localObject != null)
       {
         localObject = ((ViewGroup)localObject).getViewTreeObserver();
@@ -1670,27 +1673,27 @@ public final class MPVideoPlayFullScreenView
           ((ViewTreeObserver)localObject).removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
         }
       }
-      localObject = MPVideoPlayFullScreenView.b(this.EGD);
+      localObject = MPVideoPlayFullScreenView.b(this.Jwh);
       if (localObject != null) {}
       for (localObject = Integer.valueOf(((ViewGroup)localObject).getHeight());; localObject = null)
       {
         if (localObject == null) {
-          p.gkB();
+          p.hyc();
         }
         if (((Integer)localObject).intValue() > 0) {
           break;
         }
-        MPVideoPlayFullScreenView.c(this.EGD);
+        MPVideoPlayFullScreenView.c(this.Jwh);
         AppMethodBeat.o(82620);
         return;
       }
-      MPVideoPlayFullScreenView.d(this.EGD);
-      localObject = MPVideoPlayFullScreenView.e(this.EGD);
+      MPVideoPlayFullScreenView.d(this.Jwh);
+      localObject = MPVideoPlayFullScreenView.e(this.Jwh);
       if (localObject != null)
       {
-        ViewGroup localViewGroup = MPVideoPlayFullScreenView.b(this.EGD);
+        ViewGroup localViewGroup = MPVideoPlayFullScreenView.b(this.Jwh);
         if (localViewGroup == null) {
-          p.gkB();
+          p.hyc();
         }
         ((com.tencent.mm.ui.tools.e)localObject).a((View)localViewGroup, null, (e.c)new a(this));
         AppMethodBeat.o(82620);
@@ -1699,14 +1702,14 @@ public final class MPVideoPlayFullScreenView
       AppMethodBeat.o(82620);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runEnterAnimation$1$onGlobalLayout$1", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation$ICallback;", "onAnimationEnd", "", "onAnimationStart", "plugin-webview_release"})
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runEnterAnimation$1$onGlobalLayout$1", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation$ICallback;", "onAnimationEnd", "", "onAnimationStart", "plugin-webview_release"})
     public static final class a
       implements e.c
     {
       public final void onAnimationEnd()
       {
         AppMethodBeat.i(82619);
-        MPVideoPlayFullScreenView.f(this.EGL.EGD);
+        MPVideoPlayFullScreenView.f(this.Jwp.Jwh);
         AppMethodBeat.o(82619);
       }
       
@@ -1714,7 +1717,7 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runExitAnimation$2", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation$ICallback;", "onAnimationEnd", "", "onAnimationStart", "plugin-webview_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/MPVideoPlayFullScreenView$runExitAnimation$2", "Lcom/tencent/mm/ui/tools/ImagePreviewAnimation$ICallback;", "onAnimationEnd", "", "onAnimationStart", "plugin-webview_release"})
   public static final class q
     implements e.c
   {
@@ -1723,21 +1726,21 @@ public final class MPVideoPlayFullScreenView
     public final void onAnimationEnd()
     {
       AppMethodBeat.i(82623);
-      e.c localc = this.EGM;
+      e.c localc = this.Jwq;
       if (localc != null) {
         localc.onAnimationEnd();
       }
-      MPVideoPlayFullScreenView.j(this.EGD).post((Runnable)new a(this));
-      MPVideoPlayFullScreenView.a(this.EGD, false);
-      this.EGD.onExit();
+      MPVideoPlayFullScreenView.j(this.Jwh).post((Runnable)new a(this));
+      MPVideoPlayFullScreenView.a(this.Jwh, false);
+      this.Jwh.onExit();
       AppMethodBeat.o(82623);
     }
     
     public final void onAnimationStart()
     {
       AppMethodBeat.i(82622);
-      MPVideoPlayFullScreenView.a(this.EGD, true);
-      e.c localc = this.EGM;
+      MPVideoPlayFullScreenView.a(this.Jwh, true);
+      e.c localc = this.Jwq;
       if (localc != null)
       {
         localc.onAnimationStart();
@@ -1747,7 +1750,7 @@ public final class MPVideoPlayFullScreenView
       AppMethodBeat.o(82622);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -1756,25 +1759,25 @@ public final class MPVideoPlayFullScreenView
       public final void run()
       {
         AppMethodBeat.i(82621);
-        Object localObject = this.EGO.EGD.getContext();
-        if (((localObject instanceof WebViewUI)) && (((WebViewUI)localObject).eWY() != null))
+        Object localObject = this.Jws.Jwh.getContext();
+        if (((localObject instanceof WebViewUI)) && (((WebViewUI)localObject).gfW() != null))
         {
-          localObject = this.EGO.EGD.getContext();
+          localObject = this.Jws.Jwh.getContext();
           if (localObject == null)
           {
-            localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
+            localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
             AppMethodBeat.o(82621);
             throw ((Throwable)localObject);
           }
-          ((WebViewUI)localObject).eWY().leaveFullscreen();
+          ((WebViewUI)localObject).gfW().leaveFullscreen();
         }
-        MPVideoPlayFullScreenView.j(this.EGO.EGD).setLayoutParams(this.EGO.EGN);
+        MPVideoPlayFullScreenView.j(this.Jws.Jwh).setLayoutParams(this.Jws.Jwr);
         AppMethodBeat.o(82621);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class r
     implements Runnable
   {
@@ -1783,10 +1786,10 @@ public final class MPVideoPlayFullScreenView
     public final void run()
     {
       AppMethodBeat.i(82624);
-      ProgressBar localProgressBar = MPVideoPlayFullScreenView.l(this.EGD);
+      ProgressBar localProgressBar = MPVideoPlayFullScreenView.l(this.Jwh);
       if ((localProgressBar == null) || (localProgressBar.getVisibility() != 0))
       {
-        localProgressBar = MPVideoPlayFullScreenView.l(this.EGD);
+        localProgressBar = MPVideoPlayFullScreenView.l(this.Jwh);
         if (localProgressBar != null)
         {
           localProgressBar.setVisibility(0);
@@ -1798,7 +1801,7 @@ public final class MPVideoPlayFullScreenView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class s
     implements Runnable
   {
@@ -1807,21 +1810,21 @@ public final class MPVideoPlayFullScreenView
     public final void run()
     {
       AppMethodBeat.i(82625);
-      if (this.EGP) {
-        MPVideoPlayFullScreenView.k(this.EGD).setVisibility(8);
+      if (this.Jwt) {
+        MPVideoPlayFullScreenView.k(this.Jwh).setVisibility(8);
       }
       for (;;)
       {
-        Object localObject = MPVideoPlayFullScreenView.m(this.EGD);
+        Object localObject = MPVideoPlayFullScreenView.m(this.Jwh);
         if (localObject == null) {
           break;
         }
-        ((RedesignVideoPlayerSeekBar)localObject).gS(MPVideoPlayFullScreenView.n(this.EGD));
+        ((RedesignVideoPlayerSeekBar)localObject).hP(MPVideoPlayFullScreenView.n(this.Jwh));
         AppMethodBeat.o(82625);
         return;
-        localObject = MPVideoPlayFullScreenView.l(this.EGD);
+        localObject = MPVideoPlayFullScreenView.l(this.Jwh);
         if ((localObject == null) || (((ProgressBar)localObject).getVisibility() != 0)) {
-          MPVideoPlayFullScreenView.k(this.EGD).setVisibility(0);
+          MPVideoPlayFullScreenView.k(this.Jwh).setVisibility(0);
         }
       }
       AppMethodBeat.o(82625);

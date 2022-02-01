@@ -6,124 +6,75 @@ import com.tencent.mm.plugin.report.a;
 public final class e
   extends a
 {
-  private int dRj;
-  private long dRk;
-  private long dRl;
-  private long dRm;
-  private long dRn;
-  private String dRo = "";
-  private String dRp = "";
-  private long dRq;
+  public long eiR;
+  public String ejo = "";
+  private long ejp;
+  private long ejq;
+  public String ejr = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(221070);
+    AppMethodBeat.i(238843);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dRj);
+    ((StringBuffer)localObject).append(this.ejo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRk);
+    ((StringBuffer)localObject).append(this.ejp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRl);
+    ((StringBuffer)localObject).append(this.ejq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRm);
+    ((StringBuffer)localObject).append(this.eiR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRn);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRo);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRp);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRq);
+    ((StringBuffer)localObject).append(this.ejr);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(221070);
+    aMq((String)localObject);
+    AppMethodBeat.o(238843);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(221071);
+    AppMethodBeat.i(238844);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Action:").append(this.dRj);
+    ((StringBuffer)localObject).append("TipsId:").append(this.ejo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReqNum:").append(this.dRk);
+    ((StringBuffer)localObject).append("StartTimeMs:").append(this.ejp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RespNum:").append(this.dRl);
+    ((StringBuffer)localObject).append("GetTimeMs:").append(this.ejq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DataStartTime:").append(this.dRm);
+    ((StringBuffer)localObject).append("CostTime:").append(this.eiR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DataEndTime:").append(this.dRn);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReqContent:").append(this.dRo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RespContent:").append(this.dRp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DataNum:").append(this.dRq);
+    ((StringBuffer)localObject).append("CtrlType:").append(this.ejr);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(221071);
+    AppMethodBeat.o(238844);
     return localObject;
   }
   
-  public final e bp(long paramLong)
+  public final e bI(long paramLong)
   {
-    this.dRk = paramLong;
+    AppMethodBeat.i(238841);
+    this.ejp = paramLong;
+    super.bi("StartTimeMs", this.ejp);
+    AppMethodBeat.o(238841);
     return this;
   }
   
-  public final e bq(long paramLong)
+  public final e bJ(long paramLong)
   {
-    this.dRl = paramLong;
-    return this;
-  }
-  
-  public final e br(long paramLong)
-  {
-    this.dRm = paramLong;
-    return this;
-  }
-  
-  public final e bs(long paramLong)
-  {
-    this.dRn = paramLong;
-    return this;
-  }
-  
-  public final e bt(long paramLong)
-  {
-    this.dRq = paramLong;
-    return this;
-  }
-  
-  public final e gK(String paramString)
-  {
-    AppMethodBeat.i(221068);
-    this.dRo = t("ReqContent", paramString, true);
-    AppMethodBeat.o(221068);
-    return this;
-  }
-  
-  public final e gL(String paramString)
-  {
-    AppMethodBeat.i(221069);
-    this.dRp = t("RespContent", paramString, true);
-    AppMethodBeat.o(221069);
+    AppMethodBeat.i(238842);
+    this.ejq = paramLong;
+    super.bi("GetTimeMs", this.ejq);
+    AppMethodBeat.o(238842);
     return this;
   }
   
   public final int getId()
   {
-    return 20808;
-  }
-  
-  public final e ih(int paramInt)
-  {
-    this.dRj = paramInt;
-    return this;
+    return 21639;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.e
  * JD-Core Version:    0.7.0.1
  */

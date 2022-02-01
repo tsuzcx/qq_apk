@@ -18,17 +18,17 @@ class VideoOverlayInfo
   
   TAVVideoCompositionLayerInstruction convertToLayerInstruction()
   {
-    AppMethodBeat.i(200884);
+    AppMethodBeat.i(197554);
     TAVVideoCompositionLayerInstruction localTAVVideoCompositionLayerInstruction = new TAVVideoCompositionLayerInstruction(this.track.getTrackID(), this.video.getVideoConfiguration(), this.video);
     localTAVVideoCompositionLayerInstruction.setPreferredTransform(this.track.getPreferredTransform());
     localTAVVideoCompositionLayerInstruction.setTimeRange(this.video.getTimeRange());
-    AppMethodBeat.o(200884);
+    AppMethodBeat.o(197554);
     return localTAVVideoCompositionLayerInstruction;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.VideoOverlayInfo
  * JD-Core Version:    0.7.0.1
  */

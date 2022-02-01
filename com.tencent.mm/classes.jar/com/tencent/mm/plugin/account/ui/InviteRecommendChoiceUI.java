@@ -10,10 +10,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aw.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.account.friend.ui.RecommendFriendUI;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -31,28 +31,28 @@ public class InviteRecommendChoiceUI
   
   public int getResourceId()
   {
-    return 2131951687;
+    return 2132017229;
   }
   
   public void initView()
   {
     AppMethodBeat.i(128054);
-    setMMTitle(2131763055);
+    setMMTitle(2131765206);
     this.screen = getPreferenceScreen();
-    IconPreference localIconPreference = (IconPreference)this.screen.aXe("settings_invite_facebook_friends");
-    b.aJE();
-    this.screen.d(localIconPreference);
-    localIconPreference = (IconPreference)this.screen.aXe("settings_invite_qq_friends");
-    if (v.aAB() == 0) {
-      this.screen.d(localIconPreference);
+    IconPreference localIconPreference = (IconPreference)this.screen.bmg("settings_invite_facebook_friends");
+    b.bdF();
+    this.screen.e(localIconPreference);
+    localIconPreference = (IconPreference)this.screen.bmg("settings_invite_qq_friends");
+    if (z.aTX() == 0) {
+      this.screen.e(localIconPreference);
     }
-    localIconPreference = (IconPreference)this.screen.aXe("settings_recommend_by_mail");
-    if (v.aAB() == 0) {
-      this.screen.d(localIconPreference);
+    localIconPreference = (IconPreference)this.screen.bmg("settings_recommend_by_mail");
+    if (z.aTX() == 0) {
+      this.screen.e(localIconPreference);
     }
-    localIconPreference = (IconPreference)this.screen.aXe("settings_recommend_by_mb");
-    if (((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azO().arD("@t.qq.com") == null) {
-      this.screen.d(localIconPreference);
+    localIconPreference = (IconPreference)this.screen.bmg("settings_recommend_by_mb");
+    if (((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().aEY("@t.qq.com") == null) {
+      this.screen.e(localIconPreference);
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -84,9 +84,9 @@ public class InviteRecommendChoiceUI
     {
       paramf = new Intent(this, RecommendFriendUI.class);
       paramf.putExtra("recommend_type", Integer.toString(0));
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.mt(0));
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
@@ -97,43 +97,43 @@ public class InviteRecommendChoiceUI
       {
         paramf = new Intent(this, RecommendFriendUI.class);
         paramf.putExtra("recommend_type", Integer.toString(2));
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.mt(0));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       else if (paramf.equals("settings_recommend_by_mb"))
       {
         paramf = new Intent(this, RecommendFriendUI.class);
         paramf.putExtra("recommend_type", Integer.toString(1));
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.mt(0));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       else if (paramf.equals("settings_invite_mobile_friends"))
       {
         paramf = new Intent("android.intent.action.VIEW");
-        paramf.putExtra("sms_body", getString(2131760373, new Object[] { g.ajR().ajA().get(2, null) }));
+        paramf.putExtra("sms_body", getString(2131761818, new Object[] { g.aAh().azQ().get(2, null) }));
         paramf.setType("vnd.android-dir/mms-sms");
-        if (bu.aj(this, paramf))
+        if (Util.isIntentAvailable(this, paramf))
         {
-          paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-          com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramf.mt(0));
+          paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+          com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramf.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         else
         {
-          Toast.makeText(this, 2131763024, 1).show();
+          Toast.makeText(this, 2131765173, 1).show();
         }
       }
       else if (paramf.equals("settings_invite_facebook_friends"))
       {
         paramf = new Intent(this, InviteFacebookFriendsUI.class);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.mt(0));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/InviteRecommendChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
@@ -147,7 +147,7 @@ public class InviteRecommendChoiceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.InviteRecommendChoiceUI
  * JD-Core Version:    0.7.0.1
  */

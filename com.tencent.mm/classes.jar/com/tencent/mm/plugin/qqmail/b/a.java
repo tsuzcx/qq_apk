@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import android.os.Bundle;
-import com.tencent.e.b;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.b;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.m;
+import com.tencent.mm.pluginsdk.model.n;
 import java.util.concurrent.ExecutorService;
 
 public class a
-  extends m<Bundle, Integer, Bundle>
+  extends n<Bundle, Integer, Bundle>
 {
   public Bundle a(Bundle... paramVarArgs)
   {
     return null;
   }
   
-  public final ExecutorService dFv()
+  public final ExecutorService eGk()
   {
-    AppMethodBeat.i(217915);
-    b localb = h.MqF.bbd("MailDownloadAsyncTask");
-    AppMethodBeat.o(217915);
+    AppMethodBeat.i(198569);
+    b localb = h.RTc.bqp("MailDownloadAsyncTask");
+    AppMethodBeat.o(198569);
     return localb;
   }
   
@@ -33,7 +33,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.a
  * JD-Core Version:    0.7.0.1
  */

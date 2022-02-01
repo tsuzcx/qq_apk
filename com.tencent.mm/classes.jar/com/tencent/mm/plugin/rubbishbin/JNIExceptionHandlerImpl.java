@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.rubbishbin;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
@@ -77,19 +77,19 @@ public class JNIExceptionHandlerImpl
       if ((paramInt + 1) * 512 < ((String)localObject1).length()) {}
       for (paramString = ((String)localObject1).substring(paramInt * 512, (paramInt + 1) * 512);; paramString = ((String)localObject1).substring(paramInt * 512))
       {
-        g.yxI.a(17910, true, true, new Object[] { com.tencent.mm.loader.j.a.hju, j.hju, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
+        h.CyF.a(17910, true, true, new Object[] { com.tencent.mm.loader.j.a.CLIENT_VERSION, BuildInfo.CLIENT_VERSION, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
         paramInt += 1;
         break;
       }
     }
     if ((this.context instanceof RubbishBinService))
     {
-      ((RubbishBinService)this.context).gwK.interrupt();
+      ((RubbishBinService)this.context).hjy.interrupt();
       ((RubbishBinService)this.context).stopSelf();
     }
     try
     {
-      paramInt = ((RubbishBinService)this.context).gwI;
+      paramInt = ((RubbishBinService)this.context).hjw;
       if (paramInt > 0) {
         Thread.sleep(paramInt);
       }
@@ -103,8 +103,8 @@ public class JNIExceptionHandlerImpl
     {
       paramString = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
       localObject1 = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramString.ahE(), "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
-      System.exit(((Integer)paramString.mt(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramString.axQ(), "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)paramString.pG(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
     }
     AppMethodBeat.o(146667);
@@ -117,7 +117,7 @@ public class JNIExceptionHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.JNIExceptionHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

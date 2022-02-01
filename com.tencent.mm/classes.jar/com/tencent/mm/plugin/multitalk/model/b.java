@@ -1,33 +1,37 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideAvatarIcon", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showAvatarIcon", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"})
 public abstract interface b
 {
-  public abstract void bB(String paramString, boolean paramBoolean);
+  public abstract void bQ(String paramString, boolean paramBoolean);
   
-  public abstract int[] drX();
+  public abstract int deu();
   
-  public abstract int drY();
+  public abstract int[] eme();
   
-  public abstract boolean drZ();
+  public abstract boolean emf();
   
-  public abstract void dsa();
+  public abstract void emg();
   
-  public abstract void dsb();
+  public abstract void emh();
   
-  public abstract void dsc();
+  public abstract void emi();
   
-  public abstract void dsd();
+  public abstract void emj();
   
-  public abstract void dse();
+  public abstract void emk();
   
-  public abstract void dsf();
+  public abstract void eml();
   
-  public abstract boolean dsg();
+  public abstract void emm();
   
-  @l(gjZ={1, 1, 16})
+  public abstract void emn();
+  
+  public abstract boolean emo();
+  
+  @l(hxD={1, 1, 16})
   public static final class a {}
 }
 

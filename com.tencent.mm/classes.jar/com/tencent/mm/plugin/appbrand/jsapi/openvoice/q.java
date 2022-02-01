@@ -2,60 +2,62 @@ package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.ag.c.a;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class q
 {
   private static String TAG = "MicroMsg.OpenVoice.VoIpLogicHandler";
   
-  public static void QZ(String paramString)
+  public static void aaB(String paramString)
   {
-    AppMethodBeat.i(222639);
-    ae.i(TAG, "hy:showFloatBall, appId:%s, is1v1:%s", new Object[] { paramString, Boolean.valueOf(p.pdY.pez) });
-    if (p.pdY.pey)
+    AppMethodBeat.i(226948);
+    Log.i(TAG, "hy:showFloatBall, appId:%s, is1v1:%s", new Object[] { paramString, Boolean.valueOf(com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.qta.qtC) });
+    if (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.qta.qtB)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.ad.c.a locala = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.a();
-      locala.lCj.appId = paramString;
-      locala.lCj.beO = 16;
-      locala.lCj.dlO = 1;
-      com.tencent.mm.sdk.b.a.IvT.l(locala);
+      a locala = new a();
+      locala.mJH.appId = paramString;
+      locala.mJH.beL = 16;
+      locala.mJH.dDe = 1;
+      EventCenter.instance.publish(locala);
     }
-    AppMethodBeat.o(222639);
+    AppMethodBeat.o(226948);
   }
   
-  public static void Ra(String paramString)
+  public static void aaC(String paramString)
   {
-    AppMethodBeat.i(222640);
+    AppMethodBeat.i(226949);
     if (TextUtils.isEmpty(paramString))
     {
-      ae.i(TAG, "closeFloatBall, appId is empty");
-      AppMethodBeat.o(222640);
+      Log.i(TAG, "closeFloatBall, appId is empty");
+      AppMethodBeat.o(226949);
       return;
     }
-    ae.i(TAG, "hy:closeFloatBall, appId:%s", new Object[] { paramString });
-    com.tencent.mm.plugin.appbrand.jsapi.ad.c.a locala = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.a();
-    locala.lCj.appId = paramString;
-    locala.lCj.beO = 16;
-    locala.lCj.dlO = 2;
-    com.tencent.mm.sdk.b.a.IvT.l(locala);
-    AppMethodBeat.o(222640);
+    Log.i(TAG, "hy:closeFloatBall, appId:%s", new Object[] { paramString });
+    a locala = new a();
+    locala.mJH.appId = paramString;
+    locala.mJH.beL = 16;
+    locala.mJH.dDe = 2;
+    EventCenter.instance.publish(locala);
+    AppMethodBeat.o(226949);
   }
   
-  public static boolean bmJ()
+  public static boolean bIi()
   {
-    AppMethodBeat.i(222641);
-    ae.i(TAG, "hy:handUpVoIPTalking, is1v1:%s", new Object[] { Boolean.valueOf(p.pdY.pez) });
-    if (p.pdY.pey)
+    AppMethodBeat.i(226950);
+    Log.i(TAG, "hy:handUpVoIPTalking, is1v1:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.qta.qtC) });
+    if (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.qta.qtB)
     {
-      ae.i(TAG, "hy:handUpVoIPTalking, stop voip talking");
-      p.pdY.a(new q.1(), p.a.pfM);
-      AppMethodBeat.o(222641);
+      Log.i(TAG, "hy:handUpVoIPTalking, stop voip talking");
+      com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.qta.a(new b() {}, q.a.quQ);
+      AppMethodBeat.o(226950);
       return true;
     }
-    ae.i(TAG, "hy:handUpVoIPTalking, voip is stopped");
-    AppMethodBeat.o(222641);
+    Log.i(TAG, "hy:handUpVoIPTalking, voip is stopped");
+    AppMethodBeat.o(226950);
     return false;
   }
 }

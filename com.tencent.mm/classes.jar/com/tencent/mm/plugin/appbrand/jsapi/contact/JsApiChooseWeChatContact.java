@@ -4,33 +4,33 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.luggage.h.e.c;
+import com.tencent.luggage.h.f.c;
+import com.tencent.luggage.sdk.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aj.i;
 import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class JsApiChooseWeChatContact
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+  extends d<s>
 {
   public static final int CTRL_INDEX = 195;
   public static final String NAME = "chooseWeChatContact";
-  final int kNk;
+  final int lSc;
   
   public JsApiChooseWeChatContact()
   {
     AppMethodBeat.i(174781);
-    this.kNk = com.tencent.luggage.sdk.g.a.aC(this);
+    this.lSc = a.aK(this);
     AppMethodBeat.o(174781);
   }
   
@@ -38,10 +38,10 @@ public final class JsApiChooseWeChatContact
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetUserDataTask> CREATOR;
-    String bVF;
-    String bVG;
-    String jpU;
-    public String kNm;
+    String cgo;
+    String kog;
+    public String lSe;
+    String nickName;
     public String userName;
     
     static
@@ -54,56 +54,56 @@ public final class JsApiChooseWeChatContact
     public GetUserDataTask(Parcel paramParcel)
     {
       AppMethodBeat.i(46249);
-      this.jpU = "";
-      e(paramParcel);
+      this.kog = "";
+      f(paramParcel);
       AppMethodBeat.o(46249);
     }
     
     public GetUserDataTask(String paramString)
     {
-      this.jpU = "";
+      this.kog = "";
       this.userName = paramString;
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(46250);
-      this.kNm = v.aAC();
+      this.lSe = z.aTY();
       if (!TextUtils.isEmpty(this.userName))
       {
-        this.bVF = w.zO(this.userName);
-        this.bVG = w.zQ(this.userName);
-        i locali = p.aEN().DL(this.userName);
+        this.nickName = aa.Ir(this.userName);
+        this.cgo = aa.Is(this.userName);
+        i locali = com.tencent.mm.aj.p.aYB().Mx(this.userName);
         if (locali != null)
         {
-          this.jpU = locali.aEG();
-          if (bu.isNullOrNil(this.jpU)) {
-            this.jpU = locali.aEH();
+          this.kog = locali.aYt();
+          if (Util.isNullOrNil(this.kog)) {
+            this.kog = locali.aYu();
           }
         }
       }
       AppMethodBeat.o(46250);
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(46251);
-      this.kNm = paramParcel.readString();
+      this.lSe = paramParcel.readString();
       this.userName = paramParcel.readString();
-      this.bVF = paramParcel.readString();
-      this.bVG = paramParcel.readString();
-      this.jpU = paramParcel.readString();
+      this.nickName = paramParcel.readString();
+      this.cgo = paramParcel.readString();
+      this.kog = paramParcel.readString();
       AppMethodBeat.o(46251);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46252);
-      paramParcel.writeString(this.kNm);
+      paramParcel.writeString(this.lSe);
       paramParcel.writeString(this.userName);
-      paramParcel.writeString(this.bVF);
-      paramParcel.writeString(this.bVG);
-      paramParcel.writeString(this.jpU);
+      paramParcel.writeString(this.nickName);
+      paramParcel.writeString(this.cgo);
+      paramParcel.writeString(this.kog);
       AppMethodBeat.o(46252);
     }
   }

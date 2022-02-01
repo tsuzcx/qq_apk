@@ -4,78 +4,79 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.model.f;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.thread.ThreadPool;
 
 public final class c
 {
-  public boolean fOX;
+  public boolean guh;
   public boolean isStart;
-  com.tencent.mm.audio.b.c.a pcW;
-  public com.tencent.mm.audio.b.c uXU;
-  public final Object uXV;
-  int uXW;
-  boolean uXX;
-  int uXY;
-  boolean uXZ;
+  com.tencent.mm.audio.b.c.a qrW;
+  public com.tencent.mm.audio.b.c yqu;
+  public final Object yqv;
+  int yqw;
+  boolean yqx;
+  int yqy;
+  boolean yqz;
   
   public c()
   {
     AppMethodBeat.i(25430);
-    this.uXU = null;
-    this.uXV = new Object();
+    this.yqu = null;
+    this.yqv = new Object();
     this.isStart = false;
-    this.fOX = false;
-    this.uXW = 92;
-    this.uXX = true;
-    this.uXY = 0;
-    this.uXZ = true;
-    this.pcW = new com.tencent.mm.audio.b.c.a()
+    this.guh = false;
+    this.yqw = 92;
+    this.yqx = true;
+    this.yqy = 0;
+    this.yqz = true;
+    this.qrW = new com.tencent.mm.audio.b.c.a()
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
-      public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
+      public final void w(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         int j = 0;
         AppMethodBeat.i(25427);
-        synchronized (c.this.uXV)
+        synchronized (c.this.yqv)
         {
           c localc = c.this;
-          if (localc.uXW <= 10) {
-            localc.uXW = 92;
+          if (localc.yqw <= 10) {
+            localc.yqw = 92;
           }
-          a locala = i.dgB().uXO.uWZ;
-          if (locala.pcA != null) {}
-          for (int i = locala.pcA.eyz();; i = 0)
+          a locala = i.eav().yqo.ypA;
+          if (locala.qrz != null) {}
+          for (int i = locala.qrz.fFq();; i = 0)
           {
-            localc.uXW = ((i + 24 + localc.uXW * 3) / 4);
-            if (!localc.uXX) {
+            localc.yqw = ((i + 24 + localc.yqw * 3) / 4);
+            if (!localc.yqx) {
               break;
             }
-            ae.i("MicroMsg.IPCallRecorder", "preprocessForEcho FirstRefEcho");
-            locala = i.dgB().uXO.uWZ;
+            Log.i("MicroMsg.IPCallRecorder", "preprocessForEcho FirstRefEcho");
+            locala = i.eav().yqo.ypA;
             i = j;
-            if (locala.pcA != null) {
-              i = locala.pcA.eyw();
+            if (locala.qrz != null) {
+              i = locala.qrz.fFn();
             }
-            localc.uXY = i;
-            if (localc.uXY >= localc.uXW) {
-              localc.uXY -= localc.uXW;
+            localc.yqy = i;
+            if (localc.yqy >= localc.yqw) {
+              localc.yqy -= localc.yqw;
             }
-            localc.uXW = localc.uXY;
-            localc.uXX = false;
-            if (i.dgC().lur == 5)
+            localc.yqw = localc.yqy;
+            localc.yqx = false;
+            if (i.eaw().mAT == 5)
             {
-              if (c.this.uXZ)
+              if (c.this.yqz)
               {
-                ae.i("MicroMsg.IPCallRecorder", "isFirstRecordCallback");
-                c.this.uXZ = false;
+                Log.i("MicroMsg.IPCallRecorder", "isFirstRecordCallback");
+                c.this.yqz = false;
               }
-              i.dgz().uYf.recordCallback(paramAnonymousArrayOfByte, paramAnonymousInt, c.this.uXW);
+              i.eat().yqF.recordCallback(paramAnonymousArrayOfByte, paramAnonymousInt, c.this.yqw);
             }
             AppMethodBeat.o(25427);
             return;
           }
-          localc.uXW = 0;
+          localc.yqw = 0;
         }
       }
     };
@@ -83,30 +84,30 @@ public final class c
     AppMethodBeat.o(25430);
   }
   
-  public final void bkx()
+  public final void bFT()
   {
     AppMethodBeat.i(25431);
     if (this.isStart)
     {
-      ae.d("MicroMsg.IPCallRecorder", "startRecorder, already start");
+      Log.d("MicroMsg.IPCallRecorder", "startRecorder, already start");
       AppMethodBeat.o(25431);
       return;
     }
-    ae.i("MicroMsg.IPCallRecorder", "start record");
+    Log.i("MicroMsg.IPCallRecorder", "start record");
     this.isStart = true;
-    this.uXW = i.dgB().uXO.uWZ.uXM;
-    if (this.uXW <= 10)
+    this.yqw = i.eav().yqo.ypA.yqm;
+    if (this.yqw <= 10)
     {
-      if (this.uXW <= 0)
+      if (this.yqw <= 0)
       {
-        ae.e("MicroMsg.IPCallRecorder", "playDelayInMs<=0");
-        i.dgA().dgX();
+        Log.e("MicroMsg.IPCallRecorder", "playDelayInMs<=0");
+        i.eau().eaR();
       }
-      this.uXW = 92;
+      this.yqw = 92;
     }
-    synchronized (this.uXV)
+    synchronized (this.yqv)
     {
-      com.tencent.mm.sdk.g.b.c(new Runnable()
+      ThreadPool.post(new Runnable()
       {
         public final void run()
         {
@@ -114,34 +115,34 @@ public final class c
           try
           {
             c localc = c.this;
-            localc.uXU = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 6);
-            localc.uXU.hQ(20);
-            localc.uXU.cv(true);
-            localc.uXU.PM();
-            localc.uXU.dhY = -19;
-            localc.uXU.t(1, false);
-            localc.uXU.cu(true);
-            localc.uXU.dij = localc.pcW;
-            if (!localc.uXU.PO())
+            localc.yqu = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 6);
+            localc.yqu.jk(20);
+            localc.yqu.dd(true);
+            localc.yqu.aag();
+            localc.yqu.dzk = -19;
+            localc.yqu.x(1, false);
+            localc.yqu.dc(true);
+            localc.yqu.dzv = localc.qrW;
+            if (!localc.yqu.aai())
             {
-              ae.e("MicroMsg.IPCallRecorder", "start record failed");
-              if (localc.uXU.dhN != 13)
+              Log.e("MicroMsg.IPCallRecorder", "start record failed");
+              if (localc.yqu.dyZ != 13)
               {
-                i.dgA().dgX();
+                i.eau().eaR();
                 AppMethodBeat.o(25428);
               }
             }
             else
             {
-              localc.uXU.cw(localc.fOX);
+              localc.yqu.de(localc.guh);
             }
             AppMethodBeat.o(25428);
             return;
           }
           catch (Exception localException)
           {
-            ae.e("MicroMsg.IPCallRecorder", "start record error: %s", new Object[] { localException.getMessage() });
-            i.dgA().dgX();
+            Log.e("MicroMsg.IPCallRecorder", "start record error: %s", new Object[] { localException.getMessage() });
+            i.eau().eaR();
             AppMethodBeat.o(25428);
           }
         }
@@ -154,36 +155,36 @@ public final class c
   public final void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(25432);
-    ae.i("MicroMsg.IPCallRecorder", "setMute: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((this.isStart) && (this.uXU != null)) {
-      this.uXU.cw(paramBoolean);
+    Log.i("MicroMsg.IPCallRecorder", "setMute: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((this.isStart) && (this.yqu != null)) {
+      this.yqu.de(paramBoolean);
     }
-    this.fOX = paramBoolean;
+    this.guh = paramBoolean;
     AppMethodBeat.o(25432);
   }
   
   public final class a
     implements Runnable
   {
-    private com.tencent.mm.audio.b.c uYb = null;
+    private com.tencent.mm.audio.b.c yqB = null;
     
     public a(com.tencent.mm.audio.b.c paramc)
     {
-      this.uYb = paramc;
+      this.yqB = paramc;
     }
     
     public final void run()
     {
       AppMethodBeat.i(25429);
-      ae.d("MicroMsg.IPCallRecorder", "do stopRecord");
-      if (this.uYb != null)
+      Log.d("MicroMsg.IPCallRecorder", "do stopRecord");
+      if (this.yqB != null)
       {
-        this.uYb.PF();
-        this.uYb = null;
+        this.yqB.ZZ();
+        this.yqB = null;
         c localc = c.this;
-        localc.uXW = 92;
-        localc.uXX = true;
-        localc.uXY = 0;
+        localc.yqw = 92;
+        localc.yqx = true;
+        localc.yqy = 0;
       }
       AppMethodBeat.o(25429);
     }

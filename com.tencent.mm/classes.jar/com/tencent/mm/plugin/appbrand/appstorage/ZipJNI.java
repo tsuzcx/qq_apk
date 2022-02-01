@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public class ZipJNI
 {
@@ -21,14 +21,14 @@ public class ZipJNI
   public static int vfsUnzip(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(175611);
-    int i = unzip(o.k(paramString1, false), o.k(paramString2, true), paramString3);
+    int i = unzip(s.k(paramString1, false), s.k(paramString2, true), paramString3);
     AppMethodBeat.o(175611);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.ZipJNI
  * JD-Core Version:    0.7.0.1
  */

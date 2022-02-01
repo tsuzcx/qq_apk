@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bis" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/dcj" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.MMViewPager android:id="@id/dci" android:background="@null" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:layout_below="@id/hj1" android:layout_centerHorizontal="true" android:unselectedAlpha="1.2" android:transitionGroup="true" />
+    <include layout="@layout/bo3" />
+    <ImageView android:id="@id/irz" android:background="@drawable/b1x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/c2" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/biz" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/biu" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/j5y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce" android:onClick="onClick" />
+            <FrameLayout android:id="@id/j43" android:background="@drawable/arg" android:visibility="visible" android:layout_width="@dimen/wr" android:layout_height="@dimen/wr" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/cb" android:layout_below="@id/j5y" android:onClick="onClick">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_close" android:contentDescription="@string/b5x" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/j5w" android:background="@drawable/arg" android:layout_width="@dimen/wr" android:layout_height="@dimen/wr" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/cc" android:layout_below="@id/j5y" android:layout_alignParentRight="true" android:onClick="onClick">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_more" android:contentDescription="@string/wp" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/c41" android:background="@drawable/arg" android:layout_width="@dimen/wr" android:layout_height="@dimen/wr" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" android:layout_toLeftOf="@id/j5w" android:layout_below="@id/j5y" android:onClick="onClick">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_photowall" android:contentDescription="@string/gt" android:elevation="@dimen/ani" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/btn" android:background="@drawable/arg" android:layout_width="@dimen/wr" android:layout_height="@dimen/wr" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" android:layout_toLeftOf="@id/c41" android:layout_below="@id/j5y" android:onClick="onClick">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_download" android:contentDescription="@string/bn7" android:elevation="@dimen/ani" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/dct" android:background="@drawable/arg" android:visibility="gone" android:layout_width="@dimen/wr" android:layout_height="@dimen/wr" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" android:layout_toLeftOf="@id/btn" android:layout_below="@id/j5y" android:onClick="onClick">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_translate" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/dcr" android:background="@drawable/arg" android:visibility="gone" android:layout_width="@dimen/wr" android:layout_height="@dimen/wr" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" android:layout_toLeftOf="@id/dct" android:layout_below="@id/j5y" android:onClick="onClick">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_qr_code" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/dcs" android:background="@drawable/arg" android:visibility="gone" android:layout_width="@dimen/wr" android:layout_height="@dimen/wr" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" android:layout_toLeftOf="@id/dcr" android:layout_below="@id/j5y" android:onClick="onClick">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_search_logo" app:iconColor="@color/am" />
+            </FrameLayout>
+            <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/cb" android:layout_alignParentLeft="true" layout="@layout/avg" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/hj1" android:visibility="gone" android:layout="@layout/avr" android:layout_width="fill_parent" android:layout_height="@dimen/b9" android:layout_alignParentTop="true" />
+        <ViewStub android:id="@id/dcq" android:visibility="gone" android:layout="@layout/bbq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.chatting.gallery.view.SearchImageBubbleView android:id="@id/he_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/hap" android:padding="@dimen/ir" android:visibility="gone" android:layout_width="@dimen/aia" android:layout_height="@dimen/aia" android:src="@raw/scan_success_mark_dot" />
+</RelativeLayout>

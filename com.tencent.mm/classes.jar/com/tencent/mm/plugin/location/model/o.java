@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.bx.a.a;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -14,50 +14,31 @@ import java.util.Set;
 public final class o
   implements a
 {
-  private Bitmap ofD;
-  private f<String, Bitmap> vmL;
+  private Bitmap pqA;
+  private f<String, Bitmap> yGD;
   
   public o()
   {
     AppMethodBeat.i(55750);
-    this.ofD = null;
-    this.vmL = new b(20, getClass());
+    this.pqA = null;
+    this.yGD = new b(20, getClass());
     AppMethodBeat.o(55750);
   }
   
-  public final void UD(String paramString)
-  {
-    try
-    {
-      AppMethodBeat.i(55753);
-      ae.d("MicroMsg.TrackAvatarCacheService", "clearCache, tag = %s", new Object[] { paramString });
-      Iterator localIterator = this.vmL.snapshot().keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (str.startsWith(paramString)) {
-          this.vmL.remove(str);
-        }
-      }
-      AppMethodBeat.o(55753);
-    }
-    finally {}
-  }
-  
-  public final Bitmap apE(String paramString)
+  public final Bitmap aCX(String paramString)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(55751);
-        if (bu.isNullOrNil(paramString))
+        if (Util.isNullOrNil(paramString))
         {
           AppMethodBeat.o(55751);
           paramString = null;
           return paramString;
         }
-        paramString = (Bitmap)this.vmL.get(paramString);
+        paramString = (Bitmap)this.yGD.get(paramString);
         if ((paramString != null) && (!paramString.isRecycled()))
         {
           AppMethodBeat.o(55751);
@@ -70,23 +51,42 @@ public final class o
     }
   }
   
+  public final void aer(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(55753);
+      Log.d("MicroMsg.TrackAvatarCacheService", "clearCache, tag = %s", new Object[] { paramString });
+      Iterator localIterator = this.yGD.snapshot().keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (str.startsWith(paramString)) {
+          this.yGD.remove(str);
+        }
+      }
+      AppMethodBeat.o(55753);
+    }
+    finally {}
+  }
+  
   public final void p(String paramString, Bitmap paramBitmap)
   {
     try
     {
       AppMethodBeat.i(55752);
-      if (this.vmL.get(paramString) != null)
+      if (this.yGD.get(paramString) != null)
       {
-        Bitmap localBitmap = (Bitmap)this.vmL.get(paramString);
+        Bitmap localBitmap = (Bitmap)this.yGD.get(paramString);
         if (!localBitmap.isRecycled())
         {
-          ae.i("MicroMsg.TrackAvatarCacheService", "bitmap recycle %s", new Object[] { localBitmap.toString() });
+          Log.i("MicroMsg.TrackAvatarCacheService", "bitmap recycle %s", new Object[] { localBitmap.toString() });
           localBitmap.recycle();
         }
-        this.vmL.remove(paramString);
+        this.yGD.remove(paramString);
       }
-      this.vmL.put(paramString, paramBitmap);
-      ae.d("MicroMsg.TrackAvatarCacheService", "updateCache, tag = %s, cacheSize = %d", new Object[] { paramString, Integer.valueOf(this.vmL.size()) });
+      this.yGD.put(paramString, paramBitmap);
+      Log.d("MicroMsg.TrackAvatarCacheService", "updateCache, tag = %s, cacheSize = %d", new Object[] { paramString, Integer.valueOf(this.yGD.size()) });
       AppMethodBeat.o(55752);
       return;
     }
@@ -95,7 +95,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.o
  * JD-Core Version:    0.7.0.1
  */

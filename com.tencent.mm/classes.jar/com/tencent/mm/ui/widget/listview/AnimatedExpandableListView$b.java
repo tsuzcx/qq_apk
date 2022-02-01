@@ -11,16 +11,16 @@ import java.util.List;
 final class AnimatedExpandableListView$b
   extends View
 {
-  List<View> LvI;
-  private int LvJ;
+  private int QRs;
   private int dividerHeight;
-  private Drawable jlI;
+  private Drawable kjR;
+  List<View> uZF;
   
   private AnimatedExpandableListView$b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159420);
-    this.LvI = new ArrayList();
+    this.uZF = new ArrayList();
     AppMethodBeat.o(159420);
   }
   
@@ -28,19 +28,19 @@ final class AnimatedExpandableListView$b
   {
     AppMethodBeat.i(159423);
     paramCanvas.save();
-    if (this.jlI != null) {
-      this.jlI.setBounds(0, 0, this.LvJ, this.dividerHeight);
+    if (this.kjR != null) {
+      this.kjR.setBounds(0, 0, this.QRs, this.dividerHeight);
     }
-    int j = this.LvI.size();
+    int j = this.uZF.size();
     int i = 0;
     while (i < j)
     {
-      View localView = (View)this.LvI.get(i);
+      View localView = (View)this.uZF.get(i);
       localView.draw(paramCanvas);
       paramCanvas.translate(0.0F, localView.getMeasuredHeight());
-      if (this.jlI != null)
+      if (this.kjR != null)
       {
-        this.jlI.draw(paramCanvas);
+        this.kjR.draw(paramCanvas);
         paramCanvas.translate(0.0F, this.dividerHeight);
       }
       i += 1;
@@ -49,11 +49,11 @@ final class AnimatedExpandableListView$b
     AppMethodBeat.o(159423);
   }
   
-  public final void hj(View paramView)
+  public final void hy(View paramView)
   {
     AppMethodBeat.i(159421);
     paramView.layout(0, 0, getWidth(), getHeight());
-    this.LvI.add(paramView);
+    this.uZF.add(paramView);
     AppMethodBeat.o(159421);
   }
   
@@ -61,11 +61,11 @@ final class AnimatedExpandableListView$b
   {
     AppMethodBeat.i(159422);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    int j = this.LvI.size();
+    int j = this.uZF.size();
     int i = 0;
     while (i < j)
     {
-      ((View)this.LvI.get(i)).layout(paramInt1, paramInt2, paramInt3, paramInt4);
+      ((View)this.uZF.get(i)).layout(paramInt1, paramInt2, paramInt3, paramInt4);
       i += 1;
     }
     AppMethodBeat.o(159422);
@@ -73,7 +73,7 @@ final class AnimatedExpandableListView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.listview.AnimatedExpandableListView.b
  * JD-Core Version:    0.7.0.1
  */

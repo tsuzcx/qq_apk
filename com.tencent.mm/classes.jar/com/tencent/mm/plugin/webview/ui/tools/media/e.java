@@ -5,18 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.y;
-import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.ag.y;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoTransmitHelper;", "", "()V", "TAG", "", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "getMpShareVideoInfo", "()Lcom/tencent/mm/message/MPShareVideoInfo;", "setMpShareVideoInfo", "(Lcom/tencent/mm/message/MPShareVideoInfo;)V", "onActivityResult", "", "activity", "Landroid/app/Activity;", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoTransmitHelper;", "", "()V", "TAG", "", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "getMpShareVideoInfo", "()Lcom/tencent/mm/message/MPShareVideoInfo;", "setMpShareVideoInfo", "(Lcom/tencent/mm/message/MPShareVideoInfo;)V", "onActivityResult", "", "activity", "Landroid/app/Activity;", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-webview_release"})
 public final class e
 {
   final String TAG = "MicroMsg.MPVideoTransmit";
-  public y hCc;
+  public y iwi;
   
   public final boolean d(final Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -24,9 +23,9 @@ public final class e
     p.h(paramActivity, "activity");
     if (3 == paramInt1)
     {
-      if (this.hCc == null)
+      if (this.iwi == null)
       {
-        ae.w(this.TAG, "onActivityResult mpMsgInfo is null");
+        Log.w(this.TAG, "onActivityResult mpMsgInfo is null");
         AppMethodBeat.o(82661);
         return true;
       }
@@ -42,10 +41,10 @@ public final class e
           label72:
           if (str != null)
           {
-            Object localObject = d.EGT;
-            localObject = this.hCc;
+            Object localObject = d.Jwx;
+            localObject = this.iwi;
             if (localObject == null) {
-              p.gkB();
+              p.hyc();
             }
             d.b(str, (y)localObject, paramIntent, (com.tencent.mm.ipcinvoker.d)new a(this, paramActivity));
           }
@@ -60,17 +59,17 @@ public final class e
         label130:
         paramIntent = null;
         break label72;
-        ae.w(this.TAG, "share cancel");
+        Log.w(this.TAG, "share cancel");
         if ((paramActivity instanceof WebViewUI))
         {
-          paramActivity = ((WebViewUI)paramActivity).DRx;
+          paramActivity = ((WebViewUI)paramActivity).IBw;
           if (paramActivity != null)
           {
-            paramIntent = this.hCc;
+            paramIntent = this.iwi;
             if (paramIntent == null) {
-              p.gkB();
+              p.hyc();
             }
-            paramActivity.kV(paramIntent.FUx, "canceled");
+            paramActivity.lT(paramIntent.KOf, "canceled");
           }
         }
       }
@@ -79,7 +78,7 @@ public final class e
     return false;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class a<T>
     implements com.tencent.mm.ipcinvoker.d<Bundle>
   {

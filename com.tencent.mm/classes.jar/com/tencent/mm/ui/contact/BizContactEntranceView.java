@@ -18,39 +18,39 @@ import com.tencent.mm.aj.e;
 import com.tencent.mm.aj.p;
 import com.tencent.mm.al.ag;
 import com.tencent.mm.al.f;
-import com.tencent.mm.br.d;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.api.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.at;
 import com.tencent.mm.ui.base.MaskLayout;
 
 public class BizContactEntranceView
   extends RelativeLayout
 {
-  private View KGZ;
-  private TextView KHa;
-  private LinearLayout KHb;
-  private boolean KHc;
-  private boolean KHd;
+  private View PTY;
+  private TextView PTZ;
+  private LinearLayout PUa;
+  private boolean PUb;
+  private boolean PUc;
   private Context mContext;
-  private View pGZ;
+  private View qWL;
   
   public BizContactEntranceView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(37663);
-    this.pGZ = null;
-    this.KHc = true;
+    this.qWL = null;
+    this.PUb = true;
     this.mContext = paramContext;
     init();
-    fMa();
+    gUu();
     AppMethodBeat.o(37663);
   }
   
@@ -58,11 +58,11 @@ public class BizContactEntranceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(37662);
-    this.pGZ = null;
-    this.KHc = true;
+    this.qWL = null;
+    this.PUb = true;
     this.mContext = paramContext;
     init();
-    fMa();
+    gUu();
     AppMethodBeat.o(37662);
   }
   
@@ -70,77 +70,108 @@ public class BizContactEntranceView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(37661);
-    this.pGZ = null;
-    this.KHc = true;
+    this.qWL = null;
+    this.PUb = true;
     this.mContext = paramContext;
     init();
-    fMa();
+    gUu();
     AppMethodBeat.o(37661);
   }
   
   private void init()
   {
     AppMethodBeat.i(37664);
-    this.KHd = false;
-    View.inflate(getContext(), 2131493194, this);
-    this.pGZ = findViewById(2131298736);
-    this.KGZ = this.pGZ.findViewById(2131297284);
-    this.KHb = ((LinearLayout)this.pGZ.findViewById(2131297372));
-    Object localObject = this.KGZ.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = ((int)(com.tencent.mm.cb.a.ay(getContext(), 2131165242) * com.tencent.mm.cb.a.iq(getContext())));
-    this.KGZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.pGZ.setOnClickListener(new View.OnClickListener()
+    this.PUc = false;
+    View.inflate(getContext(), 2131493240, this);
+    this.qWL = findViewById(2131299174);
+    this.PTY = this.qWL.findViewById(2131297441);
+    this.PUa = ((LinearLayout)this.qWL.findViewById(2131297590));
+    Object localObject = this.PTY.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).height = ((int)(com.tencent.mm.cb.a.aH(getContext(), 2131165246) * com.tencent.mm.cb.a.jj(getContext())));
+    this.PTY.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.qWL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(37657);
-        Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/BizContactEntranceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/BizContactEntranceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        if (!WeChatBrands.Business.Entries.ContactOa.checkAvailable(paramAnonymousView.getContext()))
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/BizContactEntranceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(37657);
+          return;
+        }
+        if (((q)g.af(q.class)).Vv())
+        {
+          ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).hr(BizContactEntranceView.a(BizContactEntranceView.this));
+          ((q)g.af(q.class)).o(8, "");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/BizContactEntranceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(37657);
+          return;
+        }
         localObject = new Intent();
         ((Intent)localObject).putExtra("intent_service_type", 251658241);
-        d.b(paramAnonymousView.getContext(), "brandservice", ".ui.BrandServiceIndexUI", (Intent)localObject);
+        com.tencent.mm.br.c.b(paramAnonymousView.getContext(), "brandservice", ".ui.BrandServiceIndexUI", (Intent)localObject);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/BizContactEntranceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(37657);
       }
     });
-    this.KGZ.setOnTouchListener(new View.OnTouchListener()
+    this.PTY.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(37658);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/BizContactEntranceView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if ((BizContactEntranceView.a(BizContactEntranceView.this) instanceof MMActivity)) {
           ((MMActivity)BizContactEntranceView.a(BizContactEntranceView.this)).hideVKB();
         }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/contact/BizContactEntranceView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(37658);
         return false;
       }
     });
-    localObject = (MaskLayout)this.KGZ.findViewById(2131297283);
+    localObject = (MaskLayout)this.PTY.findViewById(2131297440);
     ImageView localImageView = (ImageView)((MaskLayout)localObject).getContentView();
-    p.aEA();
-    localImageView.setImageBitmap(e.DE("service_officialaccounts"));
-    this.KHa = ((TextView)((MaskLayout)localObject).findViewById(2131305882));
+    p.aYn();
+    localImageView.setImageBitmap(e.Mp("service_officialaccounts"));
+    this.PTZ = ((TextView)((MaskLayout)localObject).findViewById(2131309165));
     AppMethodBeat.o(37664);
   }
   
-  final void fMa()
+  public final void Cn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(233995);
+    if ((this.PTY == null) || (this.PUa == null))
+    {
+      AppMethodBeat.o(233995);
+      return;
+    }
+    if (paramBoolean)
+    {
+      int i = this.PTY.getPaddingLeft();
+      this.PTY.setBackground(at.aN(this.mContext, 2130969285));
+      this.PTY.setPadding(i, 0, 0, 0);
+      this.PUa.setBackground(null);
+      AppMethodBeat.o(233995);
+      return;
+    }
+    this.PTY.setBackground(null);
+    this.PUa.setBackground(at.aN(this.mContext, 2130969285));
+    AppMethodBeat.o(233995);
+  }
+  
+  final void gUu()
   {
     AppMethodBeat.i(37665);
     long l = System.currentTimeMillis();
-    bc.aCg();
-    int j = c.azF().fuy();
+    bg.aVF();
+    int j = com.tencent.mm.model.c.aSN().gCe();
     View localView;
     if (j > 0)
     {
-      this.KHc = true;
-      localView = this.KGZ;
-      if (!this.KHc) {
+      this.PUb = true;
+      localView = this.PTY;
+      if (!this.PUb) {
         break label127;
       }
     }
@@ -148,27 +179,27 @@ public class BizContactEntranceView
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
-      if (this.KHc) {
-        bc.ajU().aw(new Runnable()
+      if (this.PUb) {
+        bg.aAk().postToWorker(new Runnable()
         {
           public final void run()
           {
             final long l1 = 0L;
             AppMethodBeat.i(37660);
-            Object localObject1 = ag.aGp();
+            Object localObject1 = ag.bah();
             Object localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("select updateTime from BizInfo where type = 1");
             ((StringBuilder)localObject2).append(" and status = 1 ORDER BY updateTime DESC");
             localObject2 = ((StringBuilder)localObject2).toString();
-            ae.i("MicroMsg.BizInfoStorage", "getLastNewBizUpdateTime, sql %s", new Object[] { localObject2 });
+            Log.i("MicroMsg.BizInfoStorage", "getLastNewBizUpdateTime, sql %s", new Object[] { localObject2 });
             localObject1 = ((f)localObject1).rawQuery((String)localObject2, new String[0]);
             if (localObject1 == null) {}
             for (;;)
             {
-              bc.aCg();
-              long l2 = bu.dV(c.ajA().get(233473, null));
-              ae.i("MicroMsg.BizContactEntranceView", "last updateTime %d, enterTime %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-              ar.f(new Runnable()
+              bg.aVF();
+              long l2 = Util.nullAsLong(com.tencent.mm.model.c.azQ().get(233473, null), 0);
+              Log.i("MicroMsg.BizContactEntranceView", "last updateTime %d, enterTime %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+              MMHandlerThread.postToMainThread(new Runnable()
               {
                 public final void run()
                 {
@@ -198,10 +229,10 @@ public class BizContactEntranceView
           }
         });
       }
-      ae.i("MicroMsg.BizContactEntranceView", "biz contact Count %d, isEntranceShow %s, setStatus cost %d", new Object[] { Integer.valueOf(j), Boolean.valueOf(this.KHc), Long.valueOf(System.currentTimeMillis() - l) });
+      Log.i("MicroMsg.BizContactEntranceView", "biz contact Count %d, isEntranceShow %s, setStatus cost %d", new Object[] { Integer.valueOf(j), Boolean.valueOf(this.PUb), Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(37665);
       return;
-      this.KHc = false;
+      this.PUb = false;
       break;
     }
   }
@@ -210,9 +241,9 @@ public class BizContactEntranceView
   {
     int i = 0;
     AppMethodBeat.i(37666);
-    ae.i("MicroMsg.BizContactEntranceView", "setVisible visible = %s, isEntranceShow = %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.KHc) });
-    View localView = this.pGZ;
-    if ((paramBoolean) && (this.KHc)) {}
+    Log.i("MicroMsg.BizContactEntranceView", "setVisible visible = %s, isEntranceShow = %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.PUb) });
+    View localView = this.qWL;
+    if ((paramBoolean) && (this.PUb)) {}
     for (;;)
     {
       localView.setVisibility(i);
@@ -221,32 +252,10 @@ public class BizContactEntranceView
       i = 8;
     }
   }
-  
-  public final void yy(boolean paramBoolean)
-  {
-    AppMethodBeat.i(187937);
-    if ((this.KGZ == null) || (this.KHb == null))
-    {
-      AppMethodBeat.o(187937);
-      return;
-    }
-    if (paramBoolean)
-    {
-      int i = this.KGZ.getPaddingLeft();
-      this.KGZ.setBackground(aq.aM(this.mContext, 2130969245));
-      this.KGZ.setPadding(i, 0, 0, 0);
-      this.KHb.setBackground(null);
-      AppMethodBeat.o(187937);
-      return;
-    }
-    this.KGZ.setBackground(null);
-    this.KHb.setBackground(aq.aM(this.mContext, 2130969245));
-    AppMethodBeat.o(187937);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.BizContactEntranceView
  * JD-Core Version:    0.7.0.1
  */

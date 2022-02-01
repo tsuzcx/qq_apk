@@ -2,83 +2,83 @@ package android.support.v7.d;
 
 public final class c
 {
-  public static final c abA;
-  public static final c abB;
-  public static final c abC;
-  public static final c abx;
-  public static final c aby;
-  public static final c abz;
-  final float[] abD = new float[3];
-  final float[] abE = new float[3];
-  final float[] abF = new float[3];
-  boolean abG = true;
+  public static final c abK;
+  public static final c abL;
+  public static final c abM;
+  public static final c abN;
+  public static final c abO;
+  public static final c abP;
+  final float[] abQ = new float[3];
+  final float[] abR = new float[3];
+  final float[] abS = new float[3];
+  boolean abT = true;
   
   static
   {
     c localc = new c();
-    abx = localc;
+    abK = localc;
     c(localc);
-    d(abx);
+    d(abK);
     localc = new c();
-    aby = localc;
+    abL = localc;
     b(localc);
-    d(aby);
+    d(abL);
     localc = new c();
-    abz = localc;
+    abM = localc;
     a(localc);
-    d(abz);
+    d(abM);
     localc = new c();
-    abA = localc;
+    abN = localc;
     c(localc);
-    e(abA);
+    e(abN);
     localc = new c();
-    abB = localc;
+    abO = localc;
     b(localc);
-    e(abB);
+    e(abO);
     localc = new c();
-    abC = localc;
+    abP = localc;
     a(localc);
-    e(abC);
+    e(abP);
   }
   
   c()
   {
-    f(this.abD);
-    f(this.abE);
-    this.abF[0] = 0.24F;
-    this.abF[1] = 0.52F;
-    this.abF[2] = 0.24F;
+    f(this.abQ);
+    f(this.abR);
+    this.abS[0] = 0.24F;
+    this.abS[1] = 0.52F;
+    this.abS[2] = 0.24F;
   }
   
   private static void a(c paramc)
   {
-    paramc.abE[1] = 0.26F;
-    paramc.abE[2] = 0.45F;
+    paramc.abR[1] = 0.26F;
+    paramc.abR[2] = 0.45F;
   }
   
   private static void b(c paramc)
   {
-    paramc.abE[0] = 0.3F;
-    paramc.abE[1] = 0.5F;
-    paramc.abE[2] = 0.7F;
+    paramc.abR[0] = 0.3F;
+    paramc.abR[1] = 0.5F;
+    paramc.abR[2] = 0.7F;
   }
   
   private static void c(c paramc)
   {
-    paramc.abE[0] = 0.55F;
-    paramc.abE[1] = 0.74F;
+    paramc.abR[0] = 0.55F;
+    paramc.abR[1] = 0.74F;
   }
   
   private static void d(c paramc)
   {
-    paramc.abD[0] = 0.35F;
-    paramc.abD[1] = 1.0F;
+    paramc.abQ[0] = 0.35F;
+    paramc.abQ[1] = 1.0F;
   }
   
   private static void e(c paramc)
   {
-    paramc.abD[1] = 0.3F;
-    paramc.abD[2] = 0.4F;
+    paramc.abQ[1] = 0.3F;
+    paramc.abQ[2] = 0.4F;
   }
   
   private static void f(float[] paramArrayOfFloat)
@@ -90,7 +90,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.d.c
  * JD-Core Version:    0.7.0.1
  */

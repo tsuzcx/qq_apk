@@ -10,11 +10,11 @@ public abstract interface g
   
   public abstract void b(a parama);
   
-  public abstract List<AppBrandBackgroundRunningApp> bdI();
+  public abstract List<AppBrandBackgroundRunningApp> byZ();
   
-  public abstract void bdJ();
+  public abstract void bza();
   
-  public abstract void bdK();
+  public abstract void bzb();
   
   public abstract void c(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel);
   
@@ -25,7 +25,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.g
  * JD-Core Version:    0.7.0.1
  */

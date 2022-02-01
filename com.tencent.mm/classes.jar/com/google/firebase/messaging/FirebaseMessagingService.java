@@ -23,12 +23,12 @@ import java.util.concurrent.TimeoutException;
 public class FirebaseMessagingService
   extends zzb
 {
-  private static final Queue<String> bMC;
+  private static final Queue<String> bMS;
   
   static
   {
     AppMethodBeat.i(116785);
-    bMC = new ArrayDeque(10);
+    bMS = new ArrayDeque(10);
     AppMethodBeat.o(116785);
   }
   
@@ -66,7 +66,7 @@ public class FirebaseMessagingService
   public final Intent e(Intent paramIntent)
   {
     AppMethodBeat.i(116780);
-    paramIntent = (Intent)o.yj().bLz.poll();
+    paramIntent = (Intent)o.yr().bLP.poll();
     AppMethodBeat.o(116780);
     return paramIntent;
   }
@@ -181,10 +181,10 @@ public class FirebaseMessagingService
       }
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("google.message_id", (String)localObject2);
-      localObject3 = ai.ar(this);
-      localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).yo(), (Bundle)localObject1));
+      localObject3 = ai.as(this);
+      localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).yw(), (Bundle)localObject1));
       break;
-      if (bMC.contains(localObject2))
+      if (bMS.contains(localObject2))
       {
         if (Log.isLoggable("FirebaseMessaging", 3))
         {
@@ -201,10 +201,10 @@ public class FirebaseMessagingService
         new String("Received duplicate message: ");
         continue;
       }
-      if (bMC.size() >= 10) {
-        bMC.remove();
+      if (bMS.size() >= 10) {
+        bMS.remove();
       }
-      bMC.add(localObject2);
+      bMS.add(localObject2);
       i = 0;
       break label174;
       i = k;
@@ -251,7 +251,7 @@ public class FirebaseMessagingService
       }
       if (i != 0)
       {
-        if (c.as(this).m((Bundle)localObject2)) {
+        if (c.at(this).m((Bundle)localObject2)) {
           continue;
         }
         if (l((Bundle)localObject2)) {
@@ -294,7 +294,7 @@ public class FirebaseMessagingService
           if (!"1".equals(paramIntent.getStringExtra("google.c.a.tc"))) {
             break label181;
           }
-          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.xK().w(com.google.firebase.analytics.connector.a.class);
+          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.xS().y(com.google.firebase.analytics.connector.a.class);
           Log.isLoggable("FirebaseMessaging", 3);
           if (localObject != null)
           {
@@ -329,7 +329,7 @@ public class FirebaseMessagingService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.messaging.FirebaseMessagingService
  * JD-Core Version:    0.7.0.1
  */

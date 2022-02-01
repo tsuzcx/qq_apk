@@ -7,17 +7,17 @@ import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelpay.PayReq.Options;
 import com.tencent.mm.opensdk.modelpay.PayResp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
   public static boolean a(Context paramContext, String paramString, PayResp paramPayResp, PayReq.Options paramOptions)
   {
     AppMethodBeat.i(117561);
-    ae.d("MicroMsg.PayCallbackHelper", "callback, packageName = ".concat(String.valueOf(paramString)));
+    Log.d("MicroMsg.PayCallbackHelper", "callback, packageName = ".concat(String.valueOf(paramString)));
     String str;
-    if ((paramOptions == null) || (bu.isNullOrNil(paramOptions.callbackClassName)))
+    if ((paramOptions == null) || (Util.isNullOrNil(paramOptions.callbackClassName)))
     {
       str = paramString + ".wxapi.WXPayEntryActivity";
       if ((paramOptions != null) && (paramOptions.callbackFlags != -1)) {
@@ -27,7 +27,7 @@ public final class e
     label193:
     for (int i = 268435456;; i = paramOptions.callbackFlags)
     {
-      ae.d("MicroMsg.PayCallbackHelper", "callback, cbPkg = " + paramString + ", cbCls = " + str + ", cbFlags(hex) = " + Integer.toHexString(i));
+      Log.d("MicroMsg.PayCallbackHelper", "callback, cbPkg = " + paramString + ", cbCls = " + str + ", cbFlags(hex) = " + Integer.toHexString(i));
       paramOptions = new Bundle();
       paramOptions.putString("wx_token_key", "com.tencent.mm.openapi.token");
       if (paramPayResp != null) {
@@ -48,7 +48,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.e
  * JD-Core Version:    0.7.0.1
  */

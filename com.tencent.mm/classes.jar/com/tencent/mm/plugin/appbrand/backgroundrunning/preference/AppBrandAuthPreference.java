@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AppBrandAuthPreference
   extends Preference
 {
-  private boolean dLH;
-  private String jVN;
-  private TextView jVO;
-  private CheckBox jVP;
+  private boolean edw;
+  private String kYJ;
+  private TextView kYK;
+  private CheckBox kYL;
   
   public AppBrandAuthPreference(Context paramContext)
   {
@@ -33,8 +33,8 @@ public class AppBrandAuthPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(44802);
-    this.dLH = false;
-    setLayoutResource(2131494804);
+    this.edw = false;
+    setLayoutResource(2131495538);
     AppMethodBeat.o(44802);
   }
   
@@ -42,15 +42,15 @@ public class AppBrandAuthPreference
   {
     AppMethodBeat.i(44804);
     super.onBindView(paramView);
-    this.jVP = ((CheckBox)paramView.findViewById(2131298255));
-    if (this.jVP != null) {
-      this.jVP.setChecked(this.dLH);
+    this.kYL = ((CheckBox)paramView.findViewById(2131298639));
+    if (this.kYL != null) {
+      this.kYL.setChecked(this.edw);
     }
-    this.jVO = ((TextView)paramView.findViewById(2131296969));
-    if ((this.jVO != null) && (!bu.isNullOrNil(this.jVN))) {
-      this.jVO.setText(this.jVN);
+    this.kYK = ((TextView)paramView.findViewById(2131297088));
+    if ((this.kYK != null) && (!Util.isNullOrNil(this.kYJ))) {
+      this.kYK.setText(this.kYJ);
     }
-    ade(8);
+    alO(8);
     AppMethodBeat.o(44804);
   }
   
@@ -58,9 +58,9 @@ public class AppBrandAuthPreference
   {
     AppMethodBeat.i(44803);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493025, localViewGroup);
+    ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493064, localViewGroup);
     AppMethodBeat.o(44803);
     return paramViewGroup;
   }
@@ -68,17 +68,17 @@ public class AppBrandAuthPreference
   public final void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(44806);
-    this.dLH = paramBoolean;
-    if (this.jVP != null) {
-      this.jVP.setChecked(paramBoolean);
+    this.edw = paramBoolean;
+    if (this.kYL != null) {
+      this.kYL.setChecked(paramBoolean);
     }
     AppMethodBeat.o(44806);
   }
   
-  public final void sh(int paramInt)
+  public final void wd(int paramInt)
   {
     AppMethodBeat.i(44805);
-    this.jVN = this.mContext.getString(paramInt);
+    this.kYJ = this.mContext.getString(paramInt);
     AppMethodBeat.o(44805);
   }
 }

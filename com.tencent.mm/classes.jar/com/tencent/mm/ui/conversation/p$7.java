@@ -1,10 +1,12 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.g.a.a;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 final class p$7
   implements Runnable
@@ -14,22 +16,22 @@ final class p$7
   public final void run()
   {
     AppMethodBeat.i(38729);
-    if (!ak.fot())
+    if (!MMApplicationContext.isAppHasInit())
     {
-      ak.wO(true);
-      ar.o(new Runnable()
+      MMApplicationContext.setAppHasInitFlag(true);
+      MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(38728);
-          ae.i("MicroMsg.RefreshHelper", "APPHasInitEvent begin");
-          com.tencent.mm.g.a.a locala = new com.tencent.mm.g.a.a();
-          com.tencent.mm.sdk.b.a.IvT.l(locala);
+          Log.i("MicroMsg.RefreshHelper", "APPHasInitEvent begin");
+          a locala = new a();
+          EventCenter.instance.publish(locala);
           AppMethodBeat.o(38728);
         }
       }, 100L);
     }
-    f.OQ(8);
+    g.Wm(8);
     AppMethodBeat.o(38729);
   }
 }

@@ -1,102 +1,67 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cdg;
-import com.tencent.mm.protocal.protobuf.cdh;
-import com.tencent.mm.protocal.protobuf.dqx;
-import java.util.List;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ol;
+import com.tencent.mm.protocal.protobuf.om;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.LinkedList;
 
 public final class k
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  public float angle;
-  private f callback;
-  public int dmM;
-  public b rr;
-  public List<dqx> yCO;
-  public long yCP;
+  private i callback;
+  public d rr;
   
-  public k(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
+  public k(String paramString1, LinkedList<String> paramLinkedList, int paramInt, String paramString2, double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(120856);
-    b.a locala = new b.a();
-    cdg localcdg = new cdg();
-    localcdg.HpH = paramInt2;
-    localcdg.HpI = paramInt3;
-    localcdg.HpM = paramString1;
-    localcdg.HpN = paramString2;
-    localcdg.Scene = paramInt1;
-    locala.hQF = localcdg;
-    locala.hQG = new cdh();
-    locala.uri = "/cgi-bin/micromsg-bin/newocrtranslation";
-    locala.funcId = getType();
-    locala.hQH = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.dmM = paramInt2;
-    AppMethodBeat.o(120856);
+    AppMethodBeat.i(51617);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ol();
+    ((d.a)localObject).iLO = new om();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo";
+    ((d.a)localObject).funcId = 1068;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (ol)this.rr.iLK.iLR;
+    ((ol)localObject).ProductID = paramString1;
+    ((ol)localObject).Scene = paramInt;
+    ((ol)localObject).KUs = paramString2;
+    ((ol)localObject).KUr = paramLinkedList;
+    ((ol)localObject).KUu = paramDouble2;
+    ((ol)localObject).KUt = paramDouble1;
+    AppMethodBeat.o(51617);
   }
   
-  public k(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public final int doScene(g paramg, i parami)
   {
-    this(0, paramInt1, paramInt2, paramString1, paramString2);
-  }
-  
-  public final float dOj()
-  {
-    return this.angle;
-  }
-  
-  public final List<dqx> dOk()
-  {
-    return this.yCO;
-  }
-  
-  public final String dOl()
-  {
-    return ((cdh)this.rr.hQE.hQJ).HpQ;
-  }
-  
-  public final long dOm()
-  {
-    return this.yCP;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(120857);
-    this.callback = paramf;
-    this.yCP = System.currentTimeMillis();
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(120857);
+    AppMethodBeat.i(51619);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(51619);
     return i;
-  }
-  
-  public final int getSessionId()
-  {
-    return this.dmM;
   }
   
   public final int getType()
   {
-    return 294;
+    return 1068;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(120858);
-    this.angle = ((cdh)((b)paramq).hQE.hQJ).HpO;
-    this.yCO = ((cdh)((b)paramq).hQE.hQJ).GSo;
+    AppMethodBeat.i(51618);
+    Log.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(120858);
+    AppMethodBeat.o(51618);
   }
 }
 

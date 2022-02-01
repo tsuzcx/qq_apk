@@ -1,15 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.List;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class fs
-  extends b
+  extends IEvent
 {
-  public a drS;
-  public b drT;
+  public a dIR;
+  public b dIS;
   
   public fs()
   {
@@ -18,36 +19,31 @@ public final class fs
   
   private fs(byte paramByte)
   {
-    AppMethodBeat.i(116017);
-    this.drS = new a();
-    this.drT = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(19804);
+    this.dIR = new a();
+    this.dIS = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116017);
+    AppMethodBeat.o(19804);
   }
   
   public static final class a
   {
-    public Cursor drU;
+    public Context context;
+    public String[] dBX;
+    public int dIT = 0;
+    public String[] selectionArgs;
+    public Uri uri;
   }
   
   public static final class b
   {
-    public String drV;
-    public int drW;
-    public String drX;
-    public long drY;
-    public int drZ;
-    public List dsa;
-    public List dsb;
-    public int dsc;
-    public int dsd;
-    public int mediaType;
+    public Cursor dIU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.fs
  * JD-Core Version:    0.7.0.1
  */

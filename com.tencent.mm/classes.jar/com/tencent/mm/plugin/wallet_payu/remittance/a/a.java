@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -9,30 +9,30 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public int DJf;
-  public int DLd;
-  public double DLe;
-  public String DLf;
-  public String cUB;
-  public String dmw;
-  public double dmz;
-  public String dog;
-  public String dyN;
+  public int Isv;
+  public double Iut;
+  public String Iuu;
+  public String dDL;
+  public double dDO;
+  public String dFv;
+  public String dQm;
+  public String dkV;
+  public int oLM;
   public String pin;
   
   public a(String paramString1, String paramString2, double paramDouble, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72166);
-    this.dmw = paramString1;
+    this.dDL = paramString1;
     this.pin = paramString2;
-    this.dmz = paramDouble;
-    this.dog = paramString3;
+    this.dDO = paramDouble;
+    this.dFv = paramString3;
     if (paramInt == 2) {}
     for (int i = 0;; i = paramInt)
     {
-      this.DLd = i;
-      this.cUB = paramString4;
-      this.dyN = paramString5;
+      this.oLM = i;
+      this.dkV = paramString4;
+      this.dQm = paramString5;
       HashMap localHashMap = new HashMap();
       localHashMap.put("pin", paramString2);
       localHashMap.put("req_key", paramString1);
@@ -48,7 +48,7 @@ public final class a
     }
   }
   
-  public final int eIr()
+  public final int fPU()
   {
     return 14;
   }
@@ -56,15 +56,15 @@ public final class a
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72167);
-    this.DJf = paramJSONObject.optInt("response_result");
-    this.DLe = bu.getDouble(paramJSONObject.optString("total_fee"), 0.0D);
-    this.DLf = paramJSONObject.optString("fee_type");
+    this.Isv = paramJSONObject.optInt("response_result");
+    this.Iut = Util.getDouble(paramJSONObject.optString("total_fee"), 0.0D);
+    this.Iuu = paramJSONObject.optString("fee_type");
     AppMethodBeat.o(72167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.a.a
  * JD-Core Version:    0.7.0.1
  */

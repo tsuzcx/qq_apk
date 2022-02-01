@@ -9,51 +9,51 @@ import java.util.Locale;
 public final class j
   implements Serializable
 {
-  final String cHC;
-  final j.b cHE;
-  final a cHF;
-  final List<String> cHG;
-  final e cHz;
+  final List<String> bZq;
+  final e cXX;
+  final String cYa;
+  final b cYc;
+  final a cYd;
   final String className;
   final String extra;
   
-  public j(String paramString1, j.b paramb, a parama, String paramString2, String paramString3, e parame, List<String> paramList)
+  public j(String paramString1, b paramb, a parama, String paramString2, String paramString3, e parame, List<String> paramList)
   {
-    this.cHC = paramString1;
-    this.cHE = paramb;
-    this.cHF = parama;
+    this.cYa = paramString1;
+    this.cYc = paramb;
+    this.cYd = parama;
     this.className = paramString2;
     this.extra = paramString3;
-    this.cHz = parame;
-    this.cHG = Collections.unmodifiableList(new ArrayList(paramList));
+    this.cXX = parame;
+    this.bZq = Collections.unmodifiableList(new ArrayList(paramList));
   }
   
   public final String toString()
   {
     Object localObject1 = "";
-    if (this.cHE == j.b.cHN) {
+    if (this.cYc == b.cYk) {
       localObject1 = "" + "static ";
     }
-    if (this.cHF != a.cHK)
+    if (this.cYd != a.cYh)
     {
       localObject2 = localObject1;
-      if (this.cHF != a.cHJ) {}
+      if (this.cYd != a.cYg) {}
     }
     else
     {
-      localObject2 = (String)localObject1 + this.cHF.name().toLowerCase(Locale.US) + " ";
+      localObject2 = (String)localObject1 + this.cYd.name().toLowerCase(Locale.US) + " ";
     }
     localObject1 = (String)localObject2 + this.className;
-    if (this.cHC != null) {}
-    for (Object localObject2 = (String)localObject1 + " " + this.cHC;; localObject2 = (String)localObject1 + " instance")
+    if (this.cYa != null) {}
+    for (Object localObject2 = (String)localObject1 + " " + this.cYa;; localObject2 = (String)localObject1 + " instance")
     {
       localObject1 = localObject2;
       if (this.extra != null) {
         localObject1 = (String)localObject2 + " " + this.extra;
       }
       localObject2 = localObject1;
-      if (this.cHz != null) {
-        localObject2 = (String)localObject1 + " , matching exclusion " + this.cHz.cHw;
+      if (this.cXX != null) {
+        localObject2 = (String)localObject1 + " , matching exclusion " + this.cXX.cXU;
       }
       return localObject2;
     }
@@ -62,6 +62,11 @@ public final class j
   public static enum a
   {
     private a() {}
+  }
+  
+  public static enum b
+  {
+    private b() {}
   }
 }
 

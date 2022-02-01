@@ -5,32 +5,32 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.a.d.1;
+import com.tencent.mm.plugin.webview.luggage.a.c.1;
 import com.tencent.mm.plugin.webview.luggage.j;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.json.JSONObject;
 
 public class p
-  extends br
+  extends bs
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b.a parama)
   {
     AppMethodBeat.i(78548);
-    JSONObject localJSONObject = parama.chh.cgn;
+    JSONObject localJSONObject = parama.ctb.csi;
     String str = localJSONObject.optString("eventName");
     localJSONObject = localJSONObject.optJSONObject("data");
-    Iterator localIterator = j.eTi().iterator();
+    Iterator localIterator = j.gbV().iterator();
     while (localIterator.hasNext()) {
-      ((s)localIterator.next()).chX.a(new d.1(str, localJSONObject));
+      ((s)localIterator.next()).ctS.a(new c.1(str, localJSONObject));
     }
-    parama.a("", null);
+    parama.c("", null);
     AppMethodBeat.o(78548);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

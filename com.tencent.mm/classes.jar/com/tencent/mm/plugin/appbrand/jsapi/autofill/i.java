@@ -5,18 +5,18 @@ import com.tencent.mm.plugin.appbrand.phonenumber.u;
 
 public final class i
 {
-  static boolean cBE = false;
+  static boolean isInit = false;
   
   public static void init()
   {
     AppMethodBeat.i(46120);
-    if (cBE)
+    if (isInit)
     {
       AppMethodBeat.o(46120);
       return;
     }
-    cBE = true;
-    u localu = u.mps;
+    isInit = true;
+    u localu = u.nAe;
     u.a(new i.1());
     AppMethodBeat.o(46120);
   }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.design.c.b;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.CoordinatorLayout.Behavior;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -47,9 +47,9 @@ public abstract class ExpandableBehavior
   
   public final boolean a(final CoordinatorLayout paramCoordinatorLayout, final View paramView, final int paramInt)
   {
-    if (!t.ay(paramView))
+    if (!u.az(paramView))
     {
-      paramCoordinatorLayout = paramCoordinatorLayout.s(paramView);
+      paramCoordinatorLayout = paramCoordinatorLayout.t(paramView);
       int i = paramCoordinatorLayout.size();
       paramInt = 0;
       if (paramInt >= i) {
@@ -61,8 +61,8 @@ public abstract class ExpandableBehavior
       }
       paramCoordinatorLayout = (b)localView;
       label57:
-      if ((paramCoordinatorLayout != null) && (s(paramCoordinatorLayout.bz()))) {
-        if (!paramCoordinatorLayout.bz()) {
+      if ((paramCoordinatorLayout != null) && (s(paramCoordinatorLayout.bB()))) {
+        if (!paramCoordinatorLayout.bB()) {
           break label127;
         }
       }
@@ -80,7 +80,7 @@ public abstract class ExpandableBehavior
         {
           paramView.getViewTreeObserver().removeOnPreDrawListener(this);
           if (ExpandableBehavior.a(ExpandableBehavior.this) == paramInt) {
-            ExpandableBehavior.this.a((View)paramCoordinatorLayout, paramView, paramCoordinatorLayout.bz(), false);
+            ExpandableBehavior.this.a((View)paramCoordinatorLayout, paramView, paramCoordinatorLayout.bB(), false);
           }
           return false;
         }
@@ -96,13 +96,13 @@ public abstract class ExpandableBehavior
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2)
   {
     paramCoordinatorLayout = (b)paramView2;
-    if (s(paramCoordinatorLayout.bz()))
+    if (s(paramCoordinatorLayout.bB()))
     {
-      if (paramCoordinatorLayout.bz()) {}
+      if (paramCoordinatorLayout.bB()) {}
       for (int i = 1;; i = 2)
       {
         this.currentState = i;
-        return a((View)paramCoordinatorLayout, paramView1, paramCoordinatorLayout.bz(), true);
+        return a((View)paramCoordinatorLayout, paramView1, paramCoordinatorLayout.bB(), true);
       }
     }
     return false;
@@ -114,7 +114,7 @@ public abstract class ExpandableBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.transformation.ExpandableBehavior
  * JD-Core Version:    0.7.0.1
  */

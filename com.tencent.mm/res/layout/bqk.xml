@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/cb"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/gbv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bp" android:layout_marginBottom="@dimen/bq" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <TextView android:gravity="center" android:id="@id/ijk" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:gravity="center" android:id="@id/ijj" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:gravity="center" android:id="@id/iji" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/kc" android:gravity="center" android:id="@id/bg5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hs" android:text="@string/tb" style="@style/m0" />
+</LinearLayout>

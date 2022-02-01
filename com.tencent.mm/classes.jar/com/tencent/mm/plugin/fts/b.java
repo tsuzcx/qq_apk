@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 
@@ -15,17 +15,17 @@ public final class b
   implements Runnable
 {
   private int errorCode;
-  private j tCm;
-  private WeakReference<l> tCn;
+  private j wTn;
+  private WeakReference<l> wTo;
   
-  public b(int paramInt, j paramj)
+  public b(j paramj)
   {
-    AppMethodBeat.i(52500);
-    this.errorCode = paramInt;
-    this.tCm = paramj;
-    this.tCn = new WeakReference(paramj.tGa);
-    this.tCm.tGa = null;
-    AppMethodBeat.o(52500);
+    AppMethodBeat.i(187307);
+    this.errorCode = -2;
+    this.wTn = paramj;
+    this.wTo = new WeakReference(paramj.wWZ);
+    this.wTn.wWZ = null;
+    AppMethodBeat.o(187307);
   }
   
   public final boolean execute()
@@ -34,15 +34,15 @@ public final class b
     final k localk;
     if ((this.errorCode == -2) || (this.errorCode == -3))
     {
-      localk = new k(this.tCm);
-      localk.tGb = this;
-      localk.bZU = this.errorCode;
-      localk.tGc = new LinkedList();
-      localk.tFe = h.bq(this.tCm.query, false);
-      if (this.tCm.handler != null) {
+      localk = new k(this.wTn);
+      localk.wXa = this;
+      localk.resultCode = this.errorCode;
+      localk.wXb = new LinkedList();
+      localk.wWd = h.bE(this.wTn.query, false);
+      if (this.wTn.handler != null) {
         break label113;
       }
-      l locall = (l)this.tCn.get();
+      l locall = (l)this.wTo.get();
       if (locall != null) {
         locall.b(localk);
       }
@@ -52,7 +52,7 @@ public final class b
       AppMethodBeat.o(52501);
       return true;
       label113:
-      this.tCm.handler.post(new Runnable()
+      this.wTn.handler.post(new Runnable()
       {
         public final void run()
         {
@@ -99,7 +99,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b
  * JD-Core Version:    0.7.0.1
  */

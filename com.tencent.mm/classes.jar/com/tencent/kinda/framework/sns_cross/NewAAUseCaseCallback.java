@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.aa.ui.AARemittanceUI;
 import com.tencent.mm.plugin.aa.ui.PaylistAAUI;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
@@ -24,18 +25,23 @@ public class NewAAUseCaseCallback
     }
     String str = paramITransmitKvData.getString("transaction_id");
     if (paramITransmitKvData.getInt("retcode") == 1) {}
-    for (int i = -1;; i = 0)
+    for (int i = -1; (localObject instanceof PaylistAAUI); i = 0)
     {
-      if ((localObject instanceof PaylistAAUI))
-      {
-        paramITransmitKvData = (PaylistAAUI)localObject;
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("key_trans_id", str);
-        paramITransmitKvData.b(i, (Intent)localObject);
-      }
+      paramITransmitKvData = (PaylistAAUI)localObject;
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("key_trans_id", str);
+      paramITransmitKvData.b(i, (Intent)localObject);
       AppMethodBeat.o(18713);
       return;
     }
+    if ((localObject instanceof AARemittanceUI))
+    {
+      paramITransmitKvData = (AARemittanceUI)localObject;
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("key_trans_id", str);
+      paramITransmitKvData.b(i, (Intent)localObject);
+    }
+    AppMethodBeat.o(18713);
   }
   
   public void setData(Context paramContext, PayInfo paramPayInfo)
@@ -47,7 +53,7 @@ public class NewAAUseCaseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.NewAAUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

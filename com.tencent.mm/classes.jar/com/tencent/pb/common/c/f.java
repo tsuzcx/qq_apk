@@ -18,16 +18,16 @@ public final class f
     return localStringBuilder.toString();
   }
   
-  public static String baC(String paramString)
+  public static String bpK(String paramString)
   {
     String str = paramString;
-    if (ef(paramString)) {
+    if (eP(paramString)) {
       str = "";
     }
     return str;
   }
   
-  public static boolean ef(String paramString)
+  public static boolean eP(String paramString)
   {
     return (paramString == null) || (paramString.length() == 0);
   }
@@ -42,7 +42,7 @@ public final class f
     return (paramString == null) || ("".equals(paramString.trim()));
   }
   
-  public static boolean mP(String paramString1, String paramString2)
+  public static boolean nG(String paramString1, String paramString2)
   {
     if (paramString1 == null) {
       return paramString2 == null;

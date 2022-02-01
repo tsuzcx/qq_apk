@@ -3,16 +3,16 @@ package com.tencent.pb.talkroom.sdk;
 public final class g
 {
   public int ret;
-  public int[] wpx = new int[0];
-  public int wpy;
-  public int wpz;
+  public int[] zKJ = new int[0];
+  public int zKK;
+  public int zKL;
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MultiTalkVideoRGBinfo [imgRGBdata size=");
-    if (this.wpx == null) {}
-    for (int i = 0;; i = this.wpx.length) {
-      return i + ", localImgWidth=" + this.wpy + ", localImgHeight=" + this.wpz + ", ret=" + this.ret + "]";
+    if (this.zKJ == null) {}
+    for (int i = 0;; i = this.zKJ.length) {
+      return i + ", localImgWidth=" + this.zKK + ", localImgHeight=" + this.zKL + ", ret=" + this.ret + "]";
     }
   }
 }

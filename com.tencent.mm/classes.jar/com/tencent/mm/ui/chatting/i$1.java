@@ -17,9 +17,9 @@ final class i$1
   {
     AppMethodBeat.i(34384);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/ui/chatting/ChattingDownloaderFooterHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ((c)g.ab(c.class)).a(paramView.getContext(), null, null);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/ui/chatting/ChattingDownloaderFooterHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    ((c)g.af(c.class)).a(paramView.getContext(), null, null);
     a.a(this, "com/tencent/mm/ui/chatting/ChattingDownloaderFooterHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(34384);
   }

@@ -16,89 +16,83 @@ import java.util.List;
 public class CustomTimePickerNew
   extends FrameLayout
 {
-  h LwY;
+  h QSK;
   private Context context;
   int currentHour;
   int currentMinute;
-  private int lhP;
-  private int lhQ;
-  private int mMaxTimeHour;
-  private int mMaxTimeMinute;
-  private int mMinTimeHour;
-  private int mMinTimeMinute;
+  public int mMaxTimeHour;
+  public int mMaxTimeMinute;
+  public int mMinTimeHour;
+  public int mMinTimeMinute;
   private View mView;
+  public int mnn;
+  public int mno;
   
   public CustomTimePickerNew(Context paramContext)
   {
-    super(new ContextThemeWrapper(paramContext, 2131821679));
-    AppMethodBeat.i(200468);
+    super(new ContextThemeWrapper(paramContext, 2131821727));
+    AppMethodBeat.i(198414);
     this.mView = null;
     this.mMinTimeHour = -1;
     this.mMinTimeMinute = -1;
     this.mMaxTimeHour = -1;
     this.mMaxTimeMinute = -1;
-    this.lhP = -1;
-    this.lhQ = -1;
+    this.mnn = -1;
+    this.mno = -1;
     this.context = paramContext;
-    this.LwY = new h(paramContext);
-    AppMethodBeat.o(200468);
+    this.QSK = new h(paramContext);
+    AppMethodBeat.o(198414);
   }
   
   public CustomTimePickerNew(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(new ContextThemeWrapper(paramContext, 2131821679), paramAttributeSet);
-    AppMethodBeat.i(200469);
+    super(new ContextThemeWrapper(paramContext, 2131821727), paramAttributeSet);
+    AppMethodBeat.i(198415);
     this.mView = null;
     this.mMinTimeHour = -1;
     this.mMinTimeMinute = -1;
     this.mMaxTimeHour = -1;
     this.mMaxTimeMinute = -1;
-    this.lhP = -1;
-    this.lhQ = -1;
+    this.mnn = -1;
+    this.mno = -1;
     this.context = paramContext;
-    this.LwY = new h(paramContext);
-    AppMethodBeat.o(200469);
+    this.QSK = new h(paramContext);
+    AppMethodBeat.o(198415);
   }
   
   public CustomTimePickerNew(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200470);
+    AppMethodBeat.i(198416);
     this.mView = null;
     this.mMinTimeHour = -1;
     this.mMinTimeMinute = -1;
     this.mMaxTimeHour = -1;
     this.mMaxTimeMinute = -1;
-    this.lhP = -1;
-    this.lhQ = -1;
+    this.mnn = -1;
+    this.mno = -1;
     this.context = paramContext;
-    this.LwY = new h(paramContext);
-    AppMethodBeat.o(200470);
+    this.QSK = new h(paramContext);
+    AppMethodBeat.o(198416);
   }
   
   public View getView()
   {
-    AppMethodBeat.i(200471);
+    AppMethodBeat.i(198417);
     if (this.mView == null) {
-      this.mView = this.LwY.aQD();
+      this.mView = this.QSK.bli();
     }
     View localView = this.mView;
-    AppMethodBeat.o(200471);
+    AppMethodBeat.o(198417);
     return localView;
-  }
-  
-  public final void init(int paramInt1, int paramInt2)
-  {
-    this.lhP = paramInt1;
-    this.lhQ = paramInt2;
   }
   
   public final void onShow()
   {
-    AppMethodBeat.i(200472);
+    AppMethodBeat.i(198418);
     Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).set(11, this.lhP);
-    ((Calendar)localObject).set(12, this.lhQ);
+    ((Calendar)localObject).set(11, this.mnn);
+    ((Calendar)localObject).set(12, this.mno);
     Calendar localCalendar1 = Calendar.getInstance();
     localCalendar1.set(11, this.mMinTimeHour);
     localCalendar1.set(12, this.mMinTimeMinute);
@@ -109,59 +103,47 @@ public class CustomTimePickerNew
     {
       public final void a(Date paramAnonymousDate)
       {
-        AppMethodBeat.i(200467);
+        AppMethodBeat.i(198413);
         CustomTimePickerNew.a(CustomTimePickerNew.this, paramAnonymousDate);
-        AppMethodBeat.o(200467);
+        AppMethodBeat.o(198413);
       }
-    }).c(new boolean[] { 0, 0, 0, 1, 1, 0 }).b((Calendar)localObject).b(localCalendar1, localCalendar2).fRt();
-    int i = android.support.v4.content.b.n(this.context, 2131099656);
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject).LwV.iNG = i;
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject).c(this.LwY);
-    this.LwY.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
-    this.context.getResources().getDimensionPixelSize(2131165292);
-    this.LwY.du(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-    localObject = this.LwY.LxJ.aQG().iterator();
+    }).c(new boolean[] { 0, 0, 0, 1, 1, 0 }).b((Calendar)localObject).b(localCalendar1, localCalendar2).hcv();
+    int i = android.support.v4.content.b.n(this.context, 2131099657);
+    ((com.tencent.mm.ui.widget.picker.b.b)localObject).QSH.jKu = i;
+    ((com.tencent.mm.ui.widget.picker.b.b)localObject).c(this.QSK);
+    this.QSK.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165950));
+    this.context.getResources().getDimensionPixelSize(2131165299);
+    this.QSK.dE(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
+    localObject = this.QSK.QTy.bll().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((WheelView)((Iterator)localObject).next()).agp(android.support.v4.content.b.n(this.context, 2131099664)).ago(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+      ((WheelView)((Iterator)localObject).next()).aps(android.support.v4.content.b.n(this.context, 2131099669)).apr(this.context.getResources().getDimensionPixelSize(2131165296)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
     }
-    localObject = this.LwY.LxJ.aQG();
+    localObject = this.QSK.QTy.bll();
     if (((List)localObject).size() == 1)
     {
-      ((WheelView)((List)localObject).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
-      AppMethodBeat.o(200472);
+      ((WheelView)((List)localObject).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
+      AppMethodBeat.o(198418);
       return;
     }
     if (((List)localObject).size() == 2)
     {
-      ((WheelView)((List)localObject).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-      ((WheelView)((List)localObject).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
-      AppMethodBeat.o(200472);
+      ((WheelView)((List)localObject).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)((List)localObject).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
+      AppMethodBeat.o(198418);
       return;
     }
     if (((List)localObject).size() == 3)
     {
-      ((WheelView)((List)localObject).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289));
-      ((WheelView)((List)localObject).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289));
-      ((WheelView)((List)localObject).get(2)).setPadding(this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
+      ((WheelView)((List)localObject).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)((List)localObject).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)((List)localObject).get(2)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
     }
-    AppMethodBeat.o(200472);
-  }
-  
-  public final void setMaxTime(int paramInt1, int paramInt2)
-  {
-    this.mMaxTimeHour = paramInt1;
-    this.mMaxTimeMinute = paramInt2;
-  }
-  
-  public final void setMinTime(int paramInt1, int paramInt2)
-  {
-    this.mMinTimeHour = paramInt1;
-    this.mMinTimeMinute = paramInt2;
+    AppMethodBeat.o(198418);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.CustomTimePickerNew
  * JD-Core Version:    0.7.0.1
  */

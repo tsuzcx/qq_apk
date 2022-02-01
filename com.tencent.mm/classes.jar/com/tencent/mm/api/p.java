@@ -1,17 +1,21 @@
 package com.tencent.mm.api;
 
-import android.content.Context;
-import android.graphics.Bitmap;
+import com.tencent.mm.kernel.c.a;
 
 public abstract interface p
+  extends a
 {
-  public abstract String Lj();
+  public abstract boolean a(c paramc);
   
-  public abstract Bitmap z(Context paramContext, int paramInt);
+  public abstract boolean b(c paramc);
+  
+  public abstract c fJ(String paramString);
+  
+  public abstract void fK(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.p
  * JD-Core Version:    0.7.0.1
  */

@@ -21,23 +21,23 @@ public class n
   
   static
   {
-    AppMethodBeat.i(210761);
+    AppMethodBeat.i(223009);
     a = TencentLocation.class.getPackage().getName();
     b = null;
-    AppMethodBeat.o(210761);
+    AppMethodBeat.o(223009);
   }
   
   public n(Context paramContext)
   {
-    AppMethodBeat.i(210759);
+    AppMethodBeat.i(223007);
     this.e = false;
     this.c = paramContext;
-    AppMethodBeat.o(210759);
+    AppMethodBeat.o(223007);
   }
   
   public static n a(Context paramContext)
   {
-    AppMethodBeat.i(210760);
+    AppMethodBeat.i(223008);
     if (b == null) {}
     try
     {
@@ -45,34 +45,34 @@ public class n
         b = new n(paramContext);
       }
       paramContext = b;
-      AppMethodBeat.o(210760);
+      AppMethodBeat.o(223008);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(210760);
+      AppMethodBeat.o(223008);
     }
   }
   
   public void a()
   {
-    AppMethodBeat.i(210763);
+    AppMethodBeat.i(223011);
     if (!this.e)
     {
       this.d = Thread.getDefaultUncaughtExceptionHandler();
       Thread.setDefaultUncaughtExceptionHandler(b);
       this.e = true;
     }
-    AppMethodBeat.o(210763);
+    AppMethodBeat.o(223011);
   }
   
   public final boolean a(Throwable paramThrowable)
   {
-    AppMethodBeat.i(210764);
+    AppMethodBeat.i(223012);
     Throwable localThrowable = paramThrowable;
     if (paramThrowable == null)
     {
-      AppMethodBeat.o(210764);
+      AppMethodBeat.o(223012);
       return false;
     }
     for (;;)
@@ -88,19 +88,19 @@ public class n
       {
         if ("TLSAPP".equals(paramThrowable[i].getFileName()))
         {
-          AppMethodBeat.o(210764);
+          AppMethodBeat.o(223012);
           return true;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(210764);
+    AppMethodBeat.o(223012);
     return false;
   }
   
   public final String b(Throwable paramThrowable)
   {
-    AppMethodBeat.i(210765);
+    AppMethodBeat.i(223013);
     StringBuffer localStringBuffer = new StringBuffer();
     try
     {
@@ -119,13 +119,13 @@ public class n
       break label74;
     }
     paramThrowable = localStringBuffer.toString();
-    AppMethodBeat.o(210765);
+    AppMethodBeat.o(223013);
     return paramThrowable;
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    AppMethodBeat.i(210762);
+    AppMethodBeat.i(223010);
     Object localObject;
     if ((a(paramThrowable)) && (this.c != null))
     {
@@ -148,13 +148,13 @@ public class n
       this.f.await(3000L, TimeUnit.MILLISECONDS);
       label163:
       TencentLocationManager.getInstance(this.c).removeUpdates(null);
-      AppMethodBeat.o(210762);
+      AppMethodBeat.o(223010);
       return;
       localObject = this.d;
       if (localObject != null) {
         ((Thread.UncaughtExceptionHandler)localObject).uncaughtException(paramThread, paramThrowable);
       }
-      AppMethodBeat.o(210762);
+      AppMethodBeat.o(223010);
       return;
     }
     catch (InterruptedException paramThread)
@@ -170,23 +170,23 @@ public class n
     
     public a(String paramString)
     {
-      AppMethodBeat.i(210757);
+      AppMethodBeat.i(223005);
       this.a = paramString;
-      AppMethodBeat.o(210757);
+      AppMethodBeat.o(223005);
     }
     
     public void run()
     {
-      AppMethodBeat.i(210758);
+      AppMethodBeat.i(223006);
       e.a(n.a(n.this)).a(this.a);
       n.b(n.this).countDown();
-      AppMethodBeat.o(210758);
+      AppMethodBeat.o(223006);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.sapp.c.n
  * JD-Core Version:    0.7.0.1
  */

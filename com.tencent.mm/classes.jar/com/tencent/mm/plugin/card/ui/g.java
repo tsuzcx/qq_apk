@@ -16,32 +16,32 @@ import java.util.List;
 public final class g
   extends BaseAdapter
 {
-  private View.OnClickListener jwB;
+  private View.OnClickListener kuO;
   Context mContext;
-  private boolean oFD;
-  c oJA;
-  List<CardInfo> oJL;
-  private boolean oOH;
-  List<Boolean> oOI;
-  a oOJ;
+  private boolean pTl;
+  c pXo;
+  List<CardInfo> pXz;
+  private boolean qcv;
+  List<Boolean> qcw;
+  a qcx;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(113473);
-    this.oJL = new ArrayList();
-    this.oOH = false;
-    this.oOI = new ArrayList();
-    this.oFD = true;
-    this.jwB = new g.1(this);
-    this.oJA = new l(paramContext, this);
+    this.pXz = new ArrayList();
+    this.qcv = false;
+    this.qcw = new ArrayList();
+    this.pTl = true;
+    this.kuO = new g.1(this);
+    this.pXo = new l(paramContext, this);
     this.mContext = paramContext;
     AppMethodBeat.o(113473);
   }
   
-  public final CardInfo AK(int paramInt)
+  public final CardInfo Ep(int paramInt)
   {
     AppMethodBeat.i(113475);
-    CardInfo localCardInfo = (CardInfo)this.oJL.get(paramInt);
+    CardInfo localCardInfo = (CardInfo)this.pXz.get(paramInt);
     AppMethodBeat.o(113475);
     return localCardInfo;
   }
@@ -49,7 +49,7 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(113474);
-    int i = this.oJL.size();
+    int i = this.pXz.size();
     AppMethodBeat.o(113474);
     return i;
   }
@@ -62,25 +62,25 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113476);
-    paramViewGroup = AK(paramInt);
-    paramViewGroup.oFD = this.oFD;
-    paramView = this.oJA.a(paramInt, paramView, paramViewGroup);
-    if ((this.oOH) && (paramViewGroup.bUO()))
+    paramViewGroup = Ep(paramInt);
+    paramViewGroup.pTl = this.pTl;
+    paramView = this.pXo.a(paramInt, paramView, paramViewGroup);
+    if ((this.qcv) && (paramViewGroup.csC()))
     {
-      this.oJA.aa(paramView, 0);
-      if (((Boolean)this.oOI.get(paramInt)).booleanValue())
+      this.pXo.Z(paramView, 0);
+      if (((Boolean)this.qcw.get(paramInt)).booleanValue())
       {
-        this.oJA.Z(paramView, 2131231424);
-        this.oJA.a(paramView, paramInt, this.jwB);
+        this.pXo.Y(paramView, 2131231488);
+        this.pXo.a(paramView, paramInt, this.kuO);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(113476);
       return paramView;
-      this.oJA.Z(paramView, 2131231425);
+      this.pXo.Y(paramView, 2131231489);
       break;
-      this.oJA.aa(paramView, 8);
+      this.pXo.Z(paramView, 8);
     }
   }
   
@@ -88,7 +88,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.g
  * JD-Core Version:    0.7.0.1
  */

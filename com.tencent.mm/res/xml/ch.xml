@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.HeadImgNewPreference mm:key="settings_change_avatar" mm:layout="@layout/aop" mm:title="@string/f51" />
-    <Preference mm:key="settings_name" mm:layout="@layout/aop" mm:title="@string/f8i" />
-    <Preference mm:key="settings_pat" mm:layout="@layout/aop" mm:title="@string/hw2" />
-    <Preference mm:key="settings_username" mm:layout="@layout/aop" mm:title="@string/fc_" />
-    <Preference mm:key="settings_qrcode" mm:layout="@layout/aop" mm:title="@string/f_7" mm:widgetLayout="@layout/aq7" />
-    <Preference mm:key="settings_more_info" mm:layout="@layout/aop" mm:title="@string/uh" />
-    <PreferenceSmallCategory />
-    <Preference mm:key="settings_address" mm:layout="@layout/aop" mm:title="@string/f4r" />
-    <Preference mm:key="settings_invoice" mm:layout="@layout/aop" mm:title="@string/f6t" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:key="settings_auto_mul_terminal_sync_tip" android:title="@string/gnl" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_auto_mul_terminal_sync" android:title="@string/gnk" />
+    <PreferenceTitleCategory android:key="settings_take_photo_auto_save_tip" android:title="@string/gv7" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_photo" android:title="@string/gv6" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_video" android:title="@string/gv8" />
+    <PreferenceTitleCategory android:key="settings_sns_auto_play_tip" android:title="@string/gu6" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_sns_auto_play_switch" android:title="@string/gu5" />
+    <PreferenceTitleCategory android:key="settings_voip_audio_switch_mobile_net_tip" android:title="@string/gwq" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_audio_switch_mobile_net" android:title="@string/gwo" />
 </PreferenceScreen>

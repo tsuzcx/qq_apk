@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public class GetEmotionListResponse
-  extends cwj
+  extends dpc
 {
   public EmotionBanner Banner;
   public int BannerSetCount;
@@ -39,7 +39,7 @@ public class GetEmotionListResponse
     AppMethodBeat.i(104801);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseResponse == null)
       {
         paramVarArgs = new b("Not all required fields were included: BaseResponse");
@@ -54,33 +54,33 @@ public class GetEmotionListResponse
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
       if (this.ReqBuf != null)
       {
-        paramVarArgs.lJ(2, this.ReqBuf.computeSize());
+        paramVarArgs.ni(2, this.ReqBuf.computeSize());
         this.ReqBuf.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(3, this.EmotionCount);
+      paramVarArgs.aM(3, this.EmotionCount);
       paramVarArgs.e(4, 8, this.EmotionList);
       if (this.Banner != null)
       {
-        paramVarArgs.lJ(5, this.Banner.computeSize());
+        paramVarArgs.ni(5, this.Banner.computeSize());
         this.Banner.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(6, this.NewBannerCount);
+      paramVarArgs.aM(6, this.NewBannerCount);
       paramVarArgs.e(7, 8, this.NewBannerList);
-      paramVarArgs.aS(8, this.CellCount);
+      paramVarArgs.aM(8, this.CellCount);
       paramVarArgs.e(9, 8, this.CellList);
-      paramVarArgs.aS(10, this.BannerSetCount);
+      paramVarArgs.aM(10, this.BannerSetCount);
       paramVarArgs.e(11, 8, this.BannerSetList);
-      paramVarArgs.aS(12, this.TopHotNum);
-      paramVarArgs.aS(13, this.RecentHotNum);
-      paramVarArgs.aS(14, this.CellSetCount);
+      paramVarArgs.aM(12, this.TopHotNum);
+      paramVarArgs.aM(13, this.RecentHotNum);
+      paramVarArgs.aM(14, this.CellSetCount);
       paramVarArgs.e(15, 8, this.CellSetList);
       if (this.EmotionExptConfig != null) {
-        paramVarArgs.d(16, this.EmotionExptConfig);
+        paramVarArgs.e(16, this.EmotionExptConfig);
       }
       AppMethodBeat.o(104801);
       return 0;
@@ -91,21 +91,21 @@ public class GetEmotionListResponse
       }
     }
     label1782:
-    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.ReqBuf != null) {
-        i = paramInt + f.a.a.a.lI(2, this.ReqBuf.computeSize());
+        i = paramInt + g.a.a.a.nh(2, this.ReqBuf.computeSize());
       }
-      i = i + f.a.a.b.b.a.bz(3, this.EmotionCount) + f.a.a.a.c(4, 8, this.EmotionList);
+      i = i + g.a.a.b.b.a.bu(3, this.EmotionCount) + g.a.a.a.c(4, 8, this.EmotionList);
       paramInt = i;
       if (this.Banner != null) {
-        paramInt = i + f.a.a.a.lI(5, this.Banner.computeSize());
+        paramInt = i + g.a.a.a.nh(5, this.Banner.computeSize());
       }
-      i = paramInt + f.a.a.b.b.a.bz(6, this.NewBannerCount) + f.a.a.a.c(7, 8, this.NewBannerList) + f.a.a.b.b.a.bz(8, this.CellCount) + f.a.a.a.c(9, 8, this.CellList) + f.a.a.b.b.a.bz(10, this.BannerSetCount) + f.a.a.a.c(11, 8, this.BannerSetList) + f.a.a.b.b.a.bz(12, this.TopHotNum) + f.a.a.b.b.a.bz(13, this.RecentHotNum) + f.a.a.b.b.a.bz(14, this.CellSetCount) + f.a.a.a.c(15, 8, this.CellSetList);
+      i = paramInt + g.a.a.b.b.a.bu(6, this.NewBannerCount) + g.a.a.a.c(7, 8, this.NewBannerList) + g.a.a.b.b.a.bu(8, this.CellCount) + g.a.a.a.c(9, 8, this.CellList) + g.a.a.b.b.a.bu(10, this.BannerSetCount) + g.a.a.a.c(11, 8, this.BannerSetList) + g.a.a.b.b.a.bu(12, this.TopHotNum) + g.a.a.b.b.a.bu(13, this.RecentHotNum) + g.a.a.b.b.a.bu(14, this.CellSetCount) + g.a.a.a.c(15, 8, this.CellSetList);
       paramInt = i;
       if (this.EmotionExptConfig != null) {
-        paramInt = i + f.a.a.b.b.a.e(16, this.EmotionExptConfig);
+        paramInt = i + g.a.a.b.b.a.f(16, this.EmotionExptConfig);
       }
       AppMethodBeat.o(104801);
       return paramInt;
@@ -117,10 +117,10 @@ public class GetEmotionListResponse
         this.CellList.clear();
         this.BannerSetList.clear();
         this.CellSetList.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.BaseResponse == null)
@@ -140,7 +140,7 @@ public class GetEmotionListResponse
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         GetEmotionListResponse localGetEmotionListResponse = (GetEmotionListResponse)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
@@ -151,155 +151,155 @@ public class GetEmotionListResponse
           AppMethodBeat.o(104801);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new SKBuiltinBuffer_t();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.ReqBuf = ((SKBuiltinBuffer_t)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         case 3: 
-          localGetEmotionListResponse.EmotionCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localGetEmotionListResponse.EmotionCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104801);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionSummary();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionSummary)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((EmotionSummary)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.EmotionList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionBanner();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionBanner)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((EmotionBanner)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.Banner = ((EmotionBanner)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         case 6: 
-          localGetEmotionListResponse.NewBannerCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localGetEmotionListResponse.NewBannerCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104801);
           return 0;
         case 7: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionBanner();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionBanner)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((EmotionBanner)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.NewBannerList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         case 8: 
-          localGetEmotionListResponse.CellCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localGetEmotionListResponse.CellCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104801);
           return 0;
         case 9: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionCell();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionCell)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((EmotionCell)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.CellList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         case 10: 
-          localGetEmotionListResponse.BannerSetCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localGetEmotionListResponse.BannerSetCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104801);
           return 0;
         case 11: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionBannerSet();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionBannerSet)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((EmotionBannerSet)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.BannerSetList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         case 12: 
-          localGetEmotionListResponse.TopHotNum = ((f.a.a.a.a)localObject1).OmT.zc();
+          localGetEmotionListResponse.TopHotNum = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104801);
           return 0;
         case 13: 
-          localGetEmotionListResponse.RecentHotNum = ((f.a.a.a.a)localObject1).OmT.zc();
+          localGetEmotionListResponse.RecentHotNum = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104801);
           return 0;
         case 14: 
-          localGetEmotionListResponse.CellSetCount = ((f.a.a.a.a)localObject1).OmT.zc();
+          localGetEmotionListResponse.CellSetCount = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104801);
           return 0;
         case 15: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionBannerSet();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionBannerSet)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((EmotionBannerSet)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localGetEmotionListResponse.CellSetList.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104801);
           return 0;
         }
-        localGetEmotionListResponse.EmotionExptConfig = ((f.a.a.a.a)localObject1).OmT.readString();
+        localGetEmotionListResponse.EmotionExptConfig = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(104801);
         return 0;
       }
@@ -310,7 +310,7 @@ public class GetEmotionListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.GetEmotionListResponse
  * JD-Core Version:    0.7.0.1
  */

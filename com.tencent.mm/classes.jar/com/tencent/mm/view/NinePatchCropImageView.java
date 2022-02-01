@@ -19,84 +19,84 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class NinePatchCropImageView
   extends AppCompatImageView
 {
-  private RectF ClP;
-  private NinePatch LLM;
-  private Drawable LLN;
-  private int LLO;
-  private int LLP;
-  private boolean LLQ;
+  private RectF GPe;
+  private NinePatch Rkb;
+  private Drawable Rkc;
+  private int Rkd;
+  private int Rke;
+  private boolean Rkf;
   private Paint paint;
   
   public NinePatchCropImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(193814);
+    AppMethodBeat.i(206176);
     this.paint = new Paint();
-    this.LLM = null;
-    this.LLN = null;
-    this.LLO = 0;
-    this.LLP = 0;
-    this.ClP = null;
-    this.LLQ = true;
+    this.Rkb = null;
+    this.Rkc = null;
+    this.Rkd = 0;
+    this.Rke = 0;
+    this.GPe = null;
+    this.Rkf = true;
     init();
-    AppMethodBeat.o(193814);
+    AppMethodBeat.o(206176);
   }
   
   public NinePatchCropImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(193815);
+    AppMethodBeat.i(206177);
     this.paint = new Paint();
-    this.LLM = null;
-    this.LLN = null;
-    this.LLO = 0;
-    this.LLP = 0;
-    this.ClP = null;
-    this.LLQ = true;
+    this.Rkb = null;
+    this.Rkc = null;
+    this.Rkd = 0;
+    this.Rke = 0;
+    this.GPe = null;
+    this.Rkf = true;
     init();
-    AppMethodBeat.o(193815);
+    AppMethodBeat.o(206177);
   }
   
   private void init()
   {
-    AppMethodBeat.i(193816);
+    AppMethodBeat.i(206178);
     this.paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
     this.paint.setAntiAlias(true);
-    this.LLN = getResources().getDrawable(2131099678);
-    AppMethodBeat.o(193816);
+    this.Rkc = getResources().getDrawable(2131099687);
+    AppMethodBeat.o(206178);
   }
   
-  public final void kB(int paramInt1, int paramInt2)
+  public final void lZ(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193818);
-    this.LLO = paramInt1;
-    this.LLP = paramInt2;
+    AppMethodBeat.i(206180);
+    this.Rkd = paramInt1;
+    this.Rke = paramInt2;
     invalidate();
-    AppMethodBeat.o(193818);
+    AppMethodBeat.o(206180);
   }
   
   public final void m(RectF paramRectF)
   {
-    AppMethodBeat.i(193819);
-    this.ClP = new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom);
-    AppMethodBeat.o(193819);
+    AppMethodBeat.i(206181);
+    this.GPe = new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom);
+    AppMethodBeat.o(206181);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(193820);
-    if (this.LLM != null)
+    AppMethodBeat.i(206182);
+    if (this.Rkb != null)
     {
       int k = paramCanvas.saveLayer(null, null);
-      if (this.LLN != null)
+      if (this.Rkc != null)
       {
-        this.LLN.setBounds(0, 0, getWidth(), getHeight());
-        this.LLN.draw(paramCanvas);
+        this.Rkc.setBounds(0, 0, getWidth(), getHeight());
+        this.Rkc.draw(paramCanvas);
       }
       Object localObject;
-      if ((this.ClP != null) && (this.LLQ))
+      if ((this.GPe != null) && (this.Rkf))
       {
-        localObject = this.ClP;
+        localObject = this.GPe;
         RectF localRectF = new RectF((RectF)localObject);
         if (((RectF)localObject).width() > 1.0F)
         {
@@ -116,84 +116,84 @@ public class NinePatchCropImageView
       label189:
       int i;
       float f3;
-      if (this.ClP == null)
+      if (this.GPe == null)
       {
         f1 = getWidth();
-        if (this.ClP != null) {
+        if (this.GPe != null) {
           break label353;
         }
         f2 = getHeight();
-        if (((this.LLP == 0) && (this.LLO == 0)) || (f1 <= 0.0F) || (f2 <= 0.0F)) {
+        if (((this.Rke == 0) && (this.Rkd == 0)) || (f1 <= 0.0F) || (f2 <= 0.0F)) {
           break label420;
         }
-        int j = this.LLO;
-        i = this.LLP;
-        if (this.LLO != 0) {
+        int j = this.Rkd;
+        i = this.Rke;
+        if (this.Rkd != 0) {
           break label364;
         }
-        f3 = f2 / this.LLP;
-        j = (int)(f1 / f2 * this.LLP);
+        f3 = f2 / this.Rke;
+        j = (int)(f1 / f2 * this.Rke);
         f1 = f3;
         f2 = f3;
         label261:
         paramCanvas.save();
-        if (this.ClP != null) {
-          paramCanvas.translate(this.ClP.left, this.ClP.top);
+        if (this.GPe != null) {
+          paramCanvas.translate(this.GPe.left, this.GPe.top);
         }
         paramCanvas.scale(f1, f2);
         localObject = new Rect(0, 0, j, i);
-        this.LLM.draw(paramCanvas, (Rect)localObject, this.paint);
+        this.Rkb.draw(paramCanvas, (Rect)localObject, this.paint);
         paramCanvas.restore();
       }
       for (;;)
       {
         paramCanvas.restoreToCount(k);
-        AppMethodBeat.o(193820);
+        AppMethodBeat.o(206182);
         return;
-        f1 = this.ClP.width();
+        f1 = this.GPe.width();
         break;
         label353:
-        f2 = this.ClP.height();
+        f2 = this.GPe.height();
         break label189;
         label364:
-        if (this.LLP == 0)
+        if (this.Rke == 0)
         {
-          f3 = f1 / this.LLO;
-          i = (int)(f2 / f1 * this.LLO);
+          f3 = f1 / this.Rkd;
+          i = (int)(f2 / f1 * this.Rkd);
           f1 = f3;
           f2 = f3;
           break label261;
         }
-        f1 /= this.LLO;
-        f2 /= this.LLP;
+        f1 /= this.Rkd;
+        f2 /= this.Rke;
         break label261;
         label420:
         localObject = new Rect(0, 0, getWidth(), getHeight());
-        this.LLM.draw(paramCanvas, (Rect)localObject, this.paint);
+        this.Rkb.draw(paramCanvas, (Rect)localObject, this.paint);
       }
     }
     super.onDraw(paramCanvas);
-    AppMethodBeat.o(193820);
+    AppMethodBeat.o(206182);
   }
   
   public void setEraseEdge(boolean paramBoolean)
   {
-    this.LLQ = paramBoolean;
+    this.Rkf = paramBoolean;
   }
   
   public void setNinePatchId(int paramInt)
   {
-    AppMethodBeat.i(193817);
+    AppMethodBeat.i(206179);
     Bitmap localBitmap = BitmapFactory.decodeResource(getContext().getResources(), paramInt);
     if (localBitmap != null) {
-      this.LLM = new NinePatch(localBitmap, localBitmap.getNinePatchChunk(), null);
+      this.Rkb = new NinePatch(localBitmap, localBitmap.getNinePatchChunk(), null);
     }
-    AppMethodBeat.o(193817);
+    AppMethodBeat.o(206179);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.NinePatchCropImageView
  * JD-Core Version:    0.7.0.1
  */

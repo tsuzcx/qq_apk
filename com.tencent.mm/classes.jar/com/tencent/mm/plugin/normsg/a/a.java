@@ -4,21 +4,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public abstract interface a
 {
-  public abstract boolean A(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract boolean K(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public abstract byte[] MC(int paramInt);
+  public abstract byte[] TJ(int paramInt);
   
-  public abstract String MD(int paramInt);
+  public abstract String TK(int paramInt);
   
-  public abstract void ME(int paramInt);
+  public abstract void TL(int paramInt);
   
-  public abstract byte[] MF(int paramInt);
+  public abstract byte[] TM(int paramInt);
   
-  public abstract void a(View paramView, Class<? extends b> paramClass);
+  public abstract void a(View paramView, Class<? extends IEvent> paramClass);
+  
+  public abstract void a(b paramb);
   
   public abstract void a(String paramString, MotionEvent paramMotionEvent);
   
@@ -26,65 +28,73 @@ public abstract interface a
   
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
   
-  public abstract String aaL();
+  public abstract void aA(String paramString1, String paramString2, String paramString3);
   
-  public abstract void ao(int paramInt1, int paramInt2, int paramInt3);
+  public abstract String aIJ(String paramString);
   
-  public abstract String auA(String paramString);
+  public abstract void aIL(String paramString);
   
-  public abstract void auC(String paramString);
+  public abstract void aIM(String paramString);
   
-  public abstract void auD(String paramString);
+  public abstract void aIN(String paramString);
   
-  public abstract void auE(String paramString);
+  public abstract boolean aIO(String paramString);
   
-  public abstract boolean auF(String paramString);
+  public abstract byte[] aIP(String paramString);
   
-  public abstract byte[] auG(String paramString);
+  public abstract void aIQ(String paramString);
   
-  public abstract void auH(String paramString);
+  public abstract boolean aIR(String paramString);
   
-  public abstract boolean auI(String paramString);
+  public abstract byte[] aIS(String paramString);
   
-  public abstract byte[] auJ(String paramString);
+  public abstract String aIT(String paramString);
   
-  public abstract String[] auK(String paramString);
+  public abstract String[] aIU(String paramString);
   
-  public abstract void dWk();
+  public abstract String aoK();
   
-  public abstract String dxY();
+  public abstract void au(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract boolean dxZ();
+  public abstract boolean c(Object paramObject, Class paramClass);
   
-  public abstract boolean dy(Object paramObject);
+  public abstract boolean dH(Object paramObject);
   
-  public abstract boolean dya();
+  public abstract void eW(String paramString, int paramInt);
   
-  public abstract byte[] dye();
+  public abstract String exG();
   
-  public abstract byte[] dyf();
+  public abstract boolean exH();
   
-  public abstract boolean dyg();
+  public abstract boolean exI();
   
-  public abstract byte[] dyh();
+  public abstract byte[] exJ();
   
-  public abstract boolean dyi();
+  public abstract byte[] exK();
   
-  public abstract String dyj();
+  public abstract boolean exL();
   
-  public abstract String dyk();
+  public abstract byte[] exM();
   
-  public abstract String dyl();
+  public abstract boolean exN();
   
-  public abstract com.tencent.mm.normsg.a dym();
+  public abstract String exO();
   
-  public abstract com.tencent.mm.normsgext.a dyn();
+  public abstract String exP();
   
-  public abstract boolean e(Object paramObject, Class paramClass);
+  public abstract String exQ();
   
-  public abstract void iu(String paramString1, String paramString2);
+  public abstract com.tencent.mm.normsg.a exR();
   
-  public abstract String pq(boolean paramBoolean);
+  public abstract com.tencent.mm.normsgext.a exS();
+  
+  public abstract void exT();
+  
+  public abstract void jf(String paramString1, String paramString2);
+  
+  public abstract String sv(boolean paramBoolean);
+  
+  public abstract void sw(boolean paramBoolean);
 }
 
 

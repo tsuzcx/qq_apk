@@ -1,63 +1,64 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.bw.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.aow;
 import com.tencent.mm.protocal.protobuf.aox;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.azz;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.l;
+import kotlin.o;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetFeedRelList;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "feedId", "", "nonceId", "", "relatedListScene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getFeedId", "()J", "getNonceId", "()Ljava/lang/String;", "getRelatedListScene", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListReq;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getFeedRelList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderBatchGetObjectAsyncLoadInfoRequest;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderBatchGetObjectAsyncLoadInfoResponse;", "objectIds", "", "Lkotlin/Pair;", "", "", "scene", "", "(Ljava/util/List;I)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderBatchGetObjectAsyncLoadInfoRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class f
-  extends w<aox>
+  extends an<aox>
 {
   private final String TAG;
-  private final long duw;
-  private aow rPY;
-  private final String rPZ;
-  private final int rQa;
-  private b rr;
+  private aow tsN;
   
-  public f(long paramLong, String paramString, arn paramarn)
+  public f(List<o<Long, String>> paramList, int paramInt)
   {
-    super(paramarn);
-    AppMethodBeat.i(201446);
-    this.duw = paramLong;
-    this.rPZ = paramString;
-    this.rQa = 5;
-    this.TAG = "Finder.CgiFinderGetFeedRelList";
-    this.rPY = new aow();
-    paramString = this.rPY;
-    v localv = v.rRb;
-    paramString.GEg = v.a(paramarn);
-    this.rPY.rRn = this.duw;
-    this.rPY.objectNonceId = this.rPZ;
-    this.rPY.scene = this.rQa;
-    paramString = new b.a();
-    paramString.c((a)this.rPY);
-    paramarn = new aox();
-    paramarn.setBaseResponse(new BaseResponse());
-    paramarn.getBaseResponse().ErrMsg = new cxn();
-    paramString.d((a)paramarn);
-    paramString.DN("/cgi-bin/micromsg-bin/findergetrelatedlist");
-    paramString.oS(3688);
-    paramString = paramString.aDS();
-    p.g(paramString, "builder.buildInstance()");
-    this.rr = paramString;
-    c(this.rr);
-    ae.i(this.TAG, "init feedId:" + this.duw + ", relatedListScene:" + this.rQa);
-    AppMethodBeat.o(201446);
+    AppMethodBeat.i(242208);
+    this.TAG = "Finder.CgiFinderBatchGetObjectAsyncLoadInfoRequest";
+    this.tsN = new aow();
+    Object localObject1 = this.tsN;
+    Object localObject2 = am.tuw;
+    ((aow)localObject1).LAI = am.cXY();
+    localObject1 = new LinkedList();
+    localObject2 = ((Iterable)paramList).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      o localo = (o)((Iterator)localObject2).next();
+      azz localazz = new azz();
+      localazz.object_id = ((Number)localo.first).longValue();
+      localazz.object_nonce_id = ((String)localo.second);
+      ((LinkedList)localObject1).add(localazz);
+    }
+    Log.i(this.TAG, "init idList " + ((LinkedList)localObject1).size() + " objectIds: " + paramList.size());
+    this.tsN.LAU = ((LinkedList)localObject1);
+    this.tsN.scene = paramInt;
+    paramList = new d.a();
+    paramList.c((a)this.tsN);
+    localObject1 = new aox();
+    ((aox)localObject1).setBaseResponse(new BaseResponse());
+    ((aox)localObject1).getBaseResponse().ErrMsg = new dqi();
+    paramList.d((a)localObject1);
+    paramList.MB("/cgi-bin/micromsg-bin/finderbatchgetobjectasyncloadinfo");
+    paramList.sG(6499);
+    c(paramList.aXF());
+    Log.i(this.TAG, "init");
+    AppMethodBeat.o(242208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.f
  * JD-Core Version:    0.7.0.1
  */

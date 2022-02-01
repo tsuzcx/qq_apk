@@ -1,24 +1,43 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.cgi.au;
-import com.tencent.mm.plugin.finder.cgi.au.a;
-import com.tencent.mm.protocal.protobuf.aqc;
-import d.l;
+import com.tencent.mm.plugin.finder.cgi.bx;
+import com.tencent.mm.plugin.finder.cgi.bx.a;
+import com.tencent.mm.plugin.i.a.ai;
+import com.tencent.mm.plugin.i.a.r;
+import com.tencent.mm.protocal.protobuf.ayu;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModMessageSetting;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderMessageMuteSetting;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModMsgMuteSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyMessageMuteSetting", "ifOpen", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModBlockPosterService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModBlockPoster;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modBlockPoster", "finderUserName", "block", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "plugin-finder_release"})
 public final class b
-  extends h<aqc>
-  implements com.tencent.mm.plugin.i.a.h
+  extends k<ayu>
+  implements r
 {
-  private final String TAG = "Finder.FinderModMessageSetting";
+  private final String TAG = "Finder.FinderModBloclPosterSetting";
+  
+  public final void a(String paramString, boolean paramBoolean, ai<ayu> paramai)
+  {
+    AppMethodBeat.i(242643);
+    p.h(paramString, "finderUserName");
+    ayu localayu = new ayu();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localayu.opType = i;
+      localayu.finderUsername = paramString;
+      a(localayu, paramai, false);
+      AppMethodBeat.o(242643);
+      return;
+    }
+  }
   
   public final int getCmdId()
   {
-    AppMethodBeat.i(201664);
-    au.a locala = au.rRY;
-    int i = au.cAf();
-    AppMethodBeat.o(201664);
+    AppMethodBeat.i(242641);
+    bx.a locala = bx.tvW;
+    int i = bx.cYX();
+    AppMethodBeat.o(242641);
     return i;
   }
   
@@ -26,24 +45,10 @@ public final class b
   {
     return this.TAG;
   }
-  
-  public final void lL(boolean paramBoolean)
-  {
-    AppMethodBeat.i(201666);
-    aqc localaqc = new aqc();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localaqc.opType = i;
-      a(localaqc, null);
-      AppMethodBeat.o(201666);
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.oplog.b
  * JD-Core Version:    0.7.0.1
  */

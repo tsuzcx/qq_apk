@@ -1,63 +1,65 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.exdevice.i.b;
 import com.tencent.mm.plugin.exdevice.i.c;
 import com.tencent.mm.plugin.exdevice.service.f.a;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.protocal.protobuf.bob;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.protocal.protobuf.lk;
-import com.tencent.mm.protocal.protobuf.ll;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cat;
+import com.tencent.mm.protocal.protobuf.cau;
+import com.tencent.mm.protocal.protobuf.mb;
+import com.tencent.mm.protocal.protobuf.mc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 
 public final class l
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private com.tencent.mm.ak.f callback;
-  private com.tencent.mm.ak.b rr;
+  private i callback;
+  private com.tencent.mm.ak.d rr;
   
   public l(String paramString, int paramInt)
   {
     AppMethodBeat.i(23383);
     this.callback = null;
     this.rr = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new lk();
-    ((b.a)localObject).hQG = new ll();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bindharddevice";
-    ((b.a)localObject).funcId = 536;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (lk)this.rr.hQD.hQJ;
-    ((lk)localObject).FVm = bu.nullAsNil(paramString);
-    ((lk)localObject).FVR = bu.o(Integer.valueOf(paramInt));
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new mb();
+    ((d.a)localObject).iLO = new mc();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/bindharddevice";
+    ((d.a)localObject).funcId = 536;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (mb)this.rr.iLK.iLR;
+    ((mb)localObject).KOX = Util.nullAsNil(paramString);
+    ((mb)localObject).KPC = Util.nullAsNil(Integer.valueOf(paramInt));
     AppMethodBeat.o(23383);
   }
   
-  public final ll cmC()
+  public final mc cKE()
   {
-    if ((this.rr != null) && (this.rr.hQE.hQJ != null)) {
-      return (ll)this.rr.hQE.hQJ;
+    if ((this.rr != null) && (this.rr.iLL.iLR != null)) {
+      return (mc)this.rr.iLL.iLR;
     }
     return null;
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(23385);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(23385);
     return i;
   }
@@ -67,57 +69,57 @@ public final class l
     return 536;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23384);
-    ae.i("MicroMsg.exdevice.NetSceneBindHardDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    Log.i("MicroMsg.exdevice.NetSceneBindHardDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     label290:
     long l;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramArrayOfByte = cmC();
-      ae.i("MicroMsg.exdevice.NetSceneBindHardDevice", "hardDevice : DeviceIdServer = %s, DeviceType = %s", new Object[] { paramArrayOfByte.FVS.nIM, paramArrayOfByte.FVS.FSh });
-      String str1 = paramArrayOfByte.FVT.FRz;
-      String str2 = paramArrayOfByte.FVT.HaX;
-      String str3 = paramArrayOfByte.FVT.FVh;
-      String str4 = paramArrayOfByte.FVT.HaY;
-      paramInt1 = paramArrayOfByte.FVT.HaZ;
-      if (paramArrayOfByte.FNv != 0) {
+      paramArrayOfByte = cKE();
+      Log.i("MicroMsg.exdevice.NetSceneBindHardDevice", "hardDevice : DeviceIdServer = %s, DeviceType = %s", new Object[] { paramArrayOfByte.KPD.oTH, paramArrayOfByte.KPD.KLO });
+      String str1 = paramArrayOfByte.KPE.KLg;
+      String str2 = paramArrayOfByte.KPE.MfY;
+      String str3 = paramArrayOfByte.KPE.KOS;
+      String str4 = paramArrayOfByte.KPE.MfZ;
+      paramInt1 = paramArrayOfByte.KPE.Mga;
+      if (paramArrayOfByte.KHa != 0) {
         break label464;
       }
-      paramq = "sync";
-      ae.i("MicroMsg.exdevice.NetSceneBindHardDevice", "hardDeviceAttr : AuthKey = %s, BrandName = %s, Mac = %s, connProto = %s, ConnStrategy = %s, bindFlag = %s", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt1), paramq });
+      params = "sync";
+      Log.i("MicroMsg.exdevice.NetSceneBindHardDevice", "hardDeviceAttr : AuthKey = %s, BrandName = %s, Mac = %s, connProto = %s, ConnStrategy = %s, bindFlag = %s", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt1), params });
       paramInt1 = 0;
-      if (ad.cmJ().fJ(paramArrayOfByte.FVT.HaX, paramArrayOfByte.FVS.nIM) == null) {
+      if (ad.cKL().gc(paramArrayOfByte.KPE.MfY, paramArrayOfByte.KPD.oTH) == null) {
         break label472;
       }
-      boolean bool = ad.cmJ().fK(paramArrayOfByte.FVS.nIM, paramArrayOfByte.FVT.HaX);
-      ae.i("MicroMsg.exdevice.NetSceneBindHardDevice", "delete local deviceinfo : %s, ret : %b", new Object[] { paramArrayOfByte.FVT.HaX, Boolean.valueOf(bool) });
+      boolean bool = ad.cKL().gd(paramArrayOfByte.KPD.oTH, paramArrayOfByte.KPE.MfY);
+      Log.i("MicroMsg.exdevice.NetSceneBindHardDevice", "delete local deviceinfo : %s, ret : %b", new Object[] { paramArrayOfByte.KPE.MfY, Boolean.valueOf(bool) });
       if (bool) {
         paramInt1 = 1;
       }
-      paramq = new com.tencent.mm.plugin.exdevice.i.b();
-      f.a(paramq, paramArrayOfByte.FVS, paramArrayOfByte.FVT);
-      paramq.field_url = "";
-      paramArrayOfByte = u.cnk().uU(paramq.field_mac);
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.dqB == 2))
+      params = new b();
+      f.a(params, paramArrayOfByte.KPD, paramArrayOfByte.KPE);
+      params.field_url = "";
+      paramArrayOfByte = u.cLx().CY(params.field_mac);
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.dHO == 2))
       {
-        ae.i("MicroMsg.exdevice.NetSceneBindHardDevice", "before do bind netscene, stop the channel now");
-        ad.cmQ();
-        d.uI(paramq.field_mac);
-        paramArrayOfByte = u.cnk();
-        l = paramq.field_mac;
-        if (!paramArrayOfByte.qmG.containsKey(Long.valueOf(l))) {
+        Log.i("MicroMsg.exdevice.NetSceneBindHardDevice", "before do bind netscene, stop the channel now");
+        ad.cKS();
+        d.CM(params.field_mac);
+        paramArrayOfByte = u.cLx();
+        l = params.field_mac;
+        if (!paramArrayOfByte.rDC.containsKey(Long.valueOf(l))) {
           break label477;
         }
-        paramArrayOfByte.qmG.remove(Long.valueOf(l));
-        ae.i("MicroMsg.exdevice.ExdeviceInfoManager", "remove the device from map : %d", new Object[] { Long.valueOf(l) });
+        paramArrayOfByte.rDC.remove(Long.valueOf(l));
+        Log.i("MicroMsg.exdevice.ExdeviceInfoManager", "remove the device from map : %d", new Object[] { Long.valueOf(l) });
       }
       label430:
       if (paramInt1 == 0) {
         break label501;
       }
-      ad.cmJ().insert(paramq);
+      ad.cKL().insert(params);
     }
     for (;;)
     {
@@ -125,22 +127,22 @@ public final class l
       AppMethodBeat.o(23384);
       return;
       label464:
-      paramq = "async";
+      params = "async";
       break;
       label472:
       paramInt1 = 1;
       break label290;
       label477:
-      ae.i("MicroMsg.exdevice.ExdeviceInfoManager", "device id not contains in the map : %d", new Object[] { Long.valueOf(l) });
+      Log.i("MicroMsg.exdevice.ExdeviceInfoManager", "device id not contains in the map : %d", new Object[] { Long.valueOf(l) });
       break label430;
       label501:
-      ad.cmJ().e(paramq);
+      ad.cKL().e(params);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,49 @@
 package com.tencent.mm.plugin.shake.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.protocal.protobuf.ddp;
-import com.tencent.mm.protocal.protobuf.ddq;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dwt;
+import com.tencent.mm.protocal.protobuf.dwu;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  private f callback;
-  private final b rr;
-  e zcy;
+  e Dhq;
+  private i callback;
+  private final com.tencent.mm.ak.d rr;
   
   public c(float paramFloat1, float paramFloat2, int paramInt, String paramString)
   {
     AppMethodBeat.i(28185);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new ddp();
-    ((b.a)localObject).hQG = new ddq();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/shakecard";
-    ((b.a)localObject).funcId = 1250;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (ddp)this.rr.hQD.hQJ;
-    ((ddp)localObject).dzE = paramFloat2;
-    ((ddp)localObject).dBu = paramFloat1;
-    ((ddp)localObject).scene = paramInt;
-    ((ddp)localObject).HLf = paramString;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dwt();
+    ((d.a)localObject).iLO = new dwu();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/shakecard";
+    ((d.a)localObject).funcId = 1250;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dwt)this.rr.iLK.iLR;
+    ((dwt)localObject).latitude = paramFloat2;
+    ((dwt)localObject).dTj = paramFloat1;
+    ((dwt)localObject).scene = paramInt;
+    ((dwt)localObject).MWO = paramString;
     AppMethodBeat.o(28185);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(28186);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(28186);
     return i;
   }
@@ -55,35 +53,35 @@ public final class c
     return 1250;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28187);
-    ae.i("MicroMsg.NetSceneShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
+    Log.i("MicroMsg.NetSceneShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ddq)this.rr.hQE.hQJ;
-      if (paramq != null)
+      params = (dwu)this.rr.iLL.iLR;
+      if (params != null)
       {
-        this.zcy = new e();
-        this.zcy.oGc = paramq.oGc;
-        this.zcy.oEo = paramq.oEo;
-        this.zcy.dJc = paramq.dJc;
-        this.zcy.title = paramq.title;
-        this.zcy.oEp = paramq.oEp;
-        this.zcy.oEq = paramq.oEq;
-        this.zcy.oFG = paramq.oFG;
-        this.zcy.hCp = paramq.hCp;
-        this.zcy.hDr = paramq.hDr;
-        this.zcy.zcz = paramq.zcz;
-        this.zcy.zcC = paramq.zcC;
-        this.zcy.zcD = paramq.zcD;
-        this.zcy.zcE = paramq.zcE;
-        this.zcy.zcF = paramq.zcF;
-        this.zcy.zcG = paramq.zcG;
-        this.zcy.oEs = paramq.oEs;
-        this.zcy.zcH = paramq.zcH;
-        this.zcy.zcI = paramq.zcI;
-        m.dSr().zcB = this.zcy.zcG;
+        this.Dhq = new e();
+        this.Dhq.pTI = params.pTI;
+        this.Dhq.pRX = params.pRX;
+        this.Dhq.eaP = params.eaP;
+        this.Dhq.title = params.title;
+        this.Dhq.pRY = params.pRY;
+        this.Dhq.pRZ = params.pRZ;
+        this.Dhq.gTG = params.gTG;
+        this.Dhq.iwv = params.iwv;
+        this.Dhq.ixw = params.ixw;
+        this.Dhq.Dhr = params.Dhr;
+        this.Dhq.Dhu = params.Dhu;
+        this.Dhq.Dhv = params.Dhv;
+        this.Dhq.Dhw = params.Dhw;
+        this.Dhq.Dhx = params.Dhx;
+        this.Dhq.Dhy = params.Dhy;
+        this.Dhq.pSb = params.pSb;
+        this.Dhq.Dhz = params.Dhz;
+        this.Dhq.DhA = params.DhA;
+        com.tencent.mm.plugin.shake.b.m.eUs().Dht = this.Dhq.Dhy;
       }
     }
     for (;;)
@@ -91,19 +89,19 @@ public final class c
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(28187);
       return;
-      this.zcy = new e();
-      this.zcy.oGc = 3;
-      this.zcy.zcG = m.dSr().zcB;
+      this.Dhq = new e();
+      this.Dhq.pTI = 3;
+      this.Dhq.Dhy = com.tencent.mm.plugin.shake.b.m.eUs().Dht;
       continue;
-      this.zcy = new e();
-      this.zcy.oGc = 3;
-      this.zcy.zcG = m.dSr().zcB;
+      this.Dhq = new e();
+      this.Dhq.pTI = 3;
+      this.Dhq.Dhy = com.tencent.mm.plugin.shake.b.m.eUs().Dht;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/je9" android:background="@drawable/cqw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:minHeight="106.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="106.0dip" android:minHeight="106.0dip">
+        <ImageView android:id="@id/a1u" android:layout_width="217.0dip" android:layout_height="106.0dip" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/a0k" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="7.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff4c4c4c" android:id="@id/a0t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/a0k" android:layout_alignTop="@id/a0k" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:id="@id/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/iw1" android:layout_below="@id/a0t" android:layout_alignLeft="@id/a0t" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="54.0dip" android:layout_below="@id/a0k" android:layout_alignParentLeft="true" android:layout_alignWithParentIfMissing="true">
+            <ImageView android:id="@id/a1m" android:layout_width="43.0dip" android:layout_height="wrap_content" android:src="@drawable/fc" />
+            <ImageView android:id="@id/a1n" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/fc" />
+            <ImageView android:id="@id/a1o" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/fc" />
+            <TextView android:textSize="26.0dip" android:textColor="@color/ag2" android:gravity="left" android:id="@id/a1l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
+        </LinearLayout>
+        <TextView android:id="@id/a1k" android:background="@drawable/cr5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/a1v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.5dip" android:layout_marginRight="0.5dip" android:src="@raw/bankcard_new" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <TextView android:textColor="#4c000000" android:id="@id/a1f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/idr" android:layout_alignTop="@id/a0k" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/a1h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="54.0dip" android:layout_alignParentBottom="true">
+        <View android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="1.0dip" android:alpha="0.1" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textColor="#ffe2e2e2" android:id="@id/a13" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:alpha="0.6" />
+            <ImageView android:layout_width="7.0dip" android:layout_height="12.0dip" android:layout_marginRight="12.0dip" android:src="@raw/aa_right_arrow" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

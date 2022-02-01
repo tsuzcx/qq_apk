@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/ge"
+<LinearLayout android:orientation="vertical" android:background="@drawable/aij" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/akx" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/o5" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/akx" style="@style/gp">
-        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/ala" android:background="@drawable/l8" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:id="@id/aki" android:text="{source}" style="@style/gf" />
-                <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-                <TextView android:id="@id/ajy" android:layout_marginRight="50.0dip" android:text="@string/asn" style="@style/gf" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/c" android:textColor="#ff555555" android:gravity="center" android:id="@id/ap9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hv" android:layout_marginBottom="@dimen/hw" android:text="@string/ao3" />
+</LinearLayout>

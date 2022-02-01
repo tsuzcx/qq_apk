@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>fangda</title>
+    <g id="fangda" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.8">
+        <g id="放大" transform="translate(17.000000, 15.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <polygon id="矩形-2备份-2" transform="translate(8.079505, 31.920495) scale(-1, 1) rotate(90.000000) translate(-8.079505, -31.920495) " points="15.25 24.75 15.25 39 10.75 39 10.75 32.43 4.09099026 39.0909903 0.909009742 35.9090097 7.568 29.25 1 29.25 1 24.75"></polygon>
+            <polygon id="矩形-2备份-2" transform="translate(32.079505, 31.920495) rotate(90.000000) translate(-32.079505, -31.920495) " points="39.25 24.75 39.25 39 34.75 39 34.75 32.43 28.0909903 39.0909903 24.9090097 35.9090097 31.569 29.249 25 29.25 25 24.75"></polygon>
+            <polygon id="矩形-2备份-2" transform="translate(8.079505, 7.920495) scale(-1, -1) rotate(90.000000) translate(-8.079505, -7.920495) " points="15.25 0.75 15.25 15 10.75 15 10.75 8.43 4.09099026 15.0909903 0.909009742 11.9090097 7.57 5.249 1 5.25 1 0.75"></polygon>
+            <polygon id="矩形-2备份-2" transform="translate(32.079505, 7.920495) scale(1, -1) rotate(90.000000) translate(-32.079505, -7.920495) " points="39.25 0.75 39.25 15 34.75 15 34.75 8.43 28.0909903 15.0909903 24.9090097 11.9090097 31.569 5.25 25 5.25 25 0.75"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/aae" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.plugin.masssend.ui.MassSendLayout android:id="@id/fay" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:id="@id/atd" android:background="@drawable/aac" android:layout_width="48.0dip" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/c5" android:layout_centerHorizontal="true">
-        <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bak" android:rotation="-90.0" />
-    </FrameLayout>
-    <com.tencent.mm.emoji.panel.EmojiPanelRecyclerView android:id="@id/bjp" android:background="@color/a7c" android:paddingBottom="0.0dip" android:fadingEdge="vertical" android:fadingEdgeLength="50.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="0.0dip" android:layout_below="@id/atd" android:requiresFadingEdge="vertical" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/j4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/fat" android:paddingLeft="@dimen/jv" android:paddingTop="@dimen/jv" android:paddingRight="@dimen/jv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/fau" android:paddingLeft="@dimen/jv" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/jv" android:paddingBottom="@dimen/jv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.2" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tencent.mm.pluginsdk.ui.chat.ChatFooter android:orientation="vertical" android:id="@id/ftn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.tencent.mm.plugin.masssend.ui.MassSendLayout>

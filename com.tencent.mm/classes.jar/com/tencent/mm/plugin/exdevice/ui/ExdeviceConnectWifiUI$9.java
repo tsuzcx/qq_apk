@@ -12,13 +12,13 @@ final class ExdeviceConnectWifiUI$9
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(179593);
-    this.qqc.finish();
+    this.rHj.finish();
     AppMethodBeat.o(179593);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectWifiUI.9
  * JD-Core Version:    0.7.0.1
  */

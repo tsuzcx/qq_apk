@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout android:background="@color/rv" android:paddingTop="1.0px" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/aa3" />
+    <com.tencent.mm.plugin.finder.video.FinderFullSeekBarLayout android:id="@id/dc5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
+    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/clr" android:background="@drawable/vx" android:paddingTop="@dimen/c1" android:paddingBottom="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aaa" />
+        <com.tencent.mm.plugin.finder.view.FinderFeedLiveNoticeView android:id="@id/cly" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" layout="@layout/aa1" />
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" layout="@layout/aa4" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" layout="@layout/aa2" />
+        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" layout="@layout/aa5" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" layout="@layout/aa6" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" layout="@layout/aa8" />
+        <include android:visibility="gone" layout="@layout/aby" />
+        <ViewStub android:layout_gravity="bottom|center" android:id="@id/fku" android:focusable="false" android:clickable="false" android:layout="@layout/ah0" android:layout_width="fill_parent" android:layout_height="375.0dip" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.finder.music.FinderImgFeedMusicTag android:id="@id/a38" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+    <include android:id="@id/d33" layout="@layout/ajg" />
+    <com.tencent.mm.plugin.finder.view.indictor.FinderMediaGestureIndicator2 android:layout_gravity="end" android:id="@id/duz" android:layout_width="wrap_content" android:layout_height="50.0dip" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end|center|top" android:id="@id/jsx" android:padding="@dimen/cb" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_more" app:iconColor="@color/v9" />
+    <ViewStub android:layout_gravity="end|bottom|center" android:id="@id/d38" android:layout="@layout/ajl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="14.0dip" />
+    <FrameLayout android:id="@id/e32" android:background="@color/v0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+    <ViewStub android:layout_gravity="center|top" android:id="@id/a2" android:layout="@layout/d" android:layout_width="fill_parent" android:layout_height="@dimen/c1" />
+</com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout>

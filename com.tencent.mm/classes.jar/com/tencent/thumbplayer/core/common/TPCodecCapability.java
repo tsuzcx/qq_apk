@@ -1,6 +1,9 @@
 package com.tencent.thumbplayer.core.common;
 
-public abstract interface TPCodecCapability {}
+public abstract interface TPCodecCapability
+{
+  public static final int DEFAULT_FRAMERATE = 30;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

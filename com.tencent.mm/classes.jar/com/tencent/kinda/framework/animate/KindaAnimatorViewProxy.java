@@ -5,7 +5,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.kinda.framework.widget.base.MMKView;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -231,7 +231,7 @@ public class KindaAnimatorViewProxy
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
       }
     }
     if ((paramObject instanceof KView))
@@ -344,7 +344,7 @@ public class KindaAnimatorViewProxy
     }
     catch (InvocationTargetException paramObject)
     {
-      ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+      Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       AppMethodBeat.o(18311);
       return null;
     }
@@ -352,14 +352,14 @@ public class KindaAnimatorViewProxy
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
     catch (IllegalArgumentException paramObject)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
   }
@@ -371,7 +371,7 @@ public class KindaAnimatorViewProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaAnimatorViewProxy
  * JD-Core Version:    0.7.0.1
  */

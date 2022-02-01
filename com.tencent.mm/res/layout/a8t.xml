@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/jy"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="10.0dip" android:id="@id/c85" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="toast" />
-    <Button android:textSize="10.0dip" android:id="@id/c86" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="alert" />
+    <ImageView android:id="@id/cb3" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/bca" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/p6" android:ellipsize="end" android:id="@id/ccm" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="{name}" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/p7" android:ellipsize="end" android:gravity="center|right|top" android:id="@id/cdl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{time}" android:singleLine="true" />
 </LinearLayout>

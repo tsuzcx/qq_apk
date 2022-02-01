@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.game.f.a;
 import android.opengl.EGLContext;
 import com.tencent.mm.media.j.a;
 import com.tencent.mm.media.widget.camerarecordview.preview.f;
-import d.g.a.b;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.x;
 
 public abstract interface d
   extends f
@@ -23,7 +23,7 @@ public abstract interface d
   
   public abstract void setOnSurfaceTextureAvailableDelegate(a parama);
   
-  public abstract void setOnTextureDrawFinishDelegate(b<com.tencent.mm.media.g.d, z> paramb);
+  public abstract void setOnTextureDrawFinishDelegate(b<com.tencent.mm.media.g.d, x> paramb);
   
   public abstract void setPreviewRenderer(a parama);
   
@@ -31,7 +31,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.a.d
  * JD-Core Version:    0.7.0.1
  */

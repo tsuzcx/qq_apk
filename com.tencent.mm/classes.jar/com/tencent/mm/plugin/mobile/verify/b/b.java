@@ -10,184 +10,186 @@ import android.net.NetworkRequest.Builder;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.mobile.verify.PluginMobileVerify;
 import com.tencent.mm.plugin.mobile.verify.a.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public final class b
   extends a
 {
-  private int hRl;
+  private int iMt;
   private String url;
-  private a.a wkh;
-  private Network wki;
-  private ConnectivityManager.NetworkCallback wkj;
+  private a.a zEG;
+  private Network zEH;
+  private ConnectivityManager.NetworkCallback zEI;
   
   public b(String paramString1, String paramString2)
   {
     super(paramString1);
-    AppMethodBeat.i(221136);
-    this.hRl = 0;
-    this.wkj = new ConnectivityManager.NetworkCallback()
+    AppMethodBeat.i(224131);
+    this.iMt = 0;
+    this.zEI = new ConnectivityManager.NetworkCallback()
     {
       public final void onAvailable(Network paramAnonymousNetwork)
       {
-        AppMethodBeat.i(221134);
+        AppMethodBeat.i(224129);
         super.onAvailable(paramAnonymousNetwork);
-        ae.i("MicroMsg.GetMobileToken", "network %s is available", new Object[] { ((ConnectivityManager)ak.getContext().getSystemService("connectivity")).getNetworkInfo(paramAnonymousNetwork).getTypeName() });
+        Log.i("MicroMsg.GetMobileToken", "network %s is available", new Object[] { ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getNetworkInfo(paramAnonymousNetwork).getTypeName() });
         b.a(b.this, paramAnonymousNetwork);
         b.a(b.this);
-        com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 7);
-        AppMethodBeat.o(221134);
+        h.CyF.dN(1360, 7);
+        AppMethodBeat.o(224129);
       }
       
       public final void onUnavailable()
       {
-        AppMethodBeat.i(221135);
+        AppMethodBeat.i(224130);
         super.onUnavailable();
-        ae.i("MicroMsg.GetMobileToken", "network %s is unavailable", new Object[] { ((ConnectivityManager)ak.getContext().getSystemService("connectivity")).getNetworkInfo(b.b(b.this)).getTypeName() });
+        Log.i("MicroMsg.GetMobileToken", "network %s is unavailable", new Object[] { ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getNetworkInfo(b.b(b.this)).getTypeName() });
         b.a(b.this, null);
-        com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 6);
-        AppMethodBeat.o(221135);
+        h.CyF.dN(1360, 6);
+        AppMethodBeat.o(224130);
       }
     };
     this.url = paramString2;
-    this.wkh = ((PluginMobileVerify)com.tencent.mm.kernel.g.ad(PluginMobileVerify.class)).getCallback(paramString1);
-    AppMethodBeat.o(221136);
+    this.zEG = ((PluginMobileVerify)g.ah(PluginMobileVerify.class)).getCallback(paramString1);
+    AppMethodBeat.o(224131);
   }
   
-  private void arW(String paramString)
+  private void aFq(String paramString)
   {
-    AppMethodBeat.i(221138);
-    ae.i("MicroMsg.GetMobileToken", "callback %s", new Object[] { paramString });
-    if (!bu.isNullOrNil(paramString)) {
-      com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 8);
+    AppMethodBeat.i(224133);
+    Log.i("MicroMsg.GetMobileToken", "callback %s", new Object[] { paramString });
+    if (!Util.isNullOrNil(paramString)) {
+      h.CyF.dN(1360, 8);
     }
     for (;;)
     {
-      if (this.wkh != null)
+      if (this.zEG != null)
       {
         Bundle localBundle = new Bundle();
         localBundle.putString("session", this.sessionId);
         localBundle.putString("token", paramString);
-        this.wkh.z(localBundle);
-        this.wkh = null;
+        this.zEG.F(localBundle);
+        this.zEG = null;
       }
-      AppMethodBeat.o(221138);
+      AppMethodBeat.o(224133);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 9);
+      h.CyF.dN(1360, 9);
     }
-  }
-  
-  private void drm()
-  {
-    AppMethodBeat.i(221139);
-    try
-    {
-      ae.i("MicroMsg.GetMobileToken", "use mobile network directly");
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.url).openConnection();
-      localHttpURLConnection.setConnectTimeout(5000);
-      localHttpURLConnection.setReadTimeout(5000);
-      localHttpURLConnection.connect();
-      e(localHttpURLConnection);
-      AppMethodBeat.o(221139);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ae.e("MicroMsg.GetMobileToken", "http exception:%s", new Object[] { localException.getMessage() });
-      arW(null);
-      AppMethodBeat.o(221139);
-    }
-  }
-  
-  private void drn()
-  {
-    AppMethodBeat.i(221140);
-    try
-    {
-      ae.i("MicroMsg.GetMobileToken", "select mobile network");
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)this.wki.openConnection(new URL(this.url));
-      localHttpURLConnection.setConnectTimeout(5000);
-      localHttpURLConnection.setReadTimeout(5000);
-      localHttpURLConnection.connect();
-      e(localHttpURLConnection);
-      AppMethodBeat.o(221140);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ae.e("MicroMsg.GetMobileToken", "http exception:%s", new Object[] { localException.getMessage() });
-      arW(null);
-      AppMethodBeat.o(221140);
-    }
-  }
-  
-  private void dro()
-  {
-    AppMethodBeat.i(221141);
-    com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 5);
-    ae.i("MicroMsg.GetMobileToken", "request mobile network");
-    Object localObject = new NetworkRequest.Builder();
-    ((NetworkRequest.Builder)localObject).addCapability(12);
-    ((NetworkRequest.Builder)localObject).addTransportType(0);
-    localObject = ((NetworkRequest.Builder)localObject).build();
-    ((ConnectivityManager)ak.getContext().getSystemService("connectivity")).requestNetwork((NetworkRequest)localObject, this.wkj);
-    AppMethodBeat.o(221141);
-  }
-  
-  private void drp()
-  {
-    AppMethodBeat.i(221142);
-    if (az.isMobile(ak.getContext()))
-    {
-      com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 2);
-      drm();
-      AppMethodBeat.o(221142);
-      return;
-    }
-    if (this.wki == null)
-    {
-      dro();
-      AppMethodBeat.o(221142);
-      return;
-    }
-    drn();
-    AppMethodBeat.o(221142);
   }
   
   private void e(HttpURLConnection paramHttpURLConnection)
   {
-    AppMethodBeat.i(221143);
+    AppMethodBeat.i(224138);
     int i = paramHttpURLConnection.getResponseCode();
-    ae.i("MicroMsg.GetMobileToken", "httpCode %d, message %s, redirectCount %d", new Object[] { Integer.valueOf(i), paramHttpURLConnection.getResponseMessage(), Integer.valueOf(this.hRl) });
+    Log.i("MicroMsg.GetMobileToken", "httpCode %d, message %s, redirectCount %d", new Object[] { Integer.valueOf(i), paramHttpURLConnection.getResponseMessage(), Integer.valueOf(this.iMt) });
     switch (i)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(221143);
+      AppMethodBeat.o(224138);
       return;
-      arW(f(paramHttpURLConnection));
-      AppMethodBeat.o(221143);
+      aFq(f(paramHttpURLConnection));
+      AppMethodBeat.o(224138);
       return;
-      if (this.hRl < 2)
+      if (this.iMt < 2)
       {
-        this.hRl += 1;
+        this.iMt += 1;
         this.url = paramHttpURLConnection.getHeaderField("location");
-        ae.i("MicroMsg.GetMobileToken", "redirect to url: %s", new Object[] { this.url });
-        drp();
-        AppMethodBeat.o(221143);
+        Log.i("MicroMsg.GetMobileToken", "redirect to url: %s", new Object[] { this.url });
+        elj();
+        AppMethodBeat.o(224138);
         return;
       }
-      ae.i("MicroMsg.GetMobileToken", "redirect exceed %d times", new Object[] { Integer.valueOf(2) });
-      arW("");
+      Log.i("MicroMsg.GetMobileToken", "redirect exceed %d times", new Object[] { Integer.valueOf(2) });
+      aFq("");
     }
+  }
+  
+  private void elg()
+  {
+    AppMethodBeat.i(224134);
+    try
+    {
+      Log.i("MicroMsg.GetMobileToken", "use mobile network directly");
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.url).openConnection();
+      localHttpURLConnection.setConnectTimeout(5000);
+      localHttpURLConnection.setReadTimeout(5000);
+      localHttpURLConnection.connect();
+      e(localHttpURLConnection);
+      AppMethodBeat.o(224134);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.GetMobileToken", "http exception:%s", new Object[] { localException.getMessage() });
+      aFq(null);
+      AppMethodBeat.o(224134);
+    }
+  }
+  
+  private void elh()
+  {
+    AppMethodBeat.i(224135);
+    try
+    {
+      Log.i("MicroMsg.GetMobileToken", "select mobile network");
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)this.zEH.openConnection(new URL(this.url));
+      localHttpURLConnection.setConnectTimeout(5000);
+      localHttpURLConnection.setReadTimeout(5000);
+      localHttpURLConnection.connect();
+      e(localHttpURLConnection);
+      AppMethodBeat.o(224135);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.GetMobileToken", "http exception:%s", new Object[] { localException.getMessage() });
+      aFq(null);
+      AppMethodBeat.o(224135);
+    }
+  }
+  
+  private void eli()
+  {
+    AppMethodBeat.i(224136);
+    h.CyF.dN(1360, 5);
+    Log.i("MicroMsg.GetMobileToken", "request mobile network");
+    Object localObject = new NetworkRequest.Builder();
+    ((NetworkRequest.Builder)localObject).addCapability(12);
+    ((NetworkRequest.Builder)localObject).addTransportType(0);
+    localObject = ((NetworkRequest.Builder)localObject).build();
+    ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).requestNetwork((NetworkRequest)localObject, this.zEI);
+    AppMethodBeat.o(224136);
+  }
+  
+  private void elj()
+  {
+    AppMethodBeat.i(224137);
+    if (NetStatusUtil.isMobile(MMApplicationContext.getContext()))
+    {
+      h.CyF.dN(1360, 2);
+      elg();
+      AppMethodBeat.o(224137);
+      return;
+    }
+    if (this.zEH == null)
+    {
+      eli();
+      AppMethodBeat.o(224137);
+      return;
+    }
+    elh();
+    AppMethodBeat.o(224137);
   }
   
   /* Error */
@@ -245,7 +247,7 @@ public final class b
     //   86: aload_2
     //   87: invokevirtual 277	java/io/IOException:getMessage	()Ljava/lang/String;
     //   90: aastore
-    //   91: invokestatic 153	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   91: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: ldc 250
     //   96: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_0
@@ -300,42 +302,42 @@ public final class b
   
   public final void run()
   {
-    AppMethodBeat.i(221137);
+    AppMethodBeat.i(224132);
     try
     {
-      com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 0);
-      if ((!bu.isNullOrNil(q.getSimCountryIso())) && (az.iZ(ak.getContext())))
+      h.CyF.dN(1360, 0);
+      if ((!Util.isNullOrNil(q.getSimCountryIso())) && (NetStatusUtil.isMobileNetworkOpen(MMApplicationContext.getContext())))
       {
-        drp();
-        AppMethodBeat.o(221137);
+        elj();
+        AppMethodBeat.o(224132);
         return;
       }
-      if (bu.isNullOrNil(q.getSimCountryIso())) {
-        com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 1);
+      if (Util.isNullOrNil(q.getSimCountryIso())) {
+        h.CyF.dN(1360, 1);
       }
       for (;;)
       {
-        ae.w("MicroMsg.GetMobileToken", "get mobile token failed, mobile network is not open");
-        arW(null);
-        AppMethodBeat.o(221137);
+        Log.w("MicroMsg.GetMobileToken", "get mobile token failed, mobile network is not open");
+        aFq(null);
+        AppMethodBeat.o(224132);
         return;
-        if (!az.iZ(ak.getContext())) {
-          com.tencent.mm.plugin.report.service.g.yxI.dD(1360, 3);
+        if (!NetStatusUtil.isMobileNetworkOpen(MMApplicationContext.getContext())) {
+          h.CyF.dN(1360, 3);
         }
       }
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.GetMobileToken", "http exception:%s", new Object[] { localException.getMessage() });
-      arW(null);
-      AppMethodBeat.o(221137);
+      Log.e("MicroMsg.GetMobileToken", "http exception:%s", new Object[] { localException.getMessage() });
+      aFq(null);
+      AppMethodBeat.o(224132);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mobile.verify.b.b
  * JD-Core Version:    0.7.0.1
  */

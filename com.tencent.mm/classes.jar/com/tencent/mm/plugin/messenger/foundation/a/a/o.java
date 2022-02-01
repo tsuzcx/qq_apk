@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.sdk.e.d;
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.storage.IAutoStorage;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.storage.bt;
 
 public abstract interface o
-  extends d<bo>, g
+  extends IAutoStorage<bt>, IStorage
 {}
 
 

@@ -8,45 +8,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.modeltools.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ab
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(final com.tencent.luggage.d.b<g>.a paramb)
   {
     AppMethodBeat.i(78565);
-    final JSONObject localJSONObject = paramb.chh.cgn;
+    final JSONObject localJSONObject = paramb.ctb.csi;
     if (localJSONObject == null)
     {
-      paramb.a("invalid_params", null);
+      paramb.c("invalid_params", null);
       AppMethodBeat.o(78565);
       return;
     }
     Object localObject = localJSONObject.optJSONArray("urls");
     if ((localObject == null) || (((JSONArray)localObject).length() == 0))
     {
-      ae.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
-      paramb.a("invalid_url", null);
+      Log.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
+      paramb.c("invalid_url", null);
       AppMethodBeat.o(78565);
       return;
     }
     localObject = new HashMap();
     ((HashMap)localObject).put("current", localJSONObject.optString("current"));
-    j.a((Map)localObject, ((g)paramb.chg).getWebView());
-    h.a("com.tencent.mm", new IPCString(localJSONObject.toString()), a.class, new d() {});
+    j.a((Map)localObject, ((g)paramb.cta).ITd);
+    h.a(MainProcessIPCService.dkO, new IPCString(localJSONObject.toString()), a.class, new d() {});
     AppMethodBeat.o(78565);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.storage.ca;
 
 public final class yx
-  extends b
+  extends IEvent
 {
-  public a dOS;
-  public b dOT;
+  public a efh;
   
   public yx()
   {
@@ -16,21 +16,21 @@ public final class yx
   
   private yx(byte paramByte)
   {
-    AppMethodBeat.i(91229);
-    this.dOS = new a();
-    this.dOT = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(104422);
+    this.efh = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91229);
+    AppMethodBeat.o(104422);
   }
   
-  public static final class a {}
-  
-  public static final class b {}
+  public static final class a
+  {
+    public ca dCM;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.yx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,54 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import android.view.View;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 
 public abstract class a
 {
-  protected b Kkv;
+  protected b Pwu;
   
   public a(b paramb)
   {
-    this.Kkv = paramb;
+    this.Pwu = paramb;
   }
   
-  public boolean a(k paramk, bv parambv, int paramInt)
+  public boolean a(k paramk, ca paramca, int paramInt)
   {
     return false;
   }
   
-  public final k aeb(int paramInt)
+  public final k amM(int paramInt)
   {
-    if (this.Kkv == null) {
+    if (this.Pwu == null) {
       return null;
     }
-    View localView = this.Kkv.Tq(paramInt);
+    View localView = this.Pwu.abm(paramInt);
     if (localView == null) {
       return null;
     }
     return (k)((View)localView).getTag();
   }
   
-  public final void aec(int paramInt)
+  public final void amN(int paramInt)
   {
-    if (this.Kkv == null) {}
+    if (this.Pwu == null) {}
     View localView;
     do
     {
       return;
-      localView = this.Kkv.Tq(paramInt);
+      localView = this.Pwu.abm(paramInt);
     } while ((localView == null) || (localView.getTag() == null));
-    a((k)localView.getTag(), this.Kkv.adI(paramInt), paramInt);
+    a((k)localView.getTag(), this.Pwu.amt(paramInt), paramInt);
   }
   
   public void detach()
   {
-    this.Kkv = null;
+    this.Pwu = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.a
  * JD-Core Version:    0.7.0.1
  */

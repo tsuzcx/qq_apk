@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bnt;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cak;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public class HoneyPayCardType
   implements Parcelable
 {
   public static final Parcelable.Creator<HoneyPayCardType> CREATOR;
-  public byte[] zr;
+  public byte[] zy;
   
   static
   {
@@ -24,23 +24,23 @@ public class HoneyPayCardType
   protected HoneyPayCardType(Parcel paramParcel)
   {
     AppMethodBeat.i(64642);
-    this.zr = new byte[paramParcel.readInt()];
-    paramParcel.readByteArray(this.zr);
+    this.zy = new byte[paramParcel.readInt()];
+    paramParcel.readByteArray(this.zy);
     AppMethodBeat.o(64642);
   }
   
-  public HoneyPayCardType(bnt parambnt)
+  public HoneyPayCardType(cak paramcak)
   {
     AppMethodBeat.i(64641);
     try
     {
-      this.zr = parambnt.toByteArray();
+      this.zy = paramcak.toByteArray();
       AppMethodBeat.o(64641);
       return;
     }
-    catch (IOException parambnt)
+    catch (IOException paramcak)
     {
-      ae.printErrStackTrace("MicroMsg.HoneyPayCardType", parambnt, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.HoneyPayCardType", paramcak, "", new Object[0]);
       AppMethodBeat.o(64641);
     }
   }
@@ -53,14 +53,14 @@ public class HoneyPayCardType
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(64643);
-    paramParcel.writeInt(this.zr.length);
-    paramParcel.writeByteArray(this.zr);
+    paramParcel.writeInt(this.zy.length);
+    paramParcel.writeByteArray(this.zy);
     AppMethodBeat.o(64643);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.model.HoneyPayCardType
  * JD-Core Version:    0.7.0.1
  */

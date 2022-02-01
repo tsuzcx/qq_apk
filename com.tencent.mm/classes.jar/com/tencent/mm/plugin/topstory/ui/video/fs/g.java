@@ -12,85 +12,85 @@ public class g
   extends h
   implements a
 {
-  public e BOr;
-  public FrameLayout BOs;
+  public e GoY;
+  public FrameLayout GoZ;
   
   public g(View paramView, b paramb)
   {
     super(paramView, paramb);
   }
   
-  public final void TP(int paramInt)
+  public final void acf(int paramInt)
   {
     AppMethodBeat.i(126328);
-    a(this.BLL, this.BLL.dkN(), this.BOr, paramInt);
+    a(this.Gmr, this.Gmr.eeF(), this.GoY, paramInt);
     AppMethodBeat.o(126328);
   }
   
-  public void etN()
+  public final void fU(View paramView)
+  {
+    AppMethodBeat.i(126323);
+    this.GoZ = ((FrameLayout)paramView.findViewById(2131309842));
+    AppMethodBeat.o(126323);
+  }
+  
+  public final int fyz()
+  {
+    AppMethodBeat.i(258728);
+    int i = lR();
+    AppMethodBeat.o(258728);
+    return i;
+  }
+  
+  public void fzj()
   {
     AppMethodBeat.i(126325);
-    if (this.BOr == null)
+    if (this.GoY == null)
     {
-      if (!this.BLL.etp()) {
+      if (!this.Gmr.fyL()) {
         break label133;
       }
-      this.BOr = new k(this.BLL.dkN(), this.BLL, this);
-      this.BOs.removeAllViews();
-      if (!this.BLL.etp()) {
+      this.GoY = new k(this.Gmr.eeF(), this.Gmr, this);
+      this.GoZ.removeAllViews();
+      if (!this.Gmr.fyL()) {
         break label161;
       }
     }
     label133:
     label161:
-    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.BLL.etj().x, this.BLL.etj().y);; localLayoutParams = new FrameLayout.LayoutParams(this.BLL.etj().y, this.BLL.etj().x))
+    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.Gmr.cZM().x, this.Gmr.cZM().y);; localLayoutParams = new FrameLayout.LayoutParams(this.Gmr.cZM().y, this.Gmr.cZM().x))
     {
-      this.BOs.addView(this.BOr, localLayoutParams);
-      this.BOr.a(this.BIY, etc());
+      this.GoZ.addView(this.GoY, localLayoutParams);
+      this.GoY.a(this.GjH, fyz());
       AppMethodBeat.o(126325);
       return;
-      this.BOr = new e(this.BLL.dkN(), this.BLL, this);
+      this.GoY = new e(this.Gmr.eeF(), this.Gmr, this);
       break;
     }
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.video.f etO()
+  public final com.tencent.mm.plugin.topstory.ui.video.f fzk()
   {
-    return this.BOr;
-  }
-  
-  public final int etc()
-  {
-    AppMethodBeat.i(224389);
-    int i = lN();
-    AppMethodBeat.o(224389);
-    return i;
-  }
-  
-  public final void fC(View paramView)
-  {
-    AppMethodBeat.i(126323);
-    this.BOs = ((FrameLayout)paramView.findViewById(2131306411));
-    AppMethodBeat.o(126323);
+    return this.GoY;
   }
   
   public final View getWowView()
   {
     AppMethodBeat.i(126327);
-    View localView = this.BOr.getControlBar().getWowView();
+    View localView = this.GoY.getControlBar().getWowView();
     AppMethodBeat.o(126327);
     return localView;
   }
   
-  public final void sQ(boolean paramBoolean)
+  public final void wu(boolean paramBoolean)
   {
     AppMethodBeat.i(126324);
-    super.sQ(paramBoolean);
-    this.BLL.TF(lN());
-    if (this.BOr.ap(paramBoolean, false))
+    super.wu(paramBoolean);
+    this.Gmr.abV(lR());
+    if (this.GoY.ay(paramBoolean, false))
     {
-      etb();
-      eta();
+      fyy();
+      fyx();
     }
     AppMethodBeat.o(126324);
   }

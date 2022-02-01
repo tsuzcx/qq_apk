@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f43" android:background="@drawable/a31" android:layout_width="fill_parent" android:layout_height="@dimen/ho"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/d4m" android:background="@drawable/b36" android:visibility="gone" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/jn" android:layout_marginRight="@dimen/jn" android:layout_marginBottom="@dimen/jn" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/ho" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/d1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/hhc" android:background="@drawable/ahw" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginRight="@dimen/hv" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/dla" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" />
+    <LinearLayout android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="@dimen/az" android:layout_marginLeft="@dimen/cb">
+        <TextView android:gravity="center|left" android:id="@id/dlc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="180.0dip" android:singleLine="true" style="@style/mp" />
+        <TextView android:textColor="@color/uj" android:gravity="center|left" android:id="@id/dlb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/mn" />
     </LinearLayout>
 </LinearLayout>

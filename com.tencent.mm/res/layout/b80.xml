@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ee4" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/jn" android:src="@raw/media_player_play_btn" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/jv" android:textColor="@color/a6k" android:id="@id/ee6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:text="00:00" android:layout_toRightOf="@id/ee4" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/jv" android:textColor="@color/a6k" android:id="@id/eeb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ha" android:text="00:00" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/eeb" android:layout_toRightOf="@id/ee6" android:layout_centerVertical="true">
-        <ImageView android:layout_gravity="center|left" android:id="@id/een" android:background="@color/zo" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha" />
-        <ImageView android:layout_gravity="center|left" android:id="@id/eeo" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha" />
-        <ImageView android:id="@id/eer" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/h" android:paddingRight="@dimen/h" android:paddingBottom="@dimen/h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:src="@raw/media_player_control_btn" />
-    </FrameLayout>
-</RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/hc" android:id="@id/jsm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="年" />
+        <Button android:textSize="@dimen/hc" android:id="@id/fjm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="月" />
+        <Button android:textSize="@dimen/hc" android:id="@id/bks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="日" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.MMSpinnerDatePicker android:id="@id/ffw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spinnersShown="true" android:calendarViewShown="false" android:datePickerMode="spinner" />
+</LinearLayout>

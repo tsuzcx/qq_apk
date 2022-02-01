@@ -4,11 +4,13 @@ import android.opengl.EGLContext;
 import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
-import com.tencent.liteav.basic.d.b;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.c.b;
+import com.tencent.liteav.basic.c.c;
+import com.tencent.liteav.basic.c.g;
+import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.b.k;
+import com.tencent.liteav.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.trtc.TRTCCloudDef.TRTCTexture;
 import com.tencent.trtc.TRTCCloudDef.TRTCVideoFrame;
@@ -17,23 +19,17 @@ import java.util.concurrent.CountDownLatch;
 public class TRTCCustomTextureUtil
 {
   private static final String TAG = "TRTCCustomTextureUtil";
-  private com.tencent.liteav.c mCaptureAndEnc;
-  private Object mEGLContext;
-  private HandlerThread mEGLThread;
-  private g mGLThreadHandler;
-  private k mI4202RGBAFilter;
+  private d mCaptureAndEnc;
+  private Object mEGLContext = null;
+  private HandlerThread mEGLThread = null;
+  private g mGLThreadHandler = null;
+  private k mI4202RGBAFilter = null;
   private long mLastGLThreadId;
   private h mRotateFilter;
   
-  public TRTCCustomTextureUtil(com.tencent.liteav.c paramc)
+  public TRTCCustomTextureUtil(d paramd)
   {
-    AppMethodBeat.i(15588);
-    this.mGLThreadHandler = null;
-    this.mEGLThread = null;
-    this.mEGLContext = null;
-    this.mI4202RGBAFilter = null;
-    this.mCaptureAndEnc = paramc;
-    AppMethodBeat.o(15588);
+    this.mCaptureAndEnc = paramd;
   }
   
   private void apiLog(String paramString)
@@ -345,7 +341,7 @@ public class TRTCCustomTextureUtil
         {
           public void run()
           {
-            AppMethodBeat.i(221530);
+            AppMethodBeat.i(222396);
             if (localh != null) {
               localh.d();
             }
@@ -357,7 +353,7 @@ public class TRTCCustomTextureUtil
               TRTCCustomTextureUtil.access$300(TRTCCustomTextureUtil.this, "CustomCapture release");
               TRTCCustomTextureUtil.this.mCaptureAndEnc.r();
             }
-            AppMethodBeat.o(221530);
+            AppMethodBeat.o(222396);
           }
         });
         g.a(this.mGLThreadHandler, this.mEGLThread);
@@ -388,7 +384,7 @@ public class TRTCCustomTextureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCustomTextureUtil
  * JD-Core Version:    0.7.0.1
  */

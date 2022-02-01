@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/b2x" android:background="@color/a7c" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/n4" />
-    <LinearLayout android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc">
-        <RelativeLayout android:id="@id/b31" android:background="@drawable/amv" android:layout_width="fill_parent" android:layout_height="@dimen/av">
-            <com.tencent.mm.ui.base.MaskLayout android:id="@id/b2u" android:layout_width="@dimen/at" android:layout_height="@dimen/at" android:layout_centerVertical="true">
-                <ImageView android:id="@id/b3b" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:layout_centerVertical="true" />
-            </com.tencent.mm.ui.base.MaskLayout>
-            <RelativeLayout android:id="@id/b33" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hd" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-                <TextView android:id="@id/b35" android:visibility="gone" android:text="@string/dy" style="@style/m2" />
-                <CheckBox android:id="@id/b34" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            </RelativeLayout>
-            <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/js" android:layout_toLeftOf="@id/b33" android:layout_toRightOf="@id/b2u" android:layout_centerHorizontal="true">
-                <com.tencent.mm.ui.tools.MMTruncTextView android:id="@id/b32" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerHorizontal="true" style="@style/m3" />
-                <TextView android:id="@id/b2s" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="{account}" android:singleLine="true" android:layout_below="@id/b32" android:layout_alignParentLeft="true" style="@style/m2" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.vlog.ui.widget.CropOperationContainer android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.vlog.ui.widget.MultiEditCropLayout android:id="@id/fne" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.vlog.ui.widget.PhotoMaskView android:id="@id/gbd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/ggu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <com.tencent.mm.plugin.vlog.ui.plugin.timeedit.TimeEditorItemContainer android:id="@id/j4q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/gb9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.vlog.ui.widget.MultiEditCropOperationLayout android:id="@id/big" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.plugin.vlog.ui.widget.CropOperationContainer>
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView android:id="@id/ar2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.vlog.ui.widget.PagInputView android:id="@id/bxi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/bxv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

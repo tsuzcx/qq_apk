@@ -16,18 +16,18 @@ import com.tencent.mm.ui.MMFragment;
 public abstract class MMPreferenceFragment
   extends MMFragment
 {
-  private int JOa = 0;
-  private int JOb = 0;
-  protected boolean JOc;
+  private int OZf = 0;
+  private int OZg = 0;
+  protected boolean OZh;
   protected h adapter;
   private boolean dirty = false;
   private boolean isRefreshing = false;
   protected ListView list;
   private SharedPreferences sp;
   
-  public final void fDI()
+  public final void gLO()
   {
-    if (this.JOc) {}
+    if (this.OZh) {}
     int i;
     do
     {
@@ -35,18 +35,18 @@ public abstract class MMPreferenceFragment
       i = getResourceId();
     } while (i == -1);
     this.adapter.addPreferencesFromResource(i);
-    this.JOc = true;
+    this.OZh = true;
   }
   
   public int getLayoutId()
   {
-    return 2131494856;
+    return 2131495592;
   }
   
   public View getLayoutView()
   {
-    b.akR();
-    return b.c(getContext(), 2131494856);
+    b.aBh();
+    return b.c(getContext(), 2131495592);
   }
   
   public abstract int getResourceId();
@@ -54,7 +54,7 @@ public abstract class MMPreferenceFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.JOc = false;
+    this.OZh = false;
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
     this.list = ((ListView)findViewById(16908298));
     this.adapter = new h(getContext(), this.list, this.sp);
@@ -63,7 +63,7 @@ public abstract class MMPreferenceFragment
       public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
         AppMethodBeat.i(142614);
-        if ((!MMPreferenceFragment.a(MMPreferenceFragment.this)) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.JOo))
+        if ((!MMPreferenceFragment.a(MMPreferenceFragment.this)) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.OZu))
         {
           MMPreferenceFragment.a(MMPreferenceFragment.this, true);
           if (!(paramAnonymousPreference instanceof CheckBoxPreference)) {
@@ -71,7 +71,7 @@ public abstract class MMPreferenceFragment
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
           paramAnonymousObject.setChecked(paramAnonymousObject.isChecked());
-          if (paramAnonymousObject.JOq) {
+          if (paramAnonymousObject.OZw) {
             MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putBoolean(paramAnonymousPreference.mKey, paramAnonymousObject.isChecked()).commit();
           }
           MMPreferenceFragment.c(MMPreferenceFragment.this);
@@ -109,7 +109,7 @@ public abstract class MMPreferenceFragment
         }
         int i = MMPreferenceFragment.e(MMPreferenceFragment.this).getHeaderViewsCount();
         paramAnonymousAdapterView = (Preference)MMPreferenceFragment.d(MMPreferenceFragment.this).getItem(paramAnonymousInt - i);
-        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.JOo))
+        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.OZu))
         {
           if ((paramAnonymousAdapterView instanceof CheckBoxPreference))
           {
@@ -120,13 +120,13 @@ public abstract class MMPreferenceFragment
           {
             paramAnonymousView = (DialogPreference)paramAnonymousAdapterView;
             paramAnonymousView.showDialog();
-            paramAnonymousView.JMB = new DialogPreference.a()
+            paramAnonymousView.OXB = new DialogPreference.a()
             {
-              public final void fDA()
+              public final void gLD()
               {
                 AppMethodBeat.i(142615);
                 MMPreferenceFragment.c(MMPreferenceFragment.this);
-                if (paramAnonymousView.JOq) {
+                if (paramAnonymousView.OZw) {
                   MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.getValue()).commit();
                 }
                 MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
@@ -138,13 +138,13 @@ public abstract class MMPreferenceFragment
           {
             paramAnonymousView = (EditPreference)paramAnonymousAdapterView;
             paramAnonymousView.showDialog();
-            paramAnonymousView.JMD = new EditPreference.a()
+            paramAnonymousView.OXD = new EditPreference.a()
             {
-              public final void fDA()
+              public final void gLD()
               {
                 AppMethodBeat.i(142616);
                 MMPreferenceFragment.c(MMPreferenceFragment.this);
-                if (paramAnonymousView.JOq) {
+                if (paramAnonymousView.OZw) {
                   MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.value).commit();
                 }
                 MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
@@ -176,8 +176,8 @@ public abstract class MMPreferenceFragment
         return bool;
       }
     });
-    if (this.JOb != 0) {
-      this.list.setSelectionFromTop(0, this.JOb);
+    if (this.OZg != 0) {
+      this.list.setSelectionFromTop(0, this.OZg);
     }
   }
   
@@ -203,7 +203,7 @@ public abstract class MMPreferenceFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.MMPreferenceFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,80 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.capsulebar.c;
-import java.util.Objects;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUILoadingSplash;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.d;
+import com.tencent.mm.plugin.appbrand.widget.tabbar.AppBrandTabBarItem;
+import com.tencent.mm.plugin.appbrand.widget.tabbar.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetPreLoader;", "", "()V", "TAG", "", "preloadedWidgetFactory", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC;", "obtainInstance", "type", "warmUpAndTryPreload", "", "plugin-appbrand-integration_release"})
 public final class g
-  extends al
 {
-  public g(ViewGroup paramViewGroup)
+  private static final ConcurrentHashMap<com.tencent.mm.plugin.appbrand.task.g, e> nnJ;
+  public static final g nnK;
+  
+  static
   {
-    super(paramViewGroup);
+    AppMethodBeat.i(229238);
+    nnK = new g();
+    nnJ = new ConcurrentHashMap();
+    AppMethodBeat.o(229238);
   }
   
-  public final void a(c paramc)
+  public static void a(com.tencent.mm.plugin.appbrand.task.g paramg)
   {
-    AppMethodBeat.i(207783);
-    ((ViewGroup)Objects.requireNonNull(b(0, false, false))).addView(paramc, -1, -2);
-    d(new al.b(paramc, 1, 0, 1000, true, false, false));
-    AppMethodBeat.o(207783);
+    AppMethodBeat.i(229236);
+    p.h(paramg, "type");
+    Log.i("MicroMsg.AppBrandDecorWidgetPreLoader", "warmUpAndTryPreload type=".concat(String.valueOf(paramg)));
+    e locale;
+    if (nnJ.get(paramg) == null)
+    {
+      locale = new e();
+      locale.aD(b.class);
+      locale.aD(d.class);
+      switch (h.$EnumSwitchMapping$0[paramg.ordinal()])
+      {
+      }
+    }
+    for (;;)
+    {
+      ((Map)nnJ).put(paramg, locale);
+      AppMethodBeat.o(229236);
+      return;
+      locale.aD(a.class);
+      locale.aD(AppBrandUILoadingSplash.class);
+      int i = 0;
+      while (i <= 4)
+      {
+        locale.aD(AppBrandTabBarItem.class);
+        i += 1;
+      }
+    }
   }
   
-  public final boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean)
+  public static e b(com.tencent.mm.plugin.appbrand.task.g paramg)
   {
-    AppMethodBeat.i(207780);
-    paramBoolean = super.a(paramView, paramInt1, paramInt2, paramArrayOfFloat, paramInt3, paramBoolean);
-    AppMethodBeat.o(207780);
-    return paramBoolean;
-  }
-  
-  public final boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(207781);
-    paramBoolean1 = super.a(paramView, paramInt1, paramInt2, paramArrayOfFloat, paramInt3, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(207781);
-    return paramBoolean1;
-  }
-  
-  public final boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    AppMethodBeat.i(207782);
-    paramBoolean1 = super.a(paramView, paramInt1, paramInt2, paramArrayOfFloat, paramInt3, paramBoolean1, paramBoolean2, paramBoolean3);
-    AppMethodBeat.o(207782);
-    return paramBoolean1;
+    AppMethodBeat.i(229237);
+    p.h(paramg, "type");
+    e locale2 = (e)nnJ.get(paramg);
+    e locale1 = locale2;
+    if (locale2 == null)
+    {
+      Log.i("MicroMsg.AppBrandDecorWidgetPreLoader", "obtainInstance: no preloaded, create it [%s]", new Object[] { paramg.name() });
+      locale1 = new e();
+    }
+    AppMethodBeat.o(229237);
+    return locale1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.g
  * JD-Core Version:    0.7.0.1
  */

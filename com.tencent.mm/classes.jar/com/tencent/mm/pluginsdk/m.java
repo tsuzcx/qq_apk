@@ -15,17 +15,21 @@ import com.tencent.mm.ui.widget.a.d;
 @Deprecated
 public abstract interface m
 {
-  public abstract void MP();
+  public abstract void Xc();
   
   public abstract void a(Activity paramActivity, Intent paramIntent, int paramInt);
   
   public abstract void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt, a.a parama);
+  
+  public abstract void a(Activity paramActivity, String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3);
   
   public abstract void a(Context paramContext, Intent paramIntent1, Intent paramIntent2);
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, y.a parama);
   
   public abstract void a(Intent paramIntent, int paramInt, MMActivity.a parama, MMActivity paramMMActivity);
+  
+  public abstract void a(Intent paramIntent, int paramInt, MMActivity paramMMActivity);
   
   public abstract void a(Intent paramIntent1, int paramInt, MMActivity paramMMActivity, Intent paramIntent2);
   
@@ -36,10 +40,6 @@ public abstract interface m
   public abstract void a(Intent paramIntent, Context paramContext);
   
   public abstract void a(Intent paramIntent, MMActivity.a parama, MMActivity paramMMActivity);
-  
-  public abstract void a(Intent paramIntent, MMActivity paramMMActivity);
-  
-  public abstract void a(MMActivity paramMMActivity, String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3);
   
   public abstract void a(MMWizardActivity paramMMWizardActivity, Intent paramIntent);
   
@@ -53,19 +53,19 @@ public abstract interface m
   
   public abstract boolean b(Context paramContext, String paramString, Bundle paramBundle);
   
-  public abstract void bC(Context paramContext);
+  public abstract void bX(Context paramContext);
   
-  public abstract d bD(Context paramContext);
+  public abstract d bY(Context paramContext);
   
-  public abstract Intent bE(Context paramContext);
-  
-  public abstract void bF(Context paramContext);
-  
-  public abstract void bG(Context paramContext);
+  public abstract Intent bZ(Context paramContext);
   
   public abstract void c(Intent paramIntent, Context paramContext);
   
+  public abstract void ca(Context paramContext);
+  
   public abstract void cancelNotification(String paramString);
+  
+  public abstract void cb(Context paramContext);
   
   public abstract void d(Context paramContext, Intent paramIntent);
   
@@ -112,12 +112,10 @@ public abstract interface m
   public abstract void t(Context paramContext, String paramString);
   
   public abstract void t(Intent paramIntent, Context paramContext);
-  
-  public abstract void u(Intent paramIntent, Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.m
  * JD-Core Version:    0.7.0.1
  */

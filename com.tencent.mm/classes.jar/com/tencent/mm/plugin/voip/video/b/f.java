@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.a;
 import com.tencent.mm.media.g.c;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  private static volatile int CHQ = 0;
+  private static volatile int HlZ = 0;
   
   public static int createProgram(String paramString1, String paramString2)
   {
@@ -29,7 +29,7 @@ public final class f
     }
     int j = GLES20.glCreateProgram();
     if (j == 0) {
-      ae.e("MicroMsg.VoipRenderUtils", "Could not create program");
+      Log.e("MicroMsg.VoipRenderUtils", "Could not create program");
     }
     GLES20.glAttachShader(j, k);
     GLES20.glAttachShader(j, m);
@@ -38,8 +38,8 @@ public final class f
     GLES20.glGetProgramiv(j, 35714, paramString1, 0);
     if (paramString1[0] != 1)
     {
-      ae.e("MicroMsg.VoipRenderUtils", "Could not link program: ");
-      ae.e("MicroMsg.VoipRenderUtils", GLES20.glGetProgramInfoLog(j));
+      Log.e("MicroMsg.VoipRenderUtils", "Could not link program: ");
+      Log.e("MicroMsg.VoipRenderUtils", GLES20.glGetProgramInfoLog(j));
       GLES20.glDeleteProgram(j);
     }
     for (;;)
@@ -50,21 +50,21 @@ public final class f
     }
   }
   
-  static d eEu()
+  static a fLA()
+  {
+    AppMethodBeat.i(115743);
+    Object localObject = c.igu;
+    localObject = c.zI(14L);
+    AppMethodBeat.o(115743);
+    return localObject;
+  }
+  
+  public static d fLz()
   {
     AppMethodBeat.i(115742);
     d locald = c.a(true, 14L);
     AppMethodBeat.o(115742);
     return locald;
-  }
-  
-  static a eEv()
-  {
-    AppMethodBeat.i(115743);
-    Object localObject = c.hnb;
-    localObject = c.rD(14L);
-    AppMethodBeat.o(115743);
-    return localObject;
   }
   
   private static int loadShader(int paramInt, String paramString)
@@ -78,7 +78,7 @@ public final class f
     GLES20.glGetShaderiv(j, 35713, paramString, 0);
     if (paramString[0] == 0)
     {
-      ae.e("MicroMsg.VoipRenderUtils", "Could not compile shader %s and shader info is %s", new Object[] { Integer.valueOf(paramInt), GLES20.glGetShaderInfoLog(j) });
+      Log.e("MicroMsg.VoipRenderUtils", "Could not compile shader %s and shader info is %s", new Object[] { Integer.valueOf(paramInt), GLES20.glGetShaderInfoLog(j) });
       GLES20.glDeleteShader(j);
     }
     for (paramInt = i;; paramInt = j)
@@ -90,7 +90,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.b.f
  * JD-Core Version:    0.7.0.1
  */

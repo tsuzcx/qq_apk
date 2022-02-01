@@ -4,13 +4,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class n$3
   implements View.OnTouchListener
 {
@@ -19,27 +17,22 @@ final class n$3
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(82693);
-    b localb = new b();
-    localb.bd(paramView);
-    localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     p.g(paramMotionEvent, "event");
     if (paramMotionEvent.getAction() == 0)
     {
-      paramView = this.EJN;
-      if (paramView.Ewz != -3) {
-        break label93;
+      paramView = this.JzC;
+      if (paramView.JjT != -3) {
+        break label46;
       }
-      paramView.EJL.hideVKB();
+      paramView.JzA.hideVKB();
     }
     for (;;)
     {
-      a.a(true, this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(82693);
       return true;
-      label93:
-      if ((paramView.getSayFooter().eZq()) && (paramView.bnS())) {
-        paramView.getSayFooter().ehh();
+      label46:
+      if ((paramView.getSayFooter().giw()) && (paramView.bJw())) {
+        paramView.getSayFooter().fjJ();
       } else {
         paramView.hide();
       }

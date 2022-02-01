@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/gs"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/ayd" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/ayb" android:src="@drawable/awi" style="@style/h2" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gu">
+        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <FrameLayout android:id="@id/auf" android:layout_width="@dimen/x8" android:layout_height="@dimen/x7">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/os" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:layout_width="fill_parent" android:layout_height="54.0dip">
+                    <LinearLayout android:orientation="vertical" android:id="@id/ax0" android:paddingLeft="@dimen/ib" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/ib" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/ax1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/x8" android:text="abcdefg" android:maxLines="1" />
+                        <TextView android:textSize="@dimen/kc" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/awz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/x8" android:text="abcdefg" android:maxLines="1" />
+                    </LinearLayout>
+                    <ProgressBar android:layout_gravity="center" android:id="@id/awx" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+                </FrameLayout>
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_marginRight="5.0dip" style="@style/hx" />
+                <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="5.0dip">
+                    <ImageView android:id="@id/awy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <ImageView android:layout_gravity="center" android:id="@id/auo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hc" android:src="@drawable/cb0" android:scaleType="fitCenter" />
+                    <ProgressBar android:layout_gravity="center" android:id="@id/aww" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+                    <View android:id="@id/f_t" android:background="@color/zp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                </FrameLayout>
+            </LinearLayout>
+            <ImageView android:id="@id/aun" android:background="@drawable/mt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </LinearLayout>
+    <include layout="@layout/qr" style="@style/gp" />
+</LinearLayout>

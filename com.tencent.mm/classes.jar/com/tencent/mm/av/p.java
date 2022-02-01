@@ -2,29 +2,27 @@ package com.tencent.mm.av;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.b;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.a;
 import com.tencent.mm.m.a.a;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.bn;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.report.service.f;
-import com.tencent.mm.plugin.report.service.f.a;
+import com.tencent.mm.plugin.report.service.g.a;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.u;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -35,30 +33,30 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class p
 {
-  private static p ieN;
-  ConcurrentHashMap<Long, d> ieL;
-  public c ieM;
-  public ConcurrentHashMap<Long, e> ieO;
-  private ArrayList<Long> ieP;
-  ArrayList<e> ieQ;
+  private static p iZI;
+  ConcurrentHashMap<Long, d> iZG;
+  public c iZH;
+  public ConcurrentHashMap<Long, e> iZJ;
+  private ArrayList<Long> iZK;
+  ArrayList<e> iZL;
   
   public p()
   {
     AppMethodBeat.i(150733);
-    this.ieL = new ConcurrentHashMap();
-    this.ieO = new ConcurrentHashMap();
-    this.ieP = new ArrayList();
-    this.ieQ = new ArrayList();
-    this.ieM = new c();
+    this.iZG = new ConcurrentHashMap();
+    this.iZJ = new ConcurrentHashMap();
+    this.iZK = new ArrayList();
+    this.iZL = new ArrayList();
+    this.iZH = new c();
     AppMethodBeat.o(150733);
   }
   
-  private boolean Ga(String paramString)
+  private boolean OL(String paramString)
   {
     AppMethodBeat.i(150740);
-    Iterator localIterator = this.ieQ.iterator();
+    Iterator localIterator = this.iZL.iterator();
     while (localIterator.hasNext()) {
-      if (((e)localIterator.next()).ifc.equals(paramString))
+      if (((e)localIterator.next()).iZX.equals(paramString))
       {
         AppMethodBeat.o(150740);
         return true;
@@ -68,16 +66,16 @@ public class p
     return false;
   }
   
-  public static p aIL()
+  public static p bcF()
   {
     AppMethodBeat.i(150734);
-    if (ieN == null) {}
+    if (iZI == null) {}
     try
     {
-      if (ieN == null) {
-        ieN = new p();
+      if (iZI == null) {
+        iZI = new p();
       }
-      p localp = ieN;
+      p localp = iZI;
       AppMethodBeat.o(150734);
       return localp;
     }
@@ -90,7 +88,7 @@ public class p
   private static int g(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(150743);
-    if (v.f(paramString1, paramString2, paramBoolean))
+    if (z.f(paramString1, paramString2, paramBoolean))
     {
       AppMethodBeat.o(150743);
       return 1;
@@ -99,18 +97,34 @@ public class p
     return 0;
   }
   
-  public final ArrayList<String> FY(String paramString)
+  public final boolean AA(long paramLong)
+  {
+    AppMethodBeat.i(150737);
+    boolean bool = this.iZG.containsKey(Long.valueOf(paramLong));
+    AppMethodBeat.o(150737);
+    return bool;
+  }
+  
+  public final d AB(long paramLong)
+  {
+    AppMethodBeat.i(150738);
+    d locald = (d)this.iZG.get(Long.valueOf(paramLong));
+    AppMethodBeat.o(150738);
+    return locald;
+  }
+  
+  public final ArrayList<String> OJ(String paramString)
   {
     AppMethodBeat.i(150735);
     ArrayList localArrayList = new ArrayList();
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
-      Iterator localIterator = this.ieO.values().iterator();
+      Iterator localIterator = this.iZJ.values().iterator();
       while (localIterator.hasNext())
       {
         e locale = (e)localIterator.next();
-        if (paramString.equals(locale.dsk)) {
-          localArrayList.add(locale.ifc);
+        if (paramString.equals(locale.dJw)) {
+          localArrayList.add(locale.iZX);
         }
       }
     }
@@ -118,10 +132,10 @@ public class p
     return localArrayList;
   }
   
-  public final ArrayList<Integer> FZ(String paramString)
+  public final ArrayList<Integer> OK(String paramString)
   {
     AppMethodBeat.i(150736);
-    Object localObject1 = this.ieO.values();
+    Object localObject1 = this.iZJ.values();
     Object localObject2 = ((Collection)localObject1).iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -129,40 +143,40 @@ public class p
       PString localPString = new PString();
       PInt localPInt1 = new PInt();
       PInt localPInt2 = new PInt();
-      locale.iff = q.aIX().a(locale.dsk, locale.ifc, locale.icr, locale.doj, locale.dyw, localPString, localPInt1, localPInt2, locale.ifd, locale.ife, locale.msgId, locale.ifj, locale.ifk, locale.ifl);
-      bv localbv = ((l)g.ab(l.class)).doJ().ys(locale.msgId);
-      if (bu.isNullOrNil(localbv.field_imgPath))
+      locale.jaa = q.bcR().a(locale.dJw, locale.iZX, locale.iXp, locale.source, locale.dQd, localPString, localPInt1, localPInt2, locale.iZY, locale.iZZ, locale.msgId, locale.jae, locale.jaf, locale.jag, -1);
+      ca localca = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(locale.msgId);
+      if (Util.isNullOrNil(localca.field_imgPath))
       {
-        localbv.uj(localPString.value);
-        localbv.kD(localPInt1.value);
-        localbv.kE(localPInt2.value);
-        ((l)g.ab(l.class)).doJ().a(locale.msgId, localbv);
+        localca.Cz(localPString.value);
+        localca.nG(localPInt1.value);
+        localca.nH(localPInt2.value);
+        ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(locale.msgId, localca);
       }
     }
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       localObject1 = ((Collection)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (e)((Iterator)localObject1).next();
-        if (!paramString.equals(((e)localObject2).dsk))
+        if (!paramString.equals(((e)localObject2).dJw))
         {
-          this.ieO.remove(Long.valueOf(((e)localObject2).msgId));
-          this.ieP.remove(Long.valueOf(((e)localObject2).msgId));
-          ae.e("MicroMsg.SendImgSpeeder", "fatal!! Send user mis-match, want:%s, fact:%s", new Object[] { paramString, ((e)localObject2).dsk });
+          this.iZJ.remove(Long.valueOf(((e)localObject2).msgId));
+          this.iZK.remove(Long.valueOf(((e)localObject2).msgId));
+          Log.e("MicroMsg.SendImgSpeeder", "fatal!! Send user mis-match, want:%s, fact:%s", new Object[] { paramString, ((e)localObject2).dJw });
         }
       }
     }
     paramString = new ArrayList();
     int i = 0;
-    while (i < this.ieP.size())
+    while (i < this.iZK.size())
     {
-      paramString.add(Integer.valueOf((int)((e)this.ieO.get(this.ieP.get(i))).iff));
+      paramString.add(Integer.valueOf((int)((e)this.iZJ.get(this.iZK.get(i))).jaa));
       i += 1;
     }
-    this.ieO.clear();
-    this.ieP.clear();
-    ae.i("MicroMsg.SendImgSpeeder", "syncImgData, id size %d", new Object[] { Integer.valueOf(paramString.size()) });
+    this.iZJ.clear();
+    this.iZK.clear();
+    Log.i("MicroMsg.SendImgSpeeder", "syncImgData, id size %d", new Object[] { Integer.valueOf(paramString.size()) });
     AppMethodBeat.o(150736);
     return paramString;
   }
@@ -170,7 +184,7 @@ public class p
   public final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(150742);
-    if (Ga(paramString1))
+    if (OL(paramString1))
     {
       AppMethodBeat.o(150742);
       return;
@@ -183,35 +197,35 @@ public class p
     b localb2 = null;
     Object localObject1 = null;
     Object localObject2 = null;
-    if (aIM())
+    if (bcG())
     {
-      localObject2 = this.ieM.pE(1);
-      localObject1 = this.ieM.pE(2);
-      localb1 = ((b)localObject2).ieY;
-      localb2 = ((b)localObject1).ieY;
-      localObject1 = ((b)localObject1).ieZ;
-      localObject2 = ((b)localObject2).ieZ;
+      localObject2 = this.iZH.ts(1);
+      localObject1 = this.iZH.ts(2);
+      localb1 = ((b)localObject2).iZT;
+      localb2 = ((b)localObject1).iZT;
+      localObject1 = ((b)localObject1).iZU;
+      localObject2 = ((b)localObject2).iZU;
     }
-    q.aIX().a(paramString2, paramString1, i, localPString, localPInt1, localPInt2, paramInt2, (String)localObject1);
+    q.bcR().a(paramString2, paramString1, i, localPString, localPInt1, localPInt2, paramInt2, 2131231628, (String)localObject1);
     localObject1 = e.a(paramString1, i, paramInt1, paramInt2, (String)localObject1, (String)localObject2, localPString, localPInt1, localPInt2, localb1, localb2);
-    ((e)localObject1).dsk = paramString2;
-    this.ieQ.add(localObject1);
-    ae.i("MicroMsg.SendImgSpeeder", "summersafecdn img path %s has prebuild, user:%s", new Object[] { paramString1, paramString2 });
+    ((e)localObject1).dJw = paramString2;
+    this.iZL.add(localObject1);
+    Log.i("MicroMsg.SendImgSpeeder", "summersafecdn img path %s has prebuild, user:%s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(150742);
   }
   
   public final void a(ArrayList<String> paramArrayList, boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(150739);
-    ae.i("MicroMsg.SendImgSpeeder", "summersafecdn sendThumbImg fileSize:%d, compressImg[%b], source[%d], user:%s", new Object[] { Integer.valueOf(paramArrayList.size()), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), paramString });
-    Object localObject1 = this.ieQ.iterator();
+    Log.i("MicroMsg.SendImgSpeeder", "summersafecdn sendThumbImg fileSize:%d, compressImg[%b], source[%d], user:%s", new Object[] { Integer.valueOf(paramArrayList.size()), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), paramString });
+    Object localObject1 = this.iZL.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (e)((Iterator)localObject1).next();
-      if ((!paramArrayList.contains(((e)localObject2).ifc)) || ((!bu.isNullOrNil(((e)localObject2).dsk)) && (!((e)localObject2).dsk.equalsIgnoreCase(paramString))) || ((!bu.isNullOrNil(paramString)) && (!paramString.equalsIgnoreCase(((e)localObject2).dsk)))) {
+      if ((!paramArrayList.contains(((e)localObject2).iZX)) || ((!Util.isNullOrNil(((e)localObject2).dJw)) && (!((e)localObject2).dJw.equalsIgnoreCase(paramString))) || ((!Util.isNullOrNil(paramString)) && (!paramString.equalsIgnoreCase(((e)localObject2).dJw)))) {
         ((Iterator)localObject1).remove();
       } else {
-        ((e)localObject2).icr = g(((e)localObject2).ifc, paramString, paramBoolean);
+        ((e)localObject2).iXp = g(((e)localObject2).iZX, paramString, paramBoolean);
       }
     }
     localObject1 = new ArrayList();
@@ -220,123 +234,123 @@ public class p
     while (((Iterator)localObject2).hasNext())
     {
       str = (String)((Iterator)localObject2).next();
-      Iterator localIterator = this.ieQ.iterator();
+      Iterator localIterator = this.iZL.iterator();
       while (localIterator.hasNext())
       {
         e locale = (e)localIterator.next();
-        if (locale.ifc.equals(str)) {
+        if (locale.iZX.equals(str)) {
           ((ArrayList)localObject1).add(locale);
         }
       }
     }
-    this.ieQ.clear();
-    this.ieQ.addAll((Collection)localObject1);
+    this.iZL.clear();
+    this.iZL.addAll((Collection)localObject1);
     localObject1 = new ArrayList();
     if (paramArrayList.size() == 9)
     {
-      f.OP(18);
+      com.tencent.mm.plugin.report.service.g.Wl(18);
       paramArrayList = paramArrayList.iterator();
     }
     for (;;)
     {
       if (!paramArrayList.hasNext()) {
-        break label482;
+        break label485;
       }
       localObject2 = (String)paramArrayList.next();
-      if ((localObject2 == null) || (((String)localObject2).equals("")) || (!o.fB((String)localObject2)))
+      if ((localObject2 == null) || (((String)localObject2).equals("")) || (!s.YS((String)localObject2)))
       {
-        ae.d("MicroMsg.SendImgSpeeder", " doSendImage : filePath is null or empty");
+        Log.d("MicroMsg.SendImgSpeeder", " doSendImage : filePath is null or empty");
         continue;
         if (paramArrayList.size() == 1)
         {
-          boolean bool = az.isWifi(ak.getContext());
-          f.OP(25);
+          boolean bool = NetStatusUtil.isWifi(MMApplicationContext.getContext());
+          com.tencent.mm.plugin.report.service.g.Wl(25);
           if (!bool) {
             break;
           }
-          if (v.f((String)paramArrayList.get(0), paramString, paramBoolean))
+          if (z.f((String)paramArrayList.get(0), paramString, paramBoolean))
           {
-            f.OP(23);
+            com.tencent.mm.plugin.report.service.g.Wl(23);
             break;
           }
-          f.OP(21);
+          com.tencent.mm.plugin.report.service.g.Wl(21);
           break;
         }
-        f.OP(24);
+        com.tencent.mm.plugin.report.service.g.Wl(24);
         break;
       }
-      if (u.aRG((String)localObject2)) {
-        ae.i("MicroMsg.SendImgSpeeder", "[cpan] is gif coutinue. did not add filePath:%s filesize:%d", new Object[] { localObject2, Long.valueOf(o.aZR((String)localObject2)) });
-      } else if (!Ga((String)localObject2)) {
+      if (ImgUtil.isGif((String)localObject2)) {
+        Log.i("MicroMsg.SendImgSpeeder", "[cpan] is gif coutinue. did not add filePath:%s filesize:%d", new Object[] { localObject2, Long.valueOf(s.boW((String)localObject2)) });
+      } else if (!OL((String)localObject2)) {
         ((ArrayList)localObject1).add(localObject2);
       }
     }
-    label482:
+    label485:
     paramArrayList = ((ArrayList)localObject1).iterator();
     while (paramArrayList.hasNext()) {
       a(paramInt1, paramInt2, (String)paramArrayList.next(), paramString, paramBoolean);
     }
     paramArrayList = new ArrayList();
-    long l1 = g.ajR().gDX.yi(Thread.currentThread().getId());
-    ((l)g.ab(l.class)).doJ().aqX("SendImgSpeeder");
+    long l1 = com.tencent.mm.kernel.g.aAh().hqK.beginTransaction(Thread.currentThread().getId());
+    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aEs("SendImgSpeeder");
     paramInt1 = 1;
     paramInt2 = 0;
-    if (paramInt2 < this.ieQ.size())
+    if (paramInt2 < this.iZL.size())
     {
-      localObject1 = (e)this.ieQ.get(paramInt2);
-      if (u.aRG(((e)localObject1).ifc)) {
-        ae.i("MicroMsg.SendImgSpeeder", "[cpan] is gif coutinue. did not add to msg table");
+      localObject1 = (e)this.iZL.get(paramInt2);
+      if (ImgUtil.isGif(((e)localObject1).iZX)) {
+        Log.i("MicroMsg.SendImgSpeeder", "[cpan] is gif coutinue. did not add to msg table");
       }
       for (;;)
       {
         paramInt2 += 1;
         break;
-        localObject2 = new bv();
-        ((bv)localObject2).setType(x.Bc(paramString));
-        ((bv)localObject2).ui(paramString);
-        ((bv)localObject2).kt(1);
-        ((bv)localObject2).setStatus(1);
-        ((bv)localObject2).uj(((e)localObject1).ifg.value);
-        ((bv)localObject2).kD(((e)localObject1).ifh.value);
-        ((bv)localObject2).kE(((e)localObject1).ifi.value);
-        str = bn.We();
-        if (((str != null) && (!str.equals(((ei)localObject2).eNd))) || ((str == null) && (((ei)localObject2).eNd != null))) {
-          ((bv)localObject2).tk(str);
+        localObject2 = new ca();
+        ((ca)localObject2).setType(ab.JH(paramString));
+        ((ca)localObject2).Cy(paramString);
+        ((ca)localObject2).nv(1);
+        ((ca)localObject2).setStatus(1);
+        ((ca)localObject2).Cz(((e)localObject1).jab.value);
+        ((ca)localObject2).nG(((e)localObject1).jac.value);
+        ((ca)localObject2).nH(((e)localObject1).jad.value);
+        str = br.ajw();
+        if (((str != null) && (!str.equals(((eo)localObject2).fqK))) || ((str == null) && (((eo)localObject2).fqK != null))) {
+          ((ca)localObject2).BB(str);
         }
-        a.a.ZP().n((bv)localObject2);
-        ((bv)localObject2).qN(bl.BQ(((ei)localObject2).field_talker));
+        a.a.anC().n((ca)localObject2);
+        ((ca)localObject2).setCreateTime(bp.Kw(((eo)localObject2).field_talker));
         paramArrayList.add(localObject2);
-        long l2 = ((l)g.ab(l.class)).doJ().ar((bv)localObject2);
+        long l2 = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aC((ca)localObject2);
         if (l2 <= 0L)
         {
-          ae.e("MicroMsg.SendImgSpeeder", "insert error! %s", new Object[] { paramString });
+          Log.e("MicroMsg.SendImgSpeeder", "insert error! %s", new Object[] { paramString });
           paramInt1 = 0;
         }
         else
         {
           ((e)localObject1).msgId = l2;
-          this.ieO.put(Long.valueOf(((e)localObject1).msgId), localObject1);
-          this.ieP.add(Long.valueOf(((e)localObject1).msgId));
+          this.iZJ.put(Long.valueOf(((e)localObject1).msgId), localObject1);
+          this.iZK.add(Long.valueOf(((e)localObject1).msgId));
           paramInt1 = 0;
         }
       }
     }
-    this.ieQ.clear();
+    this.iZL.clear();
     if (l1 > 0L) {
-      g.ajR().gDX.sW(l1);
+      com.tencent.mm.kernel.g.aAh().hqK.endTransaction(l1);
     }
     if (paramInt1 != 0) {
-      ((l)g.ab(l.class)).doJ().aqY("SendImgSpeeder");
+      ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aEt("SendImgSpeeder");
     }
     AppMethodBeat.o(150739);
   }
   
-  public final boolean aIM()
+  public final boolean bcG()
   {
     AppMethodBeat.i(150741);
-    if ((this.ieQ.size() > 0) && (f.a.dNH().yxE <= 2))
+    if ((this.iZL.size() > 0) && (g.a.eOH().CyB <= 2))
     {
-      ae.i("MicroMsg.SendImgSpeeder", "cpu core is low ,do not use multi mode");
+      Log.i("MicroMsg.SendImgSpeeder", "cpu core is low ,do not use multi mode");
       AppMethodBeat.o(150741);
       return false;
     }
@@ -344,35 +358,19 @@ public class p
     return true;
   }
   
-  public final boolean su(long paramLong)
-  {
-    AppMethodBeat.i(150737);
-    boolean bool = this.ieL.containsKey(Long.valueOf(paramLong));
-    AppMethodBeat.o(150737);
-    return bool;
-  }
-  
-  public final d sv(long paramLong)
-  {
-    AppMethodBeat.i(150738);
-    d locald = (d)this.ieL.get(Long.valueOf(paramLong));
-    AppMethodBeat.o(150738);
-    return locald;
-  }
-  
   public static class a
   {
-    static aq cQl;
-    private ReentrantLock cQj;
-    private Condition cQk;
-    int icr;
-    a ieR;
+    static MMHandler dgG;
+    private ReentrantLock dgE;
+    private Condition dgF;
+    int iXp;
+    a iZM;
     
     public a()
     {
       AppMethodBeat.i(150721);
-      this.cQj = new ReentrantLock();
-      this.cQk = this.cQj.newCondition();
+      this.dgE = new ReentrantLock();
+      this.dgF = this.dgE.newCondition();
       AppMethodBeat.o(150721);
     }
     
@@ -381,31 +379,31 @@ public class p
       AppMethodBeat.i(150722);
       try
       {
-        if (cQl == null) {
-          cQl = new aq("big file gen Worker");
+        if (dgG == null) {
+          dgG = new MMHandler("big file gen Worker");
         }
         a locala1 = new a();
-        parame.ifl = locala1;
-        a locala2 = parame.ifl;
-        cQl.post(new Runnable()
+        parame.jag = locala1;
+        a locala2 = parame.jag;
+        dgG.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(150720);
             long l = System.currentTimeMillis();
             p.a.a locala = new p.a.a();
-            locala.ieU = new PString();
-            locala.ieV = new PString();
-            locala.ieW = new PString();
-            locala.ieX = new PString();
-            String str = h.FL(parame.ifc);
-            locala.icA = q.aIX().a(parame.dsk, parame.ifc, str, parame.icr, true, locala.ieU, locala.ieV, locala.ieW, locala.ieX, parame.ife, parame.ifj);
+            locala.iZP = new PString();
+            locala.iZQ = new PString();
+            locala.iZR = new PString();
+            locala.iZS = new PString();
+            String str = h.Ow(parame.iZX);
+            locala.iXy = q.bcR().a(parame.dJw, parame.iZX, str, parame.iXp, true, locala.iZP, locala.iZQ, locala.iZR, locala.iZS, parame.iZZ, parame.jae, -1);
             p.a.a(p.a.this).lock();
             try
             {
-              p.a.this.ieR = locala;
+              p.a.this.iZM = locala;
               p.a.b(p.a.this).signal();
-              ae.i("MicroMsg.SendImgSpeeder", "notify big file gen prepared %s last %d", new Object[] { parame.ifc, Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()) });
+              Log.i("MicroMsg.SendImgSpeeder", "notify big file gen prepared %s last %d", new Object[] { parame.iZX, Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()) });
               return;
             }
             finally
@@ -415,7 +413,7 @@ public class p
             }
           }
         });
-        locala1.icr = parame.icr;
+        locala1.iXp = parame.iXp;
         AppMethodBeat.o(150722);
         return locala1;
       }
@@ -426,42 +424,42 @@ public class p
     }
     
     /* Error */
-    public final a aIO()
+    public final a bcI()
     {
       // Byte code:
       //   0: ldc 83
       //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 37	com/tencent/mm/av/p$a:cQj	Ljava/util/concurrent/locks/ReentrantLock;
+      //   6: getfield 37	com/tencent/mm/av/p$a:dgE	Ljava/util/concurrent/locks/ReentrantLock;
       //   9: invokevirtual 86	java/util/concurrent/locks/ReentrantLock:lock	()V
       //   12: aload_0
-      //   13: getfield 88	com/tencent/mm/av/p$a:ieR	Lcom/tencent/mm/av/p$a$a;
+      //   13: getfield 88	com/tencent/mm/av/p$a:iZM	Lcom/tencent/mm/av/p$a$a;
       //   16: ifnonnull +42 -> 58
       //   19: ldc 90
       //   21: ldc 92
-      //   23: invokestatic 97	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   23: invokestatic 97	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   26: aload_0
-      //   27: getfield 43	com/tencent/mm/av/p$a:cQk	Ljava/util/concurrent/locks/Condition;
+      //   27: getfield 43	com/tencent/mm/av/p$a:dgF	Ljava/util/concurrent/locks/Condition;
       //   30: invokeinterface 102 1 0
       //   35: goto -23 -> 12
       //   38: astore_1
       //   39: aload_0
-      //   40: getfield 37	com/tencent/mm/av/p$a:cQj	Ljava/util/concurrent/locks/ReentrantLock;
+      //   40: getfield 37	com/tencent/mm/av/p$a:dgE	Ljava/util/concurrent/locks/ReentrantLock;
       //   43: invokevirtual 105	java/util/concurrent/locks/ReentrantLock:unlock	()V
       //   46: aload_0
-      //   47: getfield 88	com/tencent/mm/av/p$a:ieR	Lcom/tencent/mm/av/p$a$a;
+      //   47: getfield 88	com/tencent/mm/av/p$a:iZM	Lcom/tencent/mm/av/p$a$a;
       //   50: astore_1
       //   51: ldc 83
       //   53: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   56: aload_1
       //   57: areturn
       //   58: aload_0
-      //   59: getfield 37	com/tencent/mm/av/p$a:cQj	Ljava/util/concurrent/locks/ReentrantLock;
+      //   59: getfield 37	com/tencent/mm/av/p$a:dgE	Ljava/util/concurrent/locks/ReentrantLock;
       //   62: invokevirtual 105	java/util/concurrent/locks/ReentrantLock:unlock	()V
       //   65: goto -19 -> 46
       //   68: astore_1
       //   69: aload_0
-      //   70: getfield 37	com/tencent/mm/av/p$a:cQj	Ljava/util/concurrent/locks/ReentrantLock;
+      //   70: getfield 37	com/tencent/mm/av/p$a:dgE	Ljava/util/concurrent/locks/ReentrantLock;
       //   73: invokevirtual 105	java/util/concurrent/locks/ReentrantLock:unlock	()V
       //   76: ldc 83
       //   78: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -481,39 +479,39 @@ public class p
     
     public static final class a
     {
-      String icA;
-      PString ieU;
-      PString ieV;
-      PString ieW;
-      PString ieX;
+      String iXy;
+      PString iZP;
+      PString iZQ;
+      PString iZR;
+      PString iZS;
     }
   }
   
   static final class b
   {
-    b ieY;
-    String ieZ;
+    b iZT;
+    String iZU;
   }
   
   public static final class c
   {
-    private LinkedList<p.b> ifa;
-    private LinkedList<p.b> ifb;
+    private LinkedList<p.b> iZV;
+    private LinkedList<p.b> iZW;
     
     public c()
     {
       AppMethodBeat.i(150724);
-      this.ifa = new LinkedList();
-      this.ifb = new LinkedList();
+      this.iZV = new LinkedList();
+      this.iZW = new LinkedList();
       AppMethodBeat.o(150724);
     }
     
-    private static boolean Gb(String paramString)
+    private static boolean OM(String paramString)
     {
       AppMethodBeat.i(150728);
-      if (o.aZR(paramString) > 0L)
+      if (s.boW(paramString) > 0L)
       {
-        ae.e("MicroMsg.SendImgSpeeder", "file has exist %s", new Object[] { paramString });
+        Log.e("MicroMsg.SendImgSpeeder", "file has exist %s", new Object[] { paramString });
         AppMethodBeat.o(150728);
         return false;
       }
@@ -521,47 +519,47 @@ public class p
       return true;
     }
     
-    private static p.b aIQ()
+    private static p.b bcK()
     {
       AppMethodBeat.i(150726);
       p.b localb = new p.b((byte)0);
-      if (bu.isNullOrNil(null)) {}
+      if (Util.isNullOrNil(null)) {}
       String str;
-      for (localb.ieZ = i.aIG();; localb.ieZ = null)
+      for (localb.iZU = i.bcA();; localb.iZU = null)
       {
-        str = q.aIX().FS(localb.ieZ);
-        if (Gb(str)) {
+        str = q.bcR().OD(localb.iZU);
+        if (OM(str)) {
           break;
         }
         AppMethodBeat.o(150726);
         return null;
       }
-      localb.ieY = new b(str);
+      localb.iZT = new b(str);
       AppMethodBeat.o(150726);
       return localb;
     }
     
-    private static p.b aIR()
+    private static p.b bcL()
     {
       AppMethodBeat.i(150727);
       p.b localb = new p.b((byte)0);
-      if (bu.isNullOrNil(null)) {}
+      if (Util.isNullOrNil(null)) {}
       String str;
-      for (localb.ieZ = i.aIG();; localb.ieZ = null)
+      for (localb.iZU = i.bcA();; localb.iZU = null)
       {
-        str = q.aIX().FR(localb.ieZ);
-        if (Gb(str)) {
+        str = q.bcR().OC(localb.iZU);
+        if (OM(str)) {
           break;
         }
         AppMethodBeat.o(150727);
         return null;
       }
-      localb.ieY = new b(str);
+      localb.iZT = new b(str);
       AppMethodBeat.o(150727);
       return localb;
     }
     
-    private void aIS()
+    private void bcM()
     {
       for (;;)
       {
@@ -571,17 +569,17 @@ public class p
           AppMethodBeat.i(150730);
           StringBuilder localStringBuilder = new StringBuilder();
           i = 0;
-          if (i < this.ifa.size())
+          if (i < this.iZV.size())
           {
-            localStringBuilder.append(((p.b)this.ifa.get(i)).ieZ);
-            if (i != this.ifa.size() - 1) {
+            localStringBuilder.append(((p.b)this.iZV.get(i)).iZU);
+            if (i != this.iZV.size() - 1) {
               localStringBuilder.append("-");
             }
           }
           else
           {
-            ae.d("MicroMsg.SendImgSpeeder", "sync big des to file %s ", new Object[] { localStringBuilder.toString() });
-            g.ajR().ajA().set(348176, localStringBuilder.toString());
+            Log.d("MicroMsg.SendImgSpeeder", "sync big des to file %s ", new Object[] { localStringBuilder.toString() });
+            com.tencent.mm.kernel.g.aAh().azQ().set(348176, localStringBuilder.toString());
             AppMethodBeat.o(150730);
             return;
           }
@@ -591,7 +589,7 @@ public class p
       }
     }
     
-    private void aIT()
+    private void bcN()
     {
       for (;;)
       {
@@ -601,17 +599,17 @@ public class p
           AppMethodBeat.i(150731);
           StringBuilder localStringBuilder = new StringBuilder();
           i = 0;
-          if (i < this.ifb.size())
+          if (i < this.iZW.size())
           {
-            localStringBuilder.append(((p.b)this.ifb.get(i)).ieZ);
-            if (i != this.ifb.size() - 1) {
+            localStringBuilder.append(((p.b)this.iZW.get(i)).iZU);
+            if (i != this.iZW.size() - 1) {
               localStringBuilder.append("-");
             }
           }
           else
           {
-            ae.d("MicroMsg.SendImgSpeeder", "sync thumb des to file %s ", new Object[] { localStringBuilder.toString() });
-            g.ajR().ajA().set(348177, localStringBuilder.toString());
+            Log.d("MicroMsg.SendImgSpeeder", "sync thumb des to file %s ", new Object[] { localStringBuilder.toString() });
+            com.tencent.mm.kernel.g.aAh().azQ().set(348177, localStringBuilder.toString());
             AppMethodBeat.o(150731);
             return;
           }
@@ -621,13 +619,13 @@ public class p
       }
     }
     
-    public final void aIP()
+    public final void bcJ()
     {
       int j = 0;
       try
       {
         AppMethodBeat.i(150725);
-        int i = this.ifa.size();
+        int i = this.iZV.size();
         int k;
         p.b localb;
         if (i < 0)
@@ -636,26 +634,26 @@ public class p
           i = 0;
           while (i < k)
           {
-            localb = aIQ();
-            this.ifa.add(localb);
+            localb = bcK();
+            this.iZV.add(localb);
             i += 1;
           }
-          ae.i("MicroMsg.SendImgSpeeder", "add big File pool added size %d , all size %d", new Object[] { Integer.valueOf(k), Integer.valueOf(this.ifa.size()) });
-          aIS();
+          Log.i("MicroMsg.SendImgSpeeder", "add big File pool added size %d , all size %d", new Object[] { Integer.valueOf(k), Integer.valueOf(this.iZV.size()) });
+          bcM();
         }
-        i = this.ifb.size();
+        i = this.iZW.size();
         if (i < 0)
         {
           k = 5 - i;
           i = j;
           while (i < k)
           {
-            localb = aIR();
-            this.ifb.add(localb);
+            localb = bcL();
+            this.iZW.add(localb);
             i += 1;
           }
-          aIT();
-          ae.i("MicroMsg.SendImgSpeeder", "add big thumb pool added size %d , all size %d", new Object[] { Integer.valueOf(k), Integer.valueOf(this.ifb.size()) });
+          bcN();
+          Log.i("MicroMsg.SendImgSpeeder", "add big thumb pool added size %d , all size %d", new Object[] { Integer.valueOf(k), Integer.valueOf(this.iZW.size()) });
         }
         AppMethodBeat.o(150725);
         return;
@@ -663,7 +661,7 @@ public class p
       finally {}
     }
     
-    public final p.b pE(int paramInt)
+    public final p.b ts(int paramInt)
     {
       for (;;)
       {
@@ -673,26 +671,26 @@ public class p
           p.b localb1 = null;
           if (paramInt == 1)
           {
-            if (this.ifa.size() > 0)
+            if (this.iZV.size() > 0)
             {
-              localb1 = (p.b)this.ifa.remove();
-              aIS();
-              aIP();
+              localb1 = (p.b)this.iZV.remove();
+              bcM();
+              bcJ();
               AppMethodBeat.o(150729);
               return localb1;
             }
-            localb1 = aIQ();
+            localb1 = bcK();
             continue;
           }
           if (paramInt == 2) {
-            if (this.ifb.size() > 0)
+            if (this.iZW.size() > 0)
             {
-              localb1 = (p.b)this.ifb.remove();
-              aIT();
+              localb1 = (p.b)this.iZW.remove();
+              bcN();
             }
             else
             {
-              p.b localb2 = aIR();
+              p.b localb2 = bcL();
             }
           }
         }
@@ -703,44 +701,44 @@ public class p
   
   public static final class d
   {
-    public long dzX;
     public long offset;
+    public long total;
   }
   
   public static final class e
   {
-    int doj;
-    String dsk;
-    int dyw;
-    int icr;
-    String ifc;
-    String ifd;
-    String ife;
-    long iff;
-    PString ifg;
-    PInt ifh;
-    PInt ifi;
-    b ifj;
-    b ifk;
-    p.a ifl;
+    String dJw;
+    int dQd;
+    int iXp;
+    String iZX;
+    String iZY;
+    String iZZ;
+    long jaa;
+    PString jab;
+    PInt jac;
+    PInt jad;
+    b jae;
+    b jaf;
+    p.a jag;
     long msgId;
+    int source;
     
     public static e a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, PString paramPString, PInt paramPInt1, PInt paramPInt2, b paramb1, b paramb2)
     {
       AppMethodBeat.i(150732);
       e locale = new e();
-      locale.ifc = paramString1;
-      locale.icr = paramInt1;
-      locale.doj = paramInt2;
-      locale.dyw = paramInt3;
-      locale.ifd = paramString2;
-      locale.ifg = paramPString;
-      locale.ifi = paramPInt2;
-      locale.ifh = paramPInt1;
-      locale.ife = paramString3;
-      locale.ifk = paramb2;
-      locale.ifj = paramb1;
-      if (p.aIN().aIM()) {
+      locale.iZX = paramString1;
+      locale.iXp = paramInt1;
+      locale.source = paramInt2;
+      locale.dQd = paramInt3;
+      locale.iZY = paramString2;
+      locale.jab = paramPString;
+      locale.jad = paramPInt2;
+      locale.jac = paramPInt1;
+      locale.iZZ = paramString3;
+      locale.jaf = paramb2;
+      locale.jae = paramb1;
+      if (p.bcH().bcG()) {
         p.a.a(locale);
       }
       AppMethodBeat.o(150732);
@@ -750,7 +748,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.p
  * JD-Core Version:    0.7.0.1
  */

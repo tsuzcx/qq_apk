@@ -3,9 +3,7 @@ package com.tencent.liteav.network;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import com.tencent.liteav.basic.e.b;
+import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -96,6 +94,7 @@ public class i
     }
     catch (Exception paramString)
     {
+      TXCLog.e("UploadQualityData", "get quality data failed.", paramString);
       AppMethodBeat.o(15460);
     }
     return null;
@@ -128,7 +127,10 @@ public class i
         AppMethodBeat.o(15462);
         return paramString;
       }
-      catch (Exception paramString) {}
+      catch (Exception paramString)
+      {
+        TXCLog.e("UploadQualityData", "failed to parse json string", paramString);
+      }
     }
     paramString = new JSONObject();
     AppMethodBeat.o(15462);
@@ -138,7 +140,7 @@ public class i
   private void d()
   {
     AppMethodBeat.i(15463);
-    this.c = b.a().a("Network", "QualityDataCacheCount");
+    this.c = c.a().a("Network", "QualityDataCacheCount");
     if ((this.c == -1L) || (this.c < 3L)) {
       this.c = 3L;
     }
@@ -179,7 +181,7 @@ public class i
   public void a(String paramString, long paramLong1, long paramLong2, long paramLong3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(15458);
-    if (b.a().a("Network", "QualityDataCacheCount") > 0L) {}
+    if (c.a().a("Network", "QualityDataCacheCount") > 0L) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(15458);
@@ -198,7 +200,7 @@ public class i
       localJSONObject2 = c(localSharedPreferences.getString("34238512-C08C-4931-A000-40E1D8B5BA5B", ""));
       localJSONObject1 = localJSONObject2.optJSONObject(paramString);
       if (localJSONObject1 != null) {
-        break label407;
+        break label415;
       }
       localJSONObject1 = new JSONObject();
     }
@@ -209,6 +211,7 @@ public class i
       JSONObject localJSONObject1;
       int j;
       JSONArray localJSONArray;
+      TXCLog.e("UploadQualityData", "build json object failed.", paramString);
       AppMethodBeat.o(15458);
       return;
     }
@@ -247,7 +250,7 @@ public class i
       localSharedPreferences.edit().putString("34238512-C08C-4931-A000-40E1D8B5BA5B", paramString).commit();
       AppMethodBeat.o(15458);
       return;
-      label407:
+      label415:
       if (paramLong1 == 3L)
       {
         str = "DomainArrayData";
@@ -274,47 +277,36 @@ public class i
         }
         if (i == 1)
         {
-          Object localObject = (WifiManager)this.b.getSystemService("wifi");
-          if (localObject != null)
-          {
-            localObject = ((WifiManager)localObject).getConnectionInfo();
-            if (localObject != null)
-            {
-              localObject = "wifi:" + ((WifiInfo)localObject).getSSID();
-              AppMethodBeat.o(15457);
-              return localObject;
-            }
-          }
-        }
-        else
-        {
-          if (i == 2)
-          {
-            AppMethodBeat.o(15457);
-            return "4g:";
-          }
-          if (i == 3)
-          {
-            AppMethodBeat.o(15457);
-            return "3g:";
-          }
-          if (i == 4)
-          {
-            AppMethodBeat.o(15457);
-            return "2g:";
-          }
-          if (i == 5)
-          {
-            AppMethodBeat.o(15457);
-            return "ethernet:";
-          }
           AppMethodBeat.o(15457);
-          return "xg:";
+          return "wifi:";
         }
+        if (i == 2)
+        {
+          AppMethodBeat.o(15457);
+          return "4g:";
+        }
+        if (i == 3)
+        {
+          AppMethodBeat.o(15457);
+          return "3g:";
+        }
+        if (i == 4)
+        {
+          AppMethodBeat.o(15457);
+          return "2g:";
+        }
+        if (i == 5)
+        {
+          AppMethodBeat.o(15457);
+          return "ethernet:";
+        }
+        AppMethodBeat.o(15457);
+        return "xg:";
       }
     }
     catch (Exception localException)
     {
+      TXCLog.e("UploadQualityData", "get network type failed." + localException.getMessage());
       AppMethodBeat.o(15457);
     }
     return "";
@@ -364,7 +356,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.network.i
  * JD-Core Version:    0.7.0.1
  */

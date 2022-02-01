@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.a.c;
 import java.util.ArrayList;
@@ -16,21 +16,21 @@ import java.util.List;
 public class FTSConvTalkerMessageUI
   extends FTSBaseUI
 {
-  private int dmr;
-  private int lox;
+  private int dDG;
+  private int mve;
   private String query;
-  private String tFT;
-  private String tFU;
-  private i tKt;
   private String talker;
+  private String wWS;
+  private String wWT;
+  private i xbs;
   
   protected final d a(e parame)
   {
     AppMethodBeat.i(111928);
-    if (this.tKt == null) {
-      this.tKt = new i(this, this.talker, this.tFU, this.tFT, this.lox, this.dmr);
+    if (this.xbs == null) {
+      this.xbs = new i(this, this.talker, this.wWT, this.wWS, this.mve, this.dDG);
     }
-    parame = this.tKt;
+    parame = this.xbs;
     AppMethodBeat.o(111928);
     return parame;
   }
@@ -42,38 +42,38 @@ public class FTSConvTalkerMessageUI
     AppMethodBeat.o(168770);
   }
   
-  protected final void cVY()
+  protected final void dPh()
   {
     AppMethodBeat.i(111927);
-    super.cVY();
-    this.tFT = getIntent().getStringExtra("key_conv");
+    super.dPh();
+    this.wWS = getIntent().getStringExtra("key_conv");
     this.talker = getIntent().getStringExtra("key_talker");
     this.query = getIntent().getStringExtra("key_query");
-    this.tFU = getIntent().getStringExtra("key_talker_query");
-    this.dmr = getIntent().getIntExtra("detail_type", 1);
-    this.lox = getIntent().getIntExtra("Search_Scene", 0);
-    ae.i("MicroMsg.FTS.FTSConvTalkerMessageUI", "initSearchData query=%s talker=%s conversation=%s showType=%d", new Object[] { this.query, this.talker, this.tFT, Integer.valueOf(this.dmr) });
+    this.wWT = getIntent().getStringExtra("key_talker_query");
+    this.dDG = getIntent().getIntExtra("detail_type", 1);
+    this.mve = getIntent().getIntExtra("Search_Scene", 0);
+    Log.i("MicroMsg.FTS.FTSConvTalkerMessageUI", "initSearchData query=%s talker=%s conversation=%s showType=%d", new Object[] { this.query, this.talker, this.wWS, Integer.valueOf(this.dDG) });
     AppMethodBeat.o(111927);
   }
   
   public int getLayoutId()
   {
-    return 2131494220;
+    return 2131494776;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(111926);
     super.onCreate(paramBundle);
-    ((n)g.ad(n.class)).getFTSImageLoader().cVe();
+    ((n)g.ah(n.class)).getFTSImageLoader().dOn();
     paramBundle = new a((byte)0);
-    a.a(paramBundle, this.tFU);
+    a.a(paramBundle, this.wWT);
     a locala1 = new a((byte)0);
     a.a(locala1, ">");
     a locala2 = new a((byte)0);
-    a.a(locala2, com.tencent.mm.plugin.fts.a.d.ahd(this.tFT));
+    a.a(locala2, com.tencent.mm.plugin.fts.a.d.arL(this.wWS));
     ArrayList localArrayList = new ArrayList();
-    if (this.dmr == 2)
+    if (this.dDG == 2)
     {
       localArrayList.add(paramBundle);
       localArrayList.add(locala1);
@@ -81,8 +81,8 @@ public class FTSConvTalkerMessageUI
     }
     for (;;)
     {
-      u(this.query, localArrayList);
-      cVT();
+      v(this.query, localArrayList);
+      dPc();
       AppMethodBeat.o(111926);
       return;
       localArrayList.add(locala2);
@@ -100,7 +100,7 @@ public class FTSConvTalkerMessageUI
   final class a
     implements a.c
   {
-    private String fXp;
+    private String gCv;
     
     private a() {}
     
@@ -111,13 +111,13 @@ public class FTSConvTalkerMessageUI
     
     public final String getTagName()
     {
-      return this.fXp;
+      return this.gCv;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSConvTalkerMessageUI
  * JD-Core Version:    0.7.0.1
  */

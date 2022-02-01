@@ -10,20 +10,20 @@ import java.lang.reflect.Method;
 public class ScreenBroadcastReceiver
   extends BroadcastReceiver
 {
-  private a Otc;
+  private a Uia;
   
   public ScreenBroadcastReceiver(a parama)
   {
-    this.Otc = parama;
+    this.Uia = parama;
   }
   
   public static Context getApplicationContext()
   {
-    AppMethodBeat.i(216862);
+    AppMethodBeat.i(236827);
     try
     {
       Context localContext = ((Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, null)).getApplicationContext();
-      AppMethodBeat.o(216862);
+      AppMethodBeat.o(236827);
       return localContext;
     }
     catch (Exception localException)
@@ -37,18 +37,18 @@ public class ScreenBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(216861);
+    AppMethodBeat.i(236826);
     paramContext = paramIntent.getAction();
     if ("android.intent.action.SCREEN_ON".equals(paramContext))
     {
-      this.Otc.onScreenOn();
-      AppMethodBeat.o(216861);
+      this.Uia.onScreenOn();
+      AppMethodBeat.o(236826);
       return;
     }
     if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      this.Otc.onScreenOff();
+      this.Uia.onScreenOff();
     }
-    AppMethodBeat.o(216861);
+    AppMethodBeat.o(236826);
   }
   
   public static abstract interface a
@@ -60,7 +60,7 @@ public class ScreenBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.extra.tools.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

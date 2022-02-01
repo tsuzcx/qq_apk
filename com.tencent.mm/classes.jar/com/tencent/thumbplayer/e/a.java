@@ -1,175 +1,62 @@
 package com.tencent.thumbplayer.e;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.thumbplayer.utils.d;
+import com.tencent.thumbplayer.a.a.e;
+import com.tencent.thumbplayer.api.TPOptionalParam;
+import com.tencent.thumbplayer.api.TPVideoInfo;
+import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
+import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
+import com.tencent.thumbplayer.api.proxy.ITPPlayerProxyListener;
+import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
+import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 
-public final class a
+public abstract interface a
+  extends ITPPlayerProxy
 {
-  private static String MxA;
-  private static long MxB = -1L;
-  private static String Mxp = "";
-  private static String Mxq;
-  private static String Mxr;
-  private static String Mxs;
-  private static int Mxt = -1;
-  private static String Mxu;
-  private static boolean Mxv;
-  private static String Mxw = "";
-  private static int Mxx = 0;
-  private static boolean Mxy = true;
-  private static int Mxz = -1;
-  private static String appVersion;
-  private static String appVersionName;
+  public abstract void DV(boolean paramBoolean);
   
-  static
-  {
-    MxA = "\\.";
-    appVersion = "";
-  }
+  public abstract void OE(long paramLong);
   
-  public static void bbo(String paramString)
-  {
-    Mxp = paramString;
-  }
+  public abstract e a(long paramLong, String paramString, TPVideoInfo paramTPVideoInfo);
   
-  public static void gaV()
-  {
-    Mxt = 100;
-  }
+  public abstract ITPMediaAsset a(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo);
   
-  public static void gbl()
-  {
-    Mxy = true;
-  }
+  public abstract String a(int paramInt, String paramString, TPDownloadParamData paramTPDownloadParamData);
   
-  public static boolean gbm()
-  {
-    return Mxy;
-  }
+  public abstract void a(ITPPlayListener paramITPPlayListener);
   
-  public static String gbn()
-  {
-    return Mxq;
-  }
+  public abstract void aro(int paramInt);
   
-  public static String gbo()
-  {
-    return Mxr;
-  }
+  public abstract ITPMediaAsset b(ITPMediaAsset paramITPMediaAsset);
   
-  public static String gbp()
-  {
-    return Mxs;
-  }
+  public abstract e bqC(String paramString);
   
-  public static String gbq()
-  {
-    return Mxu;
-  }
+  public abstract void hnt();
   
-  public static String gbr()
-  {
-    return Mxw;
-  }
+  public abstract boolean hnu();
   
-  public static int gbs()
-  {
-    return Mxx;
-  }
+  public abstract String hnv();
   
-  public static boolean gbt()
-  {
-    return Mxv;
-  }
+  public abstract ITPPlayerProxyListener hnw();
   
-  public static int gbu()
-  {
-    if ((Mxt == -1) && (Mxz != -1)) {
-      return Mxz;
-    }
-    return Mxt;
-  }
+  public abstract boolean isEnable();
   
-  public static void gbv()
-  {
-    Mxz = 1;
-  }
+  public abstract void nM(String paramString1, String paramString2);
   
-  public static String getAppVersionName(Context paramContext)
-  {
-    AppMethodBeat.i(194568);
-    if (!TextUtils.isEmpty(appVersionName))
-    {
-      paramContext = appVersionName;
-      AppMethodBeat.o(194568);
-      return paramContext;
-    }
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(194568);
-      return "";
-    }
-    try
-    {
-      String str = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      appVersionName = str;
-      paramContext = str;
-      if (str == null) {
-        paramContext = "";
-      }
-      AppMethodBeat.o(194568);
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(194568);
-    }
-    return "";
-  }
+  public abstract void pauseDownload();
   
-  public static String getGuid()
-  {
-    return Mxp;
-  }
+  public abstract void release();
   
-  public static int getPlatform()
-  {
-    return Mxz;
-  }
+  public abstract void resumeDownload();
   
-  public static long lo(Context paramContext)
-  {
-    AppMethodBeat.i(194569);
-    long l;
-    if (-1L != MxB)
-    {
-      l = MxB;
-      AppMethodBeat.o(194569);
-      return l;
-    }
-    try
-    {
-      l = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).getLongVersionCode();
-      MxB = l;
-      AppMethodBeat.o(194569);
-      return l;
-    }
-    catch (Throwable paramContext)
-    {
-      d.e("TPPlayerConfig", "getLongVersionCode less api 28");
-      l = MxB;
-      AppMethodBeat.o(194569);
-    }
-    return l;
-  }
+  public abstract void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam);
+  
+  public abstract void setVideoInfo(TPVideoInfo paramTPVideoInfo);
+  
+  public abstract void stopDownload();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
 package com.tencent.mm.api;
 
+import com.tencent.mm.kernel.c.a;
+
 public abstract interface w
+  extends a
 {
-  public abstract void a(g paramg);
+  public abstract void recordImage(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4);
   
-  public abstract void a(g paramg, int paramInt, Object paramObject);
-  
-  public abstract void bY(boolean paramBoolean);
+  public abstract void recordVideo(String paramString1, String paramString2, String paramString3, String paramString4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.api.w
  * JD-Core Version:    0.7.0.1
  */

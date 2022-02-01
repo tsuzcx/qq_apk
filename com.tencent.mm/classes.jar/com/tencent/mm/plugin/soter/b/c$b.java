@@ -5,27 +5,27 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dsi;
+import com.tencent.mm.protocal.protobuf.emg;
 
 public final class c$b
   extends l.e
   implements l.c
 {
-  public dsi AWy;
+  public emg Fhr;
   
   public c$b()
   {
     AppMethodBeat.i(130807);
-    this.AWy = new dsi();
+    this.Fhr = new emg();
     AppMethodBeat.o(130807);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130808);
-    this.AWy = ((dsi)new dsi().parseFrom(paramArrayOfByte));
-    l.a(this, this.AWy.getBaseResponse());
-    int i = this.AWy.getBaseResponse().Ret;
+    this.Fhr = ((emg)new emg().parseFrom(paramArrayOfByte));
+    l.a(this, this.Fhr.getBaseResponse());
+    int i = this.Fhr.getBaseResponse().Ret;
     AppMethodBeat.o(130808);
     return i;
   }
@@ -37,7 +37,7 @@ public final class c$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.c.b
  * JD-Core Version:    0.7.0.1
  */

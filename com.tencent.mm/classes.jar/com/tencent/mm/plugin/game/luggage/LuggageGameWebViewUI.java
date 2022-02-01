@@ -10,37 +10,85 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-import com.tencent.luggage.d.i;
 import com.tencent.luggage.d.i.a;
 import com.tencent.luggage.d.m;
-import com.tencent.luggage.h.e.e;
+import com.tencent.luggage.h.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.q;
 import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.game.luggage.f.a;
-import com.tencent.mm.plugin.game.luggage.f.c.a;
-import com.tencent.mm.plugin.game.luggage.f.d;
-import com.tencent.mm.plugin.game.luggage.f.d.a;
+import com.tencent.mm.plugin.game.luggage.g.a;
+import com.tencent.mm.plugin.game.luggage.g.e;
+import com.tencent.mm.plugin.game.luggage.g.e.a;
+import com.tencent.mm.plugin.game.luggage.g.f.a;
+import com.tencent.mm.plugin.game.luggage.g.j;
 import com.tencent.mm.plugin.webview.luggage.ipc.ActiveMainProcessTask;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragmentActivity.a;
+import com.tencent.mm.ui.report.MMSecDataActivity;
 import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
 
 public class LuggageGameWebViewUI
-  extends MMActivity
-  implements e.e
+  extends MMSecDataActivity
+  implements f.e
 {
-  protected com.tencent.mm.plugin.game.luggage.f.c ueg;
-  private int uei = -1;
-  private boolean uej = true;
-  protected d uek;
+  protected e xwg;
+  private int xwh = -1;
+  private boolean xwi = true;
+  protected com.tencent.mm.plugin.game.luggage.g.f xwj;
   
-  protected void cZJ() {}
+  protected void dTl()
+  {
+    AppMethodBeat.i(186835);
+    setContentView(this.xwg.ctl);
+    AppMethodBeat.o(186835);
+  }
   
-  protected void cZK() {}
+  protected void dTn() {}
+  
+  protected void dTo() {}
+  
+  protected com.tencent.mm.plugin.game.luggage.g.i g(Bundle paramBundle, String paramString)
+  {
+    AppMethodBeat.i(186836);
+    String str = paramBundle.getString("float_ball_key");
+    boolean bool = paramBundle.getBoolean("float_layer_page", false);
+    if (!Util.isNullOrNil(str))
+    {
+      paramBundle = new com.tencent.mm.plugin.game.luggage.g.i(this.xwg.cts, com.tencent.luggage.d.r.a(getContext(), Integer.valueOf(com.tencent.mm.plugin.webview.luggage.r.aYv(str))), paramBundle);
+      AppMethodBeat.o(186836);
+      return paramBundle;
+    }
+    if (bool)
+    {
+      paramBundle = new a(this.xwg.cts, paramBundle);
+      AppMethodBeat.o(186836);
+      return paramBundle;
+    }
+    if (paramBundle.containsKey("game_tab_data"))
+    {
+      this.xwj = new com.tencent.mm.plugin.game.luggage.g.f(this.xwg.cts, paramBundle);
+      dTo();
+      paramBundle = this.xwj;
+      AppMethodBeat.o(186836);
+      return paramBundle;
+    }
+    paramString = h.aI(getContext(), paramString);
+    if (paramString != null)
+    {
+      paramBundle = new j(this.xwg.cts, paramString, paramBundle);
+      AppMethodBeat.o(186836);
+      return paramBundle;
+    }
+    paramBundle = new com.tencent.mm.plugin.game.luggage.g.i(this.xwg.cts, null, paramBundle);
+    AppMethodBeat.o(186836);
+    return paramBundle;
+  }
   
   public int getLayoutId()
   {
@@ -64,19 +112,34 @@ public class LuggageGameWebViewUI
   {
     AppMethodBeat.i(83004);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.ueg.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.xwg.cto.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(83004);
   }
   
   public void onBackPressed()
   {
+    int i = 1;
     AppMethodBeat.i(83002);
-    if (!this.ueg.onBackPressed())
-    {
-      cZJ();
-      finish();
+    e locale = this.xwg;
+    com.tencent.luggage.d.h localh = locale.Ln();
+    if (localh != null) {
+      if (!localh.Lk()) {}
     }
-    AppMethodBeat.o(83002);
+    for (;;)
+    {
+      if (i == 0)
+      {
+        dTn();
+        finish();
+      }
+      AppMethodBeat.o(83002);
+      return;
+      if (locale.ctm.size() > 1) {
+        locale.Lo();
+      } else {
+        i = 0;
+      }
+    }
   }
   
   public void onCreate(final Bundle paramBundle)
@@ -86,176 +149,154 @@ public class LuggageGameWebViewUI
     boolean bool1 = getIntent().getBooleanExtra("from_shortcut", false);
     boolean bool2 = getIntent().getBooleanExtra("from_game_tab", false);
     if (!bool1) {
-      if (bu.isNullOrNil(getIntent().getStringExtra("float_ball_key"))) {
-        break label151;
+      if (Util.isNullOrNil(getIntent().getStringExtra("float_ball_key"))) {
+        break label153;
       }
     }
-    label151:
+    label153:
     for (int i = 1;; i = 0)
     {
       if ((i == 0) && (!bool2)) {
-        overridePendingTransition(MMFragmentActivity.a.Jxh, MMFragmentActivity.a.Jxi);
+        overridePendingTransition(MMFragmentActivity.a.OHB, MMFragmentActivity.a.OHC);
       }
       AppBrandMainProcessService.a(new ActiveMainProcessTask());
-      ae.i("MicroMsg.LuggageGameWebViewUI", "onCreate, startTime: %d, now: %d", new Object[] { Long.valueOf(getIntent().getLongExtra("start_activity_time", System.currentTimeMillis())), Long.valueOf(System.currentTimeMillis()) });
+      Log.i("MicroMsg.LuggageGameWebViewUI", "onCreate, startTime: %d, now: %d", new Object[] { Long.valueOf(getIntent().getLongExtra("start_activity_time", System.currentTimeMillis())), Long.valueOf(System.currentTimeMillis()) });
       paramBundle = getIntent().getStringExtra("rawUrl");
-      if (!bu.isNullOrNil(paramBundle)) {
+      if (!Util.isNullOrNil(paramBundle)) {
         break;
       }
-      ae.e("MicroMsg.LuggageGameWebViewUI", "url is null");
+      Log.e("MicroMsg.LuggageGameWebViewUI", "url is null");
       AppMethodBeat.o(82996);
       return;
     }
-    GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.wP(paramBundle);
+    if (((q)com.tencent.mm.kernel.g.af(q.class)).Vt())
+    {
+      getIntent().putExtra("rawUrl", "http://mp.weixin.qq.com/mp/readtemplate?t=appmsg/childmode");
+      paramBundle = "http://mp.weixin.qq.com/mp/readtemplate?t=appmsg/childmode";
+    }
+    GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.Fd(paramBundle);
     localGameWebPerformanceInfo.url = paramBundle;
-    localGameWebPerformanceInfo.guP = getIntent().getLongExtra("gamecenterui_createtime", 0L);
-    localGameWebPerformanceInfo.guQ = getIntent().getLongExtra("start_activity_time", System.currentTimeMillis());
-    localGameWebPerformanceInfo.startTime = getIntent().getLongExtra("start_time", localGameWebPerformanceInfo.guQ);
-    localGameWebPerformanceInfo.guV = System.currentTimeMillis();
-    localGameWebPerformanceInfo.guG = 1;
-    localGameWebPerformanceInfo.guJ = 1;
-    ae.i("MicroMsg.LuggageGameWebViewUI", "url: %s, __Time__， startTime: %d, gamecenterCreate: %d,startWebUI: %d, webUICreate: %d", new Object[] { paramBundle, Long.valueOf(localGameWebPerformanceInfo.startTime), Long.valueOf(localGameWebPerformanceInfo.guP), Long.valueOf(localGameWebPerformanceInfo.guQ), Long.valueOf(localGameWebPerformanceInfo.guV) });
-    com.tencent.mm.plugin.webview.ui.tools.game.g.aKv(paramBundle);
+    localGameWebPerformanceInfo.hhE = getIntent().getLongExtra("gamecenterui_createtime", 0L);
+    localGameWebPerformanceInfo.hhF = getIntent().getLongExtra("start_activity_time", System.currentTimeMillis());
+    localGameWebPerformanceInfo.startTime = getIntent().getLongExtra("start_time", localGameWebPerformanceInfo.hhF);
+    localGameWebPerformanceInfo.hhK = System.currentTimeMillis();
+    localGameWebPerformanceInfo.hhv = 1;
+    localGameWebPerformanceInfo.hhy = 1;
+    Log.i("MicroMsg.LuggageGameWebViewUI", "url: %s, __Time__， startTime: %d, gamecenterCreate: %d,startWebUI: %d, webUICreate: %d", new Object[] { paramBundle, Long.valueOf(localGameWebPerformanceInfo.startTime), Long.valueOf(localGameWebPerformanceInfo.hhE), Long.valueOf(localGameWebPerformanceInfo.hhF), Long.valueOf(localGameWebPerformanceInfo.hhK) });
+    com.tencent.mm.plugin.webview.ui.tools.game.g.baJ(paramBundle);
+    com.tencent.mm.plugin.webview.ui.tools.game.g.bC(paramBundle, System.currentTimeMillis());
     com.tencent.mm.plugin.webview.ui.tools.game.g.bB(paramBundle, System.currentTimeMillis());
-    com.tencent.mm.plugin.webview.ui.tools.game.g.bA(paramBundle, System.currentTimeMillis());
-    com.tencent.mm.plugin.webview.ui.tools.game.g.bJ(paramBundle, localGameWebPerformanceInfo.startTime);
+    com.tencent.mm.plugin.webview.ui.tools.game.g.bK(paramBundle, localGameWebPerformanceInfo.startTime);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
     getWindow().setFormat(-3);
-    this.ueg = new com.tencent.mm.plugin.game.luggage.f.c(this);
-    setContentView(this.ueg.chr);
-    this.ueg.ufE = new c.a()
+    this.xwg = new e(this);
+    dTl();
+    this.xwg.xxP = new e.a()
     {
-      public final boolean aKK()
+      public final boolean Lw()
       {
-        AppMethodBeat.i(224256);
-        if (LuggageGameWebViewUI.this.uek != null)
+        AppMethodBeat.i(186832);
+        if (LuggageGameWebViewUI.this.xwj != null)
         {
-          d locald = LuggageGameWebViewUI.this.uek;
-          if (locald.ufH != null)
+          com.tencent.mm.plugin.game.luggage.g.f localf = LuggageGameWebViewUI.this.xwj;
+          if (localf.xxS != null)
           {
-            boolean bool = locald.ufH.aKK();
-            AppMethodBeat.o(224256);
+            boolean bool = localf.xxS.Lw();
+            AppMethodBeat.o(186832);
             return bool;
           }
-          AppMethodBeat.o(224256);
+          AppMethodBeat.o(186832);
           return true;
         }
-        AppMethodBeat.o(224256);
+        AppMethodBeat.o(186832);
         return true;
       }
       
-      public final void cZL()
+      public final void dTp()
       {
-        AppMethodBeat.i(192976);
-        if (LuggageGameWebViewUI.this.uek != null) {
-          LuggageGameWebViewUI.this.uek.setPageChanging(true);
+        AppMethodBeat.i(186830);
+        if (LuggageGameWebViewUI.this.xwj != null) {
+          LuggageGameWebViewUI.this.xwj.setPageChanging(true);
         }
-        AppMethodBeat.o(192976);
+        AppMethodBeat.o(186830);
       }
       
-      public final void cZM()
+      public final void dTq()
       {
-        AppMethodBeat.i(192977);
-        if (LuggageGameWebViewUI.this.uek != null) {
-          LuggageGameWebViewUI.this.uek.setPageChanging(false);
+        AppMethodBeat.i(186831);
+        if (LuggageGameWebViewUI.this.xwj != null) {
+          LuggageGameWebViewUI.this.xwj.setPageChanging(false);
         }
-        AppMethodBeat.o(192977);
+        AppMethodBeat.o(186831);
       }
     };
-    this.ueg.a(new m()
+    this.xwg.a(new m()
     {
       public final com.tencent.luggage.d.h k(String paramAnonymousString, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(192978);
+        AppMethodBeat.i(186833);
         long l = System.currentTimeMillis();
-        ae.i("MicroMsg.LuggageGameWebViewUI", "getPage, __Time__，time = %d", new Object[] { Long.valueOf(l) });
+        Log.i("MicroMsg.LuggageGameWebViewUI", "getPage, __Time__，time = %d", new Object[] { Long.valueOf(l) });
         paramAnonymousBundle.putInt("minimize_secene", 3);
-        String str = paramAnonymousBundle.getString("float_ball_key");
+        Object localObject = paramAnonymousBundle.getString("float_ball_key");
         boolean bool = paramAnonymousBundle.getBoolean("float_layer_page", false);
-        if ((LuggageGameWebViewUI.a(LuggageGameWebViewUI.this)) || (bool) || (!bu.isNullOrNil(str)) || (LuggageGameWebViewUI.amq(paramAnonymousString))) {}
-        for (GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.wP(paramAnonymousString);; localGameWebPerformanceInfo = GameWebPerformanceInfo.wQ(paramAnonymousString))
+        if ((LuggageGameWebViewUI.a(LuggageGameWebViewUI.this)) || (bool) || (!Util.isNullOrNil((String)localObject)) || (LuggageGameWebViewUI.azC(paramAnonymousString))) {}
+        for (localObject = GameWebPerformanceInfo.Fd(paramAnonymousString);; localObject = GameWebPerformanceInfo.Fe(paramAnonymousString))
         {
-          if (bu.isNullOrNil(localGameWebPerformanceInfo.url))
+          if (Util.isNullOrNil(((GameWebPerformanceInfo)localObject).url))
           {
-            ae.i("MicroMsg.LuggageGameWebViewUI", "new page, url: %s", new Object[] { paramAnonymousString });
-            localGameWebPerformanceInfo.url = paramAnonymousString;
-            localGameWebPerformanceInfo.guV = l;
-            localGameWebPerformanceInfo.guQ = l;
-            localGameWebPerformanceInfo.startTime = l;
-            localGameWebPerformanceInfo.guG = 1;
+            Log.i("MicroMsg.LuggageGameWebViewUI", "new page, url: %s", new Object[] { paramAnonymousString });
+            ((GameWebPerformanceInfo)localObject).url = paramAnonymousString;
+            ((GameWebPerformanceInfo)localObject).hhK = l;
+            ((GameWebPerformanceInfo)localObject).hhF = l;
+            ((GameWebPerformanceInfo)localObject).startTime = l;
+            ((GameWebPerformanceInfo)localObject).hhv = 1;
           }
-          localGameWebPerformanceInfo.guX = l;
+          ((GameWebPerformanceInfo)localObject).hhM = l;
           if (!bool) {
             LuggageGameWebViewUI.b(LuggageGameWebViewUI.this);
           }
-          if (bu.isNullOrNil(str)) {
-            break;
-          }
-          paramAnonymousString = new com.tencent.mm.plugin.game.luggage.f.g(LuggageGameWebViewUI.this.ueg.chy, com.tencent.luggage.d.r.a(LuggageGameWebViewUI.this.getContext(), Integer.valueOf(com.tencent.mm.plugin.webview.luggage.r.aIt(str))), paramAnonymousBundle);
-          AppMethodBeat.o(192978);
+          paramAnonymousString = LuggageGameWebViewUI.this.g(paramAnonymousBundle, paramAnonymousString);
+          AppMethodBeat.o(186833);
           return paramAnonymousString;
-          com.tencent.mm.plugin.webview.ui.tools.game.g.aKv(paramAnonymousString);
+          com.tencent.mm.plugin.webview.ui.tools.game.g.baJ(paramAnonymousString);
+          com.tencent.mm.plugin.webview.ui.tools.game.g.bC(paramAnonymousString, l);
           com.tencent.mm.plugin.webview.ui.tools.game.g.bB(paramAnonymousString, l);
-          com.tencent.mm.plugin.webview.ui.tools.game.g.bA(paramAnonymousString, l);
-          com.tencent.mm.plugin.webview.ui.tools.game.g.bJ(paramAnonymousString, l);
+          com.tencent.mm.plugin.webview.ui.tools.game.g.bK(paramAnonymousString, l);
         }
-        if (bool)
-        {
-          paramAnonymousString = new a(LuggageGameWebViewUI.this.ueg.chy, paramAnonymousBundle);
-          AppMethodBeat.o(192978);
-          return paramAnonymousString;
-        }
-        if (paramAnonymousBundle.containsKey("game_tab_data"))
-        {
-          LuggageGameWebViewUI.this.uek = new d(LuggageGameWebViewUI.this.ueg.chy, paramAnonymousBundle);
-          LuggageGameWebViewUI.this.cZK();
-          paramAnonymousString = LuggageGameWebViewUI.this.uek;
-          AppMethodBeat.o(192978);
-          return paramAnonymousString;
-        }
-        paramAnonymousString = h.av(LuggageGameWebViewUI.this.getContext(), paramAnonymousString);
-        if (paramAnonymousString != null)
-        {
-          paramAnonymousString = new com.tencent.mm.plugin.game.luggage.f.h(LuggageGameWebViewUI.this.ueg.chy, paramAnonymousString, paramAnonymousBundle);
-          AppMethodBeat.o(192978);
-          return paramAnonymousString;
-        }
-        paramAnonymousString = new com.tencent.mm.plugin.game.luggage.f.g(LuggageGameWebViewUI.this.ueg.chy, null, paramAnonymousBundle);
-        AppMethodBeat.o(192978);
-        return paramAnonymousString;
       }
     });
     Object localObject1 = (GameWebViewLaunchParams)getIntent().getParcelableExtra("launchParams");
     if (localObject1 != null)
     {
-      localObject1 = ((GameWebViewLaunchParams)localObject1).uec;
+      localObject1 = ((GameWebViewLaunchParams)localObject1).xvZ;
       if (localObject1 != null)
       {
-        Object localObject2 = GameWebPerformanceInfo.wP(((GameFloatLayerInfo)localObject1).url);
+        Object localObject2 = GameWebPerformanceInfo.Fd(((GameFloatLayerInfo)localObject1).url);
         ((GameWebPerformanceInfo)localObject2).url = ((GameFloatLayerInfo)localObject1).url;
-        ((GameWebPerformanceInfo)localObject2).guP = getIntent().getLongExtra("gamecenterui_createtime", 0L);
-        ((GameWebPerformanceInfo)localObject2).guQ = getIntent().getLongExtra("start_activity_time", System.currentTimeMillis());
-        ((GameWebPerformanceInfo)localObject2).startTime = getIntent().getLongExtra("start_time", ((GameWebPerformanceInfo)localObject2).guQ);
-        ((GameWebPerformanceInfo)localObject2).guV = System.currentTimeMillis();
-        ((GameWebPerformanceInfo)localObject2).guG = 1;
-        ((GameWebPerformanceInfo)localObject2).guJ = 1;
-        com.tencent.mm.plugin.webview.ui.tools.game.g.bB(((GameFloatLayerInfo)localObject1).url, System.currentTimeMillis());
+        ((GameWebPerformanceInfo)localObject2).hhE = getIntent().getLongExtra("gamecenterui_createtime", 0L);
+        ((GameWebPerformanceInfo)localObject2).hhF = getIntent().getLongExtra("start_activity_time", System.currentTimeMillis());
+        ((GameWebPerformanceInfo)localObject2).startTime = getIntent().getLongExtra("start_time", ((GameWebPerformanceInfo)localObject2).hhF);
+        ((GameWebPerformanceInfo)localObject2).hhK = System.currentTimeMillis();
+        ((GameWebPerformanceInfo)localObject2).hhv = 1;
+        ((GameWebPerformanceInfo)localObject2).hhy = 1;
+        com.tencent.mm.plugin.webview.ui.tools.game.g.bC(((GameFloatLayerInfo)localObject1).url, System.currentTimeMillis());
         localObject2 = new Bundle();
         ((Bundle)localObject2).putString("rawUrl", ((GameFloatLayerInfo)localObject1).url);
-        ((Bundle)localObject2).putBoolean("show_full_screen", ((GameFloatLayerInfo)localObject1).uea);
+        ((Bundle)localObject2).putBoolean("show_full_screen", ((GameFloatLayerInfo)localObject1).xvW);
         ((Bundle)localObject2).putInt("screen_orientation", ((GameFloatLayerInfo)localObject1).orientation);
         ((Bundle)localObject2).putBoolean("float_layer_page", true);
         ((Bundle)localObject2).putBoolean("needAnimation", false);
         ((Bundle)localObject2).putInt("customize_status_bar_color", getIntent().getIntExtra("customize_status_bar_color", 0));
         ((Bundle)localObject2).putString("customize_status_bar_color", getIntent().getStringExtra("status_bar_style"));
-        this.ueg.a(((GameFloatLayerInfo)localObject1).url, (Bundle)localObject2, false);
+        this.xwg.a(((GameFloatLayerInfo)localObject1).url, (Bundle)localObject2, false);
         i = 1;
         if (i == 0) {
-          break label744;
+          break label781;
         }
-        localGameWebPerformanceInfo.guN = 1;
+        localGameWebPerformanceInfo.hhC = 1;
         new Handler().postDelayed(new Runnable()
         {
           public final void run()
@@ -266,21 +307,21 @@ public class LuggageGameWebViewUI
               AppMethodBeat.o(170128);
               return;
             }
-            com.tencent.mm.plugin.game.luggage.f.c localc = LuggageGameWebViewUI.this.ueg;
+            e locale = LuggageGameWebViewUI.this.xwg;
             String str = paramBundle;
             Bundle localBundle = LuggageGameWebViewUI.this.getIntent().getExtras();
-            com.tencent.luggage.d.h localh = localc.chv.k(str, localBundle);
+            com.tencent.luggage.d.h localh = locale.ctp.k(str, localBundle);
             if (localh == null)
             {
-              ae.e("LuggagePageContainer", "No page specified for url %s", new Object[] { str });
+              Log.e("LuggagePageContainer", "No page specified for url %s", new Object[] { str });
               AppMethodBeat.o(170128);
               return;
             }
-            localc.chr.addView(localh.getContentView(), 0);
-            localc.chs.add(localh);
+            locale.ctl.addView(localh.getContentView(), 0);
+            locale.ctm.add(localh);
             localh.g(str, localBundle);
-            localh.BT();
-            localc.BZ();
+            localh.Li();
+            locale.Lp();
             AppMethodBeat.o(170128);
           }
         }, 300L);
@@ -293,21 +334,21 @@ public class LuggageGameWebViewUI
         {
           public final void run()
           {
-            AppMethodBeat.i(192979);
+            AppMethodBeat.i(186834);
             Intent localIntent = new Intent();
             localIntent.putExtra("from_scene", 3);
-            ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(LuggageGameWebViewUI.this, localIntent, null);
-            AppMethodBeat.o(192979);
+            ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.downloader_app.api.c.class)).a(LuggageGameWebViewUI.this, localIntent, null);
+            AppMethodBeat.o(186834);
           }
         }, 300L);
       }
-      f.cal();
+      f.cyc();
       AppMethodBeat.o(82996);
       return;
       i = 0;
       break;
-      label744:
-      this.ueg.h(paramBundle, getIntent().getExtras());
+      label781:
+      this.xwg.h(paramBundle, getIntent().getExtras());
     }
   }
   
@@ -325,18 +366,18 @@ public class LuggageGameWebViewUI
   {
     AppMethodBeat.i(83001);
     super.onDestroy();
-    ae.i("MicroMsg.LuggageGameWebViewUI", "onDestroy");
-    e.uee = null;
+    Log.i("MicroMsg.LuggageGameWebViewUI", "onDestroy");
+    e.xwe = null;
     e.mHeaders = null;
-    e.MX = 0L;
-    this.ueg.destroy();
+    e.Nh = 0L;
+    this.xwg.destroy();
     com.tencent.mm.plugin.wepkg.event.c.clear();
-    ae.i("MicroMsg.LuggageGameWebViewUI", "fixInputMethodManagerLeak");
+    Log.i("MicroMsg.LuggageGameWebViewUI", "fixInputMethodManagerLeak");
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
     int i;
     if (localInputMethodManager != null)
     {
-      ae.i("MicroMsg.LuggageGameWebViewUI", "fixInputMethodManagerLeak, imm");
+      Log.i("MicroMsg.LuggageGameWebViewUI", "fixInputMethodManagerLeak, imm");
       i = 0;
     }
     for (;;)
@@ -367,7 +408,7 @@ public class LuggageGameWebViewUI
         }
         catch (Throwable localThrowable)
         {
-          ae.printErrStackTrace("MicroMsg.LuggageGameWebViewUI", localThrowable, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.LuggageGameWebViewUI", localThrowable, "", new Object[0]);
         }
       }
       System.gc();
@@ -383,9 +424,25 @@ public class LuggageGameWebViewUI
   {
     AppMethodBeat.i(83000);
     super.onPause();
-    ae.i("MicroMsg.LuggageGameWebViewUI", "onPause");
+    Log.i("MicroMsg.LuggageGameWebViewUI", "onPause");
     hideVKB();
-    this.ueg.onPause();
+    Object localObject = this.xwg.Ln();
+    if (localObject != null) {
+      ((com.tencent.luggage.d.h)localObject).Lj();
+    }
+    if (this.xwj != null)
+    {
+      localObject = this.xwj;
+      Log.i("MicroMsg.GameTabWebPage", "computeFcp()");
+      localObject = ((com.tencent.mm.plugin.game.luggage.g.f)localObject).xxQ.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        com.tencent.mm.plugin.game.luggage.g.i locali = (com.tencent.mm.plugin.game.luggage.g.i)((Iterator)localObject).next();
+        if (locali != null) {
+          locali.at(null);
+        }
+      }
+    }
     AppMethodBeat.o(83000);
   }
   
@@ -393,8 +450,8 @@ public class LuggageGameWebViewUI
   {
     AppMethodBeat.i(82999);
     super.onResume();
-    ae.i("MicroMsg.LuggageGameWebViewUI", "onResume, time: " + System.currentTimeMillis());
-    this.ueg.onResume();
+    Log.i("MicroMsg.LuggageGameWebViewUI", "onResume, time: " + System.currentTimeMillis());
+    this.xwg.onResume();
     AppMethodBeat.o(82999);
   }
   
@@ -402,7 +459,7 @@ public class LuggageGameWebViewUI
   {
     AppMethodBeat.i(83003);
     AppMethodBeat.at(this, paramBoolean);
-    ae.i("MicroMsg.LuggageGameWebViewUI", "onWindowFocusChanged, hasFocus: %b, time: %d", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(System.currentTimeMillis()) });
+    Log.i("MicroMsg.LuggageGameWebViewUI", "onWindowFocusChanged, hasFocus: %b, time: %d", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(System.currentTimeMillis()) });
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.o(83003);
   }
@@ -410,13 +467,13 @@ public class LuggageGameWebViewUI
   public void setMMOrientation()
   {
     AppMethodBeat.i(83005);
-    if (this.uei != -1)
+    if (this.xwh != -1)
     {
-      setRequestedOrientation(this.uei);
+      setRequestedOrientation(this.xwh);
       AppMethodBeat.o(83005);
       return;
     }
-    this.landscapeMode = getSharedPreferences(ak.fow(), 4).getBoolean("settings_landscape_mode", false);
+    this.landscapeMode = getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 4).getBoolean("settings_landscape_mode", false);
     if (this.landscapeMode)
     {
       setRequestedOrientation(-1);
@@ -429,13 +486,13 @@ public class LuggageGameWebViewUI
   
   public boolean supportNavigationSwipeBack()
   {
-    AppMethodBeat.i(192980);
+    AppMethodBeat.i(186837);
     if (!getIntent().getBooleanExtra("disable_game_tab_home_swipe", false))
     {
-      AppMethodBeat.o(192980);
+      AppMethodBeat.o(186837);
       return true;
     }
-    AppMethodBeat.o(192980);
+    AppMethodBeat.o(186837);
     return false;
   }
 }

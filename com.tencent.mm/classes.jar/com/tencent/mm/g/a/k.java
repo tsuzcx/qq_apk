@@ -1,12 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class k
-  extends b
+  extends IEvent
 {
-  public a dkW;
+  public a dCc;
+  public b dCd;
   
   public k()
   {
@@ -15,16 +18,26 @@ public final class k
   
   private k(byte paramByte)
   {
-    AppMethodBeat.i(42650);
-    this.dkW = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(149847);
+    this.dCc = new a();
+    this.dCd = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(42650);
+    AppMethodBeat.o(149847);
   }
   
   public static final class a
   {
-    public boolean isActive;
+    public int actionCode;
+    public Context context;
+    public String dCe;
+    public boolean dCf;
+    public boolean dCg;
+  }
+  
+  public static final class b
+  {
+    public Bundle dCh;
   }
 }
 

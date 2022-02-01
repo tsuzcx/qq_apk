@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/a2h" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
+        <ImageView android:id="@id/j_i" android:background="@raw/success_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/d52" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/j_i" android:layout_centerHorizontal="true">
+            <TextView android:textSize="@dimen/s" android:textColor="@color/a2x" android:gravity="center" android:id="@id/j_j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hw" android:text="{title}" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/j_l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:text="{title_tip}" />
+        </LinearLayout>
+        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_below="@id/d52">
+            <Button android:textSize="@dimen/l" android:id="@id/h6z" android:padding="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:text="@string/vl" style="@style/ou" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

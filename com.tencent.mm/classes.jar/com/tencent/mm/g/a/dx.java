@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class dx
-  extends b
+  extends IEvent
 {
-  public a dpS;
-  public b dpT;
+  public a dGY;
+  public b dGZ;
   
   public dx()
   {
@@ -16,23 +16,24 @@ public final class dx
   
   private dx(byte paramByte)
   {
-    AppMethodBeat.i(115984);
-    this.dpS = new a();
-    this.dpT = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(115981);
+    this.dGY = new a();
+    this.dGZ = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(115984);
+    AppMethodBeat.o(115981);
   }
   
   public static final class a
   {
-    public boolean dpJ = false;
+    public String brandName;
+    public String dGL;
+    public boolean dGW = false;
   }
   
   public static final class b
   {
-    public boolean dpK;
-    public String dpU;
+    public boolean dGX;
   }
 }
 

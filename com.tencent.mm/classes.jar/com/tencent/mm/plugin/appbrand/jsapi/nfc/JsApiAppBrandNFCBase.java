@@ -5,21 +5,19 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class JsApiAppBrandNFCBase
-  extends a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d
 {
-  a lbG = null;
+  a mgX = null;
   
   protected final void a(a parama)
   {
-    this.lbG = parama;
+    this.mgX = parama;
     parama = new CheckIsSupportHCETask(this);
-    parama.biw();
+    parama.bDJ();
     AppBrandMainProcessService.a(parama);
   }
   
@@ -29,7 +27,7 @@ public abstract class JsApiAppBrandNFCBase
     public static final Parcelable.Creator<CheckIsSupportHCETask> CREATOR;
     private int errCode;
     private String errMsg;
-    private JsApiAppBrandNFCBase lbH;
+    private JsApiAppBrandNFCBase mgY;
     
     static
     {
@@ -41,31 +39,31 @@ public abstract class JsApiAppBrandNFCBase
     public CheckIsSupportHCETask(Parcel paramParcel)
     {
       AppMethodBeat.i(136095);
-      this.lbH = null;
-      e(paramParcel);
+      this.mgY = null;
+      f(paramParcel);
       AppMethodBeat.o(136095);
     }
     
     public CheckIsSupportHCETask(JsApiAppBrandNFCBase paramJsApiAppBrandNFCBase)
     {
-      this.lbH = null;
-      this.lbH = paramJsApiAppBrandNFCBase;
+      this.mgY = null;
+      this.mgY = paramJsApiAppBrandNFCBase;
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(136096);
-      if (!d.bmy())
+      if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bHX())
       {
         this.errCode = 13000;
         this.errMsg = "not support NFC";
       }
       for (;;)
       {
-        biG();
+        bDU();
         AppMethodBeat.o(136096);
         return;
-        if (!d.bmx())
+        if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bHW())
         {
           this.errCode = 13002;
           this.errMsg = "not support HCE";
@@ -78,33 +76,33 @@ public abstract class JsApiAppBrandNFCBase
       }
     }
     
-    public final void aOY()
+    public final void bjk()
     {
       AppMethodBeat.i(136097);
-      super.aOY();
-      bix();
-      if (this.lbH != null)
+      super.bjk();
+      bDK();
+      if (this.mgY != null)
       {
-        JsApiAppBrandNFCBase localJsApiAppBrandNFCBase = this.lbH;
+        JsApiAppBrandNFCBase localJsApiAppBrandNFCBase = this.mgY;
         int i = this.errCode;
         String str2 = this.errMsg;
-        ae.i("MicroMsg.JsApiAppBrandNFCBase", "alvinluo checkIsSupport resultCallback errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), str2 });
+        Log.i("MicroMsg.JsApiAppBrandNFCBase", "alvinluo checkIsSupport resultCallback errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), str2 });
         if (i == 0)
         {
-          if (localJsApiAppBrandNFCBase.lbG != null)
+          if (localJsApiAppBrandNFCBase.mgX != null)
           {
-            localJsApiAppBrandNFCBase.lbG.y(i, str2);
+            localJsApiAppBrandNFCBase.mgX.A(i, str2);
             AppMethodBeat.o(136097);
           }
         }
         else
         {
           String str1 = str2;
-          if (bu.isNullOrNil(str2)) {
+          if (Util.isNullOrNil(str2)) {
             str1 = "unknown error";
           }
-          if (localJsApiAppBrandNFCBase.lbG != null) {
-            localJsApiAppBrandNFCBase.lbG.y(i, str1);
+          if (localJsApiAppBrandNFCBase.mgX != null) {
+            localJsApiAppBrandNFCBase.mgX.A(i, str1);
           }
         }
       }
@@ -119,10 +117,10 @@ public abstract class JsApiAppBrandNFCBase
       return i;
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(136100);
-      super.e(paramParcel);
+      super.f(paramParcel);
       this.errCode = paramParcel.readInt();
       this.errMsg = paramParcel.readString();
       AppMethodBeat.o(136100);
@@ -140,12 +138,12 @@ public abstract class JsApiAppBrandNFCBase
   
   public static abstract interface a
   {
-    public abstract void y(int paramInt, String paramString);
+    public abstract void A(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.JsApiAppBrandNFCBase
  * JD-Core Version:    0.7.0.1
  */

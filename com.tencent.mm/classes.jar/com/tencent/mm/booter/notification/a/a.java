@@ -7,43 +7,43 @@ import android.graphics.Bitmap.Config;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.sdk.platformtools.n;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.FilePathGenerator;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.FileNotFoundException;
 import java.nio.ByteBuffer;
 import java.nio.channels.ReadableByteChannel;
 
 public final class a
 {
-  public Bitmap fJe;
+  public Bitmap got;
   
-  public static Bitmap T(String paramString1, String paramString2)
+  public static Bitmap V(String paramString1, String paramString2)
   {
     AppMethodBeat.i(20037);
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(20037);
       return null;
     }
-    String str = n.d(paramString2, "user_", g.getMessageDigest(paramString1.getBytes()), ".png", 1) + ".bm";
+    String str = FilePathGenerator.genPath(paramString2, "user_", g.getMessageDigest(paramString1.getBytes()), ".png", 1) + ".bm";
     try
     {
-      paramString1 = new k(str);
+      paramString1 = new o(str);
       if (!paramString1.exists())
       {
-        ae.w("MicroMsg.NotificationAvatar", "SmallBM get bm file not exsit:%s", new Object[] { str });
+        Log.w("MicroMsg.NotificationAvatar", "SmallBM get bm file not exsit:%s", new Object[] { str });
         AppMethodBeat.o(20037);
         return null;
       }
       i = (int)paramString1.length();
       if ((i <= 0) || ((i != 36864) && (i != 36880)))
       {
-        ae.e("MicroMsg.NotificationAvatar", "SmallBM get bm invalid size:%d file:%s", new Object[] { Integer.valueOf(i), str });
+        Log.e("MicroMsg.NotificationAvatar", "SmallBM get bm invalid size:%d file:%s", new Object[] { Integer.valueOf(i), str });
         AppMethodBeat.o(20037);
         return null;
       }
@@ -57,7 +57,7 @@ public final class a
     catch (Exception paramString2)
     {
       paramString1 = null;
-      ae.e("MicroMsg.NotificationAvatar", "SmallBM get exception e:%s file:%s", new Object[] { paramString2.getMessage(), str });
+      Log.e("MicroMsg.NotificationAvatar", "SmallBM get exception e:%s file:%s", new Object[] { paramString2.getMessage(), str });
       if (paramString1 == null) {}
     }
     catch (OutOfMemoryError paramString2)
@@ -70,7 +70,7 @@ public final class a
           paramString1.close();
           AppMethodBeat.o(20037);
           return null;
-          paramString1 = o.c(w.parseUri(str), null);
+          paramString1 = s.c(aa.parseUri(str), null);
           try
           {
             paramString2 = ByteBuffer.allocateDirect(36864);
@@ -84,20 +84,20 @@ public final class a
             long l = localByteBuffer.getLong(0);
             if (l != 1L)
             {
-              ae.e("MicroMsg.NotificationAvatar", "SmallBM get bm header invalid flag:%d size:%d file:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), str });
+              Log.e("MicroMsg.NotificationAvatar", "SmallBM get bm header invalid flag:%d size:%d file:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), str });
               paramString1.close();
               AppMethodBeat.o(20037);
               return null;
             }
             bool = false;
-            ae.d("MicroMsg.NotificationAvatar", "SmallBM get bm size:%d shouldRemoveCorner:%b file:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), str });
+            Log.d("MicroMsg.NotificationAvatar", "SmallBM get bm size:%d shouldRemoveCorner:%b file:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), str });
             paramString1.close();
             paramString1 = Bitmap.createBitmap(96, 96, Bitmap.Config.ARGB_8888);
             paramString1.copyPixelsFromBuffer(paramString2);
             if (bool)
             {
               paramString2 = Bitmap.createBitmap(paramString1, 9, 9, 78, 78);
-              ae.i("MicroMsg.NotificationAvatar", "recycle bitmap:%s", new Object[] { paramString1.toString() });
+              Log.i("MicroMsg.NotificationAvatar", "recycle bitmap:%s", new Object[] { paramString1.toString() });
               paramString1.recycle();
               AppMethodBeat.o(20037);
               return paramString2;
@@ -112,7 +112,7 @@ public final class a
           catch (Exception paramString2) {}
           paramString2 = paramString2;
           paramString1 = null;
-          ae.e("MicroMsg.NotificationAvatar", "SmallBM get OutOfMemoryError e:%s file:%s", new Object[] { paramString2.getMessage(), str });
+          Log.e("MicroMsg.NotificationAvatar", "SmallBM get OutOfMemoryError e:%s file:%s", new Object[] { paramString2.getMessage(), str });
         }
         catch (Exception paramString1)
         {
@@ -135,8 +135,8 @@ public final class a
     }
     if (Build.VERSION.SDK_INT >= 11)
     {
-      int i = paramContext.getResources().getDimensionPixelSize(17104902) - paramContext.getResources().getDimensionPixelSize(2131166574);
-      paramContext = h.a(h.a(paramBitmap, i, i, false, false), false, paramContext.getResources().getDimensionPixelSize(2131166573));
+      int i = paramContext.getResources().getDimensionPixelSize(17104902) - paramContext.getResources().getDimensionPixelSize(2131166690);
+      paramContext = BitmapUtil.getRoundedCornerBitmap(BitmapUtil.extractThumbNail(paramBitmap, i, i, false, false), false, paramContext.getResources().getDimensionPixelSize(2131166689));
       AppMethodBeat.o(20036);
       return paramContext;
     }

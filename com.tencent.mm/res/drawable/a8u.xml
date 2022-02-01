@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_selected="true" android:drawable="@drawable/c0a" />
-    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/c0a" />
-    <item android:drawable="@drawable/c0_" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/ac_" />
+            <stroke android:width="@dimen/a2" android:color="@color/fs" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/ac_" />
+            <stroke android:width="@dimen/a2" android:color="@color/gp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/ac_" />
+            <stroke android:width="@dimen/a2" android:color="@color/go" />
+        </shape>
+    </item>
 </selector>

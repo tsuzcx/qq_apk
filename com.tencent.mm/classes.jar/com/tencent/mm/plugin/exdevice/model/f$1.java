@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aj.c;
-import com.tencent.mm.model.au.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.model.ay.b.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f$1
-  implements au.b.a
+  implements ay.b.a
 {
   public f$1(long paramLong, Runnable paramRunnable) {}
   
@@ -16,8 +16,8 @@ public final class f$1
     AppMethodBeat.i(23314);
     if (paramBoolean)
     {
-      ae.v("MicroMsg.exdevice.ExdeviceLogic", "getContact suc; cost=" + (bu.fpO() - this.pjT) + " ms");
-      c.al(paramString, 3);
+      Log.v("MicroMsg.exdevice.ExdeviceLogic", "getContact suc; cost=" + (Util.nowMilliSecond() - this.qze) + " ms");
+      c.ap(paramString, 3);
       if (this.val$callback != null)
       {
         this.val$callback.run();
@@ -26,7 +26,7 @@ public final class f$1
     }
     else
     {
-      ae.w("MicroMsg.exdevice.ExdeviceLogic", "getContact failed");
+      Log.w("MicroMsg.exdevice.ExdeviceLogic", "getContact failed");
     }
     AppMethodBeat.o(23314);
   }

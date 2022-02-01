@@ -34,7 +34,7 @@ public class FavourLayout
       TextView localTextView = new TextView(getContext());
       localTextView.setText(str);
       localTextView.setTextColor(Color.parseColor("#ff891e"));
-      localTextView.setTextSize(0, a.ax(getContext(), 2131165569));
+      localTextView.setTextSize(0, a.aG(getContext(), 2131165587));
       addView(localTextView);
     }
     AppMethodBeat.o(71482);

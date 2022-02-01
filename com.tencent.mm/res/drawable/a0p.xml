@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/bq_" />
-    <item android:drawable="@drawable/bq9" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/q5" />
+            <size android:height="32.0dip" />
+            <corners android:radius="@dimen/ct" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/q8" />
+            <size android:height="32.0dip" />
+            <corners android:radius="@dimen/ct" />
+        </shape>
+    </item>
 </selector>

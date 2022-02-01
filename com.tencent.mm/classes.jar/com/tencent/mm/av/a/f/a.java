@@ -2,40 +2,40 @@ package com.tencent.mm.av.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.c.d;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 
 public final class a
   implements Runnable
 {
-  private final com.tencent.mm.av.a.a.b ifO;
-  private final com.tencent.mm.av.a.a.c ifW;
-  private final com.tencent.mm.av.a.c.b ifY;
-  private final com.tencent.mm.av.a.c.c ifZ;
-  private final com.tencent.mm.av.a.b igP;
-  private final d igQ;
+  private final com.tencent.mm.av.a.a.b jaJ;
+  private final com.tencent.mm.av.a.a.c jaR;
+  private final com.tencent.mm.av.a.c.b jaT;
+  private final com.tencent.mm.av.a.c.c jaU;
+  private final com.tencent.mm.av.a.b jbK;
+  private final d jbL;
   private final String url;
   
   public a(String paramString, com.tencent.mm.av.a.a.c paramc, com.tencent.mm.av.a.b paramb, d paramd)
   {
     AppMethodBeat.i(130433);
     this.url = paramString;
-    this.igP = paramb;
-    this.ifO = this.igP.ifO;
+    this.jbK = paramb;
+    this.jaJ = this.jbK.jaJ;
     if (paramc == null)
     {
-      this.ifW = this.ifO.ifW;
-      this.igQ = paramd;
-      if (this.ifW.ifZ == null) {
+      this.jaR = this.jaJ.jaR;
+      this.jbL = paramd;
+      if (this.jaR.jaU == null) {
         break label97;
       }
     }
     label97:
-    for (this.ifZ = this.ifW.ifZ;; this.ifZ = this.ifO.ifZ)
+    for (this.jaU = this.jaR.jaU;; this.jaU = this.jaJ.jaU)
     {
-      this.ifY = this.ifO.ifY;
+      this.jaT = this.jaJ.jaT;
       AppMethodBeat.o(130433);
       return;
-      this.ifW = paramc;
+      this.jaR = paramc;
       break;
     }
   }
@@ -44,25 +44,25 @@ public final class a
   {
     AppMethodBeat.i(130434);
     new com.tencent.mm.av.a.d.b();
-    com.tencent.mm.av.a.d.b localb = this.ifZ.Gj(this.url);
+    com.tencent.mm.av.a.d.b localb = this.jaU.OV(this.url);
     if (localb == null)
     {
-      if (this.igQ != null)
+      if (this.jbL != null)
       {
-        this.igQ.eM(false);
+        this.jbL.a(false, this.jaR.jbE);
         AppMethodBeat.o(130434);
       }
     }
-    else if (((h.decodeByteArray(localb.data, 10, 10) != null) || (!this.ifW.igE)) && (this.ifY.a(this.url, localb.data, this.ifW)))
+    else if (((BitmapUtil.decodeByteArray(localb.data, 10, 10) != null) || (!this.jaR.jbz)) && (this.jaT.a(this.url, localb.data, this.jaR)))
     {
-      if (this.igQ != null)
+      if (this.jbL != null)
       {
-        this.igQ.eM(true);
+        this.jbL.a(true, this.jaR.jbE);
         AppMethodBeat.o(130434);
       }
     }
-    else if (this.igQ != null) {
-      this.igQ.eM(false);
+    else if (this.jbL != null) {
+      this.jbL.a(false, this.jaR.jbE);
     }
     AppMethodBeat.o(130434);
   }

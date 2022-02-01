@@ -11,7 +11,7 @@ public class PluginDescription
   implements Parcelable, Serializable
 {
   public static final Parcelable.Creator<PluginDescription> CREATOR;
-  public final int gfg;
+  public final int gKN;
   public final String md5;
   public final String name;
   public final int size;
@@ -33,7 +33,7 @@ public class PluginDescription
     this.md5 = ((String)m.checkNotNull(paramParcel.readString()));
     this.version = ((String)m.checkNotNull(paramParcel.readString()));
     this.size = paramParcel.readInt();
-    this.gfg = paramParcel.readInt();
+    this.gKN = paramParcel.readInt();
     AppMethodBeat.o(155831);
   }
   
@@ -45,7 +45,7 @@ public class PluginDescription
   public String toString()
   {
     AppMethodBeat.i(155832);
-    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.md5, this.version, Integer.valueOf(this.size), Integer.valueOf(this.gfg) });
+    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.md5, this.version, Integer.valueOf(this.size), Integer.valueOf(this.gKN) });
     AppMethodBeat.o(155832);
     return str;
   }
@@ -58,7 +58,7 @@ public class PluginDescription
     paramParcel.writeString(this.md5);
     paramParcel.writeString(this.version);
     paramParcel.writeInt(this.size);
-    paramParcel.writeInt(this.gfg);
+    paramParcel.writeInt(this.gKN);
     AppMethodBeat.o(155830);
   }
 }

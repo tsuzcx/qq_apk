@@ -1,42 +1,34 @@
 package com.tencent.mm.plugin.finder.utils;
 
+import android.graphics.Paint;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.b;
-import com.tencent.mm.plugin.finder.storage.k;
-import com.tencent.mm.plugin.finder.storage.x;
-import com.tencent.mm.plugin.finder.storage.z;
-import d.l;
+import com.tencent.mm.ui.ao;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderFeedLayoutFactory;", "", "()V", "getLayoutConfig", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"setTextBold", "", "Landroid/widget/TextView;", "setTextNormal", "plugin-finder_release"})
 public final class e
 {
-  public static final e sWq;
-  
-  static
+  public static final void n(TextView paramTextView)
   {
-    AppMethodBeat.i(205089);
-    sWq = new e();
-    AppMethodBeat.o(205089);
+    AppMethodBeat.i(253386);
+    p.h(paramTextView, "$this$setTextBold");
+    ao.a((Paint)paramTextView.getPaint(), 0.8F);
+    AppMethodBeat.o(253386);
   }
   
-  public static z cNH()
+  public static final void o(TextView paramTextView)
   {
-    AppMethodBeat.i(205088);
-    Object localObject = b.sHP;
-    if (b.cIr())
-    {
-      localObject = (z)new k();
-      AppMethodBeat.o(205088);
-      return localObject;
-    }
-    localObject = (z)new x();
-    AppMethodBeat.o(205088);
-    return localObject;
+    AppMethodBeat.i(253387);
+    p.h(paramTextView, "$this$setTextNormal");
+    ao.b((Paint)paramTextView.getPaint());
+    AppMethodBeat.o(253387);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,158 +1,138 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class alb
-  extends com.tencent.mm.bw.a
+  extends dpc
 {
-  public int GCA;
-  public int GCB;
-  public int GCC;
-  public int GCD;
-  public int GCE;
-  public int GCF;
-  public int GCt;
-  public int GCu;
-  public int GCv;
-  public int GCw;
-  public int GCx;
-  public int GCy;
-  public int GCz;
-  public int fileCount;
-  public int tRD;
+  public int KLp;
+  public String UserName;
+  public String hio;
+  public int oTW;
+  public int rBx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127492);
+    AppMethodBeat.i(256408);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.GCt);
-      paramVarArgs.aS(2, this.GCu);
-      paramVarArgs.aS(3, this.GCv);
-      paramVarArgs.aS(4, this.tRD);
-      paramVarArgs.aS(5, this.GCw);
-      paramVarArgs.aS(6, this.GCx);
-      paramVarArgs.aS(7, this.GCy);
-      paramVarArgs.aS(8, this.fileCount);
-      paramVarArgs.aS(9, this.GCz);
-      paramVarArgs.aS(10, this.GCA);
-      paramVarArgs.aS(11, this.GCB);
-      paramVarArgs.aS(12, this.GCC);
-      paramVarArgs.aS(13, this.GCD);
-      paramVarArgs.aS(14, this.GCE);
-      paramVarArgs.aS(15, this.GCF);
-      AppMethodBeat.o(127492);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bz(1, this.GCt);
-      int i = f.a.a.b.b.a.bz(2, this.GCu);
-      int j = f.a.a.b.b.a.bz(3, this.GCv);
-      int k = f.a.a.b.b.a.bz(4, this.tRD);
-      int m = f.a.a.b.b.a.bz(5, this.GCw);
-      int n = f.a.a.b.b.a.bz(6, this.GCx);
-      int i1 = f.a.a.b.b.a.bz(7, this.GCy);
-      int i2 = f.a.a.b.b.a.bz(8, this.fileCount);
-      int i3 = f.a.a.b.b.a.bz(9, this.GCz);
-      int i4 = f.a.a.b.b.a.bz(10, this.GCA);
-      int i5 = f.a.a.b.b.a.bz(11, this.GCB);
-      int i6 = f.a.a.b.b.a.bz(12, this.GCC);
-      int i7 = f.a.a.b.b.a.bz(13, this.GCD);
-      int i8 = f.a.a.b.b.a.bz(14, this.GCE);
-      int i9 = f.a.a.b.b.a.bz(15, this.GCF);
-      AppMethodBeat.o(127492);
-      return paramInt + 0 + i + j + k + m + n + i1 + i2 + i3 + i4 + i5 + i6 + i7 + i8 + i9;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
-      }
-      AppMethodBeat.o(127492);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      alb localalb = (alb)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-      default: 
-        AppMethodBeat.o(127492);
-        return -1;
-      case 1: 
-        localalb.GCt = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 2: 
-        localalb.GCu = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 3: 
-        localalb.GCv = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 4: 
-        localalb.tRD = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 5: 
-        localalb.GCw = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 6: 
-        localalb.GCx = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 7: 
-        localalb.GCy = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 8: 
-        localalb.fileCount = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 9: 
-        localalb.GCz = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 10: 
-        localalb.GCA = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 11: 
-        localalb.GCB = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 12: 
-        localalb.GCC = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 13: 
-        localalb.GCD = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
-      case 14: 
-        localalb.GCE = locala.OmT.zc();
-        AppMethodBeat.o(127492);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(256408);
+        throw paramVarArgs;
       }
-      localalb.GCF = locala.OmT.zc();
-      AppMethodBeat.o(127492);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aM(2, this.rBx);
+      if (this.UserName != null) {
+        paramVarArgs.e(3, this.UserName);
+      }
+      paramVarArgs.aM(4, this.oTW);
+      paramVarArgs.aM(5, this.KLp);
+      if (this.hio != null) {
+        paramVarArgs.e(6, this.hio);
+      }
+      AppMethodBeat.o(256408);
       return 0;
     }
-    AppMethodBeat.o(127492);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label610;
+      }
+    }
+    label610:
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.rBx);
+      paramInt = i;
+      if (this.UserName != null) {
+        paramInt = i + g.a.a.b.b.a.f(3, this.UserName);
+      }
+      i = paramInt + g.a.a.b.b.a.bu(4, this.oTW) + g.a.a.b.b.a.bu(5, this.KLp);
+      paramInt = i;
+      if (this.hio != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.hio);
+      }
+      AppMethodBeat.o(256408);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(256408);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(256408);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        alb localalb = (alb)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(256408);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localalb.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(256408);
+          return 0;
+        case 2: 
+          localalb.rBx = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(256408);
+          return 0;
+        case 3: 
+          localalb.UserName = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(256408);
+          return 0;
+        case 4: 
+          localalb.oTW = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(256408);
+          return 0;
+        case 5: 
+          localalb.KLp = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(256408);
+          return 0;
+        }
+        localalb.hio = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(256408);
+        return 0;
+      }
+      AppMethodBeat.o(256408);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.alb
  * JD-Core Version:    0.7.0.1
  */

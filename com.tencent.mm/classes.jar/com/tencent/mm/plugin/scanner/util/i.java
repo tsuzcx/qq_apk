@@ -1,86 +1,84 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.scanner.view.c;
+import com.tencent.mm.plugin.scanner.view.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.TimerTask;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask;", "Ljava/util/TimerTask;", "loadingViewModel", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;", "loadingStatusChangedListener", "Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;", "onCancelListener", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "(Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;)V", "cancelListener", "isCancelled", "", "cancel", "run", "", "Companion", "LoadingStatusChangedListener", "plugin-scan_release"})
 public final class i
-  implements SensorEventListener
+  extends TimerTask
 {
-  public static final i yQa;
-  public SensorManager mSensorManager;
-  public Sensor yPW;
-  public float[] yPX;
-  public int yPY;
-  private long yPZ;
+  public static final i.a CTV;
+  private c CIV;
+  private c.a CTT;
+  private b CTU;
+  private boolean isCancelled;
   
   static
   {
-    AppMethodBeat.i(52061);
-    yQa = new i();
-    AppMethodBeat.o(52061);
+    AppMethodBeat.i(52494);
+    CTV = new i.a((byte)0);
+    AppMethodBeat.o(52494);
   }
   
-  private i()
+  public i(c paramc, b paramb, c.a parama)
   {
-    AppMethodBeat.i(52059);
-    this.yPX = new float[3];
-    this.mSensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
-    this.yPW = this.mSensorManager.getDefaultSensor(1);
-    AppMethodBeat.o(52059);
+    this.CIV = paramc;
+    this.CTU = paramb;
+    this.CTT = parama;
   }
   
-  public final long dQi()
+  public final boolean cancel()
   {
-    if (this.yPY >= 5) {
-      return this.yPZ;
-    }
-    return 0L;
+    AppMethodBeat.i(52492);
+    boolean bool = super.cancel();
+    this.isCancelled = true;
+    AppMethodBeat.o(52492);
+    return bool;
   }
   
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  public final void run()
   {
-    AppMethodBeat.i(52060);
-    if (paramSensorEvent.sensor.getType() == 1)
+    AppMethodBeat.i(52493);
+    MMHandlerThread.postToMainThread((Runnable)new c(this));
+    AppMethodBeat.o(52493);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;", "", "onDismiss", "", "onShow", "plugin-scan_release"})
+  public static abstract interface b
+  {
+    public abstract void onShow();
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(i parami) {}
+    
+    public final void run()
     {
-      paramSensorEvent = paramSensorEvent.values;
-      ae.d("MicroMsg.ScanStableDetector", "x:%f,y:%f,z:%f", new Object[] { Float.valueOf(paramSensorEvent[0]), Float.valueOf(paramSensorEvent[1]), Float.valueOf(paramSensorEvent[2]) });
-      if ((this.yPX[0] == 0.0F) && (this.yPX[1] == 0.0F) && (this.yPX[2] == 0.0F))
+      AppMethodBeat.i(52491);
+      Log.v("MicroMsg.ScanShowLoadingTimerTask", "alvinluo initLoadingTimer showLoading isCancelled: %b", new Object[] { Boolean.valueOf(i.a(this.CTW)) });
+      if (!i.a(this.CTW))
       {
-        this.yPX[0] = paramSensorEvent[0];
-        this.yPX[1] = paramSensorEvent[1];
-        this.yPX[2] = paramSensorEvent[2];
-        AppMethodBeat.o(52060);
-        return;
+        Object localObject = i.b(this.CTW);
+        if (localObject != null) {
+          ((c)localObject).a(true, true, i.c(this.CTW));
+        }
+        localObject = i.d(this.CTW);
+        if (localObject != null)
+        {
+          ((i.b)localObject).onShow();
+          AppMethodBeat.o(52491);
+          return;
+        }
       }
-      if ((Math.abs(paramSensorEvent[0] - this.yPX[0]) <= 0.7F) && (Math.abs(paramSensorEvent[1] - this.yPX[1]) <= 0.7F) && (Math.abs(paramSensorEvent[2] - this.yPX[2]) <= 0.7F)) {
-        break label227;
-      }
-      ae.d("MicroMsg.ScanStableDetector", "scan unstable");
-      this.yPY = 0;
-    }
-    for (;;)
-    {
-      this.yPX[0] = paramSensorEvent[0];
-      this.yPX[1] = paramSensorEvent[1];
-      this.yPX[2] = paramSensorEvent[2];
-      AppMethodBeat.o(52060);
-      return;
-      label227:
-      if (this.yPY == 0) {
-        this.yPZ = System.currentTimeMillis();
-      }
-      this.yPY += 1;
-      if (this.yPY >= 5) {
-        ae.d("MicroMsg.ScanStableDetector", "scan stable");
-      }
+      AppMethodBeat.o(52491);
     }
   }
 }

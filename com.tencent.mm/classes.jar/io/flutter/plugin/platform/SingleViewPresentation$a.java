@@ -10,33 +10,33 @@ import io.flutter.view.AccessibilityViewEmbedder;
 final class SingleViewPresentation$a
   extends FrameLayout
 {
-  private final View NdT;
+  private final View STB;
   private final a accessibilityEventsDelegate;
   
   public SingleViewPresentation$a(Context paramContext, a parama, View paramView)
   {
     super(paramContext);
     this.accessibilityEventsDelegate = parama;
-    this.NdT = paramView;
+    this.STB = paramView;
   }
   
   public final boolean requestSendAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
     AppMethodBeat.i(9888);
     Object localObject = this.accessibilityEventsDelegate;
-    View localView = this.NdT;
-    if (((a)localObject).MYV == null)
+    View localView = this.STB;
+    if (((a)localObject).SNs == null)
     {
       AppMethodBeat.o(9888);
       return false;
     }
-    localObject = ((a)localObject).MYV;
-    if (!((io.flutter.view.a)localObject).Nej.requestSendAccessibilityEvent(localView, paramView, paramAccessibilityEvent))
+    localObject = ((a)localObject).SNs;
+    if (!((io.flutter.view.a)localObject).STS.requestSendAccessibilityEvent(localView, paramView, paramAccessibilityEvent))
     {
       AppMethodBeat.o(9888);
       return false;
     }
-    paramView = ((io.flutter.view.a)localObject).Nej.getRecordFlutterId(localView, paramAccessibilityEvent);
+    paramView = ((io.flutter.view.a)localObject).STS.getRecordFlutterId(localView, paramAccessibilityEvent);
     if (paramView == null)
     {
       AppMethodBeat.o(9888);
@@ -49,22 +49,22 @@ final class SingleViewPresentation$a
     {
       AppMethodBeat.o(9888);
       return true;
-      ((io.flutter.view.a)localObject).Net = null;
+      ((io.flutter.view.a)localObject).SUc = null;
       continue;
-      ((io.flutter.view.a)localObject).Neo = paramView;
-      ((io.flutter.view.a)localObject).Nen = null;
+      ((io.flutter.view.a)localObject).STX = paramView;
+      ((io.flutter.view.a)localObject).STW = null;
       continue;
-      ((io.flutter.view.a)localObject).Nep = null;
-      ((io.flutter.view.a)localObject).Neo = null;
+      ((io.flutter.view.a)localObject).STY = null;
+      ((io.flutter.view.a)localObject).STX = null;
       continue;
-      ((io.flutter.view.a)localObject).Nep = paramView;
-      ((io.flutter.view.a)localObject).Ner = null;
+      ((io.flutter.view.a)localObject).STY = paramView;
+      ((io.flutter.view.a)localObject).SUa = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.a
  * JD-Core Version:    0.7.0.1
  */

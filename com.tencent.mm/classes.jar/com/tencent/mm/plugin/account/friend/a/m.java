@@ -7,15 +7,15 @@ import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.net.URLEncoder;
 import java.util.List;
 import org.apache.http.NameValuePair;
 
 public final class m
 {
-  public static String aP(List<NameValuePair> paramList)
+  public static String aY(List<NameValuePair> paramList)
   {
     AppMethodBeat.i(131044);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -42,15 +42,15 @@ public final class m
     return paramList;
   }
   
-  public static String aTx()
+  public static String boj()
   {
     AppMethodBeat.i(131043);
-    ae.i("MicroMsg.GoogleContactLogic", "getRequestCodeUrl:%s", new Object[] { "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com" });
+    Log.i("MicroMsg.GoogleContactLogic", "getRequestCodeUrl:%s", new Object[] { "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com" });
     AppMethodBeat.o(131043);
     return "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com";
   }
   
-  public static boolean dg(Context paramContext)
+  public static boolean dB(Context paramContext)
   {
     AppMethodBeat.i(131045);
     Intent localIntent1 = new Intent("com.google.android.gms.common.account.CHOOSE_ACCOUNT");
@@ -59,7 +59,7 @@ public final class m
     {
       if (Build.VERSION.SDK_INT >= 8)
       {
-        if (paramContext.getSharedPreferences(ak.fow(), 0).getBoolean("googleauth", false))
+        if (paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getBoolean("googleauth", false))
         {
           AppMethodBeat.o(131045);
           return false;

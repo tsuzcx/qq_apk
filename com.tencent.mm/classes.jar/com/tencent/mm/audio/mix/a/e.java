@@ -6,11 +6,11 @@ import java.util.Arrays;
 public final class e
 {
   public int channels = 2;
-  public int dcY = 2;
-  public byte[] dcZ;
-  public String ddg;
-  public long ddj = 0L;
-  public boolean ddk = false;
+  public int dtP = 2;
+  public byte[] dtQ;
+  public String dtX;
+  public long dua = 0L;
+  public boolean dub = false;
   public int sampleRate = 44100;
   
   public final void reset()
@@ -18,18 +18,18 @@ public final class e
     AppMethodBeat.i(136726);
     this.sampleRate = 44100;
     this.channels = 44100;
-    this.dcY = 2;
-    this.ddg = "";
-    this.ddj = 0L;
-    if (this.dcZ != null) {
-      Arrays.fill(this.dcZ, 0, this.dcZ.length, (byte)0);
+    this.dtP = 2;
+    this.dtX = "";
+    this.dua = 0L;
+    if (this.dtQ != null) {
+      Arrays.fill(this.dtQ, 0, this.dtQ.length, (byte)0);
     }
     AppMethodBeat.o(136726);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.a.e
  * JD-Core Version:    0.7.0.1
  */

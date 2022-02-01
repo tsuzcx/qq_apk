@@ -22,19 +22,24 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.d.a.a;
 import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.deviceinfo.v;
 import com.tencent.mm.compatible.deviceinfo.x;
-import com.tencent.mm.g.a.ot;
-import com.tencent.mm.g.a.ot.b;
+import com.tencent.mm.g.a.pl;
+import com.tencent.mm.g.a.pl.b;
 import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.plugin.base.model.a;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -43,92 +48,101 @@ import java.util.List;
 public final class f
   implements SensorEventListener
 {
-  protected static int vZI = 2147483647;
-  static boolean waa = true;
-  protected boolean aYh;
-  protected v gaZ;
-  protected boolean hrQ;
-  protected q hrV;
-  protected Size hrY;
-  protected List<g> hsB;
-  protected d.a.a hsD;
-  protected Point hsE;
-  protected int hsF;
-  protected int hsG;
-  private c hsH;
-  private c hsI;
-  private c hsJ;
-  private c hsK;
-  private c hsL;
-  public volatile boolean hsM;
-  public volatile byte[] hsN;
-  protected boolean hsj;
-  Camera.AutoFocusCallback hsq;
+  protected static int ztL = 2147483647;
+  static boolean zud = true;
+  protected boolean aYc;
+  protected v gGr;
+  protected boolean ilM;
+  protected q ilR;
+  protected Size ilU;
+  protected Point ilV;
+  protected int ilW;
+  protected int ilX;
+  protected List<g> imj;
+  protected d.a.a imk;
+  Camera.AutoFocusCallback iml;
+  private c imm;
+  private c imn;
+  private c imo;
+  private c imp;
+  private c imq;
+  public volatile boolean imr;
+  public volatile byte[] ims;
   protected Context mContext;
   protected SensorManager mSensorManager;
   private int scene;
-  protected boolean vZG;
-  protected int vZH;
-  protected Sensor vZJ;
-  protected float vZK;
-  protected float vZL;
-  protected float vZM;
-  protected Point vZN;
-  protected Point vZO;
-  protected int vZP;
-  protected byte[] vZQ;
-  protected boolean vZR;
-  protected com.tencent.mm.plugin.base.model.a vZS;
-  protected boolean vZT;
-  protected boolean vZU;
-  private f.a vZV;
-  private c vZW;
-  protected VideoTransPara vZX;
-  public boolean vZY;
-  private boolean vZZ;
-  public c wab;
+  protected boolean ztI;
+  protected boolean ztJ;
+  protected int ztK;
+  protected Sensor ztM;
+  protected float ztN;
+  protected float ztO;
+  protected float ztP;
+  protected Point ztQ;
+  protected Point ztR;
+  protected int ztS;
+  protected byte[] ztT;
+  protected boolean ztU;
+  protected a ztV;
+  protected boolean ztW;
+  protected boolean ztX;
+  private a ztY;
+  private c ztZ;
+  protected VideoTransPara zua;
+  public boolean zub;
+  private boolean zuc;
+  public c zue;
   
   public f(VideoTransPara paramVideoTransPara, int paramInt)
   {
     AppMethodBeat.i(89371);
-    this.hsG = -1;
-    this.hsF = -1;
-    this.hsj = false;
-    this.aYh = false;
-    this.gaZ = null;
-    this.vZG = false;
-    this.vZH = 0;
-    this.vZK = 0.0F;
-    this.vZL = 0.0F;
-    this.vZM = 0.0F;
+    this.ilX = -1;
+    this.ilW = -1;
+    this.ztI = false;
+    this.aYc = false;
+    this.gGr = null;
+    this.ztJ = false;
+    this.ztK = 0;
+    this.ztN = 0.0F;
+    this.ztO = 0.0F;
+    this.ztP = 0.0F;
     this.mContext = null;
-    this.vZN = null;
-    this.vZO = null;
-    this.hsE = null;
-    this.vZP = 0;
-    this.vZR = false;
-    this.vZS = new com.tencent.mm.plugin.base.model.a();
-    this.vZT = false;
-    this.hsB = new ArrayList();
-    this.vZU = false;
-    this.hrY = null;
-    this.vZV = f.a.wad;
-    this.hsH = new c("prevcameraCallback");
-    this.hsI = new c("cameraCallback");
-    this.hsJ = new c("cameraPreviewCallback");
-    this.hsK = new c("cameraCropCallback");
-    this.vZW = new c("mirrorCameraCallback");
-    this.hsL = new c("finishCallbackTimeCallback");
+    this.ztQ = null;
+    this.ztR = null;
+    this.ilV = null;
+    this.ztS = 0;
+    this.ztU = false;
+    this.ztV = new a();
+    this.ztW = false;
+    this.imj = new ArrayList();
+    this.ztX = false;
+    this.ilU = null;
+    this.ztY = a.zug;
+    this.imm = new c("prevcameraCallback");
+    this.imn = new c("cameraCallback");
+    this.imo = new c("cameraPreviewCallback");
+    this.imp = new c("cameraCropCallback");
+    this.ztZ = new c("mirrorCameraCallback");
+    this.imq = new c("finishCallbackTimeCallback");
     this.scene = 0;
-    this.hsN = null;
-    this.hsM = false;
-    this.vZY = false;
-    this.vZZ = false;
-    this.hsq = new f.2(this);
-    this.wab = new c(Looper.getMainLooper());
-    this.hrQ = true;
-    this.hrV = q.dqd();
-    this.vZX = paramVideoTransPara;
+    this.ims = null;
+    this.imr = false;
+    this.zub = false;
+    this.zuc = false;
+    this.iml = new Camera.AutoFocusCallback()
+    {
+      public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
+      {
+        AppMethodBeat.i(89362);
+        Log.v("MicroMsg.MMSightCamera", "auto focus callback success %s, status: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), f.f(f.this) });
+        f.zud = true;
+        AppMethodBeat.o(89362);
+      }
+    };
+    this.zue = new c(Looper.getMainLooper());
+    this.ilM = true;
+    this.ilR = q.ejT();
+    this.zua = paramVideoTransPara;
     this.scene = paramInt;
     AppMethodBeat.o(89371);
   }
@@ -151,7 +165,7 @@ public final class f
         localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains("continuous-picture")))
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "support continuous picture");
+          Log.i("MicroMsg.MMSightCameraSetting", "support continuous picture");
           localParameters.setFocusMode("continuous-picture");
           paramv.setParameters(localParameters);
           AppMethodBeat.o(89381);
@@ -159,7 +173,7 @@ public final class f
         }
         if ((localList != null) && (localList.contains("continuous-video")))
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "support continuous video");
+          Log.i("MicroMsg.MMSightCameraSetting", "support continuous video");
           localParameters.setFocusMode("continuous-video");
           continue;
         }
@@ -169,19 +183,19 @@ public final class f
       }
       catch (Exception paramv)
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "setFocusMode Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+        Log.i("MicroMsg.MMSightCameraSetting", "setFocusMode Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
         AppMethodBeat.o(89381);
         return false;
       }
       if (localList.contains("auto"))
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "support auto focus");
+        Log.i("MicroMsg.MMSightCameraSetting", "support auto focus");
         localParameters.setFocusMode("auto");
       }
       else
       {
         label167:
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "not support continuous video or auto focus");
+        Log.i("MicroMsg.MMSightCameraSetting", "not support continuous video or auto focus");
       }
     }
   }
@@ -202,22 +216,22 @@ public final class f
         Camera.Parameters localParameters = paramv.getParameters();
         new Point(paramInt, (int)(paramInt / paramFloat));
         Object localObject;
-        if (this.hrY == null)
+        if (this.ilU == null)
         {
-          localObject = al.ck(ak.getContext());
+          localObject = ao.az(MMApplicationContext.getContext());
           Point localPoint = new Point(Math.min(((Point)localObject).x, ((Point)localObject).y), Math.max(((Point)localObject).x, ((Point)localObject).y));
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "screenSize: %s, currentScreenSize: %s", new Object[] { localPoint, localObject });
+          Log.i("MicroMsg.MMSightCamera", "screenSize: %s, currentScreenSize: %s", new Object[] { localPoint, localObject });
           float f1 = Math.min(localPoint.x, localPoint.y) / Math.max(localPoint.x, localPoint.y);
           f2 = 1.0F / paramFloat;
           if (paramFloat >= 1.0F) {
             break label709;
           }
           i = paramInt;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimitAndRatio, shortSize: %s, displayRatio: %s, screenRatio: %s", new Object[] { Integer.valueOf(i), Float.valueOf(paramFloat), Float.valueOf(f1) });
-          if (this.hsD.dHi == 90) {
+          Log.i("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimitAndRatio, shortSize: %s, displayRatio: %s, screenRatio: %s", new Object[] { Integer.valueOf(i), Float.valueOf(paramFloat), Float.valueOf(f1) });
+          if (this.imk.dYT == 90) {
             break label756;
           }
-          if (this.hsD.dHi != 270) {
+          if (this.imk.dYT != 270) {
             break label768;
           }
           break label756;
@@ -225,54 +239,54 @@ public final class f
           if (localc != null)
           {
             localObject = localc;
-            if (localc.wah != null) {}
+            if (localc.zum != null) {}
           }
           else
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "fuck, preview size still null!!");
-            if (this.hsD.dHi == 90) {
+            Log.e("MicroMsg.MMSightCamera", "fuck, preview size still null!!");
+            if (this.imk.dYT == 90) {
               break label762;
             }
-            if (this.hsD.dHi != 270) {
+            if (this.imk.dYT != 270) {
               break label774;
             }
             break label762;
             localObject = h.d(localParameters, localPoint, paramInt, bool);
-            this.vZY = false;
+            this.zub = false;
           }
-          if ((localObject != null) && (((h.c)localObject).wah != null))
+          if ((localObject != null) && (((h.c)localObject).zum != null))
           {
-            paramInt = (int)(((h.c)localObject).wah.x * paramFloat);
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimitAndRatio result preview size: %s, cropHeight: %s", new Object[] { ((h.c)localObject).wah, Integer.valueOf(paramInt) });
-            if (paramInt > ((h.c)localObject).wah.y) {
+            paramInt = (int)(((h.c)localObject).zum.x * paramFloat);
+            Log.i("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimitAndRatio result preview size: %s, cropHeight: %s", new Object[] { ((h.c)localObject).zum, Integer.valueOf(paramInt) });
+            if (paramInt > ((h.c)localObject).zum.y) {
               break label726;
             }
-            this.vZY = false;
+            this.zub = false;
           }
-          if ((localObject != null) && (((h.c)localObject).wah != null))
+          if ((localObject != null) && (((h.c)localObject).zum != null))
           {
-            localObject = ((h.c)localObject).wah;
-            this.hrV.ruC = ((Point)localObject).x;
-            this.hrV.ruD = ((Point)localObject).y;
-            this.vZO = ((Point)localObject);
-            this.hsE = null;
+            localObject = ((h.c)localObject).zum;
+            this.ilR.sUz = ((Point)localObject).x;
+            this.ilR.sUA = ((Point)localObject).y;
+            this.ztR = ((Point)localObject);
+            this.ilV = null;
             if (!paramBoolean)
             {
-              if ((k.wat.gdr != 2) || (com.tencent.mm.plugin.mmsight.d.KH(this.vZO.y))) {
+              if ((k.zuy.gIP != 2) || (com.tencent.mm.plugin.mmsight.d.QI(this.ztR.y))) {
                 break label745;
               }
-              paramInt = com.tencent.mm.plugin.mmsight.d.KI(this.vZO.y);
-              if (Math.abs(paramInt - this.vZO.y) > 16) {
+              paramInt = com.tencent.mm.plugin.mmsight.d.QJ(this.ztR.y);
+              if (Math.abs(paramInt - this.ztR.y) > 16) {
                 break label734;
               }
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.vZO, Integer.valueOf(paramInt) });
-              this.vZN = new Point(this.vZO.x, this.vZO.y);
-              this.vZO.y = paramInt;
-              this.vZR = true;
-              this.vZQ = new byte[this.vZO.x * this.vZO.y * 3 / 2];
+              Log.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.ztR, Integer.valueOf(paramInt) });
+              this.ztQ = new Point(this.ztR.x, this.ztR.y);
+              this.ztR.y = paramInt;
+              this.ztU = true;
+              this.ztT = new byte[this.ztR.x * this.ztR.y * 3 / 2];
             }
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s, cropWidth: %s", new Object[] { localObject, this.vZO, this.hsE, Boolean.valueOf(this.vZY) });
-            localParameters.setPreviewSize(this.hrV.ruC, this.hrV.ruD);
+            Log.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s, cropWidth: %s", new Object[] { localObject, this.ztR, this.ilV, Boolean.valueOf(this.zub) });
+            localParameters.setPreviewSize(this.ilR.sUz, this.ilR.sUA);
             paramv.setParameters(localParameters);
             AppMethodBeat.o(89377);
             return true;
@@ -280,14 +294,14 @@ public final class f
         }
         else
         {
-          localObject = new Point(this.hrY.getWidth(), this.hrY.getHeight());
+          localObject = new Point(this.ilU.getWidth(), this.ilU.getHeight());
           continue;
         }
         f2 = paramInt / f2;
       }
       catch (Exception paramv)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimit error: %s", new Object[] { paramv.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "safeSetPreviewSizeWithLimit error: %s", new Object[] { paramv.getMessage() });
         AppMethodBeat.o(89377);
         return false;
       }
@@ -295,13 +309,13 @@ public final class f
       int i = Math.round(f2);
       continue;
       label726:
-      this.vZY = true;
+      this.zub = true;
       continue;
       label734:
-      k.h(this.vZO);
+      k.i(this.ztR);
       continue;
       label745:
-      k.h(this.vZO);
+      k.i(this.ztR);
       continue;
       label756:
       boolean bool = true;
@@ -338,17 +352,17 @@ public final class f
           if (!paramBoolean) {
             break label235;
           }
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaz > 0)
+          if (ae.gKt.gFP > 0)
           {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "set frame rate > 0, do not try set preview frame rate");
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "use fix mode %B, supported preview frame rates %s", new Object[] { Boolean.valueOf(paramBoolean), localParameters.getSupportedPreviewFrameRates() });
+            Log.i("MicroMsg.MMSightCameraSetting", "set frame rate > 0, do not try set preview frame rate");
+            Log.i("MicroMsg.MMSightCameraSetting", "use fix mode %B, supported preview frame rates %s", new Object[] { Boolean.valueOf(paramBoolean), localParameters.getSupportedPreviewFrameRates() });
             paramv.setParameters(localParameters);
             AppMethodBeat.o(89379);
             return true;
           }
           if (localParameters == null)
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "trySetPreviewFrameRateParameters error, p is null!");
+            Log.e("MicroMsg.MMSightCamera", "trySetPreviewFrameRateParameters error, p is null!");
             continue;
           }
           try
@@ -359,24 +373,24 @@ public final class f
             }
             i = Math.min(30, ((Integer)Collections.max(localList1)).intValue());
             localParameters.setPreviewFrameRate(i);
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "set preview frame rate %d", new Object[] { Integer.valueOf(i) });
+            Log.i("MicroMsg.MMSightCameraSetting", "set preview frame rate %d", new Object[] { Integer.valueOf(i) });
           }
           catch (Exception localException1)
           {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "trySetPreviewFrameRateParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException1.getMessage() });
+            Log.i("MicroMsg.MMSightCameraSetting", "trySetPreviewFrameRateParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException1.getMessage() });
           }
         }
         catch (Exception paramv)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "setPreviewFrameRate Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+          Log.i("MicroMsg.MMSightCameraSetting", "setPreviewFrameRate Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
           AppMethodBeat.o(89379);
           return false;
         }
         continue;
-        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaz <= 0) {
+        if (ae.gKt.gFP <= 0) {
           break;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "set frame rate > 0, do not try set preview fps range");
+        Log.i("MicroMsg.MMSightCameraSetting", "set frame rate > 0, do not try set preview fps range");
       }
       localList2 = localParameters.getSupportedPreviewFpsRange();
     } while ((localList2 == null) || (localList2.size() == 0));
@@ -408,7 +422,7 @@ public final class f
           }
           int i5 = arrayOfInt[0];
           i4 = arrayOfInt[1];
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(i3), Integer.valueOf(i5), Integer.valueOf(i4) });
+          Log.i("MicroMsg.MMSightCamera", "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(i3), Integer.valueOf(i5), Integer.valueOf(i4) });
           i2 = i;
           i1 = j;
           if (i5 < 0) {
@@ -433,18 +447,18 @@ public final class f
           m = i5;
           break label578;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "dkfps get fit  [%d %d], max target fps %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(30) });
+        Log.i("MicroMsg.MMSightCameraSetting", "dkfps get fit  [%d %d], max target fps %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(30) });
         if ((j == 2147483647) || (i == 2147483647)) {
           break;
         }
         try
         {
           localParameters.setPreviewFpsRange(j, i);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "set fps range %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+          Log.i("MicroMsg.MMSightCameraSetting", "set fps range %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
         }
         catch (Exception localException2)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "trySetPreviewFpsRangeParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException2.getMessage() });
+          Log.i("MicroMsg.MMSightCameraSetting", "trySetPreviewFpsRangeParameters Exception, %s, %s", new Object[] { Looper.myLooper(), localException2.getMessage() });
         }
       }
       break;
@@ -468,54 +482,532 @@ public final class f
     }
   }
   
-  private void awC()
+  private boolean a(v paramv, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(89384);
-    if (this.gaZ != null) {
+    AppMethodBeat.i(241181);
+    if (paramv == null)
+    {
+      AppMethodBeat.o(241181);
+      return false;
+    }
+    Camera.Parameters localParameters;
+    Point localPoint;
+    Object localObject1;
+    Object localObject3;
+    boolean bool;
+    for (;;)
+    {
       try
       {
-        Object localObject = this.gaZ.getParameters();
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "setPreviewCallbackImpl");
-        int i = this.hrV.ruC;
-        int j = this.hrV.ruD;
+        localParameters = paramv.getParameters();
+        if (this.ilU == null)
+        {
+          localPoint = com.tencent.mm.plugin.mmsight.d.gx(this.mContext);
+          if (this.ilM)
+          {
+            localObject1 = b.ejt();
+            localObject2 = localParameters.getSupportedPreviewSizes();
+            localObject3 = localParameters.getSupportedPictureSizes();
+            paramInt = this.imk.dYT;
+            if (Util.isNullOrNil(((b)localObject1).zth)) {
+              ((b)localObject1).zth = com.tencent.mm.plugin.mmsight.d.fx((List)localObject2);
+            }
+            if (Util.isNullOrNil(((b)localObject1).zti)) {
+              ((b)localObject1).zti = com.tencent.mm.plugin.mmsight.d.fx((List)localObject3);
+            }
+            ((b)localObject1).dYT = paramInt;
+            ((b)localObject1).ztC = 1;
+            if (paramBoolean)
+            {
+              if (this.imk.dYT == 90) {
+                break label2473;
+              }
+              if (this.imk.dYT != 270) {
+                break label495;
+              }
+              break label2473;
+              k.a(localParameters, bool);
+            }
+            com.tencent.mm.plugin.mmsight.model.a.l.ekc();
+            paramInt = com.tencent.mm.plugin.mmsight.model.a.l.ekf();
+            if (this.imk.dYT == 90) {
+              break label2479;
+            }
+            if (this.imk.dYT != 270) {
+              break label501;
+            }
+            break label2479;
+            label203:
+            localObject2 = h.a(localParameters, localPoint, paramInt, bool);
+            if (localObject2 != null)
+            {
+              localObject1 = localObject2;
+              if (((h.c)localObject2).zum != null) {}
+            }
+            else
+            {
+              Log.e("MicroMsg.MMSightCamera", "fuck, preview size still null!!");
+              localPoint = new Point(Math.min(localPoint.x, localPoint.y), Math.max(localPoint.x, localPoint.y));
+              if (this.imk.dYT == 90) {
+                break label2485;
+              }
+              if (this.imk.dYT != 270) {
+                break label507;
+              }
+              break label2485;
+              label304:
+              localObject1 = h.d(localParameters, localPoint, 2100, bool);
+              this.zub = false;
+            }
+            k.a((h.c)localObject1);
+            localPoint = ((h.c)localObject1).zum;
+            if (localPoint != null) {
+              break;
+            }
+            l.ejN();
+            AppMethodBeat.o(241181);
+            return false;
+          }
+        }
+        else
+        {
+          localPoint = new Point(this.ilU.getWidth(), this.ilU.getHeight());
+          continue;
+        }
+        localObject1 = b.ejt();
+        localObject2 = localParameters.getSupportedPreviewSizes();
+        localObject3 = localParameters.getSupportedPictureSizes();
+        paramInt = this.imk.dYT;
+        if (Util.isNullOrNil(((b)localObject1).ztj)) {
+          ((b)localObject1).ztj = com.tencent.mm.plugin.mmsight.d.fx((List)localObject2);
+        }
+        if (Util.isNullOrNil(((b)localObject1).ztk)) {
+          ((b)localObject1).ztk = com.tencent.mm.plugin.mmsight.d.fx((List)localObject3);
+        }
+        ((b)localObject1).dYT = paramInt;
+        ((b)localObject1).ztC = 2;
+        continue;
+        bool = false;
+      }
+      catch (Exception paramv)
+      {
+        Log.i("MicroMsg.MMSightCameraSetting", "setPreviewSize Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+        AppMethodBeat.o(241181);
+        return false;
+      }
+      label495:
+      continue;
+      label501:
+      bool = false;
+      continue;
+      label507:
+      bool = false;
+    }
+    this.ilR.sUz = localPoint.x;
+    this.ilR.sUA = localPoint.y;
+    this.ztR = localPoint;
+    Object localObject2 = this.mContext;
+    if (this.imk.dYT != 90) {
+      if (this.imk.dYT == 270)
+      {
+        break label2491;
+        label577:
+        bool = com.tencent.mm.plugin.mmsight.d.a((Context)localObject2, localPoint, bool);
+        paramInt = 1;
+        if ((this.imk.dYT != 90) && (this.imk.dYT != 270)) {
+          break label1333;
+        }
+        if ((localPoint.y < this.zua.width) || (localPoint.x < this.zua.height))
+        {
+          paramInt = 0;
+          Log.w("MicroMsg.MMSightCamera", "previewSize %s not support real scale", new Object[] { localPoint });
+        }
+        label665:
+        Log.i("MicroMsg.MMSightCameraSetting", "checkIfNeedUsePreviewLarge, needCrop: %s", new Object[] { Boolean.valueOf(bool) });
+        if (!bool) {
+          break label1418;
+        }
+        if (k.zuy.gIP != 2) {
+          break label1406;
+        }
+        this.ilV = ((h.c)localObject1).zuo;
+        if ((this.ilV.x < localPoint.x) || (this.ilV.y < localPoint.y))
+        {
+          if ((this.imk.dYT != 90) && (this.imk.dYT != 270)) {
+            break label1386;
+          }
+          this.ilV.y = com.tencent.mm.plugin.mmsight.d.QK(this.ilV.y);
+        }
+        label781:
+        this.ztR = new Point(this.ilV.x, this.ilV.y);
+        this.ztS = (this.ilV.x * this.ilV.y * 3 / 2);
+        Log.i("MicroMsg.MMSightCameraSetting", "cropSize: %s", new Object[] { this.ilV });
+      }
+    }
+    label914:
+    label929:
+    label943:
+    label1333:
+    label1845:
+    label1978:
+    label2491:
+    label2497:
+    for (;;)
+    {
+      label848:
+      int i;
+      int j;
+      if (k.zuy.zuL)
+      {
+        if ((this.imk.dYT != 90) && (this.imk.dYT != 270)) {
+          break label2017;
+        }
+        if (paramInt != 0)
+        {
+          if (k.zuy.ilT != 1080) {
+            break label1845;
+          }
+          if (this.ilV != null) {
+            break label1794;
+          }
+          i = localPoint.x / 2;
+          if (this.ilV != null) {
+            break label1808;
+          }
+          paramInt = localPoint.y / 2;
+          if (this.ilV != null) {
+            break label1821;
+          }
+          j = localPoint.x;
+          j = com.tencent.mm.plugin.mmsight.d.gZ(i, j);
+          if (this.ilV != null) {
+            break label1833;
+          }
+          i = localPoint.y;
+          label966:
+          this.ztR = new Point(j, com.tencent.mm.plugin.mmsight.d.gZ(paramInt, i));
+        }
+      }
+      label985:
+      localObject1 = b.ejt();
+      localObject2 = this.ilV;
+      localObject3 = this.ztR;
+      ((b)localObject1).ztq = -1;
+      ((b)localObject1).ztp = -1;
+      ((b)localObject1).ztm = -1;
+      ((b)localObject1).ztl = -1;
+      ((b)localObject1).zto = -1;
+      ((b)localObject1).ztn = -1;
+      if (localPoint != null)
+      {
+        ((b)localObject1).ztn = localPoint.x;
+        ((b)localObject1).zto = localPoint.y;
+      }
+      if (localObject2 != null)
+      {
+        ((b)localObject1).ztl = ((Point)localObject2).x;
+        ((b)localObject1).ztm = ((Point)localObject2).y;
+      }
+      if (localObject3 != null)
+      {
+        ((b)localObject1).ztp = ((Point)localObject3).x;
+        ((b)localObject1).ztq = ((Point)localObject3).y;
+      }
+      if (paramBoolean) {
+        if ((!bool) && (k.zuy.gIP == 2) && (!com.tencent.mm.plugin.mmsight.d.QI(this.ztR.y)))
+        {
+          paramInt = com.tencent.mm.plugin.mmsight.d.QJ(this.ztR.y);
+          if (Math.abs(paramInt - this.ztR.y) <= 16)
+          {
+            Log.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.ztR, Integer.valueOf(paramInt) });
+            this.ztQ = new Point(this.ztR.x, this.ztR.y);
+            this.ztR.y = paramInt;
+            this.ztU = true;
+            this.ztT = new byte[this.ztR.x * this.ztR.y * 3 / 2];
+          }
+        }
+      }
+      for (;;)
+      {
+        Log.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s", new Object[] { localPoint, this.ztR, this.ilV });
+        localParameters.setPreviewSize(this.ilR.sUz, this.ilR.sUA);
+        paramv.setParameters(localParameters);
+        AppMethodBeat.o(241181);
+        return true;
+        bool = false;
+        break;
+        if ((localPoint.x >= this.zua.width) && (localPoint.y >= this.zua.height)) {
+          break label665;
+        }
+        paramInt = 0;
+        Log.w("MicroMsg.MMSightCamera", "previewSize %s not support real scale", new Object[] { localPoint });
+        break label665;
+        label1386:
+        this.ilV.x = com.tencent.mm.plugin.mmsight.d.QK(this.ilV.x);
+        break label781;
+        label1406:
+        this.ilV = ((h.c)localObject1).zun;
+        break label781;
+        if ((!k.zuy.zuL) || (k.zuy.ilT != 1080) || (paramInt == 0)) {
+          break label2470;
+        }
+        if ((this.imk.dYT == 90) || (this.imk.dYT == 270))
+        {
+          i = localPoint.y / 2;
+          j = com.tencent.mm.plugin.mmsight.d.QJ(i);
+          k = localPoint.x / 2;
+          m = com.tencent.mm.plugin.mmsight.d.QJ(k);
+          if ((Math.abs(j - i) < 8) && (Math.abs(m - k) < 8)) {
+            break label2497;
+          }
+          this.ilV = new Point(localPoint.x, localPoint.y);
+          this.ilV.y = com.tencent.mm.plugin.mmsight.d.QK(localPoint.y);
+          this.ilV.x = com.tencent.mm.plugin.mmsight.d.QK(localPoint.x);
+          this.ztR = new Point(this.ilV.x, this.ilV.y);
+          this.ztS = (this.ilV.x * this.ilV.y * 3 / 2);
+          bool = true;
+          break label2497;
+        }
+        i = localPoint.x / 2;
+        j = com.tencent.mm.plugin.mmsight.d.QJ(i);
+        int k = localPoint.y / 2;
+        int m = com.tencent.mm.plugin.mmsight.d.QJ(k);
+        if ((Math.abs(j - i) < 8) && (Math.abs(m - k) < 8)) {
+          break label2470;
+        }
+        this.ilV = new Point(localPoint.x, localPoint.y);
+        this.ilV.y = com.tencent.mm.plugin.mmsight.d.QK(localPoint.x);
+        this.ilV.x = com.tencent.mm.plugin.mmsight.d.QK(localPoint.y);
+        this.ztR = new Point(this.ilV.x, this.ilV.y);
+        this.ztS = (this.ilV.x * this.ilV.y * 3 / 2);
+        bool = true;
+        break label848;
+        i = this.ilV.x / 2;
+        break label914;
+        paramInt = this.ilV.y / 2;
+        break label929;
+        j = this.ilV.x;
+        break label943;
+        i = this.ilV.y;
+        break label966;
+        if (k.zuy.ilT != 720) {
+          break label985;
+        }
+        float f;
+        if (this.ilV == null)
+        {
+          f = localPoint.x * 0.75F;
+          label1876:
+          j = (int)f;
+          if (this.ilV != null) {
+            break label1978;
+          }
+          f = localPoint.y * 0.75F;
+          label1900:
+          i = (int)f;
+          if (this.ilV != null) {
+            break label1995;
+          }
+          paramInt = localPoint.x;
+          label1918:
+          j = com.tencent.mm.plugin.mmsight.d.gZ(j, paramInt);
+          if (this.ilV != null) {
+            break label2006;
+          }
+        }
+        label1995:
+        label2006:
+        for (paramInt = localPoint.y;; paramInt = this.ilV.y)
+        {
+          this.ztR = new Point(j, com.tencent.mm.plugin.mmsight.d.gZ(i, paramInt));
+          break;
+          f = this.ilV.x * 0.75F;
+          break label1876;
+          f = this.ilV.y * 0.75F;
+          break label1900;
+          paramInt = this.ilV.x;
+          break label1918;
+        }
+        label2017:
+        if (paramInt == 0) {
+          break label985;
+        }
+        if (k.zuy.ilT == 1080)
+        {
+          if (this.ilV == null)
+          {
+            i = localPoint.y / 2;
+            if (this.ilV != null) {
+              break label2137;
+            }
+            paramInt = localPoint.x / 2;
+            if (this.ilV != null) {
+              break label2150;
+            }
+            j = localPoint.y;
+            j = com.tencent.mm.plugin.mmsight.d.gZ(i, j);
+            if (this.ilV != null) {
+              break label2162;
+            }
+          }
+          label2137:
+          label2150:
+          label2162:
+          for (i = localPoint.x;; i = this.ilV.x)
+          {
+            this.ztR = new Point(j, com.tencent.mm.plugin.mmsight.d.gZ(paramInt, i));
+            break;
+            i = this.ilV.y / 2;
+            break label2049;
+            paramInt = this.ilV.x / 2;
+            break label2064;
+            j = this.ilV.y;
+            break label2078;
+          }
+        }
+        if (k.zuy.ilT != 720) {
+          break label985;
+        }
+        if (this.ilV == null)
+        {
+          f = localPoint.y * 0.75F;
+          j = (int)f;
+          if (this.ilV != null) {
+            break label2307;
+          }
+          f = localPoint.x * 0.75F;
+          i = (int)f;
+          if (this.ilV != null) {
+            break label2324;
+          }
+          paramInt = localPoint.y;
+          label2247:
+          j = com.tencent.mm.plugin.mmsight.d.gZ(j, paramInt);
+          if (this.ilV != null) {
+            break label2335;
+          }
+        }
+        for (paramInt = localPoint.x;; paramInt = this.ilV.x)
+        {
+          this.ztR = new Point(j, com.tencent.mm.plugin.mmsight.d.gZ(i, paramInt));
+          break;
+          f = this.ilV.y * 0.75F;
+          break label2205;
+          f = this.ilV.x * 0.75F;
+          break label2229;
+          paramInt = this.ilV.y;
+          break label2247;
+        }
+        k.i(this.ztR);
+        continue;
+        k.i(this.ztR);
+        continue;
+        if ((!bool) && (k.zuy.gIP == 2) && (!com.tencent.mm.plugin.mmsight.d.QI(this.ztR.y)) && (this.ztU) && (this.ztT != null) && (this.ztQ.y == this.ztR.y))
+        {
+          paramInt = com.tencent.mm.plugin.mmsight.d.QJ(this.ztR.y);
+          if (this.ztT.length == this.ztR.x * paramInt * 3 / 2) {
+            this.ztR.y = paramInt;
+          }
+        }
+      }
+      continue;
+      bool = true;
+      break;
+      bool = true;
+      break label203;
+      bool = true;
+      break label304;
+      bool = true;
+      break label577;
+    }
+  }
+  
+  private void aPa()
+  {
+    AppMethodBeat.i(89388);
+    if (true == this.zuc)
+    {
+      AppMethodBeat.o(89388);
+      return;
+    }
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(89388);
+      return;
+    }
+    if ((Build.MANUFACTURER.equalsIgnoreCase("meizu")) && (!com.tencent.mm.compatible.e.b.apj()))
+    {
+      AppMethodBeat.o(89388);
+      return;
+    }
+    Object localObject = new pl();
+    ((pl)localObject).dVC.type = 2;
+    EventCenter.instance.publish((IEvent)localObject);
+    if (((pl)localObject).dVD.dVB)
+    {
+      this.zuc = true;
+      AppMethodBeat.o(89388);
+      return;
+    }
+    localObject = com.tencent.mm.ui.base.h.n(this.mContext, 2131765857, 2131755998);
+    if (localObject != null)
+    {
+      ((com.tencent.mm.ui.widget.a.d)localObject).setCancelable(false);
+      ((com.tencent.mm.ui.widget.a.d)localObject).setCanceledOnTouchOutside(false);
+      ((com.tencent.mm.ui.widget.a.d)localObject).show();
+      this.zuc = true;
+    }
+    AppMethodBeat.o(89388);
+  }
+  
+  private void aPs()
+  {
+    AppMethodBeat.i(89384);
+    if (this.gGr != null) {
+      try
+      {
+        Object localObject = this.gGr.getParameters();
+        Log.i("MicroMsg.MMSightCamera", "setPreviewCallbackImpl");
+        int i = this.ilR.sUz;
+        int j = this.ilR.sUA;
         j = ImageFormat.getBitsPerPixel(((Camera.Parameters)localObject).getPreviewFormat()) * (i * j) / 8;
         i = 0;
         while (i < 5)
         {
-          localObject = com.tencent.mm.plugin.mmsight.model.a.k.wcg.h(Integer.valueOf(j));
-          this.gaZ.addCallbackBuffer((byte[])localObject);
+          localObject = com.tencent.mm.plugin.mmsight.model.a.k.zwi.h(Integer.valueOf(j));
+          this.gGr.addCallbackBuffer((byte[])localObject);
           i += 1;
         }
-        this.hsH.reset();
-        this.hsI.reset();
-        this.hsJ.reset();
-        this.hsK.reset();
-        this.vZW.reset();
-        this.hsL.reset();
-        this.vZS = new com.tencent.mm.plugin.base.model.a();
-        this.gaZ.setPreviewCallbackWithBuffer(new Camera.PreviewCallback()
+        this.imm.reset();
+        this.imn.reset();
+        this.imo.reset();
+        this.imp.reset();
+        this.ztZ.reset();
+        this.imq.reset();
+        this.ztV = new a();
+        this.gGr.setPreviewCallbackWithBuffer(new Camera.PreviewCallback()
         {
           public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera)
           {
             AppMethodBeat.i(89361);
-            if (!f.this.vZU)
+            if (!f.this.ztX)
             {
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "onPreviewFrame: %s %s", new Object[] { paramAnonymousArrayOfByte, f.this.gaZ });
-              f.this.vZU = true;
+              Log.i("MicroMsg.MMSightCamera", "onPreviewFrame: %s %s", new Object[] { paramAnonymousArrayOfByte, f.this.gGr });
+              f.this.ztX = true;
             }
             if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length <= 0))
             {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "onPreviewFrame, frame data is null!!");
+              Log.e("MicroMsg.MMSightCamera", "onPreviewFrame, frame data is null!!");
               AppMethodBeat.o(89361);
               return;
             }
-            paramAnonymousCamera = f.this.vZS;
-            if (paramAnonymousCamera.nSp == 0)
+            paramAnonymousCamera = f.this.ztV;
+            if (paramAnonymousCamera.pdf == 0)
             {
-              paramAnonymousCamera.nSo += 1;
-              paramAnonymousCamera.nSn = bu.aSB(m.aaq());
+              paramAnonymousCamera.pde += 1;
+              paramAnonymousCamera.pdd = Util.safeParseInt(m.aop());
             }
-            paramAnonymousCamera.nSp += 1;
+            paramAnonymousCamera.pdf += 1;
             int i;
             long l1;
             byte[] arrayOfByte;
@@ -523,107 +1015,107 @@ public final class f
             long l2;
             int j;
             boolean bool;
-            if (paramAnonymousCamera.nSp >= 90)
+            if (paramAnonymousCamera.pdf >= 90)
             {
               i = 0;
-              paramAnonymousCamera.nSp = i;
-              if ((f.a(f.this)) || (f.this.hsB == null) || (f.this.hsB.size() <= 0)) {
+              paramAnonymousCamera.pdf = i;
+              if ((f.a(f.this)) || (f.this.imj == null) || (f.this.imj.size() <= 0)) {
                 break label944;
               }
-              if (f.this.hsE == null) {
+              if (f.this.ilV == null) {
                 break label584;
               }
-              paramAnonymousCamera = com.tencent.mm.plugin.mmsight.model.a.k.wcg.h(Integer.valueOf(f.this.hrV.ruC * f.this.hsE.y * 3 / 2));
-              f.b(f.this).yz(1L);
-              l1 = bu.HQ();
-              SightVideoJNI.cropCameraData(paramAnonymousArrayOfByte, paramAnonymousCamera, f.this.hrV.ruC, f.this.hrV.ruD, f.this.hsE.y);
-              if (f.this.hsE.x >= f.this.hrV.ruC) {
+              paramAnonymousCamera = com.tencent.mm.plugin.mmsight.model.a.k.zwi.h(Integer.valueOf(f.this.ilR.sUz * f.this.ilV.y * 3 / 2));
+              f.b(f.this).Hi(1L);
+              l1 = Util.currentTicks();
+              SightVideoJNI.cropCameraData(paramAnonymousArrayOfByte, paramAnonymousCamera, f.this.ilR.sUz, f.this.ilR.sUA, f.this.ilV.y);
+              if (f.this.ilV.x >= f.this.ilR.sUz) {
                 break label941;
               }
-              arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.wcg.h(Integer.valueOf(f.this.hsE.x * f.this.hsE.y * 3 / 2));
-              SightVideoJNI.cropCameraDataLongEdge(paramAnonymousCamera, arrayOfByte, f.this.hrV.ruC, f.this.hsE.x, f.this.hsE.y);
-              com.tencent.mm.plugin.mmsight.model.a.k.wcg.k(paramAnonymousCamera);
+              arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.zwi.h(Integer.valueOf(f.this.ilV.x * f.this.ilV.y * 3 / 2));
+              SightVideoJNI.cropCameraDataLongEdge(paramAnonymousCamera, arrayOfByte, f.this.ilR.sUz, f.this.ilV.x, f.this.ilV.y);
+              com.tencent.mm.plugin.mmsight.model.a.k.zwi.k(paramAnonymousCamera);
               paramAnonymousCamera = arrayOfByte;
-              l2 = bu.aO(l1);
-              f.c(f.this).yz(l2);
-              if (!f.this.hrQ)
+              l2 = Util.ticksToNow(l1);
+              f.c(f.this).Hi(l2);
+              if (!f.this.ilM)
               {
-                l1 = bu.HQ();
-                i = f.this.hsE.x;
-                j = f.this.hsE.y;
-                if ((f.this.hsD.dHi != 270) && (f.this.hsD.dHi != 90)) {
+                l1 = Util.currentTicks();
+                i = f.this.ilV.x;
+                j = f.this.ilV.y;
+                if ((f.this.imk.dYT != 270) && (f.this.imk.dYT != 90)) {
                   break label578;
                 }
                 bool = true;
                 label458:
                 SightVideoJNI.mirrorCameraData(paramAnonymousCamera, i, j, bool);
-                l2 = bu.aO(l1);
-                f.d(f.this).yz(l2);
+                l2 = Util.ticksToNow(l1);
+                f.d(f.this).Hi(l2);
               }
               bool = f.a(f.this, paramAnonymousCamera);
-              l1 = bu.aO(l1);
+              l1 = Util.ticksToNow(l1);
               if (bool) {
-                f.e(f.this).yz(l1);
+                f.e(f.this).Hi(l1);
               }
             }
             for (;;)
             {
               f.b(f.this, paramAnonymousCamera);
-              if (f.f(f.this) == f.a.wad) {
-                f.g(f.this).yz(1L);
+              if (f.f(f.this) == f.a.zug) {
+                f.g(f.this).Hi(1L);
               }
               for (;;)
               {
-                f.this.gaZ.addCallbackBuffer(paramAnonymousArrayOfByte);
+                f.this.gGr.addCallbackBuffer(paramAnonymousArrayOfByte);
                 AppMethodBeat.o(89361);
                 return;
-                i = paramAnonymousCamera.nSp;
+                i = paramAnonymousCamera.pdf;
                 break;
                 label578:
                 bool = false;
                 break label458;
                 label584:
-                l1 = bu.HQ();
+                l1 = Util.currentTicks();
                 label656:
                 label753:
                 f localf;
-                if (!f.this.hrQ)
+                if (!f.this.ilM)
                 {
-                  i = f.this.hrV.ruC;
-                  j = f.this.hrV.ruD;
-                  if ((f.this.hsD.dHi == 270) || (f.this.hsD.dHi == 90))
+                  i = f.this.ilR.sUz;
+                  j = f.this.ilR.sUA;
+                  if ((f.this.imk.dYT == 270) || (f.this.imk.dYT == 90))
                   {
                     bool = true;
                     SightVideoJNI.mirrorCameraData(paramAnonymousArrayOfByte, i, j, bool);
-                    l2 = bu.aO(l1);
-                    f.d(f.this).yz(l2);
+                    l2 = Util.ticksToNow(l1);
+                    f.d(f.this).Hi(l2);
                   }
                 }
                 else
                 {
-                  if ((!f.this.vZR) || (f.this.vZQ == null)) {
+                  if ((!f.this.ztU) || (f.this.ztT == null)) {
                     break label898;
                   }
-                  SightVideoJNI.paddingYuvData16(paramAnonymousArrayOfByte, f.this.vZQ, f.this.vZO.x, f.this.vZN.y, f.this.vZO.y);
-                  paramAnonymousCamera = f.this.vZQ;
+                  SightVideoJNI.paddingYuvData16(paramAnonymousArrayOfByte, f.this.ztT, f.this.ztR.x, f.this.ztQ.y, f.this.ztR.y);
+                  paramAnonymousCamera = f.this.ztT;
                   bool = f.a(f.this, paramAnonymousCamera);
-                  l1 = bu.aO(l1);
+                  l1 = Util.ticksToNow(l1);
                   if (bool) {
-                    f.e(f.this).yz(l1);
+                    f.e(f.this).Hi(l1);
                   }
-                  if (f.this.vZR)
+                  if (f.this.ztU)
                   {
                     arrayOfByte = paramAnonymousArrayOfByte;
-                    if (f.this.vZQ != null) {}
+                    if (f.this.ztT != null) {}
                   }
                   else
                   {
                     arrayOfByte = paramAnonymousArrayOfByte;
                     if (bool) {
-                      arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.wcg.h(Integer.valueOf(paramAnonymousArrayOfByte.length));
+                      arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.zwi.h(Integer.valueOf(paramAnonymousArrayOfByte.length));
                     }
                   }
-                  if ((f.this.vZR) && (f.this.vZQ != null))
+                  if ((f.this.ztU) && (f.this.ztT != null))
                   {
                     localf = f.this;
                     if (!bool) {
@@ -633,9 +1125,9 @@ public final class f
                 }
                 label898:
                 label903:
-                for (paramAnonymousArrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.wcg.h(Integer.valueOf(f.this.vZQ.length));; paramAnonymousArrayOfByte = f.this.vZQ)
+                for (paramAnonymousArrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.zwi.h(Integer.valueOf(f.this.ztT.length));; paramAnonymousArrayOfByte = f.this.ztT)
                 {
-                  localf.vZQ = paramAnonymousArrayOfByte;
+                  localf.ztT = paramAnonymousArrayOfByte;
                   paramAnonymousArrayOfByte = arrayOfByte;
                   break;
                   bool = false;
@@ -643,8 +1135,8 @@ public final class f
                   paramAnonymousCamera = paramAnonymousArrayOfByte;
                   break label753;
                 }
-                if (f.f(f.this) == f.a.wae) {
-                  f.h(f.this).yz(1L);
+                if (f.f(f.this) == f.a.zuh) {
+                  f.h(f.this).Hi(1L);
                 }
               }
               label941:
@@ -661,48 +1153,10 @@ public final class f
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "setPreviewCallbackImpl error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "setPreviewCallbackImpl error: %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(89384);
-  }
-  
-  private void awn()
-  {
-    AppMethodBeat.i(89388);
-    if (true == this.vZZ)
-    {
-      AppMethodBeat.o(89388);
-      return;
-    }
-    if (this.mContext == null)
-    {
-      AppMethodBeat.o(89388);
-      return;
-    }
-    if ((Build.MANUFACTURER.equalsIgnoreCase("meizu")) && (!com.tencent.mm.compatible.d.b.abk()))
-    {
-      AppMethodBeat.o(89388);
-      return;
-    }
-    Object localObject = new ot();
-    ((ot)localObject).dDO.type = 2;
-    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-    if (((ot)localObject).dDP.dDN)
-    {
-      this.vZZ = true;
-      AppMethodBeat.o(89388);
-      return;
-    }
-    localObject = com.tencent.mm.ui.base.h.l(this.mContext, 2131763668, 2131755906);
-    if (localObject != null)
-    {
-      ((com.tencent.mm.ui.widget.a.d)localObject).setCancelable(false);
-      ((com.tencent.mm.ui.widget.a.d)localObject).setCanceledOnTouchOutside(false);
-      ((com.tencent.mm.ui.widget.a.d)localObject).show();
-      this.vZZ = true;
-    }
-    AppMethodBeat.o(89388);
   }
   
   private static boolean b(v paramv)
@@ -715,11 +1169,11 @@ public final class f
     }
     try
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "safeSetPreviewFormat");
+      Log.i("MicroMsg.MMSightCameraSetting", "safeSetPreviewFormat");
       Camera.Parameters localParameters = paramv.getParameters();
       List localList = localParameters.getSupportedPreviewFormats();
       if ((localList == null) || (!localList.contains(Integer.valueOf(17)))) {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCameraSetting", "not support YCbCr_420_SP");
+        Log.e("MicroMsg.MMSightCameraSetting", "not support YCbCr_420_SP");
       }
       localParameters.setPreviewFormat(17);
       paramv.setParameters(localParameters);
@@ -728,440 +1182,10 @@ public final class f
     }
     catch (Exception paramv)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "setPreviewFormat Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+      Log.i("MicroMsg.MMSightCameraSetting", "setPreviewFormat Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
       AppMethodBeat.o(89380);
     }
     return false;
-  }
-  
-  private boolean b(v paramv, boolean paramBoolean)
-  {
-    AppMethodBeat.i(89376);
-    if (paramv == null)
-    {
-      AppMethodBeat.o(89376);
-      return false;
-    }
-    Camera.Parameters localParameters;
-    Point localPoint;
-    Object localObject1;
-    Object localObject3;
-    int i;
-    boolean bool;
-    for (;;)
-    {
-      try
-      {
-        localParameters = paramv.getParameters();
-        if (this.hrY == null)
-        {
-          localPoint = com.tencent.mm.plugin.mmsight.d.fS(this.mContext);
-          if (this.hrQ)
-          {
-            localObject1 = b.dpE();
-            localObject2 = localParameters.getSupportedPreviewSizes();
-            localObject3 = localParameters.getSupportedPictureSizes();
-            i = this.hsD.dHi;
-            if (bu.isNullOrNil(((b)localObject1).vZf)) {
-              ((b)localObject1).vZf = com.tencent.mm.plugin.mmsight.d.eC((List)localObject2);
-            }
-            if (bu.isNullOrNil(((b)localObject1).vZg)) {
-              ((b)localObject1).vZg = com.tencent.mm.plugin.mmsight.d.eC((List)localObject3);
-            }
-            ((b)localObject1).dHi = i;
-            ((b)localObject1).vZA = 1;
-            if (paramBoolean)
-            {
-              if (this.hsD.dHi == 90) {
-                break label2498;
-              }
-              if (this.hsD.dHi != 270) {
-                break label501;
-              }
-              break label2498;
-              k.a(localParameters, bool);
-            }
-            com.tencent.mm.plugin.mmsight.model.a.l.dqm();
-            i = com.tencent.mm.plugin.mmsight.model.a.l.dqp();
-            if (this.hsD.dHi == 90) {
-              break label2504;
-            }
-            if (this.hsD.dHi != 270) {
-              break label507;
-            }
-            break label2504;
-            label206:
-            localObject2 = h.a(localParameters, localPoint, i, bool);
-            if (localObject2 != null)
-            {
-              localObject1 = localObject2;
-              if (((h.c)localObject2).wah != null) {}
-            }
-            else
-            {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "fuck, preview size still null!!");
-              localPoint = new Point(Math.min(localPoint.x, localPoint.y), Math.max(localPoint.x, localPoint.y));
-              if (this.hsD.dHi == 90) {
-                break label2510;
-              }
-              if (this.hsD.dHi != 270) {
-                break label513;
-              }
-              break label2510;
-              label308:
-              localObject1 = h.d(localParameters, localPoint, 2100, bool);
-              this.vZY = false;
-            }
-            k.a((h.c)localObject1);
-            localPoint = ((h.c)localObject1).wah;
-            if (localPoint != null) {
-              break;
-            }
-            l.awQ();
-            AppMethodBeat.o(89376);
-            return false;
-          }
-        }
-        else
-        {
-          localPoint = new Point(this.hrY.getWidth(), this.hrY.getHeight());
-          continue;
-        }
-        localObject1 = b.dpE();
-        localObject2 = localParameters.getSupportedPreviewSizes();
-        localObject3 = localParameters.getSupportedPictureSizes();
-        i = this.hsD.dHi;
-        if (bu.isNullOrNil(((b)localObject1).vZh)) {
-          ((b)localObject1).vZh = com.tencent.mm.plugin.mmsight.d.eC((List)localObject2);
-        }
-        if (bu.isNullOrNil(((b)localObject1).vZi)) {
-          ((b)localObject1).vZi = com.tencent.mm.plugin.mmsight.d.eC((List)localObject3);
-        }
-        ((b)localObject1).dHi = i;
-        ((b)localObject1).vZA = 2;
-        continue;
-        bool = false;
-      }
-      catch (Exception paramv)
-      {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "setPreviewSize Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
-        AppMethodBeat.o(89376);
-        return false;
-      }
-      label501:
-      continue;
-      label507:
-      bool = false;
-      continue;
-      label513:
-      bool = false;
-    }
-    this.hrV.ruC = localPoint.x;
-    this.hrV.ruD = localPoint.y;
-    this.vZO = localPoint;
-    Object localObject2 = this.mContext;
-    if (this.hsD.dHi != 90) {
-      if (this.hsD.dHi == 270)
-      {
-        break label2516;
-        label583:
-        bool = com.tencent.mm.plugin.mmsight.d.a((Context)localObject2, localPoint, bool);
-        i = 1;
-        if ((this.hsD.dHi != 90) && (this.hsD.dHi != 270)) {
-          break label1348;
-        }
-        if ((localPoint.y < this.vZX.width) || (localPoint.x < this.vZX.height))
-        {
-          i = 0;
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "previewSize %s not support real scale", new Object[] { localPoint });
-        }
-        label673:
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "checkIfNeedUsePreviewLarge, needCrop: %s", new Object[] { Boolean.valueOf(bool) });
-        if (!bool) {
-          break label1434;
-        }
-        if (k.wat.gdr != 2) {
-          break label1422;
-        }
-        this.hsE = ((h.c)localObject1).waj;
-        if ((this.hsE.x < localPoint.x) || (this.hsE.y < localPoint.y))
-        {
-          if ((this.hsD.dHi != 90) && (this.hsD.dHi != 270)) {
-            break label1402;
-          }
-          this.hsE.y = com.tencent.mm.plugin.mmsight.d.KJ(this.hsE.y);
-        }
-        label789:
-        this.vZO = new Point(this.hsE.x, this.hsE.y);
-        this.vZP = (this.hsE.x * this.hsE.y * 3 / 2);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "cropSize: %s", new Object[] { this.hsE });
-      }
-    }
-    label856:
-    label2522:
-    for (;;)
-    {
-      int j;
-      int k;
-      if (k.wat.waG)
-      {
-        if ((this.hsD.dHi != 90) && (this.hsD.dHi != 270)) {
-          break label2035;
-        }
-        if (i != 0)
-        {
-          if (k.wat.hrX != 1080) {
-            break label1863;
-          }
-          if (this.hsE != null) {
-            break label1811;
-          }
-          j = localPoint.x / 2;
-          if (this.hsE != null) {
-            break label1825;
-          }
-          i = localPoint.y / 2;
-          if (this.hsE != null) {
-            break label1839;
-          }
-          k = localPoint.x;
-          k = com.tencent.mm.plugin.mmsight.d.gy(j, k);
-          if (this.hsE != null) {
-            break label1851;
-          }
-          j = localPoint.y;
-          this.vZO = new Point(k, com.tencent.mm.plugin.mmsight.d.gy(i, j));
-        }
-      }
-      label996:
-      localObject1 = b.dpE();
-      localObject2 = this.hsE;
-      localObject3 = this.vZO;
-      ((b)localObject1).vZo = -1;
-      ((b)localObject1).vZn = -1;
-      ((b)localObject1).vZk = -1;
-      ((b)localObject1).vZj = -1;
-      ((b)localObject1).vZm = -1;
-      ((b)localObject1).vZl = -1;
-      if (localPoint != null)
-      {
-        ((b)localObject1).vZl = localPoint.x;
-        ((b)localObject1).vZm = localPoint.y;
-      }
-      if (localObject2 != null)
-      {
-        ((b)localObject1).vZj = ((Point)localObject2).x;
-        ((b)localObject1).vZk = ((Point)localObject2).y;
-      }
-      if (localObject3 != null)
-      {
-        ((b)localObject1).vZn = ((Point)localObject3).x;
-        ((b)localObject1).vZo = ((Point)localObject3).y;
-      }
-      if (paramBoolean) {
-        if ((!bool) && (k.wat.gdr == 2) && (!com.tencent.mm.plugin.mmsight.d.KH(this.vZO.y)))
-        {
-          i = com.tencent.mm.plugin.mmsight.d.KI(this.vZO.y);
-          if (Math.abs(i - this.vZO.y) <= 16)
-          {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "padding 16 for encode video best size: %s, alignY: %s", new Object[] { this.vZO, Integer.valueOf(i) });
-            this.vZN = new Point(this.vZO.x, this.vZO.y);
-            this.vZO.y = i;
-            this.vZR = true;
-            this.vZQ = new byte[this.vZO.x * this.vZO.y * 3 / 2];
-          }
-        }
-      }
-      for (;;)
-      {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "final set camera preview size: %s, encodeVideoBestSize: %s, cropSize: %s", new Object[] { localPoint, this.vZO, this.hsE });
-        localParameters.setPreviewSize(this.hrV.ruC, this.hrV.ruD);
-        paramv.setParameters(localParameters);
-        AppMethodBeat.o(89376);
-        return true;
-        bool = false;
-        break;
-        if ((localPoint.x >= this.vZX.width) && (localPoint.y >= this.vZX.height)) {
-          break label673;
-        }
-        i = 0;
-        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "previewSize %s not support real scale", new Object[] { localPoint });
-        break label673;
-        label1402:
-        this.hsE.x = com.tencent.mm.plugin.mmsight.d.KJ(this.hsE.x);
-        break label789;
-        this.hsE = ((h.c)localObject1).wai;
-        break label789;
-        if ((!k.wat.waG) || (k.wat.hrX != 1080) || (i == 0)) {
-          break label2495;
-        }
-        if ((this.hsD.dHi == 90) || (this.hsD.dHi == 270))
-        {
-          j = localPoint.y / 2;
-          k = com.tencent.mm.plugin.mmsight.d.KI(j);
-          m = localPoint.x / 2;
-          n = com.tencent.mm.plugin.mmsight.d.KI(m);
-          if ((Math.abs(k - j) < 8) && (Math.abs(n - m) < 8)) {
-            break label2522;
-          }
-          this.hsE = new Point(localPoint.x, localPoint.y);
-          this.hsE.y = com.tencent.mm.plugin.mmsight.d.KJ(localPoint.y);
-          this.hsE.x = com.tencent.mm.plugin.mmsight.d.KJ(localPoint.x);
-          this.vZO = new Point(this.hsE.x, this.hsE.y);
-          this.vZP = (this.hsE.x * this.hsE.y * 3 / 2);
-          bool = true;
-          break label2522;
-        }
-        j = localPoint.x / 2;
-        k = com.tencent.mm.plugin.mmsight.d.KI(j);
-        int m = localPoint.y / 2;
-        int n = com.tencent.mm.plugin.mmsight.d.KI(m);
-        if ((Math.abs(k - j) < 8) && (Math.abs(n - m) < 8)) {
-          break label2495;
-        }
-        this.hsE = new Point(localPoint.x, localPoint.y);
-        this.hsE.y = com.tencent.mm.plugin.mmsight.d.KJ(localPoint.x);
-        this.hsE.x = com.tencent.mm.plugin.mmsight.d.KJ(localPoint.y);
-        this.vZO = new Point(this.hsE.x, this.hsE.y);
-        this.vZP = (this.hsE.x * this.hsE.y * 3 / 2);
-        bool = true;
-        break label856;
-        j = this.hsE.x / 2;
-        break label923;
-        i = this.hsE.y / 2;
-        break label939;
-        k = this.hsE.x;
-        break label953;
-        j = this.hsE.y;
-        break label976;
-        if (k.wat.hrX != 720) {
-          break label996;
-        }
-        float f;
-        if (this.hsE == null)
-        {
-          f = localPoint.x * 0.75F;
-          label1893:
-          k = (int)f;
-          if (this.hsE != null) {
-            break label1995;
-          }
-          f = localPoint.y * 0.75F;
-          label1915:
-          j = (int)f;
-          if (this.hsE != null) {
-            break label2011;
-          }
-          i = localPoint.x;
-          k = com.tencent.mm.plugin.mmsight.d.gy(k, i);
-          if (this.hsE != null) {
-            break label2023;
-          }
-        }
-        label2011:
-        label2023:
-        for (i = localPoint.y;; i = this.hsE.y)
-        {
-          this.vZO = new Point(k, com.tencent.mm.plugin.mmsight.d.gy(j, i));
-          break;
-          f = this.hsE.x * 0.75F;
-          break label1893;
-          f = this.hsE.y * 0.75F;
-          break label1915;
-          i = this.hsE.x;
-          break label1933;
-        }
-        label2035:
-        if (i == 0) {
-          break label996;
-        }
-        if (k.wat.hrX == 1080)
-        {
-          if (this.hsE == null)
-          {
-            j = localPoint.y / 2;
-            if (this.hsE != null) {
-              break label2158;
-            }
-            i = localPoint.x / 2;
-            if (this.hsE != null) {
-              break label2172;
-            }
-            k = localPoint.y;
-            k = com.tencent.mm.plugin.mmsight.d.gy(j, k);
-            if (this.hsE != null) {
-              break label2184;
-            }
-          }
-          for (j = localPoint.x;; j = this.hsE.x)
-          {
-            this.vZO = new Point(k, com.tencent.mm.plugin.mmsight.d.gy(i, j));
-            break;
-            j = this.hsE.y / 2;
-            break label2068;
-            label2158:
-            i = this.hsE.x / 2;
-            break label2084;
-            label2172:
-            k = this.hsE.y;
-            break label2098;
-          }
-        }
-        if (k.wat.hrX != 720) {
-          break label996;
-        }
-        if (this.hsE == null)
-        {
-          f = localPoint.y * 0.75F;
-          k = (int)f;
-          if (this.hsE != null) {
-            break label2328;
-          }
-          f = localPoint.x * 0.75F;
-          j = (int)f;
-          if (this.hsE != null) {
-            break label2344;
-          }
-          i = localPoint.y;
-          label2266:
-          k = com.tencent.mm.plugin.mmsight.d.gy(k, i);
-          if (this.hsE != null) {
-            break label2356;
-          }
-        }
-        for (i = localPoint.x;; i = this.hsE.x)
-        {
-          this.vZO = new Point(k, com.tencent.mm.plugin.mmsight.d.gy(j, i));
-          break;
-          f = this.hsE.y * 0.75F;
-          break label2226;
-          f = this.hsE.x * 0.75F;
-          break label2248;
-          i = this.hsE.y;
-          break label2266;
-        }
-        k.h(this.vZO);
-        continue;
-        k.h(this.vZO);
-        continue;
-        if ((!bool) && (k.wat.gdr == 2) && (!com.tencent.mm.plugin.mmsight.d.KH(this.vZO.y)) && (this.vZR) && (this.vZQ != null) && (this.vZN.y == this.vZO.y))
-        {
-          i = com.tencent.mm.plugin.mmsight.d.KI(this.vZO.y);
-          if (this.vZQ.length == this.vZO.x * i * 3 / 2) {
-            this.vZO.y = i;
-          }
-        }
-      }
-      continue;
-      bool = true;
-      break;
-      bool = true;
-      break label206;
-      bool = true;
-      break label308;
-      bool = true;
-      break label583;
-    }
   }
   
   @TargetApi(14)
@@ -1175,7 +1199,7 @@ public final class f
     }
     try
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "safeSetMetering");
+      Log.i("MicroMsg.MMSightCameraSetting", "safeSetMetering");
       Camera.Parameters localParameters = paramv.getParameters();
       if (localParameters.getMaxNumMeteringAreas() > 0)
       {
@@ -1189,7 +1213,7 @@ public final class f
     }
     catch (Exception paramv)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "safeSetMetering Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
+      Log.i("MicroMsg.MMSightCameraSetting", "safeSetMetering Exception, %s, %s", new Object[] { Looper.myLooper(), paramv.getMessage() });
       AppMethodBeat.o(89378);
     }
     return false;
@@ -1210,86 +1234,86 @@ public final class f
     }
     catch (Exception paramv)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "safeResetZoom error: %s", new Object[] { paramv.getMessage() });
+      Log.e("MicroMsg.MMSightCamera", "safeResetZoom error: %s", new Object[] { paramv.getMessage() });
       AppMethodBeat.o(89387);
     }
   }
   
-  private void dpI()
+  private void ejx()
   {
     AppMethodBeat.i(89375);
     try
     {
-      if ((this.mSensorManager != null) && (this.vZJ != null)) {
+      if ((this.mSensorManager != null) && (this.ztM != null)) {
         this.mSensorManager.unregisterListener(this);
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", this.hsH.getValue());
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", this.hsI.getValue());
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", this.hsJ.getValue());
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", this.hsK.getValue());
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", this.vZW.getValue());
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", this.hsL.getValue());
-      if (this.gaZ != null)
+      Log.i("MicroMsg.MMSightCamera", this.imm.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.imn.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.imo.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.imp.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.ztZ.getValue());
+      Log.i("MicroMsg.MMSightCamera", this.imq.getValue());
+      if (this.gGr != null)
       {
-        long l = bu.HQ();
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "release camera beg, %s", new Object[] { Looper.myLooper() });
-        this.wab.removeCallbacksAndMessages(null);
-        this.wab.hsl = true;
-        this.gaZ.setPreviewCallback(null);
-        this.gaZ.stopPreview();
-        this.gaZ.release();
-        this.gaZ = null;
-        this.vZG = false;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "release camera end, use %dms, %s", new Object[] { Long.valueOf(bu.aO(l)), Looper.myLooper() });
+        long l = Util.currentTicks();
+        Log.i("MicroMsg.MMSightCamera", "release camera beg, %s", new Object[] { Looper.myLooper() });
+        this.zue.removeCallbacksAndMessages(null);
+        this.zue.imv = true;
+        this.gGr.setPreviewCallback(null);
+        this.gGr.stopPreview();
+        this.gGr.release();
+        this.gGr = null;
+        this.ztJ = false;
+        Log.i("MicroMsg.MMSightCamera", "release camera end, use %dms, %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Looper.myLooper() });
       }
-      this.hsj = false;
-      this.vZK = 0.0F;
-      this.vZL = 0.0F;
-      this.vZM = 0.0F;
-      waa = true;
+      this.ztI = false;
+      this.ztN = 0.0F;
+      this.ztO = 0.0F;
+      this.ztP = 0.0F;
+      zud = true;
       this.mContext = null;
-      this.vZZ = false;
-      this.vZO = null;
-      this.hsE = null;
-      this.hsN = null;
-      this.vZU = false;
+      this.zuc = false;
+      this.ztR = null;
+      this.ilV = null;
+      this.ims = null;
+      this.ztX = false;
       AppMethodBeat.o(89375);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightCamera", localException, "cameraRelease error", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.MMSightCamera", localException, "cameraRelease error", new Object[0]);
       AppMethodBeat.o(89375);
     }
   }
   
-  public final boolean A(Context paramContext, boolean paramBoolean)
+  public final boolean D(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(89398);
-    if ((!k.wat.waH) || ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaH == 0) && (this.mSensorManager == null) && (this.vZJ == null)))
+    if ((!k.zuy.zuM) || ((ae.gKt.gFX == 0) && (this.mSensorManager == null) && (this.ztM == null)))
     {
-      this.mSensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
-      this.vZJ = this.mSensorManager.getDefaultSensor(1);
+      this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
+      this.ztM = this.mSensorManager.getDefaultSensor(1);
     }
-    if (this.gaZ == null)
+    if (this.gGr == null)
     {
-      dpI();
-      this.hrQ = paramBoolean;
+      ejx();
+      this.ilM = paramBoolean;
       if (paramBoolean) {}
       try
       {
-        for (this.vZH = com.tencent.mm.compatible.deviceinfo.d.aah();; this.vZH = com.tencent.mm.compatible.deviceinfo.d.aai())
+        for (this.ztK = com.tencent.mm.compatible.deviceinfo.d.aog();; this.ztK = com.tencent.mm.compatible.deviceinfo.d.aoh())
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "use camera id %d, SrvDeviceInfo id %d", new Object[] { Integer.valueOf(this.vZH), Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geM.gaK) });
-          this.vZZ = false;
+          Log.i("MicroMsg.MMSightCamera", "use camera id %d, SrvDeviceInfo id %d", new Object[] { Integer.valueOf(this.ztK), Integer.valueOf(ae.gKt.gGa) });
+          this.zuc = false;
           this.mContext = paramContext;
-          this.hsD = new o().ae(paramContext, this.vZH);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "open camera end, %s", new Object[] { Looper.myLooper() });
-          if (this.hsD != null) {
+          this.imk = new o().B(paramContext, this.ztK);
+          Log.i("MicroMsg.MMSightCamera", "open camera end, %s", new Object[] { Looper.myLooper() });
+          if (this.imk != null) {
             break;
           }
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "open camera FAILED, %s", new Object[] { Looper.myLooper() });
-          awn();
+          Log.i("MicroMsg.MMSightCamera", "open camera FAILED, %s", new Object[] { Looper.myLooper() });
+          aPa();
           AppMethodBeat.o(89398);
           return false;
         }
@@ -1298,16 +1322,16 @@ public final class f
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightCamera", localException, "try to get cameraid error %s, useBackCamera: %s", new Object[] { localException.getMessage(), Boolean.valueOf(this.hrQ) });
-          this.vZH = 0;
+          Log.printErrStackTrace("MicroMsg.MMSightCamera", localException, "try to get cameraid error %s, useBackCamera: %s", new Object[] { localException.getMessage(), Boolean.valueOf(this.ilM) });
+          this.ztK = 0;
         }
-        this.gaZ = this.hsD.gaZ;
-        this.wab.hsl = false;
-        this.hrV.dHi = this.hsD.dHi;
-        if (this.gaZ == null)
+        this.gGr = this.imk.gGr;
+        this.zue.imv = false;
+        this.ilR.dYT = this.imk.dYT;
+        if (this.gGr == null)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "start camera FAILED!");
-          awn();
+          Log.e("MicroMsg.MMSightCamera", "start camera FAILED!");
+          aPa();
           AppMethodBeat.o(89398);
           return false;
         }
@@ -1317,13 +1341,13 @@ public final class f
     return true;
   }
   
-  public final void KL(int paramInt)
+  public final void QM(int paramInt)
   {
     AppMethodBeat.i(89395);
-    if (this.gaZ != null) {
+    if (this.gGr != null) {
       try
       {
-        Camera.Parameters localParameters = this.gaZ.getParameters();
+        Camera.Parameters localParameters = this.gGr.getParameters();
         boolean bool = localParameters.isZoomSupported();
         if (!bool) {
           return;
@@ -1337,24 +1361,24 @@ public final class f
         {
           return;
         }
-        if (this.aYh)
+        if (this.aYc)
         {
-          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MMSightCamera", "setForceZoomTargetRatio, zooming, ignore");
+          Log.d("MicroMsg.MMSightCamera", "setForceZoomTargetRatio, zooming, ignore");
           return;
         }
-        this.aYh = true;
+        this.aYc = true;
         localParameters.setZoom(paramInt);
-        this.gaZ.setParameters(localParameters);
+        this.gGr.setParameters(localParameters);
         return;
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "getZoom error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "getZoom error: %s", new Object[] { localException.getMessage() });
         return;
       }
       finally
       {
-        this.aYh = false;
+        this.aYc = false;
         AppMethodBeat.o(89395);
       }
     }
@@ -1364,10 +1388,10 @@ public final class f
   public final int a(SurfaceTexture paramSurfaceTexture, int paramInt, float paramFloat, boolean paramBoolean)
   {
     AppMethodBeat.i(89386);
-    long l = bu.HQ();
-    this.vZU = false;
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s", new Object[] { Boolean.valueOf(this.vZG), Looper.myLooper(), paramSurfaceTexture });
-    if (this.vZG)
+    long l = Util.currentTicks();
+    this.ztX = false;
+    Log.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s", new Object[] { Boolean.valueOf(this.ztJ), Looper.myLooper(), paramSurfaceTexture });
+    if (this.ztJ)
     {
       AppMethodBeat.o(89386);
       return 0;
@@ -1378,85 +1402,85 @@ public final class f
       AppMethodBeat.o(89386);
       return 0 - paramInt;
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "this texture %s", new Object[] { paramSurfaceTexture });
+    Log.i("MicroMsg.MMSightCamera", "this texture %s", new Object[] { paramSurfaceTexture });
     for (;;)
     {
       try
       {
-        a(this.gaZ, paramInt, paramFloat, paramBoolean);
-        if (com.tencent.mm.plugin.mmsight.model.a.l.dqm().wci == null) {
+        a(this.gGr, paramInt, paramFloat, paramBoolean);
+        if (com.tencent.mm.plugin.mmsight.model.a.l.ekc().zwk == null) {
           break label654;
         }
-        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.l.dqm().wci.vYP);
-        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaE == 1)
+        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.l.ekc().zwk.zsR);
+        if (ae.gKt.gFU == 1)
         {
           str = "Range";
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaF != 1) {
+          if (ae.gKt.gFV != 1) {
             break label671;
           }
           paramBoolean = true;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaG != 1) {
+          if (ae.gKt.gFW != 1) {
             break label677;
           }
           bool1 = true;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaH != 1) {
+          if (ae.gKt.gFX != 1) {
             break label683;
           }
           bool2 = true;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaI != 1) {
+          if (ae.gKt.gFY != 1) {
             break label689;
           }
           bool3 = true;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-          if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaE == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
+          Log.i("MicroMsg.MMSightCamera", "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+          if ((ae.gKt.gFU == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
           {
-            a(this.gaZ, false);
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaF == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
-              b(this.gaZ);
+            a(this.gGr, false);
+            if ((ae.gKt.gFV == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
+              b(this.gGr);
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdz != -1) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdz == 1) && (com.tencent.mm.compatible.util.d.lC(14))) {
-              c(this.gaZ);
+            if ((ae.gKA.gIX != -1) && (ae.gKA.gIX == 1) && (com.tencent.mm.compatible.util.d.oF(14))) {
+              c(this.gGr);
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaH == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
-              a(this.gaZ);
+            if ((ae.gKt.gFX == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
+              a(this.gGr);
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaI == 1) && (localInteger.intValue() != 0)) {
+            if ((ae.gKt.gFY == 1) && (localInteger.intValue() != 0)) {
               localInteger.intValue();
             }
-            d(this.gaZ);
-            awC();
-            this.gaZ.setPreviewTexture(paramSurfaceTexture);
-            this.gaZ.startPreview();
-            if (!k.wat.waH) {
+            d(this.gGr);
+            aPs();
+            this.gGr.setPreviewTexture(paramSurfaceTexture);
+            this.gGr.startPreview();
+            if (!k.zuy.zuM) {
               break label637;
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaH == 0) && (this.mSensorManager != null) && (this.vZJ != null)) {
-              this.mSensorManager.registerListener(this, this.vZJ, 2);
+            if ((ae.gKt.gFX == 0) && (this.mSensorManager != null) && (this.ztM != null)) {
+              this.mSensorManager.registerListener(this, this.ztM, 2);
             }
-            this.vZG = true;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "start preview end, use %dms %s", new Object[] { Long.valueOf(bu.aO(l)), Looper.myLooper() });
+            this.ztJ = true;
+            Log.i("MicroMsg.MMSightCamera", "start preview end, use %dms %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Looper.myLooper() });
             AppMethodBeat.o(89386);
             return 0;
           }
         }
         else
         {
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaD != 1) {
+          if (ae.gKt.gFT != 1) {
             break label663;
           }
           str = "Fix";
           continue;
         }
-        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaD != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
+        if ((ae.gKt.gFT != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
           continue;
         }
-        a(this.gaZ, true);
+        a(this.gGr, true);
         continue;
-        this.mSensorManager.registerListener(this, this.vZJ, 2);
+        this.mSensorManager.registerListener(this, this.ztM, 2);
       }
       catch (Exception paramSurfaceTexture)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
         paramInt = com.tencent.mm.compatible.util.f.getLine();
         AppMethodBeat.o(89386);
         return 0 - paramInt;
@@ -1487,10 +1511,10 @@ public final class f
   public final int a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
     AppMethodBeat.i(89385);
-    long l = bu.HQ();
-    this.vZU = false;
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s autoConfig %s", new Object[] { Boolean.valueOf(this.vZG), Looper.myLooper(), paramSurfaceTexture, Boolean.valueOf(paramBoolean) });
-    if (this.vZG)
+    long l = Util.currentTicks();
+    this.ztX = false;
+    Log.i("MicroMsg.MMSightCamera", "start preview, previewing %B, %s %s autoConfig %s", new Object[] { Boolean.valueOf(this.ztJ), Looper.myLooper(), paramSurfaceTexture, Boolean.valueOf(paramBoolean) });
+    if (this.ztJ)
     {
       AppMethodBeat.o(89385);
       return 0;
@@ -1502,134 +1526,134 @@ public final class f
       AppMethodBeat.o(89385);
       return 0 - i;
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "this texture %s", new Object[] { paramSurfaceTexture });
+    Log.i("MicroMsg.MMSightCamera", "this texture %s", new Object[] { paramSurfaceTexture });
     for (;;)
     {
       try
       {
-        b(this.gaZ, paramBoolean);
-        if (com.tencent.mm.plugin.mmsight.model.a.l.dqm().wci == null) {
-          break label656;
+        a(this.gGr, paramBoolean, 0);
+        if (com.tencent.mm.plugin.mmsight.model.a.l.ekc().zwk == null) {
+          break label657;
         }
-        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.l.dqm().wci.vYP);
-        if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaE == 1)
+        localInteger = Integer.valueOf(com.tencent.mm.plugin.mmsight.model.a.l.ekc().zwk.zsR);
+        if (ae.gKt.gFU == 1)
         {
           str = "Range";
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaF != 1) {
-            break label673;
+          if (ae.gKt.gFV != 1) {
+            break label674;
           }
           paramBoolean = true;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaG != 1) {
-            break label678;
+          if (ae.gKt.gFW != 1) {
+            break label679;
           }
           bool1 = true;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaH != 1) {
-            break label684;
+          if (ae.gKt.gFX != 1) {
+            break label685;
           }
           bool2 = true;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaI != 1) {
-            break label690;
+          if (ae.gKt.gFY != 1) {
+            break label691;
           }
           bool3 = true;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-          if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaE == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
+          Log.i("MicroMsg.MMSightCamera", "startPreview Texture:: sightTest %s, config list: setFPS[%s], setYUV420SP[%B], useMetering[%B], useContinueFocus[%B] mUseContinueVideoFocusMode[%B]", new Object[] { localInteger, str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+          if ((ae.gKt.gFU == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 1)))
           {
-            a(this.gaZ, false);
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaF == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
-              b(this.gaZ);
+            a(this.gGr, false);
+            if ((ae.gKt.gFV == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 2))) {
+              b(this.gGr);
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdz != -1) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdz == 1) && (com.tencent.mm.compatible.util.d.lC(14))) {
-              c(this.gaZ);
+            if ((ae.gKA.gIX != -1) && (ae.gKA.gIX == 1) && (com.tencent.mm.compatible.util.d.oF(14))) {
+              c(this.gGr);
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaH == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
-              a(this.gaZ);
+            if ((ae.gKt.gFX == 1) && ((localInteger.intValue() == 0) || (localInteger.intValue() == 4))) {
+              a(this.gGr);
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaI == 1) && (localInteger.intValue() != 0)) {
+            if ((ae.gKt.gFY == 1) && (localInteger.intValue() != 0)) {
               localInteger.intValue();
             }
-            d(this.gaZ);
-            awC();
-            this.gaZ.setPreviewTexture(paramSurfaceTexture);
-            this.gaZ.startPreview();
-            if (!k.wat.waH) {
-              break label639;
+            d(this.gGr);
+            aPs();
+            this.gGr.setPreviewTexture(paramSurfaceTexture);
+            this.gGr.startPreview();
+            if (!k.zuy.zuM) {
+              break label640;
             }
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaH == 0) && (this.mSensorManager != null) && (this.vZJ != null)) {
-              this.mSensorManager.registerListener(this, this.vZJ, 2);
+            if ((ae.gKt.gFX == 0) && (this.mSensorManager != null) && (this.ztM != null)) {
+              this.mSensorManager.registerListener(this, this.ztM, 2);
             }
-            this.vZG = true;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "start preview end, use %dms %s", new Object[] { Long.valueOf(bu.aO(l)), Looper.myLooper() });
+            this.ztJ = true;
+            Log.i("MicroMsg.MMSightCamera", "start preview end, use %dms %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Looper.myLooper() });
             AppMethodBeat.o(89385);
             return 0;
           }
         }
         else
         {
-          if (com.tencent.mm.compatible.deviceinfo.ae.geM.gaD != 1) {
-            break label665;
+          if (ae.gKt.gFT != 1) {
+            break label666;
           }
           str = "Fix";
           continue;
         }
-        if ((com.tencent.mm.compatible.deviceinfo.ae.geM.gaD != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
+        if ((ae.gKt.gFT != 1) || ((localInteger.intValue() != 0) && (localInteger.intValue() != 5))) {
           continue;
         }
-        a(this.gaZ, true);
+        a(this.gGr, true);
         continue;
-        this.mSensorManager.registerListener(this, this.vZJ, 2);
+        this.mSensorManager.registerListener(this, this.ztM, 2);
       }
       catch (Exception paramSurfaceTexture)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "start preview FAILED, %s, %s", new Object[] { Looper.myLooper(), paramSurfaceTexture.getMessage() });
         i = com.tencent.mm.compatible.util.f.getLine();
         AppMethodBeat.o(89385);
         return 0 - i;
       }
-      label639:
+      label640:
       continue;
-      label656:
+      label657:
       Integer localInteger = Integer.valueOf(0);
       continue;
-      label665:
+      label666:
       String str = "Error";
       continue;
-      label673:
+      label674:
       paramBoolean = false;
       continue;
-      label678:
+      label679:
       boolean bool1 = false;
       continue;
-      label684:
+      label685:
       boolean bool2 = false;
       continue;
-      label690:
+      label691:
       boolean bool3 = false;
     }
   }
   
-  public final void a(f.a parama)
+  public final void a(a parama)
   {
     AppMethodBeat.i(89374);
-    this.vZV = parama;
+    this.ztY = parama;
     String str1;
     String str2;
-    com.tencent.mm.plugin.base.model.a locala;
-    if (parama == f.a.waf)
+    a locala;
+    if (parama == a.zui)
     {
-      parama = b.dpE();
-      str1 = this.hsI.dpG();
-      str2 = this.hsH.dpG();
-      locala = this.vZS;
-      if (locala.nSo != 0) {
+      parama = b.ejt();
+      str1 = this.imn.ejv();
+      str2 = this.imm.ejv();
+      locala = this.ztV;
+      if (locala.pde != 0) {
         break label94;
       }
     }
     label94:
-    for (int i = 0;; i = locala.nSn / locala.nSo)
+    for (int i = 0;; i = locala.pdd / locala.pde)
     {
-      parama.vZp = ((int)(bu.aSD(str1) * 10.0D));
-      parama.vZq = ((int)(bu.aSD(str2) * 10.0D));
-      parama.vZv = i;
+      parama.ztr = ((int)(Util.safeParseDouble(str1) * 10.0D));
+      parama.zts = ((int)(Util.safeParseDouble(str2) * 10.0D));
+      parama.ztx = i;
       AppMethodBeat.o(89374);
       return;
     }
@@ -1638,43 +1662,43 @@ public final class f
   public final void a(b paramb, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(89390);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "takePicture, callback: %s, currentFrameData: %s, isLandscape: %s, degree: %s", new Object[] { paramb, this.hsN, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (this.hsN != null) {
+    Log.i("MicroMsg.MMSightCamera", "takePicture, callback: %s, currentFrameData: %s, isLandscape: %s, degree: %s", new Object[] { paramb, this.ims, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (this.ims != null) {
       try
       {
-        this.hsM = true;
+        this.imr = true;
         Point localPoint = new Point();
-        if (this.hsE != null) {
-          localPoint.x = this.hsE.x;
+        if (this.ilV != null) {
+          localPoint.x = this.ilV.x;
         }
-        for (localPoint.y = this.hsE.y;; localPoint.y = this.vZO.y)
+        for (localPoint.y = this.ilV.y;; localPoint.y = this.ztR.y)
         {
-          byte[] arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.wcg.h(Integer.valueOf(this.hsN.length));
-          System.arraycopy(this.hsN, 0, arrayOfByte, 0, this.hsN.length);
-          int i = this.hsD.dHi;
+          byte[] arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.zwi.h(Integer.valueOf(this.ims.length));
+          System.arraycopy(this.ims, 0, arrayOfByte, 0, this.ims.length);
+          int i = this.imk.dYT;
           paramb.a(arrayOfByte, localPoint.x, localPoint.y, i, paramInt);
           return;
-          if ((this.vZQ == null) || (!this.vZR)) {
+          if ((this.ztT == null) || (!this.ztU)) {
             break;
           }
-          localPoint.x = this.vZO.x;
+          localPoint.x = this.ztR.x;
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "takePicture error: %s", new Object[] { localException.getMessage() });
-          this.hsM = false;
+          Log.e("MicroMsg.MMSightCamera", "takePicture error: %s", new Object[] { localException.getMessage() });
+          this.imr = false;
           paramb.a(null, 0, 0, -1, 0);
           return;
-          localException.x = this.hrV.ruC;
-          localException.y = this.hrV.ruD;
+          localException.x = this.ilR.sUz;
+          localException.y = this.ilR.sUA;
         }
       }
       finally
       {
-        this.hsM = false;
+        this.imr = false;
         AppMethodBeat.o(89390);
       }
     }
@@ -1686,7 +1710,7 @@ public final class f
   {
     AppMethodBeat.i(89372);
     if (paramg != null) {
-      this.hsB.add(paramg);
+      this.imj.add(paramg);
     }
     AppMethodBeat.o(89372);
   }
@@ -1694,14 +1718,14 @@ public final class f
   public final boolean a(Context paramContext, SurfaceTexture paramSurfaceTexture, int paramInt, float paramFloat, boolean paramBoolean)
   {
     AppMethodBeat.i(89400);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "switch camera with limit, current useBack: %s", new Object[] { Boolean.valueOf(this.hrQ) });
+    Log.i("MicroMsg.MMSightCamera", "switch camera with limit, current useBack: %s", new Object[] { Boolean.valueOf(this.ilM) });
     try
     {
-      dpO();
-      if (!this.hrQ) {}
+      ejD();
+      if (!this.ilM) {}
       for (boolean bool = true;; bool = false)
       {
-        A(paramContext, bool);
+        D(paramContext, bool);
         a(paramSurfaceTexture, paramInt, paramFloat, paramBoolean);
         AppMethodBeat.o(89400);
         return true;
@@ -1710,7 +1734,7 @@ public final class f
     }
     catch (Exception paramContext)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "switchCamera error: %s", new Object[] { paramContext });
+      Log.e("MicroMsg.MMSightCamera", "switchCamera error: %s", new Object[] { paramContext });
       AppMethodBeat.o(89400);
     }
   }
@@ -1718,14 +1742,14 @@ public final class f
   public final boolean a(Context paramContext, SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
     AppMethodBeat.i(89399);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "switch camera, current useBack: %s", new Object[] { Boolean.valueOf(this.hrQ) });
+    Log.i("MicroMsg.MMSightCamera", "switch camera, current useBack: %s", new Object[] { Boolean.valueOf(this.ilM) });
     try
     {
-      dpO();
-      if (!this.hrQ) {}
+      ejD();
+      if (!this.ilM) {}
       for (boolean bool = true;; bool = false)
       {
-        A(paramContext, bool);
+        D(paramContext, bool);
         a(paramSurfaceTexture, paramBoolean);
         AppMethodBeat.o(89399);
         return true;
@@ -1734,30 +1758,30 @@ public final class f
     }
     catch (Exception paramContext)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "switchCamera error: %s", new Object[] { paramContext });
+      Log.e("MicroMsg.MMSightCamera", "switchCamera error: %s", new Object[] { paramContext });
       AppMethodBeat.o(89399);
     }
   }
   
-  public final boolean axd()
+  public final boolean aPB()
   {
-    return this.hrQ;
+    return this.ilM;
   }
   
   public final void b(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89392);
-    if (com.tencent.mm.compatible.util.d.lB(14))
+    if (com.tencent.mm.compatible.util.d.oE(14))
     {
       AppMethodBeat.o(89392);
       return;
     }
-    this.wab.removeMessages(4354);
-    this.wab.gpg = paramFloat1;
-    this.wab.gph = paramFloat2;
-    this.wab.hsm = paramInt1;
-    this.wab.hsn = paramInt2;
-    this.wab.sendMessageDelayed(this.wab.obtainMessage(4354, this.gaZ), 400L);
+    this.zue.removeMessages(4354);
+    this.zue.gZZ = paramFloat1;
+    this.zue.haa = paramFloat2;
+    this.zue.imO = paramInt1;
+    this.zue.imP = paramInt2;
+    this.zue.sendMessageDelayed(this.zue.obtainMessage(4354, this.gGr), 400L);
     AppMethodBeat.o(89392);
   }
   
@@ -1765,20 +1789,15 @@ public final class f
   {
     AppMethodBeat.i(89373);
     if (paramg != null) {
-      this.hsB.remove(paramg);
+      this.imj.remove(paramg);
     }
     AppMethodBeat.o(89373);
-  }
-  
-  public final boolean cOB()
-  {
-    return this.vZG;
   }
   
   public final void d(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(89396);
-    if ((this.gaZ != null) && (this.vZG)) {}
+    if ((this.gGr != null) && (this.ztJ)) {}
     for (;;)
     {
       int m;
@@ -1786,29 +1805,29 @@ public final class f
       int j;
       try
       {
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MMSightCamera", "triggerSmallZoom, zoom: %s", new Object[] { Boolean.valueOf(paramBoolean1) });
-        if (this.aYh)
+        Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, zoom: %s", new Object[] { Boolean.valueOf(paramBoolean1) });
+        if (this.aYc)
         {
-          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MMSightCamera", "triggerSmallZoom, zooming, ignore");
+          Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, zooming, ignore");
           return;
         }
-        Camera.Parameters localParameters = this.gaZ.getParameters();
+        Camera.Parameters localParameters = this.gGr.getParameters();
         if (localParameters.isZoomSupported())
         {
-          this.aYh = true;
+          this.aYc = true;
           m = localParameters.getZoom();
           k = localParameters.getMaxZoom();
           if (!paramBoolean2)
           {
-            if (this.hsG <= 0)
+            if (this.ilX <= 0)
             {
-              this.hsG = Math.round(k / 15.0F);
-              if (this.hsG > 5) {
-                this.hsG = 5;
+              this.ilX = Math.round(k / 15.0F);
+              if (this.ilX > 5) {
+                this.ilX = 5;
               }
             }
-            i = this.hsG;
-            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MMSightCamera", "triggerSmallZoom, currentZoom: %s, maxZoom: %s, smallZoomStep: %s, scrollSmallZoomStep: %s, factor: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(this.hsG), Integer.valueOf(this.hsF), Integer.valueOf(paramInt) });
+            i = this.ilX;
+            Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, currentZoom: %s, maxZoom: %s, smallZoomStep: %s, scrollSmallZoomStep: %s, factor: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(this.ilX), Integer.valueOf(this.ilW), Integer.valueOf(paramInt) });
             j = i;
             if (paramInt > 0) {
               j = i * paramInt;
@@ -1821,16 +1840,16 @@ public final class f
           }
           else
           {
-            if (this.hsF <= 0)
+            if (this.ilW <= 0)
             {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "scroll zoom error, scrollSmallZoomStep: %s", new Object[] { Integer.valueOf(this.hsF) });
+              Log.e("MicroMsg.MMSightCamera", "scroll zoom error, scrollSmallZoomStep: %s", new Object[] { Integer.valueOf(this.ilW) });
               return;
             }
-            i = this.hsF;
+            i = this.ilW;
             continue;
-            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MMSightCamera", "triggerSmallZoom, nextZoom: %s", new Object[] { Integer.valueOf(paramInt) });
+            Log.d("MicroMsg.MMSightCamera", "triggerSmallZoom, nextZoom: %s", new Object[] { Integer.valueOf(paramInt) });
             localParameters.setZoom(paramInt);
-            this.gaZ.setParameters(localParameters);
+            this.gGr.setParameters(localParameters);
           }
         }
         else
@@ -1851,12 +1870,12 @@ public final class f
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "triggerSmallZoom error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "triggerSmallZoom error: %s", new Object[] { localException.getMessage() });
         return;
       }
       finally
       {
-        this.aYh = false;
+        this.aYc = false;
         AppMethodBeat.o(89396);
       }
       return;
@@ -1870,62 +1889,15 @@ public final class f
     }
   }
   
-  public final void dpJ()
+  public final boolean dEO()
   {
-    AppMethodBeat.i(89382);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "switchToVideoFocusMode");
-    if ((this.gaZ != null) && (this.vZG)) {
-      try
-      {
-        Camera.Parameters localParameters = this.gaZ.getParameters();
-        List localList = localParameters.getSupportedFocusModes();
-        if ((localList != null) && (localList.contains("continuous-video")))
-        {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "support continuous video");
-          localParameters.setFocusMode("continuous-video");
-        }
-        this.gaZ.setParameters(localParameters);
-        AppMethodBeat.o(89382);
-        return;
-      }
-      catch (Exception localException)
-      {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "switchToVideoFocusMode error: %s", new Object[] { localException.getMessage() });
-      }
-    }
-    AppMethodBeat.o(89382);
+    return this.ztJ;
   }
   
-  public final void dpK()
-  {
-    AppMethodBeat.i(89383);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "switchToPictureFocusMode");
-    if ((this.gaZ != null) && (this.vZG)) {
-      try
-      {
-        Camera.Parameters localParameters = this.gaZ.getParameters();
-        List localList = localParameters.getSupportedFocusModes();
-        if ((localList != null) && (localList.contains("continuous-picture")))
-        {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "support continuous picture");
-          localParameters.setFocusMode("continuous-picture");
-        }
-        this.gaZ.setParameters(localParameters);
-        AppMethodBeat.o(89383);
-        return;
-      }
-      catch (Exception localException)
-      {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "switchToPictureFocusMode error: %s", new Object[] { localException.getMessage() });
-      }
-    }
-    AppMethodBeat.o(89383);
-  }
-  
-  public final String dpL()
+  public final String ejA()
   {
     AppMethodBeat.i(89389);
-    if (this.gaZ == null)
+    if (this.gGr == null)
     {
       AppMethodBeat.o(89389);
       return "";
@@ -1938,10 +1910,10 @@ public final class f
       try
       {
         localStringBuffer = new StringBuffer();
-        localObject3 = com.tencent.mm.plugin.mmsight.d.d(this.gaZ.getParameters());
-        if (this.hrY == null)
+        localObject3 = com.tencent.mm.plugin.mmsight.d.c(this.gGr.getParameters());
+        if (this.ilU == null)
         {
-          Object localObject1 = com.tencent.mm.plugin.mmsight.d.fS(this.mContext);
+          Object localObject1 = com.tencent.mm.plugin.mmsight.d.gx(this.mContext);
           localStringBuffer.append(String.format("Screen size %d %d r:%.4f\n", new Object[] { Integer.valueOf(((Point)localObject1).x), Integer.valueOf(((Point)localObject1).y), Double.valueOf(((Point)localObject1).x * 1.0D / ((Point)localObject1).y) }));
           localObject1 = ((ArrayList)localObject3).iterator();
           if (!((Iterator)localObject1).hasNext()) {
@@ -1954,11 +1926,11 @@ public final class f
           localStringBuffer.append(String.format("%s*%s √ r:%.4f\n", new Object[] { Integer.valueOf(((Camera.Size)localObject3).width), Integer.valueOf(((Camera.Size)localObject3).height), Double.valueOf(((Camera.Size)localObject3).height * 1.0D / ((Camera.Size)localObject3).width) }));
           continue;
         }
-        localObject2 = new Point(this.hrY.getWidth(), this.hrY.getHeight());
+        localObject2 = new Point(this.ilU.getWidth(), this.ilU.getHeight());
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "getDebugInfo error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "getDebugInfo error: %s", new Object[] { localException.getMessage() });
         AppMethodBeat.o(89389);
         return null;
       }
@@ -1966,13 +1938,13 @@ public final class f
       label290:
       localStringBuffer.append(String.format("%s*%s X r:%.4f\n", new Object[] { Integer.valueOf(((Camera.Size)localObject3).width), Integer.valueOf(((Camera.Size)localObject3).height), Double.valueOf(((Camera.Size)localObject3).height * 1.0D / ((Camera.Size)localObject3).width) }));
     }
-    if (this.hsE != null) {
-      localStringBuffer.append("\nSIGHTCROPMODE:  " + this.hsE.x + " " + this.hsE.y + " from " + this.hrV.ruC + " " + this.hrV.ruD);
+    if (this.ilV != null) {
+      localStringBuffer.append("\nSIGHTCROPMODE:  " + this.ilV.x + " " + this.ilV.y + " from " + this.ilR.sUz + " " + this.ilR.sUA);
     }
     for (;;)
     {
       localStringBuffer.append("\ngetOrientation:" + getOrientation());
-      localStringBuffer.append("\nrecorderOption: " + com.tencent.mm.compatible.deviceinfo.ae.geT.gdy);
+      localStringBuffer.append("\nrecorderOption: " + ae.gKA.gIW);
       localObject2 = localStringBuffer.toString();
       AppMethodBeat.o(89389);
       return localObject2;
@@ -1980,21 +1952,21 @@ public final class f
     }
   }
   
-  public final void dpM()
+  public final void ejB()
   {
     AppMethodBeat.i(89393);
-    if ((this.gaZ != null) && (this.vZG)) {
+    if ((this.gGr != null) && (this.ztJ)) {
       try
       {
-        Camera.Parameters localParameters = this.gaZ.getParameters();
+        Camera.Parameters localParameters = this.gGr.getParameters();
         List localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains("auto")))
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCameraSetting", "support auto focus");
+          Log.i("MicroMsg.MMSightCameraSetting", "support auto focus");
           localParameters.setFocusMode("auto");
-          this.gaZ.setParameters(localParameters);
+          this.gGr.setParameters(localParameters);
         }
-        this.gaZ.cancelAutoFocus();
+        this.gGr.cancelAutoFocus();
         AppMethodBeat.o(89393);
       }
       catch (Exception localException1)
@@ -2003,28 +1975,54 @@ public final class f
         {
           try
           {
-            this.gaZ.autoFocus(new f.3(this));
+            this.gGr.autoFocus(new Camera.AutoFocusCallback()
+            {
+              public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
+              {
+                AppMethodBeat.i(89363);
+                if ((paramAnonymousCamera != null) && (f.this.dEO())) {
+                  try
+                  {
+                    Camera.Parameters localParameters = paramAnonymousCamera.getParameters();
+                    List localList = localParameters.getSupportedFocusModes();
+                    if ((localList != null) && (localList.contains("continuous-picture")))
+                    {
+                      Log.i("MicroMsg.MMSightCameraSetting", "support continues picture focus");
+                      localParameters.setFocusMode("continuous-picture");
+                      paramAnonymousCamera.setParameters(localParameters);
+                    }
+                    AppMethodBeat.o(89363);
+                    return;
+                  }
+                  catch (Exception paramAnonymousCamera)
+                  {
+                    Log.printErrStackTrace("MicroMsg.MMSightCamera", paramAnonymousCamera, "simple auto focus resetToPictureFocus error", new Object[0]);
+                  }
+                }
+                AppMethodBeat.o(89363);
+              }
+            });
             AppMethodBeat.o(89393);
             return;
           }
           catch (Exception localException2)
           {
-            com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightCamera", localException2, "autoFocus error", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.MMSightCamera", localException2, "autoFocus error", new Object[0]);
           }
           localException1 = localException1;
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightCamera", localException1, "simple auto focus error", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.MMSightCamera", localException1, "simple auto focus error", new Object[0]);
         }
       }
     }
   }
   
-  public final List<Integer> dpN()
+  public final List<Integer> ejC()
   {
     AppMethodBeat.i(89394);
-    if (this.gaZ != null) {
+    if (this.gGr != null) {
       try
       {
-        Object localObject = this.gaZ.getParameters();
+        Object localObject = this.gGr.getParameters();
         boolean bool = ((Camera.Parameters)localObject).isZoomSupported();
         if (!bool)
         {
@@ -2037,117 +2035,169 @@ public final class f
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "getZoom error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "getZoom error: %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(89394);
     return null;
   }
   
-  public final int dpO()
+  public final int ejD()
   {
     AppMethodBeat.i(89401);
-    dpI();
+    ejx();
     AppMethodBeat.o(89401);
     return 0;
   }
   
-  public final void dpP()
+  public final void ejE()
   {
     AppMethodBeat.i(89402);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "openFlash, camera: %s, isPreviewing: %s", new Object[] { this.gaZ, Boolean.valueOf(this.vZG) });
-    if ((this.gaZ != null) && (this.vZG)) {
+    Log.i("MicroMsg.MMSightCamera", "openFlash, camera: %s, isPreviewing: %s", new Object[] { this.gGr, Boolean.valueOf(this.ztJ) });
+    if ((this.gGr != null) && (this.ztJ)) {
       try
       {
-        this.vZT = true;
-        Camera.Parameters localParameters = this.gaZ.getParameters();
-        if ((!bu.ht(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("torch")))
+        this.ztW = true;
+        Camera.Parameters localParameters = this.gGr.getParameters();
+        if ((!Util.isNullOrNil(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("torch")))
         {
           localParameters.setFlashMode("torch");
-          this.gaZ.setParameters(localParameters);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "open flash");
+          this.gGr.setParameters(localParameters);
+          Log.i("MicroMsg.MMSightCamera", "open flash");
           AppMethodBeat.o(89402);
           return;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "camera not support flash!!");
+        Log.i("MicroMsg.MMSightCamera", "camera not support flash!!");
         AppMethodBeat.o(89402);
         return;
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightCamera", localException, "openFlash error: %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("MicroMsg.MMSightCamera", localException, "openFlash error: %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(89402);
   }
   
-  public final void dpQ()
+  public final void ejF()
   {
     AppMethodBeat.i(89403);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "closeFlash, camera: %s, isPreviewing: %s", new Object[] { this.gaZ, Boolean.valueOf(this.vZG) });
-    if ((this.gaZ != null) && (this.vZG)) {
+    Log.i("MicroMsg.MMSightCamera", "closeFlash, camera: %s, isPreviewing: %s", new Object[] { this.gGr, Boolean.valueOf(this.ztJ) });
+    if ((this.gGr != null) && (this.ztJ)) {
       try
       {
-        this.vZT = false;
-        Camera.Parameters localParameters = this.gaZ.getParameters();
-        if ((!bu.ht(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("off")))
+        this.ztW = false;
+        Camera.Parameters localParameters = this.gGr.getParameters();
+        if ((!Util.isNullOrNil(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("off")))
         {
           localParameters.setFlashMode("off");
-          this.gaZ.setParameters(localParameters);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "close flash");
+          this.gGr.setParameters(localParameters);
+          Log.i("MicroMsg.MMSightCamera", "close flash");
           AppMethodBeat.o(89403);
           return;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "camera not support close flash!!");
+        Log.i("MicroMsg.MMSightCamera", "camera not support close flash!!");
         AppMethodBeat.o(89403);
         return;
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightCamera", localException, "closeFlash error: %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("MicroMsg.MMSightCamera", localException, "closeFlash error: %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(89403);
   }
   
-  public final void dpR()
+  public final void ejG()
   {
     AppMethodBeat.i(89404);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "autoFlash, camera: %s, isPreviewing: %s", new Object[] { this.gaZ, Boolean.valueOf(this.vZG) });
-    if ((this.gaZ != null) && (this.vZG)) {
+    Log.i("MicroMsg.MMSightCamera", "autoFlash, camera: %s, isPreviewing: %s", new Object[] { this.gGr, Boolean.valueOf(this.ztJ) });
+    if ((this.gGr != null) && (this.ztJ)) {
       try
       {
-        this.vZT = true;
-        Camera.Parameters localParameters = this.gaZ.getParameters();
-        if ((!bu.ht(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("auto")))
+        this.ztW = true;
+        Camera.Parameters localParameters = this.gGr.getParameters();
+        if ((!Util.isNullOrNil(localParameters.getSupportedFlashModes())) && (localParameters.getSupportedFlashModes().contains("auto")))
         {
           localParameters.setFlashMode("auto");
-          this.gaZ.setParameters(localParameters);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "auto flash");
+          this.gGr.setParameters(localParameters);
+          Log.i("MicroMsg.MMSightCamera", "auto flash");
           AppMethodBeat.o(89404);
           return;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "camera not support auto flash!!");
+        Log.i("MicroMsg.MMSightCamera", "camera not support auto flash!!");
         AppMethodBeat.o(89404);
         return;
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightCamera", localException, "autoFlash error: %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("MicroMsg.MMSightCamera", localException, "autoFlash error: %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(89404);
   }
   
+  public final void ejy()
+  {
+    AppMethodBeat.i(89382);
+    Log.i("MicroMsg.MMSightCamera", "switchToVideoFocusMode");
+    if ((this.gGr != null) && (this.ztJ)) {
+      try
+      {
+        Camera.Parameters localParameters = this.gGr.getParameters();
+        List localList = localParameters.getSupportedFocusModes();
+        if ((localList != null) && (localList.contains("continuous-video")))
+        {
+          Log.i("MicroMsg.MMSightCameraSetting", "support continuous video");
+          localParameters.setFocusMode("continuous-video");
+        }
+        this.gGr.setParameters(localParameters);
+        AppMethodBeat.o(89382);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.i("MicroMsg.MMSightCamera", "switchToVideoFocusMode error: %s", new Object[] { localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(89382);
+  }
+  
+  public final void ejz()
+  {
+    AppMethodBeat.i(89383);
+    Log.i("MicroMsg.MMSightCamera", "switchToPictureFocusMode");
+    if ((this.gGr != null) && (this.ztJ)) {
+      try
+      {
+        Camera.Parameters localParameters = this.gGr.getParameters();
+        List localList = localParameters.getSupportedFocusModes();
+        if ((localList != null) && (localList.contains("continuous-picture")))
+        {
+          Log.i("MicroMsg.MMSightCameraSetting", "support continuous picture");
+          localParameters.setFocusMode("continuous-picture");
+        }
+        this.gGr.setParameters(localParameters);
+        AppMethodBeat.o(89383);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.i("MicroMsg.MMSightCamera", "switchToPictureFocusMode error: %s", new Object[] { localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(89383);
+  }
+  
   public final Point getEncodeVideoBestSize()
   {
-    return this.vZO;
+    return this.ztR;
   }
   
   public final int getOrientation()
   {
-    if ((this.hsD != null) && (this.vZG)) {
-      return this.hsD.dHi;
+    if ((this.imk != null) && (this.ztJ)) {
+      return this.imk.dYT;
     }
     return -1;
   }
@@ -2155,45 +2205,45 @@ public final class f
   public final int getPreviewHeight()
   {
     AppMethodBeat.i(89406);
-    if (this.gaZ == null)
+    if (this.gGr == null)
     {
       AppMethodBeat.o(89406);
       return 0;
     }
-    if (this.hsD != null) {
+    if (this.imk != null) {
       try
       {
         int i;
-        if ((this.vZR) && (this.vZQ != null)) {
-          if ((this.hsD.dHi == 0) || (this.hsD.dHi == 180)) {
-            i = this.vZO.y;
+        if ((this.ztU) && (this.ztT != null)) {
+          if ((this.imk.dYT == 0) || (this.imk.dYT == 180)) {
+            i = this.ztR.y;
           }
         }
         for (;;)
         {
           AppMethodBeat.o(89406);
           return i;
-          i = this.vZO.x;
+          i = this.ztR.x;
           continue;
-          if (this.hsE == null)
+          if (this.ilV == null)
           {
-            if ((this.hsD.dHi == 0) || (this.hsD.dHi == 180)) {
-              i = this.hrV.ruD;
+            if ((this.imk.dYT == 0) || (this.imk.dYT == 180)) {
+              i = this.ilR.sUA;
             } else {
-              i = this.hrV.ruC;
+              i = this.ilR.sUz;
             }
           }
-          else if ((this.hsD.dHi == 0) || (this.hsD.dHi == 180)) {
-            i = this.hsE.y;
+          else if ((this.imk.dYT == 0) || (this.imk.dYT == 180)) {
+            i = this.ilV.y;
           } else {
-            i = this.hsE.x;
+            i = this.ilV.x;
           }
         }
         AppMethodBeat.o(89406);
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "getPreviewHeight: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "getPreviewHeight: %s", new Object[] { localException.getMessage() });
       }
     }
     return 0;
@@ -2202,86 +2252,48 @@ public final class f
   public final int getPreviewWidth()
   {
     AppMethodBeat.i(89405);
-    if (this.gaZ == null)
+    if (this.gGr == null)
     {
       AppMethodBeat.o(89405);
       return 0;
     }
-    if (this.hsD != null) {
+    if (this.imk != null) {
       try
       {
         int i;
-        if ((this.vZR) && (this.vZQ != null)) {
-          if ((this.hsD.dHi == 0) || (this.hsD.dHi == 180)) {
-            i = this.vZO.x;
+        if ((this.ztU) && (this.ztT != null)) {
+          if ((this.imk.dYT == 0) || (this.imk.dYT == 180)) {
+            i = this.ztR.x;
           }
         }
         for (;;)
         {
           AppMethodBeat.o(89405);
           return i;
-          i = this.vZO.y;
+          i = this.ztR.y;
           continue;
-          if (this.hsE == null)
+          if (this.ilV == null)
           {
-            if ((this.hsD.dHi == 0) || (this.hsD.dHi == 180)) {
-              i = this.hrV.ruC;
+            if ((this.imk.dYT == 0) || (this.imk.dYT == 180)) {
+              i = this.ilR.sUz;
             } else {
-              i = this.hrV.ruD;
+              i = this.ilR.sUA;
             }
           }
-          else if ((this.hsD.dHi == 0) || (this.hsD.dHi == 180)) {
-            i = this.hsE.x;
+          else if ((this.imk.dYT == 0) || (this.imk.dYT == 180)) {
+            i = this.ilV.x;
           } else {
-            i = this.hsE.y;
+            i = this.ilV.y;
           }
         }
         AppMethodBeat.o(89405);
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "getPreviewWidth: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.MMSightCamera", "getPreviewWidth: %s", new Object[] { localException.getMessage() });
       }
     }
     return 0;
-  }
-  
-  public final void nZ(int paramInt)
-  {
-    AppMethodBeat.i(89397);
-    if (this.hsF > 0)
-    {
-      AppMethodBeat.o(89397);
-      return;
-    }
-    if (this.hrY == null) {}
-    int i;
-    for (Point localPoint = al.ck(ak.getContext());; localPoint = new Point(this.hrY.getWidth(), this.hrY.getHeight()))
-    {
-      i = localPoint.y;
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "calcScrollZoomStep, recordButtonTopLocation: %s, screenSize: %s", new Object[] { Integer.valueOf(paramInt), localPoint });
-      if (i / 2 < paramInt) {
-        break;
-      }
-      AppMethodBeat.o(89397);
-      return;
-    }
-    try
-    {
-      if (this.gaZ != null)
-      {
-        i = this.gaZ.getParameters().getMaxZoom();
-        this.hsF = ((int)(i / (paramInt / 3.0D / 10.0D)) + 1);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "scrollSmallZoomStep: %s, maxZoom: %s", new Object[] { Integer.valueOf(this.hsF), Integer.valueOf(i) });
-      }
-      AppMethodBeat.o(89397);
-      return;
-    }
-    catch (Exception localException)
-    {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "calcScrollZoomStep error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(89397);
-    }
   }
   
   public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
@@ -2292,15 +2304,68 @@ public final class f
     float f1 = paramSensorEvent.values[0];
     float f2 = paramSensorEvent.values[1];
     float f3 = paramSensorEvent.values[2];
-    if ((Math.abs(this.vZK - f1) > 5.0F) || (Math.abs(this.vZL - f2) > 5.0F) || (Math.abs(this.vZM - f3) > 5.0F))
+    if ((Math.abs(this.ztN - f1) > 5.0F) || (Math.abs(this.ztO - f2) > 5.0F) || (Math.abs(this.ztP - f3) > 5.0F))
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "match accel limit %f, try auto focus x %s y %s z %s", new Object[] { Float.valueOf(5.0F), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3) });
-      this.wab.e(this.gaZ);
-      this.vZK = f1;
-      this.vZL = f2;
-      this.vZM = f3;
+      Log.i("MicroMsg.MMSightCamera", "match accel limit %f, try auto focus x %s y %s z %s", new Object[] { Float.valueOf(5.0F), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3) });
+      this.zue.e(this.gGr);
+      this.ztN = f1;
+      this.ztO = f2;
+      this.ztP = f3;
     }
     AppMethodBeat.o(89391);
+  }
+  
+  public final void rw(int paramInt)
+  {
+    AppMethodBeat.i(89397);
+    if (this.ilW > 0)
+    {
+      AppMethodBeat.o(89397);
+      return;
+    }
+    if (this.ilU == null) {}
+    int i;
+    for (Point localPoint = ao.az(MMApplicationContext.getContext());; localPoint = new Point(this.ilU.getWidth(), this.ilU.getHeight()))
+    {
+      i = localPoint.y;
+      Log.i("MicroMsg.MMSightCamera", "calcScrollZoomStep, recordButtonTopLocation: %s, screenSize: %s", new Object[] { Integer.valueOf(paramInt), localPoint });
+      if (i / 2 < paramInt) {
+        break;
+      }
+      AppMethodBeat.o(89397);
+      return;
+    }
+    try
+    {
+      if (this.gGr != null)
+      {
+        i = this.gGr.getParameters().getMaxZoom();
+        this.ilW = ((int)(i / (paramInt / 3.0D / 10.0D)) + 1);
+        Log.i("MicroMsg.MMSightCamera", "scrollSmallZoomStep: %s, maxZoom: %s", new Object[] { Integer.valueOf(this.ilW), Integer.valueOf(i) });
+      }
+      AppMethodBeat.o(89397);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.MMSightCamera", "calcScrollZoomStep error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(89397);
+    }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(89366);
+      zug = new a("Preview", 0);
+      zuh = new a("Recording", 1);
+      zui = new a("Stoping", 2);
+      zuj = new a[] { zug, zuh, zui };
+      AppMethodBeat.o(89366);
+    }
+    
+    private a() {}
   }
   
   public static abstract interface b
@@ -2309,23 +2374,23 @@ public final class f
   }
   
   public final class c
-    extends aq
+    extends MMHandler
   {
-    float gpg;
-    float gph;
-    int hsi = 0;
-    boolean hsj = false;
-    boolean hsk = false;
-    boolean hsl = false;
-    int hsm;
-    int hsn;
+    float gZZ;
+    float haa;
+    int imO;
+    int imP;
+    boolean imv = false;
+    boolean ztI = false;
+    int zuk = 0;
+    boolean zul = false;
     
     public c(Looper paramLooper)
     {
       super();
     }
     
-    private static int KM(int paramInt)
+    private static int QN(int paramInt)
     {
       int i;
       if (paramInt > 1000) {
@@ -2339,7 +2404,7 @@ public final class f
       return -1000;
     }
     
-    private static Rect b(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2)
+    private static Rect a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(89367);
       paramFloat3 = 80.0F * paramFloat3;
@@ -2349,12 +2414,12 @@ public final class f
       paramFloat2 = paramFloat2 * 2000.0F - 1000.0F - paramFloat3 / 2.0F;
       Object localObject = new RectF();
       ((RectF)localObject).set(paramFloat1, paramFloat2, paramFloat1 + paramFloat3, paramFloat3 + paramFloat2);
-      localObject = new Rect(KM(Math.round(((RectF)localObject).left)), KM(Math.round(((RectF)localObject).top)), KM(Math.round(((RectF)localObject).right)), KM(Math.round(((RectF)localObject).bottom)));
+      localObject = new Rect(QN(Math.round(((RectF)localObject).left)), QN(Math.round(((RectF)localObject).top)), QN(Math.round(((RectF)localObject).right)), QN(Math.round(((RectF)localObject).bottom)));
       AppMethodBeat.o(89367);
       return localObject;
     }
     
-    private static int e(Camera.Parameters paramParameters)
+    private static int d(Camera.Parameters paramParameters)
     {
       AppMethodBeat.i(89369);
       if (paramParameters == null)
@@ -2374,7 +2439,7 @@ public final class f
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightCamera", "get target zoom value error: %s", new Object[] { paramParameters.getMessage() });
+          Log.e("MicroMsg.MMSightCamera", "get target zoom value error: %s", new Object[] { paramParameters.getMessage() });
           int i = 0;
         }
       }
@@ -2387,29 +2452,29 @@ public final class f
       AppMethodBeat.i(89368);
       if (paramv == null)
       {
-        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "want to auto focus, but camera is null, do nothing");
+        Log.w("MicroMsg.MMSightCamera", "want to auto focus, but camera is null, do nothing");
         AppMethodBeat.o(89368);
         return;
       }
-      if (!f.waa)
+      if (!f.zud)
       {
-        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "auto focus not back");
+        Log.w("MicroMsg.MMSightCamera", "auto focus not back");
         AppMethodBeat.o(89368);
         return;
       }
-      f.waa = false;
+      f.zud = false;
       try
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "triggerAutoFocus");
+        Log.i("MicroMsg.MMSightCamera", "triggerAutoFocus");
         paramv.cancelAutoFocus();
-        paramv.autoFocus(f.this.hsq);
+        paramv.autoFocus(f.this.iml);
         AppMethodBeat.o(89368);
         return;
       }
       catch (Exception paramv)
       {
-        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "autofocus fail, exception %s", new Object[] { paramv.getMessage() });
-        f.waa = true;
+        Log.w("MicroMsg.MMSightCamera", "autofocus fail, exception %s", new Object[] { paramv.getMessage() });
+        f.zud = true;
         AppMethodBeat.o(89368);
       }
     }
@@ -2426,36 +2491,36 @@ public final class f
         AppMethodBeat.o(89370);
         return;
         paramMessage = (v)paramMessage.obj;
-        if ((this.hsm == 0) || (this.hsn == 0) || (com.tencent.mm.compatible.util.d.lB(14)))
+        if ((this.imO == 0) || (this.imP == 0) || (com.tencent.mm.compatible.util.d.oE(14)))
         {
           e(paramMessage);
           AppMethodBeat.o(89370);
           return;
         }
-        float f1 = this.gpg;
-        float f2 = this.gph;
-        int i = this.hsm;
-        j = this.hsn;
+        float f1 = this.gZZ;
+        float f2 = this.haa;
+        int i = this.imO;
+        j = this.imP;
         if (paramMessage == null)
         {
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "want to auto focus, but camera is null, do nothing");
+          Log.w("MicroMsg.MMSightCamera", "want to auto focus, but camera is null, do nothing");
           AppMethodBeat.o(89370);
           return;
         }
-        if (!f.waa)
+        if (!f.zud)
         {
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "auto focus not back");
+          Log.w("MicroMsg.MMSightCamera", "auto focus not back");
           AppMethodBeat.o(89370);
           return;
         }
-        f.waa = false;
+        f.zud = false;
         try
         {
           paramMessage.cancelAutoFocus();
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "ashutest:: touch %f %f, display %d %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
-          Object localObject2 = b(f1, f2, 1.0F, i, j);
-          localObject1 = b(f1, f2, 1.5F, i, j);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "ashutest:: focus rect %s, meter rect %s", new Object[] { localObject2, localObject1 });
+          Log.i("MicroMsg.MMSightCamera", "ashutest:: touch %f %f, display %d %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
+          Object localObject2 = a(f1, f2, 1.0F, i, j);
+          localObject1 = a(f1, f2, 1.5F, i, j);
+          Log.i("MicroMsg.MMSightCamera", "ashutest:: focus rect %s, meter rect %s", new Object[] { localObject2, localObject1 });
           localParameters = paramMessage.getParameters();
           Object localObject3 = localParameters.getSupportedFocusModes();
           if ((localObject3 != null) && (((List)localObject3).contains("auto"))) {
@@ -2474,29 +2539,29 @@ public final class f
             localParameters.setMeteringAreas((List)localObject2);
           }
           paramMessage.setParameters(localParameters);
-          paramMessage.autoFocus(f.this.hsq);
+          paramMessage.autoFocus(f.this.iml);
           AppMethodBeat.o(89370);
           return;
         }
         catch (Exception paramMessage)
         {
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MMSightCamera", "autofocus with area fail, exception %s", new Object[] { paramMessage.getMessage() });
-          f.waa = true;
+          Log.w("MicroMsg.MMSightCamera", "autofocus with area fail, exception %s", new Object[] { paramMessage.getMessage() });
+          f.zud = true;
           AppMethodBeat.o(89370);
           return;
         }
-        if (this.hsl)
+        if (this.imv)
         {
           AppMethodBeat.o(89370);
           return;
         }
         Object localObject1 = (Camera)paramMessage.obj;
         Camera.Parameters localParameters = ((Camera)localObject1).getParameters();
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightCamera", "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(this.hsj), Integer.valueOf(this.hsi), Integer.valueOf(localParameters.getZoom()) });
-        i = localParameters.getZoom() + this.hsi;
-        if (this.hsj)
+        Log.i("MicroMsg.MMSightCamera", "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(this.ztI), Integer.valueOf(this.zuk), Integer.valueOf(localParameters.getZoom()) });
+        i = localParameters.getZoom() + this.zuk;
+        if (this.ztI)
         {
-          int k = e(localParameters);
+          int k = d(localParameters);
           if (i >= k)
           {
             i = k;
@@ -2511,11 +2576,11 @@ public final class f
           if (j == 0) {
             continue;
           }
-          this.hsm = 0;
-          this.hsn = 0;
+          this.imO = 0;
+          this.imP = 0;
           continue;
           paramMessage = obtainMessage(4353, paramMessage.obj);
-          if (this.hsk) {}
+          if (this.zul) {}
           for (long l = 10L;; l = 20L)
           {
             sendMessageDelayed(paramMessage, l);
@@ -2528,7 +2593,7 @@ public final class f
             break label519;
           }
           paramMessage = obtainMessage(4353, paramMessage.obj);
-          if (this.hsk) {}
+          if (this.zul) {}
           for (l = 10L;; l = 20L)
           {
             sendMessageDelayed(paramMessage, l);
@@ -2546,7 +2611,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.f
  * JD-Core Version:    0.7.0.1
  */

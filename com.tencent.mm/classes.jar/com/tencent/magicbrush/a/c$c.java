@@ -6,53 +6,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$c
 {
-  private static c.b cyy;
+  private static c.b cMF;
   
   static
   {
     AppMethodBeat.i(139976);
-    cyy = new c.a((byte)0);
+    cMF = new c.a((byte)0);
     AppMethodBeat.o(139976);
   }
   
   public static void a(c.b paramb)
   {
     AppMethodBeat.i(139971);
-    cyy = paramb;
+    cMF = paramb;
     b.a(new b.b()
     {
       public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(139966);
-        this.cyz.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        this.cMG.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
         AppMethodBeat.o(139966);
       }
       
       public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(139969);
-        this.cyz.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        this.cMG.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
         AppMethodBeat.o(139969);
       }
       
       public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(139967);
-        this.cyz.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        this.cMG.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
         AppMethodBeat.o(139967);
       }
       
       public final void printStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(139970);
-        this.cyz.printStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
+        this.cMG.printStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
         AppMethodBeat.o(139970);
       }
       
       public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(139968);
-        this.cyz.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        this.cMG.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
         AppMethodBeat.o(139968);
       }
     });
@@ -62,34 +62,34 @@ public final class c$c
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(139972);
-    cyy.d(paramString1, paramString2, paramVarArgs);
+    cMF.d(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(139972);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(139974);
-    cyy.e(paramString1, paramString2, paramVarArgs);
+    cMF.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(139974);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(139973);
-    cyy.i(paramString1, paramString2, paramVarArgs);
+    cMF.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(139973);
   }
   
   public static void printStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(139975);
-    cyy.printStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    cMF.printStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     AppMethodBeat.o(139975);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.a.c.c
  * JD-Core Version:    0.7.0.1
  */

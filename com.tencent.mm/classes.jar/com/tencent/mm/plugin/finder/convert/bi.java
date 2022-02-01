@@ -1,79 +1,129 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.widget.ImageView;
+import android.arch.lifecycle.ViewModelProvider;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextPaint;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.loader.i;
-import com.tencent.mm.plugin.finder.loader.i.a;
-import com.tencent.mm.plugin.finder.loader.n;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.r;
-import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout.b;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.view.recyclerview.e;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import java.util.List;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.plugin.finder.cgi.bc;
+import com.tencent.mm.plugin.finder.model.aw;
+import com.tencent.mm.plugin.finder.storage.logic.f;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.protocal.protobuf.aym;
+import com.tencent.mm.view.recyclerview.h;
+import kotlin.g.b.p;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderVideoFoldedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFoldedConvert;", "controller", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "(Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;)V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFollowApplyConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFollowApply;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "setAccept", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "acceptBtn", "Landroid/widget/TextView;", "setAccepted", "setInvalid", "setRevoke", "plugin-finder_release"})
 public final class bi
-  extends y
+  extends bh<aw>
 {
-  public bi(FinderFoldedScrollLayout.b paramb)
+  private final String TAG = "Finder.FinderMsgFollowApplyConvert";
+  final int scene = 1;
+  
+  private bi()
   {
-    super(paramb);
-    AppMethodBeat.i(201949);
-    AppMethodBeat.o(201949);
+    super(2131494525, 1);
   }
   
-  public final void a(e parame, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  static void a(TextView paramTextView, h paramh)
   {
-    AppMethodBeat.i(201947);
-    p.h(parame, "holder");
-    p.h(paramBaseFinderFeed, "item");
-    super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-    paramList = (bvz)j.jl((List)paramBaseFinderFeed.feedObject.getMediaList());
-    paramBaseFinderFeed = (ImageView)parame.GD(2131305798);
-    if (bu.isNullOrNil(paramList.coverUrl))
+    AppMethodBeat.i(243194);
+    paramTextView.setBackground(null);
+    paramTextView.setOnClickListener(null);
+    paramTextView.setText((CharSequence)paramh.getContext().getString(2131760283));
+    com.tencent.mm.ui.ao.a((Paint)paramTextView.getPaint(), 0.0F);
+    paramh = paramh.getContext();
+    p.g(paramh, "holder.context");
+    paramTextView.setTextColor(paramh.getResources().getColor(2131099749));
+    AppMethodBeat.o(243194);
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
+  {
+    a(h paramh, TextView paramTextView1, String paramString, TextView paramTextView2, aw paramaw) {}
+    
+    public final void run()
     {
-      parame = new com.tencent.mm.plugin.finder.loader.g(paramList, r.sJv);
-      paramList = i.srW;
-      paramList = i.cEn();
-      locali = i.srW;
-      paramList = paramList.a(parame, i.a(i.a.srX));
-      parame = com.tencent.mm.plugin.finder.storage.b.sHP;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cJT().value()).intValue() > 0) {}
-      for (parame = new com.tencent.mm.loader.e.d(null, new com.tencent.mm.loader.e.b.g(paramBaseFinderFeed), 1);; parame = null)
+      AppMethodBeat.i(243191);
+      Object localObject = this.qhp.Mn(2131305214);
+      p.g(localObject, "holder.getView<View>(R.id.name_container)");
+      int i = ((View)localObject).getWidth();
+      localObject = this.tEU;
+      p.g(localObject, "nickTv");
+      float f = ((TextView)localObject).getPaint().measureText(this.tEV);
+      if (i > f)
       {
-        parame = paramList.a((com.tencent.mm.loader.f.d)parame);
-        p.g(paramBaseFinderFeed, "thumbIv");
-        parame.c(paramBaseFinderFeed);
-        AppMethodBeat.o(201947);
+        localObject = this.tEW;
+        p.g(localObject, "suffixTv");
+        ((TextView)localObject).setVisibility(8);
+        localObject = this.tEU;
+        p.g(localObject, "nickTv");
+        ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.qhp.getContext(), (CharSequence)this.tEV));
+        AppMethodBeat.o(243191);
         return;
       }
+      localObject = this.tEW;
+      p.g(localObject, "suffixTv");
+      ((TextView)localObject).setVisibility(0);
+      localObject = this.tEW;
+      p.g(localObject, "suffixTv");
+      ((TextView)localObject).setText((CharSequence)this.qhp.getContext().getString(2131760306, new Object[] { com.tencent.mm.plugin.finder.utils.k.Lw(this.tEX.uNF.field_aggregatedContacts.LII) }));
+      localObject = this.tEU;
+      p.g(localObject, "nickTv");
+      ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.qhp.getContext(), (CharSequence)this.tEV));
+      AppMethodBeat.o(243191);
     }
-    parame = new n(paramList, r.sJu);
-    paramList = i.srW;
-    paramList = i.cEn();
-    i locali = i.srW;
-    paramList = paramList.a(parame, i.a(i.a.srX));
-    parame = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cJT().value()).intValue() > 0) {}
-    for (parame = new com.tencent.mm.loader.e.d(null, new com.tencent.mm.loader.e.b.g(paramBaseFinderFeed), 1);; parame = null)
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class b
+    implements View.OnClickListener
+  {
+    b(bi parambi, com.tencent.mm.plugin.finder.storage.ao paramao, TextView paramTextView, h paramh) {}
+    
+    public final void onClick(View paramView)
     {
-      parame = paramList.a((com.tencent.mm.loader.f.d)parame);
-      p.g(paramBaseFinderFeed, "thumbIv");
-      parame.c(paramBaseFinderFeed);
-      AppMethodBeat.o(201947);
-      return;
+      AppMethodBeat.i(243192);
+      b localb = new b();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderMsgFollowApplyConvert$setAccept$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = com.tencent.mm.plugin.finder.report.k.vfA;
+      paramView = this.tEZ.field_username;
+      p.g(paramView, "mention.field_username");
+      com.tencent.mm.plugin.finder.report.k.ad(paramView, 1, cl.aWB());
+      bi.a(this.tFa, this.qhp);
+      paramView = f.vGV;
+      f.c(this.tEZ);
+      paramView = com.tencent.mm.ui.component.a.PRN;
+      paramView = this.qhp.getContext();
+      if (paramView == null)
+      {
+        paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+        AppMethodBeat.o(243192);
+        throw paramView;
+      }
+      paramView = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)paramView).get(FinderReporterUIC.class)).dIx();
+      paramView = new bc(this.tEZ, paramView, this.tEY.scene);
+      g.azz().b((q)paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderMsgFollowApplyConvert$setAccept$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(243192);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.bi
  * JD-Core Version:    0.7.0.1
  */

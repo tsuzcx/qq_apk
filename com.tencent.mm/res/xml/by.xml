@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:defaultValue="false" android:key="follow_system" android:summary="@string/f2z" android:title="@string/u3" />
-    <PreferenceTitleCategory android:key="manual_title" android:title="@string/f30" />
-    <SelectPreference android:key="normal_mode" android:title="@string/f37" />
-    <SelectPreference android:key="dark_mode" android:title="@string/f5n" />
+    <Preference android:key="settings_room_size" android:layout="@layout/b8j" android:title="@string/gth" />
+    <Preference android:key="room_right_max_tip" android:layout="@layout/b_7" android:title="@string/g94" />
+    <PreferenceCategory />
+    <com.tencent.mm.chatroom.ui.RoomGrantPreference android:key="settings_room_grant" android:layout="@layout/b8j" android:title="@string/gte" />
+    <PreferenceCategory />
+    <Preference android:key="room_grant_to_friend" android:layout="@layout/atm" android:title="@string/g90" />
+    <PreferenceCategory />
+    <Preference android:key="room_right_grant_tip" android:layout="@layout/b_7" android:title="@string/g91" />
 </PreferenceScreen>

@@ -6,34 +6,36 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.w;
+import com.tencent.mm.plugin.appbrand.ui.ab;
+import com.tencent.mm.ui.base.q;
 import com.tencent.mm.ui.statusbar.b;
-import d.g.a.a;
-import d.l;
-import d.z;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "isHide", "", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "listener", "Lkotlin/Function0;", "backgroundColor", "color", "", "getView", "Landroid/view/View;", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "isHide", "", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "listener", "Lkotlin/Function0;", "backgroundColor", "color", "", "getView", "Landroid/view/View;", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "plugin-appbrand-integration_release"})
 public final class h
   extends b
-  implements w
+  implements ab
 {
-  private boolean dMl;
-  private com.tencent.mm.ui.base.p lSV;
+  private boolean eea;
+  private q naw;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(50875);
-    M(0, true);
+    S(0, true);
     setBackgroundColor(0);
     AppMethodBeat.o(50875);
   }
   
-  public final void dX(String paramString1, String paramString2)
+  public final void eo(String paramString1, String paramString2)
   {
     AppMethodBeat.i(50874);
-    d.g.b.p.h(paramString1, "icon");
-    d.g.b.p.h(paramString2, "name");
+    p.h(paramString1, "icon");
+    p.h(paramString2, "name");
     AppMethodBeat.o(50874);
   }
   
@@ -46,14 +48,14 @@ public final class h
   {
     AppMethodBeat.i(50872);
     super.onAttachedToWindow();
-    if (this.dMl)
+    if (this.eea)
     {
       AppMethodBeat.o(50872);
       return;
     }
     Context localContext = getContext();
-    getResources().getString(2131755906);
-    this.lSV = com.tencent.mm.ui.base.h.b(localContext, getResources().getString(2131760709), false, null);
+    getResources().getString(2131755998);
+    this.naw = com.tencent.mm.ui.base.h.a(localContext, getResources().getString(2131762446), false, null);
     AppMethodBeat.o(50872);
   }
   
@@ -61,15 +63,15 @@ public final class h
   {
     AppMethodBeat.i(50873);
     super.onDetachedFromWindow();
-    com.tencent.mm.ui.base.p localp = this.lSV;
-    if (localp != null)
+    q localq = this.naw;
+    if (localq != null)
     {
-      if (localp.isShowing() == true)
+      if (localq.isShowing() == true)
       {
-        localp = this.lSV;
-        if (localp != null)
+        localq = this.naw;
+        if (localq != null)
         {
-          localp.dismiss();
+          localq.dismiss();
           AppMethodBeat.o(50873);
         }
       }
@@ -88,7 +90,7 @@ public final class h
     super.onViewAdded(paramView);
     if (paramView != null)
     {
-      if (paramView.getId() == 2131296892)
+      if (paramView.getId() == 2131296991)
       {
         ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
         Object localObject = localLayoutParams;
@@ -109,27 +111,27 @@ public final class h
   
   public final void setProgress(int paramInt) {}
   
-  public final void uD(int paramInt) {}
+  public final void yu(int paramInt) {}
   
-  public final void v(a<z> parama)
+  public final void z(a<x> parama)
   {
-    AppMethodBeat.i(223615);
-    this.dMl = true;
-    com.tencent.mm.ui.base.p localp = this.lSV;
-    if ((localp != null) && (localp.isShowing() == true))
+    AppMethodBeat.i(228834);
+    this.eea = true;
+    q localq = this.naw;
+    if ((localq != null) && (localq.isShowing() == true))
     {
-      localp = this.lSV;
-      if (localp != null) {
-        localp.dismiss();
+      localq = this.naw;
+      if (localq != null) {
+        localq.dismiss();
       }
     }
     if (parama != null)
     {
       parama.invoke();
-      AppMethodBeat.o(223615);
+      AppMethodBeat.o(228834);
       return;
     }
-    AppMethodBeat.o(223615);
+    AppMethodBeat.o(228834);
   }
 }
 

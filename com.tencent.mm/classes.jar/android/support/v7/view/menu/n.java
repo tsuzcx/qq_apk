@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.support.v4.view.d;
+import android.support.v4.view.u;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -14,16 +15,16 @@ import android.widget.PopupWindow.OnDismissListener;
 
 public class n
 {
-  private final h aaD;
-  private final int afc;
-  private final int afd;
-  private final boolean afe;
-  protected int afm = 8388611;
-  private boolean aft;
-  private o.a afu;
-  PopupWindow.OnDismissListener afw;
-  private m agR;
-  private final PopupWindow.OnDismissListener agS = new PopupWindow.OnDismissListener()
+  private final h aaQ;
+  private boolean afG;
+  private o.a afH;
+  PopupWindow.OnDismissListener afJ;
+  private final int afp;
+  private final int afq;
+  private final boolean afr;
+  protected int afz = 8388611;
+  private m ahe;
+  private final PopupWindow.OnDismissListener ahf = new PopupWindow.OnDismissListener()
   {
     public final void onDismiss()
     {
@@ -31,61 +32,66 @@ public class n
     }
   };
   private final Context mContext;
-  protected View qI;
+  protected View qK;
   
   public n(Context paramContext, h paramh, View paramView, boolean paramBoolean)
   {
-    this(paramContext, paramh, paramView, paramBoolean, 2130968627, 0);
+    this(paramContext, paramh, paramView, paramBoolean, 2130968628, 0);
   }
   
   public n(Context paramContext, h paramh, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     this.mContext = paramContext;
-    this.aaD = paramh;
-    this.qI = paramView;
-    this.afe = paramBoolean;
-    this.afc = paramInt1;
-    this.afd = paramInt2;
+    this.aaQ = paramh;
+    this.qK = paramView;
+    this.afr = paramBoolean;
+    this.afp = paramInt1;
+    this.afq = paramInt2;
   }
   
   final void b(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    m localm = ik();
+    m localm = iu();
     localm.setShowTitle(paramBoolean2);
     if (paramBoolean1)
     {
       int i = paramInt1;
-      if ((d.getAbsoluteGravity(this.afm, android.support.v4.view.t.Y(this.qI)) & 0x7) == 5) {
-        i = paramInt1 - this.qI.getWidth();
+      if ((d.getAbsoluteGravity(this.afz, u.Z(this.qK)) & 0x7) == 5) {
+        i = paramInt1 - this.qK.getWidth();
       }
       localm.setHorizontalOffset(i);
       localm.setVerticalOffset(paramInt2);
       paramInt1 = (int)(this.mContext.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
-      localm.agQ = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
+      localm.ahd = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
     }
     localm.show();
   }
   
   public final void c(o.a parama)
   {
-    this.afu = parama;
-    if (this.agR != null) {
-      this.agR.a(parama);
+    this.afH = parama;
+    if (this.ahe != null) {
+      this.ahe.a(parama);
     }
   }
   
   public final void dismiss()
   {
     if (isShowing()) {
-      this.agR.dismiss();
+      this.ahe.dismiss();
     }
   }
   
-  public final m ik()
+  public final boolean isShowing()
+  {
+    return (this.ahe != null) && (this.ahe.isShowing());
+  }
+  
+  public final m iu()
   {
     Point localPoint;
     int i;
-    if (this.agR == null)
+    if (this.ahe == null)
     {
       localObject = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay();
       localPoint = new Point();
@@ -93,7 +99,7 @@ public class n
         break label164;
       }
       ((Display)localObject).getRealSize(localPoint);
-      if (Math.min(localPoint.x, localPoint.y) < this.mContext.getResources().getDimensionPixelSize(2131165654)) {
+      if (Math.min(localPoint.x, localPoint.y) < this.mContext.getResources().getDimensionPixelSize(2131165672)) {
         break label172;
       }
       i = 1;
@@ -105,16 +111,16 @@ public class n
     label164:
     label172:
     label177:
-    for (Object localObject = new e(this.mContext, this.qI, this.afc, this.afd, this.afe);; localObject = new t(this.mContext, this.aaD, this.qI, this.afc, this.afd, this.afe))
+    for (Object localObject = new e(this.mContext, this.qK, this.afp, this.afq, this.afr);; localObject = new t(this.mContext, this.aaQ, this.qK, this.afp, this.afq, this.afr))
     {
-      ((m)localObject).f(this.aaD);
-      ((m)localObject).setOnDismissListener(this.agS);
-      ((m)localObject).setAnchorView(this.qI);
-      ((m)localObject).a(this.afu);
-      ((m)localObject).setForceShowIcon(this.aft);
-      ((m)localObject).setGravity(this.afm);
-      this.agR = ((m)localObject);
-      return this.agR;
+      ((m)localObject).f(this.aaQ);
+      ((m)localObject).setOnDismissListener(this.ahf);
+      ((m)localObject).setAnchorView(this.qK);
+      ((m)localObject).a(this.afH);
+      ((m)localObject).setForceShowIcon(this.afG);
+      ((m)localObject).setGravity(this.afz);
+      this.ahe = ((m)localObject);
+      return this.ahe;
       ((Display)localObject).getSize(localPoint);
       break;
       i = 0;
@@ -122,36 +128,31 @@ public class n
     }
   }
   
-  public final boolean il()
+  public final boolean iv()
   {
     if (isShowing()) {
       return true;
     }
-    if (this.qI == null) {
+    if (this.qK == null) {
       return false;
     }
     b(0, 0, false, false);
     return true;
   }
   
-  public final boolean isShowing()
-  {
-    return (this.agR != null) && (this.agR.isShowing());
-  }
-  
   protected void onDismiss()
   {
-    this.agR = null;
-    if (this.afw != null) {
-      this.afw.onDismiss();
+    this.ahe = null;
+    if (this.afJ != null) {
+      this.afJ.onDismiss();
     }
   }
   
   public final void setForceShowIcon(boolean paramBoolean)
   {
-    this.aft = paramBoolean;
-    if (this.agR != null) {
-      this.agR.setForceShowIcon(paramBoolean);
+    this.afG = paramBoolean;
+    if (this.ahe != null) {
+      this.ahe.setForceShowIcon(paramBoolean);
     }
   }
 }

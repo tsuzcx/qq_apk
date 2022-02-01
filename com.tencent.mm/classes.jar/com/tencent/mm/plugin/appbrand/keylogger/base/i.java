@@ -5,12 +5,12 @@ public final class i
 {
   public i(String paramString)
   {
-    super(paramString, "Start", true, false, "", 1, 0, -2147483648);
+    super(paramString, "Start", true, false, "", 1, 0, -2147483648, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.i
  * JD-Core Version:    0.7.0.1
  */

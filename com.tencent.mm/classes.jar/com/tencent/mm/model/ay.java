@@ -1,9 +1,7 @@
 package com.tencent.mm.model;
 
-public abstract interface ay
-{
-  public abstract void aBX();
-}
+@Deprecated
+public abstract interface ay {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

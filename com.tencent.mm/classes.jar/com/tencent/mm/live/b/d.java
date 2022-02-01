@@ -1,26 +1,48 @@
 package com.tencent.mm.live.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.rtmp.TXLivePlayer;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveCdnPlayerManager;", "", "()V", "Companion", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/CloseApplyLiveMicInfo;", "", "liveId", "", "enable", "", "(JZ)V", "getEnable", "()Z", "getLiveId", "()J", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-logic_release"})
 public final class d
 {
-  private static final String TAG = "MicroMsg.LiveCdnPlayerManager";
-  private static TXLivePlayer gPy;
-  public static final a gPz;
+  public final boolean enable;
+  public final long liveId;
   
-  static
+  public d(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(215655);
-    gPz = new a((byte)0);
-    TAG = "MicroMsg.LiveCdnPlayerManager";
-    AppMethodBeat.o(215655);
+    this.liveId = paramLong;
+    this.enable = paramBoolean;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/LiveCdnPlayerManager$Companion;", "", "()V", "TAG", "", "txLivePlayer", "Lcom/tencent/rtmp/TXLivePlayer;", "getTXLivePlayer", "context", "Landroid/content/Context;", "playListener", "Lcom/tencent/rtmp/ITXLivePlayListener;", "startPlay", "", "url", "streamType", "", "playerView", "Lcom/tencent/mm/live/view/LiveVideoView;", "playCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "stopPlay", "keepLastFrame", "plugin-logic_release"})
-  public static final class a {}
+  public final boolean equals(Object paramObject)
+  {
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof d))
+      {
+        paramObject = (d)paramObject;
+        if ((this.liveId != paramObject.liveId) || (this.enable != paramObject.enable)) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(207559);
+    String str = "CloseApplyLiveMicInfo(liveId=" + this.liveId + ", enable=" + this.enable + ")";
+    AppMethodBeat.o(207559);
+    return str;
+  }
 }
 
 

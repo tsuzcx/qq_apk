@@ -15,6 +15,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import com.tencent.mars.ilink.xlog.Log;
+import com.tencent.mm.hellhoundlib.b.c;
 import java.lang.reflect.Method;
 
 public class NetStatusUtil
@@ -300,7 +301,12 @@ public class NetStatusUtil
       if (getNetTypeForStat(paramContext) == 1) {
         return Math.abs(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getRssi());
       }
-      ((TelephonyManager)paramContext.getSystemService("phone")).listen(new StrengthListener(), 256);
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      Object localObject = new StrengthListener();
+      localObject = c.a(256, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mars/ilink/comm/NetStatusUtil", "getStrength", "(Landroid/content/Context;)I", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      paramContext.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/ilink/comm/NetStatusUtil", "getStrength", "(Landroid/content/Context;)I", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
       int i = Math.abs(nowStrength);
       return i;
     }
@@ -503,46 +509,46 @@ public class NetStatusUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 331	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   1: invokevirtual 369	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   4: astore 5
     //   6: aload 5
     //   8: iconst_0
-    //   9: invokevirtual 337	android/content/pm/PackageManager:getInstalledPackages	(I)Ljava/util/List;
+    //   9: invokevirtual 375	android/content/pm/PackageManager:getInstalledPackages	(I)Ljava/util/List;
     //   12: astore 6
     //   14: aload 6
     //   16: ifnull +269 -> 285
     //   19: aload 6
-    //   21: invokeinterface 342 1 0
+    //   21: invokeinterface 380 1 0
     //   26: ifle +259 -> 285
     //   29: iconst_0
     //   30: istore_2
     //   31: aload 6
-    //   33: invokeinterface 342 1 0
+    //   33: invokeinterface 380 1 0
     //   38: istore_3
     //   39: iload_2
     //   40: iload_3
     //   41: if_icmpge +244 -> 285
-    //   44: new 344	android/content/Intent
+    //   44: new 382	android/content/Intent
     //   47: dup
-    //   48: invokespecial 345	android/content/Intent:<init>	()V
+    //   48: invokespecial 383	android/content/Intent:<init>	()V
     //   51: astore 7
     //   53: aload 7
     //   55: aload 6
     //   57: iload_2
-    //   58: invokeinterface 349 2 0
-    //   63: checkcast 351	android/content/pm/PackageInfo
-    //   66: getfield 354	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
-    //   69: invokevirtual 358	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   58: invokeinterface 386 2 0
+    //   63: checkcast 388	android/content/pm/PackageInfo
+    //   66: getfield 391	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
+    //   69: invokevirtual 395	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   72: pop
     //   73: aload 5
     //   75: aload 7
     //   77: iconst_0
-    //   78: invokevirtual 362	android/content/pm/PackageManager:queryIntentActivities	(Landroid/content/Intent;I)Ljava/util/List;
+    //   78: invokevirtual 399	android/content/pm/PackageManager:queryIntentActivities	(Landroid/content/Intent;I)Ljava/util/List;
     //   81: astore 8
     //   83: aload 8
     //   85: ifnull +176 -> 261
     //   88: aload 8
-    //   90: invokeinterface 342 1 0
+    //   90: invokeinterface 380 1 0
     //   95: istore_3
     //   96: iload_3
     //   97: ifle +180 -> 277
@@ -553,64 +559,64 @@ public class NetStatusUtil
     //   106: if_icmpge +171 -> 277
     //   109: aload 8
     //   111: iload 4
-    //   113: invokeinterface 349 2 0
-    //   118: checkcast 364	android/content/pm/ResolveInfo
-    //   121: getfield 368	android/content/pm/ResolveInfo:activityInfo	Landroid/content/pm/ActivityInfo;
+    //   113: invokeinterface 386 2 0
+    //   118: checkcast 401	android/content/pm/ResolveInfo
+    //   121: getfield 405	android/content/pm/ResolveInfo:activityInfo	Landroid/content/pm/ActivityInfo;
     //   124: astore 7
     //   126: aload 7
-    //   128: getfield 373	android/content/pm/ActivityInfo:name	Ljava/lang/String;
+    //   128: getfield 410	android/content/pm/ActivityInfo:name	Ljava/lang/String;
     //   131: aload_1
-    //   132: invokevirtual 377	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   132: invokevirtual 414	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   135: ifeq +131 -> 266
-    //   138: new 344	android/content/Intent
+    //   138: new 382	android/content/Intent
     //   141: dup
-    //   142: ldc_w 379
-    //   145: invokespecial 382	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   142: ldc_w 416
+    //   145: invokespecial 419	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   148: astore 8
     //   150: aload 8
-    //   152: new 384	android/content/ComponentName
+    //   152: new 421	android/content/ComponentName
     //   155: dup
     //   156: aload 7
-    //   158: getfield 385	android/content/pm/ActivityInfo:packageName	Ljava/lang/String;
+    //   158: getfield 422	android/content/pm/ActivityInfo:packageName	Ljava/lang/String;
     //   161: aload 7
-    //   163: getfield 373	android/content/pm/ActivityInfo:name	Ljava/lang/String;
-    //   166: invokespecial 387	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   169: invokevirtual 391	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
+    //   163: getfield 410	android/content/pm/ActivityInfo:name	Ljava/lang/String;
+    //   166: invokespecial 424	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: invokevirtual 428	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
     //   172: pop
     //   173: aload 8
-    //   175: ldc_w 393
-    //   178: invokevirtual 396	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
+    //   175: ldc_w 430
+    //   178: invokevirtual 433	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
     //   181: pop
-    //   182: new 398	com/tencent/mm/hellhoundlib/b/a
+    //   182: new 275	com/tencent/mm/hellhoundlib/b/a
     //   185: dup
-    //   186: invokespecial 399	com/tencent/mm/hellhoundlib/b/a:<init>	()V
+    //   186: invokespecial 276	com/tencent/mm/hellhoundlib/b/a:<init>	()V
     //   189: aload 8
-    //   191: invokevirtual 403	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   191: invokevirtual 286	com/tencent/mm/hellhoundlib/b/a:bl	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
     //   194: astore 7
     //   196: aload_0
     //   197: aload 7
-    //   199: invokevirtual 407	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
-    //   202: ldc_w 408
-    //   205: ldc_w 409
-    //   208: ldc_w 410
-    //   211: ldc_w 412
-    //   214: ldc_w 414
-    //   217: ldc_w 416
-    //   220: invokestatic 422	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   199: invokevirtual 290	com/tencent/mm/hellhoundlib/b/a:axQ	()[Ljava/lang/Object;
+    //   202: ldc_w 291
+    //   205: ldc_w 434
+    //   208: ldc_w 435
+    //   211: ldc_w 437
+    //   214: ldc_w 439
+    //   217: ldc_w 441
+    //   220: invokestatic 304	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   223: aload_0
     //   224: aload 7
     //   226: iconst_0
-    //   227: invokevirtual 425	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
-    //   230: checkcast 344	android/content/Intent
-    //   233: invokevirtual 427	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   227: invokevirtual 308	com/tencent/mm/hellhoundlib/b/a:pG	(I)Ljava/lang/Object;
+    //   230: checkcast 382	android/content/Intent
+    //   233: invokevirtual 443	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   236: aload_0
-    //   237: ldc_w 408
-    //   240: ldc_w 409
-    //   243: ldc_w 410
-    //   246: ldc_w 412
-    //   249: ldc_w 414
-    //   252: ldc_w 416
-    //   255: invokestatic 430	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   237: ldc_w 291
+    //   240: ldc_w 434
+    //   243: ldc_w 435
+    //   246: ldc_w 437
+    //   249: ldc_w 439
+    //   252: ldc_w 441
+    //   255: invokestatic 315	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   258: aload 8
     //   260: areturn
     //   261: iconst_0
@@ -668,9 +674,9 @@ public class NetStatusUtil
         Object localObject1 = new Intent("/");
         ((Intent)localObject1).setComponent(new ComponentName("com.android.providers.subscribedfeeds", "com.android.settings.ManageAccountsSettings"));
         ((Intent)localObject1).setAction("android.intent.action.VIEW");
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         return;
       }
@@ -681,9 +687,9 @@ public class NetStatusUtil
           Object localObject2 = new Intent("/");
           ((Intent)localObject2).setComponent(new ComponentName("com.htc.settings.accountsync", "com.htc.settings.accountsync.ManageAccountsSettings"));
           ((Intent)localObject2).setAction("android.intent.action.VIEW");
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           return;
         }
@@ -699,9 +705,9 @@ public class NetStatusUtil
         Object localObject3 = new Intent("/");
         ((Intent)localObject3).setComponent(new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings"));
         ((Intent)localObject3).setAction("android.intent.action.VIEW");
-        localObject3 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject3);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).ahE(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).mt(0));
+        localObject3 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject3);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).axQ(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         return;
       }
@@ -715,9 +721,9 @@ public class NetStatusUtil
     {
       Object localObject4 = new Intent();
       ((Intent)localObject4).setAction("android.settings.WIFI_IP_SETTINGS");
-      localObject4 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject4);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject4).ahE(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).mt(0));
+      localObject4 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject4);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject4).axQ(), "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/ilink/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       return;
     }
@@ -744,7 +750,7 @@ public class NetStatusUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mars.ilink.comm.NetStatusUtil
  * JD-Core Version:    0.7.0.1
  */

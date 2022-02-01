@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
 
 final class LoginFaceUI$1
   implements View.OnClickListener
@@ -18,14 +18,14 @@ final class LoginFaceUI$1
   {
     AppMethodBeat.i(128084);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/LoginFaceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    g.yxI.f(11557, new Object[] { Integer.valueOf(2) });
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/account/ui/LoginFaceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    h.CyF.a(11557, new Object[] { Integer.valueOf(2) });
     paramView = new Intent();
-    paramView.putExtra("k_user_name", this.jnC.jnU);
+    paramView.putExtra("k_user_name", this.klK.kmc);
     paramView.putExtra("k_purpose", 2);
     paramView.putExtra("k_need_signature", true);
-    d.b(this.jnC.getContext(), "facedetect", ".ui.FaceDetectUI", paramView, 1025);
+    c.b(this.klK.getContext(), "facedetect", ".ui.FaceDetectUI", paramView, 1025);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginFaceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128084);
   }

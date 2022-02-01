@@ -3,7 +3,7 @@ package com.tencent.qbar.a;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.qbar.a.a;
 import java.util.Iterator;
 import java.util.List;
@@ -14,9 +14,9 @@ public final class a
   {
     AppMethodBeat.i(91184);
     com.tencent.scanlib.b.a locala = new com.tencent.scanlib.b.a("MicroMsg.ScanImageUtil");
-    locala.a(1, com.tencent.scanlib.a.lg(ak.getContext()));
+    locala.a(1, com.tencent.scanlib.a.lb(MMApplicationContext.getContext()));
     if (locala.hasInited()) {
-      locala.M(paramArrayOfInt);
+      locala.T(paramArrayOfInt);
     }
     paramArrayOfInt = null;
     if (paramBitmap != null)
@@ -58,7 +58,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qbar.a.a
  * JD-Core Version:    0.7.0.1
  */

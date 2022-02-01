@@ -9,6 +9,7 @@ import com.tencent.mm.plugin.appbrand.canvas.e.a;
 import com.tencent.mm.plugin.appbrand.f.a;
 import com.tencent.mm.plugin.appbrand.f.a.b;
 import com.tencent.mm.plugin.appbrand.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 
 public final class c
   implements e
@@ -24,11 +25,11 @@ public final class c
   public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
   {
     AppMethodBeat.i(47475);
-    com.tencent.mm.plugin.appbrand.jsapi.c localc = paramd.cnn;
-    String str = ((b)localc.K(b.class)).b(localc, paramString);
-    paramd = ((a)localc.K(a.class)).a(str, paramRect, new a.b()
+    f localf = paramd.czm;
+    String str = ((b)localf.M(b.class)).b(localf, paramString);
+    paramd = ((a)localf.M(a.class)).a(str, paramRect, new a.b()
     {
-      public final void N(Bitmap paramAnonymousBitmap)
+      public final void Q(Bitmap paramAnonymousBitmap)
       {
         AppMethodBeat.i(47472);
         if ((parama == null) || (paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
@@ -54,7 +55,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a.c
  * JD-Core Version:    0.7.0.1
  */

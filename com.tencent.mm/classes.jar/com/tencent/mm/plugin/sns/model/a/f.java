@@ -2,24 +2,25 @@ package com.tencent.mm.plugin.sns.model.a;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.deviceinfo.n;
-import com.tencent.mm.n.e;
-import com.tencent.mm.n.g;
+import com.tencent.mm.n.h;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.sns.lucky.a.b;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class f
   extends c
 {
-  protected boolean zFU = false;
-  protected boolean zFV = false;
-  protected boolean zFW = false;
-  protected boolean zFX = false;
-  protected boolean zFY = false;
+  protected boolean DPU = false;
+  protected boolean DPV = false;
+  protected boolean DPW = false;
+  protected boolean DPX = false;
+  protected boolean DPY = false;
   
   public f(c.a parama, a parama1)
   {
@@ -61,7 +62,7 @@ public abstract class f
     return localStringBuilder.toString();
   }
   
-  public final String aAM(String paramString)
+  public final String aPI(String paramString)
   {
     int n = 2;
     int i1 = 0;
@@ -71,13 +72,13 @@ public abstract class f
       int i;
       try
       {
-        localObject2 = g.acL().getValue("SnsCloseDownloadWebp");
+        localObject2 = h.aqJ().getValue("SnsCloseDownloadWebp");
         localObject1 = paramString;
-        if (bu.isNullOrNil((String)localObject2)) {
+        if (Util.isNullOrNil((String)localObject2)) {
           break label964;
         }
         localObject1 = paramString;
-        i = bu.aSB((String)localObject2);
+        i = Util.safeParseInt((String)localObject2);
       }
       catch (Exception localException1)
       {
@@ -85,35 +86,35 @@ public abstract class f
         int m;
         Object localObject3;
         paramString = (String)localObject1;
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + localException1.getMessage());
+        Log.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + localException1.getMessage());
         return paramString;
       }
       localObject1 = paramString;
       int j;
       int k;
-      if (!n.aau())
+      if (!n.aot())
       {
         j = 0;
         localObject1 = paramString;
-        if (!n.aau())
+        if (!n.aot())
         {
           k = 0;
           localObject1 = paramString;
-          if (n.aau()) {
+          if (n.aot()) {
             continue;
           }
           m = i1;
           localObject1 = paramString;
-          if (bu.isNullOrNil(ac.iSy))
+          if (Util.isNullOrNil(ac.jPt))
           {
             localObject1 = paramString;
-            if (bu.isNullOrNil(ac.iSz)) {
+            if (Util.isNullOrNil(ac.jPu)) {
               continue;
             }
           }
           localObject3 = paramString;
           localObject1 = paramString;
-          if (bu.isNullOrNil(ac.iSy)) {
+          if (Util.isNullOrNil(ac.jPt)) {
             continue;
           }
           localObject1 = paramString;
@@ -121,7 +122,7 @@ public abstract class f
           localObject1 = paramString;
           localObject3 = new StringBuilder();
           localObject1 = paramString;
-          ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ac.iSy);
+          ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ac.jPt);
           i = n;
           localObject1 = paramString;
           if (i >= localObject2.length) {
@@ -138,13 +139,13 @@ public abstract class f
             continue;
           }
           localObject1 = paramString;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geX.gck == 2)
+          if (ae.gKE.gHI == 2)
           {
             i = 0;
             continue;
           }
           localObject1 = paramString;
-          if (bu.isNullOrNil(ac.iSz)) {
+          if (Util.isNullOrNil(ac.jPu)) {
             break label959;
           }
           i = 0;
@@ -153,38 +154,38 @@ public abstract class f
       else
       {
         localObject1 = paramString;
-        if (!ah.dXU())
+        if (!aj.fbg())
         {
           j = 0;
           continue;
         }
         localObject1 = paramString;
-        if (bu.isNullOrNil(ac.iSz)) {
+        if (Util.isNullOrNil(ac.jPu)) {
           break label954;
         }
         j = 0;
         continue;
       }
       localObject1 = paramString;
-      if (!ah.dXR())
+      if (!aj.fbd())
       {
         k = 0;
       }
       else
       {
         localObject1 = paramString;
-        if (!bu.isNullOrNil(ac.iSz))
+        if (!Util.isNullOrNil(ac.jPu))
         {
           k = 0;
           continue;
           m = i1;
           localObject1 = paramString;
-          if (!ah.dXS()) {
+          if (!aj.fbe()) {
             continue;
           }
           m = i1;
           localObject1 = paramString;
-          if (!bu.isNullOrNil(ac.iSz)) {
+          if (!Util.isNullOrNil(ac.jPu)) {
             continue;
           }
           m = 1;
@@ -192,51 +193,51 @@ public abstract class f
           localObject1 = paramString;
           localObject3 = ((StringBuilder)localObject3).toString();
           localObject1 = localObject3;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
+          Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
           localObject2 = localObject3;
           localObject1 = localObject3;
-          if (!bu.isNullOrNil(ac.iSz))
+          if (!Util.isNullOrNil(ac.jPu))
           {
             localObject1 = localObject3;
-            localObject2 = m((String)localObject3, new String[] { "tp=" + ac.iSz });
+            localObject2 = m((String)localObject3, new String[] { "tp=" + ac.jPu });
             localObject1 = localObject2;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
+            Log.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
           }
           paramString = (String)localObject2;
           localObject1 = localObject2;
-          if (this.zFt != null)
+          if (this.DPt != null)
           {
             paramString = (String)localObject2;
             localObject1 = localObject2;
-            if (this.zFt.zyh.Hmv != 0)
+            if (this.DPt.DIq.MsK != 0)
             {
               localObject1 = localObject2;
               paramString = m((String)localObject2, new String[] { "enc=1" });
               localObject1 = paramString;
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + this.zFt.zyh.Hmw + " " + this.zFt.zyh.Hmv + " " + paramString);
+              Log.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + this.DPt.DIq.MsL + " " + this.DPt.DIq.MsK + " " + paramString);
               localObject1 = paramString;
-              b.md(136);
+              b.pl(136);
               localObject1 = paramString;
-              this.zFY = true;
+              this.DPY = true;
             }
           }
           localObject2 = paramString;
           try
           {
-            if (this.zFt != null)
+            if (this.DPt != null)
             {
               localObject2 = paramString;
-              if (this.zFt.zyh != null)
+              if (this.DPt.DIq != null)
               {
-                localObject2 = this.zFt.zyh;
-                if (!this.zFt.zFm) {
+                localObject2 = this.DPt.DIq;
+                if (!this.DPt.DPm) {
                   break label924;
                 }
-                localObject1 = ((bzh)localObject2).HmB;
-                if (!this.zFt.zFm) {
+                localObject1 = ((cnb)localObject2).MsP;
+                if (!this.DPt.DPm) {
                   break label934;
                 }
-                i = ((bzh)localObject2).HmC;
+                i = ((cnb)localObject2).MsQ;
                 localObject2 = paramString;
                 if (!TextUtils.isEmpty((CharSequence)localObject1)) {
                   localObject2 = m(paramString, new String[] { "token=".concat(String.valueOf(localObject1)), "idx=".concat(String.valueOf(i)) });
@@ -253,11 +254,11 @@ public abstract class f
           if (m != 0)
           {
             localObject1 = paramString;
-            this.zFt.zyh.mediaType = 4;
+            this.DPt.DIq.mediaType = 4;
             localObject1 = paramString;
             localObject2 = m(paramString, new String[] { "tp=wxpic" });
             localObject1 = localObject2;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+            Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
             continue;
           }
           if (j != 0)
@@ -265,7 +266,7 @@ public abstract class f
             localObject1 = paramString;
             str = m(paramString, new String[] { "tp=wxpc" });
             localObject1 = str;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
+            Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
             continue;
           }
           if (k != 0)
@@ -273,7 +274,7 @@ public abstract class f
             localObject1 = paramString;
             str = m(paramString, new String[] { "tp=hevc" });
             localObject1 = str;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
+            Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
             continue;
           }
           str = paramString;
@@ -283,13 +284,13 @@ public abstract class f
           localObject1 = paramString;
           str = m(paramString, new String[] { "tp=webp" });
           localObject1 = str;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
+          Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
           continue;
           label924:
-          localObject1 = str.Hmy;
+          localObject1 = str.viB;
           continue;
           label934:
-          i = str.Hmz;
+          i = str.MsN;
           continue;
         }
         k = 1;
@@ -309,15 +310,15 @@ public abstract class f
     }
   }
   
-  public final String b(String paramString, bzh parambzh)
+  public final String b(String paramString, cnb paramcnb)
   {
     int n = 2;
     int i1 = 0;
-    if (parambzh == null)
+    if (paramcnb == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "appendUrlArg, media is null.");
-      parambzh = aAM(paramString);
-      return parambzh;
+      Log.i("MicroMsg.SnsDownloadImageBase", "appendUrlArg, media is null.");
+      paramcnb = aPI(paramString);
+      return paramcnb;
     }
     Object localObject1 = paramString;
     for (;;)
@@ -330,46 +331,46 @@ public abstract class f
         Object localObject2;
         try
         {
-          localObject2 = g.acL().getValue("SnsCloseDownloadWebp");
+          localObject2 = h.aqJ().getValue("SnsCloseDownloadWebp");
           localObject1 = paramString;
-          if (bu.isNullOrNil((String)localObject2)) {
+          if (Util.isNullOrNil((String)localObject2)) {
             break label900;
           }
           localObject1 = paramString;
-          i = bu.aSB((String)localObject2);
+          i = Util.safeParseInt((String)localObject2);
         }
-        catch (Exception parambzh)
+        catch (Exception paramcnb)
         {
           int m;
           Object localObject3;
           paramString = (String)localObject1;
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + parambzh.getMessage());
+          Log.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + paramcnb.getMessage());
           return paramString;
         }
         localObject1 = paramString;
-        if (!n.aau())
+        if (!n.aot())
         {
           j = 0;
           localObject1 = paramString;
-          if (!n.aau())
+          if (!n.aot())
           {
             k = 0;
             localObject1 = paramString;
-            if (n.aau()) {
+            if (n.aot()) {
               continue;
             }
             m = i1;
             localObject1 = paramString;
-            if (bu.isNullOrNil(ac.iSy))
+            if (Util.isNullOrNil(ac.jPt))
             {
               localObject1 = paramString;
-              if (bu.isNullOrNil(ac.iSz)) {
+              if (Util.isNullOrNil(ac.jPu)) {
                 continue;
               }
             }
             localObject3 = paramString;
             localObject1 = paramString;
-            if (bu.isNullOrNil(ac.iSy)) {
+            if (Util.isNullOrNil(ac.jPt)) {
               continue;
             }
             localObject1 = paramString;
@@ -377,7 +378,7 @@ public abstract class f
             localObject1 = paramString;
             localObject3 = new StringBuilder();
             localObject1 = paramString;
-            ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ac.iSy);
+            ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ac.jPt);
             i = n;
             localObject1 = paramString;
             if (i >= localObject2.length) {
@@ -394,13 +395,13 @@ public abstract class f
               continue;
             }
             localObject1 = paramString;
-            if (com.tencent.mm.compatible.deviceinfo.ae.geX.gck == 2)
+            if (ae.gKE.gHI == 2)
             {
               i = 0;
               continue;
             }
             localObject1 = paramString;
-            if (bu.isNullOrNil(ac.iSz)) {
+            if (Util.isNullOrNil(ac.jPu)) {
               break label895;
             }
             i = 0;
@@ -409,66 +410,66 @@ public abstract class f
         else
         {
           localObject1 = paramString;
-          if (!ah.dXU())
+          if (!aj.fbg())
           {
             j = 0;
             continue;
           }
           localObject1 = paramString;
-          if (bu.isNullOrNil(ac.iSz)) {
+          if (Util.isNullOrNil(ac.jPu)) {
             break label889;
           }
           j = 0;
           continue;
         }
         localObject1 = paramString;
-        if (!ah.dXR())
+        if (!aj.fbd())
         {
           k = 0;
         }
         else
         {
           localObject1 = paramString;
-          if (bu.isNullOrNil(ac.iSz)) {
+          if (Util.isNullOrNil(ac.jPu)) {
             break label883;
           }
           k = 0;
           continue;
           m = i1;
           localObject1 = paramString;
-          if (ah.dXS())
+          if (aj.fbe())
           {
             m = i1;
             localObject1 = paramString;
-            if (bu.isNullOrNil(ac.iSz))
+            if (Util.isNullOrNil(ac.jPu))
             {
               m = 1;
               continue;
               localObject1 = paramString;
               localObject3 = ((StringBuilder)localObject3).toString();
               localObject1 = localObject3;
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
+              Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
               localObject2 = localObject3;
               localObject1 = localObject3;
-              if (!bu.isNullOrNil(ac.iSz))
+              if (!Util.isNullOrNil(ac.jPu))
               {
                 localObject1 = localObject3;
-                localObject2 = m((String)localObject3, new String[] { "tp=" + ac.iSz });
+                localObject2 = m((String)localObject3, new String[] { "tp=" + ac.jPu });
                 localObject1 = localObject2;
-                com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
+                Log.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
               }
               paramString = (String)localObject2;
               localObject1 = localObject2;
-              if (parambzh.Hmv != 0)
+              if (paramcnb.MsK != 0)
               {
                 localObject1 = localObject2;
                 paramString = m((String)localObject2, new String[] { "enc=1" });
                 localObject1 = paramString;
-                com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + parambzh.Hmw + " " + parambzh.Hmv + " " + paramString);
+                Log.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + paramcnb.MsL + " " + paramcnb.MsK + " " + paramString);
                 localObject1 = paramString;
-                b.md(136);
+                b.pl(136);
                 localObject1 = paramString;
-                this.zFY = true;
+                this.DPY = true;
               }
             }
           }
@@ -477,43 +478,43 @@ public abstract class f
         label871:
         try
         {
-          if (!this.zFt.zFm) {
+          if (!this.DPt.DPm) {
             break label862;
           }
-          localObject1 = parambzh.HmB;
-          if (!this.zFt.zFm) {
+          localObject1 = paramcnb.MsP;
+          if (!this.DPt.DPm) {
             break label871;
           }
-          i = parambzh.HmC;
-          parambzh = paramString;
+          i = paramcnb.MsQ;
+          paramcnb = paramString;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             break;
           }
-          parambzh = m(paramString, new String[] { "token=".concat(String.valueOf(localObject1)), "idx=".concat(String.valueOf(i)) });
-          return parambzh;
+          paramcnb = m(paramString, new String[] { "token=".concat(String.valueOf(localObject1)), "idx=".concat(String.valueOf(i)) });
+          return paramcnb;
         }
-        catch (Exception parambzh) {}
+        catch (Exception paramcnb) {}
       }
       if (m != 0)
       {
         localObject1 = paramString;
         localObject2 = m(paramString, new String[] { "tp=wxpic" });
         localObject1 = localObject2;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+        Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
       }
       else if (j != 0)
       {
         localObject1 = paramString;
         localObject2 = m(paramString, new String[] { "tp=wxpc" });
         localObject1 = localObject2;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+        Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
       }
       else if (k != 0)
       {
         localObject1 = paramString;
         localObject2 = m(paramString, new String[] { "tp=hevc" });
         localObject1 = localObject2;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+        Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
       }
       else
       {
@@ -523,11 +524,11 @@ public abstract class f
           localObject1 = paramString;
           localObject2 = m(paramString, new String[] { "tp=webp" });
           localObject1 = localObject2;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+          Log.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
           continue;
-          localObject1 = parambzh.Hmy;
+          localObject1 = paramcnb.viB;
           continue;
-          i = parambzh.Hmz;
+          i = paramcnb.MsN;
           continue;
           label883:
           k = 1;
@@ -550,7 +551,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.a.f
  * JD-Core Version:    0.7.0.1
  */

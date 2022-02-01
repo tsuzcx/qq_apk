@@ -1,205 +1,145 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.recordvideo.ui.editor.b.c;
-import com.tencent.mm.protocal.protobuf.aap;
-import com.tencent.mm.protocal.protobuf.aaq;
-import com.tencent.mm.protocal.protobuf.aar;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.videocomposition.h;
-import com.tencent.mm.videocomposition.h.b;
-import d.a.j;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.audio.mix.c.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.videocomposition.a.c;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.decoder.AudioInfo;
+import com.tencent.tavkit.composition.audio.TAVAudioProcessorNode.TAVAudioProcessorEffect;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter;", "", "()V", "background", "", "getBackground", "()Z", "setBackground", "(Z)V", "calculateAba", "progressCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "progress", "", "retryCount", "", "getRetryCount", "()I", "setRetryCount", "(I)V", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "export", "compositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "callback", "reportStartExport", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "outputPath", "", "setCalculateAdaptiveBitrate", "enable", "setProgressCallback", "Companion", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/AudioResampler;", "Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;", "destSampleRate", "", "destChannelCount", "(II)V", "TAG", "", "getDestChannelCount", "()I", "getDestSampleRate", "createResampleProcessor", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "plugin-vlog_release"})
 public final class d
+  implements c
 {
-  public static final d.a BWu;
-  private boolean BWs;
-  public d.g.a.b<? super Float, z> BWt;
-  public int retryCount = 1;
-  public boolean vOG = true;
-  private VideoTransPara vZX;
+  final int Gxb;
+  final int Gxc;
+  final String TAG;
   
-  static
+  public d(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(191152);
-    BWu = new d.a((byte)0);
-    AppMethodBeat.o(191152);
+    this.Gxb = paramInt1;
+    this.Gxc = paramInt2;
+    this.TAG = "MicroMsg.AudioResampler";
   }
   
-  private static void a(v paramv, String paramString)
+  public final TAVAudioProcessorNode.TAVAudioProcessorEffect a(final com.tencent.mm.videocomposition.d paramd)
   {
-    AppMethodBeat.i(191151);
-    paramv = (List)paramv.BXJ;
-    Object localObject2 = (Iterable)paramv;
-    Object localObject1 = (Collection)new ArrayList();
-    localObject2 = ((Iterable)localObject2).iterator();
-    label93:
-    while (((Iterator)localObject2).hasNext())
+    AppMethodBeat.i(190487);
+    p.h(paramd, "track");
+    paramd = (TAVAudioProcessorNode.TAVAudioProcessorEffect)new a(this, paramd);
+    AppMethodBeat.o(190487);
+    return paramd;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/model/AudioResampler$createResampleProcessor$1", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "byteArray", "", "getByteArray", "()[B", "setByteArray", "([B)V", "byteBuffer", "Ljava/nio/ByteBuffer;", "getByteBuffer", "()Ljava/nio/ByteBuffer;", "setByteBuffer", "(Ljava/nio/ByteBuffer;)V", "destAudio", "Lcom/tencent/tav/decoder/AudioInfo;", "getDestAudio", "()Lcom/tencent/tav/decoder/AudioInfo;", "processor", "Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;", "getProcessor", "()Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;", "setProcessor", "(Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;)V", "getDestAudioInfo", "processAudioPCM", "time", "Lcom/tencent/tav/coremedia/CMTime;", "pcmBuffer", "audioInfo", "release", "", "plugin-vlog_release"})
+  public static final class a
+    implements TAVAudioProcessorNode.TAVAudioProcessorEffect
+  {
+    private g Gxd;
+    private final AudioInfo Gxe;
+    private ByteBuffer byteBuffer;
+    private byte[] jzs;
+    
+    a(com.tencent.mm.videocomposition.d paramd)
     {
-      Object localObject3 = ((Iterator)localObject2).next();
-      if (((w)localObject3).type == 2) {}
-      for (i = 1;; i = 0)
+      AppMethodBeat.i(190486);
+      this.jzs = new byte[0];
+      this.Gxe = new AudioInfo();
+      this.Gxe.sampleRate = paramd.Gxb;
+      this.Gxe.channelCount = paramd.Gxc;
+      this.Gxe.pcmEncoding = 2;
+      AppMethodBeat.o(190486);
+    }
+    
+    public final AudioInfo getDestAudioInfo()
+    {
+      return this.Gxe;
+    }
+    
+    public final ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo)
+    {
+      AppMethodBeat.i(190485);
+      p.h(paramCMTime, "time");
+      p.h(paramByteBuffer, "pcmBuffer");
+      p.h(paramAudioInfo, "audioInfo");
+      if (this.Gxd == null)
       {
-        if (i == 0) {
-          break label93;
-        }
-        ((Collection)localObject1).add(localObject3);
-        break;
+        this.Gxd = new g(paramd.path, paramAudioInfo.sampleRate, paramAudioInfo.channelCount, paramAudioInfo.pcmEncoding, this.Gxe.sampleRate, this.Gxe.channelCount, this.Gxe.pcmEncoding);
+        Log.i(this.Gxf.TAG, "processAudioPCM, create convert processor, src:" + paramAudioInfo + ", dst:" + this.Gxe);
       }
-    }
-    localObject2 = (Iterable)localObject1;
-    localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-    localObject2 = ((Iterable)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((w)((Iterator)localObject2).next()).path);
-    }
-    localObject1 = (List)localObject1;
-    localObject2 = com.tencent.mm.plugin.vlog.model.report.a.BZn;
-    int i = paramv.size();
-    if (((List)localObject1).size() < paramv.size()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      com.tencent.mm.plugin.vlog.model.report.a.aN(i, bool);
-      paramv = com.tencent.mm.plugin.vlog.model.report.a.BZn;
-      com.tencent.mm.plugin.vlog.model.report.a.q((List)localObject1, paramString);
-      AppMethodBeat.o(191151);
-      return;
-    }
-  }
-  
-  public final float a(final aaq paramaaq, final d.g.a.b<? super Boolean, z> paramb)
-  {
-    AppMethodBeat.i(191150);
-    p.h(paramaaq, "compositionInfo");
-    p.h(paramb, "callback");
-    final aar localaar = paramaaq.BWx;
-    v localv = f.a(paramaaq);
-    int i;
-    Object localObject1;
-    Object localObject2;
-    boolean bool;
-    if (!bu.isNullOrNil(paramaaq.hoZ))
-    {
-      i = 1;
-      localObject1 = localaar.pYH;
-      p.g(localObject1, "outputConfig.outputPath");
-      a(localv, (String)localObject1);
-      if ((!this.BWs) || (this.vZX == null)) {
-        break label570;
+      if (this.jzs.length != paramByteBuffer.limit()) {
+        this.jzs = new byte[paramByteBuffer.limit()];
       }
-      localObject1 = e.BWC;
-      localObject1 = this.vZX;
-      if (localObject1 == null) {
-        p.gkB();
-      }
-      int j = localaar.targetWidth;
-      int k = localaar.targetHeight;
-      localObject2 = paramaaq.BWy.GrR;
-      p.g(localObject2, "compositionInfo.editData.baseItemData");
-      if (((Collection)localObject2).isEmpty()) {
-        break label473;
-      }
-      bool = true;
-      label142:
-      localObject1 = e.a.a(localv, (VideoTransPara)localObject1, j, k, bool);
-      localObject2 = e.BWC;
-      p.g(localaar, "outputConfig");
-      e.a.a((a)localObject1, localaar);
-      if ((((a)localObject1).sTT == null) || (((a)localObject1).sTT.length < 28)) {
-        break label570;
-      }
-    }
-    label570:
-    for (float f = localObject1.sTT[27];; f = 0.0F)
-    {
-      paramaaq = f.b(paramaaq);
-      localv.F((d.g.a.b)paramaaq);
-      paramaaq.start();
-      if (i != 0)
+      paramByteBuffer.position(0);
+      paramByteBuffer.get(this.jzs);
+      paramByteBuffer.position(0);
+      paramCMTime = this.Gxd;
+      if (paramCMTime != null)
       {
-        ae.i("MicroMsg.VLogCompositionBlendExporter", "export: has music, audio info " + localaar.audioBitrate + ", " + localaar.audioSampleRate + ", " + localaar.audioChannelCount);
-        if (localaar.audioBitrate == 0) {
-          localaar.audioBitrate = 128000;
-        }
-        if (localaar.audioSampleRate == 0) {
-          localaar.audioSampleRate = 44100;
-        }
-        if (localaar.audioChannelCount == 0) {
-          localaar.audioChannelCount = 1;
-        }
+        paramCMTime = paramCMTime.X(this.jzs);
+        if (paramCMTime != null) {}
       }
-      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPl, 1) == 1) {}
-      for (bool = true;; bool = false)
+      else
       {
-        localObject1 = new h.b(new Size(localaar.targetWidth, localaar.targetHeight), localaar.videoBitrate, localaar.fps, localaar.hpl, localaar.audioBitrate, localaar.audioSampleRate, localaar.audioChannelCount, bool);
-        localObject2 = localaar.pYH;
-        str = o.aZU((String)localObject2);
-        if (!o.fB(str)) {
-          o.aZI(str);
-        }
-        if (o.aZV((String)localObject2)) {
-          break label485;
-        }
-        paramb.invoke(Boolean.FALSE);
-        AppMethodBeat.o(191150);
-        return 0.0F;
-        i = 0;
-        break;
-        label473:
-        bool = false;
-        break label142;
+        AppMethodBeat.o(190485);
+        return paramByteBuffer;
       }
-      label485:
-      String str = o.k((String)localObject2, true);
-      final long l = bu.HQ();
-      localv.is(((h.b)localObject1).audioSampleRate, ((h.b)localObject1).audioChannelCount);
-      h localh = localv.getComposition();
-      p.g(str, "exportPath");
-      h.a(localh, str, (h.b)localObject1, (m)new b(this, paramaaq, (String)localObject2, l, localv, localaar, paramb), this.BWt);
-      AppMethodBeat.o(191150);
-      return f;
+      paramByteBuffer = this.byteBuffer;
+      if ((paramByteBuffer == null) || (paramByteBuffer.capacity() != paramCMTime.length))
+      {
+        paramByteBuffer = ByteBuffer.allocateDirect(paramCMTime.length).order(ByteOrder.LITTLE_ENDIAN);
+        paramByteBuffer.put(paramCMTime);
+        this.byteBuffer = paramByteBuffer;
+        paramCMTime = this.byteBuffer;
+        if (paramCMTime != null) {
+          paramCMTime.position(0);
+        }
+        p.g(paramByteBuffer, "newBuffer");
+        AppMethodBeat.o(190485);
+        return paramByteBuffer;
+      }
+      paramByteBuffer = this.byteBuffer;
+      if (paramByteBuffer != null) {
+        paramByteBuffer.position(0);
+      }
+      paramByteBuffer = this.byteBuffer;
+      if (paramByteBuffer != null) {
+        paramByteBuffer.put(paramCMTime);
+      }
+      paramCMTime = this.byteBuffer;
+      if (paramCMTime != null) {
+        paramCMTime.position(0);
+      }
+      paramCMTime = this.byteBuffer;
+      if (paramCMTime == null) {
+        p.hyc();
+      }
+      AppMethodBeat.o(190485);
+      return paramCMTime;
     }
-  }
-  
-  public final void r(VideoTransPara paramVideoTransPara)
-  {
-    AppMethodBeat.i(191149);
-    p.h(paramVideoTransPara, "videoTransPara");
-    this.BWs = true;
-    this.vZX = paramVideoTransPara;
-    AppMethodBeat.o(191149);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "errCode", "", "invoke"})
-  static final class b
-    extends q
-    implements m<Boolean, Integer, z>
-  {
-    b(d paramd, c paramc, String paramString, long paramLong, v paramv, aar paramaar, d.g.a.b paramb)
+    
+    public final void release()
     {
-      super();
+      AppMethodBeat.i(190484);
+      g localg = this.Gxd;
+      if (localg != null)
+      {
+        localg.release();
+        AppMethodBeat.o(190484);
+        return;
+      }
+      AppMethodBeat.o(190484);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.d
  * JD-Core Version:    0.7.0.1
  */

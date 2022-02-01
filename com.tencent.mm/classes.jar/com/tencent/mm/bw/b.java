@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 
 public final class b
 {
-  public byte[] zr;
+  public byte[] zy;
   
   private b() {}
   
@@ -19,12 +19,12 @@ public final class b
   public b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2358);
-    this.zr = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, this.zr, 0, paramInt2);
+    this.zy = new byte[paramInt2];
+    System.arraycopy(paramArrayOfByte, paramInt1, this.zy, 0, paramInt2);
     AppMethodBeat.o(2358);
   }
   
-  public static b G(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static b Q(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2359);
     paramArrayOfByte = new b(paramArrayOfByte, paramInt1, paramInt2);
@@ -32,13 +32,13 @@ public final class b
     return paramArrayOfByte;
   }
   
-  public static b aPw(String paramString)
+  public static b bfZ(String paramString)
   {
     AppMethodBeat.i(2361);
     try
     {
       b localb = new b();
-      localb.zr = paramString.getBytes("UTF-8");
+      localb.zy = paramString.getBytes("UTF-8");
       AppMethodBeat.o(2361);
       return localb;
     }
@@ -50,7 +50,7 @@ public final class b
     }
   }
   
-  public static b cm(byte[] paramArrayOfByte)
+  public static b cD(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2360);
     if (paramArrayOfByte != null) {}
@@ -63,38 +63,63 @@ public final class b
     }
   }
   
-  public final b aaf(int paramInt)
+  public final b aiU(int paramInt)
   {
     AppMethodBeat.i(2362);
     byte[] arrayOfByte = new byte[paramInt];
-    if (this.zr.length >= paramInt) {
-      System.arraycopy(this.zr, 0, arrayOfByte, 0, paramInt - 1);
+    if (this.zy.length >= paramInt) {
+      System.arraycopy(this.zy, 0, arrayOfByte, 0, paramInt - 1);
     }
-    for (this.zr = arrayOfByte;; this.zr = arrayOfByte)
+    for (this.zy = arrayOfByte;; this.zy = arrayOfByte)
     {
       AppMethodBeat.o(2362);
       return this;
-      System.arraycopy(this.zr, 0, arrayOfByte, 0, this.zr.length);
+      System.arraycopy(this.zy, 0, arrayOfByte, 0, this.zy.length);
     }
   }
   
-  public final void cn(byte[] paramArrayOfByte)
+  public final void cE(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2363);
-    System.arraycopy(this.zr, 0, paramArrayOfByte, 4, this.zr.length);
+    System.arraycopy(this.zy, 0, paramArrayOfByte, 4, this.zy.length);
     AppMethodBeat.o(2363);
   }
   
-  public final String fjO()
+  public final void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(2364);
+    System.arraycopy(this.zy, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    AppMethodBeat.o(2364);
+  }
+  
+  public final byte[] toByteArray()
+  {
+    AppMethodBeat.i(2365);
+    int i = this.zy.length;
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(this.zy, 0, arrayOfByte, 0, i);
+    AppMethodBeat.o(2365);
+    return arrayOfByte;
+  }
+  
+  public final String toString(String paramString)
+  {
+    AppMethodBeat.i(196829);
+    paramString = new String(this.zy, paramString);
+    AppMethodBeat.o(196829);
+    return paramString;
+  }
+  
+  public final String yO()
   {
     int i = 0;
     AppMethodBeat.i(2366);
     try
     {
-      while ((i < this.zr.length) && (this.zr[i] != 0)) {
+      while ((i < this.zy.length) && (this.zy[i] != 0)) {
         i += 1;
       }
-      String str = new String(this.zr, 0, i, "UTF-8");
+      String str = new String(this.zy, 0, i, "UTF-8");
       AppMethodBeat.o(2366);
       return str;
     }
@@ -104,41 +129,6 @@ public final class b
       AppMethodBeat.o(2366);
       throw localRuntimeException;
     }
-  }
-  
-  public final byte[] getBytes()
-  {
-    return this.zr;
-  }
-  
-  public final void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(2364);
-    System.arraycopy(this.zr, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
-    AppMethodBeat.o(2364);
-  }
-  
-  public final int size()
-  {
-    return this.zr.length;
-  }
-  
-  public final byte[] toByteArray()
-  {
-    AppMethodBeat.i(2365);
-    int i = this.zr.length;
-    byte[] arrayOfByte = new byte[i];
-    System.arraycopy(this.zr, 0, arrayOfByte, 0, i);
-    AppMethodBeat.o(2365);
-    return arrayOfByte;
-  }
-  
-  public final String toString(String paramString)
-  {
-    AppMethodBeat.i(208319);
-    paramString = new String(this.zr, paramString);
-    AppMethodBeat.o(208319);
-    return paramString;
   }
 }
 

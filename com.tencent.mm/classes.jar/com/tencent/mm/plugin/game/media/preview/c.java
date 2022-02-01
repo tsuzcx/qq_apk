@@ -13,37 +13,38 @@ import com.tencent.mm.plugin.webview.model.an;
 import com.tencent.mm.plugin.webview.model.f.a;
 import com.tencent.mm.plugin.webview.model.f.b;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import junit.framework.Assert;
 
 public final class c
 {
-  private static final String ulq;
+  private static final String xDI;
   private Context context;
-  private View gZB;
-  private boolean hmD;
+  private View hSw;
+  private boolean ifz;
   private long startTime;
-  private f.b ujF;
-  private f.a ujG;
-  private CycleProgressView ulr;
-  private String uls;
-  private e ult;
-  private a ulu;
+  private f.b xBY;
+  private f.a xBZ;
+  private CycleProgressView xDJ;
+  private String xDK;
+  private e xDL;
+  private a xDM;
   
   static
   {
     AppMethodBeat.i(41345);
-    ulq = b.c(b.a.udU) + "haowan/";
+    xDI = b.c(b.a.xvG) + "haowan/";
     AppMethodBeat.o(41345);
   }
   
   public c(Context paramContext, View paramView)
   {
     AppMethodBeat.i(41339);
-    this.hmD = false;
-    this.ujF = new f.b()
+    this.ifz = false;
+    this.xBY = new f.b()
     {
       public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4)
       {
@@ -54,14 +55,14 @@ public final class c
           return;
         }
         c.d(c.this).setVisibility(8);
-        ae.i("MicroMsg.Haowan.VideoShareWrapper", "success : %b, errCode: %d, localId : %s, mediaId : %s, mediaUrl : %s, costTime: %d", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf(paramAnonymousInt), paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, Long.valueOf(System.currentTimeMillis() - c.e(c.this)) });
+        Log.i("MicroMsg.Haowan.VideoShareWrapper", "success : %b, errCode: %d, localId : %s, mediaId : %s, mediaUrl : %s, costTime: %d", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf(paramAnonymousInt), paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, Long.valueOf(System.currentTimeMillis() - c.e(c.this)) });
         if (c.f(c.this) != null) {
           c.f(c.this).a(new c.b(c.this, c.g(c.this), paramAnonymousString3, paramAnonymousString4));
         }
         AppMethodBeat.o(41334);
       }
     };
-    this.ujG = new f.a()
+    this.xBZ = new f.a()
     {
       public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, final int paramAnonymousInt2, String paramAnonymousString1, String paramAnonymousString2)
       {
@@ -71,8 +72,8 @@ public final class c
           AppMethodBeat.o(41336);
           return;
         }
-        ae.d("MicroMsg.Haowan.VideoShareWrapper", "localId:%s, upload video percent:%d", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt2) });
-        ar.f(new Runnable()
+        Log.d("MicroMsg.Haowan.VideoShareWrapper", "localId:%s, upload video percent:%d", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt2) });
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
@@ -85,8 +86,8 @@ public final class c
       }
     };
     this.context = paramContext;
-    this.gZB = paramView;
-    this.ulr = ((CycleProgressView)paramView.findViewById(2131298917));
+    this.hSw = paramView;
+    this.xDJ = ((CycleProgressView)paramView.findViewById(2131299401));
     AppMethodBeat.o(41339);
   }
   
@@ -98,18 +99,18 @@ public final class c
       AppMethodBeat.o(41340);
       return;
     }
-    this.hmD = false;
-    this.ult = parame;
-    this.ulu = parama;
-    if (parame.dDV)
+    this.ifz = false;
+    this.xDL = parame;
+    this.xDM = parama;
+    if (parame.dLQ)
     {
-      this.gZB.setVisibility(0);
-      com.tencent.mm.plugin.game.f.c.caq().postToWorker(new Runnable()
+      this.hSw.setVisibility(0);
+      com.tencent.mm.plugin.game.e.c.cyh().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(41332);
-          String str = c.ulq + "thumb_" + System.currentTimeMillis() + ".jpg";
+          String str = c.xDI + "thumb_" + System.currentTimeMillis() + ".jpg";
           c.a(c.this, parame.videoUrl, str);
           AppMethodBeat.o(41332);
         }
@@ -121,16 +122,16 @@ public final class c
     AppMethodBeat.o(41340);
   }
   
-  public final void dbd()
+  public final void dUK()
   {
     AppMethodBeat.i(41341);
-    this.hmD = true;
-    this.gZB.setVisibility(8);
-    g.eUF();
-    boolean bool = an.Ny(this.uls);
-    g.eUF().b(this.ujF);
-    g.eUF().b(this.ujG);
-    ae.i("MicroMsg.Haowan.VideoShareWrapper", "cancel share task ret:%b, localId:%s", new Object[] { Boolean.valueOf(bool), this.uls });
+    this.ifz = true;
+    this.hSw.setVisibility(8);
+    g.gdu();
+    boolean bool = an.WG(this.xDK);
+    g.gdu().b(this.xBY);
+    g.gdu().b(this.xBZ);
+    Log.i("MicroMsg.Haowan.VideoShareWrapper", "cancel share task ret:%b, localId:%s", new Object[] { Boolean.valueOf(bool), this.xDK });
     AppMethodBeat.o(41341);
   }
   
@@ -141,20 +142,20 @@ public final class c
   
   final class b
   {
-    String hBa;
-    String qlw;
-    String uly;
-    String ulz;
+    String imageUrl;
+    String msN;
     String videoUrl;
+    String xDQ;
+    String xDR;
     
     public b(e parame)
     {
       AppMethodBeat.i(41337);
-      Assert.assertTrue("need net video", parame.dDV);
-      this.qlw = parame.appName;
-      this.uly = parame.title;
-      this.hBa = parame.ucY;
-      this.ulz = "https://game.weixin.qq.com/cgi-bin/h5/static/appcenter/index.html?v_d=eY1maoA1&no_cache=1";
+      Assert.assertTrue("need net video", parame.dLQ);
+      this.msN = parame.appName;
+      this.xDQ = parame.title;
+      this.imageUrl = parame.xuM;
+      this.xDR = ("https://" + WeChatHosts.domainString(2131761707) + "/cgi-bin/h5/static/appcenter/index.html?v_d=eY1maoA1&no_cache=1");
       this.videoUrl = parame.videoUrl;
       AppMethodBeat.o(41337);
     }
@@ -162,14 +163,14 @@ public final class c
     public b(e parame, String paramString1, String paramString2)
     {
       AppMethodBeat.i(41338);
-      if (!parame.dDV) {}
+      if (!parame.dLQ) {}
       for (boolean bool = true;; bool = false)
       {
         Assert.assertTrue("need local video", bool);
-        this.qlw = parame.appName;
-        this.uly = parame.title;
-        this.hBa = paramString2;
-        this.ulz = "https://game.weixin.qq.com/cgi-bin/h5/static/appcenter/index.html?v_d=eY1maoA1&no_cache=1";
+        this.msN = parame.appName;
+        this.xDQ = parame.title;
+        this.imageUrl = paramString2;
+        this.xDR = ("https://" + WeChatHosts.domainString(2131761707) + "/cgi-bin/h5/static/appcenter/index.html?v_d=eY1maoA1&no_cache=1");
         this.videoUrl = paramString1;
         AppMethodBeat.o(41338);
         return;
@@ -179,7 +180,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.preview.c
  * JD-Core Version:    0.7.0.1
  */

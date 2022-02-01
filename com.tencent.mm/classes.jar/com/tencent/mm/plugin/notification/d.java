@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.notification;
 
-import com.tencent.mm.model.av;
+import com.tencent.mm.model.az;
 
 public final class d
 {
-  public static av wKU;
+  public static az AGv;
   
-  public static av dyL()
+  public static az eys()
   {
-    return wKU;
+    return AGv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.d
  * JD-Core Version:    0.7.0.1
  */

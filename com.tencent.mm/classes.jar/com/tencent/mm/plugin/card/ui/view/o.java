@@ -10,77 +10,75 @@ import com.tencent.mm.plugin.card.b.f;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.e.a;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.den;
-import com.tencent.mm.protocal.protobuf.tu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.protocal.protobuf.dxr;
+import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 
 public final class o
   extends i
 {
-  private View oVu;
-  private ImageView oVv;
-  private TextView oVw;
-  private TextView oVx;
+  private View qko;
+  private ImageView qkp;
+  private TextView qkq;
+  private TextView qkr;
   
-  public final void bZG()
+  public final void cxw()
   {
     AppMethodBeat.i(113701);
-    this.oVu.setVisibility(8);
+    this.qko.setVisibility(8);
     AppMethodBeat.o(113701);
   }
   
   public final void initView()
   {
     AppMethodBeat.i(113699);
-    this.oVu = findViewById(2131300308);
-    this.oVv = ((ImageView)findViewById(2131300306));
-    this.oVw = ((TextView)findViewById(2131300310));
-    this.oVx = ((TextView)findViewById(2131300309));
-    this.oVu.setVisibility(8);
+    this.qko = findViewById(2131301800);
+    this.qkp = ((ImageView)findViewById(2131301798));
+    this.qkq = ((TextView)findViewById(2131301802));
+    this.qkr = ((TextView)findViewById(2131301801));
+    this.qko.setVisibility(8);
     AppMethodBeat.o(113699);
   }
   
   public final void update()
   {
     AppMethodBeat.i(113700);
-    b localb = this.oVd.bXA();
-    MMActivity localMMActivity = this.oVd.bXD();
-    e.a locala = this.oVd.bXH();
-    this.oVu.setVisibility(0);
-    this.oVw.setText(k.b(localMMActivity, ((l)g.ab(l.class)).azF().BH(locala.oLo).adF(), this.oVw.getTextSize()));
-    if ((localb.bVe() != null) && (!TextUtils.isEmpty(localb.bVe().HLH))) {
-      this.oVx.setText(k.b(localMMActivity, localb.bVe().HLH, this.oVx.getTextSize()));
+    b localb = this.qjX.cvq();
+    MMActivity localMMActivity = this.qjX.cvt();
+    e.a locala = this.qjX.cvx();
+    this.qko.setVisibility(0);
+    this.qkq.setText(com.tencent.mm.pluginsdk.ui.span.l.b(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(locala.pZc).arI(), this.qkq.getTextSize()));
+    if ((localb.csS() != null) && (!TextUtils.isEmpty(localb.csS().MXq))) {
+      this.qkr.setText(com.tencent.mm.pluginsdk.ui.span.l.b(localMMActivity, localb.csS().MXq, this.qkr.getTextSize()));
     }
     for (;;)
     {
-      a.b.c(this.oVv, locala.oLo);
-      this.oVv.setOnClickListener(this.oVd.bXE());
+      a.b.c(this.qkp, locala.pZc);
+      this.qkp.setOnClickListener(this.qjX.cvu());
       AppMethodBeat.o(113700);
       return;
-      if (!TextUtils.isEmpty(localb.bVc().oFF))
+      if (!TextUtils.isEmpty(localb.csQ().pTn))
       {
-        if (localb.bUN()) {
-          this.oVx.setText(localMMActivity.getString(2131756907, new Object[] { localb.bVc().oFF }));
+        if (localb.csB()) {
+          this.qkr.setText(localMMActivity.getString(2131757077, new Object[] { localb.csQ().pTn }));
         } else {
-          this.oVx.setText(localMMActivity.getString(2131756870, new Object[] { localb.bVc().oFF }));
+          this.qkr.setText(localMMActivity.getString(2131757035, new Object[] { localb.csQ().pTn }));
         }
       }
-      else if (localb.bUN()) {
-        this.oVx.setText(localMMActivity.getString(2131756907, new Object[] { this.oVd.bXI().getTitle() }));
+      else if (localb.csB()) {
+        this.qkr.setText(localMMActivity.getString(2131757077, new Object[] { this.qjX.cvy().getTitle() }));
       } else {
-        this.oVx.setText(localMMActivity.getString(2131756870, new Object[] { this.oVd.bXI().getTitle() }));
+        this.qkr.setText(localMMActivity.getString(2131757035, new Object[] { this.qjX.cvy().getTitle() }));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.expt.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahx;
-import com.tencent.mm.protocal.protobuf.ahy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.akj;
+import com.tencent.mm.protocal.protobuf.akk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   String content;
   int key;
   private int scene = 0;
   int type;
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(196187);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.hQF = new ahx();
-    paramf.hQG = new ahy();
-    paramf.uri = "/cgi-bin/mmexptappsvr-bin/reportexptdebug";
-    paramf.funcId = 2743;
-    paramf.hQH = 0;
-    paramf.respCmdId = 0;
-    paramf = paramf.aDS();
-    ahx localahx = (ahx)paramf.hQD.hQJ;
-    localahx.nJA = this.type;
+    AppMethodBeat.i(220620);
+    this.callback = parami;
+    parami = new d.a();
+    parami.iLN = new akj();
+    parami.iLO = new akk();
+    parami.uri = "/cgi-bin/mmexptappsvr-bin/reportexptdebug";
+    parami.funcId = 2743;
+    parami.iLP = 0;
+    parami.respCmdId = 0;
+    parami = parami.aXF();
+    akj localakj = (akj)parami.iLK.iLR;
+    localakj.oUv = this.type;
     if (this.scene == 0) {}
-    for (int i = (int)bu.aRi();; i = this.scene)
+    for (int i = (int)Util.nowSecond();; i = this.scene)
     {
-      localahx.Scene = i;
-      localahx.yxe = this.key;
-      localahx.hFS = this.content;
-      i = dispatch(parame, paramf, this);
-      AppMethodBeat.o(196187);
+      localakj.Scene = i;
+      localakj.Cya = this.key;
+      localakj.iAc = this.content;
+      i = dispatch(paramg, parami, this);
+      AppMethodBeat.o(220620);
       return i;
     }
   }
@@ -55,12 +55,12 @@ public final class c
     return 2743;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(196188);
-    ae.i("MicroMsg.NetSceneDebugReport", "send expt debug info ongynetend type[%d] errType[%d] errCode[%d] errMsg[%s]", new Object[] { Integer.valueOf(this.type), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(220621);
+    Log.i("MicroMsg.NetSceneDebugReport", "send expt debug info ongynetend type[%d] errType[%d] errCode[%d] errMsg[%s]", new Object[] { Integer.valueOf(this.type), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(196188);
+    AppMethodBeat.o(220621);
   }
 }
 

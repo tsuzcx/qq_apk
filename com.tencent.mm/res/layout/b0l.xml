@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/dp4" style="@style/ny">
-        <LinearLayout style="@style/ld">
-            <EditText android:id="@id/e3n" android:hint="@string/ejm" style="@style/n1" />
-            <View style="@style/oh" />
-            <TextView android:gravity="left" android:text="@string/ejn" style="@style/n2" />
-        </LinearLayout>
-    </ScrollView>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/cn">
+        <TextView android:textSize="14.0dip" android:textColor="@color/xe" android:id="@id/eg6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/brt" android:background="@color/x5" android:layout_width="fill_parent" android:layout_height="@dimen/tv" />
 </LinearLayout>

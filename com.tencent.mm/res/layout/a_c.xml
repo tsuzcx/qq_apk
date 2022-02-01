@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/h93" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/cbz" android:layout_width="72.0dip" android:layout_height="72.0dip" android:src="@raw/game_icon_vedio_empty" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cq3" android:layout_below="@id/cbz" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/mc" android:padding="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cn">
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/byx" android:background="@null" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_outlined_emoji" android:scaleType="fitXY" />
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/lt" android:background="@null" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginLeft="@dimen/ct" android:src="@raw/icons_outlined_alignment_left" android:scaleType="fitXY" />
+    </LinearLayout>
+</LinearLayout>

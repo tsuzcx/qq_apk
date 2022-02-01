@@ -1,111 +1,111 @@
 package com.tencent.mm.plugin.ipcall.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
   public String countryCode = "";
-  public String jki = "";
+  public String kik = "";
   public int roomId = 0;
-  public long uVO = 0L;
-  public long uXg = 0L;
-  public int uXi = 0;
-  public long uYA = 0L;
-  public long uYB = 0L;
-  public long uYC = 0L;
-  public String uYD = "";
-  public String uYE = "";
-  public String uYF = "";
-  public long uYG = 0L;
-  public long uYH = 0L;
-  public long uYI = 0L;
-  public int uYJ = 0;
-  public int uYK = 0;
-  public int uYL = 0;
-  public int uYM = 0;
-  public int uYm = 0;
-  public int uYn = 0;
-  public int uYo = 0;
-  public int uYp = 0;
-  public int uYq = 0;
-  public long uYr = 0L;
-  public long uYs = 0L;
-  public int uYt = 0;
-  public long uYu = 0L;
-  public int uYv = 0;
-  public long uYw = 0L;
-  public int uYx = 0;
-  public String uYy = "";
-  public long uYz = 0L;
+  public long yop = 0L;
+  public long ypH = 0L;
+  public int ypJ = 0;
+  public int yqM = 0;
+  public int yqN = 0;
+  public int yqO = 0;
+  public int yqP = 0;
+  public int yqQ = 0;
+  public long yqR = 0L;
+  public long yqS = 0L;
+  public int yqT = 0;
+  public long yqU = 0L;
+  public int yqV = 0;
+  public long yqW = 0L;
+  public int yqX = 0;
+  public String yqY = "";
+  public long yqZ = 0L;
+  public long yra = 0L;
+  public long yrb = 0L;
+  public long yrc = 0L;
+  public String yrd = "";
+  public String yre = "";
+  public String yrf = "";
+  public long yrg = 0L;
+  public long yrh = 0L;
+  public long yri = 0L;
+  public int yrj = 0;
+  public int yrk = 0;
+  public int yrl = 0;
+  public int yrm = 0;
   
-  public final void dgU()
+  public final void eaO()
   {
     AppMethodBeat.i(25446);
-    ae.i("MicroMsg.IPCallReportHelper", "selfShutdown");
-    this.uYq = 1;
+    Log.i("MicroMsg.IPCallReportHelper", "selfShutdown");
+    this.yqQ = 1;
     AppMethodBeat.o(25446);
   }
   
-  public final void dgV()
+  public final void eaP()
   {
     AppMethodBeat.i(25447);
-    ae.i("MicroMsg.IPCallReportHelper", "selfCancel");
-    this.uYp = 1;
-    if ((this.uYI == 0L) && (this.uYz != 0L))
+    Log.i("MicroMsg.IPCallReportHelper", "selfCancel");
+    this.yqP = 1;
+    if ((this.yri == 0L) && (this.yqZ != 0L))
     {
-      this.uYI = (System.currentTimeMillis() - this.uYz);
-      ae.d("MicroMsg.IPCallReportHelper", "cancelTime: %d", new Object[] { Long.valueOf(this.uYI) });
+      this.yri = (System.currentTimeMillis() - this.yqZ);
+      Log.d("MicroMsg.IPCallReportHelper", "cancelTime: %d", new Object[] { Long.valueOf(this.yri) });
     }
     AppMethodBeat.o(25447);
   }
   
-  public final void dgW()
+  public final void eaQ()
   {
     AppMethodBeat.i(25448);
-    ae.i("MicroMsg.IPCallReportHelper", "channelConnect");
-    this.uYt = 1;
+    Log.i("MicroMsg.IPCallReportHelper", "channelConnect");
+    this.yqT = 1;
     AppMethodBeat.o(25448);
   }
   
-  public final void dgX()
+  public final void eaR()
   {
-    if (this.uYL == 0) {
-      this.uYL = 1;
+    if (this.yrl == 0) {
+      this.yrl = 1;
     }
   }
   
-  public final void dgY()
+  public final void eaS()
   {
     AppMethodBeat.i(25449);
-    ae.d("MicroMsg.IPCallReportHelper", "markConnect");
-    if (this.uYG == 0L)
+    Log.d("MicroMsg.IPCallReportHelper", "markConnect");
+    if (this.yrg == 0L)
     {
-      this.uYG = System.currentTimeMillis();
-      this.uYH = (this.uYG - this.uYz);
-      ae.d("MicroMsg.IPCallReportHelper", "connectTime: %d", new Object[] { Long.valueOf(this.uYH) });
+      this.yrg = System.currentTimeMillis();
+      this.yrh = (this.yrg - this.yqZ);
+      Log.d("MicroMsg.IPCallReportHelper", "connectTime: %d", new Object[] { Long.valueOf(this.yrh) });
     }
     AppMethodBeat.o(25449);
   }
   
-  public final void dgZ()
+  public final void eaT()
   {
     AppMethodBeat.i(25450);
-    ae.d("MicroMsg.IPCallReportHelper", "markStartTalk");
-    if (this.uYB == 0L) {
-      this.uYB = System.currentTimeMillis();
+    Log.d("MicroMsg.IPCallReportHelper", "markStartTalk");
+    if (this.yrb == 0L) {
+      this.yrb = System.currentTimeMillis();
     }
     AppMethodBeat.o(25450);
   }
   
-  public final void gs(int paramInt1, int paramInt2)
+  public final void gQ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(25445);
-    if (this.uXi == paramInt1)
+    if (this.ypJ == paramInt1)
     {
-      ae.d("MicroMsg.IPCallReportHelper", "setInviteCgiRet: %d", new Object[] { Integer.valueOf(paramInt2) });
-      this.uYx = paramInt2;
+      Log.d("MicroMsg.IPCallReportHelper", "setInviteCgiRet: %d", new Object[] { Integer.valueOf(paramInt2) });
+      this.yqX = paramInt2;
     }
     AppMethodBeat.o(25445);
   }
@@ -113,8 +113,8 @@ public final class b
   public final void setCountryCode(String paramString)
   {
     AppMethodBeat.i(25444);
-    ae.d("MicroMsg.IPCallReportHelper", "setCountryCode: %s", new Object[] { paramString });
-    if (!bu.isNullOrNil(paramString)) {
+    Log.d("MicroMsg.IPCallReportHelper", "setCountryCode: %s", new Object[] { paramString });
+    if (!Util.isNullOrNil(paramString)) {
       this.countryCode = paramString;
     }
     AppMethodBeat.o(25444);

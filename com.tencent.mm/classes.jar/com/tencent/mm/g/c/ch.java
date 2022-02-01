@@ -2,155 +2,188 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.protocal.protobuf.FinderFeedReportObject;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aqg;
+import com.tencent.mm.protocal.protobuf.bal;
+import com.tencent.mm.protocal.protobuf.cjh;
+import com.tencent.mm.protocal.protobuf.cjm;
+import com.tencent.mm.protocal.protobuf.cjt;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class ch
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_MediaCache_media_id ON FinderMediaCacheInfoV2(mediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_state ON FinderMediaCacheInfoV2(state)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_origin_media_id ON FinderMediaCacheInfoV2(originMediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_fileFormat ON FinderMediaCacheInfoV2(fileFormat)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_updateTime ON FinderMediaCacheInfoV2(updateTime)" };
-  private static final int eGG = "mediaId".hashCode();
-  private static final int eGZ = "updateTime".hashCode();
-  private static final int eJV = "url".hashCode();
-  private static final int eUE;
-  private static final int eYT = "totalSize".hashCode();
-  private static final int faQ = "cacheSize".hashCode();
-  private static final int faR;
-  private static final int faS;
-  private static final int faT;
-  private static final int faU;
-  private static final int faV = "moovReady".hashCode();
-  private static final int faW = "videoBitrate".hashCode();
-  private static final int faX = "audioBitrate".hashCode();
-  private static final int faY = "frameRate".hashCode();
-  private static final int faZ = "duration".hashCode();
-  private static final int fba = "urlToken".hashCode();
-  private static final int fbb = "decodeKey".hashCode();
+  public static final String COL_CLIPLIST = "clipList";
+  public static final String COL_CREATETIME = "createTime";
+  public static final String COL_CUSTOMDATA = "customData";
+  public static final String COL_FINDEROBJECT = "finderObject";
+  public static final String COL_HALFMEDIAEXTLIST = "halfMediaExtList";
+  public static final String COL_ID = "id";
+  public static final String COL_LOCALFLAG = "localFlag";
+  public static final String COL_LOCALID = "localId";
+  public static final String COL_LONGVIDEOMEDIAEXTLIST = "longVideoMediaExtList";
+  public static final String COL_MEDIAEXTLIST = "mediaExtList";
+  public static final String COL_POSTEXTRADATA = "postExtraData";
+  public static final String COL_POSTINFO = "postinfo";
+  public static final String COL_REPORTOBJECT = "reportObject";
+  public static final String COL_SOURCEFLAG = "sourceFlag";
+  public static final String COL_UPDATETIME = "updateTime";
+  public static final String COL_USERNAME = "username";
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderFeedItem_local_index ON FinderFeedItem(localId)", "CREATE INDEX IF NOT EXISTS FinderFeedItem_Id ON FinderFeedItem(id)", "CREATE INDEX IF NOT EXISTS FinderFeedItem_create_time ON FinderFeedItem(createTime)", "CREATE INDEX IF NOT EXISTS FinderFeedItem__Local_Flag ON FinderFeedItem(localFlag)" };
+  public static final String TABLE_NAME = "FinderFeedItem";
+  private static final String TAG = "MicroMsg.SDK.BaseFinderFeedItem";
+  private static final int clipList_HASHCODE = "clipList".hashCode();
+  private static final int createTime_HASHCODE;
+  private static final int customData_HASHCODE;
+  private static final int finderObject_HASHCODE;
+  private static final int halfMediaExtList_HASHCODE;
+  private static final int id_HASHCODE;
+  private static final int localFlag_HASHCODE;
+  private static final int localId_HASHCODE = "localId".hashCode();
+  private static final int longVideoMediaExtList_HASHCODE;
+  private static final int mediaExtList_HASHCODE;
+  private static final int postExtraData_HASHCODE;
+  private static final int postinfo_HASHCODE;
+  private static final int reportObject_HASHCODE;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGW = true;
-  private boolean eGp = true;
-  private boolean eJR = true;
-  private boolean eTS = true;
-  private boolean eYq = true;
-  private boolean faE = true;
-  private boolean faF = true;
-  private boolean faG = true;
-  private boolean faH = true;
-  private boolean faI = true;
-  private boolean faJ = true;
-  private boolean faK = true;
-  private boolean faL = true;
-  private boolean faM = true;
-  private boolean faN = true;
-  private boolean faO = true;
-  private boolean faP = true;
-  public int field_audioBitrate;
-  public long field_cacheSize;
-  public String field_decodeKey;
-  public int field_duration;
-  public String field_fileFormat;
-  public int field_frameRate;
-  public boolean field_hasPlayed;
-  public String field_mediaId;
-  public boolean field_moovReady;
-  public String field_originMediaId;
-  public int field_reqFormat;
-  public int field_state;
-  public long field_totalSize;
+  private static final int sourceFlag_HASHCODE;
+  private static final int updateTime_HASHCODE;
+  private static final int username_HASHCODE;
+  private boolean __hadSetclipList = true;
+  private boolean __hadSetcreateTime = true;
+  private boolean __hadSetcustomData = true;
+  private boolean __hadSetfinderObject = true;
+  private boolean __hadSethalfMediaExtList = true;
+  private boolean __hadSetid = true;
+  private boolean __hadSetlocalFlag = true;
+  private boolean __hadSetlocalId = true;
+  private boolean __hadSetlongVideoMediaExtList = true;
+  private boolean __hadSetmediaExtList = true;
+  private boolean __hadSetpostExtraData = true;
+  private boolean __hadSetpostinfo = true;
+  private boolean __hadSetreportObject = true;
+  private boolean __hadSetsourceFlag = true;
+  private boolean __hadSetupdateTime = true;
+  private boolean __hadSetusername = true;
+  public cjh field_clipList;
+  public long field_createTime;
+  public aqg field_customData;
+  public FinderObject field_finderObject;
+  public cjt field_halfMediaExtList;
+  public long field_id;
+  public int field_localFlag;
+  public long field_localId;
+  public cjt field_longVideoMediaExtList;
+  public cjt field_mediaExtList;
+  public bal field_postExtraData;
+  public cjm field_postinfo;
+  public FinderFeedReportObject field_reportObject;
+  public int field_sourceFlag;
   public long field_updateTime;
-  public String field_url;
-  public String field_urlToken;
-  public int field_videoBitrate;
+  public String field_username;
   
   static
   {
-    eUE = "state".hashCode();
-    faR = "hasPlayed".hashCode();
-    faS = "reqFormat".hashCode();
-    faT = "originMediaId".hashCode();
-    faU = "fileFormat".hashCode();
+    id_HASHCODE = "id".hashCode();
+    createTime_HASHCODE = "createTime".hashCode();
+    username_HASHCODE = "username".hashCode();
+    sourceFlag_HASHCODE = "sourceFlag".hashCode();
+    updateTime_HASHCODE = "updateTime".hashCode();
+    finderObject_HASHCODE = "finderObject".hashCode();
+    localFlag_HASHCODE = "localFlag".hashCode();
+    postinfo_HASHCODE = "postinfo".hashCode();
+    mediaExtList_HASHCODE = "mediaExtList".hashCode();
+    reportObject_HASHCODE = "reportObject".hashCode();
+    postExtraData_HASHCODE = "postExtraData".hashCode();
+    customData_HASHCODE = "customData".hashCode();
+    longVideoMediaExtList_HASHCODE = "longVideoMediaExtList".hashCode();
+    halfMediaExtList_HASHCODE = "halfMediaExtList".hashCode();
   }
   
-  public static c.a VD()
+  private final void buildBuff() {}
+  
+  public static IAutoDBItem.MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[17];
-    locala.columns = new String[18];
+    paramClass = new IAutoDBItem.MAutoDBInfo();
+    paramClass.fields = new Field[16];
+    paramClass.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "mediaId";
-    locala.IBN.put("mediaId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" mediaId TEXT PRIMARY KEY ");
+    paramClass.columns[0] = "localId";
+    paramClass.colsMap.put("localId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" localId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "mediaId";
-    locala.columns[1] = "url";
-    locala.IBN.put("url", "TEXT");
-    localStringBuilder.append(" url TEXT");
+    paramClass.primaryKey = "localId";
+    paramClass.columns[1] = "id";
+    paramClass.colsMap.put("id", "LONG");
+    localStringBuilder.append(" id LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "totalSize";
-    locala.IBN.put("totalSize", "LONG");
-    localStringBuilder.append(" totalSize LONG");
+    paramClass.columns[2] = "createTime";
+    paramClass.colsMap.put("createTime", "LONG");
+    localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "cacheSize";
-    locala.IBN.put("cacheSize", "LONG");
-    localStringBuilder.append(" cacheSize LONG");
+    paramClass.columns[3] = "username";
+    paramClass.colsMap.put("username", "TEXT");
+    localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "state";
-    locala.IBN.put("state", "INTEGER");
-    localStringBuilder.append(" state INTEGER");
+    paramClass.columns[4] = "sourceFlag";
+    paramClass.colsMap.put("sourceFlag", "INTEGER");
+    localStringBuilder.append(" sourceFlag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "hasPlayed";
-    locala.IBN.put("hasPlayed", "INTEGER");
-    localStringBuilder.append(" hasPlayed INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "reqFormat";
-    locala.IBN.put("reqFormat", "INTEGER default '-1' ");
-    localStringBuilder.append(" reqFormat INTEGER default '-1' ");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "originMediaId";
-    locala.IBN.put("originMediaId", "TEXT");
-    localStringBuilder.append(" originMediaId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "fileFormat";
-    locala.IBN.put("fileFormat", "TEXT");
-    localStringBuilder.append(" fileFormat TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "updateTime";
-    locala.IBN.put("updateTime", "LONG");
+    paramClass.columns[5] = "updateTime";
+    paramClass.colsMap.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[10] = "moovReady";
-    locala.IBN.put("moovReady", "INTEGER default 'false' ");
-    localStringBuilder.append(" moovReady INTEGER default 'false' ");
+    paramClass.columns[6] = "finderObject";
+    paramClass.colsMap.put("finderObject", "BLOB");
+    localStringBuilder.append(" finderObject BLOB");
     localStringBuilder.append(", ");
-    locala.columns[11] = "videoBitrate";
-    locala.IBN.put("videoBitrate", "INTEGER default '0' ");
-    localStringBuilder.append(" videoBitrate INTEGER default '0' ");
+    paramClass.columns[7] = "localFlag";
+    paramClass.colsMap.put("localFlag", "INTEGER");
+    localStringBuilder.append(" localFlag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[12] = "audioBitrate";
-    locala.IBN.put("audioBitrate", "INTEGER default '0' ");
-    localStringBuilder.append(" audioBitrate INTEGER default '0' ");
+    paramClass.columns[8] = "postinfo";
+    paramClass.colsMap.put("postinfo", "BLOB");
+    localStringBuilder.append(" postinfo BLOB");
     localStringBuilder.append(", ");
-    locala.columns[13] = "frameRate";
-    locala.IBN.put("frameRate", "INTEGER default '0' ");
-    localStringBuilder.append(" frameRate INTEGER default '0' ");
+    paramClass.columns[9] = "mediaExtList";
+    paramClass.colsMap.put("mediaExtList", "BLOB");
+    localStringBuilder.append(" mediaExtList BLOB");
     localStringBuilder.append(", ");
-    locala.columns[14] = "duration";
-    locala.IBN.put("duration", "INTEGER default '0' ");
-    localStringBuilder.append(" duration INTEGER default '0' ");
+    paramClass.columns[10] = "reportObject";
+    paramClass.colsMap.put("reportObject", "BLOB");
+    localStringBuilder.append(" reportObject BLOB");
     localStringBuilder.append(", ");
-    locala.columns[15] = "urlToken";
-    locala.IBN.put("urlToken", "TEXT default '' ");
-    localStringBuilder.append(" urlToken TEXT default '' ");
+    paramClass.columns[11] = "postExtraData";
+    paramClass.colsMap.put("postExtraData", "BLOB");
+    localStringBuilder.append(" postExtraData BLOB");
     localStringBuilder.append(", ");
-    locala.columns[16] = "decodeKey";
-    locala.IBN.put("decodeKey", "TEXT default '' ");
-    localStringBuilder.append(" decodeKey TEXT default '' ");
-    locala.columns[17] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    paramClass.columns[12] = "customData";
+    paramClass.colsMap.put("customData", "BLOB");
+    localStringBuilder.append(" customData BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[13] = "longVideoMediaExtList";
+    paramClass.colsMap.put("longVideoMediaExtList", "BLOB");
+    localStringBuilder.append(" longVideoMediaExtList BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[14] = "halfMediaExtList";
+    paramClass.colsMap.put("halfMediaExtList", "BLOB");
+    localStringBuilder.append(" halfMediaExtList BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[15] = "clipList";
+    paramClass.colsMap.put("clipList", "BLOB");
+    localStringBuilder.append(" clipList BLOB");
+    paramClass.columns[16] = "rowid";
+    paramClass.sql = localStringBuilder.toString();
+    return paramClass;
   }
+  
+  private final void parseBuff() {}
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -165,11 +198,11 @@ public abstract class ch
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGG != k) {
+      if (localId_HASHCODE != k) {
         break label65;
       }
-      this.field_mediaId = paramCursor.getString(i);
-      this.eGp = true;
+      this.field_localId = paramCursor.getLong(i);
+      this.__hadSetlocalId = true;
     }
     for (;;)
     {
@@ -177,152 +210,278 @@ public abstract class ch
       break label20;
       break;
       label65:
-      if (eJV == k)
-      {
-        this.field_url = paramCursor.getString(i);
-      }
-      else if (eYT == k)
-      {
-        this.field_totalSize = paramCursor.getLong(i);
-      }
-      else if (faQ == k)
-      {
-        this.field_cacheSize = paramCursor.getLong(i);
-      }
-      else if (eUE == k)
-      {
-        this.field_state = paramCursor.getInt(i);
-      }
-      else
-      {
-        boolean bool;
-        if (faR == k)
+      if (id_HASHCODE == k) {
+        this.field_id = paramCursor.getLong(i);
+      } else if (createTime_HASHCODE == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (username_HASHCODE == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (sourceFlag_HASHCODE == k) {
+        this.field_sourceFlag = paramCursor.getInt(i);
+      } else if (updateTime_HASHCODE == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (finderObject_HASHCODE == k) {
+        try
         {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_hasPlayed = bool;
-            break;
+          byte[] arrayOfByte1 = paramCursor.getBlob(i);
+          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+            continue;
           }
+          this.field_finderObject = ((FinderObject)new FinderObject().parseFrom(arrayOfByte1));
         }
-        if (faS == k)
+        catch (IOException localIOException1)
         {
-          this.field_reqFormat = paramCursor.getInt(i);
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException1.getMessage());
         }
-        else if (faT == k)
+      } else if (localFlag_HASHCODE == k) {
+        this.field_localFlag = paramCursor.getInt(i);
+      } else if (postinfo_HASHCODE == k) {
+        try
         {
-          this.field_originMediaId = paramCursor.getString(i);
-        }
-        else if (faU == k)
-        {
-          this.field_fileFormat = paramCursor.getString(i);
-        }
-        else if (eGZ == k)
-        {
-          this.field_updateTime = paramCursor.getLong(i);
-        }
-        else
-        {
-          if (faV == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_moovReady = bool;
-              break;
-            }
+          byte[] arrayOfByte2 = paramCursor.getBlob(i);
+          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
+            continue;
           }
-          if (faW == k) {
-            this.field_videoBitrate = paramCursor.getInt(i);
-          } else if (faX == k) {
-            this.field_audioBitrate = paramCursor.getInt(i);
-          } else if (faY == k) {
-            this.field_frameRate = paramCursor.getInt(i);
-          } else if (faZ == k) {
-            this.field_duration = paramCursor.getInt(i);
-          } else if (fba == k) {
-            this.field_urlToken = paramCursor.getString(i);
-          } else if (fbb == k) {
-            this.field_decodeKey = paramCursor.getString(i);
-          } else if (rowid_HASHCODE == k) {
-            this.systemRowid = paramCursor.getLong(i);
-          }
+          this.field_postinfo = ((cjm)new cjm().parseFrom(arrayOfByte2));
         }
+        catch (IOException localIOException2)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException2.getMessage());
+        }
+      } else if (mediaExtList_HASHCODE == k) {
+        try
+        {
+          byte[] arrayOfByte3 = paramCursor.getBlob(i);
+          if ((arrayOfByte3 == null) || (arrayOfByte3.length <= 0)) {
+            continue;
+          }
+          this.field_mediaExtList = ((cjt)new cjt().parseFrom(arrayOfByte3));
+        }
+        catch (IOException localIOException3)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException3.getMessage());
+        }
+      } else if (reportObject_HASHCODE == k) {
+        try
+        {
+          byte[] arrayOfByte4 = paramCursor.getBlob(i);
+          if ((arrayOfByte4 == null) || (arrayOfByte4.length <= 0)) {
+            continue;
+          }
+          this.field_reportObject = ((FinderFeedReportObject)new FinderFeedReportObject().parseFrom(arrayOfByte4));
+        }
+        catch (IOException localIOException4)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException4.getMessage());
+        }
+      } else if (postExtraData_HASHCODE == k) {
+        try
+        {
+          byte[] arrayOfByte5 = paramCursor.getBlob(i);
+          if ((arrayOfByte5 == null) || (arrayOfByte5.length <= 0)) {
+            continue;
+          }
+          this.field_postExtraData = ((bal)new bal().parseFrom(arrayOfByte5));
+        }
+        catch (IOException localIOException5)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException5.getMessage());
+        }
+      } else if (customData_HASHCODE == k) {
+        try
+        {
+          byte[] arrayOfByte6 = paramCursor.getBlob(i);
+          if ((arrayOfByte6 == null) || (arrayOfByte6.length <= 0)) {
+            continue;
+          }
+          this.field_customData = ((aqg)new aqg().parseFrom(arrayOfByte6));
+        }
+        catch (IOException localIOException6)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException6.getMessage());
+        }
+      } else if (longVideoMediaExtList_HASHCODE == k) {
+        try
+        {
+          byte[] arrayOfByte7 = paramCursor.getBlob(i);
+          if ((arrayOfByte7 == null) || (arrayOfByte7.length <= 0)) {
+            continue;
+          }
+          this.field_longVideoMediaExtList = ((cjt)new cjt().parseFrom(arrayOfByte7));
+        }
+        catch (IOException localIOException7)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException7.getMessage());
+        }
+      } else if (halfMediaExtList_HASHCODE == k) {
+        try
+        {
+          byte[] arrayOfByte8 = paramCursor.getBlob(i);
+          if ((arrayOfByte8 == null) || (arrayOfByte8.length <= 0)) {
+            continue;
+          }
+          this.field_halfMediaExtList = ((cjt)new cjt().parseFrom(arrayOfByte8));
+        }
+        catch (IOException localIOException8)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException8.getMessage());
+        }
+      } else if (clipList_HASHCODE == k) {
+        try
+        {
+          byte[] arrayOfByte9 = paramCursor.getBlob(i);
+          if ((arrayOfByte9 == null) || (arrayOfByte9.length <= 0)) {
+            continue;
+          }
+          this.field_clipList = ((cjh)new cjh().parseFrom(arrayOfByte9));
+        }
+        catch (IOException localIOException9)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException9.getMessage());
+        }
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
   
   public ContentValues convertTo()
   {
+    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.eGp) {
-      localContentValues.put("mediaId", this.field_mediaId);
+    if (this.__hadSetlocalId) {
+      localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.eJR) {
-      localContentValues.put("url", this.field_url);
+    if (this.__hadSetid) {
+      localContentValues.put("id", Long.valueOf(this.field_id));
     }
-    if (this.eYq) {
-      localContentValues.put("totalSize", Long.valueOf(this.field_totalSize));
+    if (this.__hadSetcreateTime) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.faE) {
-      localContentValues.put("cacheSize", Long.valueOf(this.field_cacheSize));
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eTS) {
-      localContentValues.put("state", Integer.valueOf(this.field_state));
+    if (this.__hadSetsourceFlag) {
+      localContentValues.put("sourceFlag", Integer.valueOf(this.field_sourceFlag));
     }
-    if (this.faF) {
-      localContentValues.put("hasPlayed", Boolean.valueOf(this.field_hasPlayed));
-    }
-    if (this.faG) {
-      localContentValues.put("reqFormat", Integer.valueOf(this.field_reqFormat));
-    }
-    if (this.faH) {
-      localContentValues.put("originMediaId", this.field_originMediaId);
-    }
-    if (this.faI) {
-      localContentValues.put("fileFormat", this.field_fileFormat);
-    }
-    if (this.eGW) {
+    if (this.__hadSetupdateTime) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.faJ) {
-      localContentValues.put("moovReady", Boolean.valueOf(this.field_moovReady));
+    if ((this.__hadSetfinderObject) && (this.field_finderObject != null)) {}
+    try
+    {
+      localContentValues.put("finderObject", this.field_finderObject.toByteArray());
+      if (this.__hadSetlocalFlag) {
+        localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
+      }
+      if ((!this.__hadSetpostinfo) || (this.field_postinfo == null)) {}
     }
-    if (this.faK) {
-      localContentValues.put("videoBitrate", Integer.valueOf(this.field_videoBitrate));
+    catch (IOException localIOException8)
+    {
+      try
+      {
+        localContentValues.put("postinfo", this.field_postinfo.toByteArray());
+        if ((!this.__hadSetmediaExtList) || (this.field_mediaExtList == null)) {}
+      }
+      catch (IOException localIOException8)
+      {
+        try
+        {
+          localContentValues.put("mediaExtList", this.field_mediaExtList.toByteArray());
+          if ((!this.__hadSetreportObject) || (this.field_reportObject == null)) {}
+        }
+        catch (IOException localIOException8)
+        {
+          try
+          {
+            localContentValues.put("reportObject", this.field_reportObject.toByteArray());
+            if ((!this.__hadSetpostExtraData) || (this.field_postExtraData == null)) {}
+          }
+          catch (IOException localIOException8)
+          {
+            try
+            {
+              localContentValues.put("postExtraData", this.field_postExtraData.toByteArray());
+              if ((!this.__hadSetcustomData) || (this.field_customData == null)) {}
+            }
+            catch (IOException localIOException8)
+            {
+              try
+              {
+                localContentValues.put("customData", this.field_customData.toByteArray());
+                if ((!this.__hadSetlongVideoMediaExtList) || (this.field_longVideoMediaExtList == null)) {}
+              }
+              catch (IOException localIOException8)
+              {
+                try
+                {
+                  localContentValues.put("longVideoMediaExtList", this.field_longVideoMediaExtList.toByteArray());
+                  if ((!this.__hadSethalfMediaExtList) || (this.field_halfMediaExtList == null)) {}
+                }
+                catch (IOException localIOException8)
+                {
+                  try
+                  {
+                    localContentValues.put("halfMediaExtList", this.field_halfMediaExtList.toByteArray());
+                    if ((!this.__hadSetclipList) || (this.field_clipList == null)) {}
+                  }
+                  catch (IOException localIOException8)
+                  {
+                    try
+                    {
+                      for (;;)
+                      {
+                        localContentValues.put("clipList", this.field_clipList.toByteArray());
+                        if (this.systemRowid > 0L) {
+                          localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+                        }
+                        return localContentValues;
+                        localIOException1 = localIOException1;
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException1.getMessage());
+                        continue;
+                        localIOException2 = localIOException2;
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException2.getMessage());
+                        continue;
+                        localIOException3 = localIOException3;
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException3.getMessage());
+                        continue;
+                        localIOException4 = localIOException4;
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException4.getMessage());
+                        continue;
+                        localIOException5 = localIOException5;
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException5.getMessage());
+                        continue;
+                        localIOException6 = localIOException6;
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException6.getMessage());
+                        continue;
+                        localIOException7 = localIOException7;
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException7.getMessage());
+                      }
+                      localIOException8 = localIOException8;
+                      Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException8.getMessage());
+                    }
+                    catch (IOException localIOException9)
+                    {
+                      for (;;)
+                      {
+                        Log.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException9.getMessage());
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    if (this.faL) {
-      localContentValues.put("audioBitrate", Integer.valueOf(this.field_audioBitrate));
-    }
-    if (this.faM) {
-      localContentValues.put("frameRate", Integer.valueOf(this.field_frameRate));
-    }
-    if (this.faN) {
-      localContentValues.put("duration", Integer.valueOf(this.field_duration));
-    }
-    if (this.field_urlToken == null) {
-      this.field_urlToken = "";
-    }
-    if (this.faO) {
-      localContentValues.put("urlToken", this.field_urlToken);
-    }
-    if (this.field_decodeKey == null) {
-      this.field_decodeKey = "";
-    }
-    if (this.faP) {
-      localContentValues.put("decodeKey", this.field_decodeKey);
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
   
   public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ch
  * JD-Core Version:    0.7.0.1
  */

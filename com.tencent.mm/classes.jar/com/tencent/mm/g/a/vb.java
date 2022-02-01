@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class vb
-  extends b
+  extends IEvent
 {
-  public a dKt;
+  public a ebt;
   
   public vb()
   {
@@ -15,16 +15,16 @@ public final class vb
   
   private vb(byte paramByte)
   {
-    AppMethodBeat.i(125645);
-    this.dKt = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125632);
+    this.ebt = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125645);
+    AppMethodBeat.o(125632);
   }
   
   public static final class a
   {
-    public long dKo = -1L;
+    public boolean isStart;
   }
 }
 

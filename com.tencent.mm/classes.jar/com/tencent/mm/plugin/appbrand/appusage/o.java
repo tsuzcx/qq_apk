@@ -4,59 +4,60 @@ import android.os.Bundle;
 import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.Parcel;
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.storage.MStorage;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public final class o
-  extends com.tencent.mm.sdk.e.k
-  implements ai
+  extends MStorage
+  implements ah
 {
-  private final Set<k.a> jSe;
+  private final Set<MStorage.IOnStorageChange> kUO;
   
   public o()
   {
     AppMethodBeat.i(44521);
-    this.jSe = new HashSet();
+    this.kUO = new HashSet();
     AppMethodBeat.o(44521);
   }
   
-  public final void add(k.a parama)
+  public final void add(MStorage.IOnStorageChange paramIOnStorageChange)
   {
     AppMethodBeat.i(44525);
-    add(parama, Looper.getMainLooper());
+    add(paramIOnStorageChange, Looper.getMainLooper());
     AppMethodBeat.o(44525);
   }
   
-  public final void add(k.a parama, Looper arg2)
+  public final void add(MStorage.IOnStorageChange paramIOnStorageChange, Looper arg2)
   {
     int i = 1;
     AppMethodBeat.i(44526);
-    if ((parama == null) || (??? == null))
+    if ((paramIOnStorageChange == null) || (??? == null))
     {
       AppMethodBeat.o(44526);
       return;
     }
-    super.add(parama, ???);
-    synchronized (this.jSe)
+    super.add(paramIOnStorageChange, ???);
+    synchronized (this.kUO)
     {
-      this.jSe.add(parama);
-      if (this.jSe.size() == 1)
+      this.kUO.add(paramIOnStorageChange);
+      if (this.kUO.size() == 1)
       {
         if (i != 0) {
-          XIPCInvoker.a("com.tencent.mm", IPCVoid.gAP, b.class, new d() {});
+          XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, b.class, new d() {});
         }
         AppMethodBeat.o(44526);
         return;
@@ -65,10 +66,10 @@ public final class o
     }
   }
   
-  public final boolean bd(String paramString, int paramInt)
+  public final boolean bi(String paramString, int paramInt)
   {
     AppMethodBeat.i(44522);
-    paramString = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new AppIdentity(paramString, paramInt), c.class);
+    paramString = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.dkO, new AppIdentity(paramString, paramInt), c.class);
     if (paramString == null)
     {
       AppMethodBeat.o(44522);
@@ -79,13 +80,13 @@ public final class o
     return bool;
   }
   
-  public final List<LocalUsageInfo> dE(int paramInt1, int paramInt2)
+  public final List<LocalUsageInfo> dP(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(44524);
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("count", paramInt1);
     ((Bundle)localObject).putInt("versionType", paramInt2);
-    localObject = (Parcel)XIPCInvoker.a("com.tencent.mm", localObject, a.class);
+    localObject = (Parcel)XIPCInvoker.a(MainProcessIPCService.dkO, localObject, a.class);
     if (localObject == null)
     {
       AppMethodBeat.o(44524);
@@ -97,35 +98,35 @@ public final class o
     return localArrayList;
   }
   
-  public final void remove(k.a parama)
+  public final void remove(MStorage.IOnStorageChange paramIOnStorageChange)
   {
     AppMethodBeat.i(44527);
-    if (parama == null)
+    if (paramIOnStorageChange == null)
     {
       AppMethodBeat.o(44527);
       return;
     }
-    super.remove(parama);
-    synchronized (this.jSe)
+    super.remove(paramIOnStorageChange);
+    synchronized (this.kUO)
     {
-      this.jSe.remove(parama);
+      this.kUO.remove(paramIOnStorageChange);
       AppMethodBeat.o(44527);
       return;
     }
   }
   
-  public final List<LocalUsageInfo> sb(int paramInt)
+  public final List<LocalUsageInfo> vW(int paramInt)
   {
     AppMethodBeat.i(44523);
-    List localList = dE(paramInt, 2147483647);
+    List localList = dP(paramInt, 2147483647);
     AppMethodBeat.o(44523);
     return localList;
   }
   
   static final class a
-    implements com.tencent.mm.ipcinvoker.k<Bundle, Parcel>
+    implements k<Bundle, Parcel>
   {
-    private static Parcel A(Bundle paramBundle)
+    private static Parcel G(Bundle paramBundle)
     {
       AppMethodBeat.i(44513);
       int i = paramBundle.getInt("count");
@@ -133,7 +134,7 @@ public final class o
       paramBundle = Parcel.obtain();
       try
       {
-        paramBundle.writeTypedList(((ai)g.ab(ai.class)).dE(i, j));
+        paramBundle.writeTypedList(((ah)g.af(ah.class)).dP(i, j));
         AppMethodBeat.o(44513);
         return paramBundle;
       }
@@ -152,20 +153,20 @@ public final class o
   {}
   
   static final class c
-    implements com.tencent.mm.ipcinvoker.k<AppIdentity, IPCBoolean>
+    implements k<AppIdentity, IPCBoolean>
   {
     private static IPCBoolean c(AppIdentity paramAppIdentity)
     {
       AppMethodBeat.i(44519);
       try
       {
-        paramAppIdentity = new IPCBoolean(((ai)g.ab(ai.class)).bd(paramAppIdentity.username, paramAppIdentity.hSZ));
+        paramAppIdentity = new IPCBoolean(((ah)g.af(ah.class)).bi(paramAppIdentity.username, paramAppIdentity.iOo));
         AppMethodBeat.o(44519);
         return paramAppIdentity;
       }
       catch (Exception paramAppIdentity)
       {
-        ae.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
+        com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
         paramAppIdentity = new IPCBoolean(false);
         AppMethodBeat.o(44519);
       }
@@ -175,7 +176,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.o
  * JD-Core Version:    0.7.0.1
  */

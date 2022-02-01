@@ -1,19 +1,20 @@
 package com.tencent.mm.sdk.platformtools;
 
 import android.media.MediaMetadataRetriever;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.d;
+import com.tencent.mm.compatible.i.d;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.compatible.util.Exif.a;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
-public final class BackwardSupportUtil
+public class BackwardSupportUtil
 {
-  public static BackwardSupportUtil.ExifHelper.LatLongData aRv(String paramString)
+  public static final int ANDROID_API_LEVEL_16 = 16;
+  private static final int ANDROID_API_LEVEL_8 = 8;
+  private static final String TAG = "MicroMsg.SDK.BackwardSupportUtil";
+  
+  public static BackwardSupportUtil.ExifHelper.LatLongData getVideoLatLong(String paramString)
   {
     AppMethodBeat.i(156076);
     Object localObject = new d();
@@ -22,7 +23,7 @@ public final class BackwardSupportUtil
       ((MediaMetadataRetriever)localObject).setDataSource(paramString);
       paramString = ((MediaMetadataRetriever)localObject).extractMetadata(23);
       ((MediaMetadataRetriever)localObject).release();
-      ae.i("MicroMsg.SDK.BackwardSupportUtil", "getVideoLatLong locationString ".concat(String.valueOf(paramString)));
+      Log.i("MicroMsg.SDK.BackwardSupportUtil", "getVideoLatLong locationString ".concat(String.valueOf(paramString)));
       if (TextUtils.isEmpty(paramString)) {
         break label227;
       }
@@ -42,7 +43,7 @@ public final class BackwardSupportUtil
     }
     catch (Exception paramString)
     {
-      ae.e("MicroMsg.SDK.BackwardSupportUtil", "getVideoLatLong setDataSource failure: " + paramString.getMessage());
+      Log.e("MicroMsg.SDK.BackwardSupportUtil", "getVideoLatLong setDataSource failure: " + paramString.getMessage());
       AppMethodBeat.o(156076);
       return null;
     }
@@ -52,8 +53,8 @@ public final class BackwardSupportUtil
       i = paramString.lastIndexOf('-');
     }
     localObject = new BackwardSupportUtil.ExifHelper.LatLongData();
-    ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dzE = bu.aSE(paramString.substring(0, i));
-    ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).iev = bu.aSE(paramString.substring(i));
+    ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).latitude = Util.safeParseFloat(paramString.substring(0, i));
+    ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).longtitude = Util.safeParseFloat(paramString.substring(i));
     AppMethodBeat.o(156076);
     return localObject;
     label227:
@@ -61,7 +62,7 @@ public final class BackwardSupportUtil
     return null;
   }
   
-  public static String aRw(String paramString)
+  public static String getVideoTakeTime(String paramString)
   {
     AppMethodBeat.i(156077);
     d locald = new d();
@@ -70,41 +71,41 @@ public final class BackwardSupportUtil
       locald.setDataSource(paramString);
       paramString = locald.extractMetadata(5);
       locald.release();
-      ae.i("MicroMsg.SDK.BackwardSupportUtil", "getVideoTakeTime timeString ".concat(String.valueOf(paramString)));
+      Log.i("MicroMsg.SDK.BackwardSupportUtil", "getVideoTakeTime timeString ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(156077);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ae.e("MicroMsg.SDK.BackwardSupportUtil", "getVideoLatLong setDataSource failure: " + paramString.getMessage());
+      Log.e("MicroMsg.SDK.BackwardSupportUtil", "getVideoLatLong setDataSource failure: " + paramString.getMessage());
       AppMethodBeat.o(156077);
     }
     return null;
   }
   
-  public static final class ExifHelper
+  public static class ExifHelper
   {
-    public static LatLongData aRx(String paramString)
+    public static BackwardSupportUtil.ExifHelper.LatLongData getExifLatLong(String paramString)
     {
       AppMethodBeat.i(156072);
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        ae.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
+        Log.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
         AppMethodBeat.o(156072);
         return null;
       }
-      if (!o.fB(paramString))
+      if (!s.YS(paramString))
       {
-        ae.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
+        Log.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
         AppMethodBeat.o(156072);
         return null;
       }
       paramString = Exif.fromFile(paramString).getLocation();
       if (paramString != null)
       {
-        LatLongData localLatLongData = new LatLongData();
-        localLatLongData.dzE = ((float)paramString.latitude);
-        localLatLongData.iev = ((float)paramString.longitude);
+        BackwardSupportUtil.ExifHelper.LatLongData localLatLongData = new BackwardSupportUtil.ExifHelper.LatLongData();
+        localLatLongData.latitude = ((float)paramString.latitude);
+        localLatLongData.longtitude = ((float)paramString.longitude);
         AppMethodBeat.o(156072);
         return localLatLongData;
       }
@@ -112,18 +113,18 @@ public final class BackwardSupportUtil
       return null;
     }
     
-    public static int df(String paramString)
+    public static int getExifOrientation(String paramString)
     {
       AppMethodBeat.i(156071);
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        ae.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
+        Log.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
         AppMethodBeat.o(156071);
         return 0;
       }
-      if (!o.fB(paramString))
+      if (!s.YS(paramString))
       {
-        ae.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
+        Log.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
         AppMethodBeat.o(156071);
         return 0;
       }
@@ -132,73 +133,30 @@ public final class BackwardSupportUtil
       return i;
     }
     
-    public static class LatLongData
-      implements Parcelable
+    public static String getExifTime(String paramString)
     {
-      public static final Parcelable.Creator<LatLongData> CREATOR;
-      public float dzE;
-      public float iev;
-      
-      static
+      AppMethodBeat.i(215292);
+      if (Util.isNullOrNil(paramString))
       {
-        AppMethodBeat.i(156070);
-        CREATOR = new Parcelable.Creator() {};
-        AppMethodBeat.o(156070);
+        Log.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
+        AppMethodBeat.o(215292);
+        return null;
       }
-      
-      public LatLongData()
+      if (!s.YS(paramString))
       {
-        this.dzE = 0.0F;
-        this.iev = 0.0F;
+        Log.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { paramString });
+        AppMethodBeat.o(215292);
+        return null;
       }
-      
-      public LatLongData(float paramFloat1, float paramFloat2)
-      {
-        this.dzE = paramFloat1;
-        this.iev = paramFloat2;
-      }
-      
-      public int describeContents()
-      {
-        return 0;
-      }
-      
-      public boolean equals(Object paramObject)
-      {
-        AppMethodBeat.i(156068);
-        if (!(paramObject instanceof LatLongData))
-        {
-          AppMethodBeat.o(156068);
-          return false;
-        }
-        paramObject = (LatLongData)paramObject;
-        if ((Math.abs(this.dzE - paramObject.dzE) < 1.0E-006F) && (Math.abs(this.iev - paramObject.iev) < 1.0E-006F))
-        {
-          AppMethodBeat.o(156068);
-          return true;
-        }
-        AppMethodBeat.o(156068);
-        return false;
-      }
-      
-      public int hashCode()
-      {
-        return (int)(this.dzE * 10000.0F) + (int)(this.iev * 10000.0F);
-      }
-      
-      public void writeToParcel(Parcel paramParcel, int paramInt)
-      {
-        AppMethodBeat.i(156069);
-        paramParcel.writeFloat(this.dzE);
-        paramParcel.writeFloat(this.iev);
-        AppMethodBeat.o(156069);
-      }
+      paramString = Exif.fromFile(paramString).dateTime;
+      AppMethodBeat.o(215292);
+      return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.BackwardSupportUtil
  * JD-Core Version:    0.7.0.1
  */

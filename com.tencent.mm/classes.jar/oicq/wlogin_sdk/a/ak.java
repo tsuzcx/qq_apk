@@ -5,7 +5,7 @@ public final class ak
 {
   public ak()
   {
-    this.Ony = 356;
+    this.Ucx = 356;
   }
 }
 

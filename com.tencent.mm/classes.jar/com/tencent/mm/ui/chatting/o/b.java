@@ -9,7 +9,7 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.a;
 import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.plugin.messenger.d.b.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
@@ -25,7 +25,7 @@ public final class b
   
   public final CharSequence b(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(187644);
+    AppMethodBeat.i(233520);
     String str3 = (String)paramMap.get(paramString + ".title");
     final LinkedList localLinkedList = new LinkedList();
     int i = 0;
@@ -37,7 +37,7 @@ public final class b
         str1 = str2 + i;
       }
       str1 = (String)paramMap.get(str1);
-      if (bu.isNullOrNil(str1)) {
+      if (Util.isNullOrNil(str1)) {
         break;
       }
       localLinkedList.add(str1);
@@ -48,18 +48,18 @@ public final class b
     {
       public final void onClickImp(View paramAnonymousView)
       {
-        AppMethodBeat.i(187643);
+        AppMethodBeat.i(233519);
         long l = paramBundle.getLong("msg_id");
         b.this.a(l, localLinkedList, 1);
-        ((e)g.ab(e.class)).a("link_revoke", paramMap, paramBundle);
-        AppMethodBeat.o(187643);
+        ((e)g.af(e.class)).a("link_revoke", paramMap, paramBundle);
+        AppMethodBeat.o(233519);
       }
     }, 0, str3.length(), 33);
-    AppMethodBeat.o(187644);
+    AppMethodBeat.o(233520);
     return paramString;
   }
   
-  public final String dpe()
+  public final String eiT()
   {
     return "link_revoke";
   }

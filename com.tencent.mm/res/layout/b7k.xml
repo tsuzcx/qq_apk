@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_gravity="bottom" android:id="@id/c3z" android:clickable="true" android:layout_width="fill_parent" android:layout_height="72.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="16.0dip"
+<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c41" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/c40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_weight="0.0">
-            <ImageView android:id="@id/c44" android:layout_width="48.0dip" android:layout_height="48.0dip" />
-        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/c45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="12.0sp" android:textColor="#ffececec" android:ellipsize="end" android:id="@id/c43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
-        </LinearLayout>
-        <FrameLayout android:id="@id/c42" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="20.0dip" android:layout_weight="0.0" />
-    </LinearLayout>
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/is" android:textColor="@color/a2x" android:textColorHint="@color/uk" android:id="@id/bxz" android:background="@drawable/ca3" android:padding="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:maxLength="128" android:inputType="text" android:textCursorDrawable="@null" />
+    <TextView android:textSize="@dimen/ka" android:textColor="@color/uj" android:id="@id/ipe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" />
+</LinearLayout>

@@ -10,73 +10,73 @@ public class u
   extends h
   implements SubMenu
 {
-  public h ahb;
-  private j ahc;
+  public h aho;
+  private j ahp;
   
   public u(Context paramContext, h paramh, j paramj)
   {
     super(paramContext);
-    this.ahb = paramh;
-    this.ahc = paramj;
+    this.aho = paramh;
+    this.ahp = paramj;
   }
   
   public final void a(h.a parama)
   {
-    this.ahb.a(parama);
+    this.aho.a(parama);
   }
   
   final boolean d(h paramh, MenuItem paramMenuItem)
   {
-    return (super.d(paramh, paramMenuItem)) || (this.ahb.d(paramh, paramMenuItem));
+    return (super.d(paramh, paramMenuItem)) || (this.aho.d(paramh, paramMenuItem));
   }
   
   public final boolean g(j paramj)
   {
-    return this.ahb.g(paramj);
+    return this.aho.g(paramj);
   }
   
   public MenuItem getItem()
   {
-    return this.ahc;
+    return this.ahp;
   }
   
   public final boolean h(j paramj)
   {
-    return this.ahb.h(paramj);
+    return this.aho.h(paramj);
   }
   
-  public final String hN()
+  public final String hW()
   {
-    if (this.ahc != null) {}
-    for (int i = this.ahc.getItemId(); i == 0; i = 0) {
+    if (this.ahp != null) {}
+    for (int i = this.ahp.getItemId(); i == 0; i = 0) {
       return null;
     }
-    return super.hN() + ":" + i;
+    return super.hW() + ":" + i;
   }
   
-  public final boolean hO()
+  public final boolean hX()
   {
-    return this.ahb.hO();
+    return this.aho.hX();
   }
   
-  public final boolean hP()
+  public final boolean hY()
   {
-    return this.ahb.hP();
+    return this.aho.hY();
   }
   
-  public final boolean hQ()
+  public final boolean hZ()
   {
-    return this.ahb.hQ();
+    return this.aho.hZ();
   }
   
-  public final h hY()
+  public final h ii()
   {
-    return this.ahb.hY();
+    return this.aho.ii();
   }
   
   public void setGroupDividerEnabled(boolean paramBoolean)
   {
-    this.ahb.setGroupDividerEnabled(paramBoolean);
+    this.aho.setGroupDividerEnabled(paramBoolean);
   }
   
   public SubMenu setHeaderIcon(int paramInt)
@@ -111,19 +111,19 @@ public class u
   
   public SubMenu setIcon(int paramInt)
   {
-    this.ahc.setIcon(paramInt);
+    this.ahp.setIcon(paramInt);
     return this;
   }
   
   public SubMenu setIcon(Drawable paramDrawable)
   {
-    this.ahc.setIcon(paramDrawable);
+    this.ahp.setIcon(paramDrawable);
     return this;
   }
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    this.ahb.setQwertyMode(paramBoolean);
+    this.aho.setQwertyMode(paramBoolean);
   }
 }
 

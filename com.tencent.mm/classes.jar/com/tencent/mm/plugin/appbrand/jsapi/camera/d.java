@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
-import com.tencent.mm.plugin.appbrand.jsruntime.s;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.s;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class d
   implements MMSightRecordView.f
 {
-  private final c jQp;
-  final s kLm;
-  boolean kLn;
-  int kLo;
+  private final f kSY;
+  final s lPY;
+  boolean lPZ;
+  int lQa;
   
-  public d(c paramc)
+  public d(f paramf)
   {
     AppMethodBeat.i(46217);
-    this.jQp = paramc;
-    this.kLm = ((s)this.jQp.aYB().P(s.class));
-    this.kLo = -2147483648;
+    this.kSY = paramf;
+    this.lPY = ((s)this.kSY.getJsRuntime().R(s.class));
+    this.lQa = -2147483648;
     AppMethodBeat.o(46217);
   }
   
   public final void a(MMSightRecordView paramMMSightRecordView)
   {
     AppMethodBeat.i(46218);
-    this.kLn = false;
+    this.lPZ = false;
     if (paramMMSightRecordView != null) {
       paramMMSightRecordView.a(null, null);
     }
-    if (this.kLo != -2147483648)
+    if (this.lQa != -2147483648)
     {
-      this.kLm.ua(this.kLo);
-      this.kLo = -2147483648;
+      this.lPY.xZ(this.lQa);
+      this.lQa = -2147483648;
     }
     AppMethodBeat.o(46218);
   }
   
-  public final void bkE()
+  public final void bGa()
   {
     AppMethodBeat.i(46219);
-    if (!this.kLn)
+    if (!this.lPZ)
     {
-      ae.i("MicroMsg.FrameDataCallbackHelper", "onDateUpdate not need callback");
+      Log.i("MicroMsg.FrameDataCallbackHelper", "onDateUpdate not need callback");
       AppMethodBeat.o(46219);
       return;
     }
-    this.jQp.a(new a());
+    this.kSY.a(new a());
     AppMethodBeat.o(46219);
   }
   
   public final class a
-    extends at
+    extends bc
   {
     private static final int CTRL_INDEX = 637;
     public static final String NAME = "onCameraFrame";
@@ -65,7 +65,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.d
  * JD-Core Version:    0.7.0.1
  */

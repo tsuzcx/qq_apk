@@ -8,11 +8,11 @@ public enum m$e
   
   static
   {
-    AppMethodBeat.i(188131);
-    KTx = new e("ASC", 0, 1);
-    KTy = new e("DESC", 1, -1);
-    KTz = new e[] { KTx, KTy };
-    AppMethodBeat.o(188131);
+    AppMethodBeat.i(234224);
+    QgE = new e("ASC", 0, 1);
+    QgF = new e("DESC", 1, -1);
+    QgG = new e[] { QgE, QgF };
+    AppMethodBeat.o(234224);
   }
   
   private m$e(int paramInt)
@@ -22,7 +22,7 @@ public enum m$e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.m.e
  * JD-Core Version:    0.7.0.1
  */

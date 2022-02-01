@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements IBinder.DeathRecipient
 {
-  private String process;
+  private final String process;
   
   public a(String paramString)
   {
@@ -22,13 +22,13 @@ public final class a
       AppMethodBeat.o(158820);
       return;
     }
-    b.xh(this.process);
+    b.Ft(this.process);
     AppMethodBeat.o(158820);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,27 +2,27 @@ package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.i;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.e;
-import com.tencent.mm.n.g;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ax.a;
+import com.tencent.mm.n.f;
+import com.tencent.mm.n.h;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcSharedPreferences.DynamicConfigStorage;
 
 public final class m
 {
   public static void run()
   {
     AppMethodBeat.i(19897);
-    int i = g.acL().getInt("EnableFlockMultiProcSPProb", 0);
-    bc.aCg();
-    int j = i.cf(c.getUin(), 101);
-    if ((b.fnF()) || ((i > 0) && (j >= 0) && (j <= i))) {}
+    int i = h.aqJ().getInt("EnableFlockMultiProcSPProb", 0);
+    bg.aVF();
+    int j = i.ch(c.getUin(), 101);
+    if ((CrashReportFactory.hasDebuger()) || ((i > 0) && (j >= 0) && (j <= i))) {}
     for (boolean bool = true;; bool = false)
     {
-      ax.a.setValue(ax.a.IyF, bool);
-      ae.i("MicroMsg.PostTaskUpdateMultiProcSPSwitchListener", "Update MMImgDecSwitch, userHash:%d, prob:%d, enabled: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
+      MultiProcSharedPreferences.DynamicConfigStorage.setValue(MultiProcSharedPreferences.DynamicConfigStorage.PREF_KEY_IS_ENABLE_MULTIPROC_SP, bool);
+      Log.i("MicroMsg.PostTaskUpdateMultiProcSPSwitchListener", "Update MMImgDecSwitch, userHash:%d, prob:%d, enabled: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
       AppMethodBeat.o(19897);
       return;
     }

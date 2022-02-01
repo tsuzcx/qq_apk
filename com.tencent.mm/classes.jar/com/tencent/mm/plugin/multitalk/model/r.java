@@ -1,166 +1,309 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.util.ArrayMap;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.multitalk.d.e;
-import com.tencent.pb.common.b.a.a.a.ap;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.u;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.bh.f;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.multitalk.c.a;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.ao;
+import com.tencent.pb.common.b.a.a.a.bb;
+import com.tencent.pb.common.b.a.a.a.bh;
+import com.tencent.pb.talkroom.sdk.d;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkScreenCastManager;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastEventHandler;", "()V", "canReceiveScreenCast", "", "dispatchToPauseEvent", "Lkotlin/Function1;", "", "", "dispatchToStartEvent", "dispatchToStopEvent", "dispatcher", "", "", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "close", "getUserState", "wxUserName", "onSwitchVideoScreenSharingRsp", "rsp", "onVideoGroupMemberChange", "memberList", "", "Lcom/tencent/pb/common/network/protocol/nano/ProtocolContacts$VideoGroupMember;", "pauseScreenCast", "registerUiCallback", "callback", "restartScreenCast", "resumeScreenCast", "startScreenCast", "stopScreenCast", "switchScreenCastState", "state", "Companion", "plugin-multitalk_release"})
 public final class r
-  implements h
 {
-  public static final r.a wrV;
-  private final ArrayMap<String, Integer> wpH;
-  private i wrP;
-  private final boolean wrQ;
-  private final b<String, d.z> wrR;
-  private final b<String, d.z> wrS;
-  private final b<String, d.z> wrT;
-  private final Map<Integer, b<String, d.z>> wrU;
-  
-  static
-  {
-    AppMethodBeat.i(190938);
-    wrV = new r.a((byte)0);
-    AppMethodBeat.o(190938);
-  }
+  private Map<String, Long> zNu;
   
   public r()
   {
-    AppMethodBeat.i(190937);
-    this.wpH = new ArrayMap();
-    e locale = e.wxn;
-    this.wrQ = e.duC();
-    this.wrR = ((b)new c(this));
-    this.wrS = ((b)new b(this));
-    this.wrT = ((b)new d(this));
-    this.wrU = d.a.ae.a(new d.o[] { u.R(Integer.valueOf(101), this.wrR), u.R(Integer.valueOf(102), this.wrS), u.R(Integer.valueOf(103), this.wrT) });
-    AppMethodBeat.o(190937);
+    AppMethodBeat.i(114536);
+    this.zNu = new ConcurrentHashMap();
+    AppMethodBeat.o(114536);
   }
   
-  public static void Ll(int paramInt)
+  final void a(String paramString, h.a parama)
   {
-    AppMethodBeat.i(190932);
-    if (z.dtK() != null) {
-      o.Lk(paramInt);
-    }
-    AppMethodBeat.o(190932);
-  }
-  
-  public final void Ld(int paramInt)
-  {
-    AppMethodBeat.i(190933);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MultiTalkScreenCastManager", String.valueOf(paramInt));
-    AppMethodBeat.o(190933);
-  }
-  
-  public final void a(i parami)
-  {
-    if (!this.wrQ) {
-      return;
-    }
-    this.wrP = parami;
-  }
-  
-  public final int asL(String paramString)
-  {
-    AppMethodBeat.i(190935);
-    p.h(paramString, "wxUserName");
-    paramString = (Integer)this.wpH.get(paramString);
-    if (paramString != null)
-    {
-      int i = paramString.intValue();
-      AppMethodBeat.o(190935);
-      return i;
-    }
-    AppMethodBeat.o(190935);
-    return 100;
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(190936);
-    this.wpH.clear();
-    this.wrP = null;
-    AppMethodBeat.o(190936);
-  }
-  
-  public final void eE(List<a.ap> paramList)
-  {
-    AppMethodBeat.i(190934);
-    p.h(paramList, "memberList");
-    if (!this.wrQ)
-    {
-      AppMethodBeat.o(190934);
-      return;
-    }
-    Object localObject1 = (Iterable)paramList;
-    paramList = (Collection)new ArrayList();
-    localObject1 = ((Iterable)localObject1).iterator();
+    AppMethodBeat.i(114537);
+    String str = com.tencent.mm.platformtools.z.a(parama.heO.KHn);
+    paramString = Base64.decode(paramString.getBytes(), 0);
+    Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive banner msg:" + str + " buffer len " + paramString.length);
+    a.bh localbh;
+    Object localObject1;
     Object localObject2;
-    while (((Iterator)localObject1).hasNext())
+    Object localObject3;
+    a.bb[] arrayOfbb;
+    int i;
+    int m;
+    int j;
+    label331:
+    int k;
+    int n;
+    label641:
+    for (;;)
     {
-      localObject2 = ((Iterator)localObject1).next();
-      if ((p.i(((a.ap)localObject2).duC, v.aAC()) ^ true)) {
-        paramList.add(localObject2);
-      }
-    }
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
-    {
-      localObject2 = (a.ap)paramList.next();
-      localObject1 = (b)this.wrU.get(Integer.valueOf(((a.ap)localObject2).MeU));
-      if (localObject1 != null)
+      try
       {
-        localObject2 = ((a.ap)localObject2).duC;
-        p.g(localObject2, "it.wxUserName");
-        ((b)localObject1).invoke(localObject2);
+        localbh = (a.bh)com.google.a.a.e.a(new a.bh(), paramString, paramString.length);
+        if (localbh == null)
+        {
+          Log.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "parse  bannerinfo  is null! xml:".concat(String.valueOf(str)));
+          AppMethodBeat.o(114537);
+          return;
+        }
+        if ((this.zNu.get(localbh.groupId) == null) || (((Long)this.zNu.get(localbh.groupId)).longValue() < localbh.RGN))
+        {
+          this.zNu.put(localbh.groupId, Long.valueOf(localbh.RGN));
+          parama = parama.heO;
+          paramString = com.tencent.mm.platformtools.z.a(parama.KHl);
+          parama = com.tencent.mm.platformtools.z.a(parama.KHm);
+          localObject1 = (String)g.aAh().azQ().get(2, null);
+          if (localObject1 == null)
+          {
+            Log.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "userName is null");
+            AppMethodBeat.o(114537);
+          }
+        }
+        else
+        {
+          Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "msg for this groupId : " + localbh.groupId + " is early than last msg, so we do not process,now return.");
+          AppMethodBeat.o(114537);
+          return;
+        }
+        if (!((String)localObject1).equals(paramString)) {
+          break label1413;
+        }
+        paramString = parama;
+        localObject2 = localbh.RGL;
+        ac.eom().eM(paramString, 1);
+        if (localbh.RGK != 1) {
+          break;
+        }
+        Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "get WxVoiceBannerBegin,show bar!");
+        localObject3 = localbh.RGM;
+        arrayOfbb = localbh.REK;
+        i = 0;
+        parama = "";
+        m = arrayOfbb.length;
+        j = 0;
+        if (j < m)
+        {
+          a.bb localbb = arrayOfbb[j];
+          parama = parama + localbb.dLN + ",";
+          k = i;
+          if (localbb.dLN == null) {
+            break label1401;
+          }
+          k = i;
+          if (!localbb.dLN.equals(localObject1)) {
+            break label1401;
+          }
+          Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "in voiceGroupMem!");
+          k = 1;
+          break label1401;
+        }
+        Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "memberUserNames :".concat(String.valueOf(parama)));
+        m = 0;
+        n = localObject3.length;
+        j = 0;
+        k = m;
+        if (j < n)
+        {
+          parama = localObject3[j];
+          if ((parama != null) && (parama.equals(localObject1)))
+          {
+            Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "isInvitedNotFriend true! In invitelist and with talk creator is not friend!");
+            k = 1;
+          }
+        }
+        else
+        {
+          if (i != 0) {
+            break label609;
+          }
+          ac.eop().aGf(paramString);
+          ac.eop().enT().remove(paramString);
+          if (!((String)localObject1).equals(localObject2)) {
+            break label641;
+          }
+          ac.eom().d(paramString, (String)localObject2, false, false);
+          ac.eop().a(paramString, localbh);
+          ac.eol().zMd.dr(Util.nullAsNil((Integer)g.aAh().hqB.get(1)), com.tencent.mm.model.z.aTY());
+          AppMethodBeat.o(114537);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "parse  bannerinfo  failure! xml:".concat(String.valueOf(str)), new Object[] { paramString.getMessage() });
+        AppMethodBeat.o(114537);
+        return;
+      }
+      j += 1;
+      continue;
+      label609:
+      if ((!ac.eop().enT().contains(paramString)) && (k != 0))
+      {
+        ac.eop().enT().add(paramString);
+        continue;
+        if ((i != 0) && (k == 0)) {
+          ac.eom().d(paramString, (String)localObject2, false, false);
+        } else if ((i != 0) && (k != 0)) {
+          ac.eom().d(paramString, (String)localObject2, true, true);
+        } else {
+          ac.eom().d(paramString, (String)localObject2, true, false);
+        }
       }
     }
-    AppMethodBeat.o(190934);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
-  static final class b
-    extends q
-    implements b<String, d.z>
-  {
-    b(r paramr)
+    if (localbh.RGK == 2)
     {
-      super();
+      Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "WxVoiceBannerMemChange!2,member size : " + localbh.REK.length);
+      localObject2 = localbh.RGM;
+      localObject3 = localbh.REK;
+      i = 0;
+      parama = "";
+      m = localObject3.length;
+      j = 0;
+      label764:
+      if (j < m)
+      {
+        arrayOfbb = localObject3[j];
+        parama = parama + arrayOfbb.dLN + ",";
+        k = i;
+        if (arrayOfbb.dLN != null)
+        {
+          k = i;
+          if (arrayOfbb.dLN.equals(localObject1))
+          {
+            Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "in voiceGroupMem!");
+            k = 1;
+          }
+        }
+      }
+      else
+      {
+        Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "memberUserNames :".concat(String.valueOf(parama)));
+        m = 0;
+        n = localObject2.length;
+        j = 0;
+        k = m;
+        if (j < n)
+        {
+          parama = localObject2[j];
+          if ((parama == null) || (!parama.equals(localObject1))) {
+            break label1428;
+          }
+          Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "isInvitedNotFriend true! In invitelist and with talk creator is not friend!");
+          k = 1;
+        }
+        if (i == 0)
+        {
+          if ((!ac.eop().aGg(paramString)) && (ac.eop().enT().contains(paramString)) && (ac.eop().iL(paramString, (String)localObject1)))
+          {
+            ac.eom();
+            q.aGd(paramString);
+          }
+          ac.eop().aGf(paramString);
+          ac.eop().enT().remove(paramString);
+        }
+        for (;;)
+        {
+          ac.eol().zMd.dr(Util.nullAsNil((Integer)g.aAh().hqB.get(1)), com.tencent.mm.model.z.aTY());
+          Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "WxVoiceBannerMemChange setWxUinAndUsrName:");
+          parama = ac.eop();
+          Log.i("MicroMsg.MultiTalkRoomListMsg", "updateBanner  wxGroupId = %s", new Object[] { paramString });
+          localObject1 = ac.eoi().aFI(paramString);
+          if (localObject1 == null) {
+            break label1176;
+          }
+          if (((f)localObject1).field_roomId == localbh.GXO) {
+            break;
+          }
+          Log.i("MicroMsg.MultiTalkRoomListMsg", "roomid has changed! now return!multiTalkInfo.field_roomId:" + ((f)localObject1).field_roomId + ", bannerinfo.roomid:" + localbh.GXO);
+          AppMethodBeat.o(114537);
+          return;
+          if ((!ac.eop().enT().contains(paramString)) && (k != 0)) {
+            ac.eop().enT().add(paramString);
+          }
+        }
+        if (!s.d(paramString, localbh))
+        {
+          Log.e("MicroMsg.MultiTalkRoomListMsg", "update multiTalkMember failure!");
+          AppMethodBeat.o(114537);
+          return;
+        }
+        parama.aGh(paramString);
+        AppMethodBeat.o(114537);
+        return;
+        Log.i("MicroMsg.MultiTalkRoomListMsg", "change,still show banner.");
+        parama.a(paramString, localbh);
+        AppMethodBeat.o(114537);
+      }
     }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
-  static final class c
-    extends q
-    implements b<String, d.z>
-  {
-    c(r paramr)
+    else
     {
-      super();
+      label871:
+      if (localbh.RGK == 0)
+      {
+        Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "get WxVoiceBannerEnd,dismiss bar!");
+        if ((!ac.eop().aGg(paramString)) && (ac.eop().enT().contains(paramString)) && (ac.eop().iL(paramString, (String)localObject1)))
+        {
+          ac.eom();
+          q.aGd(paramString);
+        }
+        ac.eom().aGc(paramString);
+        ac.eom().aFX(paramString);
+        ac.eop().aFO(paramString);
+        ac.eop().aGf(paramString);
+        ac.eop().enT().remove(paramString);
+        AppMethodBeat.o(114537);
+        return;
+      }
+      label1176:
+      if (localbh.RGK == 3)
+      {
+        paramString = localbh.REK;
+        j = paramString.length;
+        i = 0;
+      }
     }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
-  static final class d
-    extends q
-    implements b<String, d.z>
-  {
-    d(r paramr)
+    for (;;)
     {
-      super();
+      if (i < j)
+      {
+        parama = paramString[i];
+        if ((parama.dLN != null) && (parama.dLN.equals(localObject1))) {
+          Log.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "wxVoiceBannerWaitTimeOut in voiceGroupMem!");
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(114537);
+        return;
+        Log.e("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "get bannerinfo voicestatus is invalidate!: voicestatus:" + localbh.RGK);
+        AppMethodBeat.o(114537);
+        return;
+        label1401:
+        j += 1;
+        i = k;
+        break label331;
+        label1413:
+        break;
+        j += 1;
+        i = k;
+        break label764;
+        label1428:
+        j += 1;
+        break label871;
+      }
+      i += 1;
     }
   }
 }

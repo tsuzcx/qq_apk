@@ -5,36 +5,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private b ELp;
-  WebViewSmileyPanel.a ELq;
-  int nnB;
-  int nnC;
-  Context nnh;
-  boolean nnx = false;
+  private b JBg;
+  WebViewSmileyPanel.a JBh;
+  Context owO;
+  boolean oxd = false;
+  int oxh;
+  int oxi;
   
-  public final a eZA()
+  public final a giG()
   {
     AppMethodBeat.i(82355);
-    if (this.ELp == null)
+    if (this.JBg == null)
     {
-      this.ELp = new b();
-      this.ELp.nnh = this.nnh;
-      this.ELp.setPanelManager(this);
+      this.JBg = new b();
+      this.JBg.owO = this.owO;
+      this.JBg.setPanelManager(this);
     }
-    b localb = this.ELp;
+    b localb = this.JBg;
     AppMethodBeat.o(82355);
     return localb;
   }
   
   public final void onDestroy()
   {
-    this.ELp = null;
-    this.nnh = null;
+    this.JBg = null;
+    this.owO = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

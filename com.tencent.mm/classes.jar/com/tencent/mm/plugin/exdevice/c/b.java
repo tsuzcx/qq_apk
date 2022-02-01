@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class b
@@ -11,28 +11,28 @@ public final class b
   {
     super(paramLong, paramInt1, paramInt2, paramArrayOfByte);
     AppMethodBeat.i(23147);
-    ae.i("MicroMsg.exdevice.ExDeviceCmdAuth", "ExDeviceCmdAuth deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
+    Log.i("MicroMsg.exdevice.ExDeviceCmdAuth", "ExDeviceCmdAuth deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
     AppMethodBeat.o(23147);
   }
   
   public final void a(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23148);
-    ae.i("MicroMsg.exdevice.ExDeviceCmdAuth", "------setAuthResponse------ret = " + paramInt + "errMsg = " + paramString);
+    Log.i("MicroMsg.exdevice.ExDeviceCmdAuth", "------setAuthResponse------ret = " + paramInt + "errMsg = " + paramString);
     com.tencent.mm.plugin.exdevice.f.b localb = new com.tencent.mm.plugin.exdevice.f.b();
-    localb.qlh = aL(paramInt, paramString);
-    localb.qkO = com.tencent.mm.bw.b.cm(paramArrayOfByte);
-    this.qgD = localb;
-    this.qgB = 20001;
+    localb.rCc = aQ(paramInt, paramString);
+    localb.rBJ = com.tencent.mm.bw.b.cD(paramArrayOfByte);
+    this.rxz = localb;
+    this.rxx = 20001;
     AppMethodBeat.o(23148);
   }
   
-  protected final com.tencent.mm.bw.a bd(byte[] paramArrayOfByte)
+  protected final com.tencent.mm.bw.a bu(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23149);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdAuth", "paras body is null");
+      Log.e("MicroMsg.exdevice.ExDeviceCmdAuth", "paras body is null");
       AppMethodBeat.o(23149);
       return null;
     }
@@ -40,15 +40,15 @@ public final class b
     try
     {
       locala.parseFrom(paramArrayOfByte);
-      this.qgE = locala;
-      ae.i("MicroMsg.exdevice.ExDeviceCmdAuth", "------AuthRequest------ ClientVersion = " + locala.qkH + " DeviceName = " + locala.nIN + " Language = " + locala.qkN + " TimeZone = " + locala.qkM);
+      this.rxA = locala;
+      Log.i("MicroMsg.exdevice.ExDeviceCmdAuth", "------AuthRequest------ ClientVersion = " + locala.rBC + " DeviceName = " + locala.oTI + " Language = " + locala.rBI + " TimeZone = " + locala.rBH);
       AppMethodBeat.o(23149);
       return locala;
     }
     catch (IOException paramArrayOfByte)
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdAuth", "AuthRequest.parseFrom Failed!!! %s", new Object[] { paramArrayOfByte.getMessage() });
-      ae.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdAuth", paramArrayOfByte, "", new Object[0]);
+      Log.e("MicroMsg.exdevice.ExDeviceCmdAuth", "AuthRequest.parseFrom Failed!!! %s", new Object[] { paramArrayOfByte.getMessage() });
+      Log.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdAuth", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(23149);
     }
     return null;
@@ -56,7 +56,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -16,27 +16,27 @@ import com.tencent.mm.ui.widget.MMEditText;
 
 public class LuckyMoneyTextInputView
   extends LinearLayout
-  implements c
+  implements d
 {
-  private TextView lHk;
-  LinearLayout vNi;
-  ImageView vNj;
-  BaseEmojiView vNk;
-  private View.OnClickListener vNl;
-  private g vvK;
-  private MMEditText vxh;
+  private TextView mPa;
+  private h yPY;
+  private MMEditText yRw;
+  LinearLayout ziF;
+  ImageView ziG;
+  BaseEmojiView ziH;
+  private View.OnClickListener ziI;
   
   public LuckyMoneyTextInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65933);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131494660, this, true);
-    this.vxh = ((MMEditText)paramContext.findViewById(2131301944));
-    this.lHk = ((TextView)paramContext.findViewById(2131301945));
-    this.vNi = ((LinearLayout)paramContext.findViewById(2131301794));
-    this.vNj = ((ImageView)paramContext.findViewById(2131301795));
-    this.vNk = ((BaseEmojiView)paramContext.findViewById(2131301793));
-    this.vxh.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    paramContext = LayoutInflater.from(paramContext).inflate(2131495385, this, true);
+    this.yRw = ((MMEditText)paramContext.findViewById(2131304269));
+    this.mPa = ((TextView)paramContext.findViewById(2131304270));
+    this.ziF = ((LinearLayout)paramContext.findViewById(2131304099));
+    this.ziG = ((ImageView)paramContext.findViewById(2131304100));
+    this.ziH = ((BaseEmojiView)paramContext.findViewById(2131304098));
+    this.yRw.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -45,32 +45,32 @@ public class LuckyMoneyTextInputView
         {
           paramAnonymousView = LuckyMoneyTextInputView.a(LuckyMoneyTextInputView.this);
           LuckyMoneyTextInputView.this.getInputViewId();
-          paramAnonymousView.dkQ();
+          paramAnonymousView.eeI();
         }
         AppMethodBeat.o(65931);
       }
     });
-    this.vNi.setOnClickListener(new LuckyMoneyTextInputView.2(this));
-    this.vNi.setVisibility(8);
+    this.ziF.setOnClickListener(new LuckyMoneyTextInputView.2(this));
+    this.ziF.setVisibility(8);
     AppMethodBeat.o(65933);
   }
   
-  public final void B(EmojiInfo paramEmojiInfo)
+  public final void A(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(65938);
-    this.vNi.setTag("delete");
-    this.vNj.setVisibility(8);
-    this.vNk.setVisibility(0);
-    this.vNk.setEmojiInfo(paramEmojiInfo);
+    this.ziF.setTag("delete");
+    this.ziG.setVisibility(8);
+    this.ziH.setVisibility(0);
+    this.ziH.setEmojiInfo(paramEmojiInfo);
     AppMethodBeat.o(65938);
   }
   
-  public final String Jy(int paramInt)
+  public final String PA(int paramInt)
   {
     return null;
   }
   
-  public final int dkP()
+  public final int eeH()
   {
     return 0;
   }
@@ -78,7 +78,7 @@ public class LuckyMoneyTextInputView
   public String getInput()
   {
     AppMethodBeat.i(65934);
-    String str = this.vxh.getText().toString();
+    String str = this.yRw.getText().toString();
     AppMethodBeat.o(65934);
     return str;
   }
@@ -91,52 +91,52 @@ public class LuckyMoneyTextInputView
     return i;
   }
   
-  public final void ok(boolean paramBoolean)
+  public final void onError() {}
+  
+  public final void qS(boolean paramBoolean)
   {
     AppMethodBeat.i(65937);
     if (paramBoolean)
     {
-      this.vNi.setVisibility(8);
+      this.ziF.setVisibility(8);
       AppMethodBeat.o(65937);
       return;
     }
-    this.vNi.setVisibility(0);
-    this.vNj.setVisibility(0);
-    this.vNk.setVisibility(8);
+    this.ziF.setVisibility(0);
+    this.ziG.setVisibility(0);
+    this.ziH.setVisibility(8);
     AppMethodBeat.o(65937);
   }
-  
-  public final void onError() {}
   
   public final void restore() {}
   
   public void setHintText(String paramString)
   {
     AppMethodBeat.i(65935);
-    this.vxh.setHint(paramString);
+    this.yRw.setHint(paramString);
     AppMethodBeat.o(65935);
   }
   
-  public void setOnInputValidChangerListener(g paramg)
+  public void setOnInputValidChangerListener(h paramh)
   {
-    this.vvK = paramg;
+    this.yPY = paramh;
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(65936);
-    this.lHk.setText(paramString);
+    this.mPa.setText(paramString);
     AppMethodBeat.o(65936);
   }
   
   public void setmOnEmojiSelectClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.vNl = paramOnClickListener;
+    this.ziI = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyTextInputView
  * JD-Core Version:    0.7.0.1
  */

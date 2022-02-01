@@ -1,25 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.b.f;
+import com.tencent.mm.plugin.appbrand.page.w;
 import org.json.JSONObject;
 
 public final class i
-  extends a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.d>
 {
-  private static final int CTRL_INDEX = 258;
-  private static final String NAME = "updateMultiPickerView";
-  
-  public final void b(e parame, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(137600);
-    new i.1(this).a(this, parame, paramJSONObject, paramInt, this.lhh);
-    AppMethodBeat.o(137600);
-  }
+  public static final int CTRL_INDEX = 15;
+  public static final String NAME = "navigateBack";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.i
  * JD-Core Version:    0.7.0.1
  */

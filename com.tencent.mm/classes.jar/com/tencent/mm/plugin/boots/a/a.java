@@ -2,45 +2,45 @@ package com.tencent.mm.plugin.boots.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.e;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
   extends e
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(123715);
-    c.a locala = new c.a();
-    locala.IBL = new Field[4];
-    locala.columns = new String[5];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[4];
+    localMAutoDBInfo.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.IBN.put("key", "INTEGER PRIMARY KEY  COLLATE NOCASE ");
+    localMAutoDBInfo.columns[0] = "key";
+    localMAutoDBInfo.colsMap.put("key", "INTEGER PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(" key INTEGER PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(", ");
-    locala.IBM = "key";
-    locala.columns[1] = "mau";
-    locala.IBN.put("mau", "INTEGER");
+    localMAutoDBInfo.primaryKey = "key";
+    localMAutoDBInfo.columns[1] = "mau";
+    localMAutoDBInfo.colsMap.put("mau", "INTEGER");
     localStringBuilder.append(" mau INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "dau";
-    locala.IBN.put("dau", "INTEGER");
+    localMAutoDBInfo.columns[2] = "dau";
+    localMAutoDBInfo.colsMap.put("dau", "INTEGER");
     localStringBuilder.append(" dau INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "useTime";
-    locala.IBN.put("useTime", "LONG");
+    localMAutoDBInfo.columns[3] = "useTime";
+    localMAutoDBInfo.colsMap.put("useTime", "LONG");
     localStringBuilder.append(" useTime LONG");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[4] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(123715);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

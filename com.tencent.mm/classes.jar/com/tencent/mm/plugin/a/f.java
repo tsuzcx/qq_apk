@@ -9,20 +9,20 @@ public abstract interface f
   
   public abstract boolean a(int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2);
   
-  public abstract int aRn();
-  
-  public abstract int aRo();
-  
   @TargetApi(5)
   public abstract boolean b(int paramInt, PInt paramPInt1, PInt paramPInt2);
   
-  public abstract int dy(int paramInt1, int paramInt2);
+  public abstract int blR();
+  
+  public abstract int blS();
+  
+  public abstract int dG(int paramInt1, int paramInt2);
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package android.support.v7.widget;
 
 import android.content.Context;
-import android.support.v4.view.t;
 import android.support.v4.view.u;
+import android.support.v4.view.v;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,22 +15,22 @@ import android.view.accessibility.AccessibilityManager;
 final class bc
   implements View.OnAttachStateChangeListener, View.OnHoverListener, View.OnLongClickListener
 {
-  private static bc azH;
-  private static bc azI;
-  private final CharSequence aeD;
-  private final View azA;
-  private final int azB;
-  private final Runnable azC = new Runnable()
+  private static bc azF;
+  private static bc azG;
+  private final CharSequence aeQ;
+  private final Runnable azA = new Runnable()
   {
     public final void run()
     {
-      bc.this.aF(false);
+      bc.this.aD(false);
     }
   };
-  private int azD;
-  private int azE;
-  private bd azF;
-  private boolean azG;
+  private int azB;
+  private int azC;
+  private bd azD;
+  private boolean azE;
+  private final View azy;
+  private final int azz;
   private final Runnable mHideRunnable = new Runnable()
   {
     public final void run()
@@ -41,34 +41,34 @@ final class bc
   
   private bc(View paramView, CharSequence paramCharSequence)
   {
-    this.azA = paramView;
-    this.aeD = paramCharSequence;
-    this.azB = u.b(ViewConfiguration.get(this.azA.getContext()));
-    nh();
-    this.azA.setOnLongClickListener(this);
-    this.azA.setOnHoverListener(this);
+    this.azy = paramView;
+    this.aeQ = paramCharSequence;
+    this.azz = v.b(ViewConfiguration.get(this.azy.getContext()));
+    nj();
+    this.azy.setOnLongClickListener(this);
+    this.azy.setOnHoverListener(this);
   }
   
   private static void a(bc parambc)
   {
-    if (azH != null) {
-      azH.ng();
+    if (azF != null) {
+      azF.ni();
     }
-    azH = parambc;
+    azF = parambc;
     if (parambc != null) {
-      azH.nf();
+      azF.nh();
     }
   }
   
   public static void a(View paramView, CharSequence paramCharSequence)
   {
-    if ((azH != null) && (azH.azA == paramView)) {
+    if ((azF != null) && (azF.azy == paramView)) {
       a(null);
     }
     if (TextUtils.isEmpty(paramCharSequence))
     {
-      if ((azI != null) && (azI.azA == paramView)) {
-        azI.hide();
+      if ((azG != null) && (azG.azy == paramView)) {
+        azG.hide();
       }
       paramView.setOnLongClickListener(null);
       paramView.setLongClickable(false);
@@ -78,46 +78,46 @@ final class bc
     new bc(paramView, paramCharSequence);
   }
   
-  private void nf()
-  {
-    this.azA.postDelayed(this.azC, ViewConfiguration.getLongPressTimeout());
-  }
-  
-  private void ng()
-  {
-    this.azA.removeCallbacks(this.azC);
-  }
-  
   private void nh()
   {
-    this.azD = 2147483647;
-    this.azE = 2147483647;
+    this.azy.postDelayed(this.azA, ViewConfiguration.getLongPressTimeout());
   }
   
-  final void aF(boolean paramBoolean)
+  private void ni()
   {
-    if (!t.aC(this.azA)) {
+    this.azy.removeCallbacks(this.azA);
+  }
+  
+  private void nj()
+  {
+    this.azB = 2147483647;
+    this.azC = 2147483647;
+  }
+  
+  final void aD(boolean paramBoolean)
+  {
+    if (!u.aD(this.azy)) {
       return;
     }
     a(null);
-    if (azI != null) {
-      azI.hide();
+    if (azG != null) {
+      azG.hide();
     }
-    azI = this;
-    this.azG = paramBoolean;
-    this.azF = new bd(this.azA.getContext());
-    this.azF.a(this.azA, this.azD, this.azE, this.azG, this.aeD);
-    this.azA.addOnAttachStateChangeListener(this);
+    azG = this;
+    this.azE = paramBoolean;
+    this.azD = new bd(this.azy.getContext());
+    this.azD.a(this.azy, this.azB, this.azC, this.azE, this.aeQ);
+    this.azy.addOnAttachStateChangeListener(this);
     long l;
-    if (this.azG) {
+    if (this.azE) {
       l = 2500L;
     }
     for (;;)
     {
-      this.azA.removeCallbacks(this.mHideRunnable);
-      this.azA.postDelayed(this.mHideRunnable, l);
+      this.azy.removeCallbacks(this.mHideRunnable);
+      this.azy.postDelayed(this.mHideRunnable, l);
       return;
-      if ((t.ao(this.azA) & 0x1) == 1) {
+      if ((u.ao(this.azy) & 0x1) == 1) {
         l = 3000L - ViewConfiguration.getLongPressTimeout();
       } else {
         l = 15000L - ViewConfiguration.getLongPressTimeout();
@@ -127,32 +127,32 @@ final class bc
   
   final void hide()
   {
-    if (azI == this)
+    if (azG == this)
     {
-      azI = null;
-      if (this.azF != null)
+      azG = null;
+      if (this.azD != null)
       {
-        this.azF.hide();
-        this.azF = null;
-        nh();
-        this.azA.removeOnAttachStateChangeListener(this);
+        this.azD.hide();
+        this.azD = null;
+        nj();
+        this.azy.removeOnAttachStateChangeListener(this);
       }
     }
-    if (azH == this) {
+    if (azF == this) {
       a(null);
     }
-    this.azA.removeCallbacks(this.mHideRunnable);
+    this.azy.removeCallbacks(this.mHideRunnable);
   }
   
   public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.azF != null) && (this.azG)) {}
+    if ((this.azD != null) && (this.azE)) {}
     do
     {
       do
       {
         return false;
-        paramView = (AccessibilityManager)this.azA.getContext().getSystemService("accessibility");
+        paramView = (AccessibilityManager)this.azy.getContext().getSystemService("accessibility");
       } while ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled()));
       switch (paramMotionEvent.getAction())
       {
@@ -161,27 +161,27 @@ final class bc
       default: 
         return false;
       }
-    } while ((!this.azA.isEnabled()) || (this.azF != null));
+    } while ((!this.azy.isEnabled()) || (this.azD != null));
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
-    if ((Math.abs(i - this.azD) <= this.azB) && (Math.abs(j - this.azE) <= this.azB)) {}
+    if ((Math.abs(i - this.azB) <= this.azz) && (Math.abs(j - this.azC) <= this.azz)) {}
     for (i = 0; i != 0; i = 1)
     {
       a(this);
       return false;
-      this.azD = i;
-      this.azE = j;
+      this.azB = i;
+      this.azC = j;
     }
-    nh();
+    nj();
     hide();
     return false;
   }
   
   public final boolean onLongClick(View paramView)
   {
-    this.azD = (paramView.getWidth() / 2);
-    this.azE = (paramView.getHeight() / 2);
-    aF(true);
+    this.azB = (paramView.getWidth() / 2);
+    this.azC = (paramView.getHeight() / 2);
+    aD(true);
     return true;
   }
   

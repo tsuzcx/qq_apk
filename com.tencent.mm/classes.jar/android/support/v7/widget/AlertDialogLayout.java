@@ -3,7 +3,7 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.d;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -60,7 +60,7 @@ public class AlertDialogLayout
             if (i < 0) {
               paramInt2 = 0x800007 & i2;
             }
-            switch (d.getAbsoluteGravity(paramInt2, t.Y(this)) & 0x7)
+            switch (d.getAbsoluteGravity(paramInt2, u.Z(this)) & 0x7)
             {
             default: 
               paramInt2 = localLayoutParams.leftMargin + j;
@@ -73,7 +73,7 @@ public class AlertDialogLayout
     for (;;)
     {
       i = paramInt1;
-      if (bX(paramInt4)) {
+      if (bY(paramInt4)) {
         i = paramInt1 + paramInt3;
       }
       paramInt1 = i + localLayoutParams.topMargin;
@@ -111,7 +111,7 @@ public class AlertDialogLayout
         break label733;
       }
       j = ((View)localObject3).getId();
-      if (j == 2131305990) {
+      if (j == 2131309297) {
         localObject4 = localObject3;
       }
     }
@@ -121,13 +121,13 @@ public class AlertDialogLayout
     {
       i += 1;
       break;
-      if (j == 2131297633)
+      if (j == 2131297895)
       {
         localObject2 = localObject3;
       }
       else
       {
-        if ((j == 2131298742) || (j == 2131298901)) {
+        if ((j == 2131299184) || (j == 2131299379)) {
           if (localObject1 == null) {}
         }
         for (i = 0;; i = 0)
@@ -159,7 +159,7 @@ public class AlertDialogLayout
           {
             ((View)localObject2).measure(paramInt1, 0);
             localObject3 = localObject2;
-            i = t.af((View)localObject3);
+            i = u.ag((View)localObject3);
             if (i > 0)
             {
               m = ((View)localObject2).getMeasuredHeight();
@@ -281,7 +281,7 @@ public class AlertDialogLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.AlertDialogLayout
  * JD-Core Version:    0.7.0.1
  */

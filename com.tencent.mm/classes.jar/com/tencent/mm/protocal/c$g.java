@@ -2,9 +2,9 @@ package com.tencent.mm.protocal;
 
 public abstract class c$g
 {
-  protected String FFx = "";
-  protected int FFy = -1;
-  protected boolean FFz = false;
+  protected String KyD = "";
+  protected int KyE = -1;
+  protected boolean KyF = false;
   protected String NAME = "noName";
   
   public c$g() {}
@@ -12,29 +12,29 @@ public abstract class c$g
   public c$g(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     this.NAME = paramString1;
-    this.FFx = paramString2;
-    this.FFy = paramInt;
-    this.FFz = paramBoolean;
-  }
-  
-  public final String fjR()
-  {
-    return this.FFx;
-  }
-  
-  public final int fjS()
-  {
-    return this.FFy;
-  }
-  
-  public final boolean fjT()
-  {
-    return this.FFz;
+    this.KyD = paramString2;
+    this.KyE = paramInt;
+    this.KyF = paramBoolean;
   }
   
   public final String getName()
   {
     return this.NAME;
+  }
+  
+  public final String gts()
+  {
+    return this.KyD;
+  }
+  
+  public final int gtt()
+  {
+    return this.KyE;
+  }
+  
+  public final boolean gtu()
+  {
+    return this.KyF;
   }
 }
 

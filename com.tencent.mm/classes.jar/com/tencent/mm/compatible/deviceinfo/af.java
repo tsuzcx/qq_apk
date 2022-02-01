@@ -1,35 +1,35 @@
 package com.tencent.mm.compatible.deviceinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Method;
 
 public final class af
 {
-  private static Class<?> aWK;
-  private static Method geZ;
-  private static Method gfa;
+  private static Class<?> aWC;
+  private static Method gKG;
+  private static Method gKH;
   
   static
   {
     AppMethodBeat.i(155827);
-    aWK = null;
-    geZ = null;
-    gfa = null;
+    aWC = null;
+    gKG = null;
+    gKH = null;
     try
     {
       Class localClass = Class.forName("android.os.SystemProperties");
-      aWK = localClass;
-      geZ = localClass.getDeclaredMethod("get", new Class[] { String.class });
-      gfa = aWK.getDeclaredMethod("getInt", new Class[] { String.class, Integer.TYPE });
-      geZ.setAccessible(true);
-      gfa.setAccessible(true);
+      aWC = localClass;
+      gKG = localClass.getDeclaredMethod("get", new Class[] { String.class });
+      gKH = aWC.getDeclaredMethod("getInt", new Class[] { String.class, Integer.TYPE });
+      gKG.setAccessible(true);
+      gKH.setAccessible(true);
       AppMethodBeat.o(155827);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.SystemProperties", localException, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.SystemProperties", localException, "", new Object[0]);
       AppMethodBeat.o(155827);
     }
   }
@@ -39,13 +39,13 @@ public final class af
     AppMethodBeat.i(155826);
     try
     {
-      paramString = (String)geZ.invoke(null, new Object[] { paramString });
+      paramString = (String)gKG.invoke(null, new Object[] { paramString });
       AppMethodBeat.o(155826);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("MicroMsg.SystemProperties", paramString, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.SystemProperties", paramString, "", new Object[0]);
       AppMethodBeat.o(155826);
     }
     return null;

@@ -11,8 +11,12 @@ public class TPNativePlayerInitConfig
   public static final int BOOL_ENABLE_AUDIO_PASSTHROUGH = 210;
   public static final int BOOL_ENABLE_AUDIO_RENDERER_LATENCY_COMPENSATION = 401;
   public static final int BOOL_ENABLE_AV_SYNC = 400;
+  public static final int BOOL_ENABLE_COLOR_MANAGEMENT = 407;
+  public static final int BOOL_ENABLE_DROPFRAME_BY_REFRESHRATE = 406;
   public static final int BOOL_ENABLE_FORCE_FFMPEG_DEMUXER = 114;
   public static final int BOOL_ENABLE_HEVC_OPTIMIZATION = 115;
+  public static final int BOOL_ENABLE_MEDIA_CODEC_REUSE = 213;
+  public static final int BOOL_ENABLE_MEDIA_CODEC_SET_OPERATE_RATE = 212;
   public static final int BOOL_ENABLE_MULTI_RECEIVE_FRAMES = 209;
   public static final int BOOL_ENABLE_NATIVE_MEDIA_CODEC = 204;
   public static final int BOOL_ENABLE_SET_OUTPUT_SURFACE_API = 205;
@@ -20,8 +24,10 @@ public class TPNativePlayerInitConfig
   public static final int BOOL_HLS_HTTP_KEEP_ALIVE = 110;
   public static final int BOOL_HLS_SWITCH_BY_SEGMENT = 111;
   public static final int BOOL_KEEP_ORIGINAL_PTS = 112;
+  public static final int BOOL_RELEASE_MEDIA_CODEC_WHEN_SET_SURFACE = 211;
   public static final int BOOL_RESET_DECODER_ON_PARAMETER_CHANGE = 201;
   public static final int BOOL_START_PLAYING_TIME_ACCURATE_SEEK = 101;
+  public static final int BOOL_VIDEO_KEEP_MEDIA_CODEC_PTS = 215;
   public static final int FLOAT_REDUCE_LATENCY_SPEED_UP_RATE = 120;
   public static final int FLOAT_VIDEO_DROP_FRAME_DETECT_MIN_RATE = 208;
   public static final int INT_AUDIO_RENDERER_TYPE = 404;
@@ -37,10 +43,12 @@ public class TPNativePlayerInitConfig
   public static final int INT_TCP_RETRY_COUNT = 109;
   public static final int INT_VIDEO_RENDERER_TYPE = 405;
   public static final int INT_WIDTH = 311;
+  public static final int LONG_AUDIO_NON_BLUETOOTH_MAX_LIMIT_LATENCY_MS = 409;
   public static final int LONG_BUFFERING_TIMEOUT_MS = 107;
   public static final int LONG_BUFFER_PACKET_MAX_TOTAL_DURATION_MS = 117;
   public static final int LONG_BUFFER_PACKET_MIN_TOTAL_DURATION_MS = 102;
   public static final int LONG_CHANNEL_LAYOUT = 301;
+  public static final int LONG_MAX_ANALYZE_DURATION_MS = 121;
   public static final int LONG_MAX_BUFFERING_TIME_MS = 106;
   public static final int LONG_MIN_BUFFERING_PACKET_DURATION_MS = 104;
   public static final int LONG_MIN_BUFFERING_TIME_MS = 105;
@@ -53,6 +61,7 @@ public class TPNativePlayerInitConfig
   public static final int QUEUE_INT_VIDEO_DECODER_TYPE = 203;
   public static final int QUEUE_STRING_HLS_TAG_CALLBACK = 113;
   private HashMap<Integer, Boolean> mBoolMap;
+  private HashMap<Integer, Float> mFloatMap;
   private HashMap<Integer, Integer> mIntMap;
   private HashMap<Integer, Long> mLongMap;
   private HashMap<Integer, Vector<Integer>> mQueueIntMap;
@@ -60,18 +69,19 @@ public class TPNativePlayerInitConfig
   
   public TPNativePlayerInitConfig()
   {
-    AppMethodBeat.i(197647);
+    AppMethodBeat.i(189985);
     this.mIntMap = new HashMap();
     this.mLongMap = new HashMap();
+    this.mFloatMap = new HashMap();
     this.mBoolMap = new HashMap();
     this.mQueueIntMap = new HashMap();
     this.mQueueStringMap = new HashMap();
-    AppMethodBeat.o(197647);
+    AppMethodBeat.o(189985);
   }
   
   public void addQueueInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(197648);
+    AppMethodBeat.i(189986);
     Vector localVector2 = (Vector)this.mQueueIntMap.get(Integer.valueOf(paramInt1));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -80,12 +90,12 @@ public class TPNativePlayerInitConfig
       this.mQueueIntMap.put(Integer.valueOf(paramInt1), localVector1);
     }
     localVector1.add(Integer.valueOf(paramInt2));
-    AppMethodBeat.o(197648);
+    AppMethodBeat.o(189986);
   }
   
   public void addQueueString(int paramInt, String paramString)
   {
-    AppMethodBeat.i(197649);
+    AppMethodBeat.i(189987);
     Vector localVector2 = (Vector)this.mQueueStringMap.get(Integer.valueOf(paramInt));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -94,12 +104,17 @@ public class TPNativePlayerInitConfig
       this.mQueueStringMap.put(Integer.valueOf(paramInt), localVector1);
     }
     localVector1.add(paramString);
-    AppMethodBeat.o(197649);
+    AppMethodBeat.o(189987);
   }
   
   public HashMap<Integer, Boolean> getBoolMap()
   {
     return this.mBoolMap;
+  }
+  
+  public HashMap<Integer, Float> getFloatMap()
+  {
+    return this.mFloatMap;
   }
   
   public HashMap<Integer, Integer> getIntMap()
@@ -124,28 +139,35 @@ public class TPNativePlayerInitConfig
   
   public void setBool(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(197652);
+    AppMethodBeat.i(189991);
     this.mBoolMap.put(Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(197652);
+    AppMethodBeat.o(189991);
+  }
+  
+  public void setFloat(int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(189990);
+    this.mFloatMap.put(Integer.valueOf(paramInt), Float.valueOf(paramFloat));
+    AppMethodBeat.o(189990);
   }
   
   public void setInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(197650);
+    AppMethodBeat.i(189988);
     this.mIntMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    AppMethodBeat.o(197650);
+    AppMethodBeat.o(189988);
   }
   
   public void setLong(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(197651);
+    AppMethodBeat.i(189989);
     this.mLongMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    AppMethodBeat.o(197651);
+    AppMethodBeat.o(189989);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig
  * JD-Core Version:    0.7.0.1
  */

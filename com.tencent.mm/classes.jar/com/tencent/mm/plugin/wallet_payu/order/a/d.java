@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.a.a;
 import com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderDetailUI;
 import com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderRecordListUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class d
   extends a
@@ -14,7 +14,7 @@ public class d
   public final com.tencent.mm.wallet_core.d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72065);
-    ae.d("MicroMsg.PayUShowOrdersInfoProcess", "start Process : ShowOrdersInfo");
+    Log.d("MicroMsg.PayUShowOrdersInfoProcess", "start Process : ShowOrdersInfo");
     b(paramActivity, PayUMallOrderRecordListUI.class, paramBundle);
     AppMethodBeat.o(72065);
     return this;
@@ -31,7 +31,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.order.a.d
  * JD-Core Version:    0.7.0.1
  */

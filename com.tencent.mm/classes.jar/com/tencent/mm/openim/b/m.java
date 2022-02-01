@@ -1,48 +1,47 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cws;
-import com.tencent.mm.protocal.protobuf.cwt;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dpm;
+import com.tencent.mm.protocal.protobuf.dpn;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
-  extends n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  private f callback;
-  private final String dwx;
-  private final b rr;
+  private i callback;
+  private final String dOe;
+  private final d rr;
   
   public m(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151212);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cws();
-    ((b.a)localObject).hQG = new cwt();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/revokeopenimchatroomqrcode";
-    ((b.a)localObject).funcId = 772;
-    this.rr = ((b.a)localObject).aDS();
-    this.dwx = paramString1;
-    localObject = (cws)this.rr.hQD.hQJ;
-    ((cws)localObject).dwx = paramString1;
-    ((cws)localObject).dBI = paramString2;
-    ae.i("MicroMsg.Openim.NetSceneRevokeOpenIMChatRoomQRCode", "get roomname:%s, qrcode:%s", new Object[] { paramString1, paramString2 });
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dpm();
+    ((d.a)localObject).iLO = new dpn();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/revokeopenimchatroomqrcode";
+    ((d.a)localObject).funcId = 772;
+    this.rr = ((d.a)localObject).aXF();
+    this.dOe = paramString1;
+    localObject = (dpm)this.rr.iLK.iLR;
+    ((dpm)localObject).dOe = paramString1;
+    ((dpm)localObject).dTx = paramString2;
+    Log.i("MicroMsg.Openim.NetSceneRevokeOpenIMChatRoomQRCode", "get roomname:%s, qrcode:%s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(151212);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151214);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151214);
     return i;
   }
@@ -52,10 +51,10 @@ public final class m
     return 772;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151213);
-    ae.i("MicroMsg.Openim.NetSceneRevokeOpenIMChatRoomQRCode", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dwx });
+    Log.i("MicroMsg.Openim.NetSceneRevokeOpenIMChatRoomQRCode", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dOe });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

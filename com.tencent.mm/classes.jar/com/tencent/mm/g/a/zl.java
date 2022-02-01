@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.protocal.protobuf.ckj;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class zl
-  extends b
+  extends IEvent
 {
-  public a dPE;
+  public a efC;
   
   public zl()
   {
@@ -15,21 +16,21 @@ public final class zl
   
   private zl(byte paramByte)
   {
-    AppMethodBeat.i(117616);
-    this.dPE = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(256165);
+    this.efC = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(117616);
+    AppMethodBeat.o(256165);
   }
   
   public static final class a
   {
-    public int result;
+    public ckj efB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.zl
  * JD-Core Version:    0.7.0.1
  */

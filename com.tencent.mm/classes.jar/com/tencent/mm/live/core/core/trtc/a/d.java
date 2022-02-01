@@ -2,6 +2,7 @@ package com.tencent.mm.live.core.core.trtc.a;
 
 import android.os.Bundle;
 import com.tencent.trtc.TRTCCloudDef.TRTCQuality;
+import com.tencent.trtc.TRTCStatistics;
 
 public abstract interface d
 {
@@ -21,6 +22,8 @@ public abstract interface d
   
   public abstract void onRemoteUserLeaveRoom(String paramString, int paramInt);
   
+  public abstract void onStatistics(TRTCStatistics paramTRTCStatistics);
+  
   public abstract void onUserAudioAvailable(String paramString, boolean paramBoolean);
   
   public abstract void onUserSubStreamAvailable(String paramString, boolean paramBoolean);
@@ -29,7 +32,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.d
  * JD-Core Version:    0.7.0.1
  */

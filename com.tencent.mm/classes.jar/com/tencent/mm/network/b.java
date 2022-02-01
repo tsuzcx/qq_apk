@@ -1,318 +1,270 @@
 package com.tencent.mm.network;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.io.InputStream;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.jni.utils.UtilsJni;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.dfx;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.nio.charset.StandardCharsets;
 
 public final class b
 {
-  static a iHr;
+  private static b jDF;
+  public dfx jDB;
+  public String jDC;
+  private String jDD;
+  private long jDE;
   
-  public static v IS(String paramString)
+  static
   {
-    AppMethodBeat.i(224422);
-    paramString = a(paramString, null);
-    AppMethodBeat.o(224422);
-    return paramString;
+    AppMethodBeat.i(197089);
+    jDF = new b();
+    AppMethodBeat.o(197089);
   }
   
-  public static x IT(String paramString)
+  private b()
   {
-    AppMethodBeat.i(132664);
-    b localb = new b(paramString);
-    paramString = new x(paramString, localb.iHs);
-    paramString.iIz = localb.ip;
-    if (1 == localb.iHs)
+    AppMethodBeat.i(197081);
+    this.jDB = new dfx();
+    this.jDC = "";
+    this.jDD = "";
+    this.jDE = 0L;
+    AppMethodBeat.o(197081);
+  }
+  
+  public static b bjq()
+  {
+    return jDF;
+  }
+  
+  private boolean bjs()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(197086);
+    byte[][] arrayOfByte = UtilsJni.ecdsaGeneralOctKeyPair();
+    if ((arrayOfByte == null) || (arrayOfByte.length == 0) || (arrayOfByte.length == 1))
     {
-      paramString.setRequestProperty("Host", localb.host);
-      paramString.setRequestProperty("X-Online-Host", localb.host);
-    }
-    AppMethodBeat.o(132664);
-    return paramString;
-  }
-  
-  public static y IU(String paramString)
-  {
-    AppMethodBeat.i(132666);
-    paramString = new y(paramString);
-    AppMethodBeat.o(132666);
-    return paramString;
-  }
-  
-  public static int a(w paramw)
-  {
-    AppMethodBeat.i(132665);
-    try
-    {
-      int i = paramw.getResponseCode();
-      if (i != 200)
+      StringBuilder localStringBuilder = new StringBuilder("gen keypair failed ");
+      if (arrayOfByte == null) {}
+      for (;;)
       {
-        AppMethodBeat.o(132665);
-        return -1;
+        Log.w("CgiSignerPublicAndPrivateKey", bool);
+        AppMethodBeat.o(197086);
+        return false;
+        bool = false;
       }
-      AppMethodBeat.o(132665);
-      return 0;
-    }
-    catch (Exception paramw)
-    {
-      ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramw) });
-      AppMethodBeat.o(132665);
-    }
-    return -3;
-  }
-  
-  public static int a(String paramString, boolean paramBoolean, List<String> paramList)
-  {
-    AppMethodBeat.i(132659);
-    if ((iHr == null) || (iHr.ajn() == null))
-    {
-      AppMethodBeat.o(132659);
-      return -1;
-    }
-    int i = iHr.ajn().a(paramString, paramBoolean, paramList);
-    AppMethodBeat.o(132659);
-    return i;
-  }
-  
-  public static v a(String paramString, b paramb)
-  {
-    AppMethodBeat.i(132663);
-    b localb = paramb;
-    if (paramb == null) {
-      localb = new b(paramString);
-    }
-    ae.i("MicroMsg.GprsSetting", "hy: url redirect host: %s, url: %s, ip: %s, dns_type: %d", new Object[] { localb.host, localb.url, localb.ip, Integer.valueOf(localb.iHs) });
-    paramString = new v(localb.url, localb.iHs);
-    paramString.iIs = localb.ip;
-    if (1 == localb.iHs)
-    {
-      paramString.setRequestProperty("Host", localb.host);
-      paramString.setRequestProperty("X-Online-Host", localb.host);
-    }
-    AppMethodBeat.o(132663);
-    return paramString;
-  }
-  
-  public static void a(a parama)
-  {
-    AppMethodBeat.i(132657);
-    ae.i("MicroMsg.GprsSetting", "sethostimpl %b, [%s]", new Object[] { Boolean.FALSE, bu.fpN() });
-    iHr = parama;
-    AppMethodBeat.o(132657);
-  }
-  
-  public static int b(boolean paramBoolean, List<String> paramList, String paramString)
-  {
-    AppMethodBeat.i(132658);
-    if (iHr == null)
-    {
-      AppMethodBeat.o(132658);
-      return -1;
     }
     try
     {
-      int i = iHr.ajn().a(paramString, paramBoolean, paramList);
-      AppMethodBeat.o(132658);
+      this.jDD = new String(arrayOfByte[0], StandardCharsets.ISO_8859_1);
+      this.jDC = new String(arrayOfByte[1], StandardCharsets.ISO_8859_1);
+      if (!bjt())
+      {
+        Log.e("CgiSignerPublicAndPrivateKey", "public or private key is empty, public key is empty: " + TextUtils.isEmpty(this.jDD) + ", private key is empty: " + TextUtils.isEmpty(this.jDC));
+        AppMethodBeat.o(197086);
+        return false;
+      }
+    }
+    catch (Exception localException)
+    {
+      Log.e("CgiSignerPublicAndPrivateKey", "gen keypair failed: " + localException.getLocalizedMessage());
+      AppMethodBeat.o(197086);
+      return false;
+    }
+    Log.i("CgiSignerPublicAndPrivateKey", "public key length " + this.jDD.length() + " private key length " + this.jDC.length());
+    this.jDE = System.currentTimeMillis();
+    this.jDB.KLU = new SKBuiltinBuffer_t().setBuffer(this.jDD.getBytes(StandardCharsets.ISO_8859_1));
+    this.jDB.LrO = 415;
+    AppMethodBeat.o(197086);
+    return true;
+  }
+  
+  private boolean bjt()
+  {
+    AppMethodBeat.i(197087);
+    if ((!TextUtils.isEmpty(this.jDD)) && (!TextUtils.isEmpty(this.jDC)))
+    {
+      AppMethodBeat.o(197087);
+      return true;
+    }
+    AppMethodBeat.o(197087);
+    return false;
+  }
+  
+  private boolean bju()
+  {
+    AppMethodBeat.i(197088);
+    if (System.currentTimeMillis() - this.jDE > 86400000L)
+    {
+      AppMethodBeat.o(197088);
+      return true;
+    }
+    if (!bjt())
+    {
+      AppMethodBeat.o(197088);
+      return true;
+    }
+    AppMethodBeat.o(197088);
+    return false;
+  }
+  
+  public final String RO(String paramString)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(197082);
+    if (TextUtils.isEmpty(this.jDC)) {}
+    for (;;)
+    {
+      try
+      {
+        arrayOfString = com.tencent.mm.kernel.g.aAg().hqi.iMw.aZl();
+        if ((arrayOfString != null) && (arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1])))
+        {
+          this.jDD = arrayOfString[0];
+          this.jDC = arrayOfString[1];
+          Log.w("CgiSignerPublicAndPrivateKey", "origin key is empty, use backup key " + this.jDD.length() + " " + this.jDC.length());
+        }
+      }
+      catch (Exception localException)
+      {
+        String[] arrayOfString;
+        StringBuilder localStringBuilder;
+        Log.e("CgiSignerPublicAndPrivateKey", "try restore key from push failed " + localException.getLocalizedMessage());
+        continue;
+        bool = false;
+        continue;
+      }
+      try
+      {
+        paramString = UtilsJni.ecdsaSignWithOctKey(this.jDC.getBytes(StandardCharsets.ISO_8859_1), paramString.getBytes(StandardCharsets.ISO_8859_1));
+        if (paramString != null) {
+          break label254;
+        }
+        Log.e("CgiSignerPublicAndPrivateKey", "sign result is null ");
+        AppMethodBeat.o(197082);
+        return "";
+      }
+      catch (Exception paramString)
+      {
+        Log.e("CgiSignerPublicAndPrivateKey", "sign data failed " + paramString.getLocalizedMessage());
+        AppMethodBeat.o(197082);
+        return "";
+      }
+      localStringBuilder = new StringBuilder("backup key is empty ");
+      if (arrayOfString != null) {
+        continue;
+      }
+      Log.w("CgiSignerPublicAndPrivateKey", bool);
+    }
+    label254:
+    Log.d("CgiSignerPublicAndPrivateKey", "sign result length " + paramString.length);
+    paramString = new String(paramString, StandardCharsets.ISO_8859_1);
+    AppMethodBeat.o(197082);
+    return paramString;
+  }
+  
+  public final byte[] az(byte[] paramArrayOfByte)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(197083);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(197083);
+      return null;
+    }
+    if (TextUtils.isEmpty(this.jDC)) {}
+    for (;;)
+    {
+      try
+      {
+        arrayOfString = com.tencent.mm.kernel.g.aAg().hqi.iMw.aZl();
+        if ((arrayOfString != null) && (arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1])))
+        {
+          this.jDD = arrayOfString[0];
+          this.jDC = arrayOfString[1];
+          Log.w("CgiSignerPublicAndPrivateKey", "origin key is empty, use backup key " + this.jDD.length() + " " + this.jDC.length());
+        }
+      }
+      catch (Exception localException)
+      {
+        String[] arrayOfString;
+        StringBuilder localStringBuilder;
+        Log.e("CgiSignerPublicAndPrivateKey", "try restore key from push failed " + localException.getLocalizedMessage());
+        continue;
+        bool = false;
+        continue;
+      }
+      try
+      {
+        paramArrayOfByte = UtilsJni.ecdsaSignWithOctKey(this.jDC.getBytes(StandardCharsets.ISO_8859_1), paramArrayOfByte);
+        if (paramArrayOfByte != null) {
+          break label257;
+        }
+        Log.e("CgiSignerPublicAndPrivateKey", "sign result is null ");
+        AppMethodBeat.o(197083);
+        return null;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        Log.e("CgiSignerPublicAndPrivateKey", "sign data byte failed " + paramArrayOfByte.getLocalizedMessage());
+        AppMethodBeat.o(197083);
+        return null;
+      }
+      localStringBuilder = new StringBuilder("backup key is empty ");
+      if (arrayOfString != null) {
+        continue;
+      }
+      Log.w("CgiSignerPublicAndPrivateKey", bool);
+    }
+    label257:
+    Log.d("CgiSignerPublicAndPrivateKey", "sign byte result length " + paramArrayOfByte.length);
+    AppMethodBeat.o(197083);
+    return paramArrayOfByte;
+  }
+  
+  public final int bL(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(197084);
+    try
+    {
+      int i = UtilsJni.ecdsaVerifyWithOctKey(this.jDD.getBytes(StandardCharsets.ISO_8859_1), paramString1.getBytes(StandardCharsets.ISO_8859_1), paramString2.getBytes(StandardCharsets.ISO_8859_1));
+      Log.d("CgiSignerPublicAndPrivateKey", "verify result ".concat(String.valueOf(i)));
+      AppMethodBeat.o(197084);
       return i;
     }
-    catch (Exception paramList)
+    catch (Exception paramString1)
     {
-      ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramList) });
-      AppMethodBeat.o(132658);
+      Log.e("CgiSignerPublicAndPrivateKey", "verify failed " + paramString1.getLocalizedMessage());
+      AppMethodBeat.o(197084);
     }
     return -1;
   }
   
-  public static void reportFailIp(String paramString)
+  public final String bjr()
   {
-    AppMethodBeat.i(132660);
-    if ((iHr != null) && (iHr.ajn() != null)) {
-      iHr.ajn().reportFailIp(paramString);
+    AppMethodBeat.i(197085);
+    if ((bju()) && (!bjs()))
+    {
+      Log.e("CgiSignerPublicAndPrivateKey", "gen keypair failed");
+      AppMethodBeat.o(197085);
+      return "";
     }
-    AppMethodBeat.o(132660);
+    String str = this.jDD;
+    AppMethodBeat.o(197085);
+    return str;
   }
   
-  public static InputStream w(String paramString, int paramInt1, int paramInt2)
+  public static final class a
   {
-    AppMethodBeat.i(132661);
-    paramString = a(paramString, null);
-    paramString.setConnectTimeout(paramInt1);
-    paramString.setReadTimeout(paramInt2);
-    paramString.setRequestMethod("GET");
-    if (a(paramString) != 0)
-    {
-      AppMethodBeat.o(132661);
-      return null;
-    }
-    paramString = paramString.getInputStream();
-    AppMethodBeat.o(132661);
-    return paramString;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract e ajn();
-  }
-  
-  public static final class b
-  {
-    public String host;
-    public int iHs;
-    private ArrayList<String> iHt;
-    public String iHu;
-    public boolean iHv;
-    private boolean iHw;
-    public String ip;
-    public URL url;
-    
-    public b(String paramString)
-    {
-      AppMethodBeat.i(132654);
-      this.host = null;
-      this.url = null;
-      this.ip = "";
-      this.iHs = 0;
-      this.iHt = new ArrayList();
-      this.iHv = false;
-      this.iHw = false;
-      this.iHu = paramString;
-      try
-      {
-        this.url = new URL(paramString);
-        this.host = this.url.getHost();
-        Object localObject = new ArrayList();
-        if ((b.iHr == null) || (b.iHr.ajn() == null))
-        {
-          if (b.iHr == null) {}
-          for (paramString = "-1";; paramString = b.iHr.ajn())
-          {
-            ae.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bu.fpN() });
-            AppMethodBeat.o(132654);
-            return;
-          }
-        }
-        this.iHs = b.iHr.ajn().getHostByName(this.host, (List)localObject);
-        ae.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s", new Object[] { Integer.valueOf(this.iHs), this.host, paramString });
-        if (((ArrayList)localObject).size() <= 0)
-        {
-          this.iHs = 0;
-          AppMethodBeat.o(132654);
-          return;
-        }
-        int i = this.iHs;
-        if (1 != i)
-        {
-          AppMethodBeat.o(132654);
-          return;
-        }
-        String str = (String)((ArrayList)localObject).remove(0);
-        this.ip = str;
-        localObject = str;
-        if (IV(str)) {
-          localObject = "[" + str + "]";
-        }
-        this.url = new URL(paramString.replaceFirst(this.host, (String)localObject));
-        AppMethodBeat.o(132654);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramString) });
-        AppMethodBeat.o(132654);
-      }
-    }
-    
-    public b(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(132655);
-      this.host = null;
-      this.url = null;
-      this.ip = "";
-      this.iHs = 0;
-      this.iHt = new ArrayList();
-      this.iHv = false;
-      this.iHw = false;
-      this.iHv = paramBoolean;
-      this.iHu = paramString;
-      try
-      {
-        this.url = new URL(paramString);
-        this.host = this.url.getHost();
-        if ((b.iHr == null) || (b.iHr.ajn() == null))
-        {
-          if (b.iHr == null) {}
-          for (paramString = "-1";; paramString = b.iHr.ajn())
-          {
-            ae.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bu.fpN() });
-            AppMethodBeat.o(132655);
-            return;
-          }
-        }
-        this.iHs = b.iHr.ajn().a(this.host, paramBoolean, this.iHt);
-        ae.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s ips:%s", new Object[] { Integer.valueOf(this.iHs), this.host, paramString, this.iHt });
-        if (this.iHt.size() <= 0)
-        {
-          this.iHs = 0;
-          AppMethodBeat.o(132655);
-          return;
-        }
-        int i = this.iHs;
-        if (1 != i)
-        {
-          AppMethodBeat.o(132655);
-          return;
-        }
-        this.ip = ((String)this.iHt.remove(0));
-        if (IV(this.ip)) {
-          this.ip = ("[" + this.ip + "]");
-        }
-        this.url = new URL(paramString.replaceFirst(this.host, this.ip));
-        AppMethodBeat.o(132655);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(paramString) });
-        AppMethodBeat.o(132655);
-      }
-    }
-    
-    private static boolean IV(String paramString)
-    {
-      AppMethodBeat.i(132656);
-      try
-      {
-        if (!(InetAddress.getByName(paramString) instanceof Inet4Address))
-        {
-          AppMethodBeat.o(132656);
-          return true;
-        }
-        AppMethodBeat.o(132656);
-        return false;
-      }
-      catch (Exception localException)
-      {
-        ae.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bu.o(localException) });
-        if (!paramString.contains("."))
-        {
-          AppMethodBeat.o(132656);
-          return true;
-        }
-        AppMethodBeat.o(132656);
-      }
-      return false;
-    }
+    public String jDC = "";
+    public String jDD = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.b
  * JD-Core Version:    0.7.0.1
  */

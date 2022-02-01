@@ -11,13 +11,13 @@ import android.os.IBinder;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.ui.ContactsSyncUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
 public class AccountAuthenticatorService
   extends Service
 {
-  private static a jkd = null;
+  private static a kif = null;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -29,10 +29,10 @@ public class AccountAuthenticatorService
     }
     if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.accounts.AccountAuthenticator")))
     {
-      if (jkd == null) {
-        jkd = new a(this);
+      if (kif == null) {
+        kif = new a(this);
       }
-      paramIntent = jkd.getIBinder();
+      paramIntent = kif.getIBinder();
       AppMethodBeat.o(127806);
       return paramIntent;
     }
@@ -66,7 +66,7 @@ public class AccountAuthenticatorService
     public final Bundle confirmCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, Bundle paramBundle)
     {
       AppMethodBeat.i(127800);
-      ae.i("MicroMsg.AccountAuthenticatorService", "confirmCredentials");
+      Log.i("MicroMsg.AccountAuthenticatorService", "confirmCredentials");
       AppMethodBeat.o(127800);
       return null;
     }
@@ -74,7 +74,7 @@ public class AccountAuthenticatorService
     public final Bundle editProperties(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString)
     {
       AppMethodBeat.i(127801);
-      ae.i("MicroMsg.AccountAuthenticatorService", "editProperties");
+      Log.i("MicroMsg.AccountAuthenticatorService", "editProperties");
       AppMethodBeat.o(127801);
       return null;
     }
@@ -82,7 +82,7 @@ public class AccountAuthenticatorService
     public final Bundle getAuthToken(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
     {
       AppMethodBeat.i(127802);
-      ae.i("MicroMsg.AccountAuthenticatorService", "getAuthToken");
+      Log.i("MicroMsg.AccountAuthenticatorService", "getAuthToken");
       AppMethodBeat.o(127802);
       return null;
     }
@@ -90,7 +90,7 @@ public class AccountAuthenticatorService
     public final String getAuthTokenLabel(String paramString)
     {
       AppMethodBeat.i(127803);
-      ae.i("MicroMsg.AccountAuthenticatorService", "getAuthTokenLabel");
+      Log.i("MicroMsg.AccountAuthenticatorService", "getAuthTokenLabel");
       AppMethodBeat.o(127803);
       return null;
     }
@@ -98,7 +98,7 @@ public class AccountAuthenticatorService
     public final Bundle hasFeatures(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String[] paramArrayOfString)
     {
       AppMethodBeat.i(127804);
-      ae.i("MicroMsg.AccountAuthenticatorService", "hasFeatures: ".concat(String.valueOf(paramArrayOfString)));
+      Log.i("MicroMsg.AccountAuthenticatorService", "hasFeatures: ".concat(String.valueOf(paramArrayOfString)));
       AppMethodBeat.o(127804);
       return null;
     }
@@ -106,7 +106,7 @@ public class AccountAuthenticatorService
     public final Bundle updateCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
     {
       AppMethodBeat.i(127805);
-      ae.i("MicroMsg.AccountAuthenticatorService", "updateCredentials");
+      Log.i("MicroMsg.AccountAuthenticatorService", "updateCredentials");
       AppMethodBeat.o(127805);
       return null;
     }

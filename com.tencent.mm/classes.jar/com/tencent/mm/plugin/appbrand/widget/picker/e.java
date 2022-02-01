@@ -1,14 +1,24 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
-  public static int[] Wk(String paramString)
+  public static boolean Aw(int paramInt)
+  {
+    return (paramInt >= 0) && (paramInt <= 59);
+  }
+  
+  public static boolean Ax(int paramInt)
+  {
+    return (paramInt >= 0) && (paramInt <= 23);
+  }
+  
+  public static int[] agg(String paramString)
   {
     AppMethodBeat.i(138087);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(138087);
       return null;
@@ -19,9 +29,9 @@ public final class e
       AppMethodBeat.o(138087);
       return null;
     }
-    int i = Wl(paramString[0]);
-    int j = Wl(paramString[1]);
-    if ((!wP(i)) || (!wO(j)))
+    int i = agh(paramString[0]);
+    int j = agh(paramString[1]);
+    if ((!Ax(i)) || (!Aw(j)))
     {
       AppMethodBeat.o(138087);
       return null;
@@ -30,7 +40,7 @@ public final class e
     return new int[] { i, j };
   }
   
-  private static int Wl(String paramString)
+  private static int agh(String paramString)
   {
     AppMethodBeat.i(138088);
     try
@@ -45,20 +55,10 @@ public final class e
     }
     return -1;
   }
-  
-  public static boolean wO(int paramInt)
-  {
-    return (paramInt >= 0) && (paramInt <= 59);
-  }
-  
-  public static boolean wP(int paramInt)
-  {
-    return (paramInt >= 0) && (paramInt <= 23);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.e
  * JD-Core Version:    0.7.0.1
  */

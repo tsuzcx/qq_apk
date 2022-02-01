@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.ActionBarOverlayLayout android:id="@id/b8w" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include layout="@layout/ak" />
-    <android.support.v7.widget.ActionBarContainer android:gravity="top" android:id="@id/bp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:touchscreenBlocksFocus="true" style="?a0">
-        <android.support.v7.widget.Toolbar android:id="@id/bn" android:layout_width="fill_parent" android:layout_height="wrap_content" app:navigationContentDescription="@string/ay" style="?a16" />
-        <android.support.v7.widget.ActionBarContextView android:theme="?a4" android:id="@id/c1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?al" />
-    </android.support.v7.widget.ActionBarContainer>
-</android.support.v7.widget.ActionBarOverlayLayout>
+<view android:layout_gravity="center" android:id="@id/em" android:layout_width="wrap_content" android:layout_height="fill_parent" class="android.support.v7.widget.ActivityChooserView$InnerLayout" style="?at"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:id="@id/c6l" android:background="?x" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:focusable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:id="@id/dup" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" android:adjustViewBounds="true" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="center" android:id="@id/bl_" android:background="?x" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:focusable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:id="@id/dup" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" android:adjustViewBounds="true" />
+    </FrameLayout>
+</view>

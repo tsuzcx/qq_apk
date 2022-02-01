@@ -3,79 +3,57 @@ package com.google.android.exoplayer2.g;
 import android.os.SystemClock;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.i.a;
-import com.google.android.exoplayer2.source.o;
+import com.google.android.exoplayer2.source.q;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public abstract class b
   implements f
 {
-  private int aHQ;
-  protected final o bEb;
-  protected final int[] bEc;
-  private final long[] bEd;
-  final Format[] bwC;
+  private int aHK;
+  protected final q bEd;
+  protected final int[] bEe;
+  private final long[] bEf;
+  final Format[] bwD;
   protected final int length;
   
-  public b(o paramo, int... paramVarArgs)
+  public b(q paramq, int... paramVarArgs)
   {
     if (paramVarArgs.length > 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bEb = ((o)a.checkNotNull(paramo));
+      this.bEd = ((q)a.checkNotNull(paramq));
       this.length = paramVarArgs.length;
-      this.bwC = new Format[this.length];
+      this.bwD = new Format[this.length];
       i = 0;
       while (i < paramVarArgs.length)
       {
-        Format[] arrayOfFormat = this.bwC;
+        Format[] arrayOfFormat = this.bwD;
         int k = paramVarArgs[i];
-        arrayOfFormat[i] = paramo.bwC[k];
+        arrayOfFormat[i] = paramq.bwD[k];
         i += 1;
       }
     }
-    Arrays.sort(this.bwC, new a((byte)0));
-    this.bEc = new int[this.length];
+    Arrays.sort(this.bwD, new a((byte)0));
+    this.bEe = new int[this.length];
     int i = j;
     while (i < this.length)
     {
-      this.bEc[i] = paramo.j(this.bwC[i]);
+      this.bEe[i] = paramq.j(this.bwD[i]);
       i += 1;
     }
-    this.bEd = new long[this.length];
+    this.bEf = new long[this.length];
   }
   
-  public final Format eV(int paramInt)
+  public final Format eU(int paramInt)
   {
-    return this.bwC[paramInt];
+    return this.bwD[paramInt];
   }
   
-  public final int eW(int paramInt)
+  public final int eV(int paramInt)
   {
-    return this.bEc[paramInt];
-  }
-  
-  public final boolean eX(int paramInt)
-  {
-    long l = SystemClock.elapsedRealtime();
-    boolean bool = k(paramInt, l);
-    int i = 0;
-    if ((i < this.length) && (!bool))
-    {
-      if ((i != paramInt) && (!k(i, l))) {}
-      for (bool = true;; bool = false)
-      {
-        i += 1;
-        break;
-      }
-    }
-    if (!bool) {
-      return false;
-    }
-    long[] arrayOfLong = this.bEd;
-    arrayOfLong[paramInt] = Math.max(arrayOfLong[paramInt], l + 60000L);
-    return true;
+    return this.bEe[paramInt];
   }
   
   public boolean equals(Object paramObject)
@@ -88,16 +66,16 @@ public abstract class b
         return false;
       }
       paramObject = (b)paramObject;
-    } while ((this.bEb == paramObject.bEb) && (Arrays.equals(this.bEc, paramObject.bEc)));
+    } while ((this.bEd == paramObject.bEd) && (Arrays.equals(this.bEe, paramObject.bEe)));
     return false;
   }
   
   public int hashCode()
   {
-    if (this.aHQ == 0) {
-      this.aHQ = (System.identityHashCode(this.bEb) * 31 + Arrays.hashCode(this.bEc));
+    if (this.aHK == 0) {
+      this.aHK = (System.identityHashCode(this.bEd) * 31 + Arrays.hashCode(this.bEe));
     }
-    return this.aHQ;
+    return this.aHK;
   }
   
   public final int indexOf(int paramInt)
@@ -105,7 +83,7 @@ public abstract class b
     int i = 0;
     while (i < this.length)
     {
-      if (this.bEc[i] == paramInt) {
+      if (this.bEe[i] == paramInt) {
         return i;
       }
       i += 1;
@@ -118,7 +96,7 @@ public abstract class b
     int i = 0;
     while (i < this.length)
     {
-      if (this.bwC[i] == paramFormat) {
+      if (this.bwD[i] == paramFormat) {
         return i;
       }
       i += 1;
@@ -126,29 +104,51 @@ public abstract class b
     return -1;
   }
   
-  protected final boolean k(int paramInt, long paramLong)
+  public final boolean k(int paramInt, long paramLong)
   {
-    return this.bEd[paramInt] > paramLong;
+    paramLong = SystemClock.elapsedRealtime();
+    boolean bool = l(paramInt, paramLong);
+    int i = 0;
+    if ((i < this.length) && (!bool))
+    {
+      if ((i != paramInt) && (!l(i, paramLong))) {}
+      for (bool = true;; bool = false)
+      {
+        i += 1;
+        break;
+      }
+    }
+    if (!bool) {
+      return false;
+    }
+    long[] arrayOfLong = this.bEf;
+    arrayOfLong[paramInt] = Math.max(arrayOfLong[paramInt], paramLong + 60000L);
+    return true;
+  }
+  
+  protected final boolean l(int paramInt, long paramLong)
+  {
+    return this.bEf[paramInt] > paramLong;
   }
   
   public final int length()
   {
-    return this.bEc.length;
+    return this.bEe.length;
   }
   
-  public final o wt()
+  public final int wA()
   {
-    return this.bEb;
+    return this.bEe[getSelectedIndex()];
   }
   
-  public final Format wu()
+  public final q wy()
   {
-    return this.bwC[getSelectedIndex()];
+    return this.bEd;
   }
   
-  public final int wv()
+  public final Format wz()
   {
-    return this.bEc[getSelectedIndex()];
+    return this.bwD[getSelectedIndex()];
   }
   
   static final class a
@@ -157,7 +157,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.g.b
  * JD-Core Version:    0.7.0.1
  */

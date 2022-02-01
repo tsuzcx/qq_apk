@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.remittance.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ald;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.protocal.protobuf.qb;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.anr;
+import com.tencent.mm.protocal.protobuf.ans;
+import com.tencent.mm.protocal.protobuf.rc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,13 +16,13 @@ import java.util.List;
 
 public final class b
 {
-  ald ypG = null;
-  qb ypH;
+  anr Cqx = null;
+  rc Cqy;
   
-  private static boolean a(List<ale> paramList, ald paramald)
+  private static boolean a(List<ans> paramList, anr paramanr)
   {
     AppMethodBeat.i(67927);
-    if (paramald.GdG.size() == 0)
+    if (paramanr.KXX.size() == 0)
     {
       AppMethodBeat.o(67927);
       return false;
@@ -30,11 +30,11 @@ public final class b
     HashSet localHashSet = new HashSet();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localHashSet.add(Long.valueOf(((ale)paramList.next()).GCX));
+      localHashSet.add(Long.valueOf(((ans)paramList.next()).LyS));
     }
-    paramList = paramald.GdG.iterator();
+    paramList = paramanr.KXX.iterator();
     while (paramList.hasNext()) {
-      if (!localHashSet.contains(Long.valueOf(((ale)paramList.next()).GCX)))
+      if (!localHashSet.contains(Long.valueOf(((ans)paramList.next()).LyS)))
       {
         AppMethodBeat.o(67927);
         return false;
@@ -44,73 +44,73 @@ public final class b
     return true;
   }
   
-  public final boolean a(List<ale> paramList, ale paramale)
+  public final boolean a(List<ans> paramList, ans paramans)
   {
     AppMethodBeat.i(67926);
-    if (this.ypH == null)
+    if (this.Cqy == null)
     {
-      ae.e("MicroMsg.FavorInfoPicked", "error setFavorInfoList currentFavorResp is null");
+      Log.e("MicroMsg.FavorInfoPicked", "error setFavorInfoList currentFavorResp is null");
       AppMethodBeat.o(67926);
       return false;
     }
-    if (paramale != null) {}
-    for (Object localObject1 = new BigInteger(Long.toBinaryString(paramale.GCX), 2).toString();; localObject1 = null)
+    if (paramans != null) {}
+    for (Object localObject1 = new BigInteger(Long.toBinaryString(paramans.LyS), 2).toString();; localObject1 = null)
     {
       Object localObject2 = new LinkedList();
-      Iterator localIterator = this.ypH.GdH.iterator();
+      Iterator localIterator = this.Cqy.KXY.iterator();
       while (localIterator.hasNext())
       {
-        ald localald = (ald)localIterator.next();
-        if ((paramale == null) || ((!bu.isNullOrNil((String)localObject1)) && (localald.GCO.contains((CharSequence)localObject1)))) {
-          ((List)localObject2).add(localald);
+        anr localanr = (anr)localIterator.next();
+        if ((paramans == null) || ((!Util.isNullOrNil((String)localObject1)) && (localanr.LyJ.contains((CharSequence)localObject1)))) {
+          ((List)localObject2).add(localanr);
         }
       }
-      paramale = new LinkedList();
+      paramans = new LinkedList();
       localObject1 = ((List)localObject2).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (ald)((Iterator)localObject1).next();
-        if (a(paramList, (ald)localObject2)) {
-          paramale.add(localObject2);
+        localObject2 = (anr)((Iterator)localObject1).next();
+        if (a(paramList, (anr)localObject2)) {
+          paramans.add(localObject2);
         }
       }
-      if (paramale.size() > 0)
+      if (paramans.size() > 0)
       {
-        Collections.sort(paramale, new a());
-        this.ypG = ((ald)paramale.get(0));
+        Collections.sort(paramans, new a());
+        this.Cqx = ((anr)paramans.get(0));
         AppMethodBeat.o(67926);
         return true;
       }
-      this.ypG = null;
+      this.Cqx = null;
       AppMethodBeat.o(67926);
       return false;
     }
   }
   
-  public final void axI(String paramString)
+  public final void aMi(String paramString)
   {
     AppMethodBeat.i(67925);
-    this.ypG = null;
+    this.Cqx = null;
     if (paramString == null)
     {
-      this.ypG = null;
+      this.Cqx = null;
       AppMethodBeat.o(67925);
       return;
     }
-    if (this.ypH == null)
+    if (this.Cqy == null)
     {
-      ae.e("MicroMsg.FavorInfoPicked", "error setSelectFavorComposeId currentFavorResp is null");
-      this.ypG = null;
+      Log.e("MicroMsg.FavorInfoPicked", "error setSelectFavorComposeId currentFavorResp is null");
+      this.Cqx = null;
       AppMethodBeat.o(67925);
       return;
     }
-    Iterator localIterator = this.ypH.GdH.iterator();
+    Iterator localIterator = this.Cqy.KXY.iterator();
     while (localIterator.hasNext())
     {
-      ald localald = (ald)localIterator.next();
-      if (paramString.equals(localald.GCO))
+      anr localanr = (anr)localIterator.next();
+      if (paramString.equals(localanr.LyJ))
       {
-        this.ypG = localald;
+        this.Cqx = localanr;
         AppMethodBeat.o(67925);
         return;
       }
@@ -118,21 +118,21 @@ public final class b
     AppMethodBeat.o(67925);
   }
   
-  public final void dMC()
+  public final void eNC()
   {
     AppMethodBeat.i(67922);
-    ae.i("MicroMsg.FavorInfoPicked", "cleanBusiF2FFavor");
-    this.ypH = null;
-    this.ypG = null;
+    Log.i("MicroMsg.FavorInfoPicked", "cleanBusiF2FFavor");
+    this.Cqy = null;
+    this.Cqx = null;
     AppMethodBeat.o(67922);
   }
   
-  public final List<ale> dMD()
+  public final List<ans> eND()
   {
     AppMethodBeat.i(67923);
-    if (this.ypH != null)
+    if (this.Cqy != null)
     {
-      localLinkedList = this.ypH.GdG;
+      localLinkedList = this.Cqy.KXX;
       AppMethodBeat.o(67923);
       return localLinkedList;
     }
@@ -141,23 +141,23 @@ public final class b
     return localLinkedList;
   }
   
-  public final String dME()
+  public final String eNE()
   {
-    if (this.ypH == null) {
+    if (this.Cqy == null) {
       return "";
     }
-    return this.ypH.GdK;
+    return this.Cqy.KYb;
   }
   
-  public final boolean dMF()
+  public final boolean eNF()
   {
-    return this.ypH != null;
+    return this.Cqy != null;
   }
   
-  public final boolean dMG()
+  public final boolean eNG()
   {
     AppMethodBeat.i(67924);
-    if ((this.ypH != null) && (this.ypH.GdG != null) && (this.ypH.GdG.size() > 0))
+    if ((this.Cqy != null) && (this.Cqy.KXX != null) && (this.Cqy.KXX.size() > 0))
     {
       AppMethodBeat.o(67924);
       return true;
@@ -173,9 +173,9 @@ public final class b
     
     public final int compare(Object paramObject1, Object paramObject2)
     {
-      paramObject1 = (ald)paramObject1;
-      paramObject2 = (ald)paramObject2;
-      if (paramObject1.GCS - paramObject2.GCS > 0L) {
+      paramObject1 = (anr)paramObject1;
+      paramObject2 = (anr)paramObject2;
+      if (paramObject1.LyN - paramObject2.LyN > 0L) {
         return -1;
       }
       return 1;
@@ -184,7 +184,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.b
  * JD-Core Version:    0.7.0.1
  */

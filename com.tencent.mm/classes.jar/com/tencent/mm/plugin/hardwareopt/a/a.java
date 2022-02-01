@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.hardwareopt.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hardwareopt.c.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.vending.g.c;
 import com.tencent.mm.vending.g.d;
 import com.tencent.mm.vending.g.d.a;
@@ -13,15 +13,15 @@ import com.tencent.mm.vending.g.e;
 public final class a
   implements com.tencent.mm.plugin.hardwareopt.a.a.a
 {
-  public final void nv(boolean paramBoolean)
+  public final void qe(boolean paramBoolean)
   {
     AppMethodBeat.i(55554);
-    new e().G(new Object[] { ak.getContext() }).e(new com.tencent.mm.plugin.hardwareopt.c.a()).d(new b(paramBoolean)).a(new d.a()
+    new e().H(new Object[] { MMApplicationContext.getContext() }).e(new com.tencent.mm.plugin.hardwareopt.c.a()).d(new b(paramBoolean)).a(new d.a()
     {
-      public final void ce(Object paramAnonymousObject)
+      public final void cn(Object paramAnonymousObject)
       {
         AppMethodBeat.i(55553);
-        ae.w("MicroMsg.HardwareProvider", "hy: on interrupt.");
+        Log.w("MicroMsg.HardwareProvider", "hy: on interrupt.");
         AppMethodBeat.o(55553);
       }
     }).a(new d.b() {});

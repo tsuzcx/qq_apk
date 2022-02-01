@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.t;
 import android.support.v7.view.i;
 import android.support.v7.view.menu.h;
 import android.support.v7.view.menu.h.a;
@@ -12,7 +11,6 @@ import android.support.v7.view.menu.o.a;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.Toolbar.b;
 import android.support.v7.widget.ba;
-import android.support.v7.widget.u;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -26,13 +24,13 @@ import java.util.ArrayList;
 final class g
   extends ActionBar
 {
-  u ZH;
-  boolean ZI;
-  Window.Callback ZJ;
-  private boolean ZK;
-  private boolean ZL;
-  private ArrayList<Object> ZM = new ArrayList();
-  private final Runnable ZN = new Runnable()
+  android.support.v7.widget.u ZU;
+  boolean ZV;
+  Window.Callback ZW;
+  private boolean ZX;
+  private boolean ZY;
+  private ArrayList<Object> ZZ = new ArrayList();
+  private final Runnable aaa = new Runnable()
   {
     public final void run()
     {
@@ -42,12 +40,12 @@ final class g
       for (localh = (h)localMenu;; localh = null)
       {
         if (localh != null) {
-          localh.hR();
+          localh.ia();
         }
         try
         {
           localMenu.clear();
-          if ((!localg.ZJ.onCreatePanelMenu(0, localMenu)) || (!localg.ZJ.onPreparePanel(0, null, localMenu))) {
+          if ((!localg.ZW.onCreatePanelMenu(0, localMenu)) || (!localg.ZW.onPreparePanel(0, null, localMenu))) {
             localMenu.clear();
           }
           return;
@@ -57,68 +55,76 @@ final class g
           if (localh == null) {
             break;
           }
-          localh.hS();
+          localh.ib();
         }
       }
     }
   };
-  private final Toolbar.b ZO = new Toolbar.b()
+  private final Toolbar.b aab = new Toolbar.b()
   {
     public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
     {
-      return g.this.ZJ.onMenuItemSelected(0, paramAnonymousMenuItem);
+      return g.this.ZW.onMenuItemSelected(0, paramAnonymousMenuItem);
     }
   };
   
   g(Toolbar paramToolbar, CharSequence paramCharSequence, Window.Callback paramCallback)
   {
-    this.ZH = new ba(paramToolbar, false);
-    this.ZJ = new c(paramCallback);
-    this.ZH.setWindowCallback(this.ZJ);
-    paramToolbar.setOnMenuItemClickListener(this.ZO);
-    this.ZH.setWindowTitle(paramCharSequence);
+    this.ZU = new ba(paramToolbar, false);
+    this.ZW = new c(paramCallback);
+    this.ZU.setWindowCallback(this.ZW);
+    paramToolbar.setOnMenuItemClickListener(this.aab);
+    this.ZU.setWindowTitle(paramCharSequence);
   }
   
   private void setDisplayOptions(int paramInt1, int paramInt2)
   {
-    int i = this.ZH.getDisplayOptions();
-    this.ZH.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    int i = this.ZU.getDisplayOptions();
+    this.ZU.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
   }
+  
+  public final void P(boolean paramBoolean) {}
   
   public final void Q(boolean paramBoolean) {}
   
-  public final void R(boolean paramBoolean) {}
-  
-  public final void S(boolean paramBoolean)
+  public final void R(boolean paramBoolean)
   {
-    if (paramBoolean == this.ZL) {}
+    if (paramBoolean == this.ZY) {}
     for (;;)
     {
       return;
-      this.ZL = paramBoolean;
-      int j = this.ZM.size();
+      this.ZY = paramBoolean;
+      int j = this.ZZ.size();
       int i = 0;
       while (i < j)
       {
-        this.ZM.get(i);
+        this.ZZ.get(i);
         i += 1;
       }
     }
   }
   
+  public final void a(View paramView, ActionBar.LayoutParams paramLayoutParams)
+  {
+    if (paramView != null) {
+      paramView.setLayoutParams(paramLayoutParams);
+    }
+    this.ZU.setCustomView(paramView);
+  }
+  
   public final boolean b(KeyEvent paramKeyEvent)
   {
     if (paramKeyEvent.getAction() == 1) {
-      gp();
+      gw();
     }
     return true;
   }
   
   public final boolean collapseActionView()
   {
-    if (this.ZH.hasExpandedActionView())
+    if (this.ZU.hasExpandedActionView())
     {
-      this.ZH.collapseActionView();
+      this.ZU.collapseActionView();
       return true;
     }
     return false;
@@ -126,84 +132,84 @@ final class g
   
   public final View getCustomView()
   {
-    return this.ZH.getCustomView();
+    return this.ZU.getCustomView();
   }
   
   public final int getDisplayOptions()
   {
-    return this.ZH.getDisplayOptions();
+    return this.ZU.getDisplayOptions();
   }
   
   public final int getHeight()
   {
-    return this.ZH.getHeight();
+    return this.ZU.getHeight();
   }
   
   final Menu getMenu()
   {
-    if (!this.ZK)
+    if (!this.ZX)
     {
-      this.ZH.a(new a(), new b());
-      this.ZK = true;
+      this.ZU.a(new a(), new b());
+      this.ZX = true;
     }
-    return this.ZH.getMenu();
+    return this.ZU.getMenu();
   }
   
   public final Context getThemedContext()
   {
-    return this.ZH.getContext();
+    return this.ZU.getContext();
   }
   
   public final CharSequence getTitle()
   {
-    return this.ZH.getTitle();
+    return this.ZU.getTitle();
   }
   
-  public final void gk()
+  public final void gr()
   {
-    this.ZH.setIcon(2131234429);
+    this.ZU.setIcon(2131235359);
   }
   
-  public final void gl()
+  public final void gs()
   {
     setDisplayOptions(0, 2);
   }
   
-  public final void gm()
+  public final void gt()
   {
     setDisplayOptions(0, 8);
   }
   
-  public final void gn()
+  public final void gu()
   {
     setDisplayOptions(16, 16);
   }
   
-  public final boolean gp()
+  public final boolean gw()
   {
-    return this.ZH.showOverflowMenu();
+    return this.ZU.showOverflowMenu();
   }
   
-  public final boolean gq()
+  public final boolean gx()
   {
-    return this.ZH.hideOverflowMenu();
+    return this.ZU.hideOverflowMenu();
   }
   
-  public final boolean gr()
+  public final boolean gy()
   {
-    this.ZH.jt().removeCallbacks(this.ZN);
-    t.b(this.ZH.jt(), this.ZN);
+    this.ZU.jC().removeCallbacks(this.aaa);
+    android.support.v4.view.u.b(this.ZU.jC(), this.aaa);
     return true;
   }
   
   public final void hide()
   {
-    this.ZH.setVisibility(8);
+    this.ZU.setVisibility(8);
   }
   
   public final boolean isShowing()
   {
-    return this.ZH.getVisibility() == 0;
+    return this.ZU.getVisibility() == 0;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
@@ -213,7 +219,7 @@ final class g
   
   final void onDestroy()
   {
-    this.ZH.jt().removeCallbacks(this.ZN);
+    this.ZU.jC().removeCallbacks(this.aaa);
   }
   
   public final boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
@@ -245,21 +251,17 @@ final class g
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    this.ZH.setBackgroundDrawable(paramDrawable);
+    this.ZU.setBackgroundDrawable(paramDrawable);
   }
   
   public final void setCustomView(int paramInt)
   {
-    setCustomView(LayoutInflater.from(this.ZH.getContext()).inflate(paramInt, this.ZH.jt(), false));
+    setCustomView(LayoutInflater.from(this.ZU.getContext()).inflate(paramInt, this.ZU.jC(), false));
   }
   
   public final void setCustomView(View paramView)
   {
-    ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(-2);
-    if (paramView != null) {
-      paramView.setLayoutParams(localLayoutParams);
-    }
-    this.ZH.setCustomView(paramView);
+    a(paramView, new ActionBar.LayoutParams(-2, -2));
   }
   
   public final void setDisplayHomeAsUpEnabled(boolean paramBoolean)
@@ -280,54 +282,59 @@ final class g
   
   public final void setElevation(float paramFloat)
   {
-    t.k(this.ZH.jt(), paramFloat);
+    android.support.v4.view.u.l(this.ZU.jC(), paramFloat);
   }
   
   public final void setHomeActionContentDescription(int paramInt)
   {
-    this.ZH.setNavigationContentDescription(paramInt);
+    this.ZU.setNavigationContentDescription(paramInt);
   }
   
   public final void setLogo(Drawable paramDrawable)
   {
-    this.ZH.setLogo(paramDrawable);
+    this.ZU.setLogo(paramDrawable);
+  }
+  
+  public final void setTitle(CharSequence paramCharSequence)
+  {
+    this.ZU.setTitle(paramCharSequence);
   }
   
   public final void setWindowTitle(CharSequence paramCharSequence)
   {
-    this.ZH.setWindowTitle(paramCharSequence);
+    this.ZU.setWindowTitle(paramCharSequence);
   }
   
   public final void show()
   {
-    this.ZH.setVisibility(0);
+    this.ZU.setVisibility(0);
   }
   
   final class a
     implements o.a
   {
-    private boolean YJ;
+    private boolean YW;
     
     a() {}
     
     public final void a(h paramh, boolean paramBoolean)
     {
-      if (this.YJ) {
+      if (this.YW) {
         return;
       }
-      this.YJ = true;
-      g.this.ZH.dismissPopupMenus();
-      if (g.this.ZJ != null) {
-        g.this.ZJ.onPanelClosed(108, paramh);
+      this.YW = true;
+      g.this.ZU.dismissPopupMenus();
+      if (g.this.ZW != null) {
+        g.this.ZW.onPanelClosed(108, paramh);
       }
-      this.YJ = false;
+      this.YW = false;
     }
     
     public final boolean d(h paramh)
     {
-      if (g.this.ZJ != null)
+      if (g.this.ZW != null)
       {
-        g.this.ZJ.onMenuOpened(108, paramh);
+        g.this.ZW.onMenuOpened(108, paramh);
         return true;
       }
       return false;
@@ -346,18 +353,18 @@ final class g
     
     public final void b(h paramh)
     {
-      if (g.this.ZJ != null)
+      if (g.this.ZW != null)
       {
-        if (!g.this.ZH.isOverflowMenuShowing()) {
+        if (!g.this.ZU.isOverflowMenuShowing()) {
           break label41;
         }
-        g.this.ZJ.onPanelClosed(108, paramh);
+        g.this.ZW.onPanelClosed(108, paramh);
       }
       label41:
-      while (!g.this.ZJ.onPreparePanel(0, null, paramh)) {
+      while (!g.this.ZW.onPreparePanel(0, null, paramh)) {
         return;
       }
-      g.this.ZJ.onMenuOpened(108, paramh);
+      g.this.ZW.onMenuOpened(108, paramh);
     }
   }
   
@@ -372,7 +379,7 @@ final class g
     public final View onCreatePanelView(int paramInt)
     {
       if (paramInt == 0) {
-        return new View(g.this.ZH.getContext());
+        return new View(g.this.ZU.getContext());
       }
       return super.onCreatePanelView(paramInt);
     }
@@ -380,10 +387,10 @@ final class g
     public final boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
     {
       boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
-      if ((bool) && (!g.this.ZI))
+      if ((bool) && (!g.this.ZV))
       {
-        g.this.ZH.iu();
-        g.this.ZI = true;
+        g.this.ZU.iD();
+        g.this.ZV = true;
       }
       return bool;
     }

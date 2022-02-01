@@ -3,7 +3,7 @@ package com.tencent.mm.game.report;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.api.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -16,7 +16,7 @@ public final class f
   public static String a(String paramString1, String paramString2, String paramString3, Map paramMap)
   {
     AppMethodBeat.i(108265);
-    if ((bu.isNullOrNil(paramString1)) && (bu.isNullOrNil(paramString2)) && (bu.isNullOrNil(paramString3)) && (paramMap == null))
+    if ((Util.isNullOrNil(paramString1)) && (Util.isNullOrNil(paramString2)) && (Util.isNullOrNil(paramString3)) && (paramMap == null))
     {
       AppMethodBeat.o(108265);
       return null;
@@ -24,13 +24,13 @@ public final class f
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!bu.isNullOrNil(paramString1)) {
+      if (!Util.isNullOrNil(paramString1)) {
         localJSONObject.put("function_type", paramString1);
       }
-      if (!bu.isNullOrNil(paramString2)) {
+      if (!Util.isNullOrNil(paramString2)) {
         localJSONObject.put("function_value", paramString2);
       }
-      if (!bu.isNullOrNil(paramString3)) {
+      if (!Util.isNullOrNil(paramString3)) {
         localJSONObject.put("ext_data", paramString3);
       }
       if (paramMap != null)
@@ -57,7 +57,7 @@ public final class f
     }
     catch (JSONException paramString1)
     {
-      paramString1 = com.tencent.mm.game.report.e.a.wT(localJSONObject.toString());
+      paramString1 = com.tencent.mm.game.report.e.a.Fh(localJSONObject.toString());
       AppMethodBeat.o(108265);
     }
   }
@@ -72,8 +72,8 @@ public final class f
   public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, int paramInt6, int paramInt7, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(108263);
-    paramContext = b.c(12909, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString1, Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), paramString2, Integer.valueOf(bu.getInt(paramString3, 0)), Integer.valueOf(com.tencent.mm.game.report.e.a.getNetworkType(paramContext)), paramString4 });
-    com.tencent.mm.game.report.api.a.guC.a(paramContext);
+    paramContext = b.e(12909, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString1, Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), paramString2, Integer.valueOf(Util.getInt(paramString3, 0)), Integer.valueOf(com.tencent.mm.game.report.e.a.getNetworkType(paramContext)), paramString4 });
+    com.tencent.mm.game.report.api.a.hhr.a(paramContext);
     AppMethodBeat.o(108263);
   }
   
@@ -91,7 +91,7 @@ public final class f
     AppMethodBeat.o(108262);
   }
   
-  public static String an(String paramString1, String paramString2)
+  public static String ap(String paramString1, String paramString2)
   {
     AppMethodBeat.i(108264);
     JSONObject localJSONObject = new JSONObject();
@@ -100,7 +100,7 @@ public final class f
       localJSONObject.put("function_type", paramString1);
       localJSONObject.put("function_value", paramString2);
       label29:
-      paramString1 = com.tencent.mm.game.report.e.a.wT(localJSONObject.toString());
+      paramString1 = com.tencent.mm.game.report.e.a.Fh(localJSONObject.toString());
       AppMethodBeat.o(108264);
       return paramString1;
     }
@@ -110,7 +110,7 @@ public final class f
     }
   }
   
-  public static String ao(String paramString1, String paramString2)
+  public static String aq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(108266);
     JSONObject localJSONObject = new JSONObject();
@@ -118,7 +118,7 @@ public final class f
     {
       localJSONObject.put(paramString1, paramString2);
       label20:
-      paramString1 = com.tencent.mm.game.report.e.a.wT(localJSONObject.toString());
+      paramString1 = com.tencent.mm.game.report.e.a.Fh(localJSONObject.toString());
       AppMethodBeat.o(108266);
       return paramString1;
     }
@@ -128,9 +128,14 @@ public final class f
     }
   }
   
-  public static String r(Map paramMap)
+  public static String t(Map paramMap)
   {
     AppMethodBeat.i(184813);
+    if (paramMap == null)
+    {
+      AppMethodBeat.o(184813);
+      return null;
+    }
     JSONObject localJSONObject = new JSONObject();
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -146,7 +151,7 @@ public final class f
         return "";
       }
     }
-    paramMap = com.tencent.mm.game.report.e.a.wT(localJSONObject.toString());
+    paramMap = com.tencent.mm.game.report.e.a.Fh(localJSONObject.toString());
     AppMethodBeat.o(184813);
     return paramMap;
   }

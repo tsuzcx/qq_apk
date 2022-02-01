@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView android:textAppearance="@style/nn" android:textColor="@color/y4" android:ellipsize="marquee" android:gravity="center|left" android:background="@null" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/a9_" android:minHeight="48.0dip" android:text="@string/gov"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="horizontal" android:layout_width="150.0dip" android:layout_height="46.0dip" android:weightSum="3.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/f9h" android:background="@drawable/cko" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/aha" android:scaleType="center" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/bm" android:textColor="@color/a2x" android:gravity="center" android:id="@id/f9c" android:background="@drawable/ckn" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <ImageView android:id="@id/f9b" android:background="@drawable/cks" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/ah9" android:scaleType="center" android:layout_weight="1.0" />
+</LinearLayout>

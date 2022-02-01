@@ -57,7 +57,7 @@ public class TXCStreamUploader
   private long mLastTimeStamp;
   private UploadStats mLastUploadStats;
   HashMap<String, String> mMetaData;
-  private WeakReference<com.tencent.liteav.basic.c.a> mNotifyListener;
+  private WeakReference<com.tencent.liteav.basic.b.b> mNotifyListener;
   private h mParam;
   private boolean mQuicChannel;
   private int mRetryCount;
@@ -269,13 +269,20 @@ public class TXCStreamUploader
       return localObject;
     }
     String[] arrayOfString2 = arrayOfString1[1].split("/");
-    arrayOfString2[0] = (((a)localObject).a + ":" + ((a)localObject).b);
-    StringBuilder localStringBuilder = new StringBuilder(arrayOfString2[0]);
-    while (i < arrayOfString2.length)
+    if ((((a)localObject).a.split(":").length > 1) && (!((a)localObject).a.startsWith("["))) {
+      arrayOfString2[0] = ("[" + ((a)localObject).a + "]:" + ((a)localObject).b);
+    }
+    StringBuilder localStringBuilder;
+    for (;;)
     {
-      localStringBuilder.append("/");
-      localStringBuilder.append(arrayOfString2[i]);
-      i += 1;
+      localStringBuilder = new StringBuilder(arrayOfString2[0]);
+      while (i < arrayOfString2.length)
+      {
+        localStringBuilder.append("/");
+        localStringBuilder.append(arrayOfString2[i]);
+        i += 1;
+      }
+      arrayOfString2[0] = (((a)localObject).a + ":" + ((a)localObject).b);
     }
     localObject = new b(arrayOfString1[0] + "://" + localStringBuilder.toString(), ((a)localObject).c);
     AppMethodBeat.o(15353);
@@ -315,7 +322,7 @@ public class TXCStreamUploader
         this.mLastNetworkType = f.e(this.mContext);
         this.mRetryCount = 0;
         Monitor.a(2, "WebrtcRoom: need enter again by user", "", 0);
-        sendNotifyEvent(1021, String.format("网络类型发生变化，需要重新进房", new Object[0]));
+        sendNotifyEvent(1021, String.format("Network type has changed. Need to re-enter the room", new Object[0]));
         AppMethodBeat.o(15357);
         return;
       }
@@ -492,12 +499,12 @@ public class TXCStreamUploader
     AppMethodBeat.i(15369);
     if (paramInt1 == 1)
     {
-      sendNotifyEvent(1018, String.format("已在房间中，[%d]", new Object[] { Integer.valueOf(paramInt2) }));
+      sendNotifyEvent(1018, String.format("Already in room，[%d]", new Object[] { Integer.valueOf(paramInt2) }));
       AppMethodBeat.o(15369);
       return;
     }
     if (paramInt1 == 2) {
-      sendNotifyEvent(1019, String.format("不在房间中，[%d]", new Object[] { Integer.valueOf(paramInt2) }));
+      sendNotifyEvent(1019, String.format("Not in the room，[%d]", new Object[] { Integer.valueOf(paramInt2) }));
     }
     AppMethodBeat.o(15369);
   }
@@ -544,6 +551,7 @@ public class TXCStreamUploader
       }
       catch (Exception paramArrayOfRtmpProxyUserInfo)
       {
+        TXCLog.e("TXCStreamUploader", "build json object failed.", paramArrayOfRtmpProxyUserInfo);
         AppMethodBeat.o(15368);
         return;
       }
@@ -582,8 +590,8 @@ public class TXCStreamUploader
     //   11: invokevirtual 426	java/lang/String:length	()I
     //   14: ifeq +13 -> 27
     //   17: aload_1
-    //   18: ldc_w 651
-    //   21: invokevirtual 584	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   18: ldc_w 660
+    //   21: invokevirtual 457	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   24: ifne +10 -> 34
     //   27: sipush 15363
     //   30: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -592,11 +600,11 @@ public class TXCStreamUploader
     //   35: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
     //   38: aload_0
     //   39: aload_1
-    //   40: invokespecial 653	com/tencent/liteav/network/TXCStreamUploader:isQCloudStreamUrl	(Ljava/lang/String;)Z
-    //   43: putfield 655	com/tencent/liteav/network/TXCStreamUploader$a:i	Z
+    //   40: invokespecial 662	com/tencent/liteav/network/TXCStreamUploader:isQCloudStreamUrl	(Ljava/lang/String;)Z
+    //   43: putfield 664	com/tencent/liteav/network/TXCStreamUploader$a:i	Z
     //   46: aload_0
     //   47: aload_1
-    //   48: invokespecial 657	com/tencent/liteav/network/TXCStreamUploader:getParamsFromUrl	(Ljava/lang/String;)Ljava/util/HashMap;
+    //   48: invokespecial 666	com/tencent/liteav/network/TXCStreamUploader:getParamsFromUrl	(Ljava/lang/String;)Ljava/util/HashMap;
     //   51: astore 6
     //   53: aload 6
     //   55: ifnonnull +10 -> 65
@@ -604,29 +612,29 @@ public class TXCStreamUploader
     //   61: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: return
     //   65: aload 6
-    //   67: ldc_w 659
-    //   70: invokevirtual 663	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   67: ldc_w 668
+    //   70: invokevirtual 672	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   73: ifeq +27 -> 100
     //   76: aload_0
     //   77: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
     //   80: aload 6
-    //   82: ldc_w 659
-    //   85: invokevirtual 666	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   82: ldc_w 668
+    //   85: invokevirtual 675	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   88: checkcast 365	java/lang/String
-    //   91: invokestatic 669	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   94: invokevirtual 673	java/lang/Long:longValue	()J
-    //   97: putfield 675	com/tencent/liteav/network/TXCStreamUploader$a:a	J
+    //   91: invokestatic 678	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   94: invokevirtual 682	java/lang/Long:longValue	()J
+    //   97: putfield 684	com/tencent/liteav/network/TXCStreamUploader$a:a	J
     //   100: aload 6
-    //   102: ldc_w 677
-    //   105: invokevirtual 663	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   102: ldc_w 686
+    //   105: invokevirtual 672	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   108: ifeq +25 -> 133
     //   111: aload 6
-    //   113: ldc_w 622
-    //   116: invokevirtual 663	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   113: ldc_w 626
+    //   116: invokevirtual 672	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   119: ifeq +14 -> 133
     //   122: aload 6
-    //   124: ldc_w 679
-    //   127: invokevirtual 663	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   124: ldc_w 688
+    //   127: invokevirtual 672	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   130: ifne +10 -> 140
     //   133: sipush 15363
     //   136: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -634,272 +642,281 @@ public class TXCStreamUploader
     //   140: aload_0
     //   141: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
     //   144: aload 6
-    //   146: ldc_w 677
-    //   149: invokevirtual 666	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   146: ldc_w 686
+    //   149: invokevirtual 675	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   152: checkcast 365	java/lang/String
-    //   155: invokestatic 669	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   158: invokevirtual 673	java/lang/Long:longValue	()J
-    //   161: putfield 682	com/tencent/liteav/network/TXCStreamUploader$a:d	J
+    //   155: invokestatic 678	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   158: invokevirtual 682	java/lang/Long:longValue	()J
+    //   161: putfield 691	com/tencent/liteav/network/TXCStreamUploader$a:d	J
     //   164: aload_0
     //   165: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
     //   168: aload 6
-    //   170: ldc_w 622
-    //   173: invokevirtual 666	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   170: ldc_w 626
+    //   173: invokevirtual 675	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   176: checkcast 365	java/lang/String
-    //   179: putfield 684	com/tencent/liteav/network/TXCStreamUploader$a:c	Ljava/lang/String;
+    //   179: putfield 693	com/tencent/liteav/network/TXCStreamUploader$a:c	Ljava/lang/String;
     //   182: aload 6
-    //   184: ldc_w 686
-    //   187: invokevirtual 663	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   184: ldc_w 695
+    //   187: invokevirtual 672	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   190: ifeq +31 -> 221
     //   193: aload 6
-    //   195: ldc_w 686
-    //   198: invokevirtual 666	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   195: ldc_w 695
+    //   198: invokevirtual 675	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   201: checkcast 365	java/lang/String
     //   204: astore 7
     //   206: aload_0
     //   207: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
     //   210: aload 7
-    //   212: ldc_w 688
-    //   215: invokestatic 694	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   218: putfield 696	com/tencent/liteav/network/TXCStreamUploader$a:j	Ljava/lang/String;
-    //   221: new 619	org/json/JSONObject
+    //   212: ldc_w 697
+    //   215: invokestatic 703	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   218: putfield 705	com/tencent/liteav/network/TXCStreamUploader$a:j	Ljava/lang/String;
+    //   221: new 623	org/json/JSONObject
     //   224: dup
     //   225: aload 6
-    //   227: ldc_w 679
-    //   230: invokevirtual 666	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   227: ldc_w 688
+    //   230: invokevirtual 675	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   233: checkcast 365	java/lang/String
-    //   236: ldc_w 688
-    //   239: invokestatic 694	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   242: invokespecial 697	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   236: ldc_w 697
+    //   239: invokestatic 703	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   242: invokespecial 706	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   245: astore 7
     //   247: aload_0
     //   248: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
     //   251: lconst_0
-    //   252: putfield 699	com/tencent/liteav/network/TXCStreamUploader$a:b	J
+    //   252: putfield 708	com/tencent/liteav/network/TXCStreamUploader$a:b	J
     //   255: aload 7
-    //   257: ldc_w 701
-    //   260: invokevirtual 704	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   257: ldc_w 710
+    //   260: invokevirtual 713	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   263: istore_3
     //   264: iload_3
-    //   265: ifne +10 -> 275
+    //   265: ifne +25 -> 290
     //   268: sipush 15363
     //   271: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   274: return
-    //   275: aload_0
-    //   276: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
-    //   279: aload 7
-    //   281: ldc_w 701
-    //   284: invokevirtual 707	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   287: putfield 709	com/tencent/liteav/network/TXCStreamUploader$a:e	Ljava/lang/String;
-    //   290: aload 7
-    //   292: ldc_w 711
-    //   295: invokevirtual 715	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   298: astore 6
-    //   300: aload 6
-    //   302: ifnull +45 -> 347
-    //   305: aload 6
-    //   307: ldc_w 717
-    //   310: invokevirtual 704	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   313: ifeq +27 -> 340
-    //   316: aload 6
-    //   318: ldc_w 719
-    //   321: invokevirtual 704	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   324: ifeq +16 -> 340
-    //   327: aload 6
-    //   329: ldc_w 721
-    //   332: invokevirtual 704	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   335: istore_3
-    //   336: iload_3
-    //   337: ifne +10 -> 347
-    //   340: sipush 15363
-    //   343: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   346: return
-    //   347: aload 7
-    //   349: ldc_w 723
-    //   352: invokevirtual 727	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   355: astore 7
-    //   357: aload 7
-    //   359: ifnull +140 -> 499
+    //   275: astore 7
+    //   277: ldc 35
+    //   279: ldc_w 715
+    //   282: aload 7
+    //   284: invokestatic 648	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   287: goto -66 -> 221
+    //   290: aload_0
+    //   291: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
+    //   294: aload 7
+    //   296: ldc_w 710
+    //   299: invokevirtual 718	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   302: putfield 720	com/tencent/liteav/network/TXCStreamUploader$a:e	Ljava/lang/String;
+    //   305: aload 7
+    //   307: ldc_w 722
+    //   310: invokevirtual 726	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   313: astore 6
+    //   315: aload 6
+    //   317: ifnull +45 -> 362
+    //   320: aload 6
+    //   322: ldc_w 728
+    //   325: invokevirtual 713	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   328: ifeq +27 -> 355
+    //   331: aload 6
+    //   333: ldc_w 730
+    //   336: invokevirtual 713	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   339: ifeq +16 -> 355
+    //   342: aload 6
+    //   344: ldc_w 732
+    //   347: invokevirtual 713	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   350: istore_3
+    //   351: iload_3
+    //   352: ifne +10 -> 362
+    //   355: sipush 15363
+    //   358: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   361: return
     //   362: aload 7
-    //   364: invokevirtual 728	org/json/JSONArray:length	()I
-    //   367: ifle +132 -> 499
-    //   370: iconst_0
-    //   371: istore_2
-    //   372: iload_2
-    //   373: aload 7
-    //   375: invokevirtual 728	org/json/JSONArray:length	()I
-    //   378: if_icmpge +121 -> 499
-    //   381: aload 7
-    //   383: iload_2
-    //   384: invokevirtual 732	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   387: astore 8
-    //   389: aload 8
-    //   391: ifnull +327 -> 718
-    //   394: aload 8
-    //   396: ldc_w 717
-    //   399: invokevirtual 704	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   402: ifeq +316 -> 718
-    //   405: aload 8
-    //   407: ldc_w 719
-    //   410: invokevirtual 704	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   413: ifeq +305 -> 718
-    //   416: aload 8
-    //   418: ldc_w 721
-    //   421: invokevirtual 704	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   424: ifeq +294 -> 718
-    //   427: aload 8
-    //   429: ldc_w 717
-    //   432: invokevirtual 707	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   435: astore 9
-    //   437: aload 8
-    //   439: ldc_w 719
-    //   442: invokevirtual 736	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   445: lstore 4
-    //   447: aload 8
-    //   449: ldc_w 721
-    //   452: invokevirtual 736	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   455: ldc2_w 737
-    //   458: lcmp
-    //   459: ifne +259 -> 718
-    //   462: aload_0
-    //   463: getfield 202	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyIPList	Ljava/util/Vector;
-    //   466: new 403	java/lang/StringBuilder
-    //   469: dup
-    //   470: invokespecial 448	java/lang/StringBuilder:<init>	()V
-    //   473: aload 9
-    //   475: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   478: ldc_w 452
-    //   481: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: lload 4
-    //   486: invokevirtual 741	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   489: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   492: invokevirtual 744	java/util/Vector:add	(Ljava/lang/Object;)Z
-    //   495: pop
-    //   496: goto +222 -> 718
-    //   499: aload_0
-    //   500: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
-    //   503: getfield 655	com/tencent/liteav/network/TXCStreamUploader$a:i	Z
-    //   506: istore_3
-    //   507: iload_3
-    //   508: ifeq +184 -> 692
-    //   511: aload 6
-    //   513: ifnonnull +10 -> 523
-    //   516: sipush 15363
-    //   519: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   522: return
-    //   523: aload_1
-    //   524: iconst_0
-    //   525: aload_1
-    //   526: ldc_w 746
-    //   529: invokevirtual 369	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   532: invokevirtual 378	java/lang/String:substring	(II)Ljava/lang/String;
-    //   535: astore_1
-    //   536: new 403	java/lang/StringBuilder
-    //   539: dup
-    //   540: invokespecial 448	java/lang/StringBuilder:<init>	()V
-    //   543: aload_0
-    //   544: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
-    //   547: getfield 675	com/tencent/liteav/network/TXCStreamUploader$a:a	J
-    //   550: invokevirtual 741	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   553: ldc_w 748
-    //   556: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   559: aload_0
-    //   560: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
-    //   563: getfield 682	com/tencent/liteav/network/TXCStreamUploader$a:d	J
-    //   566: invokevirtual 741	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   569: ldc_w 748
-    //   572: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   575: aload_0
-    //   576: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
-    //   579: getfield 684	com/tencent/liteav/network/TXCStreamUploader$a:c	Ljava/lang/String;
-    //   582: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   585: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   588: astore 7
+    //   364: ldc_w 734
+    //   367: invokevirtual 738	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   370: astore 7
+    //   372: aload 7
+    //   374: ifnull +140 -> 514
+    //   377: aload 7
+    //   379: invokevirtual 739	org/json/JSONArray:length	()I
+    //   382: ifle +132 -> 514
+    //   385: iconst_0
+    //   386: istore_2
+    //   387: iload_2
+    //   388: aload 7
+    //   390: invokevirtual 739	org/json/JSONArray:length	()I
+    //   393: if_icmpge +121 -> 514
+    //   396: aload 7
+    //   398: iload_2
+    //   399: invokevirtual 743	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   402: astore 8
+    //   404: aload 8
+    //   406: ifnull +331 -> 737
+    //   409: aload 8
+    //   411: ldc_w 728
+    //   414: invokevirtual 713	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   417: ifeq +320 -> 737
+    //   420: aload 8
+    //   422: ldc_w 730
+    //   425: invokevirtual 713	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   428: ifeq +309 -> 737
+    //   431: aload 8
+    //   433: ldc_w 732
+    //   436: invokevirtual 713	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   439: ifeq +298 -> 737
+    //   442: aload 8
+    //   444: ldc_w 728
+    //   447: invokevirtual 718	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   450: astore 9
+    //   452: aload 8
+    //   454: ldc_w 730
+    //   457: invokevirtual 747	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   460: lstore 4
+    //   462: aload 8
+    //   464: ldc_w 732
+    //   467: invokevirtual 747	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   470: ldc2_w 748
+    //   473: lcmp
+    //   474: ifne +263 -> 737
+    //   477: aload_0
+    //   478: getfield 202	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyIPList	Ljava/util/Vector;
+    //   481: new 403	java/lang/StringBuilder
+    //   484: dup
+    //   485: invokespecial 462	java/lang/StringBuilder:<init>	()V
+    //   488: aload 9
+    //   490: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   493: ldc_w 451
+    //   496: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: lload 4
+    //   501: invokevirtual 752	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   504: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   507: invokevirtual 755	java/util/Vector:add	(Ljava/lang/Object;)Z
+    //   510: pop
+    //   511: goto +226 -> 737
+    //   514: aload_0
+    //   515: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
+    //   518: getfield 664	com/tencent/liteav/network/TXCStreamUploader$a:i	Z
+    //   521: istore_3
+    //   522: iload_3
+    //   523: ifeq +184 -> 707
+    //   526: aload 6
+    //   528: ifnonnull +10 -> 538
+    //   531: sipush 15363
+    //   534: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   537: return
+    //   538: aload_1
+    //   539: iconst_0
+    //   540: aload_1
+    //   541: ldc_w 757
+    //   544: invokevirtual 369	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   547: invokevirtual 378	java/lang/String:substring	(II)Ljava/lang/String;
+    //   550: astore_1
+    //   551: new 403	java/lang/StringBuilder
+    //   554: dup
+    //   555: invokespecial 462	java/lang/StringBuilder:<init>	()V
+    //   558: aload_0
+    //   559: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
+    //   562: getfield 684	com/tencent/liteav/network/TXCStreamUploader$a:a	J
+    //   565: invokevirtual 752	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   568: ldc_w 759
+    //   571: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   574: aload_0
+    //   575: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
+    //   578: getfield 691	com/tencent/liteav/network/TXCStreamUploader$a:d	J
+    //   581: invokevirtual 752	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   584: ldc_w 759
+    //   587: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   590: aload_0
-    //   591: new 403	java/lang/StringBuilder
-    //   594: dup
-    //   595: invokespecial 448	java/lang/StringBuilder:<init>	()V
-    //   598: aload_1
-    //   599: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   602: ldc_w 750
-    //   605: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   608: aload 7
-    //   610: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   613: ldc_w 752
-    //   616: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   619: aload 6
-    //   621: ldc_w 717
-    //   624: invokevirtual 707	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   627: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   630: ldc_w 754
-    //   633: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   636: aload 6
-    //   638: ldc_w 719
-    //   641: invokevirtual 736	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   644: invokevirtual 741	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   647: ldc_w 756
-    //   650: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   653: aload_0
-    //   654: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
-    //   657: getfield 699	com/tencent/liteav/network/TXCStreamUploader$a:b	J
-    //   660: invokevirtual 741	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   663: ldc_w 758
-    //   666: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   669: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   672: putfield 136	com/tencent/liteav/network/TXCStreamUploader:mRtmpUrl	Ljava/lang/String;
-    //   675: aload_0
-    //   676: invokespecial 529	com/tencent/liteav/network/TXCStreamUploader:getNextRtmpProxyIP	()Z
-    //   679: pop
-    //   680: aload_0
-    //   681: iconst_1
-    //   682: putfield 193	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyEnable	Z
-    //   685: sipush 15363
-    //   688: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   691: return
-    //   692: aload_0
-    //   693: aload_1
-    //   694: putfield 136	com/tencent/liteav/network/TXCStreamUploader:mRtmpUrl	Ljava/lang/String;
-    //   697: aload_0
-    //   698: iconst_0
-    //   699: putfield 138	com/tencent/liteav/network/TXCStreamUploader:mQuicChannel	Z
-    //   702: goto -22 -> 680
-    //   705: astore_1
-    //   706: sipush 15363
-    //   709: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   712: return
-    //   713: astore 7
-    //   715: goto -494 -> 221
-    //   718: iload_2
-    //   719: iconst_1
-    //   720: iadd
-    //   721: istore_2
-    //   722: goto -350 -> 372
+    //   591: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
+    //   594: getfield 693	com/tencent/liteav/network/TXCStreamUploader$a:c	Ljava/lang/String;
+    //   597: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   600: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   603: astore 7
+    //   605: aload_0
+    //   606: new 403	java/lang/StringBuilder
+    //   609: dup
+    //   610: invokespecial 462	java/lang/StringBuilder:<init>	()V
+    //   613: aload_1
+    //   614: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   617: ldc_w 761
+    //   620: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   623: aload 7
+    //   625: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   628: ldc_w 763
+    //   631: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   634: aload 6
+    //   636: ldc_w 728
+    //   639: invokevirtual 718	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   642: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   645: ldc_w 765
+    //   648: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   651: aload 6
+    //   653: ldc_w 730
+    //   656: invokevirtual 747	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   659: invokevirtual 752	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   662: ldc_w 767
+    //   665: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   668: aload_0
+    //   669: getfield 200	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyParam	Lcom/tencent/liteav/network/TXCStreamUploader$a;
+    //   672: getfield 708	com/tencent/liteav/network/TXCStreamUploader$a:b	J
+    //   675: invokevirtual 752	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   678: ldc_w 769
+    //   681: invokevirtual 412	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   684: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   687: putfield 136	com/tencent/liteav/network/TXCStreamUploader:mRtmpUrl	Ljava/lang/String;
+    //   690: aload_0
+    //   691: invokespecial 537	com/tencent/liteav/network/TXCStreamUploader:getNextRtmpProxyIP	()Z
+    //   694: pop
+    //   695: aload_0
+    //   696: iconst_1
+    //   697: putfield 193	com/tencent/liteav/network/TXCStreamUploader:mRtmpProxyEnable	Z
+    //   700: sipush 15363
+    //   703: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   706: return
+    //   707: aload_0
+    //   708: aload_1
+    //   709: putfield 136	com/tencent/liteav/network/TXCStreamUploader:mRtmpUrl	Ljava/lang/String;
+    //   712: aload_0
+    //   713: iconst_0
+    //   714: putfield 138	com/tencent/liteav/network/TXCStreamUploader:mQuicChannel	Z
+    //   717: goto -22 -> 695
+    //   720: astore_1
+    //   721: ldc 35
+    //   723: ldc_w 771
+    //   726: aload_1
+    //   727: invokestatic 648	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   730: sipush 15363
+    //   733: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   736: return
+    //   737: iload_2
+    //   738: iconst_1
+    //   739: iadd
+    //   740: istore_2
+    //   741: goto -354 -> 387
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	725	0	this	TXCStreamUploader
-    //   0	725	1	paramString	String
-    //   371	351	2	i	int
-    //   263	245	3	bool	boolean
-    //   445	40	4	l	long
-    //   51	586	6	localObject1	Object
-    //   204	405	7	localObject2	Object
-    //   713	1	7	localException	Exception
-    //   387	61	8	localJSONObject	JSONObject
-    //   435	39	9	str	String
+    //   0	744	0	this	TXCStreamUploader
+    //   0	744	1	paramString	String
+    //   386	355	2	i	int
+    //   263	260	3	bool	boolean
+    //   460	40	4	l	long
+    //   51	601	6	localObject1	Object
+    //   204	52	7	localObject2	Object
+    //   275	88	7	localException	Exception
+    //   370	254	7	localObject3	Object
+    //   402	61	8	localJSONObject	JSONObject
+    //   450	39	9	str	String
     // Exception table:
     //   from	to	target	type
-    //   221	264	705	java/lang/Exception
-    //   275	300	705	java/lang/Exception
-    //   305	336	705	java/lang/Exception
-    //   347	357	705	java/lang/Exception
-    //   362	370	705	java/lang/Exception
-    //   372	389	705	java/lang/Exception
-    //   394	496	705	java/lang/Exception
-    //   499	507	705	java/lang/Exception
-    //   523	680	705	java/lang/Exception
-    //   680	685	705	java/lang/Exception
-    //   692	702	705	java/lang/Exception
-    //   193	221	713	java/lang/Exception
+    //   193	221	275	java/lang/Exception
+    //   221	264	720	java/lang/Exception
+    //   290	315	720	java/lang/Exception
+    //   320	351	720	java/lang/Exception
+    //   362	372	720	java/lang/Exception
+    //   377	385	720	java/lang/Exception
+    //   387	404	720	java/lang/Exception
+    //   409	511	720	java/lang/Exception
+    //   514	522	720	java/lang/Exception
+    //   538	695	720	java/lang/Exception
+    //   695	700	720	java/lang/Exception
+    //   707	717	720	java/lang/Exception
   }
   
   private void postReconnectMsg(String paramString, boolean paramBoolean, int paramInt)
@@ -1080,25 +1097,25 @@ public class TXCStreamUploader
       f.a(this.mNotifyListener, paramInt, (Bundle)???);
       AppMethodBeat.o(15359);
       return;
-      ((Bundle)???).putString("EVT_MSG", "所有IP都已经尝试失败,可以放弃治疗");
+      ((Bundle)???).putString("EVT_MSG", "Failed to connect all IPs, abort connection.");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "经连续多次重连失败，放弃重连");
+      ((Bundle)???).putString("EVT_MSG", "failed to connect server for several times, abort connection");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "超过30s没有数据发送，主动断开连接");
+      ((Bundle)???).putString("EVT_MSG", "No data is sent for more than 30s. Actively disconnect");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "没有网络，请检测WiFi或移动数据是否开启");
+      ((Bundle)???).putString("EVT_MSG", "No internet. Please check if WiFi or mobile data is turned on");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "连接服务器失败");
+      ((Bundle)???).putString("EVT_MSG", "Failed to connect server");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "已经连接rtmp服务器");
+      ((Bundle)???).putString("EVT_MSG", "Already connected to rtmp server");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "RTMP服务器握手失败");
+      ((Bundle)???).putString("EVT_MSG", "RTMP servers handshake failed");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "上行带宽不足，数据发送不及时");
+      ((Bundle)???).putString("EVT_MSG", "Insufficient upstream bandwidth. Data transmission is not timely");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "rtmp开始推流");
+      ((Bundle)???).putString("EVT_MSG", "rtmp start push stream");
       continue;
-      ((Bundle)???).putString("EVT_MSG", "服务器拒绝连接请求，可能是该推流地址已经被占用或过期，或者防盗链错误");
+      ((Bundle)???).putString("EVT_MSG", "The server rejects the connection request. It may be that the push URL has been occupied or expired, or the anti-leech link is wrong.");
       continue;
       if (this.mRtmpProxyEnable) {
         synchronized (this.mRtmpMsgRecvThreadLock)
@@ -1118,7 +1135,7 @@ public class TXCStreamUploader
         AppMethodBeat.o(15359);
         throw localObject4;
       }
-      ((Bundle)???).putString("EVT_MSG", "启动网络重连");
+      ((Bundle)???).putString("EVT_MSG", "Enables network reconnection");
     }
   }
   
@@ -1544,11 +1561,11 @@ public class TXCStreamUploader
     }
   }
   
-  public void setNotifyListener(com.tencent.liteav.basic.c.a parama)
+  public void setNotifyListener(com.tencent.liteav.basic.b.b paramb)
   {
-    AppMethodBeat.i(15336);
-    this.mNotifyListener = new WeakReference(parama);
-    AppMethodBeat.o(15336);
+    AppMethodBeat.i(222380);
+    this.mNotifyListener = new WeakReference(paramb);
+    AppMethodBeat.o(222380);
   }
   
   public void setRetryInterval(int paramInt)
@@ -1846,7 +1863,7 @@ public class TXCStreamUploader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamUploader
  * JD-Core Version:    0.7.0.1
  */

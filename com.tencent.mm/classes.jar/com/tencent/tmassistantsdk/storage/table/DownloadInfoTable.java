@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.downloadservice.DownloadInfo;
 import com.tencent.tmassistantsdk.downloadservice.taskmanager.ServiceDownloadTask;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
@@ -41,7 +41,7 @@ public class DownloadInfoTable
       }
       catch (Exception paramDownloadInfo)
       {
-        ae.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
+        Log.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102443);
@@ -59,7 +59,7 @@ public class DownloadInfoTable
       }
       catch (Exception paramString)
       {
-        ae.printErrStackTrace("DownloadInfoTable", paramString, "", new Object[0]);
+        Log.printErrStackTrace("DownloadInfoTable", paramString, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102444);
@@ -102,7 +102,7 @@ public class DownloadInfoTable
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      ae.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
+      Log.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
       return localArrayList;
     }
     finally
@@ -174,7 +174,7 @@ public class DownloadInfoTable
     //   100: ldc 77
     //   102: iconst_0
     //   103: anewarray 4	java/lang/Object
-    //   106: invokestatic 83	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   106: invokestatic 83	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   109: aload_1
     //   110: ifnull -25 -> 85
     //   113: aload_1
@@ -267,7 +267,7 @@ public class DownloadInfoTable
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      ae.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
+      Log.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
       return localArrayList;
     }
     finally
@@ -303,7 +303,7 @@ public class DownloadInfoTable
       }
       catch (Exception paramArrayList)
       {
-        ae.printErrStackTrace("DownloadInfoTable", paramArrayList, "", new Object[0]);
+        Log.printErrStackTrace("DownloadInfoTable", paramArrayList, "", new Object[0]);
         return;
         localSQLiteDatabase.setTransactionSuccessful();
         return;
@@ -339,7 +339,7 @@ public class DownloadInfoTable
     }
     catch (Exception paramDownloadInfo)
     {
-      ae.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
+      Log.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
       AppMethodBeat.o(102445);
     }
     return -2;
@@ -397,7 +397,7 @@ public class DownloadInfoTable
       for (;;)
       {
         localObject = localSQLiteDatabase;
-        ae.printErrStackTrace("DownloadInfoTable", paramSQLiteDatabase1, "", new Object[0]);
+        Log.printErrStackTrace("DownloadInfoTable", paramSQLiteDatabase1, "", new Object[0]);
         localObject = localSQLiteDatabase;
         TMLog.i("downloadInfo", "move data exception!");
         if (localSQLiteDatabase != null) {
@@ -441,7 +441,7 @@ public class DownloadInfoTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.DownloadInfoTable
  * JD-Core Version:    0.7.0.1
  */

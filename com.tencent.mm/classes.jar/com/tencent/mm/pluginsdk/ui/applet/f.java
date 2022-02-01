@@ -1,61 +1,23 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDownloadReporter;", "", "()V", "TAG", "", "reportDownloadImageType", "", "requestImageType", "", "responseContentType", "reportDownloadResult", "imageType", "success", "", "reportDownloadTime", "contentType", "downloadTime", "", "reportImageDecodeResult", "reportImageDecodeTime", "decodeTime", "reportImageRequestResult", "reportImageRequestTime", "requestTime", "reportRequestDownload", "reportRequestDownloadByImageType", "reportRequestImageDecode", "reportRequestNormalAfterGetWxPicFailed", "reportRequestNormalResultAfterGetWxPicFailed", "reportWxPicDataValid", "valid", "reportWxPicDecodeFailed", "url", "type", "errCode", "fromScene", "WxPicDecodeErrCode", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDownloadReporter;", "", "()V", "TAG", "", "reportDownloadImageType", "", "requestImageType", "", "responseContentType", "reportDownloadResult", "imageType", "success", "", "reportDownloadTime", "contentType", "downloadTime", "", "reportImageDecodeResult", "reportImageDecodeTime", "decodeTime", "reportImageRequestResult", "reportImageRequestTime", "requestTime", "reportRequestDownload", "reportRequestDownloadByImageType", "reportRequestImageDecode", "reportRequestNormalAfterGetWxPicFailed", "reportRequestNormalResultAfterGetWxPicFailed", "reportWxPicDataValid", "valid", "reportWxPicDecodeFailed", "url", "type", "errCode", "fromScene", "WxPicDecodeErrCode", "plugin-biz_release"})
 public final class f
 {
-  public static final f FnD;
+  public static final f Ket;
   
   static
   {
     AppMethodBeat.i(124852);
-    FnD = new f();
+    Ket = new f();
     AppMethodBeat.o(124852);
   }
   
-  public static void Zs(int paramInt)
-  {
-    AppMethodBeat.i(124840);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestDownloadByImageType imageType: %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(124840);
-      return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 1L, 1L);
-      AppMethodBeat.o(124840);
-      return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 2L, 1L);
-      AppMethodBeat.o(124840);
-      return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 31L, 1L);
-    }
-  }
-  
-  public static void Zt(int paramInt)
-  {
-    AppMethodBeat.i(124845);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestNormalAfterGetWxPicFailed requestImageType: %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(124845);
-      return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 14L, 1L);
-      AppMethodBeat.o(124845);
-      return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 40L, 1L);
-    }
-  }
-  
-  public static void aJ(String paramString, int paramInt1, int paramInt2)
+  public static void aL(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(124851);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -70,99 +32,115 @@ public final class f
       AppMethodBeat.o(124851);
       return;
     }
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportWxPicDecodeFailed type: %d, errCode: %d, fromScene: %d", new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    com.tencent.mm.plugin.report.service.g.yxI.f(17492, new Object[] { paramString, Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportWxPicDecodeFailed type: %d, errCode: %d, fromScene: %d", new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    h.CyF.a(17492, new Object[] { paramString, Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(124851);
   }
   
-  public static void aOf(String paramString)
+  public static void aid(int paramInt)
   {
-    AppMethodBeat.i(124843);
-    g localg = g.FnF;
-    int i = g.aOj(paramString);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestImageDecode contentType: %s, imageType: %d", new Object[] { paramString, Integer.valueOf(i) });
-    switch (i)
+    AppMethodBeat.i(124840);
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestDownloadByImageType imageType: %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(124843);
+      AppMethodBeat.o(124840);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 11L, 1L);
-      AppMethodBeat.o(124843);
+      h.CyF.n(1111L, 1L, 1L);
+      AppMethodBeat.o(124840);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 47L, 1L);
-      AppMethodBeat.o(124843);
+      h.CyF.n(1111L, 2L, 1L);
+      AppMethodBeat.o(124840);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 43L, 1L);
+      h.CyF.n(1111L, 31L, 1L);
+    }
+  }
+  
+  public static void aie(int paramInt)
+  {
+    AppMethodBeat.i(124845);
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestNormalAfterGetWxPicFailed requestImageType: %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(124845);
+      return;
+      h.CyF.n(1111L, 14L, 1L);
+      AppMethodBeat.o(124845);
+      return;
+      h.CyF.n(1111L, 40L, 1L);
     }
   }
   
   public static void b(int paramInt, boolean paramBoolean, long paramLong)
   {
     AppMethodBeat.i(124847);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo requestImageRequestTime imageType: %d, success: %b, requestTime: %d", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo requestImageRequestTime imageType: %d, success: %b, requestTime: %d", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
     switch (paramInt)
     {
     default: 
       AppMethodBeat.o(124847);
       return;
     case 0: 
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      localh = h.CyF;
       if (paramBoolean) {}
       for (l = 15L;; l = 24L)
       {
-        localg.n(1111L, l, paramLong);
+        localh.n(1111L, l, paramLong);
         AppMethodBeat.o(124847);
         return;
       }
     case 1: 
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      localh = h.CyF;
       if (paramBoolean) {}
       for (l = 16L;; l = 25L)
       {
-        localg.n(1111L, l, paramLong);
+        localh.n(1111L, l, paramLong);
         AppMethodBeat.o(124847);
         return;
       }
     }
-    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
+    h localh = h.CyF;
     if (paramBoolean) {}
     for (long l = 34L;; l = 35L)
     {
-      localg.n(1111L, l, paramLong);
+      localh.n(1111L, l, paramLong);
       break;
     }
   }
   
-  public static void bQ(String paramString, long paramLong)
+  public static void bR(String paramString, long paramLong)
   {
     AppMethodBeat.i(124849);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadTime contentType: %s, downloadTime: %d", new Object[] { paramString, Long.valueOf(paramLong) });
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadTime contentType: %s, downloadTime: %d", new Object[] { paramString, Long.valueOf(paramLong) });
     if (paramLong < 0L)
     {
       AppMethodBeat.o(124849);
       return;
     }
-    g localg = g.FnF;
-    switch (g.aOj(paramString))
+    g localg = g.Kev;
+    switch (g.beL(paramString))
     {
     }
     for (;;)
     {
       AppMethodBeat.o(124849);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 18L, paramLong);
+      h.CyF.n(1111L, 18L, paramLong);
       AppMethodBeat.o(124849);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 20L, paramLong);
+      h.CyF.n(1111L, 20L, paramLong);
       AppMethodBeat.o(124849);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 37L, paramLong);
+      h.CyF.n(1111L, 37L, paramLong);
     }
   }
   
-  public static void bR(String paramString, long paramLong)
+  public static void bS(String paramString, long paramLong)
   {
     AppMethodBeat.i(124850);
     if (paramLong < 0L)
@@ -170,9 +148,9 @@ public final class f
       AppMethodBeat.o(124850);
       return;
     }
-    g localg = g.FnF;
-    int i = g.aOj(paramString);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportImageDecodeTime contentType: %s, imageType: %d, decodeTime: %d", new Object[] { paramString, Integer.valueOf(i), Long.valueOf(paramLong) });
+    g localg = g.Kev;
+    int i = g.beL(paramString);
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportImageDecodeTime contentType: %s, imageType: %d, decodeTime: %d", new Object[] { paramString, Integer.valueOf(i), Long.valueOf(paramLong) });
     switch (i)
     {
     }
@@ -180,57 +158,80 @@ public final class f
     {
       AppMethodBeat.o(124850);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 50L, paramLong);
+      h.CyF.n(1111L, 50L, paramLong);
       AppMethodBeat.o(124850);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 21L, paramLong);
+      h.CyF.n(1111L, 21L, paramLong);
       AppMethodBeat.o(124850);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 46L, paramLong);
+      h.CyF.n(1111L, 46L, paramLong);
     }
   }
   
-  public static void bc(int paramInt, boolean paramBoolean)
+  public static void beH(String paramString)
+  {
+    AppMethodBeat.i(124843);
+    g localg = g.Kev;
+    int i = g.beL(paramString);
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestImageDecode contentType: %s, imageType: %d", new Object[] { paramString, Integer.valueOf(i) });
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(124843);
+      return;
+      h.CyF.n(1111L, 11L, 1L);
+      AppMethodBeat.o(124843);
+      return;
+      h.CyF.n(1111L, 47L, 1L);
+      AppMethodBeat.o(124843);
+      return;
+      h.CyF.n(1111L, 43L, 1L);
+    }
+  }
+  
+  public static void bw(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(124841);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadResult imageType: %d, success: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadResult imageType: %d, success: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     switch (paramInt)
     {
     default: 
       AppMethodBeat.o(124841);
       return;
     case 0: 
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      localh = h.CyF;
       if (paramBoolean) {}
       for (l = 3L;; l = 4L)
       {
-        localg.n(1111L, l, 1L);
+        localh.n(1111L, l, 1L);
         AppMethodBeat.o(124841);
         return;
       }
     case 1: 
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      localh = h.CyF;
       if (paramBoolean) {}
       for (l = 5L;; l = 6L)
       {
-        localg.n(1111L, l, 1L);
+        localh.n(1111L, l, 1L);
         AppMethodBeat.o(124841);
         return;
       }
     }
-    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
+    h localh = h.CyF;
     if (paramBoolean) {}
     for (long l = 32L;; l = 33L)
     {
-      localg.n(1111L, l, 1L);
+      localh.n(1111L, l, 1L);
       break;
     }
   }
   
-  public static void bd(int paramInt, boolean paramBoolean)
+  public static void bx(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(124846);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestNormalResultAfterGetWxPicFailed requestImageType: %d, success: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestNormalResultAfterGetWxPicFailed requestImageType: %d, success: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     switch (paramInt)
     {
     case 1: 
@@ -238,74 +239,74 @@ public final class f
       AppMethodBeat.o(124846);
       return;
     case 0: 
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      localh = h.CyF;
       if (paramBoolean) {}
       for (l = 22L;; l = 23L)
       {
-        localg.n(1111L, l, 1L);
+        localh.n(1111L, l, 1L);
         AppMethodBeat.o(124846);
         return;
       }
     }
-    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
+    h localh = h.CyF;
     if (paramBoolean) {}
     for (long l = 41L;; l = 42L)
     {
-      localg.n(1111L, l, 1L);
+      localh.n(1111L, l, 1L);
       break;
     }
   }
   
-  public static void be(int paramInt, boolean paramBoolean)
+  public static void by(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(124848);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo requestImageRequestResult imageType: %d, success: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo requestImageRequestResult imageType: %d, success: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     switch (paramInt)
     {
     default: 
       AppMethodBeat.o(124848);
       return;
     case 0: 
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      localh = h.CyF;
       if (paramBoolean) {}
       for (l = 26L;; l = 28L)
       {
-        localg.n(1111L, l, 1L);
+        localh.n(1111L, l, 1L);
         AppMethodBeat.o(124848);
         return;
       }
     case 1: 
-      localg = com.tencent.mm.plugin.report.service.g.yxI;
+      localh = h.CyF;
       if (paramBoolean) {}
       for (l = 27L;; l = 29L)
       {
-        localg.n(1111L, l, 1L);
+        localh.n(1111L, l, 1L);
         AppMethodBeat.o(124848);
         return;
       }
     }
-    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
+    h localh = h.CyF;
     if (paramBoolean) {}
     for (long l = 38L;; l = 39L)
     {
-      localg.n(1111L, l, 1L);
+      localh.n(1111L, l, 1L);
       break;
     }
   }
   
-  public static void cF(String paramString, boolean paramBoolean)
+  public static void da(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(124844);
-    g localg = g.FnF;
-    int i = g.aOj(paramString);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportImageDecodeResult contentType: %s, imageType: %d, success: %b", new Object[] { paramString, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
+    g localg = g.Kev;
+    int i = g.beL(paramString);
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportImageDecodeResult contentType: %s, imageType: %d, success: %b", new Object[] { paramString, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
     switch (i)
     {
     default: 
       AppMethodBeat.o(124844);
       return;
     case 1: 
-      paramString = com.tencent.mm.plugin.report.service.g.yxI;
+      paramString = h.CyF;
       if (paramBoolean) {}
       for (l = 12L;; l = 13L)
       {
@@ -314,7 +315,7 @@ public final class f
         return;
       }
     case 0: 
-      paramString = com.tencent.mm.plugin.report.service.g.yxI;
+      paramString = h.CyF;
       if (paramBoolean) {}
       for (l = 48L;; l = 49L)
       {
@@ -323,7 +324,7 @@ public final class f
         return;
       }
     }
-    paramString = com.tencent.mm.plugin.report.service.g.yxI;
+    paramString = h.CyF;
     if (paramBoolean) {}
     for (long l = 44L;; l = 45L)
     {
@@ -332,23 +333,23 @@ public final class f
     }
   }
   
-  public static void ffY()
+  public static void gph()
   {
     AppMethodBeat.i(124839);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestDownload");
-    com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 0L, 1L);
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportRequestDownload");
+    h.CyF.n(1111L, 0L, 1L);
     AppMethodBeat.o(124839);
   }
   
-  public static void vU(boolean paramBoolean)
+  public static void zS(boolean paramBoolean)
   {
     AppMethodBeat.i(124842);
-    ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportWxPicDataValid valid: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
+    Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportWxPicDataValid valid: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    h localh = h.CyF;
     if (paramBoolean) {}
     for (long l = 9L;; l = 10L)
     {
-      localg.n(1111L, l, 1L);
+      localh.n(1111L, l, 1L);
       AppMethodBeat.o(124842);
       return;
     }

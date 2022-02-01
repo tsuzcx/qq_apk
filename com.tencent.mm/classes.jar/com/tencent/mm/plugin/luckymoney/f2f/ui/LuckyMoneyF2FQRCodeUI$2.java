@@ -12,7 +12,7 @@ final class LuckyMoneyF2FQRCodeUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(65062);
-    this.vyQ.finish();
+    this.yTe.finish();
     AppMethodBeat.o(65062);
     return true;
   }

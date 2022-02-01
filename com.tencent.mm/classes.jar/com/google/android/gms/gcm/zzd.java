@@ -330,13 +330,13 @@ final class zzd
             break label525;
           }
           if (((NotificationManager)localObject5).getNotificationChannel("fcm_fallback_notification_channel") == null) {
-            ((NotificationManager)localObject5).createNotificationChannel(new NotificationChannel("fcm_fallback_notification_channel", this.zzk.getString(2131760014), 3));
+            ((NotificationManager)localObject5).createNotificationChannel(new NotificationChannel("fcm_fallback_notification_channel", this.zzk.getString(2131761392), 3));
           }
           this.zzl = "fcm_fallback_notification_channel";
           localObject1 = this.zzl;
           break label525;
           label960:
-          localObject1 = new s.c(this.zzk).F(true).as(i);
+          localObject1 = new s.c(this.zzk).E(true).as(i);
           if (!TextUtils.isEmpty((CharSequence)localObject3)) {
             ((s.c)localObject1).f((CharSequence)localObject3);
           }
@@ -350,7 +350,7 @@ final class zzd
             ((s.c)localObject1).b((Uri)localObject2);
           }
           if (localObject4 != null) {
-            ((s.c)localObject1).Hl = ((PendingIntent)localObject4);
+            ((s.c)localObject1).Hv = ((PendingIntent)localObject4);
           }
         }
       }
@@ -359,7 +359,7 @@ final class zzd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.gcm.zzd
  * JD-Core Version:    0.7.0.1
  */

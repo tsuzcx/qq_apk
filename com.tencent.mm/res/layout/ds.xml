@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/rs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/hee" android:layout_height="wrap_content" style="@style/oo">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/x1" android:layout_width="@dimen/e1" android:layout_height="@dimen/e1" android:layout_marginRight="@dimen/js" android:src="@raw/fts_weapp_search_default_icon" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ik3" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/x1" android:layout_toEndOf="@id/x1">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.EllipsizeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <TextView android:ellipsize="end" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/mp" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/g36" android:visibility="gone" android:layout_width="@dimen/cj" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/ct" android:src="@drawable/byb" android:scaleType="fitCenter" />
+                    <ImageView android:id="@id/ius" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/ct" android:src="@drawable/by5" />
+                    <TextView android:ellipsize="none" android:id="@id/iha" android:background="@drawable/dg" android:paddingLeft="4.0dip" android:paddingTop="2.0dip" android:paddingRight="4.0dip" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" style="@style/vb" />
+                </com.tencent.mm.ui.widget.EllipsizeLayout>
+                <TextView android:id="@id/hfo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" style="@style/va" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/brt" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="72.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

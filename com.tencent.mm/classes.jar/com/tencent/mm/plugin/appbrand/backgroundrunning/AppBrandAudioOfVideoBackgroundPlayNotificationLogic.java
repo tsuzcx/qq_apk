@@ -17,15 +17,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RemoteViews;
 import android.widget.TextView;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.jsapi.ad.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ag.a.a;
 import com.tencent.mm.plugin.appbrand.utils.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.widget.g;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,177 +36,177 @@ import java.util.List;
 public final class AppBrandAudioOfVideoBackgroundPlayNotificationLogic
   extends CustomBackgroundRunningNotificationLogic
 {
-  private static final int jUZ;
-  private static final int jVa;
-  private final Context IR;
-  private final NotificationManager Im;
-  private final AppBrandRuntime jDb;
-  private final com.tencent.mm.plugin.appbrand.jsapi.ad.a jVb;
-  private int jVc;
-  private volatile String jVd;
-  private volatile Bitmap jVe;
-  private BroadcastReceiver jVf;
+  private static final int kXV;
+  private static final int kXW;
+  private final NotificationManager Iw;
+  private volatile boolean gNC;
+  private final AppBrandRuntime kEc;
+  private final com.tencent.mm.plugin.appbrand.jsapi.ag.a kXX;
+  private int kXY;
+  private volatile String kXZ;
+  private volatile Bitmap kYa;
+  private BroadcastReceiver kYb;
+  private final Context mAppContext;
   volatile boolean mIsCanceled;
-  private volatile boolean mIsPlaying;
   
   static
   {
-    AppMethodBeat.i(222184);
-    jUZ = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 17104901);
-    jVa = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 17104902);
-    AppMethodBeat.o(222184);
+    AppMethodBeat.i(226425);
+    kXV = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 17104901);
+    kXW = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 17104902);
+    AppMethodBeat.o(226425);
   }
   
   @Keep
   public AppBrandAudioOfVideoBackgroundPlayNotificationLogic(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(222165);
-    this.jVc = 292;
+    AppMethodBeat.i(226406);
+    this.kXY = 292;
     this.mIsCanceled = true;
-    this.mIsPlaying = false;
-    this.jVd = null;
-    this.jVe = null;
-    this.jVf = new BroadcastReceiver()
+    this.gNC = false;
+    this.kXZ = null;
+    this.kYa = null;
+    this.kYb = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(222157);
-        if ((paramAnonymousIntent == null) || (bu.isNullOrNil(paramAnonymousIntent.getAction())))
+        AppMethodBeat.i(226398);
+        if ((paramAnonymousIntent == null) || (Util.isNullOrNil(paramAnonymousIntent.getAction())))
         {
-          AppMethodBeat.o(222157);
+          AppMethodBeat.o(226398);
           return;
         }
         paramAnonymousContext = paramAnonymousIntent.getStringExtra("background_audio_notification_action_key");
-        if (bu.isNullOrNil(paramAnonymousContext))
+        if (Util.isNullOrNil(paramAnonymousContext))
         {
-          ae.e("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "action is null, err, return");
-          AppMethodBeat.o(222157);
+          Log.e("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "action is null, err, return");
+          AppMethodBeat.o(226398);
           return;
         }
-        ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "action:%s", new Object[] { paramAnonymousContext });
+        Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "action:%s", new Object[] { paramAnonymousContext });
         if (paramAnonymousContext.equals("background_audio_notification_action_play"))
         {
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bql();
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bLT();
           AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, true);
-          ae.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onReceive, notify start");
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.bdy(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
-          AppMethodBeat.o(222157);
+          Log.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onReceive, notify start");
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.getNotificationId(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
+          AppMethodBeat.o(226398);
           return;
         }
         if (paramAnonymousContext.equals("background_audio_notification_action_pause"))
         {
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bqm();
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).lBh.bqr();
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bLU();
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).mIF.bLZ();
           AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, false);
-          ae.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onReceive, notify pause");
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.bdy(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), false));
-          AppMethodBeat.o(222157);
+          Log.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onReceive, notify pause");
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.getNotificationId(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), false));
+          AppMethodBeat.o(226398);
           return;
         }
         if (paramAnonymousContext.equals("background_audio_notification_action_close"))
         {
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bqn();
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bLV();
           AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, false);
-          ae.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onReceive, cancel");
+          Log.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onReceive, cancel");
           paramAnonymousContext = AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this;
-          ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "cancelNotify");
+          Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "cancelNotify");
           if (!paramAnonymousContext.mIsCanceled) {
             break label303;
           }
-          ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "cancelNotify, already cancel");
+          Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "cancelNotify, already cancel");
         }
         for (;;)
         {
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bqp();
-          AppMethodBeat.o(222157);
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).bLX();
+          AppMethodBeat.o(226398);
           return;
           label303:
           paramAnonymousContext.mIsCanceled = true;
-          com.tencent.e.h.MqF.aM(new AppBrandAudioOfVideoBackgroundPlayNotificationLogic.5(paramAnonymousContext));
+          h.RTc.aV(new AppBrandAudioOfVideoBackgroundPlayNotificationLogic.5(paramAnonymousContext));
         }
       }
     };
-    paramString = com.tencent.mm.plugin.appbrand.a.KI(paramString);
+    paramString = com.tencent.mm.plugin.appbrand.a.TQ(paramString);
     if (paramString == null)
     {
       paramString = new IllegalStateException("find AppBrandRuntime fail");
-      AppMethodBeat.o(222165);
+      AppMethodBeat.o(226406);
       throw paramString;
     }
-    this.jDb = paramString;
-    paramString = (com.tencent.mm.plugin.appbrand.jsapi.ad.a)this.jDb.as(com.tencent.mm.plugin.appbrand.jsapi.ad.a.class);
+    this.kEc = paramString;
+    paramString = (com.tencent.mm.plugin.appbrand.jsapi.ag.a)this.kEc.aw(com.tencent.mm.plugin.appbrand.jsapi.ag.a.class);
     if (paramString == null)
     {
       paramString = new IllegalStateException("find AppBrandRuntimeAudioOfVideoBackgroundPlayManager fail");
-      AppMethodBeat.o(222165);
+      AppMethodBeat.o(226406);
       throw paramString;
     }
-    this.jVb = paramString;
-    this.jVb.lBj = new a.a()
+    this.kXX = paramString;
+    this.kXX.mIH = new a.a()
     {
-      public final void bdE()
+      public final void byV()
       {
-        AppMethodBeat.i(222158);
+        AppMethodBeat.i(226399);
         if (AppBrandAudioOfVideoBackgroundPlayNotificationLogic.d(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this))
         {
-          ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioStart, isCanceled");
-          AppMethodBeat.o(222158);
+          Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioStart, isCanceled");
+          AppMethodBeat.o(226399);
           return;
         }
         AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, true);
-        ae.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioStart, notify start");
-        AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.bdy(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
-        AppMethodBeat.o(222158);
+        Log.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioStart, notify start");
+        AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.getNotificationId(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
+        AppMethodBeat.o(226399);
       }
       
-      public final void bdF()
+      public final void byW()
       {
-        AppMethodBeat.i(222159);
+        AppMethodBeat.i(226400);
         if (AppBrandAudioOfVideoBackgroundPlayNotificationLogic.d(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this))
         {
-          ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioPause, isCanceled");
-          AppMethodBeat.o(222159);
+          Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioPause, isCanceled");
+          AppMethodBeat.o(226400);
           return;
         }
         AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, false);
-        ae.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioPause, notify pause");
-        AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.bdy(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), false));
-        AppMethodBeat.o(222159);
+        Log.d("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "onBackgroundAudioPause, notify pause");
+        AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.getNotificationId(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), false));
+        AppMethodBeat.o(226400);
       }
     };
-    this.IR = this.jDb.mContext;
-    this.Im = ((NotificationManager)this.IR.getSystemService("notification"));
-    AppMethodBeat.o(222165);
+    this.mAppContext = this.kEc.mContext;
+    this.Iw = ((NotificationManager)this.mAppContext.getSystemService("notification"));
+    AppMethodBeat.o(226406);
   }
   
-  private static Bitmap L(Bitmap paramBitmap)
+  private static Bitmap O(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(222173);
+    AppMethodBeat.i(226414);
     if (paramBitmap == null)
     {
-      ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getRoundedCornerBitmap, bitmap is null");
-      AppMethodBeat.o(222173);
+      Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getRoundedCornerBitmap, bitmap is null");
+      AppMethodBeat.o(226414);
       return null;
     }
-    paramBitmap = com.tencent.mm.sdk.platformtools.h.a(paramBitmap, false, 12.0F, false);
-    AppMethodBeat.o(222173);
+    paramBitmap = BitmapUtil.getRoundedCornerBitmap(paramBitmap, false, 12.0F, false);
+    AppMethodBeat.o(226414);
     return paramBitmap;
   }
   
   private Notification a(Context paramContext, boolean paramBoolean, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(222169);
-    paramContext = com.tencent.mm.bq.a.bJ(paramContext, "reminder_channel_id").as(com.tencent.mm.bq.a.dzu()).a(b(paramContext, paramBoolean, paramBitmap)).F(false);
-    paramContext.f(2, true);
+    AppMethodBeat.i(226410);
+    paramContext = com.tencent.mm.bq.a.cd(paramContext, "reminder_channel_id").as(com.tencent.mm.bq.a.ezb()).a(b(paramContext, paramBoolean, paramBitmap)).E(false);
+    paramContext.g(2, true);
     paramContext = paramContext.build();
-    AppMethodBeat.o(222169);
+    AppMethodBeat.o(226410);
     return paramContext;
   }
   
   private static void a(View paramView, List<TextView> paramList)
   {
-    AppMethodBeat.i(222178);
+    AppMethodBeat.i(226419);
     if ((paramView instanceof ViewGroup))
     {
       paramView = (ViewGroup)paramView;
@@ -213,46 +216,46 @@ public final class AppBrandAudioOfVideoBackgroundPlayNotificationLogic
         a(paramView.getChildAt(i), paramList);
         i += 1;
       }
-      AppMethodBeat.o(222178);
+      AppMethodBeat.o(226419);
       return;
     }
     if ((paramView instanceof TextView)) {
       paramList.add((TextView)paramView);
     }
-    AppMethodBeat.o(222178);
+    AppMethodBeat.o(226419);
   }
   
   private RemoteViews b(Context paramContext, boolean paramBoolean, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(222170);
-    Object localObject2 = this.jVb.bqi();
+    AppMethodBeat.i(226411);
+    Object localObject2 = this.kXX.bLQ();
     Object localObject1 = localObject2;
-    if (bu.isNullOrNil((String)localObject2)) {
-      localObject1 = this.jDb.Fn().dpI;
+    if (Util.isNullOrNil((String)localObject2)) {
+      localObject1 = this.kEc.OU().brandName;
     }
     localObject2 = paramBitmap;
     if (paramBitmap == null) {
-      localObject2 = bdA();
+      localObject2 = byR();
     }
-    paramBitmap = new RemoteViews(paramContext.getPackageName(), 2131495265);
+    paramBitmap = new RemoteViews(paramContext.getPackageName(), 2131496114);
     if (localObject2 != null) {
-      paramBitmap.setImageViewBitmap(2131302607, (Bitmap)localObject2);
+      paramBitmap.setImageViewBitmap(2131305102, (Bitmap)localObject2);
     }
     boolean bool;
-    if (!bu.isNullOrNil((String)localObject1))
+    if (!Util.isNullOrNil((String)localObject1))
     {
-      paramBitmap.setViewVisibility(2131302613, 0);
-      paramBitmap.setTextViewText(2131302613, (CharSequence)localObject1);
-      paramBitmap.setViewVisibility(2131302609, 8);
-      bool = sg(dm(paramContext));
+      paramBitmap.setViewVisibility(2131305108, 0);
+      paramBitmap.setTextViewText(2131305108, (CharSequence)localObject1);
+      paramBitmap.setViewVisibility(2131305104, 8);
+      bool = wc(dH(paramContext));
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_BACKGROUND_AUDIO_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("background_audio_notification_action_key", "background_audio_notification_action_pre");
       localObject1 = PendingIntent.getBroadcast(paramContext, 0, (Intent)localObject1, 134217728);
-      localObject2 = fR(bool);
+      localObject2 = gO(bool);
       if (localObject2 != null) {
         break label371;
       }
-      ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getRemoteViews, preIconBitmap is null");
+      Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getRemoteViews, preIconBitmap is null");
       label179:
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_BACKGROUND_AUDIO_NOTIFICATION_CLICK");
       if (!paramBoolean) {
@@ -261,116 +264,116 @@ public final class AppBrandAudioOfVideoBackgroundPlayNotificationLogic
       ((Intent)localObject1).putExtra("background_audio_notification_action_key", "background_audio_notification_action_pause");
       label207:
       localObject1 = PendingIntent.getBroadcast(paramContext, 1, (Intent)localObject1, 134217728);
-      paramBitmap.setImageViewResource(2131302611, t(paramBoolean, bool));
-      paramBitmap.setOnClickPendingIntent(2131302611, (PendingIntent)localObject1);
+      paramBitmap.setImageViewResource(2131305106, t(paramBoolean, bool));
+      paramBitmap.setOnClickPendingIntent(2131305106, (PendingIntent)localObject1);
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_BACKGROUND_AUDIO_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("background_audio_notification_action_key", "background_audio_notification_action_next");
       localObject1 = PendingIntent.getBroadcast(paramContext, 2, (Intent)localObject1, 134217728);
-      localObject2 = fT(bool);
+      localObject2 = gQ(bool);
       if (localObject2 != null) {
         break label407;
       }
-      ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getRemoteViews, nextIconBitmap is null");
+      Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getRemoteViews, nextIconBitmap is null");
     }
     for (;;)
     {
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_BACKGROUND_AUDIO_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("background_audio_notification_action_key", "background_audio_notification_action_close");
       paramContext = PendingIntent.getBroadcast(paramContext, 3, (Intent)localObject1, 134217728);
-      paramBitmap.setImageViewResource(2131302608, fV(bool));
-      paramBitmap.setOnClickPendingIntent(2131302608, paramContext);
-      AppMethodBeat.o(222170);
+      paramBitmap.setImageViewResource(2131305103, gS(bool));
+      paramBitmap.setOnClickPendingIntent(2131305103, paramContext);
+      AppMethodBeat.o(226411);
       return paramBitmap;
-      paramBitmap.setViewVisibility(2131302613, 8);
+      paramBitmap.setViewVisibility(2131305108, 8);
       break;
       label371:
-      paramBitmap.setImageViewBitmap(2131302612, (Bitmap)localObject2);
-      paramBitmap.setOnClickPendingIntent(2131302612, (PendingIntent)localObject1);
+      paramBitmap.setImageViewBitmap(2131305107, (Bitmap)localObject2);
+      paramBitmap.setOnClickPendingIntent(2131305107, (PendingIntent)localObject1);
       break label179;
       label392:
       ((Intent)localObject1).putExtra("background_audio_notification_action_key", "background_audio_notification_action_play");
       break label207;
       label407:
-      paramBitmap.setImageViewBitmap(2131302610, (Bitmap)localObject2);
-      paramBitmap.setOnClickPendingIntent(2131302610, (PendingIntent)localObject1);
+      paramBitmap.setImageViewBitmap(2131305105, (Bitmap)localObject2);
+      paramBitmap.setOnClickPendingIntent(2131305105, (PendingIntent)localObject1);
     }
   }
   
-  private Bitmap bdA()
+  private Bitmap byR()
   {
-    AppMethodBeat.i(222171);
-    String str = this.jVb.bqj();
+    AppMethodBeat.i(226412);
+    String str = this.kXX.bLR();
     Object localObject = str;
-    if (bu.isNullOrNil(str)) {
-      localObject = this.jDb.Fn().iconUrl;
+    if (Util.isNullOrNil(str)) {
+      localObject = this.kEc.OU().iconUrl;
     }
-    if (bu.isNullOrNil((String)localObject))
+    if (Util.isNullOrNil((String)localObject))
     {
-      localObject = L(bdB());
-      AppMethodBeat.o(222171);
+      localObject = O(byS());
+      AppMethodBeat.o(226412);
       return localObject;
     }
-    if ((((String)localObject).equals(this.jVd)) && (this.jVe != null))
+    if ((((String)localObject).equals(this.kXZ)) && (this.kYa != null))
     {
-      ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, use mAlbumBitmap");
-      localObject = this.jVe;
-      AppMethodBeat.o(222171);
+      Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, use mAlbumBitmap");
+      localObject = this.kYa;
+      AppMethodBeat.o(226412);
       return localObject;
     }
-    ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, albumUrl: ".concat(String.valueOf(localObject)));
-    this.jVd = ((String)localObject);
-    com.tencent.mm.plugin.appbrand.utils.c.a(this.jDb.Ey(), (String)localObject, null, new c.a()
+    Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, albumUrl: ".concat(String.valueOf(localObject)));
+    this.kXZ = ((String)localObject);
+    com.tencent.mm.plugin.appbrand.utils.c.a(this.kEc.NY(), (String)localObject, null, new c.a()
     {
-      public final void Nr(String paramAnonymousString)
+      public final void Wz(String paramAnonymousString)
       {
-        AppMethodBeat.i(222164);
-        ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, localPath: ".concat(String.valueOf(paramAnonymousString)));
-        paramAnonymousString = AppBrandAudioOfVideoBackgroundPlayNotificationLogic.M(com.tencent.mm.sdk.platformtools.h.aO(paramAnonymousString, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.bdC(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.bdD()));
+        AppMethodBeat.i(226405);
+        Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, localPath: ".concat(String.valueOf(paramAnonymousString)));
+        paramAnonymousString = AppBrandAudioOfVideoBackgroundPlayNotificationLogic.P(BitmapUtil.getBitmapNative(paramAnonymousString, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.byT(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.byU()));
         if (paramAnonymousString == null)
         {
-          ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, albumBitmap is null");
-          AppMethodBeat.o(222164);
+          Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadAlbum, albumBitmap is null");
+          AppMethodBeat.o(226405);
           return;
         }
         AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, paramAnonymousString);
         AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, paramAnonymousString);
-        AppMethodBeat.o(222164);
+        AppMethodBeat.o(226405);
       }
     });
-    localObject = L(bdB());
-    AppMethodBeat.o(222171);
+    localObject = O(byS());
+    AppMethodBeat.o(226412);
     return localObject;
   }
   
-  private Bitmap bdB()
+  private Bitmap byS()
   {
-    AppMethodBeat.i(222172);
-    Object localObject = (com.tencent.mm.plugin.appbrand.widget.h)this.jDb.ab(com.tencent.mm.plugin.appbrand.widget.h.class);
+    AppMethodBeat.i(226413);
+    Object localObject = (g)this.kEc.af(g.class);
     if (localObject == null)
     {
-      ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadDefaultAlbum, iconProvider is null");
-      AppMethodBeat.o(222172);
+      Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadDefaultAlbum, iconProvider is null");
+      AppMethodBeat.o(226413);
       return null;
     }
-    localObject = ((com.tencent.mm.plugin.appbrand.widget.h)localObject).bDa();
+    localObject = ((g)localObject).cab();
     if (localObject == null)
     {
-      ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadDefaultAlbum, albumDrawable is null");
-      AppMethodBeat.o(222172);
+      Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "loadDefaultAlbum, albumDrawable is null");
+      AppMethodBeat.o(226413);
       return null;
     }
-    localObject = com.tencent.mm.sdk.platformtools.h.B((Drawable)localObject);
-    AppMethodBeat.o(222172);
+    localObject = BitmapUtil.transformDrawableToBitmap((Drawable)localObject);
+    AppMethodBeat.o(226413);
     return localObject;
   }
   
-  private static int dm(Context paramContext)
+  private static int dH(Context paramContext)
   {
-    AppMethodBeat.i(222176);
-    Object localObject = com.tencent.mm.bq.a.bJ(paramContext, "reminder_channel_id").build().contentView;
+    AppMethodBeat.i(226417);
+    Object localObject = com.tencent.mm.bq.a.cd(paramContext, "reminder_channel_id").build().contentView;
     if (localObject == null)
     {
-      AppMethodBeat.o(222176);
+      AppMethodBeat.o(226417);
       return -16777216;
     }
     int i = ((RemoteViews)localObject).getLayoutId();
@@ -379,71 +382,71 @@ public final class AppBrandAudioOfVideoBackgroundPlayNotificationLogic
     if (localObject != null)
     {
       i = ((TextView)localObject).getCurrentTextColor();
-      AppMethodBeat.o(222176);
+      AppMethodBeat.o(226417);
       return i;
     }
     i = h(paramContext);
-    AppMethodBeat.o(222176);
+    AppMethodBeat.o(226417);
     return i;
   }
   
-  private static Bitmap fR(boolean paramBoolean)
+  private static Bitmap gO(boolean paramBoolean)
   {
-    AppMethodBeat.i(222174);
-    Bitmap localBitmap = com.tencent.mm.sdk.platformtools.h.aaZ(fS(paramBoolean));
+    AppMethodBeat.i(226415);
+    Bitmap localBitmap = BitmapUtil.getBitmapNative(gP(paramBoolean));
     if (localBitmap == null)
     {
-      ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getPreIconBitmap, bitmap is null");
-      AppMethodBeat.o(222174);
+      Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getPreIconBitmap, bitmap is null");
+      AppMethodBeat.o(226415);
       return null;
     }
-    localBitmap = com.tencent.mm.sdk.platformtools.h.b(localBitmap, 0.3F);
-    AppMethodBeat.o(222174);
+    localBitmap = BitmapUtil.setAlpha(localBitmap, 0.3F);
+    AppMethodBeat.o(226415);
     return localBitmap;
   }
   
-  private static int fS(boolean paramBoolean)
+  private static int gP(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2131233852;
+      return 2131234676;
     }
-    return 2131233854;
+    return 2131234678;
   }
   
-  private static Bitmap fT(boolean paramBoolean)
+  private static Bitmap gQ(boolean paramBoolean)
   {
-    AppMethodBeat.i(222175);
-    Bitmap localBitmap = com.tencent.mm.sdk.platformtools.h.aaZ(fU(paramBoolean));
+    AppMethodBeat.i(226416);
+    Bitmap localBitmap = BitmapUtil.getBitmapNative(gR(paramBoolean));
     if (localBitmap == null)
     {
-      ae.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getNextIconBitmap, bitmap is null");
-      AppMethodBeat.o(222175);
+      Log.w("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "getNextIconBitmap, bitmap is null");
+      AppMethodBeat.o(226416);
       return null;
     }
-    localBitmap = com.tencent.mm.sdk.platformtools.h.b(localBitmap, 0.3F);
-    AppMethodBeat.o(222175);
+    localBitmap = BitmapUtil.setAlpha(localBitmap, 0.3F);
+    AppMethodBeat.o(226416);
     return localBitmap;
   }
   
-  private static int fU(boolean paramBoolean)
+  private static int gR(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2131233841;
+      return 2131234665;
     }
-    return 2131233843;
+    return 2131234667;
   }
   
-  private static int fV(boolean paramBoolean)
+  private static int gS(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2131233838;
+      return 2131234662;
     }
-    return 2131233839;
+    return 2131234663;
   }
   
   private static int h(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(222177);
+    AppMethodBeat.i(226418);
     Object localObject = new ArrayList();
     a(paramViewGroup, (List)localObject);
     paramViewGroup = null;
@@ -463,28 +466,12 @@ public final class AppBrandAudioOfVideoBackgroundPlayNotificationLogic
       if (paramViewGroup != null)
       {
         int i = paramViewGroup.getCurrentTextColor();
-        AppMethodBeat.o(222177);
+        AppMethodBeat.o(226418);
         return i;
       }
-      AppMethodBeat.o(222177);
+      AppMethodBeat.o(226418);
       return -16777216;
     }
-  }
-  
-  private static boolean sg(int paramInt)
-  {
-    AppMethodBeat.i(222179);
-    int j = paramInt | 0xFF000000;
-    paramInt = Color.red(-16777216) - Color.red(j);
-    int i = Color.green(-16777216) - Color.green(j);
-    j = Color.blue(-16777216) - Color.blue(j);
-    if (Math.sqrt(j * j + (paramInt * paramInt + i * i)) < 180.0D)
-    {
-      AppMethodBeat.o(222179);
-      return true;
-    }
-    AppMethodBeat.o(222179);
-    return false;
   }
   
   private static int t(boolean paramBoolean1, boolean paramBoolean2)
@@ -492,69 +479,85 @@ public final class AppBrandAudioOfVideoBackgroundPlayNotificationLogic
     if (paramBoolean1)
     {
       if (paramBoolean2) {
-        return 2131233845;
+        return 2131234669;
       }
-      return 2131233847;
+      return 2131234671;
     }
     if (paramBoolean2) {
-      return 2131233849;
+      return 2131234673;
     }
-    return 2131233850;
+    return 2131234674;
   }
   
-  public final Notification bdx()
+  private static boolean wc(int paramInt)
   {
-    AppMethodBeat.i(222166);
-    Notification localNotification = a(this.IR, this.mIsPlaying, null);
-    AppMethodBeat.o(222166);
+    AppMethodBeat.i(226420);
+    int j = paramInt | 0xFF000000;
+    paramInt = Color.red(-16777216) - Color.red(j);
+    int i = Color.green(-16777216) - Color.green(j);
+    j = Color.blue(-16777216) - Color.blue(j);
+    if (Math.sqrt(j * j + (paramInt * paramInt + i * i)) < 180.0D)
+    {
+      AppMethodBeat.o(226420);
+      return true;
+    }
+    AppMethodBeat.o(226420);
+    return false;
+  }
+  
+  public final Notification byP()
+  {
+    AppMethodBeat.i(226407);
+    Notification localNotification = a(this.mAppContext, this.gNC, null);
+    AppMethodBeat.o(226407);
     return localNotification;
   }
   
-  public final int bdy()
+  public final void byQ()
   {
-    AppMethodBeat.i(222167);
-    if (292 == this.jVc) {
-      this.jVc = (ak.getProcessName().hashCode() + 292);
-    }
-    int i = this.jVc;
-    AppMethodBeat.o(222167);
-    return i;
-  }
-  
-  public final void bdz()
-  {
-    AppMethodBeat.i(222168);
-    ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "startNotify");
+    AppMethodBeat.i(226409);
+    Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "startNotify");
     if (!this.mIsCanceled)
     {
-      ae.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "startNotify, already start");
-      com.tencent.e.h.MqF.aM(new Runnable()
+      Log.i("AppBrand.MicroMsg.AppBrandAudioOfVideoBackgroundPlayNotificationLogic", "startNotify, already start");
+      h.RTc.aV(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(222160);
-          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.bdy(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
+          AppMethodBeat.i(226401);
+          AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.getNotificationId(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
           AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, true);
-          AppMethodBeat.o(222160);
+          AppMethodBeat.o(226401);
         }
       });
-      AppMethodBeat.o(222168);
+      AppMethodBeat.o(226409);
       return;
     }
     this.mIsCanceled = false;
-    com.tencent.e.h.MqF.aM(new Runnable()
+    h.RTc.aV(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(222161);
+        AppMethodBeat.i(226402);
         IntentFilter localIntentFilter = new IntentFilter("com.tencent.mm.Intent.ACTION_BACKGROUND_AUDIO_NOTIFICATION_CLICK");
         AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).registerReceiver(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.e(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), localIntentFilter);
-        AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.bdy(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
+        AppBrandAudioOfVideoBackgroundPlayNotificationLogic.c(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this).notify(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this.getNotificationId(), AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, AppBrandAudioOfVideoBackgroundPlayNotificationLogic.b(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this), true));
         AppBrandAudioOfVideoBackgroundPlayNotificationLogic.a(AppBrandAudioOfVideoBackgroundPlayNotificationLogic.this, true);
-        AppMethodBeat.o(222161);
+        AppMethodBeat.o(226402);
       }
     });
-    AppMethodBeat.o(222168);
+    AppMethodBeat.o(226409);
+  }
+  
+  public final int getNotificationId()
+  {
+    AppMethodBeat.i(226408);
+    if (292 == this.kXY) {
+      this.kXY = (MMApplicationContext.getProcessName().hashCode() + 292);
+    }
+    int i = this.kXY;
+    AppMethodBeat.o(226408);
+    return i;
   }
 }
 

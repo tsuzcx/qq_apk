@@ -2,12 +2,11 @@ package com.tencent.mm.plugin.expt.hellhound.core.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class b
 {
-  public static void aeK(String paramString)
+  public static void apa(String paramString)
   {
     AppMethodBeat.i(121859);
     if (TextUtils.isEmpty(paramString))
@@ -15,7 +14,7 @@ public final class b
       AppMethodBeat.o(121859);
       return;
     }
-    ay.aRW("_hellhound_mmkv").putLong(paramString, -1L);
+    MultiProcessMMKV.getMMKV("_hellhound_mmkv").putLong(paramString, -1L);
     AppMethodBeat.o(121859);
   }
   
@@ -27,7 +26,7 @@ public final class b
       AppMethodBeat.o(121858);
       return null;
     }
-    paramString = ay.aRW("_hellhound_mmkv").decodeBytes(paramString);
+    paramString = MultiProcessMMKV.getMMKV("_hellhound_mmkv").decodeBytes(paramString);
     AppMethodBeat.o(121858);
     return paramString;
   }
@@ -40,12 +39,12 @@ public final class b
       AppMethodBeat.o(121861);
       return null;
     }
-    paramString = ay.aRW("_hellhound_mmkv").getString(paramString, null);
+    paramString = MultiProcessMMKV.getMMKV("_hellhound_mmkv").getString(paramString, null);
     AppMethodBeat.o(121861);
     return paramString;
   }
   
-  public static void p(String paramString, byte[] paramArrayOfByte)
+  public static void o(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(121857);
     if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null))
@@ -53,8 +52,7 @@ public final class b
       AppMethodBeat.o(121857);
       return;
     }
-    boolean bool = ay.aRW("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
-    ae.i("HABBYGE-MALI.HellhoundMMKV", "putBytes.mmkvEncode: " + bool + "/HELLHOUND_MMKV_NAME");
+    MultiProcessMMKV.getMMKV("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
     AppMethodBeat.o(121857);
   }
   
@@ -70,13 +68,13 @@ public final class b
     if (paramString2 == null) {
       str = "";
     }
-    ay.aRW("_hellhound_mmkv").putString(paramString1, str);
+    MultiProcessMMKV.getMMKV("_hellhound_mmkv").putString(paramString1, str);
     AppMethodBeat.o(121860);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.a.b
  * JD-Core Version:    0.7.0.1
  */

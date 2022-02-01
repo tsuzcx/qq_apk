@@ -1,16 +1,35 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
-public abstract interface a
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ad.d.a.c;
+
+public final class a
 {
-  public abstract int dHw();
+  static a Dsx;
+  public c Dsw;
   
-  public abstract void f(int paramInt, Object... paramVarArgs);
+  static
+  {
+    AppMethodBeat.i(201874);
+    Dsx = new a();
+    AppMethodBeat.o(201874);
+  }
   
-  public abstract void v(Object... paramVarArgs);
+  private a()
+  {
+    AppMethodBeat.i(201873);
+    this.Dsw = new c();
+    AppMethodBeat.o(201873);
+  }
+  
+  public static a eWI()
+  {
+    return Dsx;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.d.a
  * JD-Core Version:    0.7.0.1
  */

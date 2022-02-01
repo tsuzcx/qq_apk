@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" style="@style/qp"
+<FrameLayout android:orientation="vertical" android:id="@id/bes" android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/cya" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/cy_" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/cy4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp">
-        <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:paddingBottom="@dimen/he" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.4">
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd" android:text="@string/d_b" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd" android:text="@string/d_a" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.6">
-            <Button android:id="@id/cyb" android:text="@string/d_9" style="@style/o6" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/l4" android:gravity="center" android:id="@id/g24" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/im" />
+    <android.support.v7.widget.RecyclerView android:id="@id/cgf" android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/d8c" android:background="@color/x" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
+        <Button android:enabled="false" android:textSize="@dimen/is" android:textColor="@color/ag2" android:gravity="center" android:id="@id/ieo" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:minWidth="64.0dip" android:text="@string/x_" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" style="@style/ow" />
+    </RelativeLayout>
 </FrameLayout>

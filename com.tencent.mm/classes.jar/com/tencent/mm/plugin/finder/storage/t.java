@@ -1,41 +1,71 @@
 package com.tencent.mm.plugin.finder.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.apw;
-import d.l;
+import com.tencent.mm.g.c.cj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "", "viewItemPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "(Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;)V", "feedItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFeedItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedItem", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "lbsItem", "Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;", "getLbsItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;", "setLbsItem", "(Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;)V", "localItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "getLocalItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "setLocalItem", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;)V", "viewId", "", "getViewId", "()J", "setViewId", "(J)V", "getViewItemPb", "()Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "viewType", "", "getViewType", "()I", "setViewType", "(I)V", "isSame", "", "otherItem", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderLiveGiftStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/storage/FinderLiveGiftInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteGift", "", "giftId", "", "getLiveGiftInfo", "", "insertGiftInfo", "giftInfo", "Companion", "plugin-finder_release"})
 public final class t
+  extends MAutoStorage<s>
 {
-  public static final int sJO = 1;
-  public static final int sJP = 2;
-  public static final int sJQ = 3;
-  public static final a sJR;
-  public int oOD;
-  public m sJK;
-  public FinderItem sJL;
-  public long sJM;
-  public final apw sJN;
-  public u ssM;
+  private static final String[] SQL_CREATE;
+  public static final a vEj;
+  public final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(204286);
-    sJR = new a((byte)0);
-    sJO = 1;
-    sJP = 2;
-    sJQ = 3;
-    AppMethodBeat.o(204286);
+    AppMethodBeat.i(251803);
+    vEj = new a((byte)0);
+    s.a locala = s.vEi;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(s.access$getInfo$cp(), "FinderLiveGiftInfo") };
+    AppMethodBeat.o(251803);
   }
   
-  public t(apw paramapw)
+  public t(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(204285);
-    this.sJN = paramapw;
-    AppMethodBeat.o(204285);
+    super(paramISQLiteDatabase, s.access$getInfo$cp(), "FinderLiveGiftInfo", cj.INDEX_CREATE);
+    AppMethodBeat.i(251802);
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(251802);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderMixItem$Companion;", "", "()V", "VIEW_ITEM_FEED", "", "getVIEW_ITEM_FEED", "()I", "VIEW_ITEM_LBS", "getVIEW_ITEM_LBS", "VIEW_ITEM_LOCAL", "getVIEW_ITEM_LOCAL", "plugin-finder_release"})
+  public final int b(s params)
+  {
+    AppMethodBeat.i(251800);
+    p.h(params, "giftInfo");
+    ContentValues localContentValues = params.convertTo();
+    int i = (int)this.db.replace("FinderLiveGiftInfo", "rewardProductId", localContentValues);
+    Log.i("Finder.FinderLiveGiftStorage", "insert gift " + params + ' ' + i);
+    AppMethodBeat.o(251800);
+    return i;
+  }
+  
+  public final List<s> dxR()
+  {
+    AppMethodBeat.i(251801);
+    Object localObject = new ArrayList();
+    Cursor localCursor = this.db.rawQuery("SELECT *, rowid FROM FinderLiveGiftInfo order by FinderLiveGiftInfo.giftIndex asc", null, 2);
+    while (localCursor.moveToNext())
+    {
+      s locals = new s();
+      locals.convertFrom(localCursor);
+      ((ArrayList)localObject).add(locals);
+    }
+    localCursor.close();
+    localObject = (List)localObject;
+    AppMethodBeat.o(251801);
+    return localObject;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderLiveGiftStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-finder_release"})
   public static final class a {}
 }
 

@@ -1,61 +1,61 @@
 package com.tencent.mm.live.view.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "", "username", "", "memberCount", "", "(Ljava/lang/String;I)V", "getMemberCount", "()I", "setMemberCount", "(I)V", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "", "username", "", "memberCount", "", "(Ljava/lang/String;I)V", "getMemberCount", "()I", "setMemberCount", "(I)V", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"})
 public final class h
 {
-  int dAb;
+  int dRN;
   String username;
   
   public h(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216712);
+    AppMethodBeat.i(208686);
     this.username = paramString;
-    this.dAb = paramInt;
-    AppMethodBeat.o(216712);
+    this.dRN = paramInt;
+    AppMethodBeat.o(208686);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(216715);
+    AppMethodBeat.i(208689);
     if (this != paramObject)
     {
       if ((paramObject instanceof h))
       {
         paramObject = (h)paramObject;
-        if ((!p.i(this.username, paramObject.username)) || (this.dAb != paramObject.dAb)) {}
+        if ((!p.j(this.username, paramObject.username)) || (this.dRN != paramObject.dRN)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(216715);
+      AppMethodBeat.o(208689);
       return true;
     }
-    AppMethodBeat.o(216715);
+    AppMethodBeat.o(208689);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(216714);
+    AppMethodBeat.i(208688);
     String str = this.username;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
-      int j = this.dAb;
-      AppMethodBeat.o(216714);
+      int j = this.dRN;
+      AppMethodBeat.o(208688);
       return i * 31 + j;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(216713);
-    String str = "ShareRoomItem(username=" + this.username + ", memberCount=" + this.dAb + ")";
-    AppMethodBeat.o(216713);
+    AppMethodBeat.i(208687);
+    String str = "ShareRoomItem(username=" + this.username + ", memberCount=" + this.dRN + ")";
+    AppMethodBeat.o(208687);
     return str;
   }
 }

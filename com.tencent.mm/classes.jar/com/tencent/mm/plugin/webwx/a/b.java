@@ -1,48 +1,49 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aid;
-import com.tencent.mm.protocal.protobuf.aie;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.akp;
+import com.tencent.mm.protocal.protobuf.akq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public int dsO;
-  private final com.tencent.mm.ak.b hZD;
+  private i callback;
+  public int dJY;
+  private final d iUB;
   
   public b(int paramInt)
   {
     AppMethodBeat.i(30169);
-    this.dsO = paramInt;
-    b.a locala = new b.a();
-    aid localaid = new aid();
-    aie localaie = new aie();
-    locala.hQF = localaid;
-    locala.hQG = localaie;
+    this.dJY = paramInt;
+    d.a locala = new d.a();
+    akp localakp = new akp();
+    akq localakq = new akq();
+    locala.iLN = localakp;
+    locala.iLO = localakq;
     locala.uri = "/cgi-bin/micromsg-bin/extdevicecontrol";
     locala.funcId = 792;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    localaid.gvx = paramInt;
-    localaid.GxQ = 1;
-    this.hZD = locala.aDS();
+    localakp.him = paramInt;
+    localakp.Ltz = 1;
+    this.iUB = locala.aXF();
     AppMethodBeat.o(30169);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(30171);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
     AppMethodBeat.o(30171);
     return i;
   }
@@ -52,10 +53,10 @@ public final class b
     return 792;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30170);
-    ae.d("MicroMsg.NetSceneExtDeviceControl", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " errMsg:" + paramString);
+    Log.d("MicroMsg.NetSceneExtDeviceControl", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " errMsg:" + paramString);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

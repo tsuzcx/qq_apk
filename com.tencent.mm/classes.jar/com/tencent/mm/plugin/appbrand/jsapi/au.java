@@ -1,30 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.c;
-import d.l;
+import com.tencent.mm.vending.g.d.b;
+import kotlin.g.a.b;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
-public final class au
-  extends a<c>
+@l(hxD={1, 1, 16})
+final class au
+  implements d.b
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "functionalPageStartGame";
-  public static final a kvx;
-  
-  static
+  au(b paramb)
   {
-    AppMethodBeat.i(223319);
-    kvx = new a((byte)0);
-    AppMethodBeat.o(223319);
+    this.hXF = paramb;
   }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame$Companion;", "", "()V", "CTRL_INDEX", "", "DEFAULT_URL", "", "NAME", "plugin-appbrand-integration_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.au
  * JD-Core Version:    0.7.0.1
  */

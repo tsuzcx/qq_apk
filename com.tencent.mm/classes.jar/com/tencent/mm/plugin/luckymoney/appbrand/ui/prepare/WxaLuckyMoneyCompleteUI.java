@@ -14,34 +14,34 @@ public class WxaLuckyMoneyCompleteUI
   extends WxaLuckyMoneyBaseUI
   implements b
 {
-  private Button mpo;
+  private Button nAa;
   
-  public final MMActivity dkN()
+  public final MMActivity eeF()
   {
     return this;
   }
   
-  public final void dkO() {}
+  public final void eeG() {}
   
   public final void error(String paramString) {}
   
   public int getLayoutId()
   {
-    return 2131496117;
+    return 2131497111;
   }
   
   public void initView()
   {
     AppMethodBeat.i(64942);
-    this.mpo = ((Button)findViewById(2131307107));
-    this.mpo.setOnClickListener(new View.OnClickListener()
+    this.nAa = ((Button)findViewById(2131310638));
+    this.nAa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64940);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         WxaLuckyMoneyCompleteUI.this.setResult(0, null);
         WxaLuckyMoneyCompleteUI.this.finish();
         a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -75,7 +75,7 @@ public class WxaLuckyMoneyCompleteUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.WxaLuckyMoneyCompleteUI
  * JD-Core Version:    0.7.0.1
  */

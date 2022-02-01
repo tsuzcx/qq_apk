@@ -13,11 +13,11 @@ public class MapPoi
   
   public MapPoi(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(209864);
+    AppMethodBeat.i(193609);
     this.latitude = paramDouble1;
     this.longitude = paramDouble2;
     this.position = new LatLng(paramDouble1, paramDouble2);
-    AppMethodBeat.o(209864);
+    AppMethodBeat.o(193609);
   }
   
   public MapPoi(double paramDouble1, double paramDouble2, String paramString)
@@ -53,16 +53,16 @@ public class MapPoi
   
   public void setPosition(LatLng paramLatLng)
   {
-    AppMethodBeat.i(209865);
+    AppMethodBeat.i(193610);
     this.position = paramLatLng;
     this.latitude = paramLatLng.getLatitude();
     this.longitude = paramLatLng.getLongitude();
-    AppMethodBeat.o(209865);
+    AppMethodBeat.o(193610);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.MapPoi
  * JD-Core Version:    0.7.0.1
  */

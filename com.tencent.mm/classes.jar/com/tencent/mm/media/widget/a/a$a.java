@@ -1,9 +1,9 @@
 package com.tencent.mm.media.widget.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "", "status", "", "(Ljava/lang/String;II)V", "getStatus", "()I", "CAMERA_IS_DEFAULT", "CAMERA_IS_PREVIEWING", "CAMERA_IS_CAPTURING", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "", "status", "", "(Ljava/lang/String;II)V", "getStatus", "()I", "CAMERA_IS_DEFAULT", "CAMERA_IS_PREVIEWING", "CAMERA_IS_CAPTURING", "plugin-mediaeditor_release"})
 public enum a$a
 {
   private final int status;
@@ -12,12 +12,12 @@ public enum a$a
   {
     AppMethodBeat.i(94005);
     a locala1 = new a("CAMERA_IS_DEFAULT", 0, -1);
-    hrZ = locala1;
+    ilZ = locala1;
     a locala2 = new a("CAMERA_IS_PREVIEWING", 1, 0);
-    hsa = locala2;
+    ima = locala2;
     a locala3 = new a("CAMERA_IS_CAPTURING", 2, 1);
-    hsb = locala3;
-    hsc = new a[] { locala1, locala2, locala3 };
+    imb = locala3;
+    imc = new a[] { locala1, locala2, locala3 };
     AppMethodBeat.o(94005);
   }
   
@@ -28,7 +28,7 @@ public enum a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.widget.a.a.a
  * JD-Core Version:    0.7.0.1
  */

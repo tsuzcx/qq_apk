@@ -3,91 +3,70 @@ package com.tencent.mm.plugin.remittance.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.remittance.model.q;
 import com.tencent.mm.plugin.remittance.model.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.u;
 import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 public class RemittanceHKUI
   extends RemittanceBaseUI
 {
-  private String yvA;
-  private String yvB;
-  private int yvy;
-  private String yvz;
+  private int Cwu;
+  private String Cwv;
+  private String Cww;
+  private String Cwx;
   
-  public final void axJ(String paramString)
+  public final void aMj(String paramString)
   {
     AppMethodBeat.i(68205);
-    ae.d("MicroMsg.RemittanceHKUI", "do scene gen pay");
+    Log.d("MicroMsg.RemittanceHKUI", "do scene gen pay");
     int i = 0;
     if (this.mPayScene == 33) {
       i = 1;
     }
-    doSceneProgress(new r(Math.round(this.ymU * 100.0D), this.fIQ, this.oYU, this.yqt, this.mDesc, this.yqb, this.yvy, i), true);
+    doSceneProgress(new r(Math.round(this.jVp * 100.0D), this.goe, this.qnT, this.Crk, this.mDesc, this.CqS, this.Cwu, i), true);
     AppMethodBeat.o(68205);
   }
   
-  public final void dMI()
+  public final void eNI()
   {
     AppMethodBeat.i(68208);
-    ae.d("MicroMsg.RemittanceHKUI", "do scene cancel");
+    Log.d("MicroMsg.RemittanceHKUI", "do scene cancel");
     if (this.mPayScene == 33) {}
     for (int i = 1;; i = 0)
     {
-      doSceneProgress(new q(this.fIQ, this.yqb, this.yvy, this.ymU * 100L, i), false);
+      doSceneProgress(new com.tencent.mm.plugin.remittance.model.q(this.goe, this.CqS, this.Cwu, this.jVp * 100L, i), false);
       AppMethodBeat.o(68208);
       return;
     }
   }
   
-  public final void dMK()
+  public final void eNK()
   {
     AppMethodBeat.i(68206);
-    t.makeText(getContext(), getString(2131762506, new Object[] { this.yvz }), 0).show();
+    u.makeText(getContext(), getString(2131764573, new Object[] { this.Cwv }), 0).show();
     AppMethodBeat.o(68206);
   }
   
-  public final void dMN()
+  public final void eNN()
   {
     AppMethodBeat.i(68207);
-    if (!bu.isNullOrNil(this.yvA))
+    if (!Util.isNullOrNil(this.Cww))
     {
-      TextView localTextView = (TextView)findViewById(2131297186);
-      localTextView.setText(this.yvA);
-      localTextView.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(68202);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/remittance/ui/RemittanceHKUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          ae.i("MicroMsg.RemittanceHKUI", "hy: on click banner");
-          if (!bu.isNullOrNil(RemittanceHKUI.a(RemittanceHKUI.this))) {
-            f.aY(RemittanceHKUI.this.getContext(), RemittanceHKUI.a(RemittanceHKUI.this));
-          }
-          a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceHKUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(68202);
-        }
-      });
+      TextView localTextView = (TextView)findViewById(2131297330);
+      localTextView.setText(this.Cww);
+      localTextView.setOnClickListener(new RemittanceHKUI.1(this));
     }
     AppMethodBeat.o(68207);
   }
   
-  protected final void dMS() {}
+  protected final void eNS() {}
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -105,12 +84,12 @@ public class RemittanceHKUI
     super.onCreate(paramBundle);
     addSceneEndListener(1529);
     addSceneEndListener(1257);
-    this.yvy = getIntent().getIntExtra("hk_currency", 0);
-    this.yvz = getIntent().getStringExtra("hk_currencyuint");
-    this.yvA = getIntent().getStringExtra("hk_notice");
-    this.yvB = getIntent().getStringExtra("hk_notice_url");
-    this.pkW.setTitleText(this.yvz);
-    this.yqk.setText(this.yvz);
+    this.Cwu = getIntent().getIntExtra("hk_currency", 0);
+    this.Cwv = getIntent().getStringExtra("hk_currencyuint");
+    this.Cww = getIntent().getStringExtra("hk_notice");
+    this.Cwx = getIntent().getStringExtra("hk_notice_url");
+    this.qAh.setTitleText(this.Cwv);
+    this.Crb.setText(this.Cwv);
     AppMethodBeat.o(68203);
   }
   
@@ -123,21 +102,21 @@ public class RemittanceHKUI
     AppMethodBeat.o(68204);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn, boolean paramBoolean)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq, boolean paramBoolean)
   {
     AppMethodBeat.i(68209);
-    if ((paramn instanceof r))
+    if ((paramq instanceof r))
     {
-      paramn = (r)paramn;
+      paramq = (r)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (!bu.isNullOrNil(paramn.ynY))
+        if (!Util.isNullOrNil(paramq.CoO))
         {
-          f.a(getContext(), paramn.ynY, false, 4);
+          f.a(getContext(), paramq.CoO, false, 4);
           AppMethodBeat.o(68209);
           return;
         }
-        ae.e("MicroMsg.RemittanceHKUI", "empty payurl");
+        Log.e("MicroMsg.RemittanceHKUI", "empty payurl");
         AppMethodBeat.o(68209);
         return;
       }
@@ -145,7 +124,7 @@ public class RemittanceHKUI
       AppMethodBeat.o(68209);
       return;
     }
-    super.onSceneEnd(paramInt1, paramInt2, paramString, paramn, paramBoolean);
+    super.onSceneEnd(paramInt1, paramInt2, paramString, paramq, paramBoolean);
     AppMethodBeat.o(68209);
   }
   
@@ -157,7 +136,7 @@ public class RemittanceHKUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceHKUI
  * JD-Core Version:    0.7.0.1
  */

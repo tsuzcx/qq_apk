@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view android:id="@id/faf" android:scrollbars="vertical" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@null" android:divider="?r4" android:overScrollMode="ifContentScrolls" android:textAlignment="viewStart" app:paddingBottomNoButtons="@dimen/m9" app:paddingTopNoTitle="@dimen/m_" class="android.support.v7.app.AlertController$RecycleListView" style="@style/a1r"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<android.support.v7.widget.AlertDialogLayout android:gravity="start|center|top" android:orientation="vertical" android:id="@id/g8n" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/ar" />
+    <FrameLayout android:id="@id/bec" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <View android:layout_gravity="top" android:id="@id/hck" android:background="?fx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <android.support.v4.widget.NestedScrollView android:id="@id/hcl" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.widget.Space android:id="@id/iju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/mv" />
+                <TextView android:id="@android:id/message" android:paddingLeft="?j4" android:paddingRight="?j4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/w0" />
+                <android.widget.Space android:id="@id/ijt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/mv" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+        <View android:layout_gravity="bottom" android:id="@id/hcj" android:background="?fx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/bjm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <FrameLayout android:id="@id/bjl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ap" />
+</android.support.v7.widget.AlertDialogLayout>

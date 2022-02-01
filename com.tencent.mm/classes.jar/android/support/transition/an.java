@@ -1,26 +1,25 @@
 package android.support.transition;
 
-import android.view.View;
-import android.view.WindowId;
+import android.os.IBinder;
 
 final class an
-  implements ao
+  implements ap
 {
-  private final WindowId Ef;
+  private final IBinder En;
   
-  an(View paramView)
+  an(IBinder paramIBinder)
   {
-    this.Ef = paramView.getWindowId();
+    this.En = paramIBinder;
   }
   
   public final boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof an)) && (((an)paramObject).Ef.equals(this.Ef));
+    return ((paramObject instanceof an)) && (((an)paramObject).En.equals(this.En));
   }
   
   public final int hashCode()
   {
-    return this.Ef.hashCode();
+    return this.En.hashCode();
   }
 }
 

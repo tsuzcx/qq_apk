@@ -3,119 +3,119 @@ package com.tencent.mm.plugin.backup.bakoldlogic.d;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.g.a.ac;
-import com.tencent.mm.g.a.tt;
+import com.tencent.mm.g.a.ae;
+import com.tencent.mm.g.a.ur;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.messenger.foundation.a.m;
+import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.pluginsdk.model.app.l;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.ar.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.bf;
-import com.tencent.mm.storage.cd;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread.IWaitWorkThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.ck;
 import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.storage.r;
 import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 public final class b
   extends com.tencent.mm.plugin.backup.b.a
 {
-  private static b nHW;
-  private static int nHZ = 0;
-  private c nHX;
-  private a nHY;
-  private c nIa;
+  private static b oSS;
+  private static int oSV = 0;
+  private c oST;
+  private a oSU;
+  private c oSW;
   
   private boolean a(PLong paramPLong1, PLong paramPLong2, PLong paramPLong3, a parama, int paramInt)
   {
     AppMethodBeat.i(22074);
-    bc.aCg();
+    bg.aVF();
     com.tencent.mm.model.c.closeDB();
-    ae.d("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after close db");
-    bc.aCg();
-    long l = o.aZR(com.tencent.mm.model.c.ajx());
-    bc.aCg();
-    paramPLong3.value = (l + o.aZR(com.tencent.mm.model.c.ajy()));
+    Log.d("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after close db");
+    bg.aVF();
+    long l = s.boW(com.tencent.mm.model.c.azN());
+    bg.aVF();
+    paramPLong3.value = (l + s.boW(com.tencent.mm.model.c.azO()));
     l = paramPLong3.value;
-    bc.aCg();
+    bg.aVF();
     if (!com.tencent.mm.plugin.backup.bakoldlogic.a.a.a(l, paramPLong1, paramPLong2, com.tencent.mm.model.c.getAccPath()))
     {
-      ae.e("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp data free error, len %d", new Object[] { Long.valueOf(paramPLong3.value) });
-      parama.nIi = false;
-      parama.nIj = paramPLong1.value;
-      parama.nIk = paramPLong2.value;
+      Log.e("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp data free error, len %d", new Object[] { Long.valueOf(paramPLong3.value) });
+      parama.oTe = false;
+      parama.oTf = paramPLong1.value;
+      parama.oTg = paramPLong2.value;
       parama.dbSize = paramPLong3.value;
       AppMethodBeat.o(22074);
       return false;
     }
-    bc.aCg();
-    Object localObject1 = com.tencent.mm.model.c.ajx();
+    bg.aVF();
+    Object localObject1 = com.tencent.mm.model.c.azN();
     Object localObject2 = new StringBuilder();
-    bc.aCg();
-    o.mF((String)localObject1, com.tencent.mm.model.c.ajx() + ".tem");
-    bc.aCg();
-    localObject1 = com.tencent.mm.model.c.ajy();
+    bg.aVF();
+    s.nw((String)localObject1, com.tencent.mm.model.c.azN() + ".tem");
+    bg.aVF();
+    localObject1 = com.tencent.mm.model.c.azO();
     localObject2 = new StringBuilder();
-    bc.aCg();
-    o.mF((String)localObject1, com.tencent.mm.model.c.ajy() + ".tem");
+    bg.aVF();
+    s.nw((String)localObject1, com.tencent.mm.model.c.azO() + ".tem");
     localObject1 = new StringBuilder();
-    bc.aCg();
-    localObject1 = com.tencent.mm.model.c.ajy() + "-journal";
+    bg.aVF();
+    localObject1 = com.tencent.mm.model.c.azO() + "-journal";
     localObject2 = new StringBuilder();
-    bc.aCg();
-    o.mF((String)localObject1, com.tencent.mm.model.c.ajy() + ".tem-journal");
+    bg.aVF();
+    s.nw((String)localObject1, com.tencent.mm.model.c.azO() + ".tem-journal");
     localObject1 = new StringBuilder();
-    bc.aCg();
-    localObject1 = com.tencent.mm.model.c.ajy() + "-wal";
+    bg.aVF();
+    localObject1 = com.tencent.mm.model.c.azO() + "-wal";
     localObject2 = new StringBuilder();
-    bc.aCg();
-    o.mF((String)localObject1, com.tencent.mm.model.c.ajy() + ".tem-wal");
-    ae.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before reset account");
-    g.ajP().release();
-    g.ajP().initialize();
-    ae.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg setAccInfo");
-    localObject1 = bKH();
-    bc.aCg();
+    bg.aVF();
+    s.nw((String)localObject1, com.tencent.mm.model.c.azO() + ".tem-wal");
+    Log.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before reset account");
+    g.aAf().release();
+    g.aAf().initialize();
+    Log.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg setAccInfo");
+    localObject1 = chA();
+    bg.aVF();
     localObject2 = com.tencent.mm.model.c.getAccPath();
-    bc.aCg();
+    bg.aVF();
     int i = com.tencent.mm.model.c.getUin();
-    ae.i("MicroMsg.BakOldTempStorage", "accPath:%s, accUin:%d", new Object[] { localObject2, Integer.valueOf(i) });
+    Log.i("MicroMsg.BakOldTempStorage", "accPath:%s, accUin:%d", new Object[] { localObject2, Integer.valueOf(i) });
     ((c)localObject1).uin = i;
-    ((c)localObject1).gDT = ((String)localObject2);
-    ae.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg initDB");
-    localObject1 = bKH();
+    ((c)localObject1).hqG = ((String)localObject2);
+    Log.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg initDB");
+    localObject1 = chA();
     localObject2 = new StringBuilder();
-    bc.aCg();
-    localObject2 = com.tencent.mm.model.c.ajx() + ".tem";
-    bc.aCg();
+    bg.aVF();
+    localObject2 = com.tencent.mm.model.c.azN() + ".tem";
+    bg.aVF();
     i = com.tencent.mm.model.c.getUin();
     Object localObject3 = new StringBuilder();
-    bc.aCg();
-    localObject3 = com.tencent.mm.model.c.ajy() + ".tem";
-    ae.i("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB:%s  cache:%s uin:%s db:%s %s", new Object[] { ((c)localObject1).nIn, localObject2, Integer.valueOf(i), localObject3, bu.fpN() });
-    if (((c)localObject1).gDX != null) {
-      ae.e("MicroMsg.BakOldTempStorage", "bakoldInitDB dataDB is already init!!!");
+    bg.aVF();
+    localObject3 = com.tencent.mm.model.c.azO() + ".tem";
+    Log.i("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB:%s  cache:%s uin:%s db:%s %s", new Object[] { ((c)localObject1).oTj, localObject2, Integer.valueOf(i), localObject3, Util.getStack() });
+    if (((c)localObject1).hqK != null) {
+      Log.e("MicroMsg.BakOldTempStorage", "bakoldInitDB dataDB is already init!!!");
     }
     Object localObject4;
     if (paramInt > 0)
     {
-      if ((((c)localObject1).nIn != null) && (!((c)localObject1).nIn.booleanValue()))
+      if ((((c)localObject1).oTj != null) && (!((c)localObject1).oTj.booleanValue()))
       {
-        ae.e("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB is false!!!");
-        ((c)localObject1).bKL();
+        Log.e("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB is false!!!");
+        ((c)localObject1).chE();
       }
-      localObject4 = "bakoldInitDB here  isTempDb should null :" + ((c)localObject1).nIn;
-      if (((c)localObject1).nIn != null) {
+      localObject4 = "bakoldInitDB here  isTempDb should null :" + ((c)localObject1).oTj;
+      if (((c)localObject1).oTj != null) {
         break label748;
       }
     }
@@ -123,11 +123,11 @@ public final class b
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue((String)localObject4, bool);
-      ((c)localObject1).nIn = Boolean.TRUE;
-      ((c)localObject1).gDX = new h(new c.2((c)localObject1));
-      localObject4 = ((c)localObject1).gDX;
+      ((c)localObject1).oTj = Boolean.TRUE;
+      ((c)localObject1).hqK = new h(new c.2((c)localObject1));
+      localObject4 = ((c)localObject1).hqK;
       l = i;
-      q.cH(true);
+      q.dr(true);
       if (((h)localObject4).b((String)localObject2, (String)localObject3, "", l, new HashMap(), false)) {
         break;
       }
@@ -135,121 +135,121 @@ public final class b
       AppMethodBeat.o(22074);
       throw paramPLong1;
     }
-    ((c)localObject1).nFy = new aj(((c)localObject1).gDX);
-    localObject2 = (m)g.ab(m.class);
-    ((c)localObject1).nFz = ((m)localObject2).c(((c)localObject1).gDX);
-    ((c)localObject1).nFB = ((m)localObject2).d(((c)localObject1).gDX);
-    ((c)localObject1).nFA = ((m)localObject2).a(((c)localObject1).gDX, ((c)localObject1).nFz, ((c)localObject1).nFB);
-    ((c)localObject1).nFA.a(new bf(((c)localObject1).nFA));
-    ((c)localObject1).nFA.a(new r(((c)localObject1).nFA));
-    ((c)localObject1).nFE = ((m)localObject2).e(((c)localObject1).gDX);
-    ((c)localObject1).nFC = new com.tencent.mm.av.i(((c)localObject1).gDX);
-    if (com.tencent.mm.br.d.aJN("emoji")) {
-      ((c)localObject1).nFD = new f(((c)localObject1).gDX);
+    ((c)localObject1).oQv = new ao(((c)localObject1).hqK);
+    localObject2 = (m)g.af(m.class);
+    ((c)localObject1).oQw = ((m)localObject2).c(((c)localObject1).hqK);
+    ((c)localObject1).oQy = ((m)localObject2).d(((c)localObject1).hqK);
+    ((c)localObject1).oQx = ((m)localObject2).a(((c)localObject1).hqK, ((c)localObject1).oQw, ((c)localObject1).oQy);
+    ((c)localObject1).oQx.a(new bk(((c)localObject1).oQx));
+    ((c)localObject1).oQx.a(new com.tencent.mm.storage.t(((c)localObject1).oQx));
+    ((c)localObject1).oQB = ((m)localObject2).e(((c)localObject1).hqK);
+    ((c)localObject1).oQz = new com.tencent.mm.av.i(((c)localObject1).hqK);
+    if (com.tencent.mm.br.c.aZU("emoji")) {
+      ((c)localObject1).oQA = new f(((c)localObject1).hqK);
     }
-    ((c)localObject1).nFG = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).b(((c)localObject1).gDX);
-    ((c)localObject1).nFF = new t(((c)localObject1).gDX);
-    ((c)localObject1).nFH = new l(((c)localObject1).gDX);
-    ((c)localObject1).nFI = new j(((c)localObject1).gDX);
-    ((c)localObject1).nFJ = new com.tencent.mm.pluginsdk.model.app.d(((c)localObject1).gDX);
-    ((c)localObject1).nIl = new cd(((c)localObject1).nFy);
-    ((c)localObject1).nIl.add(new c.1((c)localObject1));
-    ((c)localObject1).nIl.fwF();
-    ae.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after TemAccStg initDB");
-    bKG();
-    parama.nIi = true;
-    parama.nIj = paramPLong1.value;
-    parama.nIk = paramPLong2.value;
+    ((c)localObject1).oQD = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).b(((c)localObject1).hqK);
+    ((c)localObject1).oQC = new com.tencent.mm.modelvideo.t(((c)localObject1).hqK);
+    ((c)localObject1).oQE = new l(((c)localObject1).hqK);
+    ((c)localObject1).oQF = new j(((c)localObject1).hqK);
+    ((c)localObject1).oQG = new d(((c)localObject1).hqK);
+    ((c)localObject1).oTh = new ck(((c)localObject1).oQv);
+    ((c)localObject1).oTh.add(new c.1((c)localObject1));
+    ((c)localObject1).oTh.gEr();
+    Log.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after TemAccStg initDB");
+    chz();
+    parama.oTe = true;
+    parama.oTf = paramPLong1.value;
+    parama.oTg = paramPLong2.value;
     parama.dbSize = paramPLong3.value;
-    com.tencent.mm.plugin.backup.bakoldlogic.a.a.WR(com.tencent.mm.plugin.backup.bakoldlogic.a.a.bKd());
+    com.tencent.mm.plugin.backup.bakoldlogic.a.a.agL(com.tencent.mm.plugin.backup.bakoldlogic.a.a.cgW());
     AppMethodBeat.o(22074);
     return true;
   }
   
-  public static b bKD()
-  {
-    AppMethodBeat.i(22068);
-    if (nHW == null)
-    {
-      localb = new b();
-      nHW = localb;
-      a(localb);
-    }
-    b localb = nHW;
-    AppMethodBeat.o(22068);
-    return localb;
-  }
-  
-  private static void bKG()
-  {
-    AppMethodBeat.i(22071);
-    ac localac = new ac();
-    com.tencent.mm.sdk.b.a.IvT.l(localac);
-    AppMethodBeat.o(22071);
-  }
-  
-  private c bKH()
+  private c chA()
   {
     AppMethodBeat.i(22072);
-    if (this.nIa == null) {
-      this.nIa = new c();
+    if (this.oSW == null) {
+      this.oSW = new c();
     }
-    c localc = this.nIa;
+    c localc = this.oSW;
     AppMethodBeat.o(22072);
     return localc;
   }
   
-  public static void bKI()
+  public static void chB()
   {
     AppMethodBeat.i(22075);
     StringBuilder localStringBuilder = new StringBuilder();
-    bc.aCg();
-    o.deleteFile(com.tencent.mm.model.c.ajx() + ".tem");
+    bg.aVF();
+    s.deleteFile(com.tencent.mm.model.c.azN() + ".tem");
     localStringBuilder = new StringBuilder();
-    bc.aCg();
-    o.deleteFile(com.tencent.mm.model.c.ajx() + ".ini.tem");
+    bg.aVF();
+    s.deleteFile(com.tencent.mm.model.c.azN() + ".ini.tem");
     localStringBuilder = new StringBuilder();
-    bc.aCg();
-    o.deleteFile(com.tencent.mm.model.c.ajy() + ".tem");
+    bg.aVF();
+    s.deleteFile(com.tencent.mm.model.c.azO() + ".tem");
     localStringBuilder = new StringBuilder();
-    bc.aCg();
-    o.deleteFile(com.tencent.mm.model.c.ajy() + ".ini.tem");
+    bg.aVF();
+    s.deleteFile(com.tencent.mm.model.c.azO() + ".ini.tem");
     AppMethodBeat.o(22075);
+  }
+  
+  public static b chw()
+  {
+    AppMethodBeat.i(22068);
+    if (oSS == null)
+    {
+      localb = new b();
+      oSS = localb;
+      a(localb);
+    }
+    b localb = oSS;
+    AppMethodBeat.o(22068);
+    return localb;
+  }
+  
+  private static void chz()
+  {
+    AppMethodBeat.i(22071);
+    ae localae = new ae();
+    EventCenter.instance.publish(localae);
+    AppMethodBeat.o(22071);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(22073);
-    final long l = bu.fpO();
-    ae.i("MicroMsg.BakOldTempDbModel", "initTempDB needSyncPauser:%b %s", new Object[] { Boolean.FALSE, bu.fpN() });
-    ar.o(new Runnable()
+    final long l = Util.nowMilliSecond();
+    Log.i("MicroMsg.BakOldTempDbModel", "initTempDB needSyncPauser:%b %s", new Object[] { Boolean.FALSE, Util.getStack() });
+    MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(22061);
-        g.ajP().aiU();
-        ae.i("MicroMsg.BakOldTempDbModel", "initTempDB, initTempDBCount:%d  timediff:%d ", new Object[] { Integer.valueOf(b.nHZ), Long.valueOf(bu.DD(l)) });
+        g.aAf().azk();
+        Log.i("MicroMsg.BakOldTempDbModel", "initTempDB, initTempDBCount:%d  timediff:%d ", new Object[] { Integer.valueOf(b.oSV), Long.valueOf(Util.milliSecondsToNow(l)) });
         b.access$008();
-        bc.ajU().a(new ar.a()
+        bg.aAk().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
         {
-          public final boolean aEC()
+          public final boolean doInBackground()
           {
             AppMethodBeat.i(22059);
-            b.bKI();
+            b.chB();
             PLong localPLong1 = new PLong();
             PLong localPLong2 = new PLong();
             PLong localPLong3 = new PLong();
-            b.a(b.this, localPLong1, localPLong2, localPLong3, b.1.this.nIb, b.1.this.nEY);
+            b.a(b.this, localPLong1, localPLong2, localPLong3, b.1.this.oSX, b.1.this.oPV);
             AppMethodBeat.o(22059);
             return true;
           }
           
-          public final boolean aED()
+          public final boolean onPostExecute()
           {
             AppMethodBeat.i(22058);
-            ae.i("MicroMsg.BakOldTempDbModel", "initTempDB onPostExecute");
-            b.1.this.nIb.run();
-            b.bKJ();
+            Log.i("MicroMsg.BakOldTempDbModel", "initTempDB onPostExecute");
+            b.1.this.oSX.run();
+            b.chC();
             AppMethodBeat.o(22058);
             return false;
           }
@@ -271,14 +271,14 @@ public final class b
   public final void a(final Runnable paramRunnable, final int paramInt)
   {
     AppMethodBeat.i(22076);
-    if ((paramInt < 0) || (nHZ == 0))
+    if ((paramInt < 0) || (oSV == 0))
     {
       if (paramInt < 0) {
-        ae.e("MicroMsg.BakOldTempDbModel", "closeTempDB no left tryCount!!");
+        Log.e("MicroMsg.BakOldTempDbModel", "closeTempDB no left tryCount!!");
       }
-      ae.i("MicroMsg.BakOldTempDbModel", "closeDB before");
-      bKH().bKL();
-      ae.i("MicroMsg.BakOldTempDbModel", "closeDB after");
+      Log.i("MicroMsg.BakOldTempDbModel", "closeDB before");
+      chA().chE();
+      Log.i("MicroMsg.BakOldTempDbModel", "closeDB after");
       if (paramRunnable != null)
       {
         paramRunnable.run();
@@ -287,7 +287,7 @@ public final class b
     }
     else
     {
-      new aq(Looper.getMainLooper()).postDelayed(new Runnable()
+      new MMHandler(Looper.getMainLooper()).postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -300,29 +300,29 @@ public final class b
     AppMethodBeat.o(22076);
   }
   
-  public final void bHQ()
+  public final void ceH()
   {
-    nHW = null;
+    oSS = null;
   }
   
-  public final c bKE()
+  public final c chx()
   {
     AppMethodBeat.i(22069);
-    if (this.nHX == null) {
-      this.nHX = new c();
+    if (this.oST == null) {
+      this.oST = new c();
     }
-    c localc = this.nHX;
+    c localc = this.oST;
     AppMethodBeat.o(22069);
     return localc;
   }
   
-  public final a bKF()
+  public final a chy()
   {
     AppMethodBeat.i(22070);
-    if (this.nHY == null) {
-      this.nHY = new a();
+    if (this.oSU == null) {
+      this.oSU = new a();
     }
-    a locala = this.nHY;
+    a locala = this.oSU;
     AppMethodBeat.o(22070);
     return locala;
   }
@@ -331,9 +331,9 @@ public final class b
     implements Runnable
   {
     public long dbSize = 0L;
-    public boolean nIi = true;
-    public long nIj = 0L;
-    public long nIk = 0L;
+    public boolean oTe = true;
+    public long oTf = 0L;
+    public long oTg = 0L;
     
     public void run()
     {
@@ -344,7 +344,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.b
  * JD-Core Version:    0.7.0.1
  */

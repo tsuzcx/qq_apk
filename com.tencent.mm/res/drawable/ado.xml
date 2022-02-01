@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape>
-            <solid android:color="@color/tn" />
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/bt" />
+            <solid android:color="@color/f" />
         </shape>
     </item>
-    <item android:top="1.0px" android:bottom="1.0px">
-        <shape>
-            <solid android:color="@color/a_r" />
-        </shape>
-    </item>
-</layer-list>
+</selector>

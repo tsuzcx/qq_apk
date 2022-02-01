@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingTop="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/km" android:ellipsize="end" android:gravity="left" android:id="@id/d1x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxEms="5" android:singleLine="false" android:includeFontPadding="false" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/y4" android:gravity="left" android:id="@id/d24" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" android:lineSpacingExtra="1.0dip" />
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.card.ui.v3.CardRefreshLoadMoreLayout android:orientation="vertical" android:id="@id/b2f" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21" app:refreshLayout="@layout/c3a">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/b2g" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.plugin.card.ui.v3.CardRefreshLoadMoreLayout>
 </LinearLayout>

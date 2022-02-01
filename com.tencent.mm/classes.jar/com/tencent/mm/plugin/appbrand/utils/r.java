@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class r
 {
-  private static String[][] mTV;
+  private static String[][] ogW;
   
   static
   {
-    String[] arrayOfString1 = { "\"", "\\\"" };
+    String[] arrayOfString1 = { "\t", "\\t" };
     String[] arrayOfString2 = { "\b", "\\b" };
     String[] arrayOfString3 = { "\r", "\\r" };
-    String[] arrayOfString4 = { " ", "\\u2029" };
-    mTV = new String[][] { { "\\", "\\\\" }, { "'", "\\'" }, arrayOfString1, { "\n", "\\n" }, { "\t", "\\t" }, arrayOfString2, { "\f", "\\f" }, arrayOfString3, { " ", "\\u2028" }, arrayOfString4 };
+    String[] arrayOfString4 = { " ", "\\u2028" };
+    ogW = new String[][] { { "\\", "\\\\" }, { "'", "\\'" }, { "\"", "\\\"" }, { "\n", "\\n" }, arrayOfString1, arrayOfString2, { "\f", "\\f" }, arrayOfString3, arrayOfString4, { " ", "\\u2029" } };
   }
   
-  public static String VN(String paramString)
+  public static String afJ(String paramString)
   {
     AppMethodBeat.i(135365);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(135365);
       return paramString;
     }
-    String[][] arrayOfString = mTV;
+    String[][] arrayOfString = ogW;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -39,7 +39,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.r
  * JD-Core Version:    0.7.0.1
  */

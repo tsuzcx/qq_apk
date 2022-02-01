@@ -3,7 +3,7 @@ package com.tencent.wework.api.util;
 public class OpenDataUtils
 {
   /* Error */
-  public static java.lang.String W(android.content.Context paramContext, java.lang.String paramString1, java.lang.String paramString2)
+  public static java.lang.String aa(android.content.Context paramContext, java.lang.String paramString1, java.lang.String paramString2)
   {
     // Byte code:
     //   0: ldc 9
@@ -176,7 +176,7 @@ public class OpenDataUtils
   }
   
   /* Error */
-  public static long b(android.content.Context paramContext, java.lang.String paramString1, java.lang.String paramString2, android.os.Bundle paramBundle)
+  public static long c(android.content.Context paramContext, java.lang.String paramString1, java.lang.String paramString2, android.os.Bundle paramBundle)
   {
     // Byte code:
     //   0: ldc 106
@@ -258,7 +258,7 @@ public class OpenDataUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.wework.api.util.OpenDataUtils
  * JD-Core Version:    0.7.0.1
  */

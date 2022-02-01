@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.story.ui.album;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.i.h;
 import com.tencent.mm.plugin.story.i.j;
-import com.tencent.mm.protocal.protobuf.djx;
-import com.tencent.mm.protocal.protobuf.dkg;
-import com.tencent.mm.protocal.protobuf.dkx;
-import d.l;
+import com.tencent.mm.protocal.protobuf.edk;
+import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.eek;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "", "label", "", "storyInfos", "", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getLabel", "()Ljava/lang/String;", "getStoryInfos", "()Ljava/util/List;", "toString", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "", "label", "", "storyInfos", "", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getLabel", "()Ljava/lang/String;", "getStoryInfos", "()Ljava/util/List;", "toString", "plugin-story_release"})
 public final class c
 {
-  final List<h> BnZ;
+  final List<h> FyP;
   final String label;
   
   public c()
@@ -26,7 +26,7 @@ public final class c
   {
     AppMethodBeat.i(119821);
     this.label = paramString;
-    this.BnZ = paramList;
+    this.FyP = paramList;
     AppMethodBeat.o(119821);
   }
   
@@ -34,19 +34,19 @@ public final class c
   {
     AppMethodBeat.i(119820);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Iterator localIterator = ((Iterable)this.BnZ).iterator();
+    Iterator localIterator = ((Iterable)this.FyP).iterator();
     if (localIterator.hasNext())
     {
       Object localObject2 = (h)localIterator.next();
-      if (((h)localObject2).BfA.epg().HSy.Gtx.size() > 0)
+      if (((h)localObject2).Fqr.frG().NeB.LoV.size() > 0)
       {
-        localObject1 = (dkg)((h)localObject2).BfA.epg().HSy.Gtx.get(0);
+        localObject1 = (edt)((h)localObject2).Fqr.frG().NeB.LoV.get(0);
         label88:
-        StringBuilder localStringBuilder2 = new StringBuilder("\t[date=").append(((h)localObject2).field_date).append(" localId=").append((int)((h)localObject2).BfA.systemRowid).append(", storyId=").append(((h)localObject2).BfA.field_storyID).append(", thumb=");
+        StringBuilder localStringBuilder2 = new StringBuilder("\t[date=").append(((h)localObject2).field_date).append(" localId=").append((int)((h)localObject2).Fqr.systemRowid).append(", storyId=").append(((h)localObject2).Fqr.field_storyID).append(", thumb=");
         if (localObject1 == null) {
           break label198;
         }
-        localObject2 = ((dkg)localObject1).Hmj;
+        localObject2 = ((edt)localObject1).Msz;
         label151:
         localObject2 = localStringBuilder2.append((String)localObject2).append(", video=");
         if (localObject1 == null) {
@@ -55,7 +55,7 @@ public final class c
       }
       label198:
       label203:
-      for (localObject1 = ((dkg)localObject1).Url;; localObject1 = null)
+      for (localObject1 = ((edt)localObject1).Url;; localObject1 = null)
       {
         localStringBuilder1.append((String)localObject1 + "]\n");
         break;
@@ -72,7 +72,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.c
  * JD-Core Version:    0.7.0.1
  */

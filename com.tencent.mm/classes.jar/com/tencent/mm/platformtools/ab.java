@@ -2,23 +2,23 @@ package com.tencent.mm.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.f;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class ab
 {
-  private static final ab iQR;
-  public static AtomicBoolean iQS;
-  public f iQT;
+  private static final ab jNL;
+  public static AtomicBoolean jNM;
+  public f jNN;
   
   static
   {
-    AppMethodBeat.i(193581);
-    iQR = new ab();
-    iQS = new AtomicBoolean(true);
-    AppMethodBeat.o(193581);
+    AppMethodBeat.i(197123);
+    jNL = new ab();
+    jNM = new AtomicBoolean(true);
+    AppMethodBeat.o(197123);
   }
   
   /* Error */
@@ -33,19 +33,19 @@ public final class ab
     //   8: ldc 45
     //   10: aconst_null
     //   11: iconst_0
-    //   12: invokevirtual 50	com/tencent/mm/storagebase/f:a	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   12: invokevirtual 51	com/tencent/mm/storagebase/f:rawQuery	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   15: astore_3
     //   16: aload_3
-    //   17: invokeinterface 56 1 0
+    //   17: invokeinterface 57 1 0
     //   22: pop
     //   23: aload_3
     //   24: iconst_0
-    //   25: invokeinterface 60 2 0
+    //   25: invokeinterface 61 2 0
     //   30: istore_1
     //   31: aload_3
     //   32: ifnull +9 -> 41
     //   35: aload_3
-    //   36: invokeinterface 63 1 0
+    //   36: invokeinterface 64 1 0
     //   41: ldc 43
     //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: iload_1
@@ -61,7 +61,7 @@ public final class ab
     //   61: aload_2
     //   62: ifnull +25 -> 87
     //   65: aload_3
-    //   66: invokeinterface 63 1 0
+    //   66: invokeinterface 64 1 0
     //   71: ldc 43
     //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_0
@@ -69,10 +69,10 @@ public final class ab
     //   78: astore_3
     //   79: aload_2
     //   80: aload_3
-    //   81: invokevirtual 67	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   81: invokevirtual 68	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   84: goto -13 -> 71
     //   87: aload_3
-    //   88: invokeinterface 63 1 0
+    //   88: invokeinterface 64 1 0
     //   93: goto -22 -> 71
     //   96: astore_0
     //   97: goto -40 -> 57
@@ -94,25 +94,25 @@ public final class ab
   
   public static String a(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(193575);
+    AppMethodBeat.i(197117);
     int i = 0;
     while (i < 2)
     {
       if (paramArrayOfString1[i].equalsIgnoreCase(paramString))
       {
         paramString = paramArrayOfString2[i];
-        AppMethodBeat.o(193575);
+        AppMethodBeat.o(197117);
         return paramString;
       }
       i += 1;
     }
-    AppMethodBeat.o(193575);
+    AppMethodBeat.o(197117);
     return "";
   }
   
   public static boolean a(f paramf, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193577);
+    AppMethodBeat.i(197119);
     Object localObject = null;
     try
     {
@@ -123,18 +123,18 @@ public final class ab
     {
       for (;;)
       {
-        ae.e("TableIndexFixer", "DROP INDEX, failure! indexName=%s %s", new Object[] { paramString1, paramf });
-        e.ywz.idkeyStat(1457L, 0L, 1L, true);
-        e.ywz.f(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
+        Log.e("TableIndexFixer", "DROP INDEX, failure! indexName=%s %s", new Object[] { paramString1, paramf });
+        e.Cxv.idkeyStat(1457L, 0L, 1L, true);
+        e.Cxv.a(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
       }
-      AppMethodBeat.o(193577);
+      AppMethodBeat.o(197119);
     }
     if (paramf == null) {
-      ae.i("TableIndexFixer", "DROP INDEX, successfully! indexName=%s, tblName=%s", new Object[] { paramString1, paramString2 });
+      Log.i("TableIndexFixer", "DROP INDEX, successfully! indexName=%s, tblName=%s", new Object[] { paramString1, paramString2 });
     }
     if (paramf == null)
     {
-      AppMethodBeat.o(193577);
+      AppMethodBeat.o(197119);
       return true;
     }
     return false;
@@ -142,11 +142,11 @@ public final class ab
   
   public static boolean a(f paramf, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(193578);
-    if (bu.isNullOrNil(paramString1))
+    AppMethodBeat.i(197120);
+    if (Util.isNullOrNil(paramString1))
     {
-      ae.e("TableIndexFixer", "[createIndex] rightTblName is wrong.");
-      AppMethodBeat.o(193578);
+      Log.e("TableIndexFixer", "[createIndex] rightTblName is wrong.");
+      AppMethodBeat.o(197120);
       return false;
     }
     Object localObject = null;
@@ -160,18 +160,18 @@ public final class ab
     {
       for (;;)
       {
-        ae.e("TableIndexFixer", "CREATE INDEX, failure! sql=%s %s", new Object[] { paramString1, paramf });
-        e.ywz.idkeyStat(1457L, 5L, 1L, true);
-        e.ywz.f(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
+        Log.e("TableIndexFixer", "CREATE INDEX, failure! sql=%s %s", new Object[] { paramString1, paramf });
+        e.Cxv.idkeyStat(1457L, 5L, 1L, true);
+        e.Cxv.a(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
       }
-      AppMethodBeat.o(193578);
+      AppMethodBeat.o(197120);
     }
     if (paramf == null) {
-      ae.i("TableIndexFixer", "CREATE INDEX, successfully! %s => %s", new Object[] { paramString3, paramString1 });
+      Log.i("TableIndexFixer", "CREATE INDEX, successfully! %s => %s", new Object[] { paramString3, paramString1 });
     }
     if (paramf == null)
     {
-      AppMethodBeat.o(193578);
+      AppMethodBeat.o(197120);
       return true;
     }
     return false;
@@ -179,20 +179,20 @@ public final class ab
   
   public static boolean a(String[] paramArrayOfString, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193576);
+    AppMethodBeat.i(197118);
     if (paramString1.startsWith("sqlite_"))
     {
-      AppMethodBeat.o(193576);
+      AppMethodBeat.o(197118);
       return false;
     }
     if (paramString1.equals(paramString2))
     {
-      AppMethodBeat.o(193576);
+      AppMethodBeat.o(197118);
       return false;
     }
     if (paramString1.startsWith(paramString2))
     {
-      AppMethodBeat.o(193576);
+      AppMethodBeat.o(197118);
       return false;
     }
     int i = 0;
@@ -200,18 +200,13 @@ public final class ab
     {
       if (paramString2.equalsIgnoreCase(paramArrayOfString[i]))
       {
-        AppMethodBeat.o(193576);
+        AppMethodBeat.o(197118);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(193576);
+    AppMethodBeat.o(197118);
     return false;
-  }
-  
-  public static ab aRh()
-  {
-    return iQR;
   }
   
   /* Error */
@@ -220,31 +215,31 @@ public final class ab
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc 187
+    //   2: ldc 185
     //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: ldc 189
+    //   8: ldc 187
     //   10: aconst_null
     //   11: iconst_0
-    //   12: invokevirtual 50	com/tencent/mm/storagebase/f:a	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   12: invokevirtual 51	com/tencent/mm/storagebase/f:rawQuery	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   15: astore_3
     //   16: aload_3
-    //   17: invokeinterface 56 1 0
+    //   17: invokeinterface 57 1 0
     //   22: pop
     //   23: aload_3
     //   24: iconst_0
-    //   25: invokeinterface 60 2 0
+    //   25: invokeinterface 61 2 0
     //   30: istore_1
     //   31: aload_3
     //   32: ifnull +9 -> 41
     //   35: aload_3
-    //   36: invokeinterface 63 1 0
-    //   41: ldc 187
+    //   36: invokeinterface 64 1 0
+    //   41: ldc 185
     //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: iload_1
     //   47: ireturn
     //   48: astore_2
-    //   49: ldc 187
+    //   49: ldc 185
     //   51: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: aload_2
     //   55: athrow
@@ -254,18 +249,18 @@ public final class ab
     //   61: aload_2
     //   62: ifnull +25 -> 87
     //   65: aload_3
-    //   66: invokeinterface 63 1 0
-    //   71: ldc 187
+    //   66: invokeinterface 64 1 0
+    //   71: ldc 185
     //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_0
     //   77: athrow
     //   78: astore_3
     //   79: aload_2
     //   80: aload_3
-    //   81: invokevirtual 67	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   81: invokevirtual 68	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   84: goto -13 -> 71
     //   87: aload_3
-    //   88: invokeinterface 63 1 0
+    //   88: invokeinterface 64 1 0
     //   93: goto -22 -> 71
     //   96: astore_0
     //   97: goto -40 -> 57
@@ -283,6 +278,11 @@ public final class ab
     //   49	56	56	finally
     //   65	71	78	java/lang/Throwable
     //   16	31	96	finally
+  }
+  
+  public static ab blL()
+  {
+    return jNL;
   }
   
   public final class a

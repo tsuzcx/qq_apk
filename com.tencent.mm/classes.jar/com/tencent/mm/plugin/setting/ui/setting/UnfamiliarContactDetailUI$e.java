@@ -7,9 +7,9 @@ public enum UnfamiliarContactDetailUI$e
   static
   {
     AppMethodBeat.i(74604);
-    zaI = new e("OVER_ONE_MIN", 0);
-    zaJ = new e("NORMAL", 1);
-    zaK = new e[] { zaI, zaJ };
+    DfA = new e("OVER_ONE_MIN", 0);
+    DfB = new e("NORMAL", 1);
+    DfC = new e[] { DfA, DfB };
     AppMethodBeat.o(74604);
   }
   

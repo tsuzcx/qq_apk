@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import java.lang.ref.WeakReference;
@@ -19,9 +19,9 @@ final class p$1
   {
     AppMethodBeat.i(38852);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/ui/conversation/banner/OtherOnlineBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    d.b((Context)this.KVE.FpA.get(), "webwx", ".ui.WebWXLogoutUI", this.val$intent);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/ui/conversation/banner/OtherOnlineBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    c.b((Context)this.QiU.Kgr.get(), "webwx", ".ui.WebWXLogoutUI", this.val$intent);
     a.a(this, "com/tencent/mm/ui/conversation/banner/OtherOnlineBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(38852);
   }

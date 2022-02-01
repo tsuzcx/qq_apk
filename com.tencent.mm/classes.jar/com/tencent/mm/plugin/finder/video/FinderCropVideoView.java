@@ -7,27 +7,28 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.FeedData;
 import com.tencent.mm.plugin.gallery.a.c;
 import com.tencent.mm.plugin.sight.base.a;
-import com.tencent.mm.protocal.protobuf.atk;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.protocal.protobuf.bwj;
+import com.tencent.mm.protocal.protobuf.bej;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.protocal.protobuf.cjx;
 import com.tencent.mm.ui.widget.cropview.CropLayout;
 import com.tencent.mm.ui.widget.cropview.CropLayout.e;
-import d.a.j;
-import d.g.a.b;
-import d.l;
 import java.util.Collection;
 import java.util.LinkedList;
+import kotlin.a.j;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderCropVideoView;", "Lcom/tencent/mm/plugin/finder/video/FinderVideoView;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "cropLayout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getCurrentPlaySecond", "", "getIsNeverStart", "", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getVideoDuration", "getVideoMediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "initView", "", "isPreviewing", "layoutId", "onMediaInfoAndMatrixPrepared", "onRelease", "prepareToPlay", "setFinderVideoCore", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "setIsShouldPlayResume", "shouldPlayResume", "setPreview", "isPreview", "setRootMatrix", "matrix", "Landroid/graphics/Matrix;", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "isLocal", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setVideoMuteListener", "onMuteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setVideoPlayLifecycle", "videoPlayLifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setVideoViewFocused", "focused", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderCropVideoView;", "Lcom/tencent/mm/plugin/finder/video/FinderVideoView;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "cropLayout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getCurrentPlayMs", "", "getCurrentPlaySecond", "", "getIsNeverStart", "", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getVideoDuration", "getVideoDurationMs", "getVideoMediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "initView", "", "isPreviewing", "layoutId", "onMediaInfoAndMatrixPrepared", "onRelease", "prepareToPlay", "rawSeekTo", "time", "", "afterSeekPlay", "setFinderVideoCore", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "setIsShouldPlayResume", "shouldPlayResume", "setPreview", "isPreview", "setRootMatrix", "matrix", "Landroid/graphics/Matrix;", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "isLocal", "feedData", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "setVideoMuteListener", "onMuteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setVideoPlayLifecycle", "videoPlayLifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setVideoViewFocused", "focused", "plugin-finder_release"})
 public final class FinderCropVideoView
   extends FinderVideoView
-  implements o
+  implements r
 {
-  private CropLayout sQu;
+  private CropLayout vNh;
   
   public FinderCropVideoView(Context paramContext)
   {
@@ -39,70 +40,50 @@ public final class FinderCropVideoView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void a(m paramm, boolean paramBoolean, FinderItem paramFinderItem)
+  public final void a(com.tencent.mm.plugin.finder.loader.s params, boolean paramBoolean, FeedData paramFeedData)
   {
-    AppMethodBeat.i(205215);
-    d.g.b.p.h(paramm, "video");
-    d.g.b.p.h(paramFinderItem, "finderItem");
-    d.g.b.p.h(paramm, "video");
-    d.g.b.p.h(paramFinderItem, "finderItem");
-    if (paramBoolean)
-    {
-      Object localObject2 = paramm.srx.url;
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      String str = paramm.aeM();
-      localObject2 = paramm.srx.stz;
-      if (localObject2 != null) {}
-      for (localObject2 = ((bwj)localObject2).Hjo;; localObject2 = null)
-      {
-        this.tbp = ((atk)localObject2);
-        super.a("", (String)localObject1, str, null, paramm, paramFinderItem);
-        AppMethodBeat.o(205215);
-        return;
-      }
-    }
-    super.a(paramm.getUrl(), paramm.getPath(), paramm.aeM(), paramm.srx, paramm, paramFinderItem);
-    AppMethodBeat.o(205215);
+    AppMethodBeat.i(253866);
+    p.h(params, "video");
+    p.h(paramFeedData, "feedData");
+    b(params, paramBoolean, paramFeedData);
+    AppMethodBeat.o(253866);
   }
   
-  public final boolean cOA()
+  public final boolean dEN()
   {
     return false;
   }
   
-  public final boolean cOB()
+  public final boolean dEO()
   {
-    AppMethodBeat.i(205220);
+    AppMethodBeat.i(253871);
     boolean bool = get_isPreviewing();
-    AppMethodBeat.o(205220);
+    AppMethodBeat.o(253871);
     return bool;
   }
   
-  public final int cOC()
+  public final int dEP()
   {
-    return 2131493937;
+    return 2131494105;
   }
   
-  public final void cOD()
+  public final void dEQ()
   {
     AppMethodBeat.i(168002);
-    Object localObject1 = this.sQu;
+    Object localObject1 = this.vNh;
     if (localObject1 == null) {
-      d.g.b.p.bdF("cropLayout");
+      p.btv("cropLayout");
     }
     ((CropLayout)localObject1).reset();
     Object localObject2 = getVideoMatrix();
     if (localObject2 != null)
     {
-      if (((atk)localObject2).GKl.size() == 9)
+      if (((bej)localObject2).LOe.size() == 9)
       {
         localObject1 = new Matrix();
-        localObject2 = ((atk)localObject2).GKl;
-        d.g.b.p.g(localObject2, "it.value");
-        ((Matrix)localObject1).setValues(j.q((Collection)localObject2));
+        localObject2 = ((bej)localObject2).LOe;
+        p.g(localObject2, "it.value");
+        ((Matrix)localObject1).setValues(j.t((Collection)localObject2));
         setRootMatrix((Matrix)localObject1);
       }
       AppMethodBeat.o(168002);
@@ -111,46 +92,112 @@ public final class FinderCropVideoView
     AppMethodBeat.o(168002);
   }
   
+  public final long getCurrentPlayMs()
+  {
+    AppMethodBeat.i(253873);
+    long l = getCurrPosMs();
+    AppMethodBeat.o(253873);
+    return l;
+  }
+  
   public final int getCurrentPlaySecond()
   {
-    AppMethodBeat.i(205221);
+    AppMethodBeat.i(253872);
     int i = getCurrPosSec();
-    AppMethodBeat.o(205221);
+    AppMethodBeat.o(253872);
     return i;
   }
   
   public final boolean getIsNeverStart()
   {
-    return this.sZO;
+    return this.wcC;
   }
   
   public final boolean getIsShouldPlayResume()
   {
-    return this.sZn;
+    return this.wcB;
   }
   
   public final ViewParent getParentView()
   {
-    AppMethodBeat.i(205223);
+    AppMethodBeat.i(253876);
     ViewParent localViewParent = getParent();
-    AppMethodBeat.o(205223);
+    AppMethodBeat.o(253876);
     return localViewParent;
   }
   
   public final int getVideoDuration()
   {
-    AppMethodBeat.i(205222);
+    AppMethodBeat.i(253874);
+    Object localObject = getMediaInfo();
+    if (localObject != null)
+    {
+      localObject = ((s)localObject).tHN;
+      if (localObject != null)
+      {
+        localObject = ((com.tencent.mm.plugin.finder.loader.s)localObject).uIw;
+        if (localObject != null)
+        {
+          localObject = ((cjl)localObject).uOR;
+          if (localObject != null)
+          {
+            if (getVideoDurationSec() > (((cjx)localObject).iqg - ((cjx)localObject).dvv) / 1000)
+            {
+              i = (((cjx)localObject).iqg - ((cjx)localObject).dvv) / 1000;
+              AppMethodBeat.o(253874);
+              return i;
+            }
+            i = getVideoDurationSec();
+            AppMethodBeat.o(253874);
+            return i;
+          }
+        }
+      }
+    }
     int i = getVideoDurationSec();
-    AppMethodBeat.o(205222);
+    AppMethodBeat.o(253874);
     return i;
   }
   
-  public final p getVideoMediaInfo()
+  public final long getVideoDurationMs()
   {
-    AppMethodBeat.i(205216);
-    p localp = getMediaInfo();
-    AppMethodBeat.o(205216);
-    return localp;
+    AppMethodBeat.i(253875);
+    Object localObject = getMediaInfo();
+    if (localObject != null)
+    {
+      localObject = ((s)localObject).tHN;
+      if (localObject != null)
+      {
+        localObject = ((com.tencent.mm.plugin.finder.loader.s)localObject).uIw;
+        if (localObject != null)
+        {
+          localObject = ((cjl)localObject).uOR;
+          if (localObject != null)
+          {
+            if (getVideoDurationSec() > (((cjx)localObject).iqg - ((cjx)localObject).dvv) / 1000)
+            {
+              l = ((cjx)localObject).iqg - ((cjx)localObject).dvv;
+              AppMethodBeat.o(253875);
+              return l;
+            }
+            l = getVideoDurationSec();
+            AppMethodBeat.o(253875);
+            return l * 1000L;
+          }
+        }
+      }
+    }
+    long l = getVideoDurationSec();
+    AppMethodBeat.o(253875);
+    return l * 1000L;
+  }
+  
+  public final s getVideoMediaInfo()
+  {
+    AppMethodBeat.i(253867);
+    s locals = getMediaInfo();
+    AppMethodBeat.o(253867);
+    return locals;
   }
   
   public final View getVideoView()
@@ -160,34 +207,34 @@ public final class FinderCropVideoView
   
   public final boolean getVideoViewFocused()
   {
-    return this.sZm;
+    return this.wcA;
   }
   
   public final void initView()
   {
     AppMethodBeat.i(168001);
     super.initView();
-    Object localObject = findViewById(2131299987);
-    d.g.b.p.g(localObject, "findViewById(R.id.finder_crop_layout)");
-    this.sQu = ((CropLayout)localObject);
-    localObject = this.sQu;
+    Object localObject = findViewById(2131300800);
+    p.g(localObject, "findViewById(R.id.finder_crop_layout)");
+    this.vNh = ((CropLayout)localObject);
+    localObject = this.vNh;
     if (localObject == null) {
-      d.g.b.p.bdF("cropLayout");
+      p.btv("cropLayout");
     }
     ((CropLayout)localObject).setEnableTouch(false);
-    localObject = this.sQu;
+    localObject = this.vNh;
     if (localObject == null) {
-      d.g.b.p.bdF("cropLayout");
+      p.btv("cropLayout");
     }
     ((CropLayout)localObject).setEnableScale(false);
-    localObject = this.sQu;
+    localObject = this.vNh;
     if (localObject == null) {
-      d.g.b.p.bdF("cropLayout");
+      p.btv("cropLayout");
     }
     ((CropLayout)localObject).setEnableFling(false);
-    localObject = this.sQu;
+    localObject = this.vNh;
     if (localObject == null) {
-      d.g.b.p.bdF("cropLayout");
+      p.btv("cropLayout");
     }
     ((CropLayout)localObject).setEnableOverScroll(false);
     AppMethodBeat.o(168001);
@@ -195,79 +242,95 @@ public final class FinderCropVideoView
   
   public final void onRelease() {}
   
-  public final void setFinderVideoCore(i parami)
+  public final void setFinderVideoCore(k paramk)
   {
-    AppMethodBeat.i(205212);
-    setVideoCore(parami);
-    AppMethodBeat.o(205212);
+    AppMethodBeat.i(253863);
+    setVideoCore(paramk);
+    AppMethodBeat.o(253863);
   }
   
   public final void setIsShouldPlayResume(boolean paramBoolean)
   {
-    AppMethodBeat.i(205217);
+    AppMethodBeat.i(253868);
     setShouldPlayResume(paramBoolean);
-    AppMethodBeat.o(205217);
+    AppMethodBeat.o(253868);
   }
   
   public final void setPreview(boolean paramBoolean)
   {
-    AppMethodBeat.i(205219);
+    AppMethodBeat.i(253870);
     set_isPreviewing(paramBoolean);
-    AppMethodBeat.o(205219);
+    AppMethodBeat.o(253870);
   }
   
   public final void setRootMatrix(Matrix paramMatrix)
   {
     AppMethodBeat.i(168003);
-    d.g.b.p.h(paramMatrix, "matrix");
+    p.h(paramMatrix, "matrix");
     if (getMediaInfo() == null)
     {
       AppMethodBeat.o(168003);
       return;
     }
-    Object localObject = c.ubl;
+    Object localObject = c.xsz;
     localObject = getMediaInfo();
     if (localObject == null) {
-      d.g.b.p.gkB();
+      p.hyc();
     }
-    localObject = c.ajS(((p)localObject).path);
+    localObject = c.awl(((s)localObject).path);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(168003);
+      return;
+    }
     paramMatrix = new Matrix(paramMatrix);
-    CropLayout localCropLayout = this.sQu;
+    CropLayout localCropLayout = this.vNh;
     if (localCropLayout == null) {
-      d.g.b.p.bdF("cropLayout");
+      p.btv("cropLayout");
     }
-    RelativeLayout localRelativeLayout = this.lxA;
-    d.g.b.p.g(localRelativeLayout, "videoRoot");
-    localCropLayout.a((View)localRelativeLayout, ((a)localObject).width, ((a)localObject).height, new Matrix(), CropLayout.e.LrL, (b)new FinderCropVideoView.a(paramMatrix));
+    RelativeLayout localRelativeLayout = this.mEy;
+    p.g(localRelativeLayout, "videoRoot");
+    localCropLayout.a((View)localRelativeLayout, ((a)localObject).width, ((a)localObject).height, new Matrix(), CropLayout.e.QMD, (b)new a(paramMatrix));
     AppMethodBeat.o(168003);
   }
   
-  public final void setVideoMuteListener(q paramq)
+  public final void setVideoMuteListener(t paramt)
   {
-    AppMethodBeat.i(205213);
-    d.g.b.p.h(paramq, "onMuteListener");
-    setMuteListener(paramq);
-    AppMethodBeat.o(205213);
+    AppMethodBeat.i(253864);
+    p.h(paramt, "onMuteListener");
+    setMuteListener(paramt);
+    AppMethodBeat.o(253864);
   }
   
-  public final void setVideoPlayLifecycle(u paramu)
+  public final void setVideoPlayLifecycle(y paramy)
   {
-    AppMethodBeat.i(205214);
-    d.g.b.p.h(paramu, "videoPlayLifecycle");
-    setLifecycle(paramu);
-    AppMethodBeat.o(205214);
+    AppMethodBeat.i(253865);
+    p.h(paramy, "videoPlayLifecycle");
+    setLifecycle(paramy);
+    AppMethodBeat.o(253865);
   }
   
   public final void setVideoViewFocused(boolean paramBoolean)
   {
-    AppMethodBeat.i(205218);
+    AppMethodBeat.i(253869);
     setViewFocused(paramBoolean);
-    AppMethodBeat.o(205218);
+    AppMethodBeat.o(253869);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
+  static final class a
+    extends q
+    implements b<Matrix, Boolean>
+  {
+    a(Matrix paramMatrix)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.FinderCropVideoView
  * JD-Core Version:    0.7.0.1
  */

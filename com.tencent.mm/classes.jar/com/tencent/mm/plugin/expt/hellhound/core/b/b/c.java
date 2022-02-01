@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.btm;
-import com.tencent.mm.protocal.protobuf.cib;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cgh;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
 {
-  public static void ab(Bundle paramBundle)
+  public static void ah(Bundle paramBundle)
   {
     AppMethodBeat.i(121992);
     if (paramBundle == null)
@@ -23,13 +23,13 @@ public final class c
     paramBundle = paramBundle.getString("Chat_User");
     if (!TextUtils.isEmpty(paramBundle))
     {
-      ae.d("HABBYGE-MALI.FragmentBundleDao", "FragmentBundleDao, putBundle: %s", new Object[] { paramBundle });
-      fV("Chat_User", paramBundle);
+      Log.d("HABBYGE-MALI.FragmentBundleDao", "FragmentBundleDao, putBundle: %s", new Object[] { paramBundle });
+      go("Chat_User", paramBundle);
     }
     AppMethodBeat.o(121992);
   }
   
-  public static cib cpE()
+  public static cyi cNX()
   {
     AppMethodBeat.i(121994);
     byte[] arrayOfByte = b.getBytes("hell_fgm_bun_mmkv_key");
@@ -38,53 +38,53 @@ public final class c
       AppMethodBeat.o(121994);
       return null;
     }
-    cib localcib = new cib();
+    cyi localcyi = new cyi();
     try
     {
-      localcib.parseFrom(arrayOfByte);
+      localcyi.parseFrom(arrayOfByte);
       AppMethodBeat.o(121994);
-      return localcib;
+      return localcyi;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FragmentBundleDao", localException, "FragmentBundleDao _doRead parse", new Object[0]);
+        Log.printErrStackTrace("HABBYGE-MALI.FragmentBundleDao", localException, "FragmentBundleDao _doRead parse", new Object[0]);
         Object localObject = null;
       }
     }
   }
   
-  static void fV(String paramString1, String paramString2)
+  static void go(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121993);
-    cib localcib = cpE();
-    if (localcib == null) {
-      localcib = new cib();
+    cyi localcyi = cNX();
+    if (localcyi == null) {
+      localcyi = new cyi();
     }
     for (;;)
     {
-      Object localObject = localcib.Huj.iterator();
+      Object localObject = localcyi.MDh.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        btm localbtm = (btm)((Iterator)localObject).next();
-        if ((localbtm != null) && (paramString1.equals(localbtm.key))) {
-          localcib.Huj.remove(localbtm);
+        cgh localcgh = (cgh)((Iterator)localObject).next();
+        if ((localcgh != null) && (paramString1.equals(localcgh.key))) {
+          localcyi.MDh.remove(localcgh);
         }
       }
-      localObject = new btm();
-      ((btm)localObject).key = paramString1;
-      ((btm)localObject).value = paramString2;
-      localcib.Huj.add(localObject);
+      localObject = new cgh();
+      ((cgh)localObject).key = paramString1;
+      ((cgh)localObject).value = paramString2;
+      localcyi.MDh.add(localObject);
       try
       {
-        b.p("hell_fgm_bun_mmkv_key", localcib.toByteArray());
+        b.o("hell_fgm_bun_mmkv_key", localcyi.toByteArray());
         AppMethodBeat.o(121993);
         return;
       }
       catch (Exception paramString1)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FragmentBundleDao", paramString1, "FragmentBundleDao writeBack", new Object[0]);
+        Log.printErrStackTrace("HABBYGE-MALI.FragmentBundleDao", paramString1, "FragmentBundleDao writeBack", new Object[0]);
         AppMethodBeat.o(121993);
         return;
       }

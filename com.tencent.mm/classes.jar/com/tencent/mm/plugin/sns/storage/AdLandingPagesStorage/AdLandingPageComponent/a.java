@@ -8,12 +8,18 @@ import android.support.v4.content.d;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
   extends m
 {
+  public boolean DXr;
+  private boolean DXs = true;
+  private boolean DXt = false;
+  public com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a DXu;
+  private volatile boolean DXv = false;
+  public boolean DXw;
   private BroadcastReceiver receiver = new BroadcastReceiver()
   {
     public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -28,12 +34,12 @@ public abstract class a
       {
         if ("com.tencent.mm.adlanding.close_exposure_voice".equals(paramAnonymousIntent.getAction()))
         {
-          if (a.this.eaw().zRg.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
+          if (a.this.fdk().DZi.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
             break label98;
           }
           paramAnonymousContext = a.this;
-          if (paramAnonymousContext.zPy) {
-            paramAnonymousContext.dZN();
+          if (paramAnonymousContext.DXw) {
+            paramAnonymousContext.fcJ();
           }
           AppMethodBeat.o(96313);
           return;
@@ -45,47 +51,41 @@ public abstract class a
         return;
       }
       if ("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME".equals(paramAnonymousIntent.getAction())) {
-        a.this.aN(paramAnonymousIntent);
+        a.this.aX(paramAnonymousIntent);
       }
       label98:
       AppMethodBeat.o(96313);
     }
   };
-  public boolean zPt;
-  private boolean zPu = true;
-  private boolean zPv = false;
-  public com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a zPw;
-  private volatile boolean zPx = false;
-  public boolean zPy;
   
-  public a(Context paramContext, y paramy, ViewGroup paramViewGroup)
+  public a(Context paramContext, z paramz, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramy, paramViewGroup);
+    super(paramContext, paramz, paramViewGroup);
     try
     {
-      this.zPw = com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a.dUT();
-      paramContext = d.V(this.context);
-      paramy = new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice");
-      paramy.addAction("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
-      paramContext.a(this.receiver, paramy);
-      ae.v("AbsVideoPlayComp", "register receiver " + this.receiver);
+      this.DXu = com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a.eXm();
+      paramContext = d.W(this.context);
+      paramz = new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice");
+      paramz.addAction("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
+      paramContext.a(this.receiver, paramz);
+      Log.v("AbsVideoPlayComp", "register receiver " + this.receiver);
       return;
     }
     catch (Throwable paramContext) {}
   }
   
-  protected final void aN(Intent paramIntent)
+  protected final void aX(Intent paramIntent)
   {
     int i;
     if (paramIntent != null)
     {
-      i = z.getIntExtra(paramIntent, "TRY_PAUSE_OR_RESUME", 0);
+      i = IntentUtil.getIntExtra(paramIntent, "TRY_PAUSE_OR_RESUME", 0);
       if (i != 1) {
         break label34;
       }
-      this.zPv = true;
+      this.DXt = true;
       if (isPlaying()) {
-        cyU();
+        cWX();
       }
     }
     label34:
@@ -95,75 +95,75 @@ public abstract class a
       {
         return;
       } while (i != 2);
-      this.zPv = false;
+      this.DXt = false;
     } while (isPlaying());
-    cyV();
+    cWY();
   }
   
-  protected void cyU() {}
+  protected void cWX() {}
   
-  protected void cyV() {}
+  protected void cWY() {}
   
-  public void dUI()
+  public void eWZ()
   {
-    super.dUI();
+    super.eWZ();
+    this.DXw = true;
   }
   
-  public void dUK()
+  public void eXa()
   {
-    super.dUK();
-    this.zPy = true;
+    super.eXa();
+    this.DXw = false;
   }
   
-  public void dUL()
+  public void eXb()
   {
-    super.dUL();
-    this.zPy = false;
-  }
-  
-  public void dUM()
-  {
-    super.dUM();
-    d.V(this.context).unregisterReceiver(this.receiver);
-    this.zPy = true;
-    ae.v("AbsVideoPlayComp", "unregister receiver " + this.receiver);
-  }
-  
-  public void dZN()
-  {
-    this.zPt = false;
-  }
-  
-  public void dZO()
-  {
-    super.dZO();
-    if (this.zPu)
+    super.eXb();
+    if (this.DXs)
     {
-      this.zPu = false;
-      if (!eaD().zRO) {
-        dZN();
+      this.DXs = false;
+      if (!fds().DZV) {
+        fcJ();
       }
     }
     else
     {
       return;
     }
-    dZP();
+    fcK();
   }
   
-  public void dZP()
+  public void eXd()
   {
-    this.zPt = true;
+    super.eXd();
+    d.W(this.context).unregisterReceiver(this.receiver);
+    this.DXw = true;
+    Log.v("AbsVideoPlayComp", "unregister receiver " + this.receiver);
   }
   
-  public final void dZQ()
+  public void eXe()
+  {
+    super.eXe();
+  }
+  
+  public void fcJ()
+  {
+    this.DXr = false;
+  }
+  
+  public void fcK()
+  {
+    this.DXr = true;
+  }
+  
+  public final void fcL()
   {
     Intent localIntent = new Intent("com.tencent.mm.adlanding.close_exposure_voice");
-    localIntent.putExtra("para_id", eaw().zRg);
-    d.V(this.context).b(localIntent);
+    localIntent.putExtra("para_id", fdk().DZi);
+    d.W(this.context).b(localIntent);
   }
   
-  public final int dZR()
+  public final int fcM()
   {
     if (this.context != null) {
       return this.context.hashCode();
@@ -175,7 +175,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,11 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.v4.view.t;
-import android.support.v4.view.v;
+import android.support.v4.view.u;
+import android.support.v4.view.w;
 import android.support.v7.e.a.a;
 import android.util.AttributeSet;
 import android.util.LogPrinter;
-import android.util.Pair;
 import android.util.Printer;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -18,92 +17,22 @@ import android.view.ViewGroup.MarginLayoutParams;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.List<Landroid.support.v7.widget.GridLayout.b;>;
-import java.util.Map;
 
 public class GridLayout
   extends ViewGroup
 {
-  private static final int ORIENTATION = 3;
-  static final Printer anR = new LogPrinter(3, GridLayout.class.getName());
-  static final Printer anS = new Printer()
-  {
-    public final void println(String paramAnonymousString) {}
-  };
-  private static final int anT = 4;
-  private static final int anU = 1;
-  private static final int anV = 6;
-  private static final int anW = 0;
-  private static final int anX = 5;
-  private static final int anY = 2;
-  static final a aof = new a()
-  {
-    final int B(View paramAnonymousView, int paramAnonymousInt)
-    {
-      return -2147483648;
-    }
-    
-    final String jJ()
-    {
-      return "UNDEFINED";
-    }
-    
-    public final int k(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      return -2147483648;
-    }
-  };
-  private static final a aog = new a()
-  {
-    final int B(View paramAnonymousView, int paramAnonymousInt)
-    {
-      return 0;
-    }
-    
-    final String jJ()
-    {
-      return "LEADING";
-    }
-    
-    public final int k(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      return 0;
-    }
-  };
-  private static final a aoh = new a()
-  {
-    final int B(View paramAnonymousView, int paramAnonymousInt)
-    {
-      return paramAnonymousInt;
-    }
-    
-    final String jJ()
-    {
-      return "TRAILING";
-    }
-    
-    public final int k(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      return paramAnonymousInt1;
-    }
-  };
-  public static final a aoi = aog;
-  public static final a aoj = aoh;
-  public static final a aok = aog;
-  public static final a aol = aoh;
-  public static final a aom = a(aok, aol);
-  public static final a aon = a(aol, aok);
-  public static final a aoo = new a()
+  private static final int ORIENTATION;
+  public static final a aoA = new a()
   {
     final int B(View paramAnonymousView, int paramAnonymousInt)
     {
       return paramAnonymousInt >> 1;
     }
     
-    final String jJ()
+    final String jS()
     {
       return "CENTER";
     }
@@ -113,19 +42,19 @@ public class GridLayout
       return paramAnonymousInt1 >> 1;
     }
   };
-  public static final a aop = new a()
+  public static final a aoB = new a()
   {
     final int B(View paramAnonymousView, int paramAnonymousInt)
     {
       return 0;
     }
     
-    final String jJ()
+    final String jS()
     {
       return "BASELINE";
     }
     
-    public final GridLayout.e jK()
+    public final GridLayout.e jT()
     {
       new GridLayout.e()
       {
@@ -142,9 +71,9 @@ public class GridLayout
           return Math.max(0, super.a(paramAnonymous2GridLayout, paramAnonymous2View, paramAnonymous2a, paramAnonymous2Int, paramAnonymous2Boolean));
         }
         
-        protected final int aj(boolean paramAnonymous2Boolean)
+        protected final int ai(boolean paramAnonymous2Boolean)
         {
-          return Math.max(super.aj(paramAnonymous2Boolean), this.size);
+          return Math.max(super.ai(paramAnonymous2Boolean), this.size);
         }
         
         protected final void reset()
@@ -169,7 +98,7 @@ public class GridLayout
       return -2147483648;
     }
   };
-  public static final a aoq = new a()
+  public static final a aoC = new a()
   {
     final int B(View paramAnonymousView, int paramAnonymousInt)
     {
@@ -181,7 +110,7 @@ public class GridLayout
       return paramAnonymousInt2;
     }
     
-    final String jJ()
+    final String jS()
     {
       return "FILL";
     }
@@ -191,14 +120,102 @@ public class GridLayout
       return -2147483648;
     }
   };
-  final d anZ = new d(true);
-  final d aoa = new d(false);
-  boolean aob = false;
-  int aoc = 1;
-  int aod;
-  int aoe = 0;
+  static final Printer aod = new LogPrinter(3, GridLayout.class.getName());
+  static final Printer aoe = new Printer()
+  {
+    public final void println(String paramAnonymousString) {}
+  };
+  private static final int aof;
+  private static final int aog;
+  private static final int aoh;
+  private static final int aoi;
+  private static final int aoj;
+  private static final int aok;
+  static final a aor;
+  private static final a aos;
+  private static final a aot;
+  public static final a aou;
+  public static final a aov;
+  public static final a aow;
+  public static final a aox;
+  public static final a aoy;
+  public static final a aoz;
+  final d aol = new d(true);
+  final d aom = new d(false);
+  boolean aon = false;
+  int aoo = 1;
+  int aop;
+  int aoq = 0;
   int mOrientation = 0;
-  Printer mPrinter = anR;
+  Printer mPrinter = aod;
+  
+  static
+  {
+    ORIENTATION = 3;
+    aof = 4;
+    aog = 1;
+    aoh = 6;
+    aoi = 0;
+    aoj = 5;
+    aok = 2;
+    aor = new a()
+    {
+      final int B(View paramAnonymousView, int paramAnonymousInt)
+      {
+        return -2147483648;
+      }
+      
+      final String jS()
+      {
+        return "UNDEFINED";
+      }
+      
+      public final int k(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        return -2147483648;
+      }
+    };
+    aos = new a()
+    {
+      final int B(View paramAnonymousView, int paramAnonymousInt)
+      {
+        return 0;
+      }
+      
+      final String jS()
+      {
+        return "LEADING";
+      }
+      
+      public final int k(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        return 0;
+      }
+    };
+    aot = new a()
+    {
+      final int B(View paramAnonymousView, int paramAnonymousInt)
+      {
+        return paramAnonymousInt;
+      }
+      
+      final String jS()
+      {
+        return "TRAILING";
+      }
+      
+      public final int k(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        return paramAnonymousInt1;
+      }
+    };
+    aou = aos;
+    aov = aot;
+    aow = aos;
+    aox = aot;
+    aoy = a(aow, aox);
+    aoz = a(aox, aow);
+  }
   
   public GridLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -208,17 +225,17 @@ public class GridLayout
   public GridLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.aod = paramContext.getResources().getDimensionPixelOffset(2131166086);
+    this.aop = paramContext.getResources().getDimensionPixelOffset(2131166127);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.GridLayout);
     try
     {
-      setRowCount(paramContext.getInt(anT, -2147483648));
-      setColumnCount(paramContext.getInt(anU, -2147483648));
+      setRowCount(paramContext.getInt(aof, -2147483648));
+      setColumnCount(paramContext.getInt(aog, -2147483648));
       setOrientation(paramContext.getInt(ORIENTATION, 0));
-      setUseDefaultMargins(paramContext.getBoolean(anV, false));
-      setAlignmentMode(paramContext.getInt(anW, 1));
-      setRowOrderPreserved(paramContext.getBoolean(anX, true));
-      setColumnOrderPreserved(paramContext.getBoolean(anY, true));
+      setUseDefaultMargins(paramContext.getBoolean(aoh, false));
+      setAlignmentMode(paramContext.getInt(aoi, 1));
+      setRowOrderPreserved(paramContext.getBoolean(aoj, true));
+      setColumnOrderPreserved(paramContext.getBoolean(aok, true));
       return;
     }
     finally
@@ -227,7 +244,7 @@ public class GridLayout
     }
   }
   
-  static void E(String paramString)
+  static void F(String paramString)
   {
     throw new IllegalArgumentException(paramString + ". ");
   }
@@ -244,13 +261,13 @@ public class GridLayout
       final int B(View paramAnonymousView, int paramAnonymousInt)
       {
         int i = 1;
-        if (t.Y(paramAnonymousView) == 1) {
+        if (u.Z(paramAnonymousView) == 1) {
           if (i != 0) {
             break label33;
           }
         }
         label33:
-        for (GridLayout.a locala = this.aor;; locala = parama2)
+        for (GridLayout.a locala = this.aoD;; locala = parama2)
         {
           return locala.B(paramAnonymousView, paramAnonymousInt);
           i = 0;
@@ -258,21 +275,21 @@ public class GridLayout
         }
       }
       
-      final String jJ()
+      final String jS()
       {
-        return "SWITCHING[L:" + this.aor.jJ() + ", R:" + parama2.jJ() + "]";
+        return "SWITCHING[L:" + this.aoD.jS() + ", R:" + parama2.jS() + "]";
       }
       
       public final int k(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         int i = 1;
-        if (t.Y(paramAnonymousView) == 1) {
+        if (u.Z(paramAnonymousView) == 1) {
           if (i != 0) {
             break label37;
           }
         }
         label37:
-        for (GridLayout.a locala = this.aor;; locala = parama2)
+        for (GridLayout.a locala = this.aoD;; locala = parama2)
         {
           return locala.k(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
           i = 0;
@@ -293,9 +310,9 @@ public class GridLayout
   private static void a(LayoutParams paramLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     f localf = new f(paramInt1, paramInt1 + paramInt2);
-    paramLayoutParams.apr = paramLayoutParams.apr.a(localf);
+    paramLayoutParams.apD = paramLayoutParams.apD.a(localf);
     localf = new f(paramInt3, paramInt3 + paramInt4);
-    paramLayoutParams.aps = paramLayoutParams.aps.a(localf);
+    paramLayoutParams.apE = paramLayoutParams.apE.a(localf);
   }
   
   private void a(LayoutParams paramLayoutParams, boolean paramBoolean)
@@ -309,10 +326,10 @@ public class GridLayout
       if (!paramBoolean) {
         break label183;
       }
-      paramLayoutParams = paramLayoutParams.aps;
-      localf = paramLayoutParams.aou;
+      paramLayoutParams = paramLayoutParams.apE;
+      localf = paramLayoutParams.aoG;
       if ((localf.min != -2147483648) && (localf.min < 0)) {
-        E(str + " indices must be positive");
+        F(str + " indices must be positive");
       }
       if (!paramBoolean) {
         break label191;
@@ -320,22 +337,22 @@ public class GridLayout
     }
     label183:
     label191:
-    for (paramLayoutParams = this.anZ;; paramLayoutParams = this.aoa)
+    for (paramLayoutParams = this.aol;; paramLayoutParams = this.aom)
     {
-      int i = paramLayoutParams.aoA;
+      int i = paramLayoutParams.aoM;
       if (i != -2147483648)
       {
         if (localf.max > i) {
-          E(str + " indices (start + span) mustn't exceed the " + str + " count");
+          F(str + " indices (start + span) mustn't exceed the " + str + " count");
         }
         if (localf.size() > i) {
-          E(str + " span mustn't exceed the " + str + " count");
+          F(str + " span mustn't exceed the " + str + " count");
         }
       }
       return;
       str = "row";
       break;
-      paramLayoutParams = paramLayoutParams.apr;
+      paramLayoutParams = paramLayoutParams.apD;
       break label18;
     }
   }
@@ -350,31 +367,31 @@ public class GridLayout
   
   private int b(View paramView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.aoc == 1) {
+    if (this.aoo == 1) {
       return a(paramView, paramBoolean1, paramBoolean2);
     }
     Object localObject;
     if (paramBoolean1)
     {
-      localObject = this.anZ;
+      localObject = this.aol;
       if (!paramBoolean2) {
         break label124;
       }
-      if (((d)localObject).aoI == null) {
-        ((d)localObject).aoI = new int[((d)localObject).getCount() + 1];
+      if (((d)localObject).aoU == null) {
+        ((d)localObject).aoU = new int[((d)localObject).getCount() + 1];
       }
-      if (!((d)localObject).aoJ)
+      if (!((d)localObject).aoV)
       {
-        ((d)localObject).am(true);
-        ((d)localObject).aoJ = true;
+        ((d)localObject).al(true);
+        ((d)localObject).aoV = true;
       }
-      localObject = ((d)localObject).aoI;
+      localObject = ((d)localObject).aoU;
       label79:
       paramView = (LayoutParams)paramView.getLayoutParams();
       if (!paramBoolean1) {
         break label176;
       }
-      paramView = paramView.aps;
+      paramView = paramView.apE;
       label96:
       if (!paramBoolean2) {
         break label184;
@@ -382,33 +399,33 @@ public class GridLayout
     }
     label176:
     label184:
-    for (int i = paramView.aou.min;; i = paramView.aou.max)
+    for (int i = paramView.aoG.min;; i = paramView.aoG.max)
     {
       return localObject[i];
-      localObject = this.aoa;
+      localObject = this.aom;
       break;
       label124:
-      if (((d)localObject).aoK == null) {
-        ((d)localObject).aoK = new int[((d)localObject).getCount() + 1];
+      if (((d)localObject).aoW == null) {
+        ((d)localObject).aoW = new int[((d)localObject).getCount() + 1];
       }
-      if (!((d)localObject).aoL)
+      if (!((d)localObject).aoX)
       {
-        ((d)localObject).am(false);
-        ((d)localObject).aoL = true;
+        ((d)localObject).al(false);
+        ((d)localObject).aoX = true;
       }
-      localObject = ((d)localObject).aoK;
+      localObject = ((d)localObject).aoW;
       break label79;
-      paramView = paramView.apr;
+      paramView = paramView.apD;
       break label96;
     }
   }
   
-  static boolean bP(int paramInt)
+  static boolean bQ(int paramInt)
   {
     return (paramInt & 0x2) != 0;
   }
   
-  static LayoutParams bk(View paramView)
+  static LayoutParams bl(View paramView)
   {
     return (LayoutParams)paramView.getLayoutParams();
   }
@@ -444,11 +461,11 @@ public class GridLayout
           if (!bool) {
             break label192;
           }
-          localObject = localLayoutParams.aps;
-          if (((i)localObject).an(bool) != aoq) {
+          localObject = localLayoutParams.apE;
+          if (((i)localObject).am(bool) != aoC) {
             break label200;
           }
-          localf = ((i)localObject).aou;
+          localf = ((i)localObject).aoG;
           if (!bool) {
             break label202;
           }
@@ -457,9 +474,9 @@ public class GridLayout
         label192:
         label200:
         label202:
-        for (Object localObject = this.anZ;; localObject = this.aoa)
+        for (Object localObject = this.aol;; localObject = this.aom)
         {
-          localObject = ((d)localObject).jV();
+          localObject = ((d)localObject).ke();
           k = localObject[localf.max] - localObject[localf.min] - g(localView, bool);
           if (!bool) {
             break label211;
@@ -468,7 +485,7 @@ public class GridLayout
           break;
           bool = false;
           break label85;
-          localObject = localLayoutParams.apr;
+          localObject = localLayoutParams.apD;
           break label97;
           break;
         }
@@ -491,7 +508,20 @@ public class GridLayout
     return paramView.getMeasuredHeight();
   }
   
-  static a i(int paramInt, boolean paramBoolean)
+  static int j(int[] paramArrayOfInt)
+  {
+    int j = -1;
+    int i = 0;
+    int k = paramArrayOfInt.length;
+    while (i < k)
+    {
+      j = Math.max(j, paramArrayOfInt[i]);
+      i += 1;
+    }
+    return j;
+  }
+  
+  static a j(int paramInt, boolean paramBoolean)
   {
     int i;
     if (paramBoolean)
@@ -507,65 +537,52 @@ public class GridLayout
       switch ((i & paramInt) >> j)
       {
       default: 
-        return aof;
+        return aor;
         i = 112;
         break label7;
       }
     }
     if (paramBoolean) {
-      return aom;
+      return aoy;
     }
-    return aoi;
+    return aou;
     if (paramBoolean) {
-      return aon;
+      return aoz;
     }
-    return aoj;
-    return aoq;
-    return aoo;
-    return aok;
-    return aol;
+    return aov;
+    return aoC;
+    return aoA;
+    return aow;
+    return aox;
   }
   
-  static int j(int[] paramArrayOfInt)
+  private boolean jM()
   {
-    int j = -1;
-    int i = 0;
-    int k = paramArrayOfInt.length;
-    while (i < k)
+    return u.Z(this) == 1;
+  }
+  
+  private void jN()
+  {
+    this.aoq = 0;
+    if (this.aol != null) {
+      this.aol.jN();
+    }
+    if (this.aom != null) {
+      this.aom.jN();
+    }
+    jO();
+  }
+  
+  private void jO()
+  {
+    if ((this.aol != null) && (this.aom != null))
     {
-      j = Math.max(j, paramArrayOfInt[i]);
-      i += 1;
-    }
-    return j;
-  }
-  
-  private boolean jD()
-  {
-    return t.Y(this) == 1;
-  }
-  
-  private void jE()
-  {
-    this.aoe = 0;
-    if (this.anZ != null) {
-      this.anZ.jE();
-    }
-    if (this.aoa != null) {
-      this.aoa.jE();
-    }
-    jF();
-  }
-  
-  private void jF()
-  {
-    if ((this.anZ != null) && (this.aoa != null))
-    {
-      this.anZ.jF();
-      this.aoa.jF();
+      this.aol.jO();
+      this.aom.jO();
     }
   }
   
-  private int jG()
+  private int jP()
   {
     int i = 1;
     int k = getChildCount();
@@ -587,7 +604,7 @@ public class GridLayout
     }
   }
   
-  private void jH()
+  private void jQ()
   {
     int i2;
     Object localObject;
@@ -606,18 +623,18 @@ public class GridLayout
     label141:
     boolean bool2;
     int i5;
-    if (this.aoe == 0) {
+    if (this.aoq == 0) {
       if (this.mOrientation == 0)
       {
         i2 = 1;
         if (i2 == 0) {
           break label260;
         }
-        localObject = this.anZ;
-        if (((d)localObject).aoA == -2147483648) {
+        localObject = this.aol;
+        if (((d)localObject).aoM == -2147483648) {
           break label269;
         }
-        i3 = ((d)localObject).aoA;
+        i3 = ((d)localObject).aoM;
         i = 0;
         j = 0;
         arrayOfInt = new int[i3];
@@ -630,9 +647,9 @@ public class GridLayout
         if (i2 == 0) {
           break label275;
         }
-        localObject = localLayoutParams.apr;
-        localf = ((i)localObject).aou;
-        bool1 = ((i)localObject).apx;
+        localObject = localLayoutParams.apD;
+        localf = ((i)localObject).aoG;
+        bool1 = ((i)localObject).apJ;
         i7 = localf.size();
         if (bool1) {
           i = localf.min;
@@ -640,9 +657,9 @@ public class GridLayout
         if (i2 == 0) {
           break label285;
         }
-        localObject = localLayoutParams.aps;
-        localf = ((i)localObject).aou;
-        bool2 = ((i)localObject).apx;
+        localObject = localLayoutParams.apE;
+        localf = ((i)localObject).aoG;
+        bool2 = ((i)localObject).apJ;
         i5 = localf.size();
         if (i3 != 0) {
           break label295;
@@ -696,13 +713,13 @@ public class GridLayout
               break label215;
               i2 = 0;
               break;
-              localObject = this.aoa;
+              localObject = this.aom;
               break label28;
               i3 = 0;
               break label45;
-              localObject = localLayoutParams.aps;
+              localObject = localLayoutParams.apE;
               break label97;
-              localObject = localLayoutParams.apr;
+              localObject = localLayoutParams.apD;
               break label141;
               if (bool2) {}
               for (k = Math.min(localf.min, i3);; k = 0)
@@ -750,20 +767,20 @@ public class GridLayout
         break;
         a(localLayoutParams, n, i5, i1, i7);
       }
-      this.aoe = jG();
+      this.aoq = jP();
       do
       {
         return;
-      } while (this.aoe == jG());
+      } while (this.aoq == jP());
       this.mPrinter.println("The fields of some layout parameters were modified in between layout operations. Check the javadoc for GridLayout.LayoutParams#rowSpec.");
-      jE();
+      jN();
       break;
     }
   }
   
-  public static i jI()
+  public static i jR()
   {
-    return a(-2147483648, 1, aof, 0.0F);
+    return a(-2147483648, 1, aor, 0.0F);
   }
   
   final int a(View paramView, boolean paramBoolean1, boolean paramBoolean2)
@@ -776,7 +793,7 @@ public class GridLayout
       }
     }
     while (i == -2147483648) {
-      if (!this.aob)
+      if (!this.aon)
       {
         return 0;
         i = ((LayoutParams)localObject).rightMargin;
@@ -794,17 +811,17 @@ public class GridLayout
         boolean bool;
         if (paramBoolean1)
         {
-          localObject = ((LayoutParams)localObject).aps;
+          localObject = ((LayoutParams)localObject).apE;
           if (!paramBoolean1) {
             break label171;
           }
-          locald = this.anZ;
-          localObject = ((i)localObject).aou;
+          locald = this.aol;
+          localObject = ((i)localObject).aoG;
           bool = paramBoolean2;
           if (paramBoolean1)
           {
             bool = paramBoolean2;
-            if (jD())
+            if (jM())
             {
               if (paramBoolean2) {
                 break label180;
@@ -824,10 +841,10 @@ public class GridLayout
             break label195;
           }
           return 0;
-          localObject = ((LayoutParams)localObject).apr;
+          localObject = ((LayoutParams)localObject).apD;
           break;
           label171:
-          locald = this.aoa;
+          locald = this.aom;
           break label95;
           label180:
           bool = false;
@@ -836,7 +853,7 @@ public class GridLayout
           locald.getCount();
         }
         label195:
-        return this.aod / 2;
+        return this.aop / 2;
       }
     }
     return i;
@@ -860,12 +877,12 @@ public class GridLayout
   
   public int getAlignmentMode()
   {
-    return this.aoc;
+    return this.aoo;
   }
   
   public int getColumnCount()
   {
-    return this.anZ.getCount();
+    return this.aol.getCount();
   }
   
   public int getOrientation()
@@ -880,26 +897,26 @@ public class GridLayout
   
   public int getRowCount()
   {
-    return this.aoa.getCount();
+    return this.aom.getCount();
   }
   
   public boolean getUseDefaultMargins()
   {
-    return this.aob;
+    return this.aon;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    jH();
+    jQ();
     paramInt3 -= paramInt1;
     int i = getPaddingLeft();
     int j = getPaddingTop();
     int k = getPaddingRight();
     paramInt1 = getPaddingBottom();
-    this.anZ.bR(paramInt3 - i - k);
-    this.aoa.bR(paramInt4 - paramInt2 - j - paramInt1);
-    int[] arrayOfInt1 = this.anZ.jV();
-    int[] arrayOfInt2 = this.aoa.jV();
+    this.aol.bS(paramInt3 - i - k);
+    this.aom.bS(paramInt4 - paramInt2 - j - paramInt1);
+    int[] arrayOfInt1 = this.aol.ke();
+    int[] arrayOfInt2 = this.aom.ke();
     paramInt4 = getChildCount();
     paramInt1 = 0;
     if (paramInt1 < paramInt4)
@@ -915,10 +932,10 @@ public class GridLayout
       if (localView.getVisibility() != 8)
       {
         Object localObject2 = (LayoutParams)localView.getLayoutParams();
-        Object localObject1 = ((LayoutParams)localObject2).aps;
-        localObject2 = ((LayoutParams)localObject2).apr;
-        Object localObject3 = ((i)localObject1).aou;
-        Object localObject4 = ((i)localObject2).aou;
+        Object localObject1 = ((LayoutParams)localObject2).apE;
+        localObject2 = ((LayoutParams)localObject2).apD;
+        Object localObject3 = ((i)localObject1).aoG;
+        Object localObject4 = ((i)localObject2).aoG;
         paramInt2 = arrayOfInt1[localObject3.min];
         m = arrayOfInt2[localObject4.min];
         i1 = arrayOfInt1[localObject3.max];
@@ -927,12 +944,12 @@ public class GridLayout
         i7 = n - m;
         int i10 = h(localView, true);
         int i8 = h(localView, false);
-        localObject1 = ((i)localObject1).an(true);
-        localObject2 = ((i)localObject2).an(false);
-        localObject3 = (e)this.anZ.jP().bT(paramInt1);
-        localObject4 = (e)this.aoa.jP().bT(paramInt1);
-        int i6 = ((a)localObject1).B(localView, i5 - ((e)localObject3).aj(true));
-        n = ((a)localObject2).B(localView, i7 - ((e)localObject4).aj(true));
+        localObject1 = ((i)localObject1).am(true);
+        localObject2 = ((i)localObject2).am(false);
+        localObject3 = (e)this.aol.jY().bU(paramInt1);
+        localObject4 = (e)this.aom.jY().bU(paramInt1);
+        int i6 = ((a)localObject1).B(localView, i5 - ((e)localObject3).ai(true));
+        n = ((a)localObject2).B(localView, i7 - ((e)localObject4).ai(true));
         int i3 = b(localView, true, true);
         i1 = b(localView, false, true);
         i4 = b(localView, true, false);
@@ -944,7 +961,7 @@ public class GridLayout
         i5 = ((a)localObject1).V(i10, i5 - i11);
         i7 = ((a)localObject2).V(i8, i7 - i12);
         paramInt2 = i9 + (paramInt2 + i6);
-        if (jD()) {
+        if (jM()) {
           break label525;
         }
         paramInt2 += i + i3;
@@ -966,8 +983,8 @@ public class GridLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    jH();
-    jF();
+    jQ();
+    jO();
     int m = getPaddingLeft() + getPaddingRight();
     int k = getPaddingTop() + getPaddingBottom();
     int n = T(paramInt1, -m);
@@ -977,9 +994,9 @@ public class GridLayout
     int i;
     if (this.mOrientation == 0)
     {
-      j = this.anZ.bQ(n);
+      j = this.aol.bR(n);
       d(n, i1, false);
-      i = this.aoa.bQ(i1);
+      i = this.aom.bR(i1);
     }
     for (;;)
     {
@@ -987,35 +1004,35 @@ public class GridLayout
       i = Math.max(i + k, getSuggestedMinimumHeight());
       setMeasuredDimension(View.resolveSizeAndState(j, paramInt1, 0), View.resolveSizeAndState(i, paramInt2, 0));
       return;
-      i = this.aoa.bQ(i1);
+      i = this.aom.bR(i1);
       d(n, i1, false);
-      j = this.anZ.bQ(n);
+      j = this.aol.bR(n);
     }
   }
   
   public void requestLayout()
   {
     super.requestLayout();
-    jE();
+    jN();
   }
   
   public void setAlignmentMode(int paramInt)
   {
-    this.aoc = paramInt;
+    this.aoo = paramInt;
     requestLayout();
   }
   
   public void setColumnCount(int paramInt)
   {
-    this.anZ.setCount(paramInt);
-    jE();
+    this.aol.setCount(paramInt);
+    jN();
     requestLayout();
   }
   
   public void setColumnOrderPreserved(boolean paramBoolean)
   {
-    this.anZ.ak(paramBoolean);
-    jE();
+    this.aol.aj(paramBoolean);
+    jN();
     requestLayout();
   }
   
@@ -1024,7 +1041,7 @@ public class GridLayout
     if (this.mOrientation != paramInt)
     {
       this.mOrientation = paramInt;
-      jE();
+      jN();
       requestLayout();
     }
   }
@@ -1033,60 +1050,65 @@ public class GridLayout
   {
     Printer localPrinter = paramPrinter;
     if (paramPrinter == null) {
-      localPrinter = anS;
+      localPrinter = aoe;
     }
     this.mPrinter = localPrinter;
   }
   
   public void setRowCount(int paramInt)
   {
-    this.aoa.setCount(paramInt);
-    jE();
+    this.aom.setCount(paramInt);
+    jN();
     requestLayout();
   }
   
   public void setRowOrderPreserved(boolean paramBoolean)
   {
-    this.aoa.ak(paramBoolean);
-    jE();
+    this.aom.aj(paramBoolean);
+    jN();
     requestLayout();
   }
   
   public void setUseDefaultMargins(boolean paramBoolean)
   {
-    this.aob = paramBoolean;
+    this.aon = paramBoolean;
     requestLayout();
   }
   
   public static class LayoutParams
     extends ViewGroup.MarginLayoutParams
   {
-    private static final int BOTTOM_MARGIN = 6;
+    private static final int BOTTOM_MARGIN;
     private static final int LEFT_MARGIN;
     private static final int RIGHT_MARGIN;
     private static final int TOP_MARGIN;
-    private static final GridLayout.f apg;
-    private static final int aph;
-    private static final int api;
-    private static final int apj = 7;
-    private static final int apk = 8;
-    private static final int apl = 9;
-    private static final int apm = 11;
-    private static final int apn = 12;
-    private static final int apo = 13;
-    private static final int apq = 10;
-    public GridLayout.i apr = GridLayout.i.apw;
-    public GridLayout.i aps = GridLayout.i.apw;
+    private static final int apA = 12;
+    private static final int apB = 13;
+    private static final int apC = 10;
+    private static final GridLayout.f apt;
+    private static final int apu;
+    private static final int apv;
+    private static final int apw;
+    private static final int apx;
+    private static final int apy;
+    private static final int apz;
+    public GridLayout.i apD = GridLayout.i.apI;
+    public GridLayout.i apE = GridLayout.i.apI;
     
     static
     {
       GridLayout.f localf = new GridLayout.f(-2147483648, -2147483647);
-      apg = localf;
-      aph = localf.size();
-      api = 2;
+      apt = localf;
+      apu = localf.size();
+      apv = 2;
       LEFT_MARGIN = 3;
       TOP_MARGIN = 4;
       RIGHT_MARGIN = 5;
+      BOTTOM_MARGIN = 6;
+      apw = 7;
+      apx = 8;
+      apy = 9;
+      apz = 11;
     }
     
     public LayoutParams()
@@ -1103,18 +1125,18 @@ public class GridLayout
       //   2: aload_2
       //   3: invokespecial 80	android/view/ViewGroup$MarginLayoutParams:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
       //   6: aload_0
-      //   7: getstatic 74	android/support/v7/widget/GridLayout$i:apw	Landroid/support/v7/widget/GridLayout$i;
-      //   10: putfield 82	android/support/v7/widget/GridLayout$LayoutParams:apr	Landroid/support/v7/widget/GridLayout$i;
+      //   7: getstatic 74	android/support/v7/widget/GridLayout$i:apI	Landroid/support/v7/widget/GridLayout$i;
+      //   10: putfield 82	android/support/v7/widget/GridLayout$LayoutParams:apD	Landroid/support/v7/widget/GridLayout$i;
       //   13: aload_0
-      //   14: getstatic 74	android/support/v7/widget/GridLayout$i:apw	Landroid/support/v7/widget/GridLayout$i;
-      //   17: putfield 84	android/support/v7/widget/GridLayout$LayoutParams:aps	Landroid/support/v7/widget/GridLayout$i;
+      //   14: getstatic 74	android/support/v7/widget/GridLayout$i:apI	Landroid/support/v7/widget/GridLayout$i;
+      //   17: putfield 84	android/support/v7/widget/GridLayout$LayoutParams:apE	Landroid/support/v7/widget/GridLayout$i;
       //   20: aload_1
       //   21: aload_2
       //   22: getstatic 90	android/support/v7/e/a$a:GridLayout_Layout	[I
       //   25: invokevirtual 96	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
       //   28: astore 7
       //   30: aload 7
-      //   32: getstatic 46	android/support/v7/widget/GridLayout$LayoutParams:api	I
+      //   32: getstatic 46	android/support/v7/widget/GridLayout$LayoutParams:apv	I
       //   35: ldc 31
       //   37: invokevirtual 102	android/content/res/TypedArray:getDimensionPixelSize	(II)I
       //   40: istore 4
@@ -1150,22 +1172,22 @@ public class GridLayout
       //   108: invokevirtual 96	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
       //   111: astore_1
       //   112: aload_1
-      //   113: getstatic 68	android/support/v7/widget/GridLayout$LayoutParams:apq	I
+      //   113: getstatic 68	android/support/v7/widget/GridLayout$LayoutParams:apC	I
       //   116: iconst_0
       //   117: invokevirtual 120	android/content/res/TypedArray:getInt	(II)I
       //   120: istore 4
       //   122: aload_1
-      //   123: getstatic 56	android/support/v7/widget/GridLayout$LayoutParams:apj	I
+      //   123: getstatic 56	android/support/v7/widget/GridLayout$LayoutParams:apw	I
       //   126: ldc 31
       //   128: invokevirtual 120	android/content/res/TypedArray:getInt	(II)I
       //   131: istore 5
       //   133: aload_1
-      //   134: getstatic 58	android/support/v7/widget/GridLayout$LayoutParams:apk	I
-      //   137: getstatic 44	android/support/v7/widget/GridLayout$LayoutParams:aph	I
+      //   134: getstatic 58	android/support/v7/widget/GridLayout$LayoutParams:apx	I
+      //   137: getstatic 44	android/support/v7/widget/GridLayout$LayoutParams:apu	I
       //   140: invokevirtual 120	android/content/res/TypedArray:getInt	(II)I
       //   143: istore 6
       //   145: aload_1
-      //   146: getstatic 60	android/support/v7/widget/GridLayout$LayoutParams:apl	I
+      //   146: getstatic 60	android/support/v7/widget/GridLayout$LayoutParams:apy	I
       //   149: fconst_0
       //   150: invokevirtual 124	android/content/res/TypedArray:getFloat	(IF)F
       //   153: fstore_3
@@ -1174,22 +1196,22 @@ public class GridLayout
       //   157: iload 6
       //   159: iload 4
       //   161: iconst_1
-      //   162: invokestatic 128	android/support/v7/widget/GridLayout:i	(IZ)Landroid/support/v7/widget/GridLayout$a;
+      //   162: invokestatic 128	android/support/v7/widget/GridLayout:j	(IZ)Landroid/support/v7/widget/GridLayout$a;
       //   165: fload_3
       //   166: invokestatic 132	android/support/v7/widget/GridLayout:a	(IILandroid/support/v7/widget/GridLayout$a;F)Landroid/support/v7/widget/GridLayout$i;
-      //   169: putfield 84	android/support/v7/widget/GridLayout$LayoutParams:aps	Landroid/support/v7/widget/GridLayout$i;
+      //   169: putfield 84	android/support/v7/widget/GridLayout$LayoutParams:apE	Landroid/support/v7/widget/GridLayout$i;
       //   172: aload_1
-      //   173: getstatic 62	android/support/v7/widget/GridLayout$LayoutParams:apm	I
+      //   173: getstatic 62	android/support/v7/widget/GridLayout$LayoutParams:apz	I
       //   176: ldc 31
       //   178: invokevirtual 120	android/content/res/TypedArray:getInt	(II)I
       //   181: istore 5
       //   183: aload_1
-      //   184: getstatic 64	android/support/v7/widget/GridLayout$LayoutParams:apn	I
-      //   187: getstatic 44	android/support/v7/widget/GridLayout$LayoutParams:aph	I
+      //   184: getstatic 64	android/support/v7/widget/GridLayout$LayoutParams:apA	I
+      //   187: getstatic 44	android/support/v7/widget/GridLayout$LayoutParams:apu	I
       //   190: invokevirtual 120	android/content/res/TypedArray:getInt	(II)I
       //   193: istore 6
       //   195: aload_1
-      //   196: getstatic 66	android/support/v7/widget/GridLayout$LayoutParams:apo	I
+      //   196: getstatic 66	android/support/v7/widget/GridLayout$LayoutParams:apB	I
       //   199: fconst_0
       //   200: invokevirtual 124	android/content/res/TypedArray:getFloat	(IF)F
       //   203: fstore_3
@@ -1198,10 +1220,10 @@ public class GridLayout
       //   207: iload 6
       //   209: iload 4
       //   211: iconst_0
-      //   212: invokestatic 128	android/support/v7/widget/GridLayout:i	(IZ)Landroid/support/v7/widget/GridLayout$a;
+      //   212: invokestatic 128	android/support/v7/widget/GridLayout:j	(IZ)Landroid/support/v7/widget/GridLayout$a;
       //   215: fload_3
       //   216: invokestatic 132	android/support/v7/widget/GridLayout:a	(IILandroid/support/v7/widget/GridLayout$a;F)Landroid/support/v7/widget/GridLayout$i;
-      //   219: putfield 82	android/support/v7/widget/GridLayout$LayoutParams:apr	Landroid/support/v7/widget/GridLayout$i;
+      //   219: putfield 82	android/support/v7/widget/GridLayout$LayoutParams:apD	Landroid/support/v7/widget/GridLayout$i;
       //   222: aload_1
       //   223: invokevirtual 117	android/content/res/TypedArray:recycle	()V
       //   226: return
@@ -1234,16 +1256,16 @@ public class GridLayout
     public LayoutParams(LayoutParams paramLayoutParams)
     {
       super();
-      this.apr = paramLayoutParams.apr;
-      this.aps = paramLayoutParams.aps;
+      this.apD = paramLayoutParams.apD;
+      this.apE = paramLayoutParams.apE;
     }
     
     private LayoutParams(GridLayout.i parami1, GridLayout.i parami2)
     {
       super(-2);
       setMargins(-2147483648, -2147483648, -2147483648, -2147483648);
-      this.apr = parami1;
-      this.aps = parami2;
+      this.apD = parami1;
+      this.apE = parami2;
     }
     
     private LayoutParams(GridLayout.i parami1, GridLayout.i parami2, byte paramByte)
@@ -1271,16 +1293,16 @@ public class GridLayout
           return false;
         }
         paramObject = (LayoutParams)paramObject;
-        if (!this.aps.equals(paramObject.aps)) {
+        if (!this.apE.equals(paramObject.apE)) {
           return false;
         }
-      } while (this.apr.equals(paramObject.apr));
+      } while (this.apD.equals(paramObject.apD));
       return false;
     }
     
     public int hashCode()
     {
-      return this.apr.hashCode() * 31 + this.aps.hashCode();
+      return this.apD.hashCode() * 31 + this.apE.hashCode();
     }
     
     protected void setBaseAttributes(TypedArray paramTypedArray, int paramInt1, int paramInt2)
@@ -1299,9 +1321,9 @@ public class GridLayout
       return paramInt1;
     }
     
-    abstract String jJ();
+    abstract String jS();
     
-    GridLayout.e jK()
+    GridLayout.e jT()
     {
       return new GridLayout.e();
     }
@@ -1310,95 +1332,57 @@ public class GridLayout
     
     public String toString()
     {
-      return "Alignment:" + jJ();
+      return "Alignment:" + jS();
     }
   }
   
   static final class b
   {
-    public final GridLayout.f aou;
-    public final GridLayout.g aov;
-    public boolean aow = true;
+    public final GridLayout.f aoG;
+    public final GridLayout.g aoH;
+    public boolean aoI = true;
     
     public b(GridLayout.f paramf, GridLayout.g paramg)
     {
-      this.aou = paramf;
-      this.aov = paramg;
+      this.aoG = paramf;
+      this.aoH = paramg;
     }
     
     public final String toString()
     {
-      StringBuilder localStringBuilder = new StringBuilder().append(this.aou).append(" ");
-      if (!this.aow) {}
+      StringBuilder localStringBuilder = new StringBuilder().append(this.aoG).append(" ");
+      if (!this.aoI) {}
       for (String str = "+>";; str = "->") {
-        return str + " " + this.aov;
+        return str + " " + this.aoH;
       }
-    }
-  }
-  
-  static final class c<K, V>
-    extends ArrayList<Pair<K, V>>
-  {
-    private final Class<K> aox;
-    private final Class<V> aoy;
-    
-    private c(Class<K> paramClass, Class<V> paramClass1)
-    {
-      this.aox = paramClass;
-      this.aoy = paramClass1;
-    }
-    
-    public static <K, V> c<K, V> a(Class<K> paramClass, Class<V> paramClass1)
-    {
-      return new c(paramClass, paramClass1);
-    }
-    
-    public final void e(K paramK, V paramV)
-    {
-      add(Pair.create(paramK, paramV));
-    }
-    
-    public final GridLayout.h<K, V> jL()
-    {
-      int j = size();
-      Object[] arrayOfObject1 = (Object[])Array.newInstance(this.aox, j);
-      Object[] arrayOfObject2 = (Object[])Array.newInstance(this.aoy, j);
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfObject1[i] = ((Pair)get(i)).first;
-        arrayOfObject2[i] = ((Pair)get(i)).second;
-        i += 1;
-      }
-      return new GridLayout.h(arrayOfObject1, arrayOfObject2);
     }
   }
   
   final class d
   {
-    public int aoA = -2147483648;
-    private int aoB = -2147483648;
-    GridLayout.h<GridLayout.i, GridLayout.e> aoC;
-    public boolean aoD = false;
-    GridLayout.h<GridLayout.f, GridLayout.g> aoE;
-    public boolean aoF = false;
-    GridLayout.h<GridLayout.f, GridLayout.g> aoG;
-    public boolean aoH = false;
-    public int[] aoI;
-    public boolean aoJ = false;
-    public int[] aoK;
-    public boolean aoL = false;
-    public GridLayout.b[] aoM;
-    public boolean aoN = false;
-    public int[] aoO;
+    public final boolean aoL;
+    public int aoM = -2147483648;
+    private int aoN = -2147483648;
+    GridLayout.h<GridLayout.i, GridLayout.e> aoO;
     public boolean aoP = false;
-    public boolean aoQ;
+    GridLayout.h<GridLayout.f, GridLayout.g> aoQ;
     public boolean aoR = false;
-    public int[] aoS;
-    boolean aoT = true;
-    private GridLayout.g aoU = new GridLayout.g(0);
-    private GridLayout.g aoV = new GridLayout.g(-100000);
-    public final boolean aoz;
+    GridLayout.h<GridLayout.f, GridLayout.g> aoS;
+    public boolean aoT = false;
+    public int[] aoU;
+    public boolean aoV = false;
+    public int[] aoW;
+    public boolean aoX = false;
+    public GridLayout.b[] aoY;
+    public boolean aoZ = false;
+    public int[] apa;
+    public boolean apb = false;
+    public boolean apc;
+    public boolean apd = false;
+    public int[] ape;
+    boolean apf = true;
+    private GridLayout.g apg = new GridLayout.g(0);
+    private GridLayout.g aph = new GridLayout.g(-100000);
     
     static
     {
@@ -1412,38 +1396,38 @@ public class GridLayout
     
     d(boolean paramBoolean)
     {
-      this.aoz = paramBoolean;
+      this.aoL = paramBoolean;
     }
     
     private void W(int paramInt1, int paramInt2)
     {
-      this.aoU.value = paramInt1;
-      this.aoV.value = (-paramInt2);
-      this.aoP = false;
+      this.apg.value = paramInt1;
+      this.aph.value = (-paramInt2);
+      this.apb = false;
     }
     
     private int X(int paramInt1, int paramInt2)
     {
       W(paramInt1, paramInt2);
-      return jV()[getCount()];
+      return ke()[getCount()];
     }
     
     private void a(GridLayout.h<GridLayout.f, GridLayout.g> paramh, boolean paramBoolean)
     {
       int j = 0;
-      Object localObject = (GridLayout.g[])paramh.apv;
+      Object localObject = (GridLayout.g[])paramh.apH;
       int i = 0;
       while (i < localObject.length)
       {
         localObject[i].value = -2147483648;
         i += 1;
       }
-      localObject = (GridLayout.e[])jP().apv;
+      localObject = (GridLayout.e[])jY().apH;
       i = j;
       if (i < localObject.length)
       {
-        j = localObject[i].aj(paramBoolean);
-        GridLayout.g localg = (GridLayout.g)paramh.bT(i);
+        j = localObject[i].ai(paramBoolean);
+        GridLayout.g localg = (GridLayout.g)paramh.bU(i);
         int k = localg.value;
         if (paramBoolean) {}
         for (;;)
@@ -1470,7 +1454,7 @@ public class GridLayout
       {
         Iterator localIterator = paramList.iterator();
         while (localIterator.hasNext()) {
-          if (((GridLayout.b)localIterator.next()).aou.equals(paramf)) {
+          if (((GridLayout.b)localIterator.next()).aoG.equals(paramf)) {
             return;
           }
         }
@@ -1481,25 +1465,25 @@ public class GridLayout
     private static void a(List<GridLayout.b> paramList, GridLayout.h<GridLayout.f, GridLayout.g> paramh)
     {
       int i = 0;
-      while (i < ((GridLayout.f[])paramh.apu).length)
+      while (i < ((GridLayout.f[])paramh.apG).length)
       {
-        a(paramList, ((GridLayout.f[])paramh.apu)[i], ((GridLayout.g[])paramh.apv)[i], false);
+        a(paramList, ((GridLayout.f[])paramh.apG)[i], ((GridLayout.g[])paramh.apH)[i], false);
         i += 1;
       }
     }
     
     private static boolean a(int[] paramArrayOfInt, GridLayout.b paramb)
     {
-      if (!paramb.aow) {}
+      if (!paramb.aoI) {}
       int j;
       int i;
       do
       {
         return false;
-        GridLayout.f localf = paramb.aou;
+        GridLayout.f localf = paramb.aoG;
         j = localf.min;
         i = localf.max;
-        int k = paramb.aov.value;
+        int k = paramb.aoH.value;
         j = paramArrayOfInt[j] + k;
       } while (j <= paramArrayOfInt[i]);
       paramArrayOfInt[i] = j;
@@ -1510,7 +1494,7 @@ public class GridLayout
     {
       boolean bool3 = false;
       int n = 0;
-      if (this.aoz) {}
+      if (this.aoL) {}
       int i1;
       Object localObject1;
       int i;
@@ -1553,7 +1537,7 @@ public class GridLayout
             if (localObject1[i] != 0) {
               paramArrayOfInt.add(localb);
             }
-            if (!localb.aow) {
+            if (!localb.aoI) {
               ((List)localObject2).add(localb);
             }
             i += 1;
@@ -1594,8 +1578,8 @@ public class GridLayout
           if (localObject2[j] != 0)
           {
             localb = paramArrayOfb[j];
-            if (localb.aou.min >= localb.aou.max) {
-              localb.aow = false;
+            if (localb.aoG.min >= localb.aoG.max) {
+              localb.aoI = false;
             }
           }
         }
@@ -1610,29 +1594,29 @@ public class GridLayout
       return true;
     }
     
-    private GridLayout.h<GridLayout.f, GridLayout.g> al(boolean paramBoolean)
+    private GridLayout.h<GridLayout.f, GridLayout.g> ak(boolean paramBoolean)
     {
       GridLayout.c localc = GridLayout.c.a(GridLayout.f.class, GridLayout.g.class);
-      GridLayout.i[] arrayOfi = (GridLayout.i[])jP().apu;
+      GridLayout.i[] arrayOfi = (GridLayout.i[])jY().apG;
       int j = arrayOfi.length;
       int i = 0;
       if (i < j)
       {
         if (paramBoolean) {}
-        for (GridLayout.f localf = arrayOfi[i].aou;; localf = new GridLayout.f(localf.max, localf.min))
+        for (GridLayout.f localf = arrayOfi[i].aoG;; localf = new GridLayout.f(localf.max, localf.min))
         {
-          localc.e(localf, new GridLayout.g());
+          localc.f(localf, new GridLayout.g());
           i += 1;
           break;
-          localf = arrayOfi[i].aou;
+          localf = arrayOfi[i].aoG;
         }
       }
-      return localc.jL();
+      return localc.jU();
     }
     
     private void f(int paramInt, float paramFloat)
     {
-      Arrays.fill(this.aoS, 0);
+      Arrays.fill(this.ape, 0);
       int k = GridLayout.this.getChildCount();
       int j = 0;
       int i = paramInt;
@@ -1644,17 +1628,17 @@ public class GridLayout
         if (((View)localObject).getVisibility() == 8) {
           break label134;
         }
-        localObject = GridLayout.bk((View)localObject);
-        if (this.aoz)
+        localObject = GridLayout.bl((View)localObject);
+        if (this.aoL)
         {
-          localObject = ((GridLayout.LayoutParams)localObject).aps;
+          localObject = ((GridLayout.LayoutParams)localObject).apE;
           label73:
           float f = ((GridLayout.i)localObject).weight;
           if (f == 0.0F) {
             break label134;
           }
           j = Math.round(i * f / paramFloat);
-          this.aoS[paramInt] = j;
+          this.ape[paramInt] = j;
           i -= j;
           paramFloat -= f;
         }
@@ -1664,27 +1648,27 @@ public class GridLayout
       {
         paramInt += 1;
         break;
-        localObject = ((GridLayout.LayoutParams)localObject).apr;
+        localObject = ((GridLayout.LayoutParams)localObject).apD;
         break label73;
         return;
       }
     }
     
-    private int jM()
+    private int jV()
     {
       int i;
-      if (this.aoB == -2147483648)
+      if (this.aoN == -2147483648)
       {
         int k = GridLayout.this.getChildCount();
         int j = 0;
         i = -1;
         if (j < k)
         {
-          Object localObject = GridLayout.bk(GridLayout.this.getChildAt(j));
-          if (this.aoz) {}
-          for (localObject = ((GridLayout.LayoutParams)localObject).aps;; localObject = ((GridLayout.LayoutParams)localObject).apr)
+          Object localObject = GridLayout.bl(GridLayout.this.getChildAt(j));
+          if (this.aoL) {}
+          for (localObject = ((GridLayout.LayoutParams)localObject).apE;; localObject = ((GridLayout.LayoutParams)localObject).apD)
           {
-            localObject = ((GridLayout.i)localObject).aou;
+            localObject = ((GridLayout.i)localObject).aoG;
             i = Math.max(Math.max(Math.max(i, ((GridLayout.f)localObject).min), ((GridLayout.f)localObject).max), ((GridLayout.f)localObject).size());
             j += 1;
             break;
@@ -1698,33 +1682,33 @@ public class GridLayout
       label125:
       for (;;)
       {
-        this.aoB = Math.max(0, i);
-        return this.aoB;
+        this.aoN = Math.max(0, i);
+        return this.aoN;
       }
     }
     
-    private GridLayout.h<GridLayout.i, GridLayout.e> jN()
+    private GridLayout.h<GridLayout.i, GridLayout.e> jW()
     {
       GridLayout.c localc = GridLayout.c.a(GridLayout.i.class, GridLayout.e.class);
       int j = GridLayout.this.getChildCount();
       int i = 0;
       if (i < j)
       {
-        Object localObject = GridLayout.bk(GridLayout.this.getChildAt(i));
-        if (this.aoz) {}
-        for (localObject = ((GridLayout.LayoutParams)localObject).aps;; localObject = ((GridLayout.LayoutParams)localObject).apr)
+        Object localObject = GridLayout.bl(GridLayout.this.getChildAt(i));
+        if (this.aoL) {}
+        for (localObject = ((GridLayout.LayoutParams)localObject).apE;; localObject = ((GridLayout.LayoutParams)localObject).apD)
         {
-          localc.e(localObject, ((GridLayout.i)localObject).an(this.aoz).jK());
+          localc.f(localObject, ((GridLayout.i)localObject).am(this.aoL).jT());
           i += 1;
           break;
         }
       }
-      return localc.jL();
+      return localc.jU();
     }
     
-    private void jO()
+    private void jX()
     {
-      Object localObject = (GridLayout.e[])this.aoC.apv;
+      Object localObject = (GridLayout.e[])this.aoO.apH;
       int i = 0;
       while (i < localObject.length)
       {
@@ -1736,16 +1720,16 @@ public class GridLayout
       if (i < m)
       {
         View localView = GridLayout.this.getChildAt(i);
-        localObject = GridLayout.bk(localView);
+        localObject = GridLayout.bl(localView);
         label83:
         GridLayout localGridLayout;
         boolean bool;
         int j;
-        if (this.aoz)
+        if (this.aoL)
         {
-          localObject = ((GridLayout.LayoutParams)localObject).aps;
+          localObject = ((GridLayout.LayoutParams)localObject).apE;
           localGridLayout = GridLayout.this;
-          bool = this.aoz;
+          bool = this.aoL;
           if (localView.getVisibility() != 8) {
             break label162;
           }
@@ -1757,12 +1741,12 @@ public class GridLayout
         }
         label162:
         label185:
-        for (int k = 0;; k = jU()[i])
+        for (int k = 0;; k = kd()[i])
         {
-          ((GridLayout.e)this.aoC.bT(i)).a(GridLayout.this, localView, (GridLayout.i)localObject, this, j + k);
+          ((GridLayout.e)this.aoO.bU(i)).a(GridLayout.this, localView, (GridLayout.i)localObject, this, j + k);
           i += 1;
           break;
-          localObject = ((GridLayout.LayoutParams)localObject).apr;
+          localObject = ((GridLayout.LayoutParams)localObject).apD;
           break label83;
           j = GridLayout.h(localView, bool);
           j = localGridLayout.g(localView, bool) + j;
@@ -1771,47 +1755,52 @@ public class GridLayout
       }
     }
     
-    private GridLayout.h<GridLayout.f, GridLayout.g> jQ()
+    private GridLayout.h<GridLayout.f, GridLayout.g> jZ()
     {
-      if (this.aoE == null) {
-        this.aoE = al(true);
+      if (this.aoQ == null) {
+        this.aoQ = ak(true);
       }
-      if (!this.aoF)
+      if (!this.aoR)
       {
-        a(this.aoE, true);
-        this.aoF = true;
+        a(this.aoQ, true);
+        this.aoR = true;
       }
-      return this.aoE;
+      return this.aoQ;
     }
     
-    private GridLayout.h<GridLayout.f, GridLayout.g> jR()
+    private boolean k(int[] paramArrayOfInt)
     {
-      if (this.aoG == null) {
-        this.aoG = al(false);
+      return a(kc(), paramArrayOfInt, true);
+    }
+    
+    private GridLayout.h<GridLayout.f, GridLayout.g> ka()
+    {
+      if (this.aoS == null) {
+        this.aoS = ak(false);
       }
-      if (!this.aoH)
+      if (!this.aoT)
       {
-        a(this.aoG, false);
-        this.aoH = true;
+        a(this.aoS, false);
+        this.aoT = true;
       }
-      return this.aoG;
+      return this.aoS;
     }
     
-    private void jS()
+    private void kb()
     {
-      jQ();
-      jR();
+      jZ();
+      ka();
     }
     
-    private GridLayout.b[] jT()
+    private GridLayout.b[] kc()
     {
-      if (this.aoM == null)
+      if (this.aoY == null)
       {
         ArrayList localArrayList1 = new ArrayList();
         ArrayList localArrayList2 = new ArrayList();
-        a(localArrayList1, jQ());
-        a(localArrayList2, jR());
-        if (this.aoT)
+        a(localArrayList1, jZ());
+        a(localArrayList2, ka());
+        if (this.apf)
         {
           i = 0;
           while (i < getCount())
@@ -1821,29 +1810,24 @@ public class GridLayout
           }
         }
         int i = getCount();
-        a(localArrayList1, new GridLayout.f(0, i), this.aoU, false);
-        a(localArrayList2, new GridLayout.f(i, 0), this.aoV, false);
-        this.aoM = ((GridLayout.b[])GridLayout.a(o(localArrayList1), o(localArrayList2)));
+        a(localArrayList1, new GridLayout.f(0, i), this.apg, false);
+        a(localArrayList2, new GridLayout.f(i, 0), this.aph, false);
+        this.aoY = ((GridLayout.b[])GridLayout.a(o(localArrayList1), o(localArrayList2)));
       }
-      if (!this.aoN)
+      if (!this.aoZ)
       {
-        jS();
-        this.aoN = true;
+        kb();
+        this.aoZ = true;
       }
-      return this.aoM;
+      return this.aoY;
     }
     
-    private int[] jU()
+    private int[] kd()
     {
-      if (this.aoS == null) {
-        this.aoS = new int[GridLayout.this.getChildCount()];
+      if (this.ape == null) {
+        this.ape = new int[GridLayout.this.getChildCount()];
       }
-      return this.aoS;
-    }
-    
-    private boolean k(int[] paramArrayOfInt)
-    {
-      return a(jT(), paramArrayOfInt, true);
+      return this.ape;
     }
     
     private void l(int[] paramArrayOfInt)
@@ -1856,7 +1840,7 @@ public class GridLayout
       Object localObject;
       label73:
       boolean bool1;
-      if (!this.aoR)
+      if (!this.apd)
       {
         j = GridLayout.this.getChildCount();
         i = 0;
@@ -1867,22 +1851,22 @@ public class GridLayout
         if (((View)localObject).getVisibility() == 8) {
           break label161;
         }
-        localObject = GridLayout.bk((View)localObject);
-        if (this.aoz)
+        localObject = GridLayout.bl((View)localObject);
+        if (this.aoL)
         {
-          localObject = ((GridLayout.LayoutParams)localObject).aps;
+          localObject = ((GridLayout.LayoutParams)localObject).apE;
           if (((GridLayout.i)localObject).weight == 0.0F) {
             break label161;
           }
           bool1 = true;
           label86:
-          this.aoQ = bool1;
-          this.aoR = true;
+          this.apc = bool1;
+          this.apd = true;
         }
       }
       else
       {
-        if (this.aoQ) {
+        if (this.apc) {
           break label174;
         }
         k(paramArrayOfInt);
@@ -1891,7 +1875,7 @@ public class GridLayout
       int k;
       for (;;)
       {
-        if (!this.aoT)
+        if (!this.apf)
         {
           j = paramArrayOfInt[0];
           k = paramArrayOfInt.length;
@@ -1904,7 +1888,7 @@ public class GridLayout
               paramArrayOfInt[i] -= j;
               i += 1;
               continue;
-              localObject = ((GridLayout.LayoutParams)localObject).apr;
+              localObject = ((GridLayout.LayoutParams)localObject).apD;
               break label73;
               label161:
               i += 1;
@@ -1913,9 +1897,9 @@ public class GridLayout
               bool1 = false;
               break label86;
               label174:
-              Arrays.fill(jU(), 0);
+              Arrays.fill(kd(), 0);
               k(paramArrayOfInt);
-              j = this.aoU.value * GridLayout.this.getChildCount() + 1;
+              j = this.apg.value * GridLayout.this.getChildCount() + 1;
               if (j < 2) {
                 break label110;
               }
@@ -1928,10 +1912,10 @@ public class GridLayout
                 if (((View)localObject).getVisibility() == 8) {
                   break label410;
                 }
-                localObject = GridLayout.bk((View)localObject);
-                if (this.aoz)
+                localObject = GridLayout.bl((View)localObject);
+                if (this.aoL)
                 {
-                  localObject = ((GridLayout.LayoutParams)localObject).aps;
+                  localObject = ((GridLayout.LayoutParams)localObject).apE;
                   f = ((GridLayout.i)localObject).weight + f;
                 }
               }
@@ -1944,7 +1928,7 @@ public class GridLayout
       {
         i += 1;
         break label224;
-        localObject = ((GridLayout.LayoutParams)localObject).apr;
+        localObject = ((GridLayout.LayoutParams)localObject).apD;
         break label271;
         int m = -1;
         k = 0;
@@ -1954,9 +1938,9 @@ public class GridLayout
         while (k < i)
         {
           m = (int)((k + i) / 2L);
-          jF();
+          jO();
           f(m, f);
-          bool1 = a(jT(), paramArrayOfInt, false);
+          bool1 = a(kc(), paramArrayOfInt, false);
           if (bool1)
           {
             k = m + 1;
@@ -1970,7 +1954,7 @@ public class GridLayout
         if ((j <= 0) || (bool1)) {
           break;
         }
-        jF();
+        jO();
         f(j, f);
         k(paramArrayOfInt);
         break;
@@ -1982,10 +1966,10 @@ public class GridLayout
     {
       paramList = new Object()
       {
-        GridLayout.b[] aoX = new GridLayout.b[this.apb.length];
-        int aoY = this.aoX.length - 1;
-        GridLayout.b[][] aoZ = GridLayout.d.this.a(this.apb);
-        int[] apa = new int[GridLayout.d.this.getCount() + 1];
+        GridLayout.b[] apj = new GridLayout.b[this.apn.length];
+        int apk = this.apj.length - 1;
+        GridLayout.b[][] apl = GridLayout.d.this.a(this.apn);
+        int[] apm = new int[GridLayout.d.this.getCount() + 1];
         
         static
         {
@@ -1997,45 +1981,45 @@ public class GridLayout
           }
         }
         
-        final void bS(int paramAnonymousInt)
+        final void bT(int paramAnonymousInt)
         {
-          switch (this.apa[paramAnonymousInt])
+          switch (this.apm[paramAnonymousInt])
           {
           }
           do
           {
             return;
-            this.apa[paramAnonymousInt] = 1;
-            GridLayout.b[] arrayOfb1 = this.aoZ[paramAnonymousInt];
+            this.apm[paramAnonymousInt] = 1;
+            GridLayout.b[] arrayOfb1 = this.apl[paramAnonymousInt];
             int j = arrayOfb1.length;
             int i = 0;
             while (i < j)
             {
               GridLayout.b localb = arrayOfb1[i];
-              bS(localb.aou.max);
-              GridLayout.b[] arrayOfb2 = this.aoX;
-              int k = this.aoY;
-              this.aoY = (k - 1);
+              bT(localb.aoG.max);
+              GridLayout.b[] arrayOfb2 = this.apj;
+              int k = this.apk;
+              this.apk = (k - 1);
               arrayOfb2[k] = localb;
               i += 1;
             }
-            this.apa[paramAnonymousInt] = 2;
+            this.apm[paramAnonymousInt] = 2;
             return;
           } while ($assertionsDisabled);
           throw new AssertionError();
         }
       };
       int i = 0;
-      int j = paramList.aoZ.length;
+      int j = paramList.apl.length;
       while (i < j)
       {
-        paramList.bS(i);
+        paramList.bT(i);
         i += 1;
       }
-      if ((!1.$assertionsDisabled) && (paramList.aoY != -1)) {
+      if ((!1.$assertionsDisabled) && (paramList.apk != -1)) {
         throw new AssertionError();
       }
-      return paramList.aoX;
+      return paramList.apj;
     }
     
     private String p(List<GridLayout.b> paramList)
@@ -2046,7 +2030,7 @@ public class GridLayout
       int j;
       int k;
       int m;
-      if (this.aoz)
+      if (this.aoL)
       {
         str = "x";
         localObject = new StringBuilder();
@@ -2061,9 +2045,9 @@ public class GridLayout
           break label163;
         }
         i = 0;
-        j = ((GridLayout.b)localObject).aou.min;
-        k = ((GridLayout.b)localObject).aou.max;
-        m = ((GridLayout.b)localObject).aov.value;
+        j = ((GridLayout.b)localObject).aoG.min;
+        k = ((GridLayout.b)localObject).aoG.max;
+        m = ((GridLayout.b)localObject).aoH.value;
         if (j >= k) {
           break label174;
         }
@@ -2094,7 +2078,7 @@ public class GridLayout
       int m;
       while (i < k)
       {
-        m = paramArrayOfb[i].aou.min;
+        m = paramArrayOfb[i].aoG.min;
         arrayOfInt[m] += 1;
         i += 1;
       }
@@ -2110,7 +2094,7 @@ public class GridLayout
       while (i < k)
       {
         GridLayout.b localb = paramArrayOfb[i];
-        j = localb.aou.min;
+        j = localb.aoG.min;
         [Landroid.support.v7.widget.GridLayout.b localb; = arrayOfb;[j];
         m = arrayOfInt[j];
         arrayOfInt[j] = (m + 1);
@@ -2120,13 +2104,13 @@ public class GridLayout
       return arrayOfb;;
     }
     
-    public final void ak(boolean paramBoolean)
+    public final void aj(boolean paramBoolean)
     {
-      this.aoT = paramBoolean;
-      jE();
+      this.apf = paramBoolean;
+      jN();
     }
     
-    final void am(boolean paramBoolean)
+    final void al(boolean paramBoolean)
     {
       int[] arrayOfInt;
       int i;
@@ -2135,7 +2119,7 @@ public class GridLayout
       Object localObject;
       if (paramBoolean)
       {
-        arrayOfInt = this.aoI;
+        arrayOfInt = this.aoU;
         int k = GridLayout.this.getChildCount();
         i = 0;
         if (i >= k) {
@@ -2144,13 +2128,13 @@ public class GridLayout
         localView = GridLayout.this.getChildAt(i);
         if (localView.getVisibility() != 8)
         {
-          localObject = GridLayout.bk(localView);
-          if (!this.aoz) {
+          localObject = GridLayout.bl(localView);
+          if (!this.aoL) {
             break label126;
           }
-          localObject = ((GridLayout.LayoutParams)localObject).aps;
+          localObject = ((GridLayout.LayoutParams)localObject).apE;
           label68:
-          localObject = ((GridLayout.i)localObject).aou;
+          localObject = ((GridLayout.i)localObject).aoG;
           if (!paramBoolean) {
             break label136;
           }
@@ -2159,18 +2143,18 @@ public class GridLayout
       label136:
       for (int j = ((GridLayout.f)localObject).min;; j = ((GridLayout.f)localObject).max)
       {
-        arrayOfInt[j] = Math.max(arrayOfInt[j], GridLayout.this.a(localView, this.aoz, paramBoolean));
+        arrayOfInt[j] = Math.max(arrayOfInt[j], GridLayout.this.a(localView, this.aoL, paramBoolean));
         i += 1;
         break label21;
-        arrayOfInt = this.aoK;
+        arrayOfInt = this.aoW;
         break;
         label126:
-        localObject = ((GridLayout.LayoutParams)localObject).apr;
+        localObject = ((GridLayout.LayoutParams)localObject).apD;
         break label68;
       }
     }
     
-    public final int bQ(int paramInt)
+    public final int bR(int paramInt)
     {
       int i = 0;
       int j = View.MeasureSpec.getMode(paramInt);
@@ -2191,84 +2175,84 @@ public class GridLayout
       return X(0, paramInt);
     }
     
-    public final void bR(int paramInt)
+    public final void bS(int paramInt)
     {
       W(paramInt, paramInt);
-      jV();
+      ke();
     }
     
     public final int getCount()
     {
-      return Math.max(this.aoA, jM());
+      return Math.max(this.aoM, jV());
     }
     
-    public final void jE()
+    public final void jN()
     {
-      this.aoB = -2147483648;
-      this.aoC = null;
-      this.aoE = null;
-      this.aoG = null;
-      this.aoI = null;
-      this.aoK = null;
-      this.aoM = null;
+      this.aoN = -2147483648;
       this.aoO = null;
+      this.aoQ = null;
       this.aoS = null;
-      this.aoR = false;
-      jF();
+      this.aoU = null;
+      this.aoW = null;
+      this.aoY = null;
+      this.apa = null;
+      this.ape = null;
+      this.apd = false;
+      jO();
     }
     
-    public final void jF()
+    public final void jO()
     {
-      this.aoD = false;
-      this.aoF = false;
-      this.aoH = false;
-      this.aoJ = false;
-      this.aoL = false;
-      this.aoN = false;
       this.aoP = false;
+      this.aoR = false;
+      this.aoT = false;
+      this.aoV = false;
+      this.aoX = false;
+      this.aoZ = false;
+      this.apb = false;
     }
     
-    public final GridLayout.h<GridLayout.i, GridLayout.e> jP()
-    {
-      if (this.aoC == null) {
-        this.aoC = jN();
-      }
-      if (!this.aoD)
-      {
-        jO();
-        this.aoD = true;
-      }
-      return this.aoC;
-    }
-    
-    public final int[] jV()
+    public final GridLayout.h<GridLayout.i, GridLayout.e> jY()
     {
       if (this.aoO == null) {
-        this.aoO = new int[getCount() + 1];
+        this.aoO = jW();
       }
       if (!this.aoP)
       {
-        l(this.aoO);
+        jX();
         this.aoP = true;
       }
       return this.aoO;
     }
     
+    public final int[] ke()
+    {
+      if (this.apa == null) {
+        this.apa = new int[getCount() + 1];
+      }
+      if (!this.apb)
+      {
+        l(this.apa);
+        this.apb = true;
+      }
+      return this.apa;
+    }
+    
     public final void setCount(int paramInt)
     {
       StringBuilder localStringBuilder;
-      if ((paramInt != -2147483648) && (paramInt < jM()))
+      if ((paramInt != -2147483648) && (paramInt < jV()))
       {
         localStringBuilder = new StringBuilder();
-        if (!this.aoz) {
+        if (!this.aoL) {
           break label56;
         }
       }
       label56:
       for (String str = "column";; str = "row")
       {
-        GridLayout.E(str + "Count must be greater than or equal to the maximum of all grid indices (and spans) defined in the LayoutParams of each child");
-        this.aoA = paramInt;
+        GridLayout.F(str + "Count must be greater than or equal to the maximum of all grid indices (and spans) defined in the LayoutParams of each child");
+        this.aoM = paramInt;
         return;
       }
     }
@@ -2276,9 +2260,9 @@ public class GridLayout
   
   static class e
   {
-    public int apd;
-    public int ape;
-    public int apf;
+    public int apq;
+    public int apr;
+    public int aps;
     
     e()
     {
@@ -2287,46 +2271,46 @@ public class GridLayout
     
     protected void U(int paramInt1, int paramInt2)
     {
-      this.apd = Math.max(this.apd, paramInt1);
-      this.ape = Math.max(this.ape, paramInt2);
+      this.apq = Math.max(this.apq, paramInt1);
+      this.apr = Math.max(this.apr, paramInt2);
     }
     
     protected int a(GridLayout paramGridLayout, View paramView, GridLayout.a parama, int paramInt, boolean paramBoolean)
     {
-      return this.apd - parama.k(paramView, paramInt, v.b(paramGridLayout));
+      return this.apq - parama.k(paramView, paramInt, w.b(paramGridLayout));
     }
     
     protected final void a(GridLayout paramGridLayout, View paramView, GridLayout.i parami, GridLayout.d paramd, int paramInt)
     {
-      int j = this.apf;
-      if ((parami.apy == GridLayout.aof) && (parami.weight == 0.0F)) {}
+      int j = this.aps;
+      if ((parami.apK == GridLayout.aor) && (parami.weight == 0.0F)) {}
       for (int i = 0;; i = 2)
       {
-        this.apf = (i & j);
-        i = parami.an(paramd.aoz).k(paramView, paramInt, v.b(paramGridLayout));
+        this.aps = (i & j);
+        i = parami.am(paramd.aoL).k(paramView, paramInt, w.b(paramGridLayout));
         U(i, paramInt - i);
         return;
       }
     }
     
-    protected int aj(boolean paramBoolean)
+    protected int ai(boolean paramBoolean)
     {
-      if ((!paramBoolean) && (GridLayout.bP(this.apf))) {
+      if ((!paramBoolean) && (GridLayout.bQ(this.aps))) {
         return 100000;
       }
-      return this.apd + this.ape;
+      return this.apq + this.apr;
     }
     
     protected void reset()
     {
-      this.apd = -2147483648;
-      this.ape = -2147483648;
-      this.apf = 2;
+      this.apq = -2147483648;
+      this.apr = -2147483648;
+      this.aps = 2;
     }
     
     public String toString()
     {
-      return "Bounds{before=" + this.apd + ", after=" + this.ape + '}';
+      return "Bounds{before=" + this.apq + ", after=" + this.apr + '}';
     }
   }
   
@@ -2394,66 +2378,12 @@ public class GridLayout
     }
   }
   
-  static final class h<K, V>
-  {
-    public final int[] apt;
-    public final K[] apu;
-    public final V[] apv;
-    
-    h(K[] paramArrayOfK, V[] paramArrayOfV)
-    {
-      this.apt = c(paramArrayOfK);
-      this.apu = a(paramArrayOfK, this.apt);
-      this.apv = a(paramArrayOfV, this.apt);
-    }
-    
-    private static <K> K[] a(K[] paramArrayOfK, int[] paramArrayOfInt)
-    {
-      int j = paramArrayOfK.length;
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfK.getClass().getComponentType(), GridLayout.j(paramArrayOfInt) + 1);
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfObject[paramArrayOfInt[i]] = paramArrayOfK[i];
-        i += 1;
-      }
-      return arrayOfObject;
-    }
-    
-    private static <K> int[] c(K[] paramArrayOfK)
-    {
-      int j = paramArrayOfK.length;
-      int[] arrayOfInt = new int[j];
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      while (i < j)
-      {
-        K ? = paramArrayOfK[i];
-        Integer localInteger2 = (Integer)localHashMap.get(?);
-        Integer localInteger1 = localInteger2;
-        if (localInteger2 == null)
-        {
-          localInteger1 = Integer.valueOf(localHashMap.size());
-          localHashMap.put(?, localInteger1);
-        }
-        arrayOfInt[i] = localInteger1.intValue();
-        i += 1;
-      }
-      return arrayOfInt;
-    }
-    
-    public final V bT(int paramInt)
-    {
-      return this.apv[this.apt[paramInt]];
-    }
-  }
-  
   public static class i
   {
-    static final i apw = ;
-    final GridLayout.f aou;
-    final boolean apx;
-    final GridLayout.a apy;
+    static final i apI = ;
+    final GridLayout.f aoG;
+    final boolean apJ;
+    final GridLayout.a apK;
     final float weight;
     
     i(boolean paramBoolean, int paramInt1, int paramInt2, GridLayout.a parama, float paramFloat)
@@ -2463,30 +2393,30 @@ public class GridLayout
     
     private i(boolean paramBoolean, GridLayout.f paramf, GridLayout.a parama, float paramFloat)
     {
-      this.apx = paramBoolean;
-      this.aou = paramf;
-      this.apy = parama;
+      this.apJ = paramBoolean;
+      this.aoG = paramf;
+      this.apK = parama;
       this.weight = paramFloat;
     }
     
     final i a(GridLayout.f paramf)
     {
-      return new i(this.apx, paramf, this.apy, this.weight);
+      return new i(this.apJ, paramf, this.apK, this.weight);
     }
     
-    public final GridLayout.a an(boolean paramBoolean)
+    public final GridLayout.a am(boolean paramBoolean)
     {
-      if (this.apy != GridLayout.aof) {
-        return this.apy;
+      if (this.apK != GridLayout.aor) {
+        return this.apK;
       }
       if (this.weight == 0.0F)
       {
         if (paramBoolean) {
-          return GridLayout.aok;
+          return GridLayout.aow;
         }
-        return GridLayout.aop;
+        return GridLayout.aoB;
       }
-      return GridLayout.aoq;
+      return GridLayout.aoC;
     }
     
     public boolean equals(Object paramObject)
@@ -2499,22 +2429,22 @@ public class GridLayout
           return false;
         }
         paramObject = (i)paramObject;
-        if (!this.apy.equals(paramObject.apy)) {
+        if (!this.apK.equals(paramObject.apK)) {
           return false;
         }
-      } while (this.aou.equals(paramObject.aou));
+      } while (this.aoG.equals(paramObject.aoG));
       return false;
     }
     
     public int hashCode()
     {
-      return this.aou.hashCode() * 31 + this.apy.hashCode();
+      return this.aoG.hashCode() * 31 + this.apK.hashCode();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.v7.widget.GridLayout
  * JD-Core Version:    0.7.0.1
  */

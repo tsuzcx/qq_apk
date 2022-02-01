@@ -4,31 +4,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c;
 import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.plugin.talkroom.model.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
   extends d.a
 {
-  private v2engine BEh;
-  private short BEi;
-  private short BEj;
-  private c dhw;
-  private c.a diC;
+  private v2engine FOY;
+  private short FOZ;
+  private short FPa;
+  private c dyI;
+  private c.a dzN;
   
   public f(v2engine paramv2engine)
   {
     AppMethodBeat.i(29395);
-    this.diC = new c.a()
+    this.dzN = new c.a()
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
-      public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
+      public final void w(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         AppMethodBeat.i(29394);
-        ae.d("MicroMsg.MicRecoder", "pcm len: ".concat(String.valueOf(paramAnonymousInt)));
+        Log.d("MicroMsg.MicRecoder", "pcm len: ".concat(String.valueOf(paramAnonymousInt)));
         if (paramAnonymousInt <= 0)
         {
-          ae.e("MicroMsg.MicRecoder", "pcm data too low");
+          Log.e("MicroMsg.MicRecoder", "pcm data too low");
           AppMethodBeat.o(29394);
           return;
         }
@@ -36,58 +36,58 @@ public final class f
         paramAnonymousInt = f.a(f.this).Send(paramAnonymousArrayOfByte, (short)paramAnonymousInt);
         if (paramAnonymousInt < 0)
         {
-          ae.e("MicroMsg.MicRecoder", "send failed, ret: ".concat(String.valueOf(paramAnonymousInt)));
+          Log.e("MicroMsg.MicRecoder", "send failed, ret: ".concat(String.valueOf(paramAnonymousInt)));
           AppMethodBeat.o(29394);
           return;
         }
         AppMethodBeat.o(29394);
       }
     };
-    this.BEh = paramv2engine;
+    this.FOY = paramv2engine;
     AppMethodBeat.o(29395);
   }
   
-  public final void aMs()
+  public final void bgt()
   {
     AppMethodBeat.i(29397);
-    this.dhw = new c(a.BEw, 1, 2);
-    this.dhw.t(8, false);
-    this.dhw.dij = this.diC;
-    this.dhw.hQ(20);
-    this.dhw.PO();
-    this.BEj = 0;
-    this.BEi = 0;
+    this.dyI = new c(a.FPn, 1, 2);
+    this.dyI.x(8, false);
+    this.dyI.dzv = this.dzN;
+    this.dyI.jk(20);
+    this.dyI.aai();
+    this.FPa = 0;
+    this.FOZ = 0;
     AppMethodBeat.o(29397);
   }
   
-  public final void erh()
+  public final void ftI()
   {
     AppMethodBeat.i(29396);
-    if (this.dhw != null)
+    if (this.dyI != null)
     {
-      this.dhw.PF();
-      this.dhw = null;
+      this.dyI.ZZ();
+      this.dyI = null;
     }
     AppMethodBeat.o(29396);
   }
   
-  public final int eri()
+  public final int ftJ()
   {
-    if (this.BEj < this.BEi) {
-      this.BEj = this.BEi;
+    if (this.FPa < this.FOZ) {
+      this.FPa = this.FOZ;
     }
-    if (this.BEj == 0) {
+    if (this.FPa == 0) {
       return 0;
     }
-    int i = (short)(this.BEi * 100 / this.BEj);
-    this.BEi = 0;
+    int i = (short)(this.FOZ * 100 / this.FPa);
+    this.FOZ = 0;
     return i;
   }
   
   public final void release()
   {
     AppMethodBeat.i(29398);
-    erh();
+    ftI();
     AppMethodBeat.o(29398);
   }
   

@@ -2,7 +2,7 @@ package rx;
 
 public abstract interface f
 {
-  public abstract void Gq(long paramLong);
+  public abstract void Pw(long paramLong);
 }
 
 

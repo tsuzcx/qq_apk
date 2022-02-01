@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.story.ui.view.CommentItemView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:transformPivotX="24.0dip" android:transformPivotY="24.0dip"
+<RelativeLayout android:gravity="center_horizontal" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:id="@id/fvc" android:background="@drawable/acp" android:layout_width="48.0dip" android:layout_height="48.0dip" />
-        <com.tencent.mm.plugin.story.ui.view.CommentAvatarImageView android:id="@id/fvx" android:padding="3.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="1.0dip" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
-        <LinearLayout android:orientation="vertical" android:id="@id/fw1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:layout_centerVertical="true" android:layout_marginStart="8.0dip" android:layout_marginEnd="4.0dip" android:layout_toEndOf="@id/fvx">
-            <TextView android:textStyle="bold" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/fw7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginEnd="20.0dip" />
-            <TextView android:textStyle="bold" android:textColor="@color/a_u" android:id="@id/fw0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-    <View android:id="@id/fvy" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-</com.tencent.mm.plugin.story.ui.view.CommentItemView>
+    <ImageView android:id="@id/fid" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="48.0dip" android:src="@raw/icons_outlined_cellphone" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="22.0dip" android:id="@id/fih" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/aat" android:layout_below="@id/fid" android:layout_centerHorizontal="true" style="@style/p_" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/fic" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/fih">
+        <RelativeLayout android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginTop="2.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="3.0dip" android:layout_height="3.0dip" android:layout_margin="@dimen/a0" android:src="@drawable/m9" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:id="@id/fif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/iu" android:text="@string/f2f" android:includeFontPadding="false" android:lineSpacingExtra="8.0dip" style="@style/p_" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/fie" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/fic">
+        <RelativeLayout android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginTop="2.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="3.0dip" android:layout_height="3.0dip" android:layout_margin="@dimen/a0" android:src="@drawable/m9" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:id="@id/fig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/iu" android:text="@string/f2g" android:includeFontPadding="false" style="@style/p_" />
+    </LinearLayout>
+    <LinearLayout android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:id="@id/aaq" android:paddingBottom="96.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:textSize="17.0dip" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/fib" android:visibility="visible" android:layout_width="184.0dip" android:layout_height="40.0dip" android:text="@string/f2e" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ou" />
+    </LinearLayout>
+</RelativeLayout>

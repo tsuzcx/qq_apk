@@ -4,12 +4,12 @@ import java.util.HashMap;
 
 public final class c
 {
-  public int adG;
-  public HashMap<String, String> cEm;
+  public int adT;
   public long endTime;
-  public int rjD;
-  public int rjE;
-  public String rjF;
+  public HashMap<String, String> map;
+  public int sLf;
+  public int sLg;
+  public String sLh;
   public long startTime;
 }
 

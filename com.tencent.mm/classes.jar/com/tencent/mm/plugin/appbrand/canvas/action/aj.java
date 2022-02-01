@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTransformActionArg;
-import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -33,7 +33,7 @@ public final class aj
       AppMethodBeat.o(144988);
       return false;
     }
-    boolean bool = a(paramCanvas, paramd.scaleX, paramd.jWW, paramd.jWX, paramd.scaleY, paramd.translateX, paramd.translateY);
+    boolean bool = a(paramCanvas, paramd.scaleX, paramd.kZS, paramd.kZT, paramd.scaleY, paramd.translateX, paramd.translateY);
     AppMethodBeat.o(144988);
     return bool;
   }
@@ -59,7 +59,7 @@ public final class aj
     return false;
   }
   
-  public final BaseDrawActionArg bdS()
+  public final BaseDrawActionArg bzj()
   {
     AppMethodBeat.i(144985);
     SetTransformActionArg localSetTransformActionArg = new SetTransformActionArg();
@@ -74,7 +74,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.aj
  * JD-Core Version:    0.7.0.1
  */

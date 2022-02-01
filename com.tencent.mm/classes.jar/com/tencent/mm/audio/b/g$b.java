@@ -6,100 +6,100 @@ import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g$b
 {
-  private static boolean diT;
-  private static boolean diU;
+  private static boolean dAe;
+  private static boolean dAf;
   
   static
   {
     AppMethodBeat.i(130007);
-    diT = false;
-    diU = false;
+    dAe = false;
+    dAf = false;
     init();
     AppMethodBeat.o(130007);
   }
   
-  public static boolean PU()
+  public static boolean aao()
   {
-    return diT;
+    return dAe;
   }
   
-  public static boolean PV()
+  public static boolean aap()
   {
-    return diU;
+    return dAf;
   }
   
   public static void init()
   {
     AppMethodBeat.i(177008);
-    b localb = (b)com.tencent.mm.kernel.g.ab(b.class);
+    b localb = (b)com.tencent.mm.kernel.g.af(b.class);
     if (localb != null) {
-      if (localb.a(b.a.qNr, 1) != 1) {}
+      if (localb.a(b.a.skm, 1) != 1) {}
     }
     for (boolean bool = true;; bool = true)
     {
-      ae.i("MicroMsg.RecorderUtil", "load wechatvoicesilk, ignore cpu: %s", new Object[] { Boolean.valueOf(bool) });
-      int i = m.aao();
-      ae.i("MicroMsg.RecorderUtil", "abi: %s, abi2: %s, cpuFlag: %d", new Object[] { Build.CPU_ABI, Build.CPU_ABI2, Integer.valueOf(i) });
+      Log.i("MicroMsg.RecorderUtil", "load wechatvoicesilk, ignore cpu: %s", new Object[] { Boolean.valueOf(bool) });
+      int i = m.aon();
+      Log.i("MicroMsg.RecorderUtil", "abi: %s, abi2: %s, cpuFlag: %d", new Object[] { Build.CPU_ABI, Build.CPU_ABI2, Integer.valueOf(i) });
       if (bool) {}
       for (;;)
       {
         try
         {
           g.class.getClassLoader();
-          j.vN("wechatvoicesilk");
-          diT = true;
-          diU = true;
-          ae.i("MicroMsg.RecorderUtil", "finish load silk so, canUseSilkDecode: %b, canUseSilkEncode: %b", new Object[] { Boolean.valueOf(diT), Boolean.valueOf(diU) });
+          j.Ed("wechatvoicesilk");
+          dAe = true;
+          dAf = true;
+          Log.i("MicroMsg.RecorderUtil", "finish load silk so, canUseSilkDecode: %b, canUseSilkEncode: %b", new Object[] { Boolean.valueOf(dAe), Boolean.valueOf(dAf) });
           AppMethodBeat.o(177008);
           return;
           bool = false;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
         {
-          ae.e("MicroMsg.RecorderUtil", "load library failed!");
-          diT = false;
-          diU = false;
+          Log.e("MicroMsg.RecorderUtil", "load library failed!");
+          dAe = false;
+          dAf = false;
           continue;
         }
-        if ((!bu.isNullOrNil(Build.CPU_ABI)) && (!Build.CPU_ABI.contains("armeabi")) && (!bu.isNullOrNil(Build.CPU_ABI2)) && (!Build.CPU_ABI2.contains("armeabi")))
+        if ((!Util.isNullOrNil(Build.CPU_ABI)) && (!Build.CPU_ABI.contains("armeabi")) && (!Util.isNullOrNil(Build.CPU_ABI2)) && (!Build.CPU_ABI2.contains("armeabi")))
         {
-          ae.i("MicroMsg.RecorderUtil", "don't contains armeabi");
-          ae.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
-          diT = false;
-          diU = false;
+          Log.i("MicroMsg.RecorderUtil", "don't contains armeabi");
+          Log.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
+          dAe = false;
+          dAf = false;
         }
         else if ((i & 0x400) != 0)
         {
           try
           {
             g.class.getClassLoader();
-            j.vN("wechatvoicesilk");
-            diT = true;
-            diU = true;
+            j.Ed("wechatvoicesilk");
+            dAe = true;
+            dAf = true;
           }
           catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
           {
-            ae.e("MicroMsg.RecorderUtil", "load library failed!");
-            diT = false;
-            diU = false;
+            Log.e("MicroMsg.RecorderUtil", "load library failed!");
+            dAe = false;
+            dAf = false;
           }
         }
         else if ((i & 0x200) != 0)
         {
-          ae.e("voice SilkCodec", "load library failed! silk don't support armv6!!!!");
-          diT = false;
-          diU = false;
+          Log.e("voice SilkCodec", "load library failed! silk don't support armv6!!!!");
+          dAe = false;
+          dAf = false;
         }
         else
         {
-          ae.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
-          diT = false;
-          diU = false;
+          Log.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
+          dAe = false;
+          dAf = false;
         }
       }
     }
@@ -107,7 +107,7 @@ public final class g$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.b.g.b
  * JD-Core Version:    0.7.0.1
  */

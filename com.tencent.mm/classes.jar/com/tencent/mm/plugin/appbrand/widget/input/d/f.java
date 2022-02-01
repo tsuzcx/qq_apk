@@ -1,135 +1,135 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class f
 {
-  public String czp;
+  public String cNw;
   public String fontFamily;
-  public String jWV = null;
-  public Boolean noA = null;
-  public Boolean noB = null;
-  public Integer noC = null;
-  public Integer noD = null;
-  public String nod;
-  public Integer noe;
-  public Integer nof;
-  public Integer nog;
-  public Integer noh;
-  public Integer noi;
-  public Integer noj;
-  public Integer nok = null;
-  public Integer nol = null;
-  public Float nom = null;
-  public Integer non;
-  public String noo;
-  public String nop;
-  public Integer noq;
-  public Integer nor;
-  public Boolean nos = Boolean.FALSE;
-  public Boolean not = Boolean.FALSE;
-  public Boolean nou = Boolean.FALSE;
-  public Boolean nov = Boolean.FALSE;
-  public Boolean now = null;
-  public Boolean nox = null;
-  public Integer noy = null;
-  public b noz = null;
+  public String kZR = null;
+  public String oxJ;
+  public Integer oxK;
+  public Integer oxL;
+  public Integer oxM;
+  public Integer oxN;
+  public Integer oxO;
+  public Integer oxP;
+  public Integer oxQ = null;
+  public Integer oxR = null;
+  public Float oxS = null;
+  public Integer oxT;
+  public String oxU;
+  public String oxV;
+  public Integer oxW;
+  public Integer oxX;
+  public Boolean oxY = Boolean.FALSE;
+  public Boolean oxZ = Boolean.FALSE;
+  public Boolean oya = Boolean.FALSE;
+  public Boolean oyb = Boolean.FALSE;
+  public Boolean oyc = null;
+  public Boolean oyd = null;
+  public Integer oye = null;
+  public b oyf = null;
+  public Boolean oyg = null;
+  public Boolean oyh = null;
+  public Integer oyi = null;
+  public Integer oyj = null;
   
   public final void a(f paramf)
   {
-    this.nod = paramf.nod;
-    if (paramf.noe != null) {
-      this.noe = paramf.noe;
+    this.oxJ = paramf.oxJ;
+    if (paramf.oxK != null) {
+      this.oxK = paramf.oxK;
     }
-    if (paramf.nof != null) {
-      this.nof = paramf.nof;
+    if (paramf.oxL != null) {
+      this.oxL = paramf.oxL;
     }
-    if (paramf.nog != null) {
-      this.nog = paramf.nog;
+    if (paramf.oxM != null) {
+      this.oxM = paramf.oxM;
     }
-    if (paramf.noh != null) {
-      this.noh = paramf.noh;
+    if (paramf.oxN != null) {
+      this.oxN = paramf.oxN;
     }
-    if (paramf.noi != null) {
-      this.noi = paramf.noi;
+    if (paramf.oxO != null) {
+      this.oxO = paramf.oxO;
     }
-    if (paramf.noj != null) {
-      this.noj = paramf.noj;
+    if (paramf.oxP != null) {
+      this.oxP = paramf.oxP;
     }
-    if (paramf.nok != null) {
-      this.nok = paramf.nok;
+    if (paramf.oxQ != null) {
+      this.oxQ = paramf.oxQ;
     }
-    if (paramf.nol != null) {
-      this.nol = paramf.nol;
+    if (paramf.oxR != null) {
+      this.oxR = paramf.oxR;
     }
-    if (paramf.nom != null) {
-      this.nom = paramf.nom;
+    if (paramf.oxS != null) {
+      this.oxS = paramf.oxS;
     }
-    if (!bu.isNullOrNil(paramf.fontFamily)) {
+    if (!Util.isNullOrNil(paramf.fontFamily)) {
       this.fontFamily = paramf.fontFamily;
     }
-    if (!bu.isNullOrNil(paramf.czp)) {
-      this.czp = paramf.czp;
+    if (!Util.isNullOrNil(paramf.cNw)) {
+      this.cNw = paramf.cNw;
     }
-    if (paramf.non != null) {
-      this.non = paramf.non;
+    if (paramf.oxT != null) {
+      this.oxT = paramf.oxT;
     }
-    if (paramf.noo != null) {
-      this.noo = paramf.noo;
+    if (paramf.oxU != null) {
+      this.oxU = paramf.oxU;
     }
-    if (!bu.isNullOrNil(paramf.nop)) {
-      this.nop = paramf.nop;
+    if (!Util.isNullOrNil(paramf.oxV)) {
+      this.oxV = paramf.oxV;
     }
-    if (paramf.noq != null) {
-      this.noq = paramf.noq;
+    if (paramf.oxW != null) {
+      this.oxW = paramf.oxW;
     }
-    if (paramf.nor != null) {
-      this.nor = paramf.nor;
+    if (paramf.oxX != null) {
+      this.oxX = paramf.oxX;
     }
-    if (paramf.nos != null) {
-      this.nos = paramf.nos;
+    if (paramf.oxY != null) {
+      this.oxY = paramf.oxY;
     }
-    if (paramf.not != null) {
-      this.not = paramf.not;
+    if (paramf.oxZ != null) {
+      this.oxZ = paramf.oxZ;
     }
-    if (paramf.nou != null) {
-      this.nou = paramf.nou;
+    if (paramf.oya != null) {
+      this.oya = paramf.oya;
     }
-    if (paramf.nov != null) {
-      this.nov = paramf.nov;
+    if (paramf.oyb != null) {
+      this.oyb = paramf.oyb;
     }
-    if (paramf.now != null) {
-      this.now = paramf.now;
+    if (paramf.oyc != null) {
+      this.oyc = paramf.oyc;
     }
-    if (!bu.isNullOrNil(paramf.jWV)) {
-      this.jWV = paramf.jWV;
+    if (!Util.isNullOrNil(paramf.kZR)) {
+      this.kZR = paramf.kZR;
     }
-    if (paramf.nox != null) {
-      this.nox = paramf.nox;
+    if (paramf.oyd != null) {
+      this.oyd = paramf.oyd;
     }
-    if (paramf.noy != null) {
-      this.noy = paramf.noy;
+    if (paramf.oye != null) {
+      this.oye = paramf.oye;
     }
-    if (paramf.noz != null) {
-      this.noz = paramf.noz;
+    if (paramf.oyf != null) {
+      this.oyf = paramf.oyf;
     }
-    if (paramf.noA != null) {
-      this.noA = paramf.noA;
+    if (paramf.oyg != null) {
+      this.oyg = paramf.oyg;
     }
-    if (paramf.noB != null) {
-      this.noB = paramf.noB;
+    if (paramf.oyh != null) {
+      this.oyh = paramf.oyh;
     }
-    if (paramf.noC != null) {
-      this.noC = paramf.noC;
+    if (paramf.oyi != null) {
+      this.oyi = paramf.oyi;
     }
-    if (paramf.noD != null) {
-      this.noD = paramf.noD;
+    if (paramf.oyj != null) {
+      this.oyj = paramf.oyj;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.f
  * JD-Core Version:    0.7.0.1
  */

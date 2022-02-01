@@ -10,18 +10,19 @@ final class a$1
     super(paramString);
   }
   
-  public final void fkI()
+  public final void guu()
   {
-    AppMethodBeat.i(186138);
-    aQX("MH_KEY_ENABLE_BOOLEAN");
-    aQX("PH_KEY_ENABLE_BOOLEAN");
-    aQW("PH_KEY_CRASH_TIMES_INT");
-    AppMethodBeat.o(186138);
+    AppMethodBeat.i(193889);
+    bhA(".cmd.diagnostic.MemoryHook.$enable");
+    bhA(".cmd.diagnostic.PthreadHook.$enable");
+    bhz(".cmd.diagnostic.MemoryHook.crash");
+    bhz(".cmd.diagnostic.PthreadHook.crash");
+    AppMethodBeat.o(193889);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.recovery.a.1
  * JD-Core Version:    0.7.0.1
  */

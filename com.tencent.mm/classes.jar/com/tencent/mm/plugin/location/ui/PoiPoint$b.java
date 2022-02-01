@@ -7,9 +7,9 @@ public enum PoiPoint$b
   static
   {
     AppMethodBeat.i(55861);
-    voD = new b("STAND", 0);
-    voE = new b("SIT", 1);
-    voF = new b[] { voD, voE };
+    yIt = new b("STAND", 0);
+    yIu = new b("SIT", 1);
+    yIv = new b[] { yIt, yIu };
     AppMethodBeat.o(55861);
   }
   
@@ -17,7 +17,7 @@ public enum PoiPoint$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.PoiPoint.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,14 @@ import android.text.SpannableStringBuilder;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.plugin.messenger.d.b;
 import com.tencent.mm.plugin.messenger.d.b.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 import java.util.Map;
@@ -29,9 +29,9 @@ public final class a
   
   public final CharSequence b(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(187641);
+    AppMethodBeat.i(233517);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str1 = bu.bI((String)paramMap.get(paramString + ".separator"), "、");
+    String str1 = Util.nullAs((String)paramMap.get(paramString + ".separator"), "、");
     int i = 0;
     Object localObject2 = new StringBuilder().append(paramString).append(".memberlist.member");
     Object localObject1;
@@ -50,10 +50,10 @@ public final class a
       localObject1 = (String)paramMap.get(str2 + ".username");
       localObject2 = (String)paramMap.get(str2 + ".nickname");
       str2 = (String)paramMap.get(str2 + ".antispam_ticket");
-      if ((!bu.isNullOrNil((String)localObject1)) && (!bu.isNullOrNil((String)localObject2))) {
+      if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil((String)localObject2))) {
         break label250;
       }
-      ae.w("MicroMsg.SysMsgHandlerProfile", "hy: can not resolve username or nickname");
+      Log.w("MicroMsg.SysMsgHandlerProfile", "hy: can not resolve username or nickname");
     }
     for (;;)
     {
@@ -62,36 +62,36 @@ public final class a
       localObject1 = "";
       break label82;
       label250:
-      SpannableString localSpannableString = k.c(ak.getContext(), (CharSequence)localObject2);
+      SpannableString localSpannableString = l.c(MMApplicationContext.getContext(), (CharSequence)localObject2);
       localSpannableString.setSpan(new com.tencent.mm.plugin.messenger.a.a()
       {
         public final void onClickImp(View paramAnonymousView)
         {
-          AppMethodBeat.i(187640);
-          ((e)g.ab(e.class)).a("link_profile", paramMap, paramBundle);
+          AppMethodBeat.i(233516);
+          ((e)g.af(e.class)).a("link_profile", paramMap, paramBundle);
           if ((paramWeakReference != null) && (paramWeakReference.get() != null))
           {
             long l = paramBundle.getLong("msg_id");
             paramAnonymousView = paramBundle.getString("conv_talker_username", null);
-            if (x.wb(paramAnonymousView))
+            if (ab.Eq(paramAnonymousView))
             {
-              a.a((Context)paramWeakReference.get(), this.fOp, paramAnonymousView, str2, l);
-              AppMethodBeat.o(187640);
+              a.a((Context)paramWeakReference.get(), this.gtz, paramAnonymousView, str2, l);
+              AppMethodBeat.o(233516);
               return;
             }
-            a.a((Context)paramWeakReference.get(), this.fOp, null, str2, l);
+            a.a((Context)paramWeakReference.get(), this.gtz, null, str2, l);
           }
-          AppMethodBeat.o(187640);
+          AppMethodBeat.o(233516);
         }
       }, 0, ((String)localObject2).length(), 33);
       localSpannableStringBuilder.append(localSpannableString);
     }
     label302:
-    AppMethodBeat.o(187641);
+    AppMethodBeat.o(233517);
     return localSpannableStringBuilder;
   }
   
-  public final String dpe()
+  public final String eiT()
   {
     return "link_profile";
   }

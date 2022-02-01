@@ -1,15 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class fw
-  extends b
+  extends IEvent
 {
-  public a dso;
-  public b dsp;
+  public a dJq;
+  public b dJr;
   
   public fw()
   {
@@ -18,27 +17,23 @@ public final class fw
   
   private fw(byte paramByte)
   {
-    AppMethodBeat.i(116019);
-    this.dso = new a();
-    this.dsp = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(19806);
+    this.dJq = new a();
+    this.dJr = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116019);
+    AppMethodBeat.o(19806);
   }
   
   public static final class a
   {
-    public boolean dcN;
-    public boolean dsq = false;
-    public h.a dsr;
-    public h.b dss;
-    public String fileName;
-    public int op;
+    public String[] dJs;
   }
   
   public static final class b
   {
-    public boolean doq = false;
+    public int dIY = 0;
+    public MatrixCursor dJt;
   }
 }
 

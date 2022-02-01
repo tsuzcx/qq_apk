@@ -16,11 +16,11 @@ public final class k
   extends Fragment
 {
   j aDc;
-  final a aMB;
-  final m aMC;
-  private final Set<k> aMD;
-  private k aME;
-  Fragment aMF;
+  final a aMs;
+  final m aMt;
+  private final Set<k> aMu;
+  private k aMv;
+  Fragment aMw;
   
   public k()
   {
@@ -33,19 +33,26 @@ public final class k
   private k(a parama)
   {
     AppMethodBeat.i(77555);
-    this.aMC = new k.a(this);
-    this.aMD = new HashSet();
-    this.aMB = parama;
+    this.aMt = new a();
+    this.aMu = new HashSet();
+    this.aMs = parama;
     AppMethodBeat.o(77555);
   }
   
-  private void pO()
+  private void a(k paramk)
+  {
+    AppMethodBeat.i(204485);
+    this.aMu.remove(paramk);
+    AppMethodBeat.o(204485);
+  }
+  
+  private void pT()
   {
     AppMethodBeat.i(77556);
-    if (this.aME != null)
+    if (this.aMv != null)
     {
-      this.aME.aMD.remove(this);
-      this.aME = null;
+      this.aMv.a(this);
+      this.aMv = null;
     }
     AppMethodBeat.o(77556);
   }
@@ -56,10 +63,10 @@ public final class k
     super.onAttach(paramActivity);
     try
     {
-      pO();
-      this.aME = c.ae(paramActivity).aCq.a(paramActivity.getFragmentManager(), l.l(paramActivity));
-      if (!equals(this.aME)) {
-        this.aME.aMD.add(this);
+      pT();
+      this.aMv = c.af(paramActivity).aCp.a(paramActivity.getFragmentManager(), l.l(paramActivity));
+      if (!equals(this.aMv)) {
+        this.aMv.aMu.add(this);
       }
       AppMethodBeat.o(77557);
       return;
@@ -75,8 +82,8 @@ public final class k
   {
     AppMethodBeat.i(77561);
     super.onDestroy();
-    this.aMB.onDestroy();
-    pO();
+    this.aMs.onDestroy();
+    pT();
     AppMethodBeat.o(77561);
   }
   
@@ -84,7 +91,7 @@ public final class k
   {
     AppMethodBeat.i(77558);
     super.onDetach();
-    pO();
+    pT();
     AppMethodBeat.o(77558);
   }
   
@@ -92,7 +99,7 @@ public final class k
   {
     AppMethodBeat.i(77559);
     super.onStart();
-    this.aMB.onStart();
+    this.aMs.onStart();
     AppMethodBeat.o(77559);
   }
   
@@ -100,7 +107,7 @@ public final class k
   {
     AppMethodBeat.i(77560);
     super.onStop();
-    this.aMB.onStop();
+    this.aMs.onStop();
     AppMethodBeat.o(77560);
   }
   
@@ -124,13 +131,27 @@ public final class k
       localObject = null;
       break;
       label68:
-      localObject = this.aMF;
+      localObject = this.aMw;
+    }
+  }
+  
+  final class a
+    implements m
+  {
+    a() {}
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(77553);
+      String str = super.toString() + "{fragment=" + k.this + "}";
+      AppMethodBeat.o(77553);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.manager.k
  * JD-Core Version:    0.7.0.1
  */

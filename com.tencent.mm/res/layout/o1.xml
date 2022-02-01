@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ImageView android:gravity="center_vertical" android:id="@id/ak2" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/aq8" android:scaleType="centerCrop" android:layout_centerVertical="true" />
-        <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/rx" android:ellipsize="end" android:id="@id/ak4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_toRightOf="@id/ak2" />
-    </RelativeLayout>
-    <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/rx" android:id="@id/akc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:maxLines="1" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ano" android:background="@drawable/le" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/anq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.699982dip" android:layout_marginTop="10.0dip" android:layout_marginRight="13.299988dip">
+            <LinearLayout android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="2.0">
+                <TextView android:textSize="12.699982dip" android:textColor="@color/hm" android:gravity="start" android:id="@id/ant" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aqu" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="12.699982dip" android:textColor="@color/ig" android:gravity="end" android:id="@id/anp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aqr" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="@drawable/rc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="16.699982dip" android:layout_marginTop="10.0dip" android:layout_marginRight="13.299988dip" android:layerType="software" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/hm" android:id="@id/anr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.699982dip" android:layout_marginTop="10.0dip" android:text="@string/aqs" />
+        <TextView android:textSize="12.699982dip" android:textColor="@color/ig" android:id="@id/ans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.699982dip" android:layout_marginTop="7.299988dip" android:layout_marginBottom="16.299988dip" android:text="@string/aqt" />
+    </LinearLayout>
 </LinearLayout>

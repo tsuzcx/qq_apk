@@ -10,8 +10,8 @@ import com.tencent.mm.plugin.wallet.a.j;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
 import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,57 +24,20 @@ import junit.framework.Assert;
 
 public final class d
 {
-  public h DtC;
-  private Map<String, com.tencent.mm.plugin.wallet.a.t> DtD;
-  private Map<String, j> DtE;
+  public h IcO;
+  private Map<String, com.tencent.mm.plugin.wallet.a.t> IcP;
+  private Map<String, j> IcQ;
   
   public d(h paramh)
   {
     AppMethodBeat.i(70650);
-    this.DtC = null;
-    this.DtD = null;
-    this.DtE = null;
+    this.IcO = null;
+    this.IcP = null;
+    this.IcQ = null;
     Assert.assertNotNull(paramh);
-    this.DtC = paramh;
-    Zm();
+    this.IcO = paramh;
+    amZ();
     AppMethodBeat.o(70650);
-  }
-  
-  private void Zm()
-  {
-    int j = 0;
-    AppMethodBeat.i(70651);
-    this.DtD = new HashMap();
-    LinkedList localLinkedList = this.DtC.CYG;
-    int i;
-    Object localObject;
-    if (localLinkedList != null)
-    {
-      i = 0;
-      while (i < localLinkedList.size())
-      {
-        localObject = (com.tencent.mm.plugin.wallet.a.t)localLinkedList.get(i);
-        this.DtD.put(((com.tencent.mm.plugin.wallet.a.t)localObject).CYz, localObject);
-        i += 1;
-      }
-    }
-    ae.w("MicroMsg.FavorLogicHelper", "func[initData] favorList null");
-    this.DtE = new HashMap();
-    if ((this.DtC.CYH != null) && (this.DtC.CYH.CYT != null))
-    {
-      localLinkedList = this.DtC.CYH.CYT;
-      i = j;
-      while (i < localLinkedList.size())
-      {
-        localObject = (j)localLinkedList.get(i);
-        this.DtE.put(((j)localObject).CYV, localObject);
-        i += 1;
-      }
-      AppMethodBeat.o(70651);
-      return;
-    }
-    ae.w("MicroMsg.FavorLogicHelper", "func[initData] favorComposeList null");
-    AppMethodBeat.o(70651);
   }
   
   public static boolean a(FavorPayInfo paramFavorPayInfo, Bankcard paramBankcard)
@@ -82,21 +45,21 @@ public final class d
     AppMethodBeat.i(70664);
     if (paramBankcard == null)
     {
-      ae.w("MicroMsg.FavorLogicHelper", "curBankcard null");
+      Log.w("MicroMsg.FavorLogicHelper", "curBankcard null");
       AppMethodBeat.o(70664);
       return true;
     }
-    if ((paramFavorPayInfo != null) && (!bu.isNullOrNil(paramFavorPayInfo.Doq)))
+    if ((paramFavorPayInfo != null) && (!Util.isNullOrNil(paramFavorPayInfo.HXI)))
     {
-      if (paramFavorPayInfo.Dor != 0) {}
-      for (i = 1; (i != 0) && (!bu.isNullOrNil(paramFavorPayInfo.Dos)) && (paramFavorPayInfo.Dov != null) && (paramFavorPayInfo.Dov.contains(paramBankcard.field_bindSerial)); i = 0)
+      if (paramFavorPayInfo.HXJ != 0) {}
+      for (i = 1; (i != 0) && (!Util.isNullOrNil(paramFavorPayInfo.HXK)) && (paramFavorPayInfo.HXN != null) && (paramFavorPayInfo.HXN.contains(paramBankcard.field_bindSerial)); i = 0)
       {
         AppMethodBeat.o(70664);
         return false;
       }
     }
-    if (paramFavorPayInfo.Dor != 0) {}
-    for (int i = 1; (i != 0) && (((!bu.isNullOrNil(paramFavorPayInfo.Dos)) && (paramBankcard.field_bankcardType != null) && (!paramBankcard.field_bankcardType.equals(paramFavorPayInfo.Dos))) || ((bu.isNullOrNil(paramFavorPayInfo.Dos)) && (paramBankcard.field_bankcardType.equals("CFT")))); i = 0)
+    if (paramFavorPayInfo.HXJ != 0) {}
+    for (int i = 1; (i != 0) && (((!Util.isNullOrNil(paramFavorPayInfo.HXK)) && (paramBankcard.field_bankcardType != null) && (!paramBankcard.field_bankcardType.equals(paramFavorPayInfo.HXK))) || ((Util.isNullOrNil(paramFavorPayInfo.HXK)) && (paramBankcard.field_bankcardType.equals("CFT")))); i = 0)
     {
       AppMethodBeat.o(70664);
       return true;
@@ -105,10 +68,10 @@ public final class d
     return false;
   }
   
-  public static String[] aGj(String paramString)
+  public static String[] aVK(String paramString)
   {
     AppMethodBeat.i(70660);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(70660);
       return null;
@@ -118,10 +81,47 @@ public final class d
     return paramString;
   }
   
-  public static List<Bankcard> cq(int paramInt, String paramString)
+  private void amZ()
+  {
+    int j = 0;
+    AppMethodBeat.i(70651);
+    this.IcP = new HashMap();
+    LinkedList localLinkedList = this.IcO.HEu;
+    int i;
+    Object localObject;
+    if (localLinkedList != null)
+    {
+      i = 0;
+      while (i < localLinkedList.size())
+      {
+        localObject = (com.tencent.mm.plugin.wallet.a.t)localLinkedList.get(i);
+        this.IcP.put(((com.tencent.mm.plugin.wallet.a.t)localObject).HEn, localObject);
+        i += 1;
+      }
+    }
+    Log.w("MicroMsg.FavorLogicHelper", "func[initData] favorList null");
+    this.IcQ = new HashMap();
+    if ((this.IcO.HEv != null) && (this.IcO.HEv.HEH != null))
+    {
+      localLinkedList = this.IcO.HEv.HEH;
+      i = j;
+      while (i < localLinkedList.size())
+      {
+        localObject = (j)localLinkedList.get(i);
+        this.IcQ.put(((j)localObject).HEJ, localObject);
+        i += 1;
+      }
+      AppMethodBeat.o(70651);
+      return;
+    }
+    Log.w("MicroMsg.FavorLogicHelper", "func[initData] favorComposeList null");
+    AppMethodBeat.o(70651);
+  }
+  
+  public static List<Bankcard> cI(int paramInt, String paramString)
   {
     AppMethodBeat.i(70665);
-    ArrayList localArrayList1 = com.tencent.mm.plugin.wallet_core.model.t.eJf().uv(true);
+    ArrayList localArrayList1 = com.tencent.mm.plugin.wallet_core.model.t.fQI().yj(true);
     if (paramInt != 0) {}
     for (paramInt = 1; paramInt == 0; paramInt = 0)
     {
@@ -131,7 +131,7 @@ public final class d
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
     if (i < localArrayList1.size()) {
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
         if (((Bankcard)localArrayList1.get(i)).field_bankcardType.equals("CFT")) {
           break label140;
@@ -161,7 +161,7 @@ public final class d
     }
   }
   
-  private static String gW(List<String> paramList)
+  private static String ic(List<String> paramList)
   {
     AppMethodBeat.i(70666);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -179,30 +179,30 @@ public final class d
     return paramList;
   }
   
-  public final Map<String, a> aGf(String paramString)
+  public final Map<String, a> aVG(String paramString)
   {
     AppMethodBeat.i(70652);
-    paramString = cm(paramString, false);
+    paramString = cF(paramString, false);
     AppMethodBeat.o(70652);
     return paramString;
   }
   
-  public final Map<String, a> aGg(String paramString)
+  public final Map<String, a> aVH(String paramString)
   {
     AppMethodBeat.i(70654);
     HashMap localHashMap = new HashMap();
     LinkedList localLinkedList;
-    if ((this.DtC.CYH != null) && (this.DtC.CYH.CYT != null))
+    if ((this.IcO.HEv != null) && (this.IcO.HEv.HEH != null))
     {
-      localLinkedList = this.DtC.CYH.CYT;
-      if (!this.DtE.containsKey(paramString)) {
+      localLinkedList = this.IcO.HEv.HEH;
+      if (!this.IcQ.containsKey(paramString)) {
         break label437;
       }
     }
     label406:
     label412:
     label437:
-    for (double d = ((j)this.DtE.get(paramString)).CYW;; d = 0.0D)
+    for (double d = ((j)this.IcQ.get(paramString)).HEK;; d = 0.0D)
     {
       int i = 0;
       while (i < localLinkedList.size())
@@ -212,79 +212,79 @@ public final class d
         Object localObject;
         if ((paramString.equals("0")) && (!localj.equals("0")))
         {
-          localObject = localj.CYV;
-          localObject = aGj((String)localObject);
+          localObject = localj.HEJ;
+          localObject = aVK((String)localObject);
           if ((localObject == null) || (localObject.length <= 0)) {
             break label412;
           }
-          localObject = (com.tencent.mm.plugin.wallet.a.t)this.DtD.get(localObject[0]);
+          localObject = (com.tencent.mm.plugin.wallet.a.t)this.IcP.get(localObject[0]);
           if (localObject == null) {
             break label412;
           }
-          if (((com.tencent.mm.plugin.wallet.a.t)localObject).CZC == 0) {
+          if (((com.tencent.mm.plugin.wallet.a.t)localObject).HFq == 0) {
             break label406;
           }
         }
         for (int j = 1;; j = 0)
         {
-          if ((j == 0) || (((com.tencent.mm.plugin.wallet.a.t)localObject).CZF.size() <= 0)) {
+          if ((j == 0) || (((com.tencent.mm.plugin.wallet.a.t)localObject).HFt.size() <= 0)) {
             break label412;
           }
-          localIterator = ((com.tencent.mm.plugin.wallet.a.t)localObject).CZF.iterator();
+          localIterator = ((com.tencent.mm.plugin.wallet.a.t)localObject).HFt.iterator();
           while (localIterator.hasNext())
           {
             String str = z.a((b)localIterator.next());
             a locala = (a)localHashMap.get(str);
-            if ((locala == null) || (localj.CYW > locala.DtF.CYW))
+            if ((locala == null) || (localj.HEK > locala.IcR.HEK))
             {
               locala = new a();
-              locala.DtF = localj;
-              locala.wSo = ((com.tencent.mm.plugin.wallet.a.t)localObject).wSo;
-              locala.DtG = (localj.CYW - d);
-              locala.dyP = ((com.tencent.mm.plugin.wallet.a.t)localObject).CZD;
+              locala.IcR = localj;
+              locala.AOj = ((com.tencent.mm.plugin.wallet.a.t)localObject).AOj;
+              locala.IcS = (localj.HEK - d);
+              locala.dQl = ((com.tencent.mm.plugin.wallet.a.t)localObject).HFr;
               localHashMap.put(str, locala);
             }
           }
           localObject = localIterator;
-          if (!localj.CYV.startsWith(paramString)) {
+          if (!localj.HEJ.startsWith(paramString)) {
             break;
           }
           localObject = localIterator;
-          if (paramString.equals(localj.CYV)) {
+          if (paramString.equals(localj.HEJ)) {
             break;
           }
-          localObject = localj.CYV.replace(paramString + "-", "");
+          localObject = localj.HEJ.replace(paramString + "-", "");
           break;
         }
         i += 1;
         continue;
-        ae.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
+        Log.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
       }
       AppMethodBeat.o(70654);
       return localHashMap;
     }
   }
   
-  public final List<com.tencent.mm.plugin.wallet.a.t> aGh(String paramString)
+  public final List<com.tencent.mm.plugin.wallet.a.t> aVI(String paramString)
   {
     AppMethodBeat.i(70656);
     LinkedList localLinkedList = new LinkedList();
-    if (this.DtC.CYG != null)
+    if (this.IcO.HEu != null)
     {
-      paramString = aGf(paramString);
+      paramString = aVG(paramString);
       int i = 0;
-      if (i < this.DtC.CYG.size())
+      if (i < this.IcO.HEu.size())
       {
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.DtC.CYG.get(i);
+        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.IcO.HEu.get(i);
         if (localt != null) {
-          if (localt.CZC == 0) {
+          if (localt.HFq == 0) {
             break label113;
           }
         }
         label113:
         for (int j = 1;; j = 0)
         {
-          if ((j != 0) && (paramString.containsKey(localt.CZD))) {
+          if ((j != 0) && (paramString.containsKey(localt.HFr))) {
             localLinkedList.add(localt);
           }
           i += 1;
@@ -294,48 +294,48 @@ public final class d
     }
     else
     {
-      ae.w("MicroMsg.FavorLogicHelper", "fucn[getBankFavorListWithSelectedCompId] mFavorInfo.tradeFavList null");
+      Log.w("MicroMsg.FavorLogicHelper", "fucn[getBankFavorListWithSelectedCompId] mFavorInfo.tradeFavList null");
     }
     AppMethodBeat.o(70656);
     return localLinkedList;
   }
   
-  public final j aGi(String paramString)
+  public final j aVJ(String paramString)
   {
     AppMethodBeat.i(70659);
-    paramString = (j)this.DtE.get(paramString);
+    paramString = (j)this.IcQ.get(paramString);
     AppMethodBeat.o(70659);
     return paramString;
   }
   
-  public final String aGk(String paramString)
+  public final String aVL(String paramString)
   {
     AppMethodBeat.i(70661);
-    paramString = cn(paramString, false);
+    paramString = cG(paramString, false);
     AppMethodBeat.o(70661);
     return paramString;
   }
   
-  public final FavorPayInfo aGl(String paramString)
+  public final FavorPayInfo aVM(String paramString)
   {
     AppMethodBeat.i(70663);
     FavorPayInfo localFavorPayInfo = new FavorPayInfo();
-    if (this.DtE.get(paramString) == null)
+    if (this.IcQ.get(paramString) == null)
     {
-      localFavorPayInfo.Doq = "0";
-      if (this.DtC != null) {
-        localFavorPayInfo.Dot = this.DtC.CYF;
+      localFavorPayInfo.HXI = "0";
+      if (this.IcO != null) {
+        localFavorPayInfo.HXL = this.IcO.HEt;
       }
-      localFavorPayInfo.Dor = 0;
+      localFavorPayInfo.HXJ = 0;
       AppMethodBeat.o(70663);
       return localFavorPayInfo;
     }
-    localFavorPayInfo.Doq = paramString;
-    if (this.DtC != null) {
-      localFavorPayInfo.Dot = this.DtC.CYF;
+    localFavorPayInfo.HXI = paramString;
+    if (this.IcO != null) {
+      localFavorPayInfo.HXL = this.IcO.HEt;
     }
-    localFavorPayInfo.Dor = 0;
-    paramString = aGj(paramString);
+    localFavorPayInfo.HXJ = 0;
+    paramString = aVK(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(70663);
@@ -346,36 +346,36 @@ public final class d
     {
       if (i >= 0)
       {
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.DtD.get(paramString[i]);
+        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.IcP.get(paramString[i]);
         if (localt != null)
         {
           int j;
-          if (localt.CZC != 0) {
+          if (localt.HFq != 0) {
             j = 1;
           }
           while (j != 0)
           {
-            localFavorPayInfo.Dor = 1;
-            if ((localt.CZF != null) && (localt.CZF.size() > 0))
+            localFavorPayInfo.HXJ = 1;
+            if ((localt.HFt != null) && (localt.HFt.size() > 0))
             {
-              localFavorPayInfo.Dov = new LinkedList();
-              Iterator localIterator = localt.CZF.iterator();
+              localFavorPayInfo.HXN = new LinkedList();
+              Iterator localIterator = localt.HFt.iterator();
               for (;;)
               {
                 if (localIterator.hasNext())
                 {
                   b localb = (b)localIterator.next();
-                  localFavorPayInfo.Dov.add(z.a(localb));
+                  localFavorPayInfo.HXN.add(z.a(localb));
                   continue;
                   j = 0;
                   break;
                 }
               }
             }
-            if (bu.isNullOrNil(localt.CZD)) {
+            if (Util.isNullOrNil(localt.HFr)) {
               break label286;
             }
-            localFavorPayInfo.Dos = localt.CZD;
+            localFavorPayInfo.HXK = localt.HFr;
           }
         }
       }
@@ -389,10 +389,10 @@ public final class d
     }
   }
   
-  public final String aGm(String paramString)
+  public final String aVN(String paramString)
   {
     AppMethodBeat.i(70667);
-    ArrayList localArrayList2 = com.tencent.mm.plugin.wallet_core.model.t.eJf().uv(true);
+    ArrayList localArrayList2 = com.tencent.mm.plugin.wallet_core.model.t.fQI().yj(true);
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList1 = new ArrayList();
     int i = 0;
@@ -401,24 +401,24 @@ public final class d
       localHashMap.put(((Bankcard)localArrayList2.get(i)).field_bankcardType, Integer.valueOf(0));
       i += 1;
     }
-    paramString = aGj(paramString);
+    paramString = aVK(paramString);
     if (paramString != null)
     {
       i = 0;
       if (i < paramString.length)
       {
         localArrayList2 = paramString[i];
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.DtD.get(localArrayList2);
+        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.IcP.get(localArrayList2);
         int j;
         if (localt != null) {
-          if (localt.CZC != 0)
+          if (localt.HFq != 0)
           {
             j = 1;
             label128:
             if (j == 0) {
               break label180;
             }
-            if ((localHashMap.containsKey(localt.CZD)) || (bu.isNullOrNil(localt.CZD))) {
+            if ((localHashMap.containsKey(localt.HFr)) || (Util.isNullOrNil(localt.HFr))) {
               localArrayList1.add(localArrayList2);
             }
           }
@@ -439,21 +439,21 @@ public final class d
       AppMethodBeat.o(70667);
       return "0";
     }
-    paramString = gW(localArrayList1);
+    paramString = ic(localArrayList1);
     AppMethodBeat.o(70667);
     return paramString;
   }
   
-  public final j cl(String paramString, boolean paramBoolean)
+  public final j cE(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(70653);
-    if ((!"0".equals(paramString)) && (this.DtE.containsKey(paramString)))
+    if ((!"0".equals(paramString)) && (this.IcQ.containsKey(paramString)))
     {
-      paramString = (j)this.DtE.get(paramString);
+      paramString = (j)this.IcQ.get(paramString);
       AppMethodBeat.o(70653);
       return paramString;
     }
-    paramString = this.DtE.keySet().iterator();
+    paramString = this.IcQ.keySet().iterator();
     label271:
     label272:
     for (;;)
@@ -464,20 +464,20 @@ public final class d
       if (paramString.hasNext())
       {
         localObject1 = (String)paramString.next();
-        localObject1 = (j)this.DtE.get(localObject1);
-        if ((((j)localObject1).CYX == null) || (((j)localObject1).CYX.size() == 0)) {
+        localObject1 = (j)this.IcQ.get(localObject1);
+        if ((((j)localObject1).HEL == null) || (((j)localObject1).HEL.size() == 0)) {
           continue;
         }
-        j = ((j)localObject1).CYX.size();
-        Iterator localIterator = ((j)localObject1).CYX.iterator();
+        j = ((j)localObject1).HEL.size();
+        Iterator localIterator = ((j)localObject1).HEL.iterator();
         i = 0;
         if (localIterator.hasNext())
         {
           Object localObject2 = (f)localIterator.next();
-          if (this.DtD.containsKey(((f)localObject2).CYz))
+          if (this.IcP.containsKey(((f)localObject2).HEn))
           {
-            localObject2 = (com.tencent.mm.plugin.wallet.a.t)this.DtD.get(((f)localObject2).CYz);
-            if ((!((com.tencent.mm.plugin.wallet.a.t)localObject2).CZD.equals("")) || (((com.tencent.mm.plugin.wallet.a.t)localObject2).CZF.size() != 0) || ((paramBoolean) && (((com.tencent.mm.plugin.wallet.a.t)localObject2).CZC != 0))) {
+            localObject2 = (com.tencent.mm.plugin.wallet.a.t)this.IcP.get(((f)localObject2).HEn);
+            if ((!((com.tencent.mm.plugin.wallet.a.t)localObject2).HFr.equals("")) || (((com.tencent.mm.plugin.wallet.a.t)localObject2).HFt.size() != 0) || ((paramBoolean) && (((com.tencent.mm.plugin.wallet.a.t)localObject2).HFq != 0))) {
               break label271;
             }
             i += 1;
@@ -498,22 +498,22 @@ public final class d
     }
   }
   
-  public final Map<String, a> cm(String paramString, boolean paramBoolean)
+  public final Map<String, a> cF(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(70655);
     HashMap localHashMap = new HashMap();
     LinkedList localLinkedList;
-    if ((this.DtC.CYH != null) && (this.DtC.CYH.CYT != null))
+    if ((this.IcO.HEv != null) && (this.IcO.HEv.HEH != null))
     {
-      localLinkedList = this.DtC.CYH.CYT;
-      if (!this.DtE.containsKey(paramString)) {
+      localLinkedList = this.IcO.HEv.HEH;
+      if (!this.IcQ.containsKey(paramString)) {
         break label435;
       }
     }
     label138:
     label412:
     label435:
-    for (double d = ((j)this.DtE.get(paramString)).CYW;; d = 0.0D)
+    for (double d = ((j)this.IcQ.get(paramString)).HEK;; d = 0.0D)
     {
       int i = 0;
       if (i < localLinkedList.size())
@@ -523,13 +523,13 @@ public final class d
         Object localObject;
         if ((paramString.equals("0")) && (!localj.equals("0")))
         {
-          localObject = localj.CYV;
-          localObject = aGj((String)localObject);
+          localObject = localj.HEJ;
+          localObject = aVK((String)localObject);
           if ((localObject != null) && (localObject.length > 0))
           {
-            localObject = (com.tencent.mm.plugin.wallet.a.t)this.DtD.get(localObject[0]);
+            localObject = (com.tencent.mm.plugin.wallet.a.t)this.IcP.get(localObject[0]);
             if (localObject != null) {
-              if (((com.tencent.mm.plugin.wallet.a.t)localObject).CZC == 0) {
+              if (((com.tencent.mm.plugin.wallet.a.t)localObject).HFq == 0) {
                 break label412;
               }
             }
@@ -537,59 +537,59 @@ public final class d
         }
         for (int j = 1;; j = 0)
         {
-          if ((j != 0) && (!bu.isNullOrNil(((com.tencent.mm.plugin.wallet.a.t)localObject).CZD)) && (((com.tencent.mm.plugin.wallet.a.t)localObject).CZF.size() <= 0) && ((paramBoolean) || (!((com.tencent.mm.plugin.wallet.a.t)localObject).CZD.equalsIgnoreCase("CFT"))))
+          if ((j != 0) && (!Util.isNullOrNil(((com.tencent.mm.plugin.wallet.a.t)localObject).HFr)) && (((com.tencent.mm.plugin.wallet.a.t)localObject).HFt.size() <= 0) && ((paramBoolean) || (!((com.tencent.mm.plugin.wallet.a.t)localObject).HFr.equalsIgnoreCase("CFT"))))
           {
-            locala = (a)localHashMap.get(((com.tencent.mm.plugin.wallet.a.t)localObject).CZD);
-            if ((locala == null) || (localj.CYW > locala.DtF.CYW))
+            locala = (a)localHashMap.get(((com.tencent.mm.plugin.wallet.a.t)localObject).HFr);
+            if ((locala == null) || (localj.HEK > locala.IcR.HEK))
             {
               locala = new a();
-              locala.DtF = localj;
-              locala.wSo = ((com.tencent.mm.plugin.wallet.a.t)localObject).wSo;
-              locala.DtG = (localj.CYW - d);
-              locala.dyP = ((com.tencent.mm.plugin.wallet.a.t)localObject).CZD;
-              localHashMap.put(((com.tencent.mm.plugin.wallet.a.t)localObject).CZD, locala);
+              locala.IcR = localj;
+              locala.AOj = ((com.tencent.mm.plugin.wallet.a.t)localObject).AOj;
+              locala.IcS = (localj.HEK - d);
+              locala.dQl = ((com.tencent.mm.plugin.wallet.a.t)localObject).HFr;
+              localHashMap.put(((com.tencent.mm.plugin.wallet.a.t)localObject).HFr, locala);
             }
           }
           i += 1;
           break;
           localObject = locala;
-          if (!localj.CYV.startsWith(paramString)) {
+          if (!localj.HEJ.startsWith(paramString)) {
             break label138;
           }
           localObject = locala;
-          if (paramString.equals(localj.CYV)) {
+          if (paramString.equals(localj.HEJ)) {
             break label138;
           }
-          localObject = localj.CYV.replace(paramString + "-", "");
+          localObject = localj.HEJ.replace(paramString + "-", "");
           break label138;
         }
-        ae.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
+        Log.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
       }
       AppMethodBeat.o(70655);
       return localHashMap;
     }
   }
   
-  public final String cn(String paramString, boolean paramBoolean)
+  public final String cG(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(70662);
-    paramString = aGj(paramString);
+    paramString = aVK(paramString);
     if (paramString != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       if (i < paramString.length)
       {
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.DtD.get(paramString[i]);
+        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.IcP.get(paramString[i]);
         if (localt != null) {
-          if (localt.CZC == 0) {
+          if (localt.HFq == 0) {
             break label122;
           }
         }
         label122:
         for (int j = 1;; j = 0)
         {
-          if ((j == 0) || ((bu.isNullOrNil(localt.CZD)) && (!paramBoolean)))
+          if ((j == 0) || ((Util.isNullOrNil(localt.HFr)) && (!paramBoolean)))
           {
             localStringBuilder.append(paramString[i]);
             localStringBuilder.append("-");
@@ -611,10 +611,10 @@ public final class d
     return "0";
   }
   
-  public final boolean eKR()
+  public final boolean fSw()
   {
     AppMethodBeat.i(70649);
-    if ((this.DtD != null) && (this.DtD.size() > 0))
+    if ((this.IcP != null) && (this.IcP.size() > 0))
     {
       AppMethodBeat.o(70649);
       return true;
@@ -623,20 +623,20 @@ public final class d
     return false;
   }
   
-  public final int eKS()
+  public final int fSx()
   {
     AppMethodBeat.i(70657);
-    int i = this.DtE.size();
+    int i = this.IcQ.size();
     AppMethodBeat.o(70657);
     return i;
   }
   
-  public final j eKT()
+  public final j fSy()
   {
     AppMethodBeat.i(70658);
-    if (!this.DtE.isEmpty())
+    if (!this.IcQ.isEmpty())
     {
-      Object localObject = this.DtE.entrySet().iterator();
+      Object localObject = this.IcQ.entrySet().iterator();
       if (((Iterator)localObject).hasNext())
       {
         localObject = (j)((Map.Entry)((Iterator)localObject).next()).getValue();
@@ -648,10 +648,10 @@ public final class d
     return null;
   }
   
-  public final List<com.tencent.mm.plugin.wallet.a.t> eKU()
+  public final List<com.tencent.mm.plugin.wallet.a.t> fSz()
   {
     AppMethodBeat.i(70668);
-    Object localObject = com.tencent.mm.plugin.wallet_core.model.t.eJf().uv(true);
+    Object localObject = com.tencent.mm.plugin.wallet_core.model.t.fQI().yj(true);
     HashMap localHashMap = new HashMap();
     int i = 0;
     while (i < ((ArrayList)localObject).size())
@@ -660,7 +660,7 @@ public final class d
       i += 1;
     }
     localObject = new LinkedList();
-    LinkedList localLinkedList = this.DtC.CYG;
+    LinkedList localLinkedList = this.IcO.HEu;
     if (localLinkedList != null)
     {
       i = 0;
@@ -669,14 +669,14 @@ public final class d
         com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)localLinkedList.get(i);
         int j;
         if (localt != null) {
-          if (localt.CZC != 0)
+          if (localt.HFq != 0)
           {
             j = 1;
             label128:
             if (j == 0) {
               break label179;
             }
-            if ((localHashMap.containsKey(localt.CZD)) || (bu.isNullOrNil(localt.CZD))) {
+            if ((localHashMap.containsKey(localt.HFr)) || (Util.isNullOrNil(localt.HFr))) {
               ((List)localObject).add(localt);
             }
           }
@@ -698,21 +698,21 @@ public final class d
   
   public static final class a
   {
-    public j DtF;
-    public double DtG;
-    public String dyP;
-    public String wSo;
+    public String AOj;
+    public j IcR;
+    public double IcS;
+    public String dQl;
     
     public final String toString()
     {
       AppMethodBeat.i(70648);
       Object localObject = new StringBuffer();
-      if (this.DtF != null) {
-        ((StringBuffer)localObject).append("|faovrComposeId: " + this.DtF.CYV);
+      if (this.IcR != null) {
+        ((StringBuffer)localObject).append("|faovrComposeId: " + this.IcR.HEJ);
       }
-      ((StringBuffer)localObject).append("|bankName: " + this.wSo);
-      ((StringBuffer)localObject).append("|bankFavorAmount: " + this.DtG);
-      ((StringBuffer)localObject).append("|bankType: " + this.dyP);
+      ((StringBuffer)localObject).append("|bankName: " + this.AOj);
+      ((StringBuffer)localObject).append("|bankFavorAmount: " + this.IcS);
+      ((StringBuffer)localObject).append("|bankType: " + this.dQl);
       localObject = ((StringBuffer)localObject).toString();
       AppMethodBeat.o(70648);
       return localObject;
@@ -721,7 +721,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.d
  * JD-Core Version:    0.7.0.1
  */

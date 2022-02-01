@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$animateHideBlurView$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$animateHideBlurView$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
 public final class ScanGoodsMaskView$d
   implements Animator.AnimatorListener
 {
@@ -17,7 +17,7 @@ public final class ScanGoodsMaskView$d
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(52289);
-    this.yMD.invoke();
+    this.CQv.invoke();
     AppMethodBeat.o(52289);
   }
   

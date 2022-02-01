@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.csl;
-import d.l;
+import com.tencent.mm.protocal.protobuf.dko;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
 public final class k
 {
-  csl jUL;
+  dko kXH;
   
   public k()
   {
     AppMethodBeat.i(50332);
-    this.jUL = new csl();
+    this.kXH = new dko();
     AppMethodBeat.o(50332);
   }
   
-  final void a(csl paramcsl)
+  final void a(dko paramdko)
   {
-    paramcsl.Hgn = this.jUL.Hgn;
-    paramcsl.mwf = this.jUL.mwf;
-    paramcsl.mwh = this.jUL.mwh;
-    paramcsl.HDC = this.jUL.HDC;
-    paramcsl.prd = "####客户端mock数据####商品";
-    paramcsl.mwi = this.jUL.mwi;
-    paramcsl.HDE = this.jUL.HDE;
-    paramcsl.HDD = this.jUL.HDD;
-    paramcsl.HDA = this.jUL.HDA;
-    paramcsl.score = this.jUL.score;
-    paramcsl.mwj = this.jUL.mwj;
-    paramcsl.HDF = this.jUL.HDF;
+    paramdko.gTT = this.kXH.gTT;
+    paramdko.nHd = this.kXH.nHd;
+    paramdko.nHf = this.kXH.nHf;
+    paramdko.MOw = this.kXH.MOw;
+    paramdko.qGI = "####客户端mock数据####商品";
+    paramdko.nHg = this.kXH.nHg;
+    paramdko.MOy = this.kXH.MOy;
+    paramdko.MOx = this.kXH.MOx;
+    paramdko.MOu = this.kXH.MOu;
+    paramdko.score = this.kXH.score;
+    paramdko.nHh = this.kXH.nHh;
+    paramdko.MOz = this.kXH.MOz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.k
  * JD-Core Version:    0.7.0.1
  */

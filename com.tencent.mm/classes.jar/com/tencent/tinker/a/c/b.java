@@ -3,9 +3,9 @@ package com.tencent.tinker.a.c;
 public final class b
   implements Cloneable
 {
-  private static final int[] bQP = new int[0];
-  public int[] MBt;
-  public int[] OW;
+  private static final int[] bYn = new int[0];
+  public int[] Pi;
+  public int[] Shv;
   public int mSize;
   
   public b()
@@ -16,13 +16,13 @@ public final class b
   public b(int paramInt)
   {
     if (paramInt == 0) {
-      this.OW = bQP;
+      this.Pi = bYn;
     }
-    for (this.MBt = bQP;; this.MBt = new int[this.OW.length])
+    for (this.Shv = bYn;; this.Shv = new int[this.Pi.length])
     {
       this.mSize = 0;
       return;
-      this.OW = new int[paramInt];
+      this.Pi = new int[paramInt];
     }
   }
   
@@ -77,27 +77,6 @@ public final class b
     return arrayOfInt;
   }
   
-  private b gcS()
-  {
-    try
-    {
-      b localb = (b)super.clone();
-      return localCloneNotSupportedException1;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException1)
-    {
-      try
-      {
-        localb.OW = ((int[])this.OW.clone());
-        localb.MBt = ((int[])this.MBt.clone());
-        return localb;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
-      localCloneNotSupportedException1 = localCloneNotSupportedException1;
-      return null;
-    }
-  }
-  
   private static int[] h(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramArrayOfInt.length) {
@@ -113,53 +92,74 @@ public final class b
     return arrayOfInt;
   }
   
-  public final int aiE(int paramInt)
+  private b hpa()
   {
-    paramInt = b(this.OW, this.mSize, paramInt);
-    if (paramInt < 0) {
-      return 0;
+    try
+    {
+      b localb = (b)super.clone();
+      return localCloneNotSupportedException1;
     }
-    return this.MBt[paramInt];
+    catch (CloneNotSupportedException localCloneNotSupportedException1)
+    {
+      try
+      {
+        localb.Pi = ((int[])this.Pi.clone());
+        localb.Shv = ((int[])this.Shv.clone());
+        return localb;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
+      localCloneNotSupportedException1 = localCloneNotSupportedException1;
+      return null;
+    }
   }
   
   public final void append(int paramInt1, int paramInt2)
   {
-    if ((this.mSize != 0) && (paramInt1 <= this.OW[(this.mSize - 1)]))
+    if ((this.mSize != 0) && (paramInt1 <= this.Pi[(this.mSize - 1)]))
     {
       put(paramInt1, paramInt2);
       return;
     }
-    this.OW = h(this.OW, this.mSize, paramInt1);
-    this.MBt = h(this.MBt, this.mSize, paramInt2);
+    this.Pi = h(this.Pi, this.mSize, paramInt1);
+    this.Shv = h(this.Shv, this.mSize, paramInt2);
     this.mSize += 1;
+  }
+  
+  public final int ase(int paramInt)
+  {
+    paramInt = b(this.Pi, this.mSize, paramInt);
+    if (paramInt < 0) {
+      return 0;
+    }
+    return this.Shv[paramInt];
   }
   
   public final int get(int paramInt)
   {
-    return aiE(paramInt);
+    return ase(paramInt);
   }
   
   public final int indexOfKey(int paramInt)
   {
-    return b(this.OW, this.mSize, paramInt);
+    return b(this.Pi, this.mSize, paramInt);
   }
   
   public final int keyAt(int paramInt)
   {
-    return this.OW[paramInt];
+    return this.Pi[paramInt];
   }
   
   public final void put(int paramInt1, int paramInt2)
   {
-    int i = b(this.OW, this.mSize, paramInt1);
+    int i = b(this.Pi, this.mSize, paramInt1);
     if (i >= 0)
     {
-      this.MBt[i] = paramInt2;
+      this.Shv[i] = paramInt2;
       return;
     }
     i ^= 0xFFFFFFFF;
-    this.OW = b(this.OW, this.mSize, i, paramInt1);
-    this.MBt = b(this.MBt, this.mSize, i, paramInt2);
+    this.Pi = b(this.Pi, this.mSize, i, paramInt1);
+    this.Shv = b(this.Shv, this.mSize, i, paramInt2);
     this.mSize += 1;
   }
   
@@ -181,9 +181,9 @@ public final class b
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.OW[i]);
+      localStringBuilder.append(this.Pi[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.MBt[i]);
+      localStringBuilder.append(this.Shv[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -192,7 +192,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.c.b
  * JD-Core Version:    0.7.0.1
  */

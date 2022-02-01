@@ -1,167 +1,205 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import g.a.a.b;
 
 public final class dyt
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public int GqB;
-  public long Hzw;
-  public int Hzx;
-  public String IdW;
-  public com.tencent.mm.bw.b IdX;
-  public com.tencent.mm.bw.b IdY;
-  public String IdZ;
+  public String MYh;
+  public String MYi;
+  public String MYj;
+  public int MYk;
+  public String MYl;
+  public String MYm;
+  public String MYn;
+  public int MYo;
+  public int MYp;
+  public int MYq;
+  public int MYr;
+  public int MYs;
+  public int Scene;
+  public String Title;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125498);
+    AppMethodBeat.i(117927);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.IdW == null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.MYh == null)
       {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: ToBizUserName");
-        AppMethodBeat.o(125498);
+        paramVarArgs = new b("Not all required fields were included: PickedWord");
+        AppMethodBeat.o(117927);
         throw paramVarArgs;
       }
-      if (this.IdY == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: CapInfo");
-        AppMethodBeat.o(125498);
-        throw paramVarArgs;
+      if (this.MYh != null) {
+        paramVarArgs.e(1, this.MYh);
       }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.MYi != null) {
+        paramVarArgs.e(2, this.MYi);
       }
-      paramVarArgs.aS(2, this.Hzx);
-      if (this.IdW != null) {
-        paramVarArgs.d(3, this.IdW);
+      if (this.MYj != null) {
+        paramVarArgs.e(3, this.MYj);
       }
-      paramVarArgs.aS(4, this.GqB);
-      if (this.IdX != null) {
-        paramVarArgs.c(5, this.IdX);
+      paramVarArgs.aM(4, this.Scene);
+      paramVarArgs.aM(5, this.MYk);
+      if (this.Url != null) {
+        paramVarArgs.e(6, this.Url);
       }
-      if (this.IdY != null) {
-        paramVarArgs.c(6, this.IdY);
+      if (this.Title != null) {
+        paramVarArgs.e(7, this.Title);
       }
-      paramVarArgs.aZ(7, this.Hzw);
-      if (this.IdZ != null) {
-        paramVarArgs.d(8, this.IdZ);
+      if (this.MYl != null) {
+        paramVarArgs.e(8, this.MYl);
       }
-      AppMethodBeat.o(125498);
+      if (this.MYm != null) {
+        paramVarArgs.e(9, this.MYm);
+      }
+      if (this.MYn != null) {
+        paramVarArgs.e(10, this.MYn);
+      }
+      paramVarArgs.aM(11, this.MYo);
+      paramVarArgs.aM(12, this.MYp);
+      paramVarArgs.aM(13, this.MYq);
+      paramVarArgs.aM(14, this.MYr);
+      paramVarArgs.aM(15, this.MYs);
+      AppMethodBeat.o(117927);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label786;
+      if (this.MYh == null) {
+        break label1018;
       }
     }
-    label786:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label1018:
+    for (int i = g.a.a.b.b.a.f(1, this.MYh) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.Hzx);
       paramInt = i;
-      if (this.IdW != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.IdW);
-      }
-      i = paramInt + f.a.a.b.b.a.bz(4, this.GqB);
-      paramInt = i;
-      if (this.IdX != null) {
-        paramInt = i + f.a.a.b.b.a.b(5, this.IdX);
+      if (this.MYi != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.MYi);
       }
       i = paramInt;
-      if (this.IdY != null) {
-        i = paramInt + f.a.a.b.b.a.b(6, this.IdY);
+      if (this.MYj != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.MYj);
       }
-      i += f.a.a.b.b.a.p(7, this.Hzw);
+      i = i + g.a.a.b.b.a.bu(4, this.Scene) + g.a.a.b.b.a.bu(5, this.MYk);
       paramInt = i;
-      if (this.IdZ != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.IdZ);
+      if (this.Url != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.Url);
       }
-      AppMethodBeat.o(125498);
-      return paramInt;
+      i = paramInt;
+      if (this.Title != null) {
+        i = paramInt + g.a.a.b.b.a.f(7, this.Title);
+      }
+      paramInt = i;
+      if (this.MYl != null) {
+        paramInt = i + g.a.a.b.b.a.f(8, this.MYl);
+      }
+      i = paramInt;
+      if (this.MYm != null) {
+        i = paramInt + g.a.a.b.b.a.f(9, this.MYm);
+      }
+      paramInt = i;
+      if (this.MYn != null) {
+        paramInt = i + g.a.a.b.b.a.f(10, this.MYn);
+      }
+      i = g.a.a.b.b.a.bu(11, this.MYo);
+      int j = g.a.a.b.b.a.bu(12, this.MYp);
+      int k = g.a.a.b.b.a.bu(13, this.MYq);
+      int m = g.a.a.b.b.a.bu(14, this.MYr);
+      int n = g.a.a.b.b.a.bu(15, this.MYs);
+      AppMethodBeat.o(117927);
+      return paramInt + i + j + k + m + n;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.IdW == null)
+        if (this.MYh == null)
         {
-          paramVarArgs = new f.a.a.b("Not all required fields were included: ToBizUserName");
-          AppMethodBeat.o(125498);
+          paramVarArgs = new b("Not all required fields were included: PickedWord");
+          AppMethodBeat.o(117927);
           throw paramVarArgs;
         }
-        if (this.IdY == null)
-        {
-          paramVarArgs = new f.a.a.b("Not all required fields were included: CapInfo");
-          AppMethodBeat.o(125498);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(125498);
+        AppMethodBeat.o(117927);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         dyt localdyt = (dyt)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(125498);
+          AppMethodBeat.o(117927);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdyt.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(125498);
+          localdyt.MYh = locala.UbS.readString();
+          AppMethodBeat.o(117927);
           return 0;
         case 2: 
-          localdyt.Hzx = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125498);
+          localdyt.MYi = locala.UbS.readString();
+          AppMethodBeat.o(117927);
           return 0;
         case 3: 
-          localdyt.IdW = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(125498);
+          localdyt.MYj = locala.UbS.readString();
+          AppMethodBeat.o(117927);
           return 0;
         case 4: 
-          localdyt.GqB = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125498);
+          localdyt.Scene = locala.UbS.zi();
+          AppMethodBeat.o(117927);
           return 0;
         case 5: 
-          localdyt.IdX = ((f.a.a.a.a)localObject1).OmT.gCk();
-          AppMethodBeat.o(125498);
+          localdyt.MYk = locala.UbS.zi();
+          AppMethodBeat.o(117927);
           return 0;
         case 6: 
-          localdyt.IdY = ((f.a.a.a.a)localObject1).OmT.gCk();
-          AppMethodBeat.o(125498);
+          localdyt.Url = locala.UbS.readString();
+          AppMethodBeat.o(117927);
           return 0;
         case 7: 
-          localdyt.Hzw = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(125498);
+          localdyt.Title = locala.UbS.readString();
+          AppMethodBeat.o(117927);
+          return 0;
+        case 8: 
+          localdyt.MYl = locala.UbS.readString();
+          AppMethodBeat.o(117927);
+          return 0;
+        case 9: 
+          localdyt.MYm = locala.UbS.readString();
+          AppMethodBeat.o(117927);
+          return 0;
+        case 10: 
+          localdyt.MYn = locala.UbS.readString();
+          AppMethodBeat.o(117927);
+          return 0;
+        case 11: 
+          localdyt.MYo = locala.UbS.zi();
+          AppMethodBeat.o(117927);
+          return 0;
+        case 12: 
+          localdyt.MYp = locala.UbS.zi();
+          AppMethodBeat.o(117927);
+          return 0;
+        case 13: 
+          localdyt.MYq = locala.UbS.zi();
+          AppMethodBeat.o(117927);
+          return 0;
+        case 14: 
+          localdyt.MYr = locala.UbS.zi();
+          AppMethodBeat.o(117927);
           return 0;
         }
-        localdyt.IdZ = ((f.a.a.a.a)localObject1).OmT.readString();
-        AppMethodBeat.o(125498);
+        localdyt.MYs = locala.UbS.zi();
+        AppMethodBeat.o(117927);
         return 0;
       }
-      AppMethodBeat.o(125498);
+      AppMethodBeat.o(117927);
       return -1;
     }
   }

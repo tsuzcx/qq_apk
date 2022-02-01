@@ -6,25 +6,25 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.g.13;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class l
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78544);
-    ae.i("MicroMsg.JsApiClearBounceBackground", "invokeInOwn");
-    g localg = (g)paramb.chg;
+    Log.i("MicroMsg.JsApiClearBounceBackground", "invokeInOwn");
+    g localg = (g)paramb.cta;
     localg.mHandler.post(new g.13(localg));
-    paramb.a("", null);
+    paramb.c("", null);
     AppMethodBeat.o(78544);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

@@ -2,31 +2,61 @@ package com.tencent.mm.plugin.finder;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import d.l;
+import java.util.HashMap;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/FinderNewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/FinderNewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"})
 public final class FinderNewUI
   extends MMActivity
 {
   private static final String TAG = "Finder.MMFinderUI";
-  public static final a rNY;
+  public static final a tnM;
+  private HashMap _$_findViewCache;
   
   static
   {
     AppMethodBeat.i(162432);
-    rNY = new a((byte)0);
+    tnM = new a((byte)0);
     TAG = "Finder.MMFinderUI";
     AppMethodBeat.o(162432);
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(241829);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(241829);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(241828);
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    AppMethodBeat.o(241828);
+    return localView1;
   }
   
   public final void finish()
   {
     AppMethodBeat.i(162431);
     super.finish();
-    ae.i(TAG, "finish " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
+    Log.i(TAG, "finish " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
     AppMethodBeat.o(162431);
   }
   
@@ -39,7 +69,7 @@ public final class FinderNewUI
   {
     AppMethodBeat.i(162429);
     super.onCreate(paramBundle);
-    ae.i(TAG, "onCreate " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
+    Log.i(TAG, "onCreate " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
     AppMethodBeat.o(162429);
   }
   
@@ -47,7 +77,7 @@ public final class FinderNewUI
   {
     AppMethodBeat.i(162427);
     super.onDestroy();
-    ae.i(TAG, "onDestroy " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
+    Log.i(TAG, "onDestroy " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
     AppMethodBeat.o(162427);
   }
   
@@ -55,7 +85,7 @@ public final class FinderNewUI
   {
     AppMethodBeat.i(162428);
     super.onPause();
-    ae.i(TAG, "onPause " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
+    Log.i(TAG, "onPause " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
     AppMethodBeat.o(162428);
   }
   
@@ -63,7 +93,7 @@ public final class FinderNewUI
   {
     AppMethodBeat.i(162430);
     super.onResume();
-    ae.i(TAG, "onResume " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
+    Log.i(TAG, "onResume " + getClass().getSimpleName() + ", " + hashCode() + ",  " + getTaskId());
     AppMethodBeat.o(162430);
   }
   
@@ -73,7 +103,7 @@ public final class FinderNewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/FinderNewUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/FinderNewUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

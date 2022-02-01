@@ -6,28 +6,29 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 
 public enum b
 {
-  private boolean lGA = false;
-  public String lGz = null;
+  public String mOk = null;
+  private boolean mOl = false;
   
   static
   {
     AppMethodBeat.i(47040);
-    lGy = new b("INSTANCE");
-    lGB = new b[] { lGy };
+    mOj = new b("INSTANCE");
+    mOm = new b[] { mOj };
     AppMethodBeat.o(47040);
   }
   
   private b() {}
   
-  public static void b(String paramString, Runnable paramRunnable)
+  public static void c(String paramString, Runnable paramRunnable)
   {
     AppMethodBeat.i(47037);
     if (!TextUtils.isEmpty(paramString)) {
-      XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), a.class, new d() {});
+      XIPCInvoker.a(MainProcessIPCService.dkO, new IPCString(paramString), a.class, new d() {});
     }
     AppMethodBeat.o(47037);
   }
@@ -42,7 +43,7 @@ public enum b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keepalive.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,66 +3,69 @@ package com.google.android.exoplayer2.source.b;
 import android.os.Handler;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.b.e;
-import com.google.android.exoplayer2.source.a.a;
-import com.google.android.exoplayer2.source.a.a.5;
+import com.google.android.exoplayer2.k;
+import com.google.android.exoplayer2.source.b.a;
+import com.google.android.exoplayer2.source.b.a.5;
 import com.google.android.exoplayer2.source.l;
+import com.google.android.exoplayer2.source.m;
+import com.google.android.exoplayer2.source.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class i
-  implements l
+  implements n
 {
-  public final int bys;
-  private final j byt;
+  public final int byu;
+  private final j byv;
   
   public i(j paramj, int paramInt)
   {
-    this.byt = paramj;
-    this.bys = paramInt;
+    this.byv = paramj;
+    this.byu = paramInt;
   }
   
   public final void Y(long paramLong)
   {
     AppMethodBeat.i(62864);
-    j localj = this.byt;
-    int i = this.bys;
-    com.google.android.exoplayer2.source.k localk = localj.bvV[i];
-    if ((localj.bwi) && (paramLong > localk.bwN.vs()))
+    j localj = this.byv;
+    int i = this.byu;
+    m localm = localj.bvQ[i];
+    if ((localj.bwd) && (paramLong > localm.bwO.vy()))
     {
-      localk.bwN.vC();
+      localm.bwO.vH();
       AppMethodBeat.o(62864);
       return;
     }
-    localk.f(paramLong, true);
+    localm.f(paramLong, true);
     AppMethodBeat.o(62864);
   }
   
-  public final int b(com.google.android.exoplayer2.k paramk, e parame, boolean paramBoolean)
+  public final int b(k paramk, e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(62863);
-    j localj = this.byt;
-    int k = this.bys;
-    if (localj.vt())
+    j localj = this.byv;
+    int k = this.byu;
+    if (localj.vz())
     {
       AppMethodBeat.o(62863);
       return -3;
     }
-    if (!localj.byy.isEmpty())
+    if (!localj.byA.isEmpty())
     {
       label75:
       int j;
-      if (localj.byy.size() > 1)
+      if (localj.byA.size() > 1)
       {
-        int m = ((f)localj.byy.getFirst()).uid;
+        int m = ((f)localj.byA.getFirst()).uid;
         i = 0;
-        if (i < localj.bvV.length) {
-          if (localj.byD[i] != 0)
+        if (i < localj.bvQ.length) {
+          if (localj.byF[i] != 0)
           {
-            localObject1 = localj.bvV[i].bwN;
-            j = ((com.google.android.exoplayer2.source.j)localObject1).eE(((com.google.android.exoplayer2.source.j)localObject1).bwF);
-            if (((com.google.android.exoplayer2.source.j)localObject1).vA())
+            localObject1 = localj.bvQ[i].bwO;
+            j = ((l)localObject1).eD(((l)localObject1).bwG);
+            if (((l)localObject1).vF())
             {
-              j = localObject1.bwA[j];
+              j = localObject1.bwB[j];
               label140:
               if (j != m) {
                 break label177;
@@ -75,9 +78,9 @@ final class i
           if (i == 0) {
             break label192;
           }
-          localj.byy.removeFirst();
+          localj.byA.removeFirst();
           break;
-          j = ((com.google.android.exoplayer2.source.j)localObject1).bwL;
+          j = ((l)localObject1).bwM;
           break label140;
           label177:
           i += 1;
@@ -85,22 +88,22 @@ final class i
         }
       }
       label192:
-      Object localObject1 = (f)localj.byy.getFirst();
-      Format localFormat = ((f)localObject1).bxj;
-      if (!localFormat.equals(localj.byz))
+      Object localObject1 = (f)localj.byA.getFirst();
+      Format localFormat = ((f)localObject1).bxk;
+      if (!localFormat.equals(localj.byB))
       {
-        a.a locala = localj.byj;
+        b.a locala = localj.byl;
         i = localj.trackType;
-        j = ((f)localObject1).bxk;
-        Object localObject2 = ((f)localObject1).bxl;
-        long l = ((f)localObject1).bxm;
-        if (locala.bvg != null) {
-          locala.handler.post(new a.a.5(locala, i, localFormat, j, localObject2, l));
+        j = ((f)localObject1).bxl;
+        Object localObject2 = ((f)localObject1).bxm;
+        long l = ((f)localObject1).bxn;
+        if (locala.bvb != null) {
+          locala.handler.post(new b.a.5(locala, i, localFormat, j, localObject2, l));
         }
       }
-      localj.byz = localFormat;
+      localj.byB = localFormat;
     }
-    int i = localj.bvV[k].a(paramk, parame, paramBoolean, localj.bwi, localj.bwf);
+    int i = localj.bvQ[k].a(paramk, parame, paramBoolean, localj.bwd, localj.bwa);
     AppMethodBeat.o(62863);
     return i;
   }
@@ -108,9 +111,9 @@ final class i
   public final boolean isReady()
   {
     AppMethodBeat.i(62861);
-    j localj = this.byt;
-    int i = this.bys;
-    if ((localj.bwi) || ((!localj.vt()) && (localj.bvV[i].bwN.vA())))
+    j localj = this.byv;
+    int i = this.byu;
+    if ((localj.bwd) || ((!localj.vz()) && (localj.bvQ[i].bwO.vF())))
     {
       AppMethodBeat.o(62861);
       return true;
@@ -119,16 +122,16 @@ final class i
     return false;
   }
   
-  public final void vm()
+  public final void vs()
   {
     AppMethodBeat.i(62862);
-    this.byt.byv.vm();
+    this.byv.byx.vs();
     AppMethodBeat.o(62862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.i
  * JD-Core Version:    0.7.0.1
  */

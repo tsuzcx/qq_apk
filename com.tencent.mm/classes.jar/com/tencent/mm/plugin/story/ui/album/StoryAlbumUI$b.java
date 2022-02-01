@@ -4,9 +4,9 @@ import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class StoryAlbumUI$b
   implements MenuItem.OnMenuItemClickListener
 {
@@ -15,7 +15,7 @@ final class StoryAlbumUI$b
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(119830);
-    paramMenuItem = this.Boo.getActivity();
+    paramMenuItem = this.Fze.getActivity();
     if (paramMenuItem != null) {
       paramMenuItem.finish();
     }
@@ -25,7 +25,7 @@ final class StoryAlbumUI$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryAlbumUI.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,245 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
-import d.l;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.plugin.finder.feed.ag;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bcu;
+import com.tencent.mm.protocal.protobuf.bdb;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import java.util.LinkedList;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/IDKey1298;", "", "()V", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderStreamCardAlbumReporter;", "", "()V", "report21086", "", "title", "", "cardFeed", "Lcom/tencent/mm/plugin/finder/feed/FinderStreamCardFeed;", "position", "", "exposedTime", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "report21087", "cardId", "action", "feedId", "report21089", "index", "report21090", "txtCard", "Lcom/tencent/mm/protocal/protobuf/FinderStreamTxtCard;", "clickWording", "plugin-finder_release"})
 public final class t
 {
-  private static final int ID = 1298;
-  private static final int sBT = 1;
-  private static final int sBU = 2;
-  private static final int sBV = 3;
-  private static final int sBW = 4;
-  private static final int sBX = 5;
-  private static final int sBY = 6;
-  private static final int sBZ = 7;
-  private static final int sCa = 8;
-  private static final int sCb = 9;
-  private static final int sCc = 10;
-  private static final int sCd = 11;
-  private static final int sCe = 12;
-  private static final int sCf = 13;
-  private static final int sCg = 14;
-  private static final int sCh = 15;
-  private static final int sCi = 16;
-  private static final int sCj = 255;
-  public static final a sCk;
+  public static final t vhJ;
   
   static
   {
-    AppMethodBeat.i(166708);
-    sCk = new a((byte)0);
-    ID = 1298;
-    sBT = 1;
-    sBU = 2;
-    sBV = 3;
-    sBW = 4;
-    sBX = 5;
-    sBY = 6;
-    sBZ = 7;
-    sCa = 8;
-    sCb = 9;
-    sCc = 10;
-    sCd = 11;
-    sCe = 12;
-    sCf = 13;
-    sCg = 14;
-    sCh = 15;
-    sCi = 16;
-    sCj = 255;
-    AppMethodBeat.o(166708);
+    AppMethodBeat.i(250802);
+    vhJ = new t();
+    AppMethodBeat.o(250802);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/IDKey1298$Companion;", "", "()V", "ID", "", "getID", "()I", "PlayerError_403", "getPlayerError_403", "PlayerError_404", "getPlayerError_404", "PlayerError_405", "getPlayerError_405", "PlayerError_416", "getPlayerError_416", "PlayerError_502", "getPlayerError_502", "PlayerError_503", "getPlayerError_503", "PlayerError_CDNCOM_TIMEOUT_TRANSFOR", "getPlayerError_CDNCOM_TIMEOUT_TRANSFOR", "PlayerError_CNDCOM_MEDIA_OPEN_FAILED", "getPlayerError_CNDCOM_MEDIA_OPEN_FAILED", "PlayerError_CNDCOM_NET_ERROR", "getPlayerError_CNDCOM_NET_ERROR", "PlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "getPlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "PlayerError_IO", "getPlayerError_IO", "PlayerError_MALFORMED", "getPlayerError_MALFORMED", "PlayerError_Other", "getPlayerError_Other", "PlayerError_PREPARE", "getPlayerError_PREPARE", "PlayerError_READ", "getPlayerError_READ", "PlayerError_REQ_ALL", "getPlayerError_REQ_ALL", "PlayerError_UNSUPPORT", "getPlayerError_UNSUPPORT", "report", "", "errorCode", "plugin-finder_release"})
-  public static final class a
+  public static void a(String paramString, long paramLong, int paramInt1, int paramInt2, bbn parambbn)
   {
-    public static void md(int paramInt)
+    String str3 = null;
+    AppMethodBeat.i(250798);
+    h localh = h.CyF;
+    String str4 = d.zs(paramLong);
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "";
+    }
+    if (parambbn != null)
     {
-      AppMethodBeat.i(166707);
-      e.ywz.idkeyStat(t.cGc(), paramInt, 1L, false);
-      AppMethodBeat.o(166707);
+      paramString = parambbn.sessionId;
+      if (parambbn == null) {
+        break label129;
+      }
+    }
+    label129:
+    for (String str2 = parambbn.sGQ;; str2 = null)
+    {
+      if (parambbn != null) {
+        str3 = parambbn.sGE;
+      }
+      localh.a(21089, new Object[] { str4, str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, str2, str3 });
+      AppMethodBeat.o(250798);
+      return;
+      paramString = null;
+      break;
+    }
+  }
+  
+  public static void a(String paramString, long paramLong1, int paramInt1, long paramLong2, bbn parambbn, int paramInt2)
+  {
+    String str3 = null;
+    AppMethodBeat.i(250800);
+    p.h(paramString, "title");
+    h localh = h.CyF;
+    Integer localInteger;
+    String str4;
+    String str5;
+    String str1;
+    if (parambbn != null)
+    {
+      localInteger = Integer.valueOf(parambbn.tCE);
+      str4 = d.zs(paramLong1);
+      str5 = d.zs(paramLong2);
+      if (parambbn == null) {
+        break label160;
+      }
+      str1 = parambbn.sessionId;
+      label59:
+      if (parambbn == null) {
+        break label166;
+      }
+    }
+    label160:
+    label166:
+    for (String str2 = parambbn.sGQ;; str2 = null)
+    {
+      if (parambbn != null) {
+        str3 = parambbn.sGE;
+      }
+      localh.a(21087, new Object[] { localInteger, str4, paramString, Integer.valueOf(paramInt1), str5, str1, str2, str3, Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(250800);
+      return;
+      localInteger = null;
+      break;
+      str1 = null;
+      break label59;
+    }
+  }
+  
+  public static void a(String paramString1, long paramLong, int paramInt, bdb parambdb, String paramString2, bbn parambbn)
+  {
+    AppMethodBeat.i(250799);
+    p.h(paramString1, "title");
+    p.h(parambdb, "txtCard");
+    p.h(paramString2, "clickWording");
+    Object localObject1 = parambdb.LMR;
+    p.g(localObject1, "txtCard.link_wording");
+    Object localObject3 = ((Iterable)localObject1).iterator();
+    int i = 0;
+    localObject1 = "";
+    if (((Iterator)localObject3).hasNext())
+    {
+      localObject2 = ((Iterator)localObject3).next();
+      if (i < 0) {
+        j.hxH();
+      }
+      String str = (String)localObject2;
+      if (parambdb.LMT.isEmpty())
+      {
+        localObject2 = "";
+        label107:
+        localObject1 = new StringBuilder().append((String)localObject1).append((String)localObject2).append(';').append(str).append(';').append(i).append(';');
+        if (!p.j(paramString2, str)) {
+          break label208;
+        }
+      }
+      label208:
+      for (int j = 1;; j = 0)
+      {
+        localObject1 = j + '|';
+        i += 1;
+        break;
+        localObject2 = (String)parambdb.LMT.get(i);
+        break label107;
+      }
+    }
+    n.c((String)localObject1, (CharSequence)"|");
+    Object localObject2 = h.CyF;
+    localObject3 = d.zs(paramLong);
+    if (parambbn != null)
+    {
+      parambdb = parambbn.sessionId;
+      if (parambbn == null) {
+        break label345;
+      }
+      paramString2 = parambbn.sGQ;
+      label260:
+      if (parambbn == null) {
+        break label351;
+      }
+    }
+    label345:
+    label351:
+    for (parambbn = parambbn.sGE;; parambbn = null)
+    {
+      ((h)localObject2).a(21090, new Object[] { localObject3, paramString1, Integer.valueOf(paramInt + 1), localObject1, parambdb, paramString2, parambbn });
+      Log.i("report21090", String.valueOf(paramString1));
+      AppMethodBeat.o(250799);
+      return;
+      parambdb = null;
+      break;
+      paramString2 = null;
+      break label260;
+    }
+  }
+  
+  public static void a(String paramString, ag paramag, int paramInt, long paramLong, bbn parambbn)
+  {
+    AppMethodBeat.i(250801);
+    p.h(paramag, "cardFeed");
+    Object localObject3 = paramag.tQQ;
+    Object localObject1 = (Iterable)paramag.rvFeedList;
+    int i = 0;
+    Object localObject2 = ((Iterable)localObject1).iterator();
+    localObject1 = "";
+    String str1;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject4 = ((Iterator)localObject2).next();
+      int j = i + 1;
+      if (i < 0) {
+        j.hxH();
+      }
+      localObject4 = (BaseFinderFeed)localObject4;
+      str1 = d.zs(((BaseFinderFeed)localObject4).lT());
+      if ((((BaseFinderFeed)localObject4).cxn() == 4) && (i == 0))
+      {
+        localObject1 = (String)localObject1 + str1 + ';' + i + ";1|";
+        i = j;
+      }
+      else
+      {
+        localObject1 = (String)localObject1 + str1 + ';' + i + ";0|";
+        i = j;
+      }
+    }
+    n.c((String)localObject1, (CharSequence)"|");
+    Object localObject4 = h.CyF;
+    String str2;
+    if (parambbn != null)
+    {
+      localObject2 = Integer.valueOf(parambbn.tCE);
+      str1 = d.zs(paramag.tQQ.id);
+      str2 = ((bcu)localObject3).LLT;
+      i = paramag.rvFeedList.size();
+      if (parambbn == null) {
+        break label378;
+      }
+      paramag = parambbn.sessionId;
+      label264:
+      if (parambbn == null) {
+        break label383;
+      }
+      localObject3 = parambbn.sGQ;
+      label276:
+      if (parambbn == null) {
+        break label389;
+      }
+    }
+    label389:
+    for (parambbn = parambbn.sGE;; parambbn = null)
+    {
+      ((h)localObject4).a(21086, new Object[] { localObject2, str1, paramString, localObject1, str2, Integer.valueOf(i), paramag, localObject3, parambbn, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(250801);
+      return;
+      localObject2 = null;
+      break;
+      label378:
+      paramag = null;
+      break label264;
+      label383:
+      localObject3 = null;
+      break label276;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.t
  * JD-Core Version:    0.7.0.1
  */

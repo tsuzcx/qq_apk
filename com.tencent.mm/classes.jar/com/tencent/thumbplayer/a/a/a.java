@@ -1,11 +1,11 @@
 package com.tencent.thumbplayer.a.a;
 
-import com.tencent.thumbplayer.b.d;
+import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.core.imagegenerator.TPImageGeneratorParams;
 
 public abstract interface a
 {
-  public abstract void a(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, d paramd);
+  public abstract void a(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, TPCaptureCallBack paramTPCaptureCallBack);
   
   public abstract void release();
 }

@@ -1,60 +1,61 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.bw.b;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.fingerprint.d.a;
 import com.tencent.mm.plugin.wallet_core.model.k;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bb;
-import com.tencent.mm.protocal.protobuf.cql;
-import com.tencent.mm.protocal.protobuf.cqm;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.bf;
+import com.tencent.mm.protocal.protobuf.dik;
+import com.tencent.mm.protocal.protobuf.dil;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  extends com.tencent.mm.ak.a<cqm>
+  extends com.tencent.mm.ak.c<dil>
 {
-  public c(long paramLong, cqm paramcqm)
+  public c(long paramLong, dil paramdil)
   {
     AppMethodBeat.i(65989);
-    cql localcql = new cql();
-    localcql.HCd = ((int)paramLong);
-    localcql.HCe = b.aPw("all_type");
-    Object localObject = k.eIV();
+    dik localdik = new dik();
+    localdik.MMR = ((int)paramLong);
+    localdik.MMS = b.bfZ("all_type");
+    Object localObject = k.fQy();
     if (localObject != null)
     {
-      if (!bu.isNullOrNil(((bb)localObject).eRf)) {
-        localcql.HCf = b.aPw(((bb)localObject).eRf);
+      if (!Util.isNullOrNil(((bf)localObject).fuJ)) {
+        localdik.MMT = b.bfZ(((bf)localObject).fuJ);
       }
-      if (!bu.isNullOrNil(((bb)localObject).eRg)) {
-        localcql.HCg = b.aPw(((bb)localObject).eRg);
+      if (!Util.isNullOrNil(((bf)localObject).fuK)) {
+        localdik.MMU = b.bfZ(((bf)localObject).fuK);
       }
     }
-    localObject = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
-    localcql.Gqn = 0;
+    localObject = (a)g.af(a.class);
+    localdik.Llf = 0;
     if (localObject != null) {}
-    for (localcql.Gqo = 1;; localcql.Gqo = 0)
+    for (localdik.Llg = 1;; localdik.Llg = 0)
     {
-      localcql.HCh = 1;
-      localcql.timestamp = System.currentTimeMillis();
-      if (paramcqm.BaseResponse == null)
+      localdik.MMV = 1;
+      localdik.timestamp = System.currentTimeMillis();
+      if (paramdil.BaseResponse == null)
       {
-        paramcqm.BaseResponse = new BaseResponse();
-        paramcqm.BaseResponse.ErrMsg = new cxn().aQV("");
-        paramcqm.BaseResponse.Ret = 0;
+        paramdil.BaseResponse = new BaseResponse();
+        paramdil.BaseResponse.ErrMsg = new dqi().bhy("");
+        paramdil.BaseResponse.Ret = 0;
       }
-      localcql.HCi = paramcqm;
-      paramcqm = new b.a();
-      paramcqm.hQF = localcql;
-      paramcqm.hQG = new cqm();
-      paramcqm.funcId = 2672;
-      paramcqm.uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
-      paramcqm.hQH = 0;
-      paramcqm.respCmdId = 0;
-      c(paramcqm.aDS());
-      ae.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localcql.Gqn), Integer.valueOf(localcql.Gqo) });
+      localdik.MMW = paramdil;
+      paramdil = new d.a();
+      paramdil.iLN = localdik;
+      paramdil.iLO = new dil();
+      paramdil.funcId = 2672;
+      paramdil.uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
+      paramdil.iLP = 0;
+      paramdil.respCmdId = 0;
+      c(paramdil.aXF());
+      Log.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localdik.Llf), Integer.valueOf(localdik.Llg) });
       AppMethodBeat.o(65989);
       return;
     }
@@ -62,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.mm.splash;
 
 public abstract interface f
 {
-  public abstract void MH();
+  public abstract void WU();
   
-  public abstract void MI();
+  public abstract void WV();
   
-  public abstract void fA(String paramString);
+  public abstract void gn(String paramString);
 }
 
 

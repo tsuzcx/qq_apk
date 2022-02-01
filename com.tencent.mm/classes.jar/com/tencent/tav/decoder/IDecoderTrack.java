@@ -20,6 +20,8 @@ public abstract interface IDecoderTrack
   
   public abstract int getFrameRate();
   
+  public abstract long getLaggingTime();
+  
   public abstract int getTrackId();
   
   public abstract CMSampleBuffer readSample();
@@ -57,7 +59,7 @@ public abstract interface IDecoderTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.IDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

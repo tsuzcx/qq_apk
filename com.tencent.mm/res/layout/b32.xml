@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/a_r" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="56.0dip">
-            <ImageView android:gravity="center_horizontal" android:id="@id/f3y" android:padding="@dimen/d" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:src="@drawable/aq9" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/s2" />
-            <TextView android:textColor="@color/y4" android:id="@id/f3v" android:layout_width="wrap_content" android:layout_below="@id/f3y" android:layout_centerHorizontal="true" style="@style/s3" />
-            <TextView android:textColor="#fffd8f44" android:id="@id/f3x" android:visibility="gone" android:text="blablablablablablablablablablablablablabla" android:layout_below="@id/f3w" android:layout_centerHorizontal="true" style="@style/s3" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/h8" android:textColor="@color/y4" android:gravity="center" android:id="@id/cse" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/hd" android:text="邀请4位好友进群" />
-        <TextView android:textSize="@dimen/h8" android:textColor="@color/y4" android:gravity="center" android:id="@id/csd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/hu" />
-        <View android:background="#ffd8d8d8" android:paddingLeft="@dimen/a" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/hd" android:layout_marginBottom="@dimen/hd" />
-        <GridView android:gravity="center" android:id="@id/yo" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:verticalSpacing="@dimen/h" android:numColumns="4" />
-        <TextView android:id="@id/b6" android:layout_marginTop="@dimen/jx" android:layout_marginBottom="@dimen/jx" android:text="@string/c4" style="@style/o6" />
+<FrameLayout android:background="@drawable/a_1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a9x" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/ce" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/eww" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/ae" android:id="@id/ex6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="{test}" android:singleLine="false" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/ac" />
     </LinearLayout>
-</ScrollView>
+</FrameLayout>

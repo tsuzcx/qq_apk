@@ -9,11 +9,11 @@ public final class BuildConfig
   public static final String FLAVOR_channel = "wechat";
   public static final String FLAVOR_searchable = "search";
   public static final String FLAVOR_sheetable = "sheetok";
-  public static final String REPO_VERSION = "8569aba84";
+  public static final String REPO_VERSION = "3359e9135";
   public static final boolean SHEET_ENABLE = true;
   public static final String SHEET_PROJECT_NAME = "tms";
-  public static final int VERSION_CODE = 3;
-  public static final String VERSION_NAME = "4.3.9";
+  public static final int VERSION_CODE = 0;
+  public static final String VERSION_NAME = "4.4.0";
 }
 
 

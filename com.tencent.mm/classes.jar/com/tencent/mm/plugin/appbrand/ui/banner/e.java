@@ -9,13 +9,13 @@ public abstract interface e
   
   public abstract void b(f paramf);
   
-  public abstract BannerModel bAR();
+  public abstract BannerModel bXW();
   
-  public abstract void bAS();
+  public abstract void bXX();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.e
  * JD-Core Version:    0.7.0.1
  */

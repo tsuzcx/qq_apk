@@ -232,19 +232,10 @@ public final class PasswordSpecification
       return localObject;
     }
   }
-  
-  public static final class zze
-    extends Error
-  {
-    public zze(String paramString)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.PasswordSpecification
  * JD-Core Version:    0.7.0.1
  */

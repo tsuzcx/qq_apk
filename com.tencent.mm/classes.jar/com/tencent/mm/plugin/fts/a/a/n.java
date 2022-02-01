@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.fts.a.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.fts.a.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -18,31 +18,31 @@ public final class n
   private void a(Pattern paramPattern)
   {
     AppMethodBeat.i(131714);
-    this.tGk = paramPattern.split(this.content);
-    this.tGl = new int[this.tGk.length];
+    this.wXj = paramPattern.split(this.content);
+    this.wXk = new int[this.wXj.length];
     int j = 0;
     int k;
-    for (int i = 0; j < this.tGl.length; i = k + 1 + i)
+    for (int i = 0; j < this.wXk.length; i = k + 1 + i)
     {
-      this.tGl[j] = i;
-      k = this.tGk[j].length();
+      this.wXk[j] = i;
+      k = this.wXj[j].length();
       j += 1;
     }
     AppMethodBeat.o(131714);
   }
   
-  private void cVu()
+  private void dOD()
   {
     AppMethodBeat.i(131716);
-    switch (this.tEX)
+    switch (this.wVW)
     {
     default: 
       AppMethodBeat.o(131716);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    a(c.a.tEb);
-    String[] arrayOfString = c.a.tEa.split(this.tGh);
+    a(c.a.wVa);
+    String[] arrayOfString = c.a.wUZ.split(this.wXg);
     byte[] arrayOfByte = this.content.getBytes();
     int i = 0;
     label73:
@@ -54,15 +54,15 @@ public final class n
     {
       n = Integer.valueOf(arrayOfString[i]).intValue();
       int m = new String(arrayOfByte, 0, Integer.valueOf(arrayOfString[(i + 1)]).intValue()).length();
-      k = Arrays.binarySearch(this.tGl, m);
+      k = Arrays.binarySearch(this.wXk, m);
       j = k;
       if (k < 0) {
         j = -k - 2;
       }
-      localObject = this.tGk[j];
+      localObject = this.wXj[j];
       str = null;
-      localObject = c.a.tEc.split((CharSequence)localObject);
-      m -= this.tGl[j];
+      localObject = c.a.wVb.split((CharSequence)localObject);
+      m -= this.wXk[j];
       k = 0;
       label174:
       if (k >= localObject.length) {
@@ -74,7 +74,7 @@ public final class n
       }
     }
     label268:
-    for (int k = com.tencent.mm.plugin.fts.a.c.tDT[k];; k = -1)
+    for (int k = com.tencent.mm.plugin.fts.a.c.wUS[k];; k = -1)
     {
       if (k > 0) {
         localArrayList.add(new g(j, n, k, str, localObject[(localObject.length - 1)]));
@@ -83,54 +83,54 @@ public final class n
       break label73;
       k += 1;
       break label174;
-      this.tGm = localArrayList;
+      this.wXl = localArrayList;
       break;
     }
   }
   
-  private void cVv()
+  private void dOE()
   {
     AppMethodBeat.i(131717);
-    switch (this.tEX)
+    switch (this.wVW)
     {
     }
     try
     {
-      i = Integer.valueOf(c.a.tEa.split(this.tGh)[1]).intValue();
-      this.tGi = new String(this.content.getBytes(), 0, i).length();
-      this.tGj = this.content;
+      i = Integer.valueOf(c.a.wUZ.split(this.wXg)[1]).intValue();
+      this.wXh = new String(this.content.getBytes(), 0, i).length();
+      this.wXi = this.content;
       AppMethodBeat.o(131717);
       return;
     }
     catch (Exception localException2)
     {
       int i;
-      this.tGi = 2147483647;
-      this.tGj = "";
+      this.wXh = 2147483647;
+      this.wXi = "";
       AppMethodBeat.o(131717);
     }
-    this.tGi = 2147483647;
-    this.tGj = "";
+    this.wXh = 2147483647;
+    this.wXi = "";
     AppMethodBeat.o(131717);
     return;
     try
     {
-      String[] arrayOfString = c.a.tEa.split(this.tGh);
-      a(c.a.tEe);
+      String[] arrayOfString = c.a.wUZ.split(this.wXg);
+      a(c.a.wVd);
       i = Integer.valueOf(arrayOfString[1]).intValue();
       i = new String(this.content.getBytes(), 0, i).length();
-      this.tGi = Arrays.binarySearch(this.tGl, i);
-      if (this.tGi < 0) {
-        this.tGi = (-this.tGi - 2);
+      this.wXh = Arrays.binarySearch(this.wXk, i);
+      if (this.wXh < 0) {
+        this.wXh = (-this.wXh - 2);
       }
-      this.tGj = this.tGk[this.tGi];
+      this.wXi = this.wXj[this.wXh];
       AppMethodBeat.o(131717);
       return;
     }
     catch (Exception localException1)
     {
-      this.tGi = 2147483647;
-      this.tGj = "";
+      this.wXh = 2147483647;
+      this.wXi = "";
       AppMethodBeat.o(131717);
       return;
     }
@@ -139,57 +139,57 @@ public final class n
   public final void a(h paramh)
   {
     AppMethodBeat.i(131718);
-    if (paramh.tFE.length > 1) {
-      this.tGo = 1;
+    if (paramh.wWD.length > 1) {
+      this.wXn = 1;
     }
     while (this.type == 131075)
     {
       if (System.currentTimeMillis() - this.timestamp >= 1209600000L) {
         break label387;
       }
-      this.tFA += 50;
-      String str = v.aAC();
-      if (this.tEX == 38)
+      this.wWz += 50;
+      String str = z.aTY();
+      if (this.wVW == 38)
       {
         HashSet localHashSet = new HashSet();
-        if (this.tGm != null)
+        if (this.wXl != null)
         {
-          Iterator localIterator = this.tGm.iterator();
+          Iterator localIterator = this.wXl.iterator();
           for (;;)
           {
             if (localIterator.hasNext())
             {
               g localg = (g)localIterator.next();
-              if (!str.equals(localg.fhy))
+              if (!str.equals(localg.fMb))
               {
-                localHashSet.add(Integer.valueOf(localg.tFw));
+                localHashSet.add(Integer.valueOf(localg.wWv));
                 continue;
-                this.tGo = 0;
+                this.wXn = 0;
                 break;
               }
             }
           }
         }
-        if (localHashSet.size() >= this.tGf - 1L)
+        if (localHashSet.size() >= this.wXe - 1L)
         {
-          this.tFA += 20;
-          this.tGp = true;
+          this.wWz += 20;
+          this.wXo = true;
         }
-        if ((paramh.tFE.length > 1) && (this.content.contains(paramh.tFC)))
+        if ((paramh.wWD.length > 1) && (this.content.contains(paramh.wWB)))
         {
-          this.tGo = 2;
-          this.tFA += 5;
+          this.wXn = 2;
+          this.wWz += 5;
         }
-        if (this.tGf <= 15L) {
-          this.tGr = 1;
+        if (this.wXe <= 15L) {
+          this.wXq = 1;
         }
       }
-      if (((this.tEX == 5) || (this.tEX == 1)) && (this.content.contains(paramh.tFC)))
+      if (((this.wVW == 5) || (this.wVW == 1)) && (this.content.contains(paramh.wWB)))
       {
-        if (paramh.tFE.length > 1) {
-          this.tGo = 2;
+        if (paramh.wWD.length > 1) {
+          this.wXn = 2;
         }
-        this.tFA += 10;
+        this.wWz += 10;
       }
       AppMethodBeat.o(131718);
       return;
@@ -197,24 +197,24 @@ public final class n
     if (this.type == 131072)
     {
       if (System.currentTimeMillis() - this.timestamp < 1105032704L) {
-        this.tFA += 50;
+        this.wWz += 50;
       }
-      if (((this.tEX == 5) || (this.tEX == 1)) && (this.content.contains(paramh.tFC)))
+      if (((this.wVW == 5) || (this.wVW == 1)) && (this.content.contains(paramh.wWB)))
       {
-        if (paramh.tFE.length > 1) {
-          this.tGo = 2;
+        if (paramh.wWD.length > 1) {
+          this.wXn = 2;
         }
-        this.tFA += 10;
+        this.wWz += 10;
       }
     }
     label387:
     AppMethodBeat.o(131718);
   }
   
-  public final void cVt()
+  public final void dOC()
   {
     AppMethodBeat.i(131715);
-    if (bu.isNullOrNil(this.tGh))
+    if (Util.isNullOrNil(this.wXg))
     {
       AppMethodBeat.o(131715);
       return;
@@ -226,21 +226,21 @@ public final class n
     {
       AppMethodBeat.o(131715);
       return;
-      cVv();
+      dOE();
       AppMethodBeat.o(131715);
       return;
-      cVu();
+      dOD();
     }
   }
   
   public final n g(Cursor paramCursor)
   {
     AppMethodBeat.i(131711);
-    this.tGd = paramCursor.getLong(0);
+    this.wXc = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
-    this.tEX = paramCursor.getInt(2);
-    this.tGf = paramCursor.getLong(3);
-    this.tEY = paramCursor.getString(4);
+    this.wVW = paramCursor.getInt(2);
+    this.wXe = paramCursor.getLong(3);
+    this.wVX = paramCursor.getString(4);
     this.timestamp = paramCursor.getLong(5);
     this.talker = paramCursor.getString(6);
     AppMethodBeat.o(131711);
@@ -250,15 +250,15 @@ public final class n
   public final n h(Cursor paramCursor)
   {
     AppMethodBeat.i(131712);
-    this.tGd = paramCursor.getLong(0);
+    this.wXc = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
-    this.tEX = paramCursor.getInt(2);
-    this.tGf = paramCursor.getLong(3);
-    this.tEY = paramCursor.getString(4);
+    this.wVW = paramCursor.getInt(2);
+    this.wXe = paramCursor.getLong(3);
+    this.wVX = paramCursor.getString(4);
     this.timestamp = paramCursor.getLong(5);
     this.content = paramCursor.getString(6);
-    this.tGh = paramCursor.getString(7);
-    this.tGn = paramCursor.getLong(8);
+    this.wXg = paramCursor.getString(7);
+    this.wXm = paramCursor.getLong(8);
     AppMethodBeat.o(131712);
     return this;
   }
@@ -266,17 +266,17 @@ public final class n
   public final n i(Cursor paramCursor)
   {
     AppMethodBeat.i(131713);
-    this.tGd = paramCursor.getLong(0);
+    this.wXc = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
-    this.tEX = paramCursor.getInt(2);
-    this.tGf = paramCursor.getLong(3);
-    this.tEY = paramCursor.getString(4);
+    this.wVW = paramCursor.getInt(2);
+    this.wXe = paramCursor.getLong(3);
+    this.wVX = paramCursor.getString(4);
     this.timestamp = paramCursor.getLong(5);
     if (paramCursor.getColumnCount() >= 7) {
       this.content = paramCursor.getString(6);
     }
     if (paramCursor.getColumnCount() >= 8) {
-      this.tGh = paramCursor.getString(7);
+      this.wXg = paramCursor.getString(7);
     }
     AppMethodBeat.o(131713);
     return this;
@@ -284,7 +284,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.n
  * JD-Core Version:    0.7.0.1
  */

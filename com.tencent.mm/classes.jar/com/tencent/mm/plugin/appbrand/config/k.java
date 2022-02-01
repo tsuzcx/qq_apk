@@ -1,33 +1,16 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.as;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storagebase.h;
+import java.util.Locale;
 
-public class k
-  implements j
-{
-  public String appId = "appId";
-  public String dpI = "appName";
-  public String iCT = "";
-  public int kbp = 5;
-  public boolean kbq;
-  public boolean kbr;
-  public boolean kbs;
-  public boolean kbt;
-  public int kbu = 5;
-  public int kbv = 60;
-  public volatile WxaPkgWrappingInfo kbw = null;
-  public int kbx = 1;
-  public boolean kby = false;
-  
-  public final int beK()
-  {
-    return this.kbw.jLV;
-  }
-}
+public final class k {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.k
  * JD-Core Version:    0.7.0.1
  */

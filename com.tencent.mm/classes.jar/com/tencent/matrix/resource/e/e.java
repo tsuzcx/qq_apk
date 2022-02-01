@@ -6,49 +6,44 @@ import android.os.Looper;
 
 public final class e
 {
-  private final Handler cJA;
-  long cJB;
+  private final Handler cZX;
+  long cZY;
   private final Handler mMainHandler;
   
   public e(long paramLong, HandlerThread paramHandlerThread)
   {
-    this.cJA = new Handler(paramHandlerThread.getLooper());
+    this.cZX = new Handler(paramHandlerThread.getLooper());
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.cJB = paramLong;
+    this.cZY = paramLong;
   }
   
-  public final void IY()
+  public final void Tm()
   {
-    this.cJA.removeCallbacksAndMessages(null);
+    this.cZX.removeCallbacksAndMessages(null);
     this.mMainHandler.removeCallbacksAndMessages(null);
   }
   
   public final void a(final a parama, final int paramInt)
   {
-    this.cJA.postDelayed(new Runnable()
+    this.cZX.postDelayed(new Runnable()
     {
       public final void run()
       {
-        if (parama.IT() == e.a.a.cJG) {
+        if (parama.Th() == e.a.a.dad) {
           e.this.a(parama, paramInt + 1);
         }
       }
-    }, this.cJB);
+    }, this.cZY);
   }
   
   public static abstract interface a
   {
-    public abstract a IT();
-    
-    public static enum a
-    {
-      private a() {}
-    }
+    public abstract e.a.a Th();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.e.e
  * JD-Core Version:    0.7.0.1
  */

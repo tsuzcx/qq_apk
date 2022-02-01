@@ -13,12 +13,12 @@ public final class i
     AppMethodBeat.i(91275);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.name != null) {
-        paramVarArgs.d(1, this.name);
+        paramVarArgs.e(1, this.name);
       }
       if (this.value != null) {
-        paramVarArgs.d(2, this.value);
+        paramVarArgs.e(2, this.value);
       }
       AppMethodBeat.o(91275);
       return 0;
@@ -29,20 +29,20 @@ public final class i
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.name) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.name) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.value != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.value);
+        i = paramInt + g.a.a.b.b.a.f(2, this.value);
       }
       AppMethodBeat.o(91275);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(91275);
@@ -50,7 +50,7 @@ public final class i
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         i locali = (i)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -58,11 +58,11 @@ public final class i
           AppMethodBeat.o(91275);
           return -1;
         case 1: 
-          locali.name = locala.OmT.readString();
+          locali.name = locala.UbS.readString();
           AppMethodBeat.o(91275);
           return 0;
         }
-        locali.value = locala.OmT.readString();
+        locali.value = locala.UbS.readString();
         AppMethodBeat.o(91275);
         return 0;
       }

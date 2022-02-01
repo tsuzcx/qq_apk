@@ -2,21 +2,21 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface o$b
 {
-  public abstract int dSe();
+  public abstract int eUf();
   
-  public abstract void dSf();
+  public abstract void eUg();
   
-  public abstract boolean dSg();
+  public abstract boolean eUh();
   
-  public abstract void dSh();
+  public abstract void eUi();
   
-  public abstract void dSi();
+  public abstract void eUj();
   
-  public abstract boolean dSj();
+  public abstract boolean eUk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.o.b
  * JD-Core Version:    0.7.0.1
  */

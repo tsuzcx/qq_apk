@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_gravity="center_horizontal" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:id="@id/tb" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/aq8" android:contentDescription="@string/s3" />
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/gap" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/br_" android:singleLine="true" android:shadowColor="#99000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="10.0" />
-        </LinearLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/djz" android:background="@drawable/b0o" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dk0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:iconColor="@color/ac_" />
     </RelativeLayout>
-</merge>
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:id="@id/iv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" />
+</LinearLayout>

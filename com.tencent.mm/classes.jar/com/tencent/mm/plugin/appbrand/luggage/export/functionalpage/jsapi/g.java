@@ -3,16 +3,15 @@ package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.api.f;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.WechatNativeExtraDataInvokeFunctionalPage;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApiOpenGrowthCare;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApi;", "()V", "NAME", "", "getNAME", "()Ljava/lang/String;", "invoke", "", "invokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "appOpenBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApiOpenGrowthCare;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApi;", "()V", "NAME", "", "getNAME", "()Ljava/lang/String;", "invoke", "", "invokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "appOpenBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "plugin-appbrand-integration_release"})
 public final class g
   implements b
 {
@@ -20,31 +19,31 @@ public final class g
   
   public final void a(WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, Context paramContext)
   {
-    AppMethodBeat.i(223688);
+    AppMethodBeat.i(228907);
     p.h(paramWechatNativeExtraDataInvokeFunctionalPage, "invokeArgs");
-    b.a.b(paramWechatNativeExtraDataInvokeFunctionalPage, paramContext);
-    AppMethodBeat.o(223688);
+    b.a.a(paramWechatNativeExtraDataInvokeFunctionalPage, paramContext, null);
+    AppMethodBeat.o(228907);
   }
   
-  public final void a(final WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, f paramf)
+  public final void a(final WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, com.tencent.mm.plugin.appbrand.api.g paramg)
   {
-    AppMethodBeat.i(223687);
+    AppMethodBeat.i(228906);
     p.h(paramWechatNativeExtraDataInvokeFunctionalPage, "invokeArgs");
-    p.h(paramf, "appOpenBundle");
-    com.tencent.mm.cp.d.baz("com.tencent.mm.intent.ACTION_START_MPTOOLS_PROCESS");
-    d.b(null, (d.g.a.b)new a(this, paramWechatNativeExtraDataInvokeFunctionalPage, "https://jiazhang.qq.com/wap/family/dist/main/index.html?_wv=1&source=h5_wx_sdk#/Index"));
-    AppMethodBeat.o(223687);
+    p.h(paramg, "appOpenBundle");
+    com.tencent.mm.cr.d.bpI("com.tencent.mm.intent.ACTION_START_MPTOOLS_PROCESS");
+    d.b(null, (kotlin.g.a.b)new a(this, paramWechatNativeExtraDataInvokeFunctionalPage, "https://jiazhang.qq.com/wap/family/dist/main/index.html?_wv=1&source=h5_wx_sdk#/Index"));
+    AppMethodBeat.o(228906);
   }
   
-  public final String btd()
+  public final String bOK()
   {
     return this.NAME;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
   static final class a
     extends q
-    implements d.g.a.b<MMActivity, z>
+    implements kotlin.g.a.b<MMActivity, x>
   {
     a(g paramg, WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, String paramString)
     {
@@ -54,7 +53,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.g
  * JD-Core Version:    0.7.0.1
  */

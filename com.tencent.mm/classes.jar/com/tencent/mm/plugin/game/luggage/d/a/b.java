@@ -1,105 +1,56 @@
 package com.tencent.mm.plugin.game.luggage.d.a;
 
-import android.os.Bundle;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.game.luggage.ipc.CommonLogicTask;
-import com.tencent.mm.protocal.protobuf.bnw;
-import com.tencent.mm.protocal.protobuf.bzp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.bq.a;
+import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
+import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import org.json.JSONObject;
 
-public final class b
+public class b
+  extends com.tencent.mm.plugin.lite.jsapi.b
 {
-  private String mAppId;
-  List<bzp> ufm;
-  Map<Integer, a> ufn;
-  
-  public b(String paramString)
+  public final void a(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(83096);
-    this.mAppId = paramString;
-    this.ufn = new HashMap();
-    cZS();
-    a(new h());
-    a(new f());
-    a(new j());
-    a(new g());
-    a(new i());
-    a(new d());
-    a(new e());
-    AppMethodBeat.o(83096);
-  }
-  
-  private void a(a parama)
-  {
-    AppMethodBeat.i(83097);
-    this.ufn.put(Integer.valueOf(parama.id), parama);
-    AppMethodBeat.o(83097);
-  }
-  
-  private void cZS()
-  {
-    AppMethodBeat.i(83098);
-    this.ufm = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.ECh;
-    try
+    AppMethodBeat.i(186902);
+    if (!com.tencent.mm.compatible.e.b.cx(MMApplicationContext.getContext()))
     {
-      Object localObject1 = new CommonLogicTask();
-      ((CommonLogicTask)localObject1).type = 9;
-      ((CommonLogicTask)localObject1).dyY.putString("game_hv_menu_appid", this.mAppId);
-      AppBrandMainProcessService.b((MainProcessTask)localObject1);
-      localObject1 = ((CommonLogicTask)localObject1).dyY.getString("game_hv_menu_pbcache");
-      if (!bu.isNullOrNil((String)localObject1))
+      paramString = new RequestFloatWindowPermissionDialog.a()
       {
-        localObject1 = ((String)localObject1).getBytes("ISO-8859-1");
-        localObject2 = new bnw();
-        ((bnw)localObject2).parseFrom((byte[])localObject1);
-        if (!bu.ht(((bnw)localObject2).HaF))
+        public final void onResultAllow(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
         {
-          this.ufm = ((bnw)localObject2).HaF;
-          ae.i("MicroMsg.H5GameMenuHelp", "use net menu data");
+          AppMethodBeat.i(186899);
+          Log.w("LiteAppJsApiBookDownloadGame", "float window permission granted");
+          paramAnonymousRequestFloatWindowPermissionDialog.finish();
+          AppMethodBeat.o(186899);
         }
-      }
-      Collections.sort(this.ufm, new Comparator() {});
-      int j = ((bzp)this.ufm.get(this.ufm.size() - 1)).HnA;
-      localObject1 = new ArrayList();
-      int i = 0;
-      while (i < j)
-      {
-        ((List)localObject1).add(null);
-        i += 1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ae.e("MicroMsg.H5GameMenuHelp", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
-      }
-      Object localObject2 = this.ufm.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        bzp localbzp = (bzp)((Iterator)localObject2).next();
-        if ((localbzp.HnA > 0) && (localbzp.HnA <= localException.size())) {
-          localException.set(localbzp.HnA - 1, localbzp);
+        
+        public final void onResultCancel(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
+        {
+          AppMethodBeat.i(186901);
+          Log.w("LiteAppJsApiBookDownloadGame", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(com.tencent.mm.compatible.e.b.cx(MMApplicationContext.getContext())) });
+          paramAnonymousRequestFloatWindowPermissionDialog.finish();
+          AppMethodBeat.o(186901);
         }
-      }
-      this.ufm = localException;
-      AppMethodBeat.o(83098);
+        
+        public final void onResultRefuse(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
+        {
+          AppMethodBeat.i(186900);
+          Log.w("LiteAppJsApiBookDownloadGame", "float window permission refused");
+          paramAnonymousRequestFloatWindowPermissionDialog.finish();
+          AppMethodBeat.o(186900);
+        }
+      };
+      RequestFloatWindowPermissionDialog.a(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131760767), paramString, true, a.apJ());
     }
+    AppMethodBeat.o(186902);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.d.a.b
  * JD-Core Version:    0.7.0.1
  */

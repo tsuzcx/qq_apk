@@ -1,6 +1,6 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.model.bl.b;
+import com.tencent.mm.model.bp.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
@@ -9,49 +9,49 @@ import com.tencent.mm.storagebase.h;
 
 public abstract class e
 {
-  public static n IHT;
-  protected i IHS;
+  public static n NOM;
+  protected i NOL;
   
   public e(i parami)
   {
-    this.IHS = parami;
+    this.NOL = parami;
   }
   
   protected final void a(i.b paramb)
   {
-    this.IHS.a(paramb);
+    this.NOL.a(paramb);
   }
   
   protected final void a(i.c paramc)
   {
-    this.IHS.a(paramc);
+    this.NOL.a(paramc);
   }
   
-  protected boolean a(bv parambv, bl.b paramb)
+  protected boolean a(ca paramca, bp.b paramb)
   {
     return true;
   }
   
-  public abstract String ajr(String paramString);
-  
-  protected final String art(String paramString)
+  protected final String aEO(String paramString)
   {
-    return this.IHS.art(paramString);
+    return this.NOL.aEO(paramString);
   }
   
-  protected final void d(h paramh, String paramString)
+  public abstract String avu(String paramString);
+  
+  protected final void e(h paramh, String paramString)
   {
-    this.IHS.d(paramh, paramString);
+    this.NOL.e(paramh, paramString);
   }
   
   public final h getDB()
   {
-    return this.IHS.getDB();
+    return this.NOL.getDB();
   }
   
-  protected final void ma(String paramString1, String paramString2)
+  protected final void mO(String paramString1, String paramString2)
   {
-    this.IHS.c(paramString1, paramString2, null);
+    this.NOL.c(paramString1, paramString2, null);
   }
 }
 

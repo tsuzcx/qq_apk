@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk;
 
 public final class o$e
 {
-  public static o.c.a FbZ;
+  public static o.c.a JSY;
 }
 
 

@@ -12,13 +12,13 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.webview.stub.f;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.vfs.s;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,21 +26,13 @@ import java.util.List;
 
 public final class e
 {
-  private static final HashMap<String, WeakReference<Bitmap>> ErA;
+  private static final HashMap<String, WeakReference<Bitmap>> JeH;
   
   static
   {
     AppMethodBeat.i(79687);
-    ErA = new HashMap();
+    JeH = new HashMap();
     AppMethodBeat.o(79687);
-  }
-  
-  public static int XV(int paramInt)
-  {
-    AppMethodBeat.i(79685);
-    paramInt = al.XV(paramInt);
-    AppMethodBeat.o(79685);
-    return paramInt;
   }
   
   public static void a(com.tencent.mm.plugin.webview.stub.e parame, int paramInt, Object... paramVarArgs)
@@ -61,13 +53,13 @@ public final class e
         localArrayList.add(String.valueOf(paramVarArgs[i]));
         i += 1;
       }
-      parame.q(paramInt, localArrayList);
+      parame.v(paramInt, localArrayList);
       AppMethodBeat.o(79678);
       return;
     }
     catch (Exception parame)
     {
-      ae.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + parame.getMessage());
+      Log.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + parame.getMessage());
       AppMethodBeat.o(79678);
     }
   }
@@ -89,13 +81,13 @@ public final class e
     localBundle.putString("open_ui_with_webview_ui_plugin_entry", paramString2);
     try
     {
-      paramf.k(101, localBundle);
+      paramf.j(101, localBundle);
       AppMethodBeat.o(79686);
       return true;
     }
     catch (RemoteException paramBundle)
     {
-      ae.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      Log.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(79686);
       return false;
     }
@@ -104,27 +96,71 @@ public final class e
       if (paramRunnable != null) {
         paramRunnable.run();
       }
-      ae.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      Log.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(79686);
     }
     return false;
   }
   
-  public static Bitmap aJY(String paramString)
+  public static int agC(int paramInt)
+  {
+    AppMethodBeat.i(79685);
+    paramInt = ao.agC(paramInt);
+    AppMethodBeat.o(79685);
+    return paramInt;
+  }
+  
+  private static long bA(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(79683);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79683);
+      return paramLong;
+    }
+    Object localObject = paramString;
+    if (paramString.startsWith("#"))
+    {
+      localObject = paramString;
+      if (paramString.length() == 4)
+      {
+        localObject = new StringBuilder(paramString);
+        ((StringBuilder)localObject).insert(2, paramString.charAt(1));
+        ((StringBuilder)localObject).insert(4, paramString.charAt(2));
+        ((StringBuilder)localObject).insert(6, paramString.charAt(3));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    try
+    {
+      int i = Color.parseColor((String)localObject);
+      paramLong = i;
+      AppMethodBeat.o(79683);
+      return 0xFFFFFFFF & paramLong;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.WebView.RemoteUtil", "Failed to parse color: %s", new Object[] { localObject });
+      AppMethodBeat.o(79683);
+    }
+    return paramLong;
+  }
+  
+  public static Bitmap baf(String paramString)
   {
     AppMethodBeat.i(79680);
-    Object localObject = (WeakReference)ErA.get(paramString);
+    Object localObject = (WeakReference)JeH.get(paramString);
     if ((localObject != null) && (((WeakReference)localObject).get() != null) && (!((Bitmap)((WeakReference)localObject).get()).isRecycled()))
     {
       paramString = (Bitmap)((WeakReference)localObject).get();
       AppMethodBeat.o(79680);
       return paramString;
     }
-    if (o.fB(paramString)) {}
-    for (localObject = h.decodeFile(paramString, null);; localObject = null)
+    if (s.YS(paramString)) {}
+    for (localObject = BitmapUtil.decodeFile(paramString, null);; localObject = null)
     {
       if (localObject != null) {
-        ErA.put(paramString, new WeakReference(localObject));
+        JeH.put(paramString, new WeakReference(localObject));
       }
       for (;;)
       {
@@ -132,36 +168,36 @@ public final class e
         return localObject;
         try
         {
-          Bitmap localBitmap = BackwardSupportUtil.b.b(ak.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          Bitmap localBitmap = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
           localObject = localBitmap;
-          ErA.put(paramString, new WeakReference(localBitmap));
+          JeH.put(paramString, new WeakReference(localBitmap));
           localObject = localBitmap;
         }
         catch (Exception paramString)
         {
-          ae.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramString, "", new Object[0]);
         }
       }
     }
   }
   
-  public static long aJZ(String paramString)
+  public static long bag(String paramString)
   {
     AppMethodBeat.i(79681);
-    long l = bz(paramString, -1L);
+    long l = bA(paramString, -1L);
     AppMethodBeat.o(79681);
     return l;
   }
   
-  public static Bitmap aKa(String paramString)
+  public static Bitmap bah(String paramString)
   {
     AppMethodBeat.i(79684);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(79684);
       return null;
     }
-    Object localObject1 = (WeakReference)ErA.get(paramString);
+    Object localObject1 = (WeakReference)JeH.get(paramString);
     if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!((Bitmap)((WeakReference)localObject1).get()).isRecycled()))
     {
       paramString = (Bitmap)((WeakReference)localObject1).get();
@@ -203,11 +239,11 @@ public final class e
       localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, 96, 96, false);
       if (localObject2 != localObject1)
       {
-        ae.i("MicroMsg.WebView.RemoteUtil", "bitmap recycle %s", new Object[] { localObject2.toString() });
+        Log.i("MicroMsg.WebView.RemoteUtil", "bitmap recycle %s", new Object[] { localObject2.toString() });
         ((Bitmap)localObject2).recycle();
       }
       if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
-        ErA.put(paramString, new WeakReference(localObject1));
+        JeH.put(paramString, new WeakReference(localObject1));
       }
       AppMethodBeat.o(79684);
       return localObject1;
@@ -218,46 +254,10 @@ public final class e
     return null;
   }
   
-  private static long bz(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(79683);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(79683);
-      return paramLong;
-    }
-    Object localObject = paramString;
-    if (paramString.startsWith("#"))
-    {
-      localObject = paramString;
-      if (paramString.length() == 4)
-      {
-        localObject = new StringBuilder(paramString);
-        ((StringBuilder)localObject).insert(2, paramString.charAt(1));
-        ((StringBuilder)localObject).insert(4, paramString.charAt(2));
-        ((StringBuilder)localObject).insert(6, paramString.charAt(3));
-        localObject = ((StringBuilder)localObject).toString();
-      }
-    }
-    try
-    {
-      int i = Color.parseColor((String)localObject);
-      paramLong = i;
-      AppMethodBeat.o(79683);
-      return 0xFFFFFFFF & paramLong;
-    }
-    catch (Exception paramString)
-    {
-      ae.e("MicroMsg.WebView.RemoteUtil", "Failed to parse color: %s", new Object[] { localObject });
-      AppMethodBeat.o(79683);
-    }
-    return paramLong;
-  }
-  
-  public static int ee(String paramString, int paramInt)
+  public static int gw(String paramString, int paramInt)
   {
     AppMethodBeat.i(79682);
-    paramInt = (int)bz(paramString, paramInt);
+    paramInt = (int)bA(paramString, paramInt);
     AppMethodBeat.o(79682);
     return paramInt;
   }

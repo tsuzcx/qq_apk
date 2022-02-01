@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class tu
-  extends b
+  extends IEvent
 {
-  public a dJh;
-  public b dJi;
+  public a eao;
   
   public tu()
   {
@@ -16,29 +15,21 @@ public final class tu
   
   private tu(byte paramByte)
   {
-    AppMethodBeat.i(153185);
-    this.dJh = new a();
-    this.dJi = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(110507);
+    this.eao = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(153185);
+    AppMethodBeat.o(110507);
   }
   
   public static final class a
   {
-    public boolean dJj;
-  }
-  
-  public static final class b
-  {
-    public boolean dJk;
-    public boolean dJl;
-    public boolean dJm;
+    public boolean dOs = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.tu
  * JD-Core Version:    0.7.0.1
  */

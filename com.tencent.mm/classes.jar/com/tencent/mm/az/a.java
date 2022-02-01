@@ -1,9 +1,9 @@
 package com.tencent.mm.az;
 
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -11,16 +11,16 @@ import junit.framework.Assert;
 
 public abstract class a
 {
-  public static String ikF = "";
-  public static String ikG = "";
+  public static String jfE = "";
+  public static String jfF = "";
   public String TEXT;
   public String TYPE;
-  public bv dCi;
-  public String ikH = "";
-  public String ikI;
-  public LinkedList<String> ikJ = new LinkedList();
-  public LinkedList<Integer> ikK = new LinkedList();
-  public LinkedList<Integer> ikL = new LinkedList();
+  public ca dTX;
+  public String jfG = "";
+  public String jfH;
+  public LinkedList<String> jfI = new LinkedList();
+  public LinkedList<Integer> jfJ = new LinkedList();
+  public LinkedList<Integer> jfK = new LinkedList();
   public Map<String, String> values;
   
   public a(Map<String, String> paramMap)
@@ -28,77 +28,77 @@ public abstract class a
     this.values = paramMap;
   }
   
-  public a(Map<String, String> paramMap, bv parambv)
+  public a(Map<String, String> paramMap, ca paramca)
   {
     this.values = paramMap;
-    this.dCi = parambv;
+    this.dTX = paramca;
   }
   
-  protected abstract boolean aAs();
+  protected abstract boolean aTA();
   
-  public final boolean aKk()
+  public final boolean ben()
   {
     if ((this.values != null) && (this.values.size() > 0))
     {
       if (this.values.containsKey(".sysmsg.$type")) {
         this.TYPE = ((String)this.values.get(".sysmsg.$type"));
       }
-      ikF = ".sysmsg." + this.TYPE + ".text";
-      if (this.values.containsKey(ikF)) {
-        this.TEXT = ((String)this.values.get(ikF));
+      jfE = ".sysmsg." + this.TYPE + ".text";
+      if (this.values.containsKey(jfE)) {
+        this.TEXT = ((String)this.values.get(jfE));
       }
-      ikG = ".sysmsg." + this.TYPE + ".link.scene";
-      if (this.values.containsKey(ikG)) {
-        this.ikI = ((String)this.values.get(ikG));
+      jfF = ".sysmsg." + this.TYPE + ".link.scene";
+      if (this.values.containsKey(jfF)) {
+        this.jfH = ((String)this.values.get(jfF));
       }
-      return aAs();
+      return aTA();
     }
-    ae.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
+    Log.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
     return false;
   }
   
   public static abstract class a
   {
-    private static HashMap<String, a> ikM = new HashMap();
+    private static HashMap<String, a> jfL = new HashMap();
     
     public static void a(String paramString, a parama)
     {
       Assert.assertNotNull(paramString);
       Assert.assertNotNull(parama);
-      synchronized (ikM)
+      synchronized (jfL)
       {
-        ikM.put(paramString.toLowerCase(), parama);
+        jfL.put(paramString.toLowerCase(), parama);
         return;
       }
     }
     
-    public static a b(Map<String, String> paramMap, bv parambv)
+    public static a b(Map<String, String> paramMap, ca paramca)
     {
       if (paramMap == null)
       {
-        ae.e("MicroMsg.BaseNewXmlMsg", "values is null !!!");
+        Log.e("MicroMsg.BaseNewXmlMsg", "values is null !!!");
         return null;
       }
-      String str = bu.bI((String)paramMap.get(".sysmsg.$type"), "");
-      synchronized (ikM)
+      String str = Util.nullAs((String)paramMap.get(".sysmsg.$type"), "");
+      synchronized (jfL)
       {
-        a locala = (a)ikM.get(str.toLowerCase());
+        a locala = (a)jfL.get(str.toLowerCase());
         if (locala == null)
         {
-          ae.w("MicroMsg.BaseNewXmlMsg", "TYPE %s is unDefine", new Object[] { str });
+          Log.w("MicroMsg.BaseNewXmlMsg", "TYPE %s is unDefine", new Object[] { str });
           return null;
         }
-        paramMap = locala.a(paramMap, parambv);
+        paramMap = locala.a(paramMap, paramca);
         return paramMap;
       }
     }
     
-    public abstract a a(Map<String, String> paramMap, bv parambv);
+    public abstract a a(Map<String, String> paramMap, ca paramca);
   }
   
   public static abstract interface b
   {
-    public abstract void a(View paramView, bv parambv, a parama, int paramInt);
+    public abstract void a(View paramView, ca paramca, a parama, int paramInt);
   }
 }
 

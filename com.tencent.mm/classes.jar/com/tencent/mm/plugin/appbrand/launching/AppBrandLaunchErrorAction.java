@@ -8,8 +8,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.b;
-import com.tencent.mm.protocal.protobuf.btw;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.protocal.protobuf.cgz;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.reflect.Constructor;
 
 public abstract class AppBrandLaunchErrorAction
@@ -17,21 +17,21 @@ public abstract class AppBrandLaunchErrorAction
 {
   public static final a CREATOR = new a();
   final String appId;
-  final int hSZ;
+  final int iOo;
   
   AppBrandLaunchErrorAction(Parcel paramParcel)
   {
     this.appId = paramParcel.readString();
-    this.hSZ = paramParcel.readInt();
+    this.iOo = paramParcel.readInt();
   }
   
   AppBrandLaunchErrorAction(String paramString, int paramInt)
   {
     this.appId = paramString;
-    this.hSZ = paramInt;
+    this.iOo = paramInt;
   }
   
-  public abstract void W(Context paramContext, String paramString);
+  public abstract void ae(Context paramContext, String paramString);
   
   public final int describeContents()
   {
@@ -42,43 +42,43 @@ public abstract class AppBrandLaunchErrorAction
   {
     paramParcel.writeString(getClass().getName());
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hSZ);
+    paramParcel.writeInt(this.iOo);
   }
   
   static final class a
     implements Parcelable.Creator<AppBrandLaunchErrorAction>
   {
-    static AppBrandLaunchErrorAction a(String paramString, int paramInt, ax paramax)
+    static AppBrandLaunchErrorAction a(String paramString, int paramInt, ap paramap)
     {
       Intent localIntent = null;
       AppMethodBeat.i(47042);
-      if ((paramax == null) || (paramax.field_launchAction == null))
+      if ((paramap == null) || (paramap.field_launchAction == null))
       {
         AppMethodBeat.o(47042);
         return null;
       }
-      switch (paramax.field_launchAction.FJl)
+      switch (paramap.field_launchAction.KCD)
       {
       default: 
-        paramString = localIntent;
+        paramap = localIntent;
       }
       for (;;)
       {
-        if (paramString != null) {
-          AppBrandStickyBannerLogic.b.bAZ();
+        if (paramap != null) {
+          AppBrandStickyBannerLogic.b.cr(paramString, paramInt);
         }
         AppMethodBeat.o(47042);
-        return paramString;
-        paramString = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramax.field_launchAction.GYJ, paramax.field_launchAction.HgU);
+        return paramap;
+        paramap = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramap.field_launchAction.Mdz, paramap.field_launchAction.Mmh);
         continue;
         localIntent = new Intent();
-        localIntent.putExtra("rawUrl", paramax.field_launchAction.HgS);
+        localIntent.putExtra("rawUrl", paramap.field_launchAction.Mmf);
         localIntent.putExtra("forceHideShare", true);
-        paramString = new AppBrandLaunchErrorActionStartActivity(paramString, paramInt, "webview", ".ui.tools.WebViewUI", localIntent);
+        paramap = new AppBrandLaunchErrorActionStartActivity(paramString, paramInt, "webview", ".ui.tools.WebViewUI", localIntent);
       }
     }
     
-    private static AppBrandLaunchErrorAction k(Parcel paramParcel)
+    private static AppBrandLaunchErrorAction l(Parcel paramParcel)
     {
       AppMethodBeat.i(47041);
       String str = paramParcel.readString();
@@ -103,7 +103,7 @@ public abstract class AppBrandLaunchErrorAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchErrorAction
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,65 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.luggage.bridge.k;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.g.e;
-import com.tencent.mm.plugin.webview.g.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.xweb.WebResourceResponse;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class ay<T extends a>
-  extends bq<T>
+  extends br<T>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  private static TrustManager IWq;
   
-  public final void b(final b<T>.a paramb)
+  static
   {
-    AppMethodBeat.i(198098);
-    h.MqF.aO(new Runnable()
+    AppMethodBeat.i(210954);
+    IWq = new X509TrustManager()
     {
-      public final void run()
+      public final void checkClientTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
       {
-        AppMethodBeat.i(198097);
-        try
-        {
-          String str = paramb.chh.cgn.optString("url");
-          if (bu.isNullOrNil(str))
-          {
-            paramb.a("fail", null);
-            AppMethodBeat.o(198097);
-            return;
-          }
-          Object localObject1 = new JSONObject();
-          Object localObject2 = new com.tencent.mm.plugin.wepkg.d();
-          if (((com.tencent.mm.plugin.wepkg.d)localObject2).k(str, true, false))
-          {
-            ae.i("MicroMsg.JsApiRequire", "has wepkg");
-            WebResourceResponse localWebResourceResponse = ((com.tencent.mm.plugin.wepkg.d)localObject2).p(null, str);
-            if (localWebResourceResponse != null)
-            {
-              str = com.tencent.mm.plugin.appbrand.y.d.convertStreamToString(localWebResourceResponse.mInputStream);
-              ((JSONObject)localObject1).put("header", localWebResourceResponse.mResponseHeaders);
-              ((JSONObject)localObject1).put("data", str);
-              paramb.a("", (JSONObject)localObject1);
-              ((com.tencent.mm.plugin.wepkg.d)localObject2).vI(true);
-              AppMethodBeat.o(198097);
-              return;
-            }
-          }
-          localObject1 = e.L(str, null);
-          if (localObject1 != null)
-          {
-            localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("header", ((e.a)localObject1).mbB);
-            ((JSONObject)localObject2).put("data", ((e.a)localObject1).data);
-            paramb.a("", (JSONObject)localObject2);
-            AppMethodBeat.o(198097);
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          paramb.a("fail", null);
-          AppMethodBeat.o(198097);
-          return;
-        }
-        paramb.a("fail", null);
-        AppMethodBeat.o(198097);
+        AppMethodBeat.i(210951);
+        Log.i("MicroMsg.JsApiRequest", "checkClientTrusted");
+        AppMethodBeat.o(210951);
       }
-    });
-    AppMethodBeat.o(198098);
+      
+      public final void checkServerTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
+      {
+        AppMethodBeat.i(210952);
+        Log.i("MicroMsg.JsApiRequest", "checkServerTrusted");
+        AppMethodBeat.o(210952);
+      }
+      
+      public final X509Certificate[] getAcceptedIssuers()
+      {
+        return new X509Certificate[0];
+      }
+    };
+    AppMethodBeat.o(210954);
   }
   
-  public final int ced()
+  public final void a(Context paramContext, String paramString, br.a parama) {}
+  
+  public final void b(b<T>.a paramb)
+  {
+    AppMethodBeat.i(210953);
+    h.RTc.aX(new ay.1(this, paramb));
+    AppMethodBeat.o(210953);
+  }
+  
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "require";
+    return "request";
   }
 }
 

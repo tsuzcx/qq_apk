@@ -1,11 +1,11 @@
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.i;
+import com.google.android.exoplayer2.source.k;
 
 public abstract interface f
   extends q
 {
-  public abstract void a(i parami);
+  public abstract void a(k paramk);
   
   public abstract void a(c... paramVarArgs);
   
@@ -23,21 +23,21 @@ public abstract interface f
   
   public static final class c
   {
-    public final f.b bcc;
-    public final int bcd;
-    public final Object bce;
+    public final f.b bbZ;
+    public final int bca;
+    public final Object bcb;
     
     public c(f.b paramb, int paramInt, Object paramObject)
     {
-      this.bcc = paramb;
-      this.bcd = paramInt;
-      this.bce = paramObject;
+      this.bbZ = paramb;
+      this.bca = paramInt;
+      this.bcb = paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f
  * JD-Core Version:    0.7.0.1
  */

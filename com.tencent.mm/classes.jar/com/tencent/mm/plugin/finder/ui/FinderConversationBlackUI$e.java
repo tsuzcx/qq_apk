@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import com.tencent.mm.storage.an;
-import d.l;
+import com.tencent.mm.storage.as;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactItem;", "Lcom/tencent/mm/storage/Contact;", "()V", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactItem;", "Lcom/tencent/mm/storage/Contact;", "()V", "plugin-finder_release"})
 public final class FinderConversationBlackUI$e
-  extends an
+  extends as
 {}
 
 

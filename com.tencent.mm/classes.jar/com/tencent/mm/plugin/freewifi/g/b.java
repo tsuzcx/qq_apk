@@ -3,44 +3,44 @@ package com.tencent.mm.plugin.freewifi.g;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  public static Map<String, String> tzB;
+  public static Map<String, String> wQD;
   
   static
   {
     AppMethodBeat.i(24948);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "FreeWifiConfig"), "CREATE INDEX IF NOT EXISTS idx_freewificonfig_key  on FreeWifiConfig  (  key )" };
-    tzB = new ConcurrentHashMap();
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "FreeWifiConfig"), "CREATE INDEX IF NOT EXISTS idx_freewificonfig_key  on FreeWifiConfig  (  key )" };
+    wQD = new ConcurrentHashMap();
     AppMethodBeat.o(24948);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "FreeWifiConfig", null);
+    super(paramISQLiteDatabase, a.info, "FreeWifiConfig", null);
   }
   
-  public final String akU(String paramString)
+  public final String axY(String paramString)
   {
     AppMethodBeat.i(24945);
-    if (m.ef(paramString))
+    if (m.eP(paramString))
     {
       AppMethodBeat.o(24945);
       return "";
     }
     try
     {
-      if (tzB != null)
+      if (wQD != null)
       {
-        String str = (String)tzB.get(paramString);
+        String str = (String)wQD.get(paramString);
         if (str != null)
         {
           AppMethodBeat.o(24945);
@@ -50,7 +50,7 @@ public final class b
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.FreeWifi.FreeWifiConfigStorage", "Map get error!");
+      Log.e("MicroMsg.FreeWifi.FreeWifiConfigStorage", "Map get error!");
       paramString = rawQuery("select * from FreeWifiConfig where key = '" + paramString + "'", new String[0]);
       if (paramString == null)
       {
@@ -81,18 +81,18 @@ public final class b
     }
   }
   
-  public final void bdi()
+  public final void byC()
   {
     AppMethodBeat.i(24947);
-    if (tzB != null) {
-      tzB.clear();
+    if (wQD != null) {
+      wQD.clear();
     }
     super.execSQL("FreeWifiConfig", "delete from FreeWifiConfig");
     AppMethodBeat.o(24947);
   }
   
   /* Error */
-  public final String cUD()
+  public final String dNM()
   {
     // Byte code:
     //   0: sipush 24944
@@ -145,7 +145,7 @@ public final class b
     //   104: invokevirtual 157	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   107: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 159	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   113: invokestatic 159	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   116: aload_2
     //   117: invokevirtual 157	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   120: astore_2
@@ -164,7 +164,7 @@ public final class b
     //   147: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   150: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   153: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokestatic 159	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   156: invokestatic 159	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   159: aload_2
     //   160: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   163: astore_2
@@ -199,27 +199,27 @@ public final class b
   }
   
   /* Error */
-  public final void gP(String paramString1, String paramString2)
+  public final void hv(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 24946
     //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 61	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
+    //   7: invokestatic 61	com/tencent/mm/plugin/freewifi/m:eP	(Ljava/lang/String;)Z
     //   10: ifne +10 -> 20
     //   13: aload_2
-    //   14: invokestatic 61	com/tencent/mm/plugin/freewifi/m:ef	(Ljava/lang/String;)Z
+    //   14: invokestatic 61	com/tencent/mm/plugin/freewifi/m:eP	(Ljava/lang/String;)Z
     //   17: ifeq +10 -> 27
     //   20: sipush 24946
     //   23: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   26: return
-    //   27: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:tzB	Ljava/util/Map;
+    //   27: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:wQD	Ljava/util/Map;
     //   30: ifnull +28 -> 58
-    //   33: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:tzB	Ljava/util/Map;
+    //   33: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:wQD	Ljava/util/Map;
     //   36: invokeinterface 164 1 0
     //   41: sipush 1000
     //   44: if_icmpge +102 -> 146
-    //   47: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:tzB	Ljava/util/Map;
+    //   47: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:wQD	Ljava/util/Map;
     //   50: aload_1
     //   51: aload_2
     //   52: invokeinterface 168 3 0
@@ -256,16 +256,16 @@ public final class b
     //   123: ifne +56 -> 179
     //   126: aload_0
     //   127: aload 4
-    //   129: invokevirtual 188	com/tencent/mm/plugin/freewifi/g/b:insert	(Lcom/tencent/mm/sdk/e/c;)Z
+    //   129: invokevirtual 188	com/tencent/mm/plugin/freewifi/g/b:insert	(Lcom/tencent/mm/sdk/storage/IAutoDBItem;)Z
     //   132: pop
     //   133: aload_3
     //   134: invokeinterface 105 1 0
     //   139: sipush 24946
     //   142: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: return
-    //   146: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:tzB	Ljava/util/Map;
+    //   146: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:wQD	Ljava/util/Map;
     //   149: invokeinterface 122 1 0
-    //   154: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:tzB	Ljava/util/Map;
+    //   154: getstatic 43	com/tencent/mm/plugin/freewifi/g/b:wQD	Ljava/util/Map;
     //   157: aload_1
     //   158: aload_2
     //   159: invokeinterface 168 3 0
@@ -274,13 +274,13 @@ public final class b
     //   168: astore_3
     //   169: ldc 71
     //   171: ldc 190
-    //   173: invokestatic 79	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   173: invokestatic 79	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   176: goto -118 -> 58
     //   179: aload_0
     //   180: aload 4
     //   182: iconst_0
     //   183: anewarray 20	java/lang/String
-    //   186: invokevirtual 194	com/tencent/mm/plugin/freewifi/g/b:update	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
+    //   186: invokevirtual 194	com/tencent/mm/plugin/freewifi/g/b:update	(Lcom/tencent/mm/sdk/storage/IAutoDBItem;[Ljava/lang/String;)Z
     //   189: pop
     //   190: goto -57 -> 133
     //   193: astore_1
@@ -308,7 +308,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.g.b
  * JD-Core Version:    0.7.0.1
  */

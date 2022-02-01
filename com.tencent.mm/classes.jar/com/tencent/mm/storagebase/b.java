@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  static final boolean Jje;
+  static final boolean OsW;
   
   static
   {
@@ -29,7 +29,7 @@ public final class b
       default: 
         bool = true;
       }
-      Jje = bool;
+      OsW = bool;
       AppMethodBeat.o(133325);
       return;
       if (str.equals("exynos7884"))
@@ -64,7 +64,7 @@ public final class b
   }
   
   /* Error */
-  static String fxG()
+  static String gFt()
   {
     // Byte code:
     //   0: ldc 70
@@ -80,10 +80,10 @@ public final class b
     //   23: astore 4
     //   25: new 85	java/io/BufferedReader
     //   28: dup
-    //   29: new 87	com/tencent/mm/vfs/q
+    //   29: new 87	com/tencent/mm/vfs/u
     //   32: dup
     //   33: ldc 89
-    //   35: invokespecial 93	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   35: invokespecial 93	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   38: invokespecial 96	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   41: astore 8
     //   43: aload 8
@@ -258,7 +258,7 @@ public final class b
     //   346: invokevirtual 160	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   349: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   352: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   355: invokestatic 166	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   355: invokestatic 166	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   358: aload 4
     //   360: astore_1
     //   361: aload 7

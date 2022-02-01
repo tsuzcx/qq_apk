@@ -1,85 +1,85 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.audio.d.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/cloudvoip/cloudvoice/audio/OpenVoiceAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseMusicAudioManager;", "()V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "isSpeakerSetFailed", "", "mInnerPlayer", "Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "getAudioPlayErrState", "", "getFetcedhRefInMs", "getPlayDelayInMs", "getPlayerSpeakerMode", "getPlayerSpeakerStream", "getPlayerVolume", "init", "", "isAvailable", "onAudioDeviceStateChanged", "status", "releaseAudioPlayingDevice", "requestAudioPlayingDevice", "setSpeakerPhoneOn", "isSpeakerPhoneOn", "setSpeakerPhoneOnInternal", "startPlay", "devCallBack", "Lcom/tencent/mm/plugin/voip/model/AudioPlayDevCallBack;", "sampleRate", "channels", "duration", "stopPlay", "unInit", "Companion", "cloudvoice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/cloudvoip/cloudvoice/audio/OpenVoiceAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseMusicAudioManager;", "()V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "isSpeakerSetFailed", "", "mInnerPlayer", "Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "getAudioPlayErrState", "", "getFetcedhRefInMs", "getPlayDelayInMs", "getPlayerSpeakerMode", "getPlayerSpeakerStream", "getPlayerVolume", "init", "", "isAvailable", "onAudioDeviceStateChanged", "status", "releaseAudioPlayingDevice", "requestAudioPlayingDevice", "setSpeakerPhoneOn", "isSpeakerPhoneOn", "setSpeakerPhoneOnInternal", "startPlay", "devCallBack", "Lcom/tencent/mm/plugin/voip/model/AudioPlayDevCallBack;", "sampleRate", "channels", "duration", "stopPlay", "unInit", "Companion", "cloudvoice_release"})
 public final class a
   extends com.tencent.mm.plugin.audio.b.c
 {
-  public static final a.a pcB;
-  public b iAr;
-  public com.tencent.mm.plugin.voip.model.c pcA;
-  public boolean pcz;
+  public static final a.a qrA;
+  public com.tencent.mm.compatible.util.b jvG;
+  public boolean qry;
+  public com.tencent.mm.plugin.voip.model.c qrz;
   
   static
   {
-    AppMethodBeat.i(211634);
-    pcB = new a.a((byte)0);
-    AppMethodBeat.o(211634);
+    AppMethodBeat.i(186812);
+    qrA = new a.a((byte)0);
+    AppMethodBeat.o(186812);
   }
   
   public a()
   {
-    AppMethodBeat.i(211633);
-    this.iAr = new b(ak.getContext());
+    AppMethodBeat.i(186811);
+    this.jvG = new com.tencent.mm.compatible.util.b(MMApplicationContext.getContext());
     init();
-    AppMethodBeat.o(211633);
+    AppMethodBeat.o(186811);
   }
   
   public static void unInit()
   {
-    AppMethodBeat.i(211630);
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    com.tencent.mm.plugin.audio.c.a.a.Wy("openvoice");
-    locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    com.tencent.mm.plugin.audio.c.a.a.bHG().nxk.unRegisterBroadcasts();
-    AppMethodBeat.o(211630);
+    AppMethodBeat.i(186808);
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.oIh;
+    com.tencent.mm.plugin.audio.c.a.a.agt("openvoice");
+    locala = com.tencent.mm.plugin.audio.c.a.oIh;
+    com.tencent.mm.plugin.audio.c.a.a.cei().oId.unRegisterBroadcasts();
+    AppMethodBeat.o(186808);
   }
   
-  public final void hE(int paramInt)
+  public final void iY(int paramInt)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(211632);
-    super.hE(paramInt);
+    AppMethodBeat.i(186810);
+    super.iY(paramInt);
     switch (paramInt)
     {
     case 4: 
     case 5: 
     default: 
-      AppMethodBeat.o(211632);
+      AppMethodBeat.o(186810);
       return;
     case 2: 
-      bool1 = this.pcz;
-      this.pcz = (jG(false) & bool1);
-      AppMethodBeat.o(211632);
+      bool1 = this.qry;
+      this.qry = (kJ(false) & bool1);
+      AppMethodBeat.o(186810);
       return;
     case 1: 
     case 3: 
     case 6: 
     case 7: 
-      this.pcz &= jG(true);
-      AppMethodBeat.o(211632);
+      this.qry &= kJ(true);
+      AppMethodBeat.o(186810);
       return;
     case 9: 
-      ae.i("MicroMsg.OpenVoiceAudioManager", "isHeadsetPlugged disconnected, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(xs(4)) });
-      if (!xs(4)) {
+      Log.i("MicroMsg.OpenVoiceAudioManager", "isHeadsetPlugged disconnected, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(AY(4)) });
+      if (!AY(4)) {
         break;
       }
     }
     for (;;)
     {
-      boolean bool2 = this.pcz;
-      this.pcz = (jG(bool1) & bool2);
-      AppMethodBeat.o(211632);
+      boolean bool2 = this.qry;
+      this.qry = (kJ(bool1) & bool2);
+      AppMethodBeat.o(186810);
       return;
-      ae.i("MicroMsg.OpenVoiceAudioManager", " isHeadsetPlug connected, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(xs(4)) });
-      bool1 = this.pcz;
-      this.pcz = (jG(false) & bool1);
+      Log.i("MicroMsg.OpenVoiceAudioManager", " isHeadsetPlug connected, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(AY(4)) });
+      bool1 = this.qry;
+      this.qry = (kJ(false) & bool1);
       break;
       bool1 = true;
     }
@@ -87,33 +87,38 @@ public final class a
   
   public final void init()
   {
-    AppMethodBeat.i(211629);
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    com.tencent.mm.plugin.audio.c.a.a.bHG().nxk.registerBroadcasts();
-    com.tencent.mm.plugin.audio.d.a.bHI();
-    com.tencent.mm.plugin.audio.d.c.bHI();
-    locala = com.tencent.mm.plugin.audio.c.a.nxo;
+    AppMethodBeat.i(186807);
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.oIh;
+    com.tencent.mm.plugin.audio.c.a.a.cei().oId.registerBroadcasts();
+    com.tencent.mm.plugin.audio.d.b.cet();
+    d.cet();
+    locala = com.tencent.mm.plugin.audio.c.a.oIh;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "openvoice");
-    AppMethodBeat.o(211629);
+    AppMethodBeat.o(186807);
   }
   
-  public final boolean jG(boolean paramBoolean)
+  public final boolean isAvailable()
   {
-    AppMethodBeat.i(211631);
-    ae.i("MicroMsg.OpenVoiceAudioManager", "setSpeakerPhoneOn, isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    io(paramBoolean);
-    com.tencent.mm.plugin.voip.model.c localc = this.pcA;
+    return this.qrz != null;
+  }
+  
+  public final boolean kJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(186809);
+    Log.i("MicroMsg.OpenVoiceAudioManager", "setSpeakerPhoneOn, isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    jp(paramBoolean);
+    com.tencent.mm.plugin.voip.model.c localc = this.qrz;
     if ((localc != null) && (!localc.isPlaying()))
     {
-      localc = this.pcA;
+      localc = this.qrz;
       if (localc == null) {
-        p.gkB();
+        p.hyc();
       }
-      paramBoolean = localc.ti(paramBoolean);
-      AppMethodBeat.o(211631);
+      paramBoolean = localc.wS(paramBoolean);
+      AppMethodBeat.o(186809);
       return paramBoolean;
     }
-    AppMethodBeat.o(211631);
+    AppMethodBeat.o(186809);
     return false;
   }
 }

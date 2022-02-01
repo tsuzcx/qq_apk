@@ -1,48 +1,48 @@
 package com.tencent.mm.al.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ayd;
-import com.tencent.mm.protocal.protobuf.aye;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bjn;
+import com.tencent.mm.protocal.protobuf.bjo;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class r
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   Object data;
-  public b rr;
+  public d rr;
   
   public r(String paramString, Object paramObject)
   {
     AppMethodBeat.i(124307);
-    b.a locala = new b.a();
-    locala.hQF = new ayd();
-    locala.hQG = new aye();
+    d.a locala = new d.a();
+    locala.iLN = new bjn();
+    locala.iLO = new bjo();
     locala.uri = "/cgi-bin/mmocbiz-bin/getbizchatmyuserinfo";
     locala.funcId = 1354;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((ayd)this.rr.hQD.hQJ).FZx = paramString;
+    this.rr = locala.aXF();
+    ((bjn)this.rr.iLK.iLR).KTt = paramString;
     this.data = paramObject;
     AppMethodBeat.o(124307);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(124309);
-    this.callback = paramf;
-    ae.i("MicroMsg.brandservice.NetSceneGetBizChatMyUserInfo", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.brandservice.NetSceneGetBizChatMyUserInfo", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(124309);
     return i;
   }
@@ -52,10 +52,10 @@ public final class r
     return 1354;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(124308);
-    ae.d("MicroMsg.brandservice.NetSceneGetBizChatMyUserInfo", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.brandservice.NetSceneGetBizChatMyUserInfo", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

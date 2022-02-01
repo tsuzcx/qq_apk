@@ -15,17 +15,17 @@ final class GamePublishGalleryUI$3
   {
     AppMethodBeat.i(41036);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/game/media/GamePublishGalleryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.uiW.setResult(0);
-    this.uiW.finish();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/game/media/GamePublishGalleryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.xBp.setResult(0);
+    this.xBp.finish();
     a.a(this, "com/tencent/mm/plugin/game/media/GamePublishGalleryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(41036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GamePublishGalleryUI.3
  * JD-Core Version:    0.7.0.1
  */

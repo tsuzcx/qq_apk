@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.mmsight.api;
 
 public abstract interface MMSightRecordView$c
 {
-  public abstract void bkB();
+  public abstract void bFX();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.api.MMSightRecordView.c
  * JD-Core Version:    0.7.0.1
  */

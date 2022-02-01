@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hf;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hq;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ap
-  extends hf
+  extends hq
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(79029);
-    c.a locala = new c.a();
-    locala.IBL = new Field[5];
-    locala.columns = new String[6];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[5];
+    localMAutoDBInfo.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "recordId";
-    locala.IBN.put("recordId", "INTEGER PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "recordId";
+    localMAutoDBInfo.colsMap.put("recordId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" recordId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "recordId";
-    locala.columns[1] = "appId";
-    locala.IBN.put("appId", "TEXT");
+    localMAutoDBInfo.primaryKey = "recordId";
+    localMAutoDBInfo.columns[1] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "domin";
-    locala.IBN.put("domin", "TEXT");
+    localMAutoDBInfo.columns[2] = "domin";
+    localMAutoDBInfo.colsMap.put("domin", "TEXT");
     localStringBuilder.append(" domin TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "key";
-    locala.IBN.put("key", "TEXT");
+    localMAutoDBInfo.columns[3] = "key";
+    localMAutoDBInfo.colsMap.put("key", "TEXT");
     localStringBuilder.append(" key TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "value";
-    locala.IBN.put("value", "TEXT");
+    localMAutoDBInfo.columns[4] = "value";
+    localMAutoDBInfo.colsMap.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[5] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(79029);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

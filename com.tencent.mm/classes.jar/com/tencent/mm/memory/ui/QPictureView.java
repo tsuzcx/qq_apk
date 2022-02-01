@@ -7,27 +7,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.b.a;
 import com.tencent.mm.memory.i;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.QImageView;
 
 public class QPictureView
   extends QImageView
 {
   private boolean DEBUG;
-  private i hAE;
-  private boolean hAF;
-  private Runnable hAG;
+  private i iuL;
+  private boolean iuM;
+  private Runnable iuN;
   
   public QPictureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(156547);
     this.DEBUG = false;
-    this.hAE = null;
-    this.hAF = false;
-    this.hAG = new Runnable()
+    this.iuL = null;
+    this.iuM = false;
+    this.iuN = new Runnable()
     {
       public final void run()
       {
@@ -44,9 +44,9 @@ public class QPictureView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(156548);
     this.DEBUG = false;
-    this.hAE = null;
-    this.hAF = false;
-    this.hAG = new Runnable()
+    this.iuL = null;
+    this.iuM = false;
+    this.iuN = new Runnable()
     {
       public final void run()
       {
@@ -58,23 +58,23 @@ public class QPictureView
     AppMethodBeat.o(156548);
   }
   
-  private void azm()
+  private void aSs()
   {
     AppMethodBeat.i(156554);
     if (this.DEBUG) {
-      ae.i("MicroMsg.QPictureView", "onAttach" + hashCode() + " " + bu.fpN().toString());
+      Log.i("MicroMsg.QPictureView", "onAttach" + hashCode() + " " + Util.getStack().toString());
     }
-    removeCallbacks(this.hAG);
-    if (this.hAF)
+    removeCallbacks(this.iuN);
+    if (this.iuM)
     {
       AppMethodBeat.o(156554);
       return;
     }
-    this.hAF = true;
+    this.iuM = true;
     AppMethodBeat.o(156554);
   }
   
-  private static String bT(Object paramObject)
+  private static String cd(Object paramObject)
   {
     AppMethodBeat.i(156549);
     if (paramObject == null)
@@ -84,7 +84,7 @@ public class QPictureView
     }
     if ((paramObject instanceof a))
     {
-      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).azl() + " " + ((a)paramObject).azl().hashCode();
+      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).aSr() + " " + ((a)paramObject).aSr().hashCode();
       AppMethodBeat.o(156549);
       return paramObject;
     }
@@ -93,20 +93,20 @@ public class QPictureView
     return paramObject;
   }
   
-  private static void bU(Object paramObject)
+  private static void ce(Object paramObject)
   {
     AppMethodBeat.i(156552);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).ayQ();
+      ((i)paramObject).aRW();
     }
     AppMethodBeat.o(156552);
   }
   
-  private static void bV(Object paramObject)
+  private static void cf(Object paramObject)
   {
     AppMethodBeat.i(156553);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).ayR();
+      ((i)paramObject).aRX();
     }
     AppMethodBeat.o(156553);
   }
@@ -115,16 +115,16 @@ public class QPictureView
   {
     AppMethodBeat.i(156555);
     if (this.DEBUG) {
-      ae.i("MicroMsg.QPictureView", "onDetach " + hashCode() + " " + bu.fpN().toString());
+      Log.i("MicroMsg.QPictureView", "onDetach " + hashCode() + " " + Util.getStack().toString());
     }
-    if (!this.hAF)
+    if (!this.iuM)
     {
       AppMethodBeat.o(156555);
       return;
     }
-    this.hAF = false;
-    removeCallbacks(this.hAG);
-    postDelayed(this.hAG, 500L);
+    this.iuM = false;
+    removeCallbacks(this.iuN);
+    postDelayed(this.iuN, 500L);
     AppMethodBeat.o(156555);
   }
   
@@ -132,7 +132,7 @@ public class QPictureView
   {
     AppMethodBeat.i(156556);
     super.onAttachedToWindow();
-    azm();
+    aSs();
     AppMethodBeat.o(156556);
   }
   
@@ -148,7 +148,7 @@ public class QPictureView
   {
     AppMethodBeat.i(156559);
     super.onFinishTemporaryDetach();
-    azm();
+    aSs();
     AppMethodBeat.o(156559);
   }
   
@@ -163,20 +163,20 @@ public class QPictureView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(156551);
-    removeCallbacks(this.hAG);
-    if ((paramDrawable == null) || (paramDrawable.equals(this.hAE)))
+    removeCallbacks(this.iuN);
+    if ((paramDrawable == null) || (paramDrawable.equals(this.iuL)))
     {
       AppMethodBeat.o(156551);
       return;
     }
     if (this.DEBUG) {
-      ae.i("MicroMsg.QPictureView", "setImageDrawable " + hashCode() + " old: " + bT(this.hAE) + " new:" + bT(paramDrawable) + " " + bu.fpN().toString());
+      Log.i("MicroMsg.QPictureView", "setImageDrawable " + hashCode() + " old: " + cd(this.iuL) + " new:" + cd(paramDrawable) + " " + Util.getStack().toString());
     }
-    bV(this.hAE);
+    cf(this.iuL);
     if ((paramDrawable instanceof i)) {}
-    for (this.hAE = ((i)paramDrawable);; this.hAE = null)
+    for (this.iuL = ((i)paramDrawable);; this.iuL = null)
     {
-      bU(paramDrawable);
+      ce(paramDrawable);
       super.setImageDrawable(paramDrawable);
       AppMethodBeat.o(156551);
       return;
@@ -186,20 +186,20 @@ public class QPictureView
   public void setReleasableBitmap(n paramn)
   {
     AppMethodBeat.i(156550);
-    if ((paramn == null) || (paramn.equals(this.hAE)))
+    if ((paramn == null) || (paramn.equals(this.iuL)))
     {
       AppMethodBeat.o(156550);
       return;
     }
-    setImageBitmap(paramn.ayV());
-    this.hAE = paramn;
-    bU(this.hAE);
+    setImageBitmap(paramn.aSb());
+    this.iuL = paramn;
+    ce(this.iuL);
     AppMethodBeat.o(156550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.memory.ui.QPictureView
  * JD-Core Version:    0.7.0.1
  */

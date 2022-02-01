@@ -2,47 +2,49 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.card.b.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.sharecard.a.a;
-import com.tencent.mm.protocal.protobuf.ayt;
-import com.tencent.mm.protocal.protobuf.ayu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.bkd;
+import com.tencent.mm.protocal.protobuf.bke;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class y
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final com.tencent.mm.ak.b rr;
+  private i callback;
+  private final d rr;
   
   public y()
   {
     AppMethodBeat.i(112831);
-    b.a locala = new b.a();
-    locala.hQF = new ayt();
-    locala.hQG = new ayu();
+    d.a locala = new d.a();
+    locala.iLN = new bkd();
+    locala.iLO = new bke();
     locala.uri = "/cgi-bin/micromsg-bin/getcardcount";
     locala.funcId = 1088;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     AppMethodBeat.o(112831);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(112832);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112832);
     return i;
   }
@@ -52,33 +54,33 @@ public final class y
     return 1088;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112833);
-    ae.i("MicroMsg.NetSceneGetCardCount", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    Log.i("MicroMsg.NetSceneGetCardCount", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ayu)this.rr.hQE.hQJ;
-      ae.i("MicroMsg.NetSceneGetCardCount", "has_card_item:" + paramq.GPl + " has_share_card:" + paramq.GPm);
-      if (paramq.GPl > 0)
+      params = (bke)this.rr.iLL.iLR;
+      Log.i("MicroMsg.NetSceneGetCardCount", "has_card_item:" + params.LTr + " has_share_card:" + params.LTs);
+      if (params.LTr > 0)
       {
-        l.bZP();
-        if (TextUtils.isEmpty((String)g.ajR().ajA().get(am.a.ILQ, null)))
+        l.cxE();
+        if (TextUtils.isEmpty((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NTS, null)))
         {
-          am.bWb();
-          com.tencent.mm.plugin.card.b.b.AA(1);
+          am.ctP();
+          b.Ef(1);
         }
       }
-      if (paramq.GPm > 0)
+      if (params.LTs > 0)
       {
-        l.bZR();
-        paramq = (Long)g.ajR().ajA().get(am.a.IMa, Long.valueOf(0L));
-        if ((paramq != null) && (paramq.longValue() == 0L)) {
-          am.bWj().bWD();
+        l.cxG();
+        params = (Long)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NUc, Long.valueOf(0L));
+        if ((params != null) && (params.longValue() == 0L)) {
+          am.ctX().cuu();
         }
       }
     }
-    g.ajR().ajA().set(282882, Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
+    com.tencent.mm.kernel.g.aAh().azQ().set(282882, Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112833);
   }

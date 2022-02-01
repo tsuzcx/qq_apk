@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class AppBrandUserInfoAuthorizeUI$g$a
   implements DialogInterface.OnCancelListener
 {
-  public static final a mKX;
+  public static final a nYi;
   
   static
   {
-    AppMethodBeat.i(180668);
-    mKX = new a();
-    AppMethodBeat.o(180668);
+    AppMethodBeat.i(229534);
+    nYi = new a();
+    AppMethodBeat.o(229534);
   }
   
   public final void onCancel(DialogInterface paramDialogInterface) {}

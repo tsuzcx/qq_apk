@@ -1,126 +1,225 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.c;
-import com.tencent.mm.plugin.appbrand.h.d;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ac.i;
+import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vending.g.b;
+import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.vending.g.g;
+import org.json.JSONObject;
 
-public final class j
+public class j
+  implements c
 {
-  private static void a(int paramInt, String paramString1, String paramString2, String paramString3, long paramLong)
+  static final j meZ;
+  
+  static
   {
-    AppMethodBeat.i(46635);
-    long l = bu.fpO();
-    String str1 = az.ja(ak.getContext());
-    String str2 = az.jb(ak.getContext());
-    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + bma() + "," + str1 + "," + str2 + ",,";
-    ae.v("MicroMsg.MiniProgramNavigatorAdReportHelper", "closeType:%d stayTime:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    AdReportCgiHelper.a(16004, paramString1, null);
-    AppMethodBeat.o(46635);
+    AppMethodBeat.i(147197);
+    meZ = new j();
+    AppMethodBeat.o(147197);
   }
   
-  public static void a(String paramString1, final String paramString2, AppBrandStatObject paramAppBrandStatObject)
+  public com.tencent.mm.vending.g.c<AppBrandInitConfigLU> a(com.tencent.mm.plugin.appbrand.d paramd, LaunchParcel paramLaunchParcel, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(46633);
-    if (paramAppBrandStatObject == null)
-    {
-      AppMethodBeat.o(46633);
-      return;
-    }
-    final String str = paramAppBrandStatObject.kZC;
-    if (bu.isNullOrNil(str))
-    {
-      AppMethodBeat.o(46633);
-      return;
-    }
-    h.a(paramString1, new h.c()
-    {
-      private void a(h.d paramAnonymousd, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
-      {
-        AppMethodBeat.i(46631);
-        j.a(paramAnonymousd, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, bu.fpO() - this.idC);
-        this.kZV.kZC = null;
-        h.b(paramAnonymousString1, this);
-        AppMethodBeat.o(46631);
-      }
-      
-      public final void a(h.d paramAnonymousd)
-      {
-        AppMethodBeat.i(46629);
-        a(paramAnonymousd, this.val$appId, paramString2, str);
-        AppMethodBeat.o(46629);
-      }
-      
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(46630);
-        a(h.KU(this.val$appId), this.val$appId, paramString2, str);
-        AppMethodBeat.o(46630);
-      }
-    });
-    AppMethodBeat.o(46633);
+    AppMethodBeat.i(147195);
+    paramd = g.en(null);
+    AppMethodBeat.o(147195);
+    return paramd;
   }
   
-  public static void b(String paramString1, String paramString2, AppBrandStatObject paramAppBrandStatObject)
+  public final void a(final com.tencent.mm.plugin.appbrand.d paramd, final String paramString1, int paramInt, String paramString2, final c.a parama, final JSONObject paramJSONObject, final c.c paramc)
   {
-    AppMethodBeat.i(46634);
-    if (paramAppBrandStatObject == null)
+    AppMethodBeat.i(147196);
+    com.tencent.mm.plugin.appbrand.keylogger.c.e(KSProcessWeAppLaunch.class, paramString1);
+    com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramString1, String.format("Network:%s", new Object[] { NetStatusUtil.getNetTypeString(paramd.getRuntime().mContext) }));
+    Object localObject1 = paramd.getAppId();
+    int i;
+    JSONObject localJSONObject2;
+    JSONObject localJSONObject1;
+    if (parama != null)
     {
-      AppMethodBeat.o(46634);
-      return;
+      i = parama.sourceType;
+      Log.i("MicroMsg.MiniProgramNavigator", "navigateTo fromAppID(%s) targetAppID(%s) sourceType:%d", new Object[] { localObject1, paramString1, Integer.valueOf(i) });
+      localJSONObject2 = paramJSONObject.optJSONObject("extraData");
+      localJSONObject1 = paramJSONObject.optJSONObject("privateExtraData");
+      if (!(paramd instanceof ac)) {
+        break label657;
+      }
+      localObject1 = (ac)paramd;
+      label116:
+      if (localObject1 == null) {
+        break label736;
+      }
     }
-    if (bu.isNullOrNil(paramAppBrandStatObject.kZC))
+    label296:
+    label315:
+    label334:
+    label724:
+    label730:
+    label736:
+    for (localObject1 = ((ac)localObject1).nna;; localObject1 = "")
     {
-      AppMethodBeat.o(46634);
-      return;
+      final com.tencent.luggage.sdk.d.d locald = (com.tencent.luggage.sdk.d.d)paramd.getRuntime();
+      String str = paramd.getAppId() + ":" + locald.ON().cym + ":" + (locald.ON().cyo + 1000);
+      Object localObject2 = locald.ON().cyA;
+      AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
+      if ((parama != null) && (parama.scene != 0))
+      {
+        i = parama.scene;
+        label231:
+        localAppBrandStatObject.scene = i;
+        localAppBrandStatObject.ecS = ((AppBrandStatObject)localObject2).ecS;
+        if ((parama == null) || (parama.scene == 0) || (Util.isNullOrNil(parama.dCw))) {
+          break label677;
+        }
+        str = String.format("%s:%s", new Object[] { str, parama.dCw });
+        localAppBrandStatObject.dCw = str;
+        if (parama == null) {
+          break label680;
+        }
+        i = parama.ecU;
+        localAppBrandStatObject.ecU = i;
+        if (parama == null) {
+          break label686;
+        }
+        str = parama.ecV;
+        localAppBrandStatObject.ecV = str;
+        if (parama == null) {
+          break label692;
+        }
+        str = parama.meP;
+        label353:
+        localAppBrandStatObject.meP = str;
+        localObject2 = new AppBrandLaunchReferrer();
+        ((AppBrandLaunchReferrer)localObject2).appId = paramd.getAppId();
+        if (localJSONObject2 != null) {
+          break label698;
+        }
+        str = "{}";
+        ((AppBrandLaunchReferrer)localObject2).dSJ = str;
+        if (localJSONObject1 != null) {
+          break label708;
+        }
+        str = "{}";
+        ((AppBrandLaunchReferrer)localObject2).lep = str;
+        ((AppBrandLaunchReferrer)localObject2).leo = 1;
+        ((AppBrandLaunchReferrer)localObject2).url = ((String)localObject1);
+        if (parama == null) {
+          break label718;
+        }
+        i = parama.sourceType;
+        ((AppBrandLaunchReferrer)localObject2).sourceType = i;
+        if (parama == null) {
+          break label724;
+        }
+        localObject1 = parama.leq;
+        ((AppBrandLaunchReferrer)localObject2).leq = ((String)localObject1);
+        if (parama == null) {
+          break label730;
+        }
+      }
+      for (parama = parama.businessType;; parama = null)
+      {
+        ((AppBrandLaunchReferrer)localObject2).businessType = parama;
+        long l = Util.nowMilliSecond();
+        parama = new LaunchParcel();
+        parama.username = null;
+        parama.appId = paramString1;
+        parama.version = 0;
+        parama.iOo = paramInt;
+        parama.kHw = paramString2;
+        parama.mYK = localAppBrandStatObject;
+        parama.cys = ((AppBrandLaunchReferrer)localObject2);
+        parama.mYL = null;
+        parama.mYM = l;
+        paramString1 = new i();
+        g.hdG().b(locald).f(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
+        {
+          public final void cn(Object paramAnonymousObject)
+          {
+            AppMethodBeat.i(147186);
+            if (paramc != null)
+            {
+              if (!(paramAnonymousObject instanceof Exception)) {
+                break label60;
+              }
+              paramAnonymousObject = ((Exception)paramAnonymousObject).getMessage();
+            }
+            for (;;)
+            {
+              paramc.o(false, paramAnonymousObject);
+              locald.i(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(147185);
+                  if (j.1.this.mfc.value != null) {
+                    ((com.tencent.mm.plugin.appbrand.p.d)j.1.this.mfc.value).dismiss();
+                  }
+                  AppMethodBeat.o(147185);
+                }
+              }, 0L);
+              AppMethodBeat.o(147186);
+              return;
+              label60:
+              if (paramAnonymousObject == null) {
+                paramAnonymousObject = "internal error";
+              } else {
+                paramAnonymousObject = paramAnonymousObject.toString();
+              }
+            }
+          }
+        });
+        AppMethodBeat.o(147196);
+        return;
+        i = 0;
+        break;
+        localObject1 = ((s)paramd).getCurrentPageView();
+        break label116;
+        i = 1037;
+        break label231;
+        break label296;
+        i = 0;
+        break label315;
+        str = null;
+        break label334;
+        str = null;
+        break label353;
+        str = localJSONObject2.toString();
+        break label387;
+        str = localJSONObject1.toString();
+        break label403;
+        i = 0;
+        break label435;
+        localObject1 = null;
+        break label454;
+      }
     }
-    a(4, paramString1, paramString2, paramAppBrandStatObject.kZC, 0L);
-    AppMethodBeat.o(46634);
   }
   
-  private static int bma()
+  public boolean a(com.tencent.mm.plugin.appbrand.d paramd, LaunchParcel paramLaunchParcel, c.b paramb)
   {
-    AppMethodBeat.i(46636);
-    switch (az.getNetType(ak.getContext()))
-    {
-    case 9: 
-    default: 
-      AppMethodBeat.o(46636);
-      return 6;
-    case -1: 
-      AppMethodBeat.o(46636);
-      return 255;
-    case 0: 
-      AppMethodBeat.o(46636);
-      return 1;
-    case 3: 
-    case 4: 
-      AppMethodBeat.o(46636);
-      return 4;
-    case 2: 
-    case 5: 
-    case 7: 
-      AppMethodBeat.o(46636);
-      return 2;
-    case 1: 
-    case 6: 
-    case 8: 
-      AppMethodBeat.o(46636);
-      return 3;
-    }
-    AppMethodBeat.o(46636);
-    return 5;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.j
  * JD-Core Version:    0.7.0.1
  */

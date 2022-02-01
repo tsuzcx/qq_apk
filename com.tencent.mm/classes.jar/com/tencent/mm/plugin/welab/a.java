@@ -4,10 +4,11 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.g.a.mh;
-import com.tencent.mm.g.a.pz;
+import com.tencent.mm.g.a.my;
+import com.tencent.mm.g.a.qt;
 import com.tencent.mm.plugin.welab.a.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,27 +17,27 @@ import java.util.Map;
 
 public final class a
 {
-  public static final a EQd;
-  public c DWD;
-  public com.tencent.mm.plugin.welab.d.a EQe;
-  public Map<String, b> EQf;
-  public b EQg;
+  public static final a JFQ;
+  public c IIu;
+  public com.tencent.mm.plugin.welab.d.a JFR;
+  public Map<String, b> JFS;
+  public b JFT;
   
   static
   {
     AppMethodBeat.i(146208);
-    EQd = new a();
+    JFQ = new a();
     AppMethodBeat.o(146208);
   }
   
   public a()
   {
     AppMethodBeat.i(146200);
-    this.EQf = new HashMap();
+    this.JFS = new HashMap();
     c.a locala = new c.a();
-    locala.igk = true;
-    locala.igj = true;
-    this.DWD = locala.aJu();
+    locala.jbf = true;
+    locala.jbe = true;
+    this.IIu = locala.bdv();
     AppMethodBeat.o(146200);
   }
   
@@ -44,44 +45,29 @@ public final class a
   {
     AppMethodBeat.i(146201);
     String str = "";
-    Object localObject = EQd.aLi(parama.field_LabsAppId);
+    Object localObject = JFQ.bby(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((b)localObject).fah();
-      ae.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
+      str = ((b)localObject).gjm();
+      Log.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = parama.aLr("field_Title");
+      localObject = parama.bbH("field_Title");
     }
     AppMethodBeat.o(146201);
     return localObject;
-  }
-  
-  public static void aJ(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(146204);
-    e.aK(paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(146204);
-  }
-  
-  private b aLi(String paramString)
-  {
-    AppMethodBeat.i(146203);
-    paramString = (b)this.EQf.get(paramString);
-    AppMethodBeat.o(146203);
-    return paramString;
   }
   
   public static String b(com.tencent.mm.plugin.welab.d.a.a parama)
   {
     AppMethodBeat.i(146202);
     String str = "";
-    Object localObject = EQd.aLi(parama.field_LabsAppId);
+    Object localObject = JFQ.bby(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((b)localObject).fag();
-      ae.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
+      str = ((b)localObject).gjl();
+      Log.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
@@ -91,12 +77,20 @@ public final class a
     return localObject;
   }
   
-  public static a faa()
+  private b bby(String paramString)
   {
-    return EQd;
+    AppMethodBeat.i(146203);
+    paramString = (b)this.JFS.get(paramString);
+    AppMethodBeat.o(146203);
+    return paramString;
   }
   
-  public static void hi(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
+  public static a gjg()
+  {
+    return JFQ;
+  }
+  
+  public static void io(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
   {
     AppMethodBeat.i(146207);
     if (!paramList.isEmpty())
@@ -106,18 +100,18 @@ public final class a
       while (paramList.hasNext())
       {
         com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)paramList.next();
-        if ((!locala.fal()) && (!locala.isExpired())) {
+        if ((!locala.gjq()) && (!locala.isExpired())) {
           localArrayList.add(locala.field_LabsAppId);
         }
       }
-      paramList = new pz();
-      paramList.dFw.dFx = localArrayList;
-      com.tencent.mm.sdk.b.a.IvT.l(paramList);
+      paramList = new qt();
+      paramList.dXj.dXk = localArrayList;
+      EventCenter.instance.publish(paramList);
       paramList = localArrayList.iterator();
       while (paramList.hasNext()) {
         if ("labs_nearbylife".equals((String)paramList.next()))
         {
-          com.tencent.mm.sdk.b.a.IvT.l(new mh());
+          EventCenter.instance.publish(new my());
           AppMethodBeat.o(146207);
           return;
         }
@@ -126,10 +120,10 @@ public final class a
     AppMethodBeat.o(146207);
   }
   
-  public final com.tencent.mm.plugin.welab.d.a.a aLj(String paramString)
+  public final com.tencent.mm.plugin.welab.d.a.a bbz(String paramString)
   {
     AppMethodBeat.i(146206);
-    com.tencent.mm.plugin.welab.d.a locala = this.EQe;
+    com.tencent.mm.plugin.welab.d.a locala = this.JFR;
     com.tencent.mm.plugin.welab.d.a.a locala1 = new com.tencent.mm.plugin.welab.d.a.a();
     locala1.field_LabsAppId = paramString;
     locala.get(locala1, new String[0]);
@@ -137,10 +131,10 @@ public final class a
     return locala1;
   }
   
-  public final List<com.tencent.mm.plugin.welab.d.a.a> fab()
+  public final List<com.tencent.mm.plugin.welab.d.a.a> gjh()
   {
     AppMethodBeat.i(146205);
-    List localList = this.EQe.fai();
+    List localList = this.JFR.gjn();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
@@ -149,14 +143,14 @@ public final class a
         localIterator.remove();
       }
     }
-    ae.i("WelabMgr", "online lab %s", new Object[] { localList.toString() });
+    Log.i("WelabMgr", "online lab %s", new Object[] { localList.toString() });
     AppMethodBeat.o(146205);
     return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.a
  * JD-Core Version:    0.7.0.1
  */

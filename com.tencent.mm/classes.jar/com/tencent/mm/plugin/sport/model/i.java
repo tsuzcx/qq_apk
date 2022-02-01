@@ -1,27 +1,112 @@
 package com.tencent.mm.plugin.sport.model;
 
-import android.database.MatrixCursor;
-import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.ConfigFileStorageProxyMMKV;
+import com.tencent.mm.storage.an;
 
 public final class i
-  extends MatrixCursor
+  extends an
 {
-  private Bundle dyY;
-  
-  public i(String[] paramArrayOfString, Bundle paramBundle)
+  public i(String paramString)
   {
-    super(paramArrayOfString);
-    this.dyY = paramBundle;
+    super(paramString);
   }
   
-  public final Bundle getExtras()
+  public final long getLong(int paramInt, long paramLong)
   {
-    return this.dyY;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(149327);
+        if (gBE())
+        {
+          paramLong = this.NRN.getLong(paramInt, paramLong);
+          AppMethodBeat.o(149327);
+          return paramLong;
+        }
+        Object localObject1 = get(paramInt);
+        if ((localObject1 instanceof Long))
+        {
+          paramLong = ((Long)localObject1).longValue();
+          AppMethodBeat.o(149327);
+          continue;
+        }
+        if (!(localObject2 instanceof Integer)) {
+          break label97;
+        }
+      }
+      finally {}
+      paramLong = ((Integer)localObject2).longValue();
+      AppMethodBeat.o(149327);
+      continue;
+      label97:
+      AppMethodBeat.o(149327);
+    }
+  }
+  
+  public final String getString(int paramInt, String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(149329);
+        Object localObject;
+        if (gBE())
+        {
+          localObject = this.NRN;
+          if ((((ConfigFileStorageProxyMMKV)localObject).get(paramInt, paramString) instanceof String))
+          {
+            paramString = (String)((ConfigFileStorageProxyMMKV)localObject).get(paramInt, paramString);
+            AppMethodBeat.o(149329);
+            return paramString;
+          }
+          AppMethodBeat.o(149329);
+          continue;
+        }
+        try
+        {
+          localObject = get(paramInt);
+          if ((localObject instanceof String))
+          {
+            localObject = (String)localObject;
+            AppMethodBeat.o(149329);
+            paramString = (String)localObject;
+          }
+          else
+          {
+            AppMethodBeat.o(149329);
+          }
+        }
+        catch (Exception localException)
+        {
+          AppMethodBeat.o(149329);
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public final void setString(int paramInt, String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(149328);
+      set(paramInt, paramString);
+      AppMethodBeat.o(149328);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.i
  * JD-Core Version:    0.7.0.1
  */

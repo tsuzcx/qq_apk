@@ -2,39 +2,40 @@ package com.tencent.mm.al.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.ag;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEvent;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public final class l
-  extends j<k>
+  extends MAutoStorage<k>
 {
   public static final String[] SQL_CREATE;
-  public e db;
-  final com.tencent.mm.sdk.e.l<l.a, a.b> hSD;
-  Map<String, String> hUt;
+  public ISQLiteDatabase db;
+  final MStorageEvent<l.a, a.b> iNS;
+  Map<String, String> iPG;
   
   static
   {
     AppMethodBeat.i(124291);
-    SQL_CREATE = new String[] { j.getCreateSQLs(k.info, "BizChatUserInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(k.info, "BizChatUserInfo") };
     AppMethodBeat.o(124291);
   }
   
-  public l(e parame)
+  public l(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, k.info, "BizChatUserInfo", null);
+    super(paramISQLiteDatabase, k.info, "BizChatUserInfo", null);
     AppMethodBeat.i(124281);
-    this.hUt = new HashMap();
-    this.hSD = new com.tencent.mm.sdk.e.l() {};
-    this.db = parame;
-    parame.execSQL("BizChatUserInfo", "CREATE INDEX IF NOT EXISTS bizUserIdIndex ON BizChatUserInfo ( userId )");
-    this.hUt.clear();
+    this.iPG = new HashMap();
+    this.iNS = new MStorageEvent() {};
+    this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("BizChatUserInfo", "CREATE INDEX IF NOT EXISTS bizUserIdIndex ON BizChatUserInfo ( userId )");
+    this.iPG.clear();
     AppMethodBeat.o(124281);
   }
   
@@ -79,44 +80,44 @@ public final class l
     return paramArrayOfString;
   }
   
-  public final int Fc(String paramString)
+  public final int NP(String paramString)
   {
     AppMethodBeat.i(124285);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.BizChatUserInfoStorage", "getBizChatVersion wrong argument");
+      Log.w("MicroMsg.BizChatUserInfoStorage", "getBizChatVersion wrong argument");
       AppMethodBeat.o(124285);
       return -1;
     }
-    paramString = eP(paramString);
+    paramString = fB(paramString);
     if (paramString != null)
     {
       int i = paramString.field_UserVersion;
       AppMethodBeat.o(124285);
       return i;
     }
-    ae.w("MicroMsg.BizChatUserInfoStorage", "getBizChatVersion item == null");
+    Log.w("MicroMsg.BizChatUserInfoStorage", "getBizChatVersion item == null");
     AppMethodBeat.o(124285);
     return -1;
   }
   
-  public final k Fd(String paramString)
+  public final k NQ(String paramString)
   {
     AppMethodBeat.i(124286);
     if (paramString == null)
     {
-      ae.i("MicroMsg.BizChatUserInfoStorage", "getMyUserInfo brandUserName is null");
+      Log.i("MicroMsg.BizChatUserInfoStorage", "getMyUserInfo brandUserName is null");
       AppMethodBeat.o(124286);
       return null;
     }
-    paramString = eQ(paramString);
+    paramString = fC(paramString);
     if (paramString == null)
     {
-      ae.i("MicroMsg.BizChatUserInfoStorage", "getMyUserInfo myUserIdString is null");
+      Log.i("MicroMsg.BizChatUserInfoStorage", "getMyUserInfo myUserIdString is null");
       AppMethodBeat.o(124286);
       return null;
     }
-    paramString = eP(paramString);
+    paramString = fB(paramString);
     AppMethodBeat.o(124286);
     return paramString;
   }
@@ -124,10 +125,10 @@ public final class l
   public final boolean a(k paramk)
   {
     AppMethodBeat.i(124283);
-    ae.d("MicroMsg.BizChatUserInfoStorage", "BizChatUserInfo insert");
+    Log.d("MicroMsg.BizChatUserInfoStorage", "BizChatUserInfo insert");
     if (paramk == null)
     {
-      ae.w("MicroMsg.BizChatUserInfoStorage", "insert wrong argument");
+      Log.w("MicroMsg.BizChatUserInfoStorage", "insert wrong argument");
       AppMethodBeat.o(124283);
       return false;
     }
@@ -136,10 +137,10 @@ public final class l
     {
       a.b localb = new a.b();
       localb.userId = paramk.field_userId;
-      localb.hVk = a.a.hVg;
-      localb.hVl = paramk;
-      this.hSD.dW(localb);
-      this.hSD.doNotify();
+      localb.iQx = a.a.iQt;
+      localb.iQy = paramk;
+      this.iNS.event(localb);
+      this.iNS.doNotify();
     }
     AppMethodBeat.o(124283);
     return bool;
@@ -148,15 +149,15 @@ public final class l
   public final boolean b(k paramk)
   {
     AppMethodBeat.i(124284);
-    ae.d("MicroMsg.BizChatUserInfoStorage", "BizChatUserInfo update");
+    Log.d("MicroMsg.BizChatUserInfoStorage", "BizChatUserInfo update");
     if (paramk == null)
     {
-      ae.w("MicroMsg.BizChatUserInfoStorage", "update wrong argument");
+      Log.w("MicroMsg.BizChatUserInfoStorage", "update wrong argument");
       AppMethodBeat.o(124284);
       return false;
     }
-    if ((paramk == null) || (bu.isNullOrNil(paramk.field_userName))) {
-      ae.i("MicroMsg.BizChatUserInfoStorage", "dealWithChatNamePY null");
+    if ((paramk == null) || (Util.isNullOrNil(paramk.field_userName))) {
+      Log.i("MicroMsg.BizChatUserInfoStorage", "dealWithChatNamePY null");
     }
     for (;;)
     {
@@ -165,25 +166,25 @@ public final class l
       {
         a.b localb = new a.b();
         localb.userId = paramk.field_userId;
-        localb.hVk = a.a.hVi;
-        localb.hVl = paramk;
-        this.hSD.dW(localb);
-        this.hSD.doNotify();
+        localb.iQx = a.a.iQv;
+        localb.iQy = paramk;
+        this.iNS.event(localb);
+        this.iNS.doNotify();
       }
       AppMethodBeat.o(124284);
       return bool;
-      paramk.field_userNamePY = com.tencent.mm.platformtools.f.Jk(paramk.field_userName);
+      paramk.field_userNamePY = com.tencent.mm.platformtools.f.Sh(paramk.field_userName);
     }
   }
   
   public final void c(k paramk)
   {
     AppMethodBeat.i(124288);
-    ae.i("MicroMsg.BizChatUserInfoStorage", "updateUserName");
-    k localk = eP(paramk.field_userId);
+    Log.i("MicroMsg.BizChatUserInfoStorage", "updateUserName");
+    k localk = fB(paramk.field_userId);
     if (localk != null)
     {
-      if ((!bu.isNullOrNil(paramk.field_userName)) && (!paramk.field_userName.equals(localk.field_userName)))
+      if ((!Util.isNullOrNil(paramk.field_userName)) && (!paramk.field_userName.equals(localk.field_userName)))
       {
         localk.field_userName = paramk.field_userName;
         b(localk);
@@ -196,12 +197,12 @@ public final class l
     AppMethodBeat.o(124288);
   }
   
-  public final k eP(String paramString)
+  public final k fB(String paramString)
   {
     AppMethodBeat.i(124282);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.BizChatUserInfoStorage", "get  wrong argument");
+      Log.w("MicroMsg.BizChatUserInfoStorage", "get  wrong argument");
       AppMethodBeat.o(124282);
       return null;
     }
@@ -212,32 +213,32 @@ public final class l
     return localk;
   }
   
-  public final String eQ(String paramString)
+  public final String fC(String paramString)
   {
     AppMethodBeat.i(124287);
     if (paramString == null)
     {
-      ae.i("MicroMsg.BizChatUserInfoStorage", "getMyUserId brandUserName is null");
+      Log.i("MicroMsg.BizChatUserInfoStorage", "getMyUserId brandUserName is null");
       AppMethodBeat.o(124287);
       return null;
     }
-    ae.i("MicroMsg.BizChatUserInfoStorage", "getMyUserId:%s", new Object[] { paramString });
-    if ((this.hUt.containsKey(paramString)) && (this.hUt.get(paramString) != null))
+    Log.i("MicroMsg.BizChatUserInfoStorage", "getMyUserId:%s", new Object[] { paramString });
+    if ((this.iPG.containsKey(paramString)) && (this.iPG.get(paramString) != null))
     {
-      paramString = (String)this.hUt.get(paramString);
+      paramString = (String)this.iPG.get(paramString);
       AppMethodBeat.o(124287);
       return paramString;
     }
-    f localf = ag.aGu().Fa(paramString);
+    f localf = ag.bam().NO(paramString);
     if (localf != null)
     {
-      ae.d("MicroMsg.BizChatUserInfoStorage", "getMyUserId bizChatMyUserInfo brandUserName:%s,%s", new Object[] { paramString, localf.field_userId });
-      this.hUt.put(paramString, localf.field_userId);
+      Log.d("MicroMsg.BizChatUserInfoStorage", "getMyUserId bizChatMyUserInfo brandUserName:%s,%s", new Object[] { paramString, localf.field_userId });
+      this.iPG.put(paramString, localf.field_userId);
       paramString = localf.field_userId;
       AppMethodBeat.o(124287);
       return paramString;
     }
-    ae.w("MicroMsg.BizChatUserInfoStorage", "getMyUserId bizChatMyUserInfo == null brandUserName:%s", new Object[] { paramString });
+    Log.w("MicroMsg.BizChatUserInfoStorage", "getMyUserId bizChatMyUserInfo == null brandUserName:%s", new Object[] { paramString });
     AppMethodBeat.o(124287);
     return null;
   }
@@ -247,10 +248,10 @@ public final class l
     static
     {
       AppMethodBeat.i(124280);
-      hVg = new a("INSTERT", 0);
-      hVh = new a("DELETE", 1);
-      hVi = new a("UPDATE", 2);
-      hVj = new a[] { hVg, hVh, hVi };
+      iQt = new a("INSTERT", 0);
+      iQu = new a("DELETE", 1);
+      iQv = new a("UPDATE", 2);
+      iQw = new a[] { iQt, iQu, iQv };
       AppMethodBeat.o(124280);
     }
     
@@ -259,14 +260,14 @@ public final class l
   
   public static final class a$b
   {
-    public l.a.a hVk;
-    public k hVl;
+    public l.a.a iQx;
+    public k iQy;
     public String userId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.al.a.l
  * JD-Core Version:    0.7.0.1
  */

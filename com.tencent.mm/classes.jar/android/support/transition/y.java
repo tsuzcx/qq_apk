@@ -1,38 +1,26 @@
 package android.support.transition;
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroupOverlay;
 
 final class y
-  implements z
+  extends ae
+  implements aa
 {
-  private final ViewGroupOverlay Dk;
-  
-  y(ViewGroup paramViewGroup)
+  y(Context paramContext, ViewGroup paramViewGroup, View paramView)
   {
-    this.Dk = paramViewGroup.getOverlay();
-  }
-  
-  public final void add(Drawable paramDrawable)
-  {
-    this.Dk.add(paramDrawable);
+    super(paramContext, paramViewGroup, paramView);
   }
   
   public final void add(View paramView)
   {
-    this.Dk.add(paramView);
-  }
-  
-  public final void remove(Drawable paramDrawable)
-  {
-    this.Dk.remove(paramDrawable);
+    this.DB.add(paramView);
   }
   
   public final void remove(View paramView)
   {
-    this.Dk.remove(paramView);
+    this.DB.remove(paramView);
   }
 }
 

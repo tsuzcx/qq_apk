@@ -2,8 +2,10 @@ package com.tencent.mm.plugin.wepkg.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.zs;
+import com.tencent.mm.g.a.aaz;
+import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.event.EventCenter;
 
 final class c$1
   extends o.a
@@ -13,14 +15,14 @@ final class c$1
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(110787);
-    if ((g.ajM()) && (g.ajP().gDk))
+    if ((g.aAc()) && (g.aAf().hpY))
     {
-      g.ajP();
-      if (!com.tencent.mm.kernel.a.aiT())
+      g.aAf();
+      if (!a.azj())
       {
-        paramString = new zs();
-        paramString.dQc.dlO = 3;
-        com.tencent.mm.sdk.b.a.IvT.l(paramString);
+        paramString = new aaz();
+        paramString.eif.dDe = 3;
+        EventCenter.instance.publish(paramString);
       }
     }
     AppMethodBeat.o(110787);
@@ -29,14 +31,14 @@ final class c$1
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(110786);
-    if ((g.ajM()) && (g.ajP().gDk))
+    if ((g.aAc()) && (g.aAf().hpY))
     {
-      g.ajP();
-      if (!com.tencent.mm.kernel.a.aiT())
+      g.aAf();
+      if (!a.azj())
       {
-        paramString = new zs();
-        paramString.dQc.dlO = 5;
-        com.tencent.mm.sdk.b.a.IvT.l(paramString);
+        paramString = new aaz();
+        paramString.eif.dDe = 5;
+        EventCenter.instance.publish(paramString);
       }
     }
     AppMethodBeat.o(110786);

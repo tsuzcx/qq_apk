@@ -1,47 +1,47 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.video;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ad.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.ag.e.j;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 final class b
   implements c.a
 {
-  private final float cuQ;
-  private final float cuR;
-  final WeakReference<TextureImageViewLikeImpl> cuS;
+  private final float cIO;
+  private final float cIP;
+  final WeakReference<TextureImageViewLikeImpl> cIQ;
   
   public b(j paramj, TextureImageViewLikeImpl paramTextureImageViewLikeImpl)
   {
-    AppMethodBeat.i(220485);
-    this.cuQ = paramj.cvU.cvF;
-    this.cuR = paramj.cvU.cvG;
-    ae.i("MicroMsg.AppBrand.TextureScaleLogic", "<init>, originWidthScale: %f, originHeightScale: %f", new Object[] { Float.valueOf(this.cuQ), Float.valueOf(this.cuR) });
-    this.cuS = new WeakReference(paramTextureImageViewLikeImpl);
-    AppMethodBeat.o(220485);
+    AppMethodBeat.i(215677);
+    this.cIO = paramj.cJT.cJD;
+    this.cIP = paramj.cJT.cJE;
+    Log.i("MicroMsg.AppBrand.TextureScaleLogic", "<init>, originWidthScale: %f, originHeightScale: %f", new Object[] { Float.valueOf(this.cIO), Float.valueOf(this.cIP) });
+    this.cIQ = new WeakReference(paramTextureImageViewLikeImpl);
+    AppMethodBeat.o(215677);
   }
   
   public final void a(final boolean paramBoolean, final float paramFloat1, final float paramFloat2)
   {
-    AppMethodBeat.i(220486);
-    ae.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, justTextureSizeChanged: %b, widthScale: %f, heightScale: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    AppMethodBeat.i(215678);
+    Log.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, justTextureSizeChanged: %b, widthScale: %f, heightScale: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
     if (paramBoolean)
     {
-      ae.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, justTextureSizeChanged");
-      AppMethodBeat.o(220486);
+      Log.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, justTextureSizeChanged");
+      AppMethodBeat.o(215678);
       return;
     }
-    if ((TextureImageViewLikeImpl)this.cuS.get() == null)
+    if ((TextureImageViewLikeImpl)this.cIQ.get() == null)
     {
-      ae.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, textureImageViewLike already release");
-      AppMethodBeat.o(220486);
+      Log.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, textureImageViewLike already release");
+      AppMethodBeat.o(215678);
       return;
     }
-    float f1 = paramFloat1 / this.cuQ;
-    float f2 = paramFloat2 / this.cuR;
+    float f1 = paramFloat1 / this.cIO;
+    float f2 = paramFloat2 / this.cIP;
     if (f1 >= f2)
     {
       paramFloat1 = f2 / f1 * 1.0F;
@@ -50,30 +50,30 @@ final class b
     }
     for (;;)
     {
-      ae.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, fixedWidthScale: %f, fixedHeightScale: %f, finalWidthScale: %f, finalHeightScale: %f, willScaleWidth: %b", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Boolean.valueOf(paramBoolean) });
-      h.MqF.aM(new Runnable()
+      Log.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale, fixedWidthScale: %f, fixedHeightScale: %f, finalWidthScale: %f, finalHeightScale: %f, willScaleWidth: %b", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Boolean.valueOf(paramBoolean) });
+      h.RTc.aV(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(220484);
-          TextureImageViewLikeImpl localTextureImageViewLikeImpl = (TextureImageViewLikeImpl)b.this.cuS.get();
+          AppMethodBeat.i(215676);
+          TextureImageViewLikeImpl localTextureImageViewLikeImpl = (TextureImageViewLikeImpl)b.this.cIQ.get();
           if (localTextureImageViewLikeImpl == null)
           {
-            ae.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale#ui, textureImageViewLike already release");
-            AppMethodBeat.o(220484);
+            Log.i("MicroMsg.AppBrand.TextureScaleLogic", "onTextureScale#ui, textureImageViewLike already release");
+            AppMethodBeat.o(215676);
             return;
           }
           if (paramBoolean)
           {
             localTextureImageViewLikeImpl.setTextureViewWidthWeight(paramFloat2);
-            AppMethodBeat.o(220484);
+            AppMethodBeat.o(215676);
             return;
           }
           localTextureImageViewLikeImpl.setTextureViewHeightWeight(paramFloat1);
-          AppMethodBeat.o(220484);
+          AppMethodBeat.o(215676);
         }
       });
-      AppMethodBeat.o(220486);
+      AppMethodBeat.o(215678);
       return;
       paramFloat2 = f1 / f2 * 1.0F;
       paramBoolean = true;
@@ -83,7 +83,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.b
  * JD-Core Version:    0.7.0.1
  */

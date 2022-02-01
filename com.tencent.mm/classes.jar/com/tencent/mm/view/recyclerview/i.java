@@ -1,33 +1,59 @@
 package com.tencent.mm.view.recyclerview;
 
-import android.support.v7.widget.RecyclerView;
+import android.util.LongSparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import java.lang.ref.WeakReference;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/view/recyclerview/WxRVListener;", "", "onScrollStatsChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "data", "Lcom/tencent/mm/view/recyclerview/WxRVData;", "Companion", "libmmui_release"})
-public abstract interface i
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "", "spanIndex", "", "width", "height", "(III)V", "foldedAdapterRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getFoldedAdapterRef", "()Ljava/lang/ref/WeakReference;", "setFoldedAdapterRef", "(Ljava/lang/ref/WeakReference;)V", "foldedExpose", "", "getFoldedExpose", "()Z", "setFoldedExpose", "(Z)V", "foldedExposeReport", "getFoldedExposeReport", "setFoldedExposeReport", "foldedSessionExposeMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getFoldedSessionExposeMap", "()Landroid/util/LongSparseArray;", "setFoldedSessionExposeMap", "(Landroid/util/LongSparseArray;)V", "foldedTop", "getFoldedTop", "()I", "setFoldedTop", "(I)V", "globalVisibleBottom", "getGlobalVisibleBottom", "setGlobalVisibleBottom", "globalVisibleTop", "getGlobalVisibleTop", "setGlobalVisibleTop", "getHeight", "setHeight", "getSpanIndex", "visibleTop", "getVisibleTop", "setVisibleTop", "getWidth", "setWidth", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "libmmui_release"})
+public final class i
 {
-  public static final a LSz = a.LSB;
+  public int Rrb;
+  public int Rrc;
+  public int Rrd;
+  public int Rre;
+  public boolean Rrf;
+  public boolean Rrg;
+  public LongSparseArray<k> Rrh;
+  public WeakReference<WxRecyclerAdapter<?>> Rri;
+  public final int Rrj;
+  public int height;
+  public int width;
   
-  public abstract void a(RecyclerView paramRecyclerView, g paramg);
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/view/recyclerview/WxRVListener$Companion;", "", "()V", "DataHandleThreadName", "", "getDataHandleThreadName", "()Ljava/lang/String;", "SCROLL_DRAGGING", "", "SCROLL_STATE_ATTACHED", "SCROLL_STATE_DATA_CHANGE", "SCROLL_STATE_DRAGGING", "SCROLL_STATE_FIRST_TERM_CHANGE", "SCROLL_STATE_IDLE", "SCROLL_STATE_ON_FOCUS_VIEW", "SCROLL_STATE_ON_RESUME", "SCROLL_STATE_SETTLING", "libmmui_release"})
-  public static final class a
+  public i(int paramInt1, int paramInt2, int paramInt3)
   {
-    private static final String LSA = "WxDataRecyclerView.DataHandle";
-    
-    static
+    this.Rrj = paramInt1;
+    this.width = paramInt2;
+    this.height = paramInt3;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this != paramObject)
     {
-      AppMethodBeat.i(193935);
-      LSB = new a();
-      LSA = "WxDataRecyclerView.DataHandle";
-      AppMethodBeat.o(193935);
+      if ((paramObject instanceof i))
+      {
+        paramObject = (i)paramObject;
+        if ((this.Rrj != paramObject.Rrj) || (this.width != paramObject.width) || (this.height != paramObject.height)) {}
+      }
     }
-    
-    public static String fUZ()
-    {
-      return LSA;
+    else {
+      return true;
     }
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    return (this.Rrj * 31 + this.width) * 31 + this.height;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(205048);
+    String str = "WxItemShowInfo(spanIndex=" + this.Rrj + ", width=" + this.width + ", height=" + this.height + ")";
+    AppMethodBeat.o(205048);
+    return str;
   }
 }
 

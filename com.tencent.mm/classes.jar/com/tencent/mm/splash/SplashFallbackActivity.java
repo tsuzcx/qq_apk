@@ -10,29 +10,29 @@ import com.tencent.mm.hellhoundlib.activities.HellActivity;
 public class SplashFallbackActivity
   extends HellActivity
 {
-  private Runnable IFg;
+  private Runnable NLZ;
   private Handler mHandler;
   
   public SplashFallbackActivity()
   {
     AppMethodBeat.i(40668);
-    this.IFg = new Runnable()
+    this.NLZ = new Runnable()
     {
-      private long IFh = -1L;
+      private long NMa = -1L;
       
       public final void run()
       {
         AppMethodBeat.i(40667);
-        if (this.IFh == -1L) {
-          this.IFh = System.currentTimeMillis();
+        if (this.NMa == -1L) {
+          this.NMa = System.currentTimeMillis();
         }
-        if (!SplashFallbackActivity.frv())
+        if (!SplashFallbackActivity.gyv())
         {
-          if (System.currentTimeMillis() - this.IFh >= 80000L)
+          if (System.currentTimeMillis() - this.NMa >= 80000L)
           {
-            h.b("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
+            h.c("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
             SplashFallbackActivity.this.finish();
-            SplashFallbackActivity.this.overridePendingTransition(2130772154, 2130772152);
+            SplashFallbackActivity.this.overridePendingTransition(2130772183, 2130772181);
             AppMethodBeat.o(40667);
             return;
           }
@@ -40,9 +40,9 @@ public class SplashFallbackActivity
           AppMethodBeat.o(40667);
           return;
         }
-        h.b("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone true", new Object[0]);
+        h.c("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone true", new Object[0]);
         SplashFallbackActivity.this.finish();
-        SplashFallbackActivity.this.overridePendingTransition(2130772154, 2130772152);
+        SplashFallbackActivity.this.overridePendingTransition(2130772183, 2130772181);
         AppMethodBeat.o(40667);
       }
     };
@@ -52,7 +52,7 @@ public class SplashFallbackActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(40670);
-    h.b("MicroMsg.FallbackSplash", "block onBackPressed", new Object[0]);
+    h.c("MicroMsg.FallbackSplash", "block onBackPressed", new Object[0]);
     AppMethodBeat.o(40670);
   }
   
@@ -60,11 +60,11 @@ public class SplashFallbackActivity
   {
     AppMethodBeat.i(40669);
     super.onCreate(paramBundle);
-    h.b("MicroMsg.FallbackSplash", "onCreate", new Object[0]);
+    h.c("MicroMsg.FallbackSplash", "onCreate", new Object[0]);
     paramBundle = new HandlerThread("splash-activity");
     paramBundle.start();
     this.mHandler = new Handler(paramBundle.getLooper());
-    this.mHandler.postDelayed(this.IFg, 100L);
+    this.mHandler.postDelayed(this.NLZ, 100L);
     AppMethodBeat.o(40669);
   }
   

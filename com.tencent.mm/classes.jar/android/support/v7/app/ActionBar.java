@@ -15,16 +15,18 @@ import android.view.ViewGroup.MarginLayoutParams;
 
 public abstract class ActionBar
 {
+  public void P(boolean paramBoolean) {}
+  
   public void Q(boolean paramBoolean) {}
   
   public void R(boolean paramBoolean) {}
-  
-  public void S(boolean paramBoolean) {}
   
   public b a(b.a parama)
   {
     return null;
   }
+  
+  public abstract void a(View paramView, LayoutParams paramLayoutParams);
   
   public boolean b(KeyEvent paramKeyEvent)
   {
@@ -49,30 +51,30 @@ public abstract class ActionBar
   
   public abstract CharSequence getTitle();
   
-  public abstract void gk();
+  public abstract void gr();
   
-  public abstract void gl();
+  public abstract void gs();
   
-  public abstract void gm();
+  public abstract void gt();
   
-  public abstract void gn();
+  public abstract void gu();
   
-  public void go()
+  public void gv()
   {
     throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
   }
   
-  public boolean gp()
+  public boolean gw()
   {
     return false;
   }
   
-  public boolean gq()
+  public boolean gx()
   {
     return false;
   }
   
-  public boolean gr()
+  public boolean gy()
   {
     return false;
   }
@@ -111,6 +113,8 @@ public abstract class ActionBar
   
   public abstract void setLogo(Drawable paramDrawable);
   
+  public abstract void setTitle(CharSequence paramCharSequence);
+  
   public void setWindowTitle(CharSequence paramCharSequence) {}
   
   public abstract void show();
@@ -120,9 +124,9 @@ public abstract class ActionBar
   {
     public int gravity = 0;
     
-    public LayoutParams(int paramInt)
+    public LayoutParams(int paramInt1, int paramInt2)
     {
-      super(-2);
+      super(paramInt2);
       this.gravity = 8388627;
     }
     

@@ -14,20 +14,20 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RemarkInfoPreference
   extends Preference
 {
-  private MMActivity fNT;
-  private ImageView fWT;
+  private TextView BfZ;
+  private boolean Bih;
+  private ImageView gBZ;
+  private MMActivity gte;
   private String summary;
   private String title;
   private TextView titleTv;
-  private TextView xif;
-  private boolean xkk;
   
   public RemarkInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27387);
-    this.xkk = false;
-    this.fNT = ((MMActivity)paramContext);
+    this.Bih = false;
+    this.gte = ((MMActivity)paramContext);
     AppMethodBeat.o(27387);
   }
   
@@ -35,33 +35,33 @@ public class RemarkInfoPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27388);
-    this.xkk = false;
-    setLayoutResource(2131494804);
-    setWidgetLayoutResource(2131494884);
+    this.Bih = false;
+    setLayoutResource(2131495538);
+    setWidgetLayoutResource(2131495622);
     AppMethodBeat.o(27388);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27390);
-    this.titleTv = ((TextView)paramView.findViewById(2131305902));
-    this.xif = ((TextView)paramView.findViewById(2131305546));
-    this.fWT = ((ImageView)paramView.findViewById(2131300943));
-    if (!this.xkk) {
-      this.fWT.setVisibility(8);
+    this.titleTv = ((TextView)paramView.findViewById(2131309195));
+    this.BfZ = ((TextView)paramView.findViewById(2131308767));
+    this.gBZ = ((ImageView)paramView.findViewById(2131302573));
+    if (!this.Bih) {
+      this.gBZ.setVisibility(8);
     }
     for (;;)
     {
       if (this.titleTv != null) {
         this.titleTv.setText(this.title);
       }
-      if (this.xif != null) {
-        this.xif.setText(this.summary);
+      if (this.BfZ != null) {
+        this.BfZ.setText(this.summary);
       }
       super.onBindView(paramView);
       AppMethodBeat.o(27390);
       return;
-      this.fWT.setVisibility(0);
+      this.gBZ.setVisibility(0);
     }
   }
   
@@ -70,9 +70,9 @@ public class RemarkInfoPreference
     AppMethodBeat.i(27389);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494844, localViewGroup);
+    localLayoutInflater.inflate(2131495579, localViewGroup);
     AppMethodBeat.o(27389);
     return paramViewGroup;
   }

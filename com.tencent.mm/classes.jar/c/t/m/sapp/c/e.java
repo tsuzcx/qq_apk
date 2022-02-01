@@ -24,18 +24,18 @@ public class e
   
   public e(Context paramContext)
   {
-    AppMethodBeat.i(210706);
+    AppMethodBeat.i(222954);
     this.c = "DexAsynchHandler";
     this.i = new SimpleDateFormat("HHmmss");
     this.j = new SimpleDateFormat("yyyyMMdd-HHmmss");
     this.g = paramContext.getApplicationContext();
     this.h = new k(this.g);
-    AppMethodBeat.o(210706);
+    AppMethodBeat.o(222954);
   }
   
   public static e a(Context paramContext)
   {
-    AppMethodBeat.i(210707);
+    AppMethodBeat.i(222955);
     if (b == null) {}
     try
     {
@@ -43,12 +43,12 @@ public class e
         b = new e(paramContext);
       }
       paramContext = b;
-      AppMethodBeat.o(210707);
+      AppMethodBeat.o(222955);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(210707);
+      AppMethodBeat.o(222955);
     }
   }
   
@@ -59,19 +59,19 @@ public class e
   
   public void a()
   {
-    AppMethodBeat.i(210710);
+    AppMethodBeat.i(222958);
     if (this.g == null)
     {
-      AppMethodBeat.o(210710);
+      AppMethodBeat.o(222958);
       return;
     }
     a(10005, null);
-    AppMethodBeat.o(210710);
+    AppMethodBeat.o(222958);
   }
   
   public final void a(int paramInt, String paramString)
   {
-    AppMethodBeat.i(210712);
+    AppMethodBeat.i(222960);
     a locala = this.e;
     if (locala != null)
     {
@@ -80,12 +80,12 @@ public class e
       localMessage.what = paramInt;
       o.a(locala, localMessage);
     }
-    AppMethodBeat.o(210712);
+    AppMethodBeat.o(222960);
   }
   
   public void a(String paramString)
   {
-    AppMethodBeat.i(210709);
+    AppMethodBeat.i(222957);
     try
     {
       if ((this.g != null) && (this.e != null) && (paramString != null) && (paramString.length() != 0))
@@ -96,15 +96,15 @@ public class e
         paramString = localStringBuilder2.append("COMP").append(paramString);
         paramString.append("$");
         a(localStringBuilder1.toString().getBytes());
-        AppMethodBeat.o(210709);
+        AppMethodBeat.o(222957);
         return;
       }
-      AppMethodBeat.o(210709);
+      AppMethodBeat.o(222957);
       return;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(210709);
+      AppMethodBeat.o(222957);
     }
   }
   
@@ -112,7 +112,7 @@ public class e
   
   public boolean a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(210711);
+    AppMethodBeat.i(222959);
     if (paramArrayOfByte != null) {
       try
       {
@@ -128,27 +128,27 @@ public class e
               if (p.a("https://analytics.map.qq.com/tr?mllc", paramArrayOfByte) == null) {
                 this.h.a(paramArrayOfByte);
               }
-              AppMethodBeat.o(210711);
+              AppMethodBeat.o(222959);
               return false;
             }
           }
-          AppMethodBeat.o(210711);
+          AppMethodBeat.o(222959);
           return true;
         }
       }
       catch (Throwable paramArrayOfByte)
       {
-        AppMethodBeat.o(210711);
+        AppMethodBeat.o(222959);
         return false;
       }
     }
-    AppMethodBeat.o(210711);
+    AppMethodBeat.o(222959);
     return true;
   }
   
   public final byte[] a(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(210713);
+    AppMethodBeat.i(222961);
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
       paramArrayOfByte = m.b(q.b(paramArrayOfByte), paramString);
@@ -157,31 +157,31 @@ public class e
         paramString = new byte[paramArrayOfByte.length + 2];
         System.arraycopy(q.a(paramArrayOfByte.length), 0, paramString, 0, 2);
         System.arraycopy(paramArrayOfByte, 0, paramString, 2, paramArrayOfByte.length);
-        AppMethodBeat.o(210713);
+        AppMethodBeat.o(222961);
         return paramString;
       }
       paramArrayOfByte = a;
-      AppMethodBeat.o(210713);
+      AppMethodBeat.o(222961);
       return paramArrayOfByte;
     }
     paramArrayOfByte = a;
-    AppMethodBeat.o(210713);
+    AppMethodBeat.o(222961);
     return paramArrayOfByte;
   }
   
   public void c()
   {
-    AppMethodBeat.i(210708);
+    AppMethodBeat.i(222956);
     if (this.f)
     {
-      AppMethodBeat.o(210708);
+      AppMethodBeat.o(222956);
       return;
     }
     this.d = new HandlerThread("d_thread");
     this.d.start();
     this.e = new a(this.d.getLooper());
     this.f = true;
-    AppMethodBeat.o(210708);
+    AppMethodBeat.o(222956);
   }
   
   public void d() {}
@@ -194,61 +194,61 @@ public class e
     public a(Looper paramLooper)
     {
       super();
-      AppMethodBeat.i(210703);
+      AppMethodBeat.i(222951);
       this.a = new StringBuilder(1024);
       this.a.setLength(0);
-      AppMethodBeat.o(210703);
+      AppMethodBeat.o(222951);
     }
     
     public void a(Message paramMessage)
     {
-      AppMethodBeat.i(210705);
+      AppMethodBeat.i(222953);
       try
       {
         int i = paramMessage.what;
         switch (i)
         {
         default: 
-          AppMethodBeat.o(210705);
+          AppMethodBeat.o(222953);
           return;
         }
       }
       catch (Throwable paramMessage)
       {
-        AppMethodBeat.o(210705);
+        AppMethodBeat.o(222953);
         return;
       }
       q.a(e.a(e.this));
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
       return;
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
       return;
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
       return;
       g.a(e.a(e.this));
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
       return;
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
       return;
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
       return;
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
       return;
-      AppMethodBeat.o(210705);
+      AppMethodBeat.o(222953);
     }
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(210704);
+      AppMethodBeat.i(222952);
       super.handleMessage(paramMessage);
       a(paramMessage);
-      AppMethodBeat.o(210704);
+      AppMethodBeat.o(222952);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.sapp.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ final class c$1
     AppMethodBeat.i(132156);
     if (paramClass == com.tencent.mm.kernel.a.c.b.class)
     {
-      c.ake().gFd.a(paramClass, paramObject1, paramObject2);
+      c.aAu().hrR.a(paramClass, paramObject1, paramObject2);
       AppMethodBeat.o(132156);
       return;
     }
     if (paramClass == com.tencent.mm.kernel.b.b.class) {
-      c.ake().gFe.a(paramClass, paramObject1, paramObject2);
+      c.aAu().hrS.a(paramClass, paramObject1, paramObject2);
     }
     AppMethodBeat.o(132156);
   }

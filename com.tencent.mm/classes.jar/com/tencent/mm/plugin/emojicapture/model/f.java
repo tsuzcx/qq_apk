@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.emojicapture.model;
 
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.compatible.i.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureUtil;", "", "()V", "TAG", "", "checkVideoValid", "", "videoPath", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureUtil;", "", "()V", "TAG", "", "checkVideoValid", "", "videoPath", "plugin-emojicapture_release"})
 public final class f
 {
   private static final String TAG = "MicroMsg.EmojiCaptureUtil";
-  public static final f pXE;
+  public static final f roC;
   
   static
   {
     AppMethodBeat.i(190);
-    pXE = new f();
+    roC = new f();
     TAG = "MicroMsg.EmojiCaptureUtil";
     AppMethodBeat.o(190);
   }
   
-  public static boolean add(String paramString)
+  public static boolean anm(String paramString)
   {
     AppMethodBeat.i(189);
     p.h(paramString, "videoPath");
-    if (o.aZR(paramString) <= 0L)
+    if (s.boW(paramString) <= 0L)
     {
       AppMethodBeat.o(189);
       return false;
@@ -48,7 +48,7 @@ public final class f
           }
           catch (Exception paramString)
           {
-            ae.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+            Log.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
             continue;
           }
         }
@@ -73,7 +73,7 @@ public final class f
                 }
                 catch (Exception paramString)
                 {
-                  ae.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+                  Log.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
                   continue;
                 }
               }
@@ -86,14 +86,14 @@ public final class f
       catch (Exception paramString)
       {
         paramString = paramString;
-        ae.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid error", new Object[0]);
+        Log.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid error", new Object[0]);
         try
         {
           localc.release();
         }
         catch (Exception paramString)
         {
-          ae.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+          Log.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
         }
         continue;
       }
@@ -106,7 +106,7 @@ public final class f
       }
       catch (Exception paramString)
       {
-        ae.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+        Log.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
       }
     }
     try
@@ -119,14 +119,14 @@ public final class f
     {
       for (;;)
       {
-        ae.printErrStackTrace(TAG, (Throwable)localException, "checkVideoValid, release extractor error", new Object[0]);
+        Log.printErrStackTrace(TAG, (Throwable)localException, "checkVideoValid, release extractor error", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.f
  * JD-Core Version:    0.7.0.1
  */

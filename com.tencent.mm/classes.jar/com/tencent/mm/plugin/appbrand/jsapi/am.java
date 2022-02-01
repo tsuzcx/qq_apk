@@ -1,16 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.vending.g.d.b;
-import d.g.a.b;
-import d.l;
+import android.content.Intent;
+import com.tencent.luggage.h.f.c;
+import com.tencent.luggage.sdk.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-@l(gjZ={1, 1, 16})
-final class am
-  implements d.b
+public final class am
+  extends d<k>
 {
-  am(b paramb)
+  public static final int CTRL_INDEX = 58;
+  public static final String NAME = "addCard";
+  int csv;
+  final int lyj;
+  
+  public am()
   {
-    this.heQ = paramb;
+    AppMethodBeat.i(174749);
+    this.lyj = a.aK(this);
+    AppMethodBeat.o(174749);
   }
 }
 

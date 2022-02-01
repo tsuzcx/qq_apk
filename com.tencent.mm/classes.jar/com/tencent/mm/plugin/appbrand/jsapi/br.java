@@ -1,26 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.luggage.h.e.c;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.pluginsdk.wallet.e;
+import android.os.Bundle;
 
 public final class br
-  extends a<h>
+  extends d<com.tencent.mm.plugin.appbrand.d>
 {
-  public static final int CTRL_INDEX = 619;
-  public static final String NAME = "openWCPayLQTDepositPlanAdd";
-  final int kwN;
-  
-  public br()
-  {
-    AppMethodBeat.i(174763);
-    this.kwN = com.tencent.luggage.sdk.g.a.aC(this);
-    AppMethodBeat.o(174763);
-  }
+  public static final int CTRL_INDEX = 925;
+  public static final String NAME = "requestOfflineUserBindQuery";
 }
 
 

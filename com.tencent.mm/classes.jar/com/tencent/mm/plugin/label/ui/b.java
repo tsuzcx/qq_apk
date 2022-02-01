@@ -11,25 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMTextView;
 import java.util.ArrayList;
 
 public final class b
   extends BaseAdapter
 {
-  String jev;
+  String kcy;
   private Context mContext;
-  ArrayList<String> viV;
-  SparseArray<SpannableString> viW;
+  ArrayList<String> yCY;
+  SparseArray<SpannableString> yCZ;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(26275);
-    this.viV = new ArrayList();
-    this.viW = new SparseArray();
+    this.yCY = new ArrayList();
+    this.yCZ = new SparseArray();
     this.mContext = paramContext;
     AppMethodBeat.o(26275);
   }
@@ -37,12 +37,12 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(26276);
-    if (this.viV == null)
+    if (this.yCY == null)
     {
       AppMethodBeat.o(26276);
       return 0;
     }
-    int i = this.viV.size();
+    int i = this.yCY.size();
     AppMethodBeat.o(26276);
     return i;
   }
@@ -50,12 +50,12 @@ public final class b
   public final String getItem(int paramInt)
   {
     AppMethodBeat.i(26277);
-    if ((this.viV == null) || (paramInt >= getCount()))
+    if ((this.yCY == null) || (paramInt >= getCount()))
     {
       AppMethodBeat.o(26277);
       return null;
     }
-    String str = (String)this.viV.get(paramInt);
+    String str = (String)this.yCY.get(paramInt);
     AppMethodBeat.o(26277);
     return str;
   }
@@ -73,14 +73,14 @@ public final class b
     int i;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493646, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.mContext).inflate(2131493776, paramViewGroup, false);
       paramViewGroup = new c(paramView);
       paramView.setTag(paramViewGroup);
-      localMMTextView = paramViewGroup.vjw;
-      str = bu.bI(getItem(paramInt), "");
-      i = (int)paramViewGroup.vjw.getTextSize();
+      localMMTextView = paramViewGroup.yDz;
+      str = Util.nullAs(getItem(paramInt), "");
+      i = (int)paramViewGroup.yDz.getTextSize();
       paramInt = str.hashCode();
-      paramViewGroup = (SpannableString)this.viW.get(paramInt);
+      paramViewGroup = (SpannableString)this.yCZ.get(paramInt);
       if (paramViewGroup == null) {
         break label121;
       }
@@ -93,25 +93,25 @@ public final class b
       paramViewGroup = (c)paramView.getTag();
       break;
       label121:
-      paramViewGroup = new SpannableString(k.b(this.mContext, str, i));
-      i = str.indexOf(this.jev);
+      paramViewGroup = new SpannableString(l.e(this.mContext, str, i));
+      i = str.indexOf(this.kcy);
       if (i == -1)
       {
-        ae.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
+        Log.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
       }
       else
       {
-        int j = this.jev.length() + i;
-        paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131101171)), i, j, 33);
+        int j = this.kcy.length() + i;
+        paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131101414)), i, j, 33);
         paramViewGroup.setSpan(new StyleSpan(1), i, j, 33);
-        this.viW.put(paramInt, paramViewGroup);
+        this.yCZ.put(paramInt, paramViewGroup);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.b
  * JD-Core Version:    0.7.0.1
  */

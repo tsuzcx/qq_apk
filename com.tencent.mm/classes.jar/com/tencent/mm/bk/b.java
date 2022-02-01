@@ -4,29 +4,29 @@ import android.app.ActivityManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
   extends a<byte[]>
 {
-  public static final b ixQ;
-  private static int ixR;
+  public static final b jtf;
+  private static int jtg;
   
   static
   {
     AppMethodBeat.i(127065);
-    ixQ = new b();
-    ixR = 0;
+    jtf = new b();
+    jtg = 0;
     AppMethodBeat.o(127065);
   }
   
-  public final long ayJ()
+  public final long aRP()
   {
     AppMethodBeat.i(127058);
-    if (ixR <= 0) {
-      ixR = ((ActivityManager)ak.getContext().getSystemService("activity")).getLargeMemoryClass();
+    if (jtg <= 0) {
+      jtg = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (ixR >= 512)
+    if (jtg >= 512)
     {
       AppMethodBeat.o(127058);
       return 41943040L;
@@ -35,15 +35,15 @@ public final class b
     return 20971520L;
   }
   
-  public final long ayK()
+  public final long aRQ()
   {
     return 10485760L;
   }
   
-  public final void ayL()
+  public final void aRR()
   {
     AppMethodBeat.i(127059);
-    super.ayL();
+    super.aRR();
     AppMethodBeat.o(127059);
   }
   
@@ -68,7 +68,7 @@ public final class b
     try
     {
       AppMethodBeat.i(127056);
-      super.bL(paramArrayOfByte);
+      super.bU(paramArrayOfByte);
       AppMethodBeat.o(127056);
       return;
     }
@@ -81,7 +81,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bk.b
  * JD-Core Version:    0.7.0.1
  */

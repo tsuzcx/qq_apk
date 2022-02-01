@@ -6,8 +6,8 @@ import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.f.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
@@ -22,34 +22,34 @@ public final class a
       public final void onAudioFocusChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(137438);
-        ae.i("MicroMsg.Music.MusicAudioFocusHelper", "focus change %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        Log.i("MicroMsg.Music.MusicAudioFocusHelper", "focus change %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if ((paramAnonymousInt == -2) || (paramAnonymousInt == -3))
         {
-          ae.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus lossTransient");
-          if (k.dwp().dwc().aKb())
+          Log.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus lossTransient");
+          if (k.euj().etW().bee())
           {
-            k.dwp().dwc().duX();
+            k.euj().etW().esU();
             AppMethodBeat.o(137438);
           }
         }
         else if ((paramAnonymousInt == 1) || (paramAnonymousInt == 2) || (paramAnonymousInt == 3))
         {
-          ae.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus gain");
-          if (k.dwp().dwc().aKb())
+          Log.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus gain");
+          if (k.euj().etW().bee())
           {
-            k.dwp().dwc().resume();
+            k.euj().etW().resume();
             AppMethodBeat.o(137438);
           }
         }
         else if (paramAnonymousInt == -1)
         {
-          ae.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus loss, passive pause");
-          if (k.dwp().dwc().aKb())
+          Log.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus loss, passive pause");
+          if (k.euj().etW().bee())
           {
-            k.dwp().dwc().duX();
-            k.dwp();
-            k.dwo();
-            k.dwp().LS(600000);
+            k.euj().etW().esU();
+            k.euj();
+            k.eui();
+            k.euj().SP(600000);
           }
           if (a.this.audioManager != null) {
             a.this.audioManager.abandonAudioFocus(a.this.audioFocusChangeListener);
@@ -58,14 +58,14 @@ public final class a
         AppMethodBeat.o(137438);
       }
     };
-    this.audioManager = ((AudioManager)ak.getContext().getSystemService("audio"));
+    this.audioManager = ((AudioManager)MMApplicationContext.getContext().getSystemService("audio"));
     AppMethodBeat.o(137439);
   }
   
-  public final void bqr()
+  public final void bLZ()
   {
     AppMethodBeat.i(137441);
-    ae.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
+    Log.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
     if (this.audioManager == null)
     {
       AppMethodBeat.o(137441);
@@ -87,7 +87,7 @@ public final class a
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      ae.i("MicroMsg.Music.MusicAudioFocusHelper", "request audio focus %b", new Object[] { Boolean.valueOf(bool) });
+      Log.i("MicroMsg.Music.MusicAudioFocusHelper", "request audio focus %b", new Object[] { Boolean.valueOf(bool) });
       if (i != 1) {
         break;
       }
@@ -100,7 +100,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.a
  * JD-Core Version:    0.7.0.1
  */

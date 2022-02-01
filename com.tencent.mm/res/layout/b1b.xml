@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/ek6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/f2g" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i0" android:paddingBottom="@dimen/jn" android:singleLine="true" style="@style/lz" />
-    <FrameLayout android:id="@id/f2p" android:background="@null" android:visibility="gone" android:layout_width="@dimen/as" android:layout_height="@dimen/as">
-        <ImageView android:layout_gravity="center" android:id="@id/cpc" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@drawable/bgx" android:scaleType="fitCenter" />
-        <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/f2o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:src="@drawable/afx" />
-    </FrameLayout>
-    <ImageView android:gravity="center" android:id="@id/f2f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@drawable/afx" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/f27" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/ci" android:src="@drawable/ou" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</merge>
+    <com.tencent.mm.live.core.view.LivePreviewView android:id="@id/ek7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

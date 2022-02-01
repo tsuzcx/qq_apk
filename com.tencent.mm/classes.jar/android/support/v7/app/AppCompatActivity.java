@@ -53,7 +53,7 @@ public class AppCompatActivity
   public void closeOptionsMenu()
   {
     ActionBar localActionBar = getSupportActionBar();
-    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.gq()))) {
+    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.gx()))) {
       super.closeOptionsMenu();
     }
   }
@@ -93,7 +93,7 @@ public class AppCompatActivity
   
   public Resources getResources()
   {
-    if ((this.mResources == null) && (be.ni())) {
+    if ((this.mResources == null) && (be.nk())) {
       this.mResources = new be(this, super.getResources());
     }
     if (this.mResources == null) {
@@ -136,9 +136,9 @@ public class AppCompatActivity
   public void onCreate(Bundle paramBundle)
   {
     d locald = getDelegate();
-    locald.gu();
+    locald.gB();
     locald.onCreate(paramBundle);
-    if ((locald.gv()) && (this.mThemeId != 0))
+    if ((locald.gC()) && (this.mThemeId != 0))
     {
       if (Build.VERSION.SDK_INT < 23) {
         break label55;
@@ -167,10 +167,10 @@ public class AppCompatActivity
         ComponentName localComponentName2 = localIntent.getComponent();
         ComponentName localComponentName1 = localComponentName2;
         if (localComponentName2 == null) {
-          localComponentName1 = localIntent.resolveActivity(paramab.II.getPackageManager());
+          localComponentName1 = localIntent.resolveActivity(paramab.IT.getPackageManager());
         }
         paramab.a(localComponentName1);
-        paramab.IH.add(localIntent);
+        paramab.IS.add(localIntent);
       }
       return;
     }
@@ -215,7 +215,7 @@ public class AppCompatActivity
   protected void onPostCreate(Bundle paramBundle)
   {
     super.onPostCreate(paramBundle);
-    getDelegate().gt();
+    getDelegate().gA();
   }
   
   public void onPostResume()
@@ -258,15 +258,15 @@ public class AppCompatActivity
     {
       if (supportShouldUpRecreateTask((Intent)localObject))
       {
-        localObject = ab.Q(this);
+        localObject = ab.R(this);
         onCreateSupportNavigateUpTaskStack((ab)localObject);
         onPrepareSupportNavigateUpTaskStack((ab)localObject);
-        if (((ab)localObject).IH.isEmpty()) {
+        if (((ab)localObject).IS.isEmpty()) {
           throw new IllegalStateException("No intents added to TaskStackBuilder; cannot startActivities");
         }
-        Intent[] arrayOfIntent = (Intent[])((ab)localObject).IH.toArray(new Intent[((ab)localObject).IH.size()]);
+        Intent[] arrayOfIntent = (Intent[])((ab)localObject).IS.toArray(new Intent[((ab)localObject).IS.size()]);
         arrayOfIntent[0] = new Intent(arrayOfIntent[0]).addFlags(268484608);
-        android.support.v4.content.b.a(((ab)localObject).II, arrayOfIntent);
+        android.support.v4.content.b.a(((ab)localObject).IT, arrayOfIntent);
       }
       for (;;)
       {
@@ -300,7 +300,7 @@ public class AppCompatActivity
   public void openOptionsMenu()
   {
     ActionBar localActionBar = getSupportActionBar();
-    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.gp()))) {
+    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.gw()))) {
       super.openOptionsMenu();
     }
   }
@@ -361,9 +361,9 @@ public class AppCompatActivity
       return;
     }
     paramIntent.addFlags(67108864);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahE(), "android/support/v4/app/NavUtils", "navigateUpTo", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramIntent.mt(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.axQ(), "android/support/v4/app/NavUtils", "navigateUpTo", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramIntent.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "android/support/v4/app/NavUtils", "navigateUpTo", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
   }

@@ -3,83 +3,36 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class k
-  extends j<b>
+  extends MAutoStorage<b>
 {
-  public static final String[] hGX;
-  public final e jKa;
+  public static final String[] iBh;
+  public final ISQLiteDatabase kLX;
   
   static
   {
     AppMethodBeat.i(44488);
-    hGX = new String[] { j.getCreateSQLs(b.hGW, "AppBrandAppLaunchUsernameDuplicateRecord2") };
+    iBh = new String[] { MAutoStorage.getCreateSQLs(b.iBg, "AppBrandAppLaunchUsernameDuplicateRecord2") };
     AppMethodBeat.o(44488);
   }
   
-  public k(e parame)
+  public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, b.hGW, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
-    this.jKa = parame;
-  }
-  
-  public final b Nk(String paramString)
-  {
-    AppMethodBeat.i(222147);
-    b localb = new b();
-    localb.field_usernameHash = paramString.hashCode();
-    if ((!get(localb, new String[] { "usernameHash" })) || (localb.field_username == null) || (!localb.field_username.equals(paramString)))
-    {
-      AppMethodBeat.o(222147);
-      return null;
-    }
-    AppMethodBeat.o(222147);
-    return localb;
-  }
-  
-  public final boolean Nl(String paramString)
-  {
-    AppMethodBeat.i(222149);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(222149);
-      return false;
-    }
-    paramString = Nk(paramString);
-    if ((paramString != null) && (paramString.field_updateTime > 0L))
-    {
-      AppMethodBeat.o(222149);
-      return true;
-    }
-    AppMethodBeat.o(222149);
-    return false;
-  }
-  
-  public final boolean Nm(String paramString)
-  {
-    AppMethodBeat.i(222150);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(222150);
-      return false;
-    }
-    b localb = new b();
-    localb.field_username = paramString;
-    localb.field_usernameHash = paramString.hashCode();
-    boolean bool = super.delete(localb, new String[] { "usernameHash" });
-    AppMethodBeat.o(222150);
-    return bool;
+    super(paramISQLiteDatabase, b.iBg, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
+    this.kLX = paramISQLiteDatabase;
   }
   
   public final boolean P(String paramString, long paramLong)
   {
     AppMethodBeat.i(44487);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44487);
       return false;
@@ -100,31 +53,92 @@ public final class k
     return bool;
   }
   
-  public final List<String> bcE()
+  public final b Ws(String paramString)
   {
-    AppMethodBeat.i(222148);
+    AppMethodBeat.i(226387);
+    b localb = new b();
+    localb.field_usernameHash = paramString.hashCode();
+    if ((!get(localb, new String[] { "usernameHash" })) || (localb.field_username == null) || (!localb.field_username.equals(paramString)))
+    {
+      AppMethodBeat.o(226387);
+      return null;
+    }
+    AppMethodBeat.o(226387);
+    return localb;
+  }
+  
+  public final boolean Wt(String paramString)
+  {
+    AppMethodBeat.i(226389);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(226389);
+      return false;
+    }
+    paramString = Ws(paramString);
+    if ((paramString != null) && (paramString.field_updateTime > 0L))
+    {
+      AppMethodBeat.o(226389);
+      return true;
+    }
+    AppMethodBeat.o(226389);
+    return false;
+  }
+  
+  public final boolean Wu(String paramString)
+  {
+    AppMethodBeat.i(226390);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(226390);
+      return false;
+    }
+    b localb = new b();
+    localb.field_username = paramString;
+    localb.field_usernameHash = paramString.hashCode();
+    boolean bool = super.delete(localb, new String[] { "usernameHash" });
+    AppMethodBeat.o(226390);
+    return bool;
+  }
+  
+  public final List<String> bxT()
+  {
+    AppMethodBeat.i(226388);
     Cursor localCursor = rawQuery(String.format("select attributes.appId from %s as duplicate inner join %s as attributes where duplicate.username = attributes.username", new Object[] { "AppBrandAppLaunchUsernameDuplicateRecord2", "WxaAttributesTable" }), new String[0]);
     ArrayList localArrayList = new ArrayList();
     if ((localCursor == null) || (localCursor.getColumnCount() <= 0))
     {
-      AppMethodBeat.o(222148);
+      AppMethodBeat.o(226388);
       return localArrayList;
     }
-    try
+    for (;;)
     {
-      if (localCursor.moveToNext()) {}
-      return localList;
+      try
+      {
+        if (!localCursor.moveToNext()) {
+          break;
+        }
+        String str = localCursor.getString(0);
+        if (Util.isNullOrNil(str)) {
+          Log.i("MicroMsg.AppBrandLaunchUsernameDuplicateStorage", "appId is null, continue");
+        } else {
+          localList.add(str);
+        }
+      }
+      finally
+      {
+        localCursor.close();
+        AppMethodBeat.o(226388);
+      }
     }
-    finally
-    {
-      localCursor.close();
-      AppMethodBeat.o(222148);
-    }
+    localCursor.close();
+    AppMethodBeat.o(226388);
+    return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.k
  * JD-Core Version:    0.7.0.1
  */

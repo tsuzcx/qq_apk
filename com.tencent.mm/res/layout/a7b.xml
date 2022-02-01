@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jd"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/c8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/tm" android:layout_width="120.0dip" android:layout_height="120.0dip" android:src="@drawable/aq8" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/e3r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" style="@style/ko" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/fis" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bq" style="@style/hn" />
-        <Button android:layout_gravity="center_horizontal" android:id="@id/g1l" android:layout_marginTop="@dimen/c8" android:text="@string/c_y" style="@style/o8" />
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/ee" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j6">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/cc2" android:contentDescription="@string/hb" style="@style/j4" />
+                    <ImageView android:layout_gravity="center" android:id="@id/cc9" android:background="@null" android:visibility="gone" android:src="@drawable/bd8" android:scaleType="centerInside" style="@style/j4" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/e_">
+                    <TextView android:ellipsize="end" android:id="@id/cdm" android:text="{title}" android:maxLines="2" style="@style/ja" />
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/a7h" />
+            <include layout="@layout/a7g" />
+        </LinearLayout>
+        <include layout="@layout/a7e" />
     </LinearLayout>
-    <ImageView android:id="@id/bdr" android:background="@color/a25" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ci" />
-</LinearLayout>
+</FrameLayout>

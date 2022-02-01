@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/h_8" android:paddingLeft="@dimen/hd" android:paddingRight="@dimen/hd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
-    <TextView android:textSize="@dimen/b_" android:textColor="@color/tq" android:id="@id/h9i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:layout_marginBottom="@dimen/hk" android:text="@string/hh2" android:layout_below="@id/h_8" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <ListView android:id="@id/ha5" android:background="@color/a74" android:visibility="visible" android:transcriptMode="disabled" style="@style/np" />
+    <RelativeLayout android:id="@id/bf4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/is" android:textColor="#ff666666" android:id="@id/fzl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eep" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

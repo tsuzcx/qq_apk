@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -14,29 +14,29 @@ import java.util.WeakHashMap;
 public final class a
   implements Application.ActivityLifecycleCallbacks
 {
-  private static final WeakHashMap<Activity, Integer> gID;
+  private static final WeakHashMap<Activity, Integer> hvw;
   
   static
   {
     AppMethodBeat.i(125087);
-    gID = new WeakHashMap();
+    hvw = new WeakHashMap();
     AppMethodBeat.o(125087);
   }
   
-  public static String alg()
+  public static String aBz()
   {
     AppMethodBeat.i(125080);
     StringBuilder localStringBuilder;
     Object localObject2;
-    synchronized (gID)
+    synchronized (hvw)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(gID.size());
+      localStringBuilder.append(hvw.size());
       localObject2 = new ArrayList();
     }
     try
     {
-      ((List)localObject2).addAll(gID.keySet());
+      ((List)localObject2).addAll(hvw.keySet());
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -46,7 +46,7 @@ public final class a
           localStringBuilder.append("|");
           localStringBuilder.append(localActivity.getClass().getSimpleName());
           localStringBuilder.append(":");
-          localStringBuilder.append(gID.get(localActivity));
+          localStringBuilder.append(hvw.get(localActivity));
         }
       }
       localObject1 = finally;
@@ -57,7 +57,7 @@ public final class a
     {
       for (;;)
       {
-        ae.w("MicroMsg.ActivityRefDump", "ConcurrentModificationException occur.");
+        Log.w("MicroMsg.ActivityRefDump", "ConcurrentModificationException occur.");
         localObject1.append("concurrent modification exception");
       }
       String str = localObject1.toString();
@@ -69,9 +69,9 @@ public final class a
   public final void onActivityCreated(Activity paramActivity, Bundle arg2)
   {
     AppMethodBeat.i(125081);
-    synchronized (gID)
+    synchronized (hvw)
     {
-      gID.put(paramActivity, Integer.valueOf(0));
+      hvw.put(paramActivity, Integer.valueOf(0));
       AppMethodBeat.o(125081);
       return;
     }
@@ -80,9 +80,9 @@ public final class a
   public final void onActivityDestroyed(Activity paramActivity)
   {
     AppMethodBeat.i(125082);
-    synchronized (gID)
+    synchronized (hvw)
     {
-      gID.put(paramActivity, Integer.valueOf(5));
+      hvw.put(paramActivity, Integer.valueOf(5));
       AppMethodBeat.o(125082);
       return;
     }
@@ -91,9 +91,9 @@ public final class a
   public final void onActivityPaused(Activity paramActivity)
   {
     AppMethodBeat.i(125085);
-    synchronized (gID)
+    synchronized (hvw)
     {
-      gID.put(paramActivity, Integer.valueOf(3));
+      hvw.put(paramActivity, Integer.valueOf(3));
       AppMethodBeat.o(125085);
       return;
     }
@@ -102,9 +102,9 @@ public final class a
   public final void onActivityResumed(Activity paramActivity)
   {
     AppMethodBeat.i(125084);
-    synchronized (gID)
+    synchronized (hvw)
     {
-      gID.put(paramActivity, Integer.valueOf(2));
+      hvw.put(paramActivity, Integer.valueOf(2));
       AppMethodBeat.o(125084);
       return;
     }
@@ -115,9 +115,9 @@ public final class a
   public final void onActivityStarted(Activity paramActivity)
   {
     AppMethodBeat.i(125083);
-    synchronized (gID)
+    synchronized (hvw)
     {
-      gID.put(paramActivity, Integer.valueOf(1));
+      hvw.put(paramActivity, Integer.valueOf(1));
       AppMethodBeat.o(125083);
       return;
     }
@@ -126,9 +126,9 @@ public final class a
   public final void onActivityStopped(Activity paramActivity)
   {
     AppMethodBeat.i(125086);
-    synchronized (gID)
+    synchronized (hvw)
     {
-      gID.put(paramActivity, Integer.valueOf(4));
+      hvw.put(paramActivity, Integer.valueOf(4));
       AppMethodBeat.o(125086);
       return;
     }

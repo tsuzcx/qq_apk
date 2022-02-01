@@ -5,28 +5,29 @@ import com.tencent.mm.ab.g;
 import com.tencent.mm.ab.i;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
 public final class c
 {
-  public HashMap<String, Object> params;
-  public String ttd;
-  public String tte;
-  public HashMap<String, Object> ttf;
-  public int ttg = 0;
-  public boolean tth = false;
+  public LinkedHashMap<String, Object> mzT;
+  public String wJd;
+  public String wJe;
+  public HashMap<String, Object> wJf;
+  public int wJg = 0;
+  public boolean wJh = false;
   
   public c() {}
   
-  public c(String paramString1, String paramString2, HashMap<String, Object> paramHashMap)
+  public c(String paramString1, String paramString2, LinkedHashMap<String, Object> paramLinkedHashMap)
   {
-    this.ttd = paramString1;
-    this.tte = paramString2;
-    this.params = paramHashMap;
+    this.wJd = paramString1;
+    this.wJe = paramString2;
+    this.mzT = paramLinkedHashMap;
   }
   
-  public final String aYO()
+  public final String bua()
   {
     AppMethodBeat.i(123738);
     Object localObject = new i();
@@ -34,12 +35,12 @@ public final class c
     Map.Entry localEntry;
     try
     {
-      ((i)localObject).h("plugin", this.ttd);
-      ((i)localObject).h("entry", this.tte);
-      if (this.params != null)
+      ((i)localObject).h("plugin", this.wJd);
+      ((i)localObject).h("entry", this.wJe);
+      if (this.mzT != null)
       {
         i locali1 = new i();
-        localIterator = this.params.entrySet().iterator();
+        localIterator = this.mzT.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localEntry = (Map.Entry)localIterator.next();
@@ -55,10 +56,10 @@ public final class c
       AppMethodBeat.o(123738);
       return localObject;
       ((i)localObject).h("params", localg);
-      if (this.ttf != null)
+      if (this.wJf != null)
       {
         i locali2 = new i();
-        localIterator = this.ttf.entrySet().iterator();
+        localIterator = this.wJf.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localEntry = (Map.Entry)localIterator.next();
@@ -66,70 +67,22 @@ public final class c
         }
         ((i)localObject).h("initParams", locali2);
       }
-      ((i)localObject).S("parentPageType", this.ttg);
-      ((i)localObject).v("isInitRoute", this.tth);
-    }
-  }
-  
-  public final c akr(String paramString)
-  {
-    AppMethodBeat.i(123737);
-    i locali;
-    Iterator localIterator;
-    String str;
-    Object localObject;
-    try
-    {
-      paramString = new i(paramString);
-      this.ttd = paramString.optString("plugin");
-      this.tte = paramString.optString("entry");
-      locali = paramString.xy("params");
-      if (locali != null)
-      {
-        this.params = new HashMap();
-        localIterator = locali.keys();
-        while (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          localObject = locali.opt(str);
-          this.params.put(str, localObject);
-          continue;
-          AppMethodBeat.o(123737);
-        }
-      }
-    }
-    catch (Exception paramString) {}
-    for (;;)
-    {
-      return this;
-      locali = paramString.xy("initParams");
-      if (locali != null)
-      {
-        this.ttf = new HashMap();
-        localIterator = locali.keys();
-        while (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          localObject = locali.opt(str);
-          this.ttf.put(str, localObject);
-        }
-      }
-      this.ttg = paramString.optInt("parentPageType");
-      this.tth = paramString.optBoolean("isInitRoute");
+      ((i)localObject).U("parentPageType", this.wJg);
+      ((i)localObject).w("isInitRoute", this.wJh);
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(123739);
-    String str = aYO();
+    String str = bua();
     AppMethodBeat.o(123739);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a.c
  * JD-Core Version:    0.7.0.1
  */

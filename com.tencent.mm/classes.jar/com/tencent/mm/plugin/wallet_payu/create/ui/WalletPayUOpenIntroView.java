@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class WalletPayUOpenIntroView
   extends LinearLayout
 {
-  private MMAutoHeightViewPager DJS;
-  private MMPageControlView DJT;
-  private a DJU;
-  private d[] DJV;
-  private ArrayList<View> axs;
+  private MMAutoHeightViewPager Iti;
+  private MMPageControlView Itj;
+  private a Itk;
+  private d[] Itl;
+  private ArrayList<View> axq;
   private Context mContext;
   
   public WalletPayUOpenIntroView(Context paramContext, AttributeSet paramAttributeSet)
@@ -37,11 +37,11 @@ public class WalletPayUOpenIntroView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(72033);
     this.mContext = paramContext;
-    paramContext = LayoutInflater.from(this.mContext).inflate(2131495077, this, true);
-    this.DJS = ((MMAutoHeightViewPager)paramContext.findViewById(2131303135));
-    this.DJT = ((MMPageControlView)paramContext.findViewById(2131298788));
-    this.DJT.setVisibility(0);
-    this.DJS.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+    paramContext = LayoutInflater.from(this.mContext).inflate(2131495914, this, true);
+    this.Iti = ((MMAutoHeightViewPager)paramContext.findViewById(2131305772));
+    this.Itj = ((MMPageControlView)paramContext.findViewById(2131299238));
+    this.Itj.setVisibility(0);
+    this.Iti.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
     {
       public final void onPageScrollStateChanged(int paramAnonymousInt) {}
       
@@ -63,25 +63,25 @@ public class WalletPayUOpenIntroView
   public void setPagerData(d[] paramArrayOfd)
   {
     AppMethodBeat.i(72034);
-    this.DJV = paramArrayOfd;
-    this.axs = new ArrayList();
-    if (this.DJV != null)
+    this.Itl = paramArrayOfd;
+    this.axq = new ArrayList();
+    if (this.Itl != null)
     {
       i = 0;
-      while (i < this.DJV.length)
+      while (i < this.Itl.length)
       {
-        paramArrayOfd = LayoutInflater.from(this.mContext).inflate(2131495078, null);
-        this.axs.add(paramArrayOfd);
+        paramArrayOfd = LayoutInflater.from(this.mContext).inflate(2131495915, null);
+        this.axq.add(paramArrayOfd);
         i += 1;
       }
     }
-    this.DJU = new a((byte)0);
-    this.DJS.setAdapter(this.DJU);
-    paramArrayOfd = this.DJT;
-    if (this.DJV == null) {}
-    for (int i = 0;; i = this.DJV.length)
+    this.Itk = new a((byte)0);
+    this.Iti.setAdapter(this.Itk);
+    paramArrayOfd = this.Itj;
+    if (this.Itl == null) {}
+    for (int i = 0;; i = this.Itl.length)
     {
-      paramArrayOfd.jO(i, 0);
+      paramArrayOfd.kX(i, 0);
       AppMethodBeat.o(72034);
       return;
     }
@@ -118,12 +118,12 @@ public class WalletPayUOpenIntroView
       View localView = (View)WalletPayUOpenIntroView.d(WalletPayUOpenIntroView.this).get(paramInt);
       paramViewGroup.addView(localView);
       paramViewGroup = WalletPayUOpenIntroView.c(WalletPayUOpenIntroView.this)[paramInt];
-      ImageView localImageView = (ImageView)localView.findViewById(2131301584);
-      TextView localTextView1 = (TextView)localView.findViewById(2131305860);
-      TextView localTextView2 = (TextView)localView.findViewById(2131300741);
-      localImageView.setImageResource(paramViewGroup.DJQ);
+      ImageView localImageView = (ImageView)localView.findViewById(2131303814);
+      TextView localTextView1 = (TextView)localView.findViewById(2131309139);
+      TextView localTextView2 = (TextView)localView.findViewById(2131302328);
+      localImageView.setImageResource(paramViewGroup.Itg);
       localTextView1.setText(paramViewGroup.titleRes);
-      localTextView2.setText(paramViewGroup.DJR);
+      localTextView2.setText(paramViewGroup.Ith);
       AppMethodBeat.o(72031);
       return localView;
     }
@@ -136,7 +136,7 @@ public class WalletPayUOpenIntroView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.create.ui.WalletPayUOpenIntroView
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ public class WXVideoFileObject
   
   public WXVideoFileObject()
   {
-    AppMethodBeat.i(194071);
+    AppMethodBeat.i(190383);
     this.shareScene = 0;
     this.filePath = null;
-    AppMethodBeat.o(194071);
+    AppMethodBeat.o(190383);
   }
   
   public WXVideoFileObject(String paramString)
   {
-    AppMethodBeat.i(194072);
+    AppMethodBeat.i(190384);
     this.shareScene = 0;
     this.filePath = paramString;
-    AppMethodBeat.o(194072);
+    AppMethodBeat.o(190384);
   }
   
   private int getFileSize(String paramString)

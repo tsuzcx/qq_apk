@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ls;
+import com.tencent.mm.g.a.mi;
+import com.tencent.mm.sdk.event.IListener;
 
 final class c$10
-  extends com.tencent.mm.sdk.b.c<ls>
+  extends IListener<mi>
 {
   c$10(c paramc)
   {
-    AppMethodBeat.i(195596);
-    this.__eventId = ls.class.getName().hashCode();
-    AppMethodBeat.o(195596);
+    AppMethodBeat.i(204079);
+    this.__eventId = mi.class.getName().hashCode();
+    AppMethodBeat.o(204079);
   }
 }
 

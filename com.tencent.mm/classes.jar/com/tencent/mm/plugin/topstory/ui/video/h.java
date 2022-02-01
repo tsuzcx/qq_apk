@@ -1,109 +1,109 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class h
-  extends RecyclerView.w
+  extends RecyclerView.v
   implements a
 {
-  public dpa BIY;
-  public b BLL;
-  private boolean BLM;
-  protected View.OnClickListener km = new h.1(this);
+  public eiw GjH;
+  public b Gmr;
+  private boolean Gms;
+  protected View.OnClickListener ko = new h.1(this);
   
   public h(View paramView, b paramb)
   {
     super(paramView);
-    this.BLL = paramb;
-    fC(paramView);
+    this.Gmr = paramb;
+    fU(paramView);
   }
   
   protected final void a(b paramb, Context paramContext, f paramf, int paramInt)
   {
-    dpa localdpa = paramb.ets().TN(paramInt);
-    ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.etg(), localdpa, paramInt, 5, "");
-    if (localdpa != null)
+    eiw localeiw = paramb.fyO().acd(paramInt);
+    ((com.tencent.mm.plugin.topstory.a.b)g.ah(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.fyD(), localeiw, paramInt, 5, "");
+    if (localeiw != null)
     {
-      if (this.BLL.eti().eul())
+      if (this.Gmr.fyF().dFG())
       {
-        this.BLL.eti().cyX();
-        this.BLM = true;
+        this.Gmr.fyF().cXa();
+        this.Gms = true;
       }
       com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 1, false);
-      locale.LfS = new h.2(this);
-      locale.LfT = new h.3(this, paramf, paramContext, localdpa, paramb, paramInt);
-      locale.KtV = new h.4(this);
-      locale.cPF();
+      locale.HLX = new h.2(this);
+      locale.HLY = new h.3(this, paramf, paramContext, localeiw, paramb, paramInt);
+      locale.PGl = new h.4(this);
+      locale.dGm();
     }
   }
   
-  public final void d(dpa paramdpa)
+  public final void d(eiw parameiw)
   {
-    this.BIY = paramdpa;
-    ae.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramdpa.title });
-    etN();
+    this.GjH = parameiw;
+    Log.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { parameiw.title });
+    fzj();
   }
   
-  public boolean etM()
+  public void fU(View paramView) {}
+  
+  protected void fV(View paramView)
   {
-    return false;
-  }
-  
-  public abstract void etN();
-  
-  public abstract f etO();
-  
-  public void eta()
-  {
-    this.BLL.eta();
-  }
-  
-  public void etb()
-  {
-    this.BLL.etb();
-  }
-  
-  public int etc()
-  {
-    return lN() - this.BLL.eto().getHeadersCount();
-  }
-  
-  public void fC(View paramView) {}
-  
-  protected void fD(View paramView)
-  {
-    if (this.BLL.etl() != etc())
+    if (this.Gmr.fyH() != fyz())
     {
-      this.BLL.ete().BNl = 2;
-      this.BLL.TE(etc());
-      com.tencent.mm.plugin.websearch.api.a.a.md(4);
-      this.BLL.ete().j(this.BIY);
-      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.BLL.etg(), this.BIY, etc(), 2, "");
+      this.Gmr.fyB().GnS = 2;
+      this.Gmr.abU(fyz());
+      com.tencent.mm.plugin.websearch.api.a.a.pl(4);
+      this.Gmr.fyB().k(this.GjH);
+      ((com.tencent.mm.plugin.topstory.a.b)g.ah(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Gmr.fyD(), this.GjH, fyz(), 2, "");
     }
     do
     {
       return;
-      fE(paramView);
-    } while (!etM());
-    etb();
-    this.BLL.etb();
-    eta();
-    this.BLL.eta();
+      fW(paramView);
+    } while (!fzi());
+    fyy();
+    this.Gmr.fyy();
+    fyx();
+    this.Gmr.fyx();
   }
   
-  public void fE(View paramView) {}
+  public void fW(View paramView) {}
+  
+  public void fyx()
+  {
+    this.Gmr.fyx();
+  }
+  
+  public void fyy()
+  {
+    this.Gmr.fyy();
+  }
+  
+  public int fyz()
+  {
+    return lR() - this.Gmr.fyK().getHeadersCount();
+  }
+  
+  public boolean fzi()
+  {
+    return false;
+  }
+  
+  public abstract void fzj();
+  
+  public abstract f fzk();
   
   public abstract View getWowView();
   
-  public void sQ(boolean paramBoolean)
+  public void wu(boolean paramBoolean)
   {
-    this.BLL.a(this.BIY);
+    this.Gmr.a(this.GjH);
   }
 }
 

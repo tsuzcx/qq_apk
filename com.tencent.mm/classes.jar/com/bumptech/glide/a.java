@@ -3,13 +3,13 @@ package com.bumptech.glide;
 import java.util.Set;
 
 abstract class a
-  extends com.bumptech.glide.d.a
+  extends com.bumptech.glide.c.a
 {
-  abstract Set<Class<?>> nJ();
+  abstract Set<Class<?>> nM();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@null" android:paddingTop="29.0dip" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/ld">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aq7" />
-            <TextView android:textSize="@dimen/hf" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/uo" />
-        </LinearLayout>
-        <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <Button android:id="@id/faw" android:layout_marginTop="50.0dip" android:text="@string/d32" style="@style/o6" />
-            <LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/faw">
-                <Button android:layout_gravity="center_horizontal" android:id="@id/fam" android:layout_width="100.0dip" android:text="@string/d33" style="@style/ob" />
-                <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/fae" android:paddingTop="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f0k" style="@style/a4k" />
-                    <TextView android:id="@id/fad" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4k" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
+    <TextView android:textSize="@dimen/is" android:textColor="@color/ae7" android:id="@id/ag8" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:text="@string/eod" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/yv" android:id="@id/ag5" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" android:text="@string/eob" android:includeFontPadding="false" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/afv" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
 </LinearLayout>

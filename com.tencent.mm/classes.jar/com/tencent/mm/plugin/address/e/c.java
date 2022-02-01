@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.address.e;
 import android.content.Context;
 import android.text.ClipboardManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class c
 {
-  public static void KG(String paramString)
+  public static void TF(String paramString)
   {
     AppMethodBeat.i(21055);
-    ((ClipboardManager)ak.getContext().getSystemService("clipboard")).setText(paramString);
+    ((ClipboardManager)MMApplicationContext.getContext().getSystemService("clipboard")).setText(paramString);
     AppMethodBeat.o(21055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ro
-  extends b
+  extends IEvent
 {
   public ro()
   {
@@ -12,13 +12,13 @@ public final class ro
   
   private ro(byte paramByte)
   {
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ro
  * JD-Core Version:    0.7.0.1
  */

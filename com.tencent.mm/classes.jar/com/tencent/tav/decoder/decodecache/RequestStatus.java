@@ -9,29 +9,29 @@ class RequestStatus
   
   RequestStatus()
   {
-    AppMethodBeat.i(215084);
+    AppMethodBeat.i(218435);
     this.finish = new AtomicBoolean(false);
-    AppMethodBeat.o(215084);
+    AppMethodBeat.o(218435);
   }
   
   public boolean getFinish()
   {
-    AppMethodBeat.i(215086);
+    AppMethodBeat.i(218437);
     boolean bool = this.finish.get();
-    AppMethodBeat.o(215086);
+    AppMethodBeat.o(218437);
     return bool;
   }
   
   public void setFinish(boolean paramBoolean)
   {
-    AppMethodBeat.i(215085);
+    AppMethodBeat.i(218436);
     this.finish.set(paramBoolean);
-    AppMethodBeat.o(215085);
+    AppMethodBeat.o(218436);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.RequestStatus
  * JD-Core Version:    0.7.0.1
  */

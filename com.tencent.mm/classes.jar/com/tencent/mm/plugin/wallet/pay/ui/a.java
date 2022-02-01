@@ -6,29 +6,30 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.io;
-import com.tencent.mm.g.a.io.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.g.a.jd;
+import com.tencent.mm.g.a.jd.b;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.ui.h;
 
 public final class a
 {
-  a Daj = null;
+  a HFX = null;
   private Context mContext;
   private Dialog tipDialog = null;
   
   public a(Context paramContext, a parama)
   {
     this.mContext = paramContext;
-    this.Daj = parama;
+    this.HFX = parama;
   }
   
   public final void b(boolean paramBoolean, int paramInt, String paramString)
   {
     AppMethodBeat.i(69303);
-    final io localio = new io();
-    localio.dwg = null;
-    localio.dwf.dwh = paramBoolean;
+    final jd localjd = new jd();
+    localjd.dNN = null;
+    localjd.dNM.dNO = paramBoolean;
     if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
     {
       if (this.tipDialog != null) {
@@ -44,43 +45,43 @@ public final class a
         }
       });
     }
-    localio.dwf.dwi = paramInt;
-    localio.dwf.dwj = paramString;
-    localio.callback = new Runnable()
+    localjd.dNM.dNP = paramInt;
+    localjd.dNM.dNQ = paramString;
+    localjd.callback = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(69301);
-        ae.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
-        io.b localb = localio.dwg;
-        if ((localb != null) && (localb.drc))
+        Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
+        jd.b localb = localjd.dNN;
+        if ((localb != null) && (localb.isSuccess))
         {
-          ae.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
+          Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
           a.this.closeTipDialog();
-          if (a.this.Daj != null)
+          if (a.this.HFX != null)
           {
-            a.this.Daj.d(localb.drc, localb.dwk, localb.dwl);
+            a.this.HFX.d(localb.isSuccess, localb.dNR, localb.dNS);
             AppMethodBeat.o(69301);
           }
         }
         else
         {
-          if ((localb != null) && (!localb.drc))
+          if ((localb != null) && (!localb.isSuccess))
           {
             a.this.closeTipDialog();
-            if (a.this.Daj != null) {
-              a.this.Daj.d(localb.drc, localb.dwk, localb.dwl);
+            if (a.this.HFX != null) {
+              a.this.HFX.d(localb.isSuccess, localb.dNR, localb.dNS);
             }
-            ae.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
+            Log.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
             AppMethodBeat.o(69301);
             return;
           }
-          ae.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
+          Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
         }
         AppMethodBeat.o(69301);
       }
     };
-    com.tencent.mm.sdk.b.a.IvT.a(localio, Looper.getMainLooper());
+    EventCenter.instance.asyncPublish(localjd, Looper.getMainLooper());
     AppMethodBeat.o(69303);
   }
   
@@ -97,7 +98,7 @@ public final class a
   
   public final void release()
   {
-    this.Daj = null;
+    this.HFX = null;
     this.mContext = null;
   }
   
@@ -108,7 +109,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.a
  * JD-Core Version:    0.7.0.1
  */

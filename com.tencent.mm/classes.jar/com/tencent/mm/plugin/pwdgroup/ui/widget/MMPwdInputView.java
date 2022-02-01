@@ -12,15 +12,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMPwdInputView
   extends LinearLayout
 {
-  public StringBuilder fWs;
-  public int rwA;
-  private boolean xpG;
-  private ImageView xpH;
-  private ImageView xpI;
-  private ImageView xpJ;
-  private ImageView xpK;
-  private a xpL;
-  private MMPwdInputView.b xpM;
+  private boolean BpS;
+  private ImageView BpT;
+  private ImageView BpU;
+  private ImageView BpV;
+  private ImageView BpW;
+  private a BpX;
+  private MMPwdInputView.b BpY;
+  public StringBuilder gBy;
+  public int sWx;
   
   public MMPwdInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,23 +31,23 @@ public class MMPwdInputView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27697);
-    this.fWs = new StringBuilder();
-    this.xpG = false;
-    this.xpM = MMPwdInputView.b.xpO;
-    paramContext = inflate(getContext(), 2131495149, null);
-    this.xpH = ((ImageView)paramContext.findViewById(2131300106));
-    this.xpI = ((ImageView)paramContext.findViewById(2131304457));
-    this.xpJ = ((ImageView)paramContext.findViewById(2131305767));
-    this.xpK = ((ImageView)paramContext.findViewById(2131300234));
-    this.xpH.setImageResource(2131231075);
-    this.xpI.setImageResource(2131231075);
-    this.xpJ.setImageResource(2131231075);
-    this.xpK.setImageResource(2131231075);
+    this.gBy = new StringBuilder();
+    this.BpS = false;
+    this.BpY = MMPwdInputView.b.Bqa;
+    paramContext = inflate(getContext(), 2131495992, null);
+    this.BpT = ((ImageView)paramContext.findViewById(2131301545));
+    this.BpU = ((ImageView)paramContext.findViewById(2131307433));
+    this.BpV = ((ImageView)paramContext.findViewById(2131309038));
+    this.BpW = ((ImageView)paramContext.findViewById(2131301708));
+    this.BpT.setImageResource(2131231110);
+    this.BpU.setImageResource(2131231110);
+    this.BpV.setImageResource(2131231110);
+    this.BpW.setImageResource(2131231110);
     addView(paramContext);
     AppMethodBeat.o(27697);
   }
   
-  private static void t(ImageView paramImageView, String paramString)
+  private static void w(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(27700);
     if (paramImageView == null)
@@ -57,112 +57,112 @@ public class MMPwdInputView
     }
     if (paramString.equals("0"))
     {
-      paramImageView.setImageResource(2131231065);
+      paramImageView.setImageResource(2131231100);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("1"))
     {
-      paramImageView.setImageResource(2131231066);
+      paramImageView.setImageResource(2131231101);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("2"))
     {
-      paramImageView.setImageResource(2131231067);
+      paramImageView.setImageResource(2131231102);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("3"))
     {
-      paramImageView.setImageResource(2131231068);
+      paramImageView.setImageResource(2131231103);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("4"))
     {
-      paramImageView.setImageResource(2131231069);
+      paramImageView.setImageResource(2131231104);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("5"))
     {
-      paramImageView.setImageResource(2131231070);
+      paramImageView.setImageResource(2131231105);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("6"))
     {
-      paramImageView.setImageResource(2131231071);
+      paramImageView.setImageResource(2131231106);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("7"))
     {
-      paramImageView.setImageResource(2131231072);
+      paramImageView.setImageResource(2131231107);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("8"))
     {
-      paramImageView.setImageResource(2131231073);
+      paramImageView.setImageResource(2131231108);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("9"))
     {
-      paramImageView.setImageResource(2131231074);
+      paramImageView.setImageResource(2131231109);
       AppMethodBeat.o(27700);
       return;
     }
-    paramImageView.setImageResource(2131231075);
+    paramImageView.setImageResource(2131231110);
     AppMethodBeat.o(27700);
   }
   
-  public final void bdi()
+  public final void byC()
   {
     AppMethodBeat.i(27702);
-    if (this.rwA > 0) {
-      this.fWs.delete(0, this.rwA);
+    if (this.sWx > 0) {
+      this.gBy.delete(0, this.sWx);
     }
-    cvL();
-    dFh();
+    cTV();
+    eFX();
     AppMethodBeat.o(27702);
   }
   
-  public final void cvL()
+  public final void cTV()
   {
     AppMethodBeat.i(27701);
-    if (this.fWs != null)
+    if (this.gBy != null)
     {
-      this.rwA = this.fWs.length();
-      if (this.rwA < 4) {
+      this.sWx = this.gBy.length();
+      if (this.sWx < 4) {
         break label79;
       }
     }
     label79:
-    for (this.xpG = true;; this.xpG = false)
+    for (this.BpS = true;; this.BpS = false)
     {
-      if (this.xpL != null) {
-        this.xpL.y(this.xpG, this.fWs.toString());
+      if (this.BpX != null) {
+        this.BpX.z(this.BpS, this.gBy.toString());
       }
       AppMethodBeat.o(27701);
       return;
-      this.rwA = 0;
+      this.sWx = 0;
       break;
     }
   }
   
-  public final void dFh()
+  public final void eFX()
   {
     AppMethodBeat.i(27699);
     int i = 0;
     if (i < 4)
     {
       String str;
-      if (this.rwA > i)
+      if (this.sWx > i)
       {
-        str = this.fWs.toString().charAt(i);
+        str = this.gBy.toString().charAt(i);
         label46:
         switch (i)
         {
@@ -174,13 +174,13 @@ public class MMPwdInputView
         break;
         str = "";
         break label46;
-        t(this.xpH, str);
+        w(this.BpT, str);
         continue;
-        t(this.xpI, str);
+        w(this.BpU, str);
         continue;
-        t(this.xpJ, str);
+        w(this.BpV, str);
         continue;
-        t(this.xpK, str);
+        w(this.BpW, str);
       }
     }
     AppMethodBeat.o(27699);
@@ -189,50 +189,50 @@ public class MMPwdInputView
   public final void input(String paramString)
   {
     AppMethodBeat.i(27703);
-    if ((TextUtils.isEmpty(paramString)) || (this.xpG))
+    if ((TextUtils.isEmpty(paramString)) || (this.BpS))
     {
       AppMethodBeat.o(27703);
       return;
     }
-    this.fWs.append(paramString);
-    cvL();
-    dFh();
+    this.gBy.append(paramString);
+    cTV();
+    eFX();
     AppMethodBeat.o(27703);
   }
   
   public void setNumberStyle(MMPwdInputView.b paramb)
   {
-    this.xpM = paramb;
+    this.BpY = paramb;
   }
   
   public void setNumberWidth(int paramInt)
   {
     AppMethodBeat.i(27698);
-    if (this.xpH != null)
+    if (this.BpT != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.xpH.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.BpT.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.xpH.setLayoutParams(localLayoutParams);
-      this.xpI.setLayoutParams(localLayoutParams);
-      this.xpJ.setLayoutParams(localLayoutParams);
-      this.xpK.setLayoutParams(localLayoutParams);
+      this.BpT.setLayoutParams(localLayoutParams);
+      this.BpU.setLayoutParams(localLayoutParams);
+      this.BpV.setLayoutParams(localLayoutParams);
+      this.BpW.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(27698);
   }
   
   public void setOnFinishInputListener(a parama)
   {
-    this.xpL = parama;
+    this.BpX = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void y(boolean paramBoolean, String paramString);
+    public abstract void z(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView
  * JD-Core Version:    0.7.0.1
  */

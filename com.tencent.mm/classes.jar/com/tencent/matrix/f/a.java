@@ -27,69 +27,32 @@ import java.util.regex.Pattern;
 public class a
   extends com.tencent.matrix.e.b
 {
-  private static long[] cJP = new long[0];
-  private static int cJQ = 0;
-  private a cJN;
-  private List<List<d>> cJO;
-  private long cJR;
-  private long cJS;
-  private long cJT;
-  private int cJU;
-  private final b cJV;
+  private static long[] dan = new long[0];
+  private static int dao = 0;
+  private a dal;
+  private List<List<d>> dam;
+  private long dap;
+  private long daq;
+  private long dar;
+  private int das;
+  private final b dat;
   private Handler handler;
   private long lastReportTime;
   
-  public static int Ja()
-  {
-    Object localObject1 = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject1 = getStringFromFile((String)localObject1).trim().split("\n");
-        int j = localObject1.length;
-        i = 0;
-        if (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (((String)localObject2).startsWith("Threads"))
-          {
-            localObject2 = Pattern.compile("\\d+").matcher((CharSequence)localObject2);
-            if (((Matcher)localObject2).find()) {
-              return Integer.parseInt(((Matcher)localObject2).group());
-            }
-          }
-        }
-        else
-        {
-          c.w("Matrix.ThreadMonitor", "[getProcessThreadCount] Wrong!", new Object[] { localObject1[24] });
-          i = Integer.parseInt(localObject1[24].trim());
-          return i;
-        }
-      }
-      catch (Exception localException)
-      {
-        return 0;
-      }
-      i += 1;
-    }
-  }
-  
-  public static List<d> Jb()
+  public static List<d> To()
   {
     Object localObject = a(new c()new b
     {
       public final void a(a.e paramAnonymouse)
       {
-        a.e locale = (a.e)this.cJX.get(paramAnonymouse.tid);
+        a.e locale = (a.e)this.dav.get(paramAnonymouse.tid);
         if (locale != null)
         {
           paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J");
-          paramAnonymouse.cKb = locale.cKb;
-          paramAnonymouse.cKa = locale.cKa;
-          paramAnonymouse.cKc = locale.cKc;
-          paramAnonymouse.cKd = true;
+          paramAnonymouse.daz = locale.daz;
+          paramAnonymouse.day = locale.day;
+          paramAnonymouse.daA = locale.daA;
+          paramAnonymouse.daB = true;
           return;
         }
         paramAnonymouse.name = paramAnonymouse.name.replaceAll("-?[0-9]\\d*", "?");
@@ -133,7 +96,7 @@ public class a
       {
         locale.tid = ((HandlerThread)localThread).getThreadId();
         localLongSparseArray.put(locale.tid, locale);
-        locale.cKa = true;
+        locale.day = true;
       }
     }
     return localLongSparseArray;
@@ -152,7 +115,7 @@ public class a
       for (;;)
       {
         if (i >= j) {
-          break label259;
+          break label253;
         }
         Object localObject2 = localObject1[i];
         try
@@ -184,7 +147,7 @@ public class a
         i += 1;
       }
     }
-    label259:
+    label253:
     return localLinkedList;
   }
   
@@ -224,6 +187,43 @@ public class a
     return localStringBuilder.toString();
   }
   
+  public static int getProcessThreadCount()
+  {
+    Object localObject1 = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localObject1 = getStringFromFile((String)localObject1).trim().split("\n");
+        int j = localObject1.length;
+        i = 0;
+        if (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (((String)localObject2).startsWith("Threads"))
+          {
+            localObject2 = Pattern.compile("\\d+").matcher((CharSequence)localObject2);
+            if (((Matcher)localObject2).find()) {
+              return Integer.parseInt(((Matcher)localObject2).group());
+            }
+          }
+        }
+        else
+        {
+          c.w("Matrix.ThreadMonitor", "[getProcessThreadCount] Wrong!", new Object[] { localObject1[24] });
+          i = Integer.parseInt(localObject1[24].trim());
+          return i;
+        }
+      }
+      catch (Exception localException)
+      {
+        return 0;
+      }
+      i += 1;
+    }
+  }
+  
   private static String getStringFromFile(String paramString)
   {
     paramString = new File(paramString);
@@ -256,37 +256,37 @@ public class a
   {
     super.onForeground(paramBoolean);
     this.handler.removeCallbacksAndMessages(null);
-    if (this.cJN != null)
+    if (this.dal != null)
     {
       if (paramBoolean) {
-        this.handler.postDelayed(this.cJN, this.cJR);
+        this.handler.postDelayed(this.dal, this.dap);
       }
     }
     else {
       return;
     }
-    this.handler.postDelayed(this.cJN, this.cJS);
+    this.handler.postDelayed(this.dal, this.daq);
   }
   
   public void start()
   {
     super.start();
     c.i("Matrix.ThreadMonitor", "start!", new Object[0]);
-    cJP = new long[6666];
-    cJQ = 6666;
+    dan = new long[6666];
+    dao = 6666;
     com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = new AppMethodBeat.b()
     {
-      public final void r(int paramAnonymousInt, long paramAnonymousLong)
+      public final void t(int paramAnonymousInt, long paramAnonymousLong)
       {
-        if ((paramAnonymousLong < a.cJQ) && (a.Jc()[((int)paramAnonymousLong)] == 0L))
+        if ((paramAnonymousLong < a.Tp()) && (a.Tq()[((int)paramAnonymousLong)] == 0L))
         {
           long l1 = Process.myTid();
           long l2 = paramAnonymousInt;
-          a.Jc()[((int)paramAnonymousLong)] = (l1 << 32 | l2);
+          a.Tq()[((int)paramAnonymousLong)] = (l1 << 32 | l2);
         }
       }
     };
-    com.tencent.matrix.g.b.JA().post(new Runnable()
+    com.tencent.matrix.g.b.TO().post(new Runnable()
     {
       public final void run()
       {
@@ -299,37 +299,37 @@ public class a
   {
     super.stop();
     c.i("Matrix.ThreadMonitor", "stop!", new Object[0]);
-    this.handler.removeCallbacks(this.cJN);
+    this.handler.removeCallbacks(this.dal);
     com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = null;
-    cJP = new long[0];
+    dan = new long[0];
   }
   
   final class a
     implements Runnable
   {
-    private final long cJY;
+    private final long daw;
     
     public final void run()
     {
-      int i = a.Ja();
-      c.i("Matrix.ThreadMonitor", "[DumpThreadJiffiesTask] run...[%s] limit:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(a.c(this.cJW)) });
-      if (a.c(this.cJW) >= i) {
+      int i = a.getProcessThreadCount();
+      c.i("Matrix.ThreadMonitor", "[DumpThreadJiffiesTask] run...[%s] limit:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(a.c(this.dau)) });
+      if (a.c(this.dau) >= i) {
         return;
       }
       Object localObject1 = a.b(new a.c()new a.b
       {
         public final void a(a.e paramAnonymouse)
         {
-          a.e locale = (a.e)this.cJX.get(paramAnonymouse.tid);
+          a.e locale = (a.e)this.dav.get(paramAnonymouse.tid);
           if (locale != null)
           {
             if (paramAnonymouse.tid == a.a.a(a.a.this)) {}
             for (paramAnonymouse.name = "main";; paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J"))
             {
-              paramAnonymouse.cKb = locale.cKb;
-              paramAnonymouse.cKa = locale.cKa;
-              paramAnonymouse.cKc = locale.cKc;
-              paramAnonymouse.cKd = true;
+              paramAnonymouse.daz = locale.daz;
+              paramAnonymouse.day = locale.day;
+              paramAnonymouse.daA = locale.daA;
+              paramAnonymouse.daB = true;
               return;
             }
           }
@@ -339,7 +339,7 @@ public class a
       {
         public final boolean b(a.e paramAnonymouse)
         {
-          return a.d(a.a.this.cJW).b(paramAnonymouse);
+          return a.d(a.a.this.dau).b(paramAnonymouse);
         }
       });
       HashMap localHashMap = new HashMap();
@@ -360,30 +360,30 @@ public class a
       localObject1 = new LinkedList(localHashMap.values());
       Collections.sort((List)localObject1, new Comparator() {});
       long l = SystemClock.uptimeMillis();
-      if ((this.cJW.isForeground()) && (l - a.e(this.cJW) > a.f(this.cJW)))
+      if ((this.dau.isForeground()) && (l - a.e(this.dau) > a.f(this.dau)))
       {
-        localObject1 = a.g(this.cJW).iterator();
+        localObject1 = a.g(this.dau).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (List)((Iterator)localObject1).next();
-          a.a(this.cJW, (List)localObject2);
+          a.a(this.dau, (List)localObject2);
         }
-        a.a(this.cJW, l);
-        a.g(this.cJW).clear();
-        localObject1 = a.b(this.cJW);
-        if (!com.tencent.matrix.a.cBz.cBB) {
+        a.a(this.dau, l);
+        a.g(this.dau).clear();
+        localObject1 = a.b(this.dau);
+        if (!com.tencent.matrix.a.cPA.cPB) {
           break label399;
         }
       }
       label399:
-      for (l = a.h(this.cJW);; l = a.i(this.cJW))
+      for (l = a.h(this.dau);; l = a.i(this.dau))
       {
         ((Handler)localObject1).postDelayed(this, l);
         return;
-        if (a.g(this.cJW).size() >= 10) {
-          a.g(this.cJW).remove(0);
+        if (a.g(this.dau).size() >= 10) {
+          a.g(this.dau).remove(0);
         }
-        a.g(this.cJW).add(localObject1);
+        a.g(this.dau).add(localObject1);
         break;
       }
     }
@@ -409,11 +409,11 @@ public class a
       this.name = paramString;
     }
     
-    public final boolean Jd()
+    public final boolean Tr()
     {
       boolean bool = false;
       if (this.list.size() > 0) {
-        bool = ((a.e)this.list.get(0)).cKd;
+        bool = ((a.e)this.list.get(0)).daB;
       }
       return bool;
     }
@@ -446,10 +446,10 @@ public class a
   
   public static final class e
   {
-    boolean cKa;
-    int cKb;
-    String cKc;
-    boolean cKd;
+    String daA;
+    boolean daB;
+    boolean day;
+    int daz;
     String name;
     String state;
     long tid;
@@ -476,13 +476,13 @@ public class a
     
     public final String toString()
     {
-      return String.format("name=%s tid=%s state=%s isHandlerThread=%s isJavaThread=%s", new Object[] { this.name, Long.valueOf(this.tid), this.state, Boolean.valueOf(this.cKa), Boolean.valueOf(this.cKd) });
+      return String.format("name=%s tid=%s state=%s isHandlerThread=%s isJavaThread=%s", new Object[] { this.name, Long.valueOf(this.tid), this.state, Boolean.valueOf(this.day), Boolean.valueOf(this.daB) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,35 +4,35 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
 
 public final class y$a
 {
-  private static boolean cVM = false;
-  private static Class cVN;
-  private static Field cVO;
-  private static Class cVP;
-  private static Field cVQ;
+  private static boolean dmg = false;
+  private static Class dmh;
+  private static Field dmi;
+  private static Class dmj;
+  private static Field dmk;
   
   public static String h(Message paramMessage)
   {
     AppMethodBeat.i(160115);
-    if (!cVM) {}
+    if (!dmg) {}
     try
     {
       Object localObject = Class.forName("android.app.ActivityThread$ReceiverData");
-      cVN = (Class)localObject;
+      dmh = (Class)localObject;
       localObject = ((Class)localObject).getDeclaredField("intent");
-      cVO = (Field)localObject;
+      dmi = (Field)localObject;
       ((Field)localObject).setAccessible(true);
       localObject = Class.forName("android.app.ActivityThread$CreateServiceData");
-      cVP = (Class)localObject;
+      dmj = (Class)localObject;
       localObject = ((Class)localObject).getDeclaredField("intent");
-      cVQ = (Field)localObject;
+      dmk = (Field)localObject;
       ((Field)localObject).setAccessible(true);
-      cVM = true;
-      if (!cVM)
+      dmg = true;
+      if (!dmg)
       {
         AppMethodBeat.o(160115);
         return null;
@@ -42,12 +42,12 @@ public final class y$a
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.PreventAccountNotReady", localThrowable, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.PreventAccountNotReady", localThrowable, "", new Object[0]);
       }
       try
       {
-        if (cVN.isInstance(paramMessage.obj)) {}
-        for (paramMessage = (Intent)cVO.get(paramMessage.obj);; paramMessage = (Intent)cVQ.get(paramMessage.obj))
+        if (dmh.isInstance(paramMessage.obj)) {}
+        for (paramMessage = (Intent)dmi.get(paramMessage.obj);; paramMessage = (Intent)dmk.get(paramMessage.obj))
         {
           if (paramMessage == null) {
             break label190;
@@ -55,7 +55,7 @@ public final class y$a
           paramMessage = paramMessage.getComponent().getClassName();
           AppMethodBeat.o(160115);
           return paramMessage;
-          if (!cVP.isInstance(paramMessage.obj)) {
+          if (!dmj.isInstance(paramMessage.obj)) {
             break;
           }
         }
@@ -64,7 +64,7 @@ public final class y$a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.PreventAccountNotReady", paramMessage, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.PreventAccountNotReady", paramMessage, "", new Object[0]);
           paramMessage = null;
         }
         label190:
@@ -76,7 +76,7 @@ public final class y$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.y.a
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ final class WebViewSearchContentInputFooter$1
   {
     AppMethodBeat.i(82290);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.EKR.hide();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.JAG.hide();
     a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(82290);
   }

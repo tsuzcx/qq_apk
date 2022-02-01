@@ -2,31 +2,28 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class gv
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fAg = "wallet_region".hashCode();
-  private static final int fAh = "function_list".hashCode();
-  private static final int fAi = "new_list".hashCode();
-  private static final int fAj = "banner_list".hashCode();
-  private static final int fAk = "type_name_list".hashCode();
-  private static final int fAl = "isShowSetting".hashCode();
+  private static final int fui = "conRemark".hashCode();
+  private static final int fus = "encryptUsername".hashCode();
+  private static final int gbN = "contactLabels".hashCode();
+  private static final int gbO = "conDescription".hashCode();
+  private static final int gbP = "conPhone".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fAa = true;
-  private boolean fAb = true;
-  private boolean fAc = true;
-  private boolean fAd = true;
-  private boolean fAe = true;
-  private boolean fAf = true;
-  public String field_banner_list;
-  public String field_function_list;
-  public int field_isShowSetting;
-  public String field_new_list;
-  public String field_type_name_list;
-  public int field_wallet_region;
+  public String field_conDescription;
+  public String field_conPhone;
+  public String field_conRemark;
+  public String field_contactLabels;
+  public String field_encryptUsername;
+  private boolean ftQ = true;
+  private boolean fua = true;
+  private boolean gbK = true;
+  private boolean gbL = true;
+  private boolean gbM = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,11 +38,11 @@ public abstract class gv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fAg != k) {
+      if (fus != k) {
         break label65;
       }
-      this.field_wallet_region = paramCursor.getInt(i);
-      this.fAa = true;
+      this.field_encryptUsername = paramCursor.getString(i);
+      this.fua = true;
     }
     for (;;)
     {
@@ -53,16 +50,14 @@ public abstract class gv
       break label20;
       break;
       label65:
-      if (fAh == k) {
-        this.field_function_list = paramCursor.getString(i);
-      } else if (fAi == k) {
-        this.field_new_list = paramCursor.getString(i);
-      } else if (fAj == k) {
-        this.field_banner_list = paramCursor.getString(i);
-      } else if (fAk == k) {
-        this.field_type_name_list = paramCursor.getString(i);
-      } else if (fAl == k) {
-        this.field_isShowSetting = paramCursor.getInt(i);
+      if (fui == k) {
+        this.field_conRemark = paramCursor.getString(i);
+      } else if (gbN == k) {
+        this.field_contactLabels = paramCursor.getString(i);
+      } else if (gbO == k) {
+        this.field_conDescription = paramCursor.getString(i);
+      } else if (gbP == k) {
+        this.field_conPhone = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,23 +67,35 @@ public abstract class gv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fAa) {
-      localContentValues.put("wallet_region", Integer.valueOf(this.field_wallet_region));
+    if (this.field_encryptUsername == null) {
+      this.field_encryptUsername = "";
     }
-    if (this.fAb) {
-      localContentValues.put("function_list", this.field_function_list);
+    if (this.fua) {
+      localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
-    if (this.fAc) {
-      localContentValues.put("new_list", this.field_new_list);
+    if (this.field_conRemark == null) {
+      this.field_conRemark = "";
     }
-    if (this.fAd) {
-      localContentValues.put("banner_list", this.field_banner_list);
+    if (this.ftQ) {
+      localContentValues.put("conRemark", this.field_conRemark);
     }
-    if (this.fAe) {
-      localContentValues.put("type_name_list", this.field_type_name_list);
+    if (this.field_contactLabels == null) {
+      this.field_contactLabels = "";
     }
-    if (this.fAf) {
-      localContentValues.put("isShowSetting", Integer.valueOf(this.field_isShowSetting));
+    if (this.gbK) {
+      localContentValues.put("contactLabels", this.field_contactLabels);
+    }
+    if (this.field_conDescription == null) {
+      this.field_conDescription = "";
+    }
+    if (this.gbL) {
+      localContentValues.put("conDescription", this.field_conDescription);
+    }
+    if (this.field_conPhone == null) {
+      this.field_conPhone = "";
+    }
+    if (this.gbM) {
+      localContentValues.put("conPhone", this.field_conPhone);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -98,7 +105,7 @@ public abstract class gv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.gv
  * JD-Core Version:    0.7.0.1
  */

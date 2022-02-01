@@ -17,7 +17,12 @@ public final class b
     this.bO.execute(paramRunnable);
   }
   
-  public final void f(Runnable paramRunnable)
+  public final boolean isMainThread()
+  {
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
+  }
+  
+  public final void postToMainThread(Runnable paramRunnable)
   {
     if (this.mMainHandler == null) {}
     synchronized (this.mLock)
@@ -28,11 +33,6 @@ public final class b
       this.mMainHandler.post(paramRunnable);
       return;
     }
-  }
-  
-  public final boolean isMainThread()
-  {
-    return Looper.getMainLooper().getThread() == Thread.currentThread();
   }
 }
 

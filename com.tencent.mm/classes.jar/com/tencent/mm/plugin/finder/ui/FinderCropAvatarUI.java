@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.finder.ui;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -17,48 +18,51 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.plugin.finder.storage.c;
+import com.tencent.mm.plugin.finder.utils.al;
 import com.tencent.mm.plugin.gallery.picker.b.b.b;
 import com.tencent.mm.plugin.gallery.picker.b.b.f;
 import com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout;
 import com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout.b;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.j;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.widget.cropview.CropLayout;
-import com.tencent.mm.vfs.o;
-import d.f;
-import d.g;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.vfs.s;
 import java.util.HashMap;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
 @com.tencent.mm.ui.base.a(16)
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderCropAvatarUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "cancelBtn", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getCancelBtn", "()Landroid/view/View;", "cancelBtn$delegate", "Lkotlin/Lazy;", "cropStyle", "", "getCropStyle", "()I", "cropStyle$delegate", "fileName", "finishBtn", "getFinishBtn", "finishBtn$delegate", "imgPath", "processDialogRunnable", "Ljava/lang/Runnable;", "rotateBtn", "getRotateBtn", "rotateBtn$delegate", "rotateUndoBtn", "getRotateUndoBtn", "rotateUndoBtn$delegate", "roundCropLayout", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "source", "tipDialog", "Landroid/app/Dialog;", "getDefaultVisibilityRect", "Landroid/graphics/RectF;", "getLayoutId", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "showProcessDialog", "delay", "", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderCropAvatarUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "cancelBtn", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getCancelBtn", "()Landroid/view/View;", "cancelBtn$delegate", "Lkotlin/Lazy;", "coverRatio", "", "cropStyle", "", "getCropStyle", "()I", "cropStyle$delegate", "cropType", "getCropType", "cropType$delegate", "fileName", "finishBtn", "getFinishBtn", "finishBtn$delegate", "imgPath", "processDialogRunnable", "Ljava/lang/Runnable;", "rotateBtn", "getRotateBtn", "rotateBtn$delegate", "rotateUndoBtn", "getRotateUndoBtn", "rotateUndoBtn$delegate", "roundCropLayout", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "source", "tipDialog", "Landroid/app/Dialog;", "getCoverVisibilityRect", "Landroid/graphics/RectF;", "getDefaultVisibilityRect", "getLayoutId", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "showProcessDialog", "delay", "", "Companion", "plugin-finder_release"})
 public final class FinderCropAvatarUI
   extends MMFinderUI
 {
-  public static final FinderCropAvatarUI.a sNi;
+  public static final a vJD;
   private final String TAG;
   private HashMap _$_findViewCache;
-  private int doj;
-  private String dzD;
+  private String dRr;
   private String fileName;
-  private WxMediaCropLayout sNb;
-  private final f sNc;
-  private final f sNd;
-  private final f sNe;
-  private final f sNf;
-  private final f sNg;
-  private final Runnable sNh;
+  private int source;
   private Dialog tipDialog;
+  private final f vJA;
+  private final f vJB;
+  private final Runnable vJC;
+  private WxMediaCropLayout vJu;
+  private final f vJv;
+  private final f vJw;
+  private final double vJx;
+  private final f vJy;
+  private final f vJz;
   
   static
   {
     AppMethodBeat.i(167213);
-    sNi = new FinderCropAvatarUI.a((byte)0);
+    vJD = new a((byte)0);
     AppMethodBeat.o(167213);
   }
   
@@ -66,24 +70,34 @@ public final class FinderCropAvatarUI
   {
     AppMethodBeat.i(167218);
     this.TAG = "Finder.FinderCropAvatarUI";
-    this.sNc = g.O((d.g.a.a)new c(this));
-    this.sNd = g.O((d.g.a.a)new m(this));
-    this.sNe = g.O((d.g.a.a)new l(this));
-    this.sNf = g.O((d.g.a.a)new d(this));
-    this.sNg = g.O((d.g.a.a)new b(this));
-    this.sNh = ((Runnable)new k(this));
+    this.vJv = g.ah((kotlin.g.a.a)new c(this));
+    this.vJw = g.ah((kotlin.g.a.a)new d(this));
+    this.vJx = 1.777777777777778D;
+    this.vJy = g.ah((kotlin.g.a.a)new n(this));
+    this.vJz = g.ah((kotlin.g.a.a)new m(this));
+    this.vJA = g.ah((kotlin.g.a.a)new e(this));
+    this.vJB = g.ah((kotlin.g.a.a)new b(this));
+    this.vJC = ((Runnable)new l(this));
     AppMethodBeat.o(167218);
   }
   
-  private final int cMk()
+  private final int dzr()
   {
     AppMethodBeat.i(167214);
-    int i = ((Number)this.sNc.getValue()).intValue();
+    int i = ((Number)this.vJv.getValue()).intValue();
     AppMethodBeat.o(167214);
     return i;
   }
   
-  private final RectF cMl()
+  private final int dzs()
+  {
+    AppMethodBeat.i(252305);
+    int i = ((Number)this.vJw.getValue()).intValue();
+    AppMethodBeat.o(252305);
+    return i;
+  }
+  
+  private final RectF dzt()
   {
     AppMethodBeat.i(167217);
     Object localObject = getContext();
@@ -93,7 +107,7 @@ public final class FinderCropAvatarUI
     float f1 = ((Resources)localObject).getDisplayMetrics().widthPixels;
     localObject = getContext();
     p.g(localObject, "context");
-    f1 -= ((AppCompatActivity)localObject).getResources().getDimension(2131165298);
+    f1 -= ((AppCompatActivity)localObject).getResources().getDimension(2131165308);
     localObject = getContext();
     p.g(localObject, "context");
     localObject = ((AppCompatActivity)localObject).getResources();
@@ -101,17 +115,26 @@ public final class FinderCropAvatarUI
     float f2 = (((Resources)localObject).getDisplayMetrics().heightPixels - f1) / 2.0F;
     localObject = getContext();
     p.g(localObject, "context");
-    float f3 = ((AppCompatActivity)localObject).getResources().getDimension(2131165292);
+    float f3 = ((AppCompatActivity)localObject).getResources().getDimension(2131165299);
     localObject = getContext();
     p.g(localObject, "context");
-    localObject = new RectF(f3, f2, ((AppCompatActivity)localObject).getResources().getDimension(2131165292) + f1, f1 + f2);
+    localObject = new RectF(f3, f2, ((AppCompatActivity)localObject).getResources().getDimension(2131165299) + f1, f1 + f2);
     AppMethodBeat.o(167217);
     return localObject;
   }
   
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(252308);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252308);
+  }
+  
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204550);
+    AppMethodBeat.i(252307);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -122,63 +145,99 @@ public final class FinderCropAvatarUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204550);
+    AppMethodBeat.o(252307);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494026;
+    return 2131494234;
   }
   
   public final void initView()
   {
     AppMethodBeat.i(167216);
-    Object localObject = findViewById(2131304254);
-    p.g(localObject, "findViewById(R.id.round_crop)");
-    this.sNb = ((WxMediaCropLayout)localObject);
-    localObject = this.sNb;
-    if (localObject == null) {
-      p.bdF("roundCropLayout");
+    Object localObject1 = findViewById(2131307177);
+    p.g(localObject1, "findViewById(R.id.round_crop)");
+    this.vJu = ((WxMediaCropLayout)localObject1);
+    localObject1 = this.vJu;
+    if (localObject1 == null) {
+      p.btv("roundCropLayout");
     }
-    ((WxMediaCropLayout)localObject).setShowBorder(false);
-    if (cMk() == 0)
+    ((WxMediaCropLayout)localObject1).setShowBorder(false);
+    if (dzr() == 0)
     {
-      localObject = this.sNb;
-      if (localObject == null) {
-        p.bdF("roundCropLayout");
+      localObject1 = this.vJu;
+      if (localObject1 == null) {
+        p.btv("roundCropLayout");
       }
-      ((WxMediaCropLayout)localObject).a(cMl(), WxCropOperationLayout.j.xYP);
+      ((WxMediaCropLayout)localObject1).a(dzt(), WxCropOperationLayout.j.BZH);
     }
     for (;;)
     {
-      localObject = this.sNb;
-      if (localObject == null) {
-        p.bdF("roundCropLayout");
+      localObject1 = this.vJu;
+      if (localObject1 == null) {
+        p.btv("roundCropLayout");
       }
       long l = System.currentTimeMillis();
-      String str = this.dzD;
-      if (str == null) {
-        p.gkB();
+      Object localObject2 = this.dRr;
+      if (localObject2 == null) {
+        p.hyc();
       }
-      WxMediaCropLayout.a((WxMediaCropLayout)localObject, l, str, true, null, null, 24);
+      WxMediaCropLayout.a((WxMediaCropLayout)localObject1, l, (String)localObject2, true, null, null, 24);
       AppMethodBeat.o(167216);
       return;
-      if (cMk() == 1)
+      if (dzr() == 1)
       {
-        localObject = this.sNb;
-        if (localObject == null) {
-          p.bdF("roundCropLayout");
+        if (dzs() == 1)
+        {
+          localObject1 = this.vJu;
+          if (localObject1 == null) {
+            p.btv("roundCropLayout");
+          }
+          localObject2 = getContext();
+          p.g(localObject2, "context");
+          float f3 = ((AppCompatActivity)localObject2).getResources().getDimension(2131165299);
+          localObject2 = getContext();
+          p.g(localObject2, "context");
+          float f1 = ((AppCompatActivity)localObject2).getResources().getDimension(2131165299);
+          localObject2 = getContext();
+          p.g(localObject2, "context");
+          localObject2 = ((AppCompatActivity)localObject2).getResources();
+          p.g(localObject2, "context.resources");
+          float f2 = ((Resources)localObject2).getDisplayMetrics().heightPixels / 2.0F;
+          localObject2 = getContext();
+          p.g(localObject2, "context");
+          localObject2 = ((AppCompatActivity)localObject2).getResources();
+          p.g(localObject2, "context.resources");
+          float f4 = ((Resources)localObject2).getDisplayMetrics().widthPixels - f3 * 2.0F;
+          float f5 = (float)(this.vJx / 2.0D) * f4;
+          if (f2 >= f5 + f1) {
+            f1 = f2 - f5;
+          }
+          for (f2 += f5;; f2 = ((Resources)localObject2).getDisplayMetrics().heightPixels - f1)
+          {
+            ((WxMediaCropLayout)localObject1).a(new RectF(f3, f1, f4 + f3, f2), WxCropOperationLayout.j.BZJ);
+            break;
+            localObject2 = getContext();
+            p.g(localObject2, "context");
+            localObject2 = ((AppCompatActivity)localObject2).getResources();
+            p.g(localObject2, "context.resources");
+          }
         }
-        ((WxMediaCropLayout)localObject).a(cMl(), WxCropOperationLayout.j.xYR);
+        localObject1 = this.vJu;
+        if (localObject1 == null) {
+          p.btv("roundCropLayout");
+        }
+        ((WxMediaCropLayout)localObject1).a(dzt(), WxCropOperationLayout.j.BZJ);
       }
       else
       {
-        localObject = this.sNb;
-        if (localObject == null) {
-          p.bdF("roundCropLayout");
+        localObject1 = this.vJu;
+        if (localObject1 == null) {
+          p.btv("roundCropLayout");
         }
-        ((WxMediaCropLayout)localObject).a(cMl(), WxCropOperationLayout.j.xYQ);
+        ((WxMediaCropLayout)localObject1).a(dzt(), WxCropOperationLayout.j.BZI);
       }
     }
   }
@@ -190,21 +249,21 @@ public final class FinderCropAvatarUI
     super.onCreate(paramBundle);
     getWindow().setFlags(201327616, 201327616);
     setLightNavigationbarIcon();
-    paramBundle = findViewById(2131298860);
-    paramBundle.setPadding(0, 0, 0, ar.en((Context)getContext()));
-    paramBundle.post((Runnable)new e(this, paramBundle));
-    setActionbarColor(2131101053);
-    this.dzD = getIntent().getStringExtra("key_source_img_path");
+    paramBundle = findViewById(2131299332);
+    paramBundle.setPadding(0, 0, 0, au.aD((Context)getContext()));
+    paramBundle.post((Runnable)new f(this, paramBundle));
+    setActionbarColor(2131101287);
+    this.dRr = getIntent().getStringExtra("key_source_img_path");
     this.fileName = getIntent().getStringExtra("key_result_file_name");
-    this.doj = getIntent().getIntExtra("key_crop_source", 0);
+    this.source = getIntent().getIntExtra("key_crop_source", 0);
     setMMTitle("");
     setActionbarColor(getResources().getColor(2131099654));
     initView();
-    ((View)this.sNf.getValue()).setOnClickListener((View.OnClickListener)new f(this));
-    setBackBtn((MenuItem.OnMenuItemClickListener)new g(this));
-    ((View)this.sNe.getValue()).setOnClickListener((View.OnClickListener)new h(this));
-    ((View)this.sNg.getValue()).setOnClickListener((View.OnClickListener)new i(this));
-    ((View)this.sNd.getValue()).setOnClickListener((View.OnClickListener)new j(this));
+    ((View)this.vJA.getValue()).setOnClickListener((View.OnClickListener)new g(this));
+    setBackBtn((MenuItem.OnMenuItemClickListener)new h(this));
+    ((View)this.vJz.getValue()).setOnClickListener((View.OnClickListener)new i(this));
+    ((View)this.vJB.getValue()).setOnClickListener((View.OnClickListener)new j(this));
+    ((View)this.vJy.getValue()).setOnClickListener((View.OnClickListener)new k(this));
     AppMethodBeat.o(167215);
   }
   
@@ -214,10 +273,13 @@ public final class FinderCropAvatarUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$Companion;", "", "()V", "SOURCE_AVATAR_CROP", "", "SOURCE_COVER_CROP", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<View>
+    implements kotlin.g.a.a<View>
   {
     b(FinderCropAvatarUI paramFinderCropAvatarUI)
     {
@@ -225,10 +287,10 @@ public final class FinderCropAvatarUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class c
     extends q
-    implements d.g.a.a<Integer>
+    implements kotlin.g.a.a<Integer>
   {
     c(FinderCropAvatarUI paramFinderCropAvatarUI)
     {
@@ -236,10 +298,10 @@ public final class FinderCropAvatarUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class d
     extends q
-    implements d.g.a.a<View>
+    implements kotlin.g.a.a<Integer>
   {
     d(FinderCropAvatarUI paramFinderCropAvatarUI)
     {
@@ -247,116 +309,109 @@ public final class FinderCropAvatarUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
+    extends q
+    implements kotlin.g.a.a<View>
+  {
+    e(FinderCropAvatarUI paramFinderCropAvatarUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class f
     implements Runnable
   {
-    e(FinderCropAvatarUI paramFinderCropAvatarUI, View paramView) {}
+    f(FinderCropAvatarUI paramFinderCropAvatarUI, View paramView) {}
     
     public final void run()
     {
       AppMethodBeat.i(167201);
-      paramBundle.setPadding(0, 0, 0, ar.en((Context)this.sNj.getContext()));
+      paramBundle.setPadding(0, 0, 0, au.aD((Context)this.vJE.getContext()));
       AppMethodBeat.o(167201);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class f
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class g
     implements View.OnClickListener
   {
-    f(FinderCropAvatarUI paramFinderCropAvatarUI) {}
+    g(FinderCropAvatarUI paramFinderCropAvatarUI) {}
     
     public final void onClick(final View paramView)
     {
       AppMethodBeat.i(167204);
       Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
-      FinderCropAvatarUI.a(this.sNj);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
+      FinderCropAvatarUI.a(this.vJE);
       Object localObject2 = new b.b();
-      if (FinderCropAvatarUI.b(this.sNj) == 1)
+      if (FinderCropAvatarUI.b(this.vJE) == 1)
       {
-        paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
-        ((b.b)localObject2).tTN = com.tencent.mm.plugin.finder.storage.b.cHh();
-        paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
-        ((b.b)localObject2).tTM = com.tencent.mm.plugin.finder.storage.b.cHk();
-        paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
-        ((b.b)localObject2).maxWidth = com.tencent.mm.plugin.finder.storage.b.cHi();
-        paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
-        ((b.b)localObject2).maxHeight = com.tencent.mm.plugin.finder.storage.b.cHj();
+        paramView = c.vCb;
+        ((b.b)localObject2).xkZ = c.dqR();
+        paramView = c.vCb;
+        ((b.b)localObject2).xkY = c.dqU();
+        paramView = c.vCb;
+        ((b.b)localObject2).maxWidth = c.dqS();
+        paramView = c.vCb;
+        ((b.b)localObject2).maxHeight = c.dqT();
       }
       for (;;)
       {
-        paramView = r.sYn;
-        ((b.b)localObject2).alQ(r.cOq());
-        localObject1 = FinderCropAvatarUI.c(this.sNj);
+        paramView = al.waC;
+        ((b.b)localObject2).ayU(al.dEA());
+        localObject1 = FinderCropAvatarUI.c(this.vJE);
         paramView = (View)localObject1;
         if (localObject1 == null) {
           paramView = "default_finder_crop_photo.tmp";
         }
         ((b.b)localObject2).filename = paramView;
-        paramView = ((b.b)localObject2).tTL + ((b.b)localObject2).filename;
-        FinderCropAvatarUI.d(this.sNj);
-        new StringBuilder("resultPath=").append(paramView).append(" size: ").append(o.aZR(FinderCropAvatarUI.e(this.sNj)) / 1024L);
-        com.tencent.d.f.h.fYG();
-        localObject1 = FinderCropAvatarUI.f(this.sNj).getCurrentCropInfo();
+        paramView = ((b.b)localObject2).xkX + ((b.b)localObject2).filename;
+        FinderCropAvatarUI.d(this.vJE);
+        new StringBuilder("resultPath=").append(paramView).append(" size: ").append(s.boW(FinderCropAvatarUI.e(this.vJE)) / 1024L);
+        com.tencent.e.f.h.hkS();
+        localObject1 = FinderCropAvatarUI.f(this.vJE).getCurrentCropInfo();
         localObject2 = new com.tencent.mm.plugin.gallery.picker.b.b((b.b)localObject2);
-        String str = FinderCropAvatarUI.e(this.sNj);
+        String str = FinderCropAvatarUI.e(this.vJE);
         if (str == null) {
-          p.gkB();
+          p.hyc();
         }
-        com.tencent.mm.plugin.gallery.picker.b.b.a((com.tencent.mm.plugin.gallery.picker.b.b)localObject2, str, 1, ((WxMediaCropLayout.b)localObject1).cYr(), ((WxMediaCropLayout.b)localObject1).hpa, ((WxMediaCropLayout.b)localObject1).qfO, ((WxMediaCropLayout.b)localObject1).viewRect, 0, (m)new q(paramView) {});
+        com.tencent.mm.plugin.gallery.picker.b.b.a((com.tencent.mm.plugin.gallery.picker.b.b)localObject2, str, 1, ((WxMediaCropLayout.b)localObject1).dRK(), ((WxMediaCropLayout.b)localObject1).iiw, ((WxMediaCropLayout.b)localObject1).rwL, ((WxMediaCropLayout.b)localObject1).viewRect, 0, (m)new q(paramView) {});
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(167204);
         return;
-        if (FinderCropAvatarUI.b(this.sNj) == 2)
+        if (FinderCropAvatarUI.b(this.vJE) == 2)
         {
-          paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
-          ((b.b)localObject2).tTM = com.tencent.mm.plugin.finder.storage.b.cHn();
-          paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
-          ((b.b)localObject2).maxWidth = com.tencent.mm.plugin.finder.storage.b.cHl();
-          paramView = com.tencent.mm.plugin.finder.storage.b.sHP;
-          ((b.b)localObject2).maxHeight = com.tencent.mm.plugin.finder.storage.b.cHm();
+          paramView = c.vCb;
+          ((b.b)localObject2).xkY = c.dqX();
+          paramView = c.vCb;
+          ((b.b)localObject2).maxWidth = c.dqV();
+          paramView = c.vCb;
+          ((b.b)localObject2).maxHeight = c.dqW();
         }
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class g
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class h
     implements MenuItem.OnMenuItemClickListener
   {
-    g(FinderCropAvatarUI paramFinderCropAvatarUI) {}
+    h(FinderCropAvatarUI paramFinderCropAvatarUI) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167205);
-      this.sNj.finish();
+      this.vJE.finish();
       AppMethodBeat.o(167205);
       return true;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class h
-    implements View.OnClickListener
-  {
-    h(FinderCropAvatarUI paramFinderCropAvatarUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(167206);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      FinderCropAvatarUI.f(this.sNj).getLayout().fQj();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(167206);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class i
     implements View.OnClickListener
   {
@@ -364,17 +419,17 @@ public final class FinderCropAvatarUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(167207);
+      AppMethodBeat.i(167206);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      this.sNj.finish();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(167207);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      FinderCropAvatarUI.f(this.vJE).getLayout().hba();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(167206);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class j
     implements View.OnClickListener
   {
@@ -382,57 +437,91 @@ public final class FinderCropAvatarUI
     
     public final void onClick(View paramView)
     {
+      AppMethodBeat.i(167207);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      this.vJE.finish();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(167207);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class k
+    implements View.OnClickListener
+  {
+    k(FinderCropAvatarUI paramFinderCropAvatarUI) {}
+    
+    public final void onClick(View paramView)
+    {
       AppMethodBeat.i(167208);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      FinderCropAvatarUI.f(this.sNj).getLayout().fQk();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      FinderCropAvatarUI.f(this.vJE).getLayout().hbb();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderCropAvatarUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(167208);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class k
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class l
     implements Runnable
   {
-    k(FinderCropAvatarUI paramFinderCropAvatarUI) {}
+    l(FinderCropAvatarUI paramFinderCropAvatarUI) {}
     
     public final void run()
     {
       AppMethodBeat.i(167210);
-      Object localObject = FinderCropAvatarUI.h(this.sNj);
+      Object localObject = FinderCropAvatarUI.h(this.vJE);
       if (localObject != null)
       {
         ((Dialog)localObject).show();
         AppMethodBeat.o(167210);
         return;
       }
-      localObject = this.sNj;
+      localObject = this.vJE;
       Context localContext = (Context)localObject;
-      ((FinderCropAvatarUI)localObject).getString(2131755906);
-      FinderCropAvatarUI.a((FinderCropAvatarUI)localObject, (Dialog)com.tencent.mm.ui.base.h.b(localContext, ((FinderCropAvatarUI)localObject).getString(2131755936), false, (DialogInterface.OnCancelListener)FinderCropAvatarUI.k.a.sNn));
+      ((FinderCropAvatarUI)localObject).getString(2131755998);
+      FinderCropAvatarUI.a((FinderCropAvatarUI)localObject, (Dialog)com.tencent.mm.ui.base.h.a(localContext, ((FinderCropAvatarUI)localObject).getString(2131756029), false, (DialogInterface.OnCancelListener)a.vJI));
       AppMethodBeat.o(167210);
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+    static final class a
+      implements DialogInterface.OnCancelListener
+    {
+      public static final a vJI;
+      
+      static
+      {
+        AppMethodBeat.i(167209);
+        vJI = new a();
+        AppMethodBeat.o(167209);
+      }
+      
+      public final void onCancel(DialogInterface paramDialogInterface) {}
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class l
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class m
     extends q
-    implements d.g.a.a<View>
+    implements kotlin.g.a.a<View>
   {
-    l(FinderCropAvatarUI paramFinderCropAvatarUI)
+    m(FinderCropAvatarUI paramFinderCropAvatarUI)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class m
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class n
     extends q
-    implements d.g.a.a<View>
+    implements kotlin.g.a.a<View>
   {
-    m(FinderCropAvatarUI paramFinderCropAvatarUI)
+    n(FinderCropAvatarUI paramFinderCropAvatarUI)
     {
       super();
     }
@@ -440,7 +529,7 @@ public final class FinderCropAvatarUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderCropAvatarUI
  * JD-Core Version:    0.7.0.1
  */

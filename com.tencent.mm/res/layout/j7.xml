@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ip" />
-    <LinearLayout android:orientation="vertical" android:background="@drawable/gw" android:paddingBottom="@dimen/sh" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ih" />
-        <TextView android:textSize="@dimen/afy" android:textColor="@color/ru" android:gravity="left" android:id="@id/g7c" android:paddingTop="@dimen/sh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sh" android:layout_marginRight="@dimen/sh" android:text="@string/aej" />
-    </LinearLayout>
+    <ScrollView android:scrollbars="none" style="@style/om">
+        <LinearLayout style="@style/lz">
+            <TextView android:text="@string/afd" style="@style/no" />
+            <View style="@style/nj" />
+            <TextView android:text="@string/afe" style="@style/no" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/enw" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="-5.0dip" android:minHeight="@dimen/k4">
+                <TextView android:id="@id/e7n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="@string/afb" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
+            </LinearLayout>
+            <Button android:layout_gravity="center_horizontal" android:id="@id/a4h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/afh" style="@style/ou" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

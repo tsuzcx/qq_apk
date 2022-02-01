@@ -2,22 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.csl;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.dko;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 import java.io.IOException;
 
 public abstract class s
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int eHH = "recommendCard".hashCode();
+  private static final int fkj = "appId".hashCode();
+  private static final int flj = "recommendCard".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGm = true;
-  private boolean eHG = true;
   public String field_appId;
-  public csl field_recommendCard;
+  public dko field_recommendCard;
+  private boolean fjS = true;
+  private boolean fli = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +32,11 @@ public abstract class s
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGD != k) {
+      if (fkj != k) {
         break label65;
       }
       this.field_appId = paramCursor.getString(i);
-      this.eGm = true;
+      this.fjS = true;
     }
     for (;;)
     {
@@ -44,18 +44,18 @@ public abstract class s
       break label20;
       break;
       label65:
-      if (eHH == k) {
+      if (flj == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
           if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_recommendCard = ((csl)new csl().parseFrom(arrayOfByte));
+          this.field_recommendCard = ((dko)new dko().parseFrom(arrayOfByte));
         }
         catch (IOException localIOException)
         {
-          ae.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
+          Log.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
         }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -66,10 +66,10 @@ public abstract class s
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if ((this.eHG) && (this.field_recommendCard != null)) {}
+    if ((this.fli) && (this.field_recommendCard != null)) {}
     try
     {
       localContentValues.put("recommendCard", this.field_recommendCard.toByteArray());
@@ -82,14 +82,14 @@ public abstract class s
     {
       for (;;)
       {
-        ae.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
+        Log.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.s
  * JD-Core Version:    0.7.0.1
  */

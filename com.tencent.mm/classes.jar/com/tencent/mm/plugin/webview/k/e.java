@@ -1,173 +1,166 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.net.Uri;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.plugin.webview.core.j.a;
-import com.tencent.mm.protocal.protobuf.avz;
-import com.tencent.mm.protocal.protobuf.brr;
-import com.tencent.mm.protocal.protobuf.efs;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.xweb.WebResourceRequest;
-import com.tencent.xweb.WebResourceResponse;
-import com.tencent.xweb.WebView;
-import d.g.b.p;
-import d.l;
-import d.n.d;
-import d.n.n;
-import d.v;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.ac.b;
+import com.tencent.mm.plugin.appbrand.ac.p.a;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
+import java.util.Arrays;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.b.ae;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponentInterceptor;", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "()V", "TAG", "", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webview", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "overrideGetA8Key", "", "url", "force", "reason", "", "overrideProcessResult", "reqUrl", "resp", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "webview-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/util/WebPrefetchUserAgentInfo;", "Lcom/tencent/mm/plugin/appbrand/util/UserAgentUtil$Info;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "version", "", "identity", "Companion", "webview-sdk_release"})
 public final class e
-  extends com.tencent.mm.plugin.webview.core.j
+  implements p.a
 {
-  private final String TAG = "MicroMsg.WebComponentInterceptor";
+  public static final a JBw;
+  private static final kotlin.f iBW;
+  private final Context mContext;
+  private String version;
   
-  public final boolean aHP(String paramString)
+  static
   {
-    AppMethodBeat.i(214249);
-    p.h(paramString, "url");
-    c.b localb = c.ENl;
-    if (n.nF(paramString, c.eZJ()))
-    {
-      AppMethodBeat.o(214249);
-      return true;
-    }
-    AppMethodBeat.o(214249);
-    return false;
+    AppMethodBeat.i(225172);
+    JBw = new a((byte)0);
+    iBW = g.ah((a)b.JBx);
+    AppMethodBeat.o(225172);
   }
   
-  public final WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public e(Context paramContext)
   {
-    AppMethodBeat.i(214251);
-    p.h(paramWebView, "webview");
-    p.h(paramWebResourceRequest, "request");
-    paramWebView = paramWebResourceRequest.getUrl().toString();
-    p.g(paramWebView, "request.url.toString()");
-    Object localObject1 = c.ENl;
-    if (n.nF(paramWebView, c.eZJ()))
-    {
-      paramWebView = getController().getJsapi().eSu();
-      p.h(paramWebResourceRequest, "request");
-      localObject1 = paramWebView.EOT;
-      p.h(paramWebResourceRequest, "request");
-      paramWebView = c.w.EOK;
-      paramWebResourceRequest = paramWebResourceRequest.getUrl();
-      p.g(paramWebResourceRequest, "url");
-      paramWebView = paramWebResourceRequest.getHost();
-      if (paramWebView != null) {
-        break label559;
-      }
-      paramWebView = "";
-    }
-    label559:
-    for (;;)
-    {
-      ae.i(c.TAG, "getInterceptResponse ".concat(String.valueOf(paramWebResourceRequest)));
-      ((c)localObject1).EMZ.a(b.EML);
-      c.l.a locala = (c.l.a)((c)localObject1).eZE().get(paramWebView);
-      if (locala != null)
-      {
-        paramWebView = new StringBuilder("['");
-        Object localObject2 = c.w.EOK;
-        localObject2 = c.ENl;
-        localObject2 = c.ENd;
-        Object localObject3 = c.ENl;
-        paramWebView = d.a.j.a((Iterable)c.w.hh((List)((d.f)localObject2).getValue()), (CharSequence)"','", null, null, 0, null, null, 62) + "']";
-        ae.i(c.TAG, "buildMatrix " + paramWebView + ", " + paramWebResourceRequest);
-        localObject2 = c.ENl;
-        localObject2 = c.ENe;
-        localObject3 = c.ENl;
-        localObject2 = n.bq((String)((d.f)localObject2).getValue(), "$__IFRAME_MATRIX__$", paramWebView);
-        localObject3 = locala.EOi.name;
-        p.g(localObject3, "worker.webComptInfo.name");
-        localObject2 = n.bq((String)localObject2, "$__WEB_COMPT_NAME__$", (String)localObject3);
-        c.c(locala.eZT(), "WeixinWebCompt.onBind.apply(WeixinWebCompt, " + paramWebView + ')');
-        ae.i(c.TAG, "ready to response ".concat(String.valueOf(paramWebResourceRequest)));
-        paramWebView = d.UTF_8;
-        if (localObject2 == null)
-        {
-          paramWebView = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(214251);
-          throw paramWebView;
-        }
-        paramWebView = ((String)localObject2).getBytes(paramWebView);
-        p.g(paramWebView, "(this as java.lang.String).getBytes(charset)");
-        paramWebView = new WebResourceResponse("text/html", "utf8", (InputStream)new ByteArrayInputStream(paramWebView));
-        locala.used = true;
-        ((c)localObject1).EMZ.a(b.EMM);
-        AppMethodBeat.o(214251);
-        return paramWebView;
-      }
-      ((c)localObject1).EMZ.a(b.EMN);
-      paramWebView = "webCompt: " + paramWebView + " not found";
-      paramWebResourceRequest = d.UTF_8;
-      if (paramWebView == null)
-      {
-        paramWebView = new v("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(214251);
-        throw paramWebView;
-      }
-      paramWebView = paramWebView.getBytes(paramWebResourceRequest);
-      p.g(paramWebView, "(this as java.lang.String).getBytes(charset)");
-      paramWebView = new WebResourceResponse("text/html", "utf8", (InputStream)new ByteArrayInputStream(paramWebView));
-      AppMethodBeat.o(214251);
-      return paramWebView;
-      AppMethodBeat.o(214251);
-      return null;
-    }
+    AppMethodBeat.i(225171);
+    this.mContext = paramContext;
+    this.version = "";
+    AppMethodBeat.o(225171);
   }
   
-  public final boolean d(String paramString, avz paramavz)
+  public final String Nv()
   {
-    AppMethodBeat.i(214252);
-    p.h(paramString, "reqUrl");
-    p.h(paramavz, "resp");
-    paramString = paramavz.GNN;
-    byte[] arrayOfByte;
-    if (paramString != null)
+    return " MicroMessenger/";
+  }
+  
+  public final String version()
+  {
+    AppMethodBeat.i(225170);
+    Object localObject1;
+    if (!TextUtils.isEmpty((CharSequence)this.version))
     {
-      arrayOfByte = z.a(paramString);
-      if (arrayOfByte == null) {}
+      localObject1 = this.version;
+      AppMethodBeat.o(225170);
+      return localObject1;
     }
     try
     {
-      paramString = new efs();
-      paramString.parseFrom(arrayOfByte);
-      paramavz = paramavz.GNB;
-      p.g(paramavz, "resp.FullURL");
-      f.g(paramavz, paramString.HeK);
-      AppMethodBeat.o(214252);
-      return false;
+      localObject1 = b.getPackageInfo(this.mContext, MMApplicationContext.getPackageName());
+      if (localObject1 != null)
+      {
+        Object localObject2 = this.version;
+        this.version = ((String)localObject2 + ChannelUtil.formatVersion(null, d.KyO));
+        localObject2 = this.version;
+        this.version = ((String)localObject2 + "." + ((PackageInfo)localObject1).versionCode);
+        localObject1 = this.version;
+        localObject1 = new StringBuilder().append((String)localObject1).append("(");
+        localObject2 = ae.SYK;
+        localObject2 = String.format("0x%08X", Arrays.copyOf(new Object[] { Integer.valueOf(d.KyO) }, 1));
+        p.g(localObject2, "java.lang.String.format(format, *args)");
+        this.version = ((String)localObject2 + "; MicroMessenger/Prefetcher 2.0)");
+        localObject1 = this.version;
+        this.version = ((String)localObject1 + " Process/mm");
+        localObject1 = this.version;
+        localObject2 = new StringBuilder().append((String)localObject1).append(" WeChat/");
+        if (!com.tencent.mm.compatible.deviceinfo.q.is64BitRuntime()) {
+          break label374;
+        }
+        localObject1 = "arm64";
+        this.version = ((String)localObject1);
+        localObject1 = this.version;
+        localObject1 = new StringBuilder().append((String)localObject1).append(" ");
+        localObject2 = WeChatBrands.AppInfo.current();
+        p.g(localObject2, "WeChatBrands.AppInfo.current()");
+        this.version = ((WeChatBrands.AppInfo.WhichApp)localObject2).getUserAgent();
+        if (ChannelUtil.isGPVersion())
+        {
+          localObject1 = this.version;
+          this.version = ((String)localObject1 + " GPVersion/1");
+        }
+      }
+      localObject1 = com.tencent.mm.plugin.appbrand.luggage.b.f.acq(this.version);
+      p.g(localObject1, "WeChatXWebUAInfo.appendTabletTag(version)");
+      this.version = ((String)localObject1);
+      localObject1 = this.version;
+      AppMethodBeat.o(225170);
+      return localObject1;
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace(this.TAG, (Throwable)paramString, "parse WebComponentInfo", new Object[0]);
+        String str = null;
+        continue;
+        label374:
+        str = "arm32";
       }
     }
   }
   
-  public final j.a n(WebView paramWebView, String paramString)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/util/WebPrefetchUserAgentInfo$Companion;", "", "()V", "APPEND_USER_AGENT", "", "DEFAULT_UA_PREFIX", "WEB_PRE_FETCHER_VERSION", "WEB_PRE_KEY_USER_AGENT", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "updateUserAgentPrefix", "", "prefix", "webPrefetchUserAgentPrefix", "webview-sdk_release"})
+  public static final class a
   {
-    AppMethodBeat.i(214250);
-    p.h(paramWebView, "webView");
-    p.h(paramString, "url");
-    c.b localb = c.ENl;
-    if (n.nF(paramString, c.eZJ()))
+    public static MultiProcessMMKV aTI()
     {
-      paramWebView = new j.a(true, false);
-      AppMethodBeat.o(214250);
-      return paramWebView;
+      AppMethodBeat.i(225168);
+      Object localObject = e.aTC();
+      a locala = e.JBw;
+      localObject = (MultiProcessMMKV)((kotlin.f)localObject).getValue();
+      AppMethodBeat.o(225168);
+      return localObject;
     }
-    paramWebView = super.n(paramWebView, paramString);
-    AppMethodBeat.o(214250);
-    return paramWebView;
+    
+    public static String giH()
+    {
+      AppMethodBeat.i(225169);
+      String str = aTI().getString("key_web_prefetch_ua", "Mozilla/5.0 (Linux; Android 9;) AppleWebKit/unknown (KHTML, like Gecko) Version/unknown Chrome/unknown Mobile Safari/unknown ");
+      CharSequence localCharSequence = (CharSequence)str;
+      if ((localCharSequence == null) || (n.aL(localCharSequence))) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        AppMethodBeat.o(225169);
+        return str;
+      }
+      AppMethodBeat.o(225169);
+      return "Mozilla/5.0 (Linux; Android 9;) AppleWebKit/unknown (KHTML, like Gecko) Version/unknown Chrome/unknown Mobile Safari/unknown ";
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class b
+    extends kotlin.g.b.q
+    implements a<MultiProcessMMKV>
+  {
+    public static final b JBx;
+    
+    static
+    {
+      AppMethodBeat.i(225167);
+      JBx = new b();
+      AppMethodBeat.o(225167);
+    }
+    
+    b()
+    {
+      super();
+    }
   }
 }
 

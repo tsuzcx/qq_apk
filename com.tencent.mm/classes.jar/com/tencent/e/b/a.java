@@ -1,397 +1,200 @@
 package com.tencent.e.b;
 
 import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.e.d.a;
-import com.tencent.e.i;
-import com.tencent.e.i.k;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.e.d.a.c;
+import com.tencent.e.d.a.f;
+import com.tencent.e.d.b.e.a;
+import com.tencent.e.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
 
 public final class a
-  implements c
 {
-  AtomicLong MqR;
-  private final d MqS;
-  volatile long MqT;
-  private com.tencent.e.a Mqb;
-  private ConcurrentHashMap<String, a> cache;
+  public b RKV;
+  public Context mContext;
   
-  public a(Context paramContext, com.tencent.e.a parama)
+  public a(Context paramContext)
   {
-    AppMethodBeat.i(183202);
-    this.cache = null;
-    this.MqR = new AtomicLong(0L);
-    this.MqT = 0L;
-    if (parama.MpY == null) {}
-    for (paramContext = new b(paramContext);; paramContext = parama.MpY)
+    AppMethodBeat.i(138310);
+    this.mContext = null;
+    this.mContext = paramContext;
+    this.RKV = new b(paramContext);
+    AppMethodBeat.o(138310);
+  }
+  
+  public static com.tencent.e.c.b.b a(Context paramContext, com.tencent.e.a.a parama, int paramInt)
+  {
+    AppMethodBeat.i(138312);
+    if (parama == null)
     {
-      this.MqS = paramContext;
-      this.Mqb = parama;
-      fZY();
-      AppMethodBeat.o(183202);
-      return;
+      AppMethodBeat.o(138312);
+      return null;
     }
-  }
-  
-  private void fZY()
-  {
-    AppMethodBeat.i(183211);
-    long l = SystemClock.uptimeMillis();
-    this.MqS.delete(this.Mqb.vXe);
-    StringBuilder localStringBuilder1 = new StringBuilder("[buildCache] successfully! \n");
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    Iterator localIterator = this.MqS.gaa().entrySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    com.tencent.e.c.b.b localb = new com.tencent.e.c.b.b();
+    localb.RLC = paramInt;
+    localb.RLD = null;
+    localb.RLE = parama.pkgName;
+    localb.RLF = com.tencent.e.f.e.bqe(parama.RKQ);
+    paramContext = com.tencent.e.f.a.cS(paramContext, parama.pkgName);
+    if (paramContext.size() > 1)
     {
-      Object localObject = (Map.Entry)localIterator.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (a)((Map.Entry)localObject).getValue();
-      localStringBuilder2.append("# ").append(str).append('-').append(((a)localObject).fZZ()).append('\n');
-      fZX().put(str, localObject);
-      i += 1;
+      localb.RLU = new ArrayList();
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        byte[] arrayOfByte = (byte[])paramContext.next();
+        localb.RLU.add(arrayOfByte);
+      }
     }
-    localStringBuilder1.append("# size:").append(i).append(" cost:").append(SystemClock.uptimeMillis() - l).append("ms\n");
-    localStringBuilder1.append(localStringBuilder2);
-    com.tencent.e.d.Mqv.i("Experience", localStringBuilder1.toString(), new Object[0]);
-    AppMethodBeat.o(183211);
+    localb.RLG = parama.fileSize;
+    localb.RLH = parama.RKP;
+    localb.RLI = parama.versionCode;
+    localb.RLJ = parama.versionName;
+    localb.RLK = 0;
+    if (parama.appType == 1) {
+      localb.RLK |= 0x1;
+    }
+    localb.RLK |= 0x2;
+    if ((!parama.RKR.startsWith("/data")) && (!parama.RKR.startsWith("/system"))) {
+      localb.RLK |= 0x4;
+    }
+    localb.RLL = "";
+    localb.RLM = 0;
+    localb.RLN = 0;
+    localb.RLO = 0;
+    localb.RLP = null;
+    localb.RLQ = 0;
+    localb.RLR = false;
+    localb.RLS = 0;
+    localb.RLT = 0;
+    AppMethodBeat.o(138312);
+    return localb;
   }
   
-  public final void a(k paramk)
+  public static com.tencent.e.c.b.d hku()
   {
-    AppMethodBeat.i(183203);
-    k.gap().b(paramk.gaq());
-    AppMethodBeat.o(183203);
-  }
-  
-  final void a(ConcurrentHashMap<String, a> paramConcurrentHashMap)
-  {
+    AppMethodBeat.i(138311);
+    com.tencent.e.c.b.d locald = new com.tencent.e.c.b.d();
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(183212);
-        if (paramConcurrentHashMap.size() <= 0)
-        {
-          AppMethodBeat.o(183212);
-          return;
+        locald.RMk = Build.FINGERPRINT;
+        locald.RMl = com.tencent.e.f.d.hkQ();
+        locald.brand = Build.BRAND;
+        locald.model = Build.MODEL;
+        locald.RMm = Build.VERSION.SDK_INT;
+        locald.RMn = Build.CPU_ABI;
+        locald.platform = com.tencent.e.f.d.bqd("ro.board.platform");
+        if (!f.hky()) {
+          continue;
         }
-        l = SystemClock.uptimeMillis();
+        i = 2;
       }
-      finally
+      catch (Exception localException)
       {
-        try
-        {
-          long l;
-          this.MqS.n(paramConcurrentHashMap.values());
-          com.tencent.e.d.Mqv.i("Experience", "[persistCache] successfully! size=" + paramConcurrentHashMap.size() + " cost:" + (SystemClock.uptimeMillis() - l), new Object[0]);
-          paramConcurrentHashMap.clear();
-          AppMethodBeat.o(183212);
-        }
-        catch (Exception paramConcurrentHashMap)
-        {
-          com.tencent.e.d.Mqv.e("Experience", "%s", new Object[] { paramConcurrentHashMap.toString() });
-          AppMethodBeat.o(183212);
-        }
-        paramConcurrentHashMap = finally;
-      }
-    }
-  }
-  
-  public final void b(k paramk)
-  {
-    AppMethodBeat.i(183204);
-    k.gap().a(paramk.gaq());
-    AppMethodBeat.o(183204);
-  }
-  
-  public final boolean bbe(String paramString)
-  {
-    AppMethodBeat.i(183209);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(183209);
-      return true;
-    }
-    paramString = (a)fZX().get(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(183209);
-      return true;
-    }
-    if (!paramString.fZZ())
-    {
-      AppMethodBeat.o(183209);
-      return true;
-    }
-    AppMethodBeat.o(183209);
-    return false;
-  }
-  
-  public final void c(k paramk)
-  {
-    AppMethodBeat.i(183205);
-    k.gap().a(paramk.gaq());
-    Object localObject = paramk.gar();
-    b localb = new b(paramk.getKey(), localObject[0], localObject[1], paramk.Msq.getName());
-    localObject = (a)fZX().get(localb.name);
-    paramk = (k)localObject;
-    if (localObject == null)
-    {
-      paramk = new a(localb.name);
-      fZX().put(localb.name, paramk);
-    }
-    paramk.Mrc.add(localb);
-    paramk.MqY += (float)localb.wYx;
-    paramk.MqZ += (float)localb.time;
-    int j = paramk.Mrc.size();
-    int i;
-    if (paramk.Mra > localb.rate) {
-      if (j <= 5000)
-      {
-        i = 1;
+        Object localObject2;
+        Object localObject1;
+        e.a locala;
+        Iterator localIterator;
+        continue;
         if (i == 0) {
-          paramk.MqV += paramk.Mra;
+          continue;
         }
-        paramk.Mra = localb.rate;
+        int i = 2;
+        continue;
+        i = 0;
+        continue;
+        if (i == 0) {
+          continue;
+        }
+        i = 1;
+        continue;
       }
-    }
-    for (;;)
-    {
-      if (paramk.Mrb < localb.rate)
+      locald.RMo = i;
+      AppMethodBeat.o(138311);
+      return locald;
+      localObject2 = com.tencent.e.d.b.e.hkz();
+      if (com.tencent.e.d.b.a.isEmpty((Collection)localObject2)) {
+        continue;
+      }
+      localObject1 = new ArrayList(3);
+      ((List)localObject1).add(new com.tencent.e.d.a.g());
+      ((List)localObject1).add(new com.tencent.e.d.a.d());
+      if (com.tencent.e.d.b.g.hkA()) {
+        ((List)localObject1).add(new c());
+      }
+      localObject2 = ((List)localObject2).iterator();
+      if (((Iterator)localObject2).hasNext())
       {
-        if (j <= 5000)
+        locala = (e.a)((Iterator)localObject2).next();
+        if (locala != null)
         {
-          i = 1;
-          label226:
-          if (i == 0) {
-            paramk.MqV += paramk.Mrb;
+          localIterator = ((List)localObject1).iterator();
+          if (localIterator.hasNext()) {
+            ((com.tencent.e.d.a.b)localIterator.next()).a(locala);
           }
-          paramk.Mrb = localb.rate;
         }
       }
       else
       {
-        if (i != 0)
+        localObject1 = ((List)localObject1).iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          continue;
+        }
+        if (((com.tencent.e.d.a.b)((Iterator)localObject1).next()).hkw())
         {
-          float f = paramk.MqV;
-          paramk.MqV = (localb.rate + f);
-        }
-        if (j > 5000) {
-          break label388;
-        }
-      }
-      label388:
-      for (i = 0;; i = 2)
-      {
-        paramk.MqW = (paramk.MqV / (j - i));
-        paramk.MqX = ((paramk.MqY * 1.0F / j));
-        paramk.dfl = ((paramk.MqZ * 1.0F / j));
-        if ((this.MqR.incrementAndGet() >= 5000L) && (System.currentTimeMillis() - this.MqT >= 600000L)) {
-          com.tencent.e.h.MqF.aP(new com.tencent.e.i.h()
+          i = 1;
+          continue;
+          if (com.tencent.e.d.a.e.hkx())
           {
-            public final String getKey()
+            i = 1;
+          }
+          else
+          {
+            if (!com.tencent.e.d.a.a.bpZ("/system/bin/debuggerd"))
             {
-              return "Experience#persistCache";
+              i = 1;
+              continue;
             }
-            
-            public final void run()
+            if (!com.tencent.e.d.a.a.bpZ("/system/bin/debuggerd64"))
             {
-              AppMethodBeat.i(183194);
-              a.this.a(a.this.fZX());
-              a.this.MqR.set(0L);
-              a.this.MqT = System.currentTimeMillis();
-              AppMethodBeat.o(183194);
+              i = 1;
+              continue;
             }
-          });
+            if (!com.tencent.e.d.a.a.bpZ("/system/bin/ddexe"))
+            {
+              i = 1;
+              continue;
+            }
+            if (!com.tencent.e.d.a.a.bqa("/system/etc/install-recovery.sh"))
+            {
+              i = 1;
+              continue;
+            }
+            if (!com.tencent.e.d.a.a.bqa("/system/bin/install-recovery.sh"))
+            {
+              i = 1;
+              continue;
+            }
+            h.hkR();
+            i = 0;
+            continue;
+            i = 0;
+          }
         }
-        AppMethodBeat.o(183205);
-        return;
-        i = 0;
-        break;
-        i = 0;
-        break label226;
       }
-      i = 1;
-    }
-  }
-  
-  public final void d(k paramk)
-  {
-    AppMethodBeat.i(183206);
-    paramk = paramk.gaq();
-    k.gap().d(paramk);
-    AppMethodBeat.o(183206);
-  }
-  
-  public final void e(k paramk)
-  {
-    AppMethodBeat.i(183207);
-    k.gap().a(paramk.gaq());
-    AppMethodBeat.o(183207);
-  }
-  
-  public final void f(k paramk)
-  {
-    AppMethodBeat.i(183208);
-    k.gap().a(paramk.gaq());
-    AppMethodBeat.o(183208);
-  }
-  
-  final ConcurrentHashMap<String, a> fZX()
-  {
-    AppMethodBeat.i(183210);
-    if (this.cache == null) {}
-    try
-    {
-      if (this.cache == null) {
-        this.cache = new ConcurrentHashMap();
-      }
-      ConcurrentHashMap localConcurrentHashMap = this.cache;
-      AppMethodBeat.o(183210);
-      return localConcurrentHashMap;
-    }
-    finally
-    {
-      AppMethodBeat.o(183210);
-    }
-  }
-  
-  public final void onShutdown()
-  {
-    AppMethodBeat.i(183213);
-    a(fZX());
-    AppMethodBeat.o(183213);
-  }
-  
-  public static final class a
-  {
-    float MqV;
-    float MqW;
-    long MqX;
-    float MqY;
-    float MqZ;
-    float Mra;
-    float Mrb;
-    ConcurrentLinkedQueue<a.b> Mrc;
-    long dfl;
-    String name;
-    
-    public a(String paramString)
-    {
-      AppMethodBeat.i(183195);
-      this.MqV = 0.0F;
-      this.MqW = 0.0F;
-      this.MqX = 0L;
-      this.dfl = 0L;
-      this.MqY = 0.0F;
-      this.MqZ = 0.0F;
-      this.Mra = 1.0F;
-      this.Mrb = 0.0F;
-      this.Mrc = new ConcurrentLinkedQueue();
-      this.name = paramString;
-      AppMethodBeat.o(183195);
-    }
-    
-    public a(String paramString, float paramFloat, long paramLong)
-    {
-      AppMethodBeat.i(183196);
-      this.MqV = 0.0F;
-      this.MqW = 0.0F;
-      this.MqX = 0L;
-      this.dfl = 0L;
-      this.MqY = 0.0F;
-      this.MqZ = 0.0F;
-      this.Mra = 1.0F;
-      this.Mrb = 0.0F;
-      this.Mrc = new ConcurrentLinkedQueue();
-      this.name = paramString;
-      this.MqW = paramFloat;
-      this.MqX = paramLong;
-      AppMethodBeat.o(183196);
-    }
-    
-    final boolean fZZ()
-    {
-      return (this.MqX >= 5000L) || (this.MqW >= 0.5F);
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(183197);
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.name).append(" ");
-      ((StringBuilder)localObject).append(this.MqW).append(" ");
-      ((StringBuilder)localObject).append(fZZ()).append(" ");
-      ((StringBuilder)localObject).append(this.Mrc.size());
-      localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(183197);
-      return localObject;
-    }
-  }
-  
-  public static final class b
-  {
-    String Mrd;
-    public String name;
-    float rate;
-    long time;
-    long timestamp;
-    long wYx;
-    
-    public b(String paramString1, long paramLong1, long paramLong2, String paramString2)
-    {
-      AppMethodBeat.i(183198);
-      this.name = paramString1;
-      this.wYx = paramLong1;
-      this.time = paramLong2;
-      this.Mrd = paramString2;
-      if (paramLong2 <= 1L) {}
-      for (;;)
-      {
-        this.rate = f;
-        this.timestamp = System.currentTimeMillis();
-        AppMethodBeat.o(183198);
-        return;
-        f = 1.0F * (float)paramLong1 / (float)paramLong2;
-      }
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(183200);
-      boolean bool = this.name.equals(paramObject);
-      AppMethodBeat.o(183200);
-      return bool;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(183199);
-      int i = this.name.hashCode();
-      AppMethodBeat.o(183199);
-      return i;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(183201);
-      String str = this.name + " " + this.wYx + " " + this.time;
-      AppMethodBeat.o(183201);
-      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.e.b.a
  * JD-Core Version:    0.7.0.1
  */

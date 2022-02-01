@@ -14,65 +14,65 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wenote.model.a.l;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.NoteEditorVoiceBaseView;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
   extends j
 {
-  public NoteEditorVoiceBaseView EUT;
-  private l EUU;
-  public LinearLayout pzD;
-  public LinearLayout pzE;
-  public ImageView pzG;
-  private TextView pzH;
-  private TextView pzI;
-  private final aq pzK;
+  public NoteEditorVoiceBaseView JKM;
+  private l JKN;
+  public LinearLayout qOU;
+  public LinearLayout qOV;
+  public ImageView qOX;
+  private TextView qOY;
+  private TextView qOZ;
+  private final MMHandler qPb;
   
   public c(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30851);
-    this.pzK = new aq()
+    this.qPb = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(30850);
-        if (c.a(c.this).pAx)
+        if (c.a(c.this).qPO)
         {
           c.b(c.this).removeMessages(4096);
           AppMethodBeat.o(30850);
           return;
         }
-        paramAnonymousMessage = " " + com.tencent.mm.bl.a.G(ak.getContext(), c.a(c.this).pAz).toString();
+        paramAnonymousMessage = " " + com.tencent.mm.bl.a.J(MMApplicationContext.getContext(), c.a(c.this).qPQ).toString();
         c.c(c.this).setText(paramAnonymousMessage);
         sendEmptyMessageDelayed(4096, 500L);
         AppMethodBeat.o(30850);
       }
     };
-    this.pzD = ((LinearLayout)paramView.findViewById(2131302945));
-    this.pzE = ((LinearLayout)paramView.findViewById(2131302919));
-    this.pzG = ((ImageView)paramView.findViewById(2131302946));
-    this.pzH = ((TextView)paramView.findViewById(2131302948));
-    this.pzI = ((TextView)paramView.findViewById(2131302949));
-    this.EUT = ((NoteEditorVoiceBaseView)paramView.findViewById(2131302924));
-    com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.fbf().a(this.EUT);
-    this.jnX.setVisibility(0);
-    this.pzD.setVisibility(8);
-    this.pzE.setVisibility(0);
-    this.dtJ.setVisibility(8);
-    this.pzb.setVisibility(8);
-    this.jnX.setOnClickListener(new View.OnClickListener()
+    this.qOU = ((LinearLayout)paramView.findViewById(2131305532));
+    this.qOV = ((LinearLayout)paramView.findViewById(2131305506));
+    this.qOX = ((ImageView)paramView.findViewById(2131305533));
+    this.qOY = ((TextView)paramView.findViewById(2131305535));
+    this.qOZ = ((TextView)paramView.findViewById(2131305536));
+    this.JKM = ((NoteEditorVoiceBaseView)paramView.findViewById(2131305511));
+    com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.gkl().a(this.JKM);
+    this.kmg.setVisibility(0);
+    this.qOU.setVisibility(8);
+    this.qOV.setVisibility(0);
+    this.dKU.setVisibility(8);
+    this.qOs.setVisibility(8);
+    this.kmg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30849);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteChatVoiceItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if ((c.a(c.this) != null) && (c.a(c.this).pAG.booleanValue())) {
-          c.a(c.this).pAH = Boolean.TRUE;
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteChatVoiceItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if ((c.a(c.this) != null) && (c.a(c.this).qPX.booleanValue())) {
+          c.a(c.this).qPY = Boolean.TRUE;
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteChatVoiceItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30849);
@@ -84,23 +84,23 @@ public final class c
   public final void a(com.tencent.mm.plugin.wenote.model.a.c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30852);
-    this.EUU = ((l)paramc);
+    this.JKN = ((l)paramc);
     Object localObject1;
     Object localObject2;
-    if (this.EUU.pAx)
+    if (this.JKN.qPO)
     {
-      this.pzE.setVisibility(0);
-      this.pzD.setVisibility(8);
-      this.jnX.setPadding(0, 0, 0, 0);
-      if (paramc.pAq)
+      this.qOV.setVisibility(0);
+      this.qOU.setVisibility(8);
+      this.kmg.setPadding(0, 0, 0, 0);
+      if (paramc.qPH)
       {
-        this.EUT.setBackgroundResource(2131234765);
-        localObject1 = this.EUT;
-        localObject2 = this.EUU.dCC;
-        int i = this.EUU.dui;
-        String str = this.EUU.pAA;
-        ((NoteEditorVoiceBaseView)localObject1).path = bu.bI((String)localObject2, "");
-        ((NoteEditorVoiceBaseView)localObject1).dui = i;
+        this.JKM.setBackgroundResource(2131235744);
+        localObject1 = this.JKM;
+        localObject2 = this.JKN.dUs;
+        int i = this.JKN.dLt;
+        String str = this.JKN.qPR;
+        ((NoteEditorVoiceBaseView)localObject1).path = Util.nullAs((String)localObject2, "");
+        ((NoteEditorVoiceBaseView)localObject1).dLt = i;
         ((NoteEditorVoiceBaseView)localObject1).setText(str);
       }
     }
@@ -109,24 +109,24 @@ public final class c
       super.a(paramc, paramInt1, paramInt2);
       AppMethodBeat.o(30852);
       return;
-      this.EUT.setBackgroundResource(2131234764);
+      this.JKM.setBackgroundResource(2131235743);
       break;
-      this.jnX.setPadding(26, 7, 0, 7);
-      this.pzE.setVisibility(8);
-      this.pzD.setVisibility(0);
-      localObject1 = this.pzG;
+      this.kmg.setPadding(26, 7, 0, 7);
+      this.qOV.setVisibility(8);
+      this.qOU.setVisibility(0);
+      localObject1 = this.qOX;
       if (((ImageView)localObject1).getAnimation() != null) {
         ((ImageView)localObject1).startAnimation(((ImageView)localObject1).getAnimation());
       }
       for (;;)
       {
-        if (!this.EUU.pAG.booleanValue()) {
+        if (!this.JKN.qPX.booleanValue()) {
           break label341;
         }
-        this.pzK.sendEmptyMessage(4096);
-        this.pzH.setText(2131759039);
-        localObject1 = " " + com.tencent.mm.bl.a.G(ak.getContext(), this.EUU.pAz).toString();
-        this.pzI.setText((CharSequence)localObject1);
+        this.qPb.sendEmptyMessage(4096);
+        this.qOY.setText(2131759365);
+        localObject1 = " " + com.tencent.mm.bl.a.J(MMApplicationContext.getContext(), this.JKN.qPQ).toString();
+        this.qOZ.setText((CharSequence)localObject1);
         break;
         localObject2 = new AlphaAnimation(1.0F, 0.0F);
         ((Animation)localObject2).setDuration(500L);
@@ -136,20 +136,20 @@ public final class c
         ((ImageView)localObject1).startAnimation((Animation)localObject2);
       }
       label341:
-      this.pzH.setText(2131759038);
-      localObject1 = " " + com.tencent.mm.bl.a.G(ak.getContext(), (int)com.tencent.mm.bl.a.sI(this.EUU.duj)).toString();
-      this.pzI.setText((CharSequence)localObject1);
+      this.qOY.setText(2131759364);
+      localObject1 = " " + com.tencent.mm.bl.a.J(MMApplicationContext.getContext(), (int)com.tencent.mm.bl.a.AO(this.JKN.dLu)).toString();
+      this.qOZ.setText((CharSequence)localObject1);
     }
   }
   
-  public final int cfi()
+  public final int cCY()
   {
     return 20;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.c
  * JD-Core Version:    0.7.0.1
  */

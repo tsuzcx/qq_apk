@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 public final class j
 {
-  public final long absoluteStreamPosition;
-  public final byte[] bEK;
+  public final byte[] bEO;
+  public final long bEP;
   public final int flags;
   public final String key;
   public final long length;
@@ -17,7 +17,12 @@ public final class j
   
   public j(Uri paramUri)
   {
-    this(paramUri, 0L, -1L, null, 1);
+    this(paramUri, 0);
+  }
+  
+  public j(Uri paramUri, int paramInt)
+  {
+    this(paramUri, 0L, -1L, null, paramInt);
   }
   
   public j(Uri paramUri, long paramLong1, long paramLong2, long paramLong3, String paramString, int paramInt)
@@ -62,8 +67,8 @@ public final class j
     {
       a.checkArgument(bool);
       this.uri = paramUri;
-      this.bEK = paramArrayOfByte;
-      this.absoluteStreamPosition = paramLong1;
+      this.bEO = paramArrayOfByte;
+      this.bEP = paramLong1;
       this.position = paramLong2;
       this.length = paramLong3;
       this.key = paramString;
@@ -85,7 +90,7 @@ public final class j
       AppMethodBeat.o(93048);
       return this;
     }
-    j localj = new j(this.uri, this.bEK, this.absoluteStreamPosition + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
+    j localj = new j(this.uri, this.bEO, this.bEP + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
     AppMethodBeat.o(93048);
     return localj;
   }
@@ -104,7 +109,7 @@ public final class j
     }
   }
   
-  public final boolean isFlagSet(int paramInt)
+  public final boolean eW(int paramInt)
   {
     return (this.flags & paramInt) == paramInt;
   }
@@ -112,14 +117,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(93046);
-    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.bEK) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
+    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.bEO) + ", " + this.bEP + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
     AppMethodBeat.o(93046);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.j
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,19 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class ChattingImageBGView
   extends ImageView
 {
-  private int nmb;
-  private Bitmap tZb;
+  private int ovI;
+  private Bitmap xqp;
   
   public ChattingImageBGView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(34559);
-    this.nmb = 0;
+    this.ovI = 0;
     setScaleType(ImageView.ScaleType.CENTER_CROP);
     AppMethodBeat.o(34559);
   }
@@ -28,12 +28,12 @@ public class ChattingImageBGView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(34558);
-    this.nmb = 0;
+    this.ovI = 0;
     setScaleType(ImageView.ScaleType.CENTER_CROP);
     AppMethodBeat.o(34558);
   }
   
-  private void fFL()
+  private void gNQ()
   {
     AppMethodBeat.i(34562);
     post(new Runnable()
@@ -43,17 +43,17 @@ public class ChattingImageBGView
         AppMethodBeat.i(34557);
         if (ChattingImageBGView.a(ChattingImageBGView.this) == null)
         {
-          ae.w("MicroMsg.ChattingImageBGView", "want to reset matrix, but bmp is null");
+          Log.w("MicroMsg.ChattingImageBGView", "want to reset matrix, but bmp is null");
           AppMethodBeat.o(34557);
           return;
         }
         if (ChattingImageBGView.a(ChattingImageBGView.this).getWidth() == 0) {
-          ae.w("MicroMsg.ChattingImageBGView", "want to reset matrix, but measured width error");
+          Log.w("MicroMsg.ChattingImageBGView", "want to reset matrix, but measured width error");
         }
         Matrix localMatrix = new Matrix();
         float f2 = ChattingImageBGView.this.getMeasuredWidth() / ChattingImageBGView.a(ChattingImageBGView.this).getWidth();
         float f1 = ChattingImageBGView.this.getMeasuredHeight() / ChattingImageBGView.a(ChattingImageBGView.this).getHeight();
-        ae.d("MicroMsg.ChattingImageBGView", "scaleW[%f], scaleH[%f] measured width[%d] measured height[%d]", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Integer.valueOf(ChattingImageBGView.this.getMeasuredWidth()), Integer.valueOf(ChattingImageBGView.this.getMeasuredHeight()) });
+        Log.d("MicroMsg.ChattingImageBGView", "scaleW[%f], scaleH[%f] measured width[%d] measured height[%d]", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Integer.valueOf(ChattingImageBGView.this.getMeasuredWidth()), Integer.valueOf(ChattingImageBGView.this.getMeasuredHeight()) });
         if (f2 > f1) {
           localMatrix.setScale(f2, f2);
         }
@@ -75,11 +75,11 @@ public class ChattingImageBGView
   {
     AppMethodBeat.i(34560);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (this.nmb != paramInt3 - paramInt1))
+    if ((paramBoolean) && (this.ovI != paramInt3 - paramInt1))
     {
-      this.nmb = (paramInt3 - paramInt1);
-      ae.d("MicroMsg.ChattingImageBGView", "on layout changed, %d, %d, %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      fFL();
+      this.ovI = (paramInt3 - paramInt1);
+      Log.d("MicroMsg.ChattingImageBGView", "on layout changed, %d, %d, %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      gNQ();
     }
     AppMethodBeat.o(34560);
   }
@@ -87,9 +87,9 @@ public class ChattingImageBGView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(34561);
-    this.tZb = paramBitmap;
+    this.xqp = paramBitmap;
     super.setImageBitmap(paramBitmap);
-    fFL();
+    gNQ();
     AppMethodBeat.o(34561);
   }
 }

@@ -8,16 +8,16 @@ import java.util.GregorianCalendar;
 
 public final class m
 {
-  public static CharSequence G(Context paramContext, int paramInt)
+  public static CharSequence J(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106935);
     if (paramInt <= 0)
     {
-      paramContext = paramContext.getString(2131758996, new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
+      paramContext = paramContext.getString(2131759321, new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
       AppMethodBeat.o(106935);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131758996, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
+    paramContext = paramContext.getString(2131759321, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
     AppMethodBeat.o(106935);
     return paramContext;
   }
@@ -35,14 +35,14 @@ public final class m
     long l = paramLong - localGregorianCalendar2.getTimeInMillis();
     if ((l > 0L) && (l <= 86400000L))
     {
-      paramContext = paramContext.getString(2131759542);
+      paramContext = paramContext.getString(2131760859);
       AppMethodBeat.o(106936);
       return paramContext;
     }
     l = localGregorianCalendar2.getTimeInMillis() - paramLong;
     if ((l > 0L) && (l <= 86400000L))
     {
-      paramContext = paramContext.getString(2131759551);
+      paramContext = paramContext.getString(2131760868);
       AppMethodBeat.o(106936);
       return paramContext;
     }
@@ -54,7 +54,7 @@ public final class m
     }
     if (i > 30)
     {
-      paramContext = DateFormat.format(paramContext.getString(2131758925), paramLong);
+      paramContext = DateFormat.format(paramContext.getString(2131759249), paramLong);
       AppMethodBeat.o(106936);
       return paramContext;
     }

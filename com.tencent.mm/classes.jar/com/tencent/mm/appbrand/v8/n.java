@@ -7,25 +7,25 @@ import java.util.TimerTask;
 
 final class n
 {
-  final MultiContextV8 cYm;
-  final IJSRuntime cZJ;
-  Timer cZK;
-  final Runnable cZL;
+  final MultiContextV8 doQ;
+  final IJSRuntime dqn;
+  Timer dqo;
+  final Runnable dqp;
   
   public n(MultiContextV8 paramMultiContextV8, IJSRuntime paramIJSRuntime)
   {
     AppMethodBeat.i(144072);
-    this.cZL = new Runnable()
+    this.dqp = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(144070);
-        n.this.cYm.debuggerMessageLoop();
+        n.this.doQ.debuggerMessageLoop();
         AppMethodBeat.o(144070);
       }
     };
-    this.cYm = paramMultiContextV8;
-    this.cZJ = paramIJSRuntime;
+    this.doQ = paramMultiContextV8;
+    this.dqn = paramIJSRuntime;
     AppMethodBeat.o(144072);
   }
 }

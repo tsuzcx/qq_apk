@@ -4,32 +4,33 @@ import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.g.b;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.protocal.protobuf.abe;
-import com.tencent.mm.protocal.protobuf.af;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.protocal.protobuf.add;
+import com.tencent.mm.protocal.protobuf.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class h
 {
-  private b tvJ;
   private String userAgent;
+  private b wMN;
   
   private h()
   {
     AppMethodBeat.i(24660);
-    this.tvJ = j.cUf();
+    this.wMN = j.dNo();
     AppMethodBeat.o(24660);
   }
   
-  private void Ha(int paramInt)
+  private void MZ(int paramInt)
   {
     try
     {
       AppMethodBeat.i(24664);
-      if (paramInt > bu.getInt(a.tvK.tvQ, 0)) {
-        j.cUf().gP(a.tvK.key, String.valueOf(paramInt));
+      if (paramInt > Util.getInt(a.wMO.wMU, 0)) {
+        j.dNo().hv(a.wMO.key, String.valueOf(paramInt));
       }
       AppMethodBeat.o(24664);
       return;
@@ -37,31 +38,31 @@ public final class h
     finally {}
   }
   
-  private static void Hb(int paramInt)
+  private static void Na(int paramInt)
   {
     AppMethodBeat.i(24666);
     if (paramInt > 0) {
-      j.cUf().gP(a.tvL.key, String.valueOf(paramInt));
+      j.dNo().hv(a.wMP.key, String.valueOf(paramInt));
     }
     AppMethodBeat.o(24666);
   }
   
-  private void Hc(int paramInt)
+  private void Nb(int paramInt)
   {
     AppMethodBeat.i(24668);
     if (paramInt > 0) {
-      this.tvJ.gP(a.tvM.key, String.valueOf(paramInt));
+      this.wMN.hv(a.wMQ.key, String.valueOf(paramInt));
     }
     AppMethodBeat.o(24668);
   }
   
-  private void akC(String paramString)
+  private void axH(String paramString)
   {
     AppMethodBeat.i(24670);
     if (("0".equals(paramString)) || ("1".equals(paramString))) {
       try
       {
-        this.tvJ.gP(a.tvN.key, paramString);
+        this.wMN.hv(a.wMR.key, paramString);
         AppMethodBeat.o(24670);
         return;
       }
@@ -70,14 +71,14 @@ public final class h
     AppMethodBeat.o(24670);
   }
   
-  private void akD(String paramString)
+  private void axI(String paramString)
   {
     AppMethodBeat.i(24672);
-    if (!m.ef(paramString)) {
+    if (!m.eP(paramString)) {
       try
       {
         Uri.parse(paramString);
-        this.tvJ.gP(a.tvO.key, paramString);
+        this.wMN.hv(a.wMS.key, paramString);
         AppMethodBeat.o(24672);
         return;
       }
@@ -86,14 +87,14 @@ public final class h
     AppMethodBeat.o(24672);
   }
   
-  private void akE(String paramString)
+  private void axJ(String paramString)
   {
     AppMethodBeat.i(24674);
-    if (!m.ef(paramString)) {
+    if (!m.eP(paramString)) {
       try
       {
         Uri.parse(paramString);
-        this.tvJ.gP(a.tvP.key, paramString);
+        this.wMN.hv(a.wMT.key, paramString);
         AppMethodBeat.o(24674);
         return;
       }
@@ -102,22 +103,22 @@ public final class h
     AppMethodBeat.o(24674);
   }
   
-  private void cTo()
+  private void dMx()
   {
     try
     {
       AppMethodBeat.i(24662);
       try
       {
-        String str = this.tvJ.akU(a.tvK.key);
-        if ((!m.ef(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(a.tvK.tvQ).intValue()))
+        String str = this.wMN.axY(a.wMO.key);
+        if ((!m.eP(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(a.wMO.wMU).intValue()))
         {
-          Hb(Integer.valueOf(a.tvL.tvQ).intValue());
-          Hc(Integer.valueOf(a.tvM.tvQ).intValue());
-          akD(a.tvO.tvQ);
-          akC(a.tvN.tvQ);
-          akE(a.tvP.tvQ);
-          Ha(Integer.valueOf(a.tvK.tvQ).intValue());
+          Na(Integer.valueOf(a.wMP.wMU).intValue());
+          Nb(Integer.valueOf(a.wMQ.wMU).intValue());
+          axI(a.wMS.wMU);
+          axH(a.wMR.wMU);
+          axJ(a.wMT.wMU);
+          MZ(Integer.valueOf(a.wMO.wMU).intValue());
         }
         AppMethodBeat.o(24662);
       }
@@ -125,7 +126,7 @@ public final class h
       {
         for (;;)
         {
-          ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.m(localException));
+          Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.m(localException));
           AppMethodBeat.o(24662);
         }
       }
@@ -134,123 +135,65 @@ public final class h
     finally {}
   }
   
-  public final void a(af paramaf)
+  public final void a(ah paramah)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(24661);
-        cTo();
-        if ((paramaf == null) || (paramaf.FJz == null))
+        dMx();
+        if ((paramah == null) || (paramah.KCR == null))
         {
-          ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
+          Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
           AppMethodBeat.o(24661);
           return;
         }
-        this.tvJ.cUD();
-        if (paramaf.FJz.version == -1)
+        this.wMN.dNM();
+        if (paramah.KCR.version == -1)
         {
-          this.tvJ.bdi();
-          ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
-          this.tvJ.cUD();
+          this.wMN.byC();
+          Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
+          this.wMN.dNM();
           AppMethodBeat.o(24661);
           continue;
         }
-        if (paramaf.FJz.version <= cTp()) {
+        if (paramah.KCR.version <= dMy()) {
           break label384;
         }
       }
       finally {}
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramaf.FJz.version), Integer.valueOf(cTp()) });
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramaf.FJz.version);
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramaf.FJz.GsX);
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramaf.FJz.GsY);
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramaf.FJz.dnN);
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramaf.FJz.dnM);
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramaf.FJz.GsZ);
-      Hb(paramaf.FJz.GsX);
-      Hc(paramaf.FJz.GsY);
-      akD(paramaf.FJz.dnN);
-      akC(paramaf.FJz.dnM);
-      akE(paramaf.FJz.GsZ);
-      Ha(paramaf.FJz.version);
-      ae.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
-      this.tvJ.cUD();
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramah.KCR.version), Integer.valueOf(dMy()) });
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramah.KCR.version);
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramah.KCR.Loq);
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramah.KCR.Lor);
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramah.KCR.dFc);
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramah.KCR.dFb);
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramah.KCR.Los);
+      Na(paramah.KCR.Loq);
+      Nb(paramah.KCR.Lor);
+      axI(paramah.KCR.dFc);
+      axH(paramah.KCR.dFb);
+      axJ(paramah.KCR.Los);
+      MZ(paramah.KCR.version);
+      Log.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
+      this.wMN.dNM();
       label384:
       AppMethodBeat.o(24661);
     }
   }
   
-  public final int cTp()
-  {
-    for (;;)
-    {
-      String str;
-      try
-      {
-        AppMethodBeat.i(24663);
-        cTo();
-      }
-      finally {}
-      try
-      {
-        str = this.tvJ.akU(a.tvK.key);
-        if (!m.ef(str)) {
-          continue;
-        }
-        i = Integer.valueOf(a.tvK.tvQ).intValue();
-        AppMethodBeat.o(24663);
-      }
-      catch (Exception localException)
-      {
-        i = bu.getInt(a.tvK.tvQ, 0);
-        AppMethodBeat.o(24663);
-        continue;
-      }
-      return i;
-      i = Integer.valueOf(str).intValue();
-      AppMethodBeat.o(24663);
-    }
-  }
-  
-  public final int cTq()
-  {
-    AppMethodBeat.i(24665);
-    cTo();
-    int i;
-    try
-    {
-      String str = this.tvJ.akU(a.tvL.key);
-      if (m.ef(str))
-      {
-        i = Integer.valueOf(a.tvL.tvQ).intValue();
-        AppMethodBeat.o(24665);
-        return i;
-      }
-      i = Integer.valueOf(str).intValue();
-      AppMethodBeat.o(24665);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      i = bu.getInt(a.tvL.tvQ, 0);
-      AppMethodBeat.o(24665);
-    }
-    return i;
-  }
-  
-  public final int cTr()
+  public final int dMA()
   {
     AppMethodBeat.i(24667);
-    cTo();
+    dMx();
     int i;
     try
     {
-      String str = this.tvJ.akU(a.tvM.key);
-      if (m.ef(str))
+      String str = this.wMN.axY(a.wMQ.key);
+      if (m.eP(str))
       {
-        i = Integer.valueOf(a.tvM.tvQ).intValue();
+        i = Integer.valueOf(a.wMQ.wMU).intValue();
         AppMethodBeat.o(24667);
         return i;
       }
@@ -260,19 +203,19 @@ public final class h
     }
     catch (Exception localException)
     {
-      i = bu.getInt(a.tvM.tvQ, 0);
+      i = Util.getInt(a.wMQ.wMU, 0);
       AppMethodBeat.o(24667);
     }
     return i;
   }
   
-  public final String cTs()
+  public final String dMB()
   {
     AppMethodBeat.i(24669);
-    cTo();
+    dMx();
     try
     {
-      if ("0".equals(this.tvJ.akU(a.tvN.key)))
+      if ("0".equals(this.wMN.axY(a.wMR.key)))
       {
         AppMethodBeat.o(24669);
         return "0";
@@ -282,22 +225,22 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str = a.tvN.tvQ;
+      String str = a.wMR.wMU;
       AppMethodBeat.o(24669);
       return str;
     }
   }
   
-  public final String cTt()
+  public final String dMC()
   {
     AppMethodBeat.i(24673);
-    cTo();
+    dMx();
     try
     {
-      String str1 = this.tvJ.akU(a.tvP.key);
-      if (m.ef(str1))
+      String str1 = this.wMN.axY(a.wMT.key);
+      if (m.eP(str1))
       {
-        str1 = a.tvP.tvQ;
+        str1 = a.wMT.wMU;
         AppMethodBeat.o(24673);
         return str1;
       }
@@ -307,22 +250,80 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str2 = a.tvP.tvQ;
+      String str2 = a.wMT.wMU;
       AppMethodBeat.o(24673);
       return str2;
     }
   }
   
+  public final int dMy()
+  {
+    for (;;)
+    {
+      String str;
+      try
+      {
+        AppMethodBeat.i(24663);
+        dMx();
+      }
+      finally {}
+      try
+      {
+        str = this.wMN.axY(a.wMO.key);
+        if (!m.eP(str)) {
+          continue;
+        }
+        i = Integer.valueOf(a.wMO.wMU).intValue();
+        AppMethodBeat.o(24663);
+      }
+      catch (Exception localException)
+      {
+        i = Util.getInt(a.wMO.wMU, 0);
+        AppMethodBeat.o(24663);
+        continue;
+      }
+      return i;
+      i = Integer.valueOf(str).intValue();
+      AppMethodBeat.o(24663);
+    }
+  }
+  
+  public final int dMz()
+  {
+    AppMethodBeat.i(24665);
+    dMx();
+    int i;
+    try
+    {
+      String str = this.wMN.axY(a.wMP.key);
+      if (m.eP(str))
+      {
+        i = Integer.valueOf(a.wMP.wMU).intValue();
+        AppMethodBeat.o(24665);
+        return i;
+      }
+      i = Integer.valueOf(str).intValue();
+      AppMethodBeat.o(24665);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      i = Util.getInt(a.wMP.wMU, 0);
+      AppMethodBeat.o(24665);
+    }
+    return i;
+  }
+  
   public final String getPingUrl()
   {
     AppMethodBeat.i(24671);
-    cTo();
+    dMx();
     try
     {
-      String str1 = this.tvJ.akU(a.tvO.key);
-      if (m.ef(str1))
+      String str1 = this.wMN.axY(a.wMS.key);
+      if (m.eP(str1))
       {
-        str1 = a.tvO.tvQ;
+        str1 = a.wMS.wMU;
         AppMethodBeat.o(24671);
         return str1;
       }
@@ -332,7 +333,7 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str2 = a.tvO.tvQ;
+      String str2 = a.wMS.wMU;
       AppMethodBeat.o(24671);
       return str2;
     }
@@ -341,8 +342,8 @@ public final class h
   public final String getUserAgent()
   {
     AppMethodBeat.i(24675);
-    if (m.ef(this.userAgent)) {
-      this.userAgent = x.bX(ak.getContext(), null).toLowerCase();
+    if (m.eP(this.userAgent)) {
+      this.userAgent = z.cr(MMApplicationContext.getContext(), null).toLowerCase();
     }
     String str = this.userAgent;
     AppMethodBeat.o(24675);
@@ -352,31 +353,43 @@ public final class h
   static enum a
   {
     String key;
-    String tvQ;
+    String wMU;
     
     static
     {
       AppMethodBeat.i(24658);
-      tvK = new a("version", 0, "version", "2");
-      tvL = new a("httpConnectTimeoutMillis", 1, "httpConnectTimeoutMillis", "5000");
-      tvM = new a("httpReadTimeoutMillis", 2, "httpReadTimeoutMillis", "5000");
-      tvN = new a("pingEnabled", 3, "pingEnabled", "1");
-      tvO = new a("pingUrl", 4, "pingUrl", "http://o2o.gtimg.com/wifi/echo");
-      tvP = new a("threeTwoBlackUrl", 5, "threeTwoBlackUrl", "http://o2o.gtimg.com/wifi/echo.html");
-      tvR = new a[] { tvK, tvL, tvM, tvN, tvO, tvP };
+      wMO = new a("version", 0, "version", "2");
+      wMP = new a("httpConnectTimeoutMillis", 1, "httpConnectTimeoutMillis", "5000");
+      wMQ = new a("httpReadTimeoutMillis", 2, "httpReadTimeoutMillis", "5000");
+      wMR = new a("pingEnabled", 3, "pingEnabled", "1");
+      wMS = new a("pingUrl", 4, "pingUrl", "http://" + WeChatHosts.domainString(2131761727) + "/wifi/echo");
+      wMT = new a("threeTwoBlackUrl", 5, "threeTwoBlackUrl", "http://" + WeChatHosts.domainString(2131761727) + "/wifi/echo.html");
+      wMV = new a[] { wMO, wMP, wMQ, wMR, wMS, wMT };
       AppMethodBeat.o(24658);
     }
     
     private a(String paramString1, String paramString2)
     {
       this.key = paramString1;
-      this.tvQ = paramString2;
+      this.wMU = paramString2;
+    }
+  }
+  
+  public static final class b
+  {
+    private static h wMW;
+    
+    static
+    {
+      AppMethodBeat.i(24659);
+      wMW = new h((byte)0);
+      AppMethodBeat.o(24659);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.h
  * JD-Core Version:    0.7.0.1
  */

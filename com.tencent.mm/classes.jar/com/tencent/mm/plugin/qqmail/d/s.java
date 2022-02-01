@@ -1,55 +1,54 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.network.m;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class s
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final boolean dMW;
-  private b rr;
-  private String xrP;
+  private String BrR;
+  private i callback;
+  private final boolean eeO;
+  private d rr;
   
   public s(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(122719);
-    this.xrP = "";
-    this.dMW = paramBoolean;
-    this.xrP = bu.nullAsNil(paramString);
+    this.BrR = "";
+    this.eeO = paramBoolean;
+    this.BrR = Util.nullAsNil(paramString);
     AppMethodBeat.o(122719);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(122720);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new ad();
-    ((b.a)localObject).hQG = new ae();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/switchpushmail";
-    ((b.a)localObject).funcId = 129;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (ad)this.rr.hQD.hQJ;
-    if (this.dMW) {}
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ad();
+    ((d.a)localObject).iLO = new ae();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/switchpushmail";
+    ((d.a)localObject).funcId = 129;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (ad)this.rr.iLK.iLR;
+    if (this.eeO) {}
     for (int i = 1;; i = 2)
     {
-      ((ad)localObject).xsz = i;
-      ((ad)localObject).xsA = this.xrP;
-      this.callback = paramf;
-      i = dispatch(parame, this.rr, this);
+      ((ad)localObject).BsD = i;
+      ((ad)localObject).BsE = this.BrR;
+      this.callback = parami;
+      i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(122720);
       return i;
     }
@@ -60,13 +59,13 @@ public final class s
     return 129;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(122721);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ae)this.rr.hQE.hQJ;
-      g.ajR().ajA().set(17, Integer.valueOf(paramq.xsz));
+      params = (ae)this.rr.iLL.iLR;
+      com.tencent.mm.kernel.g.aAh().azQ().set(17, Integer.valueOf(params.BsD));
     }
     updateDispatchId(paramInt1);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -80,7 +79,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.s
  * JD-Core Version:    0.7.0.1
  */

@@ -3,25 +3,25 @@ package com.tencent.luggage.d;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class l
 {
-  public ConcurrentHashMap<f, Boolean> chE;
+  public ConcurrentHashMap<f, Boolean> ctz;
   private Handler mMainHandler;
   
   public l()
   {
     AppMethodBeat.i(140410);
-    this.chE = new ConcurrentHashMap();
+    this.ctz = new ConcurrentHashMap();
     this.mMainHandler = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(140410);
   }
   
-  private static boolean Ck()
+  private static boolean LB()
   {
     AppMethodBeat.i(140411);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
@@ -33,24 +33,24 @@ public final class l
     return false;
   }
   
-  final boolean O(Class<? extends f> paramClass)
+  final boolean Q(Class<? extends f> paramClass)
   {
     AppMethodBeat.i(140413);
-    if (!Ck())
+    if (!LB())
     {
-      ae.e("LuggagePageEventBus", "notifyListener on non-UI thread");
+      Log.e("LuggagePageEventBus", "notifyListener on non-UI thread");
       AppMethodBeat.o(140413);
       return false;
     }
-    Iterator localIterator = this.chE.keySet().iterator();
+    Iterator localIterator = this.ctz.keySet().iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
       if (paramClass.isInstance(localf))
       {
         boolean bool = localf.call();
-        if (((Boolean)this.chE.get(localf)).booleanValue()) {
-          this.chE.remove(localf);
+        if (((Boolean)this.ctz.get(localf)).booleanValue()) {
+          this.ctz.remove(localf);
         }
         if (bool)
         {
@@ -66,7 +66,7 @@ public final class l
   public final void a(f paramf)
   {
     AppMethodBeat.i(140412);
-    this.chE.put(paramf, Boolean.TRUE);
+    this.ctz.put(paramf, Boolean.TRUE);
     AppMethodBeat.o(140412);
   }
   

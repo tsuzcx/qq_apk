@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
-    <Preference android:key="revert_pref" android:layout="@layout/bej" android:title="" />
-    <PreferenceSmallCategory />
-    <Preference android:key="desc" android:layout="@layout/bei" android:title="" />
-    <PreferenceSmallCategory />
+    <IconPreference android:key="share_micromsg_qzone" android:title="@string/gjk" />
+    <IconPreference android:key="share_micromsg_to_sina" android:title="@string/gjl" />
+    <IconPreference android:key="share_micromsg_to_fuckbook" android:title="@string/gjj" />
 </PreferenceScreen>

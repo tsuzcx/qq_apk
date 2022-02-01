@@ -4,51 +4,51 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.f;
-import d.g;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/video/MPVideoPreviewDataMgr;", "", "()V", "TAG", "", "abTestOn", "", "getAbTestOn", "()Z", "abTestOn$delegate", "Lkotlin/Lazy;", "videoManager", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "getInitialParams", "", "Ljava/lang/Object;", "getOnReceiveNativeData", "getVideo", "vid", "parseNativeData", "", "nativeData", "prepareOnReceivePageData", "reportByLeaveForMPGateway", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "reportOnLeaveForMP", "json", "Lorg/json/JSONObject;", "saveVideo", "playTime", "", "expireTime", "bitmap", "Landroid/graphics/Bitmap;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/video/MPVideoPreviewDataMgr;", "", "()V", "TAG", "", "abTestOn", "", "getAbTestOn", "()Z", "abTestOn$delegate", "Lkotlin/Lazy;", "videoManager", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "getInitialParams", "", "Ljava/lang/Object;", "getOnReceiveNativeData", "getVideo", "vid", "parseNativeData", "", "nativeData", "prepareOnReceivePageData", "reportByLeaveForMPGateway", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "reportOnLeaveForMP", "json", "Lorg/json/JSONObject;", "saveVideo", "playTime", "", "expireTime", "bitmap", "Landroid/graphics/Bitmap;", "plugin-webview_release"})
 public final class a
 {
-  public static final as EHW;
-  public static final a EHX;
-  private static final f ovN;
+  private static final f JxL;
+  public static final MMKVSlotManager JxM;
+  public static final a JxN;
   
   static
   {
-    AppMethodBeat.i(199451);
-    EHX = new a();
-    ovN = g.O((d.g.a.a)a.EHY);
-    ay localay = ay.aRW("MicroMsg.MPVideoPreviewDataMgr");
-    p.g(localay, "MultiProcessMMKV.getMMKV(TAG)");
-    EHW = new as(localay, 600L);
-    AppMethodBeat.o(199451);
+    AppMethodBeat.i(210674);
+    JxN = new a();
+    JxL = g.ah((kotlin.g.a.a)a.JxO);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("MicroMsg.MPVideoPreviewDataMgr");
+    p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(TAG)");
+    JxM = new MMKVSlotManager(localMultiProcessMMKV, 600L);
+    AppMethodBeat.o(210674);
   }
   
   public static void a(String paramString, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(199448);
-    if (!bSZ())
+    AppMethodBeat.i(210671);
+    if (!gic())
     {
-      AppMethodBeat.o(199448);
+      AppMethodBeat.o(210671);
       return;
     }
-    Object localObject = (ay)EHW.fnP();
-    ((ay)localObject).encode("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_playTime", paramInt1);
-    ((ay)localObject).encode("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_expire", paramInt2);
+    Object localObject = (MultiProcessMMKV)JxM.getSlot();
+    ((MultiProcessMMKV)localObject).encode("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_playTime", paramInt1);
+    ((MultiProcessMMKV)localObject).encode("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_expire", paramInt2);
     if (paramBitmap != null)
     {
       localObject = new ByteArrayOutputStream();
@@ -58,58 +58,31 @@ public final class a
     }
     for (;;)
     {
-      ((ay)EHW.fnP()).encode("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_bitmap", paramBitmap);
-      AppMethodBeat.o(199448);
+      ((MultiProcessMMKV)JxM.getSlot()).encode("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_bitmap", paramBitmap);
+      AppMethodBeat.o(210671);
       return;
       paramBitmap = "";
     }
   }
   
-  public static void aKR(String paramString)
-  {
-    AppMethodBeat.i(199447);
-    try
-    {
-      paramString = new JSONObject(paramString).optString("video_data");
-      if (bu.isNullOrNil(paramString))
-      {
-        ae.i("MicroMsg.MPVideoPreviewDataMgr", "reportByLeaveForMPGateway video_data null");
-        AppMethodBeat.o(199447);
-        return;
-      }
-      paramString = new JSONObject(paramString);
-      String str = paramString.optString("vid");
-      int i = (int)bu.getFloat(paramString.optString("lastPlayedTime"), 0.0F);
-      float f = bu.getFloat(paramString.optString("lastPlayedTimeExpiredTime"), 0.0F);
-      a(str, i, (int)f, null);
-      AppMethodBeat.o(199447);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ae.i("MicroMsg.MPVideoPreviewDataMgr", "reportByLeaveForMPGateway, ex = %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(199447);
-    }
-  }
-  
-  public static void aKS(String paramString)
+  public static void bbi(String paramString)
   {
     Object localObject1 = null;
-    AppMethodBeat.i(199449);
-    if (!bSZ())
+    AppMethodBeat.i(210672);
+    if (!gic())
     {
-      AppMethodBeat.o(199449);
+      AppMethodBeat.o(210672);
       return;
     }
-    Object localObject2 = aKT(paramString);
+    Object localObject2 = bbj(paramString);
     if (localObject2 == null)
     {
-      ae.i("MicroMsg.MPVideoPreviewDataMgr", "prepareOnReceivePageData vid not found");
-      ((ay)EHW.fnP()).encode("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
-      AppMethodBeat.o(199449);
+      Log.i("MicroMsg.MPVideoPreviewDataMgr", "prepareOnReceivePageData vid not found");
+      ((MultiProcessMMKV)JxM.getSlot()).encode("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
+      AppMethodBeat.o(210672);
       return;
     }
-    ((ay)EHW.fnP()).encode("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", paramString);
+    ((MultiProcessMMKV)JxM.getSlot()).encode("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", paramString);
     StringBuilder localStringBuilder = new StringBuilder("prepareOnReceivePageData len = ");
     localObject2 = ((Map)localObject2).get("videoInitialSnapshot");
     paramString = (String)localObject2;
@@ -121,22 +94,22 @@ public final class a
     if (localObject2 != null) {
       paramString = Integer.valueOf(((String)localObject2).length());
     }
-    ae.v("MicroMsg.MPVideoPreviewDataMgr", paramString);
-    AppMethodBeat.o(199449);
+    Log.v("MicroMsg.MPVideoPreviewDataMgr", paramString);
+    AppMethodBeat.o(210672);
   }
   
-  public static Map<String, Object> aKT(String paramString)
+  public static Map<String, Object> bbj(String paramString)
   {
-    AppMethodBeat.i(199450);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(210673);
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.MPVideoPreviewDataMgr", "getVideo vid null");
-      AppMethodBeat.o(199450);
+      Log.i("MicroMsg.MPVideoPreviewDataMgr", "getVideo vid null");
+      AppMethodBeat.o(210673);
       return null;
     }
-    Object localObject = (ay)EHW.fnP();
-    int j = ((ay)localObject).getInt("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_playTime", 0);
-    int k = ((ay)localObject).getInt("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_expire", 0);
+    Object localObject = (MultiProcessMMKV)JxM.getSlot();
+    int j = ((MultiProcessMMKV)localObject).getInt("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_playTime", 0);
+    int k = ((MultiProcessMMKV)localObject).getInt("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_expire", 0);
     int i;
     if (System.currentTimeMillis() / 1000L > k) {
       i = 1;
@@ -146,11 +119,11 @@ public final class a
     {
       localHashMap = new HashMap();
       localHashMap.put("videoInitialTime", (Object)Integer.valueOf(j));
-      localObject = ((ay)localObject).getString("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_bitmap", "");
+      localObject = ((MultiProcessMMKV)localObject).getString("MicroMsg.MPVideoPreviewDataMgr_" + paramString + "_bitmap", "");
       if (localObject == null)
       {
-        paramString = new v("null cannot be cast to non-null type java.lang.Object");
-        AppMethodBeat.o(199450);
+        paramString = new t("null cannot be cast to non-null type java.lang.Object");
+        AppMethodBeat.o(210673);
         throw paramString;
         i = 0;
       }
@@ -165,35 +138,62 @@ public final class a
       if (localHashMap != null) {}
       for (i = localHashMap.size();; i = 0)
       {
-        ae.i("MicroMsg.MPVideoPreviewDataMgr", i);
+        Log.i("MicroMsg.MPVideoPreviewDataMgr", i);
         paramString = (Map)localHashMap;
-        AppMethodBeat.o(199450);
+        AppMethodBeat.o(210673);
         return paramString;
       }
       localHashMap = null;
     }
   }
   
-  public static boolean bSZ()
+  public static boolean gic()
   {
-    AppMethodBeat.i(199446);
-    boolean bool = ((Boolean)ovN.getValue()).booleanValue();
-    AppMethodBeat.o(199446);
+    AppMethodBeat.i(210669);
+    boolean bool = ((Boolean)JxL.getValue()).booleanValue();
+    AppMethodBeat.o(210669);
     return bool;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  public final void bbh(String paramString)
+  {
+    AppMethodBeat.i(210670);
+    try
+    {
+      paramString = new JSONObject(paramString).optString("video_data");
+      if (Util.isNullOrNil(paramString))
+      {
+        Log.i("MicroMsg.MPVideoPreviewDataMgr", "reportByLeaveForMPGateway video_data null");
+        AppMethodBeat.o(210670);
+        return;
+      }
+      paramString = new JSONObject(paramString);
+      String str = paramString.optString("vid");
+      int i = (int)Util.getFloat(paramString.optString("lastPlayedTime"), 0.0F);
+      float f = Util.getFloat(paramString.optString("lastPlayedTimeExpiredTime"), 0.0F);
+      a(str, i, (int)f, null);
+      AppMethodBeat.o(210670);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.i("MicroMsg.MPVideoPreviewDataMgr", "reportByLeaveForMPGateway, ex = %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(210670);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class a
     extends q
-    implements d.g.a.a<Boolean>
+    implements kotlin.g.a.a<Boolean>
   {
-    public static final a EHY;
+    public static final a JxO;
     
     static
     {
-      AppMethodBeat.i(199445);
-      EHY = new a();
-      AppMethodBeat.o(199445);
+      AppMethodBeat.i(210668);
+      JxO = new a();
+      AppMethodBeat.o(210668);
     }
     
     a()

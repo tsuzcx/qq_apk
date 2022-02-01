@@ -2,22 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class ad
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEX = "startTime".hashCode();
-  private static final int eEY = "endTime".hashCode();
-  private static final int eJM = "sessionName".hashCode();
+  private static final int fjx = "startTime".hashCode();
+  private static final int fjy = "endTime".hashCode();
+  private static final int fno = "sessionName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEQ = true;
-  private boolean eER = true;
-  private boolean eJJ = true;
   public long field_endTime;
   public String field_sessionName;
   public long field_startTime;
+  private boolean fjq = true;
+  private boolean fjr = true;
+  private boolean fnl = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,7 +32,7 @@ public abstract class ad
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eJM != k) {
+      if (fno != k) {
         break label60;
       }
       this.field_sessionName = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class ad
       break label20;
       break;
       label60:
-      if (eEX == k) {
+      if (fjx == k) {
         this.field_startTime = paramCursor.getLong(i);
-      } else if (eEY == k) {
+      } else if (fjy == k) {
         this.field_endTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -59,13 +59,13 @@ public abstract class ad
     if (this.field_sessionName == null) {
       this.field_sessionName = "";
     }
-    if (this.eJJ) {
+    if (this.fnl) {
       localContentValues.put("sessionName", this.field_sessionName);
     }
-    if (this.eEQ) {
+    if (this.fjq) {
       localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eER) {
+    if (this.fjr) {
       localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
     if (this.systemRowid > 0L) {
@@ -76,7 +76,7 @@ public abstract class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ad
  * JD-Core Version:    0.7.0.1
  */

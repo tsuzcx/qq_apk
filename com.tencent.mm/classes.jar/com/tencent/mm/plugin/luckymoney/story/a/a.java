@@ -1,35 +1,36 @@
 package com.tencent.mm.plugin.luckymoney.story.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.big;
-import com.tencent.mm.protocal.protobuf.bih;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.protocal.protobuf.buh;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends com.tencent.mm.ak.a<bih>
+  extends c<buh>
 {
-  public String vEE;
+  public String yZF;
   
   public a(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(163688);
-    Object localObject = new big();
-    b.a locala = new b.a();
-    locala.hQF = ((com.tencent.mm.bw.a)localObject);
-    locala.hQG = new bih();
+    Object localObject = new bug();
+    d.a locala = new d.a();
+    locala.iLN = ((com.tencent.mm.bw.a)localObject);
+    locala.iLO = new buh();
     locala.funcId = 3634;
     locala.uri = "/cgi-bin/micromsg-bin/getredpacketstory";
-    ((big)localObject).hCo = paramString;
+    ((bug)localObject).iwu = paramString;
     if (!paramBoolean) {
       locala.timeout = 5000;
     }
-    localObject = locala.aDS();
-    ((b)localObject).setIsUserCmd(paramBoolean);
-    c((b)localObject);
-    this.vEE = paramString;
-    ae.i("MicroMsg.CgiRedPacketStoryInfo", "packet id: %s", new Object[] { paramString });
+    localObject = locala.aXF();
+    ((d)localObject).setIsUserCmd(paramBoolean);
+    c((d)localObject);
+    this.yZF = paramString;
+    Log.i("MicroMsg.CgiRedPacketStoryInfo", "packet id: %s", new Object[] { paramString });
     AppMethodBeat.o(163688);
   }
 }

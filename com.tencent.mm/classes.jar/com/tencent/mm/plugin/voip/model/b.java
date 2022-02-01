@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip.model;
 
 public abstract interface b
 {
-  public abstract int O(byte[] paramArrayOfByte, int paramInt);
+  public abstract int Q(byte[] paramArrayOfByte, int paramInt);
 }
 
 

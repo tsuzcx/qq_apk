@@ -9,7 +9,7 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.KDashLineView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.at;
 
 public class MMKDashLineView
   extends MMKView<LinearLayout>
@@ -26,14 +26,14 @@ public class MMKDashLineView
     AppMethodBeat.i(170120);
     this.isVertical = false;
     this.mDashColor = new DynamicColor(-1L, 0L);
-    this.mDashWidth = aq.fromDPToPix(this.mContext, 2);
+    this.mDashWidth = at.fromDPToPix(this.mContext, 2);
     AppMethodBeat.o(170120);
   }
   
   public LinearLayout createView(Context paramContext)
   {
     AppMethodBeat.i(19013);
-    this.contentView = ((LinearLayout)View.inflate(paramContext, 2131494533, null));
+    this.contentView = ((LinearLayout)View.inflate(paramContext, 2131495141, null));
     paramContext = this.contentView;
     AppMethodBeat.o(19013);
     return paramContext;
@@ -73,11 +73,11 @@ public class MMKDashLineView
       Object localObject = new LinearLayout.LayoutParams(-2, -1);
       this.contentView.setGravity(17);
       this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.mLine = this.contentView.findViewById(2131303060);
+      this.mLine = this.contentView.findViewById(2131305668);
       localObject = this.mLine.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = aq.fromDPToPix(this.mContext, 60);
-      ((ViewGroup.LayoutParams)localObject).height = aq.fromDPToPix(this.mContext, 60);
-      this.mLine.setBackground(this.mContext.getResources().getDrawable(2131231120));
+      ((ViewGroup.LayoutParams)localObject).width = at.fromDPToPix(this.mContext, 60);
+      ((ViewGroup.LayoutParams)localObject).height = at.fromDPToPix(this.mContext, 60);
+      this.mLine.setBackground(this.mContext.getResources().getDrawable(2131231156));
       this.mLine.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     AppMethodBeat.o(170121);
@@ -85,7 +85,7 @@ public class MMKDashLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKDashLineView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,90 @@
+package com.tencent.mm.protocal.protobuf;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+
+public final class ewp
+  extends com.tencent.mm.bw.a
+{
+  public LinkedList<ewo> Nui;
+  public int oTz;
+  
+  public ewp()
+  {
+    AppMethodBeat.i(32513);
+    this.Nui = new LinkedList();
+    AppMethodBeat.o(32513);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(32514);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.Nui);
+      paramVarArgs.aM(2, this.oTz);
+      AppMethodBeat.o(32514);
+      return 0;
+    }
+    int i;
+    if (paramInt == 1)
+    {
+      paramInt = g.a.a.a.c(1, 8, this.Nui);
+      i = g.a.a.b.b.a.bu(2, this.oTz);
+      AppMethodBeat.o(32514);
+      return paramInt + 0 + i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.Nui.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(32514);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      ewp localewp = (ewp)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(32514);
+        return -1;
+      case 1: 
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new ewo();
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((ewo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          localewp.Nui.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32514);
+        return 0;
+      }
+      localewp.oTz = ((g.a.a.a.a)localObject1).UbS.zi();
+      AppMethodBeat.o(32514);
+      return 0;
+    }
+    AppMethodBeat.o(32514);
+    return -1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.protocal.protobuf.ewp
+ * JD-Core Version:    0.7.0.1
+ */

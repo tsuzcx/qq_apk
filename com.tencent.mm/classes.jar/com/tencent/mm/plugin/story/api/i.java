@@ -9,11 +9,11 @@ public abstract interface i
 {
   public abstract void a(Canvas paramCanvas, boolean paramBoolean, int paramInt);
   
-  public abstract void aZ(View paramView);
+  public abstract void ba(View paramView);
   
-  public abstract View.OnClickListener ekD();
+  public abstract void fL(String paramString, int paramInt);
   
-  public abstract void fn(String paramString, int paramInt);
+  public abstract View.OnClickListener fne();
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
   

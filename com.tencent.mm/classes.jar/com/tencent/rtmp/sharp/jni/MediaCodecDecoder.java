@@ -112,7 +112,7 @@ public class MediaCodecDecoder
         {
           i = this.mAudioAACDecoder.dequeueOutputBuffer(this.mAACDecBufferInfo, 10000L);
           if (i >= 0) {
-            break label136;
+            break label150;
           }
           AppMethodBeat.o(13653);
           return 0;
@@ -123,10 +123,13 @@ public class MediaCodecDecoder
       }
       catch (Exception localException1)
       {
+        if (QLog.isColorLevel()) {
+          QLog.e("TRAE", 2, "decode failed.");
+        }
         AppMethodBeat.o(13653);
         return 0;
       }
-      label136:
+      label150:
       for (this.mOutputBuffer = this.mAudioAACDecoder.getOutputBuffer(i);; this.mOutputBuffer = this.mAudioAACDecoder.getOutputBuffers()[i])
       {
         int j = this.mAACDecBufferInfo.size;
@@ -168,6 +171,9 @@ public class MediaCodecDecoder
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "release aac decoder failed.");
+      }
+      if (QLog.isColorLevel()) {
         QLog.e("TRAE", 2, "releaseAACDecoder, Error when releasing aac decode stream");
       }
       AppMethodBeat.o(13654);
@@ -177,7 +183,7 @@ public class MediaCodecDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.MediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

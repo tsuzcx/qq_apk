@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class yh
-  extends b
+  extends IEvent
 {
-  public a dNE;
-  public b dNF;
+  public a eeC;
   
   public yh()
   {
@@ -17,28 +15,18 @@ public final class yh
   
   private yh(byte paramByte)
   {
-    AppMethodBeat.i(149895);
-    this.dNE = new a();
-    this.dNF = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(140992);
+    this.eeC = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(149895);
+    AppMethodBeat.o(140992);
   }
   
   public static final class a
   {
-    public String content;
-    public Context context;
-    public int dNA = 0;
-    public byte[] dNz;
-    public int dto = 0;
-    public String talker;
-  }
-  
-  public static final class b
-  {
-    public boolean dNG = false;
-    public boolean dNH = false;
+    public int eeD = 0;
+    public int eeE = 0;
+    public int eeF = 0;
     public int type = 0;
   }
 }

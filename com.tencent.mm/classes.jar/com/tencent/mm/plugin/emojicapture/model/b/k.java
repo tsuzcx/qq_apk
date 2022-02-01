@@ -3,35 +3,35 @@ package com.tencent.mm.plugin.emojicapture.model.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.g;
 import com.tencent.mm.sticker.f;
-import d.g.a.b;
-import d.g.b.q;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixer;", "", "videoPath", "", "emojiFrameRetriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "gifPath", "videoPlayRate", "", "removeBackground", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "outputGif", "timeEnter", "", "(Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;Ljava/lang/String;IZLcom/tencent/mm/sticker/StickerPack;ZJ)V", "getEmojiFrameRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "frameCount", "gifEncoder", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder;", "getGifPath", "()Ljava/lang/String;", "mixPixelBuffer", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixEGLPixelBuffer;", "mixTime", "onMixFinish", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "", "startTick", "syncMgr", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr;", "getTimeEnter", "()J", "videoDecoder", "Lcom/tencent/mm/plugin/emojicapture/model/mix/IEmojiMixDecoder;", "finishMix", "mixVideoFrame", "start", "mixFinish", "Companion", "plugin-emojicapture_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixer;", "", "videoPath", "", "emojiFrameRetriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "gifPath", "videoPlayRate", "", "removeBackground", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "outputGif", "timeEnter", "", "(Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;Ljava/lang/String;IZLcom/tencent/mm/sticker/StickerPack;ZJ)V", "getEmojiFrameRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "frameCount", "gifEncoder", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder;", "getGifPath", "()Ljava/lang/String;", "mixPixelBuffer", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixEGLPixelBuffer;", "mixTime", "onMixFinish", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "", "startTick", "syncMgr", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr;", "getTimeEnter", "()J", "videoDecoder", "Lcom/tencent/mm/plugin/emojicapture/model/mix/IEmojiMixDecoder;", "finishMix", "mixVideoFrame", "start", "mixFinish", "Companion", "plugin-emojicapture_release"})
 public final class k
 {
-  public static final k.a pZt;
+  public static final k.a rqq;
   int frameCount;
-  long gmN;
-  private final long gsp;
-  final String kxX;
-  final int pYN;
-  final f pYP;
-  final boolean pYQ;
-  private l pZl;
-  com.tencent.mm.plugin.emojicapture.ui.b.c pZm;
-  g pZn;
-  c pZo;
-  b<? super Boolean, z> pZp;
-  private long pZq;
-  final a pZr;
-  final boolean pZs;
+  long gXF;
+  private final long hdz;
+  final String lCj;
+  final int rpK;
+  final f rpM;
+  final boolean rpN;
+  private l rqi;
+  com.tencent.mm.plugin.emojicapture.ui.b.c rqj;
+  g rqk;
+  c rql;
+  b<? super Boolean, x> rqm;
+  private long rqn;
+  final a rqo;
+  final boolean rqp;
   final String videoPath;
   
   static
   {
     AppMethodBeat.i(310);
-    pZt = new k.a((byte)0);
+    rqq = new k.a((byte)0);
     AppMethodBeat.o(310);
   }
   
@@ -39,20 +39,20 @@ public final class k
   {
     AppMethodBeat.i(309);
     this.videoPath = paramString1;
-    this.pZr = parama;
-    this.kxX = paramString2;
-    this.pYN = paramInt;
-    this.pZs = paramBoolean1;
-    this.pYP = paramf;
-    this.pYQ = paramBoolean2;
-    this.gsp = paramLong;
+    this.rqo = parama;
+    this.lCj = paramString2;
+    this.rpK = paramInt;
+    this.rqp = paramBoolean1;
+    this.rpM = paramf;
+    this.rpN = paramBoolean2;
+    this.hdz = paramLong;
     AppMethodBeat.o(309);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     b(k paramk, boolean paramBoolean)
     {
@@ -60,10 +60,10 @@ public final class k
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "skipFrame", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "skipFrame", "", "invoke"})
   static final class c
     extends q
-    implements b<Boolean, z>
+    implements b<Boolean, x>
   {
     c(k paramk)
     {
@@ -71,10 +71,10 @@ public final class k
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class d
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     d(k paramk)
     {
@@ -82,10 +82,10 @@ public final class k
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class e
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     e(k paramk, com.tencent.mm.plugin.sight.base.a parama)
     {
@@ -95,7 +95,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.k
  * JD-Core Version:    0.7.0.1
  */

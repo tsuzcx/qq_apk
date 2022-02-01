@@ -2,34 +2,44 @@ package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.p;
-import com.tencent.mm.plugin.webview.k.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.webview.l.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.regex.Pattern;
 
 public final class a
 {
-  private static Pattern Ekr = null;
+  private static final String IXo;
+  private static Pattern IXp;
+  
+  static
+  {
+    AppMethodBeat.i(210970);
+    IXo = "(http(s)?://" + WeChatHosts.domainString(2131761726) + "/(.*)|http(s)?://" + WeChatHosts.domainString(2131761707) + "/(.*)|http(s)?://([^?#&/]*.)?weishi.com/(.*)|http(s)?://([^?#&/]*.)?weishi.qq.com/(.*)|http(s)?://([^?#&/]*.)?view.inews.qq.com/(.*))";
+    IXp = null;
+    AppMethodBeat.o(210970);
+  }
   
   public static void a(final MMWebView paramMMWebView, String paramString)
   {
-    AppMethodBeat.i(198111);
+    AppMethodBeat.i(210969);
     if (paramMMWebView == null)
     {
-      ae.e("MicroMsg.AutoPlayLogic", "webView null");
-      AppMethodBeat.o(198111);
+      Log.e("MicroMsg.AutoPlayLogic", "webView null");
+      AppMethodBeat.o(210969);
       return;
     }
-    ae.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { paramString });
-    if (bu.isNullOrNil(paramString))
+    Log.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { paramString });
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(198111);
+      AppMethodBeat.o(210969);
       return;
     }
     if (paramString.startsWith(c.getScheme()))
     {
-      AppMethodBeat.o(198111);
+      AppMethodBeat.o(210969);
       return;
     }
     p.post(new Runnable()
@@ -37,27 +47,27 @@ public final class a
       public final void run()
       {
         AppMethodBeat.i(78831);
-        p.x(new Runnable()
+        p.y(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(78830);
             if (this.val$enable)
             {
-              a.a(a.1.this.Eks, true);
-              ae.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (true)");
+              a.a(a.1.this.IXq, true);
+              Log.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (true)");
               AppMethodBeat.o(78830);
               return;
             }
-            a.a(a.1.this.Eks, false);
-            ae.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (false)");
+            a.a(a.1.this.IXq, false);
+            Log.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (false)");
             AppMethodBeat.o(78830);
           }
         });
         AppMethodBeat.o(78831);
       }
     });
-    AppMethodBeat.o(198111);
+    AppMethodBeat.o(210969);
   }
   
   public static void e(MMWebView paramMMWebView)
@@ -65,13 +75,13 @@ public final class a
     AppMethodBeat.i(78832);
     if (paramMMWebView == null)
     {
-      ae.e("MicroMsg.AutoPlayLogic", "webView null");
+      Log.e("MicroMsg.AutoPlayLogic", "webView null");
       AppMethodBeat.o(78832);
       return;
     }
     String str = paramMMWebView.getUrl();
-    ae.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { str });
-    if (bu.isNullOrNil(str))
+    Log.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { str });
+    if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(78832);
       return;

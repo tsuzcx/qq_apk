@@ -5,64 +5,64 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wepkg.model.WePkgDiffInfo;
 import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.List;
 
 public class f
-  extends j<e>
+  extends MAutoStorage<e>
 {
-  private static volatile f EWd;
+  private static volatile f JLW;
   public static final String[] SQL_CREATE;
-  private final h hKK;
-  public final boolean kot;
+  private final h iFy;
+  public final boolean lsb;
   
   static
   {
     AppMethodBeat.i(110588);
-    SQL_CREATE = new String[] { j.getCreateSQLs(e.hGW, "WepkgVersion") };
-    EWd = null;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(e.iBg, "WepkgVersion") };
+    JLW = null;
     AppMethodBeat.o(110588);
   }
   
   private f(h paramh)
   {
-    super(paramh, e.hGW, "WepkgVersion", e.INDEX_CREATE);
+    super(paramh, e.iBg, "WepkgVersion", e.INDEX_CREATE);
     AppMethodBeat.i(110572);
-    this.hKK = paramh;
+    this.iFy = paramh;
     if (paramh != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.kot = bool;
-      if (!this.kot) {
-        ae.e("MicroMsg.Wepkg.WepkgVersionStorage", "storage can not work!!!");
+      this.lsb = bool;
+      if (!this.lsb) {
+        Log.e("MicroMsg.Wepkg.WepkgVersionStorage", "storage can not work!!!");
       }
       AppMethodBeat.o(110572);
       return;
     }
   }
   
-  public static f fbz()
+  public static f gkF()
   {
     AppMethodBeat.i(110571);
     f localf;
-    if ((!g.ajM()) || (!com.tencent.mm.plugin.wepkg.utils.b.EYo))
+    if ((!g.aAc()) || (!com.tencent.mm.plugin.wepkg.utils.b.JOe))
     {
       localf = new f(null);
       AppMethodBeat.o(110571);
       return localf;
     }
-    if (EWd == null) {}
+    if (JLW == null) {}
     try
     {
-      if ((EWd == null) || (!EWd.kot)) {
-        EWd = new f(g.ajR().gDX);
+      if ((JLW == null) || (!JLW.lsb)) {
+        JLW = new f(g.aAh().hqK);
       }
-      localf = EWd;
+      localf = JLW;
       AppMethodBeat.o(110571);
       return localf;
     }
@@ -72,15 +72,15 @@ public class f
     }
   }
   
-  public final boolean A(String paramString1, String paramString2, boolean paramBoolean)
+  public final boolean C(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(110582);
-    if ((!this.kot) || (bu.isNullOrNil(paramString1)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString1)))
     {
       AppMethodBeat.o(110582);
       return false;
     }
-    e locale = aLU(paramString1);
+    e locale = bcm(paramString1);
     if (locale == null)
     {
       AppMethodBeat.o(110582);
@@ -89,7 +89,7 @@ public class f
     locale.field_bigPackageReady = paramBoolean;
     locale.field_pkgPath = paramString2;
     boolean bool = super.update(locale, new String[0]);
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateBigPackageReady pkgid:%s, pkgPath:%s, bigPackageReady:%b, ret:%s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateBigPackageReady pkgid:%s, pkgPath:%s, bigPackageReady:%b, ret:%s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
     AppMethodBeat.o(110582);
     return bool;
   }
@@ -97,59 +97,54 @@ public class f
   public final boolean a(e parame, WePkgDiffInfo paramWePkgDiffInfo)
   {
     AppMethodBeat.i(110581);
-    if ((!this.kot) || (bu.isNullOrNil(parame.field_pkgId)))
+    if ((!this.lsb) || (Util.isNullOrNil(parame.field_pkgId)))
     {
       AppMethodBeat.o(110581);
       return false;
     }
-    Object localObject = aLU(parame.field_pkgId);
-    if (localObject == null) {}
-    for (long l = com.tencent.mm.plugin.wepkg.utils.d.currentTime();; l = ((e)localObject).field_accessTime)
+    if ((paramWePkgDiffInfo != null) && (!Util.isNullOrNil(paramWePkgDiffInfo.downloadUrl)))
     {
-      if ((paramWePkgDiffInfo != null) && (!bu.isNullOrNil(paramWePkgDiffInfo.downloadUrl)))
+      Object localObject = gkF().bcm(parame.field_pkgId);
+      if ((localObject != null) && (s.YS(((e)localObject).field_pkgPath)))
       {
-        localObject = fbz().aLU(parame.field_pkgId);
-        if ((localObject != null) && (o.fB(((e)localObject).field_pkgPath)))
-        {
-          paramWePkgDiffInfo.guO = ((e)localObject).field_pkgId;
-          paramWePkgDiffInfo.oldVersion = ((e)localObject).field_version;
-          paramWePkgDiffInfo.EXg = ((e)localObject).field_pkgPath;
-          b.fbx().Dc(paramWePkgDiffInfo.guO);
-          localObject = b.fbx();
-          a locala = new a();
-          locala.field_pkgId = paramWePkgDiffInfo.guO;
-          locala.field_oldVersion = paramWePkgDiffInfo.oldVersion;
-          locala.field_oldPath = paramWePkgDiffInfo.EXg;
-          locala.field_version = paramWePkgDiffInfo.version;
-          locala.field_downloadUrl = paramWePkgDiffInfo.downloadUrl;
-          locala.field_md5 = paramWePkgDiffInfo.md5;
-          locala.field_pkgSize = paramWePkgDiffInfo.fileSize;
-          locala.field_downloadNetType = paramWePkgDiffInfo.EXh;
-          ((b)localObject).insert(locala);
-          ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "insertDiffPkg");
-        }
+        paramWePkgDiffInfo.hhD = ((e)localObject).field_pkgId;
+        paramWePkgDiffInfo.oldVersion = ((e)localObject).field_version;
+        paramWePkgDiffInfo.JMY = ((e)localObject).field_pkgPath;
+        b.gkD().gC(paramWePkgDiffInfo.hhD);
+        localObject = b.gkD();
+        a locala = new a();
+        locala.field_pkgId = paramWePkgDiffInfo.hhD;
+        locala.field_oldVersion = paramWePkgDiffInfo.oldVersion;
+        locala.field_oldPath = paramWePkgDiffInfo.JMY;
+        locala.field_version = paramWePkgDiffInfo.version;
+        locala.field_downloadUrl = paramWePkgDiffInfo.downloadUrl;
+        locala.field_md5 = paramWePkgDiffInfo.md5;
+        locala.field_pkgSize = paramWePkgDiffInfo.fileSize;
+        locala.field_downloadNetType = paramWePkgDiffInfo.JMZ;
+        ((b)localObject).insert(locala);
+        Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "insertDiffPkg");
       }
-      fbz().aLT(parame.field_pkgId);
-      d.fby().aLT(parame.field_pkgId);
-      parame.field_nextCheckTime = (com.tencent.mm.plugin.wepkg.utils.d.currentTime() + parame.field_checkIntervalTime);
-      parame.field_createTime = com.tencent.mm.plugin.wepkg.utils.d.currentTime();
-      parame.field_accessTime = l;
-      boolean bool = insert(parame);
-      ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "insertPkgVersion pkgid:%s, version:%s, ret:%s", new Object[] { parame.field_pkgId, parame.field_version, Boolean.valueOf(bool) });
-      AppMethodBeat.o(110581);
-      return bool;
     }
+    gkF().bcl(parame.field_pkgId);
+    d.gkE().bcl(parame.field_pkgId);
+    parame.field_nextCheckTime = (com.tencent.mm.plugin.wepkg.utils.d.currentTime() + parame.field_checkIntervalTime);
+    parame.field_createTime = com.tencent.mm.plugin.wepkg.utils.d.currentTime();
+    parame.field_accessTime = com.tencent.mm.plugin.wepkg.utils.d.currentTime();
+    boolean bool = insert(parame);
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "insertPkgVersion pkgid:%s, version:%s, ret:%s", new Object[] { parame.field_pkgId, parame.field_version, Boolean.valueOf(bool) });
+    AppMethodBeat.o(110581);
+    return bool;
   }
   
   public final boolean a(String paramString, boolean paramBoolean, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(110580);
-    if (!this.kot)
+    if (!this.lsb)
     {
       AppMethodBeat.o(110580);
       return false;
     }
-    e locale = aLU(paramString);
+    e locale = bcm(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110580);
@@ -161,15 +156,15 @@ public class f
     locale.field_checkIntervalTime = paramLong2;
     locale.field_disable = false;
     boolean bool = super.update(locale, new String[0]);
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateConfigInfo pkgid:%s, disableWvCache:%s, clearPkgTime:%s, checkIntervalTime:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(bool) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateConfigInfo pkgid:%s, disableWvCache:%s, clearPkgTime:%s, checkIntervalTime:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(bool) });
     AppMethodBeat.o(110580);
     return bool;
   }
   
-  public final boolean aLT(String paramString)
+  public final boolean bcl(String paramString)
   {
     AppMethodBeat.i(110578);
-    if ((!this.kot) || (bu.isNullOrNil(paramString)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110578);
       return false;
@@ -177,15 +172,15 @@ public class f
     e locale = new e();
     locale.field_pkgId = paramString;
     boolean bool = super.delete(locale, new String[0]);
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "deleteRecordByPkgid pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "deleteRecordByPkgid pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
     AppMethodBeat.o(110578);
     return bool;
   }
   
-  public final e aLU(String paramString)
+  public final e bcm(String paramString)
   {
     AppMethodBeat.i(110573);
-    if ((!this.kot) || (bu.isNullOrNil(paramString)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110573);
       return null;
@@ -196,20 +191,20 @@ public class f
       paramString = new e();
       paramString.convertFrom(localCursor);
       localCursor.close();
-      ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgid exist record in DB, pkgid:%s, version:%s", new Object[] { paramString.field_pkgId, paramString.field_version });
+      Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgid exist record in DB, pkgid:%s, version:%s", new Object[] { paramString.field_pkgId, paramString.field_version });
       AppMethodBeat.o(110573);
       return paramString;
     }
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgid pkgid:%s, no record in DB", new Object[] { paramString });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgid pkgid:%s, no record in DB", new Object[] { paramString });
     localCursor.close();
     AppMethodBeat.o(110573);
     return null;
   }
   
-  public final e aLV(String paramString)
+  public final e bcn(String paramString)
   {
     AppMethodBeat.i(110574);
-    if ((!this.kot) || (bu.isNullOrNil(paramString)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110574);
       return null;
@@ -220,27 +215,27 @@ public class f
       paramString = new e();
       paramString.convertFrom(localCursor);
       localCursor.close();
-      ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgidWithAble exist record in DB, pkgid:%s, version:%s, disableWvCache:%s, clearPkgTime:%s, checkIntervalTime:%s, domain:%s, bigPackageReady:%s, preloadFilesReady:%s, preloadFilesAtomic:%s, disable:%s", new Object[] { paramString.field_pkgId, paramString.field_version, Boolean.valueOf(paramString.field_disableWvCache), Long.valueOf(paramString.field_clearPkgTime), Long.valueOf(paramString.field_checkIntervalTime), paramString.field_domain, Boolean.valueOf(paramString.field_bigPackageReady), Boolean.valueOf(paramString.field_preloadFilesReady), Boolean.valueOf(paramString.field_preloadFilesAtomic), Boolean.valueOf(paramString.field_disable) });
+      Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgidWithAble exist record in DB, pkgid:%s, version:%s, disableWvCache:%s, clearPkgTime:%s, checkIntervalTime:%s, domain:%s, bigPackageReady:%s, preloadFilesReady:%s, preloadFilesAtomic:%s, disable:%s", new Object[] { paramString.field_pkgId, paramString.field_version, Boolean.valueOf(paramString.field_disableWvCache), Long.valueOf(paramString.field_clearPkgTime), Long.valueOf(paramString.field_checkIntervalTime), paramString.field_domain, Boolean.valueOf(paramString.field_bigPackageReady), Boolean.valueOf(paramString.field_preloadFilesReady), Boolean.valueOf(paramString.field_preloadFilesAtomic), Boolean.valueOf(paramString.field_disable) });
       paramString.field_accessTime = com.tencent.mm.plugin.wepkg.utils.d.currentTime();
       super.update(paramString, new String[0]);
       AppMethodBeat.o(110574);
       return paramString;
     }
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgidWithAble pkgid:%s, no record in DB", new Object[] { paramString });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "getRecordByPkgidWithAble pkgid:%s, no record in DB", new Object[] { paramString });
     localCursor.close();
     AppMethodBeat.o(110574);
     return null;
   }
   
-  public final boolean aLW(String paramString)
+  public final boolean bco(String paramString)
   {
     AppMethodBeat.i(110579);
-    if (!this.kot)
+    if (!this.lsb)
     {
       AppMethodBeat.o(110579);
       return false;
     }
-    e locale = aLU(paramString);
+    e locale = bcm(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110579);
@@ -248,33 +243,33 @@ public class f
     }
     locale.field_nextCheckTime = (com.tencent.mm.plugin.wepkg.utils.d.currentTime() + locale.field_checkIntervalTime);
     boolean bool = super.update(locale, new String[0]);
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateCheckTime pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateCheckTime pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
     AppMethodBeat.o(110579);
     return bool;
   }
   
-  public final boolean aLX(String paramString)
+  public final boolean bcp(String paramString)
   {
     AppMethodBeat.i(110584);
-    if ((!this.kot) || (bu.isNullOrNil(paramString)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110584);
       return false;
     }
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord addAutoDownloadCount ret:%s", new Object[] { Boolean.valueOf(execSQL("WepkgVersion", String.format("update %s set %s=%s+1 where %s='%s'", new Object[] { "WepkgVersion", "autoDownloadCount", "autoDownloadCount", "pkgId", paramString }))) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord addAutoDownloadCount ret:%s", new Object[] { Boolean.valueOf(execSQL("WepkgVersion", String.format("update %s set %s=%s+1 where %s='%s'", new Object[] { "WepkgVersion", "autoDownloadCount", "autoDownloadCount", "pkgId", paramString }))) });
     AppMethodBeat.o(110584);
     return true;
   }
   
-  public final boolean aLY(String paramString)
+  public final boolean bcq(String paramString)
   {
     AppMethodBeat.i(110585);
-    if ((!this.kot) || (bu.isNullOrNil(paramString)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110585);
       return false;
     }
-    e locale = aLU(paramString);
+    e locale = bcm(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110585);
@@ -282,20 +277,20 @@ public class f
     }
     locale.field_disable = true;
     boolean bool = super.update(locale, new String[0]);
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "setWepkgDisable pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "setWepkgDisable pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
     AppMethodBeat.o(110585);
     return bool;
   }
   
-  public final boolean aLZ(String paramString)
+  public final boolean bcr(String paramString)
   {
     AppMethodBeat.i(110586);
-    if ((!this.kot) || (bu.isNullOrNil(paramString)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110586);
       return false;
     }
-    e locale = aLU(paramString);
+    e locale = bcm(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110586);
@@ -303,20 +298,20 @@ public class f
     }
     locale.field_createTime = 0L;
     boolean bool = super.update(locale, new String[0]);
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateCreateTimeToZero pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "updateCreateTimeToZero pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
     AppMethodBeat.o(110586);
     return bool;
   }
   
-  public final boolean cA(String paramString, boolean paramBoolean)
+  public final boolean cV(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(110583);
-    if ((!this.kot) || (bu.isNullOrNil(paramString)))
+    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110583);
       return false;
     }
-    e locale = aLU(paramString);
+    e locale = bcm(paramString);
     if (locale == null)
     {
       AppMethodBeat.o(110583);
@@ -324,15 +319,15 @@ public class f
     }
     locale.field_preloadFilesReady = paramBoolean;
     boolean bool = super.update(locale, new String[0]);
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "updatePreloadFilesReady pkgid:%s, preloadFilesReady:%b, ret:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "updatePreloadFilesReady pkgid:%s, preloadFilesReady:%b, ret:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
     AppMethodBeat.o(110583);
     return bool;
   }
   
-  public final List<String> fbA()
+  public final List<String> gkG()
   {
     AppMethodBeat.i(110575);
-    if (!this.kot)
+    if (!this.lsb)
     {
       AppMethodBeat.o(110575);
       return null;
@@ -345,7 +340,7 @@ public class f
         do
         {
           String str = localCursor.getString(0);
-          if (!bu.isNullOrNil(str)) {
+          if (!Util.isNullOrNil(str)) {
             localArrayList.add(str);
           }
         } while (localCursor.moveToNext());
@@ -356,20 +351,20 @@ public class f
     return localArrayList;
   }
   
-  public final List<WepkgVersion> fbB()
+  public final List<WepkgVersion> gkH()
   {
     AppMethodBeat.i(110577);
-    if (!this.kot)
+    if (!this.lsb)
     {
       AppMethodBeat.o(110577);
       return null;
     }
     Object localObject = String.format("select * from %s where %s < ? - %s", new Object[] { "WepkgVersion", "accessTime", "clearPkgTime" });
     Cursor localCursor = rawQuery((String)localObject, new String[] { String.valueOf(com.tencent.mm.plugin.wepkg.utils.d.currentTime()) });
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "getNeedCleanRecords queryStr:%s", new Object[] { localObject });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "getNeedCleanRecords queryStr:%s", new Object[] { localObject });
     if (localCursor == null)
     {
-      ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "cursor is null");
+      Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "cursor is null");
       AppMethodBeat.o(110577);
       return null;
     }
@@ -385,33 +380,33 @@ public class f
         ((List)localObject).add(localWepkgVersion);
       } while (localCursor.moveToNext());
       localCursor.close();
-      ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "record list size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+      Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "record list size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
       AppMethodBeat.o(110577);
       return localObject;
     }
     localCursor.close();
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "no record");
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "no record");
     AppMethodBeat.o(110577);
     return null;
   }
   
-  public final boolean fbC()
+  public final boolean gkI()
   {
     AppMethodBeat.i(110587);
-    if (!this.kot)
+    if (!this.lsb)
     {
       AppMethodBeat.o(110587);
       return false;
     }
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord clearWepkg ret:%s", new Object[] { Boolean.valueOf(execSQL("WepkgVersion", String.format("delete from %s", new Object[] { "WepkgVersion" }))) });
-    ae.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgPreloadFilesRecord clearWepkg ret:%s", new Object[] { Boolean.valueOf(execSQL("WepkgPreloadFiles", String.format("delete from %s", new Object[] { "WepkgPreloadFiles" }))) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord clearWepkg ret:%s", new Object[] { Boolean.valueOf(execSQL("WepkgVersion", String.format("delete from %s", new Object[] { "WepkgVersion" }))) });
+    Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgPreloadFilesRecord clearWepkg ret:%s", new Object[] { Boolean.valueOf(execSQL("WepkgPreloadFiles", String.format("delete from %s", new Object[] { "WepkgPreloadFiles" }))) });
     AppMethodBeat.o(110587);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.f
  * JD-Core Version:    0.7.0.1
  */

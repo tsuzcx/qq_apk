@@ -16,17 +16,17 @@ final class FreeWifiCopyPwdUI$2
   {
     AppMethodBeat.i(24996);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiCopyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiCopyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     paramView = new Intent("android.settings.WIFI_SETTINGS");
-    this.tAi.startActivityForResult(paramView, FreeWifiCopyPwdUI.tAc);
+    this.wRk.startActivityForResult(paramView, FreeWifiCopyPwdUI.wRe);
     a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiCopyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(24996);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiCopyPwdUI.2
  * JD-Core Version:    0.7.0.1
  */

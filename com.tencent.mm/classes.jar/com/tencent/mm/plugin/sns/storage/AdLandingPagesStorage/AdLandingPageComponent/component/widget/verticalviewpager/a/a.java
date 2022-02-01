@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements ViewPager.d
 {
-  public final void n(View paramView, float paramFloat)
+  public final void o(View paramView, float paramFloat)
   {
     float f2 = 0.0F;
     AppMethodBeat.i(97128);
@@ -35,7 +35,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.a.a
  * JD-Core Version:    0.7.0.1
  */

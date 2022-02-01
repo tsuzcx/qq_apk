@@ -8,24 +8,24 @@ import com.tencent.mm.loader.j.b;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 
 public final class m
   implements s
 {
-  public static final String oGh;
-  public static final String oGi;
+  public static final String pTN;
+  public static final String pTO;
   private final String TAG = "MicroMsg.CardSimpleGetPicStrategy";
   private String mPicUrl = null;
   
   static
   {
     AppMethodBeat.i(112795);
-    oGh = b.asj() + "card";
-    oGi = oGh + "/video";
+    pTN = b.aKJ() + "card";
+    pTO = pTN + "/video";
     AppMethodBeat.o(112795);
   }
   
@@ -34,10 +34,10 @@ public final class m
     this.mPicUrl = paramString;
   }
   
-  public static String Zk(String paramString)
+  public static String ajp(String paramString)
   {
     AppMethodBeat.i(112792);
-    paramString = String.format("%s/%s", new Object[] { oGh, g.getMessageDigest(paramString.getBytes()) });
+    paramString = String.format("%s/%s", new Object[] { pTN, g.getMessageDigest(paramString.getBytes()) });
     AppMethodBeat.o(112792);
     return paramString;
   }
@@ -45,11 +45,11 @@ public final class m
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(112794);
-    if (s.a.iQl == parama) {}
+    if (s.a.jNh == parama) {}
     try
     {
-      h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQV(), false);
-      ae.d("MicroMsg.CardSimpleGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+      Log.d("MicroMsg.CardSimpleGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
       AppMethodBeat.o(112794);
       return paramBitmap;
     }
@@ -59,17 +59,17 @@ public final class m
       {
         try
         {
-          paramString = new k(aQV());
+          paramString = new o(blA());
           if (!paramString.exists()) {
             paramString.mkdirs();
           }
-          ae.w("MicroMsg.CardSimpleGetPicStrategy", " retry saving bitmap");
-          h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQV(), false);
+          Log.w("MicroMsg.CardSimpleGetPicStrategy", " retry saving bitmap");
+          BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
         }
         catch (IOException paramString)
         {
-          ae.printErrStackTrace("MicroMsg.CardSimpleGetPicStrategy", paramString, "", new Object[0]);
-          ae.w("MicroMsg.CardSimpleGetPicStrategy", "save bitmap fail");
+          Log.printErrStackTrace("MicroMsg.CardSimpleGetPicStrategy", paramString, "", new Object[0]);
+          Log.w("MicroMsg.CardSimpleGetPicStrategy", "save bitmap fail");
         }
       }
     }
@@ -77,50 +77,50 @@ public final class m
   
   public final void a(s.a parama, String paramString) {}
   
-  public final s.b aQU()
-  {
-    return null;
-  }
+  public final void ad(String paramString, boolean paramBoolean) {}
   
-  public final String aQV()
+  public final String blA()
   {
     AppMethodBeat.i(112791);
-    String str = String.format("%s/%s", new Object[] { oGh, g.getMessageDigest(this.mPicUrl.getBytes()) });
+    String str = String.format("%s/%s", new Object[] { pTN, g.getMessageDigest(this.mPicUrl.getBytes()) });
     AppMethodBeat.o(112791);
     return str;
   }
   
-  public final String aQW()
+  public final String blB()
   {
     return this.mPicUrl;
   }
   
-  public final String aQX()
+  public final String blC()
   {
     return this.mPicUrl;
   }
   
-  public final boolean aQY()
+  public final boolean blD()
   {
     return true;
   }
   
-  public final boolean aQZ()
+  public final boolean blE()
   {
     return false;
   }
   
-  public final Bitmap aRa()
+  public final Bitmap blF()
   {
     AppMethodBeat.i(112793);
-    ae.d("MicroMsg.CardSimpleGetPicStrategy", "no sd card!");
+    Log.d("MicroMsg.CardSimpleGetPicStrategy", "no sd card!");
     AppMethodBeat.o(112793);
     return null;
   }
   
-  public final void aRb() {}
+  public final void blG() {}
   
-  public final void aa(String paramString, boolean paramBoolean) {}
+  public final s.b blz()
+  {
+    return null;
+  }
   
   public final String getCacheKey()
   {
@@ -129,7 +129,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.m
  * JD-Core Version:    0.7.0.1
  */

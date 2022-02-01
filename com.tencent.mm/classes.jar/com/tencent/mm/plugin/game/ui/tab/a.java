@@ -14,15 +14,15 @@ import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.model.GameTabData.TabItem;
 import com.tencent.mm.plugin.game.model.aj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public final class a
   extends BaseAdapter
 {
   private Context mContext;
-  private String uFx;
-  private GameTabData uGD;
+  private String xXy;
+  private GameTabData xYP;
   
   public a(Context paramContext)
   {
@@ -32,8 +32,8 @@ public final class a
   public final void a(GameTabData paramGameTabData, String paramString)
   {
     AppMethodBeat.i(42431);
-    this.uGD = paramGameTabData;
-    this.uFx = paramString;
+    this.xYP = paramGameTabData;
+    this.xXy = paramString;
     notifyDataSetChanged();
     AppMethodBeat.o(42431);
   }
@@ -41,12 +41,12 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(42432);
-    if (this.uGD == null)
+    if (this.xYP == null)
     {
       AppMethodBeat.o(42432);
       return 0;
     }
-    int i = this.uGD.afz().size();
+    int i = this.xYP.avn().size();
     AppMethodBeat.o(42432);
     return i;
   }
@@ -59,25 +59,25 @@ public final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(42433);
-    paramView = LayoutInflater.from(this.mContext).inflate(2131494391, paramViewGroup, false);
+    paramView = LayoutInflater.from(this.mContext).inflate(2131494957, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    GameTabData.TabItem localTabItem = (GameTabData.TabItem)this.uGD.afz().get(paramInt);
+    GameTabData.TabItem localTabItem = (GameTabData.TabItem)this.xYP.avn().get(paramInt);
     Object localObject;
     c.a locala;
     if (localTabItem != null)
     {
-      paramViewGroup.gqi.setText(localTabItem.title);
-      if (!bu.nullAsNil(this.uFx).equalsIgnoreCase(localTabItem.upi)) {
+      paramViewGroup.hbb.setText(localTabItem.title);
+      if (!Util.nullAsNil(this.xXy).equalsIgnoreCase(localTabItem.xHB)) {
         break label185;
       }
-      if (!bu.isNullOrNil(localTabItem.upo))
+      if (!Util.isNullOrNil(localTabItem.xHH))
       {
-        localObject = aj.ups + g.getMessageDigest(localTabItem.upo.getBytes());
+        localObject = aj.xHL + g.getMessageDigest(localTabItem.xHH.getBytes());
         locala = new c.a();
-        locala.igk = true;
-        locala.hgD = ((String)localObject);
-        localObject = locala.aJu();
-        com.tencent.mm.av.a.a.aJh().a(localTabItem.upo, paramViewGroup.ka, (c)localObject);
+        locala.jbf = true;
+        locala.fullPath = ((String)localObject);
+        localObject = locala.bdv();
+        com.tencent.mm.av.a.a.bdb().a(localTabItem.xHH, paramViewGroup.kc, (c)localObject);
       }
     }
     for (;;)
@@ -86,35 +86,35 @@ public final class a
       AppMethodBeat.o(42433);
       return paramView;
       label185:
-      if (!bu.isNullOrNil(localTabItem.upn))
+      if (!Util.isNullOrNil(localTabItem.xHG))
       {
-        localObject = aj.ups + g.getMessageDigest(localTabItem.upn.getBytes());
+        localObject = aj.xHL + g.getMessageDigest(localTabItem.xHG.getBytes());
         locala = new c.a();
-        locala.igk = true;
-        locala.hgD = ((String)localObject);
-        localObject = locala.aJu();
-        com.tencent.mm.av.a.a.aJh().a(localTabItem.upn, paramViewGroup.ka, (c)localObject);
+        locala.jbf = true;
+        locala.fullPath = ((String)localObject);
+        localObject = locala.bdv();
+        com.tencent.mm.av.a.a.bdb().a(localTabItem.xHG, paramViewGroup.kc, (c)localObject);
       }
     }
   }
   
   public final class a
   {
-    TextView gqi;
-    ImageView ka;
+    TextView hbb;
+    ImageView kc;
     
     public a(View paramView)
     {
       AppMethodBeat.i(42430);
-      this.gqi = ((TextView)paramView.findViewById(2131297471));
-      this.ka = ((ImageView)paramView.findViewById(2131297469));
+      this.hbb = ((TextView)paramView.findViewById(2131297708));
+      this.kc = ((ImageView)paramView.findViewById(2131297705));
       AppMethodBeat.o(42430);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.tab.a
  * JD-Core Version:    0.7.0.1
  */

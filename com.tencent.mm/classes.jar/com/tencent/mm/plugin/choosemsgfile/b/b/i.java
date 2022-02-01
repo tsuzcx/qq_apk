@@ -19,14 +19,14 @@ public final class i
   {
     AppMethodBeat.i(162331);
     super.a(paraml, paramInt, parama);
-    paraml.iXP.setTextColor(getContext().getResources().getColor(2131100154));
-    paraml.oZa.setBackgroundColor(getContext().getResources().getColor(2131100153));
+    paraml.jUO.setTextColor(getContext().getResources().getColor(2131100187));
+    paraml.qnZ.setBackgroundColor(getContext().getResources().getColor(2131100186));
     AppMethodBeat.o(162331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.i
  * JD-Core Version:    0.7.0.1
  */

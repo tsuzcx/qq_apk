@@ -1,117 +1,124 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.luckymoney.a.a;
+import com.tencent.mm.protocal.protobuf.dlr;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import java.io.IOException;
 
 public final class ae
-  extends ac
 {
-  public int dPd;
-  public int dPe;
-  public long dPq;
-  public int pgV;
-  public String vAh;
-  public f vAw;
-  public String vBL;
-  public String vBM;
-  public int vBN;
-  public String vBO;
-  public int vBP;
-  public String vBQ;
-  public String vBR;
-  public int vBS;
-  public l vBT;
-  public String vwq;
-  public RealnameGuideHelper vxf;
+  o yPZ;
+  private h yVa;
   
-  public ae(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public ae()
   {
-    AppMethodBeat.i(65279);
-    this.vBT = null;
-    this.vwq = paramString1;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sendId", paramString1);
-    if (!bu.isNullOrNil(paramString2)) {
-      localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
-    }
-    localHashMap.put("way", String.valueOf(paramInt));
-    localHashMap.put("channelId", "2");
-    localHashMap.put("package", paramString3);
-    localHashMap.put("sessionUserName", paramString4);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(65279);
+    AppMethodBeat.i(213307);
+    init();
+    AppMethodBeat.o(213307);
   }
   
-  public final int cbK()
+  private void init()
   {
-    return 1;
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(65280);
-    this.vBL = paramJSONObject.optString("spidName");
-    this.dPd = paramJSONObject.optInt("hbStatus");
-    this.dPe = paramJSONObject.optInt("receiveStatus");
-    this.vAh = paramJSONObject.optString("statusMess");
-    this.vBM = paramJSONObject.optString("hintMess");
-    this.dPq = paramJSONObject.optLong("amount");
-    this.vBN = paramJSONObject.optInt("recNum");
-    this.pgV = paramJSONObject.optInt("totalNum");
-    this.vAw = new f();
-    paramString = paramJSONObject.optJSONObject("atomicFunc");
-    if (paramString != null)
+    AppMethodBeat.i(213308);
+    this.yPZ = new o();
+    g.aAi();
+    String str = (String)g.aAh().azQ().get(ar.a.NTl, null);
+    if (Util.isNullOrNil(str))
     {
-      this.vAw.gaV = paramString.optInt("enable");
-      this.vAw.vzS = paramString.optString("fissionContent");
-      this.vAw.vzR = paramString.optString("fissionUrl");
+      this.yPZ.yPy = 2000.0D;
+      this.yPZ.yPv = 100;
+      this.yPZ.yPz = 200.0D;
+      this.yPZ.yPx = 0.01D;
+      this.yPZ.yPw = 200.0D;
     }
-    this.vBP = paramJSONObject.optInt("focusFlag");
-    this.vBQ = paramJSONObject.optString("focusWording");
-    this.vBR = paramJSONObject.optString("focusAppidUserName");
-    this.vBS = paramJSONObject.optInt("isFocus");
-    this.vBO = paramJSONObject.optString("smallHbButtonMess");
-    try
+    for (;;)
     {
-      this.vBT = x.aD(paramJSONObject);
-      this.vBT.vAk = paramJSONObject.optString("spidLogo");
-      this.vBT.vAj = paramJSONObject.optString("spidName");
-      this.vBT.vvw = paramJSONObject.optString("spidWishing");
-      if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
+      Log.i("MicroMsg.LuckyMoneyUnionConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.yPZ.yPy + " maxTotalNum:" + this.yPZ.yPv + " perGroupMaxValue:" + this.yPZ.yPz + " perMinValue:" + this.yPZ.yPx + " perPersonMaxValue:" + this.yPZ.yPw);
+      AppMethodBeat.o(213308);
+      return;
+      try
       {
-        Object localObject = paramJSONObject.optJSONObject("real_name_info");
-        if (localObject != null)
+        this.yPZ.parseFrom(str.getBytes("ISO-8859-1"));
+        efd();
+      }
+      catch (Exception localException)
+      {
+        Log.w("MicroMsg.LuckyMoneyUnionConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
+        this.yPZ.yPy = 2000.0D;
+        this.yPZ.yPv = 100;
+        this.yPZ.yPz = 200.0D;
+        this.yPZ.yPx = 0.01D;
+        this.yPZ.yPw = 200.0D;
+      }
+    }
+  }
+  
+  final void efd()
+  {
+    AppMethodBeat.i(213309);
+    if (this.yPZ != null)
+    {
+      this.yVa = h.aDt(this.yPZ.yUW);
+      if ((this.yVa != null) && (this.yVa.yUC != null))
+      {
+        ((a)g.af(a.class)).a(this.yVa.yUC);
+        g.aAh().azQ().set(ar.a.Ofn, Integer.valueOf(1));
+        if (Util.isNullOrNil(this.yPZ.yUX)) {
+          break label179;
+        }
+        Log.d("MicroMsg.LuckyMoneyUnionConfigManager", "parse cover info");
+        try
         {
-          paramString = ((JSONObject)localObject).optString("guide_flag");
-          paramJSONObject = ((JSONObject)localObject).optString("guide_wording");
-          String str1 = ((JSONObject)localObject).optString("left_button_wording");
-          String str2 = ((JSONObject)localObject).optString("right_button_wording");
-          localObject = ((JSONObject)localObject).optString("upload_credit_url");
-          this.vxf = new RealnameGuideHelper();
-          this.vxf.b(paramString, paramJSONObject, str1, str2, (String)localObject, 1005);
+          dlr localdlr = (dlr)new dlr().parseFrom(Base64.decode(this.yPZ.yUX, 0));
+          this.yVa.yUC.iwy = localdlr.iwy;
+          AppMethodBeat.o(213309);
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          Log.printErrStackTrace("MicroMsg.LuckyMoneyUnionConfigManager", localIOException, "", new Object[0]);
+          AppMethodBeat.o(213309);
+          return;
         }
       }
-      AppMethodBeat.o(65280);
-      return;
+      g.aAh().azQ().set(ar.a.Ofn, Integer.valueOf(0));
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.NetSceneLuckyMoneyBusiBase", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
-      }
+    label179:
+    AppMethodBeat.o(213309);
+  }
+  
+  public final o efe()
+  {
+    AppMethodBeat.i(213310);
+    if (this.yPZ == null) {
+      init();
     }
+    o localo = this.yPZ;
+    AppMethodBeat.o(213310);
+    return localo;
+  }
+  
+  public final h eff()
+  {
+    AppMethodBeat.i(213311);
+    if (this.yVa == null) {
+      init();
+    }
+    h localh = this.yVa;
+    AppMethodBeat.o(213311);
+    return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ae
  * JD-Core Version:    0.7.0.1
  */

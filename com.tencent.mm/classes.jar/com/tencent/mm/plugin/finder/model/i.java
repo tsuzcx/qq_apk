@@ -1,57 +1,39 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ctu;
-import com.tencent.mm.view.recyclerview.d.b;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.view.recyclerview.g.b;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderTagsData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "tags", "Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "(Lcom/tencent/mm/protocal/protobuf/RelatedTopic;)V", "getTags", "()Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "setTags", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderSearchData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "()V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class i
-  extends d.b
-  implements com.tencent.mm.plugin.finder.feed.model.internal.i
+  extends g.b
+  implements bo
 {
-  public ctu ssS;
-  
-  public i(ctu paramctu)
-  {
-    AppMethodBeat.i(203429);
-    this.ssS = paramctu;
-    AppMethodBeat.o(203429);
-  }
-  
   public final int a(com.tencent.mm.plugin.finder.feed.model.internal.i parami)
   {
-    AppMethodBeat.i(203427);
+    AppMethodBeat.i(166373);
     p.h(parami, "obj");
-    AppMethodBeat.o(203427);
-    return 2147483646;
+    AppMethodBeat.o(166373);
+    return 2147483647;
   }
   
-  public final void a(ctu paramctu)
+  public final int cxn()
   {
-    AppMethodBeat.i(203428);
-    p.h(paramctu, "<set-?>");
-    this.ssS = paramctu;
-    AppMethodBeat.o(203428);
+    return -3;
   }
   
-  public final int bZz()
+  public final long lT()
   {
-    return -6;
-  }
-  
-  public final long lP()
-  {
-    AppMethodBeat.i(224299);
+    AppMethodBeat.i(258540);
     long l = hashCode();
-    AppMethodBeat.o(224299);
+    AppMethodBeat.o(258540);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.i
  * JD-Core Version:    0.7.0.1
  */

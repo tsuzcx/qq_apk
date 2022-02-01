@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.flutter;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.flutter.d;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.flutter.b.a.2;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import io.flutter.view.FlutterMain;
-import java.util.Set;
 
 public class PluginFlutter
   extends f
   implements c, com.tencent.mm.plugin.flutter.a.b
 {
-  private a tsZ;
-  private com.tencent.mm.plugin.flutter.b.a tta;
-  private boolean ttb;
+  private a wIZ;
+  private com.tencent.mm.plugin.flutter.b.a wJa;
+  private boolean wJb;
   
   private void initFlutter()
   {
@@ -28,11 +29,11 @@ public class PluginFlutter
       if (isOpenFlutter())
       {
         long l1 = System.currentTimeMillis();
-        FlutterMain.startInitialization(ak.getContext());
-        FlutterMain.ensureInitializationComplete(ak.getContext(), new String[0]);
+        FlutterMain.startInitialization(MMApplicationContext.getContext());
+        FlutterMain.ensureInitializationComplete(MMApplicationContext.getContext(), new String[0]);
         long l2 = System.currentTimeMillis();
-        this.ttb = true;
-        ae.i("MicroMsg.Flutter", "initFlutterEngine useTime %d", new Object[] { Long.valueOf(l2 - l1) });
+        this.wJb = true;
+        Log.i("MicroMsg.Flutter", "initFlutterEngine useTime %d", new Object[] { Long.valueOf(l2 - l1) });
       }
       AppMethodBeat.o(148844);
       return;
@@ -46,7 +47,7 @@ public class PluginFlutter
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(148841);
-    if (paramg.akL()) {
+    if (paramg.aBb()) {
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.flutter.a.a.class, new b());
     }
     AppMethodBeat.o(148841);
@@ -56,16 +57,23 @@ public class PluginFlutter
   
   public com.tencent.mm.plugin.flutter.b.a getFlutterEngineMgr()
   {
-    return this.tta;
+    return this.wJa;
   }
   
   public boolean isInitFlutter()
   {
-    return this.ttb;
+    return this.wJb;
   }
   
   public boolean isOpenFlutter()
   {
+    AppMethodBeat.i(240927);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.seX, false))
+    {
+      AppMethodBeat.o(240927);
+      return true;
+    }
+    AppMethodBeat.o(240927);
     return false;
   }
   
@@ -77,11 +85,10 @@ public class PluginFlutter
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(148842);
-    this.tta = new com.tencent.mm.plugin.flutter.b.a();
-    this.tsZ = new a();
-    com.tencent.mm.pluginsdk.cmd.b.a(this.tsZ, new String[] { "//flutter" });
-    d.gtG.add(com.tencent.mm.plugin.flutter.b.a.a.class);
-    h.MqF.q(new Runnable()
+    this.wJa = new com.tencent.mm.plugin.flutter.b.a();
+    this.wIZ = new a();
+    com.tencent.mm.pluginsdk.cmd.b.a(this.wIZ, new String[] { "//flutter" });
+    h.RTc.n(new Runnable()
     {
       public final void run()
       {
@@ -96,22 +103,33 @@ public class PluginFlutter
   public void onAccountRelease()
   {
     AppMethodBeat.i(148843);
-    if (this.tsZ != null)
+    if (this.wIZ != null)
     {
-      com.tencent.mm.pluginsdk.cmd.b.S(new String[] { "//flutter" });
-      this.tsZ = null;
+      com.tencent.mm.pluginsdk.cmd.b.V(new String[] { "//flutter" });
+      this.wIZ = null;
     }
-    if (this.tta != null)
+    com.tencent.mm.plugin.flutter.b.a locala;
+    if (this.wJa != null)
     {
-      this.tta.onDestroy();
-      this.tta = null;
+      locala = this.wJa;
+      if (!MMHandlerThread.isMainThread()) {
+        break label62;
+      }
+      locala.onDestroy();
     }
-    AppMethodBeat.o(148843);
+    for (;;)
+    {
+      this.wJa = null;
+      AppMethodBeat.o(148843);
+      return;
+      label62:
+      MMHandlerThread.postToMainThread(new a.2(locala));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.PluginFlutter
  * JD-Core Version:    0.7.0.1
  */

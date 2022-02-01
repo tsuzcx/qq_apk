@@ -12,7 +12,7 @@ public class d
 {
   private static boolean b(Transition paramTransition)
   {
-    return (!g(paramTransition.BY)) || (!g(paramTransition.Ca)) || (!g(paramTransition.Cb));
+    return (!g(paramTransition.Cf)) || (!g(paramTransition.Ch)) || (!g(paramTransition.Ci));
   }
   
   public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
@@ -32,15 +32,15 @@ public class d
   
   public final void a(ViewGroup paramViewGroup, Object paramObject)
   {
-    r.a(paramViewGroup, (Transition)paramObject);
+    s.a(paramViewGroup, (Transition)paramObject);
   }
   
   public final void a(Object paramObject, final Rect paramRect)
   {
     if (paramObject != null) {
-      ((Transition)paramObject).a(new Transition.b()
+      ((Transition)paramObject).a(new Transition.c()
       {
-        public final Rect dG()
+        public final Rect dJ()
         {
           if ((paramRect == null) || (paramRect.isEmpty())) {
             return null;
@@ -58,9 +58,9 @@ public class d
       paramObject = (Transition)paramObject;
       final Rect localRect = new Rect();
       a(paramView, localRect);
-      paramObject.a(new Transition.b()
+      paramObject.a(new Transition.c()
       {
-        public final Rect dG()
+        public final Rect dJ()
         {
           return localRect;
         }
@@ -71,7 +71,7 @@ public class d
   public final void a(Object paramObject, View paramView, ArrayList<View> paramArrayList)
   {
     paramObject = (TransitionSet)paramObject;
-    ArrayList localArrayList = paramObject.BZ;
+    ArrayList localArrayList = paramObject.Cg;
     localArrayList.clear();
     int j = paramArrayList.size();
     int i = 0;
@@ -87,15 +87,15 @@ public class d
   
   public final void a(Object paramObject1, final Object paramObject2, final ArrayList<View> paramArrayList1, final Object paramObject3, final ArrayList<View> paramArrayList2, final Object paramObject4, final ArrayList<View> paramArrayList3)
   {
-    ((Transition)paramObject1).a(new Transition.c()
+    ((Transition)paramObject1).a(new Transition.d()
     {
       public final void a(Transition paramAnonymousTransition) {}
       
-      public final void dC() {}
+      public final void dF() {}
       
-      public final void dD() {}
+      public final void dG() {}
       
-      public final void dH()
+      public final void dK()
       {
         if (paramObject2 != null) {
           d.this.b(paramObject2, paramArrayList1, null);
@@ -122,20 +122,20 @@ public class d
       if ((paramObject instanceof TransitionSet))
       {
         paramObject = (TransitionSet)paramObject;
-        j = paramObject.CJ.size();
+        j = paramObject.CT.size();
         while (i < j)
         {
           a(paramObject.ap(i), paramArrayList);
           i += 1;
         }
       }
-      else if ((!b(paramObject)) && (g(paramObject.BZ)))
+      else if ((!b(paramObject)) && (g(paramObject.Cg)))
       {
         j = paramArrayList.size();
         i = 0;
         while (i < j)
         {
-          paramObject.H((View)paramArrayList.get(i));
+          paramObject.I((View)paramArrayList.get(i));
           i += 1;
         }
       }
@@ -147,8 +147,8 @@ public class d
     paramObject = (TransitionSet)paramObject;
     if (paramObject != null)
     {
-      paramObject.BZ.clear();
-      paramObject.BZ.addAll(paramArrayList2);
+      paramObject.Cg.clear();
+      paramObject.Cg.addAll(paramArrayList2);
       b(paramObject, paramArrayList1, paramArrayList2);
     }
   }
@@ -184,13 +184,13 @@ public class d
   public final void b(Object paramObject, View paramView)
   {
     if (paramObject != null) {
-      ((Transition)paramObject).H(paramView);
+      ((Transition)paramObject).I(paramView);
     }
   }
   
   public final void b(Object paramObject, final View paramView, final ArrayList<View> paramArrayList)
   {
-    ((Transition)paramObject).a(new Transition.c()
+    ((Transition)paramObject).a(new Transition.d()
     {
       public final void a(Transition paramAnonymousTransition)
       {
@@ -205,11 +205,11 @@ public class d
         }
       }
       
-      public final void dC() {}
+      public final void dF() {}
       
-      public final void dD() {}
+      public final void dG() {}
       
-      public final void dH() {}
+      public final void dK() {}
     });
   }
   
@@ -221,7 +221,7 @@ public class d
     if ((paramObject instanceof TransitionSet))
     {
       paramObject = (TransitionSet)paramObject;
-      j = paramObject.CJ.size();
+      j = paramObject.CT.size();
       while (i < j)
       {
         b(paramObject.ap(i), paramArrayList1, paramArrayList2);
@@ -230,7 +230,7 @@ public class d
     }
     if (!b(paramObject))
     {
-      ArrayList localArrayList = paramObject.BZ;
+      ArrayList localArrayList = paramObject.Cg;
       if ((localArrayList.size() == paramArrayList1.size()) && (localArrayList.containsAll(paramArrayList1)))
       {
         if (paramArrayList2 == null) {}
@@ -239,14 +239,14 @@ public class d
           j = 0;
           while (j < i)
           {
-            paramObject.H((View)paramArrayList2.get(j));
+            paramObject.I((View)paramArrayList2.get(j));
             j += 1;
           }
         }
         i = paramArrayList1.size() - 1;
         while (i >= 0)
         {
-          paramObject.I((View)paramArrayList1.get(i));
+          paramObject.J((View)paramArrayList1.get(i));
           i -= 1;
         }
       }
@@ -256,7 +256,7 @@ public class d
   public final void c(Object paramObject, View paramView)
   {
     if (paramObject != null) {
-      ((Transition)paramObject).I(paramView);
+      ((Transition)paramObject).J(paramView);
     }
   }
   
@@ -269,7 +269,7 @@ public class d
   {
     Transition localTransition = null;
     if (paramObject != null) {
-      localTransition = ((Transition)paramObject).dM();
+      localTransition = ((Transition)paramObject).dP();
     }
     return localTransition;
   }

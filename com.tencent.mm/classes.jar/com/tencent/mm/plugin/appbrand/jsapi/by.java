@@ -1,19 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+
 public final class by
-  extends JsApiPrivateAddContact
+  extends d<s>
 {
-  public static final int CTRL_INDEX = 408;
-  public static final String NAME = "private_quicklyAddBrandContact";
+  public static final int CTRL_INDEX = 247;
+  public static final String NAME = "openDeliveryList";
+  private static final String lAZ;
   
-  protected final int bjb()
+  static
   {
-    return 0;
+    AppMethodBeat.i(229889);
+    lAZ = "https://" + WeChatHosts.domainString(2131761726) + "/bizmall/expressentry";
+    AppMethodBeat.o(229889);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.by
  * JD-Core Version:    0.7.0.1
  */

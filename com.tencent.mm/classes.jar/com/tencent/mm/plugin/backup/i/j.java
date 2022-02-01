@@ -6,14 +6,14 @@ import java.util.LinkedList;
 public final class j
   extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> nIF;
-  public LinkedList<Long> nIG;
+  public LinkedList<String> oTB;
+  public LinkedList<Long> oTC;
   
   public j()
   {
     AppMethodBeat.i(22112);
-    this.nIF = new LinkedList();
-    this.nIG = new LinkedList();
+    this.oTB = new LinkedList();
+    this.oTC = new LinkedList();
     AppMethodBeat.o(22112);
   }
   
@@ -22,28 +22,28 @@ public final class j
     AppMethodBeat.i(22113);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 1, this.nIF);
-      paramVarArgs.e(2, 3, this.nIG);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 1, this.oTB);
+      paramVarArgs.e(2, 3, this.oTC);
       AppMethodBeat.o(22113);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 1, this.nIF);
-      int i = f.a.a.a.c(2, 3, this.nIG);
+      paramInt = g.a.a.a.c(1, 1, this.oTB);
+      int i = g.a.a.a.c(2, 3, this.oTC);
       AppMethodBeat.o(22113);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.nIF.clear();
-      this.nIG.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      this.oTB.clear();
+      this.oTC.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(22113);
@@ -51,7 +51,7 @@ public final class j
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       j localj = (j)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -59,11 +59,11 @@ public final class j
         AppMethodBeat.o(22113);
         return -1;
       case 1: 
-        localj.nIF.add(locala.OmT.readString());
+        localj.oTB.add(locala.UbS.readString());
         AppMethodBeat.o(22113);
         return 0;
       }
-      localj.nIG.add(Long.valueOf(locala.OmT.zd()));
+      localj.oTC.add(Long.valueOf(locala.UbS.zl()));
       AppMethodBeat.o(22113);
       return 0;
     }
@@ -73,7 +73,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.j
  * JD-Core Version:    0.7.0.1
  */

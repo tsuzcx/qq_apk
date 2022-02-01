@@ -4,8 +4,10 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class WalletOrderInfoOldUI$11
   implements View.OnLongClickListener
@@ -16,16 +18,15 @@ final class WalletOrderInfoOldUI$11
   {
     AppMethodBeat.i(71053);
     b localb = new b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-    if ((paramView.getId() == 2131306777) || (paramView.getId() == 2131306805)) {}
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+    if ((paramView.getId() == 2131310238) || (paramView.getId() == 2131310266)) {}
     try
     {
       paramView = (String)paramView.getTag();
-      Toast.makeText(this.Dzg, 2131765540, 0).show();
-      this.Dzg.getContext();
-      com.tencent.mm.pluginsdk.i.a.b(paramView, paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      Toast.makeText(this.Iir, 2131767989, 0).show();
+      ClipboardHelper.setText(this.Iir.getContext(), paramView, paramView);
+      a.a(true, this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(71053);
       return true;
     }
@@ -33,7 +34,7 @@ final class WalletOrderInfoOldUI$11
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
       }
     }
   }

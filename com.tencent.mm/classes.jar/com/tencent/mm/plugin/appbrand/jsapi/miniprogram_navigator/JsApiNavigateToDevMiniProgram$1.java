@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 
 final class JsApiNavigateToDevMiniProgram$1
   implements c.c
@@ -16,7 +16,7 @@ final class JsApiNavigateToDevMiniProgram$1
     if (paramBoolean)
     {
       paramString = "ok";
-      this.kww.h(this.cjS, this.kZI.e(paramString, null));
+      this.lAB.i(this.cvP, this.meW.h(paramString, null));
       AppMethodBeat.o(46622);
       return;
     }

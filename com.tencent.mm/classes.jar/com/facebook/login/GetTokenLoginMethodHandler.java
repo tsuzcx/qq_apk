@@ -27,21 +27,7 @@ class GetTokenLoginMethodHandler
   static
   {
     AppMethodBeat.i(7803);
-    CREATOR = new Parcelable.Creator()
-    {
-      public final GetTokenLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
-      {
-        AppMethodBeat.i(7794);
-        paramAnonymousParcel = new GetTokenLoginMethodHandler(paramAnonymousParcel);
-        AppMethodBeat.o(7794);
-        return paramAnonymousParcel;
-      }
-      
-      public final GetTokenLoginMethodHandler[] newArray(int paramAnonymousInt)
-      {
-        return new GetTokenLoginMethodHandler[paramAnonymousInt];
-      }
-    };
+    CREATOR = new GetTokenLoginMethodHandler.3();
     AppMethodBeat.o(7803);
   }
   
@@ -196,7 +182,7 @@ class GetTokenLoginMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.GetTokenLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

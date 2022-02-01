@@ -2,8 +2,8 @@ package com.tencent.mm.ay;
 
 public final class d
 {
-  public String ijV;
-  public String ijW;
+  public String jeR;
+  public String jeS;
 }
 
 

@@ -6,34 +6,34 @@ import java.util.List;
 public abstract class q<T>
   extends c.a
 {
-  protected final List<T> mRt;
-  protected final List<T> mRu;
+  protected final List<T> oew;
+  protected final List<T> oex;
   
   public q(List<T> paramList1, List<T> paramList2)
   {
-    this.mRt = paramList1;
-    this.mRu = paramList2;
+    this.oew = paramList1;
+    this.oex = paramList2;
   }
   
-  public final int aA()
+  public final int aB()
   {
-    if (this.mRu == null) {
+    if (this.oew == null) {
       return 0;
     }
-    return this.mRu.size();
+    return this.oew.size();
   }
   
-  public final int az()
+  public final int aC()
   {
-    if (this.mRt == null) {
+    if (this.oex == null) {
       return 0;
     }
-    return this.mRt.size();
+    return this.oex.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.q
  * JD-Core Version:    0.7.0.1
  */

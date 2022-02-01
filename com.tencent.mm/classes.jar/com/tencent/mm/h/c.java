@@ -1,59 +1,50 @@
 package com.tencent.mm.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class c
 {
   public String Title;
+  public int dDF;
+  public int dDG;
+  public int dDH;
   public String desc;
-  public int dmq;
-  public int dmr;
-  public int dms;
-  public String fJY;
-  public String fJZ;
-  public int fKa;
+  public String gpn;
+  public String gpo;
+  public int gpp;
   public String url;
   
-  private static boolean lc(int paramInt)
-  {
-    if (paramInt == 4) {}
-    while ((paramInt == 1) || (paramInt == 5) || (paramInt == 3) || (paramInt == 8)) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static c uW(String paramString)
+  public static c Dm(String paramString)
   {
     AppMethodBeat.i(134108);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(134108);
       return null;
     }
     c localc = new c();
-    paramString = bx.M(paramString, "e");
+    paramString = XmlParser.parseXml(paramString, "e", null);
     if (paramString == null)
     {
-      ae.d("MicroMsg.BroadcastEntity", "this is not errmsg");
+      Log.d("MicroMsg.BroadcastEntity", "this is not errmsg");
       AppMethodBeat.o(134108);
       return null;
     }
     localc.desc = ((String)paramString.get(".e.Content"));
     localc.url = ((String)paramString.get(".e.Url"));
     localc.Title = ((String)paramString.get(".e.Title"));
-    localc.dms = bu.getInt((String)paramString.get(".e.Action"), 0);
-    localc.dmr = bu.getInt((String)paramString.get(".e.ShowType"), 0);
-    localc.dmq = bu.getInt((String)paramString.get(".e.DispSec"), 30);
-    localc.fJY = ((String)paramString.get(".e.Ok"));
-    localc.fJZ = ((String)paramString.get(".e.Cancel"));
-    localc.fKa = bu.getInt((String)paramString.get("e.Countdown"), 0);
-    if (lc(localc.dmr))
+    localc.dDH = Util.getInt((String)paramString.get(".e.Action"), 0);
+    localc.dDG = Util.getInt((String)paramString.get(".e.ShowType"), 0);
+    localc.dDF = Util.getInt((String)paramString.get(".e.DispSec"), 30);
+    localc.gpn = ((String)paramString.get(".e.Ok"));
+    localc.gpo = ((String)paramString.get(".e.Cancel"));
+    localc.gpp = Util.getInt((String)paramString.get("e.Countdown"), 0);
+    if (oe(localc.dDG))
     {
       AppMethodBeat.o(134108);
       return localc;
@@ -64,13 +55,13 @@ public final class c
       localc.desc = localJSONObject.getString("Content");
       localc.url = localJSONObject.getString("Url");
       localc.Title = localJSONObject.getString("Title");
-      localc.dms = bu.getInt(localJSONObject.getString("Action"), 0);
-      localc.dmr = bu.getInt(localJSONObject.getString("ShowType"), 0);
-      localc.dmq = bu.getInt(localJSONObject.getString("DispSec"), 30);
-      localc.fJY = ((String)paramString.get(".e.Ok"));
-      localc.fJZ = ((String)paramString.get(".e.Cancel"));
-      localc.fKa = bu.getInt((String)paramString.get("e.Countdown"), 0);
-      boolean bool = lc(localc.dmr);
+      localc.dDH = Util.getInt(localJSONObject.getString("Action"), 0);
+      localc.dDG = Util.getInt(localJSONObject.getString("ShowType"), 0);
+      localc.dDF = Util.getInt(localJSONObject.getString("DispSec"), 30);
+      localc.gpn = ((String)paramString.get(".e.Ok"));
+      localc.gpo = ((String)paramString.get(".e.Cancel"));
+      localc.gpp = Util.getInt((String)paramString.get("e.Countdown"), 0);
+      boolean bool = oe(localc.dDG);
       if (bool)
       {
         AppMethodBeat.o(134108);
@@ -79,15 +70,24 @@ public final class c
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("MicroMsg.BroadcastEntity", paramString, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.BroadcastEntity", paramString, "", new Object[0]);
       AppMethodBeat.o(134108);
     }
     return null;
   }
+  
+  private static boolean oe(int paramInt)
+  {
+    if (paramInt == 4) {}
+    while ((paramInt == 1) || (paramInt == 5) || (paramInt == 3) || (paramInt == 8)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.h.c
  * JD-Core Version:    0.7.0.1
  */

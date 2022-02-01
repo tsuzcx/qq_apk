@@ -1,57 +1,28 @@
 package com.tencent.magicbrush;
 
-import com.tencent.magicbrush.ui.a.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.t;
-import d.g.b.z;
-import d.l;
-import d.l.b;
-import d.l.d;
+import kotlin.g.b.u;
+import kotlin.l;
+import kotlin.l.d;
 
-@l(gjZ={1, 1, 13})
+@l(hxD={1, 1, 16})
 final class h
-  extends t
+  extends u
 {
-  public static final d.l.h cyr;
+  public static final kotlin.l.h cMy;
   
-  static
-  {
-    AppMethodBeat.i(140104);
-    cyr = new h();
-    AppMethodBeat.o(140104);
-  }
+  public final d Rs() {}
   
-  public final String HC()
-  {
-    return "getAnimationFrameHandlerStrategy()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;";
-  }
+  public final Object get(Object arg1) {}
   
-  public final d HD()
-  {
-    AppMethodBeat.i(140105);
-    b localb = z.bp(MBRuntime.MBParams.class);
-    AppMethodBeat.o(140105);
-    return localb;
-  }
+  public final String getName() {}
   
-  public final Object get(Object paramObject)
-  {
-    return ((MBRuntime.MBParams)paramObject).animationFrameHandlerStrategy;
-  }
+  public final String getSignature() {}
   
-  public final String getName()
-  {
-    return "animationFrameHandlerStrategy";
-  }
-  
-  public final void set(Object paramObject1, Object paramObject2)
-  {
-    ((MBRuntime.MBParams)paramObject1).animationFrameHandlerStrategy = ((a.b)paramObject2);
-  }
+  public final void set(Object arg1, Object arg2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.h
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,8 @@ package com.tencent.liteav.beauty.b;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.d.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
@@ -161,10 +162,19 @@ public class x
     if ((this.r[paramInt].c == null) || (!this.r[paramInt].c.equals(paramBitmap)))
     {
       GLES20.glBindTexture(3553, this.r[paramInt].d[0]);
+      if (paramBitmap.isRecycled()) {
+        break label342;
+      }
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
-    this.r[paramInt].c = paramBitmap;
-    AppMethodBeat.o(14971);
+    for (;;)
+    {
+      this.r[paramInt].c = paramBitmap;
+      AppMethodBeat.o(14971);
+      return;
+      label342:
+      TXCLog.e(this.B, "SetWaterMark when bitmap is recycled");
+    }
   }
   
   public void c(boolean paramBoolean)
@@ -224,7 +234,7 @@ public class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.x
  * JD-Core Version:    0.7.0.1
  */

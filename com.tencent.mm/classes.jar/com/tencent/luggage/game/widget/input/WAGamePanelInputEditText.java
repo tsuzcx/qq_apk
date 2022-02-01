@@ -22,21 +22,21 @@ import com.tencent.mm.plugin.appbrand.widget.input.z;
 public class WAGamePanelInputEditText
   extends EditText
 {
-  private final z cmb;
-  private final InputFilter cmc;
-  private int cmd;
-  private final Spannable.Factory cme;
+  private final z cxW;
+  private final InputFilter cxX;
+  private int cxY;
+  private final Spannable.Factory cxZ;
   
   public WAGamePanelInputEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130968945);
+    this(paramContext, paramAttributeSet, 2130968974);
   }
   
   public WAGamePanelInputEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(130724);
-    this.cmc = new InputFilter()
+    this.cxX = new InputFilter()
     {
       public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
       {
@@ -61,8 +61,8 @@ public class WAGamePanelInputEditText
         return paramAnonymousSpanned;
       }
     };
-    this.cmd = 2147483647;
-    this.cme = new Spannable.Factory()
+    this.cxY = 2147483647;
+    this.cxZ = new Spannable.Factory()
     {
       public final Spannable newSpannable(CharSequence paramAnonymousCharSequence)
       {
@@ -72,7 +72,7 @@ public class WAGamePanelInputEditText
         return paramAnonymousCharSequence;
       }
     };
-    this.cmb = new z(this);
+    this.cxW = new z(this);
     super.setEditableFactory(new Editable.Factory()
     {
       public final Editable newEditable(CharSequence paramAnonymousCharSequence)
@@ -88,7 +88,7 @@ public class WAGamePanelInputEditText
   
   public int getMaxLength()
   {
-    return this.cmd;
+    return this.cxY;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
@@ -102,7 +102,7 @@ public class WAGamePanelInputEditText
   
   public void setComposingDismissedListener(b paramb)
   {
-    this.cmb.nlm = paramb;
+    this.cxW.ouT = paramb;
   }
   
   public void setFilters(InputFilter[] paramArrayOfInputFilter)
@@ -110,7 +110,7 @@ public class WAGamePanelInputEditText
     int i = 0;
     AppMethodBeat.i(130725);
     InputFilter[] arrayOfInputFilter = paramArrayOfInputFilter;
-    if (this.cmc != null)
+    if (this.cxX != null)
     {
       arrayOfInputFilter = paramArrayOfInputFilter;
       if (paramArrayOfInputFilter == null) {
@@ -122,7 +122,7 @@ public class WAGamePanelInputEditText
         paramArrayOfInputFilter[i] = arrayOfInputFilter[i];
         i += 1;
       }
-      paramArrayOfInputFilter[i] = this.cmc;
+      paramArrayOfInputFilter[i] = this.cxX;
       arrayOfInputFilter = paramArrayOfInputFilter;
     }
     super.setFilters(arrayOfInputFilter);
@@ -131,12 +131,12 @@ public class WAGamePanelInputEditText
   
   public void setMaxLength(int paramInt)
   {
-    this.cmd = paramInt;
+    this.cxY = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.luggage.game.widget.input.WAGamePanelInputEditText
  * JD-Core Version:    0.7.0.1
  */

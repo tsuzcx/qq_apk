@@ -39,7 +39,7 @@ public abstract class FacebookButtonBase
     {
       int i = paramInt2;
       if (paramInt2 == 0) {
-        i = 2131821697;
+        i = 2131821745;
       }
       configureButton(paramContext, paramAttributeSet, paramInt1, i);
       this.analyticsButtonCreatedEventName = paramString1;
@@ -81,7 +81,7 @@ public abstract class FacebookButtonBase
           setBackgroundColor(paramAttributeSet.getColor(0, 0));
           continue;
         }
-        setBackgroundColor(b.n(paramContext, 2131100162));
+        setBackgroundColor(b.n(paramContext, 2131100195));
       }
       finally
       {
@@ -386,7 +386,7 @@ public abstract class FacebookButtonBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.FacebookButtonBase
  * JD-Core Version:    0.7.0.1
  */

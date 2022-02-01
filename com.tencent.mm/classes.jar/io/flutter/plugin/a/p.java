@@ -7,14 +7,14 @@ import java.nio.charset.Charset;
 public final class p
   implements i<String>
 {
-  private static final Charset Man;
-  public static final p Ndi;
+  private static final Charset RAF;
+  public static final p SSt;
   
   static
   {
     AppMethodBeat.i(9849);
-    Man = Charset.forName("UTF8");
-    Ndi = new p();
+    RAF = Charset.forName("UTF8");
+    SSt = new p();
     AppMethodBeat.o(9849);
   }
   
@@ -36,7 +36,7 @@ public final class p
     }
     for (paramByteBuffer = arrayOfByte;; paramByteBuffer = arrayOfByte)
     {
-      paramByteBuffer = new String(paramByteBuffer, i, j, Man);
+      paramByteBuffer = new String(paramByteBuffer, i, j, RAF);
       AppMethodBeat.o(9846);
       return paramByteBuffer;
       arrayOfByte = new byte[j];
@@ -45,7 +45,7 @@ public final class p
     }
   }
   
-  public static ByteBuffer bdC(String paramString)
+  public static ByteBuffer btr(String paramString)
   {
     AppMethodBeat.i(9845);
     if (paramString == null)
@@ -53,7 +53,7 @@ public final class p
       AppMethodBeat.o(9845);
       return null;
     }
-    paramString = paramString.getBytes(Man);
+    paramString = paramString.getBytes(RAF);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramString.length);
     localByteBuffer.put(paramString);
     AppMethodBeat.o(9845);
@@ -62,7 +62,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     io.flutter.plugin.a.p
  * JD-Core Version:    0.7.0.1
  */

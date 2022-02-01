@@ -16,26 +16,26 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
-import com.tencent.mm.protocal.protobuf.ecp;
-import com.tencent.mm.protocal.protobuf.ecq;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.protocal.protobuf.ewx;
+import com.tencent.mm.protocal.protobuf.ewy;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 
 public final class a
 {
-  static String Fh(String paramString)
+  static String NR(String paramString)
   {
-    AppMethodBeat.i(188909);
+    AppMethodBeat.i(212207);
     paramString = "com.tencent.wework.".concat(String.valueOf(paramString));
-    AppMethodBeat.o(188909);
+    AppMethodBeat.o(212207);
     return paramString;
   }
   
   static void a(Activity paramActivity, SendMessageToWX.Req paramReq)
   {
-    AppMethodBeat.i(188907);
+    AppMethodBeat.i(212205);
     Bundle localBundle = new Bundle();
     paramReq.toBundle(localBundle);
     Intent localIntent = new Intent();
@@ -48,19 +48,19 @@ public final class a
     try
     {
       a(paramActivity, paramReq, localIntent.getExtras(), "com.tencent.wework");
-      paramActivity.overridePendingTransition(2130772144, 2130771987);
-      AppMethodBeat.o(188907);
+      paramActivity.overridePendingTransition(2130772169, 2130771987);
+      AppMethodBeat.o(212205);
       return;
     }
     catch (Throwable paramActivity)
     {
-      AppMethodBeat.o(188907);
+      AppMethodBeat.o(212205);
     }
   }
   
   private static void a(Activity paramActivity, SendMessageToWX.Req paramReq, Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(188908);
+    AppMethodBeat.i(212206);
     Intent localIntent = new Intent(paramActivity, Class.forName("com.tencent.mm.ui.transmit.SelectConversationUI"));
     localIntent.putExtra("Select_Conv_NextStep", new Intent(paramActivity, Class.forName("com.tencent.mm.ui.transmit.SendAppMessageWrapperUI")).putExtras(paramBundle).putExtra("SendAppMessageWrapper_Scene", paramReq.scene));
     localIntent.putExtra("Select_App_Id", paramString);
@@ -79,13 +79,13 @@ public final class a
       if (paramReq.message.getType() == 45) {
         localIntent.putExtra("Select_Send_Card", true);
       }
-      localIntent.putExtra("MMActivity.OverrideExitAnimation", 2130772145);
+      localIntent.putExtra("MMActivity.OverrideExitAnimation", 2130772170);
       localIntent.putExtra("MMActivity.OverrideEnterAnimation", 2130771987);
-      paramReq = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramReq.ahE(), "com/tencent/mm/modelbiz/ww/OpenSdkBridge", "dealSendMsgToWx", "(Landroid/app/Activity;Lcom/tencent/mm/opensdk/modelmsg/SendMessageToWX$Req;Landroid/os/Bundle;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivity.startActivity((Intent)paramReq.mt(0));
+      paramReq = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramReq.axQ(), "com/tencent/mm/modelbiz/ww/OpenSdkBridge", "dealSendMsgToWx", "(Landroid/app/Activity;Lcom/tencent/mm/opensdk/modelmsg/SendMessageToWX$Req;Landroid/os/Bundle;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)paramReq.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/modelbiz/ww/OpenSdkBridge", "dealSendMsgToWx", "(Landroid/app/Activity;Lcom/tencent/mm/opensdk/modelmsg/SendMessageToWX$Req;Landroid/os/Bundle;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(188908);
+      AppMethodBeat.o(212206);
       return;
       bool = false;
       break;
@@ -93,85 +93,85 @@ public final class a
     }
   }
   
-  public static void a(final Activity paramActivity, ecp paramecp)
+  public static void a(final Activity paramActivity, ewx paramewx)
   {
-    AppMethodBeat.i(188905);
-    if (paramecp == null)
+    AppMethodBeat.i(212203);
+    if (paramewx == null)
     {
-      AppMethodBeat.o(188905);
+      AppMethodBeat.o(212203);
       return;
     }
-    String str = paramecp.FXI;
-    if (bu.isNullOrNil(str)) {}
+    String str = paramewx.KRv;
+    if (Util.isNullOrNil(str)) {}
     for (str = null; str == null; str = ((StringBuilder)localObject).toString())
     {
-      ae.w("MicroMsg.OpenSdkBridge", "doSendImage bad img_url=" + paramecp.FXI);
-      AppMethodBeat.o(188905);
+      Log.w("MicroMsg.OpenSdkBridge", "doSendImage bad img_url=" + paramewx.KRv);
+      AppMethodBeat.o(212203);
       return;
-      localObject = new StringBuilder(com.tencent.mm.plugin.image.d.azR());
+      localObject = new StringBuilder(com.tencent.mm.plugin.image.d.aSZ());
       ((StringBuilder)localObject).append(g.getMessageDigest(str.getBytes()));
     }
     Object localObject = new c.a();
-    ((c.a)localObject).hgD = str;
-    ((c.a)localObject).igk = true;
-    ((c.a)localObject).igi = true;
-    ae.w("MicroMsg.OpenSdkBridge", "doSendImage fullPath=%s", new Object[] { str });
+    ((c.a)localObject).fullPath = str;
+    ((c.a)localObject).jbf = true;
+    ((c.a)localObject).jbd = true;
+    Log.w("MicroMsg.OpenSdkBridge", "doSendImage fullPath=%s", new Object[] { str });
     paramActivity = new WeakReference(paramActivity);
-    q.aJb().a(paramecp.FXI, ((c.a)localObject).aJu(), new com.tencent.mm.av.a.c.d()
+    q.bcV().a(paramewx.KRv, ((c.a)localObject).bdv(), new com.tencent.mm.av.a.c.d()
     {
-      public final void eM(boolean paramAnonymousVarArgs)
+      public final void a(boolean paramAnonymousBoolean, Object... paramAnonymousVarArgs)
       {
-        AppMethodBeat.i(188904);
-        ae.w("MicroMsg.OpenSdkBridge", "doSendImage onImageDownload success? %s=%b", new Object[] { this.hVO, Boolean.valueOf(paramAnonymousVarArgs) });
-        if (paramAnonymousVarArgs)
+        AppMethodBeat.i(212202);
+        Log.w("MicroMsg.OpenSdkBridge", "doSendImage onImageDownload success? %s=%b", new Object[] { this.iQM, Boolean.valueOf(paramAnonymousBoolean) });
+        if (paramAnonymousBoolean)
         {
-          Object localObject1 = h.decodeFile(this.hVO, null);
-          Activity localActivity = (Activity)paramActivity.get();
+          Object localObject1 = BitmapUtil.decodeFile(this.iQM, null);
+          paramAnonymousVarArgs = (Activity)paramActivity.get();
           if (localObject1 == null) {
-            ae.w("MicroMsg.OpenSdkBridge", "doSendImage null bitmap");
+            Log.w("MicroMsg.OpenSdkBridge", "doSendImage null bitmap");
           }
-          if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed()))
+          if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.isFinishing()) || (paramAnonymousVarArgs.isDestroyed()))
           {
-            ae.w("MicroMsg.OpenSdkBridge", "doSendImage null or finished context");
-            AppMethodBeat.o(188904);
+            Log.w("MicroMsg.OpenSdkBridge", "doSendImage null or finished context");
+            AppMethodBeat.o(212202);
             return;
           }
           Object localObject2 = new WXImageObject((Bitmap)localObject1);
           localObject1 = new WXMediaMessage();
           ((WXMediaMessage)localObject1).mediaObject = ((WXMediaMessage.IMediaObject)localObject2);
           localObject2 = new SendMessageToWX.Req();
-          ((SendMessageToWX.Req)localObject2).transaction = a.Fh("img");
+          ((SendMessageToWX.Req)localObject2).transaction = a.NR("img");
           ((SendMessageToWX.Req)localObject2).message = ((WXMediaMessage)localObject1);
           ((SendMessageToWX.Req)localObject2).scene = 0;
-          a.a(localActivity, (SendMessageToWX.Req)localObject2);
+          a.a(paramAnonymousVarArgs, (SendMessageToWX.Req)localObject2);
         }
-        AppMethodBeat.o(188904);
+        AppMethodBeat.o(212202);
       }
     });
-    AppMethodBeat.o(188905);
+    AppMethodBeat.o(212203);
   }
   
-  public static void a(Activity paramActivity, ecq paramecq)
+  public static void a(Activity paramActivity, ewy paramewy)
   {
-    AppMethodBeat.i(188906);
+    AppMethodBeat.i(212204);
     Object localObject = new WXWebpageObject();
-    ((WXWebpageObject)localObject).webpageUrl = paramecq.qlv;
+    ((WXWebpageObject)localObject).webpageUrl = paramewy.rCq;
     localObject = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject);
-    ((WXMediaMessage)localObject).title = paramecq.title;
-    ((WXMediaMessage)localObject).description = paramecq.description;
+    ((WXMediaMessage)localObject).title = paramewy.title;
+    ((WXMediaMessage)localObject).description = paramewy.description;
     try
     {
-      ((WXMediaMessage)localObject).thumbData = Base64.decode(paramecq.IhN.zr, 0);
+      ((WXMediaMessage)localObject).thumbData = Base64.decode(paramewy.Nur.zy, 0);
       label62:
-      paramecq = new SendMessageToWX.Req();
-      paramecq.transaction = Fh("webpage");
-      paramecq.message = ((WXMediaMessage)localObject);
-      paramecq.scene = 0;
-      a(paramActivity, paramecq);
-      AppMethodBeat.o(188906);
+      paramewy = new SendMessageToWX.Req();
+      paramewy.transaction = NR("webpage");
+      paramewy.message = ((WXMediaMessage)localObject);
+      paramewy.scene = 0;
+      a(paramActivity, paramewy);
+      AppMethodBeat.o(212204);
       return;
     }
-    catch (Throwable paramecq)
+    catch (Throwable paramewy)
     {
       break label62;
     }

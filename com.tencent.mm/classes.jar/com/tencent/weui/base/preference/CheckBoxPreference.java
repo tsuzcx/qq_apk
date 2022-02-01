@@ -15,13 +15,13 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class CheckBoxPreference
   extends Preference
 {
-  private int DcV;
-  private String DcW;
-  private int DcX;
-  private TextView Dga;
+  private int HIJ;
+  private String HIK;
+  private int HIL;
+  private TextView HMo;
   private View mView;
-  boolean oB;
-  private MMSwitchBtn rkq;
+  boolean oD;
+  private MMSwitchBtn sLW;
   
   public CheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,28 +32,38 @@ public class CheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159986);
-    this.oB = false;
-    this.DcV = -1;
-    this.DcW = "";
-    this.DcX = 8;
-    setLayoutResource(2131494804);
+    this.oD = false;
+    this.HIJ = -1;
+    this.HIK = "";
+    this.HIL = 8;
+    setLayoutResource(2131495538);
     AppMethodBeat.o(159986);
+  }
+  
+  public final void aez(int paramInt)
+  {
+    AppMethodBeat.i(198548);
+    this.HIL = paramInt;
+    if (this.HMo != null) {
+      this.HMo.setVisibility(this.HIL);
+    }
+    AppMethodBeat.o(198548);
   }
   
   public final boolean isChecked()
   {
-    if (this.rkq != null) {
-      return this.rkq.Lon;
+    if (this.sLW != null) {
+      return this.sLW.QDw;
     }
-    return this.oB;
+    return this.oD;
   }
   
   public void onBindView(View paramView)
   {
     AppMethodBeat.i(159988);
     super.onBindView(paramView);
-    this.rkq = ((MMSwitchBtn)paramView.findViewById(2131298255));
-    this.rkq.setSwitchListener(new MMSwitchBtn.a()
+    this.sLW = ((MMSwitchBtn)paramView.findViewById(2131298639));
+    this.sLW.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -62,30 +72,27 @@ public class CheckBoxPreference
         AppMethodBeat.o(159985);
       }
     });
-    this.rkq.setCheck(this.oB);
+    this.sLW.setCheck(this.oD);
     if (!isEnabled())
     {
-      this.rkq.setEnabled(false);
-      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100022));
+      this.sLW.setEnabled(false);
+      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100048));
     }
-    this.Dga = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.DcW;
-    int i = this.DcV;
-    this.DcV = i;
-    this.DcW = paramView;
-    if (this.Dga != null)
+    this.HMo = ((TextView)paramView.findViewById(2131309166));
+    paramView = this.HIK;
+    int i = this.HIJ;
+    this.HIJ = i;
+    this.HIK = paramView;
+    if (this.HMo != null)
     {
       if (i > 0) {
-        this.Dga.setBackgroundResource(this.DcV);
+        this.HMo.setBackgroundResource(this.HIJ);
       }
-      if (!TextUtils.isEmpty(this.DcW)) {
-        this.Dga.setText(this.DcW);
+      if (!TextUtils.isEmpty(this.HIK)) {
+        this.HMo.setText(this.HIK);
       }
     }
-    this.DcX = this.DcX;
-    if (this.Dga != null) {
-      this.Dga.setVisibility(this.DcX);
-    }
+    aez(this.HIL);
     AppMethodBeat.o(159988);
   }
   
@@ -93,18 +100,34 @@ public class CheckBoxPreference
   {
     AppMethodBeat.i(159987);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    View.inflate(getContext(), 2131494889, localViewGroup);
+    View.inflate(getContext(), 2131495627, localViewGroup);
     this.mView = paramViewGroup;
     paramViewGroup = this.mView;
     AppMethodBeat.o(159987);
     return paramViewGroup;
   }
+  
+  public final void setChecked(boolean paramBoolean)
+  {
+    this.oD = paramBoolean;
+  }
+  
+  public final void xZ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(198547);
+    if (this.sLW != null)
+    {
+      this.oD = paramBoolean;
+      this.sLW.setCheck(paramBoolean);
+    }
+    AppMethodBeat.o(198547);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.weui.base.preference.CheckBoxPreference
  * JD-Core Version:    0.7.0.1
  */

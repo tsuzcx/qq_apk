@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "", "()V", "id", "", "getId", "()I", "setId", "(I)V", "size", "", "getSize", "()F", "setSize", "(F)V", "x", "getX", "setX", "xFactor", "getXFactor", "setXFactor", "y", "getY", "setY", "yFactor", "getYFactor", "setYFactor", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "", "()V", "id", "", "getId", "()I", "setId", "(I)V", "size", "", "getSize", "()F", "setSize", "(F)V", "x", "getX", "setX", "xFactor", "getXFactor", "setXFactor", "y", "getY", "setY", "yFactor", "getYFactor", "setYFactor", "plugin-scan_release"})
 public final class ScanPoint
 {
   private int id;

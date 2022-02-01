@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.performance;
 
 import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.Iterator;
@@ -12,41 +12,19 @@ import java.util.List;
 @SuppressLint({"DefaultLocale"})
 public final class c
 {
-  private static long cUa;
-  private static final List<a> mmo;
+  private static long dkt;
+  private static final List<a> nwO;
   
   static
   {
     AppMethodBeat.i(139903);
-    mmo = Collections.synchronizedList(new LinkedList());
+    nwO = Collections.synchronizedList(new LinkedList());
     AppMethodBeat.o(139903);
   }
   
-  static boolean Ux(String paramString)
+  public static void Bo(long paramLong)
   {
-    AppMethodBeat.i(139901);
-    StringBuilder localStringBuilder = new StringBuilder();
-    synchronized (mmo)
-    {
-      if (mmo.size() == 0)
-      {
-        AppMethodBeat.o(139901);
-        return true;
-      }
-      ae.d("MicroMsg.AppBrandPerformanceTracer", "dumpTrace events size: %d", new Object[] { Integer.valueOf(mmo.size()) });
-      Iterator localIterator = mmo.iterator();
-      while (localIterator.hasNext())
-      {
-        a locala = (a)localIterator.next();
-        if ((locala.appId.equals(paramString)) && (locala.start >= cUa)) {
-          localStringBuilder.append(locala.toString()).append("\n");
-        }
-      }
-    }
-    mmo.clear();
-    boolean bool = ed(paramString, localStringBuilder.toString());
-    AppMethodBeat.o(139901);
-    return bool;
+    dkt = paramLong;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
@@ -71,19 +49,46 @@ public final class c
     locala.appId = paramString1;
     locala.name = paramString3;
     locala.category = paramString2;
-    locala.mmp = paramString4;
+    locala.nwP = paramString4;
     locala.start = paramLong1;
-    locala.bpc = paramLong2;
+    locala.boX = paramLong2;
     if (paramString5 != null) {}
     for (paramString1 = URLEncoder.encode(paramString5);; paramString1 = "")
     {
-      locala.lTz = paramString1;
-      if (mmo.size() < 10000) {
-        mmo.add(locala);
+      locala.nbc = paramString1;
+      if (nwO.size() < 10000) {
+        nwO.add(locala);
       }
       AppMethodBeat.o(139900);
       return;
     }
+  }
+  
+  static boolean ael(String paramString)
+  {
+    AppMethodBeat.i(139901);
+    StringBuilder localStringBuilder = new StringBuilder();
+    synchronized (nwO)
+    {
+      if (nwO.size() == 0)
+      {
+        AppMethodBeat.o(139901);
+        return true;
+      }
+      Log.d("MicroMsg.AppBrandPerformanceTracer", "dumpTrace events size: %d", new Object[] { Integer.valueOf(nwO.size()) });
+      Iterator localIterator = nwO.iterator();
+      while (localIterator.hasNext())
+      {
+        a locala = (a)localIterator.next();
+        if ((locala.appId.equals(paramString)) && (locala.start >= dkt)) {
+          localStringBuilder.append(locala.toString()).append("\n");
+        }
+      }
+    }
+    nwO.clear();
+    boolean bool = eu(paramString, localStringBuilder.toString());
+    AppMethodBeat.o(139901);
+    return bool;
   }
   
   public static void b(String paramString1, String paramString2, long paramLong1, long paramLong2)
@@ -94,19 +99,19 @@ public final class c
   }
   
   /* Error */
-  private static final boolean ed(String paramString1, String paramString2)
+  private static final boolean eu(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
-    //   2: ldc 183
+    //   2: ldc 185
     //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 188	com/tencent/mm/compatible/util/e:abo	()Z
+    //   7: invokestatic 190	com/tencent/mm/compatible/util/e:apn	()Z
     //   10: ifne +17 -> 27
-    //   13: ldc 55
-    //   15: ldc 190
-    //   17: invokestatic 194	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   20: ldc 183
+    //   13: ldc 126
+    //   15: ldc 192
+    //   17: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: ldc 185
     //   22: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   25: iconst_0
     //   26: ireturn
@@ -116,37 +121,37 @@ public final class c
     //   31: astore 4
     //   33: aload 5
     //   35: astore_3
-    //   36: new 196	com/tencent/mm/vfs/k
+    //   36: new 198	com/tencent/mm/vfs/o
     //   39: dup
-    //   40: new 46	java/lang/StringBuilder
+    //   40: new 123	java/lang/StringBuilder
     //   43: dup
-    //   44: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   47: invokestatic 202	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   50: invokevirtual 207	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   53: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: ldc 209
-    //   58: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokespecial 212	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   44: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   47: invokestatic 204	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   50: invokevirtual 209	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   53: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: ldc 211
+    //   58: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokespecial 214	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   67: astore 6
     //   69: aload 5
     //   71: astore_3
     //   72: aload 6
-    //   74: invokevirtual 215	com/tencent/mm/vfs/k:exists	()Z
+    //   74: invokevirtual 217	com/tencent/mm/vfs/o:exists	()Z
     //   77: ifne +12 -> 89
     //   80: aload 5
     //   82: astore_3
     //   83: aload 6
-    //   85: invokevirtual 218	com/tencent/mm/vfs/k:mkdirs	()Z
+    //   85: invokevirtual 220	com/tencent/mm/vfs/o:mkdirs	()Z
     //   88: pop
     //   89: aload 5
     //   91: astore_3
-    //   92: new 220	com/tencent/mm/vfs/r
+    //   92: new 222	com/tencent/mm/vfs/v
     //   95: dup
-    //   96: new 196	com/tencent/mm/vfs/k
+    //   96: new 198	com/tencent/mm/vfs/o
     //   99: dup
     //   100: aload 6
-    //   102: ldc 222
+    //   102: ldc 224
     //   104: iconst_2
     //   105: anewarray 4	java/lang/Object
     //   108: dup
@@ -155,20 +160,20 @@ public final class c
     //   111: aastore
     //   112: dup
     //   113: iconst_1
-    //   114: getstatic 98	com/tencent/mm/plugin/appbrand/performance/c:cUa	J
-    //   117: invokestatic 227	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   114: getstatic 45	com/tencent/mm/plugin/appbrand/performance/c:dkt	J
+    //   117: invokestatic 229	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   120: aastore
-    //   121: invokestatic 137	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   124: invokespecial 230	com/tencent/mm/vfs/k:<init>	(Lcom/tencent/mm/vfs/k;Ljava/lang/String;)V
+    //   121: invokestatic 69	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   124: invokespecial 232	com/tencent/mm/vfs/o:<init>	(Lcom/tencent/mm/vfs/o;Ljava/lang/String;)V
     //   127: iconst_1
-    //   128: invokespecial 233	com/tencent/mm/vfs/r:<init>	(Lcom/tencent/mm/vfs/k;Z)V
+    //   128: invokespecial 235	com/tencent/mm/vfs/v:<init>	(Lcom/tencent/mm/vfs/o;Z)V
     //   131: astore_0
     //   132: aload_0
     //   133: aload_1
-    //   134: invokevirtual 236	com/tencent/mm/vfs/r:write	(Ljava/lang/String;)V
+    //   134: invokevirtual 238	com/tencent/mm/vfs/v:write	(Ljava/lang/String;)V
     //   137: aload_0
-    //   138: invokevirtual 239	com/tencent/mm/vfs/r:close	()V
-    //   141: ldc 183
+    //   138: invokevirtual 241	com/tencent/mm/vfs/v:close	()V
+    //   141: ldc 185
     //   143: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iload_2
     //   147: ireturn
@@ -177,16 +182,16 @@ public final class c
     //   151: astore_0
     //   152: aload_0
     //   153: astore_3
-    //   154: ldc 55
-    //   156: ldc 241
+    //   154: ldc 126
+    //   156: ldc 243
     //   158: aload_1
-    //   159: invokestatic 244	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   162: invokevirtual 247	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   165: invokestatic 194	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   159: invokestatic 246	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   162: invokevirtual 249	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   165: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   168: aload_0
     //   169: ifnull +54 -> 223
     //   172: aload_0
-    //   173: invokevirtual 239	com/tencent/mm/vfs/r:close	()V
+    //   173: invokevirtual 241	com/tencent/mm/vfs/v:close	()V
     //   176: iconst_0
     //   177: istore_2
     //   178: goto -37 -> 141
@@ -198,8 +203,8 @@ public final class c
     //   188: aload_3
     //   189: ifnull +7 -> 196
     //   192: aload_3
-    //   193: invokevirtual 239	com/tencent/mm/vfs/r:close	()V
-    //   196: ldc 183
+    //   193: invokevirtual 241	com/tencent/mm/vfs/v:close	()V
+    //   196: ldc 185
     //   198: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   201: aload_0
     //   202: athrow
@@ -226,7 +231,7 @@ public final class c
     //   35	179	3	localObject1	Object
     //   31	119	4	localObject2	Object
     //   28	62	5	localObject3	Object
-    //   67	34	6	localk	com.tencent.mm.vfs.k
+    //   67	34	6	localo	com.tencent.mm.vfs.o
     // Exception table:
     //   from	to	target	type
     //   36	69	148	java/lang/Exception
@@ -245,25 +250,20 @@ public final class c
     //   132	137	219	java/lang/Exception
   }
   
-  public static void tj(long paramLong)
-  {
-    cUa = paramLong;
-  }
-  
   public static final class a
   {
     String appId;
-    long bpc;
+    long boX;
     String category;
-    String lTz;
-    String mmp;
     String name;
+    String nbc;
+    String nwP;
     long start;
     
     public final String toString()
     {
       AppMethodBeat.i(139896);
-      String str = this.name + "," + this.category + "," + this.mmp + "," + (this.start - c.bwK()) + "," + (this.bpc - c.bwK()) + "," + this.lTz;
+      String str = this.name + "," + this.category + "," + this.nwP + "," + (this.start - c.bST()) + "," + (this.boX - c.bST()) + "," + this.nbc;
       AppMethodBeat.o(139896);
       return str;
     }
@@ -271,7 +271,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.c
  * JD-Core Version:    0.7.0.1
  */

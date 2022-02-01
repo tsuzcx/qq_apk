@@ -2,7 +2,7 @@ package com.tencent.pb.talkroom.sdk;
 
 public abstract interface c
 {
-  public abstract void af(byte[] paramArrayOfByte, int paramInt);
+  public abstract void ag(byte[] paramArrayOfByte, int paramInt);
 }
 
 

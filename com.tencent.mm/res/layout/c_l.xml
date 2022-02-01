@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
+        <TextView android:id="@id/jia" style="@style/a0d" />
+        <TextView android:id="@id/jhs" style="@style/a0b" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/gdl" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="+" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gg7" android:layout_width="50.0dip" android:layout_marginLeft="0.0dip" android:maxLength="4" android:layout_weight="0.0" style="@style/a09" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jf4" android:layout_marginLeft="2.0dip" style="@style/a09" />
+        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/jfu" android:src="@drawable/bk3" style="@style/a0_" />
+    </LinearLayout>
+</merge>

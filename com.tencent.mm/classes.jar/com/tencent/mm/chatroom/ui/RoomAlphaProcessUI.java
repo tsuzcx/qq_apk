@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.chatroom.d.x;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -20,25 +20,20 @@ public class RoomAlphaProcessUI
 {
   private String chatroomName;
   
-  private static void v(Runnable paramRunnable)
+  private static void w(Runnable paramRunnable)
   {
     AppMethodBeat.i(12680);
-    new aq().postDelayed(paramRunnable, 200L);
+    new MMHandler().postDelayed(paramRunnable, 200L);
     AppMethodBeat.o(12680);
   }
   
-  public int getLayoutId()
-  {
-    return -1;
-  }
-  
-  public final void h(final boolean paramBoolean, final int paramInt)
+  public final void g(final boolean paramBoolean, final int paramInt)
   {
     AppMethodBeat.i(12681);
     if (paramBoolean)
     {
-      h.cm(this, getString(2131762727));
-      v(new Runnable()
+      h.cD(this, getString(2131764810));
+      w(new Runnable()
       {
         public final void run()
         {
@@ -49,9 +44,9 @@ public class RoomAlphaProcessUI
           ((Intent)localObject).putExtra("upgrade_success", paramBoolean);
           ((Intent)localObject).putExtra("left_quota", paramInt);
           RoomAlphaProcessUI localRoomAlphaProcessUI = RoomAlphaProcessUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(localRoomAlphaProcessUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/chatroom/ui/RoomAlphaProcessUI$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          localRoomAlphaProcessUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(localRoomAlphaProcessUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/chatroom/ui/RoomAlphaProcessUI$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localRoomAlphaProcessUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(localRoomAlphaProcessUI, "com/tencent/mm/chatroom/ui/RoomAlphaProcessUI$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(12674);
         }
@@ -59,8 +54,8 @@ public class RoomAlphaProcessUI
       AppMethodBeat.o(12681);
       return;
     }
-    h.d(this, getString(2131762726), "", null);
-    v(new Runnable()
+    h.d(this, getString(2131764809), "", null);
+    w(new Runnable()
     {
       public final void run()
       {
@@ -70,14 +65,19 @@ public class RoomAlphaProcessUI
         ((Intent)localObject).putExtra("room_name", RoomAlphaProcessUI.a(RoomAlphaProcessUI.this));
         ((Intent)localObject).putExtra("upgrade_success", paramBoolean);
         RoomAlphaProcessUI localRoomAlphaProcessUI = RoomAlphaProcessUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localRoomAlphaProcessUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/chatroom/ui/RoomAlphaProcessUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localRoomAlphaProcessUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localRoomAlphaProcessUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/chatroom/ui/RoomAlphaProcessUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localRoomAlphaProcessUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(localRoomAlphaProcessUI, "com/tencent/mm/chatroom/ui/RoomAlphaProcessUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(12675);
       }
     });
     AppMethodBeat.o(12681);
+  }
+  
+  public int getLayoutId()
+  {
+    return -1;
   }
   
   public void initView() {}
@@ -89,9 +89,9 @@ public class RoomAlphaProcessUI
     this.chatroomName = getIntent().getStringExtra("RoomInfo_Id");
     initView();
     paramBundle = new x(this.chatroomName);
-    b.2 local2 = new b.2(h.b(this, getString(2131760709), false, new b.1()), this, this);
-    g.ajQ().gDv.a(482, local2);
-    g.ajQ().gDv.a(paramBundle, 0);
+    b.2 local2 = new b.2(h.a(this, getString(2131762446), false, new b.1()), this, this);
+    g.aAg().hqi.a(482, local2);
+    g.aAg().hqi.a(paramBundle, 0);
     AppMethodBeat.o(12676);
   }
   

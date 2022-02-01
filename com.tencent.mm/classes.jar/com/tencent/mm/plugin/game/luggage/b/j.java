@@ -1,85 +1,90 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class j
-  extends bq<com.tencent.mm.plugin.game.luggage.f.g>
+  extends br
 {
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
-    AppMethodBeat.i(83066);
-    AppMethodBeat.o(83066);
-  }
-  
-  public final void b(final com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb)
-  {
-    AppMethodBeat.i(180134);
-    ae.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
-    Object localObject = paramb.chh.cgn;
-    if (localObject == null)
+    AppMethodBeat.i(83064);
+    Object localObject = ((c)g.af(c.class)).cBR();
+    if (Util.isNullOrNil((List)localObject))
     {
-      ae.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
-      paramb.a("null_data", null);
-      AppMethodBeat.o(180134);
+      parama.i(null, null);
+      AppMethodBeat.o(83064);
       return;
     }
-    int i = ((JSONObject)localObject).optInt("cmd", 0);
-    localObject = ((JSONObject)localObject).optString("param");
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("cmd", i);
-    localBundle.putString("param", (String)localObject);
-    JSONObject localJSONObject = new JSONObject();
-    if (i == 10008) {
+    paramContext = new JSONObject();
+    paramString = new JSONArray();
+    localObject = ((LinkedList)localObject).iterator();
+    for (;;)
+    {
+      DownloadWidgetTaskInfo localDownloadWidgetTaskInfo;
+      JSONObject localJSONObject;
+      if (((Iterator)localObject).hasNext())
+      {
+        localDownloadWidgetTaskInfo = (DownloadWidgetTaskInfo)((Iterator)localObject).next();
+        localJSONObject = new JSONObject();
+      }
       try
       {
-        localJSONObject.put("page_start_time", ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).ugx.EBt);
-        paramb.a("", localJSONObject);
-        AppMethodBeat.o(180134);
-        return;
+        localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
+        localJSONObject.put("status", localDownloadWidgetTaskInfo.pJC);
+        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.dCa);
+        localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
+        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.lCT);
+        if (localDownloadWidgetTaskInfo.qJh) {
+          localJSONObject.put("reserve_for_wifi", 1);
+        }
+        label177:
+        paramString.put(localJSONObject);
+        continue;
+        try
+        {
+          paramContext.put("result", paramString.toString());
+          label198:
+          parama.i(null, paramContext);
+          AppMethodBeat.o(83064);
+          return;
+        }
+        catch (JSONException paramString)
+        {
+          break label198;
+        }
       }
       catch (JSONException localJSONException)
       {
-        paramb.a("", null);
-        AppMethodBeat.o(180134);
-        return;
+        break label177;
       }
     }
-    if (i == 10009)
-    {
-      ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).ugy = bu.getLong(localJSONException, System.currentTimeMillis());
-      paramb.a("", null);
-      AppMethodBeat.o(180134);
-      return;
-    }
-    h.a("com.tencent.mm", localBundle, a.class, new d() {});
-    AppMethodBeat.o(180134);
   }
   
-  public final int ced()
+  public final void b(b.a parama) {}
+  
+  public final int dTs()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "getGameCommInfo";
+    return "getDownloadWidgetTaskInfos";
   }
-  
-  static class a
-    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
-  {}
 }
 
 

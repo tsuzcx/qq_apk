@@ -1,21 +1,18 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kp;
+import com.tencent.mm.g.a.lf;
 import com.tencent.mm.plugin.appbrand.appcache.IPkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.bax;
-import com.tencent.mm.protocal.protobuf.jy;
-import com.tencent.mm.sdk.b.c;
-import d.a.v;
-import d.g.a.b;
-import d.g.a.m;
-import d.g.b.p;
-import d.h.a;
+import com.tencent.mm.protocal.protobuf.acc;
+import com.tencent.mm.protocal.protobuf.bmm;
+import com.tencent.mm.protocal.protobuf.kn;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.vfs.s;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -26,22 +23,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.g.a.b;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.h.a;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor;", "", "()V", "TAG", "", "waitForPkgList", "", "appId", "version", "", "versionType", "requestedModuleNames", "", "pickedModuleInfoList", "", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaWidgetInfo;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "onSuccess", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "onProgress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "onError", "Lkotlin/Function2;", "forceNoEncrypt", "", "reporter", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "IReporter", "InnerBatchGetDownloadCgiExecutor", "InnerBatchProgressEmitter", "plugin-appbrand-integration_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor;", "", "()V", "TAG", "", "waitForPkgList", "", "appId", "version", "", "versionType", "requestedModuleNames", "", "pickedModuleInfoList", "", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaWidgetInfo;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "onSuccess", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "onProgress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "onError", "Lkotlin/Function2;", "forceNoEncrypt", "", "cgiCommRequestSource", "Lcom/tencent/mm/protocal/protobuf/CommRequestSource;", "reporter", "Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "IReporter", "InnerBatchGetDownloadCgiExecutor", "InnerBatchProgressEmitter", "plugin-appbrand-integration_release"})
 public final class l
 {
-  public static final l lKQ;
+  public static final l mSI;
   
   static
   {
     AppMethodBeat.i(180492);
-    lKQ = new l();
+    mSI = new l();
     AppMethodBeat.o(180492);
   }
   
-  public static void a(final String paramString, final int paramInt1, final int paramInt2, final List<String> paramList, final Map<String, ? extends WxaAttributes.WxaWidgetInfo> paramMap, final QualitySession paramQualitySession, final b<? super List<? extends IPkgInfo>, d.z> paramb, b<? super WxaPkgLoadProgress, d.z> paramb1, final m<? super Integer, ? super String, d.z> paramm, boolean paramBoolean, final a parama)
+  public static void a(final String paramString, final int paramInt1, final int paramInt2, final List<String> paramList, final Map<String, ? extends WxaAttributes.WxaWidgetInfo> paramMap, final QualitySession paramQualitySession, final b<? super List<? extends IPkgInfo>, kotlin.x> paramb, b<? super WxaPkgLoadProgress, kotlin.x> paramb1, final m<? super Integer, ? super String, kotlin.x> paramm, boolean paramBoolean, acc paramacc, final a parama)
   {
-    AppMethodBeat.i(180491);
+    AppMethodBeat.i(228627);
     p.h(paramString, "appId");
     p.h(paramList, "requestedModuleNames");
     p.h(paramMap, "pickedModuleInfoList");
@@ -49,150 +50,137 @@ public final class l
     p.h(paramb, "onSuccess");
     p.h(paramb1, "onProgress");
     p.h(paramm, "onError");
+    p.h(paramacc, "cgiCommRequestSource");
     final h localh = new h(paramString, paramInt1, paramInt2, paramQualitySession);
     localh.alive();
     final HashSet localHashSet = new HashSet();
-    Object localObject1 = paramList.iterator();
-    label187:
-    label249:
-    Object localObject2;
-    if (((Iterator)localObject1).hasNext())
+    Object localObject = paramList.iterator();
+    if (((Iterator)localObject).hasNext())
     {
-      paramList = (String)((Iterator)localObject1).next();
+      paramList = (String)((Iterator)localObject).next();
       paramQualitySession = (WxaAttributes.WxaWidgetInfo)paramMap.get(paramList);
       if (paramQualitySession == null)
       {
         paramString = (Throwable)new IllegalStateException(("Invalid ModuleName(" + paramList + ')').toString());
-        AppMethodBeat.o(180491);
+        AppMethodBeat.o(228627);
         throw paramString;
       }
-      int j = paramQualitySession.doK;
-      int i;
-      if (j.a.rT(paramInt2))
+      int j = paramQualitySession.packageType;
+      if (j.a.vP(paramInt2)) {}
+      for (int i = paramInt1;; i = 0)
       {
-        i = paramInt1;
-        localHashSet.add(new y.d(paramString, paramList, j, paramInt2, (y.g)new y.g.b(i), paramBoolean));
-        paramQualitySession = paramQualitySession.kdF;
+        localHashSet.add(new x.d(paramString, paramList, j, paramInt2, (x.g)new x.g.b(i), paramBoolean));
+        paramQualitySession = paramQualitySession.lhk;
         paramList = paramQualitySession;
         if (paramQualitySession == null) {
-          paramList = (List)v.NhH;
+          paramList = (List)kotlin.a.v.SXr;
         }
-        paramQualitySession = paramList.iterator();
-        if (paramQualitySession.hasNext())
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          paramList = (WxaAttributes.WxaPluginCodeInfo)paramQualitySession.next();
-          p.g(paramList, "plugin");
-          p.h(paramList, "$this$toRequestInfo");
-          localObject2 = paramList.provider;
-          p.g(localObject2, "this.provider");
-          if (!paramList.kdk) {
-            break label349;
-          }
+          paramQualitySession = (WxaAttributes.WxaPluginCodeInfo)paramList.next();
+          p.g(paramQualitySession, "plugin");
+          localHashSet.add(o.a(paramQualitySession));
         }
-      }
-      label349:
-      for (paramList = (y.g)new y.g.a(paramList.version, 2);; paramList = (y.g)new y.g.b(paramList.version))
-      {
-        localHashSet.add(new y.d((String)localObject2, "", 6, 0, paramList, false));
-        break label249;
         break;
-        i = 0;
-        break label187;
       }
     }
     if (localHashSet.size() <= 0)
     {
       paramString = (Throwable)new IllegalStateException("RequestPkgInfoList.size==0".toString());
-      AppMethodBeat.o(180491);
+      AppMethodBeat.o(228627);
       throw paramString;
     }
-    paramString = new b(localHashSet.size());
+    paramString = new b(localHashSet.size(), paramacc);
     paramList = new c(paramb1);
     paramMap = new AtomicBoolean(false);
-    paramQualitySession = new ConcurrentSkipListSet((Comparator)g.lLe);
+    paramQualitySession = new ConcurrentSkipListSet((Comparator)g.mSW);
     paramb1 = localHashSet.iterator();
     while (paramb1.hasNext())
     {
-      localObject1 = (y.d)paramb1.next();
-      localObject2 = y.lMj;
-      p.g(localObject1, "request");
-      y.b.a((y.d)localObject1, (b)new d(paramQualitySession, (y.d)localObject1, paramString, paramList, localHashSet, localh, paramb, parama), (m)new e(localh, (y.d)localObject1, paramMap, paramm, parama), (b)new f(paramList, (y.d)localObject1), (z)paramString, (y.c)parama);
+      localObject = (x.d)paramb1.next();
+      x.b localb = x.mTR;
+      p.g(localObject, "request");
+      x.b.a((x.d)localObject, (b)new d(paramQualitySession, (x.d)localObject, paramString, paramList, localHashSet, localh, paramb, parama), (m)new e(localh, (x.d)localObject, paramMap, paramm, parama), (b)new f(paramList, (x.d)localObject), (y)paramString, paramacc, (x.c)parama, 32);
     }
-    AppMethodBeat.o(180491);
+    AppMethodBeat.o(228627);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$IReporter;", "onAllPkgDownloaded", "", "onPkgDownloadError", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "plugin-appbrand-integration_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$IReporter;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$IReporter;", "onAllPkgDownloaded", "", "onPkgDownloadError", "request", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "plugin-appbrand-integration_release"})
   public static abstract interface a
-    extends y.c
+    extends x.c
   {
-    public abstract void a(y.d paramd);
+    public abstract void a(x.d paramd);
     
-    public abstract void brI();
+    public abstract void bNs();
     
-    @d.l(gjZ={1, 1, 16})
+    @kotlin.l(hxD={1, 1, 16})
     public static final class a
     {
-      public static void a(y.d paramd, y.e parame)
+      public static void a(x.d paramd, x.e parame)
       {
-        AppMethodBeat.i(223500);
+        AppMethodBeat.i(228619);
         p.h(paramd, "request");
         p.h(parame, "response");
         p.h(paramd, "request");
         p.h(parame, "response");
-        AppMethodBeat.o(223500);
+        AppMethodBeat.o(228619);
       }
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$InnerBatchGetDownloadCgiExecutor;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "maxPossibleRequestCount", "", "(I)V", "requestMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "Lkotlin/Pair;", "Lkotlin/Function1;", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "", "Lkotlin/Function3;", "", "Lcom/tencent/mm/plugin/appbrand/launching/CgiCallbackPair;", "Lkotlin/collections/HashMap;", "scene", "decreasePossibleRequestCount", "fireAllRequestsIfNeed", "waitForDownloadUrl", "request", "onSuccess", "onError", "plugin-appbrand-integration_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$InnerBatchGetDownloadCgiExecutor;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "maxPossibleRequestCount", "", "cgiCommRequestSource", "Lcom/tencent/mm/protocal/protobuf/CommRequestSource;", "(ILcom/tencent/mm/protocal/protobuf/CommRequestSource;)V", "requestMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "Lkotlin/Pair;", "Lkotlin/Function1;", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "", "Lkotlin/Function3;", "", "Lcom/tencent/mm/plugin/appbrand/launching/CgiCallbackPair;", "Lkotlin/collections/HashMap;", "scene", "decreasePossibleRequestCount", "fireAllRequestsIfNeed", "waitForDownloadUrl", "request", "onSuccess", "onError", "plugin-appbrand-integration_release"})
   static final class b
-    implements z
+    implements y
   {
-    final HashMap<z.b, d.o<b<bax[], d.z>, d.g.a.q<Integer, Integer, String, d.z>>> kMk;
-    int lKR;
+    final HashMap<y.b, kotlin.o<b<bmm[], kotlin.x>, kotlin.g.a.q<Integer, Integer, String, kotlin.x>>> lQW;
+    int mSJ;
+    private final acc mSK;
     private int scene;
     
-    public b(int paramInt)
+    public b(int paramInt, acc paramacc)
     {
-      AppMethodBeat.i(180483);
-      this.lKR = paramInt;
-      this.kMk = new HashMap();
-      AppMethodBeat.o(180483);
+      AppMethodBeat.i(228621);
+      this.mSJ = paramInt;
+      this.mSK = paramacc;
+      this.lQW = new HashMap();
+      AppMethodBeat.o(228621);
     }
     
-    public final void a(z.b paramb, b<? super bax[], d.z> paramb1, d.g.a.q<? super Integer, ? super Integer, ? super String, d.z> paramq, int paramInt)
+    public final void a(y.b paramb, b<? super bmm[], kotlin.x> paramb1, kotlin.g.a.q<? super Integer, ? super Integer, ? super String, kotlin.x> paramq, int paramInt, acc paramacc)
     {
-      AppMethodBeat.i(180481);
+      AppMethodBeat.i(228620);
       p.h(paramb, "request");
       p.h(paramb1, "onSuccess");
       p.h(paramq, "onError");
+      p.h(paramacc, "cgiCommRequestSource");
       this.scene = paramInt;
-      ((Map)this.kMk).put(paramb, new d.o(paramb1, paramq));
-      brJ();
-      AppMethodBeat.o(180481);
+      ((Map)this.lQW).put(paramb, new kotlin.o(paramb1, paramq));
+      bNt();
+      AppMethodBeat.o(228620);
     }
     
-    public final void brJ()
+    public final void bNt()
     {
       AppMethodBeat.i(180482);
-      if (this.lKR != this.kMk.size())
+      if (this.mSJ != this.lQW.size())
       {
         AppMethodBeat.o(180482);
         return;
       }
-      if (this.kMk.size() <= 0)
+      if (this.lQW.size() <= 0)
       {
         AppMethodBeat.o(180482);
         return;
       }
-      w.lLV.a((List)new LinkedList((Collection)this.kMk.keySet()), (b)new a(this), (d.g.a.q)new b(this), this.scene);
+      v.mTG.a((List)new LinkedList((Collection)this.lQW.keySet()), (b)new a(this), (kotlin.g.a.q)new b(this), this.scene, this.mSK);
       AppMethodBeat.o(180482);
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "batchResp", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "invoke"})
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "batchResp", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "invoke"})
     static final class a
-      extends d.g.b.q
-      implements b<jy, d.z>
+      extends kotlin.g.b.q
+      implements b<kn, kotlin.x>
     {
       a(l.b paramb)
       {
@@ -200,10 +188,10 @@ public final class l
       }
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "invoke"})
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "invoke"})
     static final class b
-      extends d.g.b.q
-      implements d.g.a.q<Integer, Integer, String, d.z>
+      extends kotlin.g.b.q
+      implements kotlin.g.a.q<Integer, Integer, String, kotlin.x>
     {
       b(l.b paramb)
       {
@@ -212,131 +200,131 @@ public final class l
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$InnerBatchProgressEmitter;", "", "onProgress", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "", "(Lkotlin/jvm/functions/Function1;)V", "progressMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "Lkotlin/collections/HashMap;", "request", "progress", "onReady", "filePath", "", "plugin-appbrand-integration_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$InnerBatchProgressEmitter;", "", "onProgress", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "", "(Lkotlin/jvm/functions/Function1;)V", "progressMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Request;", "Lkotlin/collections/HashMap;", "request", "progress", "onReady", "filePath", "", "plugin-appbrand-integration_release"})
   static final class c
   {
-    private final HashMap<y.d, WxaPkgLoadProgress> lKT;
-    private final b<WxaPkgLoadProgress, d.z> lKU;
+    private final HashMap<x.d, WxaPkgLoadProgress> mSM;
+    private final b<WxaPkgLoadProgress, kotlin.x> mSN;
     
-    public c(b<? super WxaPkgLoadProgress, d.z> paramb)
+    public c(b<? super WxaPkgLoadProgress, kotlin.x> paramb)
     {
       AppMethodBeat.i(180486);
-      this.lKU = paramb;
-      this.lKT = new HashMap();
+      this.mSN = paramb;
+      this.mSM = new HashMap();
       AppMethodBeat.o(180486);
     }
     
-    public final void a(y.d paramd, WxaPkgLoadProgress paramWxaPkgLoadProgress)
+    public final void a(x.d paramd, WxaPkgLoadProgress paramWxaPkgLoadProgress)
     {
       AppMethodBeat.i(180484);
       p.h(paramd, "request");
       p.h(paramWxaPkgLoadProgress, "progress");
-      synchronized (this.lKT)
+      synchronized (this.mSM)
       {
-        ((Map)this.lKT).put(paramd, paramWxaPkgLoadProgress);
+        ((Map)this.mSM).put(paramd, paramWxaPkgLoadProgress);
         paramd = (c)this;
         long l2 = 0L;
         long l1 = 0L;
-        paramd = paramd.lKT.values();
+        paramd = paramd.mSM.values();
         p.g(paramd, "progressMap.values");
         paramd = ((Iterable)paramd).iterator();
         while (paramd.hasNext())
         {
           paramWxaPkgLoadProgress = (WxaPkgLoadProgress)paramd.next();
           if (paramWxaPkgLoadProgress == null) {
-            break label193;
+            break label196;
           }
-          l2 += Math.max(paramWxaPkgLoadProgress.jLt, 0L);
-          l1 += Math.max(paramWxaPkgLoadProgress.jLu, 0L);
+          l2 += Math.max(paramWxaPkgLoadProgress.kNs, 0L);
+          l1 += Math.max(paramWxaPkgLoadProgress.kNt, 0L);
         }
         if (l1 <= 0L) {}
         float f;
-        for (int i = 0;; i = a.cm(f))
+        for (int i = 0;; i = a.cR(f * 100.0F))
         {
           paramd = new WxaPkgLoadProgress(i, l2, l1);
           if (paramd != null) {
-            this.lKU.invoke(paramd);
+            this.mSN.invoke(paramd);
           }
           AppMethodBeat.o(180484);
           return;
           f = (float)l2 / (float)l1;
         }
-        label193:
+        label196:
         paramd = null;
       }
     }
     
-    public final void a(y.d paramd, String paramString)
+    public final void a(x.d paramd, String paramString)
     {
       AppMethodBeat.i(180485);
       p.h(paramd, "request");
       p.h(paramString, "filePath");
-      if (this.lKT.size() > 0)
+      if (this.mSM.size() > 0)
       {
-        long l = com.tencent.mm.vfs.o.aZR(paramString);
+        long l = s.boW(paramString);
         a(paramd, new WxaPkgLoadProgress(100, l, l));
       }
       AppMethodBeat.o(180485);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "response", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "invoke"})
   static final class d
-    extends d.g.b.q
-    implements b<y.e, d.z>
+    extends kotlin.g.b.q
+    implements b<x.e, kotlin.x>
   {
-    d(ConcurrentSkipListSet paramConcurrentSkipListSet, y.d paramd, l.b paramb, l.c paramc, HashSet paramHashSet, l.h paramh, b paramb1, l.a parama)
+    d(ConcurrentSkipListSet paramConcurrentSkipListSet, x.d paramd, l.b paramb, l.c paramc, HashSet paramHashSet, l.h paramh, b paramb1, l.a parama)
     {
       super();
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "err", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "errMsg", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "err", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "errMsg", "", "invoke"})
   static final class e
-    extends d.g.b.q
-    implements m<y.a, String, d.z>
+    extends kotlin.g.b.q
+    implements m<x.a, String, kotlin.x>
   {
-    e(l.h paramh, y.d paramd, AtomicBoolean paramAtomicBoolean, m paramm, l.a parama)
+    e(l.h paramh, x.d paramd, AtomicBoolean paramAtomicBoolean, m paramm, l.a parama)
     {
       super();
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "progress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "progress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "invoke"})
   static final class f
-    extends d.g.b.q
-    implements b<WxaPkgLoadProgress, d.z>
+    extends kotlin.g.b.q
+    implements b<WxaPkgLoadProgress, kotlin.x>
   {
-    f(l.c paramc, y.d paramd)
+    f(l.c paramc, x.d paramd)
     {
       super();
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "o1", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "kotlin.jvm.PlatformType", "o2", "compare"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "o1", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "kotlin.jvm.PlatformType", "o2", "compare"})
   static final class g<T>
     implements Comparator<IPkgInfo>
   {
-    public static final g lLe;
+    public static final g mSW;
     
     static
     {
-      AppMethodBeat.i(223505);
-      lLe = new g();
-      AppMethodBeat.o(223505);
+      AppMethodBeat.i(228626);
+      mSW = new g();
+      AppMethodBeat.o(228626);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$waitForPkgList$qualityReportListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/KV14609ReportEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/launching/BatchGetCodePkgExecutor$waitForPkgList$qualityReportListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/KV14609ReportEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
   public static final class h
-    extends c<kp>
+    extends IListener<lf>
   {
     h(String paramString, int paramInt1, int paramInt2, QualitySession paramQualitySession) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.l
  * JD-Core Version:    0.7.0.1
  */

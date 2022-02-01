@@ -9,9 +9,9 @@ import android.os.PowerManager.WakeLock;
 import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -66,7 +66,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ae.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        Log.printErrStackTrace(TAG, paramString, "", new Object[0]);
         paramString = str1;
       }
     }
@@ -247,7 +247,7 @@ public class DownloadHelper
     }
     try
     {
-      boolean bool2 = new k(TMAssistantFile.getSaveFilePath(paramString)).exists();
+      boolean bool2 = new o(TMAssistantFile.getSaveFilePath(paramString)).exists();
       if (bool2) {
         bool1 = true;
       }
@@ -256,7 +256,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ae.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        Log.printErrStackTrace(TAG, paramString, "", new Object[0]);
       }
     }
     finally
@@ -273,7 +273,7 @@ public class DownloadHelper
     AppMethodBeat.i(101955);
     try
     {
-      boolean bool2 = new k(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).exists();
+      boolean bool2 = new o(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).exists();
       if (bool2) {
         bool1 = true;
       }
@@ -282,7 +282,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ae.printErrStackTrace(TAG, paramString1, "", new Object[0]);
+        Log.printErrStackTrace(TAG, paramString1, "", new Object[0]);
       }
     }
     finally
@@ -347,7 +347,7 @@ public class DownloadHelper
         l1 = l2;
         if ("mounted".equals(Environment.getExternalStorageState()))
         {
-          paramString = new StatFs(w.B(new k(Environment.getExternalStorageDirectory().getPath()).mUri));
+          paramString = new StatFs(aa.z(new o(Environment.getExternalStorageDirectory().getPath()).mUri));
           l1 = paramString.getBlockSize();
           l3 = (paramString.getAvailableBlocks() - 4L) * l1;
           l1 = l2;
@@ -382,7 +382,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ae.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        Log.printErrStackTrace(TAG, paramString, "", new Object[0]);
       }
     }
     AppMethodBeat.o(101951);
@@ -411,7 +411,7 @@ public class DownloadHelper
     for (String str = paramString;; str = arrayOfString[0] + "(" + i + ")" + arrayOfString[1])
     {
       i += 1;
-      if (new k(TMAssistantFile.getSavePathRootDir() + "/" + str).exists()) {
+      if (new o(TMAssistantFile.getSavePathRootDir() + "/" + str).exists()) {
         break;
       }
       AppMethodBeat.o(101950);
@@ -421,7 +421,7 @@ public class DownloadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadHelper
  * JD-Core Version:    0.7.0.1
  */

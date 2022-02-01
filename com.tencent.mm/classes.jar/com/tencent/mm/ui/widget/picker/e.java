@@ -17,59 +17,59 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.aq;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.at;
 import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.n;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public final class e
 {
-  public TextView ASX;
-  public l ECx;
-  public n.d LfS;
-  public n.e LfT;
-  public View LxA;
-  public ArrayList<Integer> LxB;
-  public a LxC;
-  public b LxD;
-  public ListView Lxz;
-  public Button gXc;
-  public Button gZv;
-  public View kFh;
-  public int lEa;
-  private BottomSheetBehavior lEb;
+  public TextView FdD;
+  public o.f HLX;
+  public o.g HLY;
+  public m HMc;
+  public ListView QTo;
+  public View QTp;
+  public ArrayList<Integer> QTq;
+  public a QTr;
+  public b QTs;
+  public Button hPX;
+  public Button hSq;
+  public View lJI;
   public Context mContext;
-  public android.support.design.widget.a uNn;
+  public int mLJ;
+  private BottomSheetBehavior mLK;
+  public android.support.design.widget.a yfL;
   
   public e(Context paramContext)
   {
     AppMethodBeat.i(159571);
     this.mContext = paramContext;
-    this.ECx = new l(this.mContext);
-    this.uNn = new android.support.design.widget.a(this.mContext);
-    this.kFh = View.inflate(this.mContext, 2131494966, null);
-    this.Lxz = ((ListView)this.kFh.findViewById(2131302564));
-    this.gXc = ((Button)this.kFh.findViewById(2131302999));
-    this.gZv = ((Button)this.kFh.findViewById(2131297690));
-    this.LxA = this.kFh.findViewById(2131300720);
-    this.ASX = ((TextView)this.kFh.findViewById(2131300731));
-    this.uNn.setContentView(this.kFh);
-    this.lEa = (aq.ay(this.mContext, 2131165203) + aq.ay(this.mContext, 2131165204));
-    this.lEb = BottomSheetBehavior.l((View)this.kFh.getParent());
-    if (this.lEb != null)
+    this.HMc = new m(this.mContext);
+    this.yfL = new android.support.design.widget.a(this.mContext);
+    this.lJI = View.inflate(this.mContext, 2131495709, null);
+    this.QTo = ((ListView)this.lJI.findViewById(2131304996));
+    this.hPX = ((Button)this.lJI.findViewById(2131305592));
+    this.hSq = ((Button)this.lJI.findViewById(2131297963));
+    this.QTp = this.lJI.findViewById(2131302295);
+    this.FdD = ((TextView)this.lJI.findViewById(2131302312));
+    this.yfL.setContentView(this.lJI);
+    this.mLJ = (at.aH(this.mContext, 2131165206) + at.aH(this.mContext, 2131165207));
+    this.mLK = BottomSheetBehavior.l((View)this.lJI.getParent());
+    if (this.mLK != null)
     {
-      this.lEb.J(this.lEa);
-      this.lEb.nZ = false;
+      this.mLK.J(this.mLJ);
+      this.mLK.ob = false;
     }
-    this.uNn.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.yfL.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        e.this.uNn = null;
+        e.this.yfL = null;
       }
     });
     AppMethodBeat.o(159571);
@@ -78,8 +78,8 @@ public final class e
   public final void hide()
   {
     AppMethodBeat.i(159572);
-    if (this.uNn != null) {
-      this.uNn.dismiss();
+    if (this.yfL != null) {
+      this.yfL.dismiss();
     }
     AppMethodBeat.o(159572);
   }
@@ -87,68 +87,22 @@ public final class e
   public final class a
     extends BaseAdapter
   {
-    public HashMap<Integer, Boolean> LxF;
-    private ArrayList<Integer> LxG;
+    public HashMap<Integer, Boolean> QTu;
+    private ArrayList<Integer> QTv;
     private Context context;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(159565);
-      this.LxF = new HashMap();
+      this.QTu = new HashMap();
       this.context = paramContext;
       AppMethodBeat.o(159565);
-    }
-    
-    public final void fRi()
-    {
-      AppMethodBeat.i(159569);
-      if (e.this.LxB == null)
-      {
-        AppMethodBeat.o(159569);
-        return;
-      }
-      int i = 0;
-      if (i < getCount())
-      {
-        if (e.this.LxB.contains(Integer.valueOf(i))) {
-          this.LxF.put(Integer.valueOf(i), Boolean.TRUE);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          this.LxF.put(Integer.valueOf(i), Boolean.FALSE);
-        }
-      }
-      AppMethodBeat.o(159569);
-    }
-    
-    public final ArrayList<Integer> fRj()
-    {
-      AppMethodBeat.i(159570);
-      if (this.LxF == null)
-      {
-        AppMethodBeat.o(159570);
-        return null;
-      }
-      this.LxG = new ArrayList();
-      int i = 0;
-      while (i < getCount())
-      {
-        if (((Boolean)this.LxF.get(Integer.valueOf(i))).booleanValue()) {
-          this.LxG.add(Integer.valueOf(i));
-        }
-        i += 1;
-      }
-      ArrayList localArrayList = this.LxG;
-      AppMethodBeat.o(159570);
-      return localArrayList;
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(159566);
-      int i = e.this.ECx.size();
+      int i = e.this.HMc.size();
       AppMethodBeat.o(159566);
       return i;
     }
@@ -156,7 +110,7 @@ public final class e
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(159567);
-      Object localObject = e.this.ECx.JGM.get(paramInt);
+      Object localObject = e.this.HMc.ORD.get(paramInt);
       AppMethodBeat.o(159567);
       return localObject;
     }
@@ -169,32 +123,32 @@ public final class e
     public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(159568);
-      final m localm = (m)e.this.ECx.JGM.get(paramInt);
+      final n localn = (n)e.this.HMc.ORD.get(paramInt);
       paramViewGroup = LayoutInflater.from(this.context);
       View localView;
       if (paramView == null)
       {
-        localView = paramViewGroup.inflate(2131494965, null);
+        localView = paramViewGroup.inflate(2131495708, null);
         paramView = new a();
-        paramView.LtE = ((LinearLayout)localView.findViewById(2131301167));
-        paramView.iFD = ((CheckBox)localView.findViewById(2131301143));
-        paramView.iYj = ((TextView)localView.findViewById(2131301198));
-        paramView.iFO = ((TextView)localView.findViewById(2131301149));
+        paramView.HMm = ((LinearLayout)localView.findViewById(2131302830));
+        paramView.checkBox = ((CheckBox)localView.findViewById(2131302797));
+        paramView.jVO = ((TextView)localView.findViewById(2131302870));
+        paramView.jBR = ((TextView)localView.findViewById(2131302804));
         localView.setTag(paramView);
         paramViewGroup = paramView;
-        paramViewGroup.iYj.setText(localm.getTitle());
-        paramViewGroup.LtE.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.jVO.setText(localn.getTitle());
+        paramViewGroup.HMm.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(159564);
             b localb = new b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/MultiPicker$ListViewAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            if (e.this.LfT != null) {
-              e.this.LfT.onMMMenuItemSelected(e.this.ECx.getItem(paramInt), paramInt);
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/MultiPicker$ListViewAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            if (e.this.HLY != null) {
+              e.this.HLY.onMMMenuItemSelected(e.this.HMc.getItem(paramInt), paramInt);
             }
-            if (localm.lXh)
+            if (localn.neT)
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MultiPicker$ListViewAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(159564);
@@ -205,7 +159,7 @@ public final class e
             }
             for (;;)
             {
-              e.a.this.LxF = e.a.a(e.a.this);
+              e.a.this.QTu = e.a.a(e.a.this);
               e.a.this.notifyDataSetChanged();
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MultiPicker$ListViewAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(159564);
@@ -214,22 +168,22 @@ public final class e
             }
           }
         });
-        if (paramViewGroup.iFO != null)
+        if (paramViewGroup.jBR != null)
         {
-          if ((localm.tMa == null) || (localm.tMa.length() <= 0)) {
+          if ((localn.xdb == null) || (localn.xdb.length() <= 0)) {
             break label304;
           }
-          paramViewGroup.iFO.setVisibility(0);
-          paramViewGroup.iFO.setText(localm.tMa);
+          paramViewGroup.jBR.setVisibility(0);
+          paramViewGroup.jBR.setText(localn.xdb);
         }
         label198:
-        if (!localm.lXh) {
+        if (!localn.neT) {
           break label316;
         }
-        paramViewGroup.iYj.setTextColor(e.this.mContext.getResources().getColor(2131100031));
-        paramViewGroup.iFO.setTextColor(e.this.mContext.getResources().getColor(2131100031));
-        paramViewGroup.iFD.setChecked(((Boolean)this.LxF.get(Integer.valueOf(paramInt))).booleanValue());
-        paramViewGroup.iFD.setEnabled(false);
+        paramViewGroup.jVO.setTextColor(e.this.mContext.getResources().getColor(2131100057));
+        paramViewGroup.jBR.setTextColor(e.this.mContext.getResources().getColor(2131100057));
+        paramViewGroup.checkBox.setChecked(((Boolean)this.QTu.get(Integer.valueOf(paramInt))).booleanValue());
+        paramViewGroup.checkBox.setEnabled(false);
       }
       for (;;)
       {
@@ -239,22 +193,68 @@ public final class e
         localView = paramView;
         break;
         label304:
-        paramViewGroup.iFO.setVisibility(8);
+        paramViewGroup.jBR.setVisibility(8);
         break label198;
         label316:
-        paramViewGroup.iYj.setTextColor(e.this.mContext.getResources().getColor(2131100030));
-        paramViewGroup.iFO.setTextColor(e.this.mContext.getResources().getColor(2131100032));
-        paramViewGroup.iFD.setChecked(((Boolean)this.LxF.get(Integer.valueOf(paramInt))).booleanValue());
-        paramViewGroup.iFD.setEnabled(true);
+        paramViewGroup.jVO.setTextColor(e.this.mContext.getResources().getColor(2131100056));
+        paramViewGroup.jBR.setTextColor(e.this.mContext.getResources().getColor(2131100058));
+        paramViewGroup.checkBox.setChecked(((Boolean)this.QTu.get(Integer.valueOf(paramInt))).booleanValue());
+        paramViewGroup.checkBox.setEnabled(true);
       }
+    }
+    
+    public final void hck()
+    {
+      AppMethodBeat.i(159569);
+      if (e.this.QTq == null)
+      {
+        AppMethodBeat.o(159569);
+        return;
+      }
+      int i = 0;
+      if (i < getCount())
+      {
+        if (e.this.QTq.contains(Integer.valueOf(i))) {
+          this.QTu.put(Integer.valueOf(i), Boolean.TRUE);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          this.QTu.put(Integer.valueOf(i), Boolean.FALSE);
+        }
+      }
+      AppMethodBeat.o(159569);
+    }
+    
+    public final ArrayList<Integer> hcl()
+    {
+      AppMethodBeat.i(159570);
+      if (this.QTu == null)
+      {
+        AppMethodBeat.o(159570);
+        return null;
+      }
+      this.QTv = new ArrayList();
+      int i = 0;
+      while (i < getCount())
+      {
+        if (((Boolean)this.QTu.get(Integer.valueOf(i))).booleanValue()) {
+          this.QTv.add(Integer.valueOf(i));
+        }
+        i += 1;
+      }
+      ArrayList localArrayList = this.QTv;
+      AppMethodBeat.o(159570);
+      return localArrayList;
     }
     
     final class a
     {
-      LinearLayout LtE;
-      CheckBox iFD;
-      TextView iFO;
-      TextView iYj;
+      LinearLayout HMm;
+      CheckBox checkBox;
+      TextView jBR;
+      TextView jVO;
       
       a() {}
     }
@@ -262,12 +262,12 @@ public final class e
   
   public static abstract interface b
   {
-    public abstract void qt(boolean paramBoolean);
+    public abstract void tK(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.e
  * JD-Core Version:    0.7.0.1
  */

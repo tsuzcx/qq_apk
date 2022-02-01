@@ -15,20 +15,20 @@ import java.util.List;
 public final class c
   implements Serializable
 {
-  public static boolean Osx = true;
-  public static boolean Osy = true;
-  public static boolean Osz = true;
-  private Throwable Osw;
+  public static boolean Uhv = true;
+  public static boolean Uhw = true;
+  public static boolean Uhx = true;
+  private Throwable Uhu;
   
   public c(b paramb)
   {
     AppMethodBeat.i(40720);
-    this.Osw = null;
-    this.Osw = ((Throwable)paramb);
+    this.Uhu = null;
+    this.Uhu = ((Throwable)paramb);
     AppMethodBeat.o(40720);
   }
   
-  private static void jH(List paramList)
+  private static void kN(List paramList)
   {
     AppMethodBeat.i(40723);
     int i = paramList.size() - 1;
@@ -37,7 +37,7 @@ public final class c
       String[] arrayOfString1 = (String[])paramList.get(i);
       String[] arrayOfString2 = (String[])paramList.get(i - 1);
       ArrayList localArrayList = new ArrayList(Arrays.asList(arrayOfString1));
-      a.N(localArrayList, new ArrayList(Arrays.asList(arrayOfString2)));
+      a.J(localArrayList, new ArrayList(Arrays.asList(arrayOfString2)));
       int j = arrayOfString1.length - localArrayList.size();
       if (j > 0)
       {
@@ -68,12 +68,12 @@ public final class c
   public final void printStackTrace(PrintWriter paramPrintWriter)
   {
     AppMethodBeat.i(40722);
-    Object localObject1 = this.Osw;
-    if (a.gCK())
+    Object localObject1 = this.Uhu;
+    if (a.hPO())
     {
       if ((localObject1 instanceof b))
       {
-        ((b)localObject1).b(paramPrintWriter);
+        ((b)localObject1).a(paramPrintWriter);
         AppMethodBeat.o(40722);
         return;
       }
@@ -88,24 +88,24 @@ public final class c
       localObject4 = new StringWriter();
       PrintWriter localPrintWriter = new PrintWriter((Writer)localObject4, true);
       if ((localObject1 instanceof b)) {
-        ((b)localObject1).b(localPrintWriter);
+        ((b)localObject1).a(localPrintWriter);
       }
       for (;;)
       {
-        ((List)localObject3).add(a.bfx(((StringWriter)localObject4).getBuffer().toString()));
-        localObject1 = a.H((Throwable)localObject1);
+        ((List)localObject3).add(a.bvn(((StringWriter)localObject4).getBuffer().toString()));
+        localObject1 = a.J((Throwable)localObject1);
         break;
         ((Throwable)localObject1).printStackTrace(localPrintWriter);
       }
     }
     localObject1 = "Caused by: ";
-    if (!Osx)
+    if (!Uhv)
     {
       localObject1 = "Rethrown as: ";
       Collections.reverse((List)localObject3);
     }
-    if (Osy) {
-      jH((List)localObject3);
+    if (Uhw) {
+      kN((List)localObject3);
     }
     try
     {
@@ -134,7 +134,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.b.b.c
  * JD-Core Version:    0.7.0.1
  */

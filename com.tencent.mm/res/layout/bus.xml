@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/b_" android:textColor="@color/km" android:gravity="bottom|center|left" android:id="@android:id/title" android:paddingTop="@dimen/ci" android:paddingBottom="@dimen/d" android:minHeight="@dimen/bi" style="@style/le" />
-</LinearLayout>
+    <com.tencent.mm.plugin.sns.ui.widget.ad.AutoPlayViewPager android:id="@id/hw3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.sns.ui.widget.ad.ViewPagerControlView android:gravity="center" android:id="@id/hvl" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.k.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.concurrent.locks.ReentrantLock;
@@ -16,103 +16,103 @@ import java.util.concurrent.locks.ReentrantLock;
 @TargetApi(18)
 public final class e
 {
-  public Context IR;
-  public aq mHandler;
+  public Context mAppContext;
+  public MMHandler mHandler;
   private ReentrantLock mLock;
   public Runnable mRunnable;
-  public final HashMap<Long, f> nVF;
-  public c nVH;
-  public c.a nVK;
-  a nWn;
-  public HashSet<Long> nWo;
-  final HashMap<Long, Boolean> nWp;
-  public f.a nWq;
+  public final HashMap<Long, f> pgC;
+  public c pgE;
+  public c.a pgH;
+  a phj;
+  public HashSet<Long> phk;
+  final HashMap<Long, Boolean> phl;
+  public f.a phm;
   
   public e(a parama)
   {
     AppMethodBeat.i(22523);
-    this.IR = null;
+    this.mAppContext = null;
     this.mLock = new ReentrantLock();
     this.mHandler = null;
     this.mRunnable = null;
-    this.nVK = new c.a()
+    this.pgH = new c.a()
     {
       public final void a(BluetoothDevice paramAnonymousBluetoothDevice, int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(22514);
-        long l = b.adP(paramAnonymousBluetoothDevice.getAddress());
-        if (!e.this.nWo.contains(Long.valueOf(l)))
+        long l = b.anY(paramAnonymousBluetoothDevice.getAddress());
+        if (!e.this.phk.contains(Long.valueOf(l)))
         {
-          ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "------onDiscover------ device Name = %s, mac = %s(%d), scanRecord = %s", new Object[] { paramAnonymousBluetoothDevice.getName(), paramAnonymousBluetoothDevice.getAddress(), Long.valueOf(l), b.bf(paramAnonymousArrayOfByte) });
-          e.this.nWo.add(Long.valueOf(l));
-          if (com.tencent.mm.plugin.d.a.b.a.c.aH(paramAnonymousArrayOfByte)) {
-            e.this.nWn.a(paramAnonymousBluetoothDevice.getAddress(), paramAnonymousBluetoothDevice.getName(), paramAnonymousInt, paramAnonymousArrayOfByte);
+          Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "------onDiscover------ device Name = %s, mac = %s(%d), scanRecord = %s", new Object[] { paramAnonymousBluetoothDevice.getName(), paramAnonymousBluetoothDevice.getAddress(), Long.valueOf(l), b.bw(paramAnonymousArrayOfByte) });
+          e.this.phk.add(Long.valueOf(l));
+          if (com.tencent.mm.plugin.d.a.b.a.c.aY(paramAnonymousArrayOfByte)) {
+            e.this.phj.a(paramAnonymousBluetoothDevice.getAddress(), paramAnonymousBluetoothDevice.getName(), paramAnonymousInt, paramAnonymousArrayOfByte);
           }
         }
         AppMethodBeat.o(22514);
       }
       
-      public final void bNF()
+      public final void ckF()
       {
         AppMethodBeat.i(22515);
-        ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "------onDiscoverFinished------");
-        if (e.this.nWn != null) {
-          e.this.nWn.bNF();
+        Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "------onDiscoverFinished------");
+        if (e.this.phj != null) {
+          e.this.phj.ckF();
         }
         for (;;)
         {
-          e.this.nWo.clear();
+          e.this.phk.clear();
           AppMethodBeat.o(22515);
           return;
-          ae.w("MicroMsg.exdevice.BluetoothLESimpleManager", "no SimpleBLEManagerCallback");
+          Log.w("MicroMsg.exdevice.BluetoothLESimpleManager", "no SimpleBLEManagerCallback");
         }
       }
     };
-    this.nWo = new HashSet();
-    this.nVF = new HashMap();
-    this.nWp = new HashMap();
-    this.nWq = new f.a()
+    this.phk = new HashSet();
+    this.pgC = new HashMap();
+    this.phl = new HashMap();
+    this.phm = new f.a()
     {
       public final void a(final long paramAnonymousLong1, boolean paramAnonymousBoolean, final long paramAnonymousLong2)
       {
         AppMethodBeat.i(22517);
-        String str2 = b.vf(paramAnonymousLong1);
+        String str2 = b.Dj(paramAnonymousLong1);
         if (paramAnonymousBoolean) {}
         for (String str1 = "true";; str1 = "false")
         {
-          ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "onConnected. mac = %s, connected = %s", new Object[] { str2, str1 });
-          e.this.ab(new Runnable()
+          Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "onConnected. mac = %s, connected = %s", new Object[] { str2, str1 });
+          e.this.ai(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(22516);
-              f localf = (f)e.this.nVF.get(Long.valueOf(paramAnonymousLong1));
+              f localf = (f)e.this.pgC.get(Long.valueOf(paramAnonymousLong1));
               Boolean localBoolean = Boolean.FALSE;
               if (!paramAnonymousLong2) {}
               for (int i = 1; (localf != null) || (i != 0); i = 0)
               {
-                if (e.this.nWn != null)
+                if (e.this.phj != null)
                 {
-                  e.this.nWn.a(paramAnonymousLong1, paramAnonymousLong2, this.nWt);
+                  e.this.phj.a(paramAnonymousLong1, paramAnonymousLong2, this.php);
                   if (i != 0) {
-                    ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "disconnected, mBLEManagerCallback callback mac=%s", new Object[] { b.vf(paramAnonymousLong1) });
+                    Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "disconnected, mBLEManagerCallback callback mac=%s", new Object[] { b.Dj(paramAnonymousLong1) });
                   }
                 }
                 if (i == 0) {
                   break label214;
                 }
-                ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "remove seesion(mac=%s)", new Object[] { b.vf(paramAnonymousLong1) });
-                e.this.nVF.remove(Long.valueOf(paramAnonymousLong1));
-                e.this.nWp.remove(Long.valueOf(paramAnonymousLong1));
+                Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "remove seesion(mac=%s)", new Object[] { b.Dj(paramAnonymousLong1) });
+                e.this.pgC.remove(Long.valueOf(paramAnonymousLong1));
+                e.this.phl.remove(Long.valueOf(paramAnonymousLong1));
                 AppMethodBeat.o(22516);
                 return;
               }
-              ae.e("MicroMsg.exdevice.BluetoothLESimpleManager", "no seesion(mac=%s) found", new Object[] { b.vf(paramAnonymousLong1) });
+              Log.e("MicroMsg.exdevice.BluetoothLESimpleManager", "no seesion(mac=%s) found", new Object[] { b.Dj(paramAnonymousLong1) });
               label214:
               AppMethodBeat.o(22516);
             }
           });
-          ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "session size = %d", new Object[] { Integer.valueOf(e.this.nVF.size()) });
+          Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "session size = %d", new Object[] { Integer.valueOf(e.this.pgC.size()) });
           AppMethodBeat.o(22517);
           return;
         }
@@ -121,51 +121,51 @@ public final class e
       public final void b(long paramAnonymousLong, byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(22518);
-        ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "onRecv. mac = %s", new Object[] { b.vf(paramAnonymousLong) });
-        if (e.this.nWn != null)
+        Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "onRecv. mac = %s", new Object[] { b.Dj(paramAnonymousLong) });
+        if (e.this.phj != null)
         {
-          e.this.nWn.b(paramAnonymousLong, paramAnonymousArrayOfByte);
+          e.this.phj.b(paramAnonymousLong, paramAnonymousArrayOfByte);
           AppMethodBeat.o(22518);
           return;
         }
-        ae.w("MicroMsg.exdevice.BluetoothLESimpleManager", "no BLEManagerCallback");
+        Log.w("MicroMsg.exdevice.BluetoothLESimpleManager", "no BLEManagerCallback");
         AppMethodBeat.o(22518);
       }
       
       public final void m(long paramAnonymousLong, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(22519);
-        String str2 = b.vf(paramAnonymousLong);
+        String str2 = b.Dj(paramAnonymousLong);
         if (paramAnonymousBoolean) {}
         for (String str1 = "true";; str1 = "false")
         {
-          ae.d("MicroMsg.exdevice.BluetoothLESimpleManager", "onSend. mac = %s, success = %s", new Object[] { str2, str1 });
-          if (e.this.nWn != null) {
-            e.this.nWn.m(paramAnonymousLong, paramAnonymousBoolean);
+          Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "onSend. mac = %s, success = %s", new Object[] { str2, str1 });
+          if (e.this.phj != null) {
+            e.this.phj.m(paramAnonymousLong, paramAnonymousBoolean);
           }
           AppMethodBeat.o(22519);
           return;
         }
       }
     };
-    this.IR = ak.getContext();
-    this.nWn = parama;
-    this.nVH = c.bNG();
+    this.mAppContext = MMApplicationContext.getContext();
+    this.phj = parama;
+    this.pgE = c.ckG();
     this.mRunnable = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(22520);
-        e.this.nVH.a(false, e.this.nVK);
-        ae.i("MicroMsg.exdevice.BluetoothLESimpleManager", "Time out for discovering. Stop it");
+        e.this.pgE.a(false, e.this.pgH);
+        Log.i("MicroMsg.exdevice.BluetoothLESimpleManager", "Time out for discovering. Stop it");
         AppMethodBeat.o(22520);
       }
     };
-    this.mHandler = new aq("BluetoothLESimpleManagerThread");
+    this.mHandler = new MMHandler("BluetoothLESimpleManagerThread");
     AppMethodBeat.o(22523);
   }
   
-  public final void ab(Runnable paramRunnable)
+  public final void ai(Runnable paramRunnable)
   {
     AppMethodBeat.i(22524);
     this.mLock.lock();
@@ -175,10 +175,10 @@ public final class e
   }
   
   @TargetApi(18)
-  public final boolean bNE()
+  public final boolean ckE()
   {
     AppMethodBeat.i(22525);
-    boolean bool = this.IR.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+    boolean bool = this.mAppContext.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
     AppMethodBeat.o(22525);
     return bool;
   }
@@ -191,7 +191,7 @@ public final class e
     
     public void b(long paramLong, byte[] paramArrayOfByte) {}
     
-    public void bNF() {}
+    public void ckF() {}
     
     public void m(long paramLong, boolean paramBoolean) {}
   }

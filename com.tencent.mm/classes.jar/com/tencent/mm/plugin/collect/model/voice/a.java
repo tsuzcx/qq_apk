@@ -1,53 +1,58 @@
 package com.tencent.mm.plugin.collect.model.voice;
 
 import android.content.SharedPreferences.Editor;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.i;
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadRequest;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bn;
-import com.tencent.mm.g.a.bn.a;
-import com.tencent.mm.g.a.cg;
-import com.tencent.mm.g.a.ps;
+import com.tencent.mm.g.a.bp;
+import com.tencent.mm.g.a.bp.a;
+import com.tencent.mm.g.a.ci;
+import com.tencent.mm.g.a.ci.a;
+import com.tencent.mm.g.a.qk;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.vfs.s;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class a
-  implements n.b
+  implements MStorageEx.IOnStorageChange
 {
-  public static final String lej;
-  public static boolean phJ;
-  public static float phK;
-  public static float phL;
-  public static final String phM;
-  public static final String phN;
-  private static a phT;
+  public static final String mjC;
+  public static boolean qwT;
+  public static float qwU;
+  public static float qwV;
+  public static final String qwW;
+  public static final String qwX;
+  private static a qxd;
   private Object lock;
-  public d phO;
-  public c phP;
-  public b phQ;
-  private String phR;
-  private int phS;
-  public com.tencent.mm.sdk.b.c<bn> phU;
-  public com.tencent.mm.sdk.b.c<ps> phV;
-  private boolean phW;
+  public d qwY;
+  public c qwZ;
+  public b qxa;
+  private String qxb;
+  private int qxc;
+  public IListener<bp> qxe;
+  public IListener<qk> qxf;
+  private boolean qxg;
   
   static
   {
     AppMethodBeat.i(63884);
-    phJ = false;
-    phK = 0.9F;
-    phL = 10.0F;
-    lej = com.tencent.mm.loader.j.b.asa() + "files/wxofflinevoicenew/";
-    phM = lej + "libreadMoney.so";
-    phN = lej + "woman_putonghua.pos";
+    qwT = false;
+    qwU = 0.9F;
+    qwV = 10.0F;
+    mjC = com.tencent.mm.loader.j.b.aKA() + "files/wxofflinevoicenew/";
+    qwW = mjC + "libreadMoney.so";
+    qwX = mjC + "woman_putonghua.pos";
     AppMethodBeat.o(63884);
   }
   
@@ -55,36 +60,36 @@ public class a
   {
     AppMethodBeat.i(63867);
     this.lock = new Object();
-    this.phS = 0;
-    this.phU = new com.tencent.mm.sdk.b.c()
+    this.qxc = 0;
+    this.qxe = new IListener()
     {
-      private boolean a(bn paramAnonymousbn)
+      private boolean a(bp paramAnonymousbp)
       {
         AppMethodBeat.i(63858);
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent callback");
-        if (paramAnonymousbn.dny.dnz == 60) {}
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent callback");
+        if (paramAnonymousbp.dEN.dEO == 60) {}
         synchronized (a.a(a.this))
         {
-          ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent resTyep:%s subType:%s md5:%s fileVersion:%s", new Object[] { Integer.valueOf(paramAnonymousbn.dny.dnz), Integer.valueOf(paramAnonymousbn.dny.subType), paramAnonymousbn.dny.dnC, Integer.valueOf(paramAnonymousbn.dny.dnA) });
-          if (paramAnonymousbn.dny.subType == 1)
+          Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent resTyep:%s subType:%s md5:%s fileVersion:%s", new Object[] { Integer.valueOf(paramAnonymousbp.dEN.dEO), Integer.valueOf(paramAnonymousbp.dEN.subType), paramAnonymousbp.dEN.dER, Integer.valueOf(paramAnonymousbp.dEN.dEP) });
+          if (paramAnonymousbp.dEN.subType == 1)
           {
             AppMethodBeat.o(63858);
             return false;
           }
-          if (paramAnonymousbn.dny.subType == 3)
+          if (paramAnonymousbp.dEN.subType == 3)
           {
-            ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent subType == RES_SUB_TYPE_RES");
-            if (o.fB(a.phN))
+            Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent subType == RES_SUB_TYPE_RES");
+            if (s.YS(a.qwX))
             {
-              ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " file exists，first delete exist file");
-              o.deleteFile(a.phN);
+              Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " file exists，first delete exist file");
+              s.deleteFile(a.qwX);
             }
-            o.mF(paramAnonymousbn.dny.filePath, a.phN);
-            a.fm("0", paramAnonymousbn.dny.dnC);
+            s.nw(paramAnonymousbp.dEN.filePath, a.qwX);
+            a.fD("0", paramAnonymousbp.dEN.dER);
           }
-          if (a.phJ)
+          if (a.qwT)
           {
-            ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent OFF_LINE == true, do not reInit Synthesizer");
+            Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "CheckResUpdateCacheFileEvent OFF_LINE == true, do not reInit Synthesizer");
             AppMethodBeat.o(63858);
             return false;
           }
@@ -94,59 +99,72 @@ public class a
         }
       }
     };
-    this.phV = new com.tencent.mm.sdk.b.c()
+    this.qxf = new IListener()
     {
-      private boolean cbU()
+      private boolean czO()
       {
         AppMethodBeat.i(63860);
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "ReInitVoiceOffLineSynthesizerEvent");
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "ReInitVoiceOffLineSynthesizerEvent");
         synchronized (a.a(a.this))
         {
-          com.tencent.mm.plugin.collect.a.a.cbv();
-          if (com.tencent.mm.plugin.collect.a.a.cbx())
-          {
-            a.b(a.this);
-            AppMethodBeat.o(63860);
-            return false;
-          }
-          ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "ReInitVoiceOffLineSynthesizerEvent isF2fRingToneOpen() == false");
+          com.tencent.mm.plugin.collect.a.a.czp();
+          com.tencent.mm.plugin.collect.a.a.czr();
+          a.b(a.this);
+          AppMethodBeat.o(63860);
+          return false;
         }
       }
     };
-    this.phW = false;
+    this.qxg = false;
     AppMethodBeat.o(63867);
   }
   
-  private static String QX(String paramString)
+  public static void aaw(String paramString)
+  {
+    AppMethodBeat.i(213156);
+    g.aAh().azQ().set(ar.a.Oja, paramString);
+    EventCenter.instance.publish(new qk());
+    AppMethodBeat.o(213156);
+  }
+  
+  private static String aay(String paramString)
   {
     AppMethodBeat.i(63881);
-    paramString = ay.aRW("voice_offline_res_new").getString(paramString + "_md5", "");
+    paramString = MultiProcessMMKV.getMMKV("voice_offline_res_new").getString(paramString + "_md5", "");
     AppMethodBeat.o(63881);
     return paramString;
   }
   
-  private boolean aaH(String paramString)
+  public static String aaz(String paramString)
+  {
+    AppMethodBeat.i(213154);
+    paramString = MultiProcessMMKV.getMMKV("voice_offline_res_new").getString(paramString + "_version", "");
+    AppMethodBeat.o(213154);
+    return paramString;
+  }
+  
+  private boolean akN(String paramString)
   {
     AppMethodBeat.i(63877);
-    ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "verifyDefaultRes() resMd5:%s", new Object[] { bu.bI(paramString, "null") });
-    if (bu.isNullOrNil(paramString))
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "verifyDefaultRes() resMd5:%s", new Object[] { Util.nullAs(paramString, "null") });
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(63877);
       return true;
     }
-    ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "verifyDefaultRes() %s md5:%s", new Object[] { phN, o.aRh(phN) });
-    if (paramString.equalsIgnoreCase(o.aRh(phN)))
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "verifyDefaultRes() %s md5:%s", new Object[] { qwX, s.bhK(qwX) });
+    if (paramString.equalsIgnoreCase(s.bhK(qwX)))
     {
       AppMethodBeat.o(63877);
       return true;
     }
-    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 30L, 1L, false);
-    cbP();
-    ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "verifyDefaultRes autoDownloadDefaultResNum:%s", new Object[] { Integer.valueOf(this.phS) });
-    if (this.phS < 5)
+    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 30L, 1L, false);
+    czJ();
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "verifyDefaultRes autoDownloadDefaultResNum:%s", new Object[] { Integer.valueOf(this.qxc) });
+    if (this.qxc < 5)
     {
-      this.phS += 1;
-      boolean bool = cbR();
+      this.qxc += 1;
+      boolean bool = czL();
       AppMethodBeat.o(63877);
       return bool;
     }
@@ -154,15 +172,23 @@ public class a
     return false;
   }
   
-  public static a cbM()
+  public static String bIg()
+  {
+    AppMethodBeat.i(213155);
+    String str = (String)g.aAh().azQ().get(ar.a.Oja, "0");
+    AppMethodBeat.o(213155);
+    return str;
+  }
+  
+  public static a czG()
   {
     AppMethodBeat.i(63868);
     try
     {
-      if (phT == null) {
-        phT = new a();
+      if (qxd == null) {
+        qxd = new a();
       }
-      a locala = phT;
+      a locala = qxd;
       AppMethodBeat.o(63868);
       return locala;
     }
@@ -172,217 +198,221 @@ public class a
     }
   }
   
-  private void cbN()
+  private void czH()
   {
     AppMethodBeat.i(63872);
-    if (cbO())
+    if (czI())
     {
-      phJ = true;
-      ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "reInitSynthesizer() success!!");
+      qwT = true;
+      Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "reInitSynthesizer() success!!");
       AppMethodBeat.o(63872);
       return;
     }
-    phJ = false;
-    ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "reInitSynthesizer() fail!!");
+    qwT = false;
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "reInitSynthesizer() fail!!");
     AppMethodBeat.o(63872);
   }
   
-  private boolean cbO()
+  private boolean czI()
   {
     AppMethodBeat.i(63873);
-    o.aZI(lej);
-    this.phU.alive();
-    com.tencent.mm.pluginsdk.j.a.a.b.fes();
-    com.tencent.mm.pluginsdk.j.a.a.b.Zd(60);
-    Object localObject1 = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.Jau, "0");
+    s.boN(mjC);
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " checkResEnviroment() being ");
+    this.qxe.alive();
+    com.tencent.mm.pluginsdk.j.a.a.b.gnC();
+    com.tencent.mm.pluginsdk.j.a.a.b.ahP(60);
+    String str1 = bIg();
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " resId is %s", new Object[] { str1 });
+    String str2 = MultiProcessMMKV.getMMKV("voice_offline_res_new").getString(str1, "");
+    Object localObject1;
+    Object localObject2;
     int i;
-    if (bu.lX((String)localObject1, "0")) {
-      if (cbQ())
+    if ((!Util.isNullOrNil(str2)) && (s.YS(str2))) {
+      if (Util.isEqual(str1, "0"))
       {
-        this.phR = "woman_putonghua";
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " has Default Res");
+        localObject1 = aay("0-1");
+        localObject2 = aaz("0-1");
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkResEnviroment() resMd5:%s", new Object[] { Util.nullAs((String)localObject1, "null") });
+        if (!Util.isNullOrNil((String)localObject1)) {
+          break label205;
+        }
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " resMd5 is null :%s , resID:%s,version:%s", new Object[] { localObject1, str1, localObject2 });
+        this.qxb = str1;
         i = 1;
       }
     }
-    Object localObject2;
-    String str;
-    while (i == 0)
+    for (;;)
     {
+      if (i != 0) {
+        break label464;
+      }
       AppMethodBeat.o(63873);
       return false;
-      this.phR = "";
-      ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " do not have Default Res");
-      i = 0;
-      continue;
-      localObject2 = ay.aRW("voice_offline_res_new").getString((String)localObject1, "");
-      if ((!bu.isNullOrNil((String)localObject2)) && (o.fB((String)localObject2)))
+      localObject1 = aay(str1);
+      localObject2 = aaz(str1);
+      break;
+      label205:
+      Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkResEnviroment() resPath: %s md5:%s", new Object[] { str2, s.bhK(str2) });
+      if (((String)localObject1).equalsIgnoreCase(s.bhK(str2)))
       {
-        str = QX((String)localObject1);
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkResEnviroment() resMd5:%s", new Object[] { bu.bI(str, "null") });
-        if (bu.isNullOrNil(str))
-        {
-          this.phR = ((String)localObject1);
-          i = 1;
-        }
-        else
-        {
-          ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkResEnviroment() %s md5:%s", new Object[] { localObject2, o.aRh((String)localObject2) });
-          if (str.equalsIgnoreCase(o.aRh((String)localObject2)))
-          {
-            this.phR = ((String)localObject1);
-            i = 1;
-          }
-          else
-          {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 31L, 1L, false);
-            o.deleteFile((String)localObject2);
-            fm((String)localObject1, "");
-            if (cbQ())
-            {
-              this.phR = "woman_putonghua";
-              ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " has Default Res");
-              i = 1;
-            }
-            else
-            {
-              ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " do not have Default Res");
-              this.phR = "";
-              i = 0;
-            }
-          }
-        }
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " resMd5 check success,resID:%s,version:%s", new Object[] { str1, localObject2 });
+        this.qxb = str1;
+        i = 1;
       }
       else
       {
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "resPath:%s %s", new Object[] { bu.bI((String)localObject2, "null"), Boolean.valueOf(o.fB((String)localObject2)) });
-        if (cbQ())
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " resMd5 check failed");
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 31L, 1L, false);
+        s.deleteFile(str2);
+        if (Util.isEqual(str1, "0")) {
+          fD("0-1", "");
+        }
+        for (;;)
         {
-          this.phR = "woman_putonghua";
-          ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " has Default Res");
+          if (!czK()) {
+            break label358;
+          }
+          this.qxb = "woman_putonghua";
+          Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " has Default Res");
+          i = 1;
+          break;
+          fD(str1, "");
+        }
+        label358:
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " do not have Default Res");
+        this.qxb = "";
+        i = 0;
+        continue;
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "dont have this resID resource,resPath:%s %s", new Object[] { Util.nullAs(str2, "null"), Boolean.valueOf(s.YS(str2)) });
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "try to get default res");
+        if (czK())
+        {
+          this.qxb = "woman_putonghua";
+          Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " has Default Res");
           i = 1;
         }
         else
         {
-          this.phR = "";
-          ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " do not have Default Res");
+          this.qxb = "";
+          Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " do not have Default Res");
           i = 0;
         }
       }
     }
-    if (this.phO != null) {}
+    label464:
+    if (this.qwY != null) {}
     for (;;)
     {
       try
       {
-        this.phO.pij.destroy();
-        this.phO = d.a.pik;
-        localObject1 = this.phO;
-        localObject2 = this.phQ;
-        ((d)localObject1).pij.pia = ((c)localObject2);
-        localObject1 = this.phO;
-        localObject2 = lej;
-        str = this.phR;
-        i = ((d)localObject1).pij.fn((String)localObject2, str);
+        this.qwY.qxv.destroy();
+        this.qwY = d.a.qxw;
+        localObject1 = this.qwY;
+        localObject2 = this.qxa;
+        ((d)localObject1).qxv.qxn = ((c)localObject2);
+        localObject1 = this.qwY;
+        localObject2 = mjC;
+        str1 = this.qxb;
+        i = ((d)localObject1).qxv.fE((String)localObject2, str1);
         if (i >= 0) {
           break;
         }
-        ae.e("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "init failed by ret%s res:%s", new Object[] { Integer.valueOf(i), this.phR });
-        if (bu.jB(i, -201))
+        Log.e("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "init failed by ret%s res:%s", new Object[] { Integer.valueOf(i), this.qxb });
+        if (Util.isEqual(i, -201))
         {
-          if (!bu.lX(this.phR, "woman_putonghua"))
+          if (!Util.isEqual(this.qxb, "woman_putonghua"))
           {
-            ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "voiceResName:%s fail, setVoiceOfflineLanguageResId(VOICE_DEFAULT_RES_ID)", new Object[] { this.phR });
-            com.tencent.mm.kernel.g.ajR().ajA().set(am.a.Jau, "0");
-            com.tencent.mm.sdk.b.a.IvT.l(new ps());
-            cbN();
+            Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "voiceResName:%s fail, setVoiceOfflineLanguageResId(VOICE_DEFAULT_RES_ID)", new Object[] { this.qxb });
+            aaw("0");
+            czH();
           }
           if (i != -101) {
-            break label751;
+            break label807;
           }
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 1L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 1L, 1L, false);
           AppMethodBeat.o(63873);
           return false;
         }
       }
       catch (Exception localException)
       {
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "synthesizer.destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "synthesizer.destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         AppMethodBeat.o(63873);
         return false;
       }
-      if (bu.jB(i, -207)) {
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "ErrorCode.TTS_INIT_SO_ERROR delete %s", new Object[] { phM });
+      if (Util.isEqual(i, -207)) {
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "ErrorCode.TTS_INIT_SO_ERROR delete %s", new Object[] { qwW });
       } else if ((i <= -2) && (i >= -9)) {
-        if (bu.lX(this.phR, "woman_putonghua"))
+        if (Util.isEqual(this.qxb, "woman_putonghua"))
         {
-          cbP();
-          if (this.phS < 5)
+          czJ();
+          if (this.qxc < 5)
           {
-            this.phS += 1;
-            if (cbR()) {
-              cbN();
+            this.qxc += 1;
+            if (czL()) {
+              czH();
             }
           }
-          ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "ret:%s delete %s : %s", new Object[] { Integer.valueOf(i), phN, Integer.valueOf(this.phS) });
+          Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "ret:%s delete %s : %s", new Object[] { Integer.valueOf(i), qwX, Integer.valueOf(this.qxc) });
           continue;
-          label751:
+          label807:
           if (i == -102) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 2L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 2L, 1L, false);
           } else if (i == -103) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 3L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 3L, 1L, false);
           } else if (i == -104) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 4L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 4L, 1L, false);
           } else if (i == -201) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 5L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 5L, 1L, false);
           } else if (i == -202) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 6L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 6L, 1L, false);
           } else if (i == -203) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 7L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 7L, 1L, false);
           } else if (i == -204) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 8L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 8L, 1L, false);
           } else if (i == -205) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 9L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 9L, 1L, false);
           } else if (i == -206) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 10L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 10L, 1L, false);
           } else if (i == -207) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 11L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 11L, 1L, false);
           } else if ((i <= -2) && (i >= -9)) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 12L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 12L, 1L, false);
           } else {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 13L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 13L, 1L, false);
           }
         }
       }
     }
-    this.phS = 0;
-    d locald = this.phO;
-    float f = phL;
-    locald.pij.mVolume = f;
-    locald = this.phO;
-    f = phK;
-    locald.pij.MU = f;
+    this.qxc = 0;
+    d locald = this.qwY;
+    float f = qwV;
+    locald.qxv.mVolume = f;
+    locald = this.qwY;
+    f = qwU;
+    locald.qxv.Ne = f;
     AppMethodBeat.o(63873);
     return true;
   }
   
-  private static void cbP()
+  private static void czJ()
   {
     AppMethodBeat.i(63874);
-    o.deleteFile(phN);
-    fm("0", "");
+    s.deleteFile(qwX);
+    fD("0", "");
     AppMethodBeat.o(63874);
   }
   
-  private boolean cbQ()
+  private boolean czK()
   {
     AppMethodBeat.i(63875);
-    if (o.fB(phN))
+    if (s.YS(qwX))
     {
-      boolean bool = cbS();
+      boolean bool = czM();
       AppMethodBeat.o(63875);
       return bool;
     }
-    if (cbR())
+    if (czL())
     {
       AppMethodBeat.o(63875);
       return true;
@@ -391,26 +421,26 @@ public class a
     return false;
   }
   
-  private boolean cbR()
+  private boolean czL()
   {
     AppMethodBeat.i(63876);
-    com.tencent.mm.pluginsdk.j.a.a.b.fes();
-    String str = com.tencent.mm.pluginsdk.j.a.a.b.jq(60, 3);
-    boolean bool = o.fB(str);
-    ae.d("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "cacheFile:%s", new Object[] { str });
-    ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkDefaultResFromCache() %s no exist, cacheExist: %s", new Object[] { phN, Boolean.valueOf(bool) });
+    com.tencent.mm.pluginsdk.j.a.a.b.gnC();
+    String str = com.tencent.mm.pluginsdk.j.a.a.b.kC(60, 3);
+    boolean bool = s.YS(str);
+    Log.d("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "cacheFile:%s", new Object[] { str });
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkDefaultResFromCache() %s no exist, cacheExist: %s", new Object[] { qwX, Boolean.valueOf(bool) });
     if (bool)
     {
-      long l = o.mF(str, phN);
-      fm("0", "");
-      ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "copyFile VOICE_DEFAULT_RES_PATH result == %s", new Object[] { Long.valueOf(l) });
-      if (!bu.az(l, -1L))
+      long l = s.nw(str, qwX);
+      fD("0", "");
+      Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "copyFile VOICE_DEFAULT_RES_PATH result == %s", new Object[] { Long.valueOf(l) });
+      if (!Util.isEqual(l, -1L))
       {
-        com.tencent.mm.pluginsdk.j.a.a.b.fes();
-        str = com.tencent.mm.pluginsdk.j.a.a.b.fet();
-        fm("0", str);
-        ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkDefaultResEnviroment() getOriginalMd5() resMd5:%s", new Object[] { str });
-        bool = aaH(str);
+        com.tencent.mm.pluginsdk.j.a.a.b.gnC();
+        str = com.tencent.mm.pluginsdk.j.a.a.b.gnD();
+        fD("0", str);
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "checkDefaultResEnviroment() getOriginalMd5() resMd5:%s", new Object[] { str });
+        bool = akN(str);
         AppMethodBeat.o(63876);
         return bool;
       }
@@ -419,56 +449,53 @@ public class a
     return false;
   }
   
-  private boolean cbS()
+  private boolean czM()
   {
     AppMethodBeat.i(63878);
-    boolean bool = aaH(QX("0"));
+    boolean bool = akN(aay("0"));
     AppMethodBeat.o(63878);
     return bool;
   }
   
-  public static void fm(String paramString1, String paramString2)
+  public static void fD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63882);
-    ay.aRW("voice_offline_res_new").edit().putString(paramString1 + "_md5", bu.bI(paramString2, "")).commit();
+    MultiProcessMMKV.getMMKV("voice_offline_res_new").edit().putString(paramString1 + "_md5", Util.nullAs(paramString2, "")).commit();
     AppMethodBeat.o(63882);
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
+  public static int l(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(63869);
-    if (this.phW)
-    {
-      ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "onNotifyChange()：is already init()");
-      AppMethodBeat.o(63869);
-      return;
-    }
-    com.tencent.mm.plugin.collect.a.a.cbv();
-    if (com.tencent.mm.plugin.collect.a.a.cbx())
-    {
-      ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "onNotifyChange()");
-      jK(true);
-      this.phW = true;
-      com.tencent.mm.kernel.g.ajR().ajA().b(this);
-    }
-    AppMethodBeat.o(63869);
+    AppMethodBeat.i(213157);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    String str = mjC + paramString4 + ".pos";
+    localC2CDownloadRequest.fileKey = paramString4;
+    localC2CDownloadRequest.url = paramString2;
+    localC2CDownloadRequest.setSavePath(str);
+    localC2CDownloadRequest.fileType = 101;
+    localC2CDownloadRequest.taskStartTime = Util.nowMilliSecond();
+    long l = localC2CDownloadRequest.taskStartTime;
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "voice resource download beginTime : %s", new Object[] { Long.valueOf(localC2CDownloadRequest.taskStartTime) });
+    int i = CdnLogic.startURLDownload(localC2CDownloadRequest, new a.5(l, paramString2, str, paramString4, paramString1, paramString3));
+    AppMethodBeat.o(213157);
+    return i;
   }
   
-  public final void a(cg paramcg)
+  public final void a(ci paramci)
   {
     AppMethodBeat.i(63879);
-    paramcg = new a.a(this, paramcg);
-    this.phQ.a(paramcg);
-    this.phO.start(paramcg.dok);
-    ae.d("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "produceVoice() %s", new Object[] { paramcg.dok });
+    paramci = new a(paramci);
+    this.qxa.a(paramci);
+    this.qwY.start(paramci.dFy);
+    Log.d("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "produceVoice() %s", new Object[] { paramci.dFy });
     AppMethodBeat.o(63879);
   }
   
-  public final String cbT()
+  public final String czN()
   {
     AppMethodBeat.i(63880);
-    if (bu.lX(this.phR, "woman_putonghua")) {}
-    for (String str = "0";; str = this.phR)
+    if (Util.isEqual(this.qxb, "woman_putonghua")) {}
+    for (String str = "0";; str = this.qxb)
     {
       AppMethodBeat.o(63880);
       return str;
@@ -478,42 +505,36 @@ public class a
   public final void init()
   {
     AppMethodBeat.i(63871);
-    for (;;)
+    synchronized (this.lock)
     {
-      synchronized (this.lock)
+      if (qwT)
       {
-        if (phJ)
-        {
-          ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "initTTS() OFF_LINE == true");
-          AppMethodBeat.o(63871);
-          return;
-        }
-        com.tencent.mm.plugin.collect.a.a.cbv();
-        if (com.tencent.mm.plugin.collect.a.a.cbx())
-        {
-          this.phV.alive();
-          if (!cbO())
-          {
-            ae.e("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "initTTS() fail!! ");
-            phJ = false;
-            AppMethodBeat.o(63871);
-            return;
-          }
-          ae.e("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "initTTS() success!! ");
-          phJ = true;
-        }
+        Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "initTTS() OFF_LINE == true");
+        AppMethodBeat.o(63871);
+        return;
       }
-      ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "isF2fRingToneOpen() == false");
+      com.tencent.mm.plugin.collect.a.a.czp();
+      com.tencent.mm.plugin.collect.a.a.czr();
+      this.qxf.alive();
+      if (!czI())
+      {
+        Log.e("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "initTTS() fail!! ");
+        qwT = false;
+        AppMethodBeat.o(63871);
+        return;
+      }
+      Log.e("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "initTTS() success!! ");
+      qwT = true;
     }
   }
   
-  public final void jK(boolean paramBoolean)
+  public final void kN(boolean paramBoolean)
   {
     AppMethodBeat.i(63870);
-    ae.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " begin initTTS()，delay：%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", " begin initTTS()，delay：%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      h.MqF.a(new Runnable()
+      com.tencent.f.h.RTc.a(new Runnable()
       {
         public final void run()
         {
@@ -525,7 +546,7 @@ public class a
       AppMethodBeat.o(63870);
       return;
     }
-    h.MqF.f(new Runnable()
+    com.tencent.f.h.RTc.b(new Runnable()
     {
       public final void run()
       {
@@ -537,40 +558,80 @@ public class a
     AppMethodBeat.o(63870);
   }
   
+  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(63869);
+    if (this.qxg)
+    {
+      Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "onNotifyChange()：is already init()");
+      AppMethodBeat.o(63869);
+      return;
+    }
+    com.tencent.mm.plugin.collect.a.a.czp();
+    com.tencent.mm.plugin.collect.a.a.czr();
+    Log.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "onNotifyChange()");
+    kN(true);
+    this.qxg = true;
+    g.aAh().azQ().remove(this);
+    AppMethodBeat.o(63869);
+  }
+  
+  public final class a
+  {
+    public int dFu;
+    public String dFv;
+    public String dFw;
+    public String dFx;
+    public String dFy;
+    public long gY;
+    public int source;
+    
+    public a(ci paramci)
+    {
+      this.dFu = paramci.dFt.dFu;
+      this.dFv = paramci.dFt.dFv;
+      this.dFw = paramci.dFt.dFw;
+      this.dFx = paramci.dFt.dFx;
+      this.gY = paramci.dFt.gY;
+      this.source = paramci.dFt.source;
+      this.dFy = paramci.dFt.dFy;
+    }
+  }
+  
   public final class b
     implements c
   {
-    private a.c phY;
-    private ConcurrentLinkedQueue<a.a> phZ;
+    private a.c qxl;
+    private ConcurrentLinkedQueue<a.a> qxm;
     
     public b(a.c paramc)
     {
       AppMethodBeat.i(63864);
-      this.phZ = new ConcurrentLinkedQueue();
-      this.phY = paramc;
+      this.qxm = new ConcurrentLinkedQueue();
+      this.qxl = paramc;
       AppMethodBeat.o(63864);
     }
     
     public final void a(a.a parama)
     {
       AppMethodBeat.i(63865);
-      this.phZ.add(parama);
+      this.qxm.add(parama);
       AppMethodBeat.o(63865);
     }
     
     public final void o(int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(63866);
-      if (this.phY == null) {}
+      if (this.qxl == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.i("MicroMsg.F2fRcvVoiceOffLineLogic.Listener", "onGetResult() errorCode:%s (voiceLlistener == null):%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-        if (this.phY != null)
+        Log.i("MicroMsg.F2fRcvVoiceOffLineLogic.Listener", "onGetResult() errorCode:%s (voiceLlistener == null):%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+        if (this.qxl != null)
         {
-          a.a locala = (a.a)this.phZ.poll();
-          this.phY.a(paramInt, locala.doh, locala.doi, locala.dok, locala.dof, a.cbM().cbT(), paramArrayOfByte);
+          a.a locala = (a.a)this.qxm.poll();
+          this.qxl.a(paramInt, locala.dFw, locala.dFx, locala.dFy, locala.dFu, a.czG().czN(), paramArrayOfByte);
           if (paramInt < 0) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 20L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1143L, 20L, 1L, false);
           }
         }
         AppMethodBeat.o(63866);
@@ -586,7 +647,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.voice.a
  * JD-Core Version:    0.7.0.1
  */

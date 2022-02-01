@@ -5,51 +5,49 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.plugin.account.friend.a.as;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.account.friend.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bv.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ca.a;
 
 public final class e
 {
-  public static void a(Context paramContext, an paraman, bv.a parama)
+  public static void a(Context paramContext, com.tencent.mm.storage.as paramas, ca.a parama)
   {
     AppMethodBeat.i(37733);
-    a(paramContext, paraman, parama, false, false, null, parama.jem);
+    a(paramContext, paramas, parama, false, false, null, parama.kcp);
     AppMethodBeat.o(37733);
   }
   
-  public static void a(Context paramContext, an paraman, bv.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle, String paramString)
+  public static void a(Context paramContext, com.tencent.mm.storage.as paramas, ca.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle, String paramString)
   {
     AppMethodBeat.i(37734);
-    if ((paraman == null) || (parama == null))
+    if ((paramas == null) || (parama == null))
     {
       AppMethodBeat.o(37734);
       return;
     }
-    if ((paraman.field_username == null) || (paraman.field_username.length() <= 0))
+    if ((paramas.field_username == null) || (paramas.field_username.length() <= 0))
     {
       AppMethodBeat.o(37734);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("Contact_User", paraman.field_username);
-    localIntent.putExtra("Contact_Alias", paraman.VI());
-    localIntent.putExtra("Contact_Nick", paraman.adF());
-    localIntent.putExtra("Contact_QuanPin", paraman.VM());
-    localIntent.putExtra("Contact_PyInitial", paraman.VL());
-    localIntent.putExtra("Contact_Sex", parama.eQV);
+    localIntent.putExtra("Contact_User", paramas.field_username);
+    localIntent.putExtra("Contact_Alias", paramas.ajx());
+    localIntent.putExtra("Contact_Nick", paramas.arI());
+    localIntent.putExtra("Contact_QuanPin", paramas.ajA());
+    localIntent.putExtra("Contact_PyInitial", paramas.ajz());
+    localIntent.putExtra("Contact_Sex", parama.fuA);
     localIntent.putExtra("Contact_Province", parama.getProvince());
     localIntent.putExtra("Contact_City", parama.getCity());
     localIntent.putExtra("Contact_Signature", parama.signature);
-    localIntent.putExtra("Contact_Uin", parama.xik);
-    localIntent.putExtra("Contact_Mobile_MD5", parama.JgT);
-    localIntent.putExtra("Contact_full_Mobile_MD5", parama.JgU);
-    localIntent.putExtra("Contact_QQNick", parama.fwt());
+    localIntent.putExtra("Contact_Uin", parama.Bge);
+    localIntent.putExtra("Contact_Mobile_MD5", parama.OqK);
+    localIntent.putExtra("Contact_full_Mobile_MD5", parama.OqL);
+    localIntent.putExtra("Contact_QQNick", parama.gDZ());
     localIntent.putExtra("User_From_Fmessage", true);
     localIntent.putExtra("Contact_Scene", parama.scene);
     localIntent.putExtra("Contact_from_msgType", 40);
@@ -65,18 +63,18 @@ public final class e
     if (!TextUtils.isEmpty(paramString)) {
       localIntent.putExtra("verify_gmail", paramString);
     }
-    d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+    c.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
     AppMethodBeat.o(37734);
   }
   
-  public static void a(Context paramContext, bv.a parama)
+  public static void a(Context paramContext, ca.a parama)
   {
     AppMethodBeat.i(37731);
     a(paramContext, parama, false, false, null);
     AppMethodBeat.o(37731);
   }
   
-  public static void a(Context paramContext, bv.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
+  public static void a(Context paramContext, ca.a parama, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
   {
     AppMethodBeat.i(37732);
     if ((paramContext == null) || (parama == null))
@@ -84,12 +82,12 @@ public final class e
       AppMethodBeat.o(37732);
       return;
     }
-    an localan = new an();
-    localan.setUsername(parama.cUA);
-    localan.to(parama.getDisplayName());
-    localan.tp(parama.jhN);
-    localan.tq(parama.jhO);
-    a(paramContext, localan, parama, paramBoolean1, paramBoolean2, paramBundle, parama.jem);
+    com.tencent.mm.storage.as localas = new com.tencent.mm.storage.as();
+    localas.setUsername(parama.dkU);
+    localas.setNickname(parama.getDisplayName());
+    localas.BF(parama.kfQ);
+    localas.BG(parama.kfR);
+    a(paramContext, localas, parama, paramBoolean1, paramBoolean2, paramBundle, parama.kcp);
     AppMethodBeat.o(37732);
   }
   
@@ -98,24 +96,24 @@ public final class e
     AppMethodBeat.i(37730);
     if ((paramIntent == null) || (paramString == null) || (paramString.length() == 0))
     {
-      ae.e("MicroMsg.ContactInfoUtil", "setLocalQQMobile fail, intent = " + paramIntent + ", username = " + paramString);
+      Log.e("MicroMsg.ContactInfoUtil", "setLocalQQMobile fail, intent = " + paramIntent + ", username = " + paramString);
       AppMethodBeat.o(37730);
       return;
     }
-    as localas = com.tencent.mm.plugin.account.a.getQQListStg().Ki(paramString);
+    com.tencent.mm.plugin.account.friend.a.as localas = com.tencent.mm.plugin.account.a.getQQListStg().Tg(paramString);
     if (localas != null)
     {
-      paramIntent.putExtra("Contact_Uin", localas.jhK);
+      paramIntent.putExtra("Contact_Uin", localas.kfN);
       paramIntent.putExtra("Contact_QQNick", localas.getDisplayName());
     }
-    paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().JT(paramString);
+    paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().SR(paramString);
     if (paramString != null) {
-      paramIntent.putExtra("Contact_Mobile_MD5", paramString.Lj());
+      paramIntent.putExtra("Contact_Mobile_MD5", paramString.getMd5());
     }
     AppMethodBeat.o(37730);
   }
   
-  public static void u(Intent paramIntent, String paramString)
+  public static void s(Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(37729);
     paramIntent.putExtra("Contact_User", paramString);
@@ -124,7 +122,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.e
  * JD-Core Version:    0.7.0.1
  */

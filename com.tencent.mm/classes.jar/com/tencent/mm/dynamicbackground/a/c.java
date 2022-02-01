@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static a gic;
-  private static a gid;
+  private static a gRu;
+  private static a gRv;
   
   static
   {
@@ -23,27 +23,27 @@ public final class c
       
       public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
     };
-    gic = local1;
-    gid = local1;
+    gRu = local1;
+    gRv = local1;
     AppMethodBeat.o(102977);
   }
   
   public static void a(a parama)
   {
-    gid = parama;
+    gRv = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102972);
-    if (gid != null)
+    if (gRv != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gid.d(paramString1, paramString2);
+      gRv.d(paramString1, paramString2);
     }
     AppMethodBeat.o(102972);
   }
@@ -51,14 +51,14 @@ public final class c
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102975);
-    if (gid != null)
+    if (gRv != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gid.e(paramString1, paramString2);
+      gRv.e(paramString1, paramString2);
     }
     AppMethodBeat.o(102975);
   }
@@ -66,14 +66,14 @@ public final class c
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102973);
-    if (gid != null)
+    if (gRv != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gid.i(paramString1, paramString2);
+      gRv.i(paramString1, paramString2);
     }
     AppMethodBeat.o(102973);
   }
@@ -81,7 +81,7 @@ public final class c
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102976);
-    if (gid != null)
+    if (gRv != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
@@ -89,7 +89,7 @@ public final class c
         paramString2 = "";
       }
       paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      gid.e(paramString1, paramThrowable);
+      gRv.e(paramString1, paramThrowable);
     }
     AppMethodBeat.o(102976);
   }
@@ -97,14 +97,14 @@ public final class c
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102971);
-    if (gid != null)
+    if (gRv != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gid.v(paramString1, paramString2);
+      gRv.v(paramString1, paramString2);
     }
     AppMethodBeat.o(102971);
   }
@@ -112,14 +112,14 @@ public final class c
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102974);
-    if (gid != null)
+    if (gRv != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gid.w(paramString1, paramString2);
+      gRv.w(paramString1, paramString2);
     }
     AppMethodBeat.o(102974);
   }

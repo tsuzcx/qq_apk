@@ -6,16 +6,16 @@ import java.util.Map;
 public abstract class AbstractFileSystem
   implements FileSystem
 {
-  private volatile j LFC = j.LHI;
+  private volatile n RaS = n.Rdw;
   
-  public final void a(String paramString, j.a parama)
+  public final void a(String paramString, n.a parama)
   {
     if (parama == null)
     {
-      this.LFC = j.LHI;
+      this.RaS = n.Rdw;
       return;
     }
-    this.LFC = new j(this, paramString, parama);
+    this.RaS = new n(this, paramString, parama);
   }
   
   public int describeContents()
@@ -23,15 +23,15 @@ public abstract class AbstractFileSystem
     return 0;
   }
   
-  protected final void k(int paramInt, Object... paramVarArgs)
+  protected final void l(int paramInt, Object... paramVarArgs)
   {
     if (paramVarArgs.length == 0) {}
     Object localObject1;
     for (paramVarArgs = null;; paramVarArgs = (Object[])localObject1)
     {
-      localObject1 = this.LFC;
-      if (((j)localObject1).LHH != null) {
-        ((j)localObject1).LHH.a(((j)localObject1).gcZ, ((j)localObject1).LHG, paramInt, paramVarArgs);
+      localObject1 = this.RaS;
+      if (((n)localObject1).Rdv != null) {
+        ((n)localObject1).Rdv.a(((n)localObject1).gIx, ((n)localObject1).Rdu, paramInt, paramVarArgs);
       }
       return;
       localObject1 = new HashMap(paramVarArgs.length / 2);

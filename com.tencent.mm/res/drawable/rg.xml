@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="16.0px" android:topRightRadius="16.0px" android:bottomLeftRadius="16.0px" android:bottomRightRadius="16.0px" />
-    <gradient android:startColor="#ccffffff" android:endColor="#ccffffff" android:type="linear" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/bcf" />
+    <item android:state_enabled="true" android:state_checked="true" android:drawable="@drawable/bcf" />
+    <item android:drawable="@drawable/bce" />
+</selector>

@@ -3,113 +3,87 @@ package com.tencent.mm.recovery;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.hp.net.b.a;
-import com.tencent.mm.plugin.hp.net.e;
-import com.tencent.mm.protocal.protobuf.cho;
-import com.tencent.mm.recoveryv2.i;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cxv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.toolkit.a.a.d;
 import com.tencent.mm.toolkit.a.g;
-import com.tinkerboots.sdk.a.a;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  static
+  public static void a(final Context paramContext, cxv paramcxv, final android.support.v4.e.c<Integer> paramc, final boolean paramBoolean)
   {
-    AppMethodBeat.i(186156);
-    j.load("wechathttp");
-    AppMethodBeat.o(186156);
-  }
-  
-  public static void a(Context paramContext, android.support.v4.e.c<Integer> paramc)
-  {
-    AppMethodBeat.i(186150);
-    com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "#fetchTinkerPatch");
-    String str = com.tencent.mm.loader.j.a.arW();
-    ae.i("MicroMsg.recovery.operator", "baseTinkerId = ".concat(String.valueOf(str)));
-    cho localcho = new cho();
-    localcho.HtK = str;
-    localcho.wTE = com.tencent.mm.loader.j.a.arX();
-    localcho.HtL = e.dfk();
-    localcho.HtL.add(e.hz("biz-scene", "recovery"));
-    localcho.HtN = 1;
-    a(paramContext, localcho, paramc, true);
-    AppMethodBeat.o(186150);
-  }
-  
-  private static void a(final Context paramContext, cho paramcho, final android.support.v4.e.c<Integer> paramc, final boolean paramBoolean)
-  {
-    AppMethodBeat.i(186152);
+    AppMethodBeat.i(193903);
     AtomicInteger localAtomicInteger = new AtomicInteger(0);
-    paramcho = new com.tencent.mm.plugin.hp.net.b(paramcho);
-    com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "NetSceneBaseMMTLSCheck#doSceneSync()");
-    paramcho.a(new b.a()
+    paramcxv = new com.tencent.mm.recovery.a.a(paramcxv);
+    com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "NetSceneBaseMMTLSCheckCopycat#doSceneSync()");
+    paramcxv.a(new b.a()
     {
       public final void a(int paramAnonymousInt, com.tencent.mm.plugin.hp.d.b paramAnonymousb)
       {
-        AppMethodBeat.i(186146);
+        AppMethodBeat.i(193899);
         com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "onCheckEnd, error = " + paramAnonymousInt + ", response = " + paramAnonymousb);
         if ((paramAnonymousInt != 0) && (paramAnonymousInt != -5))
         {
           com.tencent.mm.recoveryv2.f.w("MicroMsg.recovery.operator", "fetchTinkerPatch cgi rsp error, abort");
-          this.InG.set(Math.abs(paramAnonymousInt) + 20);
-          paramc.accept(Integer.valueOf(this.InG.get()));
-          AppMethodBeat.o(186146);
+          this.NBe.set(Math.abs(paramAnonymousInt) + 20);
+          paramc.accept(Integer.valueOf(this.NBe.get()));
+          AppMethodBeat.o(193899);
           return;
         }
         com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "fetchTinkerPatch cgi rsp successful");
-        if ((paramAnonymousInt == -5) || (paramAnonymousb == null) || (TextUtils.isEmpty(paramAnonymousb.gKg)))
+        if ((paramAnonymousInt == -5) || (paramAnonymousb == null) || (TextUtils.isEmpty(paramAnonymousb.pkK)))
         {
-          this.InG.set(1);
-          paramc.accept(Integer.valueOf(this.InG.get()));
-          AppMethodBeat.o(186146);
+          this.NBe.set(1);
+          paramc.accept(Integer.valueOf(this.NBe.get()));
+          AppMethodBeat.o(193899);
           return;
         }
-        String str = paramAnonymousb.gKg;
+        String str = paramAnonymousb.pkK;
         long l = Math.max(paramAnonymousb.fileSize, 0);
-        paramAnonymousb = paramAnonymousb.nZM;
-        b.b(paramContext, str, l, paramAnonymousb, paramc, paramBoolean);
-        AppMethodBeat.o(186146);
+        paramAnonymousb = paramAnonymousb.pkL;
+        b.a(paramContext, str, l, paramAnonymousb, paramc, paramBoolean);
+        AppMethodBeat.o(193899);
       }
     });
-    AppMethodBeat.o(186152);
+    AppMethodBeat.o(193903);
   }
   
-  private static void a(final Context paramContext, String paramString1, long paramLong, String paramString2, final android.support.v4.e.c<Integer> paramc, final boolean paramBoolean)
+  public static void a(final Context paramContext, String paramString1, long paramLong, String paramString2, final android.support.v4.e.c<Integer> paramc, final boolean paramBoolean)
   {
-    AppMethodBeat.i(186154);
+    AppMethodBeat.i(193905);
     com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "#downloadTinkerPatch, file size = " + paramLong + ", url = " + paramString1);
     AtomicInteger localAtomicInteger = new AtomicInteger(0);
     paramString1 = new com.tencent.mm.toolkit.a.c(paramString1).T(new File(paramContext.getCacheDir(), "recovery/tinker_path_file_" + System.currentTimeMillis()));
-    paramString1.JlJ = new com.tencent.mm.toolkit.a.a.b()
+    paramString1.OvC = new com.tencent.mm.toolkit.a.a.b()
     {
       public final void a(com.tencent.mm.toolkit.a.c paramAnonymousc)
       {
-        AppMethodBeat.i(186147);
-        paramAnonymousc = paramAnonymousc.Jly;
+        AppMethodBeat.i(193900);
+        paramAnonymousc = paramAnonymousc.Ovr;
         com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "#onComplete, file = ".concat(String.valueOf(paramAnonymousc)));
         com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "download tinker path success");
         if (paramAnonymousc.exists())
         {
-          this.InG.set(0);
+          this.NBe.set(0);
           if (paramBoolean) {
-            com.tencent.tinker.lib.e.c.cE(paramContext, paramAnonymousc.getAbsolutePath());
+            com.tencent.tinker.lib.e.c.cY(paramContext, paramAnonymousc.getAbsolutePath());
           }
-          paramc.accept(Integer.valueOf(this.InG.get()));
-          AppMethodBeat.o(186147);
+          paramc.accept(Integer.valueOf(this.NBe.get()));
+          AppMethodBeat.o(193900);
           return;
         }
-        this.InG.set(2);
-        paramc.accept(Integer.valueOf(this.InG.get()));
-        AppMethodBeat.o(186147);
+        this.NBe.set(2);
+        paramc.accept(Integer.valueOf(this.NBe.get()));
+        AppMethodBeat.o(193900);
       }
       
-      public final void cL(int paramAnonymousInt, String paramAnonymousString)
+      public final void df(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(186148);
+        AppMethodBeat.i(193901);
         com.tencent.mm.recoveryv2.f.w("MicroMsg.recovery.operator", "#onFailed, code = " + paramAnonymousInt + ", msg = " + paramAnonymousString);
         int j = 2;
         int i;
@@ -118,9 +92,9 @@ public final class b
         }
         for (;;)
         {
-          this.InG.set(i);
-          paramc.accept(Integer.valueOf(this.InG.get()));
-          AppMethodBeat.o(186148);
+          this.NBe.set(i);
+          paramc.accept(Integer.valueOf(this.NBe.get()));
+          AppMethodBeat.o(193901);
           return;
           i = j;
           if (paramAnonymousInt >= 1101)
@@ -137,58 +111,37 @@ public final class b
       paramString1.mContentLength = paramLong;
     }
     if (!TextUtils.isEmpty(paramString2)) {
-      paramString1.JlH = new com.tencent.mm.toolkit.a.f(paramString2);
+      paramString1.OvA = new com.tencent.mm.toolkit.a.f(paramString2);
     }
     com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "#downloadTinkerPatch start sync downloading");
-    new g().jK(paramContext).e(paramString1);
-    AppMethodBeat.o(186154);
+    new g().jG(paramContext).e(paramString1);
+    AppMethodBeat.o(193905);
   }
   
   public static void a(Context paramContext, String paramString, android.support.v4.e.c<Integer> paramc)
   {
-    AppMethodBeat.i(186151);
-    com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "#fetchTinkerPatchForTest");
-    cho localcho = new cho();
-    localcho.HtK = paramString;
-    localcho.wTE = com.tencent.mm.loader.j.a.arX();
-    localcho.HtL = e.dfk();
-    localcho.HtN = 1;
-    a(paramContext, localcho, paramc, false);
-    AppMethodBeat.o(186151);
-  }
-  
-  public static void b(Context paramContext, String paramString, android.support.v4.e.c<Integer> paramc)
-  {
-    AppMethodBeat.i(186153);
+    AppMethodBeat.i(193904);
     a(paramContext, paramString, 0L, null, paramc, true);
-    AppMethodBeat.o(186153);
+    AppMethodBeat.o(193904);
   }
   
-  public static void fkM() {}
-  
-  static void hO(Context paramContext)
+  public static void b(Context paramContext, final android.support.v4.e.c<Integer> paramc)
   {
-    AppMethodBeat.i(186149);
-    com.tinkerboots.sdk.a.a(new a.a(com.tencent.mm.app.d.cTZ).a(new com.tencent.tinker.lib.d.b(paramContext)
-    {
-      public final void e(File paramAnonymousFile, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(186145);
-        super.e(paramAnonymousFile, paramAnonymousInt);
-        com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "#onPatchPackageCheckFail, code = ".concat(String.valueOf(paramAnonymousInt)));
-        if (paramAnonymousInt != 0) {}
-        for (paramAnonymousInt = Math.abs(paramAnonymousInt) + 10;; paramAnonymousInt = 0)
-        {
-          paramAnonymousFile = i.hX(this.context);
-          paramAnonymousFile.IoA = false;
-          paramAnonymousFile.Ioz = paramAnonymousInt;
-          paramAnonymousFile.save();
-          AppMethodBeat.o(186145);
-          return;
-        }
-      }
-    }).giy());
-    AppMethodBeat.o(186149);
+    AppMethodBeat.i(193902);
+    com.tencent.mm.recoveryv2.f.i("MicroMsg.recovery.operator", "#fetchTinkerPatch");
+    com.tencent.mm.plugin.expansions.a.cMr();
+    com.tencent.mm.plugin.expansions.a.aoa("wechathttp");
+    paramc = new android.support.v4.e.c() {};
+    String str = com.tencent.mm.loader.j.a.aKw();
+    Log.i("MicroMsg.recovery.operator", "baseTinkerId = ".concat(String.valueOf(str)));
+    cxv localcxv = new cxv();
+    localcxv.MCI = str;
+    localcxv.APx = com.tencent.mm.loader.j.a.aKx();
+    localcxv.MCJ = com.tencent.mm.recovery.a.b.dZe();
+    localcxv.MCJ.add(com.tencent.mm.recovery.a.b.ih("biz-scene", "recovery"));
+    localcxv.MCL = 1;
+    a(paramContext, localcxv, paramc, true);
+    AppMethodBeat.o(193902);
   }
 }
 

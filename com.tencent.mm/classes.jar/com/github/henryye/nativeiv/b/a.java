@@ -10,20 +10,20 @@ import java.net.URLConnection;
 public final class a
   implements b
 {
-  public int bbx = 60000;
-  public int bby = 60000;
+  public int bbs = 60000;
+  public int bbt = 60000;
   
   public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(209419);
+    AppMethodBeat.i(219805);
     paramImageDecodeConfig = new b.a();
     try
     {
       URLConnection localURLConnection = new URL((String)paramObject).openConnection();
-      localURLConnection.setReadTimeout(this.bby);
-      localURLConnection.setConnectTimeout(this.bbx);
+      localURLConnection.setReadTimeout(this.bbt);
+      localURLConnection.setConnectTimeout(this.bbs);
       paramImageDecodeConfig.inputStream = new BufferedInputStream(localURLConnection.getInputStream());
-      AppMethodBeat.o(209419);
+      AppMethodBeat.o(219805);
       return paramImageDecodeConfig;
     }
     catch (SocketTimeoutException localSocketTimeoutException)
@@ -31,7 +31,7 @@ public final class a
       for (;;)
       {
         paramImageDecodeConfig.errorMsg = "http请求超时";
-        com.github.henryye.nativeiv.a.b.e("NativeImageHttpFetcher", "ImageFetch Timeout! path[%s] connectionTimeout[%d] readTimeout[%d] error[%s]", new Object[] { paramObject, Integer.valueOf(this.bbx), Integer.valueOf(this.bby), localSocketTimeoutException.toString() });
+        com.github.henryye.nativeiv.a.b.e("NativeImageHttpFetcher", "ImageFetch Timeout! path[%s] connectionTimeout[%d] readTimeout[%d] error[%s]", new Object[] { paramObject, Integer.valueOf(this.bbs), Integer.valueOf(this.bbt), localSocketTimeoutException.toString() });
       }
     }
     catch (Exception localException)
@@ -61,14 +61,14 @@ public final class a
     return false;
   }
   
-  public final String sP()
+  public final String sS()
   {
     return "http";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.github.henryye.nativeiv.b.a
  * JD-Core Version:    0.7.0.1
  */

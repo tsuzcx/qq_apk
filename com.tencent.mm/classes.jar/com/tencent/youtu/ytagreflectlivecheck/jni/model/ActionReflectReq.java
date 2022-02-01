@@ -4,7 +4,9 @@ import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.Selec
 
 public class ActionReflectReq
 {
+  public String action_video = null;
   public String app_id = "";
+  public String client_version = null;
   public String color_data = "";
   public YTImageInfo compare_image = null;
   public String encode_reflect_data = null;
@@ -20,7 +22,7 @@ public class ActionReflectReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.model.ActionReflectReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package kotlinx.coroutines.b;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/scheduling/Task;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "()V", "submissionTime", "", "taskContext", "Lkotlinx/coroutines/scheduling/TaskContext;", "(JLkotlinx/coroutines/scheduling/TaskContext;)V", "mode", "", "getMode", "()I", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/scheduling/Task;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "()V", "submissionTime", "", "taskContext", "Lkotlinx/coroutines/scheduling/TaskContext;", "(JLkotlinx/coroutines/scheduling/TaskContext;)V", "mode", "", "getMode", "()I", "kotlinx-coroutines-core"})
 public abstract class i
   implements Runnable
 {
-  public long Oic;
-  public j Oid;
+  public long TWZ;
+  public j TXa;
   
   public i()
   {
-    this(0L, (j)h.Oib);
+    this(0L, (j)h.TWY);
   }
   
   public i(long paramLong, j paramj)
   {
-    this.Oic = paramLong;
-    this.Oid = paramj;
+    this.TWZ = paramLong;
+    this.TXa = paramj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.b.i
  * JD-Core Version:    0.7.0.1
  */

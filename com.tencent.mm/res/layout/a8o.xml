@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/ld">
-        <ImageView android:id="@id/c7h" android:src="@drawable/arj" style="@style/jo" />
-        <TextView android:id="@id/c7m" android:text="@string/cl3" style="@style/jp" />
-        <TextView android:id="@id/c7n" android:text="@string/cl4" style="@style/jq" />
-        <TextView android:id="@id/c7o" android:text="@string/cl5" style="@style/jr" />
+<LinearLayout android:orientation="vertical" android:id="@id/d7i" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/d83" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" />
+    <View android:id="@id/ebk" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cey" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/cez" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ct" android:text="{title}" android:layout_weight="1.0" />
     </LinearLayout>
+    <com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout android:orientation="horizontal" android:id="@id/cet" android:layout_width="fill_parent" android:layout_height="@dimen/cd" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/hft" />
 </LinearLayout>

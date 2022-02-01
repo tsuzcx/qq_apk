@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 public final class k
-  extends e
+  extends f
 {
   public k(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt1, int paramInt2, int paramInt3, String paramString9)
   {
@@ -10,17 +10,17 @@ public final class k
   
   public final int getType()
   {
-    return 2519;
+    return 2923;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/unigenprepay";
+    return "/cgi-bin/mmpay-bin/tax_genprepay";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.k
  * JD-Core Version:    0.7.0.1
  */

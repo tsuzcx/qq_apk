@@ -1,8 +1,3 @@
-;NativeGlobal.setTimeout = this.setTimeout;
-NativeGlobal.clearTimeout = this.clearTimeout;
-NativeGlobal.setInterval = this.setInterval;
-NativeGlobal.clearInterval = this.clearInterval;
-
 NativeGlobal.findElementById = undefined;
 this.requestAnimationFrame = NativeGlobal.requestAnimationFrame;
 this.cancelAnimationFrame = NativeGlobal.cancelAnimationFrame;

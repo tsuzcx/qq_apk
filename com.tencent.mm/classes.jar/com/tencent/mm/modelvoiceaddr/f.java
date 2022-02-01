@@ -2,62 +2,67 @@ package com.tencent.mm.modelvoiceaddr;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.audio.b.g.a;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.storage.ar;
+import com.tencent.mm.vfs.o;
 
 public final class f
-  implements com.tencent.mm.ak.f
+  implements i
 {
-  public static int djH;
-  private static final String iAO;
-  private static final String iAP;
-  com.tencent.mm.audio.b.c dhw;
-  private com.tencent.mm.audio.b.c.a dij;
-  aq handler;
-  public int iAK;
-  public int iAQ;
-  int iAR;
-  boolean iAS;
-  private int iAT;
-  public boolean iAU;
-  b iAV;
-  com.tencent.mm.audio.e.a iAW;
-  com.tencent.qqpinyin.voicerecoapi.c iAX;
-  private a iAY;
+  public static int dAR;
+  private static final String jwd;
+  private static final String jwe;
+  com.tencent.mm.audio.b.c dyI;
+  private com.tencent.mm.audio.b.c.a dzv;
+  MMHandler handler;
+  public int jvZ;
+  public int jwf;
+  int jwg;
+  boolean jwh;
+  private int jwi;
+  public boolean jwj;
+  b jwk;
+  com.tencent.mm.audio.e.a jwl;
+  com.tencent.qqpinyin.voicerecoapi.c jwm;
+  private a jwn;
   
   static
   {
     AppMethodBeat.i(148545);
-    iAO = am.IKh + "tmp_voiceaddr.spx";
-    iAP = am.IKh + "tmp_voiceaddr.amr";
-    djH = 100;
+    jwd = ar.NSe + "tmp_voiceaddr.spx";
+    jwe = ar.NSe + "tmp_voiceaddr.amr";
+    dAR = 100;
     AppMethodBeat.o(148545);
   }
   
   public f(b paramb, int paramInt)
   {
     AppMethodBeat.i(148538);
-    this.iAK = 1;
-    this.iAQ = 0;
-    this.iAR = 0;
-    this.iAS = false;
-    this.iAT = 500000;
-    this.iAU = false;
-    this.iAV = null;
-    this.iAX = null;
-    this.iAY = null;
-    this.dij = new com.tencent.mm.audio.b.c.a()
+    this.jvZ = 1;
+    this.jwf = 0;
+    this.jwg = 0;
+    this.jwh = false;
+    this.jwi = 500000;
+    this.jwj = false;
+    this.jwk = null;
+    this.jwm = null;
+    this.jwn = null;
+    this.dzv = new com.tencent.mm.audio.b.c.a()
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
-      public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
+      public final void w(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         AppMethodBeat.i(148535);
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SceneVoiceAddr", "OnRecPcmDataReady len: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        Log.d("MicroMsg.SceneVoiceAddr", "OnRecPcmDataReady len: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         com.tencent.qqpinyin.voicerecoapi.c.a locala = new com.tencent.qqpinyin.voicerecoapi.c.a();
         short[] arrayOfShort = new short[paramAnonymousInt / 2];
         int i = 0;
@@ -66,31 +71,31 @@ public final class f
           arrayOfShort[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
           i += 1;
         }
-        if (f.this.iAX != null) {
-          f.this.iAX.a(arrayOfShort, paramAnonymousInt / 2, locala);
+        if (f.this.jwm != null) {
+          f.this.jwm.a(arrayOfShort, paramAnonymousInt / 2, locala);
         }
         f.a(f.this, arrayOfShort, paramAnonymousInt / 2);
-        if (f.this.iAW != null) {}
-        for (paramAnonymousInt = f.this.iAW.a(new g.a(paramAnonymousArrayOfByte, paramAnonymousInt));; paramAnonymousInt = -1)
+        if (f.this.jwl != null) {}
+        for (paramAnonymousInt = f.this.jwl.a(new g.a(paramAnonymousArrayOfByte, paramAnonymousInt));; paramAnonymousInt = -1)
         {
           if (-1 == paramAnonymousInt)
           {
             f.a(f.this);
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SceneVoiceAddr", "write to file failed");
+            Log.e("MicroMsg.SceneVoiceAddr", "write to file failed");
             AppMethodBeat.o(148535);
             return;
           }
           paramAnonymousArrayOfByte = f.this;
-          paramAnonymousArrayOfByte.iAR = (paramAnonymousInt + paramAnonymousArrayOfByte.iAR);
-          if ((f.this.iAR > 3300) && (!f.this.iAS))
+          paramAnonymousArrayOfByte.jwg = (paramAnonymousInt + paramAnonymousArrayOfByte.jwg);
+          if ((f.this.jwg > 3300) && (!f.this.jwh))
           {
-            com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SceneVoiceAddr", "sendEmptyMessage(0)");
+            Log.d("MicroMsg.SceneVoiceAddr", "sendEmptyMessage(0)");
             f.this.handler.sendEmptyMessage(0);
-            f.this.iAS = true;
+            f.this.jwh = true;
           }
-          if ((locala.Mij == 2) || (locala.Mij == 3))
+          if ((locala.RKK == 2) || (locala.RKK == 3))
           {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SceneVoiceAddr", "state.vad_flag: " + locala.Mij);
+            Log.i("MicroMsg.SceneVoiceAddr", "state.vad_flag: " + locala.RKK);
             f.a(f.this);
           }
           AppMethodBeat.o(148535);
@@ -98,16 +103,16 @@ public final class f
         }
       }
     };
-    this.handler = new aq()
+    this.handler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(148536);
         if (paramAnonymousMessage.what == 2)
         {
-          if (f.this.iAV != null)
+          if (f.this.jwk != null)
           {
-            f.this.iAV.aOo();
+            f.this.jwk.biv();
             AppMethodBeat.o(148536);
           }
         }
@@ -117,8 +122,8 @@ public final class f
           {
             if (f.b(f.this) == 0)
             {
-              com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SceneVoiceAddr", "addSceneEndListener MMFunc_UploadInputVoice");
-              g.ajj().a(349, f.this);
+              Log.d("MicroMsg.SceneVoiceAddr", "addSceneEndListener MMFunc_UploadInputVoice");
+              g.azz().a(349, f.this);
               if (f.b(f.this) != 0) {
                 break label184;
               }
@@ -129,10 +134,10 @@ public final class f
             }
             for (;;)
             {
-              g.ajj().a(f.e(f.this), 0);
+              g.azz().a(f.e(f.this), 0);
               AppMethodBeat.o(148536);
               return;
-              g.ajj().a(206, f.this);
+              g.azz().a(206, f.this);
               break;
               label158:
               f.a(f.this, new e(f.d(f.this), 1));
@@ -141,19 +146,19 @@ public final class f
               f.a(f.this, new d(f.d(f.this), f.b(f.this)));
             }
           }
-          if ((paramAnonymousMessage.what == 3) && (f.this.iAV != null)) {
-            f.this.iAV.a(new String[0], -1L);
+          if ((paramAnonymousMessage.what == 3) && (f.this.jwk != null)) {
+            f.this.jwk.a(new String[0], -1L);
           }
         }
         AppMethodBeat.o(148536);
       }
     };
-    this.iAV = paramb;
-    this.iAK = paramInt;
-    if (this.iAK == 1) {}
+    this.jwk = paramb;
+    this.jvZ = paramInt;
+    if (this.jvZ == 1) {}
     for (paramInt = i;; paramInt = 1500000)
     {
-      this.iAT = paramInt;
+      this.jwi = paramInt;
       AppMethodBeat.o(148538);
       return;
     }
@@ -162,13 +167,13 @@ public final class f
   private void finish()
   {
     AppMethodBeat.i(148540);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SceneVoiceAddr", "finish");
-    com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.SceneVoiceAddr", "finish", new Object[0]);
-    if (this.iAY != null) {
-      this.iAY.aOf();
+    Log.i("MicroMsg.SceneVoiceAddr", "finish");
+    Log.printInfoStack("MicroMsg.SceneVoiceAddr", "finish", new Object[0]);
+    if (this.jwn != null) {
+      this.jwn.bim();
     }
     this.handler.sendEmptyMessage(2);
-    if (!this.iAS) {
+    if (!this.jwh) {
       this.handler.sendEmptyMessage(3);
     }
     reset();
@@ -178,30 +183,30 @@ public final class f
   private void reset()
   {
     AppMethodBeat.i(148542);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SceneVoiceAddr", "reset");
+    Log.i("MicroMsg.SceneVoiceAddr", "reset");
     try
     {
-      if (this.dhw != null)
+      if (this.dyI != null)
       {
-        this.dhw.PF();
-        this.dhw = null;
+        this.dyI.ZZ();
+        this.dyI = null;
       }
-      if (this.iAW != null)
+      if (this.jwl != null)
       {
-        this.iAW.Rx();
-        this.iAW = null;
+        this.jwl.abP();
+        this.jwl = null;
       }
-      if (this.iAX != null) {
-        this.iAX.stop();
+      if (this.jwm != null) {
+        this.jwm.stop();
       }
-      this.iAX = null;
-      if (this.iAY != null)
+      this.jwm = null;
+      if (this.jwn != null)
       {
-        this.iAY.aOf();
-        this.iAY = null;
+        this.jwn.bim();
+        this.jwn = null;
       }
-      this.iAR = 0;
-      this.iAS = false;
+      this.jwg = 0;
+      this.jwh = false;
       return;
     }
     finally
@@ -213,21 +218,21 @@ public final class f
   public final void cancel()
   {
     AppMethodBeat.i(148541);
-    this.iAV = null;
+    this.jwk = null;
     finish();
     AppMethodBeat.o(148541);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(148539);
     long l;
-    if (this.iAK == 0)
+    if (this.jvZ == 0)
     {
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SceneVoiceAddr", "removeSceneEndListener MMFunc_UploadInputVoice");
-      g.ajj().b(349, this);
-      paramString = ((a)paramn).aOg();
-      l = ((a)paramn).aOh();
+      Log.d("MicroMsg.SceneVoiceAddr", "removeSceneEndListener MMFunc_UploadInputVoice");
+      g.azz().b(349, this);
+      paramString = ((a)paramq).bin();
+      l = ((a)paramq).bio();
       if (paramString != null) {
         break label135;
       }
@@ -235,22 +240,22 @@ public final class f
     label135:
     for (int i = -1;; i = paramString.length)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SceneVoiceAddr", "onSceneEnd errType:%d errCode:%d list:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
-      if (this.iAV == null) {
+      Log.i("MicroMsg.SceneVoiceAddr", "onSceneEnd errType:%d errCode:%d list:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+      if (this.jwk == null) {
         break label154;
       }
       if ((paramInt2 == 0) && (paramInt1 == 0)) {
         break label142;
       }
-      this.iAV.aOn();
+      this.jwk.biu();
       cancel();
       AppMethodBeat.o(148539);
       return;
-      g.ajj().b(206, this);
+      g.azz().b(206, this);
       break;
     }
     label142:
-    this.iAV.a(paramString, l);
+    this.jwk.a(paramString, l);
     label154:
     AppMethodBeat.o(148539);
   }
@@ -267,37 +272,37 @@ public final class f
       {
         synchronized (f.this)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SceneVoiceAddr", "initDeviceInLock");
+          Log.i("MicroMsg.SceneVoiceAddr", "initDeviceInLock");
           try
           {
-            new com.tencent.mm.vfs.k(f.d(f.this)).delete();
+            new o(f.d(f.this)).delete();
             if (f.c(f.this))
             {
               i = 8000;
-              f.this.dhw = new com.tencent.mm.audio.b.c(i, 1, 3);
-              f.this.dhw.dhY = -19;
-              f.this.dhw.cu(false);
+              f.this.dyI = new com.tencent.mm.audio.b.c(i, 1, 3);
+              f.this.dyI.dzk = -19;
+              f.this.dyI.dc(false);
               if (!f.c(f.this))
               {
-                f.this.iAW = new com.tencent.mm.audio.e.d();
-                if (!f.this.iAW.gI(f.d(f.this)))
+                f.this.jwl = new com.tencent.mm.audio.e.d();
+                if (!f.this.jwl.hz(f.d(f.this)))
                 {
-                  com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SceneVoiceAddr", "init speex writer failed");
-                  f.this.iAW.Rx();
-                  f.this.iAW = null;
+                  Log.e("MicroMsg.SceneVoiceAddr", "init speex writer failed");
+                  f.this.jwl.abP();
+                  f.this.jwl = null;
                 }
               }
-              if ((f.c(f.this)) || (com.tencent.mm.compatible.deviceinfo.ae.geX.gbo <= 0)) {
+              if ((f.c(f.this)) || (ae.gKE.gGG <= 0)) {
                 break label332;
               }
-              f.this.dhw.t(com.tencent.mm.compatible.deviceinfo.ae.geX.gbo, true);
-              f.this.dhw.cv(false);
-              f.this.iAX = new com.tencent.qqpinyin.voicerecoapi.c(f.f(f.this));
-              i = f.this.iAX.fYh();
+              f.this.dyI.x(ae.gKE.gGG, true);
+              f.this.dyI.dd(false);
+              f.this.jwm = new com.tencent.qqpinyin.voicerecoapi.c(f.f(f.this));
+              i = f.this.jwm.hkt();
               if (i == 0) {
                 break label347;
               }
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SceneVoiceAddr", "init VoiceDetectAPI failed :".concat(String.valueOf(i)));
+              Log.e("MicroMsg.SceneVoiceAddr", "init VoiceDetectAPI failed :".concat(String.valueOf(i)));
               f.g(f.this);
               AppMethodBeat.o(148537);
               return;
@@ -305,20 +310,20 @@ public final class f
           }
           catch (Exception localException)
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SceneVoiceAddr", "delete file failed, " + f.d(f.this), new Object[] { localException });
+            Log.e("MicroMsg.SceneVoiceAddr", "delete file failed, " + f.d(f.this), new Object[] { localException });
             continue;
           }
         }
         int i = 16000;
         continue;
         label332:
-        f.this.dhw.t(5, false);
+        f.this.dyI.x(5, false);
         continue;
         label347:
-        f.this.dhw.dij = f.h(f.this);
-        if (!f.this.dhw.PO())
+        f.this.dyI.dzv = f.h(f.this);
+        if (!f.this.dyI.aai())
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SceneVoiceAddr", "start record failed");
+          Log.e("MicroMsg.SceneVoiceAddr", "start record failed");
           f.g(f.this);
         }
       }
@@ -329,9 +334,9 @@ public final class f
   {
     public abstract void a(String[] paramArrayOfString, long paramLong);
     
-    public abstract void aOn();
+    public abstract void biu();
     
-    public abstract void aOo();
+    public abstract void biv();
   }
 }
 

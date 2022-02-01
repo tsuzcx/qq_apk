@@ -1,86 +1,53 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotHelper;", "", "()V", "TAG", "", "dotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "checkDotValid", "", "lastDotInfo", "dotInfo", "duration", "", "checkWebViewId", "getDotList", "getNextDotInfo", "currentTime", "", "parseDotPosInfo", "", "posInfo", "reset", "setDotScriptData", "bundle", "Landroid/os/Bundle;", "shouldDestroyDotNow", "dot", "shouldShowDotNow", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotHelper;", "", "()V", "TAG", "", "dotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "checkDotValid", "", "lastDotInfo", "dotInfo", "duration", "", "checkWebViewId", "getDotList", "getNextDotInfo", "currentTime", "", "parseDotPosInfo", "", "posInfo", "reset", "setDotScriptData", "bundle", "Landroid/os/Bundle;", "shouldDestroyDotNow", "dot", "shouldShowDotNow", "plugin-brandservice_release"})
 public final class b
 {
   public final String TAG;
-  public LinkedList<c> owH;
+  public LinkedList<c> pKl;
   
   public b()
   {
     AppMethodBeat.i(7283);
     this.TAG = "MicroMsg.BizVideoDotHelper";
-    this.owH = new LinkedList();
+    this.pKl = new LinkedList();
     AppMethodBeat.o(7283);
   }
   
   public static boolean a(float paramFloat, c paramc)
   {
     if (paramc == null) {}
-    while ((paramc.owM) || (paramc.owP > paramFloat) || (paramFloat > paramc.owI)) {
+    while ((paramc.pKq) || (paramc.pKt > paramFloat) || (paramFloat > paramc.pKm)) {
       return false;
     }
     return true;
   }
   
-  public static boolean bTl()
+  public static boolean cqW()
   {
     AppMethodBeat.i(7282);
-    if ((!j.DEBUG) && (!j.IS_FLAVOR_RED))
+    if ((!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED))
     {
       AppMethodBeat.o(7282);
       return true;
     }
-    if (ay.aRW("MicroMsg.BizVideoDetailUI").decodeInt("CheckWebviewId", 1) == 0)
+    if (MultiProcessMMKV.getMMKV("MicroMsg.BizVideoDetailUI").decodeInt("CheckWebviewId", 1) == 0)
     {
       AppMethodBeat.o(7282);
       return false;
     }
     AppMethodBeat.o(7282);
     return true;
-  }
-  
-  public final c aU(float paramFloat)
-  {
-    AppMethodBeat.i(7280);
-    try
-    {
-      boolean bool = bu.ht((List)this.owH);
-      if (bool) {
-        return null;
-      }
-      Object localObject1 = this.owH.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        c localc = (c)((Iterator)localObject1).next();
-        if (paramFloat <= localc.owI) {
-          if (paramFloat >= 2.0F)
-          {
-            double d1 = paramFloat;
-            double d2 = localc.owP;
-            if (d1 >= d2 - 10.0D) {
-              return localc;
-            }
-          }
-        }
-      }
-      localObject1 = z.Nhr;
-      return null;
-    }
-    finally
-    {
-      AppMethodBeat.o(7280);
-    }
   }
   
   public final boolean b(float paramFloat, c paramc)
@@ -91,19 +58,19 @@ public final class b
       AppMethodBeat.o(7281);
       return false;
     }
-    if ((paramc.owM) && ((paramFloat < paramc.owP) || (paramFloat > paramc.owQ)))
+    if ((paramc.pKq) && ((paramFloat < paramc.pKt) || (paramFloat > paramc.pKu)))
     {
       AppMethodBeat.o(7281);
       return true;
     }
-    if (paramFloat > paramc.owQ)
+    if (paramFloat > paramc.pKu)
     {
       AppMethodBeat.o(7281);
       return true;
     }
-    if (paramFloat < paramc.owP)
+    if (paramFloat < paramc.pKt)
     {
-      c localc = aU(paramFloat);
+      c localc = bb(paramFloat);
       if ((localc != null) && (localc.id != paramc.id))
       {
         AppMethodBeat.o(7281);
@@ -114,13 +81,46 @@ public final class b
     return false;
   }
   
+  public final c bb(float paramFloat)
+  {
+    AppMethodBeat.i(7280);
+    try
+    {
+      boolean bool = Util.isNullOrNil((List)this.pKl);
+      if (bool) {
+        return null;
+      }
+      Object localObject1 = this.pKl.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        c localc = (c)((Iterator)localObject1).next();
+        if (paramFloat <= localc.pKm) {
+          if (paramFloat >= 2.0F)
+          {
+            double d1 = paramFloat;
+            double d2 = localc.pKt;
+            if (d1 >= d2 - 10.0D) {
+              return localc;
+            }
+          }
+        }
+      }
+      localObject1 = x.SXb;
+      return null;
+    }
+    finally
+    {
+      AppMethodBeat.o(7280);
+    }
+  }
+  
   public final void reset()
   {
     AppMethodBeat.i(7279);
     try
     {
-      this.owH.clear();
-      z localz = z.Nhr;
+      this.pKl.clear();
+      x localx = x.SXb;
       return;
     }
     finally

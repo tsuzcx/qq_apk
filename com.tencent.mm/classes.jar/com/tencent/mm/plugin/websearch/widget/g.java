@@ -2,16 +2,18 @@ package com.tencent.mm.plugin.websearch.widget;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.t;
 import com.tencent.mm.modelappbrand.y;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.ui.widget.picker.CustomTimePickerNew;
 import com.tencent.mm.ui.widget.picker.b;
 import com.tencent.mm.ui.widget.picker.b.a;
 import com.tencent.mm.ui.widget.picker.c;
-import com.tencent.mm.ui.widget.picker.c.a;
+import com.tencent.mm.ui.widget.picker.c.b;
 import com.tencent.mm.ui.widget.picker.d;
 import com.tencent.mm.ui.widget.picker.d.a;
 import java.text.ParseException;
@@ -33,7 +35,7 @@ public final class g
   public final void a(final String paramString1, final String paramString2, final t paramt)
   {
     AppMethodBeat.i(116650);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
@@ -50,14 +52,14 @@ public final class g
             localBundle = new Bundle();
             str1 = paramString1;
             if (!paramString1.equals("date")) {
-              break label794;
+              break label903;
             }
             str1 = ((JSONObject)localObject13).optString("mode");
             i = -1;
             switch (str1.hashCode())
             {
             case 1191572447: 
-              ae.i("MicroMsg.WebSearch.WxaShowPickerListenerImpl", "unknown mode %s", new Object[] { paramString1 });
+              Log.i("MicroMsg.WebSearch.WxaShowPickerListenerImpl", "unknown mode %s", new Object[] { paramString1 });
               AppMethodBeat.o(116646);
               return;
             }
@@ -65,22 +67,22 @@ public final class g
           catch (JSONException localJSONException)
           {
             String str1;
-            ae.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localJSONException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localJSONException, "", new Object[0]);
             AppMethodBeat.o(116646);
             return;
           }
           if (str1.equals("selector"))
           {
             i = 0;
-            break label797;
+            break label906;
             if (str1.equals("date"))
             {
               i = 1;
-              break label797;
+              break label906;
               if (str1.equals("time"))
               {
                 i = 2;
-                break label797;
+                break label906;
                 g.a(g.this, (JSONObject)localObject13, localBundle, paramt);
                 AppMethodBeat.o(116646);
                 return;
@@ -116,24 +118,24 @@ public final class g
                         {
                           localObject7 = ((SimpleDateFormat)localObject12).parse((String)localObject7);
                           localObject13 = new b(((g)localObject9).context);
-                          ((b)localObject13).Lxi = new g.3((g)localObject9, (b)localObject13, (SimpleDateFormat)localObject12, localBundle, (t)localObject10);
+                          ((b)localObject13).QSU = new g.3((g)localObject9, (b)localObject13, (SimpleDateFormat)localObject12, localBundle, (t)localObject10);
                           if (localObject1 != null) {
-                            ((b)localObject13).aQ(((Date)localObject1).getYear() + 1900, ((Date)localObject1).getMonth() + 1, ((Date)localObject1).getDate());
+                            ((b)localObject13).aX(((Date)localObject1).getYear() + 1900, ((Date)localObject1).getMonth() + 1, ((Date)localObject1).getDate());
                           }
                           if (localObject4 != null) {
-                            ((b)localObject13).aR(((Date)localObject4).getYear() + 1900, ((Date)localObject4).getMonth() + 1, ((Date)localObject4).getDate());
+                            ((b)localObject13).aY(((Date)localObject4).getYear() + 1900, ((Date)localObject4).getMonth() + 1, ((Date)localObject4).getDate());
                           }
                           if (localObject7 != null) {
-                            ((b)localObject13).aS(((Date)localObject7).getYear() + 1900, ((Date)localObject7).getMonth() + 1, ((Date)localObject7).getDate());
+                            ((b)localObject13).aZ(((Date)localObject7).getYear() + 1900, ((Date)localObject7).getMonth() + 1, ((Date)localObject7).getDate());
                           }
                           if (!TextUtils.isEmpty((CharSequence)localObject11))
                           {
                             if (!((String)localObject11).equals("year")) {
-                              break label546;
+                              break label556;
                             }
-                            ((b)localObject13).aW(false, false);
+                            ((b)localObject13).bg(false, false);
                             if (((String)localObject11).equals("day")) {
-                              ((b)localObject13).aW(true, true);
+                              ((b)localObject13).bg(true, true);
                             }
                           }
                           ((b)localObject13).show();
@@ -145,11 +147,11 @@ public final class g
                           localObject1 = "yyyy";
                           break;
                           localParseException1 = localParseException1;
-                          ae.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException1, "", new Object[0]);
+                          Log.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException1, "", new Object[0]);
                           localObject2 = null;
                           continue;
                           localParseException3 = localParseException3;
-                          ae.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException3, "", new Object[0]);
+                          Log.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException3, "", new Object[0]);
                           localObject5 = null;
                         }
                       }
@@ -157,12 +159,12 @@ public final class g
                       {
                         for (;;)
                         {
-                          ae.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException5, "", new Object[0]);
+                          Log.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException5, "", new Object[0]);
                           localObject8 = null;
                           continue;
-                          label546:
+                          label556:
                           if (((String)localObject11).equals("month")) {
-                            ((b)localObject13).aW(true, false);
+                            ((b)localObject13).bg(true, false);
                           }
                         }
                       }
@@ -196,26 +198,57 @@ public final class g
                       {
                         for (;;)
                         {
+                          int j;
                           Object localObject3;
                           Object localObject6;
-                          ae.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException6, "", new Object[0]);
+                          Log.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException6, "", new Object[0]);
                         }
                       }
-                      if (localObject2 != null) {
-                        ((d)localObject12).ks(((Date)localObject2).getHours(), ((Date)localObject2).getMinutes());
+                      if (localObject2 != null)
+                      {
+                        i = ((Date)localObject2).getHours();
+                        j = ((Date)localObject2).getMinutes();
+                        if (((d)localObject12).QTl != null)
+                        {
+                          localObject2 = ((d)localObject12).QTl;
+                          ((CustomTimePickerNew)localObject2).mnn = i;
+                          ((CustomTimePickerNew)localObject2).mno = j;
+                        }
                       }
-                      if (localObject5 != null) {
-                        ((d)localObject12).setMinTime(((Date)localObject5).getHours(), ((Date)localObject5).getMinutes());
+                      if (localObject5 != null)
+                      {
+                        i = ((Date)localObject5).getHours();
+                        j = ((Date)localObject5).getMinutes();
+                        if (((d)localObject12).QTl != null)
+                        {
+                          localObject2 = ((d)localObject12).QTl;
+                          ((CustomTimePickerNew)localObject2).mMinTimeHour = i;
+                          ((CustomTimePickerNew)localObject2).mMinTimeMinute = j;
+                        }
                       }
-                      if (localObject8 != null) {
-                        ((d)localObject12).setMaxTime(localObject8.getHours(), localObject8.getMinutes());
+                      if (localObject8 != null)
+                      {
+                        i = localObject8.getHours();
+                        j = localObject8.getMinutes();
+                        if (((d)localObject12).QTl != null)
+                        {
+                          localObject2 = ((d)localObject12).QTl;
+                          ((CustomTimePickerNew)localObject2).mMaxTimeHour = i;
+                          ((CustomTimePickerNew)localObject2).mMaxTimeMinute = j;
+                        }
                       }
-                      ((d)localObject12).Lxx = new g.2((g)localObject10, (d)localObject12, localBundle, (t)localObject11);
-                      ((d)localObject12).show();
+                      ((d)localObject12).QTm = new g.2((g)localObject10, (d)localObject12, localBundle, (t)localObject11);
+                      if (((d)localObject12).yfL != null)
+                      {
+                        if (((d)localObject12).QTl != null) {
+                          ((d)localObject12).QTl.onShow();
+                        }
+                        ((d)localObject12).yfL.show();
+                      }
                       AppMethodBeat.o(116646);
                       return;
                       localParseException2 = localParseException2;
-                      ae.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException2, "", new Object[0]);
+                      Log.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException2, "", new Object[0]);
                       localObject3 = null;
                     }
                   }
@@ -223,17 +256,17 @@ public final class g
                   {
                     for (;;)
                     {
-                      ae.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException4, "", new Object[0]);
+                      Log.printErrStackTrace("MicroMsg.WebSearch.WxaShowPickerListenerImpl", localParseException4, "", new Object[0]);
                       localObject6 = null;
                     }
                   }
                 }
-                label794:
+                label903:
                 continue;
               }
             }
           }
-          label797:
+          label906:
           switch (i)
           {
           }
@@ -245,7 +278,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.g
  * JD-Core Version:    0.7.0.1
  */

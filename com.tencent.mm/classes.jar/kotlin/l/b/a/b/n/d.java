@@ -1,0 +1,54 @@
+package kotlin.l.b.a.b.n;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Arrays;
+import java.util.Collection;
+import kotlin.g.b.q;
+import kotlin.l.b.a.b.b.t;
+import kotlin.l.b.a.b.f.f;
+import kotlin.n.k;
+
+public final class d
+{
+  public final k TQh;
+  public final Collection<f> TQi;
+  public final kotlin.g.a.b<t, String> TQj;
+  public final b[] TQk;
+  public final f TjT;
+  
+  public d(Collection<f> paramCollection, b[] paramArrayOfb, kotlin.g.a.b<? super t, String> paramb)
+  {
+    this(null, null, paramCollection, paramb, (b[])Arrays.copyOf(paramArrayOfb, paramArrayOfb.length));
+    AppMethodBeat.i(61292);
+    AppMethodBeat.o(61292);
+  }
+  
+  private d(f paramf, k paramk, Collection<f> paramCollection, kotlin.g.a.b<? super t, String> paramb, b... paramVarArgs)
+  {
+    this.TjT = paramf;
+    this.TQh = paramk;
+    this.TQi = paramCollection;
+    this.TQj = paramb;
+    this.TQk = paramVarArgs;
+  }
+  
+  public d(f paramf, b[] paramArrayOfb, kotlin.g.a.b<? super t, String> paramb)
+  {
+    this(paramf, null, null, paramb, (b[])Arrays.copyOf(paramArrayOfb, paramArrayOfb.length));
+    AppMethodBeat.i(61288);
+    AppMethodBeat.o(61288);
+  }
+  
+  private d(k paramk, b[] paramArrayOfb, kotlin.g.a.b<? super t, String> paramb)
+  {
+    this(null, paramk, null, paramb, (b[])Arrays.copyOf(paramArrayOfb, paramArrayOfb.length));
+    AppMethodBeat.i(61290);
+    AppMethodBeat.o(61290);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     kotlin.l.b.a.b.n.d
+ * JD-Core Version:    0.7.0.1
+ */

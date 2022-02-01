@@ -7,9 +7,9 @@ import com.tencent.mm.plugin.card.base.b;
 
 public abstract interface g
 {
-  public abstract void Bc(int paramInt);
+  public abstract void EK(int paramInt);
   
-  public abstract void I(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void H(boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract void a(ShapeDrawable paramShapeDrawable);
   
@@ -17,11 +17,11 @@ public abstract interface g
   
   public abstract void i(b paramb);
   
-  public abstract void jA(boolean paramBoolean);
+  public abstract View jz();
   
-  public abstract void jB(boolean paramBoolean);
+  public abstract void kD(boolean paramBoolean);
   
-  public abstract View jq();
+  public abstract void kE(boolean paramBoolean);
   
   public abstract void release();
   
@@ -29,7 +29,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.g
  * JD-Core Version:    0.7.0.1
  */

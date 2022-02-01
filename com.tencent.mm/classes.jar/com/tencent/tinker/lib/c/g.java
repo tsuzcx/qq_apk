@@ -3,7 +3,7 @@ package com.tencent.tinker.lib.c;
 import android.content.Context;
 import android.os.Build;
 import android.os.SystemClock;
-import com.tencent.tinker.lib.util.c;
+import com.tencent.tinker.lib.f.c;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchInfo;
 import com.tencent.tinker.loader.shareutil.ShareSecurityCheck;
@@ -19,7 +19,7 @@ public final class g
 {
   public final boolean a(Context paramContext, String paramString, com.tencent.tinker.lib.service.a parama)
   {
-    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lq(paramContext);
+    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lk(paramContext);
     File localFile1 = new File(paramString);
     if ((!ShareTinkerInternals.isTinkerEnabled(locala.tinkerFlags)) || (!ShareTinkerInternals.isTinkerEnableWithSharedPreferences(paramContext)))
     {
@@ -36,7 +36,7 @@ public final class g
     if (i != 0)
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:onPatchPackageCheckFail", new Object[0]);
-      locala.MDT.e(localFile1, i);
+      locala.SjV.e(localFile1, i);
       return false;
     }
     String str = SharePatchFileUtil.getMD5(localFile1);
@@ -45,9 +45,9 @@ public final class g
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:patch md5 is null, just return", new Object[0]);
       return false;
     }
-    parama.MDK = str;
+    parama.SjM = str;
     ShareTinkerLog.i("Tinker.UpgradePatch", "UpgradePatch tryPatch:patchMd5:%s", new Object[] { str });
-    Object localObject1 = locala.MDQ.getAbsolutePath();
+    Object localObject1 = locala.SjS.getAbsolutePath();
     File localFile2 = SharePatchFileUtil.getPatchInfoLockFile((String)localObject1);
     File localFile3 = SharePatchFileUtil.getPatchInfoFile((String)localObject1);
     paramString = localShareSecurityCheck.getPackagePropertiesIfPresent();
@@ -69,20 +69,20 @@ public final class g
         break;
       }
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:onPatchInfoCorrupted", new Object[0]);
-      locala.MDT.b(localFile1, ((SharePatchInfo)localObject2).oldVersion, ((SharePatchInfo)localObject2).newVersion);
+      locala.SjV.b(localFile1, ((SharePatchInfo)localObject2).oldVersion, ((SharePatchInfo)localObject2).newVersion);
       return false;
     }
     if (!SharePatchFileUtil.checkIfMd5Valid(str))
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:onPatchVersionCheckFail md5 %s is valid", new Object[] { str });
-      locala.MDT.a(localFile1, (SharePatchInfo)localObject2, str);
+      locala.SjV.a(localFile1, (SharePatchInfo)localObject2, str);
       return false;
     }
     boolean bool2 = ((SharePatchInfo)localObject2).oatDir.equals("interpet");
     if ((!bool2) && (!ShareTinkerInternals.isNullOrNil(((SharePatchInfo)localObject2).newVersion)) && (((SharePatchInfo)localObject2).newVersion.equals(str)) && (!((SharePatchInfo)localObject2).isRemoveNewVersion))
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "patch already applied, md5: %s", new Object[] { str });
-      c.lv(paramContext).bbv(str);
+      c.lp(paramContext).bqL(str);
       return true;
     }
     if (bool2) {
@@ -111,7 +111,7 @@ public final class g
       catch (IOException paramContext)
       {
         ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:copy patch file fail from %s to %s", new Object[] { localFile1.getPath(), ((File)localObject1).getPath() });
-        locala.MDT.a(localFile1, (File)localObject1, localFile1.getName(), 1);
+        locala.SjV.a(localFile1, (File)localObject1, localFile1.getName(), 1);
         return false;
       }
       paramString = ((SharePatchInfo)localObject2).oatDir;
@@ -178,17 +178,17 @@ public final class g
     if (!SharePatchInfo.rewritePatchInfoFileWithLock(localFile3, paramString, localFile2))
     {
       ShareTinkerLog.e("Tinker.UpgradePatch", "UpgradePatch tryPatch:new patch recover, rewrite patch info failed", new Object[0]);
-      locala.MDT.b(localFile1, paramString.oldVersion, paramString.newVersion);
+      locala.SjV.b(localFile1, paramString.oldVersion, paramString.newVersion);
       return false;
     }
-    c.lv(paramContext).bbv(str);
+    c.lp(paramContext).bqL(str);
     ShareTinkerLog.w("Tinker.UpgradePatch", "UpgradePatch tryPatch: done, it is ok", new Object[0]);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.lib.c.g
  * JD-Core Version:    0.7.0.1
  */

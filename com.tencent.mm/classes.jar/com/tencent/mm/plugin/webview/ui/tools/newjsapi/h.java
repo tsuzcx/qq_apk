@@ -1,93 +1,119 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.util.Base64;
+import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.util.HashMap;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.List;
 import java.util.Map;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetLocalImgData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetAdIdInfo;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "hostList", "", "kotlin.jvm.PlatformType", "getHostList", "()Ljava/util/List;", "hostList$delegate", "Lkotlin/Lazy;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class h
-  extends a
+  extends com.tencent.mm.plugin.webview.d.c.a
 {
-  private static final int ECX = 249;
-  public static final h EHC;
-  private static final String dLB = "getLocalImgData";
+  private static final int CDJ = 375;
+  private static final kotlin.f Jxh;
+  public static final h Jxi;
+  private static final String edq = "getAdIdInfo";
   
   static
   {
-    AppMethodBeat.i(199400);
-    EHC = new h();
-    ECX = 249;
-    dLB = "getLocalImgData";
-    AppMethodBeat.o(199400);
+    AppMethodBeat.i(210593);
+    Jxi = new h();
+    CDJ = 375;
+    edq = "getAdIdInfo";
+    Jxh = g.ah((kotlin.g.a.a)b.Jxj);
+    AppMethodBeat.o(210593);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, final n paramn)
   {
-    AppMethodBeat.i(199399);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Object localObject1 = (String)paraml.xqN.get("localId");
-    if (bu.isNullOrNil((String)localObject1))
+    AppMethodBeat.i(210592);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    if ((paramn.IRs == null) || (Util.isNullOrNil(paramn.IRs.getString("name"))))
     {
-      paramd.DQe.i(paraml.Efy, "getLocalImgData:fail_invaild_localid", null);
-      AppMethodBeat.o(199399);
-      return false;
-    }
-    try
-    {
-      Object localObject2 = paramd.lzT;
-      if (localObject2 != null) {}
-      for (localObject1 = ((e)localObject2).fX((String)localObject1, 2); localObject1 != null; localObject1 = null)
+      try
       {
-        localObject1 = com.tencent.mm.sdk.platformtools.h.decodeFile((String)localObject1);
-        if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
-          break;
+        Object localObject1 = paramn.params.get("url");
+        if (localObject1 == null)
+        {
+          localObject1 = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(210592);
+          throw ((Throwable)localObject1);
         }
-        localObject2 = new ByteArrayOutputStream();
-        ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 90, (OutputStream)localObject2);
-        Object localObject3 = ((ByteArrayOutputStream)localObject2).toByteArray();
-        localObject2 = Base64.encodeToString((byte[])localObject3, 0);
-        ae.i("MicroMsg.JsApiGetLocalImgData", "rawData lenght = %d, base64 lenght = %d", new Object[] { Integer.valueOf(localObject3.length), Integer.valueOf(((String)localObject2).length()) });
-        localObject3 = new HashMap();
-        Map localMap = (Map)localObject3;
-        p.g(localObject2, "base64Content");
-        localMap.put("localData", localObject2);
-        paramd.DQe.i(paraml.Efy, "getLocalImgData:ok", (Map)localObject3);
-        ae.i("MicroMsg.JsApiGetLocalImgData", "bitmap recycle %s", new Object[] { ((Bitmap)localObject1).toString() });
-        ((Bitmap)localObject1).recycle();
-        AppMethodBeat.o(199399);
-        return true;
       }
-      return false;
+      catch (Exception localException)
+      {
+        Log.w("MicroMsg.JsApiGetAdIdInfo", "getAdIdInfo ex " + localException.getMessage());
+        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
+        AppMethodBeat.o(210592);
+        return false;
+      }
+      Object localObject2 = Uri.parse((String)localException);
+      p.g(localObject2, "Uri.parse(url)");
+      localObject2 = ((Uri)localObject2).getHost();
+      if ((Util.isNullOrNil((String)localObject2)) || (!((List)Jxh.getValue()).contains(localObject2)))
+      {
+        Log.w("MicroMsg.JsApiGetAdIdInfo", "getAdIdInfo but not valid host ".concat(String.valueOf(localObject2)));
+        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail invalid host", null);
+        AppMethodBeat.o(210592);
+        return false;
+      }
     }
-    catch (Exception localException)
+    d.i((kotlin.g.a.a)new a(paramf, paramn));
+    AppMethodBeat.o(210592);
+    return true;
+  }
+  
+  public final int ePA()
+  {
+    return CDJ;
+  }
+  
+  public final String ePz()
+  {
+    return edq;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class a
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
     {
-      ae.e("MicroMsg.JsApiGetLocalImgData", localException.getMessage());
-      paramd.DQe.i(paraml.Efy, "getLocalImgData:fail", null);
-      AppMethodBeat.o(199399);
+      super();
     }
   }
   
-  public final int eSw()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.a<List<? extends String>>
   {
-    return ECX;
-  }
-  
-  public final String eSx()
-  {
-    return dLB;
+    public static final b Jxj;
+    
+    static
+    {
+      AppMethodBeat.i(210591);
+      Jxj = new b();
+      AppMethodBeat.o(210591);
+    }
+    
+    b()
+    {
+      super();
+    }
   }
 }
 

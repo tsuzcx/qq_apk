@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
-import d.g.a.m;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.m;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
 final class BizVideoDetailUI$g
   extends q
-  implements m<WebView, String, z>
+  implements m<WebView, String, x>
 {
-  public static final g ovb;
+  public static final g pIw;
   
   static
   {
     AppMethodBeat.i(7091);
-    ovb = new g();
+    pIw = new g();
     AppMethodBeat.o(7091);
   }
   

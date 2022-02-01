@@ -1,17 +1,22 @@
 package com.tencent.mm.protocal;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.normsg.a.b;
+import com.tencent.mm.network.b;
+import com.tencent.mm.network.b.a;
+import com.tencent.mm.plugin.normsg.a.d;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.cdi;
-import com.tencent.mm.protocal.protobuf.cdj;
-import com.tencent.mm.protocal.protobuf.eby;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.protocal.protobuf.aif;
+import com.tencent.mm.protocal.protobuf.cto;
+import com.tencent.mm.protocal.protobuf.ctp;
+import com.tencent.mm.protocal.protobuf.dfx;
+import com.tencent.mm.protocal.protobuf.ewf;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.nio.charset.StandardCharsets;
 
 public final class x
 {
@@ -19,13 +24,13 @@ public final class x
     extends l.d
     implements l.b
   {
-    public cdi FGX;
-    public byte[] FGk;
+    public cto KAi;
+    public byte[] Kzv;
     
     public a()
     {
       AppMethodBeat.i(133120);
-      this.FGX = new cdi();
+      this.KAi = new cto();
       AppMethodBeat.o(133120);
     }
     
@@ -43,15 +48,15 @@ public final class x
     {
       int k = -1;
       AppMethodBeat.i(133121);
-      setRsaInfo(ac.fkn());
-      this.FGX.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
-      this.FGX.setBaseRequest(l.a(this));
-      this.FGX.HpS = k.IwF;
-      afy localafy = new afy();
-      localafy.Gwi = 713;
+      setRsaInfo(ac.gtR());
+      this.KAi.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
+      this.KAi.setBaseRequest(l.a(this));
+      this.KAi.Myz = ChannelUtil.historyChannelId;
+      aif localaif = new aif();
+      localaif.LrO = 713;
       Object localObject2 = new PByteArray();
       Object localObject1 = new PByteArray();
-      int m = MMProtocalJni.generateECKey(localafy.Gwi, (PByteArray)localObject2, (PByteArray)localObject1);
+      int m = MMProtocalJni.generateECKey(localaif.LrO, (PByteArray)localObject2, (PByteArray)localObject1);
       byte[] arrayOfByte = ((PByteArray)localObject2).value;
       localObject2 = ((PByteArray)localObject1).value;
       int i;
@@ -60,49 +65,64 @@ public final class x
       if (localObject2 != null)
       {
         localObject1 = localObject2;
-        this.FGk = ((byte[])localObject1);
-        int n = localafy.Gwi;
+        this.Kzv = ((byte[])localObject1);
+        int n = localaif.LrO;
         if (arrayOfByte != null) {
-          break label405;
+          break label519;
         }
         i = -1;
         if (localObject2 != null) {
-          break label412;
+          break label526;
         }
         j = -1;
         label155:
-        ae.d("MicroMsg.MMReg2.Req", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), bu.cE(arrayOfByte), bu.cE((byte[])localObject2) });
-        localafy.FSl = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
-        this.FGX.FSp = localafy;
+        Log.d("MicroMsg.MMReg2.Req", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), Util.dumpHex(arrayOfByte), Util.dumpHex((byte[])localObject2) });
+        localaif.KLU = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
+        this.KAi.KLY = localaif;
       }
       for (;;)
       {
         try
         {
-          localObject1 = b.wJt.dye();
+          localObject1 = d.AEF.exJ();
           if (localObject1 == null) {
             continue;
           }
           i = localObject1.length;
-          ae.d("MicroMsg.MMReg2.Req", "[debug] ccd set on reg, len: %s", new Object[] { Integer.valueOf(i) });
-          localObject2 = new eby();
-          ((eby)localObject2).Ihs = new SKBuiltinBuffer_t().setBuffer((byte[])localObject1);
-          ((eby)localObject2).Ihw = new SKBuiltinBuffer_t().setBuffer(b.wJt.dyh());
+          Log.d("MicroMsg.MMReg2.Req", "[debug] ccd set on reg, len: %s", new Object[] { Integer.valueOf(i) });
+          localObject2 = new ewf();
+          ((ewf)localObject2).NtQ = new SKBuiltinBuffer_t().setBuffer((byte[])localObject1);
+          ((ewf)localObject2).NtU = new SKBuiltinBuffer_t().setBuffer(d.AEF.exM());
           i = k;
-          if (((eby)localObject2).Ihw != null) {
-            i = ((eby)localObject2).Ihw.getILen();
+          if (((ewf)localObject2).NtU != null) {
+            i = ((ewf)localObject2).NtU.getILen();
           }
-          ae.d("MicroMsg.MMReg2.Req", "[debug] devtok on reg, len: %s", new Object[] { Integer.valueOf(i) });
-          this.FGX.FSj = new SKBuiltinBuffer_t().setBuffer(((eby)localObject2).toByteArray());
+          Log.d("MicroMsg.MMReg2.Req", "[debug] devtok on reg, len: %s", new Object[] { Integer.valueOf(i) });
+          this.KAi.KLQ = new SKBuiltinBuffer_t().setBuffer(((ewf)localObject2).toByteArray());
         }
         catch (Throwable localThrowable)
         {
-          label405:
-          label412:
-          ae.printErrStackTrace("MicroMsg.MMReg2.Req", localThrowable, "cc throws exception.", new Object[0]);
+          label519:
+          label526:
+          Log.printErrStackTrace("MicroMsg.MMReg2.Req", localThrowable, "cc throws exception.", new Object[0]);
+          continue;
+          this.KAi.KLS.LrO = 0;
+          this.KAi.KLS.KLU = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+          Log.e("MicroMsg.MMReg2.Req", "get sign key failed");
           continue;
         }
-        localObject1 = this.FGX.toByteArray();
+        this.KAi.KLS = new dfx();
+        localObject1 = b.bjq().bjr();
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          continue;
+        }
+        this.KAi.KLS.LrO = b.bjq().jDB.LrO;
+        this.KAi.KLS.KLU = new SKBuiltinBuffer_t().setBuffer(((String)localObject1).getBytes(StandardCharsets.ISO_8859_1));
+        localObject1 = new b.a();
+        ((b.a)localObject1).jDD = b.bjq().bjr();
+        ((b.a)localObject1).jDC = b.bjq().jDC;
+        setCGiVerifyKey((b.a)localObject1);
+        localObject1 = this.KAi.toByteArray();
         AppMethodBeat.o(133121);
         return localObject1;
         localObject1 = new byte[0];
@@ -120,53 +140,53 @@ public final class x
     extends l.e
     implements l.c
   {
-    public cdj FGY;
-    public byte[] FGp;
-    private byte[] FGq;
-    public int gxH;
-    private byte[] iHg;
-    private byte[] iHh;
+    public ctp KAj;
+    public byte[] KzA;
+    private byte[] KzB;
+    public int hku;
+    private byte[] jDp;
+    private byte[] jDq;
     
     public b()
     {
       AppMethodBeat.i(133122);
-      this.FGY = new cdj();
-      this.gxH = 0;
+      this.KAj = new ctp();
+      this.hku = 0;
       AppMethodBeat.o(133122);
     }
     
-    public final byte[] aak(int paramInt)
+    public final byte[] aiZ(int paramInt)
     {
       switch (paramInt)
       {
       default: 
         return new byte[0];
       case 1: 
-        return this.FGq;
+        return this.KzB;
       case 2: 
-        return this.iHg;
+        return this.jDp;
       }
-      return this.iHh;
+      return this.jDq;
     }
     
     public final void b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
     {
       AppMethodBeat.i(133124);
-      this.FGq = paramArrayOfByte1;
-      this.iHg = paramArrayOfByte2;
-      this.iHh = paramArrayOfByte3;
-      ae.i("MicroMsg.MMReg2.Resp", "summerauths setSession [%s] [%s] [%s]", new Object[] { bu.aSM(bu.cE(this.FGq)), bu.aSM(bu.cE(this.iHg)), bu.aSM(bu.cE(this.iHh)) });
+      this.KzB = paramArrayOfByte1;
+      this.jDp = paramArrayOfByte2;
+      this.jDq = paramArrayOfByte3;
+      Log.i("MicroMsg.MMReg2.Resp", "summerauths setSession [%s] [%s] [%s]", new Object[] { Util.secPrint(Util.dumpHex(this.KzB)), Util.secPrint(Util.dumpHex(this.jDp)), Util.secPrint(Util.dumpHex(this.jDq)) });
       AppMethodBeat.o(133124);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133123);
-      this.gxH = 0;
-      this.FGY = ((cdj)new cdj().parseFrom(paramArrayOfByte));
-      l.a(this, this.FGY.getBaseResponse());
-      this.gxH = 0;
-      int i = this.FGY.getBaseResponse().Ret;
+      this.hku = 0;
+      this.KAj = ((ctp)new ctp().parseFrom(paramArrayOfByte));
+      l.a(this, this.KAj.getBaseResponse());
+      this.hku = 0;
+      int i = this.KAj.getBaseResponse().Ret;
       AppMethodBeat.o(133123);
       return i;
     }

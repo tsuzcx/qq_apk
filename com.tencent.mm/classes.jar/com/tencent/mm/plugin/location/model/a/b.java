@@ -1,53 +1,54 @@
 package com.tencent.mm.plugin.location.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bsk;
-import com.tencent.mm.protocal.protobuf.bsl;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cfe;
+import com.tencent.mm.protocal.protobuf.cff;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   public int errCode;
   public String errMsg;
   public int errType;
-  private Runnable ips;
-  public String kuP;
-  public final com.tencent.mm.ak.b rr;
-  public String vlA;
+  private Runnable jkz;
+  public String qwG;
+  public final d rr;
+  public String yFs;
   
   public b(String paramString)
   {
     AppMethodBeat.i(55788);
-    this.vlA = "";
-    b.a locala = new b.a();
-    locala.hQF = new bsk();
-    locala.hQG = new bsl();
+    this.yFs = "";
+    d.a locala = new d.a();
+    locala.iLN = new cfe();
+    locala.iLO = new cff();
     locala.uri = "/cgi-bin/micromsg-bin/jointrackroom";
     locala.funcId = 490;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((bsk)this.rr.hQD.hQJ).Hgj = paramString;
-    ae.d("MicroMsg.NetSceneJoinTrackRoom", "chatNameId:".concat(String.valueOf(paramString)));
+    this.rr = locala.aXF();
+    ((cfe)this.rr.iLK.iLR).Mls = paramString;
+    Log.d("MicroMsg.NetSceneJoinTrackRoom", "chatNameId:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(55788);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(55789);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(55789);
     return i;
   }
@@ -57,29 +58,29 @@ public final class b
     return 490;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(55790);
     this.errType = paramInt2;
     this.errCode = paramInt3;
     this.errMsg = paramString;
-    if (((com.tencent.mm.ak.b)paramq).hQE.hQJ != null) {}
-    for (paramq = (bsl)((com.tencent.mm.ak.b)paramq).hQE.hQJ;; paramq = null)
+    if (((d)params).iLL.iLR != null) {}
+    for (params = (cff)((d)params).iLL.iLR;; params = null)
     {
-      ae.d("MicroMsg.NetSceneJoinTrackRoom", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      if (((paramInt3 == 0) || (paramInt3 >= 1000)) && (paramq != null))
+      Log.d("MicroMsg.NetSceneJoinTrackRoom", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      if (((paramInt3 == 0) || (paramInt3 >= 1000)) && (params != null))
       {
-        this.vlA = paramq.GxB;
-        ae.d("MicroMsg.NetSceneJoinTrackRoom", "get trackRoomid %s", new Object[] { this.vlA });
+        this.yFs = params.Ltk;
+        Log.d("MicroMsg.NetSceneJoinTrackRoom", "get trackRoomid %s", new Object[] { this.yFs });
       }
-      if (paramq != null) {
-        this.kuP = paramq.FUM;
+      if (params != null) {
+        this.qwG = params.KOu;
       }
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      if (this.ips != null) {
-        this.ips.run();
+      if (this.jkz != null) {
+        this.jkz.run();
       }
       AppMethodBeat.o(55790);
       return;

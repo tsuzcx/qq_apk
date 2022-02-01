@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class kr
-  extends b
+  extends IEvent
 {
-  public a dyJ;
+  public a dPL;
   
   public kr()
   {
@@ -15,21 +15,22 @@ public final class kr
   
   private kr(byte paramByte)
   {
-    AppMethodBeat.i(195258);
-    this.dyJ = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(121034);
+    this.dPL = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(195258);
+    AppMethodBeat.o(121034);
   }
   
   public static final class a
   {
-    public int action;
+    public String dPI;
+    public String dPM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.kr
  * JD-Core Version:    0.7.0.1
  */

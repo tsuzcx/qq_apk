@@ -4,9 +4,9 @@ import android.app.Notification;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,121 +14,121 @@ import java.util.List;
 
 public final class d
 {
-  public static Class<? extends CustomBackgroundRunningNotificationLogic> Nt(String paramString)
+  public static Class<? extends CustomBackgroundRunningNotificationLogic> WB(String paramString)
   {
-    AppMethodBeat.i(222206);
+    AppMethodBeat.i(226447);
     try
     {
       paramString = Class.forName(paramString);
-      AppMethodBeat.o(222206);
+      AppMethodBeat.o(226447);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "getCustomNotificationLogicClass fail since " + paramString.toString());
-      AppMethodBeat.o(222206);
+      Log.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "getCustomNotificationLogicClass fail since " + paramString.toString());
+      AppMethodBeat.o(226447);
     }
     return null;
   }
   
-  public static List<b> be(List<AppBrandBackgroundRunningApp> paramList)
+  public static List<b> bp(List<AppBrandBackgroundRunningApp> paramList)
   {
-    AppMethodBeat.i(222205);
+    AppMethodBeat.i(226446);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, apps is null");
-      AppMethodBeat.o(222205);
+      Log.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, apps is null");
+      AppMethodBeat.o(226446);
       return null;
     }
-    ae.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, apps:%s", new Object[] { paramList });
+    Log.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, apps:%s", new Object[] { paramList });
     ArrayList localArrayList = new ArrayList(paramList.size());
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
-      if ((bu.isNullOrNil(localAppBrandBackgroundRunningApp.jVj)) || (bu.isNullOrNil(localAppBrandBackgroundRunningApp.appId)))
+      if ((Util.isNullOrNil(localAppBrandBackgroundRunningApp.kYf)) || (Util.isNullOrNil(localAppBrandBackgroundRunningApp.appId)))
       {
-        ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogicClassName:%s, appId: %s", new Object[] { localAppBrandBackgroundRunningApp.jVj, localAppBrandBackgroundRunningApp.appId });
+        Log.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogicClassName:%s, appId: %s", new Object[] { localAppBrandBackgroundRunningApp.kYf, localAppBrandBackgroundRunningApp.appId });
       }
       else
       {
-        p localp = a.KI(localAppBrandBackgroundRunningApp.appId);
-        if (localp == null)
+        q localq = a.TQ(localAppBrandBackgroundRunningApp.appId);
+        if (localq == null)
         {
-          ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, runtime of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
+          Log.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, runtime of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
         }
         else
         {
-          paramList = Nt(localAppBrandBackgroundRunningApp.jVj);
+          paramList = WB(localAppBrandBackgroundRunningApp.kYf);
           if (paramList == null)
           {
-            ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogicClass of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
+            Log.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogicClass of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
           }
           else
           {
-            CustomBackgroundRunningNotificationLogic localCustomBackgroundRunningNotificationLogic = (CustomBackgroundRunningNotificationLogic)localp.as(paramList);
+            CustomBackgroundRunningNotificationLogic localCustomBackgroundRunningNotificationLogic = (CustomBackgroundRunningNotificationLogic)localq.aw(paramList);
             paramList = localCustomBackgroundRunningNotificationLogic;
             if (localCustomBackgroundRunningNotificationLogic == null)
             {
-              paramList = cA(localAppBrandBackgroundRunningApp.jVj, localAppBrandBackgroundRunningApp.appId);
+              paramList = cO(localAppBrandBackgroundRunningApp.kYf, localAppBrandBackgroundRunningApp.appId);
               if (paramList == null) {
-                ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogic of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
+                Log.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildCustomForegroundNotifications, customNotificationLogic of %s is null", new Object[] { localAppBrandBackgroundRunningApp.appId });
               } else {
-                localp.a(paramList);
+                localq.a(paramList);
               }
             }
             else
             {
-              paramList.bdz();
-              localArrayList.add(new b(paramList.bdx(), paramList.bdy()));
+              paramList.byQ();
+              localArrayList.add(new b(paramList.byP(), paramList.getNotificationId()));
             }
           }
         }
       }
     }
-    AppMethodBeat.o(222205);
+    AppMethodBeat.o(226446);
     return localArrayList;
   }
   
-  private static CustomBackgroundRunningNotificationLogic cA(String paramString1, String paramString2)
+  private static CustomBackgroundRunningNotificationLogic cO(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(222207);
-    ae.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "createCustomNotificationLogic, customNotificationLogicClassName:%s, appId: %s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.i(226448);
+    Log.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "createCustomNotificationLogic, customNotificationLogicClassName:%s, appId: %s", new Object[] { paramString1, paramString2 });
     try
     {
-      paramString1 = (CustomBackgroundRunningNotificationLogic)Nt(paramString1).getConstructor(new Class[] { String.class }).newInstance(new Object[] { paramString2 });
-      AppMethodBeat.o(222207);
+      paramString1 = (CustomBackgroundRunningNotificationLogic)WB(paramString1).getConstructor(new Class[] { String.class }).newInstance(new Object[] { paramString2 });
+      AppMethodBeat.o(226448);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      ae.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "createCustomNotificationLogic fail since " + paramString1.toString());
-      AppMethodBeat.o(222207);
+      Log.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "createCustomNotificationLogic fail since " + paramString1.toString());
+      AppMethodBeat.o(226448);
     }
     return null;
   }
   
   public static final class a
   {
-    public List<AppBrandBackgroundRunningApp> jVA;
-    public List<AppBrandBackgroundRunningApp> jVB;
+    public List<AppBrandBackgroundRunningApp> kYw;
+    public List<AppBrandBackgroundRunningApp> kYx;
   }
   
   public static final class b
   {
-    public final Notification jVC;
+    public final Notification kYy;
     public final int notificationId;
     
     public b(Notification paramNotification, int paramInt)
     {
-      this.jVC = paramNotification;
+      this.kYy = paramNotification;
       this.notificationId = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.d
  * JD-Core Version:    0.7.0.1
  */

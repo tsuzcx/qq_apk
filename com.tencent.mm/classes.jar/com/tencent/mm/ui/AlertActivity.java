@@ -15,18 +15,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.a;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
+import junit.framework.Assert;
 
 public class AlertActivity
   extends AppCompatActivity
 {
-  private static d.a Fop;
-  private boolean Jnb = false;
-  private DialogInterface.OnDismissListener dJr;
-  private DialogInterface.OnCancelListener yFr;
+  private static d.a Kfg;
+  private DialogInterface.OnCancelListener CJj;
+  private boolean OwV = false;
+  private DialogInterface.OnDismissListener ebe;
   
   public static void a(d.a parama)
   {
-    Fop = parama;
+    Kfg = parama;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -38,14 +39,15 @@ public class AlertActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setStatusBarColor(getResources().getColor(17170445));
     }
-    this.Jnb = getIntent().getBooleanExtra("dialog_show_top", false);
+    this.OwV = getIntent().getBooleanExtra("dialog_show_top", false);
+    Assert.assertNotNull(Kfg);
     Window localWindow;
-    if (Fop != null)
+    if (Kfg != null)
     {
-      Fop.mContext = this;
-      this.dJr = Fop.LsP.XM;
-      this.yFr = Fop.LsP.XL;
-      Fop.a(new DialogInterface.OnDismissListener()
+      Kfg.mContext = this;
+      this.ebe = Kfg.QNF.XZ;
+      this.CJj = Kfg.QNF.XY;
+      Kfg.a(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -57,7 +59,7 @@ public class AlertActivity
           AppMethodBeat.o(159081);
         }
       });
-      Fop.e(new DialogInterface.OnCancelListener()
+      Kfg.f(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -69,14 +71,14 @@ public class AlertActivity
           AppMethodBeat.o(159082);
         }
       });
-      paramBundle = Fop.fQv();
-      if (this.Jnb)
+      paramBundle = Kfg.hbn();
+      if (this.OwV)
       {
         localWindow = paramBundle.getWindow();
         if (localWindow != null)
         {
           if (Build.VERSION.SDK_INT < 26) {
-            break label217;
+            break label223;
           }
           localWindow.setType(2038);
         }
@@ -84,16 +86,16 @@ public class AlertActivity
     }
     for (;;)
     {
-      ap.d("MicroMsg.AlertActivity", "show top window not null!!", new Object[0]);
+      as.d("MicroMsg.AlertActivity", "show top window not null!!", new Object[0]);
       paramBundle.show();
       if (!paramBundle.isShowing())
       {
-        ap.e("MicroMsg.AlertActivity", "show dialog FAILED, finish AlertActivity!", new Object[0]);
+        as.e("MicroMsg.AlertActivity", "show dialog FAILED, finish AlertActivity!", new Object[0]);
         finish();
       }
       AppMethodBeat.o(159083);
       return;
-      label217:
+      label223:
       localWindow.setType(2002);
     }
   }
@@ -102,7 +104,7 @@ public class AlertActivity
   {
     AppMethodBeat.i(159085);
     super.onDestroy();
-    Fop = null;
+    Kfg = null;
     AppMethodBeat.o(159085);
   }
   

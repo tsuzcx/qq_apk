@@ -4,29 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class y
 {
-  public static boolean C(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(140860);
-    if ((paramString1 == null) || (paramString1.length() < 0) || (paramString2.length() < 0))
-    {
-      AppMethodBeat.o(140860);
-      return false;
-    }
-    if (paramString2.length() > paramString1.length())
-    {
-      AppMethodBeat.o(140860);
-      return false;
-    }
-    if (paramString2.equalsIgnoreCase(paramString1.substring(0, paramString2.length())))
-    {
-      AppMethodBeat.o(140860);
-      return true;
-    }
-    AppMethodBeat.o(140860);
-    return false;
-  }
-  
-  public static String VM(String paramString)
+  public static String afI(String paramString)
   {
     AppMethodBeat.i(140859);
     if (paramString == null)
@@ -41,7 +19,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.y
  * JD-Core Version:    0.7.0.1
  */

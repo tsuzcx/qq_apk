@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.finder.video;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
-import android.os.Bundle;
 import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Size;
 import android.view.Surface;
 import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
@@ -16,148 +18,234 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ab.i;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.i.g.b;
-import com.tencent.mm.i.h;
 import com.tencent.mm.i.h.a;
-import com.tencent.mm.plugin.finder.loader.m;
+import com.tencent.mm.plugin.finder.model.at;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.FeedData;
+import com.tencent.mm.plugin.finder.storage.data.j;
 import com.tencent.mm.plugin.thumbplayer.PluginThumbPlayer;
 import com.tencent.mm.plugin.thumbplayer.b.a.e;
-import com.tencent.mm.plugin.thumbplayer.b.e;
-import com.tencent.mm.plugin.thumbplayer.texture.MMThumbPlayerTextureView;
+import com.tencent.mm.plugin.thumbplayer.e.d.a;
+import com.tencent.mm.plugin.thumbplayer.view.MMThumbPlayerTextureView;
+import com.tencent.mm.plugin.thumbplayer.view.MMThumbPlayerTextureView.a;
 import com.tencent.mm.pluginsdk.ui.i.b;
 import com.tencent.mm.pluginsdk.ui.i.e;
 import com.tencent.mm.protocal.protobuf.FinderMediaReportObject;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.thumbplayer.b.b.c;
-import com.tencent.thumbplayer.b.b.d;
-import com.tencent.thumbplayer.b.b.f;
-import com.tencent.thumbplayer.b.b.h;
-import com.tencent.thumbplayer.b.i.c;
-import com.tencent.thumbplayer.b.p.a;
+import com.tencent.mm.protocal.protobuf.aty;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.thumbplayer.api.ITPPlayer;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnCompletionListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnErrorListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnInfoListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnPreparedListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnStateChangeListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoSizeChangedListener;
+import com.tencent.thumbplayer.api.TPOptionalParam;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
+import com.tencent.thumbplayer.api.TPVideoInfo.Builder;
+import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
+import com.tencent.tmediacodec.e.b.a;
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "bgPrepareStatus", "downloadCallback", "Lcom/tencent/mm/plugin/finder/video/VideoDownloaderCallback;", "getDownloadCallback", "()Lcom/tencent/mm/plugin/finder/video/VideoDownloaderCallback;", "setDownloadCallback", "(Lcom/tencent/mm/plugin/finder/video/VideoDownloaderCallback;)V", "firstStart", "", "getFirstStart", "()Z", "setFirstStart", "(Z)V", "isOpenFlowControl", "isPreviewing", "isShouldPlayResume", "setShouldPlayResume", "isStartCdn", "setStartCdn", "isStartCdnPreload", "setStartCdnPreload", "isStartProgressTimer", "setStartProgressTimer", "isViewFocused", "setViewFocused", "isWaiting", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "getLifecycle", "()Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setLifecycle", "(Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;)V", "mediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getMediaInfo", "()Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "setMediaInfo", "(Lcom/tencent/mm/plugin/finder/video/MediaInfo;)V", "mediaPreloadCore", "Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "getMediaPreloadCore", "()Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "setMediaPreloadCore", "(Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;)V", "onMuteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "getOnMuteListener", "()Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setOnMuteListener", "(Lcom/tencent/mm/plugin/finder/video/OnMuteListener;)V", "onPlayerStopListener", "Lcom/tencent/mm/plugin/finder/video/OnPlayerRecycleListener;", "getOnPlayerStopListener", "()Lcom/tencent/mm/plugin/finder/video/OnPlayerRecycleListener;", "setOnPlayerStopListener", "(Lcom/tencent/mm/plugin/finder/video/OnPlayerRecycleListener;)V", "progressTimer", "Ljava/util/Timer;", "getProgressTimer", "()Ljava/util/Timer;", "setProgressTimer", "(Ljava/util/Timer;)V", "resourceLoaderProxy", "Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy;", "getResourceLoaderProxy", "()Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy;", "setResourceLoaderProxy", "(Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy;)V", "surface", "Landroid/view/Surface;", "textureUpdateTimes", "textureView", "Lcom/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView;", "tpPlayer", "Lcom/tencent/mm/plugin/thumbplayer/player/IMMTPPlayer;", "videoViewCallback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "getVideoViewCallback", "()Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "setVideoViewCallback", "(Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;)V", "waitingHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "basePlayInfo", "getBitmap", "Landroid/graphics/Bitmap;", "getCurrentPlaySecond", "getCurrentPlayerState", "getIsNeverStart", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getVideoDuration", "getVideoMediaId", "getVideoMediaInfo", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "init", "", "initTextureView", "isPause", "isPlaying", "isPrepared", "isPreparing", "isStartPlay", "onRelease", "onUIDestroy", "pause", "pauseWithCancel", "play", "playWithSource", "source", "prepareToPlay", "prepareVideo", "realPlay", "releaseSurface", "detach", "removeVideoFooterView", "seekTo", "timestamp", "", "afterSeekPlay", "setBgPrepareStatus", "status", "setFinderVideoCore", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "setIMMVideoViewCallback", "_callback", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setLoop", "loop", "setMute", "isMute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "isLocal", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setVideoMuteListener", "muteListener", "setVideoPlayLifecycle", "setVideoViewFocused", "focused", "showErrToast", "stage", "ret", "startCdnDownload", "startCdnPreload", "startOrPlay", "startProgressTimer", "info", "stop", "stopCdnDownload", "stopCdnPreload", "stopProgressTimer", "Companion", "ResourceLoaderProxy", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bgPrepareStatus", "currentPlayState", "downloadCallback", "Lcom/tencent/mm/plugin/finder/video/VideoDownloaderCallback;", "getDownloadCallback", "()Lcom/tencent/mm/plugin/finder/video/VideoDownloaderCallback;", "setDownloadCallback", "(Lcom/tencent/mm/plugin/finder/video/VideoDownloaderCallback;)V", "enableMediaCodecReuse", "", "fTPPKVReporter", "Lcom/tencent/mm/plugin/finder/video/reporter/FTPPKVReporter;", "getFTPPKVReporter", "()Lcom/tencent/mm/plugin/finder/video/reporter/FTPPKVReporter;", "fTPPKVReporter$delegate", "Lkotlin/Lazy;", "fTPPLog", "Lcom/tencent/mm/plugin/finder/video/log/FTPPLog;", "getFTPPLog", "()Lcom/tencent/mm/plugin/finder/video/log/FTPPLog;", "fTPPLog$delegate", "isBuffering", "isFirstFrameRendered", "isFirstStart", "isFullScreen", "()Z", "setFullScreen", "(Z)V", "isLongVideo", "isOpenFlowControl", "isPreviewing", "isRealStartDownloader", "Ljava/util/concurrent/atomic/AtomicBoolean;", "isShouldPlayResume", "setShouldPlayResume", "isStartCdn", "setStartCdn", "isStartCdnPreload", "setStartCdnPreload", "isViewFocused", "setViewFocused", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "getLifecycle", "()Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setLifecycle", "(Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;)V", "mediaPreloadCore", "Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "getMediaPreloadCore$plugin_finder_release", "()Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "setMediaPreloadCore$plugin_finder_release", "(Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;)V", "mediaSource", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "notifyProgressTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "onBufferingStartRunnable", "Ljava/lang/Runnable;", "onMuteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "getOnMuteListener", "()Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setOnMuteListener", "(Lcom/tencent/mm/plugin/finder/video/OnMuteListener;)V", "onPlayerStopListener", "Lcom/tencent/mm/plugin/finder/video/OnPlayerRecycleListener;", "getOnPlayerStopListener", "()Lcom/tencent/mm/plugin/finder/video/OnPlayerRecycleListener;", "setOnPlayerStopListener", "(Lcom/tencent/mm/plugin/finder/video/OnPlayerRecycleListener;)V", "player", "Lcom/tencent/mm/plugin/thumbplayer/player/IMMTPPlayer;", "playerConfig", "Lcom/tencent/mm/plugin/finder/video/reporter/PlayerConfig;", "playerListener", "Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$TPPlayerListener;", "resourceLoaderProxy", "Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy;", "surface", "Landroid/view/Surface;", "textureUpdateTimes", "textureView", "Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "uiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "videoViewCallback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "getVideoViewCallback", "()Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "setVideoViewCallback", "(Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;)V", "getBitmap", "Landroid/graphics/Bitmap;", "getCurrentPlayMs", "", "getCurrentPlaySecond", "getFTPPTag", "", "getIsNeverStart", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getVideoDuration", "getVideoDurationMs", "getVideoMediaId", "", "getVideoMediaInfo", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "handleOnBufferingEnd", "handleOnBufferingStart", "mediaId", "init", "initFTPPTag", "feed", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "initTextureView", "mediaInfo", "isPause", "isPlaying", "isPrepared", "isPreparing", "isStartPlay", "currentState", "onRelease", "onUIDestroy", "pause", "pauseWithCancel", "play", "playInfo", "playWithSource", "source", "prepareCacheFile", "filePath", "invokeSource", "prepareOnlineUrl", "url", "prepareToPlay", "prepareVideo", "realPlay", "releaseSurface", "detach", "removeVideoFooterView", "resizeTextureView", "width", "height", "seekTo", "timestamp", "", "afterSeekPlay", "setBgPrepareStatus", "status", "setFinderVideoCore", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "setIMMVideoViewCallback", "_callback", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setLoop", "loop", "setMute", "isMute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "isLocal", "feedData", "setVideoMuteListener", "muteListener", "setVideoPlayLifecycle", "setVideoViewFocused", "focused", "startCdnDownload", "startCdnPreload", "startOrPlay", "startProgressTimer", "info", "stop", "stopCdnDownload", "stopCdnPreload", "stopProgressTimer", "updateIsRealStartDownloader", "isRealStart", "Companion", "ResourceLoaderProxy", "TPPlayerListener", "plugin-finder_release"})
 public final class FinderThumbPlayerProxy
   extends FrameLayout
-  implements o
+  implements r
 {
-  private static final HashSet<Integer> sZA;
-  public static final FinderThumbPlayerProxy.a sZB;
-  private final String TAG;
-  private boolean isWaiting;
-  private boolean rzb;
-  private com.tencent.mm.plugin.thumbplayer.c.a sZf;
-  private MMThumbPlayerTextureView sZg;
-  private int sZh;
-  private boolean sZi;
-  private int sZj;
-  private Timer sZk;
-  private r sZl;
-  boolean sZm;
-  private boolean sZn;
-  private boolean sZo;
-  private boolean sZp;
-  private boolean sZq;
-  private boolean sZr;
-  private p sZs;
-  private b sZt;
-  private i.b sZu;
-  private u sZv;
-  private q sZw;
-  private t sZx;
-  private MediaPreloadCore sZy;
-  private aq sZz;
+  private static String TAG;
+  private static final HashSet<Integer> wdW;
+  public static final a wdX;
+  private boolean bbU;
+  private volatile int currentPlayState;
+  private MMHandler hAk;
+  private boolean isLongVideo;
+  private boolean onr;
+  private boolean sZd;
   private Surface surface;
+  private s tHL;
+  private com.tencent.mm.plugin.finder.video.reporter.c tHS;
+  boolean wcA;
+  private boolean wcB;
+  private i.b wcv;
+  private y wcw;
+  private boolean wdB;
+  private com.tencent.mm.plugin.thumbplayer.e.a wdC;
+  private c wdD;
+  public MMThumbPlayerTextureView wdE;
+  private volatile boolean wdF;
+  private MediaPreloadCore wdG;
+  private b wdH;
+  private boolean wdI;
+  private int wdJ;
+  private final kotlin.f wdK;
+  private final kotlin.f wdL;
+  private MTimerHandler wdM;
+  private Runnable wdN;
+  private int wdO;
+  private u wdP;
+  private AtomicBoolean wdQ;
+  private boolean wdR;
+  private t wdS;
+  private x wdT;
+  private boolean wdU;
+  private boolean wdV;
   
   static
   {
-    AppMethodBeat.i(205350);
-    sZB = new FinderThumbPlayerProxy.a((byte)0);
-    sZA = new HashSet();
-    AppMethodBeat.o(205350);
+    AppMethodBeat.i(254193);
+    wdX = new a((byte)0);
+    TAG = "Finder.FinderThumbPlayerProxy";
+    wdW = new HashSet();
+    AppMethodBeat.o(254193);
   }
   
   public FinderThumbPlayerProxy(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(205347);
-    this.TAG = "Finder.FinderThumbPlayerProxy";
-    paramContext = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.thumbplayer.a.a.class);
-    d.g.b.p.g(paramContext, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-    this.sZi = ((com.tencent.mm.plugin.thumbplayer.a.a)paramContext).isOpenTPFlowControl();
-    this.sZp = true;
-    this.sZz = new aq(Looper.getMainLooper(), (aq.a)new p(this));
-    init();
-    AppMethodBeat.o(205347);
+    AppMethodBeat.i(254190);
+    paramContext = com.tencent.mm.plugin.finder.storage.c.vCb;
+    if (((Number)com.tencent.mm.plugin.finder.storage.c.dvT().value()).intValue() == 1)
+    {
+      paramContext = com.tencent.mm.plugin.finder.storage.c.vCb;
+      if (!com.tencent.mm.plugin.finder.storage.c.drB()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.wdB = bool;
+      this.wdI = true;
+      this.wdK = kotlin.g.ah((kotlin.g.a.a)d.wei);
+      this.wdL = kotlin.g.ah((kotlin.g.a.a)e.wej);
+      this.hAk = new MMHandler(Looper.getMainLooper());
+      this.wdQ = new AtomicBoolean(true);
+      init();
+      AppMethodBeat.o(254190);
+      return;
+    }
   }
   
   public FinderThumbPlayerProxy(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(205348);
-    this.TAG = "Finder.FinderThumbPlayerProxy";
-    paramContext = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.thumbplayer.a.a.class);
-    d.g.b.p.g(paramContext, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-    this.sZi = ((com.tencent.mm.plugin.thumbplayer.a.a)paramContext).isOpenTPFlowControl();
-    this.sZp = true;
-    this.sZz = new aq(Looper.getMainLooper(), (aq.a)new p(this));
-    init();
-    AppMethodBeat.o(205348);
+    AppMethodBeat.i(254191);
+    paramContext = com.tencent.mm.plugin.finder.storage.c.vCb;
+    if (((Number)com.tencent.mm.plugin.finder.storage.c.dvT().value()).intValue() == 1)
+    {
+      paramContext = com.tencent.mm.plugin.finder.storage.c.vCb;
+      if (!com.tencent.mm.plugin.finder.storage.c.drB()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.wdB = bool;
+      this.wdI = true;
+      this.wdK = kotlin.g.ah((kotlin.g.a.a)d.wei);
+      this.wdL = kotlin.g.ah((kotlin.g.a.a)e.wej);
+      this.hAk = new MMHandler(Looper.getMainLooper());
+      this.wdQ = new AtomicBoolean(true);
+      init();
+      AppMethodBeat.o(254191);
+      return;
+    }
   }
   
   public FinderThumbPlayerProxy(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(205349);
-    this.TAG = "Finder.FinderThumbPlayerProxy";
-    paramContext = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.thumbplayer.a.a.class);
-    d.g.b.p.g(paramContext, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-    this.sZi = ((com.tencent.mm.plugin.thumbplayer.a.a)paramContext).isOpenTPFlowControl();
-    this.sZp = true;
-    this.sZz = new aq(Looper.getMainLooper(), (aq.a)new p(this));
-    init();
-    AppMethodBeat.o(205349);
+    AppMethodBeat.i(254192);
+    paramContext = com.tencent.mm.plugin.finder.storage.c.vCb;
+    if (((Number)com.tencent.mm.plugin.finder.storage.c.dvT().value()).intValue() == 1)
+    {
+      paramContext = com.tencent.mm.plugin.finder.storage.c.vCb;
+      if (!com.tencent.mm.plugin.finder.storage.c.drB()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.wdB = bool;
+      this.wdI = true;
+      this.wdK = kotlin.g.ah((kotlin.g.a.a)d.wei);
+      this.wdL = kotlin.g.ah((kotlin.g.a.a)e.wej);
+      this.hAk = new MMHandler(Looper.getMainLooper());
+      this.wdQ = new AtomicBoolean(true);
+      init();
+      AppMethodBeat.o(254192);
+      return;
+    }
   }
   
-  private final boolean Gy(int paramInt)
+  private final boolean Md(int paramInt)
   {
-    com.tencent.mm.plugin.thumbplayer.c.a locala = null;
-    AppMethodBeat.i(205319);
-    Object localObject2 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("prepareVideo source:").append(paramInt).append(" isAllCompleted:");
-    Object localObject1 = this.sZt;
+    com.tencent.mm.plugin.thumbplayer.e.a locala = null;
+    AppMethodBeat.i(254165);
+    Object localObject2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder("prepareVideo() source:").append(paramInt).append(" isMoovReady:");
+    Object localObject1 = this.wdH;
     if (localObject1 != null)
     {
-      localObject1 = ((b)localObject1).ssB;
+      localObject1 = ((b)localObject1).uJG;
       if (localObject1 != null)
       {
-        localObject1 = Boolean.valueOf(((com.tencent.mm.plugin.finder.model.z)localObject1).cEJ());
-        localStringBuilder = localStringBuilder.append(localObject1).append(" isMoovReady:");
-        localObject1 = this.sZt;
+        localObject1 = Boolean.valueOf(((at)localObject1).field_moovReady);
+        localStringBuilder = localStringBuilder.append(localObject1).append(' ').append("isAllCompleted:");
+        localObject1 = this.wdH;
         if (localObject1 == null) {
-          break label257;
+          break label369;
         }
-        localObject1 = ((b)localObject1).ssB;
+        localObject1 = ((b)localObject1).uJG;
         if (localObject1 == null) {
-          break label257;
+          break label369;
+        }
+        localObject1 = Boolean.valueOf(((at)localObject1).dkN());
+        label106:
+        localStringBuilder = localStringBuilder.append(localObject1).append(' ').append("downloadUrl:");
+        localObject1 = this.tHL;
+        if (localObject1 == null) {
+          break label374;
         }
       }
     }
-    label257:
-    for (localObject1 = Boolean.valueOf(((com.tencent.mm.plugin.finder.model.z)localObject1).field_moovReady);; localObject1 = null)
+    label369:
+    label374:
+    for (localObject1 = ((s)localObject1).downloadUrl;; localObject1 = null)
     {
-      ae.i((String)localObject2, localObject1 + ' ' + cOK());
+      Log.i((String)localObject2, (String)localObject1 + ' ' + dFm());
+      localObject1 = this.wdH;
+      if (localObject1 != null) {
+        ((b)localObject1).dFt();
+      }
+      localObject1 = this.wdH;
+      if (localObject1 == null) {
+        break label379;
+      }
+      localObject1 = ((b)localObject1).uJG;
+      if ((localObject1 == null) || ((!((at)localObject1).field_moovReady) && (!((at)localObject1).dkN()) && (!(this.tHL instanceof com.tencent.mm.plugin.finder.video.source.a)))) {
+        break label379;
+      }
+      localObject1 = this.wdC;
+      if (localObject1 == null) {
+        p.btv("player");
+      }
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).setPlayerOptionalParam(new TPOptionalParam().buildBoolean(123, this.wdB));
+      localObject1 = this.wdC;
+      if (localObject1 == null) {
+        p.btv("player");
+      }
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).enableTPAssetResourceLoader((com.tencent.thumbplayer.e.a.a)this.wdH);
       localObject2 = this.surface;
       if (localObject2 != null)
       {
@@ -167,83 +255,114 @@ public final class FinderThumbPlayerProxy
         }
         if (localObject1 != null)
         {
-          locala = this.sZf;
+          locala = this.wdC;
           if (locala == null) {
-            d.g.b.p.bdF("tpPlayer");
+            p.btv("player");
           }
           locala.setSurface((Surface)localObject1);
         }
       }
-      localObject1 = this.sZt;
-      if (localObject1 != null) {
-        ((b)localObject1).cOW();
-      }
-      localObject1 = this.sZt;
+      localObject1 = this.wdC;
       if (localObject1 == null) {
-        break label262;
+        p.btv("player");
       }
-      localObject1 = ((b)localObject1).ssB;
-      if ((localObject1 == null) || ((!((com.tencent.mm.plugin.finder.model.z)localObject1).field_moovReady) && (!((com.tencent.mm.plugin.finder.model.z)localObject1).cEJ()))) {
-        break label262;
-      }
-      localObject1 = this.sZf;
-      if (localObject1 == null) {
-        d.g.b.p.bdF("tpPlayer");
-      }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).prepareAsync();
-      AppMethodBeat.o(205319);
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).prepareAsync();
+      AppMethodBeat.o(254165);
       return true;
       localObject1 = null;
       break;
+      localObject1 = null;
+      break label106;
     }
-    label262:
-    AppMethodBeat.o(205319);
+    label379:
+    AppMethodBeat.o(254165);
     return false;
   }
   
-  private final void a(final p paramp)
+  private static boolean Me(int paramInt)
   {
-    AppMethodBeat.i(205320);
-    if (!this.sZo)
-    {
-      ae.i(this.TAG, "startProgressTimer " + cOK());
-      this.sZk = new Timer();
-      Timer localTimer = this.sZk;
-      if (localTimer != null) {
-        localTimer.scheduleAtFixedRate((TimerTask)new m(this, paramp), 0L, 1000L);
-      }
-      this.sZo = true;
-    }
-    AppMethodBeat.o(205320);
-  }
-  
-  private final boolean bpC()
-  {
-    AppMethodBeat.i(205344);
-    switch (getCurrentPlayerState())
+    switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(205344);
       return false;
     }
-    AppMethodBeat.o(205344);
     return true;
   }
   
-  private final String cOK()
+  private final void O(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(205307);
+    AppMethodBeat.i(254182);
+    if (TextUtils.isEmpty((CharSequence)paramString2))
+    {
+      Log.w(TAG, "prepareCacheFile(), return for online url:".concat(String.valueOf(paramString2)));
+      AppMethodBeat.o(254182);
+      return;
+    }
+    paramString2 = com.tencent.mm.vfs.s.k(paramString2, false);
+    Log.i(TAG, "prepareCacheFile(), cache file:" + paramString2 + ", isExists:" + com.tencent.mm.vfs.s.YS(paramString2) + ' ' + dFm());
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
+    if (locala == null) {
+      p.btv("player");
+    }
+    locala.setMediaId(paramString1);
+    paramString1 = this.wdC;
+    if (paramString1 == null) {
+      p.btv("player");
+    }
+    paramString1.setDataSource(paramString2);
+    Md(paramInt);
+    AppMethodBeat.o(254182);
+  }
+  
+  private final void a(final s params)
+  {
+    AppMethodBeat.i(254188);
+    Log.i(TAG, "startProgressTimer " + dFm());
+    if (this.wdM != null)
+    {
+      Log.w(TAG, "startProgressTimer return for :" + this.wdM);
+      AppMethodBeat.o(254188);
+      return;
+    }
+    this.wdM = new MTimerHandler(Looper.getMainLooper(), (MTimerHandler.CallBack)new l(this, params), true);
+    params = this.wdM;
+    if (params != null) {
+      params.setLogging(false);
+    }
+    params = this.wdM;
+    if (params != null)
+    {
+      params.startTimer(0L, 16L);
+      AppMethodBeat.o(254188);
+      return;
+    }
+    AppMethodBeat.o(254188);
+  }
+  
+  private final boolean asa()
+  {
+    switch (this.currentPlayState)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  private final String dFm()
+  {
+    AppMethodBeat.i(254150);
     Object localObject1 = new StringBuilder("loader:");
-    Object localObject2 = this.sZt;
+    Object localObject2 = this.wdH;
     int i;
     if (localObject2 != null)
     {
       i = ((b)localObject2).hashCode();
       StringBuilder localStringBuilder = ((StringBuilder)localObject1).append(i).append(" proxy:").append(hashCode()).append(" mediaId: ");
-      localObject1 = this.sZs;
+      localObject1 = this.tHL;
       if (localObject1 != null)
       {
-        localObject2 = ((p)localObject1).mediaId;
+        localObject2 = ((s)localObject1).mediaId;
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -252,11 +371,11 @@ public final class FinderThumbPlayerProxy
         localObject1 = "";
       }
       localObject1 = localStringBuilder.append((String)localObject1).append(" player:");
-      localObject2 = this.sZf;
+      localObject2 = this.wdC;
       if (localObject2 == null) {
-        d.g.b.p.bdF("tpPlayer");
+        p.btv("player");
       }
-      localObject2 = ((StringBuilder)localObject1).append(localObject2.hashCode()).append(" currentStat:").append(getCurrentPlayerState()).append(" viewFocus:").append(this.sZm).append(" alpha:").append(getAlpha()).append(" surface:");
+      localObject2 = ((StringBuilder)localObject1).append(localObject2.hashCode()).append(" viewFocus:").append(this.wcA).append(" alpha:").append(getAlpha()).append(" surface:");
       localObject1 = this.surface;
       if (localObject1 == null) {
         break label202;
@@ -265,264 +384,325 @@ public final class FinderThumbPlayerProxy
     label202:
     for (localObject1 = Boolean.valueOf(((Surface)localObject1).isValid());; localObject1 = null)
     {
-      localObject1 = localObject1;
-      AppMethodBeat.o(205307);
+      localObject1 = localObject1 + " currentPlayState:" + this.currentPlayState;
+      AppMethodBeat.o(254150);
       return localObject1;
       i = 0;
       break;
     }
   }
   
-  private final void cOL()
+  private final void dFn()
   {
-    AppMethodBeat.i(205318);
-    Object localObject2 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("real play ").append(cOK()).append(" surface:");
-    Object localObject1 = this.surface;
-    if (localObject1 != null) {}
-    for (localObject1 = Boolean.valueOf(((Surface)localObject1).isValid());; localObject1 = null)
+    AppMethodBeat.i(254164);
+    Log.i(TAG, "realPlay() " + dFm());
+    Object localObject = this.wdE;
+    if (localObject == null) {
+      p.btv("textureView");
+    }
+    ((MMThumbPlayerTextureView)localObject).setInterceptDetach(false);
+    setBgPrepareStatus(0);
+    localObject = this.wdC;
+    if (localObject == null) {
+      p.btv("player");
+    }
+    ((com.tencent.mm.plugin.thumbplayer.e.a)localObject).start();
+    localObject = this.tHL;
+    if (localObject != null)
     {
-      ae.i((String)localObject2, localObject1);
-      localObject1 = this.sZg;
-      if (localObject1 == null) {
-        d.g.b.p.bdF("textureView");
-      }
-      ((MMThumbPlayerTextureView)localObject1).setInterceptDetach(false);
-      setBgPrepareStatus(0);
-      localObject1 = this.sZf;
-      if (localObject1 == null) {
-        d.g.b.p.bdF("tpPlayer");
-      }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).start();
-      localObject1 = this.sZs;
-      if (localObject1 != null)
-      {
-        localObject2 = this.sZv;
-        if (localObject2 != null) {
-          ((u)localObject2).cPn();
-        }
-        a((p)localObject1);
-      }
-      com.tencent.mm.ac.c.c(this.TAG, (d.g.a.a)new h(this));
-      AppMethodBeat.o(205318);
+      a((s)localObject);
+      AppMethodBeat.o(254164);
       return;
     }
+    AppMethodBeat.o(254164);
   }
   
-  private final void cOM()
+  private final void dFo()
   {
-    AppMethodBeat.i(205321);
-    if (this.sZo)
+    AppMethodBeat.i(254184);
+    Log.i(TAG, "startCdnDownload()");
+    if (this.wdU)
     {
-      ae.i(this.TAG, "stopProgressTimer " + cOK());
-      Timer localTimer = this.sZk;
-      if (localTimer != null) {
-        localTimer.cancel();
-      }
-      this.sZk = null;
-      this.sZo = false;
-    }
-    AppMethodBeat.o(205321);
-  }
-  
-  private final void cOP()
-  {
-    AppMethodBeat.i(205328);
-    if (this.sZq)
-    {
-      ae.i(this.TAG, "already start cdn " + cOK());
-      AppMethodBeat.o(205328);
+      Log.i(TAG, "startCdnDownload() already start cdn " + dFm());
+      AppMethodBeat.o(254184);
       return;
     }
-    cOR();
-    Object localObject1 = com.tencent.mm.plugin.finder.utils.p.sXz;
-    Object localObject2 = this.sZt;
-    localObject1 = this.sZt;
+    dFq();
+    Object localObject1 = com.tencent.mm.plugin.finder.utils.y.vXH;
+    Object localObject2 = this.wdH;
+    localObject1 = this.wdH;
     if (localObject1 != null) {
-      localObject1 = ((b)localObject1).ssB;
+      localObject1 = ((b)localObject1).uJG;
     }
     while ((localObject2 != null) && (localObject1 != null))
     {
-      ae.i(this.TAG, "startCdnDownload " + cOK());
-      MediaPreloadCore localMediaPreloadCore = this.sZy;
+      Log.i(TAG, "startCdnDownload() " + dFm());
+      MediaPreloadCore localMediaPreloadCore = this.wdG;
       if (localMediaPreloadCore != null) {
-        localMediaPreloadCore.bd(((b)localObject2).mediaId, true);
+        localMediaPreloadCore.bm(((b)localObject2).mediaId, true);
       }
-      if (!((com.tencent.mm.plugin.finder.model.z)localObject1).cEJ())
+      if (!((at)localObject1).dkN())
       {
-        if (this.sZi)
+        if (this.wdR)
         {
-          localObject1 = this.sZy;
+          localObject1 = this.wdG;
           if (localObject1 != null) {
-            ((MediaPreloadCore)localObject1).aiz(((b)localObject2).mediaId);
+            ((MediaPreloadCore)localObject1).aup(((b)localObject2).mediaId);
           }
         }
-        ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().a(((b)localObject2).mediaId, (com.tencent.mm.plugin.thumbplayer.b.b)new j((b)localObject2), (e)new i(this));
-        this.sZq = true;
-        localObject1 = this.sZs;
+        oN(false);
+        ((PluginThumbPlayer)com.tencent.mm.kernel.g.ah(PluginThumbPlayer.class)).getCdnTaskController().a(((b)localObject2).mediaId, (com.tencent.mm.plugin.thumbplayer.b.b)new i((b)localObject2), (com.tencent.mm.plugin.thumbplayer.b.e)new h(this));
+        this.wdU = true;
+        localObject1 = this.tHL;
         if (localObject1 != null)
         {
-          localObject2 = this.sZx;
+          localObject2 = this.wdT;
           if (localObject2 != null)
           {
-            ((t)localObject2).b(((p)localObject1).rYW);
-            AppMethodBeat.o(205328);
+            ((x)localObject2).b(((s)localObject1).tHN);
+            AppMethodBeat.o(254184);
             return;
             localObject1 = null;
           }
           else
           {
-            AppMethodBeat.o(205328);
+            AppMethodBeat.o(254184);
           }
         }
         else
         {
-          AppMethodBeat.o(205328);
+          AppMethodBeat.o(254184);
         }
       }
       else
       {
-        ae.i(this.TAG, "downloadFinish " + cOK());
+        Log.i(TAG, "startCdnDownload() downloadFinish " + dFm());
       }
     }
-    AppMethodBeat.o(205328);
+    AppMethodBeat.o(254184);
   }
   
-  private final void cOQ()
+  private final void dFp()
   {
-    AppMethodBeat.i(205329);
-    if (!this.sZq)
+    AppMethodBeat.i(254185);
+    Log.i(TAG, "stopCdnDownload()");
+    if (!this.wdU)
     {
-      ae.i(this.TAG, "not start cdn " + cOK());
-      AppMethodBeat.o(205329);
+      Log.i(TAG, "stopCdnDownload() not start cdn " + dFm());
+      AppMethodBeat.o(254185);
       return;
     }
-    b localb = this.sZt;
+    b localb = this.wdH;
     if (localb != null)
     {
-      ae.i(this.TAG, "stopCdnDownload " + cOK());
-      MediaPreloadCore localMediaPreloadCore = this.sZy;
+      Log.i(TAG, "stopCdnDownload() " + dFm());
+      MediaPreloadCore localMediaPreloadCore = this.wdG;
       if (localMediaPreloadCore != null) {
-        localMediaPreloadCore.bd(localb.mediaId, false);
+        localMediaPreloadCore.bm(localb.mediaId, false);
       }
-      localb.mm(false);
-      ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().a(localb.mediaId, (com.tencent.mm.plugin.thumbplayer.b.g)new n(this));
-      this.sZq = false;
-      AppMethodBeat.o(205329);
+      localb.oO(false);
+      ((PluginThumbPlayer)com.tencent.mm.kernel.g.ah(PluginThumbPlayer.class)).getCdnTaskController().a(localb.mediaId, (com.tencent.mm.plugin.thumbplayer.b.g)new m(this));
+      this.wdU = false;
+      AppMethodBeat.o(254185);
       return;
     }
-    AppMethodBeat.o(205329);
+    AppMethodBeat.o(254185);
   }
   
-  private final void cOR()
+  private final void dFq()
   {
-    AppMethodBeat.i(205330);
-    if (!this.sZr)
+    AppMethodBeat.i(254186);
+    Log.i(TAG, "stopCdnPreload()");
+    if (!this.wdV)
     {
-      ae.i(this.TAG, "not start preload cdn " + cOK());
-      AppMethodBeat.o(205330);
+      Log.i(TAG, "stopCdnPreload(), not start preload cdn " + dFm());
+      AppMethodBeat.o(254186);
       return;
     }
-    b localb = this.sZt;
+    b localb = this.wdH;
     if (localb != null)
     {
-      ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().a(localb.mediaId, (com.tencent.mm.plugin.thumbplayer.b.f)new o(this));
-      this.sZr = false;
-      AppMethodBeat.o(205330);
+      ((PluginThumbPlayer)com.tencent.mm.kernel.g.ah(PluginThumbPlayer.class)).getCdnTaskController().a(localb.mediaId, (com.tencent.mm.plugin.thumbplayer.b.f)new n(this));
+      this.wdV = false;
+      AppMethodBeat.o(254186);
       return;
     }
-    AppMethodBeat.o(205330);
+    AppMethodBeat.o(254186);
   }
   
-  private final boolean cOT()
+  private final boolean dFr()
   {
-    AppMethodBeat.i(205342);
-    switch (getCurrentPlayerState())
+    return this.currentPlayState == 3;
+  }
+  
+  private final void dFs()
+  {
+    AppMethodBeat.i(254189);
+    Log.i(TAG, "stopProgressTimer :" + this.wdM + ' ' + dFm());
+    MTimerHandler localMTimerHandler = this.wdM;
+    if (localMTimerHandler != null) {
+      localMTimerHandler.stopTimer();
+    }
+    this.wdM = null;
+    AppMethodBeat.o(254189);
+  }
+  
+  private final com.tencent.mm.plugin.finder.video.reporter.a getFTPPKVReporter()
+  {
+    AppMethodBeat.i(254146);
+    com.tencent.mm.plugin.finder.video.reporter.a locala = (com.tencent.mm.plugin.finder.video.reporter.a)this.wdK.getValue();
+    AppMethodBeat.o(254146);
+    return locala;
+  }
+  
+  private final com.tencent.mm.plugin.finder.video.log.a getFTPPLog()
+  {
+    AppMethodBeat.i(254147);
+    com.tencent.mm.plugin.finder.video.log.a locala = (com.tencent.mm.plugin.finder.video.log.a)this.wdL.getValue();
+    AppMethodBeat.o(254147);
+    return locala;
+  }
+  
+  private final void getFTPPTag() {}
+  
+  private final boolean hj(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(254183);
+    if (TextUtils.isEmpty((CharSequence)paramString2))
     {
-    default: 
-      AppMethodBeat.o(205342);
+      Log.w(TAG, "prepareOnlineUrl(), return for online url:" + paramString2 + "  " + dFm());
+      AppMethodBeat.o(254183);
       return false;
     }
-    AppMethodBeat.o(205342);
-    return true;
-  }
-  
-  private final boolean cOU()
-  {
-    AppMethodBeat.i(205345);
-    if (getCurrentPlayerState() == 3)
-    {
-      AppMethodBeat.o(205345);
-      return true;
-    }
-    AppMethodBeat.o(205345);
-    return false;
-  }
-  
-  private final int getCurrentPlayerState()
-  {
-    AppMethodBeat.i(205341);
-    com.tencent.mm.plugin.thumbplayer.c.a locala = this.sZf;
+    Log.i(TAG, "prepareOnlineUrl(), online url:" + paramString2 + "  " + dFm());
+    TPVideoInfo.Builder localBuilder = new TPVideoInfo.Builder();
+    localBuilder.fileId(paramString1);
+    localBuilder.downloadParam(new TPDownloadParamData(11));
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
     if (locala == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
-    int i = locala.gaA().gaW();
-    AppMethodBeat.o(205341);
-    return i;
+    locala.setMediaId(paramString1);
+    paramString1 = this.wdC;
+    if (paramString1 == null) {
+      p.btv("player");
+    }
+    paramString1.setPlayerOptionalParam(new TPOptionalParam().buildLong(102, 1000L));
+    paramString1 = this.wdC;
+    if (paramString1 == null) {
+      p.btv("player");
+    }
+    paramString1.setVideoInfo(localBuilder.build());
+    paramString1 = this.wdC;
+    if (paramString1 == null) {
+      p.btv("player");
+    }
+    paramString1.setDataSource(paramString2);
+    boolean bool = Md(5);
+    AppMethodBeat.o(254183);
+    return bool;
   }
   
-  private void init()
+  private final void init()
   {
-    AppMethodBeat.i(205306);
-    sZA.add(Integer.valueOf(hashCode()));
-    ae.i(this.TAG, "create FinderThumbPlayerProxy " + hashCode() + ' ' + sZA);
-    Object localObject = com.tencent.mm.plugin.thumbplayer.c.c.BHJ;
-    localObject = getContext();
-    d.g.b.p.g(localObject, "context");
-    localObject = ((Context)localObject).getApplicationContext();
-    d.g.b.p.g(localObject, "context.applicationContext");
-    d.g.b.p.h(localObject, "context");
-    this.sZf = ((com.tencent.mm.plugin.thumbplayer.c.a)new com.tencent.mm.plugin.thumbplayer.c.b((Context)localObject));
-    localObject = getContext();
-    d.g.b.p.g(localObject, "context");
-    this.sZg = new MMThumbPlayerTextureView(((Context)localObject).getApplicationContext());
-    localObject = this.sZg;
-    if (localObject == null) {
-      d.g.b.p.bdF("textureView");
+    AppMethodBeat.i(254148);
+    wdW.add(Integer.valueOf(hashCode()));
+    Log.i(TAG, "create FinderThumbPlayerProxy " + hashCode() + ' ' + wdW);
+    Object localObject1 = com.tencent.tmediacodec.e.b.SmK;
+    ((com.tencent.tmediacodec.e.b)localObject1).SmJ = b.a.SmM;
+    Object localObject2 = com.tencent.tmediacodec.a.hpn();
+    p.g(localObject2, "TCodecManager.getInstance()");
+    ((com.tencent.tmediacodec.a)localObject2).a((com.tencent.tmediacodec.e.b)localObject1);
+    localObject1 = com.tencent.tmediacodec.a.hpn();
+    p.g(localObject1, "TCodecManager.getInstance()");
+    ((com.tencent.tmediacodec.a)localObject1).hpo();
+    localObject1 = com.tencent.mm.plugin.thumbplayer.e.d.GhZ;
+    localObject1 = getContext();
+    p.g(localObject1, "context");
+    localObject1 = ((Context)localObject1).getApplicationContext();
+    p.g(localObject1, "context.applicationContext");
+    this.wdC = d.a.ht((Context)localObject1);
+    this.wdD = new c();
+    if (this.wdB) {}
+    for (int i = 1;; i = 0)
+    {
+      this.tHS = new com.tencent.mm.plugin.finder.video.reporter.c(i);
+      localObject1 = getContext();
+      p.g(localObject1, "context");
+      this.wdE = new MMThumbPlayerTextureView(((Context)localObject1).getApplicationContext());
+      localObject1 = this.wdE;
+      if (localObject1 == null) {
+        p.btv("textureView");
+      }
+      ((MMThumbPlayerTextureView)localObject1).setOpaqueInfo(true);
+      localObject1 = this.wdE;
+      if (localObject1 == null) {
+        p.btv("textureView");
+      }
+      localObject2 = this.wdD;
+      if (localObject2 == null) {
+        p.btv("playerListener");
+      }
+      ((MMThumbPlayerTextureView)localObject1).setTextureListenerCallback((TextureView.SurfaceTextureListener)localObject2);
+      localObject1 = this.wdC;
+      if (localObject1 == null) {
+        p.btv("player");
+      }
+      localObject2 = this.wdD;
+      if (localObject2 == null) {
+        p.btv("playerListener");
+      }
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).setOnErrorListener((ITPPlayerListener.IOnErrorListener)localObject2);
+      localObject1 = this.wdC;
+      if (localObject1 == null) {
+        p.btv("player");
+      }
+      localObject2 = this.wdD;
+      if (localObject2 == null) {
+        p.btv("playerListener");
+      }
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).setOnPreparedListener((ITPPlayerListener.IOnPreparedListener)localObject2);
+      localObject1 = this.wdC;
+      if (localObject1 == null) {
+        p.btv("player");
+      }
+      localObject2 = this.wdD;
+      if (localObject2 == null) {
+        p.btv("playerListener");
+      }
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).setOnVideoSizeChangedListener((ITPPlayerListener.IOnVideoSizeChangedListener)localObject2);
+      localObject1 = this.wdC;
+      if (localObject1 == null) {
+        p.btv("player");
+      }
+      localObject2 = this.wdD;
+      if (localObject2 == null) {
+        p.btv("playerListener");
+      }
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).setOnPlayerStateChangeListener((ITPPlayerListener.IOnStateChangeListener)localObject2);
+      localObject1 = this.wdC;
+      if (localObject1 == null) {
+        p.btv("player");
+      }
+      localObject2 = this.wdD;
+      if (localObject2 == null) {
+        p.btv("playerListener");
+      }
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).setOnInfoListener((ITPPlayerListener.IOnInfoListener)localObject2);
+      AppMethodBeat.o(254148);
+      return;
     }
-    ((MMThumbPlayerTextureView)localObject).setTextureListenerCallback((TextureView.SurfaceTextureListener)new c(this));
-    localObject = this.sZg;
-    if (localObject == null) {
-      d.g.b.p.bdF("textureView");
-    }
-    ((MMThumbPlayerTextureView)localObject).setOpaqueInfo(true);
-    localObject = this.sZf;
-    if (localObject == null) {
-      d.g.b.p.bdF("tpPlayer");
-    }
-    ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).a((b.c)new d(this));
-    localObject = this.sZf;
-    if (localObject == null) {
-      d.g.b.p.bdF("tpPlayer");
-    }
-    ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).a((b.h)new e(this));
-    localObject = this.sZf;
-    if (localObject == null) {
-      d.g.b.p.bdF("tpPlayer");
-    }
-    ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).a((b.d)new f(this));
-    AppMethodBeat.o(205306);
   }
   
-  private final void ml(boolean paramBoolean)
+  private final void oM(boolean paramBoolean)
   {
-    AppMethodBeat.i(205308);
-    ae.i(this.TAG, "releaseSurface " + cOK());
-    Object localObject = this.sZf;
+    AppMethodBeat.i(254151);
+    Log.i(TAG, "releaseSurface " + dFm());
+    Object localObject = this.wdC;
     if (localObject == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
-    ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).setSurface(null);
+    ((com.tencent.mm.plugin.thumbplayer.e.a)localObject).setSurface(null);
     localObject = this.surface;
     if (localObject != null) {
       ((Surface)localObject).release();
@@ -530,543 +710,526 @@ public final class FinderThumbPlayerProxy
     this.surface = null;
     if (paramBoolean)
     {
-      localObject = this.sZg;
+      localObject = this.wdE;
       if (localObject == null) {
-        d.g.b.p.bdF("textureView");
+        p.btv("textureView");
       }
-      ((MMThumbPlayerTextureView)localObject).fDk();
+      ((MMThumbPlayerTextureView)localObject).fxg();
     }
-    AppMethodBeat.o(205308);
+    AppMethodBeat.o(254151);
+  }
+  
+  private final void oN(boolean paramBoolean)
+  {
+    AppMethodBeat.i(254180);
+    Log.i(TAG, "updateIsReaStartDownloader() isReaStartDownloader:".concat(String.valueOf(paramBoolean)));
+    this.wdQ.set(paramBoolean);
+    AppMethodBeat.o(254180);
   }
   
   private final void setBgPrepareStatus(int paramInt)
   {
-    AppMethodBeat.i(205346);
-    ae.i(this.TAG, "setBgPrepareStatus " + paramInt + ' ' + cOK());
-    this.sZh = paramInt;
-    AppMethodBeat.o(205346);
+    AppMethodBeat.i(254187);
+    Log.i(TAG, "setBgPrepareStatus " + paramInt + ' ' + dFm());
+    this.wdJ = paramInt;
+    AppMethodBeat.o(254187);
   }
   
-  public final boolean Gx(int paramInt)
+  public final boolean Mc(int paramInt)
   {
-    AppMethodBeat.i(205317);
-    ae.i(this.TAG, "play " + cOK() + " source=" + paramInt);
-    if (!this.sZm)
+    AppMethodBeat.i(254163);
+    Log.i(TAG, "playWithSource() source=" + paramInt + ' ' + dFm() + ' ');
+    if (!this.wcA)
     {
-      AppMethodBeat.o(205317);
+      Log.i(TAG, "playWithSource() return for isViewFocused:" + this.wcA);
+      AppMethodBeat.o(254163);
       return false;
     }
-    if (!cOT())
+    if (!Me(this.currentPlayState))
     {
-      AppMethodBeat.o(205317);
+      Log.i(TAG, "playWithSource() return for currentState:" + this.currentPlayState);
+      AppMethodBeat.o(254163);
       return false;
     }
-    if (isPlaying())
+    boolean bool = isPlaying();
+    if (bool)
     {
-      AppMethodBeat.o(205317);
+      Log.i(TAG, "playWithSource() return for isPlaying:".concat(String.valueOf(bool)));
+      AppMethodBeat.o(254163);
       return false;
     }
     Object localObject;
-    if (bpC())
+    if (asa())
     {
       localObject = this.surface;
       if (localObject != null)
       {
         if (!((Surface)localObject).isValid()) {
-          break label152;
+          break label228;
         }
         if (localObject != null) {
-          cOL();
+          dFn();
         }
       }
     }
     for (;;)
     {
-      cOP();
-      localObject = this.sZf;
+      dFo();
+      localObject = this.wdC;
       if (localObject == null) {
-        d.g.b.p.bdF("tpPlayer");
+        p.btv("player");
       }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).gaT();
-      AppMethodBeat.o(205317);
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject).resumeDownload();
+      AppMethodBeat.o(254163);
       return true;
-      label152:
+      label228:
       localObject = null;
       break;
-      if (!cOU()) {
-        Gy(0);
+      if (!dFr()) {
+        Md(0);
       }
     }
   }
   
-  public final void a(m paramm, boolean paramBoolean, FinderItem paramFinderItem)
+  public final void a(com.tencent.mm.plugin.finder.loader.s params, boolean paramBoolean, FeedData paramFeedData)
   {
-    AppMethodBeat.i(205333);
-    d.g.b.p.h(paramm, "video");
-    d.g.b.p.h(paramFinderItem, "finderItem");
-    Object localObject2;
+    AppMethodBeat.i(254149);
+    p.h(params, "video");
+    p.h(paramFeedData, "feedData");
+    Object localObject;
     if (paramBoolean)
     {
-      localObject2 = paramm.srx.url;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
+      String str = params.uIw.url;
+      localObject = str;
+      if (str == null) {
+        localObject = "";
       }
-      paramm = new p("", (String)localObject1, paramm.aeM(), paramm.srx, paramm, paramFinderItem);
-      this.sZs = paramm;
-      paramFinderItem = this.sZs;
-      if (paramFinderItem != null)
-      {
-        paramm = this.sZt;
-        if (paramm == null) {
-          break label439;
-        }
-        paramm = paramm.mediaId;
-        label98:
-        if (!(d.g.b.p.i(paramm, paramFinderItem.mediaId) ^ true)) {
-          break label444;
-        }
-        this.sZt = new b(paramFinderItem.mediaId, paramFinderItem);
-        localObject1 = this.TAG;
-        localObject2 = new StringBuilder("init proxy ");
-        paramm = this.sZt;
-        if (paramm != null)
-        {
-          paramFinderItem = paramm.cOX();
-          paramm = paramFinderItem;
-          if (paramFinderItem != null) {}
-        }
-        else
-        {
-          paramm = cOK();
-        }
-        ae.i((String)localObject1, paramm);
+      params = (s)new com.tencent.mm.plugin.finder.video.source.a("", (String)localObject, params.auA(), params.uIw, params, paramFeedData);
+      this.tHL = params;
+      params = this.wdH;
+      if (params == null) {
+        break label314;
       }
+      params = params.mediaId;
+      label92:
+      paramFeedData = this.tHL;
+      if (paramFeedData == null) {
+        p.hyc();
+      }
+      if (!(p.j(params, paramFeedData.mediaId) ^ true)) {
+        break label319;
+      }
+      params = this.tHL;
+      if (params == null) {
+        p.hyc();
+      }
+      params = params.mediaId;
+      paramFeedData = this.tHL;
+      if (paramFeedData == null) {
+        p.hyc();
+      }
+      this.wdH = new b(params, paramFeedData);
+      Log.i(TAG, "setVideoMediaInfo(), init proxy " + this.wdH);
     }
     for (;;)
     {
-      paramm = this.sZg;
-      if (paramm == null) {
-        d.g.b.p.bdF("textureView");
+      paramFeedData = this.tHL;
+      if (paramFeedData == null) {
+        p.hyc();
       }
-      if (paramm.getParent() != null)
+      params = this.wdE;
+      if (params == null) {
+        p.btv("textureView");
+      }
+      if (params.getParent() != null)
       {
-        paramm = this.sZg;
-        if (paramm == null) {
-          d.g.b.p.bdF("textureView");
+        params = this.wdE;
+        if (params == null) {
+          p.btv("textureView");
         }
-        removeView((View)paramm);
+        removeView((View)params);
       }
-      paramm = this.sZs;
-      if (paramm == null) {
-        break label504;
+      if (!this.isLongVideo) {
+        break label650;
       }
-      paramFinderItem = com.tencent.mm.plugin.finder.utils.p.sXz;
-      paramm = com.tencent.mm.plugin.finder.utils.p.fS((int)paramm.rYW.srx.width, (int)paramm.rYW.srx.height);
-      int i = paramm.getInt("media_layout_width", 0);
-      int j = paramm.getInt("media_layout_height", 0);
-      paramm = new FrameLayout.LayoutParams(i, j);
-      paramFinderItem = this.sZg;
-      if (paramFinderItem == null) {
-        d.g.b.p.bdF("textureView");
+      params = com.tencent.mm.plugin.finder.utils.y.vXH;
+      params = getContext();
+      if (params != null) {
+        break label348;
       }
-      addView((View)paramFinderItem, (ViewGroup.LayoutParams)paramm);
-      paramm = this.sZg;
-      if (paramm == null) {
-        d.g.b.p.bdF("textureView");
-      }
-      paramm.videoWidth = i;
-      paramm.videoHeight = j;
-      ae.i(this.TAG, "initTextureView videoWidth:" + i + " videoHeight:" + j + ' ' + cOK());
-      AppMethodBeat.o(205333);
-      return;
-      paramm = new p(paramm.getUrl(), paramm.getPath(), paramm.aeM(), paramm.srx, paramm, paramFinderItem);
+      params = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+      AppMethodBeat.o(254149);
+      throw params;
+      params = (s)new com.tencent.mm.plugin.finder.video.source.b(params.getUrl(), params.getPath(), params.auA(), params.uIw, params, paramFeedData);
       break;
-      label439:
-      paramm = null;
-      break label98;
-      label444:
-      localObject1 = this.TAG;
-      localObject2 = new StringBuilder("duplicated mediaId ");
-      paramm = this.sZt;
-      if (paramm != null)
-      {
-        paramFinderItem = paramm.cOX();
-        paramm = paramFinderItem;
-        if (paramFinderItem != null) {}
-      }
-      else
-      {
-        paramm = cOK();
-      }
-      ae.i((String)localObject1, paramm);
+      label314:
+      params = null;
+      break label92;
+      label319:
+      Log.w(TAG, "setVideoMediaInfo(), duplicated mediaId " + this.wdH);
     }
-    label504:
-    paramm = (FinderThumbPlayerProxy)this;
-    paramFinderItem = new FrameLayout.LayoutParams(-1, -1);
-    Object localObject1 = paramm.sZg;
-    if (localObject1 == null) {
-      d.g.b.p.bdF("textureView");
+    label348:
+    for (params = com.tencent.mm.plugin.finder.utils.y.a((Activity)params, paramFeedData.tHN.uIw.width, paramFeedData.tHN.uIw.height);; params = com.tencent.mm.plugin.finder.utils.y.g((Context)localObject, params.getWidth(), params.getHeight()))
+    {
+      int i = ((Number)params.second).intValue();
+      int j = ((Number)params.SWY).intValue();
+      params = new FrameLayout.LayoutParams(-2, -2);
+      params.gravity = 17;
+      localObject = this.wdE;
+      if (localObject == null) {
+        p.btv("textureView");
+      }
+      addView((View)localObject, (ViewGroup.LayoutParams)params);
+      params = this.wdE;
+      if (params == null) {
+        p.btv("textureView");
+      }
+      params.jk(i, j);
+      params = paramFeedData.wgl;
+      if (params != null)
+      {
+        params = params.MoU;
+        if (params != null)
+        {
+          localObject = this.wdE;
+          if (localObject == null) {
+            p.btv("textureView");
+          }
+          ((MMThumbPlayerTextureView)localObject).setCropRect(new Rect((int)params.left, (int)params.top, (int)params.right, (int)params.bottom));
+          params = this.wdE;
+          if (params == null) {
+            p.btv("textureView");
+          }
+          float f1 = paramFeedData.wgl.width;
+          float f2 = paramFeedData.wgl.height;
+          params.Giu = f1;
+          params.Giv = f2;
+        }
+      }
+      Log.i(TAG, "initTextureView(), isLongVideo:" + this.isLongVideo + " containerWidth:" + i + " containerHeight:" + j + ' ' + dFm());
+      AppMethodBeat.o(254149);
+      return;
+      params = j.a(paramFeedData.tHN.uIw, this.onr);
+      localObject = com.tencent.mm.plugin.finder.utils.y.vXH;
+      localObject = getContext();
+      if (localObject == null)
+      {
+        params = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(254149);
+        throw params;
+      }
     }
-    paramm.addView((View)localObject1, (ViewGroup.LayoutParams)paramFinderItem);
-    AppMethodBeat.o(205333);
   }
   
   public final boolean c(double paramDouble, boolean paramBoolean)
   {
-    AppMethodBeat.i(205331);
-    if (!cOT())
+    AppMethodBeat.i(254172);
+    if (!Me(this.currentPlayState))
     {
-      AppMethodBeat.o(205331);
+      AppMethodBeat.o(254172);
       return false;
     }
-    if (!bpC())
+    if (!asa())
     {
-      AppMethodBeat.o(205331);
+      AppMethodBeat.o(254172);
       return false;
     }
-    ae.i(this.TAG, "seekTo " + paramDouble + ' ' + paramBoolean);
-    Object localObject = this.sZf;
-    if (localObject == null) {
-      d.g.b.p.bdF("tpPlayer");
+    Log.i(TAG, "seekTo " + paramDouble + ' ' + paramBoolean);
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
+    if (locala == null) {
+      p.btv("player");
     }
-    paramDouble = 1000.0D * paramDouble;
-    if (Double.isNaN(paramDouble))
+    locala.seekTo(kotlin.h.a.K(1000.0D * paramDouble), 1);
+    if (paramBoolean) {
+      play();
+    }
+    AppMethodBeat.o(254172);
+    return true;
+  }
+  
+  public final boolean dEN()
+  {
+    AppMethodBeat.i(254167);
+    if (this.wcA)
     {
-      localObject = (Throwable)new IllegalArgumentException("Cannot round NaN value.");
-      AppMethodBeat.o(205331);
-      throw ((Throwable)localObject);
+      Log.i(TAG, "prepareToPlay() return for isViewFocused:" + this.wcA);
+      AppMethodBeat.o(254167);
+      return false;
     }
-    int i;
-    if (paramDouble > 2147483647.0D) {
-      i = 2147483647;
+    Log.i(TAG, "prepareToPlay()  " + dFm());
+    if (Me(this.currentPlayState))
+    {
+      if (this.currentPlayState == 2)
+      {
+        bool1 = Md(1);
+        AppMethodBeat.o(254167);
+        return bool1;
+      }
+      AppMethodBeat.o(254167);
+      return false;
+    }
+    Object localObject = this.wdH;
+    if (localObject != null) {
+      ((b)localObject).dFt();
+    }
+    localObject = com.tencent.mm.plugin.finder.utils.y.vXH;
+    s locals = this.tHL;
+    b localb = this.wdH;
+    localObject = this.wdH;
+    boolean bool2;
+    if (localObject != null)
+    {
+      localObject = ((b)localObject).uJG;
+      if ((locals == null) || (localb == null) || (localObject == null)) {
+        break label324;
+      }
+      bool1 = ((at)localObject).dkN();
+      bool2 = com.tencent.mm.vfs.s.YS(locals.path);
+      Log.i(TAG, "prepareToPlay() isAllCompleted:" + bool1 + " isExist:" + bool2 + ' ' + dFm());
+      if (!(locals instanceof com.tencent.mm.plugin.finder.video.source.a)) {
+        break label266;
+      }
+      O(locals.mediaId, locals.path, 21);
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).seekTo(i);
-      if (paramBoolean) {
-        Gx(0);
-      }
-      AppMethodBeat.o(205331);
+      AppMethodBeat.o(254167);
       return true;
-      if (paramDouble < -2147483648.0D) {
-        i = -2147483648;
-      } else {
-        i = (int)Math.round(paramDouble);
+      localObject = null;
+      break;
+      label266:
+      if ((!(locals instanceof com.tencent.mm.plugin.finder.video.source.b)) || (!bool1) || (!bool2)) {
+        break label301;
       }
+      O(locals.mediaId, locals.path, 22);
     }
-  }
-  
-  public final boolean cOA()
-  {
-    AppMethodBeat.i(205323);
-    if (this.sZm)
-    {
-      AppMethodBeat.o(205323);
-      return false;
-    }
-    if (cOT())
-    {
-      if ((getCurrentPlayerState() == 2) && (Gy(1)))
-      {
-        AppMethodBeat.o(205323);
-        return true;
-      }
-      AppMethodBeat.o(205323);
-      return false;
-    }
-    Object localObject1 = this.sZt;
-    if (localObject1 != null) {
-      ((b)localObject1).cOW();
-    }
-    localObject1 = com.tencent.mm.plugin.finder.utils.p.sXz;
-    p localp = this.sZs;
-    Object localObject2 = this.sZt;
-    localObject1 = this.sZt;
-    if (localObject1 != null) {
-      localObject1 = ((b)localObject1).ssB;
-    }
-    while ((localp != null) && (localObject2 != null) && (localObject1 != null))
-    {
-      ae.i(this.TAG, "prepare to play isAllCompleted:" + ((com.tencent.mm.plugin.finder.model.z)localObject1).cEJ() + " isMoovReady:" + ((com.tencent.mm.plugin.finder.model.z)localObject1).field_moovReady + ' ' + cOK());
-      com.tencent.mm.plugin.thumbplayer.c.a locala = this.sZf;
-      if (locala == null) {
-        d.g.b.p.bdF("tpPlayer");
-      }
-      locala.aEd(localp.mediaId);
-      if ((((com.tencent.mm.plugin.finder.model.z)localObject1).cEJ()) || (bu.isNullOrNil(localp.downloadUrl)))
-      {
-        localObject1 = com.tencent.mm.vfs.o.k(localp.path, false);
-        localObject2 = this.sZf;
-        if (localObject2 == null) {
-          d.g.b.p.bdF("tpPlayer");
-        }
-        ((com.tencent.mm.plugin.thumbplayer.c.a)localObject2).setDataSource((String)localObject1);
-        Gy(2);
-        AppMethodBeat.o(205323);
-        return true;
-        localObject1 = null;
-      }
-      else
-      {
-        localObject1 = new p.a();
-        ((p.a)localObject1).bbm(localp.mediaId);
-        ((p.a)localObject1).a(new com.tencent.thumbplayer.b.b.b((byte)0));
-        locala = this.sZf;
-        if (locala == null) {
-          d.g.b.p.bdF("tpPlayer");
-        }
-        locala.b(new com.tencent.thumbplayer.b.f().aV(102, 1000L));
-        locala = this.sZf;
-        if (locala == null) {
-          d.g.b.p.bdF("tpPlayer");
-        }
-        locala.a(((p.a)localObject1).gaX());
-        localObject1 = this.sZf;
-        if (localObject1 == null) {
-          d.g.b.p.bdF("tpPlayer");
-        }
-        ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).setDataSource(localp.downloadUrl);
-        localObject1 = this.sZf;
-        if (localObject1 == null) {
-          d.g.b.p.bdF("tpPlayer");
-        }
-        ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).a((b.f)localObject2);
-        if (Gy(3))
-        {
-          AppMethodBeat.o(205323);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(205323);
+    label301:
+    boolean bool1 = hj(locals.mediaId, locals.downloadUrl);
+    AppMethodBeat.o(254167);
+    return bool1;
+    label324:
+    AppMethodBeat.o(254167);
     return false;
   }
   
-  public final boolean cOB()
+  public final boolean dEO()
   {
-    return this.rzb;
+    return this.sZd;
   }
   
-  public final boolean cON()
+  public final boolean dFj()
   {
-    AppMethodBeat.i(205322);
-    if (!this.sZm)
+    AppMethodBeat.i(254166);
+    Object localObject2 = TAG;
+    Object localObject3 = new StringBuilder("startOrPlay() ").append(dFm()).append(' ');
+    if (BuildInfo.DEBUG) {}
+    for (Object localObject1 = Util.getStack().toString();; localObject1 = "")
     {
-      AppMethodBeat.o(205322);
+      Log.i((String)localObject2, (String)localObject1);
+      if (this.wcA) {
+        break;
+      }
+      Log.i(TAG, "startOrPlay() return for isViewFocused:" + this.wcA);
+      AppMethodBeat.o(254166);
       return false;
     }
-    if (this.sZp)
+    if (this.wdI)
     {
-      ae.i(this.TAG, "first time to play " + cOK());
-      localObject1 = this.sZv;
+      Log.i(TAG, "startOrPlay() first time to play");
+      localObject1 = this.wcw;
       if (localObject1 != null) {
-        ((u)localObject1).GA(this.sZh);
+        ((y)localObject1).a(this.tHS);
       }
-      this.sZp = false;
+      localObject1 = this.wcw;
+      if (localObject1 != null) {
+        ((y)localObject1).a(this.tHL, this.wdJ);
+      }
+      this.wdI = false;
+      com.tencent.mm.plugin.report.service.h.CyF.n(1505L, 252L, 1L);
     }
-    if (cOT())
+    if (Me(this.currentPlayState))
     {
-      if (Gx(3)) {
-        this.sZj = 0;
+      Log.i(TAG, "startOrPlay() return for currentPlayState:" + this.currentPlayState);
+      if (Mc(3)) {
+        this.wdO = 0;
       }
-      AppMethodBeat.o(205322);
+      AppMethodBeat.o(254166);
       return false;
     }
-    Object localObject1 = this.sZt;
+    localObject1 = this.wdH;
     if (localObject1 != null) {
-      ((b)localObject1).cOW();
+      ((b)localObject1).dFt();
     }
-    localObject1 = com.tencent.mm.plugin.finder.utils.p.sXz;
-    p localp = this.sZs;
-    Object localObject2 = this.sZt;
-    localObject1 = this.sZt;
-    com.tencent.mm.plugin.thumbplayer.c.a locala;
+    localObject1 = com.tencent.mm.plugin.finder.utils.y.vXH;
+    localObject2 = this.tHL;
+    localObject3 = this.wdH;
+    localObject1 = this.wdH;
+    boolean bool1;
+    boolean bool2;
     if (localObject1 != null)
     {
-      localObject1 = ((b)localObject1).ssB;
-      if ((localp == null) || (localObject2 == null) || (localObject1 == null)) {
-        break label472;
+      localObject1 = ((b)localObject1).uJG;
+      if ((localObject2 == null) || (localObject3 == null) || (localObject1 == null)) {
+        break label458;
       }
-      ae.i(this.TAG, "start or play isAllCompleted:" + ((com.tencent.mm.plugin.finder.model.z)localObject1).cEJ() + " isMoovReady:" + ((com.tencent.mm.plugin.finder.model.z)localObject1).field_moovReady + ' ' + cOK());
-      this.sZj = 0;
-      locala = this.sZf;
-      if (locala == null) {
-        d.g.b.p.bdF("tpPlayer");
+      bool1 = ((at)localObject1).dkN();
+      bool2 = com.tencent.mm.vfs.s.YS(((s)localObject2).path);
+      Log.i(TAG, "startOrPlay() isAllCompleted:" + bool1 + " isExist:" + bool2 + ' ' + dFm());
+      this.wdO = 0;
+      if (!(localObject2 instanceof com.tencent.mm.plugin.finder.video.source.a)) {
+        break label401;
       }
-      locala.aEd(localp.mediaId);
-      if ((!((com.tencent.mm.plugin.finder.model.z)localObject1).cEJ()) && (!bu.isNullOrNil(localp.downloadUrl))) {
-        break label312;
-      }
-      localObject1 = com.tencent.mm.vfs.o.k(localp.path, false);
-      localObject2 = this.sZf;
-      if (localObject2 == null) {
-        d.g.b.p.bdF("tpPlayer");
-      }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject2).setDataSource((String)localObject1);
-      Gy(4);
+      O(((s)localObject2).mediaId, ((s)localObject2).path, 41);
     }
     for (;;)
     {
-      AppMethodBeat.o(205322);
+      AppMethodBeat.o(254166);
       return true;
       localObject1 = null;
       break;
-      label312:
-      localObject1 = new p.a();
-      ((p.a)localObject1).bbm(localp.mediaId);
-      ((p.a)localObject1).a(new com.tencent.thumbplayer.b.b.b((byte)0));
-      locala = this.sZf;
-      if (locala == null) {
-        d.g.b.p.bdF("tpPlayer");
+      label401:
+      if (((localObject2 instanceof com.tencent.mm.plugin.finder.video.source.b)) && (bool1) && (bool2))
+      {
+        O(((s)localObject2).mediaId, ((s)localObject2).path, 42);
       }
-      locala.b(new com.tencent.thumbplayer.b.f().aV(102, 1000L));
-      locala = this.sZf;
-      if (locala == null) {
-        d.g.b.p.bdF("tpPlayer");
+      else
+      {
+        dFo();
+        hj(((s)localObject2).mediaId, ((s)localObject2).downloadUrl);
       }
-      locala.a(((p.a)localObject1).gaX());
-      localObject1 = this.sZf;
-      if (localObject1 == null) {
-        d.g.b.p.bdF("tpPlayer");
-      }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).setDataSource(localp.downloadUrl);
-      localObject1 = this.sZf;
-      if (localObject1 == null) {
-        d.g.b.p.bdF("tpPlayer");
-      }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).a((b.f)localObject2);
-      Gy(5);
-      cOP();
     }
-    label472:
-    AppMethodBeat.o(205322);
+    label458:
+    AppMethodBeat.o(254166);
     return false;
   }
   
-  public final int cOO()
+  public final int dFk()
   {
-    AppMethodBeat.i(205325);
-    ae.i(this.TAG, "pauseWithCancel " + cOK());
+    AppMethodBeat.i(254169);
+    Log.i(TAG, "pauseWithCancel " + dFm());
     pause();
-    AppMethodBeat.o(205325);
+    AppMethodBeat.o(254169);
     return 0;
   }
   
-  public final void cOS() {}
+  public final void dFl() {}
   
   public final Bitmap getBitmap()
   {
-    AppMethodBeat.i(205309);
-    Object localObject = this.sZg;
+    AppMethodBeat.i(254152);
+    Object localObject = this.wdE;
     if (localObject == null) {
-      d.g.b.p.bdF("textureView");
+      p.btv("textureView");
     }
     localObject = ((MMThumbPlayerTextureView)localObject).getBitmap();
-    AppMethodBeat.o(205309);
+    AppMethodBeat.o(254152);
     return localObject;
+  }
+  
+  public final long getCurrentPlayMs()
+  {
+    AppMethodBeat.i(254154);
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
+    if (locala == null) {
+      p.btv("player");
+    }
+    long l = locala.getCurrentPositionMs();
+    AppMethodBeat.o(254154);
+    return l;
   }
   
   public final int getCurrentPlaySecond()
   {
-    AppMethodBeat.i(205310);
-    com.tencent.mm.plugin.thumbplayer.c.a locala = this.sZf;
+    AppMethodBeat.i(254153);
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
     if (locala == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
     int i = (int)(locala.getCurrentPositionMs() / 1000L);
-    AppMethodBeat.o(205310);
+    AppMethodBeat.o(254153);
     return i;
   }
   
-  public final t getDownloadCallback()
+  public final x getDownloadCallback()
   {
-    return this.sZx;
-  }
-  
-  public final boolean getFirstStart()
-  {
-    return this.sZp;
+    return this.wdT;
   }
   
   public final boolean getIsNeverStart()
   {
-    AppMethodBeat.i(205312);
-    if (!cOT())
+    AppMethodBeat.i(254157);
+    if (!Me(this.currentPlayState))
     {
-      AppMethodBeat.o(205312);
+      AppMethodBeat.o(254157);
       return true;
     }
-    AppMethodBeat.o(205312);
+    AppMethodBeat.o(254157);
     return false;
   }
   
   public final boolean getIsShouldPlayResume()
   {
-    return this.sZn;
+    return this.wcB;
   }
   
-  public final u getLifecycle()
+  public final y getLifecycle()
   {
-    return this.sZv;
+    return this.wcw;
   }
   
-  public final p getMediaInfo()
+  public final MediaPreloadCore getMediaPreloadCore$plugin_finder_release()
   {
-    return this.sZs;
+    return this.wdG;
   }
   
-  public final MediaPreloadCore getMediaPreloadCore()
+  public final t getOnMuteListener()
   {
-    return this.sZy;
+    return this.wdS;
   }
   
-  public final q getOnMuteListener()
+  public final u getOnPlayerStopListener()
   {
-    return this.sZw;
-  }
-  
-  public final r getOnPlayerStopListener()
-  {
-    return this.sZl;
+    return this.wdP;
   }
   
   public final ViewParent getParentView()
   {
-    AppMethodBeat.i(205313);
+    AppMethodBeat.i(254158);
     ViewParent localViewParent = getParent();
-    AppMethodBeat.o(205313);
+    AppMethodBeat.o(254158);
     return localViewParent;
-  }
-  
-  public final Timer getProgressTimer()
-  {
-    return this.sZk;
-  }
-  
-  public final b getResourceLoaderProxy()
-  {
-    return this.sZt;
   }
   
   public final int getVideoDuration()
   {
-    AppMethodBeat.i(205311);
-    com.tencent.mm.plugin.thumbplayer.c.a locala = this.sZf;
+    AppMethodBeat.i(254155);
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
     if (locala == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
     int i = (int)(locala.getDurationMs() / 1000L);
-    AppMethodBeat.o(205311);
+    AppMethodBeat.o(254155);
     return i;
+  }
+  
+  public final long getVideoDurationMs()
+  {
+    AppMethodBeat.i(254156);
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
+    if (locala == null) {
+      p.btv("player");
+    }
+    long l = locala.getDurationMs();
+    AppMethodBeat.o(254156);
+    return l;
   }
   
   public final String getVideoMediaId()
   {
-    Object localObject = this.sZs;
+    Object localObject = this.tHL;
     if (localObject != null)
     {
-      String str = ((p)localObject).mediaId;
+      String str = ((s)localObject).mediaId;
       localObject = str;
       if (str != null) {}
     }
@@ -1077,9 +1240,9 @@ public final class FinderThumbPlayerProxy
     return localObject;
   }
   
-  public final p getVideoMediaInfo()
+  public final s getVideoMediaInfo()
   {
-    return this.sZs;
+    return this.tHL;
   }
   
   public final View getVideoView()
@@ -1089,469 +1252,453 @@ public final class FinderThumbPlayerProxy
   
   public final i.b getVideoViewCallback()
   {
-    return this.sZu;
+    return this.wcv;
   }
   
   public final boolean getVideoViewFocused()
   {
-    return this.sZm;
+    return this.wcA;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(205343);
-    if (getCurrentPlayerState() == 5)
-    {
-      AppMethodBeat.o(205343);
-      return true;
-    }
-    AppMethodBeat.o(205343);
-    return false;
+    return this.currentPlayState == 5;
   }
   
   public final void onRelease()
   {
-    AppMethodBeat.i(205340);
-    ae.i(this.TAG, "release " + cOK());
-    ml(true);
-    this.sZx = null;
-    this.sZt = null;
-    com.tencent.mm.ac.c.c(this.TAG, (d.g.a.a)new g(this));
-    sZA.remove(Integer.valueOf(hashCode()));
-    AppMethodBeat.o(205340);
+    AppMethodBeat.i(254181);
+    Log.i(TAG, "release " + dFm());
+    oM(true);
+    this.wdT = null;
+    this.wdH = null;
+    com.tencent.mm.ac.d.c(TAG, (kotlin.g.a.a)new g(this));
+    wdW.remove(Integer.valueOf(hashCode()));
+    AppMethodBeat.o(254181);
   }
   
   public final void onUIDestroy()
   {
-    AppMethodBeat.i(205327);
-    ae.i(this.TAG, "onUIDestroy " + cOK());
+    AppMethodBeat.i(254171);
+    Log.i(TAG, "onUIDestroy " + dFm());
     stop();
-    AppMethodBeat.o(205327);
+    AppMethodBeat.o(254171);
   }
   
   public final boolean pause()
   {
-    Object localObject3 = null;
     int i = 0;
-    AppMethodBeat.i(205324);
-    ae.i(this.TAG, "pause  " + cOK());
-    if (!cOT())
+    AppMethodBeat.i(254168);
+    if (!Me(this.currentPlayState))
     {
-      AppMethodBeat.o(205324);
+      Log.i(TAG, "pause() return for state:" + this.currentPlayState);
+      AppMethodBeat.o(254168);
       return false;
     }
+    Log.i(TAG, "pause()  " + dFm());
     Object localObject1;
     if (isPlaying())
     {
-      localObject1 = this.sZf;
+      localObject1 = this.wdC;
       if (localObject1 == null) {
-        d.g.b.p.bdF("tpPlayer");
+        p.btv("player");
       }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).pause();
-      localObject1 = this.sZf;
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).pause();
+      localObject1 = this.wdC;
       if (localObject1 == null) {
-        d.g.b.p.bdF("tpPlayer");
+        p.btv("player");
       }
-      ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).pauseDownload();
-      localObject1 = this.sZg;
+      ((com.tencent.mm.plugin.thumbplayer.e.a)localObject1).pauseDownload();
+      localObject1 = this.wdE;
       if (localObject1 == null) {
-        d.g.b.p.bdF("textureView");
+        p.btv("textureView");
       }
       ((MMThumbPlayerTextureView)localObject1).setInterceptDetach(true);
-      cOQ();
-      if (this.sZn)
+      dFp();
+      if (this.wcB)
       {
-        if (!this.sZr) {
-          break label396;
+        Log.i(TAG, "startCdnPreload() " + dFm());
+        if (!this.wdV) {
+          break label321;
         }
-        ae.i(this.TAG, "already start preload cdn " + cOK());
+        Log.i(TAG, "startCdnPreload(), already start preload cdn " + dFm());
       }
     }
     for (;;)
     {
-      cOM();
-      if (this.sZs != null)
+      dFs();
+      if (this.tHL != null)
       {
-        localObject1 = this.sZv;
+        localObject1 = this.wcw;
         if (localObject1 != null) {
-          ((u)localObject1).cPl();
+          ((y)localObject1).dFL();
         }
       }
-      AppMethodBeat.o(205324);
+      AppMethodBeat.o(254168);
       return true;
-      if (!cOU()) {
+      if ((!dFr()) || (this.wcA)) {
         break;
       }
-      localObject1 = com.tencent.mm.plugin.finder.utils.p.sXz;
-      Object localObject4 = this.sZt;
-      localObject1 = this.sZt;
-      label232:
-      Object localObject2;
-      if (localObject1 != null)
+      long l = System.currentTimeMillis();
+      stop();
+      Log.i(TAG, "pause() preparing stop cost=" + (System.currentTimeMillis() - l) + "ms");
+      break;
+      label321:
+      Object localObject2 = this.wdH;
+      if ((localObject2 != null) && (((b)localObject2).uJG.field_cacheSize < ((b)localObject2).wef) && (((b)localObject2).uJG.field_totalSize > 0L))
       {
-        localObject1 = ((b)localObject1).ssB;
-        localObject2 = localObject3;
-        if (localObject4 != null)
-        {
-          localObject2 = localObject3;
-          if (localObject1 != null)
-          {
-            if (((com.tencent.mm.plugin.finder.model.z)localObject1).field_moovReady) {
-              break label383;
-            }
-            ae.i(this.TAG, "preparing, but moov not ready, try stop");
-            localObject1 = this.sZf;
-            if (localObject1 == null) {
-              d.g.b.p.bdF("tpPlayer");
-            }
-            ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).stop();
-            localObject1 = this.sZf;
-            if (localObject1 == null) {
-              d.g.b.p.bdF("tpPlayer");
-            }
-            ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).reset();
-          }
-        }
-      }
-      for (;;)
-      {
-        localObject2 = d.z.Nhr;
-        if (localObject2 != null) {
-          break;
-        }
-        localObject1 = (FinderThumbPlayerProxy)this;
-        ae.w(((FinderThumbPlayerProxy)localObject1).TAG, "occur error, stop and reset");
-        localObject2 = ((FinderThumbPlayerProxy)localObject1).sZf;
-        if (localObject2 == null) {
-          d.g.b.p.bdF("tpPlayer");
-        }
-        ((com.tencent.mm.plugin.thumbplayer.c.a)localObject2).stop();
-        localObject1 = ((FinderThumbPlayerProxy)localObject1).sZf;
-        if (localObject1 == null) {
-          d.g.b.p.bdF("tpPlayer");
-        }
-        ((com.tencent.mm.plugin.thumbplayer.c.a)localObject1).reset();
-        localObject1 = d.z.Nhr;
-        break;
-        localObject1 = null;
-        break label232;
-        label383:
-        ae.i(this.TAG, "preparing, but moov ready, wait for prepared");
-      }
-      label396:
-      localObject3 = this.sZt;
-      if ((localObject3 != null) && (((b)localObject3).ssB.field_cacheSize < ((b)localObject3).sZG) && (((b)localObject3).ssB.field_totalSize > 0L))
-      {
-        localObject1 = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController();
-        localObject2 = ((b)localObject3).mediaId;
-        localObject3 = (com.tencent.mm.plugin.thumbplayer.b.b)new l((b)localObject3);
-        localObject4 = (com.tencent.mm.plugin.thumbplayer.b.d)new k(this);
-        d.g.b.p.h(localObject2, "mediaId");
-        d.g.b.p.h(localObject3, "createCallback");
-        if (((CharSequence)localObject2).length() == 0) {
+        localObject1 = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ah(PluginThumbPlayer.class)).getCdnTaskController();
+        String str = ((b)localObject2).mediaId;
+        localObject2 = (com.tencent.mm.plugin.thumbplayer.b.b)new k((b)localObject2);
+        com.tencent.mm.plugin.thumbplayer.b.d locald = (com.tencent.mm.plugin.thumbplayer.b.d)new j(this);
+        p.h(str, "mediaId");
+        p.h(localObject2, "createCallback");
+        if (((CharSequence)str).length() == 0) {
           i = 1;
         }
         if (i == 0) {
-          com.tencent.mm.ac.c.c("MicroMsg.Cdn.ThreadName", (d.g.a.a)new a.e((com.tencent.mm.plugin.thumbplayer.b.a)localObject1, (com.tencent.mm.plugin.thumbplayer.b.b)localObject3, (String)localObject2, (com.tencent.mm.plugin.thumbplayer.b.d)localObject4));
+          com.tencent.mm.ac.d.c("MicroMsg.Cdn.ThreadName", (kotlin.g.a.a)new a.e((com.tencent.mm.plugin.thumbplayer.b.a)localObject1, (com.tencent.mm.plugin.thumbplayer.b.b)localObject2, str, locald));
         }
-        this.sZr = true;
+        this.wdV = true;
       }
     }
   }
   
   public final boolean play()
   {
-    AppMethodBeat.i(205316);
-    boolean bool = Gx(0);
-    AppMethodBeat.o(205316);
+    AppMethodBeat.i(254162);
+    Log.i(TAG, "play()");
+    boolean bool = Mc(0);
+    AppMethodBeat.o(254162);
     return bool;
   }
   
-  public final void setDownloadCallback(t paramt)
+  public final void setDownloadCallback(x paramx)
   {
-    this.sZx = paramt;
+    this.wdT = paramx;
   }
   
-  public final void setFinderVideoCore(i parami) {}
+  public final void setFinderVideoCore(k paramk) {}
   
-  public final void setFirstStart(boolean paramBoolean)
+  public final void setFullScreen(boolean paramBoolean)
   {
-    this.sZp = paramBoolean;
+    this.onr = paramBoolean;
   }
   
   public final void setIMMVideoViewCallback(i.b paramb)
   {
-    AppMethodBeat.i(205334);
-    d.g.b.p.h(paramb, "_callback");
-    this.sZu = paramb;
-    AppMethodBeat.o(205334);
+    AppMethodBeat.i(254174);
+    p.h(paramb, "_callback");
+    this.wcv = paramb;
+    AppMethodBeat.o(254174);
   }
   
   public final void setIOnlineVideoProxy(com.tencent.mm.modelvideo.b paramb)
   {
-    AppMethodBeat.i(205336);
-    d.g.b.p.h(paramb, "_proxy");
-    AppMethodBeat.o(205336);
+    AppMethodBeat.i(254176);
+    p.h(paramb, "_proxy");
+    AppMethodBeat.o(254176);
   }
   
   public final void setInterceptDetach(boolean paramBoolean)
   {
-    AppMethodBeat.i(205315);
-    MMThumbPlayerTextureView localMMThumbPlayerTextureView = this.sZg;
+    AppMethodBeat.i(254161);
+    MMThumbPlayerTextureView localMMThumbPlayerTextureView = this.wdE;
     if (localMMThumbPlayerTextureView == null) {
-      d.g.b.p.bdF("textureView");
+      p.btv("textureView");
     }
     localMMThumbPlayerTextureView.setInterceptDetach(paramBoolean);
-    AppMethodBeat.o(205315);
+    AppMethodBeat.o(254161);
   }
   
   public final void setIsShouldPlayResume(boolean paramBoolean)
   {
-    this.sZn = paramBoolean;
+    AppMethodBeat.i(254159);
+    Log.i(TAG, "setIsShouldPlayResume() " + paramBoolean + ' ' + dFm());
+    this.wcB = paramBoolean;
+    AppMethodBeat.o(254159);
   }
   
   public final void setIsShowBasicControls(boolean paramBoolean) {}
   
-  public final void setLifecycle(u paramu)
+  public final void setLifecycle(y paramy)
   {
-    this.sZv = paramu;
+    this.wcw = paramy;
   }
   
   public final void setLoop(boolean paramBoolean)
   {
-    AppMethodBeat.i(205337);
-    com.tencent.mm.plugin.thumbplayer.c.a locala = this.sZf;
+    AppMethodBeat.i(254177);
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
     if (locala == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
-    locala.zJ(paramBoolean);
-    AppMethodBeat.o(205337);
+    locala.setLoopback(paramBoolean);
+    AppMethodBeat.o(254177);
   }
   
-  public final void setMediaInfo(p paramp)
+  public final void setMediaPreloadCore$plugin_finder_release(MediaPreloadCore paramMediaPreloadCore)
   {
-    this.sZs = paramp;
-  }
-  
-  public final void setMediaPreloadCore(MediaPreloadCore paramMediaPreloadCore)
-  {
-    this.sZy = paramMediaPreloadCore;
+    this.wdG = paramMediaPreloadCore;
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(205332);
-    com.tencent.mm.plugin.thumbplayer.c.a locala = this.sZf;
+    AppMethodBeat.i(254173);
+    com.tencent.mm.plugin.thumbplayer.e.a locala = this.wdC;
     if (locala == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
-    locala.zK(paramBoolean);
-    AppMethodBeat.o(205332);
+    locala.setOutputMute(paramBoolean);
+    AppMethodBeat.o(254173);
   }
   
-  public final void setOnMuteListener(q paramq)
+  public final void setOnMuteListener(t paramt)
   {
-    this.sZw = paramq;
+    this.wdS = paramt;
   }
   
-  public final void setOnPlayerStopListener(r paramr)
+  public final void setOnPlayerStopListener(u paramu)
   {
-    this.sZl = paramr;
+    this.wdP = paramu;
   }
   
   public final void setPreview(boolean paramBoolean)
   {
-    this.rzb = paramBoolean;
-  }
-  
-  public final void setProgressTimer(Timer paramTimer)
-  {
-    this.sZk = paramTimer;
-  }
-  
-  public final void setResourceLoaderProxy(b paramb)
-  {
-    this.sZt = paramb;
+    this.sZd = paramBoolean;
   }
   
   public final void setScaleType(i.e parame)
   {
-    AppMethodBeat.i(205335);
-    d.g.b.p.h(parame, "scaleType");
-    AppMethodBeat.o(205335);
+    AppMethodBeat.i(254175);
+    p.h(parame, "scaleType");
+    switch (i.$EnumSwitchMapping$0[parame.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(254175);
+      return;
+      parame = this.wdE;
+      if (parame == null) {
+        p.btv("textureView");
+      }
+      MMThumbPlayerTextureView.a locala = MMThumbPlayerTextureView.GiC;
+      parame.setScaleType(MMThumbPlayerTextureView.fxh());
+      AppMethodBeat.o(254175);
+      return;
+      parame = this.wdE;
+      if (parame == null) {
+        p.btv("textureView");
+      }
+      locala = MMThumbPlayerTextureView.GiC;
+      parame.setScaleType(MMThumbPlayerTextureView.fxi());
+      AppMethodBeat.o(254175);
+      return;
+      parame = this.wdE;
+      if (parame == null) {
+        p.btv("textureView");
+      }
+      locala = MMThumbPlayerTextureView.GiC;
+      parame.setScaleType(MMThumbPlayerTextureView.fxk());
+    }
   }
   
   public final void setShouldPlayResume(boolean paramBoolean)
   {
-    this.sZn = paramBoolean;
+    this.wcB = paramBoolean;
   }
   
   public final void setStartCdn(boolean paramBoolean)
   {
-    this.sZq = paramBoolean;
+    this.wdU = paramBoolean;
   }
   
   public final void setStartCdnPreload(boolean paramBoolean)
   {
-    this.sZr = paramBoolean;
+    this.wdV = paramBoolean;
   }
   
-  public final void setStartProgressTimer(boolean paramBoolean)
+  public final void setVideoMuteListener(t paramt)
   {
-    this.sZo = paramBoolean;
+    AppMethodBeat.i(254179);
+    p.h(paramt, "muteListener");
+    this.wdS = paramt;
+    AppMethodBeat.o(254179);
   }
   
-  public final void setVideoMuteListener(q paramq)
+  public final void setVideoPlayLifecycle(y paramy)
   {
-    AppMethodBeat.i(205339);
-    d.g.b.p.h(paramq, "muteListener");
-    this.sZw = paramq;
-    AppMethodBeat.o(205339);
-  }
-  
-  public final void setVideoPlayLifecycle(u paramu)
-  {
-    AppMethodBeat.i(205338);
-    d.g.b.p.h(paramu, "lifecycle");
-    this.sZv = paramu;
-    AppMethodBeat.o(205338);
+    AppMethodBeat.i(254178);
+    p.h(paramy, "lifecycle");
+    this.wcw = paramy;
+    AppMethodBeat.o(254178);
   }
   
   public final void setVideoViewCallback(i.b paramb)
   {
-    this.sZu = paramb;
+    this.wcv = paramb;
   }
   
   public final void setVideoViewFocused(boolean paramBoolean)
   {
-    AppMethodBeat.i(205314);
-    ae.i(this.TAG, "setVideoViewFocused " + paramBoolean + ' ' + cOK());
-    this.sZm = paramBoolean;
-    AppMethodBeat.o(205314);
+    AppMethodBeat.i(254160);
+    Log.i(TAG, "setVideoViewFocused " + paramBoolean + ' ' + dFm());
+    this.wcA = paramBoolean;
+    AppMethodBeat.o(254160);
   }
   
   public final void setViewFocused(boolean paramBoolean)
   {
-    this.sZm = paramBoolean;
+    this.wcA = paramBoolean;
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(205326);
-    ae.i(this.TAG, "stop " + cOK());
-    if (!cOT())
+    AppMethodBeat.i(254170);
+    Log.i(TAG, "stop() " + dFm());
+    if (!Me(this.currentPlayState))
     {
-      AppMethodBeat.o(205326);
+      Log.i(TAG, "stop() return for isStartPlay.");
+      localObject = this.wdP;
+      if (localObject != null)
+      {
+        ((u)localObject).dFR();
+        AppMethodBeat.o(254170);
+        return;
+      }
+      AppMethodBeat.o(254170);
       return;
     }
-    Object localObject = this.sZv;
+    Object localObject = this.wcw;
     if (localObject != null) {
-      ((u)localObject).b(this.sZs);
+      ((y)localObject).b(this.tHL);
     }
-    localObject = this.sZf;
+    localObject = this.wdC;
     if (localObject == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
-    ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).stop();
-    localObject = this.sZf;
+    ((com.tencent.mm.plugin.thumbplayer.e.a)localObject).stop();
+    localObject = this.wdC;
     if (localObject == null) {
-      d.g.b.p.bdF("tpPlayer");
+      p.btv("player");
     }
-    ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).reset();
-    cOM();
-    cOQ();
-    cOR();
-    this.sZp = false;
+    ((com.tencent.mm.plugin.thumbplayer.e.a)localObject).reset();
+    getFTPPLog().reset();
+    dFs();
+    dFp();
+    dFq();
+    this.wdI = true;
+    this.wdF = false;
+    this.tHS = null;
     setBgPrepareStatus(0);
-    AppMethodBeat.o(205326);
+    Log.i(TAG, "stop() end");
+    AppMethodBeat.o(254170);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy;", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnResourceLoaderListener;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo$IVideoCdnCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "mediaId", "", "mediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "(Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy;Ljava/lang/String;Lcom/tencent/mm/plugin/finder/video/MediaInfo;)V", "MAX_REQUEST_BUFFER", "", "getMAX_REQUEST_BUFFER", "()I", "MIN_CHECK_BUFFER", "getMIN_CHECK_BUFFER", "isRequestingData", "Ljava/util/concurrent/atomic/AtomicBoolean;", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "setRequestingData", "(Ljava/util/concurrent/atomic/AtomicBoolean;)V", "lastOnReadDataEnd", "", "getLastOnReadDataEnd", "()J", "setLastOnReadDataEnd", "(J)V", "mediaCache", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "getMediaCache", "()Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "setMediaCache", "(Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;)V", "getMediaId", "()Ljava/lang/String;", "getMediaInfo", "()Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "requestOffset", "getRequestOffset", "setRequestOffset", "baseInfo", "callback", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "checkRequestData", "", "createVideoPlayCDNTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "createVideoPreloadCDNTask", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "buff", "Ljava/io/ByteArrayOutputStream;", "getContentType", "player", "Lcom/tencent/thumbplayer/api/ITPPlayer;", "taskId", "fileKey", "getDataFilePath", "getDataTotalSize", "onDataAvailable", "offset", "length", "onFinish", "ret", "onMoovReady", "svrflag", "onPreloadCompleted", "onProgress", "total", "onReadData", "onReplay", "onStartReadData", "requestStart", "requestEnd", "onStopReadData", "updateMediaCache", "updateRequestingData", "value", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$Companion;", "", "()V", "NOTIFY_BUFFERING_START_DELAY_MS", "", "NOTIFY_PROGRESS_INTERVAL_MS", "NOTIFY_PROGRESS_TIMER_TAG", "", "TAG", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "currentKeepProxySet", "Ljava/util/HashSet;", "", "getCurrentKeepProxySet", "()Ljava/util/HashSet;", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy;", "Lplatform/android/ThumbPlayerAndroid/src/main/java/com/tencent/thumbplayer/datatransport/resourceloader/AbsTPAssetResourceLoader;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo$IVideoCdnCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "mediaId", "", "mediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "(Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy;Ljava/lang/String;Lcom/tencent/mm/plugin/finder/video/MediaInfo;)V", "MAX_REQUEST_BUFFER", "", "MIN_CHECK_BUFFER", "REQUEST_INTERVAL", "REQUEST_PERIOD_MAX_MS", "REQUEST_PERIOD_MIN_MS", "isRequestingData", "Ljava/util/concurrent/atomic/AtomicBoolean;", "lastOnReadDataEnd", "getLastOnReadDataEnd", "()J", "setLastOnReadDataEnd", "(J)V", "mediaCache", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "getMediaCache", "()Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "setMediaCache", "(Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;)V", "getMediaId", "()Ljava/lang/String;", "getMediaInfo", "()Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "requestNumber", "", "callback", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "createVideoPlayCDNTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "createVideoPreloadCDNTask", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "getContentType", "fileId", "fileKey", "getDataFilePath", "getDataTotalSize", "notifyDataReady", "requestOffset", "requestLength", "onDataAvailable", "offset", "length", "onFinish", "ret", "onM3U8Ready", "m3u8", "onMoovReady", "svrflag", "onPreloadCompleted", "onProgress", "total", "onReadData", "onStartReadData", "requestStart", "requestEnd", "onStopReadData", "requestId", "toString", "updateMediaCache", "updateRequestingData", "value", "plugin-finder_release"})
   public final class b
-    implements g.a, g.b, h.a, b.f
+    extends h.a.a.a.a.a.a.a.a.a.a.a
+    implements g.a, g.b, h.a
   {
     final String mediaId;
-    private final int sZC;
-    private final int sZD;
-    long sZE;
-    private AtomicBoolean sZF;
-    long sZG;
-    final p sZs;
-    com.tencent.mm.plugin.finder.model.z ssB;
+    at uJG;
+    final s wcy;
+    private final long wdY;
+    private final long wdZ;
+    private final long wea;
+    private final long web;
+    private final long wec;
+    private int wed;
+    private AtomicBoolean wee;
+    long wef;
     
-    public b(p paramp)
+    public b(s params)
     {
-      AppMethodBeat.i(205287);
-      this.mediaId = paramp;
-      this.sZs = ((p)localObject);
-      this.sZC = 1048576;
-      this.sZD = 131072;
-      this.sZF = new AtomicBoolean(false);
-      paramp = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      this.ssB = com.tencent.mm.plugin.finder.storage.logic.c.bi(this.mediaId, true);
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "create ResourceLoaderProxy, mediaCache path:" + this.ssB.getFilePath() + ", mediaInfo path:" + this.sZs.path);
-      switch (this.ssB.field_state)
+      AppMethodBeat.i(254121);
+      this.mediaId = params;
+      this.wcy = ((s)localObject);
+      this.wdY = 30L;
+      this.wdZ = 1048576L;
+      this.wea = 131072L;
+      this.web = 10L;
+      this.wec = 50L;
+      this.wee = new AtomicBoolean(false);
+      this$1 = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+      this.uJG = com.tencent.mm.plugin.finder.storage.logic.d.bv(this.mediaId, true);
+      this$1 = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "create ResourceLoaderProxy, state:" + this.uJG.field_state + ' ' + "path:" + this.uJG.getFilePath() + ", mediaInfo path:" + this.wcy.path);
+      switch (this.uJG.field_state)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(205287);
+        AppMethodBeat.o(254121);
         return;
-        this$1 = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
+        this$1 = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
         String str = this.mediaId;
-        paramp = this.sZs.rYW.srx.mediaId;
-        this$1 = paramp;
-        if (paramp == null) {
+        params = this.wcy.tHN.uIw.mediaId;
+        this$1 = params;
+        if (params == null) {
           this$1 = "";
         }
-        localObject = this.sZs.downloadUrl;
-        paramp = (p)localObject;
+        localObject = this.wcy.downloadUrl;
+        params = (s)localObject;
         if (localObject == null) {
-          paramp = "";
+          params = "";
         }
-        com.tencent.mm.plugin.finder.storage.logic.c.a(str, FinderThumbPlayerProxy.this, paramp, this.sZs.rYW.ssj, this.sZs.rYW.sry.detail, 0L, 0L, 1, this.sZs.rYW.srx.videoDuration, "", "");
-        cOW();
+        com.tencent.mm.plugin.finder.storage.logic.d.a(str, FinderThumbPlayerProxy.this, params, this.wcy.tHN.uJN, this.wcy.tHN.uIx.detail, 0L, 0L, 1, this.wcy.tHN.uIw.videoDuration, "", "");
+        dFt();
       }
     }
     
-    public final int a(com.tencent.thumbplayer.b.a parama, long paramLong, String paramString)
+    public final void Ds(String paramString)
     {
-      AppMethodBeat.i(205276);
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "onStartReadData taskId:" + paramLong + " fileKey:" + paramString + ' ' + cOX());
-      AppMethodBeat.o(205276);
-      return 0;
+      AppMethodBeat.i(254104);
+      p.h(paramString, "mediaId");
+      AppMethodBeat.o(254104);
     }
     
-    public final int a(com.tencent.thumbplayer.b.a parama, long paramLong1, String paramString, long paramLong2, long paramLong3)
+    public final String Mf(int paramInt)
     {
-      AppMethodBeat.i(205274);
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "onStartReadData taskId:" + paramLong1 + " fileKey:" + paramString + " requestStart:" + paramLong2 + " requestEnd" + paramLong3 + ' ' + cOX());
-      this.sZE = paramLong2;
-      int i = (int)paramLong1;
-      AppMethodBeat.o(205274);
-      return i;
+      AppMethodBeat.i(254118);
+      String str = com.tencent.mm.vfs.s.k(this.wcy.path, false);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "getDataFilePath(), dataFilePath:" + str + " isExists:" + com.tencent.mm.vfs.s.YS(str) + ' ' + "mediaInfoPath:" + this.wcy.path);
+      AppMethodBeat.o(254118);
+      return str;
     }
     
     public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
     {
       int i = 1;
-      AppMethodBeat.i(205285);
-      d.g.b.p.h(paramString, "mediaId");
-      String str = FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this);
-      StringBuilder localStringBuilder = new StringBuilder("[onPreloadProgress] mediaId=").append(paramString).append(" startRet=").append(paramInt).append(" finishedLength=");
+      AppMethodBeat.i(254109);
+      p.h(paramString, "mediaId");
+      Object localObject = FinderThumbPlayerProxy.wdX;
+      String str = FinderThumbPlayerProxy.access$getTAG$cp();
+      StringBuilder localStringBuilder = new StringBuilder("callback() mediaId=").append(paramString).append(" startRet=").append(paramInt).append(" finishedLength=");
       if (paramc != null)
       {
-        paramd = Long.valueOf(paramc.field_finishedLength);
-        ae.i(str, paramd + ' ' + cOX());
+        localObject = Long.valueOf(paramc.field_finishedLength);
+        localObject = localStringBuilder.append(localObject).append(" fileFormat=");
+        if (paramd == null) {
+          break label210;
+        }
+        paramd = paramd.field_videoFlag;
+        label97:
+        Log.i(str, paramd + ' ' + this);
         if (paramc != null)
         {
           if ((paramInt != 0) || (paramc.field_finishedLength <= 0L)) {
-            break label185;
+            break label216;
           }
           paramInt = 1;
-          label115:
+          label140:
           if (paramInt == 0) {
-            break label190;
+            break label221;
           }
         }
       }
@@ -1563,289 +1710,132 @@ public final class FinderThumbPlayerProxy
           if (paramc.field_finishedLength >= paramc.field_toltalLength) {
             paramInt = 3;
           }
-          paramd = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-          com.tencent.mm.plugin.finder.storage.logic.c.a(paramString, paramc.field_finishedLength, paramc.field_toltalLength, paramInt);
-          cOW();
-          paramc = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-          com.tencent.mm.plugin.finder.storage.logic.c.ajz(paramString);
+          paramd = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+          com.tencent.mm.plugin.finder.storage.logic.d.a(paramString, paramc.field_finishedLength, paramc.field_toltalLength, paramInt);
+          dFt();
+          paramc = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+          com.tencent.mm.plugin.finder.storage.logic.d.avG(paramString);
         }
-        AppMethodBeat.o(205285);
+        AppMethodBeat.o(254109);
         return 0;
-        paramd = null;
+        localObject = null;
         break;
-        label185:
+        label210:
+        paramd = null;
+        break label97;
+        label216:
         paramInt = 0;
-        break label115;
-        label190:
+        break label140;
+        label221:
         paramc = null;
       }
     }
     
     public final void a(String paramString, final int paramInt, final com.tencent.mm.i.d paramd)
     {
-      AppMethodBeat.i(205280);
-      d.g.b.p.h(paramString, "mediaId");
-      d.g.b.p.h(paramd, "sceneResult");
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "[onFinish] mediaId=" + paramString + " ret=" + paramInt + " recvedBytes=" + paramd.field_recvedBytes + " fileLength=" + paramd.field_fileLength + "  finderformat:" + paramd.field_videoFormat);
-      Object localObject = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      com.tencent.mm.plugin.finder.storage.logic.c.a(paramString, paramd.field_fileLength, paramd.field_fileLength, 3);
-      cOW();
-      mm(false);
-      localObject = new long[3];
-      int i = CdnLogic.queryDownloadedSize(paramString, (long[])localObject);
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "check download size " + i + ' ' + localObject[0] + ' ' + localObject[1] + ' ' + localObject[2]);
-      com.tencent.mm.ac.c.h((d.g.a.a)new b(this, paramInt, paramd));
-      paramd = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      com.tencent.mm.plugin.finder.storage.logic.c.ajz(paramString);
-      AppMethodBeat.o(205280);
+      AppMethodBeat.i(254108);
+      p.h(paramString, "mediaId");
+      p.h(paramd, "sceneResult");
+      Object localObject = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "onFinish() mediaId=" + paramString + " ret=" + paramInt + " recvedBytes=" + paramd.field_recvedBytes + " fileLength=" + paramd.field_fileLength + "  finderformat:" + paramd.field_videoFormat);
+      com.tencent.mm.ac.d.h((kotlin.g.a.a)new b(this, paramInt, paramd));
+      if (paramInt != 0)
+      {
+        paramd = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+        localObject = this.wcy.tHN.uIw.mediaId;
+        paramd = (com.tencent.mm.i.d)localObject;
+        if (localObject == null) {
+          paramd = "";
+        }
+        String str = this.wcy.downloadUrl;
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
+        com.tencent.mm.plugin.finder.storage.logic.d.a(paramString, paramd, (String)localObject, this.wcy.tHN.uJN, this.wcy.tHN.uIx.detail, 0L, 0L, -1, this.wcy.tHN.uIw.videoDuration, "", "");
+      }
+      for (;;)
+      {
+        dFt();
+        oO(false);
+        AppMethodBeat.o(254108);
+        return;
+        localObject = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+        com.tencent.mm.plugin.finder.storage.logic.d.a(paramString, paramd.field_fileLength, paramd.field_fileLength, 3);
+        paramd = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+        com.tencent.mm.plugin.finder.storage.logic.d.avG(paramString);
+      }
     }
     
     public final void a(String paramString1, long paramLong1, long paramLong2, String paramString2)
     {
-      AppMethodBeat.i(205283);
-      d.g.b.p.h(paramString1, "mediaId");
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "[onMoovReady] mediaId=" + paramString1 + " offset=" + paramLong1 + " length=" + paramLong2 + " svrflag=" + paramString2 + ' ' + cOX());
-      Object localObject = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      localObject = paramString2;
-      if (paramString2 == null) {
-        localObject = "";
-      }
-      com.tencent.mm.plugin.finder.storage.logic.c.gu(paramString1, (String)localObject);
-      cOW();
-      if ((!FinderThumbPlayerProxy.e(FinderThumbPlayerProxy.this)) && (!FinderThumbPlayerProxy.f(FinderThumbPlayerProxy.this)))
+      AppMethodBeat.i(254105);
+      p.h(paramString1, "mediaId");
+      Object localObject = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "onMoovReady() offset=" + paramLong1 + " length=" + paramLong2 + " svrflag=" + paramString2 + ' ' + this);
+      if (!this.uJG.field_moovReady) {}
+      for (boolean bool = true;; bool = false)
       {
-        ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "try to prepared");
-        FinderThumbPlayerProxy.g(FinderThumbPlayerProxy.this);
+        localObject = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+        localObject = paramString2;
+        if (paramString2 == null) {
+          localObject = "";
+        }
+        com.tencent.mm.plugin.finder.storage.logic.d.gU(paramString1, (String)localObject);
+        dFt();
+        if ((!FinderThumbPlayerProxy.m(FinderThumbPlayerProxy.this)) && (!FinderThumbPlayerProxy.n(FinderThumbPlayerProxy.this)))
+        {
+          paramString2 = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "onMoovReady() try to prepared");
+          FinderThumbPlayerProxy.o(FinderThumbPlayerProxy.this);
+        }
+        paramString2 = FinderThumbPlayerProxy.this.getDownloadCallback();
+        if (paramString2 != null) {
+          paramString2.a((int)paramLong1, (int)paramLong2, this.wcy.tHN, bool);
+        }
+        paramString2 = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+        com.tencent.mm.plugin.finder.storage.logic.d.avG(paramString1);
+        AppMethodBeat.o(254105);
+        return;
       }
-      paramString2 = FinderThumbPlayerProxy.this.getDownloadCallback();
-      if (paramString2 != null) {
-        paramString2.a((int)paramLong1, (int)paramLong2, this.sZs.rYW);
-      }
-      paramString2 = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      com.tencent.mm.plugin.finder.storage.logic.c.ajz(paramString1);
-      com.tencent.mm.ac.c.c(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), (d.g.a.a)new c(this));
-      AppMethodBeat.o(205283);
     }
     
     public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
     {
-      AppMethodBeat.i(205284);
-      d.g.b.p.h(paramString, "mediaId");
-      AppMethodBeat.o(205284);
-    }
-    
-    public final int b(com.tencent.thumbplayer.b.a parama, long paramLong1, String paramString, long paramLong2, long paramLong3)
-    {
-      AppMethodBeat.i(205275);
-      int m = 0;
-      int n = (int)paramLong2;
-      int i1 = (int)paramLong2;
-      int j;
-      if (paramLong3 < this.sZC)
-      {
-        j = (int)paramLong3;
-        if (paramLong3 <= this.sZD) {
-          break label185;
-        }
-      }
-      label167:
-      label185:
-      for (int k = this.sZD;; k = (int)paramLong3)
-      {
-        i = -1;
-        if (!this.ssB.cEJ()) {
-          break label193;
-        }
-        j = (int)paramLong3;
-        this.sZG = (paramLong2 + paramLong3);
-        if (j <= 0) {
-          break label499;
-        }
-        ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "onReadData taskId:" + paramLong1 + " requestOffset:" + n + " returnLength:" + j + " checkRet:" + i + " originLength:" + paramLong3 + ' ' + cOX());
-        AppMethodBeat.o(205275);
-        return j;
-        j = this.sZC;
-        break;
-      }
-      label193:
-      parama = new long[3];
-      int i = m;
-      if (CdnLogic.queryDownloadedSize(this.mediaId, parama) == 0)
-      {
-        i = m;
-        if (parama[0] > i1)
-        {
-          if (parama[0] >= i1 + paramLong3) {
-            break label463;
-          }
-          i = (int)(parama[0] - i1);
-        }
-      }
-      label249:
-      if (i == 0)
-      {
-        m = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().aA(this.mediaId, i1, k);
-        if (m != 1) {
-          break label585;
-        }
-        i = k;
-      }
-      label585:
-      for (;;)
-      {
-        if ((m == 0) && (!FinderThumbPlayerProxy.c(FinderThumbPlayerProxy.this)) && (this.ssB.field_moovReady) && (!this.sZF.get()))
-        {
-          k = j;
-          if (n + j > this.ssB.field_totalSize) {
-            k = (int)(this.ssB.field_totalSize - n);
-          }
-          ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "start to request data requestOffset:" + n + " requestLength:" + k + ' ' + cOX());
-          if (((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().a(this.mediaId, n, k, (com.tencent.mm.plugin.thumbplayer.b.c)new d(this)) > 0) {
-            mm(true);
-          }
-        }
-        j = i;
-        i = m;
-        break;
-        label463:
-        i = (int)paramLong3;
-        break label249;
-        m = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().aA(this.mediaId, i1, j);
-        continue;
-        label499:
-        ae.d(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "onReadData taskId:" + paramLong1 + " requestOffset:" + n + " returnLength:" + j + " checkRet:" + i + " originLength:" + paramLong3 + ' ' + cOX());
-        break label167;
-      }
-    }
-    
-    public final long b(com.tencent.thumbplayer.b.a parama, long paramLong, String paramString)
-    {
-      AppMethodBeat.i(205278);
-      ae.d(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "getDataTotalSize " + this.ssB.field_totalSize + ' ' + FinderThumbPlayerProxy.b(FinderThumbPlayerProxy.this));
-      paramLong = this.ssB.field_totalSize;
-      AppMethodBeat.o(205278);
-      return paramLong;
+      AppMethodBeat.i(254110);
+      p.h(paramString, "mediaId");
+      AppMethodBeat.o(254110);
     }
     
     public final void b(String paramString, com.tencent.mm.i.d paramd)
     {
-      Object localObject = null;
-      AppMethodBeat.i(205286);
-      d.g.b.p.h(paramString, "mediaId");
-      String str = FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this);
+      Object localObject1 = null;
+      AppMethodBeat.i(254111);
+      p.h(paramString, "mediaId");
+      Object localObject2 = FinderThumbPlayerProxy.wdX;
+      localObject2 = FinderThumbPlayerProxy.access$getTAG$cp();
       StringBuilder localStringBuilder = new StringBuilder("[onPreloadCompleted] mediaId=").append(paramString).append(" Ret=");
       if (paramd != null) {}
       for (paramString = Integer.valueOf(paramd.field_retCode);; paramString = null)
       {
         localStringBuilder = localStringBuilder.append(paramString).append(" finishedLength=");
-        paramString = localObject;
+        paramString = localObject1;
         if (paramd != null) {
           paramString = Long.valueOf(paramd.field_recvedBytes);
         }
-        ae.i(str, paramString + ' ' + cOX());
-        FinderThumbPlayerProxy.h(FinderThumbPlayerProxy.this);
-        AppMethodBeat.o(205286);
+        Log.i((String)localObject2, paramString + ' ' + this);
+        FinderThumbPlayerProxy.p(FinderThumbPlayerProxy.this);
+        AppMethodBeat.o(254111);
         return;
       }
     }
     
-    public final String c(com.tencent.thumbplayer.b.a parama, long paramLong, String paramString)
+    public final void dFt()
     {
-      AppMethodBeat.i(205279);
-      parama = com.tencent.mm.vfs.o.k(this.ssB.getFilePath(), false);
-      ae.d(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "getDataFilePath origin:" + this.ssB.getFilePath() + " export:" + parama + ' ' + com.tencent.mm.vfs.o.fB(this.ssB.getFilePath()));
-      d.g.b.p.g(parama, "filePath");
-      AppMethodBeat.o(205279);
-      return parama;
-    }
-    
-    public final void cOW()
-    {
-      AppMethodBeat.i(205271);
-      com.tencent.mm.plugin.finder.storage.logic.c localc = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      this.ssB = com.tencent.mm.plugin.finder.storage.logic.c.ajA(this.mediaId);
-      AppMethodBeat.o(205271);
-    }
-    
-    public final String cOX()
-    {
-      AppMethodBeat.i(205273);
-      String str = FinderThumbPlayerProxy.b(FinderThumbPlayerProxy.this) + " moov:" + this.ssB.field_moovReady + " request:" + this.sZF.get() + " isFinish:" + this.ssB.cEJ() + " requestOffset:" + this.sZE + " total:" + this.ssB.field_totalSize;
-      AppMethodBeat.o(205273);
-      return str;
-    }
-    
-    public final void cOY()
-    {
-      AppMethodBeat.i(205277);
-      if (!FinderThumbPlayerProxy.c(FinderThumbPlayerProxy.this))
-      {
-        AppMethodBeat.o(205277);
-        return;
-      }
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "checkRequestData " + cOX());
-      long l1;
-      if ((this.ssB.field_moovReady) && (!this.sZF.get()) && (!this.ssB.cEJ()))
-      {
-        if (this.ssB.field_totalSize <= 0L) {
-          break label479;
-        }
-        l1 = FinderThumbPlayerProxy.d(FinderThumbPlayerProxy.this).getDurationMs();
-        if (l1 != 0L) {
-          break label486;
-        }
-        l1 = this.sZs.rYW.srx.videoDuration * 1000L;
-      }
-      label479:
-      label486:
-      for (;;)
-      {
-        long l3 = FinderThumbPlayerProxy.d(FinderThumbPlayerProxy.this).getCurrentPositionMs();
-        long l2 = (5000L + l3) * 100L / l1;
-        int i = (int)(d.k.j.aH(this.ssB.field_totalSize * l2 / 100L + 131072L, this.ssB.field_totalSize) - this.sZE);
-        i = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().aA(this.mediaId, (int)this.sZE, i);
-        MediaPreloadCore localMediaPreloadCore;
-        if (i == 1)
-        {
-          localMediaPreloadCore = FinderThumbPlayerProxy.this.getMediaPreloadCore();
-          if (localMediaPreloadCore != null)
-          {
-            localMediaPreloadCore.aiA(this.mediaId);
-            AppMethodBeat.o(205277);
-            return;
-          }
-          AppMethodBeat.o(205277);
-          return;
-        }
-        if (i == 0)
-        {
-          l1 = (10000L + l3) * 100L / l1;
-          i = (int)(d.k.j.aH(this.ssB.field_totalSize * l1 / 100L + 131072L, this.ssB.field_totalSize) - this.sZE);
-          ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "start to request data minCachePlayPercent:" + l2 + " targetPlayPercent:" + l1 + " requestOffset:" + this.sZE + " requestLength:" + i + ' ' + cOX());
-          if (((PluginThumbPlayer)com.tencent.mm.kernel.g.ad(PluginThumbPlayer.class)).getCdnTaskController().a(this.mediaId, (int)this.sZE, i, (com.tencent.mm.plugin.thumbplayer.b.c)new a(this)) > 0) {
-            mm(true);
-          }
-        }
-        AppMethodBeat.o(205277);
-        return;
-        if (this.ssB.cEJ())
-        {
-          localMediaPreloadCore = FinderThumbPlayerProxy.this.getMediaPreloadCore();
-          if (localMediaPreloadCore != null)
-          {
-            localMediaPreloadCore.aiA(this.mediaId);
-            AppMethodBeat.o(205277);
-            return;
-          }
-        }
-        AppMethodBeat.o(205277);
-        return;
-      }
-    }
-    
-    public final String d(com.tencent.thumbplayer.b.a parama, long paramLong, String paramString)
-    {
-      return "video/mp4";
+      AppMethodBeat.i(254112);
+      com.tencent.mm.plugin.finder.storage.logic.d locald = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+      this.uJG = com.tencent.mm.plugin.finder.storage.logic.d.avH(this.mediaId);
+      AppMethodBeat.o(254112);
     }
     
     public final byte[] f(String paramString, byte[] paramArrayOfByte)
@@ -1853,420 +1843,819 @@ public final class FinderThumbPlayerProxy
       return null;
     }
     
-    public final void i(String paramString, long paramLong1, long paramLong2)
+    public final String getContentType(int paramInt, String paramString)
     {
-      AppMethodBeat.i(205281);
-      d.g.b.p.h(paramString, "mediaId");
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "[onProgress] mediaId=" + paramString + " offset=" + paramLong1 + " total=" + paramLong2 + ' ' + cOX());
-      Object localObject = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      com.tencent.mm.plugin.finder.storage.logic.c.a(paramString, paramLong1, paramLong2, 1);
-      cOW();
-      localObject = FinderThumbPlayerProxy.this.getDownloadCallback();
-      if (localObject != null) {
-        ((t)localObject).b((int)paramLong1, (int)paramLong2, this.sZs.rYW);
-      }
-      localObject = com.tencent.mm.plugin.finder.storage.logic.c.sLt;
-      com.tencent.mm.plugin.finder.storage.logic.c.ajz(paramString);
-      AppMethodBeat.o(205281);
+      AppMethodBeat.i(254119);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "getContentType() fileId:" + paramInt + ", fileKey:" + paramString + " contentType:" + "video/mp4");
+      AppMethodBeat.o(254119);
+      return "video/mp4";
     }
     
-    public final void mm(boolean paramBoolean)
+    public final long getDataTotalSize(int paramInt, String paramString)
     {
-      AppMethodBeat.i(205272);
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "setRequestingData " + paramBoolean + ' ' + cOX());
-      this.sZF.set(paramBoolean);
-      AppMethodBeat.o(205272);
+      AppMethodBeat.i(254117);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "getDataTotalSize() fileId:" + paramInt + ", fileKey:" + paramString + " dataTotalSize:" + this.uJG.field_totalSize + ' ');
+      long l = this.uJG.field_totalSize;
+      AppMethodBeat.o(254117);
+      return l;
+    }
+    
+    public final void i(String paramString, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(254107);
+      p.h(paramString, "mediaId");
+      Object localObject = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "onProgress() offset=" + paramLong1 + " total=" + paramLong2 + ' ' + this);
+      localObject = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+      com.tencent.mm.plugin.finder.storage.logic.d.a(paramString, paramLong1, paramLong2, 1);
+      dFt();
+      localObject = FinderThumbPlayerProxy.this.getDownloadCallback();
+      if (localObject != null) {
+        ((x)localObject).a((int)paramLong1, (int)paramLong2, this.wcy.tHN);
+      }
+      localObject = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+      com.tencent.mm.plugin.finder.storage.logic.d.avG(paramString);
+      AppMethodBeat.o(254107);
+    }
+    
+    public final int k(int paramInt, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(254115);
+      if (!FinderThumbPlayerProxy.q(FinderThumbPlayerProxy.this).get())
+      {
+        localObject1 = FinderThumbPlayerProxy.wdX;
+        Log.w(FinderThumbPlayerProxy.access$getTAG$cp(), "notifyDataReady, return for downloader never start. requestOffset:" + paramLong1 + " requestLength:" + paramLong2 + ' ' + this);
+        FinderThumbPlayerProxy.r(FinderThumbPlayerProxy.this).dFX();
+      }
+      Object localObject2;
+      Object localObject3;
+      for (paramLong1 = 0L;; paramLong1 = 0L)
+      {
+        paramInt = (int)paramLong1;
+        AppMethodBeat.o(254115);
+        return paramInt;
+        if ((!FinderThumbPlayerProxy.s(FinderThumbPlayerProxy.this)) || (paramLong1 <= this.uJG.field_cacheSize)) {
+          break;
+        }
+        localObject1 = FinderThumbPlayerProxy.t(FinderThumbPlayerProxy.this);
+        localObject2 = FinderThumbPlayerProxy.wdX;
+        localObject2 = FinderThumbPlayerProxy.access$getTAG$cp();
+        localObject3 = "notifyDataReady() return for pause state. request[offset:" + paramLong1 + " length:" + paramLong2 + "] cacheSize:" + this.uJG.field_cacheSize + ' ' + this;
+        paramLong1 = System.currentTimeMillis();
+        if (paramLong1 - ((com.tencent.mm.plugin.finder.video.log.a)localObject1).wgD > 5000L)
+        {
+          Log.w((String)localObject2, (String)localObject3);
+          ((com.tencent.mm.plugin.finder.video.log.a)localObject1).wgD = paramLong1;
+        }
+      }
+      long l2 = 0L;
+      long l1;
+      if (this.uJG.dkN())
+      {
+        l1 = paramLong2;
+        label239:
+        if (l1 != 0L) {
+          break label871;
+        }
+        if ((!this.uJG.field_moovReady) || (this.wee.get())) {
+          break label743;
+        }
+        if (paramLong2 >= this.wdZ) {
+          break label601;
+        }
+      }
+      for (;;)
+      {
+        l2 = paramLong2;
+        if (paramLong1 + paramLong2 > this.uJG.field_totalSize)
+        {
+          l2 = this.uJG.field_totalSize - paramLong1;
+          localObject1 = FinderThumbPlayerProxy.wdX;
+          Log.w(FinderThumbPlayerProxy.access$getTAG$cp(), "notifyDataReady() requestLength is valid, requestOffset:" + paramLong1 + ", requestLength:" + l2 + ", totalSize:" + this.uJG.field_totalSize + ' ' + this);
+        }
+        localObject1 = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ah(PluginThumbPlayer.class)).getCdnTaskController();
+        localObject2 = this.mediaId;
+        p.h(localObject2, "mediaId");
+        if (((com.tencent.mm.plugin.thumbplayer.b.a)localObject1).Ggu.containsKey(localObject2)) {
+          break label610;
+        }
+        paramLong1 = l1;
+        break;
+        localObject2 = new long[2];
+        paramInt = CdnLogic.queryContinuousSize(this.mediaId, paramLong1, (long[])localObject2);
+        if ((paramInt == 0) && (localObject2[0] != -1L))
+        {
+          if (localObject2[0] > paramLong2) {}
+          for (l1 = paramLong2;; l1 = localObject2[0]) {
+            break;
+          }
+        }
+        localObject1 = FinderThumbPlayerProxy.t(FinderThumbPlayerProxy.this);
+        localObject3 = FinderThumbPlayerProxy.wdX;
+        localObject3 = FinderThumbPlayerProxy.access$getTAG$cp();
+        localObject2 = "notifyDataReady() queryContinuousSize error, ret:" + paramInt + " requestOffset:" + paramLong1 + " continuousSize:" + localObject2[0] + " totalSize:" + localObject2[1] + ' ' + this;
+        long l3 = System.currentTimeMillis();
+        l1 = l2;
+        if (l3 - ((com.tencent.mm.plugin.finder.video.log.a)localObject1).wgC <= 500L) {
+          break label239;
+        }
+        Log.w((String)localObject3, (String)localObject2);
+        ((com.tencent.mm.plugin.finder.video.log.a)localObject1).wgC = l3;
+        l1 = l2;
+        break label239;
+        label601:
+        paramLong2 = this.wdZ;
+      }
+      label610:
+      paramInt = ((PluginThumbPlayer)com.tencent.mm.kernel.g.ah(PluginThumbPlayer.class)).getCdnTaskController().a(this.mediaId, (int)paramLong1, (int)l2, (com.tencent.mm.plugin.thumbplayer.b.c)new a(this));
+      if (paramInt > 0) {
+        oO(true);
+      }
+      Object localObject1 = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "notifyDataReady() requestVideoData requestOffset:" + paramLong1 + " requestLengthFix:" + l2 + " requestDataRet:" + paramInt + "  cacheSize:" + this.uJG.field_cacheSize + ' ' + this);
+      for (;;)
+      {
+        this.wef = (paramLong1 + l1);
+        paramLong1 = l1;
+        break;
+        label743:
+        localObject1 = FinderThumbPlayerProxy.t(FinderThumbPlayerProxy.this);
+        localObject2 = FinderThumbPlayerProxy.wdX;
+        localObject2 = FinderThumbPlayerProxy.access$getTAG$cp();
+        localObject3 = "notifyDataReady() returnLength:" + l1 + " fixRequest[offset:" + paramLong1 + " length:" + paramLong2 + "],  originRequest[offset:" + paramLong1 + " length:" + paramLong2 + "] " + this;
+        paramLong2 = System.currentTimeMillis();
+        if (paramLong2 - ((com.tencent.mm.plugin.finder.video.log.a)localObject1).wgE > 200L)
+        {
+          Log.w((String)localObject2, (String)localObject3);
+          ((com.tencent.mm.plugin.finder.video.log.a)localObject1).wgE = paramLong2;
+          continue;
+          label871:
+          localObject1 = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "notifyDataReady() returnLength:" + l1 + " fixRequest[offset:" + paramLong1 + " length:" + paramLong2 + "], originRequest[offset:" + paramLong1 + " length:" + paramLong2 + "] " + this);
+        }
+      }
+    }
+    
+    public final void oO(boolean paramBoolean)
+    {
+      AppMethodBeat.i(254113);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "updateRequestingData " + paramBoolean + ' ' + this);
+      this.wee.set(paramBoolean);
+      AppMethodBeat.o(254113);
     }
     
     public final void onDataAvailable(String paramString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(205282);
-      d.g.b.p.h(paramString, "mediaId");
-      mm(false);
-      ae.i(FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this), "[onDataAvailable] mediaId=" + paramString + " offset=" + paramLong1 + " length=" + paramLong2 + ' ' + cOX());
-      AppMethodBeat.o(205282);
+      AppMethodBeat.i(254106);
+      p.h(paramString, "mediaId");
+      oO(false);
+      paramString = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "onDataAvailable() offset=" + paramLong1 + " length=" + paramLong2 + ' ' + this + '}');
+      AppMethodBeat.o(254106);
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy$checkRequestData$requestDataRet$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/RequestStreamingVideoDataCallback;", "onRequest", "", "ret", "", "plugin-finder_release"})
+    public final int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(254114);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "onStartReadData() fileId:" + paramInt + ", fileKey:" + paramString + ", requestStart:" + paramLong1 + ", requestEnd:" + paramLong2);
+      paramInt = this.wed;
+      this.wed = (paramInt + 1);
+      AppMethodBeat.o(254114);
+      return paramInt;
+    }
+    
+    public final int onStopReadData(int paramInt1, String paramString, int paramInt2)
+    {
+      AppMethodBeat.i(254116);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "onStartReadData() fileId:" + paramInt1 + ", fileKey:" + paramString + ", requestId:" + paramInt2);
+      paramInt1 = this.wed;
+      AppMethodBeat.o(254116);
+      return paramInt1;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(254120);
+      String str = FinderThumbPlayerProxy.a(FinderThumbPlayerProxy.this) + " isMoovReady:" + this.uJG.field_moovReady + " isRequestingData:" + this.wee.get() + " isFinish:" + this.uJG.dkN() + " total:" + this.uJG.field_totalSize;
+      AppMethodBeat.o(254120);
+      return str;
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy$notifyDataReady$requestDataRet$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/RequestStreamingVideoDataCallback;", "onRequest", "", "ret", "", "plugin-finder_release"})
     public static final class a
       implements com.tencent.mm.plugin.thumbplayer.b.c
     {
-      public final void Gz(int paramInt)
+      public final void Mg(int paramInt)
       {
-        AppMethodBeat.i(205267);
+        AppMethodBeat.i(254102);
         if (paramInt != 0)
         {
-          ae.i(FinderThumbPlayerProxy.a(this.sZI.sZH), "request data fail " + this.sZI.cOX());
-          this.sZI.mm(false);
-          AppMethodBeat.o(205267);
-          return;
+          FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+          Log.w(FinderThumbPlayerProxy.access$getTAG$cp(), "requestedResource() requestVideoData fail, ret:" + paramInt + ' ' + this);
+          this.weh.oO(false);
         }
-        ae.i(FinderThumbPlayerProxy.a(this.sZI.sZH), "real start request data " + this.sZI.cOX());
-        AppMethodBeat.o(205267);
+        AppMethodBeat.o(254102);
       }
     }
     
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
     static final class b
-      extends d.g.b.q
-      implements d.g.a.a<d.z>
+      extends q
+      implements kotlin.g.a.a<kotlin.x>
     {
       b(FinderThumbPlayerProxy.b paramb, int paramInt, com.tencent.mm.i.d paramd)
       {
         super();
       }
     }
-    
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-    static final class c
-      extends d.g.b.q
-      implements d.g.a.a<d.z>
-    {
-      c(FinderThumbPlayerProxy.b paramb)
-      {
-        super();
-      }
-    }
-    
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$ResourceLoaderProxy$onReadData$requestDataRet$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/RequestStreamingVideoDataCallback;", "onRequest", "", "ret", "", "plugin-finder_release"})
-    public static final class d
-      implements com.tencent.mm.plugin.thumbplayer.b.c
-    {
-      public final void Gz(int paramInt)
-      {
-        AppMethodBeat.i(205270);
-        if (paramInt != 0)
-        {
-          ae.i(FinderThumbPlayerProxy.a(this.sZI.sZH), "request data fail " + this.sZI.cOX());
-          this.sZI.mm(false);
-        }
-        AppMethodBeat.o(205270);
-      }
-    }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$init$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "surface", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-finder_release"})
-  public static final class c
-    implements TextureView.SurfaceTextureListener
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$TPPlayerListener;", "Landroid/view/TextureView$SurfaceTextureListener;", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnPreparedListener;", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnVideoSizeChangedListener;", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnInfoListener;", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnStateChangeListener;", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnCompletionListener;", "Lcom/tencent/thumbplayer/api/ITPPlayerListener$IOnErrorListener;", "(Lcom/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy;)V", "onCompletion", "", "player", "Lcom/tencent/thumbplayer/api/ITPPlayer;", "onError", "errorType", "", "errorCode", "arg1", "", "arg2", "onInfo", "what", "extraObject", "", "onPrepared", "onStateChange", "preState", "curState", "onSurfaceTextureAvailable", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "width", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "surface", "onVideoSizeChanged", "plugin-finder_release"})
+  public final class c
+    implements TextureView.SurfaceTextureListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnStateChangeListener, ITPPlayerListener.IOnVideoSizeChangedListener
   {
+    public final void onCompletion(ITPPlayer paramITPPlayer)
+    {
+      AppMethodBeat.i(254130);
+      paramITPPlayer = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onCompletion() " + FinderThumbPlayerProxy.a(this.weg));
+      AppMethodBeat.o(254130);
+    }
+    
+    public final void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(254131);
+      p.h(paramITPPlayer, "player");
+      Object localObject1 = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onError() " + paramInt1 + ' ' + paramInt2 + " bgPrepareStatus:" + FinderThumbPlayerProxy.g(this.weg) + ' ' + FinderThumbPlayerProxy.a(this.weg));
+      if (paramInt2 == 11030406)
+      {
+        s locals = FinderThumbPlayerProxy.f(this.weg);
+        if (locals != null)
+        {
+          localObject1 = com.tencent.mm.plugin.finder.storage.logic.d.vGR;
+          String str2 = locals.mediaId;
+          Object localObject2 = locals.tHN.uIw.mediaId;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = "";
+          }
+          String str1 = locals.downloadUrl;
+          localObject2 = str1;
+          if (str1 == null) {
+            localObject2 = "";
+          }
+          com.tencent.mm.plugin.finder.storage.logic.d.a(str2, (String)localObject1, (String)localObject2, locals.tHN.uJN, locals.tHN.uIx.detail, 0L, 0L, 1, locals.tHN.uIw.videoDuration, "", "");
+          localObject1 = FinderThumbPlayerProxy.j(this.weg);
+          if (localObject1 != null) {
+            ((FinderThumbPlayerProxy.b)localObject1).dFt();
+          }
+        }
+      }
+      if (FinderThumbPlayerProxy.g(this.weg) != 0)
+      {
+        paramITPPlayer.reset();
+        this.weg.dEN();
+        AppMethodBeat.o(254131);
+        return;
+      }
+      paramITPPlayer = FinderThumbPlayerProxy.f(this.weg);
+      if (paramITPPlayer != null)
+      {
+        localObject1 = this.weg.getVideoViewCallback();
+        if (localObject1 != null)
+        {
+          ((i.b)localObject1).c("", paramITPPlayer.mediaId, "", paramInt2, paramInt1);
+          AppMethodBeat.o(254131);
+          return;
+        }
+        AppMethodBeat.o(254131);
+        return;
+      }
+      AppMethodBeat.o(254131);
+    }
+    
+    public final void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
+    {
+      Object localObject1 = null;
+      paramITPPlayer = null;
+      StringBuilder localStringBuilder = null;
+      AppMethodBeat.i(254128);
+      Object localObject2 = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo() what:" + paramInt + " arg1:" + paramLong1 + " arg2:" + paramLong2 + " extraObject:" + paramObject + ' ' + FinderThumbPlayerProxy.a(this.weg));
+      switch (paramInt)
+      {
+      default: 
+      case 200: 
+      case 201: 
+      case 150: 
+      case 106: 
+      case 105: 
+      case 1006: 
+        do
+        {
+          AppMethodBeat.o(254128);
+          return;
+          paramITPPlayer = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#onBufferingStart() pos:" + this.weg.getCurrentPlayMs() + ' ' + FinderThumbPlayerProxy.a(this.weg));
+          paramObject = this.weg;
+          localObject1 = FinderThumbPlayerProxy.f(this.weg);
+          paramITPPlayer = localStringBuilder;
+          if (localObject1 != null) {
+            paramITPPlayer = ((s)localObject1).mediaId;
+          }
+          FinderThumbPlayerProxy.a(paramObject, paramITPPlayer);
+          AppMethodBeat.o(254128);
+          return;
+          paramITPPlayer = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#onBufferingEnd() pos:" + this.weg.getCurrentPlayMs() + ' ' + FinderThumbPlayerProxy.a(this.weg));
+          FinderThumbPlayerProxy.k(this.weg);
+          AppMethodBeat.o(254128);
+          return;
+          paramITPPlayer = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#onReplay() " + FinderThumbPlayerProxy.a(this.weg));
+          paramITPPlayer = this.weg.getLifecycle();
+          if (paramITPPlayer != null)
+          {
+            FinderThumbPlayerProxy.f(this.weg);
+            paramITPPlayer.dFM();
+            AppMethodBeat.o(254128);
+            return;
+          }
+          AppMethodBeat.o(254128);
+          return;
+          paramITPPlayer = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#firstVideoFrameRendered " + FinderThumbPlayerProxy.a(this.weg));
+          paramITPPlayer = this.weg.getLifecycle();
+          if (paramITPPlayer != null)
+          {
+            FinderThumbPlayerProxy.f(this.weg);
+            paramITPPlayer.dFK();
+            AppMethodBeat.o(254128);
+            return;
+          }
+          AppMethodBeat.o(254128);
+          return;
+          paramITPPlayer = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#firstAudioFrameRendered " + FinderThumbPlayerProxy.a(this.weg));
+          AppMethodBeat.o(254128);
+          return;
+        } while (!(paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo));
+        paramITPPlayer = FinderThumbPlayerProxy.wdX;
+        Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#downloadProgressUpdate: " + ((TPPlayerMsg.TPDownLoadProgressInfo)paramObject).playableDurationMS);
+        AppMethodBeat.o(254128);
+        return;
+      case 204: 
+        paramITPPlayer = FinderThumbPlayerProxy.wdX;
+        paramObject = FinderThumbPlayerProxy.access$getTAG$cp();
+        localStringBuilder = new StringBuilder("FTPP.onInfo#videoDecodeType:").append(paramLong1).append(' ');
+        paramITPPlayer = FinderThumbPlayerProxy.f(this.weg);
+        if (paramITPPlayer != null) {}
+        for (paramITPPlayer = paramITPPlayer.mediaId;; paramITPPlayer = null)
+        {
+          Log.i(paramObject, paramITPPlayer);
+          paramObject = FinderThumbPlayerProxy.f(this.weg);
+          paramITPPlayer = (ITPPlayer)localObject1;
+          if (paramObject != null)
+          {
+            paramObject = paramObject.wgl;
+            paramITPPlayer = (ITPPlayer)localObject1;
+            if (paramObject != null) {
+              paramITPPlayer = paramObject.MoZ;
+            }
+          }
+          if (paramITPPlayer == null)
+          {
+            paramITPPlayer = FinderThumbPlayerProxy.f(this.weg);
+            if (paramITPPlayer != null)
+            {
+              paramITPPlayer = paramITPPlayer.wgl;
+              if (paramITPPlayer != null) {
+                paramITPPlayer.MoZ = new FinderMediaReportObject();
+              }
+            }
+          }
+          paramITPPlayer = FinderThumbPlayerProxy.f(this.weg);
+          if (paramITPPlayer == null) {
+            break;
+          }
+          paramITPPlayer = paramITPPlayer.wgl;
+          if (paramITPPlayer == null) {
+            break;
+          }
+          paramITPPlayer = paramITPPlayer.MoZ;
+          if (paramITPPlayer == null) {
+            break;
+          }
+          paramITPPlayer.playDecoderType = ((int)paramLong1);
+          AppMethodBeat.o(254128);
+          return;
+        }
+        AppMethodBeat.o(254128);
+        return;
+      }
+      localObject1 = FinderThumbPlayerProxy.wdX;
+      localObject1 = FinderThumbPlayerProxy.access$getTAG$cp();
+      localStringBuilder = new StringBuilder("FTPP.onInfo#mediaCodecInfo:").append(paramLong1).append(' ');
+      localObject2 = FinderThumbPlayerProxy.f(this.weg);
+      if (localObject2 != null) {
+        paramITPPlayer = ((s)localObject2).mediaId;
+      }
+      Log.i((String)localObject1, paramITPPlayer);
+      if (!(paramObject instanceof TPPlayerMsg.TPMediaCodecInfo))
+      {
+        paramITPPlayer = FinderThumbPlayerProxy.wdX;
+        Log.w(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#mediaCodecInfo return for not codecInfo");
+        AppMethodBeat.o(254128);
+        return;
+      }
+      if (((TPPlayerMsg.TPMediaCodecInfo)paramObject).mediaType != TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_VIDEO)
+      {
+        paramITPPlayer = FinderThumbPlayerProxy.wdX;
+        Log.w(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onInfo#mediaCodecInfo return for not video type");
+        AppMethodBeat.o(254128);
+        return;
+      }
+      if (((TPPlayerMsg.TPMediaCodecInfo)paramObject).infoType == TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_READY) {}
+      for (;;)
+      {
+        try
+        {
+          paramITPPlayer = new i(((TPPlayerMsg.TPMediaCodecInfo)paramObject).msg);
+          paramObject = FinderThumbPlayerProxy.l(this.weg);
+          if (paramObject != null)
+          {
+            if (!paramITPPlayer.optBoolean("reuseEnable")) {
+              continue;
+            }
+            paramInt = 1;
+            paramObject.Mi(paramInt);
+          }
+          paramObject = FinderThumbPlayerProxy.l(this.weg);
+          if (paramObject != null)
+          {
+            if (!paramITPPlayer.optBoolean("isReuse")) {
+              continue;
+            }
+            paramInt = 1;
+            paramObject.Mj(paramInt);
+          }
+          paramObject = FinderThumbPlayerProxy.l(this.weg);
+          if (paramObject != null) {
+            paramObject.Mk(paramITPPlayer.optInt("totalCodec"));
+          }
+        }
+        catch (Throwable paramITPPlayer)
+        {
+          continue;
+        }
+        paramITPPlayer = this.weg.getLifecycle();
+        if (paramITPPlayer == null) {
+          break;
+        }
+        FinderThumbPlayerProxy.f(this.weg);
+        paramITPPlayer.a(FinderThumbPlayerProxy.l(this.weg));
+        AppMethodBeat.o(254128);
+        return;
+        paramInt = -1;
+        continue;
+        paramInt = -1;
+        continue;
+        if (((TPPlayerMsg.TPMediaCodecInfo)paramObject).infoType == TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_EXCEPTION) {
+          try
+          {
+            paramITPPlayer = new i(((TPPlayerMsg.TPMediaCodecInfo)paramObject).msg);
+            paramObject = FinderThumbPlayerProxy.l(this.weg);
+            if (paramObject != null) {
+              paramObject.awO(paramITPPlayer.optString("errorCodec"));
+            }
+          }
+          catch (Throwable paramITPPlayer) {}
+        }
+      }
+    }
+    
+    public final void onPrepared(ITPPlayer paramITPPlayer)
+    {
+      AppMethodBeat.i(254126);
+      p.h(paramITPPlayer, "player");
+      Object localObject = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.OnPrepared() " + FinderThumbPlayerProxy.a(this.weg));
+      i.b localb = this.weg.getVideoViewCallback();
+      if (localb != null)
+      {
+        localObject = FinderThumbPlayerProxy.f(this.weg);
+        if (localObject != null)
+        {
+          localObject = ((s)localObject).mediaId;
+          localb.dH("", (String)localObject);
+        }
+      }
+      else
+      {
+        if (!this.weg.wcA) {
+          break label176;
+        }
+        this.weg.Mc(2);
+      }
+      for (;;)
+      {
+        localObject = FinderThumbPlayerProxy.j(this.weg);
+        if (localObject == null) {
+          break label193;
+        }
+        localObject = ((FinderThumbPlayerProxy.b)localObject).uJG;
+        if (localObject == null) {
+          break label193;
+        }
+        ((at)localObject).field_audioBitrate = ((int)paramITPPlayer.getPropertyLong(101));
+        ((at)localObject).field_videoBitrate = ((int)paramITPPlayer.getPropertyLong(202));
+        ((at)localObject).field_frameRate = ((int)paramITPPlayer.getPropertyLong(206));
+        AppMethodBeat.o(254126);
+        return;
+        localObject = null;
+        break;
+        label176:
+        FinderThumbPlayerProxy.b(this.weg, 1);
+        paramITPPlayer.pauseDownload();
+      }
+      label193:
+      AppMethodBeat.o(254126);
+    }
+    
+    public final void onStateChange(int paramInt1, int paramInt2)
+    {
+      i.b localb = null;
+      Object localObject2 = null;
+      Object localObject1 = null;
+      AppMethodBeat.i(254129);
+      Object localObject3 = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onStateChange() preState:" + paramInt1 + " curState:" + paramInt2 + ' ' + FinderThumbPlayerProxy.a(this.weg));
+      FinderThumbPlayerProxy.c(this.weg, paramInt2);
+      if (FinderThumbPlayerProxy.f(this.weg) == null)
+      {
+        localObject1 = FinderThumbPlayerProxy.wdX;
+        Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onStateChange() return for null");
+        AppMethodBeat.o(254129);
+        return;
+      }
+      switch (paramInt2)
+      {
+      }
+      while ((paramInt2 == 9) || (paramInt2 == 1))
+      {
+        localObject1 = FinderThumbPlayerProxy.wdX;
+        Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onStateChange() player stop or idle " + FinderThumbPlayerProxy.a(this.weg));
+        localObject1 = this.weg.getOnPlayerStopListener();
+        if (localObject1 == null) {
+          break;
+        }
+        ((u)localObject1).dFR();
+        AppMethodBeat.o(254129);
+        return;
+        localb = this.weg.getVideoViewCallback();
+        if (localb != null)
+        {
+          localObject2 = FinderThumbPlayerProxy.f(this.weg);
+          if (localObject2 != null) {
+            localObject1 = ((s)localObject2).mediaId;
+          }
+          localb.dK("", (String)localObject1);
+        }
+        localObject1 = this.weg.getLifecycle();
+        if (localObject1 != null)
+        {
+          FinderThumbPlayerProxy.f(this.weg);
+          ((y)localObject1).dFN();
+          continue;
+          localObject2 = this.weg.getVideoViewCallback();
+          if (localObject2 != null)
+          {
+            localObject3 = FinderThumbPlayerProxy.f(this.weg);
+            localObject1 = localb;
+            if (localObject3 != null) {
+              localObject1 = ((s)localObject3).mediaId;
+            }
+            ((i.b)localObject2).dJ("", (String)localObject1);
+          }
+          localObject1 = this.weg.getLifecycle();
+          if (localObject1 != null)
+          {
+            FinderThumbPlayerProxy.f(this.weg);
+            ((y)localObject1).dFL();
+            continue;
+            localb = this.weg.getVideoViewCallback();
+            if (localb != null)
+            {
+              localObject3 = FinderThumbPlayerProxy.f(this.weg);
+              localObject1 = localObject2;
+              if (localObject3 != null) {
+                localObject1 = ((s)localObject3).mediaId;
+              }
+              localb.dI("", (String)localObject1);
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(254129);
+    }
+    
     public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      Object localObject = null;
-      String str = null;
-      AppMethodBeat.i(205290);
-      Surface localSurface;
-      if (FinderThumbPlayerProxy.m(this.sZH) == null)
+      Object localObject1 = null;
+      AppMethodBeat.i(254122);
+      p.h(paramSurfaceTexture, "surfaceTexture");
+      Object localObject2 = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onSurfaceTextureAvailable() width:" + paramInt1 + " height:" + paramInt2 + " surfaceTexture:" + paramSurfaceTexture.hashCode() + ' ' + FinderThumbPlayerProxy.a(this.weg));
+      if (FinderThumbPlayerProxy.b(this.weg) != null)
       {
-        ae.i(FinderThumbPlayerProxy.a(this.sZH), "onSurfaceTextureAvailable " + FinderThumbPlayerProxy.b(this.sZH) + " texture:" + hashCode() + " width:" + paramInt1 + " height:" + paramInt2);
-        localObject = FinderThumbPlayerProxy.d(this.sZH);
-        if (paramSurfaceTexture != null)
+        paramSurfaceTexture = FinderThumbPlayerProxy.wdX;
+        localObject2 = FinderThumbPlayerProxy.access$getTAG$cp();
+        StringBuilder localStringBuilder = new StringBuilder("FTPP.onSurfaceTextureAvailable() return for surface:");
+        paramSurfaceTexture = FinderThumbPlayerProxy.b(this.weg);
+        if (paramSurfaceTexture != null) {}
+        for (paramSurfaceTexture = Integer.valueOf(paramSurfaceTexture.hashCode());; paramSurfaceTexture = null)
         {
-          FinderThumbPlayerProxy.a(this.sZH, new Surface(paramSurfaceTexture));
-          ((com.tencent.mm.plugin.thumbplayer.c.a)localObject).setSurface(FinderThumbPlayerProxy.m(this.sZH));
-          if (this.sZH.getMediaInfo() != null) {
-            this.sZH.Gx(1);
-          }
-          localObject = FinderThumbPlayerProxy.a(this.sZH);
-          localStringBuilder = new StringBuilder("set surface ");
-          localSurface = FinderThumbPlayerProxy.m(this.sZH);
-          paramSurfaceTexture = str;
+          localStringBuilder = localStringBuilder.append(paramSurfaceTexture).append(" valid:");
+          Surface localSurface = FinderThumbPlayerProxy.b(this.weg);
+          paramSurfaceTexture = localObject1;
           if (localSurface != null) {
             paramSurfaceTexture = Boolean.valueOf(localSurface.isValid());
           }
-          ae.i((String)localObject, paramSurfaceTexture + ' ' + FinderThumbPlayerProxy.b(this.sZH));
-          AppMethodBeat.o(205290);
+          Log.i((String)localObject2, paramSurfaceTexture);
+          AppMethodBeat.o(254122);
           return;
         }
-        AppMethodBeat.o(205290);
-        return;
       }
-      str = FinderThumbPlayerProxy.a(this.sZH);
-      StringBuilder localStringBuilder = new StringBuilder("onSurfaceTextureAvailable ").append(FinderThumbPlayerProxy.b(this.sZH)).append(" texture:").append(hashCode()).append(" surface:");
-      paramSurfaceTexture = FinderThumbPlayerProxy.m(this.sZH);
-      if (paramSurfaceTexture != null) {}
-      for (paramSurfaceTexture = Boolean.valueOf(paramSurfaceTexture.isValid());; paramSurfaceTexture = null)
-      {
-        localStringBuilder = localStringBuilder.append(paramSurfaceTexture).append('_');
-        localSurface = FinderThumbPlayerProxy.m(this.sZH);
-        paramSurfaceTexture = (SurfaceTexture)localObject;
-        if (localSurface != null) {
-          paramSurfaceTexture = Integer.valueOf(localSurface.hashCode());
-        }
-        ae.i(str, paramSurfaceTexture + " width:" + paramInt1 + " height:" + paramInt2);
-        AppMethodBeat.o(205290);
-        return;
-      }
+      FinderThumbPlayerProxy.a(this.weg, new Surface(paramSurfaceTexture));
+      FinderThumbPlayerProxy.c(this.weg).setSurface(FinderThumbPlayerProxy.b(this.weg));
+      this.weg.Mc(1);
+      AppMethodBeat.o(254122);
     }
     
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(205289);
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "onSurfaceTextureDestroyed " + FinderThumbPlayerProxy.b(this.sZH) + " texture:" + hashCode());
-      FinderThumbPlayerProxy.l(this.sZH);
-      AppMethodBeat.o(205289);
-      return false;
+      AppMethodBeat.i(254124);
+      Object localObject = FinderThumbPlayerProxy.wdX;
+      localObject = FinderThumbPlayerProxy.access$getTAG$cp();
+      StringBuilder localStringBuilder = new StringBuilder("FTPP.onSurfaceTextureDestroyed() surfaceTexture:");
+      if (paramSurfaceTexture != null) {}
+      for (int i = paramSurfaceTexture.hashCode();; i = 0)
+      {
+        Log.i((String)localObject, i + ' ' + FinderThumbPlayerProxy.a(this.weg));
+        FinderThumbPlayerProxy.d(this.weg);
+        AppMethodBeat.o(254124);
+        return false;
+      }
     }
     
     public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(205291);
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "onSurfaceTextureSizeChanged " + FinderThumbPlayerProxy.b(this.sZH) + " texture:" + hashCode() + ' ' + paramInt1 + ' ' + paramInt2);
-      AppMethodBeat.o(205291);
+      AppMethodBeat.i(254123);
+      Object localObject = FinderThumbPlayerProxy.wdX;
+      localObject = FinderThumbPlayerProxy.access$getTAG$cp();
+      StringBuilder localStringBuilder = new StringBuilder("FTPP.onSurfaceTextureSizeChanged  surfaceTexture:");
+      if (paramSurfaceTexture != null) {}
+      for (int i = paramSurfaceTexture.hashCode();; i = 0)
+      {
+        Log.i((String)localObject, i + ' ' + paramInt1 + ' ' + paramInt2 + ' ' + FinderThumbPlayerProxy.a(this.weg));
+        AppMethodBeat.o(254123);
+        return;
+      }
     }
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(205288);
-      paramSurfaceTexture = this.sZH;
-      FinderThumbPlayerProxy.a(paramSurfaceTexture, FinderThumbPlayerProxy.i(paramSurfaceTexture) + 1);
-      paramSurfaceTexture = this.sZH.getMediaInfo();
-      if (paramSurfaceTexture != null)
+      AppMethodBeat.i(254125);
+      paramSurfaceTexture = this.weg;
+      FinderThumbPlayerProxy.a(paramSurfaceTexture, FinderThumbPlayerProxy.e(paramSurfaceTexture) + 1);
+      if (FinderThumbPlayerProxy.f(this.weg) == null)
       {
-        if ((FinderThumbPlayerProxy.i(this.sZH) == 1) && (FinderThumbPlayerProxy.j(this.sZH) == 1))
+        paramSurfaceTexture = FinderThumbPlayerProxy.wdX;
+        Log.w(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onSurfaceTextureUpdated() return for  null.");
+        AppMethodBeat.o(254125);
+        return;
+      }
+      y localy;
+      if ((FinderThumbPlayerProxy.e(this.weg) == 1) && (FinderThumbPlayerProxy.g(this.weg) == 1))
+      {
+        paramSurfaceTexture = FinderThumbPlayerProxy.wdX;
+        Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onSurfaceTextureUpdated() background prepared first frame " + FinderThumbPlayerProxy.a(this.weg));
+        FinderThumbPlayerProxy.b(this.weg, 2);
+        localy = this.weg.getLifecycle();
+        if (localy != null)
         {
-          FinderThumbPlayerProxy.b(this.sZH, 2);
-          u localu = this.sZH.getLifecycle();
-          if (localu != null) {
-            localu.e(paramSurfaceTexture.tbA);
+          paramSurfaceTexture = FinderThumbPlayerProxy.f(this.weg);
+          if (paramSurfaceTexture == null) {
+            break label267;
           }
-          FinderThumbPlayerProxy.k(this.sZH).setInterceptDetach(true);
-          ae.i(FinderThumbPlayerProxy.a(this.sZH), "background prepared first frame " + FinderThumbPlayerProxy.b(this.sZH));
         }
-        if ((FinderThumbPlayerProxy.i(this.sZH) == 1) && (FinderThumbPlayerProxy.j(this.sZH) == 0))
+      }
+      label267:
+      for (paramSurfaceTexture = paramSurfaceTexture.wgl;; paramSurfaceTexture = null)
+      {
+        localy.l(paramSurfaceTexture);
+        FinderThumbPlayerProxy.h(this.weg).setInterceptDetach(true);
+        if ((FinderThumbPlayerProxy.e(this.weg) == 1) && (FinderThumbPlayerProxy.g(this.weg) == 0))
         {
-          ae.i(FinderThumbPlayerProxy.a(this.sZH), "onFirstFrameDraw " + FinderThumbPlayerProxy.b(this.sZH));
-          paramSurfaceTexture = this.sZH.getLifecycle();
+          paramSurfaceTexture = FinderThumbPlayerProxy.wdX;
+          Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.onSurfaceTextureUpdated() onFirstFrameRendered " + FinderThumbPlayerProxy.a(this.weg));
+          paramSurfaceTexture = this.weg.getLifecycle();
           if (paramSurfaceTexture != null)
           {
-            paramSurfaceTexture.xK(FinderThumbPlayerProxy.d(this.sZH).erO());
-            AppMethodBeat.o(205288);
-            return;
+            FinderThumbPlayerProxy.f(this.weg);
+            paramSurfaceTexture.Gr(FinderThumbPlayerProxy.c(this.weg).fwS());
           }
+          FinderThumbPlayerProxy.i(this.weg);
         }
-        AppMethodBeat.o(205288);
+        AppMethodBeat.o(254125);
         return;
       }
-      AppMethodBeat.o(205288);
+    }
+    
+    public final void onVideoSizeChanged(ITPPlayer paramITPPlayer, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(254127);
+      paramITPPlayer = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "FTPP.OnVideoSizeChanged() width:" + paramLong1 + " height:" + paramLong2 + ' ' + FinderThumbPlayerProxy.a(this.weg));
+      FinderThumbPlayerProxy.h(this.weg).jk((int)paramLong1, (int)paramLong2);
+      AppMethodBeat.o(254127);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "player", "Lcom/tencent/thumbplayer/api/ITPPlayer;", "kotlin.jvm.PlatformType", "errorType", "", "errorCode", "arg1", "", "arg2", "onError"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/finder/video/reporter/FTPPKVReporter;", "invoke"})
   static final class d
-    implements b.c
+    extends q
+    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.video.reporter.a>
   {
-    d(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
+    public static final d wei;
     
-    public final void a(com.tencent.thumbplayer.b.a parama, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+    static
     {
-      AppMethodBeat.i(205292);
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "error " + paramInt1 + ' ' + paramInt2 + ' ' + FinderThumbPlayerProxy.b(this.sZH));
-      if (FinderThumbPlayerProxy.j(this.sZH) != 0)
-      {
-        FinderThumbPlayerProxy.d(this.sZH).reset();
-        this.sZH.cOA();
-        FinderThumbPlayerProxy.cOV();
-        AppMethodBeat.o(205292);
-        return;
-      }
-      parama = this.sZH.getMediaInfo();
-      if (parama != null)
-      {
-        i.b localb = this.sZH.getVideoViewCallback();
-        if (localb != null) {
-          localb.c("", parama.mediaId, "", paramInt2, paramInt1);
-        }
-      }
-      FinderThumbPlayerProxy.cOV();
-      AppMethodBeat.o(205292);
+      AppMethodBeat.i(254134);
+      wei = new d();
+      AppMethodBeat.o(254134);
+    }
+    
+    d()
+    {
+      super();
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "preState", "", "curState", "onStateChange"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/finder/video/log/FTPPLog;", "invoke"})
   static final class e
-    implements b.h
+    extends q
+    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.video.log.a>
   {
-    e(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
+    public static final e wej;
     
-    public final void fW(int paramInt1, int paramInt2)
+    static
     {
-      AppMethodBeat.i(205293);
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "proxy player preState " + paramInt1 + " curState " + paramInt2 + ' ' + FinderThumbPlayerProxy.b(this.sZH));
-      Object localObject = this.sZH.getMediaInfo();
-      if (localObject != null) {
-        switch (paramInt2)
-        {
-        }
-      }
-      while ((paramInt2 == 8) || (paramInt2 == 1))
-      {
-        ae.i(FinderThumbPlayerProxy.a(this.sZH), "proxy player stop or idle " + FinderThumbPlayerProxy.b(this.sZH));
-        localObject = this.sZH.getOnPlayerStopListener();
-        if (localObject == null) {
-          break;
-        }
-        ((r)localObject).cPt();
-        AppMethodBeat.o(205293);
-        return;
-        i.b localb = this.sZH.getVideoViewCallback();
-        if (localb != null) {
-          localb.ds("", ((p)localObject).mediaId);
-        }
-        if (this.sZH.sZm) {
-          this.sZH.Gx(2);
-        }
-        for (;;)
-        {
-          localObject = this.sZH.getResourceLoaderProxy();
-          if (localObject == null) {
-            break;
-          }
-          localObject = ((FinderThumbPlayerProxy.b)localObject).ssB;
-          if (localObject == null) {
-            break;
-          }
-          ((com.tencent.mm.plugin.finder.model.z)localObject).field_audioBitrate = ((int)FinderThumbPlayerProxy.d(this.sZH).getPropertyLong(com.tencent.thumbplayer.b.l.LONG_AUDIO_BIT_RATE));
-          ((com.tencent.mm.plugin.finder.model.z)localObject).field_videoBitrate = ((int)FinderThumbPlayerProxy.d(this.sZH).getPropertyLong(com.tencent.thumbplayer.b.l.LONG_VIDEO_BIT_RATE));
-          ((com.tencent.mm.plugin.finder.model.z)localObject).field_frameRate = ((int)FinderThumbPlayerProxy.d(this.sZH).getPropertyLong(com.tencent.thumbplayer.b.l.LONG_VIDEO_FRAME_RATE));
-          ae.i(FinderThumbPlayerProxy.a(this.sZH), "update video info when prepared audioBitrate:" + ((com.tencent.mm.plugin.finder.model.z)localObject).field_audioBitrate + " videoBitrate:" + ((com.tencent.mm.plugin.finder.model.z)localObject).field_videoBitrate + " frameRate:" + ((com.tencent.mm.plugin.finder.model.z)localObject).field_frameRate + ' ' + FinderThumbPlayerProxy.b(this.sZH));
-          break;
-          ae.i(FinderThumbPlayerProxy.a(this.sZH), "background prepared " + FinderThumbPlayerProxy.b(this.sZH));
-          FinderThumbPlayerProxy.b(this.sZH, 1);
-          FinderThumbPlayerProxy.d(this.sZH).pauseDownload();
-        }
-        localb = this.sZH.getVideoViewCallback();
-        if (localb != null) {
-          localb.dv("", ((p)localObject).mediaId);
-        }
-        localObject = this.sZH.getLifecycle();
-        if (localObject != null)
-        {
-          ((u)localObject).cPn();
-          continue;
-          localb = this.sZH.getVideoViewCallback();
-          if (localb != null) {
-            localb.du("", ((p)localObject).mediaId);
-          }
-          localObject = this.sZH.getLifecycle();
-          if (localObject != null)
-          {
-            ((u)localObject).cPl();
-            continue;
-            localb = this.sZH.getVideoViewCallback();
-            if (localb != null) {
-              localb.dt("", ((p)localObject).mediaId);
-            }
-          }
-        }
-      }
-      AppMethodBeat.o(205293);
+      AppMethodBeat.i(254136);
+      wej = new e();
+      AppMethodBeat.o(254136);
+    }
+    
+    e()
+    {
+      super();
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "player", "Lcom/tencent/thumbplayer/api/ITPPlayer;", "kotlin.jvm.PlatformType", "what", "", "arg1", "", "arg2", "extraObject", "", "onInfo"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class f
-    implements b.d
+    implements Runnable
   {
-    f(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
+    f(FinderThumbPlayerProxy paramFinderThumbPlayerProxy, String paramString) {}
     
-    public final void a(com.tencent.thumbplayer.b.a parama, int paramInt, long paramLong1, long paramLong2, Object paramObject)
+    public final void run()
     {
-      AppMethodBeat.i(205294);
-      p localp = this.sZH.getMediaInfo();
-      if (localp != null)
+      AppMethodBeat.i(254137);
+      if (this.weg.wcA)
       {
-        switch (paramInt)
+        FinderThumbPlayerProxy.v(this.weg);
+        i.b localb = this.weg.getVideoViewCallback();
+        if (localb != null)
         {
-        default: 
-          AppMethodBeat.o(205294);
-          return;
-        case 200: 
-          FinderThumbPlayerProxy.n(this.sZH).removeMessages(0);
-          FinderThumbPlayerProxy.n(this.sZH).sendMessageDelayed(FinderThumbPlayerProxy.n(this.sZH).obtainMessage(0, localp.mediaId), 500L);
-          AppMethodBeat.o(205294);
-          return;
-        case 201: 
-          FinderThumbPlayerProxy.n(this.sZH).removeMessages(0);
-          if (FinderThumbPlayerProxy.o(this.sZH))
-          {
-            FinderThumbPlayerProxy.a(this.sZH, false);
-            parama = this.sZH.getVideoViewCallback();
-            if (parama != null)
-            {
-              parama.dx("", localp.mediaId);
-              AppMethodBeat.o(205294);
-              return;
-            }
-            AppMethodBeat.o(205294);
-            return;
-          }
-          AppMethodBeat.o(205294);
-          return;
-        case 150: 
-          parama = this.sZH.getLifecycle();
-          if (parama != null) {
-            parama.cPm();
-          }
-          parama = this.sZH.getResourceLoaderProxy();
-          if (parama != null)
-          {
-            ae.i(FinderThumbPlayerProxy.a(parama.sZH), "onReplay " + parama.cOX());
-            parama.sZE = 0L;
-            AppMethodBeat.o(205294);
-            return;
-          }
-          AppMethodBeat.o(205294);
-          return;
-        case 106: 
-          ae.i(FinderThumbPlayerProxy.a(this.sZH), "first video frame ready " + FinderThumbPlayerProxy.b(this.sZH));
-          AppMethodBeat.o(205294);
-          return;
-        case 105: 
-          ae.i(FinderThumbPlayerProxy.a(this.sZH), "first audio frame ready " + FinderThumbPlayerProxy.b(this.sZH));
-          AppMethodBeat.o(205294);
-          return;
-        case 1006: 
-          if ((paramObject instanceof i.c))
-          {
-            ae.i(FinderThumbPlayerProxy.a(this.sZH), "playableDurationMS: " + ((i.c)paramObject).MvX);
-            AppMethodBeat.o(205294);
-            return;
-          }
-          AppMethodBeat.o(205294);
-          return;
-        }
-        ae.i(FinderThumbPlayerProxy.a(this.sZH), "VIDEO_DECODER_TYPE=" + paramLong1 + ' ' + localp.mediaId);
-        parama = localp.tbA;
-        if (parama != null) {}
-        for (parama = parama.HiY;; parama = null)
-        {
-          if (parama == null)
-          {
-            parama = localp.tbA;
-            if (parama != null) {
-              parama.HiY = new FinderMediaReportObject();
-            }
-          }
-          parama = localp.tbA;
-          if (parama == null) {
-            break;
-          }
-          parama = parama.HiY;
-          if (parama == null) {
-            break;
-          }
-          parama.playDecoderType = ((int)paramLong1);
-          AppMethodBeat.o(205294);
+          localb.dL("", this.qWs);
+          AppMethodBeat.o(254137);
           return;
         }
       }
-      AppMethodBeat.o(205294);
+      AppMethodBeat.o(254137);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class g
-    extends d.g.b.q
-    implements d.g.a.a<d.z>
+    extends q
+    implements kotlin.g.a.a<kotlin.x>
   {
     g(FinderThumbPlayerProxy paramFinderThumbPlayerProxy)
     {
@@ -2274,232 +2663,236 @@ public final class FinderThumbPlayerProxy
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class h
-    extends d.g.b.q
-    implements d.g.a.a<d.z>
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnDownload$1$2", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StartStreamingDownloadCallback;", "onStart", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "plugin-finder_release"})
+  public static final class h
+    implements com.tencent.mm.plugin.thumbplayer.b.e
   {
-    h(FinderThumbPlayerProxy paramFinderThumbPlayerProxy)
+    h(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
+    
+    public final void JS(int paramInt)
     {
-      super();
+      AppMethodBeat.i(254139);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "startCdnDownload()#onStart " + FinderThumbPlayerProxy.a(this.weg) + ' ' + paramInt);
+      FinderThumbPlayerProxy.u(this.weg);
+      AppMethodBeat.o(254139);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnDownload$1$2", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StartStreamingDownloadCallback;", "onStart", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnDownload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/CreateCdnDownloadTaskCallback;", "createCdnStreamTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "id", "", "plugin-finder_release"})
   public static final class i
-    implements e
-  {
-    i(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
-    
-    public final void Fc(int paramInt)
-    {
-      AppMethodBeat.i(205297);
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "real start download task " + FinderThumbPlayerProxy.b(this.sZH) + ' ' + paramInt);
-      FinderThumbPlayerProxy.cOV();
-      AppMethodBeat.o(205297);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnDownload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/CreateCdnDownloadTaskCallback;", "createCdnStreamTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "id", "", "plugin-finder_release"})
-  public static final class j
     implements com.tencent.mm.plugin.thumbplayer.b.b
   {
-    j(FinderThumbPlayerProxy.b paramb) {}
+    i(FinderThumbPlayerProxy.b paramb) {}
     
-    public final h akd(String paramString)
+    public final com.tencent.mm.i.h awH(String paramString)
     {
-      AppMethodBeat.i(205298);
-      d.g.b.p.h(paramString, "id");
-      FinderThumbPlayerProxy.b localb = this.sZJ;
-      paramString = com.tencent.mm.plugin.finder.utils.p.sXz;
-      String str2 = localb.mediaId;
-      Object localObject1 = localb.sZs.downloadUrl;
+      boolean bool = true;
+      AppMethodBeat.i(254140);
+      p.h(paramString, "id");
+      Object localObject4 = this.wek;
+      paramString = com.tencent.mm.plugin.finder.utils.y.vXH;
+      String str1 = ((FinderThumbPlayerProxy.b)localObject4).mediaId;
+      Object localObject1 = ((FinderThumbPlayerProxy.b)localObject4).wcy.downloadUrl;
       paramString = (String)localObject1;
       if (localObject1 == null) {
         paramString = "";
       }
-      String str3 = localb.sZs.path;
-      localObject1 = localb.sZs;
-      if (localObject1 != null) {}
-      for (localObject1 = ((p)localObject1).path;; localObject1 = null)
+      String str2 = ((FinderThumbPlayerProxy.b)localObject4).wcy.path;
+      localObject1 = ((FinderThumbPlayerProxy.b)localObject4).wcy;
+      int i;
+      Object localObject2;
+      String str3;
+      Object localObject3;
+      if (localObject1 != null)
       {
-        int i = com.tencent.mm.modelcontrol.d.I(1, (String)localObject1);
-        Object localObject2 = localb.ssB.field_fileFormat;
+        localObject1 = ((s)localObject1).path;
+        i = com.tencent.mm.modelcontrol.e.L(1, (String)localObject1);
+        localObject2 = ((FinderThumbPlayerProxy.b)localObject4).uJG.field_fileFormat;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        String str4 = localb.sZs.rYW.cEl();
-        String str1 = localb.sZs.rYW.srx.decodeKey;
-        localObject2 = str1;
-        if (str1 == null) {
+        str3 = ((FinderThumbPlayerProxy.b)localObject4).wcy.tHN.djW();
+        localObject3 = ((FinderThumbPlayerProxy.b)localObject4).wcy.tHN.uIw.decodeKey;
+        localObject2 = localObject3;
+        if (localObject3 == null) {
           localObject2 = "";
         }
-        paramString = com.tencent.mm.plugin.finder.utils.p.a(str2, paramString, str3, i, (String)localObject1, str4, (String)localObject2, (h.a)localb, FinderThumbPlayerProxy.a(localb.sZH));
-        AppMethodBeat.o(205298);
-        return paramString;
-      }
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnPreload$1$2", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StartPreloadDownloadCallback;", "onStart", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "plugin-finder_release"})
-  public static final class k
-    implements com.tencent.mm.plugin.thumbplayer.b.d
-  {
-    k(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
-    
-    public final void Fc(int paramInt)
-    {
-      AppMethodBeat.i(205299);
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "real start download preload task " + FinderThumbPlayerProxy.b(this.sZH) + ' ' + paramInt);
-      AppMethodBeat.o(205299);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnPreload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/CreateCdnDownloadTaskCallback;", "createCdnStreamTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "id", "", "plugin-finder_release"})
-  public static final class l
-    implements com.tencent.mm.plugin.thumbplayer.b.b
-  {
-    l(FinderThumbPlayerProxy.b paramb) {}
-    
-    public final h akd(String paramString)
-    {
-      AppMethodBeat.i(205300);
-      d.g.b.p.h(paramString, "id");
-      FinderThumbPlayerProxy.b localb = this.sZK;
-      paramString = com.tencent.mm.plugin.finder.utils.p.sXz;
-      String str2 = localb.mediaId;
-      Object localObject1 = localb.sZs.downloadUrl;
-      paramString = (String)localObject1;
-      if (localObject1 == null) {
-        paramString = "";
-      }
-      String str3 = localb.sZs.path;
-      localObject1 = localb.sZs;
-      if (localObject1 != null) {}
-      for (localObject1 = ((p)localObject1).path;; localObject1 = null)
-      {
-        int i = com.tencent.mm.modelcontrol.d.I(1, (String)localObject1);
-        Object localObject2 = localb.ssB.field_fileFormat;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
+        if (((FinderThumbPlayerProxy.b)localObject4).wcy.tHN.uIw.hot_flag != 1) {
+          break label217;
         }
-        String str4 = localb.sZs.rYW.cEl();
-        String str1 = localb.sZs.rYW.srx.decodeKey;
-        localObject2 = str1;
-        if (str1 == null) {
-          localObject2 = "";
-        }
-        paramString = com.tencent.mm.plugin.finder.utils.p.a(str2, paramString, str3, i, (String)localObject1, str4, (String)localObject2, (g.a)localb, (g.b)localb, (int)(localb.sZG * 100L / localb.ssB.field_totalSize), localb.sZG, FinderThumbPlayerProxy.a(localb.sZH));
-        AppMethodBeat.o(205300);
-        return paramString;
-      }
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startProgressTimer$1", "Ljava/util/TimerTask;", "run", "", "plugin-finder_release"})
-  public static final class m
-    extends TimerTask
-  {
-    m(p paramp) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(205302);
-      com.tencent.mm.ac.c.h((d.g.a.a)new a(this));
-      FinderThumbPlayerProxy.b localb = this.sZH.getResourceLoaderProxy();
-      if (localb != null)
-      {
-        localb.cOY();
-        AppMethodBeat.o(205302);
-        return;
-      }
-      AppMethodBeat.o(205302);
-    }
-    
-    @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-    static final class a
-      extends d.g.b.q
-      implements d.g.a.a<d.z>
-    {
-      a(FinderThumbPlayerProxy.m paramm)
-      {
-        super();
-      }
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$stopCdnDownload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StopStreamingDownloadCallback;", "onStop", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "plugin-finder_release"})
-  public static final class n
-    implements com.tencent.mm.plugin.thumbplayer.b.g
-  {
-    n(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
-    
-    public final void a(int paramInt, h paramh, com.tencent.mm.i.d paramd)
-    {
-      AppMethodBeat.i(205303);
-      FinderThumbPlayerProxy.cOV();
-      p localp = this.sZH.getMediaInfo();
-      if (localp != null)
-      {
-        t localt = this.sZH.getDownloadCallback();
-        if (localt != null) {
-          localt.a(localp.rYW, paramh, paramd);
-        }
-      }
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "real cancel download task " + FinderThumbPlayerProxy.b(this.sZH) + ' ' + paramInt);
-      AppMethodBeat.o(205303);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$stopCdnPreload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StopPreloadDownloadCallback;", "onStop", "", "ret", "", "plugin-finder_release"})
-  public static final class o
-    implements com.tencent.mm.plugin.thumbplayer.b.f
-  {
-    o(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
-    
-    public final void Fb(int paramInt)
-    {
-      AppMethodBeat.i(205304);
-      FinderThumbPlayerProxy.cOV();
-      ae.i(FinderThumbPlayerProxy.a(this.sZH), "real cancel preload download task " + FinderThumbPlayerProxy.b(this.sZH) + ' ' + paramInt);
-      AppMethodBeat.o(205304);
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
-  static final class p
-    implements aq.a
-  {
-    p(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
-    
-    public final boolean handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(205305);
-      switch (paramMessage.what)
-      {
       }
       for (;;)
       {
-        AppMethodBeat.o(205305);
-        return false;
-        paramMessage = paramMessage.obj;
-        if ((paramMessage != null) && ((paramMessage instanceof String)) && (this.sZH.sZm))
-        {
-          FinderThumbPlayerProxy.a(this.sZH, true);
-          i.b localb = this.sZH.getVideoViewCallback();
-          if (localb != null) {
-            localb.dw("", (String)paramMessage);
-          }
+        localObject3 = (h.a)localObject4;
+        localObject4 = FinderThumbPlayerProxy.wdX;
+        paramString = com.tencent.mm.plugin.finder.utils.y.a(str1, paramString, str2, i, (String)localObject1, str3, (String)localObject2, bool, (h.a)localObject3, FinderThumbPlayerProxy.access$getTAG$cp());
+        AppMethodBeat.o(254140);
+        return paramString;
+        localObject1 = null;
+        break;
+        label217:
+        bool = false;
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnPreload$1$2", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StartPreloadDownloadCallback;", "onStart", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "plugin-finder_release"})
+  public static final class j
+    implements com.tencent.mm.plugin.thumbplayer.b.d
+  {
+    j(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
+    
+    public final void JS(int paramInt)
+    {
+      AppMethodBeat.i(254141);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "startCdnPreload()#onStart(), real start download preload task " + FinderThumbPlayerProxy.a(this.weg) + ' ' + paramInt);
+      if (paramInt == -1) {
+        FinderThumbPlayerProxy.p(this.weg);
+      }
+      AppMethodBeat.o(254141);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startCdnPreload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/CreateCdnDownloadTaskCallback;", "createCdnStreamTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "id", "", "plugin-finder_release"})
+  public static final class k
+    implements com.tencent.mm.plugin.thumbplayer.b.b
+  {
+    k(FinderThumbPlayerProxy.b paramb) {}
+    
+    public final com.tencent.mm.i.h awH(String paramString)
+    {
+      AppMethodBeat.i(254142);
+      p.h(paramString, "id");
+      Object localObject4 = this.wel;
+      long l = ((FinderThumbPlayerProxy.b)localObject4).uJG.field_totalSize;
+      if (l == 0L)
+      {
+        AppMethodBeat.o(254142);
+        return null;
+      }
+      paramString = com.tencent.mm.plugin.finder.utils.y.vXH;
+      String str1 = ((FinderThumbPlayerProxy.b)localObject4).mediaId;
+      Object localObject1 = ((FinderThumbPlayerProxy.b)localObject4).wcy.downloadUrl;
+      paramString = (String)localObject1;
+      if (localObject1 == null) {
+        paramString = "";
+      }
+      String str2 = ((FinderThumbPlayerProxy.b)localObject4).wcy.path;
+      localObject1 = ((FinderThumbPlayerProxy.b)localObject4).wcy;
+      int i;
+      Object localObject2;
+      String str3;
+      Object localObject3;
+      if (localObject1 != null)
+      {
+        localObject1 = ((s)localObject1).path;
+        i = com.tencent.mm.modelcontrol.e.L(1, (String)localObject1);
+        localObject2 = ((FinderThumbPlayerProxy.b)localObject4).uJG.field_fileFormat;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        str3 = ((FinderThumbPlayerProxy.b)localObject4).wcy.tHN.djW();
+        localObject3 = ((FinderThumbPlayerProxy.b)localObject4).wcy.tHN.uIw.decodeKey;
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          localObject2 = "";
+        }
+        if (((FinderThumbPlayerProxy.b)localObject4).wcy.tHN.uIw.hot_flag != 1) {
+          break label276;
         }
       }
+      label276:
+      for (boolean bool = true;; bool = false)
+      {
+        localObject3 = (g.a)localObject4;
+        g.b localb = (g.b)localObject4;
+        int j = (int)(((FinderThumbPlayerProxy.b)localObject4).wef * 100L / l);
+        l = ((FinderThumbPlayerProxy.b)localObject4).wef;
+        localObject4 = FinderThumbPlayerProxy.wdX;
+        paramString = com.tencent.mm.plugin.finder.utils.y.a(str1, paramString, str2, i, (String)localObject1, str3, (String)localObject2, bool, (g.a)localObject3, localb, j, l, FinderThumbPlayerProxy.access$getTAG$cp());
+        AppMethodBeat.o(254142);
+        return paramString;
+        localObject1 = null;
+        break;
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$startProgressTimer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "lastNotifyMs", "", "getLastNotifyMs", "()J", "setLastNotifyMs", "(J)V", "onTimerExpired", "", "plugin-finder_release"})
+  public static final class l
+    implements MTimerHandler.CallBack
+  {
+    private long wem = -1L;
+    
+    l(s params) {}
+    
+    public final boolean onTimerExpired()
+    {
+      AppMethodBeat.i(254143);
+      long l1 = this.weg.getCurrentPlayMs();
+      long l2 = this.weg.getVideoDurationMs();
+      y localy = this.weg.getLifecycle();
+      if (localy != null) {
+        localy.dFO();
+      }
+      if ((this.wem == -1L) || (l1 - this.wem > 1000L))
+      {
+        localy = this.weg.getLifecycle();
+        if (localy != null) {
+          localy.a(params.wgl, (int)l1 / 1000, (int)l2 / 1000);
+        }
+        this.wem = l1;
+      }
+      AppMethodBeat.o(254143);
+      return true;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$stopCdnDownload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StopStreamingDownloadCallback;", "onStop", "", "ret", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "plugin-finder_release"})
+  public static final class m
+    implements com.tencent.mm.plugin.thumbplayer.b.g
+  {
+    m(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
+    
+    public final void a(int paramInt, com.tencent.mm.i.h paramh, com.tencent.mm.i.d paramd)
+    {
+      AppMethodBeat.i(254144);
+      s locals = FinderThumbPlayerProxy.f(this.weg);
+      if (locals != null)
+      {
+        x localx = this.weg.getDownloadCallback();
+        if (localx != null) {
+          localx.a(locals.tHN, paramh, paramd);
+        }
+      }
+      paramh = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "stopCdnDownload()#onStop(), real cancel download task " + FinderThumbPlayerProxy.a(this.weg) + ' ' + paramInt);
+      AppMethodBeat.o(254144);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderThumbPlayerProxy$stopCdnPreload$1$1", "Lcom/tencent/mm/plugin/thumbplayer/cdn/StopPreloadDownloadCallback;", "onStop", "", "ret", "", "plugin-finder_release"})
+  public static final class n
+    implements com.tencent.mm.plugin.thumbplayer.b.f
+  {
+    n(FinderThumbPlayerProxy paramFinderThumbPlayerProxy) {}
+    
+    public final void JR(int paramInt)
+    {
+      AppMethodBeat.i(254145);
+      FinderThumbPlayerProxy.a locala = FinderThumbPlayerProxy.wdX;
+      Log.i(FinderThumbPlayerProxy.access$getTAG$cp(), "stopCdnPreload()#onStop " + FinderThumbPlayerProxy.a(this.weg) + ' ' + paramInt);
+      AppMethodBeat.o(254145);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.FinderThumbPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

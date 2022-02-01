@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.report.a;
 
 public final class c
 {
-  public static boolean ywG = false;
-  public static boolean ywH = true;
-  public static boolean ywI = true;
-  public static boolean ywJ = true;
+  public static boolean CxC = false;
+  public static boolean CxD = true;
+  public static boolean CxE = true;
+  public static boolean CxF = true;
   
   public static void d(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    ywG = paramBoolean1;
-    ywH = paramBoolean2;
-    ywI = paramBoolean3;
-    ywJ = paramBoolean4;
+    CxC = paramBoolean1;
+    CxD = paramBoolean2;
+    CxE = paramBoolean3;
+    CxF = paramBoolean4;
   }
 }
 

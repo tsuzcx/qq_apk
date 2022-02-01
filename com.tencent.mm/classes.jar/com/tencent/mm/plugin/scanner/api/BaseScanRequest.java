@@ -10,59 +10,59 @@ public class BaseScanRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<BaseScanRequest> CREATOR;
-  public boolean yzA;
-  public boolean yzB;
-  public boolean yzC;
-  public boolean yzD;
-  public boolean yzE;
-  private Bundle yzF;
+  public boolean CAE;
+  public boolean CAF;
+  public boolean CAG;
+  public boolean CAH;
+  public boolean CAI;
+  private Bundle CAJ;
   
   static
   {
-    AppMethodBeat.i(210670);
+    AppMethodBeat.i(224192);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(210670);
+    AppMethodBeat.o(224192);
   }
   
   public BaseScanRequest()
   {
-    this.yzA = false;
-    this.yzB = false;
-    this.yzC = false;
-    this.yzD = true;
-    this.yzE = true;
+    this.CAE = false;
+    this.CAF = false;
+    this.CAG = false;
+    this.CAH = true;
+    this.CAI = true;
   }
   
   public BaseScanRequest(Parcel paramParcel)
   {
-    AppMethodBeat.i(210667);
-    this.yzA = false;
-    this.yzB = false;
-    this.yzC = false;
-    this.yzD = true;
-    this.yzE = true;
+    AppMethodBeat.i(224189);
+    this.CAE = false;
+    this.CAF = false;
+    this.CAG = false;
+    this.CAH = true;
+    this.CAI = true;
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.yzA = bool1;
+      this.CAE = bool1;
       if (paramParcel.readByte() == 0) {
         break label125;
       }
       bool1 = true;
       label59:
-      this.yzB = bool1;
+      this.CAF = bool1;
       if (paramParcel.readByte() == 0) {
         break label130;
       }
       bool1 = true;
       label73:
-      this.yzC = bool1;
+      this.CAG = bool1;
       if (paramParcel.readByte() == 0) {
         break label135;
       }
       bool1 = true;
       label87:
-      this.yzD = bool1;
+      this.CAH = bool1;
       if (paramParcel.readByte() == 0) {
         break label140;
       }
@@ -72,9 +72,9 @@ public class BaseScanRequest
     label140:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.yzE = bool1;
-      this.yzF = paramParcel.readBundle();
-      AppMethodBeat.o(210667);
+      this.CAI = bool1;
+      this.CAJ = paramParcel.readBundle();
+      AppMethodBeat.o(224189);
       return;
       bool1 = false;
       break;
@@ -95,62 +95,62 @@ public class BaseScanRequest
   
   public final String getExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210666);
-    if (this.yzF != null)
+    AppMethodBeat.i(224188);
+    if (this.CAJ != null)
     {
-      paramString1 = this.yzF.getString(paramString1, paramString2);
-      AppMethodBeat.o(210666);
+      paramString1 = this.CAJ.getString(paramString1, paramString2);
+      AppMethodBeat.o(224188);
       return paramString1;
     }
-    AppMethodBeat.o(210666);
+    AppMethodBeat.o(224188);
     return paramString2;
   }
   
   public final void putExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210665);
-    if (this.yzF == null) {
-      this.yzF = new Bundle();
+    AppMethodBeat.i(224187);
+    if (this.CAJ == null) {
+      this.CAJ = new Bundle();
     }
-    this.yzF.putString(paramString1, paramString2);
-    AppMethodBeat.o(210665);
+    this.CAJ.putString(paramString1, paramString2);
+    AppMethodBeat.o(224187);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(210669);
-    String str = String.format("BaseScanRequest{hideBottomTab: %b, hideScanTips: %b, hideFlashSwitcher: %b, hideGalleryButton: %b, hideOptionMenu: %b}", new Object[] { Boolean.valueOf(this.yzA), Boolean.valueOf(this.yzB), Boolean.valueOf(this.yzC), Boolean.valueOf(this.yzD), Boolean.valueOf(this.yzE) });
-    AppMethodBeat.o(210669);
+    AppMethodBeat.i(224191);
+    String str = String.format("BaseScanRequest{hideBottomTab: %b, hideScanTips: %b, hideFlashSwitcher: %b, hideGalleryButton: %b, hideOptionMenu: %b}", new Object[] { Boolean.valueOf(this.CAE), Boolean.valueOf(this.CAF), Boolean.valueOf(this.CAG), Boolean.valueOf(this.CAH), Boolean.valueOf(this.CAI) });
+    AppMethodBeat.o(224191);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(210668);
-    if (this.yzA)
+    AppMethodBeat.i(224190);
+    if (this.CAE)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yzB) {
+      if (!this.CAF) {
         break label101;
       }
       paramInt = 1;
       label31:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yzC) {
+      if (!this.CAG) {
         break label106;
       }
       paramInt = 1;
       label46:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yzD) {
+      if (!this.CAH) {
         break label111;
       }
       paramInt = 1;
       label61:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.yzE) {
+      if (!this.CAI) {
         break label116;
       }
     }
@@ -161,8 +161,8 @@ public class BaseScanRequest
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeBundle(this.yzF);
-      AppMethodBeat.o(210668);
+      paramParcel.writeBundle(this.CAJ);
+      AppMethodBeat.o(224190);
       return;
       paramInt = 0;
       break;
@@ -177,7 +177,7 @@ public class BaseScanRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.api.BaseScanRequest
  * JD-Core Version:    0.7.0.1
  */

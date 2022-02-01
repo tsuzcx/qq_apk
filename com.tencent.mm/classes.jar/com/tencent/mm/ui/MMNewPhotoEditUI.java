@@ -15,74 +15,80 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.ab;
+import com.tencent.mm.api.ab.a.a;
+import com.tencent.mm.api.ab.b;
+import com.tencent.mm.api.ab.c;
 import com.tencent.mm.api.e;
-import com.tencent.mm.api.i;
-import com.tencent.mm.api.s;
+import com.tencent.mm.api.j;
 import com.tencent.mm.api.u;
-import com.tencent.mm.api.w;
-import com.tencent.mm.api.y;
-import com.tencent.mm.api.y.a.a;
-import com.tencent.mm.api.y.b;
-import com.tencent.mm.api.y.c;
+import com.tencent.mm.api.x;
+import com.tencent.mm.api.z;
+import com.tencent.mm.platformtools.p;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 
 @a(19)
 public class MMNewPhotoEditUI
   extends MMActivity
-  implements i
+  implements j
 {
-  private Dialog DfS;
-  private String Jxr;
-  private long Jxs;
-  private String Jxt;
-  private String Jxu;
-  private boolean Jxv;
-  private boolean Jxw;
-  private final d Jxx;
-  private PhotoEditProxy Jxy;
-  private int fRv;
-  private com.tencent.mm.ui.base.p fSP;
-  private y wjw;
+  private Dialog HLO;
+  private String OHL;
+  private long OHM;
+  private String OHN;
+  private String OHO;
+  private boolean OHP;
+  private boolean OHQ;
+  private final d OHR;
+  private PhotoEditProxy OHS;
+  private int gwE;
+  private q gxX;
+  private ab zDV;
   
   public MMNewPhotoEditUI()
   {
     AppMethodBeat.i(103219);
-    this.Jxx = new d(this);
-    this.fSP = null;
+    this.OHR = new d(this);
+    this.gxX = null;
     AppMethodBeat.o(103219);
   }
   
-  private void acr(final int paramInt)
+  private void akZ(final int paramInt)
   {
     AppMethodBeat.i(103227);
-    js(true);
-    this.wjw.a(new s()
+    ku(true);
+    this.zDV.a(new u()
     {
       public final void a(Bitmap paramAnonymousBitmap, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(103218);
-        ae.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] w:%s h:%s", new Object[] { Integer.valueOf(paramAnonymousBitmap.getWidth()), Integer.valueOf(paramAnonymousBitmap.getHeight()) });
+        Log.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] w:%s h:%s", new Object[] { Integer.valueOf(paramAnonymousBitmap.getWidth()), Integer.valueOf(paramAnonymousBitmap.getHeight()) });
         String str;
         try
         {
-          str = com.tencent.mm.sdk.f.b.arS("jpg");
-          com.tencent.mm.sdk.platformtools.h.a(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, str, true);
-          ae.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] photoPath:%s", new Object[] { str });
-          MMNewPhotoEditUI.f(MMNewPhotoEditUI.this).recordImage(MMNewPhotoEditUI.c(MMNewPhotoEditUI.this), str, MMNewPhotoEditUI.d(MMNewPhotoEditUI.this), MMNewPhotoEditUI.e(MMNewPhotoEditUI.this).Kd().Ls(), MMNewPhotoEditUI.e(MMNewPhotoEditUI.this).Kd().Lt());
+          str = AndroidMediaUtil.getExportImagePath("jpg");
+          BitmapUtil.saveBitmapToImage(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, str, true);
+          Log.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] photoPath:%s", new Object[] { str });
+          MMNewPhotoEditUI.f(MMNewPhotoEditUI.this).recordImage(MMNewPhotoEditUI.c(MMNewPhotoEditUI.this), str, MMNewPhotoEditUI.d(MMNewPhotoEditUI.this), MMNewPhotoEditUI.e(MMNewPhotoEditUI.this).Um().VF(), MMNewPhotoEditUI.e(MMNewPhotoEditUI.this).Um().VG());
           if ((MMNewPhotoEditUI.g(MMNewPhotoEditUI.this)) || (paramInt == 2)) {
-            com.tencent.mm.sdk.f.b.k(str, MMNewPhotoEditUI.this);
+            AndroidMediaUtil.refreshMediaScanner(str, MMNewPhotoEditUI.this);
           }
           if ((paramInt != 0) && (!paramAnonymousBitmap.isRecycled()))
           {
-            ae.i("MicroMsg.MMNewPhotoEditUI", "bitmap recycle %s", new Object[] { paramAnonymousBitmap.toString() });
+            Log.i("MicroMsg.MMNewPhotoEditUI", "bitmap recycle %s", new Object[] { paramAnonymousBitmap.toString() });
             paramAnonymousBitmap.recycle();
           }
           MMNewPhotoEditUI.a(MMNewPhotoEditUI.this, str);
@@ -101,7 +107,7 @@ public class MMNewPhotoEditUI
           {
             MMNewPhotoEditUI.c(MMNewPhotoEditUI.this, str);
             MMNewPhotoEditUI.b(MMNewPhotoEditUI.this, 2);
-            Toast.makeText(ak.getContext(), MMNewPhotoEditUI.this.getString(2131758829), 1).show();
+            Toast.makeText(MMApplicationContext.getContext(), MMNewPhotoEditUI.this.getString(2131759152), 1).show();
             MMNewPhotoEditUI.b(MMNewPhotoEditUI.this);
             MMNewPhotoEditUI.this.finish();
             AppMethodBeat.o(103218);
@@ -116,7 +122,7 @@ public class MMNewPhotoEditUI
         }
         if (paramInt == 2)
         {
-          Toast.makeText(ak.getContext(), MMNewPhotoEditUI.this.getString(2131758632, new Object[] { com.tencent.mm.loader.j.b.asv() }), 1).show();
+          Toast.makeText(MMApplicationContext.getContext(), MMNewPhotoEditUI.this.getString(2131758940, new Object[] { AndroidMediaUtil.getSysCameraDirPath() }), 1).show();
           MMNewPhotoEditUI.b(MMNewPhotoEditUI.this, 3);
           MMNewPhotoEditUI.b(MMNewPhotoEditUI.this);
           MMNewPhotoEditUI.this.finish();
@@ -132,8 +138,8 @@ public class MMNewPhotoEditUI
       {
         AppMethodBeat.i(103217);
         MMNewPhotoEditUI.b(MMNewPhotoEditUI.this);
-        ae.e("MicroMsg.MMNewPhotoEditUI", "[onRefreshed] %s", new Object[] { paramAnonymousException });
-        Toast.makeText(ak.getContext(), MMNewPhotoEditUI.this.getResources().getString(2131758458), 1).show();
+        Log.e("MicroMsg.MMNewPhotoEditUI", "[onRefreshed] %s", new Object[] { paramAnonymousException });
+        Toast.makeText(MMApplicationContext.getContext(), MMNewPhotoEditUI.this.getResources().getString(2131758756), 1).show();
         MMNewPhotoEditUI.this.setResult(0);
         MMNewPhotoEditUI.this.finish();
         AppMethodBeat.o(103217);
@@ -142,20 +148,20 @@ public class MMNewPhotoEditUI
     AppMethodBeat.o(103227);
   }
   
-  private void js(boolean paramBoolean)
+  private void ku(boolean paramBoolean)
   {
     AppMethodBeat.i(103228);
-    ae.i("MicroMsg.MMNewPhotoEditUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.MMNewPhotoEditUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.fSP = com.tencent.mm.ui.base.p.a(this, getString(2131762020), true, 0, null);
+      this.gxX = q.a(this, getString(2131764030), true, 0, null);
       AppMethodBeat.o(103228);
       return;
     }
-    if ((this.fSP != null) && (this.fSP.isShowing()))
+    if ((this.gxX != null) && (this.gxX.isShowing()))
     {
-      this.fSP.dismiss();
-      this.fSP = null;
+      this.gxX.dismiss();
+      this.gxX = null;
     }
     AppMethodBeat.o(103228);
   }
@@ -167,44 +173,44 @@ public class MMNewPhotoEditUI
   
   protected int getLayoutId()
   {
-    return 2131495017;
+    return 2131495848;
   }
   
   protected void initView()
   {
     AppMethodBeat.i(103221);
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131298739);
-    this.wjw = y.cSw.Kf();
-    Object localObject = this.wjw;
-    y.a.a locala = new y.a.a();
-    if ((this.fRv != 291) && (this.fRv != 293)) {}
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131299180);
+    this.zDV = ab.diQ.Uo();
+    Object localObject = this.zDV;
+    ab.a.a locala = new ab.a.a();
+    if ((this.gwE != 291) && (this.gwE != 293)) {}
     for (boolean bool = true;; bool = false)
     {
-      locala.cSy = bool;
-      locala.cSB = true;
-      locala.cSx = y.c.cSE;
-      locala.path = this.Jxr;
-      ((y)localObject).a(locala.Lv());
-      localObject = this.wjw.bh(getContext());
+      locala.diS = bool;
+      locala.diW = true;
+      locala.diR = ab.c.diZ;
+      locala.path = this.OHL;
+      ((ab)localObject).a(locala.VJ());
+      localObject = this.zDV.bB(getContext());
       ((e)localObject).setActionBarCallback(this);
       localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-      ((e)localObject).setSelectedFeatureListener(new w()
+      ((e)localObject).setSelectedFeatureListener(new z()
       {
-        public final void a(com.tencent.mm.api.g paramAnonymousg)
+        public final void a(com.tencent.mm.api.h paramAnonymoush)
         {
           AppMethodBeat.i(103212);
-          ae.i("MicroMsg.MMNewPhotoEditUI", "[onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+          Log.i("MicroMsg.MMNewPhotoEditUI", "[onSelectedFeature] features:%s", new Object[] { paramAnonymoush.name() });
           AppMethodBeat.o(103212);
         }
         
-        public final void a(com.tencent.mm.api.g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
+        public final void a(com.tencent.mm.api.h paramAnonymoush, int paramAnonymousInt, Object paramAnonymousObject)
         {
           AppMethodBeat.i(168715);
-          ae.i("MicroMsg.MMNewPhotoEditUI", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+          Log.i("MicroMsg.MMNewPhotoEditUI", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymoush.name(), Integer.valueOf(paramAnonymousInt) });
           AppMethodBeat.o(168715);
         }
         
-        public final void bY(boolean paramAnonymousBoolean)
+        public final void cH(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(103214);
           if (paramAnonymousBoolean)
@@ -229,26 +235,26 @@ public class MMNewPhotoEditUI
     if ((paramInt2 == -1) && (paramInt1 == 1) && (paramIntent != null))
     {
       String str = paramIntent.getStringExtra("Select_Conv_User");
-      ae.d("MicroMsg.MMNewPhotoEditUI", "select %s for sending imagePath:%s", new Object[] { str, this.Jxu });
-      this.DfS = com.tencent.mm.ui.base.h.b(getContext(), getString(2131761896), false, null);
+      Log.d("MicroMsg.MMNewPhotoEditUI", "select %s for sending imagePath:%s", new Object[] { str, this.OHO });
+      this.HLO = com.tencent.mm.ui.base.h.a(getContext(), getString(2131763901), false, null);
       paramIntent = paramIntent.getStringExtra("custom_send_text");
-      this.Jxy.sendImage(paramIntent, this.Jxu, this.Jxy.getSelfUsername(), str);
-      if (this.DfS != null) {
-        this.DfS.dismiss();
+      this.OHS.sendImage(paramIntent, this.OHO, this.OHS.getSelfUsername(), str);
+      if (this.HLO != null) {
+        this.HLO.dismiss();
       }
-      if (!this.Jxv) {
-        o.deleteFile(this.Jxu);
+      if (!this.OHP) {
+        s.deleteFile(this.OHO);
       }
       for (;;)
       {
         finish();
         AppMethodBeat.o(103226);
         return;
-        com.tencent.mm.sdk.f.b.k(this.Jxu, this);
+        AndroidMediaUtil.refreshMediaScanner(this.OHO, this);
       }
     }
-    if ((paramIntent == null) && (!bu.isNullOrNil(this.Jxu)) && (this.fRv == 291)) {
-      o.deleteFile(this.Jxu);
+    if ((paramIntent == null) && (!Util.isNullOrNil(this.OHO)) && (this.gwE == 291)) {
+      s.deleteFile(this.OHO);
     }
     AppMethodBeat.o(103226);
   }
@@ -256,12 +262,12 @@ public class MMNewPhotoEditUI
   public void onBackPressed()
   {
     AppMethodBeat.i(103223);
-    if (!this.wjw.Kc())
+    if (!this.zDV.Ul())
     {
-      if ((this.fRv != 290) && (this.fRv != 291)) {
+      if ((this.gwE != 290) && (this.gwE != 291)) {
         break label74;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.f(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+      com.tencent.mm.plugin.report.service.h.CyF.a(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
     }
     for (;;)
     {
@@ -269,10 +275,10 @@ public class MMNewPhotoEditUI
       AppMethodBeat.o(103223);
       return;
       label74:
-      if ((this.fRv == 4) || (this.fRv == 293)) {
-        com.tencent.mm.plugin.report.service.g.yxI.f(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
+      if ((this.gwE == 4) || (this.gwE == 293)) {
+        com.tencent.mm.plugin.report.service.h.CyF.a(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
       } else {
-        com.tencent.mm.plugin.report.service.g.yxI.f(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
       }
     }
   }
@@ -286,15 +292,15 @@ public class MMNewPhotoEditUI
     {
       getWindow().setFlags(1024, 1024);
       getWindow().addFlags(67108864);
-      b.c(this, false);
+      b.e(this, false);
     }
-    this.Jxy = new PhotoEditProxy(this.Jxx);
-    this.Jxx.connect(new Runnable()
+    this.OHS = new PhotoEditProxy(this.OHR);
+    this.OHR.connect(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(103211);
-        ae.i("MicroMsg.MMNewPhotoEditUI", "connected!!!");
+        Log.i("MicroMsg.MMNewPhotoEditUI", "connected!!!");
         MMNewPhotoEditUI.a(MMNewPhotoEditUI.this);
         MMNewPhotoEditUI.this.initView();
         AppMethodBeat.o(103211);
@@ -307,8 +313,8 @@ public class MMNewPhotoEditUI
   {
     AppMethodBeat.i(103222);
     super.onDestroy();
-    this.wjw.onDestroy();
-    this.Jxx.release();
+    this.zDV.onDestroy();
+    this.OHR.release();
     AppMethodBeat.o(103222);
   }
   
@@ -322,58 +328,58 @@ public class MMNewPhotoEditUI
   public final void onFinish()
   {
     AppMethodBeat.i(103224);
-    if ((this.fRv == 290) || (this.fRv == 291)) {
-      com.tencent.mm.plugin.report.service.g.yxI.f(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+    if ((this.gwE == 290) || (this.gwE == 291)) {
+      com.tencent.mm.plugin.report.service.h.CyF.a(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
     }
-    while ((this.fRv == 291) || (this.fRv == 293))
+    while ((this.gwE == 291) || (this.gwE == 293))
     {
-      com.tencent.mm.ui.tools.l locall = new com.tencent.mm.ui.tools.l(getContext());
-      locall.LfS = new n.d()
+      l locall = new l(getContext());
+      locall.HLX = new o.f()
       {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
+        public final void onCreateMMMenu(m paramAnonymousm)
         {
           AppMethodBeat.i(103215);
-          paramAnonymousl.d(0, MMNewPhotoEditUI.this.getString(2131762566));
-          paramAnonymousl.d(1, MMNewPhotoEditUI.this.getString(2131761941));
-          paramAnonymousl.d(2, MMNewPhotoEditUI.this.getString(2131762781));
+          paramAnonymousm.d(0, MMNewPhotoEditUI.this.getString(2131764635));
+          paramAnonymousm.d(1, MMNewPhotoEditUI.this.getString(2131763947));
+          paramAnonymousm.d(2, MMNewPhotoEditUI.this.getString(2131764866));
           AppMethodBeat.o(103215);
         }
       };
-      locall.LfT = new n.e()
+      locall.HLY = new o.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, final int paramAnonymousInt)
         {
           AppMethodBeat.i(103216);
-          com.tencent.mm.platformtools.p.a(MMNewPhotoEditUI.this, new Runnable()new Runnable
+          p.a(MMNewPhotoEditUI.this, new Runnable()new Runnable
           {
             public final void run()
             {
-              AppMethodBeat.i(218622);
+              AppMethodBeat.i(204497);
               MMNewPhotoEditUI.a(MMNewPhotoEditUI.this, paramAnonymousInt);
-              AppMethodBeat.o(218622);
+              AppMethodBeat.o(204497);
             }
           }, new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(218623);
-              Toast.makeText(ak.getContext(), MMNewPhotoEditUI.this.getResources().getString(2131758458), 1).show();
-              AppMethodBeat.o(218623);
+              AppMethodBeat.i(204498);
+              Toast.makeText(MMApplicationContext.getContext(), MMNewPhotoEditUI.this.getResources().getString(2131758756), 1).show();
+              AppMethodBeat.o(204498);
             }
           });
           AppMethodBeat.o(103216);
         }
       };
-      com.tencent.mm.ui.base.h.a(getContext(), locall.fOP());
+      com.tencent.mm.ui.base.h.a(getContext(), locall.gXI());
       AppMethodBeat.o(103224);
       return;
-      if ((this.fRv == 4) || (this.fRv == 293)) {
-        com.tencent.mm.plugin.report.service.g.yxI.f(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+      if ((this.gwE == 4) || (this.gwE == 293)) {
+        com.tencent.mm.plugin.report.service.h.CyF.a(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
       } else {
-        com.tencent.mm.plugin.report.service.g.yxI.f(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
       }
     }
-    acr(-1);
+    akZ(-1);
     AppMethodBeat.o(103224);
   }
   
@@ -385,7 +391,7 @@ public class MMNewPhotoEditUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.MMNewPhotoEditUI
  * JD-Core Version:    0.7.0.1
  */

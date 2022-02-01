@@ -5,34 +5,34 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.b;
 import android.support.v4.graphics.drawable.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.ref.WeakReference;
 
 public enum a
 {
-  private static volatile WeakReference<Bitmap> hNA;
+  private static volatile WeakReference<Bitmap> iIF;
   
-  public static Drawable aEk()
+  public static Drawable aXX()
   {
     AppMethodBeat.i(121064);
-    if (hNA != null)
+    if (iIF != null)
     {
-      localObject = (Bitmap)hNA.get();
+      localObject = (Bitmap)iIF.get();
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {}
     }
     else
     {
-      hNA = new WeakReference(com.tencent.mm.compatible.e.a.decodeResource(ak.getResources(), 2131690805));
+      iIF = new WeakReference(com.tencent.mm.compatible.f.a.decodeResource(MMApplicationContext.getResources(), 2131691091));
     }
-    Object localObject = d.a(ak.getResources(), (Bitmap)hNA.get());
-    ((b)localObject).ez();
+    Object localObject = d.a(MMApplicationContext.getResources(), (Bitmap)iIF.get());
+    ((b)localObject).eD();
     AppMethodBeat.o(121064);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.a
  * JD-Core Version:    0.7.0.1
  */

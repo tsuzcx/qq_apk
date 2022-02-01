@@ -18,9 +18,7 @@ import com.google.android.gms.internal.measurement.zzif;
 import com.google.android.gms.internal.measurement.zzjr;
 import com.google.android.gms.internal.measurement.zzjx;
 import com.google.android.gms.internal.measurement.zzka;
-import com.google.firebase.analytics.FirebaseAnalytics.a;
 import com.google.firebase.analytics.FirebaseAnalytics.b;
-import com.google.firebase.analytics.FirebaseAnalytics.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
@@ -481,26 +479,6 @@ public class AppMeasurement
   }
   
   @KeepForSdk
-  public static final class Event
-    extends FirebaseAnalytics.a
-  {
-    @KeepForSdk
-    public static final String AD_REWARD = "_ar";
-    @KeepForSdk
-    public static final String APP_EXCEPTION = "_ae";
-    public static final String[] zzacx = { "app_clear_data", "app_exception", "app_remove", "app_upgrade", "app_install", "app_update", "firebase_campaign", "error", "first_open", "first_visit", "in_app_purchase", "notification_dismiss", "notification_foreground", "notification_open", "notification_receive", "os_update", "session_start", "user_engagement", "ad_exposure", "adunit_exposure", "ad_query", "ad_activeview", "ad_impression", "ad_click", "ad_reward", "screen_view", "ga_extra_parameter" };
-    public static final String[] zzacy = { "_cd", "_ae", "_ui", "_ug", "_in", "_au", "_cmp", "_err", "_f", "_v", "_iap", "_nd", "_nf", "_no", "_nr", "_ou", "_s", "_e", "_xa", "_xu", "_aq", "_aa", "_ai", "_ac", "_ar", "_vs", "_ep" };
-    
-    public static String zzak(String paramString)
-    {
-      AppMethodBeat.i(2300);
-      paramString = zzka.zza(paramString, zzacx, zzacy);
-      AppMethodBeat.o(2300);
-      return paramString;
-    }
-  }
-  
-  @KeepForSdk
   public static abstract interface EventInterceptor
   {
     @KeepForSdk
@@ -535,28 +513,10 @@ public class AppMeasurement
       return paramString;
     }
   }
-  
-  @KeepForSdk
-  public static final class UserProperty
-    extends FirebaseAnalytics.c
-  {
-    @KeepForSdk
-    public static final String FIREBASE_LAST_NOTIFICATION = "_ln";
-    public static final String[] zzadb = { "firebase_last_notification", "first_open_time", "first_visit_time", "last_deep_link_referrer", "user_id", "first_open_after_install", "lifetime_user_engagement" };
-    public static final String[] zzadc = { "_ln", "_fot", "_fvt", "_ldl", "_id", "_fi", "_lte" };
-    
-    public static String zzak(String paramString)
-    {
-      AppMethodBeat.i(2302);
-      paramString = zzka.zza(paramString, zzadb, zzadc);
-      AppMethodBeat.o(2302);
-      return paramString;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.measurement.AppMeasurement
  * JD-Core Version:    0.7.0.1
  */

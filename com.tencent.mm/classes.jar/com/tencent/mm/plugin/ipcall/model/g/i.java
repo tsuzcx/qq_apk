@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.ipcall.model.b.b;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.o;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
   extends b
 {
-  private int gwI = 0;
-  private o vab = null;
+  private int hjw = 0;
+  private o ysB = null;
   
-  public final void Dg() {}
+  public final void MC() {}
   
   public final void b(c paramc)
   {
@@ -23,12 +23,12 @@ public final class i
     if (paramc == null) {}
     for (;;)
     {
-      ae.d("MicroMsg.IPCallSyncService", "serviceImpl, info==null: %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.uWv != null)
+      Log.d("MicroMsg.IPCallSyncService", "serviceImpl, info==null: %b", new Object[] { Boolean.valueOf(bool) });
+      if (this.yoW != null)
       {
-        this.gwI = this.uWv.uXp;
-        this.vab = new o(this.uWv.roomId, this.uWv.uXg, this.uWv.dgO(), this.uWv.uXh, false);
-        bc.ajj().a(this.vab, 0);
+        this.hjw = this.yoW.ypQ;
+        this.ysB = new o(this.yoW.roomId, this.yoW.ypH, this.yoW.eaI(), this.yoW.ypI, false);
+        bg.azz().a(this.ysB, 0);
       }
       AppMethodBeat.o(25527);
       return;
@@ -36,22 +36,22 @@ public final class i
     }
   }
   
-  public final int[] dgL()
+  public final int[] eaF()
   {
     return new int[] { 819 };
   }
   
-  public final void dgM()
+  public final void eaG()
   {
     AppMethodBeat.i(25528);
-    ae.d("MicroMsg.IPCallSyncService", "onLoopSuccess");
+    Log.d("MicroMsg.IPCallSyncService", "onLoopSuccess");
     AppMethodBeat.o(25528);
   }
   
-  public final void dgN()
+  public final void eaH()
   {
     AppMethodBeat.i(25529);
-    ae.d("MicroMsg.IPCallSyncService", "onLoopFailed");
+    Log.d("MicroMsg.IPCallSyncService", "onLoopFailed");
     AppMethodBeat.o(25529);
   }
   
@@ -62,7 +62,7 @@ public final class i
   
   public final int getTimerInterval()
   {
-    return this.gwI;
+    return this.hjw;
   }
   
   public final void onDestroy() {}
@@ -70,8 +70,8 @@ public final class i
   public final void onStop()
   {
     AppMethodBeat.i(25526);
-    if (this.vab != null) {
-      bc.ajj().a(this.vab);
+    if (this.ysB != null) {
+      bg.azz().a(this.ysB);
     }
     AppMethodBeat.o(25526);
   }

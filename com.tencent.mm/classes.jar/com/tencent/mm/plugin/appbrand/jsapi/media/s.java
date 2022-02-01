@@ -3,35 +3,37 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 import android.content.Intent;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.s.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.u.a;
+import com.tencent.mm.plugin.appbrand.jsapi.u.c;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 final class s
 {
-  public static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, Intent paramIntent, String paramString)
+  public static void a(f paramf, JSONObject paramJSONObject, Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(222602);
-    a locala = (a)e.K(a.class);
+    AppMethodBeat.i(226907);
+    a locala = (a)e.M(a.class);
     if (locala == null)
     {
-      ae.w("MicroMsg.AppBrand.ReferrerHelper", "mayPutReferrer, referrerHelper is null");
-      AppMethodBeat.o(222602);
+      Log.w("MicroMsg.AppBrand.ReferrerHelper", "mayPutReferrer, referrerHelper is null");
+      AppMethodBeat.o(226907);
       return;
     }
-    paramc = locala.a(paramJSONObject, paramc);
-    if (paramc == null) {
-      paramc = locala.bmX();
+    paramf = locala.a(paramJSONObject, paramf);
+    if (paramf == null) {
+      paramf = locala.bIw();
     }
     for (;;)
     {
-      if (com.tencent.mm.plugin.appbrand.jsapi.s.c.liO == paramc)
+      if (c.mou == paramf)
       {
-        AppMethodBeat.o(222602);
+        AppMethodBeat.o(226907);
         return;
       }
       paramIntent.putExtra("IsFromWebViewReffer", paramString);
-      AppMethodBeat.o(222602);
+      AppMethodBeat.o(226907);
       return;
     }
   }

@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlinx.a.l.a;
 import kotlinx.a.n;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/BooleanSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Boolean;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/BooleanSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Boolean;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class h
   implements kotlinx.a.h<Boolean>
 {
-  private static final n Ois;
-  public static final h Ojl;
+  private static final n TXo;
+  public static final h TYh;
   
   static
   {
-    AppMethodBeat.i(199713);
-    Ojl = new h();
-    Ois = (n)new ay("kotlin.Boolean", (kotlinx.a.l)l.a.Oiv);
-    AppMethodBeat.o(199713);
+    AppMethodBeat.i(225485);
+    TYh = new h();
+    TXo = (n)new ay("kotlin.Boolean", (kotlinx.a.l)l.a.TXr);
+    AppMethodBeat.o(225485);
   }
   
-  public final n eOR()
+  public final n fWv()
   {
-    return Ois;
+    return TXo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.b.h
  * JD-Core Version:    0.7.0.1
  */

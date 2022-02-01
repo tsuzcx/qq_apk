@@ -13,7 +13,7 @@ public abstract interface n
   
   public abstract void b(View paramView1, View paramView2, int paramInt1, int paramInt2);
   
-  public abstract void j(View paramView, int paramInt);
+  public abstract void k(View paramView, int paramInt);
 }
 
 

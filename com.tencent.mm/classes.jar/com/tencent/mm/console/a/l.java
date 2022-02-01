@@ -1,107 +1,109 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.y.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.lang.reflect.Method;
 
 public final class l
-  implements com.tencent.mm.pluginsdk.cmd.a
+  implements a
 {
   static
   {
-    AppMethodBeat.i(20192);
-    b.a(new l(), new String[] { "//pay" });
-    AppMethodBeat.o(20192);
+    AppMethodBeat.i(20190);
+    b.a(new l(), new String[] { "//warpgate" });
+    AppMethodBeat.o(20190);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(20191);
+    AppMethodBeat.i(20189);
+    if (Log.getLogLevel() > 1)
+    {
+      AppMethodBeat.o(20189);
+      return false;
+    }
     if (paramArrayOfString.length < 2)
     {
-      AppMethodBeat.o(20191);
+      AppMethodBeat.o(20189);
       return true;
     }
-    paramString = paramArrayOfString[1];
+    paramContext = paramArrayOfString[1];
     int i = -1;
-    switch (paramString.hashCode())
+    switch (paramContext.hashCode())
     {
+    default: 
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        AppMethodBeat.o(20191);
-        return false;
-        if (paramString.equals("dorder"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("sethassource"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("dot"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("forcenewcashier"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("fackchatting"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("resethbguide")) {
-                    i = 5;
-                  }
-                }
-              }
-            }
-          }
-        }
+      AppMethodBeat.o(20189);
+      return true;
+      if (!paramContext.equals("on")) {
         break;
       }
+      i = 0;
+      break;
+      if (!paramContext.equals("off")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramContext.equals("start")) {
+        break;
+      }
+      i = 2;
+      break;
+      if (!paramContext.equals("stop")) {
+        break;
+      }
+      i = 3;
+      break;
+      com.tencent.mm.platformtools.ac.jPw = true;
+      com.tencent.mm.platformtools.ac.jPv = true;
+      continue;
+      com.tencent.mm.platformtools.ac.jPw = false;
+      com.tencent.mm.platformtools.ac.jPv = false;
+      continue;
+      i = 8888;
+      if (paramArrayOfString.length >= 3) {
+        i = Util.getInt(paramArrayOfString[2], 8888);
+      }
+      try
+      {
+        Class.forName("com.tencent.mm.plugin.sl_warpgate.server.WarpGateHttpServer").getMethod("startServer", new Class[] { Integer.TYPE }).invoke(null, new Object[] { Integer.valueOf(i) });
+        Toast.makeText(MMApplicationContext.getContext(), "start server on ".concat(String.valueOf(i)), 1).show();
+      }
+      catch (Exception paramContext)
+      {
+        Log.printErrStackTrace("MicroMsg.WarpgateCommand", paramContext, "", new Object[0]);
+      }
+      continue;
+      try
+      {
+        Class.forName("com.tencent.mm.plugin.sl_warpgate.server.WarpGateHttpServer").getMethod("stopServer", new Class[0]).invoke(null, new Object[0]);
+        Toast.makeText(MMApplicationContext.getContext(), "stop server", 1).show();
+      }
+      catch (Exception paramContext)
+      {
+        Log.printErrStackTrace("MicroMsg.WarpgateCommand", paramContext, "", new Object[0]);
+      }
     }
-    d.Q(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
-    AppMethodBeat.o(20191);
-    return true;
-    g.ajR().ajA().set(am.a.IWU, Integer.valueOf(1));
-    AppMethodBeat.o(20191);
-    return true;
-    c.ahI().b(am.a.IWG, true);
-    AppMethodBeat.o(20191);
-    return true;
-    if (paramArrayOfString.length >= 3)
-    {
-      i = bu.getInt(paramArrayOfString[2], 0);
-      g.ajR().ajA().set(am.a.IXa, Integer.valueOf(i));
-    }
-    AppMethodBeat.o(20191);
-    return true;
-    ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(paramContext, "");
-    AppMethodBeat.o(20191);
-    return true;
-    g.ajR().ajA().set(am.a.IXj, Integer.valueOf(0));
-    g.ajR().ajA().set(am.a.IXk, Integer.valueOf(0));
-    AppMethodBeat.o(20191);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.l
  * JD-Core Version:    0.7.0.1
  */

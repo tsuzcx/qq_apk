@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout android:orientation="vertical" android:id="@id/bif" android:background="@color/BW_10" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ft" android:background="@color/a6a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/f2" />
-    <ListView android:id="@id/f2" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
-    <FrameLayout android:id="@id/fs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginTop="148.0dip" android:layout_marginRight="30.0dip">
-        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:layout_width="214.0dip" android:layout_height="wrap_content" android:src="@raw/ipcall_welcome" android:scaleType="fitCenter" android:adjustViewBounds="true" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/s5" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/d54" android:singleLine="false" android:lineSpacingExtra="7.0dip" />
-        </LinearLayout>
+    <FrameLayout android:gravity="center_vertical" android:layout_gravity="top" android:id="@id/ca" android:layout_width="fill_parent" android:layout_height="@dimen/b7">
+        <ImageView android:layout_gravity="start|center" android:id="@id/ei" android:background="@null" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/bwc" android:contentDescription="@string/cr" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/am" android:gravity="center" android:layout_gravity="end|center" android:id="@id/d8" android:background="@drawable/ka" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="34.0dip" android:text="完成" android:layout_marginEnd="@dimen/cb" />
     </FrameLayout>
-    <ImageButton android:id="@id/cfj" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ns" android:layout_marginBottom="@dimen/nr" android:src="@drawable/b8" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/d8b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView android:layout_gravity="center_vertical" android:id="@id/d8p" android:layout_width="fill_parent" android:layout_height="@dimen/cs" />
+        <FrameLayout android:id="@id/d8c" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag5" android:gravity="center" android:layout_gravity="start" android:id="@id/bvn" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/tt" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/j8w" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <CheckBox android:id="@id/j8v" android:background="@drawable/a8z" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" />
+                <TextView android:textSize="@dimen/is" android:textColor="@color/ag5" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ct" android:text="@string/d7e" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:gravity="center" android:layout_gravity="end|center" android:id="@id/ggo" android:background="@drawable/ano" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:layout_marginEnd="@dimen/cb" />
+        </FrameLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout>

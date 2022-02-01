@@ -7,63 +7,63 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
   implements Cloneable
 {
-  public static Rect TW;
-  private static int gBe;
-  private static int gBf;
-  public static float gBg;
-  public static float gBh;
-  public static Path gBi;
-  public static Path gBj;
-  public static Paint gBk;
-  public static Paint gBl;
-  public static Paint gBm;
-  public static Paint gBn;
-  public static Paint gBo;
-  public Rect cQy;
-  public Rect gBp;
-  public Rect gBq;
+  public static Rect Ui;
+  private static int hnT;
+  private static int hnU;
+  public static float hnV;
+  public static float hnW;
+  public static Path hnX;
+  public static Path hnY;
+  public static Paint hnZ;
+  public static Paint hoa;
+  public static Paint hob;
+  public static Paint hoc;
+  public static Paint hod;
+  public Rect dgS;
+  public Rect hoe;
+  public Rect hof;
   public Matrix mMatrix;
   
   static
   {
     AppMethodBeat.i(9245);
-    gBe = (int)ak.getResources().getDimension(2131165935);
-    gBf = (int)ak.getResources().getDimension(2131165934);
-    gBg = ak.getResources().getDimension(2131166075);
-    gBh = ak.getResources().getDimension(2131166074);
-    gBi = new Path();
-    gBj = new Path();
-    gBk = new Paint();
-    gBl = new Paint();
-    gBm = new Paint();
-    gBn = new Paint();
-    gBo = new Paint();
-    TW = new Rect();
-    gBm.setColor(-16777216);
-    gBk.setColor(-1);
-    gBk.setStrokeWidth(gBe);
-    gBk.setStyle(Paint.Style.STROKE);
-    gBk.setAntiAlias(true);
-    gBn.set(gBk);
-    gBn.setStrokeWidth(gBf);
-    gBo.set(gBk);
-    gBo.setStrokeWidth(gBg);
-    gBl.set(gBk);
-    gBl.setStrokeWidth(gBe * 7);
-    gBl.setColor(549174203);
+    hnT = (int)MMApplicationContext.getResources().getDimension(2131165962);
+    hnU = (int)MMApplicationContext.getResources().getDimension(2131165961);
+    hnV = MMApplicationContext.getResources().getDimension(2131166116);
+    hnW = MMApplicationContext.getResources().getDimension(2131166115);
+    hnX = new Path();
+    hnY = new Path();
+    hnZ = new Paint();
+    hoa = new Paint();
+    hob = new Paint();
+    hoc = new Paint();
+    hod = new Paint();
+    Ui = new Rect();
+    hob.setColor(-16777216);
+    hnZ.setColor(-1);
+    hnZ.setStrokeWidth(hnT);
+    hnZ.setStyle(Paint.Style.STROKE);
+    hnZ.setAntiAlias(true);
+    hoc.set(hnZ);
+    hoc.setStrokeWidth(hnU);
+    hod.set(hnZ);
+    hod.setStrokeWidth(hnV);
+    hoa.set(hnZ);
+    hoa.setStrokeWidth(hnT * 7);
+    hoa.setColor(549174203);
     AppMethodBeat.o(9245);
   }
   
   public a()
   {
     AppMethodBeat.i(9241);
-    this.gBp = new Rect();
-    this.gBq = new Rect();
+    this.hoe = new Rect();
+    this.hof = new Rect();
     this.mMatrix = new Matrix();
     AppMethodBeat.o(9241);
   }
@@ -71,26 +71,26 @@ public final class a
   public a(Rect paramRect)
   {
     AppMethodBeat.i(9240);
-    this.gBp = new Rect();
-    this.gBq = new Rect();
+    this.hoe = new Rect();
+    this.hof = new Rect();
     this.mMatrix = new Matrix();
-    this.cQy = paramRect;
+    this.dgS = paramRect;
     AppMethodBeat.o(9240);
   }
   
-  public static void mA(int paramInt)
+  public static void pN(int paramInt)
   {
     AppMethodBeat.i(9242);
-    gBo.setAlpha(paramInt);
-    gBk.setAlpha(paramInt);
-    gBn.setAlpha((int)(0.7058824F * paramInt));
+    hod.setAlpha(paramInt);
+    hnZ.setAlpha(paramInt);
+    hoc.setAlpha((int)(0.7058824F * paramInt));
     AppMethodBeat.o(9242);
   }
   
-  public static void mB(int paramInt)
+  public static void pO(int paramInt)
   {
     AppMethodBeat.i(9243);
-    gBm.setAlpha((int)(0.9019608F * paramInt));
+    hob.setAlpha((int)(0.9019608F * paramInt));
     AppMethodBeat.o(9243);
   }
   
@@ -101,10 +101,17 @@ public final class a
     AppMethodBeat.o(9244);
     return localObject;
   }
+  
+  public final void setMatrix(Matrix paramMatrix)
+  {
+    AppMethodBeat.i(204752);
+    this.mMatrix.set(paramMatrix);
+    AppMethodBeat.o(204752);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.z.a
  * JD-Core Version:    0.7.0.1
  */

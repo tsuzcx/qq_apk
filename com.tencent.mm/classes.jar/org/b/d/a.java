@@ -5,24 +5,24 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public final String Ote;
-  public final String Otf;
-  public final String Otg;
-  public final h Oti;
-  private final OutputStream Otj;
+  public final String Uib;
+  public final String Uic;
+  public final String Uid;
+  public final h Uif;
+  private final OutputStream Uig;
   public final String scope;
   
   public a(String paramString1, String paramString2, String paramString3, h paramh, String paramString4, OutputStream paramOutputStream)
   {
-    this.Ote = paramString1;
-    this.Otf = paramString2;
-    this.Otg = paramString3;
-    this.Oti = paramh;
+    this.Uib = paramString1;
+    this.Uic = paramString2;
+    this.Uid = paramString3;
+    this.Uif = paramh;
     this.scope = paramString4;
-    this.Otj = paramOutputStream;
+    this.Uig = paramOutputStream;
   }
   
-  public final boolean gCW()
+  public final boolean hQa()
   {
     return this.scope != null;
   }
@@ -30,12 +30,12 @@ public final class a
   public final void log(String paramString)
   {
     AppMethodBeat.i(40544);
-    if (this.Otj != null)
+    if (this.Uig != null)
     {
       paramString = paramString + "\n";
       try
       {
-        this.Otj.write(paramString.getBytes("UTF8"));
+        this.Uig.write(paramString.getBytes("UTF8"));
         AppMethodBeat.o(40544);
         return;
       }
@@ -51,7 +51,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.d.a
  * JD-Core Version:    0.7.0.1
  */

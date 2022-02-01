@@ -1,6 +1,6 @@
 package android.support.v7.view;
 
-import android.support.v4.view.x;
+import android.support.v4.view.aa;
 import android.support.v4.view.y;
 import android.support.v4.view.z;
 import android.view.View;
@@ -10,34 +10,34 @@ import java.util.Iterator;
 
 public final class h
 {
-  y ael;
-  private final z aem = new z()
+  z aey;
+  private final aa aez = new aa()
   {
-    private boolean aen = false;
-    private int aeo = 0;
-    
-    public final void aH(View paramAnonymousView)
-    {
-      if (this.aen) {}
-      do
-      {
-        return;
-        this.aen = true;
-      } while (h.this.ael == null);
-      h.this.ael.aH(null);
-    }
+    private boolean aeA = false;
+    private int aeB = 0;
     
     public final void aI(View paramAnonymousView)
     {
-      int i = this.aeo + 1;
-      this.aeo = i;
-      if (i == h.this.wW.size())
+      if (this.aeA) {}
+      do
       {
-        if (h.this.ael != null) {
-          h.this.ael.aI(null);
+        return;
+        this.aeA = true;
+      } while (h.this.aey == null);
+      h.this.aey.aI(null);
+    }
+    
+    public final void aJ(View paramAnonymousView)
+    {
+      int i = this.aeB + 1;
+      this.aeB = i;
+      if (i == h.this.xd.size())
+      {
+        if (h.this.aey != null) {
+          h.this.aey.aJ(null);
         }
-        this.aeo = 0;
-        this.aen = false;
+        this.aeB = 0;
+        this.aeA = false;
         h.this.mIsStarted = false;
       }
     }
@@ -45,28 +45,28 @@ public final class h
   private long mDuration = -1L;
   private Interpolator mInterpolator;
   boolean mIsStarted;
-  final ArrayList<x> wW = new ArrayList();
+  final ArrayList<y> xd = new ArrayList();
   
-  public final h a(x paramx)
+  public final h a(y paramy)
   {
     if (!this.mIsStarted) {
-      this.wW.add(paramx);
+      this.xd.add(paramy);
     }
     return this;
   }
   
-  public final h a(x paramx1, x paramx2)
+  public final h a(y paramy1, y paramy2)
   {
-    this.wW.add(paramx1);
-    paramx2.k(paramx1.getDuration());
-    this.wW.add(paramx2);
+    this.xd.add(paramy1);
+    paramy2.k(paramy1.getDuration());
+    this.xd.add(paramy2);
     return this;
   }
   
-  public final h b(y paramy)
+  public final h b(z paramz)
   {
     if (!this.mIsStarted) {
-      this.ael = paramy;
+      this.aey = paramz;
     }
     return this;
   }
@@ -84,14 +84,14 @@ public final class h
     if (!this.mIsStarted) {
       return;
     }
-    Iterator localIterator = this.wW.iterator();
+    Iterator localIterator = this.xd.iterator();
     while (localIterator.hasNext()) {
-      ((x)localIterator.next()).cancel();
+      ((y)localIterator.next()).cancel();
     }
     this.mIsStarted = false;
   }
   
-  public final h hz()
+  public final h hI()
   {
     if (!this.mIsStarted) {
       this.mDuration = 250L;
@@ -104,20 +104,20 @@ public final class h
     if (this.mIsStarted) {
       return;
     }
-    Iterator localIterator = this.wW.iterator();
+    Iterator localIterator = this.xd.iterator();
     while (localIterator.hasNext())
     {
-      x localx = (x)localIterator.next();
+      y localy = (y)localIterator.next();
       if (this.mDuration >= 0L) {
-        localx.j(this.mDuration);
+        localy.j(this.mDuration);
       }
       if (this.mInterpolator != null) {
-        localx.a(this.mInterpolator);
+        localy.a(this.mInterpolator);
       }
-      if (this.ael != null) {
-        localx.a(this.aem);
+      if (this.aey != null) {
+        localy.a(this.aez);
       }
-      localx.start();
+      localy.start();
     }
     this.mIsStarted = true;
   }

@@ -5,17 +5,17 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class EllipsizeTextView
   extends TextView
 {
-  private String JDl;
-  private int JDm;
-  private int JDn;
-  private a JDo;
-  private CharSequence JDp;
-  private long JDq = -1L;
+  private String OOd;
+  private int OOe;
+  private int OOf;
+  private a OOg;
+  private CharSequence OOh;
+  private long OOi = -1L;
   
   public EllipsizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,11 +30,11 @@ public class EllipsizeTextView
   public final void a(CharSequence paramCharSequence, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141626);
-    this.JDl = paramString;
-    this.JDm = paramInt1;
-    this.JDn = paramInt2;
-    this.JDp = paramCharSequence;
-    setText(this.JDp + "  " + paramString);
+    this.OOd = paramString;
+    this.OOe = paramInt1;
+    this.OOf = paramInt2;
+    this.OOh = paramCharSequence;
+    setText(this.OOh + "  " + paramString);
     AppMethodBeat.o(141626);
   }
   
@@ -42,10 +42,10 @@ public class EllipsizeTextView
   {
     AppMethodBeat.i(141627);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((getMeasuredWidth() > 0) && (!bu.isNullOrNil(this.JDl)) && (this.JDo != null) && (getText() != null) && (getText().length() > 0))
+    if ((getMeasuredWidth() > 0) && (!Util.isNullOrNil(this.OOd)) && (this.OOg != null) && (getText() != null) && (getText().length() > 0))
     {
-      CharSequence localCharSequence = this.JDo.a(this, this.JDp, this.JDl, this.JDm, this.JDn);
-      this.JDl = null;
+      CharSequence localCharSequence = this.OOg.a(this, this.OOh, this.OOd, this.OOe, this.OOf);
+      this.OOd = null;
       setText(localCharSequence, TextView.BufferType.SPANNABLE);
       requestLayout();
     }
@@ -54,7 +54,7 @@ public class EllipsizeTextView
   
   public void setLayoutCallback(a parama)
   {
-    this.JDo = parama;
+    this.OOg = parama;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)

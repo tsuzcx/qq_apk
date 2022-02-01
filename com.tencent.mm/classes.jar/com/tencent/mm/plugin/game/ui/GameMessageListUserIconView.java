@@ -11,23 +11,23 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
-import com.tencent.mm.plugin.game.f.e;
-import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.plugin.game.f.e.b;
+import com.tencent.mm.plugin.game.e.e;
+import com.tencent.mm.plugin.game.e.e.a.a;
+import com.tencent.mm.plugin.game.e.e.b;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.o.k;
 import com.tencent.mm.plugin.game.model.p;
 import com.tencent.mm.plugin.game.model.p.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public class GameMessageListUserIconView
   extends LinearLayout
 {
   private Context mContext;
-  private p uCD;
-  private f<String, Bitmap> uCE;
+  private p xUB;
+  private f<String, Bitmap> xUC;
   
   public GameMessageListUserIconView(Context paramContext)
   {
@@ -47,31 +47,31 @@ public class GameMessageListUserIconView
     AppMethodBeat.o(42288);
   }
   
-  private void i(ImageView paramImageView, String paramString)
-  {
-    AppMethodBeat.i(42294);
-    paramImageView = e.ddh().n(paramImageView, paramString);
-    if (paramImageView != null) {
-      this.uCE.put(paramString, paramImageView);
-    }
-    AppMethodBeat.o(42294);
-  }
-  
   private void init()
   {
     AppMethodBeat.i(42290);
-    if (this.uCD == null) {
-      this.uCD = new p(this.mContext);
+    if (this.xUB == null) {
+      this.xUB = new p(this.mContext);
     }
     AppMethodBeat.o(42290);
   }
   
-  private void k(ImageView paramImageView, final String paramString)
+  private void l(ImageView paramImageView, String paramString)
+  {
+    AppMethodBeat.i(42294);
+    paramImageView = e.dWR().q(paramImageView, paramString);
+    if (paramImageView != null) {
+      this.xUC.put(paramString, paramImageView);
+    }
+    AppMethodBeat.o(42294);
+  }
+  
+  private void n(ImageView paramImageView, final String paramString)
   {
     AppMethodBeat.i(42293);
     e.a.a locala = new e.a.a();
-    locala.igi = false;
-    e.ddh().a(paramImageView, paramString, locala.ddi(), new e.b()
+    locala.jbd = false;
+    e.dWR().a(paramImageView, paramString, locala.dWS(), new e.b()
     {
       public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
       {
@@ -88,16 +88,16 @@ public class GameMessageListUserIconView
   public final void a(o paramo, LinkedList<o.k> paramLinkedList, f<String, Bitmap> paramf)
   {
     AppMethodBeat.i(42292);
-    if ((paramo == null) || (bu.ht(paramLinkedList)))
+    if ((paramo == null) || (Util.isNullOrNil(paramLinkedList)))
     {
       setVisibility(8);
       AppMethodBeat.o(42292);
       return;
     }
-    this.uCE = paramf;
+    this.xUC = paramf;
     setVisibility(0);
-    int i = this.mContext.getResources().getDimensionPixelSize(2131165460);
-    int j = this.mContext.getResources().getDimensionPixelSize(2131165187);
+    int i = this.mContext.getResources().getDimensionPixelSize(2131165476);
+    int j = this.mContext.getResources().getDimensionPixelSize(2131165190);
     paramf = new LinearLayout.LayoutParams(i, i);
     paramf.rightMargin = j;
     Object localObject;
@@ -106,7 +106,7 @@ public class GameMessageListUserIconView
       localObject = new ImageView(this.mContext);
       ((ImageView)localObject).setLayoutParams(paramf);
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
-      ((ImageView)localObject).setOnClickListener(this.uCD);
+      ((ImageView)localObject).setOnClickListener(this.xUB);
       addView((View)localObject);
     }
     i = 0;
@@ -119,20 +119,20 @@ public class GameMessageListUserIconView
       {
         paramf.setVisibility(0);
         localObject = (o.k)paramLinkedList.get(i);
-        if (!bu.isNullOrNil(((o.k)localObject).unY))
+        if (!Util.isNullOrNil(((o.k)localObject).xGp))
         {
-          str = ((o.k)localObject).unY;
-          if (this.uCE.aM(str))
+          str = ((o.k)localObject).xGp;
+          if (this.xUC.check(str))
           {
-            localBitmap = (Bitmap)this.uCE.get(str);
+            localBitmap = (Bitmap)this.xUC.get(str);
             if ((localBitmap == null) || (localBitmap.isRecycled()))
             {
-              k(paramf, str);
+              n(paramf, str);
               label255:
-              if (bu.isNullOrNil(((o.k)localObject).uob)) {
+              if (Util.isNullOrNil(((o.k)localObject).xGs)) {
                 break label414;
               }
-              paramf.setTag(new p.a(paramo, ((o.k)localObject).uob, 6));
+              paramf.setTag(new p.a(paramo, ((o.k)localObject).xGs, 6));
               paramf.setEnabled(true);
             }
           }
@@ -144,23 +144,23 @@ public class GameMessageListUserIconView
         break;
         paramf.setImageBitmap(localBitmap);
         break label255;
-        k(paramf, str);
+        n(paramf, str);
         break label255;
         str = ((o.k)localObject).userName;
-        if (bu.isNullOrNil(str))
+        if (Util.isNullOrNil(str))
         {
           a.b.c(paramf, str);
           break label255;
         }
-        if (!this.uCE.aM(str))
+        if (!this.xUC.check(str))
         {
-          i(paramf, str);
+          l(paramf, str);
           break label255;
         }
-        localBitmap = (Bitmap)this.uCE.get(str);
+        localBitmap = (Bitmap)this.xUC.get(str);
         if ((localBitmap == null) || (localBitmap.isRecycled()))
         {
-          i(paramf, str);
+          l(paramf, str);
           break label255;
         }
         paramf.setImageBitmap(localBitmap);
@@ -185,19 +185,19 @@ public class GameMessageListUserIconView
   public void setSourceScene(int paramInt)
   {
     AppMethodBeat.i(42291);
-    if (this.uCD != null)
+    if (this.xUB != null)
     {
-      this.uCD.uoy = paramInt;
+      this.xUB.xGR = paramInt;
       AppMethodBeat.o(42291);
       return;
     }
-    this.uCD = new p(this.mContext, paramInt);
+    this.xUB = new p(this.mContext, paramInt);
     AppMethodBeat.o(42291);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameMessageListUserIconView
  * JD-Core Version:    0.7.0.1
  */

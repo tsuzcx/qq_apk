@@ -8,26 +8,26 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public final class b
   implements Runnable
 {
-  private Queue<Object> gyC;
-  private boolean gyD;
+  private Queue<Object> hlp;
+  private boolean hlq;
   private Thread thread;
   
   public b()
   {
     AppMethodBeat.i(62452);
-    this.gyC = new ConcurrentLinkedQueue();
+    this.hlp = new ConcurrentLinkedQueue();
     this.thread = null;
-    this.gyD = false;
+    this.hlq = false;
     AppMethodBeat.o(62452);
   }
   
-  public final void aT(Object paramObject)
+  public final void bc(Object paramObject)
   {
     AppMethodBeat.i(62455);
-    if (this.gyC != null) {
+    if (this.hlp != null) {
       try
       {
-        this.gyC.add(paramObject);
+        this.hlp.add(paramObject);
         notify();
         return;
       }
@@ -43,7 +43,7 @@ public final class b
   {
     AppMethodBeat.i(62456);
     super.finalize();
-    this.gyC.clear();
+    this.hlp.clear();
     AppMethodBeat.o(62456);
   }
   
@@ -67,25 +67,25 @@ public final class b
           e.a((a.b)localObject1);
         }
         if ((Thread.currentThread() != null) && (!Thread.currentThread().isInterrupted())) {
-          if (!this.gyC.isEmpty())
+          if (!this.hlp.isEmpty())
           {
-            localObject1 = this.gyC.poll();
+            localObject1 = this.hlp.poll();
             if (!(localObject1 instanceof a)) {
               continue;
             }
             Object localObject3 = (a)localObject1;
             long l1 = ((a)localObject3).time;
-            localObject1 = ((a)localObject3).gyE;
-            int k = ((a)localObject3).gyF;
-            m = ((a)localObject3).gyH;
-            localObject3 = ((a)localObject3).gyA;
+            localObject1 = ((a)localObject3).hlr;
+            int k = ((a)localObject3).hls;
+            m = ((a)localObject3).hlu;
+            localObject3 = ((a)localObject3).hln;
             d.d("Hardcoder.HardCoderReporter", String.format("forgives, time:%s, size:%s, cpu:%s, io:%s", new Object[] { Long.valueOf(l1), Integer.valueOf(((List)localObject1).size()), Integer.valueOf(k), Integer.valueOf(m) }));
             i = 0;
             if (i >= ((List)localObject1).size()) {
               continue;
             }
             localb = (a.b)((List)localObject1).get(i);
-            if (!localb.ahA()) {
+            if (!localb.axM()) {
               break label654;
             }
             l2 = l1 - localb.lastUpdateTime;
@@ -94,8 +94,8 @@ public final class b
             {
               if (k == -2)
               {
-                arrayOfInt = localb.gyy;
-                j = localb.gyw;
+                arrayOfInt = localb.hll;
+                j = localb.hlj;
                 arrayOfInt[j] = ((int)(arrayOfInt[j] + l2));
                 if (m == -1) {
                   continue;
@@ -103,25 +103,25 @@ public final class b
                 if (m != -2) {
                   continue;
                 }
-                arrayOfInt = localb.gyz;
-                j = localb.gyx;
+                arrayOfInt = localb.hlm;
+                j = localb.hlk;
                 arrayOfInt[j] = ((int)(l2 + arrayOfInt[j]));
                 if ((localObject3 != null) && (localObject3.length > 0)) {
-                  localb.gyA = ((int[])localObject3);
+                  localb.hln = ((int[])localObject3);
                 }
-                if (!localb.ahA()) {
+                if (!localb.axM()) {
                   break label661;
                 }
-                j = localb.gyr[0];
-                l2 = f.ms(f.mr(j));
-                if (localb.gyB == 0L) {
-                  localb.gyB = l2;
+                j = localb.hle[0];
+                l2 = f.pF(f.pE(j));
+                if (localb.hlo == 0L) {
+                  localb.hlo = l2;
                 }
-                localb.gyB = ((l2 + localb.gyB) / 2L);
+                localb.hlo = ((l2 + localb.hlo) / 2L);
                 break label654;
               }
-              localb.gyw = k;
-              arrayOfInt = localb.gyy;
+              localb.hlj = k;
+              arrayOfInt = localb.hll;
               arrayOfInt[k] = ((int)(arrayOfInt[k] + l2));
               continue;
             }
@@ -134,9 +134,9 @@ public final class b
         Thread.currentThread().interrupt();
         AppMethodBeat.o(62454);
         return;
-        localb.gyw = 0;
-        arrayOfInt = localb.gyy;
-        j = localb.gyw;
+        localb.hlj = 0;
+        arrayOfInt = localb.hll;
+        j = localb.hlj;
         arrayOfInt[j] = ((int)(arrayOfInt[j] + l2));
         continue;
       }
@@ -147,24 +147,24 @@ public final class b
         long l2;
         d.printErrStackTrace("Hardcoder.HCPerfStatThread", localException, "run exception:", new Object[0]);
         continue;
-        localb.gyx = m;
-        int[] arrayOfInt = localb.gyz;
+        localb.hlk = m;
+        int[] arrayOfInt = localb.hlm;
         arrayOfInt[m] = ((int)(l2 + arrayOfInt[m]));
         continue;
-        localb.gyx = 0;
-        arrayOfInt = localb.gyz;
-        j = localb.gyx;
+        localb.hlk = 0;
+        arrayOfInt = localb.hlm;
+        j = localb.hlk;
         arrayOfInt[j] = ((int)(l2 + arrayOfInt[j]));
         continue;
         try
         {
-          if ((this.gyD) && (this.thread != null))
+          if ((this.hlq) && (this.thread != null))
           {
             this.thread.interrupt();
             this.thread = null;
-            this.gyD = false;
+            this.hlq = false;
           }
-          if (this.gyC.isEmpty())
+          if (this.hlp.isEmpty())
           {
             wait();
             continue;
@@ -205,21 +205,21 @@ public final class b
   
   public static final class a
   {
-    public final int[] gyA;
-    public final List<a.b> gyE;
-    public final int gyF;
-    public final int gyG;
-    public final int gyH;
+    public final int[] hln;
+    public final List<a.b> hlr;
+    public final int hls;
+    public final int hlt;
+    public final int hlu;
     public final long time;
     
     public a(long paramLong, List<a.b> paramList, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
     {
       this.time = paramLong;
-      this.gyE = paramList;
-      this.gyF = paramInt1;
-      this.gyG = paramInt2;
-      this.gyH = paramInt3;
-      this.gyA = paramArrayOfInt;
+      this.hlr = paramList;
+      this.hls = paramInt1;
+      this.hlt = paramInt2;
+      this.hlu = paramInt3;
+      this.hln = paramArrayOfInt;
     }
   }
 }

@@ -3,8 +3,8 @@ package com.tencent.xweb;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.j;
-import com.tencent.xweb.internal.j.a;
+import com.tencent.xweb.internal.l;
+import com.tencent.xweb.internal.l.a;
 import com.tencent.xweb.xwalk.c;
 import java.util.HashMap;
 import org.xwalk.core.Log;
@@ -12,11 +12,11 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class ah
 {
-  static c MNS;
-  private static boolean MNT = false;
-  static boolean MNU = false;
+  static c SAO;
+  private static boolean SAP = false;
+  static boolean SAQ = false;
   
-  public static a B(String paramString, Object paramObject)
+  public static a H(String paramString, Object paramObject)
   {
     int i = 0;
     AppMethodBeat.i(156937);
@@ -59,7 +59,7 @@ public final class ah
       continue;
       try
       {
-        paramString = j.g(WebView.c.MNy);
+        paramString = l.g(WebView.c.SAt);
         if (paramString != null)
         {
           paramString.excute("BASE_CONTEXT_CHANGED", new Object[] { paramObject });
@@ -73,21 +73,21 @@ public final class ah
     }
   }
   
-  public static boolean FG(long paramLong)
+  public static boolean ON(long paramLong)
   {
-    AppMethodBeat.i(217406);
+    AppMethodBeat.i(219060);
     if (!WebView.isXWalk())
     {
       Log.e("XWebSdk", "bind_native_trans is  not xwalk now");
-      AppMethodBeat.o(217406);
+      AppMethodBeat.o(219060);
       return false;
     }
     try
     {
-      j.a locala = j.g(WebView.c.MNy);
+      l.a locala = l.g(WebView.c.SAt);
       if (locala == null)
       {
-        AppMethodBeat.o(217406);
+        AppMethodBeat.o(219060);
         return false;
       }
       locala.excute("STR_CMD_NATIVE_TRANS_INIT", new Object[] { Long.valueOf(paramLong) });
@@ -99,7 +99,7 @@ public final class ah
         Log.e("XWebSdk", "invokeExtension failed");
       }
     }
-    AppMethodBeat.o(217406);
+    AppMethodBeat.o(219060);
     return true;
   }
   
@@ -107,7 +107,7 @@ public final class ah
   {
     try
     {
-      MNS = paramc;
+      SAO = paramc;
       return;
     }
     finally
@@ -130,7 +130,7 @@ public final class ah
         AppMethodBeat.o(156939);
         return;
       }
-      j.g(WebView.getCurWebType()).clearAllWebViewCache(localContext, paramBoolean);
+      l.g(WebView.getCurWebType()).clearAllWebViewCache(localContext, paramBoolean);
       AppMethodBeat.o(156939);
       return;
     }
@@ -141,31 +141,31 @@ public final class ah
     }
   }
   
-  public static boolean gfL()
+  public static boolean htd()
   {
-    AppMethodBeat.i(217405);
+    AppMethodBeat.i(219059);
     if (!WebView.isXWalk())
     {
       Log.e("XWebSdk", "hasXWebFeature not xwalk now");
-      AppMethodBeat.o(217405);
+      AppMethodBeat.o(219059);
       return false;
     }
-    Object localObject = l(80003, new Object[] { Integer.valueOf(2009) });
+    Object localObject = m(80003, new Object[] { Integer.valueOf(2009) });
     if ((localObject instanceof Boolean))
     {
       boolean bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(217405);
+      AppMethodBeat.o(219059);
       return bool;
     }
-    AppMethodBeat.o(217405);
+    AppMethodBeat.o(219059);
     return false;
   }
   
-  public static c gfM()
+  public static c hte()
   {
     try
     {
-      c localc = MNS;
+      c localc = SAO;
       return localc;
     }
     finally
@@ -176,7 +176,7 @@ public final class ah
   }
   
   /* Error */
-  public static void gfN()
+  public static void htf()
   {
     // Byte code:
     //   0: iconst_0
@@ -185,7 +185,7 @@ public final class ah
     //   4: monitorenter
     //   5: ldc 170
     //   7: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 16	com/tencent/xweb/ah:MNT	Z
+    //   10: getstatic 16	com/tencent/xweb/ah:SAP	Z
     //   13: ifeq +12 -> 25
     //   16: ldc 170
     //   18: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -308,7 +308,7 @@ public final class ah
     //   284: ldc2_w 254
     //   287: ldc2_w 256
     //   290: lconst_1
-    //   291: invokestatic 263	com/tencent/xweb/util/g:t	(JJJ)V
+    //   291: invokestatic 263	com/tencent/xweb/util/h:s	(JJJ)V
     //   294: ldc_w 265
     //   297: ldc_w 267
     //   300: iconst_1
@@ -323,10 +323,10 @@ public final class ah
     //   314: iconst_0
     //   315: aload 5
     //   317: aastore
-    //   318: invokestatic 275	com/tencent/xweb/util/f:b	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   318: invokestatic 275	com/tencent/xweb/util/g:b	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   321: pop
     //   322: iconst_1
-    //   323: putstatic 16	com/tencent/xweb/ah:MNT	Z
+    //   323: putstatic 16	com/tencent/xweb/ah:SAP	Z
     //   326: ldc 170
     //   328: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   331: goto -310 -> 21
@@ -390,7 +390,7 @@ public final class ah
     //   465: ldc2_w 254
     //   468: ldc2_w 299
     //   471: lconst_1
-    //   472: invokestatic 263	com/tencent/xweb/util/g:t	(JJJ)V
+    //   472: invokestatic 263	com/tencent/xweb/util/h:s	(JJJ)V
     //   475: iload_3
     //   476: istore_0
     //   477: iload_1
@@ -464,7 +464,7 @@ public final class ah
     //   630: ldc2_w 254
     //   633: ldc2_w 308
     //   636: lconst_1
-    //   637: invokestatic 263	com/tencent/xweb/util/g:t	(JJJ)V
+    //   637: invokestatic 263	com/tencent/xweb/util/h:s	(JJJ)V
     //   640: ldc 170
     //   642: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   645: goto -624 -> 21
@@ -533,36 +533,36 @@ public final class ah
     //   365	385	648	java/lang/Exception
   }
   
-  public static void gfO()
+  public static void htg()
   {
     AppMethodBeat.i(185176);
     Log.i("XWebSdk", "set wati for xweb = true");
-    MNU = true;
+    SAQ = true;
     AppMethodBeat.o(185176);
   }
   
-  public static boolean gfP()
+  public static boolean hth()
   {
-    return MNU;
+    return SAQ;
   }
   
-  public static Object l(int paramInt, Object[] paramArrayOfObject)
+  public static Object m(int paramInt, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(217404);
+    AppMethodBeat.i(219058);
     try
     {
-      j.a locala = j.g(WebView.c.MNy);
+      l.a locala = l.g(WebView.c.SAt);
       if (locala != null)
       {
         paramArrayOfObject = locala.excute("STR_CMD_INVOKE_TO_RUNTIME", new Object[] { Integer.valueOf(paramInt), paramArrayOfObject });
-        AppMethodBeat.o(217404);
+        AppMethodBeat.o(219058);
         return paramArrayOfObject;
       }
     }
     catch (Exception paramArrayOfObject)
     {
       Log.e("XWebSdk", "invokeExtension failed");
-      AppMethodBeat.o(217404);
+      AppMethodBeat.o(219058);
     }
     return null;
   }
@@ -590,7 +590,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.ah
  * JD-Core Version:    0.7.0.1
  */

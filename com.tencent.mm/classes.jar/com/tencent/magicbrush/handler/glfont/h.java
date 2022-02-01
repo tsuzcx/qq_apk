@@ -13,36 +13,36 @@ import java.util.List;
 
 final class h
 {
-  private List<k> cyY;
-  private g czc;
-  private e czd;
-  private Canvas cze;
-  j czf;
-  Paint czg;
-  c czh;
-  private char[] czi;
-  private Rect czj;
-  Paint.FontMetrics czk;
-  private Rect lm;
+  private List<k> cNf;
+  private g cNj;
+  private e cNk;
+  private Canvas cNl;
+  j cNm;
+  Paint cNn;
+  c cNo;
+  private char[] cNp;
+  private Rect cNq;
+  Paint.FontMetrics cNr;
+  private Rect lo;
   
   h(e parame, g paramg)
   {
     AppMethodBeat.i(140032);
-    this.czi = new char[1];
-    this.lm = new Rect();
-    this.czj = new Rect();
-    this.cyY = new ArrayList();
-    this.czk = new Paint.FontMetrics();
-    this.czd = parame;
-    this.cze = new Canvas(this.czd.cyM);
-    this.czc = paramg;
-    this.czg = new Paint(1);
-    this.czg.setTextAlign(Paint.Align.LEFT);
-    this.czg.setColor(-1);
+    this.cNp = new char[1];
+    this.lo = new Rect();
+    this.cNq = new Rect();
+    this.cNf = new ArrayList();
+    this.cNr = new Paint.FontMetrics();
+    this.cNk = parame;
+    this.cNl = new Canvas(this.cNk.cMT);
+    this.cNj = paramg;
+    this.cNn = new Paint(1);
+    this.cNn.setTextAlign(Paint.Align.LEFT);
+    this.cNn.setColor(-1);
     AppMethodBeat.o(140032);
   }
   
-  static float E(List<k> paramList)
+  static float I(List<k> paramList)
   {
     AppMethodBeat.i(140040);
     if ((paramList == null) || (paramList.size() == 0))
@@ -56,19 +56,19 @@ final class h
     {
       k localk = (k)paramList.next();
       if (localk != null) {
-        f = localk.czz + f;
+        f = localk.cNG + f;
       }
     }
     AppMethodBeat.o(140040);
     return f;
   }
   
-  private boolean HL()
+  private boolean RA()
   {
-    if (this.czf == null) {
+    if (this.cNm == null) {
       return false;
     }
-    return this.czf.czq;
+    return this.cNm.cNx;
   }
   
   private void a(char paramChar, Rect paramRect, k paramk, Paint paramPaint)
@@ -79,11 +79,11 @@ final class h
       AppMethodBeat.o(140037);
       return;
     }
-    this.czi[0] = paramChar;
-    this.cze.save();
-    this.cze.clipRect(paramRect);
-    this.cze.drawText(this.czi, 0, 1, paramRect.left - paramk.czA, paramRect.top + paramk.height - this.czk.bottom - 1.0F, paramPaint);
-    this.cze.restore();
+    this.cNp[0] = paramChar;
+    this.cNl.save();
+    this.cNl.clipRect(paramRect);
+    this.cNl.drawText(this.cNp, 0, 1, paramRect.left - paramk.cNH, paramRect.top + paramk.height - this.cNr.bottom - 1.0F, paramPaint);
+    this.cNl.restore();
     AppMethodBeat.o(140037);
   }
   
@@ -95,23 +95,23 @@ final class h
       AppMethodBeat.o(140035);
       return;
     }
-    paramk.czz = paramInt1;
-    paramk.czA = 0.0F;
-    paramk.t(paramInt1, paramInt2);
+    paramk.cNG = paramInt1;
+    paramk.cNH = 0.0F;
+    paramk.u(paramInt1, paramInt2);
     if (isItalic())
     {
       float f = (float)Math.ceil(paramInt1 * 0.5F);
-      paramk.czA -= f / 2.0F;
+      paramk.cNH -= f / 2.0F;
       paramk.width = (f + paramk.width);
     }
-    if (HL())
+    if (RA())
     {
-      paramk.czA -= this.czf.strokeWidth / 2.0F;
-      paramk.width += this.czf.strokeWidth;
+      paramk.cNH -= this.cNm.strokeWidth / 2.0F;
+      paramk.width += this.cNm.strokeWidth;
     }
     if (isBold())
     {
-      paramk.czA -= 1.0F;
+      paramk.cNH -= 1.0F;
       paramk.width += 2.0F;
     }
     AppMethodBeat.o(140035);
@@ -120,19 +120,19 @@ final class h
   private void a(k paramk, Rect paramRect)
   {
     AppMethodBeat.i(140036);
-    paramk.k(paramRect.left / this.czd.width(), paramRect.top / this.czd.height(), paramRect.right / this.czd.width(), paramRect.bottom / this.czd.height());
+    paramk.k(paramRect.left / this.cNk.width(), paramRect.top / this.cNk.height(), paramRect.right / this.cNk.width(), paramRect.bottom / this.cNk.height());
     AppMethodBeat.o(140036);
   }
   
   private boolean isBold()
   {
     AppMethodBeat.i(175886);
-    if (this.czf == null)
+    if (this.cNm == null)
     {
       AppMethodBeat.o(175886);
       return false;
     }
-    boolean bool = this.czf.czr.isBold();
+    boolean bool = this.cNm.cNy.isBold();
     AppMethodBeat.o(175886);
     return bool;
   }
@@ -140,12 +140,12 @@ final class h
   private boolean isItalic()
   {
     AppMethodBeat.i(140038);
-    if (this.czf == null)
+    if (this.cNm == null)
     {
       AppMethodBeat.o(140038);
       return false;
     }
-    boolean bool = this.czf.czr.isItalic();
+    boolean bool = this.cNm.cNy.isItalic();
     AppMethodBeat.o(140038);
     return bool;
   }
@@ -153,10 +153,10 @@ final class h
   private float v(char paramChar)
   {
     AppMethodBeat.i(140034);
-    this.czi[0] = paramChar;
-    this.czg.getTextBounds(this.czi, 0, 1, this.lm);
-    float f = this.czg.measureText(this.czi, 0, 1);
-    f = Math.max(this.lm.width(), f);
+    this.cNp[0] = paramChar;
+    this.cNn.getTextBounds(this.cNp, 0, 1, this.lo);
+    float f = this.cNn.measureText(this.cNp, 0, 1);
+    f = Math.max(this.lo.width(), f);
     AppMethodBeat.o(140034);
     return f + 1.0F;
   }
@@ -170,24 +170,24 @@ final class h
       AppMethodBeat.o(140039);
       throw paramDrawable;
     }
-    k localk = this.czc.cyW.HK();
-    localk.czz = paramInt1;
-    localk.czA = 0.0F;
-    this.czd.b(paramInt1, paramInt2, this.lm);
-    Rect localRect = this.lm;
+    k localk = this.cNj.cNd.Rz();
+    localk.cNG = paramInt1;
+    localk.cNH = 0.0F;
+    this.cNk.b(paramInt1, paramInt2, this.lo);
+    Rect localRect = this.lo;
     if ((localRect.left < 0) || (localRect.right < 0) || (localRect.width() <= 0) || (localRect.height() <= 0))
     {
       AppMethodBeat.o(140039);
       return null;
     }
-    localk.t(paramInt1, paramInt2);
-    localk.k(localRect.left / this.czd.width(), localRect.top / this.czd.height(), localRect.right / this.czd.width(), localRect.bottom / this.czd.height());
-    localk.czF = true;
-    this.cze.save();
-    this.cze.clipRect(localRect);
+    localk.u(paramInt1, paramInt2);
+    localk.k(localRect.left / this.cNk.width(), localRect.top / this.cNk.height(), localRect.right / this.cNk.width(), localRect.bottom / this.cNk.height());
+    localk.cNM = true;
+    this.cNl.save();
+    this.cNl.clipRect(localRect);
     paramDrawable.setBounds(localRect);
-    paramDrawable.draw(this.cze);
-    this.cze.restore();
+    paramDrawable.draw(this.cNl);
+    this.cNl.restore();
     AppMethodBeat.o(140039);
     return localk;
   }
@@ -195,17 +195,17 @@ final class h
   final k u(char paramChar)
   {
     AppMethodBeat.i(140033);
-    k localk = this.czc.cyW.HK();
-    localk.czF = false;
-    int i = (int)Math.ceil(this.czk.bottom - this.czk.ascent);
+    k localk = this.cNj.cNd.Rz();
+    localk.cNM = false;
+    int i = (int)Math.ceil(this.cNr.bottom - this.cNr.ascent);
     a(localk, (int)Math.ceil(v(paramChar)), i);
-    if (!this.czd.b((int)Math.ceil(localk.width), (int)Math.ceil(localk.height), this.lm))
+    if (!this.cNk.b((int)Math.ceil(localk.width), (int)Math.ceil(localk.height), this.lo))
     {
       AppMethodBeat.o(140033);
       return null;
     }
-    a(localk, this.lm);
-    a(paramChar, this.lm, localk, this.czg);
+    a(localk, this.lo);
+    a(paramChar, this.lo, localk, this.cNn);
     AppMethodBeat.o(140033);
     return localk;
   }

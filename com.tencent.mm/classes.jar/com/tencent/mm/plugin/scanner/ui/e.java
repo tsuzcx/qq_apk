@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.plugin.scanner.util.n;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -19,19 +19,19 @@ public final class e
   extends Preference
   implements u.a
 {
+  private ImageView CJe;
+  String CJf;
   private Context mContext;
   private View mView;
   f screen;
-  private ImageView yFm;
-  String yFn;
   
   public e(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51803);
     this.mView = null;
-    this.yFm = null;
-    setLayoutResource(2131495122);
+    this.CJe = null;
+    setLayoutResource(2131495965);
     u.a(this);
     this.mContext = paramContext;
     AppMethodBeat.o(51803);
@@ -52,8 +52,8 @@ public final class e
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(51806);
-    if ((!bu.isNullOrNil(paramString)) && (paramString.equals(this.yFn)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      ar.f(new Runnable()
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.CJf)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -74,30 +74,30 @@ public final class e
   {
     AppMethodBeat.i(51805);
     super.onBindView(paramView);
-    this.yFm = ((ImageView)paramView.findViewById(2131302221));
-    if (!bu.isNullOrNil(this.yFn))
+    this.CJe = ((ImageView)paramView.findViewById(2131304573));
+    if (!Util.isNullOrNil(this.CJf))
     {
-      Bitmap localBitmap = u.a(new n(this.yFn));
+      Bitmap localBitmap = u.a(new q(this.CJf));
       if ((localBitmap == null) || (localBitmap.isRecycled())) {
         break label94;
       }
-      this.yFm.setImageBitmap(localBitmap);
-      this.yFm.setBackgroundColor(0);
+      this.CJe.setImageBitmap(localBitmap);
+      this.CJe.setBackgroundColor(0);
     }
     for (;;)
     {
-      ((ImageView)paramView.findViewById(2131302217)).setVisibility(0);
+      ((ImageView)paramView.findViewById(2131304569)).setVisibility(0);
       AppMethodBeat.o(51805);
       return;
       label94:
-      this.yFm.setBackgroundColor(this.mContext.getResources().getColor(2131100481));
-      this.yFm.setImageBitmap(null);
+      this.CJe.setBackgroundColor(this.mContext.getResources().getColor(2131100583));
+      this.CJe.setImageBitmap(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.e
  * JD-Core Version:    0.7.0.1
  */

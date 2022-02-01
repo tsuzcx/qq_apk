@@ -1,52 +1,52 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dcs;
-import com.tencent.mm.protocal.protobuf.dct;
-import com.tencent.mm.protocal.protobuf.nn;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dvw;
+import com.tencent.mm.protocal.protobuf.dvx;
+import com.tencent.mm.protocal.protobuf.og;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class af
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   Object data;
-  public b rr;
+  public d rr;
   
-  public af(nn paramnn, Object paramObject)
+  public af(og paramog, Object paramObject)
   {
     AppMethodBeat.i(124146);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dcs();
-    ((b.a)localObject).hQG = new dct();
-    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/setbizenterpriseattr";
-    ((b.a)localObject).funcId = 1228;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dcs)this.rr.hQD.hQJ;
-    ((dcs)localObject).GPf = paramnn;
-    ((dcs)localObject).mask = 17;
-    ((dcs)localObject).GPd = 1;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dvw();
+    ((d.a)localObject).iLO = new dvx();
+    ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/setbizenterpriseattr";
+    ((d.a)localObject).funcId = 1228;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dvw)this.rr.iLK.iLR;
+    ((dvw)localObject).LTl = paramog;
+    ((dvw)localObject).mask = 17;
+    ((dvw)localObject).LTj = 1;
     this.data = paramObject;
     AppMethodBeat.o(124146);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(124148);
-    this.callback = paramf;
-    ae.i("MicroMsg.NetSceneSetBizEnterpriseAttr", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.NetSceneSetBizEnterpriseAttr", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(124148);
     return i;
   }
@@ -56,10 +56,10 @@ public final class af
     return 1228;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(124147);
-    ae.d("MicroMsg.NetSceneSetBizEnterpriseAttr", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.NetSceneSetBizEnterpriseAttr", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -68,7 +68,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.al.af
  * JD-Core Version:    0.7.0.1
  */

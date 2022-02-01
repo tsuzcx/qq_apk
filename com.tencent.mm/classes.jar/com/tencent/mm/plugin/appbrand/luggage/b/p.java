@@ -12,57 +12,57 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.bg;
 import com.tencent.mm.plugin.appbrand.f.a.b;
 import com.tencent.mm.plugin.appbrand.f.a.c;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public final class p
   extends a
   implements com.tencent.mm.plugin.appbrand.f.b
 {
-  private final AppBrandRuntime jDb;
+  private final AppBrandRuntime kEc;
   
   p(AppBrandRuntime paramAppBrandRuntime)
   {
-    this.jDb = paramAppBrandRuntime;
+    this.kEc = paramAppBrandRuntime;
   }
   
-  private static Pair<String, String> SJ(String paramString)
+  private static Pair<String, String> acr(String paramString)
   {
-    AppMethodBeat.i(207777);
+    AppMethodBeat.i(219351);
     paramString = Uri.parse(paramString);
     paramString = Pair.create(paramString.getQueryParameter("appId"), paramString.getQueryParameter("path"));
-    AppMethodBeat.o(207777);
+    AppMethodBeat.o(219351);
     return paramString;
   }
   
-  public final String BN()
+  public final String Lb()
   {
     return "WxaPkgImageReader";
   }
   
   public final void a(String paramString, a.c paramc)
   {
-    AppMethodBeat.i(207778);
+    AppMethodBeat.i(219352);
     if (paramc == null)
     {
-      AppMethodBeat.o(207778);
+      AppMethodBeat.o(219352);
       return;
     }
-    paramString = (String)SJ(paramString).second;
+    paramString = (String)acr(paramString).second;
     if (TextUtils.isEmpty(paramString))
     {
-      paramc.D(null);
-      AppMethodBeat.o(207778);
+      paramc.C(null);
+      AppMethodBeat.o(219352);
       return;
     }
-    paramc.D(bg.f(this.jDb, paramString));
-    AppMethodBeat.o(207778);
+    paramc.C(bg.f(this.kEc, paramString));
+    AppMethodBeat.o(219352);
   }
   
-  public final boolean a(c paramc, String paramString)
+  public final boolean a(f paramf, String paramString)
   {
     AppMethodBeat.i(134914);
-    if ((paramc == null) || (paramString == null) || (paramString.length() == 0))
+    if ((paramf == null) || (paramString == null) || (paramString.length() == 0))
     {
       AppMethodBeat.o(134914);
       return false;
@@ -84,25 +84,25 @@ public final class p
       AppMethodBeat.o(134913);
       return null;
     }
-    paramString = (String)SJ(paramString).second;
+    paramString = (String)acr(paramString).second;
     if (TextUtils.isEmpty(paramString))
     {
       AppMethodBeat.o(134913);
       return null;
     }
-    paramb = w.k(this.jDb, Uri.decode(paramString));
+    paramb = z.k(this.kEc, Uri.decode(paramString));
     paramString = paramb;
     if (paramRect != null) {
-      paramString = new com.tencent.mm.plugin.appbrand.luggage.a.b(paramRect.left, paramRect.top, paramRect.width(), paramRect.height()).G(paramb);
+      paramString = new com.tencent.mm.plugin.appbrand.luggage.a.b(paramRect.left, paramRect.top, paramRect.width(), paramRect.height()).J(paramb);
     }
     AppMethodBeat.o(134913);
     return paramString;
   }
   
-  public final String b(c paramc, String paramString)
+  public final String b(f paramf, String paramString)
   {
     AppMethodBeat.i(134915);
-    if (!a(paramc, paramString))
+    if (!a(paramf, paramString))
     {
       AppMethodBeat.o(134915);
       return paramString;
@@ -111,13 +111,13 @@ public final class p
     localStringBuilder.append("wxapkg://");
     localStringBuilder.append("icon?");
     localStringBuilder.append("appId=");
-    localStringBuilder.append(paramc.getAppId());
+    localStringBuilder.append(paramf.getAppId());
     localStringBuilder.append("&");
     localStringBuilder.append("path=");
     localStringBuilder.append(Uri.encode(paramString));
-    paramc = localStringBuilder.toString();
+    paramf = localStringBuilder.toString();
     AppMethodBeat.o(134915);
-    return paramc;
+    return paramf;
   }
   
   public final boolean match(String paramString)
@@ -134,7 +134,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.p
  * JD-Core Version:    0.7.0.1
  */

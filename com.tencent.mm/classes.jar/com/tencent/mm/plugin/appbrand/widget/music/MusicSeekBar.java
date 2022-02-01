@@ -21,14 +21,14 @@ public class MusicSeekBar
 {
   private Context context;
   boolean isLoading;
-  private TextView npg;
-  private TextView nph;
-  private SeekBar npi;
-  ValueAnimator npj;
-  boolean npk;
-  a npl;
-  Drawable npm;
-  private MusicSeekBar.a npn;
+  private TextView oyN;
+  private TextView oyO;
+  private SeekBar oyP;
+  ValueAnimator oyQ;
+  boolean oyR;
+  a oyS;
+  Drawable oyT;
+  private a oyU;
   
   public MusicSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,32 +39,32 @@ public class MusicSeekBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(133762);
-    this.npk = false;
+    this.oyR = false;
     this.isLoading = false;
     this.context = paramContext;
-    paramContext = LayoutInflater.from(this.context).inflate(2131494986, this);
-    this.npg = ((TextView)paramContext.findViewById(2131298899));
-    this.nph = ((TextView)paramContext.findViewById(2131299490));
-    this.npi = ((SeekBar)paramContext.findViewById(2131304485));
-    this.npg.setText("00:00");
-    this.nph.setText("--:--");
-    this.npl = new a(getResources().getDrawable(2131233397));
-    this.npm = getResources().getDrawable(2131233399);
-    this.npi.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+    paramContext = LayoutInflater.from(this.context).inflate(2131495800, this);
+    this.oyN = ((TextView)paramContext.findViewById(2131299375));
+    this.oyO = ((TextView)paramContext.findViewById(2131300126));
+    this.oyP = ((SeekBar)paramContext.findViewById(2131307482));
+    this.oyN.setText("00:00");
+    this.oyO.setText("--:--");
+    this.oyS = new a(getResources().getDrawable(2131234193));
+    this.oyT = getResources().getDrawable(2131234195);
+    this.oyP.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
     {
       public final void onProgressChanged(SeekBar paramAnonymousSeekBar, int paramAnonymousInt, boolean paramAnonymousBoolean) {}
       
       public final void onStartTrackingTouch(SeekBar paramAnonymousSeekBar)
       {
-        MusicSeekBar.this.npk = true;
+        MusicSeekBar.this.oyR = true;
       }
       
       public final void onStopTrackingTouch(SeekBar paramAnonymousSeekBar)
       {
         AppMethodBeat.i(133760);
-        MusicSeekBar.this.npk = false;
+        MusicSeekBar.this.oyR = false;
         if (MusicSeekBar.a(MusicSeekBar.this) != null) {
-          MusicSeekBar.a(MusicSeekBar.this).wK(paramAnonymousSeekBar.getProgress());
+          MusicSeekBar.a(MusicSeekBar.this).As(paramAnonymousSeekBar.getProgress());
         }
         AppMethodBeat.o(133760);
       }
@@ -72,7 +72,7 @@ public class MusicSeekBar
     AppMethodBeat.o(133762);
   }
   
-  private static String wJ(int paramInt)
+  private static String Ar(int paramInt)
   {
     AppMethodBeat.i(133767);
     Object localObject = new StringBuilder();
@@ -91,26 +91,26 @@ public class MusicSeekBar
     return localObject;
   }
   
-  public final void ik(boolean paramBoolean)
+  public final void jl(boolean paramBoolean)
   {
     AppMethodBeat.i(133763);
-    if (this.npj == null)
+    if (this.oyQ == null)
     {
-      this.npj = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
-      this.npj.setTarget(this.npi);
-      this.npj.setRepeatCount(100);
-      this.npj.setDuration(5000L);
-      this.npj.setInterpolator(new LinearInterpolator());
-      this.npj.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.oyQ = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
+      this.oyQ.setTarget(this.oyP);
+      this.oyQ.setRepeatCount(100);
+      this.oyQ.setDuration(5000L);
+      this.oyQ.setInterpolator(new LinearInterpolator());
+      this.oyQ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(133761);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          paramAnonymousValueAnimator = MusicSeekBar.this.npl;
-          paramAnonymousValueAnimator.npq = f;
+          paramAnonymousValueAnimator = MusicSeekBar.this.oyS;
+          paramAnonymousValueAnimator.oyX = f;
           paramAnonymousValueAnimator.invalidateSelf();
-          MusicSeekBar.b(MusicSeekBar.this).setThumb(MusicSeekBar.this.npl);
+          MusicSeekBar.b(MusicSeekBar.this).setThumb(MusicSeekBar.this.oyS);
           AppMethodBeat.o(133761);
         }
       });
@@ -118,56 +118,61 @@ public class MusicSeekBar
     this.isLoading = paramBoolean;
     if (paramBoolean)
     {
-      this.npj.start();
+      this.oyQ.start();
       AppMethodBeat.o(133763);
       return;
     }
-    this.npj.cancel();
-    this.npi.setThumb(this.npm);
+    this.oyQ.cancel();
+    this.oyP.setThumb(this.oyT);
     AppMethodBeat.o(133763);
   }
   
   public void setColor(int paramInt)
   {
     AppMethodBeat.i(133764);
-    this.npg.setTextColor(paramInt);
-    this.nph.setTextColor(paramInt);
-    this.npi.getProgressDrawable().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    this.npi.getThumb().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    this.npm.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    this.npl.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.oyN.setTextColor(paramInt);
+    this.oyO.setTextColor(paramInt);
+    this.oyP.getProgressDrawable().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.oyP.getThumb().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.oyT.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.oyS.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
     AppMethodBeat.o(133764);
   }
   
   public void setMaxProgress(int paramInt)
   {
     AppMethodBeat.i(133766);
-    this.nph.setText(wJ(paramInt));
-    this.npi.setMax(paramInt);
+    this.oyO.setText(Ar(paramInt));
+    this.oyP.setMax(paramInt);
     AppMethodBeat.o(133766);
   }
   
-  public void setOnSeekBarChange(MusicSeekBar.a parama)
+  public void setOnSeekBarChange(a parama)
   {
-    this.npn = parama;
+    this.oyU = parama;
   }
   
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(133765);
-    if ((this.isLoading) || (this.npk))
+    if ((this.isLoading) || (this.oyR))
     {
       AppMethodBeat.o(133765);
       return;
     }
-    this.npg.setText(wJ(paramInt));
-    this.npi.setProgress(paramInt);
+    this.oyN.setText(Ar(paramInt));
+    this.oyP.setProgress(paramInt);
     AppMethodBeat.o(133765);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void As(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar
  * JD-Core Version:    0.7.0.1
  */

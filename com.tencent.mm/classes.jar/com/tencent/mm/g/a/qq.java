@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.a.a;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class qq
-  extends b
+  extends IEvent
 {
-  public a dGo;
+  public a dXe;
   
   public qq()
   {
@@ -17,22 +15,25 @@ public final class qq
   
   private qq(byte paramByte)
   {
-    AppMethodBeat.i(19827);
-    this.dGo = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(91213);
+    this.dXe = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19827);
+    AppMethodBeat.o(91213);
   }
   
   public static final class a
   {
-    public a dGp;
-    public EditText dGq;
+    public String content;
+    public String dRL;
+    public String dXf;
+    public String toUser;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.qq
  * JD-Core Version:    0.7.0.1
  */

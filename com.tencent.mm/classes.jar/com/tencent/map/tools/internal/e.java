@@ -1,6 +1,7 @@
 package com.tencent.map.tools.internal;
 
 import android.content.Context;
+import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.tencent.map.tools.sheet.SheetManager.Options;
 import com.tencent.map.tools.sheet.SheetManager.UncaughtListener;
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public final class e
   implements c
 {
-  private Thread.UncaughtExceptionHandler a;
+  Thread.UncaughtExceptionHandler a;
   private b b;
   private f c;
   private boolean d;
@@ -39,17 +40,17 @@ public final class e
         {
           public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
           {
-            AppMethodBeat.i(209787);
+            AppMethodBeat.i(193526);
             CountDownLatch localCountDownLatch = new CountDownLatch(1);
             paramContext.onModuleSDKCrashed(paramAnonymousThrowable);
             try
             {
               localCountDownLatch.await(400L, TimeUnit.MILLISECONDS);
               label34:
-              if (e.a(e.this) != null) {
-                e.a(e.this).uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+              if (e.this.a != null) {
+                e.this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
               }
-              AppMethodBeat.o(209787);
+              AppMethodBeat.o(193526);
               return;
             }
             catch (InterruptedException localInterruptedException)
@@ -62,16 +63,29 @@ public final class e
       AppMethodBeat.o(180779);
       return;
     }
+    this.b = b.a(paramContext);
     if (a.i)
     {
-      String str = paramOptions.getCoreLogReportUrl();
-      if (!TextUtils.isEmpty(str)) {
-        a.k = str;
+      paramContext = paramOptions.getCoreLogReportUrl();
+      if (!TextUtils.isEmpty(paramContext)) {
+        a.k = paramContext;
       }
-      this.b = b.a(paramContext);
       paramContext = paramOptions.getUncaughtListener();
-      if (paramContext != null) {
-        this.b.a(paramContext);
+      if (paramContext != null)
+      {
+        Object localObject = this.b.a;
+        if (paramContext != null)
+        {
+          ((m)localObject).b = paramContext;
+          ((m)localObject).d = new n(((m)localObject).a);
+          localObject = ((m)localObject).d;
+          if (!((n)localObject).a)
+          {
+            ((n)localObject).b = paramContext;
+            Thread.setDefaultUncaughtExceptionHandler((Thread.UncaughtExceptionHandler)localObject);
+            ((n)localObject).a = true;
+          }
+        }
       }
       paramContext = paramOptions.getCoreLogDir();
       if (paramContext != null)
@@ -79,10 +93,21 @@ public final class e
         if (!paramContext.exists()) {
           paramContext.mkdirs();
         }
-        this.b.a(paramContext);
+        paramOptions = this.b.a;
+        paramOptions.c = paramContext;
+        if (a.i) {
+          g.a(paramOptions.a).g = paramOptions.c;
+        }
       }
     }
-    this.b.a();
+    paramContext = g.a(this.b.a.a);
+    if (!paramContext.c)
+    {
+      if (a.i) {
+        paramContext.e = new k(paramContext.d, paramContext.a.getLooper(), paramContext.g, paramContext.f);
+      }
+      paramContext.c = true;
+    }
     AppMethodBeat.o(180779);
   }
   
@@ -96,9 +121,15 @@ public final class e
     AppMethodBeat.i(180780);
     if (this.b != null)
     {
-      File localFile = this.b.d();
+      Object localObject = g.a(this.b.a.a);
+      if (((g)localObject).e != null)
+      {
+        localObject = ((g)localObject).e.c;
+        AppMethodBeat.o(180780);
+        return localObject;
+      }
       AppMethodBeat.o(180780);
-      return localFile;
+      return null;
     }
     AppMethodBeat.o(180780);
     return null;
@@ -117,7 +148,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.e
  * JD-Core Version:    0.7.0.1
  */

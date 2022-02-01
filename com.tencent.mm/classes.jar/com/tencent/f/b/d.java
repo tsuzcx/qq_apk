@@ -1,24 +1,19 @@
 package com.tencent.f.b;
 
-public final class d
+import java.util.Collection;
+import java.util.Map;
+
+public abstract interface d
 {
-  public String MHh;
-  public String MHi;
-  public String[] MHj;
-  public boolean MHk;
+  public abstract void delete(long paramLong);
   
-  public d() {}
+  public abstract Map<String, a.a> hml();
   
-  public d(String paramString1, String paramString2)
-  {
-    this.MHi = paramString1;
-    this.MHh = paramString2;
-    this.MHj = null;
-  }
+  public abstract void q(Collection<a.a> paramCollection);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.f.b.d
  * JD-Core Version:    0.7.0.1
  */

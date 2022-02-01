@@ -1,83 +1,55 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import java.util.concurrent.CancellationException;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.g.a.b;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/JobCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "cause", "", "job", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Ljava/lang/Throwable;Lkotlinx/coroutines/Job;)V", "createCopy", "equals", "", "other", "", "fillInStackTrace", "hashCode", "", "toString", "kotlinx-coroutines-core"})
-public final class bs
-  extends CancellationException
-  implements aa<bs>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/InvokeOnCancelling;", "Lkotlinx/coroutines/Job;", "job", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "handler", "<init>", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "(Ljava/lang/Throwable;)V", "", "toString", "()Ljava/lang/String;", "Lkotlin/jvm/functions/Function1;", "kotlinx-coroutines-core", "Lkotlinx/coroutines/JobCancellingNode;"})
+final class bs
+  extends bw<bu>
 {
-  public final br OfU;
+  private static final AtomicIntegerFieldUpdater TUN;
+  private volatile int _invoked;
+  private final b<Throwable, x> lJK;
   
-  public bs(String paramString, Throwable paramThrowable, br parambr)
+  static
   {
-    super(paramString);
-    AppMethodBeat.i(118151);
-    this.OfU = parambr;
-    if (paramThrowable != null) {
-      initCause(paramThrowable);
-    }
-    AppMethodBeat.o(118151);
+    AppMethodBeat.i(118220);
+    TUN = AtomicIntegerFieldUpdater.newUpdater(bs.class, "_invoked");
+    AppMethodBeat.o(118220);
   }
   
-  public final boolean equals(Object paramObject)
+  public bs(bu parambu, b<? super Throwable, x> paramb)
   {
-    AppMethodBeat.i(118149);
-    if ((paramObject == (bs)this) || (((paramObject instanceof bs)) && (p.i(((bs)paramObject).getMessage(), getMessage())) && (p.i(((bs)paramObject).OfU, this.OfU)) && (p.i(((bs)paramObject).getCause(), getCause()))))
-    {
-      AppMethodBeat.o(118149);
-      return true;
-    }
-    AppMethodBeat.o(118149);
-    return false;
-  }
-  
-  public final Throwable fillInStackTrace()
-  {
-    AppMethodBeat.i(118147);
-    if (am.getDEBUG())
-    {
-      localThrowable = super.fillInStackTrace();
-      AppMethodBeat.o(118147);
-      return localThrowable;
-    }
-    Throwable localThrowable = (Throwable)this;
-    AppMethodBeat.o(118147);
-    return localThrowable;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(118150);
-    Object localObject = getMessage();
-    if (localObject == null) {
-      p.gkB();
-    }
-    int j = ((String)localObject).hashCode();
-    int k = this.OfU.hashCode();
-    localObject = getCause();
-    if (localObject != null) {}
-    for (int i = ((Throwable)localObject).hashCode();; i = 0)
-    {
-      AppMethodBeat.o(118150);
-      return i + (j * 31 + k) * 31;
-    }
+    super(parambu);
+    AppMethodBeat.i(118219);
+    this.lJK = paramb;
+    this._invoked = 0;
+    AppMethodBeat.o(118219);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118148);
-    String str = super.toString() + "; job=" + this.OfU;
-    AppMethodBeat.o(118148);
+    AppMethodBeat.i(118218);
+    String str = "InvokeOnCancelling[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
+    AppMethodBeat.o(118218);
     return str;
+  }
+  
+  public final void y(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118216);
+    if (TUN.compareAndSet(this, 0, 1)) {
+      this.lJK.invoke(paramThrowable);
+    }
+    AppMethodBeat.o(118216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.bs
  * JD-Core Version:    0.7.0.1
  */

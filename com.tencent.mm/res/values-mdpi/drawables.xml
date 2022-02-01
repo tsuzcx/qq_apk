@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="drawable" name="c8w">false</item>
-    <item type="drawable" name="amx">false</item>
-    <item type="drawable" name="amy">false</item>
-    <item type="drawable" name="amz">false</item>
-    <item type="drawable" name="an0">false</item>
-    <item type="drawable" name="an1">false</item>
-    <item type="drawable" name="an7">false</item>
+    <item type="drawable" name="b72">false</item>
+    <item type="drawable" name="b75">false</item>
+    <item type="drawable" name="b9r">false</item>
+    <item type="drawable" name="b9v">false</item>
+    <item type="drawable" name="b9y">false</item>
+    <item type="drawable" name="b9z">false</item>
+    <item type="drawable" name="b_0">false</item>
+    <item type="drawable" name="b_1">false</item>
+    <item type="drawable" name="b_2">false</item>
+    <item type="drawable" name="b__">false</item>
 </resources>

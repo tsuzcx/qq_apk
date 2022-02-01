@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public final class e<T>
 {
-  private e<?> hjh;
+  private e<?> ice;
   public T value;
   
   public e() {}
@@ -14,9 +14,9 @@ public final class e<T>
     this.value = paramT;
   }
   
-  public final e arR()
+  public final e aKq()
   {
-    return this.hjh;
+    return this.ice;
   }
   
   public final T getValue()
@@ -42,7 +42,7 @@ public final class e<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.e
  * JD-Core Version:    0.7.0.1
  */

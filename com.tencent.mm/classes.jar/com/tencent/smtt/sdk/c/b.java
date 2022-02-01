@@ -32,36 +32,36 @@ public class b
   
   static
   {
-    AppMethodBeat.i(192782);
+    AppMethodBeat.i(188228);
     a = null;
     try
     {
       a = "65dRa93L".getBytes("utf-8");
-      AppMethodBeat.o(192782);
+      AppMethodBeat.o(188228);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      AppMethodBeat.o(192782);
+      AppMethodBeat.o(188228);
     }
   }
   
   static File a(Context paramContext)
   {
-    AppMethodBeat.i(192777);
+    AppMethodBeat.i(188223);
     paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "core_private");
     if ((!paramContext.isDirectory()) && (!paramContext.mkdir()))
     {
-      AppMethodBeat.o(192777);
+      AppMethodBeat.o(188223);
       return null;
     }
-    AppMethodBeat.o(192777);
+    AppMethodBeat.o(188223);
     return paramContext;
   }
   
   public static void a(final ThirdAppInfoNew paramThirdAppInfoNew, final Context paramContext)
   {
-    AppMethodBeat.i(192771);
+    AppMethodBeat.i(188217);
     new Thread("HttpUtils")
     {
       /* Error */
@@ -446,16 +446,16 @@ public class b
         //   582	661	667	java/lang/Throwable
       }
     }.start();
-    AppMethodBeat.o(192771);
+    AppMethodBeat.o(188217);
   }
   
   private static void a(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192778);
+    AppMethodBeat.i(188224);
     if (("reset".equals(paramString1)) && ("true".equals(paramString2)))
     {
       QbSdk.reset(paramContext);
-      AppMethodBeat.o(192778);
+      AppMethodBeat.o(188224);
       return;
     }
     if ("clear_sdk_timestamp".equals(paramString1))
@@ -467,7 +467,7 @@ public class b
         TbsDownloadConfig.getInstance(paramContext).commit();
         paramString1.edit().putString("sdk_status", paramString2).apply();
       }
-      AppMethodBeat.o(192778);
+      AppMethodBeat.o(188224);
       return;
     }
     if ("clear_extension_timestamp".equals(paramString1))
@@ -478,7 +478,7 @@ public class b
         f.b(new File(a(paramContext), "tbs_extension.conf"));
         paramString1.edit().putString("extension_status", paramString2).apply();
       }
-      AppMethodBeat.o(192778);
+      AppMethodBeat.o(188224);
       return;
     }
     if ("clear_switch_file".equals(paramString1))
@@ -491,20 +491,20 @@ public class b
           f.b(paramContext);
         }
       }
-      AppMethodBeat.o(192778);
+      AppMethodBeat.o(188224);
       return;
     }
     TbsPVConfig.getInstance(paramContext).putData(paramString1, paramString2);
-    AppMethodBeat.o(192778);
+    AppMethodBeat.o(188224);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
-    AppMethodBeat.i(192773);
+    AppMethodBeat.i(188219);
     if ((QbSdk.getSettings() != null) && (QbSdk.getSettings().containsKey(QbSdk.KEY_SET_SENDREQUEST_AND_UPLOAD)) && (QbSdk.getSettings().get(QbSdk.KEY_SET_SENDREQUEST_AND_UPLOAD).equals("false")))
     {
       TbsLog.i("sdkreport", "[HttpUtils.doReport] -- SET_SENDREQUEST_AND_UPLOAD is false");
-      AppMethodBeat.o(192773);
+      AppMethodBeat.o(188219);
       return;
     }
     TbsLog.d("sdkreport", "HttpUtils.doReport(): pv = ".concat(String.valueOf(paramInt)));
@@ -596,7 +596,7 @@ public class b
                 ((ThirdAppInfoNew)localObject2).localCoreVersion = QbSdk.getTbsVersion(paramContext);
               }
               a((ThirdAppInfoNew)localObject2, paramContext.getApplicationContext());
-              AppMethodBeat.o(192773);
+              AppMethodBeat.o(188219);
               return;
               localException = localException;
             }
@@ -610,7 +610,7 @@ public class b
         }
         catch (Throwable paramContext)
         {
-          AppMethodBeat.o(192773);
+          AppMethodBeat.o(188219);
           return;
         }
       }
@@ -637,7 +637,7 @@ public class b
   private static String b(Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(192774);
+    AppMethodBeat.i(188220);
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray();
@@ -656,7 +656,7 @@ public class b
           }
           else
           {
-            AppMethodBeat.o(192774);
+            AppMethodBeat.o(188220);
             return null;
           }
           while (i < paramContext.length)
@@ -672,14 +672,14 @@ public class b
             i += 1;
           }
           paramContext = ((StringBuilder)localObject).toString();
-          AppMethodBeat.o(192774);
+          AppMethodBeat.o(188220);
           return paramContext;
         }
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(192774);
+      AppMethodBeat.o(188220);
     }
     return null;
   }
@@ -1353,7 +1353,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.c.b
  * JD-Core Version:    0.7.0.1
  */

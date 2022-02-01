@@ -4,14 +4,14 @@ import com.tencent.tinker.a.a.b.a;
 
 public final class m
 {
-  protected final a MAr;
-  public int MAs;
-  private int MAt;
+  protected final a Sgv;
+  public int Sgw;
+  private int Sgx;
   private int type = -1;
   
   public m(a parama, int paramInt)
   {
-    this.MAr = parama;
+    this.Sgv = parama;
     this.type = paramInt;
   }
   
@@ -20,101 +20,105 @@ public final class m
     this(new k.1(paramk), paramInt);
   }
   
-  private void aij(int paramInt)
+  private void arJ(int paramInt)
   {
-    if (yW() != paramInt) {
-      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(yW()) }));
+    if (hoI() != paramInt) {
+      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hoI()) }));
     }
   }
   
-  public final int gcA()
+  public final int hoI()
   {
-    aij(28);
+    if (this.type == -1)
+    {
+      int i = this.Sgv.readByte() & 0xFF;
+      this.type = (i & 0x1F);
+      this.Sgx = ((i & 0xE0) >> 5);
+    }
+    return this.type;
+  }
+  
+  public final int hoJ()
+  {
+    arJ(28);
     this.type = -1;
-    return o.b(this.MAr);
+    return o.b(this.Sgv);
   }
   
-  public final int gcB()
+  public final int hoK()
   {
-    aij(29);
+    arJ(29);
     this.type = -1;
-    this.MAs = o.b(this.MAr);
-    return o.b(this.MAr);
+    this.Sgw = o.b(this.Sgv);
+    return o.b(this.Sgv);
   }
   
-  public final int gcC()
+  public final int hoL()
   {
-    return o.b(this.MAr);
+    return o.b(this.Sgv);
   }
   
-  public final int gcD()
+  public final int hoM()
   {
-    aij(23);
+    arJ(23);
     this.type = -1;
-    return l.a(this.MAr, this.MAt, false);
+    return l.a(this.Sgv, this.Sgx, false);
   }
   
-  public final int gcE()
+  public final int hoN()
   {
-    aij(24);
+    arJ(24);
     this.type = -1;
-    return l.a(this.MAr, this.MAt, false);
+    return l.a(this.Sgv, this.Sgx, false);
   }
   
-  public final int gcF()
+  public final int hoO()
   {
-    aij(25);
+    arJ(25);
     this.type = -1;
-    return l.a(this.MAr, this.MAt, false);
+    return l.a(this.Sgv, this.Sgx, false);
   }
   
-  public final int gcG()
+  public final int hoP()
   {
-    aij(27);
+    arJ(26);
     this.type = -1;
-    return l.a(this.MAr, this.MAt, false);
+    return l.a(this.Sgv, this.Sgx, false);
   }
   
-  public final int gcH()
+  public final void hoQ()
   {
-    aij(26);
-    this.type = -1;
-    return l.a(this.MAr, this.MAt, false);
-  }
-  
-  public final void gcI()
-  {
-    aij(30);
+    arJ(30);
     this.type = -1;
   }
   
   public final boolean readBoolean()
   {
-    aij(31);
+    arJ(31);
     this.type = -1;
-    return this.MAt != 0;
+    return this.Sgx != 0;
   }
   
   public final byte readByte()
   {
-    aij(0);
+    arJ(0);
     this.type = -1;
-    return (byte)l.a(this.MAr, this.MAt);
+    return (byte)l.a(this.Sgv, this.Sgx);
   }
   
   public final char readChar()
   {
-    aij(3);
+    arJ(3);
     this.type = -1;
-    return (char)l.a(this.MAr, this.MAt, false);
+    return (char)l.a(this.Sgv, this.Sgx, false);
   }
   
   public final double readDouble()
   {
-    aij(17);
+    arJ(17);
     this.type = -1;
-    a locala = this.MAr;
-    int i = this.MAt;
+    a locala = this.Sgv;
+    int i = this.Sgx;
     long l = 0L;
     while (i >= 0)
     {
@@ -126,24 +130,24 @@ public final class m
   
   public final float readFloat()
   {
-    aij(16);
+    arJ(16);
     this.type = -1;
-    return Float.intBitsToFloat(l.a(this.MAr, this.MAt, true));
+    return Float.intBitsToFloat(l.a(this.Sgv, this.Sgx, true));
   }
   
   public final int readInt()
   {
-    aij(4);
+    arJ(4);
     this.type = -1;
-    return l.a(this.MAr, this.MAt);
+    return l.a(this.Sgv, this.Sgx);
   }
   
   public final long readLong()
   {
-    aij(6);
+    arJ(6);
     this.type = -1;
-    a locala = this.MAr;
-    int j = this.MAt;
+    a locala = this.Sgv;
+    int j = this.Sgx;
     long l = 0L;
     int i = j;
     while (i >= 0)
@@ -156,16 +160,16 @@ public final class m
   
   public final short readShort()
   {
-    aij(2);
+    arJ(2);
     this.type = -1;
-    return (short)l.a(this.MAr, this.MAt);
+    return (short)l.a(this.Sgv, this.Sgx);
   }
   
   public final void skipValue()
   {
     int j = 0;
     int i = 0;
-    switch (yW())
+    switch (hoI())
     {
     case 1: 
     case 5: 
@@ -207,57 +211,53 @@ public final class m
       readDouble();
       return;
     case 23: 
-      gcD();
+      hoM();
       return;
     case 24: 
-      gcE();
+      hoN();
       return;
     case 25: 
-      gcF();
+      hoO();
       return;
     case 27: 
-      gcG();
+      zd();
       return;
     case 26: 
-      gcH();
+      hoP();
       return;
     case 28: 
-      j = gcA();
+      j = hoJ();
       while (i < j)
       {
         skipValue();
         i += 1;
       }
     case 29: 
-      int k = gcB();
+      int k = hoK();
       i = j;
       while (i < k)
       {
-        o.b(this.MAr);
+        o.b(this.Sgv);
         skipValue();
         i += 1;
       }
     case 30: 
-      gcI();
+      hoQ();
       return;
     }
     readBoolean();
   }
   
-  public final int yW()
+  public final int zd()
   {
-    if (this.type == -1)
-    {
-      int i = this.MAr.readByte() & 0xFF;
-      this.type = (i & 0x1F);
-      this.MAt = ((i & 0xE0) >> 5);
-    }
-    return this.type;
+    arJ(27);
+    this.type = -1;
+    return l.a(this.Sgv, this.Sgx, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.a.m
  * JD-Core Version:    0.7.0.1
  */

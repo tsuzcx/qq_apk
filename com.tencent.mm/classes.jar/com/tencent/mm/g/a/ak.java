@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ak
-  extends b
+  extends IEvent
 {
-  public a dlY;
-  public b dlZ;
+  public a dDl;
   
   public ak()
   {
@@ -16,27 +16,21 @@ public final class ak
   
   private ak(byte paramByte)
   {
-    AppMethodBeat.i(42651);
-    this.dlY = new a();
-    this.dlZ = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(149851);
+    this.dDl = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(42651);
+    AppMethodBeat.o(149851);
   }
   
   public static final class a
   {
-    public int dma = 0;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public Activity activity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ak
  * JD-Core Version:    0.7.0.1
  */

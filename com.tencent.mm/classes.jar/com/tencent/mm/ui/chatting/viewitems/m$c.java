@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -9,29 +8,31 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.a.vq;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.plugin.finder.api.d;
-import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.loader.e;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.protocal.protobuf.aoi;
+import com.tencent.mm.protocal.protobuf.bcl;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.d.b.k;
 import com.tencent.mm.ui.chatting.t.n;
 
 public final class m$c
   extends c
   implements t.n
 {
-  private com.tencent.mm.ui.chatting.e.a JWz;
+  private com.tencent.mm.ui.chatting.e.a PhN;
   
   public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(163333);
+    AppMethodBeat.i(233636);
     Object localObject;
     if (paramView != null)
     {
@@ -40,148 +41,154 @@ public final class m$c
     }
     else
     {
-      localObject = new ah(paramLayoutInflater, 2131493480);
-      ((View)localObject).setTag(new m.a().G((View)localObject, true));
+      localObject = new an(paramLayoutInflater, 2131493589);
+      ((View)localObject).setTag(new m.a().I((View)localObject, true));
     }
-    AppMethodBeat.o(163333);
+    AppMethodBeat.o(233636);
     return localObject;
   }
   
-  public final void a(com.tencent.mm.ui.chatting.e.a parama, bv parambv)
+  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, ca paramca, String paramString)
   {
-    AppMethodBeat.i(163336);
-    if (parambv.cVH())
-    {
-      m.aF(parambv);
-      bl.rW(parambv.field_msgId);
-      parama.xY(true);
-    }
-    AppMethodBeat.o(163336);
-  }
-  
-  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bv parambv, String paramString)
-  {
-    AppMethodBeat.i(163334);
-    this.JWz = parama1;
+    boolean bool = false;
+    AppMethodBeat.i(233637);
+    this.PhN = parama1;
     paramString = (m.a)parama;
-    String str = parambv.field_content;
+    Object localObject = paramca.field_content;
     parama = null;
-    if (str != null) {
-      parama = k.b.aB(str, parambv.field_reserved);
+    if (localObject != null) {
+      parama = k.b.aD((String)localObject, paramca.field_reserved);
     }
     if (parama != null)
     {
-      parama = (d)parama.ao(d.class);
-      if (parama != null)
+      localObject = m.p(parama);
+      if ((localObject != null) && (((bcl)localObject).LLD != null))
       {
-        paramString.KxY.setImageDrawable(ao.k(parama1.Kkd.getContext(), 2131690196, parama1.Kkd.getContext().getResources().getColor(2131099778)));
-        paramString.KxZ.setText(2131759195);
-        if (bu.isNullOrNil(parama.desc))
-        {
-          paramString.Kya.setVisibility(8);
-          paramString.fQm.setText(com.tencent.mm.pluginsdk.ui.span.k.c(parama1.Kkd.getContext(), parama.title));
+        if (((bcl)localObject).tvC != 7) {
+          break label336;
         }
+        parama = MMApplicationContext.getContext().getString(2131759523, new Object[] { ((bcl)localObject).LLD.LAr, ((bcl)localObject).LLD.LAq });
+        paramString.PKo.setText(l.c(parama1.Pwc.getContext(), parama));
+        parama = e.hXU;
+        e.aJs().a(((bcl)localObject).iconUrl, paramString.finderIcon, m.gUc());
+        paramString.finderDesc.setText(((bcl)localObject).desc);
       }
-      else
+      if (paramString.clickArea != null)
       {
-        paramString.olI.setOnClickListener(d(parama1));
-        paramString.olI.setOnLongClickListener(c(parama1));
-        paramString.olI.setOnTouchListener(((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class)).fGw());
-        parama = new bk(parambv, this.JWz.fJC(), paramInt, null, '\000');
-        paramString.olI.setTag(parama);
+        paramString.clickArea.setOnClickListener(d(parama1));
+        paramString.clickArea.setOnLongClickListener(c(parama1));
+        paramString.clickArea.setOnTouchListener(((k)parama1.bh(k.class)).gOC());
+        parama = new bq(paramca, this.PhN.gRM(), paramInt, null, '\000');
+        paramString.clickArea.setTag(parama);
       }
     }
-    else
+    if (gTW())
     {
-      if (!fLB()) {
-        break label362;
-      }
       b(paramString, false);
-      if ((parambv.field_status != 2) || (!b((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class), parambv.field_msgId))) {
-        break label341;
-      }
-      if (paramString.Kyb != null) {
-        paramString.Kyb.setVisibility(0);
+      if ((paramca.field_status == 2) && (b((k)parama1.bh(k.class), paramca.field_msgId))) {
+        if (paramString.tickIV != null) {
+          paramString.tickIV.setVisibility(0);
+        }
       }
     }
     for (;;)
     {
-      a(paramInt, paramString, parambv, parama1.fJy(), parama1.fJC(), parama1, this);
-      AppMethodBeat.o(163334);
+      a(paramInt, paramString, paramca, parama1.gRI(), parama1.gRM(), parama1, this);
+      AppMethodBeat.o(233637);
       return;
-      paramString.Kya.setVisibility(0);
-      paramString.Kya.setText(com.tencent.mm.pluginsdk.ui.span.k.c(parama1.Kkd.getContext(), parama.desc));
+      label336:
+      parama = ((bcl)localObject).dST;
       break;
-      label341:
-      if (paramString.Kyb != null) {
-        paramString.Kyb.setVisibility(8);
+      if (paramString.tickIV != null)
+      {
+        paramString.tickIV.setVisibility(8);
+        continue;
+        if (paramString.tickIV != null) {
+          paramString.tickIV.setVisibility(8);
+        }
+        if (paramca.field_status < 2) {
+          bool = true;
+        }
+        b(paramString, bool);
       }
     }
-    label362:
-    if (paramString.Kyb != null) {
-      paramString.Kyb.setVisibility(8);
-    }
-    if (parambv.field_status < 2) {}
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
+  {
+    AppMethodBeat.i(233640);
+    switch (paramMenuItem.getItemId())
     {
-      b(paramString, bool);
-      break;
+    default: 
+      AppMethodBeat.o(233640);
+      return false;
     }
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, bv parambv)
-  {
-    return false;
-  }
-  
-  public final boolean a(l paraml, View paramView, bv parambv)
-  {
-    AppMethodBeat.i(187738);
-    int i = ((bk)paramView.getTag()).position;
-    if ((parambv != null) && ((parambv.field_status == 2) || (parambv.fmr == 1)) && (b(parambv, this.JWz)) && (aYa(parambv.field_talker)) && (!an.zd(this.JWz.getTalkerUserName()))) {
-      paraml.a(i, 123, paramView.getContext().getString(2131757234), 2131690462);
-    }
-    AppMethodBeat.o(187738);
+    m.b(parama.Pwc.getContext(), paramca);
+    AppMethodBeat.o(233640);
     return true;
   }
   
-  public final boolean b(View paramView, com.tencent.mm.ui.chatting.e.a parama, bv parambv)
+  public final boolean a(com.tencent.mm.ui.base.m paramm, View paramView, ca paramca)
   {
-    AppMethodBeat.i(163337);
-    parama = parambv.field_content;
-    paramView = null;
-    if (parama != null) {
-      paramView = k.b.aB(parama, parambv.field_reserved);
-    }
-    if (paramView != null)
+    AppMethodBeat.i(233639);
+    int j = ((bq)paramView.getTag()).position;
+    if (!((aj)g.ah(aj.class)).showFinderEntry()) {}
+    for (int i = 1;; i = 0)
     {
-      paramView = (d)paramView.ao(d.class);
-      if (paramView != null)
+      if ((paramca != null) && (i == 0))
       {
-        parama = new vq();
-        parama.dKT.userName = "gh_4ee148a6ecaa@app";
-        parama.dKT.appId = "wxdfda2588e999a42d";
-        parama.dKT.dKV = paramView.rPA;
-        com.tencent.mm.sdk.b.a.IvT.l(parama);
+        paramm.a(j, 111, this.PhN.Pwc.getMMResources().getString(2131764628), 2131690674);
+        com.tencent.mm.br.c.aZU("favorite");
+        if (((paramca.field_status == 2) || (paramca.fQV == 1)) && (b(paramca, this.PhN)) && (bnf(paramca.field_talker)) && (!as.HF(this.PhN.getTalkerUserName()))) {
+          paramm.a(j, 123, paramView.getContext().getString(2131757446), 2131690650);
+        }
       }
+      AppMethodBeat.o(233639);
+      return true;
     }
-    AppMethodBeat.o(163337);
+  }
+  
+  public final void b(View paramView, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
+  {
+    AppMethodBeat.i(233638);
+    if (paramca.dOQ())
+    {
+      com.tencent.mm.pluginsdk.model.app.m.aS(paramca);
+      bp.Ad(paramca.field_msgId);
+      parama.BN(true);
+    }
+    AppMethodBeat.o(233638);
+  }
+  
+  public final boolean bM(int paramInt, boolean paramBoolean)
+  {
+    return (paramBoolean) && ((paramInt == 1023475761) || (paramInt == 1023541297));
+  }
+  
+  public final boolean c(View paramView, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
+  {
+    AppMethodBeat.i(233641);
+    String str = paramca.field_content;
+    paramView = null;
+    if (str != null) {
+      paramView = k.b.aD(str, paramca.field_reserved);
+    }
+    paramView = m.p(paramView);
+    if (paramView != null) {
+      m.a(parama.Pwc.getContext(), paramca, paramView);
+    }
+    AppMethodBeat.o(233641);
     return false;
   }
   
-  public final boolean br(int paramInt, boolean paramBoolean)
-  {
-    return (paramBoolean) && (paramInt == 788529201);
-  }
-  
-  public final boolean fLz()
+  public final boolean gTT()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.m.c
  * JD-Core Version:    0.7.0.1
  */

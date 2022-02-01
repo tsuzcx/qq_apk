@@ -12,7 +12,7 @@ import java.util.Map;
 
 public final class b
 {
-  static final b abg = new b()
+  static final b abu = new b()
   {
     public final boolean e(float[] paramAnonymousArrayOfFloat)
     {
@@ -51,19 +51,19 @@ public final class b
       return false;
     }
   };
-  private final List<d> abb;
-  private final List<c> abc;
-  private final Map<c, d> abd;
-  private final SparseBooleanArray abe;
-  public final d abf;
+  private final List<d> abp;
+  private final List<c> abq;
+  private final Map<c, d> abr;
+  private final SparseBooleanArray abs;
+  public final d abt;
   
   b(List<d> paramList, List<c> paramList1)
   {
-    this.abb = paramList;
-    this.abc = paramList1;
-    this.abe = new SparseBooleanArray();
-    this.abd = new android.support.v4.e.a();
-    this.abf = hb();
+    this.abp = paramList;
+    this.abq = paramList1;
+    this.abs = new SparseBooleanArray();
+    this.abr = new android.support.v4.e.a();
+    this.abt = hj();
   }
   
   public static a d(Bitmap paramBitmap)
@@ -71,19 +71,19 @@ public final class b
     return new a(paramBitmap);
   }
   
-  private d hb()
+  private d hj()
   {
     int j = -2147483648;
     Object localObject = null;
-    int k = this.abb.size();
+    int k = this.abp.size();
     int i = 0;
     if (i < k)
     {
-      d locald = (d)this.abb.get(i);
-      if (locald.aaT <= j) {
+      d locald = (d)this.abp.get(i);
+      if (locald.abg <= j) {
         break label67;
       }
-      j = locald.aaT;
+      j = locald.abg;
       localObject = locald;
     }
     label67:
@@ -95,9 +95,14 @@ public final class b
     }
   }
   
-  final void ha()
+  public final d hh()
   {
-    int m = this.abc.size();
+    return this.abt;
+  }
+  
+  final void hi()
+  {
+    int m = this.abq.size();
     int i = 0;
     c localc;
     float f1;
@@ -111,13 +116,13 @@ public final class b
     d locald;
     if (i < m)
     {
-      localc = (c)this.abc.get(i);
+      localc = (c)this.abq.get(i);
       f1 = 0.0F;
       j = 0;
-      k = localc.abF.length;
+      k = localc.abS.length;
       while (j < k)
       {
-        f3 = localc.abF[j];
+        f3 = localc.abS[j];
         f2 = f1;
         if (f3 > 0.0F) {
           f2 = f1 + f3;
@@ -128,57 +133,57 @@ public final class b
       if (f1 != 0.0F)
       {
         j = 0;
-        k = localc.abF.length;
+        k = localc.abS.length;
         while (j < k)
         {
-          if (localc.abF[j] > 0.0F)
+          if (localc.abS[j] > 0.0F)
           {
-            localObject = localc.abF;
+            localObject = localc.abS;
             localObject[j] /= f1;
           }
           j += 1;
         }
       }
-      localMap = this.abd;
+      localMap = this.abr;
       f1 = 0.0F;
       localObject = null;
-      int n = this.abb.size();
+      int n = this.abp.size();
       j = 0;
       if (j < n)
       {
-        locald = (d)this.abb.get(j);
-        float[] arrayOfFloat = locald.he();
-        if ((arrayOfFloat[1] >= localc.abD[0]) && (arrayOfFloat[1] <= localc.abD[2]) && (arrayOfFloat[2] >= localc.abE[0]) && (arrayOfFloat[2] <= localc.abE[2]) && (!this.abe.get(locald.abs)))
+        locald = (d)this.abp.get(j);
+        float[] arrayOfFloat = locald.hn();
+        if ((arrayOfFloat[1] >= localc.abQ[0]) && (arrayOfFloat[1] <= localc.abQ[2]) && (arrayOfFloat[2] >= localc.abR[0]) && (arrayOfFloat[2] <= localc.abR[2]) && (!this.abs.get(locald.abF)))
         {
           k = 1;
           label287:
           if (k == 0) {
             break label531;
           }
-          arrayOfFloat = locald.he();
+          arrayOfFloat = locald.hn();
           f2 = 0.0F;
           f3 = 0.0F;
-          if (this.abf == null) {
+          if (this.abt == null) {
             break label470;
           }
-          k = this.abf.aaT;
+          k = this.abt.abg;
           label319:
-          if (localc.abF[0] > 0.0F) {
-            f2 = localc.abF[0] * (1.0F - Math.abs(arrayOfFloat[1] - localc.abD[1]));
+          if (localc.abS[0] > 0.0F) {
+            f2 = localc.abS[0] * (1.0F - Math.abs(arrayOfFloat[1] - localc.abQ[1]));
           }
-          if (localc.abF[1] > 0.0F) {
-            f3 = localc.abF[1] * (1.0F - Math.abs(arrayOfFloat[2] - localc.abE[1]));
+          if (localc.abS[1] > 0.0F) {
+            f3 = localc.abS[1] * (1.0F - Math.abs(arrayOfFloat[2] - localc.abR[1]));
           }
-          if (localc.abF[2] <= 0.0F) {
+          if (localc.abS[2] <= 0.0F) {
             break label534;
           }
-          f4 = localc.abF[2];
+          f4 = localc.abS[2];
         }
       }
     }
     label531:
     label534:
-    for (float f4 = locald.aaT / k * f4;; f4 = 0.0F)
+    for (float f4 = locald.abg / k * f4;; f4 = 0.0F)
     {
       f2 = f4 + (f2 + f3);
       if ((localObject == null) || (f2 > f1))
@@ -195,13 +200,13 @@ public final class b
         label470:
         k = 1;
         break label319;
-        if ((localObject != null) && (localc.abG)) {
-          this.abe.append(((d)localObject).abs, true);
+        if ((localObject != null) && (localc.abT)) {
+          this.abs.append(((d)localObject).abF, true);
         }
         localMap.put(localc, localObject);
         i += 1;
         break;
-        this.abe.clear();
+        this.abs.clear();
         return;
       }
     }
@@ -209,29 +214,29 @@ public final class b
   
   public static final class a
   {
-    private final List<b.d> abb;
-    private final List<c> abc = new ArrayList();
-    private int abh = 16;
-    private int abj = 12544;
-    private int abk = -1;
-    private final List<b.b> abl = new ArrayList();
-    private Rect abm;
-    public final Bitmap mBitmap;
+    private final List<b.d> abp;
+    private final List<c> abq = new ArrayList();
+    private int abv = 16;
+    private int abw = 12544;
+    private int abx = -1;
+    private final List<b.b> aby = new ArrayList();
+    private Rect abz;
+    private final Bitmap mBitmap;
     
     public a(Bitmap paramBitmap)
     {
       if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
         throw new IllegalArgumentException("Bitmap is not valid");
       }
-      this.abl.add(b.abg);
+      this.aby.add(b.abu);
       this.mBitmap = paramBitmap;
-      this.abb = null;
-      this.abc.add(c.abx);
-      this.abc.add(c.aby);
-      this.abc.add(c.abz);
-      this.abc.add(c.abA);
-      this.abc.add(c.abB);
-      this.abc.add(c.abC);
+      this.abp = null;
+      this.abq.add(c.abK);
+      this.abq.add(c.abL);
+      this.abq.add(c.abM);
+      this.abq.add(c.abN);
+      this.abq.add(c.abO);
+      this.abq.add(c.abP);
     }
     
     private int[] e(Bitmap paramBitmap)
@@ -241,21 +246,38 @@ public final class b
       int k = paramBitmap.getHeight();
       int[] arrayOfInt = new int[j * k];
       paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
-      if (this.abm == null) {
+      if (this.abz == null) {
         return arrayOfInt;
       }
-      k = this.abm.width();
-      int m = this.abm.height();
+      k = this.abz.width();
+      int m = this.abz.height();
       paramBitmap = new int[k * m];
       while (i < m)
       {
-        System.arraycopy(arrayOfInt, (this.abm.top + i) * j + this.abm.left, paramBitmap, i * k, k);
+        System.arraycopy(arrayOfInt, (this.abz.top + i) * j + this.abz.left, paramBitmap, i * k, k);
         i += 1;
       }
       return paramBitmap;
     }
     
-    public final b hc()
+    public final AsyncTask<Bitmap, Void, b> a(final b.c paramc)
+    {
+      new AsyncTask()
+      {
+        private b hl()
+        {
+          try
+          {
+            b localb = b.a.this.hk();
+            return localb;
+          }
+          catch (Exception localException) {}
+          return null;
+        }
+      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Bitmap[] { this.mBitmap });
+    }
+    
+    public final b hk()
     {
       double d2;
       int i;
@@ -266,17 +288,17 @@ public final class b
       {
         localObject1 = this.mBitmap;
         d2 = -1.0D;
-        if (this.abj > 0)
+        if (this.abw > 0)
         {
           i = ((Bitmap)localObject1).getWidth() * ((Bitmap)localObject1).getHeight();
           d1 = d2;
-          if (i > this.abj) {
-            d1 = Math.sqrt(this.abj / i);
+          if (i > this.abw) {
+            d1 = Math.sqrt(this.abw / i);
           }
           if (d1 > 0.0D) {
             break label323;
           }
-          localObject2 = this.abm;
+          localObject2 = this.abz;
           if ((localObject1 != this.mBitmap) && (localObject2 != null))
           {
             d1 = ((Bitmap)localObject1).getWidth() / this.mBitmap.getWidth();
@@ -286,8 +308,8 @@ public final class b
             ((Rect)localObject2).bottom = Math.min((int)Math.ceil(d1 * ((Rect)localObject2).bottom), ((Bitmap)localObject1).getHeight());
           }
           int[] arrayOfInt = e((Bitmap)localObject1);
-          i = this.abh;
-          if (!this.abl.isEmpty()) {
+          i = this.abv;
+          if (!this.aby.isEmpty()) {
             break label358;
           }
           localObject2 = null;
@@ -298,29 +320,29 @@ public final class b
           }
         }
       }
-      for (Object localObject1 = ((a)localObject2).aaM;; localObject1 = this.abb)
+      for (Object localObject1 = ((a)localObject2).aaZ;; localObject1 = this.abp)
       {
-        localObject1 = new b((List)localObject1, this.abc);
-        ((b)localObject1).ha();
+        localObject1 = new b((List)localObject1, this.abq);
+        ((b)localObject1).hi();
         return localObject1;
         d1 = d2;
-        if (this.abk <= 0) {
+        if (this.abx <= 0) {
           break;
         }
         i = Math.max(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
         d1 = d2;
-        if (i <= this.abk) {
+        if (i <= this.abx) {
           break;
         }
-        d1 = this.abk / i;
+        d1 = this.abx / i;
         break;
         label323:
         localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)Math.ceil(((Bitmap)localObject1).getWidth() * d1), (int)Math.ceil(d1 * ((Bitmap)localObject1).getHeight()), false);
         break label67;
         label358:
-        localObject2 = (b.b[])this.abl.toArray(new b.b[this.abl.size()]);
+        localObject2 = (b.b[])this.aby.toArray(new b.b[this.aby.size()]);
         break label216;
-        if (this.abb == null) {
+        if (this.abp == null) {
           break label403;
         }
       }
@@ -341,56 +363,56 @@ public final class b
   
   public static final class d
   {
-    final int aaT;
-    private final int abp;
-    private final int abq;
-    private final int abr;
-    public final int abs;
-    private boolean abt;
-    private int abu;
-    private int abv;
-    private float[] abw;
+    private final int abC;
+    private final int abD;
+    private final int abE;
+    public final int abF;
+    private boolean abG;
+    private int abH;
+    private int abI;
+    private float[] abJ;
+    final int abg;
     
     public d(int paramInt1, int paramInt2)
     {
-      this.abp = Color.red(paramInt1);
-      this.abq = Color.green(paramInt1);
-      this.abr = Color.blue(paramInt1);
-      this.abs = paramInt1;
-      this.aaT = paramInt2;
+      this.abC = Color.red(paramInt1);
+      this.abD = Color.green(paramInt1);
+      this.abE = Color.blue(paramInt1);
+      this.abF = paramInt1;
+      this.abg = paramInt2;
     }
     
-    private void hg()
+    private void hp()
     {
       int j;
-      if (!this.abt)
+      if (!this.abG)
       {
-        i = android.support.v4.graphics.b.d(-1, this.abs, 4.5F);
-        j = android.support.v4.graphics.b.d(-1, this.abs, 3.0F);
+        i = android.support.v4.graphics.b.d(-1, this.abF, 4.5F);
+        j = android.support.v4.graphics.b.d(-1, this.abF, 3.0F);
         if ((i != -1) && (j != -1))
         {
-          this.abv = android.support.v4.graphics.b.x(-1, i);
-          this.abu = android.support.v4.graphics.b.x(-1, j);
-          this.abt = true;
+          this.abI = android.support.v4.graphics.b.x(-1, i);
+          this.abH = android.support.v4.graphics.b.x(-1, j);
+          this.abG = true;
         }
       }
       else
       {
         return;
       }
-      int m = android.support.v4.graphics.b.d(-16777216, this.abs, 4.5F);
-      int k = android.support.v4.graphics.b.d(-16777216, this.abs, 3.0F);
+      int m = android.support.v4.graphics.b.d(-16777216, this.abF, 4.5F);
+      int k = android.support.v4.graphics.b.d(-16777216, this.abF, 3.0F);
       if ((m != -1) && (k != -1))
       {
-        this.abv = android.support.v4.graphics.b.x(-16777216, m);
-        this.abu = android.support.v4.graphics.b.x(-16777216, k);
-        this.abt = true;
+        this.abI = android.support.v4.graphics.b.x(-16777216, m);
+        this.abH = android.support.v4.graphics.b.x(-16777216, k);
+        this.abG = true;
         return;
       }
       if (i != -1)
       {
         i = android.support.v4.graphics.b.x(-1, i);
-        this.abv = i;
+        this.abI = i;
         if (j == -1) {
           break label175;
         }
@@ -398,8 +420,8 @@ public final class b
       label175:
       for (int i = android.support.v4.graphics.b.x(-1, j);; i = android.support.v4.graphics.b.x(-16777216, k))
       {
-        this.abu = i;
-        this.abt = true;
+        this.abH = i;
+        this.abG = true;
         return;
         i = android.support.v4.graphics.b.x(-16777216, m);
         break;
@@ -416,41 +438,46 @@ public final class b
           return false;
         }
         paramObject = (d)paramObject;
-      } while ((this.aaT == paramObject.aaT) && (this.abs == paramObject.abs));
+      } while ((this.abg == paramObject.abg) && (this.abF == paramObject.abF));
       return false;
     }
     
     public final int hashCode()
     {
-      return this.abs * 31 + this.aaT;
+      return this.abF * 31 + this.abg;
     }
     
-    public final float[] he()
+    public final int hm()
     {
-      if (this.abw == null) {
-        this.abw = new float[3];
+      return this.abF;
+    }
+    
+    public final float[] hn()
+    {
+      if (this.abJ == null) {
+        this.abJ = new float[3];
       }
-      android.support.v4.graphics.b.a(this.abp, this.abq, this.abr, this.abw);
-      return this.abw;
+      android.support.v4.graphics.b.a(this.abC, this.abD, this.abE, this.abJ);
+      return this.abJ;
     }
     
-    public final int hf()
+    public final int ho()
     {
-      hg();
-      return this.abv;
+      hp();
+      return this.abI;
     }
     
     public final String toString()
     {
-      StringBuilder localStringBuilder = new StringBuilder(getClass().getSimpleName()).append(" [RGB: #").append(Integer.toHexString(this.abs)).append(']').append(" [HSL: ").append(Arrays.toString(he())).append(']').append(" [Population: ").append(this.aaT).append(']').append(" [Title Text: #");
-      hg();
-      return Integer.toHexString(this.abu) + ']' + " [Body Text: #" + Integer.toHexString(hf()) + ']';
+      StringBuilder localStringBuilder = new StringBuilder(getClass().getSimpleName()).append(" [RGB: #").append(Integer.toHexString(this.abF)).append(']').append(" [HSL: ").append(Arrays.toString(hn())).append(']').append(" [Population: ").append(this.abg).append(']').append(" [Title Text: #");
+      hp();
+      return Integer.toHexString(this.abH) + ']' + " [Body Text: #" + Integer.toHexString(ho()) + ']';
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.d.b
  * JD-Core Version:    0.7.0.1
  */

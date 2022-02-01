@@ -9,102 +9,100 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.ui.MMActivity;
 
 public class DiagnosticSettingsUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private Button wWA;
-  private ay wWe;
-  private CheckBox wWf;
-  private CheckBox wWg;
-  private CheckBox wWh;
-  private CheckBox wWi;
-  private CheckBox wWj;
-  private CheckBox wWk;
-  private EditText wWl;
-  private EditText wWm;
-  private EditText wWn;
-  private EditText wWo;
-  private EditText wWp;
-  private EditText wWq;
-  private Button wWr;
-  private Button wWs;
-  private CheckBox wWt;
-  private CheckBox wWu;
-  private EditText wWv;
-  private EditText wWw;
-  private EditText wWx;
-  private EditText wWy;
-  private Button wWz;
+  private CheckBox ASD;
+  private CheckBox ASE;
+  private CheckBox ASF;
+  private CheckBox ASG;
+  private CheckBox ASH;
+  private CheckBox ASI;
+  private CheckBox ASJ;
+  private CheckBox ASK;
+  private EditText ASL;
+  private EditText ASM;
+  private EditText ASN;
+  private EditText ASO;
+  private EditText ASP;
+  private EditText ASQ;
+  private EditText ASR;
+  private Button ASS;
+  private Button AST;
+  private CheckBox ASU;
+  private CheckBox ASV;
+  private CheckBox ASW;
+  private CheckBox ASX;
+  private CheckBox ASY;
+  private EditText ASZ;
+  private EditText ATa;
+  private EditText ATb;
+  private EditText ATc;
+  private Button ATd;
+  private Button ATe;
+  private com.tencent.mm.plugin.performance.diagnostic.b.a ATf;
+  private com.tencent.mm.plugin.performance.diagnostic.c.a ATg;
   
   public DiagnosticSettingsUI()
   {
     AppMethodBeat.i(124910);
-    this.wWe = ay.aRW("diagnostic_storage");
     AppMethodBeat.o(124910);
   }
   
   public int getLayoutId()
   {
-    return 2131493707;
+    return 2131493839;
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(124912);
-    b localb = new b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/performance/diagnostic/DiagnosticSettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/performance/diagnostic/DiagnosticSettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
     int i = paramView.getId();
-    if (2131299073 == i)
-    {
-      paramView = new StringBuilder("<cmd><diagnostic><MemoryHook enable='");
-      if (this.wWf.isChecked())
+    if (2131299579 == i) {
+      if (this.ASI.isChecked())
       {
-        i = 1;
-        paramView = paramView.append(i).append("' multiprocess='");
-        if (!this.wWi.isChecked()) {
-          break label380;
+        paramView = "all";
+        localObject = new StringBuilder("<cmd><diagnostic><MemoryHook enable='");
+        if (!this.ASD.isChecked()) {
+          break label464;
         }
         i = 1;
-        label90:
-        paramView = paramView.append(i).append("' duration='").append(bu.getInt(this.wWn.getText().toString(), 1)).append("' hook='").append(this.wWl.getText().toString()).append("' ignore='").append(this.wWm.getText().toString()).append("' stack='");
-        if (!this.wWg.isChecked()) {
-          break label385;
+        label80:
+        paramView = ((StringBuilder)localObject).append(i).append("' process='").append(paramView).append("' source='push' duration='").append(Util.getInt(this.ASN.getText().toString(), 1)).append("' stacklog='").append(Util.getInt(this.ASR.getText().toString(), 52428800)).append("' hook='").append(this.ASL.getText().toString()).append("' ignore='").append(this.ASM.getText().toString()).append("' stack='");
+        if (!this.ASE.isChecked()) {
+          break label469;
         }
         i = 1;
-        label171:
-        paramView = paramView.append(i).append("' min='").append(bu.getInt(this.wWo.getText().toString(), 0)).append("' max='").append(bu.getInt(this.wWp.getText().toString(), 0)).append("' force='");
-        if (!this.wWh.isChecked()) {
-          break label390;
+        label193:
+        paramView = paramView.append(i).append("' min='").append(Util.getInt(this.ASO.getText().toString(), 0)).append("' max='").append(Util.getInt(this.ASP.getText().toString(), 0)).append("' sampling='").append(Util.getDouble(this.ASQ.getText().toString(), 1.0D)).append("' extreme='");
+        if (!this.ASJ.isChecked()) {
+          break label474;
         }
         i = 1;
-        label238:
-        paramView = paramView.append(i).append("' sampling='").append(bu.getDouble(this.wWq.getText().toString(), 1.0D)).append("' extreme='");
-        if (!this.wWj.isChecked()) {
-          break label395;
-        }
-        i = 1;
-        label283:
+        label282:
         paramView = paramView.append(i).append("' mmap='");
-        if (!this.wWk.isChecked()) {
-          break label400;
+        if (!this.ASK.isChecked()) {
+          break label479;
         }
         i = 1;
-        label306:
+        label305:
         paramView = i + "'/></diagnostic></cmd>";
-        ae.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
-        com.tencent.mm.plugin.performance.a.a.wWa.aA(bx.M(paramView, "cmd"));
+        Log.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
+        com.tencent.mm.plugin.performance.a.a.ASb.aJQ(paramView);
         Toast.makeText(this, "MemoryHook:Confirmed, pls restart process", 0).show();
       }
     }
@@ -113,57 +111,102 @@ public class DiagnosticSettingsUI
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/performance/diagnostic/DiagnosticSettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(124912);
       return;
-      i = 0;
-      break;
-      label380:
-      i = 0;
-      break label90;
-      label385:
-      i = 0;
-      break label171;
-      label390:
-      i = 0;
-      break label238;
-      label395:
-      i = 0;
-      break label283;
-      label400:
-      i = 0;
-      break label306;
-      if (2131299074 == i)
+      localObject = new StringBuilder();
+      if (this.ASF.isChecked())
       {
-        com.tencent.mm.plugin.performance.a.a.wWa.aA(bx.M("<cmd><diagnostic><report><memory/></report></diagnostic></cmd>", "cmd"));
+        paramView = "mm;";
+        label391:
+        localObject = ((StringBuilder)localObject).append(paramView);
+        if (!this.ASG.isChecked()) {
+          break label450;
+        }
+        paramView = "appbrand;";
+        label411:
+        localObject = ((StringBuilder)localObject).append(paramView);
+        if (!this.ASH.isChecked()) {
+          break label457;
+        }
+      }
+      label450:
+      label457:
+      for (paramView = "tools;";; paramView = "")
+      {
+        paramView = paramView;
+        break;
+        paramView = "";
+        break label391;
+        paramView = "";
+        break label411;
+      }
+      label464:
+      i = 0;
+      break label80;
+      label469:
+      i = 0;
+      break label193;
+      label474:
+      i = 0;
+      break label282;
+      label479:
+      i = 0;
+      break label305;
+      if (2131299580 == i)
+      {
+        com.tencent.mm.plugin.performance.a.a.ASb.aA(XmlParser.parseXml("<cmd><diagnostic><report><MemoryHook/></report></diagnostic></cmd>", "cmd", null));
         Toast.makeText(this, "MemoryHook:Reported, pls run `logcat |grep MemoryHookLogic` for result", 0).show();
       }
       else
       {
-        if (2131308086 == i)
+        if (2131299581 == i)
         {
-          paramView = new StringBuilder("<cmd><diagnostic><PthreadHook enable='");
-          if (this.wWt.isChecked())
+          if (this.ASY.isChecked())
           {
-            i = 1;
-            label465:
-            paramView = paramView.append(i).append("' multiprocess='");
-            if (!this.wWu.isChecked()) {
-              break label623;
+            paramView = "all";
+            localObject = new StringBuilder("<cmd><diagnostic><PthreadHook enable='");
+            if (!this.ASU.isChecked()) {
+              break label797;
             }
           }
-          label623:
+          label783:
+          label790:
+          label797:
           for (i = 1;; i = 0)
           {
-            paramView = i + "' duration='" + bu.getInt(this.wWy.getText().toString(), 1) + "' hook='" + this.wWv.getText().toString() + "' ignore='" + this.wWw.getText().toString() + "' thread='" + this.wWx.getText().toString() + "'/></diagnostic></cmd>";
-            ae.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
-            com.tencent.mm.plugin.performance.a.a.wWa.aA(bx.M(paramView, "cmd"));
+            paramView = i + "' source='push' process='" + paramView + "' duration='" + Util.getInt(this.ATc.getText().toString(), 1) + "' hook='" + this.ASZ.getText().toString() + "' ignore='" + this.ATa.getText().toString() + "' thread='" + this.ATb.getText().toString() + "'/></diagnostic></cmd>";
+            Log.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
+            com.tencent.mm.plugin.performance.a.a.ASb.aJQ(paramView);
             Toast.makeText(this, "PthreadHook:Confirmed, pls restart process", 0).show();
             break;
-            i = 0;
-            break label465;
+            localObject = new StringBuilder();
+            if (this.ASV.isChecked())
+            {
+              paramView = "mm;";
+              label724:
+              localObject = ((StringBuilder)localObject).append(paramView);
+              if (!this.ASW.isChecked()) {
+                break label783;
+              }
+              paramView = "appbrand;";
+              label744:
+              localObject = ((StringBuilder)localObject).append(paramView);
+              if (!this.ASX.isChecked()) {
+                break label790;
+              }
+            }
+            for (paramView = "tools;";; paramView = "")
+            {
+              paramView = paramView;
+              break;
+              paramView = "";
+              break label724;
+              paramView = "";
+              break label744;
+            }
           }
         }
-        if (2131308087 == i)
+        if (2131299582 == i)
         {
-          com.tencent.mm.plugin.performance.a.a.wWa.aA(bx.M("<cmd><diagnostic><report><pthread/></report></diagnostic></cmd>", "cmd"));
+          com.tencent.mm.plugin.performance.a.a.ASb.aJQ("<cmd><diagnostic><report><PthreadHook/></report></diagnostic></cmd>");
           Toast.makeText(this, "PthreadHook:Reported, pls run `logcat |grep PthreadHookLogic` for result", 0).show();
         }
       }
@@ -186,50 +229,157 @@ public class DiagnosticSettingsUI
       }
     });
     setMMTitle("诊断模式");
-    this.wWf = ((CheckBox)findViewById(2131299075));
-    this.wWg = ((CheckBox)findViewById(2131299080));
-    this.wWh = ((CheckBox)findViewById(2131299077));
-    this.wWi = ((CheckBox)findViewById(2131299079));
-    this.wWj = ((CheckBox)findViewById(2131299076));
-    this.wWk = ((CheckBox)findViewById(2131299078));
-    this.wWl = ((EditText)findViewById(2131299082));
-    this.wWm = ((EditText)findViewById(2131299083));
-    this.wWn = ((EditText)findViewById(2131299081));
-    this.wWo = ((EditText)findViewById(2131299085));
-    this.wWp = ((EditText)findViewById(2131299084));
-    this.wWq = ((EditText)findViewById(2131299086));
-    this.wWr = ((Button)findViewById(2131299073));
-    this.wWs = ((Button)findViewById(2131299074));
-    this.wWr.setOnClickListener(this);
-    this.wWs.setOnClickListener(this);
-    this.wWf.setChecked(this.wWe.decodeBool("MH_KEY_ENABLE_BOOLEAN", false));
-    this.wWg.setChecked(this.wWe.decodeBool("MH_KEY_ENABLE_STACKTRACE_BOOLEAN", false));
-    this.wWh.setChecked(false);
-    this.wWi.setChecked(this.wWe.decodeBool("MH_KEY_MULTI_PROCESS_BOOLEAN", false));
-    this.wWj.setChecked(this.wWe.decodeBool("MH_KEY_EXTREME_BOOLEAN", false));
-    this.wWk.setChecked(this.wWe.decodeBool("MH_KEY_ENABLE_MMAP_BOOLEAN", false));
-    this.wWl.setText(this.wWe.decodeString("MH_KEY_HOOK_SO_STRING", ".*com\\.tencent\\.mm.*\\.so$"));
-    this.wWm.setText(this.wWe.decodeString("MH_KEY_IGNORE_SO_STRING", null));
-    this.wWn.setText(Long.toString(this.wWe.decodeLong("MH_KEY_DURATION_MILLIS_LONG", 3600000L) / 3600000L));
-    this.wWo.setText(Integer.toString(this.wWe.decodeInt("MH_KEY_MIN_TRACE_SIZE_INT", 0)));
-    this.wWp.setText(Integer.toString(this.wWe.decodeInt("MH_KEY_MAX_TRACE_SIZE_INT", 0)));
-    this.wWq.setText(Double.toString(this.wWe.aRZ("MH_KEY_SAMPLING_DOUBLE")));
-    this.wWt = ((CheckBox)findViewById(2131308088));
-    this.wWu = ((CheckBox)findViewById(2131308089));
-    this.wWv = ((EditText)findViewById(2131308091));
-    this.wWw = ((EditText)findViewById(2131308093));
-    this.wWx = ((EditText)findViewById(2131308092));
-    this.wWy = ((EditText)findViewById(2131308090));
-    this.wWz = ((Button)findViewById(2131308086));
-    this.wWA = ((Button)findViewById(2131308087));
-    this.wWt.setChecked(this.wWe.decodeBool("PH_KEY_ENABLE_BOOLEAN_v2", false));
-    this.wWu.setChecked(this.wWe.decodeBool("PH_KEY_MULTI_PROCESS_BOOLEAN", false));
-    this.wWv.setText(this.wWe.decodeString("PH_KEY_HOOK_SO_STRING", ".*\\.so$"));
-    this.wWw.setText(this.wWe.decodeString("PH_KEY_IGNORE_SO_STRING", null));
-    this.wWx.setText(this.wWe.decodeString("PH_KEY_HOOK_THREAD_STRING", ".*"));
-    this.wWy.setText(this.wWe.decodeLong("PH_KEY_DURATION_MILLIS_LONG", 3600000L) / 3600000L);
-    this.wWz.setOnClickListener(this);
-    this.wWA.setOnClickListener(this);
+    this.ATf = ((com.tencent.mm.plugin.performance.diagnostic.b.b)com.tencent.mm.plugin.performance.a.a.ASb.aT(com.tencent.mm.plugin.performance.diagnostic.b.b.class)).ATQ;
+    this.ATg = ((com.tencent.mm.plugin.performance.diagnostic.c.b)com.tencent.mm.plugin.performance.a.a.ASb.aT(com.tencent.mm.plugin.performance.diagnostic.c.b.class)).ATZ;
+    this.ASD = ((CheckBox)findViewById(2131299583));
+    this.ASE = ((CheckBox)findViewById(2131299590));
+    this.ASF = ((CheckBox)findViewById(2131299588));
+    this.ASG = ((CheckBox)findViewById(2131299587));
+    this.ASH = ((CheckBox)findViewById(2131299589));
+    this.ASI = ((CheckBox)findViewById(2131299586));
+    this.ASJ = ((CheckBox)findViewById(2131299584));
+    this.ASK = ((CheckBox)findViewById(2131299585));
+    this.ASF.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201031);
+        if (paramAnonymousBoolean) {
+          DiagnosticSettingsUI.a(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201031);
+      }
+    });
+    this.ASG.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201032);
+        if (paramAnonymousBoolean) {
+          DiagnosticSettingsUI.a(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201032);
+      }
+    });
+    this.ASH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201033);
+        if (paramAnonymousBoolean) {
+          DiagnosticSettingsUI.a(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201033);
+      }
+    });
+    this.ASI.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201034);
+        if (paramAnonymousBoolean)
+        {
+          DiagnosticSettingsUI.b(DiagnosticSettingsUI.this).setChecked(false);
+          DiagnosticSettingsUI.c(DiagnosticSettingsUI.this).setChecked(false);
+          DiagnosticSettingsUI.d(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201034);
+      }
+    });
+    this.ASL = ((EditText)findViewById(2131299597));
+    this.ASM = ((EditText)findViewById(2131299598));
+    this.ASN = ((EditText)findViewById(2131299596));
+    this.ASO = ((EditText)findViewById(2131299600));
+    this.ASP = ((EditText)findViewById(2131299599));
+    this.ASQ = ((EditText)findViewById(2131299601));
+    this.ASR = ((EditText)findViewById(2131299602));
+    this.ASS = ((Button)findViewById(2131299579));
+    this.AST = ((Button)findViewById(2131299580));
+    this.ASS.setOnClickListener(this);
+    this.AST.setOnClickListener(this);
+    this.ASD.setChecked(this.ATf.eBO());
+    this.ASE.setChecked(this.ATf.eCb());
+    this.ASF.setChecked(this.ATf.getTargetProcess().contains("mm"));
+    this.ASG.setChecked(this.ATf.getTargetProcess().contains("appbrand"));
+    this.ASH.setChecked(this.ATf.getTargetProcess().contains("tools"));
+    this.ASI.setChecked(this.ATf.getTargetProcess().contains("all"));
+    this.ASJ.setChecked(this.ATf.eCf());
+    this.ASK.setChecked(this.ATf.eCg());
+    this.ASL.setText(this.ATf.aJV(".*com\\.tencent\\.mm.*\\.so$"));
+    this.ASM.setText(this.ATf.eCa());
+    this.ASN.setText(Long.toString(this.ATf.Up(1)));
+    this.ASO.setText(Integer.toString(this.ATf.eCc()));
+    this.ASP.setText(Integer.toString(this.ATf.eCd()));
+    this.ASQ.setText(Double.toString(this.ATf.eCe()));
+    this.ASU = ((CheckBox)findViewById(2131299591));
+    this.ASV = ((CheckBox)findViewById(2131299594));
+    this.ASW = ((CheckBox)findViewById(2131299593));
+    this.ASX = ((CheckBox)findViewById(2131299595));
+    this.ASY = ((CheckBox)findViewById(2131299592));
+    this.ASZ = ((EditText)findViewById(2131299604));
+    this.ATa = ((EditText)findViewById(2131299606));
+    this.ATb = ((EditText)findViewById(2131299605));
+    this.ATc = ((EditText)findViewById(2131299603));
+    this.ATd = ((Button)findViewById(2131299581));
+    this.ATe = ((Button)findViewById(2131299582));
+    this.ASV.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201035);
+        if (paramAnonymousBoolean) {
+          DiagnosticSettingsUI.e(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201035);
+      }
+    });
+    this.ASW.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201036);
+        if (paramAnonymousBoolean) {
+          DiagnosticSettingsUI.e(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201036);
+      }
+    });
+    this.ASX.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201037);
+        if (paramAnonymousBoolean) {
+          DiagnosticSettingsUI.e(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201037);
+      }
+    });
+    this.ASY.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(201038);
+        if (paramAnonymousBoolean)
+        {
+          DiagnosticSettingsUI.f(DiagnosticSettingsUI.this).setChecked(false);
+          DiagnosticSettingsUI.g(DiagnosticSettingsUI.this).setChecked(false);
+          DiagnosticSettingsUI.h(DiagnosticSettingsUI.this).setChecked(false);
+        }
+        AppMethodBeat.o(201038);
+      }
+    });
+    this.ASU.setChecked(this.ATg.eBO());
+    this.ASZ.setText(this.ATg.aJV(".*\\.so$"));
+    this.ATa.setText(this.ATg.eCa());
+    this.ATb.setText(this.ATg.aJW(".*"));
+    this.ATc.setText(Integer.toString(this.ATg.Up(1)));
+    this.ASV.setChecked(this.ATg.getTargetProcess().contains("mm"));
+    this.ASW.setChecked(this.ATg.getTargetProcess().contains("appbrand"));
+    this.ASX.setChecked(this.ATg.getTargetProcess().contains("tools"));
+    this.ASY.setChecked(this.ATg.getTargetProcess().contains("all"));
+    this.ATd.setOnClickListener(this);
+    this.ATe.setOnClickListener(this);
     AppMethodBeat.o(124911);
   }
   
@@ -241,7 +391,7 @@ public class DiagnosticSettingsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.DiagnosticSettingsUI
  * JD-Core Version:    0.7.0.1
  */

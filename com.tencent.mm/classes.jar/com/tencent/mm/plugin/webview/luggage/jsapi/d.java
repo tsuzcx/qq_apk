@@ -9,9 +9,10 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
@@ -19,28 +20,28 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public class d
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(175740);
-    String str1 = paramb.chh.cgn.optString("card_list");
-    String str2 = ((g)paramb.chg).mParams.getString("srcUsername");
-    String str3 = ((g)paramb.chg).getUrl();
-    String str4 = paramb.chh.cgn.optString("consumedCardId");
-    ((g)paramb.chg).mParams.getString("KTemplateId");
-    ae.i("MicroMsg.JsApiBatchAddCard", "doBatchAddCard consumedCardId %s", new Object[] { str4 });
+    String str1 = paramb.ctb.csi.optString("card_list");
+    String str2 = ((g)paramb.cta).mParams.getString("srcUsername");
+    String str3 = ((g)paramb.cta).getUrl();
+    String str4 = paramb.ctb.csi.optString("consumedCardId");
+    ((g)paramb.cta).mParams.getString("KTemplateId");
+    Log.i("MicroMsg.JsApiBatchAddCard", "doBatchAddCard consumedCardId %s", new Object[] { str4 });
     Intent localIntent = new Intent();
     localIntent.putExtra("key_in_card_list", str1);
     localIntent.putExtra("key_from_scene", 7);
     localIntent.putExtra("src_username", str2);
     localIntent.putExtra("js_url", str3);
     localIntent.putExtra("key_consumed_card_id", str4);
-    ((MMActivity)((g)paramb.chg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(175739);
         HashMap localHashMap;
@@ -48,7 +49,7 @@ public class d
         {
           localHashMap = new HashMap();
           if (paramAnonymousIntent != null) {
-            localHashMap.put("card_list", bu.bI(paramAnonymousIntent.getStringExtra("card_list"), ""));
+            localHashMap.put("card_list", Util.nullAs(paramAnonymousIntent.getStringExtra("card_list"), ""));
           }
           if (paramAnonymousInt2 == -1)
           {
@@ -75,11 +76,11 @@ public class d
         }
       }
     });
-    com.tencent.mm.br.d.a(((g)paramb.chg).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
+    c.a(((g)paramb.cta).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
     AppMethodBeat.o(175740);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

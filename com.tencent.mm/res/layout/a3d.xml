@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/oq" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.MMTagPanelScrollView android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="false">
-        <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/bw6" android:paddingLeft="@dimen/e8" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/e8" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/jn" flowlayout:verticalSpacing="@dimen/jn" />
-    </com.tencent.mm.ui.base.MMTagPanelScrollView>
-    <View android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/hp" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/a0g" android:gravity="center" android:id="@id/dlt" android:padding="@dimen/d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ListView android:id="@id/g4n" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
-    <ListView android:id="@id/f9o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bqs" android:background="@drawable/b0w" android:paddingBottom="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="left" android:id="@id/bqr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_50" />
+    <FrameLayout android:layout_width="@dimen/a3i" android:layout_height="@dimen/a3i">
+        <com.tencent.mm.emoji.view.EmojiStatusView android:gravity="center_horizontal" android:id="@id/bqy" android:layout_width="@dimen/a3i" android:layout_height="@dimen/a3i" />
+        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/br0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
 </LinearLayout>

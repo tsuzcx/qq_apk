@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/f84" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:id="@id/agh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" style="?dd"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?android:textColorPrimary" android:gravity="center_vertical" android:id="@id/f83" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="2.0dip" android:drawablePadding="0.0dip" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/f89" android:focusable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/bs" style="?a6" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/f8q" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_weight="1.0" android:layoutDirection="locale">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/f9_" android:visibility="gone" android:layout_width="@dimen/mh" android:layout_height="wrap_content" android:scaleType="centerInside" style="@style/sk" />
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/f9c" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <view android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/f9m" android:background="@null" android:paddingLeft="@dimen/mi" android:paddingRight="@dimen/mj" android:layout_width="0.0dip" android:layout_height="36.0dip" android:singleLine="true" android:layout_weight="1.0" android:inputType="textAutoComplete|textNoSuggestions" android:dropDownAnchor="@id/f8q" android:imeOptions="actionSearch" android:dropDownHeight="wrap_content" android:dropDownHorizontalOffset="0.0dip" android:dropDownVerticalOffset="0.0dip" class="android.support.v7.widget.SearchView$SearchAutoComplete" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/f8e" android:background="?wi" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/bq" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/g1h" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/f8u" android:background="?wi" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/bt" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/f9s" android:background="?wi" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/bu" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <android.support.v7.widget.ButtonBarLayout android:gravity="bottom" android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="4.0dip" android:paddingRight="12.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layoutDirection="locale">
+        <Button android:id="@android:id/button3" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?db" />
+        <android.widget.Space android:id="@id/i3_" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <Button android:id="@android:id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?da" />
+        <Button android:id="@android:id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?dc" />
+    </android.support.v7.widget.ButtonBarLayout>
+</ScrollView>

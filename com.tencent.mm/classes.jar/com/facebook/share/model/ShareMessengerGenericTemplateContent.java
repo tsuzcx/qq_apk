@@ -9,7 +9,7 @@ public final class ShareMessengerGenericTemplateContent
 {
   public static final Parcelable.Creator<ShareMessengerGenericTemplateContent> CREATOR;
   private final ShareMessengerGenericTemplateElement genericTemplateElement;
-  private final ImageAspectRatio imageAspectRatio;
+  private final ShareMessengerGenericTemplateContent.ImageAspectRatio imageAspectRatio;
   private final boolean isSharable;
   
   static
@@ -41,7 +41,7 @@ public final class ShareMessengerGenericTemplateContent
     for (boolean bool = true;; bool = false)
     {
       this.isSharable = bool;
-      this.imageAspectRatio = ((ImageAspectRatio)paramParcel.readSerializable());
+      this.imageAspectRatio = ((ShareMessengerGenericTemplateContent.ImageAspectRatio)paramParcel.readSerializable());
       this.genericTemplateElement = ((ShareMessengerGenericTemplateElement)paramParcel.readParcelable(ShareMessengerGenericTemplateElement.class.getClassLoader()));
       AppMethodBeat.o(8486);
       return;
@@ -68,7 +68,7 @@ public final class ShareMessengerGenericTemplateContent
     return this.genericTemplateElement;
   }
   
-  public final ImageAspectRatio getImageAspectRatio()
+  public final ShareMessengerGenericTemplateContent.ImageAspectRatio getImageAspectRatio()
   {
     return this.imageAspectRatio;
   }
@@ -139,24 +139,10 @@ public final class ShareMessengerGenericTemplateContent
       return this;
     }
   }
-  
-  public static enum ImageAspectRatio
-  {
-    static
-    {
-      AppMethodBeat.i(8484);
-      HORIZONTAL = new ImageAspectRatio("HORIZONTAL", 0);
-      SQUARE = new ImageAspectRatio("SQUARE", 1);
-      $VALUES = new ImageAspectRatio[] { HORIZONTAL, SQUARE };
-      AppMethodBeat.o(8484);
-    }
-    
-    private ImageAspectRatio() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.share.model.ShareMessengerGenericTemplateContent
  * JD-Core Version:    0.7.0.1
  */

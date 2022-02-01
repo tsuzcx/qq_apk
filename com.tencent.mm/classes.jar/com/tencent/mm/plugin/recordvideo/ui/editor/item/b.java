@@ -14,64 +14,69 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.mm.plugin.recordvideo.ui.editor.view.c.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.ui.ar;
-import d.g.a.m;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.au;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/IEditView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "value", "Landroid/graphics/Bitmap;", "bitmap", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "color", "", "getColor", "()I", "setColor", "(I)V", "displayRect", "Landroid/graphics/Rect;", "getDisplayRect", "()Landroid/graphics/Rect;", "enableNotify", "", "getEnableNotify", "()Z", "setEnableNotify", "(Z)V", "frameDrawable", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/ActiveFrameDrawable;", "location", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "getLocation", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "setLocation", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;)V", "marginBottom", "getMarginBottom", "setMarginBottom", "navigateBarHeight", "getNavigateBarHeight", "originPivot", "", "paint", "Landroid/graphics/Paint;", "sourceDataType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "getSourceDataType", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "setSourceDataType", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "stateResolve", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "text", "", "getText", "()Ljava/lang/CharSequence;", "setText", "(Ljava/lang/CharSequence;)V", "textBg", "getTextBg", "setTextBg", "textSize", "", "getTextSize", "()F", "setTextSize", "(F)V", "touchDownX", "getTouchDownX", "setTouchDownX", "touchDownY", "getTouchDownY", "setTouchDownY", "touchMoved", "getTouchMoved", "setTouchMoved", "touchSlop", "getTouchSlop", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "getTouchTracker", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "validRect", "getValidRect", "Landroid/graphics/Matrix;", "viewMatrix", "getViewMatrix", "()Landroid/graphics/Matrix;", "setViewMatrix", "(Landroid/graphics/Matrix;)V", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "getContentBoundary", "getDrawRect", "Landroid/graphics/RectF;", "getSafeArea", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setDefaultLocation", "heightPercent", "setSafeArea", "safeRect", "damp", "setStateResolve", "setValidArea", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/IEditView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "value", "Landroid/graphics/Bitmap;", "bitmap", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "color", "", "getColor", "()I", "setColor", "(I)V", "displayRect", "Landroid/graphics/Rect;", "getDisplayRect", "()Landroid/graphics/Rect;", "enableNotify", "", "getEnableNotify", "()Z", "setEnableNotify", "(Z)V", "frameDrawable", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/ActiveFrameDrawable;", "location", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "getLocation", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "setLocation", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;)V", "marginBottom", "getMarginBottom", "setMarginBottom", "navigateBarHeight", "getNavigateBarHeight", "originPivot", "", "paint", "Landroid/graphics/Paint;", "sourceDataType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "getSourceDataType", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "setSourceDataType", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "stateResolve", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "text", "", "getText", "()Ljava/lang/CharSequence;", "setText", "(Ljava/lang/CharSequence;)V", "textBg", "getTextBg", "setTextBg", "textSize", "", "getTextSize", "()F", "setTextSize", "(F)V", "touchDownX", "getTouchDownX", "setTouchDownX", "touchDownY", "getTouchDownY", "setTouchDownY", "touchMoved", "getTouchMoved", "setTouchMoved", "touchSlop", "getTouchSlop", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "getTouchTracker", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "validRect", "getValidRect", "Landroid/graphics/Matrix;", "viewMatrix", "getViewMatrix", "()Landroid/graphics/Matrix;", "setViewMatrix", "(Landroid/graphics/Matrix;)V", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "getContentBoundary", "getDrawRect", "Landroid/graphics/RectF;", "getSafeArea", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setDefaultLocation", "heightPercent", "setSafeArea", "safeRect", "damp", "setStateResolve", "setValidArea", "plugin-recordvideo_release"})
 public abstract class b
   extends View
   implements g, com.tencent.mm.plugin.recordvideo.ui.editor.view.c
 {
+  private final Rect Cao = new Rect(0, 0, au.az(MMApplicationContext.getContext()).x, au.az(MMApplicationContext.getContext()).y);
+  private final Rect Cap = new Rect(0, 0, au.az(MMApplicationContext.getContext()).x, au.az(MMApplicationContext.getContext()).y);
+  private EditorItemContainer.b Caq;
+  private int CeA;
+  private int CeB;
+  private k CeC;
+  private d CeD = d.CeK;
+  private Matrix CeE;
+  private boolean CeF;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.view.a Cey;
+  private final int Cez = au.aD(MMApplicationContext.getContext());
   private Bitmap bitmap;
   private int color;
-  private boolean gpb;
-  private float gpe;
-  private float gpf;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.c.c pZW = new com.tencent.mm.plugin.recordvideo.ui.editor.c.c();
+  private boolean gZU;
+  private float gZX;
+  private float gZY;
   private final Paint paint = new Paint();
-  private final float[] qag = new float[2];
-  private final int rW;
+  private final int rZ;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.c.c rqT = new com.tencent.mm.plugin.recordvideo.ui.editor.c.c();
+  private final float[] rrd = new float[2];
   private CharSequence text;
-  private float textSize = getResources().getDimension(2131166195);
-  private final Rect xZp = new Rect(0, 0, ar.ck(ak.getContext()).x, ar.ck(ak.getContext()).y);
-  private final Rect xZq = new Rect(0, 0, ar.ck(ak.getContext()).x, ar.ck(ak.getContext()).y);
-  private EditorItemContainer.b xZr;
-  private k ydA;
-  private d ydB = d.ydI;
-  private Matrix ydC;
-  private boolean ydD;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.view.a ydw;
-  private final int ydx = ar.en(ak.getContext());
-  private int ydy;
-  private int ydz;
+  private float textSize = getResources().getDimension(2131166236);
   
   public b(Context paramContext)
   {
     super(paramContext);
-    this.pZW.aXF = 0.5F;
-    this.pZW.aXE = 3.0F;
+    this.rqT.aXu = 0.5F;
+    this.rqT.aXt = 3.0F;
     Resources localResources = getResources();
     p.g(localResources, "resources");
-    this.ydw = new com.tencent.mm.plugin.recordvideo.ui.editor.view.a(localResources);
+    this.Cey = new com.tencent.mm.plugin.recordvideo.ui.editor.view.a(localResources);
     paramContext = ViewConfiguration.get(paramContext);
     p.g(paramContext, "ViewConfiguration.get(context)");
-    this.rW = paramContext.getScaledTouchSlop();
+    this.rZ = paramContext.getScaledTouchSlop();
     this.paint.setAntiAlias(true);
-    this.ydD = true;
+    this.CeF = true;
+  }
+  
+  public final boolean Ig(long paramLong)
+  {
+    return c.a.a(this, paramLong);
   }
   
   public final void a(Rect paramRect, float paramFloat)
   {
     p.h(paramRect, "displayRect");
-    this.xZq.set(paramRect);
-    this.pZW.gR.postTranslate(paramRect.width() / 2.0F, paramRect.height() * paramFloat);
+    this.Cap.set(paramRect);
+    this.rqT.gT.postTranslate(paramRect.width() / 2.0F, paramRect.height() * paramFloat);
   }
   
-  public final boolean axd(String paramString)
+  public final boolean aLB(String paramString)
   {
     p.h(paramString, "objID");
     return c.a.a(this, paramString);
@@ -80,8 +85,8 @@ public abstract class b
   public final void b(Rect paramRect, int paramInt)
   {
     p.h(paramRect, "safeRect");
-    this.pZW.xKi = paramRect;
-    this.pZW.yge = com.tencent.mm.cb.a.fromDPToPix(getContext(), paramInt);
+    this.rqT.BKm = paramRect;
+    this.rqT.Chb = com.tencent.mm.cb.a.fromDPToPix(getContext(), paramInt);
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a c(Matrix paramMatrix)
@@ -90,48 +95,48 @@ public abstract class b
       return null;
     }
     Matrix localMatrix = new Matrix();
-    localMatrix.postConcat(this.pZW.gR);
+    localMatrix.postConcat(this.rqT.gT);
     if (paramMatrix != null) {
       localMatrix.postConcat(paramMatrix);
     }
     return (com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)new com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c(this.bitmap, localMatrix);
   }
   
-  public a clM()
+  public a cJO()
   {
     if (this.bitmap == null) {
       return null;
     }
     Matrix localMatrix = new Matrix();
-    localMatrix.postConcat(this.pZW.gR);
-    if ((this.ydB == d.ydI) || (this.ydB == d.ydL)) {
-      return (a)new q(this.text, this.color, this.ydy, this.ydz, localMatrix);
+    localMatrix.postConcat(this.rqT.gT);
+    if ((this.CeD == d.CeK) || (this.CeD == d.CeN)) {
+      return (a)new q(this.text, this.color, this.CeA, this.CeB, localMatrix);
     }
-    Object localObject1 = this.ydA;
+    Object localObject1 = this.CeC;
     if (localObject1 == null) {
-      p.gkB();
+      p.hyc();
     }
-    localObject1 = ((k)localObject1).yew;
-    Object localObject2 = this.ydA;
+    localObject1 = ((k)localObject1).Cfy;
+    Object localObject2 = this.CeC;
     if (localObject2 == null) {
-      p.gkB();
+      p.hyc();
     }
-    localObject2 = ((k)localObject2).jGd;
-    k localk = this.ydA;
+    localObject2 = ((k)localObject2).kHV;
+    k localk = this.CeC;
     if (localk == null) {
-      p.gkB();
+      p.hyc();
     }
-    float f = localk.dBu;
-    localk = this.ydA;
+    float f = localk.dTj;
+    localk = this.CeC;
     if (localk == null) {
-      p.gkB();
+      p.hyc();
     }
-    return (a)new k((String)localObject1, (String)localObject2, f, localk.dzE, localMatrix);
+    return (a)new k((String)localObject1, (String)localObject2, f, localk.latitude, localMatrix);
   }
   
-  public final boolean dKK()
+  public final boolean eLK()
   {
-    return this.ydD;
+    return this.CeF;
   }
   
   public final Bitmap getBitmap()
@@ -146,42 +151,42 @@ public abstract class b
   
   public float[] getContentBoundary()
   {
-    return (float[])this.pZW.ygj.clone();
+    return (float[])this.rqT.Chg.clone();
   }
   
   protected final Rect getDisplayRect()
   {
-    return this.xZq;
+    return this.Cap;
   }
   
   public RectF getDrawRect()
   {
-    return new RectF(this.pZW.ygj[0], this.pZW.ygj[1], this.pZW.ygj[2], this.pZW.ygj[3]);
+    return new RectF(this.rqT.Chg[0], this.rqT.Chg[1], this.rqT.Chg[2], this.rqT.Chg[3]);
   }
   
   public final boolean getEnableNotify()
   {
-    return this.ydD;
+    return this.CeF;
   }
   
   public final k getLocation()
   {
-    return this.ydA;
+    return this.CeC;
   }
   
   public final int getMarginBottom()
   {
-    return this.ydz;
+    return this.CeB;
   }
   
   protected final int getNavigateBarHeight()
   {
-    return this.ydx;
+    return this.Cez;
   }
   
   public Rect getSafeArea()
   {
-    Rect localRect = this.pZW.xKi;
+    Rect localRect = this.rqT.BKm;
     Object localObject = localRect;
     if (localRect == null)
     {
@@ -197,7 +202,7 @@ public abstract class b
   
   public final d getSourceDataType()
   {
-    return this.ydB;
+    return this.CeD;
   }
   
   public final CharSequence getText()
@@ -207,7 +212,7 @@ public abstract class b
   
   public final int getTextBg()
   {
-    return this.ydy;
+    return this.CeA;
   }
   
   public final float getTextSize()
@@ -217,60 +222,74 @@ public abstract class b
   
   public final float getTouchDownX()
   {
-    return this.gpe;
+    return this.gZX;
   }
   
   public final float getTouchDownY()
   {
-    return this.gpf;
+    return this.gZY;
   }
   
   public final boolean getTouchMoved()
   {
-    return this.gpb;
+    return this.gZU;
   }
   
   public final int getTouchSlop()
   {
-    return this.rW;
+    return this.rZ;
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.c.c getTouchTracker()
   {
-    return this.pZW;
+    return this.rqT;
   }
   
   protected final Rect getValidRect()
   {
-    return this.xZp;
+    return this.Cao;
   }
   
   public final Matrix getViewMatrix()
   {
-    return this.ydC;
+    return this.CeE;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     p.h(paramCanvas, "canvas");
-    Matrix localMatrix2 = this.ydC;
-    Matrix localMatrix1 = localMatrix2;
-    if (localMatrix2 == null) {
-      localMatrix1 = this.pZW.gR;
-    }
     paramCanvas.save();
-    paramCanvas.setMatrix(localMatrix1);
-    if (isActivated()) {
-      this.ydw.draw(paramCanvas);
+    if (this.CeE != null)
+    {
+      paramCanvas.setMatrix(this.CeE);
+      if (isActivated()) {
+        this.Cey.draw(paramCanvas);
+      }
+      paramCanvas.restore();
+      paramCanvas.clipRect(this.Cao);
+      paramCanvas.save();
+      if (this.CeE == null) {
+        break label124;
+      }
+      paramCanvas.setMatrix(this.CeE);
     }
-    paramCanvas.restore();
-    paramCanvas.clipRect(this.xZp);
-    paramCanvas.save();
-    paramCanvas.setMatrix(localMatrix1);
-    if (this.bitmap != null) {
-      paramCanvas.drawBitmap(this.bitmap, 0.0F, 0.0F, this.paint);
+    for (;;)
+    {
+      if (this.bitmap != null)
+      {
+        Bitmap localBitmap = this.bitmap;
+        if (localBitmap == null) {
+          p.hyc();
+        }
+        paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, this.paint);
+      }
+      paramCanvas.restore();
+      return;
+      paramCanvas.setMatrix(this.rqT.gT);
+      break;
+      label124:
+      paramCanvas.setMatrix(this.rqT.gT);
     }
-    paramCanvas.restore();
   }
   
   public boolean onTouchEvent(final MotionEvent paramMotionEvent)
@@ -280,14 +299,14 @@ public abstract class b
     Object localObject1;
     if ((paramMotionEvent.getActionMasked() != 3) && (paramMotionEvent.getActionMasked() != 1))
     {
-      bool2 = this.pZW.U(paramMotionEvent);
+      bool2 = this.rqT.Y(paramMotionEvent);
       bool1 = bool2;
       if (bool2)
       {
         bringToFront();
-        localObject1 = this.xZr;
+        localObject1 = this.Caq;
         if (localObject1 != null) {
-          ((EditorItemContainer.b)localObject1).c((View)this, paramMotionEvent);
+          ((EditorItemContainer.b)localObject1).d((View)this, paramMotionEvent);
         }
         postInvalidate();
       }
@@ -304,36 +323,36 @@ public abstract class b
         do
         {
           return bool1;
-          this.gpe = paramMotionEvent.getX();
-          this.gpf = paramMotionEvent.getY();
-          this.gpb = false;
-          this.qag[0] = (this.pZW.width / 2.0F);
-          this.qag[1] = (this.pZW.height / 2.0F);
-          this.pZW.gR.mapPoints(this.qag);
+          this.gZX = paramMotionEvent.getX();
+          this.gZY = paramMotionEvent.getY();
+          this.gZU = false;
+          this.rrd[0] = (this.rqT.width / 2.0F);
+          this.rrd[1] = (this.rqT.height / 2.0F);
+          this.rqT.gT.mapPoints(this.rrd);
           return bool1;
-          f = Math.max(Math.abs(paramMotionEvent.getX() - this.gpe), Math.abs(paramMotionEvent.getY() - this.gpf));
-        } while (this.gpb);
-        if (f > this.rW) {}
+          f = Math.max(Math.abs(paramMotionEvent.getX() - this.gZX), Math.abs(paramMotionEvent.getY() - this.gZY));
+        } while (this.gZU);
+        if (f > this.rZ) {}
         for (bool2 = true;; bool2 = false)
         {
-          this.gpb = bool2;
+          this.gZU = bool2;
           return bool1;
         }
       }
       localObject1 = new com.tencent.mm.plugin.recordvideo.ui.editor.c.a();
-      Object localObject2 = this.xZp;
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).aXF = this.pZW.aXF;
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).aXE = this.pZW.aXE;
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).n(new float[] { this.pZW.width / 2.0F, this.pZW.height / 2.0F });
+      Object localObject2 = this.Cao;
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).aXu = this.rqT.aXu;
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).aXt = this.rqT.aXt;
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).n(new float[] { this.rqT.width / 2.0F, this.rqT.height / 2.0F });
       ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).f(new RectF(((Rect)localObject2).left, ((Rect)localObject2).top, ((Rect)localObject2).right, ((Rect)localObject2).bottom));
       localObject2 = new float[2];
-      localObject2[0] = (this.pZW.width / 2.0F);
-      localObject2[1] = (this.pZW.height / 2.0F);
-      this.pZW.gR.mapPoints((float[])localObject2);
-      if (!((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).yfO.contains(localObject2[0], localObject2[1])) {
-        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).f(new RectF(this.qag[0], this.qag[1], this.qag[0], this.qag[1]));
+      localObject2[0] = (this.rqT.width / 2.0F);
+      localObject2[1] = (this.rqT.height / 2.0F);
+      this.rqT.gT.mapPoints((float[])localObject2);
+      if (!((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).CgM.contains(localObject2[0], localObject2[1])) {
+        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).f(new RectF(this.rrd[0], this.rrd[1], this.rrd[0], this.rrd[1]));
       }
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).a(this.pZW.gR, (m)new a(this, paramMotionEvent));
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).a(this.rqT.gT, (m)new a(this, paramMotionEvent));
       return bool1;
     }
   }
@@ -343,11 +362,11 @@ public abstract class b
     this.bitmap = paramBitmap;
     if (paramBitmap != null)
     {
-      this.pZW.width = paramBitmap.getWidth();
-      this.pZW.height = paramBitmap.getHeight();
-      this.pZW.gR.preTranslate(-paramBitmap.getWidth() / 2.0F, -paramBitmap.getHeight() / 2.0F);
-      this.ydw.setBounds(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-      this.pZW.o(new float[] { 0.0F, 0.0F, paramBitmap.getWidth(), 0.0F, 0.0F, paramBitmap.getHeight(), paramBitmap.getWidth(), paramBitmap.getHeight() });
+      this.rqT.width = paramBitmap.getWidth();
+      this.rqT.height = paramBitmap.getHeight();
+      this.rqT.gT.preTranslate(-paramBitmap.getWidth() / 2.0F, -paramBitmap.getHeight() / 2.0F);
+      this.Cey.setBounds(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      this.rqT.o(new float[] { 0.0F, 0.0F, paramBitmap.getWidth(), 0.0F, 0.0F, paramBitmap.getHeight(), paramBitmap.getWidth(), paramBitmap.getHeight() });
     }
   }
   
@@ -358,29 +377,29 @@ public abstract class b
   
   public final void setEnableNotify(boolean paramBoolean)
   {
-    this.ydD = paramBoolean;
+    this.CeF = paramBoolean;
   }
   
   public final void setLocation(k paramk)
   {
-    this.ydA = paramk;
+    this.CeC = paramk;
   }
   
   public final void setMarginBottom(int paramInt)
   {
-    this.ydz = paramInt;
+    this.CeB = paramInt;
   }
   
   public final void setSourceDataType(d paramd)
   {
     p.h(paramd, "<set-?>");
-    this.ydB = paramd;
+    this.CeD = paramd;
   }
   
   public final void setStateResolve(EditorItemContainer.b paramb)
   {
     p.h(paramb, "stateResolve");
-    this.xZr = paramb;
+    this.Caq = paramb;
   }
   
   public final void setText(CharSequence paramCharSequence)
@@ -390,7 +409,7 @@ public abstract class b
   
   public final void setTextBg(int paramInt)
   {
-    this.ydy = paramInt;
+    this.CeA = paramInt;
   }
   
   public final void setTextSize(float paramFloat)
@@ -400,54 +419,54 @@ public abstract class b
   
   public final void setTouchDownX(float paramFloat)
   {
-    this.gpe = paramFloat;
+    this.gZX = paramFloat;
   }
   
   public final void setTouchDownY(float paramFloat)
   {
-    this.gpf = paramFloat;
+    this.gZY = paramFloat;
   }
   
   public final void setTouchMoved(boolean paramBoolean)
   {
-    this.gpb = paramBoolean;
+    this.gZU = paramBoolean;
   }
   
   public void setValidArea(Rect paramRect)
   {
     p.h(paramRect, "validRect");
-    this.xZp.set(paramRect);
+    this.Cao.set(paramRect);
   }
   
   public final void setViewMatrix(Matrix paramMatrix)
   {
-    this.ydC = paramMatrix;
+    this.CeE = paramMatrix;
     if (paramMatrix != null)
     {
-      this.pZW.setMatrix(paramMatrix);
+      this.rqT.setMatrix(paramMatrix);
       Canvas localCanvas = new Canvas();
       localCanvas.save();
-      if (this.ydC != null) {
+      if (this.CeE != null) {
         localCanvas.setMatrix(paramMatrix);
       }
       if (isActivated()) {
-        this.ydw.draw(localCanvas);
+        this.Cey.draw(localCanvas);
       }
-      if (this.bitmap != null) {
-        localCanvas.drawBitmap(this.bitmap, 0.0F, 0.0F, null);
+      if (this.bitmap != null)
+      {
+        paramMatrix = this.bitmap;
+        if (paramMatrix == null) {
+          p.hyc();
+        }
+        localCanvas.drawBitmap(paramMatrix, 0.0F, 0.0F, null);
       }
     }
   }
   
-  public final boolean zi(long paramLong)
-  {
-    return c.a.a(this, paramLong);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "animateFinish", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "animateFinish", "", "invoke"})
   static final class a
-    extends d.g.b.q
-    implements m<Matrix, Boolean, z>
+    extends kotlin.g.b.q
+    implements m<Matrix, Boolean, x>
   {
     a(b paramb, MotionEvent paramMotionEvent)
     {
@@ -457,7 +476,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.b
  * JD-Core Version:    0.7.0.1
  */

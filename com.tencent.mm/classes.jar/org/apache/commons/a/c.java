@@ -11,29 +11,29 @@ import java.util.List;
 
 public final class c
 {
-  public static final BigInteger OpA;
-  public static final BigInteger OpB;
-  public static final File[] OpC;
-  public static final BigInteger Opv;
-  public static final BigInteger Opw;
-  public static final BigInteger Opx;
-  public static final BigInteger Opy;
-  public static final BigInteger Opz;
-  public static final BigInteger lFC;
+  public static final File[] UeA;
+  public static final BigInteger Uet;
+  public static final BigInteger Ueu;
+  public static final BigInteger Uev;
+  public static final BigInteger Uew;
+  public static final BigInteger Uex;
+  public static final BigInteger Uey;
+  public static final BigInteger Uez;
+  public static final BigInteger mNl;
   
   static
   {
     AppMethodBeat.i(10328);
     BigInteger localBigInteger = BigInteger.valueOf(1024L);
-    lFC = localBigInteger;
-    Opv = localBigInteger.multiply(localBigInteger);
-    Opw = lFC.multiply(Opv);
-    Opx = lFC.multiply(Opw);
-    Opy = lFC.multiply(Opx);
-    Opz = lFC.multiply(Opy);
-    OpA = BigInteger.valueOf(1024L).multiply(BigInteger.valueOf(1152921504606846976L));
-    OpB = lFC.multiply(OpA);
-    OpC = new File[0];
+    mNl = localBigInteger;
+    Uet = localBigInteger.multiply(localBigInteger);
+    Ueu = mNl.multiply(Uet);
+    Uev = mNl.multiply(Ueu);
+    Uew = mNl.multiply(Uev);
+    Uex = mNl.multiply(Uew);
+    Uey = BigInteger.valueOf(1024L).multiply(BigInteger.valueOf(1152921504606846976L));
+    Uez = mNl.multiply(Uey);
+    UeA = new File[0];
     AppMethodBeat.o(10328);
   }
   
@@ -699,7 +699,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.a.c
  * JD-Core Version:    0.7.0.1
  */

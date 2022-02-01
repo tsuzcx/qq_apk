@@ -21,54 +21,53 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.ipcall.model.h.k;
 import com.tencent.mm.plugin.ipcall.model.h.m;
 import com.tencent.mm.plugin.ipcall.model.i;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.s;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public final class h
-  extends r<com.tencent.mm.plugin.ipcall.model.h.c>
+  extends s<com.tencent.mm.plugin.ipcall.model.h.c>
   implements e.a
 {
-  private static HashMap<String, com.tencent.mm.plugin.ipcall.model.h.c> vad = null;
-  private boolean odI;
-  private d vbc;
-  private HashMap<Long, com.tencent.mm.plugin.ipcall.model.h.c> vbd;
-  private HashSet<String> vbe;
-  private boolean vbf;
-  ArrayList<k> veB;
-  private View.OnClickListener veC;
+  private static HashMap<String, com.tencent.mm.plugin.ipcall.model.h.c> ysD = null;
+  private boolean poG;
+  private d ytC;
+  private HashMap<Long, com.tencent.mm.plugin.ipcall.model.h.c> ytD;
+  private HashSet<String> ytE;
+  private boolean ytF;
+  ArrayList<k> yxa;
+  private View.OnClickListener yxb;
   
   public h(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(25860);
-    this.vbd = new HashMap();
-    this.vbe = new HashSet();
-    this.vbf = false;
-    this.odI = false;
-    this.veC = new View.OnClickListener()
+    this.ytD = new HashMap();
+    this.ytE = new HashSet();
+    this.ytF = false;
+    this.poG = false;
+    this.yxb = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(25858);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallRecentRecordAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallRecentRecordAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
         k localk;
         if ((paramAnonymousView.getTag() instanceof Integer))
         {
           int i = ((Integer)paramAnonymousView.getTag()).intValue();
-          if (!com.tencent.mm.plugin.ipcall.a.c.fK(h.a(h.this)))
+          if (!com.tencent.mm.plugin.ipcall.a.c.gq(h.a(h.this)))
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallRecentRecordAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(25858);
             return;
           }
-          localk = h.this.Jj(i);
+          localk = h.this.Pm(i);
           localObject = null;
           if (localk.field_addressId > 0L)
           {
@@ -92,7 +91,7 @@ public final class h
           paramAnonymousView.putExtra("IPCallTalkUI_nickname", ((com.tencent.mm.plugin.ipcall.model.h.c)localObject).field_systemAddressBookUsername);
           paramAnonymousView.putExtra("IPCallTalkUI_toWechatUsername", ((com.tencent.mm.plugin.ipcall.model.h.c)localObject).field_wechatUsername);
           paramAnonymousView.putExtra("IPCallTalkUI_dialScene", 3);
-          g.yxI.f(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
           ((FragmentActivity)h.d(h.this)).startActivityForResult(paramAnonymousView, 1001);
         }
         for (;;)
@@ -101,28 +100,28 @@ public final class h
           AppMethodBeat.o(25858);
           return;
           label339:
-          paramAnonymousView = i.dgE().yh(localk.field_addressId);
+          paramAnonymousView = i.eay().GR(localk.field_addressId);
           break;
           label354:
           paramAnonymousView = new Intent(h.e(h.this), IPCallTalkUI.class);
           paramAnonymousView.putExtra("IPCallTalkUI_phoneNumber", localk.field_phonenumber);
           paramAnonymousView.putExtra("IPCallTalkUI_dialScene", 3);
-          g.yxI.f(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
           ((FragmentActivity)h.f(h.this)).startActivityForResult(paramAnonymousView, 1001);
         }
       }
     };
-    xs(true);
-    this.vbc = new d(paramContext);
-    p.aEA().a(this);
+    Bh(true);
+    this.ytC = new d(paramContext);
+    p.aYn().a(this);
     AppMethodBeat.o(25860);
   }
   
-  public final void DG(String paramString)
+  public final void Mr(String paramString)
   {
     AppMethodBeat.i(25868);
-    if (this.vbe.contains(paramString)) {
-      ar.f(new Runnable()
+    if (this.ytE.contains(paramString)) {
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -135,37 +134,37 @@ public final class h
     AppMethodBeat.o(25868);
   }
   
-  public final k Jj(int paramInt)
+  public final k Pm(int paramInt)
   {
     AppMethodBeat.i(25864);
-    k localk = (k)this.veB.get(paramInt);
+    k localk = (k)this.yxa.get(paramInt);
     AppMethodBeat.o(25864);
     return localk;
   }
   
-  public final void ZD()
+  public final void anp()
   {
-    AppMethodBeat.i(224183);
-    this.veB = m.dhh();
-    AppMethodBeat.o(224183);
+    AppMethodBeat.i(258235);
+    this.yxa = m.ebb();
+    AppMethodBeat.o(258235);
   }
   
-  public final void ZE()
+  public final void anq()
   {
-    AppMethodBeat.i(186482);
-    this.veB = m.dhh();
-    AppMethodBeat.o(186482);
+    AppMethodBeat.i(257950);
+    this.yxa = m.ebb();
+    AppMethodBeat.o(257950);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(25863);
-    if (this.veB == null) {
-      this.veB = m.dhh();
+    if (this.yxa == null) {
+      this.yxa = m.ebb();
     }
-    if (this.veB != null)
+    if (this.yxa != null)
     {
-      int i = this.veB.size();
+      int i = this.yxa.size();
       AppMethodBeat.o(25863);
       return i;
     }
@@ -187,127 +186,127 @@ public final class h
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.context).inflate(2131494512, paramViewGroup, false);
+      localView = LayoutInflater.from(this.context).inflate(2131495104, paramViewGroup, false);
       paramView = new a((byte)0);
-      paramView.vbs = localView.findViewById(2131301153);
-      paramView.vbt = localView.findViewById(2131299159);
-      paramView.fTj = ((ImageView)localView.findViewById(2131297008));
-      paramView.jeW = ((TextView)localView.findViewById(2131302867));
-      paramView.vbk = ((TextView)localView.findViewById(2131303238));
-      paramView.vbl = ((LinearLayout)localView.findViewById(2131303812));
-      paramView.vbm = ((TextView)localView.findViewById(2131303815));
-      paramView.vbn = ((TextView)localView.findViewById(2131303816));
-      paramView.vbo = ((TextView)localView.findViewById(2131296493));
-      paramView.vbp = ((TextView)localView.findViewById(2131296482));
-      paramView.vbq = ((ImageView)localView.findViewById(2131296483));
-      paramView.vbr = localView.findViewById(2131301156);
-      paramView.vbr.setClickable(true);
-      paramView.vbu = ((ImageView)localView.findViewById(2131299154));
+      paramView.ytS = localView.findViewById(2131302811);
+      paramView.ytT = localView.findViewById(2131299703);
+      paramView.gyr = ((ImageView)localView.findViewById(2131297134));
+      paramView.kcZ = ((TextView)localView.findViewById(2131305440));
+      paramView.ytK = ((TextView)localView.findViewById(2131305906));
+      paramView.ytL = ((LinearLayout)localView.findViewById(2131306615));
+      paramView.ytM = ((TextView)localView.findViewById(2131306618));
+      paramView.ytN = ((TextView)localView.findViewById(2131306619));
+      paramView.ytO = ((TextView)localView.findViewById(2131296567));
+      paramView.ytP = ((TextView)localView.findViewById(2131296556));
+      paramView.ytQ = ((ImageView)localView.findViewById(2131296557));
+      paramView.ytR = localView.findViewById(2131302816);
+      paramView.ytR.setClickable(true);
+      paramView.ytU = ((ImageView)localView.findViewById(2131299682));
       localView.setTag(paramView);
     }
     a locala = (a)localView.getTag();
-    locala.vbr.setClickable(true);
-    locala.vbr.setTag(Integer.valueOf(paramInt));
-    locala.vbu.setVisibility(8);
-    if (Iw(paramInt))
+    locala.ytR.setClickable(true);
+    locala.ytR.setTag(Integer.valueOf(paramInt));
+    locala.ytU.setVisibility(8);
+    if (Ox(paramInt))
     {
-      locala.jeW.setVisibility(8);
-      locala.vbk.setVisibility(8);
-      locala.vbl.setVisibility(8);
-      locala.fTj.setVisibility(8);
-      locala.fTj.setTag(null);
-      locala.vbp.setVisibility(8);
-      locala.vbo.setVisibility(8);
-      locala.vbq.setVisibility(8);
+      locala.kcZ.setVisibility(8);
+      locala.ytK.setVisibility(8);
+      locala.ytL.setVisibility(8);
+      locala.gyr.setVisibility(8);
+      locala.gyr.setTag(null);
+      locala.ytP.setVisibility(8);
+      locala.ytO.setVisibility(8);
+      locala.ytQ.setVisibility(8);
       AppMethodBeat.o(25865);
       return localView;
     }
-    k localk = Jj(paramInt);
+    k localk = Pm(paramInt);
     if (localk != null)
     {
       if (paramInt != 0) {
         break label809;
       }
-      locala.vbp.setVisibility(0);
-      locala.vbo.setVisibility(8);
-      locala.vbp.setText(this.context.getString(2131760474));
+      locala.ytP.setVisibility(0);
+      locala.ytO.setVisibility(8);
+      locala.ytP.setText(this.context.getString(2131761919));
       label416:
-      locala.vbu.setVisibility(0);
-      locala.jeW.setVisibility(0);
-      paramView = (FrameLayout.LayoutParams)locala.vbs.getLayoutParams();
-      paramView.height = ((int)locala.vbk.getContext().getResources().getDimension(2131165716));
-      locala.vbs.setLayoutParams(paramView);
-      paramView = (RelativeLayout.LayoutParams)locala.fTj.getLayoutParams();
-      paramView.height = ((int)locala.fTj.getContext().getResources().getDimension(2131165714));
-      paramView.width = ((int)locala.fTj.getContext().getResources().getDimension(2131165714));
-      locala.fTj.setLayoutParams(paramView);
+      locala.ytU.setVisibility(0);
+      locala.kcZ.setVisibility(0);
+      paramView = (FrameLayout.LayoutParams)locala.ytS.getLayoutParams();
+      paramView.height = ((int)locala.ytK.getContext().getResources().getDimension(2131165734));
+      locala.ytS.setLayoutParams(paramView);
+      paramView = (RelativeLayout.LayoutParams)locala.gyr.getLayoutParams();
+      paramView.height = ((int)locala.gyr.getContext().getResources().getDimension(2131165732));
+      paramView.width = ((int)locala.gyr.getContext().getResources().getDimension(2131165732));
+      locala.gyr.setLayoutParams(paramView);
       if (localk.field_addressId <= 0L) {
         break label847;
       }
-      if (!this.vbd.containsKey(Long.valueOf(localk.field_addressId))) {
+      if (!this.ytD.containsKey(Long.valueOf(localk.field_addressId))) {
         break label832;
       }
-      paramView = (com.tencent.mm.plugin.ipcall.model.h.c)this.vbd.get(Long.valueOf(localk.field_addressId));
+      paramView = (com.tencent.mm.plugin.ipcall.model.h.c)this.ytD.get(Long.valueOf(localk.field_addressId));
       label589:
       paramViewGroup = paramView;
       if (paramView != null)
       {
-        this.vbd.put(Long.valueOf(localk.field_addressId), paramView);
-        locala.jeW.setText(paramView.field_systemAddressBookUsername);
+        this.ytD.put(Long.valueOf(localk.field_addressId), paramView);
+        locala.kcZ.setText(paramView.field_systemAddressBookUsername);
         paramViewGroup = paramView;
       }
       label626:
-      locala.vbk.setVisibility(8);
-      locala.vbl.setVisibility(0);
-      locala.vbn.setText(com.tencent.mm.plugin.ipcall.a.c.yl(localk.field_calltime));
+      locala.ytK.setVisibility(8);
+      locala.ytL.setVisibility(0);
+      locala.ytN.setText(com.tencent.mm.plugin.ipcall.a.c.GU(localk.field_calltime));
       if (localk.field_duration <= 0L) {
         break label868;
       }
-      locala.vbm.setText(com.tencent.mm.plugin.ipcall.a.c.yp(localk.field_duration));
+      locala.ytM.setText(com.tencent.mm.plugin.ipcall.a.c.GY(localk.field_duration));
       label687:
-      paramView = locala.fTj;
+      paramView = locala.gyr;
       if (paramView != null)
       {
         paramView.setVisibility(0);
         paramView.setTag(null);
-        paramView.setImageResource(2131232743);
+        paramView.setImageResource(2131233183);
         if (paramViewGroup != null)
         {
-          if ((bu.isNullOrNil(paramViewGroup.field_contactId)) || (bu.isNullOrNil(paramViewGroup.field_wechatUsername))) {
+          if ((Util.isNullOrNil(paramViewGroup.field_contactId)) || (Util.isNullOrNil(paramViewGroup.field_wechatUsername))) {
             break label887;
           }
-          this.vbc.a(paramViewGroup.field_contactId, paramViewGroup.field_wechatUsername, paramView);
+          this.ytC.a(paramViewGroup.field_contactId, paramViewGroup.field_wechatUsername, paramView);
         }
       }
     }
     for (;;)
     {
-      if (!bu.isNullOrNil(paramViewGroup.field_wechatUsername)) {
-        this.vbe.add(paramViewGroup.field_wechatUsername);
+      if (!Util.isNullOrNil(paramViewGroup.field_wechatUsername)) {
+        this.ytE.add(paramViewGroup.field_wechatUsername);
       }
-      locala.vbr.setVisibility(0);
-      locala.vbq.setVisibility(0);
-      locala.vbr.setOnClickListener(this.veC);
+      locala.ytR.setVisibility(0);
+      locala.ytQ.setVisibility(0);
+      locala.ytR.setOnClickListener(this.yxb);
       break;
       label809:
-      locala.vbp.setVisibility(8);
-      locala.vbo.setVisibility(8);
+      locala.ytP.setVisibility(8);
+      locala.ytO.setVisibility(8);
       break label416;
       label832:
-      paramView = i.dgE().yh(localk.field_addressId);
+      paramView = i.eay().GR(localk.field_addressId);
       break label589;
       label847:
-      locala.jeW.setText(com.tencent.mm.plugin.ipcall.a.a.aph(localk.field_phonenumber));
+      locala.kcZ.setText(com.tencent.mm.plugin.ipcall.a.a.aCA(localk.field_phonenumber));
       paramViewGroup = null;
       break label626;
       label868:
-      locala.vbm.setText(com.tencent.mm.plugin.ipcall.a.c.Jo(localk.field_status));
+      locala.ytM.setText(com.tencent.mm.plugin.ipcall.a.c.Pr(localk.field_status));
       break label687;
       label887:
-      if (!bu.isNullOrNil(paramViewGroup.field_contactId)) {
-        this.vbc.d(paramViewGroup.field_contactId, paramView);
-      } else if (!bu.isNullOrNil(paramViewGroup.field_wechatUsername)) {
-        this.vbc.f(paramViewGroup.field_wechatUsername, paramView);
+      if (!Util.isNullOrNil(paramViewGroup.field_contactId)) {
+        this.ytC.d(paramViewGroup.field_contactId, paramView);
+      } else if (!Util.isNullOrNil(paramViewGroup.field_wechatUsername)) {
+        this.ytC.f(paramViewGroup.field_wechatUsername, paramView);
       }
     }
   }
@@ -323,34 +322,34 @@ public final class h
   public final void notifyDataSetChanged()
   {
     AppMethodBeat.i(25869);
-    this.veB = m.dhh();
-    this.vbd.clear();
+    this.yxa = m.ebb();
+    this.ytD.clear();
     super.notifyDataSetChanged();
     AppMethodBeat.o(25869);
   }
   
   final class a
   {
-    ImageView fTj;
-    TextView jeW;
-    TextView vbk;
-    LinearLayout vbl;
-    TextView vbm;
-    TextView vbn;
-    TextView vbo;
-    TextView vbp;
-    ImageView vbq;
-    View vbr;
-    View vbs;
-    View vbt;
-    ImageView vbu;
+    ImageView gyr;
+    TextView kcZ;
+    TextView ytK;
+    LinearLayout ytL;
+    TextView ytM;
+    TextView ytN;
+    TextView ytO;
+    TextView ytP;
+    ImageView ytQ;
+    View ytR;
+    View ytS;
+    View ytT;
+    ImageView ytU;
     
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.h
  * JD-Core Version:    0.7.0.1
  */

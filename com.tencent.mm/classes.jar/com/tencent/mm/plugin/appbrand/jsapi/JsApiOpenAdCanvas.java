@@ -5,38 +5,38 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.oa;
-import com.tencent.mm.g.a.oa.b;
+import com.tencent.mm.g.a.os;
+import com.tencent.mm.g.a.os.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import java.lang.ref.WeakReference;
 
 public final class JsApiOpenAdCanvas
-  extends a<c>
+  extends d<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 476;
   public static final String NAME = "openADCanvas";
-  private String kwA = "";
-  private JsApiOpenAdCanvasTask kwB = null;
+  private String lAK = "";
+  private JsApiOpenAdCanvasTask lAL = null;
   
   static class JsApiOpenAdCanvasTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<JsApiOpenAdCanvasTask> CREATOR;
-    private String dAU;
-    private int dCV;
-    private int dCW;
-    private r jFj;
-    private int kmu;
-    private m kuO;
-    private WeakReference<Context> kwC;
-    private String kwD;
-    private String kwE;
-    private String kwF;
+    private String dSJ;
+    private int dUL;
+    private int dUM;
+    private s kGT;
+    private WeakReference<Context> lAM;
+    private String lAN;
+    private int lAO;
+    private String lAP;
+    private String lAQ;
+    private p lAw;
+    private int lqe;
     
     static
     {
@@ -48,39 +48,40 @@ public final class JsApiOpenAdCanvas
     public JsApiOpenAdCanvasTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45563);
-      e(paramParcel);
+      f(paramParcel);
       AppMethodBeat.o(45563);
     }
     
-    public JsApiOpenAdCanvasTask(m paramm, r paramr, int paramInt1, WeakReference<Context> paramWeakReference, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
+    public JsApiOpenAdCanvasTask(p paramp, s params, int paramInt1, WeakReference<Context> paramWeakReference, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, int paramInt4)
     {
-      this.kuO = paramm;
-      this.jFj = paramr;
-      this.kmu = paramInt1;
-      this.kwC = paramWeakReference;
-      this.kwD = paramString1;
-      this.dCV = paramInt2;
-      this.dCW = paramInt3;
-      this.dAU = paramString2;
-      this.kwE = paramString3;
+      this.lAw = paramp;
+      this.kGT = params;
+      this.lqe = paramInt1;
+      this.lAM = paramWeakReference;
+      this.lAN = paramString1;
+      this.dUL = paramInt2;
+      this.dUM = paramInt3;
+      this.dSJ = paramString2;
+      this.lAP = paramString3;
+      this.lAO = paramInt4;
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(45565);
-      b.c(new Runnable()
+      ThreadPool.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(45561);
-          oa localoa = new oa();
-          localoa.dCT.pageId = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localoa.dCT.dox = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.b(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localoa.dCT.dCV = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.c(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localoa.dCT.dCW = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.d(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localoa.dCT.doj = 0;
-          com.tencent.mm.sdk.b.a.IvT.l(localoa);
-          JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this, localoa.dCU.dCX);
+          os localos = new os();
+          localos.dUJ.pageId = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localos.dUJ.dFN = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.b(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localos.dUJ.dUL = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.c(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localos.dUJ.dUM = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.d(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localos.dUJ.source = 0;
+          EventCenter.instance.publish(localos);
+          JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this, localos.dUK.xml);
           JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.e(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
           AppMethodBeat.o(45561);
         }
@@ -88,11 +89,12 @@ public final class JsApiOpenAdCanvas
       AppMethodBeat.o(45565);
     }
     
-    public final void aOY()
+    public final void bjk()
     {
       AppMethodBeat.i(45564);
-      String str2 = this.kwF;
-      if (this.dCV == 0)
+      String str2 = this.lAQ;
+      boolean bool;
+      if (this.dUL == 0)
       {
         Intent localIntent = new Intent();
         String str1 = str2;
@@ -100,49 +102,58 @@ public final class JsApiOpenAdCanvas
           str1 = "";
         }
         localIntent.putExtra("sns_landing_pages_xml", str1);
-        localIntent.putExtra("sns_landing_pages_pageid", bu.aSC(this.kwD));
+        localIntent.putExtra("sns_landing_pages_pageid", Util.safeParseLong(this.lAN));
         localIntent.putExtra("sns_landig_pages_from_source", 13);
-        localIntent.putExtra("sns_landing_pages_extra", this.dAU);
+        localIntent.putExtra("sns_landing_pages_extra", this.dSJ);
         localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
-        localIntent.putExtra("sns_landing_pages_no_store", this.dCW);
-        localIntent.putExtra("sns_landing_pages_ad_info", this.kwE);
-        d.b((Context)this.kwC.get(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
-        this.jFj.h(this.kmu, this.kuO.e("ok", null));
+        localIntent.putExtra("sns_landing_pages_no_store", this.dUM);
+        localIntent.putExtra("sns_landing_pages_ad_info", this.lAP);
+        if (this.lAO == 1)
+        {
+          bool = true;
+          localIntent.putExtra("sns_landing_is_native_sight_ad", bool);
+          com.tencent.mm.br.c.b((Context)this.lAM.get(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
+          this.kGT.i(this.lqe, this.lAw.h("ok", null));
+        }
       }
       for (;;)
       {
-        bix();
+        bDK();
         AppMethodBeat.o(45564);
         return;
-        if (this.dCV == 1) {
-          this.jFj.h(this.kmu, this.kuO.e("ok", null));
+        bool = false;
+        break;
+        if (this.dUL == 1) {
+          this.kGT.i(this.lqe, this.lAw.h("ok", null));
         } else {
-          this.jFj.h(this.kmu, this.kuO.e("fail", null));
+          this.kGT.i(this.lqe, this.lAw.h("fail", null));
         }
       }
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(45566);
-      this.kwD = paramParcel.readString();
-      this.dCV = paramParcel.readInt();
-      this.dCW = paramParcel.readInt();
-      this.dAU = paramParcel.readString();
-      this.kwE = paramParcel.readString();
-      this.kwF = paramParcel.readString();
+      this.lAN = paramParcel.readString();
+      this.dUL = paramParcel.readInt();
+      this.dUM = paramParcel.readInt();
+      this.dSJ = paramParcel.readString();
+      this.lAP = paramParcel.readString();
+      this.lAQ = paramParcel.readString();
+      this.lAO = paramParcel.readInt();
       AppMethodBeat.o(45566);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45567);
-      paramParcel.writeString(this.kwD);
-      paramParcel.writeInt(this.dCV);
-      paramParcel.writeInt(this.dCW);
-      paramParcel.writeString(this.dAU);
-      paramParcel.writeString(this.kwE);
-      paramParcel.writeString(this.kwF);
+      paramParcel.writeString(this.lAN);
+      paramParcel.writeInt(this.dUL);
+      paramParcel.writeInt(this.dUM);
+      paramParcel.writeString(this.dSJ);
+      paramParcel.writeString(this.lAP);
+      paramParcel.writeString(this.lAQ);
+      paramParcel.writeInt(this.lAO);
       AppMethodBeat.o(45567);
     }
   }

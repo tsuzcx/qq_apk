@@ -1,6 +1,7 @@
 package com.tencent.xweb.internal;
 
 import android.annotation.TargetApi;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,6 +30,8 @@ public abstract interface IWebView
   public abstract boolean canGoBack();
   
   public abstract boolean canGoForward();
+  
+  public abstract Bitmap captureBitmap();
   
   public abstract void captureBitmap(a parama);
   
@@ -187,7 +190,7 @@ public abstract interface IWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.internal.IWebView
  * JD-Core Version:    0.7.0.1
  */

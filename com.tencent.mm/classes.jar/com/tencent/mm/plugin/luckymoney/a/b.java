@@ -1,71 +1,71 @@
 package com.tencent.mm.plugin.luckymoney.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.l;
-import com.tencent.mm.protocal.protobuf.ctc;
-import com.tencent.mm.protocal.protobuf.ctd;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.luckymoney.model.q;
+import com.tencent.mm.protocal.protobuf.dls;
+import com.tencent.mm.protocal.protobuf.dlt;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class b
 {
-  private static Map<String, l> vuJ;
-  private static Map<String, ctd> vuK;
-  private static Map<Long, ctc> vuL;
+  private static Map<String, q> yOT;
+  private static Map<String, dlt> yOU;
+  private static Map<Long, dls> yOV;
   
   static
   {
     AppMethodBeat.i(168789);
-    vuJ = new HashMap();
-    vuK = new HashMap();
-    vuL = new HashMap();
+    yOT = new HashMap();
+    yOU = new HashMap();
+    yOV = new HashMap();
     AppMethodBeat.o(168789);
   }
   
-  public static void a(Long paramLong, ctc paramctc)
+  public static void a(Long paramLong, dls paramdls)
   {
     AppMethodBeat.i(168785);
-    vuL.put(paramLong, paramctc);
+    yOV.put(paramLong, paramdls);
     AppMethodBeat.o(168785);
   }
   
-  public static void a(String paramString, l paraml)
+  public static void a(String paramString, q paramq)
   {
     AppMethodBeat.i(168781);
-    vuJ.put(paramString, paraml);
+    yOT.put(paramString, paramq);
     AppMethodBeat.o(168781);
   }
   
-  public static void a(String paramString, ctd paramctd)
+  public static void a(String paramString, dlt paramdlt)
   {
     AppMethodBeat.i(168783);
-    vuK.put(paramString, paramctd);
+    yOU.put(paramString, paramdlt);
     AppMethodBeat.o(168783);
   }
   
-  public static l apU(String paramString)
+  public static q aDn(String paramString)
   {
     AppMethodBeat.i(168782);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(168782);
       return null;
     }
-    paramString = (l)vuJ.get(paramString);
+    paramString = (q)yOT.get(paramString);
     AppMethodBeat.o(168782);
     return paramString;
   }
   
-  public static ctd apV(String paramString)
+  public static dlt aDo(String paramString)
   {
     AppMethodBeat.i(168784);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(168784);
       return null;
     }
-    paramString = (ctd)vuK.get(paramString);
+    paramString = (dlt)yOU.get(paramString);
     AppMethodBeat.o(168784);
     return paramString;
   }
@@ -73,19 +73,19 @@ public final class b
   public static void clear()
   {
     AppMethodBeat.i(168787);
-    vuJ.clear();
-    vuK.clear();
+    yOT.clear();
+    yOU.clear();
     AppMethodBeat.o(168787);
   }
   
-  public static void dkB()
+  public static void ees()
   {
     AppMethodBeat.i(168788);
-    vuL.clear();
+    yOV.clear();
     AppMethodBeat.o(168788);
   }
   
-  public static ctc g(Long paramLong)
+  public static dls j(Long paramLong)
   {
     AppMethodBeat.i(168786);
     if (paramLong == null)
@@ -93,14 +93,14 @@ public final class b
       AppMethodBeat.o(168786);
       return null;
     }
-    paramLong = (ctc)vuL.get(paramLong);
+    paramLong = (dls)yOV.get(paramLong);
     AppMethodBeat.o(168786);
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a.b
  * JD-Core Version:    0.7.0.1
  */

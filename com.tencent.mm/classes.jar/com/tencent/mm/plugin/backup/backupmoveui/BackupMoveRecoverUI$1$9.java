@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 
 final class BackupMoveRecoverUI$1$9
   implements View.OnClickListener
@@ -18,21 +18,21 @@ final class BackupMoveRecoverUI$1$9
   {
     AppMethodBeat.i(21427);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$1$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$1$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     paramView = new Intent();
-    paramView.putExtra("title", this.nCr.nCq.getString(2131756142));
-    paramView.putExtra("rawUrl", this.nCr.nCq.getString(2131756141, new Object[] { ad.fom() }));
+    paramView.putExtra("title", this.oNq.oNp.getString(2131756276));
+    paramView.putExtra("rawUrl", this.oNq.oNp.getString(2131756275, new Object[] { LocaleUtil.getApplicationLanguage() }));
     paramView.putExtra("showShare", false);
     paramView.putExtra("neverGetA8Key", true);
-    d.b(this.nCr.nCq, "webview", ".ui.tools.WebViewUI", paramView);
+    c.b(this.oNq.oNp, "webview", ".ui.tools.WebViewUI", paramView);
     a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupMoveRecoverUI$1$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(21427);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.BackupMoveRecoverUI.1.9
  * JD-Core Version:    0.7.0.1
  */

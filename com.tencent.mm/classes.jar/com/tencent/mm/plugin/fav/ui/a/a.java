@@ -10,36 +10,36 @@ public abstract class a
   implements AdapterView.OnItemClickListener
 {
   protected long lastUpdateTime;
-  protected Set<Integer> rHw;
-  protected w rHx;
-  protected a rHy;
+  protected Set<Integer> thd;
+  protected w the;
+  protected a thf;
   protected int type;
   
   public final void a(w paramw)
   {
-    this.rHx = paramw;
+    this.the = paramw;
   }
   
   public final void a(a parama)
   {
-    this.rHy = parama;
+    this.thf = parama;
   }
   
-  public abstract void aTS();
+  public abstract void boE();
   
-  public final long cyg()
+  public final long cWk()
   {
     return this.lastUpdateTime;
   }
   
-  public final void cyh()
+  public final void cWl()
   {
-    if (this.rHy != null) {
-      this.rHy.cya();
+    if (this.thf != null) {
+      this.thf.cWe();
     }
   }
   
-  public abstract void cyi();
+  public abstract void cWm();
   
   public final int getType()
   {
@@ -50,17 +50,17 @@ public abstract class a
   
   public final void k(Set<Integer> paramSet)
   {
-    this.rHw = paramSet;
+    this.thd = paramSet;
   }
   
   public static abstract interface a
   {
-    public abstract void cya();
+    public abstract void cWe();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

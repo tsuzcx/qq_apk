@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:id="@id/cc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?z"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:text="@string/g6j" style="@style/o6" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/eh" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ei" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b2" android:contentDescription="@string/cr" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/e8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.AlbumChooserView android:textSize="@dimen/t" android:textColor="@color/bv" android:gravity="center_vertical" android:id="@id/dp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/iqp" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/iqo" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginEnd="@dimen/ct" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/bv" android:ellipsize="end" android:gravity="center_vertical" android:id="@android:id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <ProgressBar android:id="@id/gl_" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginStart="@dimen/ct" style="@style/a61" />
+        </LinearLayout>
+        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@android:id/text2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lq" />
+    </LinearLayout>
 </LinearLayout>

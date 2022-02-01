@@ -1,26 +1,23 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import android.util.Base64;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.al.r;
-import com.tencent.mm.al.t;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.UrlExKt;
-import com.tencent.mm.protocal.protobuf.fn;
-import com.tencent.mm.protocal.protobuf.ft;
-import com.tencent.mm.protocal.protobuf.mr;
-import com.tencent.mm.protocal.protobuf.ms;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.a.m;
-import d.l;
-import d.v;
-import d.z;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.c;
+import com.tencent.mm.protocal.protobuf.ga;
+import com.tencent.mm.protocal.protobuf.gg;
+import com.tencent.mm.protocal.protobuf.nj;
+import com.tencent.mm.protocal.protobuf.nk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -31,75 +28,81 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
-import kotlinx.coroutines.ah;
-import kotlinx.coroutines.at;
-import kotlinx.coroutines.az;
-import kotlinx.coroutines.bk;
+import kotlin.ResultKt;
+import kotlin.g.a.m;
+import kotlin.l;
+import kotlin.x;
+import kotlinx.coroutines.ai;
+import kotlinx.coroutines.au;
+import kotlinx.coroutines.ba;
+import kotlinx.coroutines.bn;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic;", "", "()V", "TAG", "", "defaultRefreshIntervalSec", "", "doingGetAppMsgRelatedInfoMap", "Ljava/util/concurrent/ConcurrentHashMap;", "getUrl", "Ljava/util/Queue;", "", "lastGetId", "", "limiter", "Lcom/tencent/mm/modelbiz/MpDataLimiter;", "getAppMsgRelatedInfo", "", "items", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgUrlInfo;", "scene", "url", "itemShowType", "openScene", "reqType", "getAppMsgRelatedInfoForAppMsg", "Lcom/tencent/mm/message/AppMsgUrlReqInfo;", "getAppMsgRelatedInfoForBizMsg", "getAppMsgRelatedInfoId", "getFakeLongUrl", "bizUin", "mid", "idx", "getMaxUrlCount", "getRefreshIntervalSec", "isShortUrl", "", "processAppMsgRelatedInfo", "relatedInfoList", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "urlInfoList", "AppMsgRelatedInfoOp", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic;", "", "()V", "TAG", "", "defaultRefreshIntervalSec", "", "doingGetAppMsgRelatedInfoMap", "Ljava/util/concurrent/ConcurrentHashMap;", "getUrl", "Ljava/util/Queue;", "", "lastGetId", "", "limiter", "Lcom/tencent/mm/modelbiz/MpDataLimiter;", "getAppMsgRelatedInfo", "", "items", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgUrlInfo;", "scene", "url", "itemShowType", "openScene", "reqType", "getAppMsgRelatedInfoForAppMsg", "Lcom/tencent/mm/message/AppMsgUrlReqInfo;", "getAppMsgRelatedInfoForBizMsg", "getAppMsgRelatedInfoId", "getFakeLongUrl", "bizUin", "mid", "idx", "getMaxUrlCount", "getRefreshIntervalSec", "isShortUrl", "", "processAppMsgRelatedInfo", "relatedInfoList", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "urlInfoList", "AppMsgRelatedInfoOp", "plugin-brandservice_release"})
 public final class g
 {
   public static final String TAG = "MicroMsg.MPDataLogic";
-  private static final ConcurrentHashMap<String, Integer> oct;
-  private static final r ocu;
-  public static long ocv;
-  public static Queue<List<Object>> ocw;
-  public static final g ocx;
+  private static final ConcurrentHashMap<String, Integer> pns;
+  private static final r pnt;
+  public static long pnu;
+  public static Queue<List<Object>> pnv;
+  public static final g pnw;
   
   static
   {
     AppMethodBeat.i(6512);
-    ocx = new g();
+    pnw = new g();
     TAG = "MicroMsg.MPDataLogic";
-    oct = new ConcurrentHashMap();
-    ocu = new r();
-    ocw = (Queue)new LinkedList();
+    pns = new ConcurrentHashMap();
+    pnt = new r();
+    pnv = (Queue)new LinkedList();
     AppMethodBeat.o(6512);
   }
   
-  public static String T(int paramInt1, int paramInt2, int paramInt3)
+  public static String U(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(6508);
-    Object localObject1 = "https://mp.weixin.qq.com/";
+    Object localObject1 = "https://" + WeChatHosts.domainString(2131761726) + "/";
+    String str1 = "https://" + WeChatHosts.domainString(2131761726) + "/";
+    Object localObject2;
     Charset localCharset;
     try
     {
-      Object localObject2 = String.valueOf(paramInt1);
-      localCharset = d.n.d.UTF_8;
+      localObject2 = String.valueOf(paramInt1);
+      localCharset = kotlin.n.d.UTF_8;
       if (localObject2 == null)
       {
-        localObject2 = new v("null cannot be cast to non-null type java.lang.String");
+        localObject1 = new kotlin.t("null cannot be cast to non-null type java.lang.String");
         AppMethodBeat.o(6508);
-        throw ((Throwable)localObject2);
+        throw ((Throwable)localObject1);
       }
     }
     catch (Exception localException) {}
     for (;;)
     {
       AppMethodBeat.o(6508);
-      return localObject1;
-      Object localObject3 = localException.getBytes(localCharset);
-      d.g.b.p.g(localObject3, "(this as java.lang.String).getBytes(charset)");
-      localObject3 = Base64.encodeToString((byte[])localObject3, 2);
-      d.g.b.p.g(localObject3, "Base64.encodeToString(\"$…eArray(), Base64.NO_WRAP)");
-      localObject3 = UrlExKt.appendUrlParam(UrlExKt.appendUrlParam(UrlExKt.appendUrlParam("https://mp.weixin.qq.com/", "__biz", (String)localObject3), "mid", String.valueOf(paramInt2)), "idx", String.valueOf(paramInt3));
-      localObject1 = localObject3;
+      return str1;
+      localObject2 = ((String)localObject2).getBytes(localCharset);
+      kotlin.g.b.p.g(localObject2, "(this as java.lang.String).getBytes(charset)");
+      localObject2 = Base64.encodeToString((byte[])localObject2, 2);
+      kotlin.g.b.p.g(localObject2, "Base64.encodeToString(\"$…eArray(), Base64.NO_WRAP)");
+      String str2 = UrlExKt.appendUrlParam(UrlExKt.appendUrlParam(UrlExKt.appendUrlParam(localException, "__biz", (String)localObject2), "mid", String.valueOf(paramInt2)), "idx", String.valueOf(paramInt3));
+      str1 = str2;
     }
   }
   
-  public static String XM(String paramString)
+  public static String ahJ(String paramString)
   {
     AppMethodBeat.i(6506);
-    d.g.b.p.h(paramString, "url");
-    paramString = "_mpdata_" + com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Yg(paramString);
+    kotlin.g.b.p.h(paramString, "url");
+    paramString = "_mpdata_" + c.aie(paramString);
     AppMethodBeat.o(6506);
     return paramString;
   }
   
-  public static boolean XN(String paramString)
+  public static boolean ahK(String paramString)
   {
     AppMethodBeat.i(6507);
-    d.g.b.p.h(paramString, "url");
+    kotlin.g.b.p.h(paramString, "url");
     int i = 0;
     while (i < 3)
     {
@@ -114,18 +117,18 @@ public final class g
     return false;
   }
   
-  public static void b(LinkedList<ft> paramLinkedList, final int paramInt)
+  public static void b(LinkedList<gg> paramLinkedList, final int paramInt)
   {
     AppMethodBeat.i(6510);
-    d.g.b.p.h(paramLinkedList, "items");
-    if (bu.ht((List)paramLinkedList))
+    kotlin.g.b.p.h(paramLinkedList, "items");
+    if (Util.isNullOrNil((List)paramLinkedList))
     {
       AppMethodBeat.o(6510);
       return;
     }
-    mr localmr = new mr();
-    int i = bOE();
-    ocu.duration = (i * 1000);
+    nj localnj = new nj();
+    int i = clK();
+    pnt.duration = (i * 1000);
     Object localObject1 = (Iterable)paramLinkedList;
     paramLinkedList = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
@@ -134,8 +137,8 @@ public final class g
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      localObject3 = (ft)localObject2;
-      if (!oct.contains(((ft)localObject3).hFO)) {
+      localObject3 = (gg)localObject2;
+      if (!pns.contains(((gg)localObject3).izX)) {
         paramLinkedList.add(localObject2);
       }
     }
@@ -146,9 +149,9 @@ public final class g
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      localObject3 = ((ft)localObject2).hFO;
-      r localr = ocu;
-      d.g.b.p.g(localObject3, "id");
+      localObject3 = ((gg)localObject2).izX;
+      r localr = pnt;
+      kotlin.g.b.p.g(localObject3, "id");
       if (localr.contains((String)localObject3)) {}
       for (i = 0;; i = 1)
       {
@@ -160,49 +163,49 @@ public final class g
       }
     }
     paramLinkedList = (Iterable)paramLinkedList;
-    i = ay.aRW(TAG).decodeInt("BizAppMsgRelatedInfoMaxUrlCount", 10);
-    ae.v(TAG, "maxUrlCount = ".concat(String.valueOf(i)));
-    paramLinkedList = d.a.j.b(paramLinkedList, Math.max(i, 2));
-    localmr.FYR.addAll((Collection)paramLinkedList);
-    if (bu.ht((List)localmr.FYR))
+    i = MultiProcessMMKV.getMMKV(TAG).decodeInt("BizAppMsgRelatedInfoMaxUrlCount", 10);
+    Log.v(TAG, "maxUrlCount = ".concat(String.valueOf(i)));
+    paramLinkedList = kotlin.a.j.b(paramLinkedList, Math.max(i, 2));
+    localnj.KSM.addAll((Collection)paramLinkedList);
+    if (Util.isNullOrNil((List)localnj.KSM))
     {
       AppMethodBeat.o(6510);
       return;
     }
-    ae.i(TAG, "getAppMsgRelatedInfo size=" + localmr.FYR.size());
-    localmr.Scene = paramInt;
-    paramLinkedList = localmr.FYR;
-    d.g.b.p.g(paramLinkedList, "req.UrlInfo");
+    Log.i(TAG, "getAppMsgRelatedInfo size=" + localnj.KSM.size());
+    localnj.Scene = paramInt;
+    paramLinkedList = localnj.KSM;
+    kotlin.g.b.p.g(paramLinkedList, "req.UrlInfo");
     paramLinkedList = ((Iterable)paramLinkedList).iterator();
     while (paramLinkedList.hasNext())
     {
-      localObject1 = (ft)paramLinkedList.next();
-      oct.put(((ft)localObject1).hFO, Integer.valueOf(1));
-      localObject2 = ocu;
-      localObject3 = ((ft)localObject1).hFO;
-      d.g.b.p.g(localObject3, "info.ClientId");
-      ((r)localObject2).EL((String)localObject3);
-      if (ae.getLogLevel() == 0) {
-        ae.v(TAG, "getAppMsgRelatedInfo url=" + ((ft)localObject1).Url + ", clientId=" + ((ft)localObject1).hFO);
+      localObject1 = (gg)paramLinkedList.next();
+      pns.put(((gg)localObject1).izX, Integer.valueOf(1));
+      localObject2 = pnt;
+      localObject3 = ((gg)localObject1).izX;
+      kotlin.g.b.p.g(localObject3, "info.ClientId");
+      ((r)localObject2).add((String)localObject3);
+      if (Log.getLogLevel() == 0) {
+        Log.v(TAG, "getAppMsgRelatedInfo url=" + ((gg)localObject1).Url + ", clientId=" + ((gg)localObject1).izX);
       }
     }
-    paramLinkedList = new b.a();
-    paramLinkedList.c((com.tencent.mm.bw.a)localmr);
-    paramLinkedList.d((com.tencent.mm.bw.a)new ms());
-    paramLinkedList.DN("/cgi-bin/mmbiz-bin/timeline/bizappmsgrelatedinfo");
-    paramLinkedList.oS(2864);
-    paramLinkedList.oU(0);
-    paramLinkedList.oV(0);
-    IPCRunCgi.a(paramLinkedList.aDS(), (IPCRunCgi.a)new c(localmr, paramInt));
+    paramLinkedList = new d.a();
+    paramLinkedList.c((com.tencent.mm.bw.a)localnj);
+    paramLinkedList.d((com.tencent.mm.bw.a)new nk());
+    paramLinkedList.MB("/cgi-bin/mmbiz-bin/timeline/bizappmsgrelatedinfo");
+    paramLinkedList.sG(2864);
+    paramLinkedList.sI(0);
+    paramLinkedList.sJ(0);
+    IPCRunCgi.a(paramLinkedList.aXF(), (IPCRunCgi.a)new c(localnj, paramInt));
     AppMethodBeat.o(6510);
   }
   
-  public static int bOE()
+  public static int clK()
   {
     int i = 300;
     AppMethodBeat.i(6511);
-    int j = ay.aRW(TAG).decodeInt("BizAppMsgRelatedInfoRefreshIntervalSec", 300);
-    ae.v(TAG, "refreshIntervalSec = ".concat(String.valueOf(j)));
+    int j = MultiProcessMMKV.getMMKV(TAG).decodeInt("BizAppMsgRelatedInfoRefreshIntervalSec", 300);
+    Log.v(TAG, "refreshIntervalSec = ".concat(String.valueOf(j)));
     j = Math.min(j, 86400);
     if (j <= 0) {}
     for (;;)
@@ -216,84 +219,38 @@ public final class g
   public static void j(String paramString, final int paramInt1, final int paramInt2, final int paramInt3)
   {
     AppMethodBeat.i(6509);
-    d.g.b.p.h(paramString, "url");
+    kotlin.g.b.p.h(paramString, "url");
     long l = System.currentTimeMillis();
-    kotlinx.coroutines.f.b((ah)bk.OfO, (d.d.f)az.gzR(), (m)new b(l, paramString, paramInt1, paramInt3, 2, paramInt2, null), 2);
+    kotlinx.coroutines.f.b((ai)bn.TUK, (kotlin.d.f)ba.hMW(), (m)new b(l, paramString, paramInt1, paramInt3, 2, paramInt2, null), 2);
     AppMethodBeat.o(6509);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic$AppMsgRelatedInfoOp;", "", "()V", "get", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "url", "", "save", "", "relatedInfo", "plugin-brandservice_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/model/MPDataLogic$AppMsgRelatedInfoOp;", "", "()V", "get", "Lcom/tencent/mm/message/AppMsgRelatedInfo;", "url", "", "save", "", "relatedInfo", "plugin-brandservice_release"})
   public static final class a
   {
-    public static final a ocy;
+    public static final a pnx;
     
     static
     {
       AppMethodBeat.i(6500);
-      ocy = new a();
+      pnx = new a();
       AppMethodBeat.o(6500);
     }
     
-    public static com.tencent.mm.ah.p XO(String paramString)
-    {
-      AppMethodBeat.i(6498);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(6498);
-        return null;
-      }
-      Object localObject1 = g.ocx;
-      localObject1 = g.XM(paramString);
-      Object localObject3 = (ay)t.hTD.aRy((String)localObject1);
-      if (localObject3 != null)
-      {
-        Object localObject2 = new fn();
-        localObject3 = ((ay)localObject3).decodeBytes((String)localObject1);
-        if (bu.cF((byte[])localObject3))
-        {
-          AppMethodBeat.o(6498);
-          return null;
-        }
-        try
-        {
-          ((fn)localObject2).parseFrom((byte[])localObject3);
-          localObject3 = ((fn)localObject2).FQi;
-          if (localObject3 != null) {
-            ((com.tencent.mm.ah.p)localObject3).Url = paramString;
-          }
-          if (ae.getLogLevel() == 0)
-          {
-            paramString = g.ocx;
-            ae.v(g.bOF(), "found:" + (String)localObject1 + " last modify:" + ((fn)localObject2).lastUpdateTime);
-          }
-          paramString = ((fn)localObject2).FQi;
-          AppMethodBeat.o(6498);
-          return paramString;
-        }
-        catch (IOException paramString)
-        {
-          localObject2 = g.ocx;
-          ae.printErrStackTrace(g.bOF(), (Throwable)paramString, "get:".concat(String.valueOf(localObject1)), new Object[0]);
-        }
-      }
-      AppMethodBeat.o(6498);
-      return null;
-    }
-    
-    public static void a(com.tencent.mm.ah.p paramp)
+    public static void a(com.tencent.mm.ag.p paramp)
     {
       AppMethodBeat.i(6499);
-      d.g.b.p.h(paramp, "relatedInfo");
+      kotlin.g.b.p.h(paramp, "relatedInfo");
       try
       {
-        localObject = new fn();
-        ((fn)localObject).FQi = paramp;
-        ((fn)localObject).lastUpdateTime = System.currentTimeMillis();
-        paramp = ((fn)localObject).toByteArray();
-        ay localay = (ay)t.hTD.fnP();
-        if (localay != null)
+        localObject = new ga();
+        ((ga)localObject).KJP = paramp;
+        ((ga)localObject).lastUpdateTime = System.currentTimeMillis();
+        paramp = ((ga)localObject).toByteArray();
+        MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)com.tencent.mm.al.t.iOP.getSlot();
+        if (localMultiProcessMMKV != null)
         {
-          localay.encode(((fn)localObject).FQi.hFO, paramp);
+          localMultiProcessMMKV.encode(((ga)localObject).KJP.izX, paramp);
           AppMethodBeat.o(6499);
           return;
         }
@@ -302,43 +259,96 @@ public final class g
       }
       catch (Exception paramp)
       {
-        Object localObject = g.ocx;
-        ae.e(g.bOF(), "save ex " + paramp.getMessage());
+        Object localObject = g.pnw;
+        Log.e(g.clL(), "save ex " + paramp.getMessage());
         AppMethodBeat.o(6499);
       }
     }
+    
+    public static com.tencent.mm.ag.p ahL(String paramString)
+    {
+      AppMethodBeat.i(6498);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(6498);
+        return null;
+      }
+      Object localObject1 = g.pnw;
+      localObject1 = g.ahJ(paramString);
+      Object localObject3 = (MultiProcessMMKV)com.tencent.mm.al.t.iOP.findSlot((String)localObject1);
+      if (localObject3 != null)
+      {
+        Object localObject2 = new ga();
+        localObject3 = ((MultiProcessMMKV)localObject3).decodeBytes((String)localObject1);
+        if (Util.isNullOrNil((byte[])localObject3))
+        {
+          AppMethodBeat.o(6498);
+          return null;
+        }
+        try
+        {
+          ((ga)localObject2).parseFrom((byte[])localObject3);
+          localObject3 = ((ga)localObject2).KJP;
+          if (localObject3 != null) {
+            ((com.tencent.mm.ag.p)localObject3).Url = paramString;
+          }
+          if (Log.getLogLevel() == 0)
+          {
+            paramString = g.pnw;
+            Log.v(g.clL(), "found:" + (String)localObject1 + " last modify:" + ((ga)localObject2).lastUpdateTime);
+          }
+          paramString = ((ga)localObject2).KJP;
+          AppMethodBeat.o(6498);
+          return paramString;
+        }
+        catch (IOException paramString)
+        {
+          localObject2 = g.pnw;
+          Log.printErrStackTrace(g.clL(), (Throwable)paramString, "get:".concat(String.valueOf(localObject1)), new Object[0]);
+        }
+      }
+      AppMethodBeat.o(6498);
+      return null;
+    }
   }
   
-  @d.d.b.a.f(c="com.tencent.mm.plugin.brandservice.model.MPDataLogic$getAppMsgRelatedInfo$1", f="MPDataLogic.kt", gkn={187}, m="invokeSuspend")
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @kotlin.d.b.a.f(c="com.tencent.mm.plugin.brandservice.model.MPDataLogic$getAppMsgRelatedInfo$1", f="MPDataLogic.kt", hxM={190}, m="invokeSuspend")
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class b
-    extends d.d.b.a.j
-    implements m<ah, d.d.d<? super z>, Object>
+    extends kotlin.d.b.a.j
+    implements m<ai, kotlin.d.d<? super x>, Object>
   {
+    Object L$0;
     int label;
-    Object ocA;
-    private ah ocz;
+    private ai p$;
     
-    b(long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, d.d.d paramd)
+    b(long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, kotlin.d.d paramd)
     {
-      super();
+      super(paramd);
     }
     
-    public final d.d.d<z> a(Object paramObject, d.d.d<?> paramd)
+    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
     {
       AppMethodBeat.i(6502);
-      d.g.b.p.h(paramd, "completion");
-      paramd = new b(this.ocB, paramInt1, paramInt3, this.obx, paramInt2, this.obr, paramd);
-      paramd.ocz = ((ah)paramObject);
+      kotlin.g.b.p.h(paramd, "completion");
+      paramd = new b(this.pny, paramInt1, paramInt3, this.pms, paramInt2, this.pmo, paramd);
+      paramd.p$ = ((ai)paramObject);
       AppMethodBeat.o(6502);
       return paramd;
     }
     
-    public final Object cR(Object arg1)
+    public final Object invoke(Object paramObject1, Object paramObject2)
+    {
+      AppMethodBeat.i(6503);
+      paramObject1 = ((b)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.SXb);
+      AppMethodBeat.o(6503);
+      return paramObject1;
+    }
+    
+    public final Object invokeSuspend(Object arg1)
     {
       AppMethodBeat.i(6501);
-      ??? = d.d.a.a.Nif;
-      Object localObject1;
+      Object localObject1 = kotlin.d.a.a.SXO;
       Object localObject5;
       switch (this.label)
       {
@@ -347,59 +357,62 @@ public final class g
         AppMethodBeat.o(6501);
         throw ???;
       case 0: 
-        localObject1 = this.ocz;
-        ??? = g.ocx;
-        synchronized (g.bOG())
+        ResultKt.throwOnFailure(???);
+        ??? = this.p$;
+        ??? = g.pnw;
+        synchronized (g.clM())
         {
-          localObject5 = g.ocx;
-          g.tx(this.ocB);
-          localObject5 = g.ocx;
-          g.bOG().add(d.a.j.ab(new Object[] { paramInt1, Integer.valueOf(paramInt3), Integer.valueOf(this.obx) }));
-          this.ocA = localObject1;
+          localObject5 = g.pnw;
+          g.BD(this.pny);
+          localObject5 = g.pnw;
+          g.clM().add(kotlin.a.j.ac(new Object[] { paramInt1, Integer.valueOf(paramInt3), Integer.valueOf(this.pms) }));
+          this.L$0 = ???;
           this.label = 1;
-          if (at.a(1000L, this) == ???)
+          if (au.a(1000L, this) == localObject1)
           {
             AppMethodBeat.o(6501);
-            return ???;
+            return localObject1;
           }
         }
+      case 1: 
+        ResultKt.throwOnFailure(???);
       }
-      ??? = g.ocx;
+      ??? = g.pnw;
       for (;;)
       {
-        synchronized (g.bOG())
+        synchronized (g.clM())
         {
-          localObject1 = g.ocx;
-          if (g.bOH() == this.ocB)
+          localObject1 = g.pnw;
+          if (g.clN() == this.pny)
           {
-            localObject1 = g.ocx;
-            localObject1 = (Collection)g.bOG();
+            localObject1 = g.pnw;
+            localObject1 = (Collection)g.clM();
             if (localObject1 == null) {
-              break label969;
+              break label977;
             }
             if (((Collection)localObject1).isEmpty()) {
-              break label969;
+              break label977;
             }
           }
           else
           {
-            localObject1 = z.Nhr;
+            localObject1 = x.SXb;
             AppMethodBeat.o(6501);
             return localObject1;
           }
           i = 0;
-          break label971;
-          localObject1 = g.ocx;
-          localObject1 = new ArrayList((Collection)g.bOG());
-          ??? = g.ocx;
-          g.bOG().clear();
-          ??? = g.ocx;
-          ae.v(g.bOF(), "getAppMsgRelatedInfo size:" + ((ArrayList)localObject1).size());
-          localObject1 = (Iterable)d.a.j.i((Iterable)localObject1);
+          break label979;
+          localObject1 = g.pnw;
+          localObject1 = new ArrayList((Collection)g.clM());
+          ??? = g.pnw;
+          g.clM().clear();
+          ??? = g.pnw;
+          Log.v(g.clL(), "getAppMsgRelatedInfo size:" + ((ArrayList)localObject1).size());
+          localObject1 = (Iterable)kotlin.a.j.m((Iterable)localObject1);
           ??? = (Collection)new ArrayList();
           localObject1 = ((Iterable)localObject1).iterator();
           if (!((Iterator)localObject1).hasNext()) {
-            break label415;
+            break label423;
           }
           ??? = ((Iterator)localObject1).next();
           localObject5 = (List)???;
@@ -414,7 +427,7 @@ public final class g
         }
         int i = 0;
         continue;
-        label415:
+        label423:
         ??? = (Iterable)???;
         ??? = new HashSet();
         Object localObject3 = new ArrayList();
@@ -426,11 +439,11 @@ public final class g
           localObject6 = ((List)localObject5).get(0);
           if (localObject6 == null)
           {
-            ??? = new v("null cannot be cast to non-null type kotlin.String");
+            ??? = new kotlin.t("null cannot be cast to non-null type kotlin.String");
             AppMethodBeat.o(6501);
             throw ???;
           }
-          if (???.add(com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.Yd((String)localObject6))) {
+          if (???.add(c.aib((String)localObject6))) {
             ((ArrayList)localObject3).add(localObject5);
           }
         }
@@ -447,7 +460,7 @@ public final class g
             localObject6 = ((List)localObject5).get(0);
             if (localObject6 == null)
             {
-              ??? = new v("null cannot be cast to non-null type kotlin.String");
+              ??? = new kotlin.t("null cannot be cast to non-null type kotlin.String");
               AppMethodBeat.o(6501);
               throw ???;
             }
@@ -459,34 +472,34 @@ public final class g
           while (((Iterator)localObject3).hasNext())
           {
             localObject5 = (List)((Iterator)localObject3).next();
-            ??? = new ft();
+            ??? = new gg();
             localObject6 = ((List)localObject5).get(0);
             if (localObject6 == null)
             {
-              ??? = new v("null cannot be cast to non-null type kotlin.String");
+              ??? = new kotlin.t("null cannot be cast to non-null type kotlin.String");
               AppMethodBeat.o(6501);
               throw ???;
             }
-            ((ft)???).Url = ((String)localObject6);
-            localObject6 = g.ocx;
-            localObject6 = ((ft)???).Url;
-            d.g.b.p.g(localObject6, "appMsgUrlInfo.Url");
-            ((ft)???).hFO = g.XM((String)localObject6);
+            ((gg)???).Url = ((String)localObject6);
+            localObject6 = g.pnw;
+            localObject6 = ((gg)???).Url;
+            kotlin.g.b.p.g(localObject6, "appMsgUrlInfo.Url");
+            ((gg)???).izX = g.ahJ((String)localObject6);
             localObject6 = ((List)localObject5).get(1);
             if (localObject6 == null)
             {
-              ??? = new v("null cannot be cast to non-null type kotlin.Int");
+              ??? = new kotlin.t("null cannot be cast to non-null type kotlin.Int");
               AppMethodBeat.o(6501);
               throw ???;
             }
-            ((ft)???).hFR = ((Integer)localObject6).intValue();
-            ((ft)???).ReqType = 1;
+            ((gg)???).iAb = ((Integer)localObject6).intValue();
+            ((gg)???).ReqType = 1;
             if (((List)localObject5).size() > paramInt2)
             {
               localObject6 = ((List)localObject5).get(paramInt2);
               if (localObject6 == null)
               {
-                ??? = new v("null cannot be cast to non-null type kotlin.Int");
+                ??? = new kotlin.t("null cannot be cast to non-null type kotlin.Int");
                 AppMethodBeat.o(6501);
                 throw ???;
               }
@@ -495,94 +508,86 @@ public final class g
                 localObject5 = ((List)localObject5).get(paramInt2);
                 if (localObject5 == null)
                 {
-                  ??? = new v("null cannot be cast to non-null type kotlin.Int");
+                  ??? = new kotlin.t("null cannot be cast to non-null type kotlin.Int");
                   AppMethodBeat.o(6501);
                   throw ???;
                 }
-                ((ft)???).ReqType = ((Integer)localObject5).intValue();
+                ((gg)???).ReqType = ((Integer)localObject5).intValue();
               }
             }
             ???.add(???);
           }
-          localObject3 = g.ocx;
-          g.b(???, this.obr);
+          localObject3 = g.pnw;
+          g.b(???, this.pmo);
         }
-        ??? = z.Nhr;
+        ??? = x.SXb;
         AppMethodBeat.o(6501);
         return ???;
-        label969:
+        label977:
         i = 1;
-        label971:
+        label979:
         if (i == 0) {}
       }
     }
-    
-    public final Object p(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(6503);
-      paramObject1 = ((b)a(paramObject1, (d.d.d)paramObject2)).cR(z.Nhr);
-      AppMethodBeat.o(6503);
-      return paramObject1;
-    }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
   static final class c
     implements IPCRunCgi.a
   {
-    c(mr parammr, int paramInt) {}
+    c(nj paramnj, int paramInt) {}
     
-    public final void a(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.b paramb)
+    public final void a(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.d paramd)
     {
       AppMethodBeat.i(6505);
-      Object localObject = g.ocx;
-      ae.i(g.bOF(), "getAppMsgRelatedInfo errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
-      paramString = this.ocD.FYR;
-      d.g.b.p.g(paramString, "req.UrlInfo");
+      Object localObject = g.pnw;
+      Log.i(g.clL(), "getAppMsgRelatedInfo errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+      paramString = this.pnA.KSM;
+      kotlin.g.b.p.g(paramString, "req.UrlInfo");
       paramString = ((Iterable)paramString).iterator();
       while (paramString.hasNext())
       {
-        localObject = (ft)paramString.next();
-        g localg = g.ocx;
-        g.bOI().remove(((ft)localObject).hFO);
+        localObject = (gg)paramString.next();
+        g localg = g.pnw;
+        g.clO().remove(((gg)localObject).izX);
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         AppMethodBeat.o(6505);
         return;
       }
-      d.g.b.p.g(paramb, "rr");
-      paramString = paramb.aEV();
+      kotlin.g.b.p.g(paramd, "rr");
+      paramString = paramd.aYK();
       if (paramString == null)
       {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAppMsgRelatedInfoResp");
+        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAppMsgRelatedInfoResp");
         AppMethodBeat.o(6505);
         throw paramString;
       }
-      paramString = (ms)paramString;
-      paramb = g.ocx;
-      paramb = ay.aRW(g.bOF());
-      paramb.encode("BizAppMsgRelatedInfoRefreshIntervalSec", paramString.FYT);
-      com.tencent.mm.plugin.brandservice.ui.b.a.oyH = paramString.FYT;
-      paramb.encode("BizAppMsgRelatedInfoMaxUrlCount", paramString.FYU);
-      if (bu.ht((List)paramString.FYS))
+      paramString = (nk)paramString;
+      paramd = g.pnw;
+      paramd = MultiProcessMMKV.getMMKV(g.clL());
+      paramd.encode("BizAppMsgRelatedInfoRefreshIntervalSec", paramString.KSO);
+      com.tencent.mm.plugin.brandservice.ui.b.a.pMl = paramString.KSO;
+      paramd.encode("BizAppMsgRelatedInfoMaxUrlCount", paramString.KSP);
+      if (Util.isNullOrNil((List)paramString.KSN))
       {
-        paramString = g.ocx;
-        ae.w(g.bOF(), "getAppMsgRelatedInfo RelatedInfo is empty");
+        paramString = g.pnw;
+        Log.w(g.clL(), "getAppMsgRelatedInfo RelatedInfo is empty");
         AppMethodBeat.o(6505);
         return;
       }
-      h.MqF.f((Runnable)new Runnable()
+      h.RTc.b((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(6504);
-          Object localObject = g.ocx;
-          localObject = paramString.FYS;
-          d.g.b.p.g(localObject, "response.RelatedInfo");
-          LinkedList localLinkedList = this.ocE.ocD.FYR;
-          d.g.b.p.g(localLinkedList, "req.UrlInfo");
-          g.a((LinkedList)localObject, localLinkedList, this.ocE.hVL);
+          Object localObject = g.pnw;
+          localObject = paramString.KSN;
+          kotlin.g.b.p.g(localObject, "response.RelatedInfo");
+          LinkedList localLinkedList = this.pnB.pnA.KSM;
+          kotlin.g.b.p.g(localLinkedList, "req.UrlInfo");
+          g.a((LinkedList)localObject, localLinkedList, this.pnB.$scene);
           AppMethodBeat.o(6504);
         }
       }, "getAppMsgRelatedInfo");
@@ -592,7 +597,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.g
  * JD-Core Version:    0.7.0.1
  */

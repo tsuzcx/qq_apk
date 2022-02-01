@@ -1,341 +1,322 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.content.Context;
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.app.o.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.b;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.cf.a;
-import com.tencent.mm.model.ci;
-import com.tencent.mm.model.ci.a;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.multitalk.b.p.3;
-import com.tencent.mm.plugin.multitalk.c.c;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.dxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storagebase.h.b;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.multitalk.d.a;
+import com.tencent.mm.plugin.multitalk.d.e;
+import com.tencent.mm.pluginsdk.i.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.pb.common.b.a.a.a.aq;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-public class z
-  implements az
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource;", "Lcom/tencent/mm/plugin/multitalk/model/BaseDataSource;", "()V", "decodeTask", "", "Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource$DecodeRunnable;", "[Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource$DecodeRunnable;", "fpsWrapper", "Lcom/tencent/mm/pluginsdk/platformtools/FpsWraper;", "screenMemberId", "", "screenReceiver", "Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource$ScreenDataDecode;", "screenRunning", "", "screenUserName", "", "videoRunning", "checkCurrentIsReceiver", "hasScreenData", "receiveScreenData", "buf", "", "byteArray", "", "receiveVideoData", "start", "", "startReceiveScreen", "userName", "stop", "stopReceiveScreen", "stopVideo", "Companion", "DecodeRunnable", "ScreenDataDecode", "plugin-multitalk_release"})
+public final class z
+  extends c
 {
-  private static HashMap<Integer, h.b> baseDBFactories;
-  private o.a appForegroundListener;
-  private ci.a tDc;
-  private m wsC;
-  private o wsD;
-  private s wsE;
-  private a wsF;
-  private q wsG;
-  private com.tencent.mm.plugin.multitalk.c.a wsH;
-  private c wsI;
-  private p wsJ;
+  public static final z.a zOz;
+  private final b[] zOs;
+  public volatile boolean zOt;
+  public volatile boolean zOu;
+  private volatile int zOv;
+  private volatile String zOw;
+  private volatile c zOx;
+  private final b zOy;
   
   static
   {
-    AppMethodBeat.i(114636);
-    HashMap localHashMap = new HashMap();
-    baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("MULTITALKINFO_TABLE".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return com.tencent.mm.plugin.multitalk.c.a.SQL_CREATE;
-      }
-    });
-    baseDBFactories.put(Integer.valueOf("MULTITALKMEMBER_TABLE".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return c.SQL_CREATE;
-      }
-    });
-    AppMethodBeat.o(114636);
+    AppMethodBeat.i(239663);
+    zOz = new z.a((byte)0);
+    AppMethodBeat.o(239663);
   }
   
   public z()
   {
-    AppMethodBeat.i(114624);
-    this.appForegroundListener = new z.1(this);
-    this.tDc = new ci.a()
+    AppMethodBeat.i(239662);
+    this.zOs = new b[] { new b(true), new b(false) };
+    this.zOv = -1;
+    this.zOw = "";
+    this.zOy = new b("multitalk_network");
+    AppMethodBeat.o(239662);
+  }
+  
+  private final boolean eoe()
+  {
+    return this.zOv >= 0;
+  }
+  
+  public final void aGm(String paramString)
+  {
+    AppMethodBeat.i(239660);
+    p.h(paramString, "userName");
+    int i = e.aGF(paramString);
+    if (i == -1)
     {
-      public final boolean aDe()
+      AppMethodBeat.o(239660);
+      return;
+    }
+    if ((eoe()) || (this.zOu))
+    {
+      AppMethodBeat.o(239660);
+      return;
+    }
+    this.zOu = true;
+    this.zOv = i;
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new a.aq();
+    ((a.aq)localObject).qrD = i;
+    localArrayList.add(localObject);
+    localObject = ByteBuffer.allocate(4);
+    ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN).putInt(i);
+    o localo = ac.eol();
+    p.g(localo, "SubCoreMultiTalk.getMultiEngine()");
+    localo.emG().setAppCmd(55, ((ByteBuffer)localObject).array(), 4);
+    localObject = ac.eol();
+    p.g(localObject, "SubCoreMultiTalk.getMultiEngine()");
+    ((o)localObject).emG().kc((List)localArrayList);
+    this.zOw = paramString;
+    paramString = e.zZc;
+    if (!e.eqe())
+    {
+      paramString = a.zYP;
+      a.epL();
+    }
+    paramString = new c();
+    new Thread((Runnable)paramString).start();
+    this.zOx = paramString;
+    AppMethodBeat.o(239660);
+  }
+  
+  public final void eof()
+  {
+    AppMethodBeat.i(239661);
+    ??? = ByteBuffer.allocate(4);
+    ((ByteBuffer)???).order(ByteOrder.LITTLE_ENDIAN).putInt(-1);
+    Object localObject2 = ac.eol();
+    p.g(localObject2, "SubCoreMultiTalk.getMultiEngine()");
+    ((o)localObject2).emG().setAppCmd(55, ((ByteBuffer)???).array(), 4);
+    ??? = ac.eol();
+    p.g(???, "SubCoreMultiTalk.getMultiEngine()");
+    ((o)???).emG().kc((List)new ArrayList());
+    this.zOv = -1;
+    this.zOu = false;
+    if (!this.zOt) {
+      this.zLj = null;
+    }
+    localObject2 = this.zOx;
+    if (localObject2 != null) {}
+    synchronized (Boolean.valueOf(((c)localObject2).zOB))
+    {
+      ((c)localObject2).zOB = false;
+      localObject2 = x.SXb;
+      this.zOx = null;
+      AppMethodBeat.o(239661);
+      return;
+    }
+  }
+  
+  public final void start()
+  {
+    AppMethodBeat.i(239657);
+    if (this.zOt)
+    {
+      AppMethodBeat.o(239657);
+      return;
+    }
+    Log.i("NetworkDataSource", "start");
+    this.zOt = true;
+    b[] arrayOfb = this.zOs;
+    int j = arrayOfb.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = arrayOfb[i];
+      synchronized (Boolean.valueOf(((b)localObject2).zOB))
       {
-        AppMethodBeat.i(114622);
-        ae.w("MicroMsg.SubCoreMultiTalk", "HERE UninitForUEH is called! multitalk");
-        if (z.a(z.this) != null)
+        if (!((b)localObject2).zOB)
         {
-          z.a(z.this).nD(true);
-          if (z.a(z.this).wqU != null) {
-            ae.i("MicroMsg.SubCoreMultiTalk", "dump multiTalkGroup: %s", new Object[] { t.g(z.a(z.this).wqU) });
-          }
+          ((b)localObject2).zOB = true;
+          new Thread((Runnable)localObject2).start();
         }
-        AppMethodBeat.o(114622);
-        return true;
+        localObject2 = x.SXb;
+        i += 1;
       }
-    };
-    AppMethodBeat.o(114624);
+    }
+    if (eoe()) {
+      aGm(this.zOw);
+    }
+    AppMethodBeat.o(239657);
   }
   
-  private static z dtF()
+  public final void stop()
   {
-    AppMethodBeat.i(114625);
-    z localz = (z)u.ap(z.class);
-    AppMethodBeat.o(114625);
-    return localz;
+    AppMethodBeat.i(239658);
+    eof();
+    stopVideo();
+    AppMethodBeat.o(239658);
   }
   
-  public static com.tencent.mm.plugin.multitalk.c.a dtG()
+  public final void stopVideo()
   {
-    AppMethodBeat.i(114626);
-    g.ajP();
-    if (com.tencent.mm.kernel.a.getUin() == 0)
+    int i = 0;
+    AppMethodBeat.i(239659);
+    this.zOt = false;
+    if (!this.zOu) {
+      this.zLj = null;
+    }
+    b[] arrayOfb = this.zOs;
+    int j = arrayOfb.length;
+    for (;;)
     {
-      localObject = new b();
-      AppMethodBeat.o(114626);
-      throw ((Throwable)localObject);
-    }
-    if (dtF().wsH == null) {
-      dtF().wsH = new com.tencent.mm.plugin.multitalk.c.a(g.ajR().gDX);
-    }
-    Object localObject = dtF().wsH;
-    AppMethodBeat.o(114626);
-    return localObject;
-  }
-  
-  public static c dtH()
-  {
-    AppMethodBeat.i(114627);
-    g.ajP();
-    if (com.tencent.mm.kernel.a.getUin() == 0)
-    {
-      localObject = new b();
-      AppMethodBeat.o(114627);
-      throw ((Throwable)localObject);
-    }
-    if (dtF().wsI == null) {
-      dtF().wsI = new c(g.ajR().gDX);
-    }
-    Object localObject = dtF().wsI;
-    AppMethodBeat.o(114627);
-    return localObject;
-  }
-  
-  public static s dtI()
-  {
-    AppMethodBeat.i(114628);
-    g.ajP().aiU();
-    if (dtF().wsE == null) {
-      dtF().wsE = new s();
-    }
-    s locals = dtF().wsE;
-    AppMethodBeat.o(114628);
-    return locals;
-  }
-  
-  public static m dtJ()
-  {
-    AppMethodBeat.i(114629);
-    g.ajP().aiU();
-    if (dtF().wsC == null) {
-      dtF().wsC = new m();
-    }
-    m localm = dtF().wsC;
-    AppMethodBeat.o(114629);
-    return localm;
-  }
-  
-  public static o dtK()
-  {
-    AppMethodBeat.i(114630);
-    g.ajP().aiU();
-    if (dtF().wsD == null) {
-      dtF().wsD = new o();
-    }
-    o localo = dtF().wsD;
-    AppMethodBeat.o(114630);
-    return localo;
-  }
-  
-  public static q dtL()
-  {
-    AppMethodBeat.i(114634);
-    if (dtF().wsG == null) {
-      dtF().wsG = new q();
-    }
-    q localq = dtF().wsG;
-    AppMethodBeat.o(114634);
-    return localq;
-  }
-  
-  public static p dtM()
-  {
-    AppMethodBeat.i(114635);
-    if (dtF().wsJ == null) {
-      dtF().wsJ = new p();
-    }
-    p localp = dtF().wsJ;
-    AppMethodBeat.o(114635);
-    return localp;
-  }
-  
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.b> getBaseDBFactories()
-  {
-    return baseDBFactories;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(114632);
-    this.wsF = new a();
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("multivoip", this.wsF, true);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("voipmt", this.wsF, true);
-    g.ajT().a(this.tDc);
-    this.appForegroundListener.alive();
-    g.b(d.class, dtL());
-    dtL().dtx();
-    AppMethodBeat.o(114632);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(114633);
-    Object localObject;
-    if (this.wsC != null)
-    {
-      localObject = this.wsC;
-      g.ajj().b(1918, (f)localObject);
-      g.ajj().b(1919, (f)localObject);
-      g.ajj().b(1927, (f)localObject);
-      g.ajj().b(1928, (f)localObject);
-      g.ajj().b(1929, (f)localObject);
-      g.ajj().b(1931, (f)localObject);
-      g.ajj().b(1932, (f)localObject);
-      g.ajj().b(1933, (f)localObject);
-      g.ajj().b(1935, (f)localObject);
-      g.ajj().b(1937, (f)localObject);
-      g.ajj().b(1938, (f)localObject);
-      g.ajj().b(1939, (f)localObject);
-      this.wsC = null;
-    }
-    if (this.wsD != null)
-    {
-      localObject = this.wsD;
-      ak.getContext().unregisterReceiver(((o)localObject).wrv);
-      com.tencent.mm.sdk.b.a.IvT.d(((o)localObject).hcQ);
-      ((o)localObject).j(false, false, false);
-      ae.i("MicroMsg.MT.MultiTalkManager", "steve: account release. uninit ilink so");
-      com.tencent.mm.plugin.multitalk.b.p localp = com.tencent.mm.plugin.multitalk.b.p.wmO;
-      localp.ad(localp.peN);
-      if (((o)localObject).wrq != null) {
-        ((o)localObject).wrq.clear();
+      Object localObject2;
+      if (i < j) {
+        localObject2 = arrayOfb[i];
       }
-      this.wsD = null;
+      synchronized (Boolean.valueOf(((b)localObject2).zOB))
+      {
+        ((b)localObject2).zOB = false;
+        localObject2 = x.SXb;
+        i += 1;
+      }
     }
-    if (this.wsE != null)
-    {
-      this.wsE.reset();
-      this.wsE = null;
-    }
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("multivoip", this.wsF, true);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("voipmt", this.wsF, true);
-    g.ajT().b(this.tDc);
-    g.ac(d.class);
-    AppMethodBeat.o(114633);
   }
   
-  public void onSdcardMount(boolean paramBoolean) {}
-  
-  final class a
-    implements cf.a
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource$DecodeRunnable;", "Ljava/lang/Runnable;", "isOdd", "", "(Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource;Z)V", "decodeBuf", "", "()Z", "taskRunning", "getTaskRunning", "setTaskRunning", "(Z)V", "run", "", "plugin-multitalk_release"})
+  public final class b
+    implements Runnable
   {
-    a() {}
+    private final int[] zOA;
+    volatile boolean zOB;
+    private final boolean zOC;
     
-    public final void a(e.a parama)
+    public b()
     {
-      AppMethodBeat.i(114623);
-      Object localObject2 = z.dtM();
-      String str = com.tencent.mm.platformtools.z.a(parama.gte.FNI);
-      Object localObject1 = bx.M(str, "sysmsg");
-      if ((String)((Map)localObject1).get(".sysmsg.multivoip.notfriendnotifydata") != null)
-      {
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive notfriendnotifydata msg:".concat(String.valueOf(str)));
-        AppMethodBeat.o(114623);
-        return;
-      }
-      str = (String)((Map)localObject1).get(".sysmsg.multivoip.notifydata");
-      if (str != null)
-      {
-        localObject1 = Base64.decode(bu.bI(str, "").getBytes(), 0);
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive " + com.tencent.mm.platformtools.z.a(parama.gte.FNI) + " buffer len " + localObject1.length);
-        z.dtJ().wqE.cW(bu.o((Integer)g.ajR().gDO.get(1)), v.aAC());
-        z.dtJ().wqE.cO((byte[])localObject1);
-        AppMethodBeat.o(114623);
-        return;
-      }
-      str = (String)((Map)localObject1).get(".sysmsg.multivoip.banner");
-      if (str != null)
-      {
-        ((p)localObject2).a(str, parama);
-        AppMethodBeat.o(114623);
-        return;
-      }
-      localObject2 = (String)((Map)localObject1).get(".sysmsg.voipmt.invite");
-      if (localObject2 != null)
-      {
-        localObject1 = Base64.decode(bu.bI((String)localObject2, "").getBytes(), 0);
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive invite " + com.tencent.mm.platformtools.z.a(parama.gte.FNI) + " buffer len " + localObject1.length);
-        com.tencent.mm.plugin.multitalk.b.p.wmO.u(bu.o((Integer)g.ajR().gDO.get(1)), v.aAC());
-        parama = com.tencent.mm.plugin.multitalk.b.p.wmO;
-        localObject2 = new dxn();
-        try
-        {
-          ((dxn)localObject2).parseFrom((byte[])localObject1);
-          if ((parama.wnN != null) && (parama.wnN.get(Long.valueOf(((dxn)localObject2).Gsg)) == null)) {
-            parama.wnN.put(Long.valueOf(((dxn)localObject2).Gsg), localObject2);
-          }
-          parama.pex = true;
-          parama.a(new p.3(parama, (dxn)localObject2));
-          AppMethodBeat.o(114623);
-          return;
-        }
-        catch (IOException parama)
-        {
-          ae.printErrStackTrace("MicroMsg.Multitalk.ILinkService", parama, "hy: unable to parse from data", new Object[0]);
-          AppMethodBeat.o(114623);
-          return;
-        }
-      }
-      localObject1 = (String)((Map)localObject1).get(".sysmsg.voipmt.banner");
-      if (localObject1 != null)
-      {
-        localObject1 = Base64.decode(bu.bI((String)localObject1, "").getBytes(), 0);
-        ae.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive banner " + com.tencent.mm.platformtools.z.a(parama.gte.FNI) + " buffer len " + localObject1.length);
-        com.tencent.mm.plugin.multitalk.b.p.wmO.u(bu.o((Integer)g.ajR().gDO.get(1)), v.aAC());
-        parama = com.tencent.mm.plugin.multitalk.b.p.wmO;
-        com.tencent.mm.plugin.multitalk.b.p.bt((byte[])localObject1);
-      }
-      AppMethodBeat.o(114623);
+      AppMethodBeat.i(239654);
+      boolean bool;
+      this.zOC = bool;
+      this.zOA = new int[409600];
+      AppMethodBeat.o(239654);
     }
     
-    public final void a(e.c paramc) {}
+    public final void run()
+    {
+      AppMethodBeat.i(239653);
+      this.zOB = true;
+      int i;
+      if ((z.a(z.this)) && (this.zOB))
+      {
+        ??? = this.zOA;
+        if (this.zOC)
+        {
+          i = 0;
+          ???[0] = i;
+          z.c(z.this).bdU("_total");
+        }
+      }
+      for (;;)
+      {
+        synchronized (Boolean.valueOf(this.zOB))
+        {
+          for (;;)
+          {
+            if (!this.zOB) {
+              break label172;
+            }
+            bool = z.a(z.this, this.zOA);
+            x localx = x.SXb;
+            if (bool) {
+              break label146;
+            }
+            z.c(z.this).bdU("_fail");
+            try
+            {
+              Thread.sleep(40L);
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              z.b(z.this);
+            }
+          }
+          break;
+          i = 1;
+        }
+        label146:
+        z.c(z.this).bdU("_success");
+        break;
+        this.zOB = false;
+        AppMethodBeat.o(239653);
+        return;
+        label172:
+        boolean bool = true;
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource$ScreenDataDecode;", "Ljava/lang/Runnable;", "(Lcom/tencent/mm/plugin/multitalk/model/NetworkDataSource;)V", "decodeBuf", "", "decodeByteBuffer", "", "taskRunning", "", "getTaskRunning", "()Z", "setTaskRunning", "(Z)V", "run", "", "plugin-multitalk_release"})
+  public final class c
+    implements Runnable
+  {
+    private final int[] zOA;
+    volatile boolean zOB;
+    private final byte[] zOE;
+    
+    public c()
+    {
+      AppMethodBeat.i(239656);
+      this.zOA = new int[3686400];
+      this.zOE = new byte[14745600];
+      AppMethodBeat.o(239656);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(239655);
+      this.zOB = true;
+      if ((z.d(this.zOD)) && (z.f(this.zOD)) && (this.zOB)) {}
+      for (;;)
+      {
+        synchronized (Boolean.valueOf(this.zOB))
+        {
+          for (;;)
+          {
+            if (!this.zOB) {
+              break label152;
+            }
+            bool = z.a(this.zOD, this.zOA, this.zOE);
+            x localx = x.SXb;
+            if (bool) {
+              break;
+            }
+            try
+            {
+              Thread.sleep(40L);
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              z.e(this.zOD);
+            }
+          }
+        }
+        this.zOB = false;
+        Object localObject1 = com.tencent.mm.plugin.multitalk.d.d.zZa;
+        com.tencent.mm.plugin.multitalk.d.d.eof();
+        localObject1 = this.zOD.zLj;
+        if (localObject1 != null)
+        {
+          ((ad)localObject1).eos();
+          AppMethodBeat.o(239655);
+          return;
+        }
+        AppMethodBeat.o(239655);
+        return;
+        label152:
+        boolean bool = true;
+      }
+    }
   }
 }
 

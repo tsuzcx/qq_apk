@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class rq
-  extends b
+  extends IEvent
 {
-  public a dHp;
+  public a dYj;
   
   public rq()
   {
@@ -16,17 +15,16 @@ public final class rq
   
   private rq(byte paramByte)
   {
-    AppMethodBeat.i(125629);
-    this.dHp = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125625);
+    this.dYj = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125629);
+    AppMethodBeat.o(125625);
   }
   
   public static final class a
   {
-    public ArrayList dHq;
-    public String dHr;
+    public int state = -1;
   }
 }
 

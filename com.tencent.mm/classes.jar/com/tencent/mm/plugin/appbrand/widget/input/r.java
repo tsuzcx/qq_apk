@@ -11,17 +11,17 @@ abstract class r
     super.setHorizontallyScrolling(true);
   }
   
-  public final boolean bFi()
-  {
-    return false;
-  }
-  
-  public boolean bFm()
-  {
-    return false;
-  }
-  
   public boolean canScrollVertically(int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean cbB()
+  {
+    return false;
+  }
+  
+  public final boolean cbx()
   {
     return false;
   }
@@ -69,7 +69,7 @@ abstract class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.r
  * JD-Core Version:    0.7.0.1
  */

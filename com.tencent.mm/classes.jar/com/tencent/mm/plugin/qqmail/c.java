@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.qqmail;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,59 +11,17 @@ import java.util.Set;
 
 public abstract class c
 {
+  protected static String BqJ = "";
   public static String USER_AGENT;
   protected static String host = "";
   protected static int timeout = 0;
-  protected static String xqD;
   
   static
   {
     USER_AGENT = "weixin/android";
-    xqD = "";
   }
   
-  public static String aG(Map<String, String> paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localStringBuilder.append(URLEncoder.encode(str, "utf-8")).append('=').append(URLEncoder.encode((String)paramMap.get(str), "utf-8"));
-      i += 1;
-      if (paramMap.size() > i) {
-        localStringBuilder.append("; ");
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static Map<String, String> awj(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    for (;;)
-    {
-      return localHashMap;
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i].split("=");
-        if (arrayOfString.length == 2) {
-          localHashMap.put(arrayOfString[0], arrayOfString[1]);
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public static String f(String paramString1, String paramString2, Map<String, String> paramMap)
+  public static String d(String paramString1, String paramString2, Map<String, String> paramMap)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if ((!paramString2.startsWith("http://")) && (!paramString2.startsWith("https://"))) {
@@ -83,12 +41,53 @@ public abstract class c
       if (i != 0) {}
       for (paramString1 = "";; paramString1 = "&")
       {
-        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(bu.nullAsNil(str2), "utf-8"));
+        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(Util.nullAsNil(str2), "utf-8"));
         i = 0;
         break;
       }
     }
     return localStringBuilder.toString();
+  }
+  
+  public static String getCookie(Map<String, String> paramMap)
+  {
+    if ((paramMap == null) || (paramMap.size() == 0)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramMap.keySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localStringBuilder.append(URLEncoder.encode(str, "utf-8")).append('=').append(URLEncoder.encode((String)paramMap.get(str), "utf-8"));
+      i += 1;
+      if (paramMap.size() > i) {
+        localStringBuilder.append("; ");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static Map<String, String> parseCookie(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    for (;;)
+    {
+      return localHashMap;
+      paramString = paramString.split(";");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String[] arrayOfString = paramString[i].split("=");
+        if (arrayOfString.length == 2) {
+          localHashMap.put(arrayOfString[0], arrayOfString[1]);
+        }
+        i += 1;
+      }
+    }
   }
   
   public abstract f a(String paramString1, String paramString2, e parame, d paramd);
@@ -111,78 +110,78 @@ public abstract class c
   
   public static final class b
   {
-    public boolean xqE = false;
-    public boolean xqF = true;
-    public boolean xqG = true;
+    public boolean BqK = false;
+    public boolean BqL = true;
+    public boolean BqM = true;
     
     public final void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(217911);
-      this.xqE = paramBundle.getBoolean("qqmail_httpoptions_expired");
-      this.xqF = paramBundle.getBoolean("qqmail_httpoptions_needcache");
-      this.xqG = paramBundle.getBoolean("qqmail_httpoptions_needparse");
-      AppMethodBeat.o(217911);
+      AppMethodBeat.i(198565);
+      this.BqK = paramBundle.getBoolean("qqmail_httpoptions_expired");
+      this.BqL = paramBundle.getBoolean("qqmail_httpoptions_needcache");
+      this.BqM = paramBundle.getBoolean("qqmail_httpoptions_needparse");
+      AppMethodBeat.o(198565);
     }
   }
   
   public static final class c
   {
+    public c.b BqN;
+    public c.e BqO;
+    public c.f BqP;
+    public Map<String, String> BqQ;
+    public c.a BqR;
     public long id;
     public String uri;
-    public c.b xqH;
-    public c.e xqI;
-    public c.f xqJ;
-    public Map<String, String> xqK;
-    public c.a xqL;
     
     public c(String paramString, c.e parame, c.a parama)
     {
-      AppMethodBeat.i(217912);
+      AppMethodBeat.i(198566);
       this.id = System.currentTimeMillis();
       this.uri = paramString;
-      this.xqI = parame;
-      this.xqL = parama;
-      AppMethodBeat.o(217912);
+      this.BqO = parame;
+      this.BqR = parama;
+      AppMethodBeat.o(198566);
     }
   }
   
   public static abstract interface d
   {
-    public abstract void dFu();
+    public abstract void eGj();
   }
   
   public static final class e
   {
-    public int xqM;
-    public Map<String, String> xqN;
-    public Map<String, String> xqO;
-    public c.g xqP;
+    public c.g BqS;
+    public Map<String, String> cookie;
+    public int method;
+    public Map<String, String> params;
     
     public e(int paramInt, Map<String, String> paramMap1, Map<String, String> paramMap2)
     {
-      this.xqM = paramInt;
-      this.xqN = paramMap1;
-      this.xqO = paramMap2;
-      this.xqP = null;
+      this.method = paramInt;
+      this.params = paramMap1;
+      this.cookie = paramMap2;
+      this.BqS = null;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(217913);
-      StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.xqM).append(", params:");
-      if (this.xqN != null)
+      AppMethodBeat.i(198567);
+      StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.method).append(", params:");
+      if (this.params != null)
       {
-        localObject = this.xqN;
+        localObject = this.params;
         localStringBuilder = localStringBuilder.append(localObject).append(", cookie:");
-        if (this.xqO == null) {
+        if (this.cookie == null) {
           break label84;
         }
       }
       label84:
-      for (Object localObject = this.xqO;; localObject = "")
+      for (Object localObject = this.cookie;; localObject = "")
       {
         localObject = localObject;
-        AppMethodBeat.o(217913);
+        AppMethodBeat.o(198567);
         return localObject;
         localObject = "";
         break;
@@ -193,24 +192,24 @@ public abstract class c
   public static final class f
   {
     public String content;
+    public Map<String, String> cookie;
     public int status = 0;
-    public Map<String, String> xqO;
     
     public f(int paramInt, Map<String, String> paramMap, String paramString)
     {
       this.status = paramInt;
-      this.xqO = paramMap;
+      this.cookie = paramMap;
       this.content = paramString;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(217914);
+      AppMethodBeat.i(198568);
       StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
       Object localObject;
-      if (this.xqO != null)
+      if (this.cookie != null)
       {
-        localObject = this.xqO;
+        localObject = this.cookie;
         localObject = localStringBuilder.append(localObject).append(", content length :");
         if (this.content == null) {
           break label87;
@@ -220,7 +219,7 @@ public abstract class c
       for (int i = this.content.length();; i = 0)
       {
         localObject = i;
-        AppMethodBeat.o(217914);
+        AppMethodBeat.o(198568);
         return localObject;
         localObject = "";
         break;
@@ -236,7 +235,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.c
  * JD-Core Version:    0.7.0.1
  */

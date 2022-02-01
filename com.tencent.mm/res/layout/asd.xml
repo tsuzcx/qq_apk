@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/ny">
-        <LinearLayout style="@style/ld">
-            <TextView android:gravity="left" android:visibility="gone" android:layout_marginTop="5.0dip" android:text="@string/etu" style="@style/le" />
-            <EditText android:id="@id/drx" android:hint="@string/ety" style="@style/n1" />
-        </LinearLayout>
-    </ScrollView>
+    <TextView android:id="@id/gzm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/mi" />
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
+    <CheckBox android:id="@id/i4u" android:background="@drawable/arh" android:focusable="false" android:clickable="false" android:layout_height="20.0dip" android:singleLine="true" style="@style/ml" />
 </LinearLayout>

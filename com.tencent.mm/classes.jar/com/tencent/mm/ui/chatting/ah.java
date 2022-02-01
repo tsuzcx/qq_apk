@@ -10,18 +10,18 @@ import com.tencent.mm.hellhoundlib.b.b;
 
 public final class ah
 {
-  private static ah JYJ;
-  Object JYI;
+  private static ah PjW;
+  Object PjV;
   
-  public static ah fGf()
+  public static ah gOj()
   {
     try
     {
       AppMethodBeat.i(34839);
-      if (JYJ == null) {
-        JYJ = new ah();
+      if (PjW == null) {
+        PjW = new ah();
       }
-      ah localah = JYJ;
+      ah localah = PjW;
       AppMethodBeat.o(34839);
       return localah;
     }
@@ -32,23 +32,23 @@ public final class ah
   public static final class a
     implements View.OnHoverListener
   {
-    private ah.b JYK;
+    private ah.b PjX;
     
     public a(ah.b paramb)
     {
-      this.JYK = paramb;
+      this.PjX = paramb;
     }
     
     public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(34838);
       b localb = new b();
-      localb.bd(paramView);
-      localb.bd(paramMotionEvent);
-      a.b("com/tencent/mm/ui/chatting/OnHoverCompatibleHelper$CompatibleOnHoverListener", "android/view/View$OnHoverListener", "onHover", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-      if (this.JYK != null)
+      localb.bm(paramView);
+      localb.bm(paramMotionEvent);
+      a.b("com/tencent/mm/ui/chatting/OnHoverCompatibleHelper$CompatibleOnHoverListener", "android/view/View$OnHoverListener", "onHover", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.axR());
+      if (this.PjX != null)
       {
-        boolean bool = this.JYK.f(paramView, paramMotionEvent);
+        boolean bool = this.PjX.g(paramView, paramMotionEvent);
         a.a(bool, this, "com/tencent/mm/ui/chatting/OnHoverCompatibleHelper$CompatibleOnHoverListener", "android/view/View$OnHoverListener", "onHover", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(34838);
         return bool;
@@ -61,12 +61,12 @@ public final class ah
   
   public static abstract interface b
   {
-    public abstract boolean f(View paramView, MotionEvent paramMotionEvent);
+    public abstract boolean g(View paramView, MotionEvent paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ah
  * JD-Core Version:    0.7.0.1
  */

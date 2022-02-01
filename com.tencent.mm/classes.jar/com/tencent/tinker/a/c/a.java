@@ -3,10 +3,10 @@ package com.tencent.tinker.a.c;
 public final class a
   implements Cloneable
 {
-  private static final boolean[] MBr = new boolean[0];
-  private static final int[] bQP = new int[0];
-  private boolean[] MBs = new boolean[10];
-  private int[] OW = new int[10];
+  private static final boolean[] Sht = new boolean[0];
+  private static final int[] bYn = new int[0];
+  private int[] Pi = new int[10];
+  private boolean[] Shu = new boolean[10];
   private int mSize = 0;
   
   public a()
@@ -49,7 +49,7 @@ public final class a
     return i;
   }
   
-  private a gcR()
+  private a hoZ()
   {
     try
     {
@@ -60,8 +60,8 @@ public final class a
     {
       try
       {
-        locala.OW = ((int[])this.OW.clone());
-        locala.MBs = ((boolean[])this.MBs.clone());
+        locala.Pi = ((int[])this.Pi.clone());
+        locala.Shu = ((boolean[])this.Shu.clone());
         return locala;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -70,16 +70,16 @@ public final class a
     }
   }
   
-  public final void aiD(int paramInt)
+  public final void asd(int paramInt)
   {
-    int i = b(this.OW, this.mSize, paramInt);
+    int i = b(this.Pi, this.mSize, paramInt);
     if (i >= 0)
     {
-      this.MBs[i] = true;
+      this.Shu[i] = true;
       return;
     }
     i ^= 0xFFFFFFFF;
-    Object localObject1 = this.OW;
+    Object localObject1 = this.Pi;
     int j = this.mSize;
     if (j > localObject1.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + localObject1.length + " currentSize: " + j);
@@ -92,8 +92,8 @@ public final class a
     Object localObject2;
     for (;;)
     {
-      this.OW = ((int[])localObject1);
-      localObject1 = this.MBs;
+      this.Pi = ((int[])localObject1);
+      localObject1 = this.Shu;
       paramInt = this.mSize;
       if (paramInt <= localObject1.length) {
         break;
@@ -112,7 +112,7 @@ public final class a
     }
     for (;;)
     {
-      this.MBs = ((boolean[])localObject1);
+      this.Shu = ((boolean[])localObject1);
       this.mSize += 1;
       return;
       localObject2 = new boolean[av(paramInt)];
@@ -123,9 +123,9 @@ public final class a
     }
   }
   
-  public final boolean gx(int paramInt)
+  public final boolean hM(int paramInt)
   {
-    return b(this.OW, this.mSize, paramInt) >= 0;
+    return b(this.Pi, this.mSize, paramInt) >= 0;
   }
   
   public final String toString()
@@ -141,9 +141,9 @@ public final class a
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.OW[i]);
+      localStringBuilder.append(this.Pi[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.MBs[i]);
+      localStringBuilder.append(this.Shu[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -152,7 +152,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.c.a
  * JD-Core Version:    0.7.0.1
  */

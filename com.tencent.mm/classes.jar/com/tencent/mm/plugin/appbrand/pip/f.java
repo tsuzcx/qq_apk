@@ -11,16 +11,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.h.c;
 import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.jsapi.q.g;
-import com.tencent.mm.plugin.appbrand.jsapi.q.h.a;
-import com.tencent.mm.plugin.appbrand.jsapi.q.i.a;
-import com.tencent.mm.plugin.appbrand.page.br;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.jsapi.s.g;
+import com.tencent.mm.plugin.appbrand.jsapi.s.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.s.i.a;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.bx;
 import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.t.e;
-import com.tencent.mm.plugin.appbrand.page.t.h;
+import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.page.w.e;
+import com.tencent.mm.plugin.appbrand.page.w.h;
+import com.tencent.mm.plugin.appbrand.utils.z;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -32,327 +34,383 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
 {
-  public final String crG;
-  public AppBrandPipContainerView jAa;
-  public final AppBrandRuntime jDb;
-  final t jzE;
-  final AudioManager mAudioManager;
+  public final String cDW;
+  public AppBrandPipContainerView kAR;
+  final w kAs;
+  public final AppBrandRuntime kEc;
+  private final AudioManager mAudioManager;
   public final Context mContext;
-  View mrn;
-  boolean msA;
-  a.a msB;
-  public i.a msC;
-  volatile boolean msD;
-  boolean msE;
-  boolean msF;
-  volatile Integer msG;
-  boolean msH;
-  boolean msI;
-  com.tencent.mm.plugin.appbrand.utils.z msJ;
-  com.tencent.mm.plugin.appbrand.utils.z msK;
-  volatile boolean msL;
-  AudioManager.OnAudioFocusChangeListener msM;
-  public j msN;
-  private i msO;
-  public d msP;
-  volatile boolean msQ;
-  volatile boolean mst;
-  public final Map<Integer, a> msu;
-  private Map<Integer, Set<String>> msv;
-  public b msw;
-  com.tencent.mm.plugin.appbrand.jsapi.q.h msx;
-  public String msy;
-  q msz;
+  View nBY;
+  volatile boolean nDd;
+  public final Map<Integer, a> nDe;
+  private Map<Integer, Set<String>> nDf;
+  public b nDg;
+  com.tencent.mm.plugin.appbrand.jsapi.s.h nDh;
+  public String nDi;
+  t nDj;
+  boolean nDk;
+  a.a nDl;
+  public i.a nDm;
+  volatile boolean nDn;
+  boolean nDo;
+  boolean nDp;
+  volatile Integer nDq;
+  boolean nDr;
+  boolean nDs;
+  z nDt;
+  z nDu;
+  private AudioManager.OnAudioFocusChangeListener nDv;
+  public j nDw;
+  private i nDx;
+  public d nDy;
+  volatile boolean nDz;
   
   public f(Context paramContext, AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(207953);
-    this.crG = ("MicroMsg.AppBrand.AppBrandPipManager#" + hashCode());
-    this.jAa = null;
-    this.mst = false;
-    this.msu = new ConcurrentHashMap();
-    this.msv = new ConcurrentHashMap();
-    this.mrn = null;
-    this.msw = null;
-    this.msx = null;
-    this.msy = null;
-    this.msz = null;
-    this.msA = true;
-    this.msB = null;
-    this.msC = null;
-    this.msD = false;
-    this.msE = false;
-    this.msF = false;
-    this.msG = null;
-    this.msH = false;
-    this.msI = false;
-    this.msJ = null;
-    this.msK = null;
-    this.msL = false;
-    this.msM = null;
-    this.msN = null;
-    this.msO = null;
-    this.msP = null;
+    AppMethodBeat.i(219555);
+    this.cDW = ("MicroMsg.AppBrand.AppBrandPipManager#" + hashCode());
+    this.kAR = null;
+    this.nDd = false;
+    this.nDe = new ConcurrentHashMap();
+    this.nDf = new ConcurrentHashMap();
+    this.nBY = null;
+    this.nDg = null;
+    this.nDh = null;
+    this.nDi = null;
+    this.nDj = null;
+    this.nDk = true;
+    this.nDl = null;
+    this.nDm = null;
+    this.nDn = false;
+    this.nDo = false;
+    this.nDp = false;
+    this.nDq = null;
+    this.nDr = false;
+    this.nDs = false;
+    this.nDt = null;
+    this.nDu = null;
+    this.nDv = null;
+    this.nDw = null;
+    this.nDx = null;
+    this.nDy = null;
     this.mContext = paramContext;
-    this.jDb = paramAppBrandRuntime;
+    this.kEc = paramAppBrandRuntime;
     this.mAudioManager = ((AudioManager)paramContext.getApplicationContext().getSystemService("audio"));
-    this.jzE = paramAppBrandRuntime.aWm();
+    this.kAs = paramAppBrandRuntime.brh();
     if (!paramAppBrandRuntime.mResumed) {}
     for (boolean bool = true;; bool = false)
     {
-      this.msQ = bool;
-      AppMethodBeat.o(207953);
+      this.nDz = bool;
+      AppMethodBeat.o(219555);
       return;
     }
   }
   
-  public static String r(q paramq)
+  private AudioManager.OnAudioFocusChangeListener bTH()
   {
-    AppMethodBeat.i(207962);
-    if (paramq == null)
-    {
-      AppMethodBeat.o(207962);
-      return "null";
-    }
-    paramq = paramq.getClass().getSimpleName() + "@" + paramq.hashCode() + "(" + paramq.getCurrentUrl() + ")";
-    AppMethodBeat.o(207962);
-    return paramq;
-  }
-  
-  public final void bxw()
-  {
-    AppMethodBeat.i(207955);
-    if ((this.jAa != null) && (this.msN != null))
-    {
-      if (this.msO == null) {
-        this.msO = this.msN.a(this.jDb.mAppId, this.jAa);
-      }
-      this.msO.a(new h()
+    AppMethodBeat.i(219565);
+    if (this.nDv == null) {
+      this.nDv = new AudioManager.OnAudioFocusChangeListener()
       {
-        public final void e(final Point paramAnonymousPoint)
+        public final void onAudioFocusChange(int paramAnonymousInt)
         {
-          AppMethodBeat.i(207945);
-          if (paramAnonymousPoint == null)
+          AppMethodBeat.i(219543);
+          Log.d(f.this.cDW, "onAudioFocusChange, focusChange: ".concat(String.valueOf(paramAnonymousInt)));
+          if (f.this.nDz)
           {
-            ae.i(f.this.crG, "onPipStablePosGot, point is null");
-            AppMethodBeat.o(207945);
+            Log.i(f.this.cDW, "onAudioFocusChange, runtime paused");
+            AppMethodBeat.o(219543);
             return;
           }
-          com.tencent.e.h.MqF.aM(new Runnable()
+          if (f.this.nDl == null)
+          {
+            Log.d(f.this.cDW, "onAudioFocusChange, mPipVideoSession is null");
+            AppMethodBeat.o(219543);
+            return;
+          }
+          if ((f.this.nDi == null) || ((f.this.nDr) && (f.this.nDs)))
+          {
+            Log.d(f.this.cDW, "onAudioFocusChange, mPipVideoRelatedKey is null or is transfering from");
+            AppMethodBeat.o(219543);
+            return;
+          }
+          switch (paramAnonymousInt)
+          {
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(219543);
+            return;
+            f.this.nDl.nBW.start();
+            AppMethodBeat.o(219543);
+            return;
+            f.this.aeA("onAudioFocusChange");
+            f.this.nDl.nBW.pause();
+            f.this.nDp = true;
+          }
+        }
+      };
+    }
+    AudioManager.OnAudioFocusChangeListener localOnAudioFocusChangeListener = this.nDv;
+    AppMethodBeat.o(219565);
+    return localOnAudioFocusChangeListener;
+  }
+  
+  public static String s(t paramt)
+  {
+    AppMethodBeat.i(219566);
+    if (paramt == null)
+    {
+      AppMethodBeat.o(219566);
+      return "null";
+    }
+    paramt = paramt.getClass().getSimpleName() + "@" + paramt.hashCode() + "(" + paramt.getCurrentUrl() + ")";
+    AppMethodBeat.o(219566);
+    return paramt;
+  }
+  
+  final void aeA(String paramString)
+  {
+    AppMethodBeat.i(219564);
+    Log.d(this.cDW, paramString + ", abandonAudioFocus");
+    this.mAudioManager.abandonAudioFocus(bTH());
+    AppMethodBeat.o(219564);
+  }
+  
+  public final void bTG()
+  {
+    AppMethodBeat.i(219557);
+    if ((this.kAR != null) && (this.nDw != null))
+    {
+      if (this.nDx == null) {
+        this.nDx = this.nDw.a(this.kEc.mAppId, this.kAR);
+      }
+      this.nDx.a(new h()
+      {
+        public final void f(final Point paramAnonymousPoint)
+        {
+          AppMethodBeat.i(219547);
+          if (paramAnonymousPoint == null)
+          {
+            Log.i(f.this.cDW, "onPipStablePosGot, point is null");
+            AppMethodBeat.o(219547);
+            return;
+          }
+          com.tencent.f.h.RTc.aV(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(207944);
-              if (f.this.jAa != null) {
-                f.this.jAa.setStablePos(paramAnonymousPoint);
+              AppMethodBeat.i(219546);
+              if (f.this.kAR != null) {
+                f.this.kAR.setStablePos(paramAnonymousPoint);
               }
-              AppMethodBeat.o(207944);
+              AppMethodBeat.o(219546);
             }
           });
-          AppMethodBeat.o(207945);
+          AppMethodBeat.o(219547);
         }
       });
     }
-    AppMethodBeat.o(207955);
+    AppMethodBeat.o(219557);
   }
   
-  final boolean hw(boolean paramBoolean)
+  final boolean ix(boolean paramBoolean)
   {
-    AppMethodBeat.i(207958);
-    if ((this.jAa == null) || (this.msx == null) || (this.mrn == null))
+    AppMethodBeat.i(219560);
+    if ((this.kAR == null) || (this.nDh == null) || (this.nBY == null))
     {
-      AppMethodBeat.o(207958);
+      AppMethodBeat.o(219560);
       return false;
     }
     Object localObject1;
-    if (this.msK != null)
+    if (this.nDu != null)
     {
-      localObject1 = this.msK;
-      ((com.tencent.mm.plugin.appbrand.utils.z)localObject1).mUr.set(0);
-      ((com.tencent.mm.plugin.appbrand.utils.z)localObject1).run();
-      this.msK = null;
+      localObject1 = this.nDu;
+      ((z)localObject1).ohs.set(0);
+      ((z)localObject1).run();
+      this.nDu = null;
     }
     Object localObject2 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(207946);
-        ae.i(f.this.crG, "transferFrom, dismissTask run");
-        f.this.msJ = null;
-        if ((f.this.jAa == null) || (f.this.mrn == null) || (f.this.msx == null))
+        AppMethodBeat.i(219548);
+        Log.i(f.this.cDW, "transferFrom, dismissTask run");
+        f.this.nDt = null;
+        if ((f.this.kAR == null) || (f.this.nBY == null) || (f.this.nDh == null))
         {
-          AppMethodBeat.o(207946);
+          AppMethodBeat.o(219548);
           return;
         }
-        AppBrandPipContainerView localAppBrandPipContainerView = f.this.jAa;
-        View localView = f.this.mrn;
-        localAppBrandPipContainerView.mXH.removeView(localView);
-        f.this.msx.cq(f.this.mrn);
-        f.this.jAa.setVisibility(4);
-        f.this.mrn = null;
-        f.this.msw = null;
-        AppMethodBeat.o(207946);
+        AppBrandPipContainerView localAppBrandPipContainerView = f.this.kAR;
+        View localView = f.this.nBY;
+        localAppBrandPipContainerView.okL.removeView(localView);
+        f.this.nDh.cf(f.this.nBY);
+        f.this.kAR.setVisibility(4);
+        f.this.nBY = null;
+        f.this.nDg = null;
+        AppMethodBeat.o(219548);
       }
     };
-    ae.i(this.crG, "transferFrom");
+    Log.i(this.cDW, "transferFrom");
     if (paramBoolean)
     {
-      localObject1 = this.msx;
-      View localView = this.mrn;
-      localObject2 = new com.tencent.mm.plugin.appbrand.utils.z((Runnable)localObject2, (byte)0);
-      this.msJ = ((com.tencent.mm.plugin.appbrand.utils.z)localObject2);
-      ((com.tencent.mm.plugin.appbrand.jsapi.q.h)localObject1).e(localView, (Runnable)localObject2);
+      localObject1 = this.nDh;
+      View localView = this.nBY;
+      localObject2 = new z((Runnable)localObject2, (byte)0);
+      this.nDt = ((z)localObject2);
+      ((com.tencent.mm.plugin.appbrand.jsapi.s.h)localObject1).e(localView, (Runnable)localObject2);
     }
     for (;;)
     {
-      AppMethodBeat.o(207958);
+      AppMethodBeat.o(219560);
       return true;
-      this.msx.e(this.mrn, null);
+      this.nDh.e(this.nBY, null);
       ((Runnable)localObject2).run();
     }
   }
   
-  final void q(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(207960);
-    Set localSet = (Set)this.msv.get(Integer.valueOf(paramInt));
-    if (localSet != null)
-    {
-      ae.i(this.crG, paramString2 + ", mPageView2VideosMap remove " + paramString1 + " for " + paramInt);
-      localSet.remove(paramString1);
-    }
-    AppMethodBeat.o(207960);
-  }
-  
   final void r(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(207961);
-    Set localSet = (Set)this.msv.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(219562);
+    Set localSet = (Set)this.nDf.get(Integer.valueOf(paramInt));
+    if (localSet != null)
+    {
+      Log.i(this.cDW, paramString2 + ", mPageView2VideosMap remove " + paramString1 + " for " + paramInt);
+      localSet.remove(paramString1);
+    }
+    AppMethodBeat.o(219562);
+  }
+  
+  final void s(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(219563);
+    Set localSet = (Set)this.nDf.get(Integer.valueOf(paramInt));
     Object localObject = localSet;
     if (localSet == null)
     {
       localObject = new HashSet();
-      this.msv.put(Integer.valueOf(paramInt), localObject);
+      this.nDf.put(Integer.valueOf(paramInt), localObject);
     }
-    ae.i(this.crG, paramString2 + ", mPageView2VideosMap add " + paramString1 + " for " + paramInt);
+    Log.i(this.cDW, paramString2 + ", mPageView2VideosMap add " + paramString1 + " for " + paramInt);
     ((Set)localObject).add(paramString1);
-    AppMethodBeat.o(207961);
-  }
-  
-  public final a u(com.tencent.mm.plugin.appbrand.page.z paramz)
-  {
-    AppMethodBeat.i(207957);
-    paramz = ve(paramz.hashCode());
-    AppMethodBeat.o(207957);
-    return paramz;
-  }
-  
-  public final boolean vd(int paramInt)
-  {
-    AppMethodBeat.i(207954);
-    ae.i(this.crG, "exitPip, viewId: ".concat(String.valueOf(paramInt)));
-    if (this.msD)
-    {
-      ae.w(this.crG, "exitPip when mPipClickProcessing, return");
-      AppMethodBeat.o(207954);
-      return false;
-    }
-    if ((this.msy != null) && (this.msy.contains(String.valueOf(paramInt))))
-    {
-      if ((this.msB != null) && (this.msP != null)) {
-        this.msP.a(this.msB.mrm, e.msq);
-      }
-      if (this.jAa != null) {
-        this.jAa.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(207943);
-            f.a(f.this);
-            AppMethodBeat.o(207943);
-          }
-        });
-      }
-      AppMethodBeat.o(207954);
-      return true;
-    }
-    AppMethodBeat.o(207954);
-    return false;
-  }
-  
-  final a ve(int paramInt)
-  {
-    AppMethodBeat.i(207956);
-    a locala = (a)this.msu.get(Integer.valueOf(paramInt));
-    if (locala == null)
-    {
-      ae.w(this.crG, "getPageScopedPipInfo, null == pageScopedPipInfo");
-      AppMethodBeat.o(207956);
-      return null;
-    }
-    AppMethodBeat.o(207956);
-    return locala;
+    AppMethodBeat.o(219563);
   }
   
   final void y(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(207959);
-    ae.i(this.crG, "clearPipVideoRelated, mayPause: " + paramBoolean1 + ", mayDestroyPage: " + paramBoolean2);
-    if ((this.msy != null) && (this.msB != null) && (this.msz != null) && (this.msB.mrj != null)) {
-      this.msB.mrj.gI(this.msB.id).d(this.msz);
+    AppMethodBeat.i(219561);
+    Log.i(this.cDW, "clearPipVideoRelated, mayPause: " + paramBoolean1 + ", mayDestroyPage: " + paramBoolean2);
+    if ((this.nDi != null) && (this.nDl != null) && (this.nDj != null) && (this.nDl.nBU != null)) {
+      this.nDl.nBU.hX(this.nDl.id).d(this.nDj);
     }
-    String str = this.msy;
-    this.msy = null;
+    String str = this.nDi;
+    this.nDi = null;
     int i;
     Object localObject;
-    if (this.msz != null)
+    if (this.nDj != null)
     {
-      i = this.msz.getCurrentPageView().hashCode();
-      r(i, str, "clearPipVideoRelated");
+      i = this.nDj.getCurrentPageView().hashCode();
+      s(i, str, "clearPipVideoRelated");
       if (paramBoolean2)
       {
-        localObject = this.jzE.getCurrentPage();
+        localObject = this.kAs.getCurrentPage();
         if (localObject != null) {
           break label312;
         }
-        ae.w(this.crG, "clearPipVideoRelated, curPage is null");
+        Log.w(this.cDW, "clearPipVideoRelated, curPage is null");
       }
     }
     for (;;)
     {
-      this.msz.mew = false;
-      if ((paramBoolean1) && (this.msB != null) && (this.msB.mrl != null)) {
-        this.msB.mrl.pause();
+      this.nDj.noQ = false;
+      if ((paramBoolean1) && (this.nDl != null) && (this.nDl.nBW != null)) {
+        this.nDl.nBW.pause();
       }
-      if ((paramBoolean2) && (!this.msA))
+      if ((paramBoolean2) && (!this.nDk))
       {
-        ae.i(this.crG, "clearPipVideoRelated, performDestroy and performCleanup");
-        this.msz.performDestroy();
-        this.msz.Es();
-        if (this.msB != null)
+        Log.i(this.cDW, "clearPipVideoRelated, performDestroy and performCleanup");
+        this.nDj.performDestroy();
+        this.nDj.NR();
+        if (this.nDl != null)
         {
-          localObject = this.msB;
-          if (((a.a)localObject).mrl != null) {
-            ((a.a)localObject).mrl.a(null);
+          localObject = this.nDl;
+          if (((a.a)localObject).nBW != null) {
+            ((a.a)localObject).nBW.a(null);
           }
         }
-        q(i, str, "clearPipVideoRelated");
+        r(i, str, "clearPipVideoRelated");
       }
-      this.msz = null;
-      this.jzE.setPipVideoRelatedPage(null);
-      this.msA = true;
-      this.msB = null;
-      AppMethodBeat.o(207959);
+      this.nDj = null;
+      this.kAs.setPipVideoRelatedPage(null);
+      this.nDk = true;
+      this.nDl = null;
+      AppMethodBeat.o(219561);
       return;
       label312:
-      ((q)localObject).a(br.mko, null);
-      ((q)localObject).buP();
+      ((t)localObject).a(bx.nuL, null);
+      ((t)localObject).b(bx.nuL);
     }
+  }
+  
+  public final boolean yV(int paramInt)
+  {
+    AppMethodBeat.i(219556);
+    Log.i(this.cDW, "exitPip, viewId: ".concat(String.valueOf(paramInt)));
+    if (this.nDn)
+    {
+      Log.w(this.cDW, "exitPip when mPipClickProcessing, return");
+      AppMethodBeat.o(219556);
+      return false;
+    }
+    if ((this.nDi != null) && (this.nDi.contains(String.valueOf(paramInt))))
+    {
+      if ((this.nDl != null) && (this.nDy != null)) {
+        this.nDy.a(this.nDl.nBX, e.nDa);
+      }
+      if (this.kAR != null) {
+        this.kAR.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(219545);
+            f.a(f.this);
+            AppMethodBeat.o(219545);
+          }
+        });
+      }
+      AppMethodBeat.o(219556);
+      return true;
+    }
+    AppMethodBeat.o(219556);
+    return false;
+  }
+  
+  final a yW(int paramInt)
+  {
+    AppMethodBeat.i(219558);
+    a locala = (a)this.nDe.get(Integer.valueOf(paramInt));
+    if (locala == null)
+    {
+      Log.w(this.cDW, "getPageScopedPipInfo, null == pageScopedPipInfo");
+      AppMethodBeat.o(219558);
+      return null;
+    }
+    AppMethodBeat.o(219558);
+    return locala;
+  }
+  
+  public final a z(ac paramac)
+  {
+    AppMethodBeat.i(219559);
+    paramac = yW(paramac.hashCode());
+    AppMethodBeat.o(219559);
+    return paramac;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.f
  * JD-Core Version:    0.7.0.1
  */

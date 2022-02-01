@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class gl
-  extends b
+  extends IEvent
 {
-  public a dtm;
-  public b dtn;
+  public a dKn;
   
   public gl()
   {
@@ -16,29 +16,24 @@ public final class gl
   
   private gl(byte paramByte)
   {
-    AppMethodBeat.i(127288);
-    this.dtm = new a();
-    this.dtn = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(63288);
+    this.dKn = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(127288);
+    AppMethodBeat.o(63288);
   }
   
   public static final class a
   {
-    public int dto = 0;
-    public int state = -1;
-    public String talker;
-  }
-  
-  public static final class b
-  {
-    public int state = -1;
+    public String dKo;
+    public int dKp = 0;
+    public Activity dKq;
+    public int mRequestCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.gl
  * JD-Core Version:    0.7.0.1
  */

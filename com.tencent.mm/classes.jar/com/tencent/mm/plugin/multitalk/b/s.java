@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.multitalk.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ae.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Log.LogImp;
 
 public final class s
 {
-  public static int cbh()
+  public static int cyW()
   {
-    AppMethodBeat.i(190713);
-    if (ae.fon() != null)
+    AppMethodBeat.i(239307);
+    if (Log.getImpl() != null)
     {
-      int i = ae.fon().getLogLevel(0L);
-      AppMethodBeat.o(190713);
+      int i = Log.getImpl().getLogLevel(0L);
+      AppMethodBeat.o(239307);
       return i;
     }
-    AppMethodBeat.o(190713);
+    AppMethodBeat.o(239307);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.b.s
  * JD-Core Version:    0.7.0.1
  */

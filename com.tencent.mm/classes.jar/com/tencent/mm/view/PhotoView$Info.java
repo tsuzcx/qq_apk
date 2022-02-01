@@ -13,15 +13,15 @@ public class PhotoView$Info
   implements Parcelable
 {
   public static final Parcelable.Creator<Info> CREATOR;
-  Rect LMK;
-  ImageView.ScaleType LMd;
-  float LMo;
-  RectF LMt;
-  RectF LMu;
-  PointF LMw;
-  float cQN;
-  public RectF mLN;
-  RectF ubC;
+  float RkD;
+  RectF RkI;
+  RectF RkJ;
+  PointF RkL;
+  Rect RkZ;
+  ImageView.ScaleType Rks;
+  float dhh;
+  public RectF nYV;
+  RectF xsQ;
   
   static
   {
@@ -33,46 +33,46 @@ public class PhotoView$Info
   public PhotoView$Info(Rect paramRect1, RectF paramRectF1, RectF paramRectF2, RectF paramRectF3, PointF paramPointF, float paramFloat1, float paramFloat2, ImageView.ScaleType paramScaleType, Rect paramRect2)
   {
     AppMethodBeat.i(164262);
-    this.mLN = new RectF();
-    this.LMu = new RectF();
-    this.ubC = new RectF();
-    this.LMt = new RectF();
-    this.LMw = new PointF();
-    this.LMK = new Rect();
-    this.mLN.set(paramRect1);
-    this.LMu.set(paramRectF1);
-    this.ubC.set(paramRectF2);
-    this.cQN = paramFloat1;
-    this.LMd = paramScaleType;
-    this.LMo = paramFloat2;
-    this.LMt.set(paramRectF3);
-    this.LMw.set(paramPointF);
-    this.LMK.set(paramRect2);
+    this.nYV = new RectF();
+    this.RkJ = new RectF();
+    this.xsQ = new RectF();
+    this.RkI = new RectF();
+    this.RkL = new PointF();
+    this.RkZ = new Rect();
+    this.nYV.set(paramRect1);
+    this.RkJ.set(paramRectF1);
+    this.xsQ.set(paramRectF2);
+    this.dhh = paramFloat1;
+    this.Rks = paramScaleType;
+    this.RkD = paramFloat2;
+    this.RkI.set(paramRectF3);
+    this.RkL.set(paramPointF);
+    this.RkZ.set(paramRect2);
     AppMethodBeat.o(164262);
   }
   
   protected PhotoView$Info(Parcel paramParcel)
   {
     AppMethodBeat.i(164265);
-    this.mLN = new RectF();
-    this.LMu = new RectF();
-    this.ubC = new RectF();
-    this.LMt = new RectF();
-    this.LMw = new PointF();
-    this.LMK = new Rect();
-    this.mLN = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-    this.LMu = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-    this.ubC = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-    this.LMt = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-    this.LMw = ((PointF)paramParcel.readParcelable(PointF.class.getClassLoader()));
-    this.LMK = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
-    this.cQN = paramParcel.readFloat();
-    this.LMo = paramParcel.readFloat();
+    this.nYV = new RectF();
+    this.RkJ = new RectF();
+    this.xsQ = new RectF();
+    this.RkI = new RectF();
+    this.RkL = new PointF();
+    this.RkZ = new Rect();
+    this.nYV = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+    this.RkJ = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+    this.xsQ = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+    this.RkI = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+    this.RkL = ((PointF)paramParcel.readParcelable(PointF.class.getClassLoader()));
+    this.RkZ = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
+    this.dhh = paramParcel.readFloat();
+    this.RkD = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i == -1) {}
     for (paramParcel = null;; paramParcel = ImageView.ScaleType.values()[i])
     {
-      this.LMd = paramParcel;
+      this.Rks = paramParcel;
       AppMethodBeat.o(164265);
       return;
     }
@@ -86,7 +86,7 @@ public class PhotoView$Info
   public String toString()
   {
     AppMethodBeat.i(164263);
-    String str = "Info{mRect=" + this.mLN + ", mImgRect=" + this.LMu + ", mWidgetRect=" + this.ubC + ", mBaseRect=" + this.LMt + ", mScale=" + this.cQN + '}';
+    String str = "Info{mRect=" + this.nYV + ", mImgRect=" + this.RkJ + ", mWidgetRect=" + this.xsQ + ", mBaseRect=" + this.RkI + ", mScale=" + this.dhh + '}';
     AppMethodBeat.o(164263);
     return str;
   }
@@ -94,16 +94,16 @@ public class PhotoView$Info
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(164264);
-    paramParcel.writeParcelable(this.mLN, paramInt);
-    paramParcel.writeParcelable(this.LMu, paramInt);
-    paramParcel.writeParcelable(this.ubC, paramInt);
-    paramParcel.writeParcelable(this.LMt, paramInt);
-    paramParcel.writeParcelable(this.LMw, paramInt);
-    paramParcel.writeParcelable(this.LMK, paramInt);
-    paramParcel.writeFloat(this.cQN);
-    paramParcel.writeFloat(this.LMo);
-    if (this.LMd == null) {}
-    for (paramInt = -1;; paramInt = this.LMd.ordinal())
+    paramParcel.writeParcelable(this.nYV, paramInt);
+    paramParcel.writeParcelable(this.RkJ, paramInt);
+    paramParcel.writeParcelable(this.xsQ, paramInt);
+    paramParcel.writeParcelable(this.RkI, paramInt);
+    paramParcel.writeParcelable(this.RkL, paramInt);
+    paramParcel.writeParcelable(this.RkZ, paramInt);
+    paramParcel.writeFloat(this.dhh);
+    paramParcel.writeFloat(this.RkD);
+    if (this.Rks == null) {}
+    for (paramInt = -1;; paramInt = this.Rks.ordinal())
     {
       paramParcel.writeInt(paramInt);
       AppMethodBeat.o(164264);

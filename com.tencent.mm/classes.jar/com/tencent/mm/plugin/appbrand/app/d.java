@@ -1,64 +1,56 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.f;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.plugin.appbrand.config.e;
+import com.tencent.mm.plugin.appbrand.service.g;
+import com.tencent.mm.plugin.appbrand.service.g.a;
+import com.tencent.mm.sdk.platformtools.MD5Util;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandProcessSharedMMKV;", "", "()V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "SP_NAME", "", "TAG", "UIN", "", "getUIN", "()I", "UIN_BY_SP", "getUIN_BY_SP", "UIN_BY_SP$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
 public final class d
+  implements g
 {
-  private static final f jGv;
-  public static final d jGw;
+  private String kIg;
+  private g.a kIh;
   
-  static
+  public final void UF(String paramString)
   {
-    AppMethodBeat.i(50163);
-    jGw = new d();
-    jGv = d.g.O((d.g.a.a)a.jGx);
-    AppMethodBeat.o(50163);
+    AppMethodBeat.i(226293);
+    this.kIg = MD5Util.getMD5String(paramString + String.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(226293);
   }
   
-  public static ay LD()
+  public final void a(g.a parama)
   {
-    AppMethodBeat.i(50164);
-    Object localObject = new StringBuilder("AppBrandProcessSharedMMKV_");
-    if (com.tencent.mm.kernel.g.ajM()) {
-      p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
-    }
-    for (int i = com.tencent.mm.kernel.a.getUin();; i = ((Number)jGv.getValue()).intValue())
-    {
-      localObject = ay.aRW(i);
-      AppMethodBeat.o(50164);
-      return localObject;
-    }
+    this.kIh = parama;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements d.g.a.a<Integer>
+  public final String bul()
   {
-    public static final a jGx;
-    
-    static
-    {
-      AppMethodBeat.i(50162);
-      jGx = new a();
-      AppMethodBeat.o(50162);
-    }
-    
-    a()
-    {
-      super();
-    }
+    return this.kIg;
+  }
+  
+  public final g.a bum()
+  {
+    return this.kIh;
+  }
+  
+  public final void clear()
+  {
+    this.kIg = null;
+    this.kIh = null;
+  }
+  
+  public final String cp(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(226292);
+    paramString1 = n.NL().get(paramString1, paramString2);
+    AppMethodBeat.o(226292);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.d
  * JD-Core Version:    0.7.0.1
  */

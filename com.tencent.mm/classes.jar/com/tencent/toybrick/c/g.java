@@ -10,10 +10,10 @@ public abstract class g<S extends g, T extends a>
   extends f<S, T>
   implements Comparable<g>
 {
-  CharSequence Hd;
-  public boolean MFW;
-  private int[] MFX;
-  public int bJr;
+  CharSequence Hn;
+  public boolean SnX;
+  private int[] SnY;
+  public int bJH;
   
   public boolean equals(Object paramObject)
   {
@@ -25,26 +25,26 @@ public abstract class g<S extends g, T extends a>
         return false;
       } while (!(paramObject instanceof g));
       paramObject = (g)paramObject;
-    } while ((paramObject.MFS == null) || (!paramObject.MFS.equals(this.MFS)) || (paramObject.Hd == null) || (!paramObject.Hd.equals(this.Hd)) || (paramObject.MFW != this.MFW) || (paramObject.isVisible != this.isVisible) || (paramObject.MFT != this.MFT));
+    } while ((paramObject.SnT == null) || (!paramObject.SnT.equals(this.SnT)) || (paramObject.Hn == null) || (!paramObject.Hn.equals(this.Hn)) || (paramObject.SnX != this.SnX) || (paramObject.isVisible != this.isVisible) || (paramObject.SnU != this.SnU));
     return true;
   }
   
-  public g.b gdg()
-  {
-    return g.b.MGd;
-  }
-  
-  public final int[] hv(View paramView)
+  public final int[] hN(View paramView)
   {
     paramView = paramView.findViewById(16908310);
-    int[] arrayOfInt = this.MFX;
+    int[] arrayOfInt = this.SnY;
     if (paramView == null) {}
-    for (int i = (int)this.MFQ.getResources().getDimension(2131165273);; i = paramView.getLeft())
+    for (int i = (int)this.SnR.getResources().getDimension(2131165275);; i = paramView.getLeft())
     {
       arrayOfInt[0] = i;
-      this.MFX[1] = ((int)this.MFQ.getResources().getDimension(2131165273));
-      return this.MFX;
+      this.SnY[1] = ((int)this.SnR.getResources().getDimension(2131165275));
+      return this.SnY;
     }
+  }
+  
+  public g.b hpJ()
+  {
+    return g.b.Soe;
   }
   
   public static enum a
@@ -52,11 +52,11 @@ public abstract class g<S extends g, T extends a>
     static
     {
       AppMethodBeat.i(159957);
-      MFY = new a("RED_NEW", 0);
-      MFZ = new a("RED_DOT", 1);
-      MGa = new a("RED_NUM", 2);
-      MGb = new a("NONE", 3);
-      MGc = new a[] { MFY, MFZ, MGa, MGb };
+      SnZ = new a("RED_NEW", 0);
+      Soa = new a("RED_DOT", 1);
+      Sob = new a("RED_NUM", 2);
+      Soc = new a("NONE", 3);
+      Sod = new a[] { SnZ, Soa, Sob, Soc };
       AppMethodBeat.o(159957);
     }
     

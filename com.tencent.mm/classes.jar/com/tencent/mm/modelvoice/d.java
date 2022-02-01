@@ -4,23 +4,23 @@ import com.tencent.mm.compatible.util.b.a;
 
 public abstract interface d
 {
-  public abstract boolean GB();
+  public abstract boolean Qt();
   
-  public abstract double PE();
+  public abstract double ZY();
   
   public abstract void a(a parama);
   
   public abstract void a(b paramb);
   
-  public abstract void aNL();
+  public abstract void bhQ();
   
-  public abstract void b(b.a parama);
+  public abstract void c(b.a parama);
   
   public abstract boolean c(String paramString, boolean paramBoolean, int paramInt);
   
-  public abstract void cm(boolean paramBoolean);
+  public abstract void cU(boolean paramBoolean);
   
-  public abstract boolean cs(boolean paramBoolean);
+  public abstract boolean da(boolean paramBoolean);
   
   public abstract int getStatus();
   

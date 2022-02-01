@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/g13" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ake" style="@style/a5p" />
+    <TextView android:id="@id/g1v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hs3" style="@style/a5p" />
+    <TextView android:id="@id/g1s" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ghb" style="@style/a5p" />
+    <TextView android:id="@id/g1r" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ghc" style="@style/a5p" />
+    <TextView android:id="@id/g1b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bk4" style="@style/a5p" />
+    <TextView android:id="@id/g1a" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bj4" style="@style/a5p" />
+    <TextView android:id="@id/g1n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fjl" style="@style/a5p" />
+    <TextView android:id="@id/g1c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bla" style="@style/a5p" />
+</LinearLayout>

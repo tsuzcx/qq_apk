@@ -1,27 +1,27 @@
 package com.tencent.mm.chatroom.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.y;
 
 public final class b
-  extends u
+  extends y
 {
-  private static b fNC;
+  private static b gsN;
   
   public b()
   {
     super(com.tencent.mm.chatroom.b.class);
   }
   
-  public static b Yt()
+  public static b amg()
   {
     try
     {
       AppMethodBeat.i(12505);
-      if (fNC == null) {
-        fNC = new b();
+      if (gsN == null) {
+        gsN = new b();
       }
-      b localb = fNC;
+      b localb = gsN;
       AppMethodBeat.o(12505);
       return localb;
     }
@@ -30,7 +30,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.plugin.b
  * JD-Core Version:    0.7.0.1
  */

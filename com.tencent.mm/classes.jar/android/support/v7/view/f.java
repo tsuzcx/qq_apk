@@ -15,163 +15,163 @@ import java.util.ArrayList;
 public final class f
   extends ActionMode
 {
-  final b adv;
+  final b adI;
   final Context mContext;
   
   public f(Context paramContext, b paramb)
   {
     this.mContext = paramContext;
-    this.adv = paramb;
+    this.adI = paramb;
   }
   
   public final void finish()
   {
-    this.adv.finish();
+    this.adI.finish();
   }
   
   public final View getCustomView()
   {
-    return this.adv.getCustomView();
+    return this.adI.getCustomView();
   }
   
   public final Menu getMenu()
   {
-    return q.a(this.mContext, (a)this.adv.getMenu());
+    return q.a(this.mContext, (a)this.adI.getMenu());
   }
   
   public final MenuInflater getMenuInflater()
   {
-    return this.adv.getMenuInflater();
+    return this.adI.getMenuInflater();
   }
   
   public final CharSequence getSubtitle()
   {
-    return this.adv.getSubtitle();
+    return this.adI.getSubtitle();
   }
   
   public final Object getTag()
   {
-    return this.adv.mTag;
+    return this.adI.mTag;
   }
   
   public final CharSequence getTitle()
   {
-    return this.adv.getTitle();
+    return this.adI.getTitle();
   }
   
   public final boolean getTitleOptionalHint()
   {
-    return this.adv.adr;
+    return this.adI.adE;
   }
   
   public final void invalidate()
   {
-    this.adv.invalidate();
+    this.adI.invalidate();
   }
   
   public final boolean isTitleOptional()
   {
-    return this.adv.isTitleOptional();
+    return this.adI.isTitleOptional();
   }
   
   public final void setCustomView(View paramView)
   {
-    this.adv.setCustomView(paramView);
+    this.adI.setCustomView(paramView);
   }
   
   public final void setSubtitle(int paramInt)
   {
-    this.adv.setSubtitle(paramInt);
+    this.adI.setSubtitle(paramInt);
   }
   
   public final void setSubtitle(CharSequence paramCharSequence)
   {
-    this.adv.setSubtitle(paramCharSequence);
+    this.adI.setSubtitle(paramCharSequence);
   }
   
   public final void setTag(Object paramObject)
   {
-    this.adv.mTag = paramObject;
+    this.adI.mTag = paramObject;
   }
   
   public final void setTitle(int paramInt)
   {
-    this.adv.setTitle(paramInt);
+    this.adI.setTitle(paramInt);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    this.adv.setTitle(paramCharSequence);
+    this.adI.setTitle(paramCharSequence);
   }
   
   public final void setTitleOptionalHint(boolean paramBoolean)
   {
-    this.adv.setTitleOptionalHint(paramBoolean);
+    this.adI.setTitleOptionalHint(paramBoolean);
   }
   
   public static final class a
     implements b.a
   {
-    final ActionMode.Callback adw;
-    final ArrayList<f> adx;
-    final n<Menu, Menu> ady;
+    final ActionMode.Callback adJ;
+    final ArrayList<f> adK;
+    final n<Menu, Menu> adL;
     final Context mContext;
     
     public a(Context paramContext, ActionMode.Callback paramCallback)
     {
       this.mContext = paramContext;
-      this.adw = paramCallback;
-      this.adx = new ArrayList();
-      this.ady = new n();
+      this.adJ = paramCallback;
+      this.adK = new ArrayList();
+      this.adL = new n();
     }
     
     private Menu b(Menu paramMenu)
     {
-      Menu localMenu2 = (Menu)this.ady.get(paramMenu);
+      Menu localMenu2 = (Menu)this.adL.get(paramMenu);
       Menu localMenu1 = localMenu2;
       if (localMenu2 == null)
       {
         localMenu1 = q.a(this.mContext, (a)paramMenu);
-        this.ady.put(paramMenu, localMenu1);
+        this.adL.put(paramMenu, localMenu1);
       }
       return localMenu1;
     }
     
     public final void a(b paramb)
     {
-      this.adw.onDestroyActionMode(b(paramb));
+      this.adJ.onDestroyActionMode(b(paramb));
     }
     
     public final boolean a(b paramb, Menu paramMenu)
     {
-      return this.adw.onCreateActionMode(b(paramb), b(paramMenu));
+      return this.adJ.onCreateActionMode(b(paramb), b(paramMenu));
     }
     
     public final boolean a(b paramb, MenuItem paramMenuItem)
     {
-      return this.adw.onActionItemClicked(b(paramb), q.a(this.mContext, (android.support.v4.a.a.b)paramMenuItem));
+      return this.adJ.onActionItemClicked(b(paramb), q.a(this.mContext, (android.support.v4.a.a.b)paramMenuItem));
     }
     
     public final ActionMode b(b paramb)
     {
-      int j = this.adx.size();
+      int j = this.adK.size();
       int i = 0;
       while (i < j)
       {
-        f localf = (f)this.adx.get(i);
-        if ((localf != null) && (localf.adv == paramb)) {
+        f localf = (f)this.adK.get(i);
+        if ((localf != null) && (localf.adI == paramb)) {
           return localf;
         }
         i += 1;
       }
       paramb = new f(this.mContext, paramb);
-      this.adx.add(paramb);
+      this.adK.add(paramb);
       return paramb;
     }
     
     public final boolean b(b paramb, Menu paramMenu)
     {
-      return this.adw.onPrepareActionMode(b(paramb), b(paramMenu));
+      return this.adJ.onPrepareActionMode(b(paramb), b(paramMenu));
     }
   }
 }

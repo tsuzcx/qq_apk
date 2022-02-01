@@ -8,6 +8,8 @@ public abstract interface TileOverlayCallback
 {
   public abstract Bitmap onLoadTile(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte);
   
+  public abstract void onLoadTileFinish(int paramInt1, int paramInt2, int paramInt3);
+  
   public abstract void onWriteTile(int paramInt1, int paramInt2, int paramInt3, String paramString, byte[] paramArrayOfByte);
 }
 

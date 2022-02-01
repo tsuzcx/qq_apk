@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.clean.c;
 
 import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,44 +12,44 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  implements az
+  implements bd
 {
-  private static d paP;
+  private static d qpN;
   public long cacheSize;
   public long dataSize;
-  public LinkedList<String> oCB;
-  public List<Runnable> oCC;
-  public long paM;
-  public HashMap<String, Long> paN;
-  public HashSet<String> paO;
-  public long paw;
-  public long pax;
+  public LinkedList<String> pQk;
+  public List<Runnable> pQl;
+  public long qpK;
+  public HashMap<String, Long> qpL;
+  public HashSet<String> qpM;
+  public long qpu;
+  public long qpv;
   
   private d()
   {
-    AppMethodBeat.i(186437);
-    this.oCC = new ArrayList();
-    AppMethodBeat.o(186437);
+    AppMethodBeat.i(231658);
+    this.pQl = new ArrayList();
+    AppMethodBeat.o(231658);
   }
   
-  public static d caX()
+  public static d cyM()
   {
     AppMethodBeat.i(22827);
-    if (paP == null) {
-      paP = new d();
+    if (qpN == null) {
+      qpN = new d();
     }
-    d locald = paP;
+    d locald = qpN;
     AppMethodBeat.o(22827);
     return locald;
   }
   
-  public static long caY()
+  public static long cyN()
   {
     AppMethodBeat.i(22832);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.asd());
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aKD());
       l = localStatFs.getBlockCount();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -62,6 +62,7 @@ public final class d
       }
       AppMethodBeat.o(22832);
     }
+    Log.i("MicroMsg.SubCoreClean", "getSdcardFullSize:%d", new Object[] { Long.valueOf(l) });
     if (l <= 0L)
     {
       AppMethodBeat.o(22832);
@@ -70,13 +71,13 @@ public final class d
     return l;
   }
   
-  public static long caZ()
+  public static long cyO()
   {
     AppMethodBeat.i(22833);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.asd());
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aKD());
       l = localStatFs.getAvailableBlocks();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -97,17 +98,17 @@ public final class d
     return l;
   }
   
-  public static void cba()
+  public static void cyP()
   {
     AppMethodBeat.i(22834);
-    com.tencent.mm.plugin.f.b.bUj().bUl();
+    com.tencent.mm.plugin.f.b.crW().crY();
     AppMethodBeat.o(22834);
   }
   
   public final void clearPluginData(int paramInt)
   {
     AppMethodBeat.i(22828);
-    a.caV();
+    a.cyK();
     AppMethodBeat.o(22828);
   }
   
@@ -119,40 +120,40 @@ public final class d
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(22829);
-    ae.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.plugin.f.b.bUj().onAccountInitialized(null);
+    Log.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.plugin.f.b.crW().onAccountInitialized(null);
     AppMethodBeat.o(22829);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(22831);
-    ae.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
-    this.paM = 0L;
+    Log.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
+    this.qpK = 0L;
     this.dataSize = 0L;
-    this.paw = 0L;
-    this.pax = 0L;
-    if (this.paN != null) {
-      this.paN.clear();
+    this.qpu = 0L;
+    this.qpv = 0L;
+    if (this.qpL != null) {
+      this.qpL.clear();
     }
-    if (this.paO != null) {
-      this.paO.clear();
+    if (this.qpM != null) {
+      this.qpM.clear();
     }
-    a.caV();
-    com.tencent.mm.plugin.f.b.bUj().onAccountRelease();
+    a.cyK();
+    com.tencent.mm.plugin.f.b.crW().onAccountRelease();
     AppMethodBeat.o(22831);
   }
   
   public final void onSdcardMount(boolean paramBoolean)
   {
     AppMethodBeat.i(22830);
-    ae.i("MicroMsg.SubCoreClean", "summerclean onSdcardMount mounted[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.SubCoreClean", "summerclean onSdcardMount mounted[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(22830);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.d
  * JD-Core Version:    0.7.0.1
  */

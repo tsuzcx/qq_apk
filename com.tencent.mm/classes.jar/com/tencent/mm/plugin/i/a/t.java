@@ -1,57 +1,22 @@
 package com.tencent.mm.plugin.i.a;
 
-import android.content.Context;
-import android.content.Intent;
-import android.widget.ImageView;
-import com.tencent.mm.kernel.b.a;
-import java.util.List;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.protocal.protobuf.ayt;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyBlackList;", "Lcom/tencent/mm/kernel/service/IService;", "modifyCommentBlackList", "", "commentId", "", "feedId", "feedNonceId", "", "isBlack", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "modifyFansBlackList", "fansId", "modifyLiveBlackList", "username", "finder-sdk_release"})
 public abstract interface t
   extends a
 {
-  public abstract void dumpAndMarkFinderFolder();
+  public abstract void a(long paramLong1, long paramLong2, String paramString, ai<ayt> paramai);
   
-  public abstract void enterFinderConversationUI(Context paramContext);
+  public abstract void b(String paramString, ai<ayt> paramai);
   
-  public abstract void enterFinderPostRouterUI(Context paramContext, Intent paramIntent);
-  
-  public abstract void enterFinderProfileUI(Context paramContext, Intent paramIntent);
-  
-  public abstract void enterFinderShareFeedUI(Context paramContext, Intent paramIntent);
-  
-  public abstract void enterFinderShareFeedUI(Context paramContext, String paramString, Intent paramIntent);
-  
-  public abstract void enterFinderTimelineUI(Context paramContext, Intent paramIntent);
-  
-  public abstract void enterFinderTopicUI(Context paramContext, Intent paramIntent);
-  
-  public abstract void enterFinderUI(Context paramContext, String paramString);
-  
-  public abstract String fillContextIdToIntent(int paramInt1, int paramInt2, int paramInt3, Intent paramIntent);
-  
-  public abstract o getRedDotManager();
-  
-  public abstract int getTimelineCommentScene();
-  
-  public abstract boolean hasFinderPosted();
-  
-  public abstract void loadImage(String paramString, ImageView paramImageView);
-  
-  public abstract void reportPostRedDot(int paramInt);
-  
-  public abstract void shareStatsReport(List<String> paramList);
-  
-  public abstract boolean showFinderEntry();
-  
-  public abstract boolean showPostEntry();
-  
-  public abstract void snsToFinderPostReport(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, long paramLong3, int paramInt5);
-  
-  public abstract Object tryGetFinderObject(long paramLong, String paramString, int paramInt);
+  public abstract void b(String paramString, boolean paramBoolean, ai<ayt> paramai);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/b3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ens" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
-        <com.tencent.mm.ui.widget.MMEditText android:textSize="24.0dip" android:textColor="@color/y4" android:id="@id/c3e" android:background="@drawable/a8d" android:paddingLeft="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="36.0dip" android:minHeight="36.0dip" android:text="" android:textCursorDrawable="@drawable/x5" />
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="24.0dip" android:typeface="monospace" android:textColor="@color/y4" android:gravity="center" android:id="@id/cyx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="33.0dip" android:text="" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="192.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/iup" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="56.0dip" app:layout_constraintGuide_begin="56.0dip" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:textColor="@color/am" android:id="@id/iul" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_filled_close" android:contentDescription="@string/sz" android:layout_marginStart="@dimen/ce" app:iconColor="@color/am" app:layout_constraintBottom_toTopOf="@id/iup" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iuo" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_filled_done" android:contentDescription="@string/x_" android:layout_marginEnd="@dimen/ce" app:iconColor="@color/Orange" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <com.tencent.mm.plugin.vlog.ui.LabelSlider android:id="@id/iun" android:layout_width="fill_parent" android:layout_height="@dimen/cp" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+</android.support.constraint.ConstraintLayout>

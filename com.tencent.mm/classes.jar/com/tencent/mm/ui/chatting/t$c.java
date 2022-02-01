@@ -6,33 +6,33 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.patmsg.PluginPatMsg;
 import com.tencent.mm.plugin.patmsg.a.b;
 import com.tencent.mm.plugin.patmsg.a.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.chatting.e.a;
-import com.tencent.mm.ui.chatting.viewitems.bk;
+import com.tencent.mm.ui.chatting.viewitems.bq;
 
 public final class t$c
   implements c.a
 {
-  private a JWz;
+  private a PhN;
   
   public t$c(a parama)
   {
-    this.JWz = parama;
+    this.PhN = parama;
   }
   
-  public final boolean ex(View paramView)
+  public final boolean eF(View paramView)
   {
     AppMethodBeat.i(34591);
-    paramView = (bk)paramView.getTag();
+    paramView = (bq)paramView.getTag();
     if (paramView == null)
     {
-      ae.w("MicroMsg.AvatarDoubleClickListener", "onDoubleClick tag null");
+      Log.w("MicroMsg.AvatarDoubleClickListener", "onDoubleClick tag null");
       AppMethodBeat.o(34591);
       return true;
     }
     paramView = paramView.userName;
-    ae.i("MicroMsg.AvatarDoubleClickListener", "onDoubleClick: %s", new Object[] { paramView });
-    if ((((PluginPatMsg)g.ad(PluginPatMsg.class)).isPatEnable()) && (((b)g.ab(b.class)).G(1, this.JWz.getTalkerUserName(), paramView)))
+    Log.i("MicroMsg.AvatarDoubleClickListener", "onDoubleClick: %s", new Object[] { paramView });
+    if ((((PluginPatMsg)g.ah(PluginPatMsg.class)).isPatEnable()) && (((b)g.af(b.class)).J(1, this.PhN.getTalkerUserName(), paramView)))
     {
       AppMethodBeat.o(34591);
       return false;
@@ -43,7 +43,7 @@ public final class t$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.t.c
  * JD-Core Version:    0.7.0.1
  */

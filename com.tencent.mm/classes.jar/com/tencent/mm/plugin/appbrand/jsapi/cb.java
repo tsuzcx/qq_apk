@@ -1,30 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.luggage.sdk.b.a.c.c;
+import android.content.Intent;
+import com.tencent.luggage.h.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiReturnCopyUrl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
 public final class cb
-  extends a<c>
+  extends d<c>
 {
-  public static final int CTRL_INDEX = 755;
-  public static final String NAME = "returnCopyUrl";
-  public static final a kxu;
-  
-  static
-  {
-    AppMethodBeat.i(169555);
-    kxu = new a((byte)0);
-    AppMethodBeat.o(169555);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiReturnCopyUrl$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
+  public static final int CTRL_INDEX = 192;
+  public static final String NAME = "openSetting";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cb
  * JD-Core Version:    0.7.0.1
  */

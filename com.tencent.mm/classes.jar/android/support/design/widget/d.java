@@ -14,7 +14,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.os.Build.VERSION;
 import android.support.v4.d.e;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v7.a.a.a;
 import android.support.v7.widget.az;
 import android.text.TextPaint;
@@ -24,49 +24,49 @@ import android.view.View;
 
 public final class d
 {
-  private static final boolean oM;
-  private static final Paint oN;
-  private final TextPaint iU;
-  private boolean oO;
-  float oP;
-  private final Rect oQ;
-  private final Rect oR;
-  private final RectF oS;
-  int oT = 16;
-  int oU = 16;
-  float oV = 15.0F;
-  private float oW = 15.0F;
-  private ColorStateList oX;
-  ColorStateList oY;
-  private float oZ;
+  private static final boolean oO;
+  private static final Paint oP;
+  private final TextPaint iW;
+  private boolean oQ;
+  float oR;
+  private final Rect oS;
+  private final Rect oT;
+  private final RectF oU;
+  int oV = 16;
+  int oW = 16;
+  float oX = 15.0F;
+  private float oY = 15.0F;
+  private ColorStateList oZ;
   private float pA;
-  private float pB;
-  private int pC;
-  private float pa;
+  private int pB;
+  private float pC;
+  private float pD;
+  private float pE;
+  private int pF;
+  ColorStateList pa;
   private float pb;
   private float pc;
   private float pd;
   private float pe;
-  Typeface pf;
-  Typeface pg;
-  private Typeface ph;
-  private CharSequence pi;
-  private boolean pj;
-  private boolean pk;
-  private Bitmap pl;
-  private Paint pm;
-  private float pn;
-  private float po;
-  private float pp;
-  private int[] pq;
-  private boolean pr;
-  private final TextPaint ps;
-  TimeInterpolator pt;
-  private TimeInterpolator pu;
-  private float pv;
-  private float pw;
-  private float px;
-  private int py;
+  private float pg;
+  private float ph;
+  Typeface pi;
+  Typeface pj;
+  private Typeface pk;
+  private CharSequence pl;
+  private boolean pm;
+  private boolean pn;
+  private Bitmap po;
+  private Paint pp;
+  private float pq;
+  private float pr;
+  private float ps;
+  private int[] pt;
+  private boolean pu;
+  private final TextPaint pv;
+  TimeInterpolator pw;
+  private TimeInterpolator px;
+  private float py;
   private float pz;
   private float scale;
   CharSequence text;
@@ -77,8 +77,8 @@ public final class d
     if (Build.VERSION.SDK_INT < 18) {}
     for (boolean bool = true;; bool = false)
     {
-      oM = bool;
-      oN = null;
+      oO = bool;
+      oP = null;
       return;
     }
   }
@@ -86,14 +86,14 @@ public final class d
   public d(View paramView)
   {
     this.view = paramView;
-    this.iU = new TextPaint(129);
-    this.ps = new TextPaint(this.iU);
-    this.oR = new Rect();
-    this.oQ = new Rect();
-    this.oS = new RectF();
+    this.iW = new TextPaint(129);
+    this.pv = new TextPaint(this.iW);
+    this.oT = new Rect();
+    this.oS = new Rect();
+    this.oU = new RectF();
   }
   
-  private Typeface R(int paramInt)
+  private Typeface Q(int paramInt)
   {
     TypedArray localTypedArray = this.view.getContext().obtainStyledAttributes(paramInt, new int[] { 16843692 });
     try
@@ -123,8 +123,8 @@ public final class d
   
   private void a(TextPaint paramTextPaint)
   {
-    paramTextPaint.setTextSize(this.oW);
-    paramTextPaint.setTypeface(this.pf);
+    paramTextPaint.setTextSize(this.oY);
+    paramTextPaint.setTypeface(this.pi);
   }
   
   private static boolean a(Rect paramRect, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -154,13 +154,13 @@ public final class d
   private boolean c(CharSequence paramCharSequence)
   {
     int i = 1;
-    if (t.Y(this.view) == 1) {
+    if (u.Z(this.view) == 1) {
       if (i == 0) {
         break label40;
       }
     }
     label40:
-    for (android.support.v4.d.d locald = e.Oh;; locald = e.Og)
+    for (android.support.v4.d.d locald = e.Ot;; locald = e.Os)
     {
       return locald.a(paramCharSequence, paramCharSequence.length());
       i = 0;
@@ -168,51 +168,51 @@ public final class d
     }
   }
   
-  private float cf()
+  private float ch()
   {
     if (this.text == null) {
       return 0.0F;
     }
-    a(this.ps);
-    return this.ps.measureText(this.text, 0, this.text.length());
+    a(this.pv);
+    return this.pv.measureText(this.text, 0, this.text.length());
   }
   
-  private void ch()
+  private void cj()
   {
-    if ((this.oR.width() > 0) && (this.oR.height() > 0) && (this.oQ.width() > 0) && (this.oQ.height() > 0)) {}
+    if ((this.oT.width() > 0) && (this.oT.height() > 0) && (this.oS.width() > 0) && (this.oS.height() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.oO = bool;
+      this.oQ = bool;
       return;
     }
   }
   
-  private void ci()
+  private void ck()
   {
-    l(this.oP);
+    l(this.oR);
   }
   
-  private int cj()
+  private int cl()
   {
-    if (this.pq != null) {
-      return this.oX.getColorForState(this.pq, 0);
+    if (this.pt != null) {
+      return this.oZ.getColorForState(this.pt, 0);
     }
-    return this.oX.getDefaultColor();
+    return this.oZ.getDefaultColor();
   }
   
-  private void cl()
+  private void cn()
   {
     int j = 1;
     float f2 = 0.0F;
-    float f3 = this.pp;
-    o(this.oW);
+    float f3 = this.ps;
+    o(this.oY);
     float f1;
     int i;
-    if (this.pi != null)
+    if (this.pl != null)
     {
-      f1 = this.iU.measureText(this.pi, 0, this.pi.length());
-      int k = this.oU;
-      if (!this.pj) {
+      f1 = this.iW.measureText(this.pl, 0, this.pl.length());
+      int k = this.oW;
+      if (!this.pm) {
         break label383;
       }
       i = 1;
@@ -221,20 +221,20 @@ public final class d
       switch (i & 0x70)
       {
       default: 
-        this.pa = ((this.iU.descent() - this.iU.ascent()) / 2.0F - this.iU.descent() + this.oR.centerY());
+        this.pc = ((this.iW.descent() - this.iW.ascent()) / 2.0F - this.iW.descent() + this.oT.centerY());
         label142:
         switch (i & 0x800007)
         {
         default: 
-          this.pc = this.oR.left;
+          this.pe = this.oT.left;
           label188:
-          o(this.oV);
+          o(this.oX);
           f1 = f2;
-          if (this.pi != null) {
-            f1 = this.iU.measureText(this.pi, 0, this.pi.length());
+          if (this.pl != null) {
+            f1 = this.iW.measureText(this.pl, 0, this.pl.length());
           }
-          k = this.oT;
-          if (this.pj)
+          k = this.oV;
+          if (this.pm)
           {
             i = j;
             label244:
@@ -242,12 +242,12 @@ public final class d
             switch (i & 0x70)
             {
             default: 
-              this.oZ = ((this.iU.descent() - this.iU.ascent()) / 2.0F - this.iU.descent() + this.oQ.centerY());
+              this.pb = ((this.iW.descent() - this.iW.ascent()) / 2.0F - this.iW.descent() + this.oS.centerY());
               label322:
               switch (i & 0x800007)
               {
               default: 
-                this.pb = this.oQ.left;
+                this.pd = this.oS.left;
               }
               break;
             }
@@ -259,7 +259,7 @@ public final class d
     }
     for (;;)
     {
-      co();
+      cq();
       n(f3);
       return;
       f1 = 0.0F;
@@ -267,29 +267,29 @@ public final class d
       label383:
       i = 0;
       break label63;
-      this.pa = this.oR.bottom;
+      this.pc = this.oT.bottom;
       break label142;
-      this.pa = (this.oR.top - this.iU.ascent());
+      this.pc = (this.oT.top - this.iW.ascent());
       break label142;
-      this.pc = (this.oR.centerX() - f1 / 2.0F);
+      this.pe = (this.oT.centerX() - f1 / 2.0F);
       break label188;
-      this.pc = (this.oR.right - f1);
+      this.pe = (this.oT.right - f1);
       break label188;
       i = 0;
       break label244;
-      this.oZ = this.oQ.bottom;
+      this.pb = this.oS.bottom;
       break label322;
-      this.oZ = (this.oQ.top - this.iU.ascent());
+      this.pb = (this.oS.top - this.iW.ascent());
       break label322;
-      this.pb = (this.oQ.centerX() - f1 / 2.0F);
+      this.pd = (this.oS.centerX() - f1 / 2.0F);
       continue;
-      this.pb = (this.oQ.right - f1);
+      this.pd = (this.oS.right - f1);
     }
   }
   
-  private void cm()
+  private void co()
   {
-    if ((this.pl != null) || (this.oQ.isEmpty()) || (TextUtils.isEmpty(this.pi))) {}
+    if ((this.po != null) || (this.oS.isEmpty()) || (TextUtils.isEmpty(this.pl))) {}
     do
     {
       int i;
@@ -298,63 +298,63 @@ public final class d
       {
         return;
         l(0.0F);
-        this.pn = this.iU.ascent();
-        this.po = this.iU.descent();
-        i = Math.round(this.iU.measureText(this.pi, 0, this.pi.length()));
-        j = Math.round(this.po - this.pn);
+        this.pq = this.iW.ascent();
+        this.pr = this.iW.descent();
+        i = Math.round(this.iW.measureText(this.pl, 0, this.pl.length()));
+        j = Math.round(this.pr - this.pq);
       } while ((i <= 0) || (j <= 0));
-      this.pl = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      new Canvas(this.pl).drawText(this.pi, 0, this.pi.length(), 0.0F, j - this.iU.descent(), this.iU);
-    } while (this.pm != null);
-    this.pm = new Paint(3);
+      this.po = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      new Canvas(this.po).drawText(this.pl, 0, this.pl.length(), 0.0F, j - this.iW.descent(), this.iW);
+    } while (this.pp != null);
+    this.pp = new Paint(3);
   }
   
-  private void co()
+  private void cq()
   {
-    if (this.pl != null)
+    if (this.po != null)
     {
-      this.pl.recycle();
-      this.pl = null;
+      this.po.recycle();
+      this.po = null;
     }
   }
   
   private void l(float paramFloat)
   {
     m(paramFloat);
-    this.pd = a(this.pb, this.pc, paramFloat, this.pt);
-    this.pe = a(this.oZ, this.pa, paramFloat, this.pt);
-    n(a(this.oV, this.oW, paramFloat, this.pu));
-    if (this.oY != this.oX) {
-      this.iU.setColor(c(cj(), ck(), paramFloat));
+    this.pg = a(this.pd, this.pe, paramFloat, this.pw);
+    this.ph = a(this.pb, this.pc, paramFloat, this.pw);
+    n(a(this.oX, this.oY, paramFloat, this.px));
+    if (this.pa != this.oZ) {
+      this.iW.setColor(c(cl(), cm(), paramFloat));
     }
     for (;;)
     {
-      this.iU.setShadowLayer(a(this.pz, this.pv, paramFloat, null), a(this.pA, this.pw, paramFloat, null), a(this.pB, this.px, paramFloat, null), c(this.pC, this.py, paramFloat));
-      t.W(this.view);
+      this.iW.setShadowLayer(a(this.pC, this.py, paramFloat, null), a(this.pD, this.pz, paramFloat, null), a(this.pE, this.pA, paramFloat, null), c(this.pF, this.pB, paramFloat));
+      u.X(this.view);
       return;
-      this.iU.setColor(ck());
+      this.iW.setColor(cm());
     }
   }
   
   private void m(float paramFloat)
   {
-    this.oS.left = a(this.oQ.left, this.oR.left, paramFloat, this.pt);
-    this.oS.top = a(this.oZ, this.pa, paramFloat, this.pt);
-    this.oS.right = a(this.oQ.right, this.oR.right, paramFloat, this.pt);
-    this.oS.bottom = a(this.oQ.bottom, this.oR.bottom, paramFloat, this.pt);
+    this.oU.left = a(this.oS.left, this.oT.left, paramFloat, this.pw);
+    this.oU.top = a(this.pb, this.pc, paramFloat, this.pw);
+    this.oU.right = a(this.oS.right, this.oT.right, paramFloat, this.pw);
+    this.oU.bottom = a(this.oS.bottom, this.oT.bottom, paramFloat, this.pw);
   }
   
   private void n(float paramFloat)
   {
     o(paramFloat);
-    if ((oM) && (this.scale != 1.0F)) {}
+    if ((oO) && (this.scale != 1.0F)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.pk = bool;
-      if (this.pk) {
-        cm();
+      this.pn = bool;
+      if (this.pn) {
+        co();
       }
-      t.W(this.view);
+      u.X(this.view);
       return;
     }
   }
@@ -365,18 +365,18 @@ public final class d
     if (this.text == null) {
       return;
     }
-    float f2 = this.oR.width();
-    float f3 = this.oQ.width();
+    float f2 = this.oT.width();
+    float f3 = this.oS.width();
     float f1;
     int i;
-    if (c(paramFloat, this.oW))
+    if (c(paramFloat, this.oY))
     {
-      f1 = this.oW;
+      f1 = this.oY;
       this.scale = 1.0F;
-      if (this.ph == this.pf) {
+      if (this.pk == this.pi) {
         break label339;
       }
-      this.ph = this.pf;
+      this.pk = this.pi;
       i = 1;
       paramFloat = f2;
     }
@@ -385,50 +385,50 @@ public final class d
       int j = i;
       if (paramFloat > 0.0F)
       {
-        if ((this.pp != f1) || (this.pr) || (i != 0))
+        if ((this.ps != f1) || (this.pu) || (i != 0))
         {
           i = 1;
           label109:
-          this.pp = f1;
-          this.pr = false;
+          this.ps = f1;
+          this.pu = false;
           j = i;
         }
       }
       else
       {
-        if ((this.pi != null) && (j == 0)) {
+        if ((this.pl != null) && (j == 0)) {
           break;
         }
-        this.iU.setTextSize(this.pp);
-        this.iU.setTypeface(this.ph);
-        Object localObject = this.iU;
+        this.iW.setTextSize(this.ps);
+        this.iW.setTypeface(this.pk);
+        Object localObject = this.iW;
         if (this.scale == 1.0F) {
           break label327;
         }
         label173:
         ((TextPaint)localObject).setLinearText(bool);
-        localObject = TextUtils.ellipsize(this.text, this.iU, paramFloat, TextUtils.TruncateAt.END);
-        if (TextUtils.equals((CharSequence)localObject, this.pi)) {
+        localObject = TextUtils.ellipsize(this.text, this.iW, paramFloat, TextUtils.TruncateAt.END);
+        if (TextUtils.equals((CharSequence)localObject, this.pl)) {
           break;
         }
-        this.pi = ((CharSequence)localObject);
-        this.pj = c(this.pi);
+        this.pl = ((CharSequence)localObject);
+        this.pm = c(this.pl);
         return;
-        f1 = this.oV;
-        if (this.ph == this.pg) {
+        f1 = this.oX;
+        if (this.pk == this.pj) {
           break label333;
         }
-        this.ph = this.pg;
+        this.pk = this.pj;
       }
       label315:
       label327:
       label333:
       for (i = 1;; i = 0)
       {
-        if (c(paramFloat, this.oV)) {}
-        for (this.scale = 1.0F;; this.scale = (paramFloat / this.oV))
+        if (c(paramFloat, this.oX)) {}
+        for (this.scale = 1.0F;; this.scale = (paramFloat / this.oX))
         {
-          paramFloat = this.oW / this.oV;
+          paramFloat = this.oY / this.oX;
           if (f3 * paramFloat <= f2) {
             break label315;
           }
@@ -448,68 +448,68 @@ public final class d
     }
   }
   
+  public final void M(int paramInt)
+  {
+    if (this.oV != paramInt)
+    {
+      this.oV = paramInt;
+      cp();
+    }
+  }
+  
   public final void N(int paramInt)
   {
-    if (this.oT != paramInt)
+    if (this.oW != paramInt)
     {
-      this.oT = paramInt;
-      cn();
+      this.oW = paramInt;
+      cp();
     }
   }
   
   public final void O(int paramInt)
   {
-    if (this.oU != paramInt)
-    {
-      this.oU = paramInt;
-      cn();
+    az localaz = az.a(this.view.getContext(), paramInt, a.a.TextAppearance);
+    if (localaz.hasValue(3)) {
+      this.pa = localaz.getColorStateList(3);
     }
+    if (localaz.hasValue(0)) {
+      this.oY = localaz.getDimensionPixelSize(0, (int)this.oY);
+    }
+    this.pB = localaz.getInt(6, 0);
+    this.pz = localaz.getFloat(7, 0.0F);
+    this.pA = localaz.getFloat(8, 0.0F);
+    this.py = localaz.getFloat(9, 0.0F);
+    localaz.ayy.recycle();
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.pi = Q(paramInt);
+    }
+    cp();
   }
   
   public final void P(int paramInt)
   {
     az localaz = az.a(this.view.getContext(), paramInt, a.a.TextAppearance);
     if (localaz.hasValue(3)) {
-      this.oY = localaz.getColorStateList(3);
+      this.oZ = localaz.getColorStateList(3);
     }
     if (localaz.hasValue(0)) {
-      this.oW = localaz.getDimensionPixelSize(0, (int)this.oW);
+      this.oX = localaz.getDimensionPixelSize(0, (int)this.oX);
     }
-    this.py = localaz.getInt(6, 0);
-    this.pw = localaz.getFloat(7, 0.0F);
-    this.px = localaz.getFloat(8, 0.0F);
-    this.pv = localaz.getFloat(9, 0.0F);
-    localaz.ayA.recycle();
+    this.pF = localaz.getInt(6, 0);
+    this.pD = localaz.getFloat(7, 0.0F);
+    this.pE = localaz.getFloat(8, 0.0F);
+    this.pC = localaz.getFloat(9, 0.0F);
+    localaz.ayy.recycle();
     if (Build.VERSION.SDK_INT >= 16) {
-      this.pf = R(paramInt);
+      this.pj = Q(paramInt);
     }
-    cn();
-  }
-  
-  public final void Q(int paramInt)
-  {
-    az localaz = az.a(this.view.getContext(), paramInt, a.a.TextAppearance);
-    if (localaz.hasValue(3)) {
-      this.oX = localaz.getColorStateList(3);
-    }
-    if (localaz.hasValue(0)) {
-      this.oV = localaz.getDimensionPixelSize(0, (int)this.oV);
-    }
-    this.pC = localaz.getInt(6, 0);
-    this.pA = localaz.getFloat(7, 0.0F);
-    this.pB = localaz.getFloat(8, 0.0F);
-    this.pz = localaz.getFloat(9, 0.0F);
-    localaz.ayA.recycle();
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.pg = R(paramInt);
-    }
-    cn();
+    cp();
   }
   
   public final void a(TimeInterpolator paramTimeInterpolator)
   {
-    this.pu = paramTimeInterpolator;
-    cn();
+    this.px = paramTimeInterpolator;
+    cp();
   }
   
   public final void a(RectF paramRectF)
@@ -517,80 +517,80 @@ public final class d
     boolean bool = c(this.text);
     if (!bool)
     {
-      f = this.oR.left;
+      f = this.oT.left;
       paramRectF.left = f;
-      paramRectF.top = this.oR.top;
+      paramRectF.top = this.oT.top;
       if (bool) {
         break label93;
       }
     }
     label93:
-    for (float f = paramRectF.left + cf();; f = this.oR.right)
+    for (float f = paramRectF.left + ch();; f = this.oT.right)
     {
       paramRectF.right = f;
-      paramRectF.bottom = (this.oR.top + cg());
+      paramRectF.bottom = (this.oT.top + ci());
       return;
-      f = this.oR.right - cf();
+      f = this.oT.right - ch();
       break;
     }
   }
   
   public final void b(Typeface paramTypeface)
   {
-    this.pg = paramTypeface;
-    this.pf = paramTypeface;
-    cn();
+    this.pj = paramTypeface;
+    this.pi = paramTypeface;
+    cp();
   }
   
   public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!a(this.oQ, paramInt1, paramInt2, paramInt3, paramInt4))
+    if (!a(this.oS, paramInt1, paramInt2, paramInt3, paramInt4))
     {
-      this.oQ.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.pr = true;
-      ch();
+      this.oS.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.pu = true;
+      cj();
     }
   }
   
-  public final float cg()
+  public final float ci()
   {
-    a(this.ps);
-    return -this.ps.ascent();
+    a(this.pv);
+    return -this.pv.ascent();
   }
   
-  public final int ck()
+  public final int cm()
   {
-    if (this.pq != null) {
-      return this.oY.getColorForState(this.pq, 0);
+    if (this.pt != null) {
+      return this.pa.getColorForState(this.pt, 0);
     }
-    return this.oY.getDefaultColor();
+    return this.pa.getDefaultColor();
   }
   
-  public final void cn()
+  public final void cp()
   {
     if ((this.view.getHeight() > 0) && (this.view.getWidth() > 0))
     {
-      cl();
-      ci();
+      cn();
+      ck();
     }
   }
   
   public final void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!a(this.oR, paramInt1, paramInt2, paramInt3, paramInt4))
+    if (!a(this.oT, paramInt1, paramInt2, paramInt3, paramInt4))
     {
-      this.oR.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.pr = true;
-      ch();
+      this.oT.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.pu = true;
+      cj();
     }
   }
   
   public final void d(ColorStateList paramColorStateList)
   {
-    if (this.oY != paramColorStateList)
+    if (this.pa != paramColorStateList)
     {
-      this.oY = paramColorStateList;
-      cn();
+      this.pa = paramColorStateList;
+      cp();
     }
   }
   
@@ -602,18 +602,18 @@ public final class d
     float f1;
     label64:
     float f2;
-    if ((this.pi != null) && (this.oO))
+    if ((this.pl != null) && (this.oQ))
     {
-      f4 = this.pd;
-      float f3 = this.pe;
-      if ((!this.pk) || (this.pl == null)) {
+      f4 = this.pg;
+      float f3 = this.ph;
+      if ((!this.pn) || (this.po == null)) {
         break label128;
       }
       i = 1;
       if (i == 0) {
         break label134;
       }
-      f1 = this.pn * this.scale;
+      f1 = this.pq * this.scale;
       f2 = f3;
       if (i != 0) {
         f2 = f3 + f1;
@@ -624,7 +624,7 @@ public final class d
       if (i == 0) {
         break label155;
       }
-      paramCanvas.drawBitmap(this.pl, f4, f2, this.pm);
+      paramCanvas.drawBitmap(this.po, f4, f2, this.pp);
     }
     for (;;)
     {
@@ -634,41 +634,41 @@ public final class d
       i = 0;
       break;
       label134:
-      this.iU.ascent();
+      this.iW.ascent();
       f1 = 0.0F;
-      this.iU.descent();
+      this.iW.descent();
       break label64;
       label155:
-      paramCanvas.drawText(this.pi, 0, this.pi.length(), f4, f2, this.iU);
+      paramCanvas.drawText(this.pl, 0, this.pl.length(), f4, f2, this.iW);
     }
   }
   
   public final void e(ColorStateList paramColorStateList)
   {
-    if (this.oX != paramColorStateList)
+    if (this.oZ != paramColorStateList)
     {
-      this.oX = paramColorStateList;
-      cn();
+      this.oZ = paramColorStateList;
+      cp();
     }
   }
   
   public final void k(float paramFloat)
   {
     paramFloat = android.support.v4.b.a.j(paramFloat, 1.0F);
-    if (paramFloat != this.oP)
+    if (paramFloat != this.oR)
     {
-      this.oP = paramFloat;
-      ci();
+      this.oR = paramFloat;
+      ck();
     }
   }
   
   public final boolean setState(int[] paramArrayOfInt)
   {
-    this.pq = paramArrayOfInt;
-    if (((this.oY != null) && (this.oY.isStateful())) || ((this.oX != null) && (this.oX.isStateful()))) {}
+    this.pt = paramArrayOfInt;
+    if (((this.pa != null) && (this.pa.isStateful())) || ((this.oZ != null) && (this.oZ.isStateful()))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      cn();
+      cp();
       return true;
     }
     return false;
@@ -679,15 +679,15 @@ public final class d
     if ((paramCharSequence == null) || (!paramCharSequence.equals(this.text)))
     {
       this.text = paramCharSequence;
-      this.pi = null;
-      co();
-      cn();
+      this.pl = null;
+      cq();
+      cp();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,148 +1,120 @@
 package com.tencent.mm.plugin.appbrand;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.g.a.vq;
-import com.tencent.mm.g.a.vq.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.base.model.c;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.z;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.config.i;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask.a;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandPrepareTask;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.appbrand.launching.report.AppBrandRuntimeReloadReportBundle;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.g.b.p;
+import kotlin.l;
 
-public abstract class ax
-  extends com.tencent.mm.plugin.y.a
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPreInitTask$PreInitCallback;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;)V", "TAG", "", "mCanceled", "Ljava/util/concurrent/atomic/AtomicBoolean;", "cancel", "", "onResult", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "Companion", "plugin-appbrand-integration_release"})
+public final class ax
+  implements AppBrandPreInitTask.a
 {
-  protected void a(Context paramContext, Intent paramIntent, boolean paramBoolean) {}
+  public static final a kFF;
+  private final String TAG;
+  final AtomicBoolean kFD;
+  private final AppBrandPrepareTask kFE;
+  private final q kFk;
   
-  protected void b(Context paramContext, Intent paramIntent, boolean paramBoolean)
+  static
   {
-    String str2;
-    String str1;
-    int i;
-    if (paramBoolean)
-    {
-      str2 = c.eG(z.getStringExtra(paramIntent, "id"), q.getAndroidId());
-      str1 = c.eG(z.getStringExtra(paramIntent, "ext_info"), q.getAndroidId());
-      i = z.getIntExtra(paramIntent, "ext_info_1", 0);
-      vq localvq = new vq();
-      localvq.dKT.appId = str1;
-      localvq.dKT.userName = str2;
-      localvq.dKT.dKW = i;
-      localvq.dKT.scene = z(paramIntent);
-      localvq.dKT.dLa = true;
-      localvq.dKT.context = paramContext;
-      localvq.dKT.dLb = false;
-      com.tencent.mm.sdk.b.a.IvT.l(localvq);
-      if (!localvq.dKU.dLn) {
-        break label182;
-      }
-      ae.i("MiroMsg.WxaShortcutEntry", "open wxa with id : %s", new Object[] { str2 });
-    }
-    label182:
-    do
-    {
-      return;
-      str2 = c.Xh(z.getStringExtra(paramIntent, "id"));
-      str1 = c.Xh(z.getStringExtra(paramIntent, "ext_info"));
-      break;
-      if (i == 1)
-      {
-        Toast.makeText(paramContext, 2131755370, 0).show();
-        return;
-      }
-    } while (i != 2);
-    Toast.makeText(paramContext, 2131755531, 0).show();
+    AppMethodBeat.i(227953);
+    kFF = new a((byte)0);
+    AppMethodBeat.o(227953);
   }
   
-  protected boolean b(Intent paramIntent, boolean paramBoolean)
+  private ax(q paramq, AppBrandPrepareTask paramAppBrandPrepareTask)
   {
-    Object localObject;
-    if (paramBoolean) {
-      localObject = c.eG(z.getStringExtra(paramIntent, "id"), q.getAndroidId());
-    }
-    String str2;
-    int i;
-    for (String str1 = c.eG(z.getStringExtra(paramIntent, "ext_info"), q.getAndroidId());; str1 = c.Xh(z.getStringExtra(paramIntent, "ext_info")))
-    {
-      str2 = z.getStringExtra(paramIntent, "token");
-      i = z.getIntExtra(paramIntent, "ext_info_1", 0);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-        break;
-      }
-      ae.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, username or appId or token is null or nil.");
-      return false;
-      localObject = c.Xh(z.getStringExtra(paramIntent, "id"));
-    }
-    if (!m.zd((String)localObject))
-    {
-      ae.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, username %s invalid ", new Object[] { localObject });
-      e.ywz.idkeyStat(647L, 1L, 1L, false);
-      return false;
-    }
-    paramIntent = new StringBuilder();
-    g.ajP();
-    if (!str2.equals(c.eH(str1, com.tencent.mm.kernel.a.getUin())))
-    {
-      paramIntent = ak.getContext().getSharedPreferences("app_brand_global_sp", 0);
-      if (paramIntent == null)
-      {
-        ae.w("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, sp is null.");
-        return false;
-      }
-      localObject = paramIntent.getStringSet("uin_set", new HashSet());
-      if ((localObject == null) || (((Set)localObject).isEmpty()))
-      {
-        ae.w("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, uin set is null or nil.");
-        return false;
-      }
-      paramIntent = new HashSet();
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramIntent.add(c.eH(str1, (String)((Iterator)localObject).next()));
-      }
-      if (!paramIntent.contains(str2))
-      {
-        ae.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, illegal token(%s).", new Object[] { str2 });
-        return false;
-      }
-    }
-    if ((!b.fnF()) && (i == 1))
-    {
-      ae.i("MiroMsg.WxaShortcutEntry", "can not open testing WeApp in released WeChat.");
-      return false;
-    }
-    return true;
+    AppMethodBeat.i(227952);
+    this.kFk = paramq;
+    this.kFE = paramAppBrandPrepareTask;
+    this.TAG = ("MicroMsg.AppBrand.RuntimeLaunchTimeoutFallbackReloadTask[" + this.kFk.getAppId() + '|' + this.kFk.hashCode() + ']');
+    this.kFD = new AtomicBoolean(false);
+    AppMethodBeat.o(227952);
   }
   
-  public void k(Context paramContext, Intent paramIntent)
+  public static final ax a(q paramq, AppBrandPrepareTask paramAppBrandPrepareTask)
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (boolean bool = true; !b(paramIntent, bool); bool = false)
+    AppMethodBeat.i(227954);
+    p.h(paramq, "rt");
+    p.h(paramAppBrandPrepareTask, "prepareTask");
+    Object localObject1 = paramq.getContext();
+    if (localObject1 != null) {
+      localObject1 = (Context)localObject1;
+    }
+    for (;;)
     {
-      a(paramContext, paramIntent, false);
+      Object localObject2 = paramq.bsC();
+      p.g(localObject2, "rt.initConfig");
+      localObject2 = i.e((AppBrandInitConfigWC)localObject2);
+      paramq = new ax(paramq, paramAppBrandPrepareTask);
+      new AppBrandPreInitTask((Context)localObject1, (LaunchParcel)localObject2, true, (AppBrandPreInitTask.a)paramq).bNf();
+      AppMethodBeat.o(227954);
+      return paramq;
+      localObject1 = paramq.getAppContext();
+      p.g(localObject1, "rt.appContext");
+    }
+  }
+  
+  public final void a(final AppBrandInitConfigWC paramAppBrandInitConfigWC, final AppBrandStatObject paramAppBrandStatObject)
+  {
+    AppMethodBeat.i(227951);
+    if (this.kFD.get())
+    {
+      Log.w(this.TAG, "onResult but canceled");
+      AppMethodBeat.o(227951);
       return;
     }
-    a(paramContext, paramIntent, true);
-    b(paramContext, paramIntent, bool);
+    Log.i(this.TAG, "onResult with config:".concat(String.valueOf(paramAppBrandInitConfigWC)));
+    this.kFE.interrupt();
+    if (paramAppBrandInitConfigWC == null)
+    {
+      this.kFk.finish();
+      AppMethodBeat.o(227951);
+      return;
+    }
+    this.kFk.P((Runnable)new b(this, paramAppBrandInitConfigWC, paramAppBrandStatObject));
+    AppMethodBeat.o(227951);
   }
   
-  protected abstract int z(Intent paramIntent);
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask$Companion;", "", "()V", "start", "Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "plugin-appbrand-integration_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(ax paramax, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(227950);
+      paramAppBrandInitConfigWC.led = true;
+      paramAppBrandInitConfigWC.a(paramAppBrandStatObject);
+      paramAppBrandInitConfigWC.resetSession();
+      AppBrandInitConfigWC localAppBrandInitConfigWC = paramAppBrandInitConfigWC;
+      String str = ax.a(this.kFG).bsC().ldW.kEY;
+      p.g(str, "rt.initConfig.qualityReportSession.instanceId");
+      localAppBrandInitConfigWC.lef = new AppBrandRuntimeReloadReportBundle(str, "TimeoutFallback");
+      ax.a(this.kFG).a((AppBrandInitConfig)paramAppBrandInitConfigWC, "TimeoutFallback");
+      AppMethodBeat.o(227950);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ax
  * JD-Core Version:    0.7.0.1
  */

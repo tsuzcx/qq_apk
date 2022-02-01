@@ -10,16 +10,16 @@ public class CDNTaskInfo
 {
   public static final Parcelable.Creator<CDNTaskInfo> CREATOR;
   public String downloadUrl;
-  public boolean fLv;
   public String filePath;
+  public boolean gqH;
   public String mediaId;
-  public String oXK;
-  public String oXL;
-  public int oXM;
-  public int oXN;
-  public boolean oXO;
-  public boolean oXP;
-  public boolean oXQ;
+  public String qmH;
+  public String qmI;
+  public int qmJ;
+  public int qmK;
+  public boolean qmL;
+  public boolean qmM;
+  public boolean qmN;
   
   static
   {
@@ -36,20 +36,20 @@ public class CDNTaskInfo
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.fLv = bool1;
+      this.gqH = bool1;
       this.downloadUrl = paramParcel.readString();
       this.mediaId = paramParcel.readString();
       this.filePath = paramParcel.readString();
-      this.oXK = paramParcel.readString();
-      this.oXL = paramParcel.readString();
-      this.oXM = paramParcel.readInt();
-      this.oXN = paramParcel.readInt();
+      this.qmH = paramParcel.readString();
+      this.qmI = paramParcel.readString();
+      this.qmJ = paramParcel.readInt();
+      this.qmK = paramParcel.readInt();
       if (paramParcel.readByte() != 1) {
         break label123;
       }
       bool1 = true;
       label92:
-      this.oXO = bool1;
+      this.qmL = bool1;
       if (paramParcel.readByte() != 1) {
         break label128;
       }
@@ -57,7 +57,7 @@ public class CDNTaskInfo
     label128:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.oXQ = bool1;
+      this.qmN = bool1;
       AppMethodBeat.o(120757);
       return;
       bool1 = false;
@@ -102,24 +102,24 @@ public class CDNTaskInfo
   {
     byte b2 = 1;
     AppMethodBeat.i(120756);
-    if (this.fLv)
+    if (this.gqH)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
       paramParcel.writeString(this.downloadUrl);
       paramParcel.writeString(this.mediaId);
       paramParcel.writeString(this.filePath);
-      paramParcel.writeString(this.oXK);
-      paramParcel.writeString(this.oXL);
-      paramParcel.writeInt(this.oXM);
-      paramParcel.writeInt(this.oXN);
-      if (!this.oXO) {
+      paramParcel.writeString(this.qmH);
+      paramParcel.writeString(this.qmI);
+      paramParcel.writeInt(this.qmJ);
+      paramParcel.writeInt(this.qmK);
+      if (!this.qmL) {
         break label118;
       }
       b1 = 1;
       label87:
       paramParcel.writeByte(b1);
-      if (!this.oXQ) {
+      if (!this.qmN) {
         break label123;
       }
     }
@@ -139,7 +139,7 @@ public class CDNTaskInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskInfo
  * JD-Core Version:    0.7.0.1
  */

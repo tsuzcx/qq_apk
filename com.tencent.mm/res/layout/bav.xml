@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/fuo" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/fup" android:layout_width="52.0dip" android:layout_height="52.0dip" />
-        <TextView android:gravity="center" android:id="@id/fur" android:background="@drawable/acc" android:layout_marginStart="40.0dip" style="@style/yi" />
-    </RelativeLayout>
-    <TextView android:textSize="12.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/fuq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="50.0dip" android:maxLines="1" android:layout_below="@id/fuo" android:layout_centerHorizontal="true" />
-</merge>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:id="@id/fgq" android:visibility="gone" style="@style/mh" />
+        <ListView android:id="@id/fgs" android:background="@color/afz" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+        <TextView android:textColor="@color/a0i" android:gravity="center_horizontal" android:id="@id/c2z" android:background="@color/BW_93" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/mh" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/fgt" android:background="@drawable/ai_" android:visibility="gone" style="@style/nr">
+            <TextView android:id="@id/fgu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="@string/f1a" android:singleLine="false" android:layout_weight="1.0" style="@style/mi" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

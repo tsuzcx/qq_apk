@@ -7,9 +7,9 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.design.a.a;
-import android.support.v4.view.ab;
+import android.support.v4.view.ac;
 import android.support.v4.view.p;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowInsets;
@@ -18,9 +18,9 @@ import android.widget.FrameLayout;
 public class ScrimInsetsFrameLayout
   extends FrameLayout
 {
-  Drawable lk;
-  Rect ll;
-  private Rect lm = new Rect();
+  Drawable lm;
+  Rect ln;
+  private Rect lo = new Rect();
   
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,24 +30,24 @@ public class ScrimInsetsFrameLayout
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = f.a(paramContext, paramAttributeSet, a.a.ScrimInsetsFrameLayout, paramInt, 2131821639, new int[0]);
-    this.lk = paramContext.getDrawable(0);
+    paramContext = f.a(paramContext, paramAttributeSet, a.a.ScrimInsetsFrameLayout, paramInt, 2131821687, new int[0]);
+    this.lm = paramContext.getDrawable(0);
     paramContext.recycle();
     setWillNotDraw(true);
-    t.a(this, new p()
+    u.a(this, new p()
     {
-      public final ab a(View paramAnonymousView, ab paramAnonymousab)
+      public final ac a(View paramAnonymousView, ac paramAnonymousac)
       {
-        if (ScrimInsetsFrameLayout.this.ll == null) {
-          ScrimInsetsFrameLayout.this.ll = new Rect();
+        if (ScrimInsetsFrameLayout.this.ln == null) {
+          ScrimInsetsFrameLayout.this.ln = new Rect();
         }
-        ScrimInsetsFrameLayout.this.ll.set(paramAnonymousab.getSystemWindowInsetLeft(), paramAnonymousab.getSystemWindowInsetTop(), paramAnonymousab.getSystemWindowInsetRight(), paramAnonymousab.getSystemWindowInsetBottom());
-        ScrimInsetsFrameLayout.this.a(paramAnonymousab);
+        ScrimInsetsFrameLayout.this.ln.set(paramAnonymousac.getSystemWindowInsetLeft(), paramAnonymousac.getSystemWindowInsetTop(), paramAnonymousac.getSystemWindowInsetRight(), paramAnonymousac.getSystemWindowInsetBottom());
+        ScrimInsetsFrameLayout.this.a(paramAnonymousac);
         paramAnonymousView = ScrimInsetsFrameLayout.this;
         if (Build.VERSION.SDK_INT >= 20)
         {
-          bool = ((WindowInsets)paramAnonymousab.QZ).hasSystemWindowInsets();
-          if ((bool) && (ScrimInsetsFrameLayout.this.lk != null)) {
+          bool = ((WindowInsets)paramAnonymousac.Rm).hasSystemWindowInsets();
+          if ((bool) && (ScrimInsetsFrameLayout.this.lm != null)) {
             break label120;
           }
         }
@@ -55,8 +55,8 @@ public class ScrimInsetsFrameLayout
         for (boolean bool = true;; bool = false)
         {
           paramAnonymousView.setWillNotDraw(bool);
-          t.W(ScrimInsetsFrameLayout.this);
-          return paramAnonymousab.fB();
+          u.X(ScrimInsetsFrameLayout.this);
+          return paramAnonymousac.fI();
           bool = false;
           break;
         }
@@ -64,29 +64,29 @@ public class ScrimInsetsFrameLayout
     });
   }
   
-  protected void a(ab paramab) {}
+  protected void a(ac paramac) {}
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    if ((this.ll != null) && (this.lk != null))
+    if ((this.ln != null) && (this.lm != null))
     {
       int k = paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.lm.set(0, 0, i, this.ll.top);
-      this.lk.setBounds(this.lm);
-      this.lk.draw(paramCanvas);
-      this.lm.set(0, j - this.ll.bottom, i, j);
-      this.lk.setBounds(this.lm);
-      this.lk.draw(paramCanvas);
-      this.lm.set(0, this.ll.top, this.ll.left, j - this.ll.bottom);
-      this.lk.setBounds(this.lm);
-      this.lk.draw(paramCanvas);
-      this.lm.set(i - this.ll.right, this.ll.top, i, j - this.ll.bottom);
-      this.lk.setBounds(this.lm);
-      this.lk.draw(paramCanvas);
+      this.lo.set(0, 0, i, this.ln.top);
+      this.lm.setBounds(this.lo);
+      this.lm.draw(paramCanvas);
+      this.lo.set(0, j - this.ln.bottom, i, j);
+      this.lm.setBounds(this.lo);
+      this.lm.draw(paramCanvas);
+      this.lo.set(0, this.ln.top, this.ln.left, j - this.ln.bottom);
+      this.lm.setBounds(this.lo);
+      this.lm.draw(paramCanvas);
+      this.lo.set(i - this.ln.right, this.ln.top, i, j - this.ln.bottom);
+      this.lm.setBounds(this.lo);
+      this.lm.draw(paramCanvas);
       paramCanvas.restoreToCount(k);
     }
   }
@@ -94,22 +94,22 @@ public class ScrimInsetsFrameLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.lk != null) {
-      this.lk.setCallback(this);
+    if (this.lm != null) {
+      this.lm.setCallback(this);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.lk != null) {
-      this.lk.setCallback(null);
+    if (this.lm != null) {
+      this.lm.setCallback(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.ScrimInsetsFrameLayout
  * JD-Core Version:    0.7.0.1
  */

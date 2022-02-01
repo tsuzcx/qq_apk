@@ -6,25 +6,26 @@ import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.av.q;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.a.wk;
+import com.tencent.mm.g.a.xk;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.text.SimpleDateFormat;
 
 public final class a
 {
-  private static SimpleDateFormat oWf = null;
-  private static SimpleDateFormat oWg = null;
+  private static SimpleDateFormat qkZ = null;
+  private static SimpleDateFormat qla = null;
   
-  private static String aqo(String paramString)
+  private static String aDJ(String paramString)
   {
     AppMethodBeat.i(66185);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(66185);
       return null;
     }
-    paramString = String.format("%s/%s", new Object[] { b.asj() + "wallet/mall", g.getMessageDigest(paramString.getBytes()) });
+    paramString = String.format("%s/%s", new Object[] { b.aKJ() + "wallet/mall", g.getMessageDigest(paramString.getBytes()) });
     AppMethodBeat.o(66185);
     return paramString;
   }
@@ -38,18 +39,18 @@ public final class a
       return;
     }
     paramImageView.setImageBitmap(null);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = aqo(paramString);
-      ((c.a)localObject).igk = true;
-      ((c.a)localObject).hgL = true;
-      ((c.a)localObject).hhW = false;
+      ((c.a)localObject).prefixPath = aDJ(paramString);
+      ((c.a)localObject).jbf = true;
+      ((c.a)localObject).hZF = true;
+      ((c.a)localObject).iaT = false;
       if (paramInt != 0) {
-        ((c.a)localObject).igv = paramInt;
+        ((c.a)localObject).jbq = paramInt;
       }
-      localObject = ((c.a)localObject).aJu();
-      q.aJb().a(paramString, paramImageView, (c)localObject);
+      localObject = ((c.a)localObject).bdv();
+      q.bcV().a(paramString, paramImageView, (c)localObject);
       AppMethodBeat.o(66184);
       return;
     }
@@ -59,16 +60,16 @@ public final class a
     AppMethodBeat.o(66184);
   }
   
-  public static void dnJ()
+  public static void ehv()
   {
     AppMethodBeat.i(66182);
-    wk localwk = new wk();
-    localwk.dLP.dLQ = false;
-    com.tencent.mm.sdk.b.a.IvT.l(localwk);
+    xk localxk = new xk();
+    localxk.edE.edF = false;
+    EventCenter.instance.publish(localxk);
     AppMethodBeat.o(66182);
   }
   
-  public static void q(ImageView paramImageView, String paramString)
+  public static void t(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(66183);
     d(paramImageView, paramString, 0);
@@ -77,7 +78,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.b.a
  * JD-Core Version:    0.7.0.1
  */

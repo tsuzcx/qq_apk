@@ -10,16 +10,18 @@ import com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand1IPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand2IPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand3IPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand4IPCService;
+import com.tencent.mm.ipcinvoker.wx_extension.service.LiteAppIPCService;
+import com.tencent.mm.ipcinvoker.wx_extension.service.LiteAppIPCService.a;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.SupportProcessIPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsMpProcessIPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.s;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 import junit.framework.Assert;
@@ -28,20 +30,20 @@ public class PluginIPC
   extends f
   implements com.tencent.mm.app.o, b
 {
-  private static final long gAV;
+  private static final long hnK;
   
   static
   {
     AppMethodBeat.i(146424);
-    gAV = TimeUnit.DAYS.toMillis(1L);
+    hnK = TimeUnit.DAYS.toMillis(1L);
     AppMethodBeat.o(146424);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(146422);
-    ae.i("MicroMsg.PluginIPC", "execute(%s)", new Object[] { paramg.mProcessName });
-    if (ak.coh())
+    Log.i("MicroMsg.PluginIPC", "execute(%s)", new Object[] { paramg.mProcessName });
+    if (MMApplicationContext.isMainProcess())
     {
       int i = 0;
       for (;;)
@@ -51,11 +53,11 @@ public class PluginIPC
           paramg = new String[] { "MicroMsg.XIPC.MMProtoBufTransfer" }[i];
           try
           {
-            k localk = new k(ak.getContext().getFilesDir().getAbsolutePath() + "/mmkv/" + paramg);
-            if (localk.exists())
+            com.tencent.mm.vfs.o localo = new com.tencent.mm.vfs.o(MMApplicationContext.getContext().getFilesDir().getAbsolutePath() + "/mmkv/" + paramg);
+            if (localo.exists())
             {
-              localk.delete();
-              com.tencent.mm.vfs.o.deleteFile(w.B(localk.fTh()) + ".crc");
+              localo.delete();
+              s.deleteFile(aa.z(localo.her()) + ".crc");
             }
             i += 1;
           }
@@ -63,20 +65,20 @@ public class PluginIPC
           {
             for (;;)
             {
-              ae.e("MicroMsg.PluginIPC", "delete MMProtoBufTransfer dirty file[%s] e = %s", new Object[] { paramg, localException });
+              Log.e("MicroMsg.PluginIPC", "delete MMProtoBufTransfer dirty file[%s] e = %s", new Object[] { paramg, localException });
             }
           }
         }
       }
     }
-    paramg = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).ca;
+    paramg = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).ca;
     com.tencent.mm.ipcinvoker.a.a local1 = new com.tencent.mm.ipcinvoker.a.a()
     {
       public final void a(com.tencent.mm.ipcinvoker.a.d paramAnonymousd)
       {
         AppMethodBeat.i(146416);
         super.a(paramAnonymousd);
-        paramAnonymousd.a(PluginIPC.a.gAO);
+        paramAnonymousd.a(PluginIPC.a.hnD);
         AppMethodBeat.o(146416);
       }
       
@@ -84,7 +86,7 @@ public class PluginIPC
       {
         AppMethodBeat.i(146417);
         super.a(paramAnonymouse);
-        ay.init();
+        MultiProcessMMKV.init();
         paramAnonymouse.a(new c());
         paramAnonymouse.a(new a());
         paramAnonymouse.a(new d());
@@ -94,15 +96,17 @@ public class PluginIPC
       public final void b(com.tencent.mm.ipcinvoker.a.d paramAnonymousd)
       {
         AppMethodBeat.i(146418);
-        paramAnonymousd.a("com.tencent.mm", MainProcessIPCService.class);
-        paramAnonymousd.a("com.tencent.mm:tools", ToolsProcessIPCService.class);
-        paramAnonymousd.a("com.tencent.mm:toolsmp", ToolsMpProcessIPCService.class);
-        paramAnonymousd.a("com.tencent.mm:support", SupportProcessIPCService.class);
-        paramAnonymousd.a("com.tencent.mm:appbrand0", Appbrand0IPCService.class);
-        paramAnonymousd.a("com.tencent.mm:appbrand1", Appbrand1IPCService.class);
-        paramAnonymousd.a("com.tencent.mm:appbrand2", Appbrand2IPCService.class);
-        paramAnonymousd.a("com.tencent.mm:appbrand3", Appbrand3IPCService.class);
-        paramAnonymousd.a("com.tencent.mm:appbrand4", Appbrand4IPCService.class);
+        paramAnonymousd.a(MainProcessIPCService.dkO, MainProcessIPCService.class);
+        paramAnonymousd.a(ToolsProcessIPCService.dkO, ToolsProcessIPCService.class);
+        paramAnonymousd.a(ToolsMpProcessIPCService.dkO, ToolsMpProcessIPCService.class);
+        paramAnonymousd.a(SupportProcessIPCService.dkO, SupportProcessIPCService.class);
+        paramAnonymousd.a(Appbrand0IPCService.dkO, Appbrand0IPCService.class);
+        paramAnonymousd.a(Appbrand1IPCService.dkO, Appbrand1IPCService.class);
+        paramAnonymousd.a(Appbrand2IPCService.dkO, Appbrand2IPCService.class);
+        paramAnonymousd.a(Appbrand3IPCService.dkO, Appbrand3IPCService.class);
+        paramAnonymousd.a(Appbrand4IPCService.dkO, Appbrand4IPCService.class);
+        LiteAppIPCService.a locala = LiteAppIPCService.hnQ;
+        paramAnonymousd.a(LiteAppIPCService.ays(), LiteAppIPCService.class);
         AppMethodBeat.o(146418);
       }
     };
@@ -112,9 +116,9 @@ public class PluginIPC
     local1.a(local11);
     local1.a(new i.2());
     local1.b(local11);
-    com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokerBoot", "setup IPCInvoker(process : %s, application : %s)", new Object[] { com.tencent.mm.ipcinvoker.g.ahM(), Integer.valueOf(paramg.hashCode()) });
-    if ((ak.foC()) || (ak.foD())) {
-      com.tencent.mm.ipcinvoker.i.xe("com.tencent.mm");
+    com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokerBoot", "setup IPCInvoker(process : %s, application : %s)", new Object[] { com.tencent.mm.ipcinvoker.g.axZ(), Integer.valueOf(paramg.hashCode()) });
+    if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess())) {
+      com.tencent.mm.ipcinvoker.i.Fq(MainProcessIPCService.dkO);
     }
     AppMethodBeat.o(146422);
   }
@@ -122,8 +126,8 @@ public class PluginIPC
   public void onAppBackground(String paramString)
   {
     AppMethodBeat.i(146423);
-    if (ak.coh()) {
-      com.tencent.e.h.MqF.aO(new Runnable()
+    if (MMApplicationContext.isMainProcess()) {
+      com.tencent.f.h.RTc.aX(new Runnable()
       {
         /* Error */
         public final void run()
@@ -133,114 +137,113 @@ public class PluginIPC
           //   1: istore_1
           //   2: ldc 25
           //   4: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-          //   7: invokestatic 37	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
-          //   10: invokevirtual 43	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
-          //   13: getstatic 49	com/tencent/mm/storage/am$a:IQQ	Lcom/tencent/mm/storage/am$a;
+          //   7: invokestatic 37	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
+          //   10: invokevirtual 43	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
+          //   13: getstatic 49	com/tencent/mm/storage/ar$a:NYS	Lcom/tencent/mm/storage/ar$a;
           //   16: lconst_0
-          //   17: invokevirtual 55	com/tencent/mm/storage/aj:a	(Lcom/tencent/mm/storage/am$a;J)J
+          //   17: invokevirtual 55	com/tencent/mm/storage/ao:a	(Lcom/tencent/mm/storage/ar$a;J)J
           //   20: lstore_2
           //   21: invokestatic 59	com/tencent/mm/ipcinvoker/wx_extension/PluginIPC:access$000	()J
           //   24: lstore 4
-          //   26: invokestatic 64	com/tencent/mm/sdk/platformtools/bu:fpO	()J
+          //   26: invokestatic 64	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
           //   29: lstore 6
           //   31: lload_2
           //   32: lload 4
           //   34: ladd
           //   35: lload 6
           //   37: lcmp
-          //   38: ifgt +154 -> 192
-          //   41: invokestatic 70	com/tencent/mm/ipcinvoker/wx_extension/c:LD	()Lcom/tencent/mm/sdk/platformtools/ay;
-          //   44: getfield 76	com/tencent/mm/sdk/platformtools/ay:IyS	Lcom/tencent/mmkv/MMKV;
-          //   47: invokevirtual 81	com/tencent/mmkv/MMKV:totalSize	()J
-          //   50: ldc2_w 82
-          //   53: lcmp
-          //   54: iflt +55 -> 109
-          //   57: ldc 85
-          //   59: ldc 87
-          //   61: iconst_1
-          //   62: anewarray 4	java/lang/Object
-          //   65: dup
-          //   66: iconst_0
-          //   67: iload_1
-          //   68: invokestatic 93	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-          //   71: aastore
-          //   72: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   75: iload_1
-          //   76: ifeq +9 -> 85
-          //   79: invokestatic 70	com/tencent/mm/ipcinvoker/wx_extension/c:LD	()Lcom/tencent/mm/sdk/platformtools/ay;
-          //   82: invokevirtual 101	com/tencent/mm/sdk/platformtools/ay:clearAll	()V
-          //   85: invokestatic 37	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
-          //   88: invokevirtual 43	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
-          //   91: getstatic 49	com/tencent/mm/storage/am$a:IQQ	Lcom/tencent/mm/storage/am$a;
-          //   94: invokestatic 64	com/tencent/mm/sdk/platformtools/bu:fpO	()J
-          //   97: invokestatic 106	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   100: invokevirtual 110	com/tencent/mm/storage/aj:set	(Lcom/tencent/mm/storage/am$a;Ljava/lang/Object;)V
-          //   103: ldc 25
-          //   105: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   108: return
-          //   109: iconst_0
-          //   110: istore_1
-          //   111: goto -54 -> 57
-          //   114: astore 8
-          //   116: ldc 85
-          //   118: ldc 115
-          //   120: iconst_1
-          //   121: anewarray 4	java/lang/Object
-          //   124: dup
-          //   125: iconst_0
-          //   126: aload 8
-          //   128: aastore
-          //   129: invokestatic 118	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   132: invokestatic 37	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
-          //   135: invokevirtual 43	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
-          //   138: getstatic 49	com/tencent/mm/storage/am$a:IQQ	Lcom/tencent/mm/storage/am$a;
-          //   141: invokestatic 64	com/tencent/mm/sdk/platformtools/bu:fpO	()J
-          //   144: invokestatic 106	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   147: invokevirtual 110	com/tencent/mm/storage/aj:set	(Lcom/tencent/mm/storage/am$a;Ljava/lang/Object;)V
-          //   150: ldc 25
-          //   152: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   155: return
-          //   156: astore 8
-          //   158: ldc 25
-          //   160: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   163: return
-          //   164: astore 8
-          //   166: invokestatic 37	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
-          //   169: invokevirtual 43	com/tencent/mm/kernel/e:ajA	()Lcom/tencent/mm/storage/aj;
-          //   172: getstatic 49	com/tencent/mm/storage/am$a:IQQ	Lcom/tencent/mm/storage/am$a;
-          //   175: invokestatic 64	com/tencent/mm/sdk/platformtools/bu:fpO	()J
-          //   178: invokestatic 106	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   181: invokevirtual 110	com/tencent/mm/storage/aj:set	(Lcom/tencent/mm/storage/am$a;Ljava/lang/Object;)V
-          //   184: ldc 25
-          //   186: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   189: aload 8
-          //   191: athrow
-          //   192: ldc 25
-          //   194: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   197: return
+          //   38: ifgt +151 -> 189
+          //   41: invokestatic 70	com/tencent/mm/ipcinvoker/wx_extension/c:VQ	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
+          //   44: invokevirtual 75	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:totalSize	()J
+          //   47: ldc2_w 76
+          //   50: lcmp
+          //   51: iflt +55 -> 106
+          //   54: ldc 79
+          //   56: ldc 81
+          //   58: iconst_1
+          //   59: anewarray 4	java/lang/Object
+          //   62: dup
+          //   63: iconst_0
+          //   64: iload_1
+          //   65: invokestatic 87	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+          //   68: aastore
+          //   69: invokestatic 92	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   72: iload_1
+          //   73: ifeq +9 -> 82
+          //   76: invokestatic 70	com/tencent/mm/ipcinvoker/wx_extension/c:VQ	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
+          //   79: invokevirtual 95	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:clearAll	()V
+          //   82: invokestatic 37	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
+          //   85: invokevirtual 43	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
+          //   88: getstatic 49	com/tencent/mm/storage/ar$a:NYS	Lcom/tencent/mm/storage/ar$a;
+          //   91: invokestatic 64	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
+          //   94: invokestatic 100	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   97: invokevirtual 104	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
+          //   100: ldc 25
+          //   102: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   105: return
+          //   106: iconst_0
+          //   107: istore_1
+          //   108: goto -54 -> 54
+          //   111: astore 8
+          //   113: ldc 79
+          //   115: ldc 109
+          //   117: iconst_1
+          //   118: anewarray 4	java/lang/Object
+          //   121: dup
+          //   122: iconst_0
+          //   123: aload 8
+          //   125: aastore
+          //   126: invokestatic 112	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   129: invokestatic 37	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
+          //   132: invokevirtual 43	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
+          //   135: getstatic 49	com/tencent/mm/storage/ar$a:NYS	Lcom/tencent/mm/storage/ar$a;
+          //   138: invokestatic 64	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
+          //   141: invokestatic 100	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   144: invokevirtual 104	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
+          //   147: ldc 25
+          //   149: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   152: return
+          //   153: astore 8
+          //   155: ldc 25
+          //   157: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   160: return
+          //   161: astore 8
+          //   163: invokestatic 37	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
+          //   166: invokevirtual 43	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
+          //   169: getstatic 49	com/tencent/mm/storage/ar$a:NYS	Lcom/tencent/mm/storage/ar$a;
+          //   172: invokestatic 64	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
+          //   175: invokestatic 100	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   178: invokevirtual 104	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
+          //   181: ldc 25
+          //   183: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   186: aload 8
+          //   188: athrow
+          //   189: ldc 25
+          //   191: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   194: return
           // Local variable table:
           //   start	length	slot	name	signature
-          //   0	198	0	this	2
-          //   1	110	1	bool	boolean
+          //   0	195	0	this	2
+          //   1	107	1	bool	boolean
           //   20	12	2	l1	long
           //   24	9	4	l2	long
           //   29	7	6	l3	long
-          //   114	13	8	localThrowable1	java.lang.Throwable
-          //   156	1	8	localThrowable2	java.lang.Throwable
-          //   164	26	8	localObject	Object
+          //   111	13	8	localThrowable1	java.lang.Throwable
+          //   153	1	8	localThrowable2	java.lang.Throwable
+          //   161	26	8	localObject	Object
           // Exception table:
           //   from	to	target	type
-          //   41	57	114	java/lang/Throwable
-          //   57	75	114	java/lang/Throwable
-          //   79	85	114	java/lang/Throwable
-          //   7	31	156	java/lang/Throwable
-          //   85	108	156	java/lang/Throwable
-          //   132	155	156	java/lang/Throwable
-          //   166	192	156	java/lang/Throwable
-          //   41	57	164	finally
-          //   57	75	164	finally
-          //   79	85	164	finally
-          //   116	132	164	finally
+          //   41	54	111	java/lang/Throwable
+          //   54	72	111	java/lang/Throwable
+          //   76	82	111	java/lang/Throwable
+          //   7	31	153	java/lang/Throwable
+          //   82	105	153	java/lang/Throwable
+          //   129	152	153	java/lang/Throwable
+          //   163	189	153	java/lang/Throwable
+          //   41	54	161	finally
+          //   54	72	161	finally
+          //   76	82	161	finally
+          //   113	129	161	finally
         }
       });
     }
@@ -251,7 +254,7 @@ public class PluginIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.PluginIPC
  * JD-Core Version:    0.7.0.1
  */

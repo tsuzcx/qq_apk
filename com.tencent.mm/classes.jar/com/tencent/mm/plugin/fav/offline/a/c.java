@@ -8,10 +8,10 @@ import com.tencent.mm.plugin.fav.offline.PluginFavOffline;
 public final class c
   implements ae
 {
-  public final void EL(String paramString)
+  public final void add(String paramString)
   {
     AppMethodBeat.i(73563);
-    ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineService().EL(paramString);
+    ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineService().add(paramString);
     AppMethodBeat.o(73563);
   }
 }

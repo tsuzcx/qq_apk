@@ -15,11 +15,11 @@ final class s$1
   {
     AppMethodBeat.i(96505);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageDownloadApkBtnComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    s.a(this.zVD).abg(0);
-    this.zVD.eaH();
-    this.zVD.eaq();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageDownloadApkBtnComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    s.a(this.EdK).sendMessage(0);
+    this.EdK.fdw();
+    this.EdK.fdf();
     a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageDownloadApkBtnComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(96505);
   }

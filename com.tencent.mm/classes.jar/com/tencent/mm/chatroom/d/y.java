@@ -2,233 +2,193 @@ package com.tencent.mm.chatroom.d;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Looper;
 import android.util.Pair;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.chatroom.c.c.a;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
 import com.tencent.mm.chatroom.storage.d;
 import com.tencent.mm.chatroom.ui.RoomCardUI;
-import com.tencent.mm.g.a.nc;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.a.nt;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.appbrand.service.q;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.protocal.protobuf.cxh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.protocal.protobuf.dqb;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.widget.a.e.b;
 import java.util.Iterator;
 import java.util.List;
 
 public final class y
 {
-  private static Boolean fNm = null;
-  
-  public static boolean Yn()
-  {
-    AppMethodBeat.i(182099);
-    if ((j.DEBUG) || (j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE))
-    {
-      AppMethodBeat.o(182099);
-      return true;
-    }
-    boolean bool;
-    if (fNm != null)
-    {
-      bool = fNm.booleanValue();
-      AppMethodBeat.o(182099);
-      return bool;
-    }
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFg, 1);
-    ae.i("MicroMsg.roomTodo.RoomTodoHelp", "getRoomTodoSwt() swt:%s", new Object[] { Integer.valueOf(i) });
-    if (i == 1) {}
-    for (fNm = Boolean.TRUE;; fNm = Boolean.FALSE)
-    {
-      bool = fNm.booleanValue();
-      AppMethodBeat.o(182099);
-      return bool;
-    }
-  }
+  private static Boolean gsx = null;
   
   public static Pair<Boolean, String> a(com.tencent.mm.chatroom.storage.c paramc)
   {
     AppMethodBeat.i(182102);
-    com.tencent.mm.chatroom.storage.c localc = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().ag(paramc.field_roomname, paramc.field_todoid);
+    com.tencent.mm.chatroom.storage.c localc = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().ai(paramc.field_roomname, paramc.field_todoid);
     if (localc == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByTodoBarMenu stoTodo no exist");
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByTodoBarMenu stoTodo no exist");
       paramc = new Pair(Boolean.FALSE, paramc.field_todoid);
       AppMethodBeat.o(182102);
       return paramc;
     }
-    Iterator localIterator = localc.fOh.iterator();
+    Iterator localIterator = localc.gts.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Long)localIterator.next();
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().aJ(paramc.field_roomname, ((Long)localObject).longValue());
-      ((bv)localObject).uu("");
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(((ei)localObject).field_msgId, (bv)localObject);
+      localObject = ((l)g.af(l.class)).eiy().aJ(paramc.field_roomname, ((Long)localObject).longValue());
+      ((ca)localObject).CK("");
+      ((l)g.af(l.class)).eiy().a(((eo)localObject).field_msgId, (ca)localObject);
     }
-    ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getRoomTodoMsgService();
+    ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getRoomTodoMsgService();
     c.a.a(paramc.field_roomname, 1, d(localc));
     boolean bool = c(localc);
-    ae.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByTodoBarMenu todoId:%s result:%s", new Object[] { paramc.field_todoid, Boolean.valueOf(bool) });
+    Log.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByTodoBarMenu todoId:%s result:%s", new Object[] { paramc.field_todoid, Boolean.valueOf(bool) });
     paramc = new Pair(Boolean.valueOf(bool), paramc.field_todoid);
     AppMethodBeat.o(182102);
     return paramc;
   }
   
-  public static Pair<Boolean, String> a(bv parambv, k.b paramb)
+  public static Pair<Boolean, String> a(ca paramca, k.b paramb)
   {
     AppMethodBeat.i(184782);
-    if (parambv == null)
+    if (paramca == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "msginfo is null");
-      parambv = new Pair(Boolean.FALSE, "");
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "msginfo is null");
+      paramca = new Pair(Boolean.FALSE, "");
       AppMethodBeat.o(184782);
-      return parambv;
+      return paramca;
     }
     if (paramb == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "content is null");
-      parambv = new Pair(Boolean.FALSE, "");
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "content is null");
+      paramca = new Pair(Boolean.FALSE, "");
       AppMethodBeat.o(184782);
-      return parambv;
+      return paramca;
     }
-    long l = parambv.field_createTime;
-    Object localObject = (com.tencent.mm.ah.a)paramb.ao(com.tencent.mm.ah.a.class);
+    long l = paramca.field_createTime;
+    Object localObject = (com.tencent.mm.ag.a)paramb.as(com.tencent.mm.ag.a.class);
     com.tencent.mm.chatroom.storage.c localc;
-    if (bu.isNullOrNil(((com.tencent.mm.ah.a)localObject).hAW))
+    if (Util.isNullOrNil(((com.tencent.mm.ag.a)localObject).ivd))
     {
-      localObject = "related_msgid_" + parambv.field_msgSvrId;
-      localc = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().ag(parambv.field_talker, (String)localObject);
+      localObject = "related_msgid_" + paramca.field_msgSvrId;
+      localc = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().ai(paramca.field_talker, (String)localObject);
       if (localc != null)
       {
-        ae.e("MicroMsg.roomTodo.RoomTodoHelp", "addTodoAppBrandImpl %s(%s) exist", new Object[] { localObject, Integer.valueOf(localc.field_state) });
+        Log.e("MicroMsg.roomTodo.RoomTodoHelp", "addTodoAppBrandImpl %s(%s) exist", new Object[] { localObject, Integer.valueOf(localc.field_state) });
         if (localc.field_state != 2) {
-          break label595;
+          break label594;
         }
-        ae.i("MicroMsg.roomTodo.RoomTodoHelp", "addTodoAppBrandImpl delete %s", new Object[] { Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().h(localc)) });
+        Log.i("MicroMsg.roomTodo.RoomTodoHelp", "addTodoAppBrandImpl delete %s", new Object[] { Boolean.valueOf(((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().h(localc)) });
       }
       localc = new com.tencent.mm.chatroom.storage.c();
       localc.field_todoid = ((String)localObject);
-      localc.field_roomname = parambv.field_talker;
-      localc.field_username = paramb.hFc;
-      localc.field_path = paramb.hFb;
+      localc.field_roomname = paramca.field_talker;
+      localc.field_username = paramb.izi;
+      localc.field_path = paramb.izh;
       localc.field_createtime = l;
       localc.field_updatetime = l;
       localc.field_custominfo = "";
       localObject = paramb.title;
-      if (!bu.isNullOrNil((String)localObject)) {
-        break label618;
+      if (!Util.isNullOrNil((String)localObject)) {
+        break label617;
       }
-      WxaAttributes localWxaAttributes = ((o)g.ab(o.class)).Ob(paramb.hFc);
-      if ((localWxaAttributes == null) || (bu.isNullOrNil(localWxaAttributes.field_nickname))) {
-        break label618;
+      WxaAttributes localWxaAttributes = ((q)g.af(q.class)).Xk(paramb.izi);
+      if ((localWxaAttributes == null) || (Util.isNullOrNil(localWxaAttributes.field_nickname))) {
+        break label617;
       }
       localObject = localWxaAttributes.field_nickname;
     }
-    label595:
-    label618:
+    label594:
+    label617:
     for (;;)
     {
       localc.field_title = ((String)localObject);
-      localc.field_creator = com.tencent.mm.util.e.cA(parambv);
-      localc.field_manager = v.aAC();
+      localc.field_creator = com.tencent.mm.util.e.cT(paramca);
+      localc.field_manager = com.tencent.mm.model.z.aTY();
       localc.field_nreply = 0;
-      localc.field_related_msgids = parambv.field_msgSvrId;
-      localc.field_shareKey = paramb.hFi;
-      localc.field_shareName = parambv.field_talker;
-      boolean bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().f(localc);
-      ae.i("MicroMsg.roomTodo.RoomTodoHelp", "addTodoBySendSuccess todoId:%s result:%s", new Object[] { localc.field_todoid, Boolean.valueOf(bool) });
+      localc.field_related_msgids = paramca.field_msgSvrId;
+      localc.field_shareKey = paramb.izo;
+      localc.field_shareName = paramca.field_talker;
+      boolean bool = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().f(localc);
+      Log.i("MicroMsg.roomTodo.RoomTodoHelp", "addTodoBySendSuccess todoId:%s result:%s", new Object[] { localc.field_todoid, Boolean.valueOf(bool) });
       if (bool)
       {
-        paramb = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().aJ(parambv.field_talker, parambv.field_msgSvrId);
-        paramb.uu(localc.field_todoid);
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(paramb.field_msgId, paramb);
-        paramb = new nc();
-        paramb.dCe.op = 0;
-        paramb.dCe.dCf = localc.field_todoid;
-        paramb.dCe.dwx = parambv.field_talker;
-        com.tencent.mm.sdk.b.a.IvT.a(paramb, Looper.getMainLooper());
+        paramb = ((l)g.af(l.class)).eiy().aJ(paramca.field_talker, paramca.field_msgSvrId);
+        paramb.CK(localc.field_todoid);
+        ((l)g.af(l.class)).eiy().a(paramb.field_msgId, paramb);
+        paramb = new nt();
+        paramb.dTT.op = 0;
+        paramb.dTT.dTU = localc.field_todoid;
+        paramb.dTT.dOe = paramca.field_talker;
+        EventCenter.instance.asyncPublish(paramb, Looper.getMainLooper());
       }
-      parambv = new Pair(Boolean.valueOf(bool), localc.field_todoid);
+      paramca = new Pair(Boolean.valueOf(bool), localc.field_todoid);
       AppMethodBeat.o(184782);
-      return parambv;
-      localObject = ((com.tencent.mm.ah.a)localObject).hAW;
+      return paramca;
+      localObject = ((com.tencent.mm.ag.a)localObject).ivd;
       break;
-      parambv = new Pair(Boolean.TRUE, localc.field_todoid);
+      paramca = new Pair(Boolean.TRUE, localc.field_todoid);
       AppMethodBeat.o(184782);
-      return parambv;
+      return paramca;
     }
   }
   
-  public static String a(cxh paramcxh)
+  public static String a(dqb paramdqb)
   {
     AppMethodBeat.i(182105);
-    if (paramcxh == null)
+    if (paramdqb == null)
     {
       AppMethodBeat.o(182105);
       return "";
     }
-    paramcxh = "RoomToolsTodo{TodoId='" + paramcxh.HHN + '\'' + ", Username='" + paramcxh.Username + '\'' + ", Path='" + paramcxh.uuA + '\'' + ", Time=" + paramcxh.qlc + ", CustomInfo=" + paramcxh.HHO + ", Title='" + bu.aSM(paramcxh.Title) + '\'' + ", Creator='" + paramcxh.HHM + '\'' + ", RelatedMsgId=" + paramcxh.HHP + ", Manager='" + paramcxh.HHQ + '\'' + '}';
+    paramdqb = "RoomToolsTodo{TodoId='" + paramdqb.MSY + '\'' + ", Username='" + paramdqb.Username + '\'' + ", Path='" + paramdqb.xut + '\'' + ", Time=" + paramdqb.rBX + ", CustomInfo=" + paramdqb.MSZ + ", Title='" + Util.secPrint(paramdqb.Title) + '\'' + ", Creator='" + paramdqb.MSX + '\'' + ", RelatedMsgId=" + paramdqb.MTa + ", Manager='" + paramdqb.MTb + '\'' + '}';
     AppMethodBeat.o(182105);
-    return paramcxh;
+    return paramdqb;
   }
   
-  public static void a(final Context paramContext, final String paramString1, final String paramString2, final String paramString3, final boolean paramBoolean, final int paramInt1, final int paramInt2, final int paramInt3, a parama)
+  public static void a(Context paramContext, final String paramString1, final String paramString2, final String paramString3, final boolean paramBoolean, final int paramInt1, final int paramInt2, final int paramInt3, a parama)
   {
-    AppMethodBeat.i(217121);
+    AppMethodBeat.i(194035);
     com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 1, true);
     if (paramBoolean) {
-      locale.i(paramContext.getString(2131757056), 17, com.tencent.mm.cb.a.fromDPToPix(paramContext, 14));
+      locale.j(paramContext.getString(2131757253), 17, com.tencent.mm.cb.a.fromDPToPix(paramContext, 14));
     }
     for (;;)
     {
-      locale.Ltw = true;
-      locale.LfS = new n.d()
-      {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
-        {
-          AppMethodBeat.i(182097);
-          if (this.fNn)
-          {
-            paramAnonymousl.d(0, paramContext.getString(2131757054));
-            AppMethodBeat.o(182097);
-            return;
-          }
-          paramAnonymousl.a(0, paramContext.getResources().getColor(2131099803), paramContext.getString(2131757053));
-          AppMethodBeat.o(182097);
-        }
-      };
-      locale.LfT = new n.e()
+      locale.QOp = true;
+      locale.HLX = new y.1(paramBoolean, paramContext);
+      locale.HLY = new o.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           paramAnonymousInt = 1;
           AppMethodBeat.i(182098);
-          if ((paramAnonymousMenuItem.getItemId() == 0) && (this.fNo != null))
+          if ((paramAnonymousMenuItem.getItemId() == 0) && (this.gsz != null))
           {
             int i;
             if (paramBoolean)
             {
-              this.fNo.Yp();
+              this.gsz.amc();
               if (paramInt1 != 2) {
                 break label106;
               }
@@ -243,7 +203,7 @@ public final class y
               z.a(paramAnonymousMenuItem, 2, i, paramAnonymousInt, paramInt3, paramString2, paramString3);
               AppMethodBeat.o(182098);
               return;
-              this.fNo.Yq();
+              this.gsz.amd();
               break;
               label101:
               paramAnonymousInt = 2;
@@ -256,13 +216,13 @@ public final class y
           AppMethodBeat.o(182098);
         }
       };
-      locale.KtV = new e.b()
+      locale.PGl = new e.b()
       {
         public final void onDismiss()
         {
           int i = 2;
           AppMethodBeat.i(184781);
-          if (this.fNp == 2)
+          if (this.gsA == 2)
           {
             String str = paramString1;
             int j = paramInt2;
@@ -271,16 +231,42 @@ public final class y
             }
             z.a(str, 1, j, i, paramInt3, paramString2, paramString3);
           }
-          if (this.fNp == 1) {
+          if (this.gsA == 1) {
             z.a(paramString1, paramInt2, 3, 1, paramString2, paramString3);
           }
           AppMethodBeat.o(184781);
         }
       };
-      locale.cPF();
-      AppMethodBeat.o(217121);
+      locale.dGm();
+      AppMethodBeat.o(194035);
       return;
-      locale.i(paramContext.getString(2131757055), 17, com.tencent.mm.cb.a.fromDPToPix(paramContext, 14));
+      locale.j(paramContext.getString(2131757252), 17, com.tencent.mm.cb.a.fromDPToPix(paramContext, 14));
+    }
+  }
+  
+  public static boolean ama()
+  {
+    AppMethodBeat.i(182099);
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
+    {
+      AppMethodBeat.o(182099);
+      return true;
+    }
+    boolean bool;
+    if (gsx != null)
+    {
+      bool = gsx.booleanValue();
+      AppMethodBeat.o(182099);
+      return bool;
+    }
+    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYq, 1);
+    Log.i("MicroMsg.roomTodo.RoomTodoHelp", "getRoomTodoSwt() swt:%s", new Object[] { Integer.valueOf(i) });
+    if (i == 1) {}
+    for (gsx = Boolean.TRUE;; gsx = Boolean.FALSE)
+    {
+      bool = gsx.booleanValue();
+      AppMethodBeat.o(182099);
+      return bool;
     }
   }
   
@@ -288,61 +274,61 @@ public final class y
   {
     AppMethodBeat.i(182104);
     paramc.field_state = 1;
-    paramc.field_updatetime = ch.aDb();
-    boolean bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().g(paramc);
+    paramc.field_updatetime = cl.aWz();
+    boolean bool = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().g(paramc);
     AppMethodBeat.o(182104);
     return bool;
   }
   
-  public static Pair<Boolean, String> c(bv parambv)
+  public static Pair<Boolean, String> c(ca paramca)
   {
     AppMethodBeat.i(182100);
-    if (parambv == null)
+    if (paramca == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "msginfo is null");
-      parambv = new Pair(Boolean.FALSE, "");
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "msginfo is null");
+      paramca = new Pair(Boolean.FALSE, "");
       AppMethodBeat.o(182100);
-      return parambv;
+      return paramca;
     }
-    if (parambv.fwp())
+    if (paramca.gDV())
     {
-      localObject = new cxh();
-      ((cxh)localObject).HHN = ("related_msgid_" + parambv.field_msgSvrId);
-      ((cxh)localObject).Username = "roomannouncement@app.origin";
-      ((cxh)localObject).uuA = "";
-      ((cxh)localObject).qlc = ch.aDd();
-      ((cxh)localObject).Title = ak.getContext().getString(2131757057);
-      ((cxh)localObject).HHM = com.tencent.mm.util.e.cA(parambv);
-      ((cxh)localObject).HHP = parambv.field_msgSvrId;
-      ((cxh)localObject).HHQ = v.aAC();
-      ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getRoomTodoMsgService();
-      c.a.a(parambv.field_talker, 0, (cxh)localObject);
-      parambv = new Pair(Boolean.TRUE, ((cxh)localObject).HHN);
+      localObject = new dqb();
+      ((dqb)localObject).MSY = ("related_msgid_" + paramca.field_msgSvrId);
+      ((dqb)localObject).Username = "roomannouncement@app.origin";
+      ((dqb)localObject).xut = "";
+      ((dqb)localObject).rBX = cl.aWB();
+      ((dqb)localObject).Title = MMApplicationContext.getContext().getString(2131757254);
+      ((dqb)localObject).MSX = com.tencent.mm.util.e.cT(paramca);
+      ((dqb)localObject).MTa = paramca.field_msgSvrId;
+      ((dqb)localObject).MTb = com.tencent.mm.model.z.aTY();
+      ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getRoomTodoMsgService();
+      c.a.a(paramca.field_talker, 0, (dqb)localObject);
+      paramca = new Pair(Boolean.TRUE, ((dqb)localObject).MSY);
       AppMethodBeat.o(182100);
-      return parambv;
+      return paramca;
     }
-    k.b localb = k.b.zb(parambv.field_content);
+    k.b localb = k.b.HD(paramca.field_content);
     if (localb == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "content is null");
-      parambv = new Pair(Boolean.FALSE, "");
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "content is null");
+      paramca = new Pair(Boolean.FALSE, "");
       AppMethodBeat.o(182100);
-      return parambv;
+      return paramca;
     }
-    cxh localcxh = new cxh();
-    Object localObject = (com.tencent.mm.ah.a)localb.ao(com.tencent.mm.ah.a.class);
-    if ((localObject == null) || (bu.isNullOrNil(((com.tencent.mm.ah.a)localObject).hAW)))
+    dqb localdqb = new dqb();
+    Object localObject = (com.tencent.mm.ag.a)localb.as(com.tencent.mm.ag.a.class);
+    if ((localObject == null) || (Util.isNullOrNil(((com.tencent.mm.ag.a)localObject).ivd)))
     {
-      localcxh.HHN = ("related_msgid_" + parambv.field_msgSvrId);
-      localcxh.Username = localb.hFc;
-      localcxh.uuA = localb.hFb;
-      localcxh.qlc = ch.aDd();
+      localdqb.MSY = ("related_msgid_" + paramca.field_msgSvrId);
+      localdqb.Username = localb.izi;
+      localdqb.xut = localb.izh;
+      localdqb.rBX = cl.aWB();
       localObject = localb.title;
-      if (!bu.isNullOrNil((String)localObject)) {
+      if (!Util.isNullOrNil((String)localObject)) {
         break label447;
       }
-      WxaAttributes localWxaAttributes = ((o)g.ab(o.class)).Ob(localb.hFc);
-      if ((localWxaAttributes == null) || (bu.isNullOrNil(localWxaAttributes.field_nickname))) {
+      WxaAttributes localWxaAttributes = ((q)g.af(q.class)).Xk(localb.izi);
+      if ((localWxaAttributes == null) || (Util.isNullOrNil(localWxaAttributes.field_nickname))) {
         break label447;
       }
       localObject = localWxaAttributes.field_nickname;
@@ -350,134 +336,134 @@ public final class y
     label447:
     for (;;)
     {
-      localcxh.Title = ((String)localObject);
-      localcxh.HHM = com.tencent.mm.util.e.cA(parambv);
-      localcxh.HHP = parambv.field_msgSvrId;
-      localcxh.HHQ = v.aAC();
-      localcxh.HHR = localb.hFi;
-      localcxh.HHS = parambv.field_talker;
-      ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getRoomTodoMsgService();
-      c.a.a(parambv.field_talker, 0, localcxh);
-      parambv = new Pair(Boolean.TRUE, localcxh.HHN);
+      localdqb.Title = ((String)localObject);
+      localdqb.MSX = com.tencent.mm.util.e.cT(paramca);
+      localdqb.MTa = paramca.field_msgSvrId;
+      localdqb.MTb = com.tencent.mm.model.z.aTY();
+      localdqb.MTc = localb.izo;
+      localdqb.MTd = paramca.field_talker;
+      ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getRoomTodoMsgService();
+      c.a.a(paramca.field_talker, 0, localdqb);
+      paramca = new Pair(Boolean.TRUE, localdqb.MSY);
       AppMethodBeat.o(182100);
-      return parambv;
-      localcxh.HHN = ((com.tencent.mm.ah.a)localObject).hAW;
+      return paramca;
+      localdqb.MSY = ((com.tencent.mm.ag.a)localObject).ivd;
       break;
     }
   }
   
   public static boolean c(com.tencent.mm.chatroom.storage.c paramc)
   {
-    AppMethodBeat.i(217120);
+    AppMethodBeat.i(194034);
     paramc.field_state = 2;
-    paramc.field_updatetime = ch.aDb();
-    boolean bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().g(paramc);
-    AppMethodBeat.o(217120);
+    paramc.field_updatetime = cl.aWz();
+    boolean bool = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().g(paramc);
+    AppMethodBeat.o(194034);
     return bool;
   }
   
-  public static cxh d(com.tencent.mm.chatroom.storage.c paramc)
+  public static dqb d(com.tencent.mm.chatroom.storage.c paramc)
   {
     AppMethodBeat.i(182106);
-    cxh localcxh = new cxh();
-    localcxh.HHN = paramc.field_todoid;
-    localcxh.Username = paramc.field_username;
-    localcxh.uuA = paramc.field_path;
-    localcxh.qlc = ((int)(paramc.field_createtime / 1000L));
-    localcxh.Title = paramc.field_title;
-    localcxh.HHM = paramc.field_creator;
-    localcxh.HHP = paramc.Yx();
-    localcxh.HHQ = paramc.field_manager;
-    localcxh.HHO = com.tencent.mm.bw.b.aPw(paramc.field_custominfo);
-    localcxh.HHR = paramc.field_shareKey;
-    localcxh.HHS = paramc.field_shareName;
+    dqb localdqb = new dqb();
+    localdqb.MSY = paramc.field_todoid;
+    localdqb.Username = paramc.field_username;
+    localdqb.xut = paramc.field_path;
+    localdqb.rBX = ((int)(paramc.field_createtime / 1000L));
+    localdqb.Title = paramc.field_title;
+    localdqb.MSX = paramc.field_creator;
+    localdqb.MTa = paramc.amk();
+    localdqb.MTb = paramc.field_manager;
+    localdqb.MSZ = com.tencent.mm.bw.b.bfZ(paramc.field_custominfo);
+    localdqb.MTc = paramc.field_shareKey;
+    localdqb.MTd = paramc.field_shareName;
     AppMethodBeat.o(182106);
-    return localcxh;
+    return localdqb;
   }
   
-  public static String d(bv parambv)
+  public static String d(ca paramca)
   {
-    AppMethodBeat.i(217119);
-    if (parambv == null)
+    AppMethodBeat.i(194033);
+    if (paramca == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "msginfo is null");
-      AppMethodBeat.o(217119);
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "msginfo is null");
+      AppMethodBeat.o(194033);
       return "";
     }
-    if (parambv.fwp())
+    if (paramca.gDV())
     {
-      parambv = "related_msgid_" + parambv.field_msgSvrId;
-      AppMethodBeat.o(217119);
-      return parambv;
+      paramca = "related_msgid_" + paramca.field_msgSvrId;
+      AppMethodBeat.o(194033);
+      return paramca;
     }
-    Object localObject = k.b.zb(parambv.field_content);
+    Object localObject = k.b.HD(paramca.field_content);
     if (localObject == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "content is null");
-      AppMethodBeat.o(217119);
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "content is null");
+      AppMethodBeat.o(194033);
       return "";
     }
-    localObject = (com.tencent.mm.ah.a)((k.b)localObject).ao(com.tencent.mm.ah.a.class);
-    if ((localObject == null) || (bu.isNullOrNil(((com.tencent.mm.ah.a)localObject).hAW)))
+    localObject = (com.tencent.mm.ag.a)((k.b)localObject).as(com.tencent.mm.ag.a.class);
+    if ((localObject == null) || (Util.isNullOrNil(((com.tencent.mm.ag.a)localObject).ivd)))
     {
-      parambv = "related_msgid_" + parambv.field_msgSvrId;
-      AppMethodBeat.o(217119);
-      return parambv;
+      paramca = "related_msgid_" + paramca.field_msgSvrId;
+      AppMethodBeat.o(194033);
+      return paramca;
     }
-    parambv = ((com.tencent.mm.ah.a)localObject).hAW;
-    AppMethodBeat.o(217119);
-    return parambv;
+    paramca = ((com.tencent.mm.ag.a)localObject).ivd;
+    AppMethodBeat.o(194033);
+    return paramca;
   }
   
-  public static Pair<Boolean, String> e(bv parambv)
+  public static Pair<Boolean, String> e(ca paramca)
   {
     AppMethodBeat.i(182101);
-    Object localObject1 = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().ag(parambv.field_talker, parambv.fmA);
+    Object localObject1 = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().ai(paramca.field_talker, paramca.fRe);
     if (localObject1 != null)
     {
-      localObject2 = ((com.tencent.mm.chatroom.storage.c)localObject1).fOh.iterator();
+      localObject2 = ((com.tencent.mm.chatroom.storage.c)localObject1).gts.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Object localObject3 = (Long)((Iterator)localObject2).next();
-        localObject3 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().aJ(parambv.field_talker, ((Long)localObject3).longValue());
-        ((bv)localObject3).uu("");
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(((ei)localObject3).field_msgId, (bv)localObject3);
+        localObject3 = ((l)g.af(l.class)).eiy().aJ(paramca.field_talker, ((Long)localObject3).longValue());
+        ((ca)localObject3).CK("");
+        ((l)g.af(l.class)).eiy().a(((eo)localObject3).field_msgId, (ca)localObject3);
       }
-      localObject2 = new nc();
-      ((nc)localObject2).dCe.op = 1;
-      ((nc)localObject2).dCe.dCf = parambv.fmA;
-      ((nc)localObject2).dCe.dwx = parambv.field_talker;
-      com.tencent.mm.sdk.b.a.IvT.a((com.tencent.mm.sdk.b.b)localObject2, Looper.getMainLooper());
+      localObject2 = new nt();
+      ((nt)localObject2).dTT.op = 1;
+      ((nt)localObject2).dTT.dTU = paramca.fRe;
+      ((nt)localObject2).dTT.dOe = paramca.field_talker;
+      EventCenter.instance.asyncPublish((IEvent)localObject2, Looper.getMainLooper());
       boolean bool = c((com.tencent.mm.chatroom.storage.c)localObject1);
-      ae.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByClickMsg todoId:%s result:%s", new Object[] { parambv.fmA, Boolean.valueOf(bool) });
+      Log.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByClickMsg todoId:%s result:%s", new Object[] { paramca.fRe, Boolean.valueOf(bool) });
       localObject1 = d((com.tencent.mm.chatroom.storage.c)localObject1);
-      ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getRoomTodoMsgService();
-      c.a.a(parambv.field_talker, 1, (cxh)localObject1);
-      parambv = new Pair(Boolean.TRUE, parambv.fmA);
+      ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getRoomTodoMsgService();
+      c.a.a(paramca.field_talker, 1, (dqb)localObject1);
+      paramca = new Pair(Boolean.TRUE, paramca.fRe);
       AppMethodBeat.o(182101);
-      return parambv;
+      return paramca;
     }
-    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().aJ(parambv.field_talker, parambv.field_msgSvrId);
-    ((bv)localObject1).uu("");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(((ei)localObject1).field_msgId, (bv)localObject1);
-    localObject1 = new cxh();
-    ((cxh)localObject1).HHN = parambv.fmA;
-    Object localObject2 = k.b.zb(parambv.field_content);
+    localObject1 = ((l)g.af(l.class)).eiy().aJ(paramca.field_talker, paramca.field_msgSvrId);
+    ((ca)localObject1).CK("");
+    ((l)g.af(l.class)).eiy().a(((eo)localObject1).field_msgId, (ca)localObject1);
+    localObject1 = new dqb();
+    ((dqb)localObject1).MSY = paramca.fRe;
+    Object localObject2 = k.b.HD(paramca.field_content);
     if (localObject2 == null)
     {
-      ((cxh)localObject1).Username = "";
-      ((cxh)localObject1).uuA = "";
+      ((dqb)localObject1).Username = "";
+      ((dqb)localObject1).xut = "";
     }
-    for (((cxh)localObject1).Title = "";; ((cxh)localObject1).Title = ((k.b)localObject2).title)
+    for (((dqb)localObject1).Title = "";; ((dqb)localObject1).Title = ((k.b)localObject2).title)
     {
-      ((cxh)localObject1).qlc = ((int)(parambv.field_createTime / 10000L));
-      ((cxh)localObject1).HHM = com.tencent.mm.util.e.cA(parambv);
-      ((cxh)localObject1).HHP = parambv.field_msgSvrId;
-      ((cxh)localObject1).HHQ = "";
-      ae.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByClickMsg todoId:%s", new Object[] { parambv.fmA });
+      ((dqb)localObject1).rBX = ((int)(paramca.field_createTime / 10000L));
+      ((dqb)localObject1).MSX = com.tencent.mm.util.e.cT(paramca);
+      ((dqb)localObject1).MTa = paramca.field_msgSvrId;
+      ((dqb)localObject1).MTb = "";
+      Log.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByClickMsg todoId:%s", new Object[] { paramca.fRe });
       break;
-      ((cxh)localObject1).Username = ((k.b)localObject2).hFc;
-      ((cxh)localObject1).uuA = ((k.b)localObject2).hFb;
+      ((dqb)localObject1).Username = ((k.b)localObject2).izi;
+      ((dqb)localObject1).xut = ((k.b)localObject2).izh;
     }
   }
   
@@ -490,123 +476,123 @@ public final class y
     return true;
   }
   
-  public static String f(bv parambv)
+  public static String f(ca paramca)
   {
-    AppMethodBeat.i(217122);
-    if (parambv == null)
+    AppMethodBeat.i(194036);
+    if (paramca == null)
     {
-      AppMethodBeat.o(217122);
+      AppMethodBeat.o(194036);
       return "";
     }
-    if (parambv.fwp())
+    if (paramca.gDV())
     {
-      AppMethodBeat.o(217122);
+      AppMethodBeat.o(194036);
       return "roomannouncement@app.origin";
     }
-    parambv = k.b.zb(parambv.field_content);
-    if (parambv == null)
+    paramca = k.b.HD(paramca.field_content);
+    if (paramca == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "getAppUsernameFromMsginfo content is null");
-      AppMethodBeat.o(217122);
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "getAppUsernameFromMsginfo content is null");
+      AppMethodBeat.o(194036);
       return "";
     }
-    if ((com.tencent.mm.ah.a)parambv.ao(com.tencent.mm.ah.a.class) == null)
+    if ((com.tencent.mm.ag.a)paramca.as(com.tencent.mm.ag.a.class) == null)
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "getAppUsernameFromMsginfo appContentAppBrandPiece is null");
-      AppMethodBeat.o(217122);
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "getAppUsernameFromMsginfo appContentAppBrandPiece is null");
+      AppMethodBeat.o(194036);
       return "";
     }
-    parambv = parambv.hFc;
-    AppMethodBeat.o(217122);
-    return parambv;
+    paramca = paramca.izi;
+    AppMethodBeat.o(194036);
+    return paramca;
   }
   
   public static void f(Context paramContext, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(182107);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.roomTodo.RoomTodoHelp", "gotoRoomCard roomname is null");
+      Log.e("MicroMsg.roomTodo.RoomTodoHelp", "gotoRoomCard roomname is null");
       AppMethodBeat.o(182107);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.setClass(paramContext, RoomCardUI.class);
     localIntent.putExtra("RoomInfo_Id", paramString);
-    localIntent.putExtra("room_notice", r.zE(paramString));
-    localIntent.putExtra("room_notice_publish_time", r.zH(paramString));
-    localIntent.putExtra("room_notice_editor", r.zG(paramString));
-    paramString = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(paramString);
+    localIntent.putExtra("room_notice", v.Ig(paramString));
+    localIntent.putExtra("room_notice_publish_time", v.Ij(paramString));
+    localIntent.putExtra("room_notice_editor", v.Ii(paramString));
+    paramString = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(paramString);
     if (paramString != null)
     {
-      localIntent.putExtra("Is_RoomOwner", paramString.field_roomowner.equals(v.aAC()));
-      localIntent.putExtra("Is_RoomManager", paramString.aUg(v.aAC()));
+      localIntent.putExtra("Is_RoomOwner", paramString.field_roomowner.equals(com.tencent.mm.model.z.aTY()));
+      localIntent.putExtra("Is_RoomManager", paramString.bjf(com.tencent.mm.model.z.aTY()));
     }
     if (paramBoolean) {
       localIntent.setFlags(268435456);
     }
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/mm/chatroom/model/RoomTodoHelp", "gotoRoomCard", "(Landroid/content/Context;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.mt(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/mm/chatroom/model/RoomTodoHelp", "gotoRoomCard", "(Landroid/content/Context;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/chatroom/model/RoomTodoHelp", "gotoRoomCard", "(Landroid/content/Context;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(182107);
   }
   
-  public static Pair<Boolean, String> qY(long paramLong)
+  public static Pair<Boolean, String> yQ(long paramLong)
   {
     AppMethodBeat.i(182103);
-    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(paramLong);
-    if (bu.isNullOrNil(((ei)localObject).fmA))
+    Object localObject = ((l)g.af(l.class)).eiy().Hb(paramLong);
+    if (Util.isNullOrNil(((eo)localObject).fRe))
     {
       localObject = new Pair(Boolean.FALSE, "");
       AppMethodBeat.o(182103);
       return localObject;
     }
-    com.tencent.mm.chatroom.storage.c localc = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().ag(((ei)localObject).field_talker, ((ei)localObject).fmA);
+    com.tencent.mm.chatroom.storage.c localc = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().ai(((eo)localObject).field_talker, ((eo)localObject).fRe);
     if (localc == null)
     {
-      localObject = new Pair(Boolean.FALSE, ((ei)localObject).fmA);
+      localObject = new Pair(Boolean.FALSE, ((eo)localObject).fRe);
       AppMethodBeat.o(182103);
       return localObject;
     }
     boolean bool;
-    if (localc.ra(((ei)localObject).field_msgSvrId))
+    if (localc.yS(((eo)localObject).field_msgSvrId))
     {
-      bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().h(localc);
-      nc localnc = new nc();
-      localnc.dCe.op = 1;
-      localnc.dCe.dwx = localc.field_roomname;
-      localnc.dCe.dCf = localc.field_todoid;
+      bool = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().h(localc);
+      nt localnt = new nt();
+      localnt.dTT.op = 1;
+      localnt.dTT.dOe = localc.field_roomname;
+      localnt.dTT.dTU = localc.field_todoid;
       if (bool) {
-        com.tencent.mm.sdk.b.a.IvT.a(localnc, Looper.getMainLooper());
+        EventCenter.instance.asyncPublish(localnt, Looper.getMainLooper());
       }
-      ae.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByRevokeMsg delete result:%s", new Object[] { Boolean.valueOf(bool) });
+      Log.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByRevokeMsg delete result:%s", new Object[] { Boolean.valueOf(bool) });
     }
     for (;;)
     {
       if (bool)
       {
-        ((bv)localObject).uu("");
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().a(((ei)localObject).field_msgId, (bv)localObject);
+        ((ca)localObject).CK("");
+        ((l)g.af(l.class)).eiy().a(((eo)localObject).field_msgId, (ca)localObject);
       }
-      localObject = new Pair(Boolean.TRUE, ((ei)localObject).fmA);
+      localObject = new Pair(Boolean.TRUE, ((eo)localObject).fRe);
       AppMethodBeat.o(182103);
       return localObject;
-      bool = ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupTodoStorage().g(localc);
-      ae.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByRevokeMsg updateGroupTodo result:%s", new Object[] { Boolean.valueOf(bool) });
+      bool = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().g(localc);
+      Log.i("MicroMsg.roomTodo.RoomTodoHelp", "recallTodoByRevokeMsg updateGroupTodo result:%s", new Object[] { Boolean.valueOf(bool) });
     }
   }
   
   public static abstract interface a
   {
-    public abstract void Yp();
+    public abstract void amc();
     
-    public abstract void Yq();
+    public abstract void amd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.y
  * JD-Core Version:    0.7.0.1
  */

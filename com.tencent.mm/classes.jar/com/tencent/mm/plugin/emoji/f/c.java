@@ -1,69 +1,71 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.hx;
-import com.tencent.mm.protocal.protobuf.hy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.ik;
+import com.tencent.mm.protocal.protobuf.il;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public int jgW;
-  private int pLZ;
-  private List<String> pMa;
-  private final b rr;
+  private i callback;
+  public int kfa;
+  private int rcs;
+  private List<String> rct;
+  private final d rr;
   
   public c(int paramInt1, int paramInt2, List<String> paramList)
   {
     AppMethodBeat.i(104566);
-    b.a locala = new b.a();
-    locala.hQF = new hx();
-    locala.hQG = new hy();
+    d.a locala = new d.a();
+    locala.iLN = new ik();
+    locala.iLO = new il();
     locala.uri = "/cgi-bin/micromsg-bin/mmbackupemojioperate";
     locala.funcId = 698;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.pLZ = paramInt1;
-    this.jgW = paramInt2;
-    this.pMa = paramList;
+    this.rr = locala.aXF();
+    this.rcs = paramInt1;
+    this.kfa = paramInt2;
+    this.rct = paramList;
     AppMethodBeat.o(104566);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(104568);
-    this.callback = paramf;
-    paramf = (hx)this.rr.hQD.hQJ;
-    paramf.FSQ = this.jgW;
-    paramf.FSP = new LinkedList(this.pMa);
-    paramf.uqG = this.pLZ;
-    if ((paramf.FSP != null) && (paramf.FSP.size() > 0))
+    this.callback = parami;
+    parami = (ik)this.rr.iLK.iLR;
+    parami.KMz = this.kfa;
+    parami.KMy = new LinkedList(this.rct);
+    parami.xIY = this.rcs;
+    if ((parami.KMy != null) && (parami.KMy.size() > 0))
     {
-      ae.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "do scene delte md5 list size:%s", new Object[] { Integer.valueOf(paramf.FSP.size()) });
+      Log.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "do scene delte md5 list size:%s", new Object[] { Integer.valueOf(parami.KMy.size()) });
       i = 0;
     }
-    while (i < paramf.FSP.size())
+    while (i < parami.KMy.size())
     {
-      ae.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "do scene delte md5:%s", new Object[] { paramf.FSP.get(i) });
+      Log.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "do scene delte md5:%s", new Object[] { parami.KMy.get(i) });
       i += 1;
       continue;
-      ae.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "empty md5 list.");
+      Log.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "empty md5 list.");
     }
-    int i = dispatch(parame, this.rr, this);
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(104568);
     return i;
   }
@@ -73,21 +75,21 @@ public final class c
     return 698;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(104567);
-    ae.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (paramInt3 == -434)
     {
-      ae.w("MicroMsg.emoji.NetSceneBackupEmojiOperate", "[cpan] batch backup emoji failed. over size.");
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IKJ, Boolean.TRUE);
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 7L, 1L, false);
+      Log.w("MicroMsg.emoji.NetSceneBackupEmojiOperate", "[cpan] batch backup emoji failed. over size.");
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NSH, Boolean.TRUE);
+      h.CyF.idkeyStat(164L, 7L, 1L, false);
     }
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IKJ, Boolean.FALSE);
-      if ((this.jgW == 1) || (this.jgW == 4)) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 5L, 1L, false);
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NSH, Boolean.FALSE);
+      if ((this.kfa == 1) || (this.kfa == 4)) {
+        h.CyF.idkeyStat(164L, 5L, 1L, false);
       }
     }
     for (;;)
@@ -95,19 +97,19 @@ public final class c
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(104567);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 8L, 1L, false);
+      h.CyF.idkeyStat(164L, 8L, 1L, false);
       continue;
-      if ((this.jgW == 1) || (this.jgW == 4)) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 6L, 1L, false);
+      if ((this.kfa == 1) || (this.kfa == 4)) {
+        h.CyF.idkeyStat(164L, 6L, 1L, false);
       } else {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(164L, 9L, 1L, false);
+        h.CyF.idkeyStat(164L, 9L, 1L, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.c
  * JD-Core Version:    0.7.0.1
  */

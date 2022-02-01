@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface u
 {
-  public abstract Object fcN();
+  public abstract Object glZ();
   
-  public abstract Object fcO();
+  public abstract Object gma();
 }
 
 

@@ -2,32 +2,17 @@ package com.tencent.mm.plugin.emojicapture.proxy;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.n.n;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$startRemote$uiCallback$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$startRemote$uiCallback$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-emojicapture_release"})
 public final class VoiceInputProxy$c
   implements g.b
 {
-  public final void aOo()
-  {
-    AppMethodBeat.i(423);
-    ae.i(VoiceInputProxy.access$getTAG$p(this.qaP), "onRecordFin");
-    AppMethodBeat.o(423);
-  }
-  
-  public final void aOs()
-  {
-    AppMethodBeat.i(424);
-    ae.i(VoiceInputProxy.access$getTAG$p(this.qaP), "onRecognizeFinish");
-    this.qaP.CLIENT_CALL("onRecognizeFinish", new Object[0]);
-    AppMethodBeat.o(424);
-  }
-  
   public final void b(String[] paramArrayOfString, List<String> paramList)
   {
     AppMethodBeat.i(421);
@@ -55,14 +40,14 @@ public final class VoiceInputProxy$c
         if (i != 0)
         {
           paramList = paramArrayOfString[0];
-          ae.i(VoiceInputProxy.access$getTAG$p(this.qaP), "onRes remote ".concat(String.valueOf(paramList)));
+          Log.i(VoiceInputProxy.access$getTAG$p(this.rrM), "onRes remote ".concat(String.valueOf(paramList)));
           i = n.g((CharSequence)paramList, "。");
           paramArrayOfString = paramList;
           if (i >= 0)
           {
             if (paramList == null)
             {
-              paramArrayOfString = new v("null cannot be cast to non-null type java.lang.String");
+              paramArrayOfString = new t("null cannot be cast to non-null type java.lang.String");
               AppMethodBeat.o(421);
               throw paramArrayOfString;
               i = 0;
@@ -77,7 +62,7 @@ public final class VoiceInputProxy$c
             paramArrayOfString = paramList.substring(0, i);
             p.g(paramArrayOfString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
           }
-          this.qaP.CLIENT_CALL("onRes", new Object[] { paramArrayOfString });
+          this.rrM.CLIENT_CALL("onRes", new Object[] { paramArrayOfString });
         }
       }
     }
@@ -85,10 +70,25 @@ public final class VoiceInputProxy$c
     AppMethodBeat.o(421);
   }
   
+  public final void biv()
+  {
+    AppMethodBeat.i(423);
+    Log.i(VoiceInputProxy.access$getTAG$p(this.rrM), "onRecordFin");
+    AppMethodBeat.o(423);
+  }
+  
+  public final void biz()
+  {
+    AppMethodBeat.i(424);
+    Log.i(VoiceInputProxy.access$getTAG$p(this.rrM), "onRecognizeFinish");
+    this.rrM.CLIENT_CALL("onRecognizeFinish", new Object[0]);
+    AppMethodBeat.o(424);
+  }
+  
   public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     AppMethodBeat.i(422);
-    ae.w(VoiceInputProxy.access$getTAG$p(this.qaP), "onError " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramLong);
+    Log.w(VoiceInputProxy.access$getTAG$p(this.rrM), "onError " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramLong);
     AppMethodBeat.o(422);
   }
 }

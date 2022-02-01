@@ -2,33 +2,33 @@ package com.tencent.mm.ipcinvoker.wx_extension.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static com.tencent.mm.storage.c xi(String paramString)
+  public static com.tencent.mm.storage.c Fu(String paramString)
   {
     AppMethodBeat.i(153087);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ae.i("MicroMsg.IPCNewABTest", "get ABTestItem by layerId failed, id is null.", new Object[] { paramString });
+      Log.i("MicroMsg.IPCNewABTest", "get ABTestItem by layerId failed, id is null.", new Object[] { paramString });
       AppMethodBeat.o(153087);
       return null;
     }
-    if (((com.tencent.mm.kernel.b.h)g.ajO().ajq()).akL())
+    if (((com.tencent.mm.kernel.b.h)g.aAe().azG()).aBb())
     {
-      if ((!g.ajS().gEt.gEN) || (!g.ajP().gDk))
+      if ((!g.aAi().hrh.hrB) || (!g.aAf().hpY))
       {
-        ae.e("MicroMsg.IPCNewABTest", "kernel or account not ready.");
+        Log.e("MicroMsg.IPCNewABTest", "kernel or account not ready.");
         AppMethodBeat.o(153087);
         return null;
       }
-      paramString = com.tencent.mm.model.c.d.aDI().xi(paramString);
+      paramString = com.tencent.mm.model.c.d.aXu().Fu(paramString);
       AppMethodBeat.o(153087);
       return paramString;
     }
-    com.tencent.mm.model.c.c localc = com.tencent.mm.model.c.c.hMg;
-    paramString = com.tencent.mm.model.c.c.Cv(paramString);
+    com.tencent.mm.model.c.c localc = com.tencent.mm.model.c.c.iHj;
+    paramString = com.tencent.mm.model.c.c.Lg(paramString);
     AppMethodBeat.o(153087);
     return paramString;
   }

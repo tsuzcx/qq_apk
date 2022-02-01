@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y3" android:id="@id/gl6" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <Button android:id="@id/ay5" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/g2a" style="@style/q1" />
-    <Button android:id="@id/ass" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/g2_" style="@style/q1" />
-    <Button android:id="@id/ehh" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/g2c" style="@style/q1" />
-</LinearLayout>
+<RelativeLayout android:id="@id/bqs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/dp1" android:layout_width="fill_parent" android:layout_height="@dimen/cr">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/b46" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_filled_arrow" android:layout_centerVertical="true" android:rotation="90.0" android:layout_marginStart="@dimen/cb" app:iconColor="@color/FG_0" />
+        <TextView android:textSize="@dimen/h_" android:textStyle="bold" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d70" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/frz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dp1" />
+</RelativeLayout>

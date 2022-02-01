@@ -1,41 +1,40 @@
 package com.tencent.mm.at;
 
 import android.database.Cursor;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Pair;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.ak.aa;
+import com.tencent.mm.ak.aa.a;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.b.f;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au.b;
-import com.tencent.mm.model.au.b.a;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ay.b;
+import com.tencent.mm.model.ay.b.a;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.v;
 import com.tencent.mm.openim.b.s;
-import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.protocal.protobuf.bai;
-import com.tencent.mm.protocal.protobuf.baj;
-import com.tencent.mm.protocal.protobuf.bfs;
-import com.tencent.mm.protocal.protobuf.bft;
-import com.tencent.mm.protocal.protobuf.caj;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.dar;
-import com.tencent.mm.protocal.protobuf.dwb;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.protocal.protobuf.blt;
+import com.tencent.mm.protocal.protobuf.blu;
+import com.tencent.mm.protocal.protobuf.bro;
+import com.tencent.mm.protocal.protobuf.brp;
+import com.tencent.mm.protocal.protobuf.cpl;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.dtv;
+import com.tencent.mm.protocal.protobuf.eqf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,62 +46,62 @@ import java.util.Queue;
 import java.util.Set;
 
 final class c
-  implements au.b
+  implements ay.b
 {
-  boolean hOU;
-  private long hPf;
-  f<String, Integer> ibm;
-  Map<String, LinkedList<au.b.a>> ibn;
-  Queue<bai> ibo;
-  Queue<a> ibp;
-  long ibq;
-  final int ibr;
-  final int ibs;
-  aw ibt;
-  final aw ibu;
+  boolean iKb;
+  private long iKm;
+  f<String, Integer> iWk;
+  Map<String, LinkedList<ay.b.a>> iWl;
+  Queue<blt> iWm;
+  Queue<a> iWn;
+  long iWo;
+  final int iWp;
+  final int iWq;
+  MTimerHandler iWr;
+  final MTimerHandler iWs;
   
   c()
   {
     AppMethodBeat.i(20524);
-    this.hOU = false;
-    this.ibm = new com.tencent.mm.memory.a.c(200);
-    this.ibn = new HashMap();
-    this.ibo = new LinkedList();
-    this.ibp = new LinkedList();
-    this.ibq = 0L;
-    this.ibr = 500;
-    this.ibs = 10000;
-    this.hPf = 0L;
-    this.ibt = new aw(bc.ajU().IxZ.getLooper(), new aw.a()
+    this.iKb = false;
+    this.iWk = new com.tencent.mm.memory.a.c(200);
+    this.iWl = new HashMap();
+    this.iWm = new LinkedList();
+    this.iWn = new LinkedList();
+    this.iWo = 0L;
+    this.iWp = 500;
+    this.iWq = 10000;
+    this.iKm = 0L;
+    this.iWr = new MTimerHandler(bg.aAk().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(20517);
-        ae.d("MicroMsg.GetContactService", "pusherTry onTimerExpired tryStartNetscene");
-        c.this.aIq();
+        Log.d("MicroMsg.GetContactService", "pusherTry onTimerExpired tryStartNetscene");
+        c.this.bck();
         AppMethodBeat.o(20517);
         return false;
       }
     }, false);
-    this.ibu = new aw(bc.ajU().IxZ.getLooper(), new aw.a()
+    this.iWs = new MTimerHandler(bg.aAk().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(20523);
-        if (c.this.ibp.isEmpty())
+        if (c.this.iWn.isEmpty())
         {
-          ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler queue maybe this time is null , wait doscene!");
+          Log.i("MicroMsg.GetContactService", "tryStartNetscene respHandler queue maybe this time is null , wait doscene!");
           AppMethodBeat.o(20523);
           return false;
         }
-        long l1 = bu.fpO();
+        long l1 = Util.nowMilliSecond();
         int i;
         ArrayList localArrayList;
         int j;
         label67:
         c.a locala;
         final boolean bool;
-        if (c.this.hOU)
+        if (c.this.iKb)
         {
           i = 5;
           localArrayList = new ArrayList(i * 2);
@@ -110,11 +109,11 @@ final class c
           if (j >= i) {
             break label1096;
           }
-          locala = (c.a)c.this.ibp.peek();
+          locala = (c.a)c.this.iWn.peek();
           if (locala != null) {
             break label172;
           }
-          ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler queue maybe this time is null , break and wait doscene!");
+          Log.i("MicroMsg.GetContactService", "tryStartNetscene respHandler queue maybe this time is null , break and wait doscene!");
           bool = false;
         }
         for (;;)
@@ -123,90 +122,90 @@ final class c
           int k = localArrayList.size();
           if (k > 0)
           {
-            bc.aCg();
-            long l2 = com.tencent.mm.model.c.getDataDB().yi(Thread.currentThread().getId());
-            Object localObject1 = d.aIs();
+            bg.aVF();
+            long l2 = com.tencent.mm.model.c.getDataDB().beginTransaction(Thread.currentThread().getId());
+            Object localObject1 = d.bcm();
             j = 0;
             for (;;)
             {
               if (j < k)
               {
-                ((b)localObject1).FC((String)localArrayList.get(j));
+                ((b)localObject1).On((String)localArrayList.get(j));
                 j += 1;
                 continue;
                 i = 15;
                 break;
                 label172:
-                Object localObject2 = locala.ibD.GQv;
-                localObject1 = locala.ibD.GNm;
-                Object localObject3 = locala.ibD.GQx;
+                Object localObject2 = locala.iWB.LUC;
+                localObject1 = locala.iWB.LRr;
+                Object localObject3 = locala.iWB.LUE;
                 if ((localObject3 != null) && (((LinkedList)localObject3).size() > 0))
                 {
                   localObject3 = ((LinkedList)localObject3).iterator();
                   while (((Iterator)localObject3).hasNext())
                   {
-                    localObject4 = (dar)((Iterator)localObject3).next();
+                    localObject4 = (dtv)((Iterator)localObject3).next();
                     if (localObject4 != null) {
-                      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().me(((dar)localObject4).nIJ, ((dar)localObject4).xrf);
+                      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().mS(((dtv)localObject4).UserName, ((dtv)localObject4).Bri);
                     }
                   }
                 }
-                k = locala.ibE;
+                k = locala.iWC;
                 if (((LinkedList)localObject1).size() != ((LinkedList)localObject2).size()) {
-                  ae.w("MicroMsg.GetContactService", "find warn %s %s", new Object[] { Integer.valueOf(((LinkedList)localObject1).size()), Integer.valueOf(((LinkedList)localObject2).size()) });
+                  Log.w("MicroMsg.GetContactService", "find warn %s %s", new Object[] { Integer.valueOf(((LinkedList)localObject1).size()), Integer.valueOf(((LinkedList)localObject2).size()) });
                 }
                 int m = Math.min(((LinkedList)localObject1).size(), ((LinkedList)localObject2).size());
                 if (m <= k)
                 {
-                  c.this.ibp.poll();
-                  if (c.this.ibp.isEmpty())
+                  c.this.iWn.poll();
+                  if (c.this.iWn.isEmpty())
                   {
-                    ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler resp proc fin gr.curIdx:%d size:%d and retList is empty break", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-                    c.this.ibq = 0L;
-                    c.this.ibt.ay(0L, 0L);
+                    Log.i("MicroMsg.GetContactService", "tryStartNetscene respHandler resp proc fin gr.curIdx:%d size:%d and retList is empty break", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+                    c.this.iWo = 0L;
+                    c.this.iWr.startTimer(0L);
                     bool = false;
                     break label104;
                   }
-                  ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler resp proc fin gr.curIdx:%d size:%d and retList is not empty continue next", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+                  Log.i("MicroMsg.GetContactService", "tryStartNetscene respHandler resp proc fin gr.curIdx:%d size:%d and retList is not empty continue next", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
                   j += 1;
                   break label67;
                 }
-                localObject2 = (caj)((LinkedList)localObject2).get(k);
+                localObject2 = (cpl)((LinkedList)localObject2).get(k);
                 m = ((Integer)((LinkedList)localObject1).get(k)).intValue();
-                localObject3 = bu.bI(z.a(((caj)localObject2).GuF), "");
-                Object localObject4 = bu.bI(((caj)localObject2).jga, "");
-                localObject1 = bu.bI(((caj)localObject2).HnT, "");
+                localObject3 = Util.nullAs(com.tencent.mm.platformtools.z.a(((cpl)localObject2).Lqk), "");
+                Object localObject4 = Util.nullAs(((cpl)localObject2).ked, "");
+                localObject1 = Util.nullAs(((cpl)localObject2).Mvn, "");
                 localArrayList.add(localObject3);
                 localArrayList.add(localObject4);
                 localArrayList.add(localObject1);
                 switch (m)
                 {
                 default: 
-                  ae.e("MicroMsg.GetContactService", "respHandler getFailed :%d ErrName: %s %s %s", new Object[] { Integer.valueOf(m), localObject3, localObject4, Boolean.valueOf(r.zw((String)localObject3)) });
-                  e.ywz.idkeyStat(832L, 2L, 1L, false);
+                  Log.e("MicroMsg.GetContactService", "respHandler getFailed :%d ErrName: %s %s %s", new Object[] { Integer.valueOf(m), localObject3, localObject4, Boolean.valueOf(v.HY((String)localObject3)) });
+                  e.Cxv.idkeyStat(832L, 2L, 1L, false);
                   bool = false;
                 }
                 for (;;)
                 {
-                  new aq(Looper.getMainLooper()).post(new Runnable()
+                  new MMHandler(Looper.getMainLooper()).post(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(20522);
-                      ae.i("MicroMsg.GetContactService", "callback user:%s alias:%s", new Object[] { bu.bI(this.cXC, ""), bu.bI(this.ibA, "") });
+                      Log.i("MicroMsg.GetContactService", "callback user:%s alias:%s", new Object[] { Util.nullAs(this.dod, ""), Util.nullAs(this.iWy, "") });
                       try
                       {
-                        Object localObject2 = (LinkedList)c.this.ibn.remove(this.cXC);
-                        if (bu.isNullOrNil(this.ibA)) {}
-                        for (LinkedList localLinkedList = null;; localLinkedList = (LinkedList)c.this.ibn.remove(this.ibA))
+                        Object localObject2 = (LinkedList)c.this.iWl.remove(this.dod);
+                        if (Util.isNullOrNil(this.iWy)) {}
+                        for (LinkedList localLinkedList = null;; localLinkedList = (LinkedList)c.this.iWl.remove(this.iWy))
                         {
                           if (localObject2 == null) {
                             break;
                           }
-                          ae.i("MicroMsg.GetContactService", "callback userCallbackContainer user:%s size:%s", new Object[] { bu.bI(this.cXC, ""), Integer.valueOf(((LinkedList)localObject2).size()) });
+                          Log.i("MicroMsg.GetContactService", "callback userCallbackContainer user:%s size:%s", new Object[] { Util.nullAs(this.dod, ""), Integer.valueOf(((LinkedList)localObject2).size()) });
                           localObject2 = ((LinkedList)localObject2).iterator();
                           while (((Iterator)localObject2).hasNext()) {
-                            ((au.b.a)((Iterator)localObject2).next()).p(this.cXC, bool);
+                            ((ay.b.a)((Iterator)localObject2).next()).p(this.dod, bool);
                           }
                         }
                         if (localObject1 == null) {
@@ -217,45 +216,45 @@ final class c
                       {
                         AppMethodBeat.o(20522);
                       }
-                      ae.i("MicroMsg.GetContactService", "callback aliasCallbackContainer user:%s size:%s", new Object[] { bu.bI(this.cXC, ""), Integer.valueOf(localObject1.size()) });
+                      Log.i("MicroMsg.GetContactService", "callback aliasCallbackContainer user:%s size:%s", new Object[] { Util.nullAs(this.dod, ""), Integer.valueOf(localObject1.size()) });
                       Iterator localIterator = localObject1.iterator();
                       while (localIterator.hasNext()) {
-                        ((au.b.a)localIterator.next()).p(this.cXC, bool);
+                        ((ay.b.a)localIterator.next()).p(this.dod, bool);
                       }
                       label269:
                       AppMethodBeat.o(20522);
                     }
                   });
-                  locala.ibE += 1;
+                  locala.iWC += 1;
                   break;
-                  if ((locala.ibD.GQw == null) || (locala.ibD.GQw.size() <= k) || (!((String)localObject3).equals(((dwb)locala.ibD.GQw.get(k)).username))) {
-                    if (locala.ibD.GQw == null)
+                  if ((locala.iWB.LUD == null) || (locala.iWB.LUD.size() <= k) || (!((String)localObject3).equals(((eqf)locala.iWB.LUD.get(k)).username))) {
+                    if (locala.iWB.LUD == null)
                     {
                       localObject1 = "null";
                       label753:
-                      ae.w("MicroMsg.GetContactService", "get antispamticket from resp failed: list:%s idx:%d  user:%s", new Object[] { localObject1, Integer.valueOf(k), localObject3 });
+                      Log.w("MicroMsg.GetContactService", "get antispamticket from resp failed: list:%s idx:%d  user:%s", new Object[] { localObject1, Integer.valueOf(k), localObject3 });
                     }
                   }
-                  for (localObject1 = "";; localObject1 = bu.bI(((dwb)locala.ibD.GQw.get(k)).Ibw, ""))
+                  for (localObject1 = "";; localObject1 = Util.nullAs(((eqf)locala.iWB.LUD.get(k)).NnM, ""))
                   {
-                    ae.i("MicroMsg.GetContactService", "dkverify respHandler mod contact: %s %s %s %s", new Object[] { localObject3, localObject4, localObject1, Integer.valueOf(locala.ibF) });
-                    com.tencent.mm.plugin.subapp.b.iUA.a((caj)localObject2, (String)localObject1, locala.ibF);
-                    e.ywz.idkeyStat(832L, 0L, 1L, false);
+                    Log.i("MicroMsg.GetContactService", "dkverify respHandler mod contact: %s %s %s %s", new Object[] { localObject3, localObject4, localObject1, Integer.valueOf(locala.iWD) });
+                    com.tencent.mm.plugin.subapp.b.jRu.a((cpl)localObject2, (String)localObject1, locala.iWD);
+                    e.Cxv.idkeyStat(832L, 0L, 1L, false);
                     bool = true;
                     break;
-                    localObject1 = Integer.valueOf(locala.ibD.GQw.size());
+                    localObject1 = Integer.valueOf(locala.iWB.LUD.size());
                     break label753;
                   }
-                  ae.e("MicroMsg.GetContactService", "respHandler getFailed USERNAME_INVAILD :%d ErrName: %s %s %s %s %s", new Object[] { Integer.valueOf(m), localObject3, localObject4, Boolean.valueOf(d.aIs().FC((String)localObject3)), Boolean.valueOf(d.aIs().FC((String)localObject4)), Boolean.valueOf(r.zw((String)localObject3)) });
-                  e.ywz.idkeyStat(832L, 1L, 1L, false);
+                  Log.e("MicroMsg.GetContactService", "respHandler getFailed USERNAME_INVAILD :%d ErrName: %s %s %s %s %s", new Object[] { Integer.valueOf(m), localObject3, localObject4, Boolean.valueOf(d.bcm().On((String)localObject3)), Boolean.valueOf(d.bcm().On((String)localObject4)), Boolean.valueOf(v.HY((String)localObject3)) });
+                  e.Cxv.idkeyStat(832L, 1L, 1L, false);
                   bool = false;
                 }
               }
             }
-            bc.aCg();
-            com.tencent.mm.model.c.getDataDB().sW(l2);
+            bg.aVF();
+            com.tencent.mm.model.c.getDataDB().endTransaction(l2);
           }
-          ae.i("MicroMsg.GetContactService", "tryStartNetscene respHandler onTimerExpired netSceneRunning : " + c.this.hOU + " ret: " + bool + " maxCnt: " + i + " deleteCount: " + k + " take: " + (bu.fpO() - l1) + "ms");
+          Log.i("MicroMsg.GetContactService", "tryStartNetscene respHandler onTimerExpired netSceneRunning : " + c.this.iKb + " ret: " + bool + " maxCnt: " + i + " deleteCount: " + k + " take: " + (Util.nowMilliSecond() - l1) + "ms");
           AppMethodBeat.o(20523);
           return bool;
           label1096:
@@ -266,19 +265,19 @@ final class c
     AppMethodBeat.o(20524);
   }
   
-  private void aIp()
+  private void bcj()
   {
     AppMethodBeat.i(20531);
-    Object localObject1 = d.aIs();
-    long l = this.ibq;
-    Cursor localCursor = ((b)localObject1).hKK.a("select getcontactinfov2.username,getcontactinfov2.inserttime,getcontactinfov2.type,getcontactinfov2.lastgettime,getcontactinfov2.reserved1,getcontactinfov2.reserved2,getcontactinfov2.reserved3,getcontactinfov2.reserved4 from getcontactinfov2 where inserttime> ?  order by inserttime asc limit ?", new String[] { String.valueOf(l), "80" }, 0);
+    Object localObject1 = d.bcm();
+    long l = this.iWo;
+    Cursor localCursor = ((b)localObject1).iFy.rawQuery("select getcontactinfov2.username,getcontactinfov2.inserttime,getcontactinfov2.type,getcontactinfov2.lastgettime,getcontactinfov2.reserved1,getcontactinfov2.reserved2,getcontactinfov2.reserved3,getcontactinfov2.reserved4 from getcontactinfov2 where inserttime> ?  order by inserttime asc limit ?", new String[] { String.valueOf(l), "80" });
     if (localCursor == null)
     {
       AppMethodBeat.o(20531);
       return;
     }
     int i = localCursor.getCount();
-    ae.i("MicroMsg.GetContactService", "getFromDb count:%d", new Object[] { Integer.valueOf(i) });
+    Log.i("MicroMsg.GetContactService", "getFromDb count:%d", new Object[] { Integer.valueOf(i) });
     if (i <= 0)
     {
       localCursor.close();
@@ -296,34 +295,34 @@ final class c
     {
       Object localObject6 = new a();
       ((a)localObject6).username = localCursor.getString(0);
-      ((a)localObject6).ibj = localCursor.getLong(1);
+      ((a)localObject6).iWh = localCursor.getLong(1);
       ((a)localObject6).type = localCursor.getInt(2);
-      ((a)localObject6).ibk = localCursor.getInt(3);
-      ((a)localObject6).hKD = localCursor.getInt(4);
-      ((a)localObject6).ibl = localCursor.getInt(5);
-      ((a)localObject6).hKF = localCursor.getString(6);
-      ((a)localObject6).hKG = localCursor.getString(7);
+      ((a)localObject6).iWi = localCursor.getInt(3);
+      ((a)localObject6).iFr = localCursor.getInt(4);
+      ((a)localObject6).iWj = localCursor.getInt(5);
+      ((a)localObject6).iFt = localCursor.getString(6);
+      ((a)localObject6).iFu = localCursor.getString(7);
       localObject4 = ((a)localObject6).getUsername();
-      localObject3 = bu.nullAsNil(((a)localObject6).aIo());
-      i = bu.o(Integer.valueOf(((a)localObject6).ibl));
-      Object localObject5 = bu.nullAsNil(((a)localObject6).aCG());
-      this.ibq = ((a)localObject6).ibj;
+      localObject3 = Util.nullAsNil(((a)localObject6).bci());
+      i = Util.nullAsNil(Integer.valueOf(((a)localObject6).iWj));
+      Object localObject5 = Util.nullAsNil(((a)localObject6).aWe());
+      this.iWo = ((a)localObject6).iWh;
       localObject6 = (String)localObject4 + "#" + (String)localObject3;
-      int j = bu.a((Integer)this.ibm.aL(localObject6), 0);
+      int j = Util.nullAs((Integer)this.iWk.aT(localObject6), 0);
       if (j < 3)
       {
-        this.ibm.q(localObject6, Integer.valueOf(j + 1));
-        if (com.tencent.mm.model.x.zV((String)localObject4))
+        this.iWk.x(localObject6, Integer.valueOf(j + 1));
+        if (ab.Iy((String)localObject4))
         {
-          localObject5 = new bai();
-          ((LinkedList)localObject2).add(new cxn().aQV((String)localObject4));
-          ((LinkedList)localObject1).add(new cxn().aQV((String)localObject3));
-          ((bai)localObject5).FNk = ((LinkedList)localObject2);
-          ((bai)localObject5).GQr = ((LinkedList)localObject1);
-          this.ibo.add(localObject5);
+          localObject5 = new blt();
+          ((LinkedList)localObject2).add(new dqi().bhy((String)localObject4));
+          ((LinkedList)localObject1).add(new dqi().bhy((String)localObject3));
+          ((blt)localObject5).KGP = ((LinkedList)localObject2);
+          ((blt)localObject5).LUy = ((LinkedList)localObject1);
+          this.iWm.add(localObject5);
           localObject2 = new LinkedList();
           localObject1 = new LinkedList();
-          ae.i("MicroMsg.GetContactService", "getFromDb this is openRoom now reqlist size:%d , this req usr count:%d usr %s", new Object[] { Integer.valueOf(this.ibo.size()), Integer.valueOf(((bai)localObject5).FNk.size()), localObject4 });
+          Log.i("MicroMsg.GetContactService", "getFromDb this is openRoom now reqlist size:%d , this req usr count:%d usr %s", new Object[] { Integer.valueOf(this.iWm.size()), Integer.valueOf(((blt)localObject5).KGP.size()), localObject4 });
         }
       }
       for (;;)
@@ -336,35 +335,35 @@ final class c
         }
         else
         {
-          localObject5 = new bai();
-          ((bai)localObject5).FNk = ((LinkedList)localObject2);
-          ((bai)localObject5).GQn = ((LinkedList)localObject2).size();
-          ((bai)localObject5).GQr = ((LinkedList)localObject1);
-          ((bai)localObject5).GQq = ((LinkedList)localObject1).size();
-          this.ibo.add(localObject5);
+          localObject5 = new blt();
+          ((blt)localObject5).KGP = ((LinkedList)localObject2);
+          ((blt)localObject5).LUu = ((LinkedList)localObject2).size();
+          ((blt)localObject5).LUy = ((LinkedList)localObject1);
+          ((blt)localObject5).LUx = ((LinkedList)localObject1).size();
+          this.iWm.add(localObject5);
           localObject3 = new LinkedList();
           localObject4 = new LinkedList();
-          ae.i("MicroMsg.GetContactService", "getFromDb now reqlist size:%d , this req usr count:%d getScene=%s", new Object[] { Integer.valueOf(this.ibo.size()), Integer.valueOf(((bai)localObject5).FNk.size()), Integer.valueOf(i) });
+          Log.i("MicroMsg.GetContactService", "getFromDb now reqlist size:%d , this req usr count:%d getScene=%s", new Object[] { Integer.valueOf(this.iWm.size()), Integer.valueOf(((blt)localObject5).KGP.size()), Integer.valueOf(i) });
         }
         localObject1 = localObject4;
         localObject2 = localObject3;
         break;
-        if (an.aUq((String)localObject4))
+        if (as.bjp((String)localObject4))
         {
-          localObject5 = new bai();
-          ((LinkedList)localObject2).add(new cxn().aQV((String)localObject4));
-          ((LinkedList)localObject1).add(new cxn().aQV((String)localObject3));
-          ((bai)localObject5).FNk = ((LinkedList)localObject2);
-          ((bai)localObject5).GQr = ((LinkedList)localObject1);
-          this.ibo.add(localObject5);
+          localObject5 = new blt();
+          ((LinkedList)localObject2).add(new dqi().bhy((String)localObject4));
+          ((LinkedList)localObject1).add(new dqi().bhy((String)localObject3));
+          ((blt)localObject5).KGP = ((LinkedList)localObject2);
+          ((blt)localObject5).LUy = ((LinkedList)localObject1);
+          this.iWm.add(localObject5);
           localObject2 = new LinkedList();
           localObject1 = new LinkedList();
-          ae.i("MicroMsg.GetContactService", "getFromDb this is isOpenIM now reqlist size:%d , this req usr count:%d usr %s", new Object[] { Integer.valueOf(this.ibo.size()), Integer.valueOf(((bai)localObject5).FNk.size()), localObject4 });
+          Log.i("MicroMsg.GetContactService", "getFromDb this is isOpenIM now reqlist size:%d , this req usr count:%d usr %s", new Object[] { Integer.valueOf(this.iWm.size()), Integer.valueOf(((blt)localObject5).KGP.size()), localObject4 });
         }
         else if (i == 1)
         {
-          localLinkedList2.add(new Pair(new cxn().aQV((String)localObject4), new cxn().aQV((String)localObject5)));
-          ae.i("MicroMsg.GetContactService", "getFromDb add user:%s scene:%s ticket:%s", new Object[] { localObject4, Integer.valueOf(i), localObject5 });
+          localLinkedList2.add(new Pair(new dqi().bhy((String)localObject4), new dqi().bhy((String)localObject5)));
+          Log.i("MicroMsg.GetContactService", "getFromDb add user:%s scene:%s ticket:%s", new Object[] { localObject4, Integer.valueOf(i), localObject5 });
         }
         else
         {
@@ -382,9 +381,9 @@ final class c
               localObject3 = (List)localSparseArray.get(i);
             }
           }
-          ((LinkedList)localObject2).add(new cxn().aQV((String)localObject4));
-          ((LinkedList)localObject1).add(new cxn().aQV((String)localObject3));
-          ae.i("MicroMsg.GetContactService", "getFromDb add user:%s getScene:%s room:%s", new Object[] { localObject4, Integer.valueOf(i), localObject3 });
+          ((LinkedList)localObject2).add(new dqi().bhy((String)localObject4));
+          ((LinkedList)localObject1).add(new dqi().bhy((String)localObject3));
+          Log.i("MicroMsg.GetContactService", "getFromDb add user:%s getScene:%s room:%s", new Object[] { localObject4, Integer.valueOf(i), localObject3 });
           continue;
           localLinkedList1.add(localObject4);
           Q((String)localObject4, false);
@@ -397,69 +396,69 @@ final class c
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Pair)((Iterator)localObject1).next();
-      localObject3 = new bai();
+      localObject3 = new blt();
       localObject4 = new LinkedList();
       ((LinkedList)localObject4).add(((Pair)localObject2).first);
-      ((bai)localObject3).FNk = ((LinkedList)localObject4);
-      ((bai)localObject3).GQn = ((LinkedList)localObject4).size();
-      ((bai)localObject3).GQs = 1;
-      ((bai)localObject3).GQt = ((cxn)((Pair)localObject2).second);
-      this.ibo.add(localObject3);
+      ((blt)localObject3).KGP = ((LinkedList)localObject4);
+      ((blt)localObject3).LUu = ((LinkedList)localObject4).size();
+      ((blt)localObject3).LUz = 1;
+      ((blt)localObject3).LUA = ((dqi)((Pair)localObject2).second);
+      this.iWm.add(localObject3);
     }
     localLinkedList2.clear();
     i = 0;
     while (i < localLinkedList1.size())
     {
       localObject1 = (String)localLinkedList1.get(i);
-      boolean bool1 = com.tencent.mm.model.x.wb((String)localObject1);
-      ae.w("MicroMsg.GetContactService", "getFromDb try getContact Too much room usr:%s; remove from table:%s ", new Object[] { localObject1, Boolean.valueOf(bool1) });
+      boolean bool1 = ab.Eq((String)localObject1);
+      Log.w("MicroMsg.GetContactService", "getFromDb try getContact Too much room usr:%s; remove from table:%s ", new Object[] { localObject1, Boolean.valueOf(bool1) });
       if (bool1) {
-        d.aIs().FC((String)localObject1);
+        d.bcm().On((String)localObject1);
       }
-      boolean bool2 = com.tencent.mm.model.x.Ab((String)localObject1);
-      ae.w("MicroMsg.GetContactService", "getFromDb try getContact Too much biz usr:%s; remove from table:%s ", new Object[] { localObject1, Boolean.valueOf(bool1) });
+      boolean bool2 = ab.IF((String)localObject1);
+      Log.w("MicroMsg.GetContactService", "getFromDb try getContact Too much biz usr:%s; remove from table:%s ", new Object[] { localObject1, Boolean.valueOf(bool1) });
       if (bool2)
       {
-        d.aIs().FC((String)localObject1);
-        e.ywz.idkeyStat(832L, 3L, 1L, false);
+        d.bcm().On((String)localObject1);
+        e.Cxv.idkeyStat(832L, 3L, 1L, false);
       }
       i += 1;
     }
     AppMethodBeat.o(20531);
   }
   
-  private static boolean bn(String paramString1, String paramString2)
+  private static boolean bp(String paramString1, String paramString2)
   {
     AppMethodBeat.i(20530);
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(20530);
       return false;
     }
-    Object localObject = v.aAC();
-    String str = v.aAD();
+    Object localObject = com.tencent.mm.model.z.aTY();
+    String str = com.tencent.mm.model.z.aTZ();
     if ((paramString1.equals(localObject)) || (paramString1.equals(str)))
     {
-      ae.i("MicroMsg.GetContactService", "addToStg username: " + paramString1 + " equal to user: " + (String)localObject + " alias: " + str + " ret");
+      Log.i("MicroMsg.GetContactService", "addToStg username: " + paramString1 + " equal to user: " + (String)localObject + " alias: " + str + " ret");
       AppMethodBeat.o(20530);
       return false;
     }
     localObject = new a();
     ((a)localObject).username = paramString1;
-    ((a)localObject).hKF = bu.nullAsNil(paramString2);
-    ((a)localObject).ibj = bu.fpO();
-    boolean bool = d.aIs().a((a)localObject);
+    ((a)localObject).iFt = Util.nullAsNil(paramString2);
+    ((a)localObject).iWh = Util.nowMilliSecond();
+    boolean bool = d.bcm().a((a)localObject);
     AppMethodBeat.o(20530);
     return bool;
   }
   
   private void c(SparseArray<List<String>> paramSparseArray)
   {
-    AppMethodBeat.i(186364);
+    AppMethodBeat.i(231547);
     int i = 0;
     while (i < paramSparseArray.size())
     {
-      bai localbai = new bai();
+      blt localblt = new blt();
       int j = paramSparseArray.keyAt(i);
       Object localObject = (List)paramSparseArray.valueAt(i);
       LinkedList localLinkedList = new LinkedList();
@@ -467,25 +466,25 @@ final class c
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        localLinkedList.add(new cxn().aQV(str));
+        localLinkedList.add(new dqi().bhy(str));
       }
-      localbai.FNk.addAll(localLinkedList);
-      localbai.GQn = localbai.FNk.size();
-      localbai.GQs = j;
-      this.ibo.add(localbai);
-      ae.i("MicroMsg.GetContactService", "[buildSceneReqList] scene=%s count=%s req size=%s", new Object[] { Integer.valueOf(localbai.GQs), Integer.valueOf(localbai.GQn), Integer.valueOf(this.ibo.size()) });
+      localblt.KGP.addAll(localLinkedList);
+      localblt.LUu = localblt.KGP.size();
+      localblt.LUz = j;
+      this.iWm.add(localblt);
+      Log.i("MicroMsg.GetContactService", "[buildSceneReqList] scene=%s count=%s req size=%s", new Object[] { Integer.valueOf(localblt.LUz), Integer.valueOf(localblt.LUu), Integer.valueOf(this.iWm.size()) });
       i += 1;
     }
     paramSparseArray.clear();
-    AppMethodBeat.o(186364);
+    AppMethodBeat.o(231547);
   }
   
-  public final void Bt(String paramString)
+  public final void JZ(String paramString)
   {
     AppMethodBeat.i(20525);
     try
     {
-      this.ibn.remove(paramString);
+      this.iWl.remove(paramString);
       return;
     }
     finally
@@ -494,23 +493,23 @@ final class c
     }
   }
   
-  public final void Bu(final String paramString)
+  public final void Ka(final String paramString)
   {
     AppMethodBeat.i(20529);
-    bc.ajU().aw(new Runnable()
+    bg.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(20516);
-        Object[] arrayOfObject = c.this.ibm.keySet().toArray();
+        Object[] arrayOfObject = c.this.iWk.keySet().toArray();
         int i = 0;
         while (i < arrayOfObject.length)
         {
           String str = (String)arrayOfObject[i];
           if (str.startsWith(paramString))
           {
-            ae.d("MicroMsg.GetContactService", "clearMapRecentDown(): key = %s", new Object[] { str });
-            c.this.ibm.remove(str);
+            Log.d("MicroMsg.GetContactService", "clearMapRecentDown(): key = %s", new Object[] { str });
+            c.this.iWk.remove(str);
           }
           i += 1;
         }
@@ -523,21 +522,21 @@ final class c
   final void Q(final String paramString, final boolean paramBoolean)
   {
     AppMethodBeat.i(20532);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(20518);
-        if (c.this.ibn.containsKey(paramString)) {
+        if (c.this.iWl.containsKey(paramString)) {
           try
           {
-            Object localObject1 = (LinkedList)c.this.ibn.get(paramString);
-            c.this.ibn.remove(paramString);
+            Object localObject1 = (LinkedList)c.this.iWl.get(paramString);
+            c.this.iWl.remove(paramString);
             if (localObject1 != null)
             {
               localObject1 = ((LinkedList)localObject1).iterator();
               while (((Iterator)localObject1).hasNext()) {
-                ((au.b.a)((Iterator)localObject1).next()).p(paramString, paramBoolean);
+                ((ay.b.a)((Iterator)localObject1).next()).p(paramString, paramBoolean);
               }
             }
             AppMethodBeat.o(20518);
@@ -552,30 +551,30 @@ final class c
     AppMethodBeat.o(20532);
   }
   
-  public final void a(String paramString1, String paramString2, au.b.a parama)
+  public final void a(String paramString1, String paramString2, ay.b.a parama)
   {
     AppMethodBeat.i(20528);
-    ae.i("MicroMsg.GetContactService", "dkverify getNow :" + paramString1 + " chatroom: " + paramString2 + " stack:" + bu.fpN());
-    if (bn(paramString1, paramString2))
+    Log.i("MicroMsg.GetContactService", "dkverify getNow :" + paramString1 + " chatroom: " + paramString2 + " stack:" + Util.getStack());
+    if (bp(paramString1, paramString2))
     {
       if (parama != null) {
-        break label100;
+        break label99;
       }
-      ae.i("MicroMsg.GetContactService", "addGetContactCallBack %s, addGetContactCallBack is null", new Object[] { bu.bI(paramString1, "") });
+      Log.i("MicroMsg.GetContactService", "addGetContactCallBack %s, addGetContactCallBack is null", new Object[] { Util.nullAs(paramString1, "") });
     }
     for (;;)
     {
-      this.ibt.ay(0L, 0L);
+      this.iWr.startTimer(0L);
       AppMethodBeat.o(20528);
       return;
       try
       {
-        label100:
-        Object localObject = (LinkedList)this.ibn.get(paramString1);
+        label99:
+        Object localObject = (LinkedList)this.iWl.get(paramString1);
         paramString2 = (String)localObject;
         if (localObject == null)
         {
-          localObject = this.ibn;
+          localObject = this.iWl;
           paramString2 = new LinkedList();
           ((Map)localObject).put(paramString1, paramString2);
         }
@@ -591,53 +590,63 @@ final class c
     }
   }
   
-  public final void aBI()
+  public final void aL(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186363);
-    ae.i("MicroMsg.GetContactService", "[checkPendingGetContact] %s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.subapp.b.iUA.MT()) });
-    this.ibt.ay(500L, 500L);
-    AppMethodBeat.o(186363);
+    AppMethodBeat.i(20526);
+    Log.i("MicroMsg.GetContactService", "dkverify add Contact :" + paramString1 + " chatroom: " + paramString2 + " stack:" + Util.getStack());
+    if (bp(paramString1, paramString2)) {
+      this.iWr.startTimer(500L);
+    }
+    AppMethodBeat.o(20526);
   }
   
-  final void aIq()
+  public final void aVg()
+  {
+    AppMethodBeat.i(231546);
+    Log.i("MicroMsg.GetContactService", "[checkPendingGetContact] %s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.subapp.b.jRu.Xf()) });
+    this.iWr.startTimer(500L);
+    AppMethodBeat.o(231546);
+  }
+  
+  final void bck()
   {
     long l;
     try
     {
       AppMethodBeat.i(20533);
-      if (com.tencent.mm.plugin.subapp.b.iUA.MT())
+      if (com.tencent.mm.plugin.subapp.b.jRu.Xf())
       {
-        ae.w("MicroMsg.GetContactService", "tryStartNetscene need init , never get contact");
+        Log.w("MicroMsg.GetContactService", "tryStartNetscene need init , never get contact");
         AppMethodBeat.o(20533);
       }
       for (;;)
       {
         return;
-        l = bu.fpO();
-        if ((this.hOU) && (l - this.hPf > 600000L))
+        l = Util.nowMilliSecond();
+        if ((this.iKb) && (l - this.iKm > 600000L))
         {
-          ae.w("MicroMsg.GetContactService", "tryStartNetscene Not Callback too long:%d . Force Run Now", new Object[] { Long.valueOf(l - this.hPf) });
-          this.hOU = false;
+          Log.w("MicroMsg.GetContactService", "tryStartNetscene Not Callback too long:%d . Force Run Now", new Object[] { Long.valueOf(l - this.iKm) });
+          this.iKb = false;
         }
-        if (!this.hOU) {
+        if (!this.iKb) {
           break;
         }
-        ae.i("MicroMsg.GetContactService", "tryStartNetscene netSceneRunning: " + this.hOU + " ret");
+        Log.i("MicroMsg.GetContactService", "tryStartNetscene netSceneRunning: " + this.iKb + " ret");
         AppMethodBeat.o(20533);
       }
-      localObject2 = (bai)this.ibo.poll();
+      localObject2 = (blt)this.iWm.poll();
     }
     finally {}
     Object localObject2;
     Object localObject3 = localObject2;
     if (localObject2 == null)
     {
-      aIp();
-      for (localObject2 = (bai)this.ibo.poll(); ((localObject2 == null) || (((bai)localObject2).FNk == null) || (((bai)localObject2).FNk.size() == 0)) && (this.ibo.size() > 0); localObject2 = (bai)this.ibo.poll()) {}
-      if ((localObject2 != null) && (((bai)localObject2).FNk != null))
+      bcj();
+      for (localObject2 = (blt)this.iWm.poll(); ((localObject2 == null) || (((blt)localObject2).KGP == null) || (((blt)localObject2).KGP.size() == 0)) && (this.iWm.size() > 0); localObject2 = (blt)this.iWm.poll()) {}
+      if ((localObject2 != null) && (((blt)localObject2).KGP != null))
       {
         localObject3 = localObject2;
-        if (((bai)localObject2).FNk.size() != 0) {}
+        if (((blt)localObject2).KGP.size() != 0) {}
       }
       else
       {
@@ -649,30 +658,30 @@ final class c
     label728:
     for (boolean bool = true;; bool = false)
     {
-      ae.e("MicroMsg.GetContactService", "tryStartNetscene Not any more contact. req is null? %s", new Object[] { Boolean.valueOf(bool) });
+      Log.e("MicroMsg.GetContactService", "tryStartNetscene Not any more contact. req is null? %s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(20533);
       break;
-      this.hPf = l;
-      this.hOU = true;
+      this.iKm = l;
+      this.iKb = true;
       localObject2 = new LinkedList();
       Object localObject4 = new LinkedList();
-      Object localObject5 = ((bai)localObject3).FNk.iterator();
+      Object localObject5 = ((blt)localObject3).KGP.iterator();
       Object localObject6;
       while (((Iterator)localObject5).hasNext())
       {
-        localObject6 = z.a((cxn)((Iterator)localObject5).next());
-        if (com.tencent.mm.model.x.zV((String)localObject6)) {
+        localObject6 = com.tencent.mm.platformtools.z.a((dqi)((Iterator)localObject5).next());
+        if (ab.Iy((String)localObject6)) {
           ((LinkedList)localObject2).add(localObject6);
         }
-        if (an.aUq((String)localObject6)) {
+        if (as.bjp((String)localObject6)) {
           ((LinkedList)localObject4).add(localObject6);
         }
       }
       if (((LinkedList)localObject2).size() > 0)
       {
         localObject2 = (String)((LinkedList)localObject2).get(0);
-        if (com.tencent.mm.model.x.zV((String)localObject2)) {
-          com.tencent.mm.roomsdk.a.b.aRc((String)localObject2).vc((String)localObject2).d(new com.tencent.mm.roomsdk.a.b.b() {}).cAs();
+        if (ab.Iy((String)localObject2)) {
+          com.tencent.mm.roomsdk.a.b.bhF((String)localObject2).Dt((String)localObject2).d(new com.tencent.mm.roomsdk.a.b.b() {}).aJu();
         }
         AppMethodBeat.o(20533);
         break;
@@ -680,52 +689,52 @@ final class c
       if (((LinkedList)localObject4).size() > 0)
       {
         localObject5 = (String)((LinkedList)localObject4).get(0);
-        localObject6 = new bfs();
-        ((bfs)localObject6).iKt = ((String)localObject5);
+        localObject6 = new bro();
+        ((bro)localObject6).jGZ = ((String)localObject5);
         localObject4 = "";
         localObject2 = localObject4;
-        if (((bai)localObject3).GQr != null)
+        if (((blt)localObject3).LUy != null)
         {
           localObject2 = localObject4;
-          if (((bai)localObject3).GQr.size() > 0) {
-            localObject2 = z.a((cxn)((bai)localObject3).GQr.get(0));
+          if (((blt)localObject3).LUy.size() > 0) {
+            localObject2 = com.tencent.mm.platformtools.z.a((dqi)((blt)localObject3).LUy.get(0));
           }
         }
-        ((bfs)localObject6).dwx = ((String)localObject2);
-        localObject3 = new b.a();
-        ((b.a)localObject3).hQF = ((com.tencent.mm.bw.a)localObject6);
-        ((b.a)localObject3).hQG = new bft();
-        ((b.a)localObject3).uri = "/cgi-bin/micromsg-bin/getopenimcontact";
-        ((b.a)localObject3).funcId = 881;
-        ae.i("MicroMsg.GetContactService", "request roomName %s userOpenImname %s", new Object[] { localObject2, localObject5 });
-        com.tencent.mm.ak.x.a(((b.a)localObject3).aDS(), new x.a()
+        ((bro)localObject6).dOe = ((String)localObject2);
+        localObject3 = new d.a();
+        ((d.a)localObject3).iLN = ((com.tencent.mm.bw.a)localObject6);
+        ((d.a)localObject3).iLO = new brp();
+        ((d.a)localObject3).uri = "/cgi-bin/micromsg-bin/getopenimcontact";
+        ((d.a)localObject3).funcId = 881;
+        Log.i("MicroMsg.GetContactService", "request roomName %s userOpenImname %s", new Object[] { localObject2, localObject5 });
+        aa.a(((d.a)localObject3).aXF(), new aa.a()
         {
-          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.d paramAnonymousd, q paramAnonymousq)
           {
             AppMethodBeat.i(20520);
-            if (paramAnonymousn.getType() != 881)
+            if (paramAnonymousq.getType() != 881)
             {
               AppMethodBeat.o(20520);
               return 0;
             }
-            c.this.hOU = false;
+            c.this.iKb = false;
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
             {
-              ae.e("MicroMsg.GetContactService", "tryStartNetscene onSceneEnd openImUser errType: %s  errCode: %s username %s will retry/del ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), this.iby });
+              Log.e("MicroMsg.GetContactService", "tryStartNetscene onSceneEnd openImUser errType: %s  errCode: %s username %s will retry/del ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), this.iWw });
               if (paramAnonymousInt1 == 4) {
-                d.aIs().FC(this.iby);
+                d.bcm().On(this.iWw);
               }
-              c.this.ibt.ay(10000L, 10000L);
-              c.this.Q(this.iby, false);
+              c.this.iWr.startTimer(10000L);
+              c.this.Q(this.iWw, false);
               AppMethodBeat.o(20520);
               return 0;
             }
-            if ((!c.this.ibo.isEmpty()) && (c.this.ibt.foU())) {
-              c.this.ibt.ay(500L, 500L);
+            if ((!c.this.iWm.isEmpty()) && (c.this.iWr.stopped())) {
+              c.this.iWr.startTimer(500L);
             }
-            s.a((bft)paramAnonymousb.hQE.hQJ);
-            ae.i("MicroMsg.GetContactService", "getopenimcontact onResult %s %s", new Object[] { Boolean.valueOf(d.aIs().FC(this.iby)), this.iby });
-            c.this.Q(this.iby, true);
+            s.a((brp)paramAnonymousd.iLL.iLR);
+            Log.i("MicroMsg.GetContactService", "getopenimcontact onResult %s %s", new Object[] { Boolean.valueOf(d.bcm().On(this.iWw)), this.iWw });
+            c.this.Q(this.iWw, true);
             AppMethodBeat.o(20520);
             return 0;
           }
@@ -733,45 +742,45 @@ final class c
         AppMethodBeat.o(20533);
         break;
       }
-      localObject2 = new b.a();
-      ((b.a)localObject2).hQF = ((com.tencent.mm.bw.a)localObject3);
-      ((b.a)localObject2).hQG = new baj();
-      ((b.a)localObject2).uri = "/cgi-bin/micromsg-bin/getcontact";
-      ((b.a)localObject2).funcId = 182;
-      final int i = ((bai)localObject3).GQs;
-      com.tencent.mm.ak.x.a(((b.a)localObject2).aDS(), new x.a()
+      localObject2 = new d.a();
+      ((d.a)localObject2).iLN = ((com.tencent.mm.bw.a)localObject3);
+      ((d.a)localObject2).iLO = new blu();
+      ((d.a)localObject2).uri = "/cgi-bin/micromsg-bin/getcontact";
+      ((d.a)localObject2).funcId = 182;
+      final int i = ((blt)localObject3).LUz;
+      aa.a(((d.a)localObject2).aXF(), new aa.a()
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.d paramAnonymousd, q paramAnonymousq)
         {
           AppMethodBeat.i(20521);
-          if (paramAnonymousn.getType() != 182)
+          if (paramAnonymousq.getType() != 182)
           {
             AppMethodBeat.o(20521);
             return 0;
           }
-          c.this.hOU = false;
+          c.this.iKb = false;
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
-            ae.e("MicroMsg.GetContactService", "tryStartNetscene onSceneEnd errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " getScene:" + i + " will retry");
-            c.this.ibt.ay(10000L, 10000L);
+            Log.e("MicroMsg.GetContactService", "tryStartNetscene onSceneEnd errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " getScene:" + i + " will retry");
+            c.this.iWr.startTimer(10000L);
             AppMethodBeat.o(20521);
             return 0;
           }
-          if ((!c.this.ibo.isEmpty()) && (c.this.ibt.foU())) {
-            c.this.ibt.ay(500L, 500L);
+          if ((!c.this.iWm.isEmpty()) && (c.this.iWr.stopped())) {
+            c.this.iWr.startTimer(500L);
           }
-          if (paramAnonymousb != null)
+          if (paramAnonymousd != null)
           {
-            paramAnonymousn = new c.a(c.this);
-            paramAnonymousn.ibF = i;
-            paramAnonymousn.errType = paramAnonymousInt1;
-            paramAnonymousn.errCode = paramAnonymousInt2;
-            paramAnonymousn.errMsg = paramAnonymousString;
-            paramAnonymousn.ibD = ((baj)paramAnonymousb.hQE.hQJ);
-            c.this.ibp.add(paramAnonymousn);
+            paramAnonymousq = new c.a(c.this);
+            paramAnonymousq.iWD = i;
+            paramAnonymousq.errType = paramAnonymousInt1;
+            paramAnonymousq.errCode = paramAnonymousInt2;
+            paramAnonymousq.errMsg = paramAnonymousString;
+            paramAnonymousq.iWB = ((blu)paramAnonymousd.iLL.iLR);
+            c.this.iWn.add(paramAnonymousq);
           }
-          if ((!c.this.ibp.isEmpty()) && (c.this.ibu.foU())) {
-            c.this.ibu.ay(50L, 50L);
+          if ((!c.this.iWn.isEmpty()) && (c.this.iWs.stopped())) {
+            c.this.iWs.startTimer(50L);
           }
           AppMethodBeat.o(20521);
           return 0;
@@ -782,42 +791,32 @@ final class c
     }
   }
   
-  public final void aJ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(20526);
-    ae.i("MicroMsg.GetContactService", "dkverify add Contact :" + paramString1 + " chatroom: " + paramString2 + " stack:" + bu.fpN());
-    if (bn(paramString1, paramString2)) {
-      this.ibt.ay(500L, 500L);
-    }
-    AppMethodBeat.o(20526);
-  }
-  
-  public final void g(String paramString1, int paramInt, String paramString2)
+  public final void j(String paramString1, int paramInt, String paramString2)
   {
     boolean bool = false;
-    AppMethodBeat.i(186362);
-    if (bu.isNullOrNil(paramString1)) {}
+    AppMethodBeat.i(231545);
+    if (Util.isNullOrNil(paramString1)) {}
     for (;;)
     {
       if (bool) {
-        this.ibt.ay(500L, 500L);
+        this.iWr.startTimer(500L);
       }
-      AppMethodBeat.o(186362);
+      AppMethodBeat.o(231545);
       return;
-      Object localObject = v.aAC();
-      String str = v.aAD();
+      Object localObject = com.tencent.mm.model.z.aTY();
+      String str = com.tencent.mm.model.z.aTZ();
       if ((paramString1.equals(localObject)) || (paramString1.equals(str)))
       {
-        ae.i("MicroMsg.GetContactService", "addToStg username: " + paramString1 + " equal to user: " + (String)localObject + " alias: " + str + " ret");
+        Log.i("MicroMsg.GetContactService", "addToStg username: " + paramString1 + " equal to user: " + (String)localObject + " alias: " + str + " ret");
       }
       else
       {
         localObject = new a();
         ((a)localObject).username = paramString1;
-        ((a)localObject).hKG = bu.nullAsNil(paramString2);
-        ((a)localObject).ibl = bu.o(Integer.valueOf(paramInt));
-        ((a)localObject).ibj = bu.fpO();
-        bool = d.aIs().a((a)localObject);
+        ((a)localObject).iFu = Util.nullAsNil(paramString2);
+        ((a)localObject).iWj = Util.nullAsNil(Integer.valueOf(paramInt));
+        ((a)localObject).iWh = Util.nowMilliSecond();
+        bool = d.bcm().a((a)localObject);
       }
     }
   }
@@ -827,16 +826,16 @@ final class c
     int errCode;
     String errMsg;
     int errType;
-    baj ibD;
-    int ibE = 0;
-    int ibF;
+    blu iWB;
+    int iWC = 0;
+    int iWD;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.at.c
  * JD-Core Version:    0.7.0.1
  */

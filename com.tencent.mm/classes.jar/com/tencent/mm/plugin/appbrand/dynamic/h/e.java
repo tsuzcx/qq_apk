@@ -2,8 +2,11 @@ package com.tencent.mm.plugin.appbrand.dynamic.h;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.el;
+import com.tencent.mm.g.b.a.hr;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.modelappbrand.v;
 import com.tencent.mm.plugin.appbrand.appcache.ay;
@@ -15,40 +18,58 @@ import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetRuntimeConfig;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig;
 import com.tencent.mm.plugin.appbrand.utils.s;
 import com.tencent.mm.plugin.appbrand.utils.s.a;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class e
 {
-  private static volatile com.tencent.mm.aa.c.e klw;
-  private static volatile DebuggerInfo klx;
+  private static volatile com.tencent.mm.aa.c.e lph;
+  private static volatile DebuggerInfo lpi;
   
-  private static void S(Runnable paramRunnable)
+  private static void X(Runnable paramRunnable)
   {
     AppMethodBeat.i(121448);
-    paramRunnable = new e.1(paramRunnable);
-    if (ar.isMainThread())
+    paramRunnable = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(121441);
+        Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
+        {
+          public final boolean queueIdle()
+          {
+            AppMethodBeat.i(121440);
+            Looper.myQueue().removeIdleHandler(this);
+            e.1.this.val$runnable.run();
+            AppMethodBeat.o(121440);
+            return false;
+          }
+        });
+        AppMethodBeat.o(121441);
+      }
+    };
+    if (MMHandlerThread.isMainThread())
     {
       paramRunnable.run();
       AppMethodBeat.o(121448);
       return;
     }
-    ar.f(paramRunnable);
+    MMHandlerThread.postToMainThread(paramRunnable);
     AppMethodBeat.o(121448);
   }
   
   private static com.tencent.mm.aa.b.d a(com.tencent.mm.aa.c.e parame)
   {
     AppMethodBeat.i(121451);
-    parame = com.tencent.mm.plugin.appbrand.dynamic.e.b.ct(parame);
-    g.yxI.idkeyStat(639L, 2L, 1L, false);
-    ae.i("MicroMsg.PreloadOptimizer", "Using v8 Javascript Engine");
-    g.yxI.idkeyStat(639L, 0L, 1L, false);
+    parame = com.tencent.mm.plugin.appbrand.dynamic.e.b.cC(parame);
+    h.CyF.idkeyStat(639L, 2L, 1L, false);
+    Log.i("MicroMsg.PreloadOptimizer", "Using v8 Javascript Engine");
+    h.CyF.idkeyStat(639L, 0L, 1L, false);
     AppMethodBeat.o(121451);
     return parame;
   }
@@ -62,8 +83,8 @@ public class e
     {
       try
       {
-        com.tencent.mm.aa.c.e locale = klw;
-        klw = null;
+        com.tencent.mm.aa.c.e locale = lph;
+        lph = null;
         if (locale != null)
         {
           bool = true;
@@ -71,131 +92,131 @@ public class e
           if (locale != null) {
             break label704;
           }
-          locale = bgV();
+          locale = bCo();
           int i = paramBundle.getInt("widget_type");
           Object localObject = new com.tencent.mm.plugin.appbrand.dynamic.d.a.c();
-          ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).gcZ = paramWxaWidgetContext.getId();
+          ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).gIx = paramWxaWidgetContext.getId();
           if (i == 1) {
-            ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).kkb = new com.tencent.mm.plugin.appbrand.dynamic.i.c(paramWxaWidgetContext.getAppId(), paramBundle.getString("search_id"));
+            ((com.tencent.mm.plugin.appbrand.dynamic.d.a.c)localObject).lnK = new com.tencent.mm.plugin.appbrand.dynamic.i.c(paramWxaWidgetContext.getAppId(), paramBundle.getString("search_id"));
           }
           paramBundle = new com.tencent.mm.aa.c.c(paramContext, locale, parama, (com.tencent.mm.aa.c.b)localObject);
-          paramBundle.gCv = p.ss(i);
-          locale.gCB = paramBundle;
-          paramBundle = locale.gCD;
-          locale.gCC = new com.tencent.mm.aa.c.f(paramBundle, com.tencent.mm.plugin.appbrand.dynamic.f.a.st(i), parama);
-          locale.gCF = com.tencent.mm.plugin.appbrand.dynamic.debugger.a.bgG();
-          parama = paramWxaWidgetContext.bgC();
+          paramBundle.hpj = p.wo(i);
+          locale.hpp = paramBundle;
+          paramBundle = locale.hpr;
+          locale.hpq = new com.tencent.mm.aa.c.f(paramBundle, com.tencent.mm.plugin.appbrand.dynamic.f.a.wp(i), parama);
+          locale.hpt = com.tencent.mm.plugin.appbrand.dynamic.debugger.a.bBZ();
+          parama = paramWxaWidgetContext.bBV();
           localObject = new JSONObject();
-          b((JSONObject)localObject, "widgetType", Integer.valueOf(parama.kkV));
+          b((JSONObject)localObject, "widgetType", Integer.valueOf(parama.loG));
           b((JSONObject)localObject, "platform", "android");
-          b((JSONObject)localObject, "debug", Boolean.valueOf(paramWxaWidgetContext.bgA().kjt));
-          if (paramWxaWidgetContext.bgB() != null) {
-            b((JSONObject)localObject, "drawMinInterval", Integer.valueOf(paramWxaWidgetContext.bgB().jZX));
+          b((JSONObject)localObject, "debug", Boolean.valueOf(paramWxaWidgetContext.bBT().lnb));
+          if (paramWxaWidgetContext.bBU() != null) {
+            b((JSONObject)localObject, "drawMinInterval", Integer.valueOf(paramWxaWidgetContext.bBU().lda));
           }
-          b((JSONObject)localObject, "clientVersion", Integer.valueOf(com.tencent.mm.protocal.d.FFH));
+          b((JSONObject)localObject, "clientVersion", Integer.valueOf(com.tencent.mm.protocal.d.KyO));
           JSONObject localJSONObject = new JSONObject();
-          b(localJSONObject, "drawMinInterval", Integer.valueOf(parama.klm));
-          b(localJSONObject, "timerEnabled", Boolean.valueOf(parama.kln));
-          b(localJSONObject, "drawLock", Boolean.valueOf(parama.klo));
+          b(localJSONObject, "drawMinInterval", Integer.valueOf(parama.loX));
+          b(localJSONObject, "timerEnabled", Boolean.valueOf(parama.loY));
+          b(localJSONObject, "drawLock", Boolean.valueOf(parama.loZ));
           parama = String.format("var __widgetConfig__ = %s;var __wxConfig = %s;var __wxIndexPage = \"%s\"", new Object[] { localJSONObject.toString(), ((JSONObject)localObject).toString(), "" });
           paramBundle.evaluateJavascript(parama, null);
-          ae.v("MicroMsg.PreloadOptimizer", "injectConfig(%s, %s)", new Object[] { paramWxaWidgetContext.getId(), parama });
-          v.md(10);
-          parama = new el().oa(u.CK(paramWxaWidgetContext.getId()));
-          parama.ejC = u.CI(paramWxaWidgetContext.getId());
-          parama.ejz = 5L;
-          parama = parama.nZ(paramWxaWidgetContext.getId());
-          parama.ejA = System.currentTimeMillis();
-          parama.ob(az.iW(ak.getContext())).aLH();
-          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.cR(paramWxaWidgetContext.getId(), "WAWidget.js");
-          if (!bu.isNullOrNil(parama)) {
+          Log.v("MicroMsg.PreloadOptimizer", "injectConfig(%s, %s)", new Object[] { paramWxaWidgetContext.getId(), parama });
+          v.pl(10);
+          parama = new hr().vt(u.Lv(paramWxaWidgetContext.getId()));
+          parama.eBS = u.Lt(paramWxaWidgetContext.getId());
+          parama.eMi = 5L;
+          parama = parama.vs(paramWxaWidgetContext.getId());
+          parama.eMj = System.currentTimeMillis();
+          parama.vu(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).bfK();
+          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.dg(paramWxaWidgetContext.getId(), "WAWidget.js");
+          if (!Util.isNullOrNil(parama)) {
             break label701;
           }
           u.i("MicroMsg.PreloadOptimizer", "read WAWidget.js", new Object[0]);
-          parama = com.tencent.mm.plugin.appbrand.y.d.convertStreamToString(ay.openRead("WAWidget.js"));
-          if (bu.isNullOrNil(parama)) {
-            ae.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
+          parama = com.tencent.mm.plugin.appbrand.ac.d.convertStreamToString(ay.openRead("WAWidget.js"));
+          if (Util.isNullOrNil(parama)) {
+            Log.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
           }
-          g.yxI.idkeyStat(636L, 0L, 1L, false);
+          h.CyF.idkeyStat(636L, 0L, 1L, false);
           s.a(paramBundle, parama, new s.a()
           {
-            public final void cV(String paramAnonymousString)
+            public final void du(String paramAnonymousString)
             {
               AppMethodBeat.i(121444);
-              v.md(12);
-              el localel = new el().oa(u.CK(this.klz.getId()));
-              localel.ejC = u.CI(this.klz.getId());
-              localel.ejz = 6L;
-              localel.ejB = 2L;
-              localel = localel.nZ(this.klz.getId());
-              localel.ejA = System.currentTimeMillis();
-              localel.ob(az.iW(ak.getContext())).aLH();
-              j.bgu().Pg(this.klz.getId());
-              g.yxI.idkeyStat(636L, 2L, 1L, false);
-              ae.e("MicroMsg.PreloadOptimizer", "Inject SDK widget Script Failed: %s", new Object[] { paramAnonymousString });
+              v.pl(12);
+              hr localhr = new hr().vt(u.Lv(this.lpk.getId()));
+              localhr.eBS = u.Lt(this.lpk.getId());
+              localhr.eMi = 6L;
+              localhr.eMk = 2L;
+              localhr = localhr.vs(this.lpk.getId());
+              localhr.eMj = System.currentTimeMillis();
+              localhr.vu(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).bfK();
+              j.bBN().Yr(this.lpk.getId());
+              h.CyF.idkeyStat(636L, 2L, 1L, false);
+              Log.e("MicroMsg.PreloadOptimizer", "Inject SDK widget Script Failed: %s", new Object[] { paramAnonymousString });
               AppMethodBeat.o(121444);
             }
             
             public final void onSuccess(String paramAnonymousString)
             {
               AppMethodBeat.i(121443);
-              v.md(11);
-              paramAnonymousString = new el().oa(u.CK(this.klz.getId()));
-              paramAnonymousString.ejC = u.CI(this.klz.getId());
-              paramAnonymousString.ejz = 6L;
-              paramAnonymousString.ejB = 1L;
-              paramAnonymousString = paramAnonymousString.nZ(this.klz.getId());
-              paramAnonymousString.ejA = System.currentTimeMillis();
-              paramAnonymousString.ob(az.iW(ak.getContext())).aLH();
-              g.yxI.idkeyStat(636L, 1L, 1L, false);
+              v.pl(11);
+              paramAnonymousString = new hr().vt(u.Lv(this.lpk.getId()));
+              paramAnonymousString.eBS = u.Lt(this.lpk.getId());
+              paramAnonymousString.eMi = 6L;
+              paramAnonymousString.eMk = 1L;
+              paramAnonymousString = paramAnonymousString.vs(this.lpk.getId());
+              paramAnonymousString.eMj = System.currentTimeMillis();
+              paramAnonymousString.vu(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).bfK();
+              h.CyF.idkeyStat(636L, 1L, 1L, false);
               AppMethodBeat.o(121443);
             }
           });
-          ae.v("MicroMsg.PreloadOptimizer", "injectWAWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
-          v.md(13);
-          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.cR(paramWxaWidgetContext.getId(), "widget.js");
-          if (bu.isNullOrNil(parama))
+          Log.v("MicroMsg.PreloadOptimizer", "injectWAWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
+          v.pl(13);
+          parama = com.tencent.mm.plugin.appbrand.dynamic.j.c.dg(paramWxaWidgetContext.getId(), "widget.js");
+          if (Util.isNullOrNil(parama))
           {
-            ae.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
-            com.tencent.mm.plugin.appbrand.dynamic.f.bgq().bA(paramWxaWidgetContext.getId(), 2102);
+            Log.e("MicroMsg.PreloadOptimizer", "get Null Or Nil widget js");
+            com.tencent.mm.plugin.appbrand.dynamic.f.bBJ().bF(paramWxaWidgetContext.getId(), 2102);
           }
-          g.yxI.idkeyStat(636L, 3L, 1L, false);
+          h.CyF.idkeyStat(636L, 3L, 1L, false);
           s.a(paramBundle, parama, new s.a()
           {
-            public final void cV(String paramAnonymousString)
+            public final void du(String paramAnonymousString)
             {
               AppMethodBeat.i(121446);
-              v.md(15);
-              el localel = new el().oa(u.CK(this.klz.getId()));
-              localel.ejC = u.CI(this.klz.getId());
-              localel.ejz = 7L;
-              localel.ejB = 2L;
-              localel = localel.nZ(this.klz.getId());
-              localel.ejA = System.currentTimeMillis();
-              localel.aLH();
-              g.yxI.idkeyStat(636L, 5L, 1L, false);
-              ae.e("MicroMsg.PreloadOptimizer", "Inject External widget Script Failed: %s", new Object[] { paramAnonymousString });
+              v.pl(15);
+              hr localhr = new hr().vt(u.Lv(this.lpk.getId()));
+              localhr.eBS = u.Lt(this.lpk.getId());
+              localhr.eMi = 7L;
+              localhr.eMk = 2L;
+              localhr = localhr.vs(this.lpk.getId());
+              localhr.eMj = System.currentTimeMillis();
+              localhr.bfK();
+              h.CyF.idkeyStat(636L, 5L, 1L, false);
+              Log.e("MicroMsg.PreloadOptimizer", "Inject External widget Script Failed: %s", new Object[] { paramAnonymousString });
               AppMethodBeat.o(121446);
             }
             
             public final void onSuccess(String paramAnonymousString)
             {
               AppMethodBeat.i(121445);
-              v.md(14);
-              paramAnonymousString = new el().oa(u.CK(this.klz.getId()));
-              paramAnonymousString.ejC = u.CI(this.klz.getId());
-              paramAnonymousString.ejz = 7L;
-              paramAnonymousString.ejB = 1L;
-              paramAnonymousString = paramAnonymousString.nZ(this.klz.getId());
-              paramAnonymousString.ejA = System.currentTimeMillis();
-              paramAnonymousString.ob(az.iW(ak.getContext())).aLH();
-              g.yxI.idkeyStat(636L, 4L, 1L, false);
-              j.bgu().Pg(this.klz.getId());
+              v.pl(14);
+              paramAnonymousString = new hr().vt(u.Lv(this.lpk.getId()));
+              paramAnonymousString.eBS = u.Lt(this.lpk.getId());
+              paramAnonymousString.eMi = 7L;
+              paramAnonymousString.eMk = 1L;
+              paramAnonymousString = paramAnonymousString.vs(this.lpk.getId());
+              paramAnonymousString.eMj = System.currentTimeMillis();
+              paramAnonymousString.vu(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).bfK();
+              h.CyF.idkeyStat(636L, 4L, 1L, false);
+              j.bBN().Yr(this.lpk.getId());
               AppMethodBeat.o(121445);
             }
           });
-          ae.v("MicroMsg.PreloadOptimizer", "injectWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
-          dn(paramContext);
+          Log.v("MicroMsg.PreloadOptimizer", "injectWidget(%s)", new Object[] { paramWxaWidgetContext.getId() });
+          dI(paramContext);
           AppMethodBeat.o(121447);
           return locale;
         }
@@ -220,12 +241,12 @@ public class e
     }
     catch (Exception paramJSONObject)
     {
-      ae.e("MicroMsg.PreloadOptimizer", "put env arguments error, %s", new Object[] { paramJSONObject });
+      Log.e("MicroMsg.PreloadOptimizer", "put env arguments error, %s", new Object[] { paramJSONObject });
       AppMethodBeat.o(121452);
     }
   }
   
-  private static com.tencent.mm.aa.c.e bgV()
+  private static com.tencent.mm.aa.c.e bCo()
   {
     AppMethodBeat.i(121450);
     com.tencent.mm.aa.c.e locale = new com.tencent.mm.aa.c.e();
@@ -234,11 +255,11 @@ public class e
     return locale;
   }
   
-  public static void dn(Context paramContext)
+  public static void dI(Context paramContext)
   {
     AppMethodBeat.i(121449);
-    com.tencent.mm.plugin.expansions.a.cof();
-    S(new Runnable()
+    com.tencent.mm.plugin.expansions.a.cMr();
+    X(new Runnable()
     {
       /* Error */
       public final void run()
@@ -248,7 +269,7 @@ public class e
         //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: ldc 8
         //   7: monitorenter
-        //   8: invokestatic 32	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgW	()Lcom/tencent/mm/aa/c/e;
+        //   8: invokestatic 32	com/tencent/mm/plugin/appbrand/dynamic/h/e:bCp	()Lcom/tencent/mm/aa/c/e;
         //   11: ifnull +12 -> 23
         //   14: ldc 8
         //   16: monitorexit
@@ -262,9 +283,9 @@ public class e
         //   30: iconst_0
         //   31: anewarray 4	java/lang/Object
         //   34: invokestatic 44	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   37: invokestatic 48	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgX	()Lcom/tencent/mm/plugin/appbrand/dynamic/debugger/DebuggerInfo;
+        //   37: invokestatic 48	com/tencent/mm/plugin/appbrand/dynamic/h/e:bCq	()Lcom/tencent/mm/plugin/appbrand/dynamic/debugger/DebuggerInfo;
         //   40: pop
-        //   41: invokestatic 51	com/tencent/mm/plugin/appbrand/dynamic/h/e:bgY	()Lcom/tencent/mm/aa/c/e;
+        //   41: invokestatic 51	com/tencent/mm/plugin/appbrand/dynamic/h/e:bCr	()Lcom/tencent/mm/aa/c/e;
         //   44: astore_1
         //   45: ldc 8
         //   47: monitorenter
@@ -310,7 +331,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h.e
  * JD-Core Version:    0.7.0.1
  */

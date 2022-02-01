@@ -10,19 +10,19 @@ import java.util.Map;
 public final class ac
   implements ab
 {
-  private h hNy;
-  protected Map<String, o> hNz;
+  private h iID;
+  protected Map<String, o> iIE;
   
   public ac(ab paramab)
   {
     AppMethodBeat.i(76393);
-    this.hNz = new HashMap();
+    this.iIE = new HashMap();
     if (paramab == null)
     {
       AppMethodBeat.o(76393);
       return;
     }
-    this.hNy = paramab.aEh();
+    this.iID = paramab.aXU();
     a(paramab);
     AppMethodBeat.o(76393);
   }
@@ -30,25 +30,25 @@ public final class ac
   public ac(h paramh)
   {
     AppMethodBeat.i(76392);
-    this.hNz = new HashMap();
-    this.hNy = paramh;
+    this.iIE = new HashMap();
+    this.iID = paramh;
     AppMethodBeat.o(76392);
   }
   
   private void a(ab paramab)
   {
     AppMethodBeat.i(76394);
-    paramab = paramab.aEi().iterator();
+    paramab = paramab.aXV().iterator();
     while (paramab.hasNext()) {
       a((o)paramab.next());
     }
     AppMethodBeat.o(76394);
   }
   
-  public final <T> T CP(String paramString)
+  public final <T> T LA(String paramString)
   {
     AppMethodBeat.i(76395);
-    paramString = this.hNz.get(paramString);
+    paramString = this.iIE.get(paramString);
     AppMethodBeat.o(76395);
     return paramString;
   }
@@ -56,26 +56,26 @@ public final class ac
   public final void a(o paramo)
   {
     AppMethodBeat.i(76396);
-    this.hNz.put(paramo.getName(), paramo);
+    this.iIE.put(paramo.getName(), paramo);
     AppMethodBeat.o(76396);
   }
   
-  public final h aEh()
+  public final h aXU()
   {
-    return this.hNy;
+    return this.iID;
   }
   
-  public final List<o> aEi()
+  public final List<o> aXV()
   {
     AppMethodBeat.i(76397);
-    ArrayList localArrayList = new ArrayList(this.hNz.values());
+    ArrayList localArrayList = new ArrayList(this.iIE.values());
     AppMethodBeat.o(76397);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ac
  * JD-Core Version:    0.7.0.1
  */

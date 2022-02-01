@@ -1,14 +1,16 @@
 package com.tencent.mm.loader.g.a;
 
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.aa;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/loader/cfg/LoaderCoreFactory;", "", "()V", "DEFAULT_THREAD_POOL_SIZE", "", "DEFAULT_THREAD_PRIORITY", "TAG", "", "getTAG", "()Ljava/lang/String;", "_instance", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "getInstance", "newLoader", "configuration", "Lcom/tencent/mm/loader/loader/cfg/TaskLoaderConfiguration;", "libimageloader_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/loader/cfg/LoaderCoreFactory;", "", "()V", "DEFAULT_THREAD_POOL_SIZE", "", "DEFAULT_THREAD_PRIORITY", "TAG", "", "getTAG", "()Ljava/lang/String;", "_instance", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "getInstance", "newLoader", "configuration", "Lcom/tencent/mm/loader/loader/cfg/TaskLoaderConfiguration;", "libimageloader_release"})
 public final class e
 {
   private static final String TAG = "MicroMsg.Loader.LoaderFactory";
-  private static volatile com.tencent.mm.loader.g.d<com.tencent.mm.loader.g.c> hiO;
-  public static final e hiP = new e();
+  private static volatile com.tencent.mm.loader.g.d<com.tencent.mm.loader.g.c> ibL;
+  public static final e ibM = new e();
   
   public static com.tencent.mm.loader.g.d<com.tencent.mm.loader.g.c> a(f paramf)
   {
@@ -16,16 +18,16 @@ public final class e
     return new com.tencent.mm.loader.g.d((d)paramf);
   }
   
-  public static com.tencent.mm.loader.g.d<com.tencent.mm.loader.g.c> arI()
+  public static com.tencent.mm.loader.g.d<com.tencent.mm.loader.g.c> aKh()
   {
-    if (hiO == null) {}
-    synchronized (d.g.b.z.bp(com.tencent.mm.loader.g.d.class))
+    if (ibL == null) {}
+    synchronized (aa.bp(com.tencent.mm.loader.g.d.class))
     {
-      hiO = new com.tencent.mm.loader.g.d((d)new f((c)new a(2147483647), new g(3), new g(3), new g(3), 3, "imageLoader"));
-      d.z localz = d.z.Nhr;
-      ??? = hiO;
+      ibL = new com.tencent.mm.loader.g.d((d)new f((c)new a(2147483647), new g(3), new g(3), new g(3), 3, "imageLoader"));
+      x localx = x.SXb;
+      ??? = ibL;
       if (??? == null) {
-        p.gkB();
+        p.hyc();
       }
       return ???;
     }
@@ -33,7 +35,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.loader.g.a.e
  * JD-Core Version:    0.7.0.1
  */

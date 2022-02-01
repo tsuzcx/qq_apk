@@ -8,33 +8,33 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.ui.aq;
-import com.tencent.mm.ui.j.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.m.a;
 import com.tencent.mm.ui.widget.listview.PullDownListView;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDragCloseConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "downX", "", "downY", "lastScrollType", "", "mStoryView", "Landroid/view/View;", "getMStoryView", "()Landroid/view/View;", "setMStoryView", "(Landroid/view/View;)V", "mWrapperView", "Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "getMWrapperView", "()Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "setMWrapperView", "(Lcom/tencent/mm/ui/widget/listview/PullDownListView;)V", "moveUpLimit", "pointerId", "touchConsumed", "", "touchX", "touchY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "scaleBackOverScroll", "offset", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDragCloseConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "downX", "", "downY", "lastScrollType", "", "mStoryView", "Landroid/view/View;", "getMStoryView", "()Landroid/view/View;", "setMStoryView", "(Landroid/view/View;)V", "mWrapperView", "Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "getMWrapperView", "()Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "setMWrapperView", "(Lcom/tencent/mm/ui/widget/listview/PullDownListView;)V", "moveUpLimit", "pointerId", "touchConsumed", "", "touchX", "touchY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "scaleBackOverScroll", "offset", "plugin-story_release"})
 public final class c
   extends a
 {
-  PullDownListView BtX;
-  View BtY;
-  private int BtZ;
-  private boolean Bua;
-  private int Bub;
-  private float cNQ;
-  private float cNR;
-  private float gpg;
-  private float gph;
-  private VelocityTracker oj;
-  private int wfa;
+  PullDownListView FEK;
+  View FEL;
+  private int FEM;
+  private boolean FEN;
+  private int FEO;
+  private float deo;
+  private float dep;
+  private float gZZ;
+  private float haa;
+  private VelocityTracker ol;
+  private int zxS;
   
   public c()
   {
     AppMethodBeat.i(120331);
-    this.BtZ = aq.fromDPToPix(ak.getContext(), 30);
+    this.FEM = at.fromDPToPix(MMApplicationContext.getContext(), 30);
     AppMethodBeat.o(120331);
   }
   
@@ -43,56 +43,56 @@ public final class c
     float f2 = 0.0F;
     AppMethodBeat.i(120330);
     p.h(paramMotionEvent, "event");
-    if (this.oj == null) {
-      this.oj = VelocityTracker.obtain();
+    if (this.ol == null) {
+      this.ol = VelocityTracker.obtain();
     }
-    Object localObject = this.oj;
+    Object localObject = this.ol;
     if (localObject != null) {
       ((VelocityTracker)localObject).addMovement(paramMotionEvent);
     }
     switch (paramMotionEvent.getActionMasked())
     {
     default: 
-      paramBoolean = this.Bua;
+      paramBoolean = this.FEN;
       AppMethodBeat.o(120330);
       return paramBoolean;
     case 0: 
-      this.wfa = paramMotionEvent.getPointerId(0);
-      this.cNQ = paramMotionEvent.getRawX();
-      this.cNR = paramMotionEvent.getRawY();
-      this.Bua = false;
+      this.zxS = paramMotionEvent.getPointerId(0);
+      this.deo = paramMotionEvent.getRawX();
+      this.dep = paramMotionEvent.getRawY();
+      this.FEN = false;
     }
     for (;;)
     {
-      this.Bub = 0;
+      this.FEO = 0;
       break;
       if (!paramBoolean) {
         break;
       }
-      this.Bub = paramInt;
-      this.gpg = paramMotionEvent.getRawX();
-      this.gph = paramMotionEvent.getRawY();
-      float f3 = this.gph - this.cNR;
-      localObject = this.oj;
+      this.FEO = paramInt;
+      this.gZZ = paramMotionEvent.getRawX();
+      this.haa = paramMotionEvent.getRawY();
+      float f3 = this.haa - this.dep;
+      localObject = this.ol;
       if (localObject != null) {
         ((VelocityTracker)localObject).computeCurrentVelocity(1000);
       }
-      localObject = this.oj;
+      localObject = this.ol;
       if (localObject != null) {}
-      for (float f1 = ((VelocityTracker)localObject).getXVelocity(this.wfa);; f1 = 0.0F)
+      for (float f1 = ((VelocityTracker)localObject).getXVelocity(this.zxS);; f1 = 0.0F)
       {
-        localObject = this.oj;
+        localObject = this.ol;
         if (localObject != null) {
-          f2 = ((VelocityTracker)localObject).getYVelocity(this.wfa);
+          f2 = ((VelocityTracker)localObject).getYVelocity(this.zxS);
         }
         if (paramInt != 1) {
           break label294;
         }
-        this.Bua = true;
-        if ((Math.abs(f3) <= this.BtZ) || (Math.abs(f2) <= Math.abs(f1))) {
+        this.FEN = true;
+        if ((Math.abs(f3) <= this.FEM) || (Math.abs(f2) <= Math.abs(f1))) {
           break;
         }
-        localObject = this.BtX;
+        localObject = this.FEK;
         if (localObject == null) {
           break;
         }
@@ -103,46 +103,46 @@ public final class c
       if (paramInt != 2) {
         break;
       }
-      this.Bua = true;
-      paramMotionEvent = this.BtY;
+      this.FEN = true;
+      paramMotionEvent = this.FEL;
       if (paramMotionEvent != null) {}
       for (paramMotionEvent = paramMotionEvent.getLayoutParams();; paramMotionEvent = null)
       {
         paramMotionEvent = (ViewGroup.MarginLayoutParams)paramMotionEvent;
-        if ((this.BtX == null) || (paramMotionEvent == null)) {
+        if ((this.FEK == null) || (paramMotionEvent == null)) {
           break;
         }
         paramMotionEvent.topMargin = ((int)(f3 / 15.0F));
-        localObject = this.BtY;
+        localObject = this.FEL;
         if (localObject == null) {
           break;
         }
         ((View)localObject).setLayoutParams((ViewGroup.LayoutParams)paramMotionEvent);
         break;
       }
-      localObject = this.oj;
+      localObject = this.ol;
       if (localObject != null) {
         ((VelocityTracker)localObject).clear();
       }
-      localObject = this.oj;
+      localObject = this.ol;
       if (localObject != null) {
         ((VelocityTracker)localObject).recycle();
       }
-      this.oj = null;
-      if (this.Bub == 1)
+      this.ol = null;
+      if (this.FEO == 1)
       {
-        localObject = this.BtX;
+        localObject = this.FEK;
         if (localObject != null) {
           ((PullDownListView)localObject).dispatchTouchEvent(paramMotionEvent);
         }
       }
-      else if (this.Bub == 2)
+      else if (this.FEO == 2)
       {
-        paramMotionEvent = this.BtX;
+        paramMotionEvent = this.FEK;
         if (paramMotionEvent != null) {
-          paramMotionEvent.fQY();
+          paramMotionEvent.hbX();
         }
-        localObject = ak.getContext().getSystemService("vibrator");
+        localObject = MMApplicationContext.getContext().getSystemService("vibrator");
         paramMotionEvent = (MotionEvent)localObject;
         if (!(localObject instanceof Vibrator)) {
           paramMotionEvent = null;
@@ -155,7 +155,7 @@ public final class c
     }
   }
   
-  public final int epL()
+  public final int fsk()
   {
     return 3;
   }

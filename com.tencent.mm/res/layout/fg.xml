@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center|top" android:layout_gravity="center|top" android:id="@id/qe" android:clickable="false" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:layout_gravity="bottom|center" android:id="@id/qf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/fty" android:background="@drawable/dq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="30.0dip">
+        <View android:background="@color/e4" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="@dimen/ib">
+            <ImageView android:layout_width="wrap_content" android:layout_height="23.0dip" android:src="@raw/app_brand_search_nearby_icon" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:text="@string/ns" android:layout_weight="1.0" />
+            <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/app_brand_search_nearby_more_arrow" />
+        </LinearLayout>
+        <View android:background="@color/e4" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
 </LinearLayout>

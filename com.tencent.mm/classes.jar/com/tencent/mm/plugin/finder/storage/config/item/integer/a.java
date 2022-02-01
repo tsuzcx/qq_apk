@@ -1,40 +1,44 @@
 package com.tencent.mm.plugin.finder.storage.config.item.integer;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
-import d.z;
+import com.tencent.mm.plugin.finder.storage.config.b;
+import com.tencent.mm.plugin.finder.storage.config.e;
+import kotlin.g.a.m;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/config/item/integer/FinderIntConfig;", "Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig;", "", "defValue", "_title", "", "onClick", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "value", "", "(ILjava/lang/String;Lkotlin/jvm/functions/Function1;)V", "getOnClick", "()Lkotlin/jvm/functions/Function1;", "onItemClick", "index", "plugin-finder_release"})
-public final class a
-  extends com.tencent.mm.plugin.finder.storage.config.b<Integer>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/config/item/integer/FinderIntConfig;", "Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig;", "", "defValue", "_title", "", "onClick", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "value", "Landroid/content/Context;", "context", "", "(ILjava/lang/String;Lkotlin/jvm/functions/Function2;)V", "getOnClick", "()Lkotlin/jvm/functions/Function2;", "onItemClick", "index", "plugin-finder_release"})
+public class a
+  extends b<Integer>
 {
-  private final d.g.a.b<Integer, z> sKw;
+  private final m<Integer, Context, x> vFO;
   
-  public a(int paramInt, String paramString, d.g.a.b<? super Integer, z> paramb)
+  public a(int paramInt, String paramString, m<? super Integer, ? super Context, x> paramm)
   {
     super(Integer.valueOf(paramInt), paramString);
-    AppMethodBeat.i(204362);
-    this.sKw = paramb;
-    AppMethodBeat.o(204362);
+    AppMethodBeat.i(251944);
+    this.vFO = paramm;
+    AppMethodBeat.o(251944);
   }
   
-  public final void FN(int paramInt)
+  public final void Lc(int paramInt)
   {
-    AppMethodBeat.i(204361);
-    super.FN(paramInt);
-    d.g.a.b localb = this.sKw;
-    if (localb != null)
+    AppMethodBeat.i(251943);
+    super.Lc(paramInt);
+    m localm = this.vFO;
+    if (localm != null)
     {
-      localb.invoke(value());
-      AppMethodBeat.o(204361);
+      localm.invoke(value(), this.dKq);
+      AppMethodBeat.o(251943);
       return;
     }
-    AppMethodBeat.o(204361);
+    AppMethodBeat.o(251943);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.config.item.integer.a
  * JD-Core Version:    0.7.0.1
  */

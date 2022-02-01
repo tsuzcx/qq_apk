@@ -6,90 +6,98 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
 {
+  public int cSx;
   public String clientId;
   public long createTime;
-  public long dCd;
-  public String dED;
-  public int dEu;
-  int eNc;
-  String eNd;
+  public long dTS;
+  public String dWq;
   public String fileName;
-  public int hPI;
-  public int iAf;
-  int iAg;
-  long iAh;
-  int iAi;
-  public int ivD;
-  public String iwS;
-  public int iwU;
-  public long iwX;
-  public int iwZ;
-  int ixa;
-  String iyU;
-  int izb;
+  int fqJ;
+  String fqK;
+  public int iKP;
+  public int jqP;
+  public String jsh;
+  public int jsj;
+  public long jsm;
+  public int jso;
+  int jsp;
+  String jui;
+  int jup;
+  public int jvt;
+  int jvu;
+  long jvv;
+  int jvw;
+  public int jvx;
   public int status;
   
   public r()
   {
     AppMethodBeat.i(148454);
-    this.dEu = -1;
-    this.izb = 0;
+    this.cSx = -1;
+    this.jup = 0;
     this.fileName = "";
-    this.dED = "";
+    this.dWq = "";
     this.clientId = "";
-    this.dCd = 0L;
-    this.ivD = 0;
-    this.iwU = 0;
-    this.hPI = 0;
+    this.dTS = 0L;
+    this.jqP = 0;
+    this.jsj = 0;
+    this.iKP = 0;
     this.status = 0;
     this.createTime = 0L;
-    this.iwX = 0L;
-    this.iAf = 0;
-    this.iwZ = 0;
-    this.iwS = "";
-    this.ixa = 0;
-    this.iyU = "";
-    this.eNd = "";
-    this.eNc = 0;
-    this.iAg = 0;
-    this.iAh = 0L;
-    this.iAi = 0;
+    this.jsm = 0L;
+    this.jvt = 0;
+    this.jso = 0;
+    this.jsh = "";
+    this.jsp = 0;
+    this.jui = "";
+    this.fqK = "";
+    this.fqJ = 0;
+    this.jvu = 0;
+    this.jvv = 0L;
+    this.jvw = 0;
+    this.jvx = 0;
     AppMethodBeat.o(148454);
   }
   
-  public final boolean aNZ()
+  public final boolean bif()
   {
     return (this.status == 5) || (this.status == 6);
   }
   
-  public final boolean aOa()
+  public final boolean big()
   {
     return ((this.status > 1) && (this.status <= 3)) || (this.status == 8);
+  }
+  
+  public final boolean bih()
+  {
+    return (this.jvx & 0x1) != 0;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(148453);
     this.fileName = paramCursor.getString(0);
-    this.dED = paramCursor.getString(1);
-    this.dCd = paramCursor.getLong(2);
-    this.ivD = paramCursor.getInt(3);
-    this.iwU = paramCursor.getInt(4);
-    this.hPI = paramCursor.getInt(5);
+    this.dWq = paramCursor.getString(1);
+    this.dTS = paramCursor.getLong(2);
+    this.jqP = paramCursor.getInt(3);
+    this.jsj = paramCursor.getInt(4);
+    this.iKP = paramCursor.getInt(5);
     this.status = paramCursor.getInt(6);
     this.createTime = paramCursor.getLong(7);
-    this.iwX = paramCursor.getLong(8);
+    this.jsm = paramCursor.getLong(8);
     this.clientId = paramCursor.getString(9);
-    this.iAf = paramCursor.getInt(10);
-    this.iwZ = paramCursor.getInt(11);
-    this.iwS = paramCursor.getString(12);
-    this.ixa = paramCursor.getInt(13);
-    this.iyU = paramCursor.getString(14);
-    this.eNd = paramCursor.getString(15);
-    this.eNc = paramCursor.getInt(16);
-    this.iAg = paramCursor.getInt(17);
-    this.iAh = paramCursor.getLong(18);
-    this.iAi = paramCursor.getInt(19);
+    this.jvt = paramCursor.getInt(10);
+    this.jso = paramCursor.getInt(11);
+    this.jsh = paramCursor.getString(12);
+    this.jsp = paramCursor.getInt(13);
+    this.jui = paramCursor.getString(14);
+    this.fqK = paramCursor.getString(15);
+    this.fqJ = paramCursor.getInt(16);
+    this.jvu = paramCursor.getInt(17);
+    this.jvv = paramCursor.getLong(18);
+    this.jvw = paramCursor.getInt(19);
+    this.jvx = paramCursor.getInt(20);
     AppMethodBeat.o(148453);
   }
   
@@ -97,65 +105,68 @@ public final class r
   {
     AppMethodBeat.i(148452);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dEu & 0x1) != 0) {
+    if ((this.cSx & 0x1) != 0) {
       localContentValues.put("FileName", this.fileName);
     }
-    if ((this.dEu & 0x2) != 0) {
-      localContentValues.put("User", this.dED);
+    if ((this.cSx & 0x2) != 0) {
+      localContentValues.put("User", this.dWq);
     }
-    if ((this.dEu & 0x4) != 0) {
-      localContentValues.put("MsgId", Long.valueOf(this.dCd));
+    if ((this.cSx & 0x4) != 0) {
+      localContentValues.put("MsgId", Long.valueOf(this.dTS));
     }
-    if ((this.dEu & 0x8) != 0) {
-      localContentValues.put("NetOffset", Integer.valueOf(this.ivD));
+    if ((this.cSx & 0x8) != 0) {
+      localContentValues.put("NetOffset", Integer.valueOf(this.jqP));
     }
-    if ((this.dEu & 0x10) != 0) {
-      localContentValues.put("FileNowSize", Integer.valueOf(this.iwU));
+    if ((this.cSx & 0x10) != 0) {
+      localContentValues.put("FileNowSize", Integer.valueOf(this.jsj));
     }
-    if ((this.dEu & 0x20) != 0) {
-      localContentValues.put("TotalLen", Integer.valueOf(this.hPI));
+    if ((this.cSx & 0x20) != 0) {
+      localContentValues.put("TotalLen", Integer.valueOf(this.iKP));
     }
-    if ((this.dEu & 0x40) != 0) {
+    if ((this.cSx & 0x40) != 0) {
       localContentValues.put("Status", Integer.valueOf(this.status));
     }
-    if ((this.dEu & 0x80) != 0) {
+    if ((this.cSx & 0x80) != 0) {
       localContentValues.put("CreateTime", Long.valueOf(this.createTime));
     }
-    if ((this.dEu & 0x100) != 0) {
-      localContentValues.put("LastModifyTime", Long.valueOf(this.iwX));
+    if ((this.cSx & 0x100) != 0) {
+      localContentValues.put("LastModifyTime", Long.valueOf(this.jsm));
     }
-    if ((this.dEu & 0x200) != 0) {
+    if ((this.cSx & 0x200) != 0) {
       localContentValues.put("ClientId", this.clientId);
     }
-    if ((this.dEu & 0x400) != 0) {
-      localContentValues.put("VoiceLength", Integer.valueOf(this.iAf));
+    if ((this.cSx & 0x400) != 0) {
+      localContentValues.put("VoiceLength", Integer.valueOf(this.jvt));
     }
-    if ((this.dEu & 0x800) != 0) {
-      localContentValues.put("MsgLocalId", Integer.valueOf(this.iwZ));
+    if ((this.cSx & 0x800) != 0) {
+      localContentValues.put("MsgLocalId", Integer.valueOf(this.jso));
     }
-    if ((this.dEu & 0x1000) != 0) {
-      localContentValues.put("Human", this.iwS);
+    if ((this.cSx & 0x1000) != 0) {
+      localContentValues.put("Human", this.jsh);
     }
-    if ((this.dEu & 0x2000) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(this.ixa));
+    if ((this.cSx & 0x2000) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.jsp));
     }
-    if ((this.dEu & 0x4000) != 0) {
-      localContentValues.put("reserved2", this.iyU);
+    if ((this.cSx & 0x4000) != 0) {
+      localContentValues.put("reserved2", this.jui);
     }
-    if ((this.dEu & 0x8000) != 0) {
-      localContentValues.put("MsgSource", this.eNd);
+    if ((this.cSx & 0x8000) != 0) {
+      localContentValues.put("MsgSource", this.fqK);
     }
-    if ((this.dEu & 0x10000) != 0) {
-      localContentValues.put("MsgFlag", Integer.valueOf(this.eNc));
+    if ((this.cSx & 0x10000) != 0) {
+      localContentValues.put("MsgFlag", Integer.valueOf(this.fqJ));
     }
-    if ((this.dEu & 0x20000) != 0) {
-      localContentValues.put("MsgSeq", Integer.valueOf(this.iAg));
+    if ((this.cSx & 0x20000) != 0) {
+      localContentValues.put("MsgSeq", Integer.valueOf(this.jvu));
     }
-    if ((this.dEu & 0x40000) != 0) {
-      localContentValues.put("MasterBufId", Long.valueOf(this.iAh));
+    if ((this.cSx & 0x40000) != 0) {
+      localContentValues.put("MasterBufId", Long.valueOf(this.jvv));
     }
-    if ((this.dEu & 0x80000) != 0) {
-      localContentValues.put("checksum", Integer.valueOf(this.iAi));
+    if ((this.cSx & 0x80000) != 0) {
+      localContentValues.put("checksum", Integer.valueOf(this.jvw));
+    }
+    if ((this.cSx & 0x100000) != 0) {
+      localContentValues.put("VoiceFlag", Integer.valueOf(this.jvx));
     }
     AppMethodBeat.o(148452);
     return localContentValues;
@@ -163,7 +174,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelvoice.r
  * JD-Core Version:    0.7.0.1
  */

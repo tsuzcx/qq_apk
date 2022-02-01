@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class oi
-  extends b
+  extends IEvent
 {
-  public a dDm;
-  
   public oi()
   {
     this((byte)0);
@@ -16,20 +12,8 @@ public final class oi
   
   private oi(byte paramByte)
   {
-    AppMethodBeat.i(127409);
-    this.dDm = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(127409);
-  }
-  
-  public static final class a
-  {
-    public Context context;
-    public boolean dCy = true;
-    public String dDn;
-    public long msgId = -1L;
-    public int scene;
   }
 }
 

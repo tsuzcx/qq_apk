@@ -8,6 +8,7 @@ import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.modelappbrand.n;
 import com.tencent.mm.protocal.MMProtocalJni;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import junit.framework.Assert;
 
 public final class a
@@ -16,7 +17,7 @@ public final class a
   public final boolean a(Context paramContext, final String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(121281);
-    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDV().aEc())
+    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().aXP())
     {
       AppMethodBeat.o(121281);
       return true;
@@ -67,13 +68,13 @@ public final class a
         public final void run()
         {
           AppMethodBeat.i(121275);
-          String str2 = "com.tencent.mm";
+          String str2 = MMApplicationContext.getPackageName();
           String str1 = str2;
           if (paramArrayOfString.length > 2)
           {
             str1 = str2;
             if (!TextUtils.isEmpty(paramArrayOfString[2])) {
-              str1 = "com.tencent.mm" + ":" + paramArrayOfString[2];
+              str1 = str2 + ":" + paramArrayOfString[2];
             }
           }
           h.a(str1, null, a.a.class, null);
@@ -86,13 +87,13 @@ public final class a
         public final void run()
         {
           AppMethodBeat.i(121276);
-          String str2 = "com.tencent.mm";
+          String str2 = MMApplicationContext.getPackageName();
           String str1 = str2;
           if (paramArrayOfString.length > 2)
           {
             str1 = str2;
             if (!TextUtils.isEmpty(paramArrayOfString[2])) {
-              str1 = "com.tencent.mm" + ":" + paramArrayOfString[2];
+              str1 = str2 + ":" + paramArrayOfString[2];
             }
           }
           h.a(str1, null, a.b.class, null);
@@ -119,7 +120,7 @@ public final class a
         default: 
           break;
         case 0: 
-          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDV().eC(true);
+          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().fu(true);
           break;
           if (!paramArrayOfString.equals("-or")) {
             break label288;
@@ -137,9 +138,9 @@ public final class a
           i = 2;
         }
       }
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDV().eC(false);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().fu(false);
       continue;
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDV().cz(paramContext);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().cV(paramContext);
     }
   }
   

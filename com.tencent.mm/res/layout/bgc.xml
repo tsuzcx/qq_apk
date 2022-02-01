@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/g1m" android:background="@color/afz" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/i" android:textColor="@color/y4" android:id="@id/gr3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="160.0dip" android:text="@string/g9z" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/p" android:textColor="@color/gb" android:id="@id/ev4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="80.0dip" android:text="@string/w7" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <include android:id="@id/bvr" layout="@layout/bg_" />
+    <android.support.v7.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/jnd" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bvr" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/Link_100" android:id="@id/g1_" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/fe3" android:layout_alignBottom="@id/jnd" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/jn3" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
 </RelativeLayout>

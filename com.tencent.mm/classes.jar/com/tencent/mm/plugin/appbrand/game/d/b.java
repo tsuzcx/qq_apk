@@ -2,126 +2,126 @@ package com.tencent.mm.plugin.appbrand.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
-import com.tencent.mm.plugin.appbrand.report.quality.l.a;
-import com.tencent.mm.plugin.appbrand.report.quality.m;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.report.quality.m.a;
+import com.tencent.mm.plugin.appbrand.report.quality.n;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  private int aDD;
   private String appId;
-  private int dli;
-  private int koA;
-  private int koB;
-  m koC;
+  private int appVersion;
+  private int dCv;
+  private int lsj;
+  private int lsk;
+  n lsl;
   
-  public b(QualitySessionRuntime paramQualitySessionRuntime, m paramm)
+  public b(QualitySessionRuntime paramQualitySessionRuntime, n paramn)
   {
     this.appId = paramQualitySessionRuntime.appId;
-    this.dli = paramQualitySessionRuntime.myD;
-    this.aDD = paramQualitySessionRuntime.mAf;
-    this.koC = paramm;
+    this.dCv = paramQualitySessionRuntime.nJE;
+    this.appVersion = paramQualitySessionRuntime.nLk;
+    this.lsl = paramn;
   }
   
-  public final void gg(boolean paramBoolean)
+  public final void hd(boolean paramBoolean)
   {
     AppMethodBeat.i(45132);
-    ae.v("MicroMsg.Kv_14959", "hy: 14959 report is full: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.koC == null)
+    Log.v("MicroMsg.Kv_14959", "hy: 14959 report is full: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (this.lsl == null)
     {
       AppMethodBeat.o(45132);
       return;
     }
-    m localm = this.koC;
+    n localn = this.lsl;
     int i;
-    if (localm.mAE == l.a.mAG) {
+    if (localn.nLJ == m.a.nLL) {
       i = 1;
     }
     for (;;)
     {
-      this.koA = i;
-      this.koB = this.koC.koB;
+      this.lsj = i;
+      this.lsk = this.lsl.lsk;
       if (paramBoolean)
       {
-        if (this.koC != null)
+        if (this.lsl != null)
         {
-          i = this.koC.mAP;
-          j = this.koC.mAQ;
-          g.yxI.f(14959, new Object[] { this.appId, Integer.valueOf(this.aDD), Integer.valueOf(this.dli), Integer.valueOf(this.koA), Integer.valueOf(a.koE.duP), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.koB) });
-          ae.i("MicroMsg.Kv_14959", "Kv_14959.reportCpu cpu = [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.koB), Integer.valueOf(this.koA) });
+          i = this.lsl.nLU;
+          j = this.lsl.nLV;
+          h.CyF.a(14959, new Object[] { this.appId, Integer.valueOf(this.appVersion), Integer.valueOf(this.dCv), Integer.valueOf(this.lsj), Integer.valueOf(a.lsn.eventId), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.lsk) });
+          Log.i("MicroMsg.Kv_14959", "Kv_14959.reportCpu cpu = [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.lsk), Integer.valueOf(this.lsj) });
         }
-        if (this.koC != null)
+        if (this.lsl != null)
         {
-          i = this.koC.mAP;
-          j = this.koC.cjG;
-          int k = this.koC.cjH;
-          int m = this.koC.cjI;
-          int n = this.koC.mAO;
-          g.yxI.f(14959, new Object[] { this.appId, Integer.valueOf(this.aDD), Integer.valueOf(this.dli), Integer.valueOf(this.koA), Integer.valueOf(a.koF.duP), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.koB) });
-          g.yxI.f(14959, new Object[] { this.appId, Integer.valueOf(this.aDD), Integer.valueOf(this.dli), Integer.valueOf(this.koA), Integer.valueOf(a.koJ.duP), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(this.koB) });
-          g.yxI.f(14959, new Object[] { this.appId, Integer.valueOf(this.aDD), Integer.valueOf(this.dli), Integer.valueOf(this.koA), Integer.valueOf(a.koK.duP), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.koB) });
-          g.yxI.f(14959, new Object[] { this.appId, Integer.valueOf(this.aDD), Integer.valueOf(this.dli), Integer.valueOf(this.koA), Integer.valueOf(a.koM.duP), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this.koB) });
-          ae.i("MicroMsg.Kv_14959", "Kv_14959.reportMemory pid = [%d] native = [%d] dalvik = [%d] delta = [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this.koB), Integer.valueOf(this.koA) });
+          i = this.lsl.nLU;
+          j = this.lsl.cvD;
+          int k = this.lsl.cvE;
+          int m = this.lsl.cvF;
+          int n = this.lsl.nLT;
+          h.CyF.a(14959, new Object[] { this.appId, Integer.valueOf(this.appVersion), Integer.valueOf(this.dCv), Integer.valueOf(this.lsj), Integer.valueOf(a.lso.eventId), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.lsk) });
+          h.CyF.a(14959, new Object[] { this.appId, Integer.valueOf(this.appVersion), Integer.valueOf(this.dCv), Integer.valueOf(this.lsj), Integer.valueOf(a.lss.eventId), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(this.lsk) });
+          h.CyF.a(14959, new Object[] { this.appId, Integer.valueOf(this.appVersion), Integer.valueOf(this.dCv), Integer.valueOf(this.lsj), Integer.valueOf(a.lst.eventId), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.lsk) });
+          h.CyF.a(14959, new Object[] { this.appId, Integer.valueOf(this.appVersion), Integer.valueOf(this.dCv), Integer.valueOf(this.lsj), Integer.valueOf(a.lsv.eventId), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this.lsk) });
+          Log.i("MicroMsg.Kv_14959", "Kv_14959.reportMemory pid = [%d] native = [%d] dalvik = [%d] delta = [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this.lsk), Integer.valueOf(this.lsj) });
         }
       }
-      if (this.koC == null) {
+      if (this.lsl == null) {
         break label1063;
       }
-      i = this.koC.mAP;
-      int j = this.koC.fps;
-      g.yxI.f(14959, new Object[] { this.appId, Integer.valueOf(this.aDD), Integer.valueOf(this.dli), Integer.valueOf(this.koA), Integer.valueOf(a.koD.duP), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.koB) });
-      ae.i("MicroMsg.Kv_14959", "Kv_14959.reportFps fps = [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.koB), Integer.valueOf(this.koA) });
-      j = (int)this.koC.mAK;
+      i = this.lsl.nLU;
+      int j = this.lsl.fps;
+      h.CyF.a(14959, new Object[] { this.appId, Integer.valueOf(this.appVersion), Integer.valueOf(this.dCv), Integer.valueOf(this.lsj), Integer.valueOf(a.lsm.eventId), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.lsk) });
+      Log.i("MicroMsg.Kv_14959", "Kv_14959.reportFps fps = [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.lsk), Integer.valueOf(this.lsj) });
+      j = (int)this.lsl.nLP;
       if (j == -1) {
         break;
       }
-      g.yxI.f(14959, new Object[] { this.appId, Integer.valueOf(this.aDD), Integer.valueOf(this.dli), Integer.valueOf(this.koA), Integer.valueOf(a.koN.duP), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.koB) });
-      ae.i("MicroMsg.Kv_14959", "Kv_14959.reportFps variance fps = [%d] eventid: [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(a.koN.duP), Integer.valueOf(i), Integer.valueOf(this.koB), Integer.valueOf(this.koA) });
+      h.CyF.a(14959, new Object[] { this.appId, Integer.valueOf(this.appVersion), Integer.valueOf(this.dCv), Integer.valueOf(this.lsj), Integer.valueOf(a.lsw.eventId), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.lsk) });
+      Log.i("MicroMsg.Kv_14959", "Kv_14959.reportFps variance fps = [%d] eventid: [%d] duration = [%d] runtimeCount = [%d] canvasType = [%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(a.lsw.eventId), Integer.valueOf(i), Integer.valueOf(this.lsk), Integer.valueOf(this.lsj) });
       AppMethodBeat.o(45132);
       return;
-      if (localm.mAE == l.a.mAH) {
+      if (localn.nLJ == m.a.nLM) {
         i = 2;
       } else {
         i = 0;
       }
     }
-    ae.e("MicroMsg.Kv_14959", "variance == -1!");
+    Log.e("MicroMsg.Kv_14959", "variance == -1!");
     label1063:
     AppMethodBeat.o(45132);
   }
   
   static enum a
   {
-    int duP;
+    int eventId;
     
     static
     {
       AppMethodBeat.i(45131);
-      koD = new a("FPS", 0, 1);
-      koE = new a("CPU", 1, 2);
-      koF = new a("MEM", 2, 3);
-      koG = new a("DRAW_CALL", 3, 4);
-      koH = new a("TRIANGLE", 4, 5);
-      koI = new a("VERTEX", 5, 6);
-      koJ = new a("NATIVE_MEM", 6, 101);
-      koK = new a("DALVIK_MEM", 7, 102);
-      koL = new a("OTHER_MEM", 8, 103);
-      koM = new a("MEM_DELTA", 9, 104);
-      koN = new a("VARIANCE_FPS", 10, 105);
-      koO = new a[] { koD, koE, koF, koG, koH, koI, koJ, koK, koL, koM, koN };
+      lsm = new a("FPS", 0, 1);
+      lsn = new a("CPU", 1, 2);
+      lso = new a("MEM", 2, 3);
+      lsp = new a("DRAW_CALL", 3, 4);
+      lsq = new a("TRIANGLE", 4, 5);
+      lsr = new a("VERTEX", 5, 6);
+      lss = new a("NATIVE_MEM", 6, 101);
+      lst = new a("DALVIK_MEM", 7, 102);
+      lsu = new a("OTHER_MEM", 8, 103);
+      lsv = new a("MEM_DELTA", 9, 104);
+      lsw = new a("VARIANCE_FPS", 10, 105);
+      lsx = new a[] { lsm, lsn, lso, lsp, lsq, lsr, lss, lst, lsu, lsv, lsw };
       AppMethodBeat.o(45131);
     }
     
     private a(int paramInt)
     {
-      this.duP = paramInt;
+      this.eventId = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.d.b
  * JD-Core Version:    0.7.0.1
  */

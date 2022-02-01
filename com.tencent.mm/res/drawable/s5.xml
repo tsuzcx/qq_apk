@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="true"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="67" android:drawable="@drawable/bj_" />
-    <item android:duration="67" android:drawable="@drawable/bjk" />
-    <item android:duration="67" android:drawable="@drawable/bjx" />
-    <item android:duration="67" android:drawable="@drawable/bjy" />
-    <item android:duration="67" android:drawable="@drawable/bk0" />
-    <item android:duration="67" android:drawable="@drawable/bk1" />
-    <item android:duration="67" android:drawable="@drawable/bja" />
-    <item android:duration="67" android:drawable="@drawable/bjb" />
-    <item android:duration="67" android:drawable="@drawable/bjd" />
-    <item android:duration="67" android:drawable="@drawable/bje" />
-    <item android:duration="67" android:drawable="@drawable/bjg" />
-    <item android:duration="67" android:drawable="@drawable/bjh" />
-    <item android:duration="67" android:drawable="@drawable/bjj" />
-    <item android:duration="67" android:drawable="@drawable/bjl" />
-    <item android:duration="67" android:drawable="@drawable/bjn" />
-    <item android:duration="67" android:drawable="@drawable/bjo" />
-    <item android:duration="67" android:drawable="@drawable/bjq" />
-    <item android:duration="67" android:drawable="@drawable/bjr" />
-    <item android:duration="67" android:drawable="@drawable/bjt" />
-    <item android:duration="67" android:drawable="@drawable/bju" />
-    <item android:duration="67" android:drawable="@drawable/bjw" />
-</animation-list>
+    <solid android:color="@color/lw" />
+    <corners android:radius="2.0dip" />
+</shape>

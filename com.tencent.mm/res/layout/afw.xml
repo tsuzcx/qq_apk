@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cu9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/cu7" android:visibility="gone" android:layout_width="@dimen/ck" android:layout_height="@dimen/ck" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/alm" android:background="@color/ad" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/ajh" android:background="@drawable/icon_live_lottery_card_bg" android:clickable="true" android:layout_width="320.0dip" android:layout_height="424.0dip" android:layout_centerInParent="true">
+            <include android:id="@id/h9x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/afy" />
+            <RelativeLayout android:id="@id/bt4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <include android:id="@id/jo4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/ct" android:layout_above="@id/etr" layout="@layout/aef" />
+                <include android:id="@id/etr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/afx" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b3z" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/ci" android:src="@raw/icons_outlined_close2" android:layout_below="@id/ajh" android:layout_centerHorizontal="true" app:iconColor="@color/qd" />
+    </RelativeLayout>
+</RelativeLayout>

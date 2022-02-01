@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBestSellingItemView android:orientation="vertical" android:paddingLeft="@dimen/fy" android:paddingRight="@dimen/fy" android:paddingBottom="@dimen/fy" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.game.widget.AutoResizeTextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/s5" android:gravity="center|left" android:id="@id/cdu" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g5" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/cbw" android:layout_width="@dimen/fr" android:layout_height="@dimen/fr" android:layout_marginRight="@dimen/g3" android:src="@drawable/asc" android:scaleType="fitXY" android:layout_centerVertical="true" android:layout_toEndOf="@id/cdu" />
-            <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/c9z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g5" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
-            <TextView android:textSize="@dimen/fg" android:textColor="@color/qn" android:ellipsize="end" android:gravity="center|left" android:id="@id/cdk" android:layout_width="wrap_content" android:layout_height="25.0dip" android:singleLine="true" android:layout_toLeftOf="@id/c9z" android:layout_toRightOf="@id/cbw" android:layout_alignTop="@id/cbw" />
-            <com.tencent.mm.plugin.game.widget.GameTagListView android:orientation="horizontal" android:id="@id/g4k" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_toLeftOf="@id/c9z" android:layout_toRightOf="@id/cbw" android:layout_alignBottom="@id/cbw" />
-        </RelativeLayout>
-        <ViewStub android:id="@id/fqg" android:layout="@layout/adg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="93.0dip" android:layout_marginTop="@dimen/g5" />
-    </com.tencent.mm.plugin.game.ui.GameBestSellingItemView>
-</FrameLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dtx" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="100.0dip" android:src="@raw/icons_filled_error" app:iconColor="@color/Red" />
+    <TextView android:textSize="@dimen/hb" android:textColor="@color/fm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:text="@string/d_d" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/fm" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/d_e" android:lineSpacingExtra="5.0dip" />
+</LinearLayout>

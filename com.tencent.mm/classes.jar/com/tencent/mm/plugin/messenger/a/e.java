@@ -18,11 +18,11 @@ public abstract interface e
   
   public abstract void a(String paramString, Map<String, String> paramMap, Bundle paramBundle);
   
-  public abstract void aqA(String paramString);
+  public abstract void aDU(String paramString);
   
-  public abstract CharSequence aqB(String paramString);
+  public abstract void aDV(String paramString);
   
-  public abstract void aqz(String paramString);
+  public abstract CharSequence aDW(String paramString);
   
   public abstract CharSequence b(String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
   
@@ -30,7 +30,7 @@ public abstract interface e
   
   public static abstract interface a
   {
-    public abstract String e(Map<String, String> paramMap, String paramString);
+    public abstract String f(Map<String, String> paramMap, String paramString);
   }
   
   public static abstract interface b

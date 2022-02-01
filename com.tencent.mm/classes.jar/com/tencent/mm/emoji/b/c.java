@@ -1,42 +1,35 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.x;
-import d.l;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.protocal.protobuf.bmv;
+import com.tencent.mm.protocal.protobuf.bmw;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/report/EmojiDesignerReport;", "", "()V", "ActionBack", "", "ActionClick", "ActionDownload", "ActionExposure", "ActionViewPackDetail", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "report", "", "action", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/CgiGetEmojiWordList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "()V", "plugin-emojisdk_release"})
 public final class c
+  extends com.tencent.mm.ak.c<bmw>
 {
-  private static final x gqY;
-  public static final c gqZ;
-  
-  static
+  public c()
   {
-    AppMethodBeat.i(183963);
-    gqZ = new c();
-    gqY = new x();
-    AppMethodBeat.o(183963);
-  }
-  
-  public static x agn()
-  {
-    return gqY;
-  }
-  
-  public static void md(int paramInt)
-  {
-    AppMethodBeat.i(183962);
-    if (gqY.getIndex() > 0)
-    {
-      gqY.il(paramInt);
-      gqY.aLH();
-    }
-    AppMethodBeat.o(183962);
+    AppMethodBeat.i(199910);
+    bmv localbmv = new bmv();
+    bmw localbmw = new bmw();
+    d.a locala = new d.a();
+    locala.c((a)localbmv);
+    locala.d((a)localbmw);
+    locala.MB("/cgi-bin/micromsg-bin/getemotionwordlist");
+    locala.sG(3628);
+    locala.sI(0);
+    locala.sJ(0);
+    c(locala.aXF());
+    AppMethodBeat.o(199910);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.pointers;
 
 public class PFloat
 {
+  private byte _hellAccFlag_;
   public float value;
 }
 

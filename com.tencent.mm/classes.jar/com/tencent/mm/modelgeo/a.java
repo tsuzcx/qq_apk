@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static boolean l(double paramDouble)
+  public static boolean m(double paramDouble)
   {
     AppMethodBeat.i(150461);
     paramDouble = Math.abs(paramDouble);
@@ -17,7 +17,7 @@ public final class a
     return false;
   }
   
-  public static boolean m(double paramDouble)
+  public static boolean n(double paramDouble)
   {
     AppMethodBeat.i(150462);
     paramDouble = Math.abs(paramDouble);
@@ -32,7 +32,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelgeo.a
  * JD-Core Version:    0.7.0.1
  */

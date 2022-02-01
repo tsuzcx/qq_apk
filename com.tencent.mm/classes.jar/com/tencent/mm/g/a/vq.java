@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class vq
-  extends b
+  extends IEvent
 {
-  public vq.a dKT;
-  public b dKU;
+  public a ebN;
+  public b ebO;
   
   public vq()
   {
@@ -16,23 +16,27 @@ public final class vq
   
   private vq(byte paramByte)
   {
-    AppMethodBeat.i(153187);
-    this.dKT = new vq.a();
-    this.dKU = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(148771);
+    this.ebN = new a();
+    this.ebO = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(153187);
+    AppMethodBeat.o(148771);
+  }
+  
+  public static final class a
+  {
+    public String ebP;
   }
   
   public static final class b
   {
-    public boolean dLn;
-    public String dLo;
+    public Object result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.vq
  * JD-Core Version:    0.7.0.1
  */

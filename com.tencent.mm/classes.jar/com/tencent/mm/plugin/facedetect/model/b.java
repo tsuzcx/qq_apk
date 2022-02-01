@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  static boolean vA(long paramLong)
+  static boolean DE(long paramLong)
   {
     AppMethodBeat.i(103685);
     if (System.currentTimeMillis() - paramLong > 200L)

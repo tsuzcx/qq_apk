@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.sns.b;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void p(int paramInt1, String paramString, int paramInt2);
+  public abstract void r(int paramInt1, String paramString, int paramInt2);
 }
 
 

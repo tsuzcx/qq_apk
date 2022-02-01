@@ -8,19 +8,19 @@ public abstract interface t
 {
   public abstract void a(Menu paramMenu, o.a parama);
   
-  public abstract void bv(int paramInt);
+  public abstract void bw(int paramInt);
   
-  public abstract void gF();
+  public abstract void gM();
   
   public abstract boolean hideOverflowMenu();
   
-  public abstract boolean is();
+  public abstract boolean iB();
+  
+  public abstract boolean iC();
+  
+  public abstract void iD();
   
   public abstract boolean isOverflowMenuShowing();
-  
-  public abstract boolean it();
-  
-  public abstract void iu();
   
   public abstract void setWindowCallback(Window.Callback paramCallback);
   

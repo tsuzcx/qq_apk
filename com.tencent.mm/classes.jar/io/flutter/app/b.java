@@ -8,7 +8,7 @@ import io.flutter.plugin.a.m.d;
 public abstract interface b
   extends ComponentCallbacks2, m.a, m.d
 {
-  public abstract void giJ();
+  public abstract void hwi();
   
   public abstract boolean onBackPressed();
   
@@ -30,7 +30,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.app.b
  * JD-Core Version:    0.7.0.1
  */

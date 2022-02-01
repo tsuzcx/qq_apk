@@ -15,18 +15,18 @@ import java.util.List;
 public final class l
   extends BaseAdapter
 {
+  List<n.a> BbL;
   private Context mContext;
-  List<n.a> xej;
   
   public l(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private n.a Nl(int paramInt)
+  private n.a Uy(int paramInt)
   {
     AppMethodBeat.i(67041);
-    n.a locala = (n.a)this.xej.get(paramInt);
+    n.a locala = (n.a)this.BbL.get(paramInt);
     AppMethodBeat.o(67041);
     return locala;
   }
@@ -34,9 +34,9 @@ public final class l
   public final int getCount()
   {
     AppMethodBeat.i(67040);
-    if (this.xej != null)
+    if (this.BbL != null)
     {
-      int i = this.xej.size();
+      int i = this.BbL.size();
       AppMethodBeat.o(67040);
       return i;
     }
@@ -52,21 +52,21 @@ public final class l
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(67042);
-    Object localObject = Nl(paramInt);
+    Object localObject = Uy(paramInt);
     if ((paramView == null) || (paramView.getTag() == null))
     {
       paramViewGroup = new m();
-      paramView = View.inflate(this.mContext, 2131495129, null);
-      paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131302110));
-      paramViewGroup.fWT = ((ImageView)paramView.findViewById(2131302109));
+      paramView = View.inflate(this.mContext, 2131495972, null);
+      paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131304449));
+      paramViewGroup.gBZ = ((ImageView)paramView.findViewById(2131304448));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.xek = ((n.a)localObject);
+      paramViewGroup.BbM = ((n.a)localObject);
       paramViewGroup.titleTv.setText(((n.a)localObject).title);
       localObject = u.a(new c(((n.a)localObject).iconUrl));
-      paramViewGroup.fWT.setImageBitmap((Bitmap)localObject);
+      paramViewGroup.gBZ.setImageBitmap((Bitmap)localObject);
       u.a(paramViewGroup);
       AppMethodBeat.o(67042);
       return paramView;
@@ -76,7 +76,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.l
  * JD-Core Version:    0.7.0.1
  */

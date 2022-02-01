@@ -2,70 +2,69 @@ package com.tencent.mm.plugin.audio.b;
 
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.b;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.sdk.platformtools.bd;
-import d.g.b.p;
-import d.g.b.q;
-import d.g.b.y.d;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.PhoneStatusWatcher;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.g.b.z.d;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/mgr/BaseVoIPAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "()V", "doShiftSpeaker", "", "beSpeakerphoneOn", "ignoreBluetooth", "shiftSpeaker", "StreamType", "", "Companion", "plugin-audio_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/mgr/BaseVoIPAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "()V", "doShiftSpeaker", "", "beSpeakerphoneOn", "ignoreBluetooth", "shiftSpeaker", "StreamType", "", "Companion", "plugin-audio_release"})
 public class e
   extends a
 {
-  public static final e.a nxg;
+  public static final e.a oHZ;
   
   static
   {
-    AppMethodBeat.i(201068);
-    nxg = new e.a((byte)0);
-    AppMethodBeat.o(201068);
+    AppMethodBeat.i(223965);
+    oHZ = new e.a((byte)0);
+    AppMethodBeat.o(223965);
   }
   
-  private final boolean A(boolean paramBoolean1, boolean paramBoolean2)
+  private final boolean z(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(201067);
+    AppMethodBeat.i(223964);
     int i = this.audioManager.getMode();
-    Object localObject = com.tencent.mm.plugin.audio.c.a.nxo;
-    boolean bool = a.a.bHy().isSpeakerphoneOn();
-    localObject = com.tencent.mm.plugin.audio.c.a.nxo;
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoIPAudioManager", "dkbt shiftSpeaker:%b -> %b  %s ", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean1), a.a.bHy().bHx() });
-    if (bd.PC())
+    Object localObject = com.tencent.mm.plugin.audio.c.a.oIh;
+    Log.i("MicroMsg.VoIPAudioManager", "dkbt shiftSpeaker:%b -> %b", new Object[] { Boolean.valueOf(a.a.cea().isSpeakerphoneOn()), Boolean.valueOf(paramBoolean1) });
+    if (PhoneStatusWatcher.isCalling())
     {
-      com.tencent.mm.sdk.platformtools.ae.v("MicroMsg.VoIPAudioManager", "shiftSpeaker return when calling Mode:%d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(201067);
+      Log.v("MicroMsg.VoIPAudioManager", "shiftSpeaker return when calling Mode:%d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(223964);
       return false;
     }
     if (!paramBoolean2)
     {
-      localObject = com.tencent.mm.plugin.audio.c.a.nxo;
-      localObject = com.tencent.mm.plugin.audio.d.a.nxr;
-      if ((com.tencent.mm.plugin.audio.d.a.bHz()) || (this.fXQ))
+      localObject = com.tencent.mm.plugin.audio.c.a.oIh;
+      localObject = com.tencent.mm.plugin.audio.d.b.oIo;
+      if ((com.tencent.mm.plugin.audio.d.b.ceb()) || (this.gCW))
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoIPAudioManager", "dkbt shiftSpeaker isBluetoothOn");
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.VoIPAudioManager", "Bluetooth is on and now is in VoIP , set 3 MODE_IN_COMMUNICATION..");
+        Log.i("MicroMsg.VoIPAudioManager", "dkbt shiftSpeaker isBluetoothOn");
+        Log.d("MicroMsg.VoIPAudioManager", "Bluetooth is on and now is in VoIP , set 3 MODE_IN_COMMUNICATION..");
         b(3, null);
-        AppMethodBeat.o(201067);
+        AppMethodBeat.o(223964);
         return false;
       }
     }
-    if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYn)
+    if (ae.gKu.gDA)
     {
-      if (com.tencent.mm.compatible.deviceinfo.ae.geN.ZW())
+      if (ae.gKu.anV())
       {
-        if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYp >= 0) {
-          b(com.tencent.mm.compatible.deviceinfo.ae.geN.fYp, null);
+        if (ae.gKu.gDC >= 0) {
+          b(ae.gKu.gDC, null);
         }
         for (;;)
         {
-          if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYr > 0) {
-            super.cn(paramBoolean1);
+          if (ae.gKu.gDE > 0) {
+            super.cV(paramBoolean1);
           }
-          AppMethodBeat.o(201067);
+          AppMethodBeat.o(223964);
           return paramBoolean1;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYq >= 0) {
+          if (ae.gKu.gDD >= 0) {
             if (paramBoolean1) {
               b(0, null);
             } else {
@@ -74,116 +73,116 @@ public class e
           }
         }
       }
-      if (com.tencent.mm.compatible.deviceinfo.ae.geN.ZX())
+      if (ae.gKu.anW())
       {
         if (paramBoolean1)
         {
-          if (com.tencent.mm.compatible.deviceinfo.ae.geN.aaa()) {
-            super.cn(true);
+          if (ae.gKu.anZ()) {
+            super.cV(true);
           }
-          localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
+          localObject = ae.gKu;
           p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-          if (((b)localObject).ZZ() >= 0)
+          if (((com.tencent.mm.compatible.deviceinfo.b)localObject).anY() >= 0)
           {
-            localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
+            localObject = ae.gKu;
             p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-            b(((b)localObject).ZZ(), null);
+            b(((com.tencent.mm.compatible.deviceinfo.b)localObject).anY(), null);
           }
         }
         for (;;)
         {
-          AppMethodBeat.o(201067);
+          AppMethodBeat.o(223964);
           return paramBoolean1;
-          if (com.tencent.mm.compatible.deviceinfo.ae.geN.aac()) {
-            super.cn(false);
+          if (ae.gKu.aob()) {
+            super.cV(false);
           }
-          localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
+          localObject = ae.gKu;
           p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-          if (((b)localObject).aab() >= 0)
+          if (((com.tencent.mm.compatible.deviceinfo.b)localObject).aoa() >= 0)
           {
-            localObject = com.tencent.mm.compatible.deviceinfo.ae.geN;
+            localObject = ae.gKu;
             p.g(localObject, "SrvDeviceInfo.mAudioInfo");
-            b(((b)localObject).aab(), null);
+            b(((com.tencent.mm.compatible.deviceinfo.b)localObject).aoa(), null);
           }
         }
       }
     }
     if (paramBoolean1)
     {
-      localObject = new y.d();
-      ((y.d)localObject).NiW = 3;
-      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYN >= 0) {
-        ((y.d)localObject).NiW = com.tencent.mm.compatible.deviceinfo.ae.geN.fYN;
+      localObject = new z.d();
+      ((z.d)localObject).SYE = 3;
+      if (ae.gKu.gEe >= 0) {
+        ((z.d)localObject).SYE = ae.gKu.gEe;
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoIPAudioManager", "VoIP doShiftSpeaker useSpeakerMode: %s, getMode: %s", new Object[] { Integer.valueOf(((y.d)localObject).NiW), Integer.valueOf(this.audioManager.getMode()) });
-      if (((y.d)localObject).NiW != this.audioManager.getMode()) {
-        b(((y.d)localObject).NiW, (d.g.a.a)new b(this, (y.d)localObject));
+      Log.i("MicroMsg.VoIPAudioManager", "VoIP doShiftSpeaker useSpeakerMode: %s, getMode: %s", new Object[] { Integer.valueOf(((z.d)localObject).SYE), Integer.valueOf(this.audioManager.getMode()) });
+      if (((z.d)localObject).SYE != this.audioManager.getMode()) {
+        b(((z.d)localObject).SYE, (kotlin.g.a.a)new b(this, (z.d)localObject));
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoIPAudioManager", "voip doShiftSpeaker true isSpeakerphoneOn: %s", new Object[] { Boolean.valueOf(this.audioManager.isSpeakerphoneOn()) });
-      super.cn(true);
+      Log.i("MicroMsg.VoIPAudioManager", "voip doShiftSpeaker true isSpeakerphoneOn: %s", new Object[] { Boolean.valueOf(this.audioManager.isSpeakerphoneOn()) });
+      super.cV(true);
     }
     for (;;)
     {
-      AppMethodBeat.o(201067);
+      AppMethodBeat.o(223964);
       return paramBoolean1;
-      localObject = new y.d();
-      ((y.d)localObject).NiW = 3;
-      if ((com.tencent.mm.compatible.util.k.Xu()) && (2 == com.tencent.mm.compatible.deviceinfo.ae.geX.gbn)) {
-        ((y.d)localObject).NiW = 2;
+      localObject = new z.d();
+      ((z.d)localObject).SYE = 3;
+      if ((com.tencent.mm.compatible.util.k.alh()) && (2 == ae.gKE.gGF)) {
+        ((z.d)localObject).SYE = 2;
       }
-      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYO >= 0) {
-        ((y.d)localObject).NiW = com.tencent.mm.compatible.deviceinfo.ae.geN.fYO;
+      if (ae.gKu.gEf >= 0) {
+        ((z.d)localObject).SYE = ae.gKu.gEf;
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoIPAudioManager", "VoIP doShiftSpeaker usePhoneMode: %s getMode:%s", new Object[] { Integer.valueOf(((y.d)localObject).NiW), Integer.valueOf(this.audioManager.getMode()) });
-      if (((y.d)localObject).NiW != this.audioManager.getMode()) {
-        b(((y.d)localObject).NiW, (d.g.a.a)new c(this, (y.d)localObject));
+      Log.i("MicroMsg.VoIPAudioManager", "VoIP doShiftSpeaker usePhoneMode: %s getMode:%s", new Object[] { Integer.valueOf(((z.d)localObject).SYE), Integer.valueOf(this.audioManager.getMode()) });
+      if (((z.d)localObject).SYE != this.audioManager.getMode()) {
+        b(((z.d)localObject).SYE, (kotlin.g.a.a)new c(this, (z.d)localObject));
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoIPAudioManager", "VoIP doShiftSpeaker false isSpeakerphoneOn: %s", new Object[] { Boolean.valueOf(this.audioManager.isSpeakerphoneOn()) });
-      super.cn(false);
+      Log.i("MicroMsg.VoIPAudioManager", "VoIP doShiftSpeaker false isSpeakerphoneOn: %s", new Object[] { Boolean.valueOf(this.audioManager.isSpeakerphoneOn()) });
+      super.cV(false);
     }
   }
   
   public final boolean a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(201066);
+    AppMethodBeat.i(223963);
     int i = this.audioManager.getStreamMaxVolume(paramInt);
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.VoIPAudioManager", "maxVolume:".concat(String.valueOf(i)));
+    Log.d("MicroMsg.VoIPAudioManager", "maxVolume:".concat(String.valueOf(i)));
     i /= 3;
     int j = this.audioManager.getStreamVolume(paramInt);
     if (j < i) {
-      com.tencent.mm.compatible.b.a.b(this.audioManager, paramInt, i);
+      com.tencent.mm.compatible.b.a.a(this.audioManager, paramInt, i, 0);
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoIPAudioManager", "StreamType:" + paramInt + "  current:" + j);
-    paramBoolean1 = A(paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(201066);
+    Log.i("MicroMsg.VoIPAudioManager", "StreamType:" + paramInt + "  current:" + j);
+    paramBoolean1 = z(paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(223963);
     return paramBoolean1;
   }
   
-  public final boolean io(boolean paramBoolean)
+  public final boolean jp(boolean paramBoolean)
   {
-    AppMethodBeat.i(201065);
-    paramBoolean = A(paramBoolean, false);
-    AppMethodBeat.o(201065);
+    AppMethodBeat.i(223962);
+    paramBoolean = z(paramBoolean, false);
+    AppMethodBeat.o(223962);
     return paramBoolean;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    b(e parame, y.d paramd)
+    b(e parame, z.d paramd)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class c
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    c(e parame, y.d paramd)
+    c(e parame, z.d paramd)
     {
       super();
     }

@@ -1,15 +1,16 @@
 package com.bumptech.glide;
 
 import android.support.v4.e.l.a;
-import com.bumptech.glide.c.a.e.a;
-import com.bumptech.glide.c.b.s;
-import com.bumptech.glide.c.c.n;
-import com.bumptech.glide.c.c.o;
-import com.bumptech.glide.c.c.p;
-import com.bumptech.glide.c.k;
-import com.bumptech.glide.c.l;
-import com.bumptech.glide.e.b;
-import com.bumptech.glide.e.c;
+import com.bumptech.glide.d.b;
+import com.bumptech.glide.d.c;
+import com.bumptech.glide.load.ImageHeaderParser;
+import com.bumptech.glide.load.a.e.a;
+import com.bumptech.glide.load.b.t;
+import com.bumptech.glide.load.c.n;
+import com.bumptech.glide.load.c.o;
+import com.bumptech.glide.load.c.p;
+import com.bumptech.glide.load.j;
+import com.bumptech.glide.load.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,30 +21,32 @@ import java.util.List;
 public final class h
 {
   private final p aCR;
-  public final com.bumptech.glide.e.a aCS;
-  private final com.bumptech.glide.e.e aCT;
-  public final com.bumptech.glide.e.f aCU;
-  public final com.bumptech.glide.c.a.f aCV;
-  private final com.bumptech.glide.c.d.f.f aCW;
-  final b aCX;
-  private final com.bumptech.glide.e.d aCY;
+  public final com.bumptech.glide.d.a aCS;
+  private final com.bumptech.glide.d.e aCT;
+  public final com.bumptech.glide.d.f aCU;
+  public final com.bumptech.glide.load.a.f aCV;
+  private final com.bumptech.glide.load.d.f.f aCW;
+  private final b aCX;
+  private final com.bumptech.glide.d.d aCY;
   private final c aCZ;
   private final l.a<List<Throwable>> aDa;
   
   public h()
   {
     AppMethodBeat.i(76794);
-    this.aCY = new com.bumptech.glide.e.d();
+    this.aCY = new com.bumptech.glide.d.d();
     this.aCZ = new c();
-    this.aDa = com.bumptech.glide.h.a.a.qv();
+    this.aDa = com.bumptech.glide.g.a.a.qy();
     this.aCR = new p(this.aDa);
-    this.aCS = new com.bumptech.glide.e.a();
-    this.aCT = new com.bumptech.glide.e.e();
-    this.aCU = new com.bumptech.glide.e.f();
-    this.aCV = new com.bumptech.glide.c.a.f();
-    this.aCW = new com.bumptech.glide.c.d.f.f();
+    this.aCS = new com.bumptech.glide.d.a();
+    this.aCT = new com.bumptech.glide.d.e();
+    this.aCU = new com.bumptech.glide.d.f();
+    this.aCV = new com.bumptech.glide.load.a.f();
+    this.aCW = new com.bumptech.glide.load.d.f.f();
     this.aCX = new b();
-    ArrayList localArrayList = new ArrayList(Arrays.asList(new String[] { "Gif", "Bitmap", "BitmapDrawable" }));
+    List localList = Arrays.asList(new String[] { "Gif", "Bitmap", "BitmapDrawable" });
+    ArrayList localArrayList = new ArrayList(localList.size());
+    localArrayList.addAll(localList);
     localArrayList.add(0, "legacy_prepend_all");
     localArrayList.add("legacy_append");
     this.aCT.r(localArrayList);
@@ -53,67 +56,47 @@ public final class h
   public final <Model> List<n<Model, ?>> P(Model paramModel)
   {
     AppMethodBeat.i(76804);
-    List localList = this.aCR.P(paramModel);
-    if (localList.isEmpty())
+    List localList = this.aCR.s(paramModel.getClass());
+    int m = localList.size();
+    int i = 1;
+    Object localObject1 = Collections.emptyList();
+    int k = 0;
+    while (k < m)
+    {
+      n localn = (n)localList.get(k);
+      Object localObject2 = localObject1;
+      int j = i;
+      if (localn.X(paramModel))
+      {
+        j = i;
+        if (i != 0)
+        {
+          localObject1 = new ArrayList(m - k);
+          j = 0;
+        }
+        ((List)localObject1).add(localn);
+        localObject2 = localObject1;
+      }
+      k += 1;
+      localObject1 = localObject2;
+      i = j;
+    }
+    if (((List)localObject1).isEmpty())
     {
       paramModel = new c(paramModel);
       AppMethodBeat.o(76804);
       throw paramModel;
     }
     AppMethodBeat.o(76804);
-    return localList;
+    return localObject1;
   }
   
-  public final <Data, TResource, Transcode> s<Data, TResource, Transcode> a(Class<Data> paramClass, Class<TResource> paramClass1, Class<Transcode> paramClass2)
+  public final h a(ImageHeaderParser paramImageHeaderParser)
   {
-    AppMethodBeat.i(76802);
-    ??? = this.aCZ.c(paramClass, paramClass1, paramClass2);
-    if (c.a((s)???))
-    {
-      AppMethodBeat.o(76802);
-      return null;
-    }
-    Object localObject1 = ???;
-    Object localObject3;
-    if (??? == null)
-    {
-      localObject1 = new ArrayList();
-      ??? = this.aCT.h(paramClass, paramClass1).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject3 = (Class)((Iterator)???).next();
-        Iterator localIterator = this.aCW.d((Class)localObject3, paramClass2).iterator();
-        while (localIterator.hasNext())
-        {
-          Class localClass = (Class)localIterator.next();
-          ((List)localObject1).add(new com.bumptech.glide.c.b.h(paramClass, (Class)localObject3, localClass, this.aCT.g(paramClass, (Class)localObject3), this.aCW.c((Class)localObject3, localClass), this.aDa));
-        }
-      }
-      if (!((List)localObject1).isEmpty()) {
-        break label249;
-      }
-      localObject1 = null;
-    }
-    for (;;)
-    {
-      localObject3 = this.aCZ;
-      synchronized (((c)localObject3).aMX)
-      {
-        localObject3 = ((c)localObject3).aMX;
-        paramClass1 = new com.bumptech.glide.h.h(paramClass, paramClass1, paramClass2);
-        if (localObject1 != null)
-        {
-          paramClass = (Class<Data>)localObject1;
-          ((android.support.v4.e.a)localObject3).put(paramClass1, paramClass);
-          AppMethodBeat.o(76802);
-          return localObject1;
-          label249:
-          localObject1 = new s(paramClass, paramClass1, paramClass2, (List)localObject1, this.aDa);
-          continue;
-        }
-        paramClass = c.aMW;
-      }
-    }
+    AppMethodBeat.i(204442);
+    this.aCX.b(paramImageHeaderParser);
+    AppMethodBeat.o(204442);
+    return this;
   }
   
   public final h a(e.a<?> parama)
@@ -124,7 +107,7 @@ public final class h
     return this;
   }
   
-  public final <Data> h a(Class<Data> paramClass, com.bumptech.glide.c.d<Data> paramd)
+  public final <Data> h a(Class<Data> paramClass, com.bumptech.glide.load.d<Data> paramd)
   {
     AppMethodBeat.i(76795);
     this.aCS.b(paramClass, paramd);
@@ -132,10 +115,10 @@ public final class h
     return this;
   }
   
-  public final <TResource> h a(Class<TResource> paramClass, l<TResource> paraml)
+  public final <TResource> h a(Class<TResource> paramClass, k<TResource> paramk)
   {
     AppMethodBeat.i(76798);
-    this.aCU.b(paramClass, paraml);
+    this.aCU.b(paramClass, paramk);
     AppMethodBeat.o(76798);
     return this;
   }
@@ -148,7 +131,7 @@ public final class h
     return this;
   }
   
-  public final <TResource, Transcode> h a(Class<TResource> paramClass, Class<Transcode> paramClass1, com.bumptech.glide.c.d.f.e<TResource, Transcode> parame)
+  public final <TResource, Transcode> h a(Class<TResource> paramClass, Class<Transcode> paramClass1, com.bumptech.glide.load.d.f.e<TResource, Transcode> parame)
   {
     AppMethodBeat.i(76800);
     this.aCW.b(paramClass, paramClass1, parame);
@@ -156,59 +139,112 @@ public final class h
     return this;
   }
   
-  public final <Data, TResource> h a(Class<Data> paramClass, Class<TResource> paramClass1, k<Data, TResource> paramk)
+  public final <Data, TResource> h a(Class<Data> paramClass, Class<TResource> paramClass1, j<Data, TResource> paramj)
   {
     AppMethodBeat.i(76796);
-    a("legacy_append", paramClass, paramClass1, paramk);
+    a("legacy_append", paramClass, paramClass1, paramj);
     AppMethodBeat.o(76796);
     return this;
   }
   
-  public final <Data, TResource> h a(String paramString, Class<Data> paramClass, Class<TResource> paramClass1, k<Data, TResource> paramk)
+  public final <Data, TResource> h a(String paramString, Class<Data> paramClass, Class<TResource> paramClass1, j<Data, TResource> paramj)
   {
     AppMethodBeat.i(76797);
-    this.aCT.a(paramString, paramk, paramClass, paramClass1);
+    this.aCT.a(paramString, paramj, paramClass, paramClass1);
     AppMethodBeat.o(76797);
     return this;
   }
   
-  public final <Model, TResource, Transcode> List<Class<?>> b(Class<Model> paramClass, Class<TResource> paramClass1, Class<Transcode> arg3)
+  public final <Data, TResource, Transcode> t<Data, TResource, Transcode> a(Class<Data> paramClass, Class<TResource> paramClass1, Class<Transcode> paramClass2)
   {
-    AppMethodBeat.i(76803);
-    Object localObject2 = this.aCY.f(paramClass, paramClass1);
-    Object localObject1 = localObject2;
+    AppMethodBeat.i(76802);
+    ??? = this.aCZ.c(paramClass, paramClass1, paramClass2);
+    if (c.a((t)???))
+    {
+      AppMethodBeat.o(76802);
+      return null;
+    }
+    Object localObject1 = ???;
     Object localObject3;
-    if (localObject2 == null)
+    if (??? == null)
     {
       localObject1 = new ArrayList();
-      localObject2 = this.aCR.q(paramClass).iterator();
-      while (((Iterator)localObject2).hasNext())
+      ??? = this.aCT.g(paramClass, paramClass1).iterator();
+      while (((Iterator)???).hasNext())
       {
-        localObject3 = (Class)((Iterator)localObject2).next();
-        localObject3 = this.aCT.h((Class)localObject3, paramClass1).iterator();
+        localObject3 = (Class)((Iterator)???).next();
+        Iterator localIterator = this.aCW.d((Class)localObject3, paramClass2).iterator();
+        while (localIterator.hasNext())
+        {
+          Class localClass = (Class)localIterator.next();
+          ((List)localObject1).add(new com.bumptech.glide.load.b.i(paramClass, (Class)localObject3, localClass, this.aCT.f(paramClass, (Class)localObject3), this.aCW.c((Class)localObject3, localClass), this.aDa));
+        }
+      }
+      if (!((List)localObject1).isEmpty()) {
+        break label249;
+      }
+      localObject1 = null;
+    }
+    for (;;)
+    {
+      localObject3 = this.aCZ;
+      synchronized (((c)localObject3).aMO)
+      {
+        localObject3 = ((c)localObject3).aMO;
+        paramClass1 = new com.bumptech.glide.g.i(paramClass, paramClass1, paramClass2);
+        if (localObject1 != null)
+        {
+          paramClass = (Class<Data>)localObject1;
+          ((android.support.v4.e.a)localObject3).put(paramClass1, paramClass);
+          AppMethodBeat.o(76802);
+          return localObject1;
+          label249:
+          localObject1 = new t(paramClass, paramClass1, paramClass2, (List)localObject1, this.aDa);
+          continue;
+        }
+        paramClass = c.aMN;
+      }
+    }
+  }
+  
+  public final <Model, TResource, Transcode> List<Class<?>> b(Class<Model> paramClass, Class<TResource> paramClass1, Class<Transcode> paramClass2)
+  {
+    AppMethodBeat.i(76803);
+    ??? = this.aCY.d(paramClass, paramClass1, paramClass2);
+    Object localObject1 = ???;
+    Object localObject3;
+    Object localObject4;
+    if (??? == null)
+    {
+      localObject1 = new ArrayList();
+      ??? = this.aCR.r(paramClass).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject3 = (Class)((Iterator)???).next();
+        localObject3 = this.aCT.g((Class)localObject3, paramClass1).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          Class localClass = (Class)((Iterator)localObject3).next();
-          if ((!this.aCW.d(localClass, ???).isEmpty()) && (!((List)localObject1).contains(localClass))) {
-            ((List)localObject1).add(localClass);
+          localObject4 = (Class)((Iterator)localObject3).next();
+          if ((!this.aCW.d((Class)localObject4, paramClass2).isEmpty()) && (!((List)localObject1).contains(localObject4))) {
+            ((List)localObject1).add(localObject4);
           }
         }
       }
-      localObject2 = this.aCY;
-      localObject3 = Collections.unmodifiableList((List)localObject1);
+      localObject3 = this.aCY;
+      localObject4 = Collections.unmodifiableList((List)localObject1);
     }
-    synchronized (((com.bumptech.glide.e.d)localObject2).aNa)
+    synchronized (((com.bumptech.glide.d.d)localObject3).aMR)
     {
-      ((com.bumptech.glide.e.d)localObject2).aNa.put(new com.bumptech.glide.h.h(paramClass, paramClass1), localObject3);
+      ((com.bumptech.glide.d.d)localObject3).aMR.put(new com.bumptech.glide.g.i(paramClass, paramClass1, paramClass2), localObject4);
       AppMethodBeat.o(76803);
       return localObject1;
     }
   }
   
-  public final List<com.bumptech.glide.c.f> nL()
+  public final List<ImageHeaderParser> nO()
   {
     AppMethodBeat.i(76805);
-    Object localObject = this.aCX.pQ();
+    Object localObject = this.aCX.pV();
     if (((List)localObject).isEmpty())
     {
       localObject = new b();
@@ -279,7 +315,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.h
  * JD-Core Version:    0.7.0.1
  */

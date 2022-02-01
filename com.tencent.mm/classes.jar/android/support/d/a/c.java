@@ -30,12 +30,12 @@ public final class c
   extends h
   implements b
 {
-  ArrayList<Object> fw = null;
+  ArrayList<Object> fy = null;
   private Context mContext;
-  private a wP;
-  private ArgbEvaluator wQ = null;
-  private Animator.AnimatorListener wR = null;
-  final Drawable.Callback wS = new Drawable.Callback()
+  private a wW;
+  private ArgbEvaluator wX = null;
+  private Animator.AnimatorListener wY = null;
+  final Drawable.Callback wZ = new Drawable.Callback()
   {
     public final void invalidateDrawable(Drawable paramAnonymousDrawable)
     {
@@ -66,7 +66,7 @@ public final class c
   private c(Context paramContext, byte paramByte)
   {
     this.mContext = paramContext;
-    this.wP = new a();
+    this.wW = new a();
   }
   
   public static c a(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
@@ -98,88 +98,88 @@ public final class c
       localObject = paramAnimator.getPropertyName();
       if (("fillColor".equals(localObject)) || ("strokeColor".equals(localObject)))
       {
-        if (this.wQ == null) {
-          this.wQ = new ArgbEvaluator();
+        if (this.wX == null) {
+          this.wX = new ArgbEvaluator();
         }
-        paramAnimator.setEvaluator(this.wQ);
+        paramAnimator.setEvaluator(this.wX);
       }
     }
   }
   
   public final void applyTheme(Resources.Theme paramTheme)
   {
-    if (this.xd != null) {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramTheme);
+    if (this.xk != null) {
+      android.support.v4.graphics.drawable.a.a(this.xk, paramTheme);
     }
   }
   
   public final boolean canApplyTheme()
   {
-    if (this.xd != null) {
-      return android.support.v4.graphics.drawable.a.g(this.xd);
+    if (this.xk != null) {
+      return android.support.v4.graphics.drawable.a.g(this.xk);
     }
     return false;
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (this.xd != null) {
-      this.xd.draw(paramCanvas);
+    if (this.xk != null) {
+      this.xk.draw(paramCanvas);
     }
     do
     {
       return;
-      this.wP.wU.draw(paramCanvas);
-    } while (!this.wP.wV.isStarted());
+      this.wW.xb.draw(paramCanvas);
+    } while (!this.wW.xc.isStarted());
     invalidateSelf();
   }
   
   public final int getAlpha()
   {
-    if (this.xd != null) {
-      return android.support.v4.graphics.drawable.a.f(this.xd);
+    if (this.xk != null) {
+      return android.support.v4.graphics.drawable.a.f(this.xk);
     }
-    return this.wP.wU.getAlpha();
+    return this.wW.xb.getAlpha();
   }
   
   public final int getChangingConfigurations()
   {
-    if (this.xd != null) {
-      return this.xd.getChangingConfigurations();
+    if (this.xk != null) {
+      return this.xk.getChangingConfigurations();
     }
-    return super.getChangingConfigurations() | this.wP.mChangingConfigurations;
+    return super.getChangingConfigurations() | this.wW.mChangingConfigurations;
   }
   
   public final Drawable.ConstantState getConstantState()
   {
-    if ((this.xd != null) && (Build.VERSION.SDK_INT >= 24)) {
-      return new b(this.xd.getConstantState());
+    if ((this.xk != null) && (Build.VERSION.SDK_INT >= 24)) {
+      return new b(this.xk.getConstantState());
     }
     return null;
   }
   
   public final int getIntrinsicHeight()
   {
-    if (this.xd != null) {
-      return this.xd.getIntrinsicHeight();
+    if (this.xk != null) {
+      return this.xk.getIntrinsicHeight();
     }
-    return this.wP.wU.getIntrinsicHeight();
+    return this.wW.xb.getIntrinsicHeight();
   }
   
   public final int getIntrinsicWidth()
   {
-    if (this.xd != null) {
-      return this.xd.getIntrinsicWidth();
+    if (this.xk != null) {
+      return this.xk.getIntrinsicWidth();
     }
-    return this.wP.wU.getIntrinsicWidth();
+    return this.wW.xb.getIntrinsicWidth();
   }
   
   public final int getOpacity()
   {
-    if (this.xd != null) {
-      return this.xd.getOpacity();
+    if (this.xk != null) {
+      return this.xk.getOpacity();
     }
-    return this.wP.wU.getOpacity();
+    return this.wW.xb.getOpacity();
   }
   
   public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
@@ -189,9 +189,9 @@ public final class c
   
   public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
       return;
     }
     int i = paramXmlPullParser.getEventType();
@@ -204,17 +204,17 @@ public final class c
         if (!"animated-vector".equals(localObject1)) {
           break label182;
         }
-        localObject1 = g.a(paramResources, paramTheme, paramAttributeSet, a.wH);
+        localObject1 = g.a(paramResources, paramTheme, paramAttributeSet, a.wO);
         i = ((TypedArray)localObject1).getResourceId(0, 0);
         if (i != 0)
         {
           localObject2 = i.a(paramResources, i, paramTheme);
-          ((i)localObject2).xj = false;
-          ((i)localObject2).setCallback(this.wS);
-          if (this.wP.wU != null) {
-            this.wP.wU.setCallback(null);
+          ((i)localObject2).xq = false;
+          ((i)localObject2).setCallback(this.wZ);
+          if (this.wW.xb != null) {
+            this.wW.xb.setCallback(null);
           }
-          this.wP.wU = ((i)localObject2);
+          this.wW.xb = ((i)localObject2);
         }
         ((TypedArray)localObject1).recycle();
       }
@@ -224,7 +224,7 @@ public final class c
         i = paramXmlPullParser.next();
         break;
       }
-      Object localObject2 = paramResources.obtainAttributes(paramAttributeSet, a.wI);
+      Object localObject2 = paramResources.obtainAttributes(paramAttributeSet, a.wP);
       String str = ((TypedArray)localObject2).getString(0);
       i = ((TypedArray)localObject2).getResourceId(1, 0);
       if (i != 0)
@@ -240,17 +240,17 @@ public final class c
       label369:
       for (Object localObject1 = AnimatorInflater.loadAnimator((Context)localObject1, i);; localObject1 = e.a((Context)localObject1, ((Context)localObject1).getResources(), ((Context)localObject1).getTheme(), i))
       {
-        ((Animator)localObject1).setTarget(this.wP.wU.xf.yd.yc.get(str));
+        ((Animator)localObject1).setTarget(this.wW.xb.xm.yj.yi.get(str));
         if (Build.VERSION.SDK_INT < 21) {
           b((Animator)localObject1);
         }
-        if (this.wP.wW == null)
+        if (this.wW.xd == null)
         {
-          this.wP.wW = new ArrayList();
-          this.wP.wX = new android.support.v4.e.a();
+          this.wW.xd = new ArrayList();
+          this.wW.xe = new android.support.v4.e.a();
         }
-        this.wP.wW.add(localObject1);
-        this.wP.wX.put(localObject1, str);
+        this.wW.xd.add(localObject1);
+        this.wW.xe.put(localObject1, str);
         ((TypedArray)localObject2).recycle();
         break;
       }
@@ -258,170 +258,170 @@ public final class c
       ((TypedArray)localObject2).recycle();
       throw new IllegalStateException("Context can't be null when inflating animators");
     }
-    paramResources = this.wP;
-    if (paramResources.wV == null) {
-      paramResources.wV = new AnimatorSet();
+    paramResources = this.wW;
+    if (paramResources.xc == null) {
+      paramResources.xc = new AnimatorSet();
     }
-    paramResources.wV.playTogether(paramResources.wW);
+    paramResources.xc.playTogether(paramResources.xd);
   }
   
   public final boolean isAutoMirrored()
   {
-    if (this.xd != null) {
-      return android.support.v4.graphics.drawable.a.e(this.xd);
+    if (this.xk != null) {
+      return android.support.v4.graphics.drawable.a.e(this.xk);
     }
-    return this.wP.wU.isAutoMirrored();
+    return this.wW.xb.isAutoMirrored();
   }
   
   public final boolean isRunning()
   {
-    if (this.xd != null) {
-      return ((AnimatedVectorDrawable)this.xd).isRunning();
+    if (this.xk != null) {
+      return ((AnimatedVectorDrawable)this.xk).isRunning();
     }
-    return this.wP.wV.isRunning();
+    return this.wW.xc.isRunning();
   }
   
   public final boolean isStateful()
   {
-    if (this.xd != null) {
-      return this.xd.isStateful();
+    if (this.xk != null) {
+      return this.xk.isStateful();
     }
-    return this.wP.wU.isStateful();
+    return this.wW.xb.isStateful();
   }
   
   public final Drawable mutate()
   {
-    if (this.xd != null) {
-      this.xd.mutate();
+    if (this.xk != null) {
+      this.xk.mutate();
     }
     return this;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.setBounds(paramRect);
+      this.xk.setBounds(paramRect);
       return;
     }
-    this.wP.wU.setBounds(paramRect);
+    this.wW.xb.setBounds(paramRect);
   }
   
   protected final boolean onLevelChange(int paramInt)
   {
-    if (this.xd != null) {
-      return this.xd.setLevel(paramInt);
+    if (this.xk != null) {
+      return this.xk.setLevel(paramInt);
     }
-    return this.wP.wU.setLevel(paramInt);
+    return this.wW.xb.setLevel(paramInt);
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    if (this.xd != null) {
-      return this.xd.setState(paramArrayOfInt);
+    if (this.xk != null) {
+      return this.xk.setState(paramArrayOfInt);
     }
-    return this.wP.wU.setState(paramArrayOfInt);
+    return this.wW.xb.setState(paramArrayOfInt);
   }
   
   public final void setAlpha(int paramInt)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.setAlpha(paramInt);
+      this.xk.setAlpha(paramInt);
       return;
     }
-    this.wP.wU.setAlpha(paramInt);
+    this.wW.xb.setAlpha(paramInt);
   }
   
   public final void setAutoMirrored(boolean paramBoolean)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramBoolean);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramBoolean);
       return;
     }
-    this.wP.wU.setAutoMirrored(paramBoolean);
+    this.wW.xb.setAutoMirrored(paramBoolean);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.setColorFilter(paramColorFilter);
+      this.xk.setColorFilter(paramColorFilter);
       return;
     }
-    this.wP.wU.setColorFilter(paramColorFilter);
+    this.wW.xb.setColorFilter(paramColorFilter);
   }
   
   public final void setTint(int paramInt)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramInt);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramInt);
       return;
     }
-    this.wP.wU.setTint(paramInt);
+    this.wW.xb.setTint(paramInt);
   }
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramColorStateList);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramColorStateList);
       return;
     }
-    this.wP.wU.setTintList(paramColorStateList);
+    this.wW.xb.setTintList(paramColorStateList);
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramMode);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramMode);
       return;
     }
-    this.wP.wU.setTintMode(paramMode);
+    this.wW.xb.setTintMode(paramMode);
   }
   
   public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.xd != null) {
-      return this.xd.setVisible(paramBoolean1, paramBoolean2);
+    if (this.xk != null) {
+      return this.xk.setVisible(paramBoolean1, paramBoolean2);
     }
-    this.wP.wU.setVisible(paramBoolean1, paramBoolean2);
+    this.wW.xb.setVisible(paramBoolean1, paramBoolean2);
     return super.setVisible(paramBoolean1, paramBoolean2);
   }
   
   public final void start()
   {
-    if (this.xd != null) {
-      ((AnimatedVectorDrawable)this.xd).start();
+    if (this.xk != null) {
+      ((AnimatedVectorDrawable)this.xk).start();
     }
-    while (this.wP.wV.isStarted()) {
+    while (this.wW.xc.isStarted()) {
       return;
     }
-    this.wP.wV.start();
+    this.wW.xc.start();
     invalidateSelf();
   }
   
   public final void stop()
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      ((AnimatedVectorDrawable)this.xd).stop();
+      ((AnimatedVectorDrawable)this.xk).stop();
       return;
     }
-    this.wP.wV.end();
+    this.wW.xc.end();
   }
   
   static final class a
     extends Drawable.ConstantState
   {
     int mChangingConfigurations;
-    i wU;
-    AnimatorSet wV;
-    ArrayList<Animator> wW;
-    android.support.v4.e.a<Animator, String> wX;
+    i xb;
+    AnimatorSet xc;
+    ArrayList<Animator> xd;
+    android.support.v4.e.a<Animator, String> xe;
     
     public final int getChangingConfigurations()
     {
@@ -442,44 +442,44 @@ public final class c
   static final class b
     extends Drawable.ConstantState
   {
-    private final Drawable.ConstantState wY;
+    private final Drawable.ConstantState xf;
     
     public b(Drawable.ConstantState paramConstantState)
     {
-      this.wY = paramConstantState;
+      this.xf = paramConstantState;
     }
     
     public final boolean canApplyTheme()
     {
-      return this.wY.canApplyTheme();
+      return this.xf.canApplyTheme();
     }
     
     public final int getChangingConfigurations()
     {
-      return this.wY.getChangingConfigurations();
+      return this.xf.getChangingConfigurations();
     }
     
     public final Drawable newDrawable()
     {
       c localc = new c();
-      localc.xd = this.wY.newDrawable();
-      localc.xd.setCallback(localc.wS);
+      localc.xk = this.xf.newDrawable();
+      localc.xk.setCallback(localc.wZ);
       return localc;
     }
     
     public final Drawable newDrawable(Resources paramResources)
     {
       c localc = new c();
-      localc.xd = this.wY.newDrawable(paramResources);
-      localc.xd.setCallback(localc.wS);
+      localc.xk = this.xf.newDrawable(paramResources);
+      localc.xk.setCallback(localc.wZ);
       return localc;
     }
     
     public final Drawable newDrawable(Resources paramResources, Resources.Theme paramTheme)
     {
       c localc = new c();
-      localc.xd = this.wY.newDrawable(paramResources, paramTheme);
-      localc.xd.setCallback(localc.wS);
+      localc.xk = this.xf.newDrawable(paramResources, paramTheme);
+      localc.xk.setCallback(localc.wZ);
       return localc;
     }
   }

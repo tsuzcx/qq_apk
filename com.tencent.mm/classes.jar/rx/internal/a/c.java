@@ -5,20 +5,20 @@ import rx.e;
 
 public final class c<T>
 {
-  private static final c OuL;
-  private static final Object OuM;
-  private static final Object OuN;
+  private static final Object UkA;
+  private static final Object UkB;
+  private static final c Ukz;
   
   static
   {
     AppMethodBeat.i(90234);
-    OuL = new c();
-    OuM = new c.1();
-    OuN = new c.2();
+    Ukz = new c();
+    UkA = new c.1();
+    UkB = new c.2();
     AppMethodBeat.o(90234);
   }
   
-  public static Object N(Throwable paramThrowable)
+  public static Object P(Throwable paramThrowable)
   {
     AppMethodBeat.i(90232);
     paramThrowable = new c.a(paramThrowable);
@@ -29,15 +29,15 @@ public final class c<T>
   public static boolean a(e<? super T> parame, Object paramObject)
   {
     AppMethodBeat.i(90233);
-    if (paramObject == OuM)
+    if (paramObject == UkA)
     {
-      parame.gDo();
+      parame.hQw();
       AppMethodBeat.o(90233);
       return true;
     }
-    if (paramObject == OuN)
+    if (paramObject == UkB)
     {
-      parame.gC(null);
+      parame.gL(null);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -49,7 +49,7 @@ public final class c<T>
         AppMethodBeat.o(90233);
         return true;
       }
-      parame.gC(paramObject);
+      parame.gL(paramObject);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -58,21 +58,11 @@ public final class c<T>
     throw parame;
   }
   
-  public static <T> c<T> gDy()
-  {
-    return OuL;
-  }
-  
-  public static Object gDz()
-  {
-    return OuM;
-  }
-  
-  public static Object gE(T paramT)
+  public static Object gN(T paramT)
   {
     Object localObject = paramT;
     if (paramT == null) {
-      localObject = OuN;
+      localObject = UkB;
     }
     return localObject;
   }
@@ -80,10 +70,20 @@ public final class c<T>
   public static T getValue(Object paramObject)
   {
     Object localObject = paramObject;
-    if (paramObject == OuN) {
+    if (paramObject == UkB) {
       localObject = null;
     }
     return localObject;
+  }
+  
+  public static <T> c<T> hQG()
+  {
+    return Ukz;
+  }
+  
+  public static Object hQH()
+  {
+    return UkA;
   }
 }
 

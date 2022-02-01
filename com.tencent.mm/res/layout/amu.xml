@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/qp"
+<RelativeLayout android:id="@id/db3" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/k5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/dl6" android:background="@color/in" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ListView android:id="@id/dl5" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" style="@style/n3" />
-        </com.tencent.mm.ui.base.MMPullDownView>
-        <ScrollView android:id="@id/dl4" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:layout_width="@dimen/hc" android:layout_height="@dimen/hc" android:layout_marginTop="@dimen/h3" android:src="@raw/mass_send_icon" />
-                <TextView android:gravity="center" android:layout_marginLeft="@dimen/jd" android:layout_marginTop="@dimen/hd" android:layout_marginRight="@dimen/jd" android:text="@string/doe" android:lineSpacingExtra="4.0dip" style="@style/le" />
-                <Button android:id="@id/dlm" android:layout_marginLeft="@dimen/jd" android:layout_marginTop="@dimen/he" android:layout_marginRight="@dimen/jd" android:text="@string/do9" style="@style/o6" />
-            </LinearLayout>
-        </ScrollView>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/db2" android:background="@drawable/c1u" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="75.0dip">
+        <ImageView android:id="@id/db1" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/k5" android:layout_marginBottom="@dimen/hs" android:src="@raw/actionbar_particular_icon" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ae" android:id="@id/db5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/ac" android:ellipsize="end" android:id="@id/db4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:singleLine="true" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:gravity="center" android:id="@id/dll" android:background="@drawable/ajz" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/dlk" android:layout_margin="@dimen/jn" android:text="@string/do9" style="@style/o8" />
-    </LinearLayout>
-</LinearLayout>
+    <View android:id="@id/akq" android:background="@drawable/rc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ib" android:layout_marginRight="@dimen/ib" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/db2" android:layerType="software" />
+</RelativeLayout>

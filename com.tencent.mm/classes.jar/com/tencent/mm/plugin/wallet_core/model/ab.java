@@ -1,150 +1,144 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.yq;
-import com.tencent.mm.g.a.yq.a;
-import com.tencent.mm.g.a.yq.b;
+import com.tencent.mm.g.a.zv;
+import com.tencent.mm.g.a.zv.a;
+import com.tencent.mm.g.a.zv.b;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.wallet_core.c.ad;
 import com.tencent.mm.plugin.wallet_core.c.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class ab
-  extends c<yq>
-  implements f
+  extends IListener<zv>
+  implements i
 {
-  private yq DrX;
-  private n DrY;
-  private boolean dNY;
-  private boolean dNZ;
-  private boolean trs;
+  private zv Ibi;
+  private q Ibj;
+  private boolean efT;
+  private boolean efU;
+  private boolean wEZ;
   
   public ab()
   {
     AppMethodBeat.i(160877);
-    this.trs = false;
-    this.dNY = false;
-    this.dNZ = false;
-    this.__eventId = yq.class.getName().hashCode();
+    this.wEZ = false;
+    this.efT = false;
+    this.efU = false;
+    this.__eventId = zv.class.getName().hashCode();
     AppMethodBeat.o(160877);
   }
   
-  private static boolean Wg(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11) || (paramInt == 12) || (paramInt == 13) || (paramInt == 14) || (paramInt == 15) || (paramInt == 16) || (paramInt == 17) || (paramInt == 18) || (paramInt == 19) || (paramInt == 20) || (paramInt == 21) || (paramInt == 22) || (paramInt == 23);
-  }
-  
-  private void a(int paramInt, String paramString, n paramn)
+  private void a(int paramInt, String paramString, q paramq)
   {
     AppMethodBeat.i(70425);
-    g.ajj().b(385, this);
-    g.ajj().b(1518, this);
-    if ((!this.dNZ) && (this.dNY) && (this.trs))
+    g.azz().b(385, this);
+    g.azz().b(1518, this);
+    if ((!this.efU) && (this.efT) && (this.wEZ))
     {
-      ae.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, useCache and event end");
+      Log.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, useCache and event end");
       AppMethodBeat.o(70425);
       return;
     }
-    this.trs = true;
-    a(paramInt, paramString, paramn, true);
+    this.wEZ = true;
+    a(paramInt, paramString, paramq, true);
     AppMethodBeat.o(70425);
   }
   
-  private void a(int paramInt, String paramString, n paramn, boolean paramBoolean)
+  private void a(int paramInt, String paramString, q paramq, boolean paramBoolean)
   {
     AppMethodBeat.i(70426);
-    if (this.DrX != null)
+    if (this.Ibi != null)
     {
-      this.DrX.dNX.errCode = paramInt;
-      this.DrX.dNX.errMsg = paramString;
-      this.DrX.dNX.dOC = paramn;
-      this.DrX.dNX.dOa = t.eJf().eJH();
-      this.DrX.dNX.dOb = t.eJf().eKg();
-      this.DrX.dNX.dOc = t.eJf().eKi();
-      this.DrX.dNX.dOd = t.eJf().eJP().eJv();
-      this.DrX.dNX.dOe = t.eJf().eJO();
-      this.DrX.dNX.dOf = t.eJf().getTrueName();
-      this.DrX.dNX.dOg = t.eJf().eJI();
-      this.DrX.dNX.dOh = t.eJf().eJP().eJz();
-      this.DrX.dNX.dOi = "";
-      this.DrX.dNX.dOv = t.eJf().eKa();
-      if ((paramn != null) && ((paramn instanceof ad)))
+      this.Ibi.efS.errCode = paramInt;
+      this.Ibi.efS.errMsg = paramString;
+      this.Ibi.efS.egy = paramq;
+      this.Ibi.efS.efV = t.fQI().fRk();
+      this.Ibi.efS.efW = t.fQI().fRK();
+      this.Ibi.efS.efX = t.fQI().fRM();
+      this.Ibi.efS.efY = t.fQI().fRs().fQY();
+      this.Ibi.efS.efZ = t.fQI().fRr();
+      this.Ibi.efS.ega = t.fQI().getTrueName();
+      this.Ibi.efS.egb = t.fQI().fRl();
+      this.Ibi.efS.egc = t.fQI().fRs().fRc();
+      this.Ibi.efS.egd = "";
+      this.Ibi.efS.egr = t.fQI().fRD();
+      if ((paramq != null) && ((paramq instanceof ad)))
       {
-        this.DrX.dNX.dOi = ((ad)paramn).dOi;
-        this.DrX.dNX.dOj = ((ad)paramn).dOj;
-        this.DrX.dNX.dOk = ((ad)paramn).dOk;
-        this.DrX.dNX.dOl = ((ad)paramn).dOl;
-        this.DrX.dNX.dOm = ((ad)paramn).dOm;
-        this.DrX.dNX.scene = ((ad)paramn).scene;
-        this.DrX.dNX.dOn = ((ad)paramn).dOn;
-        this.DrX.dNX.dOo = ((ad)paramn).dOo;
-        this.DrX.dNX.dOp = ((ad)paramn).dOp;
-        this.DrX.dNX.dOq = ((ad)paramn).dOq;
-        this.DrX.dNX.dOr = ((ad)paramn).dOr;
-        this.DrX.dNX.dOs = ((ad)paramn).dOs;
-        this.DrX.dNX.subtitle = ((ad)paramn).subtitle;
-        this.DrX.dNX.title = ((ad)paramn).title;
-        this.DrX.dNX.dOt = ((ad)paramn).dOt;
-        this.DrX.dNX.dOu = ((ad)paramn).dOu;
-        this.DrX.dNX.dOA = ((ad)paramn).DgV;
+        this.Ibi.efS.egd = ((ad)paramq).egd;
+        this.Ibi.efS.ege = ((ad)paramq).ege;
+        this.Ibi.efS.egf = ((ad)paramq).egf;
+        this.Ibi.efS.egg = ((ad)paramq).egg;
+        this.Ibi.efS.egh = ((ad)paramq).egh;
+        this.Ibi.efS.scene = ((ad)paramq).scene;
+        this.Ibi.efS.egi = ((ad)paramq).egi;
+        this.Ibi.efS.egj = ((ad)paramq).egj;
+        this.Ibi.efS.egk = ((ad)paramq).egk;
+        this.Ibi.efS.egm = ((ad)paramq).egm;
+        this.Ibi.efS.egn = ((ad)paramq).egn;
+        this.Ibi.efS.ego = ((ad)paramq).ego;
+        this.Ibi.efS.subtitle = ((ad)paramq).subtitle;
+        this.Ibi.efS.title = ((ad)paramq).title;
+        this.Ibi.efS.egp = ((ad)paramq).egp;
+        this.Ibi.efS.egq = ((ad)paramq).egq;
+        this.Ibi.efS.egw = ((ad)paramq).HQo;
       }
-      paramString = this.DrX.dNX;
-      if (!t.eJf().eJW()) {
+      paramString = this.Ibi.efS;
+      if (!t.fQI().fRz()) {
         break label728;
       }
     }
     label728:
     for (paramInt = 1;; paramInt = 0)
     {
-      paramString.dOw = paramInt;
-      this.DrX.dNX.dOx = t.eJf().eJX();
-      this.DrX.dNX.dOy = t.eJf().eJY();
-      this.DrX.dNX.dOz = t.eJf().eJZ();
-      this.DrX.dNX.dOB = paramBoolean;
-      ae.d("MicroMsg.WalletGetUserInfoEventListener", "mUserInfo needBind : " + this.DrX.dNX.dOb + " hasNewTips : " + this.DrX.dNX.dOc + " swipeOn : " + this.DrX.dNX.dOd);
-      if (this.DrX.callback != null) {
-        this.DrX.callback.run();
+      paramString.egs = paramInt;
+      this.Ibi.efS.egt = t.fQI().fRA();
+      this.Ibi.efS.egu = t.fQI().fRB();
+      this.Ibi.efS.egv = t.fQI().fRC();
+      this.Ibi.efS.egx = paramBoolean;
+      Log.d("MicroMsg.WalletGetUserInfoEventListener", "mUserInfo needBind : " + this.Ibi.efS.efW + " hasNewTips : " + this.Ibi.efS.efX + " swipeOn : " + this.Ibi.efS.efY);
+      if (this.Ibi.callback != null) {
+        this.Ibi.callback.run();
       }
-      if (this.DrX.dNX.dNO != null) {
-        this.DrX.dNX.dNO.run();
+      if (this.Ibi.efS.efJ != null) {
+        this.Ibi.efS.efJ.run();
       }
-      if (this.trs) {
-        this.DrX = null;
+      if (this.wEZ) {
+        this.Ibi = null;
       }
       AppMethodBeat.o(70426);
       return;
     }
   }
   
-  private boolean a(yq paramyq)
+  private boolean a(zv paramzv)
   {
     AppMethodBeat.i(70422);
-    if (!(paramyq instanceof yq))
+    if (!(paramzv instanceof zv))
     {
-      ae.f("MicroMsg.WalletGetUserInfoEventListener", "mismatched event");
+      Log.f("MicroMsg.WalletGetUserInfoEventListener", "mismatched event");
       AppMethodBeat.o(70422);
       return false;
     }
-    this.trs = false;
-    this.DrX = paramyq;
-    this.dNY = paramyq.dNW.dNY;
-    this.dNZ = paramyq.dNW.dNZ;
-    ae.i("MicroMsg.WalletGetUserInfoEventListener", "mustNotifyAfterNetEnd: %s", new Object[] { Boolean.valueOf(this.dNZ) });
-    g.ajS();
-    g.ajQ().gDv.a(385, this);
-    g.ajS();
-    g.ajQ().gDv.a(1518, this);
-    if (t.eJf().eJM())
+    this.wEZ = false;
+    this.Ibi = paramzv;
+    this.efT = paramzv.efR.efT;
+    this.efU = paramzv.efR.efU;
+    Log.i("MicroMsg.WalletGetUserInfoEventListener", "mustNotifyAfterNetEnd: %s", new Object[] { Boolean.valueOf(this.efU) });
+    g.aAi();
+    g.aAg().hqi.a(385, this);
+    g.aAi();
+    g.aAg().hqi.a(1518, this);
+    if (t.fQI().fRp())
     {
-      ae.i("MicroMsg.WalletGetUserInfoEventListener", "data is invalid. doScene");
-      b(paramyq);
+      Log.i("MicroMsg.WalletGetUserInfoEventListener", "data is invalid. doScene");
+      b(paramzv);
     }
     for (;;)
     {
@@ -153,111 +147,116 @@ public final class ab
       an localan;
       long l;
       int i;
-      if (paramyq.dNW.dNY)
+      if (paramzv.efR.efT)
       {
-        ae.i("MicroMsg.WalletGetUserInfoEventListener", "use cache");
-        localan = t.eJf();
-        l = bu.aRi();
-        ae.i("MicroMsg.WalletUserInfoManger", "checkCacheTimeout, nowSecs: %s, cacheDeadTime: %s", new Object[] { Long.valueOf(l), Long.valueOf(localan.DsH) });
-        if ((localan.DsH <= 0L) || (l > localan.DsH)) {}
+        Log.i("MicroMsg.WalletGetUserInfoEventListener", "use cache");
+        localan = t.fQI();
+        l = Util.nowSecond();
+        Log.i("MicroMsg.WalletUserInfoManger", "checkCacheTimeout, nowSecs: %s, cacheDeadTime: %s", new Object[] { Long.valueOf(l), Long.valueOf(localan.IbT) });
+        if ((localan.IbT <= 0L) || (l > localan.IbT)) {}
         for (i = 1;; i = 0)
         {
           if (i != 0) {
             break label273;
           }
-          if (!this.dNZ) {
-            this.trs = true;
+          if (!this.efU) {
+            this.wEZ = true;
           }
-          ae.i("MicroMsg.WalletGetUserInfoEventListener", "cache data is ok. doCallback");
+          Log.i("MicroMsg.WalletGetUserInfoEventListener", "cache data is ok. doCallback");
           a(0, "", null, false);
-          b(paramyq);
+          b(paramzv);
           break;
         }
         label273:
-        ae.i("MicroMsg.WalletGetUserInfoEventListener", "cache timeout, do NetSceneTenpayQueryBoundBankcard");
-        b(paramyq);
+        Log.i("MicroMsg.WalletGetUserInfoEventListener", "cache timeout, do NetSceneTenpayQueryBoundBankcard");
+        b(paramzv);
       }
       else
       {
-        localan = t.eJf();
-        l = bu.rZ(localan.DsG);
-        ae.i("MicroMsg.WalletUserInfoManger", "dead time : %d, nowSec: %d, pass time ".concat(String.valueOf(l)), new Object[] { Long.valueOf(localan.DsG), Long.valueOf(System.currentTimeMillis() / 1000L) });
+        localan = t.fQI();
+        l = Util.secondsToNow(localan.IbS);
+        Log.i("MicroMsg.WalletUserInfoManger", "dead time : %d, nowSec: %d, pass time ".concat(String.valueOf(l)), new Object[] { Long.valueOf(localan.IbS), Long.valueOf(System.currentTimeMillis() / 1000L) });
         if (l > 0L) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
             break label380;
           }
-          ae.i("MicroMsg.WalletGetUserInfoEventListener", "data is checkTimeOut, do NetSceneTenpayQueryBoundBankcard");
-          b(paramyq);
+          Log.i("MicroMsg.WalletGetUserInfoEventListener", "data is checkTimeOut, do NetSceneTenpayQueryBoundBankcard");
+          b(paramzv);
           break;
         }
         label380:
-        this.trs = true;
-        ae.i("MicroMsg.WalletGetUserInfoEventListener", "data is ok. doCallback");
+        this.wEZ = true;
+        Log.i("MicroMsg.WalletGetUserInfoEventListener", "data is ok. doCallback");
         a(0, "", null, false);
       }
     }
   }
   
-  private void b(yq paramyq)
+  private static boolean aeK(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11) || (paramInt == 12) || (paramInt == 13) || (paramInt == 14) || (paramInt == 15) || (paramInt == 16) || (paramInt == 17) || (paramInt == 18) || (paramInt == 19) || (paramInt == 20) || (paramInt == 21) || (paramInt == 22) || (paramInt == 23);
+  }
+  
+  private void b(zv paramzv)
   {
     AppMethodBeat.i(70423);
-    if (v.aAR())
+    if (z.aUo())
     {
-      this.DrY = new a();
-      g.ajj().a(this.DrY, 0);
+      this.Ibj = new a();
+      g.azz().a(this.Ibj, 0);
       AppMethodBeat.o(70423);
       return;
     }
-    if (Wg(paramyq.dNW.scene)) {}
-    for (int i = paramyq.dNW.scene;; i = 0)
+    if (aeK(paramzv.efR.scene)) {}
+    for (int i = paramzv.efR.scene;; i = 0)
     {
-      this.DrY = new ad(null, i);
-      g.ajj().a(this.DrY, 0);
+      this.Ibj = new ad(null, i);
+      g.azz().a(this.Ibj, 0);
       AppMethodBeat.o(70423);
       return;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(70424);
-    if ((this.DrX == null) || (this.DrX.dNW == null))
+    if ((this.Ibi == null) || (this.Ibi.efR == null))
     {
       AppMethodBeat.o(70424);
       return;
     }
-    ae.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, errType: %s, errCode: %s, scene: %s, retry: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn, Integer.valueOf(this.DrX.dNW.retryCount) });
-    if (paramn != this.DrY)
+    Log.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, errType: %s, errCode: %s, scene: %s, retry: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramq, Integer.valueOf(this.Ibi.efR.retryCount) });
+    if (paramq != this.Ibj)
     {
       AppMethodBeat.o(70424);
       return;
     }
-    if (((paramn instanceof ad)) || ((paramn instanceof a)))
+    if (((paramq instanceof ad)) || ((paramq instanceof a)))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        a(paramInt2, paramString, paramn);
+        a(paramInt2, paramString, paramq);
         AppMethodBeat.o(70424);
         return;
       }
-      if (this.DrX.dNW.retryCount == 0)
+      if (this.Ibi.efR.retryCount == 0)
       {
-        a(paramInt2, paramString, paramn);
+        a(paramInt2, paramString, paramq);
         AppMethodBeat.o(70424);
         return;
       }
-      paramString = this.DrX.dNW;
+      paramString = this.Ibi.efR;
       paramString.retryCount -= 1;
-      b(this.DrX);
+      b(this.Ibi);
     }
     AppMethodBeat.o(70424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ab
  * JD-Core Version:    0.7.0.1
  */

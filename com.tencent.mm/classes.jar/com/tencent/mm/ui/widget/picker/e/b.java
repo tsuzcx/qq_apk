@@ -10,32 +10,32 @@ import com.tencent.mm.ui.widget.picker.WheelView.a;
 public final class b
   extends Handler
 {
-  private final WheelView LyN;
+  private final WheelView QUD;
   
   public b(WheelView paramWheelView)
   {
-    this.LyN = paramWheelView;
+    this.QUD = paramWheelView;
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(200565);
+    AppMethodBeat.i(198523);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(200565);
+      AppMethodBeat.o(198523);
       return;
-      this.LyN.invalidate();
-      AppMethodBeat.o(200565);
+      this.QUD.invalidate();
+      AppMethodBeat.o(198523);
       return;
-      this.LyN.a(WheelView.a.Lyf);
-      AppMethodBeat.o(200565);
+      this.QUD.a(WheelView.a.QTV);
+      AppMethodBeat.o(198523);
       return;
-      paramMessage = this.LyN;
-      paramMessage.fRl();
-      if (paramMessage.Lya != null) {
+      paramMessage = this.QUD;
+      paramMessage.hcn();
+      if (paramMessage.QTP != null) {
         paramMessage.postDelayed(new WheelView.1(paramMessage), 200L);
       }
     }
@@ -43,7 +43,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.e.b
  * JD-Core Version:    0.7.0.1
  */

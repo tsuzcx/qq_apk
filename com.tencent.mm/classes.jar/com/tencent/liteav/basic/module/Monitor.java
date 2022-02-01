@@ -11,6 +11,13 @@ public class Monitor
     AppMethodBeat.o(14413);
   }
   
+  public static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(222035);
+    nativeOnlineLogWithLimit(paramInt1, paramInt2, paramString1, paramString2, paramInt3, paramInt4);
+    AppMethodBeat.o(222035);
+  }
+  
   public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     AppMethodBeat.i(14412);
@@ -29,11 +36,13 @@ public class Monitor
   
   private static native void nativeOnlineLog(int paramInt1, String paramString1, String paramString2, int paramInt2);
   
+  private static native void nativeOnlineLogWithLimit(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4);
+  
   private static native void nativeUnInit();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.module.Monitor
  * JD-Core Version:    0.7.0.1
  */

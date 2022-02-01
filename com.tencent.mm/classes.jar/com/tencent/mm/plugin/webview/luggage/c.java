@@ -12,7 +12,7 @@ public final class c
     super(paramContext);
   }
   
-  public final void ug(int paramInt)
+  public final void yf(int paramInt)
   {
     AppMethodBeat.i(78193);
     if (paramInt == 0)
@@ -20,7 +20,7 @@ public final class c
       AppMethodBeat.o(78193);
       return;
     }
-    super.ug(paramInt);
+    super.yf(paramInt);
     AppMethodBeat.o(78193);
   }
 }

@@ -6,76 +6,79 @@ import java.util.LinkedList;
 public final class dcf
   extends com.tencent.mm.bw.a
 {
-  public LinkedList<dce> HKH;
+  public String MHa;
+  public LinkedList<String> MHb;
   
   public dcf()
   {
-    AppMethodBeat.i(177413);
-    this.HKH = new LinkedList();
-    AppMethodBeat.o(177413);
+    AppMethodBeat.i(209780);
+    this.MHb = new LinkedList();
+    AppMethodBeat.o(209780);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(177414);
+    AppMethodBeat.i(209781);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.HKH);
-      AppMethodBeat.o(177414);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.MHa != null) {
+        paramVarArgs.e(1, this.MHa);
+      }
+      paramVarArgs.e(2, 1, this.MHb);
+      AppMethodBeat.o(209781);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.a.c(1, 8, this.HKH);
-      AppMethodBeat.o(177414);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.MHa == null) {
+        break label274;
+      }
     }
-    if (paramInt == 2)
+    label274:
+    for (paramInt = g.a.a.b.b.a.f(1, this.MHa) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.HKH.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+      int i = g.a.a.a.c(2, 1, this.MHb);
+      AppMethodBeat.o(209781);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.MHb.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
         }
+        AppMethodBeat.o(209781);
+        return 0;
       }
-      AppMethodBeat.o(177414);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      dcf localdcf = (dcf)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(177414);
-        return -1;
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        dcf localdcf = (dcf)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(209781);
+          return -1;
+        case 1: 
+          localdcf.MHa = locala.UbS.readString();
+          AppMethodBeat.o(209781);
+          return 0;
+        }
+        localdcf.MHb.add(locala.UbS.readString());
+        AppMethodBeat.o(209781);
+        return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new dce();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((dce)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localdcf.HKH.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(177414);
-      return 0;
+      AppMethodBeat.o(209781);
+      return -1;
     }
-    AppMethodBeat.o(177414);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dcf
  * JD-Core Version:    0.7.0.1
  */

@@ -76,7 +76,7 @@ public class k
       }
       paramString = new StringWriter();
       paramObject.printStackTrace(new PrintWriter(paramString));
-      new StringBuilder("invokeInstance -- exceptions:").append(paramString.toString());
+      TbsLog.i("ReflectionUtils", "invokeInstance -- exceptions:" + paramString.toString());
       AppMethodBeat.o(54034);
     }
   }
@@ -126,7 +126,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.utils.k
  * JD-Core Version:    0.7.0.1
  */

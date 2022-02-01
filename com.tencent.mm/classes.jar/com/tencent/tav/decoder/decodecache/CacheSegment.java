@@ -17,28 +17,28 @@ class CacheSegment
   
   CacheSegment(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(215043);
+    AppMethodBeat.i(218394);
     this.segmentTimeRange = null;
     this.cacheFrameList = new ArrayList();
     this.segmentTimeRange = paramCMTimeRange;
-    AppMethodBeat.o(215043);
+    AppMethodBeat.o(218394);
   }
   
   private boolean isCacheFrameUsable(CacheFrame paramCacheFrame)
   {
-    AppMethodBeat.i(215045);
+    AppMethodBeat.i(218396);
     if ((paramCacheFrame.sampleBuffer != null) && (paramCacheFrame.sampleBuffer.getTextureInfo() != null))
     {
-      AppMethodBeat.o(215045);
+      AppMethodBeat.o(218396);
       return true;
     }
-    AppMethodBeat.o(215045);
+    AppMethodBeat.o(218396);
     return false;
   }
   
   public void clear()
   {
-    AppMethodBeat.i(215047);
+    AppMethodBeat.i(218398);
     Iterator localIterator = this.cacheFrameList.iterator();
     while (localIterator.hasNext())
     {
@@ -50,33 +50,33 @@ class CacheSegment
       }
     }
     this.cacheFrameList.clear();
-    AppMethodBeat.o(215047);
+    AppMethodBeat.o(218398);
   }
   
   CMTime getLastFrameTime()
   {
-    AppMethodBeat.i(215048);
+    AppMethodBeat.i(218399);
     if (this.cacheFrameList.size() > 0)
     {
       localCMTime = ((CacheFrame)this.cacheFrameList.get(this.cacheFrameList.size() - 1)).frameTime;
-      AppMethodBeat.o(215048);
+      AppMethodBeat.o(218399);
       return localCMTime;
     }
     CMTime localCMTime = this.segmentTimeRange.getEnd();
-    AppMethodBeat.o(215048);
+    AppMethodBeat.o(218399);
     return localCMTime;
   }
   
   CacheFrame popFrame(CMTime paramCMTime)
   {
-    AppMethodBeat.i(215044);
+    AppMethodBeat.i(218395);
     if (this.cacheFrameList.size() > 0)
     {
       CacheFrame localCacheFrame = (CacheFrame)this.cacheFrameList.get(0);
       if (!localCacheFrame.frameTime.smallThan(paramCMTime))
       {
         paramCMTime = (CacheFrame)this.cacheFrameList.get(0);
-        AppMethodBeat.o(215044);
+        AppMethodBeat.o(218395);
         return paramCMTime;
       }
       if (isCacheFrameUsable(localCacheFrame))
@@ -95,31 +95,31 @@ class CacheSegment
         localCacheFrame.texturePool.pushTexture(localCacheFrame.sampleBuffer.getTextureInfo());
       }
     }
-    AppMethodBeat.o(215044);
+    AppMethodBeat.o(218395);
     return null;
   }
   
   void pushFrame(CacheFrame paramCacheFrame)
   {
-    AppMethodBeat.i(215046);
+    AppMethodBeat.i(218397);
     int i = 0;
     while (i < this.cacheFrameList.size())
     {
       if (((CacheFrame)this.cacheFrameList.get(i)).frameTime.bigThan(paramCacheFrame.frameTime))
       {
         this.cacheFrameList.add(i, paramCacheFrame);
-        AppMethodBeat.o(215046);
+        AppMethodBeat.o(218397);
         return;
       }
       i += 1;
     }
     this.cacheFrameList.add(paramCacheFrame);
-    AppMethodBeat.o(215046);
+    AppMethodBeat.o(218397);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.CacheSegment
  * JD-Core Version:    0.7.0.1
  */

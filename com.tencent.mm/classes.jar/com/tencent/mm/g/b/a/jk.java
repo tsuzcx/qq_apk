@@ -6,47 +6,67 @@ import com.tencent.mm.plugin.report.a;
 public final class jk
   extends a
 {
-  public String dTT = "";
-  public long eBP = 0L;
-  public long ejD = 0L;
-  private String ejP = "";
+  private long eRp;
+  private long eRq = 0L;
+  private long eRr = 0L;
+  private String eRs = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(116494);
+    AppMethodBeat.i(118496);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTT);
+    ((StringBuffer)localObject).append(this.eRp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejP);
+    ((StringBuffer)localObject).append(this.eRq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eBP);
+    ((StringBuffer)localObject).append(this.eRr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejD);
+    ((StringBuffer)localObject).append(this.eRs);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(116494);
+    aMq((String)localObject);
+    AppMethodBeat.o(118496);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(116495);
+    AppMethodBeat.i(118497);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("appid:").append(this.dTT);
+    ((StringBuffer)localObject).append("Storyid:").append(this.eRp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("query:").append(this.ejP);
+    ((StringBuffer)localObject).append("BrowseFriendsCount:").append(this.eRq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("timecost:").append(this.eBP);
+    ((StringBuffer)localObject).append("CommentFriendsCount:").append(this.eRr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("hasInitData:").append(this.ejD);
+    ((StringBuffer)localObject).append("StoryidStr:").append(this.eRs);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(116495);
+    AppMethodBeat.o(118497);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15831;
+    return 18744;
+  }
+  
+  public final jk se(long paramLong)
+  {
+    this.eRq = paramLong;
+    return this;
+  }
+  
+  public final jk sf(long paramLong)
+  {
+    this.eRr = paramLong;
+    return this;
+  }
+  
+  public final jk wQ(String paramString)
+  {
+    AppMethodBeat.i(118495);
+    this.eRs = x("StoryidStr", paramString, true);
+    AppMethodBeat.o(118495);
+    return this;
   }
 }
 

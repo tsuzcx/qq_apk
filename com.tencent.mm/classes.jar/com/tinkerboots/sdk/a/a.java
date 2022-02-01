@@ -11,37 +11,37 @@ import com.tinkerboots.sdk.b.c;
 
 public final class a
 {
-  private static volatile a MXw;
-  public b MXv;
-  public final com.tinkerboots.sdk.a.b.a MXx;
-  public boolean cFS;
-  public long kax;
+  private static volatile a SKE;
+  public b SKD;
+  public final com.tinkerboots.sdk.a.b.a SKF;
+  public boolean cWq;
+  public long ldB;
   
   private a(b paramb)
   {
     AppMethodBeat.i(3432);
-    this.kax = 10800000L;
-    this.MXx = com.tinkerboots.sdk.a.b.a.giA();
-    this.MXv = paramb;
+    this.ldB = 10800000L;
+    this.SKF = com.tinkerboots.sdk.a.b.a.hwa();
+    this.SKD = paramb;
     AppMethodBeat.o(3432);
   }
   
   public static a a(b paramb)
   {
     AppMethodBeat.i(3433);
-    if (MXw != null)
+    if (SKE != null)
     {
       paramb = new RuntimeException("tinker server client is already init");
       AppMethodBeat.o(3433);
       throw paramb;
     }
-    if (MXw == null) {}
+    if (SKE == null) {}
     try
     {
-      if (MXw == null) {
-        MXw = new a(paramb);
+      if (SKE == null) {
+        SKE = new a(paramb);
       }
-      paramb = MXw;
+      paramb = SKE;
       AppMethodBeat.o(3433);
       return paramb;
     }
@@ -51,7 +51,7 @@ public final class a
     }
   }
   
-  private static boolean giz()
+  private static boolean hvZ()
   {
     AppMethodBeat.i(3436);
     ShareTinkerLog.v("Tinker.ServerClient", "Warning, disableFetchPatchUpdate", new Object[0]);
@@ -60,12 +60,12 @@ public final class a
     return bool;
   }
   
-  public final void ajD(int paramInt)
+  public final void atl(int paramInt)
   {
     AppMethodBeat.i(3435);
     if (paramInt == -1L)
     {
-      giz();
+      hvZ();
       AppMethodBeat.o(3435);
       return;
     }
@@ -75,20 +75,20 @@ public final class a
       AppMethodBeat.o(3435);
       throw localTinkerRuntimeException;
     }
-    this.kax = (paramInt * 3600L * 1000L);
+    this.ldB = (paramInt * 3600L * 1000L);
     AppMethodBeat.o(3435);
   }
   
-  public final void nt(String paramString1, String paramString2)
+  public final void om(String paramString1, String paramString2)
   {
     AppMethodBeat.i(3434);
-    this.MXx.nu(paramString1, paramString2);
+    this.SKF.on(paramString1, paramString2);
     AppMethodBeat.o(3434);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tinkerboots.sdk.a.a
  * JD-Core Version:    0.7.0.1
  */

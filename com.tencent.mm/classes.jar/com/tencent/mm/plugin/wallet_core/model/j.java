@@ -8,12 +8,12 @@ import org.json.JSONObject;
 
 public final class j
 {
-  public String Dow;
-  public List<j.a> Dox;
+  public String HXO;
+  public List<j.a> HXP;
   public String content;
   public String title;
   
-  public static j bh(JSONObject paramJSONObject)
+  public static j bH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70282);
     if (paramJSONObject == null)
@@ -24,17 +24,17 @@ public final class j
     j localj = new j();
     localj.title = paramJSONObject.optString("title");
     localj.content = paramJSONObject.optString("content");
-    localj.Dow = paramJSONObject.optString("content_not_enough");
-    localj.Dox = new ArrayList();
+    localj.HXO = paramJSONObject.optString("content_not_enough");
+    localj.HXP = new ArrayList();
     paramJSONObject = paramJSONObject.optJSONArray("show_infos");
     if (paramJSONObject != null)
     {
       int i = 0;
       while (i < paramJSONObject.length())
       {
-        j.a locala = j.a.bi(paramJSONObject.optJSONObject(i));
+        j.a locala = j.a.bI(paramJSONObject.optJSONObject(i));
         if (locala != null) {
-          localj.Dox.add(locala);
+          localj.HXP.add(locala);
         }
         i += 1;
       }
@@ -45,7 +45,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.j
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,7 @@ public class f
   
   static
   {
-    AppMethodBeat.i(221372);
+    AppMethodBeat.i(222110);
     b = true;
     c = "";
     a = 0L;
@@ -52,16 +52,16 @@ public class f
     {
       public final b b()
       {
-        AppMethodBeat.i(221384);
+        AppMethodBeat.i(222126);
         b localb = new b();
-        AppMethodBeat.o(221384);
+        AppMethodBeat.o(222126);
         return localb;
       }
     });
     h = new Object();
     i = false;
     j = new int[] { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
-    AppMethodBeat.o(221372);
+    AppMethodBeat.o(222110);
   }
   
   public static int a(int paramInt)
@@ -80,7 +80,7 @@ public class f
   @TargetApi(16)
   public static MediaFormat a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(221368);
+    AppMethodBeat.i(222106);
     int k = a(paramInt1);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(2);
     localByteBuffer.put(0, (byte)(paramInt3 << 3 | k >> 1));
@@ -89,14 +89,14 @@ public class f
     localMediaFormat.setInteger("channel-count", paramInt2);
     localMediaFormat.setInteger("sample-rate", paramInt1);
     localMediaFormat.setByteBuffer("csd-0", localByteBuffer);
-    AppMethodBeat.o(221368);
+    AppMethodBeat.o(222106);
     return localMediaFormat;
   }
   
   @TargetApi(16)
   public static MediaFormat a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221371);
+    AppMethodBeat.i(222109);
     MediaFormat localMediaFormat = MediaFormat.createVideoFormat("video/avc", paramInt1, paramInt2);
     paramInt1 = 0;
     int i3 = 0;
@@ -158,7 +158,7 @@ public class f
           if ((i1 == 0) || (k == 0)) {
             break;
           }
-          AppMethodBeat.o(221371);
+          AppMethodBeat.o(222109);
           return localMediaFormat;
           i1 = paramInt2;
           if (i2 == 8)
@@ -172,16 +172,16 @@ public class f
         if ((paramInt2 != 0) && (paramInt1 == 8))
         {
           a("csd-1", localMediaFormat, paramArrayOfByte, m, i3);
-          AppMethodBeat.o(221371);
+          AppMethodBeat.o(222109);
           return localMediaFormat;
         }
         if ((k != 0) && (paramInt1 == 7))
         {
           a("csd-0", localMediaFormat, paramArrayOfByte, m, i3);
-          AppMethodBeat.o(221371);
+          AppMethodBeat.o(222109);
           return localMediaFormat;
         }
-        AppMethodBeat.o(221371);
+        AppMethodBeat.o(222109);
         return null;
         n = paramInt2;
         i3 = paramInt1;
@@ -191,10 +191,10 @@ public class f
     }
   }
   
-  public static com.tencent.liteav.basic.d.a a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static com.tencent.liteav.basic.c.a a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int k = 0;
-    AppMethodBeat.i(221364);
+    AppMethodBeat.i(222102);
     if (paramInt1 * paramInt4 >= paramInt2 * paramInt3)
     {
       paramInt3 = paramInt2 * paramInt3 / paramInt4;
@@ -209,8 +209,8 @@ public class f
       if (paramInt2 > paramInt4) {
         k = paramInt2 - paramInt4 >> 1;
       }
-      com.tencent.liteav.basic.d.a locala = new com.tencent.liteav.basic.d.a(paramInt1, k, paramInt3, paramInt4);
-      AppMethodBeat.o(221364);
+      com.tencent.liteav.basic.c.a locala = new com.tencent.liteav.basic.c.a(paramInt1, k, paramInt3, paramInt4);
+      AppMethodBeat.o(222102);
       return locala;
       paramInt4 = paramInt1 * paramInt4 / paramInt3;
       paramInt3 = paramInt1;
@@ -220,32 +220,32 @@ public class f
   
   private static void a(String paramString, MediaFormat paramMediaFormat, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221370);
+    AppMethodBeat.i(222108);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 - paramInt1);
     localByteBuffer.put(paramArrayOfByte, paramInt1, paramInt2 - paramInt1);
     localByteBuffer.position(0);
     paramMediaFormat.setByteBuffer(paramString, localByteBuffer);
-    AppMethodBeat.o(221370);
+    AppMethodBeat.o(222108);
   }
   
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, int paramInt, Bundle paramBundle)
+  public static void a(WeakReference<com.tencent.liteav.basic.b.b> paramWeakReference, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(221362);
+    AppMethodBeat.i(222100);
     if (paramWeakReference == null)
     {
-      AppMethodBeat.o(221362);
+      AppMethodBeat.o(222100);
       return;
     }
-    paramWeakReference = (com.tencent.liteav.basic.c.a)paramWeakReference.get();
+    paramWeakReference = (com.tencent.liteav.basic.b.b)paramWeakReference.get();
     if (paramWeakReference != null) {
       paramWeakReference.onNotifyEvent(paramInt, paramBundle);
     }
-    AppMethodBeat.o(221362);
+    AppMethodBeat.o(222100);
   }
   
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, int paramInt, String paramString)
+  public static void a(WeakReference<com.tencent.liteav.basic.b.b> paramWeakReference, int paramInt, String paramString)
   {
-    AppMethodBeat.i(221361);
+    AppMethodBeat.i(222099);
     Bundle localBundle = new Bundle();
     localBundle.putInt("EVT_ID", paramInt);
     localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
@@ -253,29 +253,29 @@ public class f
       localBundle.putCharSequence("EVT_MSG", paramString);
     }
     a(paramWeakReference, paramInt, localBundle);
-    AppMethodBeat.o(221361);
+    AppMethodBeat.o(222099);
   }
   
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, String paramString, int paramInt, Bundle paramBundle)
+  public static void a(WeakReference<com.tencent.liteav.basic.b.b> paramWeakReference, String paramString, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(221363);
+    AppMethodBeat.i(222101);
     if (paramWeakReference == null)
     {
-      AppMethodBeat.o(221363);
+      AppMethodBeat.o(222101);
       return;
     }
-    paramWeakReference = (com.tencent.liteav.basic.c.a)paramWeakReference.get();
+    paramWeakReference = (com.tencent.liteav.basic.b.b)paramWeakReference.get();
     if (paramWeakReference != null)
     {
       paramBundle.putString("EVT_USERID", paramString);
       paramWeakReference.onNotifyEvent(paramInt, paramBundle);
     }
-    AppMethodBeat.o(221363);
+    AppMethodBeat.o(222101);
   }
   
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, String paramString1, int paramInt, String paramString2)
+  public static void a(WeakReference<com.tencent.liteav.basic.b.b> paramWeakReference, String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(221360);
+    AppMethodBeat.i(222098);
     Bundle localBundle = new Bundle();
     localBundle.putString("EVT_USERID", paramString1);
     localBundle.putInt("EVT_ID", paramInt);
@@ -284,15 +284,15 @@ public class f
       localBundle.putCharSequence("EVT_MSG", paramString2);
     }
     a(paramWeakReference, paramInt, localBundle);
-    AppMethodBeat.o(221360);
+    AppMethodBeat.o(222098);
   }
   
   public static boolean a(Context paramContext)
   {
-    AppMethodBeat.i(221353);
+    AppMethodBeat.i(222091);
     if (paramContext == null)
     {
-      AppMethodBeat.o(221353);
+      AppMethodBeat.o(222091);
       return false;
     }
     try
@@ -301,54 +301,54 @@ public class f
       if (((ActivityManager)localObject).getRunningTasks(1) == null)
       {
         TXCLog.e("TXCSystemUtil", "running task is null, ams is abnormal!!!");
-        AppMethodBeat.o(221353);
+        AppMethodBeat.o(222091);
         return false;
       }
       localObject = (ActivityManager.RunningTaskInfo)((ActivityManager)localObject).getRunningTasks(1).get(0);
       if ((localObject == null) || (((ActivityManager.RunningTaskInfo)localObject).topActivity == null))
       {
         TXCLog.e("TXCSystemUtil", "failed to get RunningTaskInfo");
-        AppMethodBeat.o(221353);
+        AppMethodBeat.o(222091);
         return false;
       }
       if (!((ActivityManager.RunningTaskInfo)localObject).topActivity.getPackageName().equals(paramContext.getPackageName()))
       {
-        AppMethodBeat.o(221353);
+        AppMethodBeat.o(222091);
         return true;
       }
-      AppMethodBeat.o(221353);
+      AppMethodBeat.o(222091);
       return false;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(221353);
+      AppMethodBeat.o(222091);
     }
     return false;
   }
   
   public static boolean a(String paramString)
   {
-    AppMethodBeat.i(221366);
+    AppMethodBeat.i(222104);
     boolean bool;
     try
     {
       new StringBuilder("load library ").append(paramString).append(" from system path ");
       System.loadLibrary(paramString);
-      AppMethodBeat.o(221366);
+      AppMethodBeat.o(222104);
       return true;
     }
     catch (Error localError)
     {
       new StringBuilder("load library : ").append(localError.toString());
       bool = b(c, paramString);
-      AppMethodBeat.o(221366);
+      AppMethodBeat.o(222104);
       return bool;
     }
     catch (Exception localException)
     {
       new StringBuilder("load library : ").append(localException.toString());
       bool = b(c, paramString);
-      AppMethodBeat.o(221366);
+      AppMethodBeat.o(222104);
     }
     return bool;
   }
@@ -388,138 +388,162 @@ public class f
     //   56: invokevirtual 301	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   59: aload_3
     //   60: invokevirtual 305	android/media/MediaMetadataRetriever:getFrameAtTime	()Landroid/graphics/Bitmap;
-    //   63: astore_0
-    //   64: new 290	java/io/File
-    //   67: dup
-    //   68: aload_1
-    //   69: invokespecial 291	java/io/File:<init>	(Ljava/lang/String;)V
-    //   72: astore_1
-    //   73: aload_1
-    //   74: invokevirtual 295	java/io/File:exists	()Z
-    //   77: ifeq +8 -> 85
-    //   80: aload_1
-    //   81: invokevirtual 308	java/io/File:delete	()Z
-    //   84: pop
-    //   85: new 310	java/io/FileOutputStream
-    //   88: dup
-    //   89: aload_1
-    //   90: invokespecial 313	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   93: astore_1
-    //   94: aload_0
-    //   95: getstatic 319	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   98: bipush 100
-    //   100: aload_1
-    //   101: invokevirtual 325	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   104: pop
-    //   105: aload_1
-    //   106: invokevirtual 328	java/io/FileOutputStream:flush	()V
-    //   109: aload_1
-    //   110: invokevirtual 331	java/io/FileOutputStream:close	()V
-    //   113: aload_3
-    //   114: invokevirtual 334	android/media/MediaMetadataRetriever:release	()V
-    //   117: ldc_w 288
-    //   120: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   123: iconst_1
-    //   124: ireturn
-    //   125: astore_0
-    //   126: aconst_null
-    //   127: astore_3
-    //   128: aconst_null
-    //   129: astore_0
-    //   130: aload_0
-    //   131: ifnull +7 -> 138
-    //   134: aload_0
-    //   135: invokevirtual 331	java/io/FileOutputStream:close	()V
-    //   138: aload_3
-    //   139: ifnull +7 -> 146
-    //   142: aload_3
-    //   143: invokevirtual 334	android/media/MediaMetadataRetriever:release	()V
-    //   146: ldc_w 288
-    //   149: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   152: iconst_0
-    //   153: ireturn
-    //   154: astore_0
-    //   155: aconst_null
-    //   156: astore_3
-    //   157: aconst_null
-    //   158: astore_1
-    //   159: aload_1
-    //   160: ifnull +7 -> 167
-    //   163: aload_1
-    //   164: invokevirtual 331	java/io/FileOutputStream:close	()V
-    //   167: aload_3
-    //   168: ifnull +7 -> 175
-    //   171: aload_3
-    //   172: invokevirtual 334	android/media/MediaMetadataRetriever:release	()V
-    //   175: ldc_w 288
-    //   178: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   181: aload_0
-    //   182: athrow
-    //   183: astore_0
-    //   184: goto -71 -> 113
-    //   187: astore_0
-    //   188: goto -50 -> 138
-    //   191: astore_1
-    //   192: goto -25 -> 167
-    //   195: astore_0
-    //   196: aconst_null
-    //   197: astore_1
-    //   198: goto -39 -> 159
-    //   201: astore_0
-    //   202: goto -43 -> 159
-    //   205: astore_0
-    //   206: aconst_null
-    //   207: astore_0
-    //   208: goto -78 -> 130
+    //   63: astore 5
+    //   65: new 290	java/io/File
+    //   68: dup
+    //   69: aload_1
+    //   70: invokespecial 291	java/io/File:<init>	(Ljava/lang/String;)V
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokevirtual 295	java/io/File:exists	()Z
+    //   78: ifeq +8 -> 86
+    //   81: aload_0
+    //   82: invokevirtual 308	java/io/File:delete	()Z
+    //   85: pop
+    //   86: new 310	java/io/FileOutputStream
+    //   89: dup
+    //   90: aload_0
+    //   91: invokespecial 313	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   94: astore_0
+    //   95: aload_3
+    //   96: astore 4
+    //   98: aload_0
+    //   99: astore_1
+    //   100: aload 5
+    //   102: getstatic 319	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   105: bipush 100
+    //   107: aload_0
+    //   108: invokevirtual 325	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   111: pop
+    //   112: aload_3
+    //   113: astore 4
+    //   115: aload_0
+    //   116: astore_1
+    //   117: aload_0
+    //   118: invokevirtual 328	java/io/FileOutputStream:flush	()V
+    //   121: aload_0
+    //   122: invokevirtual 331	java/io/FileOutputStream:close	()V
+    //   125: aload_3
+    //   126: invokevirtual 334	android/media/MediaMetadataRetriever:release	()V
+    //   129: ldc_w 288
+    //   132: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: iconst_1
+    //   136: ireturn
+    //   137: astore 5
+    //   139: aconst_null
+    //   140: astore_3
+    //   141: aconst_null
+    //   142: astore_0
+    //   143: aload_3
+    //   144: astore 4
+    //   146: aload_0
+    //   147: astore_1
+    //   148: ldc 222
+    //   150: ldc_w 336
+    //   153: aload 5
+    //   155: invokestatic 339	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   158: aload_0
+    //   159: ifnull +7 -> 166
+    //   162: aload_0
+    //   163: invokevirtual 331	java/io/FileOutputStream:close	()V
+    //   166: aload_3
+    //   167: ifnull +7 -> 174
+    //   170: aload_3
+    //   171: invokevirtual 334	android/media/MediaMetadataRetriever:release	()V
+    //   174: ldc_w 288
+    //   177: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: iconst_0
+    //   181: ireturn
+    //   182: astore_0
+    //   183: aconst_null
+    //   184: astore_3
+    //   185: aconst_null
+    //   186: astore_1
+    //   187: aload_1
+    //   188: ifnull +7 -> 195
+    //   191: aload_1
+    //   192: invokevirtual 331	java/io/FileOutputStream:close	()V
+    //   195: aload_3
+    //   196: ifnull +7 -> 203
+    //   199: aload_3
+    //   200: invokevirtual 334	android/media/MediaMetadataRetriever:release	()V
+    //   203: ldc_w 288
+    //   206: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   209: aload_0
+    //   210: athrow
     //   211: astore_0
-    //   212: aload_1
-    //   213: astore_0
-    //   214: goto -84 -> 130
+    //   212: goto -87 -> 125
+    //   215: astore_0
+    //   216: goto -50 -> 166
+    //   219: astore_1
+    //   220: goto -25 -> 195
+    //   223: astore_0
+    //   224: aconst_null
+    //   225: astore_1
+    //   226: goto -39 -> 187
+    //   229: astore_0
+    //   230: aload 4
+    //   232: astore_3
+    //   233: goto -46 -> 187
+    //   236: astore 5
+    //   238: aconst_null
+    //   239: astore_0
+    //   240: goto -97 -> 143
+    //   243: astore 5
+    //   245: goto -102 -> 143
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	217	0	paramString1	String
-    //   0	217	1	paramString2	String
+    //   0	248	0	paramString1	String
+    //   0	248	1	paramString2	String
     //   33	2	2	bool	boolean
-    //   53	119	3	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
+    //   53	180	3	localObject1	Object
+    //   96	135	4	localObject2	Object
+    //   63	38	5	localBitmap	android.graphics.Bitmap
+    //   137	17	5	localException1	Exception
+    //   236	1	5	localException2	Exception
+    //   243	1	5	localException3	Exception
     // Exception table:
     //   from	to	target	type
-    //   22	34	125	java/lang/Exception
-    //   46	54	125	java/lang/Exception
-    //   22	34	154	finally
-    //   46	54	154	finally
-    //   109	113	183	java/io/IOException
-    //   134	138	187	java/io/IOException
-    //   163	167	191	java/io/IOException
-    //   54	85	195	finally
-    //   85	94	195	finally
-    //   94	109	201	finally
-    //   54	85	205	java/lang/Exception
-    //   85	94	205	java/lang/Exception
-    //   94	109	211	java/lang/Exception
+    //   22	34	137	java/lang/Exception
+    //   46	54	137	java/lang/Exception
+    //   22	34	182	finally
+    //   46	54	182	finally
+    //   121	125	211	java/io/IOException
+    //   162	166	215	java/io/IOException
+    //   191	195	219	java/io/IOException
+    //   54	86	223	finally
+    //   86	95	223	finally
+    //   100	112	229	finally
+    //   117	121	229	finally
+    //   148	158	229	finally
+    //   54	86	236	java/lang/Exception
+    //   86	95	236	java/lang/Exception
+    //   100	112	243	java/lang/Exception
+    //   117	121	243	java/lang/Exception
   }
   
   public static int[] a()
   {
-    AppMethodBeat.i(221351);
+    AppMethodBeat.i(222089);
     if (b)
     {
       b = false;
       ((b)g.a()).a();
-      AppMethodBeat.o(221351);
+      AppMethodBeat.o(222089);
       return new int[] { 0, 0 };
     }
     int[] arrayOfInt = ((b)g.a()).a();
-    AppMethodBeat.o(221351);
+    AppMethodBeat.o(222089);
     return arrayOfInt;
   }
   
   public static int b()
   {
-    AppMethodBeat.i(221352);
+    AppMethodBeat.i(222090);
     if ((f) || ((e != 0L) && (TXCTimeUtil.getTimeTick() - e < 15000L)))
     {
       k = d;
-      AppMethodBeat.o(221352);
+      AppMethodBeat.o(222090);
       return k;
     }
     f = true;
@@ -527,7 +551,7 @@ public class f
     {
       public final void run()
       {
-        AppMethodBeat.i(221383);
+        AppMethodBeat.i(222125);
         System.currentTimeMillis();
         f.a(false);
         try
@@ -537,25 +561,25 @@ public class f
           int i = localMemoryInfo.getTotalPss();
           f.a(TXCTimeUtil.getTimeTick());
           f.b(i / 1024);
-          AppMethodBeat.o(221383);
+          AppMethodBeat.o(222125);
           return;
         }
         catch (Exception localException)
         {
-          AppMethodBeat.o(221383);
+          AppMethodBeat.o(222125);
         }
       }
     });
     int k = d;
-    AppMethodBeat.o(221352);
+    AppMethodBeat.o(222090);
     return k;
   }
   
   public static String b(Context paramContext)
   {
-    AppMethodBeat.i(221354);
+    AppMethodBeat.i(222092);
     paramContext = TXCDRApi.getSimulateIDFA(paramContext);
-    AppMethodBeat.o(221354);
+    AppMethodBeat.o(222092);
     return paramContext;
   }
   
@@ -566,7 +590,7 @@ public class f
   
   private static boolean b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(221367);
+    AppMethodBeat.i(222105);
     bool2 = false;
     bool1 = bool2;
     try
@@ -594,7 +618,7 @@ public class f
         bool1 = bool2;
       }
     }
-    AppMethodBeat.o(221367);
+    AppMethodBeat.o(222105);
     return bool1;
   }
   
@@ -605,14 +629,14 @@ public class f
   
   public static String c(Context paramContext)
   {
-    AppMethodBeat.i(221355);
+    AppMethodBeat.i(222093);
     String str2 = "";
     String str1 = str2;
     if (paramContext != null) {}
     try
     {
       str1 = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).packageName;
-      AppMethodBeat.o(221355);
+      AppMethodBeat.o(222093);
       return str1;
     }
     catch (Exception paramContext)
@@ -631,7 +655,7 @@ public class f
   
   public static boolean d(Context paramContext)
   {
-    AppMethodBeat.i(221356);
+    AppMethodBeat.i(222094);
     try
     {
       System.currentTimeMillis();
@@ -641,24 +665,24 @@ public class f
         if (paramContext != null)
         {
           boolean bool = paramContext.isAvailable();
-          AppMethodBeat.o(221356);
+          AppMethodBeat.o(222094);
           return bool;
         }
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(221356);
+      AppMethodBeat.o(222094);
     }
     return false;
   }
   
   public static int e(Context paramContext)
   {
-    AppMethodBeat.i(221357);
+    AppMethodBeat.i(222095);
     if (paramContext == null)
     {
-      AppMethodBeat.o(221357);
+      AppMethodBeat.o(222095);
       return 0;
     }
     Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
@@ -666,22 +690,22 @@ public class f
     localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
     if (localObject == null)
     {
-      AppMethodBeat.o(221357);
+      AppMethodBeat.o(222095);
       return 0;
     }
     if (!((NetworkInfo)localObject).isConnected())
     {
-      AppMethodBeat.o(221357);
+      AppMethodBeat.o(222095);
       return 0;
     }
     if (((NetworkInfo)localObject).getType() == 9)
     {
-      AppMethodBeat.o(221357);
+      AppMethodBeat.o(222095);
       return 5;
     }
     if (((NetworkInfo)localObject).getType() == 1)
     {
-      AppMethodBeat.o(221357);
+      AppMethodBeat.o(222095);
       return 1;
     }
     if (((NetworkInfo)localObject).getType() == 0)
@@ -689,14 +713,14 @@ public class f
       switch (paramContext.getNetworkType())
       {
       default: 
-        AppMethodBeat.o(221357);
+        AppMethodBeat.o(222095);
         return 2;
       case 1: 
       case 2: 
       case 4: 
       case 7: 
       case 11: 
-        AppMethodBeat.o(221357);
+        AppMethodBeat.o(222095);
         return 4;
       case 3: 
       case 5: 
@@ -707,35 +731,35 @@ public class f
       case 12: 
       case 14: 
       case 15: 
-        AppMethodBeat.o(221357);
+        AppMethodBeat.o(222095);
         return 3;
       }
-      AppMethodBeat.o(221357);
+      AppMethodBeat.o(222095);
       return 2;
     }
-    AppMethodBeat.o(221357);
+    AppMethodBeat.o(222095);
     return 0;
   }
   
   public static String e()
   {
-    AppMethodBeat.i(221358);
+    AppMethodBeat.i(222096);
     String str = UUID.randomUUID().toString();
-    AppMethodBeat.o(221358);
+    AppMethodBeat.o(222096);
     return str;
   }
   
   public static String f(Context paramContext)
   {
-    AppMethodBeat.i(221359);
+    AppMethodBeat.i(222097);
     paramContext = TXCDRApi.getDevUUID(paramContext, TXCDRApi.getSimulateIDFA(paramContext));
-    AppMethodBeat.o(221359);
+    AppMethodBeat.o(222097);
     return paramContext;
   }
   
   public static boolean f()
   {
-    AppMethodBeat.i(221365);
+    AppMethodBeat.i(222103);
     synchronized (h)
     {
       if (!i)
@@ -746,7 +770,7 @@ public class f
         new StringBuilder("load library liteavsdk ").append(i);
       }
       boolean bool = i;
-      AppMethodBeat.o(221365);
+      AppMethodBeat.o(222103);
       return bool;
     }
   }
@@ -758,7 +782,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.util.f
  * JD-Core Version:    0.7.0.1
  */

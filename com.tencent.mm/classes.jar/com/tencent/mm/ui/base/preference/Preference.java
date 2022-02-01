@@ -21,48 +21,48 @@ import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.a.a;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.aa;
 import java.util.List;
 
 public class Preference
   implements Comparable<Preference>
 {
-  int FEh;
-  private CharSequence Hd;
-  public int JOA;
-  private boolean JOB;
-  private List<Preference> JOC;
-  private a JOi;
-  public b JOj;
-  public c JOk;
-  private int JOl;
-  private int JOm;
-  private String JOn;
-  boolean JOo;
-  private boolean JOp;
-  public boolean JOq;
-  String JOr;
-  private boolean JOs;
-  private int JOt;
-  private boolean JOu;
-  public boolean JOv;
-  public boolean JOw;
-  private boolean JOx;
-  private boolean JOy;
-  private int JOz;
-  private int[] Qo;
-  protected Drawable Xj;
-  protected int aeA;
-  private int bJr;
+  private CharSequence Bic;
+  private ImageView EbJ;
+  private CharSequence Hn;
+  int Kxl;
+  private boolean OZA;
+  public boolean OZB;
+  public boolean OZC;
+  private boolean OZD;
+  private boolean OZE;
+  private int OZF;
+  public int OZG;
+  private boolean OZH;
+  private List<Preference> OZI;
+  private a OZo;
+  public b OZp;
+  public c OZq;
+  private int OZr;
+  private int OZs;
+  private String OZt;
+  boolean OZu;
+  private boolean OZv;
+  public boolean OZw;
+  String OZx;
+  private boolean OZy;
+  private int OZz;
+  private int[] QA;
+  protected Drawable Xw;
+  protected int aeN;
+  private int bJH;
   public final Context mContext;
   private Object mDefaultValue;
   private boolean mEnabled;
   private Bundle mExtras;
   public String mKey;
-  public int oWv;
-  private CharSequence xkf;
-  private ImageView zTB;
+  public int qlp;
   
   public Preference(Context paramContext)
   {
@@ -77,23 +77,23 @@ public class Preference
   public Preference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     AppMethodBeat.i(142632);
-    this.Qo = new int[] { 2130969590, 2130969495 };
-    this.bJr = 2147483647;
-    this.FEh = 0;
+    this.QA = new int[] { 2130969676, 2130969580 };
+    this.bJH = 2147483647;
+    this.Kxl = 0;
     this.mEnabled = true;
-    this.JOo = true;
-    this.JOq = true;
-    this.JOs = true;
-    this.oWv = -1;
-    this.zTB = null;
-    this.JOt = 0;
-    this.JOu = false;
-    this.JOv = false;
-    this.JOw = false;
-    this.JOx = false;
-    this.JOy = true;
-    this.JOz = 2131494804;
-    this.JOB = false;
+    this.OZu = true;
+    this.OZw = true;
+    this.OZy = true;
+    this.qlp = -1;
+    this.EbJ = null;
+    this.OZz = 0;
+    this.OZA = false;
+    this.OZB = false;
+    this.OZC = false;
+    this.OZD = false;
+    this.OZE = true;
+    this.OZF = 2131495538;
+    this.OZH = false;
     this.mContext = paramContext;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.Preference, paramInt, 0);
     paramInt = paramAttributeSet.getIndexCount();
@@ -101,7 +101,7 @@ public class Preference
     {
       int i = paramAttributeSet.getIndex(paramInt);
       if (i == 4) {
-        this.aeA = paramAttributeSet.getResourceId(i, 0);
+        this.aeN = paramAttributeSet.getResourceId(i, 0);
       }
       for (;;)
       {
@@ -109,7 +109,7 @@ public class Preference
         break;
         if (i == 5)
         {
-          this.FEh = paramAttributeSet.getColor(i, 0);
+          this.Kxl = paramAttributeSet.getColor(i, 0);
         }
         else if (i == 6)
         {
@@ -117,35 +117,35 @@ public class Preference
         }
         else if (i == 13)
         {
-          this.JOl = paramAttributeSet.getResourceId(i, 0);
-          this.Hd = paramAttributeSet.getString(i);
-          if (this.JOl != 0) {
-            this.Hd = paramContext.getString(this.JOl);
+          this.OZr = paramAttributeSet.getResourceId(i, 0);
+          this.Hn = paramAttributeSet.getString(i);
+          if (this.OZr != 0) {
+            this.Hn = paramContext.getString(this.OZr);
           }
         }
         else if (i == 12)
         {
-          this.xkf = paramAttributeSet.getString(i);
-          this.JOm = paramAttributeSet.getResourceId(i, 0);
-          if (this.JOm != 0) {
-            this.xkf = paramContext.getString(this.JOm);
+          this.Bic = paramAttributeSet.getString(i);
+          this.OZs = paramAttributeSet.getResourceId(i, 0);
+          if (this.OZs != 0) {
+            this.Bic = paramContext.getString(this.OZs);
           }
         }
         else if (i == 8)
         {
-          this.bJr = paramAttributeSet.getInt(i, this.bJr);
+          this.bJH = paramAttributeSet.getInt(i, this.bJH);
         }
         else if (i == 3)
         {
-          this.JOn = paramAttributeSet.getString(i);
+          this.OZt = paramAttributeSet.getString(i);
         }
         else if (i == 7)
         {
-          this.JOz = paramAttributeSet.getResourceId(i, this.JOz);
+          this.OZF = paramAttributeSet.getResourceId(i, this.OZF);
         }
         else if (i == 14)
         {
-          this.JOA = paramAttributeSet.getResourceId(i, this.JOA);
+          this.OZG = paramAttributeSet.getResourceId(i, this.OZG);
         }
         else if (i == 2)
         {
@@ -153,15 +153,15 @@ public class Preference
         }
         else if (i == 10)
         {
-          this.JOo = paramAttributeSet.getBoolean(i, true);
+          this.OZu = paramAttributeSet.getBoolean(i, true);
         }
         else if (i == 9)
         {
-          this.JOq = paramAttributeSet.getBoolean(i, this.JOq);
+          this.OZw = paramAttributeSet.getBoolean(i, this.OZw);
         }
         else if (i == 1)
         {
-          this.JOr = paramAttributeSet.getString(i);
+          this.OZx = paramAttributeSet.getString(i);
         }
         else if (i == 0)
         {
@@ -169,18 +169,37 @@ public class Preference
         }
         else if (i == 11)
         {
-          this.JOy = paramAttributeSet.getBoolean(i, this.JOy);
+          this.OZE = paramAttributeSet.getBoolean(i, this.OZE);
         }
       }
     }
     paramAttributeSet.recycle();
     if (!getClass().getName().startsWith("android.preference")) {
-      this.JOB = true;
+      this.OZH = true;
     }
     AppMethodBeat.o(142632);
   }
   
-  private void fDJ()
+  private void BD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142650);
+    if (this.OZy == paramBoolean) {
+      if (paramBoolean) {
+        break label42;
+      }
+    }
+    label42:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.OZy = paramBoolean;
+      notifyDependencyChange(shouldDisableDependents());
+      notifyChanged();
+      AppMethodBeat.o(142650);
+      return;
+    }
+  }
+  
+  private void gLQ()
   {
     AppMethodBeat.i(142646);
     if (this.mKey == null)
@@ -189,7 +208,7 @@ public class Preference
       AppMethodBeat.o(142646);
       throw localIllegalStateException;
     }
-    this.JOp = true;
+    this.OZv = true;
     AppMethodBeat.o(142646);
   }
   
@@ -208,7 +227,7 @@ public class Preference
   private void notifyDependencyChange(boolean paramBoolean)
   {
     AppMethodBeat.i(142649);
-    List localList = this.JOC;
+    List localList = this.OZI;
     if (localList == null)
     {
       AppMethodBeat.o(142649);
@@ -218,7 +237,7 @@ public class Preference
     int i = 0;
     while (i < j)
     {
-      ((Preference)localList.get(i)).xO(paramBoolean);
+      ((Preference)localList.get(i)).BD(paramBoolean);
       i += 1;
     }
     AppMethodBeat.o(142649);
@@ -236,7 +255,7 @@ public class Preference
     return false;
   }
   
-  private void x(View paramView, boolean paramBoolean)
+  private void z(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(142637);
     paramView.setEnabled(paramBoolean);
@@ -246,43 +265,24 @@ public class Preference
       int i = paramView.getChildCount() - 1;
       while (i >= 0)
       {
-        x(paramView.getChildAt(i), paramBoolean);
+        z(paramView.getChildAt(i), paramBoolean);
         i -= 1;
       }
     }
     AppMethodBeat.o(142637);
   }
   
-  private void xO(boolean paramBoolean)
-  {
-    AppMethodBeat.i(142650);
-    if (this.JOs == paramBoolean) {
-      if (paramBoolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.JOs = paramBoolean;
-      notifyDependencyChange(shouldDisableDependents());
-      notifyChanged();
-      AppMethodBeat.o(142650);
-      return;
-    }
-  }
-  
   public void a(a parama)
   {
-    this.JOi = parama;
+    this.OZo = parama;
   }
   
-  public final void ade(int paramInt)
+  public final void alO(int paramInt)
   {
     AppMethodBeat.i(142652);
-    this.JOt = paramInt;
-    if (this.zTB != null) {
-      this.zTB.setVisibility(paramInt);
+    this.OZz = paramInt;
+    if (this.EbJ != null) {
+      this.EbJ.setVisibility(paramInt);
     }
     AppMethodBeat.o(142652);
   }
@@ -290,24 +290,24 @@ public class Preference
   public final boolean callChangeListener(Object paramObject)
   {
     AppMethodBeat.i(142648);
-    if (this.JOi == null)
+    if (this.OZo == null)
     {
       AppMethodBeat.o(142648);
       return true;
     }
-    boolean bool = this.JOi.a(this, paramObject);
+    boolean bool = this.OZo.a(this, paramObject);
     AppMethodBeat.o(142648);
     return bool;
   }
   
-  public final void fDK()
+  public final void gLR()
   {
-    this.JOq = false;
+    this.OZw = false;
   }
   
-  public final void fDL()
+  public final void gLS()
   {
-    this.JOx = true;
+    this.OZD = true;
   }
   
   public final Context getContext()
@@ -333,17 +333,17 @@ public class Preference
   
   public int getLayoutResource()
   {
-    return this.JOz;
+    return this.OZF;
   }
   
   public CharSequence getSummary()
   {
-    return this.xkf;
+    return this.Bic;
   }
   
   public CharSequence getTitle()
   {
-    return this.Hd;
+    return this.Hn;
   }
   
   public View getView(View paramView, ViewGroup paramViewGroup)
@@ -358,14 +358,14 @@ public class Preference
     return localView;
   }
   
-  public void gk()
+  public void gr()
   {
     AppMethodBeat.i(142640);
-    this.aeA = 2131689519;
-    Drawable localDrawable = this.mContext.getResources().getDrawable(2131689519);
-    if (((localDrawable == null) && (this.Xj != null)) || ((localDrawable != null) && (this.Xj != localDrawable)))
+    this.aeN = 2131689522;
+    Drawable localDrawable = this.mContext.getResources().getDrawable(2131689522);
+    if (((localDrawable == null) && (this.Xw != null)) || ((localDrawable != null) && (this.Xw != localDrawable)))
     {
-      this.Xj = localDrawable;
+      this.Xw = localDrawable;
       notifyChanged();
     }
     AppMethodBeat.o(142640);
@@ -373,7 +373,7 @@ public class Preference
   
   public final boolean isEnabled()
   {
-    return (this.mEnabled) && (this.JOs);
+    return (this.mEnabled) && (this.OZy);
   }
   
   protected void notifyChanged() {}
@@ -381,11 +381,11 @@ public class Preference
   protected void onBindView(View paramView)
   {
     AppMethodBeat.i(142636);
-    Object localObject1 = paramView.findViewById(2131298739);
+    Object localObject1 = paramView.findViewById(2131299180);
     if (localObject1 != null)
     {
-      ((View)localObject1).setMinimumHeight((int)(this.mContext.getResources().getDimensionPixelSize(2131165488) * a.iq(this.mContext)));
-      ae.d("dancy test", "resource:%s, height:%s, scale:%s", new Object[] { this.mContext.getResources(), Integer.valueOf(this.mContext.getResources().getDimensionPixelSize(2131165488)), Float.valueOf(a.iq(this.mContext)) });
+      ((View)localObject1).setMinimumHeight((int)(this.mContext.getResources().getDimensionPixelSize(2131165506) * a.jj(this.mContext)));
+      Log.d("dancy test", "resource:%s, height:%s, scale:%s", new Object[] { this.mContext.getResources(), Integer.valueOf(this.mContext.getResources().getDimensionPixelSize(2131165506)), Float.valueOf(a.jj(this.mContext)) });
     }
     localObject1 = (TextView)paramView.findViewById(16908310);
     Object localObject2;
@@ -394,7 +394,7 @@ public class Preference
       localObject2 = getTitle();
       if ((localObject2 != null) && ((localObject2 instanceof Spannable)))
       {
-        if (this.JOw) {
+        if (this.OZC) {
           ((TextView)localObject1).setClickable(true);
         }
         if (((TextView)localObject1).isClickable()) {
@@ -414,20 +414,20 @@ public class Preference
         if (((TextView)localObject2).getVisibility() != 0) {
           ((TextView)localObject2).setVisibility(0);
         }
-        if (!this.JOv) {
+        if (!this.OZB) {
           break label464;
         }
         ((TextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView)localObject2).setClickable(true);
         ((TextView)localObject2).setText(getSummary(), TextView.BufferType.SPANNABLE);
         label240:
-        if (this.oWv != -1) {
-          ((TextView)localObject2).setTextColor(this.oWv);
+        if (this.qlp != -1) {
+          ((TextView)localObject2).setTextColor(this.qlp);
         }
-        if (this.JOx) {
+        if (this.OZD) {
           ((TextView)localObject2).setSingleLine();
         }
-        if ((localObject1 != null) && (this.JOu)) {
+        if ((localObject1 != null) && (this.OZA)) {
           ((TextView)localObject2).post(new Runnable()
           {
             public final void run()
@@ -439,14 +439,14 @@ public class Preference
                 AppMethodBeat.o(164171);
                 return;
               }
-              int i = this.wUO.getMeasuredWidth() + this.JOD.getMeasuredWidth();
+              int i = this.AQK.getMeasuredWidth() + this.OZJ.getMeasuredWidth();
               if (i > 0)
               {
-                int j = (int)this.JOD.getPaint().measureText(this.JOD.getText().toString());
-                if ((int)this.wUO.getPaint().measureText(localCharSequence, 0, localCharSequence.length()) + j > i)
+                int j = (int)this.OZJ.getPaint().measureText(this.OZJ.getText().toString());
+                if ((int)this.AQK.getPaint().measureText(localCharSequence, 0, localCharSequence.length()) + j > i)
                 {
-                  localCharSequence = TextUtils.ellipsize(localCharSequence, this.wUO.getPaint(), i - j - 5, TextUtils.TruncateAt.END);
-                  this.wUO.setText(localCharSequence);
+                  localCharSequence = TextUtils.ellipsize(localCharSequence, this.AQK.getPaint(), i - j - 5, TextUtils.TruncateAt.END);
+                  this.AQK.setText(localCharSequence);
                 }
               }
               AppMethodBeat.o(164171);
@@ -458,20 +458,20 @@ public class Preference
       localObject1 = (ImageView)paramView.findViewById(16908294);
       if (localObject1 != null)
       {
-        if ((this.aeA != 0) || (this.Xj != null))
+        if ((this.aeN != 0) || (this.Xw != null))
         {
-          if (this.Xj == null) {
-            this.Xj = this.mContext.getResources().getDrawable(this.aeA);
+          if (this.Xw == null) {
+            this.Xw = this.mContext.getResources().getDrawable(this.aeN);
           }
-          if (this.Xj != null)
+          if (this.Xw != null)
           {
-            ((ImageView)localObject1).setImageDrawable(this.Xj);
-            if (this.FEh != 0) {
-              ((ImageView)localObject1).getDrawable().setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
+            ((ImageView)localObject1).setImageDrawable(this.Xw);
+            if (this.Kxl != 0) {
+              ((ImageView)localObject1).getDrawable().setColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
             }
           }
         }
-        if (this.Xj == null) {
+        if (this.Xw == null) {
           break label496;
         }
       }
@@ -482,12 +482,12 @@ public class Preference
     for (int i = 0;; i = 8)
     {
       ((ImageView)localObject1).setVisibility(i);
-      this.zTB = ((ImageView)paramView.findViewById(2131304172));
-      if (this.zTB != null) {
-        this.zTB.setVisibility(this.JOt);
+      this.EbJ = ((ImageView)paramView.findViewById(2131307076));
+      if (this.EbJ != null) {
+        this.EbJ.setVisibility(this.OZz);
       }
-      if (this.JOy) {
-        x(paramView, isEnabled());
+      if (this.OZE) {
+        z(paramView, isEnabled());
       }
       AppMethodBeat.o(142636);
       return;
@@ -506,15 +506,15 @@ public class Preference
   protected View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142635);
-    LayoutInflater localLayoutInflater = z.jV(this.mContext);
-    paramViewGroup = localLayoutInflater.inflate(this.JOz, paramViewGroup, false);
+    LayoutInflater localLayoutInflater = aa.jQ(this.mContext);
+    paramViewGroup = localLayoutInflater.inflate(this.OZF, paramViewGroup, false);
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(16908312);
     if (localViewGroup != null)
     {
-      if (this.JOA == 0) {
+      if (this.OZG == 0) {
         break label65;
       }
-      localLayoutInflater.inflate(this.JOA, localViewGroup);
+      localLayoutInflater.inflate(this.OZG, localViewGroup);
     }
     for (;;)
     {
@@ -541,26 +541,26 @@ public class Preference
   {
     AppMethodBeat.i(142645);
     this.mKey = paramString;
-    if ((this.JOp) && (!hasKey())) {
-      fDJ();
+    if ((this.OZv) && (!hasKey())) {
+      gLQ();
     }
     AppMethodBeat.o(142645);
   }
   
   public final void setLayoutResource(int paramInt)
   {
-    if (paramInt != this.JOz) {
-      this.JOB = true;
+    if (paramInt != this.OZF) {
+      this.OZH = true;
     }
-    this.JOz = paramInt;
+    this.OZF = paramInt;
   }
   
   public final void setSelectable(boolean paramBoolean)
   {
     AppMethodBeat.i(142644);
-    if (this.JOo != paramBoolean)
+    if (this.OZu != paramBoolean)
     {
-      this.JOo = paramBoolean;
+      this.OZu = paramBoolean;
       notifyChanged();
     }
     AppMethodBeat.o(142644);
@@ -576,9 +576,9 @@ public class Preference
   public void setSummary(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142641);
-    if (((paramCharSequence == null) && (this.xkf != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.xkf))))
+    if (((paramCharSequence == null) && (this.Bic != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.Bic))))
     {
-      this.xkf = paramCharSequence;
+      this.Bic = paramCharSequence;
       notifyChanged();
     }
     AppMethodBeat.o(142641);
@@ -588,17 +588,17 @@ public class Preference
   {
     AppMethodBeat.i(142639);
     setTitle(this.mContext.getString(paramInt));
-    this.JOl = paramInt;
+    this.OZr = paramInt;
     AppMethodBeat.o(142639);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142638);
-    if (((paramCharSequence == null) && (this.Hd != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.Hd))))
+    if (((paramCharSequence == null) && (this.Hn != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.Hn))))
     {
-      this.JOl = 0;
-      this.Hd = paramCharSequence;
+      this.OZr = 0;
+      this.Hn = paramCharSequence;
       notifyChanged();
     }
     AppMethodBeat.o(142638);
@@ -606,10 +606,10 @@ public class Preference
   
   public final void setWidgetLayoutResource(int paramInt)
   {
-    if (paramInt != this.JOA) {
-      this.JOB = true;
+    if (paramInt != this.OZG) {
+      this.OZH = true;
     }
-    this.JOA = paramInt;
+    this.OZG = paramInt;
   }
   
   public String toString()
@@ -639,12 +639,12 @@ public class Preference
   
   public static abstract interface b
   {
-    public abstract boolean dDy();
+    public abstract boolean a(Preference paramPreference);
   }
   
   public static abstract interface c
   {
-    public abstract boolean dEL();
+    public abstract boolean eFh();
   }
 }
 

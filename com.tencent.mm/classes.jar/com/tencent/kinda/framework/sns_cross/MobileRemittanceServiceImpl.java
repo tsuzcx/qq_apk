@@ -10,21 +10,21 @@ public class MobileRemittanceServiceImpl
 {
   public ITransmitKvData generateSnsUseCaseData()
   {
-    AppMethodBeat.i(193166);
+    AppMethodBeat.i(214458);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
-    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().hwN == null))
+    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().iqp == null))
     {
-      AppMethodBeat.o(193166);
+      AppMethodBeat.o(214458);
       return localITransmitKvData;
     }
-    localITransmitKvData.putString("cashier_desc", this.mBean.getPayInfo().hwN.getString("extinfo_key_12"));
-    AppMethodBeat.o(193166);
+    localITransmitKvData.putString("cashier_desc", this.mBean.getPayInfo().iqp.getString("extinfo_key_12"));
+    AppMethodBeat.o(214458);
     return localITransmitKvData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.MobileRemittanceServiceImpl
  * JD-Core Version:    0.7.0.1
  */

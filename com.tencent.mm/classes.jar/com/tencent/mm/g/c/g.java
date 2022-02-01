@@ -2,46 +2,46 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class g
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFM = "userName".hashCode();
-  private static final int eGk = "scene".hashCode();
-  private static final int eGl = "ticket".hashCode();
+  private static final int fjQ = "scene".hashCode();
+  private static final int fjR = "ticket".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFp = true;
-  private boolean eGi = true;
-  private boolean eGj = true;
+  private static final int userName_HASHCODE = "userName".hashCode();
+  private boolean __hadSetuserName = true;
   public int field_scene;
   public String field_ticket;
   public String field_userName;
+  private boolean fjO = true;
+  private boolean fjP = true;
   
-  public static c.a VD()
+  public static IAutoDBItem.MAutoDBInfo ajs()
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "userName";
-    locala.IBN.put("userName", "TEXT");
+    localMAutoDBInfo.columns[0] = "userName";
+    localMAutoDBInfo.colsMap.put("userName", "TEXT");
     localStringBuilder.append(" userName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "scene";
-    locala.IBN.put("scene", "INTEGER");
+    localMAutoDBInfo.columns[1] = "scene";
+    localMAutoDBInfo.colsMap.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "ticket";
-    locala.IBN.put("ticket", "TEXT");
+    localMAutoDBInfo.columns[2] = "ticket";
+    localMAutoDBInfo.colsMap.put("ticket", "TEXT");
     localStringBuilder.append(" ticket TEXT");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -57,7 +57,7 @@ public abstract class g
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFM != k) {
+      if (userName_HASHCODE != k) {
         break label60;
       }
       this.field_userName = paramCursor.getString(i);
@@ -68,9 +68,9 @@ public abstract class g
       break label20;
       break;
       label60:
-      if (eGk == k) {
+      if (fjQ == k) {
         this.field_scene = paramCursor.getInt(i);
-      } else if (eGl == k) {
+      } else if (fjR == k) {
         this.field_ticket = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -81,13 +81,13 @@ public abstract class g
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFp) {
+    if (this.__hadSetuserName) {
       localContentValues.put("userName", this.field_userName);
     }
-    if (this.eGi) {
+    if (this.fjO) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eGj) {
+    if (this.fjP) {
       localContentValues.put("ticket", this.field_ticket);
     }
     if (this.systemRowid > 0L) {
@@ -98,7 +98,7 @@ public abstract class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.g
  * JD-Core Version:    0.7.0.1
  */

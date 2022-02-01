@@ -12,21 +12,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.au.a;
-import com.tencent.mm.model.au.b;
-import com.tencent.mm.model.au.b.a;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.ay.a;
+import com.tencent.mm.model.ay.b;
+import com.tencent.mm.model.ay.b.a;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 
 @Deprecated
@@ -34,13 +33,29 @@ public class RoomUpgradeResultUI
   extends MMActivity
 {
   private String chatroomName;
-  private ac fNS;
-  private Button fTC;
-  private View fTD;
-  private ImageView fTE;
-  private TextView fTF;
-  private TextView fTG;
-  private TextView fTH;
+  private ah gtd;
+  private Button gyJ;
+  private View gyK;
+  private ImageView gyL;
+  private TextView gyM;
+  private TextView gyN;
+  private TextView gyO;
+  
+  private void DK(String paramString)
+  {
+    AppMethodBeat.i(12775);
+    Object localObject = ((l)g.af(l.class)).aSN().Kn(paramString);
+    if ((localObject != null) && ((int)((com.tencent.mm.contact.c)localObject).gMZ > 0))
+    {
+      localObject = ((as)localObject).arI();
+      a.b.c(this.gyL, paramString);
+      this.gyM.setVisibility(0);
+      this.gyM.setText((CharSequence)localObject);
+      AppMethodBeat.o(12775);
+      return;
+    }
+    AppMethodBeat.o(12775);
+  }
   
   private void goBack()
   {
@@ -48,38 +63,22 @@ public class RoomUpgradeResultUI
     Object localObject = new Intent(this, RoomUpgradeUI.class);
     ((Intent)localObject).addFlags(67108864);
     ((Intent)localObject).putExtra("finish_self", true);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/chatroom/ui/RoomUpgradeResultUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/chatroom/ui/RoomUpgradeResultUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/RoomUpgradeResultUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(12777);
   }
   
-  private void vt(String paramString)
-  {
-    AppMethodBeat.i(12775);
-    Object localObject = ((l)g.ab(l.class)).azF().BH(paramString);
-    if ((localObject != null) && ((int)((com.tencent.mm.contact.c)localObject).ght > 0))
-    {
-      localObject = ((an)localObject).adF();
-      a.b.c(this.fTE, paramString);
-      this.fTF.setVisibility(0);
-      this.fTF.setText((CharSequence)localObject);
-      AppMethodBeat.o(12775);
-      return;
-    }
-    AppMethodBeat.o(12775);
-  }
-  
   public int getLayoutId()
   {
-    return 2131493381;
+    return 2131493475;
   }
   
   public void initView()
   {
     AppMethodBeat.i(12774);
-    setMMTitle(2131762714);
+    setMMTitle(2131764797);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -90,33 +89,33 @@ public class RoomUpgradeResultUI
         return true;
       }
     });
-    this.fTD = findViewById(2131306214);
-    this.fTE = ((ImageView)findViewById(2131306213));
-    this.fTF = ((TextView)findViewById(2131306215));
-    this.fTG = ((TextView)findViewById(2131306210));
-    this.fTH = ((TextView)findViewById(2131306211));
-    this.fTC = ((Button)findViewById(2131300766));
-    this.fTC.setOnClickListener(new View.OnClickListener()
+    this.gyK = findViewById(2131309613);
+    this.gyL = ((ImageView)findViewById(2131309612));
+    this.gyM = ((TextView)findViewById(2131309614));
+    this.gyN = ((TextView)findViewById(2131309609));
+    this.gyO = ((TextView)findViewById(2131309610));
+    this.gyJ = ((Button)findViewById(2131302360));
+    this.gyJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(12769);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/RoomUpgradeResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/RoomUpgradeResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("rawUrl", RoomUpgradeResultUI.this.getString(2131757097, new Object[] { ad.fom() }));
-        paramAnonymousView.putExtra("geta8key_username", v.aAC());
-        d.c(RoomUpgradeResultUI.this, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", 0);
+        paramAnonymousView.putExtra("rawUrl", RoomUpgradeResultUI.this.getString(2131757298, new Object[] { LocaleUtil.getApplicationLanguage() }));
+        paramAnonymousView.putExtra("geta8key_username", z.aTY());
+        com.tencent.mm.br.c.d(RoomUpgradeResultUI.this, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", 0);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/RoomUpgradeResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(12769);
       }
     });
-    this.fTC.setVisibility(0);
-    final String str = this.fNS.field_roomowner;
-    an localan = ((l)g.ab(l.class)).azF().BH(str);
-    if ((localan != null) && ((int)localan.ght <= 0)) {
-      au.a.hIG.a(str, this.chatroomName, new au.b.a()
+    this.gyJ.setVisibility(0);
+    final String str = this.gtd.field_roomowner;
+    as localas = ((l)g.af(l.class)).aSN().Kn(str);
+    if ((localas != null) && ((int)localas.gMZ <= 0)) {
+      ay.a.iDq.a(str, this.chatroomName, new ay.b.a()
       {
         public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
         {
@@ -127,7 +126,7 @@ public class RoomUpgradeResultUI
               public final void run()
               {
                 AppMethodBeat.i(12770);
-                RoomUpgradeResultUI.a(RoomUpgradeResultUI.this, RoomUpgradeResultUI.3.this.fTJ);
+                RoomUpgradeResultUI.a(RoomUpgradeResultUI.this, RoomUpgradeResultUI.3.this.gyQ);
                 AppMethodBeat.o(12770);
               }
             });
@@ -138,14 +137,14 @@ public class RoomUpgradeResultUI
     }
     for (;;)
     {
-      int i = this.fNS.ftQ();
-      this.fTG.setVisibility(0);
-      this.fTG.setText(getString(2131762722, new Object[] { Integer.valueOf(i) }));
-      this.fTC.setText(2131762717);
-      this.fTH.setVisibility(8);
+      int i = this.gtd.gBw();
+      this.gyN.setVisibility(0);
+      this.gyN.setText(getString(2131764805, new Object[] { Integer.valueOf(i) }));
+      this.gyJ.setText(2131764800);
+      this.gyO.setVisibility(8);
       AppMethodBeat.o(12774);
       return;
-      vt(str);
+      DK(str);
     }
   }
   
@@ -154,9 +153,9 @@ public class RoomUpgradeResultUI
     AppMethodBeat.i(12772);
     super.onCreate(paramBundle);
     this.chatroomName = getIntent().getStringExtra("chatroom");
-    ae.i("MicroMsg.RoomUpgradeResultUI", "the roomName is %s", new Object[] { this.chatroomName });
-    this.fNS = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.chatroomName);
-    if (this.fNS == null) {
+    Log.i("MicroMsg.RoomUpgradeResultUI", "the roomName is %s", new Object[] { this.chatroomName });
+    this.gtd = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.chatroomName);
+    if (this.gtd == null) {
       goBack();
     }
     initView();

@@ -12,7 +12,7 @@ public final class j
     paramg = new g(paramg);
     paramg.setMethod(0);
     paramg.setSize(paramFile.length());
-    paramg.MEL = paramFile.length();
+    paramg.SkJ = paramFile.length();
     if ((paramLong >= 0L) && (paramLong <= 4294967295L)) {
       paramg.crc = paramLong;
     }
@@ -85,7 +85,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.d.a.j
  * JD-Core Version:    0.7.0.1
  */

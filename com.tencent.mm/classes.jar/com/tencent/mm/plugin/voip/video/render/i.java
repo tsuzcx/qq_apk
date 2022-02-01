@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.voip.video.render;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.b.h;
-import com.tencent.mm.plugin.voip.b.k;
-import d.l;
+import com.tencent.mm.plugin.voip.b.g;
+import com.tencent.mm.plugin.voip.b.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper;", "", "()V", "RGB2YUV_HW_ENCODE", "", "RGB2YUV_RENDER", "RGB2YUV_SOFT_ENCODE", "RGB2YUV_TEXTURE_2_BYTE_ARRAY", "RGB2YUV_TRANSFER", "TAG", "", "record", "", "Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "[Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "appendHw", "", "cost", "", "appendSoft", "appendTransfer", "report", "id", "reset", "Record", "plugin-voip_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper;", "", "()V", "RGB2YUV_HW_ENCODE", "", "RGB2YUV_RENDER", "RGB2YUV_SOFT_ENCODE", "RGB2YUV_TEXTURE_2_BYTE_ARRAY", "RGB2YUV_TRANSFER", "TAG", "", "record", "", "Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "[Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "appendHw", "", "cost", "", "appendSoft", "appendTransfer", "report", "id", "reset", "Record", "plugin-voip_release"})
 public final class i
 {
-  private static final a[] CJM;
-  public static final i CJN;
+  private static final a[] HnQ;
+  public static final i HnR;
   
   static
   {
-    AppMethodBeat.i(210577);
-    CJN = new i();
+    AppMethodBeat.i(236253);
+    HnR = new i();
     a[] arrayOfa = new a[5];
     int i = 0;
     while (i < 5)
@@ -22,81 +22,81 @@ public final class i
       arrayOfa[i] = new a();
       i += 1;
     }
-    CJM = arrayOfa;
-    AppMethodBeat.o(210577);
+    HnQ = arrayOfa;
+    AppMethodBeat.o(236253);
   }
   
-  public static void aJ(int paramInt, long paramLong)
+  public static void aO(int paramInt, long paramLong)
   {
-    a locala = CJM[paramInt];
-    locala.CJO += 1L;
-    locala.CJP += paramLong;
+    a locala = HnQ[paramInt];
+    locala.HnS += 1L;
+    locala.HnT += paramLong;
   }
   
   public static void report()
   {
-    AppMethodBeat.i(210576);
-    if (!h.eDn())
+    AppMethodBeat.i(236252);
+    if (!g.fKe())
     {
       reset();
-      AppMethodBeat.o(210576);
+      AppMethodBeat.o(236252);
       return;
     }
-    k localk;
-    if (CJM[0].CJO >= 5L)
+    j localj;
+    if (HnQ[0].HnS >= 5L)
     {
-      localk = k.CDm;
-      k.Cz(CJM[0].eER());
+      localj = j.Hhp;
+      j.LM(HnQ[0].fLU());
     }
-    if (CJM[1].CJO >= 5L)
+    if (HnQ[1].HnS >= 5L)
     {
-      localk = k.CDm;
-      k.CA(CJM[1].eER());
+      localj = j.Hhp;
+      j.LN(HnQ[1].fLU());
     }
-    if (CJM[2].CJO >= 5L)
+    if (HnQ[2].HnS >= 5L)
     {
-      localk = k.CDm;
-      k.CB(CJM[2].eER());
+      localj = j.Hhp;
+      j.LO(HnQ[2].fLU());
     }
-    if (CJM[3].CJO >= 5L)
+    if (HnQ[3].HnS >= 5L)
     {
-      localk = k.CDm;
-      k.CC(CJM[3].eER());
+      localj = j.Hhp;
+      j.LP(HnQ[3].fLU());
     }
-    if (CJM[4].CJO >= 5L)
+    if (HnQ[4].HnS >= 5L)
     {
-      localk = k.CDm;
-      k.CD(CJM[4].eER());
+      localj = j.Hhp;
+      j.LQ(HnQ[4].fLU());
     }
     reset();
-    AppMethodBeat.o(210576);
+    AppMethodBeat.o(236252);
   }
   
   public static void reset()
   {
-    a[] arrayOfa = CJM;
+    a[] arrayOfa = HnQ;
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
       a locala = arrayOfa[i];
-      locala.CJO = 0L;
-      locala.CJP = 0L;
+      locala.HnS = 0L;
+      locala.HnT = 0L;
       i += 1;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "", "times", "", "sum", "(JJ)V", "getSum", "()J", "setSum", "(J)V", "getTimes", "setTimes", "append", "", "cost", "avg", "reset", "plugin-voip_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/render/ProfileHelper$Record;", "", "times", "", "sum", "(JJ)V", "getSum", "()J", "setSum", "(J)V", "getTimes", "setTimes", "append", "", "cost", "avg", "reset", "plugin-voip_release"})
   public static final class a
   {
-    long CJO = 0L;
-    long CJP = 0L;
+    long HnS = 0L;
+    long HnT = 0L;
     
-    public final long eER()
+    public final long fLU()
     {
-      long l2 = this.CJP;
-      if (this.CJO == 0L) {}
-      for (long l1 = 1L;; l1 = this.CJO) {
+      long l2 = this.HnT;
+      if (this.HnS == 0L) {}
+      for (long l1 = 1L;; l1 = this.HnS) {
         return l2 / l1;
       }
     }
@@ -104,7 +104,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.render.i
  * JD-Core Version:    0.7.0.1
  */

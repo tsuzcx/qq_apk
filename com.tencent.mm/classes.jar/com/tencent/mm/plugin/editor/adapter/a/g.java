@@ -16,32 +16,32 @@ public final class g
   {
     super(paramView, paramj);
     AppMethodBeat.i(181661);
-    this.pzb.setVisibility(0);
-    this.dtJ.setVisibility(8);
-    this.jnX.setVisibility(8);
-    this.pzb.setTag(this);
-    this.pzb.setOnClickListener(this.pzq);
+    this.qOs.setVisibility(0);
+    this.dKU.setVisibility(8);
+    this.kmg.setVisibility(8);
+    this.qOs.setTag(this);
+    this.qOs.setOnClickListener(this.qOH);
     AppMethodBeat.o(181661);
   }
   
   public final void a(a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181662);
-    this.pze.setImageResource(2131690875);
-    this.pzc.setText(((k)parama).title);
-    this.pzd.setText(((k)parama).content);
+    this.qOv.setImageResource(2131691162);
+    this.qOt.setText(((k)parama).title);
+    this.qOu.setText(((k)parama).content);
     super.a(parama, paramInt1, paramInt2);
     AppMethodBeat.o(181662);
   }
   
-  public final int cfi()
+  public final int cCY()
   {
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.g
  * JD-Core Version:    0.7.0.1
  */

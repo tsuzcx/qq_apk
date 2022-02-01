@@ -1,72 +1,30 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ao;
-import com.tencent.mm.plugin.appbrand.app.PluginAppBrand;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.config.d;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.u;
-import com.tencent.mm.plugin.appbrand.u.a;
-import com.tencent.mm.plugin.base.model.c;
-import com.tencent.mm.plugin.base.model.c.a;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mm.plugin.appbrand.page.ag;
 
 public final class l
-  extends a<ad>
+  extends a<ag>
 {
-  l()
+  public l()
   {
-    super(s.lXt.ordinal());
-    AppMethodBeat.i(47644);
-    AppMethodBeat.o(47644);
+    super(u.nfz.ordinal());
+    AppMethodBeat.i(227168);
+    AppMethodBeat.o(227168);
   }
   
   public static final class a
-    extends ao
+    extends s
   {
-    public final String getTag()
-    {
-      return "MicroMsg.MenuDelegate_SendToDesktop.ConfigMigration";
-    }
-    
-    public final boolean os(int paramInt)
-    {
-      return true;
-    }
-    
-    public final void transfer(int paramInt)
-    {
-      AppMethodBeat.i(180323);
-      if (PluginAppBrand.getProcessSharedPrefs().contains("key_sendtodesktop_no_more_show_permission_notify_dialog"))
-      {
-        AppMethodBeat.o(180323);
-        return;
-      }
-      try
-      {
-        boolean bool = j.Em().get("key_sendtodesktop_no_more_show_permission_notify_dialog", "0").equals("1");
-        PluginAppBrand.getProcessSharedPrefs().edit().putBoolean("key_sendtodesktop_no_more_show_permission_notify_dialog", bool).apply();
-        AppMethodBeat.o(180323);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        ae.e("MicroMsg.MenuDelegate_SendToDesktop", "SendToDesktopConfigToMMKVMigration.transfer() error=%s", new Object[] { localThrowable });
-        AppMethodBeat.o(180323);
-      }
-    }
+    private static final int CTRL_INDEX = 904;
+    public static final String NAME = "onStartHandoff";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.l
  * JD-Core Version:    0.7.0.1
  */

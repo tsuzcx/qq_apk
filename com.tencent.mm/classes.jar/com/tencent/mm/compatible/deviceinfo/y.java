@@ -3,49 +3,49 @@ package com.tencent.mm.compatible.deviceinfo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Map;
 
 public final class y
 {
-  public static boolean geb = false;
-  public String gec = "";
-  Map<String, String> ged = null;
-  private int gee = 0;
+  public static boolean gJA = false;
+  public String gJB = "";
+  Map<String, String> gJC = null;
+  private int gJD = 0;
   
-  public static boolean aaX()
+  public static boolean aoW()
   {
     boolean bool = false;
-    if (geb)
+    if (gJA)
     {
-      geb = false;
+      gJA = false;
       bool = true;
     }
     return bool;
   }
   
-  public final void lv(int paramInt)
+  public final void DY(String paramString)
+  {
+    this.gJB = paramString;
+  }
+  
+  public final void oy(int paramInt)
   {
     AppMethodBeat.i(155767);
-    this.gee = paramInt;
-    geb = true;
-    SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(ak.getContext(), "system_config_prefs", 4).edit();
+    this.gJD = paramInt;
+    gJA = true;
+    SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(MMApplicationContext.getContext(), "system_config_prefs", 4).edit();
     localEditor.putInt("update_swip_back_status", paramInt);
     localEditor.commit();
-    ae.v("MicroMsg.ManuFacturerInfo", "update mSwipBackStatus(%s)", new Object[] { Integer.valueOf(this.gee) });
+    Log.v("MicroMsg.ManuFacturerInfo", "update mSwipBackStatus(%s)", new Object[] { Integer.valueOf(this.gJD) });
     AppMethodBeat.o(155767);
   }
   
-  public final void p(Map<String, String> paramMap)
+  public final void r(Map<String, String> paramMap)
   {
-    this.ged = paramMap;
-  }
-  
-  public final void vH(String paramString)
-  {
-    this.gec = paramString;
+    this.gJC = paramMap;
   }
 }
 

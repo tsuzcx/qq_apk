@@ -1,20 +1,20 @@
 package com.tencent.mm.dynamicbackground.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgServiceManager;", "", "()V", "TAG", "", "service", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "getDynamicBgService", "setDynamicBgService", "", "dynamicBgService", "dynamicbg_release"})
+@l(hxD={1, 1, 11}, hxE={""}, hxF={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgServiceManager;", "", "()V", "TAG", "", "service", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "getDynamicBgService", "setDynamicBgService", "", "dynamicBgService", "dynamicbg_release"})
 public final class d
 {
-  private static c ghQ;
-  public static final d ghR;
+  private static c gRi;
+  public static final d gRj;
   
   static
   {
     AppMethodBeat.i(103080);
-    ghR = new d();
-    ghQ = (c)new a();
+    gRj = new d();
+    gRi = (c)new a();
     AppMethodBeat.o(103080);
   }
   
@@ -23,13 +23,13 @@ public final class d
     AppMethodBeat.i(103079);
     p.h(paramc, "dynamicBgService");
     com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgServiceManager", "alvinluo setDynamicBgService", new Object[0]);
-    ghQ = paramc;
+    gRi = paramc;
     AppMethodBeat.o(103079);
   }
   
-  public static c aeg()
+  public static c atN()
   {
-    return ghQ;
+    return gRi;
   }
 }
 

@@ -181,12 +181,12 @@ public class Fragment
     for (;;)
     {
       if (localc != null) {
-        localc.dZ();
+        localc.ej();
       }
       return;
-      this.mAnimationInfo.Fo = false;
-      localc = this.mAnimationInfo.Fp;
-      this.mAnimationInfo.Fp = null;
+      this.mAnimationInfo.Fy = false;
+      localc = this.mAnimationInfo.Fz;
+      this.mAnimationInfo.Fz = null;
     }
   }
   
@@ -347,18 +347,18 @@ public class Fragment
   
   public boolean getAllowEnterTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.Fl == null)) {
+    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.Fv == null)) {
       return true;
     }
-    return this.mAnimationInfo.Fl.booleanValue();
+    return this.mAnimationInfo.Fv.booleanValue();
   }
   
   public boolean getAllowReturnTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.Fk == null)) {
+    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.Fu == null)) {
       return true;
     }
-    return this.mAnimationInfo.Fk.booleanValue();
+    return this.mAnimationInfo.Fu.booleanValue();
   }
   
   View getAnimatingAway()
@@ -366,7 +366,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.EY;
+    return this.mAnimationInfo.Fi;
   }
   
   Animator getAnimator()
@@ -374,7 +374,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.EZ;
+    return this.mAnimationInfo.Fj;
   }
   
   public final Bundle getArguments()
@@ -419,7 +419,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.Fe;
+    return this.mAnimationInfo.Fo;
   }
   
   z getEnterTransitionCallback()
@@ -427,7 +427,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.Fm;
+    return this.mAnimationInfo.Fw;
   }
   
   public Object getExitTransition()
@@ -435,7 +435,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.Fg;
+    return this.mAnimationInfo.Fq;
   }
   
   z getExitTransitionCallback()
@@ -443,7 +443,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.Fn;
+    return this.mAnimationInfo.Fx;
   }
   
   public final g getFragmentManager()
@@ -500,7 +500,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.Fb;
+    return this.mAnimationInfo.Fl;
   }
   
   int getNextTransition()
@@ -508,7 +508,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.Fc;
+    return this.mAnimationInfo.Fm;
   }
   
   int getNextTransitionStyle()
@@ -516,7 +516,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.Fd;
+    return this.mAnimationInfo.Fn;
   }
   
   public final Fragment getParentFragment()
@@ -529,10 +529,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.Fh == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.Fr == USE_DEFAULT_TRANSITION) {
       return getExitTransition();
     }
-    return this.mAnimationInfo.Fh;
+    return this.mAnimationInfo.Fr;
   }
   
   public final Resources getResources()
@@ -550,10 +550,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.Ff == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.Fp == USE_DEFAULT_TRANSITION) {
       return getEnterTransition();
     }
-    return this.mAnimationInfo.Ff;
+    return this.mAnimationInfo.Fp;
   }
   
   public Object getSharedElementEnterTransition()
@@ -561,7 +561,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.Fi;
+    return this.mAnimationInfo.Fs;
   }
   
   public Object getSharedElementReturnTransition()
@@ -569,10 +569,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.Fj == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.Ft == USE_DEFAULT_TRANSITION) {
       return getSharedElementEnterTransition();
     }
-    return this.mAnimationInfo.Fj;
+    return this.mAnimationInfo.Ft;
   }
   
   int getStateAfterAnimating()
@@ -580,7 +580,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.Fa;
+    return this.mAnimationInfo.Fk;
   }
   
   public final String getString(int paramInt)
@@ -726,7 +726,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return false;
     }
-    return this.mAnimationInfo.Fq;
+    return this.mAnimationInfo.FA;
   }
   
   final boolean isInBackStack()
@@ -749,7 +749,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return false;
     }
-    return this.mAnimationInfo.Fo;
+    return this.mAnimationInfo.Fy;
   }
   
   public final boolean isRemoving()
@@ -1098,7 +1098,7 @@ public class Fragment
     if (!this.mCalled) {
       throw new aa("Fragment " + this + " did not call through to super.onDestroyView()");
     }
-    p.d(this).em();
+    p.d(this).eq();
     this.mPerformedCreateView = false;
   }
   
@@ -1293,7 +1293,7 @@ public class Fragment
   
   public void postponeEnterTransition()
   {
-    ensureAnimationInfo().Fo = true;
+    ensureAnimationInfo().Fy = true;
   }
   
   public void registerForContextMenu(View paramView)
@@ -1381,22 +1381,22 @@ public class Fragment
   
   public void setAllowEnterTransitionOverlap(boolean paramBoolean)
   {
-    ensureAnimationInfo().Fl = Boolean.valueOf(paramBoolean);
+    ensureAnimationInfo().Fv = Boolean.valueOf(paramBoolean);
   }
   
   public void setAllowReturnTransitionOverlap(boolean paramBoolean)
   {
-    ensureAnimationInfo().Fk = Boolean.valueOf(paramBoolean);
+    ensureAnimationInfo().Fu = Boolean.valueOf(paramBoolean);
   }
   
   void setAnimatingAway(View paramView)
   {
-    ensureAnimationInfo().EY = paramView;
+    ensureAnimationInfo().Fi = paramView;
   }
   
   void setAnimator(Animator paramAnimator)
   {
-    ensureAnimationInfo().EZ = paramAnimator;
+    ensureAnimationInfo().Fj = paramAnimator;
   }
   
   public void setArguments(Bundle paramBundle)
@@ -1409,22 +1409,22 @@ public class Fragment
   
   public void setEnterSharedElementCallback(z paramz)
   {
-    ensureAnimationInfo().Fm = paramz;
+    ensureAnimationInfo().Fw = paramz;
   }
   
   public void setEnterTransition(Object paramObject)
   {
-    ensureAnimationInfo().Fe = paramObject;
+    ensureAnimationInfo().Fo = paramObject;
   }
   
   public void setExitSharedElementCallback(z paramz)
   {
-    ensureAnimationInfo().Fn = paramz;
+    ensureAnimationInfo().Fx = paramz;
   }
   
   public void setExitTransition(Object paramObject)
   {
-    ensureAnimationInfo().Fg = paramObject;
+    ensureAnimationInfo().Fq = paramObject;
   }
   
   public void setHasOptionsMenu(boolean paramBoolean)
@@ -1433,14 +1433,14 @@ public class Fragment
     {
       this.mHasMenu = paramBoolean;
       if ((isAdded()) && (!isHidden())) {
-        this.mHost.eb();
+        this.mHost.el();
       }
     }
   }
   
   void setHideReplaced(boolean paramBoolean)
   {
-    ensureAnimationInfo().Fq = paramBoolean;
+    ensureAnimationInfo().FA = paramBoolean;
   }
   
   final void setIndex(int paramInt, Fragment paramFragment)
@@ -1459,8 +1459,8 @@ public class Fragment
     if (this.mIndex >= 0) {
       throw new IllegalStateException("Fragment already active");
     }
-    if ((paramSavedState != null) && (paramSavedState.Fr != null)) {}
-    for (paramSavedState = paramSavedState.Fr;; paramSavedState = null)
+    if ((paramSavedState != null) && (paramSavedState.FB != null)) {}
+    for (paramSavedState = paramSavedState.FB;; paramSavedState = null)
     {
       this.mSavedFragmentState = paramSavedState;
       return;
@@ -1473,7 +1473,7 @@ public class Fragment
     {
       this.mMenuVisible = paramBoolean;
       if ((this.mHasMenu) && (isAdded()) && (!isHidden())) {
-        this.mHost.eb();
+        this.mHost.el();
       }
     }
   }
@@ -1483,7 +1483,7 @@ public class Fragment
     if ((this.mAnimationInfo == null) && (paramInt == 0)) {
       return;
     }
-    ensureAnimationInfo().Fb = paramInt;
+    ensureAnimationInfo().Fl = paramInt;
   }
   
   void setNextTransition(int paramInt1, int paramInt2)
@@ -1492,22 +1492,22 @@ public class Fragment
       return;
     }
     ensureAnimationInfo();
-    this.mAnimationInfo.Fc = paramInt1;
-    this.mAnimationInfo.Fd = paramInt2;
+    this.mAnimationInfo.Fm = paramInt1;
+    this.mAnimationInfo.Fn = paramInt2;
   }
   
   void setOnStartEnterTransitionListener(c paramc)
   {
     ensureAnimationInfo();
-    if (paramc == this.mAnimationInfo.Fp) {}
+    if (paramc == this.mAnimationInfo.Fz) {}
     do
     {
       return;
-      if ((paramc != null) && (this.mAnimationInfo.Fp != null)) {
+      if ((paramc != null) && (this.mAnimationInfo.Fz != null)) {
         throw new IllegalStateException("Trying to set a replacement startPostponedEnterTransition on ".concat(String.valueOf(this)));
       }
-      if (this.mAnimationInfo.Fo) {
-        this.mAnimationInfo.Fp = paramc;
+      if (this.mAnimationInfo.Fy) {
+        this.mAnimationInfo.Fz = paramc;
       }
     } while (paramc == null);
     paramc.startListening();
@@ -1515,7 +1515,7 @@ public class Fragment
   
   public void setReenterTransition(Object paramObject)
   {
-    ensureAnimationInfo().Fh = paramObject;
+    ensureAnimationInfo().Fr = paramObject;
   }
   
   public void setRetainInstance(boolean paramBoolean)
@@ -1525,22 +1525,22 @@ public class Fragment
   
   public void setReturnTransition(Object paramObject)
   {
-    ensureAnimationInfo().Ff = paramObject;
+    ensureAnimationInfo().Fp = paramObject;
   }
   
   public void setSharedElementEnterTransition(Object paramObject)
   {
-    ensureAnimationInfo().Fi = paramObject;
+    ensureAnimationInfo().Fs = paramObject;
   }
   
   public void setSharedElementReturnTransition(Object paramObject)
   {
-    ensureAnimationInfo().Fj = paramObject;
+    ensureAnimationInfo().Ft = paramObject;
   }
   
   void setStateAfterAnimating(int paramInt)
   {
-    ensureAnimationInfo().Fa = paramInt;
+    ensureAnimationInfo().Fk = paramInt;
   }
   
   public void setTargetFragment(Fragment paramFragment, int paramInt)
@@ -1579,16 +1579,16 @@ public class Fragment
   public boolean shouldShowRequestPermissionRationale(String paramString)
   {
     if (this.mHost != null) {
-      return this.mHost.q(paramString);
+      return this.mHost.r(paramString);
     }
     return false;
   }
   
   public void startActivity(Intent paramIntent)
   {
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(null).bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahE(), "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-    startActivity((Intent)paramIntent.mt(0), (Bundle)paramIntent.mt(1));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(null).bl(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.axQ(), "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
+    startActivity((Intent)paramIntent.pG(0), (Bundle)paramIntent.pG(1));
     com.tencent.mm.hellhoundlib.a.a.a(this, "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
   }
   
@@ -1625,7 +1625,7 @@ public class Fragment
   {
     if ((this.mFragmentManager == null) || (this.mFragmentManager.mHost == null))
     {
-      ensureAnimationInfo().Fo = false;
+      ensureAnimationInfo().Fy = false;
       return;
     }
     if (Looper.myLooper() != this.mFragmentManager.mHost.mHandler.getLooper())
@@ -1674,18 +1674,18 @@ public class Fragment
     implements Parcelable
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-    final Bundle Fr;
+    final Bundle FB;
     
     SavedState(Bundle paramBundle)
     {
-      this.Fr = paramBundle;
+      this.FB = paramBundle;
     }
     
     SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
-      this.Fr = paramParcel.readBundle();
-      if ((paramClassLoader != null) && (this.Fr != null)) {
-        this.Fr.setClassLoader(paramClassLoader);
+      this.FB = paramParcel.readBundle();
+      if ((paramClassLoader != null) && (this.FB != null)) {
+        this.FB.setClassLoader(paramClassLoader);
       }
     }
     
@@ -1696,31 +1696,31 @@ public class Fragment
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      paramParcel.writeBundle(this.Fr);
+      paramParcel.writeBundle(this.FB);
     }
   }
   
   static final class a
   {
-    View EY;
-    Animator EZ;
-    int Fa;
-    int Fb;
-    int Fc;
-    int Fd;
-    Object Fe = null;
-    Object Ff = Fragment.USE_DEFAULT_TRANSITION;
-    Object Fg = null;
-    Object Fh = Fragment.USE_DEFAULT_TRANSITION;
-    Object Fi = null;
-    Object Fj = Fragment.USE_DEFAULT_TRANSITION;
-    Boolean Fk;
-    Boolean Fl;
-    z Fm = null;
-    z Fn = null;
-    boolean Fo;
-    Fragment.c Fp;
-    boolean Fq;
+    boolean FA;
+    View Fi;
+    Animator Fj;
+    int Fk;
+    int Fl;
+    int Fm;
+    int Fn;
+    Object Fo = null;
+    Object Fp = Fragment.USE_DEFAULT_TRANSITION;
+    Object Fq = null;
+    Object Fr = Fragment.USE_DEFAULT_TRANSITION;
+    Object Fs = null;
+    Object Ft = Fragment.USE_DEFAULT_TRANSITION;
+    Boolean Fu;
+    Boolean Fv;
+    z Fw = null;
+    z Fx = null;
+    boolean Fy;
+    Fragment.c Fz;
   }
   
   public static final class b
@@ -1734,7 +1734,7 @@ public class Fragment
   
   static abstract interface c
   {
-    public abstract void dZ();
+    public abstract void ej();
     
     public abstract void startListening();
   }

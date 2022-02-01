@@ -34,6 +34,11 @@ public abstract interface c
       return new a(paramIBinder);
     }
     
+    public static c gvb()
+    {
+      return a.NCy;
+    }
+    
     public IBinder asBinder()
     {
       return this;
@@ -77,6 +82,7 @@ public abstract interface c
     static final class a
       implements c
     {
+      public static c NCy;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -102,13 +108,12 @@ public abstract interface c
               paramBundle.writeToParcel(localParcel1, 0);
               if (paramb != null)
               {
-                paramString1 = paramb.asBinder();
-                localParcel1.writeStrongBinder(paramString1);
-                this.mRemote.transact(1, localParcel1, localParcel2, 0);
-                localParcel2.readException();
-                if (localParcel2.readInt() != 0) {
-                  paramBundle.readFromParcel(localParcel2);
+                localIBinder = paramb.asBinder();
+                localParcel1.writeStrongBinder(localIBinder);
+                if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (c.a.gvb() == null)) {
+                  break;
                 }
+                c.a.gvb().a(paramString1, paramString2, paramBundle, paramb);
               }
             }
             else
@@ -116,7 +121,7 @@ public abstract interface c
               localParcel1.writeInt(0);
               continue;
             }
-            paramString1 = null;
+            IBinder localIBinder = null;
           }
           finally
           {
@@ -125,6 +130,13 @@ public abstract interface c
             AppMethodBeat.o(152740);
           }
         }
+        localParcel2.readException();
+        if (localParcel2.readInt() != 0) {
+          paramBundle.readFromParcel(localParcel2);
+        }
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(152740);
       }
       
       public final IBinder asBinder()
@@ -136,7 +148,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.remoteservice.c
  * JD-Core Version:    0.7.0.1
  */

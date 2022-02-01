@@ -16,7 +16,7 @@ public final class g
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, Path paramPath)
   {
     AppMethodBeat.i(144877);
-    paramCanvas.drawPath(paramPath, paramd.jWp);
+    paramCanvas.drawPath(paramPath, paramd.kZl);
     AppMethodBeat.o(144877);
     return true;
   }
@@ -24,7 +24,7 @@ public final class g
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
     AppMethodBeat.i(144878);
-    boolean bool = a(paramd, paramCanvas, e.a.jXy.a((PathActionArgWrapper)paramDrawActionArg));
+    boolean bool = a(paramd, paramCanvas, e.a.law.a((PathActionArgWrapper)paramDrawActionArg));
     AppMethodBeat.o(144878);
     return bool;
   }
@@ -32,12 +32,12 @@ public final class g
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
     AppMethodBeat.i(144876);
-    boolean bool = a(paramd, paramCanvas, e.a.jXy.g(paramJSONArray));
+    boolean bool = a(paramd, paramCanvas, e.a.law.g(paramJSONArray));
     AppMethodBeat.o(144876);
     return bool;
   }
   
-  public final BaseDrawActionArg bdS()
+  public final BaseDrawActionArg bzj()
   {
     AppMethodBeat.i(144875);
     PathActionArgWrapper localPathActionArgWrapper = new PathActionArgWrapper();
@@ -52,7 +52,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.g
  * JD-Core Version:    0.7.0.1
  */

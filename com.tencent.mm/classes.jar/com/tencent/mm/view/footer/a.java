@@ -16,146 +16,224 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.g;
-import com.tencent.mm.api.w;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.api.h;
+import com.tencent.mm.api.z;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 
 public abstract class a
   extends View
 {
-  public static final int[] LQk = { -1, -16777216, -707825, -17592, -16535286, -15172610, -7054596, -449092 };
-  private final float LPT = getResources().getDimension(2131166286);
-  private Bitmap LPU;
-  private Bitmap LPV;
-  private Bitmap LPW;
-  private Bitmap LPX;
-  private Bitmap LPY;
-  private Bitmap LPZ;
-  protected Bitmap LQa;
-  protected Bitmap LQb;
-  protected int LQc = -1;
-  protected int LQd = -1;
-  private Rect[] LQe;
-  private Rect[] LQf;
-  protected Rect LQg;
-  protected boolean LQh;
-  protected Paint LQi;
-  protected Paint LQj;
-  protected boolean LQl = false;
-  protected int LQm = -1;
-  protected int LQn = -1;
-  private boolean LQo = true;
-  private com.tencent.mm.bt.b dbm;
-  private Paint gBr;
-  protected int nuE = -1;
+  public static final int[] RoQ = { -1, -16777216, -707825, -17592, -16535286, -15172610, -7054596, -449092 };
+  private Bitmap RoA;
+  private Bitmap RoB;
+  private Bitmap RoC;
+  private Bitmap RoD;
+  private Bitmap RoE;
+  private Bitmap RoF;
+  protected Bitmap RoG;
+  protected Bitmap RoH;
+  protected int RoI = -1;
+  protected int RoJ = -1;
+  private Rect[] RoK;
+  private Rect[] RoL;
+  protected Rect RoM;
+  protected boolean RoN;
+  protected Paint RoO;
+  protected Paint RoP;
+  protected boolean RoR = false;
+  protected int RoS = -1;
+  protected int RoT = -1;
+  private boolean RoU = true;
+  private final float Roz = getResources().getDimension(2131166333);
+  private com.tencent.mm.bt.b drS;
+  private Paint hog;
+  protected int oEI = -1;
   
   public a(Context paramContext, com.tencent.mm.bt.b paramb)
   {
     super(paramContext);
-    setId(2131297188);
-    this.dbm = paramb;
-    fUL();
+    setId(2131297333);
+    this.drS = paramb;
+    hgh();
   }
   
-  private Bitmap b(g paramg, boolean paramBoolean)
+  private Bitmap b(h paramh, boolean paramBoolean)
   {
     Bitmap localBitmap1 = null;
-    switch (a.3.FFo[paramg.ordinal()])
+    switch (3.Kyu[paramh.ordinal()])
     {
     }
     for (;;)
     {
       Bitmap localBitmap2 = localBitmap1;
       if (localBitmap1 == null) {
-        localBitmap2 = a(paramg, paramBoolean);
+        localBitmap2 = a(paramh, paramBoolean);
       }
       return localBitmap2;
       if (paramBoolean)
       {
-        localBitmap1 = this.LPX;
+        localBitmap1 = this.RoD;
       }
       else
       {
-        localBitmap1 = this.LPW;
+        localBitmap1 = this.RoC;
         continue;
         if (paramBoolean)
         {
-          localBitmap1 = this.LPZ;
+          localBitmap1 = this.RoF;
         }
         else
         {
-          localBitmap1 = this.LPY;
+          localBitmap1 = this.RoE;
           continue;
           if (paramBoolean) {
-            localBitmap1 = this.LPV;
+            localBitmap1 = this.RoB;
           } else {
-            localBitmap1 = this.LPU;
+            localBitmap1 = this.RoA;
           }
         }
       }
     }
   }
   
-  private boolean fUM()
+  private boolean hgi()
   {
     return getDetailHeight() > 0;
   }
   
-  private void fUO()
+  private void hgk()
   {
-    if (this.LQf == null) {
-      this.LQf = new Rect[LQk.length];
+    if (this.RoL == null) {
+      this.RoL = new Rect[RoQ.length];
     }
-    if (this.LQg == null) {
-      this.LQg = new Rect();
+    if (this.RoM == null) {
+      this.RoM = new Rect();
     }
-    float f1 = getResources().getDimension(2131166164);
-    float f2 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.LQa.getWidth() - 2.0F * f1 * LQk.length) / LQk.length;
+    float f1 = getResources().getDimension(2131166205);
+    float f2 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.RoG.getWidth() - 2.0F * f1 * RoQ.length) / RoQ.length;
     int k = (int)(f1 * 2.0F);
     int j = (int)(getPaddingLeftAndRight() / 2 + f1 + 5.0F);
     int m = (int)((getDetailHeight() - f1 * 2.0F) / 2.0F + f1);
     int i = 0;
-    while (i < LQk.length)
+    while (i < RoQ.length)
     {
-      this.LQf[i] = new Rect(j - k, m - k, j + k, m + k);
+      this.RoL[i] = new Rect(j - k, m - k, j + k, m + k);
       j = (int)(j + (2.0F * f1 + f2));
       i += 1;
     }
-    i = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.LQa.getWidth() / 2;
-    this.LQg.set(i - this.LQa.getWidth(), 0, i + this.LQa.getWidth(), getDetailHeight());
+    i = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.RoG.getWidth() / 2;
+    this.RoM.set(i - this.RoG.getWidth(), 0, i + this.RoG.getWidth(), getDetailHeight());
   }
   
-  public static int getColor(int paramInt)
+  protected void A(Canvas paramCanvas)
   {
-    if ((paramInt >= 0) && (paramInt < LQk.length)) {
-      return LQk[paramInt];
+    if (hgi())
+    {
+      paramCanvas.drawLine(0.0F, getDetailHeight(), getMeasuredWidth(), getDetailHeight(), this.RoP);
+      B(paramCanvas);
     }
-    return -65536;
+    float f1 = this.Roz;
+    float f2 = getHeightSpacing();
+    float f3 = getDetailHeight();
+    int i = 0;
+    if (i < getFeatureCount())
+    {
+      Object localObject = getPresenter().getFeatures()[i];
+      if ((this.RoS == i) || (i == this.oEI)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localObject = b((h)localObject, bool);
+        if (localObject != null) {
+          paramCanvas.drawBitmap((Bitmap)localObject, f1, f2 + f3, null);
+        }
+        f1 += getWidthSpacing() + getIconWidth();
+        i += 1;
+        break;
+      }
+    }
   }
   
-  protected final boolean NL()
+  protected void B(Canvas paramCanvas)
+  {
+    Paint localPaint;
+    if (apW(this.oEI) == h.diH)
+    {
+      float f4 = getResources().getDimension(2131166205);
+      float f5 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.RoG.getWidth() - 2.0F * f4 * RoQ.length) / RoQ.length;
+      float f1 = getPaddingLeftAndRight() / 2;
+      float f2 = com.tencent.mm.cl.a.ao(1.5F) + (f1 + f4);
+      float f6 = (getDetailHeight() - f4 * 2.0F) / 2.0F + f4;
+      int i = 0;
+      if (i < RoQ.length)
+      {
+        float f3 = 0.0F;
+        if (this.RoT == i)
+        {
+          f1 = com.tencent.mm.cl.a.ao(2.0F);
+          this.RoU = false;
+        }
+        for (;;)
+        {
+          this.hog.setColor(-1);
+          paramCanvas.drawCircle(f2, f6, com.tencent.mm.cl.a.ao(1.5F) + f4 + f1, this.hog);
+          this.hog.setColor(RoQ[i]);
+          paramCanvas.drawCircle(f2, f6, f1 + f4, this.hog);
+          f2 += 2.0F * f4 + f5;
+          i += 1;
+          break;
+          f1 = f3;
+          if (this.RoU)
+          {
+            f1 = f3;
+            if (i == 2) {
+              f1 = com.tencent.mm.cl.a.ao(2.0F);
+            }
+          }
+        }
+      }
+      localPaint = new Paint();
+      if (!XX()) {
+        break label327;
+      }
+      localPaint.setAlpha(255);
+      if ((!this.RoN) || (!XX())) {
+        break label338;
+      }
+    }
+    label327:
+    label338:
+    for (Bitmap localBitmap = this.RoH;; localBitmap = this.RoG)
+    {
+      paramCanvas.drawBitmap(localBitmap, getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.RoG.getWidth(), (getDetailHeight() - this.RoG.getHeight()) / 2, localPaint);
+      return;
+      localPaint.setAlpha(160);
+      break;
+    }
+  }
+  
+  protected final boolean XX()
   {
     com.tencent.mm.e.b localb = getPresenter().c(getCurFeatureType());
     if (localb == null) {
       return false;
     }
-    return localb.NL();
+    return localb.XX();
   }
   
-  protected abstract Bitmap a(g paramg, boolean paramBoolean);
+  protected abstract Bitmap a(h paramh, boolean paramBoolean);
   
-  protected final g agL(int paramInt)
+  protected final h apW(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < getFeatureCount())) {
       return getPresenter().getFeatures()[paramInt];
     }
-    return g.cSm;
+    return h.diG;
   }
   
-  protected boolean agM(int paramInt)
+  protected boolean apX(int paramInt)
   {
-    g localg = agL(paramInt);
-    switch (a.3.FFo[localg.ordinal()])
+    h localh = apW(paramInt);
+    switch (3.Kyu[localh.ordinal()])
     {
     case 2: 
     case 3: 
@@ -175,12 +253,12 @@ public abstract class a
     case 2: 
     default: 
       return true;
-      if (fUM())
+      if (hgi())
       {
-        if ((this.LQg == null) || (!this.LQg.contains(j, k))) {
+        if ((this.RoM == null) || (!this.RoM.contains(j, k))) {
           break label124;
         }
-        this.LQh = true;
+        this.RoN = true;
         postInvalidate();
       }
     case 0: 
@@ -191,139 +269,91 @@ public abstract class a
         if (i >= getFeatureCount()) {
           break;
         }
-        if (!this.LQe[i].contains(j, k)) {
+        if (!this.RoK[i].contains(j, k)) {
           break label50;
         }
-        this.LQm = i;
+        this.RoS = i;
         postInvalidate();
         return true;
         label124:
-        kE(j, k);
+        mc(j, k);
       }
     }
     i = 0;
     if (i < getFeatureCount())
     {
-      if ((!this.LQe[i].contains(j, k)) || (this.LQm != i)) {
+      if ((!this.RoK[i].contains(j, k)) || (this.RoS != i)) {
         break label360;
       }
-      if (agM(i))
+      if (apX(i))
       {
-        if (this.LQm != this.nuE) {
-          this.nuE = this.LQm;
+        if (this.RoS != this.oEI) {
+          this.oEI = this.RoS;
         }
       }
       else
       {
         label194:
-        if (this.LQl) {
+        if (this.RoR) {
           break label360;
         }
-        this.LQd = this.LQc;
-        if (!agM(i)) {
+        this.RoJ = this.RoI;
+        if (!apX(i)) {
           break label333;
         }
-        this.LQc = this.nuE;
-        getPresenter().getSelectedFeatureListener().a(agL(this.nuE));
+        this.RoI = this.oEI;
+        getPresenter().getSelectedFeatureListener().a(apW(this.oEI));
       }
     }
     else
     {
       label247:
-      if (fUM())
+      if (hgi())
       {
-        if ((this.LQg == null) || (!this.LQg.contains(j, k)) || (!this.LQh)) {
+        if ((this.RoM == null) || (!this.RoM.contains(j, k)) || (!this.RoN)) {
           break label367;
         }
-        getPresenter().getSelectedFeatureListener().a(agL(this.nuE), -1, null);
+        getPresenter().getSelectedFeatureListener().a(apW(this.oEI), -1, null);
       }
     }
     for (;;)
     {
-      this.LQh = false;
-      this.LQm = -1;
+      this.RoN = false;
+      this.RoS = -1;
       requestLayout();
       postInvalidate();
       return true;
-      this.nuE = -1;
+      this.oEI = -1;
       break label194;
       label333:
-      this.LQc = i;
-      getPresenter().getSelectedFeatureListener().a(agL(i));
+      this.RoI = i;
+      getPresenter().getSelectedFeatureListener().a(apW(i));
       break label247;
       label360:
       i += 1;
       break;
       label367:
-      kF(j, k);
+      md(j, k);
     }
   }
   
-  public final boolean fUK()
+  public int getColor(int paramInt)
   {
-    return this.LQl;
-  }
-  
-  protected void fUL()
-  {
-    this.LQi = new Paint(1);
-    this.LQi.setColor(-16711936);
-    this.LQj = new Paint(1);
-    this.LQj.setColor(getResources().getColor(2131100253));
-    this.LQj.setStrokeWidth(0.6F);
-    this.gBr = new Paint(1);
-    this.gBr.setStyle(Paint.Style.FILL);
-    this.gBr.setStrokeCap(Paint.Cap.ROUND);
-    this.LQb = h.B(getResources().getDrawable(2131691346));
-    this.LQa = h.B(getResources().getDrawable(2131691345));
-    this.LPU = h.B(getResources().getDrawable(2131690057));
-    this.LPV = h.B(getResources().getDrawable(2131690056));
-    this.LPW = h.B(getResources().getDrawable(2131691277));
-    this.LPX = h.B(getResources().getDrawable(2131691276));
-    this.LPY = BitmapFactory.decodeResource(getResources(), 2131232082);
-    this.LPZ = BitmapFactory.decodeResource(getResources(), 2131232076);
-  }
-  
-  protected void fUN()
-  {
-    if (this.LQe == null) {
-      this.LQe = new Rect[getFeatureCount()];
+    if ((paramInt >= 0) && (paramInt < RoQ.length)) {
+      return RoQ[paramInt];
     }
-    int j = (int)(this.LPT + getIconWidth() / 2.0F);
-    int k = (int)getIconWidth();
-    int i = 0;
-    while (i < getFeatureCount())
-    {
-      this.LQe[i] = new Rect(j - k, getDetailHeight(), j + k, getDetailHeight() + getMeasuredHeight());
-      j = (int)(j + (getWidthSpacing() + getIconWidth()));
-      i += 1;
-    }
-    if (agL(this.nuE) == g.cSn) {
-      fUO();
-    }
+    return -65536;
   }
   
-  public final void fUP()
+  public h getCurFeatureType()
   {
-    this.LQd = this.LQc;
-  }
-  
-  public final void fUQ()
-  {
-    this.LQc = this.LQd;
-    requestLayout();
-    invalidate();
-  }
-  
-  public g getCurFeatureType()
-  {
-    return agL(this.LQc);
+    return apW(this.RoI);
   }
   
   protected int getDetailHeight()
   {
-    if (agL(this.nuE) == g.cSn) {
-      return (int)getResources().getDimension(2131166288);
+    if (apW(this.oEI) == h.diH) {
+      return (int)getResources().getDimension(2131166335);
     }
     return 0;
   }
@@ -340,7 +370,7 @@ public abstract class a
   
   protected float getIconWidth()
   {
-    Bitmap localBitmap = b(g.cSn, false);
+    Bitmap localBitmap = b(h.diH, false);
     if (localBitmap == null) {
       return 0.0F;
     }
@@ -349,12 +379,12 @@ public abstract class a
   
   public int getPaddingLeftAndRight()
   {
-    return (int)(2.0F * this.LPT);
+    return (int)(2.0F * this.Roz);
   }
   
   protected com.tencent.mm.bt.b getPresenter()
   {
-    return this.dbm;
+    return this.drS;
   }
   
   protected float getWidthSpacing()
@@ -362,23 +392,79 @@ public abstract class a
     return (getMeasuredWidth() - getFeatureCount() * getIconWidth() - getPaddingLeftAndRight()) / (getFeatureCount() - 1);
   }
   
-  protected void kE(int paramInt1, int paramInt2)
+  public final boolean hgg()
   {
-    switch (a.3.FFo[agL(this.nuE).ordinal()])
+    return this.RoR;
+  }
+  
+  protected void hgh()
+  {
+    this.RoO = new Paint(1);
+    this.RoO.setColor(-16711936);
+    this.RoP = new Paint(1);
+    this.RoP.setColor(getResources().getColor(2131100287));
+    this.RoP.setStrokeWidth(0.6F);
+    this.hog = new Paint(1);
+    this.hog.setStyle(Paint.Style.FILL);
+    this.hog.setStrokeCap(Paint.Cap.ROUND);
+    this.RoH = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691678));
+    this.RoG = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691677));
+    this.RoA = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131690089));
+    this.RoB = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131690088));
+    this.RoC = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691609));
+    this.RoD = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691608));
+    this.RoE = BitmapFactory.decodeResource(getResources(), 2131232174);
+    this.RoF = BitmapFactory.decodeResource(getResources(), 2131232168);
+  }
+  
+  protected void hgj()
+  {
+    if (this.RoK == null) {
+      this.RoK = new Rect[getFeatureCount()];
+    }
+    int j = (int)(this.Roz + getIconWidth() / 2.0F);
+    int k = (int)getIconWidth();
+    int i = 0;
+    while (i < getFeatureCount())
+    {
+      this.RoK[i] = new Rect(j - k, getDetailHeight(), j + k, getDetailHeight() + getMeasuredHeight());
+      j = (int)(j + (getWidthSpacing() + getIconWidth()));
+      i += 1;
+    }
+    if (apW(this.oEI) == h.diH) {
+      hgk();
+    }
+  }
+  
+  public final void hgl()
+  {
+    this.RoJ = this.RoI;
+  }
+  
+  public final void hgm()
+  {
+    this.RoI = this.RoJ;
+    requestLayout();
+    invalidate();
+  }
+  
+  protected void mc(int paramInt1, int paramInt2)
+  {
+    switch (3.Kyu[apW(this.oEI).ordinal()])
     {
     }
     for (;;)
     {
       return;
-      if (this.LQf != null)
+      if (this.RoL != null)
       {
         int i = 0;
-        while (i < this.LQf.length)
+        while (i < this.RoL.length)
         {
-          if (this.LQf[i].contains(paramInt1, paramInt2))
+          if (this.RoL[i].contains(paramInt1, paramInt2))
           {
-            this.LQn = i;
-            this.LQo = false;
+            this.RoT = i;
+            this.RoU = false;
             return;
           }
           i += 1;
@@ -387,20 +473,20 @@ public abstract class a
     }
   }
   
-  protected void kF(int paramInt1, int paramInt2)
+  protected void md(int paramInt1, int paramInt2)
   {
-    switch (a.3.FFo[agL(this.nuE).ordinal()])
+    switch (3.Kyu[apW(this.oEI).ordinal()])
     {
     }
     for (;;)
     {
       return;
       int i = 0;
-      while ((this.LQf != null) && (i < this.LQf.length))
+      while ((this.RoL != null) && (i < this.RoL.length))
       {
-        if ((this.LQf[i].contains(paramInt1, paramInt2)) && (i == this.LQn))
+        if ((this.RoL[i].contains(paramInt1, paramInt2)) && (i == this.RoT))
         {
-          getPresenter().getSelectedFeatureListener().a(g.cSn, i, null);
+          getPresenter().getSelectedFeatureListener().a(h.diH, i, null);
           return;
         }
         i += 1;
@@ -412,7 +498,7 @@ public abstract class a
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(0);
-    q(paramCanvas);
+    A(paramCanvas);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -420,117 +506,31 @@ public abstract class a
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    paramInt2 = (int)getResources().getDimension(2131166289);
+    paramInt2 = (int)getResources().getDimension(2131166336);
     paramInt1 = paramInt2;
-    if (fUM()) {
+    if (hgi()) {
       paramInt1 = paramInt2 + getDetailHeight();
     }
     paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(i - j - k, 1073741824), paramInt1);
-    fUN();
+    hgj();
   }
   
-  protected void q(Canvas paramCanvas)
-  {
-    if (fUM())
-    {
-      paramCanvas.drawLine(0.0F, getDetailHeight(), getMeasuredWidth(), getDetailHeight(), this.LQj);
-      r(paramCanvas);
-    }
-    float f1 = this.LPT;
-    float f2 = getHeightSpacing();
-    float f3 = getDetailHeight();
-    int i = 0;
-    if (i < getFeatureCount())
-    {
-      Object localObject = getPresenter().getFeatures()[i];
-      if ((this.LQm == i) || (i == this.nuE)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localObject = b((g)localObject, bool);
-        if (localObject != null) {
-          paramCanvas.drawBitmap((Bitmap)localObject, f1, f2 + f3, null);
-        }
-        f1 += getWidthSpacing() + getIconWidth();
-        i += 1;
-        break;
-      }
-    }
-  }
-  
-  protected void r(Canvas paramCanvas)
-  {
-    Paint localPaint;
-    if (agL(this.nuE) == g.cSn)
-    {
-      float f4 = getResources().getDimension(2131166164);
-      float f5 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.LQa.getWidth() - 2.0F * f4 * LQk.length) / LQk.length;
-      float f1 = getPaddingLeftAndRight() / 2;
-      float f2 = com.tencent.mm.cl.a.cb(1.5F) + (f1 + f4);
-      float f6 = (getDetailHeight() - f4 * 2.0F) / 2.0F + f4;
-      int i = 0;
-      if (i < LQk.length)
-      {
-        float f3 = 0.0F;
-        if (this.LQn == i)
-        {
-          f1 = com.tencent.mm.cl.a.cb(2.0F);
-          this.LQo = false;
-        }
-        for (;;)
-        {
-          this.gBr.setColor(-1);
-          paramCanvas.drawCircle(f2, f6, com.tencent.mm.cl.a.cb(1.5F) + f4 + f1, this.gBr);
-          this.gBr.setColor(LQk[i]);
-          paramCanvas.drawCircle(f2, f6, f1 + f4, this.gBr);
-          f2 += 2.0F * f4 + f5;
-          i += 1;
-          break;
-          f1 = f3;
-          if (this.LQo)
-          {
-            f1 = f3;
-            if (i == 2) {
-              f1 = com.tencent.mm.cl.a.cb(2.0F);
-            }
-          }
-        }
-      }
-      localPaint = new Paint();
-      if (!NL()) {
-        break label329;
-      }
-      localPaint.setAlpha(255);
-      if ((!this.LQh) || (!NL())) {
-        break label340;
-      }
-    }
-    label329:
-    label340:
-    for (Bitmap localBitmap = this.LQb;; localBitmap = this.LQa)
-    {
-      paramCanvas.drawBitmap(localBitmap, getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.LQa.getWidth(), (getDetailHeight() - this.LQa.getHeight()) / 2, localPaint);
-      return;
-      localPaint.setAlpha(160);
-      break;
-    }
-  }
-  
-  public void setCurFeatureType(g paramg)
+  public void setCurFeatureType(h paramh)
   {
     int i = 0;
     if (i < getFeatureCount()) {
-      if (getPresenter().getFeatures()[i] == paramg) {
+      if (getPresenter().getFeatures()[i] == paramh) {
         label25:
-        if (!agM(i)) {
+        if (!apX(i)) {
           break label64;
         }
       }
     }
     label64:
-    for (this.nuE = i;; this.nuE = -1)
+    for (this.oEI = i;; this.oEI = -1)
     {
-      this.LQc = i;
+      this.RoI = i;
       requestLayout();
       invalidate();
       return;
@@ -581,12 +581,12 @@ public abstract class a
   
   public void setHideFooter(boolean paramBoolean)
   {
-    this.LQl = paramBoolean;
+    this.RoR = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.view.footer.a
  * JD-Core Version:    0.7.0.1
  */

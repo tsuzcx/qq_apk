@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/h9a" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView android:id="@id/bjb" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:dividerHeight="12.0dip" android:overScrollMode="never" />
+    <include android:visibility="gone" layout="@layout/n9" />
+</RelativeLayout>

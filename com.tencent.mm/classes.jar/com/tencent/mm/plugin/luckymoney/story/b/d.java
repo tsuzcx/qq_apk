@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.luckymoney.story.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dka;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.protocal.protobuf.edn;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(163698);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "LocalStoryDetail") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "LocalStoryDetail") };
     AppMethodBeat.o(163698);
   }
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "LocalStoryDetail", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, c.info, "LocalStoryDetail", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final List<dka> aqf(String paramString)
+  public final List<edn> aDB(String paramString)
   {
     AppMethodBeat.i(163697);
     Object localObject = String.format("SELECT * from %s where %s=?", new Object[] { "LocalStoryDetail", "packet_id" });
@@ -46,7 +46,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b.d
  * JD-Core Version:    0.7.0.1
  */

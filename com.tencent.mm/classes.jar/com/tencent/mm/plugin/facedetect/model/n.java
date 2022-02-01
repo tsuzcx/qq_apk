@@ -10,12 +10,13 @@ import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.c.a;
 import com.tencent.mm.compatible.deviceinfo.d;
 import com.tencent.mm.compatible.deviceinfo.d.a.a;
 import com.tencent.mm.compatible.deviceinfo.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,17 +26,17 @@ import java.util.List;
 public final class n
 {
   private Context context;
-  public v gaZ;
-  private boolean hsf = true;
-  public boolean iCY = false;
-  public Point nQL = null;
-  public boolean rqh = false;
-  public Point rqi = null;
-  private Point rqj = null;
-  private boolean rqk;
-  public int rql;
-  private boolean rqm = false;
-  public Point rqn = null;
+  public v gGr;
+  private boolean imf = true;
+  public boolean jyo = false;
+  public Point pbD = null;
+  public boolean sRE = false;
+  public Point sRF = null;
+  private Point sRG = null;
+  private boolean sRH;
+  public int sRI;
+  private boolean sRJ = false;
+  public Point sRK = null;
   
   public n(Context paramContext)
   {
@@ -49,9 +50,9 @@ public final class n
     Collections.sort((List)localObject, new n.a((byte)0));
     Point localPoint = null;
     float f3 = paramPoint.x / paramPoint.y;
-    ae.d("MicroMsg.FaceScanCamera", "screen.x: %d, screen.y: %d, ratio: %f", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f3) });
-    long l = bu.jk(ak.getContext());
-    ae.d("MicroMsg.FaceScanCamera", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(l) });
+    Log.d("MicroMsg.FaceScanCamera", "screen.x: %d, screen.y: %d, ratio: %f", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f3) });
+    long l = Util.getAvailableMemoryMB(MMApplicationContext.getContext());
+    Log.d("MicroMsg.FaceScanCamera", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(l) });
     int i = paramPoint.x;
     i = paramPoint.y;
     float f1 = (1.0F / 1.0F);
@@ -64,7 +65,7 @@ public final class n
       Camera.Size localSize = (Camera.Size)((Iterator)localObject).next();
       i = localSize.width;
       j = localSize.height;
-      ae.i("MicroMsg.FaceScanCamera", "realWidth: %d, realHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      Log.i("MicroMsg.FaceScanCamera", "realWidth: %d, realHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       int k = i * j;
       if ((k >= 150400) && (k <= 983040))
       {
@@ -83,12 +84,12 @@ public final class n
         label352:
         for (int m = i;; m = j)
         {
-          ae.d("MicroMsg.FaceScanCamera", "maybeFlippedWidth: %d, maybeFlippedHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-          if ((k != paramPoint.x) || (m != paramPoint.y) || (!j(k, m, l))) {
+          Log.d("MicroMsg.FaceScanCamera", "maybeFlippedWidth: %d, maybeFlippedHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+          if ((k != paramPoint.x) || (m != paramPoint.y) || (!k(k, m, l))) {
             break label359;
           }
           paramParameters = new Point(i, j);
-          ae.i("MicroMsg.FaceScanCamera", "Found preview size exactly matching screen size: ".concat(String.valueOf(paramParameters)));
+          Log.i("MicroMsg.FaceScanCamera", "Found preview size exactly matching screen size: ".concat(String.valueOf(paramParameters)));
           AppMethodBeat.o(103778);
           return paramParameters;
           m = 0;
@@ -98,7 +99,7 @@ public final class n
         }
         label359:
         f2 = Math.abs(k / m - f3);
-        if ((f2 >= f1) || (!j(i, j, l))) {
+        if ((f2 >= f1) || (!k(i, j, l))) {
           break label531;
         }
         localPoint = new Point(i, j);
@@ -109,7 +110,7 @@ public final class n
     label531:
     for (;;)
     {
-      ae.i("MicroMsg.FaceScanCamera", "diff:[%s] newdiff:[%s] w:[%s] h:[%s]", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
+      Log.i("MicroMsg.FaceScanCamera", "diff:[%s] newdiff:[%s] w:[%s] h:[%s]", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
       break;
       paramPoint = localPoint;
       if (localPoint == null)
@@ -119,24 +120,24 @@ public final class n
           break label518;
         }
         paramPoint = new Point(paramParameters.width, paramParameters.height);
-        ae.i("MicroMsg.FaceScanCamera", "No suitable preview sizes, using default: ".concat(String.valueOf(paramPoint)));
+        Log.i("MicroMsg.FaceScanCamera", "No suitable preview sizes, using default: ".concat(String.valueOf(paramPoint)));
       }
       for (;;)
       {
-        ae.i("MicroMsg.FaceScanCamera", "Found best approximate preview size: ".concat(String.valueOf(paramPoint)));
+        Log.i("MicroMsg.FaceScanCamera", "Found best approximate preview size: ".concat(String.valueOf(paramPoint)));
         AppMethodBeat.o(103778);
         return paramPoint;
-        ae.e("MicroMsg.FaceScanCamera", "hy: can not find default size!!");
+        Log.e("MicroMsg.FaceScanCamera", "hy: can not find default size!!");
         paramPoint = localPoint;
       }
     }
   }
   
-  private static boolean j(int paramInt1, int paramInt2, long paramLong)
+  private static boolean k(int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(103779);
     double d = paramInt1 * paramInt2 * 3.0D / 2.0D / 1024.0D / 1024.0D;
-    ae.d("MicroMsg.FaceScanCamera", "dataSizeInMB: %f, availableMemInMb: %d", new Object[] { Double.valueOf(d), Long.valueOf(paramLong) });
+    Log.d("MicroMsg.FaceScanCamera", "dataSizeInMB: %f, availableMemInMb: %d", new Object[] { Double.valueOf(d), Long.valueOf(paramLong) });
     if (paramLong / d >= 5.0D)
     {
       AppMethodBeat.o(103779);
@@ -149,8 +150,8 @@ public final class n
   public final int getPreviewHeight()
   {
     AppMethodBeat.i(103777);
-    ae.v("MicroMsg.FaceScanCamera", "hy: preview height: %d", new Object[] { Integer.valueOf(this.rqi.y) });
-    int i = this.rqi.y;
+    Log.v("MicroMsg.FaceScanCamera", "hy: preview height: %d", new Object[] { Integer.valueOf(this.sRF.y) });
+    int i = this.sRF.y;
     AppMethodBeat.o(103777);
     return i;
   }
@@ -158,8 +159,8 @@ public final class n
   public final int getPreviewWidth()
   {
     AppMethodBeat.i(103776);
-    ae.v("MicroMsg.FaceScanCamera", "hy: preview width: %d", new Object[] { Integer.valueOf(this.rqi.x) });
-    int i = this.rqi.x;
+    Log.v("MicroMsg.FaceScanCamera", "hy: preview width: %d", new Object[] { Integer.valueOf(this.sRF.x) });
+    int i = this.sRF.x;
     AppMethodBeat.o(103776);
     return i;
   }
@@ -167,61 +168,61 @@ public final class n
   public final void i(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(103774);
-    if (this.rqh)
+    if (this.sRE)
     {
-      ae.w("MicroMsg.FaceScanCamera", "in open(), previewing");
+      Log.w("MicroMsg.FaceScanCamera", "in open(), previewing");
       release();
     }
-    this.hsf = true;
-    int j = Camera.getNumberOfCameras();
+    this.imf = true;
+    Object localObject = a.gDs;
+    int j = a.anJ();
     int i = 0;
-    Object localObject;
     if (i < j)
     {
       localObject = new Camera.CameraInfo();
       Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
-      if ((((Camera.CameraInfo)localObject).facing == 1) && (this.hsf)) {
-        ae.d("MicroMsg.FaceScanCamera", "hy: front Camera found");
+      if ((((Camera.CameraInfo)localObject).facing == 1) && (this.imf)) {
+        Log.d("MicroMsg.FaceScanCamera", "hy: front Camera found");
       }
     }
     for (;;)
     {
-      long l = bu.HQ();
+      long l = Util.currentTicks();
       localObject = d.a(this.context, i, null);
       if (localObject == null)
       {
-        ae.e("MicroMsg.FaceScanCamera", "in open(), openCameraRes == null");
+        Log.e("MicroMsg.FaceScanCamera", "in open(), openCameraRes == null");
         paramSurfaceTexture = new IOException();
         AppMethodBeat.o(103774);
         throw paramSurfaceTexture;
-        if ((((Camera.CameraInfo)localObject).facing == 0) && (!this.hsf))
+        if ((((Camera.CameraInfo)localObject).facing == 0) && (!this.imf))
         {
-          ae.d("MicroMsg.FaceScanCamera", "hy: front Camera found");
+          Log.d("MicroMsg.FaceScanCamera", "hy: front Camera found");
           continue;
         }
         i += 1;
         break;
       }
-      this.iCY = true;
-      ae.d("MicroMsg.FaceScanCamera", "openCamera done, cameraId=[%s] costTime=[%s]", new Object[] { Integer.valueOf(i), Long.valueOf(bu.aO(l)) });
-      this.rql = ((d.a.a)localObject).dHi;
-      if (((d.a.a)localObject).dHi % 180 != 0) {}
+      this.jyo = true;
+      Log.d("MicroMsg.FaceScanCamera", "openCamera done, cameraId=[%s] costTime=[%s]", new Object[] { Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
+      this.sRI = ((d.a.a)localObject).dYT;
+      if (((d.a.a)localObject).dYT % 180 != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.rqk = bool;
-        this.gaZ = ((d.a.a)localObject).gaZ;
-        if (this.gaZ != null) {
+        this.sRH = bool;
+        this.gGr = ((d.a.a)localObject).gGr;
+        if (this.gGr != null) {
           break;
         }
-        ae.e("MicroMsg.FaceScanCamera", "in open(), camera == null, bNeedRotate=[%s]", new Object[] { Boolean.valueOf(this.rqk) });
+        Log.e("MicroMsg.FaceScanCamera", "in open(), camera == null, bNeedRotate=[%s]", new Object[] { Boolean.valueOf(this.sRH) });
         paramSurfaceTexture = new IOException();
         AppMethodBeat.o(103774);
         throw paramSurfaceTexture;
       }
-      this.gaZ.setPreviewTexture(paramSurfaceTexture);
-      Camera.Parameters localParameters = this.gaZ.getParameters();
-      Point localPoint2 = this.nQL;
-      Point localPoint1 = this.rqj;
+      this.gGr.setPreviewTexture(paramSurfaceTexture);
+      Camera.Parameters localParameters = this.gGr.getParameters();
+      Point localPoint2 = this.pbD;
+      Point localPoint1 = this.sRG;
       localObject = localParameters.get("preview-size-values");
       if (localObject == null) {
         localObject = localParameters.get("preview-size-value");
@@ -231,24 +232,24 @@ public final class n
         paramSurfaceTexture = null;
         if (localObject != null)
         {
-          ae.d("MicroMsg.FaceScanCamera", "preview-size-values parameter: ".concat(String.valueOf(localObject)));
+          Log.d("MicroMsg.FaceScanCamera", "preview-size-values parameter: ".concat(String.valueOf(localObject)));
           paramSurfaceTexture = a(localParameters, localPoint2);
         }
         localObject = paramSurfaceTexture;
         if (paramSurfaceTexture == null) {
           localObject = new Point(localPoint1.x >> 3 << 3, localPoint1.y >> 3 << 3);
         }
-        this.rqi = ((Point)localObject);
-        this.rqn = new Point(this.rqi);
-        ae.d("MicroMsg.FaceScanCamera", "getCameraResolution: " + this.nQL + " camera:" + this.rqi + "bestVideoEncodeSize: " + this.rqn);
-        localParameters.setPreviewSize(this.rqi.x, this.rqi.y);
+        this.sRF = ((Point)localObject);
+        this.sRK = new Point(this.sRF);
+        Log.d("MicroMsg.FaceScanCamera", "getCameraResolution: " + this.pbD + " camera:" + this.sRF + "bestVideoEncodeSize: " + this.sRK);
+        localParameters.setPreviewSize(this.sRF.x, this.sRF.y);
         localParameters.setZoom(0);
         localParameters.setSceneMode("auto");
         try
         {
           if ((localParameters.getSupportedFocusModes() != null) && (localParameters.getSupportedFocusModes().contains("auto")))
           {
-            ae.i("MicroMsg.FaceScanCamera", "set FocusMode to FOCUS_MODE_AUTO");
+            Log.i("MicroMsg.FaceScanCamera", "set FocusMode to FOCUS_MODE_AUTO");
             localParameters.setFocusMode("auto");
           }
           for (;;)
@@ -257,34 +258,34 @@ public final class n
             localObject = paramSurfaceTexture.iterator();
             i = 0;
             if (!((Iterator)localObject).hasNext()) {
-              break label760;
+              break label765;
             }
             j = ((Integer)((Iterator)localObject).next()).intValue();
-            ae.d("MicroMsg.FaceScanCamera", "supportedPreviewFormat: ".concat(String.valueOf(j)));
+            Log.d("MicroMsg.FaceScanCamera", "supportedPreviewFormat: ".concat(String.valueOf(j)));
             if (j != 17) {
               break;
             }
             j = 1;
-            label606:
+            label611:
             if (j == 0) {
-              break label694;
+              break label699;
             }
             localParameters.setPreviewFormat(17);
-            label617:
-            if (this.rqk) {
-              localParameters.setRotation(this.rql);
+            label622:
+            if (this.sRH) {
+              localParameters.setRotation(this.sRI);
             }
-            this.gaZ.setParameters(localParameters);
+            this.gGr.setParameters(localParameters);
             AppMethodBeat.o(103774);
             return;
-            ae.i("MicroMsg.FaceScanCamera", "camera not support FOCUS_MODE_AUTO");
+            Log.i("MicroMsg.FaceScanCamera", "camera not support FOCUS_MODE_AUTO");
           }
         }
         catch (Exception paramSurfaceTexture)
         {
           for (;;)
           {
-            ae.e("MicroMsg.FaceScanCamera", "set focus mode error: %s", new Object[] { paramSurfaceTexture.getMessage() });
+            Log.e("MicroMsg.FaceScanCamera", "set focus mode error: %s", new Object[] { paramSurfaceTexture.getMessage() });
           }
           if (j == 842094169) {
             i = 1;
@@ -292,19 +293,19 @@ public final class n
           for (;;)
           {
             break;
-            label694:
+            label699:
             if (i != 0)
             {
-              ae.e("MicroMsg.FaceScanCamera", "Preview not support PixelFormat.YCbCr_420_SP, but hasYU12");
+              Log.e("MicroMsg.FaceScanCamera", "Preview not support PixelFormat.YCbCr_420_SP, but hasYU12");
               localParameters.setPreviewFormat(842094169);
-              break label617;
+              break label622;
             }
-            ae.e("MicroMsg.FaceScanCamera", "Preview not support PixelFormat.YCbCr_420_SP. Use format: %s", new Object[] { paramSurfaceTexture.get(0) });
+            Log.e("MicroMsg.FaceScanCamera", "Preview not support PixelFormat.YCbCr_420_SP. Use format: %s", new Object[] { paramSurfaceTexture.get(0) });
             localParameters.setPreviewFormat(((Integer)paramSurfaceTexture.get(0)).intValue());
-            break label617;
-            label760:
+            break label622;
+            label765:
             j = 0;
-            break label606;
+            break label611;
           }
         }
       }
@@ -315,42 +316,42 @@ public final class n
   public final void release()
   {
     AppMethodBeat.i(103775);
-    ae.d("MicroMsg.FaceScanCamera", "release(), previewing = [%s]", new Object[] { Boolean.valueOf(this.rqh) });
-    if (this.gaZ != null)
+    Log.d("MicroMsg.FaceScanCamera", "release(), previewing = [%s]", new Object[] { Boolean.valueOf(this.sRE) });
+    if (this.gGr != null)
     {
-      long l = bu.HQ();
-      if (this.rqh)
+      long l = Util.currentTicks();
+      if (this.sRE)
       {
-        this.gaZ.setPreviewCallback(null);
-        this.gaZ.stopPreview();
-        this.rqh = false;
-        ae.d("MicroMsg.FaceScanCamera", "stopPreview costTime=[%s]", new Object[] { Long.valueOf(bu.aO(l)) });
+        this.gGr.setPreviewCallback(null);
+        this.gGr.stopPreview();
+        this.sRE = false;
+        Log.d("MicroMsg.FaceScanCamera", "stopPreview costTime=[%s]", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
       }
-      l = bu.HQ();
-      this.gaZ.release();
-      this.gaZ = null;
-      this.iCY = false;
-      ae.d("MicroMsg.FaceScanCamera", "camera.release() costTime=[%s]", new Object[] { Long.valueOf(bu.aO(l)) });
+      l = Util.currentTicks();
+      this.gGr.release();
+      this.gGr = null;
+      this.jyo = false;
+      Log.d("MicroMsg.FaceScanCamera", "camera.release() costTime=[%s]", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     }
-    this.rqm = false;
+    this.sRJ = false;
     AppMethodBeat.o(103775);
   }
   
   public final void setPreviewCallback(final Camera.PreviewCallback paramPreviewCallback)
   {
     AppMethodBeat.i(103780);
-    if (this.gaZ == null)
+    if (this.gGr == null)
     {
-      ae.w("MicroMsg.FaceScanCamera", "hy: camera is null. setPreviewCallback failed");
+      Log.w("MicroMsg.FaceScanCamera", "hy: camera is null. setPreviewCallback failed");
       AppMethodBeat.o(103780);
       return;
     }
     try
     {
-      int i = getPreviewWidth() * getPreviewHeight() * ImageFormat.getBitsPerPixel(this.gaZ.getParameters().getPreviewFormat()) / 8;
-      byte[] arrayOfByte = c.rpd.h(Integer.valueOf(i));
-      this.gaZ.addCallbackBuffer(arrayOfByte);
-      this.gaZ.setPreviewCallbackWithBuffer(new Camera.PreviewCallback()
+      int i = getPreviewWidth() * getPreviewHeight() * ImageFormat.getBitsPerPixel(this.gGr.getParameters().getPreviewFormat()) / 8;
+      byte[] arrayOfByte = c.sQB.h(Integer.valueOf(i));
+      this.gGr.addCallbackBuffer(arrayOfByte);
+      this.gGr.setPreviewCallbackWithBuffer(new Camera.PreviewCallback()
       {
         public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera)
         {
@@ -367,14 +368,14 @@ public final class n
     }
     catch (Exception paramPreviewCallback)
     {
-      ae.printErrStackTrace("MicroMsg.FaceScanCamera", paramPreviewCallback, "setPreviewCallback error: %s", new Object[] { paramPreviewCallback.getMessage() });
+      Log.printErrStackTrace("MicroMsg.FaceScanCamera", paramPreviewCallback, "setPreviewCallback error: %s", new Object[] { paramPreviewCallback.getMessage() });
       AppMethodBeat.o(103780);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.n
  * JD-Core Version:    0.7.0.1
  */

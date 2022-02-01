@@ -2,9 +2,9 @@ package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.storage.MStorage;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,27 +15,27 @@ import org.json.JSONObject;
 import org.xwalk.core.Log;
 
 public final class w
-  extends k
+  extends MStorage
 {
-  public final LinkedList<v> vTm;
+  public final LinkedList<v> zns;
   
   public w()
   {
     AppMethodBeat.i(105154);
-    this.vTm = new LinkedList();
-    fxF();
+    this.zns = new LinkedList();
+    gFs();
     AppMethodBeat.o(105154);
   }
   
-  private void fxF()
+  private void gFs()
   {
     AppMethodBeat.i(105155);
-    Object localObject1 = (String)g.ajR().ajA().get(am.a.IYu, "");
+    Object localObject1 = (String)g.aAh().azQ().get(ar.a.OgR, "");
     try
     {
-      synchronized (this.vTm)
+      synchronized (this.zns)
       {
-        this.vTm.clear();
+        this.zns.clear();
         localObject1 = new JSONArray((String)localObject1);
         int i = 0;
         while (i < ((JSONArray)localObject1).length())
@@ -43,9 +43,9 @@ public final class w
           v localv = new v();
           JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
           localv.key = localJSONObject.optString("key", "");
-          localv.JiY = localJSONObject.optInt("use_count", 0);
-          localv.hiI = localJSONObject.optLong("last_time", 0L);
-          this.vTm.add(localv);
+          localv.OsQ = localJSONObject.optInt("use_count", 0);
+          localv.hwQ = localJSONObject.optLong("last_time", 0L);
+          this.zns.add(localv);
           i += 1;
         }
         AppMethodBeat.o(105155);
@@ -56,30 +56,30 @@ public final class w
     catch (JSONException localJSONException)
     {
       Log.w("SmileyUsageInfoStorage", "data error clear all");
-      bdi();
+      byC();
       AppMethodBeat.o(105155);
     }
   }
   
-  public final void bdi()
+  public final void byC()
   {
     AppMethodBeat.i(105157);
-    g.ajR().ajA().set(am.a.IYu, null);
-    this.vTm.clear();
+    g.aAh().azQ().set(ar.a.OgR, null);
+    this.zns.clear();
     AppMethodBeat.o(105157);
   }
   
-  public final List<v> chS()
+  public final List<v> cFQ()
   {
     AppMethodBeat.i(105156);
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.vTm)
+    synchronized (this.zns)
     {
-      Iterator localIterator = this.vTm.iterator();
+      Iterator localIterator = this.zns.iterator();
       while (localIterator.hasNext())
       {
         v localv = (v)localIterator.next();
-        if (com.tencent.mm.ce.e.fqT().containsKey(localv.key)) {
+        if (com.tencent.mm.ce.e.gxR().containsKey(localv.key)) {
           localArrayList.add(localv);
         }
       }

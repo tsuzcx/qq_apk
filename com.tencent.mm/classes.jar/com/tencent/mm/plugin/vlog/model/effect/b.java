@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.vlog.model.effect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import com.tencent.mm.xeffect.effect.ad;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicAddEffectItem;", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "info", "Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "effectId", "", "rangeId", "start", "end", "order", "", "(Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;JJJJI)V", "getEffectId", "()J", "setEffectId", "(J)V", "getEnd", "setEnd", "getInfo", "()Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "getOrder", "()I", "setOrder", "(I)V", "getRangeId", "setRangeId", "getStart", "setStart", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/effect/MagicAddEffectItem;", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "info", "Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "effect", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "start", "", "end", "order", "", "(Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;Lcom/tencent/mm/xeffect/effect/VLogEffect;JJI)V", "getEffect", "()Lcom/tencent/mm/xeffect/effect/VLogEffect;", "setEffect", "(Lcom/tencent/mm/xeffect/effect/VLogEffect;)V", "getEnd", "()J", "setEnd", "(J)V", "getInfo", "()Lcom/tencent/mm/plugin/vlog/model/effect/EffectInfo;", "getOrder", "()I", "setOrder", "(I)V", "getStart", "setStart", "plugin-vlog_release"})
 public final class b
   extends e
 {
-  public final a BYF;
-  public long BYG;
-  public long bpc;
+  public final a GAm;
+  public ad GAn;
+  public long boX;
   public int order;
   public long start;
-  public long yeZ;
   
-  private b(a parama, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  private b(a parama, ad paramad, long paramLong1, long paramLong2)
   {
     super(2);
-    AppMethodBeat.i(191286);
-    this.BYF = parama;
-    this.yeZ = paramLong1;
-    this.BYG = paramLong2;
-    this.start = paramLong3;
-    this.bpc = paramLong4;
+    AppMethodBeat.i(190728);
+    this.GAm = parama;
+    this.GAn = paramad;
+    this.start = paramLong1;
+    this.boX = paramLong2;
     this.order = 0;
-    AppMethodBeat.o(191286);
+    AppMethodBeat.o(190728);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.effect.b
  * JD-Core Version:    0.7.0.1
  */

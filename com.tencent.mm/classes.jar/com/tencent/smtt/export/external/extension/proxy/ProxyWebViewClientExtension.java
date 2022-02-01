@@ -11,6 +11,7 @@ import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 public abstract class ProxyWebViewClientExtension
@@ -69,6 +70,19 @@ public abstract class ProxyWebViewClientExtension
     if (this.mWebViewClientExt != null) {
       this.mWebViewClientExt.documentAvailableInMainFrame();
     }
+  }
+  
+  public int getHostByName(String paramString, List<String> paramList)
+  {
+    int i = 0;
+    if (this.mWebViewClientExt != null) {}
+    try
+    {
+      i = this.mWebViewClientExt.getHostByName(paramString, paramList);
+      return i;
+    }
+    catch (NoSuchMethodError paramString) {}
+    return 0;
   }
   
   public void handlePluginTag(String paramString1, String paramString2, boolean paramBoolean, String paramString3)

@@ -10,50 +10,44 @@ import com.tencent.mm.plugin.recordvideo.activity.MMRecordUI;
 import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "scene", "", "getScene", "()I", "setScene", "(I)V", "getView", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setView", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "onClick", "v", "Landroid/view/View;", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "scene", "", "getScene", "()I", "setScene", "(I)V", "getView", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setView", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "onClick", "v", "Landroid/view/View;", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
 public class x
   implements View.OnClickListener, t
 {
-  public static final x.a xRF;
+  public static final x.a BRJ;
   protected int scene;
-  private WeImageView tbV;
+  private WeImageView wgX;
   
   static
   {
     AppMethodBeat.i(75634);
-    xRF = new x.a((byte)0);
+    BRJ = new x.a((byte)0);
     AppMethodBeat.o(75634);
   }
   
   public x(WeImageView paramWeImageView, d paramd)
   {
-    AppMethodBeat.i(206615);
-    this.tbV = paramWeImageView;
-    this.tbV.setOnClickListener((View.OnClickListener)this);
-    this.tbV.setIconColor(-1);
-    AppMethodBeat.o(206615);
+    AppMethodBeat.i(237344);
+    this.wgX = paramWeImageView;
+    this.wgX.setOnClickListener((View.OnClickListener)this);
+    this.wgX.setIconColor(-1);
+    AppMethodBeat.o(237344);
   }
   
   public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(206614);
+    AppMethodBeat.i(237343);
     p.h(paramRecordConfigProvider, "config");
     this.scene = paramRecordConfigProvider.scene;
-    AppMethodBeat.o(206614);
+    AppMethodBeat.o(237343);
   }
   
-  public final boolean aoQ()
-  {
-    return false;
-  }
-  
-  public final void azm() {}
+  public final void aSs() {}
   
   public final String name()
   {
@@ -62,27 +56,32 @@ public class x
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
+  public final boolean onBackPress()
+  {
+    return false;
+  }
+  
   public void onClick(View paramView)
   {
     AppMethodBeat.i(75631);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ae.i("MicroMsg.RecordClosePlugin", "RecordClosePlugin close");
-    paramView = this.tbV.getContext();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    Log.i("MicroMsg.RecordClosePlugin", "RecordClosePlugin close");
+    paramView = this.wgX.getContext();
     if (paramView == null)
     {
-      paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.activity.MMRecordUI");
+      paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.activity.MMRecordUI");
       AppMethodBeat.o(75631);
       throw paramView;
     }
-    ((MMRecordUI)paramView).dHS();
-    paramView = c.xWV;
-    c.Ot(3);
-    paramView = c.xWV;
-    c.Os(3);
-    paramView = c.xWV;
-    c.Ov(this.scene);
+    ((MMRecordUI)paramView).eIF();
+    paramView = c.BXI;
+    c.VI(3);
+    paramView = c.BXI;
+    c.VH(3);
+    paramView = c.BXI;
+    c.VK(this.scene);
     a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(75631);
   }
@@ -93,11 +92,11 @@ public class x
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(206616);
+    AppMethodBeat.i(237345);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(206616);
+    AppMethodBeat.o(237345);
   }
   
   public final void onResume() {}
@@ -109,13 +108,13 @@ public class x
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75632);
-    this.tbV.setVisibility(paramInt);
+    this.wgX.setVisibility(paramInt);
     AppMethodBeat.o(75632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.x
  * JD-Core Version:    0.7.0.1
  */

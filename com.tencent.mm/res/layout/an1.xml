@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/rs" android:paddingLeft="@dimen/ir" android:layout_width="fill_parent" android:layout_height="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/ka" android:textColor="@color/Link" android:id="@id/fl3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{more}" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/fjt" android:padding="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/arrows_down" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

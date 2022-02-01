@@ -28,6 +28,8 @@ var SystemInfo = (function(){
 
     ret.language = '%s';
 
+    ret.isDarkMode = %b;
+
     return ret;
 
 })()

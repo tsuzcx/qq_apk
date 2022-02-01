@@ -1,109 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
-import java.util.LinkedList;
 
 public final class dvb
   extends com.tencent.mm.bw.a
 {
-  public dxb IaL;
-  public int aXs;
-  public int aXt;
+  public String MWb;
+  public String dMl;
+  public String sGF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(110915);
+    AppMethodBeat.i(122530);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.IaL == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: materialResp");
-        AppMethodBeat.o(110915);
-        throw paramVarArgs;
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.sGF != null) {
+        paramVarArgs.e(1, this.sGF);
       }
-      if (this.IaL != null)
-      {
-        paramVarArgs.lJ(1, this.IaL.computeSize());
-        this.IaL.writeFields(paramVarArgs);
+      if (this.MWb != null) {
+        paramVarArgs.e(2, this.MWb);
       }
-      paramVarArgs.aS(2, this.aXs);
-      paramVarArgs.aS(3, this.aXt);
-      AppMethodBeat.o(110915);
+      if (this.dMl != null) {
+        paramVarArgs.e(3, this.dMl);
+      }
+      AppMethodBeat.o(122530);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.IaL == null) {
-        break label450;
+      if (this.sGF == null) {
+        break label334;
       }
     }
-    label450:
-    for (paramInt = f.a.a.a.lI(1, this.IaL.computeSize()) + 0;; paramInt = 0)
+    label334:
+    for (int i = g.a.a.b.b.a.f(1, this.sGF) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.aXs);
-      int j = f.a.a.b.b.a.bz(3, this.aXt);
-      AppMethodBeat.o(110915);
-      return paramInt + i + j;
+      paramInt = i;
+      if (this.MWb != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.MWb);
+      }
+      i = paramInt;
+      if (this.dMl != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.dMl);
+      }
+      AppMethodBeat.o(122530);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.IaL == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: materialResp");
-          AppMethodBeat.o(110915);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(110915);
+        AppMethodBeat.o(122530);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         dvb localdvb = (dvb)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(110915);
+          AppMethodBeat.o(122530);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dxb();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dxb)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdvb.IaL = ((dxb)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(110915);
+          localdvb.sGF = locala.UbS.readString();
+          AppMethodBeat.o(122530);
           return 0;
         case 2: 
-          localdvb.aXs = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(110915);
+          localdvb.MWb = locala.UbS.readString();
+          AppMethodBeat.o(122530);
           return 0;
         }
-        localdvb.aXt = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(110915);
+        localdvb.dMl = locala.UbS.readString();
+        AppMethodBeat.o(122530);
         return 0;
       }
-      AppMethodBeat.o(110915);
+      AppMethodBeat.o(122530);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvb
  * JD-Core Version:    0.7.0.1
  */

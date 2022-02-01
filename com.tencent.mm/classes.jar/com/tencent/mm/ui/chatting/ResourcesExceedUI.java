@@ -12,14 +12,12 @@ import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMActivity;
 
 public class ResourcesExceedUI
   extends MMActivity
 {
-  private TextView JYS;
+  private TextView Pkf;
   private int type = 0;
   
   public void finish()
@@ -32,7 +30,7 @@ public class ResourcesExceedUI
   
   public int getLayoutId()
   {
-    return 2131495268;
+    return 2131496118;
   }
   
   public void initView()
@@ -40,7 +38,7 @@ public class ResourcesExceedUI
     AppMethodBeat.i(34870);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.lA(19))
+    if (d.oD(19))
     {
       getWindow().setFlags(201327616, 201327616);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -53,24 +51,19 @@ public class ResourcesExceedUI
           return true;
         }
       });
-      this.JYS = ((TextView)findViewById(2131299205));
+      this.Pkf = ((TextView)findViewById(2131299762));
       switch (this.type)
       {
       }
     }
     for (;;)
     {
-      findViewById(2131304251).setOnTouchListener(new View.OnTouchListener()
+      findViewById(2131307173).setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(34868);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          localb.bd(paramAnonymousMotionEvent);
-          a.b("com/tencent/mm/ui/chatting/ResourcesExceedUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           ResourcesExceedUI.this.finish();
-          a.a(false, this, "com/tencent/mm/ui/chatting/ResourcesExceedUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(34868);
           return false;
         }
@@ -79,11 +72,11 @@ public class ResourcesExceedUI
       return;
       getWindow().setFlags(1024, 1024);
       break;
-      this.JYS.setText(2131764677);
+      this.Pkf.setText(2131767070);
       continue;
-      this.JYS.setText(2131759063);
+      this.Pkf.setText(2131759394);
       continue;
-      this.JYS.setText(2131760324);
+      this.Pkf.setText(2131761768);
     }
   }
   
@@ -115,7 +108,7 @@ public class ResourcesExceedUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ResourcesExceedUI
  * JD-Core Version:    0.7.0.1
  */

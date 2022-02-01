@@ -1,26 +1,25 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import android.database.Cursor;
-import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.x;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.plugin.record.b.f;
 import com.tencent.mm.pluginsdk.g.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.ca;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,35 +29,35 @@ import java.util.Map;
 import java.util.Queue;
 
 public final class an$a
-  implements com.tencent.mm.ak.f
+  implements com.tencent.mm.ak.i
 {
-  private static int djw = 0;
-  private HashMap<Long, String> Fgf;
-  Queue<Long> djp;
-  Queue<Long> djq;
-  Map<Long, f.a> djr;
-  private boolean djs;
-  private boolean djt;
-  int dju;
-  private long djv;
-  f.a djy;
-  private aw djz;
+  private static int jrr = 0;
+  private HashMap<Long, String> JWW;
+  Queue<Long> dAA;
+  Queue<Long> dAB;
+  Map<Long, f.a> dAC;
+  private boolean dAD;
+  private boolean dAE;
+  int dAF;
+  private long dAG;
+  f.a dAI;
+  private MTimerHandler dAJ;
   private boolean running;
   
   public an$a()
   {
     AppMethodBeat.i(31101);
-    this.Fgf = new HashMap();
-    this.djp = new LinkedList();
-    this.djq = new LinkedList();
-    this.djr = new HashMap();
-    this.djs = false;
-    this.djt = false;
+    this.JWW = new HashMap();
+    this.dAA = new LinkedList();
+    this.dAB = new LinkedList();
+    this.dAC = new HashMap();
+    this.dAD = false;
+    this.dAE = false;
     this.running = false;
-    this.dju = 0;
-    this.djv = 0L;
-    this.djy = new f.a();
-    this.djz = new aw(bc.ajU().IxZ.getLooper(), new aw.a()
+    this.dAF = 0;
+    this.dAG = 0L;
+    this.dAI = new f.a();
+    this.dAJ = new MTimerHandler(bg.aAk().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -76,47 +75,54 @@ public final class an$a
         return str;
       }
     }, false);
-    bc.ajj().a(220, this);
-    bc.ajj().a(221, this);
-    bc.ajj().a(222, this);
+    bg.azz().a(220, this);
+    bg.azz().a(221, this);
+    bg.azz().a(222, this);
     AppMethodBeat.o(31101);
   }
   
-  public static void L(long paramLong, String paramString)
+  public static void HR(long paramLong)
   {
-    AppMethodBeat.i(31105);
-    bc.ajj().a(new ag(paramLong, paramString, null), 0);
-    AppMethodBeat.o(31105);
+    AppMethodBeat.i(31104);
+    bg.azz().a(new ag(paramLong, null, null), 0);
+    AppMethodBeat.o(31104);
   }
   
-  private void Qd()
+  public static void Q(long paramLong, String paramString)
   {
-    AppMethodBeat.i(31110);
-    this.djr.clear();
-    this.djp.clear();
-    this.djq.clear();
-    this.djt = false;
-    this.djs = false;
-    this.running = false;
-    ae.d("MicroMsg.SceneAppMsg", "Finish service use time(ms):" + this.djy.abs());
-    AppMethodBeat.o(31110);
+    AppMethodBeat.i(31105);
+    bg.azz().a(new ag(paramLong, paramString, null), 0);
+    AppMethodBeat.o(31105);
   }
   
   public static void a(long paramLong, String paramString, int paramInt, a parama)
   {
     AppMethodBeat.i(31107);
-    bc.ajj().a(new ag(paramLong, paramString, paramInt, parama), 0);
+    bg.azz().a(new ag(paramLong, paramString, paramInt, parama), 0);
     AppMethodBeat.o(31107);
   }
   
-  private boolean aNC()
+  private void aax()
+  {
+    AppMethodBeat.i(31110);
+    this.dAC.clear();
+    this.dAA.clear();
+    this.dAB.clear();
+    this.dAE = false;
+    this.dAD = false;
+    this.running = false;
+    Log.d("MicroMsg.SceneAppMsg", "Finish service use time(ms):" + this.dAI.apr());
+    AppMethodBeat.o(31110);
+  }
+  
+  private boolean bhF()
   {
     AppMethodBeat.i(31108);
     for (;;)
     {
       try
       {
-        localObject2 = ao.bJV().rawQuery("select *  , rowid  from appattach where status = 101", new String[0]);
+        localObject2 = ao.cgO().rawQuery("select *  , rowid  from appattach where status = 101", new String[0]);
         if (localObject2 != null) {
           continue;
         }
@@ -127,40 +133,40 @@ public final class an$a
         ArrayList localArrayList;
         int j;
         int i;
-        ae.printErrStackTrace("MicroMsg.SceneAppMsg", localIllegalStateException, "", new Object[0]);
-        Object localObject1 = ao.bJV();
-        Object localObject2 = " update appattach set status = 198 , lastModifyTime = " + bu.aRi() + " where status = 101";
+        Log.printErrStackTrace("MicroMsg.SceneAppMsg", localIllegalStateException, "", new Object[0]);
+        Object localObject1 = ao.cgO();
+        Object localObject2 = " update appattach set status = 198 , lastModifyTime = " + Util.nowSecond() + " where status = 101";
         ((d)localObject1).db.execSQL("appattach", (String)localObject2);
         ((d)localObject1).doNotify();
         localObject1 = null;
         continue;
         long l = System.currentTimeMillis() / 1000L;
-        localObject2 = bu.DA(l);
+        localObject2 = Util.formatUnixTime(l);
         localObject1 = ((List)localObject1).iterator();
         if (!((Iterator)localObject1).hasNext()) {
           continue;
         }
         c localc = (c)((Iterator)localObject1).next();
-        if (!this.djr.containsKey(Long.valueOf(localc.systemRowid))) {
+        if (!this.dAC.containsKey(Long.valueOf(localc.systemRowid))) {
           continue;
         }
-        ae.d("MicroMsg.SceneAppMsg", "summerbig File is Already running:" + localc.systemRowid);
+        Log.d("MicroMsg.SceneAppMsg", "summerbig File is Already running:" + localc.systemRowid);
         continue;
-        ae.d("MicroMsg.SceneAppMsg", "summerbig Get file:" + localc.field_fileFullPath + " status:" + localc.field_status + " create:(" + bu.DA(localc.field_createTime) + "," + bu.DA(localc.field_createTime / 1000L) + ", last:" + bu.DA(localc.field_lastModifyTime) + " now:" + bu.DA(l) + " " + (l - localc.field_lastModifyTime));
+        Log.d("MicroMsg.SceneAppMsg", "summerbig Get file:" + localc.field_fileFullPath + " status:" + localc.field_status + " create:(" + Util.formatUnixTime(localc.field_createTime) + "," + Util.formatUnixTime(localc.field_createTime / 1000L) + ", last:" + Util.formatUnixTime(localc.field_lastModifyTime) + " now:" + Util.formatUnixTime(l) + " " + (l - localc.field_lastModifyTime));
         if (!localc.field_isUpload) {
           continue;
         }
         if ((l - localc.field_lastModifyTime <= 600L) || (localc.field_status != 101L)) {
           continue;
         }
-        ae.e("MicroMsg.SceneAppMsg", "summerbig time out file: " + localc.field_fileFullPath + " last:" + bu.DA(localc.field_lastModifyTime) + " now:" + (String)localObject2);
-        m.zc(localc.systemRowid);
+        Log.e("MicroMsg.SceneAppMsg", "summerbig time out file: " + localc.field_fileFullPath + " last:" + Util.formatUnixTime(localc.field_lastModifyTime) + " now:" + (String)localObject2);
+        m.HS(localc.systemRowid);
         continue;
-        this.djp.offer(Long.valueOf(localc.systemRowid));
-        this.djr.put(Long.valueOf(localc.systemRowid), null);
+        this.dAA.offer(Long.valueOf(localc.systemRowid));
+        this.dAC.put(Long.valueOf(localc.systemRowid), null);
         continue;
-        ae.d("MicroMsg.SceneAppMsg", "summerbig GetNeedRun procing:" + this.djr.size() + " [recv:" + this.djq.size() + ",send:" + this.djp.size() + "]");
-        if (this.djq.size() + this.djp.size() != 0) {
+        Log.d("MicroMsg.SceneAppMsg", "summerbig GetNeedRun procing:" + this.dAC.size() + " [recv:" + this.dAB.size() + ",send:" + this.dAA.size() + "]");
+        if (this.dAB.size() + this.dAA.size() != 0) {
           continue;
         }
         AppMethodBeat.o(31108);
@@ -173,7 +179,7 @@ public final class an$a
       AppMethodBeat.o(31108);
       return false;
       j = ((Cursor)localObject2).getCount();
-      ae.d("MicroMsg.AppAttachInfoStorage", "getUnfinishInfo resCount:".concat(String.valueOf(j)));
+      Log.d("MicroMsg.AppAttachInfoStorage", "getUnfinishInfo resCount:".concat(String.valueOf(j)));
       if (j == 0)
       {
         ((Cursor)localObject2).close();
@@ -203,51 +209,44 @@ public final class an$a
   public static void f(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(31106);
-    bc.ajj().a(new ag(paramLong, paramString1, paramString2), 0);
+    bg.azz().a(new ag(paramLong, paramString1, paramString2), 0);
     AppMethodBeat.o(31106);
   }
   
-  public static void zb(long paramLong)
-  {
-    AppMethodBeat.i(31104);
-    bc.ajj().a(new ag(paramLong, null, null), 0);
-    AppMethodBeat.o(31104);
-  }
-  
-  public final void K(long paramLong, String paramString)
+  public final void P(long paramLong, String paramString)
   {
     AppMethodBeat.i(31103);
-    this.Fgf.put(Long.valueOf(paramLong), paramString);
+    this.JWW.put(Long.valueOf(paramLong), paramString);
     AppMethodBeat.o(31103);
   }
   
   protected final void finalize()
   {
     AppMethodBeat.i(31102);
-    bc.ajj().b(220, this);
-    bc.ajj().b(221, this);
-    bc.ajj().b(222, this);
-    this.Fgf.clear();
+    bg.azz().b(220, this);
+    bg.azz().b(221, this);
+    bg.azz().b(222, this);
+    this.JWW.clear();
     super.finalize();
     AppMethodBeat.o(31102);
   }
   
-  public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final n paramn)
+  public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final q paramq)
   {
     AppMethodBeat.i(31109);
-    ae.d("MicroMsg.SceneAppMsg", "summersafecdn onSceneEnd type:%d errType:%d errCode:%d", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    bc.ajU().aw(new Runnable()
+    Log.d("MicroMsg.SceneAppMsg", "summersafecdn onSceneEnd type:%d errType:%d errCode:%d", new Object[] { Integer.valueOf(paramq.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    bg.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         int i = 0;
         AppMethodBeat.i(31095);
-        an.a.Qe();
+        an.a.aYz();
         long l1;
         long l2;
-        if (paramn.getType() == 222)
+        if (paramq.getType() == 222)
         {
-          ae.d("MicroMsg.SceneAppMsg", "onSceneEnd  SendAppMsg errtype:" + paramInt1 + " errCode:" + paramInt2);
+          Log.d("MicroMsg.SceneAppMsg", "onSceneEnd  SendAppMsg errtype:" + paramInt1 + " errCode:" + paramInt2);
           i = 0;
           l1 = -1L;
           long l3 = 0L;
@@ -255,17 +254,17 @@ public final class an$a
           if (l1 != -1L)
           {
             l2 = l3;
-            if (an.a.this.djr.get(Long.valueOf(l1)) != null)
+            if (an.a.this.dAC.get(Long.valueOf(l1)) != null)
             {
-              l2 = ((f.a)an.a.this.djr.get(Long.valueOf(l1))).abs();
-              an.a.this.djr.remove(Long.valueOf(l1));
+              l2 = ((f.a)an.a.this.dAC.get(Long.valueOf(l1))).apr();
+              an.a.this.dAC.remove(Long.valueOf(l1));
             }
           }
-          ae.d("MicroMsg.SceneAppMsg", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " rowid:" + l1 + " time:" + l2);
+          Log.d("MicroMsg.SceneAppMsg", "onSceneEnd SceneType:" + paramq.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " rowid:" + l1 + " time:" + l2);
           if (paramInt1 != 0) {
             an.a.e(an.a.this);
           }
-          ae.d("MicroMsg.SceneAppMsg", "onSceneEnd  inCnt:" + an.a.djw + " stop:" + an.a.f(an.a.this) + " running:" + an.a.g(an.a.this) + " recving:" + an.a.h(an.a.this) + " sending:" + an.a.i(an.a.this));
+          Log.d("MicroMsg.SceneAppMsg", "onSceneEnd  inCnt:" + an.a.jrr + " stop:" + an.a.f(an.a.this) + " running:" + an.a.g(an.a.this) + " recving:" + an.a.h(an.a.this) + " sending:" + an.a.i(an.a.this));
           if (an.a.f(an.a.this) <= 0) {
             break label650;
           }
@@ -273,47 +272,47 @@ public final class an$a
         }
         for (;;)
         {
-          an.a.Qf();
+          an.a.bhI();
           AppMethodBeat.o(31095);
           return;
-          if (paramn.getType() == 221)
+          if (paramq.getType() == 221)
           {
             an.a.b(an.a.this);
-            l1 = ((com.tencent.mm.plugin.record.b.f)paramn).xGx;
-            i = ((com.tencent.mm.plugin.record.b.f)paramn).retCode;
+            l1 = ((f)paramq).BGw;
+            i = ((f)paramq).retCode;
             break;
           }
-          if (paramn.getType() == 220)
+          if (paramq.getType() == 220)
           {
             an.a.c(an.a.this);
-            l1 = ((aj)paramn).xGx;
-            int j = ((aj)paramn).retCode;
-            Object localObject = (aj)paramn;
-            if (((aj)localObject).xGv == null) {}
-            for (localObject = null;; localObject = ((aj)localObject).xGv.field_mediaSvrId)
+            l1 = ((aj)paramq).BGw;
+            int j = ((aj)paramq).retCode;
+            Object localObject = (aj)paramq;
+            if (((aj)localObject).BGu == null) {}
+            for (localObject = null;; localObject = ((aj)localObject).BGu.field_mediaSvrId)
             {
-              l2 = ((aj)paramn).fdR();
+              l2 = ((aj)paramq).gnc();
               String str = (String)an.a.d(an.a.this).remove(Long.valueOf(l2));
-              if (!bu.isNullOrNil(((aj)paramn).idX)) {
+              if (!Util.isNullOrNil(((aj)paramq).iYT)) {
                 i = 1;
               }
-              if ((i == 0) && (!((aj)paramn).FfW) && (!bu.isNullOrNil((String)localObject)))
+              if ((i == 0) && (!((aj)paramq).JWN) && (!Util.isNullOrNil((String)localObject)))
               {
                 c localc = new c();
-                ao.bJV().get(l1, localc);
+                ao.cgO().get(l1, localc);
                 if (localc.systemRowid == l1)
                 {
                   m.a(localc.field_msgInfoId, (String)localObject, null, true);
-                  ae.d("MicroMsg.SceneAppMsg", "onSceneEnd, finish update app attach, start send app msg");
-                  an.a.L(localc.field_msgInfoId, str);
+                  Log.d("MicroMsg.SceneAppMsg", "onSceneEnd, finish update app attach, start send app msg");
+                  an.a.Q(localc.field_msgInfoId, str);
                 }
               }
               i = j;
               break;
             }
           }
-          ae.e("MicroMsg.SceneAppMsg", "onSceneEnd Error SceneType:" + paramn.getType());
-          an.a.Qf();
+          Log.e("MicroMsg.SceneAppMsg", "onSceneEnd Error SceneType:" + paramq.getType());
+          an.a.bhI();
           AppMethodBeat.o(31095);
           return;
           label650:
@@ -337,13 +336,13 @@ public final class an$a
   public final void run()
   {
     AppMethodBeat.i(31111);
-    bc.ajU().aw(new Runnable()
+    bg.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(31097);
         long l = System.currentTimeMillis() - an.a.l(an.a.this);
-        ae.d("MicroMsg.SceneAppMsg", "summerbig Try Run service runningFlag:" + an.a.g(an.a.this) + " timeWait:" + l + " sending:" + an.a.i(an.a.this) + " recving:" + an.a.h(an.a.this));
+        Log.d("MicroMsg.SceneAppMsg", "summerbig Try Run service runningFlag:" + an.a.g(an.a.this) + " timeWait:" + l + " sending:" + an.a.i(an.a.this) + " recving:" + an.a.h(an.a.this));
         if (an.a.g(an.a.this))
         {
           if (l < 180000L)
@@ -351,14 +350,14 @@ public final class an$a
             AppMethodBeat.o(31097);
             return;
           }
-          ae.e("MicroMsg.SceneAppMsg", "summerbig ERR: Try Run service runningFlag:" + an.a.g(an.a.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + an.a.i(an.a.this) + " recving:" + an.a.h(an.a.this));
+          Log.e("MicroMsg.SceneAppMsg", "summerbig ERR: Try Run service runningFlag:" + an.a.g(an.a.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + an.a.i(an.a.this) + " recving:" + an.a.h(an.a.this));
         }
         an.a.m(an.a.this);
         an.a.c(an.a.this);
         an.a.n(an.a.this);
         an.a.b(an.a.this);
-        an.a.this.djy.gfF = SystemClock.elapsedRealtime();
-        an.a.o(an.a.this).ay(10L, 10L);
+        an.a.this.dAI.gLm = SystemClock.elapsedRealtime();
+        an.a.o(an.a.this).startTimer(10L);
         AppMethodBeat.o(31097);
       }
       
@@ -375,7 +374,7 @@ public final class an$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.an.a
  * JD-Core Version:    0.7.0.1
  */

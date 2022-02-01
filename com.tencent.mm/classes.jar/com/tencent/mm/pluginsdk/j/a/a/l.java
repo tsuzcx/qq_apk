@@ -1,128 +1,126 @@
 package com.tencent.mm.pluginsdk.j.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.s;
 import com.tencent.mm.jni.utils.UtilsJni;
 import com.tencent.mm.pluginsdk.j.a.d.a;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
 
 final class l
 {
-  private final long DRK;
-  private final String FhC;
-  private final int FhD;
-  private final byte[] FhE;
-  private final String FhG;
-  private final int FhH;
-  private final int FhI;
-  final String Fhz;
-  volatile String FiH;
-  final boolean Fif;
-  final boolean Fig;
-  private final int dnA;
-  private final boolean dnB;
-  private final String dnC;
-  private final boolean dnF;
-  private final int dnz;
+  private final long IBJ;
+  private final int JYA;
+  private final int JYB;
+  final boolean JYZ;
+  final String JYs;
+  private final String JYv;
+  private final int JYw;
+  private final byte[] JYx;
+  private final String JYz;
+  volatile String JZB;
+  final boolean JZa;
+  private final int dEO;
+  private final int dEP;
+  private final boolean dEQ;
+  private final String dER;
+  private final boolean dEU;
   final String filePath;
   volatile int state;
   private final int subType;
-  volatile String tTW;
   private final String url;
+  volatile String xli;
   
   l(int paramInt1, int paramInt2, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt3, boolean paramBoolean3, boolean paramBoolean4, byte[] paramArrayOfByte, String paramString3, String paramString4, long paramLong, String paramString5, int paramInt4, int paramInt5, int paramInt6)
   {
     AppMethodBeat.i(151994);
     this.state = -1;
-    this.FiH = null;
-    this.tTW = null;
-    this.Fhz = i.jr(paramInt1, paramInt2);
-    this.dnz = paramInt1;
+    this.JZB = null;
+    this.xli = null;
+    this.JYs = i.kD(paramInt1, paramInt2);
+    this.dEO = paramInt1;
     this.subType = paramInt2;
     this.filePath = paramString1;
-    this.Fig = paramBoolean1;
-    this.Fif = paramBoolean2;
-    this.FhC = paramString2;
-    this.FhD = paramInt3;
-    this.FhE = paramArrayOfByte;
-    this.dnC = paramString3;
-    this.dnF = paramBoolean3;
-    this.dnB = paramBoolean4;
-    this.FhG = paramString4;
-    this.DRK = paramLong;
+    this.JZa = paramBoolean1;
+    this.JYZ = paramBoolean2;
+    this.JYv = paramString2;
+    this.JYw = paramInt3;
+    this.JYx = paramArrayOfByte;
+    this.dER = paramString3;
+    this.dEU = paramBoolean3;
+    this.dEQ = paramBoolean4;
+    this.JYz = paramString4;
+    this.IBJ = paramLong;
     this.url = paramString5;
-    this.FhH = paramInt4;
-    this.FhI = paramInt5;
-    this.dnA = paramInt6;
+    this.JYA = paramInt4;
+    this.JYB = paramInt5;
+    this.dEP = paramInt6;
     AppMethodBeat.o(151994);
   }
   
-  private String feG()
+  private String gnQ()
   {
     AppMethodBeat.i(151998);
-    if (bu.isNullOrNil(this.FiH))
+    if (Util.isNullOrNil(this.JZB))
     {
       AppMethodBeat.o(151998);
       return null;
     }
-    String str2 = this.Fhz;
-    String str3 = feH();
-    String str4 = this.dnC;
-    if (this.FhE == null) {}
-    for (String str1 = "null";; str1 = String.valueOf(this.FhE.length))
+    String str2 = this.JYs;
+    String str3 = gnR();
+    String str4 = this.dER;
+    if (this.JYx == null) {}
+    for (String str1 = "null";; str1 = String.valueOf(this.JYx.length))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl(), state = %s, originalMd5 = %s, eccSig.size = %s", new Object[] { str2, str3, str4, str1 });
-      if ((bu.isNullOrNil(this.dnC)) || (!bu.nullAsNil(o.aRh(this.FiH)).equals(this.dnC))) {
+      Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl(), state = %s, originalMd5 = %s, eccSig.size = %s", new Object[] { str2, str3, str4, str1 });
+      if ((Util.isNullOrNil(this.dER)) || (!Util.nullAsNil(com.tencent.mm.vfs.s.bhK(this.JZB)).equals(this.dER))) {
         break;
       }
-      ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl(), state = %s, md5 ok", new Object[] { this.Fhz, feH() });
+      Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl(), state = %s, md5 ok", new Object[] { this.JYs, gnR() });
       if (this.state == 4) {
-        j.A(this.DRK, 23L);
+        j.F(this.IBJ, 23L);
       }
-      str1 = this.FiH;
+      str1 = this.JZB;
       AppMethodBeat.o(151998);
       return str1;
     }
     if (this.state == 4) {
-      j.A(this.DRK, 24L);
+      j.F(this.IBJ, 24L);
     }
-    if ((!bu.cF(this.FhE)) && (UtilsJni.doEcdsaSHAVerify(i.Fii, a.aNG(this.FiH), this.FhE) > 0))
+    if ((!Util.isNullOrNil(this.JYx)) && (UtilsJni.doEcdsaSHAVerify(i.JZc, a.bei(this.JZB), this.JYx) > 0))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl(), state = %s, ecc check ok", new Object[] { this.Fhz, feH() });
+      Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl(), state = %s, ecc check ok", new Object[] { this.JYs, gnR() });
       if (this.state == 4) {
-        j.A(this.DRK, 25L);
+        j.F(this.IBJ, 25L);
       }
-      str1 = this.FiH;
+      str1 = this.JZB;
       AppMethodBeat.o(151998);
       return str1;
     }
     if (this.state == 4) {
-      j.A(this.DRK, 26L);
+      j.F(this.IBJ, 26L);
     }
     AppMethodBeat.o(151998);
     return null;
   }
   
-  final l feD()
+  final l gnN()
   {
     AppMethodBeat.i(151995);
-    ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), file_state = %s, before do decrypt, inPath = %s, outPath = %s, (key == empty) = %b", new Object[] { this.Fhz, feH(), this.FiH, this.tTW, Boolean.valueOf(bu.isNullOrNil(this.FhC)) });
+    Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), file_state = %s, before do decrypt, inPath = %s, outPath = %s, (key == empty) = %b", new Object[] { this.JYs, gnR(), this.JZB, this.xli, Boolean.valueOf(Util.isNullOrNil(this.JYv)) });
     if (1 != this.state)
     {
       AppMethodBeat.o(151995);
       return this;
     }
-    if (bu.isNullOrNil(this.FhC))
+    if (Util.isNullOrNil(this.JYv))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), invalid encrypt key", new Object[] { this.Fhz });
-      this.FiH = null;
+      Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), invalid encrypt key", new Object[] { this.JYs });
+      this.JZB = null;
       this.state = 8;
-      j.A(this.DRK, 54L);
-      j.A(this.DRK, 45L);
+      j.F(this.IBJ, 54L);
+      j.F(this.IBJ, 45L);
       AppMethodBeat.o(151995);
       return this;
     }
@@ -130,13 +128,13 @@ final class l
     {
       try
       {
-        localObject2 = this.FiH;
-        str = this.tTW;
-        localObject1 = this.FhC;
-        localk = new k((String)localObject2);
-        if ((!localk.exists()) || (!localk.isFile()))
+        localObject2 = this.JZB;
+        str = this.xli;
+        localObject1 = this.JYv;
+        localo = new o((String)localObject2);
+        if ((!localo.exists()) || (!localo.isFile()))
         {
-          ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "inFile(%s) not exists", new Object[] { localObject2 });
+          Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "inFile(%s) not exists", new Object[] { localObject2 });
           bool1 = false;
         }
       }
@@ -145,18 +143,18 @@ final class l
         Object localObject2;
         String str;
         Object localObject1;
-        k localk;
+        o localo;
         boolean bool2;
         boolean bool1 = false;
       }
       try
       {
-        ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), decrypt done, ret = %b", new Object[] { this.Fhz, Boolean.valueOf(bool1) });
-        ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), after try-catch, ret = %b", new Object[] { this.Fhz, Boolean.valueOf(bool1) });
+        Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), decrypt done, ret = %b", new Object[] { this.JYs, Boolean.valueOf(bool1) });
+        Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), after try-catch, ret = %b", new Object[] { this.JYs, Boolean.valueOf(bool1) });
         if (bool1) {
           break;
         }
-        this.FiH = null;
+        this.JZB = null;
         this.state = 8;
         AppMethodBeat.o(151995);
         return this;
@@ -165,27 +163,27 @@ final class l
       {
         break label474;
       }
-      localk = new k(str);
-      localk.fTg().mkdirs();
-      localk.delete();
-      localObject2 = a.aNG((String)localObject2);
-      if (bu.cF((byte[])localObject2))
+      localo = new o(str);
+      localo.heq().mkdirs();
+      localo.delete();
+      localObject2 = a.bei((String)localObject2);
+      if (Util.isNullOrNil((byte[])localObject2))
       {
-        ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "read bytes empty");
-        j.A(this.DRK, 56L);
-        j.A(this.DRK, 45L);
-        j.A(this.DRK, 18L);
+        Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "read bytes empty");
+        j.F(this.IBJ, 56L);
+        j.F(this.IBJ, 45L);
+        j.F(this.IBJ, 18L);
         bool1 = false;
       }
       else
       {
         localObject1 = MMProtocalJni.aesDecrypt((byte[])localObject2, ((String)localObject1).getBytes());
-        if (bu.cF((byte[])localObject1))
+        if (Util.isNullOrNil((byte[])localObject1))
         {
-          ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "decrypted bytes empty");
-          j.A(this.DRK, 55L);
-          j.A(this.DRK, 45L);
-          j.A(this.DRK, 18L);
+          Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "decrypted bytes empty");
+          j.F(this.IBJ, 55L);
+          j.F(this.IBJ, 45L);
+          j.F(this.IBJ, 18L);
           bool1 = false;
         }
         else
@@ -194,26 +192,26 @@ final class l
           bool1 = bool2;
           if (!bool2)
           {
-            ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "decrypt write bytes fail");
-            j.A(this.DRK, 57L);
-            j.A(this.DRK, 45L);
-            j.A(this.DRK, 18L);
+            Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "decrypt write bytes fail");
+            j.F(this.IBJ, 57L);
+            j.F(this.IBJ, 45L);
+            j.F(this.IBJ, 18L);
             bool1 = bool2;
             continue;
             label474:
-            ae.printErrStackTrace("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", localException1, "", new Object[0]);
-            ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), error = %s", new Object[] { this.Fhz, localException1 });
-            j.A(this.DRK, 45L);
-            j.A(this.DRK, 18L);
+            Log.printErrStackTrace("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", localException1, "", new Object[0]);
+            Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decrypt(), error = %s", new Object[] { this.JYs, localException1 });
+            j.F(this.IBJ, 45L);
+            j.F(this.IBJ, 18L);
           }
         }
       }
     }
-    j.A(this.DRK, 17L);
-    this.FiH = this.tTW;
-    if (this.Fif)
+    j.F(this.IBJ, 17L);
+    this.JZB = this.xli;
+    if (this.JYZ)
     {
-      this.tTW = (this.filePath + ".decompressed");
+      this.xli = (this.filePath + ".decompressed");
       this.state = 2;
       AppMethodBeat.o(151995);
       return this;
@@ -223,14 +221,14 @@ final class l
     return this;
   }
   
-  final l feE()
+  final l gnO()
   {
     AppMethodBeat.i(151996);
-    ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), file_state = %s, before do decompress, inPath = %s, outPath = %s", new Object[] { this.Fhz, feH(), this.FiH, this.tTW });
+    Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), file_state = %s, before do decompress, inPath = %s, outPath = %s", new Object[] { this.JYs, gnR(), this.JZB, this.xli });
     if (2 != this.state)
     {
-      if ((8 == this.state) && (this.Fig)) {
-        j.a(this.dnz, this.subType, this.FhD, this.dnF, false, false, false, this.FhG);
+      if ((8 == this.state) && (this.JZa)) {
+        j.a(this.dEO, this.subType, this.JYw, this.dEU, false, false, false, this.JYz);
       }
       AppMethodBeat.o(151996);
       return this;
@@ -239,12 +237,12 @@ final class l
     {
       try
       {
-        localObject = this.FiH;
-        str = this.tTW;
-        k localk = new k((String)localObject);
-        if ((!localk.exists()) || (!localk.isFile()))
+        localObject = this.JZB;
+        str = this.xli;
+        o localo = new o((String)localObject);
+        if ((!localo.exists()) || (!localo.isFile()))
         {
-          ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "inFile(%s) not exists", new Object[] { localObject });
+          Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "inFile(%s) not exists", new Object[] { localObject });
           bool = false;
         }
       }
@@ -255,14 +253,14 @@ final class l
       }
       try
       {
-        ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), decompress done, ret = %b", new Object[] { this.Fhz, Boolean.valueOf(bool) });
-        ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), after try-catch, ret = %b", new Object[] { this.Fhz, Boolean.valueOf(bool) });
+        Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), decompress done, ret = %b", new Object[] { this.JYs, Boolean.valueOf(bool) });
+        Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), after try-catch, ret = %b", new Object[] { this.JYs, Boolean.valueOf(bool) });
         if (!bool) {
           break;
         }
-        this.FiH = this.tTW;
+        this.JZB = this.xli;
         this.state = 4;
-        j.A(this.DRK, 19L);
+        j.F(this.IBJ, 19L);
         AppMethodBeat.o(151996);
         return this;
       }
@@ -274,11 +272,11 @@ final class l
         j.a locala;
         break label314;
       }
-      new k(str).delete();
-      localObject = s.F(a.aNG((String)localObject));
-      if (bu.cF((byte[])localObject))
+      new o(str).delete();
+      localObject = com.tencent.mm.b.s.T(a.bei((String)localObject));
+      if (Util.isNullOrNil((byte[])localObject))
       {
-        ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "uncompressed bytes empty");
+        Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "uncompressed bytes empty");
         bool = false;
       }
       else
@@ -286,41 +284,41 @@ final class l
         bool = a.y(str, (byte[])localObject);
         continue;
         label314:
-        ae.printErrStackTrace("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", localException1, "", new Object[0]);
-        ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), error = %s", new Object[] { this.Fhz, localException1 });
+        Log.printErrStackTrace("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", localException1, "", new Object[0]);
+        Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: decompress(), error = %s", new Object[] { this.JYs, localException1 });
       }
     }
-    this.FiH = null;
+    this.JZB = null;
     this.state = 8;
-    j.A(this.DRK, 20L);
-    j.A(this.DRK, 46L);
-    if (this.Fig) {
-      j.a(this.dnz, this.subType, this.FhD, this.dnF, true, false, false, this.FhG);
+    j.F(this.IBJ, 20L);
+    j.F(this.IBJ, 46L);
+    if (this.JZa) {
+      j.a(this.dEO, this.subType, this.JYw, this.dEU, true, false, false, this.JYz);
     }
-    while ((!this.Fif) || (!this.dnB))
+    while ((!this.JYZ) || (!this.dEQ))
     {
       AppMethodBeat.o(151996);
       return this;
     }
-    i = this.dnz;
+    i = this.dEO;
     j = this.subType;
     Object localObject = this.url;
-    k = this.dnA;
-    if (this.FhH > this.FhI) {}
-    for (locala = j.a.Fiz;; locala = j.a.Fix)
+    k = this.dEP;
+    if (this.JYA > this.JYB) {}
+    for (locala = j.a.JZt;; locala = j.a.JZr)
     {
-      j.a(i, j, (String)localObject, k, locala, false, this.dnF, false, this.FhG);
+      j.a(i, j, (String)localObject, k, locala, false, this.dEU, false, this.JYz);
       break;
     }
   }
   
-  final String feF()
+  final String gnP()
   {
     AppMethodBeat.i(151997);
-    ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSum(), state " + feH(), new Object[] { this.Fhz });
+    Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSum(), state " + gnR(), new Object[] { this.JYs });
     if (16 == this.state)
     {
-      localObject = this.FiH;
+      localObject = this.JZB;
       AppMethodBeat.o(151997);
       return localObject;
     }
@@ -329,22 +327,22 @@ final class l
       AppMethodBeat.o(151997);
       return null;
     }
-    String str1 = feG();
-    ae.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl return = %s", new Object[] { this.Fhz, str1 });
+    String str1 = gnQ();
+    Log.i("MicroMsg.ResDownloader.CheckResUpdate.FileDecryptPerformer", "%s: checkSumImpl return = %s", new Object[] { this.JYs, str1 });
     if (this.state == 4)
     {
-      if ((bu.isNullOrNil(str1)) && (!this.Fif))
+      if ((Util.isNullOrNil(str1)) && (!this.JYZ))
       {
-        j.A(this.DRK, 58L);
-        j.A(this.DRK, 45L);
+        j.F(this.IBJ, 58L);
+        j.F(this.IBJ, 45L);
       }
-      if (!bu.isNullOrNil(str1)) {
+      if (!Util.isNullOrNil(str1)) {
         break label296;
       }
-      if (!this.Fig) {
+      if (!this.JZa) {
         break label214;
       }
-      j.a(this.dnz, this.subType, this.FhD, this.dnF, true, true, false, this.FhG);
+      j.a(this.dEO, this.subType, this.JYw, this.dEU, true, true, false, this.JYz);
     }
     label214:
     do
@@ -353,39 +351,39 @@ final class l
       {
         AppMethodBeat.o(151997);
         return str1;
-        if ((this.Fif) && (this.dnB))
+        if ((this.JYZ) && (this.dEQ))
         {
-          i = this.dnz;
+          i = this.dEO;
           j = this.subType;
           str2 = this.url;
-          k = this.dnA;
-          if (this.FhH > this.FhI) {}
-          for (localObject = j.a.Fiz;; localObject = j.a.Fix)
+          k = this.dEP;
+          if (this.JYA > this.JYB) {}
+          for (localObject = j.a.JZt;; localObject = j.a.JZr)
           {
-            j.a(i, j, str2, k, (j.a)localObject, false, this.dnF, true, this.FhG);
+            j.a(i, j, str2, k, (j.a)localObject, false, this.dEU, true, this.JYz);
             break;
           }
-          if (!this.Fig) {
+          if (!this.JZa) {
             break;
           }
-          j.a(this.dnz, this.subType, this.FhD, this.dnF, true, true, true, this.FhG);
+          j.a(this.dEO, this.subType, this.JYw, this.dEU, true, true, true, this.JYz);
         }
       }
-    } while ((!this.Fif) || (!this.dnB));
+    } while ((!this.JYZ) || (!this.dEQ));
     label296:
-    int i = this.dnz;
+    int i = this.dEO;
     int j = this.subType;
     String str2 = this.url;
-    int k = this.dnA;
-    if (this.FhH > this.FhI) {}
-    for (Object localObject = j.a.Fiz;; localObject = j.a.Fix)
+    int k = this.dEP;
+    if (this.JYA > this.JYB) {}
+    for (Object localObject = j.a.JZt;; localObject = j.a.JZr)
     {
-      j.a(i, j, str2, k, (j.a)localObject, true, this.dnF, true, this.FhG);
+      j.a(i, j, str2, k, (j.a)localObject, true, this.dEU, true, this.JYz);
       break;
     }
   }
   
-  final String feH()
+  final String gnR()
   {
     AppMethodBeat.i(151999);
     switch (this.state)
@@ -416,7 +414,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.a.l
  * JD-Core Version:    0.7.0.1
  */

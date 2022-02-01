@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.b.a;
 
 public abstract interface a
 {
-  public abstract void U(int paramInt, long paramLong);
+  public abstract void X(int paramInt, long paramLong);
 }
 
 

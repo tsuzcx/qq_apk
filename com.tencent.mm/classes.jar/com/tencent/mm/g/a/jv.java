@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class jv
-  extends com.tencent.mm.sdk.b.b
+  extends IEvent
 {
-  public a dxP;
+  public a dON;
   
   public jv()
   {
@@ -15,24 +15,21 @@ public final class jv
   
   private jv(byte paramByte)
   {
-    AppMethodBeat.i(123714);
-    this.dxP = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(130779);
+    this.dON = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(123714);
+    AppMethodBeat.o(130779);
   }
   
   public static final class a
   {
-    public com.tencent.mm.protocal.b.a.b dxQ;
-    public DialogInterface.OnClickListener dxR;
-    public DialogInterface.OnClickListener dxS;
-    public int type = 0;
+    public int dOO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.jv
  * JD-Core Version:    0.7.0.1
  */

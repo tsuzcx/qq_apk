@@ -3,19 +3,19 @@ package com.tencent.mm.model.b;
 public final class d
   extends a
 {
-  protected final String[] aDi()
+  protected final String[] aWU()
   {
     return new String[] { "wording", "linkname", "linksrc" };
   }
   
-  public final String aDj()
+  public final String aWV()
   {
     return "ChattingSecurityBannerStorage_user_status_";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ public abstract interface c
   public static final class a
   {
     public String businessType;
-    public int dLf;
-    public String dLg;
-    public String dlj;
-    public String kZC;
-    public String kbi;
+    public String dCw;
+    public int ecU;
+    public String ecV;
+    public String leq;
+    public String meP;
     public int scene;
     public int sourceType;
   }
@@ -33,7 +33,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c
  * JD-Core Version:    0.7.0.1
  */

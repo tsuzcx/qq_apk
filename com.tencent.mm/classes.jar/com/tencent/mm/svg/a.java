@@ -9,14 +9,14 @@ import java.util.Queue;
 
 final class a<T>
 {
-  private HashMap<Looper, LinkedList<T>> Jkp;
-  private Queue<T> Jkq;
+  private HashMap<Looper, LinkedList<T>> Oui;
+  private Queue<T> Ouj;
   
   a()
   {
     AppMethodBeat.i(148680);
-    this.Jkp = new HashMap();
-    this.Jkq = new ArrayDeque();
+    this.Oui = new HashMap();
+    this.Ouj = new ArrayDeque();
     AppMethodBeat.o(148680);
   }
   
@@ -29,7 +29,7 @@ final class a<T>
     //   2: ldc 39
     //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 27	com/tencent/mm/svg/a:Jkp	Ljava/util/HashMap;
+    //   8: getfield 27	com/tencent/mm/svg/a:Oui	Ljava/util/HashMap;
     //   11: aload_1
     //   12: invokevirtual 43	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   15: ifne +46 -> 61
@@ -38,7 +38,7 @@ final class a<T>
     //   22: invokespecial 46	java/util/LinkedList:<init>	()V
     //   25: astore_3
     //   26: aload_0
-    //   27: getfield 27	com/tencent/mm/svg/a:Jkp	Ljava/util/HashMap;
+    //   27: getfield 27	com/tencent/mm/svg/a:Oui	Ljava/util/HashMap;
     //   30: aload_1
     //   31: aload_3
     //   32: invokevirtual 50	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -59,7 +59,7 @@ final class a<T>
     //   59: monitorexit
     //   60: return
     //   61: aload_0
-    //   62: getfield 27	com/tencent/mm/svg/a:Jkp	Ljava/util/HashMap;
+    //   62: getfield 27	com/tencent/mm/svg/a:Oui	Ljava/util/HashMap;
     //   65: aload_1
     //   66: invokevirtual 61	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   69: checkcast 45	java/util/LinkedList
@@ -84,35 +84,35 @@ final class a<T>
     //   61	73	76	finally
   }
   
-  protected final T fxZ()
-  {
-    try
-    {
-      AppMethodBeat.i(148681);
-      Object localObject1 = null;
-      if (this.Jkq.size() != 0) {
-        localObject1 = this.Jkq.poll();
-      }
-      AppMethodBeat.o(148681);
-      return localObject1;
-    }
-    finally {}
-  }
-  
   protected final void g(Looper paramLooper)
   {
     try
     {
       AppMethodBeat.i(148683);
-      if (this.Jkp.containsKey(paramLooper))
+      if (this.Oui.containsKey(paramLooper))
       {
-        paramLooper = (LinkedList)this.Jkp.remove(paramLooper);
-        if (this.Jkq.size() < 40) {
-          this.Jkq.addAll(paramLooper);
+        paramLooper = (LinkedList)this.Oui.remove(paramLooper);
+        if (this.Ouj.size() < 40) {
+          this.Ouj.addAll(paramLooper);
         }
       }
       AppMethodBeat.o(148683);
       return;
+    }
+    finally {}
+  }
+  
+  protected final T gFM()
+  {
+    try
+    {
+      AppMethodBeat.i(148681);
+      Object localObject1 = null;
+      if (this.Ouj.size() != 0) {
+        localObject1 = this.Ouj.poll();
+      }
+      AppMethodBeat.o(148681);
+      return localObject1;
     }
     finally {}
   }

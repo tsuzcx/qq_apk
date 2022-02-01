@@ -8,9 +8,9 @@ public abstract interface k
 {
   public abstract void a(m paramm);
   
-  public abstract boolean aOS();
+  public abstract boolean bjb();
   
-  public abstract boolean aOT();
+  public abstract boolean bjc();
   
   public abstract View getContentView();
   
@@ -20,7 +20,7 @@ public abstract interface k
   
   public abstract void onCancel();
   
-  public abstract void qB(int paramInt);
+  public abstract void ut(int paramInt);
 }
 
 

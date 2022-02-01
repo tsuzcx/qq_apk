@@ -1,38 +1,39 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bip;
-import com.tencent.mm.protocal.protobuf.biq;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.protocal.protobuf.bur;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public biq jkK;
-  private com.tencent.mm.ak.b rr;
+  private i callback;
+  public bur kiN;
+  private d rr;
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(125515);
-    b.a locala = new b.a();
-    locala.hQF = new bip();
-    locala.hQG = new biq();
+    d.a locala = new d.a();
+    locala.iLN = new buq();
+    locala.iLO = new bur();
     locala.uri = "/cgi-bin/micromsg-bin/getsafetyinfo";
     locala.funcId = 850;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.rr = locala.aXF();
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(125515);
     return i;
   }
@@ -42,13 +43,13 @@ public final class b
     return 850;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(125514);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ae.e("MicroMsg.NetSceneGetSafetyInfo", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      Log.e("MicroMsg.NetSceneGetSafetyInfo", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
-    this.jkK = ((biq)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
+    this.kiN = ((bur)((d)params).iLL.iLR);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(125514);
   }

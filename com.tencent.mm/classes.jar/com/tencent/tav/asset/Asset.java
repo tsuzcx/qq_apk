@@ -308,7 +308,7 @@ public abstract class Asset<Track extends AssetTrack>
   
   public List<Track> getTracks()
   {
-    new StringBuilder("getTracks finish, has track count: ").append(this.tracks);
+    Logger.e("Asset", "getTracks finish, has track count: " + this.tracks);
     return this.tracks;
   }
   
@@ -414,7 +414,7 @@ public abstract class Asset<Track extends AssetTrack>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.asset.Asset
  * JD-Core Version:    0.7.0.1
  */

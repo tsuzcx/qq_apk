@@ -13,15 +13,15 @@ public class f
   
   public f(Context paramContext)
   {
-    AppMethodBeat.i(210714);
+    AppMethodBeat.i(222962);
     b = paramContext;
     n.a(paramContext).a();
-    AppMethodBeat.o(210714);
+    AppMethodBeat.o(222962);
   }
   
   public static f a(Context paramContext)
   {
-    AppMethodBeat.i(210715);
+    AppMethodBeat.i(222963);
     if (c == null) {}
     try
     {
@@ -29,12 +29,12 @@ public class f
         c = new f(paramContext);
       }
       paramContext = c;
-      AppMethodBeat.o(210715);
+      AppMethodBeat.o(222963);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(210715);
+      AppMethodBeat.o(222963);
     }
   }
   
@@ -44,18 +44,18 @@ public class f
     {
       try
       {
-        AppMethodBeat.i(210716);
+        AppMethodBeat.i(222964);
         Object localObject = a;
         if (localObject != null)
         {
-          AppMethodBeat.o(210716);
+          AppMethodBeat.o(222964);
           return localObject;
         }
         localObject = b;
         if (localObject == null)
         {
           localObject = null;
-          AppMethodBeat.o(210716);
+          AppMethodBeat.o(222964);
           continue;
         }
         d.a(localContext).b("load_sapp");
@@ -70,24 +70,24 @@ public class f
       b();
       d.a(b).c("load_sapp");
       localDexClassLoader = a;
-      AppMethodBeat.o(210716);
+      AppMethodBeat.o(222964);
     }
   }
   
   public void b()
   {
-    AppMethodBeat.i(210717);
+    AppMethodBeat.i(222965);
     try
     {
       Object localObject = b;
       localObject = q.e(q.a((Context)localObject, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
       new Thread(new i(b, (List)localObject, false)).start();
-      AppMethodBeat.o(210717);
+      AppMethodBeat.o(222965);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(210717);
+      AppMethodBeat.o(222965);
     }
   }
   
@@ -99,7 +99,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.sapp.c.f
  * JD-Core Version:    0.7.0.1
  */

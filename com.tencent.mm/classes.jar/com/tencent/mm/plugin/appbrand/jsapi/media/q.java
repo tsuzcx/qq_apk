@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants;", "", "Capture", "MediaEnum", "MediaType", "SourceType", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants;", "", "Capture", "MediaEnum", "MediaType", "SourceType", "plugin-appbrand-integration_release"})
 public abstract interface q {}
 
 

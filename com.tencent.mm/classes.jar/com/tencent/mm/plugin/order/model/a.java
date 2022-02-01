@@ -5,16 +5,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.order.ui.a.e;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.ui.base.h.e;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,8 +25,8 @@ public final class a
   {
     AppMethodBeat.i(66656);
     e locale = new e(paramContext);
-    if (!bu.isNullOrNil(paramMallTransactionObject.wSA)) {}
-    for (locale.wUD = paramContext.getString(2131765578);; locale.wUD = paramContext.getString(2131765581))
+    if (!Util.isNullOrNil(paramMallTransactionObject.AOu)) {}
+    for (locale.AQz = paramContext.getString(2131768027);; locale.AQz = paramContext.getString(2131768030))
     {
       locale.mOnClickListener = new View.OnClickListener()
       {
@@ -34,38 +34,38 @@ public final class a
         {
           AppMethodBeat.i(66655);
           Object localObject = new b();
-          ((b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/model/MallOrderPreferenceManager$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+          ((b)localObject).bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/model/MallOrderPreferenceManager$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
           paramAnonymousView = new LinkedList();
           localObject = new LinkedList();
-          if (!bu.isNullOrNil(this.wRY.wSr))
+          if (!Util.isNullOrNil(this.ANT.dCu))
           {
             ((List)localObject).add(Integer.valueOf(0));
-            paramAnonymousView.add(paramContext.getString(2131765579));
+            paramAnonymousView.add(paramContext.getString(2131768028));
           }
-          if (!bu.isNullOrNil(this.wRY.wRU))
+          if (!Util.isNullOrNil(this.ANT.ANP))
           {
             ((List)localObject).add(Integer.valueOf(1));
-            paramAnonymousView.add(paramContext.getString(2131765580));
+            paramAnonymousView.add(paramContext.getString(2131768029));
           }
-          if (!bu.isNullOrNil(this.wRY.wSA))
+          if (!Util.isNullOrNil(this.ANT.AOu))
           {
             ((List)localObject).add(Integer.valueOf(2));
-            paramAnonymousView.add(paramContext.getString(2131765582));
+            paramAnonymousView.add(paramContext.getString(2131768031));
           }
           if (((List)localObject).size() == 1)
           {
-            a.a(((Integer)((List)localObject).get(0)).intValue(), paramContext, this.wRY);
+            a.a(((Integer)((List)localObject).get(0)).intValue(), paramContext, this.ANT);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/model/MallOrderPreferenceManager$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(66655);
             return;
           }
-          h.b(paramContext, null, paramAnonymousView, (List)localObject, null, new h.d()
+          h.b(paramContext, null, paramAnonymousView, (List)localObject, null, new h.e()
           {
-            public final void cv(int paramAnonymous2Int1, int paramAnonymous2Int2)
+            public final void cy(int paramAnonymous2Int1, int paramAnonymous2Int2)
             {
               AppMethodBeat.i(66654);
-              a.a(paramAnonymous2Int2, a.1.this.val$context, a.1.this.wRY);
+              a.a(paramAnonymous2Int2, a.1.this.val$context, a.1.this.ANT);
               AppMethodBeat.o(66654);
             }
           });
@@ -88,21 +88,21 @@ public final class a
     {
       AppMethodBeat.o(66657);
       return;
-      g.ajS();
-      an localan = ((l)g.ab(l.class)).azF().BH(paramMallTransactionObject.wSr);
-      if ((localan != null) && (c.lO(localan.field_type)))
+      g.aAi();
+      as localas = ((l)g.af(l.class)).aSN().Kn(paramMallTransactionObject.dCu);
+      if ((localas != null) && (c.oR(localas.field_type)))
       {
-        com.tencent.mm.wallet_core.ui.f.ag(paramContext, paramMallTransactionObject.wSr);
+        com.tencent.mm.wallet_core.ui.f.ao(paramContext, paramMallTransactionObject.dCu);
         AppMethodBeat.o(66657);
         return;
       }
-      com.tencent.mm.wallet_core.ui.f.ae(paramContext, paramMallTransactionObject.wSr);
+      com.tencent.mm.wallet_core.ui.f.am(paramContext, paramMallTransactionObject.dCu);
       AppMethodBeat.o(66657);
       return;
-      com.tencent.mm.wallet_core.ui.f.ct(paramContext, paramMallTransactionObject.wRU);
+      com.tencent.mm.wallet_core.ui.f.cM(paramContext, paramMallTransactionObject.ANP);
       AppMethodBeat.o(66657);
       return;
-      com.tencent.mm.wallet_core.ui.f.p(paramContext, paramMallTransactionObject.wSA, false);
+      com.tencent.mm.wallet_core.ui.f.p(paramContext, paramMallTransactionObject.AOu, false);
     }
   }
   
@@ -113,7 +113,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.a
  * JD-Core Version:    0.7.0.1
  */

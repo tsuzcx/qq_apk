@@ -2,49 +2,48 @@ package com.tencent.mm.plugin.appbrand.launching.a;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.cm.g;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.b.e.b;
-import com.tencent.mm.plugin.appbrand.appcache.b.e.e;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.bua;
-import com.tencent.mm.protocal.protobuf.ehk;
-import com.tencent.mm.protocal.protobuf.eij;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vending.g.c.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.co.f;
+import com.tencent.mm.co.g;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.e.b;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.e.e;
+import com.tencent.mm.protocal.protobuf.chd;
+import com.tencent.mm.protocal.protobuf.che;
+import com.tencent.mm.protocal.protobuf.fcc;
+import com.tencent.mm.protocal.protobuf.fdb;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public final f<a.a<bua>> a(btz parambtz, boolean paramBoolean, final com.tencent.mm.ak.a parama)
+  public final f<com.tencent.mm.ak.c.a<che>> a(chd paramchd, boolean paramBoolean, final c paramc)
   {
     AppMethodBeat.i(180318);
-    String str = parambtz.ikm;
-    int i = parambtz.HgZ.Scene;
-    int j = parambtz.Hhb.Hkr;
-    Object localObject = ((e)j.T(e.class)).aY(str, i);
+    String str = paramchd.jfi;
+    int i = paramchd.Mmn.Scene;
+    int j = paramchd.Mmp.MqF;
+    Object localObject = ((e)n.W(e.class)).bd(str, i);
     if (((Pair)localObject).first != null)
     {
-      ae.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "before run, get issued data by appId(%s) scene(%d)", new Object[] { str, Integer.valueOf(i) });
-      parambtz = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(((Long)((Pair)localObject).second).longValue(), 106L);
-      parambtz = g.c(new c.a() {});
+      Log.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "before run, get issued data by appId(%s) scene(%d)", new Object[] { str, Integer.valueOf(i) });
+      paramchd = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.kQt;
+      com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.F(((Long)((Pair)localObject).second).longValue(), 106L);
+      paramchd = g.c(new com.tencent.mm.vending.g.c.a() {});
       AppMethodBeat.o(180318);
-      return parambtz;
+      return paramchd;
     }
-    ae.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "run() appId[%s], scene[%d], libVersion[%d] performanceLevel[%d]", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(parambtz.Hhf) });
+    Log.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "run() appId[%s], scene[%d], libVersion[%d] performanceLevel[%d]", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramchd.Mmt) });
     if (!paramBoolean)
     {
-      parambtz = ((b)j.T(b.class)).G(str, 2, i);
-      if (((Boolean)parambtz.first).booleanValue())
+      paramchd = ((b)n.W(b.class)).J(str, 2, i);
+      if (((Boolean)paramchd.first).booleanValue())
       {
-        localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jNM;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(((Integer)parambtz.second).intValue(), 168L);
-        ae.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "async launch with appid(%s) scene(%d) blocked", new Object[] { str, Integer.valueOf(i) });
-        parambtz = g.c(new c.a() {});
+        localObject = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.kQt;
+        com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.F(((Integer)paramchd.second).intValue(), 168L);
+        Log.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "async launch with appid(%s) scene(%d) blocked", new Object[] { str, Integer.valueOf(i) });
+        paramchd = g.c(new com.tencent.mm.vending.g.c.a() {});
         AppMethodBeat.o(180318);
-        return parambtz;
+        return paramchd;
       }
     }
     AppMethodBeat.o(180318);
@@ -53,7 +52,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.a
  * JD-Core Version:    0.7.0.1
  */

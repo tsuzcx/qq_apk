@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/cmw" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/cs7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cl" android:layout_centerHorizontal="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cn0" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginBottom="@dimen/bt" android:src="@raw/icons_filled_call_good" android:layout_centerHorizontal="true" app:iconColor="@color/BW_100_Alpha_0_5" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cn1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_below="@id/cn0" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/cou" android:background="@drawable/a1c" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/cov" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

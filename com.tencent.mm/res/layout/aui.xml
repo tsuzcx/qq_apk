@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center_vertical" android:id="@id/e27" android:paddingLeft="@dimen/h" android:paddingRight="@dimen/h" android:layout_width="wrap_content" android:layout_height="@dimen/jm" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/a7o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="79.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:layout_gravity="center_vertical" android:id="@id/dr2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@raw/arrow_right" app:iconColor="@color/en" />
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="20.0dip" />
+</LinearLayout>

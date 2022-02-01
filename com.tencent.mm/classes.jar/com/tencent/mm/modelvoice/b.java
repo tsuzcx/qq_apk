@@ -2,9 +2,9 @@ package com.tencent.mm.modelvoice;
 
 public abstract interface b
 {
-  public abstract void aNK();
+  public abstract void bhP();
   
-  public abstract g dr(int paramInt1, int paramInt2);
+  public abstract g dB(int paramInt1, int paramInt2);
   
   public abstract int getFormat();
   
@@ -12,7 +12,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelvoice.b
  * JD-Core Version:    0.7.0.1
  */

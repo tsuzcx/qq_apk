@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.appcache.pkg;
 import android.support.v4.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
@@ -14,56 +14,54 @@ import java.util.Map;
 public final class b
   extends WxaPkgBaseImpl
 {
-  private static final ByteOrder jKG = ByteOrder.BIG_ENDIAN;
+  private static final ByteOrder kMF = ByteOrder.BIG_ENDIAN;
   private volatile int cR = -1;
-  private volatile int jIr = 0;
-  private volatile int jIs = 0;
-  private volatile int jIt = -1;
+  private volatile int kKn = 0;
+  private volatile int kKo = 0;
+  private volatile int kKp = -1;
   
-  public final Map<String, WxaPkg.Info> a(FileChannel paramFileChannel, k paramk)
+  public final Map<String, WxaPkg.Info> a(FileChannel paramFileChannel, o paramo)
   {
+    String str = null;
     AppMethodBeat.i(175559);
     if (paramFileChannel == null)
     {
-      ae.e("MicroMsg.WxaPkgNormalImpl", "fileChannel is null");
+      Log.e("MicroMsg.WxaPkgNormalImpl", "fileChannel is null");
       AppMethodBeat.o(175559);
       return null;
     }
-    if (paramk == null)
+    if (paramo == null)
     {
-      ae.e("MicroMsg.WxaPkgNormalImpl", "file is null");
+      Log.e("MicroMsg.WxaPkgNormalImpl", "file is null");
       AppMethodBeat.o(175559);
       return null;
     }
     paramFileChannel.position(14L);
-    Object localObject = ByteBuffer.allocate(this.jIr);
-    ((ByteBuffer)localObject).order(jKG);
+    Object localObject = ByteBuffer.allocate(this.kKn);
+    ((ByteBuffer)localObject).order(kMF);
     paramFileChannel.read((ByteBuffer)localObject);
     localObject = ((ByteBuffer)localObject).array();
-    this.jIt = q((byte[])localObject, 0, 4);
+    this.kKp = A((byte[])localObject, 0, 4);
     a locala = new a();
     int i = 0;
     int j = 4;
-    paramFileChannel = null;
-    while (i < this.jIt)
+    paramFileChannel = str;
+    while (i < this.kKp)
     {
-      int k = q((byte[])localObject, j, 4);
+      int k = A((byte[])localObject, j, 4);
       j += 4;
-      String str = new String((byte[])localObject, j, k);
+      str = new String((byte[])localObject, j, k);
       j += k;
-      k = q((byte[])localObject, j, 4);
+      k = A((byte[])localObject, j, 4);
       j += 4;
-      int m = q((byte[])localObject, j, 4);
+      int m = A((byte[])localObject, j, 4);
       j += 4;
-      paramFileChannel = new WxaPkgBaseImpl.Info(w.B(paramk.fTh()), str, k, m);
+      paramFileChannel = new WxaPkgBaseImpl.Info(aa.z(paramo.her()), str, k, m);
       locala.put(str, paramFileChannel);
       i += 1;
     }
-    if ((paramFileChannel != null) && (paramFileChannel.jIN + paramFileChannel.jIO > paramk.length()))
-    {
-      ae.e("MicroMsg.WxaPkgNormalImpl", "getInfo, lastFileOffset(%d) + lastFileLength(%d) > totalFileLength(%d)", new Object[] { Integer.valueOf(paramFileChannel.jIN), Integer.valueOf(paramFileChannel.jIO), Long.valueOf(paramk.length()) });
-      AppMethodBeat.o(175559);
-      return null;
+    if ((paramFileChannel != null) && (paramFileChannel.kKJ + paramFileChannel.kKK > paramo.length())) {
+      Log.e("MicroMsg.WxaPkgNormalImpl", "getInfo, lastFileOffset(%d) + lastFileLength(%d) > totalFileLength(%d), infoMap.size(%d), filesCount(%d)", new Object[] { Integer.valueOf(paramFileChannel.kKJ), Integer.valueOf(paramFileChannel.kKK), Long.valueOf(paramo.length()), Integer.valueOf(locala.size()), Integer.valueOf(this.kKp) });
     }
     AppMethodBeat.o(175559);
     return locala;
@@ -79,7 +77,7 @@ public final class b
     }
     paramFileChannel.position(0L);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(14);
-    localByteBuffer.order(jKG);
+    localByteBuffer.order(kMF);
     paramFileChannel.read(localByteBuffer);
     if ((-66 != localByteBuffer.get(0)) || (-19 != localByteBuffer.get(13)))
     {
@@ -87,9 +85,9 @@ public final class b
       return false;
     }
     paramFileChannel = localByteBuffer.array();
-    this.cR = q(paramFileChannel, 1, 4);
-    this.jIr = q(paramFileChannel, 5, 4);
-    this.jIs = q(paramFileChannel, 9, 4);
+    this.cR = A(paramFileChannel, 1, 4);
+    this.kKn = A(paramFileChannel, 5, 4);
+    this.kKo = A(paramFileChannel, 9, 4);
     AppMethodBeat.o(175558);
     return true;
   }
@@ -99,22 +97,22 @@ public final class b
     return false;
   }
   
-  public final int bbs()
+  public final int bwF()
   {
-    return this.jIr;
+    return this.kKn;
   }
   
-  public final int bbt()
+  public final int bwG()
   {
-    return this.jIt;
+    return this.kKp;
   }
   
   public final void close()
   {
     this.cR = -1;
-    this.jIr = 0;
-    this.jIs = 0;
-    this.jIt = -1;
+    this.kKn = 0;
+    this.kKo = 0;
+    this.kKp = -1;
   }
   
   public final int getVersion()
@@ -124,7 +122,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.pkg.b
  * JD-Core Version:    0.7.0.1
  */

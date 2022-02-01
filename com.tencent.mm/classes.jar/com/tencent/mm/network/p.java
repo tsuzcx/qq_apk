@@ -1,142 +1,122 @@
 package com.tencent.mm.network;
 
-import com.tencent.mars.magicbox.IPxxLogic.ICallBack;
-import com.tencent.mars.mm.MMLogic;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public final class p
-  implements IPxxLogic.ICallBack
+public abstract interface p
+  extends IInterface
 {
-  private static long iHx = 0L;
-  private static int iHy = 0;
-  private final String TAG = "IPxxCallback";
+  public abstract void onNetworkChange(int paramInt);
   
-  private static void qD(int paramInt)
+  public static abstract class a
+    extends Binder
+    implements p
   {
-    AppMethodBeat.i(132756);
-    try
+    private static final String DESCRIPTOR = "com.tencent.mm.network.IOnNetworkChange_AIDL";
+    static final int TRANSACTION_onNetworkChange = 1;
+    
+    public a()
     {
-      ad.aPK().qE(paramInt);
-      AppMethodBeat.o(132756);
-      return;
+      attachInterface(this, "com.tencent.mm.network.IOnNetworkChange_AIDL");
     }
-    catch (Exception localException)
+    
+    public static p asInterface(IBinder paramIBinder)
     {
-      ae.e("IPxxCallback", "exception:%s", new Object[] { bu.o(localException) });
-      AppMethodBeat.o(132756);
+      if (paramIBinder == null) {
+        return null;
+      }
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mm.network.IOnNetworkChange_AIDL");
+      if ((localIInterface != null) && ((localIInterface instanceof p))) {
+        return (p)localIInterface;
+      }
+      return new a(paramIBinder);
     }
-  }
-  
-  public final String getCrashFilePath(int paramInt)
-  {
-    AppMethodBeat.i(132751);
-    Object localObject = new Date(System.currentTimeMillis() - paramInt * 86400000L);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-    localObject = b.asl() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
-    if (o.fB((String)localObject))
+    
+    public static p getDefaultImpl()
     {
-      AppMethodBeat.o(132751);
-      return localObject;
+      return a.jDX;
     }
-    AppMethodBeat.o(132751);
-    return null;
-  }
-  
-  public final String getUploadLogExtrasInfo(String paramString)
-  {
-    AppMethodBeat.i(132749);
-    try
+    
+    public static boolean setDefaultImpl(p paramp)
     {
-      paramString = new StringBuffer();
-      paramString.append("Device:").append(d.FFC).append(" ").append(d.FFD).append("\n");
-      paramString = paramString.toString();
-      AppMethodBeat.o(132749);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(132749);
-    }
-    return null;
-  }
-  
-  public final void recoverLinkAddrs()
-  {
-    AppMethodBeat.i(132752);
-    MMLogic.recoverLinkAddrs();
-    AppMethodBeat.o(132752);
-  }
-  
-  public final void setNewDnsDebugHostInfo(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(132750);
-    MMLogic.setNewDnsDebugHost(paramString, String.valueOf(paramInt));
-    AppMethodBeat.o(132750);
-  }
-  
-  public final void uploadLogFail()
-  {
-    AppMethodBeat.i(132754);
-    iHy = 0;
-    qD(-1);
-    AppMethodBeat.o(132754);
-  }
-  
-  public final void uploadLogResponse(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(132753);
-    ae.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(iHy) });
-    long l = bu.aRi();
-    if (l - 1L < iHx)
-    {
-      AppMethodBeat.o(132753);
-      return;
-    }
-    iHx = l;
-    int j = 0;
-    int i = j;
-    if (paramLong2 >= 0L)
-    {
-      i = j;
-      if (paramLong1 > 0L)
+      if ((a.jDX == null) && (paramp != null))
       {
-        i = j;
-        if (paramLong2 < paramLong1) {
-          i = (int)(100L * paramLong2 / paramLong1);
+        a.jDX = paramp;
+        return true;
+      }
+      return false;
+    }
+    
+    public IBinder asBinder()
+    {
+      return this;
+    }
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    {
+      switch (paramInt1)
+      {
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("com.tencent.mm.network.IOnNetworkChange_AIDL");
+        return true;
+      }
+      paramParcel1.enforceInterface("com.tencent.mm.network.IOnNetworkChange_AIDL");
+      onNetworkChange(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    
+    static final class a
+      implements p
+    {
+      public static p jDX;
+      private IBinder mRemote;
+      
+      a(IBinder paramIBinder)
+      {
+        this.mRemote = paramIBinder;
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
+      public final void onNetworkChange(int paramInt)
+      {
+        AppMethodBeat.i(132747);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IOnNetworkChange_AIDL");
+          localParcel1.writeInt(paramInt);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (p.a.getDefaultImpl() != null))
+          {
+            p.a.getDefaultImpl().onNetworkChange(paramInt);
+            return;
+          }
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132747);
         }
       }
     }
-    j = i;
-    if (i > 100) {
-      j = 100;
-    }
-    i = j;
-    if (iHy > j) {
-      i = iHy;
-    }
-    iHy = i;
-    qD(i);
-    AppMethodBeat.o(132753);
-  }
-  
-  public final void uploadLogSuccess()
-  {
-    AppMethodBeat.i(132755);
-    iHy = 0;
-    qD(100);
-    AppMethodBeat.o(132755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.p
  * JD-Core Version:    0.7.0.1
  */

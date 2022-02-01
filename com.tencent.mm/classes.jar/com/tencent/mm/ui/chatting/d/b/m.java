@@ -1,18 +1,18 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface m
-  extends ad
+  extends af
 {
-  public abstract void adP(int paramInt);
+  public abstract void amA(int paramInt);
   
-  public abstract void bH(bv parambv);
+  public abstract void bX(ca paramca);
   
-  public abstract void bI(bv parambv);
+  public abstract void bY(ca paramca);
   
-  public abstract void bJ(bv parambv);
+  public abstract void bZ(ca paramca);
 }
 
 

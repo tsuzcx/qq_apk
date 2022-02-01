@@ -17,31 +17,33 @@ import android.widget.FrameLayout;
 public class CardView
   extends FrameLayout
 {
-  private static final int[] alw = { 16842801 };
-  private static final r alx;
-  int alA;
-  int alB;
-  final Rect alC = new Rect();
-  final Rect alD = new Rect();
-  private final q alE = new q()
+  private static final int[] alJ = { 16842801 };
+  private static final r alK;
+  private boolean alL;
+  private boolean alM;
+  int alN;
+  int alO;
+  final Rect alP = new Rect();
+  final Rect alQ = new Rect();
+  private final q alR = new q()
   {
-    private Drawable alF;
+    private Drawable alS;
     
     public final void R(int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      if (paramAnonymousInt1 > CardView.this.alA) {
+      if (paramAnonymousInt1 > CardView.this.alN) {
         CardView.a(CardView.this, paramAnonymousInt1);
       }
-      if (paramAnonymousInt2 > CardView.this.alB) {
+      if (paramAnonymousInt2 > CardView.this.alO) {
         CardView.b(CardView.this, paramAnonymousInt2);
       }
     }
     
     public final void e(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
     {
-      CardView.this.alD.set(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
+      CardView.this.alQ.set(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
       CardView localCardView = CardView.this;
-      CardView.a(localCardView, localCardView.alC.left + paramAnonymousInt1, CardView.this.alC.top + paramAnonymousInt2, CardView.this.alC.right + paramAnonymousInt3, CardView.this.alC.bottom + paramAnonymousInt4);
+      CardView.a(localCardView, localCardView.alP.left + paramAnonymousInt1, CardView.this.alP.top + paramAnonymousInt2, CardView.this.alP.right + paramAnonymousInt3, CardView.this.alP.bottom + paramAnonymousInt4);
     }
     
     public final boolean getPreventCornerOverlap()
@@ -54,81 +56,79 @@ public class CardView
       return CardView.this.getUseCompatPadding();
     }
     
-    public final Drawable jp()
+    public final Drawable jy()
     {
-      return this.alF;
+      return this.alS;
     }
     
-    public final View jq()
+    public final View jz()
     {
       return CardView.this;
     }
     
     public final void q(Drawable paramAnonymousDrawable)
     {
-      this.alF = paramAnonymousDrawable;
+      this.alS = paramAnonymousDrawable;
       CardView.this.setBackgroundDrawable(paramAnonymousDrawable);
     }
   };
-  private boolean aly;
-  private boolean alz;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21) {
-      alx = new o();
+      alK = new o();
     }
     for (;;)
     {
-      alx.initStatic();
+      alK.initStatic();
       return;
       if (Build.VERSION.SDK_INT >= 17) {
-        alx = new n();
+        alK = new n();
       } else {
-        alx = new p();
+        alK = new p();
       }
     }
   }
   
   public CardView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130968733);
+    this(paramContext, paramAttributeSet, 2130968747);
   }
   
   public CardView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.CardView, paramInt, 2131820805);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.CardView, paramInt, 2131820809);
     if (localTypedArray.hasValue(2))
     {
       paramAttributeSet = localTypedArray.getColorStateList(2);
       float f4 = localTypedArray.getDimension(3, 0.0F);
       float f2 = localTypedArray.getDimension(4, 0.0F);
       float f3 = localTypedArray.getDimension(5, 0.0F);
-      this.aly = localTypedArray.getBoolean(7, false);
-      this.alz = localTypedArray.getBoolean(6, true);
+      this.alL = localTypedArray.getBoolean(7, false);
+      this.alM = localTypedArray.getBoolean(6, true);
       paramInt = localTypedArray.getDimensionPixelSize(8, 0);
-      this.alC.left = localTypedArray.getDimensionPixelSize(10, paramInt);
-      this.alC.top = localTypedArray.getDimensionPixelSize(12, paramInt);
-      this.alC.right = localTypedArray.getDimensionPixelSize(11, paramInt);
-      this.alC.bottom = localTypedArray.getDimensionPixelSize(9, paramInt);
+      this.alP.left = localTypedArray.getDimensionPixelSize(10, paramInt);
+      this.alP.top = localTypedArray.getDimensionPixelSize(12, paramInt);
+      this.alP.right = localTypedArray.getDimensionPixelSize(11, paramInt);
+      this.alP.bottom = localTypedArray.getDimensionPixelSize(9, paramInt);
       float f1 = f3;
       if (f2 > f3) {
         f1 = f2;
       }
-      this.alA = localTypedArray.getDimensionPixelSize(0, 0);
-      this.alB = localTypedArray.getDimensionPixelSize(1, 0);
+      this.alN = localTypedArray.getDimensionPixelSize(0, 0);
+      this.alO = localTypedArray.getDimensionPixelSize(1, 0);
       localTypedArray.recycle();
-      alx.a(this.alE, paramContext, paramAttributeSet, f4, f2, f1);
+      alK.a(this.alR, paramContext, paramAttributeSet, f4, f2, f1);
       return;
     }
-    paramAttributeSet = getContext().obtainStyledAttributes(alw);
+    paramAttributeSet = getContext().obtainStyledAttributes(alJ);
     paramInt = paramAttributeSet.getColor(0, 0);
     paramAttributeSet.recycle();
     paramAttributeSet = new float[3];
     Color.colorToHSV(paramInt, paramAttributeSet);
     if (paramAttributeSet[2] > 0.5F) {}
-    for (paramInt = getResources().getColor(2131100119);; paramInt = getResources().getColor(2131100118))
+    for (paramInt = getResources().getColor(2131100150);; paramInt = getResources().getColor(2131100149))
     {
       paramAttributeSet = ColorStateList.valueOf(paramInt);
       break;
@@ -137,57 +137,57 @@ public class CardView
   
   public ColorStateList getCardBackgroundColor()
   {
-    return alx.i(this.alE);
+    return alK.i(this.alR);
   }
   
   public float getCardElevation()
   {
-    return alx.e(this.alE);
+    return alK.e(this.alR);
   }
   
   public int getContentPaddingBottom()
   {
-    return this.alC.bottom;
+    return this.alP.bottom;
   }
   
   public int getContentPaddingLeft()
   {
-    return this.alC.left;
+    return this.alP.left;
   }
   
   public int getContentPaddingRight()
   {
-    return this.alC.right;
+    return this.alP.right;
   }
   
   public int getContentPaddingTop()
   {
-    return this.alC.top;
+    return this.alP.top;
   }
   
   public float getMaxCardElevation()
   {
-    return alx.a(this.alE);
+    return alK.a(this.alR);
   }
   
   public boolean getPreventCornerOverlap()
   {
-    return this.alz;
+    return this.alM;
   }
   
   public float getRadius()
   {
-    return alx.d(this.alE);
+    return alK.d(this.alR);
   }
   
   public boolean getUseCompatPadding()
   {
-    return this.aly;
+    return this.alL;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (!(alx instanceof o))
+    if (!(alK instanceof o))
     {
       int i = View.MeasureSpec.getMode(paramInt1);
       switch (i)
@@ -203,9 +203,9 @@ public class CardView
       {
         super.onMeasure(paramInt1, paramInt2);
         return;
-        paramInt1 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(alx.b(this.alE)), View.MeasureSpec.getSize(paramInt1)), i);
+        paramInt1 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(alK.b(this.alR)), View.MeasureSpec.getSize(paramInt1)), i);
         break;
-        paramInt2 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(alx.c(this.alE)), View.MeasureSpec.getSize(paramInt2)), i);
+        paramInt2 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(alK.c(this.alR)), View.MeasureSpec.getSize(paramInt2)), i);
       }
     }
     super.onMeasure(paramInt1, paramInt2);
@@ -213,39 +213,39 @@ public class CardView
   
   public void setCardBackgroundColor(int paramInt)
   {
-    alx.a(this.alE, ColorStateList.valueOf(paramInt));
+    alK.a(this.alR, ColorStateList.valueOf(paramInt));
   }
   
   public void setCardBackgroundColor(ColorStateList paramColorStateList)
   {
-    alx.a(this.alE, paramColorStateList);
+    alK.a(this.alR, paramColorStateList);
   }
   
   public void setCardElevation(float paramFloat)
   {
-    alx.c(this.alE, paramFloat);
+    alK.c(this.alR, paramFloat);
   }
   
   public final void setContentPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.alC.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    alx.f(this.alE);
+    this.alP.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    alK.f(this.alR);
   }
   
   public void setMaxCardElevation(float paramFloat)
   {
-    alx.b(this.alE, paramFloat);
+    alK.b(this.alR, paramFloat);
   }
   
   public void setMinimumHeight(int paramInt)
   {
-    this.alB = paramInt;
+    this.alO = paramInt;
     super.setMinimumHeight(paramInt);
   }
   
   public void setMinimumWidth(int paramInt)
   {
-    this.alA = paramInt;
+    this.alN = paramInt;
     super.setMinimumWidth(paramInt);
   }
   
@@ -255,30 +255,30 @@ public class CardView
   
   public void setPreventCornerOverlap(boolean paramBoolean)
   {
-    if (paramBoolean != this.alz)
+    if (paramBoolean != this.alM)
     {
-      this.alz = paramBoolean;
-      alx.h(this.alE);
+      this.alM = paramBoolean;
+      alK.h(this.alR);
     }
   }
   
   public void setRadius(float paramFloat)
   {
-    alx.a(this.alE, paramFloat);
+    alK.a(this.alR, paramFloat);
   }
   
   public void setUseCompatPadding(boolean paramBoolean)
   {
-    if (this.aly != paramBoolean)
+    if (this.alL != paramBoolean)
     {
-      this.aly = paramBoolean;
-      alx.g(this.alE);
+      this.alL = paramBoolean;
+      alK.g(this.alR);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.CardView
  * JD-Core Version:    0.7.0.1
  */

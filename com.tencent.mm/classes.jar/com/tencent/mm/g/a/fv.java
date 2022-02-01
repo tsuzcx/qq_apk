@@ -1,16 +1,15 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
+import java.util.List;
 
 public final class fv
-  extends b
+  extends IEvent
 {
-  public a dsm;
-  public b dsn;
+  public a dJe;
+  public b dJf;
   
   public fv()
   {
@@ -19,27 +18,31 @@ public final class fv
   
   private fv(byte paramByte)
   {
-    AppMethodBeat.i(19807);
-    this.dsm = new a();
-    this.dsn = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116017);
+    this.dJe = new a();
+    this.dJf = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19807);
+    AppMethodBeat.o(116017);
   }
   
   public static final class a
   {
-    public String appId;
-    public Context context;
-    public String[] dkL;
-    public int drH = 0;
-    public String[] selectionArgs;
-    public Uri uri;
+    public Cursor dJg;
   }
   
   public static final class b
   {
-    public Cursor drI;
+    public String dJh;
+    public int dJi;
+    public String dJj;
+    public long dJk;
+    public int dJl;
+    public List dJm;
+    public List dJn;
+    public int dJo;
+    public int dJp;
+    public int mediaType;
   }
 }
 

@@ -20,7 +20,7 @@ public class c
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(210691);
+    AppMethodBeat.i(222939);
     this.b = 30000;
     this.c = 20000;
     this.e = null;
@@ -32,7 +32,7 @@ public class c
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    AppMethodBeat.o(210691);
+    AppMethodBeat.o(222939);
   }
   
   public final void a()
@@ -45,7 +45,7 @@ public class c
     {
       try
       {
-        AppMethodBeat.i(210694);
+        AppMethodBeat.i(222942);
         Object localObject1 = this.e;
         if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
           break label522;
@@ -55,7 +55,7 @@ public class c
         if (q.d() < 10485760L)
         {
           a = 2;
-          AppMethodBeat.o(210694);
+          AppMethodBeat.o(222942);
           return;
         }
         localObject1 = new ArrayList();
@@ -79,7 +79,7 @@ public class c
       finally {}
       a = 2;
       a(localList);
-      AppMethodBeat.o(210694);
+      AppMethodBeat.o(222942);
     }
     Iterator localIterator;
     if (localList.size() == this.e.size())
@@ -121,29 +121,29 @@ public class c
         q.b(this.d, "__SP_UPDATE_TencentLoc_COMP_INFO__sapp_", "");
         q.a(this.f);
         a = 2;
-        AppMethodBeat.o(210694);
+        AppMethodBeat.o(222942);
         break;
       }
       a = 1;
       e.a(this.d).a("CPU", "down suc");
-      AppMethodBeat.o(210694);
+      AppMethodBeat.o(222942);
       break;
       a(localIterator);
       a = 2;
-      AppMethodBeat.o(210694);
+      AppMethodBeat.o(222942);
       break;
       j.a("down load failed");
       e.a(this.d).a("CPU", "down failed");
       a(localIterator);
       a = 2;
-      AppMethodBeat.o(210694);
+      AppMethodBeat.o(222942);
       break;
     }
   }
   
   public final void a(List<a> paramList)
   {
-    AppMethodBeat.i(210695);
+    AppMethodBeat.i(222943);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -153,7 +153,7 @@ public class c
         ((File)localObject).delete();
       }
     }
-    AppMethodBeat.o(210695);
+    AppMethodBeat.o(222943);
   }
   
   /* Error */
@@ -511,7 +511,7 @@ public class c
   
   public final boolean a(a parama, File paramFile)
   {
-    AppMethodBeat.i(210697);
+    AppMethodBeat.i(222945);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramFile != null)
@@ -531,33 +531,33 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(210697);
+    AppMethodBeat.o(222945);
     return bool1;
   }
   
   public void b(List<a> paramList)
   {
-    AppMethodBeat.i(210693);
+    AppMethodBeat.i(222941);
     this.e = paramList;
     if (a != 1) {
       new Thread(this).start();
     }
-    AppMethodBeat.o(210693);
+    AppMethodBeat.o(222941);
   }
   
   public void run()
   {
-    AppMethodBeat.i(210692);
+    AppMethodBeat.i(222940);
     d.a(this.d).b("updatelock_sapp");
     a();
     e.a(this.d).d();
     d.a(this.d).c("updatelock_sapp");
-    AppMethodBeat.o(210692);
+    AppMethodBeat.o(222940);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.sapp.c.c
  * JD-Core Version:    0.7.0.1
  */

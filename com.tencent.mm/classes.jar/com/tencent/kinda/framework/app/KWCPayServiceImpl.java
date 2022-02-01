@@ -9,9 +9,9 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.KWCPayService;
 import com.tencent.kinda.gen.VoidITransmitKvDataCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.yl;
-import com.tencent.mm.g.a.yl.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.zq;
+import com.tencent.mm.g.a.zq.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.id_verify.a.a;
 import com.tencent.mm.plugin.wallet_core.model.an;
@@ -20,8 +20,8 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.walletlock.a.b;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
 import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +36,15 @@ public class KWCPayServiceImpl
   private VoidITransmitKvDataCallback mQuitCallback;
   private int mReportScene;
   private String mUseCaseUrl;
-  private c<yl> mWalletEndResultEventIListener;
+  private IListener<zq> mWalletEndResultEventIListener;
   
   public KWCPayServiceImpl()
   {
     AppMethodBeat.i(18377);
     this.mQuitCallback = null;
-    this.mWalletEndResultEventIListener = new c()
+    this.mWalletEndResultEventIListener = new IListener()
     {
-      public boolean callback(yl paramAnonymousyl)
+      public boolean callback(zq paramAnonymouszq)
       {
         AppMethodBeat.i(18374);
         KWCPayServiceImpl.this.mWalletEndResultEventIListener.dead();
@@ -54,7 +54,7 @@ public class KWCPayServiceImpl
           return false;
         }
         ITransmitKvData localITransmitKvData = ITransmitKvData.create();
-        if (paramAnonymousyl.dNP.result == -1) {
+        if (paramAnonymouszq.efK.result == -1) {
           localITransmitKvData.putBool("result", true);
         }
         for (;;)
@@ -98,14 +98,14 @@ public class KWCPayServiceImpl
     localBundle.putBoolean("is_from_new_cashier", true);
     localBundle.putString("start_activity_class", paramContext.getClass().getName());
     com.tencent.mm.wallet_core.a.a(paramContext, com.tencent.mm.plugin.wallet_core.id_verify.a.class, localBundle, null);
-    paramContext = com.tencent.mm.wallet_core.a.bs(paramContext);
+    paramContext = com.tencent.mm.wallet_core.a.by(paramContext);
     if (!(paramContext instanceof com.tencent.mm.plugin.wallet_core.id_verify.a))
     {
-      ae.e("WCPayService", "Fail to get correct wallet process in KWCPayServiceImpl, expect RealNameVerifyProcess got %s", new Object[] { paramContext.getClass().getName() });
+      Log.e("WCPayService", "Fail to get correct wallet process in KWCPayServiceImpl, expect RealNameVerifyProcess got %s", new Object[] { paramContext.getClass().getName() });
       AppMethodBeat.o(18378);
       return;
     }
-    ((com.tencent.mm.plugin.wallet_core.id_verify.a)paramContext).Dhv = new a.a()
+    ((com.tencent.mm.plugin.wallet_core.id_verify.a)paramContext).HQO = new a.a()
     {
       public void run(Activity paramAnonymousActivity)
       {
@@ -114,12 +114,12 @@ public class KWCPayServiceImpl
         {
           if (KWCPayServiceImpl.this.mUseCaseUrl.equalsIgnoreCase("receipt"))
           {
-            f.au(paramAnonymousActivity, KWCPayServiceImpl.access$400(KWCPayServiceImpl.this, KWCPayServiceImpl.this.mEntryScene));
+            f.aD(paramAnonymousActivity, KWCPayServiceImpl.access$400(KWCPayServiceImpl.this, KWCPayServiceImpl.this.mEntryScene));
             AppMethodBeat.o(18376);
             return;
           }
           if (KWCPayServiceImpl.this.mUseCaseUrl.equalsIgnoreCase("reward")) {
-            d.Q(paramAnonymousActivity, "collect", ".reward.ui.QrRewardMainUI");
+            c.V(paramAnonymousActivity, "collect", ".reward.ui.QrRewardMainUI");
           }
         }
         AppMethodBeat.o(18376);
@@ -154,7 +154,7 @@ public class KWCPayServiceImpl
   public boolean isWCPayRegUser()
   {
     AppMethodBeat.i(18380);
-    boolean bool = t.eJf().eJH();
+    boolean bool = t.fQI().fRk();
     AppMethodBeat.o(18380);
     return bool;
   }
@@ -165,7 +165,7 @@ public class KWCPayServiceImpl
     MMActivity localMMActivity = (MMActivity)KindaContext.get();
     if (!(localMMActivity instanceof MMActivity))
     {
-      ae.e("PayServiceImpl", "Fail to start startUseCaseImpl due to incompatible context(%s)", new Object[] { localMMActivity.getClass().getName() });
+      Log.e("PayServiceImpl", "Fail to start startUseCaseImpl due to incompatible context(%s)", new Object[] { localMMActivity.getClass().getName() });
       AppMethodBeat.o(18379);
       return;
     }
@@ -179,7 +179,7 @@ public class KWCPayServiceImpl
     {
       if (isWCPayRegUser())
       {
-        f.au(localMMActivity, getCollectReportScene(this.mEntryScene));
+        f.aD(localMMActivity, getCollectReportScene(this.mEntryScene));
         AppMethodBeat.o(18379);
         return;
       }
@@ -191,7 +191,7 @@ public class KWCPayServiceImpl
     {
       if (isWCPayRegUser())
       {
-        d.Q(localMMActivity, "collect", ".reward.ui.QrRewardMainUI");
+        c.V(localMMActivity, "collect", ".reward.ui.QrRewardMainUI");
         AppMethodBeat.o(18379);
         return;
       }
@@ -207,7 +207,7 @@ public class KWCPayServiceImpl
       }
       for (;;)
       {
-        d.b(localMMActivity, "aa", ".ui.AAEntranceUI", paramString);
+        c.b(localMMActivity, "aa", ".ui.AAEntranceUI", paramString);
         AppMethodBeat.o(18379);
         return;
         if (this.mReportScene == 1) {
@@ -217,20 +217,20 @@ public class KWCPayServiceImpl
     }
     if (paramString.equalsIgnoreCase("faceHongBao"))
     {
-      d.Q(localMMActivity, "luckymoney", ".f2f.ui.LuckyMoneyF2FQRCodeUI");
+      c.V(localMMActivity, "luckymoney", ".f2f.ui.LuckyMoneyF2FQRCodeUI");
       AppMethodBeat.o(18379);
       return;
     }
     if (paramString.equalsIgnoreCase("transferBank"))
     {
-      d.Q(localMMActivity, "remittance", ".bankcard.ui.BankRemitBankcardInputUI");
+      c.V(localMMActivity, "remittance", ".bankcard.ui.BankRemitBankcardInputUI");
       AppMethodBeat.o(18379);
       return;
     }
     if (paramString.equalsIgnoreCase("walletLock"))
     {
       paramString = new Intent();
-      ((b)g.ab(b.class)).e(localMMActivity, paramString);
+      ((b)g.af(b.class)).j(localMMActivity, paramString);
       AppMethodBeat.o(18379);
       return;
     }
@@ -240,7 +240,7 @@ public class KWCPayServiceImpl
       if (8 == this.mPayScene) {
         paramString.putExtra("wallet_lock_jsapi_scene", 2);
       }
-      d.b(localMMActivity, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramString);
+      c.b(localMMActivity, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramString);
       AppMethodBeat.o(18379);
       return;
     }
@@ -253,12 +253,12 @@ public class KWCPayServiceImpl
       paramITransmitKvData.putExtra("nonceStr", paramString.nonceStr);
       paramITransmitKvData.putExtra("packageExt", paramString.packageExt);
       paramITransmitKvData.putExtra("signtype", paramString.signType);
-      paramITransmitKvData.putExtra("paySignature", paramString.dDF);
+      paramITransmitKvData.putExtra("paySignature", paramString.dVt);
       paramITransmitKvData.putExtra("url", paramString.url);
       paramITransmitKvData.putExtra("key_bind_scene", 4);
-      paramITransmitKvData.putExtra("pay_channel", paramString.dpc);
+      paramITransmitKvData.putExtra("pay_channel", paramString.payChannel);
       paramITransmitKvData.putExtra("from_kinda", true);
-      d.a(localMMActivity, "wallet", ".bind.ui.WalletBindUI", paramITransmitKvData, 0, false);
+      c.a(localMMActivity, "wallet", ".bind.ui.WalletBindUI", paramITransmitKvData, 0, false);
       this.mWalletEndResultEventIListener.alive();
       AppMethodBeat.o(18379);
       return;
@@ -272,11 +272,11 @@ public class KWCPayServiceImpl
       paramITransmitKvData.putExtra("nonceStr", paramString.nonceStr);
       paramITransmitKvData.putExtra("packageExt", paramString.packageExt);
       paramITransmitKvData.putExtra("signtype", paramString.signType);
-      paramITransmitKvData.putExtra("paySignature", paramString.dDF);
+      paramITransmitKvData.putExtra("paySignature", paramString.dVt);
       paramITransmitKvData.putExtra("url", paramString.url);
       paramITransmitKvData.putExtra("scene", 1);
       paramITransmitKvData.putExtra("from_kinda", true);
-      d.a(localMMActivity, "wallet_core", ".ui.WalletCheckPwdUI", paramITransmitKvData, 0, false);
+      c.a(localMMActivity, "wallet_core", ".ui.WalletCheckPwdUI", paramITransmitKvData, 0, false);
       this.mWalletEndResultEventIListener.alive();
     }
     AppMethodBeat.o(18379);
@@ -284,7 +284,7 @@ public class KWCPayServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KWCPayServiceImpl
  * JD-Core Version:    0.7.0.1
  */

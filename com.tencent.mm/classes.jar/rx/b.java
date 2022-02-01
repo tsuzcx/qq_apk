@@ -5,31 +5,31 @@ import rx.b.e;
 
 public final class b
 {
-  static final b OtY;
-  static final b OtZ;
-  private final a OtX;
+  static final b UjM;
+  static final b UjN;
+  private final a UjL;
   
   static
   {
     AppMethodBeat.i(90077);
-    OtY = new b(new a() {}, (byte)0);
-    OtZ = new b(new a() {}, (byte)0);
+    UjM = new b(new a() {}, (byte)0);
+    UjN = new b(new a() {}, (byte)0);
     AppMethodBeat.o(90077);
   }
   
   private b(a parama)
   {
     AppMethodBeat.i(90075);
-    this.OtX = rx.d.c.b(parama);
+    this.UjL = rx.d.c.b(parama);
     AppMethodBeat.o(90075);
   }
   
   private b(a parama, byte paramByte)
   {
-    this.OtX = parama;
+    this.UjL = parama;
   }
   
-  private static NullPointerException I(Throwable paramThrowable)
+  private static NullPointerException K(Throwable paramThrowable)
   {
     AppMethodBeat.i(90074);
     NullPointerException localNullPointerException = new NullPointerException("Actually not, but can't pass out an exception otherwise...");
@@ -56,7 +56,7 @@ public final class b
     catch (Throwable parama)
     {
       rx.d.c.onError(parama);
-      parama = I(parama);
+      parama = K(parama);
       AppMethodBeat.o(90072);
       throw parama;
     }
@@ -75,7 +75,7 @@ public final class b
     return paramT;
   }
   
-  public final j gDn()
+  public final j hQv()
   {
     AppMethodBeat.i(90076);
     final rx.f.c localc = new rx.f.c();
@@ -88,17 +88,17 @@ public final class b
         AppMethodBeat.o(90071);
       }
       
-      public final void gDo()
+      public final void hQw()
       {
         AppMethodBeat.i(90070);
-        localc.gDs();
+        localc.hQA();
         AppMethodBeat.o(90070);
       }
     };
     requireNonNull(local3);
     try
     {
-      rx.d.c.a(this, this.OtX).cr(local3);
+      rx.d.c.a(this, this.UjL).cA(local3);
       AppMethodBeat.o(90076);
       return localc;
     }
@@ -109,10 +109,10 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      rx.a.b.L(localThrowable);
-      Object localObject = rx.d.c.U(localThrowable);
+      rx.a.b.N(localThrowable);
+      Object localObject = rx.d.c.W(localThrowable);
       rx.d.c.onError((Throwable)localObject);
-      localObject = I((Throwable)localObject);
+      localObject = K((Throwable)localObject);
       AppMethodBeat.o(90076);
       throw ((Throwable)localObject);
     }
@@ -130,7 +130,7 @@ public final class b
   {
     public abstract void a(j paramj);
     
-    public abstract void gDo();
+    public abstract void hQw();
   }
 }
 

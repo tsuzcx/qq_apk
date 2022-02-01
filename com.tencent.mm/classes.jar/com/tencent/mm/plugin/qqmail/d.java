@@ -7,7 +7,7 @@ import com.tencent.mm.pluginsdk.b.c;
 public final class d
   implements c
 {
-  public final com.tencent.mm.pluginsdk.b.a ac(Context paramContext, String paramString)
+  public final com.tencent.mm.pluginsdk.b.a ak(Context paramContext, String paramString)
   {
     AppMethodBeat.i(122636);
     paramContext = new com.tencent.mm.plugin.qqmail.ui.a(paramContext);
@@ -17,7 +17,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d
  * JD-Core Version:    0.7.0.1
  */

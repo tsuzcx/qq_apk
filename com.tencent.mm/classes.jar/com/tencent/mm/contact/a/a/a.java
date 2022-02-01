@@ -1,38 +1,40 @@
 package com.tencent.mm.contact.a.a;
 
-import com.tencent.mm.model.am;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.t;
+import com.tencent.mm.ui.base.q;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class a
-  implements am
+  implements aq
 {
-  protected List<com.tencent.mm.model.p> ghw = new ArrayList();
-  protected List<com.tencent.mm.model.p> ghx = new ArrayList();
-  protected List<com.tencent.mm.model.p> ghy = new ArrayList();
-  protected boolean ghz = true;
-  protected com.tencent.mm.ui.base.p tipDialog;
+  protected List<t> gNc = new ArrayList();
+  protected List<t> gNd = new ArrayList();
+  protected List<t> gNe = new ArrayList();
+  protected boolean gNf = true;
+  protected q tipDialog;
   
-  public static b adK()
+  public static b arN()
   {
     return new b(false);
   }
   
-  public final am a(com.tencent.mm.model.p paramp)
+  public final aq a(t paramt)
   {
-    this.ghw.add(paramp);
+    this.gNc.add(paramt);
     return this;
   }
   
-  public final am b(com.tencent.mm.model.p paramp)
+  public final aq b(t paramt)
   {
-    this.ghy.add(paramp);
+    this.gNe.add(paramt);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.contact.a.a.a
  * JD-Core Version:    0.7.0.1
  */

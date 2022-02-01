@@ -1,25 +1,23 @@
 package com.tencent.mm.pluginsdk.ui.span;
 
 import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.util.List;
+import android.view.View;
+import com.tencent.mm.pluginsdk.ui.applet.u;
 
 public abstract interface d
 {
-  public abstract void a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener, Bundle paramBundle);
+  public abstract boolean a(Context paramContext, View paramView, u paramu, i parami);
   
-  public abstract void a(Context paramContext, List<String> paramList, e.b paramb);
+  public abstract u w(Context paramContext, String paramString);
   
   public static final class a
   {
-    public static d FzC;
+    public static d KqD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.d
  * JD-Core Version:    0.7.0.1
  */

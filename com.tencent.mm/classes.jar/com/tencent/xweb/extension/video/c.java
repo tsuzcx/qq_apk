@@ -7,82 +7,75 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 public final class c
 {
-  a MOe;
-  boolean MOf;
-  float MOg;
-  ImageView lvR;
-  ImageView lvS;
-  private ImageView lvT;
-  ImageView lwj;
+  float CBd;
+  a SBa;
+  boolean SBb;
+  float SBc;
+  ImageView mCM;
+  ImageView mCN;
+  private ImageView mCO;
+  ImageView mDf;
   float mProgress;
-  float yzV;
   
   public c(FrameLayout paramFrameLayout, a parama)
   {
     AppMethodBeat.i(153561);
-    this.lwj = null;
-    this.lvT = null;
-    this.MOf = false;
-    this.yzV = 0.0F;
-    this.MOe = parama;
-    this.lvR = ((ImageView)paramFrameLayout.findViewById(2131303302));
-    this.lwj = ((ImageView)paramFrameLayout.findViewById(2131303303));
-    this.lvS = ((ImageView)paramFrameLayout.findViewById(2131303301));
-    this.lvT = ((ImageView)paramFrameLayout.findViewById(2131303305));
-    this.lvT.setOnTouchListener(new View.OnTouchListener()
+    this.mDf = null;
+    this.mCO = null;
+    this.SBb = false;
+    this.CBd = 0.0F;
+    this.SBa = parama;
+    this.mCM = ((ImageView)paramFrameLayout.findViewById(2131305975));
+    this.mDf = ((ImageView)paramFrameLayout.findViewById(2131305976));
+    this.mCN = ((ImageView)paramFrameLayout.findViewById(2131305974));
+    this.mCO = ((ImageView)paramFrameLayout.findViewById(2131305978));
+    this.mCO.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
+        float f1 = 0.0F;
         AppMethodBeat.i(153560);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/xweb/extension/video/VideoPlayerSeekBar$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (paramAnonymousMotionEvent.getAction() == 0)
         {
-          c.this.MOf = false;
-          c.this.yzV = paramAnonymousMotionEvent.getX();
-          if (c.this.MOe != null) {
-            c.this.MOe.aqS();
+          c.this.SBb = false;
+          c.this.CBd = paramAnonymousMotionEvent.getX();
+          if (c.this.SBa != null) {
+            c.this.SBa.aJq();
           }
+          AppMethodBeat.o(153560);
+          return true;
+        }
+        float f2;
+        if (paramAnonymousMotionEvent.getAction() == 2)
+        {
+          f2 = paramAnonymousMotionEvent.getX();
+          float f3 = c.this.mCM.getWidth();
+          f2 = (int)(f2 - c.this.CBd + f3);
+          if (f2 >= 0.0F) {}
         }
         for (;;)
         {
-          a.a(true, this, "com/tencent/xweb/extension/video/VideoPlayerSeekBar$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(153560);
-          return true;
-          if (paramAnonymousMotionEvent.getAction() == 2)
+          c.this.SBc = (f1 * 100.0F / c.this.mCN.getWidth());
+          c.this.e(c.this.SBc, true);
+          if (c.this.SBa != null) {
+            c.this.SBa.aJq();
+          }
+          c.this.SBb = true;
+          break;
+          if (f2 > c.this.mCN.getWidth())
           {
-            float f1 = paramAnonymousMotionEvent.getX();
-            float f2 = c.this.lvR.getWidth();
-            f2 = (int)(f1 - c.this.yzV + f2);
-            if (f2 < 0.0F) {
-              f1 = 0.0F;
+            f1 = c.this.mCN.getWidth();
+            continue;
+            if ((c.this.SBb) && (c.this.SBa != null)) {
+              c.this.SBa.cP(c.this.SBc);
             }
-            for (;;)
-            {
-              c.this.MOg = (f1 * 100.0F / c.this.lvS.getWidth());
-              c.this.e(c.this.MOg, true);
-              if (c.this.MOe != null) {
-                c.this.MOe.aqS();
-              }
-              c.this.MOf = true;
-              break;
-              f1 = f2;
-              if (f2 > c.this.lvS.getWidth()) {
-                f1 = c.this.lvS.getWidth();
-              }
-            }
+            c.this.SBb = false;
+            break;
           }
-          if ((c.this.MOf) && (c.this.MOe != null)) {
-            c.this.MOe.ck(c.this.MOg);
-          }
-          c.this.MOf = false;
+          f1 = f2;
         }
       }
     });
@@ -92,7 +85,7 @@ public final class c
   public final void e(float paramFloat, boolean paramBoolean)
   {
     AppMethodBeat.i(153562);
-    if ((this.MOf) && (!paramBoolean))
+    if ((this.SBb) && (!paramBoolean))
     {
       AppMethodBeat.o(153562);
       return;
@@ -104,14 +97,14 @@ public final class c
     for (;;)
     {
       this.mProgress = f;
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lvT.getLayoutParams();
-      localLayoutParams.leftMargin = ((int)(f / 100.0F * this.lvS.getWidth() - this.lvT.getWidth() / 2));
-      this.lvT.setLayoutParams(localLayoutParams);
-      this.lvT.requestLayout();
-      localLayoutParams = (FrameLayout.LayoutParams)this.lvR.getLayoutParams();
-      localLayoutParams.width = ((int)(f / 100.0F * this.lvS.getWidth()));
-      this.lvR.setLayoutParams(localLayoutParams);
-      this.lvR.requestLayout();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mCO.getLayoutParams();
+      localLayoutParams.leftMargin = ((int)(f / 100.0F * this.mCN.getWidth() - this.mCO.getWidth() / 2));
+      this.mCO.setLayoutParams(localLayoutParams);
+      this.mCO.requestLayout();
+      localLayoutParams = (FrameLayout.LayoutParams)this.mCM.getLayoutParams();
+      localLayoutParams.width = ((int)(f / 100.0F * this.mCN.getWidth()));
+      this.mCM.setLayoutParams(localLayoutParams);
+      this.mCM.requestLayout();
       AppMethodBeat.o(153562);
       return;
       f = paramFloat;
@@ -123,14 +116,14 @@ public final class c
   
   public static abstract interface a
   {
-    public abstract void aqS();
+    public abstract void aJq();
     
-    public abstract void ck(float paramFloat);
+    public abstract void cP(float paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.extension.video.c
  * JD-Core Version:    0.7.0.1
  */

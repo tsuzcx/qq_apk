@@ -8,7 +8,7 @@ final class f$1
 {
   f$1(f paramf)
   {
-    AppMethodBeat.i(213315);
+    AppMethodBeat.i(206811);
     put("lighter", Integer.valueOf(100));
     put("normal", Integer.valueOf(400));
     put("bold", Integer.valueOf(700));
@@ -22,12 +22,12 @@ final class f$1
     put("700", Integer.valueOf(700));
     put("800", Integer.valueOf(800));
     put("900", Integer.valueOf(900));
-    AppMethodBeat.o(213315);
+    AppMethodBeat.o(206811);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.f.1
  * JD-Core Version:    0.7.0.1
  */

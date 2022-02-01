@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import org.json.JSONObject;
 
 public class PathRectActionArg
@@ -57,10 +57,10 @@ public class PathRectActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
+  public final void i(Parcel paramParcel)
   {
     AppMethodBeat.i(145314);
-    super.h(paramParcel);
+    super.i(paramParcel);
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
     this.width = paramParcel.readFloat();
@@ -93,7 +93,7 @@ public class PathRectActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathRectActionArg
  * JD-Core Version:    0.7.0.1
  */

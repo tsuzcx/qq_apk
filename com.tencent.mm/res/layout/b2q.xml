@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/b4r" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="@dimen/i9" android:baselineAligned="false" android:minHeight="@dimen/i9"
+<RelativeLayout android:orientation="vertical" android:id="@id/fmn" android:background="@drawable/bh5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="@dimen/i4" android:layout_height="@dimen/i4" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/js">
-        <ImageView android:id="@id/tm" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        <TextView android:id="@id/ga3" android:visibility="gone" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/yi" />
-        <ImageView android:id="@id/tt" android:visibility="gone" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/yj" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/jn">
-        <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ju">
-            <com.tencent.mm.ui.tools.MMTruncTextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/e3x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/m3" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:gravity="center|right" android:id="@id/giv" android:layout_width="100.0dip" android:layout_height="wrap_content" style="@style/m1" />
-        </LinearLayout>
-        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/ju">
-            <com.tencent.mm.ui.tools.MMTruncTextView android:textSize="14.0dip" android:textColor="@color/km" android:ellipsize="end" android:gravity="center|left" android:id="@id/cyv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{lastmsg}" android:layout_weight="1.0" style="@style/m2" />
-            <LinearLayout android:gravity="bottom|center|right" android:layout_width="60.0dip" android:layout_height="wrap_content">
-                <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/cow" android:paddingRight="@dimen/js" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ap4" />
-                <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/cp8" android:paddingRight="@dimen/js" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chat_mute_notify_normal" />
-                <ImageView android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/g5q" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/talk_room_mic_idle" android:contentDescription="@string/ge" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <Button android:gravity="center" android:id="@id/e6o" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="120.0dip" android:layout_marginBottom="40.0dip" android:text="@string/j34" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ou" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/ag2" android:gravity="center" android:id="@id/fn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="@string/h84" android:layout_above="@id/e6o" android:layout_centerHorizontal="true" />
+</RelativeLayout>

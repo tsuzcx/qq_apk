@@ -2,22 +2,22 @@ package com.tencent.mm.ba;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.aee;
+import com.tencent.mm.protocal.protobuf.agh;
 
 @Deprecated
 public final class g
   extends k.b
 {
-  private aee ill;
+  private agh jgk;
   
   public g(String paramString)
   {
     super(32);
     AppMethodBeat.i(20566);
-    this.ill = new aee();
-    this.ill.GuQ = paramString;
-    this.ill.GuR = 0;
-    this.vWq = this.ill;
+    this.jgk = new agh();
+    this.jgk.Lqv = paramString;
+    this.jgk.Lqw = 0;
+    this.zqv = this.jgk;
     AppMethodBeat.o(20566);
   }
 }

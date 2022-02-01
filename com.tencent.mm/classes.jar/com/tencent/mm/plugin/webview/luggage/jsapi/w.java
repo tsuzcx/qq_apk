@@ -8,40 +8,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.HashMap;
 import java.util.Map;
 
 public class w
-  extends bq<s>
+  extends br<s>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<s>.a paramb)
   {
     AppMethodBeat.i(78558);
-    ae.i("MicroMsg.JsApiGetNetworkType", "invoke");
-    if (!az.isConnected(((s)paramb.chg).mContext))
+    Log.i("MicroMsg.JsApiGetNetworkType", "invoke");
+    if (!NetStatusUtil.isConnected(((s)paramb.cta).mContext))
     {
-      ae.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, not connected");
-      paramb.a("network_type:fail", null);
+      Log.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, not connected");
+      paramb.c("network_type:fail", null);
       AppMethodBeat.o(78558);
       return;
     }
-    ae.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, type = ".concat(String.valueOf(az.getNetType(((s)paramb.chg).mContext))));
+    Log.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, type = ".concat(String.valueOf(NetStatusUtil.getNetType(((s)paramb.cta).mContext))));
     HashMap localHashMap = new HashMap();
-    localHashMap.put("simtype", (IPCInteger)com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", null, a.class));
-    if (az.isWifi(((s)paramb.chg).mContext))
+    localHashMap.put("simtype", (IPCInteger)com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, null, a.class));
+    if (NetStatusUtil.isWifi(((s)paramb.cta).mContext))
     {
-      ae.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, wifi");
+      Log.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, wifi");
       paramb.e("network_type:wifi", localHashMap);
       AppMethodBeat.o(78558);
       return;
     }
-    if (az.is2G(((s)paramb.chg).mContext))
+    if (NetStatusUtil.is2G(((s)paramb.cta).mContext))
     {
-      ae.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 2g");
+      Log.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 2g");
       localHashMap.put("subtype", "2g");
     }
     for (;;)
@@ -49,25 +50,25 @@ public class w
       paramb.e("network_type:wwan", localHashMap);
       AppMethodBeat.o(78558);
       return;
-      if (az.is3G(((s)paramb.chg).mContext))
+      if (NetStatusUtil.is3G(((s)paramb.cta).mContext))
       {
-        ae.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 3g");
+        Log.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 3g");
         localHashMap.put("subtype", "3g");
       }
-      else if (az.is4G(((s)paramb.chg).mContext))
+      else if (NetStatusUtil.is4G(((s)paramb.cta).mContext))
       {
-        ae.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 4g");
+        Log.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 4g");
         localHashMap.put("subtype", "4g");
       }
-      else if (az.is5G(((s)paramb.chg).mContext))
+      else if (NetStatusUtil.is5G(((s)paramb.cta).mContext))
       {
-        ae.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 5g");
+        Log.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 5g");
         localHashMap.put("subtype", "5g");
       }
     }
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

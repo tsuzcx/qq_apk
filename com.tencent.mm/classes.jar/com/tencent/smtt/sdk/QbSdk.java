@@ -1,8 +1,6 @@
 package com.tencent.smtt.sdk;
 
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -32,13 +30,12 @@ import com.tencent.smtt.utils.f;
 import com.tencent.smtt.utils.m;
 import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 @SuppressLint({"NewApi"})
 public class QbSdk
 {
+  private static boolean A = false;
   public static final int ERRORCODE_MINIQBREADER_CONTEXTISNULL = -100;
   public static final int ERRORCODE_MINIQBREADER_ISOVERSEA = -103;
   public static final int ERRORCODE_MINIQBREADER_REFLECTFAILED = -104;
@@ -70,51 +67,52 @@ public class QbSdk
   private static boolean m;
   public static boolean mDisableUseHostBackupCore;
   public static Map<String, Object> mSettings;
-  private static String n;
+  private static boolean n;
   private static String o;
-  private static boolean p;
-  private static int q;
+  private static String p;
+  private static boolean q;
   private static int r;
-  private static String s;
+  private static int s;
   public static boolean sIsVersionPrinted;
   private static String t;
-  private static boolean u;
+  private static String u;
   private static boolean v;
-  private static TbsListener w;
+  private static boolean w;
   private static TbsListener x;
-  private static boolean y;
+  private static TbsListener y;
   private static boolean z;
   
   static
   {
     AppMethodBeat.i(55430);
     sIsVersionPrinted = false;
+    m = true;
     a = false;
     b = false;
     c = true;
-    m = false;
-    n = "NULL";
-    o = "UNKNOWN";
+    n = false;
+    o = "NULL";
+    p = "UNKNOWN";
     d = false;
     e = 0L;
     f = 0L;
     g = new Object();
-    p = false;
+    q = false;
     h = true;
     i = true;
     j = false;
-    q = 0;
-    r = 170;
-    s = null;
+    r = 0;
+    s = 170;
     t = null;
+    u = null;
     k = a;
     mDisableUseHostBackupCore = false;
-    u = false;
-    v = true;
-    w = null;
+    v = false;
+    w = true;
     x = null;
-    y = false;
+    y = null;
     z = false;
+    A = false;
     l = new TbsListener()
     {
       public final void onDownloadFinish(int paramAnonymousInt)
@@ -217,63 +215,56 @@ public class QbSdk
     return null;
   }
   
-  static void a(Context paramContext, Integer paramInteger, Map<Integer, String> paramMap)
-  {
-    AppMethodBeat.i(192932);
-    TbsOneGreyInfoHelper.getSDKExtensionEntry().dispatchX5EcCommands(paramContext, paramInteger, paramMap);
-    AppMethodBeat.o(192932);
-  }
-  
   /* Error */
   static void a(Context paramContext, String paramString)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 231
-    //   5: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 110	com/tencent/smtt/sdk/QbSdk:a	Z
+    //   3: ldc 228
+    //   5: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 114	com/tencent/smtt/sdk/QbSdk:a	Z
     //   11: ifeq +35 -> 46
-    //   14: ldc 233
-    //   16: new 235	java/lang/StringBuilder
+    //   14: ldc 230
+    //   16: new 232	java/lang/StringBuilder
     //   19: dup
-    //   20: ldc 237
-    //   22: invokespecial 240	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   25: getstatic 124	com/tencent/smtt/sdk/QbSdk:o	Ljava/lang/String;
-    //   28: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   37: ldc 231
-    //   39: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   20: ldc 234
+    //   22: invokespecial 237	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   25: getstatic 128	com/tencent/smtt/sdk/QbSdk:p	Ljava/lang/String;
+    //   28: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: ldc 228
+    //   39: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: ldc 2
     //   44: monitorexit
     //   45: return
     //   46: iconst_1
-    //   47: putstatic 110	com/tencent/smtt/sdk/QbSdk:a	Z
-    //   50: ldc 254
+    //   47: putstatic 114	com/tencent/smtt/sdk/QbSdk:a	Z
+    //   50: ldc 251
     //   52: aload_1
-    //   53: invokestatic 260	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   56: invokevirtual 264	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   59: putstatic 124	com/tencent/smtt/sdk/QbSdk:o	Ljava/lang/String;
-    //   62: ldc 233
-    //   64: new 235	java/lang/StringBuilder
+    //   53: invokestatic 257	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   56: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   59: putstatic 128	com/tencent/smtt/sdk/QbSdk:p	Ljava/lang/String;
+    //   62: ldc 230
+    //   64: new 232	java/lang/StringBuilder
     //   67: dup
-    //   68: ldc_w 266
-    //   71: invokespecial 240	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   74: getstatic 124	com/tencent/smtt/sdk/QbSdk:o	Ljava/lang/String;
-    //   77: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 268	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   86: invokestatic 274	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
+    //   68: ldc_w 263
+    //   71: invokespecial 237	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   74: getstatic 128	com/tencent/smtt/sdk/QbSdk:p	Ljava/lang/String;
+    //   77: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokestatic 265	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   86: invokestatic 271	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
     //   89: aload_0
     //   90: sipush 401
-    //   93: new 276	java/lang/Throwable
+    //   93: new 273	java/lang/Throwable
     //   96: dup
-    //   97: getstatic 124	com/tencent/smtt/sdk/QbSdk:o	Ljava/lang/String;
-    //   100: invokespecial 277	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   103: invokevirtual 281	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
-    //   106: ldc 231
-    //   108: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: getstatic 128	com/tencent/smtt/sdk/QbSdk:p	Ljava/lang/String;
+    //   100: invokespecial 274	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   103: invokevirtual 278	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
+    //   106: ldc 228
+    //   108: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: goto -69 -> 42
     //   114: astore_0
     //   115: ldc 2
@@ -354,24 +345,24 @@ public class QbSdk
     TbsLog.d("QbSdk", "QbSdk-init currentThreadName=" + Thread.currentThread().getName());
     if (!sIsVersionPrinted)
     {
-      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 43805; SDK_VERSION_NAME: 4.4.0.0006");
+      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 43809; SDK_VERSION_NAME: 4.4.0.0006");
       sIsVersionPrinted = true;
     }
     if ((a) && (!paramBoolean))
     {
-      TbsLog.e("QbSdk", "QbSdk init: " + o, false);
-      TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 414, new Throwable(o));
+      TbsLog.e("QbSdk", "QbSdk init: " + p, false);
+      TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 414, new Throwable(p));
       AppMethodBeat.o(55376);
       return false;
     }
     if (b)
     {
       TbsLog.e("QbSdk", "QbSdk init mIsSysWebViewForcedByOuter = true", true);
-      TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 402, new Throwable(n));
+      TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 402, new Throwable(o));
       AppMethodBeat.o(55376);
       return false;
     }
-    if (!v) {
+    if (!w) {
       b(paramContext);
     }
     paramBoolean = TbsOneGreyInfoHelper.getSDKExtensionEntry().init(paramContext);
@@ -391,7 +382,7 @@ public class QbSdk
   {
     i4 = 1;
     AppMethodBeat.i(55407);
-    v = true;
+    w = true;
     TbsLog.d("QbSdk", "QbSdk - preload_x5_check -- process:" + paramContext.getApplicationInfo().processName + "; thread:" + Thread.currentThread().getName());
     for (;;)
     {
@@ -666,88 +657,88 @@ public class QbSdk
     //   1: astore 7
     //   3: aconst_null
     //   4: astore 5
-    //   6: ldc_w 549
-    //   9: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   12: getstatic 145	com/tencent/smtt/sdk/QbSdk:q	I
+    //   6: ldc_w 547
+    //   9: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   12: getstatic 149	com/tencent/smtt/sdk/QbSdk:r	I
     //   15: ifne +9 -> 24
-    //   18: invokestatic 553	com/tencent/smtt/sdk/a:a	()I
-    //   21: putstatic 145	com/tencent/smtt/sdk/QbSdk:q	I
-    //   24: ldc 233
-    //   26: new 235	java/lang/StringBuilder
+    //   18: invokestatic 551	com/tencent/smtt/sdk/a:a	()I
+    //   21: putstatic 149	com/tencent/smtt/sdk/QbSdk:r	I
+    //   24: ldc 230
+    //   26: new 232	java/lang/StringBuilder
     //   29: dup
-    //   30: ldc_w 555
-    //   33: invokespecial 240	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   36: getstatic 145	com/tencent/smtt/sdk/QbSdk:q	I
-    //   39: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 304	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   48: getstatic 437	android/os/Build$VERSION:SDK_INT	I
+    //   30: ldc_w 553
+    //   33: invokespecial 237	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   36: getstatic 149	com/tencent/smtt/sdk/QbSdk:r	I
+    //   39: invokevirtual 388	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 301	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   48: getstatic 434	android/os/Build$VERSION:SDK_INT	I
     //   51: bipush 7
     //   53: if_icmplt +12 -> 65
-    //   56: getstatic 145	com/tencent/smtt/sdk/QbSdk:q	I
-    //   59: getstatic 147	com/tencent/smtt/sdk/QbSdk:r	I
+    //   56: getstatic 149	com/tencent/smtt/sdk/QbSdk:r	I
+    //   59: getstatic 151	com/tencent/smtt/sdk/QbSdk:s	I
     //   62: if_icmpge +11 -> 73
-    //   65: ldc_w 549
-    //   68: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: ldc_w 547
+    //   68: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: iconst_0
     //   72: ireturn
     //   73: aload_0
     //   74: ifnonnull +11 -> 85
-    //   77: ldc_w 549
-    //   80: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   77: ldc_w 547
+    //   80: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: iconst_0
     //   84: ireturn
-    //   85: new 557	java/io/BufferedInputStream
+    //   85: new 555	java/io/BufferedInputStream
     //   88: dup
-    //   89: new 559	java/io/FileInputStream
+    //   89: new 557	java/io/FileInputStream
     //   92: dup
-    //   93: new 561	java/io/File
+    //   93: new 559	java/io/File
     //   96: dup
-    //   97: invokestatic 452	com/tencent/smtt/sdk/q:a	()Lcom/tencent/smtt/sdk/q;
+    //   97: invokestatic 449	com/tencent/smtt/sdk/q:a	()Lcom/tencent/smtt/sdk/q;
     //   100: aload_0
-    //   101: invokevirtual 473	com/tencent/smtt/sdk/q:r	(Landroid/content/Context;)Ljava/io/File;
-    //   104: ldc_w 563
-    //   107: invokespecial 566	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   110: invokespecial 569	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   113: invokespecial 572	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   101: invokevirtual 470	com/tencent/smtt/sdk/q:r	(Landroid/content/Context;)Ljava/io/File;
+    //   104: ldc_w 561
+    //   107: invokespecial 564	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   110: invokespecial 567	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   113: invokespecial 570	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   116: astore 6
     //   118: aload 6
     //   120: astore 5
-    //   122: new 574	java/util/Properties
+    //   122: new 572	java/util/Properties
     //   125: dup
-    //   126: invokespecial 575	java/util/Properties:<init>	()V
+    //   126: invokespecial 573	java/util/Properties:<init>	()V
     //   129: astore 8
     //   131: aload 6
     //   133: astore 5
     //   135: aload 8
     //   137: aload 6
-    //   139: invokevirtual 578	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   139: invokevirtual 576	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   142: aload 6
     //   144: astore 5
     //   146: aload 8
-    //   148: ldc_w 580
-    //   151: invokevirtual 583	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   148: ldc_w 578
+    //   151: invokevirtual 581	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   154: astore 9
     //   156: aload 6
     //   158: astore 5
     //   160: aload 8
-    //   162: ldc_w 585
-    //   165: invokevirtual 583	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   162: ldc_w 583
+    //   165: invokevirtual 581	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   168: astore 10
     //   170: aload 6
     //   172: astore 5
     //   174: aload 9
-    //   176: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   176: invokestatic 589	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   179: istore_1
     //   180: aload 6
     //   182: astore 5
     //   184: aload 10
-    //   186: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   186: invokestatic 589	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   189: istore_2
     //   190: aload 6
     //   192: astore 5
-    //   194: getstatic 594	android/os/Build$VERSION:SDK	Ljava/lang/String;
-    //   197: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   194: getstatic 592	android/os/Build$VERSION:SDK	Ljava/lang/String;
+    //   197: invokestatic 589	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   200: istore_3
     //   201: iload_3
     //   202: iload_1
@@ -757,68 +748,68 @@ public class QbSdk
     //   208: if_icmpge +35 -> 243
     //   211: aload 6
     //   213: astore 5
-    //   215: ldc 233
-    //   217: ldc_w 596
+    //   215: ldc 230
+    //   217: ldc_w 594
     //   220: iload_3
-    //   221: invokestatic 460	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   224: invokevirtual 264	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   227: invokestatic 304	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   221: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   224: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   227: invokestatic 301	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   230: aload 6
-    //   232: invokevirtual 599	java/io/BufferedInputStream:close	()V
-    //   235: ldc_w 549
-    //   238: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   232: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   235: ldc_w 547
+    //   238: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   241: iconst_0
     //   242: ireturn
     //   243: aload 6
     //   245: astore 5
     //   247: aload 8
-    //   249: ldc_w 601
-    //   252: invokevirtual 583	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   255: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   249: ldc_w 599
+    //   252: invokevirtual 581	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   255: invokestatic 589	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   258: istore_1
     //   259: aload 6
-    //   261: invokevirtual 599	java/io/BufferedInputStream:close	()V
-    //   264: new 559	java/io/FileInputStream
+    //   261: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   264: new 557	java/io/FileInputStream
     //   267: dup
-    //   268: new 561	java/io/File
+    //   268: new 559	java/io/File
     //   271: dup
     //   272: aload_0
-    //   273: invokestatic 603	com/tencent/smtt/sdk/q:t	(Landroid/content/Context;)Ljava/io/File;
-    //   276: ldc_w 605
-    //   279: invokespecial 566	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   282: invokespecial 569	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   273: invokestatic 601	com/tencent/smtt/sdk/q:t	(Landroid/content/Context;)Ljava/io/File;
+    //   276: ldc_w 603
+    //   279: invokespecial 564	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   282: invokespecial 567	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   285: astore 5
-    //   287: new 574	java/util/Properties
+    //   287: new 572	java/util/Properties
     //   290: dup
-    //   291: invokespecial 575	java/util/Properties:<init>	()V
+    //   291: invokespecial 573	java/util/Properties:<init>	()V
     //   294: astore 6
     //   296: aload 6
     //   298: aload 5
-    //   300: invokevirtual 578	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   300: invokevirtual 576	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   303: aload 6
-    //   305: ldc_w 607
-    //   308: invokevirtual 583	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   311: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   305: ldc_w 605
+    //   308: invokevirtual 581	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   311: invokestatic 589	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   314: istore_2
     //   315: aload 6
-    //   317: ldc_w 609
-    //   320: invokevirtual 583	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   323: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   317: ldc_w 607
+    //   320: invokevirtual 581	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   323: invokestatic 589	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   326: istore_3
     //   327: iload_1
-    //   328: ldc_w 610
+    //   328: ldc_w 608
     //   331: if_icmpeq +10 -> 341
     //   334: iload_2
-    //   335: ldc_w 610
+    //   335: ldc_w 608
     //   338: if_icmpne +71 -> 409
     //   341: iconst_0
     //   342: istore_1
     //   343: aload 5
-    //   345: invokevirtual 613	java/io/InputStream:close	()V
+    //   345: invokevirtual 611	java/io/InputStream:close	()V
     //   348: iload_1
     //   349: ifne +195 -> 544
-    //   352: ldc_w 549
-    //   355: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   352: ldc_w 547
+    //   355: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   358: iconst_1
     //   359: ireturn
     //   360: astore_0
@@ -826,24 +817,24 @@ public class QbSdk
     //   362: astore_0
     //   363: aload_0
     //   364: astore 5
-    //   366: ldc 233
-    //   368: ldc_w 615
-    //   371: invokestatic 304	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   366: ldc 230
+    //   368: ldc_w 613
+    //   371: invokestatic 301	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   374: aload_0
     //   375: ifnull +7 -> 382
     //   378: aload_0
-    //   379: invokevirtual 599	java/io/BufferedInputStream:close	()V
-    //   382: ldc_w 549
-    //   385: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   379: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   382: ldc_w 547
+    //   385: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   388: iconst_0
     //   389: ireturn
     //   390: astore_0
     //   391: aload 5
     //   393: ifnull +8 -> 401
     //   396: aload 5
-    //   398: invokevirtual 599	java/io/BufferedInputStream:close	()V
-    //   401: ldc_w 549
-    //   404: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   398: invokevirtual 597	java/io/BufferedInputStream:close	()V
+    //   401: ldc_w 547
+    //   404: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   407: aload_0
     //   408: athrow
     //   409: iload_1
@@ -859,23 +850,23 @@ public class QbSdk
     //   425: ifle +16 -> 441
     //   428: iload_3
     //   429: aload_0
-    //   430: invokestatic 619	com/tencent/smtt/utils/b:d	(Landroid/content/Context;)I
+    //   430: invokestatic 617	com/tencent/smtt/utils/b:d	(Landroid/content/Context;)I
     //   433: if_icmpeq +8 -> 441
     //   436: iconst_0
     //   437: istore_1
     //   438: goto -95 -> 343
     //   441: aload 6
-    //   443: ldc_w 621
-    //   446: invokevirtual 583	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   449: invokestatic 627	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   443: ldc_w 619
+    //   446: invokevirtual 581	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   449: invokestatic 625	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
     //   452: ifeq +34 -> 486
     //   455: aload_0
-    //   456: invokevirtual 631	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   459: invokestatic 309	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
-    //   462: getfield 313	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   465: ldc_w 633
+    //   456: invokevirtual 629	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   459: invokestatic 306	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
+    //   462: getfield 310	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   465: ldc_w 631
     //   468: iconst_0
-    //   469: invokeinterface 637 3 0
+    //   469: invokeinterface 635 3 0
     //   474: istore 4
     //   476: iload 4
     //   478: ifne +8 -> 486
@@ -888,13 +879,13 @@ public class QbSdk
     //   491: astore_0
     //   492: aload 7
     //   494: astore_0
-    //   495: ldc 233
-    //   497: ldc_w 639
-    //   500: invokestatic 304	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   495: ldc 230
+    //   497: ldc_w 637
+    //   500: invokestatic 301	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   503: aload_0
     //   504: ifnull +7 -> 511
     //   507: aload_0
-    //   508: invokevirtual 613	java/io/InputStream:close	()V
+    //   508: invokevirtual 611	java/io/InputStream:close	()V
     //   511: iconst_1
     //   512: istore_1
     //   513: goto -165 -> 348
@@ -908,13 +899,13 @@ public class QbSdk
     //   526: aload 5
     //   528: ifnull +8 -> 536
     //   531: aload 5
-    //   533: invokevirtual 613	java/io/InputStream:close	()V
-    //   536: ldc_w 549
-    //   539: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   533: invokevirtual 611	java/io/InputStream:close	()V
+    //   536: ldc_w 547
+    //   539: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   542: aload_0
     //   543: athrow
-    //   544: ldc_w 549
-    //   547: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   544: ldc_w 547
+    //   547: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   550: iconst_0
     //   551: ireturn
     //   552: astore_0
@@ -1063,35 +1054,35 @@ public class QbSdk
     // Byte code:
     //   0: iconst_1
     //   1: istore_3
-    //   2: ldc_w 673
-    //   5: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc 233
-    //   10: new 235	java/lang/StringBuilder
+    //   2: ldc_w 671
+    //   5: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc 230
+    //   10: new 232	java/lang/StringBuilder
     //   13: dup
-    //   14: ldc_w 675
-    //   17: invokespecial 240	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 673
+    //   17: invokespecial 237	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   20: aload_0
-    //   21: invokevirtual 678	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   24: ldc_w 680
-    //   27: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 676	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   24: ldc_w 678
+    //   27: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: iload_1
-    //   31: invokevirtual 683	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   34: ldc_w 685
-    //   37: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokestatic 304	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   46: ldc 233
-    //   48: ldc_w 687
-    //   51: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   54: new 689	com/tencent/smtt/sdk/WebView
+    //   31: invokevirtual 681	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   34: ldc_w 683
+    //   37: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   43: invokestatic 301	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: ldc 230
+    //   48: ldc_w 685
+    //   51: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: new 687	com/tencent/smtt/sdk/WebView
     //   57: dup
     //   58: aload_0
-    //   59: invokespecial 691	com/tencent/smtt/sdk/WebView:<init>	(Landroid/content/Context;)V
-    //   62: invokevirtual 695	com/tencent/smtt/sdk/WebView:getWebViewClientExtension	()Lcom/tencent/smtt/export/external/extension/interfaces/IX5WebViewClientExtension;
+    //   59: invokespecial 689	com/tencent/smtt/sdk/WebView:<init>	(Landroid/content/Context;)V
+    //   62: invokevirtual 693	com/tencent/smtt/sdk/WebView:getWebViewClientExtension	()Lcom/tencent/smtt/export/external/extension/interfaces/IX5WebViewClientExtension;
     //   65: astore 4
     //   67: aload 4
     //   69: ifnull +415 -> 484
-    //   72: invokestatic 204	com/tencent/smtt/sdk/x:a	()Lcom/tencent/smtt/sdk/x;
+    //   72: invokestatic 208	com/tencent/smtt/sdk/x:a	()Lcom/tencent/smtt/sdk/x;
     //   75: astore 4
     //   77: iload_3
     //   78: istore_2
@@ -1100,149 +1091,149 @@ public class QbSdk
     //   84: iload_3
     //   85: istore_2
     //   86: aload 4
-    //   88: invokevirtual 207	com/tencent/smtt/sdk/x:b	()Z
+    //   88: invokevirtual 211	com/tencent/smtt/sdk/x:b	()Z
     //   91: ifeq +150 -> 241
-    //   94: invokestatic 211	com/tencent/smtt/sdk/TbsOneGreyInfoHelper:getCoreEntry	()Lcom/tencent/smtt/export/external/interfaces/IX5CoreEntry;
+    //   94: invokestatic 215	com/tencent/smtt/sdk/TbsOneGreyInfoHelper:getCoreEntry	()Lcom/tencent/smtt/export/external/interfaces/IX5CoreEntry;
     //   97: astore 4
     //   99: iload_3
     //   100: istore_2
     //   101: aload 4
-    //   103: invokeinterface 698 1 0
+    //   103: invokeinterface 696 1 0
     //   108: ifeq +133 -> 241
     //   111: aload 4
-    //   113: invokeinterface 702 1 0
+    //   113: invokeinterface 700 1 0
     //   118: aload_0
-    //   119: invokeinterface 707 2 0
+    //   119: invokeinterface 705 2 0
     //   124: aload 4
-    //   126: invokeinterface 702 1 0
+    //   126: invokeinterface 700 1 0
     //   131: aload_0
-    //   132: invokeinterface 710 2 0
+    //   132: invokeinterface 708 2 0
     //   137: aload 4
-    //   139: invokeinterface 702 1 0
+    //   139: invokeinterface 700 1 0
     //   144: aload_0
-    //   145: invokeinterface 713 2 0
+    //   145: invokeinterface 711 2 0
     //   150: aload 4
-    //   152: invokeinterface 717 1 0
-    //   157: invokeinterface 722 1 0
+    //   152: invokeinterface 715 1 0
+    //   157: invokeinterface 720 1 0
     //   162: aload 4
-    //   164: invokeinterface 717 1 0
-    //   169: invokeinterface 725 1 0
+    //   164: invokeinterface 715 1 0
+    //   169: invokeinterface 723 1 0
     //   174: iload_1
     //   175: ifeq +52 -> 227
     //   178: aload 4
-    //   180: invokeinterface 729 1 0
+    //   180: invokeinterface 727 1 0
     //   185: aload_0
-    //   186: invokeinterface 734 2 0
+    //   186: invokeinterface 732 2 0
     //   191: aload 4
-    //   193: invokeinterface 729 1 0
-    //   198: invokeinterface 737 1 0
+    //   193: invokeinterface 727 1 0
+    //   198: invokeinterface 735 1 0
     //   203: aload 4
-    //   205: invokeinterface 729 1 0
-    //   210: invokeinterface 740 1 0
+    //   205: invokeinterface 727 1 0
+    //   210: invokeinterface 738 1 0
     //   215: aload 4
-    //   217: invokeinterface 744 1 0
-    //   222: invokeinterface 749 1 0
+    //   217: invokeinterface 742 1 0
+    //   222: invokeinterface 747 1 0
     //   227: aload 4
-    //   229: invokeinterface 217 1 0
-    //   234: invokeinterface 752 1 0
+    //   229: invokeinterface 221 1 0
+    //   234: invokeinterface 750 1 0
     //   239: iload_3
     //   240: istore_2
     //   241: iload_2
     //   242: ifeq +51 -> 293
-    //   245: ldc 233
-    //   247: ldc_w 754
-    //   250: invokestatic 304	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   253: ldc_w 673
-    //   256: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   245: ldc 230
+    //   247: ldc_w 752
+    //   250: invokestatic 301	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   253: ldc_w 671
+    //   256: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   259: return
     //   260: astore 4
     //   262: iconst_0
     //   263: istore_2
-    //   264: ldc 233
-    //   266: new 235	java/lang/StringBuilder
+    //   264: ldc 230
+    //   266: new 232	java/lang/StringBuilder
     //   269: dup
-    //   270: ldc_w 756
-    //   273: invokespecial 240	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   270: ldc_w 754
+    //   273: invokespecial 237	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   276: aload 4
-    //   278: invokestatic 502	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   281: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   287: invokestatic 268	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   278: invokestatic 499	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   281: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   287: invokestatic 265	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   290: goto -49 -> 241
-    //   293: ldc 233
-    //   295: ldc_w 758
-    //   298: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   301: ldc 233
-    //   303: ldc_w 760
-    //   306: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   309: new 762	android/webkit/WebView
+    //   293: ldc 230
+    //   295: ldc_w 756
+    //   298: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   301: ldc 230
+    //   303: ldc_w 758
+    //   306: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   309: new 760	android/webkit/WebView
     //   312: dup
     //   313: aload_0
-    //   314: invokespecial 763	android/webkit/WebView:<init>	(Landroid/content/Context;)V
+    //   314: invokespecial 761	android/webkit/WebView:<init>	(Landroid/content/Context;)V
     //   317: astore 4
-    //   319: getstatic 437	android/os/Build$VERSION:SDK_INT	I
+    //   319: getstatic 434	android/os/Build$VERSION:SDK_INT	I
     //   322: bipush 11
     //   324: if_icmplt +27 -> 351
     //   327: aload 4
-    //   329: ldc_w 765
-    //   332: invokevirtual 768	android/webkit/WebView:removeJavascriptInterface	(Ljava/lang/String;)V
+    //   329: ldc_w 763
+    //   332: invokevirtual 766	android/webkit/WebView:removeJavascriptInterface	(Ljava/lang/String;)V
     //   335: aload 4
-    //   337: ldc_w 770
-    //   340: invokevirtual 768	android/webkit/WebView:removeJavascriptInterface	(Ljava/lang/String;)V
+    //   337: ldc_w 768
+    //   340: invokevirtual 766	android/webkit/WebView:removeJavascriptInterface	(Ljava/lang/String;)V
     //   343: aload 4
-    //   345: ldc_w 772
-    //   348: invokevirtual 768	android/webkit/WebView:removeJavascriptInterface	(Ljava/lang/String;)V
+    //   345: ldc_w 770
+    //   348: invokevirtual 766	android/webkit/WebView:removeJavascriptInterface	(Ljava/lang/String;)V
     //   351: aload 4
     //   353: iconst_1
-    //   354: invokevirtual 776	android/webkit/WebView:clearCache	(Z)V
+    //   354: invokevirtual 774	android/webkit/WebView:clearCache	(Z)V
     //   357: iload_1
     //   358: ifeq +22 -> 380
-    //   361: ldc 233
-    //   363: ldc_w 778
-    //   366: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   361: ldc 230
+    //   363: ldc_w 776
+    //   366: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   369: aload_0
-    //   370: invokestatic 784	android/webkit/CookieSyncManager:createInstance	(Landroid/content/Context;)Landroid/webkit/CookieSyncManager;
+    //   370: invokestatic 782	android/webkit/CookieSyncManager:createInstance	(Landroid/content/Context;)Landroid/webkit/CookieSyncManager;
     //   373: pop
-    //   374: invokestatic 789	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
-    //   377: invokevirtual 790	android/webkit/CookieManager:removeAllCookie	()V
-    //   380: ldc 233
-    //   382: ldc_w 792
-    //   385: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   374: invokestatic 787	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
+    //   377: invokevirtual 788	android/webkit/CookieManager:removeAllCookie	()V
+    //   380: ldc 230
+    //   382: ldc_w 790
+    //   385: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   388: aload_0
-    //   389: invokestatic 797	android/webkit/WebViewDatabase:getInstance	(Landroid/content/Context;)Landroid/webkit/WebViewDatabase;
-    //   392: invokevirtual 799	android/webkit/WebViewDatabase:clearUsernamePassword	()V
+    //   389: invokestatic 795	android/webkit/WebViewDatabase:getInstance	(Landroid/content/Context;)Landroid/webkit/WebViewDatabase;
+    //   392: invokevirtual 797	android/webkit/WebViewDatabase:clearUsernamePassword	()V
     //   395: aload_0
-    //   396: invokestatic 797	android/webkit/WebViewDatabase:getInstance	(Landroid/content/Context;)Landroid/webkit/WebViewDatabase;
-    //   399: invokevirtual 801	android/webkit/WebViewDatabase:clearHttpAuthUsernamePassword	()V
+    //   396: invokestatic 795	android/webkit/WebViewDatabase:getInstance	(Landroid/content/Context;)Landroid/webkit/WebViewDatabase;
+    //   399: invokevirtual 799	android/webkit/WebViewDatabase:clearHttpAuthUsernamePassword	()V
     //   402: aload_0
-    //   403: invokestatic 797	android/webkit/WebViewDatabase:getInstance	(Landroid/content/Context;)Landroid/webkit/WebViewDatabase;
-    //   406: invokevirtual 803	android/webkit/WebViewDatabase:clearFormData	()V
-    //   409: ldc 233
-    //   411: ldc_w 805
-    //   414: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   417: invokestatic 810	android/webkit/WebStorage:getInstance	()Landroid/webkit/WebStorage;
-    //   420: invokevirtual 813	android/webkit/WebStorage:deleteAllData	()V
-    //   423: ldc 233
-    //   425: ldc_w 815
-    //   428: invokestatic 252	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   431: invokestatic 820	android/webkit/WebIconDatabase:getInstance	()Landroid/webkit/WebIconDatabase;
-    //   434: invokevirtual 821	android/webkit/WebIconDatabase:removeAllIcons	()V
-    //   437: ldc_w 673
-    //   440: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   403: invokestatic 795	android/webkit/WebViewDatabase:getInstance	(Landroid/content/Context;)Landroid/webkit/WebViewDatabase;
+    //   406: invokevirtual 801	android/webkit/WebViewDatabase:clearFormData	()V
+    //   409: ldc 230
+    //   411: ldc_w 803
+    //   414: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   417: invokestatic 808	android/webkit/WebStorage:getInstance	()Landroid/webkit/WebStorage;
+    //   420: invokevirtual 811	android/webkit/WebStorage:deleteAllData	()V
+    //   423: ldc 230
+    //   425: ldc_w 813
+    //   428: invokestatic 249	com/tencent/smtt/utils/TbsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   431: invokestatic 818	android/webkit/WebIconDatabase:getInstance	()Landroid/webkit/WebIconDatabase;
+    //   434: invokevirtual 819	android/webkit/WebIconDatabase:removeAllIcons	()V
+    //   437: ldc_w 671
+    //   440: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   443: return
     //   444: astore_0
-    //   445: ldc 233
-    //   447: new 235	java/lang/StringBuilder
+    //   445: ldc 230
+    //   447: new 232	java/lang/StringBuilder
     //   450: dup
-    //   451: ldc_w 823
-    //   454: invokespecial 240	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   451: ldc_w 821
+    //   454: invokespecial 237	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   457: aload_0
-    //   458: invokestatic 502	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   461: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   464: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   467: invokestatic 268	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   470: ldc_w 673
-    //   473: invokestatic 178	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   458: invokestatic 499	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   461: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   464: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   467: invokestatic 265	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   470: ldc_w 671
+    //   473: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   476: return
     //   477: astore 4
     //   479: iconst_1
@@ -1278,9 +1269,18 @@ public class QbSdk
   public static void closeFileReader(Context paramContext)
   {
     AppMethodBeat.i(55397);
-    x localx = x.a();
-    localx.a(paramContext, null);
-    if (localx.b()) {
+    int i1 = 0;
+    try
+    {
+      boolean bool = g.a(true).a(paramContext, null);
+      i1 = bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      label20:
+      break label20;
+    }
+    if (i1 != 0) {
       TbsOneGreyInfoHelper.getTbsFileInterface(paramContext).a();
     }
     AppMethodBeat.o(55397);
@@ -1298,6 +1298,16 @@ public class QbSdk
     i = false;
   }
   
+  public static void disableSensitiveApi()
+  {
+    AppMethodBeat.i(188320);
+    m = false;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("no_sensitive_api", Boolean.TRUE);
+    initTbsSettings(localHashMap);
+    AppMethodBeat.o(188320);
+  }
+  
   public static void fileInfoDetect(Context paramContext, String paramString, android.webkit.ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(55429);
@@ -1312,7 +1322,7 @@ public class QbSdk
   {
     AppMethodBeat.i(55394);
     b = true;
-    n = "SysWebViewForcedByOuter: " + Log.getStackTraceString(new Throwable());
+    o = "SysWebViewForcedByOuter: " + Log.getStackTraceString(new Throwable());
     TbsLog.e("QbSdk", "sys WebView: SysWebViewForcedByOuter");
     AppMethodBeat.o(55394);
   }
@@ -1330,36 +1340,116 @@ public class QbSdk
     return 0L;
   }
   
+  /* Error */
   public static String getCurrentProcessName(Context paramContext)
   {
-    AppMethodBeat.i(55401);
-    for (;;)
-    {
-      try
-      {
-        int i1 = Process.myPid();
-        Object localObject = "";
-        Iterator localIterator = ((ActivityManager)paramContext.getApplicationContext().getSystemService("activity")).getRunningAppProcesses().iterator();
-        paramContext = (Context)localObject;
-        if (localIterator.hasNext())
-        {
-          localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-          if (((ActivityManager.RunningAppProcessInfo)localObject).pid == i1) {
-            paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(55401);
-          return paramContext;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        AppMethodBeat.o(55401);
-        return "";
-      }
-    }
+    // Byte code:
+    //   0: ldc_w 889
+    //   3: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 557	java/io/FileInputStream
+    //   9: dup
+    //   10: ldc_w 891
+    //   13: invokespecial 892	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   16: astore_0
+    //   17: sipush 256
+    //   20: newarray byte
+    //   22: astore_3
+    //   23: iconst_0
+    //   24: istore_1
+    //   25: aload_0
+    //   26: invokevirtual 895	java/io/FileInputStream:read	()I
+    //   29: istore_2
+    //   30: iload_2
+    //   31: ifle +22 -> 53
+    //   34: iload_1
+    //   35: sipush 256
+    //   38: if_icmpge +15 -> 53
+    //   41: aload_3
+    //   42: iload_1
+    //   43: iload_2
+    //   44: i2b
+    //   45: bastore
+    //   46: iload_1
+    //   47: iconst_1
+    //   48: iadd
+    //   49: istore_1
+    //   50: goto -25 -> 25
+    //   53: iload_1
+    //   54: ifle +29 -> 83
+    //   57: new 253	java/lang/String
+    //   60: dup
+    //   61: aload_3
+    //   62: iconst_0
+    //   63: iload_1
+    //   64: ldc_w 897
+    //   67: invokespecial 900	java/lang/String:<init>	([BIILjava/lang/String;)V
+    //   70: astore_3
+    //   71: aload_0
+    //   72: invokevirtual 901	java/io/FileInputStream:close	()V
+    //   75: ldc_w 889
+    //   78: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload_3
+    //   82: areturn
+    //   83: aload_0
+    //   84: invokevirtual 901	java/io/FileInputStream:close	()V
+    //   87: ldc_w 889
+    //   90: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: aconst_null
+    //   94: areturn
+    //   95: astore_0
+    //   96: aconst_null
+    //   97: astore_0
+    //   98: aload_0
+    //   99: ifnull -12 -> 87
+    //   102: aload_0
+    //   103: invokevirtual 901	java/io/FileInputStream:close	()V
+    //   106: goto -19 -> 87
+    //   109: astore_0
+    //   110: goto -23 -> 87
+    //   113: astore_3
+    //   114: aconst_null
+    //   115: astore_0
+    //   116: aload_0
+    //   117: ifnull +7 -> 124
+    //   120: aload_0
+    //   121: invokevirtual 901	java/io/FileInputStream:close	()V
+    //   124: ldc_w 889
+    //   127: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: aload_3
+    //   131: athrow
+    //   132: astore_0
+    //   133: goto -58 -> 75
+    //   136: astore_0
+    //   137: goto -50 -> 87
+    //   140: astore_0
+    //   141: goto -17 -> 124
+    //   144: astore_3
+    //   145: goto -29 -> 116
+    //   148: astore_3
+    //   149: goto -51 -> 98
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	152	0	paramContext	Context
+    //   24	40	1	i1	int
+    //   29	15	2	i2	int
+    //   22	60	3	localObject1	Object
+    //   113	18	3	localObject2	Object
+    //   144	1	3	localObject3	Object
+    //   148	1	3	localThrowable	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   6	17	95	java/lang/Throwable
+    //   102	106	109	java/io/IOException
+    //   6	17	113	finally
+    //   71	75	132	java/io/IOException
+    //   83	87	136	java/io/IOException
+    //   120	124	140	java/io/IOException
+    //   17	23	144	finally
+    //   25	30	144	finally
+    //   57	71	144	finally
+    //   17	23	148	java/lang/Throwable
+    //   25	30	148	java/lang/Throwable
+    //   57	71	148	java/lang/Throwable
   }
   
   public static String[] getDexLoaderFileList(Context paramContext1, Context paramContext2, String paramString)
@@ -1372,7 +1462,7 @@ public class QbSdk
   
   public static boolean getDownloadWithoutWifi()
   {
-    return y;
+    return z;
   }
   
   public static boolean getIsSysWebViewForcedByOuter()
@@ -1410,7 +1500,7 @@ public class QbSdk
   
   public static String getQQBuildNumber()
   {
-    return t;
+    return u;
   }
   
   public static Map<String, Object> getSettings()
@@ -1420,12 +1510,12 @@ public class QbSdk
   
   public static boolean getTBSInstalling()
   {
-    return z;
+    return A;
   }
   
   public static String getTID()
   {
-    return s;
+    return t;
   }
   
   public static String getTbsCoreVersionString()
@@ -1471,7 +1561,7 @@ public class QbSdk
   
   public static int getTbsSdkVersion()
   {
-    return 43805;
+    return 43809;
   }
   
   public static int getTbsVersion(Context paramContext)
@@ -1533,21 +1623,19 @@ public class QbSdk
   public static void initTbsSettings(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(55423);
-    if (mSettings == null)
-    {
+    if (mSettings == null) {
       mSettings = paramMap;
+    }
+    for (;;)
+    {
+      TbsLog.i("QbSdk", "initTbsSettings,maps=".concat(String.valueOf(paramMap)));
       AppMethodBeat.o(55423);
       return;
-    }
-    try
-    {
-      mSettings.putAll(paramMap);
-      AppMethodBeat.o(55423);
-      return;
-    }
-    catch (Exception paramMap)
-    {
-      AppMethodBeat.o(55423);
+      try
+      {
+        mSettings.putAll(paramMap);
+      }
+      catch (Exception localException) {}
     }
   }
   
@@ -1561,7 +1649,7 @@ public class QbSdk
       return;
     }
     a(paramContext);
-    x = new TbsListener()
+    y = new TbsListener()
     {
       public final void onDownloadFinish(int paramAnonymousInt) {}
       
@@ -1619,9 +1707,14 @@ public class QbSdk
     return false;
   }
   
+  public static boolean isEnableSensitiveApi()
+  {
+    return m;
+  }
+  
   public static boolean isNeedInitX5FirstTime()
   {
-    return p;
+    return q;
   }
   
   public static boolean isTbsCoreInited()
@@ -1670,7 +1763,7 @@ public class QbSdk
       TbsLog.i("QbSdk", "preInit -- processName: " + getCurrentProcessName(paramContext));
       TbsLog.i("QbSdk", "preInit -- stack: " + Log.getStackTraceString(new Throwable("#")));
       k = a;
-      if (!m)
+      if (!n)
       {
         paramContext = new Thread()
         {
@@ -1735,7 +1828,7 @@ public class QbSdk
         paramContext.setName("tbs_preinit");
         paramContext.setPriority(10);
         paramContext.start();
-        m = true;
+        n = true;
       }
       AppMethodBeat.o(55402);
       return;
@@ -1830,7 +1923,7 @@ public class QbSdk
     if (paramString.startsWith("QQ:"))
     {
       paramString = paramString.substring(3);
-      s = "0000000000000000".substring(paramString.length()) + paramString;
+      t = "0000000000000000".substring(paramString.length()) + paramString;
     }
     AppMethodBeat.o(55391);
   }
@@ -1838,8 +1931,8 @@ public class QbSdk
   public static void setDisableUnpreinitBySwitch(boolean paramBoolean)
   {
     AppMethodBeat.i(55400);
-    u = paramBoolean;
-    TbsLog.i("QbSdk", "setDisableUnpreinitBySwitch -- mDisableUnpreinitBySwitch is " + u);
+    v = paramBoolean;
+    TbsLog.i("QbSdk", "setDisableUnpreinitBySwitch -- mDisableUnpreinitBySwitch is " + v);
     AppMethodBeat.o(55400);
   }
   
@@ -1853,12 +1946,34 @@ public class QbSdk
   
   public static void setDownloadWithoutWifi(boolean paramBoolean)
   {
-    y = paramBoolean;
+    z = paramBoolean;
   }
   
   public static void setNeedInitX5FirstTime(boolean paramBoolean)
   {
-    p = paramBoolean;
+    q = paramBoolean;
+  }
+  
+  public static void setNewDnsHostList(String paramString)
+  {
+    AppMethodBeat.i(188319);
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b()))
+    {
+      localObject = ((x)localObject).c().a();
+      try
+      {
+        ((DexLoader)localObject).invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "setNewDnsHostList", new Class[] { String.class }, new Object[] { paramString });
+        AppMethodBeat.o(188319);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        AppMethodBeat.o(188319);
+        return;
+      }
+    }
+    AppMethodBeat.o(188319);
   }
   
   public static void setOnlyDownload(boolean paramBoolean)
@@ -1868,7 +1983,7 @@ public class QbSdk
   
   public static void setQQBuildNumber(String paramString)
   {
-    t = paramString;
+    u = paramString;
   }
   
   public static void setSandboxListener(SandboxListener paramSandboxListener)
@@ -1880,12 +1995,12 @@ public class QbSdk
   
   public static void setTBSInstallingStatus(boolean paramBoolean)
   {
-    z = paramBoolean;
+    A = paramBoolean;
   }
   
   public static void setTbsListener(TbsListener paramTbsListener)
   {
-    w = paramTbsListener;
+    x = paramTbsListener;
   }
   
   public static void setTbsLogClient(TbsLogClient paramTbsLogClient)
@@ -2095,7 +2210,7 @@ public class QbSdk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk
  * JD-Core Version:    0.7.0.1
  */

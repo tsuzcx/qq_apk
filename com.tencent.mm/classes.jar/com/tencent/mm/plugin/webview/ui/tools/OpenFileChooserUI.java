@@ -13,29 +13,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.a.a;
+import com.tencent.mm.compatible.i.a.a;
+import com.tencent.mm.compatible.i.d;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.a.c;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKVideoItem;
 import com.tencent.mm.plugin.webview.model.ao;
-import com.tencent.mm.plugin.webview.model.ax;
-import com.tencent.mm.pluginsdk.ui.tools.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.webview.model.ay;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.u;
 import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.ui.widget.a.e.a;
 import com.tencent.mm.ui.widget.a.e.b;
-import com.tencent.mm.vfs.k;
 import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,47 +44,47 @@ import java.util.List;
 public class OpenFileChooserUI
   extends MMActivity
 {
-  private boolean Akh;
-  private boolean Ern;
-  private int Ero;
-  private int Erp;
-  private String Erq;
-  private boolean Err = false;
-  private DialogInterface.OnCancelListener Ers = null;
-  private int cJU;
+  private boolean EsU;
+  private boolean Jeu;
+  private int Jev;
+  private int Jew;
+  private String Jex;
+  private boolean Jey = false;
+  private DialogInterface.OnCancelListener Jez = null;
   private int count;
-  private ProgressDialog fOC = null;
-  private String kKP;
-  private String kKQ;
-  private int tXi;
-  private int tXj;
+  private int das;
+  private ProgressDialog gtM = null;
+  private int het;
+  private String lPw;
+  private String lPx;
+  private int xos;
   
-  private static boolean QC(String paramString)
+  private static boolean aad(String paramString)
   {
     AppMethodBeat.i(79662);
     if (!TextUtils.isEmpty(paramString))
     {
-      k localk = new k(paramString);
-      ae.i("MicroMsg.OpenFileChooserUI", "thumbFilePath:%s", new Object[] { paramString });
-      if (localk.exists())
+      o localo = new o(paramString);
+      Log.i("MicroMsg.OpenFileChooserUI", "thumbFilePath:%s", new Object[] { paramString });
+      if (localo.exists())
       {
-        ae.i("MicroMsg.OpenFileChooserUI", "video thumb file is exist");
+        Log.i("MicroMsg.OpenFileChooserUI", "video thumb file is exist");
         AppMethodBeat.o(79662);
         return true;
       }
-      ae.e("MicroMsg.OpenFileChooserUI", "video thumb file is not exist");
+      Log.e("MicroMsg.OpenFileChooserUI", "video thumb file is not exist");
       AppMethodBeat.o(79662);
       return false;
     }
-    ae.e("MicroMsg.OpenFileChooserUI", "video thumb file path is null");
+    Log.e("MicroMsg.OpenFileChooserUI", "video thumb file path is null");
     AppMethodBeat.o(79662);
     return false;
   }
   
-  private void aJV(final String paramString)
+  private void bac(final String paramString)
   {
     AppMethodBeat.i(79658);
-    this.Ers = new DialogInterface.OnCancelListener()
+    this.Jez = new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -95,9 +94,9 @@ public class OpenFileChooserUI
         AppMethodBeat.o(175754);
       }
     };
-    getString(2131755906);
-    this.fOC = h.b(this, getString(2131766101), true, this.Ers);
-    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    getString(2131755998);
+    this.gtM = h.a(this, getString(2131768572), true, this.Jez);
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -106,14 +105,14 @@ public class OpenFileChooserUI
         int i = OpenFileChooserUI.a(OpenFileChooserUI.this, paramString);
         if (i == -50002)
         {
-          ar.f(new Runnable()
+          MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(175756);
               if ((OpenFileChooserUI.b(OpenFileChooserUI.this) == 7) && (OpenFileChooserUI.c(OpenFileChooserUI.this) == 2))
               {
-                h.a(OpenFileChooserUI.this, OpenFileChooserUI.this.getString(2131766102), OpenFileChooserUI.this.getString(2131755906), OpenFileChooserUI.this.getString(2131755793), false, new DialogInterface.OnClickListener()
+                h.a(OpenFileChooserUI.this, OpenFileChooserUI.this.getString(2131768573), OpenFileChooserUI.this.getString(2131755998), OpenFileChooserUI.this.getString(2131755874), false, new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                   {
@@ -126,7 +125,7 @@ public class OpenFileChooserUI
                 AppMethodBeat.o(175756);
                 return;
               }
-              Toast.makeText(OpenFileChooserUI.this, OpenFileChooserUI.this.getString(2131764675), 0).show();
+              Toast.makeText(OpenFileChooserUI.this, OpenFileChooserUI.this.getString(2131767068), 0).show();
               OpenFileChooserUI.this.setResult(1);
               OpenFileChooserUI.this.finish();
               AppMethodBeat.o(175756);
@@ -138,13 +137,13 @@ public class OpenFileChooserUI
         Object localObject2;
         if (i == -50006)
         {
-          localObject1 = OpenFileChooserUI.A(paramString, (List)localObject1);
+          localObject1 = OpenFileChooserUI.G(paramString, (List)localObject1);
           OpenFileChooserUI.b(OpenFileChooserUI.this, paramString);
           localObject2 = OpenFileChooserUI.d(OpenFileChooserUI.this);
         }
-        while (!bu.isNullOrNil((String)localObject1))
+        while (!Util.isNullOrNil((String)localObject1))
         {
-          ar.f(new OpenFileChooserUI.8.4(this, (String)localObject1, (String)localObject2));
+          MMHandlerThread.postToMainThread(new OpenFileChooserUI.8.4(this, (String)localObject1, (String)localObject2));
           AppMethodBeat.o(175762);
           return;
           if (i == 1)
@@ -154,7 +153,7 @@ public class OpenFileChooserUI
             String str2 = OpenFileChooserUI.d(OpenFileChooserUI.this);
             localObject2 = str2;
             localObject1 = str1;
-            if (bu.isNullOrNil(str1))
+            if (Util.isNullOrNil(str1))
             {
               localObject2 = str2;
               localObject1 = str1;
@@ -164,12 +163,12 @@ public class OpenFileChooserUI
                 localObject1 = str1;
                 if (OpenFileChooserUI.c(OpenFileChooserUI.this) == 2)
                 {
-                  ar.f(new Runnable()
+                  MMHandlerThread.postToMainThread(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(175758);
-                      h.a(OpenFileChooserUI.this, OpenFileChooserUI.this.getString(2131766103), OpenFileChooserUI.this.getString(2131755906), OpenFileChooserUI.this.getString(2131755793), false, new DialogInterface.OnClickListener()
+                      h.a(OpenFileChooserUI.this, OpenFileChooserUI.this.getString(2131768574), OpenFileChooserUI.this.getString(2131755998), OpenFileChooserUI.this.getString(2131755874), false, new DialogInterface.OnClickListener()
                       {
                         public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                         {
@@ -189,7 +188,7 @@ public class OpenFileChooserUI
           }
           else
           {
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
@@ -203,7 +202,7 @@ public class OpenFileChooserUI
             return;
           }
         }
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
@@ -219,12 +218,12 @@ public class OpenFileChooserUI
     AppMethodBeat.o(79658);
   }
   
-  private String aJW(String paramString)
+  private String bad(String paramString)
   {
     AppMethodBeat.i(79659);
     try
     {
-      com.tencent.mm.compatible.h.d locald = new com.tencent.mm.compatible.h.d();
+      d locald = new d();
       locald.setDataSource(paramString);
       if (locald == null)
       {
@@ -236,65 +235,65 @@ public class OpenFileChooserUI
     {
       for (;;)
       {
-        ae.e("MicroMsg.OpenFileChooserUI", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { localException });
+        Log.e("MicroMsg.OpenFileChooserUI", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { localException });
         localWebViewJSSDKVideoItem = null;
       }
-      int i = bu.getInt(localWebViewJSSDKVideoItem.extractMetadata(18), 0);
-      int j = bu.getInt(localWebViewJSSDKVideoItem.extractMetadata(19), 0);
-      int k = bu.getInt(localWebViewJSSDKVideoItem.extractMetadata(9), 0);
+      int i = Util.getInt(localWebViewJSSDKVideoItem.extractMetadata(18), 0);
+      int j = Util.getInt(localWebViewJSSDKVideoItem.extractMetadata(19), 0);
+      int k = Util.getInt(localWebViewJSSDKVideoItem.extractMetadata(9), 0);
       localWebViewJSSDKVideoItem.release();
       localWebViewJSSDKVideoItem.release();
-      WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = WebViewJSSDKFileItem.bfH(paramString);
+      WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = WebViewJSSDKFileItem.bxg(paramString);
       localWebViewJSSDKVideoItem.duration = ((k + 500) / 1000);
       localWebViewJSSDKVideoItem.width = i;
       localWebViewJSSDKVideoItem.height = j;
-      localWebViewJSSDKVideoItem.size = ((int)o.aZR(paramString));
-      if (this.Erp == 1) {
-        localWebViewJSSDKVideoItem.kKQ = this.kKQ;
+      localWebViewJSSDKVideoItem.size = ((int)com.tencent.mm.vfs.s.boW(paramString));
+      if (this.Jew == 1) {
+        localWebViewJSSDKVideoItem.lPx = this.lPx;
       }
-      com.tencent.mm.plugin.webview.modeltools.g.eUG().a(localWebViewJSSDKVideoItem);
-      paramString = localWebViewJSSDKVideoItem.dsN;
+      com.tencent.mm.plugin.webview.modeltools.g.gdv().a(localWebViewJSSDKVideoItem);
+      paramString = localWebViewJSSDKVideoItem.dJX;
       AppMethodBeat.o(79659);
     }
     return paramString;
   }
   
-  private int aJX(String paramString)
+  private int bae(String paramString)
   {
     AppMethodBeat.i(79660);
     Object localObject = new Intent();
     ((Intent)localObject).setData(Uri.parse("file://".concat(String.valueOf(paramString))));
-    az.is2G(this);
+    NetStatusUtil.is2G(this);
     for (;;)
     {
       try
       {
-        paramString = com.tencent.mm.compatible.h.a.j(this, (Intent)localObject);
+        paramString = com.tencent.mm.compatible.i.a.j(this, (Intent)localObject);
         if (paramString == null)
         {
-          ae.e("MicroMsg.OpenFileChooserUI", "compressVideo filed.");
+          Log.e("MicroMsg.OpenFileChooserUI", "compressVideo filed.");
           AppMethodBeat.o(79660);
           return -50005;
         }
       }
       catch (Exception paramString)
       {
-        ae.printErrStackTrace("MicroMsg.OpenFileChooserUI", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.OpenFileChooserUI", paramString, "", new Object[0]);
         paramString = null;
         continue;
         localObject = paramString.filename;
-        boolean bool = c.Jz((String)localObject);
-        ae.i("MicroMsg.OpenFileChooserUI", "isMp4 = %b", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = com.tencent.mm.plugin.a.c.Sx((String)localObject);
+        Log.i("MicroMsg.OpenFileChooserUI", "isMp4 = %b", new Object[] { Boolean.valueOf(bool) });
         i = -10000;
         if (bool)
         {
           i = SightVideoJNI.shouldRemuxingVFS((String)localObject, 660, 500, 26214400, 300000.0D, 1000000);
-          ae.i("MicroMsg.OpenFileChooserUI", "check remuxing, ret %d", new Object[] { Integer.valueOf(i) });
+          Log.i("MicroMsg.OpenFileChooserUI", "check remuxing, ret %d", new Object[] { Integer.valueOf(i) });
         }
         if ((i == -1) || (!bool))
         {
-          i = (int)o.aZR((String)localObject);
-          ae.i("MicroMsg.OpenFileChooserUI", "fileLenght = %d", new Object[] { Integer.valueOf(i) });
+          i = (int)com.tencent.mm.vfs.s.boW((String)localObject);
+          Log.i("MicroMsg.OpenFileChooserUI", "fileLenght = %d", new Object[] { Integer.valueOf(i) });
           if (i > 26214400) {
             i = -1;
           }
@@ -304,7 +303,7 @@ public class OpenFileChooserUI
           switch (i)
           {
           default: 
-            ae.e("MicroMsg.OpenFileChooserUI", "unknown check type");
+            Log.e("MicroMsg.OpenFileChooserUI", "unknown check type");
             AppMethodBeat.o(79660);
             return -50001;
           }
@@ -318,7 +317,7 @@ public class OpenFileChooserUI
       if (j != 0) {
         i = -50006;
       }
-      ae.i("MicroMsg.OpenFileChooserUI", "finish to import %s  ret %d | duration %d", new Object[] { localObject, Integer.valueOf(i), Integer.valueOf(paramString.duration / 1000) });
+      Log.i("MicroMsg.OpenFileChooserUI", "finish to import %s  ret %d | duration %d", new Object[] { localObject, Integer.valueOf(i), Integer.valueOf(paramString.duration / 1000) });
       AppMethodBeat.o(79660);
       return i;
       j = 1;
@@ -327,11 +326,11 @@ public class OpenFileChooserUI
     return -50002;
   }
   
-  private boolean eVz()
+  private boolean ger()
   {
     AppMethodBeat.i(79654);
-    ae.i("MicroMsg.OpenFileChooserUI", "avaiableMem = %d", new Object[] { Long.valueOf(bu.jk(this)) });
-    if (bu.jk(this) <= 200L)
+    Log.i("MicroMsg.OpenFileChooserUI", "avaiableMem = %d", new Object[] { Long.valueOf(Util.getAvailableMemoryMB(this)) });
+    if (Util.getAvailableMemoryMB(this) <= 200L)
     {
       AppMethodBeat.o(79654);
       return false;
@@ -340,25 +339,25 @@ public class OpenFileChooserUI
     return true;
   }
   
-  private SightParams tm(int paramInt)
+  private SightParams xi(int paramInt)
   {
     AppMethodBeat.i(79655);
     String str1 = "microMsg_" + System.currentTimeMillis();
-    this.kKP = (b.asv() + str1 + ".mp4");
-    this.kKQ = (b.asv() + str1 + ".jpeg");
+    this.lPw = (b.aKV() + str1 + ".mp4");
+    this.lPx = (b.aKV() + str1 + ".jpeg");
     int j = getIntent().getIntExtra("key_pick_local_media_duration", 60);
     SightParams localSightParams = new SightParams(3, 1);
-    if (this.Ero == 16) {}
+    if (this.Jev == 16) {}
     for (int i = 1;; i = 2)
     {
-      localSightParams.vYF = i;
+      localSightParams.zsH = i;
       localSightParams.mode = paramInt;
-      if (localSightParams.hxV == null) {
-        localSightParams.hxV = new VideoTransPara();
+      if (localSightParams.irT == null) {
+        localSightParams.irT = new VideoTransPara();
       }
-      localSightParams.hxV.duration = j;
-      String str2 = b.asv() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" });
-      localSightParams.r(str1, this.kKP, this.kKQ, str2);
+      localSightParams.irT.duration = j;
+      String str2 = AndroidMediaUtil.getSysCameraDirPath() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" });
+      localSightParams.v(str1, this.lPw, this.lPx, str2);
       AppMethodBeat.o(79655);
       return localSightParams;
     }
@@ -377,7 +376,7 @@ public class OpenFileChooserUI
     if (paramInt2 != -1)
     {
       paramIntent = new Intent();
-      paramIntent.putExtra("key_pick_local_media_show_memory_warning", this.Err);
+      paramIntent.putExtra("key_pick_local_media_show_memory_warning", this.Jey);
       setResult(paramInt2, paramIntent);
       finish();
       AppMethodBeat.o(79657);
@@ -387,47 +386,47 @@ public class OpenFileChooserUI
     switch (paramInt1)
     {
     default: 
-      ae.e("MicroMsg.OpenFileChooserUI", "unknown request code = %d", new Object[] { Integer.valueOf(paramInt1) });
+      Log.e("MicroMsg.OpenFileChooserUI", "unknown request code = %d", new Object[] { Integer.valueOf(paramInt1) });
       setResult(1);
       finish();
       AppMethodBeat.o(79657);
       return;
     case 1: 
     case 3: 
-      com.tencent.mm.plugin.webview.a.a.ad(new OpenFileChooserUI.6(this, paramIntent, paramInt2));
+      com.tencent.mm.plugin.webview.a.a.aj(new OpenFileChooserUI.6(this, paramIntent, paramInt2));
       AppMethodBeat.o(79657);
       return;
     case 2: 
-      localObject1 = q.i(getContext().getApplicationContext(), paramIntent, b.asv());
-      if (bu.isNullOrNil((String)localObject1))
+      localObject1 = com.tencent.mm.pluginsdk.ui.tools.s.h(getContext().getApplicationContext(), paramIntent, b.aKV());
+      if (Util.isNullOrNil((String)localObject1))
       {
-        ae.w("MicroMsg.OpenFileChooserUI", "take photo, but result is null");
+        Log.w("MicroMsg.OpenFileChooserUI", "take photo, but result is null");
         setResult(-2, paramIntent);
         finish();
         AppMethodBeat.o(79657);
         return;
       }
-      ae.i("MicroMsg.OpenFileChooserUI", "take photo, result[%s]", new Object[] { localObject1 });
+      Log.i("MicroMsg.OpenFileChooserUI", "take photo, result[%s]", new Object[] { localObject1 });
       paramIntent = new Intent();
-      paramIntent.putExtra("key_send_raw_image", this.Ern);
-      paramIntent.putExtra("max_select_count", this.cJU);
-      paramIntent.putExtra("query_source_type", this.tXi);
+      paramIntent.putExtra("key_send_raw_image", this.Jeu);
+      paramIntent.putExtra("max_select_count", this.das);
+      paramIntent.putExtra("query_source_type", this.het);
       localObject2 = new ArrayList(1);
       ((ArrayList)localObject2).add(localObject1);
       paramIntent.putStringArrayListExtra("preview_image_list", (ArrayList)localObject2);
       paramIntent.putExtra("preview_image", true);
       paramIntent.addFlags(67108864);
-      com.tencent.mm.br.d.b(this, "gallery", ".ui.GalleryEntryUI", paramIntent, 3);
+      com.tencent.mm.br.c.b(this, "gallery", ".ui.GalleryEntryUI", paramIntent, 3);
       AppMethodBeat.o(79657);
       return;
     case 5: 
-      if (new k(this.kKP).exists())
+      if (new o(this.lPw).exists())
       {
-        aJV(this.kKP);
+        bac(this.lPw);
         AppMethodBeat.o(79657);
         return;
       }
-      ae.e("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_VIDEO, file not exist : %s", new Object[] { this.kKP });
+      Log.e("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_VIDEO, file not exist : %s", new Object[] { this.lPw });
       setResult(1);
       finish();
       AppMethodBeat.o(79657);
@@ -436,98 +435,98 @@ public class OpenFileChooserUI
       paramIntent = paramIntent.getStringArrayListExtra("key_select_video_list");
       if ((paramIntent == null) || (paramIntent.size() == 0))
       {
-        ae.e("MicroMsg.OpenFileChooserUI", "choose video failed, path is null");
+        Log.e("MicroMsg.OpenFileChooserUI", "choose video failed, path is null");
         setResult(1);
         finish();
         AppMethodBeat.o(79657);
         return;
       }
-      ae.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_GALLERY_VIDEO");
-      ae.i("MicroMsg.OpenFileChooserUI", "videoFilePath:%s", new Object[] { paramIntent.get(0) });
-      if ((this.Erp == 1) && (!QC(this.kKQ))) {
-        ae.i("MicroMsg.OpenFileChooserUI", "video thumb file is not exist");
+      Log.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_GALLERY_VIDEO");
+      Log.i("MicroMsg.OpenFileChooserUI", "videoFilePath:%s", new Object[] { paramIntent.get(0) });
+      if ((this.Jew == 1) && (!aad(this.lPx))) {
+        Log.i("MicroMsg.OpenFileChooserUI", "video thumb file is not exist");
       }
-      aJV((String)paramIntent.get(0));
+      bac((String)paramIntent.get(0));
       AppMethodBeat.o(79657);
       return;
     case 6: 
-      ae.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_SIGHT_VIDEO");
+      Log.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_SIGHT_VIDEO");
       if (paramIntent != null)
       {
-        ae.i("MicroMsg.OpenFileChooserUI", "data is valid!");
+        Log.i("MicroMsg.OpenFileChooserUI", "data is valid!");
         paramIntent = (SightCaptureResult)paramIntent.getParcelableExtra("key_req_result");
         if (paramIntent == null)
         {
-          ae.e("MicroMsg.OpenFileChooserUI", "sight capture result is null!");
+          Log.e("MicroMsg.OpenFileChooserUI", "sight capture result is null!");
           setResult(1);
           finish();
           AppMethodBeat.o(79657);
           return;
         }
-        this.kKP = paramIntent.vYy;
-        ae.i("MicroMsg.OpenFileChooserUI", "videoFilePath:%s", new Object[] { this.kKP });
-        if ((!QC(this.kKQ)) && (QC(paramIntent.vYz))) {
-          this.kKQ = paramIntent.vYz;
+        this.lPw = paramIntent.zsA;
+        Log.i("MicroMsg.OpenFileChooserUI", "videoFilePath:%s", new Object[] { this.lPw });
+        if ((!aad(this.lPx)) && (aad(paramIntent.zsB))) {
+          this.lPx = paramIntent.zsB;
         }
         paramIntent = (Intent)localObject1;
-        if (!TextUtils.isEmpty(this.kKP)) {
-          paramIntent = new k(this.kKP);
+        if (!TextUtils.isEmpty(this.lPw)) {
+          paramIntent = new o(this.lPw);
         }
         if ((paramIntent != null) && (paramIntent.exists()))
         {
-          ae.e("MicroMsg.OpenFileChooserUI", "video file is exist! path:%s", new Object[] { this.kKP });
-          aJV(this.kKP);
+          Log.e("MicroMsg.OpenFileChooserUI", "video file is exist! path:%s", new Object[] { this.lPw });
+          bac(this.lPw);
           AppMethodBeat.o(79657);
           return;
         }
-        ae.e("MicroMsg.OpenFileChooserUI", "video file is not exist! path:%s", new Object[] { this.kKP });
+        Log.e("MicroMsg.OpenFileChooserUI", "video file is not exist! path:%s", new Object[] { this.lPw });
       }
-      ae.e("MicroMsg.OpenFileChooserUI", "data is null!");
+      Log.e("MicroMsg.OpenFileChooserUI", "data is null!");
       setResult(1);
       finish();
       AppMethodBeat.o(79657);
       return;
     case 7: 
-      ae.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_MEDIA_CAMERA");
+      Log.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_MEDIA_CAMERA");
       if (paramIntent != null)
       {
-        ae.i("MicroMsg.OpenFileChooserUI", "data is valid!");
+        Log.i("MicroMsg.OpenFileChooserUI", "data is valid!");
         paramIntent = (SightCaptureResult)paramIntent.getParcelableExtra("key_req_result");
         if (paramIntent == null)
         {
-          ae.e("MicroMsg.OpenFileChooserUI", "sight capture result is null!");
+          Log.e("MicroMsg.OpenFileChooserUI", "sight capture result is null!");
           setResult(1);
           finish();
           AppMethodBeat.o(79657);
           return;
         }
-        if (paramIntent.vYw)
+        if (paramIntent.zsy)
         {
-          paramIntent = paramIntent.vYE;
-          if (bu.isNullOrNil(paramIntent))
+          paramIntent = paramIntent.zsG;
+          if (Util.isNullOrNil(paramIntent))
           {
-            ae.e("MicroMsg.OpenFileChooserUI", "picture_picturePath file is not exist! path:%s", new Object[] { paramIntent });
+            Log.e("MicroMsg.OpenFileChooserUI", "picture_picturePath file is not exist! path:%s", new Object[] { paramIntent });
             setResult(1);
             finish();
             AppMethodBeat.o(79657);
             return;
           }
           localObject1 = new ArrayList();
-          localObject2 = WebViewJSSDKFileItem.aWg(paramIntent);
-          ((WebViewJSSDKFileItem)localObject2).jXX = true;
+          localObject2 = WebViewJSSDKFileItem.bxe(paramIntent);
+          ((WebViewJSSDKFileItem)localObject2).laV = true;
           ((WebViewJSSDKFileItem)localObject2).mediaType = 1;
-          com.tencent.mm.plugin.webview.modeltools.g.eUG().a((WebViewJSSDKFileItem)localObject2);
-          ((ArrayList)localObject1).add(((WebViewJSSDKFileItem)localObject2).dsN);
-          ae.i("MicroMsg.OpenFileChooserUI", "filepath is : %s, local id is : %s", new Object[] { paramIntent, ((WebViewJSSDKFileItem)localObject2).dsN });
-          if (bu.lX(this.Erq, "chooseImage"))
+          com.tencent.mm.plugin.webview.modeltools.g.gdv().a((WebViewJSSDKFileItem)localObject2);
+          ((ArrayList)localObject1).add(((WebViewJSSDKFileItem)localObject2).dJX);
+          Log.i("MicroMsg.OpenFileChooserUI", "filepath is : %s, local id is : %s", new Object[] { paramIntent, ((WebViewJSSDKFileItem)localObject2).dJX });
+          if (Util.isEqual(this.Jex, "chooseImage"))
           {
-            paramIntent = ax.aJ((ArrayList)localObject1);
-            ae.i("MicroMsg.OpenFileChooserUI", "after parse to json data : %s", new Object[] { paramIntent });
+            paramIntent = ay.bb((ArrayList)localObject1);
+            Log.i("MicroMsg.OpenFileChooserUI", "after parse to json data : %s", new Object[] { paramIntent });
             localObject1 = new Intent();
             ((Intent)localObject1).putExtra("key_pick_local_media_local_ids", paramIntent);
             ((Intent)localObject1).putExtra("key_pick_local_media_callback_type", 2);
-            ((Intent)localObject1).putExtra("key_pick_local_media_show_memory_warning", this.Err);
-            if (!this.Akh) {
+            ((Intent)localObject1).putExtra("key_pick_local_media_show_memory_warning", this.Jey);
+            if (!this.EsU) {
               break label1054;
             }
           }
@@ -539,16 +538,16 @@ public class OpenFileChooserUI
             finish();
             AppMethodBeat.o(79657);
             return;
-            paramIntent = ax.aK((ArrayList)localObject1);
+            paramIntent = ay.bc((ArrayList)localObject1);
             break;
           }
         }
-        this.kKP = paramIntent.vYy;
-        ae.i("MicroMsg.OpenFileChooserUI", "videoFilePath:%s", new Object[] { this.kKP });
-        if ((!QC(this.kKQ)) && (QC(paramIntent.vYz))) {
-          this.kKQ = paramIntent.vYz;
+        this.lPw = paramIntent.zsA;
+        Log.i("MicroMsg.OpenFileChooserUI", "videoFilePath:%s", new Object[] { this.lPw });
+        if ((!aad(this.lPx)) && (aad(paramIntent.zsB))) {
+          this.lPx = paramIntent.zsB;
         }
-        if (TextUtils.isEmpty(this.kKP)) {
+        if (TextUtils.isEmpty(this.lPw)) {
           break label1554;
         }
       }
@@ -556,26 +555,26 @@ public class OpenFileChooserUI
     }
     label1547:
     label1554:
-    for (paramIntent = new k(this.kKP);; paramIntent = null)
+    for (paramIntent = new o(this.lPw);; paramIntent = null)
     {
       if ((paramIntent != null) && (paramIntent.exists()))
       {
-        ae.e("MicroMsg.OpenFileChooserUI", "video file is exist! path:%s", new Object[] { this.kKP });
-        aJV(this.kKP);
+        Log.e("MicroMsg.OpenFileChooserUI", "video file is exist! path:%s", new Object[] { this.lPw });
+        bac(this.lPw);
         AppMethodBeat.o(79657);
         return;
       }
-      ae.e("MicroMsg.OpenFileChooserUI", "video file is not exist! path:%s", new Object[] { this.kKP });
-      ae.e("MicroMsg.OpenFileChooserUI", "data is null!");
+      Log.e("MicroMsg.OpenFileChooserUI", "video file is not exist! path:%s", new Object[] { this.lPw });
+      Log.e("MicroMsg.OpenFileChooserUI", "data is null!");
       setResult(1);
       finish();
       AppMethodBeat.o(79657);
       return;
-      ae.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_MEDIA_LOCAL");
+      Log.i("MicroMsg.OpenFileChooserUI", "REQUEST_CODE_TAKE_MEDIA_LOCAL");
       localObject1 = paramIntent.getStringArrayListExtra("key_select_video_list");
       if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
       {
-        aJV((String)((ArrayList)localObject1).get(0));
+        bac((String)((ArrayList)localObject1).get(0));
         AppMethodBeat.o(79657);
         return;
       }
@@ -583,7 +582,7 @@ public class OpenFileChooserUI
       boolean bool = paramIntent.getBooleanExtra("CropImage_Compress_Img", true);
       if (localObject1 == null)
       {
-        ae.e("MicroMsg.OpenFileChooserUI", "chosen is null");
+        Log.e("MicroMsg.OpenFileChooserUI", "chosen is null");
         setResult(1);
         finish();
         AppMethodBeat.o(79657);
@@ -594,22 +593,22 @@ public class OpenFileChooserUI
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        WebViewJSSDKFileItem localWebViewJSSDKFileItem = WebViewJSSDKFileItem.aWg((String)localObject2);
-        String str = localWebViewJSSDKFileItem.dsN;
-        localWebViewJSSDKFileItem.jXX = bool;
-        com.tencent.mm.plugin.webview.modeltools.g.eUG().a(localWebViewJSSDKFileItem);
-        ae.i("MicroMsg.OpenFileChooserUI", "now filepath is : %s, local id is : %s", new Object[] { localObject2, str });
+        WebViewJSSDKFileItem localWebViewJSSDKFileItem = WebViewJSSDKFileItem.bxe((String)localObject2);
+        String str = localWebViewJSSDKFileItem.dJX;
+        localWebViewJSSDKFileItem.laV = bool;
+        com.tencent.mm.plugin.webview.modeltools.g.gdv().a(localWebViewJSSDKFileItem);
+        Log.i("MicroMsg.OpenFileChooserUI", "now filepath is : %s, local id is : %s", new Object[] { localObject2, str });
         paramIntent.add(str);
       }
-      if (bu.lX(this.Erq, "chooseImage"))
+      if (Util.isEqual(this.Jex, "chooseImage"))
       {
-        paramIntent = ax.aJ(paramIntent);
-        ae.i("MicroMsg.OpenFileChooserUI", "after parse to json data : %s", new Object[] { paramIntent });
+        paramIntent = ay.bb(paramIntent);
+        Log.i("MicroMsg.OpenFileChooserUI", "after parse to json data : %s", new Object[] { paramIntent });
         localObject1 = new Intent();
         ((Intent)localObject1).putExtra("key_pick_local_media_local_ids", paramIntent);
-        ((Intent)localObject1).putExtra("key_pick_local_media_show_memory_warning", this.Err);
+        ((Intent)localObject1).putExtra("key_pick_local_media_show_memory_warning", this.Jey);
         ((Intent)localObject1).putExtra("key_pick_local_media_callback_type", 2);
-        if (!this.Akh) {
+        if (!this.EsU) {
           break label1547;
         }
       }
@@ -620,7 +619,7 @@ public class OpenFileChooserUI
         finish();
         AppMethodBeat.o(79657);
         return;
-        paramIntent = ax.aK(paramIntent);
+        paramIntent = ay.bc(paramIntent);
         break;
       }
     }
@@ -635,46 +634,46 @@ public class OpenFileChooserUI
     if ((this.count <= 0) || (this.count > 9)) {
       this.count = 9;
     }
-    this.cJU = this.count;
-    this.tXi = getIntent().getIntExtra("key_pick_local_pic_query_source_type", 8);
-    this.tXj = getIntent().getIntExtra("query_media_type", 1);
-    this.Ern = getIntent().getBooleanExtra("key_pick_local_pic_send_raw", false);
-    this.Ero = getIntent().getIntExtra("key_pick_local_pic_capture", 3);
-    this.Erp = getIntent().getIntExtra("key_pick_local_media_video_type", 0);
-    this.Erq = getIntent().getStringExtra("key_pick_local_media_choose_type");
+    this.das = this.count;
+    this.het = getIntent().getIntExtra("key_pick_local_pic_query_source_type", 8);
+    this.xos = getIntent().getIntExtra("query_media_type", 1);
+    this.Jeu = getIntent().getBooleanExtra("key_pick_local_pic_send_raw", false);
+    this.Jev = getIntent().getIntExtra("key_pick_local_pic_capture", 3);
+    this.Jew = getIntent().getIntExtra("key_pick_local_media_video_type", 0);
+    this.Jex = getIntent().getStringExtra("key_pick_local_media_choose_type");
     boolean bool;
     int j;
-    if ((this.Ero & 0x1000) == 0)
+    if ((this.Jev & 0x1000) == 0)
     {
       bool = true;
-      this.Akh = bool;
-      if (((this.tXi != 7) || (this.tXj != 2)) && (this.tXj != 3)) {
+      this.EsU = bool;
+      if (((this.het != 7) || (this.xos != 2)) && (this.xos != 3)) {
         break label1113;
       }
-      if (!eVz())
+      if (!ger())
       {
-        t.makeText(this, getString(2131766118), 1).show();
-        this.Err = true;
+        u.makeText(this, getString(2131768589), 1).show();
+        this.Jey = true;
       }
       paramBundle = new Intent();
-      paramBundle.putExtra("key_send_raw_image", this.Ern);
-      paramBundle.putExtra("query_media_type", this.tXj);
-      if (this.Erp != 1) {
+      paramBundle.putExtra("key_send_raw_image", this.Jeu);
+      paramBundle.putExtra("query_media_type", this.xos);
+      if (this.Jew != 1) {
         break label509;
       }
-      if ((this.Ero == 4096) || ((this.Ero & 0x1000) <= 0)) {
+      if ((this.Jev == 4096) || ((this.Jev & 0x1000) <= 0)) {
         break label429;
       }
       i = getIntent().getIntExtra("key_pick_local_media_quality", 1);
       j = getIntent().getIntExtra("key_pick_local_media_duration", 60);
-      paramBundle.putExtra("KEY_SIGHT_PARAMS", tm(1));
+      paramBundle.putExtra("KEY_SIGHT_PARAMS", xi(1));
       paramBundle.putExtra("record_video_force_sys_camera", false);
       paramBundle.putExtra("show_header_view", true);
       paramBundle.putExtra("record_video_is_sight_capture", true);
       paramBundle.putExtra("record_video_quality", i);
       paramBundle.putExtra("record_video_time_limit", j);
-      paramBundle.putExtra("video_full_path", this.kKP);
-      q.e(this, this.cJU, this.tXi, paramBundle);
+      paramBundle.putExtra("video_full_path", this.lPw);
+      com.tencent.mm.pluginsdk.ui.tools.s.e(this, this.das, this.het, paramBundle);
     }
     label412:
     label429:
@@ -682,7 +681,7 @@ public class OpenFileChooserUI
     String str;
     for (;;)
     {
-      if ((this.Ero != 4096) && ((this.Ero & 0x1000) > 0))
+      if ((this.Jev != 4096) && ((this.Jev & 0x1000) > 0))
       {
         i = 1;
         if (i == 0) {
@@ -692,27 +691,27 @@ public class OpenFileChooserUI
         return;
         bool = false;
         break;
-        if ((this.Ero == 16) || (this.Ero == 256))
+        if ((this.Jev == 16) || (this.Jev == 256))
         {
-          paramBundle.putExtra("KEY_SIGHT_PARAMS", tm(1));
-          q.a(this, 6, paramBundle, 3, 1);
+          paramBundle.putExtra("KEY_SIGHT_PARAMS", xi(1));
+          com.tencent.mm.pluginsdk.ui.tools.s.a(this, 6, paramBundle, 3, 1);
         }
-        else if (this.Ero == 4096)
+        else if (this.Jev == 4096)
         {
           paramBundle.putExtra("show_header_view", false);
-          q.e(this, this.cJU, this.tXi, paramBundle);
+          com.tencent.mm.pluginsdk.ui.tools.s.e(this, this.das, this.het, paramBundle);
           continue;
-          if (this.Erp == 2)
+          if (this.Jew == 2)
           {
-            str = bu.nullAsNil(getIntent().getStringExtra("key_pick_local_media_sight_type"));
-            if ((this.Ero != 4096) && ((this.Ero & 0x1000) > 0))
+            str = Util.nullAsNil(getIntent().getStringExtra("key_pick_local_media_sight_type"));
+            if ((this.Jev != 4096) && ((this.Jev & 0x1000) > 0))
             {
-              ae.e("MicroMsg.OpenFileChooserUI", "choose media from local or camera is not support");
+              Log.e("MicroMsg.OpenFileChooserUI", "choose media from local or camera is not support");
               setResult(1);
               finish();
               continue;
             }
-            if ((this.Ero == 16) || (this.Ero == 256)) {
+            if ((this.Jev == 16) || (this.Jev == 256)) {
               if ((str.contains("video")) && (str.contains("image"))) {
                 i = 0;
               }
@@ -723,8 +722,8 @@ public class OpenFileChooserUI
     }
     for (;;)
     {
-      paramBundle.putExtra("KEY_SIGHT_PARAMS", tm(i));
-      q.a(this, 7, paramBundle, 3, i);
+      paramBundle.putExtra("KEY_SIGHT_PARAMS", xi(i));
+      com.tencent.mm.pluginsdk.ui.tools.s.a(this, 7, paramBundle, 3, i);
       break;
       if (str.contains("video"))
       {
@@ -736,7 +735,7 @@ public class OpenFileChooserUI
         {
           i = 2;
           continue;
-          if (this.Ero != 4096) {
+          if (this.Jev != 4096) {
             break;
           }
           if ((str.contains("image")) && (str.contains("video"))) {}
@@ -744,8 +743,8 @@ public class OpenFileChooserUI
           {
             paramBundle = new Intent();
             paramBundle.putExtra("key_can_select_video_and_pic", true);
-            paramBundle.putExtra("key_send_raw_image", this.Ern);
-            q.a(this, 8, this.cJU, this.tXi, i, paramBundle);
+            paramBundle.putExtra("key_send_raw_image", this.Jeu);
+            com.tencent.mm.pluginsdk.ui.tools.s.a(this, 8, this.das, this.het, i, paramBundle);
             break;
             if (str.contains("image")) {
               i = 1;
@@ -753,43 +752,43 @@ public class OpenFileChooserUI
               i = 2;
             }
           }
-          if ((this.Ero != 4096) && ((this.Ero & 0x1000) > 0))
+          if ((this.Jev != 4096) && ((this.Jev & 0x1000) > 0))
           {
-            this.kKP = (b.asv() + "microMsg." + System.currentTimeMillis() + ".mp4");
+            this.lPw = (b.aKV() + "microMsg." + System.currentTimeMillis() + ".mp4");
             i = getIntent().getIntExtra("key_pick_local_media_quality", 1);
             j = getIntent().getIntExtra("key_pick_local_media_duration", 60);
             paramBundle.putExtra("record_video_force_sys_camera", true);
             paramBundle.putExtra("record_video_quality", i);
             paramBundle.putExtra("record_video_time_limit", j);
-            paramBundle.putExtra("video_full_path", this.kKP);
-            q.e(this, this.cJU, this.tXi, paramBundle);
+            paramBundle.putExtra("video_full_path", this.lPw);
+            com.tencent.mm.pluginsdk.ui.tools.s.e(this, this.das, this.het, paramBundle);
             break;
           }
-          if ((this.Ero == 16) || (this.Ero == 256))
+          if ((this.Jev == 16) || (this.Jev == 256))
           {
-            this.kKP = (b.asv() + "microMsg." + System.currentTimeMillis() + ".mp4");
+            this.lPw = (b.aKV() + "microMsg." + System.currentTimeMillis() + ".mp4");
             i = getIntent().getIntExtra("key_pick_local_media_quality", 1);
             j = getIntent().getIntExtra("key_pick_local_media_duration", 60);
-            paramBundle = this.kKP;
-            if (this.Ero == 16) {}
+            paramBundle = this.lPw;
+            if (this.Jev == 16) {}
             for (bool = true;; bool = false)
             {
-              q.a(this, paramBundle, 5, j, i, bool);
+              com.tencent.mm.pluginsdk.ui.tools.s.a(this, paramBundle, 5, j, i, bool);
               break;
             }
           }
-          if (this.Ero != 4096) {
+          if (this.Jev != 4096) {
             break;
           }
           paramBundle.putExtra("show_header_view", false);
-          q.e(this, this.cJU, this.tXi, paramBundle);
+          com.tencent.mm.pluginsdk.ui.tools.s.e(this, this.das, this.het, paramBundle);
           break;
-          if ((this.Ero == 16) || (this.Ero == 256))
+          if ((this.Jev == 16) || (this.Jev == 256))
           {
             i = 1;
             break label412;
           }
-          if (this.Ero == 4096)
+          if (this.Jev == 4096)
           {
             i = 1;
             break label412;
@@ -798,37 +797,37 @@ public class OpenFileChooserUI
           i = 0;
           break label412;
           label1118:
-          if (!eVz())
+          if (!ger())
           {
-            t.makeText(this, getString(2131766118), 1).show();
-            this.Err = true;
+            u.makeText(this, getString(2131768589), 1).show();
+            this.Jey = true;
           }
           paramBundle = new Intent();
-          paramBundle.putExtra("key_send_raw_image", this.Ern);
-          paramBundle.putExtra("query_media_type", this.tXj);
-          switch (this.Ero)
+          paramBundle.putExtra("key_send_raw_image", this.Jeu);
+          paramBundle.putExtra("query_media_type", this.xos);
+          switch (this.Jev)
           {
           default: 
-            ae.e("MicroMsg.OpenFileChooserUI", "unkown scene, ignore this request");
+            Log.e("MicroMsg.OpenFileChooserUI", "unkown scene, ignore this request");
             setResult(0);
             finish();
             AppMethodBeat.o(79653);
             return;
           case 1: 
             paramBundle.putExtra("show_header_view", false);
-            q.a(this, 1, this.cJU, this.tXi, paramBundle);
+            com.tencent.mm.pluginsdk.ui.tools.s.a(this, 1, this.das, this.het, paramBundle);
             AppMethodBeat.o(79653);
             return;
           case 2: 
             paramBundle = new l(this);
-            paramBundle.LfS = new OpenFileChooserUI.1(this);
-            paramBundle.LfT = new OpenFileChooserUI.2(this);
+            paramBundle.HLX = new OpenFileChooserUI.1(this);
+            paramBundle.HLY = new OpenFileChooserUI.2(this);
             paramBundle.a(new e.b()
             {
               public final void onDismiss()
               {
                 AppMethodBeat.i(175751);
-                ae.v("MicroMsg.OpenFileChooserUI", "alvinluo onDismiss");
+                Log.v("MicroMsg.OpenFileChooserUI", "alvinluo onDismiss");
                 OpenFileChooserUI.this.setResult(0);
                 OpenFileChooserUI.this.finish();
                 AppMethodBeat.o(175751);
@@ -839,17 +838,17 @@ public class OpenFileChooserUI
               public final void onClick()
               {
                 AppMethodBeat.i(175752);
-                ae.v("MicroMsg.OpenFileChooserUI", "alvinluo cancel onClick");
+                Log.v("MicroMsg.OpenFileChooserUI", "alvinluo cancel onClick");
                 OpenFileChooserUI.this.setResult(0);
                 OpenFileChooserUI.this.finish();
                 AppMethodBeat.o(175752);
               }
             });
-            paramBundle.fOP();
+            paramBundle.gXI();
             AppMethodBeat.o(79653);
             return;
           }
-          q.a(this, 1, this.count, this.tXi, paramBundle);
+          com.tencent.mm.pluginsdk.ui.tools.s.a(this, 1, this.count, this.het, paramBundle);
           AppMethodBeat.o(79653);
           return;
         }
@@ -862,8 +861,8 @@ public class OpenFileChooserUI
   {
     AppMethodBeat.i(79661);
     super.onDestroy();
-    if ((this.fOC != null) && (this.fOC.isShowing())) {
-      this.fOC.dismiss();
+    if ((this.gtM != null) && (this.gtM.isShowing())) {
+      this.gtM.dismiss();
     }
     AppMethodBeat.o(79661);
   }
@@ -873,11 +872,11 @@ public class OpenFileChooserUI
     AppMethodBeat.i(79656);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ae.i("MicroMsg.OpenFileChooserUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      Log.i("MicroMsg.OpenFileChooserUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(79656);
       return;
     }
-    ae.i("MicroMsg.OpenFileChooserUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.OpenFileChooserUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -887,11 +886,11 @@ public class OpenFileChooserUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        q.d(getContext(), b.asv(), "microMsg." + System.currentTimeMillis() + ".jpg", 2);
+        com.tencent.mm.pluginsdk.ui.tools.s.d(getContext(), b.aKV(), "microMsg." + System.currentTimeMillis() + ".jpg", 2);
         AppMethodBeat.o(79656);
         return;
       }
-      h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new OpenFileChooserUI.5(this), null);
+      h.a(this, getString(2131763864), getString(2131763890), getString(2131762043), getString(2131755761), false, new OpenFileChooserUI.5(this), null);
     }
   }
   
@@ -903,7 +902,7 @@ public class OpenFileChooserUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.OpenFileChooserUI
  * JD-Core Version:    0.7.0.1
  */

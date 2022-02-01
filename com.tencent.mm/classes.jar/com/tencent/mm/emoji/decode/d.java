@@ -1,30 +1,30 @@
 package com.tencent.mm.emoji.decode;
 
 import android.graphics.Bitmap;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "Landroid/graphics/Bitmap;", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "Landroid/graphics/Bitmap;", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
 public abstract interface d
 {
-  public abstract void aeG();
+  public abstract void auo();
   
-  public abstract Bitmap aeH();
+  public abstract int aup();
   
-  public abstract int aeI();
+  public abstract int auq();
   
-  public abstract int aeJ();
+  public abstract int aur();
   
-  public abstract int aeK();
-  
-  public abstract int aeL();
+  public abstract int aus();
   
   public abstract void destroy();
+  
+  public abstract Bitmap getFrame();
   
   public abstract void seekTo(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,35 +5,36 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.plugin.appbrand.widget.f;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.widget.e;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  public static f Pt(String paramString)
+  public static e YE(String paramString)
   {
     AppMethodBeat.i(121476);
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
-    paramString = a((ContentValues)h.a("com.tencent.mm", localBundle, a.class));
+    paramString = a((ContentValues)h.a(MainProcessIPCService.dkO, localBundle, a.class));
     AppMethodBeat.o(121476);
     return paramString;
   }
   
-  static f a(ContentValues paramContentValues)
+  static e a(ContentValues paramContentValues)
   {
     AppMethodBeat.i(121477);
     if (paramContentValues != null)
     {
-      f localf = new f();
-      localf.field_id = paramContentValues.getAsString("id");
-      localf.field_appId = paramContentValues.getAsString("appId");
-      localf.field_cacheKey = paramContentValues.getAsString("cacheKey");
-      localf.field_updateTime = bu.i(paramContentValues.getAsLong("updateTime"));
-      localf.field_interval = bu.o(paramContentValues.getAsInteger("interval"));
-      localf.systemRowid = bu.i(paramContentValues.getAsLong("rowid"));
+      e locale = new e();
+      locale.field_id = paramContentValues.getAsString("id");
+      locale.field_appId = paramContentValues.getAsString("appId");
+      locale.field_cacheKey = paramContentValues.getAsString("cacheKey");
+      locale.field_updateTime = Util.nullAsNil(paramContentValues.getAsLong("updateTime"));
+      locale.field_interval = Util.nullAsNil(paramContentValues.getAsInteger("interval"));
+      locale.systemRowid = Util.nullAsNil(paramContentValues.getAsLong("rowid"));
       AppMethodBeat.o(121477);
-      return localf;
+      return locale;
     }
     AppMethodBeat.o(121477);
     return null;
@@ -49,7 +50,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.j.b
  * JD-Core Version:    0.7.0.1
  */

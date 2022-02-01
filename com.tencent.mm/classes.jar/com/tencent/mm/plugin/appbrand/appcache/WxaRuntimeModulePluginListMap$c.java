@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace;", "", "()V", "MODULE", "PLUGIN", "luggage-wxa-app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace;", "", "()V", "MODULE", "PLUGIN", "luggage-wxa-app_release"})
 abstract class WxaRuntimeModulePluginListMap$c
 {
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$PLUGIN;", "", "provider", "", "(Ljava/lang/String;)V", "getProvider", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "luggage-wxa-app_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap$Namespace$PLUGIN;", "", "provider", "", "(Ljava/lang/String;)V", "getProvider", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "luggage-wxa-app_release"})
   public static final class b
   {
     private final String provider;
@@ -33,7 +33,7 @@ abstract class WxaRuntimeModulePluginListMap$c
         if (localb != null) {
           paramObject = localb.provider;
         }
-        boolean bool = p.i(paramObject, this.provider);
+        boolean bool = p.j(paramObject, this.provider);
         AppMethodBeat.o(178650);
         return bool;
       }

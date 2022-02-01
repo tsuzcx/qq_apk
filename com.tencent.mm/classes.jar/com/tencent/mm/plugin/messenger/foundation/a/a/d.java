@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bl;
 
 public abstract interface d
 {
-  public abstract bg aqQ(String paramString);
+  public abstract bl aEl(String paramString);
   
-  public abstract boolean t(long paramLong, String paramString);
+  public abstract boolean x(long paramLong, String paramString);
 }
 
 

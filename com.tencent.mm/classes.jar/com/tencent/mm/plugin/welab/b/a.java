@@ -5,7 +5,7 @@ import java.util.List;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void f(List<c> paramList, List<d> paramList1, List<Integer> paramList2);
+  public abstract void g(List<c> paramList, List<d> paramList1, List<Integer> paramList2);
 }
 
 

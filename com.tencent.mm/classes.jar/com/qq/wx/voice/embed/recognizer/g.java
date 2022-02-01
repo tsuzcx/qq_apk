@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class g
 {
   Handler b;
-  c bVM;
+  c cgu;
   
   public g()
   {

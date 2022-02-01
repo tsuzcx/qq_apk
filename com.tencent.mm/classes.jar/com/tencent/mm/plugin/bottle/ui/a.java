@@ -2,56 +2,54 @@ package com.tencent.mm.plugin.bottle.ui;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ba;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.g.c.bb;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.modelvoice.p;
-import com.tencent.mm.pluginsdk.i.i;
+import com.tencent.mm.pluginsdk.i.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
-import com.tencent.mm.storage.br.b;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.bw.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
-import com.tencent.mm.ui.r;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.s.a;
 
 final class a
-  extends r<au>
-  implements n.b
+  extends s<az>
+  implements MStorageEx.IOnStorageChange
 {
-  private final MMActivity fNT;
-  protected MMSlideDelView.g oac;
-  protected MMSlideDelView.c oad;
-  protected MMSlideDelView.f oae;
-  protected MMSlideDelView.d oaf;
+  private final MMActivity gte;
+  protected MMSlideDelView.g pkY;
+  protected MMSlideDelView.c pkZ;
+  protected MMSlideDelView.f pla;
+  protected MMSlideDelView.d plb;
   
-  public a(Context paramContext, r.a parama)
+  public a(Context paramContext, s.a parama)
   {
-    super(paramContext, new au());
+    super(paramContext, new az());
     AppMethodBeat.i(22656);
-    this.oaf = MMSlideDelView.getItemStatusCallBack();
+    this.plb = MMSlideDelView.getItemStatusCallBack();
     super.a(parama);
-    this.fNT = ((MMActivity)paramContext);
+    this.gte = ((MMActivity)paramContext);
     AppMethodBeat.o(22656);
   }
   
-  private static int Xr(String paramString)
+  private static int ahn(String paramString)
   {
     int j = 1;
     AppMethodBeat.i(22661);
@@ -76,36 +74,36 @@ final class a
     }
   }
   
-  final String S(an paraman)
+  final String S(as paramas)
   {
     AppMethodBeat.i(22660);
-    paraman = com.tencent.mm.plugin.bottle.a.c.a(this.fNT, paraman);
+    paramas = com.tencent.mm.plugin.bottle.a.c.a(this.gte, paramas);
     AppMethodBeat.o(22660);
-    return paraman;
+    return paramas;
   }
   
-  public final void ZD()
+  public final void a(MMSlideDelView.f paramf)
+  {
+    this.pla = paramf;
+  }
+  
+  public final void anp()
   {
     AppMethodBeat.i(22657);
-    bc.aCg();
-    setCursor(com.tencent.mm.model.c.azL().fuQ());
-    if (this.Jvn != null) {
-      this.Jvn.aSR();
+    bg.aVF();
+    setCursor(com.tencent.mm.model.c.aST().gCx());
+    if (this.OFI != null) {
+      this.OFI.bnE();
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(22657);
   }
   
-  public final void ZE()
+  public final void anq()
   {
     AppMethodBeat.i(22662);
-    ZD();
+    anp();
     AppMethodBeat.o(22662);
-  }
-  
-  public final void a(MMSlideDelView.f paramf)
-  {
-    this.oae = paramf;
   }
   
   public final int getItemViewType(int paramInt)
@@ -116,7 +114,7 @@ final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(22659);
-    au localau = (au)getItem(paramInt);
+    az localaz = (az)getItem(paramInt);
     Object localObject;
     label259:
     label478:
@@ -127,40 +125,40 @@ final class a
     if (paramView == null)
     {
       paramViewGroup = new a();
-      paramView = (MMSlideDelView)View.inflate(this.fNT, 2131493169, null);
-      localObject = View.inflate(this.fNT, 2131495763, null);
-      paramViewGroup.fQl = ((ImageView)((View)localObject).findViewById(2131297008));
-      paramViewGroup.fQm = ((TextView)((View)localObject).findViewById(2131302867));
-      paramViewGroup.oah = ((TextView)((View)localObject).findViewById(2131306207));
-      paramViewGroup.oai = ((TextView)((View)localObject).findViewById(2131301311));
-      paramViewGroup.ndr = ((ImageView)((View)localObject).findViewById(2131305187));
-      paramViewGroup.oaj = ((TextView)((View)localObject).findViewById(2131305882));
-      paramViewGroup.oak = paramView.findViewById(2131304837);
-      paramViewGroup.oal = ((TextView)paramView.findViewById(2131304839));
+      paramView = (MMSlideDelView)View.inflate(this.gte, 2131493215, null);
+      localObject = View.inflate(this.gte, 2131496721, null);
+      paramViewGroup.gvv = ((ImageView)((View)localObject).findViewById(2131297134));
+      paramViewGroup.gvw = ((TextView)((View)localObject).findViewById(2131305440));
+      paramViewGroup.pld = ((TextView)((View)localObject).findViewById(2131309606));
+      paramViewGroup.ple = ((TextView)((View)localObject).findViewById(2131303011));
+      paramViewGroup.ooE = ((ImageView)((View)localObject).findViewById(2131308378));
+      paramViewGroup.plf = ((TextView)((View)localObject).findViewById(2131309165));
+      paramViewGroup.plg = paramView.findViewById(2131307923);
+      paramViewGroup.plh = ((TextView)paramView.findViewById(2131307925));
       paramView.setView((View)localObject);
-      paramView.setPerformItemClickListener(this.oac);
-      paramView.setGetViewPositionCallback(this.oad);
-      paramView.setItemStatusCallBack(this.oaf);
+      paramView.setPerformItemClickListener(this.pkY);
+      paramView.setGetViewPositionCallback(this.pkZ);
+      paramView.setItemStatusCallBack(this.plb);
       paramView.setEnable(false);
       paramView.setTag(paramViewGroup);
-      bc.aCg();
-      localObject = com.tencent.mm.model.c.azF().BH(localau.field_username);
-      paramViewGroup.fQm.setText(S((an)localObject));
-      TextView localTextView = paramViewGroup.oah;
-      if (localau.field_status != 1) {
+      bg.aVF();
+      localObject = com.tencent.mm.model.c.aSN().Kn(localaz.field_username);
+      paramViewGroup.gvw.setText(S((as)localObject));
+      TextView localTextView = paramViewGroup.pld;
+      if (localaz.field_status != 1) {
         break label623;
       }
-      localObject = this.fNT.getString(2131761075);
+      localObject = this.gte.getString(2131762861);
       localTextView.setText((CharSequence)localObject);
-      a.b.c(paramViewGroup.fQl, an.aUA(localau.field_username));
-      bc.aCg();
-      localObject = com.tencent.mm.model.c.azL().MV().a(localau.field_isSend, localau.field_username, localau.field_content, Xr(localau.field_msgType), this.fNT);
-      paramViewGroup.oai.setText(k.b(this.fNT, (CharSequence)localObject, paramViewGroup.oai.getTextSize()));
-      paramViewGroup.oai.setTextColor(com.tencent.mm.cb.a.m(this.fNT, 2131100642));
-      if ((Xr(localau.field_msgType) == 34) && (localau.field_isSend == 0) && (!bu.isNullOrNil(localau.field_content)) && (!new p(localau.field_content).iwT)) {
-        paramViewGroup.oai.setTextColor(com.tencent.mm.cb.a.m(this.fNT, 2131100643));
+      a.b.c(paramViewGroup.gvv, as.bjz(localaz.field_username));
+      bg.aVF();
+      localObject = com.tencent.mm.model.c.aST().Xh().a(localaz.field_isSend, localaz.field_username, localaz.field_content, ahn(localaz.field_msgType), this.gte);
+      paramViewGroup.ple.setText(l.b(this.gte, (CharSequence)localObject, paramViewGroup.ple.getTextSize()));
+      paramViewGroup.ple.setTextColor(com.tencent.mm.cb.a.m(this.gte, 2131100812));
+      if ((ahn(localaz.field_msgType) == 34) && (localaz.field_isSend == 0) && (!Util.isNullOrNil(localaz.field_content)) && (!new p(localaz.field_content).jsi)) {
+        paramViewGroup.ple.setTextColor(com.tencent.mm.cb.a.m(this.gte, 2131100813));
       }
-      switch (localau.field_status)
+      switch (localaz.field_status)
       {
       case 3: 
       case 4: 
@@ -168,72 +166,56 @@ final class a
         paramInt = -1;
         if (paramInt != -1)
         {
-          paramViewGroup.ndr.setBackgroundResource(paramInt);
-          paramViewGroup.ndr.setVisibility(0);
-          paramViewGroup.oak.setTag(localau.field_username);
-          paramViewGroup.oak.setOnClickListener(new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(22655);
-              b localb = new b();
-              localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/bottle/ui/BottleConversationAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-              ae.v("MicroMsg.BottleConversationAdapter", "on delView clicked");
-              a.this.oaf.dhv();
-              if (a.this.oae != null) {
-                a.this.oae.cQ(paramAnonymousView.getTag());
-              }
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/bottle/ui/BottleConversationAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(22655);
-            }
-          });
+          paramViewGroup.ooE.setBackgroundResource(paramInt);
+          paramViewGroup.ooE.setVisibility(0);
+          paramViewGroup.plg.setTag(localaz.field_username);
+          paramViewGroup.plg.setOnClickListener(new a.1(this));
           paramInt = paramView.getPaddingBottom();
           i = paramView.getPaddingTop();
           j = paramView.getPaddingRight();
           k = paramView.getPaddingLeft();
-          if (localau.field_unReadCount <= 100) {
+          if (localaz.field_unReadCount <= 100) {
             break label677;
           }
-          paramViewGroup.oaj.setText("...");
-          paramViewGroup.oaj.setVisibility(0);
-          ae.v("MicroMsg.BottleConversationAdapter", "has unread 100");
+          paramViewGroup.plf.setText("...");
+          paramViewGroup.plf.setVisibility(0);
+          Log.v("MicroMsg.BottleConversationAdapter", "has unread 100");
         }
         break;
       }
     }
     for (;;)
     {
-      paramView.setBackgroundResource(2131234801);
+      paramView.setBackgroundResource(2131235784);
       paramView.setPadding(k, i, j, paramInt);
       AppMethodBeat.o(22659);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
       label623:
-      localObject = i.c(this.fNT, localau.field_conversationTime, true);
+      localObject = f.c(this.gte, localaz.field_conversationTime, true);
       break label259;
       paramInt = -1;
       break label478;
-      paramInt = 2131690878;
+      paramInt = 2131691165;
       break label478;
       paramInt = -1;
       break label478;
-      paramInt = 2131690877;
+      paramInt = 2131691164;
       break label478;
-      paramViewGroup.ndr.setVisibility(8);
+      paramViewGroup.ooE.setVisibility(8);
       break label499;
       label677:
-      if (localau.field_unReadCount > 0)
+      if (localaz.field_unReadCount > 0)
       {
-        paramViewGroup.oaj.setText(localau.field_unReadCount);
-        paramViewGroup.oaj.setVisibility(0);
-        ae.v("MicroMsg.BottleConversationAdapter", "has unread");
+        paramViewGroup.plf.setText(localaz.field_unReadCount);
+        paramViewGroup.plf.setVisibility(0);
+        Log.v("MicroMsg.BottleConversationAdapter", "has unread");
       }
       else
       {
-        paramViewGroup.oaj.setVisibility(4);
-        ae.v("MicroMsg.BottleConversationAdapter", "no unread");
+        paramViewGroup.plf.setVisibility(4);
+        Log.v("MicroMsg.BottleConversationAdapter", "no unread");
       }
     }
   }
@@ -246,37 +228,37 @@ final class a
   public final void onPause()
   {
     AppMethodBeat.i(22658);
-    if (this.oaf != null) {
-      this.oaf.dhu();
+    if (this.plb != null) {
+      this.plb.ebo();
     }
     AppMethodBeat.o(22658);
   }
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.oad = paramc;
+    this.pkZ = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.oac = paramg;
+    this.pkY = paramg;
   }
   
   public static final class a
   {
-    public ImageView fQl;
-    public TextView fQm;
-    public ImageView ndr;
-    public TextView oah;
-    public TextView oai;
-    public TextView oaj;
-    public View oak;
-    public TextView oal;
+    public ImageView gvv;
+    public TextView gvw;
+    public ImageView ooE;
+    public TextView pld;
+    public TextView ple;
+    public TextView plf;
+    public View plg;
+    public TextView plh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.bottle.ui.a
  * JD-Core Version:    0.7.0.1
  */

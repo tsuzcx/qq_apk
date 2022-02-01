@@ -1,92 +1,105 @@
 package com.tencent.mm.plugin.finder.storage.config;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.config.item.a;
-import com.tencent.mm.plugin.finder.storage.config.item.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.o;
-import d.z;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.plugin.finder.storage.config.item.f;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.o;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig;", "T", "Lcom/tencent/mm/plugin/finder/storage/config/IFinderFakeConfig;", "defValue", "title", "", "(Ljava/lang/Object;Ljava/lang/String;)V", "clickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "index", "", "configItemList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/storage/config/item/ConfigItem;", "Lkotlin/collections/ArrayList;", "Ljava/lang/Object;", "keyName", "realConfig", "bindDebugConfig", "configDataList", "", "configDataNameList", "bindDynaConfig", "dyConfigKey", "bindExpConfig", "expKey", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "bindOnClick", "initChosenIndex", "initFakeConfigItemList", "config", "Ljava/util/LinkedList;", "Lkotlin/Pair;", "isDebug", "", "isSettingUIOpen", "itemNameList", "onItemClick", "reset", "saveConfig", "svrValue", "value", "()Ljava/lang/Object;", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig;", "T", "Lcom/tencent/mm/plugin/finder/storage/config/IFinderFakeConfig;", "defValue", "title", "", "(Ljava/lang/Object;Ljava/lang/String;)V", "booleanWrapper", "Lkotlin/Function1;", "", "chosenData", "Landroid/arch/lifecycle/MutableLiveData;", "clickListener", "", "Lkotlin/ParameterName;", "name", "index", "", "configItemList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/storage/config/item/ConfigItem;", "Lkotlin/collections/ArrayList;", "Ljava/lang/Object;", "keyName", "realConfig", "versionTag", "bindDebugConfig", "configDataList", "", "configDataNameList", "bindDynaConfig", "dyConfigKey", "bindExpConfig", "expKey", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "bindOnClick", "booleanValue", "initChosenIndex", "initFakeConfigItemList", "config", "Ljava/util/LinkedList;", "Lkotlin/Pair;", "isDebug", "isSettingUIOpen", "itemNameList", "map", "wrapper", "observe", "owner", "Landroid/arch/lifecycle/LifecycleOwner;", "observer", "Landroid/arch/lifecycle/Observer;", "onItemClick", "reset", "saveConfig", "svrValue", "value", "()Ljava/lang/Object;", "tag", "Companion", "plugin-finder_release"})
 public class b<T>
-  extends d
+  extends e
 {
   private static final String TAG = "Finder.FinderFakeConfig";
-  private static final ay cCf;
-  public static final a sKq;
-  private String sKl;
-  private ArrayList<a<T>> sKm;
-  private a<T> sKn;
-  private d.g.a.b<? super Integer, z> sKo;
-  private final T sKp;
+  private static final MultiProcessMMKV cQe;
+  public static final a vFD;
+  private final MutableLiveData<T> vFA;
+  private String vFB;
+  private final T vFC;
+  private String vFw;
+  private ArrayList<com.tencent.mm.plugin.finder.storage.config.item.a<T>> vFx;
+  private com.tencent.mm.plugin.finder.storage.config.item.a<T> vFy;
+  private kotlin.g.a.b<? super Integer, x> vFz;
   
   static
   {
-    AppMethodBeat.i(204348);
-    sKq = new a((byte)0);
+    AppMethodBeat.i(251922);
+    vFD = new a((byte)0);
     TAG = "Finder.FinderFakeConfig";
-    cCf = ay.aRW("FINDER_CONFIG_USER_KEY");
-    AppMethodBeat.o(204348);
+    cQe = MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY");
+    AppMethodBeat.o(251922);
   }
   
   public b(T paramT, String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(204347);
-    this.sKp = paramT;
-    this.sKo = ((d.g.a.b)b.sKr);
-    AppMethodBeat.o(204347);
+    AppMethodBeat.i(251921);
+    this.vFC = paramT;
+    this.vFz = ((kotlin.g.a.b)d.vFF);
+    this.vFA = new MutableLiveData();
+    this.vFB = "";
+    AppMethodBeat.o(251921);
   }
   
-  private final void FO(int paramInt)
+  private static boolean KB()
   {
-    AppMethodBeat.i(204344);
-    String str = this.sKl;
+    return BuildInfo.DEBUG;
+  }
+  
+  private final void Ld(int paramInt)
+  {
+    AppMethodBeat.i(251918);
+    String str = this.vFw;
     if (str != null)
     {
-      cCf.putInt(str, paramInt).commit();
-      AppMethodBeat.o(204344);
+      cQe.putInt(str, paramInt).commit();
+      AppMethodBeat.o(251918);
       return;
     }
-    AppMethodBeat.o(204344);
+    AppMethodBeat.o(251918);
   }
   
-  private final void ag(LinkedList<o<T, String>> paramLinkedList)
+  private final void ax(LinkedList<o<T, String>> paramLinkedList)
   {
-    AppMethodBeat.i(204341);
-    if (this.sKm == null) {
-      this.sKm = new ArrayList();
+    AppMethodBeat.i(251915);
+    if (this.vFx == null) {
+      this.vFx = new ArrayList();
     }
     paramLinkedList = ((Iterable)paramLinkedList).iterator();
     while (paramLinkedList.hasNext())
     {
       o localo = (o)paramLinkedList.next();
-      ArrayList localArrayList = this.sKm;
+      ArrayList localArrayList = this.vFx;
       if (localArrayList != null) {
-        localArrayList.add(new a(localo.first, (String)localo.second));
+        localArrayList.add(new com.tencent.mm.plugin.finder.storage.config.item.a(localo.first, (String)localo.second));
       }
     }
-    AppMethodBeat.o(204341);
+    AppMethodBeat.o(251915);
   }
   
-  private final int cLA()
+  private final int dyr()
   {
-    AppMethodBeat.i(204342);
+    AppMethodBeat.i(251916);
     int i;
-    if (this.sKl != null)
+    if (this.vFw != null)
     {
-      localo = new o(Integer.valueOf(cCf.getInt(this.sKl, -1)), "get from mmkv");
+      localo = new o(Integer.valueOf(cQe.getInt(this.vFw, -1)), "get from mmkv");
       int j = ((Number)localo.first).intValue();
-      ArrayList localArrayList = this.sKm;
+      ArrayList localArrayList = this.vFx;
       if (localArrayList != null)
       {
         i = localArrayList.size();
@@ -95,107 +108,128 @@ public class b<T>
     }
     for (o localo = new o(Integer.valueOf(-1), "reset_default");; localo = new o(Integer.valueOf(-1), "default"))
     {
-      ae.i(TAG, "code:" + hashCode() + "  keyName " + this.sKl + " initChosenIndex " + ((Number)localo.first).intValue() + " reason " + (String)localo.second + " defValue:" + this.sKp);
+      Log.i(TAG, "code:" + hashCode() + "  keyName " + this.vFw + " initChosenIndex " + ((Number)localo.first).intValue() + " reason " + (String)localo.second + " defValue:" + this.vFC);
       i = ((Number)localo.first).intValue();
-      AppMethodBeat.o(204342);
+      AppMethodBeat.o(251916);
       return i;
       i = 0;
       break;
     }
   }
   
-  private static boolean cLB()
+  public final b<T> H(kotlin.g.a.b<? super Integer, x> paramb)
   {
-    return com.tencent.mm.sdk.platformtools.j.DEBUG;
-  }
-  
-  public final b<T> C(d.g.a.b<? super Integer, z> paramb)
-  {
-    AppMethodBeat.i(204338);
+    AppMethodBeat.i(251911);
     p.h(paramb, "clickListener");
-    this.sKo = paramb;
-    AppMethodBeat.o(204338);
+    this.vFz = paramb;
+    AppMethodBeat.o(251911);
     return this;
   }
   
-  public void FN(int paramInt)
+  public void Lc(int paramInt)
   {
-    AppMethodBeat.i(204343);
-    ArrayList localArrayList = this.sKm;
-    if (localArrayList != null)
+    AppMethodBeat.i(251917);
+    Object localObject = this.vFx;
+    if (localObject != null)
     {
-      i = localArrayList.size();
+      i = ((ArrayList)localObject).size();
       if (paramInt <= i) {
-        break label141;
+        break label183;
       }
     }
-    label141:
+    label183:
     for (int i = -1;; i = paramInt)
     {
-      this.sKs = i;
-      FO(paramInt);
-      if (cLB()) {
-        ae.i(TAG, "code:" + hashCode() + "  keyName " + this.sKl + " onItemClick click: " + paramInt + " chosenIndex: " + this.sKs + " defValue:" + this.sKp);
+      this.vFI = i;
+      localObject = this.vFx;
+      if (localObject != null)
+      {
+        localObject = (com.tencent.mm.plugin.finder.storage.config.item.a)j.L((List)localObject, this.vFI);
+        if (localObject != null) {
+          this.vFA.setValue(((com.tencent.mm.plugin.finder.storage.config.item.a)localObject).value());
+        }
       }
-      this.sKo.invoke(Integer.valueOf(paramInt));
-      AppMethodBeat.o(204343);
+      Ld(paramInt);
+      if (KB()) {
+        Log.i(TAG, "code:" + hashCode() + "  keyName " + this.vFw + " onItemClick click: " + paramInt + " chosenIndex: " + this.vFI + " defValue:" + this.vFC);
+      }
+      this.vFz.invoke(Integer.valueOf(paramInt));
+      AppMethodBeat.o(251917);
       return;
       i = 0;
       break;
     }
   }
   
-  public final b<T> ajx(String paramString)
+  public final b<T> avD(String paramString)
   {
-    AppMethodBeat.i(204336);
+    AppMethodBeat.i(251909);
     p.h(paramString, "dyConfigKey");
-    this.sKn = ((a)new c(this.sKp, paramString));
-    AppMethodBeat.o(204336);
+    this.vFy = ((com.tencent.mm.plugin.finder.storage.config.item.a)new com.tencent.mm.plugin.finder.storage.config.item.e(this.vFC, paramString, (kotlin.g.a.a)new b(this)));
+    AppMethodBeat.o(251909);
+    return this;
+  }
+  
+  public final b<T> avE(String paramString)
+  {
+    AppMethodBeat.i(251912);
+    p.h(paramString, "tag");
+    this.vFB = paramString;
+    AppMethodBeat.o(251912);
     return this;
   }
   
   public final b<T> b(String paramString, List<? extends T> paramList, List<String> paramList1)
   {
-    AppMethodBeat.i(204337);
+    AppMethodBeat.i(251910);
     p.h(paramString, "keyName");
     p.h(paramList, "configDataList");
     p.h(paramList1, "configDataNameList");
-    this.sKl = paramString;
-    paramString = com.tencent.mm.plugin.finder.storage.config.item.b.sKt;
-    ag(com.tencent.mm.plugin.finder.storage.config.item.b.a.l(paramList, paramList1));
-    this.sKs = cLA();
-    AppMethodBeat.o(204337);
+    this.vFw = paramString;
+    paramString = com.tencent.mm.plugin.finder.storage.config.item.b.vFL;
+    ax(com.tencent.mm.plugin.finder.storage.config.item.b.a.n(paramList, paramList1));
+    this.vFI = dyr();
+    AppMethodBeat.o(251910);
     return this;
   }
   
-  public final List<String> cLy()
+  public final b<T> d(com.tencent.mm.plugin.expt.b.b.a parama)
   {
-    AppMethodBeat.i(204339);
+    AppMethodBeat.i(251908);
+    p.h(parama, "expKey");
+    this.vFy = ((com.tencent.mm.plugin.finder.storage.config.item.a)new f(this.vFC, parama, (kotlin.g.a.a)new c(this)));
+    AppMethodBeat.o(251908);
+    return this;
+  }
+  
+  public final List<String> dyo()
+  {
+    AppMethodBeat.i(251913);
     Object localObject1 = new LinkedList();
-    Object localObject2 = this.sKm;
+    Object localObject2 = this.vFx;
     if (localObject2 != null)
     {
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((LinkedList)localObject1).add(((a)((Iterator)localObject2).next()).name);
+        ((LinkedList)localObject1).add(((com.tencent.mm.plugin.finder.storage.config.item.a)((Iterator)localObject2).next()).name);
       }
     }
-    localObject2 = this.sKn;
+    localObject2 = this.vFy;
     if (localObject2 != null) {
-      ((LinkedList)localObject1).add(((a)localObject2).name + ':' + ((a)localObject2).value());
+      ((LinkedList)localObject1).add(((com.tencent.mm.plugin.finder.storage.config.item.a)localObject2).name + ':' + ((com.tencent.mm.plugin.finder.storage.config.item.a)localObject2).value());
     }
     localObject1 = (List)localObject1;
-    AppMethodBeat.o(204339);
+    AppMethodBeat.o(251913);
     return localObject1;
   }
   
-  public final String cLz()
+  public final String dyp()
   {
-    AppMethodBeat.i(204340);
-    Object localObject = this.sKn;
+    AppMethodBeat.i(251914);
+    Object localObject = this.vFy;
     if (localObject != null)
     {
-      String str = ((a)localObject).name + ':' + ((a)localObject).value();
+      String str = ((com.tencent.mm.plugin.finder.storage.config.item.a)localObject).name + ':' + ((com.tencent.mm.plugin.finder.storage.config.item.a)localObject).value();
       localObject = str;
       if (str != null) {}
     }
@@ -203,102 +237,98 @@ public class b<T>
     {
       localObject = "None";
     }
-    AppMethodBeat.o(204340);
+    AppMethodBeat.o(251914);
     return localObject;
   }
   
-  public final b<T> d(com.tencent.mm.plugin.expt.b.b.a parama)
+  public final String dyq()
   {
-    AppMethodBeat.i(204335);
-    p.h(parama, "expKey");
-    this.sKn = ((a)new com.tencent.mm.plugin.finder.storage.config.item.d(this.sKp, parama));
-    AppMethodBeat.o(204335);
-    return this;
+    return this.vFB;
   }
   
   public void reset()
   {
-    AppMethodBeat.i(204345);
-    ae.i(TAG, "code:" + hashCode() + "  keyName " + this.sKl + " reset");
-    this.sKs = -1;
-    FO(this.sKs);
-    AppMethodBeat.o(204345);
+    AppMethodBeat.i(251919);
+    Log.i(TAG, "code:" + hashCode() + "  keyName " + this.vFw + " reset");
+    this.vFI = -1;
+    Ld(this.vFI);
+    AppMethodBeat.o(251919);
   }
   
   public T value()
   {
     int j = 0;
     Object localObject3 = null;
-    AppMethodBeat.i(204346);
-    com.tencent.mm.ac.b localb = new com.tencent.mm.ac.b("getValue");
+    AppMethodBeat.i(251920);
+    c localc = new c("getValue");
     int i;
     Object localObject1;
-    if ((com.tencent.mm.sdk.platformtools.j.DEBUG) || (com.tencent.mm.sdk.a.b.fnF()) || (com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_PURPLE))
+    if ((BuildInfo.DEBUG) || (CrashReportFactory.hasDebuger()) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
     {
       i = 1;
-      if ((i != 0) && (this.sKs != -1))
+      if ((i != 0) && (this.vFI != -1))
       {
-        int k = this.sKs;
-        localObject1 = this.sKm;
+        int k = this.vFI;
+        localObject1 = this.vFx;
         i = j;
         if (localObject1 != null) {
           i = ((ArrayList)localObject1).size();
         }
-        if ((k < i) && (this.sKs >= 0)) {
-          break label347;
+        if ((k < i) && (this.vFI >= 0)) {
+          break label349;
         }
       }
-      localObject1 = this.sKn;
+      localObject1 = this.vFy;
       if (localObject1 == null) {
-        break label341;
+        break label343;
       }
-      localObject1 = new o(((a)localObject1).value(), "svrConfig");
+      localObject1 = new o(((com.tencent.mm.plugin.finder.storage.config.item.a)localObject1).value(), "svrConfig");
       label125:
       if (localObject1 != null) {
-        break label412;
+        break label414;
       }
-      localObject1 = new o(this.sKp, "defaultValue");
+      localObject1 = new o(this.vFC, "defaultValue");
     }
-    label406:
-    label412:
+    label408:
+    label414:
     for (;;)
     {
       String str;
       StringBuilder localStringBuilder;
-      if (cLB())
+      if (KB())
       {
         str = TAG;
-        localStringBuilder = new StringBuilder("code:").append(hashCode()).append("  keyName ").append(this.sKl).append(" config getValue chosenIndex ").append(this.sKs).append(" size:");
-        localObject2 = this.sKm;
+        localStringBuilder = new StringBuilder("code:").append(hashCode()).append("  keyName ").append(this.vFw).append(" config getValue chosenIndex ").append(this.vFI).append(" size:");
+        localObject2 = this.vFx;
         if (localObject2 == null) {
-          break label406;
+          break label408;
         }
       }
       for (Object localObject2 = Integer.valueOf(((ArrayList)localObject2).size());; localObject2 = null)
       {
         localStringBuilder = localStringBuilder.append(localObject2).append(" realConfig ");
-        a locala = this.sKn;
+        com.tencent.mm.plugin.finder.storage.config.item.a locala = this.vFy;
         localObject2 = localObject3;
         if (locala != null) {
           localObject2 = locala.value();
         }
-        ae.i(str, localObject2 + " ret:" + (String)((o)localObject1).second + "==>" + ((o)localObject1).first + ' ' + localb);
+        Log.i(str, localObject2 + " ret:" + (String)((o)localObject1).second + "==>" + ((o)localObject1).first + ' ' + localc);
         localObject1 = ((o)localObject1).first;
-        AppMethodBeat.o(204346);
+        AppMethodBeat.o(251920);
         return localObject1;
         i = 0;
         break;
-        label341:
+        label343:
         localObject1 = null;
         break label125;
-        label347:
-        localObject1 = this.sKm;
+        label349:
+        localObject1 = this.vFx;
         if (localObject1 != null)
         {
-          localObject1 = (a)d.a.j.F((List)localObject1, this.sKs);
+          localObject1 = (com.tencent.mm.plugin.finder.storage.config.item.a)j.L((List)localObject1, this.vFI);
           if (localObject1 != null)
           {
-            localObject1 = new o(((a)localObject1).value(), "userConfig");
+            localObject1 = new o(((com.tencent.mm.plugin.finder.storage.config.item.a)localObject1).value(), "userConfig");
             break label125;
           }
         }
@@ -308,24 +338,46 @@ public class b<T>
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig$Companion;", "", "()V", "FINDER_CONFIG_USER_KEY", "", "TAG", "getTAG", "()Ljava/lang/String;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/config/FinderFakeConfig$Companion;", "", "()V", "FINDER_CONFIG_USER_KEY", "", "TAG", "getTAG", "()Ljava/lang/String;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "index", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "invoke"})
   static final class b
     extends q
-    implements d.g.a.b<Integer, z>
+    implements kotlin.g.a.a<x>
   {
-    public static final b sKr;
+    b(b paramb)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    c(b paramb)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "index", "", "invoke"})
+  static final class d
+    extends q
+    implements kotlin.g.a.b<Integer, x>
+  {
+    public static final d vFF;
     
     static
     {
-      AppMethodBeat.i(204334);
-      sKr = new b();
-      AppMethodBeat.o(204334);
+      AppMethodBeat.i(251907);
+      vFF = new d();
+      AppMethodBeat.o(251907);
     }
     
-    b()
+    d()
     {
       super();
     }
@@ -333,7 +385,7 @@ public class b<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.config.b
  * JD-Core Version:    0.7.0.1
  */

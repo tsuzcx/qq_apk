@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j
 {
+  private int MxO;
   ValueAnimator animator;
-  private int nhY;
   View view;
   
   public j(View paramView)
@@ -28,12 +28,12 @@ final class j
       AppMethodBeat.o(131496);
       return;
     }
-    if ((isRunning()) && (this.nhY == paramInt))
+    if ((isRunning()) && (this.MxO == paramInt))
     {
       AppMethodBeat.o(131496);
       return;
     }
-    this.nhY = paramInt;
+    this.MxO = paramInt;
     if (((this.view.getBackground() instanceof ColorDrawable)) && (((ColorDrawable)this.view.getBackground()).getColor() == paramInt))
     {
       if (paramRunnable != null) {
@@ -62,7 +62,7 @@ final class j
         AppMethodBeat.o(131494);
       }
     };
-    if ((this.animator != null) && (this.animator.isStarted()) && (this.animator.isRunning()) && (this.nhY == paramInt))
+    if ((this.animator != null) && (this.animator.isStarted()) && (this.animator.isRunning()) && (this.MxO == paramInt))
     {
       this.animator.addListener(paramRunnable);
       AppMethodBeat.o(131496);
@@ -74,7 +74,7 @@ final class j
     if ((this.view.getBackground() instanceof ColorDrawable)) {}
     for (paramInt = ((ColorDrawable)this.view.getBackground()).getColor();; paramInt = 0)
     {
-      this.animator = ValueAnimator.ofObject(new ArgbEvaluator(), new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.nhY) });
+      this.animator = ValueAnimator.ofObject(new ArgbEvaluator(), new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.MxO) });
       this.animator.addListener(paramRunnable);
       this.animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {

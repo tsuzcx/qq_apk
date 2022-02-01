@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.ac;
 
 import android.webkit.ValueCallback;
-import d.g.a.b;
-import d.l;
+import kotlin.g.a.b;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 final class e
   implements ValueCallback
 {
   e(b paramb)
   {
-    this.heQ = paramb;
+    this.hXF = paramb;
   }
 }
 

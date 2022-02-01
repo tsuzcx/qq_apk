@@ -1,203 +1,203 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.bb;
-import com.tencent.mm.model.bv;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bz;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.aa;
 import com.tencent.mm.plugin.messenger.foundation.a.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.x;
-import com.tencent.mm.protocal.protobuf.afg;
-import com.tencent.mm.protocal.protobuf.afh;
-import com.tencent.mm.protocal.protobuf.cbk;
-import com.tencent.mm.protocal.protobuf.zx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.abn;
+import com.tencent.mm.protocal.protobuf.ahm;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.cqm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
 public final class g
   implements x
 {
-  public final void a(zx paramzx, byte[] paramArrayOfByte, boolean paramBoolean, aa paramaa)
+  public final void a(abn paramabn, byte[] paramArrayOfByte, boolean paramBoolean, aa paramaa)
   {
     AppMethodBeat.i(116929);
-    switch (paramzx.Gru)
+    switch (paramabn.Lms)
     {
     default: 
       AppMethodBeat.o(116929);
       return;
     }
-    paramaa = (cbk)new cbk().parseFrom(paramArrayOfByte);
-    com.tencent.mm.kernel.g.ajR().ajA().get(2, null);
-    aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
-    ae.i("MicroMsg.UserInfoSyncExtension", "processModUserInfo bitFlag:%d status:%d PluginFlag:%d PluginSwitch:%d", new Object[] { Integer.valueOf(paramaa.HoK), Integer.valueOf(paramaa.nJb), Integer.valueOf(paramaa.FKG), Integer.valueOf(paramaa.HoR) });
-    paramArrayOfByte = z.a(paramaa.GuF);
-    Object localObject = z.a(paramaa.Hed);
-    String str1 = z.a(paramaa.HoL);
-    String str2 = z.a(paramaa.HoM);
-    int i = paramaa.FKD;
-    paramzx = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramArrayOfByte);
-    if ((paramzx == null) || (paramzx.field_username == null) || (!paramzx.field_username.equals(paramArrayOfByte))) {
-      paramzx = new an(paramArrayOfByte);
+    paramaa = (cqm)new cqm().parseFrom(paramArrayOfByte);
+    com.tencent.mm.kernel.g.aAh().azQ().get(2, null);
+    ao localao = com.tencent.mm.kernel.g.aAh().azQ();
+    Log.i("MicroMsg.UserInfoSyncExtension", "processModUserInfo bitFlag:%d status:%d PluginFlag:%d PluginSwitch:%d", new Object[] { Integer.valueOf(paramaa.Mwf), Integer.valueOf(paramaa.oTW), Integer.valueOf(paramaa.KEc), Integer.valueOf(paramaa.Mwm) });
+    paramArrayOfByte = z.a(paramaa.Lqk);
+    Object localObject = z.a(paramaa.Mjj);
+    String str1 = z.a(paramaa.Mwg);
+    String str2 = z.a(paramaa.Mwh);
+    int i = paramaa.KDZ;
+    paramabn = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(paramArrayOfByte);
+    if ((paramabn == null) || (paramabn.field_username == null) || (!paramabn.field_username.equals(paramArrayOfByte))) {
+      paramabn = new as(paramArrayOfByte);
     }
     label1038:
     label1182:
     label2083:
     for (;;)
     {
-      paramzx.tl(paramaa.jga);
-      paramzx.to((String)localObject);
-      paramzx.tL(RegionCodeDecoder.bg(paramaa.jge, paramaa.jfW, paramaa.jfX));
-      paramzx.kh(paramaa.jfV);
-      paramzx.tF(paramaa.jfY);
-      paramzx.kc(paramaa.Hhy);
-      paramzx.tJ(paramaa.Hhw);
-      paramzx.tr(paramaa.Hhx);
-      paramzx.setUin(i);
-      ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().am(paramzx);
-      localaj.set(2, paramArrayOfByte);
-      localaj.set(4, localObject);
-      localaj.set(5, str1);
-      localaj.set(6, str2);
-      localaj.set(9, Integer.valueOf(i));
+      paramabn.BC(paramaa.ked);
+      paramabn.setNickname((String)localObject);
+      paramabn.Cb(RegionCodeDecoder.bq(paramaa.keh, paramaa.kdZ, paramaa.kea));
+      paramabn.nj(paramaa.kdY);
+      paramabn.BV(paramaa.keb);
+      paramabn.ne(paramaa.MmO);
+      paramabn.BZ(paramaa.MmM);
+      paramabn.BH(paramaa.MmN);
+      paramabn.setUin(i);
+      ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().ao(paramabn);
+      localao.set(2, paramArrayOfByte);
+      localao.set(4, localObject);
+      localao.set(5, str1);
+      localao.set(6, str2);
+      localao.set(9, Integer.valueOf(i));
       localObject = new StringBuilder("doCmd : status ");
-      i = paramaa.nJb;
+      i = paramaa.oTW;
       paramArrayOfByte = "code=" + Integer.toHexString(i) + ", status = " + i;
-      paramzx = paramArrayOfByte;
+      paramabn = paramArrayOfByte;
       if ((i & 0x1) != 0) {
-        paramzx = paramArrayOfByte + ", open";
+        paramabn = paramArrayOfByte + ", open";
       }
-      paramArrayOfByte = paramzx;
+      paramArrayOfByte = paramabn;
       if ((i & 0x2) != 0) {
-        paramArrayOfByte = paramzx + ", email-verified";
+        paramArrayOfByte = paramabn + ", email-verified";
       }
-      paramzx = paramArrayOfByte;
+      paramabn = paramArrayOfByte;
       if ((i & 0x4) != 0) {
-        paramzx = paramArrayOfByte + ", mobile-verified";
+        paramabn = paramArrayOfByte + ", mobile-verified";
       }
-      paramArrayOfByte = paramzx;
+      paramArrayOfByte = paramabn;
       if ((i & 0x8) != 0) {
-        paramArrayOfByte = paramzx + ", hide-qq-search";
+        paramArrayOfByte = paramabn + ", hide-qq-search";
       }
-      paramzx = paramArrayOfByte;
+      paramabn = paramArrayOfByte;
       if ((i & 0x10) != 0) {
-        paramzx = paramArrayOfByte + ", hide-qq-promote";
+        paramabn = paramArrayOfByte + ", hide-qq-promote";
       }
-      paramArrayOfByte = paramzx;
+      paramArrayOfByte = paramabn;
       if ((i & 0x20) != 0) {
-        paramArrayOfByte = paramzx + ", need-verify";
+        paramArrayOfByte = paramabn + ", need-verify";
       }
-      paramzx = paramArrayOfByte;
+      paramabn = paramArrayOfByte;
       if ((i & 0x40) != 0) {
-        paramzx = paramArrayOfByte + ", has-qq-msg";
+        paramabn = paramArrayOfByte + ", has-qq-msg";
       }
-      paramArrayOfByte = paramzx;
+      paramArrayOfByte = paramabn;
       if ((i & 0x80) != 0) {
-        paramArrayOfByte = paramzx + ", no-qq-promote";
+        paramArrayOfByte = paramabn + ", no-qq-promote";
       }
-      paramzx = paramArrayOfByte;
+      paramabn = paramArrayOfByte;
       if ((i & 0x100) != 0) {
-        paramzx = paramArrayOfByte + ", no-mobile-promote";
+        paramabn = paramArrayOfByte + ", no-mobile-promote";
       }
-      paramArrayOfByte = paramzx;
+      paramArrayOfByte = paramabn;
       if ((i & 0x200) != 0) {
-        paramArrayOfByte = paramzx + ", hide-mobile_search";
+        paramArrayOfByte = paramabn + ", hide-mobile_search";
       }
-      paramzx = paramArrayOfByte;
+      paramabn = paramArrayOfByte;
       if ((i & 0x1000) != 0) {
-        paramzx = paramArrayOfByte + ", open-float-bottle";
+        paramabn = paramArrayOfByte + ", open-float-bottle";
       }
-      paramArrayOfByte = paramzx;
+      paramArrayOfByte = paramabn;
       if ((i & 0x20000) != 0) {
-        paramArrayOfByte = paramzx + ", bind but not upload";
+        paramArrayOfByte = paramabn + ", bind but not upload";
       }
-      ae.d("MicroMsg.UserInfoSyncExtension", paramArrayOfByte);
-      localaj.set(7, Integer.valueOf(paramaa.nJb));
-      if (paramaa.jfZ != 0)
+      Log.d("MicroMsg.UserInfoSyncExtension", paramArrayOfByte);
+      localao.set(7, Integer.valueOf(paramaa.oTW));
+      if (paramaa.kec != 0)
       {
-        paramzx = new bv();
-        paramzx.eRe = 1;
-        paramzx.eQV = paramaa.jfV;
-        paramzx.signature = paramaa.jfY;
-        paramzx.countryCode = paramaa.jge;
-        paramzx.provinceCode = paramaa.jfW;
-        paramzx.cityCode = paramaa.jfX;
-        paramzx.eRj = paramaa.Hhw;
-        ae.d("MicroMsg.UserInfoSyncExtension", " getPersonalCard weibo url : " + paramzx.eRj + " nickName :" + paramaa.Hhx);
-        bv.a(paramzx);
+        paramabn = new bz();
+        paramabn.fuI = 1;
+        paramabn.fuA = paramaa.kdY;
+        paramabn.signature = paramaa.keb;
+        paramabn.countryCode = paramaa.keh;
+        paramabn.provinceCode = paramaa.kdZ;
+        paramabn.cityCode = paramaa.kea;
+        paramabn.fuM = paramaa.MmM;
+        Log.d("MicroMsg.UserInfoSyncExtension", " getPersonalCard weibo url : " + paramabn.fuM + " nickName :" + paramaa.MmN);
+        bz.a(paramabn);
       }
       paramArrayOfByte = new StringBuilder("userinfo Plugstate: ");
-      i = paramaa.FKG;
-      paramzx = "code=" + Integer.toHexString(i) + ", pluginFlag = " + i;
+      i = paramaa.KEc;
+      paramabn = "code=" + Integer.toHexString(i) + ", pluginFlag = " + i;
       if ((i & 0x1) != 0)
       {
-        paramzx = paramzx + ", QQMAIL_UNINSTALL";
+        paramabn = paramabn + ", QQMAIL_UNINSTALL";
         label1010:
         if ((i & 0x2) == 0) {
           break label1939;
         }
-        paramzx = paramzx + ", PM_UNINSTALL";
+        paramabn = paramabn + ", PM_UNINSTALL";
         if ((i & 0x4) == 0) {
           break label1963;
         }
-        paramzx = paramzx + ", FM_UNINSTALL";
+        paramabn = paramabn + ", FM_UNINSTALL";
         label1066:
         if ((i & 0x8) == 0) {
           break label1987;
         }
-        paramzx = paramzx + ", WEIBO_UNINSTALL";
+        paramabn = paramabn + ", WEIBO_UNINSTALL";
         label1095:
         if ((i & 0x10) == 0) {
           break label2011;
         }
-        paramzx = paramzx + ", MEDIANOTE_UNINSTALL";
+        paramabn = paramabn + ", MEDIANOTE_UNINSTALL";
         label1124:
         if ((i & 0x20) == 0) {
           break label2035;
         }
-        paramzx = paramzx + ", QMSG_UNINSTALL";
+        paramabn = paramabn + ", QMSG_UNINSTALL";
         if ((i & 0x40) == 0) {
           break label2059;
         }
-        paramzx = paramzx + ", BOTTLE_UNINSTALL";
+        paramabn = paramabn + ", BOTTLE_UNINSTALL";
         if ((i & 0x80) == 0) {
           break label2083;
         }
-        paramzx = paramzx + ", QSYNC_UNISTALL";
+        paramabn = paramabn + ", QSYNC_UNISTALL";
         label1212:
         if ((i & 0x100) == 0) {
           break label2107;
         }
-        paramzx = paramzx + ", SHAKE_UNISTALL";
+        paramabn = paramabn + ", SHAKE_UNISTALL";
         label1242:
         if ((i & 0x200) == 0) {
           break label2131;
         }
-        paramzx = paramzx + ", LBS_UNISTALL";
+        paramabn = paramabn + ", LBS_UNISTALL";
         label1272:
         if ((i & 0x400) == 0) {
           break label2155;
         }
-        paramzx = paramzx + ", BOTTLE_CHART_INSTALL";
+        paramabn = paramabn + ", BOTTLE_CHART_INSTALL";
         if ((i & 0x1000) == 0) {
           break label2179;
         }
-        paramzx = paramzx + ",CHECKQQF_UNINSTALL";
+        paramabn = paramabn + ",CHECKQQF_UNINSTALL";
         label1332:
         if ((i & 0x8000) == 0) {
           break label2203;
         }
-        paramzx = paramzx + ",MM_FEEDSAPP_UNINSTALL";
+        paramabn = paramabn + ",MM_FEEDSAPP_UNINSTALL";
         label1362:
-        ae.i("MicroMsg.UserInfoSyncExtension", paramzx);
-        localaj.set(34, Integer.valueOf(paramaa.FKG));
-        if (1 != paramaa.Hom.GvE) {
+        Log.i("MicroMsg.UserInfoSyncExtension", paramabn);
+        localao.set(34, Integer.valueOf(paramaa.KEc));
+        if (1 != paramaa.MvH.Lrk) {
           break label2227;
         }
       }
@@ -205,66 +205,66 @@ public final class g
       label2227:
       for (paramBoolean = true;; paramBoolean = false)
       {
-        localaj.set(8200, Boolean.valueOf(bu.a(Boolean.valueOf(paramBoolean), false)));
-        localaj.set(8201, Integer.valueOf(bu.a(Integer.valueOf(paramaa.Hom.GvF.GvI), 22)));
-        localaj.set(8208, Integer.valueOf(bu.a(Integer.valueOf(paramaa.Hom.GvF.GvJ), 8)));
-        localaj.set(66049, Integer.valueOf(paramaa.Hhu));
-        localaj.set(66050, paramaa.Hhv);
-        localaj.set(40, Integer.valueOf(paramaa.HoR));
-        bb.hIK.aM("last_login_use_voice", paramaa.HoR);
-        localaj.set(41, Integer.valueOf(paramaa.Hhy));
-        localaj.set(43, paramaa.Hhx);
-        ae.d("MicroMsg.UserInfoSyncExtension", "doCmd PluginSwitch:" + paramaa.HoR + " WeiboFlag:" + paramaa.Hhy);
-        localaj.set(868518889, Integer.valueOf(paramaa.HoB));
-        ae.d("MicroMsg.UserInfoSyncExtension", "doCmd USERINFO_TXNEWSCATEGORY:" + paramaa.HoB);
-        localaj.set(42, paramaa.jga);
-        ae.d("MicroMsg.UserInfoSyncExtension", "userid:" + paramaa.GyM + " username:" + paramaa.GyN);
-        localaj.set(65825, paramaa.GyM);
-        localaj.set(65826, paramaa.GyN);
-        ae.d("MicroMsg.UserInfoSyncExtension", "getiAlbumFlag " + paramaa.jgb);
-        ae.d("MicroMsg.UserInfoSyncExtension", "getiAlbumStyle " + paramaa.jgc);
-        ae.d("MicroMsg.UserInfoSyncExtension", "getPcAlbumBGImgID " + paramaa.jgd);
-        paramzx = bu.nullAsNil((String)com.tencent.mm.kernel.g.ajR().ajA().get(65830, null));
-        if ((paramzx == null) || (paramzx.length() == 0))
+        localao.set(8200, Boolean.valueOf(Util.nullAs(Boolean.valueOf(paramBoolean), false)));
+        localao.set(8201, Integer.valueOf(Util.nullAs(Integer.valueOf(paramaa.MvH.Lrl.Lro), 22)));
+        localao.set(8208, Integer.valueOf(Util.nullAs(Integer.valueOf(paramaa.MvH.Lrl.Lrp), 8)));
+        localao.set(66049, Integer.valueOf(paramaa.MmK));
+        localao.set(66050, paramaa.MmL);
+        localao.set(40, Integer.valueOf(paramaa.Mwm));
+        bf.iDu.aO("last_login_use_voice", paramaa.Mwm);
+        localao.set(41, Integer.valueOf(paramaa.MmO));
+        localao.set(43, paramaa.MmN);
+        Log.d("MicroMsg.UserInfoSyncExtension", "doCmd PluginSwitch:" + paramaa.Mwm + " WeiboFlag:" + paramaa.MmO);
+        localao.set(868518889, Integer.valueOf(paramaa.MvW));
+        Log.d("MicroMsg.UserInfoSyncExtension", "doCmd USERINFO_TXNEWSCATEGORY:" + paramaa.MvW);
+        localao.set(42, paramaa.ked);
+        Log.d("MicroMsg.UserInfoSyncExtension", "userid:" + paramaa.LuA + " username:" + paramaa.LuB);
+        localao.set(65825, paramaa.LuA);
+        localao.set(65826, paramaa.LuB);
+        Log.d("MicroMsg.UserInfoSyncExtension", "getiAlbumFlag " + paramaa.kee);
+        Log.d("MicroMsg.UserInfoSyncExtension", "getiAlbumStyle " + paramaa.kef);
+        Log.d("MicroMsg.UserInfoSyncExtension", "getPcAlbumBGImgID " + paramaa.keg);
+        paramabn = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(65830, null));
+        if ((paramabn == null) || (paramabn.length() == 0))
         {
-          paramzx = paramaa.HoU;
-          if ((paramzx != null) && (paramzx.length() > 0)) {
-            com.tencent.mm.kernel.g.ajR().ajA().set(65830, paramzx);
+          paramabn = paramaa.Mwp;
+          if ((paramabn != null) && (paramabn.length() > 0)) {
+            com.tencent.mm.kernel.g.aAh().azQ().set(65830, paramabn);
           }
         }
         ab.b(1, paramaa);
         break;
-        paramzx = paramzx + ", QQMAIL_INSTALL";
+        paramabn = paramabn + ", QQMAIL_INSTALL";
         break label1010;
-        paramzx = paramzx + ", PM_INSTALL";
+        paramabn = paramabn + ", PM_INSTALL";
         break label1038;
-        paramzx = paramzx + ", FM_INSTALL";
+        paramabn = paramabn + ", FM_INSTALL";
         break label1066;
         label1987:
-        paramzx = paramzx + ", WEIBO_INSTALL";
+        paramabn = paramabn + ", WEIBO_INSTALL";
         break label1095;
         label2011:
-        paramzx = paramzx + ", MEDIANOTE_INSTALL";
+        paramabn = paramabn + ", MEDIANOTE_INSTALL";
         break label1124;
         label2035:
-        paramzx = paramzx + ", QMSG_INSTALL";
+        paramabn = paramabn + ", QMSG_INSTALL";
         break label1153;
-        paramzx = paramzx + ", BOTTLE_INSTALL";
+        paramabn = paramabn + ", BOTTLE_INSTALL";
         break label1182;
-        paramzx = paramzx + ", QSYNC_INSTALL";
+        paramabn = paramabn + ", QSYNC_INSTALL";
         break label1212;
         label2107:
-        paramzx = paramzx + ", SHAKE_INSTALL";
+        paramabn = paramabn + ", SHAKE_INSTALL";
         break label1242;
         label2131:
-        paramzx = paramzx + ", LBS_INSTALL";
+        paramabn = paramabn + ", LBS_INSTALL";
         break label1272;
         label2155:
-        paramzx = paramzx + ", BOTTLE_CHART_INSTALL";
+        paramabn = paramabn + ", BOTTLE_CHART_INSTALL";
         break label1302;
-        paramzx = paramzx + ",CHECKQQF_INSTALL";
+        paramabn = paramabn + ",CHECKQQF_INSTALL";
         break label1332;
-        paramzx = paramzx + ",MM_FEEDSAPP_INSTALL";
+        paramabn = paramabn + ",MM_FEEDSAPP_INSTALL";
         break label1362;
       }
     }
@@ -272,7 +272,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.g
  * JD-Core Version:    0.7.0.1
  */

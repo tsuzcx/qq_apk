@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape>
-            <corners android:radius="5.0dip" />
-            <solid android:color="@color/rx" />
-        </shape>
-    </item>
-    <item android:drawable="@color/a7c" />
+    <item android:state_pressed="true" android:drawable="@raw/list_deletetext_icon_pressed" />
+    <item android:drawable="@raw/list_deletetext_icon" />
 </selector>

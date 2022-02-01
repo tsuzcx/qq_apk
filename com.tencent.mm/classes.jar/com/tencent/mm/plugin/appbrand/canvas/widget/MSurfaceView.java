@@ -13,8 +13,8 @@ import android.view.SurfaceView;
 import android.view.View.OnAttachStateChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -23,20 +23,20 @@ public class MSurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback, a
 {
-  private final b jXK;
-  private final Set<View.OnAttachStateChangeListener> jXL;
-  private SurfaceHolder jXN;
-  private aq jXO;
-  private Runnable jXP;
+  private final b laI;
+  private final Set<View.OnAttachStateChangeListener> laJ;
+  private SurfaceHolder laL;
+  private MMHandler laM;
+  private Runnable laN;
   private volatile boolean mDestroyed;
   
   public MSurfaceView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145470);
-    this.jXK = new b(this);
-    this.jXL = new LinkedHashSet();
-    this.jXP = new Runnable()
+    this.laI = new b(this);
+    this.laJ = new LinkedHashSet();
+    this.laN = new Runnable()
     {
       public final void run()
       {
@@ -53,7 +53,7 @@ public class MSurfaceView
           return;
         }
         localCanvas.drawColor(-1);
-        MSurfaceView.this.h(localCanvas);
+        MSurfaceView.this.o(localCanvas);
         MSurfaceView.b(MSurfaceView.this).unlockCanvasAndPost(localCanvas);
         AppMethodBeat.o(145468);
       }
@@ -66,9 +66,9 @@ public class MSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145471);
-    this.jXK = new b(this);
-    this.jXL = new LinkedHashSet();
-    this.jXP = new Runnable()
+    this.laI = new b(this);
+    this.laJ = new LinkedHashSet();
+    this.laN = new Runnable()
     {
       public final void run()
       {
@@ -85,7 +85,7 @@ public class MSurfaceView
           return;
         }
         localCanvas.drawColor(-1);
-        MSurfaceView.this.h(localCanvas);
+        MSurfaceView.this.o(localCanvas);
         MSurfaceView.b(MSurfaceView.this).unlockCanvasAndPost(localCanvas);
         AppMethodBeat.o(145468);
       }
@@ -98,9 +98,9 @@ public class MSurfaceView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145472);
-    this.jXK = new b(this);
-    this.jXL = new LinkedHashSet();
-    this.jXP = new Runnable()
+    this.laI = new b(this);
+    this.laJ = new LinkedHashSet();
+    this.laN = new Runnable()
     {
       public final void run()
       {
@@ -117,7 +117,7 @@ public class MSurfaceView
           return;
         }
         localCanvas.drawColor(-1);
-        MSurfaceView.this.h(localCanvas);
+        MSurfaceView.this.o(localCanvas);
         MSurfaceView.b(MSurfaceView.this).unlockCanvasAndPost(localCanvas);
         AppMethodBeat.o(145468);
       }
@@ -129,50 +129,50 @@ public class MSurfaceView
   private void init()
   {
     AppMethodBeat.i(145473);
-    this.jXN = getHolder();
-    this.jXN.addCallback(this);
-    this.jXN.setFormat(-3);
+    this.laL = getHolder();
+    this.laL.addCallback(this);
+    this.laL.setFormat(-3);
     Paint localPaint = new Paint();
     localPaint.setColor(-1);
-    this.jXK.getDrawContext().jWu = localPaint;
+    this.laI.getDrawContext().kZq = localPaint;
     AppMethodBeat.o(145473);
   }
   
-  public final void P(Runnable paramRunnable)
+  public final void U(Runnable paramRunnable)
   {
     AppMethodBeat.i(145481);
-    if (this.jXO == null)
+    if (this.laM == null)
     {
       AppMethodBeat.o(145481);
       return;
     }
-    this.jXO.post(paramRunnable);
+    this.laM.post(paramRunnable);
     AppMethodBeat.o(145481);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145487);
-    this.jXK.a(paramDrawCanvasArg, parama);
+    this.laI.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145487);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145485);
-    this.jXK.a(paramJSONArray, parama);
+    this.laI.a(paramJSONArray, parama);
     AppMethodBeat.o(145485);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145490);
-    if (this.jXL.contains(paramOnAttachStateChangeListener))
+    if (this.laJ.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145490);
       return;
     }
-    this.jXL.add(paramOnAttachStateChangeListener);
+    this.laJ.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145490);
   }
@@ -180,21 +180,21 @@ public class MSurfaceView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145488);
-    this.jXK.b(paramDrawCanvasArg, parama);
+    this.laI.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145488);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145486);
-    this.jXK.b(paramJSONArray, parama);
+    this.laI.b(paramJSONArray, parama);
     AppMethodBeat.o(145486);
   }
   
-  public final void bdP()
+  public final void bzg()
   {
     AppMethodBeat.i(145480);
-    P(new Runnable()
+    U(new Runnable()
     {
       public final void run()
       {
@@ -211,7 +211,7 @@ public class MSurfaceView
           return;
         }
         localCanvas.drawColor(-1);
-        MSurfaceView.this.h(localCanvas);
+        MSurfaceView.this.o(localCanvas);
         MSurfaceView.b(MSurfaceView.this).unlockCanvasAndPost(localCanvas);
         AppMethodBeat.o(145469);
       }
@@ -219,24 +219,24 @@ public class MSurfaceView
     AppMethodBeat.o(145480);
   }
   
-  public final void bdQ()
+  public final void bzh()
   {
     AppMethodBeat.i(145489);
-    this.jXK.bdQ();
+    this.laI.bzh();
     AppMethodBeat.o(145489);
   }
   
-  public final void bdR()
+  public final void bzi()
   {
     AppMethodBeat.i(145496);
-    this.jXK.bdR();
+    this.laI.bzi();
     AppMethodBeat.o(145496);
   }
   
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(145479);
-    ae.i("MicroMsg.MSurfaceView", "draw(%s)", new Object[] { Integer.valueOf(hashCode()) });
+    Log.i("MicroMsg.MSurfaceView", "draw(%s)", new Object[] { Integer.valueOf(hashCode()) });
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     super.draw(paramCanvas);
     AppMethodBeat.o(145479);
@@ -245,7 +245,7 @@ public class MSurfaceView
   public com.tencent.mm.plugin.appbrand.canvas.d getDrawContext()
   {
     AppMethodBeat.i(145482);
-    com.tencent.mm.plugin.appbrand.canvas.d locald = this.jXK.getDrawContext();
+    com.tencent.mm.plugin.appbrand.canvas.d locald = this.laI.getDrawContext();
     AppMethodBeat.o(145482);
     return locald;
   }
@@ -253,7 +253,7 @@ public class MSurfaceView
   public String getSessionId()
   {
     AppMethodBeat.i(145493);
-    String str = this.jXK.getSessionId();
+    String str = this.laI.getSessionId();
     AppMethodBeat.o(145493);
     return str;
   }
@@ -261,35 +261,35 @@ public class MSurfaceView
   public String getTraceId()
   {
     AppMethodBeat.i(145478);
-    String str = this.jXK.getTraceId();
+    String str = this.laI.getTraceId();
     AppMethodBeat.o(145478);
     return str;
   }
   
-  public final boolean h(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(145484);
-    boolean bool = this.jXK.h(paramCanvas);
-    AppMethodBeat.o(145484);
-    return bool;
-  }
-  
   public final boolean isPaused()
   {
-    return this.jXK.mPause;
+    return this.laI.mPause;
+  }
+  
+  public final boolean o(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(145484);
+    boolean bool = this.laI.o(paramCanvas);
+    AppMethodBeat.o(145484);
+    return bool;
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(145492);
-    this.jXK.onResume();
+    this.laI.onResume();
     AppMethodBeat.o(145492);
   }
   
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145491);
-    this.jXL.remove(paramOnAttachStateChangeListener);
+    this.laJ.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145491);
   }
@@ -297,48 +297,48 @@ public class MSurfaceView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145483);
-    this.jXK.setDrawActionReportable(parama);
+    this.laI.setDrawActionReportable(parama);
     AppMethodBeat.o(145483);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145494);
-    this.jXK.setSessionId(paramString);
+    this.laI.setSessionId(paramString);
     AppMethodBeat.o(145494);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145495);
-    this.jXK.setStartTime(paramLong);
+    this.laI.setStartTime(paramLong);
     AppMethodBeat.o(145495);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145477);
-    this.jXK.setTraceId(paramString);
+    this.laI.setTraceId(paramString);
     AppMethodBeat.o(145477);
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(145475);
-    ae.i("MicroMsg.MSurfaceView", "surfaceChanged(%s)", new Object[] { Integer.valueOf(hashCode()) });
+    Log.i("MicroMsg.MSurfaceView", "surfaceChanged(%s)", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(145475);
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(145474);
-    ae.i("MicroMsg.MSurfaceView", "surfaceCreated(%s)", new Object[] { Integer.valueOf(hashCode()) });
+    Log.i("MicroMsg.MSurfaceView", "surfaceCreated(%s)", new Object[] { Integer.valueOf(hashCode()) });
     this.mDestroyed = false;
-    if (this.jXO == null)
+    if (this.laM == null)
     {
-      paramSurfaceHolder = com.tencent.e.c.d.hf("MSurfaceView#Rending-Thread", -19);
+      paramSurfaceHolder = com.tencent.f.c.d.hz("MSurfaceView#Rending-Thread", -19);
       paramSurfaceHolder.start();
-      this.jXO = new aq(paramSurfaceHolder.getLooper());
+      this.laM = new MMHandler(paramSurfaceHolder.getLooper());
     }
     AppMethodBeat.o(145474);
   }
@@ -346,16 +346,16 @@ public class MSurfaceView
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(145476);
-    ae.i("MicroMsg.MSurfaceView", "surfaceDestroyed(%s)", new Object[] { Integer.valueOf(hashCode()) });
+    Log.i("MicroMsg.MSurfaceView", "surfaceDestroyed(%s)", new Object[] { Integer.valueOf(hashCode()) });
     this.mDestroyed = true;
-    this.jXO.getLooper().quit();
-    this.jXO = null;
+    this.laM.getLooper().quit();
+    this.laM = null;
     AppMethodBeat.o(145476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.MSurfaceView
  * JD-Core Version:    0.7.0.1
  */

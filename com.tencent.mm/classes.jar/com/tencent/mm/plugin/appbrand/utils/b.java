@@ -6,50 +6,34 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import com.tencent.luggage.sdk.config.c;
+import com.tencent.luggage.sdk.config.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.a.j;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.Class<+Landroid.app.Activity;>;
+import kotlin.a.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "genAppBrandInstanceId", "", "parcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "appId", "generateInstanceId", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "generateInstanceId", "", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static final b mTA;
+  public static final b ogD;
   
   static
   {
     AppMethodBeat.i(51400);
-    mTA = new b();
+    ogD = new b();
     AppMethodBeat.o(51400);
-  }
-  
-  public static final boolean VJ(String paramString)
-  {
-    AppMethodBeat.i(223936);
-    paramString = (CharSequence)paramString;
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      AppMethodBeat.o(223936);
-      return true;
-    }
-    AppMethodBeat.o(223936);
-    return false;
   }
   
   public static final boolean aI(Class<? extends Activity> paramClass)
   {
     AppMethodBeat.i(51397);
-    d.g.b.p.h(paramClass, "clazz");
+    kotlin.g.b.p.h(paramClass, "clazz");
     try
     {
-      Context localContext = ak.getContext();
+      Context localContext = MMApplicationContext.getContext();
       if (localContext != null)
       {
         Object localObject = localContext.getPackageManager();
@@ -66,10 +50,10 @@ public final class b
           }
         }
       }
-      d.g.b.p.g(localContext, "appContext");
+      kotlin.g.b.p.g(localContext, "appContext");
       paramClass = localContext.getPackageName();
       label71:
-      boolean bool = d.g.b.p.i(paramClass, localContext.getPackageName());
+      boolean bool = kotlin.g.b.p.j(paramClass, localContext.getPackageName());
       AppMethodBeat.o(51397);
       return bool ^ true;
     }
@@ -80,37 +64,41 @@ public final class b
     return false;
   }
   
-  public static final String c(LaunchParcel paramLaunchParcel, String paramString)
+  public static final boolean afF(String paramString)
   {
-    AppMethodBeat.i(51398);
-    d.g.b.p.h(paramLaunchParcel, "parcel");
-    paramString = f.cf(paramString, paramLaunchParcel.hSZ);
-    paramLaunchParcel = paramString;
-    if (paramString == null)
+    AppMethodBeat.i(229594);
+    paramString = (CharSequence)paramString;
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      d.g.b.p.g(g.ajP(), "MMKernel.account()");
-      paramLaunchParcel = vQ(a.getUin());
+      AppMethodBeat.o(229594);
+      return true;
     }
-    if (paramLaunchParcel == null) {
-      d.g.b.p.gkB();
-    }
-    AppMethodBeat.o(51398);
-    return paramLaunchParcel;
+    AppMethodBeat.o(229594);
+    return false;
   }
   
-  public static final String vQ(int paramInt)
+  public static final String zF(int paramInt)
   {
     AppMethodBeat.i(51399);
-    String str = com.tencent.mm.b.p.getString(paramInt);
-    d.g.b.p.g(str, "UIN.getString(uin)");
-    str = j.a((Iterable)j.listOf(new String[] { str, String.valueOf(bu.fpO()) }), (CharSequence)"_", null, null, 0, null, null, 62);
+    Object localObject = c.a.czh;
+    if (localObject != null)
+    {
+      localObject = ((c)localObject).NI();
+      kotlin.g.b.p.g(localObject, "factory.createInstanceId()");
+      AppMethodBeat.o(51399);
+      return localObject;
+    }
+    localObject = com.tencent.mm.b.p.getString(paramInt);
+    kotlin.g.b.p.g(localObject, "UIN.getString(uin)");
+    localObject = j.a((Iterable)j.listOf(new String[] { localObject, String.valueOf(Util.nowMilliSecond()) }), (CharSequence)"_", null, null, 0, null, null, 62);
     AppMethodBeat.o(51399);
-    return str;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.b
  * JD-Core Version:    0.7.0.1
  */

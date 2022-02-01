@@ -1,244 +1,299 @@
 package com.tencent.matrix.report;
 
-import com.tencent.mars.smc.IDKey;
-import com.tencent.matrix.a.c.a.b.a;
-import com.tencent.matrix.a.c.b;
-import com.tencent.mm.plugin.messenger.foundation.a.ab;
-import com.tencent.mm.plugin.messenger.foundation.a.y;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.support.v4.e.k;
+import android.text.TextUtils;
+import com.tencent.matrix.a.b.a.e.b;
+import com.tencent.matrix.a.b.a.e.b.a;
+import com.tencent.matrix.a.b.a.g.a.a;
+import com.tencent.matrix.a.b.a.g.a.c.b;
+import com.tencent.matrix.a.b.a.g.a.c.c;
+import com.tencent.matrix.a.c.c;
+import com.tencent.mm.app.AppForegroundDelegate;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.AppBrands;
+import com.tencent.mm.sdk.platformtools.AppBrands.AppBrandAppInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public final class a
-  extends b
 {
-  private long cFA;
-  long cFB;
-  private long cFy;
-  private long cFz;
-  
-  public a()
+  public static String SN()
   {
-    ab.a(5, new y()
+    String str = MMApplicationContext.getProcessName();
+    if (TextUtils.isEmpty(str)) {
+      return "";
+    }
+    if (str.contains(":"))
     {
-      public final void a(com.tencent.mm.bw.a paramAnonymousa)
+      int i = str.lastIndexOf(":");
+      return str.substring(":".length() + i);
+    }
+    return "main";
+  }
+  
+  public static String SO()
+  {
+    Object localObject1;
+    Object localObject2;
+    if (AppBrands.isAppBrandProc())
+    {
+      localObject1 = AppBrands.getAppBrandInfo();
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((AppBrands.AppBrandAppInfo)localObject1).appName))) {
+        localObject2 = ((AppBrands.AppBrandAppInfo)localObject1).appName;
+      }
+    }
+    do
+    {
+      return localObject2;
+      localObject1 = AppForegroundDelegate.djR;
+      localObject2 = AppForegroundDelegate.Wb();
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = com.tencent.matrix.a.cPA.cPC;
+      }
+      localObject2 = localObject1;
+    } while (!((String)localObject1).contains("@"));
+    return ((String)localObject1).substring(0, ((String)localObject1).lastIndexOf("@"));
+  }
+  
+  public static int SP()
+  {
+    return cA(AppForegroundDelegate.djR.cPB);
+  }
+  
+  @SuppressLint({"RestrictedApi"})
+  public static int SQ()
+  {
+    Context localContext = MMApplicationContext.getContext();
+    if (c.bc(localContext)) {
+      return 1;
+    }
+    if (!c.bd(localContext)) {
+      return 3;
+    }
+    if (c.be(localContext)) {
+      return 4;
+    }
+    return 2;
+  }
+  
+  @SuppressLint({"RestrictedApi"})
+  public static int cA(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return 1;
+    }
+    if (c.bf(MMApplicationContext.getContext())) {
+      return 3;
+    }
+    return 2;
+  }
+  
+  public static final class a
+  {
+    public static void SR()
+    {
+      e.Cxv.idkeyStat(1540L, 7L, 1L, false);
+    }
+    
+    public static void cB(boolean paramBoolean)
+    {
+      e locale = e.Cxv;
+      if (paramBoolean) {}
+      for (long l = 101L;; l = 100L)
       {
-        paramAnonymousa = a.this;
-        paramAnonymousa.cFB += 1L;
+        locale.idkeyStat(1540L, l, 1L, false);
+        return;
+      }
+    }
+    
+    public static void cC(boolean paramBoolean)
+    {
+      e locale = e.Cxv;
+      if (paramBoolean) {}
+      for (long l = 0L;; l = 1L)
+      {
+        locale.idkeyStat(1540L, l, 1L, false);
+        return;
+      }
+    }
+    
+    public static void cD(boolean paramBoolean)
+    {
+      e locale = e.Cxv;
+      if (paramBoolean) {}
+      for (long l = 2L;; l = 3L)
+      {
+        locale.idkeyStat(1540L, l, 1L, false);
+        return;
+      }
+    }
+    
+    public static void cE(boolean paramBoolean)
+    {
+      e locale = e.Cxv;
+      if (paramBoolean) {}
+      for (long l = 4L;; l = 5L)
+      {
+        locale.idkeyStat(1540L, l, 1L, false);
+        return;
+      }
+    }
+  }
+  
+  @SuppressLint({"RestrictedApi"})
+  public static final class b
+  {
+    private static void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, long paramLong1, String paramString4, long paramLong2, String paramString5, long paramLong3, String paramString6, String paramString7, long paramLong4, long paramLong5, long paramLong6)
+    {
+      e.Cxv.a(21468, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(4), paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString3, Long.valueOf(paramLong1), paramString4, Long.valueOf(paramLong2), paramString5, Long.valueOf(paramLong3), paramString6, paramString7, Long.valueOf(paramLong4), Long.valueOf(paramLong5), Long.valueOf(paramLong6) });
+    }
+    
+    static String eA(String paramString)
+    {
+      String str = paramString;
+      if (!TextUtils.isDigitsOnly(paramString))
+      {
+        if (!paramString.contains("[GT]ColdPool#")) {
+          break label23;
+        }
+        str = "[GT]ColdPool";
+      }
+      label23:
+      do
+      {
+        return str;
+        if (paramString.contains("[GT]HotPool#")) {
+          return "[GT]HotPool";
+        }
+        str = paramString;
+      } while (!paramString.contains("mars::"));
+      return "mars::xxx";
+    }
+    
+    public static final class a
+    {
+      public static void a(g.a.a<e.b> parama, long paramLong1, long paramLong2, String paramString, long paramLong3)
+      {
+        String str = a.SN();
+        StringBuilder localStringBuilder = new StringBuilder();
+        int j = a.cA(false);
+        int k = a.SQ();
+        long l2 = Math.max(1L, parama.cTu / 60000L);
+        long l3 = ((Long)((e.b)parama.cTt).cTd.cTz).longValue() / l2;
+        ArrayList localArrayList = new ArrayList(3);
+        int i = 0;
+        long l1;
+        Object localObject;
+        if (i < 3)
+        {
+          l1 = 0L;
+          if (((e.b)parama.cTt).cTe.list.size() <= i) {
+            break label409;
+          }
+          e.b.a locala = (e.b.a)((e.b)parama.cTt).cTe.list.get(i);
+          if (locala == null) {
+            break label409;
+          }
+          localObject = locala.name;
+          l1 = ((Long)locala.cTz).longValue() / l2;
+        }
+        for (;;)
+        {
+          localArrayList.add(new k(localObject, Long.valueOf(l1)));
+          i += 1;
+          break;
+          Log.i("Matrix.battery.BatteryReporter", "#reportJiffiesException");
+          parama = localStringBuilder.append(a.b.eA((String)((k)localArrayList.get(1)).first)).append(":").append(((k)localArrayList.get(1)).second).append(a.b.eA((String)((k)localArrayList.get(2)).first)).append(":").append(((k)localArrayList.get(2)).second);
+          i = c.ba(MMApplicationContext.getContext());
+          parama.append("|batTemp=").append(i);
+          localObject = c.Sq();
+          if (localObject.length > 0) {
+            parama.append("|cupFreq=").append(Arrays.toString((int[])localObject));
+          }
+          a.b.b(1, str, parama.toString(), j, k, "avgJiffiesException", l3, a.b.eA((String)((k)localArrayList.get(0)).first), ((Long)((k)localArrayList.get(0)).second).longValue(), "duringMin", l2, paramString, "", paramLong1, paramLong2, paramLong3);
+          return;
+          label409:
+          localObject = "";
+        }
+      }
+    }
+    
+    public static final class b
+    {
+      public static void a(boolean paramBoolean, g.a.a<e.b> parama)
+      {
+        if (!com.tencent.matrix.c.a.SA()) {
+          return;
+        }
+        String str1 = a.SN();
+        StringBuilder localStringBuilder = new StringBuilder();
+        int j = a.cA(paramBoolean);
+        int k = a.SQ();
+        String str2 = a.SO();
+        long l2 = Math.max(1L, parama.cTu / 60000L);
+        long l3 = ((Long)((e.b)parama.cTt).cTd.cTz).longValue() / l2;
+        ArrayList localArrayList = new ArrayList(3);
+        int i = 0;
+        long l1;
+        Object localObject;
+        if (i < 3)
+        {
+          l1 = 0L;
+          if (((e.b)parama.cTt).cTe.list.size() <= i) {
+            break label410;
+          }
+          e.b.a locala = (e.b.a)((e.b)parama.cTt).cTe.list.get(i);
+          if (locala == null) {
+            break label410;
+          }
+          localObject = locala.name;
+          l1 = ((Long)locala.cTz).longValue() / l2;
+        }
+        for (;;)
+        {
+          localArrayList.add(new k(localObject, Long.valueOf(l1)));
+          i += 1;
+          break;
+          Log.i("Matrix.battery.BatteryReporter", "#statJiffies");
+          parama = localStringBuilder.append(a.b.eA((String)((k)localArrayList.get(1)).first)).append(":").append(((k)localArrayList.get(1)).second).append(a.b.eA((String)((k)localArrayList.get(2)).first)).append(":").append(((k)localArrayList.get(2)).second);
+          i = c.ba(MMApplicationContext.getContext());
+          parama.append("|batTemp=").append(i);
+          localObject = c.Sq();
+          if (localObject.length > 0) {
+            parama.append("|cupFreq=").append(Arrays.toString((int[])localObject));
+          }
+          a.b.b(0, str1, parama.toString(), j, k, "avgJiffies", l3, a.b.eA((String)((k)localArrayList.get(0)).first), ((Long)((k)localArrayList.get(0)).second).longValue(), "duringMin", l2, str2, "", 0L, 0L, 0L);
+          return;
+          label410:
+          localObject = "";
+        }
       }
       
-      public final void b(com.tencent.mm.bw.a paramAnonymousa) {}
-    });
-  }
-  
-  public final void In()
-  {
-    super.In();
-    ae.i("Matrix.BatteryReporter", "onTraceBegin");
-    this.cFy = (bt.Dx(0L) + bt.Dy(0L) + bt.Dw(0L) + bt.Dy(0L));
-    this.cFz = com.tencent.mm.a.a.cQh;
-    this.cFA = this.cFB;
-  }
-  
-  public final void Io()
-  {
-    super.Io();
-    ae.i("Matrix.BatteryReporter", "onTraceEnd");
-    this.cFy = (bt.Dx(0L) + bt.Dy(0L) + bt.Dw(0L) + bt.Dy(0L) - this.cFy);
-    this.cFz = (com.tencent.mm.a.a.cQh - this.cFz);
-    this.cFA = (this.cFB - this.cFA);
-    e.ywz.idkeyStat(1013L, 200L, this.cFz, false);
-  }
-  
-  public final StringBuilder Ip()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("| extInfo:\n");
-    localStringBuilder.append("| ->diffTraffic=").append(bu.sL(this.cFy)).append("\n");
-    localStringBuilder.append("| ->diffAlarmCount=").append(this.cFz).append("\n");
-    localStringBuilder.append("| ->diffAddMsgCount=").append(this.cFA).append("\n");
-    return localStringBuilder;
-  }
-  
-  public final void a(b.a parama)
-  {
-    int k = 20;
-    super.a(parama);
-    if (parama.cCq) {
-      return;
-    }
-    long l = parama.cDX;
-    parama = new ArrayList(4);
-    IDKey localIDKey = new IDKey();
-    localIDKey.SetID(1013);
-    int m = -1;
-    int i = -1;
-    int j;
-    if (ak.coh())
-    {
-      i = 0;
-      j = m;
-      if (i >= 0)
+      public static void c(int paramInt1, int paramInt2, String paramString)
       {
-        if (l <= 2000L) {
-          break label277;
+        if (!com.tencent.matrix.c.a.SA()) {
+          return;
         }
-        j = i + 0;
+        String str1 = a.SN();
+        String str2 = c.eu("/proc/" + paramInt1 + "/task/" + paramInt2 + "/stat");
+        int i = a.SP();
+        int j = a.SQ();
+        String str3 = a.SO();
+        Log.i("Matrix.battery.BatteryReporter", "#statJiffiesTaskParseError");
+        a.b.b(0, str1, str2, i, j, "statError", 1L, "pid", paramInt1, "tid", paramInt2, str3, paramString, 0L, 0L, 0L);
       }
-      label82:
-      localIDKey.SetKey(j);
-      localIDKey.SetValue(1L);
-      parama.add(localIDKey);
-      localIDKey = new IDKey();
-      localIDKey.SetValue(l);
-      localIDKey.SetID(1013);
-      if (!ak.coh()) {
-        break label360;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      label133:
-      localIDKey.SetKey(i + 17);
-      parama.add(localIDKey);
-      localIDKey = new IDKey();
-      localIDKey.SetID(1013);
-      if (ak.coh()) {
-        i = 0;
-      }
-      for (;;)
-      {
-        localIDKey.SetKey(i + 18);
-        localIDKey.SetValue(1L);
-        parama.add(localIDKey);
-        e.ywz.b(parama, false);
-        return;
-        if (ak.foC())
-        {
-          i = 20;
-          break;
-        }
-        if (ak.foA())
-        {
-          i = 40;
-          break;
-        }
-        if (ak.foF())
-        {
-          i = 60;
-          break;
-        }
-        if (ak.foE())
-        {
-          i = 80;
-          break;
-        }
-        if (ak.isAppBrandProcess())
-        {
-          i = 100;
-          break;
-        }
-        if (!ak.foD()) {
-          break;
-        }
-        i = 120;
-        break;
-        label277:
-        if (l > 1500L)
-        {
-          j = i + 1;
-          break label82;
-        }
-        if (l > 1000L)
-        {
-          j = i + 2;
-          break label82;
-        }
-        if (l > 800L)
-        {
-          j = i + 3;
-          break label82;
-        }
-        if (l > 600L)
-        {
-          j = i + 4;
-          break label82;
-        }
-        j = m;
-        if (l <= 300L) {
-          break label82;
-        }
-        j = i + 5;
-        break label82;
-        label360:
-        if (ak.foC())
-        {
-          i = 20;
-          break label133;
-        }
-        if (ak.foA())
-        {
-          i = 40;
-          break label133;
-        }
-        if (ak.foF())
-        {
-          i = 60;
-          break label133;
-        }
-        if (ak.foE())
-        {
-          i = 80;
-          break label133;
-        }
-        if (ak.isAppBrandProcess())
-        {
-          i = 100;
-          break label133;
-        }
-        if (!ak.foD()) {
-          break label506;
-        }
-        i = 120;
-        break label133;
-        i = k;
-        if (!ak.foC()) {
-          if (ak.foA()) {
-            i = 40;
-          } else if (ak.foF()) {
-            i = 60;
-          } else if (ak.foE()) {
-            i = 80;
-          } else if (ak.isAppBrandProcess()) {
-            i = 100;
-          } else if (ak.foD()) {
-            i = 120;
-          } else {
-            i = 0;
-          }
-        }
-      }
-      label506:
-      i = 0;
-    }
-  }
-  
-  public final void e(String paramString1, String paramString2, int paramInt)
-  {
-    super.e(paramString1, paramString2, paramInt);
-    ae.w("Matrix.BatteryReporter", "[onWakeLockTimeout] tag=%s packageName=%s warningCount=%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-    if (paramInt <= 1) {
-      e.ywz.idkeyStat(1013L, 201L, 1L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.report.a
  * JD-Core Version:    0.7.0.1
  */

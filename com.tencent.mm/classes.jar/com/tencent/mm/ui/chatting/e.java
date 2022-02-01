@@ -3,10 +3,10 @@ package com.tencent.mm.ui.chatting;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.transmit.SelectConversationUI;
 
@@ -15,7 +15,7 @@ public final class e
   public static boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
   {
     AppMethodBeat.i(34306);
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(34306);
       return false;
@@ -28,9 +28,9 @@ public final class e
     {
       AppMethodBeat.o(34306);
       return true;
-      if (b.aXr(paramString1)) {
+      if (b.bmu(paramString1)) {
         localObject = new b();
-      } else if (d.aXr(paramString1)) {
+      } else if (d.bmu(paramString1)) {
         localObject = new d();
       }
     }
@@ -48,7 +48,7 @@ public final class e
       {
         paramString1 = new Intent();
         paramString1.putExtra("key_type", 0);
-        d.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
         AppMethodBeat.o(34301);
         return true;
       }
@@ -56,7 +56,7 @@ public final class e
       {
         paramString1 = new Intent();
         paramString1.putExtra("key_type", 1);
-        d.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
         AppMethodBeat.o(34301);
         return true;
       }
@@ -64,7 +64,7 @@ public final class e
       {
         paramString1 = new Intent();
         paramString1.putExtra("key_type", 1);
-        d.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
         AppMethodBeat.o(34301);
         return true;
       }
@@ -72,7 +72,7 @@ public final class e
       {
         paramString1 = new Intent();
         paramString1.putExtra("key_type", 2);
-        d.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
         AppMethodBeat.o(34301);
         return true;
       }
@@ -80,7 +80,7 @@ public final class e
       {
         paramMMFragment = new Intent();
         paramMMFragment.putExtra("key_native_url", paramString1);
-        d.b(paramContext, "luckymoney", ".ui.LuckyMoneyBeforeDetailUI", paramMMFragment);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyBeforeDetailUI", paramMMFragment);
         AppMethodBeat.o(34301);
         return true;
       }
@@ -90,7 +90,7 @@ public final class e
         paramMMFragment.putExtra("key_way", 5);
         paramMMFragment.putExtra("key_native_url", paramString1);
         paramMMFragment.putExtra("key_static_from_scene", 1);
-        d.b(paramContext, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", paramMMFragment);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", paramMMFragment);
         AppMethodBeat.o(34301);
         return true;
       }
@@ -102,7 +102,7 @@ public final class e
   static final class b
     implements e.c
   {
-    public static boolean aXr(String paramString)
+    public static boolean bmu(String paramString)
     {
       AppMethodBeat.i(34302);
       if ((paramString != null) && ((paramString.startsWith("weixin://openNativeUrl/myDeviceList")) || (paramString.startsWith("weixin://openNativeUrl/bindMyDevice"))))
@@ -117,7 +117,7 @@ public final class e
     public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
       AppMethodBeat.i(34303);
-      if (bu.isNullOrNil(paramString1))
+      if (Util.isNullOrNil(paramString1))
       {
         AppMethodBeat.o(34303);
         return false;
@@ -126,7 +126,7 @@ public final class e
       {
         paramString1 = new Intent();
         paramString1.putExtra("device_brand_name", paramString2);
-        d.b(paramContext, "exdevice", ".ui.ExdeviceManageDeviceUI", paramString1);
+        c.b(paramContext, "exdevice", ".ui.ExdeviceManageDeviceUI", paramString1);
         AppMethodBeat.o(34303);
         return true;
       }
@@ -148,7 +148,7 @@ public final class e
   static final class d
     implements e.c
   {
-    public static boolean aXr(String paramString)
+    public static boolean bmu(String paramString)
     {
       AppMethodBeat.i(34304);
       if ((paramString != null) && ((paramString.startsWith("weixin://wesport/recommend")) || (paramString.startsWith("weixin://openNativeUrl/rankMyHomepage")) || (paramString.startsWith("weixin://openNativeUrl/rankSetting"))))
@@ -163,9 +163,9 @@ public final class e
     public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
       AppMethodBeat.i(34305);
-      if (bu.isNullOrNil(paramString1))
+      if (Util.isNullOrNil(paramString1))
       {
-        ae.d("MicroMsg.BizNativeUrlDispatcher", "nativeUrl is null.");
+        Log.d("MicroMsg.BizNativeUrlDispatcher", "nativeUrl is null.");
         AppMethodBeat.o(34305);
         return false;
       }
@@ -182,23 +182,23 @@ public final class e
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankMyHomepage"))
       {
-        paramString1 = v.aAC();
-        if (bu.isNullOrNil(paramString1))
+        paramString1 = z.aTY();
+        if (Util.isNullOrNil(paramString1))
         {
-          ae.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
+          Log.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
           AppMethodBeat.o(34305);
           return false;
         }
         paramMMFragment = new Intent();
         paramMMFragment.putExtra("username", paramString1);
-        d.b(paramContext, "exdevice", ".ui.ExdeviceProfileUI", paramMMFragment);
-        ae.i("MicroMsg.BizNativeUrlDispatcher", "Jump to ExdeviceProfileUI.");
+        c.b(paramContext, "exdevice", ".ui.ExdeviceProfileUI", paramMMFragment);
+        Log.i("MicroMsg.BizNativeUrlDispatcher", "Jump to ExdeviceProfileUI.");
         AppMethodBeat.o(34305);
         return true;
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankSetting"))
       {
-        d.Q(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
+        c.V(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
         AppMethodBeat.o(34305);
         return true;
       }
@@ -209,7 +209,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e
  * JD-Core Version:    0.7.0.1
  */

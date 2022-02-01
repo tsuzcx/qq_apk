@@ -28,10 +28,10 @@ public class a
     ShareTinkerLog.i("Tinker.DefaultLoadReporter", "patch loadReporter onLoadFileNotFound: patch file not found: %s, fileType: %d, isDirectory: %b", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     if (paramInt == 4)
     {
-      gcU();
+      hpc();
       return;
     }
-    gcT();
+    hpb();
   }
   
   public void a(String paramString1, String paramString2, File paramFile, String paramString3)
@@ -45,9 +45,9 @@ public class a
     {
       label45:
       return;
-      if ((!paramString1.equals(paramString2)) && (com.tencent.tinker.lib.e.a.lq(this.context).AWf))
+      if ((!paramString1.equals(paramString2)) && (com.tencent.tinker.lib.e.a.lk(this.context).FgY))
       {
-        com.tencent.tinker.lib.util.c.lv(this.context).bbv(paramString2);
+        com.tencent.tinker.lib.f.c.lp(this.context).bqL(paramString2);
         paramString1 = paramFile.listFiles();
         if (paramString1 == null) {
           break;
@@ -75,8 +75,8 @@ public class a
     {
       ShareTinkerLog.e("Tinker.DefaultLoadReporter", "tinker load exception, welcome to submit issue to us: https://github.com/Tencent/tinker/issues", new Object[0]);
       ShareTinkerLog.printErrStackTrace("Tinker.DefaultLoadReporter", paramThrowable, "tinker load exception", new Object[0]);
-      com.tencent.tinker.lib.e.a.lq(this.context).tinkerFlags = 0;
-      gcT();
+      com.tencent.tinker.lib.e.a.lk(this.context).tinkerFlags = 0;
+      hpb();
       return;
       if (paramThrowable.getMessage().contains("checkDexInstall failed")) {
         ShareTinkerLog.e("Tinker.DefaultLoadReporter", "patch loadReporter onLoadException: tinker dex check fail:" + paramThrowable.getMessage(), new Object[0]);
@@ -120,7 +120,7 @@ public class a
     }
     for (;;)
     {
-      gcU();
+      hpc();
       return;
       ShareTinkerLog.e("Tinker.DefaultLoadReporter", "patch loadReporter onLoadInterpret fail, can get instruction set from existed oat file", new Object[0]);
       continue;
@@ -133,19 +133,19 @@ public class a
   public void b(File paramFile, int paramInt)
   {
     ShareTinkerLog.i("Tinker.DefaultLoadReporter", "patch load Reporter onLoadFileMd5Mismatch: patch file md5 mismatch file: %s, fileType: %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt) });
-    gcT();
+    hpb();
   }
   
   public void b(String paramString1, String paramString2, File paramFile)
   {
     ShareTinkerLog.i("Tinker.DefaultLoadReporter", "patch loadReporter onLoadPatchInfoCorrupted: patch info file damage: %s, from version: %s to version: %s", new Object[] { paramFile.getAbsolutePath(), paramString1, paramString2 });
-    gcT();
+    hpb();
   }
   
   public void c(File paramFile, int paramInt)
   {
     ShareTinkerLog.i("Tinker.DefaultLoadReporter", "patch loadReporter onLoadPackageCheckFail: load patch package check fail file path: %s, errorCode: %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt) });
-    gcT();
+    hpb();
   }
   
   public void d(File paramFile, int paramInt)
@@ -153,13 +153,13 @@ public class a
     ShareTinkerLog.i("Tinker.DefaultLoadReporter", "patch loadReporter onLoadPatchListenerReceiveFail: patch receive fail: %s, code: %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt) });
   }
   
-  public final void gcT()
+  public final void hpb()
   {
-    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lq(this.context);
-    if (locala.AWf)
+    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lk(this.context);
+    if (locala.FgY)
     {
-      Object localObject = locala.MDX;
-      if (((d)localObject).MEd)
+      Object localObject = locala.SjZ;
+      if (((d)localObject).Skf)
       {
         localObject = ((d)localObject).patchInfo;
         if ((localObject != null) && (!ShareTinkerInternals.isNullOrNil(((SharePatchInfo)localObject).oldVersion)))
@@ -169,20 +169,20 @@ public class a
         }
       }
     }
-    locala.dft();
+    locala.dZn();
   }
   
-  public final boolean gcU()
+  public final boolean hpc()
   {
-    Object localObject = com.tencent.tinker.lib.e.a.lq(this.context);
-    if (!((com.tencent.tinker.lib.e.a)localObject).AWf) {}
+    Object localObject = com.tencent.tinker.lib.e.a.lk(this.context);
+    if (!((com.tencent.tinker.lib.e.a)localObject).FgY) {}
     do
     {
       return false;
-      localObject = ((com.tencent.tinker.lib.e.a)localObject).MDX.MEg;
-    } while ((localObject == null) || (!com.tencent.tinker.lib.util.c.lv(this.context).bbu(SharePatchFileUtil.getMD5((File)localObject))));
+      localObject = ((com.tencent.tinker.lib.e.a)localObject).SjZ.Ski;
+    } while ((localObject == null) || (!com.tencent.tinker.lib.f.c.lp(this.context).bqK(SharePatchFileUtil.getMD5((File)localObject))));
     ShareTinkerLog.i("Tinker.DefaultLoadReporter", "try to repair oat file on patch process", new Object[0]);
-    com.tencent.tinker.lib.e.c.cE(this.context, ((File)localObject).getAbsolutePath());
+    com.tencent.tinker.lib.e.c.cY(this.context, ((File)localObject).getAbsolutePath());
     return true;
   }
 }

@@ -1,36 +1,42 @@
 package com.tencent.mm.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.ae;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class x
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
-  private long zlx = -1L;
+  private long Dqp = -1L;
   
-  public abstract void Zr();
+  public abstract void czW();
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void onClick(View paramView)
   {
-    ae.i("MicroMsg.MMCustomMenuItemClickListener", "button onclick");
-    if (this.zlx != -1L)
+    b localb = new b();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    Log.i("MicroMsg.MMCustomClickListener", "button onclick");
+    if (this.Dqp != -1L)
     {
-      long l = (System.nanoTime() - this.zlx) / 1000000L;
-      if (l < 500L)
+      long l = (System.nanoTime() - this.Dqp) / 1000000L;
+      if (l < 3000L)
       {
-        ae.i("MicroMsg.MMCustomMenuItemClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(500L) });
-        return false;
+        Log.i("MicroMsg.MMCustomClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(3000L) });
+        a.a(this, "com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        return;
       }
     }
-    this.zlx = System.nanoTime();
-    Zr();
-    return false;
+    this.Dqp = System.nanoTime();
+    czW();
+    a.a(this, "com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.x
  * JD-Core Version:    0.7.0.1
  */

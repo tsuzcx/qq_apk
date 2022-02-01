@@ -1,22 +1,22 @@
 package com.tencent.mm.media.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"valid", "", "size", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"valid", "", "size", "invoke"})
 final class a$b
   extends q
   implements b<Float, Float>
 {
-  public static final b hqB;
+  public static final b ijX;
   
   static
   {
-    AppMethodBeat.i(217528);
-    hqB = new b();
-    AppMethodBeat.o(217528);
+    AppMethodBeat.i(218759);
+    ijX = new b();
+    AppMethodBeat.o(218759);
   }
   
   a$b()
@@ -24,7 +24,7 @@ final class a$b
     super(1);
   }
   
-  public static float al(float paramFloat)
+  public static float au(float paramFloat)
   {
     float f;
     if (paramFloat > 1.0F) {

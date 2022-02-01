@@ -2,22 +2,26 @@ package com.tencent.mm.plugin.mall.a;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
 import com.tencent.mm.plugin.wallet_core.model.mall.a;
+import com.tencent.mm.plugin.wallet_core.model.mall.b;
 import com.tencent.mm.plugin.wallet_core.model.mall.c;
 import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.protocal.protobuf.bgg;
-import com.tencent.mm.protocal.protobuf.bgh;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.bsc;
+import com.tencent.mm.protocal.protobuf.bsd;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,17 +34,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class f
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  private com.tencent.mm.ak.f callback;
-  private com.tencent.mm.ak.b rr;
-  private String vPj;
-  public ArrayList<MallFunction> vPk;
-  public ArrayList<MallNews> vPl;
-  public ArrayList<a> vPm;
-  public SparseArray<String> vPn;
-  public int vPo;
+  private i callback;
+  private d rr;
+  private String zjn;
+  public ArrayList<MallFunction> zjo;
+  public ArrayList<MallNews> zjp;
+  public ArrayList<a> zjq;
+  public SparseArray<String> zjr;
+  public int zjs;
   
   public f(int paramInt1, String paramString, int paramInt2)
   {
@@ -50,31 +54,31 @@ public final class f
   private f(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2)
   {
     AppMethodBeat.i(65994);
-    this.vPk = null;
-    this.vPl = null;
-    this.vPm = null;
-    this.vPn = null;
-    this.vPo = 0;
-    this.vPo = paramInt1;
-    Object localObject1 = new b.a();
-    ((b.a)localObject1).hQF = new bgg();
-    ((b.a)localObject1).hQG = new bgh();
-    ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/getpayfunctionlist";
-    ((b.a)localObject1).funcId = 495;
-    ((b.a)localObject1).hQH = 227;
-    ((b.a)localObject1).respCmdId = 1000000227;
-    this.rr = ((b.a)localObject1).aDS();
-    bgg localbgg = (bgg)this.rr.hQD.hQJ;
-    localbgg.GUN = paramString1;
+    this.zjo = null;
+    this.zjp = null;
+    this.zjq = null;
+    this.zjr = null;
+    this.zjs = 0;
+    this.zjs = paramInt1;
+    Object localObject1 = new d.a();
+    ((d.a)localObject1).iLN = new bsc();
+    ((d.a)localObject1).iLO = new bsd();
+    ((d.a)localObject1).uri = "/cgi-bin/micromsg-bin/getpayfunctionlist";
+    ((d.a)localObject1).funcId = 495;
+    ((d.a)localObject1).iLP = 227;
+    ((d.a)localObject1).respCmdId = 1000000227;
+    this.rr = ((d.a)localObject1).aXF();
+    bsc localbsc = (bsc)this.rr.iLK.iLR;
+    localbsc.LZf = paramString1;
     LinkedList localLinkedList = new LinkedList();
     Object localObject2;
-    if (!bu.isNullOrNil(paramString2))
+    if (!Util.isNullOrNil(paramString2))
     {
-      localObject2 = (MallNews)c.eKB().Dtk.get(paramString2);
-      if ((localObject2 != null) && (!bu.isNullOrNil(((MallNews)localObject2).dqk)))
+      localObject2 = (MallNews)c.fSg().Icv.get(paramString2);
+      if ((localObject2 != null) && (!Util.isNullOrNil(((MallNews)localObject2).dHx)))
       {
         localObject1 = new ArrayList();
-        ((List)localObject1).add(((MallNews)localObject2).dqk);
+        ((List)localObject1).add(((MallNews)localObject2).dHx);
       }
     }
     while ((localObject1 != null) && (((List)localObject1).size() > 0))
@@ -86,27 +90,27 @@ public final class f
         if (((Iterator)localObject2).hasNext())
         {
           String str = (String)((Iterator)localObject2).next();
-          cxn localcxn = new cxn();
-          localcxn.aQV(str);
-          localLinkedList.add(localcxn);
+          dqi localdqi = new dqi();
+          localdqi.bhy(str);
+          localLinkedList.add(localdqi);
           localObject1 = (String)localObject1 + "; + " + str;
           continue;
           localObject1 = null;
           break;
-          localObject1 = c.eKB().eKC();
+          localObject1 = c.fSg().fSh();
           break;
         }
       }
-      ae.d("MicroMsg.NetSceneGetPayFunctionList", "post with list : ".concat(String.valueOf(localObject1)));
+      Log.d("MicroMsg.NetSceneGetPayFunctionList", "post with list : ".concat(String.valueOf(localObject1)));
     }
-    localbgg.GUP = localLinkedList;
-    localbgg.GUO = localLinkedList.size();
-    if (bu.isNullOrNil(paramString3)) {}
-    for (localbgg.uvT = String.format("tpa_country=%s", new Object[] { Integer.valueOf(paramInt1) });; localbgg.uvT = String.format("%s&tpa_country=%s", new Object[] { paramString3, Integer.valueOf(paramInt1) }))
+    localbsc.LZh = localLinkedList;
+    localbsc.LZg = localLinkedList.size();
+    if (Util.isNullOrNil(paramString3)) {}
+    for (localbsc.xNU = String.format("tpa_country=%s", new Object[] { Integer.valueOf(paramInt1) });; localbsc.xNU = String.format("%s&tpa_country=%s", new Object[] { paramString3, Integer.valueOf(paramInt1) }))
     {
-      localbgg.GUQ = paramInt2;
-      this.vPj = paramString2;
-      ae.d("MicroMsg.NetSceneGetPayFunctionList", "telephonyNetIso " + paramString1 + " ExtInfo: " + localbgg.uvT);
+      localbsc.LZi = paramInt2;
+      this.zjn = paramString2;
+      Log.d("MicroMsg.NetSceneGetPayFunctionList", "telephonyNetIso " + paramString1 + " ExtInfo: " + localbsc.xNU);
       AppMethodBeat.o(65994);
       return;
     }
@@ -119,11 +123,11 @@ public final class f
     AppMethodBeat.o(65993);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(65996);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(65996);
     return i;
   }
@@ -133,44 +137,44 @@ public final class f
     return 495;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(65995);
-    ae.i("MicroMsg.NetSceneGetPayFunctionList", "errCode " + paramInt3 + ", errMsg " + paramString);
+    Log.i("MicroMsg.NetSceneGetPayFunctionList", "errCode " + paramInt3 + ", errMsg " + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bgh)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-      ae.i("MicroMsg.NetSceneGetPayFunctionList", "resp.PayFunctionList wallet_regionL " + this.vPo + " " + paramq.GUR);
+      params = (bsd)((d)params).iLL.iLR;
+      Log.i("MicroMsg.NetSceneGetPayFunctionList", "resp.PayFunctionList wallet_regionL " + this.zjs + " " + params.LZj);
     }
     try
     {
-      if (!bu.isNullOrNil(paramq.GUR))
+      if (!Util.isNullOrNil(params.LZj))
       {
-        Object localObject = new JSONObject(paramq.GUR);
+        Object localObject = new JSONObject(params.LZj);
         paramArrayOfByte = ((JSONObject)localObject).optString("pay_func_list");
-        this.vPk = com.tencent.mm.plugin.wallet_core.model.mall.b.M(new JSONArray(paramArrayOfByte));
+        this.zjo = b.R(new JSONArray(paramArrayOfByte));
         String str1 = ((JSONObject)localObject).optString("global_activity_list");
         String str2 = ((JSONObject)localObject).optString("pay_banner_list");
         localObject = ((JSONObject)localObject).optString("type_info_list");
-        t.eJk().b(this.vPo, paramArrayOfByte, str1, str2, (String)localObject, paramq.GUT);
-        k.dmZ().vPz.clear();
+        t.fQN().b(this.zjs, paramArrayOfByte, str1, str2, (String)localObject, params.LZl);
+        k.egL().zjD.clear();
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(65995);
       return;
     }
-    catch (JSONException paramq)
+    catch (JSONException params)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionList", paramq, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionList", params, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.f
  * JD-Core Version:    0.7.0.1
  */

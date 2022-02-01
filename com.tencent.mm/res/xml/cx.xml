@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
     <PreferenceSmallCategory />
-    <IconPreference android:key="unlike" android:title="@string/fk8" />
-    <Preference android:key="unlike_desc" android:layout="@layout/aqa" android:title="@string/g3f" />
+    <Preference android:key="shake_item_default_bgimg" android:layout="@layout/b8j" android:title="@string/gyo" />
+    <Preference android:key="shake_item_change_bgimg" android:layout="@layout/b8j" android:title="@string/gyn" />
+    <CheckBoxPreference android:key="shake_item_sound" android:layout="@layout/b8j" android:persistent="false" android:title="@string/gyy" />
     <PreferenceSmallCategory />
-    <IconPreference android:key="black" android:title="@string/fo3" />
-    <Preference android:key="not_be_seen_desc" android:layout="@layout/aqa" android:title="@string/g35" />
+    <Preference android:key="say_hi_list_shake_title" android:layout="@layout/b8j" android:title="@string/gb2" />
+    <Preference android:key="shake_item_histoty_list" android:layout="@layout/b8j" android:title="@string/gyp" />
     <PreferenceSmallCategory />
-    <IconPreference android:key="feedback" android:title="@string/g37" />
+    <Preference android:key="shake_msg_list" android:layout="@layout/b8j" android:title="@string/h0b" />
 </PreferenceScreen>

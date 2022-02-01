@@ -15,9 +15,9 @@ final class EmojiCustomUI$13
   {
     AppMethodBeat.i(108871);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/EmojiCustomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    EmojiCustomUI.e(this.pPC);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/emoji/ui/EmojiCustomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    EmojiCustomUI.e(this.rga);
     a.a(this, "com/tencent/mm/plugin/emoji/ui/EmojiCustomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(108871);
   }

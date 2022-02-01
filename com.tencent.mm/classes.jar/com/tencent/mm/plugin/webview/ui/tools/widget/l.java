@@ -9,8 +9,8 @@ import com.tencent.xweb.WebView;
 public final class l
   extends k
 {
-  d EJg = null;
-  private m EJh = null;
+  d JyX = null;
+  private m JyY = null;
   
   public l(MMWebView paramMMWebView, boolean paramBoolean, d paramd)
   {
@@ -20,19 +20,19 @@ public final class l
   public l(MMWebView paramMMWebView, boolean paramBoolean, d paramd, Bundle paramBundle)
   {
     super(paramMMWebView, paramBoolean, paramBundle);
-    this.EJg = paramd;
+    this.JyX = paramd;
   }
   
-  protected final boolean Cq(String paramString)
+  protected final boolean Lb(String paramString)
   {
     AppMethodBeat.i(82234);
-    if ((this.EJg != null) && ((this.EJg instanceof e)))
+    if ((this.JyX != null) && ((this.JyX instanceof e)))
     {
-      bool = ((e)this.EJg).Cq(paramString);
+      bool = ((e)this.JyX).Lb(paramString);
       AppMethodBeat.o(82234);
       return bool;
     }
-    boolean bool = super.Cq(paramString);
+    boolean bool = super.Lb(paramString);
     AppMethodBeat.o(82234);
     return bool;
   }
@@ -41,46 +41,46 @@ public final class l
   {
     AppMethodBeat.i(82232);
     super.a(paramWebView, paramString, paramBitmap);
-    if ((this.EJg instanceof e)) {
-      ((e)this.EJg).aDz();
+    if ((this.JyX instanceof e)) {
+      ((e)this.JyX).aXl();
     }
     AppMethodBeat.o(82232);
   }
   
-  protected final m bpV()
+  protected final m bLB()
   {
     AppMethodBeat.i(82231);
-    if (this.EJh == null) {
-      this.EJh = new m()
+    if (this.JyY == null) {
+      this.JyY = new m()
       {
-        public final void aA(Bundle paramAnonymousBundle)
+        public final void aM(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(82230);
-          if (((l.this.EJg instanceof e)) && (((e)l.this.EJg).aDy()))
+          if (((l.this.JyX instanceof e)) && (((e)l.this.JyX).aXk()))
           {
             AppMethodBeat.o(82230);
             return;
           }
-          super.aA(paramAnonymousBundle);
+          super.aM(paramAnonymousBundle);
           AppMethodBeat.o(82230);
         }
         
-        public final boolean g(int paramAnonymousInt, Bundle paramAnonymousBundle)
+        public final boolean f(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(82229);
-          if (l.this.EJg != null)
+          if (l.this.JyX != null)
           {
-            bool = l.this.EJg.g(paramAnonymousInt, paramAnonymousBundle);
+            bool = l.this.JyX.f(paramAnonymousInt, paramAnonymousBundle);
             AppMethodBeat.o(82229);
             return bool;
           }
-          boolean bool = super.g(paramAnonymousInt, paramAnonymousBundle);
+          boolean bool = super.f(paramAnonymousInt, paramAnonymousBundle);
           AppMethodBeat.o(82229);
           return bool;
         }
       };
     }
-    m localm = this.EJh;
+    m localm = this.JyY;
     AppMethodBeat.o(82231);
     return localm;
   }
@@ -89,8 +89,8 @@ public final class l
   {
     AppMethodBeat.i(82233);
     super.f(paramWebView, paramString);
-    if ((this.EJg instanceof e)) {
-      ((e)this.EJg).c((MMWebView)paramWebView);
+    if ((this.JyX instanceof e)) {
+      ((e)this.JyX).c((MMWebView)paramWebView);
     }
     AppMethodBeat.o(82233);
   }

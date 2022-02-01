@@ -9,30 +9,30 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
 {
-  List<Runnable> Ipd;
-  c Ipe;
+  List<Runnable> NCB;
+  c NCC;
   private Context context;
-  private ServiceConnection oXF;
+  private ServiceConnection qmC;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(152748);
-    this.Ipd = new LinkedList();
-    this.oXF = new ServiceConnection()
+    this.NCB = new LinkedList();
+    this.qmC = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(152747);
-        d.this.Ipe = c.a.L(paramAnonymousIBinder);
-        paramAnonymousComponentName = (Runnable[])d.this.Ipd.toArray(new Runnable[d.this.Ipd.size()]);
+        d.this.NCC = c.a.L(paramAnonymousIBinder);
+        paramAnonymousComponentName = (Runnable[])d.this.NCB.toArray(new Runnable[d.this.NCB.size()]);
         int j = paramAnonymousComponentName.length;
         int i = 0;
         while (i < j)
@@ -43,18 +43,18 @@ public final class d
           }
           i += 1;
         }
-        d.this.Ipd.clear();
+        d.this.NCB.clear();
         AppMethodBeat.o(152747);
       }
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        d.this.Ipe = null;
+        d.this.NCC = null;
       }
     };
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
-      localContext = ak.getContext();
+      localContext = MMApplicationContext.getContext();
     }
     this.context = localContext;
     AppMethodBeat.o(152748);
@@ -66,13 +66,13 @@ public final class d
     if (isConnected()) {
       try
       {
-        this.Ipe.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
+        this.NCC.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
         AppMethodBeat.o(152752);
         return;
       }
       catch (RemoteException paramb)
       {
-        ae.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { bu.o(paramb) });
+        Log.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { Util.stackTraceToString(paramb) });
       }
     }
     AppMethodBeat.o(152752);
@@ -93,16 +93,16 @@ public final class d
       AppMethodBeat.o(152749);
       return;
     }
-    this.Ipd.add(paramRunnable);
+    this.NCB.add(paramRunnable);
     paramRunnable = new Intent(this.context, RemoteService.class);
-    this.context.bindService(paramRunnable, this.oXF, 1);
+    this.context.bindService(paramRunnable, this.qmC, 1);
     AppMethodBeat.o(152749);
   }
   
   public final boolean isConnected()
   {
     AppMethodBeat.i(152750);
-    if ((this.Ipe != null) && (this.Ipe.asBinder().isBinderAlive()))
+    if ((this.NCC != null) && (this.NCC.asBinder().isBinderAlive()))
     {
       AppMethodBeat.o(152750);
       return true;
@@ -114,10 +114,10 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(152751);
-    if ((this.Ipe != null) && (this.oXF != null))
+    if ((this.NCC != null) && (this.qmC != null))
     {
-      this.context.unbindService(this.oXF);
-      this.Ipe = null;
+      this.context.unbindService(this.qmC);
+      this.NCC = null;
     }
     this.context = null;
     AppMethodBeat.o(152751);
@@ -125,7 +125,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.remoteservice.d
  * JD-Core Version:    0.7.0.1
  */

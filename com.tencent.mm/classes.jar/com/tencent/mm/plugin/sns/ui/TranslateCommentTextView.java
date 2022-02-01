@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TranslateCommentTextView
   extends LinearLayout
 {
-  public MaskTextView AHX;
-  public SnsTranslateResultView Atx;
+  public SnsTranslateResultView ECF;
+  public MaskTextView ERU;
   
   public TranslateCommentTextView(Context paramContext)
   {
@@ -32,26 +32,26 @@ public class TranslateCommentTextView
   private void init()
   {
     AppMethodBeat.i(99780);
-    LayoutInflater.from(getContext()).inflate(2131495754, this);
-    this.AHX = ((MaskTextView)findViewById(2131298538));
-    this.Atx = ((SnsTranslateResultView)findViewById(2131305091));
-    this.Atx.setVisibility(8);
+    LayoutInflater.from(getContext()).inflate(2131496712, this);
+    this.ERU = ((MaskTextView)findViewById(2131298967));
+    this.ECF = ((SnsTranslateResultView)findViewById(2131308248));
+    this.ECF.setVisibility(8);
     AppMethodBeat.o(99780);
   }
   
   public TextView getOriginCommentTextView()
   {
-    return this.AHX;
+    return this.ERU;
   }
   
   public SnsTranslateResultView getTranslateResultView()
   {
-    return this.Atx;
+    return this.ECF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TranslateCommentTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ public final class DrmInitData
   implements Parcelable, Comparator<SchemeData>
 {
   public static final Parcelable.Creator<DrmInitData> CREATOR;
-  private int aHQ;
-  public final SchemeData[] bhE;
-  public final int bhF;
+  private int aHK;
+  public final SchemeData[] bhB;
+  public final int bhC;
   
   static
   {
@@ -29,8 +29,8 @@ public final class DrmInitData
   DrmInitData(Parcel paramParcel)
   {
     AppMethodBeat.i(91876);
-    this.bhE = ((SchemeData[])paramParcel.createTypedArray(SchemeData.CREATOR));
-    this.bhF = this.bhE.length;
+    this.bhB = ((SchemeData[])paramParcel.createTypedArray(SchemeData.CREATOR));
+    this.bhC = this.bhB.length;
     AppMethodBeat.o(91876);
   }
   
@@ -61,8 +61,8 @@ public final class DrmInitData
         }
         i += 1;
       }
-      this.bhE = paramVarArgs;
-      this.bhF = paramVarArgs.length;
+      this.bhB = paramVarArgs;
+      this.bhC = paramVarArgs.length;
       AppMethodBeat.o(91875);
       return;
     }
@@ -76,23 +76,23 @@ public final class DrmInitData
   public final DrmInitData bg(String paramString)
   {
     AppMethodBeat.i(91877);
-    Object localObject = this.bhE;
+    Object localObject = this.bhB;
     int j = localObject.length;
     int i = 0;
     if (i < j) {
-      if (x.i(localObject[i].type, paramString)) {}
+      if (x.j(localObject[i].type, paramString)) {}
     }
     for (i = 1;; i = 0)
     {
       if (i != 0)
       {
-        SchemeData[] arrayOfSchemeData = new SchemeData[this.bhE.length];
+        SchemeData[] arrayOfSchemeData = new SchemeData[this.bhB.length];
         i = 0;
         label54:
         if (i < arrayOfSchemeData.length)
         {
-          localObject = this.bhE[i];
-          if (x.i(((SchemeData)localObject).type, paramString)) {}
+          localObject = this.bhB[i];
+          if (x.j(((SchemeData)localObject).type, paramString)) {}
           for (;;)
           {
             arrayOfSchemeData[i] = localObject;
@@ -100,7 +100,7 @@ public final class DrmInitData
             break label54;
             i += 1;
             break;
-            localObject = new SchemeData(((SchemeData)localObject).uuid, paramString, ((SchemeData)localObject).mimeType, ((SchemeData)localObject).data, ((SchemeData)localObject).bhG);
+            localObject = new SchemeData(((SchemeData)localObject).uuid, paramString, ((SchemeData)localObject).mimeType, ((SchemeData)localObject).data, ((SchemeData)localObject).bhD);
           }
         }
         paramString = new DrmInitData(arrayOfSchemeData);
@@ -130,7 +130,7 @@ public final class DrmInitData
       AppMethodBeat.o(91879);
       return false;
     }
-    boolean bool = Arrays.equals(this.bhE, ((DrmInitData)paramObject).bhE);
+    boolean bool = Arrays.equals(this.bhB, ((DrmInitData)paramObject).bhB);
     AppMethodBeat.o(91879);
     return bool;
   }
@@ -138,10 +138,10 @@ public final class DrmInitData
   public final int hashCode()
   {
     AppMethodBeat.i(91878);
-    if (this.aHQ == 0) {
-      this.aHQ = Arrays.hashCode(this.bhE);
+    if (this.aHK == 0) {
+      this.aHK = Arrays.hashCode(this.bhB);
     }
-    int i = this.aHQ;
+    int i = this.aHK;
     AppMethodBeat.o(91878);
     return i;
   }
@@ -149,7 +149,7 @@ public final class DrmInitData
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(91880);
-    paramParcel.writeTypedArray(this.bhE, 0);
+    paramParcel.writeTypedArray(this.bhB, 0);
     AppMethodBeat.o(91880);
   }
   
@@ -157,8 +157,8 @@ public final class DrmInitData
     implements Parcelable
   {
     public static final Parcelable.Creator<SchemeData> CREATOR;
-    private int aHQ;
-    public final boolean bhG;
+    private int aHK;
+    public final boolean bhD;
     public final byte[] data;
     public final String mimeType;
     public final String type;
@@ -181,7 +181,7 @@ public final class DrmInitData
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.bhG = bool;
+        this.bhD = bool;
         AppMethodBeat.o(91869);
         return;
       }
@@ -194,7 +194,7 @@ public final class DrmInitData
       this.type = paramString1;
       this.mimeType = ((String)a.checkNotNull(paramString2));
       this.data = ((byte[])a.checkNotNull(paramArrayOfByte));
-      this.bhG = paramBoolean;
+      this.bhD = paramBoolean;
       AppMethodBeat.o(91868);
     }
     
@@ -222,7 +222,7 @@ public final class DrmInitData
         return true;
       }
       paramObject = (SchemeData)paramObject;
-      if ((this.mimeType.equals(paramObject.mimeType)) && (x.i(this.uuid, paramObject.uuid)) && (x.i(this.type, paramObject.type)) && (Arrays.equals(this.data, paramObject.data)))
+      if ((this.mimeType.equals(paramObject.mimeType)) && (x.j(this.uuid, paramObject.uuid)) && (x.j(this.type, paramObject.type)) && (Arrays.equals(this.data, paramObject.data)))
       {
         AppMethodBeat.o(91870);
         return true;
@@ -235,7 +235,7 @@ public final class DrmInitData
     {
       AppMethodBeat.i(91871);
       int j;
-      if (this.aHQ == 0)
+      if (this.aHK == 0)
       {
         j = this.uuid.hashCode();
         if (this.type != null) {
@@ -245,8 +245,8 @@ public final class DrmInitData
       label73:
       for (int i = 0;; i = this.type.hashCode())
       {
-        this.aHQ = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
-        i = this.aHQ;
+        this.aHK = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
+        i = this.aHK;
         AppMethodBeat.o(91871);
         return i;
       }
@@ -260,7 +260,7 @@ public final class DrmInitData
       paramParcel.writeString(this.type);
       paramParcel.writeString(this.mimeType);
       paramParcel.writeByteArray(this.data);
-      if (this.bhG) {}
+      if (this.bhD) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -272,7 +272,7 @@ public final class DrmInitData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DrmInitData
  * JD-Core Version:    0.7.0.1
  */

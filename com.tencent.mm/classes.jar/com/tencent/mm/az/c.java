@@ -1,19 +1,19 @@
 package com.tencent.mm.az;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class c
   extends a
 {
-  public c(Map<String, String> paramMap, bv parambv)
+  public c(Map<String, String> paramMap, ca paramca)
   {
-    super(paramMap, parambv);
+    super(paramMap, paramca);
   }
   
-  protected final boolean aAs()
+  protected final boolean aTA()
   {
     AppMethodBeat.i(101784);
     if (this.values == null)
@@ -29,17 +29,17 @@ public final class c
     String str2 = (String)this.values.get(".sysmsg.chatroommuteexpt.text");
     String str1 = (String)this.values.get(".sysmsg.chatroommuteexpt.link.text");
     str2 = str2 + str1;
-    this.ikJ.add(str1);
-    this.ikK.addFirst(Integer.valueOf(str2.length() - str1.length()));
-    this.ikL.add(Integer.valueOf(str2.length()));
-    this.ikH = str2;
+    this.jfI.add(str1);
+    this.jfJ.addFirst(Integer.valueOf(str2.length() - str1.length()));
+    this.jfK.add(Integer.valueOf(str2.length()));
+    this.jfG = str2;
     AppMethodBeat.o(101784);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.az.c
  * JD-Core Version:    0.7.0.1
  */

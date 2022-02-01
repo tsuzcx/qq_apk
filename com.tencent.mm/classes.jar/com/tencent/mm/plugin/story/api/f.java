@@ -6,17 +6,17 @@ public abstract interface f
 {
   public abstract boolean a(a parama);
   
-  public abstract boolean ekC();
+  public abstract boolean fnd();
   
   public static enum a
   {
     static
     {
       AppMethodBeat.i(118416);
-      AZv = new a("TimeLine_Des", 0);
-      AZw = new a("TimeLine_Comment", 1);
-      AZx = new a("TimeLine_Like", 2);
-      AZy = new a[] { AZv, AZw, AZx };
+      Fkt = new a("TimeLine_Des", 0);
+      Fku = new a("TimeLine_Comment", 1);
+      Fkv = new a("TimeLine_Like", 2);
+      Fkw = new a[] { Fkt, Fku, Fkv };
       AppMethodBeat.o(118416);
     }
     
@@ -25,7 +25,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.f
  * JD-Core Version:    0.7.0.1
  */

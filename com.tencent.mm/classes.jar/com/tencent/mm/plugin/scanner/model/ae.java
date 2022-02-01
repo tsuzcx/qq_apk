@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/ScanSuccessMarkClickListener;", "", "onClick", "", "index", "", "view", "Landroid/view/View;", "plugin-scan_release"})
-public abstract interface ae
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "", "()V", "pointCount", "", "getPointCount", "()I", "setPointCount", "(I)V", "points", "", "Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "getPoints", "()[Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "setPoints", "([Lcom/tencent/mm/plugin/scanner/model/ScanPoint;)V", "[Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "plugin-scan_release"})
+public final class ae
 {
-  public abstract void Pn(int paramInt);
+  public int pointCount;
+  public ScanPoint[] points;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.ae
  * JD-Core Version:    0.7.0.1
  */

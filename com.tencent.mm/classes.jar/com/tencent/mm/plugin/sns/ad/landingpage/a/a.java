@@ -1,0 +1,55 @@
+package com.tencent.mm.plugin.sns.ad.landingpage.a;
+
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.Window;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.q;
+
+public final class a
+  extends q
+{
+  private a(Context paramContext)
+  {
+    super(paramContext, 2131821772, 0);
+    AppMethodBeat.i(202001);
+    paramContext = getWindow();
+    if (paramContext != null)
+    {
+      paramContext.addFlags(8);
+      paramContext.getDecorView().setSystemUiVisibility(4102);
+    }
+    AppMethodBeat.o(202001);
+  }
+  
+  public static q ap(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(202002);
+    if ((paramContext instanceof Activity))
+    {
+      String str = "";
+      if (paramInt > 0) {
+        str = paramContext.getString(paramInt);
+      }
+      paramContext = new a(paramContext);
+      if (!TextUtils.isEmpty(str)) {
+        paramContext.setMessage(str);
+      }
+      paramContext.setCancelable(true);
+      paramContext.setOnCancelListener(null);
+      paramContext.setCanceledOnTouchOutside(false);
+      AppMethodBeat.o(202002);
+      return paramContext;
+    }
+    AppMethodBeat.o(202002);
+    return null;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.a.a
+ * JD-Core Version:    0.7.0.1
+ */

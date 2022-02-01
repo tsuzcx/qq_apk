@@ -21,64 +21,64 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class WcPayKeyboardAnimationActionButton
   extends View
 {
-  private int BWV;
-  private int BWW;
-  private int GhC;
-  private int GhD;
-  private ColorStateList LTO;
-  private ColorStateList LTP;
-  private int LTQ;
-  private int LTS;
-  private int LTT;
-  private int LTU;
-  private int LTV;
-  private int LTW;
-  private int LTX;
-  private int LTY;
-  private int LTZ;
-  String LUa;
-  private float LUb;
-  private float LUc;
-  boolean LUd;
-  private int LUe;
-  private int LUf;
-  private RectF LUg;
-  private Rect LUh;
-  private ObjectAnimator LUi;
-  private ValueAnimator LUj;
-  private ValueAnimator LUk;
-  private ObjectAnimator LUl;
-  private ValueAnimator LUm;
-  private ValueAnimator LUn;
-  AnimatorSet LUo;
-  private Paint bWm;
+  AnimatorSet CPA;
+  private int GyC;
+  private int GyD;
+  private int Lcf;
+  private int Lcg;
+  private ColorStateList RsF;
+  private ColorStateList RsG;
+  private int RsH;
+  private int RsI;
+  private int RsJ;
+  private int RsK;
+  private int RsL;
+  private int RsM;
+  private int RsN;
+  private int RsO;
+  private int RsP;
+  String RsQ;
+  private float RsR;
+  private float RsS;
+  boolean RsT;
+  private int RsU;
+  private int RsV;
+  private RectF RsW;
+  private Rect RsX;
+  private ObjectAnimator RsY;
+  private ValueAnimator RsZ;
+  private ValueAnimator Rta;
+  private ObjectAnimator Rtb;
+  private ValueAnimator Rtc;
+  private ValueAnimator Rtd;
+  AnimatorSet Rte;
+  private Paint cgU;
   private Context context;
   private int height;
-  private Paint kqH;
+  private Paint lup;
   private int width;
-  AnimatorSet yLH;
   
   public WcPayKeyboardAnimationActionButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(72701);
-    this.GhD = getResources().getColor(2131101171);
-    this.GhC = getResources().getColor(2131101185);
-    this.LTQ = 17;
-    this.LTY = 300;
-    this.LTZ = 300;
-    this.LUa = "";
-    this.LUd = true;
-    this.LUg = new RectF();
-    this.LUh = new Rect();
-    this.yLH = new AnimatorSet();
-    this.LUo = new AnimatorSet();
+    this.Lcg = getResources().getColor(2131101414);
+    this.Lcf = getResources().getColor(2131101430);
+    this.RsH = 17;
+    this.RsO = 300;
+    this.RsP = 300;
+    this.RsQ = "";
+    this.RsT = true;
+    this.RsW = new RectF();
+    this.RsX = new Rect();
+    this.CPA = new AnimatorSet();
+    this.Rte = new AnimatorSet();
     init();
     AppMethodBeat.o(72701);
   }
@@ -87,80 +87,88 @@ public class WcPayKeyboardAnimationActionButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(72702);
-    this.GhD = getResources().getColor(2131101171);
-    this.GhC = getResources().getColor(2131101185);
-    this.LTQ = 17;
-    this.LTY = 300;
-    this.LTZ = 300;
-    this.LUa = "";
-    this.LUd = true;
-    this.LUg = new RectF();
-    this.LUh = new Rect();
-    this.yLH = new AnimatorSet();
-    this.LUo = new AnimatorSet();
+    this.Lcg = getResources().getColor(2131101414);
+    this.Lcf = getResources().getColor(2131101430);
+    this.RsH = 17;
+    this.RsO = 300;
+    this.RsP = 300;
+    this.RsQ = "";
+    this.RsT = true;
+    this.RsW = new RectF();
+    this.RsX = new Rect();
+    this.CPA = new AnimatorSet();
+    this.Rte = new AnimatorSet();
     init();
     AppMethodBeat.o(72702);
   }
   
-  private void U(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void T(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.BWV = paramInt1;
-    this.BWW = paramInt2;
-    this.LUe = paramInt3;
-    this.LUf = paramInt4;
+    this.GyC = paramInt1;
+    this.GyD = paramInt2;
+    this.RsU = paramInt3;
+    this.RsV = paramInt4;
   }
   
-  private void Zm()
+  private void amZ()
   {
     AppMethodBeat.i(72704);
-    this.context = ak.getContext();
-    this.LTS = a.fromDPToPix(this.context, 4);
-    this.LTT = a.fromDPToPix(this.context, 16);
-    this.LTU = a.fromDPToPix(this.context, 64);
-    this.LTV = a.fromDPToPix(this.context, 96);
-    this.LTO = getResources().getColorStateList(2131101171);
-    this.LTP = getResources().getColorStateList(2131101185);
+    this.context = MMApplicationContext.getContext();
+    this.RsI = a.fromDPToPix(this.context, 4);
+    this.RsJ = a.fromDPToPix(this.context, 16);
+    this.RsK = a.fromDPToPix(this.context, 64);
+    this.RsL = a.fromDPToPix(this.context, 96);
+    this.RsF = getResources().getColorStateList(2131101414);
+    this.RsG = getResources().getColorStateList(2131101430);
     AppMethodBeat.o(72704);
   }
   
-  private void fVC()
+  private void hgW()
+  {
+    AppMethodBeat.i(72707);
+    this.RsS = getTranslationX();
+    this.RsR = (this.RsS - this.RsJ);
+    AppMethodBeat.o(72707);
+  }
+  
+  private void hgZ()
   {
     AppMethodBeat.i(72711);
-    fVD();
-    fVE();
-    fVF();
-    this.yLH = new AnimatorSet();
-    this.yLH.play(this.LUk).with(this.LUi);
+    hha();
+    hhb();
+    hhc();
+    this.CPA = new AnimatorSet();
+    this.CPA.play(this.Rta).with(this.RsY);
     AppMethodBeat.o(72711);
   }
   
-  private void fVD()
+  private void hha()
   {
     AppMethodBeat.i(72712);
-    if (this.LUi == null)
+    if (this.RsY == null)
     {
-      this.LUi = ObjectAnimator.ofFloat(this, "translationX", new float[] { this.LUc, this.LUb });
-      this.LUi.setDuration(this.LTY);
-      this.LUi.setInterpolator(new AccelerateDecelerateInterpolator());
+      this.RsY = ObjectAnimator.ofFloat(this, "translationX", new float[] { this.RsS, this.RsR });
+      this.RsY.setDuration(this.RsO);
+      this.RsY.setInterpolator(new AccelerateDecelerateInterpolator());
     }
     AppMethodBeat.o(72712);
   }
   
-  private void fVE()
+  private void hhb()
   {
     AppMethodBeat.i(72713);
-    this.LTW = this.height;
-    if (this.LUk == null)
+    this.RsM = this.height;
+    if (this.Rta == null)
     {
-      this.LUk = ValueAnimator.ofInt(new int[] { this.height, this.LTU });
-      this.LUk.setDuration(this.LTZ);
-      this.LUk.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.Rta = ValueAnimator.ofInt(new int[] { this.height, this.RsK });
+      this.Rta.setDuration(this.RsP);
+      this.Rta.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(72698);
           WcPayKeyboardAnimationActionButton.a(WcPayKeyboardAnimationActionButton.this, ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-          ae.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "interim_height:%s", new Object[] { Integer.valueOf(WcPayKeyboardAnimationActionButton.a(WcPayKeyboardAnimationActionButton.this)) });
+          Log.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "interim_height:%s", new Object[] { Integer.valueOf(WcPayKeyboardAnimationActionButton.a(WcPayKeyboardAnimationActionButton.this)) });
           WcPayKeyboardAnimationActionButton.this.invalidate();
           AppMethodBeat.o(72698);
         }
@@ -169,21 +177,21 @@ public class WcPayKeyboardAnimationActionButton
     AppMethodBeat.o(72713);
   }
   
-  private void fVF()
+  private void hhc()
   {
     AppMethodBeat.i(72714);
-    this.LTX = this.width;
-    if (this.LUj == null)
+    this.RsN = this.width;
+    if (this.RsZ == null)
     {
-      this.LUj = ValueAnimator.ofInt(new int[] { this.width, this.LTV });
-      this.LUj.setDuration(this.LTZ);
-      this.LUj.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.RsZ = ValueAnimator.ofInt(new int[] { this.width, this.RsL });
+      this.RsZ.setDuration(this.RsP);
+      this.RsZ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(72699);
           WcPayKeyboardAnimationActionButton.b(WcPayKeyboardAnimationActionButton.this, ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-          ae.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "interim_width:%s", new Object[] { Integer.valueOf(WcPayKeyboardAnimationActionButton.b(WcPayKeyboardAnimationActionButton.this)) });
+          Log.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "interim_width:%s", new Object[] { Integer.valueOf(WcPayKeyboardAnimationActionButton.b(WcPayKeyboardAnimationActionButton.this)) });
           WcPayKeyboardAnimationActionButton.this.invalidate();
           AppMethodBeat.o(72699);
         }
@@ -192,33 +200,33 @@ public class WcPayKeyboardAnimationActionButton
     AppMethodBeat.o(72714);
   }
   
-  private void fVH()
+  private void hhe()
   {
     AppMethodBeat.i(72716);
-    if (this.LUl == null)
+    if (this.Rtb == null)
     {
-      this.LUl = ObjectAnimator.ofFloat(this, "translationX", new float[] { this.LUb, this.LUc });
-      this.LUl.setDuration(this.LTY);
-      this.LUl.setInterpolator(new AccelerateDecelerateInterpolator());
+      this.Rtb = ObjectAnimator.ofFloat(this, "translationX", new float[] { this.RsR, this.RsS });
+      this.Rtb.setDuration(this.RsO);
+      this.Rtb.setInterpolator(new AccelerateDecelerateInterpolator());
     }
     AppMethodBeat.o(72716);
   }
   
-  private void fVI()
+  private void hhf()
   {
     AppMethodBeat.i(72717);
-    this.LTW = this.LTU;
-    if (this.LUn == null)
+    this.RsM = this.RsK;
+    if (this.Rtd == null)
     {
-      this.LUn = ValueAnimator.ofInt(new int[] { this.LTU, this.height });
-      this.LUn.setDuration(this.LTZ);
-      this.LUn.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.Rtd = ValueAnimator.ofInt(new int[] { this.RsK, this.height });
+      this.Rtd.setDuration(this.RsP);
+      this.Rtd.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(72700);
           WcPayKeyboardAnimationActionButton.a(WcPayKeyboardAnimationActionButton.this, ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-          ae.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "interim_height:%s", new Object[] { Integer.valueOf(WcPayKeyboardAnimationActionButton.a(WcPayKeyboardAnimationActionButton.this)) });
+          Log.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "interim_height:%s", new Object[] { Integer.valueOf(WcPayKeyboardAnimationActionButton.a(WcPayKeyboardAnimationActionButton.this)) });
           WcPayKeyboardAnimationActionButton.this.invalidate();
           AppMethodBeat.o(72700);
         }
@@ -227,47 +235,39 @@ public class WcPayKeyboardAnimationActionButton
     AppMethodBeat.o(72717);
   }
   
-  private void fVJ()
+  private void hhg()
   {
     AppMethodBeat.i(72718);
-    this.kqH = new Paint();
-    this.kqH.setStrokeWidth(4.0F);
-    this.kqH.setStyle(Paint.Style.FILL);
-    this.kqH.setAntiAlias(true);
-    this.kqH.setColor(this.GhD);
-    this.bWm = new Paint(1);
-    this.bWm.setTextSize(a.fromDPToPix(this.context, this.LTQ) * a.ef(this.context));
-    this.bWm.setColor(this.GhC);
-    this.bWm.setTextAlign(Paint.Align.CENTER);
-    this.bWm.setAntiAlias(true);
-    this.bWm.setFakeBoldText(true);
+    this.lup = new Paint();
+    this.lup.setStrokeWidth(4.0F);
+    this.lup.setStyle(Paint.Style.FILL);
+    this.lup.setAntiAlias(true);
+    this.lup.setColor(this.Lcg);
+    this.cgU = new Paint(1);
+    this.cgU.setTextSize(a.fromDPToPix(this.context, this.RsH) * a.ez(this.context));
+    this.cgU.setColor(this.Lcf);
+    this.cgU.setTextAlign(Paint.Align.CENTER);
+    this.cgU.setAntiAlias(true);
+    this.cgU.setFakeBoldText(true);
     AppMethodBeat.o(72718);
-  }
-  
-  private void fVz()
-  {
-    AppMethodBeat.i(72707);
-    this.LUc = getTranslationX();
-    this.LUb = (this.LUc - this.LTT);
-    AppMethodBeat.o(72707);
   }
   
   private void init()
   {
     AppMethodBeat.i(72703);
-    Zm();
-    fVJ();
+    amZ();
+    hhg();
     AppMethodBeat.o(72703);
   }
   
-  public final void V(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void U(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(72709);
-    if (this.LUd)
+    if (this.RsT)
     {
-      this.LUd = false;
-      U(paramInt1, paramInt2, paramInt3, paramInt4);
-      fVz();
+      this.RsT = false;
+      T(paramInt1, paramInt2, paramInt3, paramInt4);
+      hgW();
     }
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     localLayoutParams.width = paramInt1;
@@ -276,28 +276,28 @@ public class WcPayKeyboardAnimationActionButton
     setLayoutParams(localLayoutParams);
     this.width = paramInt1;
     this.height = paramInt2;
-    ae.d("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "initialLayoutParams() width:%s height:%s", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) });
-    this.LTX = paramInt1;
-    fVC();
+    Log.d("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "initialLayoutParams() width:%s height:%s", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) });
+    this.RsN = paramInt1;
+    hgZ();
     AppMethodBeat.o(72709);
   }
   
-  public final void fVA()
+  public final void hgX()
   {
     AppMethodBeat.i(72708);
-    V(this.BWV, this.BWW, this.LUe, this.LUf);
+    U(this.GyC, this.GyD, this.RsU, this.RsV);
     AppMethodBeat.o(72708);
   }
   
-  public final boolean fVB()
+  public final boolean hgY()
   {
     AppMethodBeat.i(72710);
     boolean bool1;
     boolean bool2;
-    if (this.yLH == null)
+    if (this.CPA == null)
     {
       bool1 = false;
-      if (this.LUo != null) {
+      if (this.Rte != null) {
         break label77;
       }
       bool2 = false;
@@ -309,18 +309,18 @@ public class WcPayKeyboardAnimationActionButton
       }
       AppMethodBeat.o(72710);
       return true;
-      if ((this.LUk == null) || (this.LUj == null) || (this.LUi == null))
+      if ((this.Rta == null) || (this.RsZ == null) || (this.RsY == null))
       {
         bool1 = false;
         break;
       }
-      bool1 = this.yLH.isRunning();
+      bool1 = this.CPA.isRunning();
       break;
       label77:
-      if ((this.LUn == null) || (this.LUm == null) || (this.LUl == null)) {
+      if ((this.Rtd == null) || (this.Rtc == null) || (this.Rtb == null)) {
         bool2 = false;
       } else {
-        bool2 = this.LUo.isRunning();
+        bool2 = this.Rte.isRunning();
       }
     }
     label114:
@@ -328,23 +328,23 @@ public class WcPayKeyboardAnimationActionButton
     return false;
   }
   
-  public final void fVG()
+  public final void hhd()
   {
     AppMethodBeat.i(72715);
-    fVH();
-    fVI();
-    this.LUo = new AnimatorSet();
-    this.LUo.play(this.LUn).with(this.LUl);
+    hhe();
+    hhf();
+    this.Rte = new AnimatorSet();
+    this.Rte.play(this.Rtd).with(this.Rtb);
     AppMethodBeat.o(72715);
   }
   
-  public final void fVK()
+  public final void hhh()
   {
     AppMethodBeat.i(72719);
-    this.LTS = a.fromDPToPix(this.context, 4);
-    this.LTW = this.height;
-    this.LTX = this.width;
-    setTranslationX(getTranslationX() + this.LTT);
+    this.RsI = a.fromDPToPix(this.context, 4);
+    this.RsM = this.height;
+    this.RsN = this.width;
+    setTranslationX(getTranslationX() + this.RsJ);
     invalidate();
     AppMethodBeat.o(72719);
   }
@@ -354,23 +354,23 @@ public class WcPayKeyboardAnimationActionButton
     AppMethodBeat.i(72706);
     super.onDraw(paramCanvas);
     Object localObject = getDrawableState();
-    int i = this.LTP.getColorForState((int[])localObject, this.GhC);
-    int j = this.LTO.getColorForState((int[])localObject, this.GhD);
-    this.bWm.setColor(i);
-    this.kqH.setColor(j);
-    this.LUg.left = 0.0F;
-    this.LUg.top = ((this.height - this.LTW) / 2);
-    this.LUg.right = this.LTX;
-    this.LUg.bottom = ((this.height + this.LTW) / 2);
-    ae.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "draw_oval_to_circle() left:%s top:%s right:%s bottom:%s circleAngle:%s", new Object[] { Float.valueOf(this.LUg.left), Float.valueOf(this.LUg.top), Float.valueOf(this.LUg.right), Float.valueOf(this.LUg.bottom), Integer.valueOf(this.LTS) });
-    paramCanvas.drawRoundRect(this.LUg, this.LTS, this.LTS, this.kqH);
-    this.LUh.left = 0;
-    this.LUh.top = 0;
-    this.LUh.right = this.LTX;
-    this.LUh.bottom = this.height;
-    localObject = this.bWm.getFontMetricsInt();
-    i = (this.LUh.bottom + this.LUh.top - ((Paint.FontMetricsInt)localObject).bottom - ((Paint.FontMetricsInt)localObject).top) / 2;
-    paramCanvas.drawText(this.LUa, this.LUh.centerX(), i, this.bWm);
+    int i = this.RsG.getColorForState((int[])localObject, this.Lcf);
+    int j = this.RsF.getColorForState((int[])localObject, this.Lcg);
+    this.cgU.setColor(i);
+    this.lup.setColor(j);
+    this.RsW.left = 0.0F;
+    this.RsW.top = ((this.height - this.RsM) / 2);
+    this.RsW.right = this.RsN;
+    this.RsW.bottom = ((this.height + this.RsM) / 2);
+    Log.v("MicroMsg.WcPayKeyBoard.WcPayKeyboardAnimationActionButton", "draw_oval_to_circle() left:%s top:%s right:%s bottom:%s circleAngle:%s", new Object[] { Float.valueOf(this.RsW.left), Float.valueOf(this.RsW.top), Float.valueOf(this.RsW.right), Float.valueOf(this.RsW.bottom), Integer.valueOf(this.RsI) });
+    paramCanvas.drawRoundRect(this.RsW, this.RsI, this.RsI, this.lup);
+    this.RsX.left = 0;
+    this.RsX.top = 0;
+    this.RsX.right = this.RsN;
+    this.RsX.bottom = this.height;
+    localObject = this.cgU.getFontMetricsInt();
+    i = (this.RsX.bottom + this.RsX.top - ((Paint.FontMetricsInt)localObject).bottom - ((Paint.FontMetricsInt)localObject).top) / 2;
+    paramCanvas.drawText(this.RsQ, this.RsX.centerX(), i, this.cgU);
     AppMethodBeat.o(72706);
   }
   
@@ -383,7 +383,7 @@ public class WcPayKeyboardAnimationActionButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.keyboard.WcPayKeyboardAnimationActionButton
  * JD-Core Version:    0.7.0.1
  */

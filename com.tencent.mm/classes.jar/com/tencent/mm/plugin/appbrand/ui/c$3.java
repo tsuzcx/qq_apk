@@ -13,12 +13,12 @@ final class c$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(223027);
+    AppMethodBeat.i(227544);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandAdLoadingSplash$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandAdLoadingSplash$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandAdLoadingSplash$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(223027);
+    AppMethodBeat.o(227544);
   }
 }
 

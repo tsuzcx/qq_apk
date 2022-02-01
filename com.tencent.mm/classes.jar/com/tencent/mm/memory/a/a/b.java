@@ -9,22 +9,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class b
 {
-  private static volatile b hzT;
-  public static final com.tencent.mm.memory.a.a.a.a hzU;
+  private static volatile b iua;
+  public static final com.tencent.mm.memory.a.a.a.a iub;
   private final String TAG;
-  private b hzV;
-  public ConcurrentHashMap<String, b> hzz;
+  public ConcurrentHashMap<String, b> itH;
+  private b iuc;
   
   static
   {
     AppMethodBeat.i(156504);
-    com.tencent.mm.memory.a.a.a.a locala = com.tencent.mm.memory.a.a.a.a.azj();
-    hzU = locala;
-    b localb = aze();
+    com.tencent.mm.memory.a.a.a.a locala = com.tencent.mm.memory.a.a.a.a.aSp();
+    iub = locala;
+    b localb = aSk();
     a locala1 = new a(locala);
-    localb.hzz.put(locala.dCl, locala1);
-    if (locala.equals(hzU)) {
-      localb.hzV = locala1;
+    localb.itH.put(locala.dUb, locala1);
+    if (locala.equals(iub)) {
+      localb.iuc = locala1;
     }
     AppMethodBeat.o(156504);
   }
@@ -33,21 +33,21 @@ public class b
   {
     AppMethodBeat.i(156498);
     this.TAG = "MicroMsg.CacheInvoke";
-    this.hzV = null;
-    this.hzz = new ConcurrentHashMap();
+    this.iuc = null;
+    this.itH = new ConcurrentHashMap();
     AppMethodBeat.o(156498);
   }
   
-  public static b aze()
+  public static b aSk()
   {
     AppMethodBeat.i(156499);
-    if (hzT == null) {}
+    if (iua == null) {}
     try
     {
-      if (hzT == null) {
-        hzT = new b();
+      if (iua == null) {
+        iua = new b();
       }
-      b localb = hzT;
+      b localb = iua;
       AppMethodBeat.o(156499);
       return localb;
     }
@@ -60,7 +60,7 @@ public class b
   private static b b(com.tencent.mm.memory.a.a.a.a parama)
   {
     AppMethodBeat.i(156500);
-    parama = (b)aze().hzz.get(parama.dCl);
+    parama = (b)aSk().itH.get(parama.dUb);
     AppMethodBeat.o(156500);
     return parama;
   }
@@ -73,14 +73,14 @@ public class b
       AppMethodBeat.o(156501);
       return null;
     }
-    if (hzU.equals(parama))
+    if (iub.equals(parama))
     {
-      parama = aze().hzV.azh();
+      parama = aSk().iuc.aSn();
       AppMethodBeat.o(156501);
       return parama;
     }
-    aze();
-    parama = b(parama).azh();
+    aSk();
+    parama = b(parama).aSn();
     AppMethodBeat.o(156501);
     return parama;
   }
@@ -93,14 +93,14 @@ public class b
       AppMethodBeat.o(156502);
       return null;
     }
-    if (hzU.equals(parama))
+    if (iub.equals(parama))
     {
-      parama = aze().hzV.azi();
+      parama = aSk().iuc.aSo();
       AppMethodBeat.o(156502);
       return parama;
     }
-    aze();
-    parama = b(parama).azi();
+    aSk();
+    parama = b(parama).aSo();
     AppMethodBeat.o(156502);
     return parama;
   }
@@ -113,14 +113,14 @@ public class b
       AppMethodBeat.o(156503);
       return 2147483647;
     }
-    if (hzU.equals(parama))
+    if (iub.equals(parama))
     {
-      i = aze().hzV.azg().hAd;
+      i = aSk().iuc.aSm().iuk;
       AppMethodBeat.o(156503);
       return i;
     }
-    aze();
-    int i = b(parama).azg().hAd;
+    aSk();
+    int i = b(parama).aSm().iuk;
     AppMethodBeat.o(156503);
     return i;
   }
@@ -128,59 +128,59 @@ public class b
   static final class a
     implements b.b
   {
-    private static String hzZ = "//data[%d,%d]::%s::%s";
-    private d<String, a> hzW;
-    private g<String, Object> hzX;
-    private com.tencent.mm.memory.a.a.a.a hzY;
+    private static String iug = "//data[%d,%d]::%s::%s";
+    private d<String, a> iud;
+    private g<String, Object> iue;
+    private com.tencent.mm.memory.a.a.a.a iuf;
     
     a(com.tencent.mm.memory.a.a.a.a parama)
     {
       AppMethodBeat.i(156496);
-      this.hzW = null;
-      this.hzX = null;
-      this.hzY = parama;
-      this.hzW = new com.tencent.mm.memory.a.a.a.f(parama, new f.b()new f.c {}, new f.c() {}) {};
-      this.hzX = new g(10);
+      this.iud = null;
+      this.iue = null;
+      this.iuf = parama;
+      this.iud = new com.tencent.mm.memory.a.a.a.f(parama, new f.b()new f.c {}, new f.c() {}) {};
+      this.iue = new g(10);
       AppMethodBeat.o(156496);
     }
     
-    public final void azf()
+    public final void aSl()
     {
       AppMethodBeat.i(156497);
-      this.hzW.trimToSize(this.hzY.hAd / 2);
+      this.iud.trimToSize(this.iuf.iuk / 2);
       AppMethodBeat.o(156497);
     }
     
-    public final com.tencent.mm.memory.a.a.a.a azg()
+    public final com.tencent.mm.memory.a.a.a.a aSm()
     {
-      return this.hzY;
+      return this.iuf;
     }
     
-    public final d azh()
+    public final d aSn()
     {
-      return this.hzW;
+      return this.iud;
     }
     
-    public final com.tencent.mm.b.f azi()
+    public final com.tencent.mm.b.f aSo()
     {
-      return this.hzX;
+      return this.iue;
     }
   }
   
   public static abstract interface b<T>
   {
-    public abstract void azf();
+    public abstract void aSl();
     
-    public abstract com.tencent.mm.memory.a.a.a.a azg();
+    public abstract com.tencent.mm.memory.a.a.a.a aSm();
     
-    public abstract d<String, T> azh();
+    public abstract d<String, T> aSn();
     
-    public abstract com.tencent.mm.b.f<String, T> azi();
+    public abstract com.tencent.mm.b.f<String, T> aSo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.b
  * JD-Core Version:    0.7.0.1
  */

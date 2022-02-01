@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:background="@color/b" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jkp" android:background="@color/b" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/c5" android:paddingBottom="@dimen/ct" style="@style/mq">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/k0" android:textColor="@color/a2x" android:textColorHighlight="@color/FG_2" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jkq" android:background="@drawable/b4w" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/bx" android:minHeight="@dimen/ag" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a70" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5" />
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="bottom" android:id="@id/jkv" android:background="@null" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginBottom="@dimen/bt" android:src="@drawable/of" android:contentDescription="@string/auf" android:layout_marginStart="10.0dip" />
+        <FrameLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/jku" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginBottom="@dimen/bt" android:layout_marginStart="10.0dip">
+            <Button android:enabled="false" android:id="@id/jkt" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:minWidth="@dimen/al" android:text="@string/yq" style="@style/ow" />
+            <Button android:id="@id/jks" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:minWidth="@dimen/al" android:text="@string/yq" style="@style/ow" />
+        </FrameLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/l4" android:id="@id/jl4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:layout_marginStart="@dimen/c5" />
+</LinearLayout>

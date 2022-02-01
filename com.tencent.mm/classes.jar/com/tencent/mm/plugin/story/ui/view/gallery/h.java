@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import d.g.a.m;
-import d.l;
+import kotlin.g.a.m;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 final class h
   implements CompoundButton.OnCheckedChangeListener
 {
   h(m paramm)
   {
-    this.gOL = paramm;
+    this.hEX = paramm;
   }
 }
 

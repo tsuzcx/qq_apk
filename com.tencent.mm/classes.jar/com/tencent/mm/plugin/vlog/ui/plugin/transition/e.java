@@ -5,96 +5,99 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.s;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.ui.ao;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.plugin.vlog.ui.thumb.f;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;)V", "getAdapter", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "getContext", "()Landroid/content/Context;", "halfMarkWidth", "", "markRange", "", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration$Range;", "markWidth", "offset", "selectIndex", "getSelectIndex", "()I", "setSelectIndex", "(I)V", "touchExtend", "transMarkStatusList", "", "checkClick", "", "x", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "position", "createTransitionMarkView", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "hasTransition", "onDrawOver", "c", "Landroid/graphics/Canvas;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "updateTransMarkStatus", "", "width", "Range", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;)V", "getAdapter", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "getContext", "()Landroid/content/Context;", "halfMarkWidth", "", "markRange", "", "Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration$Range;", "markWidth", "offset", "selectIndex", "getSelectIndex", "()I", "setSelectIndex", "(I)V", "touchExtend", "transMarkStatusList", "", "checkClick", "", "x", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "position", "createTransitionMarkView", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "hasTransition", "onDrawOver", "c", "Landroid/graphics/Canvas;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "updateTransMarkStatus", "", "width", "Range", "plugin-vlog_release"})
 public final class e
   extends RecyclerView.h
 {
-  public final int CkY;
-  private final int CkZ;
-  private final List<a> Cla;
-  public final List<Boolean> Clb;
-  private final int Clc;
-  private final com.tencent.mm.plugin.vlog.ui.thumb.b Cld;
+  public final int GOa;
+  private final int GOb;
+  private final List<a> GOc;
+  private final List<Boolean> GOd;
+  private final int GOe;
+  private final f GOf;
   private final Context context;
   private int offset;
-  public int tci;
+  public int whv;
   
-  public e(Context paramContext, com.tencent.mm.plugin.vlog.ui.thumb.b paramb)
+  public e(Context paramContext, f paramf)
   {
-    AppMethodBeat.i(192278);
+    AppMethodBeat.i(192018);
     this.context = paramContext;
-    this.Cld = paramb;
-    this.CkY = a.fromDPToPix(this.context, 22);
-    this.CkZ = (this.CkY / 2);
-    this.Cla = ((List)new ArrayList());
-    this.Clb = ((List)new ArrayList());
-    this.Clc = a.fromDPToPix(this.context, 16);
-    this.tci = -1;
-    AppMethodBeat.o(192278);
+    this.GOf = paramf;
+    this.GOa = a.fromDPToPix(this.context, 22);
+    this.GOb = (this.GOa / 2);
+    this.GOc = ((List)new ArrayList());
+    this.GOd = ((List)new ArrayList());
+    this.GOe = a.fromDPToPix(this.context, 16);
+    this.whv = -1;
+    AppMethodBeat.o(192018);
   }
   
-  public final void a(float paramFloat, d.g.a.b<? super Integer, z> paramb)
+  public final void a(float paramFloat, b<? super Integer, x> paramb)
   {
-    AppMethodBeat.i(192277);
+    AppMethodBeat.i(192016);
     p.h(paramb, "callback");
     int k = this.offset;
     int i = 0;
     while (i < k)
     {
-      a locala = (a)this.Cla.get(i);
+      a locala = (a)this.GOc.get(i);
       float f1 = locala.left;
       float f2 = locala.right;
       if ((paramFloat >= f1) && (paramFloat <= f2)) {}
       for (int j = 1; j != 0; j = 0)
       {
-        paramb.invoke(Integer.valueOf(((a)this.Cla.get(i)).position));
-        AppMethodBeat.o(192277);
+        paramb.invoke(Integer.valueOf(((a)this.GOc.get(i)).position));
+        AppMethodBeat.o(192016);
         return;
       }
       i += 1;
     }
     paramb.invoke(Integer.valueOf(-1));
-    AppMethodBeat.o(192277);
+    AppMethodBeat.o(192016);
   }
   
-  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(192276);
+    AppMethodBeat.i(192015);
     p.h(paramCanvas, "c");
     p.h(paramRecyclerView, "parent");
-    p.h(paramt, "state");
-    super.b(paramCanvas, paramRecyclerView, paramt);
-    int k = this.Cld.getItemCount();
+    p.h(params, "state");
+    super.b(paramCanvas, paramRecyclerView, params);
+    int k = this.GOf.getItemCount();
     this.offset = 0;
     int m = paramRecyclerView.getChildCount();
     int i = 0;
     if (i < m)
     {
-      paramt = paramRecyclerView.getChildAt(i);
-      int n = RecyclerView.bw(paramt);
+      params = paramRecyclerView.getChildAt(i);
+      int n = RecyclerView.bw(params);
       int j;
       if ((n > 1) && (n < k - 1))
       {
-        if (this.tci < 0) {
+        if (this.whv < 0) {
           break label134;
         }
-        j = this.tci;
-        i1 = this.tci;
+        j = this.whv;
+        i1 = this.whv;
         if (j + 1 <= n) {
           break label125;
         }
@@ -106,45 +109,45 @@ public final class e
         break;
       }
       label134:
-      p.g(paramt, "childView");
-      int i1 = paramt.getLeft();
-      paramt = (Boolean)j.F(this.Clb, n - 2);
+      p.g(params, "childView");
+      int i1 = params.getLeft();
+      params = (Boolean)j.L(this.GOd, n - 2);
       boolean bool;
       label171:
       label224:
       float f1;
       float f2;
-      if (paramt != null)
+      if (params != null)
       {
-        bool = paramt.booleanValue();
-        paramt = LayoutInflater.from(this.context).inflate(2131496502, (ViewGroup)paramRecyclerView, false);
-        ImageView localImageView = (ImageView)paramt.findViewById(2131308466);
+        bool = params.booleanValue();
+        params = LayoutInflater.from(this.context).inflate(2131496836, (ViewGroup)paramRecyclerView, false);
+        ImageView localImageView = (ImageView)params.findViewById(2131309920);
         Context localContext = this.context;
         Resources localResources = this.context.getResources();
         if (!bool) {
           break label425;
         }
-        j = 2131099777;
-        localImageView.setImageDrawable(ao.k(localContext, 2131691605, localResources.getColor(j)));
-        paramt.measure(this.CkY, this.CkY);
-        paramt.layout(0, 0, this.CkY, this.CkY);
-        p.g(paramt, "view");
-        float f3 = (paramRecyclerView.getHeight() - this.CkY) / 2.0F;
-        f1 = i1 - this.CkZ;
-        f2 = i1 + this.CkZ;
+        j = 2131099792;
+        localImageView.setImageDrawable(ar.m(localContext, 2131690698, localResources.getColor(j)));
+        params.measure(this.GOa, this.GOa);
+        params.layout(0, 0, this.GOa, this.GOa);
+        p.g(params, "view");
+        float f3 = (paramRecyclerView.getHeight() - this.GOa) / 2.0F;
+        f1 = i1 - this.GOb;
+        f2 = i1 + this.GOb;
         paramCanvas.save();
         paramCanvas.translate(f1, f3);
-        paramt.draw(paramCanvas);
+        params.draw(paramCanvas);
         paramCanvas.restore();
-        if (this.offset >= this.Cla.size()) {
+        if (this.offset >= this.GOc.size()) {
           break label433;
         }
-        paramt = (a)this.Cla.get(this.offset);
-        f3 = this.Clc;
-        float f4 = this.Clc;
-        paramt.position = (n - 2);
-        paramt.left = (f1 - f3);
-        paramt.right = (f2 + f4);
+        params = (a)this.GOc.get(this.offset);
+        f3 = this.GOe;
+        float f4 = this.GOe;
+        params.position = (n - 2);
+        params.left = (f1 - f3);
+        params.right = (f2 + f4);
       }
       for (;;)
       {
@@ -153,16 +156,25 @@ public final class e
         bool = false;
         break label171;
         label425:
-        j = 2131099676;
+        j = 2131099683;
         break label224;
         label433:
-        this.Cla.add(new a(n - 2, f1 - this.Clc, f2 + this.Clc));
+        this.GOc.add(new a(n - 2, f1 - this.GOe, f2 + this.GOe));
       }
     }
-    AppMethodBeat.o(192276);
+    AppMethodBeat.o(192015);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration$Range;", "", "position", "", "left", "", "right", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration;IFF)V", "getLeft", "()F", "setLeft", "(F)V", "getPosition", "()I", "setPosition", "(I)V", "getRight", "setRight", "contains", "", "value", "set", "", "plugin-vlog_release"})
+  public final void hS(List<Boolean> paramList)
+  {
+    AppMethodBeat.i(192017);
+    p.h(paramList, "transMarkStatusList");
+    this.GOd.clear();
+    this.GOd.addAll((Collection)paramList);
+    AppMethodBeat.o(192017);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration$Range;", "", "position", "", "left", "", "right", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/transition/TransitionMarkDecoration;IFF)V", "getLeft", "()F", "setLeft", "(F)V", "getPosition", "()I", "setPosition", "(I)V", "getRight", "setRight", "contains", "", "value", "set", "", "plugin-vlog_release"})
   public final class a
   {
     float left;
@@ -180,7 +192,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.transition.e
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(24470);
-    rmj = new a("PREFIX", 0);
-    rmk = new a("SUBDOMAIN", 1);
-    rml = new a("DOMAIN", 2);
-    rmm = new a[] { rmj, rmk, rml };
+    sNO = new a("PREFIX", 0);
+    sNP = new a("SUBDOMAIN", 1);
+    sNQ = new a("DOMAIN", 2);
+    sNR = new a[] { sNO, sNP, sNQ };
     AppMethodBeat.o(24470);
   }
   
@@ -18,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.d.b.a
  * JD-Core Version:    0.7.0.1
  */

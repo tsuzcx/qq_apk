@@ -17,7 +17,7 @@ public class PreferenceCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159993);
-    setLayoutResource(2131494809);
+    setLayoutResource(2131495543);
     AppMethodBeat.o(159993);
   }
 }

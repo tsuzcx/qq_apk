@@ -2,14 +2,14 @@ package android.support.v7.widget;
 
 import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.view.View;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public final class bh
 {
-  private static Method aAf;
+  private static Method aAd;
   
   static
   {
@@ -17,9 +17,9 @@ public final class bh
     try
     {
       Method localMethod = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[] { Rect.class, Rect.class });
-      aAf = localMethod;
+      aAd = localMethod;
       if (!localMethod.isAccessible()) {
-        aAf.setAccessible(true);
+        aAd.setAccessible(true);
       }
       return;
     }
@@ -28,16 +28,16 @@ public final class bh
   
   public static void a(View paramView, Rect paramRect1, Rect paramRect2)
   {
-    if (aAf != null) {}
+    if (aAd != null) {}
     try
     {
-      aAf.invoke(paramView, new Object[] { paramRect1, paramRect2 });
+      aAd.invoke(paramView, new Object[] { paramRect1, paramRect2 });
       return;
     }
     catch (Exception paramView) {}
   }
   
-  public static void cg(View paramView)
+  public static void bS(View paramView)
   {
     if (Build.VERSION.SDK_INT >= 16) {}
     try
@@ -54,7 +54,7 @@ public final class bh
   
   public static boolean d(View paramView)
   {
-    return t.Y(paramView) == 1;
+    return u.Z(paramView) == 1;
   }
 }
 

@@ -1,24 +1,8 @@
 package com.tencent.mm.vfs;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.InputStreamReader;
-
-public final class q
-  extends InputStreamReader
+public abstract interface q
 {
-  public q(k paramk)
-  {
-    super(o.b(paramk.mUri, paramk.fTe()));
-    AppMethodBeat.i(13318);
-    AppMethodBeat.o(13318);
-  }
-  
-  public q(String paramString)
-  {
-    super(o.openRead(paramString));
-    AppMethodBeat.i(13317);
-    AppMethodBeat.o(13317);
-  }
+  public abstract boolean accept(o paramo);
 }
 
 

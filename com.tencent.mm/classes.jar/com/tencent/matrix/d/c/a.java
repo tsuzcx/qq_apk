@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 public final class a
 {
-  private static Method cFx = null;
+  private static Method cWa = null;
   
   public static int a(Debug.MemoryInfo paramMemoryInfo)
   {
@@ -24,10 +24,10 @@ public final class a
     }
     try
     {
-      if (cFx == null) {
-        cFx = Class.forName("android.os.Debug$MemoryInfo").getMethod("getMemoryStat", new Class[] { String.class });
+      if (cWa == null) {
+        cWa = Class.forName("android.os.Debug$MemoryInfo").getMethod("getMemoryStat", new Class[] { String.class });
       }
-      int i = Integer.parseInt((String)cFx.invoke(paramMemoryInfo, new Object[] { paramString }));
+      int i = Integer.parseInt((String)cWa.invoke(paramMemoryInfo, new Object[] { paramString }));
       return i;
     }
     catch (Exception paramString)
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.d.c.a
  * JD-Core Version:    0.7.0.1
  */

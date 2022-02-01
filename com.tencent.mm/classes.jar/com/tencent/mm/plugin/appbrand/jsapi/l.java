@@ -1,102 +1,109 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.webkit.JavascriptInterface;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import org.json.JSONArray;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.Map;
+import org.json.JSONObject;
 
-public final class l
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxaSharedKT;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxConfigPart;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "()V", "TAG", "", "isPreloaded", "", "()Z", "isPreloading", "attachCommonConfig", "", "config", "Lorg/json/JSONObject;", "generatePreloadConfig", "getJsApi", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "apiName", "injectWxConfig", "__wxConfig", "callback", "Landroid/webkit/ValueCallback;", "put", "obj", "key", "val", "", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "scheduleToUiThreadDelayed", "delayMs", "", "luggage-wxa-app_release"})
+public abstract class l
+  extends g
+  implements k
 {
-  volatile d ktX;
+  private final String TAG = "AppBrandComponentWxaSharedKT";
   
-  public l(d paramd)
+  public final void P(Runnable paramRunnable)
   {
-    this.ktX = paramd;
-  }
-  
-  private static int[] OK(String paramString)
-  {
-    int i = 0;
-    AppMethodBeat.i(140639);
-    localObject2 = new int[0];
-    Object localObject1 = localObject2;
-    try
+    if (paramRunnable == null) {}
+    Object localObject;
+    do
     {
-      JSONArray localJSONArray = new JSONArray(paramString);
-      localObject1 = localObject2;
-      paramString = new int[localJSONArray.length()];
-      for (;;)
+      return;
+      localObject = getRuntime();
+      if (localObject != null)
       {
-        localObject1 = paramString;
-        localObject2 = paramString;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        localObject1 = paramString;
-        paramString[i] = localJSONArray.getInt(i);
-        i += 1;
-      }
-      return localObject2;
-    }
-    catch (Exception paramString)
-    {
-      ae.e("MicroMsg.AppBrandJSInterface", paramString.getMessage());
-      localObject2 = localObject1;
-      AppMethodBeat.o(140639);
-    }
-  }
-  
-  @JavascriptInterface
-  public final String invokeHandler(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(140637);
-    try
-    {
-      d locald = this.ktX;
-      if (locald == null)
-      {
-        AppMethodBeat.o(140637);
-        return "";
-      }
-      paramString1 = locald.y(paramString1, paramString2, paramInt);
-      AppMethodBeat.o(140637);
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      ae.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "invokeHandler", new Object[0]);
-      AppMethodBeat.o(140637);
-      throw paramString1;
-    }
-  }
-  
-  @JavascriptInterface
-  public final void publishHandler(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(140636);
-    try
-    {
-      d locald = this.ktX;
-      if (locald == null)
-      {
-        AppMethodBeat.o(140636);
+        ((AppBrandRuntime)localObject).P(paramRunnable);
         return;
       }
-      locald.b(paramString1, paramString2, OK(paramString3));
-      AppMethodBeat.o(140636);
+      localObject = (l)this;
+    } while ((!((l)localObject).bsX()) && (!((l)localObject).bsW()));
+    MMHandlerThread.postToMainThread(paramRunnable);
+  }
+  
+  public final p Ze(String paramString)
+  {
+    kotlin.g.b.p.h(paramString, "apiName");
+    return (p)this.lxp.get(paramString);
+  }
+  
+  public abstract boolean bsW();
+  
+  public abstract boolean bsX();
+  
+  public JSONObject bte()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    d(localJSONObject);
+    c(localJSONObject, "preload", Boolean.TRUE);
+    return localJSONObject;
+  }
+  
+  public final void c(JSONObject paramJSONObject, String paramString, Object paramObject)
+  {
+    kotlin.g.b.p.h(paramJSONObject, "obj");
+    kotlin.g.b.p.h(paramString, "key");
+    try
+    {
+      paramJSONObject.put(paramString, paramObject);
       return;
     }
-    catch (Exception paramString1)
+    catch (Exception paramJSONObject)
     {
-      ae.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "publishHandler", new Object[0]);
-      AppMethodBeat.o(140636);
-      throw paramString1;
+      Log.printErrStackTrace(this.TAG, (Throwable)paramJSONObject, "put with key(" + paramString + ')', new Object[0]);
     }
+  }
+  
+  public void d(JSONObject paramJSONObject)
+  {
+    kotlin.g.b.p.h(paramJSONObject, "config");
+    c(paramJSONObject, "platform", "android");
+    c(paramJSONObject, "system", "Android " + Build.VERSION.RELEASE);
+    c(paramJSONObject, "brand", Build.BRAND);
+    c(paramJSONObject, "model", Build.MODEL);
+    Object localObject = getContext();
+    kotlin.g.b.p.g(localObject, "context");
+    localObject = ((Context)localObject).getResources();
+    kotlin.g.b.p.g(localObject, "context.resources");
+    c(paramJSONObject, "pixelRatio", Float.valueOf(((Resources)localObject).getDisplayMetrics().density));
+  }
+  
+  public final void i(Runnable paramRunnable, long paramLong)
+  {
+    if (paramRunnable == null) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = getRuntime();
+      if (localObject != null)
+      {
+        ((AppBrandRuntime)localObject).i(paramRunnable, paramLong);
+        return;
+      }
+      localObject = (l)this;
+    } while ((!((l)localObject).bsX()) && (!((l)localObject).bsW()));
+    MMHandlerThread.postToMainThreadDelayed(paramRunnable, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l
  * JD-Core Version:    0.7.0.1
  */

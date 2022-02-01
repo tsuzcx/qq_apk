@@ -1,179 +1,26 @@
 package com.tencent.mm.plugin.eggspring.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bbk;
-import com.tencent.mm.protocal.protobuf.bbl;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneGetBrandCardContent;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "keyWord", "", "appId", "traceId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "brandCardContent", "Lcom/tencent/mm/plugin/eggspring/model/BrandCardContent;", "getBrandCardContent", "()Lcom/tencent/mm/plugin/eggspring/model/BrandCardContent;", "setBrandCardContent", "(Lcom/tencent/mm/plugin/eggspring/model/BrandCardContent;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-eggspring_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/model/Constants;", "", "()V", "Companion", "plugin-eggspring_release"})
 public final class b
-  extends n
-  implements k
 {
-  public static final b.a pFS;
-  private f callback;
-  public com.tencent.mm.plugin.eggspring.b.a pFR;
-  private com.tencent.mm.ak.b rr;
+  public static final a qVd;
   
   static
   {
-    AppMethodBeat.i(108160);
-    pFS = new b.a((byte)0);
-    AppMethodBeat.o(108160);
+    AppMethodBeat.i(162210);
+    qVd = new a((byte)0);
+    AppMethodBeat.o(162210);
   }
   
-  public b(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(108159);
-    Object localObject = new com.tencent.mm.ak.b.a();
-    ((com.tencent.mm.ak.b.a)localObject).c((com.tencent.mm.bw.a)new bbk());
-    ((com.tencent.mm.ak.b.a)localObject).d((com.tencent.mm.bw.a)new bbl());
-    ((com.tencent.mm.ak.b.a)localObject).DN("/cgi-bin/mmoc-bin/expressionad/getexpressionad");
-    ((com.tencent.mm.ak.b.a)localObject).oS(2809);
-    ((com.tencent.mm.ak.b.a)localObject).oU(0);
-    ((com.tencent.mm.ak.b.a)localObject).oV(0);
-    localObject = ((com.tencent.mm.ak.b.a)localObject).aDS();
-    p.g(localObject, "builder.buildInstance()");
-    this.rr = ((com.tencent.mm.ak.b)localObject);
-    localObject = this.rr.aEU();
-    if (localObject == null)
-    {
-      paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetExpressionAdReq");
-      AppMethodBeat.o(108159);
-      throw paramString1;
-    }
-    localObject = (bbk)localObject;
-    ((bbk)localObject).dmf = paramString1;
-    ((bbk)localObject).dwb = paramString2;
-    ((bbk)localObject).GRl = paramString3;
-    AppMethodBeat.o(108159);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(108157);
-    p.h(parame, "dispatcher");
-    p.h(paramf, "callback");
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(108157);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 2809;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(108158);
-    ae.i("MicroMsg.NetSceneGetBrandCardContent", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = this.rr.aEV();
-      if (paramq == null)
-      {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetExpressionAdResp");
-        AppMethodBeat.o(108158);
-        throw paramString;
-      }
-      paramq = (bbl)paramq;
-      ae.d("MicroMsg.NetSceneGetBrandCardContent", "ret[%s] msg[%s] cardType[%s] appId[%s] traceId[%s].", new Object[] { Integer.valueOf(paramq.ret), paramq.msg, Integer.valueOf(paramq.FMm), paramq.dwb, paramq.GRl });
-      if (paramq.ret == 0)
-      {
-        this.pFR = new com.tencent.mm.plugin.eggspring.b.a();
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFz = paramq.FMm;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFA = paramq.GRr;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFB = paramq.GRn;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFC = paramq.GRp;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFD = paramq.GRm;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFE = paramq.Dps;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFF = paramq.GRt;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFG = paramq.GRq;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFH = paramq.GRo;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFI = paramq.GRu;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFJ = paramq.GRs;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.appId = paramq.dwb;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.pFK = paramq.pFK;
-        paramArrayOfByte = this.pFR;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.jWi = paramq.GRl;
-      }
-    }
-    paramq = this.callback;
-    if (paramq == null) {
-      p.bdF("callback");
-    }
-    paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-    AppMethodBeat.o(108158);
-  }
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/model/Constants$Companion;", "", "()V", "BLESSING_MEDIA_SHOW_TYPE_RECTANGLE", "", "BLESSING_MEDIA_SHOW_TYPE_SQUARE", "BLESSING_MEDIA_TYPE_IMG", "BLESSING_MEDIA_TYPE_VIDEO", "CARD_TYPE_BLESSING", "CARD_TYPE_COUPON", "CARD_TYPE_RED_POCKET_COVER", "COUPON_RET_CODE_ERR_MKT_COUPON_SEQUENCE_CONFLICT", "", "COUPON_RET_CODE_ERR_MKT_COUPON_STOCK_PRESEND_FAIL_FOR_NOT_ENOUGH_DAYSTOCKAMOUNT", "COUPON_RET_CODE_ERR_MKT_COUPON_STOCK_PRESEND_FAIL_FOR_NOT_ENOUGH_STOCKAMOUNT", "COUPON_RET_CODE_ERR_MKT_COUPON_STOCK_PRESEND_FAIL_FOR_NOT_ENOUGH_STOCKNUM", "COUPON_RET_CODE_ERR_MKT_INSERT_UIN_COUPON_CHECK_BY_GOT_LIMIT_ERROR", "COUPON_RET_CODE_ERR_MKT_PAYGIFTAPPSVR_FREQ_CHECK_FAIL", "COUPON_RET_CODE_ERR_MKT_PAYGIFTAPPSVR_FREQ_CHECL_BY_USER_FAIL", "COUPON_RET_CODE_ERR_MKT_USER_MAX_QUOTA", "COUPON_RET_CODE_ERR_MMPAY_MKT_STOCKSVR_APPLY_TIMES_DAY_LIMIT", "COUPON_RET_CODE_ERR_MMY_MKT_BEYOND_THE_LIMIT_COLLAR", "COUPON_RET_CODE_OK", "KEY_APP_ID", "", "KEY_BRAND_BG_COLOR", "KEY_BRAND_BTM_IMG", "KEY_BRAND_COUPON_MAIN_TITLE", "KEY_BRAND_COUPON_SUB_TITLE", "KEY_BRAND_ICON", "KEY_BRAND_NAME", "KEY_BRAND_RED_POCKET_COVER_MAIN_TITLE", "KEY_BRAND_RED_POCKET_COVER_SUB_TITLE", "KEY_BTM_MAIN_TITLE", "KEY_BTM_MAIN_TITLE_COLOR", "KEY_BTM_SUB_TITLE", "KEY_BTM_SUB_TITLE_COLOR", "KEY_KEYWORD", "KEY_TRACE_ID", "REPORT_AD_EGG_ACTION_CLICK_LB", "REPORT_AD_EGG_ACTION_EGG", "REPORT_AD_EGG_ACTION_LUCKY_BAG", "REPORT_AD_EGG_ACTION_MATCH", "REPORT_LUCKY_BAG_ACTION_ACCEPT_COUPON_ERR", "REPORT_LUCKY_BAG_ACTION_ACCEPT_COUPON_SUCC", "REPORT_LUCKY_BAG_ACTION_ACCEPT_MONEY_FAILED", "REPORT_LUCKY_BAG_ACTION_ACCEPT_MONEY_SUCCEED", "REPORT_LUCKY_BAG_ACTION_CLICK_ACCEPT_COUPON", "REPORT_LUCKY_BAG_ACTION_CLICK_ACCEPT_RED_POCKET_COVER", "REPORT_LUCKY_BAG_ACTION_CLICK_CLICKABLE_TXT", "REPORT_LUCKY_BAG_ACTION_CLICK_GOODS", "REPORT_LUCKY_BAG_ACTION_CLOSE_DETAIL", "REPORT_LUCKY_BAG_ACTION_SHOW_CARD_SUCC", "REPORT_LUCKY_BAG_ACTION_SHOW_CLICKABLE_TXT", "REPORT_LUCKY_BAG_ACTION_SHOW_COUPON", "REPORT_LUCKY_BAG_ACTION_SHOW_DETAIL", "REPORT_LUCKY_BAG_ACTION_SHOW_GOODS", "REPORT_LUCKY_BAG_ACTION_SHOW_IMG_BLESSING_RECTANGLE", "REPORT_LUCKY_BAG_ACTION_SHOW_IMG_BLESSING_SQUARE", "REPORT_LUCKY_BAG_ACTION_SHOW_MONEY", "REPORT_LUCKY_BAG_ACTION_SHOW_PLAN_B", "REPORT_LUCKY_BAG_ACTION_SHOW_RED_POCKET_COVER", "REPORT_LUCKY_BAG_ACTION_SHOW_VIDEO_BLESSING_RECTANGLE", "REPORT_LUCKY_BAG_ACTION_SHOW_VIDEO_BLESSING_SQUARE", "getEggDataPath", "getEmojiDataPath", "plugin-eggspring_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.c.b
  * JD-Core Version:    0.7.0.1
  */

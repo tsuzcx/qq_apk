@@ -2,43 +2,47 @@ package com.tencent.mm.plugin.appbrand.jsapi.base;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class d<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
-  extends e<c>
+public abstract class d<CONTEXT extends h>
+  extends e<f>
 {
-  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
-    com.tencent.mm.plugin.appbrand.jsapi.e locale = ((g)paramc.K(g.class)).c(paramc, paramJSONObject);
-    if (locale == null)
+    Object localObject = (g)paramf.M(g.class);
+    if (localObject == null) {
+      Log.e("MicroMsg.BaseUpdateViewJsApi", "getComponentView NULL IComponentConverter");
+    }
+    for (localObject = null; localObject == null; localObject = ((g)localObject).c(paramf, paramJSONObject))
     {
-      paramc.h(paramInt, e("fail:ComponentView is null.", null));
+      paramf.i(paramInt, h("fail:ComponentView is null.", null));
       return;
     }
-    paramc.K(new Runnable()
+    paramf.P(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(140654);
-        com.tencent.mm.plugin.appbrand.jsapi.e locale = (com.tencent.mm.plugin.appbrand.jsapi.e)this.kFy.get();
-        if ((locale == null) || (!locale.isRunning()))
+        h localh = (h)this.lJZ.get();
+        if ((localh == null) || (!localh.isRunning()))
         {
-          ae.w("MicroMsg.BaseUpdateViewJsApi", "page view has been release.");
-          paramc.h(paramInt, d.this.e("fail:page is null", null));
+          Log.w("MicroMsg.BaseUpdateViewJsApi", "page view has been release.");
+          paramf.i(paramInt, d.this.h("fail:page is null", null));
           AppMethodBeat.o(140654);
           return;
         }
-        if (locale.aYC() == null)
+        if (localh.getCustomViewContainer() == null)
         {
-          ae.w("MicroMsg.BaseUpdateViewJsApi", "fail, component custom view container is null");
-          paramc.h(paramInt, d.this.e("fail:update view failed", null));
+          Log.w("MicroMsg.BaseUpdateViewJsApi", "fail, component custom view container is null");
+          paramf.i(paramInt, d.this.h("fail:update view failed", null));
           AppMethodBeat.o(140654);
           return;
         }
@@ -47,20 +51,20 @@ public abstract class d<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
         Object localObject1;
         try
         {
-          i = d.this.A(paramJSONObject);
+          i = d.this.H(paramJSONObject);
           bool2 = paramJSONObject.optBoolean("independent", false);
-          localObject1 = locale.fF(bool2).getViewById(i);
+          localObject1 = localh.gA(bool2).getViewById(i);
           if (localObject1 == null)
           {
-            ae.w("MicroMsg.BaseUpdateViewJsApi", "get view by viewId(%s) return null.", new Object[] { Integer.valueOf(i) });
-            paramc.h(paramInt, d.this.e("fail:got 'null' when get view by the given viewId", null));
+            Log.w("MicroMsg.BaseUpdateViewJsApi", "get view by viewId(%s) return null.", new Object[] { Integer.valueOf(i) });
+            paramf.i(paramInt, d.this.h("fail:got 'null' when get view by the given viewId", null));
             AppMethodBeat.o(140654);
             return;
           }
         }
         catch (JSONException localJSONException1)
         {
-          paramc.h(paramInt, d.this.e("fail:view id do not exist", null));
+          paramf.i(paramInt, d.this.h("fail:view id do not exist", null));
           AppMethodBeat.o(140654);
           return;
         }
@@ -70,38 +74,38 @@ public abstract class d<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
         {
           bool1 = paramJSONObject.optBoolean("draggable", false);
           localObject2 = (CoverViewContainer)localObject1;
-          ((CoverViewContainer)localObject2).a(bool1, i, ((CoverViewContainer)localObject2).kOf);
+          ((CoverViewContainer)localObject2).a(bool1, i, ((CoverViewContainer)localObject2).lSX);
           ((CoverViewContainer)localObject1).setDragConfig(paramJSONObject.optString("dragConfig"));
         }
         d.a(d.this, localJSONException1, i, paramJSONObject, bool2);
         try
         {
-          localObject2 = d.E(paramJSONObject);
-          int j = d.F(paramJSONObject);
-          Boolean localBoolean1 = d.G(paramJSONObject);
-          Boolean localBoolean2 = d.H(paramJSONObject);
-          bool1 = localJSONException1.fF(bool2).a(i, (float[])localObject2, j, localBoolean1, localBoolean2);
-          ae.i("MicroMsg.BaseUpdateViewJsApi", "update view(parentId : %s, viewId : %d), ret : %b", new Object[] { Integer.valueOf(localJSONException1.fF(bool2).sI(i)), Integer.valueOf(i), Integer.valueOf(localObject1.hashCode()), Boolean.valueOf(bool1) });
-          boolean bool3 = d.this.bjF();
+          localObject2 = d.L(paramJSONObject);
+          int j = d.M(paramJSONObject);
+          Boolean localBoolean1 = d.N(paramJSONObject);
+          Boolean localBoolean2 = d.O(paramJSONObject);
+          bool1 = localJSONException1.gA(bool2).a(i, (float[])localObject2, j, localBoolean1, localBoolean2);
+          Log.i("MicroMsg.BaseUpdateViewJsApi", "update view(parentId : %s, viewId : %d), ret : %b", new Object[] { Integer.valueOf(localJSONException1.gA(bool2).wE(i)), Integer.valueOf(i), Integer.valueOf(localObject1.hashCode()), Boolean.valueOf(bool1) });
+          boolean bool3 = d.this.bEV();
           bool2 = bool1;
           if (bool1)
           {
             if (bool3) {
-              bool2 = d.this.b(localJSONException1, i, (View)localObject1, paramJSONObject, new i(paramc, paramInt));
+              bool2 = d.this.b(localJSONException1, i, (View)localObject1, paramJSONObject, new i(paramf, paramInt));
             }
           }
           else
           {
             if (!bool3)
             {
-              localObject1 = paramc;
+              localObject1 = paramf;
               i = paramInt;
               localObject2 = d.this;
               if (!bool2) {
                 break label571;
               }
               str = "ok";
-              ((c)localObject1).h(i, ((m)localObject2).e(str, null));
+              ((f)localObject1).i(i, ((p)localObject2).h(str, null));
             }
             AppMethodBeat.o(140654);
             return;
@@ -128,12 +132,12 @@ public abstract class d<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
     return true;
   }
   
-  protected boolean bjF()
+  protected boolean bEV()
   {
     return false;
   }
   
-  protected boolean bjG()
+  protected boolean bEW()
   {
     return false;
   }
@@ -145,7 +149,7 @@ public abstract class d<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.base.d
  * JD-Core Version:    0.7.0.1
  */

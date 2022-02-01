@@ -10,121 +10,121 @@ import com.tencent.mm.plugin.story.h.b.a;
 import com.tencent.mm.plugin.story.h.b.b;
 import com.tencent.mm.plugin.story.h.c;
 import com.tencent.mm.plugin.story.i.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.a.j;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgrPreLoad;", "", "()V", "TAG", "", "pool", "", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "kotlin.jvm.PlatformType", "", "clean", "", "get", "preload", "", "username", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgrPreLoad;", "", "()V", "TAG", "", "pool", "", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "kotlin.jvm.PlatformType", "", "clean", "", "get", "preload", "", "username", "plugin-story_release"})
 public final class o
 {
-  private static List<n> BxF;
-  public static final o BxG;
+  private static List<n> FIp;
+  public static final o FIq;
   
   static
   {
     AppMethodBeat.i(120668);
-    BxG = new o();
-    BxF = Collections.synchronizedList((List)new LinkedList());
+    FIq = new o();
+    FIp = Collections.synchronizedList((List)new LinkedList());
     AppMethodBeat.o(120668);
   }
   
-  public static boolean aDM(String paramString)
+  public static boolean aSH(String paramString)
   {
     AppMethodBeat.i(120665);
     p.h(paramString, "username");
-    ae.i("MicroMsg.StoryVideoViewMgrPreLoad", "preLoad " + paramString + " pool " + BxF.size());
-    if (BxF.size() > 0)
+    Log.i("MicroMsg.StoryVideoViewMgrPreLoad", "preLoad " + paramString + " pool " + FIp.size());
+    if (FIp.size() > 0)
     {
-      localObject1 = k.BbN;
-      paramString = k.aCW(paramString);
+      localObject1 = k.FmH;
+      paramString = k.aRS(paramString);
       if (paramString.isValid())
       {
-        localObject1 = h.Beh;
+        localObject1 = h.FoY;
         paramString = h.a.a(paramString);
-        localObject1 = BxF;
+        localObject1 = FIp;
         p.g(localObject1, "pool");
-        localObject1 = (n)j.jm((List)localObject1);
+        localObject1 = (n)j.kt((List)localObject1);
         if (localObject1 != null) {
-          ((n)localObject1).a(paramString.Bec, false);
+          ((n)localObject1).a(paramString.FoT, false);
         }
       }
       AppMethodBeat.o(120665);
       return false;
     }
-    Object localObject1 = k.BbN;
-    paramString = k.aCW(paramString);
-    localObject1 = c.Bjp;
-    c.Bi(paramString.field_syncId);
-    localObject1 = b.BiV;
-    b.Bi(paramString.field_syncId);
-    if (paramString.eoY() > 0L)
+    Object localObject1 = k.FmH;
+    paramString = k.aRS(paramString);
+    localObject1 = c.Fuf;
+    c.Kn(paramString.field_syncId);
+    localObject1 = b.FtL;
+    b.Kn(paramString.field_syncId);
+    if (paramString.fry() > 0L)
     {
-      localObject1 = b.BiV;
-      b.enm();
+      localObject1 = b.FtL;
+      b.fpM();
     }
     if (paramString.isValid())
     {
-      localObject1 = h.Beh;
+      localObject1 = h.FoY;
       localObject1 = h.a.a(paramString);
-      Object localObject2 = b.BiV;
+      Object localObject2 = b.FtL;
       p.h(localObject1, "galleryItem");
       p.h(paramString, "extinfo");
-      b.BiM = (h)localObject1;
-      b.BiI = new b.a(paramString.getUserName(), b.b.Bjd);
-      if (paramString.eoY() > 0L)
+      b.FtC = (h)localObject1;
+      b.Fty = new b.a(paramString.getUserName(), b.b.FtT);
+      if (paramString.fry() > 0L)
       {
-        b.e(b.pXC, 4L, 1L);
-        localObject2 = b.BiI;
+        b.e(b.oIi, 4L, 1L);
+        localObject2 = b.Fty;
         if (localObject2 != null)
         {
-          ((b.a)localObject2).oRf = false;
-          ((b.a)localObject2).Bja = bu.fpO();
+          ((b.a)localObject2).qeT = false;
+          ((b.a)localObject2).FtQ = Util.nowMilliSecond();
         }
       }
       for (;;)
       {
-        if (((h)localObject1).Bec != null)
+        if (((h)localObject1).FoT != null)
         {
-          if (paramString.epa())
+          if (paramString.frA())
           {
-            b.e(b.pXC, 140L, 1L);
-            if (paramString.eoY() > 0L) {
-              b.e(b.pXC, 142L, 1L);
+            b.e(b.oIi, 140L, 1L);
+            if (paramString.fry() > 0L) {
+              b.e(b.oIi, 142L, 1L);
             }
           }
-          if (b.d(((h)localObject1).Bec) == 1)
+          if (b.d(((h)localObject1).FoT) == 1)
           {
-            b.e(b.pXC, 5L, 1L);
-            if (paramString.epa()) {
-              b.e(b.pXC, 141L, 1L);
+            b.e(b.oIi, 5L, 1L);
+            if (paramString.frA()) {
+              b.e(b.oIi, 141L, 1L);
             }
           }
         }
         paramString = new n();
-        if (paramString.Bxr == null)
+        if (paramString.FIc == null)
         {
-          localObject2 = ak.getContext();
+          localObject2 = MMApplicationContext.getContext();
           p.g(localObject2, "MMApplicationContext.getContext()");
-          paramString.gB((Context)localObject2);
+          paramString.hm((Context)localObject2);
         }
         paramString.setMute(true);
-        paramString.a(((h)localObject1).Bec, false);
-        paramString.FW();
-        BxF.add(paramString);
+        paramString.a(((h)localObject1).FoT, false);
+        paramString.PF();
+        FIp.add(paramString);
         AppMethodBeat.o(120665);
         return true;
-        localObject2 = b.BiI;
+        localObject2 = b.Fty;
         if (localObject2 != null)
         {
-          ((b.a)localObject2).oRf = true;
-          ((b.a)localObject2).Bja = bu.fpO();
+          ((b.a)localObject2).qeT = true;
+          ((b.a)localObject2).FtQ = Util.nowMilliSecond();
         }
       }
     }
@@ -135,30 +135,30 @@ public final class o
   public static void clean()
   {
     AppMethodBeat.i(120667);
-    ae.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad clean " + BxF.size());
-    Object localObject = BxF;
+    Log.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad clean " + FIp.size());
+    Object localObject = FIp;
     p.g(localObject, "pool");
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      StoryVideoView localStoryVideoView = ((n)((Iterator)localObject).next()).Bxr;
+      StoryVideoView localStoryVideoView = ((n)((Iterator)localObject).next()).FIc;
       if (localStoryVideoView != null) {
         localStoryVideoView.stop();
       }
     }
-    BxF.clear();
+    FIp.clear();
     AppMethodBeat.o(120667);
   }
   
-  public static n eql()
+  public static n fsK()
   {
     AppMethodBeat.i(120666);
-    ae.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad get " + BxF.size());
-    Object localObject = BxF;
+    Log.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad get " + FIp.size());
+    Object localObject = FIp;
     p.g(localObject, "pool");
-    localObject = (n)j.jm((List)localObject);
+    localObject = (n)j.kt((List)localObject);
     if (localObject != null) {
-      BxF.remove(localObject);
+      FIp.remove(localObject);
     }
     AppMethodBeat.o(120666);
     return localObject;
@@ -166,7 +166,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.o
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMTagPanel;
 import com.tencent.mm.ui.base.MMTagPanel.a;
 import com.tencent.mm.ui.base.MMTagPanel.d;
@@ -19,24 +19,24 @@ import java.util.LinkedList;
 public class FavTagPanel
   extends MMTagPanel
 {
-  private LinkedList<MMTagPanel.d> rNe;
-  private a rNf;
-  private View.OnClickListener rNg;
+  private LinkedList<MMTagPanel.d> tmP;
+  private a tmQ;
+  private View.OnClickListener tmR;
   
   public FavTagPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107556);
-    this.rNe = new LinkedList();
-    this.rNf = null;
-    this.rNg = new View.OnClickListener()
+    this.tmP = new LinkedList();
+    this.tmQ = null;
+    this.tmR = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(107554);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (((Integer)paramAnonymousView.getTag()).intValue() == 0)
         {
           FavTagPanel.a(FavTagPanel.this, (TextView)paramAnonymousView);
@@ -65,7 +65,7 @@ public class FavTagPanel
               public final void run()
               {
                 AppMethodBeat.i(107553);
-                FavTagPanel.a(FavTagPanel.this).ahP(((TextView)paramAnonymousView).getText().toString());
+                FavTagPanel.a(FavTagPanel.this).asx(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(107553);
               }
             });
@@ -80,16 +80,16 @@ public class FavTagPanel
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(107555);
-    this.rNe = new LinkedList();
-    this.rNf = null;
-    this.rNg = new View.OnClickListener()
+    this.tmP = new LinkedList();
+    this.tmQ = null;
+    this.tmR = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(107554);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (((Integer)paramAnonymousView.getTag()).intValue() == 0)
         {
           FavTagPanel.a(FavTagPanel.this, (TextView)paramAnonymousView);
@@ -118,7 +118,7 @@ public class FavTagPanel
               public final void run()
               {
                 AppMethodBeat.i(107553);
-                FavTagPanel.a(FavTagPanel.this).ahP(((TextView)paramAnonymousView).getText().toString());
+                FavTagPanel.a(FavTagPanel.this).asx(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(107553);
               }
             });
@@ -129,12 +129,12 @@ public class FavTagPanel
     AppMethodBeat.o(107555);
   }
   
-  public final void cyQ() {}
+  public final void cWT() {}
   
   public void setCallBack(a parama)
   {
     AppMethodBeat.i(107557);
-    this.rNf = parama;
+    this.tmQ = parama;
     super.setCallBack(parama);
     AppMethodBeat.o(107557);
   }
@@ -142,42 +142,42 @@ public class FavTagPanel
   public void setType(String paramString)
   {
     AppMethodBeat.i(107558);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.FavTagPanel", "want to add type, but it is null or empty");
+      Log.w("MicroMsg.FavTagPanel", "want to add type, but it is null or empty");
       AppMethodBeat.o(107558);
       return;
     }
     paramString = paramString.trim();
-    Object localObject = this.rNe.iterator();
+    Object localObject = this.tmP.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).JIL))
+      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).OTF))
       {
-        ae.w("MicroMsg.FavTagPanel", "want to add type %s, but it exsited!", new Object[] { paramString });
+        Log.w("MicroMsg.FavTagPanel", "want to add type %s, but it exsited!", new Object[] { paramString });
         AppMethodBeat.o(107558);
         return;
       }
     }
-    this.rNe.clear();
-    localObject = fDe();
-    this.rNe.add(localObject);
+    this.tmP.clear();
+    localObject = gLf();
+    this.tmP.add(localObject);
     a((MMTagPanel.d)localObject, paramString, true);
-    ((MMTagPanel.d)localObject).JIM.setOnClickListener(this.rNg);
+    ((MMTagPanel.d)localObject).OTG.setOnClickListener(this.tmR);
     removeViews(0, getChildCount() - 1);
-    addView(((MMTagPanel.d)localObject).JIM, 0);
-    fDf();
+    addView(((MMTagPanel.d)localObject).OTG, 0);
+    gLg();
     AppMethodBeat.o(107558);
   }
   
   public static abstract interface a
     extends MMTagPanel.a
   {
-    public abstract void ahP(String paramString);
+    public abstract void asx(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavTagPanel
  * JD-Core Version:    0.7.0.1
  */

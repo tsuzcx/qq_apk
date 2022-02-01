@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="setting_remark" android:layout="@layout/aop" android:title="" />
-    <Preference android:key="setting_permission" android:layout="@layout/aop" android:title="" />
+    <PreferenceTitleCategory android:title="@string/ifg" />
+    <IconPreference android:key="wallet_lock_fingerprint" android:layout="@layout/b8j" android:title="@string/if4" />
+    <IconPreference android:key="wallet_lock_faceid" android:layout="@layout/b8j" android:title="@string/iex" />
+    <IconPreference android:key="wallet_lock_gesture" android:layout="@layout/b8j" android:title="@string/ifb" />
+    <IconPreference android:key="wallet_lock_close" android:layout="@layout/b8j" android:title="@string/iev" />
     <PreferenceSmallCategory />
-    <Preference android:key="setting_send_card" android:layout="@layout/aop" android:title="" />
-    <Preference android:key="setting_shortcut" android:layout="@layout/aop" android:title="@string/b3s" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="setting_star" android:layout="@layout/aop" android:persistent="false" android:title="@string/b61" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="setting_blacklist" android:layout="@layout/aop" android:persistent="false" android:title="@string/b7z" />
-    <Preference android:key="setting_report" android:layout="@layout/aop" android:title="@string/ady" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/aa7" android:key="setting_delete" android:layout="@layout/awu" android:title_color="@color/Red" />
-    <PreferenceCategory />
+    <Preference android:key="wallet_lock_modify_gesture" android:layout="@layout/b8j" android:title="@string/duz" />
 </PreferenceScreen>

@@ -19,7 +19,7 @@ public final class a
   @Deprecated
   public static final Charset UTF_8 = StandardCharsets.UTF_8;
   
-  public static Charset a(Charset paramCharset)
+  public static Charset b(Charset paramCharset)
   {
     AppMethodBeat.i(178791);
     if (paramCharset == null)
@@ -34,7 +34,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.a.a
  * JD-Core Version:    0.7.0.1
  */

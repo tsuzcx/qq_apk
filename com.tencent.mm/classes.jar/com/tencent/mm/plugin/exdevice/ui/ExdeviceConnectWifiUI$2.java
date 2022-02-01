@@ -16,13 +16,13 @@ final class ExdeviceConnectWifiUI$2
   {
     AppMethodBeat.i(179588);
     b localb = new b();
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.bd(paramKeyEvent);
-    a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$10", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.bm(paramKeyEvent);
+    a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$10", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
     if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
     {
-      ExdeviceConnectWifiUI.k(this.qqc);
+      ExdeviceConnectWifiUI.k(this.rHj);
       a.a(true, this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$10", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
       AppMethodBeat.o(179588);
       return true;
@@ -34,7 +34,7 @@ final class ExdeviceConnectWifiUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectWifiUI.2
  * JD-Core Version:    0.7.0.1
  */

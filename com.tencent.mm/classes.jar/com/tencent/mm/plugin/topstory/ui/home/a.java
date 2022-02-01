@@ -1,32 +1,35 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
+import com.tencent.mm.plugin.websearch.webview.d;
+import com.tencent.mm.protocal.protobuf.eii;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract interface a
+  extends d<eii>
 {
-  public abstract void aEk(String paramString);
+  public abstract void aTA(String paramString);
   
-  public abstract void aEl(String paramString);
+  public abstract void aTB(String paramString);
   
-  public abstract void aEm(String paramString);
+  public abstract void aTC(String paramString);
   
-  public abstract void aEn(String paramString);
+  public abstract void aTD(String paramString);
   
-  public abstract MMActivity dkN();
+  public abstract MMActivity eeF();
   
-  public abstract void esL();
+  public abstract void fyj();
   
-  public abstract void esM();
+  public abstract void fyk();
   
-  public abstract void esN();
+  public abstract void fyl();
   
-  public abstract void esO();
+  public abstract void fym();
   
-  public abstract int esP();
+  public abstract int fyn();
   
-  public abstract void in(int paramInt1, int paramInt2);
+  public abstract void jn(int paramInt1, int paramInt2);
   
-  public abstract void io(int paramInt1, int paramInt2);
+  public abstract void jo(int paramInt1, int paramInt2);
 }
 
 

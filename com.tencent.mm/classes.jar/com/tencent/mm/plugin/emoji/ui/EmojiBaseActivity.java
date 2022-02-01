@@ -4,65 +4,65 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.e.j.a;
-import com.tencent.e.j.d;
+import com.tencent.f.j.a;
+import com.tencent.f.j.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class EmojiBaseActivity
   extends MMActivity
 {
-  private a pPb;
-  b pPc;
+  b rfA;
+  private a rfz;
   
-  public final void cji()
+  public final void cHg()
   {
-    if (this.pPc != null) {
-      this.pPc.removeMessages(131074);
+    if (this.rfA != null) {
+      this.rfA.removeMessages(131074);
     }
   }
   
-  public final void fm(int paramInt1, int paramInt2)
+  public final void fC(int paramInt1, int paramInt2)
   {
-    if (this.pPc != null) {
-      this.pPc.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (this.rfA != null) {
+      this.rfA.sendEmptyMessageDelayed(paramInt1, paramInt2);
     }
   }
   
-  public abstract void l(Message paramMessage);
+  public abstract void j(Message paramMessage);
   
-  public abstract void m(Message paramMessage);
+  public abstract void k(Message paramMessage);
   
-  public final void n(Message paramMessage)
+  public final void l(Message paramMessage)
   {
-    if (this.pPc != null) {
-      this.pPc.sendMessage(paramMessage);
+    if (this.rfA != null) {
+      this.rfA.sendMessage(paramMessage);
     }
   }
   
-  public final void o(Message paramMessage)
+  public final void m(Message paramMessage)
   {
-    if (this.pPb != null) {
-      this.pPb.sendMessage(paramMessage);
+    if (this.rfz != null) {
+      this.rfz.sendMessage(paramMessage);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.pPb = new a(a.bbi("EmojiBaseActivity_handlerThread"));
-    this.pPc = new b(getMainLooper());
+    this.rfz = new a(a.bqt("EmojiBaseActivity_handlerThread"));
+    this.rfA = new b(getMainLooper());
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.pPb != null) && (this.pPb.getLooper() != null)) {
-      this.pPb.getSerial().Msx.quit();
+    if ((this.rfz != null) && (this.rfz.getLooper() != null)) {
+      this.rfz.getSerial().RUS.quit();
     }
-    this.pPb = null;
-    this.pPc = null;
+    this.rfz = null;
+    this.rfA = null;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -72,7 +72,7 @@ public abstract class EmojiBaseActivity
   }
   
   final class a
-    extends aq
+    extends MMHandler
   {
     a(a parama)
     {
@@ -83,13 +83,13 @@ public abstract class EmojiBaseActivity
     {
       AppMethodBeat.i(108857);
       super.handleMessage(paramMessage);
-      EmojiBaseActivity.this.l(paramMessage);
+      EmojiBaseActivity.this.j(paramMessage);
       AppMethodBeat.o(108857);
     }
   }
   
   final class b
-    extends aq
+    extends MMHandler
   {
     b(Looper paramLooper)
     {
@@ -100,14 +100,14 @@ public abstract class EmojiBaseActivity
     {
       AppMethodBeat.i(108858);
       super.handleMessage(paramMessage);
-      EmojiBaseActivity.this.m(paramMessage);
+      EmojiBaseActivity.this.k(paramMessage);
       AppMethodBeat.o(108858);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiBaseActivity
  * JD-Core Version:    0.7.0.1
  */

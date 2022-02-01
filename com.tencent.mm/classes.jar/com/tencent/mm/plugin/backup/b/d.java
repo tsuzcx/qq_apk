@@ -3,87 +3,87 @@ package com.tencent.mm.plugin.backup.b;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean gCS = false;
-  private static int nya = 0;
-  private static byte[] nyb = "key".getBytes();
-  private static SharedPreferences nyd;
-  public String nxW = "id";
-  public String nxX = "hello";
-  public String nxY = "ok";
-  public e nxZ;
-  public byte[] nyc;
+  private static boolean hpG = false;
+  private static int oIY = 0;
+  private static byte[] oIZ = "key".getBytes();
+  private static SharedPreferences oJb;
+  public String oIU = "id";
+  public String oIV = "hello";
+  public String oIW = "ok";
+  public e oIX;
+  public byte[] oJa;
   
-  public static void aB(byte[] paramArrayOfByte)
+  public static void Bb(int paramInt)
   {
-    nyb = paramArrayOfByte;
+    oIY = paramInt;
   }
   
-  public static int bHY()
+  public static void aS(byte[] paramArrayOfByte)
   {
-    return nya;
+    oIZ = paramArrayOfByte;
   }
   
-  public static byte[] bHZ()
+  public static int ceP()
   {
-    return nyb;
+    return oIY;
   }
   
-  public static SharedPreferences bIa()
+  public static byte[] ceQ()
   {
-    if (nyd == null) {
-      nyd = ak.getContext().getSharedPreferences("BACKUP_CONFIG", g.abv());
+    return oIZ;
+  }
+  
+  public static SharedPreferences ceR()
+  {
+    if (oJb == null) {
+      oJb = MMApplicationContext.getContext().getSharedPreferences("BACKUP_CONFIG", g.aps());
     }
-    return nyd;
+    return oJb;
   }
   
-  public static void bIb()
+  public static void ceS()
   {
-    ae.i(TAG, "holdReset");
-    gCS = true;
+    Log.i(TAG, "holdReset");
+    hpG = true;
   }
   
-  public static boolean bIc()
+  public static boolean ceT()
   {
-    return gCS;
+    return hpG;
   }
   
-  public static void bId()
+  public static void ceU()
   {
-    nyb = "key".getBytes();
-    nya = 0;
-    nyd = null;
-    gCS = false;
+    oIZ = "key".getBytes();
+    oIY = 0;
+    oJb = null;
+    hpG = false;
   }
   
-  public static void xv(int paramInt)
+  public final e ceM()
   {
-    nya = paramInt;
-  }
-  
-  public final e bHV()
-  {
-    if (this.nxZ == null) {
-      this.nxZ = new e();
+    if (this.oIX == null) {
+      this.oIX = new e();
     }
-    return this.nxZ;
+    return this.oIX;
   }
   
-  public abstract void bHW();
+  public abstract void ceN();
   
-  public abstract void bHX();
+  public abstract void ceO();
   
   public abstract void o(Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.annotation.TargetApi;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 @Deprecated
 @TargetApi(18)
@@ -20,28 +20,28 @@ public final class j
   {
     try
     {
-      AppMethodBeat.i(210681);
+      AppMethodBeat.i(241183);
       try
       {
-        if ((this.wct != null) && (this.wcv == -1))
+        if ((this.mediaMuxer != null) && (this.zww == -1))
         {
-          this.wcv = this.wct.addTrack(paramMediaFormat);
-          ae.i("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack, aacTrackIndex: %s", new Object[] { Integer.valueOf(this.wcv) });
-          if ((!this.isStart) && (this.wcv != -1))
+          this.zww = this.mediaMuxer.addTrack(paramMediaFormat);
+          Log.i("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack, aacTrackIndex: %s", new Object[] { Integer.valueOf(this.zww) });
+          if ((!this.isStart) && (this.zww != -1))
           {
-            ae.i("MicroMsg.MMSightAACSystemMediaMuxer", "start!");
-            this.wct.start();
+            Log.i("MicroMsg.MMSightAACSystemMediaMuxer", "start!");
+            this.mediaMuxer.start();
             this.isStart = true;
           }
         }
-        AppMethodBeat.o(210681);
+        AppMethodBeat.o(241183);
       }
       catch (Exception paramMediaFormat)
       {
         for (;;)
         {
-          ae.e("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack error: %s", new Object[] { paramMediaFormat.getMessage() });
-          AppMethodBeat.o(210681);
+          Log.e("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack error: %s", new Object[] { paramMediaFormat.getMessage() });
+          AppMethodBeat.o(241183);
         }
       }
       return;
@@ -51,7 +51,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.j
  * JD-Core Version:    0.7.0.1
  */

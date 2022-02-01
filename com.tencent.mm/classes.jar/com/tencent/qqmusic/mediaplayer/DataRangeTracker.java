@@ -5,8 +5,6 @@ import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
@@ -81,13 +79,13 @@ public class DataRangeTracker
     AppMethodBeat.o(76735);
   }
   
-  public void addRange(long paramLong1, long paramLong2)
+  public void addRange(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(76726);
+    AppMethodBeat.i(190288);
     if (paramLong1 > paramLong2)
     {
       Logger.e("DataRangeTracker", "[addRange] illegal arguments! beginPos(%s) > endPos(%s)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-      AppMethodBeat.o(76726);
+      AppMethodBeat.o(190288);
       return;
     }
     this.lock.writeLock().lock();
@@ -102,41 +100,35 @@ public class DataRangeTracker
         int j = this.mDownloadDataList.size() - 1;
         Range localRange1 = (Range)this.mDownloadDataList.get(0);
         if (j <= 0) {
-          break label306;
+          break label291;
         }
         i = 1;
-        if (i > j) {
-          break label289;
-        }
-        Range localRange2 = (Range)this.mDownloadDataList.get(i);
-        if (localRange1.second + 1L < localRange2.first)
+        if (i <= j)
         {
-          localArrayList.add(new Range(localRange1.first, localRange1.second, null));
-          localRange1 = new Range(localRange2.first, localRange2.second, null);
-          if (i < j) {
-            break label439;
+          Range localRange2 = (Range)this.mDownloadDataList.get(i);
+          if (localRange1.second + 1L < localRange2.first)
+          {
+            localArrayList.add(new Range(localRange1.first, localRange1.second, null));
+            localRange1 = new Range(localRange2.first, localRange2.second, null);
+            if (i < j) {
+              break label433;
+            }
+            localArrayList.add(localRange1);
+            break label433;
           }
-          localArrayList.add(localRange1);
-          break label439;
-        }
-        if (localRange1.second > localRange2.second)
-        {
-          paramLong1 = localRange1.second;
+          paramLong1 = Math.max(localRange1.second, localRange2.second);
           localRange1 = new Range(localRange1.first, paramLong1, null);
           continue;
         }
-        paramLong1 = localRange2.second;
+        this.mDownloadDataList.clear();
       }
       finally
       {
         this.lock.writeLock().unlock();
-        AppMethodBeat.o(76726);
+        AppMethodBeat.o(190288);
       }
-      continue;
-      label289:
-      this.mDownloadDataList.clear();
       this.mDownloadDataList.addAll(localArrayList);
-      label306:
+      label291:
       if ((this.waitingPosition >= 0L) && (this.waitingSize > 0))
       {
         boolean bool = isCached(this.waitingPosition, this.waitingSize);
@@ -149,20 +141,22 @@ public class DataRangeTracker
           break;
         }
         Logger.i("DataRangeTracker", "[addRange] notify position: " + this.waitingPosition + ", size: " + this.waitingSize);
+        if (paramBoolean) {}
         try
         {
+          unlock();
           this.waitingPosition = 0L;
           this.waitingSize = 0;
           return;
         }
         finally
         {
-          AppMethodBeat.o(76726);
+          AppMethodBeat.o(190288);
         }
       }
-      AppMethodBeat.o(76726);
+      AppMethodBeat.o(190288);
       return;
-      label439:
+      label433:
       i += 1;
     }
   }
@@ -174,7 +168,7 @@ public class DataRangeTracker
     AppMethodBeat.o(76733);
   }
   
-  public long findEnd(long paramLong)
+  long findEnd(long paramLong)
   {
     AppMethodBeat.i(76728);
     lockRead();
@@ -284,30 +278,6 @@ public class DataRangeTracker
     }
   }
   
-  List<Range> getEmptyContentPairList(long paramLong)
-  {
-    AppMethodBeat.i(76740);
-    ArrayList localArrayList2 = new ArrayList();
-    long l = 0L;
-    synchronized (this.mDownloadDataList)
-    {
-      Iterator localIterator = this.mDownloadDataList.iterator();
-      while (localIterator.hasNext())
-      {
-        Range localRange = (Range)localIterator.next();
-        if (l < localRange.first) {
-          localArrayList2.add(new Range(l, localRange.first - 1L, null));
-        }
-        l = 1L + localRange.second;
-      }
-      if (l < paramLong) {
-        localArrayList2.add(new Range(l, paramLong - 1L, null));
-      }
-      AppMethodBeat.o(76740);
-      return localArrayList2;
-    }
-  }
-  
   public boolean isCached(long paramLong, int paramInt)
   {
     boolean bool = false;
@@ -346,21 +316,22 @@ public class DataRangeTracker
     }
   }
   
-  public boolean lock(long paramLong1, int paramInt, long paramLong2)
+  public boolean lock(long paramLong1, int paramInt, long paramLong2, LockJudgerCallback paramLockJudgerCallback)
   {
     for (;;)
     {
+      int j;
       int i;
       try
       {
-        AppMethodBeat.i(76732);
+        AppMethodBeat.i(190289);
         Logger.i("DataRangeTracker", "[lock] position = [" + paramLong1 + "]. size = [" + paramInt + "]. timeout = [" + paramLong2 + "].");
         this.waitingPosition = paramLong1;
         this.waitingSize = paramInt;
         j = (int)(paramLong2 / 1000L);
         i = j;
         if (j > 0) {
-          break label200;
+          break label266;
         }
         i = 1;
       }
@@ -368,99 +339,28 @@ public class DataRangeTracker
       if (j < i)
       {
         wait(1000L);
-        if (!isCached(this.waitingPosition, this.waitingSize))
-        {
-          Logger.i("DataRangeTracker", "continue [lock] position = [" + paramLong1 + "]. size = [" + paramInt + "]. totalSize = [" + this.mFileTotalSize + "]. findStart(position) = [" + findStart(paramLong1) + "].");
-          j += 1;
-          continue;
+        if ((paramLockJudgerCallback != null) && (paramLockJudgerCallback.isToAbandonLock())) {
+          Logger.i("DataRangeTracker", "lockJudgerCallback.isToAbandonLock() is true, exit the wait loop");
         }
       }
-      AppMethodBeat.o(76732);
-      return true;
-      label200:
-      int j = 0;
+      else
+      {
+        AppMethodBeat.o(190289);
+        return true;
+      }
+      if (isCached(this.waitingPosition, this.waitingSize))
+      {
+        Logger.i("DataRangeTracker", "isCached(waitingPosition, waitingSize) is true, exit the wait loop, wawaitingPosition = " + this.waitingPosition + ", waitingSize = " + this.waitingSize);
+      }
+      else
+      {
+        Logger.i("DataRangeTracker", "continue [lock] position = [" + paramLong1 + "]. size = [" + paramInt + "]. totalSize = [" + this.mFileTotalSize + "]. findStart(position) = [" + findStart(paramLong1) + "]. i = " + j);
+        j += 1;
+        continue;
+        label266:
+        j = 0;
+      }
     }
-  }
-  
-  /* Error */
-  public String print()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 253
-    //   4: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 50	com/tencent/qqmusic/mediaplayer/DataRangeTracker:lock	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
-    //   11: invokevirtual 67	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   14: invokevirtual 71	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:lock	()V
-    //   17: new 163	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 254	java/lang/StringBuilder:<init>	()V
-    //   24: astore_2
-    //   25: iconst_0
-    //   26: istore_1
-    //   27: iload_1
-    //   28: aload_0
-    //   29: getfield 45	com/tencent/qqmusic/mediaplayer/DataRangeTracker:mDownloadDataList	Ljava/util/ArrayList;
-    //   32: invokevirtual 134	java/util/ArrayList:size	()I
-    //   35: if_icmpge +29 -> 64
-    //   38: aload_2
-    //   39: aload_0
-    //   40: getfield 45	com/tencent/qqmusic/mediaplayer/DataRangeTracker:mDownloadDataList	Ljava/util/ArrayList;
-    //   43: iload_1
-    //   44: invokevirtual 138	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   47: checkcast 8	com/tencent/qqmusic/mediaplayer/DataRangeTracker$Range
-    //   50: invokevirtual 255	com/tencent/qqmusic/mediaplayer/DataRangeTracker$Range:toString	()Ljava/lang/String;
-    //   53: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: iload_1
-    //   58: iconst_1
-    //   59: iadd
-    //   60: istore_1
-    //   61: goto -34 -> 27
-    //   64: aload_2
-    //   65: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: astore_2
-    //   69: aload_0
-    //   70: getfield 50	com/tencent/qqmusic/mediaplayer/DataRangeTracker:lock	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
-    //   73: invokevirtual 67	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   76: invokevirtual 87	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
-    //   79: ldc 253
-    //   81: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   84: aload_0
-    //   85: monitorexit
-    //   86: aload_2
-    //   87: areturn
-    //   88: astore_2
-    //   89: aload_0
-    //   90: getfield 50	com/tencent/qqmusic/mediaplayer/DataRangeTracker:lock	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
-    //   93: invokevirtual 67	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   96: invokevirtual 87	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
-    //   99: ldc 253
-    //   101: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   104: aload_2
-    //   105: athrow
-    //   106: astore_2
-    //   107: aload_0
-    //   108: monitorexit
-    //   109: aload_2
-    //   110: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	111	0	this	DataRangeTracker
-    //   26	35	1	i	int
-    //   24	63	2	localObject1	Object
-    //   88	17	2	localObject2	Object
-    //   106	4	2	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   17	25	88	finally
-    //   27	57	88	finally
-    //   64	69	88	finally
-    //   2	17	106	finally
-    //   69	84	106	finally
-    //   89	106	106	finally
   }
   
   public void setFileTotalSize(long paramLong)
@@ -473,6 +373,11 @@ public class DataRangeTracker
     AppMethodBeat.i(76734);
     Logger.i("DataRangeTracker", "[unblock]");
     AppMethodBeat.o(76734);
+  }
+  
+  public static abstract interface LockJudgerCallback
+  {
+    public abstract boolean isToAbandonLock();
   }
   
   static class Range
@@ -497,7 +402,7 @@ public class DataRangeTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.DataRangeTracker
  * JD-Core Version:    0.7.0.1
  */

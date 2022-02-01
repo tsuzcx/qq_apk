@@ -4,33 +4,33 @@ import android.app.Activity;
 
 public abstract class a
 {
-  public abstract void Df(int paramInt);
+  public abstract void GQ(int paramInt);
   
-  public abstract void ab(Activity paramActivity);
+  public abstract void Z(Activity paramActivity);
   
-  public abstract void aeN(String paramString);
+  public abstract void apd(String paramString);
   
-  public abstract void aeO(String paramString);
+  public abstract void ape(String paramString);
   
-  public abstract void aeP(String paramString);
+  public abstract void apf(String paramString);
   
-  public abstract void aeQ(String paramString);
+  public abstract void apg(String paramString);
   
-  public abstract boolean aeR(String paramString);
+  public abstract boolean aph(String paramString);
   
-  public abstract boolean aeS(String paramString);
+  public abstract boolean api(String paramString);
   
-  abstract void aeT(String paramString);
+  abstract void apj(String paramString);
   
   public abstract void b(String paramString1, boolean paramBoolean, String paramString2);
   
-  public abstract int cpA();
+  public abstract int cNT();
   
-  public abstract boolean cpB();
+  public abstract boolean cNU();
   
-  public abstract boolean cpC();
+  public abstract boolean cNV();
   
-  public abstract String cpD();
+  public abstract String cNW();
   
   abstract void reset();
 }

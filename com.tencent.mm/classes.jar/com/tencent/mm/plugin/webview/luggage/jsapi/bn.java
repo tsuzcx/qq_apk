@@ -1,42 +1,49 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bn
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78637);
-    ae.i("MicroMsg.JsApiShowOptionMenu", "invoke");
-    m localm = ((g)paramb.chg).eSQ();
-    if (localm == null)
+    AppMethodBeat.i(78636);
+    Log.i("MicroMsg.JsApiShowMenuItems", "invokeInOwn");
+    JSONArray localJSONArray = paramb.ctb.csi.optJSONArray("menuList");
+    if (localJSONArray == null)
     {
-      ae.i("MicroMsg.JsApiShowOptionMenu", "actionBar is null");
-      AppMethodBeat.o(78637);
+      Log.i("MicroMsg.JsApiShowMenuItems", "data is null");
+      paramb.c("invalid_data", null);
+      AppMethodBeat.o(78636);
       return;
     }
-    localm.eTl();
-    paramb.a("", null);
-    AppMethodBeat.o(78637);
+    m localm = ((g)paramb.cta).gbC();
+    if (localm != null) {
+      localm.U(localJSONArray);
+    }
+    paramb.c("", null);
+    AppMethodBeat.o(78636);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "showOptionMenu";
+    return "showMenuItems";
   }
 }
 

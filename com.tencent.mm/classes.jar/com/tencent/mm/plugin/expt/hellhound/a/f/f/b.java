@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aup;
-import com.tencent.mm.protocal.protobuf.aur;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.protocal.protobuf.bov;
-import com.tencent.mm.protocal.protobuf.bow;
-import com.tencent.mm.protocal.protobuf.dcc;
-import com.tencent.mm.protocal.protobuf.dwx;
-import com.tencent.mm.protocal.protobuf.dwy;
-import com.tencent.mm.protocal.protobuf.oh;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bfy;
+import com.tencent.mm.protocal.protobuf.bga;
+import com.tencent.mm.protocal.protobuf.bgb;
+import com.tencent.mm.protocal.protobuf.cbn;
+import com.tencent.mm.protocal.protobuf.cbo;
+import com.tencent.mm.protocal.protobuf.dvg;
+import com.tencent.mm.protocal.protobuf.erd;
+import com.tencent.mm.protocal.protobuf.ere;
+import com.tencent.mm.protocal.protobuf.pd;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.c;
 import java.util.ArrayList;
@@ -27,38 +27,38 @@ import org.json.JSONObject;
 
 final class b
 {
-  static List<c<String, String>> a(bow parambow, aup paramaup)
+  static List<c<String, String>> a(cbo paramcbo, bfy parambfy)
   {
     AppMethodBeat.i(122218);
-    if ((paramaup == null) || (paramaup.GLy.isEmpty()))
+    if ((parambfy == null) || (parambfy.LPC.isEmpty()))
     {
-      ae.e("HABBYGE-MALI.FuzzyDetailReport", "reportFuzzyMatch，toJson: cache == null");
+      Log.e("HABBYGE-MALI.FuzzyDetailReport", "reportFuzzyMatch，toJson: cache == null");
       AppMethodBeat.o(122218);
       return null;
     }
     Object localObject3 = new HashMap();
-    Object localObject2 = paramaup.GLy.iterator();
+    Object localObject2 = parambfy.LPC.iterator();
     Object localObject4;
     Object localObject1;
     if (((Iterator)localObject2).hasNext())
     {
-      localObject4 = (aus)((Iterator)localObject2).next();
-      if (((Map)localObject3).containsKey(Long.valueOf(((aus)localObject4).GLJ)))
+      localObject4 = (bgb)((Iterator)localObject2).next();
+      if (((Map)localObject3).containsKey(Long.valueOf(((bgb)localObject4).LPN)))
       {
-        localObject1 = (List)((Map)localObject3).get(Long.valueOf(((aus)localObject4).GLJ));
-        paramaup = (aup)localObject1;
+        localObject1 = (List)((Map)localObject3).get(Long.valueOf(((bgb)localObject4).LPN));
+        parambfy = (bfy)localObject1;
         if (localObject1 != null) {}
       }
-      for (paramaup = new ArrayList();; paramaup = new ArrayList())
+      for (parambfy = new ArrayList();; parambfy = new ArrayList())
       {
-        paramaup.add(localObject4);
-        ((Map)localObject3).put(Long.valueOf(((aus)localObject4).GLJ), paramaup);
+        parambfy.add(localObject4);
+        ((Map)localObject3).put(Long.valueOf(((bgb)localObject4).LPN), parambfy);
         break;
       }
     }
     if (((Map)localObject3).isEmpty())
     {
-      ae.e("HABBYGE-MALI.FuzzyDetailReport", "reportFuzzyMatch，toJson: ppidPathsMap == null");
+      Log.e("HABBYGE-MALI.FuzzyDetailReport", "reportFuzzyMatch，toJson: ppidPathsMap == null");
       AppMethodBeat.o(122218);
       return null;
     }
@@ -69,10 +69,10 @@ final class b
       localObject4 = (List)((Map.Entry)((Iterator)localObject3).next()).getValue();
       if ((localObject4 != null) && (!((List)localObject4).isEmpty()))
       {
-        aus localaus1 = (aus)((List)localObject4).get(0);
-        if (localaus1.sDg)
+        bgb localbgb1 = (bgb)((List)localObject4).get(0);
+        if (localbgb1.vtY)
         {
-          JSONObject localJSONObject1 = i.j(parambow);
+          JSONObject localJSONObject1 = i.j(paramcbo);
           if (localJSONObject1 != null)
           {
             JSONArray localJSONArray = new JSONArray();
@@ -82,42 +82,42 @@ final class b
               if (i >= ((List)localObject4).size()) {
                 break label439;
               }
-              aus localaus2 = (aus)((List)localObject4).get(i);
+              bgb localbgb2 = (bgb)((List)localObject4).get(i);
               JSONObject localJSONObject2 = new JSONObject();
               try
               {
-                localJSONObject2.put("pagePathId", localaus2.GLJ);
-                localJSONObject2.put("sessionId", localaus2.dAa);
-                localObject1 = g.a(parambow, localaus2.dAa);
-                paramaup = (aup)localObject1;
+                localJSONObject2.put("pagePathId", localbgb2.LPN);
+                localJSONObject2.put("sessionId", localbgb2.dRM);
+                localObject1 = g.a(paramcbo, localbgb2.dRM);
+                parambfy = (bfy)localObject1;
                 if (localObject1 == null) {
-                  paramaup = "";
+                  parambfy = "";
                 }
-                localJSONObject2.put("lastSessionId", paramaup);
-                localJSONObject2.put("pagePath", a(localaus2, localJSONObject2));
+                localJSONObject2.put("lastSessionId", parambfy);
+                localJSONObject2.put("pagePath", a(localbgb2, localJSONObject2));
                 localJSONArray.put(localJSONObject2);
               }
-              catch (Exception paramaup)
+              catch (Exception parambfy)
               {
                 for (;;)
                 {
-                  ae.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", paramaup, "toJson, crash-FuzzyPath-1: %s", new Object[] { paramaup.getMessage() });
+                  Log.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", parambfy, "toJson, crash-FuzzyPath-1: %s", new Object[] { parambfy.getMessage() });
                 }
               }
               i += 1;
             }
             label439:
             if (localJSONArray.length() <= 0) {
-              ae.e("HABBYGE-MALI.FuzzyDetailReport", "content is NULL !!");
+              Log.e("HABBYGE-MALI.FuzzyDetailReport", "content is NULL !!");
             } else {
               try
               {
                 localJSONObject1.put("content", localJSONArray);
-                ((List)localObject2).add(a.N(localaus1.GLI, localJSONObject1.toString()));
+                ((List)localObject2).add(a.Q(localbgb1.LPM, localJSONObject1.toString()));
               }
-              catch (JSONException paramaup)
+              catch (JSONException parambfy)
               {
-                ae.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", paramaup, "toJson, crash-FuzzyPath-2: %s", new Object[] { paramaup.getMessage() });
+                Log.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", parambfy, "toJson, crash-FuzzyPath-2: %s", new Object[] { parambfy.getMessage() });
               }
             }
           }
@@ -128,21 +128,21 @@ final class b
     return localObject2;
   }
   
-  private static JSONArray a(aus paramaus, JSONObject paramJSONObject)
+  private static JSONArray a(bgb parambgb, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(169359);
     JSONArray localJSONArray1 = new JSONArray();
-    if ((paramaus == null) || (paramaus.GLG.isEmpty()))
+    if ((parambgb == null) || (parambgb.LPK.isEmpty()))
     {
       AppMethodBeat.o(169359);
       return localJSONArray1;
     }
-    int j = paramaus.GLG.size();
+    int j = parambgb.LPK.size();
     long l1 = 0L;
     int i = 0;
     for (;;)
     {
-      aur localaur;
+      bga localbga;
       JSONObject localJSONObject;
       JSONArray localJSONArray2;
       if (i < j) {
@@ -150,31 +150,31 @@ final class b
         {
           try
           {
-            localaur = (aur)paramaus.GLG.get(i);
+            localbga = (bga)parambgb.LPK.get(i);
             localJSONObject = new JSONObject();
-            localJSONObject.put("pageName", localaur.name);
-            localJSONObject.put("tbe", localaur.startTime);
-            localJSONObject.put("in", localaur.GLB);
-            long l2 = localaur.GLB;
+            localJSONObject.put("pageName", localbga.name);
+            localJSONObject.put("tbe", localbga.startTime);
+            localJSONObject.put("in", localbga.LPF);
+            long l2 = localbga.LPF;
             l1 += l2;
             if (i == 0) {}
             try
             {
-              paramJSONObject.put("tbe", localaur.startTime);
+              paramJSONObject.put("tbe", localbga.startTime);
             }
             catch (Exception localException)
             {
-              ae.m("HABBYGE-MALI.FuzzyDetailReport", "createFuzzyPathJsonArray, exception: %s", new Object[] { localException.getMessage() });
+              Log.printInfoStack("HABBYGE-MALI.FuzzyDetailReport", "createFuzzyPathJsonArray, exception: %s", new Object[] { localException.getMessage() });
             }
           }
-          catch (JSONException paramaus)
+          catch (JSONException parambgb)
           {
-            ae.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", paramaus, "createFuzzyPathJsonArray crash: %s", new Object[] { paramaus.getMessage() });
+            Log.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", parambgb, "createFuzzyPathJsonArray crash: %s", new Object[] { parambgb.getMessage() });
           }
           try
           {
             localJSONArray2 = new JSONArray();
-            if (localaur != null) {
+            if (localbga != null) {
               break label240;
             }
             localJSONObject.put("businessParam", localJSONArray2);
@@ -186,38 +186,38 @@ final class b
               Object localObject2;
               String str1;
               String str2;
-              ae.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", localJSONException, "_getBizParams crash: %s", new Object[] { localJSONException.getMessage() });
+              Log.printErrStackTrace("HABBYGE-MALI.FuzzyDetailReport", localJSONException, "_getBizParams crash: %s", new Object[] { localJSONException.getMessage() });
               break;
               Object localObject1 = null;
               continue;
               if ((localObject2 == null) || (!((String)localObject2).equals(str2))) {
                 break label451;
               }
-              ae.i("HABBYGE-MALI.FuzzyDetailReport", "sCurPageName: %s, %s", new Object[] { localObject2, str2 });
-              a(localaur, localJSONArray2, paramaus.GLJ);
+              Log.i("HABBYGE-MALI.FuzzyDetailReport", "sCurPageName: %s, %s", new Object[] { localObject2, str2 });
+              a(localbga, localJSONArray2, parambgb.LPN);
             }
-            ae.e("HABBYGE-MALI.FuzzyDetailReport", "Neither prePage nor curPage !!");
+            Log.e("HABBYGE-MALI.FuzzyDetailReport", "Neither prePage nor curPage !!");
             localJSONObject.put("businessParam", localJSONArray2);
             continue;
           }
-          a(localJSONObject, paramaus, localaur);
+          a(localJSONObject, parambgb, localbga);
           localJSONArray1.put(localJSONObject);
           break label497;
           AppMethodBeat.o(169359);
           return localJSONArray1;
           label240:
-          localObject2 = paramaus.GLF;
-          if ((paramaus.GLE.isEmpty()) || (paramaus.GLE.size() != 1)) {
+          localObject2 = parambgb.LPJ;
+          if ((parambgb.LPI.isEmpty()) || (parambgb.LPI.size() != 1)) {
             break;
           }
-          str1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((dcc)paramaus.GLE.get(0)).duQ);
-          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((dcc)localObject2).duQ);
-          str2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(localaur.name);
+          str1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((dvg)parambgb.LPI.get(0)).dMl);
+          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((dvg)localObject2).dMl);
+          str2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(localbga.name);
           if ((str1 == null) || (!str1.equals(str2))) {
             break label400;
           }
-          ae.i("HABBYGE-MALI.FuzzyDetailReport", "sPrePageName: %s, %s", new Object[] { str1, str2 });
-          a(localaur, localJSONArray2, paramaus.GLJ);
+          Log.i("HABBYGE-MALI.FuzzyDetailReport", "sPrePageName: %s, %s", new Object[] { str1, str2 });
+          a(localbga, localJSONArray2, parambgb.LPN);
           localJSONObject.put("businessParam", localJSONArray2);
         }
       }
@@ -235,58 +235,58 @@ final class b
     }
   }
   
-  private static void a(aur paramaur, JSONArray paramJSONArray, long paramLong)
+  private static void a(bga parambga, JSONArray paramJSONArray, long paramLong)
   {
-    AppMethodBeat.i(196150);
-    if (!paramaur.GLC.isEmpty())
+    AppMethodBeat.i(220581);
+    if (!parambga.LPG.isEmpty())
     {
-      j.a(paramJSONArray, paramaur, paramLong);
-      AppMethodBeat.o(196150);
+      j.a(paramJSONArray, parambga, paramLong);
+      AppMethodBeat.o(220581);
       return;
     }
-    paramaur = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramaur.name);
-    if (paramaur != null) {
-      j.d(paramaur, false, paramLong);
+    parambga = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambga.name);
+    if (parambga != null) {
+      j.d(parambga, false, paramLong);
     }
-    AppMethodBeat.o(196150);
+    AppMethodBeat.o(220581);
   }
   
-  private static void a(JSONObject paramJSONObject, aus paramaus, aur paramaur)
+  private static void a(JSONObject paramJSONObject, bgb parambgb, bga parambga)
   {
-    AppMethodBeat.i(196148);
+    AppMethodBeat.i(220579);
     JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = paramaur.GLD.iterator();
+    Iterator localIterator = parambga.LPH.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
-      Object localObject2 = (dwx)localIterator.next();
-      if ((localObject2 != null) && (a((dwx)localObject2, paramaur, paramaus)))
+      Object localObject2 = (erd)localIterator.next();
+      if ((localObject2 != null) && (a((erd)localObject2, parambga, parambgb)))
       {
         i = 1;
         JSONObject localJSONObject1 = new JSONObject();
-        localJSONObject1.put("viewId", ((dwx)localObject2).Icn);
-        localJSONObject1.put("type", ((dwx)localObject2).type);
-        localJSONObject1.put("action", ((dwx)localObject2).duP);
-        localJSONObject1.put("timestamp", ((dwx)localObject2).timestamp);
+        localJSONObject1.put("viewId", ((erd)localObject2).NoL);
+        localJSONObject1.put("type", ((erd)localObject2).type);
+        localJSONObject1.put("action", ((erd)localObject2).eventId);
+        localJSONObject1.put("timestamp", ((erd)localObject2).timestamp);
         Object localObject1;
-        if (!((dwx)localObject2).GbV.isEmpty())
+        if (!((erd)localObject2).KVY.isEmpty())
         {
           localObject1 = new JSONArray();
-          localObject2 = ((dwx)localObject2).GbV.iterator();
+          localObject2 = ((erd)localObject2).KVY.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            Object localObject3 = (oh)((Iterator)localObject2).next();
-            if ((localObject3 != null) && (((oh)localObject3).GbU == paramaus.GLJ))
+            Object localObject3 = (pd)((Iterator)localObject2).next();
+            if ((localObject3 != null) && (((pd)localObject3).KVX == parambgb.LPN))
             {
-              localObject3 = ((oh)localObject3).GbV.iterator();
+              localObject3 = ((pd)localObject3).KVY.iterator();
               while (((Iterator)localObject3).hasNext())
               {
-                bov localbov = (bov)((Iterator)localObject3).next();
-                if ((localbov != null) && (localbov.dGe != null))
+                cbn localcbn = (cbn)((Iterator)localObject3).next();
+                if ((localcbn != null) && (localcbn.dataPath != null))
                 {
                   JSONObject localJSONObject2 = new JSONObject();
-                  localJSONObject2.put("dataPath", localbov.dGe);
-                  localJSONObject2.put("value", localbov.value);
+                  localJSONObject2.put("dataPath", localcbn.dataPath);
+                  localJSONObject2.put("value", localcbn.value);
                   ((JSONArray)localObject1).put(localJSONObject2);
                 }
               }
@@ -295,18 +295,18 @@ final class b
           if (((JSONArray)localObject1).length() > 0)
           {
             localJSONObject1.put("businessParam", localObject1);
-            l.w(paramaus.GLJ, 4);
+            l.t(parambgb.LPN, 4);
           }
         }
         for (;;)
         {
           localJSONArray.put(localJSONObject1);
           break;
-          l.w(paramaus.GLJ, 5);
+          l.t(parambgb.LPN, 5);
           continue;
-          localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramaur.name);
+          localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambga.name);
           if (localObject1 != null) {
-            j.g(((dwx)localObject2).Icn, (String)localObject1, paramaus.GLJ);
+            j.i(((erd)localObject2).NoL, (String)localObject1, parambgb.LPN);
           }
         }
       }
@@ -314,69 +314,69 @@ final class b
     paramJSONObject.put("viewOp", localJSONArray);
     if (i == 0)
     {
-      AppMethodBeat.o(196148);
+      AppMethodBeat.o(220579);
       return;
     }
-    if (paramaur.GLD.isEmpty())
+    if (parambga.LPH.isEmpty())
     {
-      paramJSONObject = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramaur.name);
+      paramJSONObject = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambga.name);
       if (paramJSONObject != null) {
-        j.as(paramJSONObject, paramaus.GLJ);
+        j.ar(paramJSONObject, parambgb.LPN);
       }
-      AppMethodBeat.o(196148);
+      AppMethodBeat.o(220579);
       return;
     }
     if (localJSONArray.length() > 0) {}
     for (i = 2;; i = 3)
     {
-      l.w(paramaus.GLJ, i);
-      AppMethodBeat.o(196148);
+      l.t(parambgb.LPN, i);
+      AppMethodBeat.o(220579);
       return;
     }
   }
   
-  private static boolean a(dwx paramdwx, aur paramaur, aus paramaus)
+  private static boolean a(erd paramerd, bga parambga, bgb parambgb)
   {
-    AppMethodBeat.i(196149);
-    paramaur = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramaur.name);
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(paramaus.GLF.duQ);
+    AppMethodBeat.i(220580);
+    parambga = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambga.name);
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(parambgb.LPJ.dMl);
     Object localObject2;
-    if ((localObject1 != null) && (((String)localObject1).equals(paramaur)))
+    if ((localObject1 != null) && (((String)localObject1).equals(parambga)))
     {
-      localObject1 = paramaus.GLF.HKD.iterator();
+      localObject1 = parambgb.LPJ.MWm.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (dwy)((Iterator)localObject1).next();
-        if (com.tencent.mm.plugin.expt.hellhound.core.b.c.g.a(paramdwx, (dwy)localObject2))
+        localObject2 = (ere)((Iterator)localObject1).next();
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.c.g.a(paramerd, (ere)localObject2))
         {
-          ae.i("HABBYGE-MALI.FuzzyDetailReport", "inConfig: entry: viewNode=%s, %s", new Object[] { ((dwy)localObject2).aQj, ((dwy)localObject2).Icn });
-          AppMethodBeat.o(196149);
+          Log.i("HABBYGE-MALI.FuzzyDetailReport", "inConfig: entry: viewNode=%s, %s", new Object[] { ((ere)localObject2).viewId, ((ere)localObject2).NoL });
+          AppMethodBeat.o(220580);
           return true;
         }
       }
     }
     do
     {
-      paramaus = paramaus.GLE.iterator();
+      parambgb = parambgb.LPI.iterator();
       while (!((Iterator)localObject1).hasNext())
       {
         do
         {
-          if (!paramaus.hasNext()) {
+          if (!parambgb.hasNext()) {
             break;
           }
-          localObject1 = (dcc)paramaus.next();
-          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((dcc)localObject1).duQ);
-        } while ((localObject2 == null) || (!((String)localObject2).equals(paramaur)));
-        localObject1 = ((dcc)localObject1).HKD.iterator();
+          localObject1 = (dvg)parambgb.next();
+          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((dvg)localObject1).dMl);
+        } while ((localObject2 == null) || (!((String)localObject2).equals(parambga)));
+        localObject1 = ((dvg)localObject1).MWm.iterator();
       }
-      localObject2 = (dwy)((Iterator)localObject1).next();
-    } while (!com.tencent.mm.plugin.expt.hellhound.core.b.c.g.a(paramdwx, (dwy)localObject2));
-    ae.i("HABBYGE-MALI.FuzzyDetailReport", "inConfig: prePage=%s, %s", new Object[] { ((dwy)localObject2).aQj, ((dwy)localObject2).Icn });
-    AppMethodBeat.o(196149);
+      localObject2 = (ere)((Iterator)localObject1).next();
+    } while (!com.tencent.mm.plugin.expt.hellhound.core.b.c.g.a(paramerd, (ere)localObject2));
+    Log.i("HABBYGE-MALI.FuzzyDetailReport", "inConfig: prePage=%s, %s", new Object[] { ((ere)localObject2).viewId, ((ere)localObject2).NoL });
+    AppMethodBeat.o(220580);
     return true;
-    ae.i("HABBYGE-MALI.FuzzyDetailReport", "inConfig: false: %s, %s", new Object[] { paramdwx.id, paramdwx.Icn });
-    AppMethodBeat.o(196149);
+    Log.i("HABBYGE-MALI.FuzzyDetailReport", "inConfig: false: %s, %s", new Object[] { paramerd.id, paramerd.NoL });
+    AppMethodBeat.o(220580);
     return false;
   }
 }

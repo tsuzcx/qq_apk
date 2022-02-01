@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,26 +20,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.luckymoney.model.ak;
-import com.tencent.mm.plugin.luckymoney.model.al;
-import com.tencent.mm.plugin.luckymoney.model.s;
-import com.tencent.mm.plugin.luckymoney.model.t;
-import com.tencent.mm.plugin.luckymoney.model.u;
-import com.tencent.mm.plugin.luckymoney.model.z;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.luckymoney.hk.ui.LuckyMoneyHKBeforeDetailUI;
+import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.plugin.luckymoney.model.at;
+import com.tencent.mm.plugin.luckymoney.model.au;
+import com.tencent.mm.plugin.luckymoney.model.x;
+import com.tencent.mm.plugin.luckymoney.model.y;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 import com.tencent.mm.ui.base.MMLoadMoreListView.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.c;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -50,89 +46,89 @@ import java.util.Map;
 public class LuckyMoneyMyRecordUI
   extends LuckyMoneyBaseUI
 {
-  private int fq;
-  private View jil;
-  private boolean lpM;
+  private int fs;
+  private View kgo;
   private int mType;
-  private ImageView pjj;
-  private TextView pko;
-  public String vCz;
-  private MMLoadMoreListView vHP;
-  private e vHQ;
-  private boolean vHj;
-  private Map<String, Integer> vHp;
-  public String vHr;
-  private TextView vJA;
-  private TextView vJB;
-  private TextView vJC;
-  private TextView vJD;
-  private TextView vJE;
-  private TextView vJF;
-  private TextView vJG;
-  private String vJH;
-  private int vJI;
-  public List<String> vJJ;
-  private List<t> vvQ;
-  private TextView vvW;
+  private boolean mwr;
+  private ImageView qyu;
+  private TextView qzz;
+  private List<y> yQe;
+  private TextView yQk;
+  public String yXA;
+  private MMLoadMoreListView zcN;
+  private f zcO;
+  private boolean zci;
+  private Map<String, Integer> zcn;
+  public String zcp;
+  private TextView zeG;
+  private TextView zeH;
+  private TextView zeI;
+  private TextView zeJ;
+  private TextView zeK;
+  private TextView zeL;
+  private TextView zeM;
+  private String zeN;
+  private int zeO;
+  public List<String> zeP;
   
   public LuckyMoneyMyRecordUI()
   {
     AppMethodBeat.i(65648);
-    this.fq = 0;
-    this.vvQ = new LinkedList();
-    this.vHp = new HashMap();
-    this.vHj = true;
-    this.lpM = false;
-    this.vJI = -1;
-    this.vJJ = new ArrayList();
-    this.vHr = "";
-    this.vCz = "";
+    this.fs = 0;
+    this.yQe = new LinkedList();
+    this.zcn = new HashMap();
+    this.zci = true;
+    this.mwr = false;
+    this.zeO = -1;
+    this.zeP = new ArrayList();
+    this.zcp = "";
+    this.yXA = "";
     AppMethodBeat.o(65648);
   }
   
-  private void dmh()
+  private void egc()
   {
     AppMethodBeat.i(65653);
-    this.lpM = true;
-    if (this.fq == 0) {
-      this.vHr = "";
+    this.mwr = true;
+    if (this.fs == 0) {
+      this.zcp = "";
     }
-    doSceneProgress(new ak(11, this.fq, this.mType, this.vJH, "v1.0", this.vHr));
+    doSceneProgress(new at(11, this.fs, this.mType, this.zeN, "v1.0", this.zcp));
     AppMethodBeat.o(65653);
   }
   
-  private void dmr()
+  private void egm()
   {
     AppMethodBeat.i(65651);
-    this.vJG.setVisibility(8);
-    this.jil.findViewById(2131301845).setVisibility(8);
+    this.zeG.setVisibility(8);
+    this.kgo.findViewById(2131304163).setVisibility(8);
     String str;
     if (this.mType == 1)
     {
-      setMMTitle(getString(2131760898));
-      str = getString(2131760954, new Object[] { v.aAE() });
-      z.a(getContext(), this.vJA, str);
-      this.vJC.setText(2131760960);
-      this.vHQ = new f(getContext());
-      this.vJG.setVisibility(0);
+      setMMTitle(getString(2131762672));
+      str = getString(2131762728, new Object[] { com.tencent.mm.model.z.aUa() });
+      af.a(getContext(), this.zeH, str);
+      this.zeJ.setText(2131762734);
+      this.zcO = new g(getContext());
+      this.zeG.setVisibility(0);
     }
     for (;;)
     {
-      this.vHP.setAdapter(this.vHQ);
-      a.b.a(this.pjj, v.aAC(), 0.0F, false);
-      this.vJF.setText(getString(2131760943, new Object[] { bu.nullAsNil(this.vJH) }));
+      this.zcN.setAdapter(this.zcO);
+      a.b.a(this.qyu, com.tencent.mm.model.z.aTY(), 0.0F, false);
+      this.zeM.setText(getString(2131762717, new Object[] { Util.nullAsNil(this.zeN) }));
       AppMethodBeat.o(65651);
       return;
-      setMMTitle(getString(2131760896));
-      str = getString(2131760941, new Object[] { v.aAE() });
-      z.a(getContext(), this.vJA, str);
-      this.vJC.setText(2131760942);
-      this.vHQ = new d(getContext());
-      this.jil.findViewById(2131301845).setVisibility(0);
+      setMMTitle(getString(2131762670));
+      str = getString(2131762715, new Object[] { com.tencent.mm.model.z.aUa() });
+      af.a(getContext(), this.zeH, str);
+      this.zeJ.setText(2131762716);
+      this.zcO = new e(getContext());
+      this.kgo.findViewById(2131304163).setVisibility(0);
     }
   }
   
-  private int dms()
+  private int egn()
   {
     if (this.mType == 1) {
       return 8;
@@ -142,39 +138,30 @@ public class LuckyMoneyMyRecordUI
   
   public int getLayoutId()
   {
-    return 2131494649;
+    return 2131495372;
   }
   
   public void initView()
   {
     AppMethodBeat.i(65650);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(65633);
-        LuckyMoneyMyRecordUI.this.finish();
-        AppMethodBeat.o(65633);
-        return true;
-      }
-    });
-    addIconOptionMenu(0, 2131689493, new MenuItem.OnMenuItemClickListener()
+    setBackBtn(new LuckyMoneyMyRecordUI.1(this));
+    addIconOptionMenu(0, 2131689495, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(65636);
         paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(LuckyMoneyMyRecordUI.this.getContext(), 1, false);
-        paramAnonymousMenuItem.LfS = new n.d()
+        paramAnonymousMenuItem.HLX = new o.f()
         {
-          public final void onCreateMMMenu(l paramAnonymous2l)
+          public final void onCreateMMMenu(m paramAnonymous2m)
           {
             AppMethodBeat.i(65634);
-            paramAnonymous2l.jM(1, 2131760896);
-            paramAnonymous2l.jM(2, 2131760898);
+            paramAnonymous2m.kV(1, 2131762670);
+            paramAnonymous2m.kV(2, 2131762672);
             AppMethodBeat.o(65634);
           }
         };
-        paramAnonymousMenuItem.LfT = new n.e()
+        paramAnonymousMenuItem.HLY = new o.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -205,74 +192,88 @@ public class LuckyMoneyMyRecordUI
             }
           }
         };
-        paramAnonymousMenuItem.cPF();
+        paramAnonymousMenuItem.dGm();
         AppMethodBeat.o(65636);
         return false;
       }
     });
-    this.pko = ((TextView)findViewById(2131301851));
-    this.vHP = ((MMLoadMoreListView)findViewById(2131301853));
-    this.jil = LayoutInflater.from(this).inflate(2131494647, null);
-    this.vHP.addHeaderView(this.jil);
-    this.pjj = ((ImageView)this.jil.findViewById(2131301839));
-    this.vJA = ((TextView)this.jil.findViewById(2131301842));
-    this.vvW = ((TextView)this.jil.findViewById(2131301838));
-    this.vJB = ((TextView)this.jil.findViewById(2131301843));
-    this.vJC = ((TextView)this.jil.findViewById(2131301844));
-    this.vJD = ((TextView)this.jil.findViewById(2131301840));
-    this.vJE = ((TextView)this.jil.findViewById(2131301841));
-    this.vJF = ((TextView)this.jil.findViewById(2131301847));
-    this.vJG = ((TextView)this.jil.findViewById(2131301846));
-    this.vHP.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.qzz = ((TextView)findViewById(2131304170));
+    this.zcN = ((MMLoadMoreListView)findViewById(2131304172));
+    this.kgo = LayoutInflater.from(this).inflate(2131495370, null);
+    this.zcN.addHeaderView(this.kgo);
+    this.qyu = ((ImageView)this.kgo.findViewById(2131304157));
+    this.zeH = ((TextView)this.kgo.findViewById(2131304160));
+    this.yQk = ((TextView)this.kgo.findViewById(2131304156));
+    this.zeI = ((TextView)this.kgo.findViewById(2131304161));
+    this.zeJ = ((TextView)this.kgo.findViewById(2131304162));
+    this.zeK = ((TextView)this.kgo.findViewById(2131304158));
+    this.zeL = ((TextView)this.kgo.findViewById(2131304159));
+    this.zeM = ((TextView)this.kgo.findViewById(2131304165));
+    this.zeG = ((TextView)this.kgo.findViewById(2131304164));
+    this.zcN.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(65637);
         b localb = new b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+        localb.bm(paramAnonymousAdapterView);
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.zo(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
         paramAnonymousInt = (int)paramAnonymousLong;
-        g.yxI.f(11701, new Object[] { Integer.valueOf(LuckyMoneyMyRecordUI.e(LuckyMoneyMyRecordUI.this)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(11701, new Object[] { Integer.valueOf(LuckyMoneyMyRecordUI.e(LuckyMoneyMyRecordUI.this)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
         if ((paramAnonymousInt >= 0) && (paramAnonymousInt < LuckyMoneyMyRecordUI.f(LuckyMoneyMyRecordUI.this).getCount()))
         {
-          paramAnonymousView = LuckyMoneyMyRecordUI.f(LuckyMoneyMyRecordUI.this).JR(paramAnonymousInt);
-          if ((paramAnonymousView != null) && (!bu.isNullOrNil(paramAnonymousView.vwq)))
+          paramAnonymousView = LuckyMoneyMyRecordUI.f(LuckyMoneyMyRecordUI.this).PT(paramAnonymousInt);
+          if ((paramAnonymousView != null) && (!Util.isNullOrNil(paramAnonymousView.yQE)))
           {
             paramAnonymousAdapterView = new Intent();
-            if (paramAnonymousView.vAB != 2) {
+            if (paramAnonymousView.yVv != 2) {
               break label310;
             }
-            ae.d("MicroMsg.LuckyMoneyMyRecordUI", "onItemClick: go busi detail");
+            Log.i("MicroMsg.LuckyMoneyMyRecordUI", "onItemClick: go busi detail");
             paramAnonymousAdapterView.setClass(LuckyMoneyMyRecordUI.this.getContext(), LuckyMoneyBusiDetailUI.class);
-            paramAnonymousAdapterView.putExtra("key_sendid", paramAnonymousView.vwq);
+            paramAnonymousAdapterView.putExtra("key_sendid", paramAnonymousView.yQE);
             if (LuckyMoneyMyRecordUI.a(LuckyMoneyMyRecordUI.this) != 1) {
-              break label334;
+              break label422;
             }
           }
         }
-        label310:
-        label334:
+        label422:
         for (paramAnonymousInt = 3;; paramAnonymousInt = 1)
         {
           paramAnonymousAdapterView.putExtra("key_jump_from", paramAnonymousInt);
           paramAnonymousView = LuckyMoneyMyRecordUI.this;
-          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahE(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mt(0));
+          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousAdapterView);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.axQ(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(65637);
           return;
-          ae.d("MicroMsg.LuckyMoneyMyRecordUI", "onItemClick: go normal detail");
+          label310:
+          if (paramAnonymousView.yVv == 5)
+          {
+            Log.i("MicroMsg.LuckyMoneyMyRecordUI", "onItemClick: go union detail");
+            paramAnonymousAdapterView.putExtra("key_hb_kind", paramAnonymousView.yVv);
+            paramAnonymousAdapterView.setClass(LuckyMoneyMyRecordUI.this.getContext(), LuckyMoneyBeforeDetailUI.class);
+            break;
+          }
+          if (paramAnonymousView.yVv == 6)
+          {
+            paramAnonymousAdapterView.putExtra("key_hb_kind", paramAnonymousView.yVv);
+            paramAnonymousAdapterView.putExtra("key_hk_scene", 2);
+            paramAnonymousAdapterView.setClass(LuckyMoneyMyRecordUI.this.getContext(), LuckyMoneyHKBeforeDetailUI.class);
+            break;
+          }
+          Log.i("MicroMsg.LuckyMoneyMyRecordUI", "onItemClick: go normal detail");
           paramAnonymousAdapterView.setClass(LuckyMoneyMyRecordUI.this.getContext(), LuckyMoneyBeforeDetailUI.class);
           break;
         }
       }
     });
-    this.vHP.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.zcN.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -282,9 +283,9 @@ public class LuckyMoneyMyRecordUI
           AppMethodBeat.o(65639);
           return true;
         }
-        h.a(LuckyMoneyMyRecordUI.this, LuckyMoneyMyRecordUI.this.getResources().getString(2131760889), null, LuckyMoneyMyRecordUI.this.getResources().getString(2131755707), new h.c()
+        com.tencent.mm.ui.base.h.a(LuckyMoneyMyRecordUI.this, LuckyMoneyMyRecordUI.this.getResources().getString(2131762658), null, LuckyMoneyMyRecordUI.this.getResources().getString(2131755778), new h.d()
         {
-          public final void lh(int paramAnonymous2Int)
+          public final void oj(int paramAnonymous2Int)
           {
             AppMethodBeat.i(65638);
             switch (paramAnonymous2Int)
@@ -294,11 +295,11 @@ public class LuckyMoneyMyRecordUI
             {
               AppMethodBeat.o(65638);
               return;
-              t localt = LuckyMoneyMyRecordUI.f(LuckyMoneyMyRecordUI.this).JR(this.vJM);
-              if (localt != null)
+              y localy = LuckyMoneyMyRecordUI.f(LuckyMoneyMyRecordUI.this).PT(this.zeS);
+              if (localy != null)
               {
-                LuckyMoneyMyRecordUI.b(LuckyMoneyMyRecordUI.this, this.vJM);
-                LuckyMoneyMyRecordUI.a(LuckyMoneyMyRecordUI.this, localt, this.vJM);
+                LuckyMoneyMyRecordUI.b(LuckyMoneyMyRecordUI.this, this.zeS);
+                LuckyMoneyMyRecordUI.a(LuckyMoneyMyRecordUI.this, localy, this.zeS);
               }
             }
           }
@@ -307,12 +308,12 @@ public class LuckyMoneyMyRecordUI
         return true;
       }
     });
-    this.vHP.setOnLoadMoreListener(new MMLoadMoreListView.a()
+    this.zcN.setOnLoadMoreListener(new MMLoadMoreListView.a()
     {
-      public final void ZC()
+      public final void onLoadMore()
       {
         AppMethodBeat.i(65640);
-        if (!LuckyMoneyMyRecordUI.this.vGY.isProcessing()) {
+        if (!LuckyMoneyMyRecordUI.this.zbX.isProcessing()) {
           LuckyMoneyMyRecordUI.g(LuckyMoneyMyRecordUI.this);
         }
         if ((LuckyMoneyMyRecordUI.h(LuckyMoneyMyRecordUI.this)) && (!LuckyMoneyMyRecordUI.i(LuckyMoneyMyRecordUI.this))) {
@@ -321,27 +322,8 @@ public class LuckyMoneyMyRecordUI
         AppMethodBeat.o(65640);
       }
     });
-    this.pjj.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(65641);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (!bu.isNullOrNil(LuckyMoneyMyRecordUI.this.vCz)) {
-          com.tencent.mm.wallet_core.ui.f.p(LuckyMoneyMyRecordUI.this, LuckyMoneyMyRecordUI.this.vCz, true);
-        }
-        for (;;)
-        {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(65641);
-          return;
-          ae.w("MicroMsg.LuckyMoneyMyRecordUI", "hy: no avatar jump h5");
-        }
-      }
-    });
-    dmr();
+    this.qyu.setOnClickListener(new LuckyMoneyMyRecordUI.6(this));
+    egm();
     AppMethodBeat.o(65650);
   }
   
@@ -349,101 +331,101 @@ public class LuckyMoneyMyRecordUI
   {
     AppMethodBeat.i(65649);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131100592));
-    setActionbarElementColor(getResources().getColor(2131100576));
+    setActionbarColor(getResources().getColor(2131100760));
+    setActionbarElementColor(getResources().getColor(2131100744));
     this.mType = getIntent().getIntExtra("key_type", 2);
     initView();
-    dmh();
-    g.yxI.f(11701, new Object[] { Integer.valueOf(dms()), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+    egc();
+    com.tencent.mm.plugin.report.service.h.CyF.a(11701, new Object[] { Integer.valueOf(egn()), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
     AppMethodBeat.o(65649);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(65652);
-    if ((paramn instanceof ak))
+    if ((paramq instanceof at))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (ak)paramn;
-        paramn = paramString.vCw.vAC;
-        this.vHr = paramString.vCf;
-        this.vCz = paramString.vCz;
+        paramString = (at)paramq;
+        paramq = paramString.yXx.yVw;
+        this.zcp = paramString.yXg;
+        this.yXA = paramString.yXA;
         Object localObject2;
-        if (this.fq == 0)
+        if (this.fs == 0)
         {
-          this.vJJ = paramString.vCx;
-          this.vJH = paramString.vCy;
-          localObject1 = findViewById(2131301849);
-          localObject2 = (ImageView)findViewById(2131301848);
-          if (this.vJJ.size() > 1)
+          this.zeP = paramString.yXy;
+          this.zeN = paramString.yXz;
+          localObject1 = findViewById(2131304167);
+          localObject2 = (ImageView)findViewById(2131304166);
+          if (this.zeP.size() > 1)
           {
             ((ImageView)localObject2).setVisibility(0);
             ((View)localObject1).setOnClickListener(new LuckyMoneyMyRecordUI.7(this));
           }
-          this.vJF.setText(getString(2131760943, new Object[] { this.vJH }));
+          this.zeM.setText(getString(2131762717, new Object[] { this.zeN }));
         }
-        Object localObject1 = paramString.vCw;
+        Object localObject1 = paramString.yXx;
         if (localObject1 != null)
         {
           if (this.mType != 1) {
             break label387;
           }
-          this.vvW.setText(com.tencent.mm.wallet_core.ui.f.C(((s)localObject1).vBp / 100.0D));
-          localObject1 = ((s)localObject1).vBo;
-          Object localObject3 = getString(2131760959, new Object[] { localObject1 });
-          localObject2 = new ForegroundColorSpan(getResources().getColor(2131100574));
+          this.yQk.setText(com.tencent.mm.wallet_core.ui.f.formatMoney2f(((x)localObject1).yWl / 100.0D));
+          localObject1 = ((x)localObject1).yWk;
+          Object localObject3 = getString(2131762733, new Object[] { localObject1 });
+          localObject2 = new ForegroundColorSpan(getResources().getColor(2131100742));
           paramInt1 = ((String)localObject3).indexOf((String)localObject1);
           localObject3 = new SpannableString((CharSequence)localObject3);
           ((SpannableString)localObject3).setSpan(localObject2, paramInt1, ((String)localObject1).length() + paramInt1, 33);
-          this.vJG.setText((CharSequence)localObject3);
+          this.zeG.setText((CharSequence)localObject3);
         }
-        while (paramn != null)
+        while (paramq != null)
         {
           paramInt1 = 0;
           for (;;)
           {
-            if (paramInt1 < paramn.size())
+            if (paramInt1 < paramq.size())
             {
-              localObject1 = (t)paramn.get(paramInt1);
-              if (!this.vHp.containsKey(((t)localObject1).vwq))
+              localObject1 = (y)paramq.get(paramInt1);
+              if (!this.zcn.containsKey(((y)localObject1).yQE))
               {
-                this.vvQ.add(paramn.get(paramInt1));
-                this.vHp.put(((t)localObject1).vwq, Integer.valueOf(1));
+                this.yQe.add(paramq.get(paramInt1));
+                this.zcn.put(((y)localObject1).yQE, Integer.valueOf(1));
               }
               paramInt1 += 1;
               continue;
               label387:
-              this.vvW.setText(com.tencent.mm.wallet_core.ui.f.C(((s)localObject1).vBn / 100.0D));
-              this.vJB.setText(((s)localObject1).vBm);
-              this.vJD.setText(((s)localObject1).vBq);
+              this.yQk.setText(com.tencent.mm.wallet_core.ui.f.formatMoney2f(((x)localObject1).yWj / 100.0D));
+              this.zeI.setText(((x)localObject1).yWi);
+              this.zeK.setText(((x)localObject1).yWm);
               break;
             }
           }
-          this.fq += paramn.size();
-          this.vHj = paramString.dlq();
-          this.lpM = false;
-          this.vHQ.ew(this.vvQ);
+          this.fs += paramq.size();
+          this.zci = paramString.efl();
+          this.mwr = false;
+          this.zcO.fq(this.yQe);
         }
-        if ((this.vvQ == null) || (this.vvQ.size() == 0))
+        if ((this.yQe == null) || (this.yQe.size() == 0))
         {
-          this.pko.setVisibility(0);
-          if (!this.vHj) {
+          this.qzz.setVisibility(0);
+          if (!this.zci) {
             break label561;
           }
-          this.vHP.fCN();
+          this.zcN.gKM();
         }
         for (;;)
         {
           AppMethodBeat.o(65652);
           return true;
-          this.pko.setVisibility(8);
+          this.qzz.setVisibility(8);
           break;
           label561:
-          this.vHP.fCO();
+          this.zcN.gKN();
         }
       }
-      this.vCz = null;
+      this.yXA = null;
     }
     int i;
     do
@@ -452,22 +434,22 @@ public class LuckyMoneyMyRecordUI
       {
         AppMethodBeat.o(65652);
         return false;
-      } while (!(paramn instanceof al));
-      i = this.vJI;
-      this.vJI = -1;
+      } while (!(paramq instanceof au));
+      i = this.zeO;
+      this.zeO = -1;
     } while ((paramInt1 != 0) || (paramInt2 != 0));
-    paramString = this.vHQ.JR(i);
+    paramString = this.zcO.PT(i);
     if (paramString != null)
     {
-      Toast.makeText(this, 2131760890, 0).show();
-      this.vHQ.a(paramString);
-      this.vHQ.notifyDataSetChanged();
+      Toast.makeText(this, 2131762659, 0).show();
+      this.zcO.a(paramString);
+      this.zcO.notifyDataSetChanged();
     }
     for (;;)
     {
       AppMethodBeat.o(65652);
       return true;
-      ae.e("MicroMsg.LuckyMoneyMyRecordUI", "can't found local record");
+      Log.e("MicroMsg.LuckyMoneyMyRecordUI", "can't found local record");
     }
   }
   
@@ -480,15 +462,15 @@ public class LuckyMoneyMyRecordUI
   final class a
     extends BaseAdapter
   {
-    int bxN;
-    List<String> vJJ;
+    int bxP;
+    List<String> zeP;
     
     a() {}
     
     public final int getCount()
     {
       AppMethodBeat.i(65644);
-      int i = this.vJJ.size();
+      int i = this.zeP.size();
       AppMethodBeat.o(65644);
       return i;
     }
@@ -496,7 +478,7 @@ public class LuckyMoneyMyRecordUI
     public final String getItem(int paramInt)
     {
       AppMethodBeat.i(65645);
-      String str = (String)this.vJJ.get(paramInt);
+      String str = (String)this.zeP.get(paramInt);
       AppMethodBeat.o(65645);
       return str;
     }
@@ -509,9 +491,9 @@ public class LuckyMoneyMyRecordUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(65646);
-      paramView = (CheckedTextView)LayoutInflater.from(LuckyMoneyMyRecordUI.this.getContext()).inflate(2131495971, paramViewGroup, false);
+      paramView = (CheckedTextView)LayoutInflater.from(LuckyMoneyMyRecordUI.this.getContext()).inflate(2131496951, paramViewGroup, false);
       paramView.setText(getItem(paramInt));
-      if (paramInt == this.bxN) {
+      if (paramInt == this.bxP) {
         paramView.setChecked(true);
       }
       for (;;)
@@ -525,7 +507,7 @@ public class LuckyMoneyMyRecordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyMyRecordUI
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet.bind.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
@@ -12,10 +12,10 @@ import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.c;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.u;
 import com.tencent.mm.wallet_core.d.i;
 
 public class d
@@ -33,7 +33,7 @@ public class d
           AppMethodBeat.i(71986);
           if (paramAnonymousInt == 0)
           {
-            localObject = this.activity.getString(2131765209);
+            localObject = this.activity.getString(2131767652);
             AppMethodBeat.o(71986);
             return localObject;
           }
@@ -42,31 +42,31 @@ public class d
           return localObject;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(71987);
-          if ((paramAnonymousn instanceof c)) {
+          if ((paramAnonymousq instanceof c)) {
             if ((paramAnonymousInt2 == 0) && (paramAnonymousInt1 == 0))
             {
-              paramAnonymousString = (c)paramAnonymousn;
+              paramAnonymousString = (c)paramAnonymousq;
               d.a(d.this).putString("payu_reference", paramAnonymousString.token);
-              if (bu.isNullOrNil(paramAnonymousString.token)) {
+              if (Util.isNullOrNil(paramAnonymousString.token)) {
                 break label118;
               }
-              ae.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
+              Log.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
               paramAnonymousString = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
               if (paramAnonymousString != null) {
-                this.LVJ.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
+                this.Ruz.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
               }
             }
           }
           label118:
-          while (!(paramAnonymousn instanceof b)) {
+          while (!(paramAnonymousq instanceof b)) {
             for (;;)
             {
               AppMethodBeat.o(71987);
               return false;
-              ae.w("MicroMsg.PayUUnbindProcess", "hy: check pwd failed");
+              Log.w("MicroMsg.PayUUnbindProcess", "hy: check pwd failed");
             }
           }
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -82,7 +82,7 @@ public class d
         {
           AppMethodBeat.i(71988);
           d.f(d.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.LVJ.b(new c(d.g(d.this).getString("key_pwd1")), true);
+          this.Ruz.b(new c(d.g(d.this).getString("key_pwd1")), true);
           AppMethodBeat.o(71988);
           return true;
         }
@@ -113,20 +113,20 @@ public class d
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71990);
-    if (this.dyY.getInt("key_errcode_payu", -1) == 0) {
-      t.makeText(paramActivity, 2131765569, 0).show();
+    if (this.dQL.getInt("key_errcode_payu", -1) == 0) {
+      u.makeText(paramActivity, 2131768018, 0).show();
     }
     for (;;)
     {
-      boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGM, false);
-      ae.i("MicroMsg.PayUUnbindProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sad, true);
+      Log.i("MicroMsg.PayUUnbindProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         break;
       }
       e(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(71990);
       return;
-      t.makeText(paramActivity, 2131765252, 0).show();
+      u.makeText(paramActivity, 2131767695, 0).show();
     }
     e(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(71990);
@@ -137,7 +137,7 @@ public class d
     return false;
   }
   
-  public final void d(Activity paramActivity, Bundle paramBundle)
+  public final void e(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71989);
     b(paramActivity, WalletPayUBankcardDetailUI.class, paramBundle);
@@ -146,7 +146,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.d
  * JD-Core Version:    0.7.0.1
  */

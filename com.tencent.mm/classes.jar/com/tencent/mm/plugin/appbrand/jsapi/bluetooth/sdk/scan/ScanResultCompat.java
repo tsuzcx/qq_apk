@@ -2,21 +2,23 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan;
 
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.le.ScanRecord;
 import android.bluetooth.le.ScanResult;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a;
 import java.util.Arrays;
 
 public class ScanResultCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanResultCompat> CREATOR;
-  private BluetoothDevice kKg;
-  public f kKh;
-  public int kKi;
-  private long kKj;
+  private BluetoothDevice lOM;
+  public f lON;
+  public int lOO;
+  private long lOP;
   
   static
   {
@@ -27,34 +29,45 @@ public class ScanResultCompat
   
   public ScanResultCompat(BluetoothDevice paramBluetoothDevice, f paramf, int paramInt, long paramLong)
   {
-    this.kKg = paramBluetoothDevice;
-    this.kKh = paramf;
-    this.kKi = paramInt;
-    this.kKj = paramLong;
+    this.lOM = paramBluetoothDevice;
+    this.lON = paramf;
+    this.lOO = paramInt;
+    this.lOP = paramLong;
   }
   
   @TargetApi(21)
   ScanResultCompat(ScanResult paramScanResult)
   {
     AppMethodBeat.i(144640);
-    this.kKg = paramScanResult.getDevice();
-    this.kKh = new f(paramScanResult.getScanRecord());
-    this.kKi = paramScanResult.getRssi();
-    this.kKj = System.currentTimeMillis();
-    AppMethodBeat.o(144640);
+    this.lOM = paramScanResult.getDevice();
+    Object localObject = paramScanResult.getScanRecord();
+    if (localObject != null) {
+      if (!a.bFm().lMq) {
+        break label69;
+      }
+    }
+    label69:
+    for (localObject = f.aJ(((ScanRecord)localObject).getBytes());; localObject = new f((ScanRecord)localObject))
+    {
+      this.lON = ((f)localObject);
+      this.lOO = paramScanResult.getRssi();
+      this.lOP = System.currentTimeMillis();
+      AppMethodBeat.o(144640);
+      return;
+    }
   }
   
   private ScanResultCompat(Parcel paramParcel)
   {
     AppMethodBeat.i(144641);
     if (paramParcel.readInt() == 1) {
-      this.kKg = ((BluetoothDevice)BluetoothDevice.CREATOR.createFromParcel(paramParcel));
+      this.lOM = ((BluetoothDevice)BluetoothDevice.CREATOR.createFromParcel(paramParcel));
     }
     if (paramParcel.readInt() == 1) {
-      this.kKh = f.as(paramParcel.createByteArray());
+      this.lON = f.aJ(paramParcel.createByteArray());
     }
-    this.kKi = paramParcel.readInt();
-    this.kKj = paramParcel.readLong();
+    this.lOO = paramParcel.readInt();
+    this.lOP = paramParcel.readLong();
     AppMethodBeat.o(144641);
   }
   
@@ -77,7 +90,7 @@ public class ScanResultCompat
       return false;
     }
     paramObject = (ScanResultCompat)paramObject;
-    if ((d.equals(this.kKg, paramObject.kKg)) && (this.kKi == paramObject.kKi) && (d.equals(this.kKh, paramObject.kKh)) && (this.kKj == paramObject.kKj))
+    if ((d.equals(this.lOM, paramObject.lOM)) && (this.lOO == paramObject.lOO) && (d.equals(this.lON, paramObject.lON)) && (this.lOP == paramObject.lOP))
     {
       AppMethodBeat.o(144644);
       return true;
@@ -88,8 +101,8 @@ public class ScanResultCompat
   
   public final BluetoothDevice getDevice()
   {
-    if (this.kKg != null) {
-      return this.kKg;
+    if (this.lOM != null) {
+      return this.lOM;
     }
     return null;
   }
@@ -97,7 +110,7 @@ public class ScanResultCompat
   public int hashCode()
   {
     AppMethodBeat.i(144643);
-    int i = Arrays.hashCode(new Object[] { this.kKg, Integer.valueOf(this.kKi), this.kKh, Long.valueOf(this.kKj) });
+    int i = Arrays.hashCode(new Object[] { this.lOM, Integer.valueOf(this.lOO), this.lON, Long.valueOf(this.lOP) });
     AppMethodBeat.o(144643);
     return i;
   }
@@ -105,7 +118,7 @@ public class ScanResultCompat
   public String toString()
   {
     AppMethodBeat.i(144645);
-    String str = "ScanResult{mDevice=" + this.kKg + ", mScanRecord=" + d.toString(this.kKh) + ", mRssi=" + this.kKi + ", mTimestampNanos=" + this.kKj + '}';
+    String str = "ScanResult{mDevice=" + this.lOM + ", mScanRecord=" + d.toString(this.lON) + ", mRssi=" + this.lOO + ", mTimestampNanos=" + this.lOP + '}';
     AppMethodBeat.o(144645);
     return str;
   }
@@ -113,20 +126,20 @@ public class ScanResultCompat
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(144642);
-    if (this.kKg != null)
+    if (this.lOM != null)
     {
       paramParcel.writeInt(1);
-      this.kKg.writeToParcel(paramParcel, paramInt);
-      if (this.kKh == null) {
+      this.lOM.writeToParcel(paramParcel, paramInt);
+      if (this.lON == null) {
         break label79;
       }
       paramParcel.writeInt(1);
-      paramParcel.writeByteArray(this.kKh.kKf);
+      paramParcel.writeByteArray(this.lON.lOK);
     }
     for (;;)
     {
-      paramParcel.writeInt(this.kKi);
-      paramParcel.writeLong(this.kKj);
+      paramParcel.writeInt(this.lOO);
+      paramParcel.writeLong(this.lOP);
       AppMethodBeat.o(144642);
       return;
       paramParcel.writeInt(0);
@@ -138,7 +151,7 @@ public class ScanResultCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanResultCompat
  * JD-Core Version:    0.7.0.1
  */

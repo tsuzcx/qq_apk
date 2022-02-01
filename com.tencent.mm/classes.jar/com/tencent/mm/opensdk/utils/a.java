@@ -11,14 +11,14 @@ public final class a
   
   static
   {
-    AppMethodBeat.i(194101);
+    AppMethodBeat.i(190416);
     a = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
-    AppMethodBeat.o(194101);
+    AppMethodBeat.o(190416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.opensdk.utils.a
  * JD-Core Version:    0.7.0.1
  */

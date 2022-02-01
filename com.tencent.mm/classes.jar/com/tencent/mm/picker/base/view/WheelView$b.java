@@ -7,9 +7,9 @@ public enum WheelView$b
   static
   {
     AppMethodBeat.i(175305);
-    iNY = new b("FILL", 0);
-    iNZ = new b("WRAP", 1);
-    iOa = new b[] { iNY, iNZ };
+    jKM = new b("FILL", 0);
+    jKN = new b("WRAP", 1);
+    jKO = new b[] { jKM, jKN };
     AppMethodBeat.o(175305);
   }
   

@@ -1,48 +1,48 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpu;
-import com.tencent.mm.protocal.protobuf.cpv;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dht;
+import com.tencent.mm.protocal.protobuf.dhu;
 
 public final class u
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public int ioZ;
-  public int ipa;
-  private b rr;
+  private i callback;
+  public int jkg;
+  public int jkh;
+  private d rr;
   
   public u(int paramInt)
   {
     AppMethodBeat.i(134182);
-    this.ioZ = 1;
-    b.a locala = new b.a();
-    locala.hQF = new cpu();
-    locala.hQG = new cpv();
+    this.jkg = 1;
+    d.a locala = new d.a();
+    locala.iLN = new dht();
+    locala.iLO = new dhu();
     locala.uri = "/cgi-bin/micromsg-bin/queryhaspasswd";
     locala.funcId = 255;
-    locala.hQH = 132;
+    locala.iLP = 132;
     locala.respCmdId = 1000000132;
-    this.rr = locala.aDS();
-    ((cpu)this.rr.hQD.hQJ).Scene = paramInt;
-    this.ipa = paramInt;
+    this.rr = locala.aXF();
+    ((dht)this.rr.iLK.iLR).Scene = paramInt;
+    this.jkh = paramInt;
     AppMethodBeat.o(134182);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(134183);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(134183);
     return i;
   }
@@ -52,7 +52,7 @@ public final class u
     return 255;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(134184);
     updateDispatchId(paramInt1);

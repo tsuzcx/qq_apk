@@ -7,40 +7,40 @@ import com.google.android.exoplayer2.h.j;
 import com.google.android.exoplayer2.h.w;
 import com.google.android.exoplayer2.i.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/TransferListener;", "", "eventHandler", "Landroid/os/Handler;", "eventListener", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;", "maxWeight", "", "clock", "Lcom/google/android/exoplayer2/util/Clock;", "(Landroid/os/Handler;Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;ILcom/google/android/exoplayer2/util/Clock;)V", "bitrateEstimate", "", "sampleBytesTransferred", "sampleStartTimeMs", "slidingPercentile", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding;", "streamCount", "totalBytesTransferred", "totalElapsedTimeMs", "getBitrateEstimate", "notifyBandwidthSample", "", "elapsedMs", "bytes", "bitrate", "onBytesTransferred", "source", "onTransferEnd", "onTransferStart", "dataSpec", "Lcom/google/android/exoplayer2/upstream/DataSpec;", "resetBizrateEstimate", "Companion", "luggage-commons-jsapi-video-ext_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter;", "Lcom/google/android/exoplayer2/upstream/TransferListener;", "", "eventHandler", "Landroid/os/Handler;", "eventListener", "Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;", "maxWeight", "", "clock", "Lcom/google/android/exoplayer2/util/Clock;", "(Landroid/os/Handler;Lcom/google/android/exoplayer2/upstream/BandwidthMeter$EventListener;ILcom/google/android/exoplayer2/util/Clock;)V", "bitrateEstimate", "", "sampleBytesTransferred", "sampleStartTimeMs", "slidingPercentile", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceSliding;", "streamCount", "totalBytesTransferred", "totalElapsedTimeMs", "getBitrateEstimate", "notifyBandwidthSample", "", "elapsedMs", "bytes", "bitrate", "onBytesTransferred", "source", "onTransferEnd", "onTransferStart", "dataSpec", "Lcom/google/android/exoplayer2/upstream/DataSpec;", "resetBizrateEstimate", "Companion", "luggage-commons-jsapi-video-ext_release"})
 public final class a
   implements d, w<Object>
 {
-  private static final int luP = 2000;
-  private static final long luQ = 2000L;
-  private static final long luR = 524288L;
-  public static final a.a luS;
-  private final d.a bES;
-  private final c bEU;
-  private int bEV;
-  private long bEW;
-  private long bEX;
-  private long bEY;
-  private long bEZ;
-  long bFa;
+  private static final int mBA = 2000;
+  private static final long mBB = 2000L;
+  private static final long mBC = 524288L;
+  public static final a.a mBD;
+  private final d.a bEX;
+  private final c bEZ;
+  private int bFa;
+  private long bFb;
+  private long bFc;
+  private long bFd;
+  private long bFe;
+  long bFf;
   private final Handler eventHandler;
-  private final b luO;
+  private final b mBz;
   
   static
   {
-    AppMethodBeat.i(211546);
-    luS = new a.a((byte)0);
-    luP = 2000;
-    luQ = 2000L;
-    luR = 524288L;
-    AppMethodBeat.o(211546);
+    AppMethodBeat.i(235229);
+    mBD = new a.a((byte)0);
+    mBA = 2000;
+    mBB = 2000L;
+    mBC = 524288L;
+    AppMethodBeat.o(235229);
   }
   
   public a(byte paramByte)
@@ -50,33 +50,33 @@ public final class a
   
   private a(int paramInt, c paramc)
   {
-    AppMethodBeat.i(211544);
+    AppMethodBeat.i(235227);
     this.eventHandler = null;
-    this.bES = null;
-    this.bEU = paramc;
-    this.luO = new b(paramInt);
-    this.bFa = -1L;
-    AppMethodBeat.o(211544);
+    this.bEX = null;
+    this.bEZ = paramc;
+    this.mBz = new b(paramInt);
+    this.bFf = -1L;
+    AppMethodBeat.o(235227);
   }
   
   public final void a(Object paramObject, j paramj)
   {
     try
     {
-      AppMethodBeat.i(211541);
+      AppMethodBeat.i(235224);
       p.h(paramObject, "source");
       p.h(paramj, "dataSpec");
-      if (this.bEV == 0) {
-        this.bEW = this.bEU.elapsedRealtime();
+      if (this.bFa == 0) {
+        this.bFb = this.bEZ.elapsedRealtime();
       }
-      this.bEV += 1;
-      AppMethodBeat.o(211541);
+      this.bFa += 1;
+      AppMethodBeat.o(235224);
       return;
     }
     finally {}
   }
   
-  public final void ah(Object paramObject)
+  public final void ai(Object paramObject)
   {
     int i = 0;
     long l2;
@@ -88,61 +88,61 @@ public final class a
       b localb;
       try
       {
-        AppMethodBeat.i(211543);
+        AppMethodBeat.i(235226);
         p.h(paramObject, "source");
-        if (this.bEV > 0)
+        if (this.bFa > 0)
         {
           bool = true;
           com.google.android.exoplayer2.i.a.checkState(bool);
-          l2 = this.bEU.elapsedRealtime();
-          j = (int)(l2 - this.bEW);
-          this.bEY += j;
-          this.bEZ += this.bEX;
+          l2 = this.bEZ.elapsedRealtime();
+          j = (int)(l2 - this.bFb);
+          this.bFd += j;
+          this.bFe += this.bFc;
           if (j <= 0) {
             break label554;
           }
-          f1 = (float)(this.bEX * 8000L / j);
-          localb = this.luO;
-          k = (int)Math.sqrt(this.bEX);
-          if (localb.bHi != 1)
+          f1 = (float)(this.bFc * 8000L / j);
+          localb = this.mBz;
+          k = (int)Math.sqrt(this.bFc);
+          if (localb.bHz != 1)
           {
-            Collections.sort((List)localb.bHg, b.bHd);
-            localb.bHi = 1;
+            Collections.sort((List)localb.bHx, b.bHu);
+            localb.bHz = 1;
           }
-          if (localb.bHl <= 0) {
+          if (localb.bHC <= 0) {
             break label372;
           }
-          paramObject = localb.luX;
-          localb.bHl -= 1;
-          paramObject = paramObject[localb.bHl];
+          paramObject = localb.mBI;
+          localb.bHC -= 1;
+          paramObject = paramObject[localb.bHC];
           if (paramObject == null) {
-            p.gkB();
+            p.hyc();
           }
-          int m = localb.bHj;
-          localb.bHj = (m + 1);
+          int m = localb.bHA;
+          localb.bHA = (m + 1);
           paramObject.index = m;
           paramObject.weight = k;
           paramObject.value = f1;
-          localb.bHg.add(paramObject);
-          localb.bHk += k;
-          if (localb.bHk <= localb.bHf) {
+          localb.bHx.add(paramObject);
+          localb.bHB += k;
+          if (localb.bHB <= localb.bHw) {
             break;
           }
-          k = localb.bHk - localb.bHf;
-          paramObject = localb.bHg.get(0);
+          k = localb.bHB - localb.bHw;
+          paramObject = localb.bHx.get(0);
           p.g(paramObject, "this.samples[0]");
           paramObject = (b.d)paramObject;
           if (paramObject.weight > k) {
             break label383;
           }
-          localb.bHk -= paramObject.weight;
-          localb.bHg.remove(0);
-          if (localb.bHl >= 5) {
+          localb.bHB -= paramObject.weight;
+          localb.bHx.remove(0);
+          if (localb.bHC >= 5) {
             continue;
           }
-          b.d[] arrayOfd = localb.luX;
-          k = localb.bHl;
-          localb.bHl = (k + 1);
+          b.d[] arrayOfd = localb.mBI;
+          k = localb.bHC;
+          localb.bHC = (k + 1);
           arrayOfd[k] = paramObject;
           continue;
         }
@@ -155,23 +155,23 @@ public final class a
       continue;
       label383:
       paramObject.weight -= k;
-      localb.bHk -= k;
+      localb.bHB -= k;
     }
-    if ((this.bEY >= luQ) || (this.bEZ >= luR))
+    if ((this.bFd >= mBB) || (this.bFe >= mBC))
     {
-      paramObject = this.luO;
-      k = ((Collection)paramObject.bHg).size();
+      paramObject = this.mBz;
+      k = ((Collection)paramObject.bHx).size();
       f1 = 0.0F;
       while (i < k)
       {
-        float f2 = ((b.d)paramObject.bHg.get(i)).weight / paramObject.bHk;
-        f1 += ((b.d)paramObject.bHg.get(i)).value * f2;
+        float f2 = ((b.d)paramObject.bHx.get(i)).weight / paramObject.bHB;
+        f1 += ((b.d)paramObject.bHx.get(i)).value * f2;
         i += 1;
       }
       if (f1 != 0.0F) {
         break label674;
       }
-      if (!paramObject.bHg.isEmpty()) {
+      if (!paramObject.bHx.isEmpty()) {
         break label641;
       }
       f1 = -1.0F;
@@ -186,22 +186,22 @@ public final class a
     for (;;)
     {
       Object localObject;
-      this.bFa = localObject;
+      this.bFf = localObject;
       label554:
-      final long l1 = this.bEX;
-      long l3 = this.bFa;
-      if ((this.eventHandler != null) && (this.bES != null)) {
+      final long l1 = this.bFc;
+      long l3 = this.bFf;
+      if ((this.eventHandler != null) && (this.bEX != null)) {
         this.eventHandler.post((Runnable)new b(this, j, l1, l3));
       }
-      this.bEV -= 1;
-      if (this.bEV > 0) {
-        this.bEW = l2;
+      this.bFa -= 1;
+      if (this.bFa > 0) {
+        this.bFb = l2;
       }
-      this.bEX = 0L;
-      AppMethodBeat.o(211543);
+      this.bFc = 0L;
+      AppMethodBeat.o(235226);
       return;
       label641:
-      f1 = ((b.d)paramObject.bHg.get(paramObject.bHg.size() - 1)).value;
+      f1 = ((b.d)paramObject.bHx.get(paramObject.bHx.size() - 1)).value;
       break;
       label667:
       l1 = f1;
@@ -213,14 +213,14 @@ public final class a
     }
   }
   
-  public final void e(Object paramObject, int paramInt)
+  public final void d(Object paramObject, int paramInt)
   {
     try
     {
-      AppMethodBeat.i(211542);
+      AppMethodBeat.i(235225);
       p.h(paramObject, "source");
-      this.bEX += paramInt;
-      AppMethodBeat.o(211542);
+      this.bFc += paramInt;
+      AppMethodBeat.o(235225);
       return;
     }
     finally
@@ -230,11 +230,11 @@ public final class a
     }
   }
   
-  public final long wz()
+  public final long wE()
   {
     try
     {
-      long l = this.bFa;
+      long l = this.bFf;
       return l;
     }
     finally
@@ -244,7 +244,7 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -252,15 +252,15 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(211540);
-      a.a(this.luT);
-      AppMethodBeat.o(211540);
+      AppMethodBeat.i(235223);
+      a.a(this.mBE);
+      AppMethodBeat.o(235223);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,58 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.ayl;
-import com.tencent.mm.protocal.protobuf.aym;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bjv;
+import com.tencent.mm.protocal.protobuf.bjw;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class z
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   private Object data;
-  public com.tencent.mm.ak.b rr;
+  public d rr;
   
   private z(String paramString1, String paramString2)
   {
     AppMethodBeat.i(124132);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new ayl();
-    ((b.a)localObject).hQG = new aym();
-    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizjsapiresult";
-    ((b.a)localObject).funcId = 1285;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (ayl)this.rr.hQD.hQJ;
-    ((ayl)localObject).GtF = paramString1;
-    ((ayl)localObject).EN = 1;
-    ((ayl)localObject).data = paramString2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bjv();
+    ((d.a)localObject).iLO = new bjw();
+    ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizjsapiresult";
+    ((d.a)localObject).funcId = 1285;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bjv)this.rr.iLK.iLR;
+    ((bjv)localObject).Lpg = paramString1;
+    ((bjv)localObject).EX = 1;
+    ((bjv)localObject).data = paramString2;
     this.data = null;
     AppMethodBeat.o(124132);
   }
   
-  public static void a(f paramf)
+  public static void a(i parami)
   {
     AppMethodBeat.i(124129);
-    g.ajQ().gDv.a(1285, paramf);
+    com.tencent.mm.kernel.g.aAg().hqi.a(1285, parami);
     AppMethodBeat.o(124129);
   }
   
-  public static void b(f paramf)
+  public static void b(i parami)
   {
     AppMethodBeat.i(124130);
-    g.ajQ().gDv.b(1285, paramf);
+    com.tencent.mm.kernel.g.aAg().hqi.b(1285, parami);
     AppMethodBeat.o(124130);
   }
   
@@ -63,7 +65,7 @@ public final class z
       localJSONObject.put("brand_user_name", paramString2);
       localJSONObject.put("bizchat_id", paramString3);
       paramString1 = new z(paramString1, localJSONObject.toString());
-      boolean bool = g.ajQ().gDv.a(paramString1, 0);
+      boolean bool = com.tencent.mm.kernel.g.aAg().hqi.a(paramString1, 0);
       AppMethodBeat.o(124131);
       return bool;
     }
@@ -74,12 +76,12 @@ public final class z
     return false;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(124134);
-    this.callback = paramf;
-    ae.i("MicroMsg.NetSceneGetBizJsApiResult", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.NetSceneGetBizJsApiResult", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(124134);
     return i;
   }
@@ -89,10 +91,10 @@ public final class z
     return 1285;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(124133);
-    ae.d("MicroMsg.NetSceneGetBizJsApiResult", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.NetSceneGetBizJsApiResult", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

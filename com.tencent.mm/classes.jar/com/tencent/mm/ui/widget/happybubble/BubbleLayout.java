@@ -21,29 +21,29 @@ import com.tencent.mm.cb.a;
 public class BubbleLayout
   extends FrameLayout
 {
-  private int Af;
-  private int Ag;
-  private int Ah;
-  private int Ai;
-  private Paint LuB;
-  private Path LuC;
-  private a LuD;
-  private int LuE;
-  private int LuF;
-  private int LuG;
-  private int LuH;
-  private int LuI;
-  private int LuJ;
-  private int LuK;
-  private int LuL;
-  private b LuM;
-  private Region LuN;
-  private int Sr;
+  private int Al;
+  private int Am;
+  private int An;
+  private int Ao;
+  private Paint QQj;
+  private Path QQk;
+  private a QQl;
+  private int QQm;
+  private int QQn;
+  private int QQo;
+  private int QQp;
+  private int QQq;
+  private int QQr;
+  private int QQs;
+  private int QQt;
+  private b QQu;
+  private Region QQv;
+  private int SE;
   private int mHeight;
-  private int mLO;
   private Paint mPaint;
   private int mWidth;
-  private Path xN;
+  private int nYW;
+  private Path xT;
   
   public BubbleLayout(Context paramContext)
   {
@@ -59,97 +59,97 @@ public class BubbleLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143546);
-    this.LuN = new Region();
+    this.QQv = new Region();
     setLayerType(1, null);
     setWillNotDraw(false);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.BubbleLayout, paramInt, 0);
-    this.LuD = a.agd(paramContext.getInt(3, a.LuS.value));
-    this.LuF = paramContext.getDimensionPixelOffset(5, 0);
-    this.LuG = paramContext.getDimensionPixelOffset(6, a.h(getContext(), 17.0F));
-    this.LuH = paramContext.getDimensionPixelOffset(4, a.h(getContext(), 17.0F));
-    this.Sr = paramContext.getDimensionPixelOffset(8, a.h(getContext(), 3.3F));
-    this.LuI = paramContext.getDimensionPixelOffset(9, a.h(getContext(), 1.0F));
-    this.LuJ = paramContext.getDimensionPixelOffset(10, a.h(getContext(), 1.0F));
-    this.LuK = paramContext.getDimensionPixelOffset(2, a.h(getContext(), 7.0F));
-    this.LuE = paramContext.getDimensionPixelOffset(1, a.h(getContext(), 8.0F));
-    this.mLO = paramContext.getColor(7, -7829368);
-    this.LuL = paramContext.getColor(0, -1);
+    this.QQl = a.apg(paramContext.getInt(3, a.QQA.value));
+    this.QQn = paramContext.getDimensionPixelOffset(5, 0);
+    this.QQo = paramContext.getDimensionPixelOffset(6, a.fromDPToPix(getContext(), 17.0F));
+    this.QQp = paramContext.getDimensionPixelOffset(4, a.fromDPToPix(getContext(), 17.0F));
+    this.SE = paramContext.getDimensionPixelOffset(8, a.fromDPToPix(getContext(), 3.3F));
+    this.QQq = paramContext.getDimensionPixelOffset(9, a.fromDPToPix(getContext(), 1.0F));
+    this.QQr = paramContext.getDimensionPixelOffset(10, a.fromDPToPix(getContext(), 1.0F));
+    this.QQs = paramContext.getDimensionPixelOffset(2, a.fromDPToPix(getContext(), 7.0F));
+    this.QQm = paramContext.getDimensionPixelOffset(1, a.fromDPToPix(getContext(), 8.0F));
+    this.nYW = paramContext.getColor(7, -7829368);
+    this.QQt = paramContext.getColor(0, -1);
     paramContext.recycle();
     this.mPaint = new Paint(5);
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.LuB = new Paint(5);
-    this.LuB.setStyle(Paint.Style.FILL);
-    this.xN = new Path();
-    this.LuC = new Path();
-    fQM();
+    this.QQj = new Paint(5);
+    this.QQj.setStyle(Paint.Style.FILL);
+    this.xT = new Path();
+    this.QQk = new Path();
+    hbL();
     AppMethodBeat.o(143546);
   }
   
-  private void Zm()
+  private void amZ()
   {
     int j = 0;
     AppMethodBeat.i(143551);
-    this.mPaint.setPathEffect(new CornerPathEffect(this.LuK));
-    this.mPaint.setShadowLayer(this.Sr, this.LuI, this.LuJ, this.mLO);
-    int k = this.LuE;
+    this.mPaint.setPathEffect(new CornerPathEffect(this.QQs));
+    this.mPaint.setShadowLayer(this.SE, this.QQq, this.QQr, this.nYW);
+    int k = this.QQm;
     int i;
-    if (this.LuD == a.LuP)
+    if (this.QQl == a.QQx)
     {
-      i = this.LuH;
-      this.Af = (i + k);
-      k = this.LuE;
-      if (this.LuD != a.LuQ) {
+      i = this.QQp;
+      this.Al = (i + k);
+      k = this.QQm;
+      if (this.QQl != a.QQy) {
         break label361;
       }
-      i = this.LuH;
+      i = this.QQp;
       label100:
-      this.Ag = (i + k);
+      this.Am = (i + k);
       k = this.mWidth;
-      int m = this.LuE;
-      if (this.LuD != a.LuR) {
+      int m = this.QQm;
+      if (this.QQl != a.QQz) {
         break label366;
       }
-      i = this.LuH;
+      i = this.QQp;
       label133:
-      this.Ah = (k - m - i);
+      this.An = (k - m - i);
       k = this.mHeight;
-      m = this.LuE;
+      m = this.QQm;
       i = j;
-      if (this.LuD == a.LuS) {
-        i = this.LuH;
+      if (this.QQl == a.QQA) {
+        i = this.QQp;
       }
-      this.Ai = (k - m - i);
-      this.mPaint.setColor(this.LuL);
-      this.LuB.setColor(this.LuL);
-      this.xN.reset();
-      this.LuC.reset();
-      j = this.LuF;
+      this.Ao = (k - m - i);
+      this.mPaint.setColor(this.QQt);
+      this.QQj.setColor(this.QQt);
+      this.xT.reset();
+      this.QQk.reset();
+      j = this.QQn;
       i = j;
-      if (this.LuH + j > this.Ai) {
-        i = this.Ai - this.LuG;
+      if (this.QQp + j > this.Ao) {
+        i = this.Ao - this.QQo;
       }
-      if (i <= this.LuE) {
+      if (i <= this.QQm) {
         break label371;
       }
       j = i;
       label257:
-      k = this.LuF;
+      k = this.QQn;
       i = k;
-      if (this.LuH + k > this.Ah) {
-        i = this.Ah - this.LuG;
+      if (this.QQp + k > this.An) {
+        i = this.An - this.QQo;
       }
-      if (i <= this.LuE) {
+      if (i <= this.QQm) {
         break label379;
       }
       label295:
-      switch (1.LuO[this.LuD.ordinal()])
+      switch (1.QQw[this.QQl.ordinal()])
       {
       }
     }
     for (;;)
     {
-      this.xN.close();
-      this.LuC.close();
+      this.xT.close();
+      this.QQk.close();
       AppMethodBeat.o(143551);
       return;
       i = 0;
@@ -161,110 +161,86 @@ public class BubbleLayout
       i = 0;
       break label133;
       label371:
-      j = this.LuE;
+      j = this.QQm;
       break label257;
       label379:
-      i = this.LuE;
+      i = this.QQm;
       break label295;
-      this.xN.moveTo(this.Af, j);
-      this.LuC.moveTo(this.Af, j);
-      this.LuC.rLineTo(-this.LuH, this.LuG / 2);
-      this.LuC.rLineTo(this.LuH, this.LuG / 2);
-      this.LuC.lineTo(this.Af, j);
-      this.xN.lineTo(this.Af, this.Ai);
-      this.xN.lineTo(this.Ah, this.Ai);
-      this.xN.lineTo(this.Ah, this.Ag);
-      this.xN.lineTo(this.Af, this.Ag);
+      this.xT.moveTo(this.Al, j);
+      this.QQk.moveTo(this.Al, j);
+      this.QQk.rLineTo(-this.QQp, this.QQo / 2);
+      this.QQk.rLineTo(this.QQp, this.QQo / 2);
+      this.QQk.lineTo(this.Al, j);
+      this.xT.lineTo(this.Al, this.Ao);
+      this.xT.lineTo(this.An, this.Ao);
+      this.xT.lineTo(this.An, this.Am);
+      this.xT.lineTo(this.Al, this.Am);
       continue;
-      this.xN.moveTo(i, this.Ag);
-      this.LuC.moveTo(i, this.Ag);
-      this.LuC.rLineTo(this.LuG / 2, -this.LuH);
-      this.LuC.rLineTo(this.LuG / 2, this.LuH);
-      this.LuC.lineTo(i, this.Ag);
-      this.xN.lineTo(this.Ah, this.Ag);
-      this.xN.lineTo(this.Ah, this.Ai);
-      this.xN.lineTo(this.Af, this.Ai);
-      this.xN.lineTo(this.Af, this.Ag);
+      this.xT.moveTo(i, this.Am);
+      this.QQk.moveTo(i, this.Am);
+      this.QQk.rLineTo(this.QQo / 2, -this.QQp);
+      this.QQk.rLineTo(this.QQo / 2, this.QQp);
+      this.QQk.lineTo(i, this.Am);
+      this.xT.lineTo(this.An, this.Am);
+      this.xT.lineTo(this.An, this.Ao);
+      this.xT.lineTo(this.Al, this.Ao);
+      this.xT.lineTo(this.Al, this.Am);
       continue;
-      this.xN.moveTo(this.Ah, j);
-      this.LuC.moveTo(this.Ah, j);
-      this.LuC.rLineTo(this.LuH, this.LuG / 2);
-      this.LuC.rLineTo(-this.LuH, this.LuG / 2);
-      this.LuC.lineTo(this.Ah, j);
-      this.xN.lineTo(this.Ah, this.Ai);
-      this.xN.lineTo(this.Af, this.Ai);
-      this.xN.lineTo(this.Af, this.Ag);
-      this.xN.lineTo(this.Ah, this.Ag);
+      this.xT.moveTo(this.An, j);
+      this.QQk.moveTo(this.An, j);
+      this.QQk.rLineTo(this.QQp, this.QQo / 2);
+      this.QQk.rLineTo(-this.QQp, this.QQo / 2);
+      this.QQk.lineTo(this.An, j);
+      this.xT.lineTo(this.An, this.Ao);
+      this.xT.lineTo(this.Al, this.Ao);
+      this.xT.lineTo(this.Al, this.Am);
+      this.xT.lineTo(this.An, this.Am);
       continue;
-      this.xN.moveTo(i, this.Ai);
-      this.LuC.moveTo(i, this.Ai);
-      this.LuC.rLineTo(this.LuG / 2, this.LuH);
-      this.LuC.rLineTo(this.LuG / 2, -this.LuH);
-      this.LuC.lineTo(i, this.Ai);
-      this.xN.lineTo(this.Ah, this.Ai);
-      this.xN.lineTo(this.Ah, this.Ag);
-      this.xN.lineTo(this.Af, this.Ag);
-      this.xN.lineTo(this.Af, this.Ai);
-    }
-  }
-  
-  public final void fQM()
-  {
-    AppMethodBeat.i(143547);
-    int i = this.LuE * 2;
-    switch (1.LuO[this.LuD.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(143547);
-      return;
-      setPadding(i, i, i, this.LuH + i);
-      AppMethodBeat.o(143547);
-      return;
-      setPadding(i, this.LuH + i, i, i);
-      AppMethodBeat.o(143547);
-      return;
-      setPadding(this.LuH + i, i, i, i);
-      AppMethodBeat.o(143547);
-      return;
-      setPadding(i, i, this.LuH + i, i);
+      this.xT.moveTo(i, this.Ao);
+      this.QQk.moveTo(i, this.Ao);
+      this.QQk.rLineTo(this.QQo / 2, this.QQp);
+      this.QQk.rLineTo(this.QQo / 2, -this.QQp);
+      this.QQk.lineTo(i, this.Ao);
+      this.xT.lineTo(this.An, this.Ao);
+      this.xT.lineTo(this.An, this.Am);
+      this.xT.lineTo(this.Al, this.Am);
+      this.xT.lineTo(this.Al, this.Ao);
     }
   }
   
   public int getBubbleColor()
   {
-    return this.LuL;
+    return this.QQt;
   }
   
   public int getBubblePadding()
   {
-    return this.LuE;
+    return this.QQm;
   }
   
   public int getBubbleRadius()
   {
-    return this.LuK;
+    return this.QQs;
   }
   
   public a getLook()
   {
-    return this.LuD;
+    return this.QQl;
   }
   
   public int getLookLength()
   {
-    return this.LuH;
+    return this.QQp;
   }
   
   public int getLookPosition()
   {
-    return this.LuF;
+    return this.QQn;
   }
   
   public int getLookWidth()
   {
-    return this.LuG;
+    return this.QQo;
   }
   
   public Paint getPaint()
@@ -274,33 +250,57 @@ public class BubbleLayout
   
   public Path getPath()
   {
-    return this.xN;
+    return this.xT;
   }
   
   public int getShadowColor()
   {
-    return this.mLO;
+    return this.nYW;
   }
   
   public int getShadowRadius()
   {
-    return this.Sr;
+    return this.SE;
   }
   
   public int getShadowX()
   {
-    return this.LuI;
+    return this.QQq;
   }
   
   public int getShadowY()
   {
-    return this.LuJ;
+    return this.QQr;
+  }
+  
+  public final void hbL()
+  {
+    AppMethodBeat.i(143547);
+    int i = this.QQm * 2;
+    switch (1.QQw[this.QQl.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(143547);
+      return;
+      setPadding(i, i, i, this.QQp + i);
+      AppMethodBeat.o(143547);
+      return;
+      setPadding(i, this.QQp + i, i, i);
+      AppMethodBeat.o(143547);
+      return;
+      setPadding(this.QQp + i, i, i, i);
+      AppMethodBeat.o(143547);
+      return;
+      setPadding(i, i, this.QQp + i, i);
+    }
   }
   
   public void invalidate()
   {
     AppMethodBeat.i(143549);
-    Zm();
+    amZ();
     super.invalidate();
     AppMethodBeat.o(143549);
   }
@@ -309,10 +309,10 @@ public class BubbleLayout
   {
     AppMethodBeat.i(143552);
     super.onDraw(paramCanvas);
-    this.mPaint.setPathEffect(new CornerPathEffect(this.LuK));
-    paramCanvas.drawPath(this.xN, this.mPaint);
+    this.mPaint.setPathEffect(new CornerPathEffect(this.QQs));
+    paramCanvas.drawPath(this.xT, this.mPaint);
     this.mPaint.setPathEffect(null);
-    paramCanvas.drawPath(this.LuC, this.LuB);
+    paramCanvas.drawPath(this.QQk, this.QQj);
     AppMethodBeat.o(143552);
   }
   
@@ -322,20 +322,20 @@ public class BubbleLayout
     if ((paramParcelable instanceof Bundle))
     {
       paramParcelable = (Bundle)paramParcelable;
-      this.LuF = paramParcelable.getInt("mLookPosition");
-      this.LuG = paramParcelable.getInt("mLookWidth");
-      this.LuH = paramParcelable.getInt("mLookLength");
-      this.mLO = paramParcelable.getInt("mShadowColor");
-      this.Sr = paramParcelable.getInt("mShadowRadius");
-      this.LuI = paramParcelable.getInt("mShadowX");
-      this.LuJ = paramParcelable.getInt("mShadowY");
-      this.LuK = paramParcelable.getInt("mBubbleRadius");
+      this.QQn = paramParcelable.getInt("mLookPosition");
+      this.QQo = paramParcelable.getInt("mLookWidth");
+      this.QQp = paramParcelable.getInt("mLookLength");
+      this.nYW = paramParcelable.getInt("mShadowColor");
+      this.SE = paramParcelable.getInt("mShadowRadius");
+      this.QQq = paramParcelable.getInt("mShadowX");
+      this.QQr = paramParcelable.getInt("mShadowY");
+      this.QQs = paramParcelable.getInt("mBubbleRadius");
       this.mWidth = paramParcelable.getInt("mWidth");
       this.mHeight = paramParcelable.getInt("mHeight");
-      this.Af = paramParcelable.getInt("mLeft");
-      this.Ag = paramParcelable.getInt("mTop");
-      this.Ah = paramParcelable.getInt("mRight");
-      this.Ai = paramParcelable.getInt("mBottom");
+      this.Al = paramParcelable.getInt("mLeft");
+      this.Am = paramParcelable.getInt("mTop");
+      this.An = paramParcelable.getInt("mRight");
+      this.Ao = paramParcelable.getInt("mBottom");
       super.onRestoreInstanceState(paramParcelable.getParcelable("instanceState"));
       AppMethodBeat.o(143557);
       return;
@@ -349,20 +349,20 @@ public class BubbleLayout
     AppMethodBeat.i(143556);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("instanceState", super.onSaveInstanceState());
-    localBundle.putInt("mLookPosition", this.LuF);
-    localBundle.putInt("mLookWidth", this.LuG);
-    localBundle.putInt("mLookLength", this.LuH);
-    localBundle.putInt("mShadowColor", this.mLO);
-    localBundle.putInt("mShadowRadius", this.Sr);
-    localBundle.putInt("mShadowX", this.LuI);
-    localBundle.putInt("mShadowY", this.LuJ);
-    localBundle.putInt("mBubbleRadius", this.LuK);
+    localBundle.putInt("mLookPosition", this.QQn);
+    localBundle.putInt("mLookWidth", this.QQo);
+    localBundle.putInt("mLookLength", this.QQp);
+    localBundle.putInt("mShadowColor", this.nYW);
+    localBundle.putInt("mShadowRadius", this.SE);
+    localBundle.putInt("mShadowX", this.QQq);
+    localBundle.putInt("mShadowY", this.QQr);
+    localBundle.putInt("mBubbleRadius", this.QQs);
     localBundle.putInt("mWidth", this.mWidth);
     localBundle.putInt("mHeight", this.mHeight);
-    localBundle.putInt("mLeft", this.Af);
-    localBundle.putInt("mTop", this.Ag);
-    localBundle.putInt("mRight", this.Ah);
-    localBundle.putInt("mBottom", this.Ai);
+    localBundle.putInt("mLeft", this.Al);
+    localBundle.putInt("mTop", this.Am);
+    localBundle.putInt("mRight", this.An);
+    localBundle.putInt("mBottom", this.Ao);
     AppMethodBeat.o(143556);
     return localBundle;
   }
@@ -373,7 +373,7 @@ public class BubbleLayout
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    Zm();
+    amZ();
     AppMethodBeat.o(143548);
   }
   
@@ -383,10 +383,10 @@ public class BubbleLayout
     if (paramMotionEvent.getAction() == 0)
     {
       RectF localRectF = new RectF();
-      this.xN.computeBounds(localRectF, true);
-      this.LuN.setPath(this.xN, new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
-      if ((!this.LuN.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) && (this.LuM != null)) {
-        this.LuM.fQL();
+      this.xT.computeBounds(localRectF, true);
+      this.QQv.setPath(this.xT, new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
+      if ((!this.QQv.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) && (this.QQu != null)) {
+        this.QQu.hbK();
       }
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
@@ -397,70 +397,70 @@ public class BubbleLayout
   public void postInvalidate()
   {
     AppMethodBeat.i(143550);
-    Zm();
+    amZ();
     super.postInvalidate();
     AppMethodBeat.o(143550);
   }
   
   public void setBubbleColor(int paramInt)
   {
-    this.LuL = paramInt;
+    this.QQt = paramInt;
   }
   
   public void setBubbleRadius(int paramInt)
   {
-    this.LuK = paramInt;
+    this.QQs = paramInt;
   }
   
   public void setLook(a parama)
   {
     AppMethodBeat.i(143554);
-    this.LuD = parama;
-    fQM();
+    this.QQl = parama;
+    hbL();
     AppMethodBeat.o(143554);
   }
   
   public void setLookLength(int paramInt)
   {
     AppMethodBeat.i(143555);
-    this.LuH = paramInt;
-    fQM();
+    this.QQp = paramInt;
+    hbL();
     AppMethodBeat.o(143555);
   }
   
   public void setLookPosition(int paramInt)
   {
-    this.LuF = paramInt;
+    this.QQn = paramInt;
   }
   
   public void setLookWidth(int paramInt)
   {
-    this.LuG = paramInt;
+    this.QQo = paramInt;
   }
   
   public void setOnClickEdgeListener(b paramb)
   {
-    this.LuM = paramb;
+    this.QQu = paramb;
   }
   
   public void setShadowColor(int paramInt)
   {
-    this.mLO = paramInt;
+    this.nYW = paramInt;
   }
   
   public void setShadowRadius(int paramInt)
   {
-    this.Sr = paramInt;
+    this.SE = paramInt;
   }
   
   public void setShadowX(int paramInt)
   {
-    this.LuI = paramInt;
+    this.QQq = paramInt;
   }
   
   public void setShadowY(int paramInt)
   {
-    this.LuJ = paramInt;
+    this.QQr = paramInt;
   }
   
   public static enum a
@@ -470,11 +470,11 @@ public class BubbleLayout
     static
     {
       AppMethodBeat.i(143545);
-      LuP = new a("LEFT", 0, 1);
-      LuQ = new a("TOP", 1, 2);
-      LuR = new a("RIGHT", 2, 3);
-      LuS = new a("BOTTOM", 3, 4);
-      LuT = new a[] { LuP, LuQ, LuR, LuS };
+      QQx = new a("LEFT", 0, 1);
+      QQy = new a("TOP", 1, 2);
+      QQz = new a("RIGHT", 2, 3);
+      QQA = new a("BOTTOM", 3, 4);
+      QQB = new a[] { QQx, QQy, QQz, QQA };
       AppMethodBeat.o(143545);
     }
     
@@ -483,32 +483,32 @@ public class BubbleLayout
       this.value = paramInt;
     }
     
-    public static a agd(int paramInt)
+    public static a apg(int paramInt)
     {
-      a locala = LuS;
+      a locala = QQA;
       switch (paramInt)
       {
       default: 
         return locala;
       case 1: 
-        return LuP;
+        return QQx;
       case 2: 
-        return LuQ;
+        return QQy;
       case 3: 
-        return LuR;
+        return QQz;
       }
-      return LuS;
+      return QQA;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void fQL();
+    public abstract void hbK();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.happybubble.BubbleLayout
  * JD-Core Version:    0.7.0.1
  */

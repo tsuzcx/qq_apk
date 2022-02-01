@@ -1,42 +1,40 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.h;
 import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class a$3
-  implements f.b
+  implements i.b
 {
-  a$3(a parama, e parame, AppBrandVideoView paramAppBrandVideoView) {}
+  a$3(a parama, com.tencent.mm.plugin.appbrand.jsapi.h paramh, AppBrandVideoView paramAppBrandVideoView) {}
   
   public final void onBackground()
   {
-    AppMethodBeat.i(211247);
-    h.d locald = h.KU(this.kFs.getAppId());
-    ae.i("MicroMsg.JsApiInsertVideoPlayer", "VideoPlayer enter background, pause type:%s", new Object[] { locald.name() });
-    if (locald == h.d.jzn)
+    AppMethodBeat.i(234916);
+    h.d locald = com.tencent.mm.plugin.appbrand.h.Uc(this.lJT.getAppId());
+    Log.i("MicroMsg.JsApiInsertVideoPlayer", "VideoPlayer enter background, pause type:%s", new Object[] { locald.name() });
+    if (locald == h.d.kzV)
     {
-      this.lun.tt(2);
-      AppMethodBeat.o(211247);
+      this.mAP.xr(2);
+      AppMethodBeat.o(234916);
       return;
     }
-    if (locald == h.d.jzj)
+    if (locald == h.d.kzR)
     {
-      this.lun.tt(1);
-      AppMethodBeat.o(211247);
+      this.mAP.xr(1);
+      AppMethodBeat.o(234916);
       return;
     }
-    this.lun.tt(3);
-    AppMethodBeat.o(211247);
+    this.mAP.xr(3);
+    AppMethodBeat.o(234916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.a.3
  * JD-Core Version:    0.7.0.1
  */

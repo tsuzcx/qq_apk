@@ -1,37 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.s;
 
 public final class cc
-  extends a
+  extends d<s>
 {
-  public static final int CTRL_INDEX = 731;
-  public static final String NAME = "saveWaid";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(45633);
-    HashMap localHashMap = new HashMap();
-    try
-    {
-      localHashMap.put("result", "0");
-      paramc.h(paramInt, n("ok", localHashMap));
-      ae.i("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, data=" + paramJSONObject + ", waidNum=0");
-      AppMethodBeat.o(45633);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      localHashMap.put("result", "0");
-      paramc.h(paramInt, n("fail", localHashMap));
-      ae.e("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, exp=" + paramJSONObject.toString());
-      AppMethodBeat.o(45633);
-    }
-  }
+  public static final int CTRL_INDEX = 201;
+  public static final String NAME = "openUrl";
 }
 
 

@@ -3,9 +3,9 @@ package com.tencent.kinda.framework.module.impl;
 import com.tencent.kinda.gen.KindaWebService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.a.d;
-import com.tencent.mm.plugin.brandservice.a.d.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.brandservice.a.e;
+import com.tencent.mm.plugin.brandservice.a.e.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,20 +16,20 @@ public class KindaWebServiceImpl
   
   public void preLoad(String paramString)
   {
-    AppMethodBeat.i(193161);
-    ae.i("MicroMsg.KindaWebServiceImpl", "preload Url:".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(214452);
+    Log.i("MicroMsg.KindaWebServiceImpl", "preload Url:".concat(String.valueOf(paramString)));
     if (paramString.length() == 0)
     {
-      AppMethodBeat.o(193161);
+      AppMethodBeat.o(214452);
       return;
     }
-    d.a locala = new d.a();
+    e.a locala = new e.a();
     locala.url = paramString;
-    locala.obQ = 175;
+    locala.pmM = 175;
     paramString = new ArrayList();
     paramString.add(locala);
-    ((d)g.ab(d.class)).cf(paramString);
-    AppMethodBeat.o(193161);
+    ((e)g.af(e.class)).cu(paramString);
+    AppMethodBeat.o(214452);
   }
 }
 

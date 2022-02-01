@@ -1,63 +1,107 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.report.k;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aob;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.protocal.protobuf.aul;
+import com.tencent.mm.protocal.protobuf.auo;
+import com.tencent.mm.protocal.protobuf.aup;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bfp;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedLikedList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetFeedLikedListResp;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "scene", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "likeBuffer", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;ILcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protobuf/ByteString;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeFriend;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "action", "Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "likeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getAction", "()Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "likeId", "", "getLikeInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLikeRequest;", "initCommReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class r
-  extends com.tencent.mm.ak.a<aoc>
+  extends an<aup>
 {
-  private final FinderItem feedObject;
-  private final b lastBuffer;
-  private final b likeBuffer;
-  private final int scene;
+  private static long tsS;
+  public static final a ttr;
+  private final String TAG;
+  private long tsR;
+  private auo ttj;
+  private final bfp ttp;
+  private final aul ttq;
   
-  public r(FinderItem paramFinderItem, int paramInt, b paramb1, b paramb2)
+  static
   {
-    AppMethodBeat.i(201496);
-    this.feedObject = paramFinderItem;
-    this.scene = paramInt;
-    this.lastBuffer = paramb1;
-    this.likeBuffer = paramb2;
-    paramFinderItem = new b.a();
-    paramb1 = new aob();
-    paramb1.sbR = this.feedObject.field_username;
-    paramb1.scene = this.scene;
-    paramb1.lastBuffer = this.lastBuffer;
-    paramb1.rRn = this.feedObject.field_id;
-    paramb1.objectNonceId = this.feedObject.getObjectNonceId();
-    paramb1.likeBuffer = this.likeBuffer;
-    paramb2 = v.rRb;
-    paramb1.GEg = v.czz();
-    paramFinderItem.c((com.tencent.mm.bw.a)paramb1);
-    paramb1 = new aoc();
-    paramb1.setBaseResponse(new BaseResponse());
-    paramb1.getBaseResponse().ErrMsg = new cxn();
-    paramFinderItem.d((com.tencent.mm.bw.a)paramb1);
-    paramFinderItem.DN("/cgi-bin/micromsg-bin/findergetfeedlikedlist");
-    paramFinderItem.oS(3593);
-    c(paramFinderItem.aDS());
-    paramFinderItem = new StringBuilder("CgiGetFinderFeedLikedList init finderUsername=").append(this.feedObject.field_username).append(" scene=").append(this.scene).append(" lastBuffer=");
-    if (this.lastBuffer != null) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(242239);
+    ttr = new a((byte)0);
+    AppMethodBeat.o(242239);
+  }
+  
+  public r(bfp parambfp, aul paramaul, bbn parambbn)
+  {
+    super(parambbn);
+    AppMethodBeat.i(242238);
+    this.ttp = parambfp;
+    this.ttq = paramaul;
+    this.TAG = "Finder.CgiFinderLikeFriend";
+    this.tsR = cl.aWz();
+    long l;
+    if (this.tsR < tsS)
     {
-      ae.i("Finder.CgiGetFinderFeedLikedList", bool);
-      AppMethodBeat.o(201496);
+      l = tsS;
+      tsS = 1L + l;
+      this.tsR = l;
+    }
+    tsS = this.tsR;
+    this.ttj = new auo();
+    this.ttj.hFK = this.ttp.feedId;
+    this.ttj.objectNonceId = this.ttp.objectNonceId;
+    this.ttj.tsR = this.tsR;
+    this.ttj.commentId = this.ttq.tsR;
+    this.ttj.username = z.aUg();
+    this.ttj.scene = this.ttp.scene;
+    this.ttj.LFu = this.ttq.dMW;
+    parambfp = this.ttj;
+    if (this.ttq.likeFlag == 1)
+    {
+      i = 5;
+      parambfp.opType = i;
+      parambfp = this.ttj;
+      paramaul = am.tuw;
+      parambfp.uli = am.a(parambbn);
+      parambfp = this.ttj;
+      paramaul = k.vfA;
+      l = this.ttp.feedId;
+      if (parambbn == null) {
+        break label523;
+      }
+    }
+    label523:
+    for (int i = parambbn.tCE;; i = 0)
+    {
+      parambfp.sessionBuffer = k.G(l, i);
+      Log.i(this.TAG, "likeId:" + this.tsR + " objectId:" + this.ttj.hFK + " commentId：" + this.ttj.commentId + " opType:" + this.ttj.opType + " likeId:" + this.ttj.tsR + " username:" + this.ttj.username + " action:" + this.ttq.likeFlag);
+      parambfp = new d.a();
+      parambfp.c((a)this.ttj);
+      paramaul = new aup();
+      paramaul.setBaseResponse(new BaseResponse());
+      paramaul.getBaseResponse().ErrMsg = new dqi();
+      parambfp.d((a)paramaul);
+      parambfp.MB("/cgi-bin/micromsg-bin/finderlike");
+      parambfp.sG(3710);
+      c(parambfp.aXF());
+      Log.i(this.TAG, "likeId:" + this.tsR + " CgiFinderLikeComment init " + this.ttj.hFK + ' ');
+      AppMethodBeat.o(242238);
       return;
+      i = 6;
+      break;
     }
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeFriend$Companion;", "", "()V", "GlobalLikeFeedId", "", "getGlobalLikeFeedId", "()J", "setGlobalLikeFeedId", "(J)V", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.r
  * JD-Core Version:    0.7.0.1
  */

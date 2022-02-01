@@ -4,33 +4,36 @@ import android.content.Context;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.ls;
+import com.tencent.mm.g.a.mi;
+import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.game.commlib.util.BatteryManager;
 import com.tencent.mm.plugin.game.commlib.util.BatteryManager.BatteryChangedReceiver;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class PluginCommLib
   extends f
-  implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.game.commlib.a.b
+  implements c, com.tencent.mm.plugin.game.commlib.a.b
 {
   private o.a appForegroundListener;
-  private com.tencent.mm.sdk.b.c riP;
+  private IListener sKr;
   
   public PluginCommLib()
   {
     AppMethodBeat.i(89944);
-    this.riP = new com.tencent.mm.sdk.b.c() {};
+    this.sKr = new IListener() {};
     this.appForegroundListener = new o.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(89943);
-        if ((com.tencent.mm.kernel.g.ajM()) && (com.tencent.mm.kernel.g.ajP().gDk))
+        if ((com.tencent.mm.kernel.g.aAc()) && (com.tencent.mm.kernel.g.aAf().hpY))
         {
-          com.tencent.mm.kernel.g.ajP();
-          if (!com.tencent.mm.kernel.a.aiT()) {
+          com.tencent.mm.kernel.g.aAf();
+          if (!com.tencent.mm.kernel.a.azj()) {
             com.tencent.mm.plugin.game.commlib.util.b.clean();
           }
         }
@@ -40,10 +43,10 @@ public class PluginCommLib
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(89942);
-        if ((com.tencent.mm.kernel.g.ajM()) && (com.tencent.mm.kernel.g.ajP().gDk))
+        if ((com.tencent.mm.kernel.g.aAc()) && (com.tencent.mm.kernel.g.aAf().hpY))
         {
-          com.tencent.mm.kernel.g.ajP();
-          com.tencent.mm.kernel.a.aiT();
+          com.tencent.mm.kernel.g.aAf();
+          com.tencent.mm.kernel.a.azj();
         }
         AppMethodBeat.o(89942);
       }
@@ -54,14 +57,14 @@ public class PluginCommLib
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(89945);
-    e.aml(paramg.mProcessName);
+    e.azp(paramg.mProcessName);
     AppMethodBeat.o(89945);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(89946);
-    if (paramg.akL()) {
+    if (paramg.aBb()) {
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.game.commlib.a.a.class, new d());
     }
     AppMethodBeat.o(89946);
@@ -70,28 +73,28 @@ public class PluginCommLib
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(89947);
-    com.tencent.mm.sdk.b.a.IvT.b(this.riP);
+    EventCenter.instance.add(this.sKr);
     this.appForegroundListener.alive();
-    if (BatteryManager.udN == null) {
-      BatteryManager.udN = new BatteryManager.BatteryChangedReceiver((byte)0);
+    if (BatteryManager.xvz == null) {
+      BatteryManager.xvz = new BatteryManager.BatteryChangedReceiver((byte)0);
     }
     paramc = new IntentFilter();
     paramc.addAction("android.intent.action.BATTERY_OKAY");
     paramc.addAction("android.intent.action.BATTERY_LOW");
-    ak.getContext().registerReceiver(BatteryManager.udN, paramc);
+    MMApplicationContext.getContext().registerReceiver(BatteryManager.xvz, paramc);
     AppMethodBeat.o(89947);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(89948);
-    com.tencent.mm.sdk.b.a.IvT.d(this.riP);
-    com.tencent.mm.plugin.game.commlib.util.a.bCi();
+    EventCenter.instance.removeListener(this.sKr);
+    com.tencent.mm.plugin.game.commlib.util.a.bZm();
     this.appForegroundListener.dead();
-    if (BatteryManager.udN != null) {
-      ak.getContext().unregisterReceiver(BatteryManager.udN);
+    if (BatteryManager.xvz != null) {
+      MMApplicationContext.getContext().unregisterReceiver(BatteryManager.xvz);
     }
-    BatteryManager.udN = null;
+    BatteryManager.xvz = null;
     AppMethodBeat.o(89948);
   }
 }

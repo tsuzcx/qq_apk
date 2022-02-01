@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class py
-  extends b
+  extends IEvent
 {
-  public a dFv;
+  public a dWd;
   
   public py()
   {
@@ -16,21 +15,22 @@ public final class py
   
   private py(byte paramByte)
   {
-    AppMethodBeat.i(42656);
-    this.dFv = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(128847);
+    this.dWd = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(42656);
+    AppMethodBeat.o(128847);
   }
   
   public static final class a
   {
-    public bv dlw;
+    public String dWe;
+    public int dWf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.py
  * JD-Core Version:    0.7.0.1
  */

@@ -23,9 +23,9 @@ public enum OAuthErrCode
   
   private OAuthErrCode(int paramInt)
   {
-    AppMethodBeat.i(194086);
+    AppMethodBeat.i(190398);
     this.code = paramInt;
-    AppMethodBeat.o(194086);
+    AppMethodBeat.o(190398);
   }
   
   public final int getCode()

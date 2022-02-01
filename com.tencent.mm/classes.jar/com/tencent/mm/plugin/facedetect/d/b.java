@@ -2,7 +2,10 @@ package com.tencent.mm.plugin.facedetect.d;
 
 import android.content.Context;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
+import com.tencent.mm.plugin.facedetect.model.h.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract interface b
 {
@@ -12,32 +15,32 @@ public abstract interface b
   
   public abstract boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult);
   
-  public abstract boolean cuU();
+  public abstract boolean cTq();
   
-  public abstract boolean cuV();
+  public abstract boolean cTr();
   
-  public abstract void cuW();
+  public abstract void cTs();
   
-  public abstract b cuX();
+  public abstract b cTt();
   
-  public abstract a cuY();
+  public abstract a cTu();
   
   public abstract void setBusinessTip(String paramString);
   
   public static final class a
   {
     public String errMsg;
-    public int rqA;
-    public int rqB;
+    public int sRX;
+    public int sRY;
     
     a()
     {
-      this.rqA = 1;
+      this.sRX = 1;
     }
     
     a(String paramString)
     {
-      this.rqB = 7;
+      this.sRY = 7;
       this.errMsg = paramString;
     }
   }
@@ -53,10 +56,36 @@ public abstract interface b
       this.errMsg = paramString;
     }
   }
+  
+  public static final class c
+  {
+    private static String TAG = "MicroMsg.IFaceMotion.Factory";
+    
+    public static b a(h.a parama)
+    {
+      AppMethodBeat.i(103815);
+      if (parama == null)
+      {
+        AppMethodBeat.o(103815);
+        return null;
+      }
+      if (parama.type == 4)
+      {
+        Log.i(TAG, "hy: is read number");
+        parama = new d(parama.sQY);
+        AppMethodBeat.o(103815);
+        return parama;
+      }
+      Log.i(TAG, "hy: is normal");
+      parama = new c(parama.ktN, parama.sQV);
+      AppMethodBeat.o(103815);
+      return parama;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.b
  * JD-Core Version:    0.7.0.1
  */

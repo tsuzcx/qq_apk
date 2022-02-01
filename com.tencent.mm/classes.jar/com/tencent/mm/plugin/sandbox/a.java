@@ -5,6 +5,7 @@ import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sandbox.updater.i;
+import com.tencent.mm.sdk.event.EventCenter;
 
 public final class a
   implements n
@@ -12,7 +13,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(28048);
-    com.tencent.mm.sdk.b.a.IvT.c(new i());
+    EventCenter.instance.addListener(new i());
     AppMethodBeat.o(28048);
   }
   

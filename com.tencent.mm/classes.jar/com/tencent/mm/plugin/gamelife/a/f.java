@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.gamelife.a;
 
+import com.tencent.mm.bw.b;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface f
   extends a
 {
-  public abstract void a(String paramString1, String paramString2, a parama);
+  public abstract void a(String paramString1, String paramString2, int paramInt, b paramb, a parama);
   
-  public abstract String ajf(String paramString);
+  public abstract e aAW(String paramString);
   
-  public abstract e anD(String paramString);
+  public abstract String avi(String paramString);
   
   public static abstract interface a
   {

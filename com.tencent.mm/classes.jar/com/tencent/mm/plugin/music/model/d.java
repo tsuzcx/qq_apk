@@ -1,282 +1,598 @@
 package com.tencent.mm.plugin.music.model;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Looper;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.graphics.Point;
+import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.i;
-import com.tencent.mm.av.q;
-import com.tencent.mm.plugin.sns.b.g;
-import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.ay.f;
+import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.plugin.music.e.e;
+import com.tencent.mm.plugin.music.ui.FloatBallMusicView;
+import com.tencent.mm.protocal.protobuf.cso;
+import com.tencent.mm.protocal.protobuf.css;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.at;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "Lcom/tencent/mm/plugin/music/model/GlobalMusicFloatBallHelper;", "()V", "mCoverPath", "", "mCurrentMusicShareObject", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "mFloatBallMusicView", "Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView;", "mMultiTaskHelper", "Lcom/tencent/mm/plugin/music/model/MusicPlayerMultiTaskHelper;", "mMvUIExtra", "Landroid/os/Bundle;", "addMusicFloatBall", "", "musicWrapper", "Lcom/tencent/mm/modelmusic/MusicWrapper;", "canHandleMusicPlayerEvent", "", "event", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "wrapper", "getFloatBallType", "", "getMusicMvUIIntent", "Landroid/content/Intent;", "initMusicFloatBallView", "onClickMusicBall", "onFloatBallRemoved", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "removeCurrentBall", "removeMusicBallState", "updateMusicBallState", "updateMusicCoverPath", "coverPath", "updateMusicMvInfo", "musicShareObject", "updateMusicMvUIExtra", "extra", "updateMusicShareObject", "Companion", "Holder", "plugin-music_release"})
 public final class d
+  extends a
 {
-  public com.tencent.mm.b.f<String, Bitmap> fIj;
-  public a wAx;
-  private com.tencent.mm.av.a.c.h wAy;
-  public aq wAz;
+  public static final d.a Aki;
+  private FloatBallMusicView Akd;
+  Bundle Ake;
+  private String Akf;
+  css Akg;
+  private final k Akh;
+  
+  static
+  {
+    AppMethodBeat.i(219968);
+    Aki = new d.a((byte)0);
+    AppMethodBeat.o(219968);
+  }
   
   public d()
   {
-    AppMethodBeat.i(63011);
-    this.wAy = new com.tencent.mm.av.a.c.h()
-    {
-      public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
-      {
-        return null;
-      }
-      
-      public final void b(String paramAnonymousString, View paramAnonymousView) {}
-      
-      public final void b(final String paramAnonymousString, final View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
-      {
-        AppMethodBeat.i(63009);
-        if (paramAnonymousb.bitmap != null) {}
-        for (boolean bool = true;; bool = false)
-        {
-          ae.i("MicroMsg.Music.MusicImageLoader", "onImageLoadFinish %s %b", new Object[] { paramAnonymousString, Boolean.valueOf(bool) });
-          paramAnonymousString = (com.tencent.mm.plugin.music.model.e.a)paramAnonymousView.getTag();
-          if ((paramAnonymousb.bitmap != null) && (paramAnonymousString != null))
-          {
-            d.this.a(paramAnonymousString, paramAnonymousb.bitmap);
-            paramAnonymousView = al.aH(paramAnonymousb.bitmap);
-            if (!paramAnonymousString.C(paramAnonymousView)) {
-              f.dwu().at(paramAnonymousString.field_musicId, paramAnonymousView[0], paramAnonymousView[1]);
-            }
-            if (d.this.wAx != null) {
-              ar.f(new Runnable()
-              {
-                public final void run()
-                {
-                  AppMethodBeat.i(63008);
-                  d.this.wAx.a(paramAnonymousString, paramAnonymousView);
-                  AppMethodBeat.o(63008);
-                }
-              });
-            }
-          }
-          AppMethodBeat.o(63009);
-          return;
-        }
-      }
-    };
-    this.wAz = new aq(Looper.getMainLooper());
-    this.fIj = new com.tencent.mm.memory.a.b(5, getClass());
-    AppMethodBeat.o(63011);
+    super("MicroMsg.GlobalMusicPlayerFloatBallHelper");
+    AppMethodBeat.i(219967);
+    this.Akh = new k();
+    AppMethodBeat.o(219967);
   }
   
-  final void a(com.tencent.mm.plugin.music.model.e.a parama, Bitmap paramBitmap)
+  public static final d euu()
   {
-    AppMethodBeat.i(63013);
-    ae.i("MicroMsg.Music.MusicImageLoader", "putBitmapToCache %s", new Object[] { parama.field_musicId });
-    this.fIj.put(parama.field_musicId, paramBitmap);
-    AppMethodBeat.o(63013);
+    AppMethodBeat.i(219970);
+    Object localObject = b.Akk;
+    localObject = b.euv();
+    AppMethodBeat.o(219970);
+    return localObject;
   }
   
-  public final void a(com.tencent.mm.plugin.music.model.e.a parama, CdnImageView paramCdnImageView, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  protected final void A(f paramf)
   {
-    AppMethodBeat.i(63012);
-    if (paramBoolean1) {
-      this.fIj.remove(parama.field_musicId);
-    }
-    Object localObject1 = (Bitmap)this.fIj.get(parama.field_musicId);
-    if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+    AppMethodBeat.i(219959);
+    p.h(paramf, "wrapper");
+    if (paramf.jfx)
     {
-      ae.i("MicroMsg.Music.MusicImageLoader", "hit cache %s", new Object[] { parama.field_musicId });
-      paramCdnImageView.setImageBitmap((Bitmap)localObject1);
-      if (parama.dwE())
-      {
-        paramCdnImageView = new int[2];
-        paramCdnImageView[0] = parama.field_songBgColor;
-        paramCdnImageView[1] = parama.field_songLyricColor;
-      }
-      for (;;)
-      {
-        if (this.wAx != null) {
-          this.wAx.a(parama, paramCdnImageView);
-        }
-        AppMethodBeat.o(63012);
-        return;
-        paramCdnImageView = al.aH((Bitmap)localObject1);
-      }
+      this.oWE.state = com.tencent.mm.plugin.ball.f.d.eV(this.oWE.state, 8);
+      BH(this.oWE.state);
     }
-    localObject1 = null;
+    AppMethodBeat.o(219959);
+  }
+  
+  public final void C(BallInfo paramBallInfo)
+  {
+    long l = 0L;
     Object localObject2 = null;
-    ae.i("MicroMsg.Music.MusicImageLoader", "no hit cache %s %s %s %s", new Object[] { parama.field_musicId, parama.field_songHAlbumUrl, parama.field_songAlbumUrl, parama.field_songAlbumLocalPath });
-    paramCdnImageView.setTag(parama);
-    if (parama.dwF())
+    AppMethodBeat.i(219962);
+    Object localObject1 = com.tencent.mm.plugin.music.f.c.b.aS(e.class);
+    p.g(localObject1, "MusicCoreService.service…PrivateLogic::class.java)");
+    com.tencent.mm.plugin.music.model.e.a locala = ((e)localObject1).etY();
+    k localk;
+    label126:
+    Object localObject3;
+    label167:
+    label190:
+    label213:
+    label236:
+    int i;
+    if (locala != null)
     {
-      paramContext = new c.a();
-      paramContext.hgD = com.tencent.mm.plugin.music.h.b.bF(parama.field_musicId, true);
-      paramContext.igk = true;
-      paramContext.igi = true;
-      paramContext.igv = 2131231880;
-      if (paramBoolean2)
+      this.Akh.G(6, com.tencent.mm.plugin.multitask.g.az(locala.field_songName, locala.field_songSinger, locala.field_songAlbum));
+      localk = this.Akh;
+      localObject1 = this.Akg;
+      Bundle localBundle = this.Ake;
+      p.h(locala, "music");
+      if ((localObject1 == null) && (localBundle == null))
       {
-        paramContext.igq = true;
-        paramContext.igr = 10;
+        Log.w("MicroMsg.MusicPlayerMultiTaskHelper", "fillMultiTaskData failed");
+        localk.Abp = null;
+        this.Akh.O(0, false);
+        super.C(paramBallInfo);
+        AppMethodBeat.o(219962);
+        return;
       }
-      q.aJb().a(parama.field_songHAlbumUrl, paramCdnImageView, paramContext.aJu(), this.wAy);
-      localObject1 = localObject2;
+      if (localObject1 != null) {
+        break label865;
+      }
+      localObject3 = new css();
+      if (localBundle != null)
+      {
+        localObject1 = localBundle.getString("key_mv_cover_url", null);
+        ((css)localObject3).Ktp = ((String)localObject1);
+        if (localBundle == null) {
+          break label770;
+        }
+        localObject1 = localBundle.getString("key_mv_poster", null);
+        ((css)localObject3).Ktq = ((String)localObject1);
+        if (localBundle == null) {
+          break label776;
+        }
+        localObject1 = localBundle.getString("key_mv_nonce_id", null);
+        ((css)localObject3).Kto = ((String)localObject1);
+        if (localBundle == null) {
+          break label782;
+        }
+        localObject1 = localBundle.getString("key_mv_feed_id", null);
+        ((css)localObject3).Ktn = ((String)localObject1);
+        if (localBundle == null) {
+          break label788;
+        }
+        localObject1 = localBundle.getString("key_mv_song_name", null);
+        label259:
+        ((css)localObject3).BPc = ((String)localObject1);
+        if (localBundle == null) {
+          break label794;
+        }
+        localObject1 = localBundle.getString("key_mv_song_lyric", "");
+        label284:
+        ((css)localObject3).songLyric = ((String)localObject1);
+        if (localBundle == null) {
+          break label800;
+        }
+        localObject1 = localBundle.getString("key_mv_singer_name", null);
+        label307:
+        ((css)localObject3).singerName = ((String)localObject1);
+        if (localBundle == null) {
+          break label806;
+        }
+        localObject1 = localBundle.getString("key_mv_album_name", null);
+        label330:
+        ((css)localObject3).albumName = ((String)localObject1);
+        if (localBundle == null) {
+          break label812;
+        }
+        localObject1 = localBundle.getString("key_mv_music_genre", null);
+        label353:
+        ((css)localObject3).musicGenre = ((String)localObject1);
+        if (localBundle != null) {
+          l = localBundle.getLong("key_mv_issue_date", 0L);
+        }
+        ((css)localObject3).issueDate = l;
+        if (localBundle == null) {
+          break label818;
+        }
+        localObject1 = localBundle.getString("key_mv_album_cover_url", null);
+        label397:
+        ((css)localObject3).EsK = ((String)localObject1);
+        if (localBundle == null) {
+          break label824;
+        }
+        localObject1 = localBundle.getString("key_mv_identification", null);
+        label420:
+        ((css)localObject3).identification = ((String)localObject1);
+        if (localBundle == null) {
+          break label830;
+        }
+        localObject1 = localBundle.getString("key_mv_extra_info", null);
+        label443:
+        ((css)localObject3).extraInfo = ((String)localObject1);
+        if (localBundle == null) {
+          break label836;
+        }
+        i = localBundle.getInt("key_mv_music_duration", 0);
+        label465:
+        ((css)localObject3).Alz = i;
+        localObject1 = localObject2;
+        if (localBundle != null) {
+          localObject1 = localBundle.getString("key_mv_thumb_path", null);
+        }
+        ((css)localObject3).jfz = ((String)localObject1);
+        localObject1 = localObject3;
+      }
     }
+    label544:
+    label806:
+    label812:
+    label818:
+    label824:
+    label830:
+    label836:
+    label846:
+    label865:
     for (;;)
     {
-      if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+      localObject3 = localk.Abp;
+      if (localObject3 == null) {
+        break;
+      }
+      localObject2 = locala.field_songSinger;
+      p.g(localObject2, "music.field_songSinger");
+      if (((CharSequence)localObject2).length() > 0)
       {
-        a(parama, (Bitmap)localObject1);
-        paramCdnImageView.setImageBitmap((Bitmap)localObject1);
-        paramContext = al.aH((Bitmap)localObject1);
-        paramCdnImageView = parama;
-        if (!parama.C(paramContext)) {
-          paramCdnImageView = f.dwu().at(parama.field_musicId, paramContext[0], paramContext[1]);
-        }
-        if ((this.wAx != null) && (paramCdnImageView != null)) {
-          this.wAx.a(paramCdnImageView, paramContext);
+        i = 1;
+        if (i == 0) {
+          break label846;
         }
       }
-      AppMethodBeat.o(63012);
+      for (localObject2 = " · " + locala.field_songSinger;; localObject2 = "")
+      {
+        ((MultiTaskInfo)localObject3).erh().title = (locala.field_songName + (String)localObject2);
+        ((MultiTaskInfo)localObject3).erh().nickname = ((css)localObject1).Ktq;
+        localObject2 = new cso();
+        ((cso)localObject2).jfy = ((css)localObject1);
+        ((cso)localObject2).musicType = locala.field_musicType;
+        ((cso)localObject2).Djf = locala.field_songAlbumUrl;
+        ((cso)localObject2).name = locala.field_songName;
+        ((cso)localObject2).lDR = locala.field_songSinger;
+        ((cso)localObject2).lDS = locala.field_songWebUrl;
+        ((cso)localObject2).Mxy = locala.field_songWapLinkUrl;
+        ((cso)localObject2).Mxz = locala.field_songWifiUrl;
+        ((cso)localObject2).dSF = locala.field_musicId;
+        ((cso)localObject2).MxB = locala.field_songAlbumLocalPath;
+        ((cso)localObject2).MxC = locala.field_songAlbum;
+        ((cso)localObject2).appId = locala.field_appId;
+        ((cso)localObject2).MxD = locala.field_songHAlbumUrl;
+        ((MultiTaskInfo)localObject3).field_data = ((cso)localObject2).toByteArray();
+        break;
+        localObject1 = null;
+        break label167;
+        localObject1 = null;
+        break label190;
+        localObject1 = null;
+        break label213;
+        localObject1 = null;
+        break label236;
+        localObject1 = null;
+        break label259;
+        localObject1 = null;
+        break label284;
+        localObject1 = null;
+        break label307;
+        localObject1 = null;
+        break label330;
+        localObject1 = null;
+        break label353;
+        localObject1 = null;
+        break label397;
+        localObject1 = null;
+        break label420;
+        localObject1 = null;
+        break label443;
+        i = 0;
+        break label465;
+        i = 0;
+        break label544;
+      }
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "onFloatBallRemoved currentMusic is null");
+      break label126;
+    }
+  }
+  
+  public final void aHN(String paramString)
+  {
+    AppMethodBeat.i(219965);
+    Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicCoverPath %s", new Object[] { paramString });
+    this.Akf = paramString;
+    FloatBallMusicView localFloatBallMusicView = this.Akd;
+    if (localFloatBallMusicView != null)
+    {
+      localFloatBallMusicView.setCoverPath(paramString);
+      AppMethodBeat.o(219965);
       return;
-      switch (parama.field_musicType)
-      {
-      case 2: 
-      case 3: 
-      default: 
-        localObject1 = localObject2;
-        break;
-      case 0: 
-      case 5: 
-      case 7: 
-      case 10: 
-      case 11: 
-      case 4: 
-      case 6: 
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = q.aIX().a(parama.field_songAlbumLocalPath, com.tencent.mm.cb.a.getDensity(paramContext), false);
-          }
-          if (localObject2 == null) {
-            break label566;
-          }
-          localObject1 = com.tencent.mm.sdk.platformtools.h.l((Bitmap)localObject2, 10);
-          break;
-          paramContext = new c.a();
-          paramContext.hgD = com.tencent.mm.plugin.music.h.b.bF(parama.field_musicId, false);
-          paramContext.igk = true;
-          paramContext.igi = true;
-          if (paramBoolean2)
-          {
-            paramContext.igq = true;
-            paramContext.igr = 10;
-          }
-          q.aJb().a(parama.field_songAlbumUrl, paramCdnImageView, paramContext.aJu(), this.wAy);
-          localObject1 = localObject2;
-          break;
-          localObject1 = q.aIX().b(parama.field_songAlbumLocalPath, com.tencent.mm.cb.a.getDensity(paramContext), false);
-        }
-        paramCdnImageView.setImageResource(2131231880);
-        if ((!parama.dwE()) && (this.wAx != null)) {
-          this.wAx.a(parama, new int[] { -16777216, -1 });
-        }
-        ae.i("MicroMsg.Music.MusicImageLoader", "field_songAlbumUrl:%s", new Object[] { parama.field_songAlbumUrl });
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(parama.field_songAlbumUrl))
-        {
-          paramContext = new c.a();
-          paramContext.hgD = com.tencent.mm.plugin.music.h.b.bF(parama.field_musicId, true);
-          paramContext.igk = true;
-          paramContext.igi = true;
-          if (paramBoolean2)
-          {
-            paramContext.igq = true;
-            paramContext.igr = 10;
-          }
-          q.aJb().a(parama.field_songAlbumUrl, paramCdnImageView, paramContext.aJu(), this.wAy);
-          localObject1 = localObject2;
-        }
-        break;
-      case 1: 
-      case 8: 
-      case 9: 
-        label566:
-        bzh localbzh = new bzh();
-        localbzh.Id = parama.field_songMediaId;
-        localbzh.Hmj = parama.field_songAlbumUrl;
-        localbzh.Hmk = parama.field_songAlbumType;
-        localbzh.Url = localbzh.Hmj;
-        localObject1 = localObject2;
-        if (o.zsv != null)
-        {
-          localObject1 = o.zsv.a(localbzh);
-          if (localObject1 != null)
-          {
-            localObject1 = com.tencent.mm.sdk.platformtools.h.l((Bitmap)localObject1, 10);
-          }
-          else
-          {
-            paramCdnImageView.setImageResource(2131231880);
-            if ((!parama.dwE()) && (this.wAx != null)) {
-              this.wAx.a(parama, new int[] { -16777216, -1 });
-            }
-            o.zsv.eQ(paramCdnImageView);
-            o.zsv.a(localbzh, paramCdnImageView, paramContext.hashCode(), bk.JgC);
-            this.wAz.removeCallbacksAndMessages(null);
-            this.wAz.postDelayed(new b(parama), 1000L);
-          }
-        }
-        break;
-      }
+    }
+    AppMethodBeat.o(219965);
+  }
+  
+  public final void as(Bundle paramBundle)
+  {
+    AppMethodBeat.i(219964);
+    this.Ake = paramBundle;
+    paramBundle = this.Ake;
+    if (paramBundle != null) {}
+    for (paramBundle = Integer.valueOf(paramBundle.hashCode());; paramBundle = null)
+    {
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicMvUIExtra hashCode: %s", new Object[] { paramBundle });
+      AppMethodBeat.o(219964);
+      return;
     }
   }
   
-  public static abstract interface a
+  public final void cir()
   {
-    public abstract void a(com.tencent.mm.plugin.music.model.e.a parama, int[] paramArrayOfInt);
+    AppMethodBeat.i(219958);
+    super.cir();
+    FloatBallMusicView localFloatBallMusicView = this.Akd;
+    if (localFloatBallMusicView != null) {
+      ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).b((com.tencent.mm.plugin.ball.c.g)localFloatBallMusicView.AmF);
+    }
+    this.Akd = null;
+    AppMethodBeat.o(219958);
   }
   
-  final class b
-    implements Runnable
+  public final void d(css paramcss)
   {
-    com.tencent.mm.plugin.music.model.e.a wAD;
-    
-    b(com.tencent.mm.plugin.music.model.e.a parama)
+    AppMethodBeat.i(219963);
+    this.Akg = paramcss;
+    paramcss = this.Akg;
+    if (paramcss != null) {}
+    for (paramcss = Integer.valueOf(paramcss.hashCode());; paramcss = null)
     {
-      this.wAD = parama;
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "alvinluo updateMusicShareObject hashCode: %s", new Object[] { paramcss });
+      AppMethodBeat.o(219963);
+      return;
+    }
+  }
+  
+  protected final int euo()
+  {
+    return 23;
+  }
+  
+  protected final void eup()
+  {
+    AppMethodBeat.i(219960);
+    BH(com.tencent.mm.plugin.ball.f.d.eW(this.oWE.state, 8));
+    AppMethodBeat.o(219960);
+  }
+  
+  public final Intent eut()
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(219966);
+    Intent localIntent = new Intent();
+    if (this.Ake != null)
+    {
+      localObject2 = this.Ake;
+      if (localObject2 != null) {
+        localObject1 = Integer.valueOf(((Bundle)localObject2).hashCode());
+      }
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "getMusicMvUIIntent jump by extra %s", new Object[] { localObject1 });
+      localObject1 = this.Ake;
+      if (localObject1 == null) {
+        p.hyc();
+      }
+      localIntent.putExtras((Bundle)localObject1);
+      AppMethodBeat.o(219966);
+      return localIntent;
+    }
+    css localcss = this.Akg;
+    localObject1 = localObject2;
+    if (localcss != null) {
+      localObject1 = Integer.valueOf(localcss.hashCode());
+    }
+    Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "getMusicMvUIIntent jump by musicShareObject: %s", new Object[] { localObject1 });
+    localIntent.putExtra("key_scene", 6);
+    if (localcss != null)
+    {
+      localObject2 = localcss.Ktn;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_feed_id", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.Kto;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_nonce_id", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.Ktp;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_cover_url", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.Ktq;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_poster", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.BPc;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_song_name", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.songLyric;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_song_lyric", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.singerName;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_singer_name", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.albumName;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_album_name", (String)localObject1);
+    if (localcss != null)
+    {
+      localObject2 = localcss.musicGenre;
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    localIntent.putExtra("key_mv_music_genre", (String)localObject1);
+    long l;
+    if (localcss != null)
+    {
+      l = localcss.issueDate;
+      label494:
+      localIntent.putExtra("key_mv_issue_date", l);
+      if (localcss != null)
+      {
+        localObject2 = localcss.EsK;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localIntent.putExtra("key_mv_album_cover_url", (String)localObject1);
+      if (localcss != null)
+      {
+        localObject2 = localcss.identification;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localIntent.putExtra("key_mv_identification", (String)localObject1);
+      if (localcss != null)
+      {
+        localObject2 = localcss.extraInfo;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localIntent.putExtra("key_mv_extra_info", (String)localObject1);
+      if (localcss == null) {
+        break label690;
+      }
+    }
+    label690:
+    for (int i = localcss.Alz;; i = 0)
+    {
+      localIntent.putExtra("key_mv_music_duration", i);
+      if (localcss != null)
+      {
+        localObject2 = localcss.jfz;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localIntent.putExtra("key_mv_thumb_path", (String)localObject1);
+      localIntent.setFlags(268435456);
+      break;
+      l = 0L;
+      break label494;
+    }
+  }
+  
+  protected final boolean y(f paramf)
+  {
+    return (paramf != null) && (paramf.jfx == true);
+  }
+  
+  protected final void z(f paramf)
+  {
+    AppMethodBeat.i(219961);
+    if (paramf != null)
+    {
+      Log.i("MicroMsg.GlobalMusicPlayerFloatBallHelper", "addMusicFloatBall isFromNewMusicPlayer: %s", new Object[] { Boolean.valueOf(paramf.jfx) });
+      if (paramf.jfx)
+      {
+        paramf = MMApplicationContext.getContext();
+        p.g(paramf, "MMApplicationContext.getContext()");
+        this.Akd = new FloatBallMusicView(paramf);
+        paramf = this.Akd;
+        if (paramf != null) {
+          paramf.setOnCloseListener((View.OnClickListener)new d.c(this));
+        }
+        paramf = this.Akd;
+        if (paramf != null) {
+          paramf.setOnMusicIconClickListener((View.OnClickListener)new d.d(this));
+        }
+        paramf = this.Akd;
+        if (paramf != null) {
+          paramf.setCoverPath(this.Akf);
+        }
+        this.oWE.vk = ((View)this.Akd);
+        if (this.oWE.oWm == null) {
+          this.oWE.oWm = new Point();
+        }
+        if (this.oWE.oWn == null) {
+          this.oWE.oWn = new Point();
+        }
+        this.oWE.oWm.x = at.aH(MMApplicationContext.getContext(), 2131166409);
+        this.oWE.oWm.y = at.aH(MMApplicationContext.getContext(), 2131166406);
+        this.oWE.oWn.x = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 20);
+        this.oWE.oWn.y = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 20);
+        this.oWE.nno = false;
+        this.oWE.oWr = true;
+        this.oWE.oWq = true;
+        this.oWE.gqx = false;
+        this.oWE.state = com.tencent.mm.plugin.ball.f.d.eW(this.oWE.state, 2);
+        this.oWE.state = com.tencent.mm.plugin.ball.f.d.eV(this.oWE.state, 8);
+        Log.v("MicroMsg.GlobalMusicPlayerFloatBallHelper", "initMusicFloatBallViewSize %s, ballInfo.state: %d", new Object[] { this.oWE.oWm, Integer.valueOf(this.oWE.state) });
+        cis();
+      }
+    }
+    AppMethodBeat.o(219961);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$Holder;", "", "()V", "sHelper", "Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "getSHelper", "()Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "setSHelper", "(Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;)V", "plugin-music_release"})
+  static final class b
+  {
+    private static d Akj;
+    public static final b Akk;
+    
+    static
+    {
+      AppMethodBeat.i(219955);
+      Akk = new b();
+      Akj = new d();
+      AppMethodBeat.o(219955);
     }
     
-    public final void run()
+    public static d euv()
     {
-      AppMethodBeat.i(63010);
-      Object localObject = new bzh();
-      ((bzh)localObject).Id = this.wAD.field_songMediaId;
-      ((bzh)localObject).Hmj = this.wAD.field_songAlbumUrl;
-      ((bzh)localObject).Hmk = this.wAD.field_songAlbumType;
-      ((bzh)localObject).Url = ((bzh)localObject).Hmj;
-      localObject = o.zsv.a((bzh)localObject);
-      if (localObject != null)
-      {
-        localObject = com.tencent.mm.sdk.platformtools.h.l((Bitmap)localObject, 10);
-        d.this.a(this.wAD, (Bitmap)localObject);
-        localObject = al.aH((Bitmap)localObject);
-        if (!this.wAD.C((int[])localObject)) {
-          this.wAD = f.dwu().at(this.wAD.field_musicId, localObject[0], localObject[1]);
-        }
-        if ((d.this.wAx != null) && (this.wAD != null)) {
-          d.this.wAx.a(this.wAD, (int[])localObject);
-        }
-      }
-      AppMethodBeat.o(63010);
+      return Akj;
     }
   }
 }

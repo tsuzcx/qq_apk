@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@id/d00" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.finder.view.FinderTagFlowLayout android:id="@id/czx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/c5" android:layout_toLeftOf="@id/czw" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <include layout="@layout/agd" />
+    </com.tencent.mm.plugin.finder.view.FinderTagFlowLayout>
+    <FrameLayout android:id="@id/czw" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:layout_alignBottom="@id/czx" android:layout_alignParentRight="true">
+        <ImageView android:layout_gravity="bottom|center" android:id="@id/czy" android:background="@drawable/a49" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom|center" android:id="@id/czz" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" />
+    </FrameLayout>
+</merge>

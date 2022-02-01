@@ -1,37 +1,43 @@
 package com.tencent.mm.plugin.appbrand.game.e;
 
 import android.view.View;
+import com.tencent.magicbrush.e;
 import com.tencent.magicbrush.ui.MBViewManager;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.magicbrush.ui.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af;
 import com.tencent.mm.plugin.appbrand.game.a.r;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.game.a.t;
+import com.tencent.mm.plugin.appbrand.game.f.d;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.video.d.a;
 import com.tencent.mm.plugin.appbrand.service.c;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/jsapi/WAGameJsApiInsertVideoPlayer;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/jsapi/JsApiInsertVideoPlayer;", "()V", "getUnderView", "", "data", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)Ljava/lang/Boolean;", "onInsertView", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "viewId", "", "view", "Landroid/view/View;", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/game/jsapi/WAGameJsApiInsertVideoPlayer;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/jsapi/JsApiInsertVideoPlayer;", "()V", "getUnderView", "", "data", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)Ljava/lang/Boolean;", "onInsertView", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "viewId", "", "view", "Landroid/view/View;", "Companion", "plugin-appbrand-integration_release"})
 public final class b
   extends a
 {
   public static final int CTRL_INDEX = 6;
   public static final String NAME = "insertVideoPlayer";
   @Deprecated
-  public static final a koP;
+  public static final a lsy;
   
   static
   {
     AppMethodBeat.i(180454);
-    koP = new a((byte)0);
+    lsy = new a((byte)0);
     AppMethodBeat.o(180454);
   }
   
-  public final Boolean B(JSONObject paramJSONObject)
+  public final Boolean I(JSONObject paramJSONObject)
   {
     localObject2 = null;
     AppMethodBeat.i(180452);
@@ -49,61 +55,67 @@ public final class b
         localObject1 = localObject2;
       }
     }
-    com.tencent.mm.sdk.platformtools.ae.i("Luggage.WAGameJsApiInsertVideoPlayer", "getUnderView ".concat(String.valueOf(localObject1)));
+    Log.i("Luggage.WAGameJsApiInsertVideoPlayer", "getUnderView ".concat(String.valueOf(localObject1)));
     AppMethodBeat.o(180452);
     return localObject1;
   }
   
-  public final void a(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(180453);
-    d.g.b.p.h(parame, "component");
-    super.a(parame, paramInt, paramView, paramJSONObject);
-    paramView = ((com.tencent.mm.plugin.appbrand.game.f.d)parame).aXz();
-    d.g.b.p.g(paramView, "(component as WAGamePageView).service");
-    paramView = paramView.getMagicBrush();
-    if (paramView == null)
+    p.h(paramh, "component");
+    super.a(paramh, paramInt, paramView, paramJSONObject);
+    paramView = ((d)paramh).bsE();
+    if (paramView != null) {}
+    for (paramView = (com.tencent.luggage.game.d.a.a.b)paramView.S(com.tencent.luggage.game.d.a.a.b.class); paramView == null; paramView = null)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("Luggage.WAGameJsApiInsertVideoPlayer", "InsertViewPlayer but, no magicbrush found, maybe functionalPage[%d]", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.appbrand.ae.n(((com.tencent.mm.plugin.appbrand.game.f.d)parame).getRuntime())) });
+      Log.w("JsApiInsertHTMLCanvasElement", "hy: webgl extension not exists!");
       AppMethodBeat.o(180453);
       return;
     }
-    if (d.g.b.p.i(Boolean.TRUE, B(paramJSONObject)))
+    paramView = paramView.getMagicBrush();
+    if (paramView == null)
     {
-      paramView.cxr.forEach((d.g.a.b)b.koQ);
-      if (((Boolean)com.tencent.mm.plugin.appbrand.game.a.p.kok.att()).booleanValue())
+      Log.e("Luggage.WAGameJsApiInsertVideoPlayer", "InsertViewPlayer but, no magicbrush found, maybe functionalPage[%d]", new Object[] { Boolean.valueOf(af.p(((d)paramh).getRuntime())) });
+      AppMethodBeat.o(180453);
+      return;
+    }
+    if (p.j(Boolean.TRUE, I(paramJSONObject)))
+    {
+      paramView.cLz.forEach((kotlin.g.a.b)b.lsz);
+      if (((Boolean)r.lrS.aLT()).booleanValue())
       {
-        com.tencent.mm.sdk.platformtools.ae.i("Luggage.WAGameJsApiInsertVideoPlayer", "hy: use main thread choreographer");
-        if (((Boolean)r.kom.att()).booleanValue())
+        Log.i("Luggage.WAGameJsApiInsertVideoPlayer", "hy: use main thread choreographer");
+        if (((Boolean)t.lrU.aLT()).booleanValue())
         {
-          paramView.a(a.b.cAw);
+          paramView.a(a.b.cOC);
           AppMethodBeat.o(180453);
           return;
         }
-        paramView.a(a.b.cAt);
+        paramView.a(a.b.cOz);
         AppMethodBeat.o(180453);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ae.i("Luggage.WAGameJsApiInsertVideoPlayer", "hy: use js thread choreographer");
-      paramView.a(a.b.cAs);
+      Log.i("Luggage.WAGameJsApiInsertVideoPlayer", "hy: use js thread choreographer");
+      paramView.a(a.b.cOy);
     }
     AppMethodBeat.o(180453);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/jsapi/WAGameJsApiInsertVideoPlayer$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/game/jsapi/WAGameJsApiInsertVideoPlayer$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "invoke"})
   static final class b
     extends q
-    implements d.g.a.b<MagicBrushView, z>
+    implements kotlin.g.a.b<MagicBrushView, x>
   {
-    public static final b koQ;
+    public static final b lsz;
     
     static
     {
       AppMethodBeat.i(180451);
-      koQ = new b();
+      lsz = new b();
       AppMethodBeat.o(180451);
     }
     
@@ -115,7 +127,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.b
  * JD-Core Version:    0.7.0.1
  */

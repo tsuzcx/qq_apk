@@ -5,74 +5,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class dyj
   extends com.tencent.mm.bw.a
 {
-  public int HUj;
-  public String HUk;
-  public int Hzv;
+  public String MXX;
+  public String MXY;
+  public String MXZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115860);
+    AppMethodBeat.i(32455);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.HUj);
-      paramVarArgs.aS(2, this.Hzv);
-      if (this.HUk != null) {
-        paramVarArgs.d(3, this.HUk);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.MXX != null) {
+        paramVarArgs.e(1, this.MXX);
       }
-      AppMethodBeat.o(115860);
+      if (this.MXY != null) {
+        paramVarArgs.e(2, this.MXY);
+      }
+      if (this.MXZ != null) {
+        paramVarArgs.e(3, this.MXZ);
+      }
+      AppMethodBeat.o(32455);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.MXX == null) {
+        break label343;
+      }
+    }
+    label343:
+    for (int i = g.a.a.b.b.a.f(1, this.MXX) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bz(1, this.HUj) + 0 + f.a.a.b.b.a.bz(2, this.Hzv);
       paramInt = i;
-      if (this.HUk != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.HUk);
+      if (this.MXY != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.MXY);
       }
-      AppMethodBeat.o(115860);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
+      i = paramInt;
+      if (this.MXZ != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.MXZ);
       }
-      AppMethodBeat.o(115860);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dyj localdyj = (dyj)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(32455);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(115860);
-        return -1;
-      case 1: 
-        localdyj.HUj = locala.OmT.zc();
-        AppMethodBeat.o(115860);
-        return 0;
-      case 2: 
-        localdyj.Hzv = locala.OmT.zc();
-        AppMethodBeat.o(115860);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        AppMethodBeat.o(32455);
         return 0;
       }
-      localdyj.HUk = locala.OmT.readString();
-      AppMethodBeat.o(115860);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        dyj localdyj = (dyj)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32455);
+          return -1;
+        case 1: 
+          localdyj.MXX = locala.UbS.readString();
+          AppMethodBeat.o(32455);
+          return 0;
+        case 2: 
+          localdyj.MXY = locala.UbS.readString();
+          AppMethodBeat.o(32455);
+          return 0;
+        }
+        localdyj.MXZ = locala.UbS.readString();
+        AppMethodBeat.o(32455);
+        return 0;
+      }
+      AppMethodBeat.o(32455);
+      return -1;
     }
-    AppMethodBeat.o(115860);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dyj
  * JD-Core Version:    0.7.0.1
  */

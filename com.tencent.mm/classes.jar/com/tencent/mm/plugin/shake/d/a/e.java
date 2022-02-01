@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.dpc;
 
 public abstract class e
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  protected boolean dyL = false;
-  long zdU = 0L;
+  long DiM = 0L;
+  protected boolean dQA = false;
   
   public e(long paramLong)
   {
-    this.zdU = paramLong;
+    this.DiM = paramLong;
   }
   
-  public final boolean dSN()
+  public final boolean eUO()
   {
-    return this.dyL;
+    return this.dQA;
   }
   
-  public abstract cwj dSO();
+  public abstract dpc eUP();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.e
  * JD-Core Version:    0.7.0.1
  */

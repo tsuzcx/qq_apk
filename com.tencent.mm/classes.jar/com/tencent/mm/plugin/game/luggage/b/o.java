@@ -1,60 +1,96 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gamelife.a.a;
-import com.tencent.mm.plugin.gamelife.a.b.c;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.game.commlib.a;
+import com.tencent.mm.plugin.game.luggage.e;
+import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
 
 public class o
-  extends br<com.tencent.mm.plugin.game.luggage.f.g>
+  extends bs<i>
 {
-  public final void a(Context paramContext, String paramString, final bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama) {}
+  
+  public final void b(b<i>.a paramb)
   {
-    AppMethodBeat.i(192997);
-    ae.i("MicroMsg.GameLife.JsApiInitGameLifeContact", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(83073);
+    Log.i("MicroMsg.JsApiGetWePkgAuthResult", "invoke");
+    if (((i)paramb.cta).gbE())
     {
-      parama.f("invalid_params", null);
-      AppMethodBeat.o(192997);
+      Log.i("MicroMsg.JsApiGetWePkgAuthResult", "gettingA8Key");
+      paramb.c("auth_result_not_return", null);
+      AppMethodBeat.o(83073);
       return;
     }
-    paramContext = paramContext.optString("userName");
-    ae.i("MicroMsg.GameLife.JsApiInitGameLifeContact", "userName:[%s]", new Object[] { paramContext });
-    if (bu.isNullOrNil(paramContext))
-    {
-      parama.f("null_data", null);
-      AppMethodBeat.o(192997);
-      return;
-    }
-    ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramContext, new b.c()
-    {
-      public final void ah(Map<String, a> paramAnonymousMap)
+    String str = ((i)paramb.cta).coy();
+    boolean bool = ((i)paramb.cta).xyH;
+    if (Util.isNullOrNil(str)) {
+      if (Util.isNullOrNil(e.xwe))
       {
-        AppMethodBeat.i(192996);
-        parama.f(null, null);
-        AppMethodBeat.o(192996);
+        Log.i("MicroMsg.LuggageGameUinKeyHolder", "fullUrl is null");
+        i = 0;
+        if (i == 0) {
+          break label260;
+        }
+        str = e.xwe;
       }
-    });
-    AppMethodBeat.o(192997);
+    }
+    label260:
+    for (int i = 1;; i = 0)
+    {
+      if (Util.isNullOrNil(str))
+      {
+        paramb.c("full_url_empty", null);
+        AppMethodBeat.o(83073);
+        return;
+        if (a.dSX() <= 0)
+        {
+          i = 0;
+          break;
+        }
+        if (System.currentTimeMillis() / 1000L - e.Nh > a.dSX())
+        {
+          Log.i("MicroMsg.LuggageGameUinKeyHolder", "updateTime bigger that one hour");
+          i = 0;
+          break;
+        }
+        Log.d("MicroMsg.LuggageGameUinKeyHolder", "hasValidCache");
+        i = 1;
+        break;
+      }
+      HashMap localHashMap = new HashMap();
+      if (bool) {
+        localHashMap.put("set_cookie", Integer.valueOf(1));
+      }
+      for (;;)
+      {
+        if (i != 0) {
+          localHashMap.put("used_cache_uinkey", Integer.valueOf(1));
+        }
+        localHashMap.put("full_url", str);
+        paramb.e("", localHashMap);
+        AppMethodBeat.o(83073);
+        return;
+        localHashMap.put("set_cookie", Integer.valueOf(0));
+      }
+    }
   }
   
-  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
-  
-  public final int ced()
+  public final int dTs()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "initGameLifeContact";
+    return "getWePkgAuthResult";
   }
 }
 

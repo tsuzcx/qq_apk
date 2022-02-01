@@ -11,7 +11,7 @@ final class FileSelectorFolderView$c
   FileSelectorFolderView$c(View paramView)
   {
     AppMethodBeat.i(31953);
-    this.titleTv = ((TextView)paramView.findViewById(2131301198));
+    this.titleTv = ((TextView)paramView.findViewById(2131302870));
     AppMethodBeat.o(31953);
   }
 }

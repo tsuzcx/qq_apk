@@ -13,40 +13,40 @@ import java.util.Date;
 
 public class k
 {
-  private String a;
-  private ModuleEncryptListener b;
-  private Context c;
-  private u d;
-  private SimpleDateFormat e;
-  private SimpleDateFormat f;
-  private a g;
-  private StringBuilder h;
-  private String i;
-  private File j;
+  SimpleDateFormat a;
+  a b;
+  public File c;
+  private String d;
+  private ModuleEncryptListener e;
+  private Context f;
+  private u g;
+  private SimpleDateFormat h;
+  private StringBuilder i;
+  private String j;
   private String k;
   
   public k(Context paramContext, Looper paramLooper, File paramFile, ModuleEncryptListener paramModuleEncryptListener)
   {
     AppMethodBeat.i(180814);
-    this.a = k.class.getSimpleName();
-    this.e = new SimpleDateFormat("HHmmss");
-    this.f = new SimpleDateFormat("yyyyMMdd-HHmmss");
-    this.i = "/d_l";
-    this.j = null;
-    this.c = paramContext;
-    this.g = new a(paramLooper);
-    this.b = paramModuleEncryptListener;
+    this.d = k.class.getSimpleName();
+    this.a = new SimpleDateFormat("HHmmss");
+    this.h = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    this.j = "/d_l";
+    this.c = null;
+    this.f = paramContext;
+    this.b = new a(paramLooper);
+    this.e = paramModuleEncryptListener;
     paramLooper = paramFile;
     if (paramFile == null) {}
     try
     {
-      paramLooper = new File(paramContext.getExternalFilesDir("data").getAbsolutePath() + File.separator + a.a + "_" + this.i);
-      this.j = paramLooper;
+      paramLooper = new File(paramContext.getExternalFilesDir("data").getAbsolutePath() + File.separator + a.a + "_" + this.j);
+      this.c = paramLooper;
       this.k = "d_";
-      this.d = new u(this.c, paramLooper, "d");
+      this.g = new u(this.f, paramLooper, "d");
       a();
-      q.a(this.g, 10003, 15000L);
-      q.a(this.g, 10004, 60000L);
+      q.a(this.b, 10003, 15000L);
+      q.a(this.b, 10004, 60000L);
       AppMethodBeat.o(180814);
       return;
     }
@@ -59,64 +59,22 @@ public class k
     }
   }
   
-  private String d()
+  private String b()
   {
-    AppMethodBeat.i(224083);
+    AppMethodBeat.i(180816);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("LOC_CORE,").append(this.f.format(new Date())).append(',').append(x.c(this.c)).append(',').append(',').append(',').append("MapSDK_COMP,").append(a.b).append(".").append(a.c).append(',').append(a.e).append(',').append(a.f).append("$");
+    ((StringBuilder)localObject).append("LOC_CORE,").append(this.h.format(new Date())).append(',').append(x.c(this.f)).append(',').append(',').append(',').append("MapSDK_COMP,").append(a.b).append(".").append(a.c).append(',').append(a.e).append(',').append(a.f).append("$");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(224083);
+    AppMethodBeat.o(180816);
     return localObject;
   }
   
   public final void a()
   {
     AppMethodBeat.i(180815);
-    String str = d();
-    q.a(this.g, 10001, str);
+    String str = b();
+    q.a(this.b, 10001, str);
     AppMethodBeat.o(180815);
-  }
-  
-  public final void a(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(224084);
-    if (!a.i)
-    {
-      AppMethodBeat.o(224084);
-      return;
-    }
-    paramString1 = this.e.format(new Date()) + "," + paramString1 + "," + paramString2;
-    q.a(this.g, 10001, paramString1);
-    AppMethodBeat.o(224084);
-  }
-  
-  public final void a(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(224086);
-    if (!a.i)
-    {
-      AppMethodBeat.o(224086);
-      return;
-    }
-    this.g.a(paramArrayOfByte);
-    AppMethodBeat.o(224086);
-  }
-  
-  public final void b()
-  {
-    AppMethodBeat.i(224085);
-    if (!a.i)
-    {
-      AppMethodBeat.o(224085);
-      return;
-    }
-    q.a(this.g, 10004, 0L);
-    AppMethodBeat.o(224085);
-  }
-  
-  public final File c()
-  {
-    return this.j;
   }
   
   final class a
@@ -371,7 +329,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.k
  * JD-Core Version:    0.7.0.1
  */

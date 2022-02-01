@@ -1,12 +1,18 @@
 package com.tencent.mm.plugin.game.media;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.LayoutParams;
 import android.support.v7.widget.GridLayoutManager.b;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.h;
+import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +22,9 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.b.b.e;
 import com.tencent.mm.plugin.game.widget.GameGridLayoutManager;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.at;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -25,25 +33,27 @@ import java.util.Set;
 public final class h
   extends RecyclerView
 {
-  private View pTX;
-  private int uii;
-  a uij;
-  private boolean uik;
-  private boolean uil;
-  private Set<Integer> uim;
+  private View rkW;
+  private int xAC;
+  private int xAD;
+  a xAE;
+  private boolean xAF;
+  private boolean xAG;
+  private Set<Integer> xAH;
   
-  public h(Context paramContext, int paramInt)
+  public h(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    AppMethodBeat.i(40990);
-    this.uim = new HashSet();
-    this.uii = paramInt;
-    this.uij = new a(getContext());
+    AppMethodBeat.i(204112);
+    this.xAH = new HashSet();
+    this.xAC = paramInt1;
+    this.xAD = paramInt2;
+    this.xAE = new a(getContext());
     getContext();
     paramContext = new GameGridLayoutManager();
-    paramContext.apF = new GridLayoutManager.b()
+    paramContext.apR = new GridLayoutManager.b()
     {
-      public final int bW(int paramAnonymousInt)
+      public final int bX(int paramAnonymousInt)
       {
         AppMethodBeat.i(40976);
         paramAnonymousInt = h.a(h.this).getItemViewType(paramAnonymousInt);
@@ -57,23 +67,23 @@ public final class h
       }
     };
     setLayoutManager(paramContext);
-    a(new h.b());
-    this.pTX = LayoutInflater.from(getContext()).inflate(2131494300, this, false);
-    this.pTX.setVisibility(8);
-    paramContext = this.uij;
-    View localView = this.pTX;
-    paramContext.uiq.add(localView);
-    setAdapter(this.uij);
-    AppMethodBeat.o(40990);
+    a(new b());
+    this.rkW = LayoutInflater.from(getContext()).inflate(2131494862, this, false);
+    this.rkW.setVisibility(8);
+    paramContext = this.xAE;
+    View localView = this.rkW;
+    paramContext.xAK.add(localView);
+    setAdapter(this.xAE);
+    AppMethodBeat.o(204112);
   }
   
-  public final boolean Ic(int paramInt)
+  public final boolean Of(int paramInt)
   {
     AppMethodBeat.i(40992);
-    int i = ((LinearLayoutManager)getLayoutManager()).ko();
-    if ((paramInt == 0) && (this.uik) && (i >= this.uij.getItemCount() - 2))
+    int i = ((LinearLayoutManager)getLayoutManager()).ku();
+    if ((paramInt == 0) && (this.xAF) && (i >= this.xAE.getItemCount() - 2))
     {
-      this.pTX.setVisibility(0);
+      this.rkW.setVisibility(0);
       AppMethodBeat.o(40992);
       return true;
     }
@@ -81,10 +91,10 @@ public final class h
     return false;
   }
   
-  public final e Id(int paramInt)
+  public final e Og(int paramInt)
   {
     AppMethodBeat.i(40993);
-    e locale = this.uij.Id(paramInt);
+    e locale = this.xAE.Og(paramInt);
     AppMethodBeat.o(40993);
     return locale;
   }
@@ -92,46 +102,46 @@ public final class h
   public final void b(LinkedList<e> paramLinkedList, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(40991);
-    this.uik = paramBoolean1;
-    this.uil = paramBoolean2;
-    this.pTX.setVisibility(8);
-    a locala = this.uij;
-    locala.uir.clear();
-    locala.uir.addAll(paramLinkedList);
-    locala.asY.notifyChanged();
+    this.xAF = paramBoolean1;
+    this.xAG = paramBoolean2;
+    this.rkW.setVisibility(8);
+    a locala = this.xAE;
+    locala.xAL.clear();
+    locala.xAL.addAll(paramLinkedList);
+    locala.atj.notifyChanged();
     AppMethodBeat.o(40991);
   }
   
   public final void setOnItemClickListener(com.tencent.mm.plugin.appbrand.widget.recyclerview.b paramb)
   {
-    this.uij.nud = paramb;
+    this.xAE.oEh = paramb;
   }
   
   final class a
     extends RecyclerView.a<h.c>
   {
     private Context mContext;
-    private ViewGroup ntZ;
-    private ViewGroup nua;
-    com.tencent.mm.plugin.appbrand.widget.recyclerview.b nud;
-    LinkedList<View> uip;
-    LinkedList<View> uiq;
-    LinkedList<e> uir;
+    private ViewGroup oEd;
+    private ViewGroup oEe;
+    com.tencent.mm.plugin.appbrand.widget.recyclerview.b oEh;
+    LinkedList<View> xAJ;
+    LinkedList<View> xAK;
+    LinkedList<e> xAL;
     
     a(Context paramContext)
     {
       AppMethodBeat.i(40979);
-      this.uip = new LinkedList();
-      this.uiq = new LinkedList();
-      this.uir = new LinkedList();
+      this.xAJ = new LinkedList();
+      this.xAK = new LinkedList();
+      this.xAL = new LinkedList();
       this.mContext = paramContext;
       AppMethodBeat.o(40979);
     }
     
-    private int Cf(int paramInt)
+    private int FO(int paramInt)
     {
       AppMethodBeat.i(40983);
-      if ((paramInt < 0) || (paramInt >= this.uir.size()))
+      if ((paramInt < 0) || (paramInt >= this.xAL.size()))
       {
         AppMethodBeat.o(40983);
         return paramInt;
@@ -140,8 +150,8 @@ public final class h
       int i = 0;
       if (j < paramInt + 1)
       {
-        e locale = (e)this.uir.get(j);
-        if ((locale.ucV) || (locale.ucW)) {
+        e locale = (e)this.xAL.get(j);
+        if ((locale.xuJ) || (locale.xuK)) {
           break label85;
         }
         i += 1;
@@ -156,7 +166,7 @@ public final class h
       }
     }
     
-    private void f(int paramInt1, int paramInt2, String paramString1, String paramString2)
+    private void e(int paramInt1, int paramInt2, String paramString1, String paramString2)
     {
       AppMethodBeat.i(40984);
       if (h.d(h.this) == 8762) {}
@@ -164,21 +174,21 @@ public final class h
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("videoid", paramString2);
-        com.tencent.mm.game.report.b.a.a(ak.getContext(), h.d(h.this), paramInt1, paramInt2, paramString1, com.tencent.mm.game.report.b.a.b(i, localHashMap));
+        com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), h.d(h.this), paramInt1, paramInt2, paramString1, h.e(h.this), com.tencent.mm.game.report.b.a.c(i, localHashMap));
         AppMethodBeat.o(40984);
         return;
       }
     }
     
-    public final e Id(int paramInt)
+    public final e Og(int paramInt)
     {
       AppMethodBeat.i(40982);
-      if ((paramInt < 0) || (paramInt >= this.uir.size()))
+      if ((paramInt < 0) || (paramInt >= this.xAL.size()))
       {
         AppMethodBeat.o(40982);
         return null;
       }
-      e locale = (e)this.uir.get(paramInt);
+      e locale = (e)this.xAL.get(paramInt);
       AppMethodBeat.o(40982);
       return locale;
     }
@@ -187,12 +197,12 @@ public final class h
     {
       int j = 0;
       AppMethodBeat.i(40980);
-      int k = this.uir.size();
+      int k = this.xAL.size();
       int i;
-      if (this.uip.isEmpty())
+      if (this.xAJ.isEmpty())
       {
         i = 0;
-        if (!this.uiq.isEmpty()) {
+        if (!this.xAK.isEmpty()) {
           break label55;
         }
       }
@@ -215,33 +225,33 @@ public final class h
         AppMethodBeat.o(40981);
         return 0;
       }
-      if ((paramInt == 0) && (!this.uip.isEmpty()))
+      if ((paramInt == 0) && (!this.xAJ.isEmpty()))
       {
         AppMethodBeat.o(40981);
         return 2147483647;
       }
-      if ((paramInt == getItemCount() - 1) && (!this.uiq.isEmpty()))
+      if ((paramInt == getItemCount() - 1) && (!this.xAK.isEmpty()))
       {
         AppMethodBeat.o(40981);
         return 2147483646;
       }
-      if (this.uip.isEmpty()) {}
+      if (this.xAJ.isEmpty()) {}
       for (int i = 0;; i = 1)
       {
         paramInt -= i;
-        if ((paramInt >= 0) && (paramInt < this.uir.size())) {
+        if ((paramInt >= 0) && (paramInt < this.xAL.size())) {
           break;
         }
         AppMethodBeat.o(40981);
         return 0;
       }
-      e locale = (e)this.uir.get(paramInt);
-      if ((locale != null) && (locale.ucV))
+      e locale = (e)this.xAL.get(paramInt);
+      if ((locale != null) && (locale.xuJ))
       {
         AppMethodBeat.o(40981);
         return 1;
       }
-      if ((locale != null) && (locale.ucW))
+      if ((locale != null) && (locale.xuK))
       {
         AppMethodBeat.o(40981);
         return 2;
@@ -251,33 +261,70 @@ public final class h
     }
   }
   
-  static final class c
-    extends RecyclerView.w
+  static final class b
+    extends RecyclerView.h
   {
-    public ImageView mBP;
-    public TextView uiv;
-    public TextView uiw;
-    public GameVideoTagContainer uix;
-    public TextView uiy;
-    public ImageView uiz;
+    private int mSize;
+    
+    public b()
+    {
+      AppMethodBeat.i(40987);
+      this.mSize = at.fromDPToPix(MMApplicationContext.getContext(), 1);
+      AppMethodBeat.o(40987);
+    }
+    
+    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+    {
+      AppMethodBeat.i(40988);
+      paramRecyclerView = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+      RecyclerView.bw(paramView);
+      paramView = (GridLayoutManager.LayoutParams)paramView.getLayoutParams();
+      int i = paramRecyclerView.apM;
+      Log.i("MicroMsg.GameHaowanRecycleView", "getItemOffsets, spanSize = %d, spanCount = %d, index = %d", new Object[] { Integer.valueOf(paramView.apU), Integer.valueOf(i), Integer.valueOf(paramView.apT) });
+      if (paramView.apU != i)
+      {
+        if (paramView.apT == 0)
+        {
+          paramRect.set(0, this.mSize, this.mSize, this.mSize);
+          AppMethodBeat.o(40988);
+          return;
+        }
+        paramRect.set(this.mSize, this.mSize, 0, this.mSize);
+        AppMethodBeat.o(40988);
+        return;
+      }
+      paramRect.set(0, 0, 0, 0);
+      AppMethodBeat.o(40988);
+    }
+  }
+  
+  static final class c
+    extends RecyclerView.v
+  {
+    public ImageView nNv;
+    public TextView xAP;
+    public TextView xAQ;
+    public GameVideoTagContainer xAR;
+    public TextView xAS;
+    public ImageView xAT;
     
     public c(View paramView)
     {
       super();
       AppMethodBeat.i(40989);
-      this.uiv = ((TextView)paramView.findViewById(2131305821));
-      this.mBP = ((ImageView)paramView.findViewById(2131306344));
-      this.uiw = ((TextView)paramView.findViewById(2131299617));
-      this.uix = ((GameVideoTagContainer)paramView.findViewById(2131306397));
-      this.uiy = ((TextView)paramView.findViewById(2131306405));
-      this.uiz = ((ImageView)paramView.findViewById(2131300564));
+      this.xAP = ((TextView)paramView.findViewById(2131309100));
+      this.nNv = ((ImageView)paramView.findViewById(2131309770));
+      this.xAQ = ((TextView)paramView.findViewById(2131300251));
+      this.xAR = ((GameVideoTagContainer)paramView.findViewById(2131309828));
+      this.xAS = ((TextView)paramView.findViewById(2131309836));
+      this.xAT = ((ImageView)paramView.findViewById(2131302096));
       AppMethodBeat.o(40989);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.h
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.m;
@@ -19,57 +19,57 @@ import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.b.c;
 import com.tencent.mm.plugin.fts.ui.n;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bv;
 
 public class f
   extends k
 {
-  public int dmr;
-  public String tFT;
-  protected CharSequence tLK;
-  protected String tLL;
-  protected CharSequence tLM;
-  protected String tLN;
-  public m tLO;
-  private a tLP;
-  b tLQ;
+  public int dDG;
+  public String wWS;
+  protected CharSequence xcL;
+  protected String xcM;
+  protected CharSequence xcN;
+  protected String xcO;
+  public m xcP;
+  private a xcQ;
+  b xcR;
   
   public f(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112068);
-    this.tLP = new a();
-    this.tLQ = new b();
+    this.xcQ = new a();
+    this.xcR = new b();
     AppMethodBeat.o(112068);
   }
   
   public void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112069);
-    String str = this.tLO.tEY;
+    String str = this.xcP.wVX;
     boolean bool2 = false;
     boolean bool1 = false;
     boolean bool5 = false;
     boolean bool3 = false;
     boolean bool4 = false;
     parama = null;
-    switch (this.tLO.tEX)
+    switch (this.xcP.wVW)
     {
     case 4: 
     default: 
       paramVarArgs = null;
       bool1 = false;
       bool3 = bool4;
-      if (this.dmr == 2)
+      if (this.dDG == 2)
       {
-        this.tLL = str;
-        if (!bu.isNullOrNil(paramVarArgs))
+        this.xcM = str;
+        if (!Util.isNullOrNil(paramVarArgs))
         {
-          this.tLK = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, b.c.tIV, paramVarArgs + "(", ")")).tFv;
-          this.tLK = TextUtils.concat(new CharSequence[] { "\"", this.tLK, "\"" });
-          this.tLM = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.ahd(this.tFT), b.c.tIX, 300.0F, TextUtils.TruncateAt.END), paramContext.getString(2131762968) });
-          this.tLN = this.tFT;
+          this.xcL = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.xcP.wWd, bool3, bool1, b.c.wZU, paramVarArgs + "(", ")")).wWu;
+          this.xcL = TextUtils.concat(new CharSequence[] { "\"", this.xcL, "\"" });
+          this.xcN = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.arL(this.wWS), b.c.wZW, 300.0F, TextUtils.TruncateAt.END), paramContext.getString(2131765105) });
+          this.xcO = this.wWS;
           AppMethodBeat.o(112069);
           return;
         }
@@ -82,25 +82,25 @@ public class f
     label250:
     for (bool3 = true;; bool3 = bool5)
     {
-      parama = d.ahd(str);
+      parama = d.arL(str);
       paramVarArgs = null;
       break;
       bool1 = true;
       bool3 = true;
       bool2 = bool1;
-      parama = ((l)g.ab(l.class)).azF().BH(str).field_nickname;
-      paramVarArgs = d.ahd(str);
+      parama = ((l)g.af(l.class)).aSN().Kn(str).field_nickname;
+      paramVarArgs = d.arL(str);
       bool1 = bool2;
       break;
-      this.tLK = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, 400.0F, b.c.tIV)).tFv;
+      this.xcL = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.xcP.wWd, bool3, bool1, 400.0F, b.c.wZU)).wWu;
       break label159;
-      this.tLK = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.ahd(this.tFT), b.c.tIX, 300.0F, TextUtils.TruncateAt.END), "\"" });
-      this.tLL = this.tFT;
-      this.tLN = str;
-      if (!bu.isNullOrNil(paramVarArgs)) {}
-      for (this.tLM = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, b.c.tIV, paramVarArgs + "(", ")")).tFv;; this.tLM = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tLO.tFe, bool3, bool1, 400.0F, b.c.tIV)).tFv)
+      this.xcL = TextUtils.concat(new CharSequence[] { "\"", TextUtils.ellipsize(d.arL(this.wWS), b.c.wZW, 300.0F, TextUtils.TruncateAt.END), "\"" });
+      this.xcM = this.wWS;
+      this.xcO = str;
+      if (!Util.isNullOrNil(paramVarArgs)) {}
+      for (this.xcN = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.xcP.wWd, bool3, bool1, b.c.wZU, paramVarArgs + "(", ")")).wWu;; this.xcN = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.xcP.wWd, bool3, bool1, 400.0F, b.c.wZU)).wWu)
       {
-        this.tLM = TextUtils.concat(new CharSequence[] { "\"", this.tLM, paramContext.getString(2131762968) });
+        this.xcN = TextUtils.concat(new CharSequence[] { "\"", this.xcN, paramContext.getString(2131765105) });
         AppMethodBeat.o(112069);
         return;
       }
@@ -110,14 +110,14 @@ public class f
     }
   }
   
-  public com.tencent.mm.plugin.fts.a.d.a.a.b agQ()
+  public com.tencent.mm.plugin.fts.a.d.a.a.b axc()
   {
-    return this.tLP;
+    return this.xcQ;
   }
   
-  public final a.a cWo()
+  public final a.a dPz()
   {
-    return this.tLQ;
+    return this.xcR;
   }
   
   public class a
@@ -131,15 +131,15 @@ public class f
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(112066);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131494194, paramViewGroup, false);
-      paramViewGroup = (f.b)f.this.tLQ;
-      paramViewGroup.tLS = ((TextView)paramContext.findViewById(2131300703));
-      paramViewGroup.tLT = ((ImageView)paramContext.findViewById(2131296999));
-      paramViewGroup.tLU = ((TextView)paramContext.findViewById(2131300704));
-      paramViewGroup.tLV = ((ImageView)paramContext.findViewById(2131297000));
-      paramViewGroup.tLW = ((TextView)paramContext.findViewById(2131301013));
-      paramViewGroup.contentView = paramContext.findViewById(2131304428);
-      paramViewGroup.tLJ = paramContext.findViewById(2131303131);
+      paramContext = LayoutInflater.from(paramContext).inflate(2131494747, paramViewGroup, false);
+      paramViewGroup = (f.b)f.this.xcR;
+      paramViewGroup.xcT = ((TextView)paramContext.findViewById(2131302275));
+      paramViewGroup.xcU = ((ImageView)paramContext.findViewById(2131297122));
+      paramViewGroup.xcV = ((TextView)paramContext.findViewById(2131302276));
+      paramViewGroup.xcW = ((ImageView)paramContext.findViewById(2131297124));
+      paramViewGroup.xcX = ((TextView)paramContext.findViewById(2131302657));
+      paramViewGroup.contentView = paramContext.findViewById(2131307399);
+      paramViewGroup.xcK = paramContext.findViewById(2131305768);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112066);
       return paramContext;
@@ -149,32 +149,32 @@ public class f
     {
       AppMethodBeat.i(112067);
       paramContext = (f.b)parama;
-      n.a(f.this.tLK, paramContext.tLS);
-      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.tLT, f.this.tLL);
-      n.a(f.this.tLM, paramContext.tLU);
-      if (!bu.isNullOrNil(f.this.tLN))
+      n.a(f.this.xcL, paramContext.xcT);
+      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.xcU, f.this.xcM);
+      n.a(f.this.xcN, paramContext.xcV);
+      if (!Util.isNullOrNil(f.this.xcO))
       {
-        paramContext.tLV.setVisibility(0);
-        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.tLV, f.this.tLN);
-        n.r(paramContext.contentView, f.this.tGL);
+        paramContext.xcW.setVisibility(0);
+        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.xcW, f.this.xcO);
+        n.s(paramContext.contentView, f.this.wXK);
         if (f.this.position != 0) {
           break label148;
         }
-        paramContext.tLJ.setVisibility(8);
+        paramContext.xcK.setVisibility(8);
       }
       for (;;)
       {
-        paramContext.tLW.setVisibility(0);
+        paramContext.xcX.setVisibility(0);
         AppMethodBeat.o(112067);
         return;
-        paramContext.tLV.setVisibility(8);
+        paramContext.xcW.setVisibility(8);
         break;
         label148:
-        paramContext.tLJ.setVisibility(0);
+        paramContext.xcK.setVisibility(0);
       }
     }
     
-    public final boolean a(Context paramContext, a paramVarArgs)
+    public final boolean a(Context paramContext, View paramView, a paramVarArgs)
     {
       return false;
     }
@@ -184,12 +184,12 @@ public class f
     extends a.a
   {
     public View contentView;
-    public View tLJ;
-    public TextView tLS;
-    public ImageView tLT;
-    public TextView tLU;
-    public ImageView tLV;
-    public TextView tLW;
+    public View xcK;
+    public TextView xcT;
+    public ImageView xcU;
+    public TextView xcV;
+    public ImageView xcW;
+    public TextView xcX;
     
     public b()
     {
@@ -199,7 +199,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.f
  * JD-Core Version:    0.7.0.1
  */

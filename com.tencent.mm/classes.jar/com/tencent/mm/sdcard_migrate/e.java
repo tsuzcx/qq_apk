@@ -16,9 +16,9 @@ public abstract interface e
   
   public abstract void b(MigrateResultCallback paramMigrateResultCallback);
   
-  public abstract boolean fnf();
+  public abstract boolean gwS();
   
-  public abstract void fnj();
+  public abstract void gwW();
   
   public static abstract class a
     extends Binder
@@ -41,6 +41,11 @@ public abstract interface e
       return new a(paramIBinder);
     }
     
+    public static e gxk()
+    {
+      return a.NHD;
+    }
+    
     public IBinder asBinder()
     {
       return this;
@@ -60,7 +65,7 @@ public abstract interface e
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
-        boolean bool = fnf();
+        boolean bool = gwS();
         paramParcel2.writeNoException();
         if (bool) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -96,7 +101,7 @@ public abstract interface e
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
-      fnj();
+      gwW();
       paramParcel2.writeNoException();
       return true;
     }
@@ -104,6 +109,7 @@ public abstract interface e
     static final class a
       implements e
     {
+      public static e NHD;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -111,136 +117,68 @@ public abstract interface e
         this.mRemote = paramIBinder;
       }
       
-      /* Error */
       public final void a(ExtStorageMigrateConfig paramExtStorageMigrateConfig)
       {
-        // Byte code:
-        //   0: ldc 21
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_2
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore_3
-        //   13: aload_2
-        //   14: ldc 35
-        //   16: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   19: aload_1
-        //   20: ifnull +46 -> 66
-        //   23: aload_2
-        //   24: iconst_1
-        //   25: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   28: aload_1
-        //   29: aload_2
-        //   30: iconst_0
-        //   31: invokevirtual 48	com/tencent/mm/sdcard_migrate/ExtStorageMigrateConfig:writeToParcel	(Landroid/os/Parcel;I)V
-        //   34: aload_0
-        //   35: getfield 18	com/tencent/mm/sdcard_migrate/e$a$a:mRemote	Landroid/os/IBinder;
-        //   38: iconst_4
-        //   39: aload_2
-        //   40: aload_3
-        //   41: iconst_0
-        //   42: invokeinterface 54 5 0
-        //   47: pop
-        //   48: aload_3
-        //   49: invokevirtual 57	android/os/Parcel:readException	()V
-        //   52: aload_3
-        //   53: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   56: aload_2
-        //   57: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   60: ldc 21
-        //   62: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   65: return
-        //   66: aload_2
-        //   67: iconst_0
-        //   68: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   71: goto -37 -> 34
-        //   74: astore_1
-        //   75: aload_3
-        //   76: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   79: aload_2
-        //   80: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   83: ldc 21
-        //   85: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   88: aload_1
-        //   89: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	90	0	this	a
-        //   0	90	1	paramExtStorageMigrateConfig	ExtStorageMigrateConfig
-        //   8	72	2	localParcel1	Parcel
-        //   12	64	3	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   13	19	74	finally
-        //   23	34	74	finally
-        //   34	52	74	finally
-        //   66	71	74	finally
+        AppMethodBeat.i(204644);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
+          if (paramExtStorageMigrateConfig != null)
+          {
+            localParcel1.writeInt(1);
+            paramExtStorageMigrateConfig.writeToParcel(localParcel1, 0);
+          }
+          while ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (e.a.gxk() != null))
+          {
+            e.a.gxk().a(paramExtStorageMigrateConfig);
+            return;
+            localParcel1.writeInt(0);
+          }
+          localParcel2.readException();
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(204644);
+        }
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(204644);
       }
       
-      /* Error */
       public final void a(MigrateResultCallback paramMigrateResultCallback)
       {
-        // Byte code:
-        //   0: ldc 65
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_2
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore_3
-        //   13: aload_2
-        //   14: ldc 35
-        //   16: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   19: aload_1
-        //   20: ifnull +46 -> 66
-        //   23: aload_2
-        //   24: iconst_1
-        //   25: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   28: aload_1
-        //   29: aload_2
-        //   30: iconst_0
-        //   31: invokevirtual 68	com/tencent/mm/sdcard_migrate/MigrateResultCallback:writeToParcel	(Landroid/os/Parcel;I)V
-        //   34: aload_0
-        //   35: getfield 18	com/tencent/mm/sdcard_migrate/e$a$a:mRemote	Landroid/os/IBinder;
-        //   38: iconst_2
-        //   39: aload_2
-        //   40: aload_3
-        //   41: iconst_0
-        //   42: invokeinterface 54 5 0
-        //   47: pop
-        //   48: aload_3
-        //   49: invokevirtual 57	android/os/Parcel:readException	()V
-        //   52: aload_3
-        //   53: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   56: aload_2
-        //   57: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   60: ldc 65
-        //   62: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   65: return
-        //   66: aload_2
-        //   67: iconst_0
-        //   68: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   71: goto -37 -> 34
-        //   74: astore_1
-        //   75: aload_3
-        //   76: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   79: aload_2
-        //   80: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   83: ldc 65
-        //   85: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   88: aload_1
-        //   89: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	90	0	this	a
-        //   0	90	1	paramMigrateResultCallback	MigrateResultCallback
-        //   8	72	2	localParcel1	Parcel
-        //   12	64	3	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   13	19	74	finally
-        //   23	34	74	finally
-        //   34	52	74	finally
-        //   66	71	74	finally
+        AppMethodBeat.i(204642);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
+          if (paramMigrateResultCallback != null)
+          {
+            localParcel1.writeInt(1);
+            paramMigrateResultCallback.writeToParcel(localParcel1, 0);
+          }
+          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (e.a.gxk() != null))
+          {
+            e.a.gxk().a(paramMigrateResultCallback);
+            return;
+            localParcel1.writeInt(0);
+          }
+          localParcel2.readException();
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(204642);
+        }
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(204642);
       }
       
       public final IBinder asBinder()
@@ -248,144 +186,128 @@ public abstract interface e
         return this.mRemote;
       }
       
-      /* Error */
       public final void b(MigrateResultCallback paramMigrateResultCallback)
       {
-        // Byte code:
-        //   0: ldc 72
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_2
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore_3
-        //   13: aload_2
-        //   14: ldc 35
-        //   16: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   19: aload_1
-        //   20: ifnull +46 -> 66
-        //   23: aload_2
-        //   24: iconst_1
-        //   25: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   28: aload_1
-        //   29: aload_2
-        //   30: iconst_0
-        //   31: invokevirtual 68	com/tencent/mm/sdcard_migrate/MigrateResultCallback:writeToParcel	(Landroid/os/Parcel;I)V
-        //   34: aload_0
-        //   35: getfield 18	com/tencent/mm/sdcard_migrate/e$a$a:mRemote	Landroid/os/IBinder;
-        //   38: iconst_3
-        //   39: aload_2
-        //   40: aload_3
-        //   41: iconst_0
-        //   42: invokeinterface 54 5 0
-        //   47: pop
-        //   48: aload_3
-        //   49: invokevirtual 57	android/os/Parcel:readException	()V
-        //   52: aload_3
-        //   53: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   56: aload_2
-        //   57: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   60: ldc 72
-        //   62: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   65: return
-        //   66: aload_2
-        //   67: iconst_0
-        //   68: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   71: goto -37 -> 34
-        //   74: astore_1
-        //   75: aload_3
-        //   76: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   79: aload_2
-        //   80: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   83: ldc 72
-        //   85: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   88: aload_1
-        //   89: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	90	0	this	a
-        //   0	90	1	paramMigrateResultCallback	MigrateResultCallback
-        //   8	72	2	localParcel1	Parcel
-        //   12	64	3	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   13	19	74	finally
-        //   23	34	74	finally
-        //   34	52	74	finally
-        //   66	71	74	finally
-      }
-      
-      /* Error */
-      public final boolean fnf()
-      {
-        // Byte code:
-        //   0: iconst_1
-        //   1: istore_2
-        //   2: ldc 75
-        //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   7: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   10: astore_3
-        //   11: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   14: astore 4
-        //   16: aload_3
-        //   17: ldc 35
-        //   19: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   22: aload_0
-        //   23: getfield 18	com/tencent/mm/sdcard_migrate/e$a$a:mRemote	Landroid/os/IBinder;
-        //   26: iconst_1
-        //   27: aload_3
-        //   28: aload 4
-        //   30: iconst_0
-        //   31: invokeinterface 54 5 0
-        //   36: pop
-        //   37: aload 4
-        //   39: invokevirtual 57	android/os/Parcel:readException	()V
-        //   42: aload 4
-        //   44: invokevirtual 79	android/os/Parcel:readInt	()I
-        //   47: istore_1
-        //   48: iload_1
-        //   49: ifeq +19 -> 68
-        //   52: aload 4
-        //   54: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   57: aload_3
-        //   58: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   61: ldc 75
-        //   63: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   66: iload_2
-        //   67: ireturn
-        //   68: iconst_0
-        //   69: istore_2
-        //   70: goto -18 -> 52
-        //   73: astore 5
-        //   75: aload 4
-        //   77: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   80: aload_3
-        //   81: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   84: ldc 75
-        //   86: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   89: aload 5
-        //   91: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	92	0	this	a
-        //   47	2	1	i	int
-        //   1	69	2	bool	boolean
-        //   10	71	3	localParcel1	Parcel
-        //   14	62	4	localParcel2	Parcel
-        //   73	17	5	localObject	Object
-        // Exception table:
-        //   from	to	target	type
-        //   16	48	73	finally
-      }
-      
-      public final void fnj()
-      {
-        AppMethodBeat.i(211883);
+        AppMethodBeat.i(204643);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
-          this.mRemote.transact(5, localParcel1, localParcel2, 0);
+          if (paramMigrateResultCallback != null)
+          {
+            localParcel1.writeInt(1);
+            paramMigrateResultCallback.writeToParcel(localParcel1, 0);
+          }
+          while ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (e.a.gxk() != null))
+          {
+            e.a.gxk().b(paramMigrateResultCallback);
+            return;
+            localParcel1.writeInt(0);
+          }
+          localParcel2.readException();
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(204643);
+        }
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(204643);
+      }
+      
+      /* Error */
+      public final boolean gwS()
+      {
+        // Byte code:
+        //   0: iconst_1
+        //   1: istore_2
+        //   2: ldc 87
+        //   4: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   7: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   10: astore_3
+        //   11: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   14: astore 4
+        //   16: aload_3
+        //   17: ldc 37
+        //   19: invokevirtual 41	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   22: aload_0
+        //   23: getfield 20	com/tencent/mm/sdcard_migrate/e$a$a:mRemote	Landroid/os/IBinder;
+        //   26: iconst_1
+        //   27: aload_3
+        //   28: aload 4
+        //   30: iconst_0
+        //   31: invokeinterface 56 5 0
+        //   36: ifne +34 -> 70
+        //   39: invokestatic 60	com/tencent/mm/sdcard_migrate/e$a:gxk	()Lcom/tencent/mm/sdcard_migrate/e;
+        //   42: ifnull +28 -> 70
+        //   45: invokestatic 60	com/tencent/mm/sdcard_migrate/e$a:gxk	()Lcom/tencent/mm/sdcard_migrate/e;
+        //   48: invokeinterface 89 1 0
+        //   53: istore_2
+        //   54: aload 4
+        //   56: invokevirtual 65	android/os/Parcel:recycle	()V
+        //   59: aload_3
+        //   60: invokevirtual 65	android/os/Parcel:recycle	()V
+        //   63: ldc 87
+        //   65: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   68: iload_2
+        //   69: ireturn
+        //   70: aload 4
+        //   72: invokevirtual 71	android/os/Parcel:readException	()V
+        //   75: aload 4
+        //   77: invokevirtual 93	android/os/Parcel:readInt	()I
+        //   80: istore_1
+        //   81: iload_1
+        //   82: ifeq +19 -> 101
+        //   85: aload 4
+        //   87: invokevirtual 65	android/os/Parcel:recycle	()V
+        //   90: aload_3
+        //   91: invokevirtual 65	android/os/Parcel:recycle	()V
+        //   94: ldc 87
+        //   96: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   99: iload_2
+        //   100: ireturn
+        //   101: iconst_0
+        //   102: istore_2
+        //   103: goto -18 -> 85
+        //   106: astore 5
+        //   108: aload 4
+        //   110: invokevirtual 65	android/os/Parcel:recycle	()V
+        //   113: aload_3
+        //   114: invokevirtual 65	android/os/Parcel:recycle	()V
+        //   117: ldc 87
+        //   119: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   122: aload 5
+        //   124: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	125	0	this	a
+        //   80	2	1	i	int
+        //   1	102	2	bool	boolean
+        //   10	104	3	localParcel1	Parcel
+        //   14	95	4	localParcel2	Parcel
+        //   106	17	5	localObject	Object
+        // Exception table:
+        //   from	to	target	type
+        //   16	54	106	finally
+        //   70	81	106	finally
+      }
+      
+      public final void gwW()
+      {
+        AppMethodBeat.i(204645);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateServiceController");
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (e.a.gxk() != null))
+          {
+            e.a.gxk().gwW();
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -393,7 +315,7 @@ public abstract interface e
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211883);
+          AppMethodBeat.o(204645);
         }
       }
     }

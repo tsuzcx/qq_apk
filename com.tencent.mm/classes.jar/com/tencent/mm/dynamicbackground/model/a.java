@@ -6,73 +6,73 @@ import android.os.Build.VERSION;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.v;
 import java.lang.reflect.Method;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
+@l(hxD={1, 1, 11}, hxE={""}, hxF={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
 public final class a
   implements c
 {
-  public static final a.a ghN;
-  private boolean cNF = true;
+  public static final a.a gRf;
+  private boolean ded = true;
   
   static
   {
     AppMethodBeat.i(103076);
-    ghN = new a.a((byte)0);
+    gRf = new a.a((byte)0);
     AppMethodBeat.o(103076);
   }
   
-  public final boolean adU()
+  public final boolean atB()
   {
-    return this.cNF;
+    return this.ded;
   }
   
-  public final void adV()
+  public final void atC()
   {
-    this.cNF = false;
+    this.ded = false;
   }
   
-  public final void adW()
+  public final void atD()
   {
     AppMethodBeat.i(103075);
     System.loadLibrary("dynamicBg");
     AppMethodBeat.o(103075);
   }
   
-  public final boolean adX()
+  public final boolean atE()
   {
     return false;
   }
   
-  public final void adY() {}
+  public final void atF() {}
   
-  public final void adZ() {}
+  public final void atG() {}
   
-  public final void aea() {}
+  public final void atH() {}
   
-  public final boolean aeb()
+  public final boolean atI()
   {
     return false;
   }
   
-  public final boolean aec()
+  public final boolean atJ()
   {
     return false;
   }
   
-  public final void aed() {}
+  public final void atK() {}
   
-  public final void aee() {}
+  public final void atL() {}
   
-  public final float aef()
+  public final float atM()
   {
     return 16.0F;
   }
   
-  public final Point ck(Context paramContext)
+  public final Point az(Context paramContext)
   {
     AppMethodBeat.i(103074);
     p.h(paramContext, "context");
@@ -80,7 +80,7 @@ public final class a
     paramContext = paramContext.getSystemService("window");
     if (paramContext == null)
     {
-      paramContext = new v("null cannot be cast to non-null type android.view.WindowManager");
+      paramContext = new t("null cannot be cast to non-null type android.view.WindowManager");
       AppMethodBeat.o(103074);
       throw paramContext;
     }
@@ -102,7 +102,7 @@ public final class a
           if (localObject3 != null) {
             break label149;
           }
-          localObject1 = new v("null cannot be cast to non-null type kotlin.Int");
+          localObject1 = new t("null cannot be cast to non-null type kotlin.Int");
           AppMethodBeat.o(103074);
           throw ((Throwable)localObject1);
         }
@@ -118,7 +118,7 @@ public final class a
       Object localObject2 = localException.invoke(paramContext, new Object[0]);
       if (localObject2 == null)
       {
-        localObject2 = new v("null cannot be cast to non-null type kotlin.Int");
+        localObject2 = new t("null cannot be cast to non-null type kotlin.Int");
         AppMethodBeat.o(103074);
         throw ((Throwable)localObject2);
       }
@@ -128,7 +128,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.a
  * JD-Core Version:    0.7.0.1
  */

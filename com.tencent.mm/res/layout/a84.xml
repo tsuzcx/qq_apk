@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/b_" android:textColor="@color/km" android:id="@id/es" android:padding="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" android:text="@string/cgg" android:singleLine="true" style="@style/lw" />
-    <RelativeLayout android:orientation="horizontal" android:id="@id/eq" android:background="@drawable/zg" android:paddingLeft="@dimen/c0" android:paddingTop="@dimen/c0" android:paddingRight="@dimen/ci" android:paddingBottom="@dimen/c0" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/c50" android:background="@raw/find_more_friend_mobile_icon" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:layout_marginRight="@dimen/i_" android:layout_centerVertical="true" />
-        <TextView android:id="@id/c51" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" android:text="@string/c78" android:singleLine="true" android:layout_toRightOf="@id/c50" android:layout_centerVertical="true" style="@style/lw" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@raw/arrow_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i_" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/ee" />
-    </RelativeLayout>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hea" android:background="@drawable/v0" android:layout_width="fill_parent" android:layout_height="@dimen/i6" android:singleLine="true" />
 </LinearLayout>

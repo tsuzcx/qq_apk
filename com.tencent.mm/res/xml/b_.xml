@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_name" android:layout="@layout/aop" android:title="@string/dkk" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_addr" android:layout="@layout/aop" android:title="@string/dkj" />
+    <PreferenceCategory />
+    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference android:key="fix_tools_micromsg_header" android:layout="@layout/bqm" />
+    <PreferenceCategory />
+    <PreferenceTitleCategory android:key="fix_tools_wording" android:title="@string/dcv" />
+    <Preference android:key="fix_tools_fts" android:layout="@layout/b8j" android:title="@string/dce" />
+    <Preference android:key="fix_tools_websearch" android:layout="@layout/b8j" android:title="@string/dcu" />
+    <Preference android:key="fix_tools_topstory" android:layout="@layout/b8j" android:title="@string/dck" />
+    <PreferenceCategory />
     <PreferenceSmallCategory />
-    <Preference android:key="mail_compose_btn" android:layout="@layout/ag2" android:title="@string/e90" />
+    <Preference android:key="fix_tools_fts_info" android:layout="@layout/b8j" android:title="@string/dcf" />
 </PreferenceScreen>

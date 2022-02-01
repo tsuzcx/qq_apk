@@ -6,9 +6,9 @@ import com.tencent.mm.plugin.messenger.e.c;
 
 public final class d
 {
-  public a vWL;
-  public c vWM;
-  public b vWN;
+  public a zqQ;
+  public c zqR;
+  public b zqS;
 }
 
 

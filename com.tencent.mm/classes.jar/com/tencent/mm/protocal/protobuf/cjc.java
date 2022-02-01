@@ -6,123 +6,129 @@ import java.util.LinkedList;
 public final class cjc
   extends com.tencent.mm.bw.a
 {
-  public SKBuiltinBuffer_t HvH;
-  public int HvI;
-  public SKBuiltinBuffer_t HvJ;
-  public int uin;
-  public int version;
+  public cjd Mot;
+  public ciz Mou;
+  public cja Mov;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(129972);
+    AppMethodBeat.i(196383);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.uin);
-      paramVarArgs.aS(2, this.version);
-      if (this.HvH != null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Mot != null)
       {
-        paramVarArgs.lJ(3, this.HvH.computeSize());
-        this.HvH.writeFields(paramVarArgs);
+        paramVarArgs.ni(1, this.Mot.computeSize());
+        this.Mot.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(4, this.HvI);
-      if (this.HvJ != null)
+      if (this.Mou != null)
       {
-        paramVarArgs.lJ(5, this.HvJ.computeSize());
-        this.HvJ.writeFields(paramVarArgs);
+        paramVarArgs.ni(2, this.Mou.computeSize());
+        this.Mou.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(129972);
+      if (this.Mov != null)
+      {
+        paramVarArgs.ni(3, this.Mov.computeSize());
+        this.Mov.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(196383);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
-    {
-      i = f.a.a.b.b.a.bz(1, this.uin) + 0 + f.a.a.b.b.a.bz(2, this.version);
-      paramInt = i;
-      if (this.HvH != null) {
-        paramInt = i + f.a.a.a.lI(3, this.HvH.computeSize());
+    if (paramInt == 1) {
+      if (this.Mot == null) {
+        break label618;
       }
-      i = paramInt + f.a.a.b.b.a.bz(4, this.HvI);
-      paramInt = i;
-      if (this.HvJ != null) {
-        paramInt = i + f.a.a.a.lI(5, this.HvJ.computeSize());
-      }
-      AppMethodBeat.o(129972);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label618:
+    for (int i = g.a.a.a.nh(1, this.Mot.computeSize()) + 0;; i = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+      paramInt = i;
+      if (this.Mou != null) {
+        paramInt = i + g.a.a.a.nh(2, this.Mou.computeSize());
+      }
+      i = paramInt;
+      if (this.Mov != null) {
+        i = paramInt + g.a.a.a.nh(3, this.Mov.computeSize());
+      }
+      AppMethodBeat.o(196383);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
         }
+        AppMethodBeat.o(196383);
+        return 0;
       }
-      AppMethodBeat.o(129972);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      cjc localcjc = (cjc)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      boolean bool;
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(129972);
-        return -1;
-      case 1: 
-        localcjc.uin = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(129972);
-        return 0;
-      case 2: 
-        localcjc.version = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(129972);
-        return 0;
-      case 3: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        cjc localcjc = (cjc)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(196383);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new cjd();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((cjd)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localcjc.Mot = ((cjd)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(196383);
+          return 0;
+        case 2: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ciz();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((ciz)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localcjc.Mou = ((ciz)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(196383);
+          return 0;
+        }
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localcjc.HvH = ((SKBuiltinBuffer_t)localObject1);
+          localObject1 = new cja();
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((cja)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          localcjc.Mov = ((cja)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(129972);
-        return 0;
-      case 4: 
-        localcjc.HvI = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(129972);
+        AppMethodBeat.o(196383);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new SKBuiltinBuffer_t();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localcjc.HvJ = ((SKBuiltinBuffer_t)localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(129972);
-      return 0;
+      AppMethodBeat.o(196383);
+      return -1;
     }
-    AppMethodBeat.o(129972);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cjc
  * JD-Core Version:    0.7.0.1
  */

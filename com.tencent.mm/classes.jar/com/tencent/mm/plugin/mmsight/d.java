@@ -9,21 +9,27 @@ import android.hardware.Camera.Size;
 import android.media.MediaMetadataRetriever;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.x;
-import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
+import com.tencent.mm.plugin.mmsight.model.a.k;
 import com.tencent.mm.plugin.mmsight.model.j;
 import com.tencent.mm.plugin.mmsight.segment.MP4MuxerJNI;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.e;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -36,32 +42,32 @@ import org.json.JSONObject;
 
 public final class d
 {
-  private static float vYp;
-  private static boolean vYq;
-  private static int vYr;
-  private static int vYs;
-  private static ConcurrentHashMap<String, Long> vYt;
+  private static float zsr;
+  private static boolean zss;
+  private static int zst;
+  private static int zsu;
+  private static ConcurrentHashMap<String, Long> zsv;
   
   static
   {
     AppMethodBeat.i(89312);
-    vYp = 0.01F;
-    vYq = false;
-    vYr = 0;
-    vYs = 0;
-    vYt = new ConcurrentHashMap();
+    zsr = 0.01F;
+    zss = false;
+    zst = 0;
+    zsu = 0;
+    zsv = new ConcurrentHashMap();
     AppMethodBeat.o(89312);
   }
   
-  public static Bitmap GS(String paramString)
+  public static Bitmap PF(String paramString)
   {
     AppMethodBeat.i(89307);
-    paramString = aZ(paramString, 0L);
+    paramString = ba(paramString, 0L);
     AppMethodBeat.o(89307);
     return paramString;
   }
   
-  public static int KG(int paramInt)
+  public static int QH(int paramInt)
   {
     int i = paramInt;
     if (paramInt % 16 == 0) {
@@ -77,20 +83,20 @@ public final class d
     }
   }
   
-  public static boolean KH(int paramInt)
+  public static boolean QI(int paramInt)
   {
     return paramInt % 16 == 0;
   }
   
-  public static int KI(int paramInt)
+  public static int QJ(int paramInt)
   {
     AppMethodBeat.i(89310);
-    paramInt = gy(paramInt, 2147483647);
+    paramInt = gZ(paramInt, 2147483647);
     AppMethodBeat.o(89310);
     return paramInt;
   }
   
-  public static int KJ(int paramInt)
+  public static int QK(int paramInt)
   {
     AppMethodBeat.i(89311);
     int i = paramInt % 32;
@@ -143,13 +149,13 @@ public final class d
       if (!paramBoolean2) {
         break label229;
       }
-      i = gy(i, paramPoint2.y);
+      i = gZ(i, paramPoint2.y);
     }
     label206:
     label229:
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "getCropPreviewSizeWithHeight, previewSize: %s, displaySize: %s, width: %s, newHeight: %s makeMediaCodecHappy %s, newWidth: %s, isRoate: %s", new Object[] { paramPoint2, paramPoint1, Integer.valueOf(n), Integer.valueOf(i), Boolean.valueOf(paramBoolean2), Integer.valueOf(j), Boolean.valueOf(paramBoolean1) });
+      Log.i("MicroMsg.MMSightUtil", "getCropPreviewSizeWithHeight, previewSize: %s, displaySize: %s, width: %s, newHeight: %s makeMediaCodecHappy %s, newWidth: %s, isRoate: %s", new Object[] { paramPoint2, paramPoint1, Integer.valueOf(n), Integer.valueOf(i), Boolean.valueOf(paramBoolean2), Integer.valueOf(j), Boolean.valueOf(paramBoolean1) });
       if ((i <= paramPoint2.y) && (n <= paramPoint2.x))
       {
         paramPoint1 = new Point(n, i);
@@ -160,7 +166,7 @@ public final class d
         k = paramPoint1.y;
         break label37;
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "can not adapt to screen");
+      Log.i("MicroMsg.MMSightUtil", "can not adapt to screen");
       AppMethodBeat.o(89293);
       return null;
     }
@@ -186,27 +192,27 @@ public final class d
   public static void a(com.tencent.mm.plugin.mmsight.model.a.d paramd, SightParams paramSightParams)
   {
     AppMethodBeat.i(89285);
-    String str1 = paramSightParams.vYI;
-    String str2 = paramSightParams.vYG;
-    paramSightParams = paramSightParams.vYH;
-    if ((!bu.isNullOrNil(str1)) && (!bu.isNullOrNil(str2)) && (!bu.isNullOrNil(paramSightParams)))
+    String str1 = paramSightParams.zsK;
+    String str2 = paramSightParams.zsI;
+    paramSightParams = paramSightParams.zsJ;
+    if ((!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str2)) && (!Util.isNullOrNil(paramSightParams)))
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "setMMSightRecorderPathByTalker, fileName: %s, filePath: %s, thumbPath: %s", new Object[] { str1, str2, paramSightParams });
+      Log.i("MicroMsg.MMSightUtil", "setMMSightRecorderPathByTalker, fileName: %s, filePath: %s, thumbPath: %s", new Object[] { str1, str2, paramSightParams });
       paramd.setFilePath(str2);
-      paramd.yY(paramSightParams);
+      paramd.HA(paramSightParams);
     }
     for (;;)
     {
       paramSightParams = CaptureMMProxy.getInstance().getSubCoreImageFullPath("capture_" + System.currentTimeMillis());
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "captureImagePath %s", new Object[] { paramSightParams });
-      paramd.yZ(paramSightParams);
+      Log.i("MicroMsg.MMSightUtil", "captureImagePath %s", new Object[] { paramSightParams });
+      paramd.HB(paramSightParams);
       AppMethodBeat.o(89285);
       return;
-      paramSightParams = arO(CaptureMMProxy.getInstance().getAccVideoPath());
-      str1 = arQ(paramSightParams);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "setMMSightRecorderPathDefault, filePath: %s, thumbPath: %s", new Object[] { paramSightParams, str1 });
+      paramSightParams = aFj(CaptureMMProxy.getInstance().getAccVideoPath());
+      str1 = aFl(paramSightParams);
+      Log.i("MicroMsg.MMSightUtil", "setMMSightRecorderPathDefault, filePath: %s, thumbPath: %s", new Object[] { paramSightParams, str1 });
       paramd.setFilePath(paramSightParams);
-      paramd.yY(str1);
+      paramd.HA(str1);
     }
   }
   
@@ -228,7 +234,7 @@ public final class d
     {
       paramPInt1.value = j;
       paramPInt2.value = i;
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MMSightUtil", "check bitmap size result[%b] raw[%d %d] minSize[%d] out[%d %d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value) });
+      Log.d("MicroMsg.MMSightUtil", "check bitmap size result[%b] raw[%d %d] minSize[%d] out[%d %d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value) });
       AppMethodBeat.o(89309);
       return bool;
       f = paramInt2 * 1.0F / paramInt3;
@@ -243,14 +249,14 @@ public final class d
   public static boolean a(Context paramContext, Point paramPoint, boolean paramBoolean)
   {
     AppMethodBeat.i(89291);
-    paramContext = fS(paramContext);
+    paramContext = gx(paramContext);
     float f2 = paramContext.y / paramContext.x;
     if (paramBoolean) {}
     for (float f1 = paramPoint.x / paramPoint.y;; f1 = paramPoint.y / paramPoint.x)
     {
       float f3 = Math.abs(f2 - f1);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "checkIfNeedUsePreviewLarge: previewSize: %s, displaySize: %s, displayRatio: %s, previewRatio: %s, diff: %s", new Object[] { paramPoint, paramContext, Float.valueOf(f2), Float.valueOf(f1), Float.valueOf(f3) });
-      if (f3 <= vYp) {
+      Log.i("MicroMsg.MMSightUtil", "checkIfNeedUsePreviewLarge: previewSize: %s, displaySize: %s, displayRatio: %s, previewRatio: %s, diff: %s", new Object[] { paramPoint, paramContext, Float.valueOf(f2), Float.valueOf(f1), Float.valueOf(f3) });
+      if (f3 <= zsr) {
         break;
       }
       AppMethodBeat.o(89291);
@@ -260,171 +266,84 @@ public final class d
     return false;
   }
   
-  public static Bitmap aZ(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(89306);
-    if ((bu.isNullOrNil(paramString)) || (!o.fB(paramString)))
-    {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightUtil", "getVideoThumb, %s not exist!!", new Object[] { paramString });
-      AppMethodBeat.o(89306);
-      return null;
-    }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "getVideoThumb, %s", new Object[] { paramString });
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geT != null) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdS == 1)) {}
-    for (int i = 0;; i = 1) {
-      for (;;)
-      {
-        try
-        {
-          int m = SightVideoJNI.getMp4RotateVFS(paramString);
-          if (i != 0)
-          {
-            Object localObject = new com.tencent.mm.compatible.h.d();
-            ((MediaMetadataRetriever)localObject).setDataSource(o.k(paramString, false));
-            j = bu.getInt(((MediaMetadataRetriever)localObject).extractMetadata(18), -1);
-            i = bu.getInt(((MediaMetadataRetriever)localObject).extractMetadata(19), -1);
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "getVideoThumb, width: %s, height: %s, rotate: %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(m) });
-            Bitmap localBitmap = ((MediaMetadataRetriever)localObject).getFrameAtTime(paramLong, 2);
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "retriever.getFrameAtTime finish");
-            ((MediaMetadataRetriever)localObject).release();
-            if (localBitmap != null)
-            {
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "use MediaMetadataRetriever, success! ");
-              AppMethodBeat.o(89306);
-              return localBitmap;
-            }
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "use MediaMetadataRetriever failed, try ffmpeg");
-            int k;
-            if (j > 0)
-            {
-              k = i;
-              if (i > 0) {}
-            }
-            else
-            {
-              localObject = SightVideoJNI.getSimpleMp4InfoVFS(paramString);
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "getSimpleMp4Info: %s", new Object[] { localObject });
-              localObject = new JSONObject((String)localObject);
-              j = ((JSONObject)localObject).getInt("videoWidth");
-              k = ((JSONObject)localObject).getInt("videoHeight");
-            }
-            paramString = MP4MuxerJNI.getVideoThumbVFS(paramString, j, k);
-            if (paramString == null)
-            {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightUtil", "getVideoThumb, error, can not get rgb byte!!");
-              AppMethodBeat.o(89306);
-              return null;
-            }
-            paramString = ByteBuffer.wrap(paramString);
-            localObject = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
-            ((Bitmap)localObject).copyPixelsFromBuffer(paramString);
-            paramString = (String)localObject;
-            if (m > 0) {
-              paramString = h.a((Bitmap)localObject, m);
-            }
-            AppMethodBeat.o(89306);
-            return paramString;
-          }
-        }
-        catch (Exception paramString)
-        {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightUtil", "get video thumb error!");
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.MMSightUtil", paramString, "get video thumb error! %s", new Object[] { paramString.getMessage() });
-          AppMethodBeat.o(89306);
-          return null;
-        }
-        i = 0;
-        int j = 0;
-      }
-    }
-  }
-  
-  public static String arO(String paramString)
+  public static String aFj(String paramString)
   {
     AppMethodBeat.i(89286);
-    int i = vYr;
-    vYr = i + 1;
-    com.tencent.mm.vfs.k localk1 = new com.tencent.mm.vfs.k(String.format("%s/tempvideo%s.mp4", new Object[] { paramString, Integer.valueOf(i) }));
-    if (localk1.exists()) {
-      localk1.delete();
+    int i = zst;
+    zst = i + 1;
+    o localo1 = new o(String.format("%s/tempvideo%s.mp4", new Object[] { paramString, Integer.valueOf(i) }));
+    if (localo1.exists()) {
+      localo1.delete();
     }
-    com.tencent.mm.vfs.k localk2 = new com.tencent.mm.vfs.k(w.B(localk1.fTh()) + ".remux");
-    if (localk2.exists()) {
-      localk2.delete();
+    o localo2 = new o(aa.z(localo1.her()) + ".remux");
+    if (localo2.exists()) {
+      localo2.delete();
     }
-    localk2 = new com.tencent.mm.vfs.k(localk1.fTi() + ".thumb");
-    if (localk2.exists()) {
-      localk2.delete();
+    localo2 = new o(localo1.hes() + ".thumb");
+    if (localo2.exists()) {
+      localo2.delete();
     }
-    localk2 = new com.tencent.mm.vfs.k(localk1.fTi() + ".soundmp4");
-    if (localk2.exists()) {
-      localk2.delete();
+    localo2 = new o(localo1.hes() + ".soundmp4");
+    if (localo2.exists()) {
+      localo2.delete();
     }
-    j.ad(new d.1(vYr - 3, paramString));
-    paramString = w.B(localk1.fTh());
+    j.aj(new d.1(zst - 3, paramString));
+    paramString = aa.z(localo1.her());
     AppMethodBeat.o(89286);
     return paramString;
   }
   
-  public static String arP(String paramString)
+  public static String aFk(String paramString)
   {
     AppMethodBeat.i(89287);
-    paramString = new com.tencent.mm.vfs.k(String.format("%s/%s.mp4", new Object[] { paramString, Long.valueOf(System.currentTimeMillis()) }));
+    paramString = new o(String.format("%s/%s.mp4", new Object[] { paramString, Long.valueOf(System.currentTimeMillis()) }));
     if (paramString.exists()) {
       paramString.delete();
     }
-    paramString = w.B(paramString.fTh());
+    paramString = aa.z(paramString.her());
     AppMethodBeat.o(89287);
     return paramString;
   }
   
-  public static String arQ(String paramString)
+  public static String aFl(String paramString)
   {
     AppMethodBeat.i(89288);
-    paramString = bu.bI(paramString, "") + ".thumb";
+    paramString = Util.nullAs(paramString, "") + ".thumb";
     AppMethodBeat.o(89288);
     return paramString;
   }
   
-  public static String arR(String paramString)
+  public static String aFm(String paramString)
   {
     AppMethodBeat.i(89300);
     try
     {
-      paramString = e.arR(paramString);
+      paramString = e.aFm(paramString);
       AppMethodBeat.o(89300);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MMSightUtil", "getMediaInfo error: %s", new Object[] { paramString.getMessage() });
+      Log.e("MicroMsg.MMSightUtil", "getMediaInfo error: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(89300);
     }
     return null;
   }
   
-  public static String arS(String paramString)
-  {
-    AppMethodBeat.i(89301);
-    paramString = b.asv() + String.format("%s%d.%s", new Object[] { "wx_camera_", Long.valueOf(System.currentTimeMillis()), paramString });
-    AppMethodBeat.o(89301);
-    return paramString;
-  }
-  
-  public static void arT(String paramString)
+  public static void aFn(String paramString)
   {
     AppMethodBeat.i(89302);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "setTime key %s %s", new Object[] { paramString, bu.fpN().toString() });
-    vYt.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    Log.i("MicroMsg.MMSightUtil", "setTime key %s %s", new Object[] { paramString, Util.getStack().toString() });
+    zsv.put(paramString, Long.valueOf(System.currentTimeMillis()));
     AppMethodBeat.o(89302);
   }
   
-  public static long arU(String paramString)
+  public static long aFo(String paramString)
   {
     AppMethodBeat.i(89303);
-    if (vYt.containsKey(paramString))
+    if (zsv.containsKey(paramString))
     {
-      long l1 = ((Long)vYt.get(paramString)).longValue();
+      long l1 = ((Long)zsv.get(paramString)).longValue();
       long l2 = System.currentTimeMillis();
       AppMethodBeat.o(89303);
       return l2 - l1;
@@ -465,9 +384,9 @@ public final class d
       }
       j = i;
       if (paramBoolean2) {
-        j = gy(i, paramPoint2.y);
+        j = gZ(i, paramPoint2.y);
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "getCropPreviewSizeWithHeight, previewSize: %s, displaySize: %s, width: %s, newWidth: %s, makeMediaCodecHappy %s, , isRoate: %s", new Object[] { paramPoint2, paramPoint1, Integer.valueOf(k), Integer.valueOf(j), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
+      Log.i("MicroMsg.MMSightUtil", "getCropPreviewSizeWithHeight, previewSize: %s, displaySize: %s, width: %s, newWidth: %s, makeMediaCodecHappy %s, , isRoate: %s", new Object[] { paramPoint2, paramPoint1, Integer.valueOf(k), Integer.valueOf(j), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
       if (j > paramPoint2.x) {
         break label190;
       }
@@ -478,26 +397,97 @@ public final class d
       break;
     }
     label190:
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightUtil", "can not adapt to screen");
+    Log.i("MicroMsg.MMSightUtil", "can not adapt to screen");
     AppMethodBeat.o(89295);
     return null;
   }
   
-  public static ArrayList<Camera.Size> d(Camera.Parameters paramParameters)
+  public static Bitmap ba(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(89306);
+    if ((Util.isNullOrNil(paramString)) || (!s.YS(paramString)))
+    {
+      Log.e("MicroMsg.MMSightUtil", "getVideoThumb, %s not exist!!", new Object[] { paramString });
+      AppMethodBeat.o(89306);
+      return null;
+    }
+    Log.i("MicroMsg.MMSightUtil", "getVideoThumb, %s", new Object[] { paramString });
+    if ((ae.gKA != null) && (ae.gKA.gJr == 1)) {}
+    for (int i = 0;; i = 1) {
+      for (;;)
+      {
+        try
+        {
+          int m = SightVideoJNI.getMp4RotateVFS(paramString);
+          if (i != 0)
+          {
+            Object localObject = new com.tencent.mm.compatible.i.d();
+            ((MediaMetadataRetriever)localObject).setDataSource(s.k(paramString, false));
+            j = Util.getInt(((MediaMetadataRetriever)localObject).extractMetadata(18), -1);
+            i = Util.getInt(((MediaMetadataRetriever)localObject).extractMetadata(19), -1);
+            Log.i("MicroMsg.MMSightUtil", "getVideoThumb, width: %s, height: %s, rotate: %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(m) });
+            Bitmap localBitmap = ((MediaMetadataRetriever)localObject).getFrameAtTime(paramLong, 2);
+            Log.i("MicroMsg.MMSightUtil", "retriever.getFrameAtTime finish");
+            ((MediaMetadataRetriever)localObject).release();
+            if (localBitmap != null)
+            {
+              Log.i("MicroMsg.MMSightUtil", "use MediaMetadataRetriever, success! ");
+              AppMethodBeat.o(89306);
+              return localBitmap;
+            }
+            Log.i("MicroMsg.MMSightUtil", "use MediaMetadataRetriever failed, try ffmpeg");
+            int k;
+            if (j > 0)
+            {
+              k = i;
+              if (i > 0) {}
+            }
+            else
+            {
+              localObject = SightVideoJNI.getSimpleMp4InfoVFS(paramString);
+              Log.i("MicroMsg.MMSightUtil", "getSimpleMp4Info: %s", new Object[] { localObject });
+              localObject = new JSONObject((String)localObject);
+              j = ((JSONObject)localObject).getInt("videoWidth");
+              k = ((JSONObject)localObject).getInt("videoHeight");
+            }
+            paramString = MP4MuxerJNI.getVideoThumbVFS(paramString, j, k);
+            if (paramString == null)
+            {
+              Log.e("MicroMsg.MMSightUtil", "getVideoThumb, error, can not get rgb byte!!");
+              AppMethodBeat.o(89306);
+              return null;
+            }
+            paramString = ByteBuffer.wrap(paramString);
+            localObject = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
+            ((Bitmap)localObject).copyPixelsFromBuffer(paramString);
+            paramString = (String)localObject;
+            if (m > 0) {
+              paramString = BitmapUtil.rotate((Bitmap)localObject, m);
+            }
+            AppMethodBeat.o(89306);
+            return paramString;
+          }
+        }
+        catch (Exception paramString)
+        {
+          Log.e("MicroMsg.MMSightUtil", "get video thumb error!");
+          Log.printErrStackTrace("MicroMsg.MMSightUtil", paramString, "get video thumb error! %s", new Object[] { paramString.getMessage() });
+          AppMethodBeat.o(89306);
+          return null;
+        }
+        i = 0;
+        int j = 0;
+      }
+    }
+  }
+  
+  public static ArrayList<Camera.Size> c(Camera.Parameters paramParameters)
   {
     AppMethodBeat.i(89299);
     paramParameters = new ArrayList(paramParameters.getSupportedPreviewSizes());
     Collections.sort(paramParameters, new d.a((byte)0));
     AppMethodBeat.o(89299);
     return paramParameters;
-  }
-  
-  public static Point dpC()
-  {
-    AppMethodBeat.i(89290);
-    Point localPoint = al.ck(ak.getContext());
-    AppMethodBeat.o(89290);
-    return localPoint;
   }
   
   public static byte[] e(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
@@ -508,7 +498,7 @@ public final class d
       AppMethodBeat.o(89308);
       return paramArrayOfByte;
     }
-    byte[] arrayOfByte = com.tencent.mm.plugin.mmsight.model.a.k.wcg.h(Integer.valueOf(paramArrayOfByte.length));
+    byte[] arrayOfByte = k.zwi.h(Integer.valueOf(paramArrayOfByte.length));
     int i5 = paramInt1 * paramInt2;
     int m;
     int n;
@@ -597,12 +587,32 @@ public final class d
       paramInt3 += 1;
     }
     label302:
-    com.tencent.mm.plugin.mmsight.model.a.k.wcg.k(paramArrayOfByte);
+    k.zwi.k(paramArrayOfByte);
     AppMethodBeat.o(89308);
     return arrayOfByte;
   }
   
-  public static String eC(List<Camera.Size> paramList)
+  public static String eK(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(177006);
+    paramString = new o(String.format("%s/%s.mp4", new Object[] { paramString, paramInt + System.currentTimeMillis() }));
+    if (paramString.exists()) {
+      paramString.delete();
+    }
+    paramString = aa.z(paramString.her());
+    AppMethodBeat.o(177006);
+    return paramString;
+  }
+  
+  public static Point ejr()
+  {
+    AppMethodBeat.i(89290);
+    Point localPoint = ao.az(MMApplicationContext.getContext());
+    AppMethodBeat.o(89290);
+    return localPoint;
+  }
+  
+  public static String fx(List<Camera.Size> paramList)
   {
     AppMethodBeat.i(89296);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -617,7 +627,7 @@ public final class d
     return paramList;
   }
   
-  public static String eD(List<Camera.Size> paramList)
+  public static String fy(List<Camera.Size> paramList)
   {
     AppMethodBeat.i(89297);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -632,65 +642,79 @@ public final class d
     return paramList;
   }
   
-  public static String ew(String paramString, int paramInt)
+  public static int gZ(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(177006);
-    paramString = new com.tencent.mm.vfs.k(String.format("%s/%s.mp4", new Object[] { paramString, paramInt + System.currentTimeMillis() }));
-    if (paramString.exists()) {
-      paramString.delete();
+    int i = paramInt1 % 16;
+    if (i == 0) {
+      return paramInt1;
     }
-    paramString = w.B(paramString.fTh());
-    AppMethodBeat.o(177006);
-    return paramString;
+    int j = 16 - i + paramInt1;
+    if (j < paramInt2) {
+      return j;
+    }
+    return paramInt1 - i;
   }
   
-  public static Point fS(Context paramContext)
+  public static String getExportImagePath(String paramString)
+  {
+    AppMethodBeat.i(89301);
+    StringBuilder localStringBuilder = new StringBuilder().append(AndroidMediaUtil.getSysCameraDirPath());
+    if (WeChatBrands.AppInfo.current().isMainland()) {}
+    for (String str = "wx_camera_";; str = "w_camera_")
+    {
+      paramString = String.format("%s%d.%s", new Object[] { str, Long.valueOf(System.currentTimeMillis()), paramString });
+      AppMethodBeat.o(89301);
+      return paramString;
+    }
+  }
+  
+  public static Point gx(Context paramContext)
   {
     AppMethodBeat.i(89289);
-    Point localPoint = al.ck(paramContext);
-    if ((!vYq) && (al.jY(paramContext))) {
-      localPoint.y -= al.en(paramContext);
+    Point localPoint = ao.az(paramContext);
+    if ((!zss) && (ao.aA(paramContext))) {
+      localPoint.y -= ao.aD(paramContext);
     }
     AppMethodBeat.o(89289);
     return localPoint;
   }
   
   /* Error */
-  public static int fT(Context paramContext)
+  public static int gy(Context paramContext)
   {
     // Byte code:
-    //   0: ldc_w 610
+    //   0: ldc_w 625
     //   3: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 615	android/os/Build$VERSION:SDK_INT	I
+    //   6: getstatic 630	android/os/Build$VERSION:SDK_INT	I
     //   9: bipush 16
     //   11: if_icmplt +49 -> 60
-    //   14: new 617	android/app/ActivityManager$MemoryInfo
+    //   14: new 632	android/app/ActivityManager$MemoryInfo
     //   17: dup
-    //   18: invokespecial 618	android/app/ActivityManager$MemoryInfo:<init>	()V
+    //   18: invokespecial 633	android/app/ActivityManager$MemoryInfo:<init>	()V
     //   21: astore 6
     //   23: aload_0
-    //   24: ldc_w 620
-    //   27: invokevirtual 626	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   30: checkcast 628	android/app/ActivityManager
+    //   24: ldc_w 635
+    //   27: invokevirtual 641	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   30: checkcast 643	android/app/ActivityManager
     //   33: aload 6
-    //   35: invokevirtual 632	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
+    //   35: invokevirtual 647	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
     //   38: aload 6
-    //   40: getfield 636	android/app/ActivityManager$MemoryInfo:totalMem	J
+    //   40: getfield 651	android/app/ActivityManager$MemoryInfo:totalMem	J
     //   43: l2d
-    //   44: ldc2_w 637
+    //   44: ldc2_w 652
     //   47: ddiv
     //   48: d2i
     //   49: istore 5
-    //   51: ldc_w 610
+    //   51: ldc_w 625
     //   54: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: iload 5
     //   59: ireturn
-    //   60: ldc_w 640
-    //   63: invokestatic 644	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   60: ldc_w 655
+    //   63: invokestatic 659	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   66: astore_0
-    //   67: ldc_w 646
+    //   67: ldc_w 661
     //   70: aload_0
-    //   71: invokestatic 650	com/tencent/mm/plugin/mmsight/d:parseFileForValue	(Ljava/lang/String;Ljava/io/InputStream;)I
+    //   71: invokestatic 665	com/tencent/mm/plugin/mmsight/d:parseFileForValue	(Ljava/lang/String;Ljava/io/InputStream;)I
     //   74: istore 5
     //   76: iload 5
     //   78: i2d
@@ -702,22 +726,22 @@ public final class d
     //   84: dcmpl
     //   85: ifle +9 -> 94
     //   88: dload_3
-    //   89: ldc2_w 637
+    //   89: ldc2_w 652
     //   92: ddiv
     //   93: dstore_1
     //   94: aload_0
-    //   95: invokevirtual 655	java/io/InputStream:close	()V
+    //   95: invokevirtual 670	java/io/InputStream:close	()V
     //   98: dload_1
     //   99: d2i
     //   100: istore 5
-    //   102: ldc_w 610
+    //   102: ldc_w 625
     //   105: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   108: iload 5
     //   110: ireturn
     //   111: astore 6
     //   113: aload_0
-    //   114: invokevirtual 655	java/io/InputStream:close	()V
-    //   117: ldc_w 610
+    //   114: invokevirtual 670	java/io/InputStream:close	()V
+    //   117: ldc_w 625
     //   120: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: aload 6
     //   125: athrow
@@ -741,24 +765,6 @@ public final class d
     //   60	67	126	java/io/IOException
     //   113	126	126	java/io/IOException
     //   94	98	132	java/io/IOException
-  }
-  
-  public static int gy(int paramInt1, int paramInt2)
-  {
-    int i = paramInt1 % 16;
-    if (i == 0) {
-      return paramInt1;
-    }
-    int j = 16 - i + paramInt1;
-    if (j < paramInt2) {
-      return j;
-    }
-    return paramInt1 - i;
-  }
-  
-  public static void ow(boolean paramBoolean)
-  {
-    vYq = paramBoolean;
   }
   
   private static int parseFileForValue(String paramString, InputStream paramInputStream)
@@ -803,7 +809,7 @@ public final class d
                   i += 1;
                   continue;
                 }
-                i = bu.aSB(new String(arrayOfByte, 0, j, i - j));
+                i = Util.safeParseInt(new String(arrayOfByte, 0, j, i - j));
                 AppMethodBeat.o(89305);
                 return i;
               }
@@ -835,10 +841,15 @@ public final class d
       }
     }
   }
+  
+  public static void rb(boolean paramBoolean)
+  {
+    zss = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.d
  * JD-Core Version:    0.7.0.1
  */

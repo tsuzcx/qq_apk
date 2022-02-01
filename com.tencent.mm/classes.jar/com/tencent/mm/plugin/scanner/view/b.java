@@ -1,21 +1,19 @@
 package com.tencent.mm.plugin.scanner.view;
 
-import d.l;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;", "", "showLoadingView", "", "show", "", "withAnimation", "cancelListener", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "OnCancelListener", "scan-sdk_release"})
-public abstract interface b
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/view/IScanMaskView;", "T", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "", "animateShow", "", "show", "", "attachBackgroundView", "backgroundView", "Landroid/view/View;", "attachScanCamera", "scanCamera", "Lcom/tencent/mm/plugin/scanner/camera/WxScanCamera;", "attachScanTipsView", "tipsView", "Landroid/widget/TextView;", "getTargetSuccessMarkView", "onNetworkChange", "state", "", "onPause", "onPreviewReady", "isSwitchTab", "onResume", "onScanSuccess", "data", "scanResultAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "onShowInfoView", "onShowNetworkLoading", "onViewDestroy", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "onViewReady", "release", "setScanRequest", "request", "(Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;)V", "setScanSource", "scanSource", "showLoadingView", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "scan-sdk_release"})
+public abstract interface b<T extends BaseScanRequest>
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, a parama);
+  public abstract void a(Animator.AnimatorListener paramAnimatorListener);
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "", "onCancel", "", "loadingViewModel", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;", "scan-sdk_release"})
-  public static abstract interface a
-  {
-    public abstract void dQa();
-  }
+  public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.b
  * JD-Core Version:    0.7.0.1
  */

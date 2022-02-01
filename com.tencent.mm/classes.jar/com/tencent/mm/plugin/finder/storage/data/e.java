@@ -1,309 +1,337 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
+import android.util.LongSparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aop;
+import com.tencent.mm.protocal.protobuf.aoq;
+import com.tencent.mm.protocal.protobuf.bei;
+import com.tencent.mm.protocal.protobuf.cng;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cacheBulletSubtitleComments", "", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$CacheKey;", "", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "cacheCommentExtras", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "cacheComments", "addBulletSubtitleComments", "", "feedId", "", "refCommentId", "comments", "addCommentsCache", "addExtraCache", "pos", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "", "downContinue", "hasExpand", "clearBulletSubtitleCache", "clearCache", "getBulletSubtitleComments", "getComments", "getExtra", "getStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage;", "markUnsentCommentsCanRemove", "CacheKey", "Extra", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCache;", "", "()V", "Companion", "plugin-finder_release"})
 public final class e
 {
-  private static final String TAG = "Finder.FinderCommentCache";
-  private static final Map<a, List<ab>> sKG;
-  private static final Map<a, b> sKH;
-  public static final Map<a, List<ab>> sKI;
-  public static final e sKJ;
+  private static final Map<Long, FinderItem> tsn;
+  private static final Map<Long, FinderObject> vFU;
+  private static final HashMap<Integer, LongSparseArray<FinderObject>> vFV;
+  private static final HashMap<Integer, LongSparseArray<e.a.a>> vFW;
+  public static final a vFX;
   
   static
   {
-    AppMethodBeat.i(167059);
-    sKJ = new e();
-    TAG = "Finder.FinderCommentCache";
-    sKG = (Map)new LinkedHashMap();
-    sKH = (Map)new LinkedHashMap();
-    sKI = (Map)new LinkedHashMap();
-    AppMethodBeat.o(167059);
+    AppMethodBeat.i(167047);
+    vFX = new a((byte)0);
+    tsn = Collections.synchronizedMap((Map)new HashMap());
+    vFU = Collections.synchronizedMap((Map)new HashMap());
+    vFV = new HashMap();
+    vFW = new HashMap();
+    AppMethodBeat.o(167047);
   }
   
-  private void N(long paramLong1, long paramLong2)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCache$Companion;", "", "()V", "TAG", "", "cacheItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "", "cacheMegaVideoItems", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "feedCaches", "Ljava/util/HashMap;", "", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCache$Companion$FeedData;", "Lkotlin/collections/HashMap;", "historyItems", "clean", "", "collectFeed", "commentScene", "feeds", "", "collectHistoryFeed", "tabType", "collectMegaVideoFeed", "Lcom/tencent/mm/protocal/protobuf/MegaVideo;", "getById", "id", "getFeedRecTime", "getMegaVideoById", "isHistoryFeed", "", "remove", "svrId", "removeMegaVideo", "update", "finder", "updateMegaVideo", "item", "FeedData", "plugin-finder_release"})
+  public static final class a
   {
-    AppMethodBeat.i(167054);
-    try
+    public static boolean BX(long paramLong)
     {
-      sKG.remove(new a(paramLong1, paramLong2));
-      sKH.remove(new a(paramLong1, paramLong2));
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(167054);
-    }
-  }
-  
-  public final List<ab> O(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(167057);
-    try
-    {
-      List localList = (List)sKG.get(new a(paramLong1, paramLong2));
-      return localList;
-    }
-    finally
-    {
-      AppMethodBeat.o(167057);
-    }
-  }
-  
-  public final b P(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(167058);
-    try
-    {
-      b localb = (b)sKH.get(new a(paramLong1, paramLong2));
-      return localb;
-    }
-    finally
-    {
-      AppMethodBeat.o(167058);
-    }
-  }
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt, b paramb, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    AppMethodBeat.i(178422);
-    try
-    {
-      sKH.put(new a(paramLong1, paramLong2), new b(paramInt, paramb, paramBoolean1, paramBoolean2, paramBoolean3));
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(178422);
-    }
-  }
-  
-  public final void a(long paramLong1, long paramLong2, List<ab> paramList)
-  {
-    AppMethodBeat.i(167052);
-    p.h(paramList, "comments");
-    try
-    {
-      sKJ.N(paramLong1, paramLong2);
-      sKG.put(new a(paramLong1, paramLong2), paramList);
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(167052);
-    }
-  }
-  
-  public final void clearCache()
-  {
-    AppMethodBeat.i(167056);
-    ae.i(TAG, "clearCache all");
-    try
-    {
-      sKG.clear();
-      sKH.clear();
-      sKI.clear();
-      z localz = z.Nhr;
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(167056);
-    }
-  }
-  
-  public final void xl(long paramLong)
-  {
-    AppMethodBeat.i(167055);
-    Map.Entry localEntry;
-    int i;
-    for (;;)
-    {
-      try
+      AppMethodBeat.i(251974);
+      if (e.dyx().remove(Long.valueOf(paramLong)) != null)
       {
-        localObject2 = sKG;
-        Map localMap1 = (Map)new LinkedHashMap();
-        localObject2 = ((Map)localObject2).entrySet().iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localEntry = (Map.Entry)((Iterator)localObject2).next();
-        if (((a)localEntry.getKey()).duw != paramLong)
+        AppMethodBeat.o(251974);
+        return true;
+      }
+      AppMethodBeat.o(251974);
+      return false;
+    }
+    
+    public static FinderObject FD(long paramLong)
+    {
+      AppMethodBeat.i(251972);
+      FinderObject localFinderObject = (FinderObject)e.dyy().get(Long.valueOf(paramLong));
+      AppMethodBeat.o(251972);
+      return localFinderObject;
+    }
+    
+    public static boolean FE(long paramLong)
+    {
+      AppMethodBeat.i(251975);
+      if (e.dyy().remove(Long.valueOf(paramLong)) != null)
+      {
+        AppMethodBeat.o(251975);
+        return true;
+      }
+      AppMethodBeat.o(251975);
+      return false;
+    }
+    
+    public static FinderItem Fy(long paramLong)
+    {
+      AppMethodBeat.i(167045);
+      FinderItem localFinderItem = (FinderItem)e.dyx().get(Long.valueOf(paramLong));
+      AppMethodBeat.o(167045);
+      return localFinderItem;
+    }
+    
+    public static long ak(int paramInt, long paramLong)
+    {
+      AppMethodBeat.i(251978);
+      synchronized (e.dyz())
+      {
+        LongSparseArray localLongSparseArray = (LongSparseArray)e.dyz().get(Integer.valueOf(paramInt));
+        Object localObject1 = localLongSparseArray;
+        if (localLongSparseArray == null)
         {
-          i = 1;
-          if (i != 0) {
-            localMap1.put(localEntry.getKey(), localEntry.getValue());
+          localObject1 = e.vFX;
+          localObject1 = new LongSparseArray();
+          ((Map)e.dyz()).put(Integer.valueOf(paramInt), localObject1);
+        }
+        p.g(localObject1, "feedCaches[commentScene]…  cache\n                }");
+        if (((LongSparseArray)localObject1).indexOfKey(paramLong) >= 0)
+        {
+          localObject1 = (a)((LongSparseArray)localObject1).get(paramLong);
+          if (localObject1 != null) {}
+          for (paramLong = ((a)localObject1).vFZ;; paramLong = 0L)
+          {
+            AppMethodBeat.o(251978);
+            return paramLong;
+          }
+        }
+        AppMethodBeat.o(251978);
+        return 0L;
+      }
+    }
+    
+    public static boolean al(int paramInt, long paramLong)
+    {
+      AppMethodBeat.i(251980);
+      synchronized (e.dyA())
+      {
+        LongSparseArray localLongSparseArray = (LongSparseArray)e.dyA().get(Integer.valueOf(paramInt));
+        Object localObject1 = localLongSparseArray;
+        if (localLongSparseArray == null)
+        {
+          localObject1 = e.vFX;
+          localObject1 = new LongSparseArray();
+          ((Map)e.dyA()).put(Integer.valueOf(paramInt), localObject1);
+        }
+        p.g(localObject1, "historyItems[tabType] ?:…  cache\n                }");
+        paramInt = ((LongSparseArray)localObject1).indexOfKey(paramLong);
+        if (paramInt >= 0)
+        {
+          bool = true;
+          AppMethodBeat.o(251980);
+          return bool;
+        }
+        boolean bool = false;
+      }
+    }
+    
+    public static void j(FinderObject paramFinderObject)
+    {
+      AppMethodBeat.i(251973);
+      p.h(paramFinderObject, "item");
+      Object localObject = paramFinderObject.attachmentList;
+      if (localObject != null)
+      {
+        localObject = ((aoq)localObject).LAM;
+        if (localObject != null)
+        {
+          localObject = (aop)j.kt((List)localObject);
+          if (localObject != null)
+          {
+            localObject = ((aop)localObject).LAL;
+            if (localObject != null)
+            {
+              localObject = ((bei)localObject).LIA;
+              if (localObject == null) {}
+            }
+          }
+        }
+      }
+      for (localObject = Long.valueOf(((cng)localObject).id); localObject != null; localObject = null)
+      {
+        ((Number)localObject).longValue();
+        Map localMap = e.dyy();
+        p.g(localMap, "cacheMegaVideoItems");
+        localMap.put(localObject, paramFinderObject);
+        AppMethodBeat.o(251973);
+        return;
+      }
+      AppMethodBeat.o(251973);
+    }
+    
+    public static void k(int paramInt, List<? extends FinderObject> paramList)
+    {
+      AppMethodBeat.i(251976);
+      p.h(paramList, "feeds");
+      label146:
+      for (;;)
+      {
+        synchronized (e.dyz())
+        {
+          Object localObject = (LongSparseArray)e.dyz().get(Integer.valueOf(paramInt));
+          if (localObject != null) {
+            break label146;
+          }
+          localObject = e.vFX;
+          localObject = new LongSparseArray();
+          ((Map)e.dyz()).put(Integer.valueOf(paramInt), localObject);
+          p.g(localObject, "feedCaches[commentScene]…  cache\n                }");
+          paramList = ((Iterable)paramList).iterator();
+          if (paramList.hasNext())
+          {
+            FinderObject localFinderObject = (FinderObject)paramList.next();
+            ((LongSparseArray)localObject).append(localFinderObject.id, new a((a)localFinderObject));
+          }
+        }
+        paramList = x.SXb;
+        AppMethodBeat.o(251976);
+        return;
+      }
+    }
+    
+    public static void l(int paramInt, List<? extends cng> paramList)
+    {
+      AppMethodBeat.i(251977);
+      p.h(paramList, "feeds");
+      label146:
+      for (;;)
+      {
+        synchronized (e.dyz())
+        {
+          Object localObject = (LongSparseArray)e.dyz().get(Integer.valueOf(paramInt));
+          if (localObject != null) {
+            break label146;
+          }
+          localObject = e.vFX;
+          localObject = new LongSparseArray();
+          ((Map)e.dyz()).put(Integer.valueOf(paramInt), localObject);
+          p.g(localObject, "feedCaches[commentScene]…  cache\n                }");
+          paramList = ((Iterable)paramList).iterator();
+          if (paramList.hasNext())
+          {
+            cng localcng = (cng)paramList.next();
+            ((LongSparseArray)localObject).append(localcng.id, new a((a)localcng));
+          }
+        }
+        paramList = x.SXb;
+        AppMethodBeat.o(251977);
+        return;
+      }
+    }
+    
+    public static void m(int paramInt, List<? extends FinderObject> paramList)
+    {
+      AppMethodBeat.i(251979);
+      p.h(paramList, "feeds");
+      label136:
+      for (;;)
+      {
+        synchronized (e.dyA())
+        {
+          Object localObject = (LongSparseArray)e.dyA().get(Integer.valueOf(paramInt));
+          if (localObject != null) {
+            break label136;
+          }
+          localObject = e.vFX;
+          localObject = new LongSparseArray();
+          ((Map)e.dyA()).put(Integer.valueOf(paramInt), localObject);
+          p.g(localObject, "historyItems[tabType] ?:…  cache\n                }");
+          paramList = ((Iterable)paramList).iterator();
+          if (paramList.hasNext())
+          {
+            FinderObject localFinderObject = (FinderObject)paramList.next();
+            ((LongSparseArray)localObject).append(localFinderObject.id, localFinderObject);
+          }
+        }
+        paramList = x.SXb;
+        AppMethodBeat.o(251979);
+        return;
+      }
+    }
+    
+    public static boolean n(FinderItem paramFinderItem)
+    {
+      AppMethodBeat.i(167046);
+      p.h(paramFinderItem, "finder");
+      Map localMap = e.dyx();
+      p.g(localMap, "cacheItems");
+      localMap.put(Long.valueOf(paramFinderItem.field_id), paramFinderItem);
+      AppMethodBeat.o(167046);
+      return true;
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCache$Companion$FeedData;", "", "feed", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "recTime", "", "(Lcom/tencent/mm/protobuf/BaseProtoBuf;J)V", "getFeed", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getRecTime", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+    public static final class a
+    {
+      private final a vFY;
+      final long vFZ;
+      
+      private a(a parama, long paramLong)
+      {
+        AppMethodBeat.i(251967);
+        this.vFY = parama;
+        this.vFZ = paramLong;
+        AppMethodBeat.o(251967);
+      }
+      
+      public final boolean equals(Object paramObject)
+      {
+        AppMethodBeat.i(251971);
+        if (this != paramObject)
+        {
+          if ((paramObject instanceof a))
+          {
+            paramObject = (a)paramObject;
+            if ((!p.j(this.vFY, paramObject.vFY)) || (this.vFZ != paramObject.vFZ)) {}
           }
         }
         else
         {
-          i = 0;
+          AppMethodBeat.o(251971);
+          return true;
         }
+        AppMethodBeat.o(251971);
+        return false;
       }
-      finally
+      
+      public final int hashCode()
       {
-        AppMethodBeat.o(167055);
-      }
-    }
-    sKG.clear();
-    sKG.putAll(localMap2);
-    Object localObject2 = sKH;
-    Object localObject1 = (Map)new LinkedHashMap();
-    localObject2 = ((Map)localObject2).entrySet().iterator();
-    label277:
-    label280:
-    for (;;)
-    {
-      if (((Iterator)localObject2).hasNext())
-      {
-        localEntry = (Map.Entry)((Iterator)localObject2).next();
-        if (((a)localEntry.getKey()).duw == paramLong) {
-          break label277;
-        }
-      }
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label280;
-        }
-        ((Map)localObject1).put(localEntry.getKey(), localEntry.getValue());
-        break;
-        sKH.clear();
-        sKH.putAll((Map)localObject1);
-        localObject1 = z.Nhr;
-        AppMethodBeat.o(167055);
-        return;
-      }
-    }
-  }
-  
-  public final List<ab> xm(long paramLong)
-  {
-    AppMethodBeat.i(204393);
-    try
-    {
-      List localList = (List)sKI.get(new a(paramLong, 0L));
-      return localList;
-    }
-    finally
-    {
-      AppMethodBeat.o(204393);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$CacheKey;", "", "feedId", "", "refCommentId", "(JJ)V", "getFeedId", "()J", "getRefCommentId", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
-  public static final class a
-  {
-    final long duw;
-    private final long rQR;
-    
-    public a(long paramLong1, long paramLong2)
-    {
-      this.duw = paramLong1;
-      this.rQR = paramLong2;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
+        AppMethodBeat.i(251970);
+        a locala = this.vFY;
+        if (locala != null) {}
+        for (int i = locala.hashCode();; i = 0)
         {
-          paramObject = (a)paramObject;
-          if ((this.duw != paramObject.duw) || (this.rQR != paramObject.rQR)) {}
+          long l = this.vFZ;
+          int j = (int)(l ^ l >>> 32);
+          AppMethodBeat.o(251970);
+          return i * 31 + j;
         }
       }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      long l = this.duw;
-      int i = (int)(l ^ l >>> 32);
-      l = this.rQR;
-      return i * 31 + (int)(l ^ l >>> 32);
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(167048);
-      String str = "CacheKey(feedId=" + this.duw + ", refCommentId=" + this.rQR + ")";
-      AppMethodBeat.o(167048);
-      return str;
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "", "pos", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "", "downContinue", "hasExpand", "(ILcom/tencent/mm/protobuf/ByteString;ZZZ)V", "getDownContinue", "()Z", "getHasExpand", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getPos", "()I", "getUpContinue", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
-  public static final class b
-  {
-    public final b lastBuffer;
-    public final int pos;
-    public final boolean sKK;
-    public final boolean sdm;
-    public final boolean sdn;
-    
-    public b(int paramInt, b paramb, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-    {
-      this.pos = paramInt;
-      this.lastBuffer = paramb;
-      this.sdm = paramBoolean1;
-      this.sdn = paramBoolean2;
-      this.sKK = paramBoolean3;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(167051);
-      if (this != paramObject)
+      
+      public final String toString()
       {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((this.pos != paramObject.pos) || (!p.i(this.lastBuffer, paramObject.lastBuffer)) || (this.sdm != paramObject.sdm) || (this.sdn != paramObject.sdn) || (this.sKK != paramObject.sKK)) {}
-        }
+        AppMethodBeat.i(251969);
+        String str = "FeedData(feed=" + this.vFY + ", recTime=" + this.vFZ + ")";
+        AppMethodBeat.o(251969);
+        return str;
       }
-      else
-      {
-        AppMethodBeat.o(167051);
-        return true;
-      }
-      AppMethodBeat.o(167051);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(167049);
-      String str = "Extra(pos=" + this.pos + ", lastBuffer=" + this.lastBuffer + ", upContinue=" + this.sdm + ", downContinue=" + this.sdn + ", hasExpand=" + this.sKK + ")";
-      AppMethodBeat.o(167049);
-      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.e
  * JD-Core Version:    0.7.0.1
  */

@@ -7,60 +7,60 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bwu;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.ui.aq;
-import d.a.j;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.ckm;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.at;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "lyricsBitmaps", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorInfo;", "matrix", "Landroid/graphics/Matrix;", "(Ljava/util/List;Landroid/graphics/Matrix;)V", "DP_1", "", "LAST_INTERVAL", "", "LYRICS_PRE_NEXT", "LYRICS_VERTICAL_OFFSET", "", "TRANS_TIME", "WAVE_DECREMENT", "WAVE_INCREMENT", "WAVE_INVALIDAT_INTERVAL", "WAVE_RECT_COUNT", "WAVE_RECT_HEIGHT", "WAVE_RECT_MIN_HEIGHT", "WAVE_RECT_OFFSET", "WAVE_RECT_WIDTH", "alpha", "curIndex", "duration", "getLyricsBitmaps", "()Ljava/util/List;", "waveAlpha", "wavePaint", "Landroid/graphics/Paint;", "getWavePaint", "()Landroid/graphics/Paint;", "setWavePaint", "(Landroid/graphics/Paint;)V", "waveRects", "", "Landroid/graphics/RectF;", "[Landroid/graphics/RectF;", "waveTargetHeight", "", "waveTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "drawWave", "fillAlpha", "fillWaveAlpha", "appearTime", "init", "nextIndex", "prepareNext", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "lyricsBitmaps", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorInfo;", "matrix", "Landroid/graphics/Matrix;", "(Ljava/util/List;Landroid/graphics/Matrix;)V", "DP_1", "", "LAST_INTERVAL", "", "LYRICS_PRE_NEXT", "LYRICS_VERTICAL_OFFSET", "", "TRANS_TIME", "WAVE_DECREMENT", "WAVE_INCREMENT", "WAVE_INVALIDAT_INTERVAL", "WAVE_RECT_COUNT", "WAVE_RECT_HEIGHT", "WAVE_RECT_MIN_HEIGHT", "WAVE_RECT_OFFSET", "WAVE_RECT_WIDTH", "alpha", "curIndex", "duration", "getLyricsBitmaps", "()Ljava/util/List;", "waveAlpha", "wavePaint", "Landroid/graphics/Paint;", "getWavePaint", "()Landroid/graphics/Paint;", "setWavePaint", "(Landroid/graphics/Paint;)V", "waveRects", "", "Landroid/graphics/RectF;", "[Landroid/graphics/RectF;", "waveTargetHeight", "", "waveTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "drawWave", "fillAlpha", "fillWaveAlpha", "appearTime", "init", "nextIndex", "prepareNext", "plugin-recordvideo_release"})
 public final class g
   extends a
 {
+  private long CfC;
+  private int CfD;
+  private final long CfE;
+  private final long CfF;
+  private final long CfG;
+  private final int CfH;
+  private final float CfI;
+  private final float CfJ;
+  private final int CfK;
+  private final float CfL;
+  private final float CfM;
+  private final float CfN;
+  private final int CfO;
+  private final RectF[] CfP;
+  private final float[] CfQ;
+  private Paint CfU;
+  private final long Cgs;
+  private final List<f> Cgt;
   private int alpha;
   private long duration;
-  private final int oRy;
-  private int rss;
-  private long yeA;
-  private int yeB;
-  private final long yeC;
-  private final long yeD;
-  private final long yeE;
-  private final int yeF;
-  private final float yeG;
-  private final float yeH;
-  private final int yeI;
-  private final float yeJ;
-  private final float yeK;
-  private final float yeL;
-  private final int yeM;
-  private final RectF[] yeN;
-  private final float[] yeO;
-  private Paint yeS;
-  private final long yft;
-  private final List<f> yfu;
+  private final int qfm;
+  private int sTB;
   
   public g(List<f> paramList, Matrix paramMatrix)
   {
     super(paramMatrix);
-    AppMethodBeat.i(207027);
-    this.yfu = paramList;
-    this.yft = 16L;
-    this.yeC = 50L;
-    this.yeD = 200L;
-    this.yeE = 3000L;
-    this.yeF = 11;
-    this.oRy = aq.fromDPToPix(ak.getContext(), 1);
-    this.yeG = (this.oRy * 1.5F);
-    this.yeH = (this.oRy * 9.0F);
-    this.yeI = this.oRy;
-    this.yeJ = (this.oRy * 1.5F);
-    this.yeK = (this.oRy * 12.0F);
-    this.yeL = (this.oRy * 2.0F);
-    this.yeM = this.oRy;
-    int j = this.yeF;
+    AppMethodBeat.i(237868);
+    this.Cgt = paramList;
+    this.Cgs = 16L;
+    this.CfE = 50L;
+    this.CfF = 200L;
+    this.CfG = 3000L;
+    this.CfH = 11;
+    this.qfm = at.fromDPToPix(MMApplicationContext.getContext(), 1);
+    this.CfI = (this.qfm * 1.5F);
+    this.CfJ = (this.qfm * 9.0F);
+    this.CfK = this.qfm;
+    this.CfL = (this.qfm * 1.5F);
+    this.CfM = (this.qfm * 12.0F);
+    this.CfN = (this.qfm * 2.0F);
+    this.CfO = this.qfm;
+    int j = this.CfH;
     paramList = new RectF[j];
     int i = 0;
     while (i < j)
@@ -68,30 +68,25 @@ public final class g
       paramList[i] = new RectF();
       i += 1;
     }
-    this.yeN = paramList;
-    this.yeO = new float[this.yeF];
-    this.yeS = new Paint();
-    AppMethodBeat.o(207027);
-  }
-  
-  public final long dLx()
-  {
-    return this.yft;
+    this.CfP = paramList;
+    this.CfQ = new float[this.CfH];
+    this.CfU = new Paint();
+    AppMethodBeat.o(237868);
   }
   
   public final void destroy() {}
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(207026);
+    AppMethodBeat.i(237867);
     p.h(paramCanvas, "canvas");
     p.h(paramPaint, "paint");
     paramCanvas.save();
-    Bitmap localBitmap = ((f)this.yfu.get(this.rss)).bitmap;
+    Bitmap localBitmap = ((f)this.Cgt.get(this.sTB)).bitmap;
     if (localBitmap != null)
     {
-      this.duration += this.pYA;
-      Object localObject1 = (f)j.F(this.yfu, this.rss + 1);
+      this.duration += this.rpy;
+      Object localObject1 = (f)j.L(this.Cgt, this.sTB + 1);
       long l2;
       label236:
       long l3;
@@ -106,56 +101,56 @@ public final class g
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((f)localObject1).yfs;
+        localObject1 = ((f)localObject1).Cgr;
         if (localObject1 != null)
         {
-          l1 = ((bwu)localObject1).startTime;
+          l1 = ((ckm)localObject1).startTime;
           if (this.duration >= l1)
           {
-            this.rss += 1;
-            if (this.rss >= this.yfu.size())
+            this.sTB += 1;
+            if (this.sTB >= this.Cgt.size())
             {
-              this.rss = 0;
+              this.sTB = 0;
               this.duration = 0L;
-              this.yeA = 0L;
+              this.CfC = 0L;
             }
           }
-          if (this.rss < this.yfu.size())
+          if (this.sTB < this.Cgt.size())
           {
-            l2 = ((f)this.yfu.get(this.rss)).yfs.startTime;
-            localObject1 = (f)j.F(this.yfu, this.rss + 1);
+            l2 = ((f)this.Cgt.get(this.sTB)).Cgr.startTime;
+            localObject1 = (f)j.L(this.Cgt, this.sTB + 1);
             if (localObject1 == null) {
               break label597;
             }
-            localObject1 = ((f)localObject1).yfs;
+            localObject1 = ((f)localObject1).Cgr;
             if (localObject1 == null) {
               break label597;
             }
-            l1 = ((bwu)localObject1).startTime;
-            l3 = this.yeD;
+            l1 = ((ckm)localObject1).startTime;
+            l3 = this.CfF;
             l4 = this.duration - l2;
             if (0L <= l4) {
               break label629;
             }
-            l3 = this.yeD;
+            l3 = this.CfF;
             l4 = l1 - this.duration;
             if (0L <= l4) {
               break label663;
             }
-            if ((this.duration - l2 > this.yeD) && (l1 - this.duration > this.yeD)) {
+            if ((this.duration - l2 > this.CfF) && (l1 - this.duration > this.CfF)) {
               this.alpha = 255;
             }
           }
           paramPaint.setAlpha(this.alpha);
-          paramCanvas.concat(this.gR);
-          if (this.yfu.isEmpty()) {
+          paramCanvas.concat(this.gT);
+          if (this.Cgt.isEmpty()) {
             break label909;
           }
-          if ((this.yeA != 0L) && (this.duration - this.yeA <= this.yeC)) {
+          if ((this.CfC != 0L) && (this.duration - this.CfC <= this.CfE)) {
             break label746;
           }
-          this.yeA = this.duration;
-          localObject1 = this.yeN;
+          this.CfC = this.duration;
+          localObject1 = this.CfP;
           i = 0;
           int k = localObject1.length;
           j = 0;
@@ -165,12 +160,12 @@ public final class g
           }
           localObject2 = localObject1[j];
           f2 = localObject2.height();
-          if (f2 > this.yeI) {
+          if (f2 > this.CfK) {
             break label697;
           }
-          this.yeO[i] = ((float)(this.yeH * Math.random()));
+          this.CfQ[i] = ((float)(this.CfJ * Math.random()));
           label447:
-          if (f2 > this.yeO[i]) {
+          if (f2 > this.CfQ[i]) {
             break label725;
           }
         }
@@ -178,61 +173,61 @@ public final class g
       label663:
       label697:
       label725:
-      for (float f2 = Math.min(f2 + this.yeL, this.yeH);; f2 = Math.max(f2 - this.yeM, this.yeI))
+      for (float f2 = Math.min(f2 + this.CfN, this.CfJ);; f2 = Math.max(f2 - this.CfO, this.CfK))
       {
-        float f3 = this.yeJ;
-        float f4 = this.yeH / 2.0F;
+        float f3 = this.CfL;
+        float f4 = this.CfJ / 2.0F;
         float f5 = f2 / 2.0F;
-        float f6 = this.yeJ;
-        float f7 = this.yeG;
-        float f8 = this.yeH / 2.0F;
+        float f6 = this.CfL;
+        float f7 = this.CfI;
+        float f8 = this.CfJ / 2.0F;
         localObject2.set(f3 + f1, f4 - f5, f1 + f6 + f7, f2 / 2.0F + f8);
         f1 = localObject2.right;
         j += 1;
         i += 1;
         break label398;
-        l1 = ((f)this.yfu.get(this.rss)).yfs.startTime + this.yeE;
+        l1 = ((f)this.Cgt.get(this.sTB)).Cgr.startTime + this.CfG;
         break;
         label597:
-        l1 = ((f)this.yfu.get(this.rss)).yfs.startTime + this.yeE;
+        l1 = ((f)this.Cgt.get(this.sTB)).Cgr.startTime + this.CfG;
         break label236;
         label629:
         if (l3 < l4) {
           break label258;
         }
-        this.alpha = ((int)(255.0F * (float)(this.duration - l2) / (float)this.yeD));
+        this.alpha = ((int)(255.0F * (float)(this.duration - l2) / (float)this.CfF));
         break label317;
         if (l3 < l4) {
           break label280;
         }
-        this.alpha = ((int)((float)(l1 - this.duration) / (float)this.yeD * 255.0F));
+        this.alpha = ((int)((float)(l1 - this.duration) / (float)this.CfF * 255.0F));
         break label317;
-        if (f2 < this.yeO[i]) {
+        if (f2 < this.CfQ[i]) {
           break label447;
         }
-        this.yeO[i] = this.yeI;
+        this.CfQ[i] = this.CfK;
         break label447;
       }
       label746:
-      long l1 = ((f)this.yfu.get(0)).yfs.startTime;
-      if (this.yeB < 255)
+      long l1 = ((f)this.Cgt.get(0)).Cgr.startTime;
+      if (this.CfD < 255)
       {
-        l2 = this.yeD;
+        l2 = this.CfF;
         l3 = this.duration - l1;
         if (0L <= l3) {
           break label875;
         }
-        if (this.duration - l1 <= this.yeD) {}
+        if (this.duration - l1 <= this.CfF) {}
       }
-      for (this.yeB = 255;; this.yeB = ((int)((float)(this.duration - l1) * 255.0F / (float)this.yeD)))
+      for (this.CfD = 255;; this.CfD = ((int)((float)(this.duration - l1) * 255.0F / (float)this.CfF)))
       {
-        this.yeS.setAlpha(this.yeB);
-        localObject1 = this.yeN;
+        this.CfU.setAlpha(this.CfD);
+        localObject1 = this.CfP;
         j = localObject1.length;
         i = 0;
         while (i < j)
         {
-          paramCanvas.drawRect(localObject1[i], this.yeS);
+          paramCanvas.drawRect(localObject1[i], this.CfU);
           i += 1;
         }
         label875:
@@ -241,23 +236,28 @@ public final class g
         }
       }
       label909:
-      paramCanvas.drawBitmap(localBitmap, 0.0F, this.yeK, paramPaint);
+      paramCanvas.drawBitmap(localBitmap, 0.0F, this.CfM, paramPaint);
       paramPaint.setAlpha(255);
     }
     paramCanvas.restore();
-    AppMethodBeat.o(207026);
+    AppMethodBeat.o(237867);
+  }
+  
+  public final long eMv()
+  {
+    return this.Cgs;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(207025);
-    this.yeS.setColor(Color.parseColor("#CCFFFFFF"));
-    AppMethodBeat.o(207025);
+    AppMethodBeat.i(237866);
+    this.CfU.setColor(Color.parseColor("#CCFFFFFF"));
+    AppMethodBeat.o(237866);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.g
  * JD-Core Version:    0.7.0.1
  */

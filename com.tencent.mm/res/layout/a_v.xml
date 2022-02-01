@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/pz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.tab.GameTabWidget android:id="@id/g41" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.plugin.game.ui.GameIndexListView android:id="@id/cbc" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/g41" />
-</RelativeLayout>
+<FrameLayout android:id="@id/hpj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:layout_width="wrap_content" android:layout_height="@dimen/cs" android:layout_centerInParent="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hpk" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginRight="@dimen/ct" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d9j" style="@style/zi" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/ct" android:src="@raw/icons_filled_arrow" />
+        </LinearLayout>
+        <View android:background="@color/m9" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</FrameLayout>

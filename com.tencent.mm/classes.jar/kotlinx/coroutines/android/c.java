@@ -5,30 +5,30 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
-import d.p;
-import d.q;
-import d.v;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import kotlin.Result;
+import kotlin.ResultKt;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"MAX_DELAY", "", "Main", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Main$annotations", "()V", "choreographer", "Landroid/view/Choreographer;", "awaitFrame", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "postFrameCallback", "", "cont", "Lkotlinx/coroutines/CancellableContinuation;", "updateChoreographerAndPostFrameCallback", "asCoroutineDispatcher", "Landroid/os/Handler;", "name", "", "from", "asHandler", "Landroid/os/Looper;", "async", "", "kotlinx-coroutines-android"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"MAX_DELAY", "", "Main", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Main$annotations", "()V", "choreographer", "Landroid/view/Choreographer;", "awaitFrame", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "postFrameCallback", "", "cont", "Lkotlinx/coroutines/CancellableContinuation;", "updateChoreographerAndPostFrameCallback", "asCoroutineDispatcher", "Landroid/os/Handler;", "name", "", "from", "asHandler", "Landroid/os/Looper;", "async", "", "kotlinx-coroutines-android"})
 public final class c
 {
-  public static final b Ogy;
+  public static final b TVv;
   
   static
   {
     AppMethodBeat.i(107780);
     try
     {
-      Object localObject1 = p.Nhh;
-      localObject1 = p.eO(new a(q(Looper.getMainLooper()), "Main"));
+      Object localObject1 = Result.Companion;
+      localObject1 = Result.constructor-impl(new a(k(Looper.getMainLooper()), "Main"));
       localObject3 = localObject1;
-      if (p.eM(localObject1)) {
+      if (Result.isFailure-impl(localObject1)) {
         localObject3 = null;
       }
-      Ogy = (b)localObject3;
+      TVv = (b)localObject3;
       AppMethodBeat.o(107780);
       return;
     }
@@ -36,13 +36,13 @@ public final class c
     {
       for (;;)
       {
-        Object localObject3 = p.Nhh;
-        Object localObject2 = p.eO(q.p(localThrowable));
+        Object localObject3 = Result.Companion;
+        Object localObject2 = Result.constructor-impl(ResultKt.createFailure(localThrowable));
       }
     }
   }
   
-  public static final Handler q(Looper paramLooper)
+  public static final Handler k(Looper paramLooper)
   {
     AppMethodBeat.i(107779);
     if (Build.VERSION.SDK_INT < 16)
@@ -56,7 +56,7 @@ public final class c
       paramLooper = Handler.class.getDeclaredMethod("createAsync", new Class[] { Looper.class }).invoke(null, new Object[] { paramLooper });
       if (paramLooper == null)
       {
-        paramLooper = new v("null cannot be cast to non-null type android.os.Handler");
+        paramLooper = new t("null cannot be cast to non-null type android.os.Handler");
         AppMethodBeat.o(107779);
         throw paramLooper;
       }
@@ -81,7 +81,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.android.c
  * JD-Core Version:    0.7.0.1
  */

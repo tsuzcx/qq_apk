@@ -7,12 +7,12 @@ import java.util.concurrent.RejectedExecutionException;
 
 public class ReflectMethod
 {
-  private Object[] mArguments;
-  private Class<?> mClass;
-  private Object mInstance;
-  private Method mMethod;
-  private String mName;
-  private Class<?>[] mParameterTypes;
+  protected Object[] mArguments;
+  protected Class<?> mClass;
+  protected Object mInstance;
+  protected Method mMethod;
+  protected String mName;
+  protected Class<?>[] mParameterTypes;
   
   public ReflectMethod() {}
   
@@ -175,7 +175,7 @@ public class ReflectMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.ReflectMethod
  * JD-Core Version:    0.7.0.1
  */

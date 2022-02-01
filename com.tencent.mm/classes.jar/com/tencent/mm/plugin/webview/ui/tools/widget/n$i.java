@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
-import d.v;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class n$i
   implements Runnable
 {
@@ -16,18 +16,18 @@ final class n$i
   public final void run()
   {
     AppMethodBeat.i(182679);
-    n.g(this.EJN);
-    Object localObject = this.EJN.getContext().getSystemService("input_method");
+    n.g(this.JzC);
+    Object localObject = this.JzC.getContext().getSystemService("input_method");
     if (localObject == null)
     {
-      localObject = new v("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
+      localObject = new t("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
       AppMethodBeat.o(182679);
       throw ((Throwable)localObject);
     }
     localObject = (InputMethodManager)localObject;
     if (localObject != null)
     {
-      ((InputMethodManager)localObject).showSoftInput((View)n.b(this.EJN), 0);
+      ((InputMethodManager)localObject).showSoftInput((View)n.b(this.JzC), 0);
       AppMethodBeat.o(182679);
       return;
     }
@@ -36,7 +36,7 @@ final class n$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.n.i
  * JD-Core Version:    0.7.0.1
  */

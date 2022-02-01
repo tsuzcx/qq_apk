@@ -19,31 +19,32 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.al.a.b;
 import com.tencent.mm.al.a.d.a;
 import com.tencent.mm.al.a.d.a.a;
 import com.tencent.mm.al.a.d.a.b;
-import com.tencent.mm.al.a.l;
+import com.tencent.mm.al.a.k;
 import com.tencent.mm.al.a.o;
 import com.tencent.mm.al.a.y;
 import com.tencent.mm.al.ag;
 import com.tencent.mm.al.p;
 import com.tencent.mm.chatroom.ui.preference.SignaturePreference;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl.a;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp.a;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.auj;
-import com.tencent.mm.protocal.protobuf.nb;
-import com.tencent.mm.protocal.protobuf.nd;
-import com.tencent.mm.protocal.protobuf.ne;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.aeb;
+import com.tencent.mm.protocal.protobuf.aec;
+import com.tencent.mm.protocal.protobuf.bfs;
+import com.tencent.mm.protocal.protobuf.nt;
+import com.tencent.mm.protocal.protobuf.nv;
+import com.tencent.mm.protocal.protobuf.nw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h.b;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -57,69 +58,69 @@ import org.json.JSONObject;
 
 public class BizChatroomInfoUI
   extends MMPreference
-  implements com.tencent.mm.ak.f, p
+  implements i, p
 {
-  private static boolean fPl = false;
-  private boolean Brw;
-  private int GbJ;
-  private com.tencent.mm.al.d JPK;
-  private d.a JPM;
-  private com.tencent.mm.al.a.c JPa;
-  private String JQS;
-  private boolean JQT;
-  private boolean JQU;
-  private com.tencent.mm.al.a.k JQV;
-  private ProgressDialog fOC;
-  private ContactListExpandPreference fOK;
-  private CheckBoxPreference fOL;
-  private CheckBoxPreference fOM;
-  private CheckBoxPreference fON;
-  private boolean fOU;
-  private int fOW;
-  private boolean fOX;
-  private com.tencent.mm.pluginsdk.ui.e fPf;
-  boolean fPg;
-  private SignaturePreference fTo;
+  private static boolean guv = false;
+  private k BeV;
+  private boolean FCj;
+  private int KVI;
+  private com.tencent.mm.al.d PaO;
+  private d.a PaQ;
+  private com.tencent.mm.al.a.c Pag;
+  private String PbX;
+  private boolean PbY;
+  private boolean PbZ;
+  private k Pca;
   private int fromScene;
+  private ProgressDialog gtM;
+  private ContactListExpandPreference gtU;
+  private CheckBoxPreference gtV;
+  private CheckBoxPreference gtW;
+  private CheckBoxPreference gtX;
+  private boolean gue;
+  private int gug;
+  private boolean guh;
+  private com.tencent.mm.pluginsdk.ui.e gup;
+  boolean guq;
+  private SignaturePreference gyv;
   private boolean isDeleteCancel;
-  private String oeQ;
-  private long oex;
+  private String ppO;
+  private long ppv;
   private com.tencent.mm.ui.base.preference.f screen;
   private SharedPreferences sp;
-  private com.tencent.mm.al.a.k xhi;
   
   public BizChatroomInfoUI()
   {
     AppMethodBeat.i(34063);
-    this.fOC = null;
+    this.gtM = null;
     this.sp = null;
-    this.fOU = false;
-    this.JQT = false;
-    this.JPa = null;
-    this.xhi = null;
-    this.JQV = null;
-    this.fPf = new com.tencent.mm.pluginsdk.ui.e(new AbsListView.OnScrollListener()
+    this.gue = false;
+    this.PbY = false;
+    this.Pag = null;
+    this.BeV = null;
+    this.Pca = null;
+    this.gup = new com.tencent.mm.pluginsdk.ui.e(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
       {
         AppMethodBeat.i(34048);
-        com.tencent.mm.av.q.aJb().cp(paramAnonymousInt);
+        com.tencent.mm.av.q.bcV().onScrollStateChanged(paramAnonymousInt);
         AppMethodBeat.o(34048);
       }
     });
-    this.fPg = false;
+    this.guq = false;
     this.isDeleteCancel = false;
-    this.JPM = new d.a()
+    this.PaQ = new d.a()
     {
       public final void a(d.a.b paramAnonymousb)
       {
         AppMethodBeat.i(34051);
-        if ((paramAnonymousb != null) && (paramAnonymousb.hUC != null) && (paramAnonymousb.hUr == BizChatroomInfoUI.g(BizChatroomInfoUI.this)) && (paramAnonymousb.hUB != d.a.a.hUy))
+        if ((paramAnonymousb != null) && (paramAnonymousb.iPP != null) && (paramAnonymousb.iPE == BizChatroomInfoUI.g(BizChatroomInfoUI.this)) && (paramAnonymousb.iPO != d.a.a.iPL))
         {
-          ae.i("MicroMsg.BizChatroomInfoUI", "bizChatExtension bizChat change");
-          paramAnonymousb = ag.aGr().bd(BizChatroomInfoUI.g(BizChatroomInfoUI.this));
+          Log.i("MicroMsg.BizChatroomInfoUI", "bizChatExtension bizChat change");
+          paramAnonymousb = ag.baj().bs(BizChatroomInfoUI.g(BizChatroomInfoUI.this));
           BizChatroomInfoUI.a(BizChatroomInfoUI.this, paramAnonymousb);
           BizChatroomInfoUI.h(BizChatroomInfoUI.this);
         }
@@ -129,145 +130,22 @@ public class BizChatroomInfoUI
     AppMethodBeat.o(34063);
   }
   
-  private void YK()
-  {
-    AppMethodBeat.i(34075);
-    Object localObject;
-    if (this.fOK != null)
-    {
-      if (!this.JQT) {
-        break label103;
-      }
-      localObject = com.tencent.mm.al.a.e.sm(this.oex);
-      if (localObject == null) {
-        break label128;
-      }
-      this.fOW = ((List)localObject).size();
-      label41:
-      if (this.fOW > 1) {
-        break label136;
-      }
-      this.fOK.vW(true).vX(false);
-    }
-    for (;;)
-    {
-      if (this.JPK.field_hide_mod_chat_member) {
-        this.fOK.vW(false).vX(false);
-      }
-      this.fOK.B(this.oeQ, (List)localObject);
-      AppMethodBeat.o(34075);
-      return;
-      label103:
-      localObject = new LinkedList();
-      ((List)localObject).add(this.JPa.field_bizChatServId);
-      break;
-      label128:
-      this.fOW = 0;
-      break label41;
-      label136:
-      this.fOK.vW(true).vX(this.fOU);
-    }
-  }
-  
-  private void YL()
-  {
-    AppMethodBeat.i(34078);
-    if (this.sp == null) {
-      this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    }
-    if (this.JQT)
-    {
-      this.fOX = this.JPa.hk(1);
-      this.GbJ = this.JPa.field_bitFlag;
-      if (!this.fOX) {
-        break label156;
-      }
-      setTitleMuteIconVisibility(0);
-      if (this.fOL != null) {
-        this.sp.edit().putBoolean("room_notify_new_msg", true).commit();
-      }
-    }
-    for (;;)
-    {
-      this.screen.notifyDataSetChanged();
-      AppMethodBeat.o(34078);
-      return;
-      this.fOX = this.xhi.hk(1);
-      this.GbJ = this.xhi.field_bitFlag;
-      break;
-      label156:
-      setTitleMuteIconVisibility(8);
-      if (this.fOL != null) {
-        this.sp.edit().putBoolean("room_notify_new_msg", false).commit();
-      }
-    }
-  }
-  
-  private void YN()
-  {
-    AppMethodBeat.i(34079);
-    if (this.fTo != null)
-    {
-      if (YO())
-      {
-        Object localObject2 = this.JPa.field_chatName;
-        Object localObject1 = localObject2;
-        if (localObject2 != null)
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).length() > 50) {
-            localObject1 = ((String)localObject2).substring(0, 32);
-          }
-        }
-        ae.i("MicroMsg.BizChatroomInfoUI", "updateRoomName chatName:%s", new Object[] { localObject1 });
-        SignaturePreference localSignaturePreference = this.fTo;
-        if (localObject1 != null)
-        {
-          localObject2 = localObject1;
-          if (((String)localObject1).length() > 0) {}
-        }
-        else
-        {
-          localObject2 = getString(2131763409);
-        }
-        localSignaturePreference.setSummary(com.tencent.mm.pluginsdk.ui.span.k.c(this, (CharSequence)localObject2));
-        AppMethodBeat.o(34079);
-        return;
-      }
-      this.fTo.setSummary(getString(2131762622));
-    }
-    AppMethodBeat.o(34079);
-  }
-  
-  private boolean YO()
-  {
-    AppMethodBeat.i(34081);
-    if (this.JQT) {}
-    for (String str = this.JPa.field_chatName; bu.isNullOrNil(str); str = this.xhi.field_userName)
-    {
-      AppMethodBeat.o(34081);
-      return false;
-    }
-    AppMethodBeat.o(34081);
-    return true;
-  }
-  
-  private void a(final ne paramne1, ne paramne2)
+  private void a(final nw paramnw1, nw paramnw2)
   {
     AppMethodBeat.i(34070);
-    ae.i("MicroMsg.BizChatroomInfoUI", "updateBizChatMemberList()");
-    if (paramne1 == null) {}
-    for (String str = getString(2131762595);; str = getString(2131755168))
+    Log.i("MicroMsg.BizChatroomInfoUI", "updateBizChatMemberList()");
+    if (paramnw1 == null) {}
+    for (String str = getString(2131764675);; str = getString(2131755186))
     {
-      ag.aGx();
-      paramne1 = com.tencent.mm.al.a.h.a(this.JPa.field_brandUserName, this.JPa.field_bizChatServId, paramne1, paramne2, this);
-      getString(2131755906);
-      this.fOC = com.tencent.mm.ui.base.h.b(this, str, true, new DialogInterface.OnCancelListener()
+      ag.baq();
+      paramnw1 = com.tencent.mm.al.a.h.a(this.Pag.field_brandUserName, this.Pag.field_bizChatServId, paramnw1, paramnw2, this);
+      getString(2131755998);
+      this.gtM = com.tencent.mm.ui.base.h.a(this, str, true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(34054);
-          bc.ajj().a(paramne1);
+          bg.azz().a(paramnw1);
           AppMethodBeat.o(34054);
         }
       });
@@ -276,7 +154,168 @@ public class BizChatroomInfoUI
     }
   }
   
-  private boolean aXo(String paramString)
+  private void ad(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(34073);
+    this.KVI = this.Pag.field_bitFlag;
+    this.PbX = this.Pag.field_chatName;
+    Object localObject;
+    if (this.PbY)
+    {
+      if (paramBoolean) {
+        localObject = this.Pag;
+      }
+      for (((com.tencent.mm.al.a.c)localObject).field_bitFlag |= paramInt;; ((com.tencent.mm.al.a.c)localObject).field_bitFlag &= (paramInt ^ 0xFFFFFFFF))
+      {
+        Log.i("MicroMsg.BizChatroomInfoUI", "dealSetMute:bitFlag %s", new Object[] { Integer.valueOf(this.Pag.field_bitFlag) });
+        ag.baj().b(this.Pag);
+        localObject = new nt();
+        ((nt)localObject).KTl = this.Pag.field_bizChatServId;
+        ((nt)localObject).KTn = this.Pag.field_bitFlag;
+        ag.baq();
+        com.tencent.mm.al.a.h.a(this.Pag.field_brandUserName, (nt)localObject, this);
+        AppMethodBeat.o(34073);
+        return;
+        localObject = this.Pag;
+      }
+    }
+    if (paramBoolean) {
+      localObject = this.BeV;
+    }
+    for (((k)localObject).field_bitFlag |= paramInt;; ((k)localObject).field_bitFlag &= (paramInt ^ 0xFFFFFFFF))
+    {
+      ag.bal().b(this.BeV);
+      this.Pag.field_bitFlag = this.BeV.field_bitFlag;
+      ag.baj().b(this.Pag);
+      break;
+      localObject = this.BeV;
+    }
+  }
+  
+  private void amA()
+  {
+    AppMethodBeat.i(34079);
+    if (this.gyv != null)
+    {
+      if (amB())
+      {
+        Object localObject2 = this.Pag.field_chatName;
+        Object localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).length() > 50) {
+            localObject1 = ((String)localObject2).substring(0, 32);
+          }
+        }
+        Log.i("MicroMsg.BizChatroomInfoUI", "updateRoomName chatName:%s", new Object[] { localObject1 });
+        SignaturePreference localSignaturePreference = this.gyv;
+        if (localObject1 != null)
+        {
+          localObject2 = localObject1;
+          if (((String)localObject1).length() > 0) {}
+        }
+        else
+        {
+          localObject2 = getString(2131765591);
+        }
+        localSignaturePreference.setSummary(com.tencent.mm.pluginsdk.ui.span.l.c(this, (CharSequence)localObject2));
+        AppMethodBeat.o(34079);
+        return;
+      }
+      this.gyv.setSummary(getString(2131764704));
+    }
+    AppMethodBeat.o(34079);
+  }
+  
+  private boolean amB()
+  {
+    AppMethodBeat.i(34081);
+    if (this.PbY) {}
+    for (String str = this.Pag.field_chatName; Util.isNullOrNil(str); str = this.BeV.field_userName)
+    {
+      AppMethodBeat.o(34081);
+      return false;
+    }
+    AppMethodBeat.o(34081);
+    return true;
+  }
+  
+  private void amx()
+  {
+    AppMethodBeat.i(34075);
+    Object localObject;
+    if (this.gtU != null)
+    {
+      if (!this.PbY) {
+        break label105;
+      }
+      localObject = com.tencent.mm.al.a.e.As(this.ppv);
+      if (localObject == null) {
+        break label130;
+      }
+      this.gug = ((List)localObject).size();
+      label42:
+      if (this.gug > 1) {
+        break label138;
+      }
+      this.gtU.zU(true).zV(false);
+    }
+    for (;;)
+    {
+      if (this.PaO.field_hide_mod_chat_member) {
+        this.gtU.zU(false).zV(false);
+      }
+      this.gtU.H(this.ppO, (List)localObject);
+      AppMethodBeat.o(34075);
+      return;
+      label105:
+      localObject = new LinkedList();
+      ((List)localObject).add(this.Pag.field_bizChatServId);
+      break;
+      label130:
+      this.gug = 0;
+      break label42;
+      label138:
+      this.gtU.zU(true).zV(this.gue);
+    }
+  }
+  
+  private void amy()
+  {
+    AppMethodBeat.i(34078);
+    if (this.sp == null) {
+      this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
+    }
+    if (this.PbY)
+    {
+      this.guh = this.Pag.iE(1);
+      this.KVI = this.Pag.field_bitFlag;
+      if (!this.guh) {
+        break label160;
+      }
+      setTitleMuteIconVisibility(0);
+      if (this.gtV != null) {
+        this.sp.edit().putBoolean("room_notify_new_msg", true).commit();
+      }
+    }
+    for (;;)
+    {
+      this.screen.notifyDataSetChanged();
+      AppMethodBeat.o(34078);
+      return;
+      this.guh = this.BeV.iE(1);
+      this.KVI = this.BeV.field_bitFlag;
+      break;
+      label160:
+      setTitleMuteIconVisibility(8);
+      if (this.gtV != null) {
+        this.sp.edit().putBoolean("room_notify_new_msg", false).commit();
+      }
+    }
+  }
+  
+  private boolean bms(String paramString)
   {
     AppMethodBeat.i(34069);
     if (paramString != null) {}
@@ -285,130 +324,92 @@ public class BizChatroomInfoUI
       try
       {
         JSONArray localJSONArray = new JSONArray(paramString);
-        ne localne = new ne();
+        nw localnw = new nw();
         int i = 0;
         if (i < localJSONArray.length())
         {
           localObject = localJSONArray.getJSONObject(i);
           String str = ((JSONObject)localObject).getString("id");
-          paramString = ag.aGt().eP(str);
+          paramString = ag.bal().fB(str);
           if (paramString != null) {
-            break label264;
+            break label261;
           }
-          paramString = new com.tencent.mm.al.a.k();
+          paramString = new k();
           paramString.field_userId = str;
           paramString.field_userName = ((JSONObject)localObject).getString("nick_name");
-          paramString.field_brandUserName = this.oeQ;
+          paramString.field_brandUserName = this.ppO;
           paramString.field_headImageUrl = ((JSONObject)localObject).getString("head_img_url");
           paramString.field_profileUrl = ((JSONObject)localObject).getString("profile_url");
           paramString.field_UserVersion = ((JSONObject)localObject).getInt("ver");
-          if (this.JQV == null) {
-            break label267;
+          if (this.Pca == null) {
+            break label264;
           }
-          localObject = this.JQV.field_addMemberUrl;
+          localObject = this.Pca.field_addMemberUrl;
           paramString.field_addMemberUrl = ((String)localObject);
-          if (!ag.aGt().b(paramString)) {
-            ag.aGt().a(paramString);
+          if (!ag.bal().b(paramString)) {
+            ag.bal().a(paramString);
           }
-          localObject = new nd();
-          ((nd)localObject).FZy = paramString.field_userId;
-          localne.FZz.add(localObject);
+          localObject = new nv();
+          ((nv)localObject).KTu = paramString.field_userId;
+          localnw.KTv.add(localObject);
           i += 1;
           continue;
         }
-        a(localne, null);
+        a(localnw, null);
         AppMethodBeat.o(34069);
         return true;
       }
       catch (JSONException paramString)
       {
-        ae.i("MicroMsg.BizChatroomInfoUI", "parse memberJson Exception:%s", new Object[] { paramString.getMessage() });
-        ae.printErrStackTrace("MicroMsg.BizChatroomInfoUI", paramString, "", new Object[0]);
+        Log.i("MicroMsg.BizChatroomInfoUI", "parse memberJson Exception:%s", new Object[] { paramString.getMessage() });
+        Log.printErrStackTrace("MicroMsg.BizChatroomInfoUI", paramString, "", new Object[0]);
       }
       AppMethodBeat.o(34069);
       return false;
-      label264:
+      label261:
       continue;
-      label267:
+      label264:
       Object localObject = null;
     }
   }
   
-  private void ab(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(34073);
-    this.GbJ = this.JPa.field_bitFlag;
-    this.JQS = this.JPa.field_chatName;
-    Object localObject;
-    if (this.JQT)
-    {
-      if (paramBoolean) {
-        localObject = this.JPa;
-      }
-      for (((com.tencent.mm.al.a.c)localObject).field_bitFlag |= paramInt;; ((com.tencent.mm.al.a.c)localObject).field_bitFlag &= (paramInt ^ 0xFFFFFFFF))
-      {
-        ae.i("MicroMsg.BizChatroomInfoUI", "dealSetMute:bitFlag %s", new Object[] { Integer.valueOf(this.JPa.field_bitFlag) });
-        ag.aGr().b(this.JPa);
-        localObject = new nb();
-        ((nb)localObject).FZq = this.JPa.field_bizChatServId;
-        ((nb)localObject).FZs = this.JPa.field_bitFlag;
-        ag.aGx();
-        com.tencent.mm.al.a.h.a(this.JPa.field_brandUserName, (nb)localObject, this);
-        AppMethodBeat.o(34073);
-        return;
-        localObject = this.JPa;
-      }
-    }
-    if (paramBoolean) {
-      localObject = this.xhi;
-    }
-    for (((com.tencent.mm.al.a.k)localObject).field_bitFlag |= paramInt;; ((com.tencent.mm.al.a.k)localObject).field_bitFlag &= (paramInt ^ 0xFFFFFFFF))
-    {
-      ag.aGt().b(this.xhi);
-      this.JPa.field_bitFlag = this.xhi.field_bitFlag;
-      ag.aGr().b(this.JPa);
-      break;
-      localObject = this.xhi;
-    }
-  }
-  
-  private void dEb()
+  private void eEu()
   {
     AppMethodBeat.i(34077);
-    ae.d("MicroMsg.BizChatroomInfoUI", "updatePlaceTop()");
+    Log.d("MicroMsg.BizChatroomInfoUI", "updatePlaceTop()");
     if (this.sp == null) {
       this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
     }
-    if (this.JQT) {
-      this.JQU = this.JPa.hk(16);
+    if (this.PbY) {
+      this.PbZ = this.Pag.iE(16);
     }
-    for (this.GbJ = this.JPa.field_bitFlag;; this.GbJ = this.xhi.field_bitFlag)
+    for (this.KVI = this.Pag.field_bitFlag;; this.KVI = this.BeV.field_bitFlag)
     {
-      if (this.fON != null) {
-        this.sp.edit().putBoolean("room_placed_to_the_top", this.JQU).commit();
+      if (this.gtX != null) {
+        this.sp.edit().putBoolean("room_placed_to_the_top", this.PbZ).commit();
       }
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(34077);
       return;
-      this.JQU = this.xhi.hk(16);
+      this.PbZ = this.BeV.iE(16);
     }
   }
   
-  private void fEc()
+  private void gMj()
   {
     AppMethodBeat.i(34076);
-    ae.d("MicroMsg.BizChatroomInfoUI", "updateSaveToContact()");
+    Log.d("MicroMsg.BizChatroomInfoUI", "updateSaveToContact()");
     if (this.sp == null) {
       this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
     }
-    if (this.JQT)
+    if (this.PbY)
     {
-      this.Brw = this.JPa.hk(8);
-      this.GbJ = this.JPa.field_bitFlag;
-      if (!this.Brw) {
+      this.FCj = this.Pag.iE(8);
+      this.KVI = this.Pag.field_bitFlag;
+      if (!this.FCj) {
         break label165;
       }
-      if (this.fOM != null) {
+      if (this.gtW != null) {
         this.sp.edit().putBoolean("room_save_to_contact", true).commit();
       }
     }
@@ -417,41 +418,41 @@ public class BizChatroomInfoUI
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(34076);
       return;
-      this.Brw = this.xhi.hk(8);
-      this.GbJ = this.xhi.field_bitFlag;
+      this.FCj = this.BeV.iE(8);
+      this.KVI = this.BeV.field_bitFlag;
       break;
       label165:
-      if (this.fOM != null) {
+      if (this.gtW != null) {
         this.sp.edit().putBoolean("room_save_to_contact", false).commit();
       }
     }
   }
   
-  private void fEd()
+  private void gMk()
   {
     AppMethodBeat.i(34085);
-    ae.i("MicroMsg.BizChatroomInfoUI", "dealModChatNameFail reset bizChatName");
-    this.JPa.field_chatName = this.JQS;
-    this.JPa.field_bitFlag = this.GbJ;
-    this.fOX = this.JPa.hk(1);
-    this.Brw = this.JPa.hk(8);
-    this.JQU = this.JPa.hk(16);
-    ag.aGr().b(this.JPa);
-    if (this.JQU) {
-      ag.aGs().sj(this.JPa.field_bizChatLocalId);
+    Log.i("MicroMsg.BizChatroomInfoUI", "dealModChatNameFail reset bizChatName");
+    this.Pag.field_chatName = this.PbX;
+    this.Pag.field_bitFlag = this.KVI;
+    this.guh = this.Pag.iE(1);
+    this.FCj = this.Pag.iE(8);
+    this.PbZ = this.Pag.iE(16);
+    ag.baj().b(this.Pag);
+    if (this.PbZ) {
+      ag.bak().Ap(this.Pag.field_bizChatLocalId);
     }
     for (;;)
     {
-      this.sp.edit().putBoolean("room_placed_to_the_top", ag.aGs().si(this.JPa.field_bizChatLocalId)).commit();
-      YN();
-      YL();
-      dEb();
-      fEc();
-      Toast.makeText(this, getString(2131762584), 0).show();
+      this.sp.edit().putBoolean("room_placed_to_the_top", ag.bak().Ao(this.Pag.field_bizChatLocalId)).commit();
+      amA();
+      amy();
+      eEu();
+      gMj();
+      Toast.makeText(this, getString(2131764662), 0).show();
       AppMethodBeat.o(34085);
       return;
-      if (!this.JQU) {
-        ag.aGs().sk(this.JPa.field_bizChatLocalId);
+      if (!this.PbZ) {
+        ag.bak().Aq(this.Pag.field_bizChatLocalId);
       }
     }
   }
@@ -459,15 +460,15 @@ public class BizChatroomInfoUI
   private void onDataChanged()
   {
     AppMethodBeat.i(34084);
-    if (this.fOK != null)
+    if (this.gtU != null)
     {
-      YN();
+      amA();
       updateTitle();
-      YL();
-      YK();
-      fEc();
-      dEb();
-      this.fOK.notifyChanged();
+      amy();
+      amx();
+      gMj();
+      eEu();
+      this.gtU.notifyChanged();
     }
     this.screen.notifyDataSetChanged();
     AppMethodBeat.o(34084);
@@ -476,36 +477,36 @@ public class BizChatroomInfoUI
   private void updateTitle()
   {
     AppMethodBeat.i(34080);
-    if (this.JQT)
+    if (this.PbY)
     {
-      this.fOW = com.tencent.mm.al.a.e.sl(this.oex);
-      if (this.fOW != 0)
+      this.gug = com.tencent.mm.al.a.e.Ar(this.ppv);
+      if (this.gug != 0)
       {
-        setMMTitle(getString(2131759496, new Object[] { getString(2131762729), Integer.valueOf(this.fOW) }));
+        setMMTitle(getString(2131760811, new Object[] { getString(2131764812), Integer.valueOf(this.gug) }));
         AppMethodBeat.o(34080);
         return;
       }
     }
-    setMMTitle(getString(2131762729));
+    setMMTitle(getString(2131764812));
     AppMethodBeat.o(34080);
   }
   
-  public final void a(int paramInt, n paramn)
+  public final void a(int paramInt, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(34082);
-    if (this.fOC != null)
+    if (this.gtM != null)
     {
-      this.fOC.dismiss();
-      this.fOC = null;
+      this.gtM.dismiss();
+      this.gtM = null;
     }
-    if (paramn.getType() == 1355)
+    if (paramq.getType() == 1355)
     {
-      Object localObject = ((o)paramn).aGK();
-      paramn = ((o)paramn).aGL();
-      localObject = ag.aGr().EQ(((aca)localObject).GtU.GLl.FZq);
+      Object localObject = ((o)paramq).baD();
+      paramq = ((o)paramq).baE();
+      localObject = ag.baj().NE(((aec)localObject).Lpw.LPp.KTl);
       if (localObject == null)
       {
-        Toast.makeText(ak.getContext(), getString(2131762583), 0).show();
+        Toast.makeText(MMApplicationContext.getContext(), getString(2131764661), 0).show();
         AppMethodBeat.o(34082);
         return;
       }
@@ -514,49 +515,49 @@ public class BizChatroomInfoUI
         localIntent = new Intent();
         localIntent.addFlags(67108864);
         localIntent.putExtra("biz_chat_need_to_jump_to_chatting_ui", true);
-        localIntent.putExtra("Contact_User", paramn.FZx);
+        localIntent.putExtra("Contact_User", paramq.KTt);
         localIntent.putExtra("biz_chat_chat_id", ((com.tencent.mm.al.a.c)localObject).field_bizChatLocalId);
-        com.tencent.mm.br.d.f(this, ".ui.bizchat.BizChatConversationUI", localIntent);
+        com.tencent.mm.br.c.f(this, ".ui.bizchat.BizChatConversationUI", localIntent);
         AppMethodBeat.o(34082);
         return;
       }
       Intent localIntent = new Intent();
       localIntent.addFlags(67108864);
-      localIntent.putExtra("Chat_User", paramn.FZx);
+      localIntent.putExtra("Chat_User", paramq.KTt);
       localIntent.putExtra("key_biz_chat_id", ((com.tencent.mm.al.a.c)localObject).field_bizChatLocalId);
       localIntent.putExtra("finish_direct", true);
       localIntent.putExtra("key_need_send_video", false);
       localIntent.putExtra("key_is_biz_chat", true);
       localIntent.setClass(this, ChattingUI.class);
-      paramn = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramn.ahE(), "com/tencent/mm/ui/bizchat/BizChatroomInfoUI", "onBizChatSceneEnd", "(ILcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramn.mt(0));
+      paramq = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramq.axQ(), "com/tencent/mm/ui/bizchat/BizChatroomInfoUI", "onBizChatSceneEnd", "(ILcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramq.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/bizchat/BizChatroomInfoUI", "onBizChatSceneEnd", "(ILcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(34082);
       return;
     }
-    if (paramn.getType() == 1356)
+    if (paramq.getType() == 1356)
     {
       if (paramInt != 0)
       {
-        fEd();
+        gMk();
         AppMethodBeat.o(34082);
       }
     }
-    else if ((paramn.getType() == 1353) && (paramInt >= 0) && (this.xhi != null))
+    else if ((paramq.getType() == 1353) && (paramInt >= 0) && (this.BeV != null))
     {
-      this.xhi = ag.aGt().eP(this.xhi.field_userId);
+      this.BeV = ag.bal().fB(this.BeV.field_userId);
       onDataChanged();
     }
     AppMethodBeat.o(34082);
   }
   
-  public final com.tencent.mm.al.a.k adj(int paramInt)
+  public final k alT(int paramInt)
   {
     AppMethodBeat.i(34074);
-    if ((this.fOK.getItem(paramInt) instanceof com.tencent.mm.al.a.k))
+    if ((this.gtU.getItem(paramInt) instanceof k))
     {
-      com.tencent.mm.al.a.k localk = (com.tencent.mm.al.a.k)this.fOK.getItem(paramInt);
+      k localk = (k)this.gtU.getItem(paramInt);
       AppMethodBeat.o(34074);
       return localk;
     }
@@ -574,71 +575,71 @@ public class BizChatroomInfoUI
   
   public int getResourceId()
   {
-    return 2131951632;
+    return 2132017169;
   }
   
   public void initView()
   {
     AppMethodBeat.i(34071);
     this.screen = getPreferenceScreen();
-    Object localObject = this.JPa.field_ownerUserId;
-    this.fOW = this.JPa.aGE().size();
-    if (bu.isNullOrNil((String)localObject))
+    Object localObject = this.Pag.field_ownerUserId;
+    this.gug = this.Pag.bax().size();
+    if (Util.isNullOrNil((String)localObject))
     {
-      this.fOU = false;
-      localObject = ag.aGp().Ef(this.oeQ);
-      this.JPK = ag.aGy().Ea(((com.tencent.mm.api.c)localObject).KD());
-      ae.i("MicroMsg.BizChatroomInfoUI", "getMainBrandAttr father %s", new Object[] { ((com.tencent.mm.api.c)localObject).KD() });
-      ae.d("MicroMsg.BizChatroomInfoUI", "initBaseChatRoomView()");
-      this.fOK = ((ContactListExpandPreference)this.screen.aXe("roominfo_contact_anchor"));
-      this.fOK.a(this.screen, this.fOK.mKey);
-      this.fTo = ((SignaturePreference)this.screen.aXe("room_name"));
-      this.fOL = ((CheckBoxPreference)this.screen.aXe("room_notify_new_msg"));
-      this.fON = ((CheckBoxPreference)this.screen.aXe("room_placed_to_the_top"));
-      this.fOM = ((CheckBoxPreference)this.screen.aXe("room_save_to_contact"));
-      localObject = this.fOK;
-      boolean bool = this.JQT;
-      if (((ContactListExpandPreference)localObject).Fph != null) {
-        ((ContactListExpandPreference)localObject).Fph.Fox.FoK = bool;
+      this.gue = false;
+      localObject = ag.bah().MT(this.ppO);
+      this.PaO = ag.bar().MO(((com.tencent.mm.api.c)localObject).UN());
+      Log.i("MicroMsg.BizChatroomInfoUI", "getMainBrandAttr father %s", new Object[] { ((com.tencent.mm.api.c)localObject).UN() });
+      Log.d("MicroMsg.BizChatroomInfoUI", "initBaseChatRoomView()");
+      this.gtU = ((ContactListExpandPreference)this.screen.bmg("roominfo_contact_anchor"));
+      this.gtU.a(this.screen, this.gtU.mKey);
+      this.gyv = ((SignaturePreference)this.screen.bmg("room_name"));
+      this.gtV = ((CheckBoxPreference)this.screen.bmg("room_notify_new_msg"));
+      this.gtX = ((CheckBoxPreference)this.screen.bmg("room_placed_to_the_top"));
+      this.gtW = ((CheckBoxPreference)this.screen.bmg("room_save_to_contact"));
+      localObject = this.gtU;
+      boolean bool = this.PbY;
+      if (((ContactListExpandPreference)localObject).KfY != null) {
+        ((ContactListExpandPreference)localObject).KfY.Kfo.KfB = bool;
       }
-      localObject = this.fOK;
-      bool = this.fOU;
-      if (((ContactListExpandPreference)localObject).Fph != null) {
-        ((ContactListExpandPreference)localObject).Fph.Fox.FoJ = bool;
+      localObject = this.gtU;
+      bool = this.gue;
+      if (((ContactListExpandPreference)localObject).KfY != null) {
+        ((ContactListExpandPreference)localObject).KfY.Kfo.KfA = bool;
       }
-      if (!this.fOU) {
-        break label488;
+      if (!this.gue) {
+        break label487;
       }
-      this.fOK.vW(true).vX(true);
+      this.gtU.zU(true).zV(true);
     }
     for (;;)
     {
-      if (this.JPK.field_hide_mod_chat_member) {
-        this.fOK.vW(false).vX(false);
+      if (this.PaO.field_hide_mod_chat_member) {
+        this.gtU.zU(false).zV(false);
       }
-      this.fOK.aOr(this.JPa.field_ownerUserId);
-      this.fOK.fgx();
-      this.fOK.fgr();
-      if (!this.JQT)
+      this.gtU.beT(this.Pag.field_ownerUserId);
+      this.gtU.gpG();
+      this.gtU.gpA();
+      if (!this.PbY)
       {
-        this.screen.cT("room_save_to_contact", true);
-        this.screen.cT("room_name", true);
-        this.screen.cT("room_del_quit", true);
+        this.screen.jdMethod_do("room_save_to_contact", true);
+        this.screen.jdMethod_do("room_name", true);
+        this.screen.jdMethod_do("room_del_quit", true);
       }
-      fEc();
-      dEb();
-      YL();
-      if (this.fOK != null)
+      gMj();
+      eEu();
+      amy();
+      if (this.gtU != null)
       {
-        getListView().setOnScrollListener(this.fPf);
-        this.fOK.a(this.fPf);
-        this.fOK.a(new ContactListExpandPreference.a()
+        getListView().setOnScrollListener(this.gup);
+        this.gtU.a(this.gup);
+        this.gtU.a(new ContactListExpandPreference.a()
         {
-          public final void YS()
+          public final void amF()
           {
             AppMethodBeat.i(34057);
             if (BizChatroomInfoUI.b(BizChatroomInfoUI.this) != null) {
-              BizChatroomInfoUI.b(BizChatroomInfoUI.this).fgv();
+              BizChatroomInfoUI.b(BizChatroomInfoUI.this).gpE();
             }
             AppMethodBeat.o(34057);
           }
@@ -646,37 +647,37 @@ public class BizChatroomInfoUI
           public final void e(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
           {
             boolean bool = true;
-            AppMethodBeat.i(187108);
-            paramAnonymousViewGroup = BizChatroomInfoUI.this.adj(paramAnonymousInt);
-            if ((paramAnonymousViewGroup == null) || (bu.isNullOrNil(paramAnonymousViewGroup.field_profileUrl)))
+            AppMethodBeat.i(232794);
+            paramAnonymousViewGroup = BizChatroomInfoUI.this.alT(paramAnonymousInt);
+            if ((paramAnonymousViewGroup == null) || (Util.isNullOrNil(paramAnonymousViewGroup.field_profileUrl)))
             {
               if (paramAnonymousViewGroup == null) {}
               for (;;)
               {
-                ae.w("MicroMsg.BizChatroomInfoUI", "onItemNormalClick userInfo == null:%s", new Object[] { Boolean.valueOf(bool) });
-                AppMethodBeat.o(187108);
+                Log.w("MicroMsg.BizChatroomInfoUI", "onItemNormalClick userInfo == null:%s", new Object[] { Boolean.valueOf(bool) });
+                AppMethodBeat.o(232794);
                 return;
                 bool = false;
               }
             }
-            ae.i("MicroMsg.BizChatroomInfoUI", "onItemNormalClick Url:%s", new Object[] { paramAnonymousViewGroup.field_profileUrl });
-            ag.aGx();
+            Log.i("MicroMsg.BizChatroomInfoUI", "onItemNormalClick Url:%s", new Object[] { paramAnonymousViewGroup.field_profileUrl });
+            ag.baq();
             com.tencent.mm.al.a.h.a(paramAnonymousViewGroup.field_userId, paramAnonymousViewGroup.field_brandUserName, BizChatroomInfoUI.this);
             Intent localIntent = new Intent();
             localIntent.putExtra("rawUrl", paramAnonymousViewGroup.field_profileUrl);
             localIntent.putExtra("useJs", true);
-            com.tencent.mm.br.d.b(BizChatroomInfoUI.this.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
-            AppMethodBeat.o(187108);
+            com.tencent.mm.br.c.b(BizChatroomInfoUI.this.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+            AppMethodBeat.o(232794);
           }
           
-          public final void le(int paramAnonymousInt)
+          public final void og(int paramAnonymousInt)
           {
             AppMethodBeat.i(34055);
             BizChatroomInfoUI.a(BizChatroomInfoUI.this, paramAnonymousInt);
             AppMethodBeat.o(34055);
           }
           
-          public final void lf(int paramAnonymousInt)
+          public final void oh(int paramAnonymousInt)
           {
             AppMethodBeat.i(34058);
             BizChatroomInfoUI.c(BizChatroomInfoUI.this);
@@ -696,10 +697,10 @@ public class BizChatroomInfoUI
       });
       AppMethodBeat.o(34071);
       return;
-      this.fOU = ((String)localObject).equals(ag.aGt().eQ(this.oeQ));
+      this.gue = ((String)localObject).equals(ag.bal().fC(this.ppO));
       break;
-      label488:
-      this.fOK.vW(true).vX(false);
+      label487:
+      this.gtU.zU(true).zV(false);
     }
   }
   
@@ -723,46 +724,46 @@ public class BizChatroomInfoUI
     boolean bool;
     if (paramIntent != null)
     {
-      ae.i("MicroMsg.BizChatroomInfoUI", "bundle != null");
+      Log.i("MicroMsg.BizChatroomInfoUI", "bundle != null");
       str = paramIntent.getString("enterprise_members");
-      ae.i("MicroMsg.BizChatroomInfoUI", "enterprise_members:%s", new Object[] { str });
-      if (this.JQT) {
-        bool = aXo(str);
+      Log.i("MicroMsg.BizChatroomInfoUI", "enterprise_members:%s", new Object[] { str });
+      if (this.PbY) {
+        bool = bms(str);
       }
     }
     for (;;)
     {
       if (!bool)
       {
-        Toast.makeText(this, getString(2131762583), 0).show();
+        Toast.makeText(this, getString(2131764661), 0).show();
         AppMethodBeat.o(34068);
         return;
-        auj localauj = new auj();
+        bfs localbfs = new bfs();
         com.tencent.mm.al.a.c localc = new com.tencent.mm.al.a.c();
-        if (this.JQV != null) {}
-        for (paramIntent = this.JQV.field_addMemberUrl;; paramIntent = null)
+        if (this.Pca != null) {}
+        for (paramIntent = this.Pca.field_addMemberUrl;; paramIntent = null)
         {
           localc.field_addMemberUrl = paramIntent;
-          localc.field_brandUserName = this.oeQ;
-          if (!com.tencent.mm.al.a.e.a(localc, str, this.xhi.field_userId, localauj)) {
-            break label267;
+          localc.field_brandUserName = this.ppO;
+          if (!com.tencent.mm.al.a.e.a(localc, str, this.BeV.field_userId, localbfs)) {
+            break label263;
           }
-          ag.aGx();
-          paramIntent = com.tencent.mm.al.a.h.a(this.oeQ, localauj, this);
-          getString(2131755906);
-          this.fOC = com.tencent.mm.ui.base.h.b(this, getString(2131755168), true, new DialogInterface.OnCancelListener()
+          ag.baq();
+          paramIntent = com.tencent.mm.al.a.h.a(this.ppO, localbfs, this);
+          getString(2131755998);
+          this.gtM = com.tencent.mm.ui.base.h.a(this, getString(2131755186), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymousDialogInterface)
             {
               AppMethodBeat.i(34053);
-              bc.ajj().a(paramIntent);
+              bg.azz().a(paramIntent);
               AppMethodBeat.o(34053);
             }
           });
           bool = true;
           break;
         }
-        label267:
+        label263:
         bool = false;
       }
       else
@@ -778,41 +779,41 @@ public class BizChatroomInfoUI
   {
     AppMethodBeat.i(34064);
     super.onCreate(paramBundle);
-    ag.aGr().a(this.JPM, Looper.getMainLooper());
+    ag.baj().a(this.PaQ, Looper.getMainLooper());
     this.fromScene = getIntent().getIntExtra("key_biz_chat_info_from_scene", -1);
-    this.oeQ = getIntent().getStringExtra("Chat_User");
-    this.oex = getIntent().getLongExtra("key_biz_chat_id", -1L);
-    this.JPa = ag.aGr().bd(this.oex);
-    this.JQS = this.JPa.field_chatName;
-    this.JQT = com.tencent.mm.al.a.e.ES(this.JPa.field_bizChatServId);
-    if (!this.JQT) {
-      this.xhi = ag.aGt().eP(this.JPa.field_bizChatServId);
+    this.ppO = getIntent().getStringExtra("Chat_User");
+    this.ppv = getIntent().getLongExtra("key_biz_chat_id", -1L);
+    this.Pag = ag.baj().bs(this.ppv);
+    this.PbX = this.Pag.field_chatName;
+    this.PbY = com.tencent.mm.al.a.e.NG(this.Pag.field_bizChatServId);
+    if (!this.PbY) {
+      this.BeV = ag.bal().fB(this.Pag.field_bizChatServId);
     }
-    this.JQV = ag.aGt().Fd(this.oeQ);
+    this.Pca = ag.bal().NQ(this.ppO);
     initView();
-    if ((this.JPa == null) || (this.JPa.field_bizChatServId == null) || (this.oeQ == null))
+    if ((this.Pag == null) || (this.Pag.field_bizChatServId == null) || (this.ppO == null))
     {
       AppMethodBeat.o(34064);
       return;
     }
-    if (this.JPa.isGroup())
+    if (this.Pag.isGroup())
     {
-      ag.aGx();
-      com.tencent.mm.al.a.h.bj(this.JPa.field_bizChatServId, this.oeQ);
+      ag.baq();
+      com.tencent.mm.al.a.h.bn(this.Pag.field_bizChatServId, this.ppO);
       AppMethodBeat.o(34064);
       return;
     }
-    ag.aGx();
-    com.tencent.mm.al.a.h.a(this.JPa.field_bizChatServId, this.oeQ, this);
+    ag.baq();
+    com.tencent.mm.al.a.h.a(this.Pag.field_bizChatServId, this.ppO, this);
     AppMethodBeat.o(34064);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(34067);
-    com.tencent.mm.ui.h.a.dismiss();
-    com.tencent.mm.ui.h.a.dismiss();
-    ag.aGr().a(this.JPM);
+    com.tencent.mm.ui.i.a.dismiss();
+    com.tencent.mm.ui.i.a.dismiss();
+    ag.baj().a(this.PaQ);
     super.onDestroy();
     AppMethodBeat.o(34067);
   }
@@ -833,10 +834,10 @@ public class BizChatroomInfoUI
     if (paramf.equals("room_name"))
     {
       paramf = "";
-      if (YO()) {
-        paramf = this.JPa.field_chatName;
+      if (amB()) {
+        paramf = this.Pag.field_chatName;
       }
-      com.tencent.mm.ui.base.h.a(getContext(), getString(2131762654), paramf, "", 32, new h.b()
+      com.tencent.mm.ui.base.h.a(getContext(), getString(2131764737), paramf, "", 32, new h.b()
       {
         public final boolean onFinish(CharSequence paramAnonymousCharSequence)
         {
@@ -847,7 +848,7 @@ public class BizChatroomInfoUI
         }
       });
     }
-    label188:
+    label187:
     do
     {
       for (;;)
@@ -856,38 +857,38 @@ public class BizChatroomInfoUI
         return false;
         if (paramf.equals("room_notify_new_msg"))
         {
-          if (!this.fOX) {}
+          if (!this.guh) {}
           for (bool1 = true;; bool1 = false)
           {
-            this.fOX = bool1;
-            ab(this.fOX, 1);
-            YL();
+            this.guh = bool1;
+            ad(this.guh, 1);
+            amy();
             break;
           }
         }
         if (paramf.equals("room_placed_to_the_top"))
         {
-          if (!this.JQU) {}
+          if (!this.PbZ) {}
           for (;;)
           {
-            this.JQU = bool1;
-            ab(this.JQU, 16);
-            if (!this.JQU) {
-              break label188;
+            this.PbZ = bool1;
+            ad(this.PbZ, 16);
+            if (!this.PbZ) {
+              break label187;
             }
-            ag.aGs().sj(this.JPa.field_bizChatLocalId);
+            ag.bak().Ap(this.Pag.field_bizChatLocalId);
             break;
             bool1 = false;
           }
-          ag.aGs().sk(this.JPa.field_bizChatLocalId);
+          ag.bak().Aq(this.Pag.field_bizChatLocalId);
         }
         else
         {
           if (!paramf.equals("room_del_quit")) {
             break;
           }
-          ae.d("MicroMsg.BizChatroomInfoUI", " quit " + this.oex);
-          com.tencent.mm.ui.base.h.a(getContext(), getString(2131758025), "", new DialogInterface.OnClickListener()
+          Log.d("MicroMsg.BizChatroomInfoUI", " quit " + this.ppv);
+          com.tencent.mm.ui.base.h.a(getContext(), getString(2131758277), "", new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -899,12 +900,12 @@ public class BizChatroomInfoUI
         }
       }
     } while (!paramf.equals("room_save_to_contact"));
-    if (!this.Brw) {}
+    if (!this.FCj) {}
     for (bool1 = bool2;; bool1 = false)
     {
-      this.Brw = bool1;
-      ab(this.Brw, 8);
-      fEc();
+      this.FCj = bool1;
+      ad(this.FCj, 8);
+      gMj();
       break;
     }
   }
@@ -912,55 +913,55 @@ public class BizChatroomInfoUI
   public void onResume()
   {
     AppMethodBeat.i(34065);
-    YN();
+    amA();
     updateTitle();
-    YL();
-    dEb();
-    fEc();
-    YK();
+    amy();
+    eEu();
+    gMj();
+    amx();
     this.screen.notifyDataSetChanged();
     super.onResume();
-    if (!this.fPg)
+    if (!this.guq)
     {
       String str = getIntent().getStringExtra("need_matte_high_light_item");
-      if (!bu.isNullOrNil(str))
+      if (!Util.isNullOrNil(str))
       {
-        final int i = this.screen.aXg(str);
+        final int i = this.screen.bmj(str);
         setSelection(i - 3);
-        new aq().postDelayed(new Runnable()
+        new MMHandler().postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(34052);
             View localView = ((com.tencent.mm.ui.base.preference.a)BizChatroomInfoUI.a(BizChatroomInfoUI.this)).a(i, BizChatroomInfoUI.this.getListView());
             if (localView != null) {
-              com.tencent.mm.ui.h.a.c(BizChatroomInfoUI.this.getContext(), localView);
+              com.tencent.mm.ui.i.a.c(BizChatroomInfoUI.this.getContext(), localView);
             }
             AppMethodBeat.o(34052);
           }
         }, 10L);
       }
-      this.fPg = true;
+      this.guq = true;
     }
     AppMethodBeat.o(34065);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(34083);
-    if (paramn == null)
+    if (paramq == null)
     {
-      ae.e("MicroMsg.BizChatroomInfoUI", "onSceneEnd: [%d], [%d], [%s], scene is null", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      Log.e("MicroMsg.BizChatroomInfoUI", "onSceneEnd: [%d], [%d], [%s], scene is null", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       AppMethodBeat.o(34083);
       return;
     }
-    ae.i("MicroMsg.BizChatroomInfoUI", "onSceneEnd: [%d], [%d], [%s], sceneType[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
-    this.fOW = com.tencent.mm.al.a.e.sl(this.oex);
-    ae.d("MicroMsg.BizChatroomInfoUI", "now is " + this.fOW);
-    if (this.fOC != null) {
-      this.fOC.dismiss();
+    Log.i("MicroMsg.BizChatroomInfoUI", "onSceneEnd: [%d], [%d], [%s], sceneType[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramq.getType()) });
+    this.gug = com.tencent.mm.al.a.e.Ar(this.ppv);
+    Log.d("MicroMsg.BizChatroomInfoUI", "now is " + this.gug);
+    if (this.gtM != null) {
+      this.gtM.dismiss();
     }
-    paramString = com.tencent.mm.h.a.uU(paramString);
+    paramString = com.tencent.mm.h.a.Dk(paramString);
     if (paramString != null)
     {
       paramString.a(this, null, null);
@@ -969,12 +970,12 @@ public class BizChatroomInfoUI
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ae.w("MicroMsg.BizChatroomInfoUI", "willen onSceneEnd err:Network not ok");
-      fEd();
+      Log.w("MicroMsg.BizChatroomInfoUI", "willen onSceneEnd err:Network not ok");
+      gMk();
       AppMethodBeat.o(34083);
       return;
     }
-    paramn.getType();
+    paramq.getType();
     AppMethodBeat.o(34083);
   }
   
@@ -986,7 +987,7 @@ public class BizChatroomInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatroomInfoUI
  * JD-Core Version:    0.7.0.1
  */

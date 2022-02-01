@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ public final class b
     AppMethodBeat.o(72168);
   }
   
-  public final int eIr()
+  public final int fPU()
   {
     return 16;
   }
@@ -30,7 +30,7 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72169);
-    ae.d("MicroMsg", "errCode " + paramInt + " errMsg: " + paramString);
+    Log.d("MicroMsg", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72169);
@@ -41,7 +41,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.a.b
  * JD-Core Version:    0.7.0.1
  */

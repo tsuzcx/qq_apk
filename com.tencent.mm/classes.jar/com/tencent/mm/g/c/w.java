@@ -2,33 +2,24 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class w
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandWxaPkgManifestRecordPkgPathIndex ON AppBrandWxaPkgManifestRecord(pkgPath)" };
-  private static final int eEX = "startTime".hashCode();
-  private static final int eEY = "endTime".hashCode();
-  private static final int eFO;
-  private static final int eGD = "appId".hashCode();
-  private static final int eHN;
-  private static final int eHT = "version".hashCode();
-  private static final int eHU;
-  private static final int eHV;
-  private static final int eHW;
-  private static final int eHX;
+  private static final int createTime_HASHCODE;
+  private static final int fjx = "startTime".hashCode();
+  private static final int fjy = "endTime".hashCode();
+  private static final int fkj = "appId".hashCode();
+  private static final int flp;
+  private static final int flv = "version".hashCode();
+  private static final int flw;
+  private static final int flx;
+  private static final int fly;
+  private static final int flz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEQ = true;
-  private boolean eER = true;
-  private boolean eFr = true;
-  private boolean eGm = true;
-  private boolean eHM = true;
-  private boolean eHO = true;
-  private boolean eHP = true;
-  private boolean eHQ = true;
-  private boolean eHR = true;
-  private boolean eHS = true;
+  private boolean __hadSetcreateTime = true;
   public String field_NewMd5;
   public String field_appId;
   public long field_createTime;
@@ -39,15 +30,24 @@ public abstract class w
   public long field_startTime;
   public int field_version;
   public String field_versionMd5;
+  private boolean fjS = true;
+  private boolean fjq = true;
+  private boolean fjr = true;
+  private boolean flo = true;
+  private boolean flq = true;
+  private boolean flr = true;
+  private boolean fls = true;
+  private boolean flt = true;
+  private boolean flu = true;
   
   static
   {
-    eHN = "versionMd5".hashCode();
-    eHU = "NewMd5".hashCode();
-    eHV = "pkgPath".hashCode();
-    eFO = "createTime".hashCode();
-    eHW = "debugType".hashCode();
-    eHX = "downloadURL".hashCode();
+    flp = "versionMd5".hashCode();
+    flw = "NewMd5".hashCode();
+    flx = "pkgPath".hashCode();
+    createTime_HASHCODE = "createTime".hashCode();
+    fly = "debugType".hashCode();
+    flz = "downloadURL".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -63,7 +63,7 @@ public abstract class w
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGD != k) {
+      if (fkj != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -74,23 +74,23 @@ public abstract class w
       break label20;
       break;
       label60:
-      if (eHT == k) {
+      if (flv == k) {
         this.field_version = paramCursor.getInt(i);
-      } else if (eHN == k) {
+      } else if (flp == k) {
         this.field_versionMd5 = paramCursor.getString(i);
-      } else if (eHU == k) {
+      } else if (flw == k) {
         this.field_NewMd5 = paramCursor.getString(i);
-      } else if (eHV == k) {
+      } else if (flx == k) {
         this.field_pkgPath = paramCursor.getString(i);
-      } else if (eFO == k) {
+      } else if (createTime_HASHCODE == k) {
         this.field_createTime = paramCursor.getLong(i);
-      } else if (eHW == k) {
+      } else if (fly == k) {
         this.field_debugType = paramCursor.getInt(i);
-      } else if (eHX == k) {
+      } else if (flz == k) {
         this.field_downloadURL = paramCursor.getString(i);
-      } else if (eEX == k) {
+      } else if (fjx == k) {
         this.field_startTime = paramCursor.getLong(i);
-      } else if (eEY == k) {
+      } else if (fjy == k) {
         this.field_endTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -101,34 +101,34 @@ public abstract class w
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eHO) {
+    if (this.flq) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.eHM) {
+    if (this.flo) {
       localContentValues.put("versionMd5", this.field_versionMd5);
     }
-    if (this.eHP) {
+    if (this.flr) {
       localContentValues.put("NewMd5", this.field_NewMd5);
     }
-    if (this.eHQ) {
+    if (this.fls) {
       localContentValues.put("pkgPath", this.field_pkgPath);
     }
-    if (this.eFr) {
+    if (this.__hadSetcreateTime) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.eHR) {
+    if (this.flt) {
       localContentValues.put("debugType", Integer.valueOf(this.field_debugType));
     }
-    if (this.eHS) {
+    if (this.flu) {
       localContentValues.put("downloadURL", this.field_downloadURL);
     }
-    if (this.eEQ) {
+    if (this.fjq) {
       localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eER) {
+    if (this.fjr) {
       localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
     if (this.systemRowid > 0L) {
@@ -139,7 +139,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.w
  * JD-Core Version:    0.7.0.1
  */

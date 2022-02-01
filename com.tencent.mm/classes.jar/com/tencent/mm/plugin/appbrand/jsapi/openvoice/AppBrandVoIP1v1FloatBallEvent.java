@@ -9,26 +9,26 @@ public class AppBrandVoIP1v1FloatBallEvent
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandVoIP1v1FloatBallEvent> CREATOR;
-  public int dzC;
+  public int dRq;
   
   static
   {
-    AppMethodBeat.i(222611);
+    AppMethodBeat.i(226920);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(222611);
+    AppMethodBeat.o(226920);
   }
   
   public AppBrandVoIP1v1FloatBallEvent()
   {
-    this.dzC = 0;
+    this.dRq = 0;
   }
   
   public AppBrandVoIP1v1FloatBallEvent(Parcel paramParcel)
   {
-    AppMethodBeat.i(222609);
-    this.dzC = 0;
-    this.dzC = paramParcel.readInt();
-    AppMethodBeat.o(222609);
+    AppMethodBeat.i(226918);
+    this.dRq = 0;
+    this.dRq = paramParcel.readInt();
+    AppMethodBeat.o(226918);
   }
   
   public int describeContents()
@@ -38,14 +38,14 @@ public class AppBrandVoIP1v1FloatBallEvent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(222610);
-    paramParcel.writeInt(this.dzC);
-    AppMethodBeat.o(222610);
+    AppMethodBeat.i(226919);
+    paramParcel.writeInt(this.dRq);
+    AppMethodBeat.o(226919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.AppBrandVoIP1v1FloatBallEvent
  * JD-Core Version:    0.7.0.1
  */

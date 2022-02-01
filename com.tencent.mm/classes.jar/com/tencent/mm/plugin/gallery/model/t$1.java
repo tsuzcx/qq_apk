@@ -10,15 +10,15 @@ final class t$1
   public final void run()
   {
     AppMethodBeat.i(111377);
-    if (this.tSO.tSN != null) {
-      this.tSO.tSN.a(this.tSO);
+    if (this.xkb.xka != null) {
+      this.xkb.xka.a(this.xkb);
     }
     AppMethodBeat.o(111377);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.t.1
  * JD-Core Version:    0.7.0.1
  */

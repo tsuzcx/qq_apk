@@ -1,127 +1,151 @@
 package com.tencent.mm.ui;
 
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import kotlin.g.b.p;
 
-public final class ak<T>
+public final class ak
+  extends TouchDelegate
 {
-  private Field bMM;
-  private String classname;
-  private String fieldName;
-  private boolean gff;
-  private Object obj;
+  private static final Rect OLB;
+  public ArrayList<al> OLC;
+  public al OLD;
   
-  public ak(Object paramObject, String paramString)
+  static
   {
-    AppMethodBeat.i(159106);
-    if (paramObject == null)
-    {
-      paramObject = new IllegalArgumentException("obj cannot be null");
-      AppMethodBeat.o(159106);
-      throw paramObject;
-    }
-    this.obj = paramObject;
-    this.fieldName = paramString;
-    this.classname = null;
-    AppMethodBeat.o(159106);
+    AppMethodBeat.i(205133);
+    OLB = new Rect();
+    AppMethodBeat.o(205133);
   }
   
-  private void prepare()
+  public ak(View paramView)
   {
-    AppMethodBeat.i(159107);
-    if (this.gff)
-    {
-      AppMethodBeat.o(159107);
-      return;
-    }
-    this.gff = true;
-    Class localClass = this.obj.getClass();
-    while (localClass != null) {
-      try
-      {
-        Field localField1 = localClass.getDeclaredField(this.fieldName);
-        localField1.setAccessible(true);
-        this.bMM = localField1;
-        return;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          try
-          {
-            if ((this.classname != null) && (!this.classname.equals("")))
-            {
-              Field[] arrayOfField = localClass.getDeclaredFields();
-              int j = arrayOfField.length;
-              i = 0;
-              if (i < j)
-              {
-                Field localField2 = arrayOfField[i];
-                if (!localField2.getType().getName().equals(this.classname)) {
-                  continue;
-                }
-                localField2.setAccessible(true);
-                this.bMM = localField2;
-              }
-            }
-          }
-          catch (Exception localException2)
-          {
-            int i;
-            continue;
-          }
-          localClass = localClass.getSuperclass();
-          break;
-          i += 1;
-        }
-      }
-      finally
-      {
-        localClass.getSuperclass();
-        AppMethodBeat.o(159107);
-      }
-    }
-    AppMethodBeat.o(159107);
+    super(OLB, paramView);
   }
   
-  public final T get()
+  private static al a(ArrayList<al> paramArrayList, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(159108);
-    prepare();
-    Object localObject;
-    if (this.bMM == null)
+    AppMethodBeat.i(205132);
+    if (paramArrayList == null)
     {
-      localObject = new NoSuchFieldException();
-      AppMethodBeat.o(159108);
-      throw ((Throwable)localObject);
+      AppMethodBeat.o(205132);
+      return null;
     }
-    try
+    int m = paramArrayList.size();
+    if (m <= 0)
     {
-      localObject = this.bMM.get(this.obj);
-      AppMethodBeat.o(159108);
+      AppMethodBeat.o(205132);
+      return null;
+    }
+    if (m == 1)
+    {
+      paramArrayList = (al)paramArrayList.get(0);
+      AppMethodBeat.o(205132);
+      return paramArrayList;
+    }
+    int i = 2147483647;
+    Object localObject = null;
+    int j = 0;
+    if (j < m)
+    {
+      al localal = (al)paramArrayList.get(j);
+      p.h(paramMotionEvent, "event");
+      int[] arrayOfInt = new int[2];
+      localal.OLE.getLocationOnScreen(arrayOfInt);
+      int k = arrayOfInt[0];
+      int n = localal.OLE.getWidth() / 2;
+      int i1 = arrayOfInt[1];
+      int i2 = localal.OLE.getHeight() / 2;
+      k = (int)Math.sqrt(Math.pow(paramMotionEvent.getRawX() - (k + n), 2.0D) + Math.pow(paramMotionEvent.getRawY() - (i1 + i2), 2.0D));
+      if (k >= i) {
+        break label230;
+      }
+      i = k;
+      localObject = localal;
+    }
+    label230:
+    for (;;)
+    {
+      j += 1;
+      break;
+      if (i == 2147483647)
+      {
+        paramArrayList = (al)paramArrayList.get(0);
+        AppMethodBeat.o(205132);
+        return paramArrayList;
+      }
+      AppMethodBeat.o(205132);
       return localObject;
     }
-    catch (ClassCastException localClassCastException)
-    {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
-      AppMethodBeat.o(159108);
-      throw localIllegalArgumentException;
-    }
   }
   
-  public final void set(T paramT)
+  public final void a(al paramal)
   {
-    AppMethodBeat.i(159109);
-    prepare();
-    if (this.bMM == null)
-    {
-      paramT = new NoSuchFieldException();
-      AppMethodBeat.o(159109);
-      throw paramT;
+    AppMethodBeat.i(205130);
+    if (this.OLC == null) {
+      this.OLC = new ArrayList();
     }
-    this.bMM.set(this.obj, paramT);
-    AppMethodBeat.o(159109);
+    this.OLC.add(paramal);
+    AppMethodBeat.o(205130);
+  }
+  
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(205131);
+    Object localObject1;
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      localObject1 = localObject3;
+    }
+    while (localObject1 == null)
+    {
+      AppMethodBeat.o(205131);
+      return false;
+      localObject1 = localObject3;
+      if (this.OLC != null)
+      {
+        float f1 = paramMotionEvent.getX();
+        float f2 = paramMotionEvent.getY();
+        Iterator localIterator = this.OLC.iterator();
+        for (localObject1 = null; localIterator.hasNext(); localObject1 = localObject2)
+        {
+          label93:
+          al localal = (al)localIterator.next();
+          paramMotionEvent.setLocation(f1, f2);
+          if ((localal == null) || (!localal.onTouchEvent(paramMotionEvent))) {
+            break label93;
+          }
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new ArrayList();
+          }
+          ((ArrayList)localObject2).add(localal);
+        }
+        paramMotionEvent.setLocation(f1, f2);
+        Object localObject2 = a((ArrayList)localObject1, paramMotionEvent);
+        localObject1 = localObject3;
+        if (localObject2 != null)
+        {
+          this.OLD = ((al)localObject2);
+          AppMethodBeat.o(205131);
+          return true;
+          localObject1 = this.OLD;
+          continue;
+          localObject1 = this.OLD;
+          this.OLD = null;
+        }
+      }
+    }
+    boolean bool = ((TouchDelegate)localObject1).onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(205131);
+    return bool;
   }
 }
 

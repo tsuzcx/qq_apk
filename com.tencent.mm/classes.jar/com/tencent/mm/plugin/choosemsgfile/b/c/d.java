@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.choosemsgfile.b.c;
 
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.choosemsgfile.b.b.l;
@@ -16,7 +16,7 @@ public final class d
     super(paramc, paramList);
   }
   
-  public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
+  public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(123309);
     switch (paramInt)
@@ -33,7 +33,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,30 +6,39 @@ import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class ToolsProcessIPCService
   extends BaseIPCService
 {
-  static int gBc = 0;
-  private static a gBd;
+  public static final String dkO;
+  static int hnR;
+  private static a hnS;
+  
+  static
+  {
+    AppMethodBeat.i(225240);
+    dkO = MMApplicationContext.getPackageName() + ":tools";
+    hnR = 0;
+    AppMethodBeat.o(225240);
+  }
   
   public static void a(a parama)
   {
-    gBd = parama;
+    hnS = parama;
   }
   
   public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass)
   {
     AppMethodBeat.i(146441);
-    boolean bool2 = h.a("com.tencent.mm:tools", paramInputType, paramClass, null);
+    boolean bool2 = h.a(dkO, paramInputType, paramClass, null);
     boolean bool1 = bool2;
-    if (!aid()) {
-      if ((!h.a("com.tencent.mm:toolsmp", paramInputType, paramClass, null)) || (!bool2)) {
-        break label46;
+    if (!ayt()) {
+      if ((!h.a(ToolsMpProcessIPCService.dkO, paramInputType, paramClass, null)) || (!bool2)) {
+        break label48;
       }
     }
-    label46:
+    label48:
     for (bool1 = true;; bool1 = false)
     {
       AppMethodBeat.o(146441);
@@ -42,24 +51,24 @@ public class ToolsProcessIPCService
     boolean bool3 = true;
     AppMethodBeat.i(146440);
     boolean bool1;
-    if (ak.aRQ(ak.getPackageName() + ":tools")) {
-      if (h.a("com.tencent.mm:tools", paramInputType, paramClass, paramd)) {
+    if (MMApplicationContext.isProcessExist(MMApplicationContext.getPackageName() + ":tools")) {
+      if (h.a(dkO, paramInputType, paramClass, paramd)) {
         bool1 = true;
       }
     }
     for (;;)
     {
       boolean bool2 = bool1;
-      if (!aid())
+      if (!ayt())
       {
         bool2 = bool1;
-        if (ak.aRQ(ak.getPackageName() + ":toolsmp")) {
-          if ((!h.a("com.tencent.mm:toolsmp", paramInputType, paramClass, paramd)) || (!bool1)) {
-            break label121;
+        if (MMApplicationContext.isProcessExist(MMApplicationContext.getPackageName() + ":toolsmp")) {
+          if ((!h.a(ToolsMpProcessIPCService.dkO, paramInputType, paramClass, paramd)) || (!bool1)) {
+            break label123;
           }
         }
       }
-      label121:
+      label123:
       for (bool1 = bool3;; bool1 = false)
       {
         bool2 = bool1;
@@ -75,31 +84,31 @@ public class ToolsProcessIPCService
   public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(Class<T> paramClass, d<ResultType> paramd)
   {
     AppMethodBeat.i(146442);
-    boolean bool = h.a("com.tencent.mm:tools", null, paramClass, paramd);
+    boolean bool = h.a(dkO, null, paramClass, paramd);
     AppMethodBeat.o(146442);
     return bool;
   }
   
-  public static boolean aid()
+  public static boolean ayt()
   {
     AppMethodBeat.i(146439);
     boolean bool;
-    if (gBc == 0)
+    if (hnR == 0)
     {
-      a locala = gBd;
+      a locala = hnS;
       if (locala == null) {
         break label47;
       }
-      bool = locala.aid();
+      bool = locala.ayt();
       if (!bool) {
         break label52;
       }
     }
     label47:
     label52:
-    for (gBc = 1;; gBc = -1)
+    for (hnR = 1;; hnR = -1)
     {
-      if (gBc <= 0) {
+      if (hnR <= 0) {
         break label59;
       }
       AppMethodBeat.o(146439);
@@ -114,17 +123,17 @@ public class ToolsProcessIPCService
   
   public final String getProcessName()
   {
-    return "com.tencent.mm:tools";
+    return dkO;
   }
   
   public static abstract interface a
   {
-    public abstract boolean aid();
+    public abstract boolean ayt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService
  * JD-Core Version:    0.7.0.1
  */

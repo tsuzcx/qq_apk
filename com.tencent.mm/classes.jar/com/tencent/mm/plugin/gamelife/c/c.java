@@ -1,42 +1,48 @@
 package com.tencent.mm.plugin.gamelife.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.gamelife.b.h;
 import com.tencent.mm.plugin.gamelife.b.i;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionId;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionIdResponse;", "fromUserName", "", "toUserName", "(Ljava/lang/String;Ljava/lang/String;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionId;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionIdResponse;", "fromUserName", "", "toUserName", "scene", "", "extInfo", "Lcom/tencent/mm/protobuf/ByteString;", "(Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protobuf/ByteString;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"})
 public final class c
-  extends com.tencent.mm.ak.a<i>
+  extends com.tencent.mm.ak.c<i>
 {
   private static final String TAG = "MicroMsg.CgiGetChatSessionId";
-  public static final a uJf;
+  public static final a ybw;
   
   static
   {
-    AppMethodBeat.i(212039);
-    uJf = new a((byte)0);
+    AppMethodBeat.i(241279);
+    ybw = new a((byte)0);
     TAG = "MicroMsg.CgiGetChatSessionId";
-    AppMethodBeat.o(212039);
+    AppMethodBeat.o(241279);
   }
   
-  public c(String paramString1, String paramString2)
+  public c(String paramString1, String paramString2, int paramInt, b paramb)
   {
-    AppMethodBeat.i(212038);
-    b.a locala = new b.a();
+    AppMethodBeat.i(241278);
+    d.a locala = new d.a();
     h localh = new h();
-    localh.oBM = paramString1;
-    localh.oBN = paramString2;
-    locala.c((com.tencent.mm.bw.a)localh);
-    locala.d((com.tencent.mm.bw.a)new i());
-    locala.DN("/cgi-bin/mmgame-bin/gamegamelifeappsvr/getchatsessionid");
-    locala.oS(1103);
-    c(locala.aDS());
-    AppMethodBeat.o(212038);
+    localh.pPy = paramString1;
+    localh.pPz = paramString2;
+    localh.scene = paramInt;
+    localh.ybi = paramb;
+    locala.c((a)localh);
+    locala.d((a)new i());
+    Log.i(TAG, "fromUserName[" + localh.pPy + "], toUserName[" + localh.pPz + "], scene[" + localh.scene + "], extInfo[" + localh.ybi + ']');
+    locala.MB("/cgi-bin/mmgame-bin/gamegamelifeappsvr/getchatsessionid");
+    locala.sG(1103);
+    c(locala.aXF());
+    AppMethodBeat.o(241278);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionId$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-gamelife_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatSessionId$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-gamelife_release"})
   public static final class a {}
 }
 

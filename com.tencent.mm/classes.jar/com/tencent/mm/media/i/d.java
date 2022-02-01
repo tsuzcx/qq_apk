@@ -4,11 +4,11 @@ import android.graphics.Bitmap;
 
 public abstract class d
 {
-  public static a hol = null;
+  public static a ihF = null;
   
-  public abstract int aue();
+  public abstract void D(Bitmap paramBitmap);
   
-  public abstract void z(Bitmap paramBitmap);
+  public abstract int aMG();
   
   public static abstract interface a
   {
@@ -19,12 +19,12 @@ public abstract class d
   
   public static abstract interface b
   {
-    public abstract void yO(String paramString);
+    public abstract void Hn(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.i.d
  * JD-Core Version:    0.7.0.1
  */

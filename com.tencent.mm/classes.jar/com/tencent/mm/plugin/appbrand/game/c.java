@@ -1,6 +1,9 @@
 package com.tencent.mm.plugin.appbrand.game;
 
+import com.tencent.luggage.game.a.b;
 import com.tencent.luggage.game.d.a.a.a.b;
+import com.tencent.luggage.sdk.b.a.c.d;
+import com.tencent.magicbrush.MBRuntime;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class c
@@ -13,23 +16,23 @@ public class c
     AppMethodBeat.o(45083);
   }
   
-  public final com.tencent.magicbrush.d getMagicBrush()
+  public final MBRuntime bCX()
   {
-    AppMethodBeat.i(45084);
-    Object localObject = this.coW;
+    AppMethodBeat.i(226614);
+    Object localObject = this.cBj;
     if ((localObject instanceof a))
     {
-      localObject = ((a)localObject).ckd.getMagicBrush();
-      AppMethodBeat.o(45084);
+      localObject = ((a)localObject).cwa.getMagicBrush();
+      AppMethodBeat.o(226614);
       return localObject;
     }
-    AppMethodBeat.o(45084);
+    AppMethodBeat.o(226614);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.c
  * JD-Core Version:    0.7.0.1
  */

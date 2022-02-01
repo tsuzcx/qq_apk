@@ -1,15 +1,21 @@
 package com.tencent.mm.plugin.scanner.view;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "", "onSuccessAnimationEnd", "", "onSuccessAnimationStart", "scan-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;", "", "showLoadingView", "", "show", "", "withAnimation", "cancelListener", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "OnCancelListener", "scan-sdk_release"})
 public abstract interface c
 {
-  public abstract void dOW();
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, a parama);
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "", "onCancel", "", "loadingViewModel", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;", "scan-sdk_release"})
+  public static abstract interface a
+  {
+    public abstract void eRN();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.c
  * JD-Core Version:    0.7.0.1
  */

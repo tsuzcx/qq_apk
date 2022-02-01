@@ -7,8 +7,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnShowListener;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.PointF;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.support.design.widget.BottomSheetBehavior;
@@ -16,9 +18,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.l;
+import android.support.v7.widget.RecyclerView.r;
+import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.ae;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
@@ -37,184 +44,226 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.base.CustomScrollView;
 import com.tencent.mm.ui.base.CustomScrollView.a;
-import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n.a;
-import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.n;
+import com.tencent.mm.ui.base.o.a;
+import com.tencent.mm.ui.base.o.b;
+import com.tencent.mm.ui.base.o.c;
+import com.tencent.mm.ui.base.o.d;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o.h;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
+import java.util.Iterator;
 import java.util.List;
 
 public class e
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private l ECx;
-  public b KtV;
-  private boolean KtW;
-  public n.d LfS;
-  public n.e LfT;
-  public n.a LfW;
-  public n.b LfX;
-  public n.d LsQ;
-  public n.d LsR;
-  private n.e LsS;
-  public n.e LsT;
-  public n.e LsU;
-  public a LsV;
-  public n.a LsW;
-  private l LsX;
-  private l LsY;
-  private l LsZ;
-  private Boolean Lta;
-  private LinearLayout Ltb;
-  private LinearLayout Ltc;
-  private LinearLayout Ltd;
-  private CustomScrollView Lte;
-  private View Ltf;
-  private View Ltg;
-  private TextView Lth;
-  private c Lti;
-  private c Ltj;
-  private boolean Ltk;
-  private boolean Ltl;
-  private boolean Ltm;
-  private boolean Ltn;
-  private RecyclerView Lto;
-  private ImageView Ltp;
-  private ImageView Ltq;
-  private int Ltr;
-  private int Lts;
-  private int Ltt;
-  private int Ltu;
-  public boolean Ltv;
-  public boolean Ltw;
-  private int Ltx;
-  public boolean Lty;
-  private boolean Ltz;
-  private ViewTreeObserver afv;
-  private RecyclerView anl;
-  public int iNL;
-  private View kFh;
-  private Dialog lDY;
-  private int lEa;
-  private BottomSheetBehavior lEb;
-  private boolean lEc;
-  private int lEd;
-  public boolean lEe;
-  public boolean lEf;
-  private boolean lEg;
-  public int lEh;
+  private boolean BFo;
+  private boolean Bln;
+  public o.f HLX;
+  public o.g HLY;
+  private o.g HLZ;
+  private boolean HMD;
+  public o.b HMa;
+  public o.c HMb;
+  public m HMc;
+  private m HMd;
+  private boolean HMf;
+  public boolean HMg;
+  private LinearLayout HMv;
+  private LinearLayout HMw;
+  public b PGl;
+  private boolean PGm;
+  public c QNG;
+  public o.f QNH;
+  private o.f QNI;
+  public o.f QNJ;
+  public o.g QNK;
+  private o.g QNL;
+  public o.g QNM;
+  private e QNN;
+  public a QNO;
+  public o.b QNP;
+  public o.b QNQ;
+  private o.a QNR;
+  private o.c QNS;
+  private m QNT;
+  private m QNU;
+  private m QNV;
+  private Boolean QNW;
+  private LinearLayout QNX;
+  private LinearLayout QNY;
+  private CustomScrollView QNZ;
+  private boolean QOA;
+  private View QOa;
+  private View QOb;
+  private TextView QOc;
+  public f QOd;
+  private f QOe;
+  private boolean QOf;
+  private boolean QOg;
+  private boolean QOh;
+  private RecyclerView QOi;
+  private ImageView QOj;
+  private ImageView QOk;
+  private int QOl;
+  private int QOm;
+  private int QOn;
+  private int QOo;
+  public boolean QOp;
+  private int QOq;
+  public boolean QOr;
+  public RecyclerView.r QOs;
+  private boolean QOt;
+  private boolean QOu;
+  private boolean QOv;
+  private String QOw;
+  private o.b QOx;
+  private o.a QOy;
+  private o.h QOz;
+  private ViewTreeObserver afI;
+  public int jKz;
+  private View lJI;
   private Context mContext;
-  private View qI;
-  private boolean tds;
-  public boolean tdt;
-  public boolean xFq;
-  private boolean xnl;
+  private Dialog mLH;
+  private int mLJ;
+  private BottomSheetBehavior mLK;
+  private boolean mLL;
+  private int mLM;
+  public boolean mLN;
+  public boolean mLO;
+  private boolean mLP;
+  public int mLQ;
+  public RecyclerView mRecyclerView;
+  private View qK;
+  private boolean wjM;
+  public boolean wjN;
   
   public e(Context paramContext, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(159351);
-    this.Lta = Boolean.FALSE;
-    this.Ltk = false;
-    this.Ltl = false;
-    this.Ltm = false;
-    this.Ltn = false;
-    this.lEc = false;
-    this.Ltr = 4;
-    this.Lts = (this.Ltr * 3);
-    this.Ltt = 6;
-    this.xFq = false;
-    this.tdt = false;
-    this.KtW = false;
-    this.lEf = false;
-    this.Ltv = false;
-    this.Ltw = false;
-    this.iNL = 0;
-    this.lEg = false;
-    this.Ltx = 0;
-    this.lEh = 0;
-    this.Lty = false;
-    this.Ltz = false;
-    this.Ltu = paramInt;
+    this.QNW = Boolean.FALSE;
+    this.QOf = false;
+    this.HMf = false;
+    this.QOg = false;
+    this.QOh = false;
+    this.mLL = false;
+    this.QOl = 4;
+    this.QOm = (this.QOl * 3);
+    this.QOn = 6;
+    this.BFo = false;
+    this.wjN = false;
+    this.PGm = false;
+    this.mLO = false;
+    this.HMg = false;
+    this.QOp = false;
+    this.jKz = 0;
+    this.mLP = false;
+    this.QOq = 0;
+    this.mLQ = 0;
+    this.QOr = false;
+    this.HMD = false;
+    this.QOs = null;
+    this.QOt = false;
+    this.QOu = false;
+    this.QOv = true;
+    this.QOw = null;
+    this.QOx = null;
+    this.QOy = null;
+    this.QOz = null;
+    this.QOA = false;
+    this.QOo = paramInt;
     this.mContext = paramContext;
-    this.xnl = paramBoolean;
-    this.Ltw = false;
+    this.Bln = paramBoolean;
+    this.QOp = false;
     if ((this.mContext instanceof Activity)) {
-      this.qI = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.qK = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    aN(this.mContext);
+    bh(this.mContext);
     AppMethodBeat.o(159351);
   }
   
   public e(Context paramContext, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(200360);
-    this.Lta = Boolean.FALSE;
-    this.Ltk = false;
-    this.Ltl = false;
-    this.Ltm = false;
-    this.Ltn = false;
-    this.lEc = false;
-    this.Ltr = 4;
-    this.Lts = (this.Ltr * 3);
-    this.Ltt = 6;
-    this.xFq = false;
-    this.tdt = false;
-    this.KtW = false;
-    this.lEf = false;
-    this.Ltv = false;
-    this.Ltw = false;
-    this.iNL = 0;
-    this.lEg = false;
-    this.Ltx = 0;
-    this.lEh = 0;
-    this.Lty = false;
-    this.Ltz = false;
-    this.Ltu = paramInt;
+    AppMethodBeat.i(198239);
+    this.QNW = Boolean.FALSE;
+    this.QOf = false;
+    this.HMf = false;
+    this.QOg = false;
+    this.QOh = false;
+    this.mLL = false;
+    this.QOl = 4;
+    this.QOm = (this.QOl * 3);
+    this.QOn = 6;
+    this.BFo = false;
+    this.wjN = false;
+    this.PGm = false;
+    this.mLO = false;
+    this.HMg = false;
+    this.QOp = false;
+    this.jKz = 0;
+    this.mLP = false;
+    this.QOq = 0;
+    this.mLQ = 0;
+    this.QOr = false;
+    this.HMD = false;
+    this.QOs = null;
+    this.QOt = false;
+    this.QOu = false;
+    this.QOv = true;
+    this.QOw = null;
+    this.QOx = null;
+    this.QOy = null;
+    this.QOz = null;
+    this.QOA = false;
+    this.QOo = paramInt;
     this.mContext = paramContext;
-    this.lEg = paramBoolean;
+    this.mLP = paramBoolean;
     if ((this.mContext instanceof Activity)) {
-      this.qI = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.qK = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    aN(this.mContext);
-    AppMethodBeat.o(200360);
+    bh(this.mContext);
+    AppMethodBeat.o(198239);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(159355);
-    this.ECx = new l(paramContext);
-    this.LsX = new l(paramContext);
-    this.LsY = new l(paramContext);
-    this.LsZ = new l(paramContext);
-    if (this.lEg)
+    this.HMc = new m(paramContext);
+    this.HMd = new m(paramContext);
+    this.QNT = new m(paramContext);
+    this.QNU = new m(paramContext);
+    this.QNV = new m(paramContext);
+    if (this.mLP)
     {
-      this.lDY = new b(paramContext);
-      this.kFh = View.inflate(paramContext, 2131494771, null);
-      this.Ltb = ((LinearLayout)this.kFh.findViewById(2131297466));
-      this.Ltc = ((LinearLayout)this.kFh.findViewById(2131297462));
-      this.Ltd = ((LinearLayout)this.kFh.findViewById(2131297459));
-      this.Ltg = this.kFh.findViewById(2131307286);
-      this.Lth = ((TextView)this.kFh.findViewById(2131307287));
-      this.Lte = ((CustomScrollView)this.kFh.findViewById(2131308265));
-      this.Ltf = this.kFh.findViewById(2131308322);
-      this.Ltp = ((ImageView)this.kFh.findViewById(2131299071));
-      this.Ltq = ((ImageView)this.kFh.findViewById(2131302242));
-      this.Ltd.setOnClickListener(new View.OnClickListener()
+      this.mLH = new b(paramContext);
+      this.lJI = View.inflate(paramContext, 2131495505, null);
+      this.HMv = ((LinearLayout)this.lJI.findViewById(2131297701));
+      this.HMw = ((LinearLayout)this.lJI.findViewById(2131297696));
+      this.QNX = ((LinearLayout)this.lJI.findViewById(2131297693));
+      this.QOb = this.lJI.findViewById(2131297969);
+      this.QNY = ((LinearLayout)this.lJI.findViewById(2131297697));
+      this.QOc = ((TextView)this.lJI.findViewById(2131297970));
+      this.QNZ = ((CustomScrollView)this.lJI.findViewById(2131299217));
+      this.QOa = this.lJI.findViewById(2131302161);
+      this.QOj = ((ImageView)this.lJI.findViewById(2131299577));
+      this.QOk = ((ImageView)this.lJI.findViewById(2131304620));
+      this.QNX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(159340);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          e.this.bqD();
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          e.this.bMo();
           if (e.b(e.this) != null) {
             e.b(e.this).onClick();
           }
@@ -222,303 +271,278 @@ public class e
           AppMethodBeat.o(159340);
         }
       });
-      this.anl = ((RecyclerView)this.kFh.findViewById(2131297464));
-      this.anl.setHasFixedSize(true);
-      this.Lto = ((RecyclerView)this.kFh.findViewById(2131297465));
-      this.Lto.setHasFixedSize(true);
-      this.lEc = aoA();
-      if (this.Ltu != 0) {
-        break label763;
+      this.mRecyclerView = ((RecyclerView)this.lJI.findViewById(2131297699));
+      this.mRecyclerView.setHasFixedSize(true);
+      if (this.mRecyclerView.getItemAnimator() != null) {
+        this.mRecyclerView.getItemAnimator().atn = 100L;
       }
-      this.Ltn = true;
-      if (!this.lEc) {
-        break label722;
-      }
-      this.Ltr = 7;
-      this.Lts = (this.Ltr * 2);
-      this.lEa = (aq.ay(this.mContext, 2131165202) + aq.ay(this.mContext, 2131166412));
-      label362:
-      if (this.xnl) {
-        this.lEa += aq.ay(this.mContext, 2131166412);
-      }
-      this.Ltd.setVisibility(0);
-      if (this.kFh != null)
+      this.QOi = ((RecyclerView)this.lJI.findViewById(2131297700));
+      this.QOi.setHasFixedSize(true);
+      this.QOs = new ae(this.mRecyclerView.getContext())
       {
-        if ((!this.lEg) || (!aoA())) {
-          break label750;
+        public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+        {
+          return 1.0F / paramAnonymousDisplayMetrics.densityDpi;
         }
-        this.kFh.setBackgroundColor(this.mContext.getResources().getColor(2131099649));
+        
+        public final PointF bZ(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(198226);
+          if ((e.c(e.this) != null) && (e.c(e.this).getLayoutManager() != null) && ((e.c(e.this).getLayoutManager() instanceof LinearLayoutManager)))
+          {
+            localPointF = ((LinearLayoutManager)e.c(e.this).getLayoutManager()).bZ(paramAnonymousInt);
+            AppMethodBeat.o(198226);
+            return localPointF;
+          }
+          PointF localPointF = super.bZ(paramAnonymousInt);
+          AppMethodBeat.o(198226);
+          return localPointF;
+        }
+        
+        public final int kz()
+        {
+          return -1;
+        }
+      };
+      this.mLL = isLandscape();
+      if (this.QOo != 0) {
+        break label840;
       }
-      label437:
-      this.Lte.setOnScrollChangeListener(new CustomScrollView.a()
+      this.QOh = true;
+      if (!this.mLL) {
+        break label799;
+      }
+      this.QOl = 7;
+      this.QOm = (this.QOl * 2);
+      this.mLJ = (at.aH(this.mContext, 2131165205) + at.aH(this.mContext, 2131166504));
+      label436:
+      if (this.Bln) {
+        this.mLJ += at.aH(this.mContext, 2131166504);
+      }
+      this.QNX.setVisibility(0);
+      if (this.lJI != null)
+      {
+        if ((!this.mLP) || (!isLandscape())) {
+          break label827;
+        }
+        this.lJI.setBackgroundColor(this.mContext.getResources().getColor(2131099649));
+      }
+      label511:
+      this.QNZ.setOnScrollChangeListener(new CustomScrollView.a()
       {
         public final void a(ScrollView paramAnonymousScrollView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(200356);
+          AppMethodBeat.i(198227);
           if (paramAnonymousScrollView.getChildAt(0).getMeasuredHeight() - (paramAnonymousScrollView.getHeight() + paramAnonymousScrollView.getScrollY()) < 50)
           {
-            e.c(e.this).setVisibility(8);
-            AppMethodBeat.o(200356);
+            e.d(e.this).setVisibility(8);
+            AppMethodBeat.o(198227);
             return;
           }
-          e.c(e.this).setVisibility(0);
-          AppMethodBeat.o(200356);
+          e.d(e.this).setVisibility(0);
+          AppMethodBeat.o(198227);
         }
       });
-      label452:
-      if ((this.xnl) && (this.Ltp != null) && (this.Ltw)) {
-        this.Ltp.setVisibility(0);
+      label526:
+      if ((this.Bln) && (this.QOj != null) && (this.QOp)) {
+        this.QOj.setVisibility(0);
       }
-      if (this.Ltu != 0) {
-        break label1004;
+      if (this.QOo != 0) {
+        break label1081;
       }
       paramContext = new LinearLayoutManager();
       paramContext.setOrientation(0);
-      this.anl.setLayoutManager(paramContext);
+      this.mRecyclerView.setLayoutManager(paramContext);
       paramContext = new LinearLayoutManager();
       paramContext.setOrientation(0);
-      this.Lto.setLayoutManager(paramContext);
+      this.QOi.setLayoutManager(paramContext);
     }
     for (;;)
     {
-      this.anl.setFocusable(false);
-      this.anl.setItemViewCacheSize(20);
-      this.Lti = new c();
-      this.Lti.LtB = this.ECx;
-      this.Lti.arf = new AdapterView.OnItemClickListener()
+      this.mRecyclerView.setFocusable(false);
+      this.mRecyclerView.setItemViewCacheSize(20);
+      this.QOd = new f(false);
+      this.QOd.HMj = this.HMc;
+      this.QOd.ars = new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(159342);
+          AppMethodBeat.i(198228);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-          if (paramAnonymousInt >= e.d(e.this).size())
+          localb.bm(paramAnonymousAdapterView);
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.zo(paramAnonymousLong);
+          a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+          if (paramAnonymousInt < e.e(e.this).size())
           {
-            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(159342);
-            return;
-          }
-          paramAnonymousAdapterView = (m)e.d(e.this).JGM.get(paramAnonymousInt);
-          if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.lXh))
-          {
-            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(159342);
-            return;
-          }
-          if (paramAnonymousInt < e.d(e.this).size()) {
-            if (e.e(e.this) != null) {
-              e.e(e.this).onMMMenuItemSelected(e.d(e.this).getItem(paramAnonymousInt), paramAnonymousInt);
+            paramAnonymousAdapterView = (n)e.e(e.this).ORD.get(paramAnonymousInt);
+            if ((paramAnonymousAdapterView == null) || (paramAnonymousAdapterView.neT))
+            {
+              a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(198228);
+              return;
+            }
+            if (e.f(e.this) != null) {
+              e.f(e.this).onMMMenuItemSelected(paramAnonymousAdapterView, paramAnonymousInt);
             }
           }
           for (;;)
           {
-            if (!e.h(e.this)) {
-              e.this.bqD();
+            if (!e.k(e.this)) {
+              e.this.bMo();
             }
-            e.i(e.this);
+            e.l(e.this);
             e.a(e.this, paramAnonymousInt);
-            e.j(e.this).asY.notifyChanged();
-            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(159342);
+            e.m(e.this).atj.notifyChanged();
+            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+            AppMethodBeat.o(198228);
             return;
             paramAnonymousAdapterView.performClick();
             continue;
-            if ((e.f(e.this).size() > 0) && (paramAnonymousInt < e.d(e.this).size() + e.f(e.this).size()))
+            if ((e.g(e.this).size() > 0) && (paramAnonymousInt < e.e(e.this).size() + e.g(e.this).size()))
             {
-              if (e.g(e.this) != null) {
-                e.g(e.this).onMMMenuItemSelected(e.f(e.this).getItem(paramAnonymousInt - e.d(e.this).size()), paramAnonymousInt);
+              paramAnonymousAdapterView = (n)e.g(e.this).getItem(paramAnonymousInt - e.e(e.this).size());
+              if ((paramAnonymousAdapterView == null) || (paramAnonymousAdapterView.neT))
+              {
+                a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                AppMethodBeat.o(198228);
+                return;
+              }
+              if (e.h(e.this) != null) {
+                e.h(e.this).onMMMenuItemSelected(paramAnonymousAdapterView, paramAnonymousInt);
+              } else {
+                paramAnonymousAdapterView.performClick();
               }
             }
-            else {
-              e.fQC();
+            else
+            {
+              if (!e.i(e.this))
+              {
+                a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                AppMethodBeat.o(198228);
+                return;
+              }
+              e.j(e.this);
             }
           }
         }
       };
-      this.anl.setAdapter(this.Lti);
-      this.anl.setOverScrollMode(1);
-      this.Ltj = new c();
-      this.Ltj.LtB = this.LsY;
-      this.Ltj.arf = new AdapterView.OnItemClickListener()
+      this.mRecyclerView.setAdapter(this.QOd);
+      this.mRecyclerView.setOverScrollMode(1);
+      this.QOe = new f(true);
+      this.QOe.HMj = this.QNT;
+      this.QOe.ars = new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(200357);
+          AppMethodBeat.i(198229);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-          if (paramAnonymousInt > e.k(e.this).size())
+          localb.bm(paramAnonymousAdapterView);
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.zo(paramAnonymousLong);
+          a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+          if (paramAnonymousInt >= e.n(e.this).size())
           {
-            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(200357);
+            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+            AppMethodBeat.o(198229);
             return;
           }
-          paramAnonymousAdapterView = (m)e.k(e.this).JGM.get(paramAnonymousInt);
-          if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.lXh))
+          paramAnonymousAdapterView = (n)e.n(e.this).ORD.get(paramAnonymousInt);
+          if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.neT))
           {
-            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(200357);
+            a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+            AppMethodBeat.o(198229);
             return;
           }
-          if ((paramAnonymousInt < e.k(e.this).size()) && (e.l(e.this) != null)) {
-            e.l(e.this).onMMMenuItemSelected(e.k(e.this).getItem(paramAnonymousInt), paramAnonymousInt);
+          if ((paramAnonymousInt < e.n(e.this).size()) && (e.o(e.this) != null)) {
+            e.o(e.this).onMMMenuItemSelected(e.n(e.this).getItem(paramAnonymousInt), paramAnonymousInt);
           }
-          if (!e.h(e.this)) {
-            e.this.bqD();
+          if (!e.k(e.this)) {
+            e.this.bMo();
           }
-          e.i(e.this);
-          e.m(e.this).asY.notifyChanged();
-          a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(200357);
+          e.l(e.this);
+          e.p(e.this).atj.notifyChanged();
+          a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+          AppMethodBeat.o(198229);
         }
       };
-      this.Lto.setAdapter(this.Ltj);
-      this.Lto.setOverScrollMode(1);
-      if (this.lDY != null) {
-        this.lDY.setContentView(this.kFh);
+      this.QOi.setAdapter(this.QOe);
+      this.QOi.setOverScrollMode(1);
+      if (this.mLH != null) {
+        this.mLH.setContentView(this.lJI);
       }
-      if (this.lDY != null) {
-        this.lDY.setOnDismissListener(new DialogInterface.OnDismissListener()
+      if (this.mLH != null) {
+        this.mLH.setOnDismissListener(new DialogInterface.OnDismissListener()
         {
           public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
           {
-            AppMethodBeat.i(159344);
-            if (e.n(e.this) != null)
+            AppMethodBeat.i(159345);
+            if (e.q(e.this) != null)
             {
-              if (!e.n(e.this).isAlive()) {
-                e.a(e.this, e.o(e.this).getViewTreeObserver());
+              if (!e.q(e.this).isAlive()) {
+                e.a(e.this, e.r(e.this).getViewTreeObserver());
               }
-              e.n(e.this).removeGlobalOnLayoutListener(e.this);
+              e.q(e.this).removeGlobalOnLayoutListener(e.this);
               e.a(e.this, null);
             }
-            if (!e.p(e.this)) {
-              e.q(e.this);
+            if (!e.s(e.this)) {
+              e.t(e.this);
             }
-            AppMethodBeat.o(159344);
+            AppMethodBeat.o(159345);
           }
         });
       }
       AppMethodBeat.o(159355);
       return;
-      this.lDY = new i(paramContext);
+      this.mLH = new i(paramContext);
       break;
-      label722:
-      this.lEa = (aq.ay(this.mContext, 2131165201) + aq.ay(this.mContext, 2131166412));
-      break label362;
-      label750:
-      this.kFh.setBackgroundResource(2131234449);
-      break label437;
-      label763:
-      if (this.Ltu == 2)
+      label799:
+      this.mLJ = (at.aH(this.mContext, 2131165204) + at.aH(this.mContext, 2131166504));
+      break label436;
+      label827:
+      this.lJI.setBackgroundResource(2131235389);
+      break label511;
+      label840:
+      if (this.QOo == 2)
       {
-        this.Ltl = true;
-        i = aq.ay(this.mContext, 2131165927);
-        if (this.lEc) {
-          this.Ltt = 2;
+        this.HMf = true;
+        i = at.aH(this.mContext, 2131165954);
+        if (this.mLL) {
+          this.QOn = 2;
         }
-        for (this.lEa = ((int)(i * 2.5D) + aq.ay(this.mContext, 2131165923));; this.lEa = ((int)(i * 3.5D) + aq.ay(this.mContext, 2131165923)))
+        for (this.mLJ = ((int)(i * 2.5D) + at.aH(this.mContext, 2131165950));; this.mLJ = ((int)(i * 3.5D) + at.aH(this.mContext, 2131165950)))
         {
-          if (!this.xnl) {
-            break label877;
+          if (!this.Bln) {
+            break label954;
           }
-          this.lEa += aq.fromDPToPix(this.mContext, 88);
+          this.mLJ += at.fromDPToPix(this.mContext, 88);
           break;
-          this.Ltt = 3;
+          this.QOn = 3;
         }
-        break label452;
+        break label526;
       }
-      label877:
-      this.Ltm = true;
-      int i = aq.ay(this.mContext, 2131165930);
-      if (this.lEc) {
-        this.Ltt = 4;
+      label954:
+      this.QOg = true;
+      int i = at.aH(this.mContext, 2131165957);
+      if (this.mLL) {
+        this.QOn = 4;
       }
-      for (this.lEa = ((int)(i * 4.5D) + aq.ay(this.mContext, 2131165923));; this.lEa = ((int)(i * 6.5D) + aq.ay(this.mContext, 2131165923)))
+      for (this.mLJ = ((int)(i * 4.5D) + at.aH(this.mContext, 2131165950));; this.mLJ = ((int)(i * 6.5D) + at.aH(this.mContext, 2131165950)))
       {
-        if (this.xnl) {
-          this.lEa += aq.ay(this.mContext, 2131166412);
+        if (this.Bln) {
+          this.mLJ += at.aH(this.mContext, 2131166504);
         }
-        if (this.Ltd == null) {
+        if (this.QNX == null) {
           break;
         }
-        this.Ltd.setVisibility(0);
+        this.QNX.setVisibility(0);
         break;
-        this.Ltt = 6;
+        this.QOn = 6;
       }
-      label1004:
-      this.anl.setLayoutManager(new LinearLayoutManager());
-    }
-  }
-  
-  private boolean aoA()
-  {
-    AppMethodBeat.i(159367);
-    if (this.mContext.getResources().getConfiguration().orientation == 2)
-    {
-      AppMethodBeat.o(159367);
-      return true;
-    }
-    AppMethodBeat.o(159367);
-    return false;
-  }
-  
-  @TargetApi(23)
-  private void eYf()
-  {
-    AppMethodBeat.i(159361);
-    if ((Build.VERSION.SDK_INT >= 23) && (this.lDY != null))
-    {
-      this.lDY.getWindow().getDecorView().setSystemUiVisibility(9216);
-      this.lDY.getWindow().setStatusBarColor(0);
-    }
-    AppMethodBeat.o(159361);
-  }
-  
-  private void fQB()
-  {
-    AppMethodBeat.i(159366);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kFh.getLayoutParams();
-    this.ECx.size();
-    if ((!this.Ltk) && (this.LsX.size() > 0)) {
-      this.LsX.size();
-    }
-    Rect localRect;
-    if ((this.lEc) && (this.qI != null))
-    {
-      localRect = new Rect();
-      this.qI.getWindowVisibleDisplayFrame(localRect);
-      if (!this.lEg) {
-        break label168;
-      }
-      localLayoutParams.width = ((int)(localRect.right * 1.0F / 2.0F));
-      if (this.lEh != 0) {
-        localLayoutParams.width = this.lEh;
-      }
-      if (!ar.kf(this.mContext)) {
-        break label157;
-      }
-      localLayoutParams.height = (localRect.bottom - ar.kd(this.mContext));
-    }
-    for (;;)
-    {
-      this.kFh.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(159366);
-      return;
-      label157:
-      localLayoutParams.height = localRect.bottom;
-      continue;
-      label168:
-      localLayoutParams.width = Math.min(localRect.right, localRect.bottom);
-      if (this.lEh != 0) {
-        localLayoutParams.width = this.lEh;
-      }
+      label1081:
+      this.mRecyclerView.setLayoutManager(new LinearLayoutManager());
     }
   }
   
@@ -534,7 +558,106 @@ public class e
     return i;
   }
   
-  public final void P(View paramView, boolean paramBoolean)
+  @TargetApi(23)
+  private void ghk()
+  {
+    AppMethodBeat.i(159361);
+    if ((Build.VERSION.SDK_INT >= 23) && (this.mLH != null))
+    {
+      this.mLH.getWindow().getDecorView().setSystemUiVisibility(9216);
+      this.mLH.getWindow().setStatusBarColor(0);
+    }
+    AppMethodBeat.o(159361);
+  }
+  
+  private void hbt()
+  {
+    AppMethodBeat.i(159366);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lJI.getLayoutParams();
+    this.HMc.size();
+    if ((!this.QOf) && (this.HMd.size() > 0)) {
+      this.HMd.size();
+    }
+    Rect localRect;
+    if ((this.mLL) && (this.qK != null))
+    {
+      localRect = new Rect();
+      this.qK.getWindowVisibleDisplayFrame(localRect);
+      if (!this.mLP) {
+        break label168;
+      }
+      localLayoutParams.width = ((int)(localRect.right * 1.0F / 2.0F));
+      if (this.mLQ != 0) {
+        localLayoutParams.width = this.mLQ;
+      }
+      if (!au.jX(this.mContext)) {
+        break label157;
+      }
+      localLayoutParams.height = (localRect.bottom - au.ay(this.mContext));
+    }
+    for (;;)
+    {
+      this.lJI.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(159366);
+      return;
+      label157:
+      localLayoutParams.height = localRect.bottom;
+      continue;
+      label168:
+      localLayoutParams.width = Math.min(localRect.right, localRect.bottom);
+      if (this.mLQ != 0) {
+        localLayoutParams.width = this.mLQ;
+      }
+    }
+  }
+  
+  private boolean isLandscape()
+  {
+    AppMethodBeat.i(159367);
+    if (this.mContext.getResources().getConfiguration().orientation == 2)
+    {
+      AppMethodBeat.o(159367);
+      return true;
+    }
+    AppMethodBeat.o(159367);
+    return false;
+  }
+  
+  public final void Dm(boolean paramBoolean)
+  {
+    AppMethodBeat.i(198242);
+    if (this.QNX == null)
+    {
+      AppMethodBeat.o(198242);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.QNX.setVisibility(8);
+      AppMethodBeat.o(198242);
+      return;
+    }
+    this.QNX.setVisibility(0);
+    AppMethodBeat.o(198242);
+  }
+  
+  public final void Dn(boolean paramBoolean)
+  {
+    this.QOv = paramBoolean;
+  }
+  
+  public final void Do(boolean paramBoolean)
+  {
+    this.mLO = paramBoolean;
+  }
+  
+  public final e Dp(boolean paramBoolean)
+  {
+    this.QOr = paramBoolean;
+    return this;
+  }
+  
+  public final void V(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(159356);
     if (paramView == null)
@@ -542,11 +665,11 @@ public class e
       AppMethodBeat.o(159356);
       return;
     }
-    this.xnl = true;
+    this.Bln = true;
     ImageView localImageView;
-    if (this.Ltp != null)
+    if (this.QOj != null)
     {
-      localImageView = this.Ltp;
+      localImageView = this.QOj;
       if (!paramBoolean) {
         break label96;
       }
@@ -555,360 +678,507 @@ public class e
     for (int i = 4;; i = 0)
     {
       localImageView.setVisibility(i);
-      if (this.Ltb != null)
+      if (this.HMv != null)
       {
-        this.Ltb.setVisibility(0);
-        this.Ltb.removeAllViews();
-        this.Ltb.setGravity(17);
-        this.Ltb.addView(paramView, -1, -2);
+        this.HMv.setVisibility(0);
+        this.HMv.removeAllViews();
+        this.HMv.setGravity(17);
+        this.HMv.addView(paramView, -1, -2);
       }
       AppMethodBeat.o(159356);
       return;
     }
   }
   
-  public final void a(n.d paramd)
+  public final void a(m paramm, o.g paramg, o.c paramc)
   {
-    this.LfS = paramd;
+    AppMethodBeat.i(198245);
+    this.QOt = true;
+    this.HMd = paramm;
+    this.HLZ = paramg;
+    this.QNS = paramc;
+    if (!this.QOA)
+    {
+      if (this.mRecyclerView == null)
+      {
+        AppMethodBeat.o(198245);
+        return;
+      }
+      paramm = paramm.ORD;
+      if ((paramm == null) || (paramm.isEmpty()))
+      {
+        AppMethodBeat.o(198245);
+        return;
+      }
+      paramm = paramm.iterator();
+      do
+      {
+        if (!paramm.hasNext()) {
+          break;
+        }
+        paramg = (MenuItem)paramm.next();
+      } while ((!(paramg instanceof n)) || (((n)paramg).ORL == null));
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.mRecyclerView.a(new d((byte)0));
+        this.QOA = true;
+      }
+      AppMethodBeat.o(198245);
+      return;
+    }
   }
   
-  public final void a(n.e parame)
+  public final void a(o.a parama)
   {
-    this.LfT = parame;
+    this.QNR = parama;
+  }
+  
+  public final void a(o.f paramf)
+  {
+    this.HLX = paramf;
+  }
+  
+  public final void a(o.g paramg)
+  {
+    this.HLY = paramg;
   }
   
   public final void a(a parama)
   {
-    this.LsV = parama;
+    this.QNO = parama;
   }
   
-  public final void b(n.d paramd)
+  public final void a(e parame, String paramString, o.b paramb, o.a parama, o.h paramh)
   {
-    this.LsQ = paramd;
+    AppMethodBeat.i(198244);
+    this.QOf = true;
+    this.QNN = parame;
+    this.QOu = true;
+    this.QOw = paramString;
+    this.QOx = paramb;
+    this.QOy = parama;
+    this.QOz = paramh;
+    if (!this.QOA)
+    {
+      if (this.mRecyclerView == null)
+      {
+        AppMethodBeat.o(198244);
+        return;
+      }
+      this.mRecyclerView.a(new d((byte)0));
+      this.QOA = true;
+    }
+    AppMethodBeat.o(198244);
   }
   
-  public final void b(n.e parame)
+  public final void b(o.f paramf)
   {
-    this.LsT = parame;
+    this.QNH = paramf;
+  }
+  
+  public final void b(o.g paramg)
+  {
+    this.QNK = paramg;
   }
   
   public final void b(b paramb)
   {
-    this.KtV = paramb;
+    this.PGl = paramb;
   }
   
-  public final void bqD()
+  public final void bMo()
   {
     AppMethodBeat.i(159364);
-    if (this.lDY != null)
+    if (this.mLH != null)
     {
-      if (this.lEb != null) {
-        this.lEb.nZ = true;
+      if (this.mLK != null) {
+        this.mLK.ob = true;
       }
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.lDY.dismiss();
+        this.mLH.dismiss();
       }
     }
     AppMethodBeat.o(159364);
   }
   
-  public final void cPF()
+  public final void dGm()
   {
     int j = 0;
     AppMethodBeat.i(159362);
-    this.KtW = false;
-    this.lEc = aoA();
-    this.lEd = getRotation();
-    if (this.LfS != null) {
-      this.LfS.onCreateMMMenu(this.ECx);
+    this.PGm = false;
+    this.mLL = isLandscape();
+    this.mLM = getRotation();
+    if (this.HLX != null) {
+      this.HLX.onCreateMMMenu(this.HMc);
     }
-    if (this.LsQ != null) {
-      this.LsQ.onCreateMMMenu(this.LsY);
+    if (this.QNH != null) {
+      this.QNH.onCreateMMMenu(this.QNT);
     }
-    if (this.LsR != null) {
-      this.LsR.onCreateMMMenu(this.LsZ);
+    if (this.QNI != null) {
+      this.QNI.onCreateMMMenu(this.QNU);
+    }
+    if (this.QNJ != null) {
+      this.QNJ.onCreateMMMenu(this.QNV);
     }
     final int i;
-    if (this.lDY != null)
+    int m;
+    if (this.mLH != null)
     {
-      fQB();
-      if (!this.Ltn) {
-        break label929;
+      hbt();
+      if (!this.QOh) {
+        break label1327;
       }
-      if (this.LsY.size() > 0)
+      if (this.QNT.size() > 0)
       {
-        this.Ltq.setVisibility(0);
-        this.Lto.setVisibility(0);
-        if (this.Ltg != null) {
-          this.Ltg.setVisibility(8);
+        this.QOk.setVisibility(0);
+        this.QOi.setVisibility(0);
+        if (this.QOb != null) {
+          this.QOb.setVisibility(8);
         }
       }
+      View localView;
+      LinearLayout localLinearLayout;
+      n localn;
       Object localObject;
-      if (this.LsZ.size() > 0)
+      WeImageView localWeImageView;
+      TextView localTextView1;
+      TextView localTextView2;
+      if (this.QNU.size() > 0)
       {
-        if (this.Ltb != null)
+        if (this.HMv != null)
         {
-          this.Ltb.setVisibility(0);
-          this.Ltb.removeAllViews();
-          this.Ltb.setGravity(17);
+          this.HMv.setVisibility(0);
+          this.HMv.removeAllViews();
+          this.HMv.setGravity(17);
         }
-        View localView = View.inflate(this.mContext, 2131496434, null);
-        LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131308357);
+        localView = View.inflate(this.mContext, 2131493318, null);
+        localLinearLayout = (LinearLayout)localView.findViewById(2131304619);
         i = 0;
-        while (i < this.LsZ.size())
+        while (i < this.QNU.size())
         {
-          m localm = (m)this.LsZ.JGM.get(i);
-          if (localm.JGO)
+          localn = (n)this.QNU.ORD.get(i);
+          if (localn.Bno)
           {
-            localObject = View.inflate(this.mContext, 2131496432, null);
+            localObject = View.inflate(this.mContext, 2131493316, null);
             localLinearLayout.addView((View)localObject);
             i += 1;
           }
           else
           {
-            localObject = View.inflate(this.mContext, 2131496433, null);
-            WeImageView localWeImageView = (WeImageView)((View)localObject).findViewById(2131308362);
-            TextView localTextView1 = (TextView)((View)localObject).findViewById(2131308361);
-            TextView localTextView2 = (TextView)((View)localObject).findViewById(2131308355);
-            if (this.LsW != null) {
-              this.LsW.a(localWeImageView, localm);
+            localObject = View.inflate(this.mContext, 2131493317, null);
+            localWeImageView = (WeImageView)((View)localObject).findViewById(2131304645);
+            localTextView1 = (TextView)((View)localObject).findViewById(2131304636);
+            localTextView2 = (TextView)((View)localObject).findViewById(2131304611);
+            if (this.QNP != null) {
+              this.QNP.a(localWeImageView, localn);
             }
             for (;;)
             {
-              localWeImageView.setIconColor(localm.JGQ);
-              localTextView1.setText(localm.getTitle());
-              if (localm.tMa != null)
+              localWeImageView.setIconColor(localn.uzt);
+              localTextView1.setText(localn.getTitle());
+              if (localn.xdb != null)
               {
                 localTextView2.setVisibility(0);
-                localTextView2.setText(localm.tMa);
+                localTextView2.setText(localn.xdb);
               }
               ((View)localObject).setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymousView)
                 {
-                  AppMethodBeat.i(200358);
+                  AppMethodBeat.i(198230);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bd(paramAnonymousView);
-                  a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                  if ((e.r(e.this) != null) && (i < e.s(e.this).size())) {
-                    e.r(e.this).onMMMenuItemSelected(e.s(e.this).getItem(i), i);
+                  localb.bm(paramAnonymousView);
+                  a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                  if ((e.u(e.this) != null) && (i < e.v(e.this).size())) {
+                    e.u(e.this).onMMMenuItemSelected(e.v(e.this).getItem(i), i);
                   }
-                  if (!e.h(e.this)) {
-                    e.this.bqD();
+                  if (!e.k(e.this)) {
+                    e.this.bMo();
                   }
-                  a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                  AppMethodBeat.o(200358);
+                  a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                  AppMethodBeat.o(198230);
                 }
               });
               break;
-              localWeImageView.setImageDrawable(localm.getIcon());
+              localWeImageView.setImageDrawable(localn.getIcon());
             }
           }
         }
-        this.Ltb.addView(localView);
+        this.HMv.addView(localView);
       }
-      int k = aq.ay(this.mContext, 2131166412);
-      int m = aq.ay(this.mContext, 2131165289);
+      if (this.QNV.size() > 0)
+      {
+        if (this.QNY != null)
+        {
+          this.QNY.setVisibility(0);
+          this.QNY.removeAllViews();
+          this.QNY.setGravity(17);
+        }
+        localView = View.inflate(this.mContext, 2131493315, null);
+        localLinearLayout = (LinearLayout)localView.findViewById(2131304619);
+        i = 0;
+        while (i < this.QNV.size())
+        {
+          localn = (n)this.QNV.ORD.get(i);
+          if (localn.Bno)
+          {
+            localObject = View.inflate(this.mContext, 2131493313, null);
+            localLinearLayout.addView((View)localObject);
+            i += 1;
+          }
+          else
+          {
+            localObject = View.inflate(this.mContext, 2131493314, null);
+            localWeImageView = (WeImageView)((View)localObject).findViewById(2131304645);
+            localTextView1 = (TextView)((View)localObject).findViewById(2131304636);
+            localTextView2 = (TextView)((View)localObject).findViewById(2131304611);
+            if (this.QNQ != null) {
+              this.QNQ.a(localWeImageView, localn);
+            }
+            for (;;)
+            {
+              localWeImageView.setIconColor(localn.uzt);
+              localTextView1.setText(localn.getTitle());
+              if (localn.xdb != null)
+              {
+                localTextView2.setVisibility(0);
+                localTextView2.setText(localn.xdb);
+              }
+              ((View)localObject).setOnClickListener(new View.OnClickListener()
+              {
+                public final void onClick(View paramAnonymousView)
+                {
+                  AppMethodBeat.i(198231);
+                  com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+                  localb.bm(paramAnonymousView);
+                  a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                  if ((e.w(e.this) != null) && (i < e.x(e.this).size())) {
+                    e.w(e.this).onMMMenuItemSelected(e.x(e.this).getItem(i), i);
+                  }
+                  if (!e.k(e.this)) {
+                    e.this.bMo();
+                  }
+                  a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                  AppMethodBeat.o(198231);
+                }
+              });
+              break;
+              localWeImageView.setImageDrawable(localn.getIcon());
+            }
+          }
+        }
+        if (this.QNY != null) {
+          this.QNY.addView(localView);
+        }
+      }
+      int k = at.aH(this.mContext, 2131166504);
+      m = at.aH(this.mContext, 2131165296);
       i = k;
-      if (this.xnl)
+      if (this.Bln)
       {
         i = k;
-        if (this.Ltb.getVisibility() == 0) {
-          i = aq.fromDPToPix(this.mContext, 0);
+        if (this.HMv.getVisibility() == 0) {
+          i = at.fromDPToPix(this.mContext, 0);
         }
       }
-      this.anl.setPadding(0, i, this.anl.getPaddingRight(), this.anl.getPaddingBottom());
-      if (!aoA()) {
-        break label892;
+      this.mRecyclerView.setPadding(0, i, this.mRecyclerView.getPaddingRight(), this.mRecyclerView.getPaddingBottom());
+      if ((this.QNY == null) || (this.QNY.getVisibility() != 0)) {
+        break label1256;
       }
-      this.Lto.setPadding(0, this.Lto.getPaddingTop(), this.Lto.getPaddingRight(), m);
-      this.Lte.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-      if (this.Lte.getChildAt(0) != null)
+      this.QNY.setPadding(0, this.QNY.getPaddingTop(), this.QNY.getPaddingRight(), m);
+      this.QOi.setPadding(0, this.QOi.getPaddingTop(), this.QOi.getPaddingRight(), m);
+      this.QNZ.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+      if (this.QNZ.getChildAt(0) != null)
       {
         localObject = new Rect();
-        this.qI.getWindowVisibleDisplayFrame((Rect)localObject);
-        if (this.Lte.getChildAt(0).getMeasuredHeight() + aq.ay(this.mContext, 2131165299) <= ((Rect)localObject).bottom) {
-          break label924;
+        this.qK.getWindowVisibleDisplayFrame((Rect)localObject);
+        if (this.QNZ.getChildAt(0).getMeasuredHeight() + at.aH(this.mContext, 2131165310) <= ((Rect)localObject).bottom) {
+          break label1322;
         }
         i = 1;
-        label622:
+        label971:
         if (i != 0) {
-          this.Ltf.setVisibility(0);
+          this.QOa.setVisibility(0);
         }
       }
-      label634:
-      if ((this.LsX != null) && (this.Lti != null)) {
-        this.Lti.asY.notifyChanged();
+      label983:
+      if ((this.HMd != null) && (this.QOd != null)) {
+        this.QOd.atj.notifyChanged();
       }
-      if (this.Ltj != null) {
-        this.Ltj.asY.notifyChanged();
+      if (this.QOe != null) {
+        this.QOe.atj.notifyChanged();
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        this.lDY.getWindow().addFlags(-2147483648);
+        this.mLH.getWindow().addFlags(-2147483648);
       }
-      if (this.tds) {
-        eYf();
+      if (this.wjM) {
+        ghk();
       }
-      if (this.lEe) {
-        this.lDY.getWindow().addFlags(1024);
+      if (this.mLN) {
+        this.mLH.getWindow().addFlags(1024);
       }
-      if (!this.lEf) {
-        break label943;
+      if (!this.mLO) {
+        break label1341;
       }
-      this.lDY.getWindow().setFlags(8, 8);
-      this.lDY.getWindow().addFlags(131200);
-      this.lDY.getWindow().getDecorView().setSystemUiVisibility(4102);
+      this.mLH.getWindow().setFlags(8, 8);
+      this.mLH.getWindow().addFlags(131200);
+      this.mLH.getWindow().getDecorView().setSystemUiVisibility(4102);
     }
     for (;;)
     {
-      if (this.lEb != null) {
-        this.lEb.nZ = false;
+      if (this.mLK != null) {
+        this.mLK.ob = false;
       }
-      if (this.KtV != null) {
-        this.lDY.setOnDismissListener(new DialogInterface.OnDismissListener()
+      if (this.PGl != null) {
+        this.mLH.setOnDismissListener(new DialogInterface.OnDismissListener()
         {
           public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
           {
-            AppMethodBeat.i(200359);
-            if (!e.t(e.this)) {
-              e.this.KtV.onDismiss();
+            AppMethodBeat.i(198232);
+            if (!e.y(e.this)) {
+              e.this.PGl.onDismiss();
             }
-            AppMethodBeat.o(200359);
+            AppMethodBeat.o(198232);
           }
         });
       }
-      if (this.qI != null)
+      this.mLH.setOnShowListener(new DialogInterface.OnShowListener()
+      {
+        public final void onShow(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(198224);
+          if ((e.this.QNG != null) && (!e.y(e.this))) {
+            e.this.QNG.onShow();
+          }
+          AppMethodBeat.o(198224);
+        }
+      });
+      if (this.qK != null)
       {
         i = j;
-        if (this.afv == null) {
+        if (this.afI == null) {
           i = 1;
         }
-        this.afv = this.qI.getViewTreeObserver();
+        this.afI = this.qK.getViewTreeObserver();
         if (i != 0) {
-          this.afv.addOnGlobalLayoutListener(this);
+          this.afI.addOnGlobalLayoutListener(this);
         }
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.lDY.show();
+        this.mLH.show();
       }
       AppMethodBeat.o(159362);
       return;
-      label892:
-      this.Lto.setPadding(0, this.Lto.getPaddingTop(), this.Lto.getPaddingRight(), this.Lto.getPaddingBottom());
+      label1256:
+      if (isLandscape())
+      {
+        this.QOi.setPadding(0, this.QOi.getPaddingTop(), this.QOi.getPaddingRight(), m);
+        break;
+      }
+      this.QOi.setPadding(0, this.QOi.getPaddingTop(), this.QOi.getPaddingRight(), this.QOi.getPaddingBottom());
       break;
-      label924:
+      label1322:
       i = 0;
-      break label622;
-      label929:
-      this.anl.setPadding(0, 0, 0, 0);
-      break label634;
-      label943:
-      this.lDY.getWindow().clearFlags(8);
-      this.lDY.getWindow().clearFlags(131072);
-      this.lDY.getWindow().clearFlags(128);
-      this.lDY.getWindow().getDecorView().setSystemUiVisibility(0);
+      break label971;
+      label1327:
+      this.mRecyclerView.setPadding(0, 0, 0, 0);
+      break label983;
+      label1341:
+      this.mLH.getWindow().clearFlags(8);
+      this.mLH.getWindow().clearFlags(131072);
+      this.mLH.getWindow().clearFlags(128);
+      this.mLH.getWindow().getDecorView().setSystemUiVisibility(0);
     }
   }
   
-  public final void fQA()
+  public final void fPw()
   {
     AppMethodBeat.i(159363);
-    if (this.lDY != null)
+    if (this.mLH != null)
     {
-      if ((this.LsX != null) && (this.Lti != null)) {
-        this.Lti.asY.notifyChanged();
+      if ((this.HMd != null) && (this.QOd != null)) {
+        this.QOd.atj.notifyChanged();
       }
-      if (this.Ltj != null) {
-        this.Ltj.asY.notifyChanged();
+      if (this.QOe != null) {
+        this.QOe.atj.notifyChanged();
       }
-      this.lDY.show();
+      this.mLH.setOnShowListener(new DialogInterface.OnShowListener()
+      {
+        public final void onShow(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(198225);
+          if ((e.this.QNG != null) && (!e.y(e.this))) {
+            e.this.QNG.onShow();
+          }
+          AppMethodBeat.o(198225);
+        }
+      });
+      this.mLH.show();
     }
     AppMethodBeat.o(159363);
   }
   
-  public final void fQw()
+  public final int hbo()
   {
-    AppMethodBeat.i(159359);
-    if (this.Ltd == null)
-    {
-      AppMethodBeat.o(159359);
-      return;
-    }
-    this.Ltd.setVisibility(8);
-    AppMethodBeat.o(159359);
+    return this.QOo;
   }
   
-  public final e fQx()
+  public final boolean hbp()
   {
-    AppMethodBeat.i(200363);
-    this.Ltz = true;
-    if (this.kFh != null)
+    return this.wjM;
+  }
+  
+  public final boolean hbq()
+  {
+    return this.mLO;
+  }
+  
+  public final e hbr()
+  {
+    AppMethodBeat.i(198243);
+    this.HMD = true;
+    if (this.lJI != null)
     {
-      if (!this.Ltz) {
+      if (!this.HMD) {
         break label113;
       }
-      if (this.Ltu != 0) {
+      if (this.QOo != 0) {
         break label100;
       }
-      this.kFh.setBackgroundResource(2131235103);
-      this.Ltg.setBackgroundColor(this.mContext.getResources().getColor(2131099727));
-      this.Lth.setTextColor(this.mContext.getResources().getColor(2131099673));
-      this.Lth.setBackgroundResource(2131234852);
+      this.lJI.setBackgroundResource(2131235390);
+      this.QOb.setBackgroundColor(this.mContext.getResources().getColor(2131099741));
+      this.QOc.setTextColor(this.mContext.getResources().getColor(2131099679));
+      this.QOc.setBackgroundResource(2131231950);
     }
     for (;;)
     {
-      AppMethodBeat.o(200363);
+      AppMethodBeat.o(198243);
       return this;
       label100:
-      this.kFh.setBackgroundResource(2131234972);
+      this.lJI.setBackgroundResource(2131235388);
       break;
       label113:
-      this.kFh.setBackgroundResource(2131234848);
+      this.lJI.setBackgroundResource(2131235391);
     }
   }
   
-  public final void fQy()
+  public final void hbs()
   {
-    this.xFq = true;
+    this.BFo = true;
   }
   
-  public final void fQz()
+  public final boolean isHideStatusBar()
   {
-    this.lEf = true;
-  }
-  
-  public final void hf(View paramView)
-  {
-    AppMethodBeat.i(224516);
-    P(paramView, false);
-    AppMethodBeat.o(224516);
-  }
-  
-  public final void i(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(200362);
-    if ((this.Ltb != null) && (this.xnl))
-    {
-      this.Ltb.setVisibility(0);
-      this.Ltb.removeAllViews();
-      this.Ltb.setGravity(paramInt1);
-      View localView = LayoutInflater.from(this.mContext).inflate(2131494775, null);
-      TextView localTextView = (TextView)localView.findViewById(2131305945);
-      localTextView.setText(paramCharSequence);
-      localTextView.setTextSize(0, paramInt2);
-      localTextView.setGravity(paramInt1 | 0x50);
-      if (this.Ltz) {
-        localTextView.setTextColor(this.mContext.getResources().getColor(2131099671));
-      }
-      this.Ltb.addView(localView, -1, -2);
-    }
-    AppMethodBeat.o(200362);
+    return this.mLN;
   }
   
   public final boolean isShowing()
   {
     AppMethodBeat.i(159365);
-    if ((this.lDY != null) && (this.lDY.isShowing()))
+    if ((this.mLH != null) && (this.mLH.isShowing()))
     {
       AppMethodBeat.o(159365);
       return true;
@@ -917,54 +1187,75 @@ public class e
     return false;
   }
   
+  public final void j(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(198241);
+    if ((this.HMv != null) && (this.Bln))
+    {
+      this.HMv.setVisibility(0);
+      this.HMv.removeAllViews();
+      this.HMv.setGravity(paramInt1);
+      View localView = LayoutInflater.from(this.mContext).inflate(2131495509, null);
+      TextView localTextView = (TextView)localView.findViewById(2131309245);
+      localTextView.setText(paramCharSequence);
+      localTextView.setTextSize(0, paramInt2);
+      localTextView.setGravity(paramInt1 | 0x50);
+      if (this.HMD) {
+        localTextView.setTextColor(this.mContext.getResources().getColor(2131099679));
+      }
+      this.HMv.addView(localView, -1, -2);
+    }
+    AppMethodBeat.o(198241);
+  }
+  
+  public final void o(CharSequence paramCharSequence, int paramInt)
+  {
+    AppMethodBeat.i(159357);
+    if ((this.HMv != null) && (this.Bln))
+    {
+      this.HMv.setVisibility(0);
+      this.HMv.removeAllViews();
+      this.HMv.setGravity(paramInt);
+      View localView = LayoutInflater.from(this.mContext).inflate(2131495509, null);
+      TextView localTextView = (TextView)localView.findViewById(2131309245);
+      localTextView.setText(paramCharSequence);
+      localTextView.setGravity(paramInt | 0x50);
+      if (this.HMD) {
+        localTextView.setTextColor(this.mContext.getResources().getColor(2131099679));
+      }
+      this.HMv.addView(localView, -1, -2);
+    }
+    AppMethodBeat.o(159357);
+  }
+  
   public void onGlobalLayout()
   {
     AppMethodBeat.i(159353);
     if (isShowing())
     {
-      View localView = this.qI;
+      View localView = this.qK;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bqD();
+        bMo();
         AppMethodBeat.o(159353);
         return;
       }
-      if ((isShowing()) && ((this.lEc != aoA()) || (this.lEd != getRotation()))) {
-        bqD();
+      if ((isShowing()) && ((this.mLL != isLandscape()) || (this.mLM != getRotation()))) {
+        bMo();
       }
     }
     AppMethodBeat.o(159353);
   }
   
-  public final void p(CharSequence paramCharSequence, int paramInt)
-  {
-    AppMethodBeat.i(159357);
-    if ((this.Ltb != null) && (this.xnl))
-    {
-      this.Ltb.setVisibility(0);
-      this.Ltb.removeAllViews();
-      this.Ltb.setGravity(paramInt);
-      View localView = LayoutInflater.from(this.mContext).inflate(2131494775, null);
-      TextView localTextView = (TextView)localView.findViewById(2131305945);
-      localTextView.setText(paramCharSequence);
-      localTextView.setGravity(paramInt | 0x50);
-      if (this.Ltz) {
-        localTextView.setTextColor(this.mContext.getResources().getColor(2131099671));
-      }
-      this.Ltb.addView(localView, -1, -2);
-    }
-    AppMethodBeat.o(159357);
-  }
-  
   public final void setBackgroundColor(int paramInt)
   {
     AppMethodBeat.i(159360);
-    if (this.kFh != null) {
-      this.kFh.setBackgroundColor(paramInt);
+    if (this.lJI != null) {
+      this.lJI.setBackgroundColor(paramInt);
     }
-    this.Lta = Boolean.valueOf(ao.acF(paramInt));
-    if ((this.Lta.booleanValue()) && (this.Ltp != null)) {
-      this.Ltp.setImageDrawable(this.mContext.getResources().getDrawable(2131100200));
+    this.QNW = Boolean.valueOf(ar.aln(paramInt));
+    if ((this.QNW.booleanValue()) && (this.QOj != null)) {
+      this.QOj.setImageDrawable(this.mContext.getResources().getDrawable(2131100233));
     }
     AppMethodBeat.o(159360);
   }
@@ -972,26 +1263,27 @@ public class e
   public final void setFooterView(View paramView)
   {
     AppMethodBeat.i(159358);
-    if (this.Ltc != null)
+    if (this.HMw != null)
     {
       if (paramView == null)
       {
-        this.Ltc.setVisibility(8);
+        this.HMw.setVisibility(8);
         AppMethodBeat.o(159358);
         return;
       }
-      this.Ltc.setVisibility(0);
-      this.Ltc.removeAllViews();
-      this.Ltc.setGravity(17);
-      this.Ltc.addView(paramView, -1, -2);
+      this.HMw.setVisibility(0);
+      this.HMw.removeAllViews();
+      this.HMw.setGravity(17);
+      this.HMw.addView(paramView, -1, -2);
     }
     AppMethodBeat.o(159358);
   }
   
-  public final e zh(boolean paramBoolean)
+  public final void setTitleView(View paramView)
   {
-    this.Lty = paramBoolean;
-    return this;
+    AppMethodBeat.i(258311);
+    V(paramView, false);
+    AppMethodBeat.o(258311);
   }
   
   public static abstract interface a
@@ -1004,64 +1296,216 @@ public class e
     public abstract void onDismiss();
   }
   
-  public final class c
+  public static abstract interface c
+  {
+    public abstract void onShow();
+  }
+  
+  final class d
+    extends RecyclerView.l
+  {
+    private d() {}
+    
+    private n aoZ(int paramInt)
+    {
+      AppMethodBeat.i(198236);
+      if (paramInt < 0)
+      {
+        AppMethodBeat.o(198236);
+        return null;
+      }
+      n localn;
+      if (paramInt < e.e(e.this).size())
+      {
+        localn = (n)e.e(e.this).ORD.get(paramInt);
+        AppMethodBeat.o(198236);
+        return localn;
+      }
+      if ((e.g(e.this).size() > 0) && (paramInt < e.e(e.this).size() + e.g(e.this).size()))
+      {
+        localn = (n)e.g(e.this).getItem(paramInt - e.e(e.this).size());
+        AppMethodBeat.o(198236);
+        return localn;
+      }
+      AppMethodBeat.o(198236);
+      return null;
+    }
+    
+    private void v(RecyclerView paramRecyclerView)
+    {
+      AppMethodBeat.i(198235);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (!(paramRecyclerView instanceof LinearLayoutManager))
+      {
+        AppMethodBeat.o(198235);
+        return;
+      }
+      paramRecyclerView = (LinearLayoutManager)paramRecyclerView;
+      int i = paramRecyclerView.ks();
+      int j = paramRecyclerView.ku();
+      if (i <= j)
+      {
+        Object localObject = aoZ(i);
+        if (localObject == null) {
+          if ((i == e.e(e.this).size() + e.g(e.this).size()) && (e.T(e.this) != null)) {
+            e.T(e.this).cy(paramRecyclerView.findViewByPosition(i));
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((n)localObject).ORL;
+          if (localObject != null) {
+            ((o.h)localObject).cy(paramRecyclerView.findViewByPosition(i));
+          }
+        }
+      }
+      AppMethodBeat.o(198235);
+    }
+    
+    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+    {
+      AppMethodBeat.i(198233);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt);
+      a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$MenuItemVisibleHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      v(paramRecyclerView);
+      a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$MenuItemVisibleHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
+      AppMethodBeat.o(198233);
+    }
+    
+    public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(198234);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt1);
+      localb.pH(paramInt2);
+      a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$MenuItemVisibleHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+      super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+      v(paramRecyclerView);
+      a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$MenuItemVisibleHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
+      AppMethodBeat.o(198234);
+    }
+  }
+  
+  public static abstract interface e
+  {
+    public abstract void onClick();
+  }
+  
+  public final class f
     extends RecyclerView.a<a>
   {
-    l LtB;
-    AdapterView.OnItemClickListener arf;
+    m HMj;
+    private final boolean QOC;
+    AdapterView.OnItemClickListener ars;
     
-    public c() {}
+    public f(boolean paramBoolean)
+    {
+      this.QOC = paramBoolean;
+    }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(159348);
-      if (e.F(e.this))
+      int j = this.HMj.size();
+      int i;
+      if (this.QOC)
       {
-        i = this.LtB.size();
-        j = e.f(e.this).size();
-        AppMethodBeat.o(159348);
-        return i + j + 1;
+        i = j;
+        if (e.K(e.this)) {}
       }
-      int i = this.LtB.size();
-      int j = e.f(e.this).size();
+      else
+      {
+        i = j + e.g(e.this).size();
+      }
+      j = i;
+      if (e.N(e.this)) {
+        if (this.QOC)
+        {
+          j = i;
+          if (e.K(e.this)) {}
+        }
+        else
+        {
+          j = i + 1;
+        }
+      }
       AppMethodBeat.o(159348);
-      return i + j;
+      return j;
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      AppMethodBeat.i(198238);
+      if ((paramInt >= 0) && (paramInt < this.HMj.size()))
+      {
+        MenuItem localMenuItem = this.HMj.getItem(paramInt);
+        if (((localMenuItem instanceof n)) && (!((n)localMenuItem).ORG))
+        {
+          AppMethodBeat.o(198238);
+          return 1;
+        }
+      }
+      else
+      {
+        if ((e.g(e.this).size() > 0) && (paramInt < this.HMj.size() + e.g(e.this).size()))
+        {
+          AppMethodBeat.o(198238);
+          return 2;
+        }
+        if ((e.N(e.this)) && (paramInt == this.HMj.size() + e.g(e.this).size()))
+        {
+          AppMethodBeat.o(198238);
+          return 3;
+        }
+      }
+      AppMethodBeat.o(198238);
+      return 0;
     }
     
     public final class a
-      extends RecyclerView.w
+      extends RecyclerView.v
       implements View.OnClickListener
     {
-      ImageView Kzg;
-      ImageView LtC;
-      RadioButton LtD;
-      LinearLayout LtE;
-      View LtF;
-      View gqK;
-      TextView gqi;
-      TextView iGz;
-      WeImageView tbM;
+      ImageView HMl;
+      LinearLayout HMm;
+      ImageView QOF;
+      ImageView QOG;
+      RadioButton QOH;
+      View QOI;
+      View hbJ;
+      TextView hbb;
+      TextView jCB;
+      WeImageView uGm;
       
       public a(View paramView)
       {
         super();
         AppMethodBeat.i(159346);
+        this.QOF = null;
         paramView.setOnClickListener(this);
-        this.gqi = ((TextView)paramView.findViewById(2131305902));
-        this.tbM = ((WeImageView)paramView.findViewById(2131300874));
-        this.LtE = ((LinearLayout)paramView.findViewById(2131304239));
-        this.LtF = paramView.findViewById(2131302798);
-        this.gqK = paramView.findViewById(2131303917);
-        if (e.D(e.this)) {
-          this.LtC = ((ImageView)paramView.findViewById(2131300884));
-        }
-        if (e.x(e.this)) {
-          this.LtD = ((RadioButton)paramView.findViewById(2131303704));
-        }
-        if ((e.x(e.this)) || (e.E(e.this)))
+        this.hbb = ((TextView)paramView.findViewById(2131309195));
+        this.uGm = ((WeImageView)paramView.findViewById(2131302468));
+        this.HMm = ((LinearLayout)paramView.findViewById(2131307157));
+        this.QOI = paramView.findViewById(2131305368);
+        this.hbJ = paramView.findViewById(2131306759);
+        if (e.I(e.this))
         {
-          this.iGz = ((TextView)paramView.findViewById(2131298996));
-          this.Kzg = ((ImageView)paramView.findViewById(2131299154));
+          this.QOG = ((ImageView)paramView.findViewById(2131302483));
+          this.QOF = ((ImageView)paramView.findViewById(2131302482));
+        }
+        if (e.C(e.this)) {
+          this.QOH = ((RadioButton)paramView.findViewById(2131306483));
+        }
+        if ((e.C(e.this)) || (e.J(e.this)))
+        {
+          this.jCB = ((TextView)paramView.findViewById(2131299495));
+          this.HMl = ((ImageView)paramView.findViewById(2131299682));
         }
         AppMethodBeat.o(159346);
       }
@@ -1070,10 +1514,10 @@ public class e
       {
         AppMethodBeat.i(159347);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramView);
-        a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$RecycleViewAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (e.c.this.arf != null) {
-          e.c.this.arf.onItemClick(null, paramView, getPosition(), getPosition());
+        localb.bm(paramView);
+        a.b("com/tencent/mm/ui/widget/dialog/MMBottomSheet$RecycleViewAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if (e.f.this.ars != null) {
+          e.f.this.ars.onItemClick(null, paramView, getPosition(), getPosition());
         }
         a.a(this, "com/tencent/mm/ui/widget/dialog/MMBottomSheet$RecycleViewAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(159347);

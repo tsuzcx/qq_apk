@@ -2,28 +2,29 @@ package com.tencent.mm.plugin.expt.roomexpt;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<e>
+  extends MAutoStorage<e>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  com.tencent.mm.sdk.e.e db;
+  ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(122425);
-    SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "RoomMuteExpt"), "CREATE UNIQUE INDEX IF NOT EXISTS namedayIndex ON RoomMuteExpt( chatroom,daySec )" };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(e.info, "RoomMuteExpt"), "CREATE UNIQUE INDEX IF NOT EXISTS namedayIndex ON RoomMuteExpt( chatroom,daySec )" };
     INDEX_CREATE = new String[0];
     AppMethodBeat.o(122425);
   }
   
-  public b(com.tencent.mm.sdk.e.e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, e.info, "RoomMuteExpt", INDEX_CREATE);
-    this.db = parame;
+    super(paramISQLiteDatabase, e.info, "RoomMuteExpt", INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
   public final boolean b(e parame)
@@ -47,7 +48,7 @@ public final class b
     return bool;
   }
   
-  public final Cursor csY()
+  public final Cursor cRF()
   {
     Object localObject = null;
     AppMethodBeat.i(122423);
@@ -60,7 +61,7 @@ public final class b
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "get calc cursor", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "get calc cursor", new Object[0]);
       }
     }
     AppMethodBeat.o(122423);
@@ -68,7 +69,7 @@ public final class b
   }
   
   /* Error */
-  public final java.util.List<e> csZ()
+  public final java.util.List<e> cRG()
   {
     // Byte code:
     //   0: ldc 95
@@ -78,7 +79,7 @@ public final class b
     //   9: invokespecial 99	java/util/ArrayList:<init>	()V
     //   12: astore 4
     //   14: aload_0
-    //   15: getfield 50	com/tencent/mm/plugin/expt/roomexpt/b:db	Lcom/tencent/mm/sdk/e/e;
+    //   15: getfield 50	com/tencent/mm/plugin/expt/roomexpt/b:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   18: ldc 29
     //   20: aconst_null
     //   21: aconst_null
@@ -121,7 +122,7 @@ public final class b
     //   85: ldc 124
     //   87: iconst_0
     //   88: anewarray 86	java/lang/Object
-    //   91: invokestatic 92	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   91: invokestatic 92	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: aload_2
     //   95: ifnull +9 -> 104
     //   98: aload_2
@@ -180,13 +181,13 @@ public final class b
   }
   
   /* Error */
-  public final e gf(String paramString1, String paramString2)
+  public final e gz(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 132
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 50	com/tencent/mm/plugin/expt/roomexpt/b:db	Lcom/tencent/mm/sdk/e/e;
+    //   6: getfield 50	com/tencent/mm/plugin/expt/roomexpt/b:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   9: ldc 29
     //   11: aconst_null
     //   12: ldc 134
@@ -251,7 +252,7 @@ public final class b
     //   106: aload 4
     //   108: invokevirtual 143	java/lang/Exception:toString	()Ljava/lang/String;
     //   111: aastore
-    //   112: invokestatic 147	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   112: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   115: aload_1
     //   116: astore_3
     //   117: aload_2

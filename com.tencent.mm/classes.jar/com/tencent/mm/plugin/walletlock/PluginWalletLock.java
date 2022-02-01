@@ -4,45 +4,48 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nv;
+import com.tencent.mm.g.a.on;
+import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.messenger.foundation.a.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.y;
 import com.tencent.mm.plugin.walletlock.a.b;
 import com.tencent.mm.plugin.walletlock.c.i;
-import com.tencent.mm.protocal.protobuf.cbk;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cqm;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class PluginWalletLock
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.walletlock.a.a
+  implements c, com.tencent.mm.plugin.walletlock.a.a
 {
-  private com.tencent.mm.plugin.walletlock.c.f DLH;
-  private final LinkedList<Activity> DLI;
-  private com.tencent.mm.sdk.b.c<nv> DLJ;
+  private com.tencent.mm.plugin.walletlock.c.f IuW;
+  private final LinkedList<Activity> IuX;
+  private IListener<on> IuY;
   
   public PluginWalletLock()
   {
     AppMethodBeat.i(129643);
-    this.DLH = null;
-    this.DLI = new LinkedList();
-    this.DLJ = new com.tencent.mm.sdk.b.c() {};
+    this.IuW = null;
+    this.IuX = new LinkedList();
+    this.IuY = new IListener() {};
     AppMethodBeat.o(129643);
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(129646);
-    if (paramg.akL())
+    if (paramg.aBb())
     {
-      ae.i("MicroMsg.PluginWalletLock", "alvinluo registerService IWalletLock and add listeners");
+      Log.i("MicroMsg.PluginWalletLock", "alvinluo registerService IWalletLock and add listeners");
       com.tencent.mm.kernel.g.a(b.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.walletlock.c.e()));
       ab.a(1, new a((byte)0));
-      this.DLJ.alive();
+      this.IuY.alive();
     }
     AppMethodBeat.o(129646);
   }
@@ -56,36 +59,36 @@ public class PluginWalletLock
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(209723);
-    if (paramg.akL()) {
-      paramg.ca.registerActivityLifecycleCallbacks(new com.tencent.mm.plugin.appbrand.y.a()
+    AppMethodBeat.i(187541);
+    if (paramg.aBb()) {
+      paramg.ca.registerActivityLifecycleCallbacks(new com.tencent.mm.plugin.appbrand.ac.a()
       {
         public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
         {
-          AppMethodBeat.i(209721);
+          AppMethodBeat.i(187539);
           if ((paramAnonymousActivity instanceof com.tencent.mm.plugin.walletlock.ui.a))
           {
-            paramAnonymousBundle = PluginWalletLock.this.DLI.iterator();
+            paramAnonymousBundle = PluginWalletLock.this.IuX.iterator();
             while (paramAnonymousBundle.hasNext()) {
               ((Activity)paramAnonymousBundle.next()).finish();
             }
-            PluginWalletLock.this.DLI.clear();
-            PluginWalletLock.this.DLI.add(paramAnonymousActivity);
+            PluginWalletLock.this.IuX.clear();
+            PluginWalletLock.this.IuX.add(paramAnonymousActivity);
           }
-          AppMethodBeat.o(209721);
+          AppMethodBeat.o(187539);
         }
         
         public final void onActivityDestroyed(Activity paramAnonymousActivity)
         {
-          AppMethodBeat.i(209722);
+          AppMethodBeat.i(187540);
           if ((paramAnonymousActivity instanceof com.tencent.mm.plugin.walletlock.ui.a)) {
-            PluginWalletLock.this.DLI.remove(paramAnonymousActivity);
+            PluginWalletLock.this.IuX.remove(paramAnonymousActivity);
           }
-          AppMethodBeat.o(209722);
+          AppMethodBeat.o(187540);
         }
       });
     }
-    AppMethodBeat.o(209723);
+    AppMethodBeat.o(187541);
   }
   
   public void installed()
@@ -103,28 +106,28 @@ public class PluginWalletLock
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(129648);
-    ae.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountInitialized");
-    this.DLH = new com.tencent.mm.plugin.walletlock.c.f();
-    paramc = this.DLH;
-    if (!com.tencent.mm.sdk.b.a.IvT.e(paramc.DNA)) {
-      com.tencent.mm.sdk.b.a.IvT.c(paramc.DNA);
+    Log.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountInitialized");
+    this.IuW = new com.tencent.mm.plugin.walletlock.c.f();
+    paramc = this.IuW;
+    if (!EventCenter.instance.hadListened(paramc.IwP)) {
+      EventCenter.instance.addListener(paramc.IwP);
     }
-    if (!com.tencent.mm.sdk.b.a.IvT.e(paramc.DNB)) {
-      com.tencent.mm.sdk.b.a.IvT.c(paramc.DNB);
+    if (!EventCenter.instance.hadListened(paramc.IwQ)) {
+      EventCenter.instance.addListener(paramc.IwQ);
     }
-    if (!com.tencent.mm.sdk.b.a.IvT.e(paramc.DND)) {
-      com.tencent.mm.sdk.b.a.IvT.c(paramc.DND);
+    if (!EventCenter.instance.hadListened(paramc.IwS)) {
+      EventCenter.instance.addListener(paramc.IwS);
     }
     try
     {
-      paramc = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("PatternLockTimeInterval");
-      if (!bu.isNullOrNil(paramc))
+      paramc = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("PatternLockTimeInterval");
+      if (!Util.isNullOrNil(paramc))
       {
-        int i = bu.getInt(paramc, 0);
+        int i = Util.getInt(paramc, 0);
         if (i >= 0)
         {
-          ae.d("MicroMsg.WalletLockInitTask", String.format("Dynamic config for PatternLockInterval override default config, newval=%d", new Object[] { Integer.valueOf(i) }));
-          com.tencent.mm.plugin.walletlock.gesture.a.a.DMh = i;
+          Log.d("MicroMsg.WalletLockInitTask", String.format("Dynamic config for PatternLockInterval override default config, newval=%d", new Object[] { Integer.valueOf(i) }));
+          com.tencent.mm.plugin.walletlock.gesture.a.a.Ivw = i;
           AppMethodBeat.o(129648);
           return;
         }
@@ -134,38 +137,38 @@ public class PluginWalletLock
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.WalletLockInitTask", paramc, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WalletLockInitTask", paramc, "", new Object[0]);
         paramc = null;
       }
-      ae.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
-      com.tencent.mm.plugin.walletlock.gesture.a.a.DMh = 300;
+      Log.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
+      com.tencent.mm.plugin.walletlock.gesture.a.a.Ivw = 300;
       AppMethodBeat.o(129648);
       return;
     }
-    ae.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
-    com.tencent.mm.plugin.walletlock.gesture.a.a.DMh = 300;
+    Log.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
+    com.tencent.mm.plugin.walletlock.gesture.a.a.Ivw = 300;
     AppMethodBeat.o(129648);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(129649);
-    ae.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountRelease");
-    if (this.DLH != null)
+    Log.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountRelease");
+    if (this.IuW != null)
     {
-      Object localObject = this.DLH;
-      if (com.tencent.mm.sdk.b.a.IvT.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).DNA)) {
-        com.tencent.mm.sdk.b.a.IvT.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).DNA);
+      Object localObject = this.IuW;
+      if (EventCenter.instance.hadListened(((com.tencent.mm.plugin.walletlock.c.f)localObject).IwP)) {
+        EventCenter.instance.removeListener(((com.tencent.mm.plugin.walletlock.c.f)localObject).IwP);
       }
-      if (com.tencent.mm.sdk.b.a.IvT.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).DNB)) {
-        com.tencent.mm.sdk.b.a.IvT.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).DNB);
+      if (EventCenter.instance.hadListened(((com.tencent.mm.plugin.walletlock.c.f)localObject).IwQ)) {
+        EventCenter.instance.removeListener(((com.tencent.mm.plugin.walletlock.c.f)localObject).IwQ);
       }
-      if (com.tencent.mm.sdk.b.a.IvT.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).DND)) {
-        com.tencent.mm.sdk.b.a.IvT.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).DND);
+      if (EventCenter.instance.hadListened(((com.tencent.mm.plugin.walletlock.c.f)localObject).IwS)) {
+        EventCenter.instance.removeListener(((com.tencent.mm.plugin.walletlock.c.f)localObject).IwS);
       }
-      localObject = i.DNJ;
-      if (((i)localObject).DNN != null) {
-        ((i)localObject).DNN.clear();
+      localObject = i.IwY;
+      if (((i)localObject).Ixc != null) {
+        ((i)localObject).Ixc.clear();
       }
     }
     AppMethodBeat.o(129649);
@@ -175,19 +178,19 @@ public class PluginWalletLock
   {
     AppMethodBeat.i(129647);
     super.uninstalled();
-    this.DLJ.dead();
+    this.IuY.dead();
     AppMethodBeat.o(129647);
   }
   
   final class a
-    implements y<cbk>
+    implements y<cqm>
   {
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.PluginWalletLock
  * JD-Core Version:    0.7.0.1
  */

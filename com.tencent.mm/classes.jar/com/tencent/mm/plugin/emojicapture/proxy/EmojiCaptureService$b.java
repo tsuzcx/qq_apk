@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.emojicapture.proxy;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class EmojiCaptureService$b
   implements Runnable
 {
-  public static final b qaL;
+  public static final b rrI;
   
   static
   {
     AppMethodBeat.i(417);
-    qaL = new b();
+    rrI = new b();
     AppMethodBeat.o(417);
   }
   

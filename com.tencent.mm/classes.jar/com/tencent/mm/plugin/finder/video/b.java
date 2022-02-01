@@ -5,124 +5,129 @@ import android.graphics.Bitmap;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.b.c;
-import com.tencent.mm.plugin.vlog.model.f;
-import com.tencent.mm.plugin.vlog.model.v;
-import com.tencent.mm.protocal.protobuf.aaq;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.videocomposition.h;
+import com.tencent.mm.plugin.vlog.model.ac;
+import com.tencent.mm.plugin.vlog.model.i;
+import com.tencent.mm.protocal.protobuf.acn;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.videocomposition.n;
 import com.tencent.mm.videocomposition.play.VideoCompositionPlayView;
 import com.tencent.mm.videocomposition.play.a.a.a;
 import com.tencent.mm.videocomposition.play.a.a.b;
-import d.g.a.a;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.xeffect.effect.EffectManager;
+import kotlin.g.a.a;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderFakeVideoCoverPreview;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "context", "Landroid/content/Context;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameSeeker;", "playStart", "", "playView", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderFakeVideoCoverPreview;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "context", "Landroid/content/Context;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "effectMgr", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameSeeker;", "playStart", "", "playView", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
 public final class b
-  implements n
+  implements p
 {
-  final VideoCompositionPlayView sYq;
-  private final c sYr;
-  private long sYs;
+  final VideoCompositionPlayView wbi;
+  private final c wbj;
+  private final EffectManager wbk;
+  private long wbl;
   
-  public b(Context paramContext, bvz parambvz)
+  public b(Context paramContext, cjl paramcjl)
   {
-    AppMethodBeat.i(205231);
-    this.sYq = new VideoCompositionPlayView(paramContext);
-    parambvz = parambvz.HiW;
-    paramContext = parambvz;
-    if (parambvz == null) {
-      paramContext = new aaq();
+    AppMethodBeat.i(253884);
+    this.wbk = new EffectManager();
+    this.wbi = new VideoCompositionPlayView(paramContext);
+    paramcjl = paramcjl.MfU;
+    paramContext = paramcjl;
+    if (paramcjl == null) {
+      paramContext = new acn();
     }
-    p.g(paramContext, "media.videoCompositionInfo ?: CompositionInfo()");
-    this.sYr = f.b(paramContext);
-    this.sYr.start();
-    paramContext = f.a(paramContext);
-    paramContext.F((d.g.a.b)this.sYr);
-    this.sYq.a(paramContext.getComposition());
-    this.sYs = paramContext.BXI.getPlayStart();
-    AppMethodBeat.o(205231);
+    kotlin.g.b.p.g(paramContext, "media.videoCompositionInfo ?: CompositionInfo()");
+    paramContext.iiv = "";
+    paramContext.Gzo = false;
+    this.wbj = i.d(paramContext);
+    this.wbj.start();
+    paramContext = i.d(paramContext, this.wbk);
+    paramContext.O((kotlin.g.a.b)this.wbj);
+    this.wbi.a(paramContext.getComposition());
+    this.wbl = paramContext.Gez.getPlayStart();
+    AppMethodBeat.o(253884);
   }
   
-  public final void a(final a<z> parama1, final a<z> parama2, final d.g.a.b<? super Long, z> paramb)
+  public final void a(final a<x> parama1, final a<x> parama2, final kotlin.g.a.b<? super Long, x> paramb)
   {
-    AppMethodBeat.i(205227);
-    p.h(parama1, "onReady");
-    p.h(parama2, "onDestroy");
-    p.h(paramb, "onSeekFrame");
-    this.sYq.setPlayerCallback((a.a.a)new a(this, parama2, parama1, paramb));
-    AppMethodBeat.o(205227);
+    AppMethodBeat.i(253880);
+    kotlin.g.b.p.h(parama1, "onReady");
+    kotlin.g.b.p.h(parama2, "onDestroy");
+    kotlin.g.b.p.h(paramb, "onSeekFrame");
+    this.wbi.setPlayerCallback((a.a.a)new a(this, parama2, parama1, paramb));
+    AppMethodBeat.o(253880);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(205229);
-    this.sYr.destroy();
-    this.sYq.release();
-    AppMethodBeat.o(205229);
+    AppMethodBeat.i(253882);
+    this.wbj.destroy();
+    this.wbk.destroy();
+    this.wbi.release();
+    AppMethodBeat.o(253882);
   }
   
   public final Bitmap getBitmap()
   {
-    AppMethodBeat.i(205230);
-    Bitmap localBitmap = this.sYq.getBitmap();
-    AppMethodBeat.o(205230);
+    AppMethodBeat.i(253883);
+    Bitmap localBitmap = this.wbi.getBitmap();
+    AppMethodBeat.o(253883);
     return localBitmap;
   }
   
   public final View getView()
   {
-    return (View)this.sYq;
+    return (View)this.wbi;
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(205228);
-    this.sYq.seekTo(this.sYs + paramLong);
-    AppMethodBeat.o(205228);
+    AppMethodBeat.i(253881);
+    this.wbi.seekTo(this.wbl + paramLong);
+    AppMethodBeat.o(253881);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/video/FinderFakeVideoCoverPreview$start$1", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerFrameCallback;", "onFrame", "", "onPlayCompleted", "onPlayError", "onPlayFirstFrame", "onPlayProgress", "timeMs", "", "onPlayStarted", "onPlayStop", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderFakeVideoCoverPreview$start$1", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerFrameCallback;", "onFrame", "", "onPlayCompleted", "onPlayError", "onPlayFirstFrame", "onPlayProgress", "timeMs", "", "onPlayStarted", "onPlayStop", "plugin-finder_release"})
   public static final class a
     implements a.a.b
   {
-    a(a parama1, a parama2, d.g.a.b paramb) {}
+    a(a parama1, a parama2, kotlin.g.a.b paramb) {}
     
-    public final void cOE() {}
+    public final void Go(long paramLong) {}
     
-    public final void cOF()
+    public final void dER() {}
+    
+    public final void dES()
     {
-      AppMethodBeat.i(205224);
+      AppMethodBeat.i(253877);
       parama2.invoke();
-      AppMethodBeat.o(205224);
+      AppMethodBeat.o(253877);
     }
     
-    public final void cOG() {}
+    public final void dET() {}
     
-    public final void cOH()
+    public final void dEU()
     {
-      AppMethodBeat.i(205225);
-      this.sYt.sYq.pause();
+      AppMethodBeat.i(253878);
+      this.wbm.wbi.pause();
       parama1.invoke();
-      AppMethodBeat.o(205225);
+      AppMethodBeat.o(253878);
     }
     
-    public final void cOI() {}
+    public final void dEV() {}
     
-    public final void cOJ()
+    public final void dEW()
     {
-      AppMethodBeat.i(205226);
+      AppMethodBeat.i(253879);
       paramb.invoke(Long.valueOf(0L));
-      AppMethodBeat.o(205226);
+      AppMethodBeat.o(253879);
     }
-    
-    public final void xH(long paramLong) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.b
  * JD-Core Version:    0.7.0.1
  */

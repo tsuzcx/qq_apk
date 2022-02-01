@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<RelativeLayout android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/ny">
-        <LinearLayout android:gravity="center_horizontal" style="@style/ld">
-            <ImageView android:id="@id/fd6" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aqz" />
-            <TextView android:id="@id/fd5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/a_n" android:lineSpacingExtra="4.0dip" style="@style/le" />
-            <Button android:textSize="20.0dip" android:id="@id/zk" android:visibility="gone" android:text="@string/a_m" style="@style/o6" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="13.0dip">
+        <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/x1" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:layout_marginRight="8.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/k_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:gravity="center_vertical" android:id="@id/ir3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/mp" />
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        <RelativeLayout android:id="@id/hhd" android:paddingRight="@dimen/k5" android:layout_width="64.0dip" android:layout_height="fill_parent">
+            <View android:background="@color/FG_4" android:layout_width="1.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
+            <CheckBox android:id="@id/hhc" android:background="@drawable/ahw" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

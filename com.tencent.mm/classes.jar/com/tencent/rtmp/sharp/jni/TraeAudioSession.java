@@ -386,12 +386,12 @@ public class TraeAudioSession
         {
           paramContext = paramContext + "AudioSession|    " + i + " " + localObject[i] + "\n";
           if (localObject[i].equals("DEVICE_WIREDHEADSET")) {
-            break label1767;
+            break label1772;
           }
           if (!localObject[i].equals("DEVICE_BLUETOOTHHEADSET")) {
-            break label1770;
+            break label1775;
           }
-          break label1767;
+          break label1772;
         }
         paramContext = paramContext + "\n";
         if (QLog.isColorLevel()) {
@@ -420,7 +420,7 @@ public class TraeAudioSession
       if ("NOTIFY_STREAMTYPE_UPDATE".equals(paramContext))
       {
         i = paramIntent.getIntExtra("EXTRA_DATA_STREAMTYPE", -1);
-        if (QLog.isColorLevel()) {
+        if ((j != 0) && (QLog.isColorLevel())) {
           QLog.w("TRAE", 2, "AudioSession|[onStreamTypeUpdate] err:" + j + " st:" + i);
         }
         if (this.mCallback != null) {
@@ -466,17 +466,17 @@ public class TraeAudioSession
         paramContext = "\n";
         i = 0;
         bool1 = bool3;
-        label886:
+        label891:
         if (i < localObject.length)
         {
           paramContext = paramContext + "AudioSession|    " + i + " " + localObject[i] + "\n";
           if (localObject[i].equals("DEVICE_WIREDHEADSET")) {
-            break label1777;
+            break label1782;
           }
           if (!localObject[i].equals("DEVICE_BLUETOOTHHEADSET")) {
-            break label1780;
+            break label1785;
           }
-          break label1777;
+          break label1782;
         }
         paramContext = paramContext + "\n";
         this._canSwtich2Earphone = bool1;
@@ -524,16 +524,12 @@ public class TraeAudioSession
         {
           localObject = new StringBuilder("AudioSession|[onIsDeviceChangabledRes] err:").append(j).append(" Changabled:");
           if (!bool1) {
-            break label1787;
+            break label1792;
           }
         }
       }
     }
-    label1767:
-    label1770:
-    label1777:
-    label1780:
-    label1787:
+    label1792:
     for (paramContext = "Y";; paramContext = "N")
     {
       QLog.w("TRAE", 2, paramContext);
@@ -601,12 +597,16 @@ public class TraeAudioSession
       }
       AppMethodBeat.o(13688);
       return;
+      label1772:
       bool1 = false;
+      label1775:
       i += 1;
       break;
+      label1782:
       bool1 = false;
+      label1785:
       i += 1;
-      break label886;
+      break label891;
     }
   }
   
@@ -693,7 +693,6 @@ public class TraeAudioSession
     try
     {
       this.mContext.unregisterReceiver(this);
-      label53:
       registerAudioSession(this, false);
       this.mContext = null;
       this.mCallback = null;
@@ -702,7 +701,12 @@ public class TraeAudioSession
     }
     catch (Exception localException)
     {
-      break label53;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TRAE", 2, "unregisterReceiver failed." + localException.getMessage());
+        }
+      }
     }
   }
   
@@ -1012,7 +1016,7 @@ public class TraeAudioSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioSession
  * JD-Core Version:    0.7.0.1
  */

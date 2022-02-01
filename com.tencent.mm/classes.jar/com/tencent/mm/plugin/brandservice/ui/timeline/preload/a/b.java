@@ -1,32 +1,34 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
-  public static final String[] hGX;
-  public static final String[] hGY;
-  final com.tencent.mm.sdk.e.e db;
+  public static final String[] iBh;
+  public static final String[] iBi;
+  final ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(6191);
-    hGX = new String[] { j.getCreateSQLs(a.hGW, "BizAppMsgReportContext") };
-    hGY = new String[0];
+    iBh = new String[] { MAutoStorage.getCreateSQLs(a.iBg, "BizAppMsgReportContext") };
+    iBi = new String[0];
     AppMethodBeat.o(6191);
   }
   
-  public b(com.tencent.mm.sdk.e.e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.hGW, "BizAppMsgReportContext", hGY);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.iBg, "BizAppMsgReportContext", iBi);
+    this.db = paramISQLiteDatabase;
   }
   
   public final boolean a(a parama)
@@ -38,23 +40,23 @@ public final class b
     return bool;
   }
   
-  public final void cv(List<a> paramList)
+  public final void cJ(List<a> paramList)
   {
     AppMethodBeat.i(6189);
-    long l = g.ajR().gDX.yi(Thread.currentThread().getId());
+    long l = g.aAh().hqK.beginTransaction(Thread.currentThread().getId());
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
       if (!delete((a)paramList.next(), new String[0])) {
-        ae.v("MicroMsg.Preload.BizAppMsgReportContextStorage", "[remove] delete fail");
+        Log.v("MicroMsg.Preload.BizAppMsgReportContextStorage", "[remove] delete fail");
       }
     }
-    g.ajR().gDX.sW(l);
+    g.aAh().hqK.endTransaction(l);
     AppMethodBeat.o(6189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ public final class g
     AppMethodBeat.i(158812);
     paramObject = (f)paramObject;
     paramParcel.writeString(paramObject.getClass().getName());
-    paramObject.d(paramParcel);
+    paramObject.e(paramParcel);
     AppMethodBeat.o(158812);
   }
   
-  public final boolean bg(Object paramObject)
+  public final boolean bp(Object paramObject)
   {
     return paramObject instanceof f;
   }
   
-  public final Object c(Parcel paramParcel)
+  public final Object d(Parcel paramParcel)
   {
     AppMethodBeat.i(158813);
     f localf = (f)o.c(paramParcel.readString(), f.class);
@@ -37,7 +37,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.g
  * JD-Core Version:    0.7.0.1
  */

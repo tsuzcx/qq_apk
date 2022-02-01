@@ -3,16 +3,16 @@ package com.tencent.luggage.f.a;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
+import com.tencent.mm.plugin.appbrand.jsapi.k.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.k.a.c;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class b
-  implements com.tencent.mm.plugin.appbrand.jsapi.i.a.c
+  implements c
 {
-  public com.tencent.mm.plugin.appbrand.jsapi.i.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
+  public com.tencent.mm.plugin.appbrand.jsapi.k.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
     AppMethodBeat.i(146457);
     if (paramContext == null)
@@ -25,19 +25,19 @@ public class b
     return paramContext;
   }
   
-  public com.tencent.mm.plugin.appbrand.jsapi.i.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
+  public com.tencent.mm.plugin.appbrand.jsapi.k.a.b b(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(146456);
-    if ((paramc == null) || (paramJSONObject == null))
+    if ((paramf == null) || (paramJSONObject == null))
     {
       AppMethodBeat.o(146456);
       return null;
     }
-    Context localContext = paramc.getContext();
+    Context localContext = paramf.getContext();
     String str2 = paramJSONObject.optString("theme", "");
     int i = paramJSONObject.optInt("mapType", 1);
     String str3 = paramJSONObject.optString("subKey", "");
-    Object localObject = paramc.getAppId();
+    Object localObject = paramf.getAppId();
     String str1 = paramJSONObject.optString("pluginId", "");
     if (!TextUtils.isEmpty(str1)) {
       localObject = str1;
@@ -45,7 +45,7 @@ public class b
     for (;;)
     {
       int j = paramJSONObject.optInt("styleId", 0);
-      paramc = f.i(paramc, paramJSONObject);
+      paramf = com.tencent.mm.plugin.appbrand.jsapi.k.a.f.i(paramf, paramJSONObject);
       int k = paramJSONObject.optInt("enableDarkMode", 0);
       paramJSONObject = new HashMap(5);
       paramJSONObject.put("theme", str2);
@@ -54,15 +54,15 @@ public class b
       paramJSONObject.put("subId", localObject);
       paramJSONObject.put("styleId", Integer.valueOf(j));
       paramJSONObject.put("enableDarkMode", Integer.valueOf(k));
-      paramc = new a(localContext, paramc, paramJSONObject);
+      paramf = new a(localContext, paramf, paramJSONObject);
       AppMethodBeat.o(146456);
-      return paramc;
+      return paramf;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.f.a.b
  * JD-Core Version:    0.7.0.1
  */

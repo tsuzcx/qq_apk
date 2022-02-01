@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.a.f.a;
 import com.tencent.mm.plugin.ball.d.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public f nME;
-  e nMF;
-  float nMU;
+  public f oXA;
+  e oXB;
+  float oXQ;
   
   public b(f paramf, e parame)
   {
-    this.nME = paramf;
-    this.nMF = parame;
+    this.oXA = paramf;
+    this.oXB = parame;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(106281);
-    ae.i("MicroMsg.FloatBallFadeInController", "stop FloatIndicatorController");
-    this.nME.a(null);
+    Log.i("MicroMsg.FloatBallFadeInController", "stop FloatIndicatorController");
+    this.oXA.a(null);
     AppMethodBeat.o(106281);
   }
 }

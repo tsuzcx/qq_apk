@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
   implements n
 {
-  public static volatile l iUA;
-  public static volatile m iUz;
+  public static volatile m jRt;
+  public static volatile l jRu;
   
   public final void a(l paraml)
   {
     AppMethodBeat.i(155379);
-    ae.i("MicroMsg.AccountSyncApplication", "regitMMModelCallback %s", new Object[] { paraml });
-    iUA = paraml;
+    Log.i("MicroMsg.AccountSyncApplication", "regitMMModelCallback %s", new Object[] { paraml });
+    jRu = paraml;
     AppMethodBeat.o(155379);
   }
   
   public final void a(m paramm)
   {
-    iUz = paramm;
+    jRt = paramm;
   }
 }
 

@@ -3,43 +3,43 @@ package com.tencent.mm.plugin.exdevice.i;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.di;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.do;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends j<b>
+  extends MAutoStorage<b>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(23794);
-    SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "HardDeviceInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(b.info, "HardDeviceInfo") };
     AppMethodBeat.o(23794);
   }
   
-  public c(e parame)
+  public c(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, b.info, "HardDeviceInfo", null);
+    super(paramISQLiteDatabase, b.info, "HardDeviceInfo", null);
     AppMethodBeat.i(23780);
-    this.db = parame;
-    parame.execSQL("HardDeviceInfo", "CREATE INDEX IF NOT EXISTS hardDeviceUsernameIndex ON HardDeviceInfo ( brandName )");
-    parame.execSQL("HardDeviceInfo", "CREATE INDEX IF NOT EXISTS hardDeviceMacIndex ON HardDeviceInfo ( mac )");
+    this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("HardDeviceInfo", "CREATE INDEX IF NOT EXISTS hardDeviceUsernameIndex ON HardDeviceInfo ( brandName )");
+    paramISQLiteDatabase.execSQL("HardDeviceInfo", "CREATE INDEX IF NOT EXISTS hardDeviceMacIndex ON HardDeviceInfo ( mac )");
     AppMethodBeat.o(23780);
   }
   
-  public static boolean adB(String paramString)
+  public static boolean anK(String paramString)
   {
     AppMethodBeat.i(23785);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.exdevice.HardDeviceInfoStorage", "Ability is null or nil.");
+      Log.e("MicroMsg.exdevice.HardDeviceInfoStorage", "Ability is null or nil.");
       AppMethodBeat.o(23785);
       return false;
     }
@@ -52,15 +52,67 @@ public final class c
     return false;
   }
   
-  public final b adA(String paramString)
+  public final b Di(long paramLong)
+  {
+    b localb = null;
+    AppMethodBeat.i(23782);
+    Cursor localCursor = this.db.query("HardDeviceInfo", null, "mac=?", new String[] { String.valueOf(paramLong) }, null, null, null);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(23782);
+      return null;
+    }
+    if (localCursor.moveToFirst())
+    {
+      localb = new b();
+      localb.convertFrom(localCursor);
+    }
+    for (;;)
+    {
+      localCursor.close();
+      AppMethodBeat.o(23782);
+      return localb;
+      Log.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with mac:".concat(String.valueOf(paramLong)));
+    }
+  }
+  
+  public final b anI(String paramString)
+  {
+    AppMethodBeat.i(23781);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(23781);
+      return null;
+    }
+    Cursor localCursor = this.db.query("HardDeviceInfo", null, "mac=?", new String[] { paramString }, null, null, null, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(23781);
+      return null;
+    }
+    if (!localCursor.moveToFirst())
+    {
+      Log.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with mac:".concat(String.valueOf(paramString)));
+      localCursor.close();
+      AppMethodBeat.o(23781);
+      return null;
+    }
+    paramString = new b();
+    paramString.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(23781);
+    return paramString;
+  }
+  
+  public final b anJ(String paramString)
   {
     AppMethodBeat.i(23783);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(23783);
       return null;
     }
-    Cursor localCursor = this.db.a("HardDeviceInfo", null, "deviceID=?", new String[] { paramString }, null, null, null, 2);
+    Cursor localCursor = this.db.query("HardDeviceInfo", null, "deviceID=?", new String[] { paramString }, null, null, null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(23783);
@@ -68,7 +120,7 @@ public final class c
     }
     if (!localCursor.moveToFirst())
     {
-      ae.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with deviceId:".concat(String.valueOf(paramString)));
+      Log.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with deviceId:".concat(String.valueOf(paramString)));
       localCursor.close();
       AppMethodBeat.o(23783);
       return null;
@@ -80,17 +132,17 @@ public final class c
     return paramString;
   }
   
-  public final LinkedList<b> adC(String paramString)
+  public final LinkedList<b> anL(String paramString)
   {
     AppMethodBeat.i(23789);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.exdevice.HardDeviceInfoStorage", "The given brandName is null or nil.");
+      Log.e("MicroMsg.exdevice.HardDeviceInfoStorage", "The given brandName is null or nil.");
       AppMethodBeat.o(23789);
       return null;
     }
     LinkedList localLinkedList = new LinkedList();
-    paramString = this.db.a("HardDeviceInfo", null, "brandName=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("HardDeviceInfo", null, "brandName=?", new String[] { paramString }, null, null, null, 2);
     if (paramString == null)
     {
       AppMethodBeat.o(23789);
@@ -109,35 +161,7 @@ public final class c
     return localLinkedList;
   }
   
-  public final b adz(String paramString)
-  {
-    AppMethodBeat.i(23781);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(23781);
-      return null;
-    }
-    Cursor localCursor = this.db.a("HardDeviceInfo", null, "mac=?", new String[] { paramString }, null, null, null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(23781);
-      return null;
-    }
-    if (!localCursor.moveToFirst())
-    {
-      ae.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with mac:".concat(String.valueOf(paramString)));
-      localCursor.close();
-      AppMethodBeat.o(23781);
-      return null;
-    }
-    paramString = new b();
-    paramString.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(23781);
-    return paramString;
-  }
-  
-  public final List<b> cnn()
+  public final List<b> cLA()
   {
     AppMethodBeat.i(23786);
     LinkedList localLinkedList = new LinkedList();
@@ -147,8 +171,8 @@ public final class c
       {
         b localb = new b();
         localb.convertFrom(localCursor);
-        String str = localb.fhE;
-        if ((str != null) && (adB(str))) {
+        String str = localb.fMh;
+        if ((str != null) && (anK(str))) {
           localLinkedList.add(localb);
         }
       } while (localCursor.moveToNext());
@@ -160,7 +184,7 @@ public final class c
     return localLinkedList;
   }
   
-  public final List<b> cno()
+  public final List<b> cLB()
   {
     AppMethodBeat.i(23787);
     LinkedList localLinkedList = new LinkedList();
@@ -170,11 +194,11 @@ public final class c
       {
         b localb = new b();
         localb.convertFrom(localCursor);
-        String str1 = localb.fhA;
+        String str1 = localb.fMd;
         String str2 = localb.iconUrl;
         String str3 = localb.category;
         String str4 = localb.field_brandName;
-        if ((!bu.isNullOrNil(str3)) && (!str3.equals("1")) && (!str3.equals("0")) && (!bu.isNullOrNil(str4)) && (!bu.isNullOrNil(str1)) && (!bu.isNullOrNil(str2))) {
+        if ((!Util.isNullOrNil(str3)) && (!str3.equals("1")) && (!str3.equals("0")) && (!Util.isNullOrNil(str4)) && (!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str2))) {
           localLinkedList.add(localb);
         }
       } while (localCursor.moveToNext());
@@ -186,14 +210,14 @@ public final class c
     return localLinkedList;
   }
   
-  public final LinkedList<b> cnp()
+  public final LinkedList<b> cLC()
   {
     AppMethodBeat.i(23790);
     LinkedList localLinkedList = new LinkedList();
     Cursor localCursor = rawQuery("select * from HardDeviceInfo where mac > 0 and connProto like '3'", new String[0]);
     if (localCursor == null)
     {
-      ae.e("MicroMsg.exdevice.HardDeviceInfoStorage", "get cursor is null");
+      Log.e("MicroMsg.exdevice.HardDeviceInfoStorage", "get cursor is null");
       AppMethodBeat.o(23790);
       return localLinkedList;
     }
@@ -217,22 +241,22 @@ public final class c
     if (localContentValues.size() > 0) {}
     for (int i = this.db.update("HardDeviceInfo", localContentValues, "deviceID = ? and deviceType = ? ", new String[] { paramb.field_deviceID, paramb.field_deviceType });; i = 0)
     {
-      ae.i("MicroMsg.exdevice.HardDeviceInfoStorage", "update: deviceId = %s, deviceType = %s, ret = %s ", new Object[] { paramb.field_deviceID, paramb.field_deviceType, Integer.valueOf(i) });
+      Log.i("MicroMsg.exdevice.HardDeviceInfoStorage", "update: deviceId = %s, deviceType = %s, ret = %s ", new Object[] { paramb.field_deviceID, paramb.field_deviceType, Integer.valueOf(i) });
       AppMethodBeat.o(23792);
       return i;
     }
   }
   
-  public final b fI(String paramString1, String paramString2)
+  public final b gb(String paramString1, String paramString2)
   {
     AppMethodBeat.i(23784);
-    if ((bu.isNullOrNil(paramString2)) || (bu.isNullOrNil(paramString1)))
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)))
     {
-      ae.e("MicroMsg.exdevice.HardDeviceInfoStorage", "deviceType(%s) or deviceId(%s) is null or nil.", new Object[] { paramString2, paramString1 });
+      Log.e("MicroMsg.exdevice.HardDeviceInfoStorage", "deviceType(%s) or deviceId(%s) is null or nil.", new Object[] { paramString2, paramString1 });
       AppMethodBeat.o(23784);
       return null;
     }
-    Cursor localCursor = this.db.a("HardDeviceInfo", null, "deviceType=? and deviceID=?", new String[] { paramString2, paramString1 }, null, null, null, 2);
+    Cursor localCursor = this.db.query("HardDeviceInfo", null, "deviceType=? and deviceID=?", new String[] { paramString2, paramString1 }, null, null, null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(23784);
@@ -240,7 +264,7 @@ public final class c
     }
     if (!localCursor.moveToFirst())
     {
-      ae.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with deviceType:%s and deviceId:%s", new Object[] { paramString2, paramString1 });
+      Log.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with deviceType:%s and deviceId:%s", new Object[] { paramString2, paramString1 });
       localCursor.close();
       AppMethodBeat.o(23784);
       return null;
@@ -252,16 +276,16 @@ public final class c
     return paramString1;
   }
   
-  public final b fJ(String paramString1, String paramString2)
+  public final b gc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(23788);
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      ae.e("MicroMsg.exdevice.HardDeviceInfoStorage", "brandName(%s) or deviceId(%s) is null or nil.", new Object[] { paramString1, paramString2 });
+      Log.e("MicroMsg.exdevice.HardDeviceInfoStorage", "brandName(%s) or deviceId(%s) is null or nil.", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(23788);
       return null;
     }
-    paramString2 = this.db.a("HardDeviceInfo", null, "brandName=? and deviceID=?", new String[] { paramString1, paramString2 }, null, null, null, 2);
+    paramString2 = this.db.query("HardDeviceInfo", null, "brandName=? and deviceID=?", new String[] { paramString1, paramString2 }, null, null, null, 2);
     if (paramString2 == null)
     {
       AppMethodBeat.o(23788);
@@ -269,7 +293,7 @@ public final class c
     }
     if (!paramString2.moveToFirst())
     {
-      ae.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with brandName:".concat(String.valueOf(paramString1)));
+      Log.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with brandName:".concat(String.valueOf(paramString1)));
       paramString2.close();
       AppMethodBeat.o(23788);
       return null;
@@ -281,52 +305,28 @@ public final class c
     return paramString1;
   }
   
-  public final boolean fK(String paramString1, String paramString2)
+  public final boolean gd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(23791);
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(23791);
       return false;
     }
     if (this.db.delete("HardDeviceInfo", "deviceID=? and deviceType=? ", new String[] { paramString1, paramString2 }) <= 0)
     {
-      ae.i("MicroMsg.exdevice.HardDeviceInfoStorage", "delete hardDeviceInfo fail, deviceId = %s", new Object[] { paramString1 });
+      Log.i("MicroMsg.exdevice.HardDeviceInfoStorage", "delete hardDeviceInfo fail, deviceId = %s", new Object[] { paramString1 });
       AppMethodBeat.o(23791);
       return false;
     }
-    ae.i("MicroMsg.exdevice.HardDeviceInfoStorage", "delete hardDeviceInfo ok, deviceId = %s", new Object[] { paramString1 });
+    Log.i("MicroMsg.exdevice.HardDeviceInfoStorage", "delete hardDeviceInfo ok, deviceId = %s", new Object[] { paramString1 });
     AppMethodBeat.o(23791);
     return true;
-  }
-  
-  public final b ve(long paramLong)
-  {
-    b localb = null;
-    AppMethodBeat.i(23782);
-    Cursor localCursor = this.db.query("HardDeviceInfo", null, "mac=?", new String[] { String.valueOf(paramLong) }, null, null, null);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(23782);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      localb = new b();
-      localb.convertFrom(localCursor);
-    }
-    for (;;)
-    {
-      localCursor.close();
-      AppMethodBeat.o(23782);
-      return localb;
-      ae.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with mac:".concat(String.valueOf(paramLong)));
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.i.c
  * JD-Core Version:    0.7.0.1
  */

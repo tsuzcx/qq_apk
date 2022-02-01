@@ -9,32 +9,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.ao;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.wenote.model.a.d;
+import com.tencent.mm.plugin.wenote.model.a.h;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.a.k;
 import com.tencent.mm.plugin.wenote.model.a.l;
+import com.tencent.mm.plugin.wenote.model.a.o;
 import com.tencent.mm.plugin.wenote.model.a.r;
 import com.tencent.mm.plugin.wenote.model.nativenote.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.LongBitmapHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class c
 {
-  public static c ETA;
-  public static HashMap<String, String> ETy;
-  public static HashMap<String, r> ETz;
-  private static com.tencent.mm.b.f<String, Integer> pyQ;
+  public static HashMap<String, String> JJr;
+  public static HashMap<String, r> JJs;
+  public static c JJt;
+  private static com.tencent.mm.b.f<String, Integer> qOh;
   
   static
   {
     AppMethodBeat.i(30687);
-    ETy = new HashMap();
-    ETz = new HashMap();
-    ETA = null;
-    pyQ = new com.tencent.mm.memory.a.c(30);
+    JJr = new HashMap();
+    JJs = new HashMap();
+    JJt = null;
+    qOh = new com.tencent.mm.memory.a.c(30);
     AppMethodBeat.o(30687);
   }
   
@@ -55,31 +59,31 @@ public final class c
     }
     if (i == 3)
     {
-      paramContext = paramContext.getString(2131766217);
+      paramContext = paramContext.getString(2131768725);
       AppMethodBeat.o(30685);
       return paramContext;
     }
     if (i == 2)
     {
-      paramContext = paramContext.getString(2131766216);
+      paramContext = paramContext.getString(2131768724);
       AppMethodBeat.o(30685);
       return paramContext;
     }
     if (i == 6)
     {
-      paramContext = paramContext.getString(2131766218);
+      paramContext = paramContext.getString(2131768726);
       AppMethodBeat.o(30685);
       return paramContext;
     }
     if (i == 4)
     {
-      paramContext = paramContext.getString(2131766219);
+      paramContext = paramContext.getString(2131768727);
       AppMethodBeat.o(30685);
       return paramContext;
     }
     if (i == 5)
     {
-      paramContext = paramContext.getString(2131766215);
+      paramContext = paramContext.getString(2131768723);
       AppMethodBeat.o(30685);
       return paramContext;
     }
@@ -87,62 +91,62 @@ public final class c
     return "";
   }
   
-  public static Bitmap abC(String paramString)
+  public static Bitmap alI(String paramString)
   {
     AppMethodBeat.i(30677);
-    paramString = e.bb(paramString, false);
+    paramString = e.bd(paramString, false);
     if (paramString != null)
     {
       AppMethodBeat.o(30677);
       return paramString;
     }
-    if (bu.isNullOrNil(null))
+    if (Util.isNullOrNil(null))
     {
       AppMethodBeat.o(30677);
       return null;
     }
-    paramString = e.bb(null, false);
+    paramString = e.bd(null, false);
     AppMethodBeat.o(30677);
     return paramString;
   }
   
-  public static int abD(String paramString)
+  public static int alJ(String paramString)
   {
     AppMethodBeat.i(30681);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(30681);
       return 0;
     }
-    int i = abF(b.abI(paramString));
+    int i = alL(b.alO(paramString));
     AppMethodBeat.o(30681);
     return i;
   }
   
-  public static int abE(String paramString)
+  public static int alK(String paramString)
   {
     AppMethodBeat.i(30683);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(30683);
       return 0;
     }
-    if (pyQ.aM(paramString))
+    if (qOh.check(paramString))
     {
-      i = ((Integer)pyQ.get(paramString)).intValue();
+      i = ((Integer)qOh.get(paramString)).intValue();
       AppMethodBeat.o(30683);
       return i;
     }
-    int i = abF(paramString);
-    pyQ.put(paramString, Integer.valueOf(i));
+    int i = alL(paramString);
+    qOh.put(paramString, Integer.valueOf(i));
     AppMethodBeat.o(30683);
     return i;
   }
   
-  private static int abF(String paramString)
+  private static int alL(String paramString)
   {
     AppMethodBeat.i(30684);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(30684);
       return 0;
@@ -158,7 +162,7 @@ public final class c
     return i;
   }
   
-  public static String abG(String paramString)
+  public static String alM(String paramString)
   {
     AppMethodBeat.i(30686);
     paramString = Pattern.compile("wx-b>", 2).matcher(paramString).replaceAll("wa-b>");
@@ -173,12 +177,12 @@ public final class c
   public static int b(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(30682);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(30682);
       return 0;
     }
-    paramString = a.abM(paramString);
+    paramString = a.alS(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(30682);
@@ -198,7 +202,7 @@ public final class c
       AppMethodBeat.o(30682);
       return 0;
     }
-    paramInt1 = abF(paramString.toString());
+    paramInt1 = alL(paramString.toString());
     AppMethodBeat.o(30682);
     return paramInt1;
   }
@@ -230,44 +234,44 @@ public final class c
       Object localObject3 = (com.tencent.mm.plugin.wenote.model.a.g)paramc;
       ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).lat = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).lat;
       ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).lng = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).lng;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).ESo = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).ESo;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).hZQ = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).hZQ;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).jGd = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).jGd;
+      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).JIb = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).JIb;
+      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).iUO = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).iUO;
+      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).kHV = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).kHV;
       continue;
       localObject1 = new com.tencent.mm.plugin.wenote.model.a.f();
-      ((com.tencent.mm.plugin.wenote.model.a.f)localObject1).pAu = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).pAu;
+      ((com.tencent.mm.plugin.wenote.model.a.f)localObject1).qPL = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).qPL;
       continue;
       localObject1 = new k();
       localObject2 = (k)localObject1;
       localObject3 = (k)paramc;
       ((k)localObject2).thumbPath = ((k)localObject3).thumbPath;
       ((k)localObject2).duration = ((k)localObject3).duration;
-      ((k)localObject2).pAy = ((k)localObject3).pAy;
+      ((k)localObject2).qPP = ((k)localObject3).qPP;
       continue;
       localObject1 = new l();
       localObject2 = (l)localObject1;
       localObject3 = (l)paramc;
-      ((l)localObject2).pAB = ((l)localObject3).pAB;
+      ((l)localObject2).qPS = ((l)localObject3).qPS;
       ((l)localObject2).length = ((l)localObject3).length;
-      ((l)localObject2).pAA = ((l)localObject3).pAA;
-      ((l)localObject2).kVn = ((l)localObject3).kVn;
-      ((l)localObject2).duj = ((l)localObject3).duj;
-      ((l)localObject2).dui = ((l)localObject3).dui;
-      ((l)localObject2).pAy = ((l)localObject3).pAy;
+      ((l)localObject2).qPR = ((l)localObject3).qPR;
+      ((l)localObject2).mav = ((l)localObject3).mav;
+      ((l)localObject2).dLu = ((l)localObject3).dLu;
+      ((l)localObject2).dLt = ((l)localObject3).dLt;
+      ((l)localObject2).qPP = ((l)localObject3).qPP;
       continue;
       localObject1 = new d();
       localObject2 = (d)localObject1;
       localObject3 = (d)paramc;
       ((d)localObject2).title = ((d)localObject3).title;
       ((d)localObject2).content = ((d)localObject3).content;
-      ((d)localObject2).kVn = ((d)localObject3).kVn;
-      ((d)localObject2).pAy = ((d)localObject3).pAy;
+      ((d)localObject2).mav = ((d)localObject3).mav;
+      ((d)localObject2).qPP = ((d)localObject3).qPP;
       continue;
-      localObject1 = new com.tencent.mm.plugin.wenote.model.a.h();
+      localObject1 = new h();
     }
-    ((com.tencent.mm.plugin.wenote.model.a.o)localObject1).type = ((com.tencent.mm.plugin.wenote.model.a.o)paramc).type;
-    ((com.tencent.mm.plugin.wenote.model.a.o)localObject1).pAx = ((com.tencent.mm.plugin.wenote.model.a.o)paramc).pAx;
-    ((com.tencent.mm.plugin.wenote.model.a.o)localObject1).dCC = ((com.tencent.mm.plugin.wenote.model.a.o)paramc).dCC;
+    ((o)localObject1).type = ((o)paramc).type;
+    ((o)localObject1).qPO = ((o)paramc).qPO;
+    ((o)localObject1).dUs = ((o)paramc).dUs;
     AppMethodBeat.o(30678);
     return localObject1;
   }
@@ -282,11 +286,11 @@ public final class c
     }
     if (paramc.getType() == 2)
     {
-      paramc = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).pAu;
+      paramc = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).qPL;
       AppMethodBeat.o(30679);
       return paramc;
     }
-    paramc = ((com.tencent.mm.plugin.wenote.model.a.o)paramc).dCC;
+    paramc = ((o)paramc).dUs;
     AppMethodBeat.o(30679);
     return paramc;
   }
@@ -301,7 +305,7 @@ public final class c
     }
     if (paramc.getType() == 2)
     {
-      paramc = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).dCC;
+      paramc = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).dUs;
       AppMethodBeat.o(30680);
       return paramc;
     }
@@ -315,26 +319,26 @@ public final class c
     return "";
   }
   
-  public static String fs(String paramString1, String paramString2)
+  public static String fJ(String paramString1, String paramString2)
   {
     int j = 1280;
     AppMethodBeat.i(30675);
-    if (bu.isNullOrNil(paramString2))
+    if (Util.isNullOrNil(paramString2))
     {
       paramString2 = com.tencent.mm.b.g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_HD";
-      paramString2 = ao.cxg() + "/" + paramString2;
+      paramString2 = ao.cVk() + "/" + paramString2;
     }
     for (;;)
     {
       BitmapFactory.Options localOptions;
       int k;
       int i;
-      if (!com.tencent.mm.vfs.o.fB(paramString2))
+      if (!s.YS(paramString2))
       {
-        localOptions = com.tencent.mm.sdk.platformtools.h.aRz(paramString1);
+        localOptions = BitmapUtil.getImageOptions(paramString1);
         if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
         {
-          ae.e("MicroMsg.WNNoteUtil", "GetImageOptions Error");
+          Log.e("MicroMsg.WNNoteUtil", "GetImageOptions Error");
           AppMethodBeat.o(30675);
           return null;
         }
@@ -345,7 +349,7 @@ public final class c
           i = 1280;
         }
         if (k <= 1280) {
-          break label242;
+          break label243;
         }
       }
       for (;;)
@@ -358,29 +362,29 @@ public final class c
         }
         for (;;)
         {
-          if (ag.aRP(paramString1) > 0)
+          if (LongBitmapHandler.isLongPicture(paramString1) > 0)
           {
             j = localOptions.outHeight;
             i = localOptions.outWidth;
           }
-          com.tencent.mm.sdk.platformtools.h.c(paramString1, j, i, Bitmap.CompressFormat.JPEG, 95, paramString2);
+          BitmapUtil.createThumbNail(paramString1, j, i, Bitmap.CompressFormat.JPEG, 95, paramString2, true);
           AppMethodBeat.o(30675);
           return paramString2;
         }
-        label242:
+        label243:
         j = k;
       }
     }
   }
   
-  public static String ft(String paramString1, String paramString2)
+  public static String fK(String paramString1, String paramString2)
   {
     int m = 800;
     AppMethodBeat.i(30676);
-    if (bu.isNullOrNil(paramString2))
+    if (Util.isNullOrNil(paramString2))
     {
       paramString2 = com.tencent.mm.b.g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_TH";
-      paramString2 = ao.cxg() + "/" + paramString2;
+      paramString2 = ao.cVk() + "/" + paramString2;
     }
     for (;;)
     {
@@ -388,12 +392,12 @@ public final class c
       int j;
       int k;
       int i;
-      if (!com.tencent.mm.vfs.o.fB(paramString2))
+      if (!s.YS(paramString2))
       {
-        localOptions = com.tencent.mm.sdk.platformtools.h.aRz(paramString1);
+        localOptions = BitmapUtil.getImageOptions(paramString1);
         if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
         {
-          ae.e("MicroMsg.WNNoteUtil", "GetImageOptions Error,use orignal file");
+          Log.e("MicroMsg.WNNoteUtil", "GetImageOptions Error,use orignal file");
           AppMethodBeat.o(30676);
           return null;
         }
@@ -409,11 +413,11 @@ public final class c
           i = 800;
         }
         if (j <= 800) {
-          break label249;
+          break label250;
         }
         j = m;
       }
-      label249:
+      label250:
       for (;;)
       {
         if (localOptions.outHeight < localOptions.outWidth)
@@ -423,7 +427,7 @@ public final class c
         }
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.h.c(paramString1, j, k, Bitmap.CompressFormat.JPEG, 95, paramString2);
+          BitmapUtil.createThumbNail(paramString1, j, k, Bitmap.CompressFormat.JPEG, 95, paramString2, true);
           AppMethodBeat.o(30676);
           return paramString2;
           k = i;
@@ -442,7 +446,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import com.tencent.mm.av.a.d.b;
 
 public abstract interface a
 {
-  public abstract void Gn(String paramString);
+  public abstract void N(Bitmap paramBitmap);
   
-  public abstract void K(Bitmap paramBitmap);
+  public abstract void OZ(String paramString);
   
   public abstract void a(String paramString, b paramb);
   
-  public abstract void aJw();
+  public abstract void bdx();
 }
 
 

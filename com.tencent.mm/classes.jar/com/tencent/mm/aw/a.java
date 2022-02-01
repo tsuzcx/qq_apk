@@ -1,19 +1,19 @@
 package com.tencent.mm.aw;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
 
 public final class a
 {
-  public static int Gr(String paramString)
+  public static int Pd(String paramString)
   {
     k = 0;
     AppMethodBeat.i(43007);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      ae.e("Big5Util", "getStrokesCount buffer is empty");
+      Log.e("Big5Util", "getStrokesCount buffer is empty");
       AppMethodBeat.o(43007);
       return 0;
     }
@@ -25,7 +25,7 @@ public final class a
         if ((paramString != null) && (paramString.length >= 2)) {
           continue;
         }
-        ae.e("Big5Util", "byteToShort");
+        Log.e("Big5Util", "byteToShort");
         j = 0;
         if ((j < 42048) || (j > 42049)) {
           continue;
@@ -35,7 +35,7 @@ public final class a
       catch (UnsupportedEncodingException paramString)
       {
         int j;
-        ae.e("Big5Util", "exception:%s", new Object[] { bu.o(paramString) });
+        Log.e("Big5Util", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
         int i = k;
         continue;
       }

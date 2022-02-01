@@ -5,40 +5,40 @@ import android.view.Choreographer.FrameCallback;
 import com.tencent.magicbrush.MBRuntime;
 import com.tencent.magicbrush.handler.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "bridge", "Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler$MainThreadChoreographerBridge;", "getBridge", "()Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler$MainThreadChoreographerBridge;", "choreographer", "Landroid/view/Choreographer;", "getChoreographer", "()Landroid/view/Choreographer;", "setChoreographer", "(Landroid/view/Choreographer;)V", "latency", "Lcom/tencent/magicbrush/ui/LatencyCalculator;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getLatency", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Latency;", "onCreate", "", "onDestroy", "onPause", "onResume", "MainThreadChoreographerBridge", "lib-magicbrush-nano_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "bridge", "Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler$MainThreadChoreographerBridge;", "getBridge", "()Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler$MainThreadChoreographerBridge;", "choreographer", "Landroid/view/Choreographer;", "getChoreographer", "()Landroid/view/Choreographer;", "setChoreographer", "(Landroid/view/Choreographer;)V", "latency", "Lcom/tencent/magicbrush/ui/LatencyCalculator;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getLatency", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Latency;", "onCreate", "", "onDestroy", "onPause", "onResume", "MainThreadChoreographerBridge", "lib-magicbrush-nano_release"})
 final class d
   extends a
 {
-  private final a.b cAA;
-  final a cAC;
-  private final f cAy;
+  private final f cOE;
+  private final a.b cOG;
+  final a cOI;
   volatile Choreographer choreographer;
   
   public d(MBRuntime paramMBRuntime, c paramc)
   {
     super(paramMBRuntime, paramc);
-    AppMethodBeat.i(213369);
-    this.cAy = new f();
-    this.cAA = a.b.cAt;
-    this.cAC = new a();
-    AppMethodBeat.o(213369);
+    AppMethodBeat.i(206870);
+    this.cOE = new f();
+    this.cOG = a.b.cOz;
+    this.cOI = new a();
+    AppMethodBeat.o(206870);
   }
   
-  public final a.b HM()
+  public final a.b RB()
   {
-    return this.cAA;
+    return this.cOG;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(140218);
-    com.tencent.magicbrush.utils.f localf = com.tencent.magicbrush.utils.f.cBw;
-    com.tencent.magicbrush.utils.f.e((d.g.a.a)new b(this));
+    com.tencent.magicbrush.utils.f localf = com.tencent.magicbrush.utils.f.cPx;
+    com.tencent.magicbrush.utils.f.e((kotlin.g.a.a)new b(this));
     AppMethodBeat.o(140218);
   }
   
@@ -49,9 +49,9 @@ final class d
     {
       Choreographer localChoreographer = this.choreographer;
       if (localChoreographer == null) {
-        p.gkB();
+        p.hyc();
       }
-      localChoreographer.removeFrameCallback((Choreographer.FrameCallback)this.cAC);
+      localChoreographer.removeFrameCallback((Choreographer.FrameCallback)this.cOI);
     }
     AppMethodBeat.o(140220);
   }
@@ -63,56 +63,56 @@ final class d
     {
       Choreographer localChoreographer = this.choreographer;
       if (localChoreographer == null) {
-        p.gkB();
+        p.hyc();
       }
-      localChoreographer.removeFrameCallback((Choreographer.FrameCallback)this.cAC);
+      localChoreographer.removeFrameCallback((Choreographer.FrameCallback)this.cOI);
       localChoreographer = this.choreographer;
       if (localChoreographer == null) {
-        p.gkB();
+        p.hyc();
       }
-      localChoreographer.postFrameCallback((Choreographer.FrameCallback)this.cAC);
+      localChoreographer.postFrameCallback((Choreographer.FrameCallback)this.cOI);
     }
     AppMethodBeat.o(140219);
   }
   
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler$MainThreadChoreographerBridge;", "Landroid/view/Choreographer$FrameCallback;", "Ljava/lang/Runnable;", "(Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler;)V", "frameTimeNanos", "", "getFrameTimeNanos", "()J", "setFrameTimeNanos", "(J)V", "doFrame", "", "run", "lib-magicbrush-nano_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler$MainThreadChoreographerBridge;", "Landroid/view/Choreographer$FrameCallback;", "Ljava/lang/Runnable;", "(Lcom/tencent/magicbrush/ui/ChoreographerInMainThreadAFHandler;)V", "frameTimeNanos", "", "getFrameTimeNanos", "()J", "setFrameTimeNanos", "(J)V", "doFrame", "", "run", "lib-magicbrush-nano_release"})
   final class a
     implements Choreographer.FrameCallback, Runnable
   {
-    private long cAD;
+    private long cOJ;
     
     public final void doFrame(long paramLong)
     {
       AppMethodBeat.i(140215);
-      this.cAD = paramLong;
-      d.a(this.cAE);
-      this.cAE.cAq.post((Runnable)this.cAE.cAC);
+      this.cOJ = paramLong;
+      d.a(this.cOK);
+      this.cOK.cOw.post((Runnable)this.cOK.cOI);
       AppMethodBeat.o(140215);
     }
     
     public final void run()
     {
       AppMethodBeat.i(140216);
-      if (this.cAE.isRunning) {}
-      synchronized (this.cAE.cAp)
+      if (this.cOK.isRunning) {}
+      synchronized (this.cOK.cOv)
       {
-        Object localObject2 = this.cAE.choreographer;
+        Object localObject2 = this.cOK.choreographer;
         if (localObject2 != null)
         {
-          ((Choreographer)localObject2).postFrameCallback((Choreographer.FrameCallback)this.cAE.cAC);
-          localObject2 = z.Nhr;
+          ((Choreographer)localObject2).postFrameCallback((Choreographer.FrameCallback)this.cOK.cOI);
+          localObject2 = x.SXb;
         }
-        this.cAE.g(this.cAD / 1000000.0D);
+        this.cOK.h(this.cOJ / 1000000.0D);
         AppMethodBeat.o(140216);
         return;
       }
     }
   }
   
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     b(d paramd)
     {
@@ -122,7 +122,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.ui.d
  * JD-Core Version:    0.7.0.1
  */

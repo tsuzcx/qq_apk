@@ -1,81 +1,235 @@
 package com.tencent.mm.plugin.game.d;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.game.report.api.b;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+@Deprecated
 public final class a
-  extends com.tencent.mm.bw.a
 {
-  public LinkedList<dl> uqd;
+  private static String xNZ = "";
   
-  public a()
+  public static String Fh(String paramString)
   {
-    AppMethodBeat.i(182778);
-    this.uqd = new LinkedList();
-    AppMethodBeat.o(182778);
+    AppMethodBeat.i(41852);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(41852);
+      return "";
+    }
+    try
+    {
+      paramString = URLEncoder.encode(paramString, "UTF-8");
+      AppMethodBeat.o(41852);
+      return paramString;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        paramString = "";
+        Log.e("MicroMsg.GameReportUtil", localException.getMessage());
+      }
+    }
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(182779);
-    if (paramInt == 0)
+    AppMethodBeat.i(41850);
+    paramString1 = b.e(14683, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong1), paramString1, null, paramString2, Long.valueOf(paramLong2), Long.valueOf(paramLong3), null });
+    com.tencent.mm.game.report.api.a.hhr.a(paramString1);
+    AppMethodBeat.o(41850);
+  }
+  
+  public static void aAy(String paramString)
+  {
+    xNZ = paramString;
+  }
+  
+  public static String as(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(41854);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.uqd);
-      AppMethodBeat.o(182779);
-      return 0;
+      localJSONObject.put(paramString2, paramString3);
+      paramString2 = localJSONObject;
     }
-    if (paramInt == 1)
+    catch (Exception paramString2)
     {
-      paramInt = f.a.a.a.c(1, 8, this.uqd);
-      AppMethodBeat.o(182779);
-      return paramInt + 0;
+      for (;;)
+      {
+        Log.e("MicroMsg.GameReportUtil", paramString2.getMessage());
+        paramString2 = null;
+      }
     }
-    if (paramInt == 2)
+    paramString3 = paramString1;
+    if (paramString2 != null) {
+      paramString3 = hN(paramString1, paramString2.toString());
+    }
+    paramString1 = Fh(paramString3);
+    AppMethodBeat.o(41854);
+    return paramString1;
+  }
+  
+  public static void b(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
+  {
+    AppMethodBeat.i(41849);
+    Log.i("MicroMsg.GameReportUtil", "reportExposureInfo : " + paramInt1 + " , " + paramInt2 + " , " + paramInt3 + " , 1 , 0 , " + Util.nullAsNil(paramString1) + " , " + paramInt4 + " , 0 , " + Util.nullAsNil(null) + " , " + Util.nullAsNil(null) + " , " + Util.nullAsNil(paramString2));
+    h localh = h.CyF;
+    int j = Util.getInt(null, 0);
+    int i;
+    if (NetStatusUtil.is3G(paramContext)) {
+      i = 4;
+    }
+    for (;;)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.uqd.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+      localh.a(13384, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(1), Integer.valueOf(0), paramString1, Integer.valueOf(paramInt4), Integer.valueOf(0), null, Integer.valueOf(j), Integer.valueOf(i), paramString2 });
+      AppMethodBeat.o(41849);
+      return;
+      if (NetStatusUtil.is4G(paramContext)) {
+        i = 5;
+      } else {
+        switch (NetStatusUtil.getNetType(paramContext))
+        {
+        case 1: 
+        case 2: 
+        case 3: 
+        case 4: 
+        default: 
+          i = 6;
+          break;
+        case -1: 
+          i = 255;
+          break;
+        case 0: 
+          i = 1;
+          break;
+        case 5: 
+          i = 2;
+          break;
+        case 6: 
+          i = 3;
         }
       }
-      AppMethodBeat.o(182779);
-      return 0;
     }
-    if (paramInt == 3)
+  }
+  
+  public static void bz(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(41851);
+    b localb = new b();
+    localb.hhs = paramInt;
+    localb.hht = paramString;
+    com.tencent.mm.game.report.api.a.hhr.a(localb);
+    AppMethodBeat.o(41851);
+  }
+  
+  private static String hN(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(41855);
+    if (Util.isNullOrNil(paramString1))
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      a locala = (a)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(182779);
-        return -1;
-      }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new dl();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((dl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        locala.uqd.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(182779);
-      return 0;
+      AppMethodBeat.o(41855);
+      return paramString2;
     }
-    AppMethodBeat.o(182779);
-    return -1;
+    Iterator localIterator = null;
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        if (paramString1 != null)
+        {
+          localIterator = paramString1.keys();
+          for (;;)
+          {
+            if (localIterator.hasNext()) {
+              try
+              {
+                String str = (String)localIterator.next();
+                paramString2.put(str, paramString1.opt(str));
+              }
+              catch (Exception paramString1)
+              {
+                AppMethodBeat.o(41855);
+                return "";
+              }
+            }
+          }
+        }
+        paramString1 = paramString2.toString();
+      }
+      catch (JSONException paramString1)
+      {
+        AppMethodBeat.o(41855);
+        return "";
+      }
+      AppMethodBeat.o(41855);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        paramString1 = localIterator;
+      }
+    }
+  }
+  
+  public static String u(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(41853);
+    if (paramMap.size() == 0)
+    {
+      AppMethodBeat.o(41853);
+      return "";
+    }
+    JSONObject localJSONObject = new JSONObject();
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      try
+      {
+        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+      }
+      catch (Exception paramMap)
+      {
+        Log.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+        AppMethodBeat.o(41853);
+        return "";
+      }
+    }
+    try
+    {
+      paramMap = URLEncoder.encode(localJSONObject.toString(), "UTF-8");
+      AppMethodBeat.o(41853);
+      return paramMap;
+    }
+    catch (Exception paramMap)
+    {
+      Log.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+      AppMethodBeat.o(41853);
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.a
  * JD-Core Version:    0.7.0.1
  */

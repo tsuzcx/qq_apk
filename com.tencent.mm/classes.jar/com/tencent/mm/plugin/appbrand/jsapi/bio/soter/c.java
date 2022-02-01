@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.luggage.h.e.c;
+import com.tencent.luggage.h.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends a<h>
+  extends d<k>
 {
   public static final int CTRL_INDEX = 277;
   public static final String NAME = "startSoterAuthentication";

@@ -13,7 +13,7 @@ public class SelectPreference
   private boolean enable;
   public boolean isSelected;
   private View mView;
-  private WeImageView tqz;
+  private WeImageView wDG;
   
   public SelectPreference(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class SelectPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142670);
     this.enable = true;
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(142670);
   }
   
@@ -45,9 +45,9 @@ public class SelectPreference
   {
     AppMethodBeat.i(142672);
     super.onBindView(paramView);
-    ade(8);
-    this.tqz = ((WeImageView)paramView.findViewById(2131305186));
-    paramView = this.tqz;
+    alO(8);
+    this.wDG = ((WeImageView)paramView.findViewById(2131308377));
+    paramView = this.wDG;
     if (this.isSelected) {}
     for (int i = 0;; i = 8)
     {
@@ -61,9 +61,9 @@ public class SelectPreference
   {
     AppMethodBeat.i(142671);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131494882, localViewGroup);
+    View.inflate(this.mContext, 2131495619, localViewGroup);
     this.mView = paramViewGroup;
     paramViewGroup = this.mView;
     AppMethodBeat.o(142671);
@@ -77,7 +77,7 @@ public class SelectPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.SelectPreference
  * JD-Core Version:    0.7.0.1
  */

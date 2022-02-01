@@ -1,233 +1,253 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
+import android.util.LongSparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.api.c.a;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.plugin.finder.feed.model.b;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.FinderItem.a;
-import com.tencent.mm.plugin.finder.storage.i;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.ana;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.g.b.y.a;
-import d.l;
+import com.tencent.mm.plugin.finder.storage.FinderItem.b;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.view.recyclerview.a;
+import com.tencent.mm.view.recyclerview.k;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.o;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/FinderItemOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "remove", "svrId", "", "list", "Ljava/util/LinkedList;", "svrIds", "", "removeLocal", "localId", "targetDataType", "updateLocal", "item", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/FinderHotRelatedCache;", "", "()V", "TAG", "", "cache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "prefetchCache", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "relatedFeedSet", "relatedPreloadFeedSet", "totalExposeList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "clear", "", "clearFetchRelatedFeed", "feedId", "clearPrefetchCache", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isCollectUnread", "", "source", "clearPrefetchRelatedFeed", "getHotRelatedFeed", "getPosTriggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getPrefetchCache", "isCanFetch", "isCanPrefetch", "markFetchRelatedFeed", "markPrefetchRelatedFeed", "restoreTotalExposeMap", "map", "Landroid/util/LongSparseArray;", "saveTotalExposeMap", "setPrefetchCache", "info", "update", "feed", "plugin-finder_release"})
 public final class h
 {
-  public static final h sKR;
+  private static final ConcurrentHashMap<Long, FinderItem> cache;
+  private static final LinkedList<k> vGg;
+  private static final ConcurrentHashMap<Long, Object> vGh;
+  private static final ConcurrentHashMap<Long, Object> vGi;
+  public static o<Long, b> vGj;
+  public static final h vGk;
   
   static
   {
-    AppMethodBeat.i(204415);
-    sKR = new h();
-    AppMethodBeat.o(204415);
+    AppMethodBeat.i(251994);
+    vGk = new h();
+    cache = new ConcurrentHashMap();
+    vGg = new LinkedList();
+    vGh = new ConcurrentHashMap();
+    vGi = new ConcurrentHashMap();
+    AppMethodBeat.o(251994);
   }
   
-  public static FinderItem a(ana paramana)
+  public static FinderItem FH(long paramLong)
   {
-    int j = 1;
-    AppMethodBeat.i(204410);
-    p.h(paramana, "data");
-    Object localObject1 = paramana.GFh;
-    int i;
-    Object localObject2;
-    if (paramana.dataType == 0)
-    {
-      i = 1;
-      if ((i == 0) || (localObject1 == null)) {
-        break label219;
-      }
-      localObject2 = ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage();
-      switch (paramana.type)
-      {
-      default: 
-        localObject2 = FinderItem.sJb;
-        localObject1 = FinderItem.a.a((FinderObject)localObject1, paramana.GFi);
-        paramana = com.tencent.mm.plugin.finder.api.c.rPy;
-        paramana = ((FinderItem)localObject1).getFeedObject().contact;
-        if (paramana == null) {
-          break;
-        }
-      }
+    AppMethodBeat.i(251985);
+    FinderItem localFinderItem = (FinderItem)cache.get(Long.valueOf(paramLong));
+    AppMethodBeat.o(251985);
+    return localFinderItem;
+  }
+  
+  public static FinderItem.b FI(long paramLong)
+  {
+    AppMethodBeat.i(251986);
+    Object localObject = (FinderItem)cache.get(Long.valueOf(paramLong));
+    if (localObject == null) {
+      Log.w("Finder.HotRelatedCache", "[get] feedId=" + d.zs(paramLong) + " config is null.");
     }
-    for (paramana = paramana.username;; paramana = null)
+    if (localObject != null)
     {
-      if (c.a.ahT(paramana) == null)
-      {
-        paramana = com.tencent.mm.plugin.finder.api.c.rPy;
-        c.a.b(((FinderItem)localObject1).getFeedObject().contact);
-      }
-      paramana = d.sKD;
-      if (d.a.xk(((FinderItem)localObject1).field_id) == null)
-      {
-        paramana = d.sKD;
-        d.a.f((FinderItem)localObject1);
-      }
-      paramana = (ana)localObject1;
-      for (;;)
-      {
-        if (paramana == null) {
-          break label219;
-        }
-        AppMethodBeat.o(204410);
-        return paramana;
-        i = 0;
-        break;
-        paramana = ((i)localObject2).xg(paramana.id);
-        if (paramana != null)
-        {
-          if (paramana.getLocalId() != 0L) {}
-          for (i = j;; i = 0)
-          {
-            if (i != 0) {
-              break label207;
-            }
-            paramana = null;
-            break;
-          }
-        }
-        else
-        {
-          label207:
-          paramana = null;
-        }
-      }
+      localObject = ((FinderItem)localObject).getPosTriggerConfig();
+      AppMethodBeat.o(251986);
+      return localObject;
     }
-    label219:
-    AppMethodBeat.o(204410);
+    AppMethodBeat.o(251986);
     return null;
   }
   
-  public static boolean a(long paramLong, FinderItem paramFinderItem, LinkedList<ana> paramLinkedList)
+  public static boolean FJ(long paramLong)
   {
-    AppMethodBeat.i(204411);
-    p.h(paramFinderItem, "item");
-    p.h(paramLinkedList, "list");
-    Object localObject1 = ((Iterable)paramLinkedList).iterator();
-    int i;
-    if (((Iterator)localObject1).hasNext())
+    AppMethodBeat.i(251987);
+    if (!vGh.containsKey(Long.valueOf(paramLong)))
     {
-      paramLinkedList = ((Iterator)localObject1).next();
-      Object localObject2 = (ana)paramLinkedList;
-      if ((((ana)localObject2).dataType == 0) && (((ana)localObject2).type == 2))
-      {
-        localObject2 = ((ana)localObject2).GFh;
-        if ((localObject2 != null) && (((FinderObject)localObject2).id == paramLong))
-        {
-          i = 1;
-          label94:
-          if (i == 0) {
-            break label152;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      paramLinkedList = (ana)paramLinkedList;
-      if (paramLinkedList == null) {
-        break label159;
-      }
-      paramLinkedList.type = 1;
-      localObject1 = paramLinkedList.GFh;
-      if (localObject1 != null) {
-        ((FinderObject)localObject1).id = paramFinderItem.field_id;
-      }
-      paramLinkedList.GFh = paramFinderItem.getFeedObject();
-      AppMethodBeat.o(204411);
+      AppMethodBeat.o(251987);
       return true;
-      i = 0;
-      break label94;
-      label152:
-      break;
-      paramLinkedList = null;
     }
-    label159:
-    AppMethodBeat.o(204411);
+    AppMethodBeat.o(251987);
     return false;
   }
   
-  public static boolean a(long paramLong, LinkedList<ana> paramLinkedList)
+  public static boolean FK(long paramLong)
   {
-    AppMethodBeat.i(204412);
-    p.h(paramLinkedList, "list");
-    y.a locala = new y.a();
-    locala.NiT = false;
-    com.tencent.mm.ac.c.a(paramLinkedList, (b)new a(paramLong, locala));
-    boolean bool = locala.NiT;
-    AppMethodBeat.o(204412);
-    return bool;
-  }
-  
-  public static boolean a(List<Long> paramList, LinkedList<ana> paramLinkedList)
-  {
-    AppMethodBeat.i(204413);
-    p.h(paramList, "svrIds");
-    p.h(paramLinkedList, "list");
-    final y.a locala = new y.a();
-    locala.NiT = false;
-    com.tencent.mm.ac.c.a(paramLinkedList, (b)new b(paramList, locala));
-    boolean bool = locala.NiT;
-    AppMethodBeat.o(204413);
-    return bool;
-  }
-  
-  public static boolean b(long paramLong, LinkedList<ana> paramLinkedList)
-  {
-    AppMethodBeat.i(204414);
-    p.h(paramLinkedList, "list");
-    y.a locala = new y.a();
-    locala.NiT = false;
-    com.tencent.mm.ac.c.a(paramLinkedList, (b)new c(paramLong, locala));
-    boolean bool = locala.NiT;
-    AppMethodBeat.o(204414);
-    return bool;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
-  static final class a
-    extends q
-    implements b<ana, Boolean>
-  {
-    a(long paramLong, y.a parama)
+    AppMethodBeat.i(251988);
+    if (!vGi.containsKey(Long.valueOf(paramLong)))
     {
-      super();
+      AppMethodBeat.o(251988);
+      return true;
+    }
+    AppMethodBeat.o(251988);
+    return false;
+  }
+  
+  public static void FL(long paramLong)
+  {
+    AppMethodBeat.i(251989);
+    Log.i("Finder.HotRelatedCache", "[markFetchRelatedFeed] feedId=" + d.zs(paramLong));
+    ((Map)vGh).put(Long.valueOf(paramLong), new Object());
+    AppMethodBeat.o(251989);
+  }
+  
+  public static void FM(long paramLong)
+  {
+    AppMethodBeat.i(251990);
+    Log.i("Finder.HotRelatedCache", "[clearFetchRelatedFeed] feedId=" + d.zs(paramLong));
+    vGh.remove(Long.valueOf(paramLong));
+    AppMethodBeat.o(251990);
+  }
+  
+  public static void FN(long paramLong)
+  {
+    AppMethodBeat.i(251991);
+    Log.i("Finder.HotRelatedCache", "[markPrefetchRelatedFeed] feedId=" + d.zs(paramLong));
+    ((Map)vGi).put(Long.valueOf(paramLong), new Object());
+    AppMethodBeat.o(251991);
+  }
+  
+  public static b FO(long paramLong)
+  {
+    AppMethodBeat.i(251992);
+    Object localObject = vGj;
+    if ((localObject != null) && (((Number)((o)localObject).first).longValue() == paramLong))
+    {
+      Log.i("Finder.HotRelatedCache", "[getPrefetchCache] use cache, feedId=" + d.zs(paramLong) + ' ');
+      localObject = vGj;
+      if (localObject != null)
+      {
+        localObject = (b)((o)localObject).second;
+        AppMethodBeat.o(251992);
+        return localObject;
+      }
+      AppMethodBeat.o(251992);
+      return null;
+    }
+    AppMethodBeat.o(251992);
+    return null;
+  }
+  
+  public static void a(bbn parambbn, boolean paramBoolean, String paramString)
+  {
+    long l2 = 0L;
+    AppMethodBeat.i(251993);
+    p.h(paramString, "source");
+    Object localObject1 = new StringBuilder("[clearPrefetchCache] feedId=");
+    Object localObject2 = vGj;
+    long l1;
+    if (localObject2 != null)
+    {
+      localObject2 = (Long)((o)localObject2).first;
+      if (localObject2 != null)
+      {
+        l1 = ((Long)localObject2).longValue();
+        Log.i("Finder.HotRelatedCache", d.zs(l1) + " source=" + paramString);
+        paramString = vGj;
+        if (paramString == null) {
+          break label232;
+        }
+        paramString = (b)paramString.second;
+        if (paramString == null) {
+          break label232;
+        }
+        paramString = paramString.tUz;
+        if (paramString == null) {
+          break label232;
+        }
+        localObject1 = y.vXH;
+      }
+    }
+    label232:
+    for (paramString = y.a((List)paramString, BaseFinderFeed.class);; paramString = null)
+    {
+      if (paramString != null)
+      {
+        localObject1 = vGj;
+        l1 = l2;
+        if (localObject1 != null)
+        {
+          localObject1 = (Long)((o)localObject1).first;
+          l1 = l2;
+          if (localObject1 != null) {
+            l1 = ((Long)localObject1).longValue();
+          }
+        }
+        Log.i("Finder.HotRelatedCache", "[clearPrefetchRelatedFeed] feedId=" + d.zs(l1));
+        vGi.remove(Long.valueOf(l1));
+        if (paramBoolean)
+        {
+          localObject1 = y.vXH;
+          y.a(4, paramString, parambbn);
+        }
+      }
+      vGj = null;
+      AppMethodBeat.o(251993);
+      return;
+      l1 = 0L;
+      break;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
-  static final class b
-    extends q
-    implements b<ana, Boolean>
+  public static void b(LongSparseArray<k> paramLongSparseArray)
   {
-    b(List paramList, y.a parama)
+    AppMethodBeat.i(251982);
+    StringBuilder localStringBuilder = new StringBuilder();
+    vGg.clear();
+    if (paramLongSparseArray != null)
     {
-      super();
+      int i = 0;
+      int j = paramLongSparseArray.size();
+      while (i < j)
+      {
+        vGg.add(paramLongSparseArray.valueAt(i));
+        localStringBuilder.append(d.zs(paramLongSparseArray.keyAt(i)) + ", ");
+        i += 1;
+      }
     }
+    Log.i("Finder.HotRelatedCache", "[saveTotalExposeMap] ".concat(String.valueOf(localStringBuilder)));
+    AppMethodBeat.o(251982);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
-  static final class c
-    extends q
-    implements b<ana, Boolean>
+  public static void c(long paramLong, FinderItem paramFinderItem)
   {
-    c(long paramLong, y.a parama)
+    AppMethodBeat.i(251984);
+    p.h(paramFinderItem, "feed");
+    ((Map)cache).put(Long.valueOf(paramLong), paramFinderItem);
+    paramFinderItem.setPosTriggerConfig(paramFinderItem.parseJsonOfPosTriggerConfig());
+    AppMethodBeat.o(251984);
+  }
+  
+  public static void c(LongSparseArray<k> paramLongSparseArray)
+  {
+    AppMethodBeat.i(251983);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramLongSparseArray != null)
     {
-      super();
+      Iterator localIterator = ((Iterable)vGg).iterator();
+      while (localIterator.hasNext())
+      {
+        k localk = (k)localIterator.next();
+        long l = localk.Rrp.lT();
+        paramLongSparseArray.append(l, localk);
+        localStringBuilder.append(d.zs(l) + ", ");
+      }
     }
+    Log.i("Finder.HotRelatedCache", "[restoreTotalExposeMap] ".concat(String.valueOf(localStringBuilder)));
+    AppMethodBeat.o(251983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.h
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.pointers;
 
 public class PBool
 {
+  private byte _hellAccFlag_;
   public boolean value;
 }
 

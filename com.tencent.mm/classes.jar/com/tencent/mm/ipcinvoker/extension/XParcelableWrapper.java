@@ -9,7 +9,7 @@ public class XParcelableWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<XParcelableWrapper> CREATOR;
-  public f gAM;
+  public f hnB;
   
   static
   {
@@ -26,11 +26,11 @@ public class XParcelableWrapper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(158815);
-    if (this.gAM != null)
+    if (this.hnB != null)
     {
       paramParcel.writeInt(1);
-      paramParcel.writeString(this.gAM.getClass().getName());
-      this.gAM.d(paramParcel);
+      paramParcel.writeString(this.hnB.getClass().getName());
+      this.hnB.e(paramParcel);
       AppMethodBeat.o(158815);
       return;
     }
@@ -40,7 +40,7 @@ public class XParcelableWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.XParcelableWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -6,64 +6,63 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.plugin.appbrand.config.y;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.config.ab;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.util.Map;
 
 public class b
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
-  public static b cmn;
-  private static String[] cmq = { "username", "appId", "versionInfo", "appInfo", "smallHeadURL", "nickname" };
-  protected final Map<String, AppBrandInitConfigLU> cmo;
-  private final Map<String, String> cmp;
+  public static b cyi;
+  private static String[] cyl = { "username", "appId", "versionInfo", "appInfo", "smallHeadURL", "nickname" };
+  protected final Map<String, AppBrandInitConfigLU> cyj;
+  private final Map<String, String> cyk;
   
   protected b()
   {
     AppMethodBeat.i(146685);
-    this.cmo = new a();
-    this.cmp = new a();
+    this.cyj = new a();
+    this.cyk = new a();
     AppMethodBeat.o(146685);
   }
   
-  public static b Ea()
+  public static b Nw()
   {
     try
     {
-      b localb = cmn;
+      b localb = cyi;
       return localb;
     }
     finally {}
   }
   
-  private AppBrandInitConfigLU dg(String paramString)
+  private AppBrandInitConfigLU dz(String paramString)
   {
     AppMethodBeat.i(146688);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146688);
       return null;
     }
     Object localObject2;
-    synchronized (this.cmp)
+    synchronized (this.cyk)
     {
-      localObject2 = (String)this.cmp.get(paramString);
-      if (bu.isNullOrNil((String)localObject2))
+      localObject2 = (String)this.cyk.get(paramString);
+      if (Util.isNullOrNil((String)localObject2))
       {
-        y.bfa();
-        localObject2 = a(y.f(String.format("%s=?", new Object[] { "username" }), new String[] { paramString }));
+        ab.bAu();
+        localObject2 = a(ab.f(String.format("%s=?", new Object[] { "username" }), new String[] { paramString }));
         ??? = localObject2;
         if (localObject2 == null) {}
       }
     }
     for (;;)
     {
-      synchronized (this.cmp)
+      synchronized (this.cyk)
       {
-        this.cmp.put(paramString, ((AppBrandInitConfigLU)localObject2).appId);
+        this.cyk.put(paramString, ((AppBrandInitConfigLU)localObject2).appId);
         ??? = localObject2;
         AppMethodBeat.o(146688);
         return ???;
@@ -71,7 +70,7 @@ public class b
         AppMethodBeat.o(146688);
         throw paramString;
       }
-      ??? = dk((String)localObject2);
+      ??? = dA((String)localObject2);
     }
   }
   
@@ -79,7 +78,7 @@ public class b
   {
     try
     {
-      cmn = null;
+      cyi = null;
       return;
     }
     finally {}
@@ -94,96 +93,133 @@ public class b
       localAppBrandInitConfigLU = new AppBrandInitConfigLU();
       localAppBrandInitConfigLU.username = paramWxaAttributes.field_username;
       localAppBrandInitConfigLU.appId = paramWxaAttributes.field_appId;
-      localAppBrandInitConfigLU.dpI = paramWxaAttributes.field_nickname;
+      localAppBrandInitConfigLU.brandName = paramWxaAttributes.field_nickname;
       localAppBrandInitConfigLU.iconUrl = paramWxaAttributes.field_smallHeadURL;
-      if (paramWxaAttributes.beT() == null) {
+      if (paramWxaAttributes.bAn() == null) {
         break label143;
       }
-      localAppBrandInitConfigLU.cmt = paramWxaAttributes.beT().cRx;
-      localAppBrandInitConfigLU.originalFlag = paramWxaAttributes.beT().originalFlag;
-      localAppBrandInitConfigLU.kaF = paramWxaAttributes.beT().kaF;
-      if (paramWxaAttributes.beV() == null) {
+      localAppBrandInitConfigLU.cyo = paramWxaAttributes.bAn().serviceType;
+      localAppBrandInitConfigLU.originalFlag = paramWxaAttributes.bAn().originalFlag;
+      localAppBrandInitConfigLU.ldJ = paramWxaAttributes.bAn().ldJ;
+      if (paramWxaAttributes.bAp() == null) {
         break label171;
       }
-      localAppBrandInitConfigLU.cmz = paramWxaAttributes.beV().cmz;
-      localAppBrandInitConfigLU.aDD = paramWxaAttributes.beV().aDD;
-      localAppBrandInitConfigLU.cmA = paramWxaAttributes.beV();
+      localAppBrandInitConfigLU.cyu = paramWxaAttributes.bAp().cyu;
+      localAppBrandInitConfigLU.appVersion = paramWxaAttributes.bAp().appVersion;
+      localAppBrandInitConfigLU.cyv = paramWxaAttributes.bAp();
     }
     for (;;)
     {
-      localAppBrandInitConfigLU.cmB = paramWxaAttributes.field_passThroughInfo;
+      localAppBrandInitConfigLU.cyw = paramWxaAttributes.field_passThroughInfo;
       AppMethodBeat.o(146689);
       return localAppBrandInitConfigLU;
       label143:
-      ae.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL appInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
+      com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL appInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
       break;
       label171:
-      ae.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL versionInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
+      com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL versionInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
     }
   }
   
   public final void a(String paramString, AppBrandInitConfigLU paramAppBrandInitConfigLU)
   {
-    AppMethodBeat.i(220756);
-    if ((paramAppBrandInitConfigLU == null) || (bu.isNullOrNil(paramAppBrandInitConfigLU.appId)))
+    AppMethodBeat.i(229824);
+    if ((paramAppBrandInitConfigLU == null) || (Util.isNullOrNil(paramAppBrandInitConfigLU.appId)))
     {
-      AppMethodBeat.o(220756);
+      AppMethodBeat.o(229824);
       return;
     }
-    ae.i("Luggage.WXA.AppBrandInitConfigHelper", "stash username:%s, appId:%s, appVersion:%d", new Object[] { paramString, paramAppBrandInitConfigLU.appId, Integer.valueOf(paramAppBrandInitConfigLU.aDD) });
-    synchronized (this.cmo)
+    com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.AppBrandInitConfigHelper", "stash username:%s, appId:%s, appVersion:%d, stack:%s", new Object[] { paramString, paramAppBrandInitConfigLU.appId, Integer.valueOf(paramAppBrandInitConfigLU.appVersion), android.util.Log.getStackTraceString(new Throwable()) });
+    synchronized (this.cyj)
     {
-      this.cmo.put(paramAppBrandInitConfigLU.appId, paramAppBrandInitConfigLU);
-      if (bu.isNullOrNil(paramString)) {
-        break label138;
+      this.cyj.put(paramAppBrandInitConfigLU.appId, paramAppBrandInitConfigLU);
+      if (Util.isNullOrNil(paramString)) {
+        break label151;
       }
     }
-    synchronized (this.cmp)
+    synchronized (this.cyk)
     {
-      this.cmp.put(paramString, paramAppBrandInitConfigLU.appId);
-      AppMethodBeat.o(220756);
+      this.cyk.put(paramString, paramAppBrandInitConfigLU.appId);
+      AppMethodBeat.o(229824);
       return;
       paramString = finally;
-      AppMethodBeat.o(220756);
+      AppMethodBeat.o(229824);
       throw paramString;
     }
-    label138:
-    AppMethodBeat.o(220756);
+    label151:
+    AppMethodBeat.o(229824);
   }
   
-  public final void a(String arg1, m paramm)
+  public AppBrandInitConfigLU dA(String paramString)
+  {
+    AppMethodBeat.i(146690);
+    if (Util.isNullOrNil(paramString))
+    {
+      com.tencent.mm.sdk.platformtools.Log.w("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId with EMPTY appId");
+      AppMethodBeat.o(146690);
+      return null;
+    }
+    for (;;)
+    {
+      AppBrandInitConfigLU localAppBrandInitConfigLU;
+      synchronized (this.cyj)
+      {
+        localAppBrandInitConfigLU = (AppBrandInitConfigLU)this.cyj.remove(paramString);
+        if (localAppBrandInitConfigLU != null) {
+          break label128;
+        }
+        ab.bAu();
+        localAppBrandInitConfigLU = a(ab.e(paramString, cyl));
+        if (localAppBrandInitConfigLU == null)
+        {
+          i = -1;
+          com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from db, appVersion:%d", new Object[] { paramString, Integer.valueOf(i) });
+          paramString = localAppBrandInitConfigLU;
+          AppMethodBeat.o(146690);
+          return paramString;
+        }
+      }
+      int i = localAppBrandInitConfigLU.appVersion;
+      continue;
+      label128:
+      com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from memory, appVersion:%d", new Object[] { paramString, Integer.valueOf(localAppBrandInitConfigLU.appVersion) });
+      paramString = localAppBrandInitConfigLU;
+    }
+  }
+  
+  public void onNotifyChange(String arg1, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(146686);
     if ("single".equals(???))
     {
-      if (String.class.isInstance(paramm.obj))
+      if (String.class.isInstance(paramMStorageEventData.obj))
       {
-        paramm = String.valueOf(paramm.obj);
-        if (!bu.isNullOrNil(paramm)) {
+        paramMStorageEventData = String.valueOf(paramMStorageEventData.obj);
+        if (!Util.isNullOrNil(paramMStorageEventData)) {
           try
           {
-            dg(paramm);
+            dz(paramMStorageEventData);
             AppMethodBeat.o(146686);
             return;
           }
           catch (RuntimeException localRuntimeException)
           {
-            ae.printErrStackTrace("Luggage.WXA.AppBrandInitConfigHelper", localRuntimeException, "onNotifyChange event[%s] username[%s]", new Object[] { ???, paramm });
-            synchronized (this.cmp)
+            com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("Luggage.WXA.AppBrandInitConfigHelper", localRuntimeException, "onNotifyChange event[%s] username[%s]", new Object[] { ???, paramMStorageEventData });
+            synchronized (this.cyk)
             {
-              paramm = (String)this.cmp.remove(paramm);
-              if (TextUtils.isEmpty(paramm)) {
+              paramMStorageEventData = (String)this.cyk.remove(paramMStorageEventData);
+              if (TextUtils.isEmpty(paramMStorageEventData)) {
                 break label150;
               }
             }
-            synchronized (this.cmo)
+            synchronized (this.cyj)
             {
-              this.cmo.remove(paramm);
+              this.cyj.remove(paramMStorageEventData);
               AppMethodBeat.o(146686);
               return;
-              paramm = finally;
+              paramMStorageEventData = finally;
               AppMethodBeat.o(146686);
-              throw paramm;
+              throw paramMStorageEventData;
             }
           }
         }
@@ -193,56 +229,19 @@ public class b
       return;
     }
     if ("batch".equals(???)) {
-      synchronized (this.cmo)
+      synchronized (this.cyj)
       {
-        this.cmo.clear();
+        this.cyj.clear();
         AppMethodBeat.o(146686);
         return;
       }
     }
     AppMethodBeat.o(146686);
   }
-  
-  public AppBrandInitConfigLU dk(String paramString)
-  {
-    AppMethodBeat.i(146690);
-    if (bu.isNullOrNil(paramString))
-    {
-      ae.w("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId with EMPTY appId");
-      AppMethodBeat.o(146690);
-      return null;
-    }
-    for (;;)
-    {
-      AppBrandInitConfigLU localAppBrandInitConfigLU;
-      synchronized (this.cmo)
-      {
-        localAppBrandInitConfigLU = (AppBrandInitConfigLU)this.cmo.remove(paramString);
-        if (localAppBrandInitConfigLU != null) {
-          break label129;
-        }
-        y.bfa();
-        localAppBrandInitConfigLU = a(y.e(paramString, cmq));
-        if (localAppBrandInitConfigLU == null)
-        {
-          i = -1;
-          ae.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from db, appVersion:%d", new Object[] { paramString, Integer.valueOf(i) });
-          paramString = localAppBrandInitConfigLU;
-          AppMethodBeat.o(146690);
-          return paramString;
-        }
-      }
-      int i = localAppBrandInitConfigLU.aDD;
-      continue;
-      label129:
-      ae.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from memory, appVersion:%d", new Object[] { paramString, Integer.valueOf(localAppBrandInitConfigLU.aDD) });
-      paramString = localAppBrandInitConfigLU;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.config.b
  * JD-Core Version:    0.7.0.1
  */

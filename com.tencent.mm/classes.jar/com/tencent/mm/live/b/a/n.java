@@ -1,87 +1,88 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bed;
-import com.tencent.mm.protocal.protobuf.bee;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bpr;
+import com.tencent.mm.protocal.protobuf.bps;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetOnlineMemberById;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "idList", "", "", "(JLjava/util/List;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineMemberByIdRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineMemberByIdResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getRemoteUserList", "Lcom/tencent/mm/protocal/protobuf/OnlineMemberInfo;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetOnlineMemberById;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "idList", "", "", "(JLjava/util/List;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineMemberByIdRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineMemberByIdResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getRemoteUserList", "Lcom/tencent/mm/protocal/protobuf/OnlineMemberInfo;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
 public final class n
-  extends com.tencent.mm.ak.n
-  implements k
+  extends q
+  implements m
 {
-  public static final a gSP;
-  private f callback;
-  private b gRX;
-  private bed gSN;
-  public bee gSO;
+  public static final a hKm;
+  private i callback;
+  private d hJu;
+  private bpr hKk;
+  public bps hKl;
   
   static
   {
-    AppMethodBeat.i(215840);
-    gSP = new a((byte)0);
-    AppMethodBeat.o(215840);
+    AppMethodBeat.i(207793);
+    hKm = new a((byte)0);
+    AppMethodBeat.o(207793);
   }
   
   public n(long paramLong, List<String> paramList)
   {
-    AppMethodBeat.i(215839);
-    Object localObject = new b.a();
-    ((b.a)localObject).c((a)new bed());
-    ((b.a)localObject).d((a)new bee());
-    ((b.a)localObject).oS(3816);
-    ((b.a)localObject).DN("/cgi-bin/micromsg-bin/getliveonlinememberbyid");
-    ((b.a)localObject).oU(0);
-    ((b.a)localObject).oV(0);
-    localObject = ((b.a)localObject).aDS();
+    AppMethodBeat.i(207792);
+    Object localObject = new d.a();
+    ((d.a)localObject).c((a)new bpr());
+    ((d.a)localObject).d((a)new bps());
+    ((d.a)localObject).sG(3816);
+    ((d.a)localObject).MB("/cgi-bin/micromsg-bin/getliveonlinememberbyid");
+    ((d.a)localObject).sI(0);
+    ((d.a)localObject).sJ(0);
+    localObject = ((d.a)localObject).aXF();
     p.g(localObject, "builder.buildInstance()");
-    this.gRX = ((b)localObject);
-    localObject = this.gRX.aEU();
+    this.hJu = ((d)localObject);
+    localObject = this.hJu.aYJ();
     if (localObject == null)
     {
-      paramList = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveOnlineMemberByIdRequest");
-      AppMethodBeat.o(215839);
+      paramList = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveOnlineMemberByIdRequest");
+      AppMethodBeat.o(207792);
       throw paramList;
     }
-    this.gSN = ((bed)localObject);
-    this.gSN.FKy = paramLong;
+    this.hKk = ((bpr)localObject);
+    this.hKk.hyH = paramLong;
     localObject = (Collection)paramList;
     if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        localObject = this.gSN.GTB;
+        localObject = this.hKk.LXK;
         if (localObject != null) {
           ((LinkedList)localObject).addAll((Collection)paramList);
         }
       }
-      ae.i("MicroMsg.LiveNetScene.NetSceneLiveGetOnlineMemberById", "get live info liveId:".concat(String.valueOf(paramLong)));
-      AppMethodBeat.o(215839);
+      Log.i("MicroMsg.LiveNetScene.NetSceneLiveGetOnlineMemberById", "get live info liveId:".concat(String.valueOf(paramLong)));
+      AppMethodBeat.o(207792);
       return;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(215837);
-    ae.i("MicroMsg.LiveNetScene.NetSceneLiveGetOnlineMemberById", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.gRX, (k)this);
-    AppMethodBeat.o(215837);
+    AppMethodBeat.i(207790);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLiveGetOnlineMemberById", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, (s)this.hJu, (m)this);
+    AppMethodBeat.o(207790);
     return i;
   }
   
@@ -90,35 +91,35 @@ public final class n
     return 3816;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215838);
-    ae.i("MicroMsg.LiveNetScene.NetSceneLiveGetOnlineMemberById", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (paramq == null)
+    AppMethodBeat.i(207791);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLiveGetOnlineMemberById", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (params == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(215838);
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
+      AppMethodBeat.o(207791);
       throw paramString;
     }
-    paramq = ((b)paramq).aEV();
-    if (paramq == null)
+    params = ((d)params).aYK();
+    if (params == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveOnlineMemberByIdResponse");
-      AppMethodBeat.o(215838);
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveOnlineMemberByIdResponse");
+      AppMethodBeat.o(207791);
       throw paramString;
     }
-    this.gSO = ((bee)paramq);
-    paramq = this.callback;
-    if (paramq != null)
+    this.hKl = ((bps)params);
+    params = this.callback;
+    if (params != null)
     {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.ak.n)this);
-      AppMethodBeat.o(215838);
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(207791);
       return;
     }
-    AppMethodBeat.o(215838);
+    AppMethodBeat.o(207791);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetOnlineMemberById$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveGetOnlineMemberById$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

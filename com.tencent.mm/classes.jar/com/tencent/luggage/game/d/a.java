@@ -1,19 +1,20 @@
 package com.tencent.luggage.game.d;
 
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.s;
 
 public class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+  extends d<s>
 {
   public static final int CTRL_INDEX = 585;
   public static final String NAME = "hideSplashScreen";
   
-  protected boolean CI()
+  protected boolean Me()
   {
     return false;
   }
   
-  protected void CJ() {}
+  protected void Mf() {}
 }
 
 

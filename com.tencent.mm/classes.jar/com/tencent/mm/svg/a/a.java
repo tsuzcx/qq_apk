@@ -14,7 +14,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.svg.WeChatSVG;
 import com.tencent.mm.svg.b.b;
 import java.io.IOException;
@@ -25,33 +25,33 @@ import org.apache.http.util.EncodingUtils;
 
 public final class a
 {
-  private static String JkA;
-  private static Map<Integer, com.tencent.mm.svg.c> JkB;
-  private static Map<Integer, Picture> JkC;
-  private static Map<String, Picture> JkD;
-  private static Float JkE;
-  private static String Jky;
-  protected static int Jkz;
-  private TypedValue Jkw;
-  private byte[] Jkx;
+  private static String Our;
+  protected static int Ous;
+  private static String Out;
+  private static Map<Integer, com.tencent.mm.svg.c> Ouu;
+  private static Map<Integer, Picture> Ouv;
+  private static Map<String, Picture> Ouw;
+  private static Float Oux;
+  private TypedValue Oup;
+  private byte[] Ouq;
   
   static
   {
     AppMethodBeat.i(148716);
-    Jky = ".svg.code.drawable";
-    Jkz = 3;
-    JkA = "";
-    JkB = new ConcurrentHashMap();
-    JkC = new ConcurrentHashMap();
-    JkD = new ConcurrentHashMap();
+    Our = ".svg.code.drawable";
+    Ous = 3;
+    Out = "";
+    Ouu = new ConcurrentHashMap();
+    Ouv = new ConcurrentHashMap();
+    Ouw = new ConcurrentHashMap();
     AppMethodBeat.o(148716);
   }
   
   public a()
   {
     AppMethodBeat.i(148701);
-    this.Jkw = new TypedValue();
-    this.Jkx = new byte[0];
+    this.Oup = new TypedValue();
+    this.Ouq = new byte[0];
     AppMethodBeat.o(148701);
   }
   
@@ -89,38 +89,38 @@ public final class a
       AppMethodBeat.o(148715);
       return localPicture;
     }
-    paramFloat1 = bO(paramFloat1) * paramFloat2;
-    paramFloat2 = com.tencent.mm.svg.c.a(paramc);
-    float f = com.tencent.mm.svg.c.b(paramc);
+    paramFloat1 = cm(paramFloat1) * paramFloat2;
+    paramFloat2 = com.tencent.mm.svg.c.getWidth(paramc);
+    float f = com.tencent.mm.svg.c.getHeight(paramc);
     Canvas localCanvas = localPicture.beginRecording((int)(paramFloat2 * paramFloat1), (int)(f * paramFloat1));
     localCanvas.save();
     localCanvas.scale(paramFloat1, paramFloat1);
-    com.tencent.mm.svg.c.a(paramc, localCanvas, Looper.myLooper());
+    com.tencent.mm.svg.c.render(paramc, localCanvas, Looper.myLooper());
     localCanvas.restore();
     localPicture.endRecording();
     AppMethodBeat.o(148715);
     return localPicture;
   }
   
-  private static Drawable a(Resources paramResources, int paramInt, float paramFloat)
+  public static Drawable a(Resources paramResources, int paramInt, float paramFloat)
   {
     AppMethodBeat.i(148704);
     if (paramInt == 0)
     {
       com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "getSVGDrawable a invalid resource!!! %s", new Object[] { Integer.valueOf(paramInt) });
       com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "Why no log??", new Object[0]);
-      com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "The stack : %s", new Object[] { foR() });
+      com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "The stack : %s", new Object[] { gFN() });
       paramResources = new c(new Picture(), paramInt);
       AppMethodBeat.o(148704);
       return paramResources;
     }
-    if (b.fyj())
+    if (b.gFX())
     {
       paramResources = c(paramResources, paramInt, paramFloat);
       AppMethodBeat.o(148704);
       return paramResources;
     }
-    paramResources = a(paramResources, paramInt, JkA + Jky, paramFloat);
+    paramResources = a(paramResources, paramInt, Out + Our, paramFloat);
     AppMethodBeat.o(148704);
     return paramResources;
   }
@@ -139,12 +139,12 @@ public final class a
         break label130;
       }
       String str = paramInt + "_scale_" + paramFloat;
-      localPicture2 = (Picture)JkD.get(str);
+      localPicture2 = (Picture)Ouw.get(str);
       localPicture1 = localPicture2;
       if (localPicture2 == null)
       {
         localPicture1 = a(f2, a(paramResources, paramInt, paramString), f1);
-        JkD.put(str, localPicture1);
+        Ouw.put(str, localPicture1);
       }
     }
     for (paramResources = new c(localPicture1, paramInt);; paramResources = new c(localPicture1, paramInt))
@@ -154,12 +154,12 @@ public final class a
       f1 = 1.0F;
       break;
       label130:
-      localPicture2 = (Picture)JkC.get(Integer.valueOf(paramInt));
+      localPicture2 = (Picture)Ouv.get(Integer.valueOf(paramInt));
       localPicture1 = localPicture2;
       if (localPicture2 == null)
       {
         localPicture1 = a(f2, a(paramResources, paramInt, paramString), f1);
-        JkC.put(Integer.valueOf(paramInt), localPicture1);
+        Ouv.put(Integer.valueOf(paramInt), localPicture1);
       }
     }
   }
@@ -175,12 +175,12 @@ public final class a
     {
       try
       {
-        if (JkB.containsKey(Integer.valueOf(paramInt)))
+        if (Ouu.containsKey(Integer.valueOf(paramInt)))
         {
           localObject1 = str;
           localObject2 = str;
           localObject3 = str;
-          paramResources = (com.tencent.mm.svg.c)JkB.get(Integer.valueOf(paramInt));
+          paramResources = (com.tencent.mm.svg.c)Ouu.get(Integer.valueOf(paramInt));
           AppMethodBeat.o(148714);
           return paramResources;
         }
@@ -211,7 +211,7 @@ public final class a
       }
       catch (ClassNotFoundException paramResources)
       {
-        ae.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
         com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "Get SVGCodeDrawable failed. Reason : ClassNotFoundException %s", new Object[] { localObject1 });
         AppMethodBeat.o(148714);
         return null;
@@ -224,14 +224,14 @@ public final class a
       catch (InstantiationException paramResources)
       {
         com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "Get SVGCodeDrawable failed. Reason : InstantiationException %s", new Object[] { localObject2 });
-        ae.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
         AppMethodBeat.o(148714);
         return null;
       }
       catch (IllegalAccessException paramResources)
       {
         com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "Get SVGCodeDrawable failed. Reason : IllegalAccessException %s", new Object[] { localObject3 });
-        ae.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
         AppMethodBeat.o(148714);
       }
       localObject1 = paramResources;
@@ -241,7 +241,7 @@ public final class a
       localObject1 = paramResources;
       localObject2 = paramResources;
       localObject3 = paramResources;
-      JkB.put(Integer.valueOf(paramInt), paramString);
+      Ouu.put(Integer.valueOf(paramInt), paramString);
       paramResources = paramString;
     }
     return null;
@@ -275,17 +275,6 @@ public final class a
     return false;
   }
   
-  private static float bO(float paramFloat)
-  {
-    AppMethodBeat.i(148712);
-    if (JkE == null) {
-      JkE = Float.valueOf(paramFloat / Jkz);
-    }
-    paramFloat = JkE.floatValue();
-    AppMethodBeat.o(148712);
-    return paramFloat;
-  }
-  
   private static Drawable c(Resources paramResources, int paramInt, float paramFloat)
   {
     AppMethodBeat.i(148711);
@@ -312,7 +301,7 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.SVGCompat", localIOException1, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SVGCompat", localIOException1, "", new Object[0]);
         }
       }
       float[] arrayOfFloat;
@@ -326,7 +315,7 @@ public final class a
     }
     catch (IOException paramResources)
     {
-      ae.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
       com.tencent.mm.svg.b.c.e("MicroMsg.SVGCompat", "Get SVGPictureDrawable failed. Reason : IOException", new Object[0]);
       if (localIOException1 != null) {}
       try
@@ -339,7 +328,7 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SVGCompat", paramResources, "", new Object[0]);
         }
       }
     }
@@ -356,17 +345,17 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.SVGCompat", localIOException2, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SVGCompat", localIOException2, "", new Object[0]);
         }
       }
       arrayOfFloat = WeChatSVG.getViewPort(l);
       f2 = paramResources.getDisplayMetrics().density;
-      f3 = arrayOfFloat[0] / Jkz;
+      f3 = arrayOfFloat[0] / Ous;
       if (paramFloat > 0.0F)
       {
         f1 = paramFloat;
         f1 *= f3 * f2;
-        f3 = arrayOfFloat[1] / Jkz;
+        f3 = arrayOfFloat[1] / Ous;
         if (paramFloat <= 0.0F) {
           break label363;
         }
@@ -417,7 +406,7 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.SVGCompat", paramPaint, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SVGCompat", paramPaint, "", new Object[0]);
         }
       }
     }
@@ -425,7 +414,18 @@ public final class a
     return false;
   }
   
-  private static String foR()
+  private static float cm(float paramFloat)
+  {
+    AppMethodBeat.i(148712);
+    if (Oux == null) {
+      Oux = Float.valueOf(paramFloat / Ous);
+    }
+    paramFloat = Oux.floatValue();
+    AppMethodBeat.o(148712);
+    return paramFloat;
+  }
+  
+  private static String gFN()
   {
     AppMethodBeat.i(148703);
     Object localObject = new Throwable().getStackTrace();
@@ -453,17 +453,17 @@ public final class a
     return localObject;
   }
   
-  public static Map<Integer, com.tencent.mm.svg.c> fya()
+  public static Map<Integer, com.tencent.mm.svg.c> gFO()
   {
-    return JkB;
+    return Ouu;
   }
   
-  public static void fz(String paramString)
+  public static void gm(String paramString)
   {
-    JkA = paramString;
+    Out = paramString;
   }
   
-  public static Drawable g(Resources paramResources, int paramInt)
+  public static Drawable h(Resources paramResources, int paramInt)
   {
     AppMethodBeat.i(148702);
     paramResources = a(paramResources, paramInt, 0.0F);
@@ -471,7 +471,7 @@ public final class a
     return paramResources;
   }
   
-  public static Bitmap h(Resources paramResources, int paramInt)
+  public static Bitmap i(Resources paramResources, int paramInt)
   {
     AppMethodBeat.i(148705);
     paramResources = b(paramResources, paramInt, 0.0F);
@@ -480,26 +480,26 @@ public final class a
   }
   
   /* Error */
-  public final boolean i(Resources paramResources, int paramInt)
+  public final boolean j(Resources paramResources, int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 456
+    //   0: ldc_w 459
     //   3: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: iload_2
-    //   8: invokevirtual 459	android/content/res/Resources:getResourceTypeName	(I)Ljava/lang/String;
+    //   8: invokevirtual 462	android/content/res/Resources:getResourceTypeName	(I)Ljava/lang/String;
     //   11: astore_3
     //   12: aload_3
-    //   13: ldc_w 461
-    //   16: invokevirtual 464	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   13: ldc_w 464
+    //   16: invokevirtual 467	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   19: ifeq +111 -> 130
     //   22: aload_0
-    //   23: getfield 65	com/tencent/mm/svg/a/a:Jkx	[B
+    //   23: getfield 65	com/tencent/mm/svg/a/a:Ouq	[B
     //   26: astore 5
     //   28: aload 5
     //   30: monitorenter
     //   31: aload_0
-    //   32: getfield 63	com/tencent/mm/svg/a/a:Jkw	Landroid/util/TypedValue;
+    //   32: getfield 63	com/tencent/mm/svg/a/a:Oup	Landroid/util/TypedValue;
     //   35: astore 4
     //   37: aload 4
     //   39: astore_3
@@ -511,45 +511,45 @@ public final class a
     //   52: astore_3
     //   53: aload_0
     //   54: aload_3
-    //   55: putfield 63	com/tencent/mm/svg/a/a:Jkw	Landroid/util/TypedValue;
+    //   55: putfield 63	com/tencent/mm/svg/a/a:Oup	Landroid/util/TypedValue;
     //   58: aload_1
     //   59: iload_2
     //   60: aload_3
     //   61: iconst_1
-    //   62: invokevirtual 468	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   62: invokevirtual 471	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
     //   65: aload_3
-    //   66: getfield 472	android/util/TypedValue:string	Ljava/lang/CharSequence;
-    //   69: invokeinterface 475 1 0
+    //   66: getfield 475	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   69: invokeinterface 478 1 0
     //   74: astore_1
     //   75: aload 5
     //   77: monitorexit
     //   78: aload_1
-    //   79: ldc_w 477
-    //   82: invokevirtual 481	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   79: ldc_w 480
+    //   82: invokevirtual 484	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   85: ifeq +45 -> 130
-    //   88: ldc_w 456
+    //   88: ldc_w 459
     //   91: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: iconst_1
     //   95: ireturn
     //   96: astore_1
     //   97: ldc 84
     //   99: aload_1
-    //   100: ldc_w 483
+    //   100: ldc_w 486
     //   103: iconst_0
     //   104: anewarray 4	java/lang/Object
-    //   107: invokestatic 484	com/tencent/mm/svg/b/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   110: ldc_w 456
+    //   107: invokestatic 487	com/tencent/mm/svg/b/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   110: ldc_w 459
     //   113: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: iconst_0
     //   117: ireturn
     //   118: astore_1
     //   119: aload 5
     //   121: monitorexit
-    //   122: ldc_w 456
+    //   122: ldc_w 459
     //   125: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: aload_1
     //   129: athrow
-    //   130: ldc_w 456
+    //   130: ldc_w 459
     //   133: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   136: iconst_0
     //   137: ireturn

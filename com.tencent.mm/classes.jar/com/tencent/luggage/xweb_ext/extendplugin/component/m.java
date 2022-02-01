@@ -3,7 +3,7 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 public abstract interface m
   extends j
 {
-  public abstract void FW();
+  public abstract void PF();
   
   public abstract void playAudio();
 }

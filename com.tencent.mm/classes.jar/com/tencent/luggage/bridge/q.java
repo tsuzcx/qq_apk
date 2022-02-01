@@ -8,22 +8,22 @@ import java.util.regex.Pattern;
 final class q
   implements p
 {
-  private static final Pattern cgU;
-  private o cgI;
+  private static final Pattern csP;
+  private o csD;
   
   static
   {
     AppMethodBeat.i(140345);
-    cgU = Pattern.compile("^<<//([a-z]{0,10})//>>");
+    csP = Pattern.compile("^<<//([a-z]{0,10})//>>");
     AppMethodBeat.o(140345);
   }
   
   q(o paramo)
   {
-    this.cgI = paramo;
+    this.csD = paramo;
   }
   
-  public final String cx(String paramString)
+  public final String cO(String paramString)
   {
     AppMethodBeat.i(140344);
     if (TextUtils.isEmpty(paramString))
@@ -31,7 +31,7 @@ final class q
       AppMethodBeat.o(140344);
       return null;
     }
-    Object localObject = cgU.matcher(paramString);
+    Object localObject = csP.matcher(paramString);
     if (((Matcher)localObject).find()) {}
     for (localObject = ((Matcher)localObject).group(1); localObject == null; localObject = null)
     {
@@ -40,7 +40,7 @@ final class q
     }
     paramString = paramString.replaceFirst("^<<//([a-z]{0,10})//>>", "");
     boolean bool = ((String)localObject).equals("sync");
-    paramString = this.cgI.cgN.i(paramString, bool);
+    paramString = this.csD.csI.i(paramString, bool);
     AppMethodBeat.o(140344);
     return paramString;
   }
@@ -48,7 +48,7 @@ final class q
   public final void onReady()
   {
     AppMethodBeat.i(140343);
-    this.cgI.BM();
+    this.csD.La();
     AppMethodBeat.o(140343);
   }
 }

@@ -9,90 +9,91 @@ import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.vendor.Huawei;
 
 public final class c
 {
-  private static boolean WJ()
-  {
-    AppMethodBeat.i(131863);
-    boolean bool = ay.aRW("service_launch_way").getBoolean("target26_start_service", false);
-    ae.i("MicroMsg.CoreServiceUtil", "ifTarget26StartService() result:%s", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(131863);
-    return bool;
-  }
-  
-  public static void WK()
-  {
-    AppMethodBeat.i(131865);
-    Context localContext = ak.getContext();
-    Object localObject = new Intent().setClassName(localContext, "com.tencent.mm.pluginsdk.permission.PermissionActivity");
-    ((Intent)localObject).setFlags(268435456);
-    ((Intent)localObject).putExtra("scene", 4);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/booter/CoreServiceUtil", "ignoreBatteryOptimizations", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/booter/CoreServiceUtil", "ignoreBatteryOptimizations", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ae.i("MicroMsg.CoreServiceUtil", "ignoreBatteryOptimizations()");
-    AppMethodBeat.o(131865);
-  }
-  
-  private static SharedPreferences WL()
-  {
-    AppMethodBeat.i(131867);
-    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("service_launch_way", g.abv());
-    AppMethodBeat.o(131867);
-    return localSharedPreferences;
-  }
-  
-  public static boolean WM()
+  public static boolean akA()
   {
     AppMethodBeat.i(131868);
-    if (d.lA(26))
+    if (d.oD(26))
     {
-      int i = WL().getInt("huawei_switch", 0);
-      boolean bool = com.tencent.mm.sdk.h.a.fqm();
-      ae.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() huaweiEnable:%s isNotBelowEmui10:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
+      int i = akz().getInt("huawei_switch", 0);
+      boolean bool = Huawei.isNotBelowEMUI10();
+      Log.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() huaweiEnable:%s isNotBelowEmui10:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
       if (bool)
       {
         AppMethodBeat.o(131868);
         return false;
       }
-      if (bu.jB(i, 0))
+      if (Util.isEqual(i, 0))
       {
-        ae.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() true (huawei)");
+        Log.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() true (huawei)");
         AppMethodBeat.o(131868);
         return true;
       }
     }
-    if ((d.lA(26)) && (!WJ()))
+    if ((d.oD(26)) && (!akx()))
     {
-      ae.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() true");
+      Log.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() true");
       AppMethodBeat.o(131868);
       return true;
     }
-    ae.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() false");
+    Log.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() false");
     AppMethodBeat.o(131868);
     return false;
   }
   
-  public static boolean bK(Context paramContext)
+  private static boolean akx()
+  {
+    AppMethodBeat.i(131863);
+    boolean bool = MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("target26_start_service", false);
+    Log.i("MicroMsg.CoreServiceUtil", "ifTarget26StartService() result:%s", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(131863);
+    return bool;
+  }
+  
+  public static void aky()
+  {
+    AppMethodBeat.i(131865);
+    Context localContext = MMApplicationContext.getContext();
+    Object localObject = new Intent().setClassName(localContext, "com.tencent.mm.pluginsdk.permission.PermissionActivity");
+    ((Intent)localObject).setFlags(268435456);
+    ((Intent)localObject).putExtra("scene", 4);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/booter/CoreServiceUtil", "ignoreBatteryOptimizations", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/booter/CoreServiceUtil", "ignoreBatteryOptimizations", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    Log.i("MicroMsg.CoreServiceUtil", "ignoreBatteryOptimizations()");
+    AppMethodBeat.o(131865);
+  }
+  
+  private static SharedPreferences akz()
+  {
+    AppMethodBeat.i(131867);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("service_launch_way", g.aps());
+    AppMethodBeat.o(131867);
+    return localSharedPreferences;
+  }
+  
+  public static boolean cf(Context paramContext)
   {
     AppMethodBeat.i(131866);
-    if (j.IS_UAT)
+    if (BuildInfo.IS_UAT)
     {
-      ae.i("MicroMsg.CoreServiceUtil", "ignorePermissionActivity for uat wechat pay.");
+      Log.i("MicroMsg.CoreServiceUtil", "ignorePermissionActivity for uat wechat pay.");
       AppMethodBeat.o(131866);
       return true;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
       boolean bool = ((PowerManager)paramContext.getSystemService("power")).isIgnoringBatteryOptimizations(paramContext.getPackageName());
-      ae.i("MicroMsg.CoreServiceUtil", "ifIgnoreBatteryOptimizations() result=%s", new Object[] { Boolean.valueOf(bool) });
+      Log.i("MicroMsg.CoreServiceUtil", "ifIgnoreBatteryOptimizations() result=%s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(131866);
       return bool;
     }
@@ -100,19 +101,19 @@ public final class c
     return true;
   }
   
-  public static void cy(boolean paramBoolean)
+  public static void dg(boolean paramBoolean)
   {
     AppMethodBeat.i(131864);
-    ay.aRW("service_launch_way").edit().putBoolean("target26_start_service", paramBoolean).commit();
-    ae.i("MicroMsg.CoreServiceUtil", "setTarget26StartService() enable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    MultiProcessMMKV.getMMKV("service_launch_way").edit().putBoolean("target26_start_service", paramBoolean).commit();
+    Log.i("MicroMsg.CoreServiceUtil", "setTarget26StartService() enable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(131864);
   }
   
-  public static void kN(int paramInt)
+  public static void nP(int paramInt)
   {
     AppMethodBeat.i(131862);
-    WL().edit().putInt("huawei_switch", paramInt).commit();
-    ae.i("MicroMsg.CoreServiceUtil", "setTarget26StartServiceHuawei() enable: %s", new Object[] { Integer.valueOf(paramInt) });
+    akz().edit().putInt("huawei_switch", paramInt).commit();
+    Log.i("MicroMsg.CoreServiceUtil", "setTarget26StartServiceHuawei() enable: %s", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(131862);
   }
 }

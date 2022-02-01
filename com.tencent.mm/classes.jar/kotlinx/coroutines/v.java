@@ -1,60 +1,44 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.b.a.e;
-import d.d.d;
-import d.l;
-import d.p;
-import d.q;
-import kotlinx.coroutines.internal.s;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"recoverResult", "Lkotlin/Result;", "T", "state", "", "uCont", "Lkotlin/coroutines/Continuation;", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "toState", "(Ljava/lang/Object;)Ljava/lang/Object;", "caller", "Lkotlinx/coroutines/CancellableContinuation;", "(Ljava/lang/Object;Lkotlinx/coroutines/CancellableContinuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class v
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/CompletedExceptionally;", "", "cause", "", "handled", "<init>", "(Ljava/lang/Throwable;Z)V", "makeHandled", "()Z", "", "toString", "()Ljava/lang/String;", "Ljava/lang/Throwable;", "getHandled", "kotlinx-coroutines-core", ""})
+public class v
 {
-  public static final <T> Object b(Object paramObject, d<? super T> paramd)
+  private static final AtomicIntegerFieldUpdater TTN;
+  private volatile int _handled;
+  public final Throwable cause;
+  
+  static
   {
-    AppMethodBeat.i(209353);
-    if ((paramObject instanceof u))
-    {
-      Object localObject = p.Nhh;
-      localObject = ((u)paramObject).cause;
-      paramObject = localObject;
-      if (am.gzG()) {
-        if ((paramd instanceof e)) {
-          break label56;
-        }
-      }
-      label56:
-      for (paramObject = localObject;; paramObject = s.a((Throwable)localObject, (e)paramd))
-      {
-        paramObject = p.eO(q.p(paramObject));
-        AppMethodBeat.o(209353);
-        return paramObject;
-      }
-    }
-    paramd = p.Nhh;
-    paramObject = p.eO(paramObject);
-    AppMethodBeat.o(209353);
-    return paramObject;
+    AppMethodBeat.i(192376);
+    TTN = AtomicIntegerFieldUpdater.newUpdater(v.class, "_handled");
+    AppMethodBeat.o(192376);
   }
   
-  public static final <T> Object fM(Object paramObject)
+  public v(Throwable paramThrowable, boolean paramBoolean) {}
+  
+  public final boolean hME()
   {
-    AppMethodBeat.i(118154);
-    Throwable localThrowable = p.eN(paramObject);
-    if (localThrowable == null)
-    {
-      AppMethodBeat.o(118154);
-      return paramObject;
-    }
-    paramObject = new u(localThrowable);
-    AppMethodBeat.o(118154);
-    return paramObject;
+    AppMethodBeat.i(192375);
+    boolean bool = TTN.compareAndSet(this, 0, 1);
+    AppMethodBeat.o(192375);
+    return bool;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(118157);
+    String str = getClass().getSimpleName() + '[' + this.cause + ']';
+    AppMethodBeat.o(118157);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.v
  * JD-Core Version:    0.7.0.1
  */

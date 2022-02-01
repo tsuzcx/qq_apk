@@ -1,294 +1,351 @@
 package com.tencent.mm.live.core.core.a;
 
 import android.content.Context;
+import android.graphics.Point;
+import android.graphics.SurfaceTexture;
 import android.os.Bundle;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
+import android.view.TextureView;
+import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.b.j;
+import com.tencent.mm.live.core.b.d.i;
+import com.tencent.mm.live.core.core.b.e;
+import com.tencent.mm.live.core.core.c.a;
 import com.tencent.mm.live.core.view.LivePreviewView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.au;
 import com.tencent.trtc.TRTCCloud;
-import d.g.a.m;
-import d.g.b.p;
-import d.l;
-import d.v;
-import d.z;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "debugRunnable", "com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1;", "endScaleAnimation", "", "time", "", "enterRoom", "callback", "Lcom/tencent/mm/live/core/core/LiveCallback;", "floatMode", "normalMode", "onEnterRoom", "result", "", "onError", "errCode", "errMsg", "", "extraInfo", "Landroid/os/Bundle;", "release", "startPush", "startScaleAnimation", "scale", "", "stopPush", "Companion", "plugin-core_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "()V", "debugRunnable", "com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1;", "endScaleAnimation", "", "time", "", "enterRoom", "callback", "Lcom/tencent/mm/live/core/core/LiveCallback;", "floatMode", "context", "Landroid/content/Context;", "forceMoveTask", "", "dontFinish", "generateType", "opType", "normalMode", "onEnterRoom", "result", "", "onError", "errCode", "errMsg", "", "extraInfo", "Landroid/os/Bundle;", "release", "startCrossLinkMic", "roomId", "username", "pkSign", "startPreview", "beautyConfig", "Lcom/tencent/mm/live/core/render/BeautyConfig;", "filterConfig", "Lcom/tencent/mm/live/core/render/FilterConfig;", "startPush", "startScaleAnimation", "scale", "", "stopCrossLinkMic", "stopPush", "updateRenderMirror", "isMirror", "Companion", "plugin-core_release"})
 public final class b
   extends com.tencent.mm.live.core.core.trtc.a
   implements a
 {
-  private static b gJT;
-  public static final a gJU;
-  private final b gJS;
+  private static b hyu;
+  public static final a hyv;
+  private final b hyt;
   
   static
   {
-    AppMethodBeat.i(196819);
-    gJU = new a((byte)0);
-    AppMethodBeat.o(196819);
+    AppMethodBeat.i(196443);
+    hyv = new a((byte)0);
+    AppMethodBeat.o(196443);
   }
   
-  public b(Context paramContext)
+  public b()
   {
-    super(paramContext, true);
-    AppMethodBeat.i(196818);
-    this.gJS = new b(this);
-    AppMethodBeat.o(196818);
+    super(true);
+    AppMethodBeat.i(196442);
+    this.hyt = new b(this);
+    AppMethodBeat.o(196442);
   }
   
-  public final void a(com.tencent.mm.live.core.core.b paramb)
+  public final int a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(196811);
-    p.h(paramb, "callback");
-    super.a(paramb);
-    paramb = com.tencent.mm.live.core.core.trtc.a.a.alY();
-    p.g(paramb, "ConfigHelper.getInstance()");
-    Object localObject = paramb.alZ();
-    paramb = com.tencent.mm.live.core.core.trtc.a.a.alY();
-    p.g(paramb, "ConfigHelper.getInstance()");
-    paramb = paramb.ama();
+    AppMethodBeat.i(196432);
+    p.h(paramContext, "context");
+    Object localObject2 = this.hAz;
+    Object localObject1 = this.hAy;
+    if (localObject1 != null)
+    {
+      localObject1 = ((com.tencent.mm.live.core.core.b.f)localObject1).hwP;
+      if (localObject1 == null) {}
+    }
+    for (localObject1 = Long.valueOf(((e)localObject1).liveId); !((com.tencent.mm.live.core.core.b.g)localObject2).b((Long)localObject1); localObject1 = null)
+    {
+      AppMethodBeat.o(196432);
+      return -4;
+    }
+    final long l = Util.currentTicks();
+    localObject1 = new TextureView(MMApplicationContext.getContext());
+    ((TextureView)localObject1).setSurfaceTextureListener((TextureView.SurfaceTextureListener)new c(this, l, paramContext, (TextureView)localObject1));
+    localObject2 = this.hAr.hDw;
+    if (localObject2 != null)
+    {
+      localObject2 = ((com.tencent.mm.live.core.b.g)localObject2).hDO;
+      if (localObject2 != null)
+      {
+        ((com.tencent.mm.live.core.b.f)localObject2).hDL = 0;
+        ((com.tencent.mm.live.core.b.f)localObject2).hDK = 0;
+      }
+    }
+    this.hAq.co((View)localObject1);
+    paramInt1 = super.a(paramContext, paramBoolean1, paramBoolean2, paramInt1, paramInt2);
+    AppMethodBeat.o(196432);
+    return paramInt1;
+  }
+  
+  public final void a(com.tencent.mm.live.core.b.a parama, com.tencent.mm.live.core.b.b paramb)
+  {
+    AppMethodBeat.i(196439);
+    a(this.hAs, parama, paramb);
+    AppMethodBeat.o(196439);
+  }
+  
+  public final void a(com.tencent.mm.live.core.core.c paramc)
+  {
+    AppMethodBeat.i(196433);
+    p.h(paramc, "callback");
+    super.a(paramc);
+    paramc = com.tencent.mm.live.core.core.trtc.a.a.aDC();
+    p.g(paramc, "ConfigHelper.getInstance()");
+    Object localObject = paramc.aDD();
+    paramc = com.tencent.mm.live.core.core.trtc.a.a.aDC();
+    p.g(paramc, "ConfigHelper.getInstance()");
+    paramc = paramc.aDE();
     p.g(localObject, "videoConfig");
-    ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject).dK(true);
-    p.g(paramb, "audioConfig");
-    paramb.dH(true);
-    localObject = this.gKR;
+    ((com.tencent.mm.live.core.core.trtc.a.a.d)localObject).eC(true);
+    p.g(paramc, "audioConfig");
+    paramc.ez(true);
+    localObject = this.hAn;
     if (localObject != null) {
       ((com.tencent.mm.live.core.core.trtc.a.c)localObject).startLocalAudio();
     }
-    localObject = this.gKR;
-    if (localObject != null) {
-      ((com.tencent.mm.live.core.core.trtc.a.c)localObject).dG(paramb.amm());
-    }
-    paramb = this.gKR;
-    if (paramb != null)
+    localObject = this.hAn;
+    if (localObject != null)
     {
-      paramb.amf();
-      AppMethodBeat.o(196811);
+      ((com.tencent.mm.live.core.core.trtc.a.c)localObject).ey(paramc.aDQ());
+      AppMethodBeat.o(196433);
       return;
     }
-    AppMethodBeat.o(196811);
+    AppMethodBeat.o(196433);
   }
   
-  public final void alt()
+  public final void aBU()
   {
-    AppMethodBeat.i(196815);
-    final long l = bu.HQ();
-    super.alt();
-    LivePreviewView localLivePreviewView = this.gKW;
+    AppMethodBeat.i(196437);
+    final long l = Util.currentTicks();
+    super.aBU();
+    LivePreviewView localLivePreviewView = this.hAs;
     if (localLivePreviewView != null)
     {
-      localLivePreviewView.a((d.g.a.q)new d(this, l));
-      AppMethodBeat.o(196815);
+      localLivePreviewView.a((kotlin.g.a.q)new d(this, l));
+      AppMethodBeat.o(196437);
       return;
     }
-    AppMethodBeat.o(196815);
+    AppMethodBeat.o(196437);
   }
   
-  public final int alx()
+  public final int aBX()
   {
-    AppMethodBeat.i(196813);
-    this.gKV.e(null);
-    this.gKP.enableCustomVideoCapture(false);
-    com.tencent.mm.live.core.core.trtc.a.c localc = this.gKR;
+    AppMethodBeat.i(196435);
+    this.hAr.e(null);
+    this.hAl.enableCustomVideoCapture(false);
+    com.tencent.mm.live.core.core.trtc.a.c localc = this.hAn;
     if (localc != null) {
       localc.stopLocalAudio();
     }
-    this.gLd = false;
-    AppMethodBeat.o(196813);
+    this.hAA = false;
+    AppMethodBeat.o(196435);
     return 0;
   }
   
-  public final int aly()
+  public final int aBY()
   {
-    AppMethodBeat.i(196814);
-    this.gKP.enableCustomVideoCapture(true);
-    com.tencent.mm.live.core.core.trtc.a.c localc = this.gKR;
+    AppMethodBeat.i(196436);
+    this.hAl.enableCustomVideoCapture(true);
+    com.tencent.mm.live.core.core.trtc.a.c localc = this.hAn;
     if (localc != null) {
       localc.startLocalAudio();
     }
-    this.gLd = true;
-    this.gKV.e((d.g.a.b)e.gKa);
-    this.gKV.f((d.g.a.b)f.gKb);
-    AppMethodBeat.o(196814);
+    this.hAA = true;
+    this.hAr.e((kotlin.g.a.b)e.hyB);
+    this.hAr.f((kotlin.g.a.b)f.hyC);
+    AppMethodBeat.o(196436);
     return 0;
   }
   
-  public final int cr(Context paramContext)
+  public final void ew(boolean paramBoolean)
   {
-    AppMethodBeat.i(196810);
-    p.h(paramContext, "context");
-    Object localObject2 = this.gLc;
-    Object localObject1 = this.gLb;
-    if (localObject1 != null)
-    {
-      localObject1 = ((com.tencent.mm.live.core.core.b.d)localObject1).gKm;
-      if (localObject1 == null) {}
-    }
-    for (localObject1 = Long.valueOf(((com.tencent.mm.live.core.core.b.c)localObject1).gJh); !((com.tencent.mm.live.core.core.b.e)localObject2).b((Long)localObject1); localObject1 = null)
-    {
-      AppMethodBeat.o(196810);
-      return -4;
-    }
-    final long l = bu.HQ();
-    localObject1 = new SurfaceView(ak.getContext());
-    ((SurfaceView)localObject1).getHolder().addCallback((SurfaceHolder.Callback)new c(this, l, (SurfaceView)localObject1));
-    localObject2 = this.gKV.gNB;
-    if (localObject2 != null)
-    {
-      localObject2 = ((com.tencent.mm.live.core.b.e)localObject2).gNP;
-      if (localObject2 != null)
-      {
-        ((com.tencent.mm.live.core.b.d)localObject2).gNM = 0;
-        ((com.tencent.mm.live.core.b.d)localObject2).gNL = 0;
-      }
-    }
-    this.gKU.cx((View)localObject1);
-    int i = super.cr(paramContext);
-    AppMethodBeat.o(196810);
-    return i;
+    AppMethodBeat.i(196440);
+    com.tencent.mm.live.core.b.d locald = this.hAr;
+    locald.j((kotlin.g.a.a)new d.i(locald, paramBoolean));
+    AppMethodBeat.o(196440);
   }
   
   public final void onEnterRoom(long paramLong)
   {
-    AppMethodBeat.i(196812);
+    AppMethodBeat.i(196434);
     super.onEnterRoom(paramLong);
-    this.gKO.post((Runnable)this.gJS);
-    AppMethodBeat.o(196812);
+    this.hAk.post((Runnable)this.hyt);
+    AppMethodBeat.o(196434);
   }
   
   public final void onError(int paramInt, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(196816);
+    AppMethodBeat.i(196438);
     if (paramInt == -3301)
     {
-      paramBundle = com.tencent.mm.live.core.debug.a.gMY;
-      com.tencent.mm.live.core.debug.a.yh("[-3301]create room fail,".concat(String.valueOf(paramString)));
-      paramString = this.gKY;
+      paramBundle = com.tencent.mm.live.core.debug.a.hCA;
+      com.tencent.mm.live.core.debug.a.GB("[-3301]create room fail,".concat(String.valueOf(paramString)));
+      paramString = this.hAv;
       if (paramString != null) {
-        com.tencent.mm.live.core.core.b.a.a(paramString, paramInt);
+        c.a.a(paramString, paramInt);
       }
-      this.gKY = null;
-      AppMethodBeat.o(196816);
+      this.hAv = null;
+      AppMethodBeat.o(196438);
       return;
     }
     super.onError(paramInt, paramString, paramBundle);
-    AppMethodBeat.o(196816);
+    AppMethodBeat.o(196438);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(196817);
+    AppMethodBeat.i(196441);
     super.release();
-    this.gKO.removeCallbacks((Runnable)this.gJS);
-    this.gKY = null;
-    this.gKZ = null;
-    AppMethodBeat.o(196817);
+    this.hAk.removeCallbacks((Runnable)this.hyt);
+    this.hAv = null;
+    this.hAw = null;
+    AppMethodBeat.o(196441);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "TAG", "", "getInstance", "context", "Landroid/content/Context;", "hasInstance", "", "releaseInstance", "", "plugin-core_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "TAG", "", "getInstance", "context", "Landroid/content/Context;", "hasInstance", "", "releaseInstance", "", "plugin-core_release"})
   public static final class a
   {
-    public static boolean alO()
+    public static b aDo()
     {
-      AppMethodBeat.i(196799);
-      if (b.alN() != null)
-      {
-        AppMethodBeat.o(196799);
-        return true;
+      AppMethodBeat.i(196418);
+      if (b.aDn() == null) {
+        b.d(new b());
       }
-      AppMethodBeat.o(196799);
-      return false;
+      b localb = b.aDn();
+      if (localb == null) {
+        p.hyc();
+      }
+      AppMethodBeat.o(196418);
+      return localb;
     }
     
-    public static b cs(Context paramContext)
+    public static boolean aDp()
     {
-      AppMethodBeat.i(196798);
-      p.h(paramContext, "context");
-      if (b.alN() == null) {
-        b.d(new b(paramContext));
+      AppMethodBeat.i(196419);
+      if (b.aDn() != null)
+      {
+        AppMethodBeat.o(196419);
+        return true;
       }
-      paramContext = b.alN();
-      if (paramContext == null) {
-        p.gkB();
-      }
-      AppMethodBeat.o(196798);
-      return paramContext;
+      AppMethodBeat.o(196419);
+      return false;
     }
     
     public static void releaseInstance()
     {
-      AppMethodBeat.i(196800);
-      b localb = b.alN();
+      AppMethodBeat.i(196420);
+      b localb = b.aDn();
       if (localb != null) {
         localb.release();
       }
       b.d(null);
-      AppMethodBeat.o(196800);
+      AppMethodBeat.o(196420);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-core_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-core_release"})
   public static final class b
     implements Runnable
   {
     public final void run()
     {
-      AppMethodBeat.i(196801);
-      Object localObject = com.tencent.mm.live.core.debug.a.gMY;
-      localObject = b.b(this.gJV);
+      AppMethodBeat.i(196421);
+      Object localObject = com.tencent.mm.live.core.debug.a.hCA;
+      localObject = b.b(this.hyw);
       if (localObject == null)
       {
-        localObject = new v("null cannot be cast to non-null type com.tencent.mm.live.core.core.trtc.WXTRTCCloudImpl");
-        AppMethodBeat.o(196801);
+        localObject = new t("null cannot be cast to non-null type com.tencent.mm.live.core.core.trtc.WXTRTCCloudImpl");
+        AppMethodBeat.o(196421);
         throw ((Throwable)localObject);
       }
-      com.tencent.mm.live.core.debug.a.yi(((com.tencent.mm.live.core.core.trtc.b)localObject).alW().toString());
-      b.c(this.gJV).removeCallbacks((Runnable)this);
-      b.c(this.gJV).postDelayed((Runnable)this, 10000L);
-      AppMethodBeat.o(196801);
+      com.tencent.mm.live.core.debug.a.GC(((com.tencent.mm.live.core.core.trtc.b)localObject).aDA().toString());
+      b.c(this.hyw).removeCallbacks((Runnable)this);
+      b.c(this.hyw).postDelayed((Runnable)this, 10000L);
+      AppMethodBeat.o(196421);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$floatMode$1", "Landroid/view/SurfaceHolder$Callback;", "surfaceChanged", "", "holder", "Landroid/view/SurfaceHolder;", "format", "", "width", "height", "surfaceCreated", "surfaceDestroyed", "plugin-core_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$floatMode$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-core_release"})
   public static final class c
-    implements SurfaceHolder.Callback
+    implements TextureView.SurfaceTextureListener
   {
-    c(long paramLong, SurfaceView paramSurfaceView) {}
+    c(long paramLong, Context paramContext, TextureView paramTextureView) {}
     
-    public final void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+    public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(196802);
-      ae.i("MicroMsg.LiveCoreAnchor", "float surfaceChange, holder:" + paramSurfaceHolder + ", size:[" + paramInt2 + ", " + paramInt3 + ']');
-      com.tencent.mm.live.core.c.a.ni((int)bu.aO(l));
-      paramSurfaceHolder = b.a(this.gJV);
-      SurfaceHolder localSurfaceHolder = this.gJX.getHolder();
-      p.g(localSurfaceHolder, "renderView.holder");
-      paramSurfaceHolder.bG(localSurfaceHolder.getSurface());
-      AppMethodBeat.o(196802);
+      AppMethodBeat.i(196424);
+      Log.i("MicroMsg.LiveCoreAnchor", "float onSurfaceTextureAvailable, surface:" + paramSurfaceTexture + ", size:[" + paramInt1 + ", " + paramInt2 + ']');
+      com.tencent.mm.live.core.c.a.qA((int)Util.ticksToNow(l));
+      int j = au.az(this.$context).x;
+      int i = au.az(this.$context).y;
+      if (j > i) {}
+      for (;;)
+      {
+        float f;
+        int m;
+        if (paramInt1 < paramInt2)
+        {
+          f = paramInt1;
+          m = (int)(j / i * f);
+          k = paramInt1;
+        }
+        for (;;)
+        {
+          b.a(this.hyw).bO(this.hyy.getSurfaceTexture());
+          b.a(this.hyw).cX(k, m);
+          AppMethodBeat.o(196424);
+          return;
+          if (i <= j) {
+            break label209;
+          }
+          k = i;
+          i = j;
+          j = k;
+          break;
+          k = paramInt1;
+          m = paramInt2;
+          if (paramInt2 < paramInt1)
+          {
+            f = paramInt2;
+            k = (int)(j / i * f);
+            m = paramInt2;
+          }
+        }
+        label209:
+        int k = i;
+        i = j;
+        j = k;
+      }
     }
     
-    public final void surfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-    
-    public final void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+    public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(196803);
-      ae.i("MicroMsg.LiveCoreAnchor", "float surface destroy");
-      AppMethodBeat.o(196803);
+      AppMethodBeat.i(196423);
+      Log.i("MicroMsg.LiveCoreAnchor", "float onSurfaceTextureDestroyed");
+      AppMethodBeat.o(196423);
+      return false;
     }
+    
+    public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(196422);
+      Log.i("MicroMsg.LiveCoreAnchor", "float onSurfaceTextureSizeChanged, surface:" + paramSurfaceTexture + ", size:[" + paramInt1 + ", " + paramInt2 + ']');
+      b.a(this.hyw).cX(paramInt1, paramInt2);
+      AppMethodBeat.o(196422);
+    }
+    
+    public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "surface", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "i", "", "i1", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "surface", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "i", "", "i1", "invoke"})
   static final class d
-    extends d.g.b.q
-    implements d.g.a.q<j, Integer, Integer, z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.q<com.tencent.mm.live.core.b.l, Integer, Integer, x>
   {
     d(b paramb, long paramLong)
     {
@@ -296,18 +353,18 @@ public final class b
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "mFps", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "mFps", "", "invoke"})
   static final class e
-    extends d.g.b.q
-    implements d.g.a.b<Integer, z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Integer, x>
   {
-    public static final e gKa;
+    public static final e hyB;
     
     static
     {
-      AppMethodBeat.i(196807);
-      gKa = new e();
-      AppMethodBeat.o(196807);
+      AppMethodBeat.i(196429);
+      hyB = new e();
+      AppMethodBeat.o(196429);
     }
     
     e()
@@ -316,18 +373,18 @@ public final class b
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "cost", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "cost", "", "invoke"})
   static final class f
-    extends d.g.b.q
-    implements d.g.a.b<Integer, z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Integer, x>
   {
-    public static final f gKb;
+    public static final f hyC;
     
     static
     {
-      AppMethodBeat.i(196809);
-      gKb = new f();
-      AppMethodBeat.o(196809);
+      AppMethodBeat.i(196431);
+      hyC = new f();
+      AppMethodBeat.o(196431);
     }
     
     f()
@@ -338,7 +395,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.a.b
  * JD-Core Version:    0.7.0.1
  */

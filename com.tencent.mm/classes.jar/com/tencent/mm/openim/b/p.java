@@ -1,48 +1,48 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.caw;
-import com.tencent.mm.protocal.protobuf.cax;
-import com.tencent.mm.protocal.protobuf.cfm;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cpy;
+import com.tencent.mm.protocal.protobuf.cpz;
+import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class p
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   public String username;
   
   public p(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151222);
-    b.a locala = new b.a();
+    d.a locala = new d.a();
     this.username = paramString2;
-    caw localcaw = new caw();
-    localcaw.iKu = paramString1;
-    localcaw.Hox = new cfm();
-    localcaw.Hox.userName = paramString2;
-    locala.hQF = localcaw;
-    locala.hQG = new cax();
+    cpy localcpy = new cpy();
+    localcpy.jHa = paramString1;
+    localcpy.MvS = new cvt();
+    localcpy.MvS.userName = paramString2;
+    locala.iLN = localcpy;
+    locala.iLO = new cpz();
     locala.uri = "/cgi-bin/micromsg-bin/modopenimchatroomowner";
     locala.funcId = 811;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     AppMethodBeat.o(151222);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151223);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151223);
     return i;
   }
@@ -52,10 +52,10 @@ public final class p
     return 811;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151224);
-    ae.w("MicroMsg.NetSceneTransferOpenImChatRoomOwner", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.w("MicroMsg.NetSceneTransferOpenImChatRoomOwner", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151224);
   }

@@ -4,34 +4,35 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.x.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.plugin.appbrand.jsapi.z.b;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/customize/FontScaleProviderWC;", "Lcom/tencent/mm/plugin/appbrand/util/ActivityLifecycleCallbacksAdapter;", "Lcom/tencent/mm/plugin/appbrand/jsapi/system/IFontScaleProvider;", "()V", "mFontScale", "", "getCurrentFontScale", "getFromSp", "onActivityResumed", "", "activity", "Landroid/app/Activity;", "watchApp", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/customize/FontScaleProviderWC;", "Lcom/tencent/mm/plugin/appbrand/util/ActivityLifecycleCallbacksAdapter;", "Lcom/tencent/mm/plugin/appbrand/jsapi/system/IFontScaleProvider;", "()V", "mFontScale", "", "getCurrentFontScale", "getFromSp", "onActivityResumed", "", "activity", "Landroid/app/Activity;", "watchApp", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
 public final class c
-  extends com.tencent.mm.plugin.appbrand.y.a
+  extends com.tencent.mm.plugin.appbrand.ac.a
   implements b
 {
-  private static float lSB;
-  public static final c lSC;
+  private static float nab;
+  public static final c nac;
   
   static
   {
     AppMethodBeat.i(50850);
-    lSC = new c();
+    nac = new c();
     AppMethodBeat.o(50850);
   }
   
-  private static float bsR()
+  private static float bOv()
   {
     float f1 = 1.0F;
     AppMethodBeat.i(50848);
     try
     {
-      float f2 = ak.getContext().getSharedPreferences(ak.fow(), 4).getFloat("text_size_scale_key", 1.0F);
+      float f2 = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 4).getFloat("text_size_scale_key", 1.0F);
       f1 = f2;
     }
     catch (Throwable localThrowable)
@@ -43,13 +44,13 @@ public final class c
     return f1;
   }
   
-  public final float bnk()
+  public final float bIO()
   {
     AppMethodBeat.i(50847);
-    if (lSB <= 0.0F) {
-      lSB = bsR();
+    if (nab <= 0.0F) {
+      nab = bOv();
     }
-    float f = lSB;
+    float f = nab;
     AppMethodBeat.o(50847);
     return f;
   }
@@ -57,21 +58,21 @@ public final class c
   public final void onActivityResumed(Activity paramActivity)
   {
     AppMethodBeat.i(50849);
-    com.tencent.mm.ac.c.b(null, (d.g.a.a)a.lSD);
+    d.i((kotlin.g.a.a)a.nad);
     AppMethodBeat.o(50849);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class a
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    public static final a lSD;
+    public static final a nad;
     
     static
     {
       AppMethodBeat.i(50846);
-      lSD = new a();
+      nad = new a();
       AppMethodBeat.o(50846);
     }
     
@@ -83,7 +84,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.c
  * JD-Core Version:    0.7.0.1
  */

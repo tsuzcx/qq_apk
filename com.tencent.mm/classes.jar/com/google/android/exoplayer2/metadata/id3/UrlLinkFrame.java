@@ -49,7 +49,7 @@ public final class UrlLinkFrame
       return false;
     }
     paramObject = (UrlLinkFrame)paramObject;
-    if ((this.id.equals(paramObject.id)) && (x.i(this.description, paramObject.description)) && (x.i(this.url, paramObject.url)))
+    if ((this.id.equals(paramObject.id)) && (x.j(this.description, paramObject.description)) && (x.j(this.url, paramObject.url)))
     {
       AppMethodBeat.o(92458);
       return true;
@@ -85,7 +85,7 @@ public final class UrlLinkFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.UrlLinkFrame
  * JD-Core Version:    0.7.0.1
  */

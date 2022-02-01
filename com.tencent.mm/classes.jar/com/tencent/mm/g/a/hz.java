@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class hz
-  extends b
+  extends IEvent
 {
-  public a dvA;
-  public b dvB;
+  public a dMB;
   
   public hz()
   {
@@ -17,27 +15,21 @@ public final class hz
   
   private hz(byte paramByte)
   {
-    AppMethodBeat.i(19811);
-    this.dvA = new a();
-    this.dvB = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(208805);
+    this.dMB = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19811);
+    AppMethodBeat.o(208805);
   }
   
   public static final class a
   {
-    public Intent intent;
-  }
-  
-  public static final class b
-  {
-    public int drN = 0;
+    public long id;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.hz
  * JD-Core Version:    0.7.0.1
  */

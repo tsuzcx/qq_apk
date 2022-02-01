@@ -6,48 +6,37 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import junit.framework.Assert;
 
 public class PressAlphaImageView
   extends WeImageView
 {
-  private float LgN;
+  private float QvL;
   
   public PressAlphaImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143206);
-    this.LgN = 0.7F;
+    this.QvL = 0.7F;
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(143205);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/ui/tools/PressAlphaImageView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         switch (paramAnonymousMotionEvent.getAction())
         {
-        case 2: 
-        default: 
-          if ((PressAlphaImageView.this.isClickable()) || (PressAlphaImageView.this.isLongClickable())) {
-            break;
-          }
         }
-        for (boolean bool = true;; bool = false)
+        while ((!PressAlphaImageView.this.isClickable()) && (!PressAlphaImageView.this.isLongClickable()))
         {
-          a.a(bool, this, "com/tencent/mm/ui/tools/PressAlphaImageView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(143205);
-          return bool;
+          return true;
           paramAnonymousView.setAlpha(PressAlphaImageView.a(PressAlphaImageView.this));
-          break;
+          continue;
           paramAnonymousView.setAlpha(1.0F);
-          break;
         }
+        AppMethodBeat.o(143205);
+        return false;
       }
     });
     AppMethodBeat.o(143206);
@@ -63,12 +52,12 @@ public class PressAlphaImageView
   
   public void setPressAlpha(float paramFloat)
   {
-    this.LgN = paramFloat;
+    this.QvL = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.PressAlphaImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -18,19 +18,20 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.ui.chatting.aq;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.vfs.s;
 
 public class SplashWelcomeView
   extends FrameLayout
-  implements aq
+  implements com.tencent.mm.ui.chatting.ar
 {
-  private volatile boolean JAH;
-  private volatile boolean JAI;
-  private ImageView JAJ;
-  private int JAK;
+  private volatile boolean OLm;
+  private volatile boolean OLn;
+  private ImageView OLo;
+  private int OLp;
   private Bitmap bitmap;
   private boolean hasDrawed;
   
@@ -38,7 +39,7 @@ public class SplashWelcomeView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33769);
-    jX(paramContext);
+    jT(paramContext);
     AppMethodBeat.o(33769);
   }
   
@@ -46,11 +47,39 @@ public class SplashWelcomeView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33770);
-    jX(paramContext);
+    jT(paramContext);
     AppMethodBeat.o(33770);
   }
   
-  private void fBL()
+  private boolean e(SharedPreferences paramSharedPreferences)
+  {
+    AppMethodBeat.i(33771);
+    this.OLp = paramSharedPreferences.getInt("launch_fail_times", 0);
+    int i = paramSharedPreferences.getInt("launch_last_status", 0);
+    if (i == 1)
+    {
+      Log.i("SplashWelcomeView", "last launch status is 'start'.");
+      this.OLp += 1;
+      paramSharedPreferences.edit().putInt("launch_fail_times", this.OLp).commit();
+    }
+    for (;;)
+    {
+      paramSharedPreferences.edit().putInt("launch_last_status", 1).apply();
+      if (this.OLp < 3) {
+        break;
+      }
+      Log.i("SplashWelcomeView", "launch exceed max failed times, %d", new Object[] { Integer.valueOf(this.OLp) });
+      AppMethodBeat.o(33771);
+      return false;
+      if (i == 2) {
+        Log.i("SplashWelcomeView", "last launch status is 'end'.");
+      }
+    }
+    AppMethodBeat.o(33771);
+    return true;
+  }
+  
+  private void gJE()
   {
     AppMethodBeat.i(33772);
     if (Build.VERSION.SDK_INT < 21)
@@ -58,30 +87,30 @@ public class SplashWelcomeView
       AppMethodBeat.o(33772);
       return;
     }
-    if ((Build.VERSION.SDK_INT >= 23) && (!g.abu()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!g.isMIUIV8()))
     {
       ((Activity)getContext()).getWindow().setStatusBarColor(-1);
       AppMethodBeat.o(33772);
       return;
     }
-    ((Activity)getContext()).getWindow().setStatusBarColor(ao.v(Color.parseColor("#33000000"), -1));
+    ((Activity)getContext()).getWindow().setStatusBarColor(ar.v(Color.parseColor("#33000000"), -1));
     AppMethodBeat.o(33772);
   }
   
   /* Error */
-  private void fBM()
+  private void gJF()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 109
+    //   2: ldc 164
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 111	com/tencent/mm/ui/SplashWelcomeView:JAH	Z
+    //   8: getfield 166	com/tencent/mm/ui/SplashWelcomeView:OLm	Z
     //   11: ifne +56 -> 67
     //   14: aload_0
     //   15: iconst_1
-    //   16: putfield 111	com/tencent/mm/ui/SplashWelcomeView:JAH	Z
+    //   16: putfield 166	com/tencent/mm/ui/SplashWelcomeView:OLm	Z
     //   19: aload_0
     //   20: getfield 49	com/tencent/mm/ui/SplashWelcomeView:bitmap	Landroid/graphics/Bitmap;
     //   23: astore_1
@@ -90,26 +119,26 @@ public class SplashWelcomeView
     //   28: new 10	com/tencent/mm/ui/SplashWelcomeView$2
     //   31: dup
     //   32: aload_0
-    //   33: invokespecial 113	com/tencent/mm/ui/SplashWelcomeView$2:<init>	(Lcom/tencent/mm/ui/SplashWelcomeView;)V
-    //   36: invokestatic 119	com/tencent/mm/sdk/platformtools/ar:f	(Ljava/lang/Runnable;)V
-    //   39: ldc 109
+    //   33: invokespecial 168	com/tencent/mm/ui/SplashWelcomeView$2:<init>	(Lcom/tencent/mm/ui/SplashWelcomeView;)V
+    //   36: invokestatic 174	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThread	(Ljava/lang/Runnable;)V
+    //   39: ldc 164
     //   41: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: aload_0
     //   45: monitorexit
     //   46: return
     //   47: astore_1
-    //   48: ldc 121
+    //   48: ldc 81
     //   50: aload_1
-    //   51: ldc 123
+    //   51: ldc 176
     //   53: iconst_1
-    //   54: anewarray 125	java/lang/Object
+    //   54: anewarray 109	java/lang/Object
     //   57: dup
     //   58: iconst_0
     //   59: aload_1
-    //   60: invokevirtual 129	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   60: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   63: aastore
-    //   64: invokestatic 135	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   67: ldc 109
+    //   64: invokestatic 184	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   67: ldc 164
     //   69: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: goto -28 -> 44
     //   75: astore_1
@@ -133,52 +162,24 @@ public class SplashWelcomeView
     //   67	72	75	finally
   }
   
-  private boolean h(SharedPreferences paramSharedPreferences)
-  {
-    AppMethodBeat.i(33771);
-    this.JAK = paramSharedPreferences.getInt("launch_fail_times", 0);
-    int i = paramSharedPreferences.getInt("launch_last_status", 0);
-    if (i == 1)
-    {
-      ae.i("SplashWelcomeView", "last launch status is 'start'.");
-      this.JAK += 1;
-      paramSharedPreferences.edit().putInt("launch_fail_times", this.JAK).commit();
-    }
-    for (;;)
-    {
-      paramSharedPreferences.edit().putInt("launch_last_status", 1).apply();
-      if (this.JAK < 3) {
-        break;
-      }
-      ae.i("SplashWelcomeView", "launch exceed max failed times, %d", new Object[] { Integer.valueOf(this.JAK) });
-      AppMethodBeat.o(33771);
-      return false;
-      if (i == 2) {
-        ae.i("SplashWelcomeView", "last launch status is 'end'.");
-      }
-    }
-    AppMethodBeat.o(33771);
-    return true;
-  }
-  
-  private void jX(Context paramContext)
+  private void jT(Context paramContext)
   {
     AppMethodBeat.i(33773);
-    this.JAJ = new SplashImageView(paramContext);
-    ((SplashImageView)this.JAJ).setOnDrawListener(this);
+    this.OLo = new SplashImageView(paramContext);
+    ((SplashImageView)this.OLo).setOnDrawListener(this);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     Object localObject;
-    if (ak.cpe()) {
-      localObject = ak.getContext().getSharedPreferences("switch_account_preferences", 0);
+    if (MMApplicationContext.isMMProcess()) {
+      localObject = MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0);
     }
     try
     {
       bool = ((SharedPreferences)localObject).getBoolean("transit_to_switch_account", false);
-      ae.i("SplashWelcomeView", "transit to switch account %s", new Object[] { Boolean.valueOf(bool) });
+      Log.i("SplashWelcomeView", "transit to switch account %s", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        byte[] arrayOfByte = o.bb(e.e.Jpc, 0, (int)o.aZR(e.e.Jpc));
-        o.deleteFile(e.e.Jpc);
+        byte[] arrayOfByte = s.aW(e.g.Ozb, 0, (int)s.boW(e.g.Ozb));
+        s.deleteFile(e.g.Ozb);
         ((SharedPreferences)localObject).edit().putBoolean("transit_to_switch_account", false).commit();
         if ((arrayOfByte != null) && (arrayOfByte.length > 0))
         {
@@ -186,8 +187,8 @@ public class SplashWelcomeView
           if (localObject == null) {
             break label201;
           }
-          this.JAJ.setImageBitmap((Bitmap)localObject);
-          fBL();
+          this.OLo.setImageBitmap((Bitmap)localObject);
+          gJE();
         }
       }
     }
@@ -198,51 +199,51 @@ public class SplashWelcomeView
       try
       {
         boolean bool;
-        while (!ak.cpe())
+        while (!MMApplicationContext.isMMProcess())
         {
-          ae.i("SplashWelcomeView", "not main process, only load default splash bitmap.");
+          Log.i("SplashWelcomeView", "not main process, only load default splash bitmap.");
           AppMethodBeat.o(33773);
           return;
-          ae.e("SplashWelcomeView", "get switch account bg null!");
+          Log.e("SplashWelcomeView", "get switch account bg null!");
           continue;
           localException = localException;
-          ae.printErrStackTrace("SplashWelcomeView", localException, "show switch account view with exception!", new Object[0]);
+          Log.printErrStackTrace("SplashWelcomeView", localException, "show switch account view with exception!", new Object[0]);
         }
-        paramContext = ak.getContext().getSharedPreferences("system_config_prefs", 0);
+        paramContext = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
         long l1 = paramContext.getLong("new_launch_image_begin_time", 0L);
         long l2 = paramContext.getLong("new_launch_image_end_time", 0L);
         long l3 = System.currentTimeMillis() / 1000L;
-        ae.i("SplashWelcomeView", "beginTime:%s,endTime:%s,currentTime:%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
-        str = com.tencent.mm.loader.j.b.asb() + "splashWelcomeImg";
+        Log.i("SplashWelcomeView", "beginTime:%s,endTime:%s,currentTime:%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
+        str = b.aKB() + "splashWelcomeImg";
         if ((l3 > l1) && (l3 < l2))
         {
-          bool = h(paramContext);
+          bool = e(paramContext);
           if (!bool)
           {
             AppMethodBeat.o(33773);
             return;
           }
-          com.tencent.mm.sdk.g.b.c(new Runnable()
+          ThreadPool.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(33766);
-              if (o.fB(str))
+              if (s.YS(str))
               {
                 try
                 {
-                  byte[] arrayOfByte = o.bb(str, 0, (int)o.aZR(str));
+                  byte[] arrayOfByte = s.aW(str, 0, (int)s.boW(str));
                   if ((arrayOfByte != null) && (arrayOfByte.length > 0))
                   {
                     SplashWelcomeView.a(SplashWelcomeView.this, BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length));
-                    ae.i("SplashWelcomeView", "ready to play animation, hasDrawed %s", new Object[] { Boolean.valueOf(SplashWelcomeView.a(SplashWelcomeView.this)) });
+                    Log.i("SplashWelcomeView", "ready to play animation, hasDrawed %s", new Object[] { Boolean.valueOf(SplashWelcomeView.a(SplashWelcomeView.this)) });
                     SplashWelcomeView.b(SplashWelcomeView.this);
                   }
                   return;
                 }
                 catch (Exception localException)
                 {
-                  ae.printErrStackTrace("SplashWelcomeView", localException, "decode new welcome image error: %s", new Object[] { localException.getMessage() });
+                  Log.printErrStackTrace("SplashWelcomeView", localException, "decode new welcome image error: %s", new Object[] { localException.getMessage() });
                   return;
                 }
                 finally
@@ -255,7 +256,7 @@ public class SplashWelcomeView
                 AppMethodBeat.o(33766);
                 return;
               }
-              ae.i("SplashWelcomeView", "cannot find %s", new Object[] { str });
+              Log.i("SplashWelcomeView", "cannot find %s", new Object[] { str });
               AppMethodBeat.o(33766);
             }
           }, "readWelcomeBg");
@@ -265,26 +266,26 @@ public class SplashWelcomeView
       }
       catch (Exception paramContext)
       {
-        ae.printErrStackTrace("SplashWelcomeView", paramContext, "%s", new Object[] { paramContext.getMessage() });
+        Log.printErrStackTrace("SplashWelcomeView", paramContext, "%s", new Object[] { paramContext.getMessage() });
         AppMethodBeat.o(33773);
         return;
       }
-      ae.i("SplashWelcomeView", "change launch image activity is finished!");
-      o.deleteFile(str);
+      Log.i("SplashWelcomeView", "change launch image activity is finished!");
+      s.deleteFile(str);
       AppMethodBeat.o(33773);
     }
-    addView(this.JAJ, paramContext);
+    addView(this.OLo, paramContext);
   }
   
-  public final void cYF()
+  public final void dSa()
   {
     AppMethodBeat.i(33775);
-    ae.i("SplashWelcomeView", "hasDrawed:%s", new Object[] { Boolean.valueOf(this.hasDrawed) });
+    Log.i("SplashWelcomeView", "hasDrawed:%s", new Object[] { Boolean.valueOf(this.hasDrawed) });
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if ((this.JAI) && (!this.JAH)) {
-        fBM();
+      if ((this.OLn) && (!this.OLm)) {
+        gJF();
       }
     }
     AppMethodBeat.o(33775);

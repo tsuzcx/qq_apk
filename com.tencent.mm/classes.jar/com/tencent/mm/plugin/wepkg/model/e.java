@@ -1,87 +1,122 @@
 package com.tencent.mm.plugin.wepkg.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wepkg.c;
-import com.tencent.mm.plugin.wepkg.utils.a;
-import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.xweb.WebResourceResponse;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.mm.plugin.game.commlib.util.b;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
-  private Map<String, g> EXf;
-  private int oTu;
-  
-  public e()
+  public static String bcx(String paramString)
   {
-    AppMethodBeat.i(110678);
-    this.EXf = new HashMap();
-    this.oTu = 1;
-    AppMethodBeat.o(110678);
+    AppMethodBeat.i(110675);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(110675);
+      return "";
+    }
+    paramString = gkQ() + paramString + "/";
+    AppMethodBeat.o(110675);
+    return paramString;
   }
   
-  public final void aMh(String paramString)
+  public static String bcy(String paramString)
   {
-    AppMethodBeat.i(110679);
-    if (this.oTu > 3)
+    AppMethodBeat.i(200169);
+    if (paramString == null)
     {
-      ae.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
-      AppMethodBeat.o(110679);
-      return;
+      AppMethodBeat.o(200169);
+      return "";
     }
-    String str = d.aMu(paramString);
-    if ((!bu.isNullOrNil(str)) && (this.EXf.get(str) == null))
+    try
     {
-      this.oTu += 1;
-      g localg = c.aLL(str);
-      if (localg != null)
+      paramString = paramString.split("/wepkg/");
+      if (paramString.length <= 1)
       {
-        this.EXf.put(str, localg);
-        AppMethodBeat.o(110679);
-        return;
+        AppMethodBeat.o(200169);
+        return "";
       }
-      localg = c.cz(paramString, true);
-      if ((localg != null) && (localg.EXp != null))
+      paramString = paramString[1];
+      if (paramString == null)
       {
-        this.EXf.put(str, localg);
-        a.b("EnterWeb", paramString, localg.EXp.guO, localg.EXp.version, 1L, 0L, null);
-        ae.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
+        AppMethodBeat.o(200169);
+        return "";
+      }
+      paramString = paramString.split("/");
+      if (paramString.length > 0)
+      {
+        paramString = paramString[0];
+        AppMethodBeat.o(200169);
+        return paramString;
       }
     }
-    AppMethodBeat.o(110679);
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(200169);
+    }
+    return "";
   }
   
-  public final WebResourceResponse aMi(String paramString)
+  public static String bcz(String paramString)
   {
-    AppMethodBeat.i(110680);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(200170);
+    if (paramString == null)
     {
-      AppMethodBeat.o(110680);
-      return null;
+      AppMethodBeat.o(200170);
+      return "";
     }
-    Iterator localIterator = this.EXf.values().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      WebResourceResponse localWebResourceResponse = ((g)localIterator.next()).aMi(paramString);
-      if (localWebResourceResponse != null)
+      paramString = paramString.split("/wepkg/");
+      if (paramString.length <= 1)
       {
-        ae.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });
-        AppMethodBeat.o(110680);
-        return localWebResourceResponse;
+        AppMethodBeat.o(200170);
+        return "";
+      }
+      paramString = paramString[1];
+      if (paramString == null)
+      {
+        AppMethodBeat.o(200170);
+        return "";
+      }
+      paramString = paramString.split("/");
+      if (paramString.length > 1)
+      {
+        paramString = paramString[1];
+        AppMethodBeat.o(200170);
+        return paramString;
       }
     }
-    AppMethodBeat.o(110680);
-    return null;
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(200170);
+    }
+    return "";
+  }
+  
+  public static String gkQ()
+  {
+    AppMethodBeat.i(200168);
+    String str = b.dTg() + "wepkg/";
+    AppMethodBeat.o(200168);
+    return str;
+  }
+  
+  public static String ms(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(110676);
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+    {
+      AppMethodBeat.o(110676);
+      return "";
+    }
+    paramString1 = bcx(paramString1) + paramString2;
+    AppMethodBeat.o(110676);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.e
  * JD-Core Version:    0.7.0.1
  */

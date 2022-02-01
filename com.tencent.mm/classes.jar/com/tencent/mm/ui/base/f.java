@@ -9,23 +9,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private static boolean Z(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(141641);
-    if (fCs())
-    {
-      if (paramMotionEvent.getPointerCount() >= 2)
-      {
-        AppMethodBeat.o(141641);
-        return true;
-      }
-      AppMethodBeat.o(141641);
-      return false;
-    }
-    AppMethodBeat.o(141641);
-    return false;
-  }
-  
   public static void a(PointF paramPointF, Bitmap paramBitmap)
   {
     AppMethodBeat.i(141644);
@@ -46,28 +29,45 @@ public final class f
       AppMethodBeat.o(141643);
       return;
     }
-    float f1 = d(paramMotionEvent, 0);
-    float f2 = d(paramMotionEvent, 1);
-    float f3 = e(paramMotionEvent, 0);
-    float f4 = e(paramMotionEvent, 1);
+    float f1 = j(paramMotionEvent, 0);
+    float f2 = j(paramMotionEvent, 1);
+    float f3 = k(paramMotionEvent, 0);
+    float f4 = k(paramMotionEvent, 1);
     paramPointF.set((f1 + f2) / 2.0F, (f3 + f4) / 2.0F);
     AppMethodBeat.o(141643);
   }
   
-  public static float aa(MotionEvent paramMotionEvent)
+  private static boolean ag(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(141641);
+    if (gKq())
+    {
+      if (paramMotionEvent.getPointerCount() >= 2)
+      {
+        AppMethodBeat.o(141641);
+        return true;
+      }
+      AppMethodBeat.o(141641);
+      return false;
+    }
+    AppMethodBeat.o(141641);
+    return false;
+  }
+  
+  public static float ah(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141642);
-    float f1 = d(paramMotionEvent, 0) - d(paramMotionEvent, 1);
-    float f2 = e(paramMotionEvent, 0) - e(paramMotionEvent, 1);
+    float f1 = j(paramMotionEvent, 0) - j(paramMotionEvent, 1);
+    float f2 = k(paramMotionEvent, 0) - k(paramMotionEvent, 1);
     f1 = (float)Math.sqrt(f1 * f1 + f2 * f2);
     AppMethodBeat.o(141642);
     return f1;
   }
   
-  public static int ab(MotionEvent paramMotionEvent)
+  public static int ai(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141647);
-    if (fCs())
+    if (gKq())
     {
       new e();
       int i = paramMotionEvent.getPointerCount();
@@ -78,10 +78,54 @@ public final class f
     return 1;
   }
   
-  public static float d(MotionEvent paramMotionEvent, int paramInt)
+  public static void f(KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(141648);
+    if (gKq())
+    {
+      new e();
+      paramKeyEvent.startTracking();
+    }
+    AppMethodBeat.o(141648);
+  }
+  
+  public static boolean g(KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(141649);
+    if (gKq())
+    {
+      new e();
+      boolean bool = paramKeyEvent.isTracking();
+      AppMethodBeat.o(141649);
+      return bool;
+    }
+    AppMethodBeat.o(141649);
+    return false;
+  }
+  
+  private static boolean gKq()
+  {
+    return Build.VERSION.SDK_INT >= 5;
+  }
+  
+  public static boolean h(KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(141650);
+    if (gKq())
+    {
+      new e();
+      boolean bool = paramKeyEvent.isCanceled();
+      AppMethodBeat.o(141650);
+      return bool;
+    }
+    AppMethodBeat.o(141650);
+    return false;
+  }
+  
+  public static float j(MotionEvent paramMotionEvent, int paramInt)
   {
     AppMethodBeat.i(141645);
-    if (Z(paramMotionEvent))
+    if (ag(paramMotionEvent))
     {
       new e();
       f = paramMotionEvent.getX(paramInt);
@@ -93,10 +137,10 @@ public final class f
     return f;
   }
   
-  public static float e(MotionEvent paramMotionEvent, int paramInt)
+  public static float k(MotionEvent paramMotionEvent, int paramInt)
   {
     AppMethodBeat.i(141646);
-    if (Z(paramMotionEvent))
+    if (ag(paramMotionEvent))
     {
       new e();
       f = paramMotionEvent.getY(paramInt);
@@ -106,50 +150,6 @@ public final class f
     float f = paramMotionEvent.getY();
     AppMethodBeat.o(141646);
     return f;
-  }
-  
-  public static void e(KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(141648);
-    if (fCs())
-    {
-      new e();
-      paramKeyEvent.startTracking();
-    }
-    AppMethodBeat.o(141648);
-  }
-  
-  public static boolean f(KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(141649);
-    if (fCs())
-    {
-      new e();
-      boolean bool = paramKeyEvent.isTracking();
-      AppMethodBeat.o(141649);
-      return bool;
-    }
-    AppMethodBeat.o(141649);
-    return false;
-  }
-  
-  private static boolean fCs()
-  {
-    return Build.VERSION.SDK_INT >= 5;
-  }
-  
-  public static boolean g(KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(141650);
-    if (fCs())
-    {
-      new e();
-      boolean bool = paramKeyEvent.isCanceled();
-      AppMethodBeat.o(141650);
-      return bool;
-    }
-    AppMethodBeat.o(141650);
-    return false;
   }
 }
 

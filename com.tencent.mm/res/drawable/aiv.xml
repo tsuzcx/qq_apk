@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval" android:useLevel="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@raw/webviewtab_back_disable" />
-    <item android:drawable="@raw/webviewtab_back_normal" />
-</selector>
+    <solid android:color="#e6555555" />
+    <size android:height="80.0dip" android:width="80.0dip" />
+</shape>

@@ -9,41 +9,41 @@ import com.tencent.tinker.c.a.c.c;
 public final class a
   extends i<com.tencent.tinker.a.a.a>
 {
-  private s.a MBN = null;
-  private i.e MBO = null;
+  private s.a ShP = null;
+  private i.e ShQ = null;
   
   public a(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami1, com.tencent.tinker.a.a.i parami2, c paramc)
   {
     super(parama, parami1, paramc);
     if (parami2 != null)
     {
-      this.MBN = parami2.MAg.MAQ;
-      this.MBO = parami2.a(this.MBN);
+      this.ShP = parami2.Sgk.SgT;
+      this.ShQ = parami2.a(this.ShP);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2)
   {
     if (paramInt2 >= 0) {
-      paramc.MDp.aiD(paramInt2);
+      paramc.Sjr.asd(paramInt2);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt2 != paramInt4) {
-      paramc.MDb.put(paramInt2, paramInt4);
+      paramc.Sjd.put(paramInt2, paramInt4);
     }
   }
   
   protected final s.a c(com.tencent.tinker.a.a.i parami)
   {
-    return parami.MAg.MAQ;
+    return parami.Sgk.SgT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.c.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

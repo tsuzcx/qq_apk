@@ -11,12 +11,12 @@ import java.util.List;
 public class e
 {
   private static final String TAG;
-  protected f khg;
-  protected h khh;
-  protected List<NetworkInterface> khi;
-  protected InetSocketAddress khj;
-  protected MulticastSocket khk;
-  protected MulticastSocket khl;
+  protected f lkP;
+  protected h lkQ;
+  protected List<NetworkInterface> lkR;
+  protected InetSocketAddress lkS;
+  protected MulticastSocket lkT;
+  protected MulticastSocket lkU;
   private int port;
   private boolean running;
   
@@ -31,7 +31,7 @@ public class e
   {
     AppMethodBeat.i(158980);
     this.running = false;
-    this.khg = paramf;
+    this.lkP = paramf;
     this.port = paramInt;
     a(paramList, paramh);
     AppMethodBeat.o(158980);
@@ -40,24 +40,24 @@ public class e
   private void a(List<NetworkInterface> paramList, h paramh)
   {
     AppMethodBeat.i(158981);
-    this.khh = paramh;
-    this.khi = paramList;
+    this.lkQ = paramh;
+    this.lkR = paramList;
     try
     {
-      this.khk = new MulticastSocket(this.port);
-      this.khk.setReuseAddress(true);
-      this.khk.setReceiveBufferSize(32768);
-      a.i(TAG, "Creating wildcard socketNotify (for receiving multicast datagrams) on port: " + this.khg.port);
-      this.khj = new InetSocketAddress(this.khg.kho, this.khg.port);
-      this.khl = new MulticastSocket(this.khg.port);
-      this.khl.setReuseAddress(true);
-      this.khl.setReceiveBufferSize(32768);
-      paramList = this.khi.iterator();
+      this.lkT = new MulticastSocket(this.port);
+      this.lkT.setReuseAddress(true);
+      this.lkT.setReceiveBufferSize(32768);
+      a.i(TAG, "Creating wildcard socketNotify (for receiving multicast datagrams) on port: " + this.lkP.port);
+      this.lkS = new InetSocketAddress(this.lkP.lkX, this.lkP.port);
+      this.lkU = new MulticastSocket(this.lkP.port);
+      this.lkU.setReuseAddress(true);
+      this.lkU.setReceiveBufferSize(32768);
+      paramList = this.lkR.iterator();
       while (paramList.hasNext())
       {
         paramh = (NetworkInterface)paramList.next();
-        a.i(TAG, "Joining multicast group: " + this.khj + " on network interface: " + paramh.getDisplayName());
-        this.khl.joinGroup(this.khj, paramh);
+        a.i(TAG, "Joining multicast group: " + this.lkS + " on network interface: " + paramh.getDisplayName());
+        this.lkU.joinGroup(this.lkS, paramh);
       }
       AppMethodBeat.o(158981);
     }
@@ -75,28 +75,28 @@ public class e
     {
       AppMethodBeat.i(158983);
       this.running = false;
-      if ((this.khk != null) && (!this.khk.isClosed())) {
-        this.khk.close();
+      if ((this.lkT != null) && (!this.lkT.isClosed())) {
+        this.lkT.close();
       }
-      if (this.khl != null)
+      if (this.lkU != null)
       {
-        boolean bool = this.khl.isClosed();
+        boolean bool = this.lkU.isClosed();
         if (!bool) {
           try
           {
             a.i(TAG, "Leaving multicast group");
-            Iterator localIterator = this.khi.iterator();
+            Iterator localIterator = this.lkR.iterator();
             while (localIterator.hasNext())
             {
               NetworkInterface localNetworkInterface = (NetworkInterface)localIterator.next();
-              this.khl.leaveGroup(this.khj, localNetworkInterface);
+              this.lkU.leaveGroup(this.lkS, localNetworkInterface);
             }
             AppMethodBeat.o(158983);
           }
           catch (Exception localException)
           {
             a.i(TAG, "Could not leave multicast group: ".concat(String.valueOf(localException)));
-            this.khl.close();
+            this.lkU.close();
           }
         }
       }
@@ -210,7 +210,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.e
  * JD-Core Version:    0.7.0.1
  */

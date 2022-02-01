@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.sport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.sport.model.m;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.plugin.sport.model.l;
 import com.tencent.mm.plugin.sport.ui.a.b;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
@@ -18,12 +18,12 @@ public class Plugin
     return localc;
   }
   
-  public az createSubCore()
+  public bd createSubCore()
   {
     AppMethodBeat.i(28810);
-    m localm = new m();
+    l locall = new l();
     AppMethodBeat.o(28810);
-    return localm;
+    return locall;
   }
   
   public com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
@@ -36,7 +36,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.Plugin
  * JD-Core Version:    0.7.0.1
  */

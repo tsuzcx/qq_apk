@@ -3,49 +3,49 @@ package com.tencent.mm.plugin.account.friend.a;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.LVBuffer;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  String bVF;
-  public int dEu;
-  public String eQY;
-  public String hPK;
-  public int hPN;
+  public int cSx;
+  public String fuD;
+  public String iKR;
+  public int iKU;
   private int id;
-  public String jfK;
-  long jfL;
-  public String jfM;
-  public String jfN;
-  String jfO;
-  String jfP;
-  public String jfQ;
-  public int jfR;
-  public byte[] jfS;
-  public int jfT;
-  public String jfU;
-  public int jfV;
-  public String jfW;
-  public String jfX;
-  public String jfY;
-  int jfZ;
-  public String jga;
-  int jgb;
-  int jgc;
-  String jgd;
-  public String jge;
-  String jgf;
-  int jgg;
-  String jgh;
-  long jgi;
-  int jgj;
-  String jgk;
-  String jgl;
-  String jgm;
-  public long jgn;
+  public String kdN;
+  long kdO;
+  public String kdP;
+  public String kdQ;
+  String kdR;
+  String kdS;
+  public String kdT;
+  public int kdU;
+  public byte[] kdV;
+  public int kdW;
+  public String kdX;
+  public int kdY;
+  public String kdZ;
+  public String kea;
+  public String keb;
+  int kec;
+  public String ked;
+  int kee;
+  int kef;
+  String keg;
+  public String keh;
+  String kei;
+  int kej;
+  String kek;
+  long kel;
+  int kem;
+  String ken;
+  String keo;
+  String kep;
+  public long keq;
   private String md5;
+  String nickName;
   public String realName;
   public int status;
   public int type;
@@ -54,242 +54,160 @@ public final class a
   public a()
   {
     AppMethodBeat.i(130966);
-    this.dEu = -1;
+    this.cSx = -1;
     this.id = 0;
     this.md5 = "";
-    this.jfK = "";
-    this.jfL = 0L;
+    this.kdN = "";
+    this.kdO = 0L;
     this.realName = "";
-    this.jfM = "";
-    this.jfN = "";
+    this.kdP = "";
+    this.kdQ = "";
     this.username = "";
-    this.bVF = "";
-    this.jfO = "";
-    this.jfP = "";
+    this.nickName = "";
+    this.kdR = "";
+    this.kdS = "";
     this.type = 0;
-    this.jfQ = "";
-    this.eQY = "";
+    this.kdT = "";
+    this.fuD = "";
     this.status = 0;
-    this.hPK = "";
-    this.hPN = 0;
-    this.jfR = 0;
-    this.jfU = "";
-    this.jfV = 0;
-    this.jfW = "";
-    this.jfX = "";
-    this.jfY = "";
-    this.jfZ = 0;
-    this.jga = "";
-    this.jgb = 0;
-    this.jgc = 0;
-    this.jgd = "";
-    this.jge = "";
-    this.jgf = "";
-    this.jgg = -1;
-    this.jgh = "";
-    this.jgi = -1L;
-    this.jgj = -1;
-    this.jgk = "";
-    this.jgl = "";
-    this.jgm = "";
-    this.jgn = 0L;
+    this.iKR = "";
+    this.iKU = 0;
+    this.kdU = 0;
+    this.kdX = "";
+    this.kdY = 0;
+    this.kdZ = "";
+    this.kea = "";
+    this.keb = "";
+    this.kec = 0;
+    this.ked = "";
+    this.kee = 0;
+    this.kef = 0;
+    this.keg = "";
+    this.keh = "";
+    this.kei = "";
+    this.kej = -1;
+    this.kek = "";
+    this.kel = -1L;
+    this.kem = -1;
+    this.ken = "";
+    this.keo = "";
+    this.kep = "";
+    this.keq = 0L;
     AppMethodBeat.o(130966);
   }
   
-  public static int JR(String paramString)
+  public static int SQ(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(130971);
     try
     {
-      int j = bu.gs("0x" + paramString.substring(0, 8), 0);
+      int j = Util.getHex("0x" + paramString.substring(0, 8), 0);
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.AddrUpload", localException, "md5: %s", new Object[] { paramString });
+        Log.printErrStackTrace("MicroMsg.AddrUpload", localException, "md5: %s", new Object[] { paramString });
       }
     }
     AppMethodBeat.o(130971);
     return i;
   }
   
-  private byte[] aSV()
-  {
-    AppMethodBeat.i(130970);
-    try
-    {
-      Object localObject = new ab();
-      ((ab)localObject).fod();
-      ((ab)localObject).aRM(this.jfU);
-      ((ab)localObject).abc(this.jfV);
-      ((ab)localObject).aRM(this.jfW);
-      ((ab)localObject).aRM(this.jfX);
-      ((ab)localObject).aRM(this.jfY);
-      ((ab)localObject).abc(this.jfZ);
-      ((ab)localObject).aRM(this.jga);
-      ((ab)localObject).abc(this.jgb);
-      ((ab)localObject).abc(this.jgc);
-      ((ab)localObject).aRM(this.jgd);
-      ((ab)localObject).aRM(this.jge);
-      ((ab)localObject).aRM(this.jgf);
-      ((ab)localObject).abc(this.jgg);
-      ((ab)localObject).aRM(this.jgh);
-      ((ab)localObject).Dt(this.jgi);
-      ((ab)localObject).abc(this.jgj);
-      ((ab)localObject).aRM(this.jgk);
-      ((ab)localObject).aRM(this.jgl);
-      ((ab)localObject).aRM(this.jgm);
-      ((ab)localObject).Dt(this.jgn);
-      localObject = ((ab)localObject).foe();
-      AppMethodBeat.o(130970);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      ae.printErrStackTrace("MicroMsg.AddrUpload", localException, "", new Object[0]);
-      AppMethodBeat.o(130970);
-    }
-    return null;
-  }
-  
-  private void ap(byte[] paramArrayOfByte)
+  private void aG(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130968);
     try
     {
-      ab localab = new ab();
-      int i = localab.cB(paramArrayOfByte);
+      LVBuffer localLVBuffer = new LVBuffer();
+      int i = localLVBuffer.initParse(paramArrayOfByte);
       if (i != 0)
       {
-        ae.e("MicroMsg.AddrUpload", "parse LVBuffer error:".concat(String.valueOf(i)));
+        Log.e("MicroMsg.AddrUpload", "parse LVBuffer error:".concat(String.valueOf(i)));
         AppMethodBeat.o(130968);
         return;
       }
-      this.jfU = localab.getString();
-      this.jfV = localab.getInt();
-      this.jfW = localab.getString();
-      this.jfX = localab.getString();
-      this.jfY = localab.getString();
-      this.jfZ = localab.getInt();
-      this.jga = localab.getString();
-      this.jgb = localab.getInt();
-      this.jgc = localab.getInt();
-      this.jgd = localab.getString();
-      this.jge = localab.getString();
-      this.jgf = localab.getString();
-      this.jgg = localab.getInt();
-      this.jgh = localab.getString();
-      this.jgi = localab.getLong();
-      this.jgj = localab.getInt();
-      this.jgk = localab.getString();
-      this.jgl = localab.getString();
-      this.jgm = localab.getString();
-      this.jgn = localab.getLong();
+      this.kdX = localLVBuffer.getString();
+      this.kdY = localLVBuffer.getInt();
+      this.kdZ = localLVBuffer.getString();
+      this.kea = localLVBuffer.getString();
+      this.keb = localLVBuffer.getString();
+      this.kec = localLVBuffer.getInt();
+      this.ked = localLVBuffer.getString();
+      this.kee = localLVBuffer.getInt();
+      this.kef = localLVBuffer.getInt();
+      this.keg = localLVBuffer.getString();
+      this.keh = localLVBuffer.getString();
+      this.kei = localLVBuffer.getString();
+      this.kej = localLVBuffer.getInt();
+      this.kek = localLVBuffer.getString();
+      this.kel = localLVBuffer.getLong();
+      this.kem = localLVBuffer.getInt();
+      this.ken = localLVBuffer.getString();
+      this.keo = localLVBuffer.getString();
+      this.kep = localLVBuffer.getString();
+      this.keq = localLVBuffer.getLong();
       AppMethodBeat.o(130968);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ae.printErrStackTrace("MicroMsg.AddrUpload", paramArrayOfByte, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.AddrUpload", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(130968);
     }
   }
   
-  public final void JS(String paramString)
+  private byte[] bnI()
   {
-    AppMethodBeat.i(130972);
-    this.md5 = paramString;
-    this.id = JR(paramString);
-    AppMethodBeat.o(130972);
-  }
-  
-  public final String Lj()
-  {
-    if (this.md5 == null) {
-      return "";
+    AppMethodBeat.i(130970);
+    try
+    {
+      Object localObject = new LVBuffer();
+      ((LVBuffer)localObject).initBuild();
+      ((LVBuffer)localObject).putString(this.kdX);
+      ((LVBuffer)localObject).putInt(this.kdY);
+      ((LVBuffer)localObject).putString(this.kdZ);
+      ((LVBuffer)localObject).putString(this.kea);
+      ((LVBuffer)localObject).putString(this.keb);
+      ((LVBuffer)localObject).putInt(this.kec);
+      ((LVBuffer)localObject).putString(this.ked);
+      ((LVBuffer)localObject).putInt(this.kee);
+      ((LVBuffer)localObject).putInt(this.kef);
+      ((LVBuffer)localObject).putString(this.keg);
+      ((LVBuffer)localObject).putString(this.keh);
+      ((LVBuffer)localObject).putString(this.kei);
+      ((LVBuffer)localObject).putInt(this.kej);
+      ((LVBuffer)localObject).putString(this.kek);
+      ((LVBuffer)localObject).putLong(this.kel);
+      ((LVBuffer)localObject).putInt(this.kem);
+      ((LVBuffer)localObject).putString(this.ken);
+      ((LVBuffer)localObject).putString(this.keo);
+      ((LVBuffer)localObject).putString(this.kep);
+      ((LVBuffer)localObject).putLong(this.keq);
+      localObject = ((LVBuffer)localObject).buildFinish();
+      AppMethodBeat.o(130970);
+      return localObject;
     }
-    return this.md5;
-  }
-  
-  public final String aSW()
-  {
-    if (this.jfK == null) {
-      return "";
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.AddrUpload", localException, "", new Object[0]);
+      AppMethodBeat.o(130970);
     }
-    return this.jfK;
+    return null;
   }
   
-  public final String aSX()
-  {
-    if (this.realName == null) {
-      return "";
-    }
-    return this.realName;
-  }
-  
-  public final String aSY()
-  {
-    if (this.jfM == null) {
-      return "";
-    }
-    return this.jfM;
-  }
-  
-  public final String aSZ()
-  {
-    if (this.jfN == null) {
-      return "";
-    }
-    return this.jfN;
-  }
-  
-  public final String aTa()
-  {
-    if (this.jfO == null) {
-      return "";
-    }
-    return this.jfO;
-  }
-  
-  public final String aTb()
-  {
-    if (this.jfP == null) {
-      return "";
-    }
-    return this.jfP;
-  }
-  
-  public final String aTc()
-  {
-    if (this.jfQ == null) {
-      return "";
-    }
-    return this.jfQ;
-  }
-  
-  public final void aTd()
-  {
-    this.jfR |= 0x1;
-  }
-  
-  public final boolean aTe()
-  {
-    return (this.jfR & 0x1) == 0;
-  }
-  
-  public final int acP()
+  public final int aqN()
   {
     AppMethodBeat.i(130973);
     int i = 32;
     int j;
-    if (!bu.isNullOrNil(aSY()))
+    if (!Util.isNullOrNil(bnL()))
     {
-      i = aSY().charAt(0);
+      i = bnL().charAt(0);
       if ((i < 97) || (i > 122)) {
-        break label76;
+        break label74;
       }
       j = (char)(i - 32);
     }
@@ -297,12 +215,12 @@ public final class a
     {
       AppMethodBeat.o(130973);
       return j;
-      if (bu.isNullOrNil(aSZ())) {
+      if (Util.isNullOrNil(bnM())) {
         break;
       }
-      i = aSZ().charAt(0);
+      i = bnM().charAt(0);
       break;
-      label76:
+      label74:
       if (i >= 65)
       {
         j = i;
@@ -315,34 +233,100 @@ public final class a
     }
   }
   
+  public final String bnJ()
+  {
+    if (this.kdN == null) {
+      return "";
+    }
+    return this.kdN;
+  }
+  
+  public final String bnK()
+  {
+    if (this.realName == null) {
+      return "";
+    }
+    return this.realName;
+  }
+  
+  public final String bnL()
+  {
+    if (this.kdP == null) {
+      return "";
+    }
+    return this.kdP;
+  }
+  
+  public final String bnM()
+  {
+    if (this.kdQ == null) {
+      return "";
+    }
+    return this.kdQ;
+  }
+  
+  public final String bnN()
+  {
+    if (this.kdR == null) {
+      return "";
+    }
+    return this.kdR;
+  }
+  
+  public final String bnO()
+  {
+    if (this.kdS == null) {
+      return "";
+    }
+    return this.kdS;
+  }
+  
+  public final String bnP()
+  {
+    if (this.kdT == null) {
+      return "";
+    }
+    return this.kdT;
+  }
+  
+  public final void bnQ()
+  {
+    this.kdU |= 0x1;
+  }
+  
+  public final boolean bnR()
+  {
+    return (this.kdU & 0x1) == 0;
+  }
+  
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(130967);
-    JS(paramCursor.getString(1));
-    this.jfK = paramCursor.getString(2);
-    this.jfL = paramCursor.getLong(3);
+    setMd5(paramCursor.getString(1));
+    this.kdN = paramCursor.getString(2);
+    this.kdO = paramCursor.getLong(3);
     this.realName = paramCursor.getString(4);
-    this.jfM = paramCursor.getString(5);
-    this.jfN = paramCursor.getString(6);
+    this.kdP = paramCursor.getString(5);
+    this.kdQ = paramCursor.getString(6);
     this.username = paramCursor.getString(7);
-    this.bVF = paramCursor.getString(8);
-    this.jfO = paramCursor.getString(9);
-    this.jfP = paramCursor.getString(10);
+    this.nickName = paramCursor.getString(8);
+    this.kdR = paramCursor.getString(9);
+    this.kdS = paramCursor.getString(10);
     this.type = paramCursor.getInt(11);
-    this.jfQ = paramCursor.getString(12);
-    this.eQY = paramCursor.getString(13);
+    this.kdT = paramCursor.getString(12);
+    this.fuD = paramCursor.getString(13);
     int i = paramCursor.getInt(14);
     if (i == 65536) {}
     for (this.status = 0;; this.status = i)
     {
-      this.jfR = paramCursor.getInt(17);
-      this.hPK = paramCursor.getString(15);
-      this.hPN = paramCursor.getInt(18);
-      this.jfS = paramCursor.getBlob(19);
-      if (!bu.cF(this.jfS)) {
-        ap(this.jfS);
+      this.kdU = paramCursor.getInt(17);
+      this.iKR = paramCursor.getString(15);
+      this.iKU = paramCursor.getInt(18);
+      this.kdV = paramCursor.getBlob(19);
+      if (!Util.isNullOrNil(this.kdV)) {
+        aG(this.kdV);
       }
-      this.jfT = paramCursor.getInt(20);
+      this.kdW = paramCursor.getInt(20);
       AppMethodBeat.o(130967);
       return;
     }
@@ -352,50 +336,50 @@ public final class a
   {
     AppMethodBeat.i(130969);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dEu & 0x1) != 0) {
+    if ((this.cSx & 0x1) != 0) {
       localContentValues.put("id", Integer.valueOf(this.id));
     }
-    if ((this.dEu & 0x2) != 0) {
-      localContentValues.put("md5", Lj());
+    if ((this.cSx & 0x2) != 0) {
+      localContentValues.put("md5", getMd5());
     }
-    if ((this.dEu & 0x4) != 0) {
-      localContentValues.put("peopleid", aSW());
+    if ((this.cSx & 0x4) != 0) {
+      localContentValues.put("peopleid", bnJ());
     }
-    if ((this.dEu & 0x8) != 0) {
-      localContentValues.put("uploadtime", Long.valueOf(this.jfL));
+    if ((this.cSx & 0x8) != 0) {
+      localContentValues.put("uploadtime", Long.valueOf(this.kdO));
     }
-    if ((this.dEu & 0x10) != 0) {
-      localContentValues.put("realname", aSX());
+    if ((this.cSx & 0x10) != 0) {
+      localContentValues.put("realname", bnK());
     }
-    if ((this.dEu & 0x20) != 0) {
-      localContentValues.put("realnamepyinitial", aSY());
+    if ((this.cSx & 0x20) != 0) {
+      localContentValues.put("realnamepyinitial", bnL());
     }
-    if ((this.dEu & 0x40) != 0) {
-      localContentValues.put("realnamequanpin", aSZ());
+    if ((this.cSx & 0x40) != 0) {
+      localContentValues.put("realnamequanpin", bnM());
     }
-    if ((this.dEu & 0x80) != 0) {
+    if ((this.cSx & 0x80) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.dEu & 0x100) != 0) {
+    if ((this.cSx & 0x100) != 0) {
       localContentValues.put("nickname", getNickName());
     }
-    if ((this.dEu & 0x200) != 0) {
-      localContentValues.put("nicknamepyinitial", aTa());
+    if ((this.cSx & 0x200) != 0) {
+      localContentValues.put("nicknamepyinitial", bnN());
     }
-    if ((this.dEu & 0x400) != 0) {
-      localContentValues.put("nicknamequanpin", aTb());
+    if ((this.cSx & 0x400) != 0) {
+      localContentValues.put("nicknamequanpin", bnO());
     }
-    if ((this.dEu & 0x800) != 0) {
+    if ((this.cSx & 0x800) != 0) {
       localContentValues.put("type", Integer.valueOf(this.type));
     }
-    if ((this.dEu & 0x1000) != 0) {
-      localContentValues.put("moblie", aTc());
+    if ((this.cSx & 0x1000) != 0) {
+      localContentValues.put("moblie", bnP());
     }
-    if ((this.dEu & 0x2000) != 0) {
+    if ((this.cSx & 0x2000) != 0) {
       localContentValues.put("email", getEmail());
     }
     int i;
-    if ((this.dEu & 0x4000) != 0)
+    if ((this.cSx & 0x4000) != 0)
     {
       i = this.status;
       if (i != 0) {
@@ -405,22 +389,22 @@ public final class a
     }
     for (;;)
     {
-      if ((this.dEu & 0x8000) != 0) {
-        localContentValues.put("reserved1", this.hPK);
+      if ((this.cSx & 0x8000) != 0) {
+        localContentValues.put("reserved1", this.iKR);
       }
-      if ((this.dEu & 0x20000) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.jfR));
+      if ((this.cSx & 0x20000) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.kdU));
       }
-      if ((this.dEu & 0x40000) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.hPN));
+      if ((this.cSx & 0x40000) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.iKU));
       }
-      if ((this.dEu & 0x80000) != 0)
+      if ((this.cSx & 0x80000) != 0)
       {
-        this.jfS = aSV();
-        localContentValues.put("lvbuf", this.jfS);
+        this.kdV = bnI();
+        localContentValues.put("lvbuf", this.kdV);
       }
-      if ((this.dEu & 0x100000) != 0) {
-        localContentValues.put("showhead", Integer.valueOf(this.jfT));
+      if ((this.cSx & 0x100000) != 0) {
+        localContentValues.put("showhead", Integer.valueOf(this.kdW));
       }
       AppMethodBeat.o(130969);
       return localContentValues;
@@ -431,18 +415,26 @@ public final class a
   
   public final String getEmail()
   {
-    if (this.eQY == null) {
+    if (this.fuD == null) {
       return "";
     }
-    return this.eQY;
+    return this.fuD;
+  }
+  
+  public final String getMd5()
+  {
+    if (this.md5 == null) {
+      return "";
+    }
+    return this.md5;
   }
   
   public final String getNickName()
   {
-    if (this.bVF == null) {
+    if (this.nickName == null) {
       return "";
     }
-    return this.bVF;
+    return this.nickName;
   }
   
   public final String getUsername()
@@ -452,10 +444,18 @@ public final class a
     }
     return this.username;
   }
+  
+  public final void setMd5(String paramString)
+  {
+    AppMethodBeat.i(130972);
+    this.md5 = paramString;
+    this.id = SQ(paramString);
+    AppMethodBeat.o(130972);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.a
  * JD-Core Version:    0.7.0.1
  */

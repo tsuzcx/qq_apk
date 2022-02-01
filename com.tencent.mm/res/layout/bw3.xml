@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/i2z" android:background="@drawable/c_l" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/i30" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/wu" android:layout_centerInParent="true" app:iconColor="@color/a7c" />
-    </FrameLayout>
-    <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/i36" />
+<LinearLayout android:orientation="vertical" android:id="@id/hyi" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.listview.AnimatedExpandableListView android:id="@id/hyh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="@color/ac_" android:groupIndicator="@null" android:divider="@null" />
 </LinearLayout>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:id="@id/d03" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/b3b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include layout="@layout/b25" />
-    <Button android:id="@id/cd8" android:visibility="gone" style="@style/a4g" />
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ie" style="@style/sa">
+        <ListView android:id="@id/ecm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/aij" android:cacheColorHint="#00000000" android:divider="@null" />
+    </LinearLayout>
+</LinearLayout>

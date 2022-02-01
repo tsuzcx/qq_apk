@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin$FuncType;", "", "(Ljava/lang/String;I)V", "CROP_FUNC", "NORMAL_FUNC", "DEFAULT", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin$FuncType;", "", "(Ljava/lang/String;I)V", "CROP_FUNC", "NORMAL_FUNC", "DEFAULT", "plugin-recordvideo_release"})
  enum r$a
 {
   static
   {
     AppMethodBeat.i(75579);
     a locala1 = new a("CROP_FUNC", 0);
-    xQZ = locala1;
+    BQW = locala1;
     a locala2 = new a("NORMAL_FUNC", 1);
-    xRa = locala2;
+    BQX = locala2;
     a locala3 = new a("DEFAULT", 2);
-    xRb = locala3;
-    xRc = new a[] { locala1, locala2, locala3 };
+    BQY = locala3;
+    BQZ = new a[] { locala1, locala2, locala3 };
     AppMethodBeat.o(75579);
   }
   

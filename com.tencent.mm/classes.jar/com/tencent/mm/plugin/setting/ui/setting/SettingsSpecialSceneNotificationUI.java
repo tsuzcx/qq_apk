@@ -5,19 +5,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.n.g;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.f;
 
 public class SettingsSpecialSceneNotificationUI
   extends MMPreference
 {
-  private com.tencent.mm.ui.base.preference.f screen;
+  private f screen;
   
   public int getResourceId()
   {
-    return 2131951731;
+    return 2132017276;
   }
   
   public void initView()
@@ -26,10 +28,10 @@ public class SettingsSpecialSceneNotificationUI
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(getResourceId());
-    this.screen.cT("settings_specail_scene_sound", false);
-    ((CheckBoxPreference)this.screen.aXe("settings_specail_scene_sound")).setChecked(com.tencent.mm.n.f.abZ());
-    this.screen.cT("settings_specail_scene_shake", false);
-    ((CheckBoxPreference)this.screen.aXe("settings_specail_scene_shake")).setChecked(com.tencent.mm.n.f.aca());
+    this.screen.jdMethod_do("settings_specail_scene_sound", false);
+    ((CheckBoxPreference)this.screen.bmg("settings_specail_scene_sound")).setChecked(g.apY());
+    this.screen.jdMethod_do("settings_specail_scene_shake", false);
+    ((CheckBoxPreference)this.screen.bmg("settings_specail_scene_shake")).setChecked(g.apZ());
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -48,7 +50,7 @@ public class SettingsSpecialSceneNotificationUI
   {
     AppMethodBeat.i(74427);
     super.onCreate(paramBundle);
-    setMMTitle(2131763433);
+    setMMTitle(2131765615);
     AppMethodBeat.o(74427);
   }
   
@@ -66,22 +68,22 @@ public class SettingsSpecialSceneNotificationUI
     AppMethodBeat.o(74429);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(74431);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_specail_scene_sound"))
     {
-      com.tencent.mm.n.f.cV(((CheckBoxPreference)paramPreference).isChecked());
+      g.dF(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       AppMethodBeat.o(74431);
       return true;
     }
     if (paramf.equals("settings_specail_scene_shake"))
     {
-      com.tencent.mm.n.f.cW(((CheckBoxPreference)paramPreference).isChecked());
+      g.dG(((CheckBoxPreference)paramPreference).isChecked());
       initView();
-      bu.F(this, ((CheckBoxPreference)paramPreference).isChecked());
+      Util.shake(this, ((CheckBoxPreference)paramPreference).isChecked());
       AppMethodBeat.o(74431);
       return true;
     }
@@ -105,7 +107,7 @@ public class SettingsSpecialSceneNotificationUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSpecialSceneNotificationUI
  * JD-Core Version:    0.7.0.1
  */

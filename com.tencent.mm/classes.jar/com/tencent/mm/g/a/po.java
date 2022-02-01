@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class po
-  extends b
+  extends IEvent
 {
-  public a dEP;
-  public b dEQ;
-  
   public po()
   {
     this((byte)0);
@@ -16,23 +12,8 @@ public final class po
   
   private po(byte paramByte)
   {
-    AppMethodBeat.i(9427);
-    this.dEP = new a();
-    this.dEQ = new b();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(9427);
-  }
-  
-  public static final class a
-  {
-    public String dCX;
-    public long dnX;
-  }
-  
-  public static final class b
-  {
-    public String dER;
   }
 }
 

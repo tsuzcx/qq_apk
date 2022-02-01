@@ -1,231 +1,375 @@
 package com.tencent.mm.plugin.welab;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.ahq;
-import com.tencent.mm.protocal.protobuf.awb;
-import com.tencent.mm.protocal.protobuf.awc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.welab.b.c;
+import com.tencent.mm.plugin.welab.d.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public final class e
 {
-  private static boolean DEBUG = false;
-  private static boolean ga = false;
+  private static DocumentBuilder iHe = null;
   
-  private static void aDC()
+  private static Element Lf(String paramString)
   {
-    AppMethodBeat.i(146220);
-    long l = System.currentTimeMillis() / 1000L;
-    g.ajR().ajA().set(am.a.ITP, Long.valueOf(l));
-    AppMethodBeat.o(146220);
-  }
-  
-  private static void aDE()
-  {
-    AppMethodBeat.i(146222);
-    g.ajR().ajA().fuc();
-    AppMethodBeat.o(146222);
-  }
-  
-  static void aK(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(146217);
-    ae.i("MicroMsg.WelabUpdater", "tryToUpdate isUpgrade %s, isManualAuth %s ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    if (!g.ajP().aiZ())
+    AppMethodBeat.i(146232);
+    try
     {
-      ae.i("MicroMsg.WelabUpdater", "Update aborted, Account not ready.");
-      AppMethodBeat.o(146217);
-      return;
-    }
-    if ((!DEBUG) && (!paramBoolean1) && (!paramBoolean2))
-    {
-      localObject = (Long)g.ajR().ajA().get(am.a.ITP, null);
-      long l1;
-      if (localObject == null)
-      {
-        l1 = 0L;
-        if (l1 != 0L) {
-          break label169;
-        }
-        i = new Random().nextInt(86400);
-        oK(i);
-        aDC();
-        aDE();
-        ae.i("MicroMsg.WelabUpdater", "First update ignored. Next update: %d", new Object[] { Integer.valueOf(i) });
-        i = 1;
+      InputSource localInputSource = new InputSource(new ByteArrayInputStream(paramString.getBytes()));
+      if (iHe != null) {
+        paramString = iHe;
       }
       for (;;)
       {
-        if (i != 0) {
-          break label306;
-        }
-        ae.v("MicroMsg.WelabUpdater", "No need to update");
-        AppMethodBeat.o(146217);
-        return;
-        l1 = ((Long)localObject).longValue();
-        break;
-        label169:
-        localObject = (Integer)g.ajR().ajA().get(am.a.ITQ, null);
-        label203:
-        long l2;
-        long l3;
-        if ((localObject == null) || (((Integer)localObject).intValue() == 0))
-        {
-          i = 86400;
-          l2 = i;
-          l3 = System.currentTimeMillis() / 1000L;
-          if (l3 <= l1 + l2) {
-            break label296;
-          }
-        }
-        label296:
-        for (boolean bool = true;; bool = false)
-        {
-          ae.i("MicroMsg.WelabUpdater", "Need Update: %b, Last Update Time: %d, Update Interval: %d, Current Time: %d", new Object[] { Boolean.valueOf(bool), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
-          if (l3 <= l1 + l2) {
-            break label301;
-          }
-          i = 1;
+        paramString = paramString.parse(localInputSource);
+        paramString.normalize();
+        paramString = paramString.getDocumentElement();
+        AppMethodBeat.o(146232);
+        return paramString;
+        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        iHe = paramString;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.Welabparser", paramString.toString());
+      AppMethodBeat.o(146232);
+    }
+  }
+  
+  public static a a(c paramc)
+  {
+    AppMethodBeat.i(146233);
+    a locala = new a();
+    locala.field_expId = String.valueOf(paramc.sLf);
+    locala.field_sequence = paramc.sLg;
+    if (paramc.startTime > 0L)
+    {
+      l = paramc.startTime;
+      locala.field_starttime = l;
+      if (paramc.endTime <= 0L) {
+        break label963;
+      }
+    }
+    label963:
+    for (long l = paramc.endTime;; l = 9223372036854775807L)
+    {
+      locala.field_endtime = l;
+      String str = "xlab_" + paramc.sLf;
+      paramc = paramc.map;
+      locala.field_AllVer = Util.safeParseInt((String)paramc.get(hr(str, "AllVer")));
+      locala.field_BizType = Util.safeParseInt((String)paramc.get(hr(str, "BizType")));
+      locala.field_Desc_cn = ((String)paramc.get(hr(str, "Desc_cn")));
+      locala.field_Desc_en = ((String)paramc.get(hr(str, "Desc_en")));
+      locala.field_Desc_hk = ((String)paramc.get(hr(str, "Desc_hk")));
+      locala.field_Desc_tw = ((String)paramc.get(hr(str, "Desc_tw")));
+      locala.field_DetailURL = ((String)paramc.get(hr(str, "DetailURL")));
+      locala.field_Introduce_cn = ((String)paramc.get(hr(str, "Introduce_cn")));
+      locala.field_Introduce_en = ((String)paramc.get(hr(str, "Introduce_en")));
+      locala.field_Introduce_hk = ((String)paramc.get(hr(str, "Introduce_hk")));
+      locala.field_Introduce_tw = ((String)paramc.get(hr(str, "Introduce_tw")));
+      locala.field_Pos = Util.safeParseInt((String)paramc.get(hr(str, "Pos")));
+      locala.field_Type = Util.safeParseInt((String)paramc.get(hr(str, "Type")));
+      locala.field_Switch = Util.safeParseInt((String)paramc.get(hr(str, "Switch")));
+      locala.field_WeAppPath = ((String)paramc.get(hr(str, "WeAppPath")));
+      locala.field_WeAppUser = ((String)paramc.get(hr(str, "WeAppUser")));
+      locala.field_LabsAppId = ((String)paramc.get(hr(str, "LabsAppId")));
+      locala.field_TitleKey_android = ((String)paramc.get(hr(str, "TitleKey_android")));
+      locala.field_Title_cn = ((String)paramc.get(hr(str, "Title_cn")));
+      locala.field_Title_en = ((String)paramc.get(hr(str, "Title_en")));
+      locala.field_Title_hk = ((String)paramc.get(hr(str, "Title_hk")));
+      locala.field_Title_tw = ((String)paramc.get(hr(str, "Title_tw")));
+      locala.field_ThumbUrl_cn = ((String)paramc.get(hr(str, "ThumbUrl_cn")));
+      locala.field_ThumbUrl_en = ((String)paramc.get(hr(str, "ThumbUrl_en")));
+      locala.field_ThumbUrl_hk = ((String)paramc.get(hr(str, "ThumbUrl_hk")));
+      locala.field_ThumbUrl_tw = ((String)paramc.get(hr(str, "ThumbUrl_tw")));
+      locala.field_ImgUrl_android_cn = a(paramc, hr(str, "ImgUrl_android_cn")).replace(',', ';');
+      locala.field_ImgUrl_android_tw = a(paramc, hr(str, "ImgUrl_android_tw")).replace(',', ';');
+      locala.field_ImgUrl_android_en = a(paramc, hr(str, "ImgUrl_android_en")).replace(',', ';');
+      locala.field_ImgUrl_android_hk = a(paramc, hr(str, "ImgUrl_android_hk")).replace(',', ';');
+      if (TextUtils.isEmpty(locala.field_ImgUrl_android_cn)) {
+        locala.field_ImgUrl_android_cn = ((String)paramc.get(hr(str, "ImgUrl_cn")));
+      }
+      if (TextUtils.isEmpty(locala.field_ImgUrl_android_en)) {
+        locala.field_ImgUrl_android_en = ((String)paramc.get(hr(str, "ImgUrl_en")));
+      }
+      if (TextUtils.isEmpty(locala.field_ImgUrl_android_hk)) {
+        locala.field_ImgUrl_android_hk = ((String)paramc.get(hr(str, "ImgUrl_hk")));
+      }
+      if (TextUtils.isEmpty(locala.field_ImgUrl_android_tw)) {
+        locala.field_ImgUrl_android_tw = ((String)paramc.get(hr(str, "ImgUrl_tw")));
+      }
+      locala.field_RedPoint = Util.safeParseInt((String)paramc.get(hr(str, "RedPoint")));
+      locala.field_WeAppDebugMode = Util.safeParseInt((String)paramc.get(hr(str, "WeAppDebugMode")));
+      locala.field_TitleKey_android = ((String)paramc.get(hr(str, "TitleKey_android")));
+      locala.field_Icon = ((String)paramc.get(hr(str, "Icon")));
+      locala.field_bItemFromXExpt = 1;
+      locala.field_status = Util.safeParseInt((String)paramc.get(hr(str, "status")));
+      locala.field_idkey = Util.safeParseInt((String)paramc.get(hr(str, "idkey")));
+      locala.field_idkeyValue = Util.safeParseInt((String)paramc.get(hr(str, "idkeyValue")));
+      AppMethodBeat.o(146233);
+      return locala;
+      l = System.currentTimeMillis() / 1000L;
+      break;
+    }
+  }
+  
+  private static String a(HashMap<String, String> paramHashMap, String paramString)
+  {
+    AppMethodBeat.i(146230);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramHashMap.containsKey(paramString))
+    {
+      localStringBuilder.append((String)paramHashMap.get(paramString)).append(";");
+      int i = 1;
+      for (;;)
+      {
+        String str = paramString + "_" + i;
+        if (!paramHashMap.containsKey(str)) {
           break;
-          i = ((Integer)localObject).intValue();
-          break label203;
         }
-        label301:
-        i = 0;
+        localStringBuilder.append((String)paramHashMap.get(str)).append(";");
+        i += 1;
       }
     }
-    label306:
-    if (ga)
+    paramHashMap = localStringBuilder.toString();
+    AppMethodBeat.o(146230);
+    return paramHashMap;
+    paramHashMap = localStringBuilder.toString();
+    AppMethodBeat.o(146230);
+    return paramHashMap;
+  }
+  
+  public static a bbB(String paramString)
+  {
+    AppMethodBeat.i(146229);
+    Log.v("MicroMsg.Welabparser", "ABTest msg content: %s", new Object[] { paramString });
+    Object localObject2 = paramString.replaceAll(">\n+\\s*<", "><");
+    paramString = new a();
+    Object localObject1 = Lf((String)localObject2);
+    if (localObject1 == null)
     {
-      ae.i("MicroMsg.WelabUpdater", "Updating");
-      AppMethodBeat.o(146217);
-      return;
+      Log.e("MicroMsg.Welabparser", "Msg parsing failed, msg: %s", new Object[] { localObject2 });
+      AppMethodBeat.o(146229);
+      return paramString;
     }
-    ga = true;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new awb();
-    ((b.a)localObject).hQG = new awc();
-    ((b.a)localObject).uri = "/cgi-bin/mmux-bin/getlabsinfo";
-    ((b.a)localObject).funcId = 1816;
-    localObject = ((b.a)localObject).aDS();
-    awb localawb = (awb)((b)localObject).hQD.hQJ;
-    Integer localInteger = (Integer)g.ajR().ajA().get(am.a.ITR, null);
-    if (localInteger == null) {}
-    for (int i = 0;; i = localInteger.intValue())
+    localObject2 = ((Element)localObject1).getAttributes();
+    if (localObject2 == null)
     {
-      localawb.GNQ = i;
-      localawb.GNR = fac();
-      localawb.GNS = ((int)bu.aRi());
-      if (paramBoolean1) {
-        localawb.dEu |= 0x1;
+      AppMethodBeat.o(146229);
+      return null;
+    }
+    localObject2 = ((NamedNodeMap)localObject2).getNamedItem("type");
+    int i = 1;
+    if ((localObject2 != null) && ("newabtestlabs".equals(((Node)localObject2).getNodeValue())))
+    {
+      localObject2 = ((Element)localObject1).getElementsByTagName("prioritylevel");
+      if (((NodeList)localObject2).getLength() > 0) {
+        i = Util.getInt(((NodeList)localObject2).item(0).getTextContent(), 1);
       }
-      if (paramBoolean2) {
-        localawb.dEu |= 0x2;
+      localObject2 = ((Element)localObject1).getElementsByTagName("status");
+      if (((NodeList)localObject2).getLength() > 0) {
+        paramString.field_status = Util.getInt(((NodeList)localObject2).item(0).getTextContent(), 1);
       }
-      ae.i("MicroMsg.WelabUpdater", "update abtest: %s", new Object[] { c(localawb.GNR) });
-      x.a((b)localObject, new x.a()
+      paramString.field_prioritylevel = i;
+      localObject1 = ((Element)localObject1).getChildNodes();
+      i = 0;
+      if (i >= ((NodeList)localObject1).getLength()) {
+        break label1448;
+      }
+      localObject2 = ((NodeList)localObject1).item(i);
+      if ((localObject2 == null) || (((Node)localObject2).getNodeType() != 1) || (!((Node)localObject2).getNodeName().equals("expinfo"))) {
+        break label824;
+      }
+    }
+    for (;;)
+    {
+      long l3;
+      long l1;
+      try
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, n paramAnonymousn)
+        localObject2 = (Element)localObject2;
+        Object localObject3 = ((Element)localObject2).getAttributes();
+        if (localObject3 != null)
         {
-          AppMethodBeat.i(146216);
-          e.JG();
-          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          localObject3 = ((NamedNodeMap)localObject3).getNamedItem("id");
+          if (localObject3 != null)
           {
-            ae.e("MicroMsg.WelabUpdater", "Update Error: %d, %d, next update will be performed %d(s) later", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(86400) });
-            e.access$100();
-            e.oL(86400);
-            e.access$300();
-            AppMethodBeat.o(146216);
-            return 0;
+            paramString.field_expId = ((Node)localObject3).getNodeValue();
+            localObject3 = ((Element)localObject2).getElementsByTagName("sequence");
+            if (((NodeList)localObject3).getLength() != 0)
+            {
+              l3 = Util.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+              localObject3 = ((Element)localObject2).getElementsByTagName("starttime");
+              if (((NodeList)localObject3).getLength() > 0)
+              {
+                l1 = Util.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+                if (l1 != 0L) {
+                  break label1459;
+                }
+                l1 = System.currentTimeMillis() / 1000L;
+              }
+              try
+              {
+                paramString.field_idkey = Util.getInt(((Element)localObject2).getElementsByTagName("monitor").item(0).getChildNodes().item(0).getChildNodes().item(0).getTextContent(), -1);
+                paramString.field_idkeyValue = Util.getInt(((Element)localObject2).getElementsByTagName("monitor").item(0).getChildNodes().item(0).getChildNodes().item(1).getTextContent(), -1);
+                localObject3 = ((Element)localObject2).getElementsByTagName("endtime");
+                if (((NodeList)localObject3).getLength() <= 0) {
+                  break label1462;
+                }
+                l2 = Util.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+                if (l2 != 0L) {
+                  break label1456;
+                }
+                break label1462;
+                localObject3 = new HashMap();
+                localObject2 = ((Element)localObject2).getElementsByTagName("args");
+                if (((NodeList)localObject2).getLength() <= 0) {
+                  break label831;
+                }
+                localObject2 = ((NodeList)localObject2).item(0).getChildNodes();
+                int j = 0;
+                if (j >= ((NodeList)localObject2).getLength()) {
+                  break label831;
+                }
+                Object localObject4 = ((NodeList)localObject2).item(j);
+                if ((((Node)localObject4).getNodeType() == 1) && (((Node)localObject4).getNodeName().equals("arg")))
+                {
+                  NodeList localNodeList = ((Element)localObject4).getElementsByTagName("key");
+                  localObject4 = ((Element)localObject4).getElementsByTagName("value");
+                  if ((localNodeList.getLength() != 0) && (((NodeList)localObject4).getLength() != 0)) {
+                    ((HashMap)localObject3).put(localNodeList.item(0).getTextContent(), ((NodeList)localObject4).item(0).getTextContent());
+                  }
+                }
+                j += 1;
+                continue;
+                Log.i("MicroMsg.Welabparser", "recv illegal type msg");
+                AppMethodBeat.o(146229);
+                return paramString;
+                l1 = System.currentTimeMillis() / 1000L;
+                continue;
+              }
+              catch (Exception localException2)
+              {
+                Log.e("MicroMsg.Welabparser", Util.stackTraceToString(localException2));
+                continue;
+              }
+            }
           }
-          paramAnonymousString = (awc)paramAnonymousb.hQE.hQJ;
-          e.access$100();
-          e.oM(paramAnonymousString.Timestamp);
-          e.oL(paramAnonymousString.GNU);
-          e.ak(paramAnonymousString.GNV);
-          e.al(paramAnonymousString.GNT);
-          e.access$300();
-          ae.i("MicroMsg.WelabUpdater", "Update Interval: %d", new Object[] { Integer.valueOf(paramAnonymousString.GNU) });
-          AppMethodBeat.o(146216);
-          return 0;
         }
-      });
-      AppMethodBeat.o(146217);
-      return;
-    }
-  }
-  
-  private static String c(LinkedList<ahq> paramLinkedList)
-  {
-    AppMethodBeat.i(146218);
-    Iterator localIterator = paramLinkedList.iterator();
-    ahq localahq;
-    for (paramLinkedList = ""; localIterator.hasNext(); paramLinkedList = paramLinkedList + localahq.GuP + ":" + localahq.priority + "|") {
-      localahq = (ahq)localIterator.next();
-    }
-    AppMethodBeat.o(146218);
-    return paramLinkedList;
-  }
-  
-  private static LinkedList<ahq> fac()
-  {
-    AppMethodBeat.i(146219);
-    localLinkedList = new LinkedList();
-    try
-    {
-      Iterator localIterator = a.faa().EQe.fai().iterator();
-      while (localIterator.hasNext())
-      {
-        com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)localIterator.next();
-        if (!locala.fak())
-        {
-          ahq localahq = new ahq();
-          localahq.GuP = bu.getInt(locala.field_expId, 0);
-          localahq.priority = locala.field_prioritylevel;
-          localLinkedList.add(localahq);
-        }
+        i += 1;
       }
-      return localLinkedList;
-    }
-    catch (Exception localException)
-    {
-      ae.printErrStackTrace("MicroMsg.WelabUpdater", localException, "", new Object[0]);
-      AppMethodBeat.o(146219);
+      catch (Exception localException1)
+      {
+        Log.e("MicroMsg.Welabparser", localException1.getMessage());
+      }
+      for (;;)
+      {
+        label824:
+        break;
+        label831:
+        paramString.field_sequence = l3;
+        paramString.field_starttime = l1;
+        paramString.field_endtime = l2;
+        paramString.field_AllVer = Util.safeParseInt((String)localException2.get("AllVer"));
+        paramString.field_BizType = Util.safeParseInt((String)localException2.get("BizType"));
+        paramString.field_Desc_cn = ((String)localException2.get("Desc_cn"));
+        paramString.field_Desc_en = ((String)localException2.get("Desc_en"));
+        paramString.field_Desc_hk = ((String)localException2.get("Desc_hk"));
+        paramString.field_Desc_tw = ((String)localException2.get("Desc_tw"));
+        paramString.field_DetailURL = ((String)localException2.get("DetailURL"));
+        paramString.field_Introduce_cn = ((String)localException2.get("Introduce_cn"));
+        paramString.field_Introduce_en = ((String)localException2.get("Introduce_en"));
+        paramString.field_Introduce_hk = ((String)localException2.get("Introduce_hk"));
+        paramString.field_Introduce_tw = ((String)localException2.get("Introduce_tw"));
+        paramString.field_Pos = Util.safeParseInt((String)localException2.get("Pos"));
+        paramString.field_Type = Util.safeParseInt((String)localException2.get("Type"));
+        paramString.field_Switch = Util.safeParseInt((String)localException2.get("Switch"));
+        paramString.field_WeAppPath = ((String)localException2.get("WeAppPath"));
+        paramString.field_WeAppUser = ((String)localException2.get("WeAppUser"));
+        paramString.field_LabsAppId = ((String)localException2.get("LabsAppId"));
+        paramString.field_TitleKey_android = ((String)localException2.get("TitleKey_android"));
+        paramString.field_Title_cn = ((String)localException2.get("Title_cn"));
+        paramString.field_Title_en = ((String)localException2.get("Title_en"));
+        paramString.field_Title_hk = ((String)localException2.get("Title_hk"));
+        paramString.field_Title_tw = ((String)localException2.get("Title_tw"));
+        paramString.field_ThumbUrl_cn = ((String)localException2.get("ThumbUrl_cn"));
+        paramString.field_ThumbUrl_en = ((String)localException2.get("ThumbUrl_en"));
+        paramString.field_ThumbUrl_hk = ((String)localException2.get("ThumbUrl_hk"));
+        paramString.field_ThumbUrl_tw = ((String)localException2.get("ThumbUrl_tw"));
+        paramString.field_ImgUrl_android_cn = a(localException2, "ImgUrl_android_cn");
+        paramString.field_ImgUrl_android_tw = a(localException2, "ImgUrl_android_tw");
+        paramString.field_ImgUrl_android_en = a(localException2, "ImgUrl_android_en");
+        paramString.field_ImgUrl_android_hk = a(localException2, "ImgUrl_android_hk");
+        if (TextUtils.isEmpty(paramString.field_ImgUrl_android_cn)) {
+          paramString.field_ImgUrl_android_cn = ((String)localException2.get("ImgUrl_cn"));
+        }
+        if (TextUtils.isEmpty(paramString.field_ImgUrl_android_en)) {
+          paramString.field_ImgUrl_android_en = ((String)localException2.get("ImgUrl_en"));
+        }
+        if (TextUtils.isEmpty(paramString.field_ImgUrl_android_hk)) {
+          paramString.field_ImgUrl_android_hk = ((String)localException2.get("ImgUrl_hk"));
+        }
+        if (TextUtils.isEmpty(paramString.field_ImgUrl_android_tw)) {
+          paramString.field_ImgUrl_android_tw = ((String)localException2.get("ImgUrl_tw"));
+        }
+        paramString.field_RedPoint = Util.safeParseInt((String)localException2.get("RedPoint"));
+        paramString.field_WeAppDebugMode = Util.safeParseInt((String)localException2.get("WeAppDebugMode"));
+        paramString.field_TitleKey_android = ((String)localException2.get("TitleKey_android"));
+        paramString.field_Icon = ((String)localException2.get("Icon"));
+      }
+      label1448:
+      AppMethodBeat.o(146229);
+      return paramString;
+      label1456:
+      continue;
+      label1459:
+      continue;
+      label1462:
+      long l2 = 9223372036854775807L;
     }
   }
   
-  private static void oK(int paramInt)
+  public static List<String> bbC(String paramString)
   {
-    AppMethodBeat.i(146221);
-    int i = 0;
-    if (paramInt == 0) {}
-    for (i = 86400;; i = new Random().nextInt(126000) + 3600) {
-      do
-      {
-        g.ajR().ajA().set(am.a.ITQ, Integer.valueOf(i));
-        AppMethodBeat.o(146221);
-        return;
-      } while ((paramInt >= 3600) && (paramInt <= 129600));
+    AppMethodBeat.i(146231);
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = Collections.EMPTY_LIST;
+      AppMethodBeat.o(146231);
+      return paramString;
     }
+    paramString = Arrays.asList(paramString.split(";"));
+    AppMethodBeat.o(146231);
+    return paramString;
+  }
+  
+  private static String hr(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(146234);
+    paramString1 = (paramString1 + "_" + paramString2).toLowerCase();
+    AppMethodBeat.o(146234);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.e
  * JD-Core Version:    0.7.0.1
  */

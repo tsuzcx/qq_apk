@@ -2,7 +2,7 @@ package android.arch.lifecycle;
 
 public abstract class ViewModel
 {
-  protected void af() {}
+  protected void onCleared() {}
 }
 
 

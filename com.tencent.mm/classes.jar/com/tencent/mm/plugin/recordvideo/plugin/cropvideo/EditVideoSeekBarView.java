@@ -14,26 +14,26 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar;
 import com.tencent.mm.plugin.mmsight.segment.c.b;
-import com.tencent.mm.ui.z;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.ui.aa;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditVideoSeekBarView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "cancelButton", "Landroid/widget/Button;", "finishButton", "getFinishButton", "()Landroid/widget/Button;", "setFinishButton", "(Landroid/widget/Button;)V", "hasInit", "", "recyclerThumbSeekBar", "Lcom/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar;", "getRecyclerThumbSeekBar", "()Lcom/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar;", "setRecyclerThumbSeekBar", "(Lcom/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar;)V", "root", "changeThumbBarPercent", "", "currentTime", "checkInitThumbSeekBar", "initAsync", "path", "", "duration", "minDuration", "release", "reset", "setCancelButtonClickListener", "onClickListener", "Landroid/view/View$OnClickListener;", "setFinishButtonClickListener", "setSeekBarHeight", "h", "setTextColor", "color", "setThumbBarSeekListener", "listener", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentSeekBar$OnSeekBarChangedListener;", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditVideoSeekBarView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "cancelButton", "Landroid/widget/Button;", "finishButton", "getFinishButton", "()Landroid/widget/Button;", "setFinishButton", "(Landroid/widget/Button;)V", "hasInit", "", "recyclerThumbSeekBar", "Lcom/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar;", "getRecyclerThumbSeekBar", "()Lcom/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar;", "setRecyclerThumbSeekBar", "(Lcom/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar;)V", "root", "changeThumbBarPercent", "", "currentTime", "checkInitThumbSeekBar", "initAsync", "path", "", "duration", "minDuration", "release", "reset", "setCancelButtonClickListener", "onClickListener", "Landroid/view/View$OnClickListener;", "setFinishButtonClickListener", "setSeekBarHeight", "h", "setTextColor", "color", "setThumbBarSeekListener", "listener", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentSeekBar$OnSeekBarChangedListener;", "Companion", "plugin-recordvideo_release"})
 public final class EditVideoSeekBarView
   extends LinearLayout
 {
-  public static final EditVideoSeekBarView.a xSy;
+  public static final EditVideoSeekBarView.a BSL;
   boolean hasInit;
-  private Button rti;
-  private LinearLayout wjA;
-  public RecyclerThumbSeekBar wjy;
-  private Button wjz;
+  private Button sTL;
+  public RecyclerThumbSeekBar zDX;
+  private Button zDY;
+  private LinearLayout zDZ;
   
   static
   {
     AppMethodBeat.i(75714);
-    xSy = new EditVideoSeekBarView.a((byte)0);
+    BSL = new EditVideoSeekBarView.a((byte)0);
     AppMethodBeat.o(75714);
   }
   
@@ -41,19 +41,19 @@ public final class EditVideoSeekBarView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(75712);
-    paramContext = z.jV(getContext()).inflate(2131495840, (ViewGroup)this, true);
+    paramContext = aa.jQ(getContext()).inflate(2131496809, (ViewGroup)this, true);
     if (paramContext == null)
     {
-      paramContext = new v("null cannot be cast to non-null type android.widget.LinearLayout");
+      paramContext = new t("null cannot be cast to non-null type android.widget.LinearLayout");
       AppMethodBeat.o(75712);
       throw paramContext;
     }
-    this.wjA = ((LinearLayout)paramContext);
-    paramContext = findViewById(2131306400);
+    this.zDZ = ((LinearLayout)paramContext);
+    paramContext = findViewById(2131309831);
     p.g(paramContext, "findViewById(R.id.video_thumb_seek_bar)");
-    this.wjy = ((RecyclerThumbSeekBar)paramContext);
-    this.rti = ((Button)findViewById(2131299263));
-    this.wjz = ((Button)findViewById(2131299265));
+    this.zDX = ((RecyclerThumbSeekBar)paramContext);
+    this.sTL = ((Button)findViewById(2131299840));
+    this.zDY = ((Button)findViewById(2131299843));
     AppMethodBeat.o(75712);
   }
   
@@ -61,51 +61,51 @@ public final class EditVideoSeekBarView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(75713);
-    paramContext = z.jV(getContext()).inflate(2131495840, (ViewGroup)this, true);
+    paramContext = aa.jQ(getContext()).inflate(2131496809, (ViewGroup)this, true);
     if (paramContext == null)
     {
-      paramContext = new v("null cannot be cast to non-null type android.widget.LinearLayout");
+      paramContext = new t("null cannot be cast to non-null type android.widget.LinearLayout");
       AppMethodBeat.o(75713);
       throw paramContext;
     }
-    this.wjA = ((LinearLayout)paramContext);
-    paramContext = findViewById(2131306400);
+    this.zDZ = ((LinearLayout)paramContext);
+    paramContext = findViewById(2131309831);
     p.g(paramContext, "findViewById(R.id.video_thumb_seek_bar)");
-    this.wjy = ((RecyclerThumbSeekBar)paramContext);
-    this.rti = ((Button)findViewById(2131299263));
-    this.wjz = ((Button)findViewById(2131299265));
+    this.zDX = ((RecyclerThumbSeekBar)paramContext);
+    this.sTL = ((Button)findViewById(2131299840));
+    this.zDY = ((Button)findViewById(2131299843));
     AppMethodBeat.o(75713);
   }
   
   public final Button getFinishButton()
   {
-    return this.wjz;
+    return this.zDY;
   }
   
   public final RecyclerThumbSeekBar getRecyclerThumbSeekBar()
   {
-    return this.wjy;
+    return this.zDX;
   }
   
   public final void release()
   {
     AppMethodBeat.i(75711);
     this.hasInit = false;
-    this.wjy.release();
-    Object localObject1 = this.wjy.getParent();
+    this.zDX.release();
+    Object localObject1 = this.zDX.getParent();
     if ((localObject1 instanceof LinearLayout))
     {
-      Object localObject2 = this.wjy.getLayoutParams();
+      Object localObject2 = this.zDX.getLayoutParams();
       if (localObject2 == null)
       {
-        localObject1 = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+        localObject1 = new t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
         AppMethodBeat.o(75711);
         throw ((Throwable)localObject1);
       }
       localObject2 = (LinearLayout.LayoutParams)localObject2;
-      ((LinearLayout)localObject1).removeView((View)this.wjy);
-      this.wjy = new RecyclerThumbSeekBar(getContext());
-      ((LinearLayout)localObject1).addView((View)this.wjy, 0, (ViewGroup.LayoutParams)localObject2);
+      ((LinearLayout)localObject1).removeView((View)this.zDX);
+      this.zDX = new RecyclerThumbSeekBar(getContext());
+      ((LinearLayout)localObject1).addView((View)this.zDX, 0, (ViewGroup.LayoutParams)localObject2);
     }
     AppMethodBeat.o(75711);
   }
@@ -114,9 +114,9 @@ public final class EditVideoSeekBarView
   {
     AppMethodBeat.i(75710);
     p.h(paramOnClickListener, "onClickListener");
-    Button localButton = this.rti;
+    Button localButton = this.sTL;
     if (localButton == null) {
-      p.gkB();
+      p.hyc();
     }
     localButton.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(75710);
@@ -124,16 +124,16 @@ public final class EditVideoSeekBarView
   
   public final void setFinishButton(Button paramButton)
   {
-    this.wjz = paramButton;
+    this.zDY = paramButton;
   }
   
   public final void setFinishButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(75709);
     p.h(paramOnClickListener, "onClickListener");
-    Button localButton = this.wjz;
+    Button localButton = this.zDY;
     if (localButton == null) {
-      p.gkB();
+      p.hyc();
     }
     localButton.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(75709);
@@ -143,16 +143,16 @@ public final class EditVideoSeekBarView
   {
     AppMethodBeat.i(75705);
     p.h(paramRecyclerThumbSeekBar, "<set-?>");
-    this.wjy = paramRecyclerThumbSeekBar;
+    this.zDX = paramRecyclerThumbSeekBar;
     AppMethodBeat.o(75705);
   }
   
   public final void setSeekBarHeight(int paramInt)
   {
     AppMethodBeat.i(75706);
-    ViewGroup.LayoutParams localLayoutParams = this.wjy.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.zDX.getLayoutParams();
     localLayoutParams.height = paramInt;
-    this.wjy.setLayoutParams(localLayoutParams);
+    this.zDX.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(75706);
   }
   
@@ -161,9 +161,9 @@ public final class EditVideoSeekBarView
     AppMethodBeat.i(75707);
     if (paramString != null)
     {
-      Button localButton = this.wjz;
+      Button localButton = this.zDY;
       if (localButton == null) {
-        p.gkB();
+        p.hyc();
       }
       localButton.setTextColor(Color.parseColor(paramString));
     }
@@ -174,13 +174,13 @@ public final class EditVideoSeekBarView
   {
     AppMethodBeat.i(75708);
     p.h(paramb, "listener");
-    this.wjy.setThumbBarSeekListener(paramb);
+    this.zDX.setThumbBarSeekListener(paramb);
     AppMethodBeat.o(75708);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditVideoSeekBarView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.qbar;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/qbar/WxQBarPoint;", "Lcom/tencent/qbar/QbarNative$QBarPoint;", "Landroid/os/Parcelable;", "()V", "point", "(Lcom/tencent/qbar/QbarNative$QBarPoint;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "scan-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/qbar/WxQBarPoint;", "Lcom/tencent/qbar/QbarNative$QBarPoint;", "Landroid/os/Parcelable;", "()V", "point", "(Lcom/tencent/qbar/QbarNative$QBarPoint;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "scan-sdk_release"})
 public final class WxQBarPoint
   extends QbarNative.QBarPoint
   implements Parcelable
@@ -81,7 +81,7 @@ public final class WxQBarPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qbar.WxQBarPoint
  * JD-Core Version:    0.7.0.1
  */

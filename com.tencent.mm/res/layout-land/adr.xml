@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cqo" android:background="@color/xg" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/cqf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toStartOf="@id/cqh" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/cqh" android:background="@color/BW_BG_20" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentEnd="true" app:sheetDirection="0">
+        <android.support.v4.widget.NestedScrollView android:layout_width="wrap_content" android:layout_height="fill_parent" android:fillViewport="true">
+            <RelativeLayout android:id="@id/cqg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <RelativeLayout android:id="@id/cqm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
+                    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cqi" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_close" android:layout_centerVertical="true" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+                    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/csu" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cqq" android:background="@drawable/a1z" android:paddingTop="@dimen/bs" android:paddingBottom="@dimen/bs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
+                        <ImageView android:id="@id/cqr" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/coin_normal" android:layout_marginStart="@dimen/ct" />
+                        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_marginEnd="@dimen/bt" />
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cqp" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_arrow" android:layout_marginEnd="@dimen/ct" app:iconColor="@color/BW_100_Alpha_0_8" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <android.support.v4.view.ViewPager android:id="@id/cr6" android:layout_width="wrap_content" android:layout_height="225.0dip" android:layout_marginTop="@dimen/ci" android:layout_below="@id/cqm" android:layout_centerHorizontal="true" />
+                <com.tencent.mm.plugin.finder.live.view.FinderLiveGiftPanelIndicator android:id="@id/cqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+                <ProgressBar android:id="@id/cqk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" android:layout_centerHorizontal="true" style="@style/a61" />
+                <TextView android:textColor="@color/ag2" android:id="@id/cql" android:padding="@dimen/ct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" android:text="@string/eh1" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</RelativeLayout>

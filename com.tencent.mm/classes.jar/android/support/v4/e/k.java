@@ -11,6 +11,11 @@ public final class k<F, S>
     this.second = paramS;
   }
   
+  public static <A, B> k<A, B> c(A paramA, B paramB)
+  {
+    return new k(paramA, paramB);
+  }
+  
   public final boolean equals(Object paramObject)
   {
     if (!(paramObject instanceof k)) {}

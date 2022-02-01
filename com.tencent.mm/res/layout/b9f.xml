@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:background="@drawable/oc" android:paddingLeft="@dimen/hk" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView android:layout_gravity="top" android:id="@id/fns" android:layout_marginTop="10.0dip" android:layout_marginRight="2.0dip" style="@style/gj" />
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/amv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="2.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a3l" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/fo0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:lineSpacingExtra="0.0dip" />
-            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/fny" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <TextView android:textSize="14.0dip" android:textColor="@color/y4" android:id="@id/fnu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" />
-            </LinearLayout>
-            <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/fnt" android:visibility="gone" android:layout_width="47.0dip" android:layout_height="47.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:scaleType="centerInside" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/a4d" android:layout_gravity="center_vertical" android:id="@id/fo1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/fp1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@raw/sns_comment_silence" android:scaleType="center" />
-        <FrameLayout android:id="@id/fnz" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip">
-            <com.tencent.mm.ui.MMImageView android:layout_gravity="top" android:id="@id/fnw" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:maxHeight="60.0dip" />
-            <ImageView android:layout_gravity="center" android:id="@id/fow" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@raw/shortvideo_play_btn" />
-        </FrameLayout>
-        <TextView android:textSize="12.0dip" android:textColor="@color/a4d" android:gravity="center" android:layout_gravity="top" android:id="@id/fo2" android:background="@color/a3m" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip" android:maxHeight="60.0dip" android:text="" android:maxLines="3" />
-    </LinearLayout>
+    <TextView android:id="@id/ipm" android:layout_width="@dimen/em" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:text="@string/bd5" android:singleLine="false" style="@style/mi" />
+    <ImageView android:id="@id/dwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:src="@raw/profile_social_mobile" android:contentDescription="@null" />
+    <ImageView android:id="@id/dwj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:src="@raw/profile_social_qq" android:contentDescription="@null" />
+    <ImageView android:id="@id/dw8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:src="@raw/profile_social_linkedin" android:contentDescription="@null" />
+    <ImageView android:id="@id/dvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:src="@raw/profile_social_facebook" android:contentDescription="@null" />
+    <ImageView android:id="@id/dvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:src="@raw/profile_social_google_contacts" android:contentDescription="@null" />
+    <ImageView android:id="@id/dws" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:src="@raw/profile_social_weishop" android:contentDescription="@null" />
 </LinearLayout>

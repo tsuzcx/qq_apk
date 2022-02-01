@@ -5,62 +5,63 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.dc;
-import com.tencent.mm.n.e;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.df;
+import com.tencent.mm.n.f;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class j
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  private c JqM;
-  View KUP;
-  int eQZ;
+  private IListener OAS;
+  View Qif;
+  int showFlag;
   
   public j(final Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38794);
-    this.KUP = View.inflate(paramContext, 2131494488, null);
-    if (this.KUP == null)
+    this.Qif = View.inflate(paramContext, 2131495080, null);
+    if (this.Qif == null)
     {
       AppMethodBeat.o(38794);
       return;
     }
-    this.eQZ = bu.getInt(com.tencent.mm.n.g.acL().getValue("InviteFriendsControlFlags"), 0);
-    this.KUP.setVisibility(8);
-    this.KUP.setPadding(0, -com.tencent.mm.cb.a.fromDPToPix(paramContext, 2131165515), 0, 0);
-    if ((this.eQZ & 0x1) > 0)
+    this.showFlag = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("InviteFriendsControlFlags"), 0);
+    this.Qif.setVisibility(8);
+    this.Qif.setPadding(0, -com.tencent.mm.cb.a.fromDPToPix(paramContext, 2131165533), 0, 0);
+    if ((this.showFlag & 0x1) > 0)
     {
-      this.KUP.setVisibility(0);
-      this.KUP.setPadding(0, 0, 0, 0);
+      this.Qif.setVisibility(0);
+      this.Qif.setPadding(0, 0, 0, 0);
     }
-    this.KUP.setOnClickListener(new View.OnClickListener()
+    this.Qif.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(38791);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/InviteFriendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/InviteFriendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("Invite_friends", 1);
-        d.b(paramContext, "subapp", ".ui.pluginapp.InviteFriendsBy3rdUI", paramAnonymousView);
-        com.tencent.mm.plugin.report.service.g.yxI.f(14034, new Object[] { Integer.valueOf(1) });
+        c.b(paramContext, "subapp", ".ui.pluginapp.InviteFriendsBy3rdUI", paramAnonymousView);
+        com.tencent.mm.plugin.report.service.h.CyF.a(14034, new Object[] { Integer.valueOf(1) });
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/InviteFriendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(38791);
       }
     });
-    this.JqM = new c() {};
+    this.OAS = new IListener() {};
     AppMethodBeat.o(38794);
   }
   
-  public final boolean bAV()
+  public final boolean bYa()
   {
     AppMethodBeat.i(38795);
-    com.tencent.mm.sdk.b.a.IvT.c(this.JqM);
-    if ((this.KUP != null) && (this.KUP.getVisibility() == 0))
+    EventCenter.instance.addListener(this.OAS);
+    if ((this.Qif != null) && (this.Qif.getVisibility() == 0))
     {
       AppMethodBeat.o(38795);
       return true;
@@ -78,13 +79,13 @@ public final class j
   
   public final View getView()
   {
-    return this.KUP;
+    return this.Qif;
   }
   
   public final void release()
   {
     AppMethodBeat.i(38796);
-    com.tencent.mm.sdk.b.a.IvT.d(this.JqM);
+    EventCenter.instance.removeListener(this.OAS);
     AppMethodBeat.o(38796);
   }
 }

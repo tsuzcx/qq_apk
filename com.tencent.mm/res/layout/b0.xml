@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/dk" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<android.support.v7.view.menu.ListMenuItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="196.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/dm" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dn" android:background="@null" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gh" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/dgc" android:background="@null" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_icon_dark_close" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/q" android:textColor="@color/bs" android:ellipsize="end" android:gravity="center_vertical" android:id="@android:id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/o" android:singleLine="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/dln" android:background="@drawable/af" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" />
+    <LinearLayout android:id="@id/be9" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="?jv" style="@style/ta">
+        <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/tb">
+            <TextView android:textAppearance="?a1t" android:ellipsize="marquee" android:id="@id/ipm" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentTop="true" style="@style/te" />
+            <TextView android:textAppearance="?a21" android:id="@id/hqo" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/ipm" style="@style/te" />
         </RelativeLayout>
-        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@android:id/text2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/o" android:singleLine="true" style="@style/l5" />
+        <ImageView android:layout_gravity="center" android:id="@id/idd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" style="@style/td" />
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.view.menu.ListMenuItemView>

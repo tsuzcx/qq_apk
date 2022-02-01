@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class F2fDynamicCodeItemLayout
   extends LinearLayout
 {
-  TextView pHi;
-  TextView ypF;
+  TextView Cqw;
+  TextView qWU;
   
   public F2fDynamicCodeItemLayout(Context paramContext)
   {
@@ -41,9 +41,9 @@ public class F2fDynamicCodeItemLayout
   private void init()
   {
     AppMethodBeat.i(67920);
-    View localView = LayoutInflater.from(getContext()).inflate(2131495254, this);
-    this.ypF = ((TextView)localView.findViewById(2131304168));
-    this.pHi = ((TextView)localView.findViewById(2131304169));
+    View localView = LayoutInflater.from(getContext()).inflate(2131496101, this);
+    this.Cqw = ((TextView)localView.findViewById(2131307068));
+    this.qWU = ((TextView)localView.findViewById(2131307069));
     AppMethodBeat.o(67920);
   }
 }

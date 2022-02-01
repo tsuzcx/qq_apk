@@ -10,21 +10,25 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.normsg.a.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
 
 public final class NormsgDataProvider
   extends ContentProvider
 {
+  public static final String AUTHORITY;
   public static final Uri CONTENT_URI;
   
   static
   {
     AppMethodBeat.i(148937);
-    CONTENT_URI = Uri.parse("content://com.tencent.mm.plugin.normsg.NMData");
+    AUTHORITY = WeChatAuthorities.AUTHORITIES_PLUGIN_NORMSG_NMDATA();
+    CONTENT_URI = Uri.parse("content://" + AUTHORITY);
     AppMethodBeat.o(148937);
   }
   
-  public static String H(Context paramContext, String paramString)
+  public static String G(Context paramContext, String paramString)
   {
     AppMethodBeat.i(148934);
     paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m0", paramString, null);
@@ -38,7 +42,7 @@ public final class NormsgDataProvider
     return "";
   }
   
-  private String auy(String paramString)
+  private String aIH(String paramString)
   {
     AppMethodBeat.i(148935);
     try
@@ -55,32 +59,32 @@ public final class NormsgDataProvider
     return "";
   }
   
-  public static boolean cS(Context paramContext)
+  public static boolean dn(Context paramContext)
   {
-    AppMethodBeat.i(189700);
+    AppMethodBeat.i(187546);
     paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m1", null, null);
     if (paramContext != null)
     {
       boolean bool = paramContext.getBoolean("result", false);
-      AppMethodBeat.o(189700);
+      AppMethodBeat.o(187546);
       return bool;
     }
-    AppMethodBeat.o(189700);
+    AppMethodBeat.o(187546);
     return false;
   }
   
-  private static boolean dxW()
+  private static boolean exE()
   {
-    AppMethodBeat.i(189701);
+    AppMethodBeat.i(187547);
     try
     {
-      boolean bool = com.tencent.mm.plugin.normsg.a.b.wJt.dyi();
-      AppMethodBeat.o(189701);
+      boolean bool = d.AEF.exN();
+      AppMethodBeat.o(187547);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(189701);
+      AppMethodBeat.o(187547);
     }
     return false;
   }
@@ -88,22 +92,22 @@ public final class NormsgDataProvider
   public final Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(148936);
-    ae.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
+    Log.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
     if ("m0".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putString("result", auy(paramString2));
+      paramString1.putString("result", aIH(paramString2));
       AppMethodBeat.o(148936);
       return paramString1;
     }
     if ("m1".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putBoolean("result", dxW());
+      paramString1.putBoolean("result", exE());
       AppMethodBeat.o(148936);
       return paramString1;
     }
-    ae.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
+    Log.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
     AppMethodBeat.o(148936);
     return null;
   }
@@ -125,9 +129,9 @@ public final class NormsgDataProvider
   
   public final boolean onCreate()
   {
-    AppMethodBeat.i(189699);
-    com.tencent.mm.plugin.normsg.a.b.a(b.wJi);
-    AppMethodBeat.o(189699);
+    AppMethodBeat.i(187545);
+    d.a(b.AEu);
+    AppMethodBeat.o(187545);
     return true;
   }
   
@@ -143,7 +147,7 @@ public final class NormsgDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.NormsgDataProvider
  * JD-Core Version:    0.7.0.1
  */

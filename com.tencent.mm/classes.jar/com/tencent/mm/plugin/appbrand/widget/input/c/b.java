@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.widget.input.c;
 
 public abstract interface b
 {
-  public abstract void Dp();
+  public abstract void ML();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c.b
  * JD-Core Version:    0.7.0.1
  */

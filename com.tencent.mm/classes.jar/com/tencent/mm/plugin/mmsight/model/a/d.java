@@ -7,39 +7,39 @@ import com.tencent.mm.plugin.mmsight.model.g;
 
 public abstract interface d
 {
-  public abstract void B(Runnable paramRunnable);
+  public abstract void E(Runnable paramRunnable);
   
-  public abstract void L(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void HA(String paramString);
   
-  public abstract String Lj();
+  public abstract void HB(String paramString);
+  
+  public abstract void M(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void a(a parama);
   
-  public abstract void am(float paramFloat);
+  public abstract String aQK();
   
-  public abstract boolean aoA();
+  public abstract float aQL();
   
-  public abstract String axP();
+  public abstract long aQM();
   
-  public abstract String ayg();
+  public abstract c aQN();
   
-  public abstract float ayh();
+  public abstract int aQO();
   
-  public abstract long ayi();
+  public abstract Point aQP();
   
-  public abstract c ayj();
+  public abstract int aQQ();
   
-  public abstract int ayk();
+  public abstract boolean aQR();
   
-  public abstract Point ayl();
+  public abstract c.a aQS();
   
-  public abstract int aym();
+  public abstract void aQT();
   
-  public abstract boolean ayn();
+  public abstract String aQn();
   
-  public abstract c.a ayo();
-  
-  public abstract void ayp();
+  public abstract void av(float paramFloat);
   
   public abstract int b(int paramInt1, boolean paramBoolean, int paramInt2);
   
@@ -47,7 +47,7 @@ public abstract interface d
   
   public abstract void clear();
   
-  public abstract void eu(boolean paramBoolean);
+  public abstract void fk(boolean paramBoolean);
   
   public abstract String getFileName();
   
@@ -55,11 +55,15 @@ public abstract interface d
   
   public abstract g getFrameDataCallback();
   
-  public abstract boolean og(int paramInt);
+  public abstract String getMd5();
   
-  public abstract void oh(int paramInt);
+  public abstract boolean isLandscape();
   
   public abstract void pause();
+  
+  public abstract boolean rC(int paramInt);
+  
+  public abstract void rD(int paramInt);
   
   public abstract void reset();
   
@@ -71,13 +75,9 @@ public abstract interface d
   
   public abstract void setMute(boolean paramBoolean);
   
-  public abstract void yY(String paramString);
-  
-  public abstract void yZ(String paramString);
-  
   public static abstract interface a
   {
-    public abstract void aVS();
+    public abstract void bqP();
   }
   
   public static abstract interface b {}
@@ -87,17 +87,17 @@ public abstract interface d
     static
     {
       AppMethodBeat.i(148825);
-      wbr = new c("WaitStart", 0);
-      wbs = new c("Start", 1);
-      wbt = new c("PrepareStop", 2);
-      wbu = new c("WaitStop", 3);
-      wbv = new c("Stop", 4);
-      wbw = new c("WaitSend", 5);
-      wbx = new c("Sent", 6);
-      wby = new c("Error", 7);
-      wbz = new c("Initialized", 8);
-      wbA = new c("Pause", 9);
-      wbB = new c[] { wbr, wbs, wbt, wbu, wbv, wbw, wbx, wby, wbz, wbA };
+      zvt = new c("WaitStart", 0);
+      zvu = new c("Start", 1);
+      zvv = new c("PrepareStop", 2);
+      zvw = new c("WaitStop", 3);
+      zvx = new c("Stop", 4);
+      zvy = new c("WaitSend", 5);
+      zvz = new c("Sent", 6);
+      zvA = new c("Error", 7);
+      zvB = new c("Initialized", 8);
+      zvC = new c("Pause", 9);
+      zvD = new c[] { zvt, zvu, zvv, zvw, zvx, zvy, zvz, zvA, zvB, zvC };
       AppMethodBeat.o(148825);
     }
     
@@ -106,7 +106,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.d
  * JD-Core Version:    0.7.0.1
  */

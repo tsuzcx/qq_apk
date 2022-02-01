@@ -16,11 +16,11 @@ final class NearLifeCreatePoiUI$2
   {
     AppMethodBeat.i(26598);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/nearlife/ui/NearLifeCreatePoiUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/nearlife/ui/NearLifeCreatePoiUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     paramView = new Intent();
-    paramView.setClass(this.wHk.getContext(), SelectPoiCategoryUI.class);
-    this.wHk.startActivityForResult(paramView, 2);
+    paramView.setClass(this.ACu.getContext(), SelectPoiCategoryUI.class);
+    this.ACu.startActivityForResult(paramView, 2);
     a.a(this, "com/tencent/mm/plugin/nearlife/ui/NearLifeCreatePoiUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(26598);
   }

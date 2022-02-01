@@ -19,22 +19,22 @@ import java.lang.ref.WeakReference;
 
 final class l
 {
-  private final TextView akW;
-  private ax akX;
-  private ax akY;
-  private ax akZ;
-  private ax ala;
-  private ax alb;
-  private ax alc;
-  final m ald;
-  Typeface ale;
-  boolean alf;
+  private final TextView alj;
+  private ax alk;
+  private ax all;
+  private ax alm;
+  private ax aln;
+  private ax alo;
+  private ax alp;
+  final m alq;
+  Typeface alr;
+  boolean als;
   int mStyle = 0;
   
   l(TextView paramTextView)
   {
-    this.akW = paramTextView;
-    this.ald = new m(this.akW);
+    this.alj = paramTextView;
+    this.alq = new m(this.alj);
   }
   
   private static ax a(Context paramContext, g paramg, int paramInt)
@@ -43,8 +43,8 @@ final class l
     if (paramContext != null)
     {
       paramg = new ax();
-      paramg.acG = true;
-      paramg.Kh = paramContext;
+      paramg.acT = true;
+      paramg.Kr = paramContext;
       return paramg;
     }
     return null;
@@ -56,7 +56,7 @@ final class l
     this.mStyle = paramaz.getInt(2, this.mStyle);
     if ((paramaz.hasValue(10)) || (paramaz.hasValue(11)))
     {
-      this.ale = null;
+      this.alr = null;
       if (paramaz.hasValue(11)) {
         if (!paramContext.isRestricted()) {
           paramContext = new f.a()
@@ -66,10 +66,10 @@ final class l
             public final void a(Typeface paramAnonymousTypeface)
             {
               l locall = l.this;
-              Object localObject = this.alg;
-              if (locall.alf)
+              Object localObject = this.alt;
+              if (locall.als)
               {
-                locall.ale = paramAnonymousTypeface;
+                locall.alr = paramAnonymousTypeface;
                 localObject = (TextView)((WeakReference)localObject).get();
                 if (localObject != null) {
                   ((TextView)localObject).setTypeface(paramAnonymousTypeface, locall.mStyle);
@@ -82,12 +82,12 @@ final class l
     }
     try
     {
-      this.ale = paramaz.a(i, this.mStyle, paramContext);
-      if (this.ale != null) {
+      this.alr = paramaz.a(i, this.mStyle, paramContext);
+      if (this.alr != null) {
         break label141;
       }
       bool = true;
-      this.alf = bool;
+      this.als = bool;
     }
     catch (UnsupportedOperationException paramContext)
     {
@@ -98,11 +98,11 @@ final class l
       label105:
       break label105;
     }
-    if (this.ale == null)
+    if (this.alr == null)
     {
       paramContext = paramaz.getString(i);
       if (paramContext != null) {
-        this.ale = Typeface.create(paramContext, this.mStyle);
+        this.alr = Typeface.create(paramContext, this.mStyle);
       }
     }
     label141:
@@ -115,63 +115,63 @@ final class l
         boolean bool = false;
       }
     }
-    this.alf = false;
+    this.als = false;
     switch (paramaz.getInt(1, 1))
     {
     default: 
       return;
     case 1: 
-      this.ale = Typeface.SANS_SERIF;
+      this.alr = Typeface.SANS_SERIF;
       return;
     case 2: 
-      this.ale = Typeface.SERIF;
+      this.alr = Typeface.SERIF;
       return;
     }
-    this.ale = Typeface.MONOSPACE;
+    this.alr = Typeface.MONOSPACE;
   }
   
   private void a(Drawable paramDrawable, ax paramax)
   {
     if ((paramDrawable != null) && (paramax != null)) {
-      g.a(paramDrawable, paramax, this.akW.getDrawableState());
+      g.a(paramDrawable, paramax, this.alj.getDrawableState());
     }
   }
   
   private void e(int paramInt, float paramFloat)
   {
-    this.ald.e(paramInt, paramFloat);
+    this.alq.e(paramInt, paramFloat);
   }
   
   @SuppressLint({"NewApi"})
   final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    Context localContext = this.akW.getContext();
-    Object localObject1 = g.jb();
+    Context localContext = this.alj.getContext();
+    Object localObject1 = g.jk();
     Object localObject2 = az.a(localContext, paramAttributeSet, a.a.AppCompatTextHelper, paramInt, 0);
     int k = ((az)localObject2).getResourceId(0, -1);
     if (((az)localObject2).hasValue(3)) {
-      this.akX = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(3, 0));
+      this.alk = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(3, 0));
     }
     if (((az)localObject2).hasValue(1)) {
-      this.akY = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(1, 0));
+      this.all = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(1, 0));
     }
     if (((az)localObject2).hasValue(4)) {
-      this.akZ = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(4, 0));
+      this.alm = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(4, 0));
     }
     if (((az)localObject2).hasValue(2)) {
-      this.ala = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(2, 0));
+      this.aln = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(2, 0));
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
       if (((az)localObject2).hasValue(5)) {
-        this.alb = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(5, 0));
+        this.alo = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(5, 0));
       }
       if (((az)localObject2).hasValue(6)) {
-        this.alc = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(6, 0));
+        this.alp = a(localContext, (g)localObject1, ((az)localObject2).getResourceId(6, 0));
       }
     }
-    ((az)localObject2).ayA.recycle();
-    boolean bool3 = this.akW.getTransformationMethod() instanceof PasswordTransformationMethod;
+    ((az)localObject2).ayy.recycle();
+    boolean bool3 = this.alj.getTransformationMethod() instanceof PasswordTransformationMethod;
     boolean bool1 = false;
     boolean bool2 = false;
     int i = 0;
@@ -221,7 +221,7 @@ final class l
           localObject2 = localObject1;
         }
       }
-      localaz2.ayA.recycle();
+      localaz2.ayy.recycle();
       localObject1 = localObject4;
     }
     localaz1 = az.a(localContext, paramAttributeSet, a.a.TextAppearance, paramInt, 0);
@@ -259,35 +259,35 @@ final class l
       }
     }
     if ((Build.VERSION.SDK_INT >= 28) && (localaz1.hasValue(0)) && (localaz1.getDimensionPixelSize(0, -1) == 0)) {
-      this.akW.setTextSize(0, 0.0F);
+      this.alj.setTextSize(0, 0.0F);
     }
     a(localContext, localaz1);
-    localaz1.ayA.recycle();
+    localaz1.ayy.recycle();
     if (localObject4 != null) {
-      this.akW.setTextColor(localObject4);
+      this.alj.setTextColor(localObject4);
     }
     if (localObject5 != null) {
-      this.akW.setHintTextColor((ColorStateList)localObject5);
+      this.alj.setHintTextColor((ColorStateList)localObject5);
     }
     if (localObject6 != null) {
-      this.akW.setLinkTextColor((ColorStateList)localObject6);
+      this.alj.setLinkTextColor((ColorStateList)localObject6);
     }
     if ((!bool3) && (j != 0)) {
       setAllCaps(bool2);
     }
-    if (this.ale != null) {
-      this.akW.setTypeface(this.ale, this.mStyle);
+    if (this.alr != null) {
+      this.alj.setTypeface(this.alr, this.mStyle);
     }
-    this.ald.a(paramAttributeSet, paramInt);
-    if ((b.Sp) && (this.ald.all != 0))
+    this.alq.a(paramAttributeSet, paramInt);
+    if ((b.SC) && (this.alq.aly != 0))
     {
-      localObject1 = this.ald.alq;
+      localObject1 = this.alq.alD;
       if (localObject1.length > 0)
       {
-        if (this.akW.getAutoSizeStepGranularity() == -1.0F) {
+        if (this.alj.getAutoSizeStepGranularity() == -1.0F) {
           break label887;
         }
-        this.akW.setAutoSizeTextTypeUniformWithConfiguration(Math.round(this.ald.alo), Math.round(this.ald.alp), Math.round(this.ald.aln), 0);
+        this.alj.setAutoSizeTextTypeUniformWithConfiguration(Math.round(this.alq.alB), Math.round(this.alq.alC), Math.round(this.alq.alA), 0);
       }
     }
     for (;;)
@@ -296,71 +296,71 @@ final class l
       paramInt = paramAttributeSet.getDimensionPixelSize(6, -1);
       i = paramAttributeSet.getDimensionPixelSize(8, -1);
       j = paramAttributeSet.getDimensionPixelSize(9, -1);
-      paramAttributeSet.ayA.recycle();
+      paramAttributeSet.ayy.recycle();
       if (paramInt != -1) {
-        q.e(this.akW, paramInt);
+        q.e(this.alj, paramInt);
       }
       if (i != -1) {
-        q.f(this.akW, i);
+        q.f(this.alj, i);
       }
       if (j != -1) {
-        q.g(this.akW, j);
+        q.g(this.alj, j);
       }
       return;
       label887:
-      this.akW.setAutoSizeTextTypeUniformWithPresetSizes((int[])localObject1, 0);
+      this.alj.setAutoSizeTextTypeUniformWithPresetSizes((int[])localObject1, 0);
     }
   }
   
-  final void jf()
+  final void jo()
   {
     Drawable[] arrayOfDrawable;
-    if ((this.akX != null) || (this.akY != null) || (this.akZ != null) || (this.ala != null))
+    if ((this.alk != null) || (this.all != null) || (this.alm != null) || (this.aln != null))
     {
-      arrayOfDrawable = this.akW.getCompoundDrawables();
-      a(arrayOfDrawable[0], this.akX);
-      a(arrayOfDrawable[1], this.akY);
-      a(arrayOfDrawable[2], this.akZ);
-      a(arrayOfDrawable[3], this.ala);
+      arrayOfDrawable = this.alj.getCompoundDrawables();
+      a(arrayOfDrawable[0], this.alk);
+      a(arrayOfDrawable[1], this.all);
+      a(arrayOfDrawable[2], this.alm);
+      a(arrayOfDrawable[3], this.aln);
     }
-    if ((Build.VERSION.SDK_INT >= 17) && ((this.alb != null) || (this.alc != null)))
+    if ((Build.VERSION.SDK_INT >= 17) && ((this.alo != null) || (this.alp != null)))
     {
-      arrayOfDrawable = this.akW.getCompoundDrawablesRelative();
-      a(arrayOfDrawable[0], this.alb);
-      a(arrayOfDrawable[2], this.alc);
+      arrayOfDrawable = this.alj.getCompoundDrawablesRelative();
+      a(arrayOfDrawable[0], this.alo);
+      a(arrayOfDrawable[2], this.alp);
     }
   }
   
-  final void jg()
+  final void jp()
   {
-    if (!b.Sp) {
-      this.ald.jk();
+    if (!b.SC) {
+      this.alq.jt();
     }
   }
   
   final void setAllCaps(boolean paramBoolean)
   {
-    this.akW.setAllCaps(paramBoolean);
+    this.alj.setAllCaps(paramBoolean);
   }
   
   final void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.ald.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.alq.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   final void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
-    this.ald.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    this.alq.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
   }
   
   final void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    this.ald.setAutoSizeTextTypeWithDefaults(paramInt);
+    this.alq.setAutoSizeTextTypeWithDefaults(paramInt);
   }
   
   final void setTextSize(int paramInt, float paramFloat)
   {
-    if ((!b.Sp) && (!this.ald.jm())) {
+    if ((!b.SC) && (!this.alq.jv())) {
       e(paramInt, paramFloat);
     }
   }
@@ -375,16 +375,16 @@ final class l
     {
       ColorStateList localColorStateList = localaz.getColorStateList(3);
       if (localColorStateList != null) {
-        this.akW.setTextColor(localColorStateList);
+        this.alj.setTextColor(localColorStateList);
       }
     }
     if ((localaz.hasValue(0)) && (localaz.getDimensionPixelSize(0, -1) == 0)) {
-      this.akW.setTextSize(0, 0.0F);
+      this.alj.setTextSize(0, 0.0F);
     }
     a(paramContext, localaz);
-    localaz.ayA.recycle();
-    if (this.ale != null) {
-      this.akW.setTypeface(this.ale, this.mStyle);
+    localaz.ayy.recycle();
+    if (this.alr != null) {
+      this.alj.setTypeface(this.alr, this.mStyle);
     }
   }
 }

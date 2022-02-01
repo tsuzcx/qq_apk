@@ -1,16 +1,13 @@
 package com.tencent.f.b;
 
-public final class c
-  extends Exception
+public abstract interface c
+  extends com.tencent.f.f.a, com.tencent.f.i.a
 {
-  public c(String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void onShutdown();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.f.b.c
  * JD-Core Version:    0.7.0.1
  */

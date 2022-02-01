@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
+import com.tencent.mm.plugin.appbrand.jsapi.n;
+
 public class k
-  implements com.tencent.mm.plugin.appbrand.jsapi.k
+  implements n
 {
-  public boolean bdN()
+  public boolean bze()
   {
     return false;
   }
   
-  public boolean bdO()
+  public boolean bzf()
   {
     return false;
   }

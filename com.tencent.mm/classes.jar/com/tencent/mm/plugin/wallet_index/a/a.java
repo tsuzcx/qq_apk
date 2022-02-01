@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.wallet_index.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.wallet_index.c.n;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.plugin.wallet_index.c.o;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements az
+  implements bd
 {
-  private n DHm;
+  private o Iqz;
   
   public a()
   {
     AppMethodBeat.i(71797);
-    this.DHm = new n();
+    this.Iqz = new o();
     AppMethodBeat.o(71797);
   }
   
@@ -28,16 +29,16 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(71798);
-    com.tencent.mm.sdk.b.a.IvT.c(this.DHm.DHH);
-    com.tencent.mm.sdk.b.a.IvT.c(this.DHm.DHI);
+    EventCenter.instance.addListener(this.Iqz.IqX);
+    EventCenter.instance.addListener(this.Iqz.IqY);
     AppMethodBeat.o(71798);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(71799);
-    com.tencent.mm.sdk.b.a.IvT.d(this.DHm.DHH);
-    com.tencent.mm.sdk.b.a.IvT.d(this.DHm.DHI);
+    EventCenter.instance.removeListener(this.Iqz.IqX);
+    EventCenter.instance.removeListener(this.Iqz.IqY);
     AppMethodBeat.o(71799);
   }
   
@@ -45,7 +46,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.a.a
  * JD-Core Version:    0.7.0.1
  */

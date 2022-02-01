@@ -8,30 +8,30 @@ import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ch.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class t
-  extends bq<s>
+  extends br<s>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(final com.tencent.luggage.d.b<s>.a paramb)
   {
     AppMethodBeat.i(78555);
-    ae.i("MicroMsg.JsApiGetInstallState", "invokeInOwn");
+    Log.i("MicroMsg.JsApiGetInstallState", "invokeInOwn");
     a.post(new Runnable()
     {
       public final void run()
       {
         int i = 0;
         AppMethodBeat.i(78554);
-        Object localObject1 = paramb.chh.cgn;
-        Object localObject3 = ((s)paramb.chg).mContext;
+        Object localObject1 = paramb.ctb.csi;
+        Object localObject3 = ((s)paramb.cta).mContext;
         JSONArray localJSONArray = ((JSONObject)localObject1).optJSONArray("packageName");
         Object localObject4;
         JSONObject localJSONObject;
@@ -57,13 +57,13 @@ public class t
             j = i;
             String str = localJSONArray.optString(m);
             j = i;
-            localObject1 = com.tencent.mm.plugin.appbrand.y.b.getPackageInfo((Context)localObject3, str);
+            localObject1 = com.tencent.mm.plugin.appbrand.ac.b.getPackageInfo((Context)localObject3, str);
             if (localObject1 == null)
             {
               n = 0;
               break label501;
               j = i;
-              ae.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
+              Log.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
               k = i;
               if (i == 0)
               {
@@ -95,7 +95,7 @@ public class t
             paramb.e("get_install_state:yes", (Map)localObject2);
             AppMethodBeat.o(78554);
             return;
-            paramb.a("get_install_state:no", null);
+            paramb.c("get_install_state:no", null);
             AppMethodBeat.o(78554);
             return;
           }
@@ -103,14 +103,14 @@ public class t
           localObject1 = ((PackageInfo)localObject1).versionName;
           continue;
           localObject4 = ((JSONObject)localObject2).optString("packageName");
-          if (bu.isNullOrNil((String)localObject4))
+          if (Util.isNullOrNil((String)localObject4))
           {
-            ae.i("MicroMsg.JsApiGetInstallState", "packageName is null or nil");
-            paramb.a("get_install_state:no_null_packageName", null);
+            Log.i("MicroMsg.JsApiGetInstallState", "packageName is null or nil");
+            paramb.c("get_install_state:no_null_packageName", null);
             AppMethodBeat.o(78554);
             return;
           }
-          localObject3 = com.tencent.mm.plugin.appbrand.y.b.getPackageInfo((Context)localObject3, (String)localObject4);
+          localObject3 = com.tencent.mm.plugin.appbrand.ac.b.getPackageInfo((Context)localObject3, (String)localObject4);
           if (localObject3 == null) {
             if (localObject3 != null) {
               break label446;
@@ -119,11 +119,11 @@ public class t
           label446:
           for (Object localObject2 = "null";; localObject2 = ((PackageInfo)localObject3).versionName)
           {
-            ae.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject4 + ", version = " + i + ", versionName = " + (String)localObject2);
+            Log.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject4 + ", version = " + i + ", versionName = " + (String)localObject2);
             if (localObject3 != null) {
               break label456;
             }
-            paramb.a("get_install_state:no", null);
+            paramb.c("get_install_state:no", null);
             AppMethodBeat.o(78554);
             return;
             i = ((PackageInfo)localObject3).versionCode;
@@ -145,7 +145,7 @@ public class t
     AppMethodBeat.o(78555);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

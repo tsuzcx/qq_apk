@@ -2,40 +2,54 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.storage.ac;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/FinderMsgSysHead;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderLineDivider;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "layoutId", "", "(J)V", "getLayoutId", "()J", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "toString", "", "plugin-finder_release"})
 public final class ak
-  extends a
+  implements bo
 {
-  public ak(ac paramac)
+  private final long uOx;
+  
+  public ak(long paramLong)
   {
-    super(paramac);
-    AppMethodBeat.i(203479);
-    AppMethodBeat.o(203479);
+    this.uOx = paramLong;
   }
   
   public final int a(i parami)
   {
-    AppMethodBeat.i(203478);
+    AppMethodBeat.i(248770);
     p.h(parami, "obj");
-    AppMethodBeat.o(203478);
-    return 0;
+    if (((parami instanceof ak)) && (((ak)parami).uOx == this.uOx))
+    {
+      AppMethodBeat.o(248770);
+      return 0;
+    }
+    AppMethodBeat.o(248770);
+    return -1;
   }
   
-  public final int bZz()
+  public final int cxn()
   {
-    AppMethodBeat.i(203477);
-    int i = ak.class.getName().hashCode();
-    AppMethodBeat.o(203477);
-    return i;
+    return 2015;
+  }
+  
+  public final long lT()
+  {
+    return this.uOx;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(248771);
+    String str = "ItemId=" + this.uOx + ",ItemType=2015";
+    AppMethodBeat.o(248771);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.ak
  * JD-Core Version:    0.7.0.1
  */

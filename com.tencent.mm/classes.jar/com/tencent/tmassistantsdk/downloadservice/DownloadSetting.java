@@ -2,7 +2,7 @@ package com.tencent.tmassistantsdk.downloadservice;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.tmassistantsdk.storage.table.DownloadSettingTable;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.HashMap;
@@ -94,7 +94,7 @@ public class DownloadSetting
       }
       localObject = (String)((HashMap)localObject).get("maxTaskNum");
       if ((localObject != null) && (((String)localObject).length() > 0)) {
-        this.maxTaskNum = bu.getInt((String)localObject, 0);
+        this.maxTaskNum = Util.getInt((String)localObject, 0);
       }
       AppMethodBeat.o(101986);
       return;
@@ -197,7 +197,7 @@ public class DownloadSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadSetting
  * JD-Core Version:    0.7.0.1
  */

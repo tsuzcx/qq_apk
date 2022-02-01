@@ -13,19 +13,19 @@ import java.util.PriorityQueue;
 
 final class a
 {
-  private static final Comparator<a> aaQ = new Comparator() {};
-  final int[] aaL;
-  final List<b.d> aaM;
-  final TimingLogger aaN = null;
-  final b.b[] aaO;
-  private final float[] aaP = new float[3];
+  private static final Comparator<a> abd = new Comparator() {};
+  final int[] aaY;
+  final List<b.d> aaZ;
+  final TimingLogger aba = null;
+  final b.b[] abb;
+  private final float[] abc = new float[3];
   final int[] mColors;
   
   a(int[] paramArrayOfInt, int paramInt, b.b[] paramArrayOfb)
   {
-    this.aaO = paramArrayOfb;
+    this.abb = paramArrayOfb;
     paramArrayOfb = new int[32768];
-    this.aaL = paramArrayOfb;
+    this.aaY = paramArrayOfb;
     int i = 0;
     int n;
     while (i < paramArrayOfInt.length)
@@ -43,8 +43,8 @@ final class a
     {
       if (paramArrayOfb[i] > 0)
       {
-        b.d(bo(i), this.aaP);
-        if (d(this.aaP)) {
+        b.d(bp(i), this.abc);
+        if (d(this.abc)) {
           paramArrayOfb[i] = 0;
         }
       }
@@ -74,20 +74,20 @@ final class a
       break;
       if (j <= paramInt)
       {
-        this.aaM = new ArrayList();
+        this.aaZ = new ArrayList();
         i = paramArrayOfInt.length;
         paramInt = m;
         while (paramInt < i)
         {
           j = paramArrayOfInt[paramInt];
-          this.aaM.add(new b.d(bo(j), paramArrayOfb[j]));
+          this.aaZ.add(new b.d(bp(j), paramArrayOfb[j]));
           paramInt += 1;
         }
       }
-      paramArrayOfInt = new PriorityQueue(paramInt, aaQ);
+      paramArrayOfInt = new PriorityQueue(paramInt, abd);
       paramArrayOfInt.offer(new a(0, this.mColors.length - 1));
       a(paramArrayOfInt, paramInt);
-      this.aaM = a(paramArrayOfInt);
+      this.aaZ = a(paramArrayOfInt);
       return;
     }
   }
@@ -98,8 +98,8 @@ final class a
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
-      b.d locald = ((a)paramCollection.next()).gZ();
-      if (!d(locald.he())) {
+      b.d locald = ((a)paramCollection.next()).hg();
+      if (!d(locald.hn())) {
         localArrayList.add(locald);
       }
     }
@@ -111,16 +111,16 @@ final class a
     while (paramPriorityQueue.size() < paramInt)
     {
       a locala1 = (a)paramPriorityQueue.poll();
-      if ((locala1 == null) || (!locala1.gV())) {
+      if ((locala1 == null) || (!locala1.hc())) {
         break;
       }
-      if (!locala1.gV()) {
+      if (!locala1.hc()) {
         throw new IllegalStateException("Can not split a box with only 1 color");
       }
-      int i = locala1.gY();
-      a locala2 = new a(locala1.aba, i + 1, locala1.aaS);
-      locala1.aaS = i;
-      locala1.gX();
+      int i = locala1.hf();
+      a locala2 = new a(locala1.abo, i + 1, locala1.abf);
+      locala1.abf = i;
+      locala1.he();
       paramPriorityQueue.offer(locala2);
       paramPriorityQueue.offer(locala1);
     }
@@ -150,22 +150,22 @@ final class a
     }
   }
   
-  private static int bo(int paramInt)
+  private static int bp(int paramInt)
   {
     return j(paramInt >> 10 & 0x1F, paramInt >> 5 & 0x1F, paramInt & 0x1F);
   }
   
-  static int bp(int paramInt)
+  static int bq(int paramInt)
   {
     return paramInt >> 10 & 0x1F;
   }
   
-  static int bq(int paramInt)
+  static int br(int paramInt)
   {
     return paramInt >> 5 & 0x1F;
   }
   
-  static int br(int paramInt)
+  static int bs(int paramInt)
   {
     return paramInt & 0x1F;
   }
@@ -176,12 +176,12 @@ final class a
     boolean bool1 = bool2;
     int j;
     int i;
-    if (this.aaO != null)
+    if (this.abb != null)
     {
       bool1 = bool2;
-      if (this.aaO.length > 0)
+      if (this.abb.length > 0)
       {
-        j = this.aaO.length;
+        j = this.abb.length;
         i = 0;
       }
     }
@@ -190,7 +190,7 @@ final class a
       bool1 = bool2;
       if (i < j)
       {
-        if (!this.aaO[i].e(paramArrayOfFloat)) {
+        if (!this.abb[i].e(paramArrayOfFloat)) {
           bool1 = true;
         }
       }
@@ -220,39 +220,44 @@ final class a
   
   final class a
   {
-    private int aaR;
-    int aaS;
-    private int aaT;
-    private int aaU;
-    private int aaV;
-    private int aaW;
-    private int aaX;
-    private int aaY;
-    private int aaZ;
+    private int abe;
+    int abf;
+    private int abg;
+    private int abh;
+    private int abj;
+    private int abk;
+    private int abl;
+    private int abm;
+    private int abn;
     
     a(int paramInt1, int paramInt2)
     {
-      this.aaR = paramInt1;
-      this.aaS = paramInt2;
-      gX();
+      this.abe = paramInt1;
+      this.abf = paramInt2;
+      he();
     }
     
-    private int gW()
+    private int hd()
     {
-      return this.aaS + 1 - this.aaR;
+      return this.abf + 1 - this.abe;
     }
     
-    final boolean gV()
+    final int getVolume()
     {
-      return gW() > 1;
+      return (this.abj - this.abh + 1) * (this.abl - this.abk + 1) * (this.abn - this.abm + 1);
     }
     
-    final void gX()
+    final boolean hc()
+    {
+      return hd() > 1;
+    }
+    
+    final void he()
     {
       int[] arrayOfInt1 = a.this.mColors;
-      int[] arrayOfInt2 = a.this.aaL;
+      int[] arrayOfInt2 = a.this.aaY;
       int i4 = 0;
-      int n = this.aaR;
+      int n = this.abe;
       int i5 = -2147483648;
       int j = -2147483648;
       int m = -2147483648;
@@ -263,13 +268,13 @@ final class a
       int i8;
       int i6;
       int i2;
-      if (n <= this.aaS)
+      if (n <= this.abf)
       {
         i1 = arrayOfInt1[n];
         i8 = i4 + arrayOfInt2[i1];
-        int i7 = a.bp(i1);
-        i6 = a.bq(i1);
-        i4 = a.br(i1);
+        int i7 = a.bq(i1);
+        i6 = a.br(i1);
+        i4 = a.bs(i1);
         i1 = i5;
         if (i7 > i5) {
           i1 = i7;
@@ -306,46 +311,46 @@ final class a
           i3 = i2;
           k = i6;
           break;
-          this.aaU = i3;
-          this.aaV = i5;
-          this.aaW = i;
-          this.aaX = j;
-          this.aaY = k;
-          this.aaZ = m;
-          this.aaT = i4;
+          this.abh = i3;
+          this.abj = i5;
+          this.abk = i;
+          this.abl = j;
+          this.abm = k;
+          this.abn = m;
+          this.abg = i4;
           return;
         }
       }
     }
     
-    final int gY()
+    final int hf()
     {
-      int i = this.aaV - this.aaU;
-      int j = this.aaX - this.aaW;
-      int k = this.aaZ - this.aaY;
+      int i = this.abj - this.abh;
+      int j = this.abl - this.abk;
+      int k = this.abn - this.abm;
       int[] arrayOfInt1;
       int[] arrayOfInt2;
       if ((i >= j) && (i >= k))
       {
         i = -3;
         arrayOfInt1 = a.this.mColors;
-        arrayOfInt2 = a.this.aaL;
-        a.a(arrayOfInt1, i, this.aaR, this.aaS);
-        Arrays.sort(arrayOfInt1, this.aaR, this.aaS + 1);
-        a.a(arrayOfInt1, i, this.aaR, this.aaS);
-        k = this.aaT / 2;
-        i = this.aaR;
+        arrayOfInt2 = a.this.aaY;
+        a.a(arrayOfInt1, i, this.abe, this.abf);
+        Arrays.sort(arrayOfInt1, this.abe, this.abf + 1);
+        a.a(arrayOfInt1, i, this.abe, this.abf);
+        k = this.abg / 2;
+        i = this.abe;
         j = 0;
       }
       for (;;)
       {
-        if (i > this.aaS) {
+        if (i > this.abf) {
           break label180;
         }
         j += arrayOfInt2[arrayOfInt1[i]];
         if (j >= k)
         {
-          return Math.min(this.aaS - 1, i);
+          return Math.min(this.abf - 1, i);
           if ((j >= i) && (j >= k))
           {
             i = -2;
@@ -357,41 +362,36 @@ final class a
         i += 1;
       }
       label180:
-      return this.aaR;
+      return this.abe;
     }
     
-    final b.d gZ()
+    final b.d hg()
     {
       int[] arrayOfInt1 = a.this.mColors;
-      int[] arrayOfInt2 = a.this.aaL;
-      int j = this.aaR;
+      int[] arrayOfInt2 = a.this.aaY;
+      int j = this.abe;
       int n = 0;
       int i = 0;
       int k = 0;
       int m = 0;
-      while (j <= this.aaS)
+      while (j <= this.abf)
       {
         int i2 = arrayOfInt1[j];
         int i1 = arrayOfInt2[i2];
         n += i1;
-        m += a.bp(i2) * i1;
-        k += a.bq(i2) * i1;
-        i2 = a.br(i2);
+        m += a.bq(i2) * i1;
+        k += a.br(i2) * i1;
+        i2 = a.bs(i2);
         j += 1;
         i = i2 * i1 + i;
       }
       return new b.d(a.j(Math.round(m / n), Math.round(k / n), Math.round(i / n)), n);
     }
-    
-    final int getVolume()
-    {
-      return (this.aaV - this.aaU + 1) * (this.aaX - this.aaW + 1) * (this.aaZ - this.aaY + 1);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.d.a
  * JD-Core Version:    0.7.0.1
  */

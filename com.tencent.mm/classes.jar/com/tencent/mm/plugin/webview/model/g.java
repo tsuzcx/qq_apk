@@ -1,72 +1,87 @@
 package com.tencent.mm.plugin.webview.model;
 
 import android.content.ContentValues;
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ds;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bh;
-import com.tencent.mm.sdk.platformtools.bh.b;
-import com.tencent.mm.sdk.platformtools.bh.c;
+import com.tencent.mm.g.c.dy;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.RWCache;
+import com.tencent.mm.sdk.platformtools.RWCache.Holder;
+import com.tencent.mm.sdk.platformtools.RWCache.IRWCacheAppender;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 
 public final class g
-  implements bh.c<Integer, Long>
+  implements RWCache.IRWCacheAppender<Integer, Long>
 {
   public static final String[] SQL_CREATE;
-  private static final c.a jJU;
-  public final bh<Integer, Long> EkD;
-  private long EkE;
-  public final h hKK;
+  private static final IAutoDBItem.MAutoDBInfo kLR;
+  public final RWCache<Integer, Long> IXB;
+  private long IXC;
+  public final h iFy;
   
   static
   {
     AppMethodBeat.i(78860);
-    jJU = ds.VD();
-    SQL_CREATE = new String[] { j.getCreateSQLs(jJU, "JsLogBlockList") };
+    kLR = dy.ajs();
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(kLR, "JsLogBlockList") };
     AppMethodBeat.o(78860);
   }
   
   public g(h paramh)
   {
     AppMethodBeat.i(78855);
-    this.hKK = paramh;
-    this.EkD = new bh(this, com.tencent.mm.kernel.g.ajU().IxZ.getLooper(), 100, 20);
+    this.iFy = paramh;
+    this.IXB = new RWCache(this, com.tencent.mm.kernel.g.aAk().getLooper(), 100, 20, 300000L, 1000L);
     AppMethodBeat.o(78855);
   }
   
-  public final void a(bh.b<Integer, Long> paramb)
+  public final void append(RWCache<Integer, Long> paramRWCache, RWCache.Holder<Integer, Long> paramHolder)
   {
-    AppMethodBeat.i(78858);
-    switch (paramb.IzP)
+    AppMethodBeat.i(210972);
+    switch (paramHolder.funcType)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(78858);
+      AppMethodBeat.o(210972);
       return;
-      this.hKK.delete("JsLogBlockList", "logId=" + paramb.aIw, null);
-      AppMethodBeat.o(78858);
+      this.iFy.delete("JsLogBlockList", "logId=" + paramHolder.key, null);
+      AppMethodBeat.o(210972);
       return;
-      ContentValues localContentValues = new ContentValues(2);
-      localContentValues.put("logId", (Integer)paramb.aIw);
-      localContentValues.put("liftTime", (Long)paramb.values);
-      this.hKK.replace("JsLogBlockList", "logId", localContentValues);
+      paramRWCache = new ContentValues(2);
+      paramRWCache.put("logId", (Integer)paramHolder.key);
+      paramRWCache.put("liftTime", (Long)paramHolder.values);
+      this.iFy.replace("JsLogBlockList", "logId", paramRWCache);
     }
   }
   
-  public final boolean aMh()
+  public final void gct()
+  {
+    AppMethodBeat.i(78856);
+    this.IXB.appendAll(true);
+    AppMethodBeat.o(78856);
+  }
+  
+  public final void postAppend()
+  {
+    AppMethodBeat.i(78859);
+    if (this.IXC > 0L) {
+      this.iFy.endTransaction(this.IXC);
+    }
+    AppMethodBeat.o(78859);
+  }
+  
+  public final boolean preAppend()
   {
     AppMethodBeat.i(78857);
-    if (this.hKK.inTransaction())
+    if (this.iFy.inTransaction())
     {
       AppMethodBeat.o(78857);
       return false;
     }
-    this.EkE = this.hKK.yi(Thread.currentThread().getId());
-    if (this.EkE > 0L)
+    this.IXC = this.iFy.beginTransaction(Thread.currentThread().getId());
+    if (this.IXC > 0L)
     {
       AppMethodBeat.o(78857);
       return true;
@@ -74,26 +89,10 @@ public final class g
     AppMethodBeat.o(78857);
     return false;
   }
-  
-  public final void aMi()
-  {
-    AppMethodBeat.i(78859);
-    if (this.EkE > 0L) {
-      this.hKK.sW(this.EkE);
-    }
-    AppMethodBeat.o(78859);
-  }
-  
-  public final void eTG()
-  {
-    AppMethodBeat.i(78856);
-    this.EkD.wR(true);
-    AppMethodBeat.o(78856);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.g
  * JD-Core Version:    0.7.0.1
  */

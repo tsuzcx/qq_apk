@@ -12,199 +12,203 @@ public class XWalkSettings
   public static final int LOAD_CACHE_ONLY = 3;
   public static final int LOAD_DEFAULT = -1;
   public static final int LOAD_NO_CACHE = 2;
-  private ReflectMethod InvokeChannelInternalMethod;
-  private ReflectMethod SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod;
-  private ReflectMethod SetLogCallBackXWalkLogMessageListenerInternalMethod;
+  private LazyReflectMethod InvokeChannelInternalMethod;
+  private LazyReflectMethod SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod;
+  private LazyReflectMethod SetLogCallBackXWalkLogMessageListenerInternalMethod;
   private Object bridge;
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
-  private ReflectMethod disableCustomizedLongPressTimeoutVoidMethod;
-  private ReflectMethod enableCustomizedLongPressTimeoutIntMethod;
-  private ReflectMethod enumLayoutAlgorithmClassValueOfMethod;
-  private ReflectMethod getAcceptLanguagesMethod;
-  private ReflectMethod getAllowContentAccessMethod;
-  private ReflectMethod getAllowFileAccessFromFileURLsMethod;
-  private ReflectMethod getAllowFileAccessMethod;
-  private ReflectMethod getAllowUniversalAccessFromFileURLsMethod;
-  private ReflectMethod getAppBrandInfoMethod;
-  private ReflectMethod getAudioPlaybackRequiresUserGestureMethod;
-  private ReflectMethod getBlockNetworkImageMethod;
-  private ReflectMethod getBlockNetworkLoadsMethod;
-  private ReflectMethod getBuiltInZoomControlsMethod;
-  private ReflectMethod getCacheModeMethod;
-  private ReflectMethod getCursiveFontFamilyMethod;
-  private ReflectMethod getDatabaseEnabledMethod;
-  private ReflectMethod getDefaultFixedFontSizeMethod;
-  private ReflectMethod getDefaultFontSizeMethod;
-  private ReflectMethod getDomStorageEnabledMethod;
-  private ReflectMethod getFantasyFontFamilyMethod;
-  private ReflectMethod getFixedFontFamilyMethod;
-  private ReflectMethod getForceDarkBehaviorMethod;
-  private ReflectMethod getForceDarkModeMethod;
-  private ReflectMethod getJavaScriptCanOpenWindowsAutomaticallyMethod;
-  private ReflectMethod getJavaScriptEnabledMethod;
-  private ReflectMethod getLayoutAlgorithmMethod;
-  private ReflectMethod getLoadWithOverviewModeMethod;
-  private ReflectMethod getLoadsImagesAutomaticallyMethod;
-  private ReflectMethod getMediaPlaybackRequiresUserGestureMethod;
-  private ReflectMethod getMinimumFontSizeMethod;
-  private ReflectMethod getMinimumLogicalFontSizeMethod;
-  private ReflectMethod getSansSerifFontFamilyMethod;
-  private ReflectMethod getSaveFormDataMethod;
-  private ReflectMethod getSerifFontFamilyMethod;
-  private ReflectMethod getStandardFontFamilyMethod;
-  private ReflectMethod getSupportQuirksModeMethod;
-  private ReflectMethod getSupportSpatialNavigationMethod;
-  private ReflectMethod getTextZoomMethod;
-  private ReflectMethod getUseWideViewPortMethod;
-  private ReflectMethod getUserAgentStringMethod;
-  private ReflectMethod getUsingForAppBrandMethod;
-  private ReflectMethod getVideoPlaybackRequiresUserGestureMethod;
-  private ReflectMethod postWrapperMethod;
-  private ReflectMethod setAcceptLanguagesStringMethod;
-  private ReflectMethod setAllowContentAccessbooleanMethod;
-  private ReflectMethod setAllowFileAccessFromFileURLsbooleanMethod;
-  private ReflectMethod setAllowFileAccessbooleanMethod;
-  private ReflectMethod setAllowUniversalAccessFromFileURLsbooleanMethod;
-  private ReflectMethod setAppBrandInfoMethod;
-  private ReflectMethod setAppCacheEnabledbooleanMethod;
-  private ReflectMethod setAppCachePathStringMethod;
-  private ReflectMethod setAudioPlaybackRequiresUserGesturebooleanMethod;
-  private ReflectMethod setBlockNetworkImagebooleanMethod;
-  private ReflectMethod setBlockNetworkLoadsbooleanMethod;
-  private ReflectMethod setBuiltInZoomControlsbooleanMethod;
-  private ReflectMethod setCacheModeintMethod;
-  private ReflectMethod setCursiveFontFamilyStringMethod;
-  private ReflectMethod setDatabaseEnabledbooleanMethod;
-  private ReflectMethod setDefaultFixedFontSizeintMethod;
-  private ReflectMethod setDefaultFontSizeintMethod;
-  private ReflectMethod setDomStorageEnabledbooleanMethod;
-  private ReflectMethod setFantasyFontFamilyStringMethod;
-  private ReflectMethod setFixedFontFamilyStringMethod;
-  private ReflectMethod setForceDarkBehaviorintMethod;
-  private ReflectMethod setForceDarkModeintMethod;
-  private ReflectMethod setInitialPageScalefloatMethod;
-  private ReflectMethod setJavaScriptCanOpenWindowsAutomaticallybooleanMethod;
-  private ReflectMethod setJavaScriptEnabledbooleanMethod;
-  private ReflectMethod setLayoutAlgorithmLayoutAlgorithmInternalMethod;
-  private ReflectMethod setLoadWithOverviewModebooleanMethod;
-  private ReflectMethod setLoadsImagesAutomaticallybooleanMethod;
-  private ReflectMethod setMediaPlaybackRequiresUserGesturebooleanMethod;
-  private ReflectMethod setMinimumFontSizeIntMethod;
-  private ReflectMethod setMinimumLogicalFontSizeIntMethod;
-  private ReflectMethod setSansSerifFontFamilyStringMethod;
-  private ReflectMethod setSaveFormDatabooleanMethod;
-  private ReflectMethod setSerifFontFamilyStringMethod;
-  private ReflectMethod setStandardFontFamilyStringMethod;
-  private ReflectMethod setSupportMultipleWindowsbooleanMethod;
-  private ReflectMethod setSupportQuirksModebooleanMethod;
-  private ReflectMethod setSupportSpatialNavigationbooleanMethod;
-  private ReflectMethod setSupportZoombooleanMethod;
-  private ReflectMethod setTextZoomintMethod;
-  private ReflectMethod setUseWideViewPortbooleanMethod;
-  private ReflectMethod setUserAgentStringStringMethod;
-  private ReflectMethod setUsingForAppBrandMethod;
-  private ReflectMethod setVideoPlaybackRequiresUserGesturebooleanMethod;
-  private ReflectMethod supportMultipleWindowsMethod;
-  private ReflectMethod supportZoomMethod;
-  private ReflectMethod supportsMultiTouchZoomForTestMethod;
+  private LazyReflectMethod disableCustomizedLongPressTimeoutVoidMethod;
+  private LazyReflectMethod enableCustomizedLongPressTimeoutIntMethod;
+  private LazyReflectMethod enumLayoutAlgorithmClassValueOfMethod;
+  private LazyReflectMethod getAcceptLanguagesMethod;
+  private LazyReflectMethod getAllowContentAccessMethod;
+  private LazyReflectMethod getAllowFileAccessFromFileURLsMethod;
+  private LazyReflectMethod getAllowFileAccessMethod;
+  private LazyReflectMethod getAllowUniversalAccessFromFileURLsMethod;
+  private LazyReflectMethod getAppBrandInfoMethod;
+  private LazyReflectMethod getAudioPlaybackRequiresUserGestureMethod;
+  private LazyReflectMethod getBackgroundAudioPauseMethod;
+  private LazyReflectMethod getBlockNetworkImageMethod;
+  private LazyReflectMethod getBlockNetworkLoadsMethod;
+  private LazyReflectMethod getBuiltInZoomControlsMethod;
+  private LazyReflectMethod getCacheModeMethod;
+  private LazyReflectMethod getCursiveFontFamilyMethod;
+  private LazyReflectMethod getDatabaseEnabledMethod;
+  private LazyReflectMethod getDefaultFixedFontSizeMethod;
+  private LazyReflectMethod getDefaultFontSizeMethod;
+  private LazyReflectMethod getDomStorageEnabledMethod;
+  private LazyReflectMethod getFantasyFontFamilyMethod;
+  private LazyReflectMethod getFixedFontFamilyMethod;
+  private LazyReflectMethod getForceDarkBehaviorMethod;
+  private LazyReflectMethod getForceDarkModeMethod;
+  private LazyReflectMethod getJavaScriptCanOpenWindowsAutomaticallyMethod;
+  private LazyReflectMethod getJavaScriptEnabledMethod;
+  private LazyReflectMethod getLayoutAlgorithmMethod;
+  private LazyReflectMethod getLoadWithOverviewModeMethod;
+  private LazyReflectMethod getLoadsImagesAutomaticallyMethod;
+  private LazyReflectMethod getMediaPlaybackRequiresUserGestureMethod;
+  private LazyReflectMethod getMinimumFontSizeMethod;
+  private LazyReflectMethod getMinimumLogicalFontSizeMethod;
+  private LazyReflectMethod getSansSerifFontFamilyMethod;
+  private LazyReflectMethod getSaveFormDataMethod;
+  private LazyReflectMethod getSerifFontFamilyMethod;
+  private LazyReflectMethod getStandardFontFamilyMethod;
+  private LazyReflectMethod getSupportQuirksModeMethod;
+  private LazyReflectMethod getSupportSpatialNavigationMethod;
+  private LazyReflectMethod getTextZoomMethod;
+  private LazyReflectMethod getUseWideViewPortMethod;
+  private LazyReflectMethod getUserAgentStringMethod;
+  private LazyReflectMethod getUsingForAppBrandMethod;
+  private LazyReflectMethod getVideoPlaybackRequiresUserGestureMethod;
+  private LazyReflectMethod postWrapperMethod;
+  private LazyReflectMethod setAcceptLanguagesStringMethod;
+  private LazyReflectMethod setAllowContentAccessbooleanMethod;
+  private LazyReflectMethod setAllowFileAccessFromFileURLsbooleanMethod;
+  private LazyReflectMethod setAllowFileAccessbooleanMethod;
+  private LazyReflectMethod setAllowUniversalAccessFromFileURLsbooleanMethod;
+  private LazyReflectMethod setAppBrandInfoMethod;
+  private LazyReflectMethod setAppCacheEnabledbooleanMethod;
+  private LazyReflectMethod setAppCachePathStringMethod;
+  private LazyReflectMethod setAudioPlaybackRequiresUserGesturebooleanMethod;
+  private LazyReflectMethod setBackgroundAudioPauseMethod;
+  private LazyReflectMethod setBlockNetworkImagebooleanMethod;
+  private LazyReflectMethod setBlockNetworkLoadsbooleanMethod;
+  private LazyReflectMethod setBuiltInZoomControlsbooleanMethod;
+  private LazyReflectMethod setCacheModeintMethod;
+  private LazyReflectMethod setCursiveFontFamilyStringMethod;
+  private LazyReflectMethod setDatabaseEnabledbooleanMethod;
+  private LazyReflectMethod setDefaultFixedFontSizeintMethod;
+  private LazyReflectMethod setDefaultFontSizeintMethod;
+  private LazyReflectMethod setDomStorageEnabledbooleanMethod;
+  private LazyReflectMethod setFantasyFontFamilyStringMethod;
+  private LazyReflectMethod setFixedFontFamilyStringMethod;
+  private LazyReflectMethod setForceDarkBehaviorintMethod;
+  private LazyReflectMethod setForceDarkModeintMethod;
+  private LazyReflectMethod setInitialPageScalefloatMethod;
+  private LazyReflectMethod setJavaScriptCanOpenWindowsAutomaticallybooleanMethod;
+  private LazyReflectMethod setJavaScriptEnabledbooleanMethod;
+  private LazyReflectMethod setLayoutAlgorithmLayoutAlgorithmInternalMethod;
+  private LazyReflectMethod setLoadWithOverviewModebooleanMethod;
+  private LazyReflectMethod setLoadsImagesAutomaticallybooleanMethod;
+  private LazyReflectMethod setMediaPlaybackRequiresUserGesturebooleanMethod;
+  private LazyReflectMethod setMinimumFontSizeIntMethod;
+  private LazyReflectMethod setMinimumLogicalFontSizeIntMethod;
+  private LazyReflectMethod setSansSerifFontFamilyStringMethod;
+  private LazyReflectMethod setSaveFormDatabooleanMethod;
+  private LazyReflectMethod setSerifFontFamilyStringMethod;
+  private LazyReflectMethod setStandardFontFamilyStringMethod;
+  private LazyReflectMethod setSupportMultipleWindowsbooleanMethod;
+  private LazyReflectMethod setSupportQuirksModebooleanMethod;
+  private LazyReflectMethod setSupportSpatialNavigationbooleanMethod;
+  private LazyReflectMethod setSupportZoombooleanMethod;
+  private LazyReflectMethod setTextZoomintMethod;
+  private LazyReflectMethod setUseWideViewPortbooleanMethod;
+  private LazyReflectMethod setUserAgentStringStringMethod;
+  private LazyReflectMethod setUsingForAppBrandMethod;
+  private LazyReflectMethod setVideoPlaybackRequiresUserGesturebooleanMethod;
+  private LazyReflectMethod supportMultipleWindowsMethod;
+  private LazyReflectMethod supportZoomMethod;
+  private LazyReflectMethod supportsMultiTouchZoomForTestMethod;
   
   public XWalkSettings(Object paramObject)
   {
     AppMethodBeat.i(154863);
-    this.enumLayoutAlgorithmClassValueOfMethod = new ReflectMethod();
-    this.setCacheModeintMethod = new ReflectMethod(null, "setCacheMode", new Class[0]);
-    this.getCacheModeMethod = new ReflectMethod(null, "getCacheMode", new Class[0]);
-    this.setForceDarkModeintMethod = new ReflectMethod(null, "setForceDarkMode", new Class[0]);
-    this.getForceDarkModeMethod = new ReflectMethod(null, "getForceDarkMode", new Class[0]);
-    this.setForceDarkBehaviorintMethod = new ReflectMethod(null, "setForceDarkBehavior", new Class[0]);
-    this.getForceDarkBehaviorMethod = new ReflectMethod(null, "getForceDarkBehavior", new Class[0]);
-    this.setBlockNetworkLoadsbooleanMethod = new ReflectMethod(null, "setBlockNetworkLoads", new Class[0]);
-    this.getBlockNetworkLoadsMethod = new ReflectMethod(null, "getBlockNetworkLoads", new Class[0]);
-    this.setAllowFileAccessbooleanMethod = new ReflectMethod(null, "setAllowFileAccess", new Class[0]);
-    this.getAllowFileAccessMethod = new ReflectMethod(null, "getAllowFileAccess", new Class[0]);
-    this.setAllowContentAccessbooleanMethod = new ReflectMethod(null, "setAllowContentAccess", new Class[0]);
-    this.getAllowContentAccessMethod = new ReflectMethod(null, "getAllowContentAccess", new Class[0]);
-    this.setJavaScriptEnabledbooleanMethod = new ReflectMethod(null, "setJavaScriptEnabled", new Class[0]);
-    this.setStandardFontFamilyStringMethod = new ReflectMethod(null, "setStandardFontFamily", new Class[0]);
-    this.setFixedFontFamilyStringMethod = new ReflectMethod(null, "setFixedFontFamily", new Class[0]);
-    this.setSansSerifFontFamilyStringMethod = new ReflectMethod(null, "setSansSerifFontFamily", new Class[0]);
-    this.setSerifFontFamilyStringMethod = new ReflectMethod(null, "setSerifFontFamily", new Class[0]);
-    this.setCursiveFontFamilyStringMethod = new ReflectMethod(null, "setCursiveFontFamily", new Class[0]);
-    this.setFantasyFontFamilyStringMethod = new ReflectMethod(null, "setFantasyFontFamily", new Class[0]);
-    this.setMinimumFontSizeIntMethod = new ReflectMethod(null, "setMinimumFontSize", new Class[0]);
-    this.setMinimumLogicalFontSizeIntMethod = new ReflectMethod(null, "setMinimumLogicalFontSize", new Class[0]);
-    this.setAllowUniversalAccessFromFileURLsbooleanMethod = new ReflectMethod(null, "setAllowUniversalAccessFromFileURLs", new Class[0]);
-    this.setAllowFileAccessFromFileURLsbooleanMethod = new ReflectMethod(null, "setAllowFileAccessFromFileURLs", new Class[0]);
-    this.setLoadsImagesAutomaticallybooleanMethod = new ReflectMethod(null, "setLoadsImagesAutomatically", new Class[0]);
-    this.getLoadsImagesAutomaticallyMethod = new ReflectMethod(null, "getLoadsImagesAutomatically", new Class[0]);
-    this.setBlockNetworkImagebooleanMethod = new ReflectMethod(null, "setBlockNetworkImage", new Class[0]);
-    this.getBlockNetworkImageMethod = new ReflectMethod(null, "getBlockNetworkImage", new Class[0]);
-    this.getJavaScriptEnabledMethod = new ReflectMethod(null, "getJavaScriptEnabled", new Class[0]);
-    this.getStandardFontFamilyMethod = new ReflectMethod(null, "getStandardFontFamily", new Class[0]);
-    this.getFixedFontFamilyMethod = new ReflectMethod(null, "getFixedFontFamily", new Class[0]);
-    this.getSansSerifFontFamilyMethod = new ReflectMethod(null, "getSansSerifFontFamily", new Class[0]);
-    this.getSerifFontFamilyMethod = new ReflectMethod(null, "getSerifFontFamily", new Class[0]);
-    this.getCursiveFontFamilyMethod = new ReflectMethod(null, "getCursiveFontFamily", new Class[0]);
-    this.getFantasyFontFamilyMethod = new ReflectMethod(null, "getFantasyFontFamily", new Class[0]);
-    this.getMinimumFontSizeMethod = new ReflectMethod(null, "getMinimumFontSize", new Class[0]);
-    this.getMinimumLogicalFontSizeMethod = new ReflectMethod(null, "getMinimumLogicalFontSize", new Class[0]);
-    this.getAllowUniversalAccessFromFileURLsMethod = new ReflectMethod(null, "getAllowUniversalAccessFromFileURLs", new Class[0]);
-    this.getAllowFileAccessFromFileURLsMethod = new ReflectMethod(null, "getAllowFileAccessFromFileURLs", new Class[0]);
-    this.setJavaScriptCanOpenWindowsAutomaticallybooleanMethod = new ReflectMethod(null, "setJavaScriptCanOpenWindowsAutomatically", new Class[0]);
-    this.getJavaScriptCanOpenWindowsAutomaticallyMethod = new ReflectMethod(null, "getJavaScriptCanOpenWindowsAutomatically", new Class[0]);
-    this.setSupportMultipleWindowsbooleanMethod = new ReflectMethod(null, "setSupportMultipleWindows", new Class[0]);
-    this.supportMultipleWindowsMethod = new ReflectMethod(null, "supportMultipleWindows", new Class[0]);
-    this.setUseWideViewPortbooleanMethod = new ReflectMethod(null, "setUseWideViewPort", new Class[0]);
-    this.getUseWideViewPortMethod = new ReflectMethod(null, "getUseWideViewPort", new Class[0]);
-    this.setAppCacheEnabledbooleanMethod = new ReflectMethod(null, "setAppCacheEnabled", new Class[0]);
-    this.setAppCachePathStringMethod = new ReflectMethod(null, "setAppCachePath", new Class[0]);
-    this.setDomStorageEnabledbooleanMethod = new ReflectMethod(null, "setDomStorageEnabled", new Class[0]);
-    this.getDomStorageEnabledMethod = new ReflectMethod(null, "getDomStorageEnabled", new Class[0]);
-    this.setDatabaseEnabledbooleanMethod = new ReflectMethod(null, "setDatabaseEnabled", new Class[0]);
-    this.getDatabaseEnabledMethod = new ReflectMethod(null, "getDatabaseEnabled", new Class[0]);
-    this.setMediaPlaybackRequiresUserGesturebooleanMethod = new ReflectMethod(null, "setMediaPlaybackRequiresUserGesture", new Class[0]);
-    this.getMediaPlaybackRequiresUserGestureMethod = new ReflectMethod(null, "getMediaPlaybackRequiresUserGesture", new Class[0]);
-    this.setAudioPlaybackRequiresUserGesturebooleanMethod = new ReflectMethod(null, "setAudioPlaybackRequiresUserGesture", new Class[0]);
-    this.getAudioPlaybackRequiresUserGestureMethod = new ReflectMethod(null, "getAudioPlaybackRequiresUserGesture", new Class[0]);
-    this.enableCustomizedLongPressTimeoutIntMethod = new ReflectMethod(null, "enableCustomizedLongPressTimeout", new Class[0]);
-    this.disableCustomizedLongPressTimeoutVoidMethod = new ReflectMethod(null, "disableCustomizedLongPressTimeout", new Class[0]);
-    this.setVideoPlaybackRequiresUserGesturebooleanMethod = new ReflectMethod(null, "setVideoPlaybackRequiresUserGesture", new Class[0]);
-    this.getVideoPlaybackRequiresUserGestureMethod = new ReflectMethod(null, "getVideoPlaybackRequiresUserGesture", new Class[0]);
-    this.setUsingForAppBrandMethod = new ReflectMethod(null, "setUsingForAppBrand", new Class[0]);
-    this.getUsingForAppBrandMethod = new ReflectMethod(null, "getUsingForAppBrand", new Class[0]);
-    this.setUserAgentStringStringMethod = new ReflectMethod(null, "setUserAgentString", new Class[0]);
-    this.getUserAgentStringMethod = new ReflectMethod(null, "getUserAgentString", new Class[0]);
-    this.setAcceptLanguagesStringMethod = new ReflectMethod(null, "setAcceptLanguages", new Class[0]);
-    this.getAcceptLanguagesMethod = new ReflectMethod(null, "getAcceptLanguages", new Class[0]);
-    this.setSaveFormDatabooleanMethod = new ReflectMethod(null, "setSaveFormData", new Class[0]);
-    this.getSaveFormDataMethod = new ReflectMethod(null, "getSaveFormData", new Class[0]);
-    this.setInitialPageScalefloatMethod = new ReflectMethod(null, "setInitialPageScale", new Class[0]);
-    this.setTextZoomintMethod = new ReflectMethod(null, "setTextZoom", new Class[0]);
-    this.getTextZoomMethod = new ReflectMethod(null, "getTextZoom", new Class[0]);
-    this.setDefaultFontSizeintMethod = new ReflectMethod(null, "setDefaultFontSize", new Class[0]);
-    this.getDefaultFontSizeMethod = new ReflectMethod(null, "getDefaultFontSize", new Class[0]);
-    this.setDefaultFixedFontSizeintMethod = new ReflectMethod(null, "setDefaultFixedFontSize", new Class[0]);
-    this.getDefaultFixedFontSizeMethod = new ReflectMethod(null, "getDefaultFixedFontSize", new Class[0]);
-    this.setSupportZoombooleanMethod = new ReflectMethod(null, "setSupportZoom", new Class[0]);
-    this.supportZoomMethod = new ReflectMethod(null, "supportZoom", new Class[0]);
-    this.setBuiltInZoomControlsbooleanMethod = new ReflectMethod(null, "setBuiltInZoomControls", new Class[0]);
-    this.getBuiltInZoomControlsMethod = new ReflectMethod(null, "getBuiltInZoomControls", new Class[0]);
-    this.supportsMultiTouchZoomForTestMethod = new ReflectMethod(null, "supportsMultiTouchZoomForTest", new Class[0]);
-    this.setSupportSpatialNavigationbooleanMethod = new ReflectMethod(null, "setSupportSpatialNavigation", new Class[0]);
-    this.getSupportSpatialNavigationMethod = new ReflectMethod(null, "getSupportSpatialNavigation", new Class[0]);
-    this.setSupportQuirksModebooleanMethod = new ReflectMethod(null, "setSupportQuirksMode", new Class[0]);
-    this.getSupportQuirksModeMethod = new ReflectMethod(null, "getSupportQuirksMode", new Class[0]);
-    this.setLayoutAlgorithmLayoutAlgorithmInternalMethod = new ReflectMethod(null, "setLayoutAlgorithm", new Class[0]);
-    this.getLayoutAlgorithmMethod = new ReflectMethod(null, "getLayoutAlgorithm", new Class[0]);
-    this.setLoadWithOverviewModebooleanMethod = new ReflectMethod(null, "setLoadWithOverviewMode", new Class[0]);
-    this.getLoadWithOverviewModeMethod = new ReflectMethod(null, "getLoadWithOverviewMode", new Class[0]);
-    this.SetLogCallBackXWalkLogMessageListenerInternalMethod = new ReflectMethod(null, "SetLogCallBack", new Class[0]);
-    this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod = new ReflectMethod(null, "SetJSExceptionCallBack", new Class[0]);
-    this.setAppBrandInfoMethod = new ReflectMethod(null, "setAppBrandInfo", new Class[0]);
-    this.getAppBrandInfoMethod = new ReflectMethod(null, "getAppBrandInfoSuper", new Class[0]);
-    this.InvokeChannelInternalMethod = new ReflectMethod(null, "InvokeChannel", new Class[0]);
+    this.enumLayoutAlgorithmClassValueOfMethod = new LazyReflectMethod();
+    this.setCacheModeintMethod = new LazyReflectMethod(null, "setCacheMode", new Class[0]);
+    this.getCacheModeMethod = new LazyReflectMethod(null, "getCacheMode", new Class[0]);
+    this.setForceDarkModeintMethod = new LazyReflectMethod(null, "setForceDarkMode", new Class[0]);
+    this.getForceDarkModeMethod = new LazyReflectMethod(null, "getForceDarkMode", new Class[0]);
+    this.setForceDarkBehaviorintMethod = new LazyReflectMethod(null, "setForceDarkBehavior", new Class[0]);
+    this.getForceDarkBehaviorMethod = new LazyReflectMethod(null, "getForceDarkBehavior", new Class[0]);
+    this.setBlockNetworkLoadsbooleanMethod = new LazyReflectMethod(null, "setBlockNetworkLoads", new Class[0]);
+    this.getBlockNetworkLoadsMethod = new LazyReflectMethod(null, "getBlockNetworkLoads", new Class[0]);
+    this.setAllowFileAccessbooleanMethod = new LazyReflectMethod(null, "setAllowFileAccess", new Class[0]);
+    this.getAllowFileAccessMethod = new LazyReflectMethod(null, "getAllowFileAccess", new Class[0]);
+    this.setAllowContentAccessbooleanMethod = new LazyReflectMethod(null, "setAllowContentAccess", new Class[0]);
+    this.getAllowContentAccessMethod = new LazyReflectMethod(null, "getAllowContentAccess", new Class[0]);
+    this.setJavaScriptEnabledbooleanMethod = new LazyReflectMethod(null, "setJavaScriptEnabled", new Class[0]);
+    this.setStandardFontFamilyStringMethod = new LazyReflectMethod(null, "setStandardFontFamily", new Class[0]);
+    this.setFixedFontFamilyStringMethod = new LazyReflectMethod(null, "setFixedFontFamily", new Class[0]);
+    this.setSansSerifFontFamilyStringMethod = new LazyReflectMethod(null, "setSansSerifFontFamily", new Class[0]);
+    this.setSerifFontFamilyStringMethod = new LazyReflectMethod(null, "setSerifFontFamily", new Class[0]);
+    this.setCursiveFontFamilyStringMethod = new LazyReflectMethod(null, "setCursiveFontFamily", new Class[0]);
+    this.setFantasyFontFamilyStringMethod = new LazyReflectMethod(null, "setFantasyFontFamily", new Class[0]);
+    this.setMinimumFontSizeIntMethod = new LazyReflectMethod(null, "setMinimumFontSize", new Class[0]);
+    this.setMinimumLogicalFontSizeIntMethod = new LazyReflectMethod(null, "setMinimumLogicalFontSize", new Class[0]);
+    this.setAllowUniversalAccessFromFileURLsbooleanMethod = new LazyReflectMethod(null, "setAllowUniversalAccessFromFileURLs", new Class[0]);
+    this.setAllowFileAccessFromFileURLsbooleanMethod = new LazyReflectMethod(null, "setAllowFileAccessFromFileURLs", new Class[0]);
+    this.setLoadsImagesAutomaticallybooleanMethod = new LazyReflectMethod(null, "setLoadsImagesAutomatically", new Class[0]);
+    this.getLoadsImagesAutomaticallyMethod = new LazyReflectMethod(null, "getLoadsImagesAutomatically", new Class[0]);
+    this.setBlockNetworkImagebooleanMethod = new LazyReflectMethod(null, "setBlockNetworkImage", new Class[0]);
+    this.getBlockNetworkImageMethod = new LazyReflectMethod(null, "getBlockNetworkImage", new Class[0]);
+    this.getJavaScriptEnabledMethod = new LazyReflectMethod(null, "getJavaScriptEnabled", new Class[0]);
+    this.getStandardFontFamilyMethod = new LazyReflectMethod(null, "getStandardFontFamily", new Class[0]);
+    this.getFixedFontFamilyMethod = new LazyReflectMethod(null, "getFixedFontFamily", new Class[0]);
+    this.getSansSerifFontFamilyMethod = new LazyReflectMethod(null, "getSansSerifFontFamily", new Class[0]);
+    this.getSerifFontFamilyMethod = new LazyReflectMethod(null, "getSerifFontFamily", new Class[0]);
+    this.getCursiveFontFamilyMethod = new LazyReflectMethod(null, "getCursiveFontFamily", new Class[0]);
+    this.getFantasyFontFamilyMethod = new LazyReflectMethod(null, "getFantasyFontFamily", new Class[0]);
+    this.getMinimumFontSizeMethod = new LazyReflectMethod(null, "getMinimumFontSize", new Class[0]);
+    this.getMinimumLogicalFontSizeMethod = new LazyReflectMethod(null, "getMinimumLogicalFontSize", new Class[0]);
+    this.getAllowUniversalAccessFromFileURLsMethod = new LazyReflectMethod(null, "getAllowUniversalAccessFromFileURLs", new Class[0]);
+    this.getAllowFileAccessFromFileURLsMethod = new LazyReflectMethod(null, "getAllowFileAccessFromFileURLs", new Class[0]);
+    this.setJavaScriptCanOpenWindowsAutomaticallybooleanMethod = new LazyReflectMethod(null, "setJavaScriptCanOpenWindowsAutomatically", new Class[0]);
+    this.getJavaScriptCanOpenWindowsAutomaticallyMethod = new LazyReflectMethod(null, "getJavaScriptCanOpenWindowsAutomatically", new Class[0]);
+    this.setSupportMultipleWindowsbooleanMethod = new LazyReflectMethod(null, "setSupportMultipleWindows", new Class[0]);
+    this.supportMultipleWindowsMethod = new LazyReflectMethod(null, "supportMultipleWindows", new Class[0]);
+    this.setUseWideViewPortbooleanMethod = new LazyReflectMethod(null, "setUseWideViewPort", new Class[0]);
+    this.getUseWideViewPortMethod = new LazyReflectMethod(null, "getUseWideViewPort", new Class[0]);
+    this.setAppCacheEnabledbooleanMethod = new LazyReflectMethod(null, "setAppCacheEnabled", new Class[0]);
+    this.setAppCachePathStringMethod = new LazyReflectMethod(null, "setAppCachePath", new Class[0]);
+    this.setDomStorageEnabledbooleanMethod = new LazyReflectMethod(null, "setDomStorageEnabled", new Class[0]);
+    this.getDomStorageEnabledMethod = new LazyReflectMethod(null, "getDomStorageEnabled", new Class[0]);
+    this.setDatabaseEnabledbooleanMethod = new LazyReflectMethod(null, "setDatabaseEnabled", new Class[0]);
+    this.getDatabaseEnabledMethod = new LazyReflectMethod(null, "getDatabaseEnabled", new Class[0]);
+    this.setMediaPlaybackRequiresUserGesturebooleanMethod = new LazyReflectMethod(null, "setMediaPlaybackRequiresUserGesture", new Class[0]);
+    this.getMediaPlaybackRequiresUserGestureMethod = new LazyReflectMethod(null, "getMediaPlaybackRequiresUserGesture", new Class[0]);
+    this.setAudioPlaybackRequiresUserGesturebooleanMethod = new LazyReflectMethod(null, "setAudioPlaybackRequiresUserGesture", new Class[0]);
+    this.getAudioPlaybackRequiresUserGestureMethod = new LazyReflectMethod(null, "getAudioPlaybackRequiresUserGesture", new Class[0]);
+    this.enableCustomizedLongPressTimeoutIntMethod = new LazyReflectMethod(null, "enableCustomizedLongPressTimeout", new Class[0]);
+    this.disableCustomizedLongPressTimeoutVoidMethod = new LazyReflectMethod(null, "disableCustomizedLongPressTimeout", new Class[0]);
+    this.setVideoPlaybackRequiresUserGesturebooleanMethod = new LazyReflectMethod(null, "setVideoPlaybackRequiresUserGesture", new Class[0]);
+    this.getVideoPlaybackRequiresUserGestureMethod = new LazyReflectMethod(null, "getVideoPlaybackRequiresUserGesture", new Class[0]);
+    this.setUsingForAppBrandMethod = new LazyReflectMethod(null, "setUsingForAppBrand", new Class[0]);
+    this.getUsingForAppBrandMethod = new LazyReflectMethod(null, "getUsingForAppBrand", new Class[0]);
+    this.setUserAgentStringStringMethod = new LazyReflectMethod(null, "setUserAgentString", new Class[0]);
+    this.getUserAgentStringMethod = new LazyReflectMethod(null, "getUserAgentString", new Class[0]);
+    this.setAcceptLanguagesStringMethod = new LazyReflectMethod(null, "setAcceptLanguages", new Class[0]);
+    this.getAcceptLanguagesMethod = new LazyReflectMethod(null, "getAcceptLanguages", new Class[0]);
+    this.setSaveFormDatabooleanMethod = new LazyReflectMethod(null, "setSaveFormData", new Class[0]);
+    this.getSaveFormDataMethod = new LazyReflectMethod(null, "getSaveFormData", new Class[0]);
+    this.setInitialPageScalefloatMethod = new LazyReflectMethod(null, "setInitialPageScale", new Class[0]);
+    this.setTextZoomintMethod = new LazyReflectMethod(null, "setTextZoom", new Class[0]);
+    this.getTextZoomMethod = new LazyReflectMethod(null, "getTextZoom", new Class[0]);
+    this.setDefaultFontSizeintMethod = new LazyReflectMethod(null, "setDefaultFontSize", new Class[0]);
+    this.getDefaultFontSizeMethod = new LazyReflectMethod(null, "getDefaultFontSize", new Class[0]);
+    this.setDefaultFixedFontSizeintMethod = new LazyReflectMethod(null, "setDefaultFixedFontSize", new Class[0]);
+    this.getDefaultFixedFontSizeMethod = new LazyReflectMethod(null, "getDefaultFixedFontSize", new Class[0]);
+    this.setSupportZoombooleanMethod = new LazyReflectMethod(null, "setSupportZoom", new Class[0]);
+    this.supportZoomMethod = new LazyReflectMethod(null, "supportZoom", new Class[0]);
+    this.setBuiltInZoomControlsbooleanMethod = new LazyReflectMethod(null, "setBuiltInZoomControls", new Class[0]);
+    this.getBuiltInZoomControlsMethod = new LazyReflectMethod(null, "getBuiltInZoomControls", new Class[0]);
+    this.supportsMultiTouchZoomForTestMethod = new LazyReflectMethod(null, "supportsMultiTouchZoomForTest", new Class[0]);
+    this.setSupportSpatialNavigationbooleanMethod = new LazyReflectMethod(null, "setSupportSpatialNavigation", new Class[0]);
+    this.getSupportSpatialNavigationMethod = new LazyReflectMethod(null, "getSupportSpatialNavigation", new Class[0]);
+    this.setSupportQuirksModebooleanMethod = new LazyReflectMethod(null, "setSupportQuirksMode", new Class[0]);
+    this.getSupportQuirksModeMethod = new LazyReflectMethod(null, "getSupportQuirksMode", new Class[0]);
+    this.setLayoutAlgorithmLayoutAlgorithmInternalMethod = new LazyReflectMethod(null, "setLayoutAlgorithm", new Class[0]);
+    this.getLayoutAlgorithmMethod = new LazyReflectMethod(null, "getLayoutAlgorithm", new Class[0]);
+    this.setLoadWithOverviewModebooleanMethod = new LazyReflectMethod(null, "setLoadWithOverviewMode", new Class[0]);
+    this.getLoadWithOverviewModeMethod = new LazyReflectMethod(null, "getLoadWithOverviewMode", new Class[0]);
+    this.SetLogCallBackXWalkLogMessageListenerInternalMethod = new LazyReflectMethod(null, "SetLogCallBack", new Class[0]);
+    this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod = new LazyReflectMethod(null, "SetJSExceptionCallBack", new Class[0]);
+    this.setAppBrandInfoMethod = new LazyReflectMethod(null, "setAppBrandInfo", new Class[0]);
+    this.getAppBrandInfoMethod = new LazyReflectMethod(null, "getAppBrandInfoSuper", new Class[0]);
+    this.setBackgroundAudioPauseMethod = new LazyReflectMethod(null, "setBackgroundAudioPauseSuper", new Class[0]);
+    this.getBackgroundAudioPauseMethod = new LazyReflectMethod(null, "getBackgroundAudioPauseSuper", new Class[0]);
+    this.InvokeChannelInternalMethod = new LazyReflectMethod(null, "InvokeChannel", new Class[0]);
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(154863);
@@ -253,7 +257,7 @@ public class XWalkSettings
     {
       if (this.coreWrapper == null)
       {
-        this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod.setArguments(new Object[] { new ReflectMethod(paramXWalkJSExceptionListener, "getBridge", new Class[0]) });
+        this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkJSExceptionListener, "getBridge", new Class[0]) });
         XWalkCoreWrapper.reserveReflectMethod(this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod);
         AppMethodBeat.o(154947);
         return;
@@ -276,7 +280,7 @@ public class XWalkSettings
     {
       if (this.coreWrapper == null)
       {
-        this.SetLogCallBackXWalkLogMessageListenerInternalMethod.setArguments(new Object[] { new ReflectMethod(paramXWalkLogMessageListener, "getBridge", new Class[0]) });
+        this.SetLogCallBackXWalkLogMessageListenerInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkLogMessageListener, "getBridge", new Class[0]) });
         XWalkCoreWrapper.reserveReflectMethod(this.SetLogCallBackXWalkLogMessageListenerInternalMethod);
         AppMethodBeat.o(154946);
         return;
@@ -295,11 +299,11 @@ public class XWalkSettings
   
   public void disableCustomizedLongPressTimeout()
   {
-    AppMethodBeat.i(207645);
+    AppMethodBeat.i(207388);
     try
     {
       this.disableCustomizedLongPressTimeoutVoidMethod.invoke(new Object[0]);
-      AppMethodBeat.o(207645);
+      AppMethodBeat.o(207388);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -308,21 +312,21 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207645);
+        AppMethodBeat.o(207388);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207645);
+      AppMethodBeat.o(207388);
     }
   }
   
   public void enableCustomizedLongPressTimeout(int paramInt)
   {
-    AppMethodBeat.i(207644);
+    AppMethodBeat.i(207387);
     try
     {
       this.enableCustomizedLongPressTimeoutIntMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(207644);
+      AppMethodBeat.o(207387);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -331,11 +335,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207644);
+        AppMethodBeat.o(207387);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207644);
+      AppMethodBeat.o(207387);
     }
   }
   
@@ -461,11 +465,11 @@ public class XWalkSettings
   
   public Map<String, String> getAppBrandInfo()
   {
-    AppMethodBeat.i(207647);
+    AppMethodBeat.i(207390);
     try
     {
       Map localMap = (Map)this.getAppBrandInfoMethod.invoke(new Object[0]);
-      AppMethodBeat.o(207647);
+      AppMethodBeat.o(207390);
       return localMap;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -474,11 +478,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207647);
+        AppMethodBeat.o(207390);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207647);
+      AppMethodBeat.o(207390);
     }
     return null;
   }
@@ -503,6 +507,30 @@ public class XWalkSettings
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
       AppMethodBeat.o(183765);
+    }
+    return false;
+  }
+  
+  public boolean getBackgroundAudioPause()
+  {
+    AppMethodBeat.i(207392);
+    try
+    {
+      boolean bool = ((Boolean)this.getBackgroundAudioPauseMethod.invoke(new Object[0])).booleanValue();
+      AppMethodBeat.o(207392);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(207392);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(207392);
     }
     return false;
   }
@@ -1381,6 +1409,8 @@ public class XWalkSettings
     this.getMinimumLogicalFontSizeMethod.init(this.bridge, null, "getMinimumLogicalFontSizeSuper", new Class[0]);
     this.getAppBrandInfoMethod.init(this.bridge, null, "getAppBrandInfoSuper", new Class[0]);
     this.setAppBrandInfoMethod.init(this.bridge, null, "setAppBrandInfoSuper", new Class[] { Map.class });
+    this.getBackgroundAudioPauseMethod.init(this.bridge, null, "getBackgroundAudioPauseSuper", new Class[0]);
+    this.setBackgroundAudioPauseMethod.init(this.bridge, null, "setBackgroundAudioPauseSuper", new Class[] { Boolean.TYPE });
     this.SetJSExceptionCallBackXWalkJSExceptionListenerInternalMethod.init(this.bridge, null, "SetJSExceptionCallBackSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkJSExceptionListenerBridge") });
     this.InvokeChannelInternalMethod.init(this.bridge, null, "InvokeChannel", new Class[] { Integer.TYPE, [Ljava.lang.Object.class });
     AppMethodBeat.o(154948);
@@ -1502,11 +1532,11 @@ public class XWalkSettings
   
   public void setAppBrandInfo(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(207646);
+    AppMethodBeat.i(207389);
     try
     {
       this.setAppBrandInfoMethod.invoke(new Object[] { paramMap });
-      AppMethodBeat.o(207646);
+      AppMethodBeat.o(207389);
       return;
     }
     catch (UnsupportedOperationException paramMap)
@@ -1514,11 +1544,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         paramMap = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207646);
+        AppMethodBeat.o(207389);
         throw paramMap;
       }
       XWalkCoreWrapper.handleRuntimeError(paramMap);
-      AppMethodBeat.o(207646);
+      AppMethodBeat.o(207389);
     }
   }
   
@@ -1587,6 +1617,29 @@ public class XWalkSettings
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
       AppMethodBeat.o(183764);
+    }
+  }
+  
+  public void setBackgroundAudioPause(boolean paramBoolean)
+  {
+    AppMethodBeat.i(207391);
+    try
+    {
+      this.setBackgroundAudioPauseMethod.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(207391);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(207391);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(207391);
     }
   }
   
@@ -2461,7 +2514,7 @@ public class XWalkSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.XWalkSettings
  * JD-Core Version:    0.7.0.1
  */

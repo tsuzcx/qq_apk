@@ -5,26 +5,25 @@ import android.content.Context;
 import android.location.LocationManager;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.shake.b.e;
 import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.protocal.protobuf.bpt;
-import com.tencent.mm.protocal.protobuf.bpy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.ccl;
+import com.tencent.mm.protocal.protobuf.ccq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,32 +33,32 @@ import org.json.JSONObject;
 
 public final class h
   extends l.b
-  implements f
+  implements i
 {
-  public static int zea = 3;
-  private float fHj;
-  private float fHk;
-  private b.a fHp;
-  private com.tencent.mm.modelgeo.d hTg;
-  private int zbP;
-  private d zdV;
-  public Collection<h.a> zdW;
-  private int zdX;
-  private int zdY;
-  private int zdZ;
+  public static int DiS = 3;
+  private int DgH;
+  private d DiN;
+  public Collection<h.a> DiO;
+  private int DiP;
+  private int DiQ;
+  private int DiR;
+  private b.a gmA;
+  private float gmu;
+  private float gmv;
+  private com.tencent.mm.modelgeo.d iOv;
   
   public h(l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28293);
-    this.zdW = null;
-    this.fHj = -85.0F;
-    this.fHk = -1000.0F;
-    this.zbP = -1000;
-    this.zdX = 10001;
-    this.zdY = 10002;
-    this.zdZ = 10003;
-    this.fHp = new b.a()
+    this.DiO = null;
+    this.gmu = -85.0F;
+    this.gmv = -1000.0F;
+    this.DgH = -1000;
+    this.DiP = 10001;
+    this.DiQ = 10002;
+    this.DiR = 10003;
+    this.gmA = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -82,13 +81,13 @@ public final class h
   public static void a(com.tencent.mm.plugin.shake.b.d paramd)
   {
     AppMethodBeat.i(28302);
-    if ((paramd != null) && (paramd.field_sex == zea))
+    if ((paramd != null) && (paramd.field_sex == DiS))
     {
-      bc.aCg();
-      c.ajA().set(am.a.IOd, Boolean.TRUE);
-      long l = bu.aRi();
-      bc.aCg();
-      c.ajA().set(am.a.IOe, Long.valueOf(l));
+      bg.aVF();
+      c.azQ().set(ar.a.NWf, Boolean.TRUE);
+      long l = Util.nowSecond();
+      bg.aVF();
+      c.azQ().set(ar.a.NWg, Long.valueOf(l));
     }
     try
     {
@@ -98,8 +97,8 @@ public final class h
         paramd = paramd.split(",");
         if (paramd.length == 4)
         {
-          bc.aCg();
-          c.ajA().set(am.a.INW, Long.valueOf(paramd[0]));
+          bg.aVF();
+          c.azQ().set(ar.a.NVY, Long.valueOf(paramd[0]));
         }
       }
       AppMethodBeat.o(28302);
@@ -109,7 +108,7 @@ public final class h
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
+        Log.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
         paramd = null;
       }
     }
@@ -132,8 +131,8 @@ public final class h
           localObject = localObject[3];
           h.a locala = new h.a();
           locala.uuid = paramd;
-          locala.major = bu.getInt(str, 0);
-          locala.minor = bu.getInt((String)localObject, 0);
+          locala.major = Util.getInt(str, 0);
+          locala.minor = Util.getInt((String)localObject, 0);
         }
       }
       AppMethodBeat.o(28303);
@@ -143,56 +142,56 @@ public final class h
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
+        Log.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
         paramd = null;
       }
     }
   }
   
-  private void dRO()
+  private void eTP()
   {
     AppMethodBeat.i(28299);
-    this.hTg = com.tencent.mm.modelgeo.d.aIh();
-    this.hTg.a(this.fHp, true);
+    this.iOv = com.tencent.mm.modelgeo.d.bca();
+    this.iOv.a(this.gmA, true);
     AppMethodBeat.o(28299);
   }
   
-  public final void dRP()
+  public final void eTQ()
   {
     AppMethodBeat.i(28300);
-    super.dRP();
-    bc.ajj().b(658, this);
+    super.eTQ();
+    bg.azz().b(658, this);
     AppMethodBeat.o(28300);
   }
   
   public final void init()
   {
     AppMethodBeat.i(28294);
-    bc.ajj().a(658, this);
-    dRO();
+    bg.azz().a(658, this);
+    eTP();
     AppMethodBeat.o(28294);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(28301);
-    ae.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService]onSceneEnd :netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService]onSceneEnd :netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramq.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = (d)paramn;
-      if ((658 == paramn.getType()) && (paramString.action == 1))
+      paramString = (d)paramq;
+      if ((658 == paramq.getType()) && (paramString.action == 1))
       {
-        paramString = (bpt)paramString.hZD.hQE.hQJ;
-        if (paramString.Hdq == null)
+        paramString = (ccl)paramString.iUB.iLL.iLR;
+        if (paramString.Mit == null)
         {
-          this.zcf.d(null, 3L);
+          this.DgX.f(null, 3L);
           AppMethodBeat.o(28301);
           return;
         }
-        if (paramString.Hdq.Gpf == 0)
+        if (paramString.Mit.LjQ == 0)
         {
-          ae.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]onSceneEnd :message:%s,tips:%s,result:%s", new Object[] { paramString.Hdq.urg, paramString.Hdq.xcg, Integer.valueOf(paramString.Hdq.Gpf) });
-          paramString = paramString.Hdq.urg;
+          Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]onSceneEnd :message:%s,tips:%s,result:%s", new Object[] { paramString.Mit.xJz, paramString.Mit.AZI, Integer.valueOf(paramString.Mit.LjQ) });
+          paramString = paramString.Mit.xJz;
         }
       }
     }
@@ -202,29 +201,29 @@ public final class h
       {
         paramString = new JSONObject(paramString);
         JSONArray localJSONArray = paramString.getJSONArray("msgs");
-        paramn = paramString.getJSONObject("guide_switch");
-        paramInt2 = paramn.getInt("channel_open_method");
-        long l = paramn.getLong("channel_open_time");
-        paramInt1 = paramn.getInt("shake_tab_display");
+        paramq = paramString.getJSONObject("guide_switch");
+        paramInt2 = paramq.getInt("channel_open_method");
+        long l = paramq.getLong("channel_open_time");
+        paramInt1 = paramq.getInt("shake_tab_display");
         int i = paramString.getJSONObject("gated_launch_option").getInt("tab_state");
-        bc.aCg();
-        c.ajA().set(am.a.INX, Integer.valueOf(paramInt2));
-        bc.aCg();
-        c.ajA().set(am.a.INY, Long.valueOf(l));
-        bc.aCg();
-        c.ajA().set(am.a.INZ, Integer.valueOf(paramInt1));
-        bc.aCg();
-        c.ajA().set(am.a.IOi, Integer.valueOf(i));
-        ae.i("MicroMsg.ShakeIbeaconService", "[shakezb]channel_open_method is " + paramInt2 + " ,channel_open_time is " + l + ", shake_tab_display is " + paramInt1);
+        bg.aVF();
+        c.azQ().set(ar.a.NVZ, Integer.valueOf(paramInt2));
+        bg.aVF();
+        c.azQ().set(ar.a.NWa, Long.valueOf(l));
+        bg.aVF();
+        c.azQ().set(ar.a.NWb, Integer.valueOf(paramInt1));
+        bg.aVF();
+        c.azQ().set(ar.a.NWk, Integer.valueOf(i));
+        Log.i("MicroMsg.ShakeIbeaconService", "[shakezb]channel_open_method is " + paramInt2 + " ,channel_open_time is " + l + ", shake_tab_display is " + paramInt1);
         i = localJSONArray.length();
         paramString = null;
-        e locale = m.dSl();
-        locale.dSb();
+        e locale = m.eUm();
+        locale.eUc();
         if (i > 0)
         {
-          paramn = new ArrayList();
+          paramq = new ArrayList();
           paramInt1 = 0;
-          paramString = paramn;
+          paramString = paramq;
           if (paramInt1 < i)
           {
             paramString = new com.tencent.mm.plugin.shake.b.d();
@@ -249,53 +248,53 @@ public final class h
             paramString.field_province = str4;
             paramString.field_city = str1;
             if (j == 1) {
-              paramString.field_sex = zea;
+              paramString.field_sex = DiS;
             }
             paramString.field_lvbuffer = (String.valueOf(str5) + "," + String.valueOf(str6) + "," + String.valueOf(str7) + "," + String.valueOf(localObject)).getBytes("utf-8");
             paramString.field_insertBatch = 2;
             paramString.field_reserved3 = (str8 + "," + str9 + "," + k);
-            paramn.add(paramString);
+            paramq.add(paramString);
             locale.a(paramString, true);
-            if ((paramString.field_sex != zea) || (paramInt2 != 1)) {
+            if ((paramString.field_sex != DiS) || (paramInt2 != 1)) {
               break label953;
             }
             a(paramString);
             break label953;
           }
         }
-        this.zcf.d(paramString, 1L);
+        this.DgX.f(paramString, 1L);
         AppMethodBeat.o(28301);
         return;
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb] parse error.%s", new Object[] { bu.nullAsNil(paramString.getMessage()) });
-        this.zcf.d(null, 1L);
+        Log.e("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb] parse error.%s", new Object[] { Util.nullAsNil(paramString.getMessage()) });
+        this.DgX.f(null, 1L);
         AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.Hdq.Gpf == this.zdX)
+      if (paramString.Mit.LjQ == this.DiP)
       {
-        this.zcf.d(null, 6L);
+        this.DgX.f(null, 6L);
         AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.Hdq.Gpf == this.zdY)
+      if (paramString.Mit.LjQ == this.DiQ)
       {
-        this.zcf.d(null, 7L);
+        this.DgX.f(null, 7L);
         AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.Hdq.Gpf == this.zdZ)
+      if (paramString.Mit.LjQ == this.DiR)
       {
-        this.zcf.d(null, 8L);
+        this.DgX.f(null, 8L);
         AppMethodBeat.o(28301);
         return;
       }
-      this.zcf.d(null, 1L);
+      this.DgX.f(null, 1L);
       AppMethodBeat.o(28301);
       return;
-      this.zcf.d(null, 3L);
+      this.DgX.f(null, 3L);
       AppMethodBeat.o(28301);
       return;
       label953:
@@ -306,8 +305,8 @@ public final class h
   public final void pause()
   {
     AppMethodBeat.i(28297);
-    if (this.hTg != null) {
-      this.hTg.c(this.fHp);
+    if (this.iOv != null) {
+      this.iOv.c(this.gmA);
     }
     AppMethodBeat.o(28297);
   }
@@ -315,8 +314,8 @@ public final class h
   public final void reset()
   {
     AppMethodBeat.i(28295);
-    if (this.zdV != null) {
-      bc.ajj().a(this.zdV);
+    if (this.DiN != null) {
+      bg.azz().a(this.DiN);
     }
     AppMethodBeat.o(28295);
   }
@@ -324,8 +323,8 @@ public final class h
   public final void resume()
   {
     AppMethodBeat.i(28298);
-    if (this.hTg != null) {
-      this.hTg.a(this.fHp, true);
+    if (this.iOv != null) {
+      this.iOv.a(this.gmA, true);
     }
     AppMethodBeat.o(28298);
   }
@@ -333,17 +332,17 @@ public final class h
   public final void start()
   {
     AppMethodBeat.i(28296);
-    ae.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:start");
+    Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:start");
     init();
     reset();
-    if (this.hTg == null) {
-      dRO();
+    if (this.iOv == null) {
+      eTP();
     }
-    this.hTg.b(this.fHp, true);
+    this.iOv.b(this.gmA, true);
     Object localObject;
     if ((!Build.VERSION.RELEASE.equals("6.0")) && (!Build.VERSION.RELEASE.equals("6.0.0")) && (Build.VERSION.SDK_INT >= 23))
     {
-      localObject = (LocationManager)ak.getContext().getSystemService("location");
+      localObject = (LocationManager)MMApplicationContext.getContext().getSystemService("location");
       if (localObject == null) {
         break label301;
       }
@@ -353,12 +352,12 @@ public final class h
     {
       if (!bool)
       {
-        new aq().postDelayed(new Runnable()
+        new MMHandler().postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(28290);
-            h.a(h.this).d(null, 8L);
+            h.a(h.this).f(null, 8L);
             AppMethodBeat.o(28290);
           }
         }, 1000L);
@@ -368,12 +367,12 @@ public final class h
       localObject = BluetoothAdapter.getDefaultAdapter();
       if ((localObject != null) && (((BluetoothAdapter)localObject).getState() != 12))
       {
-        new aq().postDelayed(new Runnable()
+        new MMHandler().postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(28291);
-            h.b(h.this).d(null, 9L);
+            h.b(h.this).f(null, 9L);
             AppMethodBeat.o(28291);
           }
         }, 1000L);
@@ -382,24 +381,24 @@ public final class h
       }
       if (localObject == null)
       {
-        new aq().postDelayed(new Runnable()
+        new MMHandler().postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(28292);
-            h.c(h.this).d(null, 10L);
+            h.c(h.this).f(null, 10L);
             AppMethodBeat.o(28292);
           }
         }, 1000L);
         AppMethodBeat.o(28296);
         return;
       }
-      if (this.zdW != null) {}
-      for (int i = this.zdW.size();; i = 0)
+      if (this.DiO != null) {}
+      for (int i = this.DiO.size();; i = 0)
       {
-        ae.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:beaconCollection.size:%d", new Object[] { Integer.valueOf(i) });
-        this.zdV = new d(this.zdW, this.fHj, this.fHk, this.zbP);
-        bc.ajj().a(this.zdV, 0);
+        Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:beaconCollection.size:%d", new Object[] { Integer.valueOf(i) });
+        this.DiN = new d(this.DiO, this.gmu, this.gmv, this.DgH);
+        bg.azz().a(this.DiN, 0);
         AppMethodBeat.o(28296);
         return;
       }
@@ -408,7 +407,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.h
  * JD-Core Version:    0.7.0.1
  */

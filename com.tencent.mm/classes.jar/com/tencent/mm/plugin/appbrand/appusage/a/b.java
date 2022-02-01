@@ -2,40 +2,40 @@ package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.csl;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.dko;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
-  public static final String[] hGX;
-  private e db;
+  public static final String[] iBh;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(44668);
-    hGX = new String[] { j.getCreateSQLs(a.info, "AppBrandRecommendCard") };
+    iBh = new String[] { MAutoStorage.getCreateSQLs(a.info, "AppBrandRecommendCard") };
     AppMethodBeat.o(44668);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "AppBrandRecommendCard", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "AppBrandRecommendCard", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final void bdi()
+  public final void byC()
   {
     AppMethodBeat.i(44665);
     this.db.execSQL("AppBrandRecommendCard", "delete from AppBrandRecommendCard");
     AppMethodBeat.o(44665);
   }
   
-  public final LinkedList<csl> bdj()
+  public final LinkedList<dko> byD()
   {
     AppMethodBeat.i(44667);
     Cursor localCursor = this.db.rawQuery("select * from AppBrandRecommendCard LIMIT 100", null);
@@ -44,7 +44,7 @@ public class b
       AppMethodBeat.o(44667);
       return null;
     }
-    ae.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "getRecommendWxaList()");
+    Log.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "getRecommendWxaList()");
     LinkedList localLinkedList = new LinkedList();
     while (localCursor.moveToNext())
     {
@@ -57,19 +57,19 @@ public class b
     return localLinkedList;
   }
   
-  public final void u(LinkedList<csl> paramLinkedList)
+  public final void u(LinkedList<dko> paramLinkedList)
   {
     AppMethodBeat.i(44666);
-    ae.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "addRecommendWxaList()");
+    Log.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "addRecommendWxaList()");
     Object localObject = new LinkedList();
     ((LinkedList)localObject).addAll(paramLinkedList);
     paramLinkedList = ((LinkedList)localObject).iterator();
     while (paramLinkedList.hasNext())
     {
-      localObject = (csl)paramLinkedList.next();
+      localObject = (dko)paramLinkedList.next();
       a locala = new a();
-      locala.field_appId = ((csl)localObject).Hgn;
-      locala.field_recommendCard = ((csl)localObject);
+      locala.field_appId = ((dko)localObject).gTT;
+      locala.field_recommendCard = ((dko)localObject);
       insert(locala);
     }
     AppMethodBeat.o(44666);
@@ -77,7 +77,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.b
  * JD-Core Version:    0.7.0.1
  */

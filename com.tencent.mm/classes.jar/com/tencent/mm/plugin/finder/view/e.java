@@ -7,251 +7,269 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.presenter.contract.CommentDrawerContract.CloseDrawerCallback;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.ab;
+import com.tencent.mm.plugin.finder.storage.an;
+import com.tencent.mm.plugin.finder.storage.c;
+import com.tencent.mm.plugin.finder.storage.config.b;
 import com.tencent.mm.plugin.finder.utils.a;
+import com.tencent.mm.plugin.finder.utils.y;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.ui.MMActivity;
-import d.l;
-import d.o;
+import com.tencent.mm.ui.MMFragmentActivity;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.o;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "", "()V", "scene", "", "safeMode", "", "onCloseDrawerCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "(IZLcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;)V", "context", "Lcom/tencent/mm/ui/MMActivity;", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "drawerCreateData", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "drawerOpenData", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "fromMsg", "mentionCreateTime", "mentionId", "", "closeDrawer", "", "getDrawer", "isDrawerOpen", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onDetach", "onUIPause", "onUIResume", "openDrawer", "feedObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isSingleMode", "refCommentId", "blinkRefComment", "showFooter", "replyCommentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "banSwitch", "reason", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "", "()V", "scene", "", "safeMode", "", "onCloseDrawerCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "(IZLcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;)V", "context", "Lcom/tencent/mm/ui/MMFragmentActivity;", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "drawerCreateData", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "drawerOpenData", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "fromMsg", "mentionCreateTime", "mentionId", "", "closeDrawer", "", "getDrawer", "isDrawerOpen", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onDetach", "onUIPause", "onUIResume", "openDrawer", "feedObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isSingleMode", "refCommentId", "blinkRefComment", "showFooter", "replyCommentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "banSwitch", "reason", "Companion", "plugin-finder_release"})
 public final class e
 {
-  private static final ConcurrentHashMap<Long, o<e.a.a, e.a.b>> tdK;
-  private static final ConcurrentHashMap<Long, e.a.c> tdL;
-  public static final a tdM;
-  private MMActivity fNT;
-  private CommentDrawerContract.CloseDrawerCallback sdk;
-  public FinderCommentDrawer sdu;
-  private boolean smq;
-  private long smr;
-  private int sms;
-  private final e.a.a tdI;
-  private e.a.b tdJ;
+  private static final ConcurrentHashMap<Long, o<e.a.a, e.a.b>> wkw;
+  private static final ConcurrentHashMap<Long, e.a.c> wkx;
+  public static final a wky;
+  private CommentDrawerContract.CloseDrawerCallback tMR;
+  public FinderCommentDrawer tNb;
+  private boolean tZA;
+  private long tZB;
+  private int tZC;
+  private MMFragmentActivity wkt;
+  private final e.a.a wku;
+  private e.a.b wkv;
   
   static
   {
-    AppMethodBeat.i(205714);
-    tdM = new a((byte)0);
-    tdK = new ConcurrentHashMap();
-    tdL = new ConcurrentHashMap();
-    AppMethodBeat.o(205714);
+    AppMethodBeat.i(254732);
+    wky = new a((byte)0);
+    wkw = new ConcurrentHashMap();
+    wkx = new ConcurrentHashMap();
+    AppMethodBeat.o(254732);
   }
   
   public e()
   {
-    this.tdI = null;
+    this.wku = null;
   }
   
   private e(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(205713);
-    this.tdI = new e.a.a(paramInt, paramBoolean);
-    AppMethodBeat.o(205713);
+    AppMethodBeat.i(254731);
+    this.wku = new e.a.a(paramInt, paramBoolean);
+    AppMethodBeat.o(254731);
   }
   
-  public final void a(FinderItem paramFinderItem, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, ab paramab, boolean paramBoolean4, int paramInt, CommentDrawerContract.CloseDrawerCallback paramCloseDrawerCallback)
+  public final void a(FinderItem paramFinderItem, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, an paraman, boolean paramBoolean4, int paramInt, CommentDrawerContract.CloseDrawerCallback paramCloseDrawerCallback)
   {
-    AppMethodBeat.i(205706);
-    d.g.b.p.h(paramFinderItem, "feedObj");
-    this.sdk = paramCloseDrawerCallback;
-    Object localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cIL().value()).intValue() == 1)
+    AppMethodBeat.i(254724);
+    p.h(paramFinderItem, "feedObj");
+    this.tMR = paramCloseDrawerCallback;
+    Object localObject = c.vCb;
+    if (((Number)c.dsr().value()).intValue() == 1)
     {
-      paramCloseDrawerCallback = com.tencent.mm.plugin.finder.utils.p.sXz;
-      localObject = this.tdI;
-      paramCloseDrawerCallback = this.fNT;
+      paramCloseDrawerCallback = y.vXH;
+      localObject = this.wku;
+      paramCloseDrawerCallback = this.wkt;
       if ((localObject != null) && (paramCloseDrawerCallback != null))
       {
-        this.tdJ = new e.a.b(paramFinderItem, paramBoolean1, paramLong, paramBoolean2, paramBoolean3, paramab);
+        this.wkv = new e.a.b(paramFinderItem, paramBoolean1, paramLong, paramBoolean2, paramBoolean3, paraman);
         paramLong = System.currentTimeMillis();
-        paramFinderItem = (Map)tdK;
-        paramab = this.tdJ;
-        if (paramab == null) {
-          d.g.b.p.bdF("drawerOpenData");
+        paramFinderItem = (Map)wkw;
+        paraman = this.wkv;
+        if (paraman == null) {
+          p.btv("drawerOpenData");
         }
-        paramFinderItem.put(Long.valueOf(paramLong), new o(localObject, paramab));
+        paramFinderItem.put(Long.valueOf(paramLong), new o(localObject, paraman));
         paramFinderItem = new Intent();
         paramFinderItem.putExtra("COMMENT_REQUEST_KEY", paramLong);
-        paramFinderItem.putExtra("FROM_MSG", this.smq);
-        paramFinderItem.putExtra("MENTION_ID", this.smr);
-        paramFinderItem.putExtra("MENTION_CREATE_TIME", this.sms);
-        paramab = FinderReporterUIC.tnG;
+        paramFinderItem.putExtra("FROM_MSG", this.tZA);
+        paramFinderItem.putExtra("MENTION_ID", this.tZB);
+        paramFinderItem.putExtra("MENTION_CREATE_TIME", this.tZC);
+        paraman = FinderReporterUIC.wzC;
         FinderReporterUIC.a.a((Context)paramCloseDrawerCallback, paramFinderItem, 0L, 0, false, 124);
-        paramab = a.sVQ;
-        a.c(paramCloseDrawerCallback, paramFinderItem);
-        AppMethodBeat.o(205706);
+        paraman = a.vUU;
+        a.a(paramCloseDrawerCallback, paramFinderItem);
+        AppMethodBeat.o(254724);
       }
     }
     else
     {
-      localObject = this.sdu;
+      localObject = this.tNb;
       if (localObject != null) {
         ((FinderCommentDrawer)localObject).setOnCloseDrawerCallback(paramCloseDrawerCallback);
       }
-      paramCloseDrawerCallback = this.sdu;
+      paramCloseDrawerCallback = this.tNb;
       if (paramCloseDrawerCallback != null)
       {
-        FinderCommentDrawer.a(paramCloseDrawerCallback, paramFinderItem, paramBoolean1, paramLong, paramBoolean2, paramBoolean3, paramab, paramBoolean4, paramInt, 64);
-        AppMethodBeat.o(205706);
+        FinderCommentDrawer.a(paramCloseDrawerCallback, paramFinderItem, paramBoolean1, paramLong, paramBoolean2, paramBoolean3, paraman, paramBoolean4, paramInt, 64);
+        AppMethodBeat.o(254724);
         return;
       }
     }
-    AppMethodBeat.o(205706);
-  }
-  
-  public final void cPH()
-  {
-    AppMethodBeat.i(205708);
-    FinderCommentDrawer localFinderCommentDrawer = this.sdu;
-    if (localFinderCommentDrawer != null)
-    {
-      localFinderCommentDrawer.cPH();
-      AppMethodBeat.o(205708);
-      return;
-    }
-    AppMethodBeat.o(205708);
-  }
-  
-  public final boolean cPI()
-  {
-    AppMethodBeat.i(205709);
-    FinderCommentDrawer localFinderCommentDrawer = this.sdu;
-    if (localFinderCommentDrawer != null)
-    {
-      boolean bool = localFinderCommentDrawer.cPI();
-      AppMethodBeat.o(205709);
-      return bool;
-    }
-    AppMethodBeat.o(205709);
-    return false;
+    AppMethodBeat.o(254724);
   }
   
   public final void d(int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(205712);
-    Object localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if ((((Number)com.tencent.mm.plugin.finder.storage.b.cIL().value()).intValue() == 1) && (paramInt == 500) && (paramIntent != null))
+    AppMethodBeat.i(254730);
+    Object localObject = c.vCb;
+    if ((((Number)c.dsr().value()).intValue() == 1) && (paramInt == 500) && (paramIntent != null))
     {
-      paramIntent = a.an(paramIntent);
+      paramIntent = a.at(paramIntent);
       if (paramIntent != null)
       {
-        localObject = this.sdk;
+        localObject = this.tMR;
         if (localObject != null)
         {
-          ((CommentDrawerContract.CloseDrawerCallback)localObject).g(paramIntent.commentCount, paramIntent.pkh);
-          AppMethodBeat.o(205712);
+          ((CommentDrawerContract.CloseDrawerCallback)localObject).g(paramIntent.commentCount, paramIntent.qzs);
+          AppMethodBeat.o(254730);
           return;
         }
-        AppMethodBeat.o(205712);
+        AppMethodBeat.o(254730);
         return;
       }
     }
-    AppMethodBeat.o(205712);
+    AppMethodBeat.o(254730);
+  }
+  
+  public final void dGr()
+  {
+    AppMethodBeat.i(254726);
+    FinderCommentDrawer localFinderCommentDrawer = this.tNb;
+    if (localFinderCommentDrawer != null)
+    {
+      localFinderCommentDrawer.dGr();
+      AppMethodBeat.o(254726);
+      return;
+    }
+    AppMethodBeat.o(254726);
+  }
+  
+  public final boolean dGs()
+  {
+    AppMethodBeat.i(254727);
+    FinderCommentDrawer localFinderCommentDrawer = this.tNb;
+    if (localFinderCommentDrawer != null)
+    {
+      boolean bool = localFinderCommentDrawer.dGs();
+      AppMethodBeat.o(254727);
+      return bool;
+    }
+    AppMethodBeat.o(254727);
+    return false;
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(205711);
-    FinderCommentDrawer localFinderCommentDrawer = this.sdu;
+    AppMethodBeat.i(254729);
+    FinderCommentDrawer localFinderCommentDrawer = this.tNb;
     if (localFinderCommentDrawer != null)
     {
-      localFinderCommentDrawer.cQu();
-      AppMethodBeat.o(205711);
+      localFinderCommentDrawer.dHu();
+      AppMethodBeat.o(254729);
       return;
     }
-    AppMethodBeat.o(205711);
+    AppMethodBeat.o(254729);
   }
   
   public final void onUIResume()
   {
-    AppMethodBeat.i(205710);
-    FinderCommentDrawer localFinderCommentDrawer = this.sdu;
+    AppMethodBeat.i(254728);
+    FinderCommentDrawer localFinderCommentDrawer = this.tNb;
     if (localFinderCommentDrawer != null)
     {
-      localFinderCommentDrawer.cPL();
-      AppMethodBeat.o(205710);
+      localFinderCommentDrawer.dGv();
+      AppMethodBeat.o(254728);
       return;
     }
-    AppMethodBeat.o(205710);
+    AppMethodBeat.o(254728);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion;", "", "()V", "COMMENT_REQUEST_KEY", "", "COMMENT_RESULT_KEY", "FROM_MSG", "MENTION_CREATE_TIME", "MENTION_ID", "REQ_CODE", "", "TAG", "drawerRequestMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "drawerResultMap", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerResultData;", "createDrawerForMsg", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "mentionId", "mentionCreateTime", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "commentScene", "safeMode", "", "createDrawerToAttachWindow", "parent", "Landroid/view/View;", "fromMsg", "intent", "Landroid/content/Intent;", "getDrawerRequestData", "getDrawerResultData", "getMentionCreateTime", "getMentionId", "putDrawerResultData", "", "resultData", "DrawerCreateData", "DrawerOpenData", "DrawerResultData", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion;", "", "()V", "COMMENT_REQUEST_KEY", "", "COMMENT_RESULT_KEY", "FROM_MSG", "MENTION_CREATE_TIME", "MENTION_ID", "REQ_CODE", "", "TAG", "drawerRequestMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "drawerResultMap", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerResultData;", "createDrawerForMsg", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "mentionId", "mentionCreateTime", "context", "Lcom/tencent/mm/ui/MMFragmentActivity;", "scene", "commentScene", "safeMode", "", "createDrawerToAttachWindow", "parent", "Landroid/view/View;", "exposeScene", "fromMsg", "intent", "Landroid/content/Intent;", "getDrawerRequestData", "getDrawerResultData", "getMentionCreateTime", "getMentionId", "putDrawerResultData", "", "resultData", "DrawerCreateData", "DrawerOpenData", "DrawerResultData", "plugin-finder_release"})
   public static final class a
   {
-    public static e a(MMActivity paramMMActivity, View paramView, int paramInt, boolean paramBoolean)
+    private static e a(long paramLong, int paramInt1, MMFragmentActivity paramMMFragmentActivity, int paramInt2)
     {
-      AppMethodBeat.i(205704);
-      d.g.b.p.h(paramMMActivity, "context");
-      d.g.b.p.h(paramView, "parent");
-      paramMMActivity.getWindow().setSoftInputMode(50);
-      e locale = new e(paramInt, paramBoolean, (byte)0);
-      e.a(locale, paramMMActivity);
-      Object localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cIL().value()).intValue() == 1) {
+      AppMethodBeat.i(254721);
+      p.h(paramMMFragmentActivity, "context");
+      e locale = new e(paramInt2, false, (byte)0);
+      e.a(locale, paramLong);
+      e.a(locale, paramInt1);
+      e.a(locale, paramMMFragmentActivity);
+      e.a(locale, null);
+      e.a(locale);
+      AppMethodBeat.o(254721);
+      return locale;
+    }
+    
+    public static e a(MMFragmentActivity paramMMFragmentActivity, View paramView, int paramInt1, boolean paramBoolean, int paramInt2)
+    {
+      AppMethodBeat.i(254719);
+      p.h(paramMMFragmentActivity, "context");
+      p.h(paramView, "parent");
+      paramMMFragmentActivity.getWindow().setSoftInputMode(50);
+      e locale = new e(paramInt1, paramBoolean, (byte)0);
+      e.a(locale, paramMMFragmentActivity);
+      Object localObject = c.vCb;
+      if (((Number)c.dsr().value()).intValue() == 1) {
         e.a(locale, null);
       }
       for (;;)
       {
-        AppMethodBeat.o(205704);
+        AppMethodBeat.o(254719);
         return locale;
-        localObject = FinderCommentDrawer.tdV;
-        e.a(locale, FinderCommentDrawer.b.b(paramMMActivity, paramView, paramInt, paramBoolean));
+        localObject = FinderCommentDrawer.wkG;
+        e.a(locale, FinderCommentDrawer.b.a(paramMMFragmentActivity, paramView, paramInt1, null, paramBoolean, false, paramInt2, 8));
       }
     }
     
-    public static e.a.c an(Intent paramIntent)
+    public static e.a.c at(Intent paramIntent)
     {
-      AppMethodBeat.i(205705);
-      d.g.b.p.h(paramIntent, "intent");
+      AppMethodBeat.i(254723);
+      p.h(paramIntent, "intent");
       long l = paramIntent.getLongExtra("COMMENT_RESULT_KEY", 0L);
-      paramIntent = (e.a.c)e.cPK().remove(Long.valueOf(l));
-      AppMethodBeat.o(205705);
+      paramIntent = (e.a.c)e.dGu().remove(Long.valueOf(l));
+      AppMethodBeat.o(254723);
       return paramIntent;
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "", "feedObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isSingleMode", "", "refCommentId", "", "blinkRefComment", "showFooter", "replyCommentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;ZJZZLcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "getBlinkRefComment", "()Z", "getFeedObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getRefCommentId", "()J", "getReplyCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "getShowFooter", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "", "feedObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isSingleMode", "", "refCommentId", "", "blinkRefComment", "showFooter", "replyCommentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;ZJZZLcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "getBlinkRefComment", "()Z", "getFeedObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getRefCommentId", "()J", "getReplyCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "getShowFooter", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
     public static final class b
     {
-      public final long rQR;
-      public final FinderItem scK;
-      public final boolean sdo;
-      public final boolean sdp;
-      public final boolean tdN;
-      public final ab tdO;
+      public final FinderItem tMO;
+      public final boolean tMV;
+      public final boolean tMW;
+      public final long tuj;
+      public final an wkA;
+      public final boolean wkz;
       
-      public b(FinderItem paramFinderItem, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, ab paramab)
+      public b(FinderItem paramFinderItem, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, an paraman)
       {
-        AppMethodBeat.i(205696);
-        this.scK = paramFinderItem;
-        this.sdo = paramBoolean1;
-        this.rQR = paramLong;
-        this.sdp = paramBoolean2;
-        this.tdN = paramBoolean3;
-        this.tdO = paramab;
-        AppMethodBeat.o(205696);
+        AppMethodBeat.i(254711);
+        this.tMO = paramFinderItem;
+        this.tMV = paramBoolean1;
+        this.tuj = paramLong;
+        this.tMW = paramBoolean2;
+        this.wkz = paramBoolean3;
+        this.wkA = paraman;
+        AppMethodBeat.o(254711);
       }
       
       public final boolean equals(Object paramObject)
       {
-        AppMethodBeat.i(205699);
+        AppMethodBeat.i(254714);
         if (this != paramObject)
         {
           if ((paramObject instanceof b))
           {
             paramObject = (b)paramObject;
-            if ((!d.g.b.p.i(this.scK, paramObject.scK)) || (this.sdo != paramObject.sdo) || (this.rQR != paramObject.rQR) || (this.sdp != paramObject.sdp) || (this.tdN != paramObject.tdN) || (!d.g.b.p.i(this.tdO, paramObject.tdO))) {}
+            if ((!p.j(this.tMO, paramObject.tMO)) || (this.tMV != paramObject.tMV) || (this.tuj != paramObject.tuj) || (this.tMW != paramObject.tMW) || (this.wkz != paramObject.wkz) || (!p.j(this.wkA, paramObject.wkA))) {}
           }
         }
         else
         {
-          AppMethodBeat.o(205699);
+          AppMethodBeat.o(254714);
           return true;
         }
-        AppMethodBeat.o(205699);
+        AppMethodBeat.o(254714);
         return false;
       }
       
@@ -262,9 +280,9 @@ public final class e
       
       public final String toString()
       {
-        AppMethodBeat.i(205697);
-        String str = "DrawerOpenData(feedObj=" + this.scK + ", isSingleMode=" + this.sdo + ", refCommentId=" + this.rQR + ", blinkRefComment=" + this.sdp + ", showFooter=" + this.tdN + ", replyCommentObj=" + this.tdO + ")";
-        AppMethodBeat.o(205697);
+        AppMethodBeat.i(254712);
+        String str = "DrawerOpenData(feedObj=" + this.tMO + ", isSingleMode=" + this.tMV + ", refCommentId=" + this.tuj + ", blinkRefComment=" + this.tMW + ", showFooter=" + this.wkz + ", replyCommentObj=" + this.wkA + ")";
+        AppMethodBeat.o(254712);
         return str;
       }
     }
@@ -272,7 +290,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.e
  * JD-Core Version:    0.7.0.1
  */

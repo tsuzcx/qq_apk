@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="lf">48.0dip</dimen>
-    <dimen name="nb">12.0dip</dimen>
-    <dimen name="nd">14.0dip</dimen>
-    <dimen name="o9">52.0dip</dimen>
-    <item type="dimen" name="oa">@dimen/od</item>
-    <dimen name="od">24.0dip</dimen>
-    <item type="dimen" name="aln">@dimen/b4</item>
-    <dimen name="am5">24.0dip</dimen>
-    <item type="dimen" name="ame">@dimen/c_</item>
+    <dimen name="lx">48.0dip</dimen>
+    <dimen name="nt">12.0dip</dimen>
+    <dimen name="nv">14.0dip</dimen>
+    <dimen name="oq">24.0dip</dimen>
+    <dimen name="or">52.0dip</dimen>
+    <item type="dimen" name="ot">@dimen/ow</item>
+    <dimen name="ow">24.0dip</dimen>
+    <item type="dimen" name="a_r">@dimen/ci</item>
+    <item type="dimen" name="apf">@dimen/b8</item>
 </resources>

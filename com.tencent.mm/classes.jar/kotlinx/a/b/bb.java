@@ -1,118 +1,118 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 import kotlinx.a.n;
 import kotlinx.a.s;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/SerialDescriptorForNullable;", "Lkotlinx/serialization/SerialDescriptor;", "original", "(Lkotlinx/serialization/SerialDescriptor;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementsCount", "", "getElementsCount", "()I", "isNullable", "", "()Z", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "name", "", "getName", "()Ljava/lang/String;", "serialName", "getSerialName", "equals", "other", "", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "getElementName", "getEntityAnnotations", "hashCode", "isElementOptional", "toString", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/SerialDescriptorForNullable;", "Lkotlinx/serialization/SerialDescriptor;", "original", "(Lkotlinx/serialization/SerialDescriptor;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementsCount", "", "getElementsCount", "()I", "isNullable", "", "()Z", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "name", "", "getName", "()Ljava/lang/String;", "serialName", "getSerialName", "equals", "other", "", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "getElementName", "getEntityAnnotations", "hashCode", "isElementOptional", "toString", "kotlinx-serialization-runtime"})
 public final class bb
   implements n
 {
-  private final String OiM;
-  private final n OjW;
+  private final String TXI;
+  private final n TYR;
   
   public bb(n paramn)
   {
-    AppMethodBeat.i(199779);
-    this.OjW = paramn;
-    this.OiM = (this.OjW.gBs() + "?");
-    AppMethodBeat.o(199779);
+    AppMethodBeat.i(225551);
+    this.TYR = paramn;
+    this.TXI = (this.TYR.hOz() + "?");
+    AppMethodBeat.o(225551);
   }
   
-  public final String amt(int paramInt)
+  public final String awc(int paramInt)
   {
-    AppMethodBeat.i(199784);
-    String str = this.OjW.amt(paramInt);
-    AppMethodBeat.o(199784);
+    AppMethodBeat.i(225556);
+    String str = this.TYR.awc(paramInt);
+    AppMethodBeat.o(225556);
     return str;
   }
   
-  public final n amu(int paramInt)
+  public final n awd(int paramInt)
   {
-    AppMethodBeat.i(199782);
-    n localn = this.OjW.amu(paramInt);
-    AppMethodBeat.o(199782);
+    AppMethodBeat.i(225554);
+    n localn = this.TYR.awd(paramInt);
+    AppMethodBeat.o(225554);
     return localn;
   }
   
-  public final int beQ(String paramString)
+  public final int buF(String paramString)
   {
-    AppMethodBeat.i(199783);
+    AppMethodBeat.i(225555);
     p.h(paramString, "name");
-    int i = this.OjW.beQ(paramString);
-    AppMethodBeat.o(199783);
+    int i = this.TYR.buF(paramString);
+    AppMethodBeat.o(225555);
     return i;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(199776);
+    AppMethodBeat.i(225548);
     if ((bb)this == paramObject)
     {
-      AppMethodBeat.o(199776);
+      AppMethodBeat.o(225548);
       return true;
     }
     if (!(paramObject instanceof bb))
     {
-      AppMethodBeat.o(199776);
+      AppMethodBeat.o(225548);
       return false;
     }
-    if ((p.i(this.OjW, ((bb)paramObject).OjW) ^ true))
+    if ((p.j(this.TYR, ((bb)paramObject).TYR) ^ true))
     {
-      AppMethodBeat.o(199776);
+      AppMethodBeat.o(225548);
       return false;
     }
-    AppMethodBeat.o(199776);
+    AppMethodBeat.o(225548);
     return true;
   }
   
-  public final String gBs()
+  public final s hOA()
   {
-    return this.OiM;
-  }
-  
-  public final s gBt()
-  {
-    AppMethodBeat.i(199781);
-    s locals = this.OjW.gBt();
-    AppMethodBeat.o(199781);
+    AppMethodBeat.i(225553);
+    s locals = this.TYR.hOA();
+    AppMethodBeat.o(225553);
     return locals;
   }
   
-  public final boolean gBu()
+  public final boolean hOB()
   {
     return true;
   }
   
-  public final int gBv()
+  public final int hOC()
   {
-    AppMethodBeat.i(199780);
-    int i = this.OjW.gBv();
-    AppMethodBeat.o(199780);
+    AppMethodBeat.i(225552);
+    int i = this.TYR.hOC();
+    AppMethodBeat.o(225552);
     return i;
+  }
+  
+  public final String hOz()
+  {
+    return this.TXI;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(199778);
-    int i = this.OjW.hashCode();
-    AppMethodBeat.o(199778);
+    AppMethodBeat.i(225550);
+    int i = this.TYR.hashCode();
+    AppMethodBeat.o(225550);
     return i * 31;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(199777);
-    String str = this.OjW + '?';
-    AppMethodBeat.o(199777);
+    AppMethodBeat.i(225549);
+    String str = this.TYR + '?';
+    AppMethodBeat.o(225549);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.a.b.bb
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import javax.security.auth.x500.X500Principal;
 
 public abstract class a
 {
-  public static String[] ad(String[] paramArrayOfString)
+  public static String[] ae(String[] paramArrayOfString)
   {
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
       return (String[])paramArrayOfString.clone();
@@ -23,9 +23,9 @@ public abstract class a
     return paramArrayOfString;
   }
   
-  public static a hc(String paramString, int paramInt)
+  public static a hw(String paramString, int paramInt)
   {
-    if (com.tencent.soter.core.a.fYY())
+    if (com.tencent.soter.core.a.hlj())
     {
       if (Build.VERSION.SDK_INT >= 23) {
         return new b(paramString, paramInt);
@@ -36,33 +36,33 @@ public abstract class a
     return new a();
   }
   
-  public abstract a ab(String... paramVarArgs);
-  
   public abstract a ac(String... paramVarArgs);
   
-  public abstract AlgorithmParameterSpec fZf();
+  public abstract a ad(String... paramVarArgs);
   
-  public abstract a fZg();
+  public abstract AlgorithmParameterSpec hlq();
+  
+  public abstract a hlr();
   
   static final class a
     extends a
   {
-    public final a ab(String... paramVarArgs)
-    {
-      return null;
-    }
-    
     public final a ac(String... paramVarArgs)
     {
       return null;
     }
     
-    public final AlgorithmParameterSpec fZf()
+    public final a ad(String... paramVarArgs)
     {
       return null;
     }
     
-    public final a fZg()
+    public final AlgorithmParameterSpec hlq()
+    {
+      return null;
+    }
+    
+    public final a hlr()
     {
       return null;
     }
@@ -72,46 +72,46 @@ public abstract class a
   static final class b
     extends a
   {
-    private KeyGenParameterSpec.Builder MmR;
+    private KeyGenParameterSpec.Builder RPp;
     
     public b(String paramString, int paramInt)
     {
       AppMethodBeat.i(88633);
-      this.MmR = null;
-      this.MmR = new KeyGenParameterSpec.Builder(paramString, paramInt);
+      this.RPp = null;
+      this.RPp = new KeyGenParameterSpec.Builder(paramString, paramInt);
       AppMethodBeat.o(88633);
-    }
-    
-    @SuppressLint({"WrongConstant"})
-    public final a ab(String... paramVarArgs)
-    {
-      AppMethodBeat.i(88635);
-      this.MmR.setDigests(paramVarArgs);
-      AppMethodBeat.o(88635);
-      return this;
     }
     
     @SuppressLint({"WrongConstant"})
     public final a ac(String... paramVarArgs)
     {
+      AppMethodBeat.i(88635);
+      this.RPp.setDigests(paramVarArgs);
+      AppMethodBeat.o(88635);
+      return this;
+    }
+    
+    @SuppressLint({"WrongConstant"})
+    public final a ad(String... paramVarArgs)
+    {
       AppMethodBeat.i(88636);
-      this.MmR.setSignaturePaddings(paramVarArgs);
+      this.RPp.setSignaturePaddings(paramVarArgs);
       AppMethodBeat.o(88636);
       return this;
     }
     
-    public final AlgorithmParameterSpec fZf()
+    public final AlgorithmParameterSpec hlq()
     {
       AppMethodBeat.i(88634);
-      KeyGenParameterSpec localKeyGenParameterSpec = this.MmR.build();
+      KeyGenParameterSpec localKeyGenParameterSpec = this.RPp.build();
       AppMethodBeat.o(88634);
       return localKeyGenParameterSpec;
     }
     
-    public final a fZg()
+    public final a hlr()
     {
       AppMethodBeat.i(88637);
-      this.MmR.setUserAuthenticationRequired(true);
+      this.RPp.setUserAuthenticationRequired(true);
       AppMethodBeat.o(88637);
       return this;
     }
@@ -120,31 +120,31 @@ public abstract class a
   static final class c
     extends a
   {
-    private final String MmS;
-    private int MmT;
-    private int MmU;
-    private AlgorithmParameterSpec MmV;
-    private X500Principal MmW;
-    private BigInteger MmX;
-    private Date MmY;
-    private Date MmZ;
-    private Date Mna;
-    private Date Mnb;
-    private Date Mnc;
-    private String[] Mnd;
-    private String[] Mne;
-    private String[] Mnf;
-    private String[] Mng;
-    private boolean Mnh;
-    private boolean Mni;
-    private int Mnj;
+    private Date RPA;
+    private String[] RPB;
+    private String[] RPC;
+    private String[] RPD;
+    private String[] RPE;
+    private boolean RPF;
+    private boolean RPG;
+    private int RPH;
+    private final String RPq;
+    private int RPr;
+    private int RPs;
+    private AlgorithmParameterSpec RPt;
+    private X500Principal RPu;
+    private BigInteger RPv;
+    private Date RPw;
+    private Date RPx;
+    private Date RPy;
+    private Date RPz;
     
     public c(String paramString, int paramInt)
     {
       AppMethodBeat.i(88638);
-      this.MmU = -1;
-      this.Mnh = true;
-      this.Mnj = -1;
+      this.RPs = -1;
+      this.RPF = true;
+      this.RPH = -1;
       if (paramString == null)
       {
         paramString = new NullPointerException("keystoreAlias == null");
@@ -157,45 +157,45 @@ public abstract class a
         AppMethodBeat.o(88638);
         throw paramString;
       }
-      this.MmS = paramString;
-      this.MmT = paramInt;
+      this.RPq = paramString;
+      this.RPr = paramInt;
       AppMethodBeat.o(88638);
-    }
-    
-    public final a ab(String... paramVarArgs)
-    {
-      AppMethodBeat.i(88639);
-      this.Mnd = ad(paramVarArgs);
-      AppMethodBeat.o(88639);
-      return this;
     }
     
     public final a ac(String... paramVarArgs)
     {
+      AppMethodBeat.i(88639);
+      this.RPB = ae(paramVarArgs);
+      AppMethodBeat.o(88639);
+      return this;
+    }
+    
+    public final a ad(String... paramVarArgs)
+    {
       AppMethodBeat.i(88640);
-      this.Mnf = ad(paramVarArgs);
+      this.RPD = ae(paramVarArgs);
       AppMethodBeat.o(88640);
       return this;
     }
     
-    public final AlgorithmParameterSpec fZf()
+    public final AlgorithmParameterSpec hlq()
     {
       AppMethodBeat.i(88641);
-      AlgorithmParameterSpec localAlgorithmParameterSpec = (AlgorithmParameterSpec)Class.forName("android.security.keystore.KeyGenParameterSpec").getConstructor(new Class[] { String.class, Integer.TYPE, AlgorithmParameterSpec.class, X500Principal.class, BigInteger.class, Date.class, Date.class, Date.class, Date.class, Date.class, Integer.TYPE, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, Boolean.TYPE, Boolean.TYPE, Integer.TYPE }).newInstance(new Object[] { this.MmS, Integer.valueOf(this.MmU), this.MmV, this.MmW, this.MmX, this.MmY, this.MmZ, this.Mna, this.Mnb, this.Mnc, Integer.valueOf(this.MmT), this.Mnd, this.Mne, this.Mnf, this.Mng, Boolean.valueOf(this.Mnh), Boolean.valueOf(this.Mni), Integer.valueOf(this.Mnj) });
+      AlgorithmParameterSpec localAlgorithmParameterSpec = (AlgorithmParameterSpec)Class.forName("android.security.keystore.KeyGenParameterSpec").getConstructor(new Class[] { String.class, Integer.TYPE, AlgorithmParameterSpec.class, X500Principal.class, BigInteger.class, Date.class, Date.class, Date.class, Date.class, Date.class, Integer.TYPE, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, Boolean.TYPE, Boolean.TYPE, Integer.TYPE }).newInstance(new Object[] { this.RPq, Integer.valueOf(this.RPs), this.RPt, this.RPu, this.RPv, this.RPw, this.RPx, this.RPy, this.RPz, this.RPA, Integer.valueOf(this.RPr), this.RPB, this.RPC, this.RPD, this.RPE, Boolean.valueOf(this.RPF), Boolean.valueOf(this.RPG), Integer.valueOf(this.RPH) });
       AppMethodBeat.o(88641);
       return localAlgorithmParameterSpec;
     }
     
-    public final a fZg()
+    public final a hlr()
     {
-      this.Mni = true;
+      this.RPG = true;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.soter.core.b.a
  * JD-Core Version:    0.7.0.1
  */

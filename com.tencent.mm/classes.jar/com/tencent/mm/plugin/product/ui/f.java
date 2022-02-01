@@ -3,101 +3,107 @@ package com.tencent.mm.plugin.product.ui;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.cw;
-import com.tencent.mm.g.a.yv;
-import com.tencent.mm.model.v;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.aaa;
+import com.tencent.mm.g.a.cz;
+import com.tencent.mm.g.a.qj;
+import com.tencent.mm.g.a.qj.b;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.product.b.d;
-import com.tencent.mm.plugin.product.b.i;
 import com.tencent.mm.plugin.product.b.j;
 import com.tencent.mm.plugin.product.b.k;
 import com.tencent.mm.plugin.product.b.l;
 import com.tencent.mm.plugin.product.b.m;
-import com.tencent.mm.protocal.protobuf.akm;
-import com.tencent.mm.protocal.protobuf.akn;
-import com.tencent.mm.protocal.protobuf.akt;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.ana;
+import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.dki;
+import com.tencent.mm.protocal.protobuf.dr;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread.IWaitWorkThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public final class f
-  implements com.tencent.mm.ak.f
+  implements com.tencent.mm.ak.i
 {
   static int mScene = 0;
-  Activity keK;
-  boolean xdl;
-  private boolean xdm;
-  com.tencent.mm.plugin.product.b.c xdn;
-  private a xdo;
-  private com.tencent.mm.sdk.b.c xdp;
+  boolean BaN;
+  private boolean BaO;
+  com.tencent.mm.plugin.product.b.c BaP;
+  private a BaQ;
+  private IListener BaR;
+  Activity mContext;
   
   public f(Activity paramActivity, a parama)
   {
     AppMethodBeat.i(66965);
-    this.xdl = false;
-    this.xdm = false;
-    this.xdp = new com.tencent.mm.sdk.b.c() {};
-    this.keK = paramActivity;
-    com.tencent.mm.plugin.product.a.a.dCJ();
-    this.xdn = com.tencent.mm.plugin.product.a.a.dCK();
-    this.xdo = parama;
+    this.BaN = false;
+    this.BaO = false;
+    this.BaR = new IListener() {};
+    this.mContext = paramActivity;
+    com.tencent.mm.plugin.product.a.a.eDb();
+    this.BaP = com.tencent.mm.plugin.product.a.a.eDc();
+    this.BaQ = parama;
     AppMethodBeat.o(66965);
   }
   
-  private void dDk()
+  private void eDC()
   {
     AppMethodBeat.i(66969);
-    Object localObject1 = com.tencent.mm.plugin.product.a.a.dCJ().dCL();
-    Object localObject2 = this.xdn.dCR();
-    if ((localObject2 != null) && (!bu.isNullOrNil(((csg)localObject2).urL)) && (!((csg)localObject2).urL.contains(";")))
+    Object localObject1 = com.tencent.mm.plugin.product.a.a.eDb().eDd();
+    Object localObject2 = this.BaP.eDj();
+    if ((localObject2 != null) && (!Util.isNullOrNil(((dki)localObject2).xKd)) && (!((dki)localObject2).xKd.contains(";")))
     {
-      ((d)localObject1).xbN.remove(((csg)localObject2).urL);
-      ((d)localObject1).xbN.add(((csg)localObject2).urL);
-      ((d)localObject1).dDe();
+      ((d)localObject1).AZp.remove(((dki)localObject2).xKd);
+      ((d)localObject1).AZp.add(((dki)localObject2).xKd);
+      ((d)localObject1).eDw();
     }
-    localObject2 = new Intent(this.keK, MallProductUI.class);
+    localObject2 = new Intent(this.mContext, MallProductUI.class);
     ((Intent)localObject2).putExtra("key_go_finish", true);
     ((Intent)localObject2).addFlags(67108864);
-    localObject1 = this.keK;
-    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/product/ui/MallProductHelper", "doSuccessFinish", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Activity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
+    localObject1 = this.mContext;
+    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/product/ui/MallProductHelper", "doSuccessFinish", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Activity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/product/ui/MallProductHelper", "doSuccessFinish", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(66969);
   }
   
-  public final void dDj()
+  public final void eDB()
   {
     AppMethodBeat.i(66968);
-    m localm = this.xdn.xbv;
-    cw localcw = new cw();
-    akn localakn = new akn();
-    akt localakt = new akt();
-    akm localakm = new akm();
-    localakt.aQC(v.aAC());
-    localakt.aQD(v.aAC());
-    localakt.aax(11);
-    localakt.Dk(bu.fpO());
-    localakm.aQv(localm.xbZ.name);
-    localakm.aQw(this.xdn.dDd());
-    localakm.aau(localm.xbW);
-    localakm.aQy(this.xdn.a(localm));
-    localakm.aQx(localm.dDf());
-    localcw.doL.title = localm.xbZ.name;
-    localcw.doL.desc = this.xdn.dDd();
-    localcw.doL.doN = localakn;
-    localcw.doL.type = 11;
-    localakn.a(localakt);
-    localakn.b(localakm);
-    localcw.doL.activity = this.keK;
-    localcw.doL.doR = 5;
-    com.tencent.mm.sdk.b.a.IvT.l(localcw);
+    m localm = this.BaP.AYX;
+    cz localcz = new cz();
+    anb localanb = new anb();
+    anh localanh = new anh();
+    ana localana = new ana();
+    localanh.bhf(z.aTY());
+    localanh.bhg(z.aTY());
+    localanh.ajm(11);
+    localanh.MA(Util.nowMilliSecond());
+    localana.bgY(localm.AZB.name);
+    localana.bgZ(this.BaP.eDv());
+    localana.ajj(localm.AZy);
+    localana.bhb(this.BaP.a(localm));
+    localana.bha(localm.eDx());
+    localcz.dFZ.title = localm.AZB.name;
+    localcz.dFZ.desc = this.BaP.eDv();
+    localcz.dFZ.dGb = localanb;
+    localcz.dFZ.type = 11;
+    localanb.a(localanh);
+    localanb.b(localana);
+    localcz.dFZ.activity = this.mContext;
+    localcz.dFZ.dGf = 5;
+    EventCenter.instance.publish(localcz);
     AppMethodBeat.o(66968);
   }
   
@@ -113,123 +119,123 @@ public final class f
       return;
       if ((paramInt2 == -1) && (paramIntent != null))
       {
-        this.xdn.aG(paramIntent);
-        if (this.xdo != null) {
-          this.xdo.E(0, 0, "");
+        this.BaP.aO(paramIntent);
+        if (this.BaQ != null) {
+          this.BaQ.D(0, 0, "");
         }
-        com.tencent.mm.kernel.g.ajS();
-        Object localObject = com.tencent.mm.kernel.g.ajQ().gDv;
-        paramIntent = this.xdn;
-        if (paramIntent.xbv != null) {}
-        for (paramIntent = paramIntent.xbv.xbV;; paramIntent = "")
+        com.tencent.mm.kernel.g.aAi();
+        Object localObject = com.tencent.mm.kernel.g.aAg().hqi;
+        paramIntent = this.BaP;
+        if (paramIntent.AYX != null) {}
+        for (paramIntent = paramIntent.AYX.AZx;; paramIntent = "")
         {
-          ((q)localObject).a(new com.tencent.mm.plugin.product.b.g(paramIntent, this.xdn.xbx, this.xdn.xbB), 0);
+          ((t)localObject).a(new com.tencent.mm.plugin.product.b.g(paramIntent, this.BaP.AYZ, this.BaP.AZd), 0);
           AppMethodBeat.o(66971);
           return;
         }
-        localObject = new yv();
-        ((yv)localObject).dON.result = paramInt1;
-        ((yv)localObject).dON.intent = paramIntent;
-        this.xdp.callback((com.tencent.mm.sdk.b.b)localObject);
+        localObject = new aaa();
+        ((aaa)localObject).egJ.result = paramInt1;
+        ((aaa)localObject).egJ.intent = paramIntent;
+        this.BaR.callback((IEvent)localObject);
         AppMethodBeat.o(66971);
         return;
-        if (this.xdo != null)
+        if (this.BaQ != null)
         {
-          this.xdo.E(0, 0, "");
+          this.BaQ.D(0, 0, "");
           AppMethodBeat.o(66971);
           return;
-          this.keK.showDialog(-10002);
-          com.tencent.mm.kernel.g.ajS();
-          com.tencent.mm.kernel.g.ajQ().gDv.a(new i(this.xdn.xbx, this.xdn.xbE), 0);
+          this.mContext.showDialog(-10002);
+          com.tencent.mm.kernel.g.aAi();
+          com.tencent.mm.kernel.g.aAg().hqi.a(new com.tencent.mm.plugin.product.b.i(this.BaP.AYZ, this.BaP.AZg), 0);
           AppMethodBeat.o(66971);
           return;
           if ((paramInt2 == -1) && (paramIntent != null))
           {
-            this.xdn.aG(paramIntent);
-            com.tencent.mm.kernel.g.ajS();
-            com.tencent.mm.kernel.g.ajQ().gDv.a(new j(this.xdn.dCZ(), mScene), 0);
+            this.BaP.aO(paramIntent);
+            com.tencent.mm.kernel.g.aAi();
+            com.tencent.mm.kernel.g.aAg().hqi.a(new j(this.BaP.eDr(), mScene), 0);
           }
         }
       }
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(66970);
-    ae.d("MicroMsg.MallProductUI", "errCode: " + paramInt2 + ", errMsg: " + paramString);
+    Log.d("MicroMsg.MallProductUI", "errCode: " + paramInt2 + ", errMsg: " + paramString);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramn instanceof com.tencent.mm.plugin.product.b.h))
+      if ((paramq instanceof com.tencent.mm.plugin.product.b.h))
       {
-        paramn = (com.tencent.mm.plugin.product.b.h)paramn;
-        this.xdn.a(paramn.xbR, paramn.xbS);
-        if (this.xdo != null) {
-          this.xdo.E(paramInt1, paramInt2, paramString);
+        paramq = (com.tencent.mm.plugin.product.b.h)paramq;
+        this.BaP.a(paramq.AZt, paramq.AZu);
+        if (this.BaQ != null) {
+          this.BaQ.D(paramInt1, paramInt2, paramString);
         }
-        if (!bu.isNullOrNil(paramn.xbR.xbV))
+        if (!Util.isNullOrNil(paramq.AZt.AZx))
         {
-          com.tencent.mm.plugin.report.service.g.yxI.f(11007, new Object[] { this.xdn.dCS(), paramn.xbR.xbV, Integer.valueOf(mScene), Integer.valueOf(1) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(11007, new Object[] { this.BaP.eDk(), paramq.AZt.AZx, Integer.valueOf(mScene), Integer.valueOf(1) });
           AppMethodBeat.o(66970);
           return;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.f(11007, new Object[] { this.xdn.dCS(), paramn.xbQ, Integer.valueOf(mScene), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(11007, new Object[] { this.BaP.eDk(), paramq.AZs, Integer.valueOf(mScene), Integer.valueOf(1) });
         AppMethodBeat.o(66970);
         return;
       }
       Object localObject2;
       Object localObject1;
-      if ((paramn instanceof j))
+      if ((paramq instanceof j))
       {
-        localObject2 = (j)paramn;
-        paramString = this.xdn;
-        paramn = ((j)localObject2).xbx;
-        localObject1 = ((j)localObject2).xbI;
-        localObject2 = ((j)localObject2).xbJ;
-        paramString.xbx = paramn;
-        paramString.xbJ = ((LinkedList)localObject2);
-        paramString.xbI = ((LinkedList)localObject1);
-        paramString.Ng(0);
-        paramString = this.keK;
-        paramn = new Intent(this.keK, MallProductSubmitUI.class);
-        paramn = new com.tencent.mm.hellhoundlib.b.a().bc(paramn);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, paramn.ahE(), "com/tencent/mm/plugin/product/ui/MallProductHelper", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString.startActivity((Intent)paramn.mt(0));
+        localObject2 = (j)paramq;
+        paramString = this.BaP;
+        paramq = ((j)localObject2).AYZ;
+        localObject1 = ((j)localObject2).AZk;
+        localObject2 = ((j)localObject2).AZl;
+        paramString.AYZ = paramq;
+        paramString.AZl = ((LinkedList)localObject2);
+        paramString.AZk = ((LinkedList)localObject1);
+        paramString.Ut(0);
+        paramString = this.mContext;
+        paramq = new Intent(this.mContext, MallProductSubmitUI.class);
+        paramq = new com.tencent.mm.hellhoundlib.b.a().bl(paramq);
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, paramq.axQ(), "com/tencent/mm/plugin/product/ui/MallProductHelper", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString.startActivity((Intent)paramq.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/product/ui/MallProductHelper", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.plugin.report.service.g.yxI.f(11009, new Object[] { this.xdn.dCS(), this.xdn.xbv.xbV, Integer.valueOf(mScene), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(11009, new Object[] { this.BaP.eDk(), this.BaP.AYX.AZx, Integer.valueOf(mScene), Integer.valueOf(1) });
         AppMethodBeat.o(66970);
         return;
       }
-      if ((paramn instanceof com.tencent.mm.plugin.product.b.f)) {
+      if ((paramq instanceof com.tencent.mm.plugin.product.b.f)) {
         break label864;
       }
-      if ((paramn instanceof l))
+      if ((paramq instanceof l))
       {
-        paramString = ((l)paramn).xbU;
+        paramString = ((l)paramq).AZw;
         paramInt1 = 6;
         if (mScene == 7) {
           paramInt1 = 1001;
         }
-        ae.d("MicroMsg.MallProductUI", "payScene:".concat(String.valueOf(paramInt1)));
-        com.tencent.mm.pluginsdk.wallet.f.a(this.keK, paramString, this.xdn.getAppId(), paramInt1, 3);
-        com.tencent.mm.sdk.b.a.IvT.c(this.xdp);
+        Log.d("MicroMsg.MallProductUI", "payScene:".concat(String.valueOf(paramInt1)));
+        com.tencent.mm.pluginsdk.wallet.f.a(this.mContext, paramString, this.BaP.getAppId(), paramInt1, 3);
+        EventCenter.instance.addListener(this.BaR);
         AppMethodBeat.o(66970);
         return;
       }
-      if ((paramn instanceof k))
+      if ((paramq instanceof k))
       {
-        com.tencent.mm.ui.base.h.cm(this.keK, this.keK.getString(2131761137));
-        dDk();
+        com.tencent.mm.ui.base.h.cD(this.mContext, this.mContext.getString(2131762924));
+        eDC();
         AppMethodBeat.o(66970);
         return;
       }
-      if ((paramn instanceof com.tencent.mm.plugin.product.b.g)) {
+      if ((paramq instanceof com.tencent.mm.plugin.product.b.g)) {
         try
         {
-          this.keK.dismissDialog(-10002);
-          paramString = this.xdn;
-          paramString.xbI = ((com.tencent.mm.plugin.product.b.g)paramn).xbI;
-          paramString.Ng(0);
+          this.mContext.dismissDialog(-10002);
+          paramString = this.BaP;
+          paramString.AZk = ((com.tencent.mm.plugin.product.b.g)paramq).AZk;
+          paramString.Ut(0);
           AppMethodBeat.o(66970);
           return;
         }
@@ -237,29 +243,29 @@ public final class f
         {
           for (;;)
           {
-            ae.e("MicroMsg.MallProductUI", paramString.toString());
+            Log.e("MicroMsg.MallProductUI", paramString.toString());
           }
         }
       }
-      if (!(paramn instanceof i)) {
+      if (!(paramq instanceof com.tencent.mm.plugin.product.b.i)) {
         break label864;
       }
       try
       {
-        this.keK.dismissDialog(-10002);
-        localObject2 = (i)paramn;
-        paramn = this.xdn;
-        localObject1 = ((i)localObject2).mUrl;
-        localObject2 = ((i)localObject2).xbT;
-        if ((!bu.isNullOrNil((String)localObject1)) && (localObject2 != null) && (((LinkedList)localObject2).size() > 0))
+        this.mContext.dismissDialog(-10002);
+        localObject2 = (com.tencent.mm.plugin.product.b.i)paramq;
+        paramq = this.BaP;
+        localObject1 = ((com.tencent.mm.plugin.product.b.i)localObject2).mUrl;
+        localObject2 = ((com.tencent.mm.plugin.product.b.i)localObject2).AZv;
+        if ((!Util.isNullOrNil((String)localObject1)) && (localObject2 != null) && (((LinkedList)localObject2).size() > 0))
         {
-          if (paramn.xbM == null) {
-            paramn.xbM = new HashMap();
+          if (paramq.AZo == null) {
+            paramq.AZo = new HashMap();
           }
-          paramn.xbM.put(localObject1, localObject2);
+          paramq.AZo.put(localObject1, localObject2);
         }
-        if (this.xdo != null) {
-          this.xdo.E(paramInt1, paramInt2, paramString);
+        if (this.BaQ != null) {
+          this.BaQ.D(paramInt1, paramInt2, paramString);
         }
         AppMethodBeat.o(66970);
         return;
@@ -268,20 +274,20 @@ public final class f
       {
         for (;;)
         {
-          ae.e("MicroMsg.MallProductUI", localException.toString());
+          Log.e("MicroMsg.MallProductUI", localException.toString());
         }
       }
     }
     switch (paramInt2)
     {
     default: 
-      ae.i("MicroMsg.MallProductUI", "unkown errCode ".concat(String.valueOf(paramInt2)));
-      paramn = paramString;
-      if (bu.isNullOrNil(paramString)) {
-        paramn = paramInt2 + " : " + this.keK.getString(2131761118);
+      Log.i("MicroMsg.MallProductUI", "unkown errCode ".concat(String.valueOf(paramInt2)));
+      paramq = paramString;
+      if (Util.isNullOrNil(paramString)) {
+        paramq = paramInt2 + " : " + this.mContext.getString(2131762905);
       }
-      if (this.xdo != null) {
-        this.xdo.E(paramInt1, paramInt2, paramn);
+      if (this.BaQ != null) {
+        this.BaQ.D(paramInt1, paramInt2, paramq);
       }
       break;
     }
@@ -290,12 +296,12 @@ public final class f
     {
       AppMethodBeat.o(66970);
       return;
-      ae.i("MicroMsg.MallProductUI", "deal with MMBIZPAY_FUNC_ERR_NO_EXISTED_PRODUCT");
-    } while (!(paramn instanceof com.tencent.mm.plugin.product.b.h));
-    paramn = (com.tencent.mm.plugin.product.b.h)paramn;
-    this.xdn.a(paramn.xbR, paramn.xbS);
-    if (this.xdo != null) {
-      this.xdo.E(paramInt1, paramInt2, paramString);
+      Log.i("MicroMsg.MallProductUI", "deal with MMBIZPAY_FUNC_ERR_NO_EXISTED_PRODUCT");
+    } while (!(paramq instanceof com.tencent.mm.plugin.product.b.h));
+    paramq = (com.tencent.mm.plugin.product.b.h)paramq;
+    this.BaP.a(paramq.AZt, paramq.AZu);
+    if (this.BaQ != null) {
+      this.BaQ.D(paramInt1, paramInt2, paramString);
     }
     AppMethodBeat.o(66970);
   }
@@ -303,51 +309,51 @@ public final class f
   public final void onStart()
   {
     AppMethodBeat.i(66966);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(553, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(554, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(555, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(556, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(557, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(578, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(579, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(553, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(554, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(555, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(556, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(557, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(578, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(579, this);
     AppMethodBeat.o(66966);
   }
   
   public final void onStop()
   {
     AppMethodBeat.i(66967);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(553, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(554, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(555, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(556, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(557, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(578, this);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(579, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(553, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(554, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(555, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(556, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(557, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(578, this);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(579, this);
     AppMethodBeat.o(66967);
   }
   
   public static abstract interface a
   {
-    public abstract void E(int paramInt1, int paramInt2, String paramString);
+    public abstract void D(int paramInt1, int paramInt2, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.f
  * JD-Core Version:    0.7.0.1
  */

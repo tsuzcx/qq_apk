@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="@dimen/br" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/ht0" android:layout_width="@dimen/br" android:layout_height="@dimen/br" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5">
-        <TextView android:textSize="@dimen/jo" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/ht7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:text="{nickname}" android:maxLines="1" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hsz" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/bq" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:layout_gravity="center_horizontal" android:paddingTop="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/him" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/a6o" android:gravity="center" android:id="@id/hir" android:paddingTop="@dimen/k5" android:layout_width="64.0dip" android:layout_height="wrap_content" android:layout_below="@id/him" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/hiq" android:background="@drawable/b1a" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/him" android:layout_alignParentTop="true" />
+</RelativeLayout>

@@ -16,28 +16,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class SelectColorBar
   extends View
 {
-  public static final int[] LQk = { -1, -16777216, -707825, -17592, -16535286, -15172610, -7054596, -449092 };
-  private final float LPT;
-  private a LQM;
-  private int LQN;
-  private Rect[] LQf;
-  private Paint LQi;
-  private boolean LQo;
-  private Paint gBr;
+  public static final int[] RoQ = { -1, -16777216, -707825, -17592, -16535286, -15172610, -7054596, -449092 };
+  private Rect[] RoL;
+  private Paint RoO;
+  private boolean RoU;
+  private final float Roz;
+  private a Rpt;
+  private int Rpu;
+  private Paint hog;
   
   public SelectColorBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9417);
-    this.LPT = getResources().getDimension(2131166286);
-    this.LQN = -1;
-    this.LQo = true;
-    this.LQi = new Paint(1);
-    this.LQi.setColor(-16711936);
-    this.LQf = new Rect[LQk.length];
-    this.gBr = new Paint(1);
-    this.gBr.setStyle(Paint.Style.FILL);
-    this.gBr.setStrokeCap(Paint.Cap.ROUND);
+    this.Roz = getResources().getDimension(2131166333);
+    this.Rpu = -1;
+    this.RoU = true;
+    this.RoO = new Paint(1);
+    this.RoO.setColor(-16711936);
+    this.RoL = new Rect[RoQ.length];
+    this.hog = new Paint(1);
+    this.hog.setStyle(Paint.Style.FILL);
+    this.hog.setStrokeCap(Paint.Cap.ROUND);
     AppMethodBeat.o(9417);
   }
   
@@ -58,20 +58,20 @@ public class SelectColorBar
       do
       {
         i += 1;
-        if (i >= this.LQf.length) {
+        if (i >= this.RoL.length) {
           break;
         }
-      } while (!this.LQf[i].contains(k, m));
-      this.LQN = i;
+      } while (!this.RoL[i].contains(k, m));
+      this.Rpu = i;
       continue;
       do
       {
         j += 1;
-        if ((this.LQf == null) || (j >= this.LQf.length)) {
+        if ((this.RoL == null) || (j >= this.RoL.length)) {
           break;
         }
-      } while ((!this.LQf[j].contains(k, m)) || (j != this.LQN) || (this.LQM == null));
-      this.LQM.Uk(LQk[j]);
+      } while ((!this.RoL[j].contains(k, m)) || (j != this.Rpu) || (this.Rpt == null));
+      this.Rpt.acC(RoQ[j]);
       requestLayout();
       postInvalidate();
     }
@@ -79,23 +79,23 @@ public class SelectColorBar
   
   public int getCurColor()
   {
-    if (this.LQN == -1) {
-      return LQk[2];
+    if (this.Rpu == -1) {
+      return RoQ[2];
     }
-    return LQk[this.LQN];
+    return RoQ[this.Rpu];
   }
   
   protected int getDetailHeight()
   {
     AppMethodBeat.i(9422);
-    int i = (int)getResources().getDimension(2131166048);
+    int i = (int)getResources().getDimension(2131166088);
     AppMethodBeat.o(9422);
     return i;
   }
   
   public int getPaddingLeftAndRight()
   {
-    return (int)(2.0F * this.LPT);
+    return (int)(2.0F * this.Roz);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -103,31 +103,31 @@ public class SelectColorBar
     AppMethodBeat.i(9421);
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(0);
-    float f4 = getResources().getDimension(2131166164);
-    float f5 = (getMeasuredWidth() - getPaddingLeftAndRight() - 2.0F * f4 * LQk.length) / (LQk.length - 1);
+    float f4 = getResources().getDimension(2131166205);
+    float f5 = (getMeasuredWidth() - getPaddingLeftAndRight() - 2.0F * f4 * RoQ.length) / (RoQ.length - 1);
     float f2 = getPaddingLeftAndRight() / 2 + f4 + 5.0F;
     float f6 = 1.0F * getDetailHeight() / 2.0F;
     int i = 0;
-    if (i < LQk.length)
+    if (i < RoQ.length)
     {
       float f3 = 0.0F;
       float f1;
-      if (this.LQN == i)
+      if (this.Rpu == i)
       {
-        this.LQo = false;
+        this.RoU = false;
         f1 = 6.0F;
       }
       for (;;)
       {
-        this.gBr.setColor(-1);
-        paramCanvas.drawCircle(f2, f6, f4 + 5.0F + f1, this.gBr);
-        this.gBr.setColor(LQk[i]);
-        paramCanvas.drawCircle(f2, f6, f1 + f4, this.gBr);
+        this.hog.setColor(-1);
+        paramCanvas.drawCircle(f2, f6, f4 + 5.0F + f1, this.hog);
+        this.hog.setColor(RoQ[i]);
+        paramCanvas.drawCircle(f2, f6, f1 + f4, this.hog);
         f2 += 2.0F * f4 + f5;
         i += 1;
         break;
         f1 = f3;
-        if (this.LQo)
+        if (this.RoU)
         {
           f1 = f3;
           if (i == 2) {
@@ -145,20 +145,20 @@ public class SelectColorBar
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = getPaddingLeft();
     int i = getPaddingRight();
-    int j = View.MeasureSpec.makeMeasureSpec((int)getResources().getDimension(2131166048), 1073741824);
+    int j = View.MeasureSpec.makeMeasureSpec((int)getResources().getDimension(2131166088), 1073741824);
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1 - paramInt2 - i, 1073741824), j);
-    if (this.LQf == null) {
-      this.LQf = new Rect[LQk.length];
+    if (this.RoL == null) {
+      this.RoL = new Rect[RoQ.length];
     }
-    float f1 = getResources().getDimension(2131166164);
-    float f2 = (getMeasuredWidth() - getPaddingLeftAndRight() - 2.0F * f1 * LQk.length) / (LQk.length - 1);
+    float f1 = getResources().getDimension(2131166205);
+    float f2 = (getMeasuredWidth() - getPaddingLeftAndRight() - 2.0F * f1 * RoQ.length) / (RoQ.length - 1);
     i = (int)(2.0F * f1);
     paramInt2 = (int)(getPaddingLeftAndRight() / 2 + f1 + 5.0F);
     j = getDetailHeight() / 2;
     paramInt1 = 0;
-    while (paramInt1 < LQk.length)
+    while (paramInt1 < RoQ.length)
     {
-      this.LQf[paramInt1] = new Rect(paramInt2 - i, j - i, paramInt2 + i, j + i);
+      this.RoL[paramInt1] = new Rect(paramInt2 - i, j - i, paramInt2 + i, j + i);
       paramInt2 = (int)(paramInt2 + (2.0F * f1 + f2));
       paramInt1 += 1;
     }
@@ -171,15 +171,15 @@ public class SelectColorBar
     int i = 0;
     for (;;)
     {
-      if (i < LQk.length)
+      if (i < RoQ.length)
       {
-        if (LQk[i] == paramInt) {
-          this.LQN = i;
+        if (RoQ[i] == paramInt) {
+          this.Rpu = i;
         }
       }
       else
       {
-        this.LQo = false;
+        this.RoU = false;
         postInvalidate();
         AppMethodBeat.o(9418);
         return;
@@ -190,12 +190,12 @@ public class SelectColorBar
   
   public void setSelectColorListener(a parama)
   {
-    this.LQM = parama;
+    this.Rpt = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void Uk(int paramInt);
+    public abstract void acC(int paramInt);
   }
 }
 

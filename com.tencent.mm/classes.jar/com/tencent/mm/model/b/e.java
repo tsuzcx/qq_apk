@@ -4,14 +4,14 @@ public abstract interface e
 {
   public static abstract interface a
   {
-    public abstract void aDv();
+    public abstract void aXh();
     
-    public abstract void aDw();
+    public abstract void aXi();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.b.e
  * JD-Core Version:    0.7.0.1
  */

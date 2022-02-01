@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.plugin.game.d.be;
-import com.tencent.mm.plugin.game.d.bs;
-import com.tencent.mm.plugin.game.d.v;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.game.protobuf.bf;
+import com.tencent.mm.plugin.game.protobuf.bs;
+import com.tencent.mm.plugin.game.protobuf.v;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class ab
   extends x
 {
-  private bs uoM;
+  private bs xHf;
   
   public ab(a parama)
   {
     AppMethodBeat.i(41535);
     if (parama == null)
     {
-      this.uoM = new bs();
+      this.xHf = new bs();
       AppMethodBeat.o(41535);
       return;
     }
-    this.uoM = ((bs)parama);
+    this.xHf = ((bs)parama);
     AppMethodBeat.o(41535);
   }
   
   public ab(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41536);
-    this.uoM = new bs();
+    this.xHf = new bs();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41536);
@@ -37,36 +37,36 @@ public final class ab
     }
     try
     {
-      this.uoM.parseFrom(paramArrayOfByte);
+      this.xHf.parseFrom(paramArrayOfByte);
       AppMethodBeat.o(41536);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
-      ae.e("MicroMsg.GamePBDataDownloadGuidance", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+      Log.e("MicroMsg.GamePBDataDownloadGuidance", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       AppMethodBeat.o(41536);
     }
   }
   
-  public final v dcg()
+  public final v dVN()
   {
-    if (this.uoM != null) {
-      return this.uoM.utN;
+    if (this.xHf != null) {
+      return this.xHf.xLP;
     }
     return null;
   }
   
-  public final be dch()
+  public final bf dVO()
   {
-    if (this.uoM != null) {
-      return this.uoM.utO;
+    if (this.xHf != null) {
+      return this.xHf.xLQ;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ab
  * JD-Core Version:    0.7.0.1
  */

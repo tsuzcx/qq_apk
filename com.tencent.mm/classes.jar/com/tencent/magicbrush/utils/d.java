@@ -5,48 +5,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class d<R>
 {
-  private final long cBo;
-  long cBp;
-  long cBq;
-  boolean cBr = false;
-  private Runnable cBs = new Runnable()
+  long begin;
+  private Object lock = new Object();
+  boolean manualFinish = false;
+  private R result;
+  private Runnable task = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(161137);
-      c.c.i("MicroMsg.SDK.SyncTask", "task run manualFinish = " + d.this.cBr, new Object[0]);
-      if (d.this.cBr) {
+      c.c.i("MicroMsg.SDK.SyncTask", "task run manualFinish = " + d.this.manualFinish, new Object[0]);
+      if (d.this.manualFinish) {
         d.this.run();
       }
       for (;;)
       {
-        d.this.cBq = h.aO(d.this.cBp);
+        d.this.wait = h.ticksToNow(d.this.begin);
         AppMethodBeat.o(161137);
         return;
-        d.this.aG(d.this.run());
+        d.this.setResultFinish(d.this.run());
       }
     }
   };
-  private Object lock = new Object();
-  private R result;
+  private final long timeout;
+  long wait;
   
   public d(long paramLong)
   {
-    this.cBo = paramLong;
+    this.timeout = paramLong;
     this.result = null;
-    this.cBr = true;
-  }
-  
-  public final void aG(R arg1)
-  {
-    c.c.i("MicroMsg.SDK.SyncTask", "setResultFinish ", new Object[0]);
-    this.result = ???;
-    synchronized (this.lock)
-    {
-      c.c.i("MicroMsg.SDK.SyncTask", "setResultFinish synchronized", new Object[0]);
-      this.lock.notify();
-      return;
-    }
+    this.manualFinish = true;
   }
   
   /* Error */
@@ -55,82 +43,82 @@ public abstract class d<R>
     // Byte code:
     //   0: aload_1
     //   1: ifnonnull +19 -> 20
-    //   4: ldc 43
-    //   6: ldc 63
+    //   4: ldc 45
+    //   6: ldc 47
     //   8: iconst_0
     //   9: anewarray 5	java/lang/Object
-    //   12: invokestatic 66	com/tencent/magicbrush/a/c$c:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   12: invokestatic 53	com/tencent/magicbrush/a/c$c:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   15: aload_0
-    //   16: invokevirtual 70	com/tencent/magicbrush/utils/d:run	()Ljava/lang/Object;
+    //   16: invokevirtual 57	com/tencent/magicbrush/utils/d:run	()Ljava/lang/Object;
     //   19: areturn
-    //   20: ldc 43
-    //   22: ldc 72
+    //   20: ldc 45
+    //   22: ldc 59
     //   24: iconst_0
     //   25: anewarray 5	java/lang/Object
-    //   28: invokestatic 51	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   28: invokestatic 62	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   31: aload_0
-    //   32: invokestatic 78	com/tencent/magicbrush/utils/h:HQ	()J
-    //   35: putfield 80	com/tencent/magicbrush/utils/d:cBp	J
+    //   32: invokestatic 68	com/tencent/magicbrush/utils/h:currentTicks	()J
+    //   35: putfield 70	com/tencent/magicbrush/utils/d:begin	J
     //   38: aload_0
     //   39: getfield 26	com/tencent/magicbrush/utils/d:lock	Ljava/lang/Object;
     //   42: astore 4
     //   44: aload 4
     //   46: monitorenter
-    //   47: ldc 43
-    //   49: ldc 82
+    //   47: ldc 45
+    //   49: ldc 72
     //   51: iconst_0
     //   52: anewarray 5	java/lang/Object
-    //   55: invokestatic 51	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   55: invokestatic 62	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   58: aload_1
     //   59: aload_0
-    //   60: getfield 33	com/tencent/magicbrush/utils/d:cBs	Ljava/lang/Runnable;
+    //   60: getfield 33	com/tencent/magicbrush/utils/d:task	Ljava/lang/Runnable;
     //   63: iconst_0
-    //   64: invokeinterface 88 3 0
+    //   64: invokeinterface 78 3 0
     //   69: aload_0
     //   70: getfield 26	com/tencent/magicbrush/utils/d:lock	Ljava/lang/Object;
     //   73: aload_0
-    //   74: getfield 35	com/tencent/magicbrush/utils/d:cBo	J
-    //   77: invokevirtual 91	java/lang/Object:wait	(J)V
+    //   74: getfield 35	com/tencent/magicbrush/utils/d:timeout	J
+    //   77: invokevirtual 80	java/lang/Object:wait	(J)V
     //   80: aload 4
     //   82: monitorexit
     //   83: aload_0
-    //   84: getfield 80	com/tencent/magicbrush/utils/d:cBp	J
-    //   87: invokestatic 95	com/tencent/magicbrush/utils/h:aO	(J)J
+    //   84: getfield 70	com/tencent/magicbrush/utils/d:begin	J
+    //   87: invokestatic 84	com/tencent/magicbrush/utils/h:ticksToNow	(J)J
     //   90: lstore_2
-    //   91: ldc 43
-    //   93: ldc 97
+    //   91: ldc 45
+    //   93: ldc 86
     //   95: iconst_4
     //   96: anewarray 5	java/lang/Object
     //   99: dup
     //   100: iconst_0
-    //   101: new 99	java/lang/StringBuilder
+    //   101: new 88	java/lang/StringBuilder
     //   104: dup
-    //   105: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   105: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   108: aload_0
     //   109: getfield 37	com/tencent/magicbrush/utils/d:result	Ljava/lang/Object;
-    //   112: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   118: aastore
     //   119: dup
     //   120: iconst_1
     //   121: lload_2
-    //   122: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   122: invokestatic 103	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   125: aastore
     //   126: dup
     //   127: iconst_2
     //   128: aload_0
-    //   129: getfield 116	com/tencent/magicbrush/utils/d:cBq	J
-    //   132: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   129: getfield 105	com/tencent/magicbrush/utils/d:wait	J
+    //   132: invokestatic 103	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   135: aastore
     //   136: dup
     //   137: iconst_3
     //   138: lload_2
     //   139: aload_0
-    //   140: getfield 116	com/tencent/magicbrush/utils/d:cBq	J
+    //   140: getfield 105	com/tencent/magicbrush/utils/d:wait	J
     //   143: lsub
-    //   144: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   144: invokestatic 103	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   147: aastore
-    //   148: invokestatic 51	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   148: invokestatic 62	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   151: aload_0
     //   152: getfield 37	com/tencent/magicbrush/utils/d:result	Ljava/lang/Object;
     //   155: areturn
@@ -140,12 +128,12 @@ public abstract class d<R>
     //   160: aload_1
     //   161: athrow
     //   162: astore_1
-    //   163: ldc 43
+    //   163: ldc 45
     //   165: aload_1
-    //   166: ldc 118
+    //   166: ldc 107
     //   168: iconst_0
     //   169: anewarray 5	java/lang/Object
-    //   172: invokestatic 122	com/tencent/magicbrush/a/c$c:printStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   172: invokestatic 111	com/tencent/magicbrush/a/c$c:printStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   175: goto -92 -> 83
     // Local variable table:
     //   start	length	slot	name	signature
@@ -161,10 +149,22 @@ public abstract class d<R>
   }
   
   protected abstract R run();
+  
+  public final void setResultFinish(R arg1)
+  {
+    c.c.i("MicroMsg.SDK.SyncTask", "setResultFinish ", new Object[0]);
+    this.result = ???;
+    synchronized (this.lock)
+    {
+      c.c.i("MicroMsg.SDK.SyncTask", "setResultFinish synchronized", new Object[0]);
+      this.lock.notify();
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.utils.d
  * JD-Core Version:    0.7.0.1
  */

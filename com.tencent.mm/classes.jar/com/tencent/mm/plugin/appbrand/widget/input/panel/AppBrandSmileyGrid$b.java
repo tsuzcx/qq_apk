@@ -6,12 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandSmileyGrid$b
 {
-  ImageView mdt;
+  ImageView nnL;
   
   public AppBrandSmileyGrid$b(View paramView)
   {
     AppMethodBeat.i(49932);
-    this.mdt = ((ImageView)paramView.findViewById(2131296943));
+    this.nnL = ((ImageView)paramView.findViewById(2131297050));
     AppMethodBeat.o(49932);
   }
 }

@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/i2" android:paddingBottom="@dimen/i2" style="@style/gs"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/au2" android:focusable="false" android:src="@drawable/e8" style="@style/gm" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <com.tencent.mm.ui.widget.MMTextView android:id="@id/auk" android:background="@drawable/mv" android:maxWidth="225.0dip" android:minHeight="@dimen/ad" style="@style/h4" />
+    </LinearLayout>
+</LinearLayout>

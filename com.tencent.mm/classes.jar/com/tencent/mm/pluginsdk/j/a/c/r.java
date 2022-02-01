@@ -13,39 +13,39 @@ import java.util.Set;
 @SuppressLint({"UseSparseArrays"})
 public final class r
 {
-  private static final HashMap<Integer, g> Fjv;
-  private static volatile List<g> Fjw;
+  private static final HashMap<Integer, g> Kao;
+  private static volatile List<g> Kap;
   
   static
   {
     AppMethodBeat.i(152069);
     HashMap localHashMap = new HashMap(1);
-    Fjv = localHashMap;
+    Kao = localHashMap;
     localHashMap.put(Integer.valueOf("CheckResUpdatePlugin".hashCode()), new b.a());
-    Fjw = null;
+    Kap = null;
     AppMethodBeat.o(152069);
   }
   
-  public static Collection<g> feR()
+  public static Collection<g> gob()
   {
     AppMethodBeat.i(152068);
-    if (Fjw != null)
+    if (Kap != null)
     {
-      localObject = Fjw;
+      localObject = Kap;
       AppMethodBeat.o(152068);
       return localObject;
     }
     Object localObject = new LinkedList();
-    Iterator localIterator = Fjv.keySet().iterator();
+    Iterator localIterator = Kao.keySet().iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      g localg = (g)Fjv.get(Integer.valueOf(i));
+      g localg = (g)Kao.get(Integer.valueOf(i));
       if (localg != null) {
         ((LinkedList)localObject).add(localg);
       }
     }
-    Fjw = (List)localObject;
+    Kap = (List)localObject;
     AppMethodBeat.o(152068);
     return localObject;
   }
@@ -54,7 +54,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.r
  * JD-Core Version:    0.7.0.1
  */

@@ -56,20 +56,20 @@ public class SetFontFamilyActionArg
     return bool;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145148);
-    super.h(paramParcel);
-    this.fontFamily = paramParcel.readString();
-    AppMethodBeat.o(145148);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145152);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.fontFamily });
     AppMethodBeat.o(145152);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145148);
+    super.i(paramParcel);
+    this.fontFamily = paramParcel.readString();
+    AppMethodBeat.o(145148);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -90,7 +90,7 @@ public class SetFontFamilyActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontFamilyActionArg
  * JD-Core Version:    0.7.0.1
  */

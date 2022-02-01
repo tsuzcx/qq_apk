@@ -11,26 +11,26 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.h.c;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.bb;
-import com.tencent.mm.model.v;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelsimple.t.a;
 import com.tencent.mm.plugin.account.friend.a.l.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.pluginsdk.ui.BioHelperUI;
-import com.tencent.mm.protocal.protobuf.auo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class y
 {
-  public static void Jv(String paramString)
+  public static void St(String paramString)
   {
     AppMethodBeat.i(127747);
-    bb.hIK.aM("login_user_name", paramString);
+    bf.iDu.aO("login_user_name", paramString);
     AppMethodBeat.o(127747);
   }
   
@@ -40,46 +40,46 @@ public final class y
     paramContext = new Intent(paramContext, BioHelperUI.class);
     paramContext.putExtra("k_type", parama.type);
     paramContext.putExtra("KVoiceHelpCode", paramInt);
-    paramContext.putExtra("Kvertify_key", parama.dqk);
-    paramContext.putExtra("KVoiceHelpUrl", parama.ioX);
-    paramContext.putExtra("KVoiceHelpWording", parama.dyI);
+    paramContext.putExtra("Kvertify_key", parama.dHx);
+    paramContext.putExtra("KVoiceHelpUrl", parama.jke);
+    paramContext.putExtra("KVoiceHelpWording", parama.dQx);
     paramContext.putExtra("Kusername", parama.username);
-    if (parama.ioY != null) {
-      paramContext.getExtras().putAll(parama.ioY);
+    if (parama.jkf != null) {
+      paramContext.getExtras().putAll(parama.jkf);
     }
     AppMethodBeat.o(127750);
   }
   
-  public static void de(Context paramContext)
+  public static void dz(Context paramContext)
   {
     AppMethodBeat.i(127748);
-    String str1 = paramContext.getString(2131755265);
-    String str2 = paramContext.getString(2131755264);
-    h.e(paramContext, str1, "", paramContext.getString(2131757560), paramContext.getString(2131757558), new y.3(str2, paramContext), null);
+    String str1 = paramContext.getString(2131755300);
+    String str2 = paramContext.getString(2131755299);
+    com.tencent.mm.ui.base.h.c(paramContext, str1, "", paramContext.getString(2131757787), paramContext.getString(2131757785), new y.3(str2, paramContext), null);
     AppMethodBeat.o(127748);
   }
   
   public static void g(Context paramContext, String paramString, final int paramInt)
   {
     AppMethodBeat.i(127751);
-    final com.tencent.mm.h.a locala = com.tencent.mm.h.a.uU(paramString);
+    final com.tencent.mm.h.a locala = com.tencent.mm.h.a.Dk(paramString);
     if (locala != null)
     {
-      if (locala.dmr == 8)
+      if (locala.dDG == 8)
       {
         com.tencent.mm.plugin.account.a.b.a.b(paramContext, locala.url, paramInt, false);
         AppMethodBeat.o(127751);
         return;
       }
-      Object localObject1 = locala.fJM.fJY;
-      Object localObject2 = locala.fJM.fJZ;
+      Object localObject1 = locala.gpb.gpn;
+      Object localObject2 = locala.gpb.gpo;
       paramString = (String)localObject1;
-      if (bu.isNullOrNil((String)localObject1)) {
-        paramString = paramContext.getString(2131755835);
+      if (Util.isNullOrNil((String)localObject1)) {
+        paramString = paramContext.getString(2131755921);
       }
       localObject1 = localObject2;
-      if (bu.isNullOrNil((String)localObject2)) {
-        localObject1 = paramContext.getString(2131755691);
+      if (Util.isNullOrNil((String)localObject2)) {
+        localObject1 = paramContext.getString(2131755761);
       }
       localObject2 = new DialogInterface.OnClickListener()
       {
@@ -90,15 +90,15 @@ public final class y
           AppMethodBeat.o(127744);
         }
       };
-      if ((locala.dmr == 1) || (locala.dmr == 4))
+      if ((locala.dDG == 1) || (locala.dDG == 4))
       {
-        if (bu.isNullOrNil(locala.url))
+        if (Util.isNullOrNil(locala.url))
         {
-          h.c(paramContext, locala.desc, locala.Title, true);
+          com.tencent.mm.ui.base.h.c(paramContext, locala.desc, locala.Title, true);
           AppMethodBeat.o(127751);
           return;
         }
-        h.e(paramContext, locala.desc, locala.Title, paramString, (String)localObject1, (DialogInterface.OnClickListener)localObject2, null);
+        com.tencent.mm.ui.base.h.c(paramContext, locala.desc, locala.Title, paramString, (String)localObject1, (DialogInterface.OnClickListener)localObject2, null);
       }
       AppMethodBeat.o(127751);
       return;
@@ -106,10 +106,10 @@ public final class y
     AppMethodBeat.o(127751);
   }
   
-  public static void n(Context paramContext, String paramString1, String paramString2)
+  public static void m(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(127749);
-    paramString1 = com.tencent.mm.h.a.uU(paramString1);
+    paramString1 = com.tencent.mm.h.a.Dk(paramString1);
     if (paramString1 != null) {
       paramString1.a(paramContext, new y.4(paramString2, paramContext), null);
     }
@@ -119,8 +119,8 @@ public final class y
   public static void showAddrBookUploadConfirm(final Activity paramActivity, final Runnable paramRunnable, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(127745);
-    if ((com.tencent.mm.plugin.account.friend.a.l.aTn() != l.a.jgH) && (com.tencent.mm.plugin.account.friend.a.l.aTn() != l.a.jgI)) {
-      ae.e("MicroMsg.PostLoginUtil", "not successfully binded, skip addrbook confirm");
+    if ((com.tencent.mm.plugin.account.friend.a.l.bnZ() != l.a.keL) && (com.tencent.mm.plugin.account.friend.a.l.bnZ() != l.a.keM)) {
+      Log.e("MicroMsg.PostLoginUtil", "not successfully binded, skip addrbook confirm");
     }
     for (;;)
     {
@@ -129,40 +129,40 @@ public final class y
       }
       AppMethodBeat.o(127745);
       return;
-      if (bu.o((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(12322, null)))
+      if (Util.nullAsFalse((Boolean)g.aAh().azQ().get(12322, null)))
       {
-        ae.d("MicroMsg.PostLoginUtil", "addrbook upload confirmed");
+        Log.d("MicroMsg.PostLoginUtil", "addrbook upload confirmed");
       }
-      else if ((!paramBoolean) && (bu.o((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(12323, null))))
+      else if ((!paramBoolean) && (Util.nullAsFalse((Boolean)g.aAh().azQ().get(12323, null))))
       {
-        ae.d("MicroMsg.PostLoginUtil", "addrbook upload login confirmed showed");
+        Log.d("MicroMsg.PostLoginUtil", "addrbook upload login confirmed showed");
       }
       else
       {
-        com.tencent.mm.plugin.account.friend.a.l.fs(false);
-        ae.d("MicroMsg.PostLoginUtil", "READ_PHONE_STATE.getLine1Number %s", new Object[] { bu.fpN() });
-        String str = bu.nullAsNil(bu.jl(paramActivity));
-        if ((str.length() <= 0) || (!str.equals(com.tencent.mm.kernel.g.ajR().ajA().get(6, null)))) {
+        com.tencent.mm.plugin.account.friend.a.l.gl(false);
+        Log.d("MicroMsg.PostLoginUtil", "READ_PHONE_STATE.getLine1Number %s", new Object[] { Util.getStack() });
+        String str = Util.nullAsNil(Util.getLine1Number(paramActivity));
+        if ((str.length() <= 0) || (!str.equals(g.aAh().azQ().get(6, null)))) {
           break;
         }
-        com.tencent.mm.plugin.account.friend.a.l.fs(true);
-        ae.i("MicroMsg.PostLoginUtil", "same none-nil phone number, leave it");
+        com.tencent.mm.plugin.account.friend.a.l.gl(true);
+        Log.i("MicroMsg.PostLoginUtil", "same none-nil phone number, leave it");
       }
     }
-    h.a(paramActivity, 2131756445, 2131755906, 2131755939, 2131755831, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.a(paramActivity, 2131756581, 2131755998, 2131756033, 2131755917, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(127740);
-        ae.i("MicroMsg.PostLoginUtil", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(this.fNp) });
-        com.tencent.mm.plugin.report.service.g.yxI.f(11438, new Object[] { Integer.valueOf(this.fNp) });
-        com.tencent.mm.plugin.account.friend.a.l.fs(true);
+        Log.i("MicroMsg.PostLoginUtil", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(this.gsA) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(11438, new Object[] { Integer.valueOf(this.gsA) });
+        com.tencent.mm.plugin.account.friend.a.l.gl(true);
         y.syncUploadMContactStatus(true, false);
-        a.aQI();
+        a.blm();
         if (paramRunnable != null) {
           paramRunnable.run();
         }
-        paramActivity.getSharedPreferences(ak.fow(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
+        paramActivity.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
         AppMethodBeat.o(127740);
       }
     }, new DialogInterface.OnClickListener()
@@ -170,28 +170,28 @@ public final class y
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(127741);
-        com.tencent.mm.plugin.account.friend.a.l.fs(false);
+        com.tencent.mm.plugin.account.friend.a.l.gl(false);
         y.syncUploadMContactStatus(false, false);
-        if (this.iQL != null) {
-          this.iQL.run();
+        if (this.jNF != null) {
+          this.jNF.run();
         }
-        paramActivity.getSharedPreferences(ak.fow(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
+        paramActivity.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
         AppMethodBeat.o(127741);
       }
     });
-    com.tencent.mm.kernel.g.ajR().ajA().set(12323, Boolean.TRUE);
+    g.aAh().azQ().set(12323, Boolean.TRUE);
     AppMethodBeat.o(127745);
   }
   
   public static void syncUploadMContactStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(127746);
-    int i = v.aAG();
+    int i = z.aUc();
     if (paramBoolean1)
     {
       i &= 0xFFFDFFFF;
-      ae.d("MicroMsg.PostLoginUtil", "Reg By mobile update = ".concat(String.valueOf(i)));
-      com.tencent.mm.kernel.g.ajR().ajA().set(7, Integer.valueOf(i));
+      Log.d("MicroMsg.PostLoginUtil", "Reg By mobile update = ".concat(String.valueOf(i)));
+      g.aAh().azQ().set(7, Integer.valueOf(i));
       if (paramBoolean1) {
         break label132;
       }
@@ -199,12 +199,12 @@ public final class y
     label132:
     for (i = 1;; i = 2)
     {
-      auo localauo = new auo();
-      localauo.GLx = 17;
-      localauo.xsz = i;
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new k.a(23, localauo));
+      bfx localbfx = new bfx();
+      localbfx.LPB = 17;
+      localbfx.BsD = i;
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(23, localbfx));
       if (paramBoolean2) {
-        com.tencent.mm.plugin.account.a.a.iUA.MM();
+        com.tencent.mm.plugin.account.a.a.jRu.WZ();
       }
       AppMethodBeat.o(127746);
       return;
@@ -215,7 +215,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.y
  * JD-Core Version:    0.7.0.1
  */

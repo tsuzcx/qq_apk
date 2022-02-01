@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:orientation="vertical" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/h3" android:layout_marginRight="@dimen/ha">
-        <ImageView android:layout_width="@dimen/hc" android:layout_height="@dimen/hc" android:src="@raw/chatting_backup_comfirm" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/ve" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a6t" />
-    </LinearLayout>
-    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/eco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/r" android:text="@string/axh" />
+    <ListView android:id="@id/ed2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" />
 </LinearLayout>

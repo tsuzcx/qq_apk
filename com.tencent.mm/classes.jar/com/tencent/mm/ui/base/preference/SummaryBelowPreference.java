@@ -20,7 +20,7 @@ public class SummaryBelowPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142673);
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(142673);
   }
   
@@ -30,9 +30,9 @@ public class SummaryBelowPreference
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
       localViewGroup.removeAllViews();
-      View.inflate(this.mContext, 2131494886, localViewGroup);
+      View.inflate(this.mContext, 2131495624, localViewGroup);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;

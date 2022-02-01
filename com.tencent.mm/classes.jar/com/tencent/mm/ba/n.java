@@ -2,21 +2,21 @@ package com.tencent.mm.ba;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.dsj;
+import com.tencent.mm.protocal.protobuf.emh;
 
 @Deprecated
 public final class n
   extends k.b
 {
-  private dsj ils;
+  private emh jgr;
   
   public n(int paramInt)
   {
     super(30);
     AppMethodBeat.i(20568);
-    this.ils = new dsj();
-    this.ils.OpCode = paramInt;
-    this.vWq = this.ils;
+    this.jgr = new emh();
+    this.jgr.OpCode = paramInt;
+    this.zqv = this.jgr;
     AppMethodBeat.o(20568);
   }
 }

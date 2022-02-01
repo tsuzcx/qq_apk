@@ -16,13 +16,14 @@ import com.tencent.mm.plugin.appbrand.report.model.l;
 import com.tencent.mm.plugin.appbrand.report.model.l.a;
 import com.tencent.mm.plugin.appbrand.report.model.l.b;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.ao;
 
 public final class AppBrandNearbyEmptyUI
   extends MMActivity
 {
   public final int getLayoutId()
   {
-    return 2131493014;
+    return 2131493052;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -35,9 +36,12 @@ public final class AppBrandNearbyEmptyUI
       AppMethodBeat.o(48664);
       return;
     }
-    getContentView().setBackgroundColor(getContext().getResources().getColor(2131100705));
-    setActionbarColor(getContext().getResources().getColor(2131100705));
-    setMMTitle(2131755529);
+    if (ao.gJN()) {
+      overridePendingTransition(0, 0);
+    }
+    getContentView().setBackgroundColor(getContext().getResources().getColor(2131100898));
+    setActionbarColor(getContext().getResources().getColor(2131100898));
+    setMMTitle(2131755567);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -50,15 +54,15 @@ public final class AppBrandNearbyEmptyUI
     });
     if (getSupportActionBar() != null)
     {
-      paramBundle = getSupportActionBar().getCustomView().findViewById(2131296416);
+      paramBundle = getSupportActionBar().getCustomView().findViewById(2131296448);
       if ((paramBundle != null) && (paramBundle.getLayoutParams() != null) && ((paramBundle.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
       {
         ((ViewGroup.MarginLayoutParams)paramBundle.getLayoutParams()).rightMargin = 0;
         paramBundle.requestLayout();
       }
     }
-    paramBundle = (TextView)findViewById(2131298776);
-    TextView localTextView = (TextView)findViewById(2131298766);
+    paramBundle = (TextView)findViewById(2131299221);
+    TextView localTextView = (TextView)findViewById(2131299210);
     switch (getIntent().getIntExtra("extra_enter_reason", 0))
     {
     default: 
@@ -67,8 +71,8 @@ public final class AppBrandNearbyEmptyUI
       return;
     case 0: 
       paramBundle = new l();
-      paramBundle.myd = l.b.myq;
-      paramBundle.myh = l.a.myj;
+      paramBundle.nJe = l.b.nJr;
+      paramBundle.nJi = l.a.nJk;
       paramBundle.report();
     }
     for (;;)
@@ -76,11 +80,11 @@ public final class AppBrandNearbyEmptyUI
       setResult(-1);
       AppMethodBeat.o(48664);
       return;
-      paramBundle.setText(2131755528);
-      localTextView.setText(2131755527);
+      paramBundle.setText(2131755566);
+      localTextView.setText(2131755565);
       paramBundle = new l();
-      paramBundle.myd = l.b.myq;
-      paramBundle.myh = l.a.myk;
+      paramBundle.nJe = l.b.nJr;
+      paramBundle.nJi = l.a.nJl;
       paramBundle.report();
     }
   }
@@ -93,7 +97,7 @@ public final class AppBrandNearbyEmptyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyEmptyUI
  * JD-Core Version:    0.7.0.1
  */

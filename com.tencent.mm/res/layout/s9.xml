@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/aj" android:paddingLeft="22.0dip" android:paddingTop="18.0dip" android:paddingRight="22.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/gs"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/awb" android:padding="0.0dip" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginRight="10.0dip" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/m" android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxEms="10" android:singleLine="true" android:layout_toRightOf="@id/awb" android:layout_centerVertical="true" style="@style/lw" />
-    <TextView android:textSize="@dimen/gx" android:textColor="#ff5a5a5a" android:gravity="right" android:id="@android:id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_weight="1.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/lz" />
+    <include android:layout_marginTop="5.0dip" layout="@layout/qp" style="@style/go" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/auf" android:background="@drawable/mv" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gt">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/br0" style="@style/h7" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/a2x" android:gravity="center" android:id="@id/azd" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/i31" />
+    </LinearLayout>
 </LinearLayout>

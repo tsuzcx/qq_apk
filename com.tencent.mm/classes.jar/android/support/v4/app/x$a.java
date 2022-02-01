@@ -6,21 +6,21 @@ import java.util.Set;
 
 public final class x$a
 {
-  public boolean IA = true;
-  public final Set<String> IB = new HashSet();
-  public final String Ix;
-  public CharSequence Iy;
-  public CharSequence[] Iz;
+  public final String II;
+  public CharSequence IJ;
+  public CharSequence[] IK;
+  public boolean IL = true;
+  public final Set<String> IM = new HashSet();
   public final Bundle mExtras = new Bundle();
   
   public x$a(String paramString)
   {
-    this.Ix = paramString;
+    this.II = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.app.x.a
  * JD-Core Version:    0.7.0.1
  */

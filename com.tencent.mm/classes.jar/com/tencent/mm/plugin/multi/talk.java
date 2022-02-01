@@ -10,7 +10,7 @@ public class talk
 {
   public static int VOICE_FRAME_DURATION;
   public static int VOICE_SAMPLERATE;
-  public static int wlX;
+  public static int zGz;
   public byte[] field_capInfo = null;
   public int field_localImgHeight = 0;
   public int field_localImgWidth = 0;
@@ -30,10 +30,10 @@ public class talk
     AppMethodBeat.i(62794);
     VOICE_SAMPLERATE = 8000;
     VOICE_FRAME_DURATION = 20;
-    wlX = 9;
+    zGz = 9;
     try
     {
-      if ((a.MbV) && (a.Mcm))
+      if ((a.RCk) && (a.RCB))
       {
         System.loadLibrary("stlport_shared");
         System.loadLibrary("wechatxlog");
@@ -120,7 +120,7 @@ public class talk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multi.talk
  * JD-Core Version:    0.7.0.1
  */

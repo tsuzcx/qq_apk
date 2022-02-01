@@ -1,38 +1,38 @@
 package com.tencent.mm.ui.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.ak.aa.a;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bdh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.bov;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class e$2
-  implements x.a
+  implements aa.a
 {
-  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
+  public final int a(int paramInt1, int paramInt2, String paramString, d paramd, q paramq)
   {
     AppMethodBeat.i(33810);
-    ae.i("MicroMsg.AppBrandServiceHelper", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    paramString = (bdh)paramb.hQE.hQJ;
-    if ((paramInt1 == 0) && (paramInt2 == 0) && (paramString != null) && (paramString.GSJ != null))
+    Log.i("MicroMsg.AppBrandServiceHelper", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    paramString = (bov)paramd.iLL.iLR;
+    if ((paramInt1 == 0) && (paramInt2 == 0) && (paramString != null) && (paramString.LWV != null))
     {
-      paramb = new StringBuilder();
-      paramn = paramString.GSJ.iterator();
-      while (paramn.hasNext())
+      paramd = new StringBuilder();
+      paramq = paramString.LWV.iterator();
+      while (paramq.hasNext())
       {
-        String str = (String)paramn.next();
-        paramb.append(str + "|");
+        String str = (String)paramq.next();
+        paramd.append(str + "|");
       }
-      ae.d("MicroMsg.AppBrandServiceHelper", "block_qr_prefix:%s, size:%d", new Object[] { paramb.toString(), Integer.valueOf(paramString.GSJ.size()) });
-      g.ajR().ajA().set(am.a.IQs, paramb.toString());
+      Log.d("MicroMsg.AppBrandServiceHelper", "block_qr_prefix:%s, size:%d", new Object[] { paramd.toString(), Integer.valueOf(paramString.LWV.size()) });
+      g.aAh().azQ().set(ar.a.NYt, paramd.toString());
     }
     AppMethodBeat.o(33810);
     return 0;

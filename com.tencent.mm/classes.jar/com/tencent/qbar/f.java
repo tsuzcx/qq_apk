@@ -7,93 +7,93 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public final class f
   extends a
 {
-  private static volatile boolean MhL;
-  private static boolean yFX;
-  private WxQbarNative MhM;
-  int MhN;
+  private static boolean CJM;
+  private static volatile boolean RKm;
+  private WxQbarNative RKn;
+  int RKo;
   
   static
   {
     AppMethodBeat.i(91167);
-    MhL = true;
-    yFX = true;
-    fXZ();
+    RKm = true;
+    CJM = true;
+    hkl();
     AppMethodBeat.o(91167);
   }
   
   public f()
   {
     AppMethodBeat.i(91157);
-    this.MhM = new WxQbarNative();
-    this.MhN = 0;
+    this.RKn = new WxQbarNative();
+    this.RKo = 0;
     AppMethodBeat.o(91157);
   }
   
-  public static void fXZ()
+  public static void DN(boolean paramBoolean)
+  {
+    AppMethodBeat.i(176206);
+    Log.i("MicroMsg.WxQBar", "alvinluo setEnableMultiCode: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    CJM = paramBoolean;
+    AppMethodBeat.o(176206);
+  }
+  
+  public static void hkl()
   {
     AppMethodBeat.i(91158);
-    int i = ((b)g.ab(b.class)).a(b.a.qIQ, 0);
+    int i = ((b)g.af(b.class)).a(b.a.sen, 0);
     if (i != 1) {}
     for (boolean bool = true;; bool = false)
     {
-      MhL = bool;
-      if ((j.IS_FLAVOR_RED) || (j.DEBUG)) {
-        MhL = true;
+      RKm = bool;
+      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) {
+        RKm = true;
       }
-      if (MhL)
+      if (RKm)
       {
-        int j = ((b)g.ab(b.class)).a(b.a.qIR, 0);
+        int j = ((b)g.af(b.class)).a(b.a.seo, 0);
         if (j > 0)
         {
-          ActivityManager localActivityManager = (ActivityManager)ak.getContext().getSystemService("activity");
+          ActivityManager localActivityManager = (ActivityManager)MMApplicationContext.getContext().getSystemService("activity");
           ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
           localActivityManager.getMemoryInfo(localMemoryInfo);
           if ((localMemoryInfo.totalMem > 0L) && ((float)localMemoryInfo.totalMem * 1.0F / 1048576.0F <= j)) {
-            MhL = false;
+            RKm = false;
           }
-          ae.i("MicroMsg.WxQBar", "alvinluo checkMemoryLimit totalMemory: %s bytes, %s MB, config memoryLimit: %d, useNewScanInterface: %b", new Object[] { Long.valueOf(localMemoryInfo.totalMem), Float.valueOf((float)localMemoryInfo.totalMem * 1.0F / 1048576.0F), Integer.valueOf(j), Boolean.valueOf(MhL) });
+          Log.i("MicroMsg.WxQBar", "alvinluo checkMemoryLimit totalMemory: %s bytes, %s MB, config memoryLimit: %d, useNewScanInterface: %b", new Object[] { Long.valueOf(localMemoryInfo.totalMem), Float.valueOf((float)localMemoryInfo.totalMem * 1.0F / 1048576.0F), Integer.valueOf(j), Boolean.valueOf(RKm) });
         }
       }
-      ae.i("MicroMsg.WxQBar", "alvinluo updateUseNewScanInterfaceStatus config: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(MhL) });
+      Log.i("MicroMsg.WxQBar", "alvinluo updateUseNewScanInterfaceStatus config: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(RKm) });
       AppMethodBeat.o(91158);
       return;
     }
   }
   
-  public static boolean fYa()
+  public static boolean hkm()
   {
-    return MhL;
+    return RKm;
   }
   
-  public static void zD(boolean paramBoolean)
-  {
-    AppMethodBeat.i(176206);
-    ae.i("MicroMsg.WxQBar", "alvinluo setEnableMultiCode: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    yFX = paramBoolean;
-    AppMethodBeat.o(176206);
-  }
-  
-  public final int H(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91160);
-    ae.i("MicroMsg.WxQBar", "alvinluo scanImage width: %d, height: %d, grayImage: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.length), Boolean.valueOf(MhL) });
-    if (MhL) {
+    Log.i("MicroMsg.WxQBar", "alvinluo scanImage width: %d, height: %d, grayImage: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.length), Boolean.valueOf(RKm) });
+    if (RKm) {
       try
       {
-        if (this.MgS < 0) {
+        if (this.RJt < 0) {
           return -1;
         }
-        paramInt1 = this.MhM.ScanImage712(paramArrayOfByte, paramInt1, paramInt2, this.MgS);
+        paramInt1 = this.RKn.ScanImage712(paramArrayOfByte, paramInt1, paramInt2, this.RJt);
         return paramInt1;
       }
       finally
@@ -101,23 +101,23 @@ public final class f
         AppMethodBeat.o(91160);
       }
     }
-    paramInt1 = super.H(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = super.S(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(91160);
     return paramInt1;
   }
   
-  public final int X(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final int aG(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(91163);
-    this.MhM.SetCenterCoordinate(paramInt1, paramInt2, paramInt3, paramInt4, this.MgS);
-    AppMethodBeat.o(91163);
-    return 0;
+    AppMethodBeat.i(194830);
+    int i = this.RKn.SetTouchCoordinate(this.RJt, paramFloat1, paramFloat2);
+    AppMethodBeat.o(194830);
+    return i;
   }
   
-  public final int ahl(int paramInt)
+  public final int aqy(int paramInt)
   {
     AppMethodBeat.i(176207);
-    this.MhM.AddBlackInternal(paramInt, this.MgS);
+    this.RKn.AddBlackInternal(paramInt, this.RJt);
     AppMethodBeat.o(176207);
     return 0;
   }
@@ -144,17 +144,17 @@ public final class f
       i += 1;
     }
     i = 0;
-    if ((MhL) && (paramBoolean))
+    if ((RKm) && (paramBoolean))
     {
-      j = this.MhM.GetDetailResultsNew(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.MgS);
-      this.MhN = (j - 1);
+      j = this.RKn.GetDetailResultsNew(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.RJt);
+      this.RKo = (j - 1);
       i = j;
-      if (yFX)
+      if (CJM)
       {
         i = j;
         if (j <= 0)
         {
-          ae.w("MicroMsg.WxQBar", "alvinluo getResults ret: %d", new Object[] { Integer.valueOf(j) });
+          Log.w("MicroMsg.WxQBar", "alvinluo getResults ret: %d", new Object[] { Integer.valueOf(j) });
           AppMethodBeat.o(91162);
           return 0;
         }
@@ -162,7 +162,7 @@ public final class f
     }
     else
     {
-      this.MhM.GetDetailResults(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.MgS);
+      this.RKn.GetDetailResults(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.RJt);
     }
     int j = 0;
     for (;;)
@@ -175,7 +175,7 @@ public final class f
       {
         try
         {
-          if (bu.isNullOrNil(localQBarResultJNI.typeName)) {
+          if (Util.isNullOrNil(localQBarResultJNI.typeName)) {
             continue;
           }
           locala = new a.a();
@@ -192,19 +192,19 @@ public final class f
             locala.data = new String(localQBarResultJNI.data, "ASCII");
           }
           paramList.add(locala);
-          if ((yFX) || (paramList.size() <= 0)) {
+          if ((CJM) || (paramList.size() <= 0)) {
             continue;
           }
-          ae.w("MicroMsg.WxQBar", "alvinluo getResults not enableMultiCode and ignore other results");
+          Log.w("MicroMsg.WxQBar", "alvinluo getResults not enableMultiCode and ignore other results");
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException)
         {
           a.a locala;
-          ae.e("MicroMsg.WxQBar", "GetResults exp:" + localUnsupportedEncodingException.getMessage());
+          Log.e("MicroMsg.WxQBar", "GetResults exp:" + localUnsupportedEncodingException.getMessage());
           continue;
           j += 1;
         }
-        if ((paramList1 == null) || (!MhL)) {
+        if ((paramList1 == null) || (!RKm)) {
           break label582;
         }
         j = 0;
@@ -227,15 +227,15 @@ public final class f
       while (j < 3)
       {
         paramList1 = arrayOfQBarReportMsg[j];
-        if (!bu.isNullOrNil(paramList1.charsetMode)) {
+        if (!Util.isNullOrNil(paramList1.charsetMode)) {
           paramList2.add(paramList1);
         }
         j += 1;
       }
     }
-    if ((MhL) && (paramBoolean) && (yFX) && (i > 0))
+    if ((RKm) && (paramBoolean) && (CJM) && (i > 0))
     {
-      ae.i("MicroMsg.WxQBar", "alvinluo getResults ret: %d, result size: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()) });
+      Log.i("MicroMsg.WxQBar", "alvinluo getResults ret: %d, result size: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()) });
       i = paramList.size();
       AppMethodBeat.o(91162);
       return i;
@@ -245,77 +245,77 @@ public final class f
     return i;
   }
   
-  public final int baH(String paramString)
+  public final int bpW(String paramString)
   {
     AppMethodBeat.i(91164);
-    this.MhM.AddWhiteList(paramString, this.MgS);
+    this.RKn.AddWhiteList(paramString, this.RJt);
     AppMethodBeat.o(91164);
     return 0;
   }
   
-  public final int baI(String paramString)
+  public final int bpX(String paramString)
   {
     AppMethodBeat.i(91165);
-    this.MhM.AddBlackList(paramString, this.MgS);
+    this.RKn.AddBlackList(paramString, this.RJt);
     AppMethodBeat.o(91165);
     return 0;
   }
   
-  public final int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  public final int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(91159);
     if (paramBoolean)
     {
-      paramInt1 = H(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = S(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(91159);
       return paramInt1;
     }
-    paramInt1 = super.H(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = super.S(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(91159);
     return paramInt1;
   }
   
-  public final String jJ()
+  public final String jS()
   {
-    AppMethodBeat.i(196691);
+    AppMethodBeat.i(194829);
     try
     {
-      if (this.MgS < 0) {
+      if (this.RJt < 0) {
         return null;
       }
-      String str = this.MhM.GetDebugString(this.MgS);
+      String str = this.RKn.GetDebugString(this.RJt);
       return str;
     }
     finally
     {
-      AppMethodBeat.o(196691);
+      AppMethodBeat.o(194829);
     }
   }
   
   public final void reset(boolean paramBoolean)
   {
-    AppMethodBeat.i(196690);
-    if (MhL) {
+    AppMethodBeat.i(194828);
+    if (RKm) {
       try
       {
-        if (this.MgS < 0) {
+        if (this.RJt < 0) {
           return;
         }
-        ae.i("MicroMsg.WxQBar", "alvinluo reset WxQBar qbarId: %d, forZoom: %b", new Object[] { Integer.valueOf(this.MgS), Boolean.valueOf(paramBoolean) });
-        this.MhM.Reset(this.MgS, paramBoolean);
+        Log.i("MicroMsg.WxQBar", "alvinluo reset WxQBar qbarId: %d, forZoom: %b", new Object[] { Integer.valueOf(this.RJt), Boolean.valueOf(paramBoolean) });
+        this.RKn.Reset(this.RJt, paramBoolean);
         return;
       }
       finally
       {
-        AppMethodBeat.o(196690);
+        AppMethodBeat.o(194828);
       }
     }
-    AppMethodBeat.o(196690);
+    AppMethodBeat.o(194828);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qbar.f
  * JD-Core Version:    0.7.0.1
  */

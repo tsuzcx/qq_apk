@@ -12,9 +12,9 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -169,7 +169,7 @@ public class GlobalUtil
     {
       for (;;)
       {
-        ae.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+        Log.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
         localObject = str;
       }
     }
@@ -182,7 +182,7 @@ public class GlobalUtil
     AppMethodBeat.i(102499);
     if (getInstance().getContext() != null)
     {
-      paramString = k.W(getInstance().getContext().getDatabasePath(paramString));
+      paramString = o.X(getInstance().getContext().getDatabasePath(paramString));
       if (paramString.exists() == true) {
         try
         {
@@ -227,7 +227,7 @@ public class GlobalUtil
       }
       catch (PackageManager.NameNotFoundException paramContext)
       {
-        ae.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
+        Log.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
         AppMethodBeat.o(102488);
         return 0;
       }
@@ -269,7 +269,7 @@ public class GlobalUtil
   public static boolean isDBExist(String paramString)
   {
     AppMethodBeat.i(102498);
-    if ((getInstance().getContext() != null) && (k.W(getInstance().getContext().getDatabasePath(paramString)).exists()))
+    if ((getInstance().getContext() != null) && (o.X(getInstance().getContext().getDatabasePath(paramString)).exists()))
     {
       AppMethodBeat.o(102498);
       return true;
@@ -281,13 +281,13 @@ public class GlobalUtil
   public static void updateFilePathAuthorized(String paramString)
   {
     AppMethodBeat.i(102497);
-    Object localObject = new k(paramString);
-    String str2 = ((k)localObject).getParent();
-    String str1 = new k(str2).getParent();
-    paramString = new k(str1).getParent();
+    Object localObject = new o(paramString);
+    String str2 = ((o)localObject).getParent();
+    String str1 = new o(str2).getParent();
+    paramString = new o(str1).getParent();
     try
     {
-      localObject = "chmod 777 " + w.B(((k)localObject).fTh());
+      localObject = "chmod 777 " + aa.z(((o)localObject).her());
       Runtime.getRuntime().exec((String)localObject);
       str2 = "chmod 777 ".concat(String.valueOf(str2));
       Runtime.getRuntime().exec(str2);
@@ -300,7 +300,7 @@ public class GlobalUtil
     }
     catch (IOException paramString)
     {
-      ae.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+      Log.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
       AppMethodBeat.o(102497);
     }
   }
@@ -432,7 +432,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
+      Log.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
       AppMethodBeat.o(102495);
     }
     return 0;
@@ -462,7 +462,7 @@ public class GlobalUtil
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        ae.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
+        Log.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
         AppMethodBeat.o(102496);
         return 0;
       }
@@ -514,7 +514,7 @@ public class GlobalUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

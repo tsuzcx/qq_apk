@@ -12,32 +12,33 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aa.a.a.a;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.v;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.config.l;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.ag;
 import com.tencent.mm.plugin.appbrand.jsapi.auth.entity.MMAuthScopeRiskInfo;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.widget.dialog.i.b;
-import com.tencent.mm.protocal.protobuf.brs;
-import com.tencent.mm.protocal.protobuf.bru;
-import com.tencent.mm.protocal.protobuf.brv;
-import com.tencent.mm.protocal.protobuf.cyg;
-import com.tencent.mm.protocal.protobuf.do;
-import com.tencent.mm.protocal.protobuf.eio;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.widget.dialog.i.a;
+import com.tencent.mm.protocal.protobuf.cem;
+import com.tencent.mm.protocal.protobuf.ceo;
+import com.tencent.mm.protocal.protobuf.cep;
+import com.tencent.mm.protocal.protobuf.drb;
+import com.tencent.mm.protocal.protobuf.dy;
+import com.tencent.mm.protocal.protobuf.fdg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -46,48 +47,48 @@ public final class JsApiAuthorize
 {
   private static final int CTRL_INDEX = 54;
   private static final String NAME = "authorize";
-  private final k kBv;
+  private final k lFM;
   
   public JsApiAuthorize()
   {
     AppMethodBeat.i(174773);
-    this.kBv = new k();
+    this.lFM = new k();
     AppMethodBeat.o(174773);
   }
   
   public final void a(d paramd, JSONObject paramJSONObject, int paramInt, e parame)
   {
-    AppMethodBeat.i(222418);
-    ae.d("MicroMsg.JsApiAuthorize", "stev JsApiAuthorize!");
+    AppMethodBeat.i(226701);
+    Log.d("MicroMsg.JsApiAuthorize", "stev JsApiAuthorize!");
     AuthorizeTask localAuthorizeTask = new AuthorizeTask();
     localAuthorizeTask.appId = paramd.getAppId();
-    localAuthorizeTask.kBA = "authorize";
-    Object localObject = paramd.getRuntime().Fm();
+    localAuthorizeTask.lFR = "authorize";
+    Object localObject = paramd.getRuntime().OT();
     if (localObject != null) {
-      localAuthorizeTask.hSZ = ((com.tencent.mm.plugin.appbrand.config.k)localObject).kbw.jLV;
+      localAuthorizeTask.iOo = ((l)localObject).leE.kNW;
     }
-    localObject = com.tencent.mm.plugin.appbrand.a.KK(paramd.getAppId());
+    localObject = com.tencent.mm.plugin.appbrand.a.TS(paramd.getAppId());
     if (localObject != null) {
       AuthorizeTask.a(localAuthorizeTask, ((AppBrandStatObject)localObject).scene);
     }
     paramJSONObject = paramJSONObject.toString();
-    localAuthorizeTask.kBw = this;
-    localAuthorizeTask.kBx = paramd;
+    localAuthorizeTask.lFN = this;
+    localAuthorizeTask.lFO = paramd;
     localAuthorizeTask.data = paramJSONObject;
-    localAuthorizeTask.kmu = paramInt;
-    localAuthorizeTask.kBy = parame;
-    localAuthorizeTask.kBM = new Bundle();
-    if ((paramd instanceof r)) {
-      localAuthorizeTask.kBP = 1;
+    localAuthorizeTask.lqe = paramInt;
+    localAuthorizeTask.lFP = parame;
+    localAuthorizeTask.lGd = new Bundle();
+    if ((paramd instanceof s)) {
+      localAuthorizeTask.lGg = 1;
     }
     for (;;)
     {
-      localAuthorizeTask.biw();
+      localAuthorizeTask.bDJ();
       AppBrandMainProcessService.a(localAuthorizeTask);
-      AppMethodBeat.o(222418);
+      AppMethodBeat.o(226701);
       return;
-      if ((paramd instanceof z)) {
-        localAuthorizeTask.kBP = 2;
+      if ((paramd instanceof ac)) {
+        localAuthorizeTask.lGg = 2;
       }
     }
   }
@@ -100,29 +101,31 @@ public final class JsApiAuthorize
     public String data;
     public int errCode;
     public String errMsg;
-    public int hSZ;
-    public String kBA;
-    public String kBB;
-    public int kBC;
-    public String kBD;
-    public String kBE;
-    public String kBF;
-    public String kBG;
-    public boolean kBH;
-    public String kBI;
-    public String kBJ;
-    public String kBK;
-    public int kBL;
-    public Bundle kBM;
-    public String kBN;
-    public MMAuthScopeRiskInfo kBO;
-    int kBP;
-    transient i kBw;
-    transient d kBx;
-    transient e kBy;
-    public ArrayList<String> kBz;
-    public int kmu;
-    private int kxr;
+    public int iOo;
+    private int lBE;
+    transient i lFN;
+    transient d lFO;
+    transient e lFP;
+    public ArrayList<String> lFQ;
+    public String lFR;
+    public String lFS;
+    public int lFT;
+    public String lFU;
+    public String lFV;
+    public String lFW;
+    public String lFX;
+    public boolean lFY;
+    public String lFZ;
+    public String lGa;
+    public String lGb;
+    public int lGc;
+    public Bundle lGd;
+    public String lGe;
+    public MMAuthScopeRiskInfo lGf;
+    int lGg;
+    public String lGh;
+    public String lGi;
+    public int lqe;
     public String mAppName;
     
     static
@@ -137,111 +140,111 @@ public final class JsApiAuthorize
     public AuthorizeTask(Parcel paramParcel)
     {
       AppMethodBeat.i(46028);
-      e(paramParcel);
+      f(paramParcel);
       AppMethodBeat.o(46028);
     }
     
-    private void PL(String paramString)
+    private void Zb(String paramString)
     {
       AppMethodBeat.i(46031);
       if (TextUtils.isEmpty(paramString)) {
-        this.kBw.b(this.kBx, this.kmu, "fail auth cancel");
+        this.lFN.b(this.lFO, this.lqe, "fail auth cancel");
       }
       for (;;)
       {
-        this.kBy.bjq();
+        this.lFP.bEE();
         AppMethodBeat.o(46031);
         return;
-        this.kBw.b(this.kBx, this.kmu, paramString);
+        this.lFN.b(this.lFO, this.lqe, paramString);
       }
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(46029);
       a local1 = new a()
       {
         public final void a(MMAuthScopeRiskInfo paramAnonymousMMAuthScopeRiskInfo)
         {
-          AppMethodBeat.i(222406);
-          ae.d("MicroMsg.JsApiAuthorize", "onScopeRiskIntercepted !");
-          JsApiAuthorize.AuthorizeTask.this.kBB = "risk_intercepted";
-          JsApiAuthorize.AuthorizeTask.this.kBO = paramAnonymousMMAuthScopeRiskInfo;
+          AppMethodBeat.i(226689);
+          Log.d("MicroMsg.JsApiAuthorize", "onScopeRiskIntercepted !");
+          JsApiAuthorize.AuthorizeTask.this.lFS = "risk_intercepted";
+          JsApiAuthorize.AuthorizeTask.this.lGf = paramAnonymousMMAuthScopeRiskInfo;
           JsApiAuthorize.AuthorizeTask.b(JsApiAuthorize.AuthorizeTask.this);
-          AppMethodBeat.o(222406);
+          AppMethodBeat.o(226689);
         }
         
-        public final void a(brv paramAnonymousbrv)
+        public final void a(cep paramAnonymouscep)
         {
           AppMethodBeat.i(46021);
-          ae.d("MicroMsg.JsApiAuthorize", "onConfirm !");
-          Object localObject1 = paramAnonymousbrv.GNH;
-          JsApiAuthorize.AuthorizeTask.this.kBL = ((LinkedList)localObject1).size();
+          Log.d("MicroMsg.JsApiAuthorize", "onConfirm !");
+          Object localObject1 = paramAnonymouscep.LRN;
+          JsApiAuthorize.AuthorizeTask.this.lGc = ((LinkedList)localObject1).size();
           int i = 0;
           Object localObject2;
-          while (i < JsApiAuthorize.AuthorizeTask.this.kBL)
+          while (i < JsApiAuthorize.AuthorizeTask.this.lGc)
           {
-            localObject2 = (cyg)((LinkedList)localObject1).get(i);
+            localObject2 = (drb)((LinkedList)localObject1).get(i);
             try
             {
-              JsApiAuthorize.AuthorizeTask.this.kBM.putByteArray(String.valueOf(i), ((cyg)localObject2).toByteArray());
+              JsApiAuthorize.AuthorizeTask.this.lGd.putByteArray(String.valueOf(i), ((drb)localObject2).toByteArray());
               i += 1;
             }
-            catch (IOException paramAnonymousbrv)
+            catch (IOException paramAnonymouscep)
             {
-              ae.e("MicroMsg.JsApiAuthorize", "IOException %s", new Object[] { paramAnonymousbrv.getMessage() });
-              ae.printErrStackTrace("MicroMsg.JsApiAuthorize", paramAnonymousbrv, "", new Object[0]);
-              JsApiAuthorize.AuthorizeTask.this.kBB = "fail";
+              Log.e("MicroMsg.JsApiAuthorize", "IOException %s", new Object[] { paramAnonymouscep.getMessage() });
+              Log.printErrStackTrace("MicroMsg.JsApiAuthorize", paramAnonymouscep, "", new Object[0]);
+              JsApiAuthorize.AuthorizeTask.this.lFS = "fail";
               JsApiAuthorize.AuthorizeTask.d(JsApiAuthorize.AuthorizeTask.this);
               AppMethodBeat.o(46021);
               return;
             }
           }
-          JsApiAuthorize.AuthorizeTask.this.mAppName = paramAnonymousbrv.uuo;
-          JsApiAuthorize.AuthorizeTask.this.kBD = paramAnonymousbrv.FLQ;
-          JsApiAuthorize.AuthorizeTask.this.kBE = paramAnonymousbrv.HeY;
-          JsApiAuthorize.AuthorizeTask.this.kBG = paramAnonymousbrv.HeX;
-          JsApiAuthorize.AuthorizeTask.this.kBF = paramAnonymousbrv.HeW;
-          if (paramAnonymousbrv.HeZ != null)
+          JsApiAuthorize.AuthorizeTask.this.mAppName = paramAnonymouscep.xMq;
+          JsApiAuthorize.AuthorizeTask.this.lFU = paramAnonymouscep.KFs;
+          JsApiAuthorize.AuthorizeTask.this.lFV = paramAnonymouscep.Mkg;
+          JsApiAuthorize.AuthorizeTask.this.lFX = paramAnonymouscep.Mkf;
+          JsApiAuthorize.AuthorizeTask.this.lFW = paramAnonymouscep.Mke;
+          if (paramAnonymouscep.Mkh != null)
           {
-            JsApiAuthorize.AuthorizeTask.this.kBH = paramAnonymousbrv.HeZ.FOn;
-            JsApiAuthorize.AuthorizeTask.this.kBI = paramAnonymousbrv.HeZ.FOo;
+            JsApiAuthorize.AuthorizeTask.this.lFY = paramAnonymouscep.Mkh.KHU;
+            JsApiAuthorize.AuthorizeTask.this.lFZ = paramAnonymouscep.Mkh.KHV;
           }
-          JsApiAuthorize.AuthorizeTask.this.kBB = "needConfirm";
+          JsApiAuthorize.AuthorizeTask.this.lFS = "needConfirm";
           if (((LinkedList)localObject1).size() > 0)
           {
-            localObject1 = (cyg)((LinkedList)localObject1).get(0);
+            localObject1 = (drb)((LinkedList)localObject1).get(0);
             localObject2 = JsApiAuthorize.AuthorizeTask.this;
-            if (((cyg)localObject1).HIy == null)
+            if (((drb)localObject1).MTJ == null)
             {
-              paramAnonymousbrv = "";
-              ((JsApiAuthorize.AuthorizeTask)localObject2).kBN = paramAnonymousbrv;
-              if (!"scope.userInfo".equals(((cyg)localObject1).GcE)) {
+              paramAnonymouscep = "";
+              ((JsApiAuthorize.AuthorizeTask)localObject2).lGe = paramAnonymouscep;
+              if (!"scope.userInfo".equals(((drb)localObject1).KWK)) {
                 break label371;
               }
-              JsApiAuthorize.AuthorizeTask.this.kBK = v.aAE();
+              JsApiAuthorize.AuthorizeTask.this.lGb = z.aUa();
               localObject1 = new StringBuilder("userNickName=");
-              if (JsApiAuthorize.AuthorizeTask.this.kBK != null) {
+              if (JsApiAuthorize.AuthorizeTask.this.lGb != null) {
                 break label360;
               }
             }
             label360:
-            for (paramAnonymousbrv = "";; paramAnonymousbrv = JsApiAuthorize.AuthorizeTask.this.kBK)
+            for (paramAnonymouscep = "";; paramAnonymouscep = JsApiAuthorize.AuthorizeTask.this.lGb)
             {
-              ae.i("MicroMsg.JsApiAuthorize", paramAnonymousbrv);
-              paramAnonymousbrv = v.aAC();
-              localObject1 = g.kBm;
-              g.a.a(paramAnonymousbrv, new g.b()
+              Log.i("MicroMsg.JsApiAuthorize", paramAnonymouscep);
+              paramAnonymouscep = z.aTY();
+              localObject1 = g.lFD;
+              g.a.a(paramAnonymouscep, new g.b()
               {
-                public final void Lz(String paramAnonymous2String)
+                public final void UI(String paramAnonymous2String)
                 {
                   AppMethodBeat.i(46018);
-                  JsApiAuthorize.AuthorizeTask.this.kBJ = paramAnonymous2String;
+                  JsApiAuthorize.AuthorizeTask.this.lGa = paramAnonymous2String;
                   StringBuilder localStringBuilder = new StringBuilder(" userHeadIconPath=");
-                  if (JsApiAuthorize.AuthorizeTask.this.kBJ == null) {}
-                  for (paramAnonymous2String = "";; paramAnonymous2String = JsApiAuthorize.AuthorizeTask.this.kBJ)
+                  if (JsApiAuthorize.AuthorizeTask.this.lGa == null) {}
+                  for (paramAnonymous2String = "";; paramAnonymous2String = JsApiAuthorize.AuthorizeTask.this.lGa)
                   {
-                    ae.i("MicroMsg.JsApiAuthorize", paramAnonymous2String);
+                    Log.i("MicroMsg.JsApiAuthorize", paramAnonymous2String);
                     JsApiAuthorize.AuthorizeTask.e(JsApiAuthorize.AuthorizeTask.this);
                     AppMethodBeat.o(46018);
                     return;
@@ -250,7 +253,7 @@ public final class JsApiAuthorize
               });
               AppMethodBeat.o(46021);
               return;
-              paramAnonymousbrv = ((cyg)localObject1).HIy;
+              paramAnonymouscep = ((drb)localObject1).MTJ;
               break;
             }
             label371:
@@ -262,11 +265,11 @@ public final class JsApiAuthorize
           AppMethodBeat.o(46021);
         }
         
-        public final void af(int paramAnonymousInt, String paramAnonymousString)
+        public final void ai(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(46020);
-          ae.e("MicroMsg.JsApiAuthorize", "onFailure !");
-          JsApiAuthorize.AuthorizeTask.this.kBB = "fail";
+          Log.e("MicroMsg.JsApiAuthorize", "onFailure !");
+          JsApiAuthorize.AuthorizeTask.this.lFS = "fail";
           JsApiAuthorize.AuthorizeTask.this.errCode = paramAnonymousInt;
           JsApiAuthorize.AuthorizeTask.this.errMsg = paramAnonymousString;
           JsApiAuthorize.AuthorizeTask.c(JsApiAuthorize.AuthorizeTask.this);
@@ -276,8 +279,8 @@ public final class JsApiAuthorize
         public final void onSuccess()
         {
           AppMethodBeat.i(46019);
-          ae.d("MicroMsg.JsApiAuthorize", "onSuccess !");
-          JsApiAuthorize.AuthorizeTask.this.kBB = "ok";
+          Log.d("MicroMsg.JsApiAuthorize", "onSuccess !");
+          JsApiAuthorize.AuthorizeTask.this.lFS = "ok";
           JsApiAuthorize.AuthorizeTask.a(JsApiAuthorize.AuthorizeTask.this);
           AppMethodBeat.o(46019);
         }
@@ -285,8 +288,9 @@ public final class JsApiAuthorize
       Object localObject2;
       Object localObject3;
       int i;
+      label147:
       Object localObject1;
-      if (this.kBA.equals("authorize"))
+      if (this.lFR.equals("authorize"))
       {
         try
         {
@@ -298,185 +302,200 @@ public final class JsApiAuthorize
             ((LinkedList)localObject3).add(((JSONArray)localObject2).optString(i));
             i += 1;
           }
-          localObject1 = new com.tencent.mm.aa.a.a(this.appId, (LinkedList)localObject3, this.hSZ, this.kxr, new a.a() {});
+          if (((LinkedList)localObject3).size() <= 0) {
+            break label147;
+          }
         }
         catch (Exception localException)
         {
-          ae.e("MicroMsg.JsApiAuthorize", "Exception %s", new Object[] { localException.getMessage() });
-          this.kBB = "fail";
-          biG();
+          Log.e("MicroMsg.JsApiAuthorize", "Exception %s", new Object[] { localException.getMessage() });
+          this.lFS = "fail";
+          bDU();
           AppMethodBeat.o(46029);
           return;
         }
-        if (((com.tencent.mm.aa.a.a)localObject1).air().HeS == null) {
-          ((com.tencent.mm.aa.a.a)localObject1).air().HeS = new eio();
+        this.lGh = ((String)((LinkedList)localObject3).get(0));
+        localObject1 = new com.tencent.mm.aa.a.a(this.appId, (LinkedList)localObject3, this.iOo, this.lBE, new a.a() {});
+        if (((com.tencent.mm.aa.a.a)localObject1).ayH().Mka == null) {
+          ((com.tencent.mm.aa.a.a)localObject1).ayH().Mka = new fdg();
         }
-        ((com.tencent.mm.aa.a.a)localObject1).air().HeS.IlP = this.kBP;
-        com.tencent.mm.kernel.g.ajj().a((n)localObject1, 0);
+        ((com.tencent.mm.aa.a.a)localObject1).ayH().Mka.NyS = this.lGg;
+        com.tencent.mm.kernel.g.azz().a((com.tencent.mm.ak.q)localObject1, 0);
         AppMethodBeat.o(46029);
         return;
       }
-      if (this.kBA.equals("authorizeConfirm"))
+      if (this.lFR.equals("authorizeConfirm"))
       {
         localObject2 = this.appId;
-        localObject3 = this.kBz;
-        i = this.hSZ;
-        final int j = this.kBC;
-        localObject1 = new com.tencent.mm.aa.a.b((String)localObject2, i.v((ArrayList)localObject3), i, j, this.kxr, new com.tencent.mm.aa.a.b.a() {});
-        if (((com.tencent.mm.aa.a.b)localObject1).ait().HeS == null) {
-          ((com.tencent.mm.aa.a.b)localObject1).ait().HeS = new eio();
+        localObject3 = this.lFQ;
+        i = this.iOo;
+        final int j = this.lFT;
+        localObject1 = new com.tencent.mm.aa.a.b((String)localObject2, i.A((ArrayList)localObject3), i, j, this.lBE, new com.tencent.mm.aa.a.b.a() {});
+        if (((com.tencent.mm.aa.a.b)localObject1).ayJ().Mka == null) {
+          ((com.tencent.mm.aa.a.b)localObject1).ayJ().Mka = new fdg();
         }
-        ((com.tencent.mm.aa.a.b)localObject1).ait().HeS.IlP = this.kBP;
-        com.tencent.mm.kernel.g.ajj().a((n)localObject1, 0);
+        ((com.tencent.mm.aa.a.b)localObject1).ayJ().Mka.NyS = this.lGg;
+        com.tencent.mm.kernel.g.azz().a((com.tencent.mm.ak.q)localObject1, 0);
       }
       AppMethodBeat.o(46029);
     }
     
-    public final void aOY()
+    public final void bjk()
     {
       AppMethodBeat.i(46030);
-      bix();
-      if (!this.kBx.isRunning())
+      bDK();
+      if (!this.lFO.isRunning())
       {
-        this.kBy.bjq();
+        this.lFP.bEE();
         AppMethodBeat.o(46030);
         return;
       }
-      if (this.kBB.equals("ok"))
+      if (this.lFS.equals("ok"))
       {
-        this.kBw.b(this.kBx, this.kmu, "ok");
-        this.kBy.bjq();
-        AppMethodBeat.o(46030);
-        return;
+        if ((this.lGh != null) && (!Util.isNullOrNil(this.lGi)) && (!this.lGh.equals(this.lGi)))
+        {
+          Log.i("MicroMsg.JsApiAuthorize", "targetScope:%s, selectScope:%s", new Object[] { this.lGh, this.lGi });
+          this.lFN.b(this.lFO, this.lqe, "fail auth deny");
+        }
+        for (;;)
+        {
+          this.lFP.bEE();
+          AppMethodBeat.o(46030);
+          return;
+          this.lFN.b(this.lFO, this.lqe, "ok");
+        }
       }
       Object localObject;
-      if (this.kBB.equals("fail"))
+      if (this.lFS.equals("fail"))
       {
-        if (bu.isNullOrNil(this.errMsg)) {}
+        if (Util.isNullOrNil(this.errMsg)) {}
         for (localObject = String.format("fail:login error %s", new Object[] { Integer.valueOf(this.errCode) });; localObject = String.format("fail:%s", new Object[] { this.errMsg }))
         {
-          this.kBw.b(this.kBx, this.kmu, (String)localObject);
-          this.kBy.bjq();
+          this.lFN.b(this.lFO, this.lqe, (String)localObject);
+          this.lFP.bEE();
           AppMethodBeat.o(46030);
           return;
         }
       }
-      if (this.kBB.equals("risk_intercepted"))
+      if (this.lFS.equals("risk_intercepted"))
       {
-        if (this.kBO != null) {
-          h.a(this.kBx.getContext(), this.kBO.dyI, this.kBO.kDa, this.kBO.kCZ, h.b.a(this.kBx.getContext(), this.kBO), new DialogInterface.OnDismissListener()
+        if (this.lGf != null) {
+          h.a(this.lFO.getContext(), this.lGf.dQx, this.lGf.lHB, this.lGf.lHA, h.b.a(this.lFO.getContext(), this.lGf), new DialogInterface.OnDismissListener()
           {
             public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
             {
-              AppMethodBeat.i(222407);
-              JsApiAuthorize.AuthorizeTask.this.kBw.b(JsApiAuthorize.AuthorizeTask.this.kBx, JsApiAuthorize.AuthorizeTask.this.kmu, "fail:risk intercepted");
-              AppMethodBeat.o(222407);
+              AppMethodBeat.i(226690);
+              JsApiAuthorize.AuthorizeTask.this.lFN.b(JsApiAuthorize.AuthorizeTask.this.lFO, JsApiAuthorize.AuthorizeTask.this.lqe, "fail:risk intercepted");
+              AppMethodBeat.o(226690);
             }
           });
         }
-        this.kBy.bjq();
+        this.lFP.bEE();
         AppMethodBeat.o(46030);
         return;
       }
-      if (this.kBB.equals("needConfirm"))
+      if (this.lFS.equals("needConfirm"))
       {
         localObject = new LinkedList();
         int i = 0;
-        while (i < this.kBL)
+        while (i < this.lGc)
         {
-          byte[] arrayOfByte = this.kBM.getByteArray(String.valueOf(i));
-          cyg localcyg = new cyg();
+          byte[] arrayOfByte = this.lGd.getByteArray(String.valueOf(i));
+          drb localdrb = new drb();
           try
           {
-            localcyg.parseFrom(arrayOfByte);
-            ((LinkedList)localObject).add(localcyg);
+            localdrb.parseFrom(arrayOfByte);
+            ((LinkedList)localObject).add(localdrb);
             i += 1;
           }
           catch (IOException localIOException)
           {
-            ae.e("MicroMsg.JsApiAuthorize", "IOException %s", new Object[] { localIOException.getMessage() });
-            ae.printErrStackTrace("MicroMsg.JsApiAuthorize", localIOException, "", new Object[0]);
-            this.kBw.b(this.kBx, this.kmu, "fail:internal error scope error");
-            this.kBy.bjq();
+            Log.e("MicroMsg.JsApiAuthorize", "IOException %s", new Object[] { localIOException.getMessage() });
+            Log.printErrStackTrace("MicroMsg.JsApiAuthorize", localIOException, "", new Object[0]);
+            this.lFN.b(this.lFO, this.lqe, "fail:internal error scope error");
+            this.lFP.bEE();
             AppMethodBeat.o(46030);
             return;
           }
         }
         if (localIOException.size() > 0)
         {
-          this.kBx.K(new Runnable()
+          this.lFO.P(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(222410);
-              cyg localcyg = (cyg)localIOException.get(0);
-              AppBrandRuntime localAppBrandRuntime = JsApiAuthorize.AuthorizeTask.this.kBx.getRuntime();
-              boolean bool = com.tencent.mm.plugin.appbrand.permission.q.a(localcyg.GcE, localAppBrandRuntime.Fm());
-              final com.tencent.mm.plugin.appbrand.permission.a.b localb = com.tencent.mm.plugin.appbrand.permission.a.b.a.a(JsApiAuthorize.AuthorizeTask.this.kBx, new i.b()
+              AppMethodBeat.i(226693);
+              drb localdrb = (drb)localIOException.get(0);
+              AppBrandRuntime localAppBrandRuntime = JsApiAuthorize.AuthorizeTask.this.lFO.getRuntime();
+              boolean bool = com.tencent.mm.plugin.appbrand.permission.q.a(localdrb.KWK, localAppBrandRuntime.OT());
+              final com.tencent.mm.plugin.appbrand.permission.a.b localb = com.tencent.mm.plugin.appbrand.permission.a.b.a.a(JsApiAuthorize.AuthorizeTask.this.lFO, new com.tencent.mm.plugin.appbrand.widget.dialog.h.b()
               {
                 public final void a(int paramAnonymous2Int1, ArrayList<String> paramAnonymous2ArrayList, int paramAnonymous2Int2)
                 {
-                  AppMethodBeat.i(222408);
-                  if (com.tencent.luggage.h.b.C(paramAnonymous2ArrayList).size() > 0)
+                  AppMethodBeat.i(226691);
+                  JsApiAuthorize.AuthorizeTask localAuthorizeTask = JsApiAuthorize.AuthorizeTask.this;
+                  if (com.tencent.luggage.h.b.G(paramAnonymous2ArrayList).size() > 0)
                   {
                     paramAnonymous2ArrayList = (String)paramAnonymous2ArrayList.get(0);
+                    localAuthorizeTask.lGi = paramAnonymous2ArrayList;
                     switch (paramAnonymous2Int1)
                     {
                     }
                   }
                   for (;;)
                   {
-                    AppMethodBeat.o(222408);
+                    AppMethodBeat.o(226691);
                     return;
                     paramAnonymous2ArrayList = "";
                     break;
-                    ArrayList localArrayList = new ArrayList();
-                    localArrayList.add(paramAnonymous2ArrayList);
-                    JsApiAuthorize.AuthorizeTask.a(JsApiAuthorize.AuthorizeTask.this, 1, localArrayList);
-                    ae.i("MicroMsg.JsApiAuthorize", "click PositiveButton");
-                    AppMethodBeat.o(222408);
+                    paramAnonymous2ArrayList = new ArrayList();
+                    paramAnonymous2ArrayList.add(JsApiAuthorize.AuthorizeTask.this.lGi);
+                    JsApiAuthorize.AuthorizeTask.a(JsApiAuthorize.AuthorizeTask.this, 1, paramAnonymous2ArrayList);
+                    Log.i("MicroMsg.JsApiAuthorize", "click PositiveButton");
+                    AppMethodBeat.o(226691);
                     return;
-                    localArrayList = new ArrayList();
-                    localArrayList.add(paramAnonymous2ArrayList);
-                    JsApiAuthorize.AuthorizeTask.a(JsApiAuthorize.AuthorizeTask.this, 2, localArrayList);
-                    ae.i("MicroMsg.JsApiAuthorize", "click NegativeButton");
-                    AppMethodBeat.o(222408);
+                    paramAnonymous2ArrayList = new ArrayList();
+                    paramAnonymous2ArrayList.add(JsApiAuthorize.AuthorizeTask.this.lGi);
+                    JsApiAuthorize.AuthorizeTask.a(JsApiAuthorize.AuthorizeTask.this, 2, paramAnonymous2ArrayList);
+                    Log.i("MicroMsg.JsApiAuthorize", "click NegativeButton");
+                    AppMethodBeat.o(226691);
                     return;
                     JsApiAuthorize.AuthorizeTask.h(JsApiAuthorize.AuthorizeTask.this);
-                    ae.i("MicroMsg.JsApiAuthorize", "user cancel");
+                    Log.i("MicroMsg.JsApiAuthorize", "user cancel");
                   }
                 }
               });
-              localb.setAppBrandName(localAppBrandRuntime.Fm().dpI);
-              localb.setApplyWording(JsApiAuthorize.AuthorizeTask.this.kBE);
-              localb.setRequestDesc(localcyg.Desc);
-              localb.setNegativeButtonText(JsApiAuthorize.AuthorizeTask.this.kBF);
-              localb.setPositiveButtonText(JsApiAuthorize.AuthorizeTask.this.kBG);
-              localb.setIconUrl(JsApiAuthorize.AuthorizeTask.this.kBD);
-              if ((JsApiAuthorize.AuthorizeTask.this.kBH) && (!TextUtils.isEmpty(JsApiAuthorize.AuthorizeTask.this.kBI)))
+              localb.setAppBrandName(localAppBrandRuntime.OT().brandName);
+              localb.setApplyWording(JsApiAuthorize.AuthorizeTask.this.lFV);
+              localb.setRequestDesc(localdrb.Desc);
+              localb.setNegativeButtonText(JsApiAuthorize.AuthorizeTask.this.lFW);
+              localb.setPositiveButtonText(JsApiAuthorize.AuthorizeTask.this.lFX);
+              localb.setIconUrl(JsApiAuthorize.AuthorizeTask.this.lFU);
+              Object localObject;
+              if ((JsApiAuthorize.AuthorizeTask.this.lFY) && (!TextUtils.isEmpty(JsApiAuthorize.AuthorizeTask.this.lFZ)))
               {
-                localb.hb(true);
+                localb.ia(true);
                 localb.setExplainOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymous2View)
                   {
-                    AppMethodBeat.i(222409);
+                    AppMethodBeat.i(226692);
                     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                    localb.bd(paramAnonymous2View);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/auth/JsApiAuthorize$AuthorizeTask$3$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                    localb.a(JsApiAuthorize.AuthorizeTask.this.kBx, JsApiAuthorize.AuthorizeTask.this.kBI, (ac)JsApiAuthorize.AuthorizeTask.this.kBx.K(ac.class)).h(JsApiAuthorize.AuthorizeTask.this.kBx);
+                    localb.bm(paramAnonymous2View);
+                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/auth/JsApiAuthorize$AuthorizeTask$3$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                    localb.a(JsApiAuthorize.AuthorizeTask.this.lFO, JsApiAuthorize.AuthorizeTask.this.lFZ, (ag)JsApiAuthorize.AuthorizeTask.this.lFO.M(ag.class)).h(JsApiAuthorize.AuthorizeTask.this.lFO);
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/auth/JsApiAuthorize$AuthorizeTask$3$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                    AppMethodBeat.o(222409);
+                    AppMethodBeat.o(226692);
                   }
                 });
-                if (!"scope.userInfo".equals(localcyg.GcE)) {
-                  break label323;
+                if (!"scope.userInfo".equals(localdrb.KWK)) {
+                  break label327;
                 }
-                Object localObject = g.kBm;
-                localObject = JsApiAuthorize.AuthorizeTask.this.kBx.getContext();
-                Bitmap localBitmap = com.tencent.mm.aj.e.DF(JsApiAuthorize.AuthorizeTask.this.kBJ);
-                String str1 = JsApiAuthorize.AuthorizeTask.this.kBK;
-                String str2 = localcyg.GcE;
+                localObject = g.lFD;
+                localObject = JsApiAuthorize.AuthorizeTask.this.lFO.getContext();
+                Bitmap localBitmap = com.tencent.mm.aj.e.Mq(JsApiAuthorize.AuthorizeTask.this.lGa);
+                String str1 = JsApiAuthorize.AuthorizeTask.this.lGb;
+                String str2 = localdrb.KWK;
                 p.h(localObject, "context");
                 p.h(localb, "dialog");
                 f.c.a((Context)localObject, localBitmap, str1, str2, localb);
@@ -485,29 +504,44 @@ public final class JsApiAuthorize
               {
                 if (bool)
                 {
-                  if (TextUtils.isEmpty(com.tencent.mm.plugin.appbrand.permission.q.a(localcyg.GcE, localAppBrandRuntime)))
+                  if (TextUtils.isEmpty(com.tencent.mm.plugin.appbrand.permission.q.a(localdrb.KWK, localAppBrandRuntime)))
                   {
                     JsApiAuthorize.AuthorizeTask.a(JsApiAuthorize.AuthorizeTask.this, "fail:require permission desc");
-                    ae.i("MicroMsg.JsApiAuthorize", "error = fail:require permission desc");
-                    AppMethodBeat.o(222410);
+                    Log.i("MicroMsg.JsApiAuthorize", "error = fail:require permission desc");
+                    AppMethodBeat.o(226693);
                     return;
-                    localb.hb(false);
+                    localb.ia(false);
                     break;
-                    label323:
-                    localb.setScope(localcyg.GcE);
+                    label327:
+                    if (localIOException.size() > 1)
+                    {
+                      localObject = new ArrayList();
+                      ((List)localObject).add(new i.a(((drb)localIOException.get(0)).MTK, ((drb)localIOException.get(0)).KWK, true));
+                      int i = 1;
+                      while (i < localIOException.size())
+                      {
+                        ((List)localObject).add(new i.a(((drb)localIOException.get(i)).MTK, ((drb)localIOException.get(i)).KWK, false));
+                        i += 1;
+                      }
+                      localb.setFunctionButtonVisibility(8);
+                      localb.setSelectListItem((List)localObject);
+                      localb.setScope("");
+                      continue;
+                    }
+                    localb.setScope(localdrb.KWK);
                     continue;
                   }
-                  localb.setSimpleDetailDesc(com.tencent.mm.plugin.appbrand.permission.q.a(localcyg.GcE, localAppBrandRuntime));
+                  localb.setSimpleDetailDesc(com.tencent.mm.plugin.appbrand.permission.q.a(localdrb.KWK, localAppBrandRuntime));
                 }
               }
               for (;;)
               {
-                ae.i("MicroMsg.JsApiAuthorize", "Confirm dialog scope=%s desc =%s auth_desc=%s ext_desc=%s", new Object[] { localcyg.GcE, localcyg.Desc, localcyg.Hek, localcyg.mqC });
-                localb.h(JsApiAuthorize.AuthorizeTask.this.kBx);
-                AppMethodBeat.o(222410);
+                Log.i("MicroMsg.JsApiAuthorize", "Confirm dialog scope=%s desc =%s auth_desc=%s ext_desc=%s", new Object[] { localdrb.KWK, localdrb.Desc, localdrb.Mjt, localdrb.nBo });
+                localb.h(JsApiAuthorize.AuthorizeTask.this.lFO);
+                AppMethodBeat.o(226693);
                 return;
-                if (!TextUtils.isEmpty(JsApiAuthorize.AuthorizeTask.this.kBN)) {
-                  localb.setSimpleDetailDesc(JsApiAuthorize.AuthorizeTask.this.kBN);
+                if (!TextUtils.isEmpty(JsApiAuthorize.AuthorizeTask.this.lGe)) {
+                  localb.setSimpleDetailDesc(JsApiAuthorize.AuthorizeTask.this.lGe);
                 }
               }
             }
@@ -515,44 +549,46 @@ public final class JsApiAuthorize
           AppMethodBeat.o(46030);
           return;
         }
-        this.kBw.b(this.kBx, this.kmu, "fail:internal error scope empty");
-        this.kBy.bjq();
+        this.lFN.b(this.lFO, this.lqe, "fail:internal error scope empty");
+        this.lFP.bEE();
       }
       AppMethodBeat.o(46030);
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(46032);
       this.data = paramParcel.readString();
-      this.kmu = paramParcel.readInt();
+      this.lqe = paramParcel.readInt();
       this.appId = paramParcel.readString();
-      this.kBB = paramParcel.readString();
-      this.kBA = paramParcel.readString();
+      this.lFS = paramParcel.readString();
+      this.lFR = paramParcel.readString();
       this.mAppName = paramParcel.readString();
-      this.kBD = paramParcel.readString();
-      this.kBL = paramParcel.readInt();
-      this.kBM = paramParcel.readBundle(JsApiAuthorize.class.getClassLoader());
-      this.kBz = paramParcel.createStringArrayList();
-      this.hSZ = paramParcel.readInt();
-      this.kBC = paramParcel.readInt();
-      this.kxr = paramParcel.readInt();
-      this.kBP = paramParcel.readInt();
+      this.lFU = paramParcel.readString();
+      this.lGc = paramParcel.readInt();
+      this.lGd = paramParcel.readBundle(JsApiAuthorize.class.getClassLoader());
+      this.lFQ = paramParcel.createStringArrayList();
+      this.iOo = paramParcel.readInt();
+      this.lFT = paramParcel.readInt();
+      this.lBE = paramParcel.readInt();
+      this.lGg = paramParcel.readInt();
       this.errCode = paramParcel.readInt();
       this.errMsg = paramParcel.readString();
-      this.kBG = paramParcel.readString();
-      this.kBF = paramParcel.readString();
-      this.kBE = paramParcel.readString();
-      this.kBJ = paramParcel.readString();
-      this.kBK = paramParcel.readString();
+      this.lFX = paramParcel.readString();
+      this.lFW = paramParcel.readString();
+      this.lFV = paramParcel.readString();
+      this.lGa = paramParcel.readString();
+      this.lGb = paramParcel.readString();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.kBH = bool;
-        this.kBI = paramParcel.readString();
-        this.kBN = paramParcel.readString();
-        this.kBO = ((MMAuthScopeRiskInfo)paramParcel.readParcelable(MMAuthScopeRiskInfo.class.getClassLoader()));
+        this.lFY = bool;
+        this.lFZ = paramParcel.readString();
+        this.lGe = paramParcel.readString();
+        this.lGf = ((MMAuthScopeRiskInfo)paramParcel.readParcelable(MMAuthScopeRiskInfo.class.getClassLoader()));
+        this.lGh = paramParcel.readString();
+        this.lGi = paramParcel.readString();
         AppMethodBeat.o(46032);
         return;
         bool = false;
@@ -563,33 +599,35 @@ public final class JsApiAuthorize
     {
       AppMethodBeat.i(46033);
       paramParcel.writeString(this.data);
-      paramParcel.writeInt(this.kmu);
+      paramParcel.writeInt(this.lqe);
       paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.kBB);
-      paramParcel.writeString(this.kBA);
+      paramParcel.writeString(this.lFS);
+      paramParcel.writeString(this.lFR);
       paramParcel.writeString(this.mAppName);
-      paramParcel.writeString(this.kBD);
-      paramParcel.writeInt(this.kBL);
-      paramParcel.writeBundle(this.kBM);
-      paramParcel.writeStringList(this.kBz);
-      paramParcel.writeInt(this.hSZ);
-      paramParcel.writeInt(this.kBC);
-      paramParcel.writeInt(this.kxr);
-      paramParcel.writeInt(this.kBP);
+      paramParcel.writeString(this.lFU);
+      paramParcel.writeInt(this.lGc);
+      paramParcel.writeBundle(this.lGd);
+      paramParcel.writeStringList(this.lFQ);
+      paramParcel.writeInt(this.iOo);
+      paramParcel.writeInt(this.lFT);
+      paramParcel.writeInt(this.lBE);
+      paramParcel.writeInt(this.lGg);
       paramParcel.writeInt(this.errCode);
       paramParcel.writeString(this.errMsg);
-      paramParcel.writeString(this.kBG);
-      paramParcel.writeString(this.kBF);
-      paramParcel.writeString(this.kBE);
-      paramParcel.writeString(this.kBJ);
-      paramParcel.writeString(this.kBK);
-      if (this.kBH) {}
+      paramParcel.writeString(this.lFX);
+      paramParcel.writeString(this.lFW);
+      paramParcel.writeString(this.lFV);
+      paramParcel.writeString(this.lGa);
+      paramParcel.writeString(this.lGb);
+      if (this.lFY) {}
       for (int i = 1;; i = 0)
       {
         paramParcel.writeInt(i);
-        paramParcel.writeString(this.kBI);
-        paramParcel.writeString(this.kBN);
-        paramParcel.writeParcelable(this.kBO, paramInt);
+        paramParcel.writeString(this.lFZ);
+        paramParcel.writeString(this.lGe);
+        paramParcel.writeParcelable(this.lGf, paramInt);
+        paramParcel.writeString(this.lGh);
+        paramParcel.writeString(this.lGi);
         AppMethodBeat.o(46033);
         return;
       }
@@ -599,9 +637,9 @@ public final class JsApiAuthorize
     {
       public abstract void a(MMAuthScopeRiskInfo paramMMAuthScopeRiskInfo);
       
-      public abstract void a(brv parambrv);
+      public abstract void a(cep paramcep);
       
-      public abstract void af(int paramInt, String paramString);
+      public abstract void ai(int paramInt, String paramString);
       
       public abstract void onSuccess();
     }

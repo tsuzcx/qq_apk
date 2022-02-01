@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/ent" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/f60" android:background="@color/a25" android:visibility="visible" android:transcriptMode="disabled" style="@style/n3" />
-    <RelativeLayout android:id="@id/b44" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/ia" android:textColor="#ff666666" android:id="@id/e42" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dbo" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <include layout="@layout/b1b" />
+    <include layout="@layout/b1r" />
+    <include layout="@layout/b1i" />
+    <include layout="@layout/b12" />
+    <include layout="@layout/b11" />
+    <include android:id="@id/ene" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="44.0dip" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" layout="@layout/b1u" />
+    <include android:id="@id/ek2" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="44.0dip" android:layout_marginEnd="@dimen/cb" android:layout_toStartOf="@id/ene" layout="@layout/b1a" />
+    <include android:id="@id/emn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/ct" android:layout_toStartOf="@id/ek2" android:layout_alignParentStart="true" layout="@layout/b1p" />
+    <include android:id="@id/egr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_below="@id/emn" android:layout_marginStart="@dimen/cb" layout="@layout/b0p" />
+    <include android:id="@id/eju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_below="@id/egr" android:layout_marginStart="@dimen/cb" layout="@layout/b1_" />
+    <include android:id="@id/elh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" layout="@layout/b0w" />
+    <include android:id="@id/enf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b1v" />
+    <include android:id="@id/ehp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b0z" />
+    <include android:id="@id/egg" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_marginBottom="@dimen/c5" android:layout_above="@id/enf" android:layout_marginStart="16.0dip" android:layout_marginEnd="82.0dip" android:layout_alignParentStart="true" layout="@layout/b0o" />
+    <include android:id="@id/ehe" android:visibility="gone" layout="@layout/b0y" />
+    <include layout="@layout/b19" />
+    <include layout="@layout/b15" />
+    <include layout="@layout/b1t" />
+    <include layout="@layout/b04" />
+    <include layout="@layout/b10" />
+    <include layout="@layout/b0r" />
+    <include layout="@layout/b0t" />
+</RelativeLayout>

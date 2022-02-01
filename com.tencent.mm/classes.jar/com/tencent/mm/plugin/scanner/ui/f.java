@@ -16,7 +16,7 @@ public final class f
     super(paramContext);
     AppMethodBeat.i(51812);
     this.mView = null;
-    setLayoutResource(2131495112);
+    setLayoutResource(2131495955);
     AppMethodBeat.o(51812);
   }
   
@@ -34,9 +34,9 @@ public final class f
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(224240);
+    AppMethodBeat.i(258591);
     super.onBindView(paramView);
-    AppMethodBeat.o(224240);
+    AppMethodBeat.o(258591);
   }
 }
 

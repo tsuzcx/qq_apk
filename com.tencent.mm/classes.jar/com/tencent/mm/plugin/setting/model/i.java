@@ -1,98 +1,69 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bko;
-import com.tencent.mm.protocal.protobuf.bkp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import java.util.LinkedList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bwt;
+import com.tencent.mm.protocal.protobuf.bwu;
+import com.tencent.mm.protocal.protobuf.eoo;
 
 public final class i
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
+  public bwu CXM;
+  public byte[] CXN;
+  private com.tencent.mm.ak.i callback;
   
-  public i()
+  public i(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73773);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bko();
-    ((b.a)localObject).hQG = new bkp();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo";
-    ((b.a)localObject).funcId = 1191;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bko)this.rr.hQD.hQJ;
-    ((bko)localObject).doj = 2;
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add("invoice_info.title");
-    localLinkedList.add("invoice_info.tax_number");
-    localLinkedList.add("invoice_info.bank_number");
-    localLinkedList.add("invoice_info.bank_name");
-    localLinkedList.add("invoice_info.type");
-    localLinkedList.add("invoice_info.email");
-    localLinkedList.add("invoice_info.company_address");
-    localLinkedList.add("invoice_info.company_address_detail");
-    localLinkedList.add("invoice_info.company_address_postcode");
-    localLinkedList.add("invoice_info.phone");
-    ((bko)localObject).GXR = localLinkedList;
-    ((bko)localObject).GXQ = false;
-    AppMethodBeat.o(73773);
+    this.CXN = paramArrayOfByte;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
   {
-    AppMethodBeat.i(73775);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(73775);
+    AppMethodBeat.i(73771);
+    this.callback = parami;
+    parami = new d.a();
+    bwt localbwt = new bwt();
+    if (this.CXN != null) {
+      localbwt.Mcz = z.aC(this.CXN).getBuffer();
+    }
+    parami.iLN = localbwt;
+    this.CXM = new bwu();
+    parami.iLO = this.CXM;
+    parami.uri = "/cgi-bin/mmbiz-bin/getuserauthlist";
+    parami.funcId = getType();
+    parami.iLP = 0;
+    parami.respCmdId = 0;
+    int i = dispatch(paramg, parami.aXF(), this);
+    AppMethodBeat.o(73771);
     return i;
   }
   
   public final int getType()
   {
-    return 1191;
+    return 1146;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73774);
-    ae.d("MicroMsg.NetSceneGetUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(73772);
+    this.CXM = ((bwu)((d)params).iLL.iLR);
+    if (this.CXM.Lqs != null)
     {
-      ae.i("MicroMsg.NetSceneGetUserAutoFillInfo", "return is 0.now we parse the json and resetList..");
-      paramq = (bkp)((b)paramq).hQE.hQJ;
-      if (paramq.GXS == null) {}
+      paramInt3 = this.CXM.Lqs.dIZ;
+      paramString = this.CXM.Lqs.dJa;
     }
-    try
-    {
-      boolean bool = new JSONObject(paramq.GXS).getBoolean("has_invoice_info");
-      ae.i("MicroMsg.NetSceneGetUserAutoFillInfo", "has_invoice_info is ..".concat(String.valueOf(bool)));
-      g.ajR().ajA().set(am.a.IST, Boolean.valueOf(bool));
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(73774);
-      return;
-    }
-    catch (JSONException paramq)
-    {
-      for (;;)
-      {
-        ae.e("MicroMsg.NetSceneGetUserAutoFillInfo", "error parse this json");
-      }
-    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(73772);
   }
 }
 

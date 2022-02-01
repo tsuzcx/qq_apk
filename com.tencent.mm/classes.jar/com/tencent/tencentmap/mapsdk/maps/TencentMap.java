@@ -3,7 +3,6 @@ package com.tencent.tencentmap.mapsdk.maps;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
-import android.location.Location;
 import android.view.View;
 import com.tencent.map.lib.MapLanguage;
 import com.tencent.map.sdk.comps.indoor.IIndoor;
@@ -11,6 +10,8 @@ import com.tencent.map.sdk.comps.mylocation.IMyLocation;
 import com.tencent.tencentmap.mapsdk.maps.model.AoiLayer;
 import com.tencent.tencentmap.mapsdk.maps.model.AoiLayer.OnAoiLayerLoadListener;
 import com.tencent.tencentmap.mapsdk.maps.model.AoiLayerOptions;
+import com.tencent.tencentmap.mapsdk.maps.model.Arc;
+import com.tencent.tencentmap.mapsdk.maps.model.ArcOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 import com.tencent.tencentmap.mapsdk.maps.model.Circle;
 import com.tencent.tencentmap.mapsdk.maps.model.CircleOptions;
@@ -58,6 +59,8 @@ public abstract interface TencentMap
   public static final int MAP_TYPE_TRAFFIC_NIGHT = 1010;
   
   public abstract AoiLayer addAoiLayer(String paramString, AoiLayerOptions paramAoiLayerOptions, AoiLayer.OnAoiLayerLoadListener paramOnAoiLayerLoadListener);
+  
+  public abstract Arc addArc(ArcOptions paramArcOptions);
   
   public abstract Circle addCircle(CircleOptions paramCircleOptions);
   
@@ -173,6 +176,8 @@ public abstract interface TencentMap
   
   public abstract void setMapCenterAndScale(float paramFloat1, float paramFloat2, float paramFloat3);
   
+  public abstract void setMapFrameRate(float paramFloat);
+  
   public abstract void setMapStyle(int paramInt);
   
   public abstract void setMapType(int paramInt);
@@ -230,6 +235,8 @@ public abstract interface TencentMap
   public abstract void snapshot(SnapshotReadyCallback paramSnapshotReadyCallback);
   
   public abstract void snapshot(SnapshotReadyCallback paramSnapshotReadyCallback, Bitmap.Config paramConfig);
+  
+  public abstract void snapshot(SnapshotReadyCallback paramSnapshotReadyCallback, Bitmap.Config paramConfig, int paramInt);
   
   public abstract void stopAnimation();
   
@@ -304,16 +311,6 @@ public abstract interface TencentMap
     public abstract void onMarkerDragStart(Marker paramMarker);
   }
   
-  public static abstract interface OnMyLocationChangeListener
-  {
-    public abstract void onMyLocationChange(Location paramLocation);
-  }
-  
-  public static abstract interface OnMyLocationClickListener
-  {
-    public abstract boolean onMyLocationClicked(LatLng paramLatLng);
-  }
-  
   public static abstract interface OnPolylineClickListener
   {
     public abstract void onPolylineClick(Polyline paramPolyline, LatLng paramLatLng);
@@ -326,7 +323,7 @@ public abstract interface TencentMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMap
  * JD-Core Version:    0.7.0.1
  */

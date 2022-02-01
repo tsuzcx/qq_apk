@@ -12,103 +12,103 @@ import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.plugin.card.sharecard.model.l;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.tk;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.up;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 
 public final class f
 {
-  private View iFK;
-  private MMActivity oDq;
-  private b oJE;
-  private int oOf;
-  private View oOg;
-  private TextView oOh;
-  private TextView oOi;
-  private CdnImageView oOj;
-  private ImageView[] oOk;
-  private ImageView oOl;
-  private tk oOm;
+  private View gQj;
+  private View jBN;
+  private MMActivity pQZ;
+  private b pXs;
+  private int qbU;
+  private TextView qbV;
+  private TextView qbW;
+  private CdnImageView qbX;
+  private ImageView[] qbY;
+  private ImageView qbZ;
+  private up qca;
   
   public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb)
   {
     this(paramMMActivity, paramView, paramInt, paramb, null);
   }
   
-  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, tk paramtk)
+  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, up paramup)
   {
     AppMethodBeat.i(113406);
-    this.oOk = new ImageView[3];
-    this.oDq = paramMMActivity;
-    this.iFK = paramView;
-    this.oOf = paramInt;
-    this.oJE = paramb;
-    this.oOm = paramtk;
-    this.oOg = this.iFK.findViewById(2131297818);
-    this.oOh = ((TextView)this.iFK.findViewById(2131297820));
-    this.oOi = ((TextView)this.iFK.findViewById(2131297819));
-    this.oOj = ((CdnImageView)this.iFK.findViewById(2131297821));
-    this.oOk[0] = ((ImageView)this.iFK.findViewById(2131297815));
-    this.oOk[1] = ((ImageView)this.iFK.findViewById(2131297816));
-    this.oOk[2] = ((ImageView)this.iFK.findViewById(2131297817));
-    this.oOl = ((ImageView)this.iFK.findViewById(2131297885));
-    if (this.oOf == 1)
+    this.qbY = new ImageView[3];
+    this.pQZ = paramMMActivity;
+    this.jBN = paramView;
+    this.qbU = paramInt;
+    this.pXs = paramb;
+    this.qca = paramup;
+    this.gQj = this.jBN.findViewById(2131298134);
+    this.qbV = ((TextView)this.jBN.findViewById(2131298136));
+    this.qbW = ((TextView)this.jBN.findViewById(2131298135));
+    this.qbX = ((CdnImageView)this.jBN.findViewById(2131298137));
+    this.qbY[0] = ((ImageView)this.jBN.findViewById(2131298131));
+    this.qbY[1] = ((ImageView)this.jBN.findViewById(2131298132));
+    this.qbY[2] = ((ImageView)this.jBN.findViewById(2131298133));
+    this.qbZ = ((ImageView)this.jBN.findViewById(2131298202));
+    if (this.qbU == 1)
     {
-      this.oOh.setText(this.oDq.getString(2131756928, new Object[] { Integer.valueOf(0) }));
-      this.oOj.setImageResource(2131689869);
+      this.qbV.setText(this.pQZ.getString(2131757098, new Object[] { Integer.valueOf(0) }));
+      this.qbX.setImageResource(2131689884);
       AppMethodBeat.o(113406);
       return;
     }
-    if (this.oOf == 2)
+    if (this.qbU == 2)
     {
-      this.oOh.setText(2131756988);
-      this.oOj.setImageResource(2131689868);
+      this.qbV.setText(2131757158);
+      this.qbX.setImageResource(2131689883);
       AppMethodBeat.o(113406);
       return;
     }
-    if (this.oOf == 3)
+    if (this.qbU == 3)
     {
-      this.oOh.setText(2131757021);
-      this.oOj.setImageResource(2131689870);
+      this.qbV.setText(2131757191);
+      this.qbX.setImageResource(2131689885);
       AppMethodBeat.o(113406);
       return;
     }
-    if (this.oOf == 4)
+    if (this.qbU == 4)
     {
-      if (this.oOm == null)
+      if (this.qca == null)
       {
-        ae.w("MicroMsg.CardHomePageItemController", "cell element is null");
-        bYh();
+        Log.w("MicroMsg.CardHomePageItemController", "cell element is null");
+        cvX();
       }
-      this.iFK.findViewById(2131297814).setVisibility(8);
-      this.oOh.setText(this.oOm.Gjr);
-      this.oOj.setUseSdcardCache(true);
-      this.oOj.setUrl(this.oOm.Gjs);
-      if (!bu.isNullOrNil(this.oOm.Gjt))
+      this.jBN.findViewById(2131298130).setVisibility(8);
+      this.qbV.setText(this.qca.LdW);
+      this.qbX.setUseSdcardCache(true);
+      this.qbX.setUrl(this.qca.LdX);
+      if (!Util.isNullOrNil(this.qca.LdY))
       {
-        this.oOi.setText(this.oOm.Gjt);
-        this.oOi.setVisibility(0);
+        this.qbW.setText(this.qca.LdY);
+        this.qbW.setVisibility(0);
         AppMethodBeat.o(113406);
         return;
       }
-      this.oOi.setVisibility(8);
+      this.qbW.setVisibility(8);
     }
     AppMethodBeat.o(113406);
   }
   
-  public final void bYh()
+  public final void cvX()
   {
     AppMethodBeat.i(113409);
-    this.iFK.setVisibility(8);
+    this.jBN.setVisibility(8);
     AppMethodBeat.o(113409);
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(113407);
-    this.oOg.setOnClickListener(paramOnClickListener);
+    this.gQj.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(113407);
   }
   
@@ -116,75 +116,75 @@ public final class f
   {
     AppMethodBeat.i(113408);
     Object localObject;
-    if (this.oOf == 2)
+    if (this.qbU == 2)
     {
-      localObject = (l)am.bWh().getValue("key_share_card_layout_data");
+      localObject = (l)am.ctV().getValue("key_share_card_layout_data");
       if (localObject == null)
       {
-        ae.w("MicroMsg.CardHomePageItemController", "updateShareCardView data is null");
+        Log.w("MicroMsg.CardHomePageItemController", "updateShareCardView data is null");
         AppMethodBeat.o(113408);
         return;
       }
-      if (bu.isNullOrNil(((l)localObject).oIr)) {
-        this.oOi.setVisibility(8);
+      if (Util.isNullOrNil(((l)localObject).pWf)) {
+        this.qbW.setVisibility(8);
       }
-      while (bu.ht(((l)localObject).oIq))
+      while (Util.isNullOrNil(((l)localObject).pWe))
       {
         i = 0;
         while (i < 3)
         {
-          this.oOk[i].setVisibility(8);
+          this.qbY[i].setVisibility(8);
           i += 1;
         }
-        this.oOi.setVisibility(0);
-        this.oOi.setText(((l)localObject).oIr);
+        this.qbW.setVisibility(0);
+        this.qbW.setText(((l)localObject).pWf);
       }
       int i = 0;
       if (i < 3)
       {
-        if (i < ((l)localObject).oIq.size())
+        if (i < ((l)localObject).pWe.size())
         {
-          this.oOk[i].setVisibility(0);
-          int j = this.oDq.getResources().getDimensionPixelSize(2131165483);
-          n.a(this.oOk[i], (String)((l)localObject).oIq.get(i), j, 2131233400, false);
+          this.qbY[i].setVisibility(0);
+          int j = this.pQZ.getResources().getDimensionPixelSize(2131165501);
+          n.a(this.qbY[i], (String)((l)localObject).pWe.get(i), j, 2131234198, false);
         }
         for (;;)
         {
           i += 1;
           break;
-          this.oOk[i].setVisibility(8);
+          this.qbY[i].setVisibility(8);
         }
       }
-      if ((!bu.ht(((l)localObject).oIq)) && (((l)localObject).oIq.size() == 1) && (((l)localObject).dJl) && (!((l)localObject).dJm))
+      if ((!Util.isNullOrNil(((l)localObject).pWe)) && (((l)localObject).pWe.size() == 1) && (((l)localObject).eaY) && (!((l)localObject).eaZ))
       {
-        this.oOl.setVisibility(0);
+        this.qbZ.setVisibility(0);
         AppMethodBeat.o(113408);
         return;
       }
-      this.oOl.setVisibility(8);
+      this.qbZ.setVisibility(8);
       AppMethodBeat.o(113408);
       return;
     }
-    if (this.oOf == 3)
+    if (this.qbU == 3)
     {
-      this.oOh.setText(2131757021);
-      this.iFK.findViewById(2131297814).setVisibility(8);
-      localObject = (String)am.bWh().getValue("key_card_entrance_tips");
-      if (!bu.isNullOrNil((String)localObject))
+      this.qbV.setText(2131757191);
+      this.jBN.findViewById(2131298130).setVisibility(8);
+      localObject = (String)am.ctV().getValue("key_card_entrance_tips");
+      if (!Util.isNullOrNil((String)localObject))
       {
-        this.oOi.setText((CharSequence)localObject);
-        this.oOi.setVisibility(0);
+        this.qbW.setText((CharSequence)localObject);
+        this.qbW.setVisibility(0);
         AppMethodBeat.o(113408);
         return;
       }
-      this.oOi.setVisibility(8);
+      this.qbW.setVisibility(8);
     }
     AppMethodBeat.o(113408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.f
  * JD-Core Version:    0.7.0.1
  */

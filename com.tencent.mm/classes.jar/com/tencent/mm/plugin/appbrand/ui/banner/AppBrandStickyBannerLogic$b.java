@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.appbrand.ui.banner;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class AppBrandStickyBannerLogic$b
 {
-  static final Set<f> cBA;
+  static final Set<f> listeners;
   
   static
   {
     AppMethodBeat.i(49017);
-    cBA = new HashSet();
+    listeners = new HashSet();
     AppMethodBeat.o(49017);
   }
   
-  public static void S(Intent paramIntent)
+  public static void R(Intent paramIntent)
   {
     AppMethodBeat.i(49008);
-    if ((paramIntent == null) || (!g.ajM()))
+    if ((paramIntent == null) || (!g.aAc()))
     {
       AppMethodBeat.o(49008);
       return;
     }
-    g.ajU().aw(new Runnable()
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(49007);
-        if (b.R(this.val$intent)) {
+        if (b.Q(this.val$intent)) {
           AppBrandStickyBannerLogic.b.access$100();
         }
         AppMethodBeat.o(49007);
@@ -45,19 +45,19 @@ public final class AppBrandStickyBannerLogic$b
   {
     AppMethodBeat.i(49009);
     if (b.a(paramOperateTask)) {
-      bAY();
+      bYd();
     }
     AppMethodBeat.o(49009);
   }
   
-  static void bAS()
+  static void bXX()
   {
     AppMethodBeat.i(49010);
     AppBrandStickyBannerLogic.access$200();
     AppMethodBeat.o(49010);
   }
   
-  public static boolean bAX()
+  public static boolean bYc()
   {
     AppMethodBeat.i(49014);
     AppBrandStickyBannerLogic.access$200();
@@ -65,10 +65,10 @@ public final class AppBrandStickyBannerLogic$b
     return false;
   }
   
-  private static void bAY()
+  private static void bYd()
   {
     AppMethodBeat.i(49011);
-    ??? = BannerModel.bBa();
+    ??? = BannerModel.bYe();
     String str1;
     if (??? == null)
     {
@@ -78,15 +78,15 @@ public final class AppBrandStickyBannerLogic$b
       }
     }
     label82:
-    for (int i = -1;; i = ((BannerModel)???).hSZ)
+    for (int i = -1;; i = ((BannerModel)???).iOo)
     {
-      synchronized (cBA)
+      synchronized (listeners)
       {
-        Iterator localIterator = cBA.iterator();
+        Iterator localIterator = listeners.iterator();
         if (!localIterator.hasNext()) {
           break label90;
         }
-        ((f)localIterator.next()).bE(str1, i);
+        ((f)localIterator.next()).bJ(str1, i);
       }
       String str2 = ((BannerModel)???).appId;
       break;
@@ -95,20 +95,13 @@ public final class AppBrandStickyBannerLogic$b
     AppMethodBeat.o(49011);
   }
   
-  public static void bAZ()
-  {
-    AppMethodBeat.i(49015);
-    AppBrandStickyBannerLogic.access$200();
-    AppMethodBeat.o(49015);
-  }
-  
   public static void c(f paramf)
   {
     AppMethodBeat.i(49013);
     if (paramf != null) {
-      synchronized (cBA)
+      synchronized (listeners)
       {
-        cBA.remove(paramf);
+        listeners.remove(paramf);
         AppMethodBeat.o(49013);
         return;
       }
@@ -116,13 +109,20 @@ public final class AppBrandStickyBannerLogic$b
     AppMethodBeat.o(49013);
   }
   
+  public static void cr(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(227721);
+    AppBrandStickyBannerLogic.access$200();
+    AppMethodBeat.o(227721);
+  }
+  
   public static void d(f paramf)
   {
     AppMethodBeat.i(49012);
     if (paramf != null) {
-      synchronized (cBA)
+      synchronized (listeners)
       {
-        cBA.add(paramf);
+        listeners.add(paramf);
         AppMethodBeat.o(49012);
         return;
       }
@@ -132,7 +132,7 @@ public final class AppBrandStickyBannerLogic$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.b
  * JD-Core Version:    0.7.0.1
  */

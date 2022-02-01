@@ -1,18 +1,18 @@
 package com.tencent.mm.ui.chatting.h;
 
 import android.util.SparseArray;
-import com.tencent.mm.ui.chatting.n.e;
+import com.tencent.mm.ui.chatting.n.f;
 import java.util.List;
 
 public abstract interface c<T>
 {
-  public abstract void a(d.a parama, e<T> parame, d.d<T> paramd, d.b paramb);
+  public abstract void a(d.a parama, f<T> paramf, d.d<T> paramd, d.b paramb);
   
-  public abstract SparseArray<T> is(List<T> paramList);
+  public abstract SparseArray<T> jv(List<T> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.h.c
  * JD-Core Version:    0.7.0.1
  */

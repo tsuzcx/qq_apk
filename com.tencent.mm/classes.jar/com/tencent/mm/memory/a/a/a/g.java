@@ -1,7 +1,7 @@
 package com.tencent.mm.memory.a.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
@@ -13,7 +13,12 @@ public final class g<T, V>
     super(paramInt);
   }
   
-  protected final T aza()
+  protected final V A(T paramT, V paramV)
+  {
+    return paramV;
+  }
+  
+  protected final T aSg()
   {
     return null;
   }
@@ -23,24 +28,19 @@ public final class g<T, V>
     return null;
   }
   
-  protected final V t(T paramT, V paramV)
-  {
-    return paramV;
-  }
-  
   static final class a<T>
   {
-    WeakReference<T> cyH;
+    WeakReference<T> cMO;
     T obj;
     
     public a(T paramT)
     {
       AppMethodBeat.i(156519);
       this.obj = null;
-      this.cyH = null;
+      this.cMO = null;
       this.obj = paramT;
-      this.cyH = new WeakReference(paramT);
-      ar.o(new Runnable()
+      this.cMO = new WeakReference(paramT);
+      MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
@@ -55,7 +55,7 @@ public final class g<T, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.exdevice.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dl;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.dr;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends dl
+  extends dr
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(23554);
-    c.a locala = new c.a();
-    locala.IBL = new Field[5];
-    locala.columns = new String[6];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[5];
+    localMAutoDBInfo.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appusername";
-    locala.IBN.put("appusername", "TEXT");
+    localMAutoDBInfo.columns[0] = "appusername";
+    localMAutoDBInfo.colsMap.put("appusername", "TEXT");
     localStringBuilder.append(" appusername TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "rankID";
-    locala.IBN.put("rankID", "TEXT");
+    localMAutoDBInfo.columns[1] = "rankID";
+    localMAutoDBInfo.colsMap.put("rankID", "TEXT");
     localStringBuilder.append(" rankID TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "username";
-    locala.IBN.put("username", "TEXT");
+    localMAutoDBInfo.columns[2] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "step";
-    locala.IBN.put("step", "INTEGER");
+    localMAutoDBInfo.columns[3] = "step";
+    localMAutoDBInfo.colsMap.put("step", "INTEGER");
     localStringBuilder.append(" step INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "sort";
-    locala.IBN.put("sort", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[4] = "sort";
+    localMAutoDBInfo.colsMap.put("sort", "INTEGER default '0' ");
     localStringBuilder.append(" sort INTEGER default '0' ");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[5] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(23554);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -59,7 +59,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.a.c
  * JD-Core Version:    0.7.0.1
  */

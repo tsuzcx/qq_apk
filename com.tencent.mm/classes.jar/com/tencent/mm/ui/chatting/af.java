@@ -5,19 +5,21 @@ import com.tencent.mm.ui.chatting.view.MMChattingListView;
 
 public abstract interface af
 {
-  public abstract void adD(int paramInt);
+  public abstract void By(boolean paramBoolean);
   
-  public abstract void bf(Bundle paramBundle);
+  public abstract void amn(int paramInt);
   
-  public abstract void bg(Bundle paramBundle);
+  public abstract void bs(Bundle paramBundle);
   
-  public abstract void fFU();
+  public abstract void bt(Bundle paramBundle);
   
-  public abstract void fFV();
+  public abstract void gNZ();
   
-  public abstract void fFW();
+  public abstract void gOa();
   
-  public abstract MMChattingListView fFY();
+  public abstract void gOb();
+  
+  public abstract MMChattingListView gOd();
   
   public abstract int getBottomHeight();
   
@@ -26,12 +28,10 @@ public abstract interface af
   public abstract void setBottomViewVisible(boolean paramBoolean);
   
   public abstract void setIsBottomShowAll(boolean paramBoolean);
-  
-  public abstract void xJ(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.af
  * JD-Core Version:    0.7.0.1
  */

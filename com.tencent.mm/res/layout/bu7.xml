@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" android:layout_marginBottom="130.0dip"
+<FrameLayout android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/f0b" style="@style/o7" />
-    <Button android:id="@id/f05" android:layout_marginTop="@dimen/c5" style="@style/od" />
-</LinearLayout>
+    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart android:id="@id/ar6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

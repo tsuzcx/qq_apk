@@ -1,74 +1,57 @@
 package com.tencent.mm.ui.chatting.d;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d.a;
-import com.tencent.mm.pluginsdk.model.app.ReportUtil;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
+import com.tencent.mm.ui.chatting.d.b.ag;
+import kotlin.l;
 
-public class an
+@com.tencent.mm.ui.chatting.d.a.a(gRF=ag.class)
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/component/MultiTaskComponent;", "Lcom/tencent/mm/ui/chatting/component/AbstractChattingComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "()V", "chattingContext", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "onChattingPause", "", "onChattingResume", "onComponentInstall", "context", "onComponentUnInstall", "Companion", "app_release"})
+public final class an
   extends a
-  implements ad
+  implements af
 {
-  public final void fAs()
+  public static final an.a Psu;
+  private com.tencent.mm.ui.chatting.e.a OFl;
+  
+  static
   {
-    AppMethodBeat.i(35525);
-    final Intent localIntent = this.cXJ.Kkd.getContext().getIntent();
-    if (localIntent.getIntExtra("SendAppMessageWrapper_Scene", 0) != 3)
-    {
-      AppMethodBeat.o(35525);
-      return;
-    }
-    localIntent.setClass(this.cXJ.Kkd.getContext(), SendAppMessageWrapperUI.class);
-    localIntent.putExtra("Select_Conv_User", this.cXJ.getTalkerUserName());
-    this.cXJ.a(localIntent, 228, new d.a()
-    {
-      public final void onActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(35523);
-        localIntent.removeExtra("SendAppMessageWrapper_Scene");
-        if (paramAnonymousInt1 == 228) {
-          if (paramAnonymousInt2 == -1)
-          {
-            if ((paramAnonymousIntent != null) && (paramAnonymousIntent.getBooleanExtra("Select_stay_in_wx", false)))
-            {
-              ReportUtil.Z(false, 0);
-              AppMethodBeat.o(35523);
-              return;
-            }
-            if (!an.this.cXJ.Kkd.getContext().isFinishing())
-            {
-              an.this.cXJ.Kkd.getContext().finish();
-              AppMethodBeat.o(35523);
-            }
-          }
-          else
-          {
-            paramAnonymousIntent = ReportUtil.d(localIntent.getExtras(), 0);
-            ReportUtil.a(an.this.cXJ.Kkd.getContext(), paramAnonymousIntent, true);
-            if (!an.this.cXJ.Kkd.getContext().isFinishing()) {
-              an.this.cXJ.Kkd.getContext().finish();
-            }
-          }
-        }
-        AppMethodBeat.o(35523);
-      }
-    });
-    AppMethodBeat.o(35525);
+    AppMethodBeat.i(231218);
+    Psu = new an.a((byte)0);
+    AppMethodBeat.o(231218);
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public final void a(com.tencent.mm.ui.chatting.e.a parama)
   {
-    AppMethodBeat.i(35524);
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(35524);
+    AppMethodBeat.i(231214);
+    super.a(parama);
+    this.OFl = parama;
+    AppMethodBeat.o(231214);
+  }
+  
+  public final void cFx()
+  {
+    AppMethodBeat.i(231216);
+    super.cFx();
+    AppMethodBeat.o(231216);
+  }
+  
+  public final void cFy()
+  {
+    AppMethodBeat.i(231217);
+    super.cFy();
+    AppMethodBeat.o(231217);
+  }
+  
+  public final void gOK()
+  {
+    AppMethodBeat.i(231215);
+    super.gOK();
+    AppMethodBeat.o(231215);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.an
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,59 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.p;
-import com.tencent.mm.plugin.exdevice.g.a.e;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.re;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.base.NoMeasuredTextView;
-import java.util.ArrayList;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.appbrand.service.q.a;
+import com.tencent.mm.pluginsdk.i.f;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.protocal.protobuf.bxc;
+import com.tencent.mm.protocal.protobuf.ecf;
+import com.tencent.mm.protocal.protobuf.ecx;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.g.b.z.f;
+import kotlin.t;
 
 final class a
   extends BaseAdapter
 {
-  String lJm;
-  private String mAppName;
-  private Context mContext;
-  c qrp;
-  private boolean qrq;
-  boolean qrr;
-  int qrs;
-  int qrt;
-  ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> qru;
-  List<re> qrv;
-  private View qrw;
+  private Context context;
+  private boolean rIK;
+  private String username;
   
-  public a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2)
+  public a(Context paramContext, String paramString)
   {
-    this.mContext = paramContext;
-    this.lJm = paramString2;
-    this.qrq = paramBoolean;
-    this.mAppName = paramString1;
+    AppMethodBeat.i(231697);
+    this.context = paramContext;
+    this.username = paramString;
+    this.rIK = z.aTY().equals(paramString);
+    AppMethodBeat.o(231697);
   }
   
   public final int getCount()
   {
-    if (this.qrq) {
-      return this.qrs + 5 + this.qrt;
+    if (this.rIK) {
+      return 2;
     }
-    return 2;
+    return 1;
   }
   
   public final Object getItem(int paramInt)
@@ -72,390 +70,351 @@ final class a
   
   public final int getItemViewType(int paramInt)
   {
-    if (!this.qrq) {
-      if (paramInt != 0) {}
-    }
-    while (paramInt == 0)
-    {
+    if (paramInt == 0) {
       return 0;
-      return 4;
     }
-    if (paramInt == 1) {
-      return 6;
-    }
-    if ((paramInt > 1) && (paramInt <= this.qrs + 1)) {
-      return 1;
-    }
-    if (paramInt == this.qrs + 2) {
-      return 2;
-    }
-    if (paramInt == this.qrs + 3) {
-      return 5;
-    }
-    if ((paramInt > this.qrs + 3) && (paramInt <= this.qrs + 3 + this.qrt)) {
-      return 3;
-    }
-    if (paramInt == this.qrs + this.qrt + 4) {
-      return 7;
-    }
-    return 5;
+    return 1;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(24078);
-    int i = getItemViewType(paramInt);
-    Object localObject;
-    c localc;
-    a locala;
-    d locald;
-    e locale;
-    f localf;
-    if (paramView == null) {
-      switch (i)
+    paramInt = getItemViewType(paramInt);
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramView = com.tencent.mm.ui.component.a.PRN;
+      paramViewGroup = (SportProfileUIC)com.tencent.mm.ui.component.a.ko(this.context).get(SportProfileUIC.class);
+    }
+    Object localObject1;
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      paramView = null;
+      paramViewGroup = paramView;
+      paramView = com.tencent.mm.ui.component.a.PRN;
+      localObject1 = (SportProfileUIC)com.tencent.mm.ui.component.a.ko(this.context).get(SportProfileUIC.class);
+      str = this.username;
+      p.h(paramViewGroup, "itemView");
+      p.h(str, "username");
+      switch (paramInt)
       {
-      default: 
-        paramViewGroup = null;
-        localObject = null;
-        localc = null;
-        locala = null;
-        locald = null;
-        locale = null;
-        localf = null;
-        switch (i)
-        {
-        }
-        break;
       }
+      break;
     }
     for (;;)
     {
       AppMethodBeat.o(24078);
-      return paramView;
-      if (this.qrw == null) {
-        this.qrw = LayoutInflater.from(this.mContext).inflate(2131493877, paramViewGroup, false);
-      }
-      paramView = this.qrw;
-      localf = new f();
-      localf.pjj = ((ImageView)paramView.findViewById(2131299556));
-      paramView.setTag(localf);
-      paramViewGroup = null;
-      localObject = null;
-      localc = null;
-      locala = null;
-      locald = null;
-      locale = null;
-      break;
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493876, paramViewGroup, false);
-      locale = new e();
-      locale.qrC = ((NoMeasuredTextView)paramView.findViewById(2131299579));
-      locale.qrD = ((TextView)paramView.findViewById(2131299580));
-      locale.pjj = ((ImageView)paramView.findViewById(2131299574));
-      locale.qry = paramView.findViewById(2131299577);
-      locale.qrC.setTextSize(0, this.mContext.getResources().getDimension(2131165332));
-      locale.qrC.setTextColor(this.mContext.getResources().getColor(2131100308));
-      locale.qrC.setSingleLine(true);
-      locale.qrC.setShouldEllipsize(true);
-      paramView.setTag(locale);
-      paramViewGroup = null;
-      localObject = null;
-      localc = null;
-      locala = null;
-      locald = null;
-      localf = null;
-      break;
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493872, paramViewGroup, false);
-      locala = new a();
-      locala.jdField_new = ((TextView)paramView.findViewById(2131299565));
-      locala.qry = paramView.findViewById(2131299562);
-      locala.qox = ((ImageView)paramView.findViewById(2131299563));
-      paramView.setTag(locala);
-      paramViewGroup = null;
-      localObject = null;
-      localc = null;
-      locald = null;
-      locale = null;
-      localf = null;
-      break;
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493872, paramViewGroup, false);
-      localc = new c();
-      localc.jdField_new = ((TextView)paramView.findViewById(2131299565));
-      localc.qry = paramView.findViewById(2131299562);
-      localc.qox = ((ImageView)paramView.findViewById(2131299563));
-      localc.qrA = paramView.findViewById(2131299561);
-      paramView.setTag(localc);
-      paramViewGroup = null;
-      localObject = null;
-      locala = null;
-      locald = null;
-      locale = null;
-      localf = null;
-      break;
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493875, paramViewGroup, false);
-      locald = new d();
-      locald.qrB = ((Button)paramView.findViewById(2131299570));
-      paramView.setTag(locald);
-      paramViewGroup = null;
-      localObject = null;
-      localc = null;
-      locala = null;
-      locale = null;
-      localf = null;
-      break;
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493874, paramViewGroup, false);
-      paramView.setTag(new b());
-      paramViewGroup = null;
-      localObject = null;
-      localc = null;
-      locala = null;
-      locald = null;
-      locale = null;
-      localf = null;
-      break;
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493874, paramViewGroup, false);
-      localObject = new b();
-      ((b)localObject).jdField_new = ((TextView)paramView.findViewById(2131299569));
-      paramView.setTag(localObject);
-      paramViewGroup = null;
-      localc = null;
-      locala = null;
-      locald = null;
-      locale = null;
-      localf = null;
-      break;
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493874, paramViewGroup, false);
-      paramViewGroup = new b();
-      paramViewGroup.qrz = paramView.findViewById(2131299568);
+      return paramViewGroup;
+      paramView = LayoutInflater.from((Context)paramViewGroup.getActivity()).inflate(2131494032, null);
+      paramViewGroup = new SportProfileUIC.a(paramViewGroup);
+      paramViewGroup.rMS = paramView.findViewById(2131301650);
+      paramViewGroup.rMT = paramView.findViewById(2131299728);
       paramView.setTag(paramViewGroup);
-      localObject = null;
-      localc = null;
-      locala = null;
-      locald = null;
-      locale = null;
-      localf = null;
       break;
-      switch (i)
+      paramView = LayoutInflater.from((Context)paramViewGroup.getActivity()).inflate(2131494033, null);
+      paramViewGroup = new SportProfileUIC.b(paramViewGroup);
+      localObject1 = paramView.findViewById(2131300204);
+      if (localObject1 == null)
       {
-      default: 
-        paramViewGroup = null;
-        localObject = null;
-        localc = null;
-        locala = null;
-        locald = null;
-        locale = null;
-        localf = null;
-        break;
-      case 0: 
-        localf = (f)paramView.getTag();
-        paramViewGroup = null;
-        localObject = null;
-        localc = null;
-        locala = null;
-        locald = null;
-        locale = null;
-        break;
-      case 1: 
-        locale = (e)paramView.getTag();
-        paramViewGroup = null;
-        localObject = null;
-        localc = null;
-        locala = null;
-        locald = null;
-        localf = null;
-        break;
-      case 2: 
-        locala = (a)paramView.getTag();
-        paramViewGroup = null;
-        localObject = null;
-        localc = null;
-        locald = null;
-        locale = null;
-        localf = null;
-        break;
-      case 3: 
-        localc = (c)paramView.getTag();
-        paramViewGroup = null;
-        localObject = null;
-        locala = null;
-        locald = null;
-        locale = null;
-        localf = null;
-        break;
-      case 4: 
-        locald = (d)paramView.getTag();
-        paramViewGroup = null;
-        localObject = null;
-        localc = null;
-        locala = null;
-        locale = null;
-        localf = null;
-        break;
-      case 5: 
-        paramView.getTag();
-        paramViewGroup = null;
-        localObject = null;
-        localc = null;
-        locala = null;
-        locald = null;
-        locale = null;
-        localf = null;
-        break;
-      case 6: 
-        localObject = (b)paramView.getTag();
-        paramViewGroup = null;
-        localc = null;
-        locala = null;
-        locald = null;
-        locale = null;
-        localf = null;
-        break;
-      case 7: 
-        paramViewGroup = (b)paramView.getTag();
-        localObject = null;
-        localc = null;
-        locala = null;
-        locald = null;
-        locale = null;
-        localf = null;
-        break;
-        com.tencent.mm.pluginsdk.ui.a.b.v(localf.pjj, this.lJm);
-        localf.pjj.setOnClickListener(new a.1(this));
+        paramView = new t("null cannot be cast to non-null type android.widget.ImageView");
+        AppMethodBeat.o(24078);
+        throw paramView;
+      }
+      paramViewGroup.qyu = ((ImageView)localObject1);
+      localObject1 = paramView.findViewById(2131299419);
+      if (localObject1 == null)
+      {
+        paramView = new t("null cannot be cast to non-null type android.widget.TextView");
+        AppMethodBeat.o(24078);
+        throw paramView;
+      }
+      paramViewGroup.qpf = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(2131300200);
+      if (localObject1 == null)
+      {
+        paramView = new t("null cannot be cast to non-null type android.widget.TextView");
+        AppMethodBeat.o(24078);
+        throw paramView;
+      }
+      paramViewGroup.rIw = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(2131300206);
+      if (localObject1 == null)
+      {
+        paramView = new t("null cannot be cast to non-null type android.widget.TextView");
+        AppMethodBeat.o(24078);
+        throw paramView;
+      }
+      paramViewGroup.rMV = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(2131300181);
+      if (localObject1 == null)
+      {
+        paramView = new t("null cannot be cast to non-null type android.widget.TextView");
+        AppMethodBeat.o(24078);
+        throw paramView;
+      }
+      paramViewGroup.rMW = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(2131297002);
+      if (localObject1 == null)
+      {
+        paramView = new t("null cannot be cast to non-null type android.widget.LinearLayout");
+        AppMethodBeat.o(24078);
+        throw paramView;
+      }
+      paramViewGroup.rMX = ((LinearLayout)localObject1);
+      paramViewGroup.rMY = paramView.findViewById(2131297001);
+      paramViewGroup.rMZ = paramView.findViewById(2131309262);
+      paramViewGroup.rNa = ((ImageView)paramView.findViewById(2131300199));
+      paramViewGroup.rNb = ((TextView)paramView.findViewById(2131296529));
+      paramView.setTag(paramViewGroup);
+      break;
+      paramView = paramViewGroup.getTag();
+      if (paramView == null)
+      {
+        paramView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.exdevice.ui.SportProfileUIC.OtherBtnViewHolder");
+        AppMethodBeat.o(24078);
+        throw paramView;
+      }
+      paramView = (SportProfileUIC.a)paramView;
+      Object localObject2 = paramView.rMT;
+      if (localObject2 != null) {
+        ((View)localObject2).setOnClickListener((View.OnClickListener)new SportProfileUIC.d((SportProfileUIC)localObject1));
+      }
+      paramView = paramView.rMS;
+      if (paramView != null)
+      {
+        paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.f((SportProfileUIC)localObject1));
         continue;
-        if ((paramInt - 2 >= 0) && (!bu.ht(this.qru)))
+        localObject2 = new z.f();
+        paramView = paramViewGroup.getTag();
+        if (paramView == null)
         {
-          paramViewGroup = (com.tencent.mm.plugin.exdevice.g.b.a.c)this.qru.get(paramInt - 2);
-          if (paramViewGroup != null)
+          paramView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.exdevice.ui.SportProfileUIC.ProfileViewHolder");
+          AppMethodBeat.o(24078);
+          throw paramView;
+        }
+        ((z.f)localObject2).SYG = ((SportProfileUIC.b)paramView);
+        a.b.c(((SportProfileUIC.b)((z.f)localObject2).SYG).qyu, str);
+        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMV;
+        if (paramView != null) {
+          paramView.setText((CharSequence)aa.getDisplayName(str));
+        }
+        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).qpf;
+        if (paramView != null) {
+          paramView.setText((CharSequence)f.formatTime(((SportProfileUIC)localObject1).getActivity().getString(2131760813), cl.aWB()));
+        }
+        paramView = ((SportProfileUIC)localObject1).rMR;
+        label834:
+        label875:
+        Object localObject3;
+        label952:
+        label1016:
+        label1020:
+        z.f localf;
+        label1066:
+        label1095:
+        Object localObject4;
+        if (paramView != null)
+        {
+          paramView = paramView.KHS;
+          if (paramView != null)
           {
-            paramInt = paramViewGroup.field_step;
-            localObject = paramViewGroup.field_username;
-            if (paramViewGroup.field_step >= 10000) {
-              locale.qrD.setTextColor(this.mContext.getResources().getColor(2131100307));
-            }
-            for (;;)
+            paramView = (ecx)j.kv((List)paramView);
+            if (paramView != null)
             {
-              locale.qrC.setText(k.b(this.mContext, w.zP((String)localObject), locale.qrC.getTextSize()));
-              locale.qrD.setText(String.valueOf(paramInt));
-              com.tencent.mm.pluginsdk.ui.a.b.d(locale.pjj, (String)localObject);
-              locale.qry.setOnClickListener(new a.2(this, (String)localObject));
-              break;
-              locale.qrD.setTextColor(this.mContext.getResources().getColor(2131100306));
-            }
-            locala.jdField_new.setText(this.mContext.getResources().getText(2131758569));
-            locala.qox.setImageDrawable(ao.k(this.mContext, 2131690051, this.mContext.getResources().getColor(2131099732)));
-            locala.qry.setOnClickListener(new a.3(this));
-            continue;
-            if ((paramInt - this.qrs - 4 >= 0) && (!bu.ht(this.qrv)))
-            {
-              localObject = (re)this.qrv.get(paramInt - this.qrs - 4);
-              if (localObject != null)
-              {
-                paramViewGroup = ((re)localObject).title;
-                localObject = ((re)localObject).dEM;
-                localc.jdField_new.setText(paramViewGroup);
-                if (paramInt - this.qrs - 4 != this.qrt - 1) {
-                  localc.qrA.setVisibility(0);
-                }
-                e.a(this.mContext, localc.qox, (String)localObject);
-                localc.qry.setOnClickListener(new View.OnClickListener()
-                {
-                  public final void onClick(View paramAnonymousView)
-                  {
-                    AppMethodBeat.i(24075);
-                    b localb = new b();
-                    localb.bd(paramAnonymousView);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                    com.tencent.mm.plugin.sport.a.c.md(8);
-                    paramAnonymousView = new AppBrandStatObject();
-                    paramAnonymousView.scene = 1063;
-                    ((p)g.ab(p.class)).a(a.b(a.this), null, "wx3fca79fc5715b185", 0, 0, "", paramAnonymousView);
-                    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                    AppMethodBeat.o(24075);
-                  }
-                });
-                continue;
-                if (!this.qrr)
-                {
-                  bc.aCg();
-                  if (com.tencent.mm.model.c.azF().aUH(this.lJm))
-                  {
-                    locald.qrB.setVisibility(0);
-                    locald.qrB.setOnClickListener(new a.5(this));
-                    continue;
-                  }
-                }
-                locald.qrB.setVisibility(4);
-                continue;
-                ((b)localObject).jdField_new.setText(this.mContext.getString(2131758578));
-                continue;
-                paramViewGroup.qrz.setVisibility(0);
+              paramInt = paramView.lCq;
+              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMW;
+              if (paramView != null) {
+                paramView.setText((CharSequence)String.valueOf(paramInt));
               }
+              if (paramInt < 10000) {
+                break label1415;
+              }
+              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMW;
+              if (paramView != null) {
+                paramView.setTextColor(((SportProfileUIC)localObject1).getActivity().getResources().getColor(2131100342));
+              }
+              paramView = ((SportProfileUIC)localObject1).rMR;
+              if ((paramView == null) || (paramView.ApK != true)) {
+                break label1452;
+              }
+              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNa;
+              if (paramView != null) {
+                paramView.setImageResource(2131690082);
+              }
+              if (p.j(str, z.aTY()))
+              {
+                paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNa;
+                if (paramView != null) {
+                  paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.g((SportProfileUIC)localObject1));
+                }
+              }
+              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rIw;
+              if (paramView != null)
+              {
+                localObject3 = ((SportProfileUIC)localObject1).rMR;
+                if (localObject3 == null) {
+                  break label1478;
+                }
+                paramInt = ((bxc)localObject3).Lqb;
+                paramView.setText((CharSequence)String.valueOf(paramInt));
+              }
+              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+              if (paramView != null) {
+                paramView.removeAllViews();
+              }
+              paramView = ((SportProfileUIC)localObject1).rMR;
+              if (paramView == null) {
+                break label1493;
+              }
+              paramView = paramView.McT;
+              if (paramView == null) {
+                break label1493;
+              }
+              if (((Collection)paramView).isEmpty()) {
+                break label1483;
+              }
+              paramInt = 1;
+              if (paramInt == 0) {
+                break label1488;
+              }
+              if (paramView == null) {
+                break label1493;
+              }
+              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+              if (paramView != null) {
+                paramView.setVisibility(0);
+              }
+              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMY;
+              if (paramView != null) {
+                paramView.setVisibility(0);
+              }
+              paramView = ((SportProfileUIC)localObject1).rMR;
+              if (paramView == null) {
+                break label1574;
+              }
+              paramView = paramView.McT;
+              if (paramView == null) {
+                break label1574;
+              }
+              paramView = ((Iterable)paramView).iterator();
+              if (!paramView.hasNext()) {
+                break label1574;
+              }
+              localObject3 = (ecf)paramView.next();
+              localf = new z.f();
+              localf.SYG = ((SportProfileUIC)localObject1).getActivity().getLayoutInflater().inflate(2131494034, (ViewGroup)((SportProfileUIC.b)((z.f)localObject2).SYG).rMX, false);
+              localObject4 = ((View)localf.SYG).findViewById(2131296987);
+              p.g(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_1_tv)");
+              ((TextView)localObject4).setText((CharSequence)((ecf)localObject3).Ncs);
+              localObject4 = ((View)localf.SYG).findViewById(2131296988);
+              p.g(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_2_tv)");
+              ((TextView)localObject4).setText((CharSequence)String.valueOf(((ecf)localObject3).Nct));
+              localObject4 = ((View)localf.SYG).findViewById(2131296989);
+              p.g(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_3_tv)");
+              ((TextView)localObject4).setText((CharSequence)((ecf)localObject3).Ncu);
+              localObject4 = (ImageView)((View)localf.SYG).findViewById(2131296986);
+              if (!(p.j("21f9d636b41b25be", ((ecf)localObject3).appId) ^ true)) {
+                break label1540;
+              }
+              ((q)g.af(q.class)).b(((ecf)localObject3).appId, (q.a)new SportProfileUIC.h(localf, (ImageView)localObject4));
             }
           }
         }
-        break;
+        for (;;)
+        {
+          localObject4 = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+          if (localObject4 != null) {
+            ((LinearLayout)localObject4).addView((View)localf.SYG);
+          }
+          ((View)localf.SYG).setOnClickListener((View.OnClickListener)new SportProfileUIC.c((ecf)localObject3, (SportProfileUIC)localObject1, (z.f)localObject2));
+          break label1095;
+          paramInt = 0;
+          break;
+          label1415:
+          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMW;
+          if (paramView == null) {
+            break label834;
+          }
+          paramView.setTextColor(((SportProfileUIC)localObject1).getActivity().getResources().getColor(2131100341));
+          break label834;
+          label1452:
+          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNa;
+          if (paramView == null) {
+            break label875;
+          }
+          paramView.setImageResource(2131690083);
+          break label875;
+          label1478:
+          paramInt = 0;
+          break label952;
+          label1483:
+          paramInt = 0;
+          break label1016;
+          label1488:
+          paramView = null;
+          break label1020;
+          label1493:
+          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+          if (paramView != null) {
+            paramView.setVisibility(8);
+          }
+          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMY;
+          if (paramView == null) {
+            break label1066;
+          }
+          paramView.setVisibility(8);
+          break label1066;
+          label1540:
+          ((TextView)((View)localf.SYG).findViewById(2131296992)).setText(2131766360);
+          ((ImageView)localObject4).setImageResource(2131690736);
+        }
+        label1574:
+        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMZ;
+        if (paramView != null) {
+          paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.i((SportProfileUIC)localObject1, str));
+        }
+        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).qyu;
+        if (paramView != null) {
+          paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.j((SportProfileUIC)localObject1, str));
+        }
+        if ((p.j(str, z.aTY()) ^ true))
+        {
+          paramView = ((SportProfileUIC)localObject1).rMR;
+          if ((paramView == null) || (paramView.rCx != true))
+          {
+            paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNb;
+            if (paramView != null) {
+              paramView.setVisibility(0);
+            }
+            paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNb;
+            if (paramView == null) {
+              continue;
+            }
+            paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.e((SportProfileUIC)localObject1));
+            continue;
+          }
+        }
+        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNb;
+        if (paramView != null) {
+          paramView.setVisibility(8);
+        }
       }
     }
   }
   
   public final int getViewTypeCount()
   {
-    return 8;
-  }
-  
-  final class a
-  {
-    TextView jdField_new;
-    ImageView qox;
-    View qry;
-    
-    a() {}
-  }
-  
-  final class b
-  {
-    TextView jdField_new;
-    View qrz;
-    
-    b() {}
-  }
-  
-  final class c
-  {
-    TextView jdField_new;
-    ImageView qox;
-    View qrA;
-    View qry;
-    
-    c() {}
-  }
-  
-  final class d
-  {
-    Button qrB;
-    
-    d() {}
-  }
-  
-  final class e
-  {
-    ImageView pjj;
-    NoMeasuredTextView qrC;
-    TextView qrD;
-    View qry;
-    
-    e() {}
-  }
-  
-  final class f
-  {
-    ImageView pjj;
-    
-    f() {}
+    if (this.rIK) {
+      return 2;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.a
  * JD-Core Version:    0.7.0.1
  */

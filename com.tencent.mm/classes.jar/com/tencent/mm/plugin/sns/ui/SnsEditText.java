@@ -1,43 +1,38 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
-import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class SnsEditText
   extends MMEditText
 {
-  private ClipboardManager Aug;
-  private boolean Auh;
-  private int Aui;
-  private int Auj;
-  private int Auk;
+  private boolean EDp;
+  private int EDq;
+  private int EDr;
+  private int EDs;
   private Context context;
-  private int mHV;
-  private boolean vmb;
+  private int nUS;
   private float y;
+  private boolean yFT;
   
   public SnsEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98694);
-    this.Aug = null;
-    this.mHV = 0;
-    this.Auh = false;
-    this.Aui = 0;
-    this.Auj = 0;
-    this.vmb = false;
-    this.Auk = 10;
+    this.nUS = 0;
+    this.EDp = false;
+    this.EDq = 0;
+    this.EDr = 0;
+    this.yFT = false;
+    this.EDs = 10;
     this.context = paramContext;
-    this.Aug = ((ClipboardManager)ak.getContext().getSystemService("clipboard"));
     addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
@@ -58,13 +53,13 @@ public class SnsEditText
         {
           if (SnsEditText.a(SnsEditText.this))
           {
-            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.zsC))
+            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.DCT))
             {
               SnsEditText.a(SnsEditText.this, 0);
               AppMethodBeat.o(98692);
               return;
             }
-            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.zsC) {
+            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.DCT) {
               SnsEditText.a(SnsEditText.this, paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this));
             }
           }
@@ -73,7 +68,7 @@ public class SnsEditText
         }
         catch (Exception paramAnonymousCharSequence)
         {
-          ae.printErrStackTrace("MicroMsg.SnsEditText", paramAnonymousCharSequence, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SnsEditText", paramAnonymousCharSequence, "", new Object[0]);
           AppMethodBeat.o(98692);
         }
       }
@@ -83,14 +78,14 @@ public class SnsEditText
   
   public int getPasterLen()
   {
-    return this.mHV;
+    return this.nUS;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
     AppMethodBeat.i(98695);
     if (paramInt == 16908322) {
-      this.Auh = true;
+      this.EDp = true;
     }
     boolean bool = super.onTextContextMenuItem(paramInt);
     AppMethodBeat.o(98695);
@@ -101,8 +96,8 @@ public class SnsEditText
   {
     AppMethodBeat.i(98696);
     if (paramMotionEvent.getAction() == 2) {
-      if (Math.abs(this.y - paramMotionEvent.getY()) > this.Auk) {
-        this.vmb = true;
+      if (Math.abs(this.y - paramMotionEvent.getY()) > this.EDs) {
+        this.yFT = true;
       }
     }
     for (;;)
@@ -113,27 +108,27 @@ public class SnsEditText
       return bool;
       if (paramMotionEvent.getAction() == 1)
       {
-        if (this.vmb)
+        if (this.yFT)
         {
-          this.vmb = false;
+          this.yFT = false;
           AppMethodBeat.o(98696);
           return true;
         }
       }
       else {
-        this.vmb = false;
+        this.yFT = false;
       }
     }
   }
   
   public void setPasterLen(int paramInt)
   {
-    this.mHV = paramInt;
+    this.nUS = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsEditText
  * JD-Core Version:    0.7.0.1
  */

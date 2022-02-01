@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rn"
+<LinearLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView style="@style/ro" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/azt" />
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <include layout="@layout/b6_" />
-        </LinearLayout>
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/rr" />
-    </LinearLayout>
+    <ListView android:id="@id/ecm" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

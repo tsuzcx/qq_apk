@@ -2,103 +2,105 @@ package com.tencent.mm.plugin.recordvideo.model.audio;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.b.a.gv;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.b.a.kj;
 import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.recordvideo.model.a.a;
-import com.tencent.mm.protocal.protobuf.bxw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.clo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;", "", "()V", "currMusicId", "", "getCurrMusicId", "()I", "setCurrMusicId", "(I)V", "currStartTime", "", "getCurrStartTime", "()J", "setCurrStartTime", "(J)V", "feedbackList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicFeedback;", "Lkotlin/collections/ArrayList;", "getFeedbackList", "()Ljava/util/ArrayList;", "pause", "", "getPause", "()Z", "setPause", "(Z)V", "requestId", "getRequestId", "setRequestId", "source", "getSource", "setSource", "withBgm", "getWithBgm", "setWithBgm", "recordCancel", "", "recordEnterSearch", "recordNoBgm", "recordPause", "recordPlay", "musicId", "recordSend", "reportKv", "sendResult", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;", "", "()V", "currMusicId", "", "getCurrMusicId", "()I", "setCurrMusicId", "(I)V", "currStartTime", "", "getCurrStartTime", "()J", "setCurrStartTime", "(J)V", "feedbackList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicFeedback;", "Lkotlin/collections/ArrayList;", "getFeedbackList", "()Ljava/util/ArrayList;", "pause", "", "getPause", "()Z", "setPause", "(Z)V", "requestId", "getRequestId", "setRequestId", "source", "getSource", "setSource", "withBgm", "getWithBgm", "setWithBgm", "recordCancel", "", "recordEnterSearch", "recordNoBgm", "recordPause", "recordPlay", "musicId", "recordSend", "reportKv", "sendResult", "Companion", "plugin-recordvideo_release"})
 public final class c
 {
+  private static long BPA = 0L;
+  private static long BPB = 0L;
+  private static kj BPC;
+  public static final a BPD;
+  private static c BPz;
   public static final String TAG = "MicroMsg.AudioReporter";
-  public static final a xPA;
-  private static c xPw;
-  private static long xPx;
-  private static long xPy;
-  private static gv xPz;
-  private boolean dDA;
-  private int doj;
-  public int xPs;
-  private long xPt;
-  public boolean xPu;
-  public final ArrayList<bxw> xPv;
-  public long xsF;
+  public int BPv;
+  private long BPw;
+  public boolean BPx;
+  public final ArrayList<clo> BPy;
+  private boolean pause;
+  private int source;
+  public long ulj;
   
   static
   {
     AppMethodBeat.i(75420);
-    xPA = new a((byte)0);
+    BPD = new a((byte)0);
     TAG = "MicroMsg.AudioReporter";
-    xPz = new gv();
+    BPC = new kj();
     AppMethodBeat.o(75420);
   }
   
   public c()
   {
     AppMethodBeat.i(75419);
-    AudioCacheInfo.a locala = AudioCacheInfo.xPl;
-    this.doj = AudioCacheInfo.dJo();
-    this.dDA = true;
-    this.xPv = new ArrayList();
+    AudioCacheInfo.a locala = AudioCacheInfo.BPo;
+    this.source = AudioCacheInfo.eKb();
+    this.pause = true;
+    this.BPy = new ArrayList();
     AppMethodBeat.o(75419);
   }
   
-  private final void dJu()
+  private final void eKg()
   {
     int j = 2;
     AppMethodBeat.i(163425);
-    if (this.xsF == 0L)
+    if (this.ulj == 0L)
     {
       AppMethodBeat.o(163425);
       return;
     }
-    Object localObject = ak.getContext();
+    Object localObject = MMApplicationContext.getContext();
     int i;
     long l1;
     long l2;
     long l3;
-    if (az.isWifi((Context)localObject))
+    if (NetStatusUtil.isWifi((Context)localObject))
     {
       i = 1;
-      localObject = com.tencent.mm.plugin.report.service.g.yxI;
-      l1 = xPx;
-      l2 = xPy;
-      l3 = this.xsF;
-      if (!this.xPu) {
+      localObject = h.CyF;
+      l1 = BPA;
+      l2 = BPB;
+      l3 = this.ulj;
+      if (!this.BPx) {
         break label220;
       }
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.report.service.g)localObject).f(16208, new Object[] { Integer.valueOf(i), Integer.valueOf(1), "", Long.valueOf(l1), Long.valueOf(l2), "", Long.valueOf(l3), Integer.valueOf(j), Integer.valueOf(this.xPs), "", "" });
+      ((h)localObject).a(16208, new Object[] { Integer.valueOf(i), Integer.valueOf(1), "", Long.valueOf(l1), Long.valueOf(l2), "", Long.valueOf(l3), Integer.valueOf(j), Integer.valueOf(this.BPv), "", "" });
       AppMethodBeat.o(163425);
       return;
-      if (az.is4G((Context)localObject))
+      if (NetStatusUtil.is4G((Context)localObject))
       {
         i = 6;
         break;
       }
-      if (az.is3G((Context)localObject))
+      if (NetStatusUtil.is3G((Context)localObject))
       {
         i = 5;
         break;
       }
-      if (az.is2G((Context)localObject))
+      if (NetStatusUtil.is2G((Context)localObject))
       {
         i = 4;
         break;
       }
-      if (az.isWap((Context)localObject))
+      if (NetStatusUtil.isWap((Context)localObject))
       {
         i = 3;
         break;
@@ -110,150 +112,150 @@ public final class c
     }
   }
   
-  private final void dJv()
+  private final void eKh()
   {
     AppMethodBeat.i(75418);
-    b localb = com.tencent.mm.kernel.g.ajQ();
+    b localb = g.aAg();
     p.g(localb, "network()");
-    localb.ajj().b((n)new a(this.xsF, (List)this.xPv));
-    xPw = null;
+    localb.azz().b((q)new a(this.ulj, (List)this.BPy));
+    BPz = null;
     AppMethodBeat.o(75418);
   }
   
-  public final void dJr()
+  public final void eKd()
   {
     AppMethodBeat.i(75417);
-    bxw localbxw;
+    clo localclo;
     long l;
-    if (!this.dDA)
+    if (!this.pause)
     {
-      localbxw = new bxw();
+      localclo = new clo();
       l = System.currentTimeMillis();
-      localbxw.HkA = this.xPs;
-      i = this.doj;
-      AudioCacheInfo.a locala = AudioCacheInfo.xPl;
-      if (i != AudioCacheInfo.dJo()) {
+      localclo.MqO = this.BPv;
+      i = this.source;
+      AudioCacheInfo.a locala = AudioCacheInfo.BPo;
+      if (i != AudioCacheInfo.eKb()) {
         break label133;
       }
     }
     label133:
     for (int i = 1;; i = 9)
     {
-      localbxw.HkB = i;
-      localbxw.HkC = ((int)(l - this.xPt));
-      localbxw.HkD = ((int)(this.xPt / 1000L));
-      this.xPv.add(localbxw);
-      this.dDA = true;
-      ae.i(TAG, "record pause " + d.a(localbxw));
+      localclo.MqP = i;
+      localclo.MqQ = ((int)(l - this.BPw));
+      localclo.MqR = ((int)(this.BPw / 1000L));
+      this.BPy.add(localclo);
+      this.pause = true;
+      Log.i(TAG, "record pause " + d.a(localclo));
       AppMethodBeat.o(75417);
       return;
     }
   }
   
-  public final void dJs()
+  public final void eKe()
   {
     AppMethodBeat.i(163424);
-    if (this.xsF == 0L)
+    if (this.ulj == 0L)
     {
       AppMethodBeat.o(163424);
       return;
     }
-    bxw localbxw = new bxw();
-    localbxw.HkA = this.xPs;
-    if (this.xPu)
+    clo localclo = new clo();
+    localclo.MqO = this.BPv;
+    if (this.BPx)
     {
-      i = this.doj;
-      locala = AudioCacheInfo.xPl;
-      if (i == AudioCacheInfo.dJp()) {}
+      i = this.source;
+      locala = AudioCacheInfo.BPo;
+      if (i == AudioCacheInfo.eKc()) {}
       for (i = 10;; i = 2)
       {
-        localbxw.HkB = i;
-        localbxw.HkD = ((int)bu.aRi());
-        dJr();
-        this.xPv.add(localbxw);
-        ae.i(TAG, "record send " + d.a(localbxw));
-        dJu();
-        dJv();
+        localclo.MqP = i;
+        localclo.MqR = ((int)Util.nowSecond());
+        eKd();
+        this.BPy.add(localclo);
+        Log.i(TAG, "record send " + d.a(localclo));
+        eKg();
+        eKh();
         AppMethodBeat.o(163424);
         return;
       }
     }
-    int i = this.doj;
-    AudioCacheInfo.a locala = AudioCacheInfo.xPl;
-    if (i == AudioCacheInfo.dJp()) {}
+    int i = this.source;
+    AudioCacheInfo.a locala = AudioCacheInfo.BPo;
+    if (i == AudioCacheInfo.eKc()) {}
     for (i = 12;; i = 6)
     {
-      localbxw.HkB = i;
+      localclo.MqP = i;
       break;
     }
   }
   
-  public final void dJt()
+  public final void eKf()
   {
-    AppMethodBeat.i(206555);
-    if (this.xsF == 0L)
+    AppMethodBeat.i(237261);
+    if (this.ulj == 0L)
     {
-      AppMethodBeat.o(206555);
+      AppMethodBeat.o(237261);
       return;
     }
-    bxw localbxw = new bxw();
-    localbxw.HkA = this.xPs;
-    if (this.xPu)
+    clo localclo = new clo();
+    localclo.MqO = this.BPv;
+    if (this.BPx)
     {
-      i = this.doj;
-      locala = AudioCacheInfo.xPl;
-      if (i == AudioCacheInfo.dJp()) {}
+      i = this.source;
+      locala = AudioCacheInfo.BPo;
+      if (i == AudioCacheInfo.eKc()) {}
       for (i = 11;; i = 5)
       {
-        localbxw.HkB = i;
-        localbxw.HkD = ((int)bu.aRi());
-        dJr();
-        this.xPv.add(localbxw);
-        ae.i(TAG, "record cancel " + d.a(localbxw));
-        dJv();
-        AppMethodBeat.o(206555);
+        localclo.MqP = i;
+        localclo.MqR = ((int)Util.nowSecond());
+        eKd();
+        this.BPy.add(localclo);
+        Log.i(TAG, "record cancel " + d.a(localclo));
+        eKh();
+        AppMethodBeat.o(237261);
         return;
       }
     }
-    int i = this.doj;
-    AudioCacheInfo.a locala = AudioCacheInfo.xPl;
-    if (i == AudioCacheInfo.dJp()) {}
+    int i = this.source;
+    AudioCacheInfo.a locala = AudioCacheInfo.BPo;
+    if (i == AudioCacheInfo.eKc()) {}
     for (i = 13;; i = 7)
     {
-      localbxw.HkB = i;
+      localclo.MqP = i;
       break;
     }
   }
   
-  public final void hl(int paramInt1, int paramInt2)
+  public final void hV(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206554);
-    this.xPs = paramInt1;
-    this.xPt = System.currentTimeMillis();
-    this.xPu = true;
-    this.dDA = false;
-    this.doj = paramInt2;
-    AppMethodBeat.o(206554);
+    AppMethodBeat.i(237260);
+    this.BPv = paramInt1;
+    this.BPw = System.currentTimeMillis();
+    this.BPx = true;
+    this.pause = false;
+    this.source = paramInt2;
+    AppMethodBeat.o(237260);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter$Companion;", "", "()V", "AUDIO_FINISH_TYPE_CANCEL", "", "AUDIO_FINISH_TYPE_OK", "AUDIO_FINISH_TYPE_SEARCH", "BehaviorAdoptAndCancel", "BehaviorAdoptAndSend", "BehaviorListen", "BehaviorNoBgm", "BehaviorNoBgmAndCancel", "BehaviorNoBgmAndSend", "BehaviorSearchAdoptAndCancel", "BehaviorSearchAdoptAndSend", "BehaviorSearchEnter", "BehaviorSearchListen", "BehaviorSearchNoBgmAndCancel", "BehaviorSearchNoBgmAndSend", "KVAudioResult", "TAG", "", "audioSearchStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/VideoBGMSearchStruct;", "getAudioSearchStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/VideoBGMSearchStruct;", "setAudioSearchStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/VideoBGMSearchStruct;)V", "current", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;", "getCurrent", "()Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;", "setCurrent", "(Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;)V", "latitude", "", "getLatitude", "()J", "setLatitude", "(J)V", "longitude", "getLongitude", "setLongitude", "recordLocation", "", "", "reportAudioSearchStruct", "plugin-recordvideo_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter$Companion;", "", "()V", "AUDIO_FINISH_TYPE_CANCEL", "", "AUDIO_FINISH_TYPE_OK", "AUDIO_FINISH_TYPE_SEARCH", "BehaviorAdoptAndCancel", "BehaviorAdoptAndSend", "BehaviorListen", "BehaviorNoBgm", "BehaviorNoBgmAndCancel", "BehaviorNoBgmAndSend", "BehaviorSearchAdoptAndCancel", "BehaviorSearchAdoptAndSend", "BehaviorSearchEnter", "BehaviorSearchListen", "BehaviorSearchNoBgmAndCancel", "BehaviorSearchNoBgmAndSend", "KVAudioResult", "TAG", "", "audioSearchStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/VideoBGMSearchStruct;", "getAudioSearchStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/VideoBGMSearchStruct;", "setAudioSearchStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/VideoBGMSearchStruct;)V", "current", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;", "getCurrent", "()Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;", "setCurrent", "(Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioReporter;)V", "latitude", "", "getLatitude", "()J", "setLatitude", "(J)V", "longitude", "getLongitude", "setLongitude", "recordLocation", "", "", "reportAudioSearchStruct", "plugin-recordvideo_release"})
   public static final class a
   {
-    public static void dJy()
+    public static void eKk()
     {
       AppMethodBeat.i(75416);
-      ae.d(c.access$getTAG$cp(), "reportAudioSearchStruct:\n " + c.dJx().RD());
-      c.dJx().aLH();
-      gv localgv = new gv();
-      p.h(localgv, "<set-?>");
-      c.a(localgv);
+      Log.d(c.access$getTAG$cp(), "reportAudioSearchStruct:\n " + c.eKj().abW());
+      c.eKj().bfK();
+      kj localkj = new kj();
+      p.h(localkj, "<set-?>");
+      c.a(localkj);
       AppMethodBeat.o(75416);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.model.audio.c
  * JD-Core Version:    0.7.0.1
  */

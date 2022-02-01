@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.expt.d.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.d.e.b;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
 {
-  public static void o(List<b> paramList, int paramInt)
+  public static void p(List<b> paramList, int paramInt)
   {
-    AppMethodBeat.i(195930);
+    AppMethodBeat.i(220352);
     if ((paramList == null) || (paramList.size() <= 0) || (paramInt <= 0))
     {
-      AppMethodBeat.o(195930);
+      AppMethodBeat.o(220352);
       return;
     }
-    ae.i("EdgeComputingReporter", "[EdgeComputingReporter] reportData logID : ".concat(String.valueOf(paramInt)));
+    Log.i("EdgeComputingReporter", "[EdgeComputingReporter] reportData logID : ".concat(String.valueOf(paramInt)));
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
     int i = 0;
@@ -31,7 +31,7 @@ public final class a
         j = i;
         if (paramList == null)
         {
-          AppMethodBeat.o(195930);
+          AppMethodBeat.o(220352);
           return;
         }
         while (paramList.index > j)
@@ -42,7 +42,7 @@ public final class a
         i = j;
         if (paramList.index >= j) {
           if (paramList.type == 2) {
-            paramList = String.valueOf(paramList.qXY);
+            paramList = String.valueOf(paramList.syi);
           }
         }
       }
@@ -70,11 +70,11 @@ public final class a
           continue;
           if (localArrayList.size() > 0)
           {
-            paramList = g.yxI;
-            g.m(paramInt, localArrayList);
-            ae.d("EdgeComputingReporter", "[EdgeComputingReporter] reportData vals : " + localArrayList.size());
+            paramList = h.CyF;
+            h.r(paramInt, localArrayList);
+            Log.d("EdgeComputingReporter", "[EdgeComputingReporter] reportData vals : " + localArrayList.size());
           }
-          AppMethodBeat.o(195930);
+          AppMethodBeat.o(220352);
         }
       }
       else {
@@ -83,15 +83,15 @@ public final class a
     }
   }
   
-  public static void p(List<String> paramList, int paramInt)
+  public static void q(List<String> paramList, int paramInt)
   {
-    AppMethodBeat.i(195931);
+    AppMethodBeat.i(220353);
     if ((paramList == null) || (paramList.size() <= 0) || (paramInt <= 0))
     {
-      AppMethodBeat.o(195931);
+      AppMethodBeat.o(220353);
       return;
     }
-    ae.i("EdgeComputingReporter", "[EdgeComputingReporter] reportStrData logID : ".concat(String.valueOf(paramInt)));
+    Log.i("EdgeComputingReporter", "[EdgeComputingReporter] reportStrData logID : ".concat(String.valueOf(paramInt)));
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
@@ -103,10 +103,10 @@ public final class a
       }
       localArrayList.add(paramList);
     }
-    paramList = g.yxI;
-    g.m(paramInt, localArrayList);
-    ae.d("EdgeComputingReporter", "[EdgeComputingReporter] reportStrData vals : " + localArrayList.size());
-    AppMethodBeat.o(195931);
+    paramList = h.CyF;
+    h.r(paramInt, localArrayList);
+    Log.d("EdgeComputingReporter", "[EdgeComputingReporter] reportStrData vals : " + localArrayList.size());
+    AppMethodBeat.o(220353);
   }
 }
 

@@ -62,8 +62,8 @@ public class MediaButtonReceiver
       paramContext = paramContext.getApplicationContext();
       paramIntent = new a(paramContext, paramIntent, localPendingResult);
       paramContext = new MediaBrowserCompat(paramContext, localComponentName, paramIntent);
-      paramIntent.Ml = paramContext;
-      paramContext.KG.connect();
+      paramIntent.Mv = paramContext;
+      paramContext.KQ.connect();
       return;
     }
     throw new IllegalStateException("Could not find any Service that handles android.intent.action.MEDIA_BUTTON or implements a media browser service.");
@@ -72,8 +72,8 @@ public class MediaButtonReceiver
   static final class a
     extends MediaBrowserCompat.b
   {
-    private final BroadcastReceiver.PendingResult Mk;
-    MediaBrowserCompat Ml;
+    private final BroadcastReceiver.PendingResult Mu;
+    MediaBrowserCompat Mv;
     private final Context mContext;
     private final Intent mIntent;
     
@@ -81,13 +81,13 @@ public class MediaButtonReceiver
     {
       this.mContext = paramContext;
       this.mIntent = paramIntent;
-      this.Mk = paramPendingResult;
+      this.Mu = paramPendingResult;
     }
     
     private void finish()
     {
-      this.Ml.disconnect();
-      this.Mk.finish();
+      this.Mv.disconnect();
+      this.Mu.finish();
     }
     
     public final void onConnected()
@@ -95,7 +95,7 @@ public class MediaButtonReceiver
       KeyEvent localKeyEvent;
       try
       {
-        MediaControllerCompat localMediaControllerCompat = new MediaControllerCompat(this.mContext, this.Ml.KG.eG());
+        MediaControllerCompat localMediaControllerCompat = new MediaControllerCompat(this.mContext, this.Mv.KQ.eK());
         localKeyEvent = (KeyEvent)this.mIntent.getParcelableExtra("android.intent.extra.KEY_EVENT");
         if (localKeyEvent == null) {
           throw new IllegalArgumentException("KeyEvent may not be null");
@@ -106,7 +106,7 @@ public class MediaButtonReceiver
       {
         finish();
         return;
-        localRemoteException.Mm.dispatchMediaButtonEvent(localKeyEvent);
+        localRemoteException.Mw.dispatchMediaButtonEvent(localKeyEvent);
       }
     }
     
@@ -123,7 +123,7 @@ public class MediaButtonReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.media.session.MediaButtonReceiver
  * JD-Core Version:    0.7.0.1
  */

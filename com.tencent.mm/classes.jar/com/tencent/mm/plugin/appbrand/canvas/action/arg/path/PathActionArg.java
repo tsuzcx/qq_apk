@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 
 import android.os.Parcel;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public abstract class PathActionArg
   extends BasePathActionArg
 {
-  public float jWY;
-  public boolean jWZ;
-  public float mh;
+  public float kZU;
+  public boolean kZV;
+  public float mj;
   public float radius;
   public float x;
   public float y;
@@ -37,23 +37,23 @@ public abstract class PathActionArg
         return false;
       } while (!(paramObject instanceof PathActionArg));
       paramObject = (PathActionArg)paramObject;
-    } while ((paramObject.x != this.x) || (paramObject.y != this.y) || (paramObject.radius != this.radius) || (paramObject.mh != this.mh) || (paramObject.jWZ != this.jWZ));
+    } while ((paramObject.x != this.x) || (paramObject.y != this.y) || (paramObject.radius != this.radius) || (paramObject.mj != this.mj) || (paramObject.kZV != this.kZV));
     return true;
   }
   
-  public final void h(Parcel paramParcel)
+  public final void i(Parcel paramParcel)
   {
     boolean bool = true;
-    super.h(paramParcel);
+    super.i(paramParcel);
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
     this.radius = paramParcel.readFloat();
-    this.mh = paramParcel.readFloat();
-    this.jWY = paramParcel.readFloat();
+    this.mj = paramParcel.readFloat();
+    this.kZU = paramParcel.readFloat();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.jWZ = bool;
+      this.kZV = bool;
       return;
       bool = false;
     }
@@ -66,9 +66,9 @@ public abstract class PathActionArg
     this.x = g.f(paramJSONObject, 0);
     this.y = g.f(paramJSONObject, 1);
     this.radius = g.f(paramJSONObject, 2);
-    this.mh = ((float)paramJSONObject.optDouble(3));
-    this.jWY = ((float)paramJSONObject.optDouble(4));
-    this.jWZ = paramJSONObject.optBoolean(5);
+    this.mj = ((float)paramJSONObject.optDouble(3));
+    this.kZU = ((float)paramJSONObject.optDouble(4));
+    this.kZV = paramJSONObject.optBoolean(5);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -77,9 +77,9 @@ public abstract class PathActionArg
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
     paramParcel.writeFloat(this.radius);
-    paramParcel.writeFloat(this.mh);
-    paramParcel.writeFloat(this.jWY);
-    if (this.jWZ) {}
+    paramParcel.writeFloat(this.mj);
+    paramParcel.writeFloat(this.kZU);
+    if (this.kZV) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -89,7 +89,7 @@ public abstract class PathActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathActionArg
  * JD-Core Version:    0.7.0.1
  */

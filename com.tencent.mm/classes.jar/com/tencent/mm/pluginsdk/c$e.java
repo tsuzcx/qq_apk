@@ -1,22 +1,22 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "invoke"})
 final class c$e
   extends q
   implements a<ConcurrentHashMap<Long, Integer>>
 {
-  public static final e FbG;
+  public static final e JSA;
   
   static
   {
     AppMethodBeat.i(124770);
-    FbG = new e();
+    JSA = new e();
     AppMethodBeat.o(124770);
   }
   

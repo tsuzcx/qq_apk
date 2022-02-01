@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.storage.bn;
 import java.util.List;
 
 public abstract interface e
-  extends g
+  extends IStorage
 {
-  public abstract bi aqR(String paramString);
+  public abstract bn aEm(String paramString);
   
-  public abstract boolean aqS(String paramString);
+  public abstract boolean aEn(String paramString);
   
-  public abstract List<bi> doO();
+  public abstract List<bn> eiD();
 }
 
 

@@ -4,14 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.f.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
@@ -19,55 +18,60 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private int EHZ;
-  private Context mContext;
-  private int mtR;
-  private WindowManager.LayoutParams mtS;
-  private View mtt;
-  private int mtv;
-  private ViewGroup.LayoutParams mtw;
-  private ViewGroup mtx;
-  private final Set<c> mty;
+  private int JxP;
+  public boolean JxQ;
+  public Context mContext;
+  private int nEA;
+  private WindowManager.LayoutParams nEB;
+  private View nEb;
+  private int nEd;
+  private ViewGroup.LayoutParams nEe;
+  private ViewGroup nEf;
+  private final Set<c> nEg;
+  private int nEz;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(199110);
-    this.mty = Collections.newSetFromMap(new ConcurrentHashMap());
+    AppMethodBeat.i(212052);
+    this.nEg = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.JxQ = false;
     this.mContext = paramContext;
-    AppMethodBeat.o(199110);
+    AppMethodBeat.o(212052);
   }
   
-  private void bxA()
+  private void bTL()
   {
-    AppMethodBeat.i(199116);
-    Iterator localIterator = this.mty.iterator();
+    AppMethodBeat.i(212058);
+    Iterator localIterator = this.nEg.iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).bib();
+      ((c)localIterator.next()).bDq();
     }
-    AppMethodBeat.o(199116);
+    AppMethodBeat.o(212058);
   }
   
-  public final void O(final View paramView, int paramInt)
+  public final void N(View paramView, int paramInt)
   {
-    AppMethodBeat.i(199112);
+    AppMethodBeat.i(212054);
     Activity localActivity = (Activity)this.mContext;
     if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed()))
     {
-      ae.e("MicroMsg.WebViewFullscreenImpl", "enterFullscreen activity(%s) destroyed", new Object[] { localActivity });
-      AppMethodBeat.o(199112);
+      Log.e("MicroMsg.WebViewFullscreenImpl", "enterFullscreen activity(%s) destroyed", new Object[] { localActivity });
+      AppMethodBeat.o(212054);
       return;
     }
-    View localView = this.mtt;
-    this.mtt = paramView;
+    View localView = this.nEb;
+    this.nEb = paramView;
     ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
     if (localView == null)
     {
       if ((paramView.getParent() instanceof ViewGroup))
       {
-        this.mtx = ((ViewGroup)paramView.getParent());
-        this.mtv = this.mtx.indexOfChild(paramView);
-        this.mtw = paramView.getLayoutParams();
-        this.mtx.removeView(paramView);
+        this.nEf = ((ViewGroup)paramView.getParent());
+        this.nEd = this.nEf.indexOfChild(paramView);
+        this.nEe = paramView.getLayoutParams();
+        this.nEf.removeView(paramView);
+        this.JxP = this.nEb.getDrawingCacheBackgroundColor();
+        this.nEb.setBackgroundColor(-16777216);
         localViewGroup.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
         localViewGroup.bringChildToFront(paramView);
         paramView.setX(0.0F);
@@ -76,35 +80,23 @@ public final class b
     }
     else
     {
-      paramView = (ViewGroup)localActivity.getWindow().getDecorView();
       if (localView == null) {
-        this.mtR = paramView.getSystemUiVisibility();
+        this.nEz = localViewGroup.getSystemUiVisibility();
       }
-      paramView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-      {
-        public final void onSystemUiVisibilityChange(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(199109);
-          if (((paramAnonymousInt & 0x4) == 0) && (b.this.bnx())) {
-            paramView.setSystemUiVisibility(5894);
-          }
-          AppMethodBeat.o(199109);
-        }
-      });
-      paramView.setSystemUiVisibility(5894);
+      localViewGroup.setSystemUiVisibility(5894);
       if (localView == null)
       {
-        this.mtS = new WindowManager.LayoutParams();
-        this.mtS.copyFrom(localActivity.getWindow().getAttributes());
+        this.nEB = new WindowManager.LayoutParams();
+        this.nEB.copyFrom(localActivity.getWindow().getAttributes());
       }
       localActivity.getWindow().addFlags(1024);
       if (Build.VERSION.SDK_INT >= 28) {
-        localActivity.getWindow().getAttributes().layoutInDisplayCutoutMode = 2;
+        localActivity.getWindow().getAttributes().layoutInDisplayCutoutMode = 1;
       }
       if (localView == null)
       {
-        this.EHZ = localActivity.getRequestedOrientation();
-        ae.d("MicroMsg.WebViewFullscreenImpl", "enterFullscreen mStashedOrientation=%d", new Object[] { Integer.valueOf(this.EHZ) });
+        this.nEA = localActivity.getRequestedOrientation();
+        Log.d("MicroMsg.WebViewFullscreenImpl", "enterFullscreen mStashedOrientation=%d", new Object[] { Integer.valueOf(this.nEA) });
       }
       switch (paramInt)
       {
@@ -115,12 +107,12 @@ public final class b
     for (;;)
     {
       f.e(true, true, true);
-      bxA();
-      AppMethodBeat.o(199112);
+      bTL();
+      AppMethodBeat.o(212054);
       return;
-      this.mtv = 0;
-      this.mtx = null;
-      this.mtw = null;
+      this.nEd = 0;
+      this.nEf = null;
+      this.nEe = null;
       break;
       localActivity.setRequestedOrientation(0);
       continue;
@@ -130,71 +122,72 @@ public final class b
     }
   }
   
-  public final boolean aYo()
+  public final boolean bJb()
   {
-    AppMethodBeat.i(199113);
-    if (this.mtt == null)
-    {
-      AppMethodBeat.o(199113);
-      return false;
-    }
-    Object localObject = (Activity)this.mContext;
-    if ((localObject == null) || (((Activity)localObject).isFinishing()) || (((Activity)localObject).isDestroyed()))
-    {
-      ae.e("MicroMsg.WebViewFullscreenImpl", "exitFullscreen activity(%s) destroyed", new Object[] { localObject });
-      AppMethodBeat.o(199113);
-      return false;
-    }
-    ((ViewGroup)((Activity)localObject).getWindow().getDecorView()).setSystemUiVisibility(this.mtR);
-    ((Activity)localObject).getWindow().clearFlags(1024);
-    if (this.mtS != null) {
-      ((Activity)localObject).getWindow().setAttributes(this.mtS);
-    }
-    ((Activity)localObject).setRequestedOrientation(this.EHZ);
-    ae.d("MicroMsg.WebViewFullscreenImpl", "exitFullscreen mStashedOrientation=%d", new Object[] { Integer.valueOf(this.EHZ) });
-    if (this.mtx != null)
-    {
-      if ((this.mtt.getParent() instanceof ViewGroup)) {
-        ((ViewGroup)this.mtt.getParent()).removeView(this.mtt);
-      }
-      this.mtx.addView(this.mtt, this.mtv, this.mtw);
-    }
-    this.mtt = null;
-    f.e(false, true, true);
-    localObject = this.mty.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((c)((Iterator)localObject).next()).DD();
-    }
-    AppMethodBeat.o(199113);
-    return true;
-  }
-  
-  public final boolean bnx()
-  {
-    return this.mtt != null;
+    return this.nEb != null;
   }
   
   public final void c(c paramc)
   {
-    AppMethodBeat.i(199114);
-    if (!this.mty.contains(paramc)) {
-      this.mty.add(paramc);
+    AppMethodBeat.i(212056);
+    if (!this.nEg.contains(paramc)) {
+      this.nEg.add(paramc);
     }
-    AppMethodBeat.o(199114);
+    AppMethodBeat.o(212056);
   }
   
   public final void d(c paramc)
   {
-    AppMethodBeat.i(199115);
-    this.mty.remove(paramc);
-    AppMethodBeat.o(199115);
+    AppMethodBeat.i(212057);
+    this.nEg.remove(paramc);
+    AppMethodBeat.o(212057);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(199111);
-    this.mty.clear();
-    AppMethodBeat.o(199111);
+    AppMethodBeat.i(212053);
+    this.nEg.clear();
+    AppMethodBeat.o(212053);
+  }
+  
+  public final boolean zr(boolean paramBoolean)
+  {
+    AppMethodBeat.i(212055);
+    if (this.nEb == null)
+    {
+      AppMethodBeat.o(212055);
+      return false;
+    }
+    Object localObject = (Activity)this.mContext;
+    if ((!paramBoolean) && ((localObject == null) || (((Activity)localObject).isFinishing()) || (((Activity)localObject).isDestroyed())))
+    {
+      Log.e("MicroMsg.WebViewFullscreenImpl", "exitFullscreen activity(%s) destroyed", new Object[] { localObject });
+      AppMethodBeat.o(212055);
+      return false;
+    }
+    ((ViewGroup)((Activity)localObject).getWindow().getDecorView()).setSystemUiVisibility(this.nEz);
+    ((Activity)localObject).getWindow().clearFlags(1024);
+    if (this.nEB != null) {
+      ((Activity)localObject).getWindow().setAttributes(this.nEB);
+    }
+    ((Activity)localObject).setRequestedOrientation(this.nEA);
+    Log.d("MicroMsg.WebViewFullscreenImpl", "exitFullscreen mStashedOrientation=%d", new Object[] { Integer.valueOf(this.nEA) });
+    if (this.nEf != null)
+    {
+      if ((this.nEb.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.nEb.getParent()).removeView(this.nEb);
+      }
+      this.nEf.addView(this.nEb, this.nEd, this.nEe);
+      this.nEb.setBackgroundColor(this.JxP);
+    }
+    this.nEb = null;
+    f.e(false, true, true);
+    localObject = this.nEg.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((c)((Iterator)localObject).next()).Na();
+    }
+    AppMethodBeat.o(212055);
+    return true;
   }
 }
 

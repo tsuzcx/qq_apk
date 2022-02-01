@@ -1,27 +1,30 @@
 package com.tencent.mm.plugin.facedetectaction.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class FaceActionUI$8
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   FaceActionUI$8(FaceActionUI paramFaceActionUI) {}
   
-  public final void onClick(View paramView)
+  public final void onAnimationEnd(Animation paramAnimation)
   {
-    AppMethodBeat.i(104248);
-    b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ae.i("MicroMsg.FaceActionUI", "click finish");
-    this.rys.g("fail", 90010, "", "");
-    a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(104248);
+    AppMethodBeat.i(104246);
+    Log.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationEnd");
+    Log.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationEnd");
+    AppMethodBeat.o(104246);
+  }
+  
+  public final void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public final void onAnimationStart(Animation paramAnimation)
+  {
+    AppMethodBeat.i(104247);
+    Log.d("MicroMsg.FaceActionUI", "checkingAnimation, AnimationStart");
+    AppMethodBeat.o(104247);
   }
 }
 

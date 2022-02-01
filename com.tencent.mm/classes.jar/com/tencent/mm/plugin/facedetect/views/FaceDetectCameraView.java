@@ -23,43 +23,43 @@ import com.tencent.mm.plugin.facedetect.model.f;
 import com.tencent.mm.plugin.facedetect.model.g;
 import com.tencent.mm.plugin.facedetect.model.n;
 import com.tencent.mm.plugin.facedetect.service.FaceDetectProcessService;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.base.MMTextureView;
 import java.lang.ref.WeakReference;
-import java.util.List;
 
 public class FaceDetectCameraView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private static a rvx = null;
-  private ActivityManager aJm;
+  private static a sVu = null;
+  private ActivityManager aJf;
   private int height;
-  private boolean kKW;
+  private boolean lPD;
   private SurfaceTexture mSurfaceTexture;
-  private boolean nUW;
-  private long rpm;
-  private boolean rvA;
-  private long rvB;
-  b rvj;
-  private long rvk;
-  private long rvl;
-  private int rvm;
-  private boolean rvn;
-  private boolean rvo;
-  private final Object rvp;
-  private boolean rvq;
-  private boolean rvr;
-  private final Object rvs;
-  private final Object rvt;
-  private Rect rvu;
-  private c rvv;
-  private boolean rvw;
-  public b rvy;
-  private byte[] rvz;
+  private boolean pfT;
+  private long sQK;
+  b sVg;
+  private long sVh;
+  private long sVi;
+  private int sVj;
+  private boolean sVk;
+  private boolean sVl;
+  private final Object sVm;
+  private boolean sVn;
+  private boolean sVo;
+  private final Object sVp;
+  private final Object sVq;
+  private Rect sVr;
+  private c sVs;
+  private boolean sVt;
+  public b sVv;
+  private byte[] sVw;
+  private boolean sVx;
+  private long sVy;
   private int width;
   
   public FaceDetectCameraView(Context paramContext, AttributeSet paramAttributeSet)
@@ -71,101 +71,101 @@ public class FaceDetectCameraView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104113);
-    this.rvj = null;
+    this.sVg = null;
     this.mSurfaceTexture = null;
-    this.rvk = FaceDetectView.rwi;
-    this.rvl = -1L;
-    this.rpm = -1L;
-    this.rvm = 1;
-    this.kKW = false;
-    this.rvn = false;
-    this.rvo = false;
-    this.rvp = new Object();
-    this.rvq = false;
-    this.rvr = false;
-    this.nUW = false;
-    this.rvs = new Object();
-    this.rvt = new Object();
-    this.rvu = null;
+    this.sVh = FaceDetectView.sWf;
+    this.sVi = -1L;
+    this.sQK = -1L;
+    this.sVj = 1;
+    this.lPD = false;
+    this.sVk = false;
+    this.sVl = false;
+    this.sVm = new Object();
+    this.sVn = false;
+    this.sVo = false;
+    this.pfT = false;
+    this.sVp = new Object();
+    this.sVq = new Object();
+    this.sVr = null;
     this.width = 324;
     this.height = 576;
-    this.rvv = null;
-    this.rvw = false;
-    this.rvy = null;
-    this.rvz = null;
-    this.rvA = false;
-    this.rvB = -1L;
-    this.aJm = ((ActivityManager)getContext().getSystemService("activity"));
-    ae.i("MicroMsg.FaceDetectCameraView", "hy: face vedio debug: %b", new Object[] { Boolean.valueOf(this.rvw) });
-    this.rvy = new c((byte)0);
-    rvx = new a(this, (byte)0);
+    this.sVs = null;
+    this.sVt = false;
+    this.sVv = null;
+    this.sVw = null;
+    this.sVx = false;
+    this.sVy = -1L;
+    this.aJf = ((ActivityManager)getContext().getSystemService("activity"));
+    Log.i("MicroMsg.FaceDetectCameraView", "hy: face vedio debug: %b", new Object[] { Boolean.valueOf(this.sVt) });
+    this.sVv = new c((byte)0);
+    sVu = new a(this, (byte)0);
     setOpaque(false);
     setSurfaceTextureListener(this);
     AppMethodBeat.o(104113);
   }
   
-  private static void cvA()
+  private static void cTJ()
   {
     AppMethodBeat.i(104117);
-    ae.i("MicroMsg.FaceDetectCameraView", "hy: request clear queue");
-    f.cuy();
+    Log.i("MicroMsg.FaceDetectCameraView", "hy: request clear queue");
+    f.cSU();
     AppMethodBeat.o(104117);
   }
   
   /* Error */
-  private void cvD()
+  private void cTM()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 421
+    //   2: ldc_w 422
     //   5: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc 166
-    //   10: ldc_w 423
-    //   13: invokestatic 416	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   16: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:rpo	Lcom/tencent/mm/plugin/facedetect/model/f;
-    //   19: invokevirtual 426	com/tencent/mm/plugin/facedetect/model/f:cuB	()I
+    //   10: ldc_w 424
+    //   13: invokestatic 417	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:sQM	Lcom/tencent/mm/plugin/facedetect/model/f;
+    //   19: invokevirtual 427	com/tencent/mm/plugin/facedetect/model/f:cSY	()I
     //   22: pop
-    //   23: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:rpo	Lcom/tencent/mm/plugin/facedetect/model/f;
-    //   26: getfield 284	com/tencent/mm/plugin/facedetect/model/f:rpp	Lcom/tencent/mm/plugin/facedetect/service/FaceDetectProcessService;
-    //   29: getfield 290	com/tencent/mm/plugin/facedetect/service/FaceDetectProcessService:rrr	Lcom/tencent/mm/plugin/facedetect/model/g;
+    //   23: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:sQM	Lcom/tencent/mm/plugin/facedetect/model/f;
+    //   26: getfield 284	com/tencent/mm/plugin/facedetect/model/f:sQN	Lcom/tencent/mm/plugin/facedetect/service/FaceDetectProcessService;
+    //   29: getfield 290	com/tencent/mm/plugin/facedetect/service/FaceDetectProcessService:sSO	Lcom/tencent/mm/plugin/facedetect/model/g;
     //   32: astore 4
     //   34: aload 4
-    //   36: getfield 303	com/tencent/mm/plugin/facedetect/model/g:rps	Lcom/tencent/mm/plugin/facedetect/FaceProNative;
+    //   36: getfield 303	com/tencent/mm/plugin/facedetect/model/g:sQQ	Lcom/tencent/mm/plugin/facedetect/FaceProNative;
     //   39: ifnonnull +59 -> 98
     //   42: ldc_w 292
-    //   45: ldc_w 428
-    //   48: invokestatic 308	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   51: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:rpo	Lcom/tencent/mm/plugin/facedetect/model/f;
-    //   54: invokevirtual 431	com/tencent/mm/plugin/facedetect/model/f:cuC	()I
+    //   45: ldc_w 429
+    //   48: invokestatic 308	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   51: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:sQM	Lcom/tencent/mm/plugin/facedetect/model/f;
+    //   54: invokevirtual 432	com/tencent/mm/plugin/facedetect/model/f:cSZ	()I
     //   57: istore_1
-    //   58: invokestatic 436	java/lang/System:currentTimeMillis	()J
+    //   58: invokestatic 437	java/lang/System:currentTimeMillis	()J
     //   61: lstore_2
     //   62: ldc 166
-    //   64: ldc_w 438
+    //   64: ldc_w 439
     //   67: iconst_1
     //   68: anewarray 116	java/lang/Object
     //   71: dup
     //   72: iconst_0
     //   73: lload_2
-    //   74: invokestatic 375	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   74: invokestatic 376	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   77: aastore
-    //   78: invokestatic 179	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   81: invokestatic 360	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:cuI	()Lcom/tencent/mm/plugin/facedetect/model/FaceDetectReporter;
+    //   78: invokestatic 179	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   81: invokestatic 360	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:cTe	()Lcom/tencent/mm/plugin/facedetect/model/FaceDetectReporter;
     //   84: iload_1
     //   85: lload_2
-    //   86: invokevirtual 441	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:aa	(IJ)V
-    //   89: ldc_w 421
+    //   86: invokevirtual 442	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:ad	(IJ)V
+    //   89: ldc_w 422
     //   92: invokestatic 194	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: aload_0
     //   96: monitorexit
     //   97: return
     //   98: ldc_w 292
-    //   101: ldc_w 443
-    //   104: invokestatic 416	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: ldc_w 444
+    //   104: invokestatic 417	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   107: aload 4
-    //   109: getfield 303	com/tencent/mm/plugin/facedetect/model/g:rps	Lcom/tencent/mm/plugin/facedetect/FaceProNative;
-    //   112: invokevirtual 446	com/tencent/mm/plugin/facedetect/FaceProNative:engineGetCurrMotion	()I
+    //   109: getfield 303	com/tencent/mm/plugin/facedetect/model/g:sQQ	Lcom/tencent/mm/plugin/facedetect/FaceProNative;
+    //   112: invokevirtual 447	com/tencent/mm/plugin/facedetect/FaceProNative:engineGetCurrMotion	()I
     //   115: pop
     //   116: goto -65 -> 51
     //   119: astore 4
@@ -192,10 +192,10 @@ public class FaceDetectCameraView
     try
     {
       AppMethodBeat.i(104116);
-      cvA();
-      this.rvu = paramRect;
-      cvD();
-      this.rvy.vC(paramLong);
+      cTJ();
+      this.sVr = paramRect;
+      cTM();
+      this.sVv.DG(paramLong);
       AppMethodBeat.o(104116);
       return;
     }
@@ -209,56 +209,56 @@ public class FaceDetectCameraView
   public final void a(c paramc)
   {
     AppMethodBeat.i(104115);
-    this.rvy.a(paramc);
-    this.rpm = -1L;
+    this.sVv.a(paramc);
+    this.sQK = -1L;
     AppMethodBeat.o(104115);
   }
   
-  public final void cvB()
+  public final void cTK()
   {
     AppMethodBeat.i(104119);
-    cvC();
-    f.rpo.rpp.rrr.cuG();
+    cTL();
+    f.sQM.sQN.sSO.cTc();
     AppMethodBeat.o(104119);
   }
   
-  public final void cvC()
+  public final void cTL()
   {
     AppMethodBeat.i(104120);
-    this.nUW = false;
-    this.rvy.cvr();
-    cvA();
-    int i = f.rpo.cuC();
+    this.pfT = false;
+    this.sVv.cTP();
+    cTJ();
+    int i = f.sQM.cSZ();
     long l = System.currentTimeMillis();
-    ae.i("MicroMsg.FaceDetectCameraView", "alvinluo pause motion time: %d", new Object[] { Long.valueOf(l) });
-    FaceDetectReporter.cuI().ab(i, l);
+    Log.i("MicroMsg.FaceDetectCameraView", "alvinluo pause motion time: %d", new Object[] { Long.valueOf(l) });
+    FaceDetectReporter.cTe().ae(i, l);
     AppMethodBeat.o(104120);
   }
   
   /* Error */
-  final com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult cvE()
+  final com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult cTN()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 502
+    //   2: ldc_w 504
     //   5: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 419	com/tencent/mm/plugin/facedetect/model/f:cuy	()V
-    //   11: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:rpo	Lcom/tencent/mm/plugin/facedetect/model/f;
-    //   14: invokevirtual 426	com/tencent/mm/plugin/facedetect/model/f:cuB	()I
+    //   8: invokestatic 420	com/tencent/mm/plugin/facedetect/model/f:cSU	()V
+    //   11: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:sQM	Lcom/tencent/mm/plugin/facedetect/model/f;
+    //   14: invokevirtual 427	com/tencent/mm/plugin/facedetect/model/f:cSY	()I
     //   17: istore_2
-    //   18: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:rpo	Lcom/tencent/mm/plugin/facedetect/model/f;
-    //   21: getfield 284	com/tencent/mm/plugin/facedetect/model/f:rpp	Lcom/tencent/mm/plugin/facedetect/service/FaceDetectProcessService;
-    //   24: getfield 290	com/tencent/mm/plugin/facedetect/service/FaceDetectProcessService:rrr	Lcom/tencent/mm/plugin/facedetect/model/g;
-    //   27: invokevirtual 505	com/tencent/mm/plugin/facedetect/model/g:cuF	()Lcom/tencent/mm/plugin/facedetect/FaceProNative$FaceResult;
+    //   18: getstatic 270	com/tencent/mm/plugin/facedetect/model/f:sQM	Lcom/tencent/mm/plugin/facedetect/model/f;
+    //   21: getfield 284	com/tencent/mm/plugin/facedetect/model/f:sQN	Lcom/tencent/mm/plugin/facedetect/service/FaceDetectProcessService;
+    //   24: getfield 290	com/tencent/mm/plugin/facedetect/service/FaceDetectProcessService:sSO	Lcom/tencent/mm/plugin/facedetect/model/g;
+    //   27: invokevirtual 507	com/tencent/mm/plugin/facedetect/model/g:cTb	()Lcom/tencent/mm/plugin/facedetect/FaceProNative$FaceResult;
     //   30: astore_3
     //   31: aload_3
     //   32: ifnull +44 -> 76
     //   35: aload_3
-    //   36: getfield 508	com/tencent/mm/plugin/facedetect/FaceProNative$FaceResult:result	I
+    //   36: getfield 510	com/tencent/mm/plugin/facedetect/FaceProNative$FaceResult:result	I
     //   39: istore_1
     //   40: ldc 166
-    //   42: ldc_w 510
+    //   42: ldc_w 512
     //   45: iconst_2
     //   46: anewarray 116	java/lang/Object
     //   49: dup
@@ -271,8 +271,8 @@ public class FaceDetectCameraView
     //   58: iload_1
     //   59: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   62: aastore
-    //   63: invokestatic 179	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   66: ldc_w 502
+    //   63: invokestatic 179	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   66: ldc_w 504
     //   69: invokestatic 194	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: aload_0
     //   73: monitorexit
@@ -303,7 +303,7 @@ public class FaceDetectCameraView
   public final int getCameraRotation()
   {
     AppMethodBeat.i(104128);
-    int i = this.rvy.getRotation();
+    int i = this.sVv.getRotation();
     AppMethodBeat.o(104128);
     return i;
   }
@@ -311,7 +311,7 @@ public class FaceDetectCameraView
   public final Point getEncodeVideoBestSize()
   {
     AppMethodBeat.i(104114);
-    Point localPoint = this.rvy.cvG();
+    Point localPoint = this.sVv.cTQ();
     AppMethodBeat.o(104114);
     return localPoint;
   }
@@ -327,7 +327,7 @@ public class FaceDetectCameraView
   public final int getPreviewHeight()
   {
     AppMethodBeat.i(104130);
-    int i = this.rvy.getPreviewHeight();
+    int i = this.sVv.getPreviewHeight();
     AppMethodBeat.o(104130);
     return i;
   }
@@ -335,7 +335,7 @@ public class FaceDetectCameraView
   public final int getPreviewWidth()
   {
     AppMethodBeat.i(104129);
-    int i = this.rvy.getPreviewWidth();
+    int i = this.sVv.getPreviewWidth();
     AppMethodBeat.o(104129);
     return i;
   }
@@ -344,7 +344,7 @@ public class FaceDetectCameraView
   {
     AppMethodBeat.i(104124);
     super.onAttachedToWindow();
-    ae.i("MicroMsg.FaceDetectCameraView", "hy: attached");
+    Log.i("MicroMsg.FaceDetectCameraView", "hy: attached");
     AppMethodBeat.o(104124);
   }
   
@@ -354,19 +354,19 @@ public class FaceDetectCameraView
     super.onMeasure(paramInt1, paramInt2);
     this.width = getMeasuredWidth();
     this.height = getMeasuredHeight();
-    ae.i("MicroMsg.FaceDetectCameraView", "hy: camera view on measure to %d, %d", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) });
+    Log.i("MicroMsg.FaceDetectCameraView", "hy: camera view on measure to %d, %d", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) });
     AppMethodBeat.o(104127);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(104118);
-    ae.i("MicroMsg.FaceDetectCameraView", "hy: onSurfaceTextureAvailable");
-    fDh();
-    this.kKW = true;
+    Log.i("MicroMsg.FaceDetectCameraView", "hy: onSurfaceTextureAvailable");
+    gLi();
+    this.lPD = true;
     this.mSurfaceTexture = paramSurfaceTexture;
-    if (this.rvr) {
-      a(this.rvv);
+    if (this.sVo) {
+      a(this.sVs);
     }
     AppMethodBeat.o(104118);
   }
@@ -374,8 +374,8 @@ public class FaceDetectCameraView
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(104123);
-    ae.i("MicroMsg.FaceDetectCameraView", "hy: onSurfaceTextureDestroyed");
-    this.kKW = false;
+    Log.i("MicroMsg.FaceDetectCameraView", "hy: onSurfaceTextureDestroyed");
+    this.lPD = false;
     AppMethodBeat.o(104123);
     return false;
   }
@@ -383,7 +383,7 @@ public class FaceDetectCameraView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(104122);
-    ae.i("MicroMsg.FaceDetectCameraView", "hy: onSurfaceTextureSizeChanged");
+    Log.i("MicroMsg.FaceDetectCameraView", "hy: onSurfaceTextureSizeChanged");
     this.mSurfaceTexture = paramSurfaceTexture;
     AppMethodBeat.o(104122);
   }
@@ -392,19 +392,19 @@ public class FaceDetectCameraView
   
   final void setCallback(b paramb)
   {
-    this.rvj = paramb;
+    this.sVg = paramb;
   }
   
   static final class a
-    extends aq
+    extends MMHandler
   {
-    private WeakReference<FaceDetectCameraView> QQ;
+    private WeakReference<FaceDetectCameraView> Rd;
     
     private a(FaceDetectCameraView paramFaceDetectCameraView)
     {
       super();
       AppMethodBeat.i(104093);
-      this.QQ = new WeakReference(paramFaceDetectCameraView);
+      this.Rd = new WeakReference(paramFaceDetectCameraView);
       AppMethodBeat.o(104093);
     }
     
@@ -412,33 +412,33 @@ public class FaceDetectCameraView
     {
       AppMethodBeat.i(104094);
       super.handleMessage(paramMessage);
-      if ((this.QQ == null) || (this.QQ.get() == null))
+      if ((this.Rd == null) || (this.Rd.get() == null))
       {
-        ae.e("MicroMsg.FaceDetectCameraView", "hy: no referenced view. exit");
+        Log.e("MicroMsg.FaceDetectCameraView", "hy: no referenced view. exit");
         AppMethodBeat.o(104094);
         return;
       }
       if (paramMessage.what == 1)
       {
         paramMessage = (FaceCharacteristicsResult)paramMessage.obj;
-        if (FaceCharacteristicsResult.DW(paramMessage.errCode))
+        if (FaceCharacteristicsResult.HI(paramMessage.errCode))
         {
-          if (FaceDetectCameraView.a((FaceDetectCameraView)this.QQ.get()) != null)
+          if (FaceDetectCameraView.a((FaceDetectCameraView)this.Rd.get()) != null)
           {
-            FaceDetectCameraView.a((FaceDetectCameraView)this.QQ.get()).d(paramMessage);
+            FaceDetectCameraView.a((FaceDetectCameraView)this.Rd.get()).d(paramMessage);
             AppMethodBeat.o(104094);
           }
         }
-        else if (FaceCharacteristicsResult.DV(paramMessage.errCode))
+        else if (FaceCharacteristicsResult.HH(paramMessage.errCode))
         {
-          if (FaceDetectCameraView.a((FaceDetectCameraView)this.QQ.get()) != null)
+          if (FaceDetectCameraView.a((FaceDetectCameraView)this.Rd.get()) != null)
           {
-            FaceDetectCameraView.a((FaceDetectCameraView)this.QQ.get()).a(paramMessage.errCode, paramMessage.errMsg);
+            FaceDetectCameraView.a((FaceDetectCameraView)this.Rd.get()).a(paramMessage.errCode, paramMessage.errMsg);
             AppMethodBeat.o(104094);
           }
         }
-        else if (FaceDetectCameraView.a((FaceDetectCameraView)this.QQ.get()) != null) {
-          FaceDetectCameraView.a((FaceDetectCameraView)this.QQ.get()).c(paramMessage);
+        else if (FaceDetectCameraView.a((FaceDetectCameraView)this.Rd.get()) != null) {
+          FaceDetectCameraView.a((FaceDetectCameraView)this.Rd.get()).c(paramMessage);
         }
       }
       AppMethodBeat.o(104094);
@@ -447,13 +447,15 @@ public class FaceDetectCameraView
   
   public static abstract interface b
   {
+    public abstract void DG(long paramLong);
+    
     public abstract void a(c paramc);
     
-    public abstract void cvF();
+    public abstract void cTO();
     
-    public abstract Point cvG();
+    public abstract void cTP();
     
-    public abstract void cvr();
+    public abstract Point cTQ();
     
     public abstract int getPreviewHeight();
     
@@ -462,40 +464,38 @@ public class FaceDetectCameraView
     public abstract int getRotation();
     
     public abstract void stopPreview();
-    
-    public abstract void vC(long paramLong);
   }
   
   final class c
     implements FaceDetectCameraView.b
   {
-    n rvG;
-    Camera.PreviewCallback rvH;
-    private d.b rvI;
+    n sVD;
+    Camera.PreviewCallback sVE;
+    private d.b sVF;
     
     private c()
     {
       AppMethodBeat.i(104103);
-      this.rvG = null;
-      this.rvH = new Camera.PreviewCallback()
+      this.sVD = null;
+      this.sVE = new Camera.PreviewCallback()
       {
         public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera)
         {
           AppMethodBeat.i(104100);
-          ae.v("MicroMsg.FaceDetectCameraView", "hy: on preview callback");
-          d.cup().bk(paramAnonymousArrayOfByte);
+          Log.v("MicroMsg.FaceDetectCameraView", "hy: on preview callback");
+          d.cSR().bB(paramAnonymousArrayOfByte);
           AppMethodBeat.o(104100);
         }
       };
-      this.rvI = new d.b()
+      this.sVF = new d.b()
       {
-        public final void bl(byte[] paramAnonymousArrayOfByte)
+        public final void bC(byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(104102);
           if (!FaceDetectCameraView.n(FaceDetectCameraView.this))
           {
             if (FaceDetectCameraView.o(FaceDetectCameraView.this) == null) {
-              FaceDetectCameraView.a(FaceDetectCameraView.this, com.tencent.mm.plugin.facedetect.model.c.rpd.h(Integer.valueOf(paramAnonymousArrayOfByte.length)));
+              FaceDetectCameraView.a(FaceDetectCameraView.this, com.tencent.mm.plugin.facedetect.model.c.sQB.h(Integer.valueOf(paramAnonymousArrayOfByte.length)));
             }
             if ((FaceDetectCameraView.o(FaceDetectCameraView.this) == null) || (FaceDetectCameraView.o(FaceDetectCameraView.this).length < paramAnonymousArrayOfByte.length))
             {
@@ -505,17 +505,17 @@ public class FaceDetectCameraView
             System.arraycopy(paramAnonymousArrayOfByte, 0, FaceDetectCameraView.o(FaceDetectCameraView.this), 0, paramAnonymousArrayOfByte.length);
             FaceDetectCameraView.a(FaceDetectCameraView.this, paramAnonymousArrayOfByte);
           }
-          com.tencent.mm.plugin.facedetect.model.c.rpd.k(paramAnonymousArrayOfByte);
-          f.cuz().post(new Runnable()
+          com.tencent.mm.plugin.facedetect.model.c.sQB.k(paramAnonymousArrayOfByte);
+          f.cSV().post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(104101);
-              ae.v("MicroMsg.FaceDetectCameraView", "hy: on get preview");
-              long l1 = bu.HQ();
+              Log.v("MicroMsg.FaceDetectCameraView", "hy: on get preview");
+              long l1 = Util.currentTicks();
               long l2 = l1 - FaceDetectCameraView.p(FaceDetectCameraView.this);
               if (FaceDetectCameraView.p(FaceDetectCameraView.this) >= 0L) {
-                ae.v("MicroMsg.FaceDetectCameraView", "hy: tweenMillis: %d", new Object[] { Long.valueOf(l2) });
+                Log.v("MicroMsg.FaceDetectCameraView", "hy: tweenMillis: %d", new Object[] { Long.valueOf(l2) });
               }
               if ((FaceDetectCameraView.p(FaceDetectCameraView.this) < 0L) || (l2 > FaceDetectCameraView.c(FaceDetectCameraView.this)))
               {
@@ -528,15 +528,49 @@ public class FaceDetectCameraView
           AppMethodBeat.o(104102);
         }
         
-        public final a<byte[]> cuq()
+        public final a<byte[]> cSS()
         {
-          return com.tencent.mm.plugin.facedetect.model.c.rpd;
+          return com.tencent.mm.plugin.facedetect.model.c.sQB;
         }
       };
-      this.rvG = new n(FaceDetectCameraView.this.getContext());
+      this.sVD = new n(FaceDetectCameraView.this.getContext());
       FaceDetectCameraView.a(FaceDetectCameraView.this, -1L);
       FaceDetectCameraView.d(FaceDetectCameraView.this);
       AppMethodBeat.o(104103);
+    }
+    
+    public final void DG(long paramLong)
+    {
+      AppMethodBeat.i(104110);
+      for (;;)
+      {
+        synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
+        {
+          if (this.sVD == null)
+          {
+            Log.w("MicroMsg.FaceDetectCameraView", "hy: camera is null. return");
+            AppMethodBeat.o(104110);
+            return;
+          }
+          Log.i("MicroMsg.FaceDetectCameraView", "hy: start capturing. tween: %d", new Object[] { Long.valueOf(paramLong) });
+          FaceDetectCameraView.b(FaceDetectCameraView.this, paramLong);
+          if (!FaceDetectCameraView.q(FaceDetectCameraView.this))
+          {
+            if ((this.sVD != null) && (this.sVD.sRE))
+            {
+              Log.i("MicroMsg.FaceDetectCameraView", "hy: is previewing. directly start capture");
+              FaceDetectCameraView.a(FaceDetectCameraView.this, false);
+              d.cSR().a(this.sVF);
+              FaceDetectCameraView.r(FaceDetectCameraView.this);
+              AppMethodBeat.o(104110);
+              return;
+            }
+            Log.i("MicroMsg.FaceDetectCameraView", "hy: not previewed yet. wait");
+            FaceDetectCameraView.a(FaceDetectCameraView.this, true);
+          }
+        }
+        Log.w("MicroMsg.FaceDetectCameraView", "hy: already scanning");
+      }
     }
     
     public final void a(c arg1)
@@ -545,15 +579,15 @@ public class FaceDetectCameraView
       FaceDetectCameraView.a(FaceDetectCameraView.this, ???);
       synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
       {
-        if (this.rvG == null)
+        if (this.sVD == null)
         {
-          ae.w("MicroMsg.FaceDetectCameraView", "hy: camera is null. return");
+          Log.w("MicroMsg.FaceDetectCameraView", "hy: camera is null. return");
           AppMethodBeat.o(104104);
           return;
         }
-        if (this.rvG.rqh)
+        if (this.sVD.sRE)
         {
-          ae.w("MicroMsg.FaceDetectCameraView", "hy: already previewed. return");
+          Log.w("MicroMsg.FaceDetectCameraView", "hy: already previewed. return");
           FaceDetectCameraView.f(FaceDetectCameraView.this);
           AppMethodBeat.o(104104);
           return;
@@ -564,17 +598,17 @@ public class FaceDetectCameraView
         }
         if (FaceDetectCameraView.this.isAvailable())
         {
-          ae.i("MicroMsg.FaceDetectCameraView", "hy: already available. manually call available");
+          Log.i("MicroMsg.FaceDetectCameraView", "hy: already available. manually call available");
           FaceDetectCameraView.this.onSurfaceTextureAvailable(FaceDetectCameraView.this.getSurfaceTexture(), FaceDetectCameraView.this.getWidth(), FaceDetectCameraView.this.getHeight());
           AppMethodBeat.o(104104);
           return;
         }
       }
-      ae.w("MicroMsg.FaceDetectCameraView", "hy: not initialized yet. do after init");
+      Log.w("MicroMsg.FaceDetectCameraView", "hy: not initialized yet. do after init");
       AppMethodBeat.o(104104);
       return;
       label172:
-      com.tencent.mm.sdk.g.b.c(new Runnable()
+      ThreadPool.post(new Runnable()
       {
         public final void run()
         {
@@ -582,18 +616,18 @@ public class FaceDetectCameraView
           AppMethodBeat.i(104098);
           synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
           {
-            ae.i("MicroMsg.FaceDetectCameraView", "hy: enter worker thread. using %d ms", new Object[] { Long.valueOf(bu.aO(this.rvJ)) });
-            long l1 = bu.HQ();
-            if (FaceDetectCameraView.c.this.rvG == null)
+            Log.i("MicroMsg.FaceDetectCameraView", "hy: enter worker thread. using %d ms", new Object[] { Long.valueOf(Util.ticksToNow(this.sVG)) });
+            long l1 = Util.currentTicks();
+            if (FaceDetectCameraView.c.this.sVD == null)
             {
-              ae.e("MicroMsg.FaceDetectCameraView", "hy: already released");
+              Log.e("MicroMsg.FaceDetectCameraView", "hy: already released");
               if (FaceDetectCameraView.i(FaceDetectCameraView.this) != null) {
-                ar.f(new Runnable()
+                MMHandlerThread.postToMainThread(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(104095);
-                    FaceDetectCameraView.i(FaceDetectCameraView.this).Eg(1);
+                    FaceDetectCameraView.i(FaceDetectCameraView.this).HR(1);
                     AppMethodBeat.o(104095);
                   }
                 });
@@ -603,44 +637,44 @@ public class FaceDetectCameraView
             }
             try
             {
-              FaceDetectCameraView.c.this.rvG.nQL = new Point(FaceDetectCameraView.j(FaceDetectCameraView.this), FaceDetectCameraView.k(FaceDetectCameraView.this));
-              Object localObject2 = FaceDetectCameraView.c.this.rvG;
-              if ((((n)localObject2).gaZ != null) && (((n)localObject2).iCY)) {}
+              FaceDetectCameraView.c.this.sVD.pbD = new Point(FaceDetectCameraView.j(FaceDetectCameraView.this), FaceDetectCameraView.k(FaceDetectCameraView.this));
+              Object localObject2 = FaceDetectCameraView.c.this.sVD;
+              if ((((n)localObject2).gGr != null) && (((n)localObject2).jyo)) {}
               for (;;)
               {
                 if (i == 0) {
-                  FaceDetectCameraView.c.this.rvG.i(FaceDetectCameraView.l(FaceDetectCameraView.this));
+                  FaceDetectCameraView.c.this.sVD.i(FaceDetectCameraView.l(FaceDetectCameraView.this));
                 }
-                localObject2 = FaceDetectCameraView.c.this.rvG.rqi;
+                localObject2 = FaceDetectCameraView.c.this.sVD.sRF;
                 FaceDetectCameraView.a(FaceDetectCameraView.this, (Point)localObject2);
-                localObject2 = FaceDetectCameraView.c.this.rvG;
+                localObject2 = FaceDetectCameraView.c.this.sVD;
                 SurfaceTexture localSurfaceTexture = FaceDetectCameraView.l(FaceDetectCameraView.this);
-                long l2 = bu.HQ();
-                if ((((n)localObject2).gaZ != null) && (!((n)localObject2).rqh))
+                long l2 = Util.currentTicks();
+                if ((((n)localObject2).gGr != null) && (!((n)localObject2).sRE))
                 {
                   if (localSurfaceTexture != null)
                   {
-                    ae.i("MicroMsg.FaceScanCamera", "hy: SurfaceTexture is not null");
-                    ((n)localObject2).gaZ.setPreviewTexture(localSurfaceTexture);
+                    Log.i("MicroMsg.FaceScanCamera", "hy: SurfaceTexture is not null");
+                    ((n)localObject2).gGr.setPreviewTexture(localSurfaceTexture);
                   }
-                  com.tencent.mm.plugin.facedetect.model.c.da(((n)localObject2).getPreviewWidth(), ((n)localObject2).getPreviewHeight());
-                  ((n)localObject2).gaZ.startPreview();
-                  ((n)localObject2).rqh = true;
-                  ae.d("MicroMsg.FaceScanCamera", "startPreview done costTime=[%s]", new Object[] { Long.valueOf(bu.aO(l2)) });
+                  com.tencent.mm.plugin.facedetect.model.c.dj(((n)localObject2).getPreviewWidth(), ((n)localObject2).getPreviewHeight());
+                  ((n)localObject2).gGr.startPreview();
+                  ((n)localObject2).sRE = true;
+                  Log.d("MicroMsg.FaceScanCamera", "startPreview done costTime=[%s]", new Object[] { Long.valueOf(Util.ticksToNow(l2)) });
                 }
-                FaceDetectCameraView.c.this.rvG.setPreviewCallback(FaceDetectCameraView.c.this.rvH);
+                FaceDetectCameraView.c.this.sVD.setPreviewCallback(FaceDetectCameraView.c.this.sVE);
                 if (FaceDetectCameraView.i(FaceDetectCameraView.this) != null) {
-                  ar.f(new Runnable()
+                  MMHandlerThread.postToMainThread(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(104096);
-                      FaceDetectCameraView.i(FaceDetectCameraView.this).Eg(0);
+                      FaceDetectCameraView.i(FaceDetectCameraView.this).HR(0);
                       AppMethodBeat.o(104096);
                     }
                   });
                 }
-                ae.i("MicroMsg.FaceDetectCameraView", "hy: opened and start preview. use: %d ms", new Object[] { Long.valueOf(bu.aO(l1)) });
+                Log.i("MicroMsg.FaceDetectCameraView", "hy: opened and start preview. use: %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l1)) });
                 FaceDetectCameraView.f(FaceDetectCameraView.this);
                 AppMethodBeat.o(104098);
                 return;
@@ -650,14 +684,14 @@ public class FaceDetectCameraView
             }
             catch (Exception localException)
             {
-              ae.printErrStackTrace("MicroMsg.FaceDetectCameraView", localException, "hy: exception caused", new Object[0]);
+              Log.printErrStackTrace("MicroMsg.FaceDetectCameraView", localException, "hy: exception caused", new Object[0]);
               if (FaceDetectCameraView.i(FaceDetectCameraView.this) != null) {
-                ar.f(new Runnable()
+                MMHandlerThread.postToMainThread(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(104097);
-                    FaceDetectCameraView.i(FaceDetectCameraView.this).Eg(2);
+                    FaceDetectCameraView.i(FaceDetectCameraView.this).HR(2);
                     AppMethodBeat.o(104097);
                   }
                 });
@@ -671,42 +705,36 @@ public class FaceDetectCameraView
       AppMethodBeat.o(104104);
     }
     
-    public final void cvF()
+    public final void cTO()
     {
       AppMethodBeat.i(104106);
       if (!FaceDetectCameraView.m(FaceDetectCameraView.this))
       {
         FaceDetectCameraView.b(FaceDetectCameraView.this, true);
-        com.tencent.mm.sdk.g.b.c(new Runnable()
+        ThreadPool.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(104099);
             synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
             {
-              if (FaceDetectCameraView.c.this.rvG == null)
+              if (FaceDetectCameraView.c.this.sVD == null)
               {
                 AppMethodBeat.o(104099);
                 return;
               }
-              ae.d("MicroMsg.FaceDetectCameraView", "hy: closeCamera");
-              FaceDetectCameraView.c.this.rvG.setPreviewCallback(null);
-              d locald = d.cup();
-              synchronized (d.mLock)
-              {
-                if (locald.rpf != null) {
-                  locald.rpf.clear();
-                }
-                if (FaceDetectCameraView.l(FaceDetectCameraView.this) != null) {
-                  FaceDetectCameraView.l(FaceDetectCameraView.this).release();
-                }
-                FaceDetectCameraView.c.this.rvG.release();
-                FaceDetectCameraView.c.this.rvG = null;
-                ae.d("MicroMsg.FaceDetectCameraView", "hy: scanCamera.release() done");
-                FaceDetectCameraView.b(FaceDetectCameraView.this, false);
-                AppMethodBeat.o(104099);
-                return;
+              Log.d("MicroMsg.FaceDetectCameraView", "hy: closeCamera");
+              FaceDetectCameraView.c.this.sVD.setPreviewCallback(null);
+              d.cSR().clear();
+              if (FaceDetectCameraView.l(FaceDetectCameraView.this) != null) {
+                FaceDetectCameraView.l(FaceDetectCameraView.this).release();
               }
+              FaceDetectCameraView.c.this.sVD.release();
+              FaceDetectCameraView.c.this.sVD = null;
+              Log.d("MicroMsg.FaceDetectCameraView", "hy: scanCamera.release() done");
+              FaceDetectCameraView.b(FaceDetectCameraView.this, false);
+              AppMethodBeat.o(104099);
+              return;
             }
           }
         }, "FaceDetectCameraView_Camera");
@@ -714,25 +742,14 @@ public class FaceDetectCameraView
       AppMethodBeat.o(104106);
     }
     
-    public final Point cvG()
-    {
-      AppMethodBeat.i(104112);
-      synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
-      {
-        Point localPoint = this.rvG.rqn;
-        AppMethodBeat.o(104112);
-        return localPoint;
-      }
-    }
-    
-    public final void cvr()
+    public final void cTP()
     {
       AppMethodBeat.i(104111);
       synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
       {
-        if ((this.rvG != null) && (this.rvG.rqh))
+        if ((this.sVD != null) && (this.sVD.sRE))
         {
-          d.cup().b(this.rvI);
+          d.cSR().b(this.sVF);
           if (!FaceDetectCameraView.n(FaceDetectCameraView.this)) {
             FaceDetectCameraView.a(FaceDetectCameraView.this, null);
           }
@@ -742,12 +759,23 @@ public class FaceDetectCameraView
       }
     }
     
+    public final Point cTQ()
+    {
+      AppMethodBeat.i(104112);
+      synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
+      {
+        Point localPoint = this.sVD.sRK;
+        AppMethodBeat.o(104112);
+        return localPoint;
+      }
+    }
+    
     public final int getPreviewHeight()
     {
       AppMethodBeat.i(104108);
       synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
       {
-        int i = this.rvG.getPreviewHeight();
+        int i = this.sVD.getPreviewHeight();
         AppMethodBeat.o(104108);
         return i;
       }
@@ -758,7 +786,7 @@ public class FaceDetectCameraView
       AppMethodBeat.i(104107);
       synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
       {
-        int i = this.rvG.getPreviewWidth();
+        int i = this.sVD.getPreviewWidth();
         AppMethodBeat.o(104107);
         return i;
       }
@@ -769,7 +797,7 @@ public class FaceDetectCameraView
       AppMethodBeat.i(104109);
       synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
       {
-        int i = this.rvG.rql;
+        int i = this.sVD.sRI;
         AppMethodBeat.o(104109);
         return i;
       }
@@ -780,59 +808,25 @@ public class FaceDetectCameraView
       AppMethodBeat.i(104105);
       synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
       {
-        if ((this.rvG != null) && (this.rvG.rqh))
+        if ((this.sVD != null) && (this.sVD.sRE))
         {
-          n localn = this.rvG;
-          if (localn.gaZ != null)
+          n localn = this.sVD;
+          if (localn.gGr != null)
           {
-            localn.gaZ.stopPreview();
-            localn.rqh = false;
-            com.tencent.mm.plugin.facedetect.model.c.rpd.ayL();
+            localn.gGr.stopPreview();
+            localn.sRE = false;
+            com.tencent.mm.plugin.facedetect.model.c.sQB.aRR();
           }
         }
         AppMethodBeat.o(104105);
         return;
       }
     }
-    
-    public final void vC(long paramLong)
-    {
-      AppMethodBeat.i(104110);
-      for (;;)
-      {
-        synchronized (FaceDetectCameraView.e(FaceDetectCameraView.this))
-        {
-          if (this.rvG == null)
-          {
-            ae.w("MicroMsg.FaceDetectCameraView", "hy: camera is null. return");
-            AppMethodBeat.o(104110);
-            return;
-          }
-          ae.i("MicroMsg.FaceDetectCameraView", "hy: start capturing. tween: %d", new Object[] { Long.valueOf(paramLong) });
-          FaceDetectCameraView.b(FaceDetectCameraView.this, paramLong);
-          if (!FaceDetectCameraView.q(FaceDetectCameraView.this))
-          {
-            if ((this.rvG != null) && (this.rvG.rqh))
-            {
-              ae.i("MicroMsg.FaceDetectCameraView", "hy: is previewing. directly start capture");
-              FaceDetectCameraView.a(FaceDetectCameraView.this, false);
-              d.cup().a(this.rvI);
-              FaceDetectCameraView.r(FaceDetectCameraView.this);
-              AppMethodBeat.o(104110);
-              return;
-            }
-            ae.i("MicroMsg.FaceDetectCameraView", "hy: not previewed yet. wait");
-            FaceDetectCameraView.a(FaceDetectCameraView.this, true);
-          }
-        }
-        ae.w("MicroMsg.FaceDetectCameraView", "hy: already scanning");
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceDetectCameraView
  * JD-Core Version:    0.7.0.1
  */

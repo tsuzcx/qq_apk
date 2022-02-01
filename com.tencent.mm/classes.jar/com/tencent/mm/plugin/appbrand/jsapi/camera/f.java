@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
 import android.util.Size;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.jsapi.f.d;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
 
 public abstract interface f
-  extends f.b, f.c, f.d
+  extends i.b, i.c, i.d
 {
-  public static final f kLq = new f()
+  public static final f lQc = new f()
   {
-    public final void ap(String paramAnonymousString, boolean paramAnonymousBoolean) {}
-    
-    public final float az(float paramAnonymousFloat)
+    public final float aJ(float paramAnonymousFloat)
     {
       return 0.0F;
     }
     
-    public final void bko() {}
+    public final void ar(String paramAnonymousString, boolean paramAnonymousBoolean) {}
     
-    public final void bkq() {}
+    public final void bFK() {}
     
-    public final void bkr() {}
+    public final void bFM() {}
     
-    public final void bkx() {}
+    public final void bFN() {}
     
-    public final void bky() {}
+    public final void bFT() {}
     
-    public final boolean dO(int paramAnonymousInt1, int paramAnonymousInt2)
+    public final void bFU() {}
+    
+    public final boolean dZ(int paramAnonymousInt1, int paramAnonymousInt2)
     {
       return false;
     }
@@ -46,7 +46,7 @@ public abstract interface f
     
     public final void initView() {}
     
-    public final void o(com.tencent.mm.plugin.appbrand.jsapi.c paramAnonymousc) {}
+    public final void o(com.tencent.mm.plugin.appbrand.jsapi.f paramAnonymousf) {}
     
     public final void onBackground() {}
     
@@ -76,7 +76,9 @@ public abstract interface f
     
     public final void setOutPutCallBack(b paramAnonymousb) {}
     
-    public final void setPage(e paramAnonymouse) {}
+    public final void setPage(h paramAnonymoush) {}
+    
+    public final void setPageOrientation(boolean paramAnonymousBoolean) {}
     
     public final void setPreviewCenterCrop(boolean paramAnonymousBoolean) {}
     
@@ -89,21 +91,21 @@ public abstract interface f
     public final void x(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
   };
   
-  public abstract void ap(String paramString, boolean paramBoolean);
+  public abstract float aJ(float paramFloat);
   
-  public abstract float az(float paramFloat);
+  public abstract void ar(String paramString, boolean paramBoolean);
   
-  public abstract void bko();
+  public abstract void bFK();
   
-  public abstract void bkq();
+  public abstract void bFM();
   
-  public abstract void bkr();
+  public abstract void bFN();
   
-  public abstract void bkx();
+  public abstract void bFT();
   
-  public abstract void bky();
+  public abstract void bFU();
   
-  public abstract boolean dO(int paramInt1, int paramInt2);
+  public abstract boolean dZ(int paramInt1, int paramInt2);
   
   public abstract int getCameraId();
   
@@ -111,7 +113,7 @@ public abstract interface f
   
   public abstract void initView();
   
-  public abstract void o(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  public abstract void o(com.tencent.mm.plugin.appbrand.jsapi.f paramf);
   
   public abstract void release();
   
@@ -135,7 +137,9 @@ public abstract interface f
   
   public abstract void setOutPutCallBack(b paramb);
   
-  public abstract void setPage(e parame);
+  public abstract void setPage(h paramh);
+  
+  public abstract void setPageOrientation(boolean paramBoolean);
   
   public abstract void setPreviewCenterCrop(boolean paramBoolean);
   
@@ -149,7 +153,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.f
  * JD-Core Version:    0.7.0.1
  */

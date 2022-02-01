@@ -14,7 +14,7 @@ public class YogaNodeJNIFinalizer
   
   protected void finalize()
   {
-    AppMethodBeat.i(221791);
+    AppMethodBeat.i(207059);
     try
     {
       freeNatives();
@@ -23,25 +23,25 @@ public class YogaNodeJNIFinalizer
     finally
     {
       super.finalize();
-      AppMethodBeat.o(221791);
+      AppMethodBeat.o(207059);
     }
   }
   
   public void freeNatives()
   {
-    AppMethodBeat.i(221792);
+    AppMethodBeat.i(207060);
     if (this.mNativePointer != 0L)
     {
       long l = this.mNativePointer;
       this.mNativePointer = 0L;
       YogaNative.jni_YGNodeFreeJNI(l);
     }
-    AppMethodBeat.o(221792);
+    AppMethodBeat.o(207060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.yoga.YogaNodeJNIFinalizer
  * JD-Core Version:    0.7.0.1
  */

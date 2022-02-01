@@ -1,8 +1,8 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.a;
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.c.a;
+import com.tencent.liteav.basic.c.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
@@ -29,7 +29,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.p
  * JD-Core Version:    0.7.0.1
  */

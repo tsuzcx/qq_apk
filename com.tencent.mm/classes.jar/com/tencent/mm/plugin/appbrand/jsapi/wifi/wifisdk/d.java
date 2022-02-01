@@ -7,14 +7,14 @@ import org.json.JSONArray;
 
 public final class d
 {
-  public String iIJ = "ok";
-  public List<c> lAP = null;
+  public String jFn = "ok";
+  public List<c> mIe = null;
   
-  public final JSONArray bpZ()
+  public final JSONArray bLF()
   {
     AppMethodBeat.i(144697);
     JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.lAP.iterator();
+    Iterator localIterator = this.mIe.iterator();
     while (localIterator.hasNext()) {
       localJSONArray.put(((c)localIterator.next()).toJSONObject());
     }
@@ -27,11 +27,11 @@ public final class d
     AppMethodBeat.i(144696);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("mErrorMsg:");
-    ((StringBuilder)localObject).append(this.iIJ);
+    ((StringBuilder)localObject).append(this.jFn);
     ((StringBuilder)localObject).append(" mWifiList:");
     Iterator localIterator;
-    if ((this.lAP != null) && (this.lAP.size() > 0)) {
-      localIterator = this.lAP.iterator();
+    if ((this.mIe != null) && (this.mIe.size() > 0)) {
+      localIterator = this.mIe.iterator();
     }
     while (localIterator.hasNext())
     {
@@ -48,7 +48,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d
  * JD-Core Version:    0.7.0.1
  */

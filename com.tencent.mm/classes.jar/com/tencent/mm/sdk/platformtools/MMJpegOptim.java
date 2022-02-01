@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.platformtools;
 
 import android.graphics.Bitmap;
 
-public class MMJpegOptim
+class MMJpegOptim
 {
   public static native boolean checkIntegrity(String paramString);
   

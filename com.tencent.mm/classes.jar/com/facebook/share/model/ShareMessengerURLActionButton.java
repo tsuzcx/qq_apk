@@ -13,7 +13,7 @@ public final class ShareMessengerURLActionButton
   private final boolean isMessengerExtensionURL;
   private final boolean shouldHideWebviewShareButton;
   private final Uri url;
-  private final WebviewHeightRatio webviewHeightRatio;
+  private final ShareMessengerURLActionButton.WebviewHeightRatio webviewHeightRatio;
   
   static
   {
@@ -46,7 +46,7 @@ public final class ShareMessengerURLActionButton
       bool1 = true;
       this.isMessengerExtensionURL = bool1;
       this.fallbackUrl = ((Uri)paramParcel.readParcelable(Uri.class.getClassLoader()));
-      this.webviewHeightRatio = ((WebviewHeightRatio)paramParcel.readSerializable());
+      this.webviewHeightRatio = ((ShareMessengerURLActionButton.WebviewHeightRatio)paramParcel.readSerializable());
       if (paramParcel.readByte() == 0) {
         break label96;
       }
@@ -94,7 +94,7 @@ public final class ShareMessengerURLActionButton
     return this.url;
   }
   
-  public final WebviewHeightRatio getWebviewHeightRatio()
+  public final ShareMessengerURLActionButton.WebviewHeightRatio getWebviewHeightRatio()
   {
     return this.webviewHeightRatio;
   }
@@ -159,25 +159,10 @@ public final class ShareMessengerURLActionButton
       return this;
     }
   }
-  
-  public static enum WebviewHeightRatio
-  {
-    static
-    {
-      AppMethodBeat.i(8538);
-      WebviewHeightRatioFull = new WebviewHeightRatio("WebviewHeightRatioFull", 0);
-      WebviewHeightRatioTall = new WebviewHeightRatio("WebviewHeightRatioTall", 1);
-      WebviewHeightRatioCompact = new WebviewHeightRatio("WebviewHeightRatioCompact", 2);
-      $VALUES = new WebviewHeightRatio[] { WebviewHeightRatioFull, WebviewHeightRatioTall, WebviewHeightRatioCompact };
-      AppMethodBeat.o(8538);
-    }
-    
-    private WebviewHeightRatio() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.share.model.ShareMessengerURLActionButton
  * JD-Core Version:    0.7.0.1
  */

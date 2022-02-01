@@ -7,9 +7,9 @@ public enum g$a
   static
   {
     AppMethodBeat.i(95473);
-    zxG = new a("IMG_SCENE_NONE", 0);
-    zxH = new a("IMG_SCENE_SNSUSER", 1);
-    zxI = new a[] { zxG, zxH };
+    DHP = new a("IMG_SCENE_NONE", 0);
+    DHQ = new a("IMG_SCENE_SNSUSER", 1);
+    DHR = new a[] { DHP, DHQ };
     AppMethodBeat.o(95473);
   }
   

@@ -11,53 +11,52 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.b.a.ga;
-import com.tencent.mm.kernel.b;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.b.a.jo;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.story.api.AbsStoryPreference;
 import com.tencent.mm.plugin.story.api.p.b;
 import com.tencent.mm.plugin.story.e.a.a;
-import com.tencent.mm.plugin.story.f.a.i;
 import com.tencent.mm.plugin.story.f.j.b;
+import com.tencent.mm.plugin.story.f.n;
 import com.tencent.mm.plugin.story.h.h;
 import com.tencent.mm.plugin.story.i.k;
 import com.tencent.mm.plugin.story.ui.StoryBrowseUI;
-import com.tencent.mm.protocal.protobuf.djx;
-import com.tencent.mm.protocal.protobuf.dkg;
-import com.tencent.mm.protocal.protobuf.dkx;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.ui.ao;
-import d.l;
+import com.tencent.mm.protocal.protobuf.edk;
+import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/StoryPreference;", "Lcom/tencent/mm/plugin/story/api/AbsStoryPreference;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isAddedSceneListener", "", "mCallback", "Lcom/tencent/mm/plugin/story/api/ILoadFavStoryCallback;", "mCoverView", "Landroid/view/View;", "mStoryFavList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "mStoryIconView1", "Landroid/widget/ImageView;", "mStoryIconView2", "mStoryIconView3", "mStoryView1", "Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "mStoryView2", "mStoryView3", "mStoryViewGroup1", "Landroid/view/ViewGroup;", "mStoryViewGroup2", "mStoryViewGroup3", "mTitleView", "Landroid/widget/TextView;", "mUsername", "", "mView", "getDateList", "", "goFavGallery", "", "position", "handleEvent", "loadStory", "onBindView", "view", "onCreate", "username", "onCreateView", "parent", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setLoadCallback", "callback", "updateFavStory", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/StoryPreference;", "Lcom/tencent/mm/plugin/story/api/AbsStoryPreference;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isAddedSceneListener", "", "mCallback", "Lcom/tencent/mm/plugin/story/api/ILoadFavStoryCallback;", "mCoverView", "Landroid/view/View;", "mStoryFavList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "mStoryIconView1", "Landroid/widget/ImageView;", "mStoryIconView2", "mStoryIconView3", "mStoryView1", "Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "mStoryView2", "mStoryView3", "mStoryViewGroup1", "Landroid/view/ViewGroup;", "mStoryViewGroup2", "mStoryViewGroup3", "mTitleView", "Landroid/widget/TextView;", "mUsername", "", "mView", "getDateList", "", "goFavGallery", "", "position", "handleEvent", "loadStory", "onBindView", "view", "onCreate", "username", "onCreateView", "parent", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setLoadCallback", "callback", "updateFavStory", "plugin-story_release"})
 public final class StoryPreference
   extends AbsStoryPreference
-  implements f
+  implements com.tencent.mm.ak.i
 {
-  private StoryRoundImageView Bti;
-  private StoryRoundImageView Btj;
-  private StoryRoundImageView Btk;
-  private ImageView Btl;
-  private ImageView Btm;
-  private ImageView Btn;
-  private ViewGroup Bto;
-  private ViewGroup Btp;
-  private ViewGroup Btq;
-  private ArrayList<com.tencent.mm.plugin.story.i.j> Btr;
-  private com.tencent.mm.plugin.story.api.d Bts;
-  private boolean Btt;
-  private TextView Xl;
-  private String lJm;
+  private StoryRoundImageView FDV;
+  private StoryRoundImageView FDW;
+  private StoryRoundImageView FDX;
+  private ImageView FDY;
+  private ImageView FDZ;
+  private ImageView FEa;
+  private ViewGroup FEb;
+  private ViewGroup FEc;
+  private ViewGroup FEd;
+  private ArrayList<com.tencent.mm.plugin.story.i.j> FEe;
+  private com.tencent.mm.plugin.story.api.d FEf;
+  private boolean FEg;
+  private TextView Xy;
+  private String mRa;
   private View mView;
-  private View vQX;
+  private View zlc;
   
   public StoryPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -70,150 +69,186 @@ public final class StoryPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120299);
-    paramContext = View.inflate(getContext(), 2131495714, null);
-    d.g.b.p.g(paramContext, "View.inflate(context, R.…e_fav_panel_layout, null)");
+    paramContext = View.inflate(getContext(), 2131496619, null);
+    kotlin.g.b.p.g(paramContext, "View.inflate(context, R.…e_fav_panel_layout, null)");
     this.mView = paramContext;
-    this.Btr = new ArrayList();
-    this.lJm = "";
+    this.FEe = new ArrayList();
+    this.mRa = "";
     paramContext = this.mView.findViewById(16908310);
-    d.g.b.p.g(paramContext, "mView.findViewById(android.R.id.title)");
-    this.Xl = ((TextView)paramContext);
-    paramContext = this.mView.findViewById(2131302330);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…eference_story_image_iv1)");
-    this.Bti = ((StoryRoundImageView)paramContext);
-    paramContext = this.mView.findViewById(2131302332);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…eference_story_image_iv2)");
-    this.Btj = ((StoryRoundImageView)paramContext);
-    paramContext = this.mView.findViewById(2131302334);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…eference_story_image_iv3)");
-    this.Btk = ((StoryRoundImageView)paramContext);
-    paramContext = this.mView.findViewById(2131302327);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…erence_story_image_icon1)");
-    this.Btl = ((ImageView)paramContext);
-    paramContext = this.mView.findViewById(2131302328);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…erence_story_image_icon2)");
-    this.Btm = ((ImageView)paramContext);
-    paramContext = this.mView.findViewById(2131302329);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…erence_story_image_icon3)");
-    this.Btn = ((ImageView)paramContext);
-    paramContext = this.mView.findViewById(2131302331);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…ce_story_image_iv1_group)");
-    this.Bto = ((ViewGroup)paramContext);
-    paramContext = this.mView.findViewById(2131302333);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…ce_story_image_iv2_group)");
-    this.Btp = ((ViewGroup)paramContext);
-    paramContext = this.mView.findViewById(2131302335);
-    d.g.b.p.g(paramContext, "mView.findViewById(R.id.…ce_story_image_iv3_group)");
-    this.Btq = ((ViewGroup)paramContext);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(android.R.id.title)");
+    this.Xy = ((TextView)paramContext);
+    paramContext = this.mView.findViewById(2131304725);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…eference_story_image_iv1)");
+    this.FDV = ((StoryRoundImageView)paramContext);
+    paramContext = this.mView.findViewById(2131304727);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…eference_story_image_iv2)");
+    this.FDW = ((StoryRoundImageView)paramContext);
+    paramContext = this.mView.findViewById(2131304729);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…eference_story_image_iv3)");
+    this.FDX = ((StoryRoundImageView)paramContext);
+    paramContext = this.mView.findViewById(2131304722);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…erence_story_image_icon1)");
+    this.FDY = ((ImageView)paramContext);
+    paramContext = this.mView.findViewById(2131304723);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…erence_story_image_icon2)");
+    this.FDZ = ((ImageView)paramContext);
+    paramContext = this.mView.findViewById(2131304724);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…erence_story_image_icon3)");
+    this.FEa = ((ImageView)paramContext);
+    paramContext = this.mView.findViewById(2131304726);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…ce_story_image_iv1_group)");
+    this.FEb = ((ViewGroup)paramContext);
+    paramContext = this.mView.findViewById(2131304728);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…ce_story_image_iv2_group)");
+    this.FEc = ((ViewGroup)paramContext);
+    paramContext = this.mView.findViewById(2131304730);
+    kotlin.g.b.p.g(paramContext, "mView.findViewById(R.id.…ce_story_image_iv3_group)");
+    this.FEd = ((ViewGroup)paramContext);
     paramInt = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
-    this.Bti.setRound(paramInt);
-    this.Btj.setRound(paramInt);
-    this.Btk.setRound(paramInt);
-    paramContext = ao.k(getContext(), 2131690460, -1);
-    this.Btl.setImageDrawable(paramContext);
-    this.Btm.setImageDrawable(paramContext);
-    this.Btn.setImageDrawable(paramContext);
-    this.Bti.setOnClickListener((View.OnClickListener)new StoryPreference.1(this));
-    this.Btj.setOnClickListener((View.OnClickListener)new StoryPreference.2(this));
-    this.Btk.setOnClickListener((View.OnClickListener)new StoryPreference.3(this));
+    this.FDV.setRound(paramInt);
+    this.FDW.setRound(paramInt);
+    this.FDX.setRound(paramInt);
+    paramContext = ar.m(getContext(), 2131690648, -1);
+    this.FDY.setImageDrawable(paramContext);
+    this.FDZ.setImageDrawable(paramContext);
+    this.FEa.setImageDrawable(paramContext);
+    this.FDV.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(120286);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        StoryPreference.a(this.FEh, 0);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(120286);
+      }
+    });
+    this.FDW.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(120287);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        StoryPreference.a(this.FEh, 1);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(120287);
+      }
+    });
+    this.FDX.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(120288);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        StoryPreference.a(this.FEh, 2);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(120288);
+      }
+    });
     AppMethodBeat.o(120299);
   }
   
-  private final void Tj(int paramInt)
+  private final void abf(int paramInt)
   {
     AppMethodBeat.i(120289);
     Object localObject1 = new ArrayList();
-    Object localObject2 = ((Iterable)this.Btr).iterator();
+    Object localObject2 = ((Iterable)this.FEe).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (com.tencent.mm.plugin.story.i.j)((Iterator)localObject2).next();
-      localObject4 = com.tencent.mm.plugin.story.e.a.BaC;
+      localObject4 = com.tencent.mm.plugin.story.e.a.Flw;
       ((ArrayList)localObject1).add(a.a.n(Integer.valueOf(((com.tencent.mm.plugin.story.i.j)localObject3).field_createTime)));
     }
     localObject1 = (List)localObject1;
-    localObject2 = com.tencent.mm.plugin.story.api.p.AZL;
-    Object localObject3 = this.lJm;
-    Object localObject4 = com.tencent.mm.plugin.story.g.d.BgP;
-    long l = ((p.b)localObject2).a((List)localObject1, (String)localObject3, com.tencent.mm.plugin.story.g.d.ena());
+    localObject2 = com.tencent.mm.plugin.story.api.p.FkJ;
+    Object localObject3 = this.mRa;
+    Object localObject4 = com.tencent.mm.plugin.story.g.d.FrG;
+    long l = ((p.b)localObject2).a((List)localObject1, (String)localObject3, com.tencent.mm.plugin.story.g.d.fpB());
     localObject2 = new Intent(getContext(), StoryBrowseUI.class);
-    ((Intent)localObject2).putExtra("username", this.lJm);
+    ((Intent)localObject2).putExtra("username", this.mRa);
     ((Intent)localObject2).putExtra("data_seed_key", l);
     ((Intent)localObject2).putExtra("v_position", paramInt);
     ((Intent)localObject2).putExtra("gallery_story_need_action", true);
     localObject1 = getContext();
-    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/story/ui/view/StoryPreference", "goFavGallery", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
+    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/story/ui/view/StoryPreference", "goFavGallery", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/story/ui/view/StoryPreference", "goFavGallery", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localObject1 = h.BjR;
-    h.enI().lj(14L);
+    localObject1 = h.FuH;
+    h.fqi().sl(14L);
     AppMethodBeat.o(120289);
   }
   
   public final void a(com.tencent.mm.plugin.story.api.d paramd)
   {
-    this.Bts = paramd;
+    this.FEf = paramd;
   }
   
-  public final void ekw()
+  public final void fmX()
   {
     AppMethodBeat.i(120291);
-    Object localObject1 = com.tencent.mm.plugin.story.f.n.BbT;
-    localObject1 = this.lJm;
-    d.g.b.p.h(localObject1, "username");
-    Object localObject2 = g.ajQ();
-    d.g.b.p.g(localObject2, "MMKernel.network()");
-    localObject2 = ((b)localObject2).ajj();
-    Object localObject3 = com.tencent.mm.plugin.story.f.j.BbE;
-    boolean bool = bu.lX((String)localObject1, j.b.dXj());
-    localObject3 = com.tencent.mm.plugin.story.i.a.BkN;
-    ((q)localObject2).b((com.tencent.mm.ak.n)new i((String)localObject1, 0L, bool, "", com.tencent.mm.plugin.story.i.a.eoJ()));
+    Object localObject1 = n.FmM;
+    localObject1 = this.mRa;
+    kotlin.g.b.p.h(localObject1, "username");
+    Object localObject2 = g.aAg();
+    kotlin.g.b.p.g(localObject2, "MMKernel.network()");
+    localObject2 = ((com.tencent.mm.kernel.b)localObject2).azz();
+    Object localObject3 = com.tencent.mm.plugin.story.f.j.Fmy;
+    boolean bool = Util.isEqual((String)localObject1, j.b.fau());
+    localObject3 = com.tencent.mm.plugin.story.i.a.FvD;
+    ((t)localObject2).b((q)new com.tencent.mm.plugin.story.f.a.i((String)localObject1, 0L, bool, "", com.tencent.mm.plugin.story.i.a.frj()));
     AppMethodBeat.o(120291);
   }
   
-  public final void ekx()
+  public final void fmY()
   {
     int j = 1;
     int k = 1;
     AppMethodBeat.i(120292);
-    Object localObject1 = this.Xl.getLayoutParams();
+    Object localObject1 = this.Xy.getLayoutParams();
     if (localObject1 != null) {
-      ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.cb.a.ax(getContext(), 2131165370);
+      ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.cb.a.aG(getContext(), 2131165381);
     }
-    this.Xl.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    this.Btr.clear();
-    localObject1 = this.Btr;
-    Object localObject2 = com.tencent.mm.plugin.story.f.j.BbE;
-    localObject2 = j.b.elB();
-    Object localObject3 = this.lJm;
-    Object localObject4 = this.lJm;
-    j.b localb = com.tencent.mm.plugin.story.f.j.BbE;
-    ((ArrayList)localObject1).addAll((Collection)((k)localObject2).a((String)localObject3, bu.lX((String)localObject4, j.b.dXj()), 0L, 20));
-    this.Bto.setVisibility(8);
-    this.Btp.setVisibility(8);
-    this.Btq.setVisibility(8);
+    this.Xy.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    this.FEe.clear();
+    localObject1 = this.FEe;
+    Object localObject2 = com.tencent.mm.plugin.story.f.j.Fmy;
+    localObject2 = j.b.foc();
+    Object localObject3 = this.mRa;
+    Object localObject4 = this.mRa;
+    j.b localb = com.tencent.mm.plugin.story.f.j.Fmy;
+    ((ArrayList)localObject1).addAll((Collection)((k)localObject2).a((String)localObject3, Util.isEqual((String)localObject4, j.b.fau()), 0L, 20));
+    this.FEb.setVisibility(8);
+    this.FEc.setVisibility(8);
+    this.FEd.setVisibility(8);
     int i;
-    if (!((Collection)this.Btr).isEmpty())
+    if (!((Collection)this.FEe).isEmpty())
     {
       i = 1;
       if (i == 0) {
         break label444;
       }
-      localObject1 = this.Xl;
+      localObject1 = this.Xy;
       localObject2 = getContext();
-      d.g.b.p.g(localObject2, "context");
-      ((TextView)localObject1).setText((CharSequence)((Context)localObject2).getResources().getString(2131757878));
+      kotlin.g.b.p.g(localObject2, "context");
+      ((TextView)localObject1).setText((CharSequence)((Context)localObject2).getResources().getString(2131758118));
       label201:
-      if (this.Btr.size() != 1) {
+      if (this.FEe.size() != 1) {
         break label464;
       }
-      this.Xl.setVisibility(0);
-      this.Bto.setVisibility(0);
-      localObject2 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).epg().HSy;
+      this.Xy.setVisibility(0);
+      this.FEb.setVisibility(0);
+      localObject2 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).frG().NeB;
       if (localObject2 != null)
       {
-        localObject1 = ((djx)localObject2).Gtx;
-        d.g.b.p.g(localObject1, "obj.MediaObjList");
+        localObject1 = ((edk)localObject2).LoV;
+        kotlin.g.b.p.g(localObject1, "obj.MediaObjList");
         if (((Collection)localObject1).isEmpty()) {
           break label459;
         }
@@ -221,22 +256,22 @@ public final class StoryPreference
         label282:
         if (i != 0)
         {
-          localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-          localObject1 = j.b.elJ();
-          localObject2 = ((djx)localObject2).Gtx.get(0);
-          d.g.b.p.g(localObject2, "obj.MediaObjList[0]");
-          localObject2 = (dkg)localObject2;
-          localObject3 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).field_userName;
-          localObject4 = bk.JgG;
-          d.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
-          localObject2 = new com.tencent.mm.plugin.story.f.c.d((dkg)localObject2, (String)localObject3, (bk)localObject4);
-          localObject3 = this.Bti;
+          localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+          localObject1 = j.b.fok();
+          localObject2 = ((edk)localObject2).LoV.get(0);
+          kotlin.g.b.p.g(localObject2, "obj.MediaObjList[0]");
+          localObject2 = (edt)localObject2;
+          localObject3 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).field_userName;
+          localObject4 = bp.Oqx;
+          kotlin.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
+          localObject2 = new com.tencent.mm.plugin.story.f.c.d((edt)localObject2, (String)localObject3, (bp)localObject4);
+          localObject3 = this.FDV;
           if (localObject3 == null) {
-            d.g.b.p.gkB();
+            kotlin.g.b.p.hyc();
           }
           localObject3 = (ImageView)localObject3;
-          localObject4 = com.tencent.mm.plugin.story.f.j.BbE;
-          ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.BdG));
+          localObject4 = com.tencent.mm.plugin.story.f.j.Fmy;
+          ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.Fox));
         }
       }
     }
@@ -244,82 +279,82 @@ public final class StoryPreference
     label967:
     for (;;)
     {
-      localObject1 = this.Bts;
+      localObject1 = this.FEf;
       if (localObject1 == null) {
         break label1468;
       }
-      ((com.tencent.mm.plugin.story.api.d)localObject1).eU((List)this.Btr);
+      ((com.tencent.mm.plugin.story.api.d)localObject1).fP((List)this.FEe);
       AppMethodBeat.o(120292);
       return;
       i = 0;
       break;
-      this.Xl.setText((CharSequence)"");
+      this.Xy.setText((CharSequence)"");
       break label201;
       label459:
       i = 0;
       break label282;
       label464:
-      if (this.Btr.size() == 2)
+      if (this.FEe.size() == 2)
       {
-        this.Xl.setVisibility(0);
-        this.Bto.setVisibility(0);
-        this.Btp.setVisibility(0);
-        localObject2 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).epg().HSy;
+        this.Xy.setVisibility(0);
+        this.FEb.setVisibility(0);
+        this.FEc.setVisibility(0);
+        localObject2 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).frG().NeB;
         if (localObject2 != null)
         {
-          localObject1 = ((djx)localObject2).Gtx;
-          d.g.b.p.g(localObject1, "obj1.MediaObjList");
+          localObject1 = ((edk)localObject2).LoV;
+          kotlin.g.b.p.g(localObject1, "obj1.MediaObjList");
           if (((Collection)localObject1).isEmpty()) {
             break label860;
           }
           i = 1;
           if (i != 0)
           {
-            localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-            localObject1 = j.b.elJ();
-            localObject2 = ((djx)localObject2).Gtx.get(0);
-            d.g.b.p.g(localObject2, "obj1.MediaObjList[0]");
-            localObject2 = (dkg)localObject2;
-            localObject3 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).field_userName;
-            localObject4 = bk.JgG;
-            d.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
-            localObject2 = new com.tencent.mm.plugin.story.f.c.d((dkg)localObject2, (String)localObject3, (bk)localObject4);
-            localObject3 = this.Bti;
+            localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+            localObject1 = j.b.fok();
+            localObject2 = ((edk)localObject2).LoV.get(0);
+            kotlin.g.b.p.g(localObject2, "obj1.MediaObjList[0]");
+            localObject2 = (edt)localObject2;
+            localObject3 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).field_userName;
+            localObject4 = bp.Oqx;
+            kotlin.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
+            localObject2 = new com.tencent.mm.plugin.story.f.c.d((edt)localObject2, (String)localObject3, (bp)localObject4);
+            localObject3 = this.FDV;
             if (localObject3 == null) {
-              d.g.b.p.gkB();
+              kotlin.g.b.p.hyc();
             }
             localObject3 = (ImageView)localObject3;
-            localObject4 = com.tencent.mm.plugin.story.f.j.BbE;
-            ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.BdG));
+            localObject4 = com.tencent.mm.plugin.story.f.j.Fmy;
+            ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.Fox));
           }
         }
-        localObject2 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(1)).epg().HSy;
+        localObject2 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(1)).frG().NeB;
         if (localObject2 != null)
         {
-          localObject1 = ((djx)localObject2).Gtx;
-          d.g.b.p.g(localObject1, "obj2.MediaObjList");
+          localObject1 = ((edk)localObject2).LoV;
+          kotlin.g.b.p.g(localObject1, "obj2.MediaObjList");
           if (!((Collection)localObject1).isEmpty()) {}
           for (i = j;; i = 0)
           {
             if (i == 0) {
               break label868;
             }
-            localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-            localObject1 = j.b.elJ();
-            localObject2 = ((djx)localObject2).Gtx.get(0);
-            d.g.b.p.g(localObject2, "obj2.MediaObjList[0]");
-            localObject2 = (dkg)localObject2;
-            localObject3 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).field_userName;
-            localObject4 = bk.JgG;
-            d.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
-            localObject2 = new com.tencent.mm.plugin.story.f.c.d((dkg)localObject2, (String)localObject3, (bk)localObject4);
-            localObject3 = this.Btj;
+            localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+            localObject1 = j.b.fok();
+            localObject2 = ((edk)localObject2).LoV.get(0);
+            kotlin.g.b.p.g(localObject2, "obj2.MediaObjList[0]");
+            localObject2 = (edt)localObject2;
+            localObject3 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).field_userName;
+            localObject4 = bp.Oqx;
+            kotlin.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
+            localObject2 = new com.tencent.mm.plugin.story.f.c.d((edt)localObject2, (String)localObject3, (bp)localObject4);
+            localObject3 = this.FDW;
             if (localObject3 == null) {
-              d.g.b.p.gkB();
+              kotlin.g.b.p.hyc();
             }
             localObject3 = (ImageView)localObject3;
-            localObject4 = com.tencent.mm.plugin.story.f.j.BbE;
-            ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.BdG));
+            localObject4 = com.tencent.mm.plugin.story.f.j.Fmy;
+            ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.Fox));
             break;
             label860:
             i = 0;
@@ -330,46 +365,46 @@ public final class StoryPreference
       else
       {
         label868:
-        if (this.Btr.size() >= 3)
+        if (this.FEe.size() >= 3)
         {
-          this.Xl.setVisibility(0);
-          this.Bto.setVisibility(0);
-          this.Btp.setVisibility(0);
-          this.Btq.setVisibility(0);
-          localObject2 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).epg().HSy;
+          this.Xy.setVisibility(0);
+          this.FEb.setVisibility(0);
+          this.FEc.setVisibility(0);
+          this.FEd.setVisibility(0);
+          localObject2 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).frG().NeB;
           if (localObject2 != null)
           {
-            localObject1 = ((djx)localObject2).Gtx;
-            d.g.b.p.g(localObject1, "obj1.MediaObjList");
+            localObject1 = ((edk)localObject2).LoV;
+            kotlin.g.b.p.g(localObject1, "obj1.MediaObjList");
             if (((Collection)localObject1).isEmpty()) {
               break label1453;
             }
             i = 1;
             if (i != 0)
             {
-              localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-              localObject1 = j.b.elJ();
-              localObject2 = ((djx)localObject2).Gtx.get(0);
-              d.g.b.p.g(localObject2, "obj1.MediaObjList[0]");
-              localObject2 = (dkg)localObject2;
-              localObject3 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).field_userName;
-              localObject4 = bk.JgG;
-              d.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
-              localObject2 = new com.tencent.mm.plugin.story.f.c.d((dkg)localObject2, (String)localObject3, (bk)localObject4);
-              localObject3 = this.Bti;
+              localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+              localObject1 = j.b.fok();
+              localObject2 = ((edk)localObject2).LoV.get(0);
+              kotlin.g.b.p.g(localObject2, "obj1.MediaObjList[0]");
+              localObject2 = (edt)localObject2;
+              localObject3 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).field_userName;
+              localObject4 = bp.Oqx;
+              kotlin.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
+              localObject2 = new com.tencent.mm.plugin.story.f.c.d((edt)localObject2, (String)localObject3, (bp)localObject4);
+              localObject3 = this.FDV;
               if (localObject3 == null) {
-                d.g.b.p.gkB();
+                kotlin.g.b.p.hyc();
               }
               localObject3 = (ImageView)localObject3;
-              localObject4 = com.tencent.mm.plugin.story.f.j.BbE;
-              ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.BdG));
+              localObject4 = com.tencent.mm.plugin.story.f.j.Fmy;
+              ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.Fox));
             }
           }
-          localObject2 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(1)).epg().HSy;
+          localObject2 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(1)).frG().NeB;
           if (localObject2 != null)
           {
-            localObject1 = ((djx)localObject2).Gtx;
-            d.g.b.p.g(localObject1, "obj2.MediaObjList");
+            localObject1 = ((edk)localObject2).LoV;
+            kotlin.g.b.p.g(localObject1, "obj2.MediaObjList");
             if (((Collection)localObject1).isEmpty()) {
               break label1458;
             }
@@ -377,51 +412,51 @@ public final class StoryPreference
             label1146:
             if (i != 0)
             {
-              localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-              localObject1 = j.b.elJ();
-              localObject2 = ((djx)localObject2).Gtx.get(0);
-              d.g.b.p.g(localObject2, "obj2.MediaObjList[0]");
-              localObject2 = (dkg)localObject2;
-              localObject3 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).field_userName;
-              localObject4 = bk.JgG;
-              d.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
-              localObject2 = new com.tencent.mm.plugin.story.f.c.d((dkg)localObject2, (String)localObject3, (bk)localObject4);
-              localObject3 = this.Btj;
+              localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+              localObject1 = j.b.fok();
+              localObject2 = ((edk)localObject2).LoV.get(0);
+              kotlin.g.b.p.g(localObject2, "obj2.MediaObjList[0]");
+              localObject2 = (edt)localObject2;
+              localObject3 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).field_userName;
+              localObject4 = bp.Oqx;
+              kotlin.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
+              localObject2 = new com.tencent.mm.plugin.story.f.c.d((edt)localObject2, (String)localObject3, (bp)localObject4);
+              localObject3 = this.FDW;
               if (localObject3 == null) {
-                d.g.b.p.gkB();
+                kotlin.g.b.p.hyc();
               }
               localObject3 = (ImageView)localObject3;
-              localObject4 = com.tencent.mm.plugin.story.f.j.BbE;
-              ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.BdG));
+              localObject4 = com.tencent.mm.plugin.story.f.j.Fmy;
+              ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.Fox));
             }
           }
-          localObject2 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(2)).epg().HSy;
+          localObject2 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(2)).frG().NeB;
           if (localObject2 != null)
           {
-            localObject1 = ((djx)localObject2).Gtx;
-            d.g.b.p.g(localObject1, "obj3.MediaObjList");
+            localObject1 = ((edk)localObject2).LoV;
+            kotlin.g.b.p.g(localObject1, "obj3.MediaObjList");
             if (!((Collection)localObject1).isEmpty()) {}
             for (i = 1;; i = 0)
             {
               if (i == 0) {
                 break label1466;
               }
-              localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-              localObject1 = j.b.elJ();
-              localObject2 = ((djx)localObject2).Gtx.get(0);
-              d.g.b.p.g(localObject2, "obj3.MediaObjList[0]");
-              localObject2 = (dkg)localObject2;
-              localObject3 = ((com.tencent.mm.plugin.story.i.j)this.Btr.get(0)).field_userName;
-              localObject4 = bk.JgG;
-              d.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
-              localObject2 = new com.tencent.mm.plugin.story.f.c.d((dkg)localObject2, (String)localObject3, (bk)localObject4);
-              localObject3 = this.Btk;
+              localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+              localObject1 = j.b.fok();
+              localObject2 = ((edk)localObject2).LoV.get(0);
+              kotlin.g.b.p.g(localObject2, "obj3.MediaObjList[0]");
+              localObject2 = (edt)localObject2;
+              localObject3 = ((com.tencent.mm.plugin.story.i.j)this.FEe.get(0)).field_userName;
+              localObject4 = bp.Oqx;
+              kotlin.g.b.p.g(localObject4, "FROM_SCENE.storyalbum");
+              localObject2 = new com.tencent.mm.plugin.story.f.c.d((edt)localObject2, (String)localObject3, (bp)localObject4);
+              localObject3 = this.FDX;
               if (localObject3 == null) {
-                d.g.b.p.gkB();
+                kotlin.g.b.p.hyc();
               }
               localObject3 = (ImageView)localObject3;
-              localObject4 = com.tencent.mm.plugin.story.f.j.BbE;
-              ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.BdG));
+              localObject4 = com.tencent.mm.plugin.story.f.j.Fmy;
+              ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, j.b.a(com.tencent.mm.plugin.story.f.c.a.Fox));
               break;
               i = 0;
               break label967;
@@ -440,14 +475,14 @@ public final class StoryPreference
     AppMethodBeat.o(120292);
   }
   
-  public final void eky()
+  public final void fmZ()
   {
     AppMethodBeat.i(120293);
-    if (!((Collection)this.Btr).isEmpty()) {}
+    if (!((Collection)this.FEe).isEmpty()) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        Tj(0);
+        abf(0);
       }
       AppMethodBeat.o(120293);
       return;
@@ -457,9 +492,9 @@ public final class StoryPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(120297);
-    d.g.b.p.h(paramView, "view");
+    kotlin.g.b.p.h(paramView, "view");
     super.onBindView(paramView);
-    ekx();
+    fmY();
     AppMethodBeat.o(120297);
   }
   
@@ -470,13 +505,13 @@ public final class StoryPreference
     if (paramString == null) {
       str = "";
     }
-    this.lJm = str;
-    if (!this.Btt)
+    this.mRa = str;
+    if (!this.FEg)
     {
-      paramString = g.ajQ();
-      d.g.b.p.g(paramString, "MMKernel.network()");
-      paramString.ajj().a(273, (f)this);
-      this.Btt = true;
+      paramString = g.aAg();
+      kotlin.g.b.p.g(paramString, "MMKernel.network()");
+      paramString.azz().a(273, (com.tencent.mm.ak.i)this);
+      this.FEg = true;
     }
     AppMethodBeat.o(120290);
   }
@@ -484,20 +519,20 @@ public final class StoryPreference
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(120296);
-    d.g.b.p.h(paramViewGroup, "parent");
-    if (this.vQX == null)
+    kotlin.g.b.p.h(paramViewGroup, "parent");
+    if (this.zlc == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
       localViewGroup.removeAllViews();
-      this.mView.setId(2131305937);
+      this.mView.setId(2131309235);
       ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
       localViewGroup.addView(this.mView, localLayoutParams);
-      this.vQX = paramViewGroup;
+      this.zlc = paramViewGroup;
     }
-    paramViewGroup = this.vQX;
+    paramViewGroup = this.zlc;
     if (paramViewGroup == null) {
-      d.g.b.p.gkB();
+      kotlin.g.b.p.hyc();
     }
     AppMethodBeat.o(120296);
     return paramViewGroup;
@@ -506,22 +541,22 @@ public final class StoryPreference
   public final void onDestroy()
   {
     AppMethodBeat.i(120294);
-    this.Bts = null;
-    b localb = g.ajQ();
-    d.g.b.p.g(localb, "MMKernel.network()");
-    localb.ajj().b(273, (f)this);
+    this.FEf = null;
+    com.tencent.mm.kernel.b localb = g.aAg();
+    kotlin.g.b.p.g(localb, "MMKernel.network()");
+    localb.azz().b(273, (com.tencent.mm.ak.i)this);
     AppMethodBeat.o(120294);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(120295);
-    if ((paramn instanceof i))
+    if ((paramq instanceof com.tencent.mm.plugin.story.f.a.i))
     {
-      paramInt2 = ((i)paramn).doj;
-      paramString = com.tencent.mm.plugin.story.i.a.BkN;
-      if ((paramInt2 == com.tencent.mm.plugin.story.i.a.eoJ()) && (bu.lX(((i)paramn).userName, this.lJm)) && (paramInt1 == 0)) {
-        ekx();
+      paramInt2 = ((com.tencent.mm.plugin.story.f.a.i)paramq).source;
+      paramString = com.tencent.mm.plugin.story.i.a.FvD;
+      if ((paramInt2 == com.tencent.mm.plugin.story.i.a.frj()) && (Util.isEqual(((com.tencent.mm.plugin.story.f.a.i)paramq).userName, this.mRa)) && (paramInt1 == 0)) {
+        fmY();
       }
     }
     AppMethodBeat.o(120295);
@@ -529,7 +564,7 @@ public final class StoryPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryPreference
  * JD-Core Version:    0.7.0.1
  */

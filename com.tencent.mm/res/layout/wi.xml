@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/ni" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.ui.TaskItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/ch">
-            <ImageView android:id="@id/ap9" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:scaleType="fitXY" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c5" android:layout_alignParentStart="true" />
-            <com.tencent.mm.plugin.downloader_app.ui.AppIconView android:layout_gravity="center_vertical" android:id="@id/cn1" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_toRightOf="@id/ap9" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/c0" />
-            <FrameLayout android:id="@id/cu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
-                <FrameLayout android:id="@id/ekk" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_marginStart="@dimen/bq" android:layout_marginEnd="@dimen/c8">
-                    <com.tencent.mm.plugin.downloader_app.ui.ProgressImageView android:layout_gravity="center" android:id="@id/g5r" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
-                </FrameLayout>
-                <FrameLayout android:id="@id/aa0" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <Button android:textStyle="bold" android:id="@id/crg" android:visibility="gone" android:text="@string/d2y" android:layout_marginStart="@dimen/bq" android:layout_marginEnd="@dimen/c5" style="@style/o8" />
-                    <Button android:textStyle="bold" android:id="@id/e7y" android:visibility="gone" android:layout_marginStart="@dimen/bq" android:layout_marginEnd="@dimen/c5" style="@style/of" />
-                </FrameLayout>
-            </FrameLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/g6s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toStartOf="@id/cu" android:layout_toEndOf="@id/cn1">
-                <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip">
-                    <TextView android:textSize="@dimen/a7l" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center" android:id="@id/cv1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-                    <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/FG_1" android:gravity="center" android:id="@id/cv2" android:background="@drawable/a4x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/agb" android:maxLines="1" android:layout_marginStart="@dimen/bq" />
-                </LinearLayout>
-                <TextView android:textSize="@dimen/a7h" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/cvm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            </LinearLayout>
-        </RelativeLayout>
-        <com.tencent.mm.plugin.downloader_app.ui.DownloadUpdateDescView android:id="@id/gir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/c0" android:layout_marginStart="76.0dip" android:layout_marginEnd="@dimen/c5">
-            <TextView android:textSize="@dimen/ajt" android:textColor="@color/a7o" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/git" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
-            <TextView android:textSize="@dimen/ajt" android:textColor="@color/Link" android:layout_gravity="end|bottom|center" android:id="@id/gis" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bur" />
-        </com.tencent.mm.plugin.downloader_app.ui.DownloadUpdateDescView>
-        <LinearLayout android:gravity="center_vertical" android:id="@id/bej" android:background="@color/Red_190" android:layout_width="fill_parent" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/c0" android:layout_marginStart="76.0dip" android:layout_marginEnd="@dimen/c5">
-            <ImageView android:id="@id/bel" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:scaleType="fitXY" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/ci" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/bek" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" android:layout_marginEnd="5.0dip" />
-        </LinearLayout>
-    </com.tencent.mm.plugin.downloader_app.ui.TaskItemView>
+    <View android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/a2w" android:gravity="center" android:id="@id/a62" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/amn" />
 </LinearLayout>

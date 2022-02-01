@@ -7,13 +7,13 @@ public abstract interface g
 {
   public abstract void a(int paramInt, m paramm);
   
-  public abstract void ePB();
+  public abstract void fXH();
   
-  public abstract void ePC();
+  public abstract void fXI();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.g
  * JD-Core Version:    0.7.0.1
  */

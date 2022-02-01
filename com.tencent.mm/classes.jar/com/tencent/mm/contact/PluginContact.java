@@ -3,8 +3,8 @@ package com.tencent.mm.contact;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.an;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.plugin.messenger.foundation.a.r;
 
 public class PluginContact
@@ -13,11 +13,11 @@ public class PluginContact
 {
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(221689);
-    com.tencent.mm.kernel.g.ajS();
+    AppMethodBeat.i(257871);
+    com.tencent.mm.kernel.g.aAi();
     com.tencent.mm.kernel.g.b(r.class, new com.tencent.mm.contact.a.c());
-    x.a((an)com.tencent.mm.kernel.g.ab(r.class));
-    AppMethodBeat.o(221689);
+    ab.a((ar)com.tencent.mm.kernel.g.af(r.class));
+    AppMethodBeat.o(257871);
   }
   
   public void onAccountInitialized(e.c paramc) {}

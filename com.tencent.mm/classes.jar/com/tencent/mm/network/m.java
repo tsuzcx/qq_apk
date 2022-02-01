@@ -2,7 +2,7 @@ package com.tencent.mm.network;
 
 public abstract interface m
 {
-  public abstract boolean f(int paramInt, byte[] paramArrayOfByte);
+  public abstract void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte);
 }
 
 

@@ -1,0 +1,134 @@
+{
+  "easyGoVersion": "1.0",
+  "client": "com.tencent.mm",
+  "logicEntities": [
+    {
+      "head": {
+        "function": "magicwindow",
+        "required": "true"
+      },
+      "body": {
+        "mode":"1",
+        "activityPairs":[
+          {"from":"com.tencent.mm.ui.LauncherUI","to":"*"},
+          {"mainPage":"com.tencent.mm.ui.LauncherUI","relatedPage":"com.tencent.mm.ui.EmptyActivity"}
+        ],
+        "transActivities":[
+        ],
+        "isRelaunchwhenResize":"false",
+        "defSwitch": "full",
+        "supportAppTaskSplitScreen":"true",
+        "Activities":[
+          {
+            "name":"com.tencent.mm.plugin.voip.ui.VideoActivity",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.webview.ui.tools.WebViewUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.webview.ui.tools.WebviewMpUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplWebViewToolUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplWebViewMMUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplWebViewTooLMpUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.webview.ui.tools.WebviewMpUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.recordvideo.activity.MMRecordUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.scanner.ui.BaseScanUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.story.ui.StoryBrowseUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.ui.chatting.gallery.ImageGalleryUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.sns.ui.SnsBrowseUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.sns.ui.SnsOnlineVideoActivity",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.record.ui.RecordMsgImageUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.gallery.ui.ImagePreviewUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.topstory.ui.video.list.TopStoryListVideoUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.game.luggage.LuggageGameWebViewMpUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          }
+
+        ],
+        "UX": {
+          "windowsRatio":[
+            {"device" : "FOLD",
+              "ratio" : "1056|1138"
+            },
+            {"device" : "PAD",
+              "ratio" : "900|1654"
+            }
+          ],
+          "showStatusBar":"true",
+          "splitLineBgColor":"0xff191919",
+          "splitBarBgColor":"0xffe5e5e5",
+          "keepPrimaryTopAlwaysResume":"true",
+          "useSystemActivityAnimation":"false"
+        }
+      }
+    }
+  ]
+}

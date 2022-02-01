@@ -2,58 +2,58 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a;
-import d.g.b.p;
-import d.l;
 import java.util.Arrays;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverData;", "", "drawingRect", "", "validRect", "editorItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "width", "", "height", "videoWidth", "videoHeight", "rotate", "isForMix", "", "blurBgPath", "", "([F[FLjava/util/List;IIIIIZLjava/lang/String;)V", "getBlurBgPath", "()Ljava/lang/String;", "setBlurBgPath", "(Ljava/lang/String;)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "getHeight", "()I", "setHeight", "(I)V", "()Z", "setForMix", "(Z)V", "getRotate", "setRotate", "getValidRect", "setValidRect", "getVideoHeight", "setVideoHeight", "getVideoWidth", "setVideoWidth", "getWidth", "setWidth", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverData;", "", "drawingRect", "", "validRect", "editorItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "width", "", "height", "videoWidth", "videoHeight", "rotate", "isForMix", "", "blurBgPath", "", "([F[FLjava/util/List;IIIIIZLjava/lang/String;)V", "getBlurBgPath", "()Ljava/lang/String;", "setBlurBgPath", "(Ljava/lang/String;)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "getHeight", "()I", "setHeight", "(I)V", "()Z", "setForMix", "(Z)V", "getRotate", "setRotate", "getValidRect", "setValidRect", "getVideoHeight", "setVideoHeight", "getVideoWidth", "setVideoWidth", "getWidth", "setWidth", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-recordvideo_release"})
 public final class d
 {
-  int dHi;
+  float[] BKV;
+  float[] BKW;
+  String BLa;
+  boolean CgB;
+  int dYT;
   int height;
-  List<a> pYz;
+  List<a> rpx;
   int videoHeight;
   int videoWidth;
   int width;
-  float[] xKR;
-  float[] xKS;
-  String xKW;
-  boolean yfC;
   
   public d(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, List<a> paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(207063);
-    this.xKR = paramArrayOfFloat1;
-    this.xKS = paramArrayOfFloat2;
-    this.pYz = paramList;
+    AppMethodBeat.i(237904);
+    this.BKV = paramArrayOfFloat1;
+    this.BKW = paramArrayOfFloat2;
+    this.rpx = paramList;
     this.width = paramInt1;
     this.height = paramInt2;
     this.videoWidth = paramInt3;
     this.videoHeight = paramInt4;
-    this.dHi = paramInt5;
-    this.yfC = paramBoolean;
-    this.xKW = paramString;
-    AppMethodBeat.o(207063);
+    this.dYT = paramInt5;
+    this.CgB = paramBoolean;
+    this.BLa = paramString;
+    AppMethodBeat.o(237904);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(207066);
+    AppMethodBeat.i(237907);
     if (this != paramObject)
     {
       if ((paramObject instanceof d))
       {
         paramObject = (d)paramObject;
-        if ((!p.i(this.xKR, paramObject.xKR)) || (!p.i(this.xKS, paramObject.xKS)) || (!p.i(this.pYz, paramObject.pYz)) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.videoWidth != paramObject.videoWidth) || (this.videoHeight != paramObject.videoHeight) || (this.dHi != paramObject.dHi) || (this.yfC != paramObject.yfC) || (!p.i(this.xKW, paramObject.xKW))) {}
+        if ((!p.j(this.BKV, paramObject.BKV)) || (!p.j(this.BKW, paramObject.BKW)) || (!p.j(this.rpx, paramObject.rpx)) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.videoWidth != paramObject.videoWidth) || (this.videoHeight != paramObject.videoHeight) || (this.dYT != paramObject.dYT) || (this.CgB != paramObject.CgB) || (!p.j(this.BLa, paramObject.BLa))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(207066);
+      AppMethodBeat.o(237907);
       return true;
     }
-    AppMethodBeat.o(207066);
+    AppMethodBeat.o(237907);
     return false;
   }
   
@@ -64,12 +64,12 @@ public final class d
   
   public final String toString()
   {
-    AppMethodBeat.i(207062);
+    AppMethodBeat.i(237903);
     Object localObject1 = new StringBuilder("RetrieverData(drawingRect=");
-    Object localObject2 = Arrays.toString(this.xKR);
+    Object localObject2 = Arrays.toString(this.BKV);
     p.g(localObject2, "java.util.Arrays.toString(this)");
     localObject2 = ((StringBuilder)localObject1).append((String)localObject2).append(", validRect=");
-    localObject1 = this.xKS;
+    localObject1 = this.BKW;
     if (localObject1 != null)
     {
       localObject1 = Arrays.toString((float[])localObject1);
@@ -77,8 +77,8 @@ public final class d
     }
     for (;;)
     {
-      localObject1 = (String)localObject1 + ", editorItems=" + this.pYz + ", width=" + this.width + ", height=" + this.height + ", videoWidth=" + this.videoWidth + ", videoHeight=" + this.videoHeight + ", rotate=" + this.dHi + ", isForMix=" + this.yfC + ", blurBgPath='" + this.xKW + "')";
-      AppMethodBeat.o(207062);
+      localObject1 = (String)localObject1 + ", editorItems=" + this.rpx + ", width=" + this.width + ", height=" + this.height + ", videoWidth=" + this.videoWidth + ", videoHeight=" + this.videoHeight + ", rotate=" + this.dYT + ", isForMix=" + this.CgB + ", blurBgPath='" + this.BLa + "')";
+      AppMethodBeat.o(237903);
       return localObject1;
       localObject1 = null;
     }
@@ -86,7 +86,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.b.d
  * JD-Core Version:    0.7.0.1
  */

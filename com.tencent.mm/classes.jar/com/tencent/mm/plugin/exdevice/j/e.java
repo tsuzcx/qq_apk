@@ -1,32 +1,36 @@
 package com.tencent.mm.plugin.exdevice.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.c.di;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.g.c.do;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.plugin.exdevice.model.r;
+import com.tencent.mm.plugin.exdevice.service.f;
 import com.tencent.mm.plugin.exdevice.service.m;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
-  extends com.tencent.mm.plugin.exdevice.model.ae
-  implements com.tencent.mm.ak.f
+  extends ae
+  implements i
 {
   private int mErrorCode;
-  private m qgX;
-  private d qnu;
-  private com.tencent.mm.plugin.exdevice.c.b qnv;
-  private a qnw;
+  private d rEB;
+  private com.tencent.mm.plugin.exdevice.c.b rEC;
+  private a rED;
+  private m rxT;
   
   public e(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23799);
-    this.qnv = null;
-    this.qnv = new com.tencent.mm.plugin.exdevice.c.b(paramLong, paramInt2, paramInt3, paramArrayOfByte);
+    this.rEC = null;
+    this.rEC = new com.tencent.mm.plugin.exdevice.c.b(paramLong, paramInt2, paramInt3, paramArrayOfByte);
     this.mErrorCode = paramInt1;
     AppMethodBeat.o(23799);
   }
@@ -37,29 +41,29 @@ public final class e
     boolean bool;
     if ((-5 == this.mErrorCode) || (-3 == this.mErrorCode) || (-4 == this.mErrorCode))
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Error Code = %d, reply errorcode to device and close channel", new Object[] { Integer.valueOf(this.mErrorCode) });
-      this.qnv.a(-1, "", new byte[0]);
-      this.qnw = new a(this.qnv, paramd);
-      bool = this.qnw.b(paramm);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
+      Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Error Code = %d, reply errorcode to device and close channel", new Object[] { Integer.valueOf(this.mErrorCode) });
+      this.rEC.a(-1, "", new byte[0]);
+      this.rED = new a(this.rEC, paramd);
+      bool = this.rED.b(paramm);
+      Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(23801);
       return bool;
     }
-    com.tencent.mm.plugin.exdevice.i.b localb = ad.cmJ().adz(this.qnv.nZd);
+    com.tencent.mm.plugin.exdevice.i.b localb = ad.cKL().anI(this.rEC.pkb);
     if (localb == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "get device info failed : %d", new Object[] { Long.valueOf(this.qnv.nZd) });
+      Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "get device info failed : %d", new Object[] { Long.valueOf(this.rEC.pkb) });
       AppMethodBeat.o(23801);
       return false;
     }
-    com.tencent.mm.plugin.exdevice.f.a locala = (com.tencent.mm.plugin.exdevice.f.a)this.qnv.cmh();
+    com.tencent.mm.plugin.exdevice.f.a locala = (com.tencent.mm.plugin.exdevice.f.a)this.rEC.cKj();
     if (locala == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse failed!!!, Tell device before stop this task");
-      this.qnv.a(-4, "", new byte[0]);
-      this.qnw = new a(this.qnv, paramd);
-      bool = this.qnw.b(paramm);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
+      Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse failed!!!, Tell device before stop this task");
+      this.rEC.a(-4, "", new byte[0]);
+      this.rED = new a(this.rEC, paramd);
+      bool = this.rED.b(paramm);
+      Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(23801);
       return bool;
     }
@@ -67,22 +71,22 @@ public final class e
     long l;
     label405:
     byte[] arrayOfByte2;
-    if (locala.qkJ == 2)
+    if (locala.rBE == 2)
     {
-      if (locala.qkL != null)
+      if (locala.rBG != null)
       {
-        arrayOfByte1 = locala.qkL.zr;
-        if (!bu.cF(arrayOfByte1)) {
+        arrayOfByte1 = locala.rBG.zy;
+        if (!Util.isNullOrNil(arrayOfByte1)) {
           break label405;
         }
       }
-      for (l = -1L; l != this.qnv.nZd; l = com.tencent.mm.plugin.exdevice.k.b.bg(tmp413_411))
+      for (l = -1L; l != this.rEC.pkb; l = com.tencent.mm.plugin.exdevice.k.b.bx(tmp413_411))
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse fail!!!, Invalid MacAddress");
-        this.qnv.a(-1, "", new byte[0]);
-        this.qnw = new a(this.qnv, paramd);
-        bool = this.qnw.b(paramm);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
+        Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse fail!!!, Invalid MacAddress");
+        this.rEC.a(-1, "", new byte[0]);
+        this.rED = new a(this.rEC, paramd);
+        bool = this.rED.b(paramm);
+        Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(23801);
         return bool;
         arrayOfByte2 = new byte[8];
@@ -106,48 +110,48 @@ public final class e
         System.arraycopy(arrayOfByte1, 0, tmp413_411, 2, 6);
       }
     }
-    if ((locala.qkJ == 1) || (locala.qkJ == 1))
+    if ((locala.rBE == 1) || (locala.rBE == 1))
     {
-      if ((locala.qkG == null) || (!com.tencent.mm.plugin.exdevice.k.b.c(locala.qkG.zr, 0, g.C((localb.field_deviceType + localb.field_deviceID).getBytes()))))
+      if ((locala.rBB == null) || (!com.tencent.mm.plugin.exdevice.k.b.c(locala.rBB.zy, 0, g.Q((localb.field_deviceType + localb.field_deviceID).getBytes()))))
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse fail!!!, Invalid Md5DeviceTypeAndDeviceId");
-        this.qnv.a(-1, "", new byte[0]);
-        this.qnw = new a(this.qnv, paramd);
-        bool = this.qnw.b(paramm);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
+        Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse fail!!!, Invalid Md5DeviceTypeAndDeviceId");
+        this.rEC.a(-1, "", new byte[0]);
+        this.rED = new a(this.rEC, paramd);
+        bool = this.rED.b(paramm);
+        Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(23801);
         return bool;
       }
     }
     else
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse fail!!!, Invalid AuthMethod");
-      this.qnv.a(-8, "", new byte[0]);
-      this.qnw = new a(this.qnv, paramd);
-      bool = this.qnw.b(paramm);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
+      Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "Auth Request parse fail!!!, Invalid AuthMethod");
+      this.rEC.a(-8, "", new byte[0]);
+      this.rED = new a(this.rEC, paramd);
+      bool = this.rED.b(paramm);
+      Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(23801);
       return bool;
     }
     if (localb != null)
     {
-      l = localb.fhv;
+      l = localb.fLY;
       if (System.currentTimeMillis() / 1000L < l)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "device has been blocked");
-        this.qnv.a(-5, "", new byte[0]);
-        this.qnw = new a(this.qnv, paramd);
-        bool = this.qnw.b(paramm);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
+        Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "device has been blocked");
+        this.rEC.a(-5, "", new byte[0]);
+        this.rED = new a(this.rEC, paramd);
+        bool = this.rED.b(paramm);
+        Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(23801);
         return bool;
       }
-      l = localb.fhw;
-      int i = localb.fhu;
+      l = localb.fLZ;
+      int i = localb.fLX;
       if ((i + l > 0L) && (l + i < System.currentTimeMillis() / 1000L))
       {
-        arrayOfByte1 = u.cnk().u(this.qnv.nZd, 1);
-        tmp413_411 = u.cnk().u(this.qnv.nZd, 2);
+        arrayOfByte1 = u.cLx().r(this.rEC.pkb, 1);
+        tmp413_411 = u.cLx().r(this.rEC.pkb, 2);
         if (arrayOfByte1 == null)
         {
           i = -1;
@@ -158,81 +162,81 @@ public final class e
         label1073:
         for (int j = -1;; j = tmp413_411.length)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "has not reach time out, just set back sessionkey, get auth buf from local, auth buf length = %d, session key buf lenght = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "has not reach time out, just set back sessionkey, get auth buf from local, auth buf length = %d, session key buf lenght = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           if ((arrayOfByte1 == null) || (tmp413_411 == null)) {
             break label1081;
           }
-          u.cnk().uW(localb.field_mac);
-          if (2 == u.cnk().uT(localb.field_mac))
+          u.cLx().Da(localb.field_mac);
+          if (2 == u.cLx().CX(localb.field_mac))
           {
-            ad.cmU();
-            com.tencent.mm.plugin.exdevice.model.e.e(localb.field_brandName, localb.field_url, 2, localb.field_deviceID);
+            ad.cKW();
+            com.tencent.mm.plugin.exdevice.model.e.d(localb.field_brandName, localb.field_url, 2, localb.field_deviceID);
           }
-          this.qnv.a(0, "", u.cnk().u(this.qnv.nZd, 1));
-          this.qnw = new a(this.qnv, this.qnu);
+          this.rEC.a(0, "", u.cLx().r(this.rEC.pkb, 1));
+          this.rED = new a(this.rEC, this.rEB);
           paramm.setChannelSessionKey(localb.field_mac, tmp413_411);
-          bool = this.qnw.b(paramm);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
+          bool = this.rED.b(paramm);
+          Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(bool) });
           AppMethodBeat.o(23801);
           return bool;
           i = arrayOfByte1.length;
           break;
         }
         label1081:
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "has not reach time out, but local authbuf is null, do auth from server");
+        Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "has not reach time out, but local authbuf is null, do auth from server");
       }
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "now do really auth from server");
-    this.qgX = paramm;
-    this.qnu = paramd;
+    Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "now do really auth from server");
+    this.rxT = paramm;
+    this.rEB = paramd;
     paramd = null;
     paramm = paramd;
     if (locala != null)
     {
       paramm = paramd;
-      if (locala.qkK != null) {
-        paramm = locala.qkK.toByteArray();
+      if (locala.rBF != null) {
+        paramm = locala.rBF.toByteArray();
       }
     }
-    bc.ajj().a(541, this);
-    paramm = new r(localb.field_brandName, localb.field_deviceType, localb.field_deviceID, locala.qkI, paramm);
-    bc.ajj().a(paramm, 0);
+    bg.azz().a(541, this);
+    paramm = new r(localb.field_brandName, localb.field_deviceType, localb.field_deviceID, locala.rBD, paramm);
+    bg.azz().a(paramm, 0);
     AppMethodBeat.o(23801);
     return true;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(23800);
-    bc.ajj().b(541, this);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "onscen end, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    paramn = (r)paramn;
-    com.tencent.mm.plugin.exdevice.i.b localb = ad.cmJ().adz(this.qnv.nZd);
+    bg.azz().b(541, this);
+    Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "onscen end, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    paramq = (r)paramq;
+    com.tencent.mm.plugin.exdevice.i.b localb = ad.cKL().anI(this.rEC.pkb);
     if (localb == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "SubCoreExDevice.getHardDeviceInfoStorage().getByDeviceId Failed!!!");
+      Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "SubCoreExDevice.getHardDeviceInfoStorage().getByDeviceId Failed!!!");
       AppMethodBeat.o(23800);
       return;
     }
-    long l = localb.fhv;
+    long l = localb.fLY;
     if (System.currentTimeMillis() / 1000L < l)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.exdevice.MMAuthTaskExcuter", "device has been blocked");
-      this.qnv.a(-5, "", new byte[0]);
-      this.qnw = new a(this.qnv, this.qnu);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(this.qnw.b(this.qgX)) });
+      Log.e("MicroMsg.exdevice.MMAuthTaskExcuter", "device has been blocked");
+      this.rEC.a(-5, "", new byte[0]);
+      this.rED = new a(this.rEC, this.rEB);
+      Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(this.rED.b(this.rxT)) });
       AppMethodBeat.o(23800);
       return;
     }
-    this.qnv.a(paramInt2, paramString, paramn.cmD());
-    this.qnw = new a(this.qnv, this.qnu);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(this.qnw.b(this.qgX)) });
+    this.rEC.a(paramInt2, paramString, paramq.cKF());
+    this.rED = new a(this.rEC, this.rEB);
+    Log.i("MicroMsg.exdevice.MMAuthTaskExcuter", "auth start task : %b", new Object[] { Boolean.valueOf(this.rED.b(this.rxT)) });
     AppMethodBeat.o(23800);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.j.e
  * JD-Core Version:    0.7.0.1
  */

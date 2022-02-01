@@ -9,6 +9,7 @@ import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 public abstract interface IX5WebViewClientExtension
@@ -40,6 +41,8 @@ public abstract interface IX5WebViewClientExtension
   public abstract boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView);
   
   public abstract void documentAvailableInMainFrame();
+  
+  public abstract int getHostByName(String paramString, List<String> paramList);
   
   public abstract void handlePluginTag(String paramString1, String paramString2, boolean paramBoolean, String paramString3);
   

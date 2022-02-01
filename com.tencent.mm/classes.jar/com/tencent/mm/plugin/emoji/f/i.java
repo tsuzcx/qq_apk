@@ -2,116 +2,151 @@ package com.tencent.mm.plugin.emoji.f;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.protocal.protobuf.bas;
-import com.tencent.mm.protocal.protobuf.bat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bmf;
+import com.tencent.mm.protocal.protobuf.bmg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.j;
+import com.tencent.mm.storage.emotion.k;
 import com.tencent.mm.storage.emotion.k.a;
 import java.io.IOException;
 
 public final class i
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  private f gCo;
-  private String pMy;
-  private final b rr;
+  private com.tencent.mm.ak.i heq;
+  public int kfa;
+  private int rcN;
+  public byte[] rcO;
+  private int rcP;
+  private String rcQ;
+  private int rcR;
+  private final com.tencent.mm.ak.d rr;
   
-  public i(String paramString)
+  public i(int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(108689);
-    b.a locala = new b.a();
-    locala.hQF = new bas();
-    locala.hQG = new bat();
-    locala.uri = "/cgi-bin/micromsg-bin/mmgetdesignersimpleinfo";
-    locala.funcId = 239;
-    locala.hQH = 0;
+    AppMethodBeat.i(108686);
+    d.a locala = new d.a();
+    locala.iLN = new bmf();
+    locala.iLO = new bmg();
+    locala.uri = "/cgi-bin/micromsg-bin/mmgetdesigneremojilist";
+    locala.funcId = 821;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.pMy = paramString;
-    AppMethodBeat.o(108689);
+    this.rr = locala.aXF();
+    this.kfa = paramInt1;
+    this.rcN = paramInt2;
+    this.rcP = paramInt3;
+    this.rcQ = paramString;
+    this.rcO = paramArrayOfByte;
+    this.rcR = paramInt4;
+    AppMethodBeat.o(108686);
   }
   
-  public final bat ciu()
+  public final bmg cGs()
   {
     if (this.rr == null) {
       return null;
     }
-    return (bat)this.rr.hQE.hQJ;
+    return (bmg)this.rr.iLL.iLR;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
   {
-    AppMethodBeat.i(108691);
-    this.gCo = paramf;
-    ((bas)this.rr.hQD.hQJ).GwF = this.pMy;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(108691);
-    return i;
+    AppMethodBeat.i(108688);
+    this.heq = parami;
+    bmf localbmf = (bmf)this.rr.iLK.iLR;
+    if (this.rcO != null)
+    {
+      localbmf.LUY = z.aC(this.rcO);
+      if (localbmf.LUY != null) {
+        break label139;
+      }
+    }
+    label139:
+    for (parami = "Buf is NULL";; parami = localbmf.LUY.toString())
+    {
+      Log.d("MicroMsg.emoji.NetSceneGetDesignerEmojiList", parami);
+      localbmf.DesignerUin = this.rcN;
+      localbmf.OpCode = this.kfa;
+      localbmf.Lst = this.rcP;
+      localbmf.LUZ = this.rcQ;
+      localbmf.LVa = this.rcR;
+      int i = dispatch(paramg, this.rr, this);
+      AppMethodBeat.o(108688);
+      return i;
+      localbmf.LUY = new SKBuiltinBuffer_t();
+      break;
+    }
   }
   
   public final int getType()
   {
-    return 239;
+    return 821;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(108690);
-    ae.d("MicroMsg.emoji.NetSceneGetDesignerSimpleInfo", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(108687);
+    Log.d("MicroMsg.emoji.NetSceneGetDesignerEmojiList", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    String str;
     Object localObject;
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    if (((paramInt2 == 0) && (paramInt3 == 0)) || ((paramInt2 == 4) && ((paramInt3 == 2) || (paramInt3 == 3)) && ((this.rcO == null) || (this.rcO.length <= 0)) && (this.kfa != 3)))
     {
-      paramq = ((d)g.ad(d.class)).getEmojiStorageMgr().Jga;
-      paramArrayOfByte = this.pMy;
-      localObject = ciu();
-      if ((!bu.isNullOrNil(paramArrayOfByte)) && (localObject != null)) {
-        break label113;
+      paramArrayOfByte = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().OpT;
+      str = this.rcN;
+      localObject = cGs();
+      if ((!Util.isNullOrNil(str)) && (localObject != null)) {
+        break label200;
       }
-      ae.w("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID failed. designerID or response is null.");
+      Log.w("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerEmojiListResponseByUIN failed. designerID or response is null.");
     }
     for (;;)
     {
-      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(108690);
+      params = (bmg)((com.tencent.mm.ak.d)params).iLL.iLR;
+      if (params.LUY != null) {
+        this.rcO = z.a(params.LUY);
+      }
+      this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108687);
       return;
       try
       {
-        label113:
+        label200:
         j localj = new j();
-        localj.field_designerIDAndType = (paramArrayOfByte + k.a.JiR.value);
-        localj.field_content = ((bat)localObject).toByteArray();
+        localj.field_designerIDAndType = (str + k.a.OsL.value);
+        localj.field_content = ((bmg)localObject).toByteArray();
         localObject = localj.convertTo();
-        new StringBuilder().append(paramArrayOfByte).append(k.a.JiR.value).toString();
-        if (paramq.db.replace("EmotionDesignerInfo", "designerIDAndType", (ContentValues)localObject) <= 0L) {
-          break label257;
+        new StringBuilder().append(str).append(k.a.OsL.value).toString();
+        if (paramArrayOfByte.db.replace("EmotionDesignerInfo", "designerIDAndType", (ContentValues)localObject) <= 0L) {
+          break label348;
         }
-        ae.i("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID success. designerID:%s", new Object[] { paramArrayOfByte });
+        Log.i("MicroMsg.emoji.EmotionDesignerInfo", "savePersonalDesignerResponseByUIN success. designerID:%s", new Object[] { str });
       }
-      catch (IOException paramq)
+      catch (IOException paramArrayOfByte)
       {
-        ae.e("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID exception:%s", new Object[] { bu.o(paramq) });
+        Log.e("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
       }
       continue;
-      label257:
-      ae.i("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID failed. designerID:%s", new Object[] { paramArrayOfByte });
+      label348:
+      Log.i("MicroMsg.emoji.EmotionDesignerInfo", "savePersonalDesignerResponseByUIN failed. designerID:%s", new Object[] { str });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.i
  * JD-Core Version:    0.7.0.1
  */

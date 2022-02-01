@@ -1,22 +1,22 @@
 package com.tencent.mm.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.ab;
-import d.g.b.p;
-import d.k.j;
-import d.l;
 import java.util.Iterator;
+import kotlin.a.ab;
+import kotlin.g.b.p;
+import kotlin.k.j;
+import kotlin.l;
 import org.json.JSONArray;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"toDoubleArray", "", "Lorg/json/JSONArray;", "toJsonArray", "plugin-sticker_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"toDoubleArray", "", "Lorg/json/JSONArray;", "toJsonArray", "plugin-sticker_release"})
 public final class b
 {
-  public static final double[] R(JSONArray paramJSONArray)
+  public static final double[] W(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(105887);
     p.h(paramJSONArray, "$this$toDoubleArray");
     double[] arrayOfDouble = new double[paramJSONArray.length()];
-    Iterator localIterator = ((Iterable)j.lv(0, paramJSONArray.length())).iterator();
+    Iterator localIterator = ((Iterable)j.mY(0, paramJSONArray.length())).iterator();
     while (localIterator.hasNext())
     {
       int i = ((ab)localIterator).nextInt();
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.b
  * JD-Core Version:    0.7.0.1
  */

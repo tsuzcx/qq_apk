@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public final class h
 {
-  private long[] bGO;
+  private long[] bHf;
   public int size;
   
   public h()
@@ -16,17 +16,17 @@ public final class h
   private h(byte paramByte)
   {
     AppMethodBeat.i(93136);
-    this.bGO = new long[32];
+    this.bHf = new long[32];
     AppMethodBeat.o(93136);
   }
   
   public final void add(long paramLong)
   {
     AppMethodBeat.i(93137);
-    if (this.size == this.bGO.length) {
-      this.bGO = Arrays.copyOf(this.bGO, this.size * 2);
+    if (this.size == this.bHf.length) {
+      this.bHf = Arrays.copyOf(this.bHf, this.size * 2);
     }
-    long[] arrayOfLong = this.bGO;
+    long[] arrayOfLong = this.bHf;
     int i = this.size;
     this.size = (i + 1);
     arrayOfLong[i] = paramLong;
@@ -42,7 +42,7 @@ public final class h
       AppMethodBeat.o(93138);
       throw localIndexOutOfBoundsException;
     }
-    long l = this.bGO[paramInt];
+    long l = this.bHf[paramInt];
     AppMethodBeat.o(93138);
     return l;
   }
@@ -50,14 +50,14 @@ public final class h
   public final long[] toArray()
   {
     AppMethodBeat.i(93139);
-    long[] arrayOfLong = Arrays.copyOf(this.bGO, this.size);
+    long[] arrayOfLong = Arrays.copyOf(this.bHf, this.size);
     AppMethodBeat.o(93139);
     return arrayOfLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.i.h
  * JD-Core Version:    0.7.0.1
  */

@@ -6,43 +6,43 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class e
-  extends br<com.tencent.mm.plugin.webview.luggage.g>
+  extends bs<com.tencent.mm.plugin.webview.luggage.g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
   {
     AppMethodBeat.i(160421);
-    ae.i("MicroMsg.Predownload.WebViewJsApiBatchPreloadMiniProgram", "invokeInOwn");
-    Object localObject = paramb.chh.cgn;
+    Log.i("MicroMsg.Predownload.WebViewJsApiBatchPreloadMiniProgram", "invokeInOwn");
+    Object localObject = paramb.ctb.csi;
     if (localObject == null)
     {
       AppMethodBeat.o(160421);
       return;
     }
-    localObject = ((IAppBrandBatchPreloadController)com.tencent.mm.kernel.g.ab(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
-    if (!bu.isNullOrNil((String)localObject))
+    localObject = ((IAppBrandBatchPreloadController)com.tencent.mm.kernel.g.af(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
+    if (!Util.isNullOrNil((String)localObject))
     {
       if ("ok".equalsIgnoreCase((String)localObject))
       {
-        paramb.a("", null);
+        paramb.c("", null);
         AppMethodBeat.o(160421);
         return;
       }
-      paramb.a((String)localObject, null);
+      paramb.c((String)localObject, null);
       AppMethodBeat.o(160421);
       return;
     }
-    paramb.a("error", null);
+    paramb.c("error", null);
     AppMethodBeat.o(160421);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

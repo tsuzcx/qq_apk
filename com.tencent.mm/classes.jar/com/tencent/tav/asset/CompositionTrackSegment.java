@@ -17,9 +17,9 @@ public class CompositionTrackSegment
   public CompositionTrackSegment(CMTimeRange paramCMTimeRange)
   {
     super(paramCMTimeRange, paramCMTimeRange);
-    AppMethodBeat.i(214320);
+    AppMethodBeat.i(217652);
     this.empty = true;
-    AppMethodBeat.o(214320);
+    AppMethodBeat.o(217652);
   }
   
   public CompositionTrackSegment(String paramString, int paramInt1, CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2, int paramInt2)
@@ -53,24 +53,24 @@ public class CompositionTrackSegment
   
   public String toString()
   {
-    AppMethodBeat.i(214322);
+    AppMethodBeat.i(217654);
     String str = "CompositionTrackSegment{sourcePath='" + this.sourcePath + '\'' + ", sourceTrackID=" + this.sourceTrackID + ", timeMapping=" + this.timeMapping + '}';
-    AppMethodBeat.o(214322);
+    AppMethodBeat.o(217654);
     return str;
   }
   
   public void updateTargetTimeRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(214321);
+    AppMethodBeat.i(217653);
     this.scaleDuration = paramCMTimeRange.getDuration().clone();
     this.timeRange = paramCMTimeRange.clone();
     this.timeMapping.setTarget(paramCMTimeRange);
-    AppMethodBeat.o(214321);
+    AppMethodBeat.o(217653);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.asset.CompositionTrackSegment
  * JD-Core Version:    0.7.0.1
  */

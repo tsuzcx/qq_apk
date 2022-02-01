@@ -1,117 +1,35 @@
 package kotlinx.coroutines;
 
-import d.l;
-import kotlinx.coroutines.internal.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/EventLoop;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "isActive", "", "()Z", "isEmpty", "isUnconfinedLoopActive", "isUnconfinedQueueEmpty", "nextTime", "", "getNextTime", "()J", "shared", "unconfinedQueue", "Lkotlinx/coroutines/internal/ArrayQueue;", "Lkotlinx/coroutines/DispatchedTask;", "useCount", "decrementUseCount", "", "unconfined", "delta", "dispatchUnconfined", "task", "incrementUseCount", "processNextEvent", "processUnconfinedEvent", "shouldBeProcessedFromContext", "shutdown", "kotlinx-coroutines-core"})
-public abstract class bd
-  extends ac
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/DisposeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+final class bd
+  extends i
 {
-  private long OfA;
-  private boolean OfB;
-  private a<ax<?>> OfC;
+  private final bc TTy;
   
-  private static long AG(boolean paramBoolean)
+  public bd(bc parambc)
   {
-    if (paramBoolean) {
-      return 4294967296L;
-    }
-    return 1L;
+    AppMethodBeat.i(118047);
+    this.TTy = parambc;
+    AppMethodBeat.o(118047);
   }
   
-  public final void AH(boolean paramBoolean)
+  public final String toString()
   {
-    this.OfA += AG(paramBoolean);
-    if (!paramBoolean) {
-      this.OfB = true;
-    }
+    AppMethodBeat.i(118046);
+    String str = "DisposeOnCancel[" + this.TTy + ']';
+    AppMethodBeat.o(118046);
+    return str;
   }
   
-  public final void b(ax<?> paramax)
+  public final void y(Throwable paramThrowable)
   {
-    a locala2 = this.OfC;
-    a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala1 = new a();
-      this.OfC = locala1;
-    }
-    locala1.addLast(paramax);
+    AppMethodBeat.i(118044);
+    this.TTy.dispose();
+    AppMethodBeat.o(118044);
   }
-  
-  public long gzT()
-  {
-    if (!gzV()) {
-      return 9223372036854775807L;
-    }
-    return gzU();
-  }
-  
-  protected long gzU()
-  {
-    a locala = this.OfC;
-    if (locala == null) {}
-    while (locala.isEmpty()) {
-      return 9223372036854775807L;
-    }
-    return 0L;
-  }
-  
-  public final boolean gzV()
-  {
-    Object localObject = this.OfC;
-    if (localObject == null) {
-      return false;
-    }
-    localObject = (ax)((a)localObject).gAv();
-    if (localObject == null) {
-      return false;
-    }
-    ((ax)localObject).run();
-    return true;
-  }
-  
-  public final boolean gzW()
-  {
-    return this.OfA >= AG(true);
-  }
-  
-  public final boolean gzX()
-  {
-    a locala = this.OfC;
-    if (locala != null) {
-      return locala.isEmpty();
-    }
-    return true;
-  }
-  
-  public final void gzY()
-  {
-    int i = 1;
-    this.OfA -= AG(true);
-    if (this.OfA > 0L) {}
-    do
-    {
-      return;
-      if (am.gzF())
-      {
-        if (this.OfA == 0L) {}
-        while (i == 0)
-        {
-          throw ((Throwable)new AssertionError());
-          i = 0;
-        }
-      }
-    } while (!this.OfB);
-    shutdown();
-  }
-  
-  protected boolean isEmpty()
-  {
-    return gzX();
-  }
-  
-  protected void shutdown() {}
 }
 
 

@@ -8,17 +8,17 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.at;
 import com.tencent.mm.ui.widget.imageview.WeImageButton;
 
 public class ToolsBar
   extends LinearLayout
 {
-  private WeImageButton JWg;
-  private WeImageButton JWk;
-  private WeImageButton JZG;
-  private LinearLayout.LayoutParams uBy;
+  private WeImageButton Phu;
+  private WeImageButton Phy;
+  private WeImageButton Pld;
+  private LinearLayout.LayoutParams xTw;
   
   public ToolsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,27 +26,27 @@ public class ToolsBar
     AppMethodBeat.i(34960);
     setOrientation(0);
     setGravity(16);
-    setBackground(aq.aM(getContext(), 2130969246));
-    this.uBy = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131165567), 1.0F);
-    this.JWg = new WeImageButton(getContext());
-    this.JWg.setImageResource(2131231575);
-    this.JWg.setScaleType(ImageView.ScaleType.CENTER);
-    this.JWg.setBackgroundResource(0);
-    this.JWg.setContentDescription(paramContext.getString(2131757252));
-    this.JWk = new WeImageButton(getContext());
-    this.JWk.setImageResource(2131231572);
-    this.JWk.setScaleType(ImageView.ScaleType.CENTER);
-    this.JWk.setBackgroundResource(0);
-    this.JWk.setContentDescription(paramContext.getString(2131757251));
-    this.JZG = new WeImageButton(getContext());
-    this.JZG.setImageResource(2131231574);
-    this.JZG.setScaleType(ImageView.ScaleType.CENTER);
-    this.JZG.setBackgroundResource(0);
-    this.JZG.setContentDescription(paramContext.getString(2131757251));
+    setBackground(at.aN(getContext(), 2130969286));
+    this.xTw = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131165585), 1.0F);
+    this.Phu = new WeImageButton(getContext());
+    this.Phu.setImageResource(2131231639);
+    this.Phu.setScaleType(ImageView.ScaleType.CENTER);
+    this.Phu.setBackgroundResource(0);
+    this.Phu.setContentDescription(paramContext.getString(2131757465));
+    this.Phy = new WeImageButton(getContext());
+    this.Phy.setImageResource(2131231636);
+    this.Phy.setScaleType(ImageView.ScaleType.CENTER);
+    this.Phy.setBackgroundResource(0);
+    this.Phy.setContentDescription(paramContext.getString(2131757464));
+    this.Pld = new WeImageButton(getContext());
+    this.Pld.setImageResource(2131231638);
+    this.Pld.setScaleType(ImageView.ScaleType.CENTER);
+    this.Pld.setBackgroundResource(0);
+    this.Pld.setContentDescription(paramContext.getString(2131757464));
     removeAllViews();
-    addView(this.JWg, this.uBy);
-    addView(this.JWk, this.uBy);
-    addView(this.JZG, this.uBy);
+    addView(this.Phu, this.xTw);
+    addView(this.Phy, this.xTw);
+    addView(this.Pld, this.xTw);
     AppMethodBeat.o(34960);
   }
   
@@ -56,25 +56,25 @@ public class ToolsBar
     switch (paramInt)
     {
     default: 
-      ae.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
+      Log.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(34961);
       return;
     case 0: 
-      this.JWg.setOnClickListener(paramOnClickListener);
+      this.Phu.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34961);
       return;
     case 1: 
-      this.JWk.setOnClickListener(paramOnClickListener);
+      this.Phy.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34961);
       return;
     }
-    this.JZG.setOnClickListener(paramOnClickListener);
+    this.Pld.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(34961);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ToolsBar
  * JD-Core Version:    0.7.0.1
  */

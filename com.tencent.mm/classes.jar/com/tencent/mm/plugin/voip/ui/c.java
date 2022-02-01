@@ -17,68 +17,68 @@ public abstract interface c
   
   public abstract void a(VoIPRenderTextureView paramVoIPRenderTextureView, int paramInt);
   
+  public abstract void aE(boolean paramBoolean1, boolean paramBoolean2);
+  
   @Deprecated
-  public abstract void ae(long paramLong, int paramInt);
+  public abstract void ah(long paramLong, int paramInt);
   
-  public abstract void at(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract boolean fFA();
   
-  public abstract boolean eyD();
+  public abstract boolean fFB();
   
-  public abstract boolean eyE();
+  public abstract void fFC();
   
-  public abstract boolean eyF();
+  public abstract void fFD();
   
-  public abstract boolean eyG();
+  public abstract void fFF();
   
-  public abstract void eyH();
+  public abstract void fFG();
   
-  public abstract boolean eyI();
+  public abstract void fFH();
   
-  public abstract boolean eyJ();
+  public abstract void fFI();
   
-  public abstract boolean eyK();
+  public abstract void fFJ();
   
-  public abstract boolean eyL();
+  public abstract void fFK();
   
-  public abstract void eyM();
+  public abstract void fFL();
   
-  public abstract void eyN();
+  public abstract boolean fFM();
   
-  public abstract void eyP();
+  public abstract void fFY();
   
-  public abstract void eyQ();
+  public abstract void fFZ();
   
-  public abstract void eyR();
+  public abstract boolean fFt();
   
-  public abstract void eyS();
+  public abstract boolean fFu();
   
-  public abstract void eyT();
+  public abstract boolean fFv();
   
-  public abstract void eyU();
+  public abstract boolean fFw();
   
-  public abstract void eyV();
+  public abstract void fFx();
   
-  public abstract boolean eyW();
+  public abstract boolean fFy();
   
-  public abstract void ezj();
+  public abstract boolean fFz();
   
-  public abstract void ezk();
+  public abstract void jz(int paramInt1, int paramInt2);
   
-  public abstract void nO(int paramInt);
-  
-  public abstract void oN(boolean paramBoolean);
+  public abstract void rv(boolean paramBoolean);
   
   public abstract void setVoicePlayDevice(int paramInt);
   
-  public abstract void tk(boolean paramBoolean);
+  public abstract void wU(boolean paramBoolean);
   
-  public abstract void tl(boolean paramBoolean);
+  public abstract void wV(boolean paramBoolean);
   
-  public abstract boolean tm(boolean paramBoolean);
+  public abstract boolean wX(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,16 +6,16 @@ import com.tencent.mm.plugin.appbrand.backgroundrunning.k;
 public final class p
   extends k
 {
-  public final boolean bdN()
+  public final boolean bze()
   {
-    return com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.pdY.pey;
+    return com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.qta.qtB;
   }
   
-  public final boolean bdO()
+  public final boolean bzf()
   {
-    AppMethodBeat.i(222637);
-    boolean bool = q.bmJ();
-    AppMethodBeat.o(222637);
+    AppMethodBeat.i(226946);
+    boolean bool = q.bIi();
+    AppMethodBeat.o(226946);
     return bool;
   }
 }

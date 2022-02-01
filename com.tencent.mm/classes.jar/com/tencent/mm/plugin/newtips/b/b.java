@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.newtips.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(127268);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "NewTipsInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "NewTipsInfo") };
     AppMethodBeat.o(127268);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "NewTipsInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "NewTipsInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final a My(int paramInt)
+  public final a TF(int paramInt)
   {
     AppMethodBeat.i(127265);
     if (this.db == null)
     {
-      ae.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId, but db is null, return");
+      Log.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId, but db is null, return");
       AppMethodBeat.o(127265);
       return null;
     }
-    Cursor localCursor = this.db.a("NewTipsInfo", null, "tipId=?", new String[] { String.valueOf(paramInt) }, null, null, null, 2);
+    Cursor localCursor = this.db.query("NewTipsInfo", null, "tipId=?", new String[] { String.valueOf(paramInt) }, null, null, null, 2);
     if (localCursor.moveToFirst())
     {
       a locala = new a();
@@ -47,13 +47,13 @@ public final class b
       }
       catch (Exception localException)
       {
-        ae.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId convertFrom(cu) cause IlleagalStateException, return null");
+        Log.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId convertFrom(cu) cause IlleagalStateException, return null");
         localCursor.close();
         AppMethodBeat.o(127265);
         return null;
       }
     }
-    ae.w("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId:%d, no data", new Object[] { Integer.valueOf(paramInt) });
+    Log.w("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId:%d, no data", new Object[] { Integer.valueOf(paramInt) });
     localCursor.close();
     AppMethodBeat.o(127265);
     return null;
@@ -64,7 +64,7 @@ public final class b
     AppMethodBeat.i(127264);
     if (parama == null)
     {
-      ae.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
+      Log.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
       AppMethodBeat.o(127264);
       return false;
     }
@@ -72,7 +72,7 @@ public final class b
     if (bool) {
       doNotify(parama.field_tipId, 3, Integer.valueOf(parama.field_tipId));
     }
-    ae.d("MicroMsg.NewTipsCompatInfoStorage", "update result[%B]", new Object[] { Boolean.valueOf(bool) });
+    Log.d("MicroMsg.NewTipsCompatInfoStorage", "update result[%B]", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(127264);
     return bool;
   }
@@ -82,13 +82,13 @@ public final class b
     AppMethodBeat.i(127263);
     if (parama == null)
     {
-      ae.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
+      Log.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
       AppMethodBeat.o(127263);
       return false;
     }
     if (parama.field_tipId <= 0)
     {
-      ae.e("MicroMsg.NewTipsCompatInfoStorage", "newTipsId is error, tipsId = %s", new Object[] { Integer.valueOf(parama.field_tipId) });
+      Log.e("MicroMsg.NewTipsCompatInfoStorage", "newTipsId is error, tipsId = %s", new Object[] { Integer.valueOf(parama.field_tipId) });
       AppMethodBeat.o(127263);
       return false;
     }
@@ -102,7 +102,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.b
  * JD-Core Version:    0.7.0.1
  */

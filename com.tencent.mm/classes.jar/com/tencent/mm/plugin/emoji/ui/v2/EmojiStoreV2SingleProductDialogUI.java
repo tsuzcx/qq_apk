@@ -21,80 +21,78 @@ import com.tencent.mm.emoji.view.EmojiStatusView;
 import com.tencent.mm.emoji.view.EmojiStatusView.b;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.agk;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.protocal.protobuf.ait;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
-import com.tencent.mm.ui.z;
 import java.io.IOException;
 
 public class EmojiStoreV2SingleProductDialogUI
   extends MMBaseActivity
 {
-  public String fIQ;
-  private EmojiInfo glt;
-  private d iNf;
-  private ProgressBar jtq;
+  private EmojiInfo gWm;
+  public String goe;
+  private d jzT;
+  private ProgressBar krF;
   private int mScene;
-  private long pLp;
-  private View pUL;
-  private EmojiStatusView pUM;
-  private ImageView pUN;
-  private Button pUO;
-  private Button pUP;
-  private int pUQ;
-  private int pUR;
-  private DialogInterface.OnClickListener pUS;
-  private DialogInterface.OnClickListener pUT;
-  private View.OnClickListener pUU;
+  private long rbH;
+  private View rlK;
+  private EmojiStatusView rlL;
+  private ImageView rlM;
+  private Button rlN;
+  private Button rlO;
+  private int rlP;
+  private int rlQ;
+  private DialogInterface.OnClickListener rlR;
+  private DialogInterface.OnClickListener rlS;
+  private View.OnClickListener rlT;
   
   public EmojiStoreV2SingleProductDialogUI()
   {
     AppMethodBeat.i(109310);
-    this.pUS = new DialogInterface.OnClickListener()
+    this.rlR = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(109305);
         EmojiStoreV2SingleProductDialogUI.a(EmojiStoreV2SingleProductDialogUI.this);
         if (EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this) != null) {
-          g.yxI.f(12787, new Object[] { Integer.valueOf(EmojiStoreV2SingleProductDialogUI.c(EmojiStoreV2SingleProductDialogUI.this)), Integer.valueOf(2), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_md5, Long.valueOf(EmojiStoreV2SingleProductDialogUI.d(EmojiStoreV2SingleProductDialogUI.this)), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_designerID, EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_groupId, Integer.valueOf(EmojiStoreV2SingleProductDialogUI.e(EmojiStoreV2SingleProductDialogUI.this)) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(12787, new Object[] { Integer.valueOf(EmojiStoreV2SingleProductDialogUI.c(EmojiStoreV2SingleProductDialogUI.this)), Integer.valueOf(2), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_md5, Long.valueOf(EmojiStoreV2SingleProductDialogUI.d(EmojiStoreV2SingleProductDialogUI.this)), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_designerID, EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_groupId, Integer.valueOf(EmojiStoreV2SingleProductDialogUI.e(EmojiStoreV2SingleProductDialogUI.this)) });
         }
         AppMethodBeat.o(109305);
       }
     };
-    this.pUT = new DialogInterface.OnClickListener()
+    this.rlS = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(109306);
         EmojiStoreV2SingleProductDialogUI.f(EmojiStoreV2SingleProductDialogUI.this);
         if (EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this) != null) {
-          g.yxI.f(12787, new Object[] { Integer.valueOf(EmojiStoreV2SingleProductDialogUI.c(EmojiStoreV2SingleProductDialogUI.this)), Integer.valueOf(1), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_md5, Long.valueOf(EmojiStoreV2SingleProductDialogUI.d(EmojiStoreV2SingleProductDialogUI.this)), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_designerID, EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_groupId, Integer.valueOf(EmojiStoreV2SingleProductDialogUI.e(EmojiStoreV2SingleProductDialogUI.this)) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(12787, new Object[] { Integer.valueOf(EmojiStoreV2SingleProductDialogUI.c(EmojiStoreV2SingleProductDialogUI.this)), Integer.valueOf(1), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_md5, Long.valueOf(EmojiStoreV2SingleProductDialogUI.d(EmojiStoreV2SingleProductDialogUI.this)), EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_designerID, EmojiStoreV2SingleProductDialogUI.b(EmojiStoreV2SingleProductDialogUI.this).field_groupId, Integer.valueOf(EmojiStoreV2SingleProductDialogUI.e(EmojiStoreV2SingleProductDialogUI.this)) });
         }
         AppMethodBeat.o(109306);
       }
     };
-    this.pUU = new View.OnClickListener()
+    this.rlT = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109307);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2SingleProductDialogUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2SingleProductDialogUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         EmojiStoreV2SingleProductDialogUI.g(EmojiStoreV2SingleProductDialogUI.this).setOnDismissListener(null);
         EmojiStoreV2SingleProductDialogUI.g(EmojiStoreV2SingleProductDialogUI.this).dismiss();
         EmojiStoreV2SingleProductDialogUI.this.setResult(0);
         EmojiStoreV2SingleProductDialogUI.this.finish();
-        EmojiStoreV2SingleProductDialogUI.this.overridePendingTransition(2130772095, 2130772100);
+        EmojiStoreV2SingleProductDialogUI.this.overridePendingTransition(2130772119, 2130772124);
         a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2SingleProductDialogUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(109307);
       }
@@ -102,28 +100,28 @@ public class EmojiStoreV2SingleProductDialogUI
     AppMethodBeat.o(109310);
   }
   
-  private void cjQ()
+  private void cHR()
   {
     AppMethodBeat.i(109314);
-    if ((this.glt != null) && (this.glt.field_catalog == EmojiGroupInfo.OzT))
+    if ((this.gWm != null) && (this.gWm.field_catalog == EmojiGroupInfo.Uuo))
     {
-      this.pUP.setEnabled(false);
-      this.pUP.setText(2131755275);
-      this.pUP.setTextColor(getResources().getColor(2131100472));
+      this.rlO.setEnabled(false);
+      this.rlO.setText(2131755310);
+      this.rlO.setTextColor(getResources().getColor(2131100574));
       AppMethodBeat.o(109314);
       return;
     }
-    if ((this.glt != null) && (this.glt.fxn()))
+    if ((this.gWm != null) && (this.gWm.hRx()))
     {
-      this.pUP.setEnabled(true);
-      this.pUP.setText(2131758308);
-      this.pUP.setTextColor(getResources().getColor(2131100035));
+      this.rlO.setEnabled(true);
+      this.rlO.setText(2131758602);
+      this.rlO.setTextColor(getResources().getColor(2131100063));
       AppMethodBeat.o(109314);
       return;
     }
-    this.pUP.setEnabled(false);
-    this.pUP.setText(2131758308);
-    this.pUP.setTextColor(getResources().getColor(2131100472));
+    this.rlO.setEnabled(false);
+    this.rlO.setText(2131758602);
+    this.rlO.setTextColor(getResources().getColor(2131100574));
     AppMethodBeat.o(109314);
   }
   
@@ -133,11 +131,11 @@ public class EmojiStoreV2SingleProductDialogUI
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 1001) && (paramInt2 == -1))
     {
-      this.iNf.setOnDismissListener(null);
-      this.iNf.dismiss();
+      this.jzT.setOnDismissListener(null);
+      this.jzT.dismiss();
       setResult(-1);
       finish();
-      overridePendingTransition(2130772095, 0);
+      overridePendingTransition(2130772119, 0);
     }
     AppMethodBeat.o(109313);
   }
@@ -146,53 +144,53 @@ public class EmojiStoreV2SingleProductDialogUI
   {
     AppMethodBeat.i(109311);
     overridePendingTransition(-1, -1);
-    super.onCreate(paramBundle);
     requestWindowFeature(1);
+    super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 21)
     {
       getWindow().setStatusBarColor(0);
       getWindow().setNavigationBarColor(0);
     }
-    this.pUQ = getIntent().getIntExtra("add_source", 5);
-    this.pUR = getIntent().getIntExtra("entrance_scene", 0);
+    this.rlP = getIntent().getIntExtra("add_source", 5);
+    this.rlQ = getIntent().getIntExtra("entrance_scene", 0);
     this.mScene = getIntent().getIntExtra("scene", 0);
-    this.pLp = getIntent().getLongExtra("searchID", 0L);
-    this.fIQ = getIntent().getStringExtra("Select_Conv_User");
+    this.rbH = getIntent().getLongExtra("searchID", 0L);
+    this.goe = getIntent().getStringExtra("Select_Conv_User");
     paramBundle = getIntent().getByteArrayExtra("extra_object");
     if (paramBundle != null) {}
     for (;;)
     {
       try
       {
-        localObject = new agk();
-        ((agk)localObject).parseFrom(paramBundle);
-        this.glt = k.getEmojiStorageMgr().JfU.aWl(((agk)localObject).Md5);
-        if (this.glt == null)
+        localObject = new ait();
+        ((ait)localObject).parseFrom(paramBundle);
+        this.gWm = k.getEmojiStorageMgr().OpN.blk(((ait)localObject).Md5);
+        if (this.gWm == null)
         {
-          this.glt = new EmojiInfo();
-          this.glt.field_catalog = 84;
-          this.glt.field_reserved4 |= EmojiInfo.OAp;
-          com.tencent.mm.plugin.emoji.h.b.a((agk)localObject, this.glt);
+          this.gWm = new EmojiInfo();
+          this.gWm.field_catalog = 84;
+          this.gWm.field_reserved4 |= EmojiInfo.UuK;
+          com.tencent.mm.plugin.emoji.h.b.a((ait)localObject, this.gWm);
         }
-        if (this.glt == null)
+        if (this.gWm == null)
         {
           setResult(0);
           finish();
         }
-        this.pUL = z.jV(this).inflate(2131493823, null);
-        this.jtq = ((ProgressBar)this.pUL.findViewById(2131299127));
-        this.pUM = ((EmojiStatusView)this.pUL.findViewById(2131299125));
-        this.pUN = ((ImageView)this.pUL.findViewById(2131299119));
-        this.pUN.setOnClickListener(this.pUU);
-        paramBundle = this.pUL;
+        this.rlK = aa.jQ(this).inflate(2131493977, null);
+        this.krF = ((ProgressBar)this.rlK.findViewById(2131299652));
+        this.rlL = ((EmojiStatusView)this.rlK.findViewById(2131299650));
+        this.rlM = ((ImageView)this.rlK.findViewById(2131299643));
+        this.rlM.setOnClickListener(this.rlT);
+        paramBundle = this.rlK;
         if (!((Activity)this).isFinishing()) {
           break label757;
         }
         paramBundle = null;
-        this.iNf = paramBundle;
-        this.iNf.a(getString(2131755884), false, this.pUS);
-        this.iNf.b(getString(2131755275), false, this.pUT);
-        this.iNf.setOnDismissListener(new DialogInterface.OnDismissListener()
+        this.jzT = paramBundle;
+        this.jzT.a(getString(2131755976), false, this.rlR);
+        this.jzT.b(getString(2131755310), false, this.rlS);
+        this.jzT.setOnDismissListener(new DialogInterface.OnDismissListener()
         {
           public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
           {
@@ -202,19 +200,19 @@ public class EmojiStoreV2SingleProductDialogUI
             AppMethodBeat.o(109308);
           }
         });
-        this.pUO = this.iNf.getButton(-1);
-        this.pUP = this.iNf.getButton(-2);
-        this.pUM.setVisibility(8);
-        this.jtq.setVisibility(0);
-        this.pUP.setText(2131758308);
-        this.pUO.setText(2131755884);
-        this.pUP.setEnabled(false);
-        this.pUP.setTextColor(getResources().getColor(2131100472));
-        this.pUO.setEnabled(false);
-        this.pUO.setTextColor(getResources().getColor(2131100472));
-        this.pUM.setStatusListener(new EmojiStatusView.b()
+        this.rlN = this.jzT.getButton(-1);
+        this.rlO = this.jzT.getButton(-2);
+        this.rlL.setVisibility(8);
+        this.krF.setVisibility(0);
+        this.rlO.setText(2131758602);
+        this.rlN.setText(2131755976);
+        this.rlO.setEnabled(false);
+        this.rlO.setTextColor(getResources().getColor(2131100574));
+        this.rlN.setEnabled(false);
+        this.rlN.setTextColor(getResources().getColor(2131100574));
+        this.rlL.setStatusListener(new EmojiStatusView.b()
         {
-          public final void mg(int paramAnonymousInt)
+          public final void po(int paramAnonymousInt)
           {
             AppMethodBeat.i(109309);
             if (paramAnonymousInt == 1)
@@ -223,34 +221,34 @@ public class EmojiStoreV2SingleProductDialogUI
               EmojiStoreV2SingleProductDialogUI.i(EmojiStoreV2SingleProductDialogUI.this).setVisibility(8);
               EmojiStoreV2SingleProductDialogUI.j(EmojiStoreV2SingleProductDialogUI.this);
               EmojiStoreV2SingleProductDialogUI.k(EmojiStoreV2SingleProductDialogUI.this).setEnabled(true);
-              EmojiStoreV2SingleProductDialogUI.k(EmojiStoreV2SingleProductDialogUI.this).setTextColor(EmojiStoreV2SingleProductDialogUI.this.getResources().getColor(2131100035));
+              EmojiStoreV2SingleProductDialogUI.k(EmojiStoreV2SingleProductDialogUI.this).setTextColor(EmojiStoreV2SingleProductDialogUI.this.getResources().getColor(2131100063));
             }
             AppMethodBeat.o(109309);
           }
         });
-        this.pUM.setEmojiInfo(this.glt);
+        this.rlL.setEmojiInfo(this.gWm);
         AppMethodBeat.o(109311);
         return;
       }
       catch (IOException paramBundle)
       {
-        ae.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2SingleProductDialogUI", paramBundle, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2SingleProductDialogUI", paramBundle, "", new Object[0]);
         setResult(0);
         finish();
         continue;
       }
       Object localObject = getIntent().getStringExtra("extra_object_json");
-      paramBundle = new agk();
+      paramBundle = new ait();
       try
       {
         localObject = new i((String)localObject);
         paramBundle.Md5 = ((i)localObject).optString("Md5");
-        this.glt = k.getEmojiStorageMgr().JfU.aWl(paramBundle.Md5);
-        if (this.glt == null)
+        this.gWm = k.getEmojiStorageMgr().OpN.blk(paramBundle.Md5);
+        if (this.gWm == null)
         {
-          this.glt = new EmojiInfo();
-          this.glt.field_catalog = 84;
-          this.glt.field_reserved4 |= EmojiInfo.OAp;
+          this.gWm = new EmojiInfo();
+          this.gWm.field_catalog = 84;
+          this.gWm.field_reserved4 |= EmojiInfo.UuK;
         }
         paramBundle.Url = ((i)localObject).optString("PreviewUrl");
         paramBundle.ThumbUrl = ((i)localObject).optString("ThumbUrl");
@@ -259,7 +257,7 @@ public class EmojiStoreV2SingleProductDialogUI
         paramBundle.ExternUrl = ((i)localObject).optString("ExternUrl");
         paramBundle.ExternMd5 = ((i)localObject).optString("ExternMd5");
         paramBundle.ActivityID = ((i)localObject).optString("ActivityID");
-        com.tencent.mm.plugin.emoji.h.b.a(paramBundle, this.glt);
+        com.tencent.mm.plugin.emoji.h.b.a(paramBundle, this.gWm);
       }
       catch (Exception paramBundle)
       {
@@ -269,12 +267,12 @@ public class EmojiStoreV2SingleProductDialogUI
       continue;
       label757:
       localObject = new d.a(this);
-      ((d.a)localObject).aZh("");
-      ((d.a)localObject).hd(paramBundle);
-      ((d.a)localObject).zf(true);
-      paramBundle = ((d.a)localObject).fQv();
+      ((d.a)localObject).bon("");
+      ((d.a)localObject).hs(paramBundle);
+      ((d.a)localObject).Dk(true);
+      paramBundle = ((d.a)localObject).hbn();
       paramBundle.show();
-      h.a(this, paramBundle);
+      com.tencent.mm.ui.base.h.a(this, paramBundle);
     }
   }
   
@@ -282,9 +280,9 @@ public class EmojiStoreV2SingleProductDialogUI
   {
     AppMethodBeat.i(109315);
     super.onDestroy();
-    this.iNf.setOnDismissListener(null);
-    if (this.iNf.isShowing()) {
-      this.iNf.dismiss();
+    this.jzT.setOnDismissListener(null);
+    if (this.jzT.isShowing()) {
+      this.jzT.dismiss();
     }
     AppMethodBeat.o(109315);
   }
@@ -293,15 +291,15 @@ public class EmojiStoreV2SingleProductDialogUI
   {
     AppMethodBeat.i(109312);
     super.onResume();
-    if (this.glt != null)
+    if (this.gWm != null)
     {
-      EmojiInfo localEmojiInfo = k.getEmojiStorageMgr().JfU.aWl(this.glt.field_md5);
+      EmojiInfo localEmojiInfo = k.getEmojiStorageMgr().OpN.blk(this.gWm.field_md5);
       if (localEmojiInfo != null) {
-        this.glt = localEmojiInfo;
+        this.gWm = localEmojiInfo;
       }
     }
-    cjQ();
-    this.iNf.show();
+    cHR();
+    this.jzT.show();
     AppMethodBeat.o(109312);
   }
   
@@ -313,7 +311,7 @@ public class EmojiStoreV2SingleProductDialogUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2SingleProductDialogUI
  * JD-Core Version:    0.7.0.1
  */

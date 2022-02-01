@@ -7,15 +7,15 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
 import java.io.IOException;
 
 public final class c
@@ -34,11 +34,11 @@ public final class c
       public final Bitmap a(Bitmap paramAnonymousBitmap, s.a paramAnonymousa, String paramAnonymousString)
       {
         AppMethodBeat.i(27603);
-        if (s.a.iQl == paramAnonymousa) {}
+        if (s.a.jNh == paramAnonymousa) {}
         try
         {
-          h.a(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, aQV(), false);
-          ae.d("MicroMsg.UrlDrawable", "get bitmap, from %s", new Object[] { paramAnonymousa.toString() });
+          BitmapUtil.saveBitmapToImage(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+          Log.d("MicroMsg.UrlDrawable", "get bitmap, from %s", new Object[] { paramAnonymousa.toString() });
           AppMethodBeat.o(27603);
           return paramAnonymousBitmap;
         }
@@ -46,30 +46,27 @@ public final class c
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.UrlDrawable", paramAnonymousString, "", new Object[0]);
-            ae.w("MicroMsg.UrlDrawable", "save bitmap fail");
+            Log.printErrStackTrace("MicroMsg.UrlDrawable", paramAnonymousString, "", new Object[0]);
+            Log.w("MicroMsg.UrlDrawable", "save bitmap fail");
           }
         }
       }
       
       public final void a(s.a paramAnonymousa, String paramAnonymousString) {}
       
-      public final s.b aQU()
-      {
-        return null;
-      }
+      public final void ad(String paramAnonymousString, boolean paramAnonymousBoolean) {}
       
-      public final String aQV()
+      public final String blA()
       {
         AppMethodBeat.i(27604);
         Object localObject = new StringBuilder();
-        bc.aCg();
-        localObject = com.tencent.mm.model.c.azZ() + aj.ej(c.a(c.this));
+        bg.aVF();
+        localObject = com.tencent.mm.model.c.aTh() + MD5Util.getMD5String(c.a(c.this));
         AppMethodBeat.o(27604);
         return localObject;
       }
       
-      public final String aQW()
+      public final String blB()
       {
         AppMethodBeat.i(27606);
         String str = c.a(c.this);
@@ -77,7 +74,7 @@ public final class c
         return str;
       }
       
-      public final String aQX()
+      public final String blC()
       {
         AppMethodBeat.i(27605);
         String str = c.a(c.this);
@@ -85,24 +82,27 @@ public final class c
         return str;
       }
       
-      public final boolean aQY()
+      public final boolean blD()
       {
         return false;
       }
       
-      public final boolean aQZ()
+      public final boolean blE()
       {
         return false;
       }
       
-      public final Bitmap aRa()
+      public final Bitmap blF()
       {
         return null;
       }
       
-      public final void aRb() {}
+      public final void blG() {}
       
-      public final void aa(String paramAnonymousString, boolean paramAnonymousBoolean) {}
+      public final s.b blz()
+      {
+        return null;
+      }
       
       public final String getCacheKey()
       {
@@ -140,7 +140,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

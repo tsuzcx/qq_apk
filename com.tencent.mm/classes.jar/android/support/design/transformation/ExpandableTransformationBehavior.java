@@ -10,7 +10,7 @@ import android.view.View;
 public abstract class ExpandableTransformationBehavior
   extends ExpandableBehavior
 {
-  private AnimatorSet my;
+  private AnimatorSet mA;
   
   public ExpandableTransformationBehavior() {}
   
@@ -21,23 +21,23 @@ public abstract class ExpandableTransformationBehavior
   
   protected boolean a(View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.my != null) {}
+    if (this.mA != null) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        this.my.cancel();
+        this.mA.cancel();
       }
-      this.my = b(paramView1, paramView2, paramBoolean1, bool);
-      this.my.addListener(new AnimatorListenerAdapter()
+      this.mA = b(paramView1, paramView2, paramBoolean1, bool);
+      this.mA.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           ExpandableTransformationBehavior.a(ExpandableTransformationBehavior.this);
         }
       });
-      this.my.start();
+      this.mA.start();
       if (!paramBoolean2) {
-        this.my.end();
+        this.mA.end();
       }
       return true;
     }
@@ -47,7 +47,7 @@ public abstract class ExpandableTransformationBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.transformation.ExpandableTransformationBehavior
  * JD-Core Version:    0.7.0.1
  */

@@ -9,61 +9,67 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Looper;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewParent;
+import android.view.Window;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
-import com.tencent.mm.chatroom.ui.ManagerRoomByWeworkUI;
-import com.tencent.mm.g.a.ip;
-import com.tencent.mm.g.a.ip.a;
-import com.tencent.mm.g.a.nc;
-import com.tencent.mm.g.a.qv;
-import com.tencent.mm.g.a.st;
-import com.tencent.mm.g.a.vq;
-import com.tencent.mm.g.a.yh;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ad;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
-import com.tencent.mm.model.z.b;
-import com.tencent.mm.modelmulti.o.b;
-import com.tencent.mm.modelmulti.o.e;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.g.a.cc;
+import com.tencent.mm.g.a.cd;
+import com.tencent.mm.g.a.wq;
+import com.tencent.mm.g.a.zj;
+import com.tencent.mm.g.b.a.lh;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
 import com.tencent.mm.plugin.account.bind.ui.MobileFriendUI;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandCheckWxaShortLinkUI;
+import com.tencent.mm.plugin.fts.a.d;
+import com.tencent.mm.plugin.secdata.ui.SecDataUIC;
+import com.tencent.mm.plugin.secdata.ui.SecDataUIC.a;
+import com.tencent.mm.plugin.setting.model.m;
 import com.tencent.mm.plugin.setting.ui.setting.SettingsPersonalInfoUI;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo;
-import com.tencent.mm.pluginsdk.g.a;
-import com.tencent.mm.pluginsdk.ui.span.m;
-import com.tencent.mm.protocal.protobuf.dqu;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.cb;
-import com.tencent.mm.ui.HomeUI;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.story.api.o;
+import com.tencent.mm.plugin.websearch.api.ag;
+import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.pluginsdk.ui.span.i;
+import com.tencent.mm.pluginsdk.ui.span.t.b;
+import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.protocal.protobuf.egl;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.MainTabUI;
-import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.chatting.ChattingUI;
-import com.tencent.mm.ui.contact.AddressUI;
-import com.tencent.mm.ui.contact.SelectContactUI;
-import com.tencent.mm.ui.widget.a.f.a;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mm.ui.contact.e;
+import com.tencent.mm.ui.e.e;
+import com.tencent.mm.vfs.s;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.Map;
+import kotlin.g.b.p;
 
 class URISpanHandlerSet
 {
@@ -74,7 +80,7 @@ class URISpanHandlerSet
     AppMethodBeat.i(19768);
     this.mContext = null;
     if (paramContext == null) {}
-    for (paramContext = ak.getContext();; paramContext = this.mContext)
+    for (paramContext = MMApplicationContext.getContext();; paramContext = this.mContext)
     {
       this.mContext = paramContext;
       AppMethodBeat.o(19768);
@@ -91,55 +97,54 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 35, 36, 37 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(final View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, final i parami)
     {
-      AppMethodBeat.i(19676);
-      Object localObject1;
-      Object localObject2;
+      AppMethodBeat.i(231415);
+      Object localObject;
       if (paramu.type == 35) {
         for (;;)
         {
           try
           {
-            paramh = Uri.parse(paramu.url);
-            localObject1 = paramh.getQueryParameter("billno");
-            if (bu.isNullOrNil((String)localObject1))
+            paramView = Uri.parse(paramu.url);
+            parami = paramView.getQueryParameter("billno");
+            if (Util.isNullOrNil(parami))
             {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "url error, billno is null");
-              AppMethodBeat.o(19676);
+              Log.e("MicroMsg.URISpanHandlerSet", "url error, billno is null");
+              AppMethodBeat.o(231415);
               return true;
             }
-            int i = bu.getInt(paramh.getQueryParameter("scene"), 3);
+            int i = Util.getInt(paramView.getQueryParameter("scene"), 3);
             if (!(paramu.data instanceof Bundle)) {
               continue;
             }
-            paramh = ((Bundle)paramu.data).getString("chatroom_name");
-            localObject2 = new Intent();
-            ((Intent)localObject2).putExtra("bill_no", (String)localObject1);
-            ((Intent)localObject2).putExtra("enter_scene", i);
-            ((Intent)localObject2).putExtra("chatroom", paramh);
-            com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "aa", ".ui.PaylistAAUI", (Intent)localObject2);
+            paramView = ((Bundle)paramu.data).getString("chatroom_name");
+            localObject = new Intent();
+            ((Intent)localObject).putExtra("bill_no", parami);
+            ((Intent)localObject).putExtra("enter_scene", i);
+            ((Intent)localObject).putExtra("chatroom", paramView);
+            com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "aa", ".ui.PaylistAAUI", (Intent)localObject);
           }
-          catch (Exception paramh)
+          catch (Exception paramView)
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handle click new aa open detail link error: %s, url: %s", new Object[] { paramh.getMessage(), paramu.url });
+            Log.e("MicroMsg.URISpanHandlerSet", "handle click new aa open detail link error: %s, url: %s", new Object[] { paramView.getMessage(), paramu.url });
             continue;
           }
-          AppMethodBeat.o(19676);
+          AppMethodBeat.o(231415);
           return true;
           if ((paramu.data instanceof String))
           {
-            paramh = paramu.data.toString();
+            paramView = paramu.data.toString();
           }
           else
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "illegal data type, %s", new Object[] { paramu });
-            AppMethodBeat.o(19676);
+            Log.e("MicroMsg.URISpanHandlerSet", "illegal data type, %s", new Object[] { paramu });
+            AppMethodBeat.o(231415);
             return true;
           }
         }
@@ -147,73 +152,97 @@ class URISpanHandlerSet
       if (paramu.type == 37) {}
       for (;;)
       {
-        long l;
+        final long l;
         try
         {
-          paramh = Uri.parse(paramu.url).getQueryParameter("billno");
-          if (bu.isNullOrNil(paramh))
+          paramView = Uri.parse(paramu.url).getQueryParameter("billno");
+          if (Util.isNullOrNil(paramView))
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "url error, billno is null");
-            AppMethodBeat.o(19676);
+            Log.e("MicroMsg.URISpanHandlerSet", "url error, billno is null");
+            AppMethodBeat.o(231415);
             return true;
           }
           if (!(paramu.data instanceof Bundle))
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "error data!");
-            AppMethodBeat.o(19676);
+            Log.e("MicroMsg.URISpanHandlerSet", "error data!");
+            AppMethodBeat.o(231415);
             return true;
           }
-          localObject1 = (Bundle)paramu.data;
-          localObject2 = ((Bundle)localObject1).getString("chatroom_name");
-          if (bu.isNullOrNil((String)localObject2))
+          parami = (Bundle)paramu.data;
+          localObject = parami.getString("chatroom_name");
+          if (Util.isNullOrNil((String)localObject))
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "empty chatroom!");
-            AppMethodBeat.o(19676);
+            Log.e("MicroMsg.URISpanHandlerSet", "empty chatroom!");
+            AppMethodBeat.o(231415);
             return true;
           }
-          l = ((Bundle)localObject1).getLong("msg_id", -1L);
+          l = parami.getLong("msg_id", -1L);
           if (l < 0L)
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "msgId is null");
-            AppMethodBeat.o(19676);
+            Log.e("MicroMsg.URISpanHandlerSet", "msgId is null");
+            AppMethodBeat.o(231415);
             return true;
           }
-          com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131764107, -1, 2131764110, 2131756766, new URISpanHandlerSet.AAUriSpanHandler.1(this, paramh, (String)localObject2, l), null);
+          com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131766351, -1, 2131766354, 2131756929, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(19673);
+              paramAnonymousDialogInterface = new cc();
+              paramAnonymousDialogInterface.dFj.dFk = paramView;
+              paramAnonymousDialogInterface.dFj.dFl = this.dnY;
+              paramAnonymousDialogInterface.dFj.dFm = l;
+              EventCenter.instance.publish(paramAnonymousDialogInterface);
+              AppMethodBeat.o(19673);
+            }
+          }, null);
         }
-        catch (Exception paramh)
+        catch (Exception paramView)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handle click new aa close link error: %s, url: %s", new Object[] { paramh.getMessage(), paramu.url });
+          Log.e("MicroMsg.URISpanHandlerSet", "handle click new aa close link error: %s, url: %s", new Object[] { paramView.getMessage(), paramu.url });
           continue;
         }
-        AppMethodBeat.o(19676);
+        AppMethodBeat.o(231415);
         return false;
         if (paramu.type == 36) {
           try
           {
-            localObject1 = Uri.parse(paramu.url).getQueryParameter("billno");
-            if (bu.isNullOrNil((String)localObject1))
+            parami = Uri.parse(paramu.url).getQueryParameter("billno");
+            if (Util.isNullOrNil(parami))
             {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "url error, billno is null");
-              AppMethodBeat.o(19676);
+              Log.e("MicroMsg.URISpanHandlerSet", "url error, billno is null");
+              AppMethodBeat.o(231415);
               return true;
             }
-            paramh = null;
+            paramView = null;
             if ((paramu.data instanceof Bundle)) {
-              paramh = (Bundle)paramu.data;
+              paramView = (Bundle)paramu.data;
             }
-            if ((paramh == null) || (bu.isNullOrNil(paramh.getString("chatroom_name"))))
+            if ((paramView == null) || (Util.isNullOrNil(paramView.getString("chatroom_name"))))
             {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "empty chatroom!");
-              AppMethodBeat.o(19676);
+              Log.e("MicroMsg.URISpanHandlerSet", "empty chatroom!");
+              AppMethodBeat.o(231415);
               return true;
             }
-            localObject2 = paramh.getString("chatroom_name");
-            l = paramh.getLong("msg_id", -1L);
-            com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131764108, -1, 2131764109, 2131756766, new URISpanHandlerSet.AAUriSpanHandler.2(this, (String)localObject1, (String)localObject2, l), null);
+            localObject = paramView.getString("chatroom_name");
+            l = paramView.getLong("msg_id", -1L);
+            com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131766352, -1, 2131766353, 2131756929, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+              {
+                AppMethodBeat.i(19674);
+                paramAnonymousDialogInterface = new cd();
+                paramAnonymousDialogInterface.dFn.dFk = parami;
+                paramAnonymousDialogInterface.dFn.dFl = this.dnY;
+                paramAnonymousDialogInterface.dFn.dFm = l;
+                EventCenter.instance.publish(paramAnonymousDialogInterface);
+                AppMethodBeat.o(19674);
+              }
+            }, null);
           }
-          catch (Exception paramh)
+          catch (Exception paramView)
           {
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handle click new aa urge notify link error: %s, url: %s", new Object[] { paramh.getMessage(), paramu.url });
+            Log.e("MicroMsg.URISpanHandlerSet", "handle click new aa urge notify link error: %s, url: %s", new Object[] { paramView.getMessage(), paramu.url });
           }
         }
       }
@@ -224,7 +253,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19675);
       if (paramString.trim().toLowerCase().startsWith("weixin://weixinnewaa/opendetail"))
@@ -259,38 +288,38 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 44 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19677);
+      AppMethodBeat.i(231416);
       if (paramu.type == 44)
       {
-        paramh = Uri.parse("geo:0,0?q=" + Uri.encode(paramu.url));
-        paramu = new Intent("android.intent.action.VIEW");
-        paramu.setData(paramh);
-        paramu.addFlags(268435456);
-        if (paramu.resolveActivity(ak.getContext().getPackageManager()) != null)
+        paramu = Uri.parse("geo:0,0?q=" + Uri.encode(paramu.url));
+        paramView = new Intent("android.intent.action.VIEW");
+        paramView.setData(paramu);
+        paramView.addFlags(268435456);
+        if (paramView.resolveActivity(MMApplicationContext.getContext().getPackageManager()) != null)
         {
-          paramh = ak.getContext();
-          paramu = new com.tencent.mm.hellhoundlib.b.a().bc(paramu);
-          com.tencent.mm.hellhoundlib.a.a.a(paramh, paramu.ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$AddressUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramh.startActivity((Intent)paramu.mt(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramh, "com/tencent/mm/app/plugin/URISpanHandlerSet$AddressUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          com.tencent.mm.plugin.report.service.g.yxI.f(12809, new Object[] { Integer.valueOf(9), "" });
+          paramu = MMApplicationContext.getContext();
+          paramView = new com.tencent.mm.hellhoundlib.b.a().bl(paramView);
+          com.tencent.mm.hellhoundlib.a.a.a(paramu, paramView.axQ(), "com/tencent/mm/app/plugin/URISpanHandlerSet$AddressUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramu.startActivity((Intent)paramView.pG(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramu, "com/tencent/mm/app/plugin/URISpanHandlerSet$AddressUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.plugin.report.service.h.CyF.a(12809, new Object[] { Integer.valueOf(9), "" });
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.f(12809, new Object[] { Integer.valueOf(8), "" });
-          AppMethodBeat.o(19677);
+          com.tencent.mm.plugin.report.service.h.CyF.a(12809, new Object[] { Integer.valueOf(8), "" });
+          AppMethodBeat.o(231416);
           return true;
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.URISpanHandlerSet", "Cannot find map app");
+          Log.w("MicroMsg.URISpanHandlerSet", "Cannot find map app");
         }
       }
-      AppMethodBeat.o(19677);
+      AppMethodBeat.o(231416);
       return false;
     }
     
@@ -299,7 +328,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       return null;
     }
@@ -314,32 +343,32 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 32 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19679);
+      AppMethodBeat.i(231417);
       if (paramu.type == 32)
       {
-        paramu = paramu.url.replace("weixin://alphainstall?", "");
-        paramh = Uri.parse(paramu).getQueryParameter("md5");
-        paramh = com.tencent.mm.loader.j.b.asj() + paramh + ".apk";
-        if (com.tencent.mm.vfs.o.fB(paramh)) {
-          com.tencent.mm.pluginsdk.model.app.r.b(ak.getContext(), paramh, null, false);
+        paramView = paramu.url.replace("weixin://alphainstall?", "");
+        paramu = Uri.parse(paramView).getQueryParameter("md5");
+        paramu = com.tencent.mm.loader.j.b.aKJ() + paramu + ".apk";
+        if (s.YS(paramu)) {
+          com.tencent.mm.pluginsdk.model.app.r.b(MMApplicationContext.getContext(), paramu, null, false);
         }
         for (;;)
         {
-          AppMethodBeat.o(19679);
+          AppMethodBeat.o(231417);
           return true;
-          paramh = new Intent();
-          paramh.putExtra("rawUrl", paramu.toString());
-          com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "webview", ".ui.tools.WebViewUI", paramh);
+          paramu = new Intent();
+          paramu.putExtra("rawUrl", paramView.toString());
+          com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "webview", ".ui.tools.WebViewUI", paramu);
         }
       }
-      AppMethodBeat.o(19679);
+      AppMethodBeat.o(231417);
       return false;
     }
     
@@ -348,7 +377,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19678);
       if (paramString.trim().toLowerCase().startsWith("weixin://alphainstall?"))
@@ -362,60 +391,17 @@ class URISpanHandlerSet
     }
   }
   
-  @URISpanHandlerSet.a
-  class AppBrandLinkSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    AppBrandLinkSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 45 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19680);
-      if (paramu.type == 45)
-      {
-        if (paramh != null)
-        {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "AppBrandLinkSpanHandler click appbrandlink");
-          paramh.b(paramu);
-          AppMethodBeat.o(19680);
-          return true;
-        }
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "clickCallback is null, return");
-      }
-      AppMethodBeat.o(19680);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      return null;
-    }
-  }
-  
   abstract class BaseUriSpanHandler
   {
     public BaseUriSpanHandler() {}
     
-    abstract int[] Nd();
+    abstract int[] Xp();
     
-    abstract boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh);
+    abstract boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami);
     
     abstract boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle);
     
-    abstract com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString);
+    abstract com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString);
   }
   
   @URISpanHandlerSet.a
@@ -427,27 +413,27 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 5 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19682);
+      AppMethodBeat.i(231419);
       if (paramu.type == 5)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
-        MMWizardActivity.al(URISpanHandlerSet.a(URISpanHandlerSet.this), new Intent(URISpanHandlerSet.a(URISpanHandlerSet.this), BindMContactIntroUI.class));
-        if (paramh != null) {
-          paramh.b(paramu);
+        MMWizardActivity.ay(URISpanHandlerSet.a(URISpanHandlerSet.this), new Intent(URISpanHandlerSet.a(URISpanHandlerSet.this), BindMContactIntroUI.class));
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19682);
+        AppMethodBeat.o(231419);
         return true;
       }
-      AppMethodBeat.o(19682);
+      AppMethodBeat.o(231419);
       return false;
     }
     
@@ -460,7 +446,7 @@ class URISpanHandlerSet
         if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
           paramString.addFlags(268435456);
         }
-        MMWizardActivity.al(URISpanHandlerSet.a(URISpanHandlerSet.this), paramString);
+        MMWizardActivity.ay(URISpanHandlerSet.a(URISpanHandlerSet.this), paramString);
         AppMethodBeat.o(19683);
         return true;
       }
@@ -468,7 +454,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19681);
       if (paramString.trim().startsWith("weixin://setting/bindphone"))
@@ -483,89 +469,6 @@ class URISpanHandlerSet
   }
   
   @URISpanHandlerSet.a
-  class BizMsgMenuUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    BizMsgMenuUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 43 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19685);
-      if (43 == paramu.type)
-      {
-        if (bu.isNullOrNil(paramu.username))
-        {
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler Username is null.");
-          AppMethodBeat.o(19685);
-          return true;
-        }
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler, url:%s", new Object[] { paramu.url });
-        Object localObject = Uri.parse(paramu.url.trim());
-        paramh = ((Uri)localObject).getQueryParameter("msgmenuid");
-        localObject = ((Uri)localObject).getQueryParameter("msgmenucontent");
-        com.tencent.mm.plugin.report.service.g.yxI.f(14522, new Object[] { bu.nullAsNil(paramh), paramu.username });
-        if ((bu.isNullOrNil(paramh)) || (bu.isNullOrNil((String)localObject)))
-        {
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler id or msgContent is null.");
-          AppMethodBeat.o(19685);
-          return true;
-        }
-        try
-        {
-          localObject = URLDecoder.decode((String)localObject, "UTF-8");
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("bizmsgmenuid", paramh);
-          paramh = com.tencent.mm.modelmulti.o.Gz(paramu.username);
-          paramh.toUser = paramu.username;
-          paramh.content = ((String)localObject);
-          paramh.type = x.Bb(paramu.username);
-          paramh.dEu = 1;
-          paramh.iiU = localHashMap;
-          paramh.iiV = 5;
-          paramh.aJO().execute();
-          AppMethodBeat.o(19685);
-          return true;
-        }
-        catch (UnsupportedEncodingException paramu)
-        {
-          for (;;)
-          {
-            com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler exp, msg = %s", new Object[] { paramu.getMessage() });
-          }
-        }
-      }
-      AppMethodBeat.o(19685);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19684);
-      if (paramString.trim().startsWith("weixin://bizmsgmenu"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 43, null);
-        AppMethodBeat.o(19684);
-        return paramString;
-      }
-      AppMethodBeat.o(19684);
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
   class CardUriSpanHandler
     extends URISpanHandlerSet.BaseUriSpanHandler
   {
@@ -574,12 +477,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[0];
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -591,12 +494,12 @@ class URISpanHandlerSet
       {
         paramString = null;
         if (paramu != null) {
-          paramString = paramu.fcN().toString();
+          paramString = paramu.glZ().toString();
         }
         paramu = new Intent();
         paramu.putExtra("user_name", paramString);
         paramu.putExtra("view_type", 1);
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "card", ".ui.CardViewUI", paramu);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "card", ".ui.CardViewUI", paramu);
         AppMethodBeat.o(19686);
         return true;
       }
@@ -604,342 +507,8 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class ContactUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    ContactUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 23, 21, 22, 2 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19688);
-      int i = paramu.type;
-      if ((i == 23) || (i == 21) || (i == 22) || (i == 2))
-      {
-        Object localObject1 = (ad)paramu.aY(ad.class);
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        if (localObject1 == null)
-        {
-          com.tencent.mm.ui.base.h.c(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760689), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131755906), true);
-          AppMethodBeat.o(19688);
-          return false;
-        }
-        if (((ad)localObject1).getType().equals("@t.qq.com"))
-        {
-          if (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azO().arD("@t.qq.com") == null) {
-            break label460;
-          }
-          i = 1;
-          if (i == 0) {
-            com.tencent.mm.ui.base.h.c(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760689), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131755906), true);
-          }
-        }
-        Object localObject2;
-        if (((ad)localObject1).getType().equals("@domain.android"))
-        {
-          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azO().dpd();
-          if (((List)localObject2).size() <= 0) {
-            break label472;
-          }
-          i = 0;
-          label229:
-          if (i >= ((List)localObject2).size()) {
-            break label472;
-          }
-          if (!((cb)((List)localObject2).get(i)).isEnable()) {
-            break label465;
-          }
-        }
-        label460:
-        label465:
-        label472:
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            com.tencent.mm.ui.base.h.c(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760689), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131755906), true);
-          }
-          localObject2 = new Intent();
-          ((Intent)localObject2).setClass(URISpanHandlerSet.a(URISpanHandlerSet.this), SelectContactUI.class);
-          ((Intent)localObject2).putExtra("Contact_GroupFilter_Type", ((ad)localObject1).getType()).putExtra("Contact_GroupFilter_Str", ((ad)localObject1).aBL()).putExtra("Contact_GroupFilter_DisplayName", ((ad)localObject1).adF());
-          ((Intent)localObject2).addFlags(268435456);
-          localObject1 = URISpanHandlerSet.a(URISpanHandlerSet.this);
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$ContactUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/app/plugin/URISpanHandlerSet$ContactUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          if (paramh != null) {
-            paramh.b(paramu);
-          }
-          AppMethodBeat.o(19688);
-          return true;
-          i = 0;
-          break;
-          i += 1;
-          break label229;
-        }
-      }
-      AppMethodBeat.o(19688);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      AppMethodBeat.i(19689);
-      if ((paramString.equals("weixin://contacts/microblog/")) || (paramString.equals("weixin://contacts/micromessenger/")) || (paramString.equals("weixin://contacts/all/")))
-      {
-        paramu = com.tencent.mm.model.ae.Bw(URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760134));
-        if (paramString.equals("weixin://contacts/microblog/")) {
-          paramu = com.tencent.mm.model.ae.Bw(URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760133));
-        }
-        if (paramString.equals("weixin://contacts/micromessenger/")) {
-          paramu = com.tencent.mm.model.ae.Bw(URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760134));
-        }
-        if (paramString.equals("weixin://contacts/all/")) {
-          paramu = com.tencent.mm.model.ae.Bw(URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760083));
-        }
-        paramString = new Intent();
-        paramString.setClass(URISpanHandlerSet.a(URISpanHandlerSet.this), SelectContactUI.class);
-        paramString.putExtra("Contact_GroupFilter_Type", paramu.getType()).putExtra("Contact_GroupFilter_Str", paramu.aBL()).putExtra("Contact_GroupFilter_DisplayName", paramu.adF());
-        paramString.addFlags(268435456);
-        AppMethodBeat.o(19689);
-        return true;
-      }
-      AppMethodBeat.o(19689);
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      Object localObject = null;
-      AppMethodBeat.i(19687);
-      if (paramString.trim().equals("weixin://contacts/all/")) {
-        localObject = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 23, new ad("@all.android", null, URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760083), null, true, true));
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(19687);
-        return localObject;
-        if (paramString.trim().equals("weixin://contacts/microblog/"))
-        {
-          localObject = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 22, com.tencent.mm.model.ae.Bw(URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760133)));
-        }
-        else if (paramString.trim().equals("weixin://contacts/micromessenger/"))
-        {
-          localObject = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 2, new ad("@micromsg.qq.com", null, URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760134), null, true, true));
-        }
-        else if (paramString.trim().startsWith("weixin://contacts/"))
-        {
-          localObject = paramString.trim().substring(0, paramString.trim().length() - 1);
-          int i = ((String)localObject).lastIndexOf("/");
-          if (i == -1)
-          {
-            AppMethodBeat.o(19687);
-            return null;
-          }
-          localObject = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 21, com.tencent.mm.model.ae.aL("@".concat(String.valueOf(((String)localObject).substring(i + 1))), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760085)));
-        }
-      }
-    }
-  }
-  
-  @URISpanHandlerSet.a(Ne=URISpanHandlerSet.PRIORITY.LOW)
-  class DeeplinkUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    DeeplinkUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 30 };
-    }
-    
-    final boolean a(final com.tencent.mm.pluginsdk.ui.applet.u paramu, final com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19695);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "DeeplinkUriSpanHandler handleSpanClick %d, %s", new Object[] { Integer.valueOf(paramu.type), paramu.url });
-      if (paramh != null) {}
-      for (paramh = (String)paramh.a(paramu);; paramh = null)
-      {
-        if (paramu.type == 30)
-        {
-          paramu = bu.nullAsNil(paramu.url);
-          final com.tencent.mm.api.c localc;
-          if ((paramu.startsWith("weixin://shieldBrandMsg/")) || (paramu.startsWith("weixin://receiveBrandMsg/")))
-          {
-            if (bu.isNullOrNil(paramh))
-            {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "DeeplinkUriSpanHandler username is null");
-              AppMethodBeat.o(19695);
-              return true;
-            }
-            localc = com.tencent.mm.al.g.eX(paramh);
-            if (localc == null)
-            {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "DeeplinkUriSpanHandler BizInfo is null");
-              AppMethodBeat.o(19695);
-              return true;
-            }
-            if (paramu.startsWith("weixin://shieldBrandMsg/")) {
-              com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131764392, 2131755906, 2131764391, 2131756766, new DialogInterface.OnClickListener()
-              {
-                public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-                {
-                  AppMethodBeat.i(19690);
-                  paramAnonymousInt = localc.field_brandFlag;
-                  localc.field_brandFlag |= 0x1;
-                  com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "shield biz msg %s, %s, old = %d, new = %d", new Object[] { paramu, paramh, Integer.valueOf(paramAnonymousInt), Integer.valueOf(localc.field_brandFlag) });
-                  com.tencent.mm.al.g.h(localc);
-                  AppMethodBeat.o(19690);
-                }
-              }, null);
-            }
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(19695);
-            return true;
-            if (paramu.startsWith("weixin://receiveBrandMsg/"))
-            {
-              com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131764390, 2131755906, 2131764389, 2131756766, new DialogInterface.OnClickListener()
-              {
-                public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-                {
-                  AppMethodBeat.i(19691);
-                  paramAnonymousInt = localc.field_brandFlag;
-                  localc.field_brandFlag &= 0xFFFFFFFE;
-                  com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "receive biz msg %s, %s, old = %d, new = %d", new Object[] { paramu, paramh, Integer.valueOf(paramAnonymousInt), Integer.valueOf(localc.field_brandFlag) });
-                  com.tencent.mm.al.g.h(localc);
-                  AppMethodBeat.o(19691);
-                }
-              }, null);
-              continue;
-              if (com.tencent.mm.pluginsdk.g.v(Uri.parse(paramu)))
-              {
-                com.tencent.mm.pluginsdk.g.K(URISpanHandlerSet.a(URISpanHandlerSet.this), paramh, paramu);
-              }
-              else if (paramu.startsWith("weixin://receiveWeAppKFMsg"))
-              {
-                if (bu.isNullOrNil(paramh))
-                {
-                  com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "DeeplinkUriSpanHandler username is null, handle the BUILTIN_RECEIVE_WEAPP_KFMSG ,  the herfUrl is %s", new Object[] { paramu });
-                  AppMethodBeat.o(19695);
-                  return true;
-                }
-                com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131755636, 2131755906, 2131755635, 2131756766, new DialogInterface.OnClickListener()
-                {
-                  public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-                  {
-                    AppMethodBeat.i(19692);
-                    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "AppBrandServiceHelper switchTo to receive msg for username %s", new Object[] { paramh });
-                    com.tencent.mm.ui.appbrand.e.l(URISpanHandlerSet.a(URISpanHandlerSet.this), paramh, true);
-                    AppMethodBeat.o(19692);
-                  }
-                }, null);
-              }
-              else if (paramu.startsWith("weixin://xmail/bind"))
-              {
-                paramu = new Intent().putExtra("Contact_User", "qqmail");
-                paramu.putExtra("key_need_rebind_xmail", true);
-                com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramu);
-              }
-              else
-              {
-                com.tencent.mm.pluginsdk.g.a(URISpanHandlerSet.a(URISpanHandlerSet.this), paramu, paramh, 1, paramu, null);
-              }
-            }
-          }
-        }
-        AppMethodBeat.o(19695);
-        return false;
-      }
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, final com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      AppMethodBeat.i(19696);
-      if ((bu.isNullOrNil(paramString)) || (paramBundle == null))
-      {
-        if (paramString == null)
-        {
-          paramBoolean = true;
-          if (paramBundle != null) {
-            break label71;
-          }
-        }
-        label71:
-        for (boolean bool = true;; bool = false)
-        {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "url is null ? %b, paramsBundle is null ? %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
-          AppMethodBeat.o(19696);
-          return false;
-          paramBoolean = false;
-          break;
-        }
-      }
-      if (com.tencent.mm.pluginsdk.g.v(Uri.parse(paramString)))
-      {
-        int j = paramBundle.getInt("key_scene", -1);
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.URISpanHandlerSet", "DeeplinkUriSpanHandler jump, %d, %s", new Object[] { Integer.valueOf(j), paramString });
-        int i = j;
-        if (j == -1) {
-          i = 5;
-        }
-        paramu = com.tencent.mm.ui.base.h.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "", true, null);
-        com.tencent.mm.pluginsdk.g.a(URISpanHandlerSet.a(URISpanHandlerSet.this), paramString, i, new g.a()
-        {
-          public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn, boolean paramAnonymousBoolean)
-          {
-            AppMethodBeat.i(19693);
-            if ((paramu != null) && (paramu.isShowing())) {
-              paramu.dismiss();
-            }
-            if ((paramAnonymousn != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousn instanceof com.tencent.mm.modelsimple.ac)))
-            {
-              paramAnonymousString = ((com.tencent.mm.modelsimple.ac)paramAnonymousn).aLA();
-              if ((paramAnonymousString != null) && (URISpanHandlerSet.a(URISpanHandlerSet.this) != null)) {
-                t.makeText(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131755906) + " : " + bu.nullAsNil(paramAnonymousString.HXL), 0).show();
-              }
-            }
-            AppMethodBeat.o(19693);
-          }
-        });
-        AppMethodBeat.o(19696);
-        return true;
-      }
-      AppMethodBeat.o(19696);
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19694);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "DeeplinkUriSpanHandler getHrefFromUrl %s", new Object[] { paramString });
-      if (paramString.trim().toLowerCase().startsWith("weixin://"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 30, null);
-        AppMethodBeat.o(19694);
-        return paramString;
-      }
-      AppMethodBeat.o(19694);
       return null;
     }
   }
@@ -953,31 +522,31 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 29 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19698);
+      AppMethodBeat.i(231423);
       if (paramu.type == 29)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("download_entrance_scene", 21);
-        localIntent.putExtra("extra_id", (String)paramu.aY(String.class));
-        localIntent.putExtra("preceding_scence", 3);
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "emoji", ".ui.EmojiStoreDetailUI", localIntent);
-        if (paramh != null) {
-          paramh.b(paramu);
+        paramView = new Intent();
+        paramView.putExtra("download_entrance_scene", 21);
+        paramView.putExtra("extra_id", (String)paramu.ba(String.class));
+        paramView.putExtra("preceding_scence", 3);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "emoji", ".ui.EmojiStoreDetailUI", paramView);
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19698);
+        AppMethodBeat.o(231423);
         return true;
       }
-      AppMethodBeat.o(19698);
+      AppMethodBeat.o(231423);
       return false;
     }
     
@@ -986,7 +555,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19697);
       if (paramString.trim().startsWith("weixin://emoticonstore/"))
@@ -1014,61 +583,61 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 55 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(186316);
+      AppMethodBeat.i(231425);
       if (paramu.type == 55)
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickEnterChatRoomSystemMsgUrl");
+        Log.i("MicroMsg.URISpanHandlerSet", "handleClickEnterChatRoomSystemMsgUrl");
         try
         {
-          paramh = paramu.url;
-          int i = paramh.trim().lastIndexOf("/");
-          if ((i >= 0) && (i < paramh.trim().length() - 1))
+          paramView = paramu.url;
+          int i = paramView.trim().lastIndexOf("/");
+          if ((i >= 0) && (i < paramView.trim().length() - 1))
           {
-            paramh = paramh.trim().substring(i + 1);
-            if (x.wb(paramh))
+            paramView = paramView.trim().substring(i + 1);
+            if (ab.Eq(paramView))
             {
-              bc.aCg();
-              localObject1 = com.tencent.mm.model.c.azF().BH(paramh);
-              if ((localObject1 == null) || ((int)((com.tencent.mm.contact.c)localObject1).ght == 0))
+              bg.aVF();
+              parami = com.tencent.mm.model.c.aSN().Kn(paramView);
+              if ((parami == null) || ((int)parami.gMZ == 0))
               {
-                localObject1 = new an();
-                ((an)localObject1).setUsername(paramh);
-                bc.aCg();
-                com.tencent.mm.model.c.azF().an((an)localObject1);
+                parami = new as();
+                parami.setUsername(paramView);
+                bg.aVF();
+                com.tencent.mm.model.c.aSN().ap(parami);
               }
             }
-            Object localObject2 = new Intent(URISpanHandlerSet.a(URISpanHandlerSet.this), ChattingUI.class).putExtra("Chat_User", paramh).putExtra("Chat_Mode", 1);
+            Object localObject = new Intent(URISpanHandlerSet.a(URISpanHandlerSet.this), ChattingUI.class).putExtra("Chat_User", paramView).putExtra("Chat_Mode", 1);
             if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
-              ((Intent)localObject2).addFlags(268435456);
+              ((Intent)localObject).addFlags(268435456);
             }
-            Object localObject1 = URISpanHandlerSet.a(URISpanHandlerSet.this);
-            localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-            com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$EnterChatRoomUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
-            com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/app/plugin/URISpanHandlerSet$EnterChatRoomUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            if (paramu.fmC == 1)
+            parami = URISpanHandlerSet.a(URISpanHandlerSet.this);
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(parami, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/app/plugin/URISpanHandlerSet$EnterChatRoomUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            parami.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+            com.tencent.mm.hellhoundlib.a.a.a(parami, "com/tencent/mm/app/plugin/URISpanHandlerSet$EnterChatRoomUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            if (paramu.fRg == 1)
             {
-              localObject1 = bu.bI(paramu.chatroomName, "");
-              com.tencent.mm.chatroom.c.b.g(bu.bI(paramh, ""), (String)localObject1, 3);
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickEnterChatRoomSystemMsgUrl migrate(%s -> %s)", new Object[] { localObject1, bu.bI(paramh, "") });
+              parami = Util.nullAs(paramu.chatroomName, "");
+              com.tencent.mm.chatroom.c.b.f(Util.nullAs(paramView, ""), parami, 3);
+              Log.i("MicroMsg.URISpanHandlerSet", "handleClickEnterChatRoomSystemMsgUrl migrate(%s -> %s)", new Object[] { parami, Util.nullAs(paramView, "") });
             }
-            AppMethodBeat.o(186316);
+            AppMethodBeat.o(231425);
             return true;
           }
         }
-        catch (Exception paramh)
+        catch (Exception paramView)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handle click link error: %s, url: %s", new Object[] { paramh.getMessage(), paramu.url });
+          Log.e("MicroMsg.URISpanHandlerSet", "handle click link error: %s, url: %s", new Object[] { paramView.getMessage(), paramu.url });
         }
       }
-      AppMethodBeat.o(186316);
+      AppMethodBeat.o(231425);
       return false;
     }
     
@@ -1077,16 +646,16 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
-      AppMethodBeat.i(186315);
+      AppMethodBeat.i(231424);
       if (paramString.trim().toLowerCase().startsWith("weixin://jump/chatroom/"))
       {
         paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 55, null);
-        AppMethodBeat.o(186315);
+        AppMethodBeat.o(231424);
         return paramString;
       }
-      AppMethodBeat.o(186315);
+      AppMethodBeat.o(231424);
       return null;
     }
   }
@@ -1100,12 +669,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[0];
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -1119,16 +688,16 @@ class URISpanHandlerSet
         if ((i >= 0) && (i < paramString.trim().length() - 1))
         {
           paramString = paramString.trim().substring(i + 1);
-          if (x.wb(paramString))
+          if (ab.Eq(paramString))
           {
-            bc.aCg();
-            paramu = com.tencent.mm.model.c.azF().BH(paramString);
-            if ((paramu == null) || ((int)paramu.ght == 0))
+            bg.aVF();
+            paramu = com.tencent.mm.model.c.aSN().Kn(paramString);
+            if ((paramu == null) || ((int)paramu.gMZ == 0))
             {
-              paramu = new an();
+              paramu = new as();
               paramu.setUsername(paramString);
-              bc.aCg();
-              com.tencent.mm.model.c.azF().an(paramu);
+              bg.aVF();
+              com.tencent.mm.model.c.aSN().ap(paramu);
             }
           }
           paramu = new Intent(URISpanHandlerSet.a(URISpanHandlerSet.this), ChattingUI.class).putExtra("Chat_User", paramString).putExtra("Chat_Mode", 1);
@@ -1136,9 +705,9 @@ class URISpanHandlerSet
             paramu.addFlags(268435456);
           }
           paramString = URISpanHandlerSet.a(URISpanHandlerSet.this);
-          paramu = new com.tencent.mm.hellhoundlib.b.a().bc(paramu);
-          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramu.ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$EnterRoomUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramString.startActivity((Intent)paramu.mt(0));
+          paramu = new com.tencent.mm.hellhoundlib.b.a().bl(paramu);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramu.axQ(), "com/tencent/mm/app/plugin/URISpanHandlerSet$EnterRoomUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramu.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/app/plugin/URISpanHandlerSet$EnterRoomUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(19699);
           return true;
@@ -1148,7 +717,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       return null;
     }
@@ -1163,38 +732,37 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 31 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19701);
-      Intent localIntent;
+      AppMethodBeat.i(231426);
       if (paramu.type == 31)
       {
-        localIntent = new Intent();
-        if (paramh == null)
+        paramView = new Intent();
+        if (parami == null)
         {
-          AppMethodBeat.o(19701);
+          AppMethodBeat.o(231426);
           return false;
         }
-        paramu = (String)paramh.a(paramu);
-        localIntent.putExtra("k_username", paramu);
-        if ((bu.isNullOrNil(paramu)) || (!paramu.endsWith("@chatroom"))) {
-          break label140;
+        paramu = (String)parami.a(paramu);
+        paramView.putExtra("k_username", paramu);
+        if ((Util.isNullOrNil(paramu)) || (!paramu.endsWith("@chatroom"))) {
+          break label134;
         }
       }
-      label140:
+      label134:
       for (int i = 36;; i = 39)
       {
-        localIntent.putExtra("showShare", false);
-        localIntent.putExtra("rawUrl", String.format("https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d#wechat_redirect", new Object[] { Integer.valueOf(i) }));
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "webview", ".ui.tools.WebViewUI", localIntent);
-        AppMethodBeat.o(19701);
+        paramView.putExtra("showShare", false);
+        paramView.putExtra("rawUrl", String.format(e.e.OyU, new Object[] { Integer.valueOf(i) }));
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "webview", ".ui.tools.WebViewUI", paramView);
+        AppMethodBeat.o(231426);
         return true;
-        AppMethodBeat.o(19701);
+        AppMethodBeat.o(231426);
         return false;
       }
     }
@@ -1204,7 +772,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19700);
       if (paramString.trim().toLowerCase().equals("weixin://expose/"))
@@ -1227,23 +795,23 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 34 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19703);
+      AppMethodBeat.i(231427);
       if (paramu.type == 34)
       {
-        paramh = paramu.url.trim().replace("weixin://feedback/next/", "");
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.URISpanHandlerSet", "FeedbackUriSpanHandler, url:%s, content:%s", new Object[] { paramu.url, paramh });
-        bc.ajj().a(new com.tencent.mm.plugin.setting.model.l(com.tencent.mm.compatible.deviceinfo.q.aaM(), paramh, 8), 0);
-        AppMethodBeat.o(19703);
+        paramView = paramu.url.trim().replace("weixin://feedback/next/", "");
+        Log.d("MicroMsg.URISpanHandlerSet", "FeedbackUriSpanHandler, url:%s, content:%s", new Object[] { paramu.url, paramView });
+        bg.azz().a(new m(q.aoL(), paramView, 8), 0);
+        AppMethodBeat.o(231427);
         return true;
       }
-      AppMethodBeat.o(19703);
+      AppMethodBeat.o(231427);
       return false;
     }
     
@@ -1252,7 +820,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19702);
       if (paramString.trim().startsWith("weixin://feedback/next/"))
@@ -1275,26 +843,32 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 50 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19704);
+      AppMethodBeat.i(231428);
+      if (parami != null) {
+        parami.a(paramu);
+      }
       if (paramu.type == 50)
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "FlightNumberSpanHandler click %s", new Object[] { paramu.url });
+        Log.i("MicroMsg.URISpanHandlerSet", "FlightNumberSpanHandler click %s", new Object[] { paramu.url });
         if ((paramu.data == null) || (!(paramu.data instanceof Bundle))) {
-          break label96;
+          break label120;
         }
       }
-      label96:
+      label120:
       for (long l = ((Bundle)paramu.data).getLong("msgSvrId");; l = 0L)
       {
-        ((com.tencent.mm.plugin.box.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.box.a.b.class)).b(URISpanHandlerSet.a(URISpanHandlerSet.this), paramu.url, l);
-        AppMethodBeat.o(19704);
+        ((com.tencent.mm.plugin.box.a.c)g.af(com.tencent.mm.plugin.box.a.c.class)).b(URISpanHandlerSet.a(URISpanHandlerSet.this), paramu.url, l);
+        if (parami != null) {
+          parami.b(paramu);
+        }
+        AppMethodBeat.o(231428);
         return true;
       }
     }
@@ -1304,74 +878,8 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class FlowStatUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    FlowStatUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 16 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19706);
-      if (paramu.type == 16)
-      {
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        LauncherUI localLauncherUI = LauncherUI.getInstance();
-        if (localLauncherUI != null) {
-          localLauncherUI.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        if (paramh != null) {
-          paramh.b(paramu);
-        }
-        AppMethodBeat.o(19706);
-        return true;
-      }
-      AppMethodBeat.o(19706);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      AppMethodBeat.i(19707);
-      if (paramString.equals("weixin://flowstat"))
-      {
-        paramString = LauncherUI.getInstance();
-        if (paramString != null) {
-          paramString.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        AppMethodBeat.o(19707);
-        return true;
-      }
-      AppMethodBeat.o(19707);
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19705);
-      if (paramString.trim().startsWith("weixin://flowstat"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 16, null);
-        AppMethodBeat.o(19705);
-        return paramString;
-      }
-      AppMethodBeat.o(19705);
       return null;
     }
   }
@@ -1385,32 +893,32 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 20 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19709);
+      AppMethodBeat.i(231430);
       if (paramu.type == 20)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
         Object localObject = new Intent(URISpanHandlerSet.a(URISpanHandlerSet.this), MobileFriendUI.class);
-        Context localContext = URISpanHandlerSet.a(URISpanHandlerSet.this);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$FriendMobileUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/app/plugin/URISpanHandlerSet$FriendMobileUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        if (paramh != null) {
-          paramh.b(paramu);
+        paramView = URISpanHandlerSet.a(URISpanHandlerSet.this);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/app/plugin/URISpanHandlerSet$FriendMobileUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/app/plugin/URISpanHandlerSet$FriendMobileUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19709);
+        AppMethodBeat.o(231430);
         return true;
       }
-      AppMethodBeat.o(19709);
+      AppMethodBeat.o(231430);
       return false;
     }
     
@@ -1424,9 +932,9 @@ class URISpanHandlerSet
           paramu.addFlags(268435456);
         }
         paramString = URISpanHandlerSet.a(URISpanHandlerSet.this);
-        paramu = new com.tencent.mm.hellhoundlib.b.a().bc(paramu);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, paramu.ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$FriendMobileUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString.startActivity((Intent)paramu.mt(0));
+        paramu = new com.tencent.mm.hellhoundlib.b.a().bl(paramu);
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, paramu.axQ(), "com/tencent/mm/app/plugin/URISpanHandlerSet$FriendMobileUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString.startActivity((Intent)paramu.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/app/plugin/URISpanHandlerSet$FriendMobileUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(19710);
         return true;
@@ -1435,7 +943,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19708);
       if (paramString.trim().startsWith("weixin://findfriend/mobile"))
@@ -1458,27 +966,27 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 17 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19712);
+      AppMethodBeat.i(231431);
       if (paramu.type == 17)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
-        com.tencent.mm.br.d.Q(URISpanHandlerSet.a(URISpanHandlerSet.this), "subapp", ".ui.pluginapp.ContactSearchUI");
-        if (paramh != null) {
-          paramh.b(paramu);
+        com.tencent.mm.br.c.V(URISpanHandlerSet.a(URISpanHandlerSet.this), "subapp", ".ui.pluginapp.ContactSearchUI");
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19712);
+        AppMethodBeat.o(231431);
         return true;
       }
-      AppMethodBeat.o(19712);
+      AppMethodBeat.o(231431);
       return false;
     }
     
@@ -1491,7 +999,7 @@ class URISpanHandlerSet
         if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
           paramString.addFlags(268435456);
         }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "subapp", ".ui.pluginapp.ContactSearchUI", paramString);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "subapp", ".ui.pluginapp.ContactSearchUI", paramString);
         AppMethodBeat.o(19713);
         return true;
       }
@@ -1499,7 +1007,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19711);
       if (paramString.trim().startsWith("weixin://findfriend/search"))
@@ -1522,27 +1030,27 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 18 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19715);
+      AppMethodBeat.i(231432);
       if (paramu.type == 18)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
-        com.tencent.mm.br.d.Q(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.qrcode.ShareMicroMsgChoiceUI");
-        if (paramh != null) {
-          paramh.b(paramu);
+        com.tencent.mm.br.c.V(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.qrcode.ShareMicroMsgChoiceUI");
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19715);
+        AppMethodBeat.o(231432);
         return true;
       }
-      AppMethodBeat.o(19715);
+      AppMethodBeat.o(231432);
       return false;
     }
     
@@ -1555,7 +1063,7 @@ class URISpanHandlerSet
         if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
           paramString.addFlags(268435456);
         }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.qrcode.ShareMicroMsgChoiceUI", paramString);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.qrcode.ShareMicroMsgChoiceUI", paramString);
         AppMethodBeat.o(19716);
         return true;
       }
@@ -1563,7 +1071,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19714);
       if (paramString.trim().startsWith("weixin://findfriend/share"))
@@ -1586,39 +1094,39 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 46, 47 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19718);
+      AppMethodBeat.i(231433);
       if (paramu.type == 46)
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "go to honey pay proxy");
+        Log.i("MicroMsg.URISpanHandlerSet", "go to honey pay proxy");
         if ((paramu.data != null) && ((paramu.data instanceof Bundle)))
         {
-          paramh = Uri.parse(paramu.url);
-          paramu = paramh.getQueryParameter("cardNo");
-          boolean bool = paramh.getQueryParameter("isPayer").equals("1");
-          paramh = new Intent();
-          paramh.putExtra("key_card_no", paramu);
-          paramh.putExtra("key_is_payer", bool);
-          com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "honey_pay", ".ui.HoneyPayProxyUI", paramh);
+          paramu = Uri.parse(paramu.url);
+          paramView = paramu.getQueryParameter("cardNo");
+          boolean bool = paramu.getQueryParameter("isPayer").equals("1");
+          paramu = new Intent();
+          paramu.putExtra("key_card_no", paramView);
+          paramu.putExtra("key_is_payer", bool);
+          com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "honey_pay", ".ui.HoneyPayProxyUI", paramu);
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(19718);
+        AppMethodBeat.o(231433);
         return false;
         if (paramu.type == 47)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "go to bank card list");
-          paramu = new Intent();
-          paramu.putExtra("intent_finish_self", true);
-          com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "wallet", ".bind.ui.WalletBankcardManageUI", paramu);
-          com.tencent.mm.plugin.report.service.g.yxI.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+          Log.i("MicroMsg.URISpanHandlerSet", "go to bank card list");
+          paramView = new Intent();
+          paramView.putExtra("intent_finish_self", true);
+          com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "wallet", ".bind.ui.WalletBankcardManageUI", paramView);
+          com.tencent.mm.plugin.report.service.h.CyF.a(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
         }
       }
     }
@@ -1628,7 +1136,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19717);
       if (paramString.trim().startsWith("native://wcpay/honeypay"))
@@ -1649,121 +1157,6 @@ class URISpanHandlerSet
   }
   
   @URISpanHandlerSet.a
-  class HttpUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    HttpUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 1 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19720);
-      int i;
-      if (paramu.type == 1) {
-        if ((URISpanHandlerSet.a(URISpanHandlerSet.this) != null) && ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof WebViewUI)))
-        {
-          i = 1;
-          paramu.aY(ad.class);
-          if ((URISpanHandlerSet.a(URISpanHandlerSet.this) == null) || ((i != 0) && (!ak.cpe()))) {
-            break label468;
-          }
-        }
-      }
-      label440:
-      label443:
-      label468:
-      for (Object localObject1 = com.tencent.mm.model.ae.aL("@" + paramu.url, URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760085));; localObject1 = null)
-      {
-        if (paramh != null) {}
-        for (String str1 = (String)paramh.a(paramu);; str1 = null)
-        {
-          Object localObject2;
-          if ((localObject1 == null) || (!((ad)localObject1).enable))
-          {
-            localObject2 = paramu.url;
-            localObject1 = localObject2;
-            if (!((String)localObject2).toLowerCase().startsWith("http")) {
-              localObject1 = "http://".concat(String.valueOf(localObject2));
-            }
-            localObject2 = new Intent();
-            ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
-            if ((paramu.data != null) && ((paramu.data instanceof Bundle))) {
-              ((Intent)localObject2).putExtra("geta8key_scene", ((Bundle)paramu.data).getInt("geta8key_scene"));
-            }
-            localObject1 = paramu.mSessionId;
-            if (!bu.isNullOrNil((String)localObject1))
-            {
-              Object localObject3 = com.tencent.mm.model.z.aBG().Bp((String)localObject1);
-              if (localObject3 != null)
-              {
-                String str2 = ((z.b)localObject3).getString("prePublishId", null);
-                String str3 = ((z.b)localObject3).getString("preUsername", null);
-                localObject3 = ((z.b)localObject3).getString("preChatName", null);
-                ((Intent)localObject2).putExtra("reportSessionId", (String)localObject1);
-                ((Intent)localObject2).putExtra("KPublisherId", str2);
-                ((Intent)localObject2).putExtra("geta8key_username", (String)localObject3);
-                ((Intent)localObject2).putExtra("pre_username", str3);
-                ((Intent)localObject2).putExtra("prePublishId", str2);
-                ((Intent)localObject2).putExtra("preUsername", str3);
-                ((Intent)localObject2).putExtra("preChatName", (String)localObject3);
-                ((Intent)localObject2).putExtra("preChatTYPE", com.tencent.mm.model.y.aH(str3, (String)localObject3));
-              }
-            }
-            if (!bu.isNullOrNil(str1)) {
-              break label440;
-            }
-            str1 = null;
-            label377:
-            ((Intent)localObject2).putExtra("geta8key_username", str1);
-            if (i == 0) {
-              break label443;
-            }
-            ((Intent)localObject2).addFlags(268435456);
-          }
-          for (;;)
-          {
-            com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "webview", ".ui.tools.WebViewUI", (Intent)localObject2);
-            if (paramh != null) {
-              paramh.b(paramu);
-            }
-            AppMethodBeat.o(19720);
-            return true;
-            i = 0;
-            break;
-            break label377;
-            ((Intent)localObject2).addFlags(536870912);
-          }
-          AppMethodBeat.o(19720);
-          return false;
-        }
-      }
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19719);
-      if (paramString.trim().toLowerCase().startsWith("http")) {}
-      for (paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 1, null);; paramString = null)
-      {
-        AppMethodBeat.o(19719);
-        return paramString;
-      }
-    }
-  }
-  
-  @URISpanHandlerSet.a
   class JumpActivityUriSpanHandler
     extends URISpanHandlerSet.BaseUriSpanHandler
   {
@@ -1772,12 +1165,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[0];
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -1797,9 +1190,9 @@ class URISpanHandlerSet
           }
           paramu.addFlags(67108864);
           paramString = URISpanHandlerSet.a(URISpanHandlerSet.this);
-          paramu = new com.tencent.mm.hellhoundlib.b.a().bc(paramu);
-          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramu.ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$JumpActivityUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramString.startActivity((Intent)paramu.mt(0));
+          paramu = new com.tencent.mm.hellhoundlib.b.a().bl(paramu);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramu.axQ(), "com/tencent/mm/app/plugin/URISpanHandlerSet$JumpActivityUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramu.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/app/plugin/URISpanHandlerSet$JumpActivityUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         for (;;)
@@ -1808,13 +1201,13 @@ class URISpanHandlerSet
           return true;
           if ("shake".equalsIgnoreCase(paramString))
           {
-            com.tencent.mm.plugin.report.service.g.yxI.kvStat(10221, "1");
+            com.tencent.mm.plugin.report.service.h.CyF.kvStat(10221, "1");
             paramString = new Intent();
             paramString.addFlags(67108864);
             if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
               paramString.addFlags(268435456);
             }
-            com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "shake", ".ui.ShakeReportUI", paramString);
+            com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "shake", ".ui.ShakeReportUI", paramString);
             if ((URISpanHandlerSet.a(URISpanHandlerSet.this) != null) && ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Activity))) {
               ((Activity)URISpanHandlerSet.a(URISpanHandlerSet.this)).finish();
             }
@@ -1829,7 +1222,7 @@ class URISpanHandlerSet
             if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
               paramString.addFlags(268435456);
             }
-            com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "scanner", ".ui.BaseScanUI", paramString);
+            com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "scanner", ".ui.BaseScanUI", paramString);
           }
         }
       }
@@ -1837,8 +1230,56 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
+      return null;
+    }
+  }
+  
+  @URISpanHandlerSet.a
+  class JumpPatSettingDialogUriSpanHandler
+    extends URISpanHandlerSet.BaseUriSpanHandler
+  {
+    JumpPatSettingDialogUriSpanHandler()
+    {
+      super();
+    }
+    
+    final int[] Xp()
+    {
+      return new int[] { 61 };
+    }
+    
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
+    {
+      AppMethodBeat.i(231437);
+      if (paramu.type == 61)
+      {
+        paramu = SecDataUIC.CWq;
+        ((czj)SecDataUIC.a.c(paramView.getContext(), 4, czj.class)).MEF = 1;
+        paramView = new com.tencent.mm.plugin.patmsg.ui.b(paramView.getContext());
+        paramView.show();
+        paramView.getWindow().setLayout(-1, -1);
+      }
+      AppMethodBeat.o(231437);
+      return false;
+    }
+    
+    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
+    {
+      return false;
+    }
+    
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+    {
+      AppMethodBeat.i(231436);
+      if (paramString.trim().toLowerCase().startsWith("weixin://jump/setpat_bottom_sheet/"))
+      {
+        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 61, null);
+        AppMethodBeat.o(231436);
+        return paramString;
+      }
+      AppMethodBeat.o(231436);
       return null;
     }
   }
@@ -1852,41 +1293,28 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 57 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(186319);
+      AppMethodBeat.i(231440);
       if (paramu.type == 57)
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickJumpToPatSetting");
-        paramh = new Intent();
-        paramh.setClass(URISpanHandlerSet.a(URISpanHandlerSet.this), SettingsPersonalInfoUI.class);
-        paramh.putExtra("jumptoPat", true);
-        paramu = URISpanHandlerSet.a(URISpanHandlerSet.this);
-        paramh = new com.tencent.mm.hellhoundlib.b.a().bc(paramh);
-        com.tencent.mm.hellhoundlib.a.a.a(paramu, paramh.ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$JumpPatSettingUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramu.startActivity((Intent)paramh.mt(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramu, "com/tencent/mm/app/plugin/URISpanHandlerSet$JumpPatSettingUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        Log.i("MicroMsg.URISpanHandlerSet", "handleClickJumpToPatSetting");
+        paramu = new Intent();
+        paramu.setClass(URISpanHandlerSet.a(URISpanHandlerSet.this), SettingsPersonalInfoUI.class);
+        paramu.putExtra("jumptoPat", true);
+        paramView = URISpanHandlerSet.a(URISpanHandlerSet.this);
+        paramu = new com.tencent.mm.hellhoundlib.b.a().bl(paramu);
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, paramu.axQ(), "com/tencent/mm/app/plugin/URISpanHandlerSet$JumpPatSettingUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramView.startActivity((Intent)paramu.pG(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/app/plugin/URISpanHandlerSet$JumpPatSettingUriSpanHandler", "handleSpanClick", "(Landroid/view/View;Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      new aq().postDelayed(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(186317);
-          LauncherUI localLauncherUI = LauncherUI.getInstance();
-          if (localLauncherUI != null)
-          {
-            localLauncherUI.closeChatting(false);
-            localLauncherUI.Jty.getMainTabUI().aWU("tab_settings");
-          }
-          AppMethodBeat.o(186317);
-        }
-      }, 2000L);
-      AppMethodBeat.o(186319);
+      new MMHandler().postDelayed(new URISpanHandlerSet.JumpPatSettingUriSpanHandler.1(this), 2000L);
+      AppMethodBeat.o(231440);
       return false;
     }
     
@@ -1895,21 +1323,21 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
-      AppMethodBeat.i(186318);
+      AppMethodBeat.i(231439);
       if (paramString.trim().toLowerCase().startsWith("weixin://jump/setpat/"))
       {
         paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 57, null);
-        AppMethodBeat.o(186318);
+        AppMethodBeat.o(231439);
         return paramString;
       }
-      AppMethodBeat.o(186318);
+      AppMethodBeat.o(231439);
       return null;
     }
   }
   
-  @URISpanHandlerSet.a(Ne=URISpanHandlerSet.PRIORITY.HIGH)
+  @URISpanHandlerSet.a(Xq=URISpanHandlerSet.PRIORITY.HIGH)
   class LuckyMoneyUriSpanHandler
     extends URISpanHandlerSet.BaseUriSpanHandler
   {
@@ -1918,34 +1346,65 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
-      return new int[] { 33 };
+      return new int[] { 33, 59 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19723);
+      AppMethodBeat.i(231441);
       if (paramu.type == 33)
       {
-        if (paramh == null)
+        Log.i("MicroMsg.URISpanHandlerSet", "hrefInfo.getType() == MMSpanConstants.Type.TYPE_LUCKY_MONEY_NORMAL");
+        if (parami == null)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "LuckyMoneyUriSpanHandler handleSpanClick() clickCallback == null");
-          AppMethodBeat.o(19723);
+          Log.i("MicroMsg.URISpanHandlerSet", "LuckyMoneyUriSpanHandler handleSpanClick() clickCallback == null");
+          AppMethodBeat.o(231441);
           return false;
         }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("key_native_url", paramu.url);
-        localIntent.putExtra("key_username", (String)paramh.a(paramu));
-        localIntent.putExtra("key_lucky_money_can_received", true);
-        localIntent.putExtra("key_jump_from", 4);
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "luckymoney", ".ui.LuckyMoneyBeforeDetailUI", localIntent);
-        com.tencent.mm.plugin.report.service.g.yxI.f(12097, new Object[] { Integer.valueOf(11), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
-        com.tencent.mm.plugin.report.service.g.yxI.f(11850, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
-        AppMethodBeat.o(19723);
+        paramView = new Intent();
+        paramView.putExtra("key_native_url", paramu.url);
+        paramView.putExtra("key_username", (String)parami.a(paramu));
+        paramView.putExtra("key_lucky_money_can_received", true);
+        paramView.putExtra("key_jump_from", 4);
+        paramView.putExtra("scene_id", 1002);
+        if (paramu.url.startsWith("frhb://c2cbizmessagehandler/hongbao/receivehongbao"))
+        {
+          paramView.putExtra("key_hk_scene", 1);
+          com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "luckymoney", ".hk.ui.LuckyMoneyHKBeforeDetailUI", paramView);
+        }
+        for (;;)
+        {
+          com.tencent.mm.plugin.report.service.h.CyF.a(12097, new Object[] { Integer.valueOf(11), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(11850, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+          AppMethodBeat.o(231441);
+          return true;
+          com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "luckymoney", ".ui.LuckyMoneyBeforeDetailUI", paramView);
+        }
+      }
+      if (paramu.type == 59)
+      {
+        Log.i("MicroMsg.URISpanHandlerSet", "hrefInfo.getType() == MMSpanConstants.Type.TYPE_LUCKY_MONEY_UNION");
+        if (parami == null)
+        {
+          Log.i("MicroMsg.URISpanHandlerSet", "LuckyMoneyUriSpanHandler handleSpanClick() clickCallback == null");
+          AppMethodBeat.o(231441);
+          return false;
+        }
+        paramView = new Intent();
+        paramView.putExtra("key_native_url", paramu.url);
+        paramView.putExtra("key_username", (String)parami.a(paramu));
+        paramView.putExtra("key_lucky_money_can_received", true);
+        paramView.putExtra("key_jump_from", 4);
+        paramView.putExtra("scene_id", 1005);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "luckymoney", ".ui.LuckyMoneyBeforeDetailUI", paramView);
+        com.tencent.mm.plugin.report.service.h.CyF.a(12097, new Object[] { Integer.valueOf(11), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(11850, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+        AppMethodBeat.o(231441);
         return true;
       }
-      AppMethodBeat.o(19723);
+      AppMethodBeat.o(231441);
       return false;
     }
     
@@ -1954,12 +1413,18 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19722);
-      if (paramString.trim().toLowerCase().startsWith("weixin://weixinhongbao/"))
+      if ((paramString.trim().toLowerCase().startsWith("weixin://weixinhongbao/")) || (paramString.trim().toLowerCase().startsWith("frhb://c2cbizmessagehandler/hongbao/receivehongbao")))
       {
         paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 33, null);
+        AppMethodBeat.o(19722);
+        return paramString;
+      }
+      if (paramString.trim().toLowerCase().startsWith("weixin://weixinunionhongbao/"))
+      {
+        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 59, null);
         AppMethodBeat.o(19722);
         return paramString;
       }
@@ -1977,33 +1442,33 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 51 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(169681);
+      AppMethodBeat.i(231442);
       if (paramu.type == 51)
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "go to offline fqf");
+        Log.i("MicroMsg.URISpanHandlerSet", "go to offline fqf");
         if ((paramu.data != null) && ((paramu.data instanceof Bundle)))
         {
           Object localObject = (Bundle)paramu.data;
-          String str = ((Bundle)localObject).getString("repayment_tiny_app_username");
+          paramView = ((Bundle)localObject).getString("repayment_tiny_app_username");
           localObject = ((Bundle)localObject).getString("repayment_tiny_app_path");
-          vq localvq = new vq();
-          localvq.dKT.userName = str;
-          localvq.dKT.dKV = bu.bI((String)localObject, "");
-          localvq.dKT.dKW = 0;
-          com.tencent.mm.sdk.b.a.IvT.l(localvq);
+          wq localwq = new wq();
+          localwq.ecI.userName = paramView;
+          localwq.ecI.ecK = Util.nullAs((String)localObject, "");
+          localwq.ecI.ecL = 0;
+          EventCenter.instance.publish(localwq);
         }
-        if (paramh != null) {
-          paramh.b(paramu);
+        if (parami != null) {
+          parami.b(paramu);
         }
       }
-      AppMethodBeat.o(169681);
+      AppMethodBeat.o(231442);
       return false;
     }
     
@@ -2012,7 +1477,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(169680);
       if (paramString.trim().startsWith("weixin://wcpay/fqf/opentinyapp"))
@@ -2026,6 +1491,21 @@ class URISpanHandlerSet
     }
   }
   
+  static enum PRIORITY
+  {
+    static
+    {
+      AppMethodBeat.i(19726);
+      LOW = new PRIORITY("LOW", 0);
+      NORMAL = new PRIORITY("NORMAL", 1);
+      HIGH = new PRIORITY("HIGH", 2);
+      $VALUES = new PRIORITY[] { LOW, NORMAL, HIGH };
+      AppMethodBeat.o(19726);
+    }
+    
+    private PRIORITY() {}
+  }
+  
   @URISpanHandlerSet.a
   class PayTransferUriSpanHandler
     extends URISpanHandlerSet.BaseUriSpanHandler
@@ -2035,12 +1515,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[0];
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -2053,8 +1533,8 @@ class URISpanHandlerSet
         if (paramu == null) {
           break label244;
         }
-        paramBundle = paramu.fcN().toString();
-        paramu = paramu.fcO();
+        paramBundle = paramu.glZ().toString();
+        paramu = paramu.gma();
         if (!(paramu instanceof com.tencent.mm.plugin.wallet.a)) {
           break label239;
         }
@@ -2062,9 +1542,9 @@ class URISpanHandlerSet
       }
       for (;;)
       {
-        if (bu.isNullOrNil(paramBundle))
+        if (Util.isNullOrNil(paramBundle))
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "SERVICE_JUMP_TO_PAY fail, null username");
+          Log.e("MicroMsg.URISpanHandlerSet", "SERVICE_JUMP_TO_PAY fail, null username");
           AppMethodBeat.o(19727);
           return false;
         }
@@ -2077,9 +1557,9 @@ class URISpanHandlerSet
         if (i >= 0) {}
         for (paramString = paramString.substring(i + 1);; paramString = "")
         {
-          if (bu.getInt(paramString, 0) == 1)
+          if (Util.getInt(paramString, 0) == 1)
           {
-            if ((v.aAS()) || (v.aAT())) {
+            if ((z.aUp()) || (z.aUq())) {
               com.tencent.mm.pluginsdk.wallet.f.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 5, paramBundle, 11, paramu);
             }
             for (;;)
@@ -2089,7 +1569,7 @@ class URISpanHandlerSet
               com.tencent.mm.pluginsdk.wallet.f.a(URISpanHandlerSet.a(URISpanHandlerSet.this), 2, paramBundle, 11, paramu);
             }
           }
-          Toast.makeText(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131763083), 0).show();
+          Toast.makeText(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131765243), 0).show();
           AppMethodBeat.o(19727);
           return false;
           AppMethodBeat.o(19727);
@@ -2104,115 +1584,7 @@ class URISpanHandlerSet
       }
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class PayUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    PayUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 28 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19728);
-      if (paramu.type == 28)
-      {
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        ip localip = new ip();
-        localip.dwm.actionCode = 11;
-        localip.dwm.result = paramu.url;
-        localip.dwm.context = URISpanHandlerSet.a(URISpanHandlerSet.this);
-        localip.dwm.dwo = new Bundle();
-        localip.dwm.dwo.putInt("pay_channel", 6);
-        com.tencent.mm.sdk.b.a.IvT.a(localip, Looper.myLooper());
-        if (paramh != null) {
-          paramh.b(paramu);
-        }
-        AppMethodBeat.o(19728);
-        return true;
-      }
-      AppMethodBeat.o(19728);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class PhoneEmailUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    PhoneEmailUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 25, 24 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19729);
-      Bundle localBundle;
-      if (paramu.type == 25)
-      {
-        paramh = paramu.username;
-        localBundle = new Bundle();
-        if ((paramh != null) && (!paramh.equals(v.aAC())))
-        {
-          localBundle.putString("Contact_User", paramh);
-          paramh = com.tencent.mm.plugin.account.a.getAddrUploadStg().JT(paramh);
-          if ((paramh == null) || (bu.isNullOrNil(paramh.Lj()))) {
-            break label156;
-          }
-        }
-      }
-      label156:
-      for (paramh = bu.nullAsNil(paramh.aTc()).replace(" ", "");; paramh = null)
-      {
-        localBundle.putString("Contact_Mobile_MD5", paramh);
-        localBundle.putInt("fromScene", 1);
-        m.a(URISpanHandlerSet.a(URISpanHandlerSet.this), paramu.url, null, localBundle);
-        AppMethodBeat.o(19729);
-        return true;
-        if (paramu.type == 24) {
-          m.b(URISpanHandlerSet.a(URISpanHandlerSet.this), paramu.url, null);
-        }
-        AppMethodBeat.o(19729);
-        return false;
-      }
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       return null;
     }
@@ -2227,12 +1599,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 26 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -2246,7 +1618,7 @@ class URISpanHandlerSet
         if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
           paramString.addFlags(268435456);
         }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.setting.SettingsPluginsUI", paramString);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.setting.SettingsPluginsUI", paramString);
         AppMethodBeat.o(19731);
         return true;
       }
@@ -2254,7 +1626,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19730);
       if (paramString.trim().startsWith("weixin://plugin"))
@@ -2277,38 +1649,38 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 3 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19733);
+      AppMethodBeat.i(231445);
       if (paramu.type == 3)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
-        String str = (String)paramu.aY(String.class);
+        paramView = (String)paramu.ba(String.class);
         Intent localIntent = new Intent();
         localIntent.addFlags(268435456);
-        localIntent.putExtra("Contact_User", str);
-        bc.aCg();
-        an localan = com.tencent.mm.model.c.azF().BH(str);
-        if ((localan != null) && ((int)localan.ght > 0) && (com.tencent.mm.contact.c.lO(localan.field_type))) {
-          com.tencent.mm.ui.contact.e.a(localIntent, str);
+        localIntent.putExtra("Contact_User", paramView);
+        bg.aVF();
+        as localas = com.tencent.mm.model.c.aSN().Kn(paramView);
+        if ((localas != null) && ((int)localas.gMZ > 0) && (com.tencent.mm.contact.c.oR(localas.field_type))) {
+          e.a(localIntent, paramView);
         }
-        if (bu.nullAsNil(str).length() > 0) {
-          com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", localIntent);
+        if (Util.nullAsNil(paramView).length() > 0) {
+          com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", localIntent);
         }
-        if (paramh != null) {
-          paramh.b(paramu);
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19733);
+        AppMethodBeat.o(231445);
         return true;
       }
-      AppMethodBeat.o(19733);
+      AppMethodBeat.o(231445);
       return false;
     }
     
@@ -2318,21 +1690,21 @@ class URISpanHandlerSet
       if (paramString.startsWith("weixin://contacts/profile/"))
       {
         paramString = paramString.trim().replace("weixin://contacts/profile/", "").replace("/", "");
-        if (bu.isNullOrNil(paramString))
+        if (Util.isNullOrNil(paramString))
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "jumpToActivity fail, user is null");
+          Log.e("MicroMsg.URISpanHandlerSet", "jumpToActivity fail, user is null");
           AppMethodBeat.o(19734);
           return true;
         }
         paramu = new Intent();
         paramu.addFlags(268435456);
         paramu.putExtra("Contact_User", paramString);
-        bc.aCg();
-        paramBundle = com.tencent.mm.model.c.azF().BH(paramString);
-        if ((paramBundle != null) && ((int)paramBundle.ght > 0) && (com.tencent.mm.contact.c.lO(paramBundle.field_type))) {
-          com.tencent.mm.ui.contact.e.a(paramu, paramString);
+        bg.aVF();
+        paramBundle = com.tencent.mm.model.c.aSN().Kn(paramString);
+        if ((paramBundle != null) && ((int)paramBundle.gMZ > 0) && (com.tencent.mm.contact.c.oR(paramBundle.field_type))) {
+          e.a(paramu, paramString);
         }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramu);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramu);
         AppMethodBeat.o(19734);
         return true;
       }
@@ -2340,7 +1712,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19732);
       if (paramString.trim().startsWith("weixin://contacts/profile/"))
@@ -2363,12 +1735,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[0];
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -2381,7 +1753,7 @@ class URISpanHandlerSet
       {
         if (!paramBoolean)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "jumpToActivity, scan qrcode permission fail");
+          Log.e("MicroMsg.URISpanHandlerSet", "jumpToActivity, scan qrcode permission fail");
           AppMethodBeat.o(19735);
           return true;
         }
@@ -2401,7 +1773,7 @@ class URISpanHandlerSet
         if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
           paramString.addFlags(268435456);
         }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "scanner", ".ui.BaseScanUI", paramString);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "scanner", ".ui.BaseScanUI", paramString);
         AppMethodBeat.o(19735);
         return true;
       }
@@ -2409,7 +1781,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       return null;
     }
@@ -2424,12 +1796,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[0];
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -2439,30 +1811,30 @@ class URISpanHandlerSet
       AppMethodBeat.i(19736);
       if (paramString.equals("weixin://setting/account/safedevice"))
       {
-        bc.aCg();
-        paramString = (String)com.tencent.mm.model.c.ajA().get(6, "");
-        bc.aCg();
-        paramu = (String)com.tencent.mm.model.c.ajA().get(4097, "");
-        if (!bu.isNullOrNil(paramString))
+        bg.aVF();
+        paramString = (String)com.tencent.mm.model.c.azQ().get(6, "");
+        bg.aVF();
+        paramu = (String)com.tencent.mm.model.c.azQ().get(4097, "");
+        if (!Util.isNullOrNil(paramString))
         {
           paramString = new Intent();
           if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
             paramString.addFlags(268435456);
           }
-          com.tencent.mm.br.d.Q(URISpanHandlerSet.a(URISpanHandlerSet.this), "account", ".security.ui.MySafeDeviceListUI");
+          com.tencent.mm.br.c.V(URISpanHandlerSet.a(URISpanHandlerSet.this), "account", ".security.ui.MySafeDeviceListUI");
         }
         for (;;)
         {
           AppMethodBeat.o(19736);
           return true;
-          if (!bu.isNullOrNil(paramu))
+          if (!Util.isNullOrNil(paramu))
           {
             paramString = new Intent(URISpanHandlerSet.a(URISpanHandlerSet.this), BindMContactIntroUI.class);
             paramString.putExtra("bind_scene", 1);
             if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
               paramString.addFlags(268435456);
             }
-            MMWizardActivity.al(URISpanHandlerSet.a(URISpanHandlerSet.this), paramString);
+            MMWizardActivity.ay(URISpanHandlerSet.a(URISpanHandlerSet.this), paramString);
           }
           else
           {
@@ -2470,7 +1842,7 @@ class URISpanHandlerSet
             if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
               paramString.addFlags(268435456);
             }
-            com.tencent.mm.br.d.a(URISpanHandlerSet.a(URISpanHandlerSet.this), "account", ".security.ui.BindSafeDeviceUI", paramString);
+            com.tencent.mm.br.c.a(URISpanHandlerSet.a(URISpanHandlerSet.this), "account", ".security.ui.BindSafeDeviceUI", paramString);
           }
         }
       }
@@ -2478,297 +1850,8 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class SettingBindEmailUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    SettingBindEmailUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 7 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19738);
-      if (paramu.type == 7)
-      {
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        LauncherUI localLauncherUI = LauncherUI.getInstance();
-        if (localLauncherUI != null) {
-          localLauncherUI.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        if (paramh != null) {
-          paramh.b(paramu);
-        }
-        AppMethodBeat.o(19738);
-        return true;
-      }
-      AppMethodBeat.o(19738);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19737);
-      if (paramString.trim().startsWith("weixin://setting/bindemail"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 7, null);
-        AppMethodBeat.o(19737);
-        return paramString;
-      }
-      AppMethodBeat.o(19737);
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class SettingBlacklistUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    SettingBlacklistUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 14 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19740);
-      if (paramu.type == 14)
-      {
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        Object localObject2 = com.tencent.mm.model.ae.Bv(URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760084));
-        Object localObject1 = new Intent();
-        ((Intent)localObject1).setClass(URISpanHandlerSet.a(URISpanHandlerSet.this), SelectContactUI.class);
-        ((Intent)localObject1).putExtra("Contact_GroupFilter_Type", ((ad)localObject2).getType());
-        ((Intent)localObject1).putExtra("Contact_GroupFilter_DisplayName", ((ad)localObject2).adF());
-        ((Intent)localObject1).addFlags(67108864);
-        localObject2 = LauncherUI.getInstance();
-        if (localObject2 != null) {
-          ((LauncherUI)localObject2).Jty.getMainTabUI().aWU("tab_settings");
-        }
-        localObject2 = URISpanHandlerSet.a(URISpanHandlerSet.this);
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$SettingBlacklistUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/app/plugin/URISpanHandlerSet$SettingBlacklistUriSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        if (paramh != null) {
-          paramh.b(paramu);
-        }
-        AppMethodBeat.o(19740);
-        return true;
-      }
-      AppMethodBeat.o(19740);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      AppMethodBeat.i(19741);
-      if (paramString.equals("weixin://setting/blacklist"))
-      {
-        paramu = com.tencent.mm.model.ae.Bv(URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131760084));
-        paramString = new Intent();
-        paramString.setClass(URISpanHandlerSet.a(URISpanHandlerSet.this), AddressUI.class);
-        paramString.putExtra("Contact_GroupFilter_Type", paramu.getType());
-        paramString.putExtra("Contact_GroupFilter_DisplayName", paramu.adF());
-        paramString.addFlags(67108864);
-        if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
-          paramString.addFlags(268435456);
-        }
-        paramu = LauncherUI.getInstance();
-        if (paramu != null) {
-          paramu.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        paramu = URISpanHandlerSet.a(URISpanHandlerSet.this);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramu, paramString.ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$SettingBlacklistUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramu.startActivity((Intent)paramString.mt(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramu, "com/tencent/mm/app/plugin/URISpanHandlerSet$SettingBlacklistUriSpanHandler", "handleUriJump", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/UriJumpCallback;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(19741);
-        return true;
-      }
-      AppMethodBeat.o(19741);
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19739);
-      if (paramString.trim().startsWith("weixin://setting/blacklist"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 14, null);
-        AppMethodBeat.o(19739);
-        return paramString;
-      }
-      AppMethodBeat.o(19739);
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class SettingHeadImgUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    SettingHeadImgUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 6 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19743);
-      if (paramu.type == 6)
-      {
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        LauncherUI localLauncherUI = LauncherUI.getInstance();
-        if (localLauncherUI != null) {
-          localLauncherUI.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        if (paramh != null) {
-          paramh.b(paramu);
-        }
-        AppMethodBeat.o(19743);
-        return true;
-      }
-      AppMethodBeat.o(19743);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      AppMethodBeat.i(19744);
-      if (paramString.equals("weixin://setting/setheadimage"))
-      {
-        paramString = new Intent();
-        paramString.putExtra("Contact_User", v.aAC());
-        paramString.putExtra("Contact_Nick", v.aAE());
-        paramString.putExtra("User_Avatar", true);
-        if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
-          paramString.addFlags(268435456);
-        }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramString);
-        AppMethodBeat.o(19744);
-        return true;
-      }
-      AppMethodBeat.o(19744);
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19742);
-      if (paramString.trim().startsWith("weixin://setting/setheadimage"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 6, null);
-        AppMethodBeat.o(19742);
-        return paramString;
-      }
-      AppMethodBeat.o(19742);
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class SettingNotifyUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    SettingNotifyUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 9 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19746);
-      if (paramu.type == 9)
-      {
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        LauncherUI localLauncherUI = LauncherUI.getInstance();
-        if (localLauncherUI != null) {
-          localLauncherUI.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        com.tencent.mm.br.d.Q(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.setting.SettingsNotificationUI");
-        if (paramh != null) {
-          paramh.b(paramu);
-        }
-        AppMethodBeat.o(19746);
-        return true;
-      }
-      AppMethodBeat.o(19746);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      AppMethodBeat.i(19747);
-      if (paramString.equals("weixin://setting/notify"))
-      {
-        paramString = LauncherUI.getInstance();
-        if (paramString != null) {
-          paramString.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        paramString = new Intent();
-        paramString.addFlags(67108864);
-        if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
-          paramString.addFlags(268435456);
-        }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.setting.SettingsNotificationUI", paramString);
-        AppMethodBeat.o(19747);
-        return true;
-      }
-      AppMethodBeat.o(19747);
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19745);
-      if (paramString.trim().startsWith("weixin://setting/notify"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 9, null);
-        AppMethodBeat.o(19745);
-        return paramString;
-      }
-      AppMethodBeat.o(19745);
       return null;
     }
   }
@@ -2782,29 +1865,29 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 12 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19749);
+      AppMethodBeat.i(231450);
       if (paramu.type == 12)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("Contact_User", "weibo");
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", localIntent);
-        if (paramh != null) {
-          paramh.b(paramu);
+        paramView = new Intent();
+        paramView.putExtra("Contact_User", "weibo");
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramView);
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19749);
+        AppMethodBeat.o(231450);
         return true;
       }
-      AppMethodBeat.o(19749);
+      AppMethodBeat.o(231450);
       return false;
     }
     
@@ -2818,7 +1901,7 @@ class URISpanHandlerSet
         if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
           paramString.addFlags(268435456);
         }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramString);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramString);
         AppMethodBeat.o(19750);
         return true;
       }
@@ -2826,7 +1909,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19748);
       if (paramString.trim().startsWith("weixin://setting/plugin/lomo"))
@@ -2849,29 +1932,29 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 10 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19752);
+      AppMethodBeat.i(231451);
       if (paramu.type == 10)
       {
-        if (paramh != null) {
-          paramh.a(paramu);
+        if (parami != null) {
+          parami.a(paramu);
         }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("Contact_User", "qqmail");
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", localIntent);
-        if (paramh != null) {
-          paramh.b(paramu);
+        paramView = new Intent();
+        paramView.putExtra("Contact_User", "qqmail");
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramView);
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19752);
+        AppMethodBeat.o(231451);
         return true;
       }
-      AppMethodBeat.o(19752);
+      AppMethodBeat.o(231451);
       return false;
     }
     
@@ -2885,7 +1968,7 @@ class URISpanHandlerSet
         if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
           paramString.addFlags(268435456);
         }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramString);
+        com.tencent.mm.br.c.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "profile", ".ui.ContactInfoUI", paramString);
         AppMethodBeat.o(19753);
         return true;
       }
@@ -2893,7 +1976,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19751);
       if (paramString.trim().startsWith("weixin://setting/plugin/qqmail"))
@@ -2916,12 +1999,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 13 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -2931,7 +2014,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19754);
       if (paramString.trim().startsWith("weixin://setting/plugin/qqmsg"))
@@ -2954,12 +2037,12 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 11 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
       return false;
     }
@@ -2969,7 +2052,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19755);
       if (paramString.trim().startsWith("weixin://setting/plugin/sxmsg"))
@@ -2984,78 +2067,6 @@ class URISpanHandlerSet
   }
   
   @URISpanHandlerSet.a
-  class SettingPrivacyUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    SettingPrivacyUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 15 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19757);
-      if (paramu.type == 15)
-      {
-        if (paramh != null) {
-          paramh.a(paramu);
-        }
-        LauncherUI localLauncherUI = LauncherUI.getInstance();
-        if (localLauncherUI != null) {
-          localLauncherUI.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        com.tencent.mm.br.d.Q(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.setting.SettingsPrivacyUI");
-        if (paramh != null) {
-          paramh.b(paramu);
-        }
-        AppMethodBeat.o(19757);
-        return true;
-      }
-      AppMethodBeat.o(19757);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      AppMethodBeat.i(19758);
-      if (paramString.equals("weixin://setting/privacy"))
-      {
-        paramString = LauncherUI.getInstance();
-        if (paramString != null) {
-          paramString.Jty.getMainTabUI().aWU("tab_settings");
-        }
-        paramString = new Intent();
-        if ((URISpanHandlerSet.a(URISpanHandlerSet.this) instanceof Service)) {
-          paramString.addFlags(268435456);
-        }
-        com.tencent.mm.br.d.b(URISpanHandlerSet.a(URISpanHandlerSet.this), "setting", ".ui.setting.SettingsPrivacyUI", paramString);
-        AppMethodBeat.o(19758);
-        return true;
-      }
-      AppMethodBeat.o(19758);
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19756);
-      if (paramString.trim().startsWith("weixin://setting/privacy"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 15, null);
-        AppMethodBeat.o(19756);
-        return paramString;
-      }
-      AppMethodBeat.o(19756);
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
   class StoryEntranceHandler
     extends URISpanHandlerSet.BaseUriSpanHandler
   {
@@ -3064,32 +2075,32 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 48 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19759);
+      AppMethodBeat.i(231453);
       if (paramu.type == 48)
       {
-        String str = paramu.username;
-        if (TextUtils.isEmpty(str))
+        paramView = paramu.username;
+        if (TextUtils.isEmpty(paramView))
         {
-          AppMethodBeat.o(19759);
+          AppMethodBeat.o(231453);
           return false;
         }
-        if (com.tencent.mm.plugin.sns.f.a.azH(str)) {
-          com.tencent.mm.plugin.story.api.o.bk(URISpanHandlerSet.a(URISpanHandlerSet.this), str);
+        if (com.tencent.mm.plugin.sns.f.a.aOE(paramView)) {
+          o.bB(URISpanHandlerSet.a(URISpanHandlerSet.this), paramView);
         }
-        if (paramh != null) {
-          paramh.b(paramu);
+        if (parami != null) {
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19759);
+        AppMethodBeat.o(231453);
         return true;
       }
-      AppMethodBeat.o(19759);
+      AppMethodBeat.o(231453);
       return false;
     }
     
@@ -3098,102 +2109,215 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       return null;
     }
   }
   
   @URISpanHandlerSet.a
-  class TodoSystemMsgUrlSpanHandler
+  class TopicSpanHandler
     extends URISpanHandlerSet.BaseUriSpanHandler
   {
-    TodoSystemMsgUrlSpanHandler()
+    TopicSpanHandler()
     {
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
-      return new int[] { 54 };
+      return new int[] { 58 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(179564);
-      if (paramu.type == 54) {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickTodoSystemMsgUrl");
+      AppMethodBeat.i(231455);
+      label98:
+      long l1;
+      int m;
+      long l2;
+      int j;
+      int k;
+      Object localObject;
+      int i;
+      label426:
+      label432:
+      label437:
+      if (paramu.type == 58)
+      {
+        parami = SecDataUIC.CWq;
+        p.h(paramView, "view");
+        parami = paramView.getContext();
+        p.g(parami, "view.context");
+        parami = SecDataUIC.a.gU(parami);
+        int n;
+        if (parami != null)
+        {
+          parami = parami.eSr();
+          if (parami != null)
+          {
+            parami = parami.eSo();
+            if ((parami == null) || (parami.containsKey(String.valueOf(paramView.hashCode())) != true)) {
+              break label354;
+            }
+            paramView = (com.tencent.mm.bw.a)parami.get(String.valueOf(paramView.hashCode()));
+            parami = (egl)paramView;
+            Log.i("MicroMsg.URISpanHandlerSet", "TopicSpanHandler click %s %s", new Object[] { paramu.url, parami });
+            l1 = 0L;
+            m = 0;
+            paramView = "";
+            l2 = cl.aWB();
+            j = 0;
+            if (parami == null) {
+              break label889;
+            }
+            l1 = parami.KMf;
+            m = parami.Ngu;
+            paramView = parami.Ngv;
+            l2 = parami.KMc;
+            k = parami.Ngw;
+            j = parami.Ngx;
+            n = parami.Ngy;
+            if ((m != 3) || (TextUtils.isEmpty(paramView))) {
+              break label851;
+            }
+            parami = paramView.split("#");
+            if ((parami == null) || (parami.length < 2)) {
+              break label851;
+            }
+            localObject = parami[1];
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.equals("0", (CharSequence)localObject))) {
+              break label437;
+            }
+            i = 1;
+          }
+        }
+        label354:
+        label359:
+        for (;;)
+        {
+          label244:
+          if ((i != 0) && (n != 0))
+          {
+            Log.i("MicroMsg.WebSearch.WebSearchReportLogic", "need correct feeId");
+            localObject = aj.faO().Zr(n);
+            if ((localObject != null) && (((SnsInfo)localObject).field_snsId != 0L))
+            {
+              parami[1] = com.tencent.mm.plugin.sns.data.r.Jb(((SnsInfo)localObject).field_snsId);
+              paramView = new StringBuilder();
+              i = 0;
+              for (;;)
+              {
+                if (i < parami.length)
+                {
+                  paramView.append(parami[i]);
+                  if (i != parami.length - 1) {
+                    paramView.append("#");
+                  }
+                  i += 1;
+                  continue;
+                  parami = null;
+                  break;
+                  paramView = paramView.getParent();
+                  if ((paramView == null) || ((parami != null) && (parami.containsKey(String.valueOf(paramView.hashCode())) == true)))
+                  {
+                    if (parami == null) {
+                      break label432;
+                    }
+                    if (paramView == null) {
+                      break label426;
+                    }
+                  }
+                  for (i = paramView.hashCode();; i = 0)
+                  {
+                    paramView = (com.tencent.mm.bw.a)parami.get(String.valueOf(i));
+                    break;
+                    paramView = paramView.getParent();
+                    break label359;
+                  }
+                  paramView = null;
+                  break label98;
+                  i = 0;
+                  break label244;
+                }
+              }
+              paramView = paramView.toString();
+            }
+          }
+        }
       }
-      label392:
-      label398:
       for (;;)
       {
-        boolean bool1;
-        try
+        long l3 = l1;
+        if (paramu.data != null)
         {
-          localObject1 = Uri.parse(paramu.url);
-          paramh = paramu.chatroomName;
-          str1 = ((Uri)localObject1).getQueryParameter("todoid");
-          ((Uri)localObject1).getQueryParameter("related_msgid");
-          str2 = ((Uri)localObject1).getQueryParameter("username");
-          localObject2 = ((Uri)localObject1).getQueryParameter("path");
-          localObject1 = ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupTodoStorage().ag(paramh, str1);
-          if (!bu.lX("roomannouncement@app.origin", str2)) {
-            continue;
+          l3 = l1;
+          if ((paramu.data instanceof Bundle)) {
+            l3 = ((Bundle)paramu.data).getLong("msgSvrId");
           }
-          com.tencent.mm.chatroom.d.y.f(ak.getContext(), paramh, true);
-          bool2 = com.tencent.mm.chatroom.d.y.e((com.tencent.mm.chatroom.storage.c)localObject1);
-          if (!bool2) {
-            break label392;
-          }
-          bool1 = com.tencent.mm.chatroom.d.y.b((com.tencent.mm.chatroom.storage.c)localObject1);
-          if (!bool1) {
-            break label398;
-          }
-          localObject2 = new nc();
-          ((nc)localObject2).dCe.op = 3;
-          ((nc)localObject2).dCe.dwx = ((com.tencent.mm.chatroom.storage.c)localObject1).field_roomname;
-          ((nc)localObject2).dCe.dCf = str1;
-          com.tencent.mm.sdk.b.a.IvT.a((com.tencent.mm.sdk.b.b)localObject2, Looper.getMainLooper());
         }
-        catch (Exception paramh)
+        paramu = paramu.url;
+        i = 73;
+        if ((m == 1) || (m == 2))
         {
-          Object localObject1;
-          String str1;
-          String str2;
-          Object localObject2;
-          boolean bool2;
-          com.tencent.mm.plugin.appbrand.api.f localf;
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handle click link error: %s, url: %s", new Object[] { paramh.getMessage(), paramu.url });
-          continue;
-          int i = 0;
-          continue;
+          i = 73;
+          label512:
+          parami = d.Nj(i);
+          localObject = new ag();
+          ((ag)localObject).context = URISpanHandlerSet.a(URISpanHandlerSet.this);
+          ((ag)localObject).scene = i;
+          ((ag)localObject).query = paramu;
+          ((ag)localObject).title = paramu;
+          ((ag)localObject).sessionId = parami;
+          ((ag)localObject).IEk = true;
+          ((ag)localObject).IEl = true;
+          ((ag)localObject).IEm = true;
+          ((ag)localObject).IEn = 1;
+          ((ag)localObject).statusBarColor = com.tencent.mm.cb.a.n(URISpanHandlerSet.a(URISpanHandlerSet.this), 2131101424);
+          ((ag)localObject).IEo = true;
+          ((ag)localObject).dVU.put("msgSvrId", String.valueOf(l3));
+          ((ag)localObject).dVU.put("parentSearchID", "");
+          ((ag)localObject).dVU.put("fromTagSearch", "1");
+          ((ag)localObject).IEt.put("ShareSceneId", paramView);
+          ((ag)localObject).IEt.put("SnsContentType", String.valueOf(j));
+          ((com.tencent.mm.plugin.websearch.api.h)g.af(com.tencent.mm.plugin.websearch.api.h.class)).a((ag)localObject);
+          localObject = new lh();
+          ((lh)localObject).enl = 1L;
+          ((lh)localObject).eua = cl.aWB();
+          ((lh)localObject).eYp = 1L;
+          if ((TextUtils.isEmpty(paramu)) || (!paramu.startsWith("#"))) {
+            break label886;
+          }
+          paramu = paramu.substring(1);
         }
-        if (bu.lX("roomannouncement@app.origin", str2))
+        label851:
+        label886:
+        for (;;)
         {
-          i = 1;
-          com.tencent.mm.chatroom.d.z.a(paramh, i, 2, str1, str2);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickTodoSystemMsgUrl stoTodo(%s %s %s) update finish(%s)", new Object[] { Boolean.valueOf(bu.isNullOrNil(str1)), Boolean.valueOf(bu.isNullOrNil(str2)), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-          AppMethodBeat.o(179564);
+          ((lh)localObject).eYq = ((lh)localObject).x("ResultQuery", paramu, true);
+          ((lh)localObject).eYr = m;
+          ((lh)localObject).eYs = ((lh)localObject).x("ShareSceneId", paramView, true);
+          ((lh)localObject).eYt = l2;
+          ((lh)localObject).eYu = k;
+          ((lh)localObject).eYv = ((lh)localObject).x("SearchSessionId", parami, true);
+          ((lh)localObject).bfK();
+          ar.a((com.tencent.mm.plugin.report.a)localObject);
+          AppMethodBeat.o(231455);
           return true;
-          localf = new com.tencent.mm.plugin.appbrand.api.f();
-          localf.username = str2;
-          localf.jFL = ((String)localObject2);
-          localf.scene = 1160;
-          localf.jFV = paramh;
-          if (localObject1 != null)
+          break;
+          if (m == 3)
           {
-            localf.cmw = ((com.tencent.mm.chatroom.storage.c)localObject1).field_shareKey;
-            localf.cmv = ((com.tencent.mm.chatroom.storage.c)localObject1).field_shareName;
+            i = 79;
+            break label512;
           }
-          ((com.tencent.mm.plugin.appbrand.service.p)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.p.class)).a(URISpanHandlerSet.a(URISpanHandlerSet.this), localf);
+          if ((m != 4) && (m != 5)) {
+            break label512;
+          }
+          i = 80;
+          break label512;
         }
-        else
-        {
-          AppMethodBeat.o(179564);
-          return false;
-          bool1 = false;
-        }
+        label889:
+        k = 0;
       }
     }
     
@@ -3202,185 +2326,8 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
-      AppMethodBeat.i(179563);
-      if (paramString.trim().toLowerCase().startsWith("weixin://roomtoolstodo?"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 54, null);
-        AppMethodBeat.o(179563);
-        return paramString;
-      }
-      AppMethodBeat.o(179563);
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class TransferUriSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    TransferUriSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 39, 40, 41, 42, 49, 56 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(19762);
-      if (paramu != null)
-      {
-        if (paramu.type == 42)
-        {
-          com.tencent.mm.br.d.Q(URISpanHandlerSet.a(URISpanHandlerSet.this), "wallet", ".balance.ui.lqt.WalletLqtDetailUI");
-          AppMethodBeat.o(19762);
-          return true;
-        }
-        if (paramu.type == 41)
-        {
-          com.tencent.mm.br.d.Q(URISpanHandlerSet.a(URISpanHandlerSet.this), "wallet", ".balance.ui.WalletBalanceManagerUI");
-          AppMethodBeat.o(19762);
-          return true;
-        }
-        if (paramu.type == 39)
-        {
-          if ((paramu.data != null) && ((paramu.data instanceof Bundle)))
-          {
-            paramu = (Bundle)paramu.data;
-            paramh = (ResendMsgInfo)paramu.getParcelable("resend_msg_info");
-            ((com.tencent.mm.plugin.wxpaysdk.api.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.wxpaysdk.api.b.class)).a(URISpanHandlerSet.a(URISpanHandlerSet.this), paramh, new URISpanHandlerSet.TransferUriSpanHandler.1(this, paramu));
-          }
-          AppMethodBeat.o(19762);
-          return true;
-        }
-        if (paramu.type == 40)
-        {
-          if ((paramu.data != null) && ((paramu.data instanceof Bundle)))
-          {
-            paramu = (Bundle)paramu.data;
-            paramh = new qv();
-            paramh.dGu.dmx = paramu.getString("transaction_id");
-            paramh.dGu.dyA = paramu.getString("transfer_id");
-            paramh.dGu.dGv = paramu.getInt("total_fee");
-            paramh.dGu.dGw = paramu.getString("sender_name");
-            com.tencent.mm.sdk.b.a.IvT.l(paramh);
-          }
-          AppMethodBeat.o(19762);
-          return true;
-        }
-        Object localObject;
-        if (paramu.type == 49)
-        {
-          paramh = Uri.parse(paramu.url);
-          localObject = paramh.getQueryParameter("transfer_id");
-          String str = paramh.getQueryParameter("trans_id");
-          paramh = "";
-          if ((paramu.data != null) && ((paramu.data instanceof Bundle))) {}
-          for (paramu = ((Bundle)paramu.data).getString("sender_name");; paramu = paramh)
-          {
-            paramh = new Intent();
-            paramh.putExtra("transfer_id", (String)localObject);
-            paramh.putExtra("transaction_id", str);
-            paramh.putExtra("sender_name", paramu);
-            com.tencent.mm.br.d.b(ak.getContext(), "remittance", ".ui.RemittanceDetailUI", paramh);
-            AppMethodBeat.o(19762);
-            return true;
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "hrefInfo.getType() == TYPE_TRANSFER_QUERY_MSG senderName == null");
-          }
-        }
-        if (paramu.type == 56)
-        {
-          localObject = Uri.parse(paramu.url);
-          paramh = ((Uri)localObject).getQueryParameter("transferid");
-          paramu = ((Uri)localObject).getQueryParameter("fromusername");
-          localObject = ((Uri)localObject).getQueryParameter("transfer_msg_type");
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "click MSpanConstants.Type.TYPE_TRANSFER_REMINDE_RECEIVE_MSG, transferId: %s，msgType:%s", new Object[] { paramh, localObject });
-          com.tencent.mm.plugin.report.service.g.yxI.f(20467, new Object[] { "transfer_to_change", "click message", "", "", "", "", Integer.valueOf(3), paramh, localObject });
-          if ((!bu.isNullOrNil(paramh)) && (!bu.isNullOrNil(paramu)))
-          {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handle MSpanConstants.Type.TYPE_TRANSFER_REMINDE_RECEIVE_MSG");
-            com.tencent.mm.plugin.remittance.a.c.dLS();
-            paramh = com.tencent.mm.plugin.remittance.a.c.dLU().axw(paramh);
-            if ((paramh == null) || (paramh.field_locaMsgId <= 0L)) {
-              break label720;
-            }
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handle MSpanConstants.Type.TYPE_TRANSFER_REMINDE_RECEIVE_MSG, localMsgId: %s", new Object[] { Long.valueOf(paramh.field_locaMsgId) });
-            if (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(paramh.field_locaMsgId).field_msgId > 0L) {
-              break label682;
-            }
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "cannot find msg in msg storage!");
-            new f.a(ak.getContext()).aZq(ak.getContext().getString(2131762488)).afZ(ak.getContext().getResources().getColor(2131100547)).afY(2131760315).b(new URISpanHandlerSet.TransferUriSpanHandler.2(this)).show();
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(19762);
-            return true;
-            label682:
-            localObject = new st();
-            ((st)localObject).dIr.msgId = paramh.field_locaMsgId;
-            ((st)localObject).dIr.cUA = paramu;
-            com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-            continue;
-            label720:
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handle MSpanConstants.Type.TYPE_TRANSFER_REMINDE_RECEIVE_MSG, cannot find local msg");
-            new f.a(ak.getContext()).aZq(ak.getContext().getString(2131762488)).afZ(ak.getContext().getResources().getColor(2131100547)).afY(2131760315).b(new URISpanHandlerSet.TransferUriSpanHandler.3(this)).show();
-          }
-        }
-      }
-      AppMethodBeat.o(19762);
-      return false;
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(19761);
-      if (paramString.trim().toLowerCase().startsWith("weixin://wcpay/transfer/retrysendmsg"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 39, null);
-        AppMethodBeat.o(19761);
-        return paramString;
-      }
-      if (paramString.trim().toLowerCase().startsWith("weixin://wcpay/transfer/rebacksendmsg"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 40, null);
-        AppMethodBeat.o(19761);
-        return paramString;
-      }
-      if (paramString.trim().toLowerCase().startsWith("weixin://wcpay/transfer/watchbalance"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 41, null);
-        AppMethodBeat.o(19761);
-        return paramString;
-      }
-      if (paramString.trim().toLowerCase().startsWith("weixin://wcpay/transfer/watchlqt"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 42, null);
-        AppMethodBeat.o(19761);
-        return paramString;
-      }
-      if (paramString.trim().toLowerCase().startsWith("wechat://wcpay/transfer/transferquery"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 49, null);
-        AppMethodBeat.o(19761);
-        return paramString;
-      }
-      if (paramString.trim().toLowerCase().startsWith("weixin://wxpay/transfer/remindrcvmsg"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 56, null);
-        AppMethodBeat.o(19761);
-        return paramString;
-      }
-      AppMethodBeat.o(19761);
       return null;
     }
   }
@@ -3394,33 +2341,33 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 2147483646 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19763);
+      AppMethodBeat.i(231457);
       if (paramu.type == 2147483646)
       {
         if ((paramu.data instanceof Bundle))
         {
-          paramu = ((Bundle)paramu.data).getString("rawUrl");
-          if (bu.isNullOrNil(paramu)) {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "TYPE_UNKNOW_TO_URL url == null");
+          paramView = ((Bundle)paramu.data).getString("rawUrl");
+          if (Util.isNullOrNil(paramView)) {
+            Log.i("MicroMsg.URISpanHandlerSet", "TYPE_UNKNOW_TO_URL url == null");
           }
         }
         for (;;)
         {
-          AppMethodBeat.o(19763);
+          AppMethodBeat.o(231457);
           return true;
-          com.tencent.mm.plugin.account.a.b.a.b(ak.getContext(), paramu, 0, true);
+          com.tencent.mm.plugin.account.a.b.a.b(MMApplicationContext.getContext(), paramView, 0, true);
           continue;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "TYPE_UNKNOW_TO_URL hrefInfo.getData() no instanceof Bundle");
+          Log.i("MicroMsg.URISpanHandlerSet", "TYPE_UNKNOW_TO_URL hrefInfo.getData() no instanceof Bundle");
         }
       }
-      AppMethodBeat.o(19763);
+      AppMethodBeat.o(231457);
       return false;
     }
     
@@ -3429,159 +2376,8 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
-      return null;
-    }
-  }
-  
-  @URISpanHandlerSet.a
-  class UpgradeAssociateChatRoomUrlSpanHandler
-    extends URISpanHandlerSet.BaseUriSpanHandler
-  {
-    UpgradeAssociateChatRoomUrlSpanHandler()
-    {
-      super();
-    }
-    
-    final int[] Nd()
-    {
-      return new int[] { 53 };
-    }
-    
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
-    {
-      AppMethodBeat.i(179566);
-      if (paramu.type == 53) {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl");
-      }
-      for (;;)
-      {
-        Object localObject;
-        try
-        {
-          paramh = Uri.parse(paramu.url).getQueryParameter("roomname");
-          if (bu.isNullOrNil(paramh))
-          {
-            com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.URISpanHandlerSet", "Username is null.");
-            AppMethodBeat.o(179566);
-            return true;
-          }
-          if (x.wb(paramh))
-          {
-            localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(paramh);
-            if (localObject == null)
-            {
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl %s member is null", new Object[] { paramh });
-              AppMethodBeat.o(179566);
-              return true;
-            }
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl room:%s chatroomStatus:%s owener:%s", new Object[] { paramh, Integer.valueOf(((com.tencent.mm.storage.ac)localObject).field_chatroomStatus), bu.bI(((com.tencent.mm.storage.ac)localObject).field_roomowner, "") });
-            if (((com.tencent.mm.storage.ac)localObject).field_memberCount >= com.tencent.mm.model.r.aAx())
-            {
-              i = 1;
-              if (!x.zZ(paramh)) {
-                break label301;
-              }
-              if (((com.tencent.mm.storage.ac)localObject).Bj(v.aAC())) {
-                break label392;
-              }
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl：no owner");
-              if (URISpanHandlerSet.a(URISpanHandlerSet.this) != null)
-              {
-                com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131757110), "", URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131755792), false, null);
-                break label631;
-                ManagerRoomByWeworkUI.c(paramh, 2, 2, i);
-                AppMethodBeat.o(179566);
-                return true;
-              }
-            }
-            else
-            {
-              i = 0;
-              continue;
-            }
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl：mContext is null");
-          }
-        }
-        catch (Exception paramh)
-        {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handle click link error: %s, url: %s", new Object[] { paramh.getMessage(), paramu.url });
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(179566);
-          return true;
-          label301:
-          if ((x.zX(paramh)) && (!((com.tencent.mm.storage.ac)localObject).Bj(v.aAC())))
-          {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl：isAssociateChatRoom ");
-            if (URISpanHandlerSet.a(URISpanHandlerSet.this) != null) {
-              com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131757107), "", URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131755792), false, null);
-            }
-            for (;;)
-            {
-              AppMethodBeat.o(179566);
-              return true;
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl：mContext is null");
-            }
-          }
-          label392:
-          if (i != 0)
-          {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl：exceed maxnum");
-            if (URISpanHandlerSet.a(URISpanHandlerSet.this) != null) {
-              com.tencent.mm.ui.base.h.a(URISpanHandlerSet.a(URISpanHandlerSet.this), URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131757108), "", URISpanHandlerSet.a(URISpanHandlerSet.this).getString(2131755792), false, null);
-            }
-            for (;;)
-            {
-              ManagerRoomByWeworkUI.c(paramh, 2, 2, 2);
-              AppMethodBeat.o(179566);
-              return true;
-              com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.URISpanHandlerSet", "handleClickUpgradeAssociateChatRoomUrl：mContext is null");
-            }
-          }
-          com.tencent.mm.plugin.newtips.a.dxD().Mv(25);
-          com.tencent.mm.plugin.newtips.a.dxD().Mv(26);
-          com.tencent.mm.plugin.newtips.a.dxD().Mv(27);
-          localObject = new Intent();
-          ((Intent)localObject).setClass(ak.getContext(), ManagerRoomByWeworkUI.class);
-          ((Intent)localObject).addFlags(268435456);
-          ((Intent)localObject).putExtra("RoomInfo_Id", paramh);
-          ((Intent)localObject).putExtra("upgrade_openim_room_from_scene", 2);
-          paramh = ak.getContext();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramh, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/app/plugin/URISpanHandlerSet$UpgradeAssociateChatRoomUrlSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramh.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramh, "com/tencent/mm/app/plugin/URISpanHandlerSet$UpgradeAssociateChatRoomUrlSpanHandler", "handleSpanClick", "(Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickCallback;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        }
-        AppMethodBeat.o(179566);
-        return false;
-        label631:
-        do
-        {
-          i = 1;
-          break;
-        } while (i == 0);
-        int i = 3;
-      }
-    }
-    
-    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
-    {
-      return false;
-    }
-    
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
-    {
-      AppMethodBeat.i(179565);
-      if (paramString.trim().toLowerCase().startsWith("weixin://weixingroupupdate?"))
-      {
-        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 53, null);
-        AppMethodBeat.o(179565);
-        return paramString;
-      }
-      AppMethodBeat.o(179565);
       return null;
     }
   }
@@ -3595,25 +2391,25 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 4 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19765);
+      AppMethodBeat.i(231459);
       if (paramu.type == 4)
       {
-        if (paramh != null)
+        if (parami != null)
         {
-          paramh.a(paramu);
-          paramh.b(paramu);
+          parami.a(paramu);
+          parami.b(paramu);
         }
-        AppMethodBeat.o(19765);
+        AppMethodBeat.o(231459);
         return true;
       }
-      AppMethodBeat.o(19765);
+      AppMethodBeat.o(231459);
       return false;
     }
     
@@ -3622,7 +2418,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19764);
       if (paramString.trim().startsWith("weixin://findfriend/verifycontact"))
@@ -3645,35 +2441,35 @@ class URISpanHandlerSet
       super();
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 38 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(19767);
+      AppMethodBeat.i(231460);
       if (paramu.type == 38)
       {
-        paramh = Uri.parse(paramu.url);
-        paramu = paramh.getQueryParameter("username");
-        paramh = paramh.getQueryParameter("isvideocall");
-        yh localyh = new yh();
-        localyh.dNE.dto = 5;
-        localyh.dNE.talker = paramu;
-        localyh.dNE.context = URISpanHandlerSet.a(URISpanHandlerSet.this);
-        if ((paramu != null) && (!paramu.equals("")))
+        paramu = Uri.parse(paramu.url);
+        paramView = paramu.getQueryParameter("username");
+        paramu = paramu.getQueryParameter("isvideocall");
+        parami = new zj();
+        parami.efx.dKy = 5;
+        parami.efx.talker = paramView;
+        parami.efx.context = URISpanHandlerSet.a(URISpanHandlerSet.this);
+        if ((paramView != null) && (!paramView.equals("")))
         {
-          if ((paramh != null) && (paramh.equals("true"))) {}
-          for (localyh.dNE.dNA = 2;; localyh.dNE.dNA = 4)
+          if ((paramu != null) && (paramu.equals("true"))) {}
+          for (parami.efx.eft = 2;; parami.efx.eft = 4)
           {
-            com.tencent.mm.sdk.b.a.IvT.l(localyh);
-            AppMethodBeat.o(19767);
+            EventCenter.instance.publish(parami);
+            AppMethodBeat.o(231460);
             return true;
           }
         }
       }
-      AppMethodBeat.o(19767);
+      AppMethodBeat.o(231460);
       return false;
     }
     
@@ -3682,7 +2478,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(19766);
       if (paramString.trim().startsWith("weixin://voip/callagain/"))
@@ -3700,9 +2496,14 @@ class URISpanHandlerSet
   class WeWorkUrlSpanHandler
     extends URISpanHandlerSet.BaseUriSpanHandler
   {
+    private final String dol;
+    
     WeWorkUrlSpanHandler()
     {
       super();
+      AppMethodBeat.i(231461);
+      this.dol = ("https://" + WeChatHosts.domainString(2131761751) + "/wework_admin/commdownload");
+      AppMethodBeat.o(231461);
     }
     
     private static String getAppName(Context paramContext, String paramString)
@@ -3722,38 +2523,38 @@ class URISpanHandlerSet
       return null;
     }
     
-    final int[] Nd()
+    final int[] Xp()
     {
       return new int[] { 52 };
     }
     
-    final boolean a(com.tencent.mm.pluginsdk.ui.applet.u paramu, com.tencent.mm.pluginsdk.ui.span.h paramh)
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
     {
-      AppMethodBeat.i(179568);
+      AppMethodBeat.i(231462);
       if (paramu.type == 52)
       {
-        paramh = new Intent();
-        paramh.setAction("android.intent.action.VIEW");
-        paramh.setData(Uri.parse(paramu.url));
-        paramh.setPackage("com.tencent.wework");
-        paramh.setFlags(268435456);
+        paramView = new Intent();
+        paramView.setAction("android.intent.action.VIEW");
+        paramView.setData(Uri.parse(paramu.url));
+        paramView.setPackage("com.tencent.wework");
+        paramView.setFlags(268435456);
         try
         {
-          boolean bool = com.tencent.mm.pluginsdk.model.app.h.b(ak.getContext(), paramh, getAppName(ak.getContext(), "com.tencent.wework"));
+          boolean bool = com.tencent.mm.pluginsdk.model.app.h.b(MMApplicationContext.getContext(), paramView, getAppName(MMApplicationContext.getContext(), "com.tencent.wework"));
           if (!bool) {
-            com.tencent.mm.plugin.account.a.b.a.b(ak.getContext(), "https://work.weixin.qq.com/wework_admin/commdownload", 0, true);
+            com.tencent.mm.plugin.account.a.b.a.b(MMApplicationContext.getContext(), this.dol, 0, true);
           }
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.URISpanHandlerSet", "WeWorkUrlSpanHandler result:%s", new Object[] { Boolean.valueOf(bool) });
-          AppMethodBeat.o(179568);
+          Log.i("MicroMsg.URISpanHandlerSet", "WeWorkUrlSpanHandler result:%s", new Object[] { Boolean.valueOf(bool) });
+          AppMethodBeat.o(231462);
           return true;
         }
-        catch (Exception paramu)
+        catch (Exception paramView)
         {
-          AppMethodBeat.o(179568);
+          AppMethodBeat.o(231462);
           return false;
         }
       }
-      AppMethodBeat.o(179568);
+      AppMethodBeat.o(231462);
       return false;
     }
     
@@ -3762,7 +2563,7 @@ class URISpanHandlerSet
       return false;
     }
     
-    final com.tencent.mm.pluginsdk.ui.applet.u fL(String paramString)
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
     {
       AppMethodBeat.i(179567);
       if (paramString.trim().toLowerCase().startsWith("wxwork://jump?"))
@@ -3774,6 +2575,82 @@ class URISpanHandlerSet
       AppMethodBeat.o(179567);
       return null;
     }
+  }
+  
+  @URISpanHandlerSet.a
+  class WxaShortLinkUriSpanHandler
+    extends URISpanHandlerSet.BaseUriSpanHandler
+  {
+    WxaShortLinkUriSpanHandler()
+    {
+      super();
+    }
+    
+    final int[] Xp()
+    {
+      return new int[] { 60 };
+    }
+    
+    final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
+    {
+      AppMethodBeat.i(231464);
+      Log.i("MicroMsg.URISpanHandlerSet", "[WxaShortLinkUriSpanHandler] handleSpanClick ");
+      paramView = paramu.data;
+      if ((paramView instanceof Bundle))
+      {
+        paramView = ((Bundle)paramView).getString("key_wxa_short_link_launch_scene", "");
+        if (paramView.isEmpty())
+        {
+          Log.i("MicroMsg.URISpanHandlerSet", "[WxaShortLinkUriSpanHandler] scene is null ");
+          if (BuildInfo.IS_FLAVOR_RED)
+          {
+            paramView = new Error("[WxaShortLinkUriSpanHandler]  scene must not is null");
+            AppMethodBeat.o(231464);
+            throw paramView;
+          }
+        }
+        else
+        {
+          parami = t.b.valueOf(paramView);
+          Log.i("MicroMsg.URISpanHandlerSet", "[WxaShortLinkUriSpanHandler] sceneName=%s  scene=%d  preScene=%d", new Object[] { paramView, Integer.valueOf(parami.Kss), Integer.valueOf(parami.Kst) });
+          AppBrandCheckWxaShortLinkUI.a(URISpanHandlerSet.a(URISpanHandlerSet.this), paramu.url, parami);
+        }
+      }
+      do
+      {
+        AppMethodBeat.o(231464);
+        return false;
+        Log.i("MicroMsg.URISpanHandlerSet", "[WxaShortLinkUriSpanHandler] HrefInfo has not data");
+      } while (!BuildInfo.IS_FLAVOR_RED);
+      paramView = new Error("[WxaShortLinkUriSpanHandler] HrefInfo has not data");
+      AppMethodBeat.o(231464);
+      throw paramView;
+    }
+    
+    final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.u paramu, Bundle paramBundle)
+    {
+      return false;
+    }
+    
+    final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+    {
+      AppMethodBeat.i(231463);
+      if (paramString.trim().toLowerCase().startsWith("mp://"))
+      {
+        paramString = new com.tencent.mm.pluginsdk.ui.applet.u(paramString, 60, null);
+        AppMethodBeat.o(231463);
+        return paramString;
+      }
+      AppMethodBeat.o(231463);
+      return null;
+    }
+  }
+  
+  @Retention(RetentionPolicy.RUNTIME)
+  @Target({java.lang.annotation.ElementType.TYPE})
+  static @interface a
+  {
+    URISpanHandlerSet.PRIORITY Xq() default URISpanHandlerSet.PRIORITY.NORMAL;
   }
 }
 

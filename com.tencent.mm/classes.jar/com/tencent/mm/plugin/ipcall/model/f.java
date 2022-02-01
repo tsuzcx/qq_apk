@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,51 +9,51 @@ import java.util.Map;
 
 public final class f
 {
-  private static Map<Integer, List<Integer>> uWg;
-  public int lur = -1;
+  private static Map<Integer, List<Integer>> yoH;
+  public int mAT = -1;
   
   static
   {
     AppMethodBeat.i(25362);
-    uWg = new HashMap();
+    yoH = new HashMap();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(3));
     localArrayList.add(Integer.valueOf(2));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    uWg.put(Integer.valueOf(1), localArrayList);
+    yoH.put(Integer.valueOf(1), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(12));
     localArrayList.add(Integer.valueOf(8));
-    uWg.put(Integer.valueOf(2), localArrayList);
+    yoH.put(Integer.valueOf(2), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(4));
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    uWg.put(Integer.valueOf(3), localArrayList);
+    yoH.put(Integer.valueOf(3), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    uWg.put(Integer.valueOf(4), localArrayList);
+    yoH.put(Integer.valueOf(4), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(9));
     localArrayList.add(Integer.valueOf(10));
     localArrayList.add(Integer.valueOf(11));
-    uWg.put(Integer.valueOf(5), localArrayList);
+    yoH.put(Integer.valueOf(5), localArrayList);
     AppMethodBeat.o(25362);
   }
   
-  private boolean IX(int paramInt)
+  private boolean Pa(int paramInt)
   {
     AppMethodBeat.i(25360);
-    if (this.lur == -1)
+    if (this.mAT == -1)
     {
       AppMethodBeat.o(25360);
       return true;
     }
-    if ((uWg.containsKey(Integer.valueOf(this.lur))) && (((List)uWg.get(Integer.valueOf(this.lur))).contains(Integer.valueOf(paramInt))))
+    if ((yoH.containsKey(Integer.valueOf(this.mAT))) && (((List)yoH.get(Integer.valueOf(this.mAT))).contains(Integer.valueOf(paramInt))))
     {
       AppMethodBeat.o(25360);
       return true;
@@ -108,39 +108,39 @@ public final class f
     return "CANCEL_BY_ERR";
   }
   
-  public final boolean IW(int paramInt)
+  public final boolean OZ(int paramInt)
   {
     AppMethodBeat.i(25359);
-    if (IX(paramInt))
+    if (Pa(paramInt))
     {
-      ae.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { stateToString(this.lur), stateToString(paramInt) });
-      this.lur = paramInt;
+      Log.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { stateToString(this.mAT), stateToString(paramInt) });
+      this.mAT = paramInt;
       AppMethodBeat.o(25359);
       return true;
     }
-    ae.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { stateToString(i.dgC().lur), stateToString(paramInt) });
+    Log.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { stateToString(i.eaw().mAT), stateToString(paramInt) });
     AppMethodBeat.o(25359);
     return false;
   }
   
-  public final boolean dgr()
+  public final boolean eal()
   {
-    return (this.lur == 1) || (this.lur == 3) || (this.lur == 4) || (this.lur == 5);
+    return (this.mAT == 1) || (this.mAT == 3) || (this.mAT == 4) || (this.mAT == 5);
   }
   
-  public final boolean dgs()
+  public final boolean eam()
   {
-    return (this.lur == 4) || (this.lur == 5);
+    return (this.mAT == 4) || (this.mAT == 5);
   }
   
-  public final boolean dgt()
+  public final boolean ean()
   {
-    return this.lur == 5;
+    return this.mAT == 5;
   }
   
-  public final boolean dgu()
+  public final boolean eao()
   {
-    return this.lur == 5;
+    return this.mAT == 5;
   }
 }
 

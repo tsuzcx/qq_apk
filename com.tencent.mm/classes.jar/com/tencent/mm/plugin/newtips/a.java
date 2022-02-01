@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.newtips;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.cj;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.plugin.newtips.a.l;
 import com.tencent.mm.plugin.newtips.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
-  extends u
+  extends y
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c
 {
+  private static a ACO;
   private static HashMap<Integer, h.b> baseDBFactories;
-  private static a wHE;
-  private i wHF;
-  private b wHG;
-  private com.tencent.mm.plugin.newtips.b.d wHH;
-  private com.tencent.mm.plugin.newtips.a.e wHI;
-  private l wHJ;
+  private i ACP;
+  private b ACQ;
+  private com.tencent.mm.plugin.newtips.b.d ACR;
+  private com.tencent.mm.plugin.newtips.a.e ACS;
+  private l ACT;
   
   static
   {
@@ -51,91 +51,91 @@ public final class a
   {
     super(c.class);
     AppMethodBeat.i(127199);
-    this.wHF = null;
-    this.wHG = null;
-    this.wHH = null;
-    this.wHI = null;
-    this.wHJ = new l();
+    this.ACP = null;
+    this.ACQ = null;
+    this.ACR = null;
+    this.ACS = null;
+    this.ACT = new l();
     AppMethodBeat.o(127199);
   }
   
-  public static a dxB()
+  public static a exj()
   {
     try
     {
       AppMethodBeat.i(127200);
-      if (wHE == null) {
-        wHE = new a();
+      if (ACO == null) {
+        ACO = new a();
       }
-      a locala = wHE;
+      a locala = ACO;
       AppMethodBeat.o(127200);
       return locala;
     }
     finally {}
   }
   
-  public static l dxC()
+  public static l exk()
   {
-    AppMethodBeat.i(200589);
-    g.ajP().aiU();
-    if (dxB().wHF == null) {
-      dxB().wHF = new i();
+    AppMethodBeat.i(188556);
+    g.aAf().azk();
+    if (exj().ACP == null) {
+      exj().ACP = new i();
     }
-    l locall = dxB().wHJ;
-    AppMethodBeat.o(200589);
+    l locall = exj().ACT;
+    AppMethodBeat.o(188556);
     return locall;
   }
   
-  public static i dxD()
+  public static i exl()
   {
     AppMethodBeat.i(127203);
-    g.ajP().aiU();
-    if (dxB().wHF == null) {
-      dxB().wHF = new i();
+    g.aAf().azk();
+    if (exj().ACP == null) {
+      exj().ACP = new i();
     }
-    i locali = dxB().wHF;
+    i locali = exj().ACP;
     AppMethodBeat.o(127203);
     return locali;
   }
   
-  public static b dxE()
+  public static b exm()
   {
     AppMethodBeat.i(127204);
-    g.ajP().aiU();
-    if (dxB().wHG == null)
+    g.aAf().azk();
+    if (exj().ACQ == null)
     {
-      localObject = dxB();
-      g.ajS();
-      ((a)localObject).wHG = new b(g.ajR().gDX);
+      localObject = exj();
+      g.aAi();
+      ((a)localObject).ACQ = new b(g.aAh().hqK);
     }
-    Object localObject = dxB().wHG;
+    Object localObject = exj().ACQ;
     AppMethodBeat.o(127204);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.b.d dxF()
+  public static com.tencent.mm.plugin.newtips.b.d exn()
   {
     AppMethodBeat.i(127205);
-    g.ajP().aiU();
-    if (dxB().wHH == null)
+    g.aAf().azk();
+    if (exj().ACR == null)
     {
-      localObject = dxB();
-      g.ajS();
-      ((a)localObject).wHH = new com.tencent.mm.plugin.newtips.b.d(g.ajR().gDX);
+      localObject = exj();
+      g.aAi();
+      ((a)localObject).ACR = new com.tencent.mm.plugin.newtips.b.d(g.aAh().hqK);
     }
-    Object localObject = dxB().wHH;
+    Object localObject = exj().ACR;
     AppMethodBeat.o(127205);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.a.e dxG()
+  public static com.tencent.mm.plugin.newtips.a.e exo()
   {
     AppMethodBeat.i(127206);
-    g.ajP().aiU();
-    if (dxB().wHI == null) {
-      dxB().wHI = new com.tencent.mm.plugin.newtips.a.e();
+    g.aAf().azk();
+    if (exj().ACS == null) {
+      exj().ACS = new com.tencent.mm.plugin.newtips.a.e();
     }
-    com.tencent.mm.plugin.newtips.a.e locale = dxB().wHI;
+    com.tencent.mm.plugin.newtips.a.e locale = exj().ACS;
     AppMethodBeat.o(127206);
     return locale;
   }
@@ -149,12 +149,12 @@ public final class a
   {
     AppMethodBeat.i(127201);
     super.onAccountInitialized(paramc);
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().a("newtips", this.wHJ);
-    dxD();
-    int i = com.tencent.mm.plugin.newtips.a.d.wHR;
-    paramc = com.tencent.mm.plugin.newtips.a.d.wHY;
-    i.g(i, com.tencent.mm.plugin.newtips.a.d.wHQ, "", paramc);
-    ae.i("MicroMsg.NewTips.NewTipsManager", "dancy register dynamic newtips, tipsId:%s, path:%s", new Object[] { Integer.valueOf(i), paramc });
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().a("newtips", this.ACT);
+    exl();
+    int i = com.tencent.mm.plugin.newtips.a.d.ADb;
+    paramc = com.tencent.mm.plugin.newtips.a.d.ADi;
+    i.f(i, com.tencent.mm.plugin.newtips.a.d.ADa, "", paramc);
+    Log.i("MicroMsg.NewTips.NewTipsManager", "dancy register dynamic newtips, tipsId:%s, path:%s", new Object[] { Integer.valueOf(i), paramc });
     AppMethodBeat.o(127201);
   }
   
@@ -162,13 +162,13 @@ public final class a
   {
     AppMethodBeat.i(127202);
     super.onAccountRelease();
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().b("newtips", this.wHJ);
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().b("newtips", this.ACT);
     AppMethodBeat.o(127202);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a
  * JD-Core Version:    0.7.0.1
  */

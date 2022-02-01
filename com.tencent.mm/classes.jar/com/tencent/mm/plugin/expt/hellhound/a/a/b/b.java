@@ -1,157 +1,136 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a.b;
 
-import android.os.Process;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.co;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.protocal.protobuf.dhw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vending.j.c;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import java.lang.ref.WeakReference;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingStagety;", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;", "timeout", "", "(Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;J)V", "getCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;", "lastestTimestamp", "listViewRef", "Ljava/lang/ref/WeakReference;", "Landroid/widget/AbsListView;", "mUiHandler", "Landroid/os/Handler;", "getTimeout", "()J", "sendOnScroll", "", "listView", "firstVisibleItem", "", "visibleItemCount", "sendOnScrollStateChanged", "scrollState", "Companion", "plugin-expt_release"})
 public final class b
+  implements f
 {
-  private static int rbU = 0;
+  public static final a sCu;
+  final e sBU;
+  private long sCr;
+  private WeakReference<AbsListView> sCs;
+  private final Handler sCt;
+  private final long timeout;
   
-  private static List<co> a(co paramco)
+  static
   {
-    AppMethodBeat.i(169321);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject3 = paramco.RC().getBytes();
-    if (localObject3.length <= 5120)
-    {
-      paramco.dYL = 0;
-      paramco.dYM = 1;
-      localArrayList.add(paramco);
-      AppMethodBeat.o(169321);
-      return localArrayList;
-    }
-    Object localObject1 = paramco.dYI;
-    try
-    {
-      localObject1 = new JSONArray((String)localObject1);
-      if (localObject1 == null)
-      {
-        AppMethodBeat.o(169321);
-        return null;
-      }
-    }
-    catch (Exception localException)
-    {
-      Object localObject2;
-      for (;;)
-      {
-        ae.printErrStackTrace("HABBYGE-MALI.SnsReport", localException, "Sns, _spliteLogIfBigger7K-timeline-Exception", new Object[0]);
-        localObject2 = null;
-      }
-      int n = localObject2.length();
-      double d = Math.ceil(localObject3.length / 5120.0D);
-      int i1 = n / (int)d;
-      int i2 = n % (int)d;
-      int i = (int)d;
-      int j = i;
-      if (i2 > 0) {
-        j = i + 1;
-      }
-      int k = 0;
-      i = 0;
-      int m = 0;
-      while (m < d)
-      {
-        localObject3 = new co();
-        ((co)localObject3).dYC = paramco.dYC;
-        ((co)localObject3).me(paramco.dYD);
-        ((co)localObject3).mf(paramco.dYE);
-        ((co)localObject3).dYF = paramco.dYF;
-        ((co)localObject3).dYG = paramco.dYG;
-        ((co)localObject3).dYH = paramco.dYH;
-        ((co)localObject3).dYK = paramco.dYK;
-        JSONArray localJSONArray = new JSONArray();
-        i = m * i1;
-        while ((i < (m + 1) * i1) && (i < n - i2))
-        {
-          localJSONArray.put(localObject2.opt(i));
-          i += 1;
-        }
-        ((co)localObject3).dYI = localJSONArray.toString();
-        ((co)localObject3).dYJ = localJSONArray.length();
-        ((co)localObject3).dYL = k;
-        ((co)localObject3).dYM = j;
-        localArrayList.add(localObject3);
-        m += 1;
-        k += 1;
-      }
-      if (i2 > 0)
-      {
-        localObject3 = new co();
-        ((co)localObject3).dYC = paramco.dYC;
-        ((co)localObject3).me(paramco.dYD);
-        ((co)localObject3).mf(paramco.dYE);
-        ((co)localObject3).dYF = paramco.dYF;
-        ((co)localObject3).dYG = paramco.dYG;
-        ((co)localObject3).dYH = paramco.dYH;
-        ((co)localObject3).dYK = paramco.dYK;
-        paramco = new JSONArray();
-        while (i < n)
-        {
-          paramco.put(localObject2.opt(i));
-          i += 1;
-        }
-        ((co)localObject3).dYI = paramco.toString();
-        ((co)localObject3).dYJ = paramco.length();
-        ((co)localObject3).dYL = k;
-        ((co)localObject3).dYM = j;
-        localArrayList.add(localObject3);
-      }
-      AppMethodBeat.o(169321);
-    }
-    return localArrayList;
+    AppMethodBeat.i(220801);
+    sCu = new a((byte)0);
+    AppMethodBeat.o(220801);
   }
   
-  public static void a(dhw paramdhw, c<String, Integer> paramc)
+  public b(e parame, long paramLong)
   {
-    AppMethodBeat.i(169320);
-    if ((paramdhw == null) || (paramc == null))
+    AppMethodBeat.i(220800);
+    this.sBU = parame;
+    this.timeout = paramLong;
+    this.sCs = null;
+    this.sCr = 0L;
+    this.sCt = ((Handler)new b(this, Looper.getMainLooper()));
+    AppMethodBeat.o(220800);
+  }
+  
+  public final void a(AbsListView paramAbsListView, int paramInt)
+  {
+    AppMethodBeat.i(220798);
+    if (this.sCs != null)
     {
-      AppMethodBeat.o(169320);
+      localObject = this.sCs;
+      if (localObject == null) {
+        break label51;
+      }
+    }
+    label51:
+    for (Object localObject = (AbsListView)((WeakReference)localObject).get();; localObject = null)
+    {
+      if (localObject == null) {
+        this.sCs = new WeakReference(paramAbsListView);
+      }
+      AppMethodBeat.o(220798);
       return;
     }
-    co localco1 = new co();
-    localco1.dYC = Process.myPid();
-    co localco2 = localco1.me(((h)com.tencent.mm.kernel.g.ajO().ajq()).mProcessName).mf(paramdhw.dAa);
-    localco2.dYF = paramdhw.HPc;
-    localco2.dYG = paramdhw.HPd;
-    localco2.dYH = paramdhw.HPe;
-    localco2.dYI = ((String)paramc.get(0));
-    localco2.dYJ = ((Integer)paramc.get(1)).intValue();
-    int i = rbU;
-    rbU = i + 1;
-    localco2.dYK = i;
-    ae.i("HABBYGE-MALI.SnsReport", "SnsReport-report: " + localco1.RC());
-    paramdhw = a(localco1);
-    if (paramdhw == null)
+  }
+  
+  public final void a(AbsListView paramAbsListView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(220799);
+    long l = System.currentTimeMillis();
+    if (l - this.sCr > this.timeout)
     {
-      AppMethodBeat.o(169320);
+      this.sCr = l;
+      if (this.sCs != null)
+      {
+        localObject = this.sCs;
+        if (localObject == null) {
+          break label111;
+        }
+      }
+    }
+    label111:
+    for (Object localObject = (AbsListView)((WeakReference)localObject).get();; localObject = null)
+    {
+      if (localObject == null) {
+        this.sCs = new WeakReference(paramAbsListView);
+      }
+      paramAbsListView = Message.obtain();
+      paramAbsListView.what = 100;
+      paramAbsListView.arg1 = paramInt1;
+      paramAbsListView.arg2 = paramInt2;
+      this.sCt.sendMessage(paramAbsListView);
+      AppMethodBeat.o(220799);
       return;
     }
-    paramdhw = paramdhw.iterator();
-    while (paramdhw.hasNext())
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling$Companion;", "", "()V", "DEFAULT_TIMEOUT", "", "MSG_TIMEOUT", "", "plugin-expt_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling$mUiHandler$1", "Landroid/os/Handler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-expt_release"})
+  public static final class b
+    extends Handler
+  {
+    b(Looper paramLooper)
     {
-      paramc = (co)paramdhw.next();
-      paramc.dYI = paramc.dYI.replace(",", "#");
-      paramc.aLH();
-      ae.i("HABBYGE-MALI.SnsReport", "SnsReport-report-sub: " + paramc.RC());
+      super();
     }
-    AppMethodBeat.o(169320);
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(220797);
+      p.h(paramMessage, "msg");
+      super.handleMessage(paramMessage);
+      switch (paramMessage.what)
+      {
+      }
+      e locale;
+      do
+      {
+        AppMethodBeat.o(220797);
+        return;
+        locale = this.sCv.sBU;
+      } while (locale == null);
+      Object localObject = b.a(this.sCv);
+      if (localObject != null) {}
+      for (localObject = (AbsListView)((WeakReference)localObject).get();; localObject = null)
+      {
+        locale.c((AbsListView)localObject, paramMessage.arg1, paramMessage.arg2);
+        AppMethodBeat.o(220797);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.exdevice.b.b;
 import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.protocal.protobuf.adj;
-import com.tencent.mm.protocal.protobuf.adk;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.afm;
+import com.tencent.mm.protocal.protobuf.afn;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 public final class h
-  extends com.tencent.mm.plugin.exdevice.b.a<adj, adk>
+  extends com.tencent.mm.plugin.exdevice.b.a<afm, afn>
 {
-  private final WeakReference<b<h>> qgU;
+  private final WeakReference<b<h>> rxQ;
   String username;
   
   public h(String paramString, b<h> paramb)
   {
     AppMethodBeat.i(23518);
     this.username = paramString;
-    this.qgU = new WeakReference(paramb);
+    this.rxQ = new WeakReference(paramb);
     AppMethodBeat.o(23518);
   }
   
@@ -33,17 +33,17 @@ public final class h
     return "/cgi-bin/mmoc-bin/hardware/delfollow";
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23519);
-    ae.d("MicroMsg.NetSceneDelFollow", "hy: del follow end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
+    Log.d("MicroMsg.NetSceneDelFollow", "hy: del follow end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      ad.cmL().adv(this.username);
+      ad.cKN().anE(this.username);
     }
-    paramq = (b)this.qgU.get();
-    if (paramq != null) {
-      paramq.a(paramInt2, paramInt3, paramString, this);
+    params = (b)this.rxQ.get();
+    if (params != null) {
+      params.a(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(23519);
   }

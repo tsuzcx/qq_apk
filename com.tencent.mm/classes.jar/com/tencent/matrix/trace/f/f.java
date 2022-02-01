@@ -4,15 +4,15 @@ public abstract class f
   extends com.tencent.matrix.trace.e.c
   implements d
 {
-  public volatile boolean cKL = false;
+  public volatile boolean dbi = false;
   
-  public final void Js()
+  public final void TG()
   {
     try
     {
-      if (!this.cKL)
+      if (!this.dbi)
       {
-        this.cKL = true;
+        this.dbi = true;
         onAlive();
       }
       return;
@@ -24,13 +24,13 @@ public abstract class f
     }
   }
   
-  public final void Jt()
+  public final void TH()
   {
     try
     {
-      if (this.cKL)
+      if (this.dbi)
       {
-        this.cKL = false;
+        this.dbi = false;
         onDead();
       }
       return;
@@ -56,7 +56,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.trace.f.f
  * JD-Core Version:    0.7.0.1
  */

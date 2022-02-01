@@ -7,76 +7,76 @@ import com.tencent.soter.a.f.f;
 
 public final class b
 {
-  String DNG;
-  c Mor;
-  public f Mos;
-  public int Mot;
-  public com.tencent.soter.a.d.b Mou;
-  com.tencent.soter.a.a.a Mov;
-  com.tencent.soter.a.a.b Mow;
+  String IwV;
+  c RQP;
+  public f RQQ;
+  public int RQR;
+  public com.tencent.soter.a.d.b RQS;
+  com.tencent.soter.a.a.a RQT;
+  com.tencent.soter.a.a.b RQU;
   Context mContext;
   public int mScene;
-  public com.tencent.soter.a.d.a trR;
+  public com.tencent.soter.a.d.a wFx;
   
   public final String toString()
   {
     AppMethodBeat.i(29);
-    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.DNG + '\'' + ", mIWrapGetChallengeStr=" + this.Mor + ", mIWrapUploadSignature=" + this.Mos + ", mContext=" + this.mContext + ", mBiometricType=" + this.Mot + '}';
+    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.IwV + '\'' + ", mIWrapGetChallengeStr=" + this.RQP + ", mIWrapUploadSignature=" + this.RQQ + ", mContext=" + this.mContext + ", mBiometricType=" + this.RQR + '}';
     AppMethodBeat.o(29);
     return str;
   }
   
   public static final class a
   {
-    public b Mox;
+    public b RQV;
     
     public a()
     {
       AppMethodBeat.i(28);
-      this.Mox = new b((byte)0);
+      this.RQV = new b((byte)0);
       AppMethodBeat.o(28);
     }
     
     public final a a(com.tencent.soter.a.a.a parama)
     {
-      this.Mox.Mov = parama;
+      this.RQV.RQT = parama;
       return this;
     }
     
     public final a a(com.tencent.soter.a.a.b paramb)
     {
-      this.Mox.Mow = paramb;
+      this.RQV.RQU = paramb;
       return this;
     }
     
-    public final a ahy(int paramInt)
+    public final a aqL(int paramInt)
     {
-      this.Mox.mScene = paramInt;
+      this.RQV.mScene = paramInt;
       return this;
     }
     
-    public final a ahz(int paramInt)
+    public final a aqM(int paramInt)
     {
-      this.Mox.Mot = paramInt;
+      this.RQV.RQR = paramInt;
       return this;
     }
     
-    public final a bbb(String paramString)
+    public final a bqn(String paramString)
     {
-      this.Mox.DNG = paramString;
+      this.RQV.IwV = paramString;
       return this;
     }
     
-    public final a lm(Context paramContext)
+    public final a lh(Context paramContext)
     {
-      this.Mox.mContext = paramContext;
+      this.RQV.mContext = paramContext;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.a.g.b
  * JD-Core Version:    0.7.0.1
  */

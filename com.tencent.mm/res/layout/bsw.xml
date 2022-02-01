@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/auf" android:background="@color/d" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/hmf" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/bq" />
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:id="@id/hmh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toEndOf="@id/hmf" />
+    <com.tencent.mm.pluginsdk.ui.tools.VideoSightView android:id="@id/dup" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
+    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView android:id="@id/g3g" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:gravity="center" android:id="@id/c3v" android:background="@color/fm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h4l" android:layout_centerInParent="true" android:alpha="0.8" />
+    <ViewStub android:id="@id/hru" android:layout="@layout/bst" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/i59" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:gravity="center" android:id="@id/c4k" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.8" />
+    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
 </RelativeLayout>

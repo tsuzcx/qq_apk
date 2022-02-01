@@ -22,7 +22,6 @@ public class SQLiteLint
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      SQLiteLintNativeBridge.loadLibrary();
       sSqlExecutionCallbackMode = null;
       sPackageName = null;
       AppMethodBeat.o(52836);
@@ -50,6 +49,13 @@ public class SQLiteLint
   public static SQLiteLint.SqlExecutionCallbackMode getSqlExecutionCallbackMode()
   {
     return sSqlExecutionCallbackMode;
+  }
+  
+  public static void init()
+  {
+    AppMethodBeat.i(197274);
+    SQLiteLintNativeBridge.loadLibrary();
+    AppMethodBeat.o(197274);
   }
   
   public static void install(Context paramContext, SQLiteDatabase paramSQLiteDatabase)
@@ -272,7 +278,7 @@ public class SQLiteLint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLint
  * JD-Core Version:    0.7.0.1
  */

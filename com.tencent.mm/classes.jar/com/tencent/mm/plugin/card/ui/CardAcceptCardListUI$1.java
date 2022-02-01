@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.card.ui;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class CardAcceptCardListUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -13,8 +13,8 @@ final class CardAcceptCardListUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(113150);
-    ae.v("MicroMsg.CardAcceptCardListUI", "setBackBtn cancel");
-    CardAcceptCardListUI.a(this.oLa, 1);
+    Log.v("MicroMsg.CardAcceptCardListUI", "setBackBtn cancel");
+    CardAcceptCardListUI.a(this.pYO, 1);
     AppMethodBeat.o(113150);
     return true;
   }

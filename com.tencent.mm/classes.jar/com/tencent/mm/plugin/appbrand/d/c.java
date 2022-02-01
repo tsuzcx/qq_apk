@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.d;
 
 import com.tencent.mm.kernel.c.a;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/complaint/IAppBrandComplaintService;", "Lcom/tencent/mm/kernel/service/IService;", "cleanCacheDir", "", "getCacheDir", "", "registerFileItem", "path", "luggage-wxa-app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/complaint/IAppBrandComplaintService;", "Lcom/tencent/mm/kernel/service/IService;", "cleanCacheDir", "", "getCacheDir", "", "registerFileItem", "path", "luggage-wxa-app_release"})
 public abstract interface c
   extends a
 {
-  public abstract void NL(String paramString);
+  public abstract void WT(String paramString);
   
-  public abstract void bek();
+  public abstract void bzB();
   
   public abstract String getCacheDir();
 }

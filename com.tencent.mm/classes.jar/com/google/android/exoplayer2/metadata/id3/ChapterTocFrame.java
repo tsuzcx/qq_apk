@@ -10,11 +10,11 @@ public final class ChapterTocFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<ChapterTocFrame> CREATOR;
-  public final boolean bqb;
-  public final boolean buA;
-  public final String[] buB;
-  private final Id3Frame[] buy;
-  public final String buz;
+  public final boolean bpW;
+  private final Id3Frame[] bus;
+  public final String but;
+  public final boolean buu;
+  public final String[] buv;
   
   static
   {
@@ -27,11 +27,11 @@ public final class ChapterTocFrame
   {
     super("CTOC");
     AppMethodBeat.i(92415);
-    this.buz = paramParcel.readString();
+    this.but = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.buA = bool1;
+      this.buu = bool1;
       if (paramParcel.readByte() == 0) {
         break label114;
       }
@@ -39,13 +39,13 @@ public final class ChapterTocFrame
     label114:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.bqb = bool1;
-      this.buB = paramParcel.createStringArray();
+      this.bpW = bool1;
+      this.buv = paramParcel.createStringArray();
       int j = paramParcel.readInt();
-      this.buy = new Id3Frame[j];
+      this.bus = new Id3Frame[j];
       while (i < j)
       {
-        this.buy[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
+        this.bus[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
         i += 1;
       }
       bool1 = false;
@@ -57,11 +57,11 @@ public final class ChapterTocFrame
   public ChapterTocFrame(String paramString, boolean paramBoolean1, boolean paramBoolean2, String[] paramArrayOfString, Id3Frame[] paramArrayOfId3Frame)
   {
     super("CTOC");
-    this.buz = paramString;
-    this.buA = paramBoolean1;
-    this.bqb = paramBoolean2;
-    this.buB = paramArrayOfString;
-    this.buy = paramArrayOfId3Frame;
+    this.but = paramString;
+    this.buu = paramBoolean1;
+    this.bpW = paramBoolean2;
+    this.buv = paramArrayOfString;
+    this.bus = paramArrayOfId3Frame;
   }
   
   public final boolean equals(Object paramObject)
@@ -78,7 +78,7 @@ public final class ChapterTocFrame
       return false;
     }
     paramObject = (ChapterTocFrame)paramObject;
-    if ((this.buA == paramObject.buA) && (this.bqb == paramObject.bqb) && (x.i(this.buz, paramObject.buz)) && (Arrays.equals(this.buB, paramObject.buB)) && (Arrays.equals(this.buy, paramObject.buy)))
+    if ((this.buu == paramObject.buu) && (this.bpW == paramObject.bpW) && (x.j(this.but, paramObject.but)) && (Arrays.equals(this.buv, paramObject.buv)) && (Arrays.equals(this.bus, paramObject.bus)))
     {
       AppMethodBeat.o(92416);
       return true;
@@ -93,17 +93,17 @@ public final class ChapterTocFrame
     int k = 0;
     AppMethodBeat.i(92417);
     int i;
-    if (this.buA)
+    if (this.buu)
     {
       i = 1;
-      if (!this.bqb) {
+      if (!this.bpW) {
         break label66;
       }
     }
     for (;;)
     {
-      if (this.buz != null) {
-        k = this.buz.hashCode();
+      if (this.but != null) {
+        k = this.but.hashCode();
       }
       AppMethodBeat.o(92417);
       return ((i + 527) * 31 + j) * 31 + k;
@@ -118,12 +118,12 @@ public final class ChapterTocFrame
   {
     int i = 1;
     AppMethodBeat.i(92418);
-    paramParcel.writeString(this.buz);
-    if (this.buA)
+    paramParcel.writeString(this.but);
+    if (this.buu)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.bqb) {
+      if (!this.bpW) {
         break label96;
       }
     }
@@ -131,12 +131,12 @@ public final class ChapterTocFrame
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeStringArray(this.buB);
-      paramParcel.writeInt(this.buy.length);
+      paramParcel.writeStringArray(this.buv);
+      paramParcel.writeInt(this.bus.length);
       paramInt = 0;
-      while (paramInt < this.buy.length)
+      while (paramInt < this.bus.length)
       {
-        paramParcel.writeParcelable(this.buy[paramInt], 0);
+        paramParcel.writeParcelable(this.bus[paramInt], 0);
         paramInt += 1;
       }
       paramInt = 0;
@@ -147,7 +147,7 @@ public final class ChapterTocFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.ChapterTocFrame
  * JD-Core Version:    0.7.0.1
  */

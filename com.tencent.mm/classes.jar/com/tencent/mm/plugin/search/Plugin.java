@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.search;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.plugin.search.a.b;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -18,7 +18,7 @@ public final class Plugin
     return locala;
   }
   
-  public final az createSubCore()
+  public final bd createSubCore()
   {
     AppMethodBeat.i(28066);
     b localb = new b();
@@ -33,7 +33,7 @@ public final class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.search.Plugin
  * JD-Core Version:    0.7.0.1
  */

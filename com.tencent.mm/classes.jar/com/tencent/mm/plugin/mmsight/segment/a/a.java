@@ -42,27 +42,27 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract boolean gB(int paramInt1, int paramInt2);
+    public abstract boolean hc(int paramInt1, int paramInt2);
   }
   
   public static abstract interface b
   {
-    public abstract void dw(Object paramObject);
+    public abstract void dD(Object paramObject);
   }
   
   public static abstract interface c
   {
-    public abstract void dx(Object paramObject);
+    public abstract void dE(Object paramObject);
   }
   
   public static abstract interface d
   {
-    public abstract void ak(int paramInt1, int paramInt2, int paramInt3);
+    public abstract void ap(int paramInt1, int paramInt2, int paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.a.a
  * JD-Core Version:    0.7.0.1
  */

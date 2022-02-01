@@ -6,50 +6,50 @@ import java.io.File;
 
 public final class h$c
 {
-  private final g Ios;
-  public String Iov;
+  private final g NBQ;
+  public String NBT;
   private final Context mContext;
   
   private h$c(Context paramContext)
   {
-    AppMethodBeat.i(195340);
+    AppMethodBeat.i(193828);
     this.mContext = paramContext;
-    this.Ios = new g.a(paramContext, "recovery_log").fkT();
-    paramContext = new File(l.ib(paramContext), ".log").getAbsolutePath();
-    String str = this.Ios.getString("setting_log_path", paramContext);
+    this.NBQ = new g.a(paramContext, "recovery_log").guE();
+    paramContext = new File(l.iU(paramContext), ".log").getAbsolutePath();
+    String str = this.NBQ.getString("setting_log_path", paramContext);
     try
     {
-      l.b.N(new File(str));
+      l.b.O(new File(str));
       paramContext = str;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        this.Ios.aQY("setting_log_path");
+        this.NBQ.bhB("setting_log_path");
       }
     }
-    this.Iov = paramContext;
-    AppMethodBeat.o(195340);
+    this.NBT = paramContext;
+    AppMethodBeat.o(193828);
   }
   
-  public static c hW(Context paramContext)
+  public static c iP(Context paramContext)
   {
-    AppMethodBeat.i(195339);
+    AppMethodBeat.i(193827);
     paramContext = new c(paramContext);
-    AppMethodBeat.o(195339);
+    AppMethodBeat.o(193827);
     return paramContext;
   }
   
-  public final void flb()
+  public final void guM()
   {
-    AppMethodBeat.i(195341);
-    a.a.K(new File(this.Iov));
-    AppMethodBeat.o(195341);
+    AppMethodBeat.i(193829);
+    a.a.L(new File(this.NBT));
+    AppMethodBeat.o(193829);
   }
   
   /* Error */
-  public final String flc()
+  public final String guN()
   {
     // Byte code:
     //   0: ldc 102
@@ -57,7 +57,7 @@ public final class h$c
     //   5: new 46	java/io/File
     //   8: dup
     //   9: aload_0
-    //   10: getfield 78	com/tencent/mm/recoveryv2/h$c:Iov	Ljava/lang/String;
+    //   10: getfield 78	com/tencent/mm/recoveryv2/h$c:NBT	Ljava/lang/String;
     //   13: invokespecial 70	java/io/File:<init>	(Ljava/lang/String;)V
     //   16: astore_1
     //   17: aload_1

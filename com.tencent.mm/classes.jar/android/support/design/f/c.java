@@ -20,26 +20,26 @@ public final class c
   implements android.support.v4.graphics.drawable.e
 {
   private int alpha = 255;
-  private final Matrix gR = new Matrix();
-  private final PointF iY = new PointF();
-  private PorterDuffColorFilter jg;
-  private PorterDuff.Mode ji = PorterDuff.Mode.SRC_IN;
-  private final Matrix[] lM = new Matrix[4];
-  private final Matrix[] lN = new Matrix[4];
-  private final d[] lO = new d[4];
-  private final Path lP = new Path();
-  private final d lQ = new d();
-  private final Region lR = new Region();
-  private final Region lS = new Region();
-  private final float[] lT = new float[2];
-  private final float[] lU = new float[2];
-  private e lV = null;
-  public boolean lW = false;
-  private boolean lX = false;
-  public float lY = 1.0F;
-  private int lZ = 5;
-  public Paint.Style ma = Paint.Style.FILL_AND_STROKE;
-  public ColorStateList mb = null;
+  private final Matrix gT = new Matrix();
+  private final PointF ja = new PointF();
+  private PorterDuffColorFilter ji;
+  private PorterDuff.Mode jk = PorterDuff.Mode.SRC_IN;
+  private final Matrix[] lO = new Matrix[4];
+  private final Matrix[] lP = new Matrix[4];
+  private final d[] lQ = new d[4];
+  private final Path lR = new Path();
+  private final d lS = new d();
+  private final Region lT = new Region();
+  private final Region lU = new Region();
+  private final float[] lV = new float[2];
+  private final float[] lW = new float[2];
+  private e lX = null;
+  public boolean lY = false;
+  private boolean lZ = false;
+  public float ma = 1.0F;
+  private int mb = 5;
+  public Paint.Style mc = Paint.Style.FILL_AND_STROKE;
+  public ColorStateList md = null;
   private final Paint paint = new Paint();
   private float scale = 1.0F;
   private int shadowColor = -16777216;
@@ -53,12 +53,12 @@ public final class c
   
   public c(e parame)
   {
-    this.lV = parame;
+    this.lX = parame;
     while (i < 4)
     {
-      this.lM[i] = new Matrix();
-      this.lN[i] = new Matrix();
-      this.lO[i] = new d();
+      this.lO[i] = new Matrix();
+      this.lP[i] = new Matrix();
+      this.lQ[i] = new d();
       i += 1;
     }
   }
@@ -83,78 +83,78 @@ public final class c
   private void a(int paramInt1, int paramInt2, Path paramPath)
   {
     paramPath.rewind();
-    if (this.lV == null) {
+    if (this.lX == null) {
       return;
     }
     int i = 0;
     float f1;
     while (i < 4)
     {
-      a(i, paramInt1, paramInt2, this.iY);
-      a((i - 1 + 4) % 4, paramInt1, paramInt2, this.iY);
-      f1 = this.iY.x;
-      float f2 = this.iY.y;
-      a((i + 1) % 4, paramInt1, paramInt2, this.iY);
-      float f3 = this.iY.x;
-      float f4 = this.iY.y;
-      a(i, paramInt1, paramInt2, this.iY);
-      float f5 = this.iY.x;
-      float f6 = this.iY.y;
+      a(i, paramInt1, paramInt2, this.ja);
+      a((i - 1 + 4) % 4, paramInt1, paramInt2, this.ja);
+      f1 = this.ja.x;
+      float f2 = this.ja.y;
+      a((i + 1) % 4, paramInt1, paramInt2, this.ja);
+      float f3 = this.ja.x;
+      float f4 = this.ja.y;
+      a(i, paramInt1, paramInt2, this.ja);
+      float f5 = this.ja.x;
+      float f6 = this.ja.y;
       Math.atan2(f2 - f6, f1 - f5);
       Math.atan2(f4 - f6, f3 - f5);
       f1 = e((i - 1 + 4) % 4, paramInt1, paramInt2);
-      this.lM[i].reset();
-      this.lM[i].setTranslate(this.iY.x, this.iY.y);
-      this.lM[i].preRotate((float)Math.toDegrees(f1 + 1.570796F));
-      this.lT[0] = this.lO[i].me;
-      this.lT[1] = this.lO[i].mf;
-      this.lM[i].mapPoints(this.lT);
+      this.lO[i].reset();
+      this.lO[i].setTranslate(this.ja.x, this.ja.y);
+      this.lO[i].preRotate((float)Math.toDegrees(f1 + 1.570796F));
+      this.lV[0] = this.lQ[i].mg;
+      this.lV[1] = this.lQ[i].mh;
+      this.lO[i].mapPoints(this.lV);
       f1 = e(i, paramInt1, paramInt2);
-      this.lN[i].reset();
-      this.lN[i].setTranslate(this.lT[0], this.lT[1]);
-      this.lN[i].preRotate((float)Math.toDegrees(f1));
+      this.lP[i].reset();
+      this.lP[i].setTranslate(this.lV[0], this.lV[1]);
+      this.lP[i].preRotate((float)Math.toDegrees(f1));
       i += 1;
     }
     paramInt1 = 0;
     if (paramInt1 < 4)
     {
-      this.lT[0] = this.lO[paramInt1].mc;
-      this.lT[1] = this.lO[paramInt1].md;
-      this.lM[paramInt1].mapPoints(this.lT);
+      this.lV[0] = this.lQ[paramInt1].me;
+      this.lV[1] = this.lQ[paramInt1].mf;
+      this.lO[paramInt1].mapPoints(this.lV);
       label417:
       b localb;
       if (paramInt1 == 0)
       {
-        paramPath.moveTo(this.lT[0], this.lT[1]);
-        this.lO[paramInt1].a(this.lM[paramInt1], paramPath);
+        paramPath.moveTo(this.lV[0], this.lV[1]);
+        this.lQ[paramInt1].a(this.lO[paramInt1], paramPath);
         paramInt2 = (paramInt1 + 1) % 4;
-        this.lT[0] = this.lO[paramInt1].me;
-        this.lT[1] = this.lO[paramInt1].mf;
-        this.lM[paramInt1].mapPoints(this.lT);
-        this.lU[0] = this.lO[paramInt2].mc;
-        this.lU[1] = this.lO[paramInt2].md;
-        this.lM[paramInt2].mapPoints(this.lU);
-        f1 = (float)Math.hypot(this.lT[0] - this.lU[0], this.lT[1] - this.lU[1]);
-        this.lQ.bI();
+        this.lV[0] = this.lQ[paramInt1].mg;
+        this.lV[1] = this.lQ[paramInt1].mh;
+        this.lO[paramInt1].mapPoints(this.lV);
+        this.lW[0] = this.lQ[paramInt2].me;
+        this.lW[1] = this.lQ[paramInt2].mf;
+        this.lO[paramInt2].mapPoints(this.lW);
+        f1 = (float)Math.hypot(this.lV[0] - this.lW[0], this.lV[1] - this.lW[1]);
+        this.lS.bK();
         switch (paramInt1)
         {
         default: 
-          localb = this.lV.mp;
+          localb = this.lX.mr;
         }
       }
       for (;;)
       {
-        localb.a(f1, this.lY, this.lQ);
-        this.lQ.a(this.lN[paramInt1], paramPath);
+        localb.a(f1, this.ma, this.lS);
+        this.lS.a(this.lP[paramInt1], paramPath);
         paramInt1 += 1;
         break;
-        paramPath.lineTo(this.lT[0], this.lT[1]);
+        paramPath.lineTo(this.lV[0], this.lV[1]);
         break label417;
-        localb = this.lV.mq;
+        localb = this.lX.ms;
         continue;
-        localb = this.lV.mr;
+        localb = this.lX.mt;
         continue;
-        localb = this.lV.ms;
+        localb = this.lX.mu;
       }
     }
     paramPath.close();
@@ -166,52 +166,52 @@ public final class c
     if (this.scale == 1.0F) {
       return;
     }
-    this.gR.reset();
-    this.gR.setScale(this.scale, this.scale, paramInt1 / 2, paramInt2 / 2);
-    paramPath.transform(this.gR);
+    this.gT.reset();
+    this.gT.setScale(this.scale, this.scale, paramInt1 / 2, paramInt2 / 2);
+    paramPath.transform(this.gT);
   }
   
-  private void bH()
+  private void bJ()
   {
-    if ((this.mb == null) || (this.ji == null)) {
-      this.jg = null;
+    if ((this.md == null) || (this.jk == null)) {
+      this.ji = null;
     }
     int i;
     do
     {
       return;
-      i = this.mb.getColorForState(getState(), 0);
-      this.jg = new PorterDuffColorFilter(i, this.ji);
-    } while (!this.lX);
+      i = this.md.getColorForState(getState(), 0);
+      this.ji = new PorterDuffColorFilter(i, this.jk);
+    } while (!this.lZ);
     this.shadowColor = i;
   }
   
   private float e(int paramInt1, int paramInt2, int paramInt3)
   {
-    a(paramInt1, paramInt2, paramInt3, this.iY);
-    float f1 = this.iY.x;
-    float f2 = this.iY.y;
-    a((paramInt1 + 1) % 4, paramInt2, paramInt3, this.iY);
-    float f3 = this.iY.x;
-    return (float)Math.atan2(this.iY.y - f2, f3 - f1);
+    a(paramInt1, paramInt2, paramInt3, this.ja);
+    float f1 = this.ja.x;
+    float f2 = this.ja.y;
+    a((paramInt1 + 1) % 4, paramInt2, paramInt3, this.ja);
+    float f3 = this.ja.x;
+    return (float)Math.atan2(this.ja.y - f2, f3 - f1);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    this.paint.setColorFilter(this.jg);
+    this.paint.setColorFilter(this.ji);
     int i = this.paint.getAlpha();
     Paint localPaint = this.paint;
     int j = this.alpha;
     localPaint.setAlpha((j + (j >>> 7)) * i >>> 8);
     this.paint.setStrokeWidth(this.strokeWidth);
-    this.paint.setStyle(this.ma);
-    if ((this.lZ > 0) && (this.lW)) {
-      this.paint.setShadowLayer(this.shadowRadius, 0.0F, this.lZ, this.shadowColor);
+    this.paint.setStyle(this.mc);
+    if ((this.mb > 0) && (this.lY)) {
+      this.paint.setShadowLayer(this.shadowRadius, 0.0F, this.mb, this.shadowColor);
     }
-    if (this.lV != null)
+    if (this.lX != null)
     {
-      b(paramCanvas.getWidth(), paramCanvas.getHeight(), this.lP);
-      paramCanvas.drawPath(this.lP, this.paint);
+      b(paramCanvas.getWidth(), paramCanvas.getHeight(), this.lR);
+      paramCanvas.drawPath(this.lR, this.paint);
     }
     for (;;)
     {
@@ -229,16 +229,16 @@ public final class c
   public final Region getTransparentRegion()
   {
     Rect localRect = getBounds();
-    this.lR.set(localRect);
-    b(localRect.width(), localRect.height(), this.lP);
-    this.lS.setPath(this.lP, this.lR);
-    this.lR.op(this.lS, Region.Op.DIFFERENCE);
-    return this.lR;
+    this.lT.set(localRect);
+    b(localRect.width(), localRect.height(), this.lR);
+    this.lU.setPath(this.lR, this.lT);
+    this.lT.op(this.lU, Region.Op.DIFFERENCE);
+    return this.lT;
   }
   
   public final void i(float paramFloat)
   {
-    this.lY = paramFloat;
+    this.ma = paramFloat;
     invalidateSelf();
   }
   
@@ -261,15 +261,15 @@ public final class c
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    this.mb = paramColorStateList;
-    bH();
+    this.md = paramColorStateList;
+    bJ();
     invalidateSelf();
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    this.ji = paramMode;
-    bH();
+    this.jk = paramMode;
+    bJ();
     invalidateSelf();
   }
 }

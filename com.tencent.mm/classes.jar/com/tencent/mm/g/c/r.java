@@ -2,47 +2,47 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class r
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandPrefetchWxaAttrsMarkTableAppIdIndex ON AppBrandPrefetchWxaAttrsMarkTable(appId)" };
-  private static final int eGD = "appId".hashCode();
-  private static final int eGY = "username".hashCode();
-  private static final int eHF = "prefetchUpdateTime".hashCode();
+  private static final int fkj = "appId".hashCode();
+  private static final int flh = "prefetchUpdateTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  private boolean eGm = true;
-  private boolean eHE = true;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetusername = true;
   public String field_appId;
   public long field_prefetchUpdateTime;
   public String field_username;
+  private boolean fjS = true;
+  private boolean flg = true;
   
-  public static c.a VD()
+  public static IAutoDBItem.MAutoDBInfo ajs()
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "username";
-    locala.IBN.put("username", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" username TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "username";
-    locala.columns[1] = "appId";
-    locala.IBN.put("appId", "TEXT");
+    localMAutoDBInfo.primaryKey = "username";
+    localMAutoDBInfo.columns[1] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "prefetchUpdateTime";
-    locala.IBN.put("prefetchUpdateTime", "LONG");
+    localMAutoDBInfo.columns[2] = "prefetchUpdateTime";
+    localMAutoDBInfo.colsMap.put("prefetchUpdateTime", "LONG");
     localStringBuilder.append(" prefetchUpdateTime LONG");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -58,11 +58,11 @@ public abstract class r
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (username_HASHCODE != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eGV = true;
+      this.__hadSetusername = true;
     }
     for (;;)
     {
@@ -70,9 +70,9 @@ public abstract class r
       break label20;
       break;
       label65:
-      if (eGD == k) {
+      if (fkj == k) {
         this.field_appId = paramCursor.getString(i);
-      } else if (eHF == k) {
+      } else if (flh == k) {
         this.field_prefetchUpdateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -83,13 +83,13 @@ public abstract class r
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGV) {
+    if (this.__hadSetusername) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eHE) {
+    if (this.flg) {
       localContentValues.put("prefetchUpdateTime", Long.valueOf(this.field_prefetchUpdateTime));
     }
     if (this.systemRowid > 0L) {
@@ -100,7 +100,7 @@ public abstract class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.r
  * JD-Core Version:    0.7.0.1
  */

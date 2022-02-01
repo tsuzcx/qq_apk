@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/eq" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/a85" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" style="@style/n6" />
-</LinearLayout>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb" android:paddingStart="@dimen/ct"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/v2" android:layout_width="@dimen/k9" android:layout_height="@dimen/k9" android:src="@drawable/c0" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+    <RelativeLayout android:background="@drawable/b9w" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cb" android:layout_toEndOf="@id/v2">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center|left" android:id="@id/v5" android:layout_width="wrap_content" android:layout_height="@dimen/ip" android:text="@string/hcc" android:layout_centerVertical="true" android:paddingEnd="@dimen/hs" />
+        <com.tencent.mm.plugin.sns.ui.PreviewContactView android:id="@id/v1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ip" android:layout_toStartOf="@id/h6o" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h6o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" app:iconColor="@color/en" />
+    </RelativeLayout>
+</RelativeLayout>

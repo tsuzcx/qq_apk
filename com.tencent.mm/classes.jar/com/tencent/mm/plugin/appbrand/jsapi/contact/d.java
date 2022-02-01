@@ -3,35 +3,35 @@ package com.tencent.mm.plugin.appbrand.jsapi.contact;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.b;
+import com.tencent.luggage.h.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/contact/JsApiChooseContactNew;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/contact/JsApiChooseContactNew;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
 public final class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.jsapi.f>
 {
   public static final int CTRL_INDEX = 72;
   public static final String NAME = "chooseContact";
   @Deprecated
-  public static final a kNh;
+  public static final a lRZ;
   
   static
   {
     AppMethodBeat.i(138160);
-    kNh = new a((byte)0);
+    lRZ = new a((byte)0);
     AppMethodBeat.o(138160);
   }
   
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(138159);
-    if (paramc == null)
+    if (paramf == null)
     {
       AppMethodBeat.o(138159);
       return;
@@ -41,39 +41,39 @@ public final class d
       AppMethodBeat.o(138159);
       return;
     }
-    paramJSONObject = com.tencent.mm.sdk.f.a.jw(paramc.getContext());
+    paramJSONObject = AndroidContextUtil.castActivityOrNull(paramf.getContext());
     if (paramJSONObject == null)
     {
-      ((d.g.a.a)new b(paramc, paramInt)).invoke();
+      ((a)new b(paramf, paramInt)).invoke();
       AppMethodBeat.o(138159);
       return;
     }
-    paramJSONObject = e.aB((Context)paramJSONObject);
+    paramJSONObject = com.tencent.luggage.h.f.aK((Context)paramJSONObject);
     Intent localIntent = new Intent("android.intent.action.PICK");
     localIntent.setType("vnd.android.cursor.dir/phone_v2");
-    paramJSONObject.a(localIntent, (e.b)new c(this, paramc, paramInt));
+    paramJSONObject.a(localIntent, (f.b)new c(this, paramf, paramInt));
     AppMethodBeat.o(138159);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/contact/JsApiChooseContactNew$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-default-impl_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/contact/JsApiChooseContactNew$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-default-impl_release"})
   static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<z>
+    implements a<x>
   {
-    b(c paramc, int paramInt)
+    b(com.tencent.mm.plugin.appbrand.jsapi.f paramf, int paramInt)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "resultCode", "", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "resultCode", "", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
   static final class c
-    implements e.b
+    implements f.b
   {
-    c(d paramd, c paramc, int paramInt) {}
+    c(d paramd, com.tencent.mm.plugin.appbrand.jsapi.f paramf, int paramInt) {}
     
     /* Error */
     public final void a(int paramInt, Intent paramIntent)
@@ -85,7 +85,7 @@ public final class d
       //   4: astore_3
       //   5: ldc 53
       //   7: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   10: invokestatic 63	com/tencent/mm/plugin/appbrand/jsapi/contact/d:bkL	()Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$a;
+      //   10: invokestatic 63	com/tencent/mm/plugin/appbrand/jsapi/contact/d:bGh	()Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$a;
       //   13: pop
       //   14: ldc 65
       //   16: new 67	java/lang/StringBuilder
@@ -93,7 +93,7 @@ public final class d
       //   20: ldc 69
       //   22: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   25: aload_0
-      //   26: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
+      //   26: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
       //   29: invokeinterface 78 1 0
       //   34: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   37: ldc 84
@@ -103,222 +103,222 @@ public final class d
       //   46: bipush 93
       //   48: invokevirtual 90	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
       //   51: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   54: invokestatic 98	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   54: invokestatic 98	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   57: iload_1
       //   58: tableswitch	default:+26 -> 84, -1:+82->140, 0:+54->112, 1:+54->112
-      //   85: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
+      //   85: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
       //   88: aload_0
-      //   89: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuL	I
+      //   89: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyo	I
       //   92: aload_0
-      //   93: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kNi	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
+      //   93: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lSa	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
       //   96: ldc 100
-      //   98: invokevirtual 104	com/tencent/mm/plugin/appbrand/jsapi/contact/d:PO	(Ljava/lang/String;)Ljava/lang/String;
-      //   101: invokeinterface 108 3 0
+      //   98: invokevirtual 104	com/tencent/mm/plugin/appbrand/jsapi/contact/d:Zf	(Ljava/lang/String;)Ljava/lang/String;
+      //   101: invokeinterface 107 3 0
       //   106: ldc 53
-      //   108: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   108: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   111: return
       //   112: aload_0
-      //   113: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
+      //   113: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
       //   116: aload_0
-      //   117: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuL	I
+      //   117: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyo	I
       //   120: aload_0
-      //   121: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kNi	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
-      //   124: ldc 113
-      //   126: invokevirtual 104	com/tencent/mm/plugin/appbrand/jsapi/contact/d:PO	(Ljava/lang/String;)Ljava/lang/String;
-      //   129: invokeinterface 108 3 0
+      //   121: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lSa	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
+      //   124: ldc 112
+      //   126: invokevirtual 104	com/tencent/mm/plugin/appbrand/jsapi/contact/d:Zf	(Ljava/lang/String;)Ljava/lang/String;
+      //   129: invokeinterface 107 3 0
       //   134: ldc 53
-      //   136: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   136: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   139: return
       //   140: aload_2
       //   141: ifnull +37 -> 178
       //   144: aload_2
-      //   145: invokevirtual 119	android/content/Intent:getData	()Landroid/net/Uri;
+      //   145: invokevirtual 118	android/content/Intent:getData	()Landroid/net/Uri;
       //   148: astore 4
       //   150: aload 4
       //   152: ifnonnull +32 -> 184
       //   155: new 13	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$1
       //   158: dup
       //   159: aload_0
-      //   160: invokespecial 122	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$1:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$c;)V
-      //   163: checkcast 124	d/g/a/a
-      //   166: invokeinterface 128 1 0
+      //   160: invokespecial 121	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$1:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$c;)V
+      //   163: checkcast 123	kotlin/g/a/a
+      //   166: invokeinterface 127 1 0
       //   171: pop
       //   172: ldc 53
-      //   174: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   174: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   177: return
       //   178: aconst_null
       //   179: astore 4
       //   181: goto -31 -> 150
       //   184: aload_0
-      //   185: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
-      //   188: invokeinterface 132 1 0
+      //   185: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
+      //   188: invokeinterface 131 1 0
       //   193: astore_2
       //   194: aload_2
-      //   195: ldc 134
-      //   197: invokestatic 140	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   195: ldc 133
+      //   197: invokestatic 139	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
       //   200: aload_2
-      //   201: invokevirtual 146	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+      //   201: invokevirtual 145	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
       //   204: astore 7
       //   206: aload 7
       //   208: ifnonnull +26 -> 234
       //   211: new 15	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$2
       //   214: dup
       //   215: aload_0
-      //   216: invokespecial 147	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$2:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$c;)V
-      //   219: checkcast 124	d/g/a/a
-      //   222: invokeinterface 128 1 0
+      //   216: invokespecial 146	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$2:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$c;)V
+      //   219: checkcast 123	kotlin/g/a/a
+      //   222: invokeinterface 127 1 0
       //   227: pop
       //   228: ldc 53
-      //   230: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   230: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   233: return
       //   234: aload 7
       //   236: aload 4
       //   238: iconst_1
-      //   239: anewarray 149	java/lang/String
+      //   239: anewarray 148	java/lang/String
       //   242: dup
       //   243: iconst_0
-      //   244: ldc 151
+      //   244: ldc 150
       //   246: aastore
       //   247: aconst_null
       //   248: aconst_null
       //   249: aconst_null
-      //   250: invokevirtual 157	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+      //   250: invokevirtual 156	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
       //   253: astore_2
       //   254: aload_2
       //   255: ifnull +353 -> 608
       //   258: aload_2
-      //   259: checkcast 159	java/io/Closeable
+      //   259: checkcast 158	java/io/Closeable
       //   262: astore 6
       //   264: aload 6
-      //   266: checkcast 161	android/database/Cursor
+      //   266: checkcast 160	android/database/Cursor
       //   269: astore 8
       //   271: aload 8
-      //   273: invokeinterface 165 1 0
+      //   273: invokeinterface 164 1 0
       //   278: ifeq +267 -> 545
       //   281: aload 8
       //   283: iconst_0
-      //   284: invokeinterface 169 2 0
-      //   289: invokestatic 174	com/tencent/mm/plugin/appbrand/jsapi/contact/c:Ku	(Ljava/lang/String;)Ljava/lang/String;
+      //   284: invokeinterface 168 2 0
+      //   289: invokestatic 173	com/tencent/mm/plugin/appbrand/jsapi/contact/c:Ts	(Ljava/lang/String;)Ljava/lang/String;
       //   292: astore_2
       //   293: aload_2
-      //   294: checkcast 176	java/lang/CharSequence
+      //   294: checkcast 175	java/lang/CharSequence
       //   297: astore 9
       //   299: aload 9
       //   301: ifnull +407 -> 708
       //   304: aload 9
-      //   306: invokeinterface 180 1 0
+      //   306: invokeinterface 179 1 0
       //   311: ifne +216 -> 527
       //   314: goto +394 -> 708
       //   317: iload_1
       //   318: ifne +214 -> 532
       //   321: aload_2
-      //   322: invokestatic 186	android/telephony/PhoneNumberUtils:isGlobalPhoneNumber	(Ljava/lang/String;)Z
+      //   322: invokestatic 185	android/telephony/PhoneNumberUtils:isGlobalPhoneNumber	(Ljava/lang/String;)Z
       //   325: ifeq +207 -> 532
       //   328: aload_2
       //   329: ifnonnull +6 -> 335
-      //   332: invokestatic 189	d/g/b/p:gkB	()V
+      //   332: invokestatic 188	kotlin/g/b/p:hyc	()V
       //   335: aload_2
-      //   336: invokevirtual 190	java/lang/String:length	()I
+      //   336: invokevirtual 189	java/lang/String:length	()I
       //   339: istore_1
       //   340: iload_1
       //   341: bipush 11
       //   343: if_icmpne +189 -> 532
       //   346: aload 6
       //   348: aconst_null
-      //   349: invokestatic 195	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   349: invokestatic 194	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
       //   352: aload_2
       //   353: astore_3
       //   354: aload 7
       //   356: aload 4
       //   358: iconst_1
-      //   359: anewarray 149	java/lang/String
+      //   359: anewarray 148	java/lang/String
       //   362: dup
       //   363: iconst_0
-      //   364: ldc 197
+      //   364: ldc 196
       //   366: aastore
       //   367: aconst_null
       //   368: aconst_null
       //   369: aconst_null
-      //   370: invokevirtual 157	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+      //   370: invokevirtual 156	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
       //   373: astore_2
       //   374: aload_2
       //   375: ifnull +42 -> 417
       //   378: aload_2
-      //   379: checkcast 159	java/io/Closeable
+      //   379: checkcast 158	java/io/Closeable
       //   382: astore 4
       //   384: aload 4
-      //   386: checkcast 161	android/database/Cursor
+      //   386: checkcast 160	android/database/Cursor
       //   389: astore_2
       //   390: aload_2
-      //   391: invokeinterface 165 1 0
+      //   391: invokeinterface 164 1 0
       //   396: ifeq +217 -> 613
       //   399: aload_2
       //   400: iconst_0
-      //   401: invokeinterface 169 2 0
+      //   401: invokeinterface 168 2 0
       //   406: astore_2
       //   407: aload 4
       //   409: aconst_null
-      //   410: invokestatic 195	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   410: invokestatic 194	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
       //   413: aload_2
       //   414: ifnonnull +291 -> 705
-      //   417: ldc 198
+      //   417: ldc 197
       //   419: astore_2
       //   420: aload_3
-      //   421: checkcast 176	java/lang/CharSequence
+      //   421: checkcast 175	java/lang/CharSequence
       //   424: astore 4
       //   426: aload 4
       //   428: ifnull +13 -> 441
       //   431: aload 4
-      //   433: invokeinterface 180 1 0
+      //   433: invokeinterface 179 1 0
       //   438: ifne +203 -> 641
       //   441: iconst_1
       //   442: istore_1
       //   443: iload_1
       //   444: ifne +202 -> 646
       //   447: aload_0
-      //   448: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
+      //   448: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
       //   451: astore 4
       //   453: aload_0
-      //   454: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuL	I
+      //   454: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyo	I
       //   457: istore_1
       //   458: aload_0
-      //   459: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kNi	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
+      //   459: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lSa	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
       //   462: astore 5
-      //   464: new 200	java/util/HashMap
+      //   464: new 199	java/util/HashMap
       //   467: dup
-      //   468: invokespecial 201	java/util/HashMap:<init>	()V
+      //   468: invokespecial 200	java/util/HashMap:<init>	()V
       //   471: astore 6
       //   473: aload 6
-      //   475: checkcast 203	java/util/Map
-      //   478: ldc 205
+      //   475: checkcast 202	java/util/Map
+      //   478: ldc 204
       //   480: aload_3
-      //   481: invokeinterface 209 3 0
+      //   481: invokeinterface 208 3 0
       //   486: pop
       //   487: aload 6
-      //   489: checkcast 203	java/util/Map
-      //   492: ldc 211
+      //   489: checkcast 202	java/util/Map
+      //   492: ldc 210
       //   494: aload_2
-      //   495: invokeinterface 209 3 0
+      //   495: invokeinterface 208 3 0
       //   500: pop
       //   501: aload 4
       //   503: iload_1
       //   504: aload 5
-      //   506: ldc 213
+      //   506: ldc 212
       //   508: aload 6
-      //   510: checkcast 203	java/util/Map
-      //   513: invokevirtual 217	com/tencent/mm/plugin/appbrand/jsapi/contact/d:n	(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
-      //   516: invokeinterface 108 3 0
+      //   510: checkcast 202	java/util/Map
+      //   513: invokevirtual 216	com/tencent/mm/plugin/appbrand/jsapi/contact/d:n	(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+      //   516: invokeinterface 107 3 0
       //   521: ldc 53
-      //   523: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   523: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   526: return
       //   527: iconst_0
       //   528: istore_1
       //   529: goto -212 -> 317
       //   532: aload 8
-      //   534: invokeinterface 220 1 0
+      //   534: invokeinterface 219 1 0
       //   539: ifne -258 -> 281
       //   542: goto +171 -> 713
-      //   545: invokestatic 63	com/tencent/mm/plugin/appbrand/jsapi/contact/d:bkL	()Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$a;
+      //   545: invokestatic 63	com/tencent/mm/plugin/appbrand/jsapi/contact/d:bGh	()Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$a;
       //   548: pop
       //   549: ldc 65
       //   551: new 67	java/lang/StringBuilder
@@ -326,68 +326,68 @@ public final class d
       //   555: ldc 69
       //   557: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   560: aload_0
-      //   561: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
+      //   561: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
       //   564: invokeinterface 78 1 0
       //   569: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   572: ldc 222
+      //   572: ldc 221
       //   574: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   577: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   580: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   580: invokestatic 224	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   583: goto +130 -> 713
       //   586: astore_3
       //   587: ldc 53
-      //   589: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   589: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   592: aload_3
       //   593: athrow
       //   594: astore_2
       //   595: aload 6
       //   597: aload_3
-      //   598: invokestatic 195	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   598: invokestatic 194	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
       //   601: ldc 53
-      //   603: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   603: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   606: aload_2
       //   607: athrow
       //   608: aconst_null
       //   609: astore_3
       //   610: goto -256 -> 354
-      //   613: ldc 198
+      //   613: ldc 197
       //   615: astore_2
       //   616: goto -209 -> 407
       //   619: astore_3
       //   620: ldc 53
-      //   622: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   622: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   625: aload_3
       //   626: athrow
       //   627: astore_2
       //   628: aload 4
       //   630: aload_3
-      //   631: invokestatic 195	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   631: invokestatic 194	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
       //   634: ldc 53
-      //   636: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   636: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   639: aload_2
       //   640: athrow
       //   641: iconst_0
       //   642: istore_1
       //   643: goto -200 -> 443
       //   646: aload_0
-      //   647: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
+      //   647: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
       //   650: aload_0
-      //   651: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuL	I
+      //   651: getfield 45	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyo	I
       //   654: aload_0
-      //   655: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kNi	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
-      //   658: ldc 227
-      //   660: invokevirtual 104	com/tencent/mm/plugin/appbrand/jsapi/contact/d:PO	(Ljava/lang/String;)Ljava/lang/String;
-      //   663: invokeinterface 108 3 0
+      //   655: getfield 41	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lSa	Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d;
+      //   658: ldc 226
+      //   660: invokevirtual 104	com/tencent/mm/plugin/appbrand/jsapi/contact/d:Zf	(Ljava/lang/String;)Ljava/lang/String;
+      //   663: invokeinterface 107 3 0
       //   668: aload_0
-      //   669: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:kuK	Lcom/tencent/mm/plugin/appbrand/jsapi/c;
+      //   669: getfield 43	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c:lyn	Lcom/tencent/mm/plugin/appbrand/jsapi/f;
       //   672: new 17	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$3
       //   675: dup
       //   676: aload_0
-      //   677: invokespecial 228	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$3:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$c;)V
-      //   680: checkcast 230	java/lang/Runnable
-      //   683: invokeinterface 234 2 0
+      //   677: invokespecial 227	com/tencent/mm/plugin/appbrand/jsapi/contact/d$c$3:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/contact/d$c;)V
+      //   680: checkcast 229	java/lang/Runnable
+      //   683: invokeinterface 233 2 0
       //   688: ldc 53
-      //   690: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   690: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   693: return
       //   694: astore_2
       //   695: aload 5
@@ -445,7 +445,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.d
  * JD-Core Version:    0.7.0.1
  */

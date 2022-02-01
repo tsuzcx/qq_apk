@@ -9,31 +9,31 @@ public abstract interface a
   
   public static final class a
   {
-    int bCc;
-    long ddi;
+    int bCe;
+    long dtZ;
     long fileLenInvalidCount;
-    boolean ihH;
-    long nyl;
-    final String ttB;
-    long wkn;
-    long wko;
-    ArrayList<a.b> wkp;
-    ArrayList<a.c> wkq;
+    boolean jcC;
+    long oJj;
+    final String wKP;
+    long zEP;
+    long zEQ;
+    ArrayList<a.b> zER;
+    ArrayList<a.c> zES;
     
     a(String paramString)
     {
       AppMethodBeat.i(51493);
-      this.wkp = new ArrayList(20);
-      this.wkq = new ArrayList(20);
-      this.ihH = false;
-      this.ttB = paramString;
+      this.zER = new ArrayList(20);
+      this.zES = new ArrayList(20);
+      this.jcC = false;
+      this.wKP = paramString;
       AppMethodBeat.o(51493);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(51494);
-      String str = String.format("FileResult hash(%d) root[%s], canceled[%b], dirCount[%d], fileCount[%d], totalSize[%d], fileLenInvalidCount[%d], subDirResult[%d], tempAccDirResult[%d], totalTime[%d], depth[%d]", new Object[] { Integer.valueOf(hashCode()), this.ttB, Boolean.valueOf(this.ihH), Long.valueOf(this.wkn), Long.valueOf(this.wko), Long.valueOf(this.nyl), Long.valueOf(this.fileLenInvalidCount), Integer.valueOf(this.wkp.size()), Integer.valueOf(this.wkq.size()), Long.valueOf(this.ddi), Integer.valueOf(this.bCc) });
+      String str = String.format("FileResult hash(%d) root[%s], canceled[%b], dirCount[%d], fileCount[%d], totalSize[%d], fileLenInvalidCount[%d], subDirResult[%d], tempAccDirResult[%d], totalTime[%d], depth[%d]", new Object[] { Integer.valueOf(hashCode()), this.wKP, Boolean.valueOf(this.jcC), Long.valueOf(this.zEP), Long.valueOf(this.zEQ), Long.valueOf(this.oJj), Long.valueOf(this.fileLenInvalidCount), Integer.valueOf(this.zER.size()), Integer.valueOf(this.zES.size()), Long.valueOf(this.dtZ), Integer.valueOf(this.bCe) });
       AppMethodBeat.o(51494);
       return str;
     }
@@ -42,31 +42,54 @@ public abstract interface a
   public static final class b
   {
     long fileLenInvalidCount;
-    boolean ihH = false;
-    long nyl;
+    boolean jcC = false;
+    long oJj;
     final int tag;
-    String ttB;
-    long wkn;
-    long wko;
+    String wKP;
+    long zEP;
+    long zEQ;
     
     b(String paramString, int paramInt)
     {
-      this.ttB = paramString;
+      this.wKP = paramString;
       this.tag = paramInt;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(51495);
-      String str = String.format("SubDirResult hash(%d) root[%d][%s], canceled[%b], dirCount[%d], fileCount[%d], totalSize[%d], fileLenInvalidCount[%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.tag), this.ttB, Boolean.valueOf(this.ihH), Long.valueOf(this.wkn), Long.valueOf(this.wko), Long.valueOf(this.nyl), Long.valueOf(this.fileLenInvalidCount) });
+      String str = String.format("SubDirResult hash(%d) root[%d][%s], canceled[%b], dirCount[%d], fileCount[%d], totalSize[%d], fileLenInvalidCount[%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.tag), this.wKP, Boolean.valueOf(this.jcC), Long.valueOf(this.zEP), Long.valueOf(this.zEQ), Long.valueOf(this.oJj), Long.valueOf(this.fileLenInvalidCount) });
       AppMethodBeat.o(51495);
+      return str;
+    }
+  }
+  
+  public static final class c
+  {
+    boolean jcC = false;
+    long oJj;
+    final String wKP;
+    long zEP;
+    long zEQ;
+    long zET;
+    
+    c(String paramString)
+    {
+      this.wKP = paramString;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(51496);
+      String str = String.format("TempAccDirResult hash(%d) root[%s], canceled[%b], dirCount[%d], fileCount[%d], totalSize[%d], fileLenInvaildCount[%d]", new Object[] { Integer.valueOf(hashCode()), this.wKP, Boolean.valueOf(this.jcC), Long.valueOf(this.zEP), Long.valueOf(this.zEQ), Long.valueOf(this.oJj), Long.valueOf(this.zET) });
+      AppMethodBeat.o(51496);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.a
  * JD-Core Version:    0.7.0.1
  */

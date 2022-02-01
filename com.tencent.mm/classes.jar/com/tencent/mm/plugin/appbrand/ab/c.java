@@ -1,79 +1,72 @@
 package com.tencent.mm.plugin.appbrand.ab;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.appbrand.v8.m;
-import com.tencent.mm.appbrand.v8.m.b;
-import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.appbrand.v8.v;
-import com.tencent.mm.appbrand.v8.v.a;
-import com.tencent.mm.appbrand.v8.w;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-public class c
-  extends v
+public abstract class c<_Model extends IAutoDBItem,  extends b>
+  extends MAutoStorage<_Model>
 {
-  c(w paramw)
+  public c(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
   {
-    super(paramw);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
   }
   
-  public final void a(m paramm, final v.a parama)
+  public boolean delete(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
   {
-    AppMethodBeat.i(147756);
-    if ((parama instanceof a))
+    String[] arrayOfString;
+    if (paramVarArgs != null)
     {
-      String str = ((a)parama).nvl;
-      if (!bu.isNullOrNil(str))
-      {
-        ae.i("MicroMsg.V8EngineWorkerManagerLU", "hy: %s has sourcemap", new Object[] { parama.filePath });
-        paramm.a(str, null);
-      }
+      arrayOfString = paramVarArgs;
+      if (paramVarArgs.length != 0) {}
     }
-    ae.i("MicroMsg.V8EngineWorkerManagerLU", "hy: evaluating %s", new Object[] { parama.filePath });
-    final long l = System.currentTimeMillis();
-    paramm.a(parama.filePath, parama.script, new m.b()
+    else
     {
-      public final void a(String paramAnonymousString, m.c paramAnonymousc)
-      {
-        AppMethodBeat.i(147755);
-        System.currentTimeMillis();
-        c.this.a(parama);
-        AppMethodBeat.o(147755);
-      }
-    });
-    AppMethodBeat.o(147756);
+      arrayOfString = ((b)param_Model).getKeys();
+    }
+    return super.delete(param_Model, paramBoolean, arrayOfString);
   }
   
-  protected void a(v.a parama) {}
-  
-  static final class a
-    extends v.a
+  public boolean get(_Model param_Model, String... paramVarArgs)
   {
-    String appId;
-    String nvl;
-    boolean nvm;
-    
-    a(v.a parama, String paramString1, String paramString2, boolean paramBoolean)
+    String[] arrayOfString;
+    if (paramVarArgs != null)
     {
-      super(parama.script);
-      this.nvl = paramString1;
-      this.appId = paramString2;
-      this.nvm = paramBoolean;
+      arrayOfString = paramVarArgs;
+      if (paramVarArgs.length != 0) {}
     }
-    
-    a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+    else
     {
-      super(paramString2);
-      this.nvl = null;
-      this.appId = paramString3;
-      this.nvm = paramBoolean;
+      arrayOfString = ((b)param_Model).getKeys();
     }
+    return super.get(param_Model, arrayOfString);
+  }
+  
+  public boolean insertNotify(_Model param_Model, boolean paramBoolean)
+  {
+    super.insertNotify(param_Model, paramBoolean);
+    return get(param_Model, new String[0]);
+  }
+  
+  public boolean updateNotify(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
+  {
+    String[] arrayOfString;
+    if (paramVarArgs != null)
+    {
+      arrayOfString = paramVarArgs;
+      if (paramVarArgs.length != 0) {}
+    }
+    else
+    {
+      arrayOfString = ((b)param_Model).getKeys();
+    }
+    return super.updateNotify(param_Model, paramBoolean, arrayOfString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.c
  * JD-Core Version:    0.7.0.1
  */

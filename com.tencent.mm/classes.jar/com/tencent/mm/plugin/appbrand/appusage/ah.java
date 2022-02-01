@@ -1,52 +1,24 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.appbrand.api.c;
-import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.sdk.storage.IStorage;
 import java.util.List;
 
 @e(c.class)
 public abstract interface ah
-  extends a, g
+  extends a, IStorage
 {
-  public abstract List<LocalUsageInfo> a(int paramInt, a parama);
+  public abstract boolean bi(String paramString, int paramInt);
   
-  public abstract List<LocalUsageInfo> a(int paramInt1, a parama, int paramInt2);
+  public abstract List<LocalUsageInfo> dP(int paramInt1, int paramInt2);
   
-  public abstract boolean ba(String paramString, int paramInt);
-  
-  public abstract int bb(String paramString, int paramInt);
-  
-  public abstract boolean bc(String paramString, int paramInt);
-  
-  public abstract void bcr();
-  
-  public abstract int bcs();
-  
-  public abstract boolean g(List<LocalUsageInfo> paramList, int paramInt);
-  
-  public abstract int getCount();
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(153196);
-      jTn = new a("DESC", 0);
-      jTo = new a("ASC", 1);
-      jTp = new a("UPATE_TIME_DESC", 2);
-      jTq = new a[] { jTn, jTo, jTp };
-      AppMethodBeat.o(153196);
-    }
-    
-    private a() {}
-  }
+  public abstract List<LocalUsageInfo> vW(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ah
  * JD-Core Version:    0.7.0.1
  */

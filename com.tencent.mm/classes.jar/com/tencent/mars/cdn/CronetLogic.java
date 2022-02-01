@@ -1,6 +1,6 @@
 package com.tencent.mars.cdn;
 
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -19,6 +19,8 @@ import java.util.Set;
 
 public class CronetLogic
 {
+  private static boolean useHttpdns = false;
+  
   public static native void cancelCronetTask(String paramString);
   
   public static CertVerifyResult convertToCronetResult(AndroidCertVerifyResult paramAndroidCertVerifyResult)
@@ -76,13 +78,24 @@ public class CronetLogic
   public static String getSystemProperty(String paramString)
   {
     String str = System.getProperty(paramString);
-    ae.d("cronet", "property " + paramString + " res " + str);
+    Log.d("cronet", "property " + paramString + " res " + str);
     return str;
   }
   
-  public static native WebPageProfile getWebPagePerformanceWithURL(String paramString);
+  public static boolean getUseHttpdns()
+  {
+    return useHttpdns;
+  }
+  
+  public static native CronetLogic.WebPageProfile getWebPagePerformanceWithURL(String paramString);
   
   public static native void removeUserCert();
+  
+  public static void setUseHttpdns(boolean paramBoolean)
+  {
+    Log.i("cronet", "use httpdns ".concat(String.valueOf(paramBoolean)));
+    useHttpdns = paramBoolean;
+  }
   
   public static native void setUserCertVerify(boolean paramBoolean);
   
@@ -102,7 +115,7 @@ public class CronetLogic
     {
       try
       {
-        ae.i("cronet", "verifyCertWithUserCA");
+        Log.i("cronet", "verifyCertWithUserCA");
         KeyStore localKeyStore = KeyStore.getInstance("AndroidCAStore");
         localKeyStore.load(null, null);
         Object localObject2 = new ArrayList();
@@ -124,9 +137,9 @@ public class CronetLogic
       }
       catch (KeyStoreException paramArrayOfByte)
       {
-        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        Log.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
-        ae.i("cronet", "alias list size %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
+        Log.i("cronet", "alias list size %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
         if (((List)localObject2).size() > 0)
         {
           localObject1 = new ArrayList();
@@ -140,7 +153,7 @@ public class CronetLogic
             }
             catch (CertificateException paramArrayOfByte)
             {
-              ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
+              Log.e("cronet", paramArrayOfByte.getLocalizedMessage());
               return convertToCronetResult(new AndroidCertVerifyResult(-5));
             }
           }
@@ -158,7 +171,7 @@ public class CronetLogic
           try
           {
             localX509Certificate.verify(((X509Certificate)localObject2).getPublicKey());
-            ae.i("cronet", "do user verify success");
+            Log.i("cronet", "do user verify success");
             i = 1;
             if (i == 0) {
               break label438;
@@ -170,27 +183,27 @@ public class CronetLogic
           }
           catch (Exception localException)
           {
-            ae.printErrStackTrace("cronet", localException, "Exception: check user verify certificate", new Object[0]);
+            Log.printErrStackTrace("cronet", localException, "Exception: check user verify certificate", new Object[0]);
           }
           continue;
         }
       }
       catch (NoSuchAlgorithmException paramArrayOfByte)
       {
-        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        Log.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
-        ae.e("cronet", "checkServerTrusted self check aliasList null");
+        Log.e("cronet", "checkServerTrusted self check aliasList null");
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
       catch (CertificateException paramArrayOfByte)
       {
-        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        Log.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
       catch (IOException paramArrayOfByte)
       {
-        ae.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        Log.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
     }
@@ -201,12 +214,6 @@ public class CronetLogic
     public byte[][] certificateChain = null;
     public boolean isIssuedByKnownRoot = false;
     public int status = 0;
-  }
-  
-  public static class CronetDownloadProgress
-  {
-    public long currentWriteByte = 0L;
-    public long totalByte = 0L;
   }
   
   public static class CronetHttpsCreateResult
@@ -362,45 +369,10 @@ public class CronetLogic
   {
     public CronetLogic.HeaderMap[] headers = null;
   }
-  
-  public static class WebPageProfile
-  {
-    public long SSLconnectionEnd;
-    public long SSLconnectionStart;
-    public long connectEnd;
-    public long connectStart;
-    public long domainLookUpEnd;
-    public long domainLookUpStart;
-    public int downstreamThroughputKbpsEstimate;
-    public long fetchStart;
-    public int httpRttEstimate;
-    public int networkTypeEstimate;
-    public String peerIP = "";
-    public int port;
-    public String protocol = "";
-    public long receivedBytedCount;
-    public long redirectEnd;
-    public long redirectStart;
-    public long requestEnd;
-    public long requestStart;
-    public long responseEnd;
-    public long responseStart;
-    public int rtt;
-    public long sendBytesCount;
-    public boolean socketReused;
-    public int statusCode;
-    public int throughputKbps;
-    public int transportRttEstimate;
-    
-    public String toString()
-    {
-      return "WebPageProfile{redirectStart=" + this.redirectStart + ", redirectEnd=" + this.redirectEnd + ", fetchStart=" + this.fetchStart + ", domainLookUpStart=" + this.domainLookUpStart + ", domainLookUpEnd=" + this.domainLookUpEnd + ", connectStart=" + this.connectStart + ", connectEnd=" + this.connectEnd + ", SSLconnectionStart=" + this.SSLconnectionStart + ", SSLconnectionEnd=" + this.SSLconnectionEnd + ", requestStart=" + this.requestStart + ", requestEnd=" + this.requestEnd + ", responseStart=" + this.responseStart + ", responseEnd=" + this.responseEnd + ", protocol='" + this.protocol + '\'' + ", rtt=" + this.rtt + ", statusCode=" + this.statusCode + ", networkTypeEstimate=" + this.networkTypeEstimate + ", httpRttEstimate=" + this.httpRttEstimate + ", transportRttEstimate=" + this.transportRttEstimate + ", downstreamThroughputKbpsEstimate=" + this.downstreamThroughputKbpsEstimate + ", throughputKbps=" + this.throughputKbps + ", peerIP='" + this.peerIP + '\'' + ", port=" + this.port + ", socketReused=" + this.socketReused + ", sendBytesCount=" + this.sendBytesCount + ", receivedBytedCount=" + this.receivedBytedCount + '}';
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.cdn.CronetLogic
  * JD-Core Version:    0.7.0.1
  */

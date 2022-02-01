@@ -16,15 +16,15 @@ import android.util.DisplayMetrics;
 public abstract class b
   extends Drawable
 {
-  private int Kj = 160;
-  private int Kk = 119;
-  private final BitmapShader Kl;
-  private final Matrix Km = new Matrix();
-  float Kn;
-  final Rect Ko = new Rect();
-  private final RectF Kp = new RectF();
-  private boolean Kq = true;
-  private boolean Kr;
+  private boolean KA = true;
+  private boolean KB;
+  private int Kt = 160;
+  private int Ku = 119;
+  private final BitmapShader Kv;
+  private final Matrix Kw = new Matrix();
+  float Kx;
+  final Rect Ky = new Rect();
+  private final RectF Kz = new RectF();
   public final Bitmap mBitmap;
   private int mBitmapHeight;
   private int mBitmapWidth;
@@ -33,26 +33,26 @@ public abstract class b
   b(Resources paramResources, Bitmap paramBitmap)
   {
     if (paramResources != null) {
-      this.Kj = paramResources.getDisplayMetrics().densityDpi;
+      this.Kt = paramResources.getDisplayMetrics().densityDpi;
     }
     this.mBitmap = paramBitmap;
     if (this.mBitmap != null)
     {
-      this.mBitmapWidth = this.mBitmap.getScaledWidth(this.Kj);
-      this.mBitmapHeight = this.mBitmap.getScaledHeight(this.Kj);
+      this.mBitmapWidth = this.mBitmap.getScaledWidth(this.Kt);
+      this.mBitmapHeight = this.mBitmap.getScaledHeight(this.Kt);
       paramResources = this.mBitmap;
       paramBitmap = Shader.TileMode.CLAMP;
-      this.Kl = new BitmapShader(paramResources, paramBitmap, paramBitmap);
+      this.Kv = new BitmapShader(paramResources, paramBitmap, paramBitmap);
       return;
     }
     this.mBitmapHeight = -1;
     this.mBitmapWidth = -1;
-    this.Kl = null;
+    this.Kv = null;
   }
   
-  private void eA()
+  private void eE()
   {
-    this.Kn = (Math.min(this.mBitmapHeight, this.mBitmapWidth) / 2);
+    this.Kx = (Math.min(this.mBitmapHeight, this.mBitmapWidth) / 2);
   }
   
   private static boolean x(float paramFloat)
@@ -71,59 +71,64 @@ public abstract class b
     if (localBitmap == null) {
       return;
     }
-    ey();
+    eC();
     if (this.mPaint.getShader() == null)
     {
-      paramCanvas.drawBitmap(localBitmap, null, this.Ko, this.mPaint);
+      paramCanvas.drawBitmap(localBitmap, null, this.Ky, this.mPaint);
       return;
     }
-    paramCanvas.drawRoundRect(this.Kp, this.Kn, this.Kn, this.mPaint);
+    paramCanvas.drawRoundRect(this.Kz, this.Kx, this.Kx, this.mPaint);
   }
   
-  final void ey()
+  final void eC()
   {
-    if (this.Kq)
+    if (this.KA)
     {
-      if (!this.Kr) {
+      if (!this.KB) {
         break label220;
       }
       int i = Math.min(this.mBitmapWidth, this.mBitmapHeight);
-      a(this.Kk, i, i, getBounds(), this.Ko);
-      i = Math.min(this.Ko.width(), this.Ko.height());
-      int j = Math.max(0, (this.Ko.width() - i) / 2);
-      int k = Math.max(0, (this.Ko.height() - i) / 2);
-      this.Ko.inset(j, k);
-      this.Kn = (i * 0.5F);
+      a(this.Ku, i, i, getBounds(), this.Ky);
+      i = Math.min(this.Ky.width(), this.Ky.height());
+      int j = Math.max(0, (this.Ky.width() - i) / 2);
+      int k = Math.max(0, (this.Ky.height() - i) / 2);
+      this.Ky.inset(j, k);
+      this.Kx = (i * 0.5F);
     }
     for (;;)
     {
-      this.Kp.set(this.Ko);
-      if (this.Kl != null)
+      this.Kz.set(this.Ky);
+      if (this.Kv != null)
       {
-        this.Km.setTranslate(this.Kp.left, this.Kp.top);
-        this.Km.preScale(this.Kp.width() / this.mBitmap.getWidth(), this.Kp.height() / this.mBitmap.getHeight());
-        this.Kl.setLocalMatrix(this.Km);
-        this.mPaint.setShader(this.Kl);
+        this.Kw.setTranslate(this.Kz.left, this.Kz.top);
+        this.Kw.preScale(this.Kz.width() / this.mBitmap.getWidth(), this.Kz.height() / this.mBitmap.getHeight());
+        this.Kv.setLocalMatrix(this.Kw);
+        this.mPaint.setShader(this.Kv);
       }
-      this.Kq = false;
+      this.KA = false;
       return;
       label220:
-      a(this.Kk, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.Ko);
+      a(this.Ku, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.Ky);
     }
   }
   
-  public final void ez()
+  public final void eD()
   {
-    this.Kr = true;
-    this.Kq = true;
-    eA();
-    this.mPaint.setShader(this.Kl);
+    this.KB = true;
+    this.KA = true;
+    eE();
+    this.mPaint.setShader(this.Kv);
     invalidateSelf();
   }
   
   public int getAlpha()
   {
     return this.mPaint.getAlpha();
+  }
+  
+  public final Bitmap getBitmap()
+  {
+    return this.mBitmap;
   }
   
   public ColorFilter getColorFilter()
@@ -143,23 +148,28 @@ public abstract class b
   
   public int getOpacity()
   {
-    if ((this.Kk != 119) || (this.Kr)) {}
+    if ((this.Ku != 119) || (this.KB)) {}
     Bitmap localBitmap;
     do
     {
       return -3;
       localBitmap = this.mBitmap;
-    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.mPaint.getAlpha() < 255) || (x(this.Kn)));
+    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.mPaint.getAlpha() < 255) || (x(this.Kx)));
     return -1;
+  }
+  
+  public final Paint getPaint()
+  {
+    return this.mPaint;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    if (this.Kr) {
-      eA();
+    if (this.KB) {
+      eE();
     }
-    this.Kq = true;
+    this.KA = true;
   }
   
   public void setAlpha(int paramInt)
@@ -179,16 +189,16 @@ public abstract class b
   
   public final void setCornerRadius(float paramFloat)
   {
-    if (this.Kn == paramFloat) {
+    if (this.Kx == paramFloat) {
       return;
     }
-    this.Kr = false;
+    this.KB = false;
     if (x(paramFloat)) {
-      this.mPaint.setShader(this.Kl);
+      this.mPaint.setShader(this.Kv);
     }
     for (;;)
     {
-      this.Kn = paramFloat;
+      this.Kx = paramFloat;
       invalidateSelf();
       return;
       this.mPaint.setShader(null);
@@ -209,7 +219,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.graphics.drawable.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,45 +10,45 @@ import com.tencent.mm.vending.c.b;
 public abstract class WxPresenterActivity
   extends MMActivity
 {
-  protected c gGT = new c();
+  protected c htH = new c();
   
-  public final com.tencent.mm.vending.app.a akP()
+  public final com.tencent.mm.vending.app.a aBf()
   {
-    return this.gGT.akP();
+    return this.htH.aBf();
   }
   
-  public final <T extends b<? extends com.tencent.mm.vending.app.a>> T am(Class<? extends b<? extends com.tencent.mm.vending.app.a>> paramClass)
+  public final <T extends b<? extends com.tencent.mm.vending.app.a>> T aq(Class<? extends b<? extends com.tencent.mm.vending.app.a>> paramClass)
   {
-    return this.gGT.a(this, paramClass);
+    return this.htH.a(this, paramClass);
   }
   
   public void keep(com.tencent.mm.vending.e.a parama)
   {
-    this.gGT.keep(parama);
+    this.htH.keep(parama);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gGT.B(getIntent(), this);
+    this.htH.A(getIntent(), this);
   }
   
   public void onDestroy()
   {
-    this.gGT.onDestroy();
+    this.htH.onDestroy();
     super.onDestroy();
   }
   
   public void onPause()
   {
-    this.gGT.agy(3);
+    this.htH.apB(3);
     super.onPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gGT.agy(2);
+    this.htH.apB(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -59,7 +59,7 @@ public abstract class WxPresenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.WxPresenterActivity
  * JD-Core Version:    0.7.0.1
  */

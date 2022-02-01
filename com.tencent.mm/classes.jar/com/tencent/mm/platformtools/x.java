@@ -11,29 +11,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
 
 public final class x
 {
-  private Runnable iQG;
-  private boolean iQH = false;
+  private Runnable jNB;
+  private boolean jNC = false;
   
   private void d(Activity paramActivity, Runnable paramRunnable)
   {
     AppMethodBeat.i(169126);
     boolean bool = b.a(paramActivity, "android.permission.READ_PHONE_STATE", 96, "", "");
-    ae.i("MicroMsg.PermissionCheckHelper", "check init, summerper checkPermission checkPhone[%b]", new Object[] { Boolean.valueOf(bool) });
+    Log.i("MicroMsg.PermissionCheckHelper", "check init, summerper checkPermission checkPhone[%b]", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      e.ywz.idkeyStat(462L, 20L, 1L, true);
-      this.iQG = paramRunnable;
+      e.Cxv.idkeyStat(462L, 20L, 1L, true);
+      this.jNB = paramRunnable;
       AppMethodBeat.o(169126);
       return;
     }
-    q.aaz();
+    q.aoy();
     if (paramRunnable != null) {
       paramRunnable.run();
     }
@@ -48,12 +48,12 @@ public final class x
       if (paramArrayOfInt == null) {}
       for (int i = -1;; i = paramArrayOfInt.length)
       {
-        ae.w("MicroMsg.PermissionCheckHelper", "onRequestPermissionsResult, grantResults length is:%d requestCode:%d, permissions:%s, stack:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), paramArrayOfString, bu.fpN() });
+        Log.w("MicroMsg.PermissionCheckHelper", "onRequestPermissionsResult, grantResults length is:%d requestCode:%d, permissions:%s, stack:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), paramArrayOfString, Util.getStack() });
         AppMethodBeat.o(169127);
         return true;
       }
     }
-    ae.i("MicroMsg.PermissionCheckHelper", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.PermissionCheckHelper", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     default: 
@@ -63,11 +63,11 @@ public final class x
     if (paramArrayOfInt[0] == 0) {
       if (paramInt == 32)
       {
-        e.ywz.idkeyStat(462L, 19L, 1L, true);
+        e.Cxv.idkeyStat(462L, 19L, 1L, true);
         if (paramInt != 32) {
           break label308;
         }
-        d(paramActivity, this.iQG);
+        d(paramActivity, this.jNB);
       }
     }
     for (;;)
@@ -77,22 +77,22 @@ public final class x
       if (paramInt != 96) {
         break;
       }
-      e.ywz.idkeyStat(462L, 21L, 1L, true);
-      q.aaI();
-      q.aaz();
+      e.Cxv.idkeyStat(462L, 21L, 1L, true);
+      q.aoH();
+      q.aoy();
       break;
-      paramArrayOfInt = paramActivity.getSharedPreferences(ak.fow(), 0);
+      paramArrayOfInt = paramActivity.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0);
       SharedPreferences.Editor localEditor = paramArrayOfInt.edit();
       if (paramInt == 32) {}
       for (paramArrayOfString = "SP_PERMISSION_HAD_REQUEST_PERMISSION_STORAGE";; paramArrayOfString = "SP_PERMISSION_HAD_REQUEST_PERMISSION_PHONE")
       {
         localEditor.putBoolean(paramArrayOfString, true).apply();
-        paramArrayOfInt.edit().putInt("SP_PERMISSION_HAD_REQUEST_PERMISSION_UID", ak.getContext().getApplicationInfo().uid).apply();
+        paramArrayOfInt.edit().putInt("SP_PERMISSION_HAD_REQUEST_PERMISSION_UID", MMApplicationContext.getContext().getApplicationInfo().uid).apply();
         break;
       }
       label308:
-      if (this.iQG != null) {
-        this.iQG.run();
+      if (this.jNB != null) {
+        this.jNB.run();
       }
     }
   }
@@ -101,11 +101,11 @@ public final class x
   {
     int i = 0;
     AppMethodBeat.i(169124);
-    if (!this.iQH) {
+    if (!this.jNC) {
       if (!b.e(paramActivity, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" }))
       {
-        this.iQH = true;
-        h.a(paramActivity, paramActivity.getString(2131761867), paramActivity.getString(2131761885), paramActivity.getString(2131761868), new DialogInterface.OnClickListener()
+        this.jNC = true;
+        h.a(paramActivity, paramActivity.getString(2131763872), paramActivity.getString(2131763890), paramActivity.getString(2131763873), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -130,11 +130,11 @@ public final class x
   {
     AppMethodBeat.i(169125);
     boolean bool = b.a(paramActivity, "android.permission.WRITE_EXTERNAL_STORAGE", 32, "", "");
-    ae.i("MicroMsg.PermissionCheckHelper", "check init, summerper checkPermission checkStorage[%b]", new Object[] { Boolean.valueOf(bool) });
+    Log.i("MicroMsg.PermissionCheckHelper", "check init, summerper checkPermission checkStorage[%b]", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      e.ywz.idkeyStat(462L, 18L, 1L, true);
-      this.iQG = paramRunnable;
+      e.Cxv.idkeyStat(462L, 18L, 1L, true);
+      this.jNB = paramRunnable;
       AppMethodBeat.o(169125);
       return;
     }

@@ -7,9 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.ui.widget.d;
-import com.tencent.mm.plugin.fts.ui.widget.d.3;
-import com.tencent.mm.plugin.websearch.api.i;
+import com.tencent.mm.plugin.fts.ui.widget.i.3;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
 import org.json.JSONObject;
 
 final class FTSMainUI$4
@@ -20,44 +19,79 @@ final class FTSMainUI$4
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(111964);
-    b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    Object localObject = new b();
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    int j = 0;
     try
     {
       if (paramView.getTag() != null)
       {
         i = ((JSONObject)paramView.getTag()).optInt("businessType");
-        if (i != 0) {
-          break label194;
-        }
-        paramView = ((TextView)paramView).getText().toString();
-        if (!paramView.equals(this.tLh.getString(2131762938))) {
-          break label151;
-        }
-        i = 2;
-        if (i != 0)
+        j = i;
+        i = j;
+        if (j == 0)
         {
-          paramView = FTSMainUI.b(this.tLh);
-          ((i)g.ab(i.class)).a(paramView.tOM, new d.3(paramView, i));
+          localObject = ((TextView)paramView).getText().toString();
+          if (!((String)localObject).equals(this.xci.getString(2131765074))) {
+            break label140;
+          }
+          i = 2;
+        }
+        while (i != 0) {
+          if ((i == 2) && (!WeChatBrands.Business.Entries.HomeServiceMp.checkAvailable(paramView.getContext())))
+          {
+            a.a(this, "com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(111964);
+            return;
+            label140:
+            if (((String)localObject).equals(this.xci.getString(2131765078)))
+            {
+              i = 8;
+            }
+            else
+            {
+              i = j;
+              if (((String)localObject).equals(this.xci.getString(2131765075))) {
+                i = 1;
+              }
+            }
+          }
+          else
+          {
+            if ((i == 1) && (!WeChatBrands.Business.Entries.HomeServiceMp.checkAvailable(paramView.getContext())))
+            {
+              a.a(this, "com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(111964);
+              return;
+            }
+            if ((i == 512) && (!WeChatBrands.Business.Entries.SessionMusic.checkAvailable(paramView.getContext())))
+            {
+              a.a(this, "com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(111964);
+              return;
+            }
+            if (((i == 64) || (i == 262208)) && (!WeChatBrands.Business.Entries.GlobalAppbrand.checkAvailable(paramView.getContext())))
+            {
+              a.a(this, "com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(111964);
+              return;
+            }
+            paramView = FTSMainUI.c(this.xci);
+            ((com.tencent.mm.plugin.websearch.api.i)g.af(com.tencent.mm.plugin.websearch.api.i.class)).a(paramView.xfV, new i.3(paramView, i));
+          }
         }
         a.a(this, "com/tencent/mm/plugin/fts/ui/FTSMainUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(111964);
+        return;
       }
     }
     catch (Exception localException)
     {
-      label151:
-      label194:
       for (;;)
       {
-        int i = 0;
         continue;
-        if (paramView.equals(this.tLh.getString(2131762942))) {
-          i = 8;
-        } else if (paramView.equals(this.tLh.getString(2131762939))) {
-          i = 1;
-        }
+        int i = 0;
       }
     }
   }

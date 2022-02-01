@@ -6,32 +6,81 @@ import com.tencent.mm.plugin.report.a;
 public final class ji
   extends a
 {
-  public long etA = 0L;
+  private long eNd = 0L;
+  private long eRd = 0L;
+  private long eRe = 0L;
+  private long eRf = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(218640);
+    AppMethodBeat.i(118488);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.etA);
+    ((StringBuffer)localObject).append(this.eRd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eNd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eRe);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eRf);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(218640);
+    aMq((String)localObject);
+    AppMethodBeat.o(118488);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(218641);
+    AppMethodBeat.i(118489);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ReportScene:").append(this.etA);
+    ((StringBuffer)localObject).append("ExposeViewId:").append(this.eRd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickClearCount:").append(this.eNd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickRenewCount:").append(this.eRe);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IfDeleteVideo:").append(this.eRf);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(218641);
+    AppMethodBeat.o(118489);
     return localObject;
+  }
+  
+  public final long ahp()
+  {
+    return this.eNd;
+  }
+  
+  public final long ahq()
+  {
+    return this.eRe;
   }
   
   public final int getId()
   {
-    return 19540;
+    return 16913;
+  }
+  
+  public final ji rZ(long paramLong)
+  {
+    this.eRd = paramLong;
+    return this;
+  }
+  
+  public final ji sa(long paramLong)
+  {
+    this.eNd = paramLong;
+    return this;
+  }
+  
+  public final ji sb(long paramLong)
+  {
+    this.eRe = paramLong;
+    return this;
+  }
+  
+  public final ji sc(long paramLong)
+  {
+    this.eRf = paramLong;
+    return this;
   }
 }
 

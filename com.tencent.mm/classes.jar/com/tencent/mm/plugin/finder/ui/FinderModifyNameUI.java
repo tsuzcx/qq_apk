@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
@@ -27,76 +28,85 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.finder.cgi.ay;
-import com.tencent.mm.plugin.i.a.d;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.aqf;
-import com.tencent.mm.protocal.protobuf.atf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.cgi.cd;
+import com.tencent.mm.plugin.finder.utils.d;
+import com.tencent.mm.plugin.i.a.ai;
+import com.tencent.mm.plugin.i.a.k;
+import com.tencent.mm.protocal.protobuf.azg;
+import com.tencent.mm.protocal.protobuf.bed;
+import com.tencent.mm.protocal.protobuf.cjj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.tools.f.a;
 import com.tencent.mm.ui.widget.InputPanelFrameLayout;
 import com.tencent.mm.ui.widget.b.a;
-import d.g.b.p;
-import d.l;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import kotlin.g.b.p;
+import kotlin.k.j;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "edit", "Landroid/widget/EditText;", "editBottomSpace", "Landroid/view/View;", "editLimit", "Landroid/widget/TextView;", "edtContainer", "edtLayoutListener", "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1;", "inputContainer", "inputPanel", "Lcom/tencent/mm/ui/widget/InputPanelFrameLayout;", "keyboardHeight", "", "modifyBtn", "Landroid/widget/Button;", "modifyCountTip", "nicknameMaxLength", "progressDialog", "Landroid/app/ProgressDialog;", "scene", "scrollView", "Landroid/widget/ScrollView;", "selfContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "signatureMaxLength", "titleTv", "topErrorTip", "doPrepareUser", "", "doWhenLess", "text", "doWhenMore", "doWhenOK", "getLayoutId", "getMaxLength", "hideError", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onInputPanelChange", "isKeyboardShow", "", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshView", "setSpanTouch", "descTv", "Landroid/text/Spannable;", "showError", "errTip", "appname", "applink", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "REQUEST_CODE_SELECT_AT_CONTACT", "", "TAG", "", "edit", "Landroid/widget/EditText;", "editBottomSpace", "Landroid/view/View;", "editLimit", "Landroid/widget/TextView;", "edtContainer", "edtLayoutListener", "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1;", "inputContainer", "inputPanel", "Lcom/tencent/mm/ui/widget/InputPanelFrameLayout;", "keyboardHeight", "modifyBtn", "Landroid/widget/Button;", "modifyCountTip", "nicknameMaxLength", "progressDialog", "Landroid/app/ProgressDialog;", "scene", "scrollView", "Landroid/widget/ScrollView;", "selfContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "signatureMaxLength", "titleTv", "topErrorTip", "doPrepareUser", "", "doWhenLess", "text", "doWhenMore", "doWhenOK", "getLayoutId", "getMaxLength", "hideError", "initView", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onInputPanelChange", "isKeyboardShow", "", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshView", "setSpanTouch", "descTv", "Landroid/text/Spannable;", "showError", "errTip", "appname", "applink", "plugin-finder_release"})
 public final class FinderModifyNameUI
   extends MMFinderUI
-  implements com.tencent.mm.ak.f, com.tencent.mm.plugin.i.a.s<aqf>, com.tencent.mm.ui.tools.b.c.a, b.a
+  implements i, ai<azg>, com.tencent.mm.ui.tools.b.c.a, b.a
 {
   private final String TAG;
   private HashMap _$_findViewCache;
-  private ScrollView fSp;
-  private int nMm;
-  private ProgressDialog sMH;
-  private int sMJ;
-  private View sMv;
-  private InputPanelFrameLayout sMw;
-  private View sMx;
-  private TextView sMz;
-  private EditText sPd;
-  private TextView sPe;
-  private Button sPf;
-  private View sPg;
-  private TextView sPh;
-  private com.tencent.mm.plugin.finder.api.g sPi;
-  private int sPj;
-  private final a sPk;
+  private ScrollView gxx;
+  private int oXi;
   private int scene;
   private TextView titleTv;
+  private com.tencent.mm.plugin.finder.api.g uCY;
+  private View uht;
+  private ProgressDialog vIA;
+  private int vIE;
+  private View vIp;
+  private InputPanelFrameLayout vIq;
+  private TextView vIr;
+  private EditText vMl;
+  private TextView vMm;
+  private Button vMn;
+  private View vMo;
+  private TextView vMp;
+  private int vMq;
+  private final int vMr;
+  private final a vMs;
   
   public FinderModifyNameUI()
   {
     AppMethodBeat.i(167455);
     this.TAG = "Finder.FinderModifyNameUI";
-    this.sMJ = 20;
-    this.sPj = 400;
-    this.sPk = new a(this);
+    this.vIE = 20;
+    this.vMq = 400;
+    this.vMr = 20001;
+    this.vMs = new a(this);
     AppMethodBeat.o(167455);
   }
   
   private void a(TextView paramTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(204638);
+    AppMethodBeat.i(252547);
     p.h(paramTextView, "descTv");
     p.h(paramSpannable, "text");
     paramTextView.setOnTouchListener((View.OnTouchListener)new FinderModifyNameUI.f(this, paramSpannable, paramTextView));
-    AppMethodBeat.o(204638);
+    AppMethodBeat.o(252547);
   }
   
-  private final void ad(String paramString1, String paramString2, String paramString3)
+  private final void aj(String paramString1, final String paramString2, final String paramString3)
   {
-    AppMethodBeat.i(204636);
-    ae.i(this.TAG, "showError ".concat(String.valueOf(paramString1)));
-    Object localObject = d.juN.matcher((CharSequence)paramString1);
+    AppMethodBeat.i(252545);
+    Log.i(this.TAG, "showError ".concat(String.valueOf(paramString1)));
+    Object localObject = k.PATTERN.matcher((CharSequence)paramString1);
     if (((Matcher)localObject).find())
     {
       String str1 = ((Matcher)localObject).group(1);
@@ -106,8 +116,8 @@ public final class FinderModifyNameUI
         i = ((Matcher)localObject).start(0);
         if (paramString1 == null)
         {
-          paramString1 = new d.v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(204636);
+          paramString1 = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(252545);
           throw paramString1;
         }
         String str2 = paramString1.substring(0, i);
@@ -121,8 +131,8 @@ public final class FinderModifyNameUI
         j = paramString1.length();
         if (paramString1 == null)
         {
-          paramString1 = new d.v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(204636);
+          paramString1 = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(252545);
           throw paramString1;
         }
         paramString1 = paramString1.substring(i, j);
@@ -137,33 +147,33 @@ public final class FinderModifyNameUI
       p.g(str1, "content");
       localObject = getContext();
       p.g(localObject, "context");
-      int k = ((AppCompatActivity)localObject).getResources().getColor(2131099769);
+      int k = ((AppCompatActivity)localObject).getResources().getColor(2131099783);
       localObject = getContext();
       p.g(localObject, "context");
-      paramString1.setSpan(new com.tencent.mm.plugin.finder.view.j(str1, k, ((AppCompatActivity)localObject).getResources().getColor(2131099776), false, (d.g.a.b)new FinderModifyNameUI.g(this, paramString2, paramString3)), i, i + j, 17);
-      paramString2 = this.sMz;
+      paramString1.setSpan(new com.tencent.mm.plugin.finder.view.l(str1, k, ((AppCompatActivity)localObject).getResources().getColor(2131099790), (kotlin.g.a.b)new g(this, paramString2, paramString3)), i, i + j, 17);
+      paramString2 = this.vIr;
       if (paramString2 == null) {
-        p.bdF("topErrorTip");
+        p.btv("topErrorTip");
       }
       paramString2.setText((CharSequence)paramString1);
-      paramString2 = this.sMz;
+      paramString2 = this.vIr;
       if (paramString2 == null) {
-        p.bdF("topErrorTip");
+        p.btv("topErrorTip");
       }
       a(paramString2, (Spannable)paramString1);
     }
     for (;;)
     {
-      paramString1 = this.sMz;
+      paramString1 = this.vIr;
       if (paramString1 == null) {
-        p.bdF("topErrorTip");
+        p.btv("topErrorTip");
       }
       paramString1.setVisibility(0);
-      AppMethodBeat.o(204636);
+      AppMethodBeat.o(252545);
       return;
-      paramString2 = this.sMz;
+      paramString2 = this.vIr;
       if (paramString2 == null) {
-        p.bdF("topErrorTip");
+        p.btv("topErrorTip");
       }
       paramString2.setText((CharSequence)paramString1);
     }
@@ -176,28 +186,28 @@ public final class FinderModifyNameUI
     default: 
       return 2147483647;
     case 1: 
-      return this.sMJ;
+      return this.vIE;
     }
-    return this.sPj;
+    return this.vMq;
   }
   
   private final void refreshView()
   {
     boolean bool2 = true;
     AppMethodBeat.i(167445);
-    Object localObject = com.tencent.mm.kernel.g.ajR();
+    Object localObject = com.tencent.mm.kernel.g.aAh();
     p.g(localObject, "MMKernel.storage()");
-    int i = ((e)localObject).ajA().getInt(am.a.Jbx, 0);
-    ae.i(this.TAG, "user extFlag ".concat(String.valueOf(i)));
+    int i = ((e)localObject).azQ().getInt(ar.a.Okw, 0);
+    Log.i(this.TAG, "user extFlag ".concat(String.valueOf(i)));
     if (this.scene == 1)
     {
       if ((i & 0x2) == 0) {
         break label132;
       }
       i = 1;
-      localObject = this.sPd;
+      localObject = this.vMl;
       if (localObject == null) {
-        p.bdF("edit");
+        p.btv("edit");
       }
       if (i != 0) {
         break label137;
@@ -205,9 +215,9 @@ public final class FinderModifyNameUI
       bool1 = true;
       label90:
       ((EditText)localObject).setEnabled(bool1);
-      localObject = this.sPf;
+      localObject = this.vMn;
       if (localObject == null) {
-        p.bdF("modifyBtn");
+        p.btv("modifyBtn");
       }
       if (i != 0) {
         break label142;
@@ -228,53 +238,78 @@ public final class FinderModifyNameUI
     }
   }
   
-  public final void Ky(String paramString)
+  public final void Tw(String paramString)
   {
     AppMethodBeat.i(167446);
-    int i = com.tencent.mm.ui.tools.f.cU(getMaxLength(), paramString);
-    paramString = this.sPe;
+    int i = f.dp(getMaxLength(), paramString);
+    paramString = this.vMm;
     if (paramString == null) {
-      p.bdF("editLimit");
+      p.btv("editLimit");
     }
     paramString.setText((CharSequence)String.valueOf(i));
-    paramString = this.sPe;
+    paramString = this.vMm;
     if (paramString == null) {
-      p.bdF("editLimit");
+      p.btv("editLimit");
     }
-    paramString.setTextColor(getResources().getColor(2131099660));
-    if (i <= d.k.j.lw((int)(getMaxLength() * 0.1F), 1))
+    paramString.setTextColor(getResources().getColor(2131099662));
+    if (i <= j.mZ((int)(getMaxLength() * 0.1F), 1))
     {
-      paramString = this.sPe;
+      paramString = this.vMm;
       if (paramString == null) {
-        p.bdF("editLimit");
+        p.btv("editLimit");
       }
       paramString.setVisibility(0);
     }
     for (;;)
     {
-      paramString = this.sMz;
+      paramString = this.vIr;
       if (paramString == null) {
-        p.bdF("topErrorTip");
+        p.btv("topErrorTip");
       }
       paramString.setText((CharSequence)"");
-      paramString = this.sMz;
+      paramString = this.vIr;
       if (paramString == null) {
-        p.bdF("topErrorTip");
+        p.btv("topErrorTip");
       }
       paramString.setVisibility(8);
       AppMethodBeat.o(167446);
       return;
-      paramString = this.sPe;
+      paramString = this.vMm;
       if (paramString == null) {
-        p.bdF("editLimit");
+        p.btv("editLimit");
       }
       paramString.setVisibility(4);
     }
   }
   
+  public final void Tx(String paramString)
+  {
+    AppMethodBeat.i(252544);
+    paramString = this.vMm;
+    if (paramString == null) {
+      p.btv("editLimit");
+    }
+    paramString.setText((CharSequence)String.valueOf(getMaxLength()));
+    paramString = this.vMm;
+    if (paramString == null) {
+      p.btv("editLimit");
+    }
+    paramString.setTextColor(getResources().getColor(2131099662));
+    AppMethodBeat.o(252544);
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(252549);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252549);
+  }
+  
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204639);
+    AppMethodBeat.i(252548);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -285,162 +320,146 @@ public final class FinderModifyNameUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204639);
+    AppMethodBeat.o(252548);
     return localView1;
   }
   
-  public final void aUT()
-  {
-    AppMethodBeat.i(167447);
-    TextView localTextView = this.sPe;
-    if (localTextView == null) {
-      p.bdF("editLimit");
-    }
-    localTextView.setText((CharSequence)String.valueOf(getMaxLength()));
-    localTextView = this.sPe;
-    if (localTextView == null) {
-      p.bdF("editLimit");
-    }
-    localTextView.setTextColor(getResources().getColor(2131099660));
-    AppMethodBeat.o(167447);
-  }
-  
-  public final void cW(String paramString)
+  public final void dv(String paramString)
   {
     AppMethodBeat.i(167448);
-    paramString = this.sPe;
+    paramString = this.vMm;
     if (paramString == null) {
-      p.bdF("editLimit");
+      p.btv("editLimit");
     }
     paramString.setText((CharSequence)"0");
-    paramString = this.sPe;
+    paramString = this.vMm;
     if (paramString == null) {
-      p.bdF("editLimit");
+      p.btv("editLimit");
     }
     paramString.setVisibility(0);
-    paramString = this.sPe;
+    paramString = this.vMm;
     if (paramString == null) {
-      p.bdF("editLimit");
+      p.btv("editLimit");
     }
-    paramString.setTextColor(getResources().getColor(2131099804));
+    paramString.setTextColor(getResources().getColor(2131099819));
     AppMethodBeat.o(167448);
   }
   
-  public final void g(boolean paramBoolean, int paramInt)
+  public final void f(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(167450);
-    this.nMm = paramInt;
+    this.oXi = paramInt;
     if (paramBoolean)
     {
       localObject1 = this.TAG;
       localObject2 = new StringBuilder("keyboardHeight ").append(paramInt).append(", inputContainer.height ");
-      View localView = this.sMx;
+      View localView = this.uht;
       if (localView == null) {
-        p.bdF("inputContainer");
+        p.btv("inputContainer");
       }
-      ae.i((String)localObject1, localView.getHeight());
-      localObject1 = this.sPg;
+      Log.i((String)localObject1, localView.getHeight());
+      localObject1 = this.vMo;
       if (localObject1 == null) {
-        p.bdF("edtContainer");
+        p.btv("edtContainer");
       }
-      ((View)localObject1).addOnLayoutChangeListener((View.OnLayoutChangeListener)this.sPk);
-      localObject1 = this.sPf;
+      ((View)localObject1).addOnLayoutChangeListener((View.OnLayoutChangeListener)this.vMs);
+      localObject1 = this.vMn;
       if (localObject1 == null) {
-        p.bdF("modifyBtn");
+        p.btv("modifyBtn");
       }
       localObject1 = ((Button)localObject1).getLayoutParams();
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+        localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
         AppMethodBeat.o(167450);
         throw ((Throwable)localObject1);
       }
       localObject1 = (LinearLayout.LayoutParams)localObject1;
       ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
-      localObject2 = this.sPf;
+      localObject2 = this.vMn;
       if (localObject2 == null) {
-        p.bdF("modifyBtn");
+        p.btv("modifyBtn");
       }
       ((Button)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = this.sMx;
+      localObject1 = this.uht;
       if (localObject1 == null) {
-        p.bdF("inputContainer");
+        p.btv("inputContainer");
       }
       localObject1 = ((View)localObject1).getLayoutParams();
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
         AppMethodBeat.o(167450);
         throw ((Throwable)localObject1);
       }
       localObject1 = (FrameLayout.LayoutParams)localObject1;
-      localObject2 = this.sMx;
+      localObject2 = this.uht;
       if (localObject2 == null) {
-        p.bdF("inputContainer");
+        p.btv("inputContainer");
       }
       ((FrameLayout.LayoutParams)localObject1).height = (((View)localObject2).getHeight() - paramInt);
-      localObject2 = this.sMx;
+      localObject2 = this.uht;
       if (localObject2 == null) {
-        p.bdF("inputContainer");
+        p.btv("inputContainer");
       }
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = this.sMx;
+      localObject1 = this.uht;
       if (localObject1 == null) {
-        p.bdF("inputContainer");
+        p.btv("inputContainer");
       }
       ((View)localObject1).requestLayout();
       AppMethodBeat.o(167450);
       return;
     }
-    Object localObject1 = this.sPg;
+    Object localObject1 = this.vMo;
     if (localObject1 == null) {
-      p.bdF("edtContainer");
+      p.btv("edtContainer");
     }
-    ((View)localObject1).removeOnLayoutChangeListener((View.OnLayoutChangeListener)this.sPk);
-    localObject1 = this.sPf;
+    ((View)localObject1).removeOnLayoutChangeListener((View.OnLayoutChangeListener)this.vMs);
+    localObject1 = this.vMn;
     if (localObject1 == null) {
-      p.bdF("modifyBtn");
+      p.btv("modifyBtn");
     }
     localObject1 = ((Button)localObject1).getLayoutParams();
     if (localObject1 == null)
     {
-      localObject1 = new d.v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+      localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
       AppMethodBeat.o(167450);
       throw ((Throwable)localObject1);
     }
     localObject1 = (LinearLayout.LayoutParams)localObject1;
-    ((LinearLayout.LayoutParams)localObject1).bottomMargin = getResources().getDimensionPixelSize(2131165277);
-    Object localObject2 = this.sPf;
+    ((LinearLayout.LayoutParams)localObject1).bottomMargin = getResources().getDimensionPixelSize(2131165281);
+    Object localObject2 = this.vMn;
     if (localObject2 == null) {
-      p.bdF("modifyBtn");
+      p.btv("modifyBtn");
     }
     ((Button)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.sMx;
+    localObject1 = this.uht;
     if (localObject1 == null) {
-      p.bdF("inputContainer");
+      p.btv("inputContainer");
     }
     localObject1 = ((View)localObject1).getLayoutParams();
     if (localObject1 == null)
     {
-      localObject1 = new d.v("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+      localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
       AppMethodBeat.o(167450);
       throw ((Throwable)localObject1);
     }
     localObject1 = (FrameLayout.LayoutParams)localObject1;
     ((FrameLayout.LayoutParams)localObject1).height = -1;
-    localObject2 = this.sMx;
+    localObject2 = this.uht;
     if (localObject2 == null) {
-      p.bdF("inputContainer");
+      p.btv("inputContainer");
     }
     ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.sMx;
+    localObject1 = this.uht;
     if (localObject1 == null) {
-      p.bdF("inputContainer");
+      p.btv("inputContainer");
     }
     ((View)localObject1).requestLayout();
-    localObject1 = this.sMx;
+    localObject1 = this.uht;
     if (localObject1 == null) {
-      p.bdF("inputContainer");
+      p.btv("inputContainer");
     }
     ((View)localObject1).scrollTo(0, 0);
     AppMethodBeat.o(167450);
@@ -448,7 +467,7 @@ public final class FinderModifyNameUI
   
   public final int getLayoutId()
   {
-    return 2131494071;
+    return 2131494518;
   }
   
   public final void initView()
@@ -457,61 +476,61 @@ public final class FinderModifyNameUI
     Object localObject2 = null;
     AppMethodBeat.i(167444);
     setMMTitle("");
-    setActionbarColor(getResources().getColor(2131101179));
-    getController().q((Activity)this, getResources().getColor(2131101179));
-    Object localObject3 = findViewById(2131300011);
+    setActionbarColor(getResources().getColor(2131101424));
+    getController().p((Activity)this, getResources().getColor(2131101424));
+    Object localObject3 = findViewById(2131301361);
     p.g(localObject3, "findViewById(R.id.finder_modify_name_container)");
-    this.sPg = ((View)localObject3);
-    localObject3 = findViewById(2131300001);
+    this.vMo = ((View)localObject3);
+    localObject3 = findViewById(2131300853);
     p.g(localObject3, "findViewById(R.id.finder_input_container)");
-    this.sMx = ((View)localObject3);
-    localObject3 = findViewById(2131300012);
+    this.uht = ((View)localObject3);
+    localObject3 = findViewById(2131301362);
     p.g(localObject3, "findViewById(R.id.finder_modify_title)");
     this.titleTv = ((TextView)localObject3);
-    localObject3 = findViewById(2131299990);
+    localObject3 = findViewById(2131300804);
     p.g(localObject3, "findViewById(R.id.finder_edit)");
-    this.sPd = ((EditText)localObject3);
-    localObject3 = findViewById(2131299991);
+    this.vMl = ((EditText)localObject3);
+    localObject3 = findViewById(2131300805);
     p.g(localObject3, "findViewById(R.id.finder_edit_limit)");
-    this.sPe = ((TextView)localObject3);
-    localObject3 = findViewById(2131299308);
+    this.vMm = ((TextView)localObject3);
+    localObject3 = findViewById(2131299912);
     p.g(localObject3, "findViewById(R.id.edt_bottom_space)");
-    this.sMv = ((View)localObject3);
-    localObject3 = findViewById(2131300010);
+    this.vIp = ((View)localObject3);
+    localObject3 = findViewById(2131301360);
     p.g(localObject3, "findViewById(R.id.finder_modify_btn)");
-    this.sPf = ((Button)localObject3);
-    localObject3 = findViewById(2131302438);
+    this.vMn = ((Button)localObject3);
+    localObject3 = findViewById(2131304838);
     p.g(localObject3, "findViewById(R.id.modify_max_tip)");
-    this.sPh = ((TextView)localObject3);
-    localObject3 = findViewById(2131304371);
+    this.vMp = ((TextView)localObject3);
+    localObject3 = findViewById(2131307333);
     p.g(localObject3, "findViewById(R.id.scroll_container)");
-    this.fSp = ((ScrollView)localObject3);
-    localObject3 = findViewById(2131301033);
+    this.gxx = ((ScrollView)localObject3);
+    localObject3 = findViewById(2131302683);
     p.g(localObject3, "findViewById(R.id.input_panel)");
-    this.sMw = ((InputPanelFrameLayout)localObject3);
-    localObject3 = findViewById(2131306005);
+    this.vIq = ((InputPanelFrameLayout)localObject3);
+    localObject3 = findViewById(2131309314);
     p.g(localObject3, "findViewById(R.id.top_error_tip)");
-    this.sMz = ((TextView)localObject3);
-    localObject3 = this.sPf;
+    this.vIr = ((TextView)localObject3);
+    localObject3 = this.vMn;
     if (localObject3 == null) {
-      p.bdF("modifyBtn");
+      p.btv("modifyBtn");
     }
     ((Button)localObject3).setOnClickListener((View.OnClickListener)new b(this));
     localObject3 = (TextWatcher)new e(this);
-    Object localObject4 = this.sPd;
+    Object localObject4 = this.vMl;
     if (localObject4 == null) {
-      p.bdF("edit");
+      p.btv("edit");
     }
     ((EditText)localObject4).addTextChangedListener((TextWatcher)localObject3);
-    localObject3 = this.sPd;
+    localObject3 = this.vMl;
     if (localObject3 == null) {
-      p.bdF("edit");
+      p.btv("edit");
     }
     ((EditText)localObject3).setOnTouchListener((View.OnTouchListener)new c(this));
     setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
-    localObject3 = this.sMw;
+    localObject3 = this.vIq;
     if (localObject3 == null) {
-      p.bdF("inputPanel");
+      p.btv("inputPanel");
     }
     ((InputPanelFrameLayout)localObject3).setExternalListener((b.a)this);
     switch (this.scene)
@@ -520,55 +539,212 @@ public final class FinderModifyNameUI
     for (;;)
     {
       refreshView();
-      localObject1 = this.sPd;
+      localObject1 = this.vMl;
       if (localObject1 == null) {
-        p.bdF("edit");
+        p.btv("edit");
       }
       ((EditText)localObject1).requestFocus();
       AppMethodBeat.o(167444);
       return;
-      localObject1 = this.sPd;
+      localObject1 = this.vMl;
       if (localObject1 == null) {
-        p.bdF("edit");
+        p.btv("edit");
       }
       ((EditText)localObject1).setMaxLines(1);
-      localObject3 = this.sPd;
+      localObject3 = this.vMl;
       if (localObject3 == null) {
-        p.bdF("edit");
+        p.btv("edit");
       }
       localObject4 = (Context)getContext();
-      com.tencent.mm.plugin.finder.api.g localg = this.sPi;
+      com.tencent.mm.plugin.finder.api.g localg = this.uCY;
       localObject1 = localObject2;
       if (localg != null) {
-        localObject1 = localg.VK();
+        localObject1 = localg.getNickname();
       }
-      ((EditText)localObject3).setText((CharSequence)k.c((Context)localObject4, (CharSequence)localObject1));
+      ((EditText)localObject3).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject4, (CharSequence)localObject1));
       localObject1 = this.titleTv;
       if (localObject1 == null) {
-        p.bdF("titleTv");
+        p.btv("titleTv");
       }
-      ((TextView)localObject1).setText((CharSequence)getString(2131759256));
+      ((TextView)localObject1).setText((CharSequence)getString(2131760277));
       continue;
       localObject2 = this.titleTv;
       if (localObject2 == null) {
-        p.bdF("titleTv");
+        p.btv("titleTv");
       }
-      ((TextView)localObject2).setText((CharSequence)getString(2131759257));
-      localObject2 = this.sPd;
+      ((TextView)localObject2).setText((CharSequence)getString(2131760278));
+      localObject2 = this.vMl;
       if (localObject2 == null) {
-        p.bdF("edit");
+        p.btv("edit");
       }
       ((EditText)localObject2).setMaxLines(5);
-      localObject2 = this.sPd;
+      localObject2 = this.vMl;
       if (localObject2 == null) {
-        p.bdF("edit");
+        p.btv("edit");
       }
       localObject3 = (Context)getContext();
-      localObject4 = this.sPi;
+      localObject4 = this.uCY;
       if (localObject4 != null) {
         localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject4).field_signature;
       }
-      ((EditText)localObject2).setText((CharSequence)k.c((Context)localObject3, (CharSequence)localObject1));
+      ((EditText)localObject2).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject3, (CharSequence)localObject1));
+    }
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(252543);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    Object localObject1;
+    Object localObject2;
+    label264:
+    String str;
+    if (paramInt1 == this.vMr)
+    {
+      showVKB();
+      if ((paramIntent != null) && (paramInt2 == -1))
+      {
+        localObject1 = paramIntent.getByteArrayExtra("key_select_contact");
+        if (localObject1 != null) {}
+        int i;
+        for (;;)
+        {
+          try
+          {
+            paramIntent = new cjj();
+            paramIntent.parseFrom((byte[])localObject1);
+            if (paramIntent == null) {
+              break label629;
+            }
+            if (Util.isNullOrNil(paramIntent.nickname)) {
+              break label617;
+            }
+            localObject1 = this.vMl;
+            if (localObject1 == null) {
+              p.btv("edit");
+            }
+            paramInt2 = ((EditText)localObject1).getSelectionEnd();
+            localObject1 = this.vMl;
+            if (localObject1 == null) {
+              p.btv("edit");
+            }
+            localObject2 = ((EditText)localObject1).getText().toString();
+            paramInt1 = paramInt2;
+            localObject1 = localObject2;
+            if (this.scene != 2) {
+              break label407;
+            }
+            localObject1 = this.vMl;
+            if (localObject1 == null) {
+              p.btv("edit");
+            }
+            i = ((EditText)localObject1).getSelectionEnd();
+            paramInt1 = paramInt2;
+            localObject1 = localObject2;
+            if (i <= 0) {
+              break label407;
+            }
+            paramInt1 = i - 1;
+            paramInt2 = 1;
+            if ((paramInt1 < 0) || (paramInt2 == 0)) {
+              break;
+            }
+            localObject1 = this.vMl;
+            if (localObject1 == null) {
+              p.btv("edit");
+            }
+            if (((EditText)localObject1).getText().toString().charAt(paramInt1) != '@') {
+              break label264;
+            }
+            paramInt1 -= 1;
+            continue;
+          }
+          catch (Exception paramIntent)
+          {
+            Log.e(this.TAG, "onActivityResult LocalFinderAtContact parseFrom:%s", new Object[] { paramIntent.getMessage() });
+            paramIntent = null;
+            continue;
+          }
+          paramIntent = null;
+          continue;
+          paramInt2 = 0;
+        }
+        paramInt2 = paramInt1 + 1;
+        paramInt1 = paramInt2;
+        if (paramInt2 > ((String)localObject2).length()) {
+          paramInt1 = ((String)localObject2).length();
+        }
+        localObject1 = new StringBuilder();
+        if (localObject2 == null)
+        {
+          paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(252543);
+          throw paramIntent;
+        }
+        str = ((String)localObject2).substring(0, paramInt1);
+        p.g(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        localObject1 = ((StringBuilder)localObject1).append(str);
+        paramInt2 = ((String)localObject2).length();
+        if (localObject2 == null)
+        {
+          paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(252543);
+          throw paramIntent;
+        }
+        localObject2 = ((String)localObject2).substring(i, paramInt2);
+        p.g(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        localObject1 = (String)localObject2;
+        label407:
+        if (paramInt1 <= ((String)localObject1).length()) {
+          break label636;
+        }
+        paramInt1 = ((String)localObject1).length();
+      }
+    }
+    label617:
+    label629:
+    label636:
+    for (;;)
+    {
+      localObject2 = new StringBuilder();
+      if (localObject1 == null)
+      {
+        paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(252543);
+        throw paramIntent;
+      }
+      str = ((String)localObject1).substring(0, paramInt1);
+      p.g(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      localObject2 = ((StringBuilder)localObject2).append(str).append('@').append(paramIntent.nickname).append(' ');
+      paramInt2 = ((String)localObject1).length();
+      if (localObject1 == null)
+      {
+        paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(252543);
+        throw paramIntent;
+      }
+      localObject1 = ((String)localObject1).substring(paramInt1, paramInt2);
+      p.g(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      localObject1 = (String)localObject1;
+      paramIntent = paramIntent.nickname;
+      if (paramIntent != null) {}
+      for (paramInt2 = paramIntent.length();; paramInt2 = 0)
+      {
+        paramIntent = this.vMl;
+        if (paramIntent == null) {
+          p.btv("edit");
+        }
+        paramIntent.setText((CharSequence)localObject1);
+        paramIntent = this.vMl;
+        if (paramIntent == null) {
+          p.btv("edit");
+        }
+        paramIntent.setSelection(paramInt2 + paramInt1 + 2);
+        AppMethodBeat.o(252543);
+        return;
+      }
+      AppMethodBeat.o(252543);
+      return;
     }
   }
   
@@ -576,11 +752,11 @@ public final class FinderModifyNameUI
   {
     AppMethodBeat.i(167443);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.plugin.finder.api.c.rPy;
-    this.sPi = com.tencent.mm.plugin.finder.api.c.a.ahT(com.tencent.mm.model.v.aAK());
+    paramBundle = com.tencent.mm.plugin.finder.api.c.tsp;
+    this.uCY = com.tencent.mm.plugin.finder.api.c.a.asG(z.aUg());
     this.scene = getIntent().getIntExtra("key_scene", 0);
     initView();
-    com.tencent.mm.kernel.g.ajj().a(3761, (com.tencent.mm.ak.f)this);
+    com.tencent.mm.kernel.g.azz().a(3761, (i)this);
     AppMethodBeat.o(167443);
   }
   
@@ -588,7 +764,7 @@ public final class FinderModifyNameUI
   {
     AppMethodBeat.i(167452);
     super.onDestroy();
-    com.tencent.mm.kernel.g.ajj().b(3761, (com.tencent.mm.ak.f)this);
+    com.tencent.mm.kernel.g.azz().b(3761, (i)this);
     AppMethodBeat.o(167452);
   }
   
@@ -596,35 +772,35 @@ public final class FinderModifyNameUI
   {
     AppMethodBeat.i(167451);
     super.onResume();
-    ay localay = new ay(2);
-    com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)localay);
+    cd localcd = new cd(2);
+    com.tencent.mm.kernel.g.azz().b((com.tencent.mm.ak.q)localcd);
     AppMethodBeat.o(167451);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     int i = 1;
     AppMethodBeat.i(167453);
-    ae.i(this.TAG, "onSceneEnd errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
-    if (paramn != null) {}
-    for (paramString = Integer.valueOf(paramn.getType()); paramString == null; paramString = null)
+    Log.i(this.TAG, "onSceneEnd errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+    if (paramq != null) {}
+    for (paramString = Integer.valueOf(paramq.getType()); paramString == null; paramString = null)
     {
       AppMethodBeat.o(167453);
       return;
     }
-    atf localatf;
+    bed localbed;
     if ((paramString.intValue() == 3761) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramn == null)
+      if (paramq == null)
       {
-        paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
+        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
         AppMethodBeat.o(167453);
         throw paramString;
       }
-      localatf = ((ay)paramn).cAk();
-      if (localatf != null)
+      localbed = ((cd)paramq).cZc();
+      if (localbed != null)
       {
-        paramString = localatf.GKb;
+        paramString = localbed.LNL;
         if (paramString != null)
         {
           if (this.scene != 1) {
@@ -641,22 +817,22 @@ public final class FinderModifyNameUI
     {
       if (paramString != null)
       {
-        paramString = this.sPh;
+        paramString = this.vMp;
         if (paramString == null) {
-          p.bdF("modifyCountTip");
+          p.btv("modifyCountTip");
         }
-        paramString.setText((CharSequence)((ay)paramn).cAk().GKb);
-        paramString = this.sPh;
+        paramString.setText((CharSequence)((cd)paramq).cZc().LNL);
+        paramString = this.vMp;
         if (paramString == null) {
-          p.bdF("modifyCountTip");
+          p.btv("modifyCountTip");
         }
         paramString.setVisibility(0);
       }
-      if (localatf.sMJ > 0) {
-        this.sMJ = localatf.sMJ;
+      if (localbed.vIE > 0) {
+        this.vIE = localbed.vIE;
       }
-      if (localatf.sPj > 0) {
-        this.sPj = localatf.sPj;
+      if (localbed.vMq > 0) {
+        this.vMq = localbed.vMq;
       }
       refreshView();
       AppMethodBeat.o(167453);
@@ -675,7 +851,7 @@ public final class FinderModifyNameUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"})
   public static final class a
     implements View.OnLayoutChangeListener
   {
@@ -684,24 +860,24 @@ public final class FinderModifyNameUI
       AppMethodBeat.i(167437);
       if (paramInt8 != paramInt4)
       {
-        paramInt1 = this.sPl.getResources().getDimensionPixelSize(2131165303);
+        paramInt1 = this.vMt.getResources().getDimensionPixelSize(2131165314);
         if (paramInt8 < paramInt4)
         {
-          if (FinderModifyNameUI.h(this.sPl).getHeight() < paramInt1)
+          if (FinderModifyNameUI.i(this.vMt).getHeight() < paramInt1)
           {
-            FinderModifyNameUI.h(this.sPl).scrollBy(0, paramInt4 - paramInt8);
+            FinderModifyNameUI.i(this.vMt).scrollBy(0, paramInt4 - paramInt8);
             AppMethodBeat.o(167437);
           }
         }
-        else if (FinderModifyNameUI.h(this.sPl).getScrollY() > 0) {
-          FinderModifyNameUI.h(this.sPl).scrollBy(0, paramInt4 - paramInt8);
+        else if (FinderModifyNameUI.i(this.vMt).getScrollY() > 0) {
+          FinderModifyNameUI.i(this.vMt).scrollBy(0, paramInt4 - paramInt8);
         }
       }
       AppMethodBeat.o(167437);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -711,27 +887,27 @@ public final class FinderModifyNameUI
     {
       AppMethodBeat.i(167438);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      paramView = com.tencent.mm.plugin.finder.spam.a.sEK;
-      if (com.tencent.mm.plugin.finder.spam.a.ajm("personalInfo"))
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+      paramView = com.tencent.mm.plugin.finder.spam.a.vwk;
+      if (com.tencent.mm.plugin.finder.spam.a.avp("personalInfo"))
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(167438);
         return;
       }
-      ae.i(FinderModifyNameUI.a(this.sPl), "doClick create contact btn");
-      paramView = FinderModifyNameUI.b(this.sPl).getText().toString();
+      Log.i(FinderModifyNameUI.a(this.vMt), "doClick create contact btn");
+      paramView = FinderModifyNameUI.b(this.vMt).getText().toString();
       if (paramView == null)
       {
-        paramView = new d.v("null cannot be cast to non-null type kotlin.CharSequence");
+        paramView = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
         AppMethodBeat.o(167438);
         throw paramView;
       }
-      localObject = d.n.n.trim((CharSequence)paramView).toString();
+      localObject = n.trim((CharSequence)paramView).toString();
       paramView = "";
       int i;
-      switch (FinderModifyNameUI.c(this.sPl))
+      switch (FinderModifyNameUI.c(this.vMt))
       {
       default: 
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -744,7 +920,7 @@ public final class FinderModifyNameUI
           if (i == 0) {
             break label273;
           }
-          paramView = this.sPl.getString(2131766426, new Object[] { this.sPl.getString(2131759280) });
+          paramView = this.vMt.getString(2131759816, new Object[] { this.vMt.getString(2131760332) });
           p.g(paramView, "getString(R.string.finde….string.finder_nickname))");
         }
         break;
@@ -760,42 +936,42 @@ public final class FinderModifyNameUI
           if (i == 0) {
             break label376;
           }
-          FinderModifyNameUI.a(this.sPl, paramView);
+          FinderModifyNameUI.a(this.vMt, paramView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(167438);
           return;
           i = 0;
           break;
           label273:
-          if (com.tencent.mm.ui.tools.f.aYK((String)localObject) <= FinderModifyNameUI.d(this.sPl)) {
+          if (f.bnP((String)localObject) <= FinderModifyNameUI.d(this.vMt)) {
             break label517;
           }
-          paramView = this.sPl.getString(2131766427, new Object[] { this.sPl.getString(2131759280) });
+          paramView = this.vMt.getString(2131759817, new Object[] { this.vMt.getString(2131760332) });
           p.g(paramView, "getString(R.string.finde….string.finder_nickname))");
         }
         for (;;)
         {
           break;
-          if (com.tencent.mm.ui.tools.f.aYK((String)localObject) <= FinderModifyNameUI.e(this.sPl)) {
+          if (f.bnP((String)localObject) <= FinderModifyNameUI.e(this.vMt)) {
             break label521;
           }
-          paramView = this.sPl.getString(2131766427, new Object[] { this.sPl.getString(2131759356) });
+          paramView = this.vMt.getString(2131759817, new Object[] { this.vMt.getString(2131760584) });
           p.g(paramView, "getString(R.string.finde…string.finder_signature))");
           break;
           i = 0;
           break label238;
           label376:
-          switch (FinderModifyNameUI.c(this.sPl))
+          switch (FinderModifyNameUI.c(this.vMt))
           {
           default: 
             break;
           case 1: 
-            ((com.tencent.mm.plugin.i.a.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.n.class)).b((String)localObject, (com.tencent.mm.plugin.i.a.s)this.sPl);
-            FinderModifyNameUI.a(this.sPl, (ProgressDialog)h.b((Context)this.sPl, this.sPl.getString(2131755919), false, null));
+            ((com.tencent.mm.plugin.i.a.x)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.i.a.x.class)).d((String)localObject, (ai)this.vMt);
+            FinderModifyNameUI.a(this.vMt, (ProgressDialog)h.a((Context)this.vMt, this.vMt.getString(2131756011), false, null));
             break;
           case 2: 
-            ((com.tencent.mm.plugin.i.a.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.n.class)).c((String)localObject, (com.tencent.mm.plugin.i.a.s)this.sPl);
-            FinderModifyNameUI.a(this.sPl, (ProgressDialog)h.b((Context)this.sPl, this.sPl.getString(2131755919), false, null));
+            ((com.tencent.mm.plugin.i.a.x)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.i.a.x.class)).e((String)localObject, (ai)this.vMt);
+            FinderModifyNameUI.a(this.vMt, (ProgressDialog)h.a((Context)this.vMt, this.vMt.getString(2131756011), false, null));
             break;
             paramView = "";
           }
@@ -804,7 +980,7 @@ public final class FinderModifyNameUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
   static final class c
     implements View.OnTouchListener
   {
@@ -813,11 +989,7 @@ public final class FinderModifyNameUI
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(167439);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-      if (p.i(paramView, FinderModifyNameUI.b(this.sPl)))
+      if (p.j(paramView, FinderModifyNameUI.b(this.vMt)))
       {
         p.g(paramMotionEvent, "event");
         switch (paramMotionEvent.getActionMasked())
@@ -826,17 +998,16 @@ public final class FinderModifyNameUI
       }
       for (;;)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(167439);
         return false;
-        FinderModifyNameUI.g(this.sPl).requestDisallowInterceptTouchEvent(true);
+        FinderModifyNameUI.h(this.vMt).requestDisallowInterceptTouchEvent(true);
         continue;
-        FinderModifyNameUI.g(this.sPl).requestDisallowInterceptTouchEvent(false);
+        FinderModifyNameUI.h(this.vMt).requestDisallowInterceptTouchEvent(false);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class d
     implements MenuItem.OnMenuItemClickListener
   {
@@ -845,31 +1016,102 @@ public final class FinderModifyNameUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167440);
-      this.sPl.finish();
+      this.vMt.finish();
       AppMethodBeat.o(167440);
       return true;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$textWatcher$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$textWatcher$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder_release"})
   public static final class e
     implements TextWatcher
   {
     public final void afterTextChanged(Editable paramEditable)
     {
+      int i = 0;
       AppMethodBeat.i(167441);
-      com.tencent.mm.ui.tools.b.c.d(FinderModifyNameUI.b(this.sPl)).kj(1, FinderModifyNameUI.f(this.sPl)).a(f.a.Lfh).fPi().a((com.tencent.mm.ui.tools.b.c.a)this.sPl);
+      com.tencent.mm.ui.tools.b.c.f(FinderModifyNameUI.b(this.vMt)).lv(1, FinderModifyNameUI.f(this.vMt)).a(f.a.Qui).CN(true).a((com.tencent.mm.ui.tools.b.c.a)this.vMt);
+      if ((FinderModifyNameUI.c(this.vMt) == 2) && (paramEditable != null))
+      {
+        Object localObject = (ForegroundColorSpan[])paramEditable.getSpans(0, paramEditable.length(), ForegroundColorSpan.class);
+        p.g(localObject, "spans");
+        int j = localObject.length;
+        while (i < j)
+        {
+          paramEditable.removeSpan(localObject[i]);
+          i += 1;
+        }
+        localObject = d.vVg;
+        d.a(paramEditable.toString(), (kotlin.g.a.q)new a(paramEditable));
+      }
       AppMethodBeat.o(167441);
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
     
-    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(252540);
+      if ((FinderModifyNameUI.c(this.vMt) == 2) && (paramInt3 == 1))
+      {
+        Object localObject1 = localObject2;
+        if (paramCharSequence != null)
+        {
+          p.h(paramCharSequence, "$this$getOrNull");
+          localObject1 = localObject2;
+          if (paramInt1 >= 0)
+          {
+            localObject1 = localObject2;
+            if (paramInt1 <= n.aO(paramCharSequence)) {
+              localObject1 = Character.valueOf(paramCharSequence.charAt(paramInt1));
+            }
+          }
+        }
+        if (localObject1 == null)
+        {
+          AppMethodBeat.o(252540);
+          return;
+        }
+        if (((Character)localObject1).charValue() == '@')
+        {
+          Log.i(FinderModifyNameUI.a(this.vMt), "at auto goto");
+          paramCharSequence = new Intent();
+          paramCharSequence.putExtra("key_scene", 2);
+          paramCharSequence.putExtra("KEY_ENTER_SCENE", 1);
+          localObject1 = com.tencent.mm.plugin.finder.utils.a.vUU;
+          com.tencent.mm.plugin.finder.utils.a.c((MMActivity)this.vMt, paramCharSequence, FinderModifyNameUI.g(this.vMt));
+        }
+      }
+      AppMethodBeat.o(252540);
+    }
+    
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "start", "", "end", "nickname", "", "invoke"})
+    static final class a
+      extends kotlin.g.b.q
+      implements kotlin.g.a.q<Integer, Integer, String, kotlin.x>
+    {
+      a(Editable paramEditable)
+      {
+        super();
+      }
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+  static final class g
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<String, kotlin.x>
+  {
+    g(FinderModifyNameUI paramFinderModifyNameUI, String paramString1, String paramString2)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderModifyNameUI
  * JD-Core Version:    0.7.0.1
  */

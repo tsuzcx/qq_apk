@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.appstorage.z;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class ac
-  extends a
+  extends d
 {
   private static final int CTRL_INDEX = 778;
   private static final String NAME = "private_fileSystemConvert";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(174794);
-    ae.i("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: %s %s", new Object[] { "private_fileSystemConvert", paramJSONObject.toString() });
+    Log.i("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: %s %s", new Object[] { "private_fileSystemConvert", paramJSONObject.toString() });
     Object localObject1 = paramJSONObject.optString("operationType", "");
     Object localObject2;
     if (((String)localObject1).equalsIgnoreCase("getAbsolutePath"))
     {
       localObject1 = paramJSONObject.optString("localId");
-      if (bu.isNullOrNil((String)localObject1))
+      if (Util.isNullOrNil((String)localObject1))
       {
-        paramc.h(paramInt, e(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
+        paramf.i(paramInt, h(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
         AppMethodBeat.o(174794);
         return;
       }
@@ -42,23 +42,23 @@ public final class ac
         paramJSONObject.put("filePath", localObject1);
         if (((String)localObject1).contains("wxfile://"))
         {
-          localObject2 = paramc.Fl().MP((String)localObject1);
+          localObject2 = paramf.getFileSystem().VY((String)localObject1);
           if (localObject2 == null)
           {
-            paramc.h(paramInt, e("fail:file doesn't exist", null));
-            paramc.h(paramInt, e(String.format("fail: %s not exists", new Object[] { localObject1 }), null));
+            paramf.i(paramInt, h("fail:file doesn't exist", null));
+            paramf.i(paramInt, h(String.format("fail: %s not exists", new Object[] { localObject1 }), null));
             AppMethodBeat.o(174794);
             return;
           }
-          paramJSONObject.put("filePath", w.B(((k)localObject2).fTh()));
+          paramJSONObject.put("filePath", aa.z(((o)localObject2).her()));
         }
-        paramc.h(paramInt, paramJSONObject.toString());
+        paramf.i(paramInt, paramJSONObject.toString());
         AppMethodBeat.o(174794);
         return;
       }
       catch (JSONException paramJSONObject)
       {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
+        paramf.i(paramInt, h(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
         AppMethodBeat.o(174794);
         return;
       }
@@ -72,30 +72,30 @@ public final class ac
       try
       {
         localObject1 = paramJSONObject.optString("fileName");
-        if (!bu.isNullOrNil((String)localObject1)) {
+        if (!Util.isNullOrNil((String)localObject1)) {
           break label842;
         }
         localObject1 = "private_fileSystemConvert_" + System.currentTimeMillis();
         localObject2 = paramJSONObject.optString("mimeType");
         boolean bool2 = paramJSONObject.optBoolean("autoDeleteIfExists", true);
-        if (bu.isNullOrNil((String)localObject2))
+        if (Util.isNullOrNil((String)localObject2))
         {
-          paramc.h(paramInt, e(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
+          paramf.i(paramInt, h(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
           AppMethodBeat.o(174794);
           return;
         }
         str2 = (String)localObject1 + "." + (String)localObject2;
-        if ((paramc == null) || (bu.isNullOrNil(str2)))
+        if ((paramf == null) || (Util.isNullOrNil(str2)))
         {
           boolean bool1;
-          if (paramc == null)
+          if (paramf == null)
           {
             bool1 = true;
-            ae.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool1), str2 });
+            Log.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool1), str2 });
             paramJSONObject = null;
-            if (bu.isNullOrNil(paramJSONObject))
+            if (Util.isNullOrNil(paramJSONObject))
             {
-              paramc.h(paramInt, e("fail: getAbsoluteFile failed", null));
+              paramf.i(paramInt, h("fail: getAbsoluteFile failed", null));
               AppMethodBeat.o(174794);
             }
           }
@@ -107,30 +107,30 @@ public final class ac
         }
         else
         {
-          paramJSONObject = (at)paramc.Fl();
+          paramJSONObject = (at)paramf.getFileSystem();
           if (paramJSONObject == null)
           {
-            ae.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: fs is null");
+            Log.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: fs is null");
             paramJSONObject = null;
             continue;
           }
-          localObject2 = ((z)paramJSONObject.Na("wxfile://clientdata")).jPJ;
+          localObject2 = ((z)paramJSONObject.Wj("wxfile://clientdata")).kSr;
           paramJSONObject = (JSONObject)localObject2;
           if (!((String)localObject2).endsWith("/")) {
             paramJSONObject = (String)localObject2 + "/";
           }
-          localObject2 = new k(paramJSONObject + ".nomedia");
-          if (!((k)localObject2).exists()) {
-            ae.i("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: no nomedia file. trigger new");
+          localObject2 = new o(paramJSONObject + ".nomedia");
+          if (!((o)localObject2).exists()) {
+            Log.i("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: no nomedia file. trigger new");
           }
           try
           {
-            ((k)localObject2).createNewFile();
+            ((o)localObject2).createNewFile();
             paramJSONObject = paramJSONObject + str2;
           }
           catch (IOException localIOException)
           {
-            ae.printErrStackTrace("MicroMsg.AppBrand.JsApiPrivateFileSystem", localIOException, "hy: create no media file failed!", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.AppBrand.JsApiPrivateFileSystem", localIOException, "hy: create no media file failed!", new Object[0]);
             continue;
           }
         }
@@ -140,25 +140,25 @@ public final class ac
       }
       catch (JSONException paramJSONObject)
       {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        ae.printErrStackTrace("MicroMsg.AppBrand.JsApiPrivateFileSystem", paramJSONObject, "hy: json error!", new Object[0]);
+        paramf.i(paramInt, h(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
+        Log.printErrStackTrace("MicroMsg.AppBrand.JsApiPrivateFileSystem", paramJSONObject, "hy: json error!", new Object[0]);
         AppMethodBeat.o(174794);
         return;
       }
-      if (o.fB(paramJSONObject)) {
-        o.deleteFile(paramJSONObject);
+      if (s.YS(paramJSONObject)) {
+        s.deleteFile(paramJSONObject);
       }
-      String str1 = o.aZU(paramJSONObject);
-      o.aZI(str1);
-      ae.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: getWxFilePath, fileName: %s, relativeFilePath: %s, relativeFileName: %s, parentAbsolutePath: %s!", new Object[] { localObject1, str2, paramJSONObject, str1 });
+      String str1 = s.boZ(paramJSONObject);
+      s.boN(str1);
+      Log.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: getWxFilePath, fileName: %s, relativeFilePath: %s, relativeFileName: %s, parentAbsolutePath: %s!", new Object[] { localObject1, str2, paramJSONObject, str1 });
       localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("filePath", paramJSONObject);
       ((JSONObject)localObject1).put("localId", "wxfile://clientdata/".concat(String.valueOf(str2)));
-      paramc.h(paramInt, ((JSONObject)localObject1).toString());
+      paramf.i(paramInt, ((JSONObject)localObject1).toString());
       AppMethodBeat.o(174794);
       return;
-      ae.e("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: invalid operate type: %s", new Object[] { localObject1 });
-      paramc.h(paramInt, e(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
+      Log.e("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: invalid operate type: %s", new Object[] { localObject1 });
+      paramf.i(paramInt, h(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
       AppMethodBeat.o(174794);
       return;
     }
@@ -166,7 +166,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ac
  * JD-Core Version:    0.7.0.1
  */

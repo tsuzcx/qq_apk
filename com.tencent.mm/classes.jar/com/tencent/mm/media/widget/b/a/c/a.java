@@ -1,37 +1,37 @@
 package com.tencent.mm.media.widget.b.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.n.n;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "", "()V", "KEY_NAME", "", "getKEY_NAME", "()Ljava/lang/String;", "KEY_SUPPORTTAG", "getKEY_SUPPORTTAG", "KEY_VALUE", "getKEY_VALUE", "TAG", "getTAG", "sessionTypeName", "getSessionTypeName", "setSessionTypeName", "(Ljava/lang/String;)V", "sessionValue", "", "getSessionValue", "()I", "setSessionValue", "(I)V", "supportTag", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSupportTag", "()Ljava/util/ArrayList;", "setSupportTag", "(Ljava/util/ArrayList;)V", "checkVendorTagSupported", "", "vendorTags", "initSessionType", "", "params", "Lorg/json/JSONObject;", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "", "()V", "KEY_NAME", "", "getKEY_NAME", "()Ljava/lang/String;", "KEY_SUPPORTTAG", "getKEY_SUPPORTTAG", "KEY_VALUE", "getKEY_VALUE", "TAG", "getTAG", "sessionTypeName", "getSessionTypeName", "setSessionTypeName", "(Ljava/lang/String;)V", "sessionValue", "", "getSessionValue", "()I", "setSessionValue", "(I)V", "supportTag", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSupportTag", "()Ljava/util/ArrayList;", "setSupportTag", "(Ljava/util/ArrayList;)V", "checkVendorTagSupported", "", "vendorTags", "initSessionType", "", "params", "Lorg/json/JSONObject;", "plugin-mediaeditor_release"})
 public final class a
 {
   private final String KEY_NAME;
   private final String TAG;
-  private final String hvL;
-  private final String hvM;
-  private String hvN;
-  public int hvO;
-  private ArrayList<String> hvP;
+  private final String ipm;
+  private final String ipn;
+  private String ipo;
+  public int ipp;
+  private ArrayList<String> ipq;
   
   public a()
   {
     AppMethodBeat.i(94213);
     this.TAG = "MicroMsg.WCCameraEffectSessionType";
     this.KEY_NAME = "name";
-    this.hvL = "value";
-    this.hvM = "supportTag";
-    this.hvP = new ArrayList();
+    this.ipm = "value";
+    this.ipn = "supportTag";
+    this.ipq = new ArrayList();
     AppMethodBeat.o(94213);
   }
   
-  public final boolean n(ArrayList<String> paramArrayList)
+  public final boolean r(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(94212);
     p.h(paramArrayList, "vendorTags");
@@ -40,11 +40,11 @@ public final class a
     if (localIterator1.hasNext())
     {
       String str = (String)localIterator1.next();
-      Iterator localIterator2 = ((Iterable)this.hvP).iterator();
+      Iterator localIterator2 = ((Iterable)this.ipq).iterator();
       while (localIterator2.hasNext())
       {
         paramArrayList = localIterator2.next();
-        if (p.i((String)paramArrayList, str)) {
+        if (p.j((String)paramArrayList, str)) {
           label85:
           if (paramArrayList == null) {
             break label109;
@@ -68,7 +68,7 @@ public final class a
     return bool2;
   }
   
-  public final void q(JSONObject paramJSONObject)
+  public final void u(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(94211);
     if (paramJSONObject == null)
@@ -81,15 +81,15 @@ public final class a
     while (localIterator.hasNext())
     {
       Object localObject1 = (String)localIterator.next();
-      if (p.i(localObject1, this.KEY_NAME))
+      if (p.j(localObject1, this.KEY_NAME))
       {
-        this.hvN = paramJSONObject.optString((String)localObject1);
+        this.ipo = paramJSONObject.optString((String)localObject1);
       }
-      else if (p.i(localObject1, this.hvL))
+      else if (p.j(localObject1, this.ipm))
       {
-        this.hvO = paramJSONObject.optInt((String)localObject1);
+        this.ipp = paramJSONObject.optInt((String)localObject1);
       }
-      else if (p.i(localObject1, this.hvM))
+      else if (p.j(localObject1, this.ipn))
       {
         localObject1 = paramJSONObject.optString((String)localObject1);
         p.g(localObject1, "params.optString(it)");
@@ -101,7 +101,7 @@ public final class a
         }
         for (;;)
         {
-          this.hvP = ((ArrayList)localObject1);
+          this.ipq = ((ArrayList)localObject1);
           break;
           if (str.equals("array"))
           {
@@ -118,7 +118,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.c.a
  * JD-Core Version:    0.7.0.1
  */

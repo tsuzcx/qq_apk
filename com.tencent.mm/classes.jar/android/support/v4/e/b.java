@@ -9,15 +9,15 @@ import java.util.Set;
 public final class b<E>
   implements Collection<E>, Set<E>
 {
-  private static final int[] Ot = new int[0];
-  private static final Object[] Ou = new Object[0];
-  private static Object[] Ov;
-  private static int Ow;
-  private static Object[] Ox;
-  private static int Oy;
-  public Object[] OA;
-  private i<E, E> Or;
-  private int[] Oz;
+  private static final int[] OF = new int[0];
+  private static final Object[] OG = new Object[0];
+  private static Object[] OH;
+  private static int OI;
+  private static Object[] OJ;
+  private static int OL;
+  private i<E, E> OD;
+  private int[] OM;
+  public Object[] OO;
   int mSize;
   
   public b()
@@ -29,8 +29,8 @@ public final class b<E>
   {
     if (paramInt == 0)
     {
-      this.Oz = Ot;
-      this.OA = Ou;
+      this.OM = OF;
+      this.OO = OG;
     }
     for (;;)
     {
@@ -45,14 +45,14 @@ public final class b<E>
     if (paramArrayOfInt.length == 8) {
       try
       {
-        if (Oy < 10)
+        if (OL < 10)
         {
-          paramArrayOfObject[0] = Ox;
+          paramArrayOfObject[0] = OJ;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt -= 1;
           break label113;
-          Ox = paramArrayOfObject;
-          Oy += 1;
+          OJ = paramArrayOfObject;
+          OL += 1;
         }
         return;
       }
@@ -66,14 +66,14 @@ public final class b<E>
     {
       try
       {
-        if (Ow < 10)
+        if (OI < 10)
         {
-          paramArrayOfObject[0] = Ov;
+          paramArrayOfObject[0] = OH;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt -= 1;
           break label130;
-          Ov = paramArrayOfObject;
-          Ow += 1;
+          OH = paramArrayOfObject;
+          OI += 1;
         }
         return;
       }
@@ -103,34 +103,34 @@ public final class b<E>
     {
       try
       {
-        if (Ox != null)
+        if (OJ != null)
         {
-          Object[] arrayOfObject1 = Ox;
-          this.OA = arrayOfObject1;
-          Ox = (Object[])arrayOfObject1[0];
-          this.Oz = ((int[])arrayOfObject1[1]);
+          Object[] arrayOfObject1 = OJ;
+          this.OO = arrayOfObject1;
+          OJ = (Object[])arrayOfObject1[0];
+          this.OM = ((int[])arrayOfObject1[1]);
           arrayOfObject1[1] = null;
           arrayOfObject1[0] = null;
-          Oy -= 1;
+          OL -= 1;
           return;
         }
-        this.Oz = new int[paramInt];
-        this.OA = new Object[paramInt];
+        this.OM = new int[paramInt];
+        this.OO = new Object[paramInt];
         return;
       }
       finally {}
       if (paramInt == 4) {
         try
         {
-          if (Ov != null)
+          if (OH != null)
           {
-            Object[] arrayOfObject2 = Ov;
-            this.OA = arrayOfObject2;
-            Ov = (Object[])arrayOfObject2[0];
-            this.Oz = ((int[])arrayOfObject2[1]);
+            Object[] arrayOfObject2 = OH;
+            this.OO = arrayOfObject2;
+            OH = (Object[])arrayOfObject2[0];
+            this.OM = ((int[])arrayOfObject2[1]);
             arrayOfObject2[1] = null;
             arrayOfObject2[0] = null;
-            Ow -= 1;
+            OI -= 1;
             return;
           }
         }
@@ -139,7 +139,7 @@ public final class b<E>
     }
   }
   
-  private int fp()
+  private int fv()
   {
     int m = this.mSize;
     int i;
@@ -152,15 +152,15 @@ public final class b<E>
       do
       {
         return i;
-        j = d.b(this.Oz, m, 0);
+        j = d.b(this.OM, m, 0);
         i = j;
       } while (j < 0);
       i = j;
-    } while (this.OA[j] == null);
+    } while (this.OO[j] == null);
     int k = j + 1;
-    while ((k < m) && (this.Oz[k] == 0))
+    while ((k < m) && (this.OM[k] == 0))
     {
-      if (this.OA[k] == null) {
+      if (this.OO[k] == null) {
         return k;
       }
       k += 1;
@@ -168,11 +168,11 @@ public final class b<E>
     j -= 1;
     for (;;)
     {
-      if ((j < 0) || (this.Oz[j] != 0)) {
+      if ((j < 0) || (this.OM[j] != 0)) {
         break label115;
       }
       i = j;
-      if (this.OA[j] == null) {
+      if (this.OO[j] == null) {
         break;
       }
       j -= 1;
@@ -194,15 +194,15 @@ public final class b<E>
       do
       {
         return i;
-        j = d.b(this.Oz, m, paramInt);
+        j = d.b(this.OM, m, paramInt);
         i = j;
       } while (j < 0);
       i = j;
-    } while (paramObject.equals(this.OA[j]));
+    } while (paramObject.equals(this.OO[j]));
     int k = j + 1;
-    while ((k < m) && (this.Oz[k] == paramInt))
+    while ((k < m) && (this.OM[k] == paramInt))
     {
-      if (paramObject.equals(this.OA[k])) {
+      if (paramObject.equals(this.OO[k])) {
         return k;
       }
       k += 1;
@@ -210,11 +210,11 @@ public final class b<E>
     j -= 1;
     for (;;)
     {
-      if ((j < 0) || (this.Oz[j] != paramInt)) {
+      if ((j < 0) || (this.OM[j] != paramInt)) {
         break label150;
       }
       i = j;
-      if (paramObject.equals(this.OA[j])) {
+      if (paramObject.equals(this.OO[j])) {
         break;
       }
       j -= 1;
@@ -230,7 +230,7 @@ public final class b<E>
     int j;
     if (paramE == null)
     {
-      i = fp();
+      i = fv();
       j = 0;
     }
     while (i >= 0)
@@ -240,7 +240,7 @@ public final class b<E>
       i = indexOf(paramE, j);
     }
     int m = i ^ 0xFFFFFFFF;
-    if (this.mSize >= this.Oz.length)
+    if (this.mSize >= this.OM.length)
     {
       if (this.mSize < 8) {
         break label227;
@@ -249,24 +249,24 @@ public final class b<E>
     }
     for (;;)
     {
-      Object localObject = this.Oz;
-      Object[] arrayOfObject = this.OA;
+      Object localObject = this.OM;
+      Object[] arrayOfObject = this.OO;
       aH(i);
-      if (this.Oz.length > 0)
+      if (this.OM.length > 0)
       {
-        System.arraycopy(localObject, 0, this.Oz, 0, localObject.length);
-        System.arraycopy(arrayOfObject, 0, this.OA, 0, arrayOfObject.length);
+        System.arraycopy(localObject, 0, this.OM, 0, localObject.length);
+        System.arraycopy(arrayOfObject, 0, this.OO, 0, arrayOfObject.length);
       }
       a((int[])localObject, arrayOfObject, this.mSize);
       if (m < this.mSize)
       {
-        localObject = this.Oz;
+        localObject = this.OM;
         System.arraycopy(localObject, m, localObject, m + 1, this.mSize - m);
-        localObject = this.OA;
+        localObject = this.OO;
         System.arraycopy(localObject, m, localObject, m + 1, this.mSize - m);
       }
-      this.Oz[m] = j;
-      this.OA[m] = paramE;
+      this.OM[m] = j;
+      this.OO[m] = paramE;
       this.mSize += 1;
       return true;
       label227:
@@ -281,15 +281,15 @@ public final class b<E>
   {
     boolean bool = false;
     int i = this.mSize + paramCollection.size();
-    if (this.Oz.length < i)
+    if (this.OM.length < i)
     {
-      int[] arrayOfInt = this.Oz;
-      Object[] arrayOfObject = this.OA;
+      int[] arrayOfInt = this.OM;
+      Object[] arrayOfObject = this.OO;
       aH(i);
       if (this.mSize > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.Oz, 0, this.mSize);
-        System.arraycopy(arrayOfObject, 0, this.OA, 0, this.mSize);
+        System.arraycopy(arrayOfInt, 0, this.OM, 0, this.mSize);
+        System.arraycopy(arrayOfObject, 0, this.OO, 0, this.mSize);
       }
       a(arrayOfInt, arrayOfObject, this.mSize);
     }
@@ -304,9 +304,9 @@ public final class b<E>
   {
     if (this.mSize != 0)
     {
-      a(this.Oz, this.OA, this.mSize);
-      this.Oz = Ot;
-      this.OA = Ou;
+      a(this.OM, this.OO, this.mSize);
+      this.OM = OF;
+      this.OO = OG;
       this.mSize = 0;
     }
   }
@@ -344,7 +344,7 @@ public final class b<E>
         {
           while (i < this.mSize)
           {
-            boolean bool = paramObject.contains(this.OA[i]);
+            boolean bool = paramObject.contains(this.OO[i]);
             if (!bool) {
               return false;
             }
@@ -366,7 +366,7 @@ public final class b<E>
   
   public final int hashCode()
   {
-    int[] arrayOfInt = this.Oz;
+    int[] arrayOfInt = this.OM;
     int k = this.mSize;
     int j = 0;
     int m;
@@ -381,7 +381,7 @@ public final class b<E>
   public final int indexOf(Object paramObject)
   {
     if (paramObject == null) {
-      return fp();
+      return fv();
     }
     return indexOf(paramObject, paramObject.hashCode());
   }
@@ -393,8 +393,8 @@ public final class b<E>
   
   public final Iterator<E> iterator()
   {
-    if (this.Or == null) {
-      this.Or = new i()
+    if (this.OD == null) {
+      this.OD = new i()
       {
         protected final int E(Object paramAnonymousObject)
         {
@@ -421,28 +421,28 @@ public final class b<E>
           b.this.add(paramAnonymousE1);
         }
         
-        protected final int fm()
+        protected final int fs()
         {
           return b.this.mSize;
         }
         
-        protected final Map<E, E> fn()
+        protected final Map<E, E> ft()
         {
           throw new UnsupportedOperationException("not a map");
         }
         
-        protected final void fo()
+        protected final void fu()
         {
           b.this.clear();
         }
         
         protected final Object z(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          return b.this.OA[paramAnonymousInt1];
+          return b.this.OO[paramAnonymousInt1];
         }
       };
     }
-    return this.Or.getKeySet().iterator();
+    return this.OD.getKeySet().iterator();
   }
   
   public final boolean remove(Object paramObject)
@@ -469,12 +469,12 @@ public final class b<E>
   public final E removeAt(int paramInt)
   {
     int i = 8;
-    Object localObject = this.OA[paramInt];
+    Object localObject = this.OO[paramInt];
     if (this.mSize <= 1)
     {
-      a(this.Oz, this.OA, this.mSize);
-      this.Oz = Ot;
-      this.OA = Ou;
+      a(this.OM, this.OO, this.mSize);
+      this.OM = OF;
+      this.OO = OG;
       this.mSize = 0;
     }
     int[] arrayOfInt;
@@ -482,32 +482,32 @@ public final class b<E>
     do
     {
       return localObject;
-      if ((this.Oz.length <= 8) || (this.mSize >= this.Oz.length / 3)) {
+      if ((this.OM.length <= 8) || (this.mSize >= this.OM.length / 3)) {
         break;
       }
       if (this.mSize > 8) {
         i = this.mSize + (this.mSize >> 1);
       }
-      arrayOfInt = this.Oz;
-      arrayOfObject = this.OA;
+      arrayOfInt = this.OM;
+      arrayOfObject = this.OO;
       aH(i);
       this.mSize -= 1;
       if (paramInt > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.Oz, 0, paramInt);
-        System.arraycopy(arrayOfObject, 0, this.OA, 0, paramInt);
+        System.arraycopy(arrayOfInt, 0, this.OM, 0, paramInt);
+        System.arraycopy(arrayOfObject, 0, this.OO, 0, paramInt);
       }
     } while (paramInt >= this.mSize);
-    System.arraycopy(arrayOfInt, paramInt + 1, this.Oz, paramInt, this.mSize - paramInt);
-    System.arraycopy(arrayOfObject, paramInt + 1, this.OA, paramInt, this.mSize - paramInt);
+    System.arraycopy(arrayOfInt, paramInt + 1, this.OM, paramInt, this.mSize - paramInt);
+    System.arraycopy(arrayOfObject, paramInt + 1, this.OO, paramInt, this.mSize - paramInt);
     return localObject;
     this.mSize -= 1;
     if (paramInt < this.mSize)
     {
-      System.arraycopy(this.Oz, paramInt + 1, this.Oz, paramInt, this.mSize - paramInt);
-      System.arraycopy(this.OA, paramInt + 1, this.OA, paramInt, this.mSize - paramInt);
+      System.arraycopy(this.OM, paramInt + 1, this.OM, paramInt, this.mSize - paramInt);
+      System.arraycopy(this.OO, paramInt + 1, this.OO, paramInt, this.mSize - paramInt);
     }
-    this.OA[this.mSize] = null;
+    this.OO[this.mSize] = null;
     return localObject;
   }
   
@@ -517,7 +517,7 @@ public final class b<E>
     int i = this.mSize - 1;
     while (i >= 0)
     {
-      if (!paramCollection.contains(this.OA[i]))
+      if (!paramCollection.contains(this.OO[i]))
       {
         removeAt(i);
         bool = true;
@@ -535,7 +535,7 @@ public final class b<E>
   public final Object[] toArray()
   {
     Object[] arrayOfObject = new Object[this.mSize];
-    System.arraycopy(this.OA, 0, arrayOfObject, 0, this.mSize);
+    System.arraycopy(this.OO, 0, arrayOfObject, 0, this.mSize);
     return arrayOfObject;
   }
   
@@ -546,7 +546,7 @@ public final class b<E>
     }
     for (;;)
     {
-      System.arraycopy(this.OA, 0, paramArrayOfT, 0, this.mSize);
+      System.arraycopy(this.OO, 0, paramArrayOfT, 0, this.mSize);
       if (paramArrayOfT.length > this.mSize) {
         paramArrayOfT[this.mSize] = null;
       }
@@ -567,7 +567,7 @@ public final class b<E>
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      Object localObject = this.OA[i];
+      Object localObject = this.OO[i];
       if (localObject != this) {
         localStringBuilder.append(localObject);
       }

@@ -1,29 +1,29 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.l;
+import com.tencent.mm.ak.o;
 
 public final class r$a
-  extends l
+  extends o
 {
-  private r.b FGJ;
-  private r.c FGK;
-  private boolean wJx;
+  private boolean AEJ;
+  private r.b KzU;
+  private r.c KzV;
   
   public r$a(boolean paramBoolean)
   {
     AppMethodBeat.i(149112);
-    this.wJx = true;
-    this.wJx = paramBoolean;
-    this.FGJ = new r.b(this.wJx);
-    this.FGK = new r.c();
+    this.AEJ = true;
+    this.AEJ = paramBoolean;
+    this.KzU = new r.b(this.AEJ);
+    this.KzV = new r.c();
     AppMethodBeat.o(149112);
   }
   
   public final int getOptions()
   {
     AppMethodBeat.i(149113);
-    if (this.wJx)
+    if (this.AEJ)
     {
       AppMethodBeat.o(149113);
       return 1;
@@ -35,7 +35,7 @@ public final class r$a
   
   public final int getType()
   {
-    if (this.wJx) {
+    if (this.AEJ) {
       return 3944;
     }
     return 836;
@@ -43,7 +43,7 @@ public final class r$a
   
   public final String getUri()
   {
-    if (this.wJx) {
+    if (this.AEJ) {
       return "/cgi-bin/micromsg-bin/fpfreshnl";
     }
     return "/cgi-bin/micromsg-bin/fpfresh";
@@ -51,7 +51,7 @@ public final class r$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.r.a
  * JD-Core Version:    0.7.0.1
  */

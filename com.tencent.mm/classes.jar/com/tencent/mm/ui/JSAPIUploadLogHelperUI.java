@@ -7,51 +7,49 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.e;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.av;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bu.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.q;
 import com.tencent.mm.ui.widget.a.d;
 
 public class JSAPIUploadLogHelperUI
   extends MMBaseActivity
 {
-  private static byte[] Jto = new byte[0];
+  private static byte[] ODG = new byte[0];
   private static volatile boolean mIsRunning = false;
   
   public void onCreate(Bundle arg1)
   {
     AppMethodBeat.i(33288);
-    ae.i("MicroMsg.JSAPIUploadLogHelperUI", "onCreate called, isRunning:%b", new Object[] { Boolean.valueOf(mIsRunning) });
+    Log.i("MicroMsg.JSAPIUploadLogHelperUI", "onCreate called, isRunning:%b", new Object[] { Boolean.valueOf(mIsRunning) });
     super.onCreate(???);
-    setContentView(2131493128);
+    setContentView(2131493171);
     final int i;
     for (;;)
     {
-      synchronized (Jto)
+      synchronized (ODG)
       {
         if (mIsRunning)
         {
-          ae.w("MicroMsg.JSAPIUploadLogHelperUI", "reentered while last one is running, finish myself.");
+          Log.w("MicroMsg.JSAPIUploadLogHelperUI", "reentered while last one is running, finish myself.");
           finish();
         }
         ??? = getIntent().getStringExtra("key_user");
         i = getIntent().getIntExtra("key_time", 0);
-        if ((??? != null) && (???.equals(v.aAC())))
+        if ((??? != null) && (???.equals(z.aTY())))
         {
           bool = true;
-          ae.i("MicroMsg.JSAPIUploadLogHelperUI", "upload log from jsapi, in upload activity, username-recv-well:%b, time:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+          Log.i("MicroMsg.JSAPIUploadLogHelperUI", "upload log from jsapi, in upload activity, username-recv-well:%b, time:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
           if (??? != null) {
             break;
           }
-          ae.e("MicroMsg.JSAPIUploadLogHelperUI", "doUpload: userName is null.");
+          Log.e("MicroMsg.JSAPIUploadLogHelperUI", "doUpload: userName is null.");
           finish();
           AppMethodBeat.o(33288);
           return;
@@ -61,30 +59,30 @@ public class JSAPIUploadLogHelperUI
     }
     if (i < 0)
     {
-      ae.e("MicroMsg.JSAPIUploadLogHelperUI", "doUpload: illegal time value: %d", new Object[] { Integer.valueOf(i) });
+      Log.e("MicroMsg.JSAPIUploadLogHelperUI", "doUpload: illegal time value: %d", new Object[] { Integer.valueOf(i) });
       finish();
       AppMethodBeat.o(33288);
       return;
     }
-    getString(2131755906);
-    final p localp = h.b(this, getString(2131766294), false, null);
-    bc.ajj().a(new bq(new bq.a()
+    getString(2131755998);
+    final q localq = com.tencent.mm.ui.base.h.a(this, getString(2131768805), false, null);
+    bg.azz().a(new bu(new bu.a()
     {
-      public final void a(e arg1)
+      public final void a(g arg1)
       {
         AppMethodBeat.i(33285);
-        synchronized (JSAPIUploadLogHelperUI.aim())
+        synchronized (JSAPIUploadLogHelperUI.ayC())
         {
           JSAPIUploadLogHelperUI.access$102(true);
-          bc.ajj().a(1, "", 0, false);
-          ae.foo();
-          bc.ajj().a(2, paramBundle, i, bc.ajM());
+          bg.azz().a(1, "", 0, false);
+          Log.appenderFlush();
+          bg.azz().a(2, paramBundle, i, bg.aAc());
           AppMethodBeat.o(33285);
           return;
         }
       }
     }), 0);
-    bc.a(new ar()
+    bg.a(new av()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -96,21 +94,21 @@ public class JSAPIUploadLogHelperUI
       }
     }
     {
-      public final void ot(int paramAnonymousInt)
+      public final void rU(int paramAnonymousInt)
       {
         AppMethodBeat.i(33287);
         if (paramAnonymousInt < 0)
         {
-          ae.e("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, error happened, percent:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          bc.a(null);
-          if (localp != null) {
-            localp.dismiss();
+          Log.e("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, error happened, percent:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          bg.a(null);
+          if (localq != null) {
+            localq.dismiss();
           }
-          ??? = h.l(JSAPIUploadLogHelperUI.this, 2131764589, 2131755906);
+          ??? = com.tencent.mm.ui.base.h.n(JSAPIUploadLogHelperUI.this, 2131766947, 2131755998);
           if (??? != null) {
-            ((d)???).setOnDismissListener(this.Jtq);
+            ((d)???).setOnDismissListener(this.ODI);
           }
-          synchronized (JSAPIUploadLogHelperUI.aim())
+          synchronized (JSAPIUploadLogHelperUI.ayC())
           {
             JSAPIUploadLogHelperUI.access$102(false);
             AppMethodBeat.o(33287);
@@ -119,27 +117,27 @@ public class JSAPIUploadLogHelperUI
         }
         if (paramAnonymousInt >= 100)
         {
-          ae.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi done.");
-          bc.a(null);
-          if (localp != null) {
-            localp.dismiss();
+          Log.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi done.");
+          bg.a(null);
+          if (localq != null) {
+            localq.dismiss();
           }
-          ??? = h.l(JSAPIUploadLogHelperUI.this, 2131764593, 2131755906);
+          ??? = com.tencent.mm.ui.base.h.n(JSAPIUploadLogHelperUI.this, 2131766951, 2131755998);
           if (??? != null) {
-            ((d)???).setOnDismissListener(this.Jtq);
+            ((d)???).setOnDismissListener(this.ODI);
           }
           long l = System.currentTimeMillis() / 1000L;
-          g.yxI.f(12975, new Object[] { Long.valueOf(l) });
-          synchronized (JSAPIUploadLogHelperUI.aim())
+          com.tencent.mm.plugin.report.service.h.CyF.a(12975, new Object[] { Long.valueOf(l) });
+          synchronized (JSAPIUploadLogHelperUI.ayC())
           {
             JSAPIUploadLogHelperUI.access$102(false);
             AppMethodBeat.o(33287);
             return;
           }
         }
-        ae.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, ipxx progress:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        if (localp != null) {
-          localp.setMessage(JSAPIUploadLogHelperUI.this.getString(2131764590) + paramAnonymousInt + "%");
+        Log.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, ipxx progress:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        if (localq != null) {
+          localq.setMessage(JSAPIUploadLogHelperUI.this.getString(2131766948) + paramAnonymousInt + "%");
         }
         AppMethodBeat.o(33287);
       }
@@ -150,7 +148,7 @@ public class JSAPIUploadLogHelperUI
   public void onDestroy()
   {
     AppMethodBeat.i(33289);
-    ae.i("MicroMsg.JSAPIUploadLogHelperUI", "onDestroy called, isRunning:%b", new Object[] { Boolean.valueOf(mIsRunning) });
+    Log.i("MicroMsg.JSAPIUploadLogHelperUI", "onDestroy called, isRunning:%b", new Object[] { Boolean.valueOf(mIsRunning) });
     super.onDestroy();
     AppMethodBeat.o(33289);
   }
@@ -163,7 +161,7 @@ public class JSAPIUploadLogHelperUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.JSAPIUploadLogHelperUI
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 
 public class SensorManagerWorker
 {
@@ -43,7 +43,7 @@ public class SensorManagerWorker
     AppMethodBeat.i(43415);
     if (this.mHasStarted)
     {
-      YTLogger.i("MicroMsg.LightSensor", "[SensorManagerWorker.start] light sensor has started");
+      YTAGReflectLiveCheckJNIInterface.nativeLog("MicroMsg.LightSensor", "[SensorManagerWorker.start] light sensor has started");
       AppMethodBeat.o(43415);
       return 2;
     }
@@ -58,7 +58,7 @@ public class SensorManagerWorker
       AppMethodBeat.o(43415);
       return 0;
     }
-    YTLogger.i("MicroMsg.LightSensor", "[SensorManagerWorker.start] System do not have lightSensor");
+    YTAGReflectLiveCheckJNIInterface.nativeLog("MicroMsg.LightSensor", "[SensorManagerWorker.start] System do not have lightSensor");
     AppMethodBeat.o(43415);
     return 1;
   }

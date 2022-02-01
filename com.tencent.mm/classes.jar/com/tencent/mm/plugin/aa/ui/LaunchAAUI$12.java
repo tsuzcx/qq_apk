@@ -12,14 +12,14 @@ final class LaunchAAUI$12
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(63642);
-    this.jab.finish();
+    this.jXQ.finish();
     AppMethodBeat.o(63642);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.12
  * JD-Core Version:    0.7.0.1
  */

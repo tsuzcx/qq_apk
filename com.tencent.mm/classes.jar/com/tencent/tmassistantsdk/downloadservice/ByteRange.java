@@ -2,7 +2,7 @@ package com.tencent.tmassistantsdk.downloadservice;
 
 import android.content.res.Resources.NotFoundException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,7 +67,7 @@ public class ByteRange
       AppMethodBeat.o(101942);
       throw paramString;
     }
-    long l = bu.aSC(paramString.substring(i + 1));
+    long l = Util.safeParseLong(paramString.substring(i + 1));
     AppMethodBeat.o(101942);
     return l;
   }
@@ -82,7 +82,7 @@ public class ByteRange
       AppMethodBeat.o(101941);
       throw paramString;
     }
-    paramString = new ByteRange(bu.aSC(localMatcher.group(1)), bu.aSC(localMatcher.group(2)));
+    paramString = new ByteRange(Util.safeParseLong(localMatcher.group(1)), Util.safeParseLong(localMatcher.group(2)));
     AppMethodBeat.o(101941);
     return paramString;
   }

@@ -1,0 +1,51 @@
+package com.tencent.mm.model;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.eqi;
+import com.tencent.mm.sdk.platformtools.Util;
+
+public final class bm$a
+  extends l.d
+  implements l.b
+{
+  public eqi iDW;
+  
+  public bm$a()
+  {
+    AppMethodBeat.i(20369);
+    this.iDW = new eqi();
+    AppMethodBeat.o(20369);
+  }
+  
+  public final int getCmdId()
+  {
+    return 0;
+  }
+  
+  public final int getFuncId()
+  {
+    return 617;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(20370);
+    setRsaInfo(ac.gtR());
+    this.iDW.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
+    this.iDW.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.iDW.toByteArray();
+    AppMethodBeat.o(20370);
+    return arrayOfByte;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.model.bm.a
+ * JD-Core Version:    0.7.0.1
+ */

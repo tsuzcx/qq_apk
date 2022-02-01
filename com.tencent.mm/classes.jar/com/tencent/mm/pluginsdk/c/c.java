@@ -1,28 +1,29 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.mr;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.ni;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public abstract class c<T extends b>
-  extends com.tencent.mm.sdk.b.c<T>
-  implements f
+public abstract class c<T extends IEvent>
+  extends IListener<T>
+  implements i
 {
-  private static HashMap<n, b> Fcp = new HashMap();
-  private static HashMap<b, c<? extends b>> bGq = new HashMap();
-  private int Fco = 0;
+  private static HashMap<q, IEvent> JTo = new HashMap();
+  private static HashMap<IEvent, c<? extends IEvent>> bGH = new HashMap();
+  private int JTn = 0;
   
-  public static void j(b paramb)
+  public static void j(IEvent paramIEvent)
   {
-    Iterator localIterator = Fcp.entrySet().iterator();
+    Iterator localIterator = JTo.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -30,73 +31,73 @@ public abstract class c<T extends b>
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
-    } while (localEntry.getValue() != paramb);
-    for (paramb = (n)localEntry.getKey();; paramb = null)
+    } while (localEntry.getValue() != paramIEvent);
+    for (paramIEvent = (q)localEntry.getKey();; paramIEvent = null)
     {
-      if (paramb != null)
+      if (paramIEvent != null)
       {
-        g.ajj().a(paramb);
-        Fcp.remove(paramb);
+        g.azz().a(paramIEvent);
+        JTo.remove(paramIEvent);
       }
       return;
     }
   }
   
-  public abstract int Yl();
+  public abstract q a(T paramT);
   
-  public abstract n a(T paramT);
+  public abstract IEvent a(int paramInt, q paramq, T paramT);
   
-  public abstract b a(int paramInt, n paramn, T paramT);
+  public abstract int alY();
   
-  public final void dic()
+  public final void ecc()
   {
-    if (this.Fco == 0) {}
+    if (this.JTn == 0) {}
     do
     {
       return;
-      this.Fco -= 1;
-    } while (this.Fco != 0);
-    g.ajj().b(Yl(), this);
+      this.JTn -= 1;
+    } while (this.JTn != 0);
+    g.azz().b(alY(), this);
   }
   
-  public final void fcQ()
+  public final void gmc()
   {
-    if (this.Fco == 0) {
-      g.ajj().a(Yl(), this);
+    if (this.JTn == 0) {
+      g.azz().a(alY(), this);
     }
-    this.Fco += 1;
+    this.JTn += 1;
   }
   
   public final void k(T paramT)
   {
-    n localn = a(paramT);
-    g.ajj().a(localn, 0);
-    Fcp.put(localn, paramT);
+    q localq = a(paramT);
+    g.azz().a(localq, 0);
+    JTo.put(localq, paramT);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    b localb;
-    if (Yl() == paramn.getType())
+    IEvent localIEvent;
+    if (alY() == paramq.getType())
     {
-      localb = (b)Fcp.remove(paramn);
-      if (localb != null) {}
+      localIEvent = (IEvent)JTo.remove(paramq);
+      if (localIEvent != null) {}
     }
     else
     {
       return;
     }
-    mr localmr = new mr();
-    localmr.dBE.dBF = a(paramInt2, paramn, localb);
-    localmr.dBE.errType = paramInt1;
-    localmr.dBE.errCode = paramInt2;
-    localmr.dBE.errMsg = paramString;
-    a.IvT.l(localmr);
+    ni localni = new ni();
+    localni.dTt.dTu = a(paramInt2, paramq, localIEvent);
+    localni.dTt.errType = paramInt1;
+    localni.dTt.errCode = paramInt2;
+    localni.dTt.errMsg = paramString;
+    EventCenter.instance.publish(localni);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.c
  * JD-Core Version:    0.7.0.1
  */

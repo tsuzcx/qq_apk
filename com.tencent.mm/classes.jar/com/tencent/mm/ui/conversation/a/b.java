@@ -6,51 +6,51 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.k.a.a;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import java.util.ArrayList;
 
 public final class b
-  extends r<c>
+  extends s<c>
 {
-  a KUl;
-  private ArrayList<c> jsV;
+  a QhB;
+  private ArrayList<c> krk;
   
   public b(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(38763);
-    this.jsV = new ArrayList();
-    this.KUl = null;
-    ZE();
+    this.krk = new ArrayList();
+    this.QhB = null;
+    anq();
     AppMethodBeat.o(38763);
   }
   
-  public final void ZD()
+  public final void anp()
   {
     AppMethodBeat.i(38765);
-    this.jsV.clear();
-    if (this.KUl == null)
+    this.krk.clear();
+    if (this.QhB == null)
     {
       AppMethodBeat.o(38765);
       return;
     }
-    c localc = new c(this.KUl);
-    this.jsV.add(localc);
+    c localc = new c(this.QhB);
+    this.krk.add(localc);
     notifyDataSetChanged();
     AppMethodBeat.o(38765);
   }
   
-  public final void ZE()
+  public final void anq()
   {
     AppMethodBeat.i(38764);
-    ZD();
+    anp();
     AppMethodBeat.o(38764);
   }
   
-  public final c afq(int paramInt)
+  public final c aoa(int paramInt)
   {
     AppMethodBeat.i(38767);
-    c localc = (c)this.jsV.get(paramInt);
+    c localc = (c)this.krk.get(paramInt);
     AppMethodBeat.o(38767);
     return localc;
   }
@@ -58,7 +58,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(38766);
-    int i = this.jsV.size();
+    int i = this.krk.size();
     AppMethodBeat.o(38766);
     return i;
   }
@@ -66,14 +66,14 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(38768);
-    c localc = (c)this.jsV.get(paramInt);
+    c localc = (c)this.krk.get(paramInt);
     View localView;
     if (paramView == null)
     {
-      localView = View.inflate(this.context, 2131492953, null);
+      localView = View.inflate(this.context, 2131492986, null);
       paramView = new d();
-      paramView.KUn = localView;
-      paramView.KUo = ((Button)localView.findViewById(2131296429));
+      paramView.QhD = localView;
+      paramView.QhE = ((Button)localView.findViewById(2131296485));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
@@ -90,7 +90,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.b
  * JD-Core Version:    0.7.0.1
  */

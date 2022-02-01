@@ -3,77 +3,67 @@ package com.tencent.mm.plugin.appbrand.media.record;
 import android.media.MediaRecorder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.b;
-import com.tencent.mm.audio.b.b.a;
 import com.tencent.mm.audio.b.b.b;
 import com.tencent.mm.compatible.b.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  private static b lVB = null;
-  private static String lVC = null;
-  private static a lVD = null;
-  private static aw lVE = null;
+  private static b ndc = null;
+  private static String ndd = null;
+  private static a.a nde = null;
+  private static MTimerHandler ndf = null;
   
-  public static boolean a(String paramString, a parama, int paramInt)
+  public static boolean a(String paramString, a.a parama, int paramInt)
   {
     AppMethodBeat.i(146138);
-    ae.i("MicroMsg.Record.AudioRecorder", "startRecord");
-    uE(1);
-    if (bu.isNullOrNil(paramString))
+    Log.i("MicroMsg.Record.AudioRecorder", "startRecord");
+    yv(1);
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.Record.AudioRecorder", "startRecord, path is null or nil");
+      Log.e("MicroMsg.Record.AudioRecorder", "startRecord, path is null or nil");
       AppMethodBeat.o(146138);
       return false;
     }
-    b localb = new b(c.a.fXI);
-    lVB = localb;
-    if (localb.dhx == c.a.fXH) {
-      if (localb.dhv != null) {
-        localb.dhv.reset();
+    b localb = new b(c.a.gCO);
+    ndc = localb;
+    if (localb.dyJ == c.a.gCN) {
+      if (localb.dyH != null) {
+        localb.dyH.reset();
       }
     }
     for (;;)
     {
-      lVB.PI();
-      lVB.PJ();
-      lVB.PH();
-      lVB.setOutputFile(paramString);
-      lVB.a(new b.a()
-      {
-        public final void onError()
-        {
-          AppMethodBeat.i(146136);
-          ae.e("MicroMsg.Record.AudioRecorder", "onError");
-          a.uE(-1);
-          AppMethodBeat.o(146136);
-        }
-      });
+      ndc.aac();
+      ndc.aad();
+      ndc.aab();
+      ndc.setOutputFile(paramString);
+      ndc.a(new a.2());
       try
       {
-        lVB.prepare();
-        lVB.start();
-        lVD = parama;
-        lVC = paramString;
+        ndc.prepare();
+        ndc.start();
+        nde = parama;
+        ndd = paramString;
         long l = paramInt;
         stopTimer();
-        paramString = new aw(new a.1(), false);
-        lVE = paramString;
-        paramString.ay(l, l);
+        paramString = new MTimerHandler(new a.1(), false);
+        ndf = paramString;
+        paramString.startTimer(l);
         AppMethodBeat.o(146138);
         return true;
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.Record.AudioRecorder", "record prepare, exp = %s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.Record.AudioRecorder", "record prepare, exp = %s", new Object[] { Util.stackTraceToString(paramString) });
         AppMethodBeat.o(146138);
       }
-      if (localb.dhy != b.b.dhK)
+      if (localb.dyK != b.b.dyW)
       {
         localb.release();
-        localb.PK();
+        localb.aae();
       }
     }
     return false;
@@ -82,43 +72,38 @@ public final class a
   private static void stopTimer()
   {
     AppMethodBeat.i(146137);
-    if (lVE != null) {
-      lVE.stopTimer();
+    if (ndf != null) {
+      ndf.stopTimer();
     }
-    lVE = null;
+    ndf = null;
     AppMethodBeat.o(146137);
   }
   
-  public static void uE(int paramInt)
+  public static void yv(int paramInt)
   {
     AppMethodBeat.i(146139);
-    ae.i("MicroMsg.Record.AudioRecorder", "stopRecord what:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (bu.isNullOrNil(lVC))
+    Log.i("MicroMsg.Record.AudioRecorder", "stopRecord what:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (Util.isNullOrNil(ndd))
     {
       AppMethodBeat.o(146139);
       return;
     }
-    if (lVB == null)
+    if (ndc == null)
     {
-      ae.i("MicroMsg.Record.AudioRecorder", "sRecorder is null,err");
+      Log.i("MicroMsg.Record.AudioRecorder", "sRecorder is null,err");
       AppMethodBeat.o(146139);
       return;
     }
-    lVB.GB();
-    lVB.release();
-    lVB = null;
+    ndc.Qt();
+    ndc.release();
+    ndc = null;
     stopTimer();
-    lVC = null;
-    if (lVD != null) {
-      lVD.sQ(paramInt);
+    ndd = null;
+    if (nde != null) {
+      nde.wM(paramInt);
     }
-    lVD = null;
+    nde = null;
     AppMethodBeat.o(146139);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void sQ(int paramInt);
   }
 }
 

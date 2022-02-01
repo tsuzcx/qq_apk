@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class of
-  extends b
+  extends IEvent
 {
-  public a dDi;
+  public a dUu;
   
   public of()
   {
@@ -16,24 +15,21 @@ public final class of
   
   private of(byte paramByte)
   {
-    AppMethodBeat.i(89648);
-    this.dDi = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(117548);
+    this.dUu = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(89648);
+    AppMethodBeat.o(117548);
   }
   
   public static final class a
   {
-    public Context context;
-    public int dDj;
-    public String extraInfo;
-    public int jumpType;
+    public int aHK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.of
  * JD-Core Version:    0.7.0.1
  */

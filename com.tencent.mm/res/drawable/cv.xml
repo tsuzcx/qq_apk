@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/dr" />
-        </shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/dr" />
-        </shape>
-    </item>
     <item android:state_selected="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/dr" />
+        <shape android:shape="rectangle" android:useLevel="true">
+            <solid android:color="@color/br" />
+            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="rectangle" android:useLevel="true">
+            <solid android:color="@color/br" />
+            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
+        </shape>
+    </item>
+    <item android:state_focused="false" android:state_pressed="true">
+        <shape android:shape="rectangle" android:useLevel="true">
+            <solid android:color="@color/br" />
+            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
         </shape>
     </item>
     <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/a_r" />
+        <shape android:shape="rectangle" android:useLevel="true">
+            <solid android:color="@color/ac_" />
+            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
         </shape>
     </item>
 </selector>

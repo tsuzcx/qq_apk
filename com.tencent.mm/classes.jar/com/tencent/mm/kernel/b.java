@@ -1,36 +1,37 @@
 package com.tencent.mm.kernel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.a;
-import com.tencent.mm.ak.x.b;
-import com.tencent.mm.cm.a.a;
-import com.tencent.mm.g.a.mt;
+import com.tencent.mm.ak.aa.b;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.ak.t.a;
+import com.tencent.mm.co.a;
+import com.tencent.mm.co.a.a;
+import com.tencent.mm.g.a.nk;
 import com.tencent.mm.kernel.api.d;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
-import com.tencent.mm.network.c;
+import com.tencent.mm.model.av;
+import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bu.a;
 import com.tencent.mm.network.e;
-import com.tencent.mm.network.n;
-import com.tencent.mm.network.n.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.network.p;
+import com.tencent.mm.network.p.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashSet;
 
 public final class b
 {
-  private static ar gDy = null;
-  public final a gDu;
-  public final q gDv;
-  private HashSet<n> gDw;
-  public n gDx;
+  private static av hql = null;
+  public final a hqh;
+  public final t hqi;
+  private HashSet<p> hqj;
+  public p hqk;
   
-  public b(q.a parama, a parama1)
+  public b(t.a parama, a parama1)
   {
     AppMethodBeat.i(132057);
-    this.gDw = new HashSet();
-    this.gDx = new n.a()
+    this.hqj = new HashSet();
+    this.hqk = new p.a()
     {
       /* Error */
       public final void onNetworkChange(int paramAnonymousInt)
@@ -43,14 +44,14 @@ public final class b
         //   9: invokespecial 29	java/util/HashSet:<init>	()V
         //   12: astore_3
         //   13: aload_0
-        //   14: getfield 12	com/tencent/mm/kernel/b$2:gDz	Lcom/tencent/mm/kernel/b;
+        //   14: getfield 12	com/tencent/mm/kernel/b$2:hqm	Lcom/tencent/mm/kernel/b;
         //   17: invokestatic 33	com/tencent/mm/kernel/b:b	(Lcom/tencent/mm/kernel/b;)Ljava/util/HashSet;
         //   20: astore_2
         //   21: aload_2
         //   22: monitorenter
         //   23: aload_3
         //   24: aload_0
-        //   25: getfield 12	com/tencent/mm/kernel/b$2:gDz	Lcom/tencent/mm/kernel/b;
+        //   25: getfield 12	com/tencent/mm/kernel/b$2:hqm	Lcom/tencent/mm/kernel/b;
         //   28: invokestatic 33	com/tencent/mm/kernel/b:b	(Lcom/tencent/mm/kernel/b;)Ljava/util/HashSet;
         //   31: invokevirtual 37	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
         //   34: pop
@@ -64,7 +65,7 @@ public final class b
         //   48: ifeq +50 -> 98
         //   51: aload_2
         //   52: invokeinterface 51 1 0
-        //   57: checkcast 53	com/tencent/mm/network/n
+        //   57: checkcast 53	com/tencent/mm/network/p
         //   60: iload_1
         //   61: invokeinterface 55 2 0
         //   66: goto -24 -> 42
@@ -74,7 +75,7 @@ public final class b
         //   73: ldc 59
         //   75: iconst_0
         //   76: anewarray 61	java/lang/Object
-        //   79: invokestatic 67	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   79: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   82: ldc 21
         //   84: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   87: return
@@ -105,99 +106,99 @@ public final class b
         //   89	91	88	finally
       }
     };
-    this.gDv = q.a(parama);
-    this.gDv.hRp = g.ajU();
-    com.tencent.mm.ak.x.hSf = new x.b()
+    this.hqi = t.a(parama);
+    this.hqi.iMx = g.aAk();
+    com.tencent.mm.ak.aa.iNn = new aa.b()
     {
-      public final q ajk()
+      public final t azA()
       {
         AppMethodBeat.i(132046);
-        q localq = b.a(b.this);
+        t localt = b.a(b.this);
         AppMethodBeat.o(132046);
-        return localq;
+        return localt;
       }
     };
-    this.gDu = parama1;
+    this.hqh = parama1;
     AppMethodBeat.o(132057);
   }
   
-  public static void a(ar paramar)
-  {
-    gDy = paramar;
-  }
-  
-  public static ar ajh()
-  {
-    return gDy;
-  }
-  
-  public static void b(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
+  public static void a(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(132062);
-    mt localmt = new mt();
-    localmt.dBJ.status = paramInt1;
-    localmt.dBJ.dBK = paramInt2;
-    localmt.dBJ.dBL = paramBoolean;
-    localmt.dBJ.dBM = paramString;
-    com.tencent.mm.sdk.b.a.IvT.l(localmt);
+    nk localnk = new nk();
+    localnk.dTy.status = paramInt1;
+    localnk.dTy.dTz = paramInt2;
+    localnk.dTy.dTA = paramBoolean;
+    localnk.dTy.dTB = paramString;
+    EventCenter.instance.publish(localnk);
     AppMethodBeat.o(132062);
   }
   
-  public final void a(n paramn)
+  public static void a(av paramav)
+  {
+    hql = paramav;
+  }
+  
+  public static av azx()
+  {
+    return hql;
+  }
+  
+  public final void a(p paramp)
   {
     AppMethodBeat.i(132058);
-    synchronized (this.gDw)
+    synchronized (this.hqj)
     {
-      this.gDw.add(paramn);
+      this.hqj.add(paramp);
       AppMethodBeat.o(132058);
       return;
     }
   }
   
-  public final void aji()
+  public final void azy()
   {
     AppMethodBeat.i(132060);
-    this.gDv.a(new bq(new bq.a()
+    this.hqi.a(new bu(new bu.a()
     {
-      public final void a(e paramAnonymouse)
+      public final void a(com.tencent.mm.network.g paramAnonymousg)
       {
         AppMethodBeat.i(132048);
-        if ((paramAnonymouse == null) || (paramAnonymouse.aFs() == null))
+        if ((paramAnonymousg == null) || (paramAnonymousg.aZh() == null))
         {
           AppMethodBeat.o(132048);
           return;
         }
-        paramAnonymouse.aFs().reset();
+        paramAnonymousg.aZh().reset();
         AppMethodBeat.o(132048);
       }
     }, "reset accinfo"), 0);
     AppMethodBeat.o(132060);
   }
   
-  public final q ajj()
+  public final t azz()
   {
-    return this.gDv;
+    return this.hqi;
   }
   
-  public final void b(n paramn)
+  public final void b(p paramp)
   {
     AppMethodBeat.i(132059);
-    synchronized (this.gDw)
+    synchronized (this.hqj)
     {
-      this.gDw.remove(paramn);
+      this.hqj.remove(paramp);
       AppMethodBeat.o(132059);
       return;
     }
   }
   
-  public final byte[] mR(int paramInt)
+  public final byte[] qe(int paramInt)
   {
     AppMethodBeat.i(132061);
     try
     {
-      if ((this.gDv != null) && (this.gDv.hRo != null))
+      if ((this.hqi != null) && (this.hqi.iMw != null))
       {
-        localObject = this.gDv.hRo.aFs();
+        localObject = this.hqi.iMw.aZh();
         if (localObject != null) {}
       }
       else
@@ -205,24 +206,24 @@ public final class b
         AppMethodBeat.o(132061);
         return null;
       }
-      Object localObject = this.gDv.hRo.aFs().mR(paramInt);
+      Object localObject = this.hqi.iMw.aZh().qe(paramInt);
       AppMethodBeat.o(132061);
       return localObject;
     }
     catch (Exception localException)
     {
-      ae.w("MMKernel.CoreNetwork", "get session key error, %s", new Object[] { localException.getMessage() });
-      ae.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { bu.o(localException) });
+      Log.w("MMKernel.CoreNetwork", "get session key error, %s", new Object[] { localException.getMessage() });
+      Log.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
       AppMethodBeat.o(132061);
     }
     return null;
   }
   
   public static final class a
-    extends com.tencent.mm.cm.a<d>
+    extends a<d>
     implements d
   {
-    public final void b(final e parame)
+    public final void b(final com.tencent.mm.network.g paramg)
     {
       AppMethodBeat.i(132056);
       a(new a.a() {});

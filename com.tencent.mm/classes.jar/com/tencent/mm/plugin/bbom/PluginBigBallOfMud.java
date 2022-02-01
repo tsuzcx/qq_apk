@@ -8,12 +8,14 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.text.TextUtils;
 import com.tencent.mars.Mars;
 import com.tencent.mars.app.AppLogic;
 import com.tencent.mars.mm.AppCallBack;
 import com.tencent.mars.smc.SmcLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.c;
+import com.tencent.mm.ag.k.c;
+import com.tencent.mm.api.v;
 import com.tencent.mm.app.WorkerProfile;
 import com.tencent.mm.booter.MMReceivers.SandBoxProcessReceiver;
 import com.tencent.mm.booter.MMReceivers.ToolsMpProcessReceiver;
@@ -22,47 +24,53 @@ import com.tencent.mm.booter.e.a;
 import com.tencent.mm.booter.e.b;
 import com.tencent.mm.booter.e.c;
 import com.tencent.mm.compatible.loader.e.1;
-import com.tencent.mm.g.a.rx;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.kernel.api.bucket.ApplicationLifeCycleBucket;
+import com.tencent.mm.live.b.y;
 import com.tencent.mm.memory.a.a.b.b;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bn;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.ac.a;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.by;
+import com.tencent.mm.model.cj;
 import com.tencent.mm.model.d.b.3;
-import com.tencent.mm.model.q.1;
-import com.tencent.mm.model.q.2;
-import com.tencent.mm.model.q.3;
-import com.tencent.mm.model.q.4;
-import com.tencent.mm.model.q.5;
-import com.tencent.mm.model.q.6;
-import com.tencent.mm.model.q.7;
-import com.tencent.mm.model.q.8;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.y.a;
-import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.model.u.1;
+import com.tencent.mm.model.u.2;
+import com.tencent.mm.model.u.3;
+import com.tencent.mm.model.u.4;
+import com.tencent.mm.model.u.5;
+import com.tencent.mm.model.u.6;
+import com.tencent.mm.model.u.7;
+import com.tencent.mm.model.u.8;
 import com.tencent.mm.plugin.messenger.foundation.a.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.w;
 import com.tencent.mm.plugin.messenger.foundation.a.x.a;
+import com.tencent.mm.plugin.multitask.PluginMultiTask;
 import com.tencent.mm.plugin.voip.ui.VoipViewFragment;
 import com.tencent.mm.plugin.voip.widget.BaseSmallView;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.b.a;
-import com.tencent.mm.sdk.platformtools.k;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.CommLibFileName;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.AndroidOSafety;
+import com.tencent.mm.sdk.platformtools.AndroidOSafety.ISafetyCallback;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatPermissions;
+import com.tencent.mm.storage.ar;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMAppMgr;
 import com.tencent.mm.ui.MMAppMgr.Receiver;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.chatting.j.b.1;
 import com.tencent.mm.ui.chatting.j.b.2;
+import com.tencent.mm.ui.chatting.multitask.uic.FileMultiTaskUIC;
 import com.tencent.mm.ui.chatting.viewitems.k.a;
 import com.tencent.mm.ui.d.a;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -101,158 +109,164 @@ public class PluginBigBallOfMud
       public final void c(long paramAnonymousLong, String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(22384);
-        com.tencent.mm.plugin.report.e.ywz.f(14976, new Object[] { Long.valueOf(paramAnonymousLong), paramAnonymousString1, paramAnonymousString2 });
+        com.tencent.mm.plugin.report.e.Cxv.a(14976, new Object[] { Long.valueOf(paramAnonymousLong), paramAnonymousString1, paramAnonymousString2 });
         AppMethodBeat.o(22384);
       }
     });
     MMReceivers.ToolsProcessReceiver.a(new e.c());
     MMReceivers.ToolsMpProcessReceiver.a(new e.a());
     MMReceivers.SandBoxProcessReceiver.a(new e.b());
-    Object localObject1 = (com.tencent.mm.plugin.zero.a.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.zero.a.d.class);
+    Object localObject1 = (com.tencent.mm.plugin.zero.a.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.zero.a.d.class);
     ((com.tencent.mm.plugin.zero.a.d)localObject1).setILightPushDelegate(new l());
     ((com.tencent.mm.plugin.zero.a.d)localObject1).addNotifyReceiverCallback(new q());
     ((com.tencent.mm.plugin.zero.a.d)localObject1).addICoreServiceLifecycleCallback(new g());
-    ae.i("MicroMsg.PluginBigBallOfMud", "zero %s", new Object[] { localObject1 });
+    Log.i("MicroMsg.PluginBigBallOfMud", "zero %s", new Object[] { localObject1 });
     this.app = paramg.ca;
-    ae.i("MicroMsg.PluginBigBallOfMud", "app. %s", new Object[] { this.app });
-    com.tencent.mm.modelstat.d.i(this.app);
-    ae.i("MicroMsg.PluginBigBallOfMud", "ClickFlowStatSender registerActivityLifeCycle");
+    Log.i("MicroMsg.PluginBigBallOfMud", "app. %s", new Object[] { this.app });
+    com.tencent.mm.modelstat.d.h(this.app);
+    Log.i("MicroMsg.PluginBigBallOfMud", "ClickFlowStatSender registerActivityLifeCycle");
     long l = System.currentTimeMillis();
-    com.tencent.mm.compatible.loader.e locale = new com.tencent.mm.compatible.loader.e();
+    Object localObject3 = new com.tencent.mm.compatible.loader.e();
     localObject1 = this.app;
     Object localObject2 = paramg.mProcessName;
     if ((localObject2 == null) || (((String)localObject2).length() <= 0))
     {
-      com.tencent.e.j.a locala = com.tencent.e.j.a.bbi("ProfileFactoryImp_handlerThread");
-      localObject2 = (String)new e.1(locale).b(new aq(locala));
-      locala.Msx.quit();
+      com.tencent.f.j.a locala = com.tencent.f.j.a.bqt("ProfileFactoryImp_handlerThread");
+      localObject2 = (String)new e.1((com.tencent.mm.compatible.loader.e)localObject3).exec(new MMHandler(locala));
+      locala.RUS.quit();
     }
     for (;;)
     {
       if (localObject2 == null)
       {
-        ae.e("MicroMsg.ProfileFactoryImpl", "get process name failed, retry later");
+        Log.e("MicroMsg.ProfileFactoryImpl", "get process name failed, retry later");
         localObject1 = null;
         this.mProfileCompat = ((com.tencent.mm.compatible.loader.d)localObject1);
-        if ((this.mProfileCompat != null) && (!paramg.akL()))
+        if ((this.mProfileCompat != null) && (!paramg.aBb()))
         {
-          ae.i("MicroMsg.PluginBigBallOfMud", "before profile oncreate.");
+          Log.i("MicroMsg.PluginBigBallOfMud", "before profile oncreate.");
           this.mProfileCompat.onCreate();
         }
-        ae.i("MicroMsg.PluginBigBallOfMud", "after profile oncreate.");
-        com.tencent.mm.app.f.bl(this.app.getApplicationContext());
+        Log.i("MicroMsg.PluginBigBallOfMud", "after profile oncreate.");
+        com.tencent.mm.app.f.bF(this.app.getApplicationContext());
         ((com.tencent.mm.kernel.b.h)paramg).mProfileCompat = this.mProfileCompat;
         localObject1 = paramg.ca.getSharedPreferences("system_config_prefs", 0);
         if (localObject1 == null) {
-          break label3625;
+          break label3862;
         }
       }
-      label3595:
-      label3625:
+      label3862:
       for (int i = ((SharedPreferences)localObject1).getInt("default_uin", 0);; i = 0) {
         for (;;)
         {
-          ae.i("MicroMsg.PluginBigBallOfMud", "APPonCreate proc:%s time:%d (loader:%d) ueh:%d data[%s] sdcard[%s]", new Object[] { paramg.mProcessName, Long.valueOf(com.tencent.mm.sdk.platformtools.bu.DD(com.tencent.mm.app.d.cUa)), Long.valueOf(com.tencent.mm.sdk.platformtools.bu.DD(l)), Integer.valueOf(i), am.IKh, com.tencent.mm.loader.j.b.asd() });
-          if (paramg.akL()) {
+          Log.i("MicroMsg.PluginBigBallOfMud", "APPonCreate proc:%s time:%d (loader:%d) ueh:%d data[%s] sdcard[%s]", new Object[] { paramg.mProcessName, Long.valueOf(Util.milliSecondsToNow(com.tencent.mm.app.d.dkt)), Long.valueOf(Util.milliSecondsToNow(l)), Integer.valueOf(i), ar.NSe, com.tencent.mm.loader.j.b.aKD() });
+          if (paramg.aBb()) {
             com.tencent.mm.m.a.a.a(new com.tencent.mm.m.a()
             {
-              public final String J(String paramAnonymousString, int paramAnonymousInt)
+              public final boolean DQ(String paramAnonymousString)
+              {
+                AppMethodBeat.i(22398);
+                boolean bool = com.tencent.mm.al.g.DQ(paramAnonymousString);
+                AppMethodBeat.o(22398);
+                return bool;
+              }
+              
+              public final String K(String paramAnonymousString, int paramAnonymousInt)
               {
                 AppMethodBeat.i(22396);
-                if (com.tencent.mm.al.g.vz(paramAnonymousString))
+                if (com.tencent.mm.al.g.DQ(paramAnonymousString))
                 {
-                  paramAnonymousString = com.tencent.mm.al.a.e.EW(((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ys(paramAnonymousInt).eNd);
+                  paramAnonymousString = com.tencent.mm.al.a.e.NK(((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().Hb(paramAnonymousInt).fqK);
                   AppMethodBeat.o(22396);
                   return paramAnonymousString;
                 }
-                paramAnonymousString = bn.aCy();
+                paramAnonymousString = br.aVW();
                 AppMethodBeat.o(22396);
                 return paramAnonymousString;
               }
               
-              public final void n(bv paramAnonymousbv)
+              public final void n(ca paramAnonymousca)
               {
                 AppMethodBeat.i(22395);
-                if (com.tencent.mm.al.g.vz(paramAnonymousbv.field_talker))
+                if (com.tencent.mm.al.g.DQ(paramAnonymousca.field_talker))
                 {
-                  paramAnonymousbv.tk(com.tencent.mm.al.a.e.We());
+                  paramAnonymousca.BB(com.tencent.mm.al.a.e.ajw());
                   AppMethodBeat.o(22395);
                   return;
                 }
-                paramAnonymousbv.tk(bn.aCy());
+                paramAnonymousca.BB(br.aVW());
                 AppMethodBeat.o(22395);
               }
               
-              public final String o(bv paramAnonymousbv)
+              public final String o(ca paramAnonymousca)
               {
                 AppMethodBeat.i(22397);
-                if (com.tencent.mm.al.g.vz(paramAnonymousbv.field_talker))
+                if (com.tencent.mm.al.g.DQ(paramAnonymousca.field_talker))
                 {
-                  paramAnonymousbv = com.tencent.mm.al.a.e.EW(paramAnonymousbv.eNd);
+                  paramAnonymousca = com.tencent.mm.al.a.e.NK(paramAnonymousca.fqK);
                   AppMethodBeat.o(22397);
-                  return paramAnonymousbv;
+                  return paramAnonymousca;
                 }
-                paramAnonymousbv = bn.aCy();
+                paramAnonymousca = br.aVW();
                 AppMethodBeat.o(22397);
-                return paramAnonymousbv;
-              }
-              
-              public final boolean vz(String paramAnonymousString)
-              {
-                AppMethodBeat.i(22398);
-                boolean bool = com.tencent.mm.al.g.vz(paramAnonymousString);
-                AppMethodBeat.o(22398);
-                return bool;
+                return paramAnonymousca;
               }
             });
           }
-          com.tencent.mm.compatible.c.a.a(new com.tencent.mm.compatible.c.a.a()
+          com.tencent.mm.compatible.d.a.a(new com.tencent.mm.compatible.d.a.a()
           {
-            public final void u(long paramAnonymousLong1, long paramAnonymousLong2)
+            public final void c(int paramAnonymousInt, Object... paramAnonymousVarArgs)
+            {
+              AppMethodBeat.i(231638);
+              com.tencent.mm.plugin.report.service.h.CyF.a(paramAnonymousInt, paramAnonymousVarArgs);
+              AppMethodBeat.o(231638);
+            }
+            
+            public final void w(long paramAnonymousLong1, long paramAnonymousLong2)
             {
               AppMethodBeat.i(22402);
-              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(paramAnonymousLong1, paramAnonymousLong2, 1L, false);
+              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(paramAnonymousLong1, paramAnonymousLong2, 1L, false);
               AppMethodBeat.o(22402);
             }
           });
-          com.tencent.mm.sdk.platformtools.b.a(new b.a()
+          AndroidOSafety.setISafetyCallback(new AndroidOSafety.ISafetyCallback()
           {
-            public final void M(Activity paramAnonymousActivity)
+            public final void invokeToOpaque(Activity paramAnonymousActivity)
             {
               AppMethodBeat.i(22404);
-              com.tencent.mm.ui.base.b.bj(paramAnonymousActivity);
+              com.tencent.mm.ui.base.b.bp(paramAnonymousActivity);
               AppMethodBeat.o(22404);
             }
             
-            public final boolean N(Activity paramAnonymousActivity)
+            public final void reportState(int paramAnonymousInt, Activity paramAnonymousActivity)
+            {
+              AppMethodBeat.i(231647);
+              com.tencent.mm.plugin.report.e.Cxv.idkeyStat(1221L, paramAnonymousInt, 1L, false);
+              AppMethodBeat.o(231647);
+            }
+            
+            public final boolean supportSwipe(Activity paramAnonymousActivity)
             {
               AppMethodBeat.i(22405);
               boolean bool = com.tencent.mm.ui.base.b.bf(paramAnonymousActivity.getClass());
               AppMethodBeat.o(22405);
               return bool;
             }
-            
-            public final void zc(int paramAnonymousInt)
-            {
-              AppMethodBeat.i(22403);
-              com.tencent.mm.plugin.report.e.ywz.idkeyStat(1221L, paramAnonymousInt, 1L, false);
-              AppMethodBeat.o(22403);
-            }
           });
-          if (paramg.akL())
+          if (paramg.aBb())
           {
-            com.tencent.mm.modelfriend.a.hZK = new com.tencent.mm.modelfriend.a.a()
+            com.tencent.mm.modelfriend.a.iUI = new com.tencent.mm.modelfriend.a.a()
             {
-              public final String aIc()
+              public final String bbV()
               {
                 AppMethodBeat.i(22406);
-                if (k.IwL)
+                if (ChannelUtil.isNokiaAol)
                 {
-                  str = ak.getContext().getString(2131762749);
+                  str = MMApplicationContext.getContext().getString(2131764834);
                   AppMethodBeat.o(22406);
                   return str;
                 }
-                String str = ak.getContext().getString(2131762748);
+                String str = MMApplicationContext.getContext().getString(2131764833);
                 AppMethodBeat.o(22406);
                 return str;
               }
@@ -269,7 +283,7 @@ public class PluginBigBallOfMud
                 int k = WXHardCoderJNI.hcDBCPU;
                 int m = WXHardCoderJNI.hcDBIO;
                 if (WXHardCoderJNI.hcDBThr) {}
-                for (int i = com.tencent.mm.kernel.g.ajU().foN();; i = 0)
+                for (int i = com.tencent.mm.kernel.g.aAk().getProcessTid();; i = 0)
                 {
                   WXHardCoderJNI.startPerformance(paramAnonymousBoolean, j, k, m, i, WXHardCoderJNI.hcDBTimeoutBusy, 501, WXHardCoderJNI.hcDBActionWrite, "MicroMsg.PluginBigBallOfMud");
                   AppMethodBeat.o(22408);
@@ -282,71 +296,84 @@ public class PluginBigBallOfMud
               public final void onSQLExecuted(SQLiteDatabase paramAnonymousSQLiteDatabase, String paramAnonymousString, int paramAnonymousInt, long paramAnonymousLong)
               {
                 AppMethodBeat.i(22407);
-                for (;;)
+                com.tencent.mm.model.d.b localb;
+                try
                 {
-                  com.tencent.mm.model.d.b localb;
-                  try
+                  localb = com.tencent.mm.model.d.b.aXA();
+                  boolean bool1 = MMHandlerThread.isMainThread();
+                  String str1 = paramAnonymousSQLiteDatabase.getPath();
+                  com.tencent.matrix.c.b.a(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousLong);
+                  if (((paramAnonymousLong > localb.iHT) && (bool1)) || ((paramAnonymousLong > localb.iHW) && (!bool1)))
                   {
-                    localb = com.tencent.mm.model.d.b.aDO();
-                    boolean bool1 = ar.isMainThread();
-                    String str1 = paramAnonymousSQLiteDatabase.getPath();
-                    com.tencent.matrix.c.a.a(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousLong);
-                    if (((paramAnonymousLong > localb.hMQ) && (bool1)) || ((paramAnonymousLong > localb.hMS) && (!bool1)))
+                    paramAnonymousSQLiteDatabase = com.tencent.mm.model.d.b.iIc.iterator();
+                    do
                     {
-                      paramAnonymousSQLiteDatabase = com.tencent.mm.model.d.b.hMY.iterator();
-                      if (paramAnonymousSQLiteDatabase.hasNext())
+                      do
                       {
-                        String str2 = (String)paramAnonymousSQLiteDatabase.next();
-                        if (bool1) {
-                          continue;
+                        if (!paramAnonymousSQLiteDatabase.hasNext()) {
+                          break;
                         }
-                        boolean bool2 = str1.contains(str2);
-                        if (!bool2) {
-                          continue;
-                        }
-                      }
-                    }
-                    else
-                    {
-                      AppMethodBeat.o(22407);
-                      return;
-                    }
-                    if ((paramAnonymousInt == 2) && (bool1) && (paramAnonymousLong < localb.hMR)) {
-                      continue;
-                    }
-                    if (localb.hMw) {
-                      break label492;
-                    }
-                    paramAnonymousString = paramAnonymousString.trim().toUpperCase();
-                    if ((!paramAnonymousString.startsWith("INSERT")) && (!paramAnonymousString.startsWith("UPDATE")) && (!paramAnonymousString.startsWith("DELETE")) && (!paramAnonymousString.startsWith("COMMIT")) && (!paramAnonymousString.startsWith("SELECT")))
-                    {
-                      paramAnonymousSQLiteDatabase = null;
-                      if (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(paramAnonymousSQLiteDatabase))
-                      {
-                        paramAnonymousString = new StringBuilder();
-                        com.tencent.mm.model.d.b.a("tid", String.valueOf(Thread.currentThread().getId()), paramAnonymousString);
-                        com.tencent.mm.model.d.b.a("sql", paramAnonymousSQLiteDatabase, paramAnonymousString);
-                        com.tencent.mm.model.d.b.a("lastTime", String.valueOf(paramAnonymousLong), paramAnonymousString);
-                        if (!com.tencent.mm.sdk.a.b.foreground) {
-                          break label508;
-                        }
-                        paramAnonymousSQLiteDatabase = "1";
-                        com.tencent.mm.model.d.b.a("foreground", paramAnonymousSQLiteDatabase, paramAnonymousString);
-                        com.tencent.mm.model.d.b.a("tname", Thread.currentThread().getName(), paramAnonymousString);
-                        paramAnonymousSQLiteDatabase = paramAnonymousString.toString();
-                        ae.d("MicroMsg.SQLTraceManager", "SQL Trace mark : ".concat(String.valueOf(paramAnonymousSQLiteDatabase)));
-                        bc.ajU().aw(new b.3(localb, paramAnonymousSQLiteDatabase));
-                      }
-                      AppMethodBeat.o(22407);
-                      return;
-                    }
+                        str2 = (String)paramAnonymousSQLiteDatabase.next();
+                      } while (bool1);
+                      bool2 = str1.contains(str2);
+                    } while (!bool2);
                   }
-                  catch (Exception paramAnonymousSQLiteDatabase)
+                  while ((paramAnonymousInt == 2) && (bool1) && (paramAnonymousLong < localb.iHU))
                   {
-                    ae.printErrStackTrace("MicroMsg.SQLiteTrace", paramAnonymousSQLiteDatabase, "Failed to send trace.", new Object[0]);
+                    String str2;
+                    boolean bool2;
                     AppMethodBeat.o(22407);
                     return;
                   }
+                  if ((paramAnonymousInt == 1) && (paramAnonymousLong > localb.iHV) && (com.tencent.mm.model.d.b.aXC()))
+                  {
+                    paramAnonymousSQLiteDatabase = com.tencent.mm.model.d.b.iId.iterator();
+                    while (paramAnonymousSQLiteDatabase.hasNext())
+                    {
+                      str1 = (String)paramAnonymousSQLiteDatabase.next();
+                      if ((!TextUtils.isEmpty(paramAnonymousString)) && (paramAnonymousString.contains(str1))) {
+                        com.tencent.mm.plugin.report.service.h.CyF.a(21577, new Object[] { Long.valueOf(paramAnonymousLong), str1, Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+                      }
+                    }
+                  }
+                  if (localb.iHz) {
+                    break label602;
+                  }
+                }
+                catch (Exception paramAnonymousSQLiteDatabase)
+                {
+                  Log.printErrStackTrace("MicroMsg.SQLiteTrace", paramAnonymousSQLiteDatabase, "Failed to send trace.", new Object[0]);
+                  AppMethodBeat.o(22407);
+                  return;
+                }
+                paramAnonymousString = paramAnonymousString.trim().toUpperCase();
+                if ((!paramAnonymousString.startsWith("INSERT")) && (!paramAnonymousString.startsWith("UPDATE")) && (!paramAnonymousString.startsWith("DELETE")) && (!paramAnonymousString.startsWith("COMMIT")) && (!paramAnonymousString.startsWith("SELECT")))
+                {
+                  paramAnonymousSQLiteDatabase = null;
+                  label327:
+                  if (!Util.isNullOrNil(paramAnonymousSQLiteDatabase))
+                  {
+                    paramAnonymousString = new StringBuilder();
+                    com.tencent.mm.model.d.b.a("tid", String.valueOf(Thread.currentThread().getId()), paramAnonymousString);
+                    com.tencent.mm.model.d.b.a("sql", paramAnonymousSQLiteDatabase, paramAnonymousString);
+                    com.tencent.mm.model.d.b.a("lastTime", String.valueOf(paramAnonymousLong), paramAnonymousString);
+                    if (!CrashReportFactory.foreground) {
+                      break label619;
+                    }
+                  }
+                }
+                label602:
+                label614:
+                label619:
+                for (paramAnonymousSQLiteDatabase = "1";; paramAnonymousSQLiteDatabase = "0")
+                {
+                  com.tencent.mm.model.d.b.a("foreground", paramAnonymousSQLiteDatabase, paramAnonymousString);
+                  com.tencent.mm.model.d.b.a("tname", Thread.currentThread().getName(), paramAnonymousString);
+                  paramAnonymousSQLiteDatabase = paramAnonymousString.toString();
+                  Log.d("MicroMsg.SQLTraceManager", "SQL Trace mark : ".concat(String.valueOf(paramAnonymousSQLiteDatabase)));
+                  bg.aAk().postToWorker(new b.3(localb, paramAnonymousSQLiteDatabase));
+                  AppMethodBeat.o(22407);
+                  return;
                   if (paramAnonymousString.startsWith("INSERT")) {
                     paramAnonymousSQLiteDatabase = paramAnonymousString.substring(0, paramAnonymousString.indexOf("(", 0));
                   }
@@ -365,58 +392,54 @@ public class PluginBigBallOfMud
                     paramAnonymousSQLiteDatabase = paramAnonymousString;
                     if (paramAnonymousString.startsWith("COMMIT"))
                     {
-                      if (paramAnonymousLong <= localb.hMT) {
-                        break label503;
+                      if (paramAnonymousLong <= localb.iHX) {
+                        break label614;
                       }
-                      paramAnonymousSQLiteDatabase = paramAnonymousString + "task:" + com.tencent.mm.sdk.platformtools.bu.fpN();
+                      paramAnonymousSQLiteDatabase = paramAnonymousString + "task:" + Util.getStack();
                     }
                   }
-                  label492:
-                  ae.i("MicroMsg.SQLTraceManager", "mark stop as file is full !");
-                  continue;
-                  label503:
+                  Log.i("MicroMsg.SQLTraceManager", "mark stop as file is full !");
+                  break;
                   paramAnonymousSQLiteDatabase = null;
-                  continue;
-                  label508:
-                  paramAnonymousSQLiteDatabase = "0";
+                  break label327;
                 }
               }
             });
-            com.tencent.mm.storage.e.IHT = new com.tencent.mm.plugin.messenger.foundation.a.n()
+            com.tencent.mm.storage.e.NOM = new com.tencent.mm.plugin.messenger.foundation.a.n()
             {
-              public final String ab(bv paramAnonymousbv)
+              public final String am(ca paramAnonymousca)
               {
                 AppMethodBeat.i(22409);
                 int i;
-                if ((paramAnonymousbv.field_bizChatId != -1L) && (com.tencent.mm.al.g.vz(paramAnonymousbv.field_talker)))
+                if ((paramAnonymousca.field_bizChatId != -1L) && (com.tencent.mm.al.g.DQ(paramAnonymousca.field_talker)))
                 {
                   i = 1;
                   if (i == 0) {
                     break label91;
                   }
-                  paramAnonymousbv = paramAnonymousbv.field_talker + ":" + paramAnonymousbv.field_bizChatId;
-                  ae.d("MicroMsg.PluginBigBallOfMud", "mapNotifyInfo key:%s", new Object[] { paramAnonymousbv });
+                  paramAnonymousca = paramAnonymousca.field_talker + ":" + paramAnonymousca.field_bizChatId;
+                  Log.d("MicroMsg.PluginBigBallOfMud", "mapNotifyInfo key:%s", new Object[] { paramAnonymousca });
                 }
                 for (;;)
                 {
                   AppMethodBeat.o(22409);
-                  return paramAnonymousbv;
+                  return paramAnonymousca;
                   i = 0;
                   break;
                   label91:
-                  paramAnonymousbv = paramAnonymousbv.field_talker;
+                  paramAnonymousca = paramAnonymousca.field_talker;
                 }
               }
             };
-            y.a(new y.a()
+            com.tencent.mm.model.ac.a(new ac.a()
             {
               public final boolean a(String paramAnonymousString1, String paramAnonymousString2, PInt paramAnonymousPInt)
               {
                 AppMethodBeat.i(22410);
-                if (com.tencent.mm.model.x.Ao(paramAnonymousString1))
+                if (com.tencent.mm.model.ab.IT(paramAnonymousString1))
                 {
-                  if (com.tencent.mm.al.g.vz(paramAnonymousString1)) {
-                    if (com.tencent.mm.al.a.e.ES(paramAnonymousString2)) {
+                  if (com.tencent.mm.al.g.DQ(paramAnonymousString1)) {
+                    if (com.tencent.mm.al.a.e.NG(paramAnonymousString2)) {
                       paramAnonymousPInt.value = 5;
                     }
                   }
@@ -426,11 +449,11 @@ public class PluginBigBallOfMud
                     return true;
                     paramAnonymousPInt.value = 4;
                     continue;
-                    if (com.tencent.mm.al.g.Er(paramAnonymousString1)) {
+                    if (com.tencent.mm.al.g.Nf(paramAnonymousString1)) {
                       paramAnonymousPInt.value = 3;
-                    } else if (com.tencent.mm.al.g.Es(paramAnonymousString1)) {
+                    } else if (com.tencent.mm.al.g.Ng(paramAnonymousString1)) {
                       paramAnonymousPInt.value = 0;
-                    } else if (com.tencent.mm.al.g.En(paramAnonymousString1)) {
+                    } else if (com.tencent.mm.al.g.Nb(paramAnonymousString1)) {
                       paramAnonymousPInt.value = 6;
                     } else {
                       paramAnonymousPInt.value = 7;
@@ -441,248 +464,251 @@ public class PluginBigBallOfMud
                 return false;
               }
             });
-            ab.b(new com.tencent.mm.cm.c() {});
-            paramg = new com.tencent.mm.modelmulti.a();
-            x.a.a(69, paramg);
-            x.a.a(68, paramg);
-            x.a.a(22, paramg);
-            x.a.a(13, paramg);
-            x.a.a(15, paramg);
-            x.a.a(23, paramg);
-            x.a.a(25, paramg);
-            x.a.a(24, paramg);
-            x.a.a(33, paramg);
-            x.a.a(35, paramg);
-            x.a.a(44, paramg);
-            x.a.a(999999, paramg);
-            x.a.a(53, paramg);
-            x.a.a(204, paramg);
-            x.a.a(219, paramg);
-            paramg = new c();
-            ((com.tencent.mm.plugin.messenger.foundation.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.e.class)).addContactAssembler(paramg);
-            com.tencent.mm.kernel.g.ajj().a(681, paramg);
+            com.tencent.mm.plugin.messenger.foundation.a.ab.b(new com.tencent.mm.co.c() {});
+            localObject1 = new com.tencent.mm.modelmulti.a();
+            x.a.a(69, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(68, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(22, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(13, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(15, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(23, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(25, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(24, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(33, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(35, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(44, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(999999, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(53, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(204, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            x.a.a(219, (com.tencent.mm.plugin.messenger.foundation.a.x)localObject1);
+            localObject1 = new c();
+            ((com.tencent.mm.plugin.messenger.foundation.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.e.class)).addContactAssembler((com.tencent.mm.plugin.messenger.foundation.a.d)localObject1);
+            com.tencent.mm.kernel.g.azz().a(681, (com.tencent.mm.ak.i)localObject1);
             com.tencent.mm.kernel.g.b(com.tencent.mm.pluginsdk.h.a.class, this.deleteContactService);
-            ab.a(5, new n());
-            ab.a(1, new t());
-            ab.a(4, new i());
-            ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(new a());
-            paramg = new o();
-            ((w)com.tencent.mm.kernel.g.ab(w.class)).a(paramg);
-            ((w)com.tencent.mm.kernel.g.ab(w.class)).a(paramg);
-            ((w)com.tencent.mm.kernel.g.ab(w.class)).a(new h());
+            com.tencent.mm.plugin.messenger.foundation.a.ab.a(5, new n());
+            com.tencent.mm.plugin.messenger.foundation.a.ab.a(1, new t());
+            com.tencent.mm.plugin.messenger.foundation.a.ab.a(4, new i());
+            ((com.tencent.mm.plugin.auth.a.c)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.auth.a.c.class)).addHandleAuthResponse(new a());
+            localObject1 = new o();
+            ((w)com.tencent.mm.kernel.g.af(w.class)).a((com.tencent.mm.plugin.messenger.foundation.a.o)localObject1);
+            ((w)com.tencent.mm.kernel.g.af(w.class)).a((com.tencent.mm.plugin.messenger.foundation.a.h)localObject1);
+            ((w)com.tencent.mm.kernel.g.af(w.class)).a(new h());
             com.tencent.mm.model.e.a(new b());
             new com.tencent.mm.permission.a();
             new s().alive();
-            com.tencent.mm.kernel.g.ajj().b(138, p.nUo);
-            com.tencent.mm.kernel.g.ajj().b(39, p.nUo);
-            com.tencent.mm.kernel.g.ajj().b(268369922, p.nUo);
-            if (p.nUo == null) {
-              p.nUo = new p();
+            com.tencent.mm.kernel.g.azz().b(138, p.pfc);
+            com.tencent.mm.kernel.g.azz().b(39, p.pfc);
+            com.tencent.mm.kernel.g.azz().b(268369922, p.pfc);
+            if (p.pfc == null) {
+              p.pfc = new p();
             }
-            com.tencent.mm.kernel.g.ajj().a(138, p.nUo);
-            com.tencent.mm.kernel.g.ajj().a(39, p.nUo);
-            com.tencent.mm.kernel.g.ajj().a(268369922, p.nUo);
-            r.er(this.app);
-            com.tencent.mm.az.a.a.a("delchatroommember", new q.1());
-            com.tencent.mm.az.a.a.a("NewXmlChatRoomAccessVerifyApplication", new q.2());
-            com.tencent.mm.az.a.a.a("NewXmlChatRoomAccessVerifyApproval", new q.3());
-            com.tencent.mm.az.a.a.a("chatroommuteexpt", new q.4());
-            com.tencent.mm.az.a.a.a("NewXmlOpenIMChatRoomAddChatRoomMemberApplication", new q.5());
-            com.tencent.mm.az.a.a.a("NewXmlOpenIMChatRoomAddChatRoomMemberApplicationApproved", new q.6());
-            com.tencent.mm.az.a.a.a("FinderPersonalMsgSysMsg", new q.7());
-            ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("NewXmlDisableChatRoomAccessVerifyApplication", new q.8());
+            com.tencent.mm.kernel.g.azz().a(138, p.pfc);
+            com.tencent.mm.kernel.g.azz().a(39, p.pfc);
+            com.tencent.mm.kernel.g.azz().a(268369922, p.pfc);
+            r.eJ(this.app);
+            com.tencent.mm.az.a.a.a("delchatroommember", new u.1());
+            com.tencent.mm.az.a.a.a("NewXmlChatRoomAccessVerifyApplication", new u.2());
+            com.tencent.mm.az.a.a.a("NewXmlChatRoomAccessVerifyApproval", new u.3());
+            com.tencent.mm.az.a.a.a("chatroommuteexpt", new u.4());
+            com.tencent.mm.az.a.a.a("NewXmlOpenIMChatRoomAddChatRoomMemberApplication", new u.5());
+            com.tencent.mm.az.a.a.a("NewXmlOpenIMChatRoomAddChatRoomMemberApplicationApproved", new u.6());
+            com.tencent.mm.az.a.a.a("FinderPersonalMsgSysMsg", new u.7());
+            ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("NewXmlDisableChatRoomAccessVerifyApplication", new u.8());
             com.tencent.mm.az.a.a.a("invokeMessage", new b.1());
             com.tencent.mm.az.a.a.a("NewXmlOpenIMFriReqAcceptedInWxWork", new b.2());
-            com.tencent.mm.model.bu.aAt();
-            com.tencent.mm.model.n.aAt();
-            paramg = this.appMgr;
-            localObject1 = this.app;
-            if (paramg.JwT == null) {
-              paramg.JwT = new MMAppMgr.Receiver(paramg);
+            by.aTB();
+            com.tencent.mm.model.n.aTB();
+            localObject1 = this.appMgr;
+            localObject2 = this.app;
+            if (((MMAppMgr)localObject1).OHn == null) {
+              ((MMAppMgr)localObject1).OHn = new MMAppMgr.Receiver((MMAppMgr)localObject1);
             }
             MMActivity.setMainProcess();
-            localObject2 = new IntentFilter();
-            ((IntentFilter)localObject2).addAction("com.tencent.mm.ui.ACTION_ACTIVE");
-            ((IntentFilter)localObject2).addAction("com.tencent.mm.ui.ACTION_DEACTIVE");
-            ((IntentFilter)localObject2).addAction("com.tencent.mm.sandbox.updater.intent.ACTION_EXIT_APP");
-            ((IntentFilter)localObject2).addAction("com.tencent.mm.sandbox.updater.intent.ACTION_UPDATE");
-            ((IntentFilter)localObject2).addAction("MINIQB_OPEN_RET");
-            ((Context)localObject1).registerReceiver(paramg.JwT, (IntentFilter)localObject2, "com.tencent.mm.permission.MM_MESSAGE", null);
-            paramg = new com.tencent.mm.booter.x(com.tencent.mm.booter.d.bL(this.app));
-            paramg.ux("MM");
-            ac.iRN = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.use_cdn_down_thumb"), false);
-            ac.iQV = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.display_errcode"), false);
-            ac.iQW = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.display_msgstate"), false);
-            ac.iQX = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.network.simulate_fault"), false);
-            ac.iQY = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.network.force_touch"), false);
-            ac.iQZ = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
-            ac.iRa = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.crashIsExit"), false);
-            ac.iRz = com.tencent.mm.sdk.platformtools.bu.getInt(com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.datatransfer.times"), "0"), 0);
-            ac.iRA = com.tencent.mm.sdk.platformtools.bu.getInt(com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.datatransfer.duration"), "0"), 0);
-            ac.iRc = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.album_drop_table"), false);
-            ac.iRd = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.album_dle_file"), false);
-            ac.iRe = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.album_show_info"), false);
-            ac.iRf = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.location_help"), false);
-            ac.iRi = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.force_soso"), false);
-            ac.iRj = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.simulatePostServerError"), false);
-            ac.iRk = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
-            ac.iRl = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
-            ac.iRo = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.filterfpnp"), false);
-            ac.iRp = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.testForPull"), false);
-            i = com.tencent.mm.sdk.platformtools.bu.a(paramg.getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
-            ac.iRm = i;
-            if ((i != 4) && (ac.iRm > 0))
+            localObject3 = new IntentFilter();
+            ((IntentFilter)localObject3).addAction("com.tencent.mm.ui.ACTION_ACTIVE");
+            ((IntentFilter)localObject3).addAction("com.tencent.mm.ui.ACTION_DEACTIVE");
+            ((IntentFilter)localObject3).addAction("com.tencent.mm.sandbox.updater.intent.ACTION_EXIT_APP");
+            ((IntentFilter)localObject3).addAction("com.tencent.mm.sandbox.updater.intent.ACTION_UPDATE");
+            ((IntentFilter)localObject3).addAction("MINIQB_OPEN_RET");
+            ((Context)localObject2).registerReceiver(((MMAppMgr)localObject1).OHn, (IntentFilter)localObject3, WeChatPermissions.PERMISSION_MM_MESSAGE(), null);
+            localObject1 = new com.tencent.mm.booter.x(com.tencent.mm.booter.d.cg(this.app));
+            ((com.tencent.mm.booter.x)localObject1).CN("MM");
+            com.tencent.mm.platformtools.ac.jOI = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.use_cdn_down_thumb"), false);
+            com.tencent.mm.platformtools.ac.jNP = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.display_errcode"), false);
+            com.tencent.mm.platformtools.ac.jNQ = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.display_msgstate"), false);
+            com.tencent.mm.platformtools.ac.jNR = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.network.simulate_fault"), false);
+            com.tencent.mm.platformtools.ac.jNS = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.network.force_touch"), false);
+            com.tencent.mm.platformtools.ac.jNT = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
+            com.tencent.mm.platformtools.ac.jNU = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.crashIsExit"), false);
+            com.tencent.mm.platformtools.ac.jOu = Util.getInt(Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.datatransfer.times"), "0"), 0);
+            com.tencent.mm.platformtools.ac.jOv = Util.getInt(Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.datatransfer.duration"), "0"), 0);
+            com.tencent.mm.platformtools.ac.jNW = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.album_drop_table"), false);
+            com.tencent.mm.platformtools.ac.jNX = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.album_dle_file"), false);
+            com.tencent.mm.platformtools.ac.jNY = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.album_show_info"), false);
+            com.tencent.mm.platformtools.ac.jNZ = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.location_help"), false);
+            com.tencent.mm.platformtools.ac.jOc = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.force_soso"), false);
+            com.tencent.mm.platformtools.ac.jOd = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.simulatePostServerError"), false);
+            com.tencent.mm.platformtools.ac.jOe = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
+            com.tencent.mm.platformtools.ac.jOf = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
+            com.tencent.mm.platformtools.ac.jOi = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.filterfpnp"), false);
+            com.tencent.mm.platformtools.ac.jOj = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.testForPull"), false);
+            i = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
+            com.tencent.mm.platformtools.ac.jOg = i;
+            if ((i != 4) && (com.tencent.mm.platformtools.ac.jOg > 0))
             {
-              com.tencent.mm.storage.al.IKf = ac.iRm;
-              ae.e("MicroMsg.WorkerDebugger", "cdn thread num " + ac.iRm);
+              com.tencent.mm.storage.aq.NSc = com.tencent.mm.platformtools.ac.jOg;
+              Log.e("MicroMsg.WorkerDebugger", "cdn thread num " + com.tencent.mm.platformtools.ac.jOg);
             }
-            ac.iRn = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
-            ac.iRq = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.server.host.http"), "");
-            ac.iRr = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.server.host.socket"), "");
-            if (com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.show_full_version"), false)) {
-              k.IwI = true;
+            com.tencent.mm.platformtools.ac.jOh = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
+            com.tencent.mm.platformtools.ac.jOk = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.server.host.http"), "");
+            com.tencent.mm.platformtools.ac.jOl = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.server.host.socket"), "");
+            if (Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.show_full_version"), false)) {
+              ChannelUtil.fullVersionInfo = true;
             }
           }
           try
           {
-            i = Integer.decode(paramg.getString(".com.tencent.mm.debug.log.setversion")).intValue();
-            com.tencent.mm.protocal.d.aag(i);
+            i = Integer.decode(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.log.setversion")).intValue();
+            com.tencent.mm.protocal.d.aiV(i);
             new StringBuilder("set up test protocal version = ").append(Integer.toHexString(i));
           }
-          catch (Exception paramg)
+          catch (Exception localThrowable1)
           {
             try
             {
-              localObject1 = paramg.getString(".com.tencent.mm.debug.log.setapilevel");
-              if (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil((String)localObject1))
+              localObject2 = ((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.log.setapilevel");
+              if (!Util.isNullOrNil((String)localObject2))
               {
-                com.tencent.mm.protocal.d.hjv = "android-".concat(String.valueOf(localObject1));
-                com.tencent.mm.protocal.d.FFD = "android-".concat(String.valueOf(localObject1));
-                com.tencent.mm.protocal.d.FFF = String.valueOf(localObject1);
-                com.tencent.mm.sdk.a.b.aRu((String)localObject1);
-                new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.hjv).append(" ").append(com.tencent.mm.sdk.a.b.fnG());
+                com.tencent.mm.protocal.d.ics = "android-".concat(String.valueOf(localObject2));
+                com.tencent.mm.protocal.d.KyK = "android-".concat(String.valueOf(localObject2));
+                com.tencent.mm.protocal.d.KyM = String.valueOf(localObject2);
+                CrashReportFactory.setDebugerApiLevel((String)localObject2);
+                new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.ics).append(" ").append(CrashReportFactory.getDebugerApiLevel());
               }
             }
-            catch (Exception paramg)
+            catch (Exception localThrowable1)
             {
               try
               {
-                l = Long.decode(paramg.getString(".com.tencent.mm.debug.log.setuin")).longValue();
-                new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.FFG).append(" new: ").append(l);
-                com.tencent.mm.protocal.d.FFG = l;
+                l = Long.decode(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.log.setuin")).longValue();
+                new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.KyN).append(" new: ").append(l);
+                com.tencent.mm.protocal.d.KyN = l;
               }
-              catch (Exception paramg)
+              catch (Exception localThrowable1)
               {
                 try
                 {
-                  i = Integer.decode(paramg.getString(".com.tencent.mm.debug.log.setchannel")).intValue();
-                  paramg.fHC.fGh = i;
+                  i = Integer.decode(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.log.setchannel")).intValue();
+                  ((com.tencent.mm.booter.q)localObject1).gmN.glq = i;
                 }
-                catch (Exception paramg)
+                catch (Exception localThrowable1)
                 {
                   try
                   {
-                    boolean bool1 = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.report.debugmodel"), false);
-                    boolean bool2 = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.report.kvstat"), false);
-                    boolean bool3 = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.report.clientpref"), false);
-                    boolean bool4 = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.report.useraction"), false);
+                    boolean bool1 = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.report.debugmodel"), false);
+                    boolean bool2 = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.report.kvstat"), false);
+                    boolean bool3 = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.report.clientpref"), false);
+                    boolean bool4 = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.report.useraction"), false);
                     com.tencent.mm.plugin.report.a.c.d(bool1, bool2, bool3, bool4);
                     new StringBuilder("try control report : debugModel[").append(bool1).append("],kv[").append(bool2).append("], clientPref[").append(bool3).append("], useraction[").append(bool4).append("]");
-                    ac.iRu = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.update_test"), false);
-                    ac.iRv = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.scan_save_image"), false);
-                    ac.iRx = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.shake_get_config_list"), false);
-                    ac.iRy = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.test.shake_show_shaketv"), false);
-                    ac.iRC = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.jsapi.permission"), "");
-                    ae.d("MicroMsg.WorkerDebugger", "Test.jsapiPermission = " + ac.iRC);
-                    ac.iRR = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.cdn.front"), "");
-                    ac.iRS = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.cdn.zone"), "");
-                    ac.iRT = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.cdn.wifi_elt"), "");
-                    ac.iRU = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.cdn.nowifi_elt"), "");
-                    ac.iRV = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.cdn.ptl"), "");
-                    ac.iRW = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.cdn.usestream"), false);
-                    ac.iRX = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.cdn.onlysendetl"), false);
-                    ac.iRY = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.cdn.onlysendptl"), false);
-                    ac.iSa = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.cdn.enable_debug"), false);
-                    ac.iSb = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.cdn.enable_conn_verify"), false);
-                    ac.iSc = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.cdn.enable_video_redirect_oc"), false);
-                    ac.iSk = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.bakmove_hardcode"), false);
-                    ae.d("MicroMsg.WorkerDebugger", "Test.bakmove_hardcode = " + ac.iSk);
-                    ac.iSl = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.bakmove_ip"), "");
-                    ac.iSm = com.tencent.mm.sdk.platformtools.bu.getInt(com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.bakmove_port"), "0"), 0);
-                    ac.iSh = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.cursormode_enabled"), true);
-                    ac.iSR = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.disaster_ignore_interval"), false);
-                    ac.iSS = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.disaster_ignore_expire"), false);
-                    ac.iST = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.disaster_ignore_remove"), false);
-                    ac.iSA = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.netscene_sniffer.enable_snapshot"), false);
-                    ac.iSC = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.netscene_sniffer.snapshot_protocal"), "");
-                    ac.iSB = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.netscene_sniffer.enable_inject"), false);
-                    ac.iSD = com.tencent.mm.sdk.platformtools.bu.bI(paramg.getString(".com.tencent.mm.debug.netscene_sniffer.inject_protocal"), "");
-                    ac.iSK = com.tencent.mm.sdk.platformtools.bu.a(paramg.uy(".com.tencent.mm.debug.netmock"), false);
-                    paramg = com.tencent.mm.sdk.platformtools.bu.js(ak.getContext());
-                    if ((paramg != null) && (paramg.getPackageName().equals(ak.getPackageName())) && (paramg.getClassName().equals(ak.fou())))
+                    com.tencent.mm.platformtools.ac.jOo = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.update_test"), false);
+                    com.tencent.mm.platformtools.ac.jOp = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.tablet"), false);
+                    com.tencent.mm.platformtools.ac.jOq = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.scan_save_image"), false);
+                    com.tencent.mm.platformtools.ac.jOs = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.shake_get_config_list"), false);
+                    com.tencent.mm.platformtools.ac.jOt = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.test.shake_show_shaketv"), false);
+                    com.tencent.mm.platformtools.ac.jOx = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.jsapi.permission"), "");
+                    Log.d("MicroMsg.WorkerDebugger", "Test.jsapiPermission = " + com.tencent.mm.platformtools.ac.jOx);
+                    com.tencent.mm.platformtools.ac.jOM = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.cdn.front"), "");
+                    com.tencent.mm.platformtools.ac.jON = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.cdn.zone"), "");
+                    com.tencent.mm.platformtools.ac.jOO = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.cdn.wifi_elt"), "");
+                    com.tencent.mm.platformtools.ac.jOP = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.cdn.nowifi_elt"), "");
+                    com.tencent.mm.platformtools.ac.jOQ = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.cdn.ptl"), "");
+                    com.tencent.mm.platformtools.ac.jOR = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.cdn.usestream"), false);
+                    com.tencent.mm.platformtools.ac.jOS = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.cdn.onlysendetl"), false);
+                    com.tencent.mm.platformtools.ac.jOT = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.cdn.onlysendptl"), false);
+                    com.tencent.mm.platformtools.ac.jOV = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.cdn.enable_debug"), false);
+                    com.tencent.mm.platformtools.ac.jOW = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.cdn.enable_conn_verify"), false);
+                    com.tencent.mm.platformtools.ac.jOX = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.cdn.enable_video_redirect_oc"), false);
+                    com.tencent.mm.platformtools.ac.jPf = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.bakmove_hardcode"), false);
+                    Log.d("MicroMsg.WorkerDebugger", "Test.bakmove_hardcode = " + com.tencent.mm.platformtools.ac.jPf);
+                    com.tencent.mm.platformtools.ac.jPg = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.bakmove_ip"), "");
+                    com.tencent.mm.platformtools.ac.jPh = Util.getInt(Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.bakmove_port"), "0"), 0);
+                    com.tencent.mm.platformtools.ac.jPc = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.cursormode_enabled"), true);
+                    com.tencent.mm.platformtools.ac.jPM = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.disaster_ignore_interval"), false);
+                    com.tencent.mm.platformtools.ac.jPN = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.disaster_ignore_expire"), false);
+                    com.tencent.mm.platformtools.ac.jPO = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.disaster_ignore_remove"), false);
+                    com.tencent.mm.platformtools.ac.jPv = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.netscene_sniffer.enable_snapshot"), false);
+                    com.tencent.mm.platformtools.ac.jPx = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.netscene_sniffer.snapshot_protocal"), "");
+                    com.tencent.mm.platformtools.ac.jPw = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.netscene_sniffer.enable_inject"), false);
+                    com.tencent.mm.platformtools.ac.jPy = Util.nullAs(((com.tencent.mm.booter.x)localObject1).getString(".com.tencent.mm.debug.netscene_sniffer.inject_protocal"), "");
+                    com.tencent.mm.platformtools.ac.jPF = Util.nullAs(((com.tencent.mm.booter.x)localObject1).CO(".com.tencent.mm.debug.netmock"), false);
+                    localObject1 = Util.getTopActivity(MMApplicationContext.getContext());
+                    if ((localObject1 != null) && (((ComponentName)localObject1).getPackageName().equals(MMApplicationContext.getPackageName())) && (((ComponentName)localObject1).getClassName().equals(MMApplicationContext.getLaunchName())))
                     {
-                      WorkerProfile.MU().cWM = true;
-                      WorkerProfile.MU().cWN = true;
-                      ae.i("MicroMsg.PluginBigBallOfMud", "start time check currentActivity.getPackageName() :%s, currentActivity.getClassName(): %s", new Object[] { paramg.getPackageName(), paramg.getClassName() });
-                      com.tencent.mm.model.d.b.aDO();
+                      WorkerProfile.Xg().dnn = true;
+                      WorkerProfile.Xg().dno = true;
+                      Log.i("MicroMsg.PluginBigBallOfMud", "start time check currentActivity.getPackageName() :%s, currentActivity.getClassName(): %s", new Object[] { ((ComponentName)localObject1).getPackageName(), ((ComponentName)localObject1).getClassName() });
+                      com.tencent.mm.model.d.b.aXA();
                       com.tencent.mm.model.d.b.setup();
-                      AppLogic.setCallBack(new AppCallBack(ak.getContext()));
-                      SmcLogic.setCallBack(new com.tencent.mm.plugin.report.service.i());
-                      com.tencent.mm.plugin.report.service.i.yyn = (WorkerProfile)this.mProfileCompat;
+                      AppLogic.setCallBack(new AppCallBack(MMApplicationContext.getContext()));
+                      SmcLogic.setCallBack(new com.tencent.mm.plugin.report.service.j());
+                      com.tencent.mm.plugin.report.service.j.Czl = (WorkerProfile)this.mProfileCompat;
                       getClass().getClassLoader();
-                      com.tencent.mm.compatible.util.j.vN("wechatbase");
-                      paramg = com.tencent.mm.sdk.a.IvK;
+                      com.tencent.mm.compatible.util.j.Ed("wechatbase");
+                      localObject1 = CommLibFileName.quic;
                       getClass().getClassLoader();
-                      com.tencent.mm.compatible.util.j.vN(paramg);
+                      com.tencent.mm.compatible.util.j.Ed((String)localObject1);
                       getClass().getClassLoader();
-                      com.tencent.mm.compatible.util.j.vN("wechatmm");
+                      com.tencent.mm.compatible.util.j.Ed("wechatmm");
                     }
                   }
-                  catch (Exception paramg)
+                  catch (Exception localThrowable1)
                   {
                     try
                     {
                       Mars.onCreate();
-                      if (ak.coh()) {
+                      if (MMApplicationContext.isMainProcess()) {
                         SmcLogic.onCreate();
                       }
-                      SmcLogic.SetDebugFlag(com.tencent.mm.plugin.report.a.c.ywG);
+                      SmcLogic.SetDebugFlag(com.tencent.mm.plugin.report.a.c.CxC);
                       if (getClass().getClassLoader() == null)
                       {
                         i = -1;
                         if (Thread.currentThread().getContextClassLoader() != null) {
-                          break label3595;
+                          break label3830;
                         }
                         j = -1;
-                        ae.i("MicroMsg.PluginBigBallOfMud", "SmcLogic, class loader %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+                        Log.i("MicroMsg.PluginBigBallOfMud", "SmcLogic, class loader %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
                       }
                     }
-                    catch (Throwable paramg)
+                    catch (Throwable localThrowable1)
                     {
                       try
                       {
                         for (;;)
                         {
-                          if (com.tencent.mm.compatible.util.d.lB(20))
+                          if (com.tencent.mm.compatible.util.d.oE(20))
                           {
-                            ae.i("MicroMsg.PluginBigBallOfMud", "weird");
+                            Log.i("MicroMsg.PluginBigBallOfMud", "weird");
                             SmcLogic.setUin(0L);
                           }
-                          paramg = (com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.s.class);
-                          localObject1 = (com.tencent.mm.plugin.zero.a.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.zero.a.d.class);
-                          new com.tencent.mm.plugin.e.d().after(paramg).before(this);
-                          localObject2 = (com.tencent.mm.plugin.e.b)new com.tencent.mm.plugin.e.b().after(paramg).before(this);
-                          new com.tencent.mm.plugin.e.f().after((com.tencent.mm.kernel.b.a)localObject2).before(this);
-                          new com.tencent.mm.plugin.e.c().after(paramg).before(this);
-                          new com.tencent.mm.plugin.e.a().after((com.tencent.mm.kernel.b.a)localObject1);
-                          com.tencent.mm.br.d.fjw();
-                          com.tencent.mm.ui.chatting.g.a.dhH();
+                          localObject1 = (com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class);
+                          localObject2 = (com.tencent.mm.plugin.zero.a.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.zero.a.d.class);
+                          new com.tencent.mm.plugin.e.d().after((com.tencent.mm.kernel.b.a)localObject1).before(this);
+                          localObject3 = (com.tencent.mm.plugin.e.b)new com.tencent.mm.plugin.e.b().after((com.tencent.mm.kernel.b.a)localObject1).before(this);
+                          new com.tencent.mm.plugin.e.f().after((com.tencent.mm.kernel.b.a)localObject3).before(this);
+                          new com.tencent.mm.plugin.e.c().after((com.tencent.mm.kernel.b.a)localObject1).before(this);
+                          new com.tencent.mm.plugin.e.a().after((com.tencent.mm.kernel.b.a)localObject2);
+                          com.tencent.mm.br.c.gsW();
+                          com.tencent.mm.ui.chatting.g.a.ebz();
+                          com.tencent.mm.ui.chatting.multitask.b.ebz();
+                          ((PluginMultiTask)com.tencent.mm.kernel.g.ah(PluginMultiTask.class)).registerMultiTaskUIC(4, FileMultiTaskUIC.class);
                           com.tencent.mm.pluginsdk.j.a.a.m.a(new com.tencent.mm.pluginsdk.j.a.a.a.a()
                           {
-                            public final boolean zb(int paramAnonymousInt)
+                            public final boolean CI(int paramAnonymousInt)
                             {
                               AppMethodBeat.i(22385);
-                              if ((paramAnonymousInt == 39) && (!com.tencent.mm.plugin.ipcall.d.dgc()))
+                              if ((paramAnonymousInt == 39) && (!com.tencent.mm.plugin.ipcall.d.dZW()))
                               {
                                 AppMethodBeat.o(22385);
                                 return true;
@@ -691,123 +717,135 @@ public class PluginBigBallOfMud
                               return false;
                             }
                           });
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          k.c.a(new com.tencent.mm.cm.c() {});
-                          com.tencent.mm.sdk.b.a.IvT.c(new com.tencent.mm.sdk.b.c() {});
-                          com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.appbrand.service.m.class, new com.tencent.mm.modelsimple.b());
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          k.c.a(new com.tencent.mm.co.c() {});
+                          EventCenter.instance.addListener(new PluginBigBallOfMud.30(this));
+                          com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.appbrand.service.o.class, new com.tencent.mm.modelsimple.b());
+                          if (paramg.aBb())
+                          {
+                            Log.i("MicroMsg.PluginBigBallOfMud", "hy: register magic emoji. temp here");
+                            com.tencent.mm.kernel.g.b(v.class, com.tencent.mm.ui.l.a.b.Qlr);
+                          }
                           AppMethodBeat.o(22414);
                           return;
-                          if (((String)localObject2).equals(ak.getPackageName())) {
+                          if (((String)localObject2).equals(MMApplicationContext.getPackageName())) {
                             localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.WorkerProfile");
                           }
                           for (;;)
                           {
-                            ae.w("MicroMsg.ProfileFactoryImpl", "application started, profile = %s", new Object[] { localObject2 });
+                            Log.w("MicroMsg.ProfileFactoryImpl", "application started, profile = %s", new Object[] { localObject2 });
                             break;
-                            if (((String)localObject2).equals(ak.getPackageName() + ":push"))
+                            if (((String)localObject2).equals(MMApplicationContext.getPackageName() + ":push"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.PusherProfile");
                             }
-                            else if (((String)localObject2).startsWith(ak.getPackageName() + ":tools"))
+                            else if (((String)localObject2).startsWith(MMApplicationContext.getPackageName() + ":tools"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.ToolsProfile");
                             }
-                            else if (((String)localObject2).equals(ak.getPackageName() + ":sandbox"))
+                            else if (((String)localObject2).equals(MMApplicationContext.getPackageName() + ":sandbox"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.SandBoxProfile");
                             }
-                            else if (((String)localObject2).equals(ak.getPackageName() + ":exdevice"))
+                            else if (((String)localObject2).equals(MMApplicationContext.getPackageName() + ":exdevice"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.ExDeviceProfile");
                             }
-                            else if (((String)localObject2).equals(ak.getPackageName() + ":TMAssistantDownloadSDKService"))
+                            else if (((String)localObject2).equals(MMApplicationContext.getPackageName() + ":TMAssistantDownloadSDKService"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.TMAssistantProfile");
                             }
-                            else if (((String)localObject2).equals(ak.getPackageName() + ":nospace"))
+                            else if (((String)localObject2).equals(MMApplicationContext.getPackageName() + ":nospace"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.NoSpaceProfile");
                             }
-                            else if (((String)localObject2).equals(ak.getPackageName() + ":patch"))
+                            else if (((String)localObject2).equals(MMApplicationContext.getPackageName() + ":patch"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.PatchProfile");
                             }
-                            else if (((String)localObject2).startsWith(ak.getPackageName() + ":appbrand"))
+                            else if (((String)localObject2).startsWith(MMApplicationContext.getPackageName() + ":appbrand"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.AppBrandProfile");
                             }
-                            else if (((String)localObject2).startsWith(ak.getPackageName() + ":support"))
+                            else if (((String)localObject2).startsWith(MMApplicationContext.getPackageName() + ":support"))
                             {
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.SupportProfile");
                             }
                             else
                             {
-                              if (!((String)localObject2).startsWith(ak.getPackageName() + ":lite")) {
-                                break label3421;
+                              if (!((String)localObject2).startsWith(MMApplicationContext.getPackageName() + ":lite")) {
+                                break label3650;
                               }
                               localObject1 = com.tencent.mm.compatible.loader.e.b((Application)localObject1, ".app.LiteAppProfile");
                             }
                           }
-                          label3421:
+                          label3650:
                           localObject1 = null;
                           break;
                           localException1 = localException1;
-                          ae.i("MicroMsg.WorkerDebugger", "no debugger was got");
+                          Log.i("MicroMsg.WorkerDebugger", "no debugger was got");
                           continue;
                           localException2 = localException2;
-                          ae.i("MicroMsg.WorkerDebugger", "no debugger was got");
+                          Log.i("MicroMsg.WorkerDebugger", "no debugger was got");
                           continue;
                           localException3 = localException3;
-                          ae.i("MicroMsg.WorkerDebugger", "no debugger was got");
+                          Log.i("MicroMsg.WorkerDebugger", "no debugger was got");
                           continue;
                           localException4 = localException4;
-                          ae.i("MicroMsg.WorkerDebugger", "no debugger was got");
+                          Log.i("MicroMsg.WorkerDebugger", "no debugger was got");
                           continue;
                           localException5 = localException5;
-                          ae.i("MicroMsg.WorkerDebugger", "no debugger was got");
+                          Log.i("MicroMsg.WorkerDebugger", "no debugger was got");
                           continue;
-                          if (paramg != null) {
-                            ae.i("MicroMsg.PluginBigBallOfMud", "start time check onCreate appOnCreate currentActivity.getPackageName() :%s, currentActivity.getClassName(): %s", new Object[] { paramg.getPackageName(), paramg.getClassName() });
+                          if (localObject1 != null) {
+                            Log.i("MicroMsg.PluginBigBallOfMud", "start time check onCreate appOnCreate currentActivity.getPackageName() :%s, currentActivity.getClassName(): %s", new Object[] { ((ComponentName)localObject1).getPackageName(), ((ComponentName)localObject1).getClassName() });
                           }
-                          while ((paramg != null) && (!paramg.getPackageName().equals(ak.getPackageName())))
+                          while ((localObject1 != null) && (!((ComponentName)localObject1).getPackageName().equals(MMApplicationContext.getPackageName())))
                           {
-                            WorkerProfile.MU().cWM = true;
+                            WorkerProfile.Xg().dnn = true;
                             break;
-                            ae.i("MicroMsg.PluginBigBallOfMud", "start time check onCreate appOnCreate currentActivity == null");
+                            Log.i("MicroMsg.PluginBigBallOfMud", "start time check onCreate appOnCreate currentActivity == null");
                           }
-                          paramg = paramg;
+                          localThrowable1 = localThrowable1;
                           Mars.onCreate();
-                          if (ak.coh())
+                          if (MMApplicationContext.isMainProcess())
                           {
                             SmcLogic.onCreate();
                             continue;
                             i = getClass().getClassLoader().hashCode();
                           }
                         }
+                        label3830:
                         int j = Thread.currentThread().getContextClassLoader().hashCode();
                       }
-                      catch (Throwable paramg)
+                      catch (Throwable localThrowable2)
                       {
                         for (;;)
                         {
-                          ae.printErrStackTrace("MicroMsg.PluginBigBallOfMud", paramg, "", new Object[0]);
+                          Log.printErrStackTrace("MicroMsg.PluginBigBallOfMud", localThrowable2, "", new Object[0]);
                         }
                       }
                     }
@@ -824,9 +862,9 @@ public class PluginBigBallOfMud
   public void dependency()
   {
     AppMethodBeat.i(22413);
-    if (ak.coh())
+    if (MMApplicationContext.isMainProcess())
     {
-      dependsOn(com.tencent.mm.plugin.auth.a.b.class);
+      dependsOn(com.tencent.mm.plugin.auth.a.c.class);
       dependsOn(com.tencent.mm.plugin.messenger.foundation.a.s.class);
     }
     AppMethodBeat.o(22413);
@@ -841,46 +879,50 @@ public class PluginBigBallOfMud
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(22416);
-    if ((al.fCb()) && (al.fBV()))
+    if ((ao.awS()) && (ao.awN()))
     {
-      XWalkEnvironment.setForceDarkMode(al.i(paramConfiguration));
-      MMWebView.yY(al.i(paramConfiguration));
-      if (ak.coh())
+      XWalkEnvironment.setForceDarkMode(ao.i(paramConfiguration));
+      MMWebView.CU(ao.i(paramConfiguration));
+      if (MMApplicationContext.isMainProcess())
       {
         if (com.tencent.mm.cc.c.h(paramConfiguration))
         {
-          ae.i("MicroMsg.PluginBigBallOfMud", "dancy test uiModeChange true, uimode:%s", new Object[] { Integer.valueOf(paramConfiguration.uiMode) });
+          Log.i("MicroMsg.PluginBigBallOfMud", "dancy test uiModeChange true, uimode:%s", new Object[] { Integer.valueOf(paramConfiguration.uiMode) });
           com.tencent.mm.plugin.sns.ui.widget.f.resetConfig();
-          com.tencent.mm.modelappbrand.a.b.aEl().clearCache();
-          if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null)
+          com.tencent.mm.modelappbrand.a.b.aXY().clearCache();
+          if (com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class) != null)
           {
-            ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).onAccountRelease();
-            ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).bKT();
-            if (com.tencent.mm.kernel.g.ajP().aiZ())
+            ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).onAccountRelease();
+            ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).chL();
+            if (com.tencent.mm.kernel.g.aAf().azp())
             {
-              localObject = com.tencent.mm.plugin.voip.c.eyt();
-              if (((com.tencent.mm.plugin.voip.ui.d)localObject).CBe != null)
+              localObject = com.tencent.mm.plugin.voip.c.fFh();
+              if (((com.tencent.mm.plugin.voip.ui.d)localObject).HeX != null)
               {
-                localObject = ((com.tencent.mm.plugin.voip.ui.d)localObject).CBe;
-                BaseSmallView localBaseSmallView = ((VoipViewFragment)localObject).CBM;
+                localObject = ((com.tencent.mm.plugin.voip.ui.d)localObject).HeX;
+                BaseSmallView localBaseSmallView = ((VoipViewFragment)localObject).HfC;
                 if (localBaseSmallView != null) {
-                  localBaseSmallView.eCS();
+                  localBaseSmallView.eoM();
                 }
-                localObject = ((VoipViewFragment)localObject).CBL;
+                localObject = ((VoipViewFragment)localObject).HfB;
                 if (localObject != null) {
-                  ((BaseSmallView)localObject).eCS();
+                  ((BaseSmallView)localObject).eoM();
                 }
+              }
+              localObject = com.tencent.mm.plugin.multitalk.model.ac.eon().zTM;
+              if (localObject != null) {
+                ((com.tencent.mm.plugin.multitalk.ui.widget.m)localObject).eoM();
               }
             }
           }
         }
-        com.tencent.mm.cc.c.a(paramConfiguration, al.isDarkMode());
-        if (ak.getContext().getResources() != null) {
-          ak.getContext().getResources().getConfiguration().updateFrom(paramConfiguration);
+        com.tencent.mm.cc.c.a(paramConfiguration, ao.isDarkMode());
+        if (MMApplicationContext.getContext().getResources() != null) {
+          MMApplicationContext.getContext().getResources().getConfiguration().updateFrom(paramConfiguration);
         }
       }
     }
-    Object localObject = ak.getResources();
+    Object localObject = MMApplicationContext.getResources();
     if ((localObject instanceof com.tencent.mm.cc.b)) {
       ((com.tencent.mm.cc.b)localObject).onConfigurationChanged(paramConfiguration);
     }
@@ -897,14 +939,14 @@ public class PluginBigBallOfMud
   public void onTerminate()
   {
     AppMethodBeat.i(22415);
-    ae.i("MicroMsg.PluginBigBallOfMud", "onTerminate(%s)", new Object[] { ak.getProcessName() });
+    Log.i("MicroMsg.PluginBigBallOfMud", "onTerminate(%s)", new Object[] { MMApplicationContext.getProcessName() });
     if (this.mProfileCompat != null) {
       this.mProfileCompat.onTerminate();
     }
     MMAppMgr localMMAppMgr = this.appMgr;
     Application localApplication = this.app;
-    if (localMMAppMgr.JwT != null) {
-      localApplication.unregisterReceiver(localMMAppMgr.JwT);
+    if (localMMAppMgr.OHn != null) {
+      localApplication.unregisterReceiver(localMMAppMgr.OHn);
     }
     AppMethodBeat.o(22415);
   }
@@ -912,15 +954,15 @@ public class PluginBigBallOfMud
   public void onTrimMemory(int paramInt)
   {
     AppMethodBeat.i(22417);
-    ae.i("MicroMsg.PluginBigBallOfMud", "onTrimMemory, level = %d, process = %s", new Object[] { Integer.valueOf(paramInt), ak.getProcessName() });
+    Log.i("MicroMsg.PluginBigBallOfMud", "onTrimMemory, level = %d, process = %s", new Object[] { Integer.valueOf(paramInt), MMApplicationContext.getProcessName() });
     if (this.mProfileCompat != null) {
       this.mProfileCompat.onTrimMemory(paramInt);
     }
-    Object localObject = com.tencent.mm.memory.a.a.b.aze();
-    ae.i("MicroMsg.CacheInvoke", "CacheInvoke onTrimMemory");
-    localObject = ((com.tencent.mm.memory.a.a.b)localObject).hzz.values().iterator();
+    Object localObject = com.tencent.mm.memory.a.a.b.aSk();
+    Log.i("MicroMsg.CacheInvoke", "CacheInvoke onTrimMemory");
+    localObject = ((com.tencent.mm.memory.a.a.b)localObject).itH.values().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((b.b)((Iterator)localObject).next()).azf();
+      ((b.b)((Iterator)localObject).next()).aSl();
     }
     AppMethodBeat.o(22417);
   }
@@ -932,7 +974,7 @@ public class PluginBigBallOfMud
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.PluginBigBallOfMud
  * JD-Core Version:    0.7.0.1
  */

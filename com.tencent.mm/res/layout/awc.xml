@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/ed9" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView android:id="@id/ai1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:id="@id/b4j" layout="@layout/bfc" />
-</merge>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/afz" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/e0l" android:padding="14.0dip" android:visibility="gone" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/e0k" android:layout_width="250.0dip" android:layout_height="250.0dip" android:scaleType="fitCenter" />
+    </LinearLayout>
+</LinearLayout>

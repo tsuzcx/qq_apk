@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -16,20 +16,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends RecyclerView.h
 {
-  private final Drawable amC;
+  private final Drawable amP;
   private int mSize;
-  private final Drawable pxp;
+  private final Drawable qMG;
   
   public a(Resources paramResources)
   {
     AppMethodBeat.i(9025);
-    this.amC = new ColorDrawable(paramResources.getColor(2131100251));
-    this.mSize = paramResources.getDimensionPixelSize(2131166455);
-    this.pxp = new ColorDrawable(paramResources.getColor(2131101179));
+    this.amP = new ColorDrawable(paramResources.getColor(2131100285));
+    this.mSize = paramResources.getDimensionPixelSize(2131166548);
+    this.qMG = new ColorDrawable(paramResources.getColor(2131101424));
     AppMethodBeat.o(9025);
   }
   
-  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
     AppMethodBeat.i(9026);
     int j = paramRecyclerView.getPaddingLeft();
@@ -46,8 +46,8 @@ public final class a
       if ((localView2.getVisibility() == 8) || (localView1.getVisibility() == 8)) {
         if ((localView1 instanceof TaskItemView))
         {
-          this.pxp.setBounds(j, n, k, i1);
-          this.pxp.draw(paramCanvas);
+          this.qMG.setBounds(j, n, k, i1);
+          this.qMG.draw(paramCanvas);
         }
       }
       for (;;)
@@ -56,8 +56,8 @@ public final class a
         break;
         if (((localView1 instanceof TaskManagerHeaderView)) || ((localView1 instanceof TaskHeaderView)) || ((localView1 instanceof ExpandView)))
         {
-          this.amC.setBounds(j, n, k, i1);
-          this.amC.draw(paramCanvas);
+          this.amP.setBounds(j, n, k, i1);
+          this.amP.draw(paramCanvas);
         }
         else
         {
@@ -72,26 +72,26 @@ public final class a
               }
               if (((localView2 instanceof ExpandView)) && (localView2.getVisibility() == 8))
               {
-                this.amC.setBounds(j, n, k, i1);
-                this.amC.draw(paramCanvas);
+                this.amP.setBounds(j, n, k, i1);
+                this.amP.draw(paramCanvas);
                 continue;
               }
             }
-            this.amC.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
-            this.amC.draw(paramCanvas);
-            this.pxp.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
-            this.pxp.draw(paramCanvas);
+            this.amP.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
+            this.amP.draw(paramCanvas);
+            this.qMG.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
+            this.qMG.draw(paramCanvas);
             continue;
           }
           label353:
-          super.a(paramCanvas, paramRecyclerView, paramt);
+          super.a(paramCanvas, paramRecyclerView, params);
         }
       }
     }
     AppMethodBeat.o(9026);
   }
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
     AppMethodBeat.i(9027);
     paramRect.set(0, 0, 0, this.mSize);
@@ -100,7 +100,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.a
  * JD-Core Version:    0.7.0.1
  */

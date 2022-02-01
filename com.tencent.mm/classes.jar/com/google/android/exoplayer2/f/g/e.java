@@ -30,12 +30,12 @@ final class e
   
   public static final class a
   {
-    float bAa;
-    int bAb;
+    Layout.Alignment bAb;
     float bAc;
     int bAd;
-    SpannableStringBuilder bDC;
-    Layout.Alignment bzZ;
+    float bAe;
+    int bAf;
+    SpannableStringBuilder bDE;
     long endTime;
     int lineType;
     long startTime;
@@ -48,30 +48,30 @@ final class e
       AppMethodBeat.o(92894);
     }
     
-    private a wr()
+    private a ww()
     {
       AppMethodBeat.i(92896);
-      if (this.bzZ == null) {
-        this.bAd = -2147483648;
+      if (this.bAb == null) {
+        this.bAf = -2147483648;
       }
       for (;;)
       {
         AppMethodBeat.o(92896);
         return this;
-        switch (e.1.bDB[this.bzZ.ordinal()])
+        switch (e.1.bDD[this.bAb.ordinal()])
         {
         default: 
-          new StringBuilder("Unrecognized alignment: ").append(this.bzZ);
-          this.bAd = 0;
+          new StringBuilder("Unrecognized alignment: ").append(this.bAb);
+          this.bAf = 0;
           break;
         case 1: 
-          this.bAd = 0;
+          this.bAf = 0;
           break;
         case 2: 
-          this.bAd = 1;
+          this.bAf = 1;
           break;
         case 3: 
-          this.bAd = 2;
+          this.bAf = 2;
         }
       }
     }
@@ -80,23 +80,23 @@ final class e
     {
       this.startTime = 0L;
       this.endTime = 0L;
-      this.bDC = null;
-      this.bzZ = null;
-      this.bAa = 1.4E-45F;
-      this.lineType = -2147483648;
-      this.bAb = -2147483648;
+      this.bDE = null;
+      this.bAb = null;
       this.bAc = 1.4E-45F;
+      this.lineType = -2147483648;
       this.bAd = -2147483648;
+      this.bAe = 1.4E-45F;
+      this.bAf = -2147483648;
       this.width = 1.4E-45F;
     }
     
-    public final e wq()
+    public final e wv()
     {
       AppMethodBeat.i(92895);
-      if ((this.bAc != 1.4E-45F) && (this.bAd == -2147483648)) {
-        wr();
+      if ((this.bAe != 1.4E-45F) && (this.bAf == -2147483648)) {
+        ww();
       }
-      e locale = new e(this.startTime, this.endTime, this.bDC, this.bzZ, this.bAa, this.lineType, this.bAb, this.bAc, this.bAd, this.width);
+      e locale = new e(this.startTime, this.endTime, this.bDE, this.bAb, this.bAc, this.lineType, this.bAd, this.bAe, this.bAf, this.width);
       AppMethodBeat.o(92895);
       return locale;
     }
@@ -104,7 +104,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.e
  * JD-Core Version:    0.7.0.1
  */

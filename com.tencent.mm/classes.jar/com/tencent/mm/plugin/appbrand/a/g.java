@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.a;
 
-import com.tencent.mm.sdk.d.c;
+import com.tencent.mm.sdk.statemachine.State;
 
 public abstract class g
-  extends c
+  extends State
 {
-  private final h jOX;
+  private final h kRF;
   
   public g(h paramh)
   {
-    this.jOX = paramh;
+    this.kRF = paramh;
   }
   
   public void enter()
   {
     super.enter();
-    this.jOX.a(this);
+    this.kRF.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.g
  * JD-Core Version:    0.7.0.1
  */

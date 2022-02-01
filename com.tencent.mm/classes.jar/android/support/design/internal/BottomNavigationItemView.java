@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable.ConstantState;
 import android.support.v4.content.b;
 import android.support.v4.graphics.drawable.a;
 import android.support.v4.view.r;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v4.widget.q;
 import android.support.v7.view.menu.j;
 import android.support.v7.view.menu.p.a;
@@ -26,19 +26,19 @@ public class BottomNavigationItemView
   extends FrameLayout
   implements p.a
 {
-  private static final int[] jT = { 16842912 };
-  private ColorStateList hz;
-  private final int jU;
-  private float jV;
-  private float jW;
+  private static final int[] jV = { 16842912 };
+  private ColorStateList hB;
+  private final int jW;
   private float jX;
-  private int jY;
-  private boolean jZ;
-  private ImageView ka;
-  private final TextView kb;
-  private final TextView kc;
-  private int kd = -1;
-  private j ke;
+  private float jY;
+  private float jZ;
+  private int ka;
+  private boolean kb;
+  private ImageView kc;
+  private final TextView kd;
+  private final TextView ke;
+  private int kf = -1;
+  private j kg;
   
   public BottomNavigationItemView(Context paramContext)
   {
@@ -54,16 +54,16 @@ public class BottomNavigationItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = getResources();
-    LayoutInflater.from(paramContext).inflate(2131493692, this, true);
-    setBackgroundResource(2131231891);
-    this.jU = paramAttributeSet.getDimensionPixelSize(2131166101);
-    this.ka = ((ImageView)findViewById(2131300874));
-    this.kb = ((TextView)findViewById(2131304841));
-    this.kc = ((TextView)findViewById(2131301309));
-    t.p(this.kb, 2);
-    t.p(this.kc, 2);
+    LayoutInflater.from(paramContext).inflate(2131493823, this, true);
+    setBackgroundResource(2131231974);
+    this.jW = paramAttributeSet.getDimensionPixelSize(2131166142);
+    this.kc = ((ImageView)findViewById(2131302468));
+    this.kd = ((TextView)findViewById(2131307927));
+    this.ke = ((TextView)findViewById(2131303007));
+    u.p(this.kd, 2);
+    u.p(this.ke, 2);
     setFocusable(true);
-    b(this.kb.getTextSize(), this.kc.getTextSize());
+    b(this.kd.getTextSize(), this.ke.getTextSize());
   }
   
   private static void a(View paramView, float paramFloat1, float paramFloat2, int paramInt)
@@ -83,14 +83,14 @@ public class BottomNavigationItemView
   
   private void b(float paramFloat1, float paramFloat2)
   {
-    this.jV = (paramFloat1 - paramFloat2);
-    this.jW = (1.0F * paramFloat2 / paramFloat1);
-    this.jX = (1.0F * paramFloat1 / paramFloat2);
+    this.jX = (paramFloat1 - paramFloat2);
+    this.jY = (1.0F * paramFloat2 / paramFloat1);
+    this.jZ = (1.0F * paramFloat1 / paramFloat2);
   }
   
   public final void a(j paramj)
   {
-    this.ke = paramj;
+    this.kg = paramj;
     setCheckable(paramj.isCheckable());
     setChecked(paramj.isChecked());
     setEnabled(paramj.isEnabled());
@@ -109,26 +109,26 @@ public class BottomNavigationItemView
     }
   }
   
-  public final boolean bA()
+  public final boolean bC()
   {
     return false;
   }
   
   public j getItemData()
   {
-    return this.ke;
+    return this.kg;
   }
   
   public int getItemPosition()
   {
-    return this.kd;
+    return this.kf;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-    if ((this.ke != null) && (this.ke.isCheckable()) && (this.ke.isChecked())) {
-      mergeDrawableStates(arrayOfInt, jT);
+    if ((this.kg != null) && (this.kg.isCheckable()) && (this.kg.isChecked())) {
+      mergeDrawableStates(arrayOfInt, jV);
     }
     return arrayOfInt;
   }
@@ -140,11 +140,11 @@ public class BottomNavigationItemView
   
   public void setChecked(boolean paramBoolean)
   {
-    this.kc.setPivotX(this.kc.getWidth() / 2);
-    this.kc.setPivotY(this.kc.getBaseline());
-    this.kb.setPivotX(this.kb.getWidth() / 2);
-    this.kb.setPivotY(this.kb.getBaseline());
-    switch (this.jY)
+    this.ke.setPivotX(this.ke.getWidth() / 2);
+    this.ke.setPivotY(this.ke.getBaseline());
+    this.kd.setPivotX(this.kd.getWidth() / 2);
+    this.kd.setPivotY(this.kd.getBaseline());
+    switch (this.ka)
     {
     }
     for (;;)
@@ -152,60 +152,60 @@ public class BottomNavigationItemView
       refreshDrawableState();
       setSelected(paramBoolean);
       return;
-      if (this.jZ)
+      if (this.kb)
       {
         if (paramBoolean)
         {
-          a(this.ka, this.jU, 49);
-          a(this.kc, 1.0F, 1.0F, 0);
+          a(this.kc, this.jW, 49);
+          a(this.ke, 1.0F, 1.0F, 0);
         }
         for (;;)
         {
-          this.kb.setVisibility(4);
+          this.kd.setVisibility(4);
           break;
-          a(this.ka, this.jU, 17);
-          a(this.kc, 0.5F, 0.5F, 4);
+          a(this.kc, this.jW, 17);
+          a(this.ke, 0.5F, 0.5F, 4);
         }
       }
       if (paramBoolean)
       {
-        a(this.ka, (int)(this.jU + this.jV), 49);
-        a(this.kc, 1.0F, 1.0F, 0);
-        a(this.kb, this.jW, this.jW, 4);
+        a(this.kc, (int)(this.jW + this.jX), 49);
+        a(this.ke, 1.0F, 1.0F, 0);
+        a(this.kd, this.jY, this.jY, 4);
       }
       else
       {
-        a(this.ka, this.jU, 49);
-        a(this.kc, this.jX, this.jX, 4);
-        a(this.kb, 1.0F, 1.0F, 0);
+        a(this.kc, this.jW, 49);
+        a(this.ke, this.jZ, this.jZ, 4);
+        a(this.kd, 1.0F, 1.0F, 0);
         continue;
         if (paramBoolean)
         {
-          a(this.ka, this.jU, 49);
-          a(this.kc, 1.0F, 1.0F, 0);
+          a(this.kc, this.jW, 49);
+          a(this.ke, 1.0F, 1.0F, 0);
         }
         for (;;)
         {
-          this.kb.setVisibility(4);
+          this.kd.setVisibility(4);
           break;
-          a(this.ka, this.jU, 17);
-          a(this.kc, 0.5F, 0.5F, 4);
+          a(this.kc, this.jW, 17);
+          a(this.ke, 0.5F, 0.5F, 4);
         }
         if (paramBoolean)
         {
-          a(this.ka, (int)(this.jU + this.jV), 49);
-          a(this.kc, 1.0F, 1.0F, 0);
-          a(this.kb, this.jW, this.jW, 4);
+          a(this.kc, (int)(this.jW + this.jX), 49);
+          a(this.ke, 1.0F, 1.0F, 0);
+          a(this.kd, this.jY, this.jY, 4);
         }
         else
         {
-          a(this.ka, this.jU, 49);
-          a(this.kc, this.jX, this.jX, 4);
-          a(this.kb, 1.0F, 1.0F, 0);
+          a(this.kc, this.jW, 49);
+          a(this.ke, this.jZ, this.jZ, 4);
+          a(this.kd, 1.0F, 1.0F, 0);
           continue;
-          a(this.ka, this.jU, 17);
-          this.kc.setVisibility(8);
-          this.kb.setVisibility(8);
+          a(this.kc, this.jW, 17);
+          this.ke.setVisibility(8);
+          this.kd.setVisibility(8);
         }
       }
     }
@@ -214,15 +214,15 @@ public class BottomNavigationItemView
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    this.kb.setEnabled(paramBoolean);
+    this.kd.setEnabled(paramBoolean);
+    this.ke.setEnabled(paramBoolean);
     this.kc.setEnabled(paramBoolean);
-    this.ka.setEnabled(paramBoolean);
     if (paramBoolean)
     {
-      t.a(this, r.X(getContext()));
+      u.a(this, r.Y(getContext()));
       return;
     }
-    t.a(this, null);
+    u.a(this, null);
   }
   
   public void setIcon(Drawable paramDrawable)
@@ -238,8 +238,8 @@ public class BottomNavigationItemView
     for (;;)
     {
       localObject = a.i(paramDrawable).mutate();
-      a.a((Drawable)localObject, this.hz);
-      this.ka.setImageDrawable((Drawable)localObject);
+      a.a((Drawable)localObject, this.hB);
+      this.kc.setImageDrawable((Drawable)localObject);
       return;
       label40:
       paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
@@ -248,17 +248,17 @@ public class BottomNavigationItemView
   
   public void setIconSize(int paramInt)
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ka.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kc.getLayoutParams();
     localLayoutParams.width = paramInt;
     localLayoutParams.height = paramInt;
-    this.ka.setLayoutParams(localLayoutParams);
+    this.kc.setLayoutParams(localLayoutParams);
   }
   
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.hz = paramColorStateList;
-    if (this.ke != null) {
-      setIcon(this.ke.getIcon());
+    this.hB = paramColorStateList;
+    if (this.kg != null) {
+      setIcon(this.kg.getIcon());
     }
   }
   
@@ -274,20 +274,20 @@ public class BottomNavigationItemView
   
   public void setItemBackground(Drawable paramDrawable)
   {
-    t.a(this, paramDrawable);
+    u.a(this, paramDrawable);
   }
   
   public void setItemPosition(int paramInt)
   {
-    this.kd = paramInt;
+    this.kf = paramInt;
   }
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    if (this.jY != paramInt)
+    if (this.ka != paramInt)
     {
-      this.jY = paramInt;
-      if (this.ke == null) {
+      this.ka = paramInt;
+      if (this.kg == null) {
         break label38;
       }
     }
@@ -295,7 +295,7 @@ public class BottomNavigationItemView
     for (paramInt = 1;; paramInt = 0)
     {
       if (paramInt != 0) {
-        setChecked(this.ke.isChecked());
+        setChecked(this.kg.isChecked());
       }
       return;
     }
@@ -303,10 +303,10 @@ public class BottomNavigationItemView
   
   public void setShifting(boolean paramBoolean)
   {
-    if (this.jZ != paramBoolean)
+    if (this.kb != paramBoolean)
     {
-      this.jZ = paramBoolean;
-      if (this.ke == null) {
+      this.kb = paramBoolean;
+      if (this.kg == null) {
         break label38;
       }
     }
@@ -314,7 +314,7 @@ public class BottomNavigationItemView
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        setChecked(this.ke.isChecked());
+        setChecked(this.kg.isChecked());
       }
       return;
     }
@@ -322,37 +322,37 @@ public class BottomNavigationItemView
   
   public void setTextAppearanceActive(int paramInt)
   {
-    q.d(this.kc, paramInt);
-    b(this.kb.getTextSize(), this.kc.getTextSize());
+    q.d(this.ke, paramInt);
+    b(this.kd.getTextSize(), this.ke.getTextSize());
   }
   
   public void setTextAppearanceInactive(int paramInt)
   {
-    q.d(this.kb, paramInt);
-    b(this.kb.getTextSize(), this.kc.getTextSize());
+    q.d(this.kd, paramInt);
+    b(this.kd.getTextSize(), this.ke.getTextSize());
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
     if (paramColorStateList != null)
     {
-      this.kb.setTextColor(paramColorStateList);
-      this.kc.setTextColor(paramColorStateList);
+      this.kd.setTextColor(paramColorStateList);
+      this.ke.setTextColor(paramColorStateList);
     }
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.kb.setText(paramCharSequence);
-    this.kc.setText(paramCharSequence);
-    if ((this.ke == null) || (TextUtils.isEmpty(this.ke.getContentDescription()))) {
+    this.kd.setText(paramCharSequence);
+    this.ke.setText(paramCharSequence);
+    if ((this.kg == null) || (TextUtils.isEmpty(this.kg.getContentDescription()))) {
       setContentDescription(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.BottomNavigationItemView
  * JD-Core Version:    0.7.0.1
  */

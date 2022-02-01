@@ -1,17 +1,32 @@
 package kotlinx.coroutines;
 
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.Executor;
+import kotlin.l;
+import kotlinx.coroutines.internal.d;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/Incomplete;", "", "isActive", "", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "kotlinx-coroutines-core"})
-public abstract interface bm
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ExecutorCoroutineDispatcherImpl;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcherBase;", "executor", "Ljava/util/concurrent/Executor;", "(Ljava/util/concurrent/Executor;)V", "getExecutor", "()Ljava/util/concurrent/Executor;", "kotlinx-coroutines-core"})
+public final class bm
+  extends bl
 {
-  public abstract ca gzS();
+  private final Executor executor;
   
-  public abstract boolean isActive();
+  public bm(Executor paramExecutor)
+  {
+    AppMethodBeat.i(192321);
+    this.executor = paramExecutor;
+    this.TUJ = d.b(getExecutor());
+    AppMethodBeat.o(192321);
+  }
+  
+  public final Executor getExecutor()
+  {
+    return this.executor;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.bm
  * JD-Core Version:    0.7.0.1
  */

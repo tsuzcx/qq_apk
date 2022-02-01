@@ -13,35 +13,39 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.a.b.k;
+import com.tencent.mm.modelappbrand.l;
+import com.tencent.mm.plugin.appbrand.ac.o;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.plugin.appbrand.report.m;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.plugin.messenger.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 
 public class c
-  implements com.tencent.mm.modelappbrand.l
+  implements l
 {
   private static SpannableString a(Context paramContext, int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(47710);
     if (paramBitmap == null) {
       if (paramInt == 1) {
-        paramInt = 2131691252;
+        paramInt = 2131691575;
       }
     }
     for (paramContext = paramContext.getResources().getDrawable(paramInt);; paramContext = new BitmapDrawable(paramContext.getResources(), paramBitmap))
     {
-      paramContext.setBounds(0, 0, com.tencent.mm.plugin.appbrand.y.o.vP(16), com.tencent.mm.plugin.appbrand.y.o.vP(16));
-      paramContext = new com.tencent.mm.plugin.appbrand.widget.g.b(paramContext);
+      paramContext.setBounds(0, 0, o.zE(16), o.zE(16));
+      paramContext = new com.tencent.mm.plugin.appbrand.widget.h.b(paramContext);
       paramBitmap = new SpannableString("@ ");
       paramBitmap.setSpan(paramContext, 0, 1, 33);
       AppMethodBeat.o(47710);
       return paramBitmap;
-      paramInt = 2131691249;
+      paramInt = 2131691572;
       break;
     }
   }
@@ -49,18 +53,18 @@ public class c
   public final CharSequence a(String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
     AppMethodBeat.i(47709);
-    final com.tencent.mm.ah.a.b localb = com.tencent.mm.ah.a.b.zk(paramString);
+    final com.tencent.mm.ag.a.b localb = com.tencent.mm.ag.a.b.HM(paramString);
     Context localContext = (Context)paramWeakReference.get();
     if (localContext == null)
     {
-      ae.w("MicroMsg.WxaSubscribeMsgService", "context is null");
+      Log.w("MicroMsg.WxaSubscribeMsgService", "context is null");
       AppMethodBeat.o(47709);
       return null;
     }
     paramString = localb.content;
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.WxaSubscribeMsgService", "content is null, return");
+      Log.w("MicroMsg.WxaSubscribeMsgService", "content is null, return");
       AppMethodBeat.o(47709);
       return null;
     }
@@ -74,17 +78,17 @@ public class c
       public final void onClickImp(View paramAnonymousView)
       {
         AppMethodBeat.i(47706);
-        ae.i("MicroMsg.WxaSubscribeMsgService", "On Span clicked(title : %s, username : %s, path : %s, talker : %s)", new Object[] { localb.content, localb.username, localb.path, this.lYE });
+        Log.i("MicroMsg.WxaSubscribeMsgService", "On Span clicked(title : %s, username : %s, path : %s, talker : %s)", new Object[] { localb.content, localb.username, localb.path, this.ngk });
         Object localObject = new Bundle();
         ((Bundle)localObject).putInt("stat_scene", i);
         ((Bundle)localObject).putString("stat_msg_id", "msg_" + Long.toString(l));
-        ((Bundle)localObject).putString("stat_chat_talker_username", this.lYE);
-        ((Bundle)localObject).putString("stat_send_msg_user", this.lYF);
+        ((Bundle)localObject).putString("stat_chat_talker_username", this.ngk);
+        ((Bundle)localObject).putString("stat_send_msg_user", this.ngl);
         AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
         localAppBrandStatObject.scene = 1088;
-        localAppBrandStatObject.dlj = "";
-        localAppBrandStatObject.dLf = com.tencent.mm.plugin.appbrand.report.l.l(localAppBrandStatObject.scene, (Bundle)localObject);
-        localAppBrandStatObject.dLg = com.tencent.mm.plugin.appbrand.report.l.m(localAppBrandStatObject.scene, (Bundle)localObject);
+        localAppBrandStatObject.dCw = "";
+        localAppBrandStatObject.ecU = m.k(localAppBrandStatObject.scene, (Bundle)localObject);
+        localAppBrandStatObject.ecV = m.l(localAppBrandStatObject.scene, (Bundle)localObject);
         String str = "";
         localObject = str;
         if (localb.path != null)
@@ -99,36 +103,28 @@ public class c
             }
           }
         }
-        ((p)g.ab(p.class)).a(paramAnonymousView.getContext(), localb.username, null, localb.type, 0, (String)localObject, localAppBrandStatObject);
-        ((com.tencent.mm.plugin.appbrand.service.o)g.ab(com.tencent.mm.plugin.appbrand.service.o.class)).a(localb.username, new c.1.1(this));
+        ((r)g.af(r.class)).a(paramAnonymousView.getContext(), localb.username, null, localb.type, 0, (String)localObject, localAppBrandStatObject);
+        ((q)g.af(q.class)).a(localb.username, new c.1.1(this));
         AppMethodBeat.o(47706);
       }
     }, paramString.indexOf(localb.title), paramString.indexOf(localb.title) + localb.title.length(), 17);
-    ae.i("MicroMsg.WxaSubscribeMsgService", "wxaSubscribeSysContent.forbids:%d", new Object[] { Integer.valueOf(localb.hGU) });
-    if (localb.hGU == 1)
+    Log.i("MicroMsg.WxaSubscribeMsgService", "wxaSubscribeSysContent.forbids:%d", new Object[] { Integer.valueOf(localb.iBe) });
+    if (localb.iBe == 1)
     {
       AppMethodBeat.o(47709);
       return paramBundle;
     }
-    paramString = ((com.tencent.mm.plugin.appbrand.service.o)g.ab(com.tencent.mm.plugin.appbrand.service.o.class)).Ob(localb.username);
+    paramString = ((q)g.af(q.class)).Xk(localb.username);
     if (paramString != null) {}
     for (paramString = paramString.field_brandIconURL;; paramString = "")
     {
-      localObject = com.tencent.mm.modelappbrand.a.b.aEl().a(paramString, null);
+      localObject = com.tencent.mm.modelappbrand.a.b.aXY().a(paramString, null);
       if (localObject != null) {
         break;
       }
-      com.tencent.mm.modelappbrand.a.b.aEl().a(new b.k()
+      com.tencent.mm.modelappbrand.a.b.aXY().a(new b.k()
       {
-        public final String BN()
-        {
-          AppMethodBeat.i(47708);
-          String str = c.class.getSimpleName();
-          AppMethodBeat.o(47708);
-          return str;
-        }
-        
-        public final void F(Bitmap paramAnonymousBitmap)
+        public final void I(Bitmap paramAnonymousBitmap)
         {
           AppMethodBeat.i(47707);
           NeatTextView localNeatTextView = (NeatTextView)paramWeakReference1.get();
@@ -136,32 +132,40 @@ public class c
           if ((localObject != null) && (localNeatTextView != null))
           {
             paramAnonymousBitmap = new BitmapDrawable(((Context)localObject).getResources(), paramAnonymousBitmap);
-            paramAnonymousBitmap.setBounds(0, 0, com.tencent.mm.plugin.appbrand.y.o.vP(16), com.tencent.mm.plugin.appbrand.y.o.vP(16));
-            paramAnonymousBitmap = new com.tencent.mm.plugin.appbrand.widget.g.b(paramAnonymousBitmap);
+            paramAnonymousBitmap.setBounds(0, 0, o.zE(16), o.zE(16));
+            paramAnonymousBitmap = new com.tencent.mm.plugin.appbrand.widget.h.b(paramAnonymousBitmap);
             localObject = new SpannableString("@ ");
             ((SpannableString)localObject).setSpan(paramAnonymousBitmap, 0, 1, 33);
-            localNeatTextView.aq(TextUtils.concat(new CharSequence[] { localObject, paramBundle }));
+            localNeatTextView.aw(TextUtils.concat(new CharSequence[] { localObject, paramBundle }));
             localNeatTextView.invalidate();
           }
           AppMethodBeat.o(47707);
         }
         
-        public final void aEt() {}
+        public final String Lb()
+        {
+          AppMethodBeat.i(47708);
+          String str = c.class.getSimpleName();
+          AppMethodBeat.o(47708);
+          return str;
+        }
         
-        public final void ox() {}
+        public final void aYg() {}
+        
+        public final void oD() {}
       }, paramString, null);
-      paramString = TextUtils.concat(new CharSequence[] { a(localContext, localb.hGV, null), paramBundle });
+      paramString = TextUtils.concat(new CharSequence[] { a(localContext, localb.iBf, null), paramBundle });
       AppMethodBeat.o(47709);
       return paramString;
     }
-    paramString = TextUtils.concat(new CharSequence[] { a(localContext, localb.hGV, (Bitmap)localObject), paramBundle });
+    paramString = TextUtils.concat(new CharSequence[] { a(localContext, localb.iBf, (Bitmap)localObject), paramBundle });
     AppMethodBeat.o(47709);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.message.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,14 @@ import oicq.wlogin_sdk.tools.util;
 public final class y
   extends a
 {
-  int OoF = 0;
+  int UdE = 0;
   
   public y()
   {
-    this.Ony = 292;
+    this.Ucx = 292;
   }
   
-  private static int ak(byte[] paramArrayOfByte, int paramInt)
+  private static int al(byte[] paramArrayOfByte, int paramInt)
   {
     if (paramArrayOfByte != null)
     {
@@ -28,36 +28,36 @@ public final class y
   public final byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
   {
     AppMethodBeat.i(88112);
-    int n = ak(paramArrayOfByte1, 16);
-    int m = ak(paramArrayOfByte2, 16);
-    int k = ak(paramArrayOfByte3, 16);
-    int j = ak(paramArrayOfByte4, 32);
-    int i = ak(paramArrayOfByte5, 16);
-    this.OoF = (n + 2 + 2 + m + 2 + 2 + k + 2 + j + 2 + i);
-    byte[] arrayOfByte = new byte[this.OoF];
-    util.X(arrayOfByte, 0, n);
+    int n = al(paramArrayOfByte1, 16);
+    int m = al(paramArrayOfByte2, 16);
+    int k = al(paramArrayOfByte3, 16);
+    int j = al(paramArrayOfByte4, 32);
+    int i = al(paramArrayOfByte5, 16);
+    this.UdE = (n + 2 + 2 + m + 2 + 2 + k + 2 + j + 2 + i);
+    byte[] arrayOfByte = new byte[this.UdE];
+    util.ah(arrayOfByte, 0, n);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, n);
     n += 2;
-    util.X(arrayOfByte, n, m);
+    util.ah(arrayOfByte, n, m);
     n += 2;
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, n, m);
     m = n + m;
-    util.X(arrayOfByte, m, paramInt);
+    util.ah(arrayOfByte, m, paramInt);
     paramInt = m + 2;
-    util.X(arrayOfByte, paramInt, k);
+    util.ah(arrayOfByte, paramInt, k);
     paramInt += 2;
     System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, paramInt, k);
     paramInt += k;
-    util.X(arrayOfByte, paramInt, j);
+    util.ah(arrayOfByte, paramInt, j);
     paramInt += 2;
     System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, paramInt, j);
     paramInt += j;
-    util.X(arrayOfByte, paramInt, i);
+    util.ah(arrayOfByte, paramInt, i);
     System.arraycopy(paramArrayOfByte5, 0, arrayOfByte, paramInt + 2, i);
-    super.amG(this.Ony);
-    super.aj(arrayOfByte, this.OoF);
-    super.gCx();
-    paramArrayOfByte1 = super.gCt();
+    super.awj(this.Ucx);
+    super.ak(arrayOfByte, this.UdE);
+    super.hPB();
+    paramArrayOfByte1 = super.hPx();
     AppMethodBeat.o(88112);
     return paramArrayOfByte1;
   }

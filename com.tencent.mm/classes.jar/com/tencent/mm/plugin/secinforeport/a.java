@@ -7,10 +7,10 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.secinforeport.a.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.zh;
-import com.tencent.mm.protocal.protobuf.zi;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.aax;
+import com.tencent.mm.protocal.protobuf.aay;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.charset.Charset;
 import java.util.LinkedList;
 
@@ -20,8 +20,8 @@ public enum a
   static
   {
     AppMethodBeat.i(89142);
-    yRD = new a("INSTANCE");
-    yRE = new a[] { yRD };
+    CWr = new a("INSTANCE");
+    CWs = new a[] { CWr };
     AppMethodBeat.o(89142);
   }
   
@@ -32,33 +32,33 @@ public enum a
     AppMethodBeat.i(89141);
     if (paramString == null)
     {
-      ae.w("MicroMsg.ClipBordReportImpl", "operationInfo isNullOrNil");
+      Log.w("MicroMsg.ClipBordReportImpl", "operationInfo isNullOrNil");
       AppMethodBeat.o(89141);
       return;
     }
-    if (!g.ajM())
+    if (!g.aAc())
     {
       AppMethodBeat.o(89141);
       return;
     }
-    zh localzh = new zh();
-    localzh.Grh = paramInt1;
-    localzh.Grj = paramInt2;
+    aax localaax = new aax();
+    localaax.Lmf = paramInt1;
+    localaax.Lmh = paramInt2;
     paramString = paramString.getBytes(Charset.forName("UTF-8"));
-    localzh.Gri = new SKBuiltinBuffer_t().setBuffer(paramString);
-    if (!bu.cF(paramArrayOfByte)) {
-      localzh.Grk = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    localaax.Lmg = new SKBuiltinBuffer_t().setBuffer(paramString);
+    if (!Util.isNullOrNil(paramArrayOfByte)) {
+      localaax.Lmi = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
     }
-    paramString = new zi();
-    paramString.Grm.add(localzh);
-    paramString.Grl = paramString.Grm.size();
-    ((l)g.ab(l.class)).azE().d(new k.a(211, paramString));
+    paramString = new aay();
+    paramString.Lmk.add(localaax);
+    paramString.Lmj = paramString.Lmk.size();
+    ((l)g.af(l.class)).aSM().d(new k.a(211, paramString));
     AppMethodBeat.o(89141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.secinforeport.a
  * JD-Core Version:    0.7.0.1
  */

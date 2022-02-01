@@ -7,12 +7,12 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawImageActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.e;
 import com.tencent.mm.plugin.appbrand.canvas.e.a;
-import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class f
@@ -92,7 +92,7 @@ public final class f
           for (int i = paramInt2;; i = 0)
           {
             localObject = new Rect(paramInt3, i, paramInt1 + paramInt4, paramInt2 + paramInt5);
-            paramString = paramd.jWv.a(paramd, paramString, (Rect)localObject, new e.a()
+            paramString = paramd.kZr.a(paramd, paramString, (Rect)localObject, new e.a()
             {
               public final void a(com.tencent.mm.plugin.appbrand.canvas.d paramAnonymousd)
               {
@@ -110,14 +110,14 @@ public final class f
             break;
           }
           label278:
-          paramInt1 = g.vO(paramInt1);
-          paramInt2 = g.vO(paramInt2);
-          paramInt4 = g.vO(paramInt4);
-          paramInt5 = g.vO(paramInt5);
-          paramInt3 = g.vO(paramInt3);
-          i = g.vO(i);
-          int j = g.vO(paramString.getWidth());
-          int k = g.vO(paramString.getHeight());
+          paramInt1 = g.zD(paramInt1);
+          paramInt2 = g.zD(paramInt2);
+          paramInt4 = g.zD(paramInt4);
+          paramInt5 = g.zD(paramInt5);
+          paramInt3 = g.zD(paramInt3);
+          i = g.zD(i);
+          int j = g.zD(paramString.getWidth());
+          int k = g.zD(paramString.getHeight());
           paramFloat3 = f3 / paramInt4;
           paramFloat4 = f2 / paramInt5;
           f1 = paramFloat2 + (paramInt3 - paramInt1) * paramFloat3;
@@ -127,10 +127,10 @@ public final class f
           for (;;)
           {
             paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-            paramCanvas.drawBitmap(paramString, new Rect(0, 0, paramString.getWidth(), paramString.getHeight()), new RectF(f1, f3, f4, paramFloat4), paramd.jWq);
+            paramCanvas.drawBitmap(paramString, new Rect(0, 0, paramString.getWidth(), paramString.getHeight()), new RectF(f1, f3, f4, paramFloat4), paramd.kZm);
             AppMethodBeat.o(144874);
             return true;
-            localObject = paramd.jWv.a(paramd, paramString, new e.a()
+            localObject = paramd.kZr.a(paramd, paramString, new e.a()
             {
               public final void a(com.tencent.mm.plugin.appbrand.canvas.d paramAnonymousd)
               {
@@ -145,7 +145,7 @@ public final class f
               return false;
             }
             if (f3 == 0.0F) {
-              paramFloat3 = g.vO(((Bitmap)localObject).getWidth()) + paramFloat2;
+              paramFloat3 = g.zD(((Bitmap)localObject).getWidth()) + paramFloat2;
             }
             f4 = paramFloat3;
             f3 = paramFloat1;
@@ -153,7 +153,7 @@ public final class f
             paramString = (String)localObject;
             if (f2 == 0.0F)
             {
-              paramFloat4 = g.vO(((Bitmap)localObject).getHeight()) + paramFloat1;
+              paramFloat4 = g.zD(((Bitmap)localObject).getHeight()) + paramFloat1;
               f4 = paramFloat3;
               f3 = paramFloat1;
               f1 = paramFloat2;
@@ -189,7 +189,7 @@ public final class f
       AppMethodBeat.o(144873);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.jWB, paramDrawActionArg.url, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.width, paramDrawActionArg.height, paramDrawActionArg.jWC, paramDrawActionArg.jWD, paramDrawActionArg.aXg, paramDrawActionArg.aXh);
+    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.kZx, paramDrawActionArg.url, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.width, paramDrawActionArg.height, paramDrawActionArg.kZy, paramDrawActionArg.kZz, paramDrawActionArg.aWX, paramDrawActionArg.aWY);
     AppMethodBeat.o(144873);
     return bool;
   }
@@ -208,7 +208,7 @@ public final class f
     return bool;
   }
   
-  public final BaseDrawActionArg bdS()
+  public final BaseDrawActionArg bzj()
   {
     AppMethodBeat.i(144871);
     DrawImageActionArg localDrawImageActionArg = new DrawImageActionArg();
@@ -223,7 +223,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.f
  * JD-Core Version:    0.7.0.1
  */

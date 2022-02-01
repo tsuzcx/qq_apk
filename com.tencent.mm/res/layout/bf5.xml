@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/azq" android:paddingLeft="10.0dip" style="@style/nr"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/co4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="15.0dip" android:textColor="#ff888888" android:gravity="center_horizontal" android:id="@id/g6f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:includeFontPadding="false" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <ImageView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ftu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="6.0dip" android:src="@drawable/bja" />
+        <TextView android:textColor="@color/ag2" android:gravity="center_vertical" android:id="@id/fuf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:shadowColor="@color/fm" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" android:drawablePadding="3.0dip" style="@style/mi" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h7i" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <TextView android:textColor="@color/ag2" android:layout_gravity="center_vertical" android:id="@id/fue" android:maxWidth="100.0dip" style="@style/mk" />
+    </LinearLayout>
+</RelativeLayout>

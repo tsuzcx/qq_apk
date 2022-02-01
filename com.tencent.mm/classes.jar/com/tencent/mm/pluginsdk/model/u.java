@@ -1,58 +1,148 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.FileObserver;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class u
-  extends FileObserver
 {
-  private a FeO;
-  private String yUS;
+  private static volatile u JVz = null;
   
-  public u(String paramString, a parama)
+  public static t A(int paramInt, Bundle paramBundle)
   {
-    super(paramString);
-    AppMethodBeat.i(151647);
-    ae.i("MicroMsg.ScreenshotObserver", "observer  ".concat(String.valueOf(paramString)));
-    this.FeO = parama;
-    AppMethodBeat.o(151647);
-  }
-  
-  public final void onEvent(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(151648);
-    if ((paramString != null) && (paramInt == 8) && ((this.yUS == null) || (!paramString.equalsIgnoreCase(this.yUS))))
+    AppMethodBeat.i(109474);
+    switch (paramInt)
     {
-      this.yUS = paramString;
-      this.FeO.dCi();
-      ae.i("MicroMsg.ScreenshotObserver", "Send event to listener. ".concat(String.valueOf(paramString)));
+    default: 
+      paramBundle = new r();
+      AppMethodBeat.o(109474);
+      return paramBundle;
+    case 2: 
+      paramBundle = new d(paramBundle);
+      AppMethodBeat.o(109474);
+      return paramBundle;
     }
-    AppMethodBeat.o(151648);
+    paramBundle = new y();
+    AppMethodBeat.o(109474);
+    return paramBundle;
   }
   
-  public final void start()
+  public static int ahE(int paramInt)
   {
-    AppMethodBeat.i(151649);
-    super.startWatching();
-    AppMethodBeat.o(151649);
+    AppMethodBeat.i(109475);
+    switch (paramInt)
+    {
+    default: 
+      AppMethodBeat.o(109475);
+      return 5;
+    case 0: 
+      paramInt = Util.getInt(com.tencent.mm.n.h.aqK().aj("QQBroswer", "RecommendCount"), 5);
+      AppMethodBeat.o(109475);
+      return paramInt;
+    }
+    AppMethodBeat.o(109475);
+    return 2147483647;
   }
   
-  public final void stop()
+  public static void ahF(int paramInt)
   {
-    AppMethodBeat.i(151650);
-    super.stopWatching();
-    AppMethodBeat.o(151650);
+    AppMethodBeat.i(109476);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(109476);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(10998, new Object[] { Integer.valueOf(0) });
+      AppMethodBeat.o(109476);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(11091, new Object[] { Integer.valueOf(0) });
+    }
   }
   
-  public static abstract interface a
+  public static void ahG(int paramInt)
   {
-    public abstract void dCi();
+    AppMethodBeat.i(109477);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(109477);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(10998, new Object[] { Integer.valueOf(1) });
+      AppMethodBeat.o(109477);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(11091, new Object[] { Integer.valueOf(1) });
+    }
+  }
+  
+  public static void ahH(int paramInt)
+  {
+    AppMethodBeat.i(109478);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(109478);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(10998, new Object[] { Integer.valueOf(3) });
+      AppMethodBeat.o(109478);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(11091, new Object[] { Integer.valueOf(3) });
+    }
+  }
+  
+  public static void ahI(int paramInt)
+  {
+    AppMethodBeat.i(109479);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(109479);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(10998, new Object[] { Integer.valueOf(2) });
+      AppMethodBeat.o(109479);
+      return;
+      com.tencent.mm.plugin.report.service.h.CyF.a(11091, new Object[] { Integer.valueOf(2) });
+    }
+  }
+  
+  public static u gmF()
+  {
+    AppMethodBeat.i(109473);
+    if (JVz == null) {}
+    try
+    {
+      if (JVz == null) {
+        JVz = new u();
+      }
+      u localu = JVz;
+      AppMethodBeat.o(109473);
+      return localu;
+    }
+    finally
+    {
+      AppMethodBeat.o(109473);
+    }
+  }
+  
+  public static final class a
+  {
+    public int JVA;
+    public int JVB;
+    public String JVC;
+    public int JVD;
+    public String JVE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.u
  * JD-Core Version:    0.7.0.1
  */

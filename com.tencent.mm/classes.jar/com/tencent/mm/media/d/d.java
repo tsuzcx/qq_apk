@@ -1,18 +1,18 @@
 package com.tencent.mm.media.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/decoder/DropFrameAlgo;", "", "()V", "dropFrames", "", "", "frames", "", "remains", "", "dropFrames2", "getDown", "", "i", "j", "x", "getUp", "f", "slope", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/DropFrameAlgo;", "", "()V", "dropFrames", "", "", "frames", "", "remains", "", "dropFrames2", "getDown", "", "i", "j", "x", "getUp", "f", "slope", "plugin-mediaeditor_release"})
 public final class d
 {
-  public static final d hle;
+  public static final d ieb;
   
   static
   {
     AppMethodBeat.i(93530);
-    hle = new d();
+    ieb = new d();
     AppMethodBeat.o(93530);
   }
   

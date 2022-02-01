@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.emoji.h.a;
-import com.tencent.mm.plugin.emoji.model.e;
+import com.tencent.mm.plugin.emoji.model.g;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.storage.bc;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,20 +18,20 @@ public class c
   implements Cloneable, Iterable<f>
 {
   protected ArrayList<f> mItemList;
-  private HashMap<String, bc> pIu;
-  protected HashMap<String, bc> pIv;
-  public boolean pIw;
+  private HashMap<String, bh> qYg;
+  protected HashMap<String, bh> qYh;
+  public boolean qYi;
   
   public c()
   {
     AppMethodBeat.i(108356);
-    this.pIu = new HashMap();
-    this.pIv = new HashMap();
-    this.pIw = v.aAQ();
+    this.qYg = new HashMap();
+    this.qYh = new HashMap();
+    this.qYi = z.aUn();
     AppMethodBeat.o(108356);
   }
   
-  public c(com.tencent.mm.plugin.emoji.model.f paramf) {}
+  public c(g paramg) {}
   
   public c(List<f> paramList)
   {
@@ -47,7 +47,7 @@ public class c
     AppMethodBeat.o(108357);
   }
   
-  public final f Cj(int paramInt)
+  public final f FS(int paramInt)
   {
     AppMethodBeat.i(108359);
     if ((this.mItemList == null) || (this.mItemList.size() <= paramInt) || (paramInt < 0))
@@ -65,7 +65,7 @@ public class c
     return localf;
   }
   
-  public final f abZ(String paramString)
+  public final f amb(String paramString)
   {
     AppMethodBeat.i(108360);
     if (this.mItemList != null)
@@ -74,7 +74,7 @@ public class c
       while (localIterator.hasNext())
       {
         f localf = (f)localIterator.next();
-        EmotionSummary localEmotionSummary = localf.pIz;
+        EmotionSummary localEmotionSummary = localf.qYl;
         if ((localEmotionSummary != null) && (localEmotionSummary.ProductID != null) && (localEmotionSummary.ProductID.equals(paramString)))
         {
           AppMethodBeat.o(108360);
@@ -86,69 +86,56 @@ public class c
     return null;
   }
   
-  public final void aca(String paramString)
+  public final void amc(String paramString)
   {
     AppMethodBeat.i(108363);
-    f localf = abZ(paramString);
+    f localf = amb(paramString);
     if (localf == null)
     {
       AppMethodBeat.o(108363);
       return;
     }
     localf.setStatus(-1);
-    localf.a(this.pIw, acd(paramString), acb(paramString));
+    localf.a(this.qYi, amf(paramString), amd(paramString));
     AppMethodBeat.o(108363);
   }
   
-  public final boolean acb(String paramString)
+  public final boolean amd(String paramString)
   {
     AppMethodBeat.i(108364);
-    if (this.pIv == null)
+    if (this.qYh == null)
     {
       AppMethodBeat.o(108364);
       return false;
     }
-    boolean bool = this.pIv.containsKey(paramString);
+    boolean bool = this.qYh.containsKey(paramString);
     AppMethodBeat.o(108364);
     return bool;
   }
   
-  public final bc acc(String paramString)
+  public final bh ame(String paramString)
   {
     AppMethodBeat.i(108365);
-    bc localbc2 = acd(paramString);
-    bc localbc1 = localbc2;
-    if (localbc2 == null)
+    bh localbh2 = amf(paramString);
+    bh localbh1 = localbh2;
+    if (localbh2 == null)
     {
-      localbc1 = new bc(paramString);
-      this.pIu.put(paramString, localbc1);
+      localbh1 = new bh(paramString);
+      this.qYg.put(paramString, localbh1);
     }
     AppMethodBeat.o(108365);
-    return localbc1;
+    return localbh1;
   }
   
-  public final bc acd(String paramString)
+  public final bh amf(String paramString)
   {
     AppMethodBeat.i(108366);
-    paramString = (bc)this.pIu.get(paramString);
+    paramString = (bh)this.qYg.get(paramString);
     AppMethodBeat.o(108366);
     return paramString;
   }
   
-  public final void cY(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(108368);
-    paramString = (bc)this.pIu.get(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(108368);
-      return;
-    }
-    paramString.abB(paramInt);
-    AppMethodBeat.o(108368);
-  }
-  
-  public final c chD()
+  public final c cFp()
   {
     AppMethodBeat.i(108361);
     try
@@ -182,7 +169,7 @@ public class c
     return localc1;
   }
   
-  public void chE()
+  public void cFq()
   {
     AppMethodBeat.i(108369);
     if (this.mItemList == null)
@@ -190,7 +177,7 @@ public class c
       AppMethodBeat.o(108369);
       return;
     }
-    if (k.cil().pKL == null)
+    if (k.cGk().rbr == null)
     {
       AppMethodBeat.o(108369);
       return;
@@ -199,19 +186,19 @@ public class c
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      Object localObject2 = localf.pIz;
+      Object localObject2 = localf.qYl;
       if (localObject2 != null)
       {
-        Object localObject1 = k.cil();
+        Object localObject1 = k.cGk();
         localObject2 = ((EmotionSummary)localObject2).ProductID;
-        localObject1 = (Integer)((e)localObject1).pKL.get(localObject2);
+        localObject1 = (Integer)((com.tencent.mm.plugin.emoji.model.f)localObject1).rbr.get(localObject2);
         if (localObject1 == null) {}
         for (int i = -1;; i = ((Integer)localObject1).intValue())
         {
           if (i >= 0)
           {
             localf.setStatus(6);
-            localf.Hx = i;
+            localf.HH = i;
           }
           if ((i >= 0) || (localf.mStatus != 6)) {
             break;
@@ -232,17 +219,30 @@ public class c
       this.mItemList.clear();
       this.mItemList = null;
     }
-    if (this.pIu != null)
+    if (this.qYg != null)
     {
-      this.pIu.clear();
-      this.pIu = null;
+      this.qYg.clear();
+      this.qYg = null;
     }
-    if (this.pIv != null)
+    if (this.qYh != null)
     {
-      this.pIv.clear();
-      this.pIv = null;
+      this.qYh.clear();
+      this.qYh = null;
     }
     AppMethodBeat.o(108354);
+  }
+  
+  public final void de(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(108368);
+    paramString = (bh)this.qYg.get(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(108368);
+      return;
+    }
+    paramString.akj(paramInt);
+    AppMethodBeat.o(108368);
   }
   
   public Iterator<f> iterator()
@@ -261,17 +261,17 @@ public class c
       AppMethodBeat.o(108362);
       return;
     }
-    this.pIv = k.getEmojiStorageMgr().JfV.fwW();
+    this.qYh = k.getEmojiStorageMgr().OpO.gEI();
     Iterator localIterator = this.mItemList.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      Object localObject = localf.pIz;
+      Object localObject = localf.qYl;
       if (localObject != null)
       {
         if (a.g((EmotionSummary)localObject))
         {
-          if (a.cjy()) {}
+          if (a.cHz()) {}
           for (int i = 7;; i = 3)
           {
             localf.setStatus(i);
@@ -279,10 +279,10 @@ public class c
           }
         }
         localObject = ((EmotionSummary)localObject).ProductID;
-        localf.a(this.pIw, acd((String)localObject), acb((String)localObject));
+        localf.a(this.qYi, amf((String)localObject), amd((String)localObject));
       }
     }
-    chE();
+    cFq();
     AppMethodBeat.o(108362);
   }
   
@@ -323,7 +323,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.c
  * JD-Core Version:    0.7.0.1
  */

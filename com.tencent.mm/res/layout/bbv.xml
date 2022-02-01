@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a5u" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/o" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <ImageView android:gravity="center_vertical" android:id="@id/fzd" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="@dimen/jn" android:src="@raw/icons_outlined_error" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center_vertical" android:id="@id/fze" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
+<RelativeLayout android:id="@id/j5r" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/zw"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/j45" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" android:contentDescription="@string/zw" />
+    <View android:id="@id/j6w" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/zw" />
+    <ImageView android:id="@id/j71" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@drawable/b1o" android:layout_centerInParent="true" android:contentDescription="@string/xu" />
+    <ProgressBar android:id="@id/j5x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a62" />
+    <RelativeLayout android:id="@id/j5p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/irz" android:background="@drawable/b1x" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/c2" android:layout_alignParentBottom="true" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bbq" />
+        <RelativeLayout android:id="@id/j5v" android:background="@drawable/b1p" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_alignParentBottom="true">
+            <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/j5y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce" />
+            <FrameLayout android:id="@id/j5u" android:background="@drawable/arg" android:visibility="visible" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/cb" android:layout_below="@id/j5y" android:contentDescription="@string/b5x">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_close" android:contentDescription="@string/b5x" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/j5w" android:background="@drawable/arg" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/cc" android:layout_below="@id/j5y" android:layout_alignParentRight="true" android:contentDescription="@string/wp">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_outlined_more" android:contentDescription="@string/wp" app:iconColor="@color/am" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/j5z" android:background="@drawable/arg" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/cc" android:layout_toLeftOf="@id/j5w" android:layout_below="@id/j5y" android:contentDescription="@string/yx">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_share" android:contentDescription="@string/yx" app:iconColor="@color/am" />
+            </FrameLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

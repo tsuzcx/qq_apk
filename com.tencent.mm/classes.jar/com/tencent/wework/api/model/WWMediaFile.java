@@ -1,5 +1,7 @@
 package com.tencent.wework.api.model;
 
+import android.content.ClipData;
+import android.content.ClipData.Item;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,13 +46,13 @@ public class WWMediaFile
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(193328);
+    AppMethodBeat.i(199005);
     this.fileData = paramBundle.getByteArray("_wwfileobject_fileData");
     this.filePath = paramBundle.getString("_wwfileobject_filePath");
     this.fileName = paramBundle.getString("_wwfileobject_fileName");
     this.fileId = paramBundle.getString("_wwfileobject_fileId");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(193328);
+    AppMethodBeat.o(199005);
   }
   
   public final void setContentLengthLimit(int paramInt)
@@ -64,24 +66,35 @@ public class WWMediaFile
     paramBundle.putByteArray("_wwfileobject_fileData", this.fileData);
     paramBundle.putString("_wwfileobject_filePath", this.filePath);
     paramBundle.putString("_wwfileobject_fileName", this.fileName);
-    paramBundle.putString("_wwfileobject_fileId", this.fileId);
-    super.toBundle(paramBundle);
-    AppMethodBeat.o(106541);
+    if ((this.filePath != null) && (this.filePath.startsWith("content"))) {}
+    for (this.fileId = null;; this.fileId = OpenDataUtils.aa(this.mContext, this.Sxs, this.filePath))
+    {
+      paramBundle.putString("_wwfileobject_fileId", this.fileId);
+      super.toBundle(paramBundle);
+      AppMethodBeat.o(106541);
+      return;
+    }
   }
   
-  public final void x(Intent paramIntent, String paramString)
+  public final void v(Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(193329);
+    AppMethodBeat.i(199006);
     if ((this.filePath != null) && (this.filePath.startsWith("content")))
     {
-      paramIntent.setDataAndType(Uri.parse(this.filePath), "*/*");
-      paramIntent.addFlags(1);
+      if (paramIntent.getClipData() != null) {
+        break label86;
+      }
+      paramString = new ClipData.Item(Uri.parse(this.filePath));
+      paramIntent.setClipData(new ClipData("", new String[] { "*/*" }, paramString));
     }
-    for (this.fileId = null;; this.fileId = OpenDataUtils.W(this.mContext, paramString, this.filePath))
+    for (;;)
     {
-      paramIntent.putExtra("_wwfileobject_fileId", this.fileId);
-      AppMethodBeat.o(193329);
+      paramIntent.addFlags(1);
+      this.fileId = null;
+      AppMethodBeat.o(199006);
       return;
+      label86:
+      paramIntent.getClipData().addItem(new ClipData.Item(Uri.parse(this.filePath)));
     }
   }
 }

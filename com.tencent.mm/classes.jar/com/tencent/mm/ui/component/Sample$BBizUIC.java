@@ -1,26 +1,26 @@
 package com.tencent.mm.ui.component;
 
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.MMActivity;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/component/Sample$BBizUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "libmmui_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/component/Sample$BBizUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroid/support/v7/app/AppCompatActivity;", "(Landroid/support/v7/app/AppCompatActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "libmmui_release"})
 public final class Sample$BBizUIC
   extends UIComponent
 {
   public Sample$BBizUIC(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(193832);
-    AppMethodBeat.o(193832);
+    AppMethodBeat.i(204798);
+    AppMethodBeat.o(204798);
   }
   
-  public Sample$BBizUIC(MMActivity paramMMActivity)
+  public Sample$BBizUIC(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramMMActivity);
-    AppMethodBeat.i(193831);
-    AppMethodBeat.o(193831);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(204797);
+    AppMethodBeat.o(204797);
   }
 }
 

@@ -15,56 +15,56 @@ public final class k
   extends g
   implements j
 {
-  private static final j OwR;
-  private static final j OwS;
-  private final g OwO;
-  private final rx.e<rx.d<rx.b>> OwP;
-  private final j OwQ;
+  private static final j UmF;
+  private static final j UmG;
+  private final g UmC;
+  private final rx.e<rx.d<rx.b>> UmD;
+  private final j UmE;
   
   static
   {
     AppMethodBeat.i(90399);
-    OwR = new j()
+    UmF = new j()
     {
-      public final void gDs() {}
+      public final void hQA() {}
       
-      public final boolean gDt()
+      public final boolean hQB()
       {
         return false;
       }
     };
-    OwS = rx.f.d.gEf();
+    UmG = rx.f.d.hRn();
     AppMethodBeat.o(90399);
   }
   
   public k(rx.b.e<rx.d<rx.d<rx.b>>, rx.b> parame, g paramg)
   {
     AppMethodBeat.i(90395);
-    this.OwO = paramg;
+    this.UmC = paramg;
     paramg = new c();
-    paramg.OyM = new a.1(paramg);
+    paramg.UoA = new a.1(paramg);
     paramg = new rx.e.a(paramg, paramg);
-    this.OwP = new rx.c.b(paramg);
-    this.OwQ = ((rx.b)parame.call(paramg.gDq())).gDn();
+    this.UmD = new rx.c.b(paramg);
+    this.UmE = ((rx.b)parame.call(paramg.hQy())).hQv();
     AppMethodBeat.o(90395);
   }
   
   public final g.a createWorker()
   {
     AppMethodBeat.i(90398);
-    Object localObject1 = this.OwO.createWorker();
-    Object localObject2 = rx.internal.a.a.gDw();
+    Object localObject1 = this.UmC.createWorker();
+    Object localObject2 = rx.internal.a.a.hQE();
     final rx.c.b localb = new rx.c.b((rx.e)localObject2);
     localObject2 = ((rx.internal.a.a)localObject2).a(new rx.b.e() {});
     localObject1 = new g.a()
     {
-      private final AtomicBoolean OwX;
+      private final AtomicBoolean UmL;
       
       public final j a(rx.b.a paramAnonymousa)
       {
         AppMethodBeat.i(90392);
         paramAnonymousa = new k.b(paramAnonymousa);
-        localb.gC(paramAnonymousa);
+        localb.gL(paramAnonymousa);
         AppMethodBeat.o(90392);
         return paramAnonymousa;
       }
@@ -73,46 +73,46 @@ public final class k
       {
         AppMethodBeat.i(90391);
         paramAnonymousa = new k.a(paramAnonymousa, paramAnonymousLong, paramAnonymousTimeUnit);
-        localb.gC(paramAnonymousa);
+        localb.gL(paramAnonymousa);
         AppMethodBeat.o(90391);
         return paramAnonymousa;
       }
       
-      public final void gDs()
+      public final void hQA()
       {
         AppMethodBeat.i(90389);
-        if (this.OwX.compareAndSet(false, true))
+        if (this.UmL.compareAndSet(false, true))
         {
-          this.OwT.gDs();
-          localb.gDo();
+          this.UmH.hQA();
+          localb.hQw();
         }
         AppMethodBeat.o(90389);
       }
       
-      public final boolean gDt()
+      public final boolean hQB()
       {
         AppMethodBeat.i(90390);
-        boolean bool = this.OwX.get();
+        boolean bool = this.UmL.get();
         AppMethodBeat.o(90390);
         return bool;
       }
     };
-    this.OwP.gC(localObject2);
+    this.UmD.gL(localObject2);
     AppMethodBeat.o(90398);
     return localObject1;
   }
   
-  public final void gDs()
+  public final void hQA()
   {
     AppMethodBeat.i(90396);
-    this.OwQ.gDs();
+    this.UmE.hQA();
     AppMethodBeat.o(90396);
   }
   
-  public final boolean gDt()
+  public final boolean hQB()
   {
     AppMethodBeat.i(90397);
-    boolean bool = this.OwQ.gDt();
+    boolean bool = this.UmE.hQB();
     AppMethodBeat.o(90397);
     return bool;
   }
@@ -120,21 +120,21 @@ public final class k
   static final class a
     extends k.c
   {
-    private final long LCQ;
-    private final TimeUnit OuU;
-    private final rx.b.a OwI;
+    private final TimeUnit UkI;
+    private final rx.b.a Umw;
+    private final long delayTime;
     
     public a(rx.b.a parama, long paramLong, TimeUnit paramTimeUnit)
     {
-      this.OwI = parama;
-      this.LCQ = paramLong;
-      this.OuU = paramTimeUnit;
+      this.Umw = parama;
+      this.delayTime = paramLong;
+      this.UkI = paramTimeUnit;
     }
     
     protected final j a(g.a parama)
     {
       AppMethodBeat.i(90394);
-      parama = parama.a(this.OwI, this.LCQ, this.OuU);
+      parama = parama.a(this.Umw, this.delayTime, this.UkI);
       AppMethodBeat.o(90394);
       return parama;
     }
@@ -143,17 +143,17 @@ public final class k
   static final class b
     extends k.c
   {
-    private final rx.b.a OwI;
+    private final rx.b.a Umw;
     
     public b(rx.b.a parama)
     {
-      this.OwI = parama;
+      this.Umw = parama;
     }
     
     protected final j a(g.a parama)
     {
       AppMethodBeat.i(90393);
-      parama = parama.a(this.OwI);
+      parama = parama.a(this.Umw);
       AppMethodBeat.o(90393);
       return parama;
     }
@@ -170,26 +170,26 @@ public final class k
     
     protected abstract j a(g.a parama);
     
-    public final void gDs()
+    public final void hQA()
     {
       j localj2;
       do
       {
-        j localj1 = k.gDH();
+        j localj1 = k.hQP();
         do
         {
           localj2 = (j)get();
-          if (localj2 == k.gDH()) {
+          if (localj2 == k.hQP()) {
             return;
           }
         } while (!compareAndSet(localj2, localj1));
-      } while (localj2 == k.gDG());
-      localj2.gDs();
+      } while (localj2 == k.hQO());
+      localj2.hQA();
     }
     
-    public final boolean gDt()
+    public final boolean hQB()
     {
-      return ((j)get()).gDt();
+      return ((j)get()).hQB();
     }
   }
 }

@@ -7,17 +7,17 @@ public enum n$a
   static
   {
     AppMethodBeat.i(118419);
-    AZz = new a("SelfTabGallery", 0);
-    AZA = new a("SelfGallery", 1);
-    AZB = new a("ProfileGallery", 2);
-    AZC = new a("SingleGallery", 3);
-    AZD = new a("MultiUserGallery", 4);
-    AZE = new a("HistoryGallery", 5);
-    AZF = new a("AllFriendGallery", 6);
-    AZG = new a("FavSelfStoryGallery", 7);
-    AZH = new a("FavOtherStoryGallery", 8);
-    AZI = new a("FavSelfStoryGalleryMulti", 9);
-    AZJ = new a[] { AZz, AZA, AZB, AZC, AZD, AZE, AZF, AZG, AZH, AZI };
+    Fkx = new a("SelfTabGallery", 0);
+    Fky = new a("SelfGallery", 1);
+    Fkz = new a("ProfileGallery", 2);
+    FkA = new a("SingleGallery", 3);
+    FkB = new a("MultiUserGallery", 4);
+    FkC = new a("HistoryGallery", 5);
+    FkD = new a("AllFriendGallery", 6);
+    FkE = new a("FavSelfStoryGallery", 7);
+    FkF = new a("FavOtherStoryGallery", 8);
+    FkG = new a("FavSelfStoryGalleryMulti", 9);
+    FkH = new a[] { Fkx, Fky, Fkz, FkA, FkB, FkC, FkD, FkE, FkF, FkG };
     AppMethodBeat.o(118419);
   }
   
@@ -25,7 +25,7 @@ public enum n$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.n.a
  * JD-Core Version:    0.7.0.1
  */

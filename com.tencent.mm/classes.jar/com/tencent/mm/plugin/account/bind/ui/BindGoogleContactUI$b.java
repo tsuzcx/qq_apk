@@ -1,0 +1,157 @@
+package com.tencent.mm.plugin.account.bind.ui;
+
+import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.friend.a.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+final class BindGoogleContactUI$b
+  extends AsyncTask<Void, Void, Void>
+{
+  private boolean isSuccess;
+  private String jZX;
+  private String kaa;
+  private String kab;
+  
+  public BindGoogleContactUI$b(BindGoogleContactUI paramBindGoogleContactUI, String paramString)
+  {
+    this.kaa = paramString;
+  }
+  
+  private static String SJ(String paramString)
+  {
+    AppMethodBeat.i(109789);
+    Object localObject1 = "";
+    HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL("https://accounts.google.com/o/oauth2/token").openConnection();
+    localHttpURLConnection.setRequestProperty("Charset", "UTF-8");
+    localHttpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+    localHttpURLConnection.setRequestMethod("POST");
+    localHttpURLConnection.setConnectTimeout(20000);
+    localHttpURLConnection.setReadTimeout(20000);
+    localHttpURLConnection.setDoInput(true);
+    localHttpURLConnection.setDoOutput(true);
+    Object localObject2 = new ArrayList();
+    ((List)localObject2).add(new BasicNameValuePair("code", paramString));
+    ((List)localObject2).add(new BasicNameValuePair("client_id", "369820936870.apps.googleusercontent.com"));
+    ((List)localObject2).add(new BasicNameValuePair("client_secret", "wcFhvo-s7wNcmQ9Zjr00H06u"));
+    ((List)localObject2).add(new BasicNameValuePair("redirect_uri", "urn:ietf:wg:oauth:2.0:oob"));
+    ((List)localObject2).add(new BasicNameValuePair("grant_type", "authorization_code"));
+    paramString = m.aY((List)localObject2);
+    Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "QueryString:%s", new Object[] { paramString });
+    localHttpURLConnection.setRequestProperty("Content-length", String.valueOf(paramString.getBytes().length));
+    localObject2 = new BufferedWriter(new OutputStreamWriter(localHttpURLConnection.getOutputStream(), "UTF-8"));
+    ((BufferedWriter)localObject2).write(paramString);
+    ((BufferedWriter)localObject2).flush();
+    ((BufferedWriter)localObject2).close();
+    int i = localHttpURLConnection.getResponseCode();
+    Log.e("MicroMsg.GoogleContact.BindGoogleContactUI", "responseCode:".concat(String.valueOf(i)));
+    paramString = (String)localObject1;
+    if (200 == i)
+    {
+      paramString = new StringBuffer();
+      localObject1 = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream(), "UTF-8"));
+      for (;;)
+      {
+        localObject2 = ((BufferedReader)localObject1).readLine();
+        if (localObject2 == null) {
+          break;
+        }
+        paramString.append((String)localObject2);
+      }
+      ((BufferedReader)localObject1).close();
+      paramString = paramString.toString();
+      Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "exchange token respone:%s", new Object[] { paramString });
+    }
+    try
+    {
+      localHttpURLConnection.getInputStream().close();
+      localHttpURLConnection.disconnect();
+      AppMethodBeat.o(109789);
+      return paramString;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.BindGoogleContactUI", localException.getMessage());
+      }
+    }
+  }
+  
+  private Void bnl()
+  {
+    AppMethodBeat.i(109788);
+    try
+    {
+      String str = SJ(this.kaa);
+      this.jZX = new JSONObject(str).optString("access_token");
+      this.kab = new JSONObject(str).optString("refresh_token");
+      Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "response:%s", new Object[] { str });
+      Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "mAccessToken:%s", new Object[] { this.jZX });
+      Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "mRefreshToken:%s", new Object[] { this.kab });
+      this.isSuccess = true;
+      AppMethodBeat.o(109788);
+      return null;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.BindGoogleContactUI", "MalformedURLException:%s" + localMalformedURLException.getMessage());
+      }
+    }
+    catch (ProtocolException localProtocolException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.BindGoogleContactUI", "ProtocolException:%s" + localProtocolException.getMessage());
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.BindGoogleContactUI", "IOException:%s" + localIOException.getMessage());
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.BindGoogleContactUI", "JSONException:%s" + localJSONException.getMessage());
+      }
+    }
+  }
+  
+  protected final void onPreExecute()
+  {
+    AppMethodBeat.i(109787);
+    super.onPreExecute();
+    Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "onPreExecute");
+    this.jZX = "";
+    this.kab = "";
+    this.isSuccess = false;
+    AppMethodBeat.o(109787);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindGoogleContactUI.b
+ * JD-Core Version:    0.7.0.1
+ */

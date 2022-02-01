@@ -5,38 +5,11 @@ import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class o
 {
-  public static boolean v(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(155911);
-    if (paramCharSequence == null)
-    {
-      AppMethodBeat.o(155911);
-      return false;
-    }
-    if (ae.geX.gbp == 1)
-    {
-      AppMethodBeat.o(155911);
-      return true;
-    }
-    if (Build.VERSION.SDK_INT == 16)
-    {
-      if (bu.bI(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
-      {
-        AppMethodBeat.o(155911);
-        return false;
-      }
-      AppMethodBeat.o(155911);
-      return true;
-    }
-    AppMethodBeat.o(155911);
-    return false;
-  }
-  
-  public static String vR(String paramString)
+  public static String Eh(String paramString)
   {
     AppMethodBeat.i(155912);
     if (paramString == null)
@@ -44,17 +17,17 @@ public final class o
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.geX.gbp == 2)
+    if (ae.gKE.gGH == 2)
     {
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.geX.gbA == 1)
+    if (ae.gKE.gGS == 1)
     {
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.geX.gbp == 1)
+    if (ae.gKE.gGH == 1)
     {
       if (paramString.toString().contains("\n"))
       {
@@ -69,7 +42,7 @@ public final class o
     {
       if (paramString.toString().contains("\n"))
       {
-        if (bu.bI(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
+        if (Util.nullAs(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
         {
           AppMethodBeat.o(155912);
           return paramString;
@@ -83,6 +56,33 @@ public final class o
     }
     AppMethodBeat.o(155912);
     return paramString;
+  }
+  
+  public static boolean y(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(155911);
+    if (paramCharSequence == null)
+    {
+      AppMethodBeat.o(155911);
+      return false;
+    }
+    if (ae.gKE.gGH == 1)
+    {
+      AppMethodBeat.o(155911);
+      return true;
+    }
+    if (Build.VERSION.SDK_INT == 16)
+    {
+      if (Util.nullAs(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
+      {
+        AppMethodBeat.o(155911);
+        return false;
+      }
+      AppMethodBeat.o(155911);
+      return true;
+    }
+    AppMethodBeat.o(155911);
+    return false;
   }
 }
 

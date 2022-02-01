@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 public abstract interface a
   extends com.tencent.mm.plugin.topstory.ui.video.a
 {
-  public abstract void TP(int paramInt);
+  public abstract void acf(int paramInt);
 }
 
 

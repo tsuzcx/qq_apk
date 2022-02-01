@@ -10,13 +10,13 @@ public final class d
   {
     super(paramContext);
     AppMethodBeat.i(49864);
-    setContentView(2131493078);
+    setContentView(2131493120);
     AppMethodBeat.o(49864);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.d
  * JD-Core Version:    0.7.0.1
  */

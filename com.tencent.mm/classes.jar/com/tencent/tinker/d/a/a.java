@@ -15,17 +15,17 @@ public final class a
   extends DeflaterOutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private static final byte[] MEz = { 0 };
-  private byte[] MEA = EMPTY_BYTE_ARRAY;
-  private final HashSet<String> MEB = new HashSet();
-  private int MEC = 8;
-  private ByteArrayOutputStream MED = new ByteArrayOutputStream();
-  private ZipEntry MEE;
-  private long MEF = 0L;
-  private int MEG;
-  private byte[] MEH;
-  private final int MEI = 4;
-  private boolean bWS = false;
+  private static final byte[] Skx = { 0 };
+  private int SkA = 8;
+  private ByteArrayOutputStream SkB = new ByteArrayOutputStream();
+  private ZipEntry SkC;
+  private long SkD = 0L;
+  private int SkE;
+  private byte[] SkF;
+  private final int SkG = 4;
+  private byte[] Sky = EMPTY_BYTE_ARRAY;
+  private final HashSet<String> Skz = new HashSet();
+  private boolean chA = false;
   private boolean closed = false;
   private int compressionLevel = -1;
   private final CRC32 crc = new CRC32();
@@ -76,7 +76,7 @@ public final class a
     return paramInt;
   }
   
-  private void gdc()
+  private void hpk()
   {
     if (this.closed) {
       throw new IOException("Stream is closed");
@@ -97,135 +97,135 @@ public final class a
   
   public final void closeEntry()
   {
-    gdc();
-    if (this.MEE == null) {
+    hpk();
+    if (this.SkC == null) {
       return;
     }
-    if (this.MEE.getMethod() == 8) {
+    if (this.SkC.getMethod() == 8) {
       super.finish();
     }
-    if (this.MEE.getMethod() == 0)
+    if (this.SkC.getMethod() == 0)
     {
-      if (this.crc.getValue() != this.MEE.getCrc()) {
+      if (this.crc.getValue() != this.SkC.getCrc()) {
         throw new ZipException("CRC mismatch");
       }
-      if (this.MEE.getSize() != this.MEF) {
+      if (this.SkC.getSize() != this.SkD) {
         throw new ZipException("Size mismatch");
       }
     }
     int i = 30;
-    if (this.MEE.getMethod() != 0)
+    if (this.SkC.getMethod() != 0)
     {
       i = 46;
       c(this.out, 134695760L);
-      this.MEE.setCrc(this.crc.getValue());
-      c(this.out, this.MEE.getCrc());
-      this.MEE.setCompressedSize(this.def.getTotalOut());
-      c(this.out, this.MEE.getCompressedSize());
-      this.MEE.setSize(this.def.getTotalIn());
-      c(this.out, this.MEE.getSize());
+      this.SkC.setCrc(this.crc.getValue());
+      c(this.out, this.SkC.getCrc());
+      this.SkC.setCompressedSize(this.def.getTotalOut());
+      c(this.out, this.SkC.getCompressedSize());
+      this.SkC.setSize(this.def.getTotalIn());
+      c(this.out, this.SkC.getSize());
     }
     int j;
-    if (this.MEE.getMethod() == 0)
+    if (this.SkC.getMethod() == 0)
     {
       j = 0;
-      c(this.MED, 33639248L);
-      d(this.MED, 20);
-      d(this.MED, 20);
-      d(this.MED, j | 0x800);
-      d(this.MED, this.MEE.getMethod());
-      d(this.MED, 0);
-      d(this.MED, 33);
-      c(this.MED, this.crc.getValue());
-      if (this.MEE.getMethod() != 8) {
+      c(this.SkB, 33639248L);
+      d(this.SkB, 20);
+      d(this.SkB, 20);
+      d(this.SkB, j | 0x800);
+      d(this.SkB, this.SkC.getMethod());
+      d(this.SkB, 0);
+      d(this.SkB, 33);
+      c(this.SkB, this.crc.getValue());
+      if (this.SkC.getMethod() != 8) {
         break label587;
       }
-      i = (int)(i + c(this.MED, this.def.getTotalOut()));
-      c(this.MED, this.def.getTotalIn());
+      i = (int)(i + c(this.SkB, this.def.getTotalOut()));
+      c(this.SkB, this.def.getTotalIn());
       label360:
-      i += d(this.MED, this.MEG);
-      if (this.MEE.getExtra() == null) {
+      i += d(this.SkB, this.SkE);
+      if (this.SkC.getExtra() == null) {
         break label618;
       }
-      i += d(this.MED, this.MEE.getExtra().length);
+      i += d(this.SkB, this.SkC.getExtra().length);
     }
     for (;;)
     {
-      String str = this.MEE.getComment();
+      String str = this.SkC.getComment();
       byte[] arrayOfByte = EMPTY_BYTE_ARRAY;
       if (str != null) {
         arrayOfByte = str.getBytes(Charset.forName("UTF-8"));
       }
-      d(this.MED, arrayOfByte.length);
-      d(this.MED, 0);
-      d(this.MED, 0);
-      c(this.MED, 0L);
-      c(this.MED, this.offset);
-      this.MED.write(this.MEH);
-      this.MEH = null;
-      if (this.MEE.getExtra() != null) {
-        this.MED.write(this.MEE.getExtra());
+      d(this.SkB, arrayOfByte.length);
+      d(this.SkB, 0);
+      d(this.SkB, 0);
+      c(this.SkB, 0L);
+      c(this.SkB, this.offset);
+      this.SkB.write(this.SkF);
+      this.SkF = null;
+      if (this.SkC.getExtra() != null) {
+        this.SkB.write(this.SkC.getExtra());
       }
       j = this.offset;
       this.offset = (i + this.padding + j);
       this.padding = 0;
       if (arrayOfByte.length > 0) {
-        this.MED.write(arrayOfByte);
+        this.SkB.write(arrayOfByte);
       }
-      this.MEE = null;
+      this.SkC = null;
       this.crc.reset();
-      this.MEF = 0L;
+      this.SkD = 0L;
       this.def.reset();
       return;
       j = 8;
       break;
       label587:
-      i = (int)(i + c(this.MED, this.MEF));
-      c(this.MED, this.MEF);
+      i = (int)(i + c(this.SkB, this.SkD));
+      c(this.SkB, this.SkD);
       break label360;
       label618:
-      d(this.MED, 0);
+      d(this.SkB, 0);
     }
   }
   
   public final void finish()
   {
-    gdc();
-    if (this.bWS) {
+    hpk();
+    if (this.chA) {
       return;
     }
-    if (this.MEB.isEmpty()) {
+    if (this.Skz.isEmpty()) {
       throw new ZipException("No entries");
     }
-    if (this.MEE != null) {
+    if (this.SkC != null) {
       closeEntry();
     }
-    int i = this.MED.size();
-    c(this.MED, 101010256L);
-    d(this.MED, 0);
-    d(this.MED, 0);
-    d(this.MED, this.MEB.size());
-    d(this.MED, this.MEB.size());
-    c(this.MED, i);
-    c(this.MED, this.offset + this.padding);
-    d(this.MED, this.MEA.length);
-    if (this.MEA.length > 0) {
-      this.MED.write(this.MEA);
+    int i = this.SkB.size();
+    c(this.SkB, 101010256L);
+    d(this.SkB, 0);
+    d(this.SkB, 0);
+    d(this.SkB, this.Skz.size());
+    d(this.SkB, this.Skz.size());
+    c(this.SkB, i);
+    c(this.SkB, this.offset + this.padding);
+    d(this.SkB, this.Sky.length);
+    if (this.Sky.length > 0) {
+      this.SkB.write(this.Sky);
     }
-    this.MED.writeTo(this.out);
-    this.MED = null;
-    this.bWS = true;
+    this.SkB.writeTo(this.out);
+    this.SkB = null;
+    this.chA = true;
   }
   
   public final void putNextEntry(ZipEntry paramZipEntry)
   {
     int k = 0;
-    if (this.MEE != null) {
+    if (this.SkC != null) {
       closeEntry();
     }
     int i = paramZipEntry.getMethod();
     if (i == -1) {
-      i = this.MEC;
+      i = this.SkA;
     }
     for (;;)
     {
@@ -248,22 +248,22 @@ public final class a
           throw new ZipException("STORED entry size/compressed size mismatch");
         }
       }
-      gdc();
-      if (this.MEB.contains(paramZipEntry.getName())) {
+      hpk();
+      if (this.Skz.contains(paramZipEntry.getName())) {
         throw new ZipException("Entry already exists: " + paramZipEntry.getName());
       }
-      if (this.MEB.size() == 65535) {
+      if (this.Skz.size() == 65535) {
         throw new ZipException("Too many entries for the zip file format's 16-bit entry count");
       }
-      this.MEH = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
-      this.MEG = this.MEH.length;
-      if (this.MEG > 65535) {
-        throw new IllegalArgumentException("Name too long: " + this.MEG + " UTF-8 bytes");
+      this.SkF = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
+      this.SkE = this.SkF.length;
+      if (this.SkE > 65535) {
+        throw new IllegalArgumentException("Name too long: " + this.SkE + " UTF-8 bytes");
       }
       this.def.setLevel(this.compressionLevel);
       paramZipEntry.setMethod(i);
-      this.MEE = paramZipEntry;
-      this.MEB.add(this.MEE.getName());
+      this.SkC = paramZipEntry;
+      this.Skz.add(this.SkC.getName());
       int j;
       label454:
       int m;
@@ -275,45 +275,45 @@ public final class a
         d(this.out, 20);
         d(this.out, j | 0x800);
         d(this.out, i);
-        if (this.MEE.getTime() == -1L) {
-          this.MEE.setTime(System.currentTimeMillis());
+        if (this.SkC.getTime() == -1L) {
+          this.SkC.setTime(System.currentTimeMillis());
         }
         d(this.out, 0);
         d(this.out, 33);
         if (i != 0) {
           break label609;
         }
-        c(this.out, this.MEE.getCrc());
-        c(this.out, this.MEE.getSize());
-        c(this.out, this.MEE.getSize());
-        d(this.out, this.MEG);
+        c(this.out, this.SkC.getCrc());
+        c(this.out, this.SkC.getSize());
+        c(this.out, this.SkC.getSize());
+        d(this.out, this.SkE);
         m = this.offset;
-        n = this.MEG;
-        if (this.MEE.getExtra() == null) {
+        n = this.SkE;
+        if (this.SkC.getExtra() == null) {
           break label639;
         }
-        i = this.MEE.getExtra().length;
+        i = this.SkC.getExtra().length;
         label497:
         j = k;
-        if (this.MEE.getMethod() == 0)
+        if (this.SkC.getMethod() == 0)
         {
-          if (this.MEI != 0) {
+          if (this.SkG != 0) {
             break label644;
           }
           j = k;
         }
         label520:
         this.padding = j;
-        if (this.MEE.getExtra() == null) {
+        if (this.SkC.getExtra() == null) {
           break label672;
         }
-        d(this.out, this.MEE.getExtra().length + this.padding);
+        d(this.out, this.SkC.getExtra().length + this.padding);
       }
       for (;;)
       {
-        this.out.write(this.MEH);
-        if (this.MEE.getExtra() != null) {
-          this.out.write(this.MEE.getExtra());
+        this.out.write(this.SkF);
+        if (this.SkC.getExtra() != null) {
+          this.out.write(this.SkC.getExtra());
         }
         c(this.out, this.padding);
         return;
@@ -328,8 +328,8 @@ public final class a
         i = 0;
         break label497;
         label644:
-        j = this.MEI;
-        j = (j - (i + (n + (m + 30))) % j) % this.MEI;
+        j = this.SkG;
+        j = (j - (i + (n + (m + 30))) % j) % this.SkG;
         break label520;
         label672:
         d(this.out, this.padding);
@@ -339,7 +339,7 @@ public final class a
   
   public final void write(int paramInt)
   {
-    byte[] arrayOfByte = MEz;
+    byte[] arrayOfByte = Skx;
     arrayOfByte[0] = ((byte)(paramInt & 0xFF));
     write(arrayOfByte, 0, 1);
   }
@@ -350,16 +350,16 @@ public final class a
     if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2)) {
       throw new ArrayIndexOutOfBoundsException("length=" + i + "; regionStart=" + paramInt1 + "; regionLength=" + paramInt2);
     }
-    if (this.MEE == null) {
+    if (this.SkC == null) {
       throw new ZipException("No active entry");
     }
-    if (this.MEE.getMethod() == 0) {
+    if (this.SkC.getMethod() == 0) {
       this.out.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     for (;;)
     {
       this.crc.update(paramArrayOfByte, paramInt1, paramInt2);
-      this.MEF += paramInt2;
+      this.SkD += paramInt2;
       return;
       super.write(paramArrayOfByte, paramInt1, paramInt2);
     }
@@ -367,7 +367,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.d.a.a
  * JD-Core Version:    0.7.0.1
  */

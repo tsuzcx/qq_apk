@@ -1,71 +1,72 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.location.ui.impl.f;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bga;
-import com.tencent.mm.protocal.protobuf.bgb;
-import com.tencent.mm.protocal.protobuf.chm;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.brw;
+import com.tencent.mm.protocal.protobuf.brx;
+import com.tencent.mm.protocal.protobuf.cxt;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class i
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private com.tencent.mm.ak.f callback;
-  public int dsO;
+  private com.tencent.mm.ak.i callback;
+  public int dJY;
   public int errCode;
   public String errMsg;
   public int errType;
-  public boolean hkx;
-  private Runnable ips;
-  public String kid;
-  public List<com.tencent.mm.plugin.location.ui.impl.f> list;
-  public final b rr;
-  public byte[] vlP;
-  public byte[] vlQ;
-  public String vlR;
-  public int vlS;
+  public String hes;
+  public boolean idt;
+  private Runnable jkz;
+  public List<f> list;
+  public final d rr;
+  public byte[] yFH;
+  public byte[] yFI;
+  public String yFJ;
+  public int yFK;
   
   public i(byte[] paramArrayOfByte, double paramDouble1, double paramDouble2, int paramInt1, int paramInt2, double paramDouble3, double paramDouble4, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(55694);
     this.list = new ArrayList();
-    this.vlQ = null;
-    this.hkx = false;
-    this.vlR = "";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bga();
-    ((b.a)localObject).hQG = new bgb();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getpoilist";
-    ((b.a)localObject).funcId = 457;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    bga localbga = (bga)this.rr.hQD.hQJ;
+    this.yFI = null;
+    this.idt = false;
+    this.yFJ = "";
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new brw();
+    ((d.a)localObject).iLO = new brx();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getpoilist";
+    ((d.a)localObject).funcId = 457;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    brw localbrw = (brw)this.rr.iLK.iLR;
     if (paramArrayOfByte == null)
     {
       localObject = new SKBuiltinBuffer_t();
-      localbga.GTa = ((SKBuiltinBuffer_t)localObject);
-      localbga.GLP = paramString2;
-      localbga.Gay = paramDouble1;
-      localbga.Gax = paramDouble2;
-      localbga.Scene = paramInt1;
-      localbga.OpCode = paramInt2;
-      localbga.GUI = paramDouble4;
-      localbga.GUH = paramDouble3;
+      localbrw.LXm = ((SKBuiltinBuffer_t)localObject);
+      localbrw.LPT = paramString2;
+      localbrw.KUu = paramDouble1;
+      localbrw.KUt = paramDouble2;
+      localbrw.Scene = paramInt1;
+      localbrw.OpCode = paramInt2;
+      localbrw.LZa = paramDouble4;
+      localbrw.LYZ = paramDouble3;
       if (!paramBoolean) {
         break label320;
       }
@@ -73,11 +74,11 @@ public final class i
     label320:
     for (int i = 1;; i = 0)
     {
-      localbga.GTc = i;
-      this.dsO = localbga.OpCode;
-      this.vlR = paramString1;
-      this.vlP = paramArrayOfByte;
-      ae.i("MicroMsg.NetSceneGetPoiList", "lat %f lng %f scene %d opcode %d oriLat %f oriLng %f isAutoQuery %s buffer ".concat(String.valueOf(paramArrayOfByte)), new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Double.valueOf(paramDouble4), Double.valueOf(paramDouble3), Boolean.valueOf(paramBoolean) });
+      localbrw.LXo = i;
+      this.dJY = localbrw.OpCode;
+      this.yFJ = paramString1;
+      this.yFH = paramArrayOfByte;
+      Log.i("MicroMsg.NetSceneGetPoiList", "lat %f lng %f scene %d opcode %d oriLat %f oriLng %f isAutoQuery %s buffer ".concat(String.valueOf(paramArrayOfByte)), new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Double.valueOf(paramDouble4), Double.valueOf(paramDouble3), Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(55694);
       return;
       localObject = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
@@ -85,12 +86,12 @@ public final class i
     }
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
   {
     AppMethodBeat.i(55695);
-    ae.i("MicroMsg.NetSceneGetPoiList", "NetSceneGetPoiList done.");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    Log.i("MicroMsg.NetSceneGetPoiList", "NetSceneGetPoiList done.");
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(55695);
     return i;
   }
@@ -102,46 +103,46 @@ public final class i
   
   public final boolean isFirst()
   {
-    return this.vlP == null;
+    return this.yFH == null;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(55696);
-    ae.d("MicroMsg.NetSceneGetPoiList", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + "errMsg:" + paramString);
+    Log.d("MicroMsg.NetSceneGetPoiList", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + "errMsg:" + paramString);
     this.errType = paramInt2;
     this.errCode = paramInt3;
     this.errMsg = paramString;
-    paramq = (bgb)this.rr.hQE.hQJ;
+    params = (brx)this.rr.iLL.iLR;
     this.list.clear();
-    ae.d("MicroMsg.NetSceneGetPoiList", "url " + paramq.GTj + " " + paramq.FZl + " " + paramq.Url + " " + paramq.GeS);
-    ae.d("MicroMsg.NetSceneGetPoiList", "autoInterval: %d", new Object[] { Integer.valueOf(paramq.GTk) });
-    this.kid = paramq.GeS;
-    this.vlS = paramq.GTk;
-    if (paramq.GUK != null)
+    Log.d("MicroMsg.NetSceneGetPoiList", "url " + params.LXv + " " + params.KTg + " " + params.Url + " " + params.KZj);
+    Log.d("MicroMsg.NetSceneGetPoiList", "autoInterval: %d", new Object[] { Integer.valueOf(params.LXw) });
+    this.hes = params.KZj;
+    this.yFK = params.LXw;
+    if (params.LZc != null)
     {
-      ae.d("MicroMsg.NetSceneGetPoiList", "poi result %d ", new Object[] { Integer.valueOf(paramq.GUK.size()) });
-      if (paramq.GUK.size() > 0) {
-        ae.d("MicroMsg.NetSceneGetPoiList", "addr %s, province %s, street %s, city %s", new Object[] { ((chm)paramq.GUK.get(0)).HtG, ((chm)paramq.GUK.get(0)).jfW, ((chm)paramq.GUK.get(0)).Gui, ((chm)paramq.GUK.get(0)).jfX });
+      Log.d("MicroMsg.NetSceneGetPoiList", "poi result %d ", new Object[] { Integer.valueOf(params.LZc.size()) });
+      if (params.LZc.size() > 0) {
+        Log.d("MicroMsg.NetSceneGetPoiList", "addr %s, province %s, street %s, city %s", new Object[] { ((cxt)params.LZc.get(0)).MCE, ((cxt)params.LZc.get(0)).kdZ, ((cxt)params.LZc.get(0)).LpK, ((cxt)params.LZc.get(0)).kea });
       }
-      paramArrayOfByte = paramq.GUK.iterator();
+      paramArrayOfByte = params.LZc.iterator();
       while (paramArrayOfByte.hasNext())
       {
-        com.tencent.mm.plugin.location.ui.impl.f localf = new com.tencent.mm.plugin.location.ui.impl.f((chm)paramArrayOfByte.next(), this.kid);
-        ae.d("MicroMsg.NetSceneGetPoiList", "lat %s lng %s", new Object[] { Double.valueOf(localf.bXD), Double.valueOf(localf.bXE) });
+        f localf = new f((cxt)paramArrayOfByte.next(), this.hes);
+        Log.d("MicroMsg.NetSceneGetPoiList", "lat %s lng %s", new Object[] { Double.valueOf(localf.cik), Double.valueOf(localf.cil) });
         this.list.add(localf);
       }
     }
-    if (paramq.GTa != null) {
-      this.vlQ = z.a(paramq.GTa);
+    if (params.LXm != null) {
+      this.yFI = z.a(params.LXm);
     }
-    if (paramq.GbX == 1) {}
+    if (params.KWa == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.hkx = bool;
+      this.idt = bool;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      if (this.ips != null) {
-        this.ips.run();
+      if (this.jkz != null) {
+        this.jkz.run();
       }
       AppMethodBeat.o(55696);
       return;
@@ -150,7 +151,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.i
  * JD-Core Version:    0.7.0.1
  */

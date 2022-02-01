@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView android:id="@id/fa_" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/n3"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/y1" android:background="#fff3f3f3" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="left" android:id="@id/d4g" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/hv" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cg4" android:layout_alignParentTop="true" />
+    <TextView android:textSize="@dimen/kc" android:gravity="left" android:paddingLeft="@dimen/hs" android:paddingTop="20.0dip" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cg5" android:layout_below="@id/d4g" style="@style/m0" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/a0a" android:gravity="center" android:id="@id/aib" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" android:layout_marginBottom="@dimen/hw" android:text="@string/cg3" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/g3k" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" android:layout_marginBottom="@dimen/hw" android:text="@string/cg6" android:layout_above="@id/aib" style="@style/ou" />
+</RelativeLayout>

@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.record.a;
 
-import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.sdk.storage.IAutoStorage;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.List;
 
 public abstract interface e
-  extends com.tencent.mm.sdk.e.d<j>, g
+  extends IAutoStorage<j>, IStorage
 {
-  public static final String[] SQL_CREATE = { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "RecordCDNInfo") };
+  public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(j.info, "RecordCDNInfo") };
   
-  public abstract List<j> Oe(int paramInt);
+  public abstract List<j> Vt(int paramInt);
   
   public abstract void a(d paramd);
   
@@ -16,7 +18,7 @@ public abstract interface e
   
   public abstract boolean a(j paramj, String... paramVarArgs);
   
-  public abstract j awF(String paramString);
+  public abstract j aKX(String paramString);
   
   public abstract void b(d paramd);
   
@@ -24,11 +26,11 @@ public abstract interface e
   
   public abstract boolean b(j paramj, String... paramVarArgs);
   
-  public abstract List<j> dHx();
+  public abstract List<j> eIk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.e
  * JD-Core Version:    0.7.0.1
  */

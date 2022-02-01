@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class d<T>
 {
-  List<Integer> AeU = new LinkedList();
-  private aq handler = null;
+  List<Integer> Enr = new LinkedList();
+  private MMHandler handler = null;
   
   public d()
   {
-    this.AeU.clear();
+    this.Enr.clear();
   }
   
-  public abstract List<T> Zz();
+  public abstract List<T> anm();
   
-  final void gc(final List<T> paramList)
+  final void gY(final List<T> paramList)
   {
     this.handler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(97699);
-        d.this.gd(paramList);
+        d.this.gZ(paramList);
         d locald = d.this;
-        boolean bool = this.AeY;
-        ah.dJc().post(new d.3(locald, bool));
+        boolean bool = this.Env;
+        aj.eJP().post(new d.3(locald, bool));
         AppMethodBeat.o(97699);
       }
     });
   }
   
-  public abstract void gd(List<T> paramList);
+  public abstract void gZ(List<T> paramList);
   
-  protected final void nh(final boolean paramBoolean)
+  protected final void pN(final boolean paramBoolean)
   {
     int i;
     int j;
@@ -48,7 +48,7 @@ public abstract class d<T>
       if (i != 1) {
         break label73;
       }
-      Iterator localIterator = this.AeU.iterator();
+      Iterator localIterator = this.Enr.iterator();
       while (localIterator.hasNext()) {
         if (((Integer)localIterator.next()).intValue() == 1)
         {
@@ -57,7 +57,7 @@ public abstract class d<T>
           if (j == 0) {
             break label73;
           }
-          ae.e("MicroMsg.AdapterLoader", "thread is loading ui should be not load any");
+          Log.e("MicroMsg.AdapterLoader", "thread is loading ui should be not load any");
         }
       }
     }
@@ -70,35 +70,35 @@ public abstract class d<T>
       break label51;
       label73:
       if (!paramBoolean) {
-        ae.d("MicroMsg.AdapterLoader", "ui load");
+        Log.d("MicroMsg.AdapterLoader", "ui load");
       }
-      while (this.AeU.size() <= 1)
+      while (this.Enr.size() <= 1)
       {
-        this.AeU.add(Integer.valueOf(i));
+        this.Enr.add(Integer.valueOf(i));
         if (!paramBoolean) {
           break label164;
         }
-        ah.dJc().post(new Runnable()
+        aj.eJP().post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97698);
-            List localList = d.this.Zz();
-            d.this.gc(localList);
+            List localList = d.this.anm();
+            d.this.gY(localList);
             AppMethodBeat.o(97698);
           }
         });
         return;
-        ae.d("MicroMsg.AdapterLoader", "thread load" + this.AeU.size());
+        Log.d("MicroMsg.AdapterLoader", "thread load" + this.Enr.size());
       }
     }
     label164:
-    gc(Zz());
+    gY(anm());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -16,11 +16,11 @@ final class j$6
   {
     AppMethodBeat.i(56151);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.vua.djU();
-    this.vua.hideVKB();
-    this.vua.activity.finish();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.yNO.edF();
+    this.yNO.hideVKB();
+    this.yNO.activity.finish();
     a.a(this, "com/tencent/mm/plugin/location/ui/impl/TrackMapUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(56151);
   }

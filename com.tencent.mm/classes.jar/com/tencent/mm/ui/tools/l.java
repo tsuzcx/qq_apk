@@ -15,13 +15,14 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n.a;
-import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.n;
+import com.tencent.mm.ui.base.o.b;
+import com.tencent.mm.ui.base.o.c;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.a;
@@ -32,14 +33,14 @@ import java.util.List;
 public final class l
   implements AdapterView.OnItemClickListener
 {
-  private com.tencent.mm.ui.base.l ECx;
-  public e LfR;
-  public n.d LfS;
-  public n.e LfT;
-  private e.b LfU;
-  private com.tencent.mm.ui.base.l LfV;
-  public n.a LfW;
-  public n.b LfX;
+  public o.f HLX;
+  public o.g HLY;
+  public o.b HMa;
+  public o.c HMb;
+  private m HMc;
+  public e QuS;
+  private e.b QuT;
+  private m QuU;
   private Context mContext;
   private LayoutInflater mInflater;
   
@@ -48,83 +49,83 @@ public final class l
     AppMethodBeat.i(143164);
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
-    this.LfR = new e(paramContext, 1, false);
-    this.ECx = new com.tencent.mm.ui.base.l(paramContext);
-    this.LfV = new com.tencent.mm.ui.base.l(paramContext);
+    this.QuS = new e(paramContext, 1, false);
+    this.HMc = new m(paramContext);
+    this.QuU = new m(paramContext);
     AppMethodBeat.o(143164);
   }
   
-  public final void a(View paramView, int paramInt, long paramLong, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame)
+  public final void a(View paramView, int paramInt, long paramLong, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, o.g paramg)
   {
     AppMethodBeat.i(143166);
     if (((this.mContext instanceof MMFragmentActivity)) && (((MMFragmentActivity)this.mContext).isSwiping()))
     {
-      ae.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenuForAdapterView");
+      Log.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenuForAdapterView");
       AppMethodBeat.o(143166);
       return;
     }
-    this.LfT = parame;
-    this.LfV.clear();
-    parame = new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.LfV, paramView, parame);
-    paramView = this.LfV.JGM.iterator();
+    this.HLY = paramg;
+    this.QuU.clear();
+    paramg = new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.QuU, paramView, paramg);
+    paramView = this.QuU.ORD.iterator();
     while (paramView.hasNext()) {
-      ((m)paramView.next()).JGS = parame;
+      ((n)paramView.next()).ORH = paramg;
     }
-    this.LfS = new n.d()
+    this.HLX = new o.f()
     {
-      public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
+      public final void onCreateMMMenu(m paramAnonymousm)
       {
         AppMethodBeat.i(143162);
-        paramAnonymousl.clear();
-        Iterator localIterator = l.a(l.this).JGM.iterator();
+        paramAnonymousm.clear();
+        Iterator localIterator = l.a(l.this).ORD.iterator();
         while (localIterator.hasNext()) {
-          paramAnonymousl.g((MenuItem)localIterator.next());
+          paramAnonymousm.g((MenuItem)localIterator.next());
         }
         AppMethodBeat.o(143162);
       }
     };
-    this.LfR.tdt = true;
-    fOP();
+    this.QuS.wjN = true;
+    gXI();
     AppMethodBeat.o(143166);
   }
   
-  public final void a(View paramView, final View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame)
+  public final void a(View paramView, final View.OnCreateContextMenuListener paramOnCreateContextMenuListener, o.g paramg)
   {
     AppMethodBeat.i(143165);
-    this.LfT = parame;
-    ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu");
+    this.HLY = paramg;
+    Log.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu");
     if ((paramView instanceof AbsListView))
     {
-      ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView");
+      Log.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView");
       ((AbsListView)paramView).setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(143157);
           l.a(l.this).clear();
-          ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView long click");
+          Log.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView long click");
           paramAnonymousAdapterView = new AdapterView.AdapterContextMenuInfo(paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           paramOnCreateContextMenuListener.onCreateContextMenu(l.a(l.this), paramAnonymousView, paramAnonymousAdapterView);
-          paramAnonymousView = l.a(l.this).JGM.iterator();
+          paramAnonymousView = l.a(l.this).ORD.iterator();
           while (paramAnonymousView.hasNext()) {
-            ((m)paramAnonymousView.next()).JGS = paramAnonymousAdapterView;
+            ((n)paramAnonymousView.next()).ORH = paramAnonymousAdapterView;
           }
-          l.a(l.this, new n.d()
+          l.a(l.this, new o.f()
           {
-            public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
+            public final void onCreateMMMenu(m paramAnonymous2m)
             {
               AppMethodBeat.i(143156);
-              paramAnonymous2l.clear();
-              Iterator localIterator = l.a(l.this).JGM.iterator();
+              paramAnonymous2m.clear();
+              Iterator localIterator = l.a(l.this).ORD.iterator();
               while (localIterator.hasNext()) {
-                paramAnonymous2l.g((MenuItem)localIterator.next());
+                paramAnonymous2m.g((MenuItem)localIterator.next());
               }
               AppMethodBeat.o(143156);
             }
           });
-          l.b(l.this).tdt = true;
-          l.this.fOP();
+          l.b(l.this).wjN = true;
+          l.this.gXI();
           AppMethodBeat.o(143157);
           return true;
         }
@@ -134,33 +135,33 @@ public final class l
     }
     if ((paramView instanceof MMWebView))
     {
-      ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu for webview");
+      Log.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu for webview");
       paramView.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(143159);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/ui/tools/MMListMenuHelper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-          ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/ui/tools/MMListMenuHelper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+          Log.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
           l.a(l.this).clear();
           paramOnCreateContextMenuListener.onCreateContextMenu(l.a(l.this), paramAnonymousView, null);
-          l.a(l.this, new n.d()
+          l.a(l.this, new o.f()
           {
-            public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
+            public final void onCreateMMMenu(m paramAnonymous2m)
             {
               AppMethodBeat.i(143158);
-              paramAnonymous2l.clear();
-              Iterator localIterator = l.a(l.this).JGM.iterator();
+              paramAnonymous2m.clear();
+              Iterator localIterator = l.a(l.this).ORD.iterator();
               while (localIterator.hasNext()) {
-                paramAnonymous2l.g((MenuItem)localIterator.next());
+                paramAnonymous2m.g((MenuItem)localIterator.next());
               }
               AppMethodBeat.o(143158);
             }
           });
-          l.b(l.this).tdt = true;
-          l.this.fOP();
+          l.b(l.this).wjN = true;
+          l.this.gXI();
           if (l.a(l.this).size() > 0)
           {
             a.a(true, this, "com/tencent/mm/ui/tools/MMListMenuHelper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
@@ -175,33 +176,33 @@ public final class l
       AppMethodBeat.o(143165);
       return;
     }
-    ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view");
+    Log.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view");
     paramView.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(143161);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/tools/MMListMenuHelper$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-        ae.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/ui/tools/MMListMenuHelper$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+        Log.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view long click");
         l.a(l.this).clear();
         paramOnCreateContextMenuListener.onCreateContextMenu(l.a(l.this), paramAnonymousView, null);
-        l.a(l.this, new n.d()
+        l.a(l.this, new o.f()
         {
-          public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
+          public final void onCreateMMMenu(m paramAnonymous2m)
           {
             AppMethodBeat.i(143160);
-            paramAnonymous2l.clear();
-            Iterator localIterator = l.a(l.this).JGM.iterator();
+            paramAnonymous2m.clear();
+            Iterator localIterator = l.a(l.this).ORD.iterator();
             while (localIterator.hasNext()) {
-              paramAnonymous2l.g((MenuItem)localIterator.next());
+              paramAnonymous2m.g((MenuItem)localIterator.next());
             }
             AppMethodBeat.o(143160);
           }
         });
-        l.b(l.this).tdt = true;
-        l.this.fOP();
+        l.b(l.this).wjN = true;
+        l.this.gXI();
         a.a(true, this, "com/tencent/mm/ui/tools/MMListMenuHelper$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(143161);
         return true;
@@ -210,95 +211,95 @@ public final class l
     AppMethodBeat.o(143165);
   }
   
-  public final void a(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame, e.b paramb)
+  public final void a(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, o.g paramg, e.b paramb)
   {
     AppMethodBeat.i(143167);
     if (((this.mContext instanceof MMFragmentActivity)) && (((MMFragmentActivity)this.mContext).isSwiping()))
     {
-      ae.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenu");
+      Log.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenu");
       AppMethodBeat.o(143167);
       return;
     }
-    this.LfU = paramb;
-    this.LfT = parame;
-    this.LfV.clear();
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.LfV, paramView, null);
-    this.LfS = new n.d()
+    this.QuT = paramb;
+    this.HLY = paramg;
+    this.QuU.clear();
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.QuU, paramView, null);
+    this.HLX = new o.f()
     {
-      public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
+      public final void onCreateMMMenu(m paramAnonymousm)
       {
         AppMethodBeat.i(143163);
-        paramAnonymousl.clear();
-        Iterator localIterator = l.a(l.this).JGM.iterator();
+        paramAnonymousm.clear();
+        Iterator localIterator = l.a(l.this).ORD.iterator();
         while (localIterator.hasNext()) {
-          paramAnonymousl.g((MenuItem)localIterator.next());
+          paramAnonymousm.g((MenuItem)localIterator.next());
         }
         AppMethodBeat.o(143163);
       }
     };
-    this.LfR.tdt = true;
-    fOP();
+    this.QuS.wjN = true;
+    gXI();
     AppMethodBeat.o(143167);
   }
   
-  public final void a(n.d paramd)
+  public final void a(o.f paramf)
   {
-    this.LfS = paramd;
+    this.HLX = paramf;
   }
   
-  public final void a(n.e parame)
+  public final void a(o.g paramg)
   {
-    this.LfT = parame;
+    this.HLY = paramg;
   }
   
   public final void a(e.a parama)
   {
-    this.LfR.LsV = parama;
+    this.QuS.QNO = parama;
   }
   
   public final void a(e.b paramb)
   {
-    this.LfU = paramb;
-    this.LfR.KtV = paramb;
+    this.QuT = paramb;
+    this.QuS.PGl = paramb;
   }
   
   @Deprecated
-  public final void b(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.e parame)
+  public final void b(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, o.g paramg)
   {
     AppMethodBeat.i(143168);
-    a(paramView, paramOnCreateContextMenuListener, parame, null);
+    a(paramView, paramOnCreateContextMenuListener, paramg, null);
     AppMethodBeat.o(143168);
   }
   
   public final void dismiss()
   {
     AppMethodBeat.i(143170);
-    if (this.LfR.isShowing()) {
-      this.LfR.bqD();
+    if (this.QuS.isShowing()) {
+      this.QuS.bMo();
     }
     AppMethodBeat.o(143170);
   }
   
-  public final Dialog fOP()
+  public final Dialog gXI()
   {
     AppMethodBeat.i(143171);
-    if (this.LfS != null)
+    if (this.HLX != null)
     {
-      this.ECx.clear();
-      this.ECx = new com.tencent.mm.ui.base.l(this.mContext);
-      this.LfS.onCreateMMMenu(this.ECx);
+      this.HMc.clear();
+      this.HMc = new m(this.mContext);
+      this.HLX.onCreateMMMenu(this.HMc);
     }
-    if (this.ECx.fCR())
+    if (this.HMc.gKQ())
     {
-      ae.w("MicroMsg.MMSubMenuHelper", "show, menu empty");
+      Log.w("MicroMsg.MMSubMenuHelper", "show, menu empty");
       AppMethodBeat.o(143171);
       return null;
     }
-    this.LfR.LfS = this.LfS;
-    this.LfR.LfT = this.LfT;
-    this.LfR.KtV = this.LfU;
-    this.LfR.LfX = this.LfX;
-    this.LfR.cPF();
+    this.QuS.HLX = this.HLX;
+    this.QuS.HLY = this.HLY;
+    this.QuS.PGl = this.QuT;
+    this.QuS.HMb = this.HMb;
+    this.QuS.dGm();
     AppMethodBeat.o(143171);
     return null;
   }
@@ -307,22 +308,22 @@ public final class l
   {
     AppMethodBeat.i(143169);
     b localb = new b();
-    localb.bd(paramAdapterView);
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.rl(paramLong);
-    a.b("com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-    paramAdapterView = (m)this.ECx.JGM.get(paramInt);
+    localb.bm(paramAdapterView);
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.zo(paramLong);
+    a.b("com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+    paramAdapterView = (n)this.HMc.ORD.get(paramInt);
     if (paramAdapterView.performClick())
     {
-      ae.i("MicroMsg.MMSubMenuHelper", "onItemClick menu item has listener");
+      Log.i("MicroMsg.MMSubMenuHelper", "onItemClick menu item has listener");
       dismiss();
       a.a(this, "com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(143169);
       return;
     }
-    if (this.LfT != null) {
-      this.LfT.onMMMenuItemSelected(paramAdapterView, paramInt);
+    if (this.HLY != null) {
+      this.HLY.onMMMenuItemSelected(paramAdapterView, paramInt);
     }
     dismiss();
     a.a(this, "com/tencent/mm/ui/tools/MMListMenuHelper", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -331,7 +332,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.l
  * JD-Core Version:    0.7.0.1
  */

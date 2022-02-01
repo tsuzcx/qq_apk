@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/c9" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
+<LinearLayout style="@style/gi"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.gridviewheaders.GridHeadersGridView android:scrollbarStyle="outsideOverlay" android:id="@id/asi" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/cd" android:cacheColorHint="#00000000" android:horizontalSpacing="1.0dip" android:verticalSpacing="1.0dip" android:stretchMode="columnWidth" android:columnWidth="100.0dip" android:numColumns="auto_fit" android:animateLayoutChanges="true" />
-    <RelativeLayout android:background="@color/bg" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_alignParentBottom="true">
-        <Button android:id="@id/b95" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="@string/bep" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/oa" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jx" android:layout_width="@dimen/cf" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci">
-            <CheckBox android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jv" android:background="@drawable/a2s" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:layout_centerVertical="true" />
-            <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ju" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:text="@string/fx" android:maxLines="1" android:layout_centerVertical="true" />
+    <include layout="@layout/qp" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gt">
+        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <LinearLayout android:gravity="start|center" android:layout_gravity="start|center" android:id="@id/auf" android:background="@drawable/mv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|left" android:id="@id/eqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/icons_outlined_location" />
+            <com.tencent.mm.ui.widget.MMTextView android:id="@id/eqr" android:layout_marginRight="5.0dip" android:maxWidth="180.0dip" style="@style/h4" />
         </LinearLayout>
-        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/b_2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_toLeftOf="@id/b95" android:layout_toRightOf="@id/jx" android:layout_centerVertical="true" />
-        <View android:id="@id/jw" android:layout_width="@dimen/ch" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

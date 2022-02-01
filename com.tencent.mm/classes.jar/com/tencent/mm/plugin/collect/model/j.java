@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.uf;
-import com.tencent.mm.protocal.protobuf.ug;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.vm;
+import com.tencent.mm.protocal.protobuf.vn;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b gRX;
-  public ug pgZ;
+  private i callback;
+  private d hJu;
+  public vn qwi;
   
   public j()
   {
     AppMethodBeat.i(63822);
-    b.a locala = new b.a();
-    locala.hQF = new uf();
-    locala.hQG = new ug();
+    d.a locala = new d.a();
+    locala.iLN = new vm();
+    locala.iLO = new vn();
     locala.funcId = 1256;
     locala.uri = "/cgi-bin/mmpay-bin/f2fannounce";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.gRX = locala.aDS();
-    ae.d("MicroMsg.NetSceneF2fAnnouce", "do cgi");
+    this.hJu = locala.aXF();
+    Log.d("MicroMsg.NetSceneF2fAnnouce", "do cgi");
     AppMethodBeat.o(63822);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(63823);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
     AppMethodBeat.o(63823);
     return i;
   }
@@ -50,11 +50,11 @@ public final class j
     return 1256;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63824);
-    ae.i("MicroMsg.NetSceneF2fAnnouce", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.pgZ = ((ug)((b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneF2fAnnouce", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.qwi = ((vn)((d)params).iLL.iLR);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

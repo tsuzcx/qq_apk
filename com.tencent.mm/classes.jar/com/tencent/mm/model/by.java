@@ -1,54 +1,63 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.ak.e.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.az.a;
+import com.tencent.mm.az.a.a;
+import com.tencent.mm.storage.ca;
+import java.util.LinkedList;
 import java.util.Map;
-import junit.framework.Assert;
 
 public final class by
-  implements e
+  extends a
 {
-  public final e.b b(e.a parama)
+  public by(Map<String, String> paramMap, ca paramca)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(20393);
-    parama = parama.gte;
-    if (parama != null)
-    {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      if (parama.FNI == null) {
-        break label100;
-      }
-    }
-    label100:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue(bool1);
-      parama = (String)bx.M(z.a(parama.FNI), "tips").get(".tips.tip.url");
-      ae.v("MicroMsg.SoftwareMsgExtension", "url:".concat(String.valueOf(parama)));
-      bc.aCg();
-      c.ajA().set(12308, parama);
-      AppMethodBeat.o(20393);
-      return null;
-      bool1 = false;
-      break;
-    }
+    super(paramMap, paramca);
   }
   
-  public final void b(e.c paramc) {}
+  public static void aTB()
+  {
+    AppMethodBeat.i(123974);
+    a.a.a("reportbizlocation", new a.a()
+    {
+      public final a a(Map<String, String> paramAnonymousMap, ca paramAnonymousca)
+      {
+        AppMethodBeat.i(123972);
+        paramAnonymousMap = new by(paramAnonymousMap, paramAnonymousca);
+        AppMethodBeat.o(123972);
+        return paramAnonymousMap;
+      }
+    });
+    AppMethodBeat.o(123974);
+  }
+  
+  public final boolean aTA()
+  {
+    AppMethodBeat.i(123973);
+    if (this.values == null)
+    {
+      AppMethodBeat.o(123973);
+      return false;
+    }
+    if (!this.TYPE.equals("reportbizlocation"))
+    {
+      AppMethodBeat.o(123973);
+      return false;
+    }
+    String str2 = (String)this.values.get(".sysmsg.reportbizlocation.text");
+    String str1 = (String)this.values.get(".sysmsg.reportbizlocation.link.text");
+    str2 = str2 + str1;
+    this.jfI.add(str1);
+    this.jfJ.addFirst(Integer.valueOf(str2.length() - str1.length()));
+    this.jfK.add(Integer.valueOf(str2.length()));
+    this.jfG = str2;
+    AppMethodBeat.o(123973);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.by
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/e7k" android:background="@drawable/aei" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/jm"
+<LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/c2g" android:background="#ffe1e0de" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/e7m" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/ac7" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/btx" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:src="@raw/fav_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/km" android:gravity="center_vertical" android:id="@id/e7o" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/c02" android:layout_toLeftOf="@id/btx" android:layout_toRightOf="@id/e7m" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/km" android:gravity="center_vertical" android:id="@id/e7p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/c03" android:layout_toLeftOf="@id/btx" android:layout_toRightOf="@id/e7m" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/uj" android:id="@id/c2p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/buh" />
+</LinearLayout>

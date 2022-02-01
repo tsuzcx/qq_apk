@@ -1,71 +1,77 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.c;
-import com.google.b.a.e;
-import com.google.b.a.g;
-import java.util.Arrays;
+import com.google.a.a.b;
+import com.google.a.a.c;
+import com.google.a.a.e;
 
 public final class a$au
   extends e
 {
-  private static volatile au[] Mfb;
-  public int Mfc = 0;
-  public int Mfd = 0;
-  public byte[] Mfe = g.bQV;
+  private static volatile au[] RFp;
+  public int LGa = 0;
+  public int RFq = 0;
+  public int fps = 0;
+  public int qrD = 0;
   
   public a$au()
   {
-    this.bQO = -1;
+    this.cbo = -1;
   }
   
-  public static au[] fXD()
+  public static au[] hji()
   {
-    if (Mfb == null) {}
-    synchronized (c.bQN)
+    if (RFp == null) {}
+    synchronized (c.cbn)
     {
-      if (Mfb == null) {
-        Mfb = new au[0];
+      if (RFp == null) {
+        RFp = new au[0];
       }
-      return Mfb;
+      return RFp;
     }
+  }
+  
+  public final int Ig()
+  {
+    int j = super.Ig();
+    int i = j;
+    if (this.qrD != 0) {
+      i = j + b.bu(1, this.qrD);
+    }
+    j = i;
+    if (this.RFq != 0) {
+      j = i + b.bu(2, this.RFq);
+    }
+    i = j;
+    if (this.fps != 0) {
+      i = j + b.bu(3, this.fps);
+    }
+    j = i;
+    if (this.LGa != 0) {
+      j = i + b.bu(4, this.LGa);
+    }
+    return j;
   }
   
   public final void a(b paramb)
   {
-    if (this.Mfc != 0) {
-      paramb.bx(1, this.Mfc);
+    if (this.qrD != 0) {
+      paramb.bs(1, this.qrD);
     }
-    if (this.Mfd != 0) {
-      paramb.bx(2, this.Mfd);
+    if (this.RFq != 0) {
+      paramb.bs(2, this.RFq);
     }
-    if (!Arrays.equals(this.Mfe, g.bQV)) {
-      paramb.b(3, this.Mfe);
+    if (this.fps != 0) {
+      paramb.bs(3, this.fps);
+    }
+    if (this.LGa != 0) {
+      paramb.bs(4, this.LGa);
     }
     super.a(paramb);
-  }
-  
-  public final int zq()
-  {
-    int j = super.zq();
-    int i = j;
-    if (this.Mfc != 0) {
-      i = j + b.bz(1, this.Mfc);
-    }
-    j = i;
-    if (this.Mfd != 0) {
-      j = i + b.bz(2, this.Mfd);
-    }
-    i = j;
-    if (!Arrays.equals(this.Mfe, g.bQV)) {
-      i = j + b.c(3, this.Mfe);
-    }
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.au
  * JD-Core Version:    0.7.0.1
  */

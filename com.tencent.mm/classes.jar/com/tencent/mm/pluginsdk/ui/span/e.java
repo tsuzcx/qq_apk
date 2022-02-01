@@ -1,28 +1,25 @@
 package com.tencent.mm.pluginsdk.ui.span;
 
-import android.text.SpannableString;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
+import com.tencent.mm.ui.widget.a.e.b;
+import java.util.List;
 
 public abstract interface e
 {
-  public abstract boolean I(CharSequence paramCharSequence);
+  public abstract void a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener, Bundle paramBundle);
   
-  public abstract boolean J(CharSequence paramCharSequence);
-  
-  public abstract SpannableString n(CharSequence paramCharSequence, int paramInt);
+  public abstract void a(Context paramContext, List<String> paramList, e.b paramb);
   
   public static final class a
   {
-    protected static e FzD;
-    
-    public static final void a(e parame)
-    {
-      FzD = parame;
-    }
+    public static e KqE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.e
  * JD-Core Version:    0.7.0.1
  */

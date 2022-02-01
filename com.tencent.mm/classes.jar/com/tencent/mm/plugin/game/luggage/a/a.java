@@ -5,11 +5,11 @@ import java.util.Map;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract String amn(String paramString);
+  public abstract boolean azA(String paramString);
   
-  public abstract boolean amo(String paramString);
+  public abstract String azz(String paramString);
   
-  public abstract Map<String, Class> cZI();
+  public abstract Map<String, Class> dTm();
 }
 
 

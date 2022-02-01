@@ -11,19 +11,19 @@ import java.util.Map;
 public abstract interface s
   extends g
 {
-  public static final o<String> bFo = new o() {};
+  public static final o<String> bFC = new o() {};
   
   public static abstract class a
     implements s.b
   {
-    private final s.f bFm = new s.f();
+    private final s.f bFw = new s.f();
     
     protected abstract s a(s.f paramf);
     
     @Deprecated
     public final void setDefaultRequestProperty(String paramString1, String paramString2)
     {
-      this.bFm.set(paramString1, paramString2);
+      this.bFw.set(paramString1, paramString2);
     }
   }
   
@@ -37,27 +37,27 @@ public abstract interface s
   public static class c
     extends IOException
   {
-    public final j bxi;
+    public final j bxj;
     public final int type;
     
     public c(IOException paramIOException, j paramj, int paramInt)
     {
       super();
-      this.bxi = paramj;
+      this.bxj = paramj;
       this.type = paramInt;
     }
     
     public c(String paramString, j paramj)
     {
       super();
-      this.bxi = paramj;
+      this.bxj = paramj;
       this.type = 1;
     }
     
     public c(String paramString, IOException paramIOException, j paramj)
     {
       super(paramIOException);
-      this.bxi = paramj;
+      this.bxj = paramj;
       this.type = 1;
     }
   }
@@ -79,7 +79,7 @@ public abstract interface s
   public static final class e
     extends s.c
   {
-    public final Map<String, List<String>> headerFields;
+    public final Map<String, List<String>> bFD;
     public final int responseCode;
     
     public e(int paramInt, Map<String, List<String>> paramMap, j paramj)
@@ -87,46 +87,31 @@ public abstract interface s
       super(paramj);
       AppMethodBeat.i(93085);
       this.responseCode = paramInt;
-      this.headerFields = paramMap;
+      this.bFD = paramMap;
       AppMethodBeat.o(93085);
     }
   }
   
   public static final class f
   {
-    private final Map<String, String> requestProperties;
-    private Map<String, String> requestPropertiesSnapshot;
+    private final Map<String, String> bFE;
+    private Map<String, String> bFF;
     
     public f()
     {
       AppMethodBeat.i(93086);
-      this.requestProperties = new HashMap();
+      this.bFE = new HashMap();
       AppMethodBeat.o(93086);
-    }
-    
-    public final Map<String, String> getSnapshot()
-    {
-      try
-      {
-        AppMethodBeat.i(93087);
-        if (this.requestPropertiesSnapshot == null) {
-          this.requestPropertiesSnapshot = Collections.unmodifiableMap(new HashMap(this.requestProperties));
-        }
-        Map localMap = this.requestPropertiesSnapshot;
-        AppMethodBeat.o(93087);
-        return localMap;
-      }
-      finally {}
     }
     
     public final void set(String paramString1, String paramString2)
     {
       try
       {
-        AppMethodBeat.i(211653);
-        this.requestPropertiesSnapshot = null;
-        this.requestProperties.put(paramString1, paramString2);
-        AppMethodBeat.o(211653);
+        AppMethodBeat.i(196067);
+        this.bFF = null;
+        this.bFE.put(paramString1, paramString2);
+        AppMethodBeat.o(196067);
         return;
       }
       finally
@@ -135,11 +120,26 @@ public abstract interface s
         throw paramString1;
       }
     }
+    
+    public final Map<String, String> wM()
+    {
+      try
+      {
+        AppMethodBeat.i(93087);
+        if (this.bFF == null) {
+          this.bFF = Collections.unmodifiableMap(new HashMap(this.bFE));
+        }
+        Map localMap = this.bFF;
+        AppMethodBeat.o(93087);
+        return localMap;
+      }
+      finally {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.s
  * JD-Core Version:    0.7.0.1
  */

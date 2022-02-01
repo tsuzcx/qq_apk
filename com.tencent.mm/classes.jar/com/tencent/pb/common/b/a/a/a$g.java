@@ -1,71 +1,71 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.a.a.b;
+import com.google.a.a.e;
 
 public final class a$g
   extends e
 {
-  public int Cuf = 0;
-  public long Cug = 0L;
-  public String McZ = "";
+  public int GXO = 0;
+  public long GXP = 0L;
+  public String RDo = "";
+  public int bDZ = 0;
   public String groupId = "";
-  public int reason = 0;
   
   public a$g()
   {
-    this.bQO = -1;
+    this.cbo = -1;
+  }
+  
+  public final int Ig()
+  {
+    int j = super.Ig();
+    int i = j;
+    if (!this.groupId.equals("")) {
+      i = j + b.f(1, this.groupId);
+    }
+    j = i;
+    if (this.GXO != 0) {
+      j = i + b.bu(2, this.GXO);
+    }
+    i = j;
+    if (this.GXP != 0L) {
+      i = j + b.r(3, this.GXP);
+    }
+    j = i;
+    if (this.bDZ != 0) {
+      j = i + b.bu(4, this.bDZ);
+    }
+    i = j;
+    if (!this.RDo.equals("")) {
+      i = j + b.f(5, this.RDo);
+    }
+    return i;
   }
   
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.Cuf != 0) {
-      paramb.bx(2, this.Cuf);
+    if (this.GXO != 0) {
+      paramb.bs(2, this.GXO);
     }
-    if (this.Cug != 0L) {
-      paramb.n(3, this.Cug);
+    if (this.GXP != 0L) {
+      paramb.q(3, this.GXP);
     }
-    if (this.reason != 0) {
-      paramb.bx(4, this.reason);
+    if (this.bDZ != 0) {
+      paramb.bs(4, this.bDZ);
     }
-    if (!this.McZ.equals("")) {
-      paramb.d(5, this.McZ);
+    if (!this.RDo.equals("")) {
+      paramb.e(5, this.RDo);
     }
     super.a(paramb);
-  }
-  
-  public final int zq()
-  {
-    int j = super.zq();
-    int i = j;
-    if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
-    }
-    j = i;
-    if (this.Cuf != 0) {
-      j = i + b.bz(2, this.Cuf);
-    }
-    i = j;
-    if (this.Cug != 0L) {
-      i = j + b.p(3, this.Cug);
-    }
-    j = i;
-    if (this.reason != 0) {
-      j = i + b.bz(4, this.reason);
-    }
-    i = j;
-    if (!this.McZ.equals("")) {
-      i = j + b.e(5, this.McZ);
-    }
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.g
  * JD-Core Version:    0.7.0.1
  */

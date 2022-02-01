@@ -1,40 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
+<LinearLayout android:orientation="vertical" android:background="@color/afz" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout android:orientation="horizontal" android:id="@id/euk" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <FrameLayout android:id="@id/bvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dz">
-                        <ImageView android:id="@id/bvh" style="@style/iw" />
-                        <View android:layout_gravity="bottom" android:id="@id/buw" android:background="@drawable/sp" android:layout_width="@dimen/e1" android:layout_height="45.0dip" />
-                        <ImageView android:layout_gravity="center" android:id="@id/bv0" android:src="@drawable/a4r" android:contentDescription="@string/ge" style="@style/j3" />
-                        <TextView android:layout_gravity="bottom|center|right" android:id="@id/bux" android:paddingRight="3.0dip" android:paddingBottom="3.0dip" android:text="{11:32}" style="@style/j0" />
-                    </FrameLayout>
-                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                        <TextView android:id="@id/bvn" android:text="{title}" style="@style/j2" />
-                        <TextView android:id="@id/bvi" android:layout_marginTop="@dimen/e9" android:text="{desc}" android:maxLines="3" style="@style/iz" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/gqi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:src="@raw/app_attach_file_icon_sound" style="@style/iv" />
-                    <TextView android:layout_gravity="center_vertical" android:id="@id/bwi" android:layout_marginLeft="@dimen/dz" android:text="{title}" style="@style/j2" />
-                </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/ap3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:src="@raw/app_attach_file_icon_voice" style="@style/iv" />
-                    <TextView android:layout_gravity="center_vertical" android:id="@id/bu7" android:layout_marginLeft="@dimen/dz" android:text="{title}" style="@style/j2" />
-                </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/ay3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/buc" style="@style/iv" />
-                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
-                        <TextView android:id="@id/bu5" android:text="{title}" style="@style/j2" />
-                        <TextView android:id="@id/bu4" android:layout_marginTop="@dimen/e9" android:text="{desc}" style="@style/iz" />
-                    </LinearLayout>
-                </LinearLayout>
-            </FrameLayout>
-            <include layout="@layout/a2x" />
-            <include layout="@layout/a2w" />
-        </LinearLayout>
-        <include layout="@layout/a2u" />
-    </LinearLayout>
-</FrameLayout>
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/ep2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/ac_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/b0w" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+    <include android:visibility="gone" layout="@layout/a2o" />
+</LinearLayout>

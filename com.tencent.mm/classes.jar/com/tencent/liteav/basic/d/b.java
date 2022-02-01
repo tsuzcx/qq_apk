@@ -1,222 +1,279 @@
 package com.tencent.liteav.basic.d;
 
-import android.view.Surface;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class b
 {
-  public static final String a;
-  private static int[] l;
-  private static int[] m;
-  private EGL10 b;
-  private EGLDisplay c;
-  private EGLConfig d;
-  private boolean e;
-  private EGLContext f;
-  private boolean g;
-  private EGLSurface h;
-  private int i;
-  private int j;
-  private int[] k;
+  private final Map<String, String> a;
+  private JSONObject b;
   
-  static
-  {
-    AppMethodBeat.i(14560);
-    a = b.class.getSimpleName();
-    l = new int[] { 12339, 1, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12326, 0, 12352, 4, 12344 };
-    m = new int[] { 12339, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12326, 0, 12352, 4, 12610, 1, 12344 };
-    AppMethodBeat.o(14560);
-  }
-  
-  private b()
+  public b()
   {
     AppMethodBeat.i(14554);
-    this.i = 0;
-    this.j = 0;
-    this.k = new int[2];
+    this.a = new HashMap();
+    this.b = null;
     AppMethodBeat.o(14554);
   }
   
-  public static b a(EGLConfig paramEGLConfig, EGLContext paramEGLContext, Surface paramSurface, int paramInt1, int paramInt2)
+  private int a(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(14555);
-    b localb = new b();
-    localb.i = paramInt1;
-    localb.j = paramInt2;
-    if (localb.a(paramEGLConfig, paramEGLContext, paramSurface))
+    AppMethodBeat.i(222042);
+    if (paramJSONObject == null)
     {
-      AppMethodBeat.o(14555);
-      return localb;
+      AppMethodBeat.o(222042);
+      return 0;
     }
-    AppMethodBeat.o(14555);
-    return null;
-  }
-  
-  private EGLContext a(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt, EGLContext paramEGLContext)
-  {
-    AppMethodBeat.i(221489);
-    EGLContext localEGLContext = paramEGLContext;
-    if (paramEGLContext == null) {
-      localEGLContext = EGL10.EGL_NO_CONTEXT;
-    }
-    paramEGLDisplay = this.b.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, new int[] { 12440, paramInt, 12344 });
-    f();
-    AppMethodBeat.o(221489);
-    return paramEGLDisplay;
-  }
-  
-  private boolean a(EGLConfig paramEGLConfig, EGLContext paramEGLContext, Surface paramSurface)
-  {
-    AppMethodBeat.i(14558);
-    this.b = ((EGL10)EGLContext.getEGL());
-    this.c = this.b.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    this.b.eglInitialize(this.c, this.k);
-    int[] arrayOfInt;
-    EGLConfig[] arrayOfEGLConfig;
-    EGL10 localEGL10;
-    EGLDisplay localEGLDisplay;
-    if (paramEGLConfig == null)
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new Pair(Build.MANUFACTURER, paramJSONObject.optString("MANUFACTURER")));
+    localArrayList.add(new Pair(Build.MODEL, paramJSONObject.optString("MODEL")));
+    localArrayList.add(new Pair(String.valueOf(Build.VERSION.SDK_INT), paramJSONObject.optString("VERSION")));
+    localArrayList.add(new Pair(Build.VERSION.INCREMENTAL, paramJSONObject.optString("VERSION_INCREMENTAL")));
+    localArrayList.add(new Pair(Build.DISPLAY, paramJSONObject.optString("DISPLAY")));
+    int i = 0;
+    while (i < localArrayList.size())
     {
-      arrayOfInt = new int[1];
-      arrayOfEGLConfig = new EGLConfig[1];
-      localEGL10 = this.b;
-      localEGLDisplay = this.c;
-      if (paramSurface == null) {
-        paramEGLConfig = l;
-      }
-    }
-    for (;;)
-    {
-      localEGL10.eglChooseConfig(localEGLDisplay, paramEGLConfig, arrayOfEGLConfig, 1, arrayOfInt);
-      this.d = arrayOfEGLConfig[0];
-      this.e = true;
-      if (paramEGLContext != null) {
-        this.g = true;
-      }
-      try
+      paramJSONObject = (Pair)localArrayList.get(i);
+      if (TextUtils.isEmpty((CharSequence)paramJSONObject.second))
       {
-        this.f = a(this.c, this.d, 2, paramEGLContext);
-        int n = this.i;
-        int i1 = this.j;
-        if (paramSurface == null)
-        {
-          this.h = this.b.eglCreatePbufferSurface(this.c, this.d, new int[] { 12375, n, 12374, i1, 12344 });
-          if (this.h != EGL10.EGL_NO_SURFACE) {
-            break label326;
-          }
-          e();
-          AppMethodBeat.o(14558);
-          return false;
-          paramEGLConfig = m;
-          continue;
-          this.d = paramEGLConfig;
-        }
+        AppMethodBeat.o(222042);
+        return i;
       }
-      catch (d paramEGLConfig)
+      if (!((String)paramJSONObject.first).equalsIgnoreCase((String)paramJSONObject.second))
       {
-        for (;;)
-        {
-          TXCLog.i(a, "failed to create EGLContext of OpenGL ES 2.0, try 3.0");
-          try
-          {
-            this.f = a(this.c, this.d, 3, paramEGLContext);
-          }
-          catch (d paramEGLConfig)
-          {
-            TXCLog.e(a, "failed to create EGLContext of 3.0. ".concat(String.valueOf(paramEGLConfig)));
-            AppMethodBeat.o(14558);
-            return false;
-          }
-          this.h = this.b.eglCreateWindowSurface(this.c, this.d, paramSurface, null);
-        }
-        label326:
-        if (!this.b.eglMakeCurrent(this.c, this.h, this.h, this.f))
-        {
-          e();
-          AppMethodBeat.o(14558);
-          return false;
-        }
-        AppMethodBeat.o(14558);
+        AppMethodBeat.o(222042);
+        return 0;
+      }
+      i += 1;
+    }
+    i = localArrayList.size();
+    AppMethodBeat.o(222042);
+    return i;
+  }
+  
+  private void a(Map<String, String> paramMap, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(222043);
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject = paramJSONObject.opt(str);
+      if ((localObject instanceof JSONObject)) {
+        a(paramMap, paramString + "." + str, (JSONObject)localObject);
+      } else if (localObject != null) {
+        paramMap.put(paramString + "." + str, localObject.toString());
       }
     }
-    return true;
+    AppMethodBeat.o(222043);
   }
   
-  private void f()
+  private JSONObject b(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(221490);
-    int n = this.b.eglGetError();
-    if (n != 12288)
+    AppMethodBeat.i(222041);
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
-      d locald = new d(n);
-      AppMethodBeat.o(221490);
-      throw locald;
+      AppMethodBeat.o(222041);
+      return null;
     }
-    AppMethodBeat.o(221490);
+    int j = 0;
+    Object localObject = null;
+    int i = 0;
+    try
+    {
+      if (j < paramJSONArray.length())
+      {
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(j);
+        int k = a(localJSONObject.optJSONObject("deviceinfo"));
+        localJSONObject = localJSONObject.optJSONObject("deviceconfig");
+        if ((k <= i) || (localJSONObject == null)) {
+          break label138;
+        }
+        i = k;
+        localObject = localJSONObject;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+      }
+    }
+    catch (JSONException paramJSONArray)
+    {
+      TXCLog.e("CompatibleConfig", "Find best match value failed.", paramJSONArray);
+      TXCLog.i("CompatibleConfig", "bestMatchLevel: %d", new Object[] { Integer.valueOf(i) });
+      if (i > 0)
+      {
+        AppMethodBeat.o(222041);
+        return localObject;
+      }
+      AppMethodBeat.o(222041);
+      return null;
+    }
   }
   
-  public boolean a()
-  {
-    AppMethodBeat.i(14556);
-    boolean bool = this.b.eglSwapBuffers(this.c, this.h);
-    e();
-    AppMethodBeat.o(14556);
-    return bool;
-  }
-  
-  public void b()
+  private void b()
   {
     AppMethodBeat.i(14557);
-    this.b.eglMakeCurrent(this.c, this.h, this.h, this.f);
-    e();
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.a.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      localStringBuilder.append((String)localEntry.getKey()).append(" : ").append((String)localEntry.getValue()).append("\n");
+    }
+    TXCLog.i("CompatibleConfig", localStringBuilder.toString());
     AppMethodBeat.o(14557);
   }
   
-  public void c()
+  public long a(String paramString, long paramLong)
   {
-    AppMethodBeat.i(182428);
-    EGL10 localEGL10 = this.b;
-    EGLDisplay localEGLDisplay = this.c;
-    EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
-    localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
-    if (this.h != null) {
-      this.b.eglDestroySurface(this.c, this.h);
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(222040);
+        paramString = (String)this.a.get(paramString);
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (!bool)
+        {
+          try
+          {
+            long l = Long.parseLong(paramString);
+            paramLong = l;
+            AppMethodBeat.o(222040);
+          }
+          catch (NumberFormatException paramString)
+          {
+            AppMethodBeat.o(222040);
+            continue;
+          }
+          return paramLong;
+        }
+      }
+      finally {}
+      AppMethodBeat.o(222040);
     }
-    if (this.f != null) {
-      this.b.eglDestroyContext(this.c, this.f);
-    }
-    this.b.eglTerminate(this.c);
-    e();
-    this.c = null;
-    this.h = null;
-    this.c = null;
-    AppMethodBeat.o(182428);
   }
   
-  public EGLContext d()
+  public JSONObject a()
   {
-    return this.f;
+    try
+    {
+      JSONObject localJSONObject = this.b;
+      return localJSONObject;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public void e()
+  public void a(String paramString)
   {
-    AppMethodBeat.i(182429);
-    int n = this.b.eglGetError();
-    if (n != 12288) {
-      TXCLog.e(a, "EGL error: 0x" + Integer.toHexString(n));
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(222039);
+        if (TextUtils.isEmpty(paramString))
+        {
+          AppMethodBeat.o(222039);
+          return;
+        }
+      }
+      finally
+      {
+        try
+        {
+          this.a.clear();
+          this.b = new JSONObject(paramString);
+          a(this.a, "", this.b);
+          b();
+          AppMethodBeat.o(222039);
+        }
+        catch (JSONException paramString)
+        {
+          TXCLog.e("CompatibleConfig", "parse best match value failed.", paramString);
+          AppMethodBeat.o(222039);
+        }
+        paramString = finally;
+      }
     }
-    AppMethodBeat.o(182429);
+  }
+  
+  /* Error */
+  public void a(JSONArray paramJSONArray)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 253
+    //   4: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 24	com/tencent/liteav/basic/d/b:a	Ljava/util/Map;
+    //   11: invokeinterface 243 1 0
+    //   16: aload_0
+    //   17: aload_0
+    //   18: aload_1
+    //   19: invokespecial 255	com/tencent/liteav/basic/d/b:b	(Lorg/json/JSONArray;)Lorg/json/JSONObject;
+    //   22: putfield 26	com/tencent/liteav/basic/d/b:b	Lorg/json/JSONObject;
+    //   25: aload_0
+    //   26: getfield 26	com/tencent/liteav/basic/d/b:b	Lorg/json/JSONObject;
+    //   29: ifnonnull +19 -> 48
+    //   32: ldc 182
+    //   34: ldc_w 257
+    //   37: invokestatic 224	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: ldc 253
+    //   42: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: return
+    //   48: aload_0
+    //   49: aload_0
+    //   50: getfield 24	com/tencent/liteav/basic/d/b:a	Ljava/util/Map;
+    //   53: ldc 247
+    //   55: aload_0
+    //   56: getfield 26	com/tencent/liteav/basic/d/b:b	Lorg/json/JSONObject;
+    //   59: invokespecial 148	com/tencent/liteav/basic/d/b:a	(Ljava/util/Map;Ljava/lang/String;Lorg/json/JSONObject;)V
+    //   62: aload_0
+    //   63: invokespecial 249	com/tencent/liteav/basic/d/b:b	()V
+    //   66: ldc 253
+    //   68: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   71: goto -26 -> 45
+    //   74: astore_1
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	b
+    //   0	79	1	paramJSONArray	JSONArray
+    // Exception table:
+    //   from	to	target	type
+    //   2	45	74	finally
+    //   48	71	74	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.d.b
  * JD-Core Version:    0.7.0.1
  */

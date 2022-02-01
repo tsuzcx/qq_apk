@@ -1,1710 +1,1552 @@
 package com.tencent.mm.plugin.finder.report;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.util.LongSparseArray;
-import android.util.SparseArray;
+import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ad;
-import com.tencent.mm.g.b.a.al;
-import com.tencent.mm.g.b.a.ao;
-import com.tencent.mm.g.b.a.ap;
-import com.tencent.mm.g.b.a.aq;
-import com.tencent.mm.g.b.a.au;
-import com.tencent.mm.g.b.a.ax;
-import com.tencent.mm.g.b.a.ba;
-import com.tencent.mm.g.b.a.bb;
-import com.tencent.mm.g.b.a.bd;
-import com.tencent.mm.g.b.a.be;
-import com.tencent.mm.g.b.a.bf;
-import com.tencent.mm.g.b.a.bh;
-import com.tencent.mm.g.b.a.bi;
-import com.tencent.mm.g.b.a.bk;
-import com.tencent.mm.g.b.a.bl;
-import com.tencent.mm.g.b.a.bo;
-import com.tencent.mm.g.b.a.bq;
-import com.tencent.mm.g.b.a.br;
-import com.tencent.mm.g.b.a.bs;
-import com.tencent.mm.g.b.a.bw;
-import com.tencent.mm.g.b.a.bx;
-import com.tencent.mm.g.b.a.bz;
-import com.tencent.mm.g.b.a.ca;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.model.v;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.g.a.ia;
+import com.tencent.mm.g.a.ia.a;
+import com.tencent.mm.g.b.a.dg;
+import com.tencent.mm.g.b.a.di;
+import com.tencent.mm.g.b.a.dl;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.feed.ui.FinderAtTimelineUI;
-import com.tencent.mm.plugin.finder.feed.ui.FinderTopicFeedUI;
-import com.tencent.mm.plugin.finder.search.h;
+import com.tencent.mm.plugin.finder.extension.reddot.f;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.plugin.finder.storage.data.d;
-import com.tencent.mm.plugin.finder.storage.data.d.a;
-import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderHomeUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
+import com.tencent.mm.plugin.finder.storage.data.e.a;
+import com.tencent.mm.plugin.finder.storage.logic.c.a;
+import com.tencent.mm.plugin.finder.utils.s;
+import com.tencent.mm.plugin.finder.utils.s.a;
+import com.tencent.mm.plugin.finder.utils.w;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.protobuf.FinderFeedReportObject;
+import com.tencent.mm.protocal.protobuf.FinderMediaReportInfo;
+import com.tencent.mm.protocal.protobuf.FinderMediaReportObject;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.ui.MMActivity;
-import d.l;
-import d.w;
-import d.z;
-import java.math.BigInteger;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.axt;
+import com.tencent.mm.protocal.protobuf.ayg;
+import com.tencent.mm.protocal.protobuf.azs;
+import com.tencent.mm.protocal.protobuf.cjj;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.protocal.protobuf.cjm;
+import com.tencent.mm.protocal.protobuf.cng;
+import com.tencent.mm.protocal.protobuf.cnl;
+import com.tencent.mm.protocal.protobuf.cod;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
+import kotlin.x;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderReportLogic;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "TWO_64", "Ljava/math/BigInteger;", "kotlin.jvm.PlatformType", "finderFeedCgiFetchTimeMap", "Landroid/util/SparseArray;", "", "getFinderFeedCgiFetchTimeMap", "()Landroid/util/SparseArray;", "finderFeedFetchTimeMap", "Landroid/util/LongSparseArray;", "getFinderFeedFetchTimeMap", "()Landroid/util/LongSparseArray;", "sessionBufferMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getSessionBufferMap", "()Ljava/util/HashMap;", "setSessionBufferMap", "(Ljava/util/HashMap;)V", "asUnsignedDecimalString", "l", "finderAvatarClick19405", "", "clickAvatarScene", "", "feedId", "commentScene", "finderRole", "clickFinderUsername", "finderBackToTop19995", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "action", "tabType", "finderChangeRoleClick", "roleBeforeSwitch", "finderClickEntrance19025", "contextId", "redDotId", "finderClickMoreReport", "scene", "finderClickTopic19186", "topic", "topicType", "topicFeedCount", "finderClickTopicFeedReport", "finderCommentFlagReport", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "finderCreateContactReport", "success", "addHeadIcon", "", "addSignature", "finderDistrictAlertClick", "username", "finderExposeFeedReport", "finderFavReport", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "finderLocationRequest19954", "context", "Landroid/content/Context;", "finderRealLikeAction19956", "finderRealLikeExpose19955", "exposeItems", "totalCount", "enterContextId", "finderRealLikeUserModify19957", "addUsernames", "delUsernames", "enterCount", "finderRedDot18948", "currUI", "redDotType", "showType", "redDotSubType", "count", "redDotWording", "currentTabType", "autoClick", "report_ext_info", "redDotBizType", "finderRedDotRevoke20223", "ctrType", "tipsId", "revokeId", "revokeStatus", "finderReportClickMention", "clickUsername", "finderReportEnterAtTimeline", "finderReportFav", "opType", "finderReportFlowClick19993", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "finderReportFollow", "finderUsername", "finderReportHitTabClick19998", "messageType", "index", "finderReportLikeAndComment", "actionType", "likeAction", "replyUsername", "userScene", "isShowRecWording", "isPrivateAccount", "finderReportMsgItemClick", "type", "isOverlap", "overlapCount", "finderReportOpenDrawer", "clickType", "finderReportPostMentionInfo", "finderReportSysMsgClick", "redDotCount", "finderReportTabChange", "fromTab", "toTab", "source", "finderSaveNameCard", "finderSelfUIEventReport", "enterTimeStamp", "redDotExistOnEnter", "eventType", "bannerType", "isHaveRedDot", "msgCnt", "finderSettingClickReport", "settingType", "finderSettingInfoEventReport", "hasReddot", "finderShareFeedClick18944", "cardType", "fromUser", "isCgiEnd", "uiType", "finderShareFeedReport", "shareType", "forwardResult", "receiver", "forwardUsrCount", "finderShareNameCardClickReport", "nameCardUser", "finderShareNameCardReport", "author", "followCount", "authType", "finderShareTopicClickReport", "finderShareTopicReport", "finderSubCommentExpand", "rootComment", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "expandType", "finderTimelineMoreAction", "isFloat", "finderTraceAction", "finderUnlikeFeedReport", "page", "unlikeType", "finderVoiceFlagReport", "getCurrentTabRedDotUI", "getFeedCigFetchTime", "getFinderFeedFetchTime", "getFinderItem", "getFinderItemSessionBuffer", "getReportNetTypeInt", "newUUID", "putFeedCgiFetchTime", "putFinderItemSessionBuffer", "sessionBuffer", "report20698", "profileUsername", "time", "profileType", "profileView", "report20699", "fromUsername", "report20717", "tabContextId", "sessionId", "reportExposeHotCard20585", "exposeFeedId", "posId", "reportIDKeyVideoPlayError", "what", "reportJumpHotCard20586", "actionFeedId", "actionFeedIndex", "totalFeedId", "reportPoiFilter19996", "poiText", "filterTextItems", "hasUnfoldBtn", "isUnfoldBtnClick", "structLog", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "transformTabIndexToTabType", "tabIndex", "transformTabTypeToCommentScene", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderPostReportLogic;", "", "()V", "InnerVersion19086", "", "getInnerVersion19086", "()I", "TAG", "", "getTAG", "()Ljava/lang/String;", "_18939InnerVersion", "", "finderFeedReportObj", "Lcom/tencent/mm/protocal/protobuf/FinderFeedReportObject;", "getFinderFeedReportObj", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedReportObject;", "setFinderFeedReportObj", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedReportObject;)V", "postListener", "Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;", "getPostListener", "()Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;", "setPostListener", "(Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;)V", "buildMultiMediaJson", "multiMediaInfo", "", "Lcom/tencent/mm/protocal/protobuf/FinderMediaReportInfo;", "finishEdit", "", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "finishTakePhoto", "getFeedReportType", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getReportInfoAndClear", "packageJson", "Lorg/json/JSONObject;", "jsonObject", "key", "value", "pickMedia", "mediaSource", "pickTopicActivity", "topicId", "topicType", "postExit", "pageId", "isSaveDraft", "", "report19086", "success", "report20949", "isExpose", "scene", "report21638", "deleteFlag", "mediaType", "picCnt", "videoLen", "report21666", "reportCurrentPost", "reportCurrentPostExit", "reportCurrentPostFail", "localId", "reportCurrentPostSuccess", "svrId", "saveMegaPostError", "errorType", "errorCode", "savePostError", "setAtData", "atContactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "Lkotlin/collections/ArrayList;", "clickMentionCount", "clickSucMentionCount", "setClickId", "clickId", "setDraftType", "draftType", "setFollowSoundTrack", "followId", "setFromAppId", "appId", "setMusicId", "musicId", "setMusicType", "type", "setPostId", "postId", "editId", "setRemuxType", "setSoundTrackType", "startPost", "entrance", "draft", "updateLBSFlag", "lbsFlag", "selectLocation", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "plugin-finder_release"})
 public final class i
 {
-  public static final String TAG = "Finder.FinderReportLogic";
-  private static final LongSparseArray<Long> syP;
-  private static HashMap<String, String> syQ;
-  private static final SparseArray<Long> syR;
-  private static final BigInteger syS;
-  public static final i syT;
+  private static final String TAG = "Finder.FinderPostReportLogic";
+  private static FinderFeedReportObject vfk;
+  private static final long vfl = 2L;
+  private static com.tencent.mm.plugin.finder.upload.q vfm;
+  private static final int vfn = 14;
+  public static final i vfo;
   
   static
   {
-    AppMethodBeat.i(166595);
-    syT = new i();
-    TAG = "Finder.FinderReportLogic";
-    syP = new LongSparseArray();
-    syQ = new HashMap();
-    syR = new SparseArray();
-    syS = BigInteger.ONE.shiftLeft(64);
-    AppMethodBeat.o(166595);
+    AppMethodBeat.i(166575);
+    vfo = new i();
+    TAG = "Finder.FinderPostReportLogic";
+    vfl = 2L;
+    vfm = (com.tencent.mm.plugin.finder.upload.q)new a();
+    vfn = 14;
+    AppMethodBeat.o(166575);
   }
   
-  public static long Ft(int paramInt)
+  public static void Fa(long paramLong)
   {
-    AppMethodBeat.i(203810);
-    Long localLong = (Long)syR.get(paramInt);
-    if (localLong != null)
-    {
-      long l = localLong.longValue();
-      AppMethodBeat.o(203810);
-      return l;
-    }
-    AppMethodBeat.o(203810);
-    return 0L;
-  }
-  
-  public static void Fu(int paramInt)
-  {
-    AppMethodBeat.i(203811);
-    syR.put(paramInt, Long.valueOf(ch.aDc()));
-    AppMethodBeat.o(203811);
-  }
-  
-  public static void Fv(int paramInt)
-  {
-    AppMethodBeat.i(166594);
-    switch (paramInt)
-    {
-    default: 
-      locala = t.sCk;
-      t.a.md(t.cGq());
-      AppMethodBeat.o(166594);
-      return;
-    case -1010: 
-      locala = t.sCk;
-      t.a.md(t.cGd());
-      AppMethodBeat.o(166594);
-      return;
-    case -1007: 
-      locala = t.sCk;
-      t.a.md(t.cGe());
-      AppMethodBeat.o(166594);
-      return;
-    case -1004: 
-      locala = t.sCk;
-      t.a.md(t.cGf());
-      AppMethodBeat.o(166594);
-      return;
-    case -10012: 
-      locala = t.sCk;
-      t.a.md(t.cGg());
-      AppMethodBeat.o(166594);
-      return;
-    case -10004: 
-      locala = t.sCk;
-      t.a.md(t.cGh());
-      AppMethodBeat.o(166594);
-      return;
-    case -21009: 
-      locala = t.sCk;
-      t.a.md(t.cGi());
-      AppMethodBeat.o(166594);
-      return;
-    case -21020: 
-      locala = t.sCk;
-      t.a.md(t.cGj());
-      AppMethodBeat.o(166594);
-      return;
-    case 404: 
-      locala = t.sCk;
-      t.a.md(t.cGk());
-      AppMethodBeat.o(166594);
-      return;
-    case 403: 
-      locala = t.sCk;
-      t.a.md(t.cGl());
-      AppMethodBeat.o(166594);
-      return;
-    case 503: 
-      locala = t.sCk;
-      t.a.md(t.cGm());
-      AppMethodBeat.o(166594);
-      return;
-    case 502: 
-      locala = t.sCk;
-      t.a.md(t.cGn());
-      AppMethodBeat.o(166594);
-      return;
-    case 416: 
-      locala = t.sCk;
-      t.a.md(t.cGo());
-      AppMethodBeat.o(166594);
-      return;
-    }
-    t.a locala = t.sCk;
-    t.a.md(t.cGp());
-    AppMethodBeat.o(166594);
-  }
-  
-  public static int Fw(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return 3;
-    case 3: 
-      return 17;
-    case 1: 
-      return 18;
-    case 2: 
-      return 15;
-    }
-    return 20;
-  }
-  
-  public static String I(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(203807);
-    String str2 = (String)syQ.get(paramLong + '_' + paramInt);
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    AppMethodBeat.o(203807);
-    return str1;
-  }
-  
-  public static void J(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(166577);
-    FinderItem localFinderItem = wJ(paramLong);
-    if (localFinderItem != null)
-    {
-      ad localad = new ad();
-      String str2 = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = "";
-      }
-      localad.hf(str1);
-      localad.hg(com.tencent.mm.ac.c.rp(localFinderItem.getId()));
-      localad.cq(paramInt);
-      localad.cl(localFinderItem.getLikeCount());
-      localad.cm(localFinderItem.getCommentCount());
-      localad.cn(localFinderItem.getFriendLikeCount());
-      localad.cp(localFinderItem.getMediaType());
-      localad.hh("");
-      localad.co(paramInt);
-      localad.aLH();
-      a((com.tencent.mm.plugin.report.a)localad);
-      AppMethodBeat.o(166577);
-      return;
-    }
-    AppMethodBeat.o(166577);
-  }
-  
-  public static void K(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(166580);
-    FinderItem localFinderItem = wJ(paramLong);
-    if (localFinderItem != null)
-    {
-      bk localbk = new bk();
-      String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-      Object localObject = str;
-      if (str == null) {
-        localObject = "";
-      }
-      localbk.kg((String)localObject);
-      localbk.fU(paramInt);
-      localObject = com.tencent.mm.plugin.finder.utils.o.sXt;
-      localbk.kh(d.n.n.h(com.tencent.mm.plugin.finder.utils.o.p(localFinderItem), ",", ";", false));
-      localbk.ki("");
-      localbk.kj(wL(localFinderItem.getId()));
-      localbk.fV(localFinderItem.getFeedObject().likeCount);
-      localbk.aLH();
-      a((com.tencent.mm.plugin.report.a)localbk);
-      AppMethodBeat.o(166580);
-      return;
-    }
-    AppMethodBeat.o(166580);
-  }
-  
-  public static void W(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(203840);
-    d.g.b.p.h(paramContext, "context");
-    bd localbd = new bd();
-    Object localObject = FinderReporterUIC.tnG;
-    paramContext = FinderReporterUIC.a.fc(paramContext);
-    if (paramContext != null) {
-      localbd.jH(paramContext.sessionId);
-    }
-    for (;;)
-    {
-      localbd.fc(paramInt);
-      localbd.aLH();
-      a((com.tencent.mm.plugin.report.a)localbd);
-      AppMethodBeat.o(203840);
-      return;
-      localObject = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-      paramContext = (Context)localObject;
-      if (localObject == null) {
-        paramContext = "";
-      }
-      localbd.jH(paramContext);
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, arn paramarn)
-  {
-    AppMethodBeat.i(203819);
-    d.g.b.p.h(paramarn, "contextObj");
-    bb localbb = new bb();
-    localbb.eA(paramarn.sch);
-    localbb.jr(paramarn.sessionId);
-    localbb.js(paramarn.rfA);
-    localbb.jt(paramarn.rfo);
-    localbb.jr(paramarn.sessionId);
-    localbb.eC(ch.aDc());
-    localbb.eB(paramInt1);
-    localbb.eD(paramInt2);
-    localbb.eE(paramInt3);
-    localbb.Sc();
-    localbb.aLH();
-    a((com.tencent.mm.plugin.report.a)localbb);
-    AppMethodBeat.o(203819);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, arn paramarn, int paramInt3)
-  {
-    long l2 = 0L;
-    AppMethodBeat.i(203836);
-    d.g.b.p.h(paramarn, "contextObj");
-    au localau = new au();
-    long l1;
-    if (paramInt1 > 0)
-    {
-      l1 = paramInt1;
-      localau.dT(l1);
-      l1 = l2;
-      if (paramInt2 > 0) {
-        l1 = paramInt2;
-      }
-      localau.dU(l1);
-      localau.dV(ch.aDc());
-      localau.ix(paramarn.sessionId);
-      localau.iz(paramarn.rfA);
-      localau.iy(paramarn.rfo);
-      localau.dW(paramInt3);
-      switch (paramInt2)
-      {
-      }
-    }
-    for (;;)
-    {
-      localau.aLH();
-      a((com.tencent.mm.plugin.report.a)localau);
-      paramarn = g.ajR();
-      d.g.b.p.g(paramarn, "MMKernel.storage()");
-      paramarn.ajA().set(am.a.Jdz, localau.RZ());
-      if (paramInt2 != 2)
-      {
-        paramarn = g.ajR();
-        d.g.b.p.g(paramarn, "MMKernel.storage()");
-        paramarn.ajA().set(am.a.JdA, localau.RZ());
-      }
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "finderReportTabChange clickTabContextId [%s] toTab[%d]", new Object[] { localau.RZ(), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(203836);
-      return;
-      l1 = 0L;
-      break;
-      paramarn = g.ad(PluginFinder.class);
-      d.g.b.p.g(paramarn, "MMKernel.plugin(PluginFinder::class.java)");
-      if (((PluginFinder)paramarn).getRedDotManager().aii("TLFollow") != null)
-      {
-        localau.Sa();
-        continue;
-        paramarn = g.ad(PluginFinder.class);
-        d.g.b.p.g(paramarn, "MMKernel.plugin(PluginFinder::class.java)");
-        if (((PluginFinder)paramarn).getRedDotManager().aii("TLRecommendTab") != null)
-        {
-          localau.Sa();
-          continue;
-          paramarn = g.ad(PluginFinder.class);
-          d.g.b.p.g(paramarn, "MMKernel.plugin(PluginFinder::class.java)");
-          if (((PluginFinder)paramarn).getRedDotManager().aii("TLMachineTab") != null)
-          {
-            localau.Sa();
-            continue;
-            paramarn = g.ad(PluginFinder.class);
-            d.g.b.p.g(paramarn, "MMKernel.plugin(PluginFinder::class.java)");
-            if (((PluginFinder)paramarn).getRedDotManager().aii("TLLbsTab") != null) {
-              localau.Sa();
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public static void a(int paramInt1, long paramLong, int paramInt2)
-  {
-    AppMethodBeat.i(203830);
-    FinderItem localFinderItem = wJ(paramLong);
-    if (localFinderItem != null)
-    {
-      al localal = new al();
-      String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-      Object localObject = str;
-      if (str == null) {
-        localObject = "";
-      }
-      localal.hK((String)localObject);
-      localal.hL("");
-      localal.hM(wL(paramLong));
-      localal.hN(localFinderItem.getUserName());
-      localal.cZ(localFinderItem.getLikeCount());
-      localal.da(localFinderItem.getCommentCount());
-      localal.db(localFinderItem.getFriendLikeCount());
-      localal.ip(paramInt2);
-      localal.dc(paramInt1);
-      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cIL().value()).intValue() == 1) {}
-      for (paramLong = 1L;; paramLong = 0L)
-      {
-        localal.dd(paramLong);
-        localal.aLH();
-        a((com.tencent.mm.plugin.report.a)localal);
-        AppMethodBeat.o(203830);
-        return;
-      }
-    }
-    AppMethodBeat.o(203830);
-  }
-  
-  public static void a(int paramInt1, long paramLong, int paramInt2, int paramInt3, String paramString)
-  {
-    long l = 1L;
-    AppMethodBeat.i(203831);
-    aq localaq = new aq();
-    String str2 = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localaq.ic(str1);
-    localaq.ig(wL(paramLong));
-    localaq.dz(paramInt1);
-    localaq.dy(paramInt2);
-    switch (paramInt2)
-    {
-    default: 
-      localaq.dv(2L);
-    }
-    for (;;)
-    {
-      localaq.du(paramInt3);
-      str1 = paramString;
-      if (paramString == null) {
-        str1 = "";
-      }
-      localaq.ie(str1);
-      localaq.jdMethod_if(v.aAK());
-      paramString = wJ(paramLong);
-      if (paramString != null)
-      {
-        localaq.dw(paramString.getLikeCount());
-        localaq.dx(paramString.getCommentCount());
-      }
-      paramLong = l;
-      if (com.tencent.mm.sdk.platformtools.j.DEBUG) {
-        paramLong = 0L;
-      }
-      localaq.dA(paramLong);
-      localaq.aLH();
-      a((com.tencent.mm.plugin.report.a)localaq);
-      AppMethodBeat.o(203831);
-      return;
-      localaq.dv(1L);
-    }
-  }
-  
-  public static void a(int paramInt1, String paramString1, int paramInt2, String paramString2, int paramInt3, arn paramarn)
-  {
-    AppMethodBeat.i(203822);
-    d.g.b.p.h(paramString1, "actionFeedId");
-    d.g.b.p.h(paramString2, "totalFeedId");
-    d.g.b.p.h(paramarn, "contextObj");
-    com.tencent.mm.plugin.report.e.ywz.f(20586, new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2), Long.valueOf(ch.aDc()), paramString2, Integer.valueOf(paramInt3), Integer.valueOf(paramarn.sch), paramarn.rfo, paramarn.sessionId });
-    AppMethodBeat.o(203822);
-  }
-  
-  public static void a(int paramInt1, boolean paramBoolean, String paramString1, int paramInt2, long paramLong, String paramString2)
-  {
-    AppMethodBeat.i(166579);
-    d.g.b.p.h(paramString1, "topic");
-    d.g.b.p.h(paramString2, "receiver");
-    bx localbx = new bx();
-    String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    Object localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localbx.lh((String)localObject);
-    localbx.gY(paramInt1);
-    if (paramBoolean) {}
-    for (long l = 1L;; l = 2L)
-    {
-      localbx.gZ(l);
-      localObject = com.tencent.mm.plugin.finder.utils.o.sXt;
-      localbx.li(d.n.n.h(com.tencent.mm.plugin.finder.utils.o.A(paramString1, paramInt2, paramLong), ",", ";", false));
-      localbx.lj("");
-      localbx.ha(paramLong);
-      localbx.lk(paramString2);
-      localbx.aLH();
-      a((com.tencent.mm.plugin.report.a)localbx);
-      AppMethodBeat.o(166579);
-      return;
-    }
-  }
-  
-  public static void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(203853);
-    paramString1 = com.tencent.mm.ac.c.rp(paramLong) + ',' + paramInt1 + ',' + paramInt2 + ',' + bu.nullAsNil(paramString1) + ',' + bu.nullAsNil(paramString2) + ',' + bu.nullAsNil(paramString3) + ',' + bu.nullAsNil(paramString4);
-    com.tencent.mm.plugin.report.e.ywz.kvStat(20717, paramString1);
-    AppMethodBeat.o(203853);
-  }
-  
-  public static void a(long paramLong1, int paramInt1, long paramLong2, String paramString, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(203815);
-    d.g.b.p.h(paramString, "fromUser");
-    ao localao = new ao();
-    String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    Object localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localao.hS((String)localObject);
-    localao.dh(paramInt1);
-    localao.di(paramLong2);
-    localao.hT(paramString);
-    localao.hU(wL(paramLong1));
-    localao.dk(paramInt2);
-    localao.dl(paramInt3);
-    paramString = wJ(paramLong1);
-    if (paramString != null)
-    {
-      localao.hV(paramString.getFeedObject().username);
-      localObject = com.tencent.mm.plugin.finder.utils.o.sXt;
-      localao.hW(d.n.n.h(com.tencent.mm.plugin.finder.utils.o.p(paramString), ",", ";", false));
-      localObject = (Iterable)paramString.getMediaList();
-      paramString = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
-      localObject = ((Iterable)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        if (bu.isNullOrNil(((bvz)((Iterator)localObject).next()).coverUrl)) {}
-        for (paramLong1 = 0L;; paramLong1 = 1L)
-        {
-          localao.dj(paramLong1);
-          paramString.add(z.Nhr);
-          break;
-        }
-      }
-    }
-    localao.aLH();
-    a((com.tencent.mm.plugin.report.a)localao);
-    AppMethodBeat.o(203815);
-  }
-  
-  public static void a(long paramLong1, int paramInt, long paramLong2, String paramString, arn paramarn, long paramLong3)
-  {
-    AppMethodBeat.i(203816);
-    d.g.b.p.h(paramString, "receiver");
-    FinderItem localFinderItem = wJ(paramLong1);
-    if (localFinderItem != null)
-    {
-      ba localba = new ba();
-      String str1;
-      if (paramarn != null)
-      {
-        String str2 = paramarn.sessionId;
-        str1 = str2;
-        if (str2 != null) {}
-      }
-      else
-      {
-        str1 = "";
-      }
-      localba.jf(str1);
-      localba.es(paramInt);
-      localba.et(paramLong2);
-      localba.jg(wL(localFinderItem.getId()));
-      localba.jh(localFinderItem.getFeedObject().username);
-      localba.ji(paramString);
-      localba.eu(localFinderItem.getLikeCount());
-      localba.ev(localFinderItem.getCommentCount());
-      localba.ew(localFinderItem.getFriendLikeCount());
-      localba.jj("");
-      localba.ex(localFinderItem.getMediaType());
-      paramString = com.tencent.mm.plugin.finder.utils.o.sXt;
-      localba.jk(d.n.n.h(com.tencent.mm.plugin.finder.utils.o.p(localFinderItem), ",", ";", false));
-      localba.jl("");
-      if (paramarn != null)
-      {
-        paramLong2 = paramarn.sch;
-        localba.ey(paramLong2);
-        if (paramarn != null)
-        {
-          str1 = paramarn.rfo;
-          paramString = str1;
-          if (str1 != null) {}
-        }
-        else
-        {
-          paramString = "";
-        }
-        localba.jm(paramString);
-        if (paramarn != null)
-        {
-          str1 = paramarn.rfA;
-          paramString = str1;
-          if (str1 != null) {}
-        }
-        else
-        {
-          paramString = "";
-        }
-        localba.jn(paramString);
-        if (paramarn == null) {
-          break label460;
-        }
-      }
-      label426:
-      label460:
-      for (paramInt = paramarn.sch;; paramInt = 0)
-      {
-        localba.jo(I(paramLong1, paramInt));
-        localba.ez(paramLong3);
-        if (paramarn != null)
-        {
-          paramString = paramarn.extraInfo;
-          if (paramString != null)
-          {
-            str1 = d.n.n.h(paramString, ",", ";", false);
-            paramString = str1;
-            if (str1 != null) {
-              break label373;
-            }
-          }
-        }
-        paramString = "";
-        label373:
-        localba.jp(paramString);
-        if (paramarn != null)
-        {
-          paramString = paramarn.rfr;
-          if (paramString != null)
-          {
-            paramarn = d.n.n.h(paramString, ",", ";", false);
-            paramString = paramarn;
-            if (paramarn != null) {
-              break label426;
-            }
-          }
-        }
-        paramString = "";
-        localba.jq(paramString);
-        localba.aLH();
-        a((com.tencent.mm.plugin.report.a)localba);
-        AppMethodBeat.o(203816);
-        return;
-        paramLong2 = 0L;
-        break;
-      }
-    }
-    AppMethodBeat.o(203816);
-  }
-  
-  public static void a(long paramLong, int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(203813);
-    d.g.b.p.h(paramString, "fromUser");
-    a(paramLong, paramInt1, 1L, paramString, paramInt2, paramInt3);
-    AppMethodBeat.o(203813);
-  }
-  
-  public static void a(long paramLong, String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(203812);
-    d.g.b.p.h(paramString, "topic");
-    FinderItem localFinderItem = wJ(paramLong);
-    if (localFinderItem != null)
-    {
-      bw localbw = new bw();
-      String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-      Object localObject = str;
-      if (str == null) {
-        localObject = "";
-      }
-      localbw.lc((String)localObject);
-      localbw.ld("");
-      localbw.gT(paramInt2);
-      localbw.le(wL(localFinderItem.getId()));
-      localbw.gU(localFinderItem.getMediaType());
-      localObject = com.tencent.mm.plugin.finder.utils.o.sXt;
-      localbw.lf(d.n.n.h(com.tencent.mm.plugin.finder.utils.o.A(paramString, paramInt1, 0L), ",", ";", false));
-      localbw.lg("");
-      localbw.gV(localFinderItem.getFeedObject().likeCount);
-      localbw.gW(localFinderItem.getFeedObject().commentCount);
-      localbw.gX(localFinderItem.getFeedObject().friendLikeCount);
-      localbw.aLH();
-      a((com.tencent.mm.plugin.report.a)localbw);
-      AppMethodBeat.o(203812);
-      return;
-    }
-    AppMethodBeat.o(203812);
-  }
-  
-  public static void a(Context paramContext, long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(203849);
-    d.g.b.p.h(paramContext, "context");
-    paramContext = new bs();
-    paramContext.gC(paramLong1);
-    paramContext.gD(paramLong2);
-    if (paramBoolean) {}
-    for (paramLong1 = 1L;; paramLong1 = 0L)
-    {
-      paramContext.gE(paramLong1);
-      paramContext.aLH();
-      AppMethodBeat.o(203849);
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, long paramLong1, boolean paramBoolean1, long paramLong2, long paramLong3, boolean paramBoolean2, long paramLong4)
-  {
-    AppMethodBeat.i(203847);
-    d.g.b.p.h(paramContext, "context");
-    Object localObject = FinderReporterUIC.tnG;
-    paramContext = FinderReporterUIC.a.fc(paramContext);
-    if (paramContext != null)
-    {
-      paramContext = paramContext.cQZ();
-      localObject = new bh();
-      if (paramContext == null) {
-        break label142;
-      }
-      paramContext = paramContext.sessionId;
-      label50:
-      ((bh)localObject).jN(paramContext);
-      ((bh)localObject).ft(paramLong1);
-      if (!paramBoolean1) {
-        break label147;
-      }
-      paramLong1 = 1L;
-      label70:
-      ((bh)localObject).fu(paramLong1);
-      ((bh)localObject).fv(paramLong2);
-      ((bh)localObject).fw(paramLong3);
-      ((bh)localObject).fx(System.currentTimeMillis());
-      if (!paramBoolean2) {
-        break label152;
-      }
-    }
-    label142:
-    label147:
-    label152:
-    for (paramLong1 = 1L;; paramLong1 = 0L)
-    {
-      ((bh)localObject).fy(paramLong1);
-      ((bh)localObject).fz(paramLong4);
-      ((bh)localObject).aLH();
-      AppMethodBeat.o(203847);
-      return;
-      paramContext = null;
-      break;
-      paramContext = null;
-      break label50;
-      paramLong1 = 0L;
-      break label70;
-    }
-  }
-  
-  public static void a(com.tencent.mm.plugin.finder.model.n paramn, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(178394);
-    d.g.b.p.h(paramn, "rootComment");
-    FinderItem localFinderItem = wJ(paramn.ste.field_feedId);
-    if (localFinderItem != null)
-    {
-      ap localap = new ap();
-      localap.dm(paramInt1);
-      localap.dn(paramn.ste.cLl().levelTwoComment.size());
-      String str2 = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = "";
-      }
-      localap.hX(str1);
-      localap.hY(wL(localFinderItem.getId()));
-      localap.hZ(localFinderItem.getUserName());
-      localap.dp(System.currentTimeMillis());
-      localap.ia(paramn.ste.getUsername());
-      localap.jdMethod_do(paramn.ste.cLl().likeCount);
-      localap.ib(wL(paramn.lP()));
-      localap.dq(paramn.ste.cLl().expandCommentCount);
-      switch (paramInt2)
-      {
-      default: 
-        localap.dr(2L);
-        if (((paramn.ste.cLl().displayFlag & 0x8) <= 0) && ((paramn.ste.cLl().displayFlag & 0x2) <= 0)) {
-          break;
-        }
-      }
-      for (paramInt1 = 1;; paramInt1 = 2)
-      {
-        localap.ds(paramInt1);
-        localap.dt(paramInt2);
-        localap.aLH();
-        a((com.tencent.mm.plugin.report.a)localap);
-        AppMethodBeat.o(178394);
-        return;
-        localap.dr(1L);
-        break;
-      }
-    }
-    AppMethodBeat.o(178394);
-  }
-  
-  public static void a(com.tencent.mm.plugin.report.a parama)
-  {
-    AppMethodBeat.i(203844);
-    d.g.b.p.h(parama, "struct");
-    String str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder("report").append(parama.getId()).append(' ');
-    parama = parama.RD();
-    d.g.b.p.g(parama, "struct.toShowString()");
-    com.tencent.mm.sdk.platformtools.ae.i(str, d.n.n.h(parama, "\r\n", " ", false));
-    AppMethodBeat.o(203844);
-  }
-  
-  public static void a(arn paramarn, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(203841);
-    d.g.b.p.h(paramarn, "contextObj");
-    com.tencent.mm.g.b.a.ae localae = new com.tencent.mm.g.b.a.ae();
-    localae.cr(paramarn.sch);
-    localae.hi(paramarn.sessionId);
-    localae.hj(paramarn.rfA);
-    localae.hk(paramarn.rfo);
-    localae.cs(paramInt1);
-    if (paramInt2 != 0)
-    {
-      paramarn = com.tencent.mm.ui.component.a.KEX;
-      if (!((FinderHomeTabStateVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderHomeTabStateVM.class)).GI(paramInt2)) {
-        break label131;
-      }
-    }
-    label131:
-    for (long l = 1L;; l = 0L)
-    {
-      localae.ct(l);
-      localae.aLH();
-      a((com.tencent.mm.plugin.report.a)localae);
-      AppMethodBeat.o(203841);
-      return;
-    }
-  }
-  
-  public static void a(arn paramarn, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(203828);
-    d.g.b.p.h(paramarn, "contextObj");
-    d.g.b.p.h(paramString, "replyUsername");
-    Object localObject = wJ(paramLong);
+    AppMethodBeat.i(166572);
+    Object localObject = com.tencent.mm.plugin.finder.storage.data.e.vFX;
+    localObject = e.a.Fy(paramLong);
     if (localObject != null)
     {
-      com.tencent.mm.g.b.a.ak localak = new com.tencent.mm.g.b.a.ak();
-      localak.hy(paramarn.sessionId);
-      localak.hz("");
-      localak.hA(wL(paramLong));
-      localak.hB(((FinderItem)localObject).getUserName());
-      localak.cN(paramInt1);
-      localak.cO(paramInt2);
-      localak.cP(paramInt3);
-      localak.hC(paramString);
-      localak.cQ(paramInt4);
-      localak.cR(((FinderItem)localObject).getLikeCount());
-      localak.cS(((FinderItem)localObject).getCommentCount());
-      localak.cT(((FinderItem)localObject).getFriendLikeCount());
-      localak.cU(((FinderItem)localObject).getMediaType());
-      paramString = com.tencent.mm.plugin.finder.utils.o.sXt;
-      localak.hD(d.n.n.h(com.tencent.mm.plugin.finder.utils.o.p((FinderItem)localObject), ",", ";", false));
-      localak.hE("");
-      localak.cV(paramarn.sch);
-      long l;
-      if (d.g.b.p.i(((FinderItem)localObject).getUserName(), v.aAK()))
-      {
-        l = 1L;
-        localak.cW(l);
-        if (!paramBoolean1) {
-          break label458;
-        }
-        l = 1L;
-        label251:
-        localak.cX(l);
-        localObject = paramarn.rfA;
-        paramString = (String)localObject;
-        if (localObject == null) {
-          paramString = "";
-        }
-        localak.hF(paramString);
-        localObject = paramarn.rfo;
-        paramString = (String)localObject;
-        if (localObject == null) {
-          paramString = "";
-        }
-        localak.hG(paramString);
-        localak.hH(I(paramLong, paramarn.sch));
-        if (!paramBoolean2) {
-          break label464;
-        }
-      }
-      label458:
-      label464:
-      for (paramLong = 1L;; paramLong = 0L)
-      {
-        localak.cY(paramLong);
-        paramString = paramarn.extraInfo;
-        if (paramString != null)
-        {
-          localObject = d.n.n.h(paramString, ",", ";", false);
-          paramString = (String)localObject;
-          if (localObject != null) {}
-        }
-        else
-        {
-          paramString = "";
-        }
-        localak.hI(paramString);
-        paramarn = paramarn.rfr;
-        if (paramarn != null)
-        {
-          paramString = d.n.n.h(paramarn, ",", ";", false);
-          paramarn = paramString;
-          if (paramString != null) {}
-        }
-        else
-        {
-          paramarn = "";
-        }
-        localak.hJ(paramarn);
-        localak.aLH();
-        a((com.tencent.mm.plugin.report.a)localak);
-        AppMethodBeat.o(203828);
-        return;
-        l = 0L;
-        break;
-        l = 0L;
-        break label251;
-      }
+      a((FinderItem)localObject, true);
+      k localk = k.vfA;
+      k.g((FinderItem)localObject);
+      AppMethodBeat.o(166572);
+      return;
     }
-    AppMethodBeat.o(203828);
+    AppMethodBeat.o(166572);
   }
   
-  public static void a(arn paramarn, long paramLong, RecyclerView paramRecyclerView)
+  public static void Fb(long paramLong)
   {
-    AppMethodBeat.i(203838);
-    d.g.b.p.h(paramarn, "contextObj");
-    d.g.b.p.h(paramRecyclerView, "recyclerView");
-    FinderItem localFinderItem = wJ(paramLong);
-    if (localFinderItem != null)
+    AppMethodBeat.i(166573);
+    Object localObject = com.tencent.mm.plugin.finder.storage.logic.c.vGN;
+    localObject = c.a.FS(paramLong);
+    if (localObject != null)
     {
-      ax localax = new ax();
-      localax.ea(paramarn.sch);
-      localax.iI(paramarn.sessionId);
-      localax.iJ(paramarn.rfA);
-      localax.iK(paramarn.rfo);
-      localax.iL(com.tencent.mm.ac.c.rp(paramLong));
-      localax.ec(ch.aDc());
-      Object localObject = paramarn.tni;
-      if (localObject != null)
+      a((FinderItem)localObject, false);
+      AppMethodBeat.o(166573);
+      return;
+    }
+    AppMethodBeat.o(166573);
+  }
+  
+  public static void H(boolean paramBoolean, int paramInt)
+  {
+    int m = 2;
+    int n = 1;
+    AppMethodBeat.i(250619);
+    Object localObject1 = z.aUg();
+    p.g(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
+    Object localObject2;
+    int j;
+    label147:
+    int k;
+    if (((CharSequence)localObject1).length() > 0)
+    {
+      i = 1;
+      localObject1 = new StringBuilder();
+      p.g(com.tencent.mm.kernel.g.aAf(), "MMKernel.account()");
+      localObject1 = com.tencent.mm.kernel.a.ayV() + '_' + Util.nowMilliSecond();
+      localObject2 = com.tencent.mm.kernel.g.ah(PluginFinder.class);
+      p.g(localObject2, "MMKernel.plugin(PluginFinder::class.java)");
+      if (((PluginFinder)localObject2).getRedDotManager().asW("TLPostCamera") == null)
       {
-        String str = d.n.n.h((String)localObject, ",", ";", false);
-        localObject = str;
-        if (str != null) {}
+        localObject2 = com.tencent.mm.kernel.g.ah(PluginFinder.class);
+        p.g(localObject2, "MMKernel.plugin(PluginFinder::class.java)");
+        if (((PluginFinder)localObject2).getRedDotManager().asW("TLCamera") == null) {
+          break label231;
+        }
       }
-      else
+      j = 1;
+      localObject2 = h.CyF;
+      if (!paramBoolean) {
+        break label236;
+      }
+      k = 1;
+      label159:
+      if (i != 0) {
+        m = 1;
+      }
+      if (j == 0) {
+        break label242;
+      }
+    }
+    label231:
+    label236:
+    label242:
+    for (int i = n;; i = 0)
+    {
+      ((h)localObject2).a(20949, new Object[] { localObject1, Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(m), Integer.valueOf(i) });
+      AppMethodBeat.o(250619);
+      return;
+      i = 0;
+      break;
+      j = 0;
+      break label147;
+      k = 2;
+      break label159;
+    }
+  }
+  
+  public static void Ko(int paramInt)
+  {
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null) {
+      localFinderFeedReportObject.soundTrackType = paramInt;
+    }
+  }
+  
+  public static void Kp(int paramInt)
+  {
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null) {
+      localFinderFeedReportObject.musicType = paramInt;
+    }
+  }
+  
+  public static void Kq(int paramInt)
+  {
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null) {
+      localFinderFeedReportObject.draftType = paramInt;
+    }
+  }
+  
+  public static void Kr(int paramInt)
+  {
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null) {
+      localFinderFeedReportObject.videoSource = paramInt;
+    }
+  }
+  
+  public static void a(int paramInt, axt paramaxt)
+  {
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.lbsFlag = paramInt;
+      localFinderFeedReportObject.selectLocation = paramaxt;
+    }
+  }
+  
+  private static void a(FinderItem paramFinderItem, boolean paramBoolean)
+  {
+    int j = 1;
+    int k = 0;
+    AppMethodBeat.i(178388);
+    Object localObject1 = "";
+    Object localObject3 = (Iterable)paramFinderItem.getMediaList();
+    Object localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    int i = 0;
+    Object localObject4;
+    if (((Iterator)localObject3).hasNext())
+    {
+      localObject4 = (cjl)((Iterator)localObject3).next();
+      localObject1 = (String)localObject1 + ((cjl)localObject4).mediaType + ';' + ((cjl)localObject4).videoDuration + '#';
+      if (Util.isNullOrNil(((cjl)localObject4).coverUrl)) {}
+      for (i = 0;; i = 1)
       {
-        localObject = "";
+        ((Collection)localObject2).add(x.SXb);
+        break;
       }
-      localax.iN((String)localObject);
-      localax.ed(localFinderItem.getMediaType());
-      localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
-      localObject = com.tencent.mm.plugin.finder.utils.p.cOk().toString();
-      d.g.b.p.g(localObject, "FinderUtil.getScreenInfo().toString()");
-      localax.iP(d.n.n.h((String)localObject, ",", ";", false));
-      localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
-      paramRecyclerView = com.tencent.mm.plugin.finder.utils.p.x(paramRecyclerView).toString();
-      d.g.b.p.g(paramRecyclerView, "FinderUtil.getCurrentScr…(recyclerView).toString()");
-      localax.iM(d.n.n.h(paramRecyclerView, ",", ";", false));
-      localax.eb(Ft(paramarn.sch));
-      localax.iO(I(paramLong, paramarn.sch));
-      if (paramarn.sch == 15) {
-        switch (localFinderItem.getFeedObject().recommendReasonType)
+    }
+    FinderFeedReportObject localFinderFeedReportObject = paramFinderItem.field_reportObject;
+    long l;
+    if (localFinderFeedReportObject != null)
+    {
+      localObject4 = new dl();
+      ((dl)localObject4).oM(localFinderFeedReportObject.sessionId);
+      ((dl)localObject4).kS(localFinderFeedReportObject.enterScene);
+      if (!paramBoolean) {
+        break label1066;
+      }
+      ((dl)localObject4).kT(j);
+      localObject2 = k.vfA;
+      ((dl)localObject4).oN(k.Fg(paramFinderItem.getId()));
+      ((dl)localObject4).kU(localFinderFeedReportObject.exitPageId);
+      ((dl)localObject4).jJ(localFinderFeedReportObject.enterTakePhotoTime);
+      ((dl)localObject4).jK(localFinderFeedReportObject.enterVideoEditTime);
+      ((dl)localObject4).jL(localFinderFeedReportObject.sendOrExitButtonTime);
+      ((dl)localObject4).jM(localFinderFeedReportObject.videoRecordTime);
+      ((dl)localObject4).jN(localFinderFeedReportObject.videoSource);
+      ((dl)localObject4).jO(localFinderFeedReportObject.videoEmojiCount);
+      ((dl)localObject4).jP(localFinderFeedReportObject.videoWordingCount);
+      localObject3 = localFinderFeedReportObject.videoMusicId;
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+      ((dl)localObject4).oO((String)localObject2);
+      ((dl)localObject4).jQ(localFinderFeedReportObject.videoMusicIndex);
+      ((dl)localObject4).jR(localFinderFeedReportObject.videoMusicSearch);
+      ((dl)localObject4).jS(localFinderFeedReportObject.videoPostType);
+      ((dl)localObject4).oP((String)localObject1);
+      ((dl)localObject4).jT(localFinderFeedReportObject.existDesc);
+      ((dl)localObject4).jU(localFinderFeedReportObject.descCount);
+      localObject2 = localFinderFeedReportObject.actionTrace;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      ((dl)localObject4).oQ((String)localObject1);
+      ((dl)localObject4).jV(localFinderFeedReportObject.lbsFlag);
+      localObject2 = localFinderFeedReportObject.link;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      ((dl)localObject4).oR((String)localObject1);
+      ((dl)localObject4).jW(localFinderFeedReportObject.draft);
+      localObject1 = w.vXp;
+      ((dl)localObject4).oS(n.j(w.z(paramFinderItem), ",", ";", false));
+      ((dl)localObject4).oT("");
+      if (!BuildInfo.DEBUG) {
+        break label1071;
+      }
+      l = 0L;
+      label536:
+      ((dl)localObject4).jX(l);
+      ((dl)localObject4).kW(localFinderFeedReportObject.mentionCount);
+      ((dl)localObject4).jY(localFinderFeedReportObject.clickMentionCount);
+      ((dl)localObject4).jZ(localFinderFeedReportObject.clickSucMentionCount);
+      ((dl)localObject4).ka(localFinderFeedReportObject.mentionRepeatCount);
+      ((dl)localObject4).oU("");
+      ((dl)localObject4).kV(i);
+      ((dl)localObject4).pc(localFinderFeedReportObject.forwardingAppId);
+      ((dl)localObject4).pd(localFinderFeedReportObject.topicActivityId);
+      ((dl)localObject4).ki(localFinderFeedReportObject.topicActivityType);
+      localObject1 = b(b(b(b(b(null, "IsMultiShot", localFinderFeedReportObject.isMultiShot), "MultiShotChangeCnt", localFinderFeedReportObject.multiShotChangeCnt), "MultiShotClickCnt", localFinderFeedReportObject.multiShotClickCnt), "MultiShotSuccessCnt", localFinderFeedReportObject.multiShotSuccessCnt), "MultiShotVideoCnt", localFinderFeedReportObject.multiShotVideoCnt).toString();
+      p.g(localObject1, "recordInfo.toString()");
+      ((dl)localObject4).oV(n.j((String)localObject1, ",", ";", false));
+      ((dl)localObject4).kb(localFinderFeedReportObject.videoSubType);
+      ((dl)localObject4).oW(localFinderFeedReportObject.postId);
+      ((dl)localObject4).oX(localFinderFeedReportObject.editId);
+      ((dl)localObject4).oZ(localFinderFeedReportObject.clickId);
+      localObject1 = paramFinderItem.getLocation();
+      if (localObject1 != null)
+      {
+        localObject2 = y.vXH;
+        ((dl)localObject4).oY(y.hg(((axt)localObject1).fuK, ((axt)localObject1).kHV));
+      }
+      ((dl)localObject4).kc(localFinderFeedReportObject.remuxType);
+      ((dl)localObject4).kg(localFinderFeedReportObject.musicType);
+      ((dl)localObject4).pb(localFinderFeedReportObject.followSoundTrackId);
+      ((dl)localObject4).kh(localFinderFeedReportObject.soundTrackType);
+      localObject1 = paramFinderItem.getMegaVideo();
+      if (localObject1 != null)
+      {
+        ((dl)localObject4).pa(d.zs(((cng)localObject1).id));
+        localObject2 = ((cng)localObject1).MtG;
+        if (localObject2 == null) {
+          break label1079;
+        }
+        localObject2 = ((cnl)localObject2).media;
+        if (localObject2 == null) {
+          break label1079;
+        }
+        localObject2 = (cod)j.kt((List)localObject2);
+        if (localObject2 == null) {
+          break label1079;
+        }
+        i = ((cod)localObject2).Mur;
+        label928:
+        ((dl)localObject4).kd(i);
+        localObject2 = (cjl)j.kt((List)paramFinderItem.getMediaList());
+        if (localObject2 == null) {
+          break label1084;
+        }
+      }
+    }
+    label1066:
+    label1071:
+    label1079:
+    label1084:
+    for (i = ((cjl)localObject2).fileSize;; i = 0)
+    {
+      ((dl)localObject4).ke(i);
+      localObject1 = ((cng)localObject1).MtG;
+      i = k;
+      if (localObject1 != null)
+      {
+        localObject1 = ((cnl)localObject1).media;
+        i = k;
+        if (localObject1 != null)
         {
-        case 2: 
-        case 3: 
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        default: 
-          paramLong = 0L;
+          localObject1 = (cod)j.kt((List)localObject1);
+          i = k;
+          if (localObject1 != null) {
+            i = ((cod)localObject1).fileSize;
+          }
+        }
+      }
+      ((dl)localObject4).kf(i);
+      ((dl)localObject4).bfK();
+      localObject1 = k.vfA;
+      k.a((com.tencent.mm.plugin.report.a)localObject4);
+      b(paramFinderItem, paramBoolean);
+      AppMethodBeat.o(178388);
+      return;
+      j = 0;
+      break;
+      l = vfl;
+      break label536;
+      i = 0;
+      break label928;
+    }
+  }
+  
+  public static void a(RecordMediaReportInfo paramRecordMediaReportInfo)
+  {
+    int j = 1;
+    AppMethodBeat.i(250608);
+    p.h(paramRecordMediaReportInfo, "reportInfo");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      Object localObject = paramRecordMediaReportInfo.y("KEY_RECORD_IS_BEAUTIFY", Boolean.FALSE);
+      p.g(localObject, "reportInfo.getReportValu…ECORD_IS_BEAUTIFY, false)");
+      if (((Boolean)localObject).booleanValue())
+      {
+        i = 1;
+        localFinderFeedReportObject.isBeauty = i;
+        localObject = paramRecordMediaReportInfo.y("KEY_ORIGIN_MEDIA_DURATION_MS_LONG", Long.valueOf(0L));
+        p.g(localObject, "reportInfo.getReportValu…DIA_DURATION_MS_LONG, 0L)");
+        localFinderFeedReportObject.videoRecordTime = ((Number)localObject).longValue();
+        localFinderFeedReportObject.videoSource = (((Number)paramRecordMediaReportInfo.y("KEY_MEDIA_SOURCE_INT", Integer.valueOf(0))).intValue() + 1);
+        localFinderFeedReportObject.videoMusicId = String.valueOf(((Number)paramRecordMediaReportInfo.y("KEY_MUSIC_REQ_ID_INT", Integer.valueOf(0))).intValue());
+        localObject = paramRecordMediaReportInfo.y("KEY_SEARCH_MUSIC_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValue(KEY_SEARCH_MUSIC_INT, 0)");
+        localFinderFeedReportObject.videoMusicSearch = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_MUSIC_INDEX_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValue(KEY_MUSIC_INDEX_INT, 0)");
+        localFinderFeedReportObject.videoMusicIndex = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…Y_ADD_EMOJI_COUNT_INT, 0)");
+        localFinderFeedReportObject.videoEmojiCount = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…EY_ADD_TEXT_COUNT_INT, 0)");
+        localFinderFeedReportObject.videoWordingCount = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_ENTER_EDIT_PAGE_TIME_MS_LONG", Long.valueOf(0L));
+        p.g(localObject, "reportInfo.getReportValu…IT_PAGE_TIME_MS_LONG, 0L)");
+        localFinderFeedReportObject.enterVideoEditTime = ((Number)localObject).longValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_ENTER_TIME_MS_LONG", Long.valueOf(0L));
+        p.g(localObject, "reportInfo.getReportValu…Y_ENTER_TIME_MS_LONG, 0L)");
+        localFinderFeedReportObject.enterTakePhotoTime = ((Number)localObject).longValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_IS_SUB_RECORD_BOOLEAN", Boolean.FALSE);
+        p.g(localObject, "reportInfo.getReportValu…UB_RECORD_BOOLEAN, false)");
+        if (!((Boolean)localObject).booleanValue()) {
+          break label518;
+        }
+      }
+      label518:
+      for (int i = j;; i = 0)
+      {
+        localFinderFeedReportObject.isMultiShot = i;
+        localObject = paramRecordMediaReportInfo.y("KEY_CHANGE_SUB_RECORD_TAB_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…GE_SUB_RECORD_TAB_INT, 0)");
+        localFinderFeedReportObject.multiShotChangeCnt = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_SUB_VIDEO_RECORD_CLICK_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…IDEO_RECORD_CLICK_INT, 0)");
+        localFinderFeedReportObject.multiShotClickCnt = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_SUB_VIDEO_RECORD_SUCCESS_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…EO_RECORD_SUCCESS_INT, 0)");
+        localFinderFeedReportObject.multiShotSuccessCnt = ((Number)localObject).intValue();
+        paramRecordMediaReportInfo = paramRecordMediaReportInfo.y("KEY_SUB_VIDEO_NUM_INT", Integer.valueOf(0));
+        p.g(paramRecordMediaReportInfo, "reportInfo.getReportValu…KEY_SUB_VIDEO_NUM_INT, 0)");
+        localFinderFeedReportObject.multiShotVideoCnt = ((Number)paramRecordMediaReportInfo).intValue();
+        AppMethodBeat.o(250608);
+        return;
+        i = 0;
+        break;
+      }
+    }
+    AppMethodBeat.o(250608);
+  }
+  
+  public static void as(final int paramInt, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(250602);
+    vfk = new FinderFeedReportObject();
+    if (paramBoolean)
+    {
+      localFinderFeedReportObject = vfk;
+      if (localFinderFeedReportObject != null)
+      {
+        d.c(TAG, (kotlin.g.a.a)new c(localFinderFeedReportObject, paramBoolean, paramInt));
+        AppMethodBeat.o(250602);
+        return;
+      }
+      AppMethodBeat.o(250602);
+      return;
+    }
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.sessionId = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.c.class)).cMD();
+      localFinderFeedReportObject.enterScene = paramInt;
+      if (paramBoolean) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        localFinderFeedReportObject.draft = paramInt;
+        AppMethodBeat.o(250602);
+        return;
+      }
+    }
+    AppMethodBeat.o(250602);
+  }
+  
+  public static void at(int paramInt, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(250613);
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.exitPageId = paramInt;
+      if (paramInt == 4) {
+        localFinderFeedReportObject.sendOrExitButtonTime = cl.aWA();
+      }
+      localFinderFeedReportObject = vfk;
+      if (localFinderFeedReportObject != null) {
+        d.c(TAG, (kotlin.g.a.a)new b(localFinderFeedReportObject, paramBoolean));
+      }
+      vfk = null;
+      AppMethodBeat.o(250613);
+      return;
+    }
+    AppMethodBeat.o(250613);
+  }
+  
+  public static void auE(String paramString)
+  {
+    AppMethodBeat.i(250603);
+    p.h(paramString, "musicId");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.videoMusicId = paramString;
+      AppMethodBeat.o(250603);
+      return;
+    }
+    AppMethodBeat.o(250603);
+  }
+  
+  public static void auF(String paramString)
+  {
+    AppMethodBeat.i(250604);
+    p.h(paramString, "followId");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.followSoundTrackId = paramString;
+      AppMethodBeat.o(250604);
+      return;
+    }
+    AppMethodBeat.o(250604);
+  }
+  
+  public static void auG(String paramString)
+  {
+    AppMethodBeat.i(250606);
+    p.h(paramString, "appId");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.forwardingAppId = paramString;
+      AppMethodBeat.o(250606);
+      return;
+    }
+    AppMethodBeat.o(250606);
+  }
+  
+  public static void auI(String paramString)
+  {
+    AppMethodBeat.i(250612);
+    p.h(paramString, "clickId");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.clickId = paramString;
+      AppMethodBeat.o(250612);
+      return;
+    }
+    AppMethodBeat.o(250612);
+  }
+  
+  private static JSONObject b(JSONObject paramJSONObject, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(250615);
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put(paramString, paramInt);
+      label27:
+      AppMethodBeat.o(250615);
+      return localJSONObject;
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label27;
+    }
+  }
+  
+  private static void b(FinderItem paramFinderItem, boolean paramBoolean)
+  {
+    AppMethodBeat.i(166574);
+    p.h(paramFinderItem, "finderItem");
+    FinderFeedReportObject localFinderFeedReportObject = paramFinderItem.field_reportObject;
+    if (localFinderFeedReportObject == null)
+    {
+      Log.e(TAG, "report19086, feedReportObj is null");
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(1253L, 38L, 1L, false);
+      AppMethodBeat.o(166574);
+      return;
+    }
+    if (!paramBoolean) {}
+    int j;
+    label135:
+    boolean bool;
+    int i6;
+    int i4;
+    int i2;
+    int i3;
+    long l;
+    int k;
+    int i;
+    Object localObject5;
+    int i5;
+    Object localObject3;
+    Object localObject1;
+    label251:
+    Object localObject2;
+    switch (localFinderFeedReportObject.postStage)
+    {
+    default: 
+      Log.w(TAG, "postStage range error, " + localFinderFeedReportObject.postStage);
+      p.h(paramFinderItem, "finderItem");
+      if (paramFinderItem.isMvFeed())
+      {
+        j = 1;
+        bool = paramFinderItem.isLongVideo();
+        i6 = localFinderFeedReportObject.uploadCost;
+        i4 = localFinderFeedReportObject.mediaProcessCost;
+        i2 = localFinderFeedReportObject.postTaskCost;
+        i3 = localFinderFeedReportObject.clickRepostCount;
+        l = localFinderFeedReportObject.uploadMediaTotalSize;
+        k = 0;
+        i = 0;
+        localObject5 = new ArrayList();
+        i5 = CdnLogic.getRecentAverageSpeed(1);
+        localObject3 = new JSONObject();
+        ((ArrayList)localObject5).addAll((Collection)localFinderFeedReportObject.mediaList);
+        if (paramBoolean) {
+          break label453;
+        }
+        ((ArrayList)localObject5).addAll((Collection)localFinderFeedReportObject.mediaList);
+        localObject1 = ((Iterable)paramFinderItem.getMediaList()).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = ((cjl)((Iterator)localObject1).next()).MoZ;
+          if (localObject2 != null)
+          {
+            if (((FinderMediaReportObject)localObject2).cdnUploadRetCode == 0) {
+              break label2285;
+            }
+            ((ArrayList)localObject5).add(localObject2);
+            i = ((FinderMediaReportObject)localObject2).cdnUploadRetCode;
+          }
+        }
+      }
+      break;
+    }
+    label453:
+    label609:
+    label2275:
+    label2285:
+    for (;;)
+    {
+      localObject2 = x.SXb;
+      break label251;
+      localObject1 = r.d.vhx;
+      r.d.oo(paramFinderItem.isLongVideo());
+      break;
+      localObject1 = r.d.vhx;
+      r.d.op(paramFinderItem.isLongVideo());
+      break;
+      localObject1 = r.d.vhx;
+      r.d.oq(paramFinderItem.isLongVideo());
+      break;
+      localObject1 = r.d.vhx;
+      r.d.or(paramFinderItem.isLongVideo());
+      break;
+      j = 0;
+      break label135;
+      localObject1 = ((Iterable)paramFinderItem.getLongVideoMediaExtList()).iterator();
+      for (;;)
+      {
+        k = i;
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+        localObject2 = ((cjl)((Iterator)localObject1).next()).MoZ;
+        if (localObject2 != null)
+        {
+          if (((FinderMediaReportObject)localObject2).cdnUploadRetCode != 0)
+          {
+            ((ArrayList)localObject5).add(localObject2);
+            i = ((FinderMediaReportObject)localObject2).cdnUploadRetCode;
+          }
+          localObject2 = x.SXb;
+        }
+      }
+      Object localObject4 = ((Iterable)localObject5).iterator();
+      localObject2 = "";
+      int m = 0;
+      Object localObject6;
+      Object localObject7;
+      int i7;
+      Object localObject8;
+      int n;
+      Object localObject10;
+      if (((Iterator)localObject4).hasNext())
+      {
+        localObject6 = (FinderMediaReportObject)((Iterator)localObject4).next();
+        localObject3 = new JSONObject();
+        com.tencent.mm.ac.g.a(localObject6, (JSONObject)localObject3);
+        i = m;
+        Object localObject9;
+        if (m == 0)
+        {
+          if (((FinderMediaReportObject)localObject6).zipTime > 0) {
+            i = 1;
+          }
+        }
+        else
+        {
+          localObject7 = localObject6.getClass().getDeclaredFields();
+          p.g(localObject7, "it::class.java.declaredFields");
+          i7 = localObject7.length;
+          m = 0;
+          localObject1 = localObject2;
+          if (m >= i7) {
+            break label1064;
+          }
+          localObject8 = localObject7[m];
+          localObject9 = localObject8.get(localObject6);
+          if (localObject9 != null) {
+            break label609;
+          }
+          localObject2 = localObject1;
+        }
+        Field[] arrayOfField;
+        int i8;
+        do
+        {
+          do
+          {
+            for (;;)
+            {
+              m += 1;
+              localObject1 = localObject2;
+              break label559;
+              i = 0;
+              break;
+              if ((!(localObject9 instanceof Integer)) || (!(p.j(localObject9, Integer.valueOf(0)) ^ true))) {
+                break label686;
+              }
+              localObject1 = new StringBuilder().append((String)localObject1);
+              p.g(localObject8, "field");
+              localObject2 = localObject8.getName() + ':' + localObject9 + ';';
+            }
+            if ((localObject9 instanceof String))
+            {
+              if (((CharSequence)localObject9).length() > 0) {}
+              for (n = 1;; n = 0)
+              {
+                if (n == 0) {
+                  break label776;
+                }
+                localObject1 = new StringBuilder().append((String)localObject1);
+                p.g(localObject8, "field");
+                localObject2 = localObject8.getName() + ':' + localObject9 + ';';
+                break;
+              }
+            }
+            localObject2 = localObject1;
+          } while (!(localObject9 instanceof com.tencent.mm.bw.a));
+          arrayOfField = localObject9.getClass().getDeclaredFields();
+          p.g(arrayOfField, "fieldValue::class.java.declaredFields");
+          i8 = arrayOfField.length;
+          n = 0;
+          localObject2 = localObject1;
+        } while (n >= i8);
+        localObject2 = arrayOfField[n];
+        localObject10 = ((Field)localObject2).get(localObject9);
+        if (((localObject10 instanceof Integer)) && ((p.j(localObject10, Integer.valueOf(0)) ^ true)))
+        {
+          localObject1 = new StringBuilder().append((String)localObject1);
+          p.g(localObject8, "field");
+          localObject1 = ((StringBuilder)localObject1).append(localObject8.getName()).append('-');
+          p.g(localObject2, "innerField");
+          localObject1 = ((Field)localObject2).getName() + ':' + localObject10 + ';';
         }
       }
       for (;;)
       {
-        localax.ee(paramLong);
-        paramRecyclerView = localFinderItem.getFeedObject().recommendReason;
-        paramarn = paramRecyclerView;
-        if (paramRecyclerView == null) {
-          paramarn = "";
-        }
-        localax.iQ(paramarn);
-        localax.aLH();
-        a((com.tencent.mm.plugin.report.a)localax);
-        AppMethodBeat.o(203838);
-        return;
-        paramLong = 1L;
-        continue;
-        paramLong = 2L;
-        continue;
-        paramLong = 3L;
-        continue;
-        paramLong = 4L;
-        continue;
-        paramLong = 5L;
-        continue;
-        paramLong = 6L;
-      }
-    }
-    AppMethodBeat.o(203838);
-  }
-  
-  public static void a(arn paramarn, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(203823);
-    d.g.b.p.h(paramarn, "contextObj");
-    d.g.b.p.h(paramString1, "poiText");
-    d.g.b.p.h(paramString2, "filterTextItems");
-    bz localbz = new bz();
-    localbz.lm(paramarn.sessionId);
-    localbz.ln(paramarn.rfA);
-    localbz.lo(paramarn.rfo);
-    localbz.hc(paramarn.tnf);
-    localbz.lp(paramString1);
-    localbz.lq(paramString2);
-    localbz.hd(paramInt1);
-    localbz.he(paramInt2);
-    switch (paramarn.sch)
-    {
-    }
-    for (;;)
-    {
-      localbz.hg(paramarn.sch);
-      localbz.aLH();
-      a((com.tencent.mm.plugin.report.a)localbz);
-      AppMethodBeat.o(203823);
-      return;
-      localbz.hf(2L);
-      continue;
-      localbz.hf(1L);
-    }
-  }
-  
-  private static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, String paramString3, long paramLong, arn paramarn, int paramInt6, int paramInt7, String paramString4)
-  {
-    AppMethodBeat.i(203827);
-    d.g.b.p.h(paramString1, "currUI");
-    d.g.b.p.h(paramString3, "redDotWording");
-    d.g.b.p.h(paramString4, "report_ext_info");
-    bq localbq = new bq();
-    String str2 = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localbq.kN(str1);
-    localbq.kO(paramString1);
-    localbq.gq(paramInt1);
-    localbq.gr(paramInt2);
-    localbq.gt(paramInt3);
-    long l;
-    if (com.tencent.mm.sdk.platformtools.j.DEBUG)
-    {
-      l = 0L;
-      localbq.gu(l);
-      localbq.gs(paramInt4);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      localbq.kP(paramString1);
-      localbq.gv(paramInt5);
-      localbq.kQ(paramString3);
-      localbq.kR(wL(paramLong));
-      if (paramarn != null)
-      {
-        paramString2 = paramarn.rfA;
-        paramString1 = paramString2;
-        if (paramString2 != null) {}
-      }
-      else
-      {
-        paramString1 = "";
-      }
-      localbq.kS(paramString1);
-      if (paramarn != null)
-      {
-        paramString2 = paramarn.rfo;
-        paramString1 = paramString2;
-        if (paramString2 != null) {}
-      }
-      else
-      {
-        paramString1 = "";
-      }
-      localbq.kT(paramString1);
-      paramString1 = com.tencent.mm.plugin.finder.storage.b.sHP;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() != 1) {
-        break label389;
-      }
-      paramLong = 2L;
-      label267:
-      localbq.gw(paramLong);
-      paramString1 = g.ad(com.tencent.mm.plugin.i.a.t.class);
-      d.g.b.p.g(paramString1, "MMKernel.plugin(IPluginFinder::class.java)");
-      paramString1 = ((com.tencent.mm.plugin.i.a.t)paramString1).getRedDotManager();
-      d.g.b.p.g(paramString1, "MMKernel.plugin(IPluginF…class.java).redDotManager");
-      if (!paramString1.cBv()) {
-        break label395;
-      }
-    }
-    label389:
-    label395:
-    for (paramLong = 1L;; paramLong = 2L)
-    {
-      localbq.gx(paramLong);
-      localbq.gy(paramInt6);
-      localbq.gz(paramInt7);
-      if (!bu.isNullOrNil(paramString4)) {
-        localbq.kU(paramString4);
-      }
-      localbq.aLH();
-      a((com.tencent.mm.plugin.report.a)localbq);
-      AppMethodBeat.o(203827);
-      return;
-      l = 2L;
-      break;
-      paramLong = 1L;
-      break label267;
-    }
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, long paramLong, String paramString4, int paramInt3, String paramString5, int paramInt4)
-  {
-    AppMethodBeat.i(203824);
-    d.g.b.p.h(paramString1, "currUI");
-    d.g.b.p.h(paramString2, "redDotId");
-    d.g.b.p.h(paramString3, "redDotWording");
-    d.g.b.p.h(paramString4, "contextId");
-    d.g.b.p.h(paramString5, "report_ext_info");
-    Object localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-    int i;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() != 1) {
-      switch (paramInt1)
-      {
-      case 0: 
-      case 6: 
-      default: 
-        AppMethodBeat.o(203824);
-        return;
-      case -1: 
-        paramInt1 = 2;
-        i = 1;
-        paramInt3 = 6;
-      }
-    }
-    for (;;)
-    {
-      localObject = new arn();
-      ((arn)localObject).rfA = paramString4;
-      ((arn)localObject).rfo = "";
-      a(paramString1, paramInt1, paramInt2, paramInt3, i, 0, paramString2, paramString3, paramLong, (arn)localObject, 0, paramInt4, paramString5);
-      AppMethodBeat.o(203824);
-      return;
-      paramInt1 = 1;
-      i = 1;
-      paramInt3 = 3;
-      continue;
-      paramInt1 = 1;
-      i = 2;
-      paramInt3 = 3;
-      continue;
-      paramInt1 = 3;
-      i = 1;
-      paramInt3 = 4;
-      continue;
-      paramInt1 = 3;
-      i = 2;
-      paramInt3 = 4;
-      continue;
-      paramInt1 = 1;
-      i = 2;
-      paramInt3 = 1;
-      continue;
-      paramInt1 = 7;
-      i = 0;
-      paramInt3 = 4;
-      continue;
-      paramInt1 = 8;
-      i = 0;
-      paramInt3 = 3;
-      continue;
-      switch (paramInt1)
-      {
-      default: 
-        AppMethodBeat.o(203824);
-        return;
-      case -1: 
-        paramInt1 = 2;
-        i = 1;
-        break;
-      case 1: 
-        paramInt1 = 5;
-        i = 0;
-        paramInt3 = 3;
-        break;
-      case 2: 
-        paramInt1 = 1;
-        i = 0;
-        paramInt3 = 3;
-        break;
-      case 5: 
-        paramInt1 = 1;
-        i = 0;
-        paramInt3 = 1;
-        break;
-      case 8: 
-        paramInt1 = 7;
-        i = 0;
-        break;
-      case 7: 
-        paramInt1 = 8;
-        i = 0;
-        break;
-      case 1003: 
-        paramInt1 = 3;
-        i = 1;
-        paramInt3 = 3;
-        break;
-      case 1004: 
-        paramInt1 = 3;
-        i = 2;
-        paramInt3 = 3;
-        break;
-      case 1001: 
-        paramInt1 = 6;
-        i = 0;
-        paramInt3 = 1;
-        break;
-      case 1005: 
-        paramInt1 = 9;
-        i = 0;
-        paramInt3 = 100;
-      }
-    }
-  }
-  
-  public static void a(String paramString, int paramInt, arn paramarn)
-  {
-    AppMethodBeat.i(203821);
-    d.g.b.p.h(paramString, "exposeFeedId");
-    d.g.b.p.h(paramarn, "contextObj");
-    com.tencent.mm.plugin.report.e.ywz.f(20585, new Object[] { paramString, Long.valueOf(ch.aDc()), Integer.valueOf(paramInt), Integer.valueOf(paramarn.sch), paramarn.rfo, paramarn.sessionId });
-    AppMethodBeat.o(203821);
-  }
-  
-  public static void ab(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(203852);
-    d.g.b.p.h(paramString, "fromUsername");
-    paramString = paramString + ',' + paramInt1 + ',' + paramInt2;
-    com.tencent.mm.plugin.report.e.ywz.kvStat(20699, paramString);
-    AppMethodBeat.o(203852);
-  }
-  
-  public static void aiL(String paramString)
-  {
-    AppMethodBeat.i(166588);
-    d.g.b.p.h(paramString, "username");
-    String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    paramString = str + ',' + paramString;
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "18973 ".concat(String.valueOf(paramString)));
-    com.tencent.mm.plugin.report.e.ywz.kvStat(18973, paramString);
-    AppMethodBeat.o(166588);
-  }
-  
-  public static void b(arn paramarn, long paramLong, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(203839);
-    d.g.b.p.h(paramarn, "contextObj");
-    if (wJ(paramLong) != null)
-    {
-      bl localbl = new bl();
-      localbl.fX(paramarn.sch);
-      localbl.kn(paramarn.rfA);
-      localbl.ko(paramarn.rfo);
-      localbl.km(paramarn.sessionId);
-      localbl.kl(com.tencent.mm.ac.c.rp(paramLong));
-      paramarn = paramString;
-      if (paramString == null) {
-        paramarn = "";
-      }
-      localbl.kk(paramarn);
-      localbl.fW(paramInt);
-      localbl.aLH();
-      a((com.tencent.mm.plugin.report.a)localbl);
-    }
-    AppMethodBeat.o(203839);
-  }
-  
-  public static void c(FinderItem paramFinderItem)
-  {
-    AppMethodBeat.i(166586);
-    d.g.b.p.h(paramFinderItem, "finderItem");
-    FinderObject localFinderObject = paramFinderItem.getFinderObject();
-    String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    paramFinderItem = str + ',' + wL(localFinderObject.id) + ',' + localFinderObject.username + ',' + paramFinderItem.getMediaType() + ',' + localFinderObject.recommendType + ',' + localFinderObject.likeCount + ',' + localFinderObject.commentCount + ',' + localFinderObject.friendLikeCount;
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "18950 ".concat(String.valueOf(paramFinderItem)));
-    com.tencent.mm.plugin.report.e.ywz.kvStat(18950, paramFinderItem);
-    AppMethodBeat.o(166586);
-  }
-  
-  public static void c(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(203851);
-    d.g.b.p.h(paramString, "profileUsername");
-    paramString = paramString + ',' + paramInt1 + ',' + paramInt2 + ',' + paramInt3 + ',' + paramInt4;
-    com.tencent.mm.plugin.report.e.ywz.kvStat(20698, paramString);
-    AppMethodBeat.o(203851);
-  }
-  
-  public static String cFt()
-  {
-    AppMethodBeat.i(203833);
-    String str = UUID.randomUUID().toString();
-    d.g.b.p.g(str, "UUID.randomUUID().toString()");
-    AppMethodBeat.o(203833);
-    return str;
-  }
-  
-  public static int cFu()
-  {
-    AppMethodBeat.i(203846);
-    int i = 0;
-    if (az.isWifi(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-      i = 1;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(203846);
-      return i;
-      if (az.is2G(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-        i = 2;
-      } else if (az.is3G(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-        i = 3;
-      } else if (az.is4G(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-        i = 4;
-      } else if (az.is5G(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-        i = 5;
-      }
-    }
-  }
-  
-  public static void d(int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    AppMethodBeat.i(203834);
-    bf localbf = new bf();
-    String str2 = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localbf.jK(str1);
-    localbf.fe(paramInt1);
-    localbf.ff(paramInt2);
-    localbf.fg(paramInt3);
-    localbf.jL(w.FT(w.FU(paramLong)));
-    localbf.aLH();
-    a((com.tencent.mm.plugin.report.a)localbf);
-    AppMethodBeat.o(203834);
-  }
-  
-  public static void d(long paramLong, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(203809);
-    if (paramString != null)
-    {
-      paramString = d.n.n.h(paramString, ",", ";", false);
-      if (paramString != null) {
-        switch (paramInt)
+        n += 1;
+        break label814;
+        if ((localObject10 instanceof String))
         {
-        default: 
-          ((Map)syQ).put(paramLong + '_' + paramInt, paramString);
+          int i1;
+          if (((CharSequence)localObject10).length() > 0) {
+            i1 = 1;
+          }
+          for (;;)
+          {
+            if (i1 != 0)
+            {
+              localObject1 = new StringBuilder().append((String)localObject1);
+              p.g(localObject8, "field");
+              localObject1 = ((StringBuilder)localObject1).append(localObject8.getName()).append('-');
+              p.g(localObject2, "innerField");
+              localObject1 = ((Field)localObject2).getName() + ':' + localObject10 + ';';
+              break label940;
+              i1 = 0;
+              continue;
+              localObject2 = (String)localObject1 + "#";
+              m = i;
+              break;
+              try
+              {
+                localObject1 = com.tencent.mm.kernel.g.aAh();
+                p.g(localObject1, "MMKernel.storage()");
+                localObject4 = ((com.tencent.mm.kernel.e)localObject1).azQ().get(ar.a.OjH, "");
+                localObject1 = localObject4;
+                if (!(localObject4 instanceof String)) {
+                  localObject1 = null;
+                }
+                localObject4 = (String)localObject1;
+                localObject1 = localObject4;
+                if (localObject4 == null) {
+                  localObject1 = "";
+                }
+                ((JSONObject)localObject3).put("snn", localObject1);
+                localObject1 = (cjl)j.kt((List)paramFinderItem.getMediaList());
+                if (localObject1 != null)
+                {
+                  localObject1 = ((cjl)localObject1).codec_info;
+                  if (localObject1 != null)
+                  {
+                    ((JSONObject)localObject3).put("codecInfo", "video_score:" + ((ayg)localObject1).LIt + ",video_cover_score:" + ((ayg)localObject1).LIu + ",video_audio_score:" + ((ayg)localObject1).LIv + ",thumb_score:" + ((ayg)localObject1).LIw + ",hdimg_score:" + ((ayg)localObject1).LIx + ",has_stickers:" + ((ayg)localObject1).LIy);
+                    localObject1 = x.SXb;
+                  }
+                }
+              }
+              catch (Throwable localThrowable)
+              {
+                for (;;)
+                {
+                  Log.printErrStackTrace(TAG, localThrowable, "mediaInfoJson put snn", new Object[0]);
+                  continue;
+                  String str = localThrowable.MoM;
+                  continue;
+                  str = str.MoM;
+                  continue;
+                  str = null;
+                  continue;
+                  str = "";
+                  continue;
+                  localObject3 = "";
+                  continue;
+                  i = 0;
+                  continue;
+                  localObject3 = Integer.valueOf(0);
+                  continue;
+                  m = 0;
+                  continue;
+                  paramFinderItem = Integer.valueOf(0);
+                  continue;
+                  k = 2;
+                  continue;
+                  localObject4 = str;
+                }
+              }
+              localObject1 = (cjl)j.kt((List)paramFinderItem.getMediaList());
+              if (localObject1 != null)
+              {
+                if (Util.isNullOrNil(((cjl)localObject1).MoM))
+                {
+                  localObject1 = p.I(((cjl)localObject1).url, Util.nullAsNil(((cjl)localObject1).url_token));
+                  if (localObject1 != null) {
+                    break label2275;
+                  }
+                }
+              }
+              else
+              {
+                localObject4 = "";
+                if (!bool) {
+                  break label2225;
+                }
+                localObject1 = paramFinderItem.getLongVideoMediaList();
+                if (localObject1 == null) {
+                  break label2219;
+                }
+                localObject1 = (cjl)j.kt((List)localObject1);
+                if (localObject1 == null) {
+                  break label2219;
+                }
+                if (!Util.isNullOrNil(((cjl)localObject1).MoM)) {
+                  break label2209;
+                }
+                localObject1 = p.I(((cjl)localObject1).url, Util.nullAsNil(((cjl)localObject1).url_token));
+                localObject3 = ((JSONObject)localObject3).toString();
+                p.g(localObject3, "mediaInfoJson.toString()");
+                localObject6 = n.j((String)localObject3, ",", ";", false);
+                localObject3 = (FinderMediaReportObject)j.kt((List)localObject5);
+                if (localObject3 != null)
+                {
+                  if (((FinderMediaReportObject)localObject3).mediaType != 4) {
+                    break label2233;
+                  }
+                  localObject3 = ((FinderMediaReportObject)j.ks((List)localObject5)).multiMediaInfo;
+                  p.g(localObject3, "mediaReportList.first().multiMediaInfo");
+                  localObject3 = ep((List)localObject3);
+                  localObject5 = localObject3;
+                  if (localObject3 != null) {}
+                }
+                else
+                {
+                  localObject5 = "";
+                }
+                localObject5 = n.j((String)localObject5, ",", ";", false);
+                n = localFinderFeedReportObject.dumpCgiErrorCode;
+                i1 = localFinderFeedReportObject.dumpCgiErrorType;
+                i7 = localFinderFeedReportObject.sdkShareType;
+                localObject3 = paramFinderItem.getFeedObject().objectDesc;
+                if (localObject3 != null)
+                {
+                  localObject3 = ((FinderObjectDesc)localObject3).event;
+                  if ((localObject3 != null) && (((azs)localObject3).twd == 0L)) {
+                    break label2241;
+                  }
+                }
+                i = 1;
+                Log.i(TAG, "19086, sdkShareType:" + i7 + ", isActivityEvent:" + i + ", dumpCgiErrorType:" + i1 + ", dumpCgiErrorCode:" + n);
+                localObject7 = new StringBuilder().append(localFinderFeedReportObject.enterScene).append(',').append(localFinderFeedReportObject.sessionId).append(',');
+                if (!paramBoolean) {
+                  break label2246;
+                }
+                localObject3 = k.vfA;
+                localObject3 = k.Fg(paramFinderItem.getId());
+                localObject2 = ((StringBuilder)localObject7).append(localObject3).append(',').append(localFinderFeedReportObject.videoSource).append(',').append(cl.aWA() - localFinderFeedReportObject.sendOrExitButtonTime).append(',').append(m).append(',').append(i6).append(',').append((String)localObject2).append(',');
+                if (!paramBoolean) {
+                  break label2255;
+                }
+                m = 1;
+                localObject2 = ((StringBuilder)localObject2).append(m).append(',').append(i4).append(',').append(vfn).append(',').append(k).append(',').append(NetStatusUtil.getNetTypeString(MMApplicationContext.getContext())).append(',').append(localFinderFeedReportObject.retryCount).append(',').append(i5).append(',').append((String)localObject6).append(',').append(localFinderFeedReportObject.videoPostType).append(',').append(localFinderFeedReportObject.uploadLogicError).append(',').append(localFinderFeedReportObject.postStage).append(',').append((String)localObject5).append(',');
+                if (!paramBoolean) {
+                  break label2261;
+                }
+                localObject3 = k.vfA;
+                paramFinderItem = k.Fg(paramFinderItem.getId());
+                paramFinderItem = ((StringBuilder)localObject2).append(paramFinderItem).append(',').append(localFinderFeedReportObject.cgiErrorCode).append(',').append(localFinderFeedReportObject.cgiErrorType).append(',').append((String)localObject4).append(',');
+                if (!bool) {
+                  break label2269;
+                }
+                k = 1;
+                paramFinderItem = k + ',' + (String)localObject1 + ',' + localFinderFeedReportObject.megaCgiErrorCode + ',' + localFinderFeedReportObject.megaCgiErrorType + ',' + localFinderFeedReportObject.longVideoSizeInvalid + ',' + i2 + ',' + i3 + ',' + l + ',' + n + ',' + i1 + ',' + i7 + ',' + i + ',' + j;
+                Log.i(TAG, "19086 ".concat(String.valueOf(paramFinderItem)));
+                com.tencent.mm.plugin.report.e.Cxv.kvStat(19086, paramFinderItem);
+                AppMethodBeat.o(166574);
+                return;
+              }
+            }
+          }
         }
       }
     }
+  }
+  
+  public static void b(RecordMediaReportInfo paramRecordMediaReportInfo)
+  {
+    AppMethodBeat.i(250609);
+    p.h(paramRecordMediaReportInfo, "reportInfo");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.videoMusicId = String.valueOf(((Number)paramRecordMediaReportInfo.y("KEY_MUSIC_REQ_ID_INT", Integer.valueOf(0))).intValue());
+      Object localObject = paramRecordMediaReportInfo.y("KEY_SEARCH_MUSIC_INT", Integer.valueOf(0));
+      p.g(localObject, "reportInfo.getReportValue(KEY_SEARCH_MUSIC_INT, 0)");
+      localFinderFeedReportObject.videoMusicSearch = ((Number)localObject).intValue();
+      localObject = paramRecordMediaReportInfo.y("KEY_MUSIC_INDEX_INT", Integer.valueOf(0));
+      p.g(localObject, "reportInfo.getReportValue(KEY_MUSIC_INDEX_INT, 0)");
+      localFinderFeedReportObject.videoMusicIndex = ((Number)localObject).intValue();
+      localObject = paramRecordMediaReportInfo.y("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(0));
+      p.g(localObject, "reportInfo.getReportValu…Y_ADD_EMOJI_COUNT_INT, 0)");
+      localFinderFeedReportObject.videoEmojiCount = ((Number)localObject).intValue();
+      localObject = paramRecordMediaReportInfo.y("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(0));
+      p.g(localObject, "reportInfo.getReportValu…EY_ADD_TEXT_COUNT_INT, 0)");
+      localFinderFeedReportObject.videoWordingCount = ((Number)localObject).intValue();
+      localObject = paramRecordMediaReportInfo.y("KEY_ENTER_EDIT_PAGE_TIME_MS_LONG", Long.valueOf(0L));
+      p.g(localObject, "reportInfo.getReportValu…IT_PAGE_TIME_MS_LONG, 0L)");
+      localFinderFeedReportObject.enterVideoEditTime = ((Number)localObject).longValue();
+      localObject = paramRecordMediaReportInfo.y("KEY_VIDEO_SUB_TYPE_INT", Integer.valueOf(0));
+      p.g(localObject, "reportInfo.getReportValu…EY_VIDEO_SUB_TYPE_INT, 0)");
+      localFinderFeedReportObject.videoSubType = ((Number)localObject).intValue();
+      localFinderFeedReportObject.postId = ((String)paramRecordMediaReportInfo.y("KEY_MULTI_MEDIA_POST_ID_STRING", ""));
+      localFinderFeedReportObject.editId = ((String)paramRecordMediaReportInfo.y("KEY_MULTI_MEDIA_EDIT_ID_STRING", ""));
+      localObject = paramRecordMediaReportInfo.y("KEY_IS_SUB_RECORD_BOOLEAN", Boolean.FALSE);
+      p.g(localObject, "reportInfo.getReportValu…UB_RECORD_BOOLEAN, false)");
+      if (((Boolean)localObject).booleanValue()) {}
+      for (int i = 1;; i = 0)
+      {
+        localFinderFeedReportObject.isMultiShot = i;
+        localObject = paramRecordMediaReportInfo.y("KEY_CHANGE_SUB_RECORD_TAB_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…GE_SUB_RECORD_TAB_INT, 0)");
+        localFinderFeedReportObject.multiShotChangeCnt = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_SUB_VIDEO_RECORD_CLICK_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…IDEO_RECORD_CLICK_INT, 0)");
+        localFinderFeedReportObject.multiShotClickCnt = ((Number)localObject).intValue();
+        localObject = paramRecordMediaReportInfo.y("KEY_SUB_VIDEO_RECORD_SUCCESS_INT", Integer.valueOf(0));
+        p.g(localObject, "reportInfo.getReportValu…EO_RECORD_SUCCESS_INT, 0)");
+        localFinderFeedReportObject.multiShotSuccessCnt = ((Number)localObject).intValue();
+        paramRecordMediaReportInfo = paramRecordMediaReportInfo.y("KEY_SUB_VIDEO_NUM_INT", Integer.valueOf(0));
+        p.g(paramRecordMediaReportInfo, "reportInfo.getReportValu…KEY_SUB_VIDEO_NUM_INT, 0)");
+        localFinderFeedReportObject.multiShotVideoCnt = ((Number)paramRecordMediaReportInfo).intValue();
+        AppMethodBeat.o(250609);
+        return;
+      }
+    }
+    AppMethodBeat.o(250609);
+  }
+  
+  public static void c(ArrayList<cjj> paramArrayList, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(250607);
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      if (paramArrayList != null)
+      {
+        HashSet localHashSet = new HashSet();
+        Iterator localIterator = paramArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str2 = ((cjj)localIterator.next()).username;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = "";
+          }
+          localHashSet.add(str1);
+        }
+        localFinderFeedReportObject.mentionCount = localHashSet.size();
+      }
+      localFinderFeedReportObject.clickMentionCount = paramInt1;
+      localFinderFeedReportObject.clickSucMentionCount = paramInt2;
+      if (paramArrayList != null) {}
+      for (paramInt1 = paramArrayList.size();; paramInt1 = 0)
+      {
+        localFinderFeedReportObject.mentionRepeatCount = paramInt1;
+        AppMethodBeat.o(250607);
+        return;
+      }
+    }
+    AppMethodBeat.o(250607);
+  }
+  
+  public static FinderFeedReportObject dnX()
+  {
+    return vfk;
+  }
+  
+  public static FinderFeedReportObject dnY()
+  {
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    vfk = null;
+    return localFinderFeedReportObject;
+  }
+  
+  public static com.tencent.mm.plugin.finder.upload.q dnZ()
+  {
+    return vfm;
+  }
+  
+  public static void dz(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(250605);
+    p.h(paramString, "topicId");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.topicActivityId = paramString;
+      localFinderFeedReportObject.topicActivityType = paramInt;
+      AppMethodBeat.o(250605);
+      return;
+    }
+    AppMethodBeat.o(250605);
+  }
+  
+  public static void e(FinderItem paramFinderItem)
+  {
+    AppMethodBeat.i(250617);
+    p.h(paramFinderItem, "finderItem");
+    FinderFeedReportObject localFinderFeedReportObject = paramFinderItem.field_reportObject;
+    if (localFinderFeedReportObject == null)
+    {
+      Log.e(TAG, "report21666, feedReportObj is null");
+      AppMethodBeat.o(250617);
+      return;
+    }
+    dg localdg = new dg();
+    localdg.ji(paramFinderItem.getLocalId());
+    localdg.jj(cl.aWA() - localFinderFeedReportObject.sendOrExitButtonTime);
+    localdg.jk(localFinderFeedReportObject.uploadCost);
+    localdg.jl(localFinderFeedReportObject.mediaProcessCost);
+    localdg.jm(vfn);
+    localdg.ox(NetStatusUtil.getNetTypeString(MMApplicationContext.getContext()));
+    localdg.jn(localFinderFeedReportObject.retryCount);
+    localdg.jo(CdnLogic.getRecentAverageSpeed(1));
+    localdg.jp(localFinderFeedReportObject.videoPostType);
+    localdg.jq(localFinderFeedReportObject.postStage);
+    localdg.jt(paramFinderItem.getPostInfo().Mpc);
+    boolean bool = paramFinderItem.isLongVideo();
+    localdg.ju(localFinderFeedReportObject.postTaskCost);
+    localdg.jv(localFinderFeedReportObject.clickRepostCount);
+    localdg.jw(localFinderFeedReportObject.uploadMediaTotalSize);
+    Object localObject4 = new ArrayList();
+    Object localObject2 = new JSONObject();
+    int i = 0;
+    ((ArrayList)localObject4).addAll((Collection)localFinderFeedReportObject.mediaList);
+    ((ArrayList)localObject4).addAll((Collection)localFinderFeedReportObject.mediaList);
+    Object localObject1 = ((Iterable)paramFinderItem.getMediaList()).iterator();
+    Object localObject3;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject3 = ((cjl)((Iterator)localObject1).next()).MoZ;
+      if (localObject3 != null)
+      {
+        if (((FinderMediaReportObject)localObject3).cdnUploadRetCode == 0) {
+          break label1759;
+        }
+        ((ArrayList)localObject4).add(localObject3);
+        i = ((FinderMediaReportObject)localObject3).cdnUploadRetCode;
+      }
+    }
+    label710:
+    label1736:
+    label1744:
+    label1749:
+    label1759:
     for (;;)
     {
-      syP.put(paramLong, Long.valueOf(ch.aDc()));
-      AppMethodBeat.o(203809);
-      return;
-      ((Map)syQ).put(paramLong + "_6", paramString);
-      ((Map)syQ).put(paramLong + "_23", paramString);
-      continue;
-      ((Map)syQ).put(paramLong + "_9", paramString);
-      ((Map)syQ).put(paramLong + "_22", paramString);
-      continue;
-      ((Map)syQ).put(paramLong + "_15", paramString);
-      ((Map)syQ).put(paramLong + "_16", paramString);
-      continue;
-      ((Map)syQ).put(paramLong + "_26", paramString);
-      ((Map)syQ).put(paramLong + "_27", paramString);
-      continue;
-      ((Map)syQ).put(paramLong + "_24", paramString);
-      ((Map)syQ).put(paramLong + "_21", paramString);
-      continue;
-      ((Map)syQ).put(paramLong + "_32", paramString);
-      ((Map)syQ).put(paramLong + "_1", paramString);
-      continue;
-      ((Map)syQ).put(paramLong + "_33", paramString);
-      ((Map)syQ).put(paramLong + "_8", paramString);
+      localObject3 = x.SXb;
+      break;
+      localObject1 = ((Iterable)paramFinderItem.getLongVideoMediaExtList()).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = ((cjl)((Iterator)localObject1).next()).MoZ;
+        if (localObject3 != null)
+        {
+          if (((FinderMediaReportObject)localObject3).cdnUploadRetCode != 0)
+          {
+            ((ArrayList)localObject4).add(localObject3);
+            i = ((FinderMediaReportObject)localObject3).cdnUploadRetCode;
+          }
+          localObject3 = x.SXb;
+        }
+      }
+      localdg.kJ(i);
+      Iterator localIterator = ((Iterable)localObject4).iterator();
+      localObject1 = "";
+      Field localField;
+      label623:
+      int j;
+      label747:
+      Object localObject6;
+      if (localIterator.hasNext())
+      {
+        FinderMediaReportObject localFinderMediaReportObject = (FinderMediaReportObject)localIterator.next();
+        localObject3 = new JSONObject();
+        com.tencent.mm.ac.g.a(localFinderMediaReportObject, (JSONObject)localObject3);
+        Field[] arrayOfField1 = localFinderMediaReportObject.getClass().getDeclaredFields();
+        p.g(arrayOfField1, "it::class.java.declaredFields");
+        int m = arrayOfField1.length;
+        i = 0;
+        if (i < m)
+        {
+          localField = arrayOfField1[i];
+          Object localObject5 = localField.get(localFinderMediaReportObject);
+          if (localObject5 == null) {
+            localObject2 = localObject1;
+          }
+          Field[] arrayOfField2;
+          int n;
+          do
+          {
+            do
+            {
+              for (;;)
+              {
+                i += 1;
+                localObject1 = localObject2;
+                break;
+                if ((!(localObject5 instanceof Integer)) || (!(p.j(localObject5, Integer.valueOf(0)) ^ true))) {
+                  break label623;
+                }
+                localObject1 = new StringBuilder().append((String)localObject1);
+                p.g(localField, "field");
+                localObject2 = localField.getName() + ':' + localObject5 + ';';
+              }
+              if ((localObject5 instanceof String))
+              {
+                if (((CharSequence)localObject5).length() > 0) {}
+                for (j = 1;; j = 0)
+                {
+                  if (j == 0) {
+                    break label710;
+                  }
+                  localObject1 = new StringBuilder().append((String)localObject1);
+                  p.g(localField, "field");
+                  localObject2 = localField.getName() + ':' + localObject5 + ';';
+                  break;
+                }
+              }
+              localObject2 = localObject1;
+            } while (!(localObject5 instanceof com.tencent.mm.bw.a));
+            arrayOfField2 = localObject5.getClass().getDeclaredFields();
+            p.g(arrayOfField2, "fieldValue::class.java.declaredFields");
+            n = arrayOfField2.length;
+            j = 0;
+            localObject2 = localObject1;
+          } while (j >= n);
+          localObject2 = arrayOfField2[j];
+          localObject6 = ((Field)localObject2).get(localObject5);
+          if (((localObject6 instanceof Integer)) && ((p.j(localObject6, Integer.valueOf(0)) ^ true)))
+          {
+            localObject1 = new StringBuilder().append((String)localObject1);
+            p.g(localField, "field");
+            localObject1 = ((StringBuilder)localObject1).append(localField.getName()).append('-');
+            p.g(localObject2, "innerField");
+            localObject1 = ((Field)localObject2).getName() + ':' + localObject6 + ';';
+          }
+        }
+      }
+      for (;;)
+      {
+        label871:
+        j += 1;
+        break label747;
+        if ((localObject6 instanceof String))
+        {
+          int k;
+          if (((CharSequence)localObject6).length() > 0) {
+            k = 1;
+          }
+          for (;;)
+          {
+            if (k != 0)
+            {
+              localObject1 = new StringBuilder().append((String)localObject1);
+              p.g(localField, "field");
+              localObject1 = ((StringBuilder)localObject1).append(localField.getName()).append('-');
+              p.g(localObject2, "innerField");
+              localObject1 = ((Field)localObject2).getName() + ':' + localObject6 + ';';
+              break label871;
+              k = 0;
+              continue;
+              localObject1 = (String)localObject1 + "#";
+              localObject2 = localObject3;
+              break;
+              localdg.ow((String)localObject1);
+              try
+              {
+                localObject1 = com.tencent.mm.kernel.g.aAh();
+                p.g(localObject1, "MMKernel.storage()");
+                localObject3 = ((com.tencent.mm.kernel.e)localObject1).azQ().get(ar.a.OjH, "");
+                localObject1 = localObject3;
+                if (!(localObject3 instanceof String)) {
+                  localObject1 = null;
+                }
+                localObject3 = (String)localObject1;
+                localObject1 = localObject3;
+                if (localObject3 == null) {
+                  localObject1 = "";
+                }
+                ((JSONObject)localObject2).put("snn", localObject1);
+                localObject1 = (cjl)j.kt((List)paramFinderItem.getMediaList());
+                if (localObject1 != null)
+                {
+                  localObject1 = ((cjl)localObject1).codec_info;
+                  if (localObject1 != null)
+                  {
+                    ((JSONObject)localObject2).put("codecInfo", "video_score:" + ((ayg)localObject1).LIt + ",video_cover_score:" + ((ayg)localObject1).LIu + ",video_audio_score:" + ((ayg)localObject1).LIv + ",thumb_score:" + ((ayg)localObject1).LIw + ",hdimg_score:" + ((ayg)localObject1).LIx + ",has_stickers:" + ((ayg)localObject1).LIy);
+                    localObject1 = x.SXb;
+                  }
+                }
+              }
+              catch (Throwable localThrowable)
+              {
+                for (;;)
+                {
+                  Log.printErrStackTrace(TAG, localThrowable, "mediaInfoJson put snn", new Object[0]);
+                  continue;
+                  String str = localThrowable.MoM;
+                  continue;
+                  str = str.MoM;
+                  continue;
+                  str = null;
+                  continue;
+                  str = "";
+                  continue;
+                  localObject2 = "";
+                  continue;
+                  long l = 2L;
+                  continue;
+                  i = 0;
+                  continue;
+                  localObject3 = str;
+                }
+              }
+              localObject1 = (cjl)j.kt((List)paramFinderItem.getMediaList());
+              if (localObject1 != null)
+              {
+                if (Util.isNullOrNil(((cjl)localObject1).MoM))
+                {
+                  localObject1 = p.I(((cjl)localObject1).url, Util.nullAsNil(((cjl)localObject1).url_token));
+                  if (localObject1 != null) {
+                    break label1749;
+                  }
+                }
+              }
+              else
+              {
+                localObject3 = "";
+                if (!bool) {
+                  break label1720;
+                }
+                localObject1 = paramFinderItem.getLongVideoMediaList();
+                if (localObject1 == null) {
+                  break label1714;
+                }
+                localObject1 = (cjl)j.kt((List)localObject1);
+                if (localObject1 == null) {
+                  break label1714;
+                }
+                if (!Util.isNullOrNil(((cjl)localObject1).MoM)) {
+                  break label1704;
+                }
+                localObject1 = p.I(((cjl)localObject1).url, Util.nullAsNil(((cjl)localObject1).url_token));
+                localObject2 = ((JSONObject)localObject2).toString();
+                p.g(localObject2, "mediaInfoJson.toString()");
+                localdg.oy(n.j((String)localObject2, ",", ";", false));
+                localObject2 = (FinderMediaReportObject)j.kt((List)localObject4);
+                if (localObject2 != null)
+                {
+                  if (((FinderMediaReportObject)localObject2).mediaType != 4) {
+                    break label1728;
+                  }
+                  localObject2 = ((FinderMediaReportObject)j.ks((List)localObject4)).multiMediaInfo;
+                  p.g(localObject2, "mediaReportList.first().multiMediaInfo");
+                  localObject2 = ep((List)localObject2);
+                  localObject4 = localObject2;
+                  if (localObject2 != null) {}
+                }
+                else
+                {
+                  localObject4 = "";
+                }
+                localdg.oz(n.j((String)localObject4, ",", ";", false));
+                localdg.kK(localFinderFeedReportObject.cgiErrorCode);
+                localdg.kL(localFinderFeedReportObject.cgiErrorType);
+                localdg.oA((String)localObject3);
+                if (!bool) {
+                  break label1736;
+                }
+                l = 1L;
+                localdg.jr(l);
+                localdg.oB((String)localObject1);
+                localdg.kM(localFinderFeedReportObject.megaCgiErrorCode);
+                localdg.kN(localFinderFeedReportObject.megaCgiErrorType);
+                localdg.js(localFinderFeedReportObject.longVideoSizeInvalid);
+                localdg.kO(localFinderFeedReportObject.dumpCgiErrorCode);
+                localdg.kP(localFinderFeedReportObject.dumpCgiErrorType);
+                localdg.kQ(localFinderFeedReportObject.sdkShareType);
+                paramFinderItem = paramFinderItem.getFeedObject().objectDesc;
+                if (paramFinderItem != null)
+                {
+                  paramFinderItem = paramFinderItem.event;
+                  if ((paramFinderItem != null) && (paramFinderItem.twd == 0L)) {
+                    break label1744;
+                  }
+                }
+                i = 1;
+                localdg.kR(i);
+                localdg.bfK();
+                paramFinderItem = k.vfA;
+                k.a((com.tencent.mm.plugin.report.a)localdg);
+                AppMethodBeat.o(250617);
+                return;
+              }
+            }
+          }
+        }
+      }
     }
   }
   
-  public static void d(FinderItem paramFinderItem)
+  private static String ep(List<? extends FinderMediaReportInfo> paramList)
   {
-    AppMethodBeat.i(203832);
-    d.g.b.p.h(paramFinderItem, "finderItem");
-    Object localObject = paramFinderItem.field_reportObject;
+    AppMethodBeat.i(250618);
+    JSONArray localJSONArray = new JSONArray();
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
+    {
+      FinderMediaReportInfo localFinderMediaReportInfo = (FinderMediaReportInfo)paramList.next();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("w", localFinderMediaReportInfo.width);
+      localJSONObject.put("h", localFinderMediaReportInfo.height);
+      localJSONObject.put("fps", localFinderMediaReportInfo.fps);
+      localJSONObject.put("audiobitrate", localFinderMediaReportInfo.audioBitrate);
+      localJSONObject.put("videobitrate", localFinderMediaReportInfo.videoBitrate);
+      localJSONArray.put(localJSONObject);
+    }
+    paramList = localJSONArray.toString();
+    p.g(paramList, "array.toString()");
+    AppMethodBeat.o(250618);
+    return paramList;
+  }
+  
+  public static void gR(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(250610);
+    p.h(paramString1, "postId");
+    FinderFeedReportObject localFinderFeedReportObject = vfk;
+    if (localFinderFeedReportObject != null)
+    {
+      localFinderFeedReportObject.postId = paramString1;
+      if (paramString2 != null) {
+        localFinderFeedReportObject.editId = paramString2;
+      }
+      AppMethodBeat.o(250610);
+      return;
+    }
+    AppMethodBeat.o(250610);
+  }
+  
+  public static String getTAG()
+  {
+    return TAG;
+  }
+  
+  public static void j(int paramInt, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(250620);
+    di localdi = new di();
+    Object localObject = vfk;
     if (localObject != null)
     {
-      bi localbi = new bi();
-      localbi.jO(wL(paramFinderItem.getId()));
-      localbi.jP(((FinderFeedReportObject)localObject).sessionId);
-      localbi.jQ(paramFinderItem.getFeedObject().username);
-      localObject = com.tencent.mm.plugin.finder.utils.b.sWa;
-      localbi.jR(d.n.n.h(com.tencent.mm.plugin.finder.utils.b.n(paramFinderItem), ",", ";", false));
-      localbi.aLH();
-      a((com.tencent.mm.plugin.report.a)localbi);
-      AppMethodBeat.o(203832);
+      localdi.oG(((FinderFeedReportObject)localObject).postId);
+      localdi.oH(((FinderFeedReportObject)localObject).editId);
+      localdi.jx(((FinderFeedReportObject)localObject).videoSource);
+      localdi.jy(paramInt);
+      localdi.jz(paramLong1);
+      localdi.jA(paramLong2);
+      localdi.bfK();
+      localObject = k.vfA;
+      k.a((com.tencent.mm.plugin.report.a)localdi);
+      AppMethodBeat.o(250620);
       return;
     }
-    AppMethodBeat.o(203832);
+    AppMethodBeat.o(250620);
   }
   
-  public static void dr(String paramString, int paramInt)
+  public static void j(long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(178395);
-    d.g.b.p.h(paramString, "username");
-    be localbe = new be();
-    String str2 = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localbe.jJ(str1);
-    localbe.jI(paramString);
-    localbe.fd(paramInt);
-    localbe.aLH();
-    a((com.tencent.mm.plugin.report.a)localbe);
-    AppMethodBeat.o(178395);
-  }
-  
-  public static void e(int paramInt1, String paramString1, String paramString2, int paramInt2)
-  {
-    AppMethodBeat.i(166582);
-    d.g.b.p.h(paramString1, "fromUser");
-    d.g.b.p.h(paramString2, "topic");
-    Object localObject = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    paramString1 = new StringBuilder().append((String)localObject).append(',').append(paramInt1).append(",3,").append(paramString1).append(",0,,");
-    localObject = com.tencent.mm.plugin.finder.utils.o.sXt;
-    paramString1 = com.tencent.mm.plugin.finder.utils.o.dB(paramString2, paramInt2);
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "18944 ".concat(String.valueOf(paramString1)));
-    com.tencent.mm.plugin.report.e.ywz.kvStat(18944, paramString1);
-    AppMethodBeat.o(166582);
-  }
-  
-  public static String eR(Context paramContext)
-  {
-    AppMethodBeat.i(203845);
-    d.g.b.p.h(paramContext, "context");
-    int i = 0;
-    if ((paramContext instanceof MMActivity))
+    AppMethodBeat.i(250616);
+    Log.i(TAG, "savePostError " + paramLong + ", " + paramInt1 + ", " + paramInt2);
+    Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.vGN;
+    localObject1 = c.a.FS(paramLong);
+    if (localObject1 != null)
     {
-      com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KEX;
-      i = ((FinderHomeUIC)com.tencent.mm.ui.component.a.s((MMActivity)paramContext).get(FinderHomeUIC.class)).cQU();
-    }
-    switch (i)
-    {
-    default: 
-      paramContext = "2";
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(203845);
-      return paramContext;
-      paramContext = "6";
-      continue;
-      paramContext = "7";
-      continue;
-      paramContext = "8";
-      continue;
-      paramContext = "9";
-    }
-  }
-  
-  public static void f(int paramInt1, String paramString1, String paramString2, int paramInt2)
-  {
-    AppMethodBeat.i(203843);
-    d.g.b.p.h(paramString1, "tipsId");
-    d.g.b.p.h(paramString2, "revokeId");
-    bo localbo = new bo();
-    localbo.gd(paramInt1);
-    localbo.ge(ch.aDd());
-    localbo.kB(paramString1);
-    localbo.kC(paramString2);
-    paramString1 = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cIR().value()).intValue() == 1) {}
-    for (long l = 2L;; l = 1L)
-    {
-      localbo.gf(l);
-      localbo.gg(paramInt2);
-      localbo.aLH();
-      a((com.tencent.mm.plugin.report.a)localbo);
-      AppMethodBeat.o(203843);
-      return;
-    }
-  }
-  
-  public static void fK(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(203835);
-    br localbr = new br();
-    localbr.gA(paramInt1);
-    localbr.gB(paramInt2);
-    localbr.aLH();
-    a((com.tencent.mm.plugin.report.a)localbr);
-    AppMethodBeat.o(203835);
-  }
-  
-  public static void g(FinderObject paramFinderObject)
-  {
-    AppMethodBeat.i(166585);
-    d.g.b.p.h(paramFinderObject, "finderObject");
-    String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    paramFinderObject = str + ',' + 1 + ',' + wL(paramFinderObject.id) + ',' + paramFinderObject.username + ',' + paramFinderObject.recommendType;
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "18953 ".concat(String.valueOf(paramFinderObject)));
-    com.tencent.mm.plugin.report.e.ywz.kvStat(18953, paramFinderObject);
-    AppMethodBeat.o(166585);
-  }
-  
-  public static void gs(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(178396);
-    d.g.b.p.h(paramString1, "contextId");
-    d.g.b.p.h(paramString2, "action");
-    ca localca = new ca();
-    localca.ls(paramString1);
-    localca.lr(paramString2);
-    localca.hh(ch.aDc());
-    paramString2 = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    localca.lt(paramString1);
-    if (com.tencent.mm.sdk.platformtools.j.DEBUG) {}
-    for (long l = 0L;; l = 1L)
-    {
-      localca.hi(l);
-      localca.aLH();
-      a((com.tencent.mm.plugin.report.a)localca);
-      AppMethodBeat.o(178396);
-      return;
-    }
-  }
-  
-  public static void h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    AppMethodBeat.i(203818);
-    Object localObject = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    localObject = new StringBuilder().append((String)localObject).append(',').append(paramInt1).append(',').append(paramInt2).append(',');
-    if (paramBoolean1)
-    {
-      paramInt1 = 1;
-      localObject = ((StringBuilder)localObject).append(paramInt1).append(',');
-      if (!paramBoolean2) {
-        break label139;
+      Object localObject2 = ((FinderItem)localObject1).field_reportObject;
+      if (localObject2 != null) {
+        ((FinderFeedReportObject)localObject2).cgiErrorType = paramInt1;
       }
-    }
-    label139:
-    for (paramInt1 = i;; paramInt1 = 0)
-    {
-      localObject = paramInt1;
-      com.tencent.mm.sdk.platformtools.ae.i(TAG, "18947 ".concat(String.valueOf(localObject)));
-      com.tencent.mm.plugin.report.e.ywz.kvStat(18947, (String)localObject);
-      AppMethodBeat.o(203818);
+      localObject2 = ((FinderItem)localObject1).field_reportObject;
+      if (localObject2 != null) {
+        ((FinderFeedReportObject)localObject2).cgiErrorCode = paramInt2;
+      }
+      localObject2 = com.tencent.mm.plugin.finder.storage.logic.c.vGN;
+      c.a.r((FinderItem)localObject1);
+      AppMethodBeat.o(250616);
       return;
-      paramInt1 = 0;
-      break;
     }
+    AppMethodBeat.o(250616);
   }
   
-  public static void j(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/report/FinderPostReportLogic$postListener$1", "Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;", "onPostEnd", "", "localId", "", "isOk", "", "onPostNotify", "onPostOk", "svrID", "onPostStart", "plugin-finder_release"})
+  public static final class a
+    implements com.tencent.mm.plugin.finder.upload.q
   {
-    AppMethodBeat.i(166584);
-    d.g.b.p.h(paramString1, "author");
-    d.g.b.p.h(paramString2, "receiver");
-    String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    paramString1 = str + ',' + paramString1 + ',' + paramString2 + ',' + 0 + ',' + paramInt1 + ',' + paramInt2;
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "18949 ".concat(String.valueOf(paramString1)));
-    com.tencent.mm.plugin.report.e.ywz.kvStat(18949, paramString1);
-    AppMethodBeat.o(166584);
-  }
-  
-  public static FinderItem wJ(long paramLong)
-  {
-    AppMethodBeat.i(166576);
-    Object localObject1 = d.sKD;
-    Object localObject2 = d.a.xk(paramLong);
-    localObject1 = localObject2;
-    if (localObject2 == null)
+    public final void onPostEnd(long paramLong, boolean paramBoolean)
     {
-      localObject1 = h.sEe;
-      localObject1 = (FinderItem)h.cGM().get(Long.valueOf(paramLong));
+      AppMethodBeat.i(166567);
+      Object localObject = i.vfo;
+      i.Fb(paramLong);
+      localObject = new ia();
+      ((ia)localObject).dMC.localId = paramLong;
+      ((ia)localObject).dMC.dMD = false;
+      EventCenter.instance.publish((IEvent)localObject);
+      AppMethodBeat.o(166567);
     }
-    localObject2 = localObject1;
-    if (localObject1 == null)
+    
+    public final void onPostNotify(long paramLong, boolean paramBoolean)
     {
-      localObject1 = FinderTopicFeedUI.sqP;
-      localObject2 = (FinderItem)FinderTopicFeedUI.cDM().get(Long.valueOf(paramLong));
+      AppMethodBeat.i(250599);
+      if (!paramBoolean)
+      {
+        ia localia = new ia();
+        localia.dMC.localId = paramLong;
+        localia.dMC.dMD = false;
+        EventCenter.instance.publish((IEvent)localia);
+      }
+      AppMethodBeat.o(250599);
     }
-    localObject1 = localObject2;
-    if (localObject2 == null)
+    
+    public final void onPostOk(long paramLong1, long paramLong2)
     {
-      localObject1 = FinderAtTimelineUI.smg;
-      localObject1 = (FinderItem)FinderAtTimelineUI.cDM().get(Long.valueOf(paramLong));
+      AppMethodBeat.i(166568);
+      Object localObject = i.vfo;
+      i.Fa(paramLong2);
+      localObject = com.tencent.mm.plugin.finder.storage.data.e.vFX;
+      localObject = e.a.Fy(paramLong2);
+      if (localObject != null)
+      {
+        ia localia = new ia();
+        localia.dMC.localId = paramLong1;
+        localia.dMC.dMD = true;
+        ia.a locala = localia.dMC;
+        s.a locala1 = s.vWt;
+        locala.dME = s.a.c((FinderItem)localObject, true);
+        EventCenter.instance.publish((IEvent)localia);
+        AppMethodBeat.o(166568);
+        return;
+      }
+      AppMethodBeat.o(166568);
     }
-    AppMethodBeat.o(166576);
-    return localObject1;
+    
+    public final void onPostStart(long paramLong) {}
   }
   
-  public static long wK(long paramLong)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/report/FinderPostReportLogic$reportCurrentPostExit$1$1"})
+  static final class b
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
   {
-    AppMethodBeat.i(203808);
-    Long localLong = (Long)syP.get(paramLong);
-    if (localLong != null)
+    b(FinderFeedReportObject paramFinderFeedReportObject, boolean paramBoolean)
     {
-      paramLong = localLong.longValue();
-      AppMethodBeat.o(203808);
-      return paramLong;
+      super();
     }
-    AppMethodBeat.o(203808);
-    return 0L;
   }
   
-  public static String wL(long paramLong)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/report/FinderPostReportLogic$startPost$1$1"})
+  static final class c
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
   {
-    AppMethodBeat.i(166591);
-    BigInteger localBigInteger = BigInteger.valueOf(paramLong);
-    Object localObject = localBigInteger;
-    if (localBigInteger.signum() < 0) {
-      localObject = localBigInteger.add(syS);
+    c(FinderFeedReportObject paramFinderFeedReportObject, boolean paramBoolean, int paramInt)
+    {
+      super();
     }
-    localObject = ((BigInteger)localObject).toString();
-    d.g.b.p.g(localObject, "b.toString()");
-    AppMethodBeat.o(166591);
-    return localObject;
-  }
-  
-  public static void x(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(166581);
-    d.g.b.p.h(paramString1, "fromUser");
-    d.g.b.p.h(paramString2, "nameCardUser");
-    String str = ((com.tencent.mm.plugin.expt.b.c)g.ab(com.tencent.mm.plugin.expt.b.c.class)).cos();
-    paramString1 = str + ',' + paramInt + ",2," + paramString1 + ",0," + paramString2;
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "18944 ".concat(String.valueOf(paramString1)));
-    com.tencent.mm.plugin.report.e.ywz.kvStat(18944, paramString1);
-    AppMethodBeat.o(166581);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.i
  * JD-Core Version:    0.7.0.1
  */

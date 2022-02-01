@@ -13,13 +13,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,39 +27,39 @@ public final class ab
   extends m
   implements SensorEventListener
 {
-  Sensor caA;
-  Sensor cay;
-  ImageView dtJ;
+  int Efs;
+  final float Eft = 10.0F;
+  final int Efu = 1;
+  HorizontalScrollView Efv;
+  float[] Efw;
+  float[] Efx;
+  private int Efy = 0;
+  boolean Efz = true;
+  Sensor cle;
+  Sensor clg;
+  ImageView dKU;
   private SensorManager mSensorManager;
   ProgressBar progressBar;
-  int zXj;
-  final float zXk = 10.0F;
-  final int zXl = 1;
-  HorizontalScrollView zXm;
-  float[] zXn;
-  float[] zXo;
-  private int zXp = 0;
-  boolean zXq = true;
   
-  public ab(Context paramContext, r paramr, ViewGroup paramViewGroup)
+  public ab(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s params, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramr, paramViewGroup);
+    super(paramContext, params, paramViewGroup);
   }
   
-  public final boolean aQ(JSONObject paramJSONObject)
+  public final boolean bp(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96676);
-    if (!super.aQ(paramJSONObject))
+    if (!super.bp(paramJSONObject))
     {
       AppMethodBeat.o(96676);
       return false;
     }
     try
     {
-      paramJSONObject.put("swipeCount", this.zXp);
-      if (!this.zXq)
+      paramJSONObject.put("swipeCount", this.Efy);
+      if (!this.Efz)
       {
-        String str = aj.ej(((r)this.zUP).zQK);
+        String str = MD5Util.getMD5String(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DYK);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("urlMd5", str);
         localJSONObject.put("needDownload", 1);
@@ -70,69 +70,55 @@ public final class ab
     }
     catch (JSONException paramJSONObject)
     {
-      ae.printErrStackTrace("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", paramJSONObject, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(96676);
     }
     return false;
   }
   
-  public final void dUI()
-  {
-    AppMethodBeat.i(96668);
-    View localView = this.contentView;
-    this.mSensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
-    this.cay = this.mSensorManager.getDefaultSensor(1);
-    this.caA = this.mSensorManager.getDefaultSensor(2);
-    this.zXm = ((HorizontalScrollView)localView.findViewById(2131296423));
-    this.dtJ = ((ImageView)localView.findViewById(2131296424));
-    this.progressBar = ((ProgressBar)localView.findViewById(2131303535));
-    this.progressBar.setVisibility(8);
-    AppMethodBeat.o(96668);
-  }
-  
-  protected final void dUJ()
+  protected final void eWT()
   {
     AppMethodBeat.i(96669);
-    if (!o.fB(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jL("adId", ((r)this.zUP).zQK))) {
-      this.zXq = false;
+    if (!com.tencent.mm.vfs.s.YS(h.kz("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DYK))) {
+      this.Efz = false;
     }
-    String str = ((r)this.zUP).zQK;
-    Bitmap localBitmap = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.jP("adId", str);
+    String str = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DYK;
+    Bitmap localBitmap = h.kD("adId", str);
     if (localBitmap != null)
     {
-      ae.i("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "loaded cached image with  ".concat(String.valueOf(str)));
+      Log.i("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "loaded cached image with  ".concat(String.valueOf(str)));
       setImage(localBitmap);
       AppMethodBeat.o(96669);
       return;
     }
     startLoading();
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(str, ((r)this.zUP).zRh, new f.a()
+    h.a(str, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DZj, new f.a()
     {
-      public final void ayY(String paramAnonymousString)
+      public final void aNH(String paramAnonymousString)
       {
         AppMethodBeat.i(96666);
         try
         {
-          paramAnonymousString = com.tencent.mm.sdk.platformtools.h.decodeFile(paramAnonymousString);
+          paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString);
           ab.this.setImage(paramAnonymousString);
           AppMethodBeat.o(96666);
           return;
         }
         catch (Exception paramAnonymousString)
         {
-          ae.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "%s" + bu.o(paramAnonymousString));
+          Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "%s" + Util.stackTraceToString(paramAnonymousString));
           AppMethodBeat.o(96666);
         }
       }
       
-      public final void dVu()
+      public final void eWN()
       {
         AppMethodBeat.i(96664);
         ab.this.startLoading();
         AppMethodBeat.o(96664);
       }
       
-      public final void dVv()
+      public final void eWO()
       {
         AppMethodBeat.i(96665);
         ab.this.progressBar.setVisibility(8);
@@ -142,27 +128,41 @@ public final class ab
     AppMethodBeat.o(96669);
   }
   
-  public final void dUK()
+  public final void eWZ()
   {
     AppMethodBeat.i(96674);
-    super.dUK();
-    this.mSensorManager.registerListener(this, this.cay, 1);
-    this.mSensorManager.registerListener(this, this.caA, 1);
+    super.eWZ();
+    this.mSensorManager.registerListener(this, this.cle, 1);
+    this.mSensorManager.registerListener(this, this.clg, 1);
     AppMethodBeat.o(96674);
   }
   
-  public final void dUL()
+  public final void eXa()
   {
     AppMethodBeat.i(96675);
-    super.dUL();
+    super.eXa();
     this.mSensorManager.unregisterListener(this);
     AppMethodBeat.o(96675);
   }
   
-  public final boolean eay()
+  public final void eXe()
+  {
+    AppMethodBeat.i(96668);
+    View localView = this.contentView;
+    this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
+    this.cle = this.mSensorManager.getDefaultSensor(1);
+    this.clg = this.mSensorManager.getDefaultSensor(2);
+    this.Efv = ((HorizontalScrollView)localView.findViewById(2131296458));
+    this.dKU = ((ImageView)localView.findViewById(2131296459));
+    this.progressBar = ((ProgressBar)localView.findViewById(2131306302));
+    this.progressBar.setVisibility(8);
+    AppMethodBeat.o(96668);
+  }
+  
+  public final boolean fdm()
   {
     AppMethodBeat.i(96673);
-    if (eax() >= (int)(getView().getHeight() * 0.1F))
+    if (fdl() >= (int)(getView().getHeight() * 0.1F))
     {
       AppMethodBeat.o(96673);
       return true;
@@ -173,7 +173,7 @@ public final class ab
   
   protected final int getLayout()
   {
-    return 2131495494;
+    return 2131496377;
   }
   
   public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
@@ -183,21 +183,21 @@ public final class ab
     float f2 = -10.0F;
     AppMethodBeat.i(96672);
     if (paramSensorEvent.sensor.getType() == 1) {
-      this.zXn = paramSensorEvent.values;
+      this.Efw = paramSensorEvent.values;
     }
     if (paramSensorEvent.sensor.getType() == 2) {
-      this.zXo = paramSensorEvent.values;
+      this.Efx = paramSensorEvent.values;
     }
     float f1;
-    if ((this.zXn != null) && (this.zXo != null))
+    if ((this.Efw != null) && (this.Efx != null))
     {
       paramSensorEvent = new float[9];
-      if (SensorManager.getRotationMatrix(paramSensorEvent, new float[9], this.zXn, this.zXo))
+      if (SensorManager.getRotationMatrix(paramSensorEvent, new float[9], this.Efw, this.Efx))
       {
         float[] arrayOfFloat = new float[3];
         SensorManager.getOrientation(paramSensorEvent, arrayOfFloat);
         float f3 = arrayOfFloat[2];
-        if (this.zXj != 0)
+        if (this.Efs != 0)
         {
           f1 = f3;
           if (f3 > 10.0F) {
@@ -213,8 +213,8 @@ public final class ab
     label163:
     for (;;)
     {
-      f1 = f1 * this.zXj / 10.0F;
-      this.zXm.scrollBy((int)f1, 0);
+      f1 = f1 * this.Efs / 10.0F;
+      this.Efv.scrollBy((int)f1, 0);
       AppMethodBeat.o(96672);
       return;
     }
@@ -225,35 +225,35 @@ public final class ab
     AppMethodBeat.i(96671);
     if (paramBitmap == null)
     {
-      ae.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp is null!");
+      Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp is null!");
       AppMethodBeat.o(96671);
       return;
     }
-    if (this.dtJ == null)
+    if (this.dKU == null)
     {
-      ae.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the imageView is null!");
+      Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the imageView is null!");
       AppMethodBeat.o(96671);
       return;
     }
     if (paramBitmap.getHeight() == 0)
     {
-      ae.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp.getHeight is 0!");
+      Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp.getHeight is 0!");
       AppMethodBeat.o(96671);
       return;
     }
     this.progressBar.setVisibility(8);
-    this.dtJ.setImageBitmap(paramBitmap);
-    this.dtJ.post(new Runnable()
+    this.dKU.setImageBitmap(paramBitmap);
+    this.dKU.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(96667);
-        int i = ab.this.dtJ.getMeasuredWidth();
-        if (i > ab.this.lxZ)
+        int i = ab.this.dKU.getMeasuredWidth();
+        if (i > ab.this.mEX)
         {
           ab localab = ab.this;
-          localab.zXj = ((i - localab.lxZ) / 2);
-          ab.this.zXm.scrollBy(ab.this.zXj, 0);
+          localab.Efs = ((i - localab.mEX) / 2);
+          ab.this.Efv.scrollBy(ab.this.Efs, 0);
         }
         AppMethodBeat.o(96667);
       }
@@ -261,16 +261,16 @@ public final class ab
     int i;
     if (paramBitmap.getHeight() != 0)
     {
-      i = this.lya;
-      if (((r)this.zUP).zRj == 2.147484E+009F) {
+      i = this.mEY;
+      if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DZl == 2.147484E+009F) {
         break label176;
       }
-      i = (int)((r)this.zUP).zRj;
+      i = (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DZl;
     }
     label176:
     for (;;)
     {
-      this.dtJ.setLayoutParams(new RelativeLayout.LayoutParams(paramBitmap.getWidth() * i / paramBitmap.getHeight(), i));
+      this.dKU.setLayoutParams(new RelativeLayout.LayoutParams(paramBitmap.getWidth() * i / paramBitmap.getHeight(), i));
       AppMethodBeat.o(96671);
       return;
     }
@@ -285,7 +285,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab
  * JD-Core Version:    0.7.0.1
  */

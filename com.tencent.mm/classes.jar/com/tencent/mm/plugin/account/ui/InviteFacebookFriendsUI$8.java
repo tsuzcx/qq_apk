@@ -12,15 +12,15 @@ final class InviteFacebookFriendsUI$8
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128029);
-    this.jmZ.hideVKB();
-    this.jmZ.finish();
+    this.kli.hideVKB();
+    this.kli.finish();
     AppMethodBeat.o(128029);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.InviteFacebookFriendsUI.8
  * JD-Core Version:    0.7.0.1
  */

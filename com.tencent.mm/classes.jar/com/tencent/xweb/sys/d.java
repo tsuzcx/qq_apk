@@ -14,16 +14,16 @@ import com.tencent.xweb.o;
 public final class d
   implements e
 {
-  WebViewClient MRa;
-  WebChromeClient MRb;
-  WebView MRc;
+  WebViewClient SEe;
+  WebView SEf;
+  WebChromeClient mChromeClient;
   
   public d(WebView paramWebView)
   {
     AppMethodBeat.i(153668);
-    this.MRc = paramWebView;
-    this.MRa = new WebViewClient();
-    this.MRb = new WebChromeClient();
+    this.SEf = paramWebView;
+    this.SEe = new WebViewClient();
+    this.mChromeClient = new WebChromeClient();
     AppMethodBeat.o(153668);
   }
   
@@ -49,13 +49,13 @@ public final class d
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(153669);
-    this.MRa.onPageStarted(this.MRc, paramString, paramBitmap);
+    this.SEe.onPageStarted(this.SEf, paramString, paramBitmap);
     AppMethodBeat.o(153669);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.sys.d
  * JD-Core Version:    0.7.0.1
  */

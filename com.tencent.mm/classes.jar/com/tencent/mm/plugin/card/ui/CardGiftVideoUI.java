@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
@@ -26,65 +27,67 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.modelvideo.u;
+import com.tencent.mm.av.q;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
 import com.tencent.mm.plugin.card.d.a.a;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
 import com.tencent.mm.plugin.card.model.m;
 import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.h;
-import com.tencent.mm.pluginsdk.ui.tools.h.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.tools.j;
+import com.tencent.mm.pluginsdk.ui.tools.j.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.tools.e;
 import com.tencent.mm.ui.tools.e.c;
 import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
-import com.tencent.mm.vfs.o;
 
 @com.tencent.mm.ui.base.a(3)
 public class CardGiftVideoUI
   extends MMActivity
-  implements a.a, h.a
+  implements a.a, j.a
 {
   private l contextMenuHelper;
   int duration;
-  private boolean fOX;
+  private boolean guh;
   private boolean isAnimated;
-  private CardGiftInfo oMK;
-  private ImageView oML;
-  private ProgressBar oMN;
-  private aq oMO;
-  private Bundle oMP;
-  private e oMQ;
-  private int oMR;
-  private int oMS;
-  private int oMT;
-  private int oMU;
-  private RelativeLayout oNU;
-  private h oNV;
-  private RelativeLayout oNW;
-  private ImageView oNX;
-  TextView oNY;
-  private MMPinProgressBtn oNZ;
-  private TextView oOa;
-  private aw oOb;
+  private ProgressBar qaB;
+  private MMHandler qaC;
+  private Bundle qaD;
+  private e qaE;
+  private int qaF;
+  private int qaG;
+  private int qaH;
+  private int qaI;
+  private CardGiftInfo qay;
+  private ImageView qaz;
+  private RelativeLayout qbI;
+  private j qbJ;
+  private RelativeLayout qbK;
+  private ImageView qbL;
+  TextView qbM;
+  private MMPinProgressBtn qbN;
+  private TextView qbO;
+  private MTimerHandler qbP;
   private String videoPath;
   
   public CardGiftVideoUI()
   {
     AppMethodBeat.i(113388);
-    this.oMO = new aq(Looper.getMainLooper());
+    this.qaC = new MMHandler(Looper.getMainLooper());
     this.isAnimated = false;
-    this.oMR = 0;
-    this.oMS = 0;
-    this.oMT = 0;
-    this.oMU = 0;
-    this.oOb = new aw(new aw.a()
+    this.qaF = 0;
+    this.qaG = 0;
+    this.qaH = 0;
+    this.qaI = 0;
+    this.qbP = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -93,14 +96,14 @@ public class CardGiftVideoUI
         {
           CardGiftVideoUI localCardGiftVideoUI = CardGiftVideoUI.this;
           int i = CardGiftVideoUI.e(CardGiftVideoUI.this).getCurrentPosition() / 1000;
-          if ((localCardGiftVideoUI.oNY != null) && (localCardGiftVideoUI.duration > 0))
+          if ((localCardGiftVideoUI.qbM != null) && (localCardGiftVideoUI.duration > 0))
           {
             int j = localCardGiftVideoUI.duration - i;
             i = j;
             if (j < 0) {
               i = 0;
             }
-            localCardGiftVideoUI.oNY.setText(i + "\"");
+            localCardGiftVideoUI.qbM.setText(i + "\"");
           }
         }
         AppMethodBeat.o(113385);
@@ -111,50 +114,50 @@ public class CardGiftVideoUI
     AppMethodBeat.o(113388);
   }
   
-  private void ZD(String paramString)
+  private void ajI(String paramString)
   {
     AppMethodBeat.i(113390);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.CardGiftVideoUI", "the videoPath is null, fail~!!!");
+      Log.e("MicroMsg.CardGiftVideoUI", "the videoPath is null, fail~!!!");
       setResult(0);
       finish();
       AppMethodBeat.o(113390);
       return;
     }
-    if (!o.fB(paramString))
+    if (!com.tencent.mm.vfs.s.YS(paramString))
     {
-      ae.e("MicroMsg.CardGiftVideoUI", "the videoPath is %s, the file isn't exist~!!!", new Object[] { paramString });
+      Log.e("MicroMsg.CardGiftVideoUI", "the videoPath is %s, the file isn't exist~!!!", new Object[] { paramString });
       setResult(0);
       finish();
       AppMethodBeat.o(113390);
       return;
     }
-    this.oNV.setVideoPath(paramString);
+    this.qbJ.setVideoPath(paramString);
     AppMethodBeat.o(113390);
   }
   
-  private void bYg()
+  private void cvW()
   {
     AppMethodBeat.i(113391);
     if (this.contextMenuHelper == null) {
       this.contextMenuHelper = new l(getContext());
     }
-    if (bu.isNullOrNil(this.videoPath))
+    if (Util.isNullOrNil(this.videoPath))
     {
-      ae.e("MicroMsg.CardGiftVideoUI", "videoPath is null");
+      Log.e("MicroMsg.CardGiftVideoUI", "videoPath is null");
       AppMethodBeat.o(113391);
       return;
     }
-    this.contextMenuHelper.a((VideoTextureView)this.oNV, new View.OnCreateContextMenuListener()new n.e
+    this.contextMenuHelper.a((VideoTextureView)this.qbJ, new View.OnCreateContextMenuListener()new o.g
     {
       public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
       {
         AppMethodBeat.i(113375);
-        paramAnonymousContextMenu.add(0, 0, 0, CardGiftVideoUI.this.getString(2131756924));
+        paramAnonymousContextMenu.add(0, 0, 0, CardGiftVideoUI.this.getString(2131757094));
         AppMethodBeat.o(113375);
       }
-    }, new n.e()
+    }, new o.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -166,33 +169,74 @@ public class CardGiftVideoUI
         {
           AppMethodBeat.o(113379);
           return;
-          paramAnonymousMenuItem = u.Ib(CardGiftVideoUI.a(CardGiftVideoUI.this));
-          if (bu.isNullOrNil(paramAnonymousMenuItem))
+          p.b(CardGiftVideoUI.this.getContext(), CardGiftVideoUI.a(CardGiftVideoUI.this), new p.a()
           {
-            Toast.makeText(CardGiftVideoUI.this, CardGiftVideoUI.this.getString(2131764682), 1).show();
-            AppMethodBeat.o(113379);
-            return;
-          }
-          Toast.makeText(CardGiftVideoUI.this, CardGiftVideoUI.this.getString(2131764683, new Object[] { com.tencent.mm.sdk.f.b.aSY(paramAnonymousMenuItem) }), 1).show();
-          com.tencent.mm.pluginsdk.ui.tools.q.k(paramAnonymousMenuItem, CardGiftVideoUI.this);
+            public final void bP(String paramAnonymous2String1, String paramAnonymous2String2)
+            {
+              AppMethodBeat.i(201319);
+              Toast.makeText(CardGiftVideoUI.this.getContext(), CardGiftVideoUI.this.getContext().getString(2131767076, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramAnonymous2String2) }), 1).show();
+              com.tencent.mm.pluginsdk.ui.tools.s.refreshMediaScanner(paramAnonymous2String2, CardGiftVideoUI.this.getContext());
+              AppMethodBeat.o(201319);
+            }
+            
+            public final void bQ(String paramAnonymous2String1, String paramAnonymous2String2)
+            {
+              AppMethodBeat.i(201320);
+              Toast.makeText(CardGiftVideoUI.this.getContext(), CardGiftVideoUI.this.getContext().getString(2131767075), 1).show();
+              AppMethodBeat.o(201320);
+            }
+          });
         }
       }
     });
     AppMethodBeat.o(113391);
   }
   
-  public final void ZC(String paramString) {}
+  public final void ajH(String paramString) {}
   
-  public final void bYa()
+  public final void cP(String paramString, final int paramInt)
+  {
+    AppMethodBeat.i(113402);
+    if (paramString.equals(this.qay.pSq)) {
+      this.qaC.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(113376);
+          if (CardGiftVideoUI.h(CardGiftVideoUI.this) != null)
+          {
+            if (this.iZf == 0)
+            {
+              CardGiftVideoUI.h(CardGiftVideoUI.this).setVisibility(8);
+              AppMethodBeat.o(113376);
+              return;
+            }
+            if (CardGiftVideoUI.h(CardGiftVideoUI.this).getVisibility() != 0) {
+              CardGiftVideoUI.h(CardGiftVideoUI.this).setVisibility(0);
+            }
+            Log.i("MicroMsg.CardGiftVideoUI", "update progress %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.iZf) });
+            if ((CardGiftVideoUI.h(CardGiftVideoUI.this).getMax() != this.iZf) && (this.iZf > 0)) {
+              CardGiftVideoUI.h(CardGiftVideoUI.this).setMax(this.iZf);
+            }
+            CardGiftVideoUI.h(CardGiftVideoUI.this).setProgress(paramInt);
+          }
+          AppMethodBeat.o(113376);
+        }
+      });
+    }
+    AppMethodBeat.o(113402);
+  }
+  
+  public final void cvQ()
   {
     AppMethodBeat.i(113398);
-    this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
-    this.oMQ.a(this.oNU, this.oML, new e.c()
+    this.qaE.Q(this.qaG, this.qaF, this.qaH, this.qaI);
+    this.qaE.a(this.qbI, this.qaz, new e.c()
     {
       public final void onAnimationEnd()
       {
         AppMethodBeat.i(113384);
-        new aq().post(new Runnable()
+        new MMHandler().post(new Runnable()
         {
           public final void run()
           {
@@ -210,46 +254,13 @@ public class CardGiftVideoUI
     AppMethodBeat.o(113398);
   }
   
-  public final void cJ(String paramString, final int paramInt)
-  {
-    AppMethodBeat.i(113402);
-    if (paramString.equals(this.oMK.oEH)) {
-      this.oMO.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(113376);
-          if (CardGiftVideoUI.h(CardGiftVideoUI.this) != null)
-          {
-            if (this.iej == 0)
-            {
-              CardGiftVideoUI.h(CardGiftVideoUI.this).setVisibility(8);
-              AppMethodBeat.o(113376);
-              return;
-            }
-            if (CardGiftVideoUI.h(CardGiftVideoUI.this).getVisibility() != 0) {
-              CardGiftVideoUI.h(CardGiftVideoUI.this).setVisibility(0);
-            }
-            ae.i("MicroMsg.CardGiftVideoUI", "update progress %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.iej) });
-            if ((CardGiftVideoUI.h(CardGiftVideoUI.this).getMax() != this.iej) && (this.iej > 0)) {
-              CardGiftVideoUI.h(CardGiftVideoUI.this).setMax(this.iej);
-            }
-            CardGiftVideoUI.h(CardGiftVideoUI.this).setProgress(paramInt);
-          }
-          AppMethodBeat.o(113376);
-        }
-      });
-    }
-    AppMethodBeat.o(113402);
-  }
-  
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(113397);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ae.d("MicroMsg.CardGiftVideoUI", "dispatchKeyEvent");
-      bYa();
+      Log.d("MicroMsg.CardGiftVideoUI", "dispatchKeyEvent");
+      cvQ();
       AppMethodBeat.o(113397);
       return true;
     }
@@ -258,19 +269,19 @@ public class CardGiftVideoUI
     return bool;
   }
   
-  public final int eU(int paramInt1, int paramInt2)
+  public final void eo(int paramInt1, int paramInt2) {}
+  
+  public final int fh(int paramInt1, int paramInt2)
   {
     return 0;
   }
   
-  public final void eb(int paramInt1, int paramInt2) {}
-  
-  public final void ff(String paramString1, final String paramString2)
+  public final void fw(String paramString1, final String paramString2)
   {
     AppMethodBeat.i(113403);
-    if (paramString1.equals(this.oMK.oEH))
+    if (paramString1.equals(this.qay.pSq))
     {
-      this.oMO.post(new Runnable()
+      this.qaC.post(new Runnable()
       {
         public final void run()
         {
@@ -285,26 +296,26 @@ public class CardGiftVideoUI
       AppMethodBeat.o(113403);
       return;
     }
-    if (paramString1.equals(this.oMK.oEI))
+    if (paramString1.equals(this.qay.pSr))
     {
-      this.oMO.post(new Runnable()
+      this.qaC.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(113378);
-          if (bu.isNullOrNil(CardGiftVideoUI.a(CardGiftVideoUI.this)))
+          if (Util.isNullOrNil(CardGiftVideoUI.a(CardGiftVideoUI.this)))
           {
             CardGiftVideoUI.f(CardGiftVideoUI.this).setVisibility(0);
             Object localObject = new c.a();
-            ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.asj();
-            com.tencent.mm.av.q.aJc();
-            ((c.a)localObject).igB = null;
-            ((c.a)localObject).hgD = m.Zk(paramString2);
-            ((c.a)localObject).ign = 1;
-            ((c.a)localObject).igk = true;
-            ((c.a)localObject).igi = true;
-            localObject = ((c.a)localObject).aJu();
-            com.tencent.mm.av.q.aJb().a(paramString2, CardGiftVideoUI.f(CardGiftVideoUI.this), (c)localObject);
+            ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aKJ();
+            q.bcW();
+            ((c.a)localObject).jbw = null;
+            ((c.a)localObject).fullPath = m.ajp(paramString2);
+            ((c.a)localObject).jbi = 1;
+            ((c.a)localObject).jbf = true;
+            ((c.a)localObject).jbd = true;
+            localObject = ((c.a)localObject).bdv();
+            q.bcV().a(paramString2, CardGiftVideoUI.f(CardGiftVideoUI.this), (c)localObject);
           }
           AppMethodBeat.o(113378);
         }
@@ -312,69 +323,64 @@ public class CardGiftVideoUI
       AppMethodBeat.o(113403);
       return;
     }
-    ae.i("MicroMsg.CardGiftVideoUI", "fieldId:%s is unsuitable", new Object[] { paramString1 });
+    Log.i("MicroMsg.CardGiftVideoUI", "fieldId:%s is unsuitable", new Object[] { paramString1 });
     AppMethodBeat.o(113403);
   }
   
   public int getLayoutId()
   {
-    return 2131493284;
+    return 2131493373;
   }
   
   public void initView()
   {
     AppMethodBeat.i(113392);
-    this.oNU = ((RelativeLayout)findViewById(2131306409));
-    this.oNW = ((RelativeLayout)findViewById(2131306392));
-    this.oNX = ((ImageView)findViewById(2131306398));
-    this.oNY = ((TextView)findViewById(2131306332));
-    this.oNZ = ((MMPinProgressBtn)findViewById(2131306379));
-    this.oMN = ((ProgressBar)findViewById(2131306352));
-    this.oOa = ((TextView)findViewById(2131306403));
-    this.oNV = new VideoTextureView(this);
+    this.qbI = ((RelativeLayout)findViewById(2131309840));
+    this.qbK = ((RelativeLayout)findViewById(2131309821));
+    this.qbL = ((ImageView)findViewById(2131309829));
+    this.qbM = ((TextView)findViewById(2131309754));
+    this.qbN = ((MMPinProgressBtn)findViewById(2131309808));
+    this.qaB = ((ProgressBar)findViewById(2131309778));
+    this.qbO = ((TextView)findViewById(2131309834));
+    this.qbJ = new VideoTextureView(this);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(13);
-    this.oNV.setMute(this.fOX);
-    this.oNV.setVideoCallback(this);
-    this.oNW.addView((View)this.oNV, localLayoutParams);
-    this.oML = ((ImageView)findViewById(2131300336));
-    this.oNU.setOnTouchListener(new View.OnTouchListener()
+    this.qbJ.setMute(this.guh);
+    this.qbJ.setVideoCallback(this);
+    this.qbK.addView((View)this.qbJ, localLayoutParams);
+    this.qaz = ((ImageView)findViewById(2131301854));
+    this.qbI.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(113380);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CardGiftVideoUI$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-        CardGiftVideoUI.this.bYa();
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/card/ui/CardGiftVideoUI$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+        CardGiftVideoUI.this.cvQ();
         AppMethodBeat.o(113380);
         return true;
       }
     });
-    ((View)this.oNV).setOnClickListener(new View.OnClickListener()
+    ((View)this.qbJ).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(113381);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CardGiftVideoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        CardGiftVideoUI.this.bYa();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CardGiftVideoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        CardGiftVideoUI.this.cvQ();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardGiftVideoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(113381);
       }
     });
-    this.oMQ = new e(this);
+    this.qaE = new e(this);
     AppMethodBeat.o(113392);
   }
   
   public final void onCompletion()
   {
     AppMethodBeat.i(113401);
-    ae.i("MicroMsg.CardGiftVideoUI", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
-    this.oNV.p(0.0D);
+    Log.i("MicroMsg.CardGiftVideoUI", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
+    this.qbJ.q(0.0D);
     AppMethodBeat.o(113401);
   }
   
@@ -386,47 +392,47 @@ public class CardGiftVideoUI
     }
     super.onCreate(paramBundle);
     hideTitleView();
-    this.oMP = paramBundle;
+    this.qaD = paramBundle;
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(1024, 1024);
     }
-    if (com.tencent.mm.booter.a.WB() != null) {
-      com.tencent.mm.booter.a.WB().WD();
+    if (com.tencent.mm.booter.a.akp() != null) {
+      com.tencent.mm.booter.a.akp().akr();
     }
-    this.oMK = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
+    this.qay = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
     this.videoPath = getIntent().getStringExtra("key_video_path");
-    this.fOX = getIntent().getBooleanExtra("key_is_mute", false);
-    if (this.oMK == null) {}
-    for (paramBundle = "null";; paramBundle = this.oMK.toString())
+    this.guh = getIntent().getBooleanExtra("key_is_mute", false);
+    if (this.qay == null) {}
+    for (paramBundle = "null";; paramBundle = this.qay.toString())
     {
-      ae.d("MicroMsg.CardGiftVideoUI", "cardGiftInfo %s", new Object[] { paramBundle });
-      ae.d("MicroMsg.CardGiftVideoUI", "videoPath:%s, isMute:%b", new Object[] { this.videoPath, Boolean.valueOf(this.fOX) });
+      Log.d("MicroMsg.CardGiftVideoUI", "cardGiftInfo %s", new Object[] { paramBundle });
+      Log.d("MicroMsg.CardGiftVideoUI", "videoPath:%s, isMute:%b", new Object[] { this.videoPath, Boolean.valueOf(this.guh) });
       initView();
       com.tencent.mm.plugin.card.d.a.a(this);
-      bYg();
-      if (this.oMK != null) {
+      cvW();
+      if (this.qay != null) {
         break;
       }
-      ae.e("MicroMsg.CardGiftVideoUI", "cardGiftInfo is null");
+      Log.e("MicroMsg.CardGiftVideoUI", "cardGiftInfo is null");
       AppMethodBeat.o(113389);
       return;
     }
-    if (!bu.isNullOrNil(this.oMK.oEH))
+    if (!Util.isNullOrNil(this.qay.pSq))
     {
-      com.tencent.mm.plugin.card.d.a.g(this.oMK.oEI, this.oMK.oEL, this.oMK.oET, 2);
-      com.tencent.mm.plugin.card.d.a.g(this.oMK.oEH, this.oMK.oEK, this.oMK.oES, 1);
+      com.tencent.mm.plugin.card.d.a.g(this.qay.pSr, this.qay.pSu, this.qay.pSC, 2);
+      com.tencent.mm.plugin.card.d.a.g(this.qay.pSq, this.qay.pSt, this.qay.pSB, 1);
       AppMethodBeat.o(113389);
       return;
     }
-    ae.e("MicroMsg.CardGiftVideoUI", "fromUserContentVideoUrl is null");
+    Log.e("MicroMsg.CardGiftVideoUI", "fromUserContentVideoUrl is null");
     AppMethodBeat.o(113389);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(113396);
-    this.oNV.stop();
-    this.oOb.stopTimer();
+    this.qbJ.stop();
+    this.qbP.stopTimer();
     com.tencent.mm.plugin.card.d.a.b(this);
     super.onDestroy();
     AppMethodBeat.o(113396);
@@ -436,15 +442,15 @@ public class CardGiftVideoUI
   {
     AppMethodBeat.i(113399);
     setResult(0);
-    this.oNV.stop();
-    ae.e("MicroMsg.CardGiftVideoUI", "%d on play video error what %d extra %d.", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.qbJ.stop();
+    Log.e("MicroMsg.CardGiftVideoUI", "%d on play video error what %d extra %d.", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(113399);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(113395);
-    this.oNV.pause();
+    this.qbJ.pause();
     super.onPause();
     AppMethodBeat.o(113395);
   }
@@ -452,8 +458,8 @@ public class CardGiftVideoUI
   public void onResume()
   {
     AppMethodBeat.i(113394);
-    if (!bu.isNullOrNil(this.videoPath)) {
-      ZD(this.videoPath);
+    if (!Util.isNullOrNil(this.videoPath)) {
+      ajI(this.videoPath);
     }
     super.onResume();
     AppMethodBeat.o(113394);
@@ -462,14 +468,14 @@ public class CardGiftVideoUI
   public void onStart()
   {
     AppMethodBeat.i(113393);
-    Bundle localBundle = this.oMP;
+    Bundle localBundle = this.qaD;
     if (!this.isAnimated)
     {
       this.isAnimated = true;
       if (Build.VERSION.SDK_INT >= 12) {
         break label63;
       }
-      ae.e("MicroMsg.CardGiftVideoUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      Log.e("MicroMsg.CardGiftVideoUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
     }
     for (;;)
     {
@@ -477,13 +483,13 @@ public class CardGiftVideoUI
       AppMethodBeat.o(113393);
       return;
       label63:
-      this.oMR = getIntent().getIntExtra("img_top", 0);
-      this.oMS = getIntent().getIntExtra("img_left", 0);
-      this.oMT = getIntent().getIntExtra("img_width", 0);
-      this.oMU = getIntent().getIntExtra("img_height", 0);
-      this.oMQ.R(this.oMS, this.oMR, this.oMT, this.oMU);
+      this.qaF = getIntent().getIntExtra("img_top", 0);
+      this.qaG = getIntent().getIntExtra("img_left", 0);
+      this.qaH = getIntent().getIntExtra("img_width", 0);
+      this.qaI = getIntent().getIntExtra("img_height", 0);
+      this.qaE.Q(this.qaG, this.qaF, this.qaH, this.qaI);
       if (localBundle == null) {
-        this.oNU.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+        this.qbI.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
         {
           public final boolean onPreDraw()
           {
@@ -504,17 +510,17 @@ public class CardGiftVideoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void ta()
+  public final void tf()
   {
     AppMethodBeat.i(113400);
     setResult(-1);
-    this.oMO.post(new Runnable()
+    this.qaC.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(113386);
-        ae.i("MicroMsg.CardGiftVideoUI", "%d switch video model isVideoPlay %b", new Object[] { Integer.valueOf(CardGiftVideoUI.this.hashCode()), Boolean.valueOf(this.oOe) });
-        if (this.oOe)
+        Log.i("MicroMsg.CardGiftVideoUI", "%d switch video model isVideoPlay %b", new Object[] { Integer.valueOf(CardGiftVideoUI.this.hashCode()), Boolean.valueOf(this.qbT) });
+        if (this.qbT)
         {
           ((View)CardGiftVideoUI.e(CardGiftVideoUI.this)).setVisibility(0);
           CardGiftVideoUI.f(CardGiftVideoUI.this).setVisibility(8);
@@ -526,12 +532,12 @@ public class CardGiftVideoUI
         AppMethodBeat.o(113386);
       }
     });
-    this.oMO.post(new Runnable()
+    this.qaC.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(113387);
-        ae.d("MicroMsg.CardGiftVideoUI", "hide loading.");
+        Log.d("MicroMsg.CardGiftVideoUI", "hide loading.");
         if ((CardGiftVideoUI.g(CardGiftVideoUI.this) != null) && (CardGiftVideoUI.g(CardGiftVideoUI.this).getVisibility() != 8)) {
           CardGiftVideoUI.g(CardGiftVideoUI.this).setVisibility(8);
         }
@@ -541,16 +547,16 @@ public class CardGiftVideoUI
         AppMethodBeat.o(113387);
       }
     });
-    this.oNV.start();
-    this.duration = (this.oNV.getDuration() / 1000);
-    this.oOb.ay(500L, 500L);
-    ae.i("MicroMsg.CardGiftVideoUI", "onPrepared videoView.start duration:%d", new Object[] { Integer.valueOf(this.duration) });
+    this.qbJ.start();
+    this.duration = (this.qbJ.getDuration() / 1000);
+    this.qbP.startTimer(500L);
+    Log.i("MicroMsg.CardGiftVideoUI", "onPrepared videoView.start duration:%d", new Object[] { Integer.valueOf(this.duration) });
     AppMethodBeat.o(113400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftVideoUI
  * JD-Core Version:    0.7.0.1
  */

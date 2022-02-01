@@ -1,18 +1,14 @@
 package com.tencent.mm.model;
 
-public abstract class ao
+public abstract interface ao
 {
-  public long hIF = 0L;
+  public abstract void aVl();
   
-  public abstract String getTag();
-  
-  public abstract boolean os(int paramInt);
-  
-  public abstract void transfer(int paramInt);
+  public abstract void aVm();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.ao
  * JD-Core Version:    0.7.0.1
  */

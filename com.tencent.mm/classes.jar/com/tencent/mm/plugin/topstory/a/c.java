@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.topstory.a;
 
 public abstract interface c
 {
-  public abstract void im(int paramInt1, int paramInt2);
+  public abstract void jm(int paramInt1, int paramInt2);
 }
 
 

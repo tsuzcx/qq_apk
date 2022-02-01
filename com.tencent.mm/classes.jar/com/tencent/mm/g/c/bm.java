@@ -2,19 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class bm
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFV = "content".hashCode();
-  private static final int eVx = "designerIDAndType".hashCode();
+  private static final int fyW = "desc".hashCode();
+  private static final int fza = "groupID".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFy = true;
-  private boolean eVw = true;
-  public byte[] field_content;
-  public String field_designerIDAndType;
+  public String field_desc;
+  public String field_groupID;
+  private boolean fyS = true;
+  private boolean fyZ = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +29,19 @@ public abstract class bm
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVx != k) {
-        break label65;
+      if (fza != k) {
+        break label60;
       }
-      this.field_designerIDAndType = paramCursor.getString(i);
-      this.eVw = true;
+      this.field_groupID = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eFV == k) {
-        this.field_content = paramCursor.getBlob(i);
+      label60:
+      if (fyW == k) {
+        this.field_desc = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +51,11 @@ public abstract class bm
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVw) {
-      localContentValues.put("designerIDAndType", this.field_designerIDAndType);
+    if (this.fyZ) {
+      localContentValues.put("groupID", this.field_groupID);
     }
-    if (this.eFy) {
-      localContentValues.put("content", this.field_content);
+    if (this.fyS) {
+      localContentValues.put("desc", this.field_desc);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +65,7 @@ public abstract class bm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.bm
  * JD-Core Version:    0.7.0.1
  */

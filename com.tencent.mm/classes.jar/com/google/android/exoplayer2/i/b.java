@@ -10,38 +10,38 @@ import java.io.OutputStream;
 
 public final class b
 {
-  public final File bGy;
-  public final File bGz;
+  public final File bGP;
+  public final File bGQ;
   
   public b(File paramFile)
   {
     AppMethodBeat.i(93119);
-    this.bGy = paramFile;
-    this.bGz = new File(paramFile.getPath() + ".bak");
+    this.bGP = paramFile;
+    this.bGQ = new File(paramFile.getPath() + ".bak");
     AppMethodBeat.o(93119);
   }
   
-  public final OutputStream wQ()
+  public final OutputStream wY()
   {
     AppMethodBeat.i(93120);
-    if (this.bGy.exists())
+    if (this.bGP.exists())
     {
-      if (this.bGz.exists()) {
+      if (this.bGQ.exists()) {
         break label87;
       }
-      if (!this.bGy.renameTo(this.bGz)) {
-        new StringBuilder("Couldn't rename file ").append(this.bGy).append(" to backup file ").append(this.bGz);
+      if (!this.bGP.renameTo(this.bGQ)) {
+        new StringBuilder("Couldn't rename file ").append(this.bGP).append(" to backup file ").append(this.bGQ);
       }
     }
     try
     {
       for (;;)
       {
-        a locala = new a(this.bGy);
+        a locala = new a(this.bGP);
         AppMethodBeat.o(93120);
         return locala;
         label87:
-        this.bGy.delete();
+        this.bGP.delete();
       }
     }
     catch (FileNotFoundException localFileNotFoundException1)
@@ -49,19 +49,19 @@ public final class b
       for (;;)
       {
         Object localObject;
-        if (!this.bGy.getParentFile().mkdirs())
+        if (!this.bGP.getParentFile().mkdirs())
         {
-          localObject = new IOException("Couldn't create directory " + this.bGy);
+          localObject = new IOException("Couldn't create directory " + this.bGP);
           AppMethodBeat.o(93120);
           throw ((Throwable)localObject);
         }
         try
         {
-          localObject = new a(this.bGy);
+          localObject = new a(this.bGP);
         }
         catch (FileNotFoundException localFileNotFoundException2)
         {
-          IOException localIOException = new IOException("Couldn't create " + this.bGy);
+          IOException localIOException = new IOException("Couldn't create " + this.bGP);
           AppMethodBeat.o(93120);
           throw localIOException;
         }
@@ -72,14 +72,14 @@ public final class b
   static final class a
     extends OutputStream
   {
-    private final FileOutputStream bGA;
+    private final FileOutputStream bGR;
     private boolean closed;
     
     public a(File paramFile)
     {
       AppMethodBeat.i(93113);
       this.closed = false;
-      this.bGA = new FileOutputStream(paramFile);
+      this.bGR = new FileOutputStream(paramFile);
       AppMethodBeat.o(93113);
     }
     
@@ -95,9 +95,9 @@ public final class b
       flush();
       try
       {
-        this.bGA.getFD().sync();
+        this.bGR.getFD().sync();
         label37:
-        this.bGA.close();
+        this.bGR.close();
         AppMethodBeat.o(93114);
         return;
       }
@@ -110,35 +110,35 @@ public final class b
     public final void flush()
     {
       AppMethodBeat.i(93115);
-      this.bGA.flush();
+      this.bGR.flush();
       AppMethodBeat.o(93115);
     }
     
     public final void write(int paramInt)
     {
       AppMethodBeat.i(93116);
-      this.bGA.write(paramInt);
+      this.bGR.write(paramInt);
       AppMethodBeat.o(93116);
     }
     
     public final void write(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(93117);
-      this.bGA.write(paramArrayOfByte);
+      this.bGR.write(paramArrayOfByte);
       AppMethodBeat.o(93117);
     }
     
     public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(93118);
-      this.bGA.write(paramArrayOfByte, paramInt1, paramInt2);
+      this.bGR.write(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(93118);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.i.b
  * JD-Core Version:    0.7.0.1
  */

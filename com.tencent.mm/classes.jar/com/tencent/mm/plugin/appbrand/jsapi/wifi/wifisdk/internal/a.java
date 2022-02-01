@@ -9,45 +9,45 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public final class a
 {
-  public boolean lAG;
-  public BroadcastReceiver lAH;
-  public String lAJ;
-  public String lAK;
-  private com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.a lAT;
-  public Context lAW;
-  a lAX;
-  a.b lAY;
-  public WifiConfiguration lAZ;
-  ConnectivityManager lBa;
-  private int lBb;
-  private final int lBc;
-  public boolean lBd;
+  public boolean mHU;
+  public BroadcastReceiver mHV;
+  public String mHX;
+  public String mHY;
   public Handler mHandler;
+  private com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.a mIi;
+  public Context mIl;
+  a mIm;
+  a.b mIn;
+  public WifiConfiguration mIo;
+  ConnectivityManager mIp;
+  private int mIq;
+  private final int mIr;
+  public boolean mIs;
   
   public a(com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.a parama, Context paramContext)
   {
     AppMethodBeat.i(144708);
     this.mHandler = null;
-    this.lAX = null;
-    this.lAY = null;
-    this.lAZ = null;
-    this.lAG = false;
-    this.lAH = null;
-    this.lBb = 0;
-    this.lBc = 13000;
-    this.lBd = false;
-    this.lAT = parama;
-    this.lAW = paramContext;
+    this.mIm = null;
+    this.mIn = null;
+    this.mIo = null;
+    this.mHU = false;
+    this.mHV = null;
+    this.mIq = 0;
+    this.mIr = 13000;
+    this.mIs = false;
+    this.mIi = parama;
+    this.mIl = paramContext;
     try
     {
-      this.lBa = ((ConnectivityManager)this.lAW.getSystemService("connectivity"));
+      this.mIp = ((ConnectivityManager)this.mIl.getSystemService("connectivity"));
       this.mHandler = new Handler(paramContext.getMainLooper())
       {
         public final void handleMessage(Message paramAnonymousMessage)
@@ -65,11 +65,11 @@ public final class a
           {
             AppMethodBeat.o(144702);
             return;
-            ae.i("MicroMsg.WiFiConnector", "MSG_TIME_OUT");
-            if (!a.this.bqg())
+            Log.i("MicroMsg.WiFiConnector", "MSG_TIME_OUT");
+            if (!a.this.bLM())
             {
-              a.this.Sd("fail to connect wifi:time out");
-              ae.i("MicroMsg.wifi_event", "MSG_TIME_OUT FAIL.");
+              a.this.abI("fail to connect wifi:time out");
+              Log.i("MicroMsg.wifi_event", "MSG_TIME_OUT FAIL.");
             }
           }
         }
@@ -81,7 +81,7 @@ public final class a
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.WiFiConnector", parama, "can not retrieve ConnectivityManager", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WiFiConnector", parama, "can not retrieve ConnectivityManager", new Object[0]);
       }
     }
   }
@@ -97,26 +97,26 @@ public final class a
   
   private static boolean b(WifiConfiguration paramWifiConfiguration)
   {
-    AppMethodBeat.i(208364);
-    ae.i("MicroMsg.WiFiConnector", "doConnectWifiFallbackLogic");
-    boolean bool = c.tS(paramWifiConfiguration.networkId);
-    AppMethodBeat.o(208364);
+    AppMethodBeat.i(215175);
+    Log.i("MicroMsg.WiFiConnector", "doConnectWifiFallbackLogic");
+    boolean bool = d.xQ(paramWifiConfiguration.networkId);
+    AppMethodBeat.o(215175);
     return bool;
   }
   
-  private void bqf()
+  private void bLL()
   {
     AppMethodBeat.i(144709);
-    if (this.lAG)
+    if (this.mHU)
     {
-      this.lAW.unregisterReceiver(this.lAH);
-      this.lAG = false;
-      ae.i("MicroMsg.WiFiConnector", "stopMonitorWiFiEvent");
+      this.mIl.unregisterReceiver(this.mHV);
+      this.mHU = false;
+      Log.i("MicroMsg.WiFiConnector", "stopMonitorWiFiEvent");
     }
     AppMethodBeat.o(144709);
   }
   
-  private static String tQ(int paramInt)
+  private static String xO(int paramInt)
   {
     switch (paramInt)
     {
@@ -132,23 +132,10 @@ public final class a
     return "STATE_NONE";
   }
   
-  public final void Sd(String paramString)
-  {
-    AppMethodBeat.i(144711);
-    if (this.lAZ != null)
-    {
-      b.tR(this.lAZ.networkId);
-      q(false, paramString);
-      ae.i("MicroMsg.wifi_event", "cancelConnect, " + d.Se(this.lAZ.SSID) + " networkId:" + this.lAZ.networkId);
-      ae.i("MicroMsg.WiFiConnector", "cancelConnect");
-    }
-    AppMethodBeat.o(144711);
-  }
-  
   public final boolean a(WifiConfiguration paramWifiConfiguration)
   {
     AppMethodBeat.i(144710);
-    if ((paramWifiConfiguration == null) || (paramWifiConfiguration.networkId == d.lBg) || (this.lBa == null))
+    if ((paramWifiConfiguration == null) || (paramWifiConfiguration.networkId == e.mIE) || (this.mIp == null))
     {
       AppMethodBeat.o(144710);
       return false;
@@ -159,24 +146,24 @@ public final class a
       Class localClass1 = Class.forName("android.net.wifi.WifiManager");
       if (Build.VERSION.SDK_INT < 16)
       {
-        localClass1.getMethod("asyncConnect", new Class[] { Context.class, Handler.class }).invoke(c.bWU, new Object[] { this.lAW, this.mHandler });
-        localClass1.getMethod("connectNetwork", new Class[] { Integer.TYPE }).invoke(c.bWU, new Object[] { Integer.valueOf(paramWifiConfiguration.networkId) });
+        localClass1.getMethod("asyncConnect", new Class[] { Context.class, Handler.class }).invoke(d.chC, new Object[] { this.mIl, this.mHandler });
+        localClass1.getMethod("connectNetwork", new Class[] { Integer.TYPE }).invoke(d.chC, new Object[] { Integer.valueOf(paramWifiConfiguration.networkId) });
         AppMethodBeat.o(144710);
         return true;
       }
       if (Build.VERSION.SDK_INT == 16)
       {
-        if (this.lAY == null) {
-          this.lAY = new a.b(this);
+        if (this.mIn == null) {
+          this.mIn = new a.b(this);
         }
-        localObject1 = a(this.lAX, "android.net.wifi.WifiManager$ChannelListener");
-        localObject1 = localClass1.getMethod("initialize", new Class[] { Context.class, Looper.class, Class.forName("android.net.wifi.WifiManager$ChannelListener") }).invoke(c.bWU, new Object[] { this.lAW, this.lAW.getMainLooper(), localObject1 });
-        if (this.lAX == null) {
-          this.lAX = new a(paramWifiConfiguration);
+        localObject1 = a(this.mIm, "android.net.wifi.WifiManager$ChannelListener");
+        localObject1 = localClass1.getMethod("initialize", new Class[] { Context.class, Looper.class, Class.forName("android.net.wifi.WifiManager$ChannelListener") }).invoke(d.chC, new Object[] { this.mIl, this.mIl.getMainLooper(), localObject1 });
+        if (this.mIm == null) {
+          this.mIm = new a(paramWifiConfiguration);
         }
-        localObject2 = a(this.lAX, "android.net.wifi.WifiManager$ActionListener");
+        localObject2 = a(this.mIm, "android.net.wifi.WifiManager$ActionListener");
         Class localClass2 = Class.forName("android.net.wifi.WifiManager$ActionListener");
-        localClass1.getMethod("connect", new Class[] { Class.forName("android.net.wifi.WifiManager$Channel"), Integer.TYPE, localClass2 }).invoke(c.bWU, new Object[] { localObject1, Integer.valueOf(paramWifiConfiguration.networkId), localObject2 });
+        localClass1.getMethod("connect", new Class[] { Class.forName("android.net.wifi.WifiManager$Channel"), Integer.TYPE, localClass2 }).invoke(d.chC, new Object[] { localObject1, Integer.valueOf(paramWifiConfiguration.networkId), localObject2 });
         AppMethodBeat.o(144710);
         return true;
       }
@@ -186,47 +173,60 @@ public final class a
         AppMethodBeat.o(144710);
         return bool;
       }
-      if (this.lAX == null) {
-        this.lAX = new a(paramWifiConfiguration);
+      if (this.mIm == null) {
+        this.mIm = new a(paramWifiConfiguration);
       }
-      Object localObject1 = a(this.lAX, "android.net.wifi.WifiManager$ActionListener");
+      Object localObject1 = a(this.mIm, "android.net.wifi.WifiManager$ActionListener");
       Object localObject2 = Class.forName("android.net.wifi.WifiManager$ActionListener");
-      localClass1.getMethod("connect", new Class[] { Integer.TYPE, localObject2 }).invoke(c.bWU, new Object[] { Integer.valueOf(paramWifiConfiguration.networkId), localObject1 });
+      localClass1.getMethod("connect", new Class[] { Integer.TYPE, localObject2 }).invoke(d.chC, new Object[] { Integer.valueOf(paramWifiConfiguration.networkId), localObject1 });
       AppMethodBeat.o(144710);
       return true;
     }
     catch (Exception localException)
     {
-      ae.w("MicroMsg.WiFiConnector", "connectWifi fail since " + localException.toString() + ", try fallback");
+      Log.w("MicroMsg.WiFiConnector", "connectWifi fail since " + localException.toString() + ", try fallback");
       bool = b(paramWifiConfiguration);
       AppMethodBeat.o(144710);
     }
     return bool;
   }
   
-  public final boolean bqg()
+  public final void abI(String paramString)
   {
-    return (this.lBb == 3) || (this.lBb == 2);
+    AppMethodBeat.i(144711);
+    if (this.mIo != null)
+    {
+      b.xP(this.mIo.networkId);
+      q(false, paramString);
+      Log.i("MicroMsg.wifi_event", "cancelConnect, " + e.abJ(this.mIo.SSID) + " networkId:" + this.mIo.networkId);
+      Log.i("MicroMsg.WiFiConnector", "cancelConnect");
+    }
+    AppMethodBeat.o(144711);
+  }
+  
+  public final boolean bLM()
+  {
+    return (this.mIq == 3) || (this.mIq == 2);
   }
   
   public final void q(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(144713);
-    ae.i("MicroMsg.WiFiConnector", "finishConnectTask success:".concat(String.valueOf(paramBoolean)));
-    if (!bqg())
+    Log.i("MicroMsg.WiFiConnector", "finishConnectTask success:".concat(String.valueOf(paramBoolean)));
+    if (!bLM())
     {
-      if (this.lAT != null)
+      if (this.mIi != null)
       {
-        com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.a locala = this.lAT;
-        String str1 = this.lAJ;
-        String str2 = this.lAK;
+        com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.a locala = this.mIi;
+        String str1 = this.mHX;
+        String str2 = this.mHY;
         if (paramBoolean) {
           paramString = "ok";
         }
-        locala.F(str1, str2, paramString);
+        locala.H(str1, str2, paramString);
       }
       this.mHandler.removeMessages(1);
-      bqf();
+      bLL();
       if (!paramBoolean) {
         break label125;
       }
@@ -234,22 +234,22 @@ public final class a
     label125:
     for (int i = 2;; i = 3)
     {
-      tP(i);
-      if ((!paramBoolean) && (this.lAZ != null)) {
-        b.tR(this.lAZ.networkId);
+      xN(i);
+      if ((!paramBoolean) && (this.mIo != null)) {
+        b.xP(this.mIo.networkId);
       }
       AppMethodBeat.o(144713);
       return;
     }
   }
   
-  public final void tP(int paramInt)
+  public final void xN(int paramInt)
   {
     AppMethodBeat.i(144712);
-    if (this.lBb != paramInt)
+    if (this.mIq != paramInt)
     {
-      this.lBb = paramInt;
-      ae.i("MicroMsg.WiFiConnector", "switchState:" + tQ(this.lBb));
+      this.mIq = paramInt;
+      Log.i("MicroMsg.WiFiConnector", "switchState:" + xO(this.mIq));
     }
     AppMethodBeat.o(144712);
   }
@@ -257,11 +257,11 @@ public final class a
   final class a
     implements InvocationHandler
   {
-    private final WifiConfiguration lBf;
+    private final WifiConfiguration mIu;
     
     public a(WifiConfiguration paramWifiConfiguration)
     {
-      this.lBf = paramWifiConfiguration;
+      this.mIu = paramWifiConfiguration;
     }
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
@@ -269,14 +269,14 @@ public final class a
       AppMethodBeat.i(144705);
       if (paramMethod.getName().compareTo("onSuccess") == 0)
       {
-        ae.i("MicroMsg.WiFiConnector", "connectWifi use ActionListener success");
+        Log.i("MicroMsg.WiFiConnector", "connectWifi use ActionListener success");
         AppMethodBeat.o(144705);
         return null;
       }
       if (paramMethod.getName().compareTo("onFailure") == 0)
       {
-        ae.w("MicroMsg.WiFiConnector", "connectWifi use ActionListener fail, fallback to enableNetwork");
-        c.tS(this.lBf.networkId);
+        Log.w("MicroMsg.WiFiConnector", "connectWifi use ActionListener fail, fallback to enableNetwork");
+        d.xQ(this.mIu.networkId);
       }
       AppMethodBeat.o(144705);
       return null;
@@ -285,7 +285,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a
  * JD-Core Version:    0.7.0.1
  */

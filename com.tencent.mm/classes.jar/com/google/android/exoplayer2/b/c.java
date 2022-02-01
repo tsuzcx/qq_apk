@@ -8,13 +8,13 @@ public abstract interface c<I, O, E extends Exception>
   
   public abstract void release();
   
-  public abstract I ua();
+  public abstract I uf();
   
-  public abstract O ub();
+  public abstract O ug();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.b.c
  * JD-Core Version:    0.7.0.1
  */

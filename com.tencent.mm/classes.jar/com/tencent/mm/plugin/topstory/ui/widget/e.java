@@ -6,7 +6,7 @@ import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.ao;
 
 public final class e
 {
@@ -17,7 +17,7 @@ public final class e
     int[] arrayOfInt2 = new int[2];
     paramView1.getLocationOnScreen(arrayOfInt2);
     int i = paramView1.getHeight();
-    int j = al.ck(paramContext).x;
+    int j = ao.az(paramContext).x;
     paramView2.measure(0, 0);
     int k = paramView2.getMeasuredHeight();
     int m = paramView2.getMeasuredWidth();
@@ -42,7 +42,7 @@ public final class e
     int[] arrayOfInt2 = new int[2];
     paramView1.getLocationInWindow(arrayOfInt2);
     int i = paramView1.getHeight();
-    int j = al.ck(paramContext).x;
+    int j = ao.az(paramContext).x;
     paramView2.measure(0, 0);
     int k = paramView2.getMeasuredHeight();
     int m = paramView2.getMeasuredWidth();
@@ -68,7 +68,7 @@ public final class e
     return i;
   }
   
-  public static int fF(View paramView)
+  public static int fX(View paramView)
   {
     AppMethodBeat.i(126648);
     int[] arrayOfInt = new int[2];

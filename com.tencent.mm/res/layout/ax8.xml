@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/eia" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.ipcall.ui.IPCallShareSquareLayout android:id="@id/e95" android:background="@drawable/ath" android:clickable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ei5" android:layout_width="fill_parent" android:layout_height="@dimen/acx">
-        <ImageView android:id="@id/ei4" android:layout_width="fill_parent" android:layout_height="@dimen/acx" android:scaleType="centerCrop" />
-        <View android:id="@id/ei9" android:background="@color/a15" android:layout_width="fill_parent" android:layout_height="@dimen/acx" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ei8" android:background="@null" android:paddingLeft="12.0dip" android:paddingTop="?y" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/acx">
-        <RelativeLayout android:id="@id/ei2" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/ei7" android:background="@raw/scan_product_movie_default_img" android:visibility="gone" android:layout_width="87.0dip" android:layout_height="113.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="14.0dip" android:src="@raw/scan_product_movie_default_img" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-            <ImageView android:id="@id/ei_" android:background="@raw/scan_product_default_img" android:visibility="gone" android:layout_width="87.0dip" android:layout_height="87.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:src="@raw/scan_product_default_img" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-            <ImageView android:id="@id/ei3" android:background="@drawable/a9k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:layout_centerInParent="true" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/ei1" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ha">
-            <TextView android:textSize="18.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/eid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" android:maxLines="2" android:includeFontPadding="false" android:layout_alignParentTop="true" android:lineSpacingExtra="0.0dip" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ehy" android:background="@drawable/tt" android:paddingLeft="2.0dip" android:paddingTop="2.0dip" android:paddingRight="3.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-                <ImageView android:id="@id/ehz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/bxa" />
-                <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/ehx" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-                <TextView android:textSize="@dimen/gx" android:textColor="@color/ry" android:layout_gravity="center|right" android:id="@id/ei0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ewk" android:singleLine="true" />
-            </LinearLayout>
-        </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="5.0">
+            <ImageView android:layout_gravity="center" android:id="@id/e1p" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
     </LinearLayout>
-    <ImageView android:id="@id/ei6" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/acx" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/kc" android:textColor="@color/a2x" android:gravity="center" android:layout_gravity="center" android:id="@id/e1q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.54" />
+        </FrameLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.ipcall.ui.IPCallShareSquareLayout>

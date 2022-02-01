@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/gb7" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dqr" style="@style/hp" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/ce">
-        <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/b3b" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <ImageView android:id="@id/dqs" style="@style/hp" />
-</LinearLayout>
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/k0" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/fbm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/i5e" android:visibility="gone" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/shortvideo_play_btn" />
+</com.tencent.mm.plugin.sns.ui.PhotosContent>

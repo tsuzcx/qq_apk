@@ -38,8 +38,6 @@ public abstract interface n
   
   public abstract boolean isFTSContextReady();
   
-  public abstract boolean isFTSIndexReady();
-  
   public abstract void registerFTSUILogic(d paramd);
   
   public abstract void registerIndexStorage(i parami);

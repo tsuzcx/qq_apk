@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.n;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.io.Closeable;
 import java.io.InputStream;
 import java.util.Collection;
@@ -15,51 +15,52 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+@Deprecated
 final class z
   implements q, Closeable
 {
   final String appId;
-  final WxaPkgWrappingInfo jJF;
-  private final Map<String, WxaPkg> jJG;
+  final WxaPkgWrappingInfo kLC;
+  private final Map<String, WxaPkg> kLD;
   
   z(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
     AppMethodBeat.i(178521);
-    this.jJG = new HashMap();
+    this.kLD = new HashMap();
     this.appId = paramString;
-    this.jJF = paramWxaPkgWrappingInfo;
-    this.jJF.Mm(paramString);
+    this.kLC = paramWxaPkgWrappingInfo;
+    this.kLC.Vv(paramString);
     AppMethodBeat.o(178521);
   }
   
-  private WxaPkg LT(String paramString)
+  private WxaPkg Vc(String paramString)
   {
     AppMethodBeat.i(134677);
     for (;;)
     {
-      synchronized (this.jJG)
+      synchronized (this.kLD)
       {
-        WxaPkg localWxaPkg = (WxaPkg)this.jJG.get(paramString);
+        WxaPkg localWxaPkg = (WxaPkg)this.kLD.get(paramString);
         if (localWxaPkg != null)
         {
           paramString = localWxaPkg;
           if (paramString != null) {
-            paramString.aZO();
+            paramString.bvf();
           }
           AppMethodBeat.o(134677);
           return paramString;
         }
         if ("__APP__".equals(paramString))
         {
-          localObject = this.jJF.pkgPath;
+          localObject = this.kLC.pkgPath;
           label70:
-          if (!bu.isNullOrNil((String)localObject)) {
+          if (!Util.isNullOrNil((String)localObject)) {
             break label148;
           }
           paramString = localWxaPkg;
         }
       }
-      Object localObject = this.jJF.jLY.iterator();
+      Object localObject = this.kLC.kNZ.iterator();
       for (;;)
       {
         if (((Iterator)localObject).hasNext())
@@ -71,7 +72,7 @@ final class z
             break label70;
             label148:
             localObject = new WxaPkg((String)localObject);
-            this.jJG.put(paramString, localObject);
+            this.kLD.put(paramString, localObject);
             paramString = (String)localObject;
             break;
           }
@@ -81,27 +82,27 @@ final class z
     }
   }
   
-  public final WxaPkg LK(String paramString)
+  public final WxaPkg UT(String paramString)
   {
     AppMethodBeat.i(134674);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(134674);
       return null;
     }
-    paramString = n.MV(paramString);
-    if (WxaPkgWrappingInfo.jLU != null)
+    paramString = n.We(paramString);
+    if (WxaPkgWrappingInfo.kNV != null)
     {
-      paramString = WxaPkgWrappingInfo.jLU.b(this.jJF.jLY, paramString, String.format(Locale.ENGLISH, "findAppropriateModuleInfo with appId[%s]", new Object[] { this.appId }));
+      paramString = WxaPkgWrappingInfo.kNV.b(this.kLC.kNZ, paramString, String.format(Locale.ENGLISH, "findAppropriateModuleInfo with appId[%s]", new Object[] { this.appId }));
       if (paramString != null) {}
       for (paramString = paramString.name;; paramString = "__APP__")
       {
-        paramString = LT(paramString);
+        paramString = Vc(paramString);
         AppMethodBeat.o(134674);
         return paramString;
       }
     }
-    Object localObject = this.jJF.jLY.iterator();
+    Object localObject = this.kLC.kNZ.iterator();
     ModulePkgInfo localModulePkgInfo;
     do
     {
@@ -113,7 +114,7 @@ final class z
     for (localObject = localModulePkgInfo.name;; localObject = null)
     {
       paramString = (String)localObject;
-      if (!bu.isNullOrNil((String)localObject)) {
+      if (!Util.isNullOrNil((String)localObject)) {
         break;
       }
       paramString = "__APP__";
@@ -121,15 +122,15 @@ final class z
     }
   }
   
-  public final InputStream LL(String paramString)
+  public final InputStream UU(String paramString)
   {
     AppMethodBeat.i(178524);
-    WxaPkg localWxaPkg = LK(paramString);
+    WxaPkg localWxaPkg = UT(paramString);
     int i;
     int j;
     if ((paramString.startsWith("/__plugin__/")) && (localWxaPkg != null))
     {
-      Object localObject = localWxaPkg.LI(paramString);
+      Object localObject = localWxaPkg.UR(paramString);
       if (localObject != null)
       {
         AppMethodBeat.o(178524);
@@ -144,7 +145,7 @@ final class z
       if ((arrayOfString[i].equalsIgnoreCase((String)localObject)) && (i + 1 < arrayOfString.length))
       {
         String str = arrayOfString[(i + 1)];
-        if (!bu.isNullOrNil(str))
+        if (!Util.isNullOrNil(str))
         {
           j = paramString.indexOf(str);
           i = str.length();
@@ -153,7 +154,7 @@ final class z
     }
     for (;;)
     {
-      paramString = localWxaPkg.LI(paramString.substring(i + j));
+      paramString = localWxaPkg.UR(paramString.substring(i + j));
       AppMethodBeat.o(178524);
       return paramString;
       i += 1;
@@ -163,7 +164,7 @@ final class z
         AppMethodBeat.o(178524);
         return null;
       }
-      paramString = localWxaPkg.LI(paramString);
+      paramString = localWxaPkg.UR(paramString);
       AppMethodBeat.o(178524);
       return paramString;
       label177:
@@ -172,22 +173,22 @@ final class z
     }
   }
   
-  public final q.a LM(String paramString)
+  public final q.a UV(String paramString)
   {
     AppMethodBeat.i(178523);
-    WxaPkg localWxaPkg = LK(paramString);
+    WxaPkg localWxaPkg = UT(paramString);
     if (localWxaPkg == null) {}
     for (paramString = null; paramString != null; paramString = localWxaPkg.openReadPartialInfo(paramString))
     {
       q.a locala = new q.a();
-      locala.jIJ = this.appId;
-      locala.aDD = this.jJF.pkgVersion();
-      locala.jIK = this.jJF.checksumMd5();
-      locala.jIL = localWxaPkg;
-      locala.jIM = w.B(localWxaPkg.ggb.fTh());
+      locala.kKF = this.appId;
+      locala.appVersion = this.kLC.pkgVersion();
+      locala.kKG = this.kLC.checksumMd5();
+      locala.kKH = localWxaPkg;
+      locala.kKI = aa.z(localWxaPkg.mFile.her());
       locala.fileName = paramString.fileName;
-      locala.jIN = paramString.jIN;
-      locala.jIO = paramString.jIO;
+      locala.kKJ = paramString.kKJ;
+      locala.kKK = paramString.kKK;
       AppMethodBeat.o(178523);
       return locala;
     }
@@ -195,10 +196,10 @@ final class z
     return null;
   }
   
-  public final boolean LN(String paramString)
+  public final boolean UW(String paramString)
   {
     AppMethodBeat.i(178525);
-    if (LM(paramString) != null)
+    if (UV(paramString) != null)
     {
       AppMethodBeat.o(178525);
       return true;
@@ -207,69 +208,55 @@ final class z
     return false;
   }
   
-  public final List<WxaPkg.Info> bah()
+  public final List<String> bvA()
   {
-    AppMethodBeat.i(134675);
-    Object localObject = LT("__APP__");
-    if (localObject == null)
+    AppMethodBeat.i(219300);
+    LinkedList localLinkedList = new LinkedList();
+    synchronized (this.kLD)
     {
-      AppMethodBeat.o(134675);
-      return null;
+      Iterator localIterator = this.kLD.values().iterator();
+      while (localIterator.hasNext())
+      {
+        WxaPkg localWxaPkg = (WxaPkg)localIterator.next();
+        if (localWxaPkg != null) {
+          localLinkedList.addAll(localWxaPkg.bwj());
+        }
+      }
     }
-    localObject = ((WxaPkg)localObject).baU();
-    AppMethodBeat.o(134675);
-    return localObject;
+    AppMethodBeat.o(219300);
+    return localList;
   }
   
-  public final void bai()
+  public final void bvy()
   {
     AppMethodBeat.i(178526);
-    this.jJF.Mm(this.appId);
-    synchronized (this.jJG)
+    this.kLC.Vv(this.appId);
+    synchronized (this.kLD)
     {
-      LT("__APP__");
-      Iterator localIterator = this.jJF.jLY.iterator();
+      Vc("__APP__");
+      Iterator localIterator = this.kLC.kNZ.iterator();
       if (localIterator.hasNext()) {
-        LT(((ModulePkgInfo)localIterator.next()).name);
+        Vc(((ModulePkgInfo)localIterator.next()).name);
       }
     }
     AppMethodBeat.o(178526);
   }
   
-  public final List<ModulePkgInfo> baj()
+  public final List<ModulePkgInfo> bvz()
   {
     AppMethodBeat.i(178527);
-    LinkedList localLinkedList = new LinkedList(this.jJF.jLY);
+    LinkedList localLinkedList = new LinkedList(this.kLC.kNZ);
     AppMethodBeat.o(178527);
     return localLinkedList;
-  }
-  
-  public final List<String> bak()
-  {
-    AppMethodBeat.i(207749);
-    LinkedList localLinkedList = new LinkedList();
-    synchronized (this.jJG)
-    {
-      Iterator localIterator = this.jJG.values().iterator();
-      while (localIterator.hasNext())
-      {
-        WxaPkg localWxaPkg = (WxaPkg)localIterator.next();
-        if (localWxaPkg != null) {
-          localLinkedList.addAll(localWxaPkg.baV());
-        }
-      }
-    }
-    AppMethodBeat.o(207749);
-    return localList;
   }
   
   public final void close()
   {
     AppMethodBeat.i(134678);
-    synchronized (this.jJG)
+    synchronized (this.kLD)
     {
-      Collection localCollection = this.jJG.values();
-      this.jJG.clear();
+      Collection localCollection = this.kLD.values();
+      this.kLD.clear();
       ??? = localCollection.iterator();
       if (((Iterator)???).hasNext()) {
         ((WxaPkg)((Iterator)???).next()).close();
@@ -280,7 +267,7 @@ final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.z
  * JD-Core Version:    0.7.0.1
  */

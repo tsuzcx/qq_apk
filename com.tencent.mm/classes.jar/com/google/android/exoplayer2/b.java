@@ -7,10 +7,10 @@ import java.util.UUID;
 public final class b
 {
   public static final int CHANNEL_OUT_7POINT1_SURROUND;
+  public static final UUID bbJ;
+  public static final UUID bbK;
+  public static final UUID bbL;
   public static final UUID bbM;
-  public static final UUID bbN;
-  public static final UUID bbO;
-  public static final UUID bbP;
   
   static
   {
@@ -19,10 +19,10 @@ public final class b
     for (int i = 1020;; i = 6396)
     {
       CHANNEL_OUT_7POINT1_SURROUND = i;
-      bbM = new UUID(0L, 0L);
-      bbN = new UUID(1186680826959645954L, -5988876978535335093L);
-      bbO = new UUID(-1301668207276963122L, -6645017420763422227L);
-      bbP = new UUID(-7348484286925749626L, -6083546864340672619L);
+      bbJ = new UUID(0L, 0L);
+      bbK = new UUID(1186680826959645954L, -5988876978535335093L);
+      bbL = new UUID(-1301668207276963122L, -6645017420763422227L);
+      bbM = new UUID(-7348484286925749626L, -6083546864340672619L);
       AppMethodBeat.o(91846);
       return;
     }
@@ -46,7 +46,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.b
  * JD-Core Version:    0.7.0.1
  */

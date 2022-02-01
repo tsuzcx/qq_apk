@@ -2,7 +2,7 @@ package com.tencent.wework.api.util;
 
 public abstract interface SessionProvider
 {
-  public abstract String geG();
+  public abstract String hrF();
 }
 
 

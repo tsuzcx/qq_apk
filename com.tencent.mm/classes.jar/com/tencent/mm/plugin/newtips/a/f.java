@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.newtips.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class f
 {
-  private static Map<Integer, h> wIj;
-  static Map<Integer, j> wIk;
-  private static f wIl;
+  private static Map<Integer, h> ADt;
+  static Map<Integer, j> ADu;
+  private static f ADv;
   
   private f()
   {
     AppMethodBeat.i(127219);
-    wIj = new HashMap();
-    wIk = new HashMap();
+    ADt = new HashMap();
+    ADu = new HashMap();
     AppMethodBeat.o(127219);
   }
   
-  public static h Ms(int paramInt)
+  public static h Tz(int paramInt)
   {
     AppMethodBeat.i(127220);
-    h localh2 = (h)wIj.get(Integer.valueOf(paramInt));
+    h localh2 = (h)ADt.get(Integer.valueOf(paramInt));
     h localh1 = localh2;
     if (localh2 == null)
     {
       localh1 = null;
-      ae.i("MicroMsg.NewTips.NewTipsFilterPool", "Invalid tipsId:%s", new Object[] { Integer.valueOf(paramInt) });
+      Log.i("MicroMsg.NewTips.NewTipsFilterPool", "Invalid tipsId:%s", new Object[] { Integer.valueOf(paramInt) });
     }
     AppMethodBeat.o(127220);
     return localh1;
   }
   
-  public static f dxI()
+  public static f exq()
   {
     AppMethodBeat.i(127218);
-    if (wIl == null) {
-      wIl = new f();
+    if (ADv == null) {
+      ADv = new f();
     }
-    f localf = wIl;
+    f localf = ADv;
     AppMethodBeat.o(127218);
     return localf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,12 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.ui.chatting.d.af;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/component/api/IScanComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "app_release"})
 public abstract interface al
-  extends ad
-{
-  public abstract void adU(int paramInt);
-  
-  public abstract void keepSignalling();
-  
-  public abstract void stopSignalling();
-}
+  extends af
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

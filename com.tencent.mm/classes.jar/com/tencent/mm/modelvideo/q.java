@@ -1,13 +1,13 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class q
 {
-  private String iwS;
-  private boolean iwT;
+  private String jsh;
+  private boolean jsi;
   private long time;
   
   public q(String paramString)
@@ -21,25 +21,25 @@ public final class q
     try
     {
       if (paramString.length > 0) {
-        this.iwS = paramString[0];
+        this.jsh = paramString[0];
       }
       if (paramString.length > 1) {
-        this.time = bu.getLong(paramString[1], 0L);
+        this.time = Util.getLong(paramString[1], 0L);
       }
       if (paramString.length > 2) {
-        this.iwT = paramString[2].equals("1");
+        this.jsi = paramString[2].equals("1");
       }
       AppMethodBeat.o(126946);
       return;
     }
     catch (Exception paramString)
     {
-      if (this.iwS == null) {
-        this.iwS = "";
+      if (this.jsh == null) {
+        this.jsh = "";
       }
-      this.iwT = false;
+      this.jsi = false;
       this.time = 0L;
-      ae.e("MicroMsg.VideoContent", "VoiceContent parse failed.");
+      Log.e("MicroMsg.VideoContent", "VoiceContent parse failed.");
       AppMethodBeat.o(126946);
     }
   }
@@ -57,9 +57,9 @@ public final class q
     }
   }
   
-  public final String aNq()
+  public final String bhs()
   {
-    return this.iwS;
+    return this.jsh;
   }
 }
 

@@ -17,7 +17,7 @@ public class SettingDeleteAccountUI
 {
   public int getLayoutId()
   {
-    return 2131495377;
+    return 2131496238;
   }
   
   public void initView()
@@ -34,14 +34,14 @@ public class SettingDeleteAccountUI
         return true;
       }
     });
-    ((TextView)findViewById(2131298984)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131299478)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(74001);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(74001);
       }
@@ -53,7 +53,7 @@ public class SettingDeleteAccountUI
   {
     AppMethodBeat.i(74002);
     super.onCreate(paramBundle);
-    setMMTitle(2131763105);
+    setMMTitle(2131765267);
     initView();
     AppMethodBeat.o(74002);
   }

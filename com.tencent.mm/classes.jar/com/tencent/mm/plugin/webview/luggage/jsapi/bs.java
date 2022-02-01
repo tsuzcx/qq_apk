@@ -1,99 +1,58 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
+import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
+import com.tencent.mm.plugin.webview.f.c;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bs
+public abstract class bs<T extends g>
+  extends br<T>
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> pvc;
-  
-  private static void aM(Class<? extends com.tencent.luggage.d.b> paramClass)
+  public final void a(b<T>.a paramb)
   {
-    AppMethodBeat.i(78643);
-    pvc.add(paramClass);
-    AppMethodBeat.o(78643);
-  }
-  
-  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> cee()
-  {
-    try
+    JSONObject localJSONObject = paramb.ctb.csi;
+    String str = ((g)paramb.cta).getUrl();
+    Object localObject1 = ((g)paramb.cta).gbF();
+    if (localObject1 != null) {}
+    label160:
+    Object localObject2;
+    for (localObject1 = ((c)localObject1).aZj(str);; localObject2 = null)
     {
-      AppMethodBeat.i(78642);
-      pvc = new LinkedList();
-      aM(am.class);
-      aM(ba.class);
-      aM(bl.class);
-      aM(aq.class);
-      aM(ah.class);
-      aM(a.class);
-      aM(ap.class);
-      aM(az.class);
-      aM(t.class);
-      aM(au.class);
-      aM(z.class);
-      aM(al.class);
-      aM(w.class);
-      aM(u.class);
-      aM(m.class);
-      aM(b.class);
-      aM(c.class);
-      aM(g.class);
-      aM(h.class);
-      aM(i.class);
-      aM(j.class);
-      aM(k.class);
-      aM(l.class);
-      aM(o.class);
-      aM(s.class);
-      aM(x.class);
-      aM(aa.class);
-      aM(ab.class);
-      aM(ac.class);
-      aM(af.class);
-      aM(ag.class);
-      aM(aj.class);
-      aM(ar.class);
-      aM(av.class);
-      aM(bb.class);
-      aM(bc.class);
-      aM(bg.class);
-      aM(bh.class);
-      aM(bi.class);
-      aM(bk.class);
-      aM(bm.class);
-      aM(bn.class);
-      aM(bp.class);
-      aM(bo.class);
-      aM(y.class);
-      aM(f.class);
-      aM(n.class);
-      aM(ai.class);
-      aM(ak.class);
-      aM(ad.class);
-      aM(at.class);
-      aM(bf.class);
-      aM(ae.class);
-      aM(aw.class);
-      aM(p.class);
-      aM(an.class);
-      aM(ao.class);
-      aM(as.class);
-      aM(q.class);
-      aM(e.class);
-      aM(r.class);
-      aM(d.class);
-      aM(bj.class);
-      aM(be.class);
-      aM(v.class);
-      aM(ax.class);
-      LinkedList localLinkedList = pvc;
-      AppMethodBeat.o(78642);
-      return localLinkedList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      if (Util.isNullOrNil((String)localObject1)) {
+        localObject1 = str;
+      }
+      for (;;)
+      {
+        GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.Fd(((g)paramb.cta).coX());
+        if (localGameWebPerformanceInfo != null) {
+          localGameWebPerformanceInfo.hhB = 1;
+        }
+        try
+        {
+          localJSONObject.put("currentUrl", str);
+          localJSONObject.put("shareUrl", localObject1);
+          if (((g)paramb.cta).ITw != null) {
+            localJSONObject.put("preVerifyAppId", ((g)paramb.cta).ITw.getAppId());
+          }
+          if (getClass().getName().equals(bb.class.getName()))
+          {
+            localJSONObject.put("sendAppMessageScene", bb.gcm());
+            bb.gcn();
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          break label160;
+        }
+        super.a(paramb);
+        return;
+      }
     }
   }
 }

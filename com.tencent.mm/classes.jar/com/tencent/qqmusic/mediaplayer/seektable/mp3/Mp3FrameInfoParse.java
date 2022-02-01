@@ -19,10 +19,15 @@ class Mp3FrameInfoParse
   
   static
   {
-    int[] arrayOfInt1 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
-    int[] arrayOfInt2 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
-    BitrateTable = new int[][][] { { { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, arrayOfInt1, arrayOfInt2 }, { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 }, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 } } };
-    SAMPLE_RATE_TABLE = new int[][] { { 11025, 12000, 8000 }, { 0, 0, 0 }, { 22050, 24000, 16000 }, { 44100, 48000, 32000 } };
+    int[] arrayOfInt1 = { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 };
+    int[] arrayOfInt2 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
+    int[] arrayOfInt3 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
+    Object localObject = { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 }, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 } };
+    BitrateTable = new int[][][] { { arrayOfInt1, arrayOfInt2, arrayOfInt3 }, localObject };
+    localObject = new int[] { 11025, 12000, 8000 };
+    arrayOfInt1 = new int[] { 22050, 24000, 16000 };
+    arrayOfInt2 = new int[] { 44100, 48000, 32000 };
+    SAMPLE_RATE_TABLE = new int[][] { localObject, { 0, 0, 0 }, arrayOfInt1, arrayOfInt2 };
   }
   
   private static boolean IsMp3Header(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, int paramInt1, int paramInt2, Mp3Info paramMp3Info)
@@ -529,7 +534,7 @@ class Mp3FrameInfoParse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mp3.Mp3FrameInfoParse
  * JD-Core Version:    0.7.0.1
  */

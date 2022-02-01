@@ -4,17 +4,17 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.Selection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class a
 {
-  private final aq lIB;
-  public volatile c nnd;
+  private final MMHandler mQp;
+  public volatile c owK;
   
   public a()
   {
     AppMethodBeat.i(131519);
-    this.lIB = new aq(Looper.getMainLooper())
+    this.mQp = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -23,8 +23,8 @@ public final class a
         {
           String str = (String)paramAnonymousMessage.obj;
           int i = paramAnonymousMessage.arg1;
-          if (a.this.nnd != null) {
-            a.this.nnd.bG(str, i);
+          if (a.this.owK != null) {
+            a.this.owK.bL(str, i);
           }
         }
         AppMethodBeat.o(131518);
@@ -41,13 +41,13 @@ public final class a
       AppMethodBeat.o(131520);
       return;
     }
-    paramCharSequence = this.lIB.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
-    this.lIB.removeMessages(1000);
-    aq localaq = this.lIB;
+    paramCharSequence = this.mQp.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
+    this.mQp.removeMessages(1000);
+    MMHandler localMMHandler = this.mQp;
     if (paramBoolean) {}
     for (long l = 150L;; l = 0L)
     {
-      localaq.sendMessageDelayed(paramCharSequence, l);
+      localMMHandler.sendMessageDelayed(paramCharSequence, l);
       AppMethodBeat.o(131520);
       return;
     }
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c.a
  * JD-Core Version:    0.7.0.1
  */

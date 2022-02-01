@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/c9r" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="160.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/i1y" android:background="@drawable/c9t" android:layout_width="@dimen/cd" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/c8" android:src="@raw/icons_panel_close" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <com.tencent.mm.plugin.recordvideo.ui.editor.view.TextColorSelector android:layout_gravity="center" android:id="@id/awo" android:layout_width="0.0dip" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/c_" android:paddingStart="@dimen/ci" android:paddingEnd="@dimen/ci" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/c5" app:layout_constraintEnd_toStartOf="@id/es9" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toBottomOf="@id/i1y" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/es9" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_filled_previous" android:layout_marginEnd="@dimen/c5" app:iconColor="@color/BW_BG_100" app:layout_constraintBottom_toBottomOf="@id/awo" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toEndOf="@id/awo" app:layout_constraintTop_toTopOf="@id/awo" />
-</android.support.constraint.ConstraintLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.MaskTextView android:textSize="15.0dip" android:textColor="@color/a92" android:gravity="center_vertical" android:id="@id/hys" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hyq" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/hys" android:layout_alignParentStart="true">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/x0" android:id="@id/hyr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <ImageView android:id="@id/hyp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4.0dip" />
+    </LinearLayout>
+</RelativeLayout>

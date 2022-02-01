@@ -9,7 +9,7 @@ public final class br
 {
   br(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    super(b(paramString1, paramString2, paramInt1, paramInt2), ba.LY(b(paramString1, paramString2, paramInt1, paramInt2)), paramString1, paramString2, paramInt1, paramInt2);
+    super(b(paramString1, paramString2, paramInt1, paramInt2), ba.Vh(b(paramString1, paramString2, paramInt1, paramInt2)), paramString1, paramString2, paramInt1, paramInt2);
     AppMethodBeat.i(90664);
     AppMethodBeat.o(90664);
   }
@@ -24,7 +24,7 @@ public final class br
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.br
  * JD-Core Version:    0.7.0.1
  */

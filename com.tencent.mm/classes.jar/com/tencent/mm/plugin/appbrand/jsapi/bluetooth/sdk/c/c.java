@@ -4,17 +4,17 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public boolean hIB;
+  public boolean iDl;
   public JSONObject jsonObject;
-  public boolean kIG;
-  public boolean kIH;
-  public boolean kII;
-  public boolean kIJ;
+  public boolean lNl;
+  public boolean lNm;
+  public boolean lNn;
+  public boolean lNo;
   public String uuid;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.c
  * JD-Core Version:    0.7.0.1
  */

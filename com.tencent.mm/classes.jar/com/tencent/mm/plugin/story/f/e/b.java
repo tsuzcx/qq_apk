@@ -1,27 +1,26 @@
 package com.tencent.mm.plugin.story.f.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.background.c;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
-import com.tencent.mm.protocal.protobuf.aip;
-import com.tencent.mm.protocal.protobuf.dkf;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.protocal.protobuf.eds;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/mix/VLogMixManager;", "Lcom/tencent/mm/plugin/recordvideo/background/IBgMixCallback;", "()V", "TAG", "", "onFinish", "", "taskId", "success", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "onInit", "onRun", "runNum", "", "onWait", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/mix/VLogMixManager;", "Lcom/tencent/mm/plugin/recordvideo/background/IBgMixCallback;", "()V", "TAG", "", "onFinish", "", "taskId", "success", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "onInit", "onRun", "runNum", "", "onWait", "plugin-story_release"})
 public final class b
   implements com.tencent.mm.plugin.recordvideo.background.b
 {
-  public static final b BeB;
+  public static final b Fps;
   
   static
   {
     AppMethodBeat.i(118971);
-    BeB = new b();
+    Fps = new b();
     AppMethodBeat.o(118971);
   }
   
@@ -29,29 +28,29 @@ public final class b
   {
     AppMethodBeat.i(118970);
     p.h(paramString, "taskId");
-    ae.i("MicroMsg.VLogMixManager", "onFinish, taskId:" + paramString + " success:" + paramBoolean + " model:" + paramCaptureVideoNormalModel);
-    a.Beu.a(paramString, paramBoolean, paramCaptureVideoNormalModel);
-    paramString = com.tencent.mm.plugin.recordvideo.e.b.yhe;
-    com.tencent.mm.plugin.recordvideo.e.b.c(paramCaptureVideoNormalModel);
+    Log.i("MicroMsg.VLogMixManager", "onFinish, taskId:" + paramString + " success:" + paramBoolean + " model:" + paramCaptureVideoNormalModel);
+    a.Fpl.a(paramString, paramBoolean, paramCaptureVideoNormalModel);
+    paramString = com.tencent.mm.plugin.recordvideo.e.c.Cic;
+    com.tencent.mm.plugin.recordvideo.e.c.c(paramCaptureVideoNormalModel);
     AppMethodBeat.o(118970);
   }
   
-  public final void amO(String paramString)
+  public final void aAd(String paramString)
   {
     AppMethodBeat.i(118967);
     p.h(paramString, "taskId");
-    ae.i("MicroMsg.VLogMixManager", "onInit, taskId:".concat(String.valueOf(paramString)));
-    Object localObject = e.xKl;
-    c localc = e.awN(paramString);
+    Log.i("MicroMsg.VLogMixManager", "onInit, taskId:".concat(String.valueOf(paramString)));
+    Object localObject = e.BKp;
+    com.tencent.mm.plugin.recordvideo.background.c localc = e.aLf(paramString);
     if (localc == null)
     {
       AppMethodBeat.o(118967);
       return;
     }
-    localObject = localc.dHX();
+    localObject = localc.eIK();
     if (localObject != null)
     {
-      localObject = ((aip)localObject).xOt;
+      localObject = ((ald)localObject).BOA;
       if (localObject != null) {}
     }
     else
@@ -60,33 +59,33 @@ public final class b
     }
     for (;;)
     {
-      new com.tencent.mm.ac.b("runMixInBackground");
-      a locala = a.Beu;
-      a.a(localc, (String)localObject, new dkf(), (d.g.a.b)new a(paramString));
+      new com.tencent.mm.ac.c("runMixInBackground");
+      a locala = a.Fpl;
+      a.a(localc, (String)localObject, new eds(), (kotlin.g.a.b)new a(paramString));
       AppMethodBeat.o(118967);
       return;
     }
   }
   
-  public final void amP(String paramString)
+  public final void aAe(String paramString)
   {
     AppMethodBeat.i(118969);
     p.h(paramString, "taskId");
     AppMethodBeat.o(118969);
   }
   
-  public final void dS(String paramString, int paramInt)
+  public final void eh(String paramString, int paramInt)
   {
     AppMethodBeat.i(118968);
     p.h(paramString, "taskId");
-    ae.i("MicroMsg.VLogMixManager", "onRun, taskId:" + paramString + " runNum:" + paramInt + ' ');
+    Log.i("MicroMsg.VLogMixManager", "onRun, taskId:" + paramString + " runNum:" + paramInt + ' ');
     AppMethodBeat.o(118968);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "storyLocalId", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "storyLocalId", "", "invoke"})
   static final class a
     extends q
-    implements d.g.a.b<Integer, z>
+    implements kotlin.g.a.b<Integer, x>
   {
     a(String paramString)
     {
@@ -96,7 +95,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oe;
-import com.tencent.mm.g.a.oe.a;
-import com.tencent.mm.g.a.oe.b;
+import com.tencent.mm.g.a.ow;
+import com.tencent.mm.g.a.ow.a;
+import com.tencent.mm.g.a.ow.b;
 import com.tencent.mm.plugin.fingerprint.b.a.b;
 import com.tencent.mm.plugin.fingerprint.b.a.f;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.soter.core.c.j;
 import java.util.Map;
 import org.json.JSONException;
@@ -23,33 +23,33 @@ import org.json.JSONObject;
 public final class k
   extends a
 {
-  private com.tencent.soter.a.d.a trR = null;
+  private com.tencent.soter.a.d.a wFx = null;
   
   public final int a(final com.tencent.mm.plugin.fingerprint.d.c paramc)
   {
     AppMethodBeat.i(64353);
-    ae.i("MicroMsg.SoterAuthMgrImp", "start face auth: %s", new Object[] { Integer.valueOf(3000) });
-    final aw localaw = new aw(new aw.a()
+    Log.i("MicroMsg.SoterAuthMgrImp", "start face auth: %s", new Object[] { Integer.valueOf(3000) });
+    final MTimerHandler localMTimerHandler = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(64345);
-        ae.i("MicroMsg.SoterAuthMgrImp", "timeout: %s", new Object[] { Integer.valueOf(this.maB) });
+        Log.i("MicroMsg.SoterAuthMgrImp", "timeout: %s", new Object[] { Integer.valueOf(this.nim) });
         k.a(k.this).cancel();
-        paramc.gb(2000, -1);
+        paramc.gz(2000, -1);
         AppMethodBeat.o(64345);
         return false;
       }
     }, false);
-    localaw.ay(3000L, 3000L);
-    f localf = new f(p.tse.trY);
-    this.trq.b(ak.getContext(), localf, new b()
+    localMTimerHandler.startTimer(3000L);
+    f localf = new f(p.wFK.wFE);
+    this.wEX.b(MMApplicationContext.getContext(), localf, new b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
         AppMethodBeat.i(64346);
-        localaw.stopTimer();
-        paramc.gb(paramAnonymousc.errCode, -1);
+        localMTimerHandler.stopTimer();
+        paramc.gz(paramAnonymousc.errCode, -1);
         AppMethodBeat.o(64346);
       }
     });
@@ -63,17 +63,17 @@ public final class k
     AppMethodBeat.i(64352);
     if (paramBoolean)
     {
-      ae.i("MicroMsg.SoterAuthMgrImp", "hy: req restart after fail, but no need");
+      Log.i("MicroMsg.SoterAuthMgrImp", "hy: req restart after fail, but no need");
       AppMethodBeat.o(64352);
       return 0;
     }
-    f localf = new f(p.tse.trY);
-    this.trq.a(ak.getContext(), localf, new b()
+    f localf = new f(p.wFK.wFE);
+    this.wEX.a(MMApplicationContext.getContext(), localf, new b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
         AppMethodBeat.i(64344);
-        paramc.gb(paramAnonymousc.errCode, -1);
+        paramc.gz(paramAnonymousc.errCode, -1);
         AppMethodBeat.o(64344);
       }
     });
@@ -81,21 +81,21 @@ public final class k
     return 0;
   }
   
-  public final void a(oe paramoe, int paramInt)
+  public final void a(ow paramow, int paramInt)
   {
     AppMethodBeat.i(64354);
-    ae.i("MicroMsg.SoterAuthMgrImp", "hy: soter onOpenFingerprintAuthSuccess");
-    paramoe.dDc.dDg = cRX();
-    oe.b localb = paramoe.dDc;
-    if (!bu.isNullOrNil(paramoe.dDc.dDg)) {}
+    Log.i("MicroMsg.SoterAuthMgrImp", "hy: soter onOpenFingerprintAuthSuccess");
+    paramow.dUR.dUV = dJS();
+    ow.b localb = paramow.dUR;
+    if (!Util.isNullOrNil(paramow.dUR.dUV)) {}
     for (paramInt = 0;; paramInt = 1)
     {
       localb.errCode = paramInt;
-      paramoe.dDc.dDh = 2;
-      paramoe.dDc.dwk = "";
-      paramoe.dDc.dwl = "";
-      if (paramoe.dDb.dDf != null) {
-        paramoe.dDb.dDf.run();
+      paramow.dUR.dUW = 2;
+      paramow.dUR.dNR = "";
+      paramow.dUR.dNS = "";
+      if (paramow.dUQ.dUU != null) {
+        paramow.dUQ.dUU.run();
       }
       AppMethodBeat.o(64354);
       return;
@@ -105,37 +105,37 @@ public final class k
   public final boolean a(boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
   {
     AppMethodBeat.i(64359);
-    ae.i("MicroMsg.SoterAuthMgrImp", "hy: post pay. is fingerprint pay: %b, is pay ok: %b, extInfo: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramBundle });
-    this.trq.a(paramBoolean1, paramBoolean2, p.tse.tsg, paramBundle);
+    Log.i("MicroMsg.SoterAuthMgrImp", "hy: post pay. is fingerprint pay: %b, is pay ok: %b, extInfo: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramBundle });
+    this.wEX.a(paramBoolean1, paramBoolean2, p.wFK.wFM, paramBundle);
     AppMethodBeat.o(64359);
     return false;
   }
   
-  public final boolean cRU()
+  public final boolean dJP()
   {
     AppMethodBeat.i(64360);
-    boolean bool = this.trq.cSy();
+    boolean bool = this.wEX.dKt();
     AppMethodBeat.o(64360);
     return bool;
   }
   
-  public final boolean cRV()
+  public final boolean dJQ()
   {
     AppMethodBeat.i(64364);
-    boolean bool = this.trq.cRV();
+    boolean bool = this.wEX.dJQ();
     AppMethodBeat.o(64364);
     return bool;
   }
   
-  public final String cRX()
+  public final String dJS()
   {
     AppMethodBeat.i(64355);
-    Object localObject = p.tse.tsi;
+    Object localObject = p.wFK.wFO;
     if (localObject != null) {
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("json", ((j)localObject).MnB);
+        localJSONObject.put("json", ((j)localObject).RPZ);
         localJSONObject.put("signature", ((j)localObject).signature);
         localObject = localJSONObject.toString();
         AppMethodBeat.o(64355);
@@ -143,99 +143,99 @@ public final class k
       }
       catch (JSONException localJSONException)
       {
-        ae.e("MicroMsg.SoterAuthMgrImp", "hy: error when convert to json: %s", new Object[] { localJSONException.toString() });
-        ae.printErrStackTrace("MicroMsg.SoterAuthMgrImp", localJSONException, "", new Object[0]);
+        Log.e("MicroMsg.SoterAuthMgrImp", "hy: error when convert to json: %s", new Object[] { localJSONException.toString() });
+        Log.printErrStackTrace("MicroMsg.SoterAuthMgrImp", localJSONException, "", new Object[0]);
         AppMethodBeat.o(64355);
         return "";
       }
     }
-    ae.e("MicroMsg.SoterAuthMgrImp", "hy: signature result is null");
+    Log.e("MicroMsg.SoterAuthMgrImp", "hy: signature result is null");
     AppMethodBeat.o(64355);
     return "";
   }
   
-  public final boolean cRY()
+  public final boolean dJT()
   {
     AppMethodBeat.i(64347);
-    boolean bool = this.trq.fi(ak.getContext());
+    boolean bool = this.wEX.fN(MMApplicationContext.getContext());
     AppMethodBeat.o(64347);
     return bool;
   }
   
-  public final boolean cRZ()
+  public final boolean dJU()
   {
     AppMethodBeat.i(64348);
-    boolean bool = this.trq.cSw();
+    boolean bool = this.wEX.dKr();
     AppMethodBeat.o(64348);
     return bool;
   }
   
-  public final void cSa()
+  public final void dJV()
   {
     AppMethodBeat.i(64349);
-    ae.i("MicroMsg.SoterAuthMgrImp", "hy: soter init fp. Do nothing?? Prepare ASK??");
-    this.trq.prepare();
+    Log.i("MicroMsg.SoterAuthMgrImp", "hy: soter init fp. Do nothing?? Prepare ASK??");
+    this.wEX.prepare();
     AppMethodBeat.o(64349);
   }
   
-  public final boolean cSb()
+  public final boolean dJW()
   {
     return false;
   }
   
-  public final boolean cSc()
+  public final boolean dJX()
   {
     AppMethodBeat.i(64351);
-    boolean bool = this.trq.cSv();
+    boolean bool = this.wEX.dKq();
     AppMethodBeat.o(64351);
     return bool;
   }
   
-  public final Map<String, String> cSd()
+  public final Map<String, String> dJY()
   {
     AppMethodBeat.i(64356);
-    Map localMap = this.trq.cSd();
+    Map localMap = this.wEX.dJY();
     AppMethodBeat.o(64356);
     return localMap;
   }
   
-  public final Map<String, String> cSe()
+  public final Map<String, String> dJZ()
   {
     AppMethodBeat.i(64357);
-    Map localMap = cSd();
+    Map localMap = dJY();
     AppMethodBeat.o(64357);
     return localMap;
   }
   
-  public final boolean cSf()
+  public final boolean dKa()
   {
     AppMethodBeat.i(64358);
-    boolean bool = this.trq.cSB();
-    ae.i("MicroMsg.SoterAuthMgrImp", "py: hasAuthKey: %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = this.wEX.dKw();
+    Log.i("MicroMsg.SoterAuthMgrImp", "py: hasAuthKey: %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(64358);
     return bool;
   }
   
-  public final boolean cSg()
+  public final boolean dKb()
   {
     AppMethodBeat.i(64362);
-    boolean bool = this.trq.fj(ak.getContext());
+    boolean bool = this.wEX.fO(MMApplicationContext.getContext());
     AppMethodBeat.o(64362);
     return bool;
   }
   
-  public final boolean cSh()
+  public final boolean dKc()
   {
     AppMethodBeat.i(64363);
-    boolean bool = this.trq.cSx();
+    boolean bool = this.wEX.dKs();
     AppMethodBeat.o(64363);
     return bool;
   }
   
-  public final void ff(Context paramContext)
+  public final void fK(Context paramContext)
   {
     AppMethodBeat.i(64350);
-    ae.i("MicroMsg.SoterAuthMgrImp", "hy: start startRigesterSysFP");
+    Log.i("MicroMsg.SoterAuthMgrImp", "hy: start startRigesterSysFP");
     AppMethodBeat.o(64350);
   }
   
@@ -247,13 +247,13 @@ public final class k
   public final void userCancel()
   {
     AppMethodBeat.i(64361);
-    this.trq.cancel();
+    this.wEX.cancel();
     AppMethodBeat.o(64361);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.k
  * JD-Core Version:    0.7.0.1
  */

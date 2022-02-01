@@ -4,58 +4,58 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cqz;
-import com.tencent.mm.protocal.protobuf.crc;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.diy;
+import com.tencent.mm.protocal.protobuf.djb;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarUtils;", "", "()V", "getEncodeUsername", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getUsername", "lowerThanXHDPI", "", "context", "Landroid/content/Context;", "plugin-radar_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/RadarUtils;", "", "()V", "getEncodeUsername", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getUsername", "lowerThanXHDPI", "", "context", "Landroid/content/Context;", "plugin-radar_release"})
 public final class g
 {
-  public static final g xAX;
+  public static final g BAY;
   
   static
   {
     AppMethodBeat.i(138730);
-    xAX = new g();
+    BAY = new g();
     AppMethodBeat.o(138730);
   }
   
-  public static String a(cqz paramcqz)
+  public static String a(diy paramdiy)
   {
-    if (paramcqz != null)
+    if (paramdiy != null)
     {
-      String str = paramcqz.Gzj;
+      String str = paramdiy.LuX;
       Object localObject = str;
       if (str == null)
       {
-        paramcqz = paramcqz.nIJ;
-        localObject = paramcqz;
-        if (paramcqz == null) {
+        paramdiy = paramdiy.UserName;
+        localObject = paramdiy;
+        if (paramdiy == null) {
           localObject = "";
         }
       }
-      paramcqz = (cqz)localObject;
+      paramdiy = (diy)localObject;
       if (localObject != null) {}
     }
     else
     {
-      paramcqz = "";
+      paramdiy = "";
     }
-    return paramcqz;
+    return paramdiy;
   }
   
-  public static String b(crc paramcrc)
+  public static String b(djb paramdjb)
   {
     AppMethodBeat.i(138728);
-    p.h(paramcrc, "member");
-    String str = paramcrc.nIJ;
+    p.h(paramdjb, "member");
+    String str = paramdjb.UserName;
     Object localObject = str;
     if (str == null)
     {
-      paramcrc = paramcrc.Gzj;
-      localObject = paramcrc;
-      if (paramcrc == null) {
+      paramdjb = paramdjb.LuX;
+      localObject = paramdjb;
+      if (paramdjb == null) {
         localObject = "";
       }
     }
@@ -63,31 +63,31 @@ public final class g
     return localObject;
   }
   
-  public static String c(crc paramcrc)
+  public static String c(djb paramdjb)
   {
-    if (paramcrc != null)
+    if (paramdjb != null)
     {
-      String str = paramcrc.Gzj;
+      String str = paramdjb.LuX;
       Object localObject = str;
       if (str == null)
       {
-        paramcrc = paramcrc.nIJ;
-        localObject = paramcrc;
-        if (paramcrc == null) {
+        paramdjb = paramdjb.UserName;
+        localObject = paramdjb;
+        if (paramdjb == null) {
           localObject = "";
         }
       }
-      paramcrc = (crc)localObject;
+      paramdjb = (djb)localObject;
       if (localObject != null) {}
     }
     else
     {
-      paramcrc = "";
+      paramdjb = "";
     }
-    return paramcrc;
+    return paramdjb;
   }
   
-  public static boolean gd(Context paramContext)
+  public static boolean gM(Context paramContext)
   {
     AppMethodBeat.i(138729);
     p.h(paramContext, "context");
@@ -104,7 +104,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.g
  * JD-Core Version:    0.7.0.1
  */

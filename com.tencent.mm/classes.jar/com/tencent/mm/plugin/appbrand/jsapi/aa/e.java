@@ -1,123 +1,77 @@
 package com.tencent.mm.plugin.appbrand.jsapi.aa;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.f;
-import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class e
+  extends a
 {
-  public static void a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent)
+  public static final int CTRL_INDEX = 896;
+  public static final String NAME = "queryTrafficCardInfo";
+  
+  protected final void a(k paramk, int paramInt, com.huawei.a.a.a.a parama, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(140690);
-    int j = paramViewGroup.getChildCount();
-    int i = paramMotionEvent.getActionIndex();
-    if (paramViewGroup.isMotionEventSplittingEnabled())
+    AppMethodBeat.i(226997);
+    if (paramJSONObject == null)
     {
-      i = 1 << paramMotionEvent.getPointerId(i);
-      j -= 1;
+      parama = new HashMap();
+      parama.put("errCode", Integer.valueOf(b.muo.errorCode));
+      paramk.i(paramInt, n("fail:" + b.muo.errorMsg, parama));
+      Log.e("MicroMsg.JsApiQueryTrafficCardInfo", "deviceData is null, invoke fail: [%s] ! with appId[%s] callbackId[%d]", new Object[] { b.muo.errorMsg, paramk.getAppId(), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(226997);
+      return;
     }
-    for (;;)
+    Object localObject = paramJSONObject.optString("issuerID");
+    int i = paramJSONObject.optInt("dataType");
+    try
     {
-      if (j < 0) {
-        break label142;
-      }
-      View localView = paramViewGroup.getChildAt(j);
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((AppBrandViewMotionCompat.cW(localView)) && (AppBrandViewMotionCompat.a(paramViewGroup, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
+      parama = parama.n((String)localObject, i);
+      Log.d("MicroMsg.JsApiQueryTrafficCardInfo", "queryTrafficCardInfoString: [%s]! ", new Object[] { parama });
+      parama = new JSONObject(parama);
+      localObject = new HashMap();
+      if (parama == null)
       {
-        a(paramViewGroup, paramMotionEvent, localView, i);
-        if (((localView instanceof f)) && (((f)localView).bjI()))
-        {
-          AppMethodBeat.o(140690);
-          return;
-          i = -1;
-          break;
+        ((Map)localObject).put("errCode", Integer.valueOf(b.mus.errorCode));
+        paramk.i(paramInt, n("fail:" + b.mus.errorMsg, (Map)localObject));
+        AppMethodBeat.o(226997);
+        return;
+      }
+    }
+    catch (Exception parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.JsApiQueryTrafficCardInfo", "call huawei remote interface fail: [%s] ! ", new Object[] { parama.getMessage() });
+        parama = null;
+      }
+      i = parama.optInt("resultCode");
+      if (i != b.mun.errorCode)
+      {
+        paramJSONObject = b.xq(i);
+        parama = paramJSONObject;
+        if (paramJSONObject == b.muQ) {
+          parama = b.muH;
         }
+        ((Map)localObject).put("errCode", Integer.valueOf(parama.errorCode));
+        paramk.i(paramInt, n("fail:" + parama.errorMsg, (Map)localObject));
+        Log.e("MicroMsg.JsApiQueryTrafficCardInfo", "Return code from huawei remote interface! with RetCode rechargeCard[%d] ", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(226997);
+        return;
       }
-      j -= 1;
+      ((Map)localObject).put("errCode", Integer.valueOf(b.mun.errorCode));
+      ((Map)localObject).put("data", parama.optJSONObject("data"));
+      paramk.i(paramInt, n(b.mun.errorMsg, (Map)localObject));
+      AppMethodBeat.o(226997);
     }
-    label142:
-    AppMethodBeat.o(140690);
-  }
-  
-  public static boolean a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent, View paramView, int paramInt)
-  {
-    AppMethodBeat.i(140691);
-    if (paramView == null)
-    {
-      ae.v("MicroMsg.ViewMotionHelper", "child is null.");
-      AppMethodBeat.o(140691);
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if (i == 3)
-    {
-      paramMotionEvent.setAction(3);
-      bool = paramView.dispatchTouchEvent(paramMotionEvent);
-      paramMotionEvent.setAction(i);
-      AppMethodBeat.o(140691);
-      return bool;
-    }
-    i = AppBrandViewMotionCompat.F(paramMotionEvent);
-    paramInt = i & paramInt;
-    if (paramInt == 0)
-    {
-      ae.v("MicroMsg.ViewMotionHelper", "newPointerIdBits is 0.");
-      AppMethodBeat.o(140691);
-      return false;
-    }
-    boolean bool = AppBrandViewMotionCompat.cX(paramView);
-    Object localObject;
-    if (paramInt == i)
-    {
-      if (bool)
-      {
-        float f1 = paramViewGroup.getScrollX() - paramView.getLeft();
-        float f2 = paramViewGroup.getScrollY() - paramView.getTop();
-        paramMotionEvent.offsetLocation(f1, f2);
-        bool = paramView.dispatchTouchEvent(paramMotionEvent);
-        paramMotionEvent.offsetLocation(-f1, -f2);
-        AppMethodBeat.o(140691);
-        return bool;
-      }
-      localObject = MotionEvent.obtain(paramMotionEvent);
-    }
-    for (;;)
-    {
-      ((MotionEvent)localObject).offsetLocation(paramViewGroup.getScrollX() - paramView.getLeft(), paramViewGroup.getScrollY() - paramView.getTop());
-      if (!bool) {
-        ((MotionEvent)localObject).transform(AppBrandViewMotionCompat.cY(paramView));
-      }
-      bool = paramView.dispatchTouchEvent((MotionEvent)localObject);
-      ((MotionEvent)localObject).recycle();
-      AppMethodBeat.o(140691);
-      return bool;
-      MotionEvent localMotionEvent = AppBrandViewMotionCompat.c(paramMotionEvent, paramInt);
-      localObject = localMotionEvent;
-      if (localMotionEvent == null) {
-        localObject = MotionEvent.obtain(paramMotionEvent);
-      }
-    }
-  }
-  
-  public static e.f cF(View paramView)
-  {
-    AppMethodBeat.i(140689);
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    paramView = new e.f(0, arrayOfInt[0], arrayOfInt[1]);
-    AppMethodBeat.o(140689);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.aa.e
  * JD-Core Version:    0.7.0.1
  */

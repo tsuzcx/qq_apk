@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.api.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Arrays;
+import kotlin.g.b.p;
+import kotlin.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/WeAppNativeExtraDataWeUse;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "showOrderEntrance", "", "redDotTypeList", "", "(I[I)V", "TAG", "", "getRedDotTypeList", "()[I", "getShowOrderEntrance", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toJsonString", "toString", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/WeAppNativeExtraDataWeUse;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "showOrderEntrance", "", "redDotTypeList", "", "(I[I)V", "TAG", "", "getRedDotTypeList", "()[I", "getShowOrderEntrance", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toJsonString", "toString", "plugin-appbrand-integration_release"})
 public final class k
   implements d
 {
   private final String TAG = "MicroMsg.AppBrand.WeAppNativeExtraDataWeUse";
-  private final int mSV = 1;
-  private final int[] mSW = null;
+  private final int ofY = 1;
+  private final int[] ofZ = null;
   
-  public final String aYO()
+  public final String bua()
   {
     AppMethodBeat.i(180714);
     try
     {
       localObject = new JSONObject();
-      ((JSONObject)localObject).put("showOrderEntrance", this.mSV);
-      if (this.mSW != null)
+      ((JSONObject)localObject).put("showOrderEntrance", this.ofY);
+      if (this.ofZ != null)
       {
         JSONArray localJSONArray = new JSONArray();
-        int[] arrayOfInt = this.mSW;
+        int[] arrayOfInt = this.ofZ;
         int j = arrayOfInt.length;
         int i = 0;
         while (i < j)
@@ -45,7 +45,7 @@ public final class k
       for (;;)
       {
         Object localObject;
-        ae.printErrStackTrace(this.TAG, localThrowable, "toJsonString", new Object[0]);
+        Log.printErrStackTrace(this.TAG, localThrowable, "toJsonString", new Object[0]);
         String str = "{}";
       }
     }
@@ -61,7 +61,7 @@ public final class k
       if ((paramObject instanceof k))
       {
         paramObject = (k)paramObject;
-        if ((this.mSV != paramObject.mSV) || (!p.i(this.mSW, paramObject.mSW))) {}
+        if ((this.ofY != paramObject.ofY) || (!p.j(this.ofZ, paramObject.ofZ))) {}
       }
     }
     else
@@ -76,8 +76,8 @@ public final class k
   public final int hashCode()
   {
     AppMethodBeat.i(180716);
-    int j = this.mSV;
-    int[] arrayOfInt = this.mSW;
+    int j = this.ofY;
+    int[] arrayOfInt = this.ofZ;
     if (arrayOfInt != null) {}
     for (int i = Arrays.hashCode(arrayOfInt);; i = 0)
     {
@@ -89,14 +89,14 @@ public final class k
   public final String toString()
   {
     AppMethodBeat.i(180715);
-    String str = aYO();
+    String str = bua();
     AppMethodBeat.o(180715);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.k
  * JD-Core Version:    0.7.0.1
  */

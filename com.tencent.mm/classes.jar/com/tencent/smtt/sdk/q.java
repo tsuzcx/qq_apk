@@ -47,60 +47,58 @@ class q
   
   static
   {
-    AppMethodBeat.i(192677);
+    AppMethodBeat.i(188148);
     d = null;
     i = new ReentrantLock();
     j = new ReentrantLock();
     l = null;
     a = new q.1();
     m = null;
-    Long[] arrayOfLong1 = { Long.valueOf(44006L), Long.valueOf(39094008L) };
-    Long[] arrayOfLong2 = { Long.valueOf(44030L), Long.valueOf(39094008L) };
-    n = new Long[][] { arrayOfLong1, { Long.valueOf(44005L), Long.valueOf(39094008L) }, { Long.valueOf(43910L), Long.valueOf(38917816L) }, { Long.valueOf(44027L), Long.valueOf(39094008L) }, { Long.valueOf(44028L), Long.valueOf(39094008L) }, { Long.valueOf(44029L), Long.valueOf(39094008L) }, arrayOfLong2, { Long.valueOf(44032L), Long.valueOf(39094008L) }, { Long.valueOf(44033L), Long.valueOf(39094008L) }, { Long.valueOf(44034L), Long.valueOf(39094008L) }, { Long.valueOf(43909L), Long.valueOf(38917816L) } };
+    n = new Long[][] { { Long.valueOf(44006L), Long.valueOf(39094008L) }, { Long.valueOf(44005L), Long.valueOf(39094008L) }, { Long.valueOf(43910L), Long.valueOf(38917816L) }, { Long.valueOf(44027L), Long.valueOf(39094008L) }, { Long.valueOf(44028L), Long.valueOf(39094008L) }, { Long.valueOf(44029L), Long.valueOf(39094008L) }, { Long.valueOf(44030L), Long.valueOf(39094008L) }, { Long.valueOf(44032L), Long.valueOf(39094008L) }, { Long.valueOf(44033L), Long.valueOf(39094008L) }, { Long.valueOf(44034L), Long.valueOf(39094008L) }, { Long.valueOf(43909L), Long.valueOf(38917816L) } };
     b = false;
     c = new FileFilter()
     {
       public final boolean accept(File paramAnonymousFile)
       {
-        AppMethodBeat.i(192595);
+        AppMethodBeat.i(188344);
         paramAnonymousFile = paramAnonymousFile.getName();
         if (paramAnonymousFile == null)
         {
-          AppMethodBeat.o(192595);
+          AppMethodBeat.o(188344);
           return false;
         }
         if (paramAnonymousFile.endsWith(".jar_is_first_load_dex_flag_file"))
         {
-          AppMethodBeat.o(192595);
+          AppMethodBeat.o(188344);
           return false;
         }
         if ((Build.VERSION.SDK_INT >= 21) && (paramAnonymousFile.endsWith(".dex")))
         {
-          AppMethodBeat.o(192595);
+          AppMethodBeat.o(188344);
           return false;
         }
         if ((Build.VERSION.SDK_INT >= 26) && (paramAnonymousFile.endsWith(".prof")))
         {
-          AppMethodBeat.o(192595);
+          AppMethodBeat.o(188344);
           return false;
         }
         if ((Build.VERSION.SDK_INT >= 26) && (paramAnonymousFile.equals("oat")))
         {
-          AppMethodBeat.o(192595);
+          AppMethodBeat.o(188344);
           return false;
         }
-        AppMethodBeat.o(192595);
+        AppMethodBeat.o(188344);
         return true;
       }
     };
     o = 0;
     p = false;
-    AppMethodBeat.o(192677);
+    AppMethodBeat.o(188148);
   }
   
   private q()
   {
-    AppMethodBeat.i(192599);
+    AppMethodBeat.i(188070);
     this.e = 0;
     this.h = false;
     this.k = false;
@@ -109,29 +107,29 @@ class q
       {
         public void handleMessage(Message paramAnonymousMessage)
         {
-          AppMethodBeat.i(192708);
+          AppMethodBeat.i(188302);
           QbSdk.setTBSInstallingStatus(true);
           switch (paramAnonymousMessage.what)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(192708);
+            AppMethodBeat.o(188302);
             return;
             TbsLog.i("TbsInstaller", "TbsInstaller--handleMessage--MSG_INSTALL_TBS_CORE");
             paramAnonymousMessage = (Object[])paramAnonymousMessage.obj;
             q.a(q.this, (Context)paramAnonymousMessage[0], (String)paramAnonymousMessage[1], ((Integer)paramAnonymousMessage[2]).intValue());
-            AppMethodBeat.o(192708);
+            AppMethodBeat.o(188302);
             return;
             TbsLog.i("TbsInstaller", "TbsInstaller--handleMessage--MSG_COPY_TBS_CORE");
             paramAnonymousMessage = (Object[])paramAnonymousMessage.obj;
             q.a(q.this, (Context)paramAnonymousMessage[0], (Context)paramAnonymousMessage[1], ((Integer)paramAnonymousMessage[2]).intValue());
-            AppMethodBeat.o(192708);
+            AppMethodBeat.o(188302);
             return;
             TbsLog.i("TbsInstaller", "TbsInstaller--handleMessage--MSG_INSTALL_TBS_CORE_EX");
             paramAnonymousMessage = (Object[])paramAnonymousMessage.obj;
             q.this.b((Context)paramAnonymousMessage[0], (Bundle)paramAnonymousMessage[1]);
-            AppMethodBeat.o(192708);
+            AppMethodBeat.o(188302);
             return;
             TbsLog.i("TbsInstaller", "TbsInstaller--handleMessage--MSG_UNZIP_TBS_CORE");
             Object[] arrayOfObject = (Object[])paramAnonymousMessage.obj;
@@ -142,17 +140,17 @@ class q
         }
       };
     }
-    AppMethodBeat.o(192599);
+    AppMethodBeat.o(188070);
   }
   
   private void A(Context paramContext)
   {
-    AppMethodBeat.i(192645);
+    AppMethodBeat.i(188116);
     TbsLog.i("TbsInstaller", "TbsInstaller--generateNewTbsCoreFromCopy");
     if (!x(paramContext))
     {
       TbsLog.i("TbsInstaller", "get rename fileLock#4 ## failed!");
-      AppMethodBeat.o(192645);
+      AppMethodBeat.o(188116);
       return;
     }
     for (;;)
@@ -181,7 +179,7 @@ class q
         continue;
       }
       h(paramContext);
-      AppMethodBeat.o(192645);
+      AppMethodBeat.o(188116);
       return;
       TbsLog.i("TbsInstaller", "TbsInstaller--generateNewTbsCoreFromCopy #1 deCoupleCoreVersion is " + i1 + " getTbsCoreShareDecoupleCoreVersion is " + a().i(paramContext) + " getTbsCoreInstalledVerInNolock is " + a().j(paramContext));
     }
@@ -189,22 +187,22 @@ class q
   
   private void B(Context paramContext)
   {
-    AppMethodBeat.i(192656);
+    AppMethodBeat.i(188127);
     TbsLog.i("TbsInstaller", "TbsInstaller--deleteOldCore");
     f.a(r(paramContext), false);
-    AppMethodBeat.o(192656);
+    AppMethodBeat.o(188127);
   }
   
   private void C(Context paramContext)
   {
-    AppMethodBeat.i(192657);
+    AppMethodBeat.i(188128);
     TbsLog.i("TbsInstaller", "TbsInstaller--renameShareDir");
     File localFile1 = f(paramContext, 0);
     File localFile2 = r(paramContext);
     if ((localFile1 == null) || (localFile2 == null))
     {
       TbsLog.i("TbsInstaller", "renameTbsCoreShareDir return,tmpTbsCoreUnzipDir=" + localFile1 + "tbsSharePath=" + localFile2);
-      AppMethodBeat.o(192657);
+      AppMethodBeat.o(188128);
       return;
     }
     boolean bool = localFile1.renameTo(localFile2);
@@ -219,7 +217,7 @@ class q
     for (;;)
     {
       g(paramContext, false);
-      AppMethodBeat.o(192657);
+      AppMethodBeat.o(188128);
       return;
       label152:
       TbsLogReport.getInstance(paramContext).setInstallErrorCode(231, " ");
@@ -228,39 +226,39 @@ class q
   
   private void D(Context paramContext)
   {
-    AppMethodBeat.i(192659);
+    AppMethodBeat.i(188130);
     TbsLog.i("TbsInstaller", "TbsInstaller--renameTbsCoreCopyDir");
     File localFile1 = f(paramContext, 1);
     File localFile2 = r(paramContext);
     if ((localFile1 == null) || (localFile2 == null))
     {
-      AppMethodBeat.o(192659);
+      AppMethodBeat.o(188130);
       return;
     }
     localFile1.renameTo(localFile2);
     g(paramContext, false);
-    AppMethodBeat.o(192659);
+    AppMethodBeat.o(188130);
   }
   
   private void E(Context paramContext)
   {
-    AppMethodBeat.i(192660);
+    AppMethodBeat.i(188131);
     TbsLog.i("TbsInstaller", "TbsInstaller--renameTbsTpatchCoreDir");
     File localFile1 = f(paramContext, 5);
     File localFile2 = r(paramContext);
     if ((localFile1 == null) || (localFile2 == null))
     {
-      AppMethodBeat.o(192660);
+      AppMethodBeat.o(188131);
       return;
     }
     localFile1.renameTo(localFile2);
     g(paramContext, false);
-    AppMethodBeat.o(192660);
+    AppMethodBeat.o(188131);
   }
   
   private void F(Context paramContext)
   {
-    AppMethodBeat.i(192661);
+    AppMethodBeat.i(188132);
     TbsLog.i("TbsInstaller", "TbsInstaller--clearNewTbsCore");
     File localFile = f(paramContext, 0);
     if (localFile != null) {
@@ -269,7 +267,7 @@ class q
     n.a(paramContext).c(0, 5);
     n.a(paramContext).c(-1);
     QbSdk.a(paramContext, "TbsInstaller::clearNewTbsCore forceSysWebViewInner!");
-    AppMethodBeat.o(192661);
+    AppMethodBeat.o(188132);
   }
   
   /* Error */
@@ -515,21 +513,21 @@ class q
   
   public static void a(Context paramContext)
   {
-    AppMethodBeat.i(192606);
+    AppMethodBeat.i(188077);
     if (!w(paramContext))
     {
       if (a(paramContext, "core_unzip_tmp"))
       {
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 417, new Throwable("TMP_TBS_UNZIP_FOLDER_NAME"));
         TbsLog.e("TbsInstaller", "TbsInstaller-UploadIfTempCoreExistConfError INFO_TEMP_CORE_EXIST_CONF_ERROR TMP_TBS_UNZIP_FOLDER_NAME");
-        AppMethodBeat.o(192606);
+        AppMethodBeat.o(188077);
         return;
       }
       if (a(paramContext, "core_share_backup_tmp"))
       {
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 417, new Throwable("TMP_BACKUP_TBSCORE_FOLDER_NAME"));
         TbsLog.e("TbsInstaller", "TbsInstaller-UploadIfTempCoreExistConfError INFO_TEMP_CORE_EXIST_CONF_ERROR TMP_BACKUP_TBSCORE_FOLDER_NAME");
-        AppMethodBeat.o(192606);
+        AppMethodBeat.o(188077);
         return;
       }
       if (a(paramContext, "core_copy_tmp"))
@@ -538,7 +536,7 @@ class q
         TbsLog.e("TbsInstaller", "TbsInstaller-UploadIfTempCoreExistConfError INFO_TEMP_CORE_EXIST_CONF_ERROR TMP_TBS_COPY_FOLDER_NAME");
       }
     }
-    AppMethodBeat.o(192606);
+    AppMethodBeat.o(188077);
   }
   
   /* Error */
@@ -1583,9 +1581,9 @@ class q
   
   private boolean a(Context paramContext, File paramFile)
   {
-    AppMethodBeat.i(192631);
+    AppMethodBeat.i(188102);
     boolean bool = a(paramContext, paramFile, false);
-    AppMethodBeat.o(192631);
+    AppMethodBeat.o(188102);
     return bool;
   }
   
@@ -1972,22 +1970,22 @@ class q
   
   static boolean a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192609);
+    AppMethodBeat.i(188080);
     paramContext = new File(QbSdk.getTbsFolderDir(paramContext), paramString);
     if (!paramContext.exists())
     {
       TbsLog.i("TbsInstaller", "TbsInstaller-isPrepareTbsCore, #1");
-      AppMethodBeat.o(192609);
+      AppMethodBeat.o(188080);
       return false;
     }
     if (!new File(paramContext, "tbs.conf").exists())
     {
       TbsLog.i("TbsInstaller", "TbsInstaller-isPrepareTbsCore, #2");
-      AppMethodBeat.o(192609);
+      AppMethodBeat.o(188080);
       return false;
     }
     TbsLog.i("TbsInstaller", "TbsInstaller-isPrepareTbsCore, #3");
-    AppMethodBeat.o(192609);
+    AppMethodBeat.o(188080);
     return true;
   }
   
@@ -3484,7 +3482,7 @@ class q
   private int c(Context paramContext, Bundle paramBundle)
   {
     i1 = 0;
-    AppMethodBeat.i(192625);
+    AppMethodBeat.i(188096);
     for (;;)
     {
       try
@@ -3503,7 +3501,7 @@ class q
         {
           TbsLog.i("TbsInstaller", "version not equals!!!" + i2 + "patchVersion:" + i3);
           TbsLogReport.getInstance(paramContext).setInstallErrorCode(240, "version=" + i2 + ",patchVersion=" + i3);
-          AppMethodBeat.o(192625);
+          AppMethodBeat.o(188096);
           return 1;
         }
         paramBundle = new File(paramBundle.getString("backup_apk"));
@@ -3513,7 +3511,7 @@ class q
           TbsLog.i("TbsInstaller", "tpatch sig not equals!!!" + paramBundle + "signature:" + (String)localObject);
           TbsLogReport.getInstance(paramContext).setInstallErrorCode(241, "version=" + i2 + ",patchVersion=" + i3);
           f.b(paramBundle);
-          AppMethodBeat.o(192625);
+          AppMethodBeat.o(188096);
           return 0;
         }
         if (!TbsDownloader.a(paramContext)) {
@@ -3537,7 +3535,7 @@ class q
         i1 = 1;
         continue;
       }
-      AppMethodBeat.o(192625);
+      AppMethodBeat.o(188096);
       return i1;
       TbsLog.i("TbsInstaller", "Tpatch success!");
       TbsLogReport.getInstance(paramContext).setInstallErrorCode(236, "");
@@ -3546,7 +3544,7 @@ class q
   
   private boolean c(Context paramContext, File paramFile)
   {
-    AppMethodBeat.i(192674);
+    AppMethodBeat.i(188145);
     try
     {
       Object localObject1 = new File(paramFile, "tbs_sdk_extension_dex.jar");
@@ -3557,16 +3555,16 @@ class q
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         TbsLogReport.getInstance(paramContext).setInstallErrorCode(226, "can not find oat command");
-        AppMethodBeat.o(192674);
+        AppMethodBeat.o(188145);
         return false;
       }
       paramFile = paramFile.listFiles(new FileFilter()
       {
         public boolean accept(File paramAnonymousFile)
         {
-          AppMethodBeat.i(192574);
+          AppMethodBeat.i(188321);
           boolean bool = paramAnonymousFile.getName().endsWith(".jar");
-          AppMethodBeat.o(192574);
+          AppMethodBeat.o(188321);
           return bool;
         }
       });
@@ -3581,13 +3579,13 @@ class q
         Runtime.getRuntime().exec((String)localObject2).waitFor();
         i1 += 1;
       }
-      AppMethodBeat.o(192674);
+      AppMethodBeat.o(188145);
       return true;
     }
     catch (Exception paramFile)
     {
       TbsLogReport.getInstance(paramContext).setInstallErrorCode(226, paramFile);
-      AppMethodBeat.o(192674);
+      AppMethodBeat.o(188145);
     }
     return false;
   }
@@ -3950,13 +3948,13 @@ class q
   
   private boolean e(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192628);
+    AppMethodBeat.i(188099);
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
       if (paramContext != null)
       {
-        AppMethodBeat.o(192628);
+        AppMethodBeat.o(188099);
         return true;
       }
     }
@@ -3966,7 +3964,7 @@ class q
       {
         paramContext = null;
       }
-      AppMethodBeat.o(192628);
+      AppMethodBeat.o(188099);
     }
     return false;
   }
@@ -4165,11 +4163,11 @@ class q
   
   private void g(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(192617);
+    AppMethodBeat.i(188088);
     if (paramContext == null)
     {
       TbsLogReport.getInstance(paramContext).setInstallErrorCode(225, "setTmpFolderCoreToRead context is null");
-      AppMethodBeat.o(192617);
+      AppMethodBeat.o(188088);
       return;
     }
     try
@@ -4181,24 +4179,24 @@ class q
           break label123;
         }
         localFile.createNewFile();
-        AppMethodBeat.o(192617);
+        AppMethodBeat.o(188088);
         return;
       }
     }
     catch (Exception localException)
     {
       TbsLogReport.getInstance(paramContext).setInstallErrorCode(225, "setTmpFolderCoreToRead Exception message is " + localException.getMessage() + " Exception cause is " + localException.getCause());
-      AppMethodBeat.o(192617);
+      AppMethodBeat.o(188088);
       return;
     }
     f.b(localException);
     label123:
-    AppMethodBeat.o(192617);
+    AppMethodBeat.o(188088);
   }
   
   private void h(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192624);
+    AppMethodBeat.i(188095);
     TbsLog.i("TbsInstaller", "proceedTpatchStatus,result=".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
@@ -4206,7 +4204,7 @@ class q
     for (;;)
     {
       QbSdk.setTBSInstallingStatus(false);
-      AppMethodBeat.o(192624);
+      AppMethodBeat.o(188095);
       return;
       if (TbsDownloader.a(paramContext))
       {
@@ -4223,20 +4221,20 @@ class q
   
   private void i(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192635);
+    AppMethodBeat.i(188106);
     File localFile1 = a().f(paramContext, paramInt);
     a().g(paramContext, true);
     File localFile2 = q(paramContext);
     f.a(localFile2, true);
     localFile1.renameTo(localFile2);
     TbsShareManager.b(paramContext);
-    AppMethodBeat.o(192635);
+    AppMethodBeat.o(188106);
   }
   
   private boolean j(Context paramContext, int paramInt)
   {
     int i3 = 0;
-    AppMethodBeat.i(192636);
+    AppMethodBeat.i(188107);
     TbsLog.i("TbsInstaller", "TbsInstaller-doTbsDexOpt start - dirMode: ".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
@@ -4244,7 +4242,7 @@ class q
     try
     {
       TbsLog.e("TbsInstaller", "doDexoptOrDexoat mode error: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(192636);
+      AppMethodBeat.o(188107);
       return false;
     }
     catch (Exception localException)
@@ -4263,7 +4261,7 @@ class q
     bool = TbsDownloader.a(paramContext);
     if (bool)
     {
-      AppMethodBeat.o(192636);
+      AppMethodBeat.o(188107);
       return true;
     }
     localFile = f(paramContext, 0);
@@ -4292,11 +4290,11 @@ class q
         }
         TbsLog.i("TbsInstaller", "doTbsDexOpt -- is ART mode, skip!");
         TbsLog.i("TbsInstaller", "TbsInstaller-doTbsDexOpt done");
-        AppMethodBeat.o(192636);
+        AppMethodBeat.o(188107);
         return true;
         TbsLog.i("TbsInstaller", "doTbsDexOpt -- doDexoptForDavlikVM");
         bool = b(paramContext, localFile);
-        AppMethodBeat.o(192636);
+        AppMethodBeat.o(188107);
         return bool;
       }
       if (Build.VERSION.SDK_INT != 23) {
@@ -4320,7 +4318,7 @@ class q
         continue;
       }
       TbsLog.i("TbsInstaller", "doTbsDexOpt -- doDexoatForArtVm");
-      AppMethodBeat.o(192636);
+      AppMethodBeat.o(188107);
       return true;
       localFile = f(paramContext, 1);
       continue;
@@ -4330,21 +4328,21 @@ class q
   
   static File t(Context paramContext)
   {
-    AppMethodBeat.i(192668);
+    AppMethodBeat.i(188139);
     paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "core_private");
     if ((!paramContext.isDirectory()) && (!paramContext.mkdir()))
     {
-      AppMethodBeat.o(192668);
+      AppMethodBeat.o(188139);
       return null;
     }
-    AppMethodBeat.o(192668);
+    AppMethodBeat.o(188139);
     return paramContext;
   }
   
   private int v(Context paramContext)
   {
     int i1 = 1;
-    AppMethodBeat.i(192612);
+    AppMethodBeat.i(188083);
     if (n.a(paramContext).d() == 1) {}
     boolean bool;
     for (;;)
@@ -4356,29 +4354,29 @@ class q
       if (!bool) {
         break;
       }
-      AppMethodBeat.o(192612);
+      AppMethodBeat.o(188083);
       return 234;
       i1 = 0;
     }
-    AppMethodBeat.o(192612);
+    AppMethodBeat.o(188083);
     return 221;
     label57:
     if (bool)
     {
-      AppMethodBeat.o(192612);
+      AppMethodBeat.o(188083);
       return 233;
     }
-    AppMethodBeat.o(192612);
+    AppMethodBeat.o(188083);
     return 200;
   }
   
   private static boolean w(Context paramContext)
   {
-    AppMethodBeat.i(192616);
+    AppMethodBeat.i(188087);
     if (paramContext == null)
     {
       TbsLog.i("TbsInstaller", "TbsInstaller-getTmpFolderCoreToRead, #1");
-      AppMethodBeat.o(192616);
+      AppMethodBeat.o(188087);
       return true;
     }
     try
@@ -4386,24 +4384,24 @@ class q
       if (new File(QbSdk.getTbsFolderDir(paramContext), "tmp_folder_core_to_read.conf").exists())
       {
         TbsLog.i("TbsInstaller", "TbsInstaller-getTmpFolderCoreToRead, #2");
-        AppMethodBeat.o(192616);
+        AppMethodBeat.o(188087);
         return true;
       }
       TbsLog.i("TbsInstaller", "TbsInstaller-getTmpFolderCoreToRead, #3");
-      AppMethodBeat.o(192616);
+      AppMethodBeat.o(188087);
       return false;
     }
     catch (Exception paramContext)
     {
       TbsLog.i("TbsInstaller", "TbsInstaller-getTmpFolderCoreToRead, #4");
-      AppMethodBeat.o(192616);
+      AppMethodBeat.o(188087);
     }
     return true;
   }
   
   private boolean x(Context paramContext)
   {
-    AppMethodBeat.i(192642);
+    AppMethodBeat.i(188113);
     TbsLog.i("TbsInstaller", "Tbsinstaller getTbsCoreRenameFileLock #1 ");
     try
     {
@@ -4416,7 +4414,7 @@ class q
           break label88;
         }
         TbsLog.i("TbsInstaller", "getTbsCoreRenameFileLock## failed!");
-        AppMethodBeat.o(192642);
+        AppMethodBeat.o(188113);
         return false;
       }
     }
@@ -4430,19 +4428,19 @@ class q
       }
       label88:
       TbsLog.i("TbsInstaller", "Tbsinstaller getTbsCoreRenameFileLock true ");
-      AppMethodBeat.o(192642);
+      AppMethodBeat.o(188113);
     }
     return true;
   }
   
   private void y(Context paramContext)
   {
-    AppMethodBeat.i(192643);
+    AppMethodBeat.i(188114);
     TbsLog.i("TbsInstaller", "TbsInstaller--generateNewTbsCoreFromUnzip");
     if (!x(paramContext))
     {
       TbsLog.i("TbsInstaller", "get rename fileLock#4 ## failed!");
-      AppMethodBeat.o(192643);
+      AppMethodBeat.o(188114);
       return;
     }
     for (;;)
@@ -4489,7 +4487,7 @@ class q
       a.set(Integer.valueOf(0));
       o = 0;
       h(paramContext);
-      AppMethodBeat.o(192643);
+      AppMethodBeat.o(188114);
       return;
       TbsLog.i("TbsInstaller", "is thirdapp and not chmod");
     }
@@ -4497,12 +4495,12 @@ class q
   
   private void z(Context paramContext)
   {
-    AppMethodBeat.i(192644);
+    AppMethodBeat.i(188115);
     TbsLog.i("TbsInstaller", "TbsInstaller--generateNewTbsCoreFromTpatch");
     if (!x(paramContext))
     {
       TbsLog.i("TbsInstaller", "get rename fileLock#4 ## failed!");
-      AppMethodBeat.o(192644);
+      AppMethodBeat.o(188115);
       return;
     }
     try
@@ -4514,7 +4512,7 @@ class q
       n.a(paramContext).a("tpatch_num", 0);
       a.set(Integer.valueOf(0));
       h(paramContext);
-      AppMethodBeat.o(192644);
+      AppMethodBeat.o(188115);
       return;
     }
     catch (Exception localException)
@@ -4793,18 +4791,18 @@ class q
   
   public int a(boolean paramBoolean, Context paramContext)
   {
-    AppMethodBeat.i(192601);
+    AppMethodBeat.i(188072);
     if ((paramBoolean) || (((Integer)a.get()).intValue() <= 0)) {
       a.set(Integer.valueOf(j(paramContext)));
     }
     int i1 = ((Integer)a.get()).intValue();
-    AppMethodBeat.o(192601);
+    AppMethodBeat.o(188072);
     return i1;
   }
   
   File a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(192670);
+    AppMethodBeat.i(188141);
     File localFile = QbSdk.getTbsFolderDir(paramContext);
     paramContext = "";
     switch (paramInt)
@@ -4824,7 +4822,7 @@ class q
         break label212;
       }
       TbsLog.i("TbsInstaller", "getCoreDir,mkdir false");
-      AppMethodBeat.o(192670);
+      AppMethodBeat.o(188141);
       return null;
       paramContext = "core_unzip_tmp";
       continue;
@@ -4841,55 +4839,55 @@ class q
       paramContext = "tpatch_decouple_tmp";
     }
     TbsLog.i("TbsInstaller", "getCoreDir,no need mkdir");
-    AppMethodBeat.o(192670);
+    AppMethodBeat.o(188141);
     return null;
     label212:
-    AppMethodBeat.o(192670);
+    AppMethodBeat.o(188141);
     return paramContext;
   }
   
   public void a(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192614);
+    AppMethodBeat.i(188085);
     g(paramContext, true);
     n.a(paramContext).c(paramInt, 2);
-    AppMethodBeat.o(192614);
+    AppMethodBeat.o(188085);
   }
   
   void a(Context paramContext, Bundle paramBundle)
   {
-    AppMethodBeat.i(192621);
+    AppMethodBeat.i(188092);
     if ((paramBundle == null) || (paramContext == null))
     {
-      AppMethodBeat.o(192621);
+      AppMethodBeat.o(188092);
       return;
     }
     Message localMessage = new Message();
     localMessage.what = 3;
     localMessage.obj = new Object[] { paramContext, paramBundle };
     m.sendMessage(localMessage);
-    AppMethodBeat.o(192621);
+    AppMethodBeat.o(188092);
   }
   
   void a(Context paramContext, File paramFile, int paramInt)
   {
-    AppMethodBeat.i(192622);
+    AppMethodBeat.i(188093);
     TbsLog.i("TbsInstaller", "unzipTbsCoreToThirdAppTmp,ctx=" + paramContext + "File=" + paramFile + "coreVersion=" + paramInt);
     if ((paramFile == null) || (paramContext == null))
     {
-      AppMethodBeat.o(192622);
+      AppMethodBeat.o(188093);
       return;
     }
     Message localMessage = new Message();
     localMessage.what = 4;
     localMessage.obj = new Object[] { paramContext, paramFile, Integer.valueOf(paramInt) };
     m.sendMessage(localMessage);
-    AppMethodBeat.o(192622);
+    AppMethodBeat.o(188093);
   }
   
   void a(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(192610);
+    AppMethodBeat.i(188081);
     TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCore tbsApkPath=".concat(String.valueOf(paramString)));
     TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCore tbsCoreTargetVer=".concat(String.valueOf(paramInt)));
     TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentProcessName=" + paramContext.getApplicationInfo().processName);
@@ -4899,27 +4897,39 @@ class q
     localMessage.what = 1;
     localMessage.obj = new Object[] { paramContext, paramString, Integer.valueOf(paramInt) };
     m.sendMessage(localMessage);
-    AppMethodBeat.o(192610);
+    AppMethodBeat.o(188081);
   }
   
   void a(Context paramContext, boolean paramBoolean)
   {
     int i5 = 0;
-    AppMethodBeat.i(192605);
-    if (paramBoolean) {
-      this.k = true;
-    }
-    TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentProcessName=" + paramContext.getApplicationInfo().processName);
-    TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentProcessId=" + android.os.Process.myPid());
-    TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentThreadName=" + Thread.currentThread().getName());
-    if (!u(paramContext))
+    AppMethodBeat.i(188076);
+    if (paramBoolean) {}
+    String str;
+    int i4;
+    int i3;
+    int i1;
+    int i2;
+    try
     {
-      AppMethodBeat.o(192605);
-      return;
+      this.k = true;
+      TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentProcessName=" + paramContext.getApplicationInfo().processName);
+      TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentProcessId=" + android.os.Process.myPid());
+      TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentThreadName=" + Thread.currentThread().getName());
+      paramBoolean = u(paramContext);
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(188076);
+        return;
+      }
+      str = null;
+      paramBoolean = i.tryLock();
+      if (!paramBoolean) {
+        break label438;
+      }
+      i6 = TbsDownloadConfig.getInstance(paramContext).mPreferences.getInt("tbs_responsecode", 0);
     }
-    String str = null;
-    if (i.tryLock()) {}
-    for (;;)
+    catch (Throwable paramContext)
     {
       try
       {
@@ -4935,22 +4945,27 @@ class q
         TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore tbsApkPath=".concat(String.valueOf(str)));
         TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore tbsCoreCopyVer=".concat(String.valueOf(i1)));
         TbsLog.i("TbsInstaller", "TbsInstaller-continueInstallTbsCore copyStatus=".concat(String.valueOf(i2)));
-        if (TbsShareManager.isThirdPartyApp(paramContext))
-        {
-          c(paramContext, TbsShareManager.a(paramContext, false));
-          AppMethodBeat.o(192605);
-          return;
+        if (!TbsShareManager.isThirdPartyApp(paramContext)) {
+          break label317;
         }
+        c(paramContext, TbsShareManager.a(paramContext, false));
+        AppMethodBeat.o(188076);
+        return;
       }
       finally
       {
         i.unlock();
-        AppMethodBeat.o(192605);
+        AppMethodBeat.o(188076);
       }
-      int i6 = TbsDownloadConfig.getInstance(paramContext).mPreferences.getInt("tbs_responsecode", 0);
-      if ((i6 == 1) || (i6 == 2) || (i6 == 4)) {
-        i5 = 1;
-      }
+      paramContext = paramContext;
+      AppMethodBeat.o(188076);
+      return;
+    }
+    label317:
+    int i6;
+    if ((i6 != 1) && (i6 != 2) && (i6 != 4)) {}
+    for (;;)
+    {
       if ((i5 == 0) && (i6 != 0) && (i6 != 5))
       {
         Bundle localBundle = new Bundle();
@@ -4963,12 +4978,15 @@ class q
       if (i2 == 0) {
         b(paramContext, i1);
       }
-      AppMethodBeat.o(192605);
+      AppMethodBeat.o(188076);
       return;
-      int i1 = 0;
-      int i2 = -1;
-      int i3 = 0;
-      int i4 = -1;
+      label438:
+      i1 = 0;
+      i2 = -1;
+      i3 = 0;
+      i4 = -1;
+      break;
+      i5 = 1;
     }
   }
   
@@ -5027,7 +5045,7 @@ class q
   
   Context b(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192629);
+    AppMethodBeat.i(188100);
     try
     {
       if (paramContext.getPackageName() != paramString)
@@ -5035,26 +5053,26 @@ class q
         boolean bool = TbsPVConfig.getInstance(paramContext).isEnableNoCoreGray();
         if (bool)
         {
-          AppMethodBeat.o(192629);
+          AppMethodBeat.o(188100);
           return null;
         }
       }
       paramContext = paramContext.createPackageContext(paramString, 2);
-      AppMethodBeat.o(192629);
+      AppMethodBeat.o(188100);
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(192629);
+      AppMethodBeat.o(188100);
     }
     return null;
   }
   
   File b(Context paramContext1, Context paramContext2)
   {
-    AppMethodBeat.i(192663);
+    AppMethodBeat.i(188134);
     paramContext1 = TbsOneGreyInfoHelper.getCoreDir(paramContext1);
-    AppMethodBeat.o(192663);
+    AppMethodBeat.o(188134);
     return paramContext1;
   }
   
@@ -5138,11 +5156,11 @@ class q
     //   95: invokestatic 548	com/tencent/smtt/utils/f:b	(Landroid/content/Context;)Z
     //   98: ifne +73 -> 171
     //   101: invokestatic 553	com/tencent/smtt/utils/q:a	()J
-    //   104: lstore 7
+    //   104: lstore 10
     //   106: aload_1
     //   107: invokestatic 196	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
     //   110: invokevirtual 556	com/tencent/smtt/sdk/TbsDownloadConfig:getDownloadMinFreeSpace	()J
-    //   113: lstore 9
+    //   113: lstore 8
     //   115: aload_1
     //   116: invokestatic 258	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
     //   119: sipush 210
@@ -5150,11 +5168,11 @@ class q
     //   125: dup
     //   126: ldc_w 1512
     //   129: invokespecial 238	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   132: lload 7
+    //   132: lload 10
     //   134: invokevirtual 561	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   137: ldc_w 563
     //   140: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: lload 9
+    //   143: lload 8
     //   145: invokevirtual 561	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   148: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   151: invokevirtual 265	com/tencent/smtt/sdk/TbsLogReport:setInstallErrorCode	(ILjava/lang/String;)V
@@ -5178,14 +5196,14 @@ class q
     //   195: return
     //   196: getstatic 67	com/tencent/smtt/sdk/q:j	Ljava/util/concurrent/locks/Lock;
     //   199: invokeinterface 507 1 0
-    //   204: istore 11
+    //   204: istore 7
     //   206: ldc 151
     //   208: ldc_w 1514
-    //   211: iload 11
+    //   211: iload 7
     //   213: invokestatic 304	java/lang/String:valueOf	(Z)Ljava/lang/String;
     //   216: invokevirtual 308	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   219: invokestatic 158	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   222: iload 11
+    //   222: iload 7
     //   224: ifeq +1751 -> 1975
     //   227: aload_1
     //   228: invokestatic 196	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
@@ -5422,7 +5440,7 @@ class q
     //   723: aload_2
     //   724: ldc_w 1535
     //   727: invokevirtual 1047	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   730: astore 16
+    //   730: astore 17
     //   732: aload 15
     //   734: astore 13
     //   736: aload 12
@@ -5430,7 +5448,7 @@ class q
     //   740: aload_2
     //   741: ldc_w 1044
     //   744: invokevirtual 1047	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   747: astore 17
+    //   747: astore 16
     //   749: aload 15
     //   751: astore 13
     //   753: aload 12
@@ -5443,7 +5461,7 @@ class q
     //   767: astore 13
     //   769: aload 12
     //   771: astore 14
-    //   773: aload 16
+    //   773: aload 17
     //   775: invokestatic 1085	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   778: ifne +23 -> 801
     //   781: aload 15
@@ -5452,14 +5470,14 @@ class q
     //   787: astore 14
     //   789: new 293	java/io/File
     //   792: dup
-    //   793: aload 16
+    //   793: aload 17
     //   795: invokespecial 366	java/io/File:<init>	(Ljava/lang/String;)V
     //   798: invokestatic 755	com/tencent/smtt/utils/f:b	(Ljava/io/File;)V
     //   801: aload 15
     //   803: astore 13
     //   805: aload 12
     //   807: astore 14
-    //   809: aload 17
+    //   809: aload 16
     //   811: invokestatic 1085	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   814: ifne +23 -> 837
     //   817: aload 15
@@ -5468,7 +5486,7 @@ class q
     //   823: astore 14
     //   825: new 293	java/io/File
     //   828: dup
-    //   829: aload 17
+    //   829: aload 16
     //   831: invokespecial 366	java/io/File:<init>	(Ljava/lang/String;)V
     //   834: invokestatic 755	com/tencent/smtt/utils/f:b	(Ljava/io/File;)V
     //   837: aload 15
@@ -6022,9 +6040,9 @@ class q
     //   303	1744	4	i2	int
     //   243	1489	5	i3	int
     //   314	19	6	i4	int
-    //   104	29	7	l1	long
-    //   113	31	9	l2	long
-    //   204	19	11	bool	boolean
+    //   204	19	7	bool	boolean
+    //   113	31	8	l1	long
+    //   104	29	10	l2	long
     //   255	1780	12	localObject1	Object
     //   262	1789	13	localObject2	Object
     //   266	1759	14	localObject3	Object
@@ -6105,19 +6123,19 @@ class q
   
   void b(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(192608);
+    AppMethodBeat.i(188079);
     TbsLog.v("TbsInstaller", "TbsInstaller-continueInstallTbsCore currentProcessName=" + paramContext.getApplicationInfo().processName);
     TbsLog.v("TbsInstaller", "TbsInstaller-installTbsCoreIfNeeded currentProcessId=" + android.os.Process.myPid());
     TbsLog.v("TbsInstaller", "TbsInstaller-installTbsCoreIfNeeded currentThreadName=" + Thread.currentThread().getName());
     if (QbSdk.b)
     {
-      AppMethodBeat.o(192608);
+      AppMethodBeat.o(188079);
       return;
     }
     if (Build.VERSION.SDK_INT < 8)
     {
       TbsLog.e("TbsInstaller", "android version < 2.1 no need install X5 core", true);
-      AppMethodBeat.o(192608);
+      AppMethodBeat.o(188079);
       return;
     }
     TbsLog.i("TbsInstaller", "Tbsinstaller installTbsCoreIfNeeded #1 ");
@@ -6137,32 +6155,32 @@ class q
         if ((a(paramContext, "core_unzip_tmp")) && (e(paramContext, paramBoolean)))
         {
           TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCoreIfNeeded, enableTbsCoreFromUnzip!!", true);
-          AppMethodBeat.o(192608);
+          AppMethodBeat.o(188079);
           return;
         }
         if ((a(paramContext, "core_share_backup_tmp")) && (f(paramContext, paramBoolean)))
         {
           TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCoreIfNeeded, enableTbsCoreFromBackup!!", true);
-          AppMethodBeat.o(192608);
+          AppMethodBeat.o(188079);
           return;
         }
         if ((a(paramContext, "core_copy_tmp")) && (d(paramContext, paramBoolean)))
         {
           TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCoreIfNeeded, enableTbsCoreFromCopy!!", true);
-          AppMethodBeat.o(192608);
+          AppMethodBeat.o(188079);
           return;
         }
         if ((a(paramContext, "tpatch_tmp")) && (c(paramContext, paramBoolean)))
         {
           TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCoreIfNeeded, enableTbsCoreFromTpatch!!", true);
-          AppMethodBeat.o(192608);
+          AppMethodBeat.o(188079);
           return;
         }
         TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCoreIfNeeded, error !!", true);
-        AppMethodBeat.o(192608);
+        AppMethodBeat.o(188079);
         return;
       }
-      AppMethodBeat.o(192608);
+      AppMethodBeat.o(188079);
       return;
     }
     catch (Throwable localThrowable)
@@ -6173,27 +6191,27 @@ class q
   
   public boolean b(Context paramContext)
   {
-    AppMethodBeat.i(192607);
+    AppMethodBeat.i(188078);
     if (w(paramContext))
     {
       if ((a(paramContext, "core_unzip_tmp")) || (a(paramContext, "core_share_backup_tmp")) || (a(paramContext, "core_copy_tmp")) || (a(paramContext, "tpatch_tmp")))
       {
-        AppMethodBeat.o(192607);
+        AppMethodBeat.o(188078);
         return true;
       }
-      AppMethodBeat.o(192607);
+      AppMethodBeat.o(188078);
       return false;
     }
-    AppMethodBeat.o(192607);
+    AppMethodBeat.o(188078);
     return false;
   }
   
   boolean b(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192620);
+    AppMethodBeat.i(188091);
     if (TbsDownloader.getOverSea(paramContext))
     {
-      AppMethodBeat.o(192620);
+      AppMethodBeat.o(188091);
       return false;
     }
     TbsLog.i("TbsInstaller", "TbsInstaller-installLocalTbsCore targetTbsCoreVer=".concat(String.valueOf(paramInt)));
@@ -6207,75 +6225,75 @@ class q
       localMessage.what = 2;
       localMessage.obj = new Object[] { localContext, paramContext, Integer.valueOf(paramInt) };
       m.sendMessage(localMessage);
-      AppMethodBeat.o(192620);
+      AppMethodBeat.o(188091);
       return true;
     }
     TbsLog.i("TbsInstaller", "TbsInstaller--installLocalTbsCore copy from null");
-    AppMethodBeat.o(192620);
+    AppMethodBeat.o(188091);
     return false;
   }
   
   public boolean b(Context paramContext, File paramFile, int paramInt)
   {
-    AppMethodBeat.i(192630);
+    AppMethodBeat.i(188101);
     TbsLog.i("TbsInstaller", "unzipTbsCoreToThirdAppTmpInThread #1");
     boolean bool = a(paramContext, paramFile, false);
     TbsLog.i("TbsInstaller", "unzipTbsCoreToThirdAppTmpInThread result is ".concat(String.valueOf(bool)));
     if (bool) {
       a().a(paramContext, paramInt);
     }
-    AppMethodBeat.o(192630);
+    AppMethodBeat.o(188101);
     return bool;
   }
   
   int c(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192640);
+    AppMethodBeat.i(188111);
     paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 0);
     if (paramContext != null)
     {
       int i1 = paramContext.versionCode;
-      AppMethodBeat.o(192640);
+      AppMethodBeat.o(188111);
       return i1;
     }
-    AppMethodBeat.o(192640);
+    AppMethodBeat.o(188111);
     return 0;
   }
   
   File c(Context paramContext1, Context paramContext2)
   {
-    AppMethodBeat.i(192665);
+    AppMethodBeat.i(188136);
     paramContext2 = new File(QbSdk.getTbsFolderDir(paramContext2), "core_share_decouple");
     if ((!paramContext2.isDirectory()) && ((paramContext1 == null) || (!TbsShareManager.isThirdPartyApp(paramContext1))) && (!paramContext2.mkdir()))
     {
-      AppMethodBeat.o(192665);
+      AppMethodBeat.o(188136);
       return null;
     }
-    AppMethodBeat.o(192665);
+    AppMethodBeat.o(188136);
     return paramContext2;
   }
   
   public void c(Context paramContext)
   {
-    AppMethodBeat.i(192613);
+    AppMethodBeat.i(188084);
     g(paramContext, true);
     n.a(paramContext).c(i(paramContext), 2);
-    AppMethodBeat.o(192613);
+    AppMethodBeat.o(188084);
   }
   
   void c(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192626);
+    AppMethodBeat.i(188097);
     TbsLog.i("TbsInstaller", "TbsInstaller-installTbsCoreForThirdPartyApp");
     if (paramInt <= 0)
     {
-      AppMethodBeat.o(192626);
+      AppMethodBeat.o(188097);
       return;
     }
     int i1 = j(paramContext);
     if (i1 == paramInt)
     {
-      AppMethodBeat.o(192626);
+      AppMethodBeat.o(188097);
       return;
     }
     Context localContext = TbsShareManager.e(paramContext);
@@ -6283,7 +6301,7 @@ class q
     {
       TbsLog.i("TbsInstaller", "TbsInstaller--quickDexOptForThirdPartyApp hostContext != null");
       a(paramContext, localContext);
-      AppMethodBeat.o(192626);
+      AppMethodBeat.o(188097);
       return;
     }
     if (i1 <= 0)
@@ -6291,16 +6309,16 @@ class q
       TbsLog.i("TbsInstaller", "TbsInstaller--installTbsCoreForThirdPartyApp hostContext == null");
       QbSdk.a(paramContext, "TbsInstaller::installTbsCoreForThirdPartyApp forceSysWebViewInner #2");
     }
-    AppMethodBeat.o(192626);
+    AppMethodBeat.o(188097);
   }
   
   public Context d(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192639);
+    AppMethodBeat.i(188110);
     TbsLog.i("TbsInstaller", "TbsInstaller--getTbsCoreHostContext tbsCoreTargetVer=".concat(String.valueOf(paramInt)));
     if (paramInt <= 0)
     {
-      AppMethodBeat.o(192639);
+      AppMethodBeat.o(188110);
       return null;
     }
     String[] arrayOfString = TbsShareManager.getCoreProviderAppList();
@@ -6329,10 +6347,10 @@ class q
         TbsLog.i("TbsInstaller", "TbsInstaller-getTbsCoreHostContext hostTbsCoreVer=".concat(String.valueOf(i2)));
       } while ((i2 == 0) || (i2 != paramInt));
       TbsLog.i("TbsInstaller", "TbsInstaller-getTbsCoreHostContext targetApp=" + arrayOfString[i1]);
-      AppMethodBeat.o(192639);
+      AppMethodBeat.o(188110);
       return localContext;
     }
-    AppMethodBeat.o(192639);
+    AppMethodBeat.o(188110);
     return null;
   }
   
@@ -6614,9 +6632,9 @@ class q
   
   int e(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192647);
+    AppMethodBeat.i(188118);
     paramInt = a(f(paramContext, paramInt));
-    AppMethodBeat.o(192647);
+    AppMethodBeat.o(188118);
     return paramInt;
   }
   
@@ -6796,15 +6814,15 @@ class q
   
   File f(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192669);
+    AppMethodBeat.i(188140);
     paramContext = a(paramContext, paramInt, true);
-    AppMethodBeat.o(192669);
+    AppMethodBeat.o(188140);
     return paramContext;
   }
   
   public boolean f(Context paramContext)
   {
-    AppMethodBeat.i(192634);
+    AppMethodBeat.i(188105);
     for (;;)
     {
       int i1;
@@ -6827,13 +6845,13 @@ class q
         else
         {
           i(paramContext, 2);
-          AppMethodBeat.o(192634);
+          AppMethodBeat.o(188105);
           return true;
         }
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(192634);
+        AppMethodBeat.o(188105);
         return false;
       }
       i1 += 1;
@@ -6842,10 +6860,10 @@ class q
   
   boolean g(Context paramContext)
   {
-    AppMethodBeat.i(192638);
+    AppMethodBeat.i(188109);
     if (TbsShareManager.getHostCorePathAppDefined() != null)
     {
-      AppMethodBeat.o(192638);
+      AppMethodBeat.o(188109);
       return true;
     }
     try
@@ -6857,7 +6875,7 @@ class q
         bool = localSignature.toCharsString().equals("3082023f308201a8a00302010202044c46914a300d06092a864886f70d01010505003064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f301e170d3130303732313036313835305a170d3430303731333036313835305a3064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f30819f300d06092a864886f70d010101050003818d0030818902818100c209077044bd0d63ea00ede5b839914cabcc912a87f0f8b390877e0f7a2583f0d5933443c40431c35a4433bc4c965800141961adc44c9625b1d321385221fd097e5bdc2f44a1840d643ab59dc070cf6c4b4b4d98bed5cbb8046e0a7078ae134da107cdf2bfc9b440fe5cb2f7549b44b73202cc6f7c2c55b8cfb0d333a021f01f0203010001300d06092a864886f70d010105050003818100b007db9922774ef4ccfee81ba514a8d57c410257e7a2eba64bfa17c9e690da08106d32f637ac41fbc9f205176c71bde238c872c3ee2f8313502bee44c80288ea4ef377a6f2cdfe4d3653c145c4acfedbfbadea23b559d41980cc3cdd35d79a68240693739aabf5c5ed26148756cf88264226de394c8a24ac35b712b120d4d23a");
         if (!bool)
         {
-          AppMethodBeat.o(192638);
+          AppMethodBeat.o(188109);
           return false;
         }
       }
@@ -6866,7 +6884,7 @@ class q
         bool = localSignature.toCharsString().equals("308202eb30820254a00302010202044d36f7a4300d06092a864886f70d01010505003081b9310b300906035504061302383631123010060355040813094775616e67646f6e673111300f060355040713085368656e7a68656e31353033060355040a132c54656e63656e7420546563686e6f6c6f6779285368656e7a68656e2920436f6d70616e79204c696d69746564313a3038060355040b133154656e63656e74204775616e677a686f7520526573656172636820616e6420446576656c6f706d656e742043656e7465723110300e0603550403130754656e63656e74301e170d3131303131393134333933325a170d3431303131313134333933325a3081b9310b300906035504061302383631123010060355040813094775616e67646f6e673111300f060355040713085368656e7a68656e31353033060355040a132c54656e63656e7420546563686e6f6c6f6779285368656e7a68656e2920436f6d70616e79204c696d69746564313a3038060355040b133154656e63656e74204775616e677a686f7520526573656172636820616e6420446576656c6f706d656e742043656e7465723110300e0603550403130754656e63656e7430819f300d06092a864886f70d010101050003818d0030818902818100c05f34b231b083fb1323670bfbe7bdab40c0c0a6efc87ef2072a1ff0d60cc67c8edb0d0847f210bea6cbfaa241be70c86daf56be08b723c859e52428a064555d80db448cdcacc1aea2501eba06f8bad12a4fa49d85cacd7abeb68945a5cb5e061629b52e3254c373550ee4e40cb7c8ae6f7a8151ccd8df582d446f39ae0c5e930203010001300d06092a864886f70d0101050500038181009c8d9d7f2f908c42081b4c764c377109a8b2c70582422125ce545842d5f520aea69550b6bd8bfd94e987b75a3077eb04ad341f481aac266e89d3864456e69fba13df018acdc168b9a19dfd7ad9d9cc6f6ace57c746515f71234df3a053e33ba93ece5cd0fc15f3e389a3f365588a9fcb439e069d3629cd7732a13fff7b891499");
         if (!bool)
         {
-          AppMethodBeat.o(192638);
+          AppMethodBeat.o(188109);
           return false;
         }
       }
@@ -6875,7 +6893,7 @@ class q
         bool = localSignature.toCharsString().equals("30820253308201bca00302010202044bbb0361300d06092a864886f70d0101050500306d310e300c060355040613054368696e61310f300d06035504080c06e58c97e4baac310f300d06035504070c06e58c97e4baac310f300d060355040a0c06e885bee8aeaf311b3019060355040b0c12e697a0e7babfe4b89ae58aa1e7b3bbe7bb9f310b30090603550403130251513020170d3130303430363039343831375a180f32323834303132303039343831375a306d310e300c060355040613054368696e61310f300d06035504080c06e58c97e4baac310f300d06035504070c06e58c97e4baac310f300d060355040a0c06e885bee8aeaf311b3019060355040b0c12e697a0e7babfe4b89ae58aa1e7b3bbe7bb9f310b300906035504031302515130819f300d06092a864886f70d010101050003818d0030818902818100a15e9756216f694c5915e0b529095254367c4e64faeff07ae13488d946615a58ddc31a415f717d019edc6d30b9603d3e2a7b3de0ab7e0cf52dfee39373bc472fa997027d798d59f81d525a69ecf156e885fd1e2790924386b2230cc90e3b7adc95603ddcf4c40bdc72f22db0f216a99c371d3bf89cba6578c60699e8a0d536950203010001300d06092a864886f70d01010505000381810094a9b80e80691645dd42d6611775a855f71bcd4d77cb60a8e29404035a5e00b21bcc5d4a562482126bd91b6b0e50709377ceb9ef8c2efd12cc8b16afd9a159f350bb270b14204ff065d843832720702e28b41491fbc3a205f5f2f42526d67f17614d8a974de6487b2c866efede3b4e49a0f916baa3c1336fd2ee1b1629652049");
         if (!bool)
         {
-          AppMethodBeat.o(192638);
+          AppMethodBeat.o(188109);
           return false;
         }
       }
@@ -6884,7 +6902,7 @@ class q
         bool = localSignature.toCharsString().equals("3082023f308201a8a00302010202044c46914a300d06092a864886f70d01010505003064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f301e170d3130303732313036313835305a170d3430303731333036313835305a3064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f30819f300d06092a864886f70d010101050003818d0030818902818100c209077044bd0d63ea00ede5b839914cabcc912a87f0f8b390877e0f7a2583f0d5933443c40431c35a4433bc4c965800141961adc44c9625b1d321385221fd097e5bdc2f44a1840d643ab59dc070cf6c4b4b4d98bed5cbb8046e0a7078ae134da107cdf2bfc9b440fe5cb2f7549b44b73202cc6f7c2c55b8cfb0d333a021f01f0203010001300d06092a864886f70d010105050003818100b007db9922774ef4ccfee81ba514a8d57c410257e7a2eba64bfa17c9e690da08106d32f637ac41fbc9f205176c71bde238c872c3ee2f8313502bee44c80288ea4ef377a6f2cdfe4d3653c145c4acfedbfbadea23b559d41980cc3cdd35d79a68240693739aabf5c5ed26148756cf88264226de394c8a24ac35b712b120d4d23a");
         if (!bool)
         {
-          AppMethodBeat.o(192638);
+          AppMethodBeat.o(188109);
           return false;
         }
       }
@@ -6893,7 +6911,7 @@ class q
         bool = localSignature.toCharsString().equals("308202ad30820216a00302010202044c26cea2300d06092a864886f70d010105050030819a310b3009060355040613023836311530130603550408130c4265696a696e672043697479311530130603550407130c4265696a696e67204369747931263024060355040a131d515a6f6e65205465616d206f662054656e63656e7420436f6d70616e7931183016060355040b130f54656e63656e7420436f6d70616e79311b301906035504031312416e64726f696420515a6f6e65205465616d301e170d3130303632373034303830325a170d3335303632313034303830325a30819a310b3009060355040613023836311530130603550408130c4265696a696e672043697479311530130603550407130c4265696a696e67204369747931263024060355040a131d515a6f6e65205465616d206f662054656e63656e7420436f6d70616e7931183016060355040b130f54656e63656e7420436f6d70616e79311b301906035504031312416e64726f696420515a6f6e65205465616d30819f300d06092a864886f70d010101050003818d003081890281810082d6aca037a9843fbbe88b6dd19f36e9c24ce174c1b398f3a529e2a7fe02de99c27539602c026edf96ad8d43df32a85458bca1e6fbf11958658a7d6751a1d9b782bf43a8c19bd1c06bdbfd94c0516326ae3cf638ac42bb470580e340c46e6f306a772c1ef98f10a559edf867f3f31fe492808776b7bd953b2cba2d2b2d66a44f0203010001300d06092a864886f70d0101050500038181006003b04a8a8c5be9650f350cda6896e57dd13e6e83e7f891fc70f6a3c2eaf75cfa4fc998365deabbd1b9092159edf4b90df5702a0d101f8840b5d4586eb92a1c3cd19d95fbc1c2ac956309eda8eef3944baf08c4a49d3b9b3ffb06bc13dab94ecb5b8eb74e8789aa0ba21cb567f538bbc59c2a11e6919924a24272eb79251677");
         if (!bool)
         {
-          AppMethodBeat.o(192638);
+          AppMethodBeat.o(188109);
           return false;
         }
       }
@@ -6902,7 +6920,7 @@ class q
         bool = localSignature.toCharsString().equals("30820239308201a2a00302010202044c96f48f300d06092a864886f70d01010505003060310b300906035504061302434e310b300906035504081302474431123010060355040713094775616e677a686f753110300e060355040a130754656e63656e74310b3009060355040b130233473111300f0603550403130857696c736f6e57753020170d3130303932303035343334335a180f32303635303632333035343334335a3060310b300906035504061302434e310b300906035504081302474431123010060355040713094775616e677a686f753110300e060355040a130754656e63656e74310b3009060355040b130233473111300f0603550403130857696c736f6e577530819f300d06092a864886f70d010101050003818d0030818902818100b56e79dbb1185a79e52d792bb3d0bb3da8010d9b87da92ec69f7dc5ad66ab6bfdff2a6a1ed285dd2358f28b72a468be7c10a2ce30c4c27323ed4edcc936080e5bedc2cbbca0b7e879c08a631182793f44bb3ea284179b263410c298e5f6831032c9702ba4a74e2ccfc9ef857f12201451602fc8e774ac59d6398511586c83d1d0203010001300d06092a864886f70d0101050500038181002475615bb65b8d8786b890535802948840387d06b1692ff3ea47ef4c435719ba1865b81e6bfa6293ce31747c3cd6b34595b485cc1563fd90107ba5845c28b95c79138f0dec288940395bc10f92f2b69d8dc410999deb38900974ce9984b678030edfba8816582f56160d87e38641288d8588d2a31e20b89f223d788dd35cc9c8");
         if (!bool)
         {
-          AppMethodBeat.o(192638);
+          AppMethodBeat.o(188109);
           return false;
         }
       }
@@ -6910,17 +6928,17 @@ class q
     catch (Exception paramContext)
     {
       TbsLog.i("TbsInstaller", "TbsInstaller-installLocalTbsCore getPackageInfo fail");
-      AppMethodBeat.o(192638);
+      AppMethodBeat.o(188109);
       return false;
     }
-    AppMethodBeat.o(192638);
+    AppMethodBeat.o(188109);
     return true;
   }
   
   boolean g(Context paramContext, int paramInt)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(192671);
+    AppMethodBeat.i(188142);
     try
     {
       bool3 = TbsShareManager.isThirdPartyApp(paramContext);
@@ -6933,11 +6951,11 @@ class q
           if (!bool1) {
             break label324;
           }
-          AppMethodBeat.o(192671);
+          AppMethodBeat.o(188142);
           return true;
         }
         TbsLog.e("TbsInstaller", "321");
-        AppMethodBeat.o(192671);
+        AppMethodBeat.o(188142);
         return false;
       }
       localFile = r(paramContext);
@@ -6983,7 +7001,7 @@ class q
     }
     for (;;)
     {
-      AppMethodBeat.o(192671);
+      AppMethodBeat.o(188142);
       return bool1;
       if (!bool3) {
         f.b(QbSdk.getTbsFolderDir(paramContext));
@@ -6999,7 +7017,7 @@ class q
   
   public void h(Context paramContext)
   {
-    AppMethodBeat.i(192641);
+    AppMethodBeat.i(188112);
     int i1 = 1;
     try
     {
@@ -7016,7 +7034,7 @@ class q
       f.a(paramContext, l);
       TbsLog.d("TbsInstaller", "releaseTbsCoreRenameFileLock ##!");
     }
-    AppMethodBeat.o(192641);
+    AppMethodBeat.o(188112);
   }
   
   /* Error */
@@ -7351,39 +7369,39 @@ class q
   
   int k(Context paramContext)
   {
-    AppMethodBeat.i(192652);
+    AppMethodBeat.i(188123);
     if (o != 0)
     {
       i1 = o;
-      AppMethodBeat.o(192652);
+      AppMethodBeat.o(188123);
       return i1;
     }
     int i1 = j(paramContext);
-    AppMethodBeat.o(192652);
+    AppMethodBeat.o(188123);
     return i1;
   }
   
   void l(Context paramContext)
   {
-    AppMethodBeat.i(192653);
+    AppMethodBeat.i(188124);
     if (o != 0)
     {
-      AppMethodBeat.o(192653);
+      AppMethodBeat.o(188124);
       return;
     }
     o = j(paramContext);
-    AppMethodBeat.o(192653);
+    AppMethodBeat.o(188124);
   }
   
   boolean m(Context paramContext)
   {
-    AppMethodBeat.i(192654);
+    AppMethodBeat.i(188125);
     if (!new File(r(paramContext), "tbs.conf").exists())
     {
-      AppMethodBeat.o(192654);
+      AppMethodBeat.o(188125);
       return false;
     }
-    AppMethodBeat.o(192654);
+    AppMethodBeat.o(188125);
     return true;
   }
   
@@ -7693,7 +7711,7 @@ class q
   
   public boolean o(Context paramContext)
   {
-    AppMethodBeat.i(192658);
+    AppMethodBeat.i(188129);
     TbsLog.i("TbsInstaller", "TbsInstaller--coreShareCopyToDecouple #0");
     File localFile1 = r(paramContext);
     File localFile2 = q(paramContext);
@@ -7704,31 +7722,31 @@ class q
       {
         public boolean accept(File paramAnonymousFile)
         {
-          AppMethodBeat.i(192553);
+          AppMethodBeat.i(188418);
           if ((!paramAnonymousFile.getName().endsWith(".dex")) && (!paramAnonymousFile.getName().endsWith(".jar_is_first_load_dex_flag_file")))
           {
-            AppMethodBeat.o(192553);
+            AppMethodBeat.o(188418);
             return true;
           }
-          AppMethodBeat.o(192553);
+          AppMethodBeat.o(188418);
           return false;
         }
       });
       TbsShareManager.b(paramContext);
       TbsLog.i("TbsInstaller", "TbsInstaller--coreShareCopyToDecouple success!!!");
-      AppMethodBeat.o(192658);
+      AppMethodBeat.o(188129);
       return true;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(192658);
+      AppMethodBeat.o(188129);
     }
     return false;
   }
   
   void p(Context paramContext)
   {
-    AppMethodBeat.i(192662);
+    AppMethodBeat.i(188133);
     TbsLog.i("TbsInstaller", "TbsInstaller--cleanStatusAndTmpDir");
     n.a(paramContext).a(0);
     n.a(paramContext).b(0);
@@ -7744,40 +7762,40 @@ class q
       f.a(f(paramContext, 0), true);
       f.a(f(paramContext, 1), true);
     }
-    AppMethodBeat.o(192662);
+    AppMethodBeat.o(188133);
   }
   
   File q(Context paramContext)
   {
-    AppMethodBeat.i(192664);
+    AppMethodBeat.i(188135);
     paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "core_share_decouple");
     if ((!paramContext.isDirectory()) && (!paramContext.mkdir()))
     {
-      AppMethodBeat.o(192664);
+      AppMethodBeat.o(188135);
       return null;
     }
-    AppMethodBeat.o(192664);
+    AppMethodBeat.o(188135);
     return paramContext;
   }
   
   File r(Context paramContext)
   {
-    AppMethodBeat.i(192666);
+    AppMethodBeat.i(188137);
     paramContext = b(paramContext, paramContext);
-    AppMethodBeat.o(192666);
+    AppMethodBeat.o(188137);
     return paramContext;
   }
   
   File s(Context paramContext)
   {
-    AppMethodBeat.i(192667);
+    AppMethodBeat.i(188138);
     paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "share");
     if ((!paramContext.isDirectory()) && (!paramContext.mkdir()))
     {
-      AppMethodBeat.o(192667);
+      AppMethodBeat.o(188138);
       return null;
     }
-    AppMethodBeat.o(192667);
+    AppMethodBeat.o(188138);
     return paramContext;
   }
   
@@ -7890,7 +7908,7 @@ class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.q
  * JD-Core Version:    0.7.0.1
  */

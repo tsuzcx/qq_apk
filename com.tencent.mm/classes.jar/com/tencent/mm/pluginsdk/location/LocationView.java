@@ -1,40 +1,42 @@
 package com.tencent.mm.pluginsdk.location;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.modelstat.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.widget.MMProcessBar;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class LocationView
   extends LinearLayout
+  implements b
 {
-  private b.a FcA;
-  private WeImageView Fcu;
-  private TextView Fcv;
-  private TextView Fcw;
-  private View Fcx;
-  private View Fcy;
-  private a Fcz;
   private View contentView;
-  private float dBu;
-  private float dzE;
-  private d wGe;
+  private float dTj;
+  private float latitude;
+  private int textColor;
+  private WeImageView uzl;
+  private TextView uzm;
+  private TextView uzn;
+  private View uzo;
+  private MMProcessBar uzp;
+  private TextView uzq;
+  private View uzr;
+  private d uzs;
+  private int uzt;
+  private int uzu;
+  private int uzv;
+  private int uzw;
+  private int uzx;
+  private b.a uzy;
+  private com.tencent.mm.modelgeo.b.a uzz;
   
   public LocationView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -45,10 +47,10 @@ public class LocationView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(169201);
-    this.wGe = d.aIh();
-    this.dzE = -85.0F;
-    this.dBu = -1000.0F;
-    this.FcA = new b.a()
+    this.uzs = d.bca();
+    this.latitude = -85.0F;
+    this.dTj = -1000.0F;
+    this.uzz = new com.tencent.mm.modelgeo.b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -58,7 +60,7 @@ public class LocationView
           AppMethodBeat.o(169200);
           return true;
         }
-        ae.d("MicroMsg.LocationView", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+        Log.d("MicroMsg.LocationView", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
         o.a(2015, paramAnonymousFloat1, paramAnonymousFloat2, 0);
         if ((LocationView.c(LocationView.this) == -85.0F) || (LocationView.d(LocationView.this) == -1000.0F))
         {
@@ -69,112 +71,88 @@ public class LocationView
         return false;
       }
     };
-    this.contentView = View.inflate(getContext(), 2131494597, this);
-    this.Fcu = ((WeImageView)findViewById(2131301524));
-    this.Fcv = ((TextView)findViewById(2131301536));
-    this.Fcw = ((TextView)findViewById(2131307857));
-    this.Fcx = findViewById(2131307855);
-    this.Fcy = findViewById(2131307856);
-    setBackgroundResource(2131231818);
-    paramContext = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(169199);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (com.tencent.mm.aw.b.Gw((String)g.ajR().ajA().get(274436, null)))
-        {
-          if (!com.tencent.mm.pluginsdk.permission.b.n(LocationView.this.getContext(), "android.permission.ACCESS_COARSE_LOCATION"))
-          {
-            if (!((Boolean)g.ajR().ajA().get(am.a.IYR, Boolean.FALSE)).booleanValue()) {
-              LocationView.a(LocationView.this);
-            }
-            for (;;)
-            {
-              a.a(this, "com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(169199);
-              return;
-              com.tencent.mm.pluginsdk.permission.b.b((Activity)LocationView.this.getContext(), "android.permission.ACCESS_COARSE_LOCATION", 64);
-            }
-          }
-        }
-        else
-        {
-          boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)LocationView.this.getContext(), "android.permission.ACCESS_COARSE_LOCATION", 64, "", "");
-          ae.i("MicroMsg.LocationView", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
-          if (!bool)
-          {
-            a.a(this, "com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(169199);
-            return;
-          }
-        }
-        LocationView.b(LocationView.this);
-        a.a(this, "com/tencent/mm/pluginsdk/location/LocationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(169199);
-      }
-    };
+    this.contentView = View.inflate(getContext(), 2131495308, this);
+    this.uzl = ((WeImageView)findViewById(2131303730));
+    this.uzm = ((TextView)findViewById(2131303745));
+    this.uzn = ((TextView)findViewById(2131303746));
+    this.uzo = findViewById(2131303739);
+    this.uzp = ((MMProcessBar)findViewById(2131303757));
+    this.uzq = ((TextView)findViewById(2131303758));
+    this.uzr = findViewById(2131303743);
+    setBackgroundResource(2131231898);
+    paramContext = new LocationView.1(this);
     this.contentView.setOnClickListener(paramContext);
+    setTextColor(getContext().getResources().getColor(2131099792));
+    setIconColor(getContext().getResources().getColor(2131099792));
+    setDefaultStateIconColor(getContext().getResources().getColor(2131100904));
+    setDefaultStateTextColor(getContext().getResources().getColor(2131100904));
+    setDefaultLoadingPBarColor(getContext().getResources().getColor(2131099792));
+    setDefaultLoadingTipColor(getContext().getResources().getColor(2131099749));
     AppMethodBeat.o(169201);
   }
   
-  public final void fcR()
+  public final void dix()
   {
-    AppMethodBeat.i(218787);
-    this.Fcy.setVisibility(8);
-    this.Fcx.setVisibility(0);
-    AppMethodBeat.o(218787);
+    AppMethodBeat.i(223716);
+    this.uzr.setVisibility(8);
+    this.uzo.setVisibility(0);
+    AppMethodBeat.o(223716);
   }
   
-  public final void fcS()
+  public final void diy()
   {
     AppMethodBeat.i(169208);
-    this.Fcy.setVisibility(0);
-    this.Fcx.setVisibility(8);
-    this.Fcw.setVisibility(8);
-    setLocationName(getContext().getString(2131766743));
-    this.Fcu.setIconColor(getContext().getResources().getColor(2131099677));
-    this.Fcv.setTextColor(getContext().getResources().getColor(2131099664));
-    setLocationIcon(2131690589);
-    setLocationIconColor(getContext().getResources().getColor(2131100711));
+    this.uzr.setVisibility(0);
+    this.uzo.setVisibility(8);
+    this.uzn.setVisibility(8);
+    setLocationName(getContext().getString(2131762453));
+    this.uzl.setIconColor(this.uzu);
+    this.uzm.setTextColor(this.uzv);
+    setLocationIcon(2131690826);
     AppMethodBeat.o(169208);
+  }
+  
+  public final void diz()
+  {
+    AppMethodBeat.i(223720);
+    this.uzp.setBackground$255f295(this.uzw);
+    this.uzq.setTextColor(this.uzx);
+    AppMethodBeat.o(223720);
+  }
+  
+  public final void gM(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(223718);
+    this.uzr.setVisibility(0);
+    this.uzo.setVisibility(8);
+    this.uzn.setVisibility(8);
+    if (!Util.isNullOrNil(paramString2)) {
+      setLocationName(paramString2);
+    }
+    for (;;)
+    {
+      setLocationNameColor(this.textColor);
+      setLocationIcon(2131690589);
+      setLocationIconColor(this.uzt);
+      AppMethodBeat.o(223718);
+      return;
+      setLocationName(paramString1);
+    }
   }
   
   public Location getLocation()
   {
     AppMethodBeat.i(169209);
-    Location localLocation = new Location(this.dzE, this.dBu);
+    Location localLocation = new Location(this.latitude, this.dTj);
     AppMethodBeat.o(169209);
     return localLocation;
-  }
-  
-  public final void lx(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(218789);
-    this.Fcy.setVisibility(0);
-    this.Fcx.setVisibility(8);
-    this.Fcw.setVisibility(8);
-    if (!bu.isNullOrNil(paramString2)) {
-      setLocationName(paramString2);
-    }
-    for (;;)
-    {
-      setLocationNameColor(getContext().getResources().getColor(2131099777));
-      setLocationIcon(2131690422);
-      setLocationIconColor(getContext().getResources().getColor(2131099777));
-      AppMethodBeat.o(218789);
-      return;
-      setLocationName(paramString1);
-    }
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(169202);
     super.onAttachedToWindow();
-    this.wGe.a(this.FcA, true);
+    this.uzs.a(this.uzz, true);
     AppMethodBeat.o(169202);
   }
   
@@ -182,64 +160,96 @@ public class LocationView
   {
     AppMethodBeat.i(169203);
     super.onDetachedFromWindow();
-    this.wGe.c(this.FcA);
+    this.uzs.c(this.uzz);
     AppMethodBeat.o(169203);
+  }
+  
+  public void setDefaultLoadingPBarColor(int paramInt)
+  {
+    this.uzw = paramInt;
+  }
+  
+  public void setDefaultLoadingTipColor(int paramInt)
+  {
+    this.uzx = paramInt;
+  }
+  
+  public void setDefaultStateIconColor(int paramInt)
+  {
+    this.uzu = paramInt;
+  }
+  
+  public void setDefaultStateTextColor(int paramInt)
+  {
+    this.uzv = paramInt;
+  }
+  
+  public void setIconColor(int paramInt)
+  {
+    this.uzt = paramInt;
   }
   
   public void setLocationIcon(int paramInt)
   {
     AppMethodBeat.i(169206);
-    this.Fcu.setImageResource(paramInt);
+    this.uzl.setImageResource(paramInt);
     AppMethodBeat.o(169206);
   }
   
   public void setLocationIconColor(int paramInt)
   {
     AppMethodBeat.i(169205);
-    this.Fcu.setIconColor(paramInt);
+    this.uzl.setIconColor(paramInt);
     AppMethodBeat.o(169205);
   }
   
   public void setLocationName(String paramString)
   {
     AppMethodBeat.i(169204);
-    this.Fcv.setText(paramString);
+    this.uzm.setText(paramString);
     AppMethodBeat.o(169204);
   }
   
   public void setLocationNameColor(int paramInt)
   {
     AppMethodBeat.i(169207);
-    this.Fcv.setTextColor(paramInt);
+    this.uzm.setTextColor(paramInt);
     AppMethodBeat.o(169207);
   }
   
-  public void setOnClickLocationListener(a parama)
+  public void setLocationTipColor(int paramInt)
   {
-    this.Fcz = parama;
+    AppMethodBeat.i(223719);
+    this.uzn.setTextColor(paramInt);
+    AppMethodBeat.o(223719);
+  }
+  
+  public void setOnClickLocationListener(b.a parama)
+  {
+    this.uzy = parama;
   }
   
   public void setSuggestView(String paramString)
   {
-    AppMethodBeat.i(218788);
-    this.Fcy.setVisibility(0);
-    this.Fcx.setVisibility(8);
-    this.Fcw.setVisibility(0);
+    AppMethodBeat.i(223717);
+    this.uzr.setVisibility(0);
+    this.uzo.setVisibility(8);
+    this.uzn.setVisibility(0);
     setLocationName(paramString);
-    setLocationNameColor(getContext().getResources().getColor(2131099777));
-    setLocationIcon(2131690422);
-    setLocationIconColor(getContext().getResources().getColor(2131099777));
-    AppMethodBeat.o(218788);
+    setLocationNameColor(this.textColor);
+    setLocationIcon(2131690589);
+    setLocationIconColor(this.uzt);
+    AppMethodBeat.o(223717);
   }
   
-  public static abstract interface a
+  public void setTextColor(int paramInt)
   {
-    public abstract void cNC();
+    this.textColor = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.location.LocationView
  * JD-Core Version:    0.7.0.1
  */

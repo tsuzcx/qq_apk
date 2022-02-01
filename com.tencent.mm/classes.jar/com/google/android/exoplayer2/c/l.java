@@ -6,16 +6,16 @@ public abstract interface l
   
   public abstract long getDurationUs();
   
-  public abstract boolean up();
+  public abstract boolean uu();
   
   public static final class a
     implements l
   {
-    private final long bdM;
+    private final long bdJ;
     
     public a(long paramLong)
     {
-      this.bdM = paramLong;
+      this.bdJ = paramLong;
     }
     
     public final long L(long paramLong)
@@ -25,10 +25,10 @@ public abstract interface l
     
     public final long getDurationUs()
     {
-      return this.bdM;
+      return this.bdJ;
     }
     
-    public final boolean up()
+    public final boolean uu()
     {
       return false;
     }
@@ -36,7 +36,7 @@ public abstract interface l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.l
  * JD-Core Version:    0.7.0.1
  */

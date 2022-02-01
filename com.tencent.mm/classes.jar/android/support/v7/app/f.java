@@ -8,41 +8,41 @@ import java.util.Map;
 
 final class f
 {
-  private static boolean ZA;
-  private static Class ZB;
-  private static boolean ZC;
-  private static Field ZD;
-  private static boolean ZE;
-  private static Field ZF;
-  private static boolean ZG;
-  private static Field Zz;
+  private static Field ZM;
+  private static boolean ZN;
+  private static Class ZO;
+  private static boolean ZP;
+  private static Field ZQ;
+  private static boolean ZR;
+  private static Field ZS;
+  private static boolean ZT;
   
   private static void M(Object paramObject)
   {
-    if (!ZC) {}
+    if (!ZP) {}
     try
     {
-      ZB = Class.forName("android.content.res.ThemedResourceCache");
+      ZO = Class.forName("android.content.res.ThemedResourceCache");
       label14:
-      ZC = true;
-      if (ZB == null) {}
+      ZP = true;
+      if (ZO == null) {}
       for (;;)
       {
         return;
-        if (!ZE) {}
+        if (!ZR) {}
         try
         {
-          Field localField = ZB.getDeclaredField("mUnthemedEntries");
-          ZD = localField;
+          Field localField = ZO.getDeclaredField("mUnthemedEntries");
+          ZQ = localField;
           localField.setAccessible(true);
           label49:
-          ZE = true;
-          if (ZD == null) {
+          ZR = true;
+          if (ZQ == null) {
             continue;
           }
           try
           {
-            paramObject = (LongSparseArray)ZD.get(paramObject);
+            paramObject = (LongSparseArray)ZQ.get(paramObject);
             if (paramObject == null) {
               continue;
             }
@@ -91,18 +91,18 @@ final class f
   
   private static void b(Resources paramResources)
   {
-    if (!ZA) {}
+    if (!ZN) {}
     try
     {
       Field localField = Resources.class.getDeclaredField("mDrawableCache");
-      Zz = localField;
+      ZM = localField;
       localField.setAccessible(true);
       label23:
-      ZA = true;
-      if (Zz != null) {}
+      ZN = true;
+      if (ZM != null) {}
       try
       {
-        paramResources = (Map)Zz.get(paramResources);
+        paramResources = (Map)ZM.get(paramResources);
         if (paramResources != null) {
           paramResources.clear();
         }
@@ -124,20 +124,20 @@ final class f
   
   private static void c(Resources paramResources)
   {
-    if (!ZA) {}
+    if (!ZN) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mDrawableCache");
-      Zz = (Field)localObject1;
+      ZM = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label23:
-      ZA = true;
+      ZN = true;
       Object localObject2 = null;
       localObject1 = localObject2;
-      if (Zz != null) {}
+      if (ZM != null) {}
       try
       {
-        localObject1 = Zz.get(paramResources);
+        localObject1 = ZM.get(paramResources);
         if (localObject1 == null) {
           return;
         }
@@ -161,40 +161,40 @@ final class f
   private static void d(Resources paramResources)
   {
     Object localObject2 = null;
-    if (!ZG) {}
+    if (!ZT) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
-      ZF = (Field)localObject1;
+      ZS = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label25:
-      ZG = true;
-      if (ZF == null) {}
+      ZT = true;
+      if (ZS == null) {}
       for (;;)
       {
         return;
         try
         {
-          paramResources = ZF.get(paramResources);
+          paramResources = ZS.get(paramResources);
           if (paramResources == null) {
             continue;
           }
-          if (ZA) {}
+          if (ZN) {}
         }
         catch (IllegalAccessException paramResources)
         {
           try
           {
             localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
-            Zz = (Field)localObject1;
+            ZM = (Field)localObject1;
             ((Field)localObject1).setAccessible(true);
             label73:
-            ZA = true;
+            ZN = true;
             localObject1 = localObject2;
-            if (Zz != null) {}
+            if (ZM != null) {}
             try
             {
-              localObject1 = Zz.get(paramResources);
+              localObject1 = ZM.get(paramResources);
               if (localObject1 == null) {
                 continue;
               }

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.expt.hellhound.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.e.a;
 import com.tencent.mm.plugin.expt.hellhound.core.b;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
@@ -12,32 +12,32 @@ public final class d
   {
     AppMethodBeat.i(184362);
     int i = -1;
-    if (parama == e.a.qXc)
+    if (parama == e.a.sxg)
     {
       i = 7;
-      if ((b.cpe()) && (!com.tencent.mm.plugin.expt.g.d.csO()))
+      if ((b.isMMProcess()) && (!com.tencent.mm.plugin.expt.g.d.cRv()))
       {
-        if (parama != e.a.qXc) {
+        if (parama != e.a.sxg) {
           break label132;
         }
-        g.yxI.idkeyStat(932L, 91L, 1L, false);
+        h.CyF.idkeyStat(932L, 91L, 1L, false);
       }
     }
     for (;;)
     {
-      ae.i("HABBYGE-MALI.HellFrontBackReport", "report 切换-前后台(3): %d, %s 未登录", new Object[] { Integer.valueOf(i), paramString });
-      ae.i("HABBYGE-MALI.HellFrontBackReport", "report 切换-前后台(3): %d, %s", new Object[] { Integer.valueOf(i), paramString });
-      com.tencent.mm.plugin.expt.g.d.csN().b(paramString, parama, paramInt, paramLong);
+      Log.i("HABBYGE-MALI.HellFrontBackReport", "report 切换-前后台(3): %d, %s 未登录", new Object[] { Integer.valueOf(i), paramString });
+      Log.i("HABBYGE-MALI.HellFrontBackReport", "report 切换-前后台(3): %d, %s", new Object[] { Integer.valueOf(i), paramString });
+      com.tencent.mm.plugin.expt.g.d.cRu().b(paramString, parama, paramInt, paramLong);
       AppMethodBeat.o(184362);
       return;
-      if (parama != e.a.qXd) {
+      if (parama != e.a.sxh) {
         break;
       }
       i = 8;
       break;
       label132:
-      if (parama == e.a.qXd) {
-        g.yxI.idkeyStat(932L, 92L, 1L, false);
+      if (parama == e.a.sxh) {
+        h.CyF.idkeyStat(932L, 92L, 1L, false);
       }
     }
   }
@@ -45,7 +45,7 @@ public final class d
   static void a(String paramString, e.a parama, int paramInt, long paramLong)
   {
     AppMethodBeat.i(122040);
-    com.tencent.mm.plugin.expt.g.d.csN().a(paramString, parama, paramInt, paramLong);
+    com.tencent.mm.plugin.expt.g.d.cRu().a(paramString, parama, paramInt, paramLong);
     AppMethodBeat.o(122040);
   }
 }

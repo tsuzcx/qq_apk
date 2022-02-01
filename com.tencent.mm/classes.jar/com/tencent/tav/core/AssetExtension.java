@@ -13,32 +13,32 @@ public class AssetExtension
   
   public AssetExtension(String paramString)
   {
-    AppMethodBeat.i(214398);
+    AppMethodBeat.i(217730);
     this.extensionMap = new ConcurrentHashMap();
     this.scene = paramString;
-    AppMethodBeat.o(214398);
+    AppMethodBeat.o(217730);
   }
   
   public void addExtension(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(214399);
+    AppMethodBeat.i(217731);
     this.extensionMap.put(paramString, paramObject);
-    AppMethodBeat.o(214399);
+    AppMethodBeat.o(217731);
   }
   
   public boolean containsKey(String paramString)
   {
-    AppMethodBeat.i(214400);
+    AppMethodBeat.i(217732);
     boolean bool = this.extensionMap.containsKey(paramString);
-    AppMethodBeat.o(214400);
+    AppMethodBeat.o(217732);
     return bool;
   }
   
   public boolean containsValue(String paramString)
   {
-    AppMethodBeat.i(214401);
+    AppMethodBeat.i(217733);
     boolean bool = this.extensionMap.containsValue(paramString);
-    AppMethodBeat.o(214401);
+    AppMethodBeat.o(217733);
     return bool;
   }
   
@@ -49,15 +49,15 @@ public class AssetExtension
   
   public Object remove(String paramString)
   {
-    AppMethodBeat.i(214402);
+    AppMethodBeat.i(217734);
     paramString = this.extensionMap.remove(paramString);
-    AppMethodBeat.o(214402);
+    AppMethodBeat.o(217734);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tav.core.AssetExtension
  * JD-Core Version:    0.7.0.1
  */

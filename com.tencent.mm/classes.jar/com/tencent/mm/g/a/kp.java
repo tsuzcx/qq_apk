@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
-import com.tencent.mm.plugin.appbrand.report.model.kv_14609.a;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class kp
-  extends b
+  extends IEvent
 {
-  public a dyE;
+  public a dPH;
   
   public kp()
   {
@@ -17,17 +15,17 @@ public final class kp
   
   private kp(byte paramByte)
   {
-    AppMethodBeat.i(43441);
-    this.dyE = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(121032);
+    this.dPH = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(43441);
+    AppMethodBeat.o(121032);
   }
   
   public static final class a
   {
-    public kv_14609 dyF;
-    public kv_14609.a dyG;
+    public String dPI;
+    public String dPJ;
   }
 }
 

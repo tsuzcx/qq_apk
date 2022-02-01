@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:id="@id/h9a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/c6f" android:text="@string/gv1" android:singleLine="false" style="@style/z7" />
-</LinearLayout>
+    <ImageView android:id="@id/fc1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/j5b" android:background="@drawable/c_k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/j5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@raw/video_icon_sub" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:id="@id/j5d" android:paddingTop="1.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="--:--" android:maxLines="1" android:layout_toRightOf="@id/j5c" android:layout_alignBaseline="@id/j5c" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/dk1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c_j" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/bvx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginBottom="5.0dip" android:src="@raw/photo_edit_mark_sub" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/c4n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/en" android:layout_marginBottom="@dimen/en" android:src="@raw/error_image_sub" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/fbr" android:background="@color/vt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/fbw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/s7" android:scaleType="center" />
+</com.tencent.mm.ui.widget.FoursquareRelativeLayout>

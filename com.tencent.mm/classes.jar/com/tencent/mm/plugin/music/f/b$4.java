@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.music.f;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class b$4
   implements MediaPlayer.OnErrorListener
@@ -13,15 +13,15 @@ final class b$4
   public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137301);
-    ae.e("MicroMsg.Music.MMMediaPlayer", "onError, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.wBH.pl(false);
+    Log.e("MicroMsg.Music.MMMediaPlayer", "onError, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.AlP.sn(false);
     AppMethodBeat.o(137301);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.b.4
  * JD-Core Version:    0.7.0.1
  */

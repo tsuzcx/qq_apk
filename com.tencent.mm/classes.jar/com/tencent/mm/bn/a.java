@@ -4,66 +4,66 @@ import com.tencent.mars.comm.PlatformComm.C2Java;
 import com.tencent.mars.comm.PlatformComm.SIMInfo;
 import com.tencent.mars.comm.PlatformComm.WifiInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.aey;
-import com.tencent.mm.protocal.protobuf.dip;
-import com.tencent.mm.protocal.protobuf.dir;
-import com.tencent.mm.protocal.protobuf.dis;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.ahc;
+import com.tencent.mm.protocal.protobuf.ebz;
+import com.tencent.mm.protocal.protobuf.ecb;
+import com.tencent.mm.protocal.protobuf.ecc;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
 public final class a
-  extends n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  private f gCo;
-  private com.tencent.mm.bw.b iJR;
-  private int iJS;
-  private int iJT;
-  private int iJU;
-  private int iJV;
-  private dip iJW;
-  private dip iJX;
-  private String iJY;
-  private com.tencent.mm.ak.b rr;
+  private i heq;
+  private int jGA;
+  private int jGB;
+  private ebz jGC;
+  private ebz jGD;
+  private String jGE;
+  private b jGx;
+  private int jGy;
+  private int jGz;
+  private d rr;
   
-  public a(com.tencent.mm.bw.b paramb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, dip paramdip1, dip paramdip2, String paramString)
+  public a(b paramb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ebz paramebz1, ebz paramebz2, String paramString)
   {
     AppMethodBeat.i(20678);
     this.rr = null;
-    this.iJR = paramb;
-    this.iJS = paramInt1;
-    this.iJT = paramInt2;
-    this.iJU = paramInt3;
-    this.iJV = paramInt4;
-    this.iJW = paramdip1;
-    this.iJX = paramdip2;
-    this.iJY = paramString;
-    paramb = new b.a();
-    paramb.hQF = new dir();
-    paramb.hQG = new dis();
+    this.jGx = paramb;
+    this.jGy = paramInt1;
+    this.jGz = paramInt2;
+    this.jGA = paramInt3;
+    this.jGB = paramInt4;
+    this.jGC = paramebz1;
+    this.jGD = paramebz2;
+    this.jGE = paramString;
+    paramb = new d.a();
+    paramb.iLN = new ecb();
+    paramb.iLO = new ecc();
     paramb.funcId = 271;
     paramb.uri = "/cgi-bin/micromsg-bin/speedtestreport";
-    paramb.hQH = 996;
+    paramb.iLP = 996;
     paramb.respCmdId = 1000000996;
     paramb.newExtFlag = 0;
     paramb.transferHeader = null;
-    this.rr = paramb.aDS();
+    this.rr = paramb.aXF();
     AppMethodBeat.o(20678);
   }
   
-  private static String aPS()
+  private static String bku()
   {
     AppMethodBeat.i(20681);
     String str1 = "";
@@ -104,72 +104,72 @@ public final class a
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(20679);
-    this.gCo = paramf;
-    paramf = (dir)this.rr.hQD.hQJ;
-    paramf.Hjt = this.iJR;
-    paramf.HQn = this.iJS;
-    paramf.HQo = this.iJT;
-    paramf.HQp = this.iJU;
-    paramf.HQq = this.iJV;
-    paramf.HQs = this.iJW;
-    paramf.HQr = this.iJX;
+    this.heq = parami;
+    parami = (ecb)this.rr.iLK.iLR;
+    parami.Mpw = this.jGx;
+    parami.Ncf = this.jGy;
+    parami.Ncg = this.jGz;
+    parami.Nch = this.jGA;
+    parami.Nci = this.jGB;
+    parami.Nck = this.jGC;
+    parami.Ncj = this.jGD;
     Object localObject;
     int i;
-    if ("dual".equals(this.iJY))
+    if ("dual".equals(this.jGE))
     {
-      localObject = paramf.HQr.ip;
+      localObject = parami.Ncj.ip;
       if ((localObject == null) || (((String)localObject).length() <= 0) || (((String)localObject).contains("."))) {
         break label529;
       }
       i = 1;
       if (i != 0)
       {
-        paramf.HQs.ip = aPS();
-        ae.d("MicroMsg.MMNewSpeedTest", "local stack is dual ip is " + paramf.HQs.ip);
+        parami.Nck.ip = bku();
+        Log.d("MicroMsg.MMNewSpeedTest", "local stack is dual ip is " + parami.Nck.ip);
       }
     }
     switch (PlatformComm.C2Java.getNetInfo())
     {
     case 0: 
     default: 
-      paramf.HQk = "NONET";
+      parami.Ncc = "NONET";
     }
     for (;;)
     {
-      localObject = m.cTD();
+      localObject = com.tencent.mm.plugin.freewifi.m.dMM();
       StringBuilder localStringBuilder = new StringBuilder("device info:");
-      localStringBuilder.append(((aey)localObject).deviceBrand);
+      localStringBuilder.append(((ahc)localObject).deviceBrand);
       localStringBuilder.append(" ");
-      localStringBuilder.append(((aey)localObject).deviceModel);
+      localStringBuilder.append(((ahc)localObject).deviceModel);
       localStringBuilder.append(" ");
-      localStringBuilder.append(((aey)localObject).osName);
+      localStringBuilder.append(((ahc)localObject).osName);
       localStringBuilder.append(" ");
-      localStringBuilder.append(((aey)localObject).osVersion);
-      paramf.HQm = localStringBuilder.toString();
-      ae.d("MicroMsg.MMNewSpeedTest", "speed test " + paramf.HQm + ",networktype: " + paramf.HQk + ",network_info: " + paramf.HQl + ",conn_time: " + paramf.HQn + ",conn_retcode: " + paramf.HQo + ",trans_time: " + paramf.HQp + ",trans_time: " + paramf.HQq + ",cookie: " + paramf.Hjt.toString() + ",cookie size: " + paramf.Hjt.zr.length + ",size: " + paramf.computeSize() + ",client ip: " + paramf.HQs.ip + ",client port: " + paramf.HQs.port + ",server ip: " + paramf.HQr.ip + ",server port: " + paramf.HQr.port);
-      i = dispatch(parame, this.rr, this);
+      localStringBuilder.append(((ahc)localObject).osVersion);
+      parami.Nce = localStringBuilder.toString();
+      Log.d("MicroMsg.MMNewSpeedTest", "speed test " + parami.Nce + ",networktype: " + parami.Ncc + ",network_info: " + parami.Ncd + ",conn_time: " + parami.Ncf + ",conn_retcode: " + parami.Ncg + ",trans_time: " + parami.Nch + ",trans_time: " + parami.Nci + ",cookie: " + parami.Mpw.toString() + ",cookie size: " + parami.Mpw.zy.length + ",size: " + parami.computeSize() + ",client ip: " + parami.Nck.ip + ",client port: " + parami.Nck.port + ",server ip: " + parami.Ncj.ip + ",server port: " + parami.Ncj.port);
+      i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(20679);
       return i;
       label529:
       i = 0;
       break;
-      paramf.HQk = "WIFI";
+      parami.Ncc = "WIFI";
       localObject = PlatformComm.C2Java.getCurWifiInfo();
       if (localObject != null)
       {
-        paramf.HQl = ((PlatformComm.WifiInfo)localObject).ssid;
+        parami.Ncd = ((PlatformComm.WifiInfo)localObject).ssid;
       }
       else
       {
-        paramf.HQl = "unknown_netinfo";
+        parami.Ncd = "unknown_netinfo";
         continue;
         switch (PlatformComm.C2Java.getStatisticsNetType())
         {
         default: 
-          paramf.HQk = "EDGE";
+          parami.Ncc = "EDGE";
         }
         for (;;)
         {
@@ -177,20 +177,20 @@ public final class a
           if (localObject == null) {
             break label677;
           }
-          paramf.HQl = ((PlatformComm.SIMInfo)localObject).ispCode;
+          parami.Ncd = ((PlatformComm.SIMInfo)localObject).ispCode;
           break;
-          paramf.HQk = "2G";
+          parami.Ncc = "2G";
           continue;
-          paramf.HQk = "3G";
+          parami.Ncc = "3G";
           continue;
-          paramf.HQk = "4G";
+          parami.Ncc = "4G";
           continue;
-          paramf.HQk = "EDGE";
+          parami.Ncc = "EDGE";
         }
         label677:
-        paramf.HQl = "unknown_netinfo";
+        parami.Ncd = "unknown_netinfo";
         continue;
-        paramf.HQk = "NONET";
+        parami.Ncc = "NONET";
       }
     }
   }
@@ -200,25 +200,25 @@ public final class a
     return 271;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20680);
-    ae.d("MicroMsg.MMNewSpeedTest", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
+    Log.d("MicroMsg.MMNewSpeedTest", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
     if ((paramInt3 == 0) && (paramInt2 == 0)) {
-      g.yxI.dD(317, 26);
+      h.CyF.dN(317, 26);
     }
     for (;;)
     {
-      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(20680);
       return;
-      g.yxI.dD(317, 27);
+      h.CyF.dN(317, 27);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bn.a
  * JD-Core Version:    0.7.0.1
  */

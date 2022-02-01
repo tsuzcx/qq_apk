@@ -2,35 +2,36 @@ package com.tencent.mm.modelvideo;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class l
-  extends com.tencent.mm.sdk.e.j<j>
+  extends MAutoStorage<j>
 {
   public static final String[] SQL_CREATE;
-  e db;
+  ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(126894);
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "SightDraftInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(j.info, "SightDraftInfo") };
     AppMethodBeat.o(126894);
   }
   
-  public l(e parame)
+  public l(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, j.info, "SightDraftInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, j.info, "SightDraftInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final List<j> aNb()
+  public final List<j> bhd()
   {
     AppMethodBeat.i(126892);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = "SELECT * FROM SightDraftInfo WHERE fileStatus = ?  ORDER BY localId DESC " + new StringBuilder(" LIMIT 5").toString();
-    localObject = this.db.a((String)localObject, new String[] { "7" }, 2);
+    localObject = this.db.rawQuery((String)localObject, new String[] { "7" }, 2);
     if (localObject == null)
     {
       AppMethodBeat.o(126892);
@@ -47,7 +48,7 @@ public final class l
     return localLinkedList;
   }
   
-  public final Cursor aNc()
+  public final Cursor bhe()
   {
     AppMethodBeat.i(126893);
     Cursor localCursor = this.db.rawQuery("SELECT * FROM SightDraftInfo WHERE fileStatus = ?  ORDER BY localId DESC ", new String[] { "1" });
@@ -57,7 +58,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelvideo.l
  * JD-Core Version:    0.7.0.1
  */

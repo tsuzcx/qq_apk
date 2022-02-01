@@ -10,8 +10,8 @@ public final class TimeSignalCommand
   extends SpliceCommand
 {
   public static final Parcelable.Creator<TimeSignalCommand> CREATOR;
-  public final long bve;
-  public final long bvf;
+  public final long buY;
+  public final long buZ;
   
   static
   {
@@ -22,8 +22,8 @@ public final class TimeSignalCommand
   
   private TimeSignalCommand(long paramLong1, long paramLong2)
   {
-    this.bve = paramLong1;
-    this.bvf = paramLong2;
+    this.buY = paramLong1;
+    this.buZ = paramLong2;
   }
   
   static TimeSignalCommand b(m paramm, long paramLong, u paramu)
@@ -41,7 +41,7 @@ public final class TimeSignalCommand
     long l2 = paramm.readUnsignedByte();
     long l1 = -9223372036854775807L;
     if ((0x80 & l2) != 0L) {
-      l1 = ((1L & l2) << 32 | paramm.dB()) + paramLong & 0xFFFFFFFF;
+      l1 = ((1L & l2) << 32 | paramm.dE()) + paramLong & 0xFFFFFFFF;
     }
     AppMethodBeat.o(92506);
     return l1;
@@ -50,14 +50,14 @@ public final class TimeSignalCommand
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92507);
-    paramParcel.writeLong(this.bve);
-    paramParcel.writeLong(this.bvf);
+    paramParcel.writeLong(this.buY);
+    paramParcel.writeLong(this.buZ);
     AppMethodBeat.o(92507);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.scte35.TimeSignalCommand
  * JD-Core Version:    0.7.0.1
  */

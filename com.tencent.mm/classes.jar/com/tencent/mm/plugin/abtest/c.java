@@ -2,37 +2,37 @@ package com.tencent.mm.plugin.abtest;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.c.d;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.y;
 
 public final class c
-  extends u
+  extends y
 {
-  private static c jbc;
+  private static c jZf;
   
   private c()
   {
     super(d.class);
   }
   
-  public static c aSn()
+  public static c bna()
   {
     try
     {
       AppMethodBeat.i(153140);
-      if (jbc == null) {
-        jbc = new c();
+      if (jZf == null) {
+        jZf = new c();
       }
-      c localc = jbc;
+      c localc = jZf;
       AppMethodBeat.o(153140);
       return localc;
     }
     finally {}
   }
   
-  public final void xK(String paramString)
+  public final void FU(String paramString)
   {
     AppMethodBeat.i(153141);
-    super.xK(paramString);
+    super.FU(paramString);
     AppMethodBeat.o(153141);
   }
 }

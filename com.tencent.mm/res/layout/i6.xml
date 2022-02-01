@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/f94" style="@style/il">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/cnh" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/ds" />
-        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/ga1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dn" android:text="{tip}" style="@style/m3" />
+    <ImageView android:id="@id/fhj" style="@style/hx" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/a2x" android:id="@id/be9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/ea2" android:layout_width="fill_parent" android:layout_height="48.0dip">
-        <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <View android:background="@color/BW_BG_95" android:layout_width="fill_parent" android:layout_height="8.0dip" />
-        <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-</RelativeLayout>
+    <ImageView android:id="@id/fhk" style="@style/hx" />
+</LinearLayout>

@@ -13,8 +13,8 @@ import com.tencent.mm.cb.a;
 public class MMImageButton
   extends FrameLayout
 {
-  private ImageView dxD;
-  private TextView xdg;
+  private TextView BaI;
+  private ImageView dPk;
   
   public MMImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,18 +27,18 @@ public class MMImageButton
     AppMethodBeat.i(142026);
     paramAttributeSet = new FrameLayout.LayoutParams(-2, -2);
     paramAttributeSet.gravity = 17;
-    this.dxD = new ImageView(paramContext);
-    this.dxD.setLayoutParams(paramAttributeSet);
-    addView(this.dxD);
+    this.dPk = new ImageView(paramContext);
+    this.dPk.setLayoutParams(paramAttributeSet);
+    addView(this.dPk);
     paramAttributeSet = new FrameLayout.LayoutParams(-2, -2);
     paramAttributeSet.gravity = 17;
-    this.xdg = new TextView(paramContext);
-    this.xdg.setLayoutParams(paramAttributeSet);
-    this.xdg.setClickable(false);
-    this.xdg.setFocusable(false);
-    this.xdg.setFocusableInTouchMode(false);
-    this.xdg.setTextColor(a.m(paramContext, 2131100651));
-    addView(this.xdg);
+    this.BaI = new TextView(paramContext);
+    this.BaI.setLayoutParams(paramAttributeSet);
+    this.BaI.setClickable(false);
+    this.BaI.setFocusable(false);
+    this.BaI.setFocusableInTouchMode(false);
+    this.BaI.setTextColor(a.m(paramContext, 2131100821));
+    addView(this.BaI);
     AppMethodBeat.o(142026);
   }
   
@@ -46,17 +46,17 @@ public class MMImageButton
   {
     AppMethodBeat.i(142031);
     super.setEnabled(paramBoolean);
-    this.xdg.setEnabled(paramBoolean);
-    this.dxD.setEnabled(paramBoolean);
+    this.BaI.setEnabled(paramBoolean);
+    this.dPk.setEnabled(paramBoolean);
     AppMethodBeat.o(142031);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(142028);
-    this.dxD.setImageDrawable(paramDrawable);
-    this.dxD.setVisibility(0);
-    this.xdg.setVisibility(8);
+    this.dPk.setImageDrawable(paramDrawable);
+    this.dPk.setVisibility(0);
+    this.BaI.setVisibility(8);
     AppMethodBeat.o(142028);
   }
   
@@ -70,24 +70,24 @@ public class MMImageButton
   public void setText(int paramInt)
   {
     AppMethodBeat.i(142030);
-    this.xdg.setText(paramInt);
-    this.xdg.setVisibility(0);
-    this.dxD.setVisibility(8);
+    this.BaI.setText(paramInt);
+    this.BaI.setVisibility(0);
+    this.dPk.setVisibility(8);
     AppMethodBeat.o(142030);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(142029);
-    this.xdg.setText(paramString);
-    this.xdg.setVisibility(0);
-    this.dxD.setVisibility(8);
+    this.BaI.setText(paramString);
+    this.BaI.setVisibility(0);
+    this.dPk.setVisibility(8);
     AppMethodBeat.o(142029);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMImageButton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:background="@color/nd" android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="@dimen/a2n" android:textColor="@color/a_u" android:id="@id/cjj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/bwb" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-        <Button android:textSize="@dimen/hs" android:id="@id/bs5" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:text="@string/bw_" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/o7" />
-    </RelativeLayout>
-</merge>
+<RelativeLayout android:layout_width="@dimen/a1y" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bzd" android:background="@drawable/emoji_capture_sticker_item_more_bg" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/bt" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/bze" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:layout_marginTop="22.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/k6" android:textColor="?a28" android:gravity="center_horizontal" android:id="@id/bzf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/brq" android:maxLines="2" android:layout_below="@id/bzd" android:layout_centerHorizontal="true" />
+</RelativeLayout>

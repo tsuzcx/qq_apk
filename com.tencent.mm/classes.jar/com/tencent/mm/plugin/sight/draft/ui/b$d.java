@@ -7,9 +7,9 @@ public enum b$d
   static
   {
     AppMethodBeat.i(28673);
-    zjI = new d("NORMAL", 0);
-    zjJ = new d("EDIT", 1);
-    zjK = new d[] { zjI, zjJ };
+    Doz = new d("NORMAL", 0);
+    DoA = new d("EDIT", 1);
+    DoB = new d[] { Doz, DoA };
     AppMethodBeat.o(28673);
   }
   

@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="right" android:orientation="horizontal" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/b39" android:background="@drawable/k0" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/agg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/jb" android:layout_alignParentRight="true" />
-        <com.tencent.mm.plugin.card.widget.CardTagTextView android:id="@id/csz" android:paddingLeft="10.0dip" android:paddingTop="2.0dip" android:paddingRight="10.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
-        <TextView android:textSize="19.0sp" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.699982dip" android:layout_marginTop="18.699982dip" android:layout_marginRight="80.0dip" android:layout_marginBottom="5.0dip" android:singleLine="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/g1a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="10.0dip" android:singleLine="true" android:layout_below="@id/gam" android:layout_alignLeft="@id/gam" />
-        <View android:id="@id/gkb" android:background="@drawable/pc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginRight="40.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/g1a" android:layout_alignLeft="@id/gam" android:layerType="software" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/rk" android:ellipsize="end" android:id="@id/ct3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="5.299988dip" android:singleLine="true" android:layout_below="@id/gkb" android:layout_alignLeft="@id/gam" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/rk" android:ellipsize="end" android:id="@id/csr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="13.0dip" android:singleLine="true" android:layout_below="@id/ct3" android:layout_alignLeft="@id/gam" />
-    </RelativeLayout>
-</LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

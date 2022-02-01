@@ -17,40 +17,40 @@ import android.view.View;
 
 public final class b
 {
-  public static final int jE = 0;
-  private final a jF;
-  private final Path jG;
-  private final Paint jH;
-  public final Paint jI;
-  private c.d jJ;
-  public Drawable jK;
-  private boolean jL;
-  private boolean jM;
+  public static final int jG = 0;
+  private final a jH;
+  private final Path jI;
+  private final Paint jJ;
+  public final Paint jK;
+  private c.d jL;
+  public Drawable jM;
+  private boolean jN;
+  private boolean jO;
   private final View view;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      jE = 2;
+      jG = 2;
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      jE = 1;
+      jG = 1;
       return;
     }
   }
   
   public b(a parama)
   {
-    this.jF = parama;
+    this.jH = parama;
     this.view = ((View)parama);
     this.view.setWillNotDraw(false);
-    this.jG = new Path();
-    this.jH = new Paint(7);
-    this.jI = new Paint(1);
-    this.jI.setColor(0);
+    this.jI = new Path();
+    this.jJ = new Paint(7);
+    this.jK = new Paint(1);
+    this.jK.setColor(0);
   }
   
   private float a(c.d paramd)
@@ -60,39 +60,44 @@ public final class b
   
   private void b(Canvas paramCanvas)
   {
-    if (by())
+    if (bA())
     {
-      Rect localRect = this.jK.getBounds();
-      float f1 = this.jJ.centerX - localRect.width() / 2.0F;
-      float f2 = this.jJ.centerY - localRect.height() / 2.0F;
+      Rect localRect = this.jM.getBounds();
+      float f1 = this.jL.centerX - localRect.width() / 2.0F;
+      float f2 = this.jL.centerY - localRect.height() / 2.0F;
       paramCanvas.translate(f1, f2);
-      this.jK.draw(paramCanvas);
+      this.jM.draw(paramCanvas);
       paramCanvas.translate(-f1, -f2);
     }
   }
   
-  private void bv()
+  private boolean bA()
   {
-    if (jE == 1)
+    return (!this.jN) && (this.jM != null) && (this.jL != null);
+  }
+  
+  private void bx()
+  {
+    if (jG == 1)
     {
-      this.jG.rewind();
-      if (this.jJ != null) {
-        this.jG.addCircle(this.jJ.centerX, this.jJ.centerY, this.jJ.radius, Path.Direction.CW);
+      this.jI.rewind();
+      if (this.jL != null) {
+        this.jI.addCircle(this.jL.centerX, this.jL.centerY, this.jL.radius, Path.Direction.CW);
       }
     }
     this.view.invalidate();
   }
   
-  private boolean bw()
+  private boolean by()
   {
     int i;
-    if ((this.jJ == null) || (this.jJ.isInvalid()))
+    if ((this.jL == null) || (this.jL.isInvalid()))
     {
       i = 1;
-      if (jE != 0) {
+      if (jG != 0) {
         break label45;
       }
-      if ((i != 0) || (!this.jM)) {
+      if ((i != 0) || (!this.jO)) {
         break label43;
       }
     }
@@ -108,22 +113,17 @@ public final class b
     return false;
   }
   
-  private boolean bx()
+  private boolean bz()
   {
-    return (!this.jL) && (Color.alpha(this.jI.getColor()) != 0);
+    return (!this.jN) && (Color.alpha(this.jK.getColor()) != 0);
   }
   
-  private boolean by()
+  public final void bu()
   {
-    return (!this.jL) && (this.jK != null) && (this.jJ != null);
-  }
-  
-  public final void bs()
-  {
-    if (jE == 0)
+    if (jG == 0)
     {
-      this.jL = true;
-      this.jM = false;
+      this.jN = true;
+      this.jO = false;
       this.view.buildDrawingCache();
       Object localObject2 = this.view.getDrawingCache();
       Object localObject1 = localObject2;
@@ -143,37 +143,37 @@ public final class b
       }
       if (localObject1 != null)
       {
-        localObject2 = this.jH;
+        localObject2 = this.jJ;
         Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
         ((Paint)localObject2).setShader(new BitmapShader((Bitmap)localObject1, localTileMode, localTileMode));
       }
-      this.jL = false;
-      this.jM = true;
+      this.jN = false;
+      this.jO = true;
     }
   }
   
-  public final void bt()
+  public final void bv()
   {
-    if (jE == 0)
+    if (jG == 0)
     {
-      this.jM = false;
+      this.jO = false;
       this.view.destroyDrawingCache();
-      this.jH.setShader(null);
+      this.jJ.setShader(null);
       this.view.invalidate();
     }
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (bw()) {
-      switch (jE)
+    if (by()) {
+      switch (jG)
       {
       default: 
-        throw new IllegalStateException("Unsupported strategy " + jE);
+        throw new IllegalStateException("Unsupported strategy " + jG);
       case 2: 
-        this.jF.a(paramCanvas);
-        if (bx()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jI);
+        this.jH.a(paramCanvas);
+        if (bz()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jK);
         }
         break;
       }
@@ -183,21 +183,21 @@ public final class b
       b(paramCanvas);
       return;
       int i = paramCanvas.save();
-      paramCanvas.clipPath(this.jG);
-      this.jF.a(paramCanvas);
-      if (bx()) {
-        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jI);
+      paramCanvas.clipPath(this.jI);
+      this.jH.a(paramCanvas);
+      if (bz()) {
+        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jK);
       }
       paramCanvas.restoreToCount(i);
       continue;
-      paramCanvas.drawCircle(this.jJ.centerX, this.jJ.centerY, this.jJ.radius, this.jH);
-      if (bx())
+      paramCanvas.drawCircle(this.jL.centerX, this.jL.centerY, this.jL.radius, this.jJ);
+      if (bz())
       {
-        paramCanvas.drawCircle(this.jJ.centerX, this.jJ.centerY, this.jJ.radius, this.jI);
+        paramCanvas.drawCircle(this.jL.centerX, this.jL.centerY, this.jL.radius, this.jK);
         continue;
-        this.jF.a(paramCanvas);
-        if (bx()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jI);
+        this.jH.a(paramCanvas);
+        if (bz()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jK);
         }
       }
     }
@@ -206,14 +206,14 @@ public final class b
   public final c.d getRevealInfo()
   {
     Object localObject;
-    if (this.jJ == null) {
+    if (this.jL == null) {
       localObject = null;
     }
     c.d locald;
     do
     {
       return localObject;
-      locald = new c.d(this.jJ);
+      locald = new c.d(this.jL);
       localObject = locald;
     } while (!locald.isInvalid());
     locald.radius = a(locald);
@@ -222,42 +222,42 @@ public final class b
   
   public final boolean isOpaque()
   {
-    return (this.jF.bu()) && (!bw());
+    return (this.jH.bw()) && (!by());
   }
   
   public final void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    this.jK = paramDrawable;
+    this.jM = paramDrawable;
     this.view.invalidate();
   }
   
   public final void setCircularRevealScrimColor(int paramInt)
   {
-    this.jI.setColor(paramInt);
+    this.jK.setColor(paramInt);
     this.view.invalidate();
   }
   
   public final void setRevealInfo(c.d paramd)
   {
     if (paramd == null) {
-      this.jJ = null;
+      this.jL = null;
     }
     label70:
     for (;;)
     {
-      bv();
+      bx();
       return;
-      if (this.jJ == null) {
-        this.jJ = new c.d(paramd);
+      if (this.jL == null) {
+        this.jL = new c.d(paramd);
       }
       for (;;)
       {
         if (!k.e(paramd.radius, a(paramd))) {
           break label70;
         }
-        this.jJ.radius = 3.4028235E+38F;
+        this.jL.radius = 3.4028235E+38F;
         break;
-        this.jJ.b(paramd);
+        this.jL.b(paramd);
       }
     }
   }
@@ -266,12 +266,12 @@ public final class b
   {
     public abstract void a(Canvas paramCanvas);
     
-    public abstract boolean bu();
+    public abstract boolean bw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.circularreveal.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,153 +1,75 @@
 package com.tencent.mm.plugin.webview.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class a
 {
-  private static final Map<Integer, Integer> EpK;
-  private static final Map<Integer, Integer> EpL;
-  private static final Map<Integer, Integer> EpM;
-  private static final Map<String, Integer> EpN;
+  public static final String pFm;
   
   static
   {
-    AppMethodBeat.i(213828);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(-1), Integer.valueOf(5));
-    localHashMap.put(Integer.valueOf(-2), Integer.valueOf(6));
-    localHashMap.put(Integer.valueOf(-3), Integer.valueOf(7));
-    localHashMap.put(Integer.valueOf(-4), Integer.valueOf(8));
-    localHashMap.put(Integer.valueOf(-5), Integer.valueOf(9));
-    localHashMap.put(Integer.valueOf(-6), Integer.valueOf(10));
-    localHashMap.put(Integer.valueOf(-7), Integer.valueOf(11));
-    localHashMap.put(Integer.valueOf(-8), Integer.valueOf(12));
-    localHashMap.put(Integer.valueOf(-9), Integer.valueOf(13));
-    localHashMap.put(Integer.valueOf(-10), Integer.valueOf(14));
-    localHashMap.put(Integer.valueOf(-11), Integer.valueOf(15));
-    localHashMap.put(Integer.valueOf(-12), Integer.valueOf(16));
-    localHashMap.put(Integer.valueOf(-13), Integer.valueOf(17));
-    localHashMap.put(Integer.valueOf(-14), Integer.valueOf(18));
-    localHashMap.put(Integer.valueOf(-15), Integer.valueOf(19));
-    EpK = Collections.unmodifiableMap(localHashMap);
-    localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(-1), Integer.valueOf(4));
-    localHashMap.put(Integer.valueOf(-2), Integer.valueOf(5));
-    localHashMap.put(Integer.valueOf(-3), Integer.valueOf(6));
-    localHashMap.put(Integer.valueOf(-4), Integer.valueOf(7));
-    localHashMap.put(Integer.valueOf(-5), Integer.valueOf(8));
-    localHashMap.put(Integer.valueOf(-6), Integer.valueOf(9));
-    EpL = Collections.unmodifiableMap(localHashMap);
-    localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(0), Integer.valueOf(0));
-    localHashMap.put(Integer.valueOf(1), Integer.valueOf(1));
-    localHashMap.put(Integer.valueOf(2), Integer.valueOf(2));
-    EpM = Collections.unmodifiableMap(localHashMap);
-    localHashMap = new HashMap();
-    localHashMap.put("imagePreview", Integer.valueOf(2));
-    localHashMap.put("profile", Integer.valueOf(3));
-    localHashMap.put("addContact", Integer.valueOf(4));
-    localHashMap.put("shareTimeline", Integer.valueOf(7));
-    localHashMap.put("scanQRCode", Integer.valueOf(8));
-    localHashMap.put("hideOptionMenu", Integer.valueOf(10));
-    localHashMap.put("getBrandWCPayRequest", Integer.valueOf(11));
-    localHashMap.put("editAddress", Integer.valueOf(12));
-    localHashMap.put("getLatestAddress", Integer.valueOf(13));
-    localHashMap.put("jumpWCMall", Integer.valueOf(14));
-    localHashMap.put("geoLocation", Integer.valueOf(15));
-    localHashMap.put("openProductView", Integer.valueOf(16));
-    localHashMap.put("openProductViewWithPid", Integer.valueOf(16));
-    localHashMap.put("openLocation", Integer.valueOf(17));
-    localHashMap.put("hideMenuItems", Integer.valueOf(19));
-    localHashMap.put("connectToFreeWifi", Integer.valueOf(20));
-    localHashMap.put("startRecord", Integer.valueOf(21));
-    localHashMap.put("chooseImage", Integer.valueOf(22));
-    localHashMap.put("scanCover", Integer.valueOf(23));
-    localHashMap.put("openGameWebView", Integer.valueOf(28));
-    EpN = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(213828);
+    AppMethodBeat.i(224502);
+    pFm = "https://" + WeChatHosts.domainString(2131761726) + "/__tmpl__/";
+    AppMethodBeat.o(224502);
   }
   
-  public static int CP(long paramLong)
+  public static void aP(int paramInt, long paramLong)
   {
-    if (paramLong < 0L) {
-      return -1;
-    }
-    if (paramLong <= 2000L) {
-      return 1;
-    }
-    if (paramLong <= 6000L) {
-      return 2;
-    }
-    if (paramLong <= 12000L) {
-      return 3;
-    }
-    if (paramLong <= 60000L) {
-      return 4;
-    }
-    return 5;
+    AppMethodBeat.i(103133);
+    h.CyF.n(1009L, paramInt, paramLong);
+    AppMethodBeat.o(103133);
   }
   
-  public static int XC(int paramInt)
+  public static void agh(int paramInt)
   {
-    AppMethodBeat.i(213823);
-    Integer localInteger2 = (Integer)EpK.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = (Integer)EpK.get(Integer.valueOf(-1));
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(213823);
-    return paramInt;
+    AppMethodBeat.i(103128);
+    e(974, paramInt, 1, false);
+    AppMethodBeat.o(103128);
   }
   
-  public static int XD(int paramInt)
+  public static void agi(int paramInt)
   {
-    AppMethodBeat.i(213824);
-    Integer localInteger2 = (Integer)EpL.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = (Integer)EpL.get(Integer.valueOf(-1));
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(213824);
-    return paramInt;
+    AppMethodBeat.i(103132);
+    aP(paramInt, 1L);
+    AppMethodBeat.o(103132);
   }
   
-  public static int XE(int paramInt)
+  private static void e(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(213825);
-    Integer localInteger2 = (Integer)EpM.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = Integer.valueOf(-1);
+    AppMethodBeat.i(103131);
+    Log.i("ConstantsPreload", "id:%d, key:%d, valye:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (paramInt1 > 0) {
+      h.CyF.idkeyStat(paramInt1, paramInt2, paramInt3, false);
     }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(213825);
-    return paramInt;
+    if ((paramBoolean) && (paramInt1 != 908) && (paramInt1 != 0)) {
+      h.CyF.idkeyStat(908L, paramInt2, paramInt3, false);
+    }
+    h.CyF.a(15792, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(103131);
   }
   
-  public static void XF(int paramInt)
+  public static void gH(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(213827);
-    g.yxI.idkeyStat(1061L, paramInt, 1L, false);
-    AppMethodBeat.o(213827);
+    AppMethodBeat.i(186127);
+    e(paramInt1, paramInt2, 1, true);
+    AppMethodBeat.o(186127);
   }
   
-  public static int aJF(String paramString)
+  public static void kh(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(213826);
-    Integer localInteger = (Integer)EpN.get(paramString);
-    paramString = localInteger;
-    if (localInteger == null) {
-      paramString = Integer.valueOf(-1);
-    }
-    int i = paramString.intValue();
-    AppMethodBeat.o(213826);
-    return i;
+    AppMethodBeat.i(103130);
+    e(908, paramInt1, paramInt2, true);
+    AppMethodBeat.o(103130);
+  }
+  
+  public static void pl(int paramInt)
+  {
+    AppMethodBeat.i(103127);
+    e(908, paramInt, 1, true);
+    AppMethodBeat.o(103127);
   }
 }
 

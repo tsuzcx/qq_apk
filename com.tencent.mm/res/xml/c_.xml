@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_voice_play_mode" android:title="@string/fcd" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_enter_button_send" android:title="@string/f5y" />
-    <Preference android:key="settings_chatting_bg" android:layout="@layout/aop" android:title="@string/f5e" />
-    <Preference android:key="settings_emoji_manager" android:layout="@layout/aop" android:title="@string/f5u" />
-    <PreferenceTitleCategory android:title="@string/f5a" />
-    <Preference android:key="settings_bak_chat" android:layout="@layout/aop" android:title="@string/a66" />
-    <Preference android:key="settings_reset" android:layout="@layout/aop" android:title="@string/f_f" />
-    <Preference android:key="settings_recovery" android:layout="@layout/aop" android:title="@string/bdt" />
+    <PreferenceTitleCategory android:title="@string/gnv" />
+    <CheckBoxPreference android:key="settings_find_me_by_weixin" android:title="@string/a07" />
+    <CheckBoxPreference android:key="settings_find_me_by_mobile" android:title="@string/wm" />
+    <CheckBoxPreference android:key="settings_find_me_by_QQ" android:title="@string/y9" />
+    <CheckBoxPreference android:key="settings_find_me_by_google" android:title="@string/vx" />
+    <Preference android:layout="@layout/b_c" android:title="@string/gtk" />
+    <PreferenceTitleCategory android:key="settings_friend_verify" android:title="@string/gnu" />
+    <CheckBoxPreference android:key="settings_add_me_by_chatroom" android:title="@string/gn9" />
+    <CheckBoxPreference android:key="settings_add_me_by_qrcode" android:title="@string/gna" />
+    <CheckBoxPreference android:key="settings_add_me_by_namecard" android:title="@string/gn_" />
 </PreferenceScreen>

@@ -17,10 +17,10 @@ final class WalletLqtDetailUI$4
   {
     AppMethodBeat.i(68790);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    paramView = (String)this.CTa.getTag();
-    f.o(this.CSZ, paramView, false);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    paramView = (String)this.Hyj.getTag();
+    f.o(this.Hyi, paramView, false);
     a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(68790);
   }

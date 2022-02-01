@@ -13,9 +13,9 @@ import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aw.b.a;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
@@ -26,41 +26,41 @@ import java.util.List;
 public class CountryCodeUI
   extends MMActivity
 {
-  private VerticalScrollBar.a KGk;
-  private c Las;
-  private VerticalScrollBar Lat;
-  private String[] Lau = null;
+  private VerticalScrollBar.a PTg;
+  private c Qpt;
+  private VerticalScrollBar Qpu;
+  private String[] Qpv = null;
   private String countryCode;
-  private r fUI;
-  private String ihe;
-  private String jff = "";
-  private String jnh;
+  private s gzP;
+  private String jbZ;
+  private String kdi = "";
+  private String klq;
   private List<b.a> list;
   private String title = null;
-  private ListView vcG;
-  private boolean vcq = false;
+  private boolean yuQ = false;
+  private ListView yvg;
   
   public int getLayoutId()
   {
     AppMethodBeat.i(39001);
-    if (ad.fok())
+    if (LocaleUtil.isTraditionalChineseAppLang())
     {
       AppMethodBeat.o(39001);
-      return 2131493671;
+      return 2131493801;
     }
     AppMethodBeat.o(39001);
-    return 2131493670;
+    return 2131493800;
   }
   
   public void initView()
   {
     AppMethodBeat.i(39003);
     int i;
-    if (!bu.isNullOrNil(this.title))
+    if (!Util.isNullOrNil(this.title))
     {
       setMMTitle(this.title);
-      this.list = com.tencent.mm.aw.b.Gt(getString(2131757950));
-      if ((this.Lau == null) || (this.Lau.length <= 0)) {
+      this.list = com.tencent.mm.aw.b.Pf(getString(2131758198));
+      if ((this.Qpv == null) || (this.Qpv.length <= 0)) {
         break label175;
       }
       i = this.list.size() - 1;
@@ -68,8 +68,8 @@ public class CountryCodeUI
       if (i < 0) {
         break label175;
       }
-      String str = ((b.a)this.list.get(i)).ihc;
-      String[] arrayOfString = this.Lau;
+      String str = ((b.a)this.list.get(i)).jbX;
+      String[] arrayOfString = this.Qpv;
       int k = arrayOfString.length;
       j = 0;
       label97:
@@ -79,7 +79,7 @@ public class CountryCodeUI
       if (!arrayOfString[j].equals(str)) {
         break label163;
       }
-      ae.i("MicroMsg.CountryCodeUI", "exclude country: %s", new Object[] { str });
+      Log.i("MicroMsg.CountryCodeUI", "exclude country: %s", new Object[] { str });
     }
     label163:
     label170:
@@ -90,24 +90,24 @@ public class CountryCodeUI
       }
       i -= 1;
       break label63;
-      setMMTitle(2131755235);
+      setMMTitle(2131755269);
       break;
       j += 1;
       break label97;
     }
     label175:
-    if (!ad.fok())
+    if (!LocaleUtil.isTraditionalChineseAppLang())
     {
       Collections.sort(this.list, new Comparator() {});
-      this.fUI = new r((byte)0);
-      this.fUI.Lhk = new r.b()
+      this.gzP = new s((byte)0);
+      this.gzP.Qwi = new s.b()
       {
-        public final boolean JO(String paramAnonymousString)
+        public final boolean SN(String paramAnonymousString)
         {
           return false;
         }
         
-        public final void JP(String paramAnonymousString)
+        public final void SO(String paramAnonymousString)
         {
           AppMethodBeat.i(38995);
           CountryCodeUI.a(CountryCodeUI.this, paramAnonymousString);
@@ -115,40 +115,40 @@ public class CountryCodeUI
           AppMethodBeat.o(38995);
         }
         
-        public final void aSL() {}
+        public final void bnA() {}
         
-        public final void aSM() {}
+        public final void bnB() {}
         
-        public final void aSN() {}
+        public final void bny() {}
         
-        public final void aSO() {}
+        public final void bnz() {}
       };
-      addSearchMenu(true, this.fUI);
-      this.vcG = ((ListView)findViewById(2131296471));
-      this.Las = new c(this, this.list);
-      this.Las.vcq = this.vcq;
-      this.vcG.setAdapter(this.Las);
-      this.vcG.setVisibility(0);
-      this.Lat = ((VerticalScrollBar)findViewById(2131296489));
-      if (ad.fok()) {
+      addSearchMenu(true, this.gzP);
+      this.yvg = ((ListView)findViewById(2131296545));
+      this.Qpt = new c(this, this.list);
+      this.Qpt.yuQ = this.yuQ;
+      this.yvg.setAdapter(this.Qpt);
+      this.yvg.setVisibility(0);
+      this.Qpu = ((VerticalScrollBar)findViewById(2131296563));
+      if (LocaleUtil.isTraditionalChineseAppLang()) {
         break label384;
       }
     }
     label384:
-    for (this.KGk = new VerticalScrollBar.a()
+    for (this.PTg = new VerticalScrollBar.a()
         {
-          public final void vy(String paramAnonymousString)
+          public final void DP(String paramAnonymousString)
           {
             int i = 0;
             AppMethodBeat.i(38996);
             int j = paramAnonymousString.charAt(0);
-            if (CountryCodeUI.this.getString(2131762893).equals(paramAnonymousString))
+            if (CountryCodeUI.this.getString(2131765029).equals(paramAnonymousString))
             {
               CountryCodeUI.b(CountryCodeUI.this).setSelection(0);
               AppMethodBeat.o(38996);
               return;
             }
-            paramAnonymousString = CountryCodeUI.c(CountryCodeUI.this).vcp;
+            paramAnonymousString = CountryCodeUI.c(CountryCodeUI.this).yuP;
             if (paramAnonymousString == null)
             {
               AppMethodBeat.o(38996);
@@ -166,20 +166,20 @@ public class CountryCodeUI
             return;
             AppMethodBeat.o(38996);
           }
-        };; this.KGk = new VerticalScrollBar.a()
+        };; this.PTg = new VerticalScrollBar.a()
         {
-          public final void vy(String paramAnonymousString)
+          public final void DP(String paramAnonymousString)
           {
             int i = 0;
             AppMethodBeat.i(38997);
-            if (CountryCodeUI.this.getString(2131762893).equals(paramAnonymousString))
+            if (CountryCodeUI.this.getString(2131765029).equals(paramAnonymousString))
             {
               CountryCodeUI.b(CountryCodeUI.this).setSelection(0);
               AppMethodBeat.o(38997);
               return;
             }
             int j = Integer.decode(paramAnonymousString.substring(0, paramAnonymousString.length() - 1)).intValue();
-            paramAnonymousString = CountryCodeUI.c(CountryCodeUI.this).vcp;
+            paramAnonymousString = CountryCodeUI.c(CountryCodeUI.this).yuP;
             if (paramAnonymousString == null)
             {
               AppMethodBeat.o(38997);
@@ -199,7 +199,7 @@ public class CountryCodeUI
           }
         })
     {
-      this.Lat.setOnScrollBarTouchListener(this.KGk);
+      this.Qpu.setOnScrollBarTouchListener(this.PTg);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -216,24 +216,24 @@ public class CountryCodeUI
           return true;
         }
       });
-      this.vcG.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.yvg.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(38999);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          a.b("com/tencent/mm/ui/tools/CountryCodeUI$7", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          localb.bm(paramAnonymousAdapterView);
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.zo(paramAnonymousLong);
+          a.b("com/tencent/mm/ui/tools/CountryCodeUI$7", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
           paramAnonymousAdapterView = new Intent();
           if (paramAnonymousInt >= CountryCodeUI.b(CountryCodeUI.this).getHeaderViewsCount())
           {
             paramAnonymousView = (b.a)CountryCodeUI.c(CountryCodeUI.this).getItem(paramAnonymousInt - CountryCodeUI.b(CountryCodeUI.this).getHeaderViewsCount());
-            paramAnonymousAdapterView.putExtra("country_name", paramAnonymousView.ihe);
-            paramAnonymousAdapterView.putExtra("couttry_code", paramAnonymousView.ihd);
-            paramAnonymousAdapterView.putExtra("iso_code", paramAnonymousView.ihc);
+            paramAnonymousAdapterView.putExtra("country_name", paramAnonymousView.jbZ);
+            paramAnonymousAdapterView.putExtra("couttry_code", paramAnonymousView.jbY);
+            paramAnonymousAdapterView.putExtra("iso_code", paramAnonymousView.jbX);
             CountryCodeUI.this.setResult(100, paramAnonymousAdapterView);
           }
           CountryCodeUI.this.finish();
@@ -252,11 +252,11 @@ public class CountryCodeUI
   {
     AppMethodBeat.i(39000);
     super.onCreate(paramBundle);
-    this.ihe = bu.bI(getIntent().getStringExtra("country_name"), "");
-    this.countryCode = bu.bI(getIntent().getStringExtra("couttry_code"), "");
-    this.jnh = bu.bI(getIntent().getStringExtra("iso_code"), "");
-    this.vcq = getIntent().getBooleanExtra("CountryCodeUI_isShowCountryCode", true);
-    this.Lau = getIntent().getStringArrayExtra("exclude_countries_iso");
+    this.jbZ = Util.nullAs(getIntent().getStringExtra("country_name"), "");
+    this.countryCode = Util.nullAs(getIntent().getStringExtra("couttry_code"), "");
+    this.klq = Util.nullAs(getIntent().getStringExtra("iso_code"), "");
+    this.yuQ = getIntent().getBooleanExtra("CountryCodeUI_isShowCountryCode", true);
+    this.Qpv = getIntent().getStringArrayExtra("exclude_countries_iso");
     this.title = getIntent().getStringExtra("ui_title");
     initView();
     AppMethodBeat.o(39000);
@@ -268,9 +268,9 @@ public class CountryCodeUI
     if (paramInt == 4)
     {
       paramKeyEvent = new Intent();
-      paramKeyEvent.putExtra("country_name", this.ihe);
+      paramKeyEvent.putExtra("country_name", this.jbZ);
       paramKeyEvent.putExtra("couttry_code", this.countryCode);
-      paramKeyEvent.putExtra("iso_code", this.jnh);
+      paramKeyEvent.putExtra("iso_code", this.klq);
       setResult(100, paramKeyEvent);
       finish();
       AppMethodBeat.o(39004);
@@ -285,8 +285,8 @@ public class CountryCodeUI
   {
     AppMethodBeat.i(39002);
     super.onPause();
-    if (this.fUI != null) {
-      this.fUI.fOV();
+    if (this.gzP != null) {
+      this.gzP.gXP();
     }
     AppMethodBeat.o(39002);
   }
@@ -299,7 +299,7 @@ public class CountryCodeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CountryCodeUI
  * JD-Core Version:    0.7.0.1
  */

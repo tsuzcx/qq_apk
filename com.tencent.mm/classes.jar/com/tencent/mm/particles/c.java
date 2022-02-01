@@ -4,6 +4,8 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.Interpolator;
@@ -18,47 +20,47 @@ import java.util.Random;
 public final class c
 {
   private ValueAnimator animator;
-  private final d iLA;
-  private final ViewGroup iLB;
-  final ConfettiView iLC;
-  final Queue<com.tencent.mm.particles.a.b> iLD;
-  final List<com.tencent.mm.particles.a.b> iLE;
-  private long iLF;
-  int iLG;
-  long iLH;
-  private float iLI;
-  private float iLJ;
-  public Interpolator iLK;
-  private Rect iLL;
-  private float iLM;
-  private float iLN;
-  private float iLO;
-  private float iLP;
-  private float iLQ;
-  private float iLR;
-  private float iLS;
-  private float iLT;
-  private Float iLU;
-  private Float iLV;
-  private Float iLW;
-  private Float iLX;
-  private int iLY;
-  private int iLZ;
-  private final b iLz;
-  private float iMa;
-  private float iMb;
-  private float iMc;
-  private float iMd;
-  private Float iMe;
-  private Float iMf;
-  private long iMg;
-  public float iMh;
-  public float iMi;
+  private float jIA;
+  private float jIB;
+  private float jIC;
+  private float jID;
+  private float jIE;
+  private float jIF;
+  private float jIG;
+  private float jIH;
+  private Float jII;
+  private Float jIJ;
+  private Float jIK;
+  private Float jIL;
+  private int jIM;
+  private int jIN;
+  private float jIO;
+  private float jIP;
+  private float jIQ;
+  private float jIR;
+  private Float jIS;
+  private Float jIT;
+  private long jIU;
+  public float jIV;
+  public float jIW;
+  private final b jIn;
+  private final d jIo;
+  private final ViewGroup jIp;
+  final ConfettiView jIq;
+  final Queue<com.tencent.mm.particles.a.b> jIr;
+  final List<com.tencent.mm.particles.a.b> jIs;
+  private long jIt;
+  int jIu;
+  long jIv;
+  private float jIw;
+  private float jIx;
+  public Interpolator jIy;
+  private Rect jIz;
   private final Random random;
   
   public c(Context paramContext, b paramb, d paramd, ViewGroup paramViewGroup)
   {
-    this(paramb, paramd, paramViewGroup, ConfettiView.cT(paramContext));
+    this(paramb, paramd, paramViewGroup, ConfettiView.jdMethod_do(paramContext));
     AppMethodBeat.i(151350);
     AppMethodBeat.o(151350);
   }
@@ -67,37 +69,47 @@ public final class c
   {
     AppMethodBeat.i(151351);
     this.random = new Random();
-    this.iLD = new LinkedList();
-    this.iLE = new ArrayList(300);
-    this.iLz = paramb;
-    this.iLA = paramd;
-    this.iLB = paramViewGroup;
-    this.iLC = paramConfettiView;
-    this.iLC.iLE = this.iLE;
-    this.iLC.addOnAttachStateChangeListener(new c.1(this));
-    this.iMg = -1L;
-    this.iLL = new Rect(0, 0, paramViewGroup.getWidth(), paramViewGroup.getHeight());
+    this.jIr = new LinkedList();
+    this.jIs = new ArrayList(300);
+    this.jIn = paramb;
+    this.jIo = paramd;
+    this.jIp = paramViewGroup;
+    this.jIq = paramConfettiView;
+    this.jIq.jIs = this.jIs;
+    this.jIq.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
+    {
+      public final void onViewAttachedToWindow(View paramAnonymousView) {}
+      
+      public final void onViewDetachedFromWindow(View paramAnonymousView)
+      {
+        AppMethodBeat.i(151348);
+        c.this.bkK();
+        AppMethodBeat.o(151348);
+      }
+    });
+    this.jIU = -1L;
+    this.jIz = new Rect(0, 0, paramViewGroup.getWidth(), paramViewGroup.getHeight());
     AppMethodBeat.o(151351);
   }
   
-  private void E(int paramInt, long paramLong)
+  private void H(int paramInt, long paramLong)
   {
     AppMethodBeat.i(151357);
     int i = 0;
     com.tencent.mm.particles.a.b localb;
     if (i < paramInt)
     {
-      localb = (com.tencent.mm.particles.a.b)this.iLD.poll();
+      localb = (com.tencent.mm.particles.a.b)this.jIr.poll();
       if (localb != null) {
         break label90;
       }
-      localb = this.iLz.a(this.random);
+      localb = this.jIn.a(this.random);
     }
     label90:
     for (;;)
     {
-      a(localb, this.iLA, this.random, paramLong);
-      this.iLE.add(localb);
+      a(localb, this.jIo, this.random, paramLong);
+      this.jIs.add(localb);
       i += 1;
       break;
       AppMethodBeat.o(151357);
@@ -118,82 +130,82 @@ public final class c
     Object localObject = null;
     AppMethodBeat.i(151359);
     paramb.reset();
-    paramb.iMv = paramLong;
-    paramb.iMw = paramd.ar(paramRandom.nextFloat());
-    paramb.iMx = paramd.as(paramRandom.nextFloat());
-    paramb.iMy = a(this.iLM, this.iLN, paramRandom);
-    paramb.iMz = a(this.iLO, this.iLP, paramRandom);
-    paramb.iLQ = a(this.iLQ, this.iLR, paramRandom);
-    paramb.iLS = a(this.iLS, this.iLT, paramRandom);
-    if (this.iLU == null)
+    paramb.jJj = paramLong;
+    paramb.jJk = paramd.aA(paramRandom.nextFloat());
+    paramb.jJl = paramd.aB(paramRandom.nextFloat());
+    paramb.jJm = a(this.jIA, this.jIB, paramRandom);
+    paramb.jJn = a(this.jIC, this.jID, paramRandom);
+    paramb.jIE = a(this.jIE, this.jIF, paramRandom);
+    paramb.jIG = a(this.jIG, this.jIH, paramRandom);
+    if (this.jII == null)
     {
       paramd = null;
-      paramb.iLU = paramd;
-      if (this.iLW != null) {
+      paramb.jII = paramd;
+      if (this.jIK != null) {
         break label270;
       }
       paramd = null;
       label129:
-      paramb.iLW = paramd;
-      paramb.iMC = a(this.iLY, this.iLZ, paramRandom);
-      paramb.iMD = a(this.iMa, this.iMb, paramRandom);
-      paramb.iMc = a(this.iMc, this.iMd, paramRandom);
-      if (this.iMe != null) {
+      paramb.jIK = paramd;
+      paramb.jJq = a(this.jIM, this.jIN, paramRandom);
+      paramb.jJr = a(this.jIO, this.jIP, paramRandom);
+      paramb.jIQ = a(this.jIQ, this.jIR, paramRandom);
+      if (this.jIS != null) {
         break label295;
       }
     }
     label270:
     label295:
-    for (paramd = localObject;; paramd = Float.valueOf(a(this.iMe.floatValue(), this.iMf.floatValue(), paramRandom)))
+    for (paramd = localObject;; paramd = Float.valueOf(a(this.jIS.floatValue(), this.jIT.floatValue(), paramRandom)))
     {
-      paramb.iMe = paramd;
-      paramb.iMg = this.iMg;
-      paramb.iLK = this.iLK;
-      paramb.iMF = a(this.iMh, this.iMi, paramRandom);
-      paramb.j(this.iLL);
+      paramb.jIS = paramd;
+      paramb.jIU = this.jIU;
+      paramb.jIy = this.jIy;
+      paramb.jJt = a(this.jIV, this.jIW, paramRandom);
+      paramb.k(this.jIz);
       AppMethodBeat.o(151359);
       return;
-      paramd = Float.valueOf(a(this.iLU.floatValue(), this.iLV.floatValue(), paramRandom));
+      paramd = Float.valueOf(a(this.jII.floatValue(), this.jIJ.floatValue(), paramRandom));
       break;
-      paramd = Float.valueOf(a(this.iLW.floatValue(), this.iLX.floatValue(), paramRandom));
+      paramd = Float.valueOf(a(this.jIK.floatValue(), this.jIL.floatValue(), paramRandom));
       break label129;
     }
   }
   
-  private void aQi()
+  private void bkL()
   {
     AppMethodBeat.i(151355);
     if (this.animator != null) {
       this.animator.cancel();
     }
-    this.iLF = 0L;
-    Iterator localIterator = this.iLE.iterator();
+    this.jIt = 0L;
+    Iterator localIterator = this.jIs.iterator();
     while (localIterator.hasNext())
     {
-      this.iLD.add(localIterator.next());
+      this.jIr.add(localIterator.next());
       localIterator.remove();
     }
     AppMethodBeat.o(151355);
   }
   
-  private void aQj()
+  private void bkM()
   {
     AppMethodBeat.i(151356);
-    ViewParent localViewParent = this.iLC.getParent();
+    ViewParent localViewParent = this.jIq.getParent();
     if (localViewParent != null)
     {
-      if (localViewParent != this.iLB) {
-        ((ViewGroup)localViewParent).removeView(this.iLC);
+      if (localViewParent != this.jIp) {
+        ((ViewGroup)localViewParent).removeView(this.jIq);
       }
     }
     else {
-      this.iLB.addView(this.iLC);
+      this.jIp.addView(this.jIq);
     }
-    this.iLC.terminated = false;
+    this.jIq.terminated = false;
     AppMethodBeat.o(151356);
   }
   
-  private void aQk()
+  private void bkN()
   {
     AppMethodBeat.i(151358);
     this.animator = ValueAnimator.ofInt(new int[] { 0 }).setDuration(9223372036854775807L);
@@ -205,7 +217,7 @@ public final class c
         long l1 = paramAnonymousValueAnimator.getCurrentPlayTime();
         c.a(c.this, l1);
         paramAnonymousValueAnimator = c.this;
-        Iterator localIterator = paramAnonymousValueAnimator.iLE.iterator();
+        Iterator localIterator = paramAnonymousValueAnimator.jIs.iterator();
         label93:
         label358:
         label364:
@@ -213,30 +225,30 @@ public final class c
         while (localIterator.hasNext())
         {
           com.tencent.mm.particles.a.b localb = (com.tencent.mm.particles.a.b)localIterator.next();
-          if (localb.iMv == -1L) {
-            localb.iMv = l1;
+          if (localb.jJj == -1L) {
+            localb.jJj = l1;
           }
-          long l2 = l1 - localb.iMv;
+          long l2 = l1 - localb.jJj;
           boolean bool;
           if (l2 >= 0L)
           {
             bool = true;
-            localb.iMK = bool;
-            if ((localb.iMK) && (!localb.terminated))
+            localb.jJy = bool;
+            if ((localb.jJy) && (!localb.terminated))
             {
-              localb.iMH = com.tencent.mm.particles.a.b.a(l2, localb.iMw, localb.iMy, localb.iLQ, localb.iMA, localb.iLU);
-              localb.iMI = com.tencent.mm.particles.a.b.a(l2, localb.iMx, localb.iMz, localb.iLS, localb.iMB, localb.iLW);
-              localb.iMJ = com.tencent.mm.particles.a.b.a(l2, localb.iMC, localb.iMD, localb.iMc, localb.iME, localb.iMe);
-              if (localb.iLK == null) {
+              localb.jJv = com.tencent.mm.particles.a.b.a(l2, localb.jJk, localb.jJm, localb.jIE, localb.jJo, localb.jII);
+              localb.jJw = com.tencent.mm.particles.a.b.a(l2, localb.jJl, localb.jJn, localb.jIG, localb.jJp, localb.jIK);
+              localb.jJx = com.tencent.mm.particles.a.b.a(l2, localb.jJq, localb.jJr, localb.jIQ, localb.jJs, localb.jIS);
+              if (localb.jIy == null) {
                 break label347;
               }
-              localb.alpha = ((int)(localb.iLK.getInterpolation((float)l2 / localb.iMF) * 255.0F));
-              if ((localb.iML) || ((float)l2 < localb.iMF)) {
+              localb.alpha = ((int)(localb.jIy.getInterpolation((float)l2 / localb.jJt) * 255.0F));
+              if ((localb.jJz) || ((float)l2 < localb.jJt)) {
                 break label358;
               }
               bool = true;
               localb.terminated = bool;
-              localb.iMG = Math.min(1.0F, (float)l2 / localb.iMF);
+              localb.jJu = Math.min(1.0F, (float)l2 / localb.jJt);
             }
             if (localb.terminated) {
               break label364;
@@ -248,7 +260,7 @@ public final class c
               break label367;
             }
             localIterator.remove();
-            paramAnonymousValueAnimator.iLD.add(localb);
+            paramAnonymousValueAnimator.jIr.add(localb);
             break;
             bool = false;
             break label93;
@@ -261,13 +273,13 @@ public final class c
         label257:
         label280:
         label347:
-        if ((c.this.iLE.size() == 0) && (l1 >= c.this.iLH))
+        if ((c.this.jIs.size() == 0) && (l1 >= c.this.jIv))
         {
-          c.this.aQh();
+          c.this.bkK();
           AppMethodBeat.o(151349);
           return;
         }
-        c.this.iLC.invalidate();
+        c.this.jIq.invalidate();
         AppMethodBeat.o(151349);
       }
     });
@@ -275,106 +287,114 @@ public final class c
     AppMethodBeat.o(151358);
   }
   
-  public final c C(float paramFloat1, float paramFloat2)
+  public final c AQ(long paramLong)
   {
-    this.iLM = (paramFloat1 / 1000.0F);
-    this.iLN = (paramFloat2 / 1000.0F);
+    this.jIU = paramLong;
     return this;
   }
   
-  public final c D(float paramFloat1, float paramFloat2)
+  public final c G(float paramFloat1, float paramFloat2)
   {
-    this.iLO = (paramFloat1 / 1000.0F);
-    this.iLP = (paramFloat2 / 1000.0F);
+    this.jIA = (paramFloat1 / 1000.0F);
+    this.jIB = (paramFloat2 / 1000.0F);
     return this;
   }
   
-  public final c aQb()
+  public final c H(float paramFloat1, float paramFloat2)
   {
-    this.iLG = 1;
+    this.jIC = (paramFloat1 / 1000.0F);
+    this.jID = (paramFloat2 / 1000.0F);
     return this;
   }
   
-  public final c aQc()
+  public final c ax(float paramFloat)
   {
-    this.iLH = 9223372036854775807L;
+    this.jIw = (paramFloat / 1000.0F);
+    this.jIx = (1.0F / this.jIw);
     return this;
   }
   
-  public final c aQd()
+  public final c ay(float paramFloat)
   {
-    this.iLY = 180;
-    this.iLZ = 180;
+    this.jIE = (paramFloat / 1000000.0F);
+    this.jIF = 0.0F;
     return this;
   }
   
-  public final c aQe()
+  public final c az(float paramFloat)
   {
-    this.iMc = 0.00036F;
-    this.iMd = 0.00018F;
+    this.jIG = (paramFloat / 1000000.0F);
+    this.jIH = 0.0F;
     return this;
   }
   
-  public final c aQf()
+  public final c bkD()
+  {
+    this.jIu = 1;
+    return this;
+  }
+  
+  public final c bkE()
+  {
+    this.jIv = 9223372036854775807L;
+    return this;
+  }
+  
+  public final c bkF()
+  {
+    AppMethodBeat.i(223652);
+    c localc = G(0.0F, 0.0F);
+    AppMethodBeat.o(223652);
+    return localc;
+  }
+  
+  public final c bkG()
+  {
+    this.jIM = 180;
+    this.jIN = 180;
+    return this;
+  }
+  
+  public final c bkH()
+  {
+    this.jIQ = 0.00036F;
+    this.jIR = 0.00018F;
+    return this;
+  }
+  
+  public final c bkI()
   {
     AppMethodBeat.i(151352);
-    this.iMe = Float.valueOf(0.36F);
-    this.iMf = Float.valueOf(0.0F);
+    this.jIS = Float.valueOf(0.36F);
+    this.jIT = Float.valueOf(0.0F);
     AppMethodBeat.o(151352);
     return this;
   }
   
-  public final c aQg()
+  public final c bkJ()
   {
     AppMethodBeat.i(151353);
-    aQi();
-    aQj();
-    E(this.iLG, 0L);
-    aQk();
+    bkL();
+    bkM();
+    H(this.jIu, 0L);
+    bkN();
     AppMethodBeat.o(151353);
     return this;
   }
   
-  public final void aQh()
+  public final void bkK()
   {
     AppMethodBeat.i(151354);
     if (this.animator != null) {
       this.animator.cancel();
     }
-    this.iLC.aQh();
+    this.jIq.bkK();
     AppMethodBeat.o(151354);
-  }
-  
-  public final c ao(float paramFloat)
-  {
-    this.iLI = (paramFloat / 1000.0F);
-    this.iLJ = (1.0F / this.iLI);
-    return this;
-  }
-  
-  public final c ap(float paramFloat)
-  {
-    this.iLQ = (paramFloat / 1000000.0F);
-    this.iLR = 0.0F;
-    return this;
-  }
-  
-  public final c aq(float paramFloat)
-  {
-    this.iLS = (paramFloat / 1000000.0F);
-    this.iLT = 0.0F;
-    return this;
-  }
-  
-  public final c sK(long paramLong)
-  {
-    this.iMg = paramLong;
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.particles.c
  * JD-Core Version:    0.7.0.1
  */

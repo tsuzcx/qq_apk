@@ -8,54 +8,64 @@ import java.util.LinkedList;
 
 public final class d
 {
-  private static LinkedList<a> pvq;
-  private static LinkedList<b> pvr;
-  private static LinkedList<c> pvs;
-  private static LinkedList<f> pvt;
-  private static LinkedList<e> pvu;
-  private static LinkedList<d> pvv;
-  private static LinkedList<g> pvw;
-  private static a.b pvx;
+  private static LinkedList<a> qKH;
+  private static LinkedList<b> qKI;
+  private static LinkedList<c> qKJ;
+  private static LinkedList<f> qKK;
+  private static LinkedList<e> qKL;
+  private static LinkedList<d> qKM;
+  private static LinkedList<g> qKN;
+  private static a.b qKO;
   
   static
   {
     AppMethodBeat.i(8895);
-    pvq = new LinkedList();
-    pvr = new LinkedList();
-    pvs = new LinkedList();
-    pvt = new LinkedList();
-    pvu = new LinkedList();
-    pvv = new LinkedList();
-    pvw = new LinkedList();
+    qKH = new LinkedList();
+    qKI = new LinkedList();
+    qKJ = new LinkedList();
+    qKK = new LinkedList();
+    qKL = new LinkedList();
+    qKM = new LinkedList();
+    qKN = new LinkedList();
     AppMethodBeat.o(8895);
+  }
+  
+  public static void CI(long paramLong)
+  {
+    AppMethodBeat.i(8873);
+    Iterator localIterator = qKM.iterator();
+    while (localIterator.hasNext()) {
+      ((d)localIterator.next()).O(5, paramLong);
+    }
+    AppMethodBeat.o(8873);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(8876);
-    pvq.add(parama);
+    qKH.add(parama);
     AppMethodBeat.o(8876);
   }
   
   public static void a(b paramb)
   {
     AppMethodBeat.i(8879);
-    pvr.add(paramb);
+    qKI.add(paramb);
     AppMethodBeat.o(8879);
   }
   
   public static void a(c paramc)
   {
     AppMethodBeat.i(8882);
-    pvs.add(paramc);
+    qKJ.add(paramc);
     AppMethodBeat.o(8882);
   }
   
   public static void a(d paramd)
   {
     AppMethodBeat.i(8874);
-    if (!pvv.contains(paramd)) {
-      pvv.add(paramd);
+    if (!qKM.contains(paramd)) {
+      qKM.add(paramd);
     }
     AppMethodBeat.o(8874);
   }
@@ -63,8 +73,8 @@ public final class d
   public static void a(e parame)
   {
     AppMethodBeat.i(8888);
-    if (!pvu.contains(parame)) {
-      pvu.add(parame);
+    if (!qKL.contains(parame)) {
+      qKL.add(parame);
     }
     AppMethodBeat.o(8888);
   }
@@ -72,45 +82,45 @@ public final class d
   public static void a(f paramf)
   {
     AppMethodBeat.i(8885);
-    pvt.add(paramf);
+    qKK.add(paramf);
     AppMethodBeat.o(8885);
   }
   
   public static void a(g paramg)
   {
     AppMethodBeat.i(8891);
-    if (!pvw.contains(paramg)) {
-      pvw.add(paramg);
+    if (!qKN.contains(paramg)) {
+      qKN.add(paramg);
     }
     AppMethodBeat.o(8891);
   }
   
-  public static void abn(String paramString)
+  public static void alt(String paramString)
   {
     AppMethodBeat.i(8887);
-    Iterator localIterator = pvt.iterator();
+    Iterator localIterator = qKK.iterator();
     while (localIterator.hasNext()) {
-      ((f)localIterator.next()).abr(paramString);
+      ((f)localIterator.next()).alx(paramString);
     }
     AppMethodBeat.o(8887);
   }
   
-  public static void abo(String paramString)
+  public static void alu(String paramString)
   {
     AppMethodBeat.i(8890);
-    Iterator localIterator = pvu.iterator();
+    Iterator localIterator = qKL.iterator();
     while (localIterator.hasNext()) {
-      ((e)localIterator.next()).abq(paramString);
+      ((e)localIterator.next()).alw(paramString);
     }
     AppMethodBeat.o(8890);
   }
   
-  public static void abp(String paramString)
+  public static void alv(String paramString)
   {
     AppMethodBeat.i(8893);
-    Iterator localIterator = pvw.iterator();
+    Iterator localIterator = qKN.iterator();
     while (localIterator.hasNext()) {
-      ((g)localIterator.next()).abs(paramString);
+      ((g)localIterator.next()).aly(paramString);
     }
     AppMethodBeat.o(8893);
   }
@@ -118,127 +128,117 @@ public final class d
   public static void b(a parama)
   {
     AppMethodBeat.i(8877);
-    pvq.remove(parama);
+    qKH.remove(parama);
     AppMethodBeat.o(8877);
   }
   
   public static void b(b paramb)
   {
     AppMethodBeat.i(8880);
-    pvr.remove(paramb);
+    qKI.remove(paramb);
     AppMethodBeat.o(8880);
   }
   
   public static void b(c paramc)
   {
     AppMethodBeat.i(8883);
-    pvs.remove(paramc);
+    qKJ.remove(paramc);
     AppMethodBeat.o(8883);
   }
   
   public static void b(d paramd)
   {
     AppMethodBeat.i(8875);
-    pvv.remove(paramd);
+    qKM.remove(paramd);
     AppMethodBeat.o(8875);
   }
   
   public static void b(e parame)
   {
     AppMethodBeat.i(8889);
-    pvu.remove(parame);
+    qKL.remove(parame);
     AppMethodBeat.o(8889);
   }
   
   public static void b(f paramf)
   {
     AppMethodBeat.i(8886);
-    pvt.remove(paramf);
+    qKK.remove(paramf);
     AppMethodBeat.o(8886);
   }
   
   public static void b(g paramg)
   {
     AppMethodBeat.i(8892);
-    pvw.remove(paramg);
+    qKN.remove(paramg);
     AppMethodBeat.o(8892);
   }
   
-  public static void cds()
-  {
-    AppMethodBeat.i(8871);
-    if (pvx == null) {
-      pvx = new a.b()
-      {
-        public final void L(int paramAnonymousInt, long paramAnonymousLong)
-        {
-          AppMethodBeat.i(8870);
-          d.M(paramAnonymousInt, paramAnonymousLong);
-          AppMethodBeat.o(8870);
-        }
-      };
-    }
-    a.a(pvx);
-    AppMethodBeat.o(8871);
-  }
-  
-  public static void cdt()
-  {
-    AppMethodBeat.i(8872);
-    a.b(pvx);
-    pvx = null;
-    pvq.clear();
-    pvr.clear();
-    pvs.clear();
-    pvt.clear();
-    pvu.clear();
-    pvv.clear();
-    AppMethodBeat.o(8872);
-  }
-  
-  public static void ceg()
+  public static void cBW()
   {
     AppMethodBeat.i(8881);
-    Iterator localIterator = pvr.iterator();
+    Iterator localIterator = qKI.iterator();
     while (localIterator.hasNext()) {
       ((b)localIterator.next()).onClick();
     }
     AppMethodBeat.o(8881);
   }
   
-  public static void jU(boolean paramBoolean)
+  public static void cBn()
+  {
+    AppMethodBeat.i(8871);
+    if (qKO == null) {
+      qKO = new a.b()
+      {
+        public final void O(int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(8870);
+          d.P(paramAnonymousInt, paramAnonymousLong);
+          AppMethodBeat.o(8870);
+        }
+      };
+    }
+    a.a(qKO);
+    AppMethodBeat.o(8871);
+  }
+  
+  public static void cBo()
+  {
+    AppMethodBeat.i(8872);
+    a.b(qKO);
+    qKO = null;
+    qKH.clear();
+    qKI.clear();
+    qKJ.clear();
+    qKK.clear();
+    qKL.clear();
+    qKM.clear();
+    AppMethodBeat.o(8872);
+  }
+  
+  public static void kX(boolean paramBoolean)
   {
     AppMethodBeat.i(8878);
-    Iterator localIterator = pvq.iterator();
+    Iterator localIterator = qKH.iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).jW(paramBoolean);
+      ((a)localIterator.next()).kZ(paramBoolean);
     }
     AppMethodBeat.o(8878);
   }
   
-  public static void jV(boolean paramBoolean)
+  public static void kY(boolean paramBoolean)
   {
     AppMethodBeat.i(8884);
-    Iterator localIterator = pvs.iterator();
+    Iterator localIterator = qKJ.iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).jX(paramBoolean);
+      ((c)localIterator.next()).la(paramBoolean);
     }
     AppMethodBeat.o(8884);
   }
   
-  public static void uE(long paramLong)
-  {
-    AppMethodBeat.i(8873);
-    Iterator localIterator = pvv.iterator();
-    while (localIterator.hasNext()) {
-      ((d)localIterator.next()).L(5, paramLong);
-    }
-    AppMethodBeat.o(8873);
-  }
-  
   public static abstract interface a
   {
-    public abstract void jW(boolean paramBoolean);
+    public abstract void kZ(boolean paramBoolean);
   }
   
   public static abstract interface b
@@ -248,32 +248,32 @@ public final class d
   
   public static abstract interface c
   {
-    public abstract void jX(boolean paramBoolean);
+    public abstract void la(boolean paramBoolean);
   }
   
   public static abstract interface d
   {
-    public abstract void L(int paramInt, long paramLong);
+    public abstract void O(int paramInt, long paramLong);
   }
   
   public static abstract interface e
   {
-    public abstract void abq(String paramString);
+    public abstract void alw(String paramString);
   }
   
   public static abstract interface f
   {
-    public abstract void abr(String paramString);
+    public abstract void alx(String paramString);
   }
   
   public static abstract interface g
   {
-    public abstract void abs(String paramString);
+    public abstract void aly(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a.d
  * JD-Core Version:    0.7.0.1
  */

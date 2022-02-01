@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.r;
+import android.content.Intent;
+import com.tencent.luggage.h.f.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s;
 
 public final class bp
-  extends a<r>
+  extends d<s>
 {
-  public static final int CTRL_INDEX = 201;
-  public static final String NAME = "openUrl";
+  public static final int CTRL_INDEX = 102;
+  public static final String NAME = "makePhoneCall";
 }
 
 

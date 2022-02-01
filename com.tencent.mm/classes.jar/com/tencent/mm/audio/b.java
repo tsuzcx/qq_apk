@@ -2,96 +2,98 @@ package com.tencent.mm.audio;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.audio.b.d;
 import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.plugin.audio.d.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "isRequestBluetoothStart", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "startRecordHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "plugin-audiologic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "isRequestBluetoothStart", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "startRecordHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "plugin-audiologic_release"})
 public final class b
-  extends d
+  extends com.tencent.mm.plugin.audio.b.d
 {
-  public static final b.a dcW;
-  private final aq dcT;
-  private boolean dcU;
-  d.g.a.b<? super Boolean, z> dcV;
+  public static final b.a dtN;
+  private final MMHandler dtK;
+  private boolean dtL;
+  kotlin.g.a.b<? super Boolean, x> dtM;
   
   static
   {
-    AppMethodBeat.i(200175);
-    dcW = new b.a((byte)0);
-    AppMethodBeat.o(200175);
+    AppMethodBeat.i(187347);
+    dtN = new b.a((byte)0);
+    AppMethodBeat.o(187347);
   }
   
-  public b(d.g.a.b<? super Boolean, z> paramb)
+  public b(kotlin.g.a.b<? super Boolean, x> paramb)
   {
-    AppMethodBeat.i(200174);
-    this.dcV = paramb;
-    com.tencent.mm.plugin.audio.d.a.bHI();
-    c.bHI();
-    paramb = com.tencent.mm.plugin.audio.c.a.nxo;
+    AppMethodBeat.i(187346);
+    this.dtM = paramb;
+    com.tencent.mm.plugin.audio.d.b.cet();
+    com.tencent.mm.plugin.audio.d.d.cet();
+    paramb = com.tencent.mm.plugin.audio.c.a.oIh;
     a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    this.dcT = new aq((aq.a)new b(this));
-    AppMethodBeat.o(200174);
+    this.dtK = new MMHandler((MMHandler.Callback)new b(this));
+    AppMethodBeat.o(187346);
   }
   
-  public final void Oc()
+  public final void Yo()
   {
-    AppMethodBeat.i(200171);
-    Object localObject = com.tencent.mm.plugin.audio.c.a.nxo;
+    AppMethodBeat.i(187343);
+    Object localObject = com.tencent.mm.plugin.audio.c.a.oIh;
     a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    ae.i("MicroMsg.SceneVoiceRecorderAudioManager", "some one has been request audio to record");
-    localObject = com.tencent.mm.plugin.audio.c.a.nxo;
-    localObject = com.tencent.mm.plugin.audio.d.a.nxr;
-    if (com.tencent.mm.plugin.audio.d.a.bHC())
+    Log.i("MicroMsg.SceneVoiceRecorderAudioManager", "some one has been request audio to record");
+    localObject = com.tencent.mm.plugin.audio.c.a.oIh;
+    localObject = com.tencent.mm.plugin.audio.d.b.oIo;
+    if (com.tencent.mm.plugin.audio.d.b.cee())
     {
-      if (isBluetoothScoOn())
+      localObject = com.tencent.mm.plugin.audio.d.b.oIo;
+      if (com.tencent.mm.plugin.audio.d.b.ceu())
       {
-        this.dcU = true;
-        this.dcV.invoke(Boolean.TRUE);
-        b("record", Integer.valueOf(1));
-        AppMethodBeat.o(200171);
+        if (isBluetoothScoOn())
+        {
+          this.dtL = true;
+          this.dtM.invoke(Boolean.TRUE);
+          b("record", Integer.valueOf(1));
+          AppMethodBeat.o(187343);
+          return;
+        }
+        this.dtL = true;
+        if (b("record", Integer.valueOf(4)) != -1)
+        {
+          this.dtK.sendEmptyMessageDelayed(0, 1000L);
+          AppMethodBeat.o(187343);
+          return;
+        }
+        this.dtM.invoke(Boolean.TRUE);
+        AppMethodBeat.o(187343);
         return;
       }
-      this.dcU = true;
-      if (b("record", Integer.valueOf(4)) != -1)
-      {
-        this.dcT.sendEmptyMessageDelayed(0, 1000L);
-        AppMethodBeat.o(200171);
-        return;
-      }
-      this.dcV.invoke(Boolean.TRUE);
-      AppMethodBeat.o(200171);
-      return;
     }
-    this.dcV.invoke(Boolean.TRUE);
-    AppMethodBeat.o(200171);
+    this.dtM.invoke(Boolean.TRUE);
+    AppMethodBeat.o(187343);
   }
   
-  public final void Od()
+  public final void Yp()
   {
-    AppMethodBeat.i(200172);
-    this.dcT.removeCallbacksAndMessages(null);
-    if (this.dcU)
+    AppMethodBeat.i(187344);
+    this.dtK.removeCallbacksAndMessages(null);
+    if (this.dtL)
     {
-      Wv("record");
-      this.dcU = false;
+      agq("record");
+      this.dtL = false;
     }
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    a.a.Wy("record");
-    AppMethodBeat.o(200172);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.oIh;
+    a.a.agt("record");
+    AppMethodBeat.o(187344);
   }
   
-  public final void hE(int paramInt)
+  public final void iY(int paramInt)
   {
-    AppMethodBeat.i(200173);
-    super.hE(paramInt);
+    AppMethodBeat.i(187345);
+    super.iY(paramInt);
     switch (paramInt)
     {
     }
@@ -99,16 +101,16 @@ public final class b
     label135:
     for (;;)
     {
-      AppMethodBeat.o(200173);
+      AppMethodBeat.o(187345);
       return;
-      this.dcT.removeCallbacksAndMessages(null);
+      this.dtK.removeCallbacksAndMessages(null);
       p.h("record", "type");
-      Iterator localIterator = ((Iterable)this.nwW).iterator();
+      Iterator localIterator = ((Iterable)this.oHP).iterator();
       Object localObject;
       while (localIterator.hasNext())
       {
         localObject = localIterator.next();
-        if (p.i((String)localObject, "record")) {
+        if (p.j((String)localObject, "record")) {
           label94:
           if (localObject == null) {
             break label132;
@@ -120,8 +122,8 @@ public final class b
         if (paramInt == 0) {
           break label135;
         }
-        ae.i("MicroMsg.SceneVoiceRecorderAudioManager", "checkIfSomeRequestAvailable available");
-        this.dcV.invoke(Boolean.TRUE);
+        Log.i("MicroMsg.SceneVoiceRecorderAudioManager", "checkIfSomeRequestAvailable available");
+        this.dtM.invoke(Boolean.TRUE);
         break;
         localObject = null;
         break label94;
@@ -129,24 +131,24 @@ public final class b
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
   static final class b
-    implements aq.a
+    implements MMHandler.Callback
   {
     b(b paramb) {}
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(200170);
-      this.dcX.dcV.invoke(Boolean.FALSE);
-      AppMethodBeat.o(200170);
+      AppMethodBeat.i(187342);
+      this.dtO.dtM.invoke(Boolean.FALSE);
+      AppMethodBeat.o(187342);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.b
  * JD-Core Version:    0.7.0.1
  */

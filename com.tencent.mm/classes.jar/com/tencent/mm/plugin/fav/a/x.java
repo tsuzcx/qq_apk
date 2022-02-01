@@ -1,28 +1,31 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 public abstract interface x
-  extends com.tencent.mm.sdk.e.g
+  extends IStorage
 {
-  public static final String[] SQL_CREATE = { j.getCreateSQLs(g.info, "FavItemInfo") };
+  public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(g.info, "FavItemInfo") };
+  
+  public abstract long A(long paramLong, int paramInt);
   
   public abstract void A(g paramg);
   
-  public abstract boolean B(long paramLong, int paramInt);
+  public abstract LinkedList<Integer> B(long paramLong, int paramInt);
   
   public abstract long C(long paramLong, int paramInt);
   
-  public abstract LinkedList<Integer> D(long paramLong, int paramInt);
+  public abstract g DY(long paramLong);
   
-  public abstract long E(long paramLong, int paramInt);
+  public abstract g DZ(long paramLong);
   
-  public abstract int Em(int paramInt);
+  public abstract int HX(int paramInt);
   
   public abstract ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, w paramw);
   
@@ -30,41 +33,41 @@ public abstract interface x
   
   public abstract boolean a(g paramg, String... paramVarArgs);
   
-  public abstract void ac(int paramInt, long paramLong);
+  public abstract void af(int paramInt, long paramLong);
   
-  public abstract g aht(String paramString);
+  public abstract g asb(String paramString);
   
   public abstract List<g> b(long paramLong, int paramInt, Set<Integer> paramSet, w paramw);
   
   public abstract boolean b(g paramg, String... paramVarArgs);
   
-  public abstract e cwL();
+  public abstract ISQLiteDatabase cUP();
   
-  public abstract int cwM();
+  public abstract int cUQ();
   
-  public abstract List<g> cwN();
+  public abstract List<g> cUR();
   
-  public abstract List<g> cwO();
+  public abstract List<g> cUS();
   
-  public abstract List<g> cwP();
+  public abstract List<g> cUT();
   
-  public abstract List<g> cwQ();
+  public abstract List<g> cUU();
   
-  public abstract List<g> cwR();
+  public abstract List<g> cUV();
   
-  public abstract List<g> cwS();
+  public abstract List<g> cUW();
   
-  public abstract List<Long> cwT();
+  public abstract List<Long> cUX();
   
-  public abstract void cwU();
+  public abstract void cUY();
   
-  public abstract List<Long> cwV();
+  public abstract List<Long> cUZ();
+  
+  public abstract List<g> fT(int paramInt1, int paramInt2);
   
   public abstract int getCount();
   
-  public abstract g vU(long paramLong);
-  
-  public abstract g vV(long paramLong);
+  public abstract boolean z(long paramLong, int paramInt);
   
   public abstract boolean z(g paramg);
 }

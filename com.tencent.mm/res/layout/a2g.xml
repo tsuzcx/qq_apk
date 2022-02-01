@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:padding="@dimen/dw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/a2u" android:layout_width="wrap_content" android:layout_height="1.0px" android:layout_weight="1.0" />
-    <View android:background="@drawable/sa" android:layout_width="3.0dip" android:layout_height="3.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
-    <View android:background="@color/a2u" android:layout_width="wrap_content" android:layout_height="1.0px" android:layout_weight="1.0" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/d9k" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ih9" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:layout_centerVertical="true">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/t" android:textColor="@color/a2w" android:textColorHint="@color/uj" android:layout_gravity="center_vertical" android:id="@id/bxz" android:background="@null" android:paddingRight="@dimen/ip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/yn" android:singleLine="true" android:includeFontPadding="false" android:drawablePadding="8.0dip" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/a70" />
+    </LinearLayout>
+    <ImageButton android:id="@id/b3g" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bt" android:src="@drawable/as6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

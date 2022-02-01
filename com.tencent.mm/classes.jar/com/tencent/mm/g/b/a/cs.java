@@ -6,99 +6,224 @@ import com.tencent.mm.plugin.report.a;
 public final class cs
   extends a
 {
-  private long eeG = 0L;
-  private long eeH;
-  private String eeI = "";
-  private long eeJ;
-  private long eeK;
-  private String eeu = "";
-  private long eev;
+  private String ekB = "";
+  private String ekG = "";
+  private int eql;
+  private int exm;
+  private int exn;
+  private long exo;
+  private int exp;
+  private String exq = "";
+  private String exr = "";
+  private int exs;
+  private int exu;
+  private String exv = "";
+  private String exw = "";
+  private String exx = "";
+  private long exy;
+  private String exz = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(215497);
+    AppMethodBeat.i(209053);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eeu);
+    ((StringBuffer)localObject).append(this.exm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eev);
+    ((StringBuffer)localObject).append(this.exn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eeG);
+    ((StringBuffer)localObject).append(this.ekB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eeH);
+    ((StringBuffer)localObject).append(this.exo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eeI);
+    ((StringBuffer)localObject).append(this.exp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eeJ);
+    ((StringBuffer)localObject).append(this.eql);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eeK);
+    ((StringBuffer)localObject).append(this.exq);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exr);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exs);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exv);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exw);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exx);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exy);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.exz);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(215497);
+    aMq((String)localObject);
+    AppMethodBeat.o(209053);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(215498);
+    AppMethodBeat.i(209054);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomid:").append(this.eeu);
+    ((StringBuffer)localObject).append("isFirstOpen:").append(this.exm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("liveid:").append(this.eev);
+    ((StringBuffer)localObject).append("clickScene:").append(this.exn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("waitCount:").append(this.eeG);
+    ((StringBuffer)localObject).append("appId:").append(this.ekB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("allowConnect:").append(this.eeH);
+    ((StringBuffer)localObject).append("appVersion:").append(this.exo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("audienceUin:").append(this.eeI);
+    ((StringBuffer)localObject).append("appType:").append(this.exp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("actionCode:").append(this.eeJ);
+    ((StringBuffer)localObject).append("scene:").append(this.eql);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("linkCount:").append(this.eeK);
+    ((StringBuffer)localObject).append("networkType:").append(this.exq);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("preWarmPath:").append(this.exr);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("isPresend:").append(this.exs);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("isPreload:").append(this.exu);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("liveId:").append(this.exv);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("finderId:").append(this.exw);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("shopwindowId:").append(this.exx);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("sessionId:").append(this.ekG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("eventTime:").append(this.exy);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("clickId:").append(this.exz);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(215498);
+    AppMethodBeat.o(209054);
     return localObject;
+  }
+  
+  public final cs aek()
+  {
+    this.exo = 0L;
+    return this;
+  }
+  
+  public final cs ael()
+  {
+    this.exp = 10;
+    return this;
   }
   
   public final int getId()
   {
-    return 19894;
+    return 21188;
   }
   
-  public final cs iu(long paramLong)
+  public final cs hN(long paramLong)
   {
-    this.eev = paramLong;
+    this.exy = paramLong;
     return this;
   }
   
-  public final cs iv(long paramLong)
+  public final cs kf(int paramInt)
   {
-    this.eeG = paramLong;
+    this.exm = paramInt;
     return this;
   }
   
-  public final cs iw(long paramLong)
+  public final cs kg(int paramInt)
   {
-    this.eeH = paramLong;
+    this.exn = paramInt;
     return this;
   }
   
-  public final cs ix(long paramLong)
+  public final cs kh(int paramInt)
   {
-    this.eeK = paramLong;
+    this.eql = paramInt;
     return this;
   }
   
-  public final cs mj(String paramString)
+  public final cs ki(int paramInt)
   {
-    AppMethodBeat.i(215496);
-    this.eeu = t("roomid", paramString, true);
-    AppMethodBeat.o(215496);
+    this.exs = paramInt;
+    return this;
+  }
+  
+  public final cs kj(int paramInt)
+  {
+    this.exu = paramInt;
+    return this;
+  }
+  
+  public final cs nm(String paramString)
+  {
+    AppMethodBeat.i(209045);
+    this.ekB = x("appId", paramString, true);
+    AppMethodBeat.o(209045);
+    return this;
+  }
+  
+  public final cs nn(String paramString)
+  {
+    AppMethodBeat.i(209046);
+    this.exq = x("networkType", paramString, true);
+    AppMethodBeat.o(209046);
+    return this;
+  }
+  
+  public final cs no(String paramString)
+  {
+    AppMethodBeat.i(209047);
+    this.exr = x("preWarmPath", paramString, true);
+    AppMethodBeat.o(209047);
+    return this;
+  }
+  
+  public final cs np(String paramString)
+  {
+    AppMethodBeat.i(209048);
+    this.exv = x("liveId", paramString, true);
+    AppMethodBeat.o(209048);
+    return this;
+  }
+  
+  public final cs nq(String paramString)
+  {
+    AppMethodBeat.i(209049);
+    this.exw = x("finderId", paramString, true);
+    AppMethodBeat.o(209049);
+    return this;
+  }
+  
+  public final cs nr(String paramString)
+  {
+    AppMethodBeat.i(209050);
+    this.exx = x("shopwindowId", paramString, true);
+    AppMethodBeat.o(209050);
+    return this;
+  }
+  
+  public final cs ns(String paramString)
+  {
+    AppMethodBeat.i(209051);
+    this.ekG = x("sessionId", paramString, true);
+    AppMethodBeat.o(209051);
+    return this;
+  }
+  
+  public final cs nt(String paramString)
+  {
+    AppMethodBeat.i(209052);
+    this.exz = x("clickId", paramString, true);
+    AppMethodBeat.o(209052);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.g.b.a.cs
  * JD-Core Version:    0.7.0.1
  */

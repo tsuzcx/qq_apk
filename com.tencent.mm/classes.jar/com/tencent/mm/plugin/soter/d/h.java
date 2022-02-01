@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.soter.core.c.c;
 
 public final class h
   implements c
 {
-  public final void b(String paramString1, Throwable paramThrowable, String paramString2)
+  public final void a(String paramString1, Throwable paramThrowable, String paramString2)
   {
     AppMethodBeat.i(130849);
-    ae.printErrStackTrace(paramString1, paramThrowable, paramString2, new Object[0]);
+    Log.printErrStackTrace(paramString1, paramThrowable, paramString2, new Object[0]);
     AppMethodBeat.o(130849);
   }
   
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130845);
-    ae.d(paramString1, paramString2, paramVarArgs);
+    Log.d(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130845);
   }
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130848);
-    ae.e(paramString1, paramString2, paramVarArgs);
+    Log.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130848);
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130846);
-    ae.i(paramString1, paramString2, paramVarArgs);
+    Log.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130846);
   }
   
   public final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130844);
-    ae.v(paramString1, paramString2, paramVarArgs);
+    Log.v(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130844);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130847);
-    ae.w(paramString1, paramString2, paramVarArgs);
+    Log.w(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130847);
   }
 }

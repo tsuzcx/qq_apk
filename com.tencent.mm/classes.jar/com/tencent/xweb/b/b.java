@@ -11,7 +11,7 @@ import java.io.OutputStream;
 public final class b
   implements e
 {
-  public final OutputStream Db(String paramString)
+  public final OutputStream LM(String paramString)
   {
     AppMethodBeat.i(183508);
     paramString = new FileOutputStream(paramString);
@@ -19,7 +19,7 @@ public final class b
     return paramString;
   }
   
-  public final String aRh(String paramString)
+  public final String bhK(String paramString)
   {
     AppMethodBeat.i(183505);
     paramString = d.getMD5(paramString);
@@ -27,10 +27,10 @@ public final class b
     return paramString;
   }
   
-  public final boolean lS(String paramString1, String paramString2)
+  public final boolean copyFile(String paramString1, String paramString2)
   {
     AppMethodBeat.i(183506);
-    boolean bool = c.lS(paramString1, paramString2);
+    boolean bool = c.copyFile(paramString1, paramString2);
     AppMethodBeat.o(183506);
     return bool;
   }
@@ -45,7 +45,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.b.b
  * JD-Core Version:    0.7.0.1
  */

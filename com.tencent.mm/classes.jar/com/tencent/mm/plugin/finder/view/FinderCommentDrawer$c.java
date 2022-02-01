@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class FinderCommentDrawer$c
   implements f.c
 {
-  public static final c tec;
+  public static final c wkM;
   
   static
   {
-    AppMethodBeat.i(205720);
-    tec = new c();
-    AppMethodBeat.o(205720);
+    AppMethodBeat.i(254735);
+    wkM = new c();
+    AppMethodBeat.o(254735);
   }
   
-  public final void d(boolean paramBoolean, String paramString) {}
+  public final void e(boolean paramBoolean, String paramString) {}
 }
 
 

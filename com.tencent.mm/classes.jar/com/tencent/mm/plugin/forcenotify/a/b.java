@@ -4,33 +4,33 @@ import android.content.Context;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
 import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public abstract interface b
-  extends a, q, y<cv>
+  extends a, q, y<de>
 {
-  public abstract void aM(String paramString, int paramInt);
+  public abstract void aS(String paramString, int paramInt);
   
-  public abstract void akv(String paramString);
+  public abstract void axA(String paramString);
   
-  public abstract long akw(String paramString);
+  public abstract long axB(String paramString);
   
-  public abstract boolean akx(String paramString);
+  public abstract boolean axC(String paramString);
   
-  public abstract boolean cTc();
+  public abstract boolean dMl();
   
-  public abstract j cTd();
+  public abstract MAutoStorage dMm();
   
-  public abstract void fk(Context paramContext);
+  public abstract void fQ(Context paramContext);
   
   public abstract boolean hasError();
   
-  public abstract void mL(boolean paramBoolean);
+  public abstract void ps(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.a.b
  * JD-Core Version:    0.7.0.1
  */

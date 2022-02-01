@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="@dimen/a6_" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@color/q5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <TextView android:background="@color/q2" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <TextView android:background="@color/q3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <TextView android:background="@color/q4" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:background="@drawable/zd" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_location" app:iconColor="@color/Orange" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/h_" android:textColor="@color/fr" android:id="@id/e_q" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/edy" android:layout_weight="1.0" android:layout_marginStart="@dimen/c5" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:tint="@color/BW_50" />
 </LinearLayout>

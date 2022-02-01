@@ -6,9 +6,9 @@ import android.graphics.Shader.TileMode;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
-import com.tencent.mm.plugin.appbrand.y.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -18,11 +18,11 @@ public class RealSetFillStyleActionRadialArg
   extends RealSetFillStyleActionArg
 {
   public static final Parcelable.Creator<RealSetFillStyleActionRadialArg> CREATOR;
-  public float jWE;
-  public float jWF;
-  public int[] jWI;
-  public float[] jWJ;
-  public float jWL;
+  public float kZA;
+  public float kZB;
+  public int[] kZE;
+  public float[] kZF;
+  public float kZH;
   
   static
   {
@@ -41,12 +41,12 @@ public class RealSetFillStyleActionRadialArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145073);
-    if ((this.jWI == null) || (this.jWJ == null))
+    if ((this.kZE == null) || (this.kZF == null))
     {
       AppMethodBeat.o(145073);
       return false;
     }
-    paramd.jWq.setShader(new RadialGradient(this.jWE, this.jWF, this.jWL, this.jWI, this.jWJ, Shader.TileMode.CLAMP));
+    paramd.kZm.setShader(new RadialGradient(this.kZA, this.kZB, this.kZH, this.kZE, this.kZF, Shader.TileMode.CLAMP));
     AppMethodBeat.o(145073);
     return true;
   }
@@ -75,7 +75,7 @@ public class RealSetFillStyleActionRadialArg
       return false;
     }
     paramObject = (RealSetFillStyleActionRadialArg)paramObject;
-    if ((Float.compare(paramObject.jWE, this.jWE) == 0) && (Float.compare(paramObject.jWF, this.jWF) == 0) && (Float.compare(paramObject.jWL, this.jWL) == 0) && (Arrays.equals(this.jWI, paramObject.jWI)) && (Arrays.equals(this.jWJ, paramObject.jWJ)))
+    if ((Float.compare(paramObject.kZA, this.kZA) == 0) && (Float.compare(paramObject.kZB, this.kZB) == 0) && (Float.compare(paramObject.kZH, this.kZH) == 0) && (Arrays.equals(this.kZE, paramObject.kZE)) && (Arrays.equals(this.kZF, paramObject.kZF)))
     {
       AppMethodBeat.o(145074);
       return true;
@@ -99,56 +99,56 @@ public class RealSetFillStyleActionRadialArg
       AppMethodBeat.o(145078);
       return;
     }
-    this.jWE = g.f(localJSONArray, 1);
-    this.jWF = g.f(localJSONArray, 2);
-    this.jWL = g.f(localJSONArray, 3);
+    this.kZA = g.f(localJSONArray, 1);
+    this.kZB = g.f(localJSONArray, 2);
+    this.kZH = g.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
-    this.jWI = new int[paramJSONArray.length()];
-    this.jWJ = new float[paramJSONArray.length()];
+    this.kZE = new int[paramJSONArray.length()];
+    this.kZF = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.jWJ[i] = ((float)localJSONArray.optDouble(0));
-        this.jWI[i] = g.r(localJSONArray.optJSONArray(1));
+        this.kZF[i] = ((float)localJSONArray.optDouble(0));
+        this.kZE[i] = g.r(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
     AppMethodBeat.o(145078);
   }
   
-  public final void h(Parcel paramParcel)
+  public int hashCode()
+  {
+    AppMethodBeat.i(145075);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZA), Float.valueOf(this.kZB), Float.valueOf(this.kZH) });
+    int j = Arrays.hashCode(this.kZE);
+    int k = Arrays.hashCode(this.kZF);
+    AppMethodBeat.o(145075);
+    return (i * 31 + j) * 31 + k;
+  }
+  
+  public final void i(Parcel paramParcel)
   {
     AppMethodBeat.i(145076);
-    super.h(paramParcel);
-    this.jWE = paramParcel.readFloat();
-    this.jWF = paramParcel.readFloat();
-    this.jWL = paramParcel.readFloat();
+    super.i(paramParcel);
+    this.kZA = paramParcel.readFloat();
+    this.kZB = paramParcel.readFloat();
+    this.kZH = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.jWI = new int[i];
-      paramParcel.readIntArray(this.jWI);
+      this.kZE = new int[i];
+      paramParcel.readIntArray(this.kZE);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.jWJ = new float[i];
-      paramParcel.readFloatArray(this.jWJ);
+      this.kZF = new float[i];
+      paramParcel.readFloatArray(this.kZF);
     }
     AppMethodBeat.o(145076);
-  }
-  
-  public int hashCode()
-  {
-    AppMethodBeat.i(145075);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jWE), Float.valueOf(this.jWF), Float.valueOf(this.jWL) });
-    int j = Arrays.hashCode(this.jWI);
-    int k = Arrays.hashCode(this.jWJ);
-    AppMethodBeat.o(145075);
-    return (i * 31 + j) * 31 + k;
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -162,18 +162,18 @@ public class RealSetFillStyleActionRadialArg
   {
     AppMethodBeat.i(145077);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jWE);
-    paramParcel.writeFloat(this.jWF);
-    paramParcel.writeFloat(this.jWL);
-    if (this.jWI != null)
+    paramParcel.writeFloat(this.kZA);
+    paramParcel.writeFloat(this.kZB);
+    paramParcel.writeFloat(this.kZH);
+    if (this.kZE != null)
     {
-      paramParcel.writeInt(this.jWI.length);
-      paramParcel.writeIntArray(this.jWI);
+      paramParcel.writeInt(this.kZE.length);
+      paramParcel.writeIntArray(this.kZE);
     }
-    while (this.jWJ != null)
+    while (this.kZF != null)
     {
-      paramParcel.writeInt(this.jWJ.length);
-      paramParcel.writeFloatArray(this.jWJ);
+      paramParcel.writeInt(this.kZF.length);
+      paramParcel.writeFloatArray(this.kZF);
       AppMethodBeat.o(145077);
       return;
       paramParcel.writeInt(0);
@@ -184,7 +184,7 @@ public class RealSetFillStyleActionRadialArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionRadialArg
  * JD-Core Version:    0.7.0.1
  */

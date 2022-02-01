@@ -189,38 +189,38 @@ public class f
   
   public void a()
   {
-    AppMethodBeat.i(192467);
+    AppMethodBeat.i(188286);
     TbsLog.i(a, "Deleting lock file: " + this.b.getAbsolutePath());
     this.d.release();
     this.c.close();
     if (!this.b.delete())
     {
       IOException localIOException = new IOException("Failed to delete lock file: " + this.b.getAbsolutePath());
-      AppMethodBeat.o(192467);
+      AppMethodBeat.o(188286);
       throw localIOException;
     }
-    AppMethodBeat.o(192467);
+    AppMethodBeat.o(188286);
   }
   
   public void b()
   {
-    AppMethodBeat.i(192468);
+    AppMethodBeat.i(188287);
     try
     {
       a();
-      AppMethodBeat.o(192468);
+      AppMethodBeat.o(188287);
       return;
     }
     catch (IOException localIOException)
     {
       TbsLog.e(a, "Failed to release process lock file: " + this.b.getAbsolutePath() + " error: " + localIOException);
-      AppMethodBeat.o(192468);
+      AppMethodBeat.o(188287);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.f
  * JD-Core Version:    0.7.0.1
  */

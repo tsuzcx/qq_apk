@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/a05"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:src="@raw/wallet_wxcredit_open_wait" />
+    <TextView android:textSize="@dimen/s" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/iwj" style="@style/a0g" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/uj" android:id="@id/jit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/iwl" />
+    <CheckBox android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/vk" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:checked="true" android:minHeight="22.0dip" android:text="@string/iwk" style="@style/p9" />
+    <Button android:id="@id/fz0" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/iwh" style="@style/ou" />
+</LinearLayout>

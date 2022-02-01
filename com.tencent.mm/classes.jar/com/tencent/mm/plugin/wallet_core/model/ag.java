@@ -1,73 +1,73 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gy;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hj;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ag
-  extends gy
+  extends hj
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(70435);
-    c.a locala = new c.a();
-    locala.IBL = new Field[9];
-    locala.columns = new String[10];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[9];
+    localMAutoDBInfo.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "pref_key";
-    locala.IBN.put("pref_key", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "pref_key";
+    localMAutoDBInfo.colsMap.put("pref_key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" pref_key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "pref_key";
-    locala.columns[1] = "pref_title";
-    locala.IBN.put("pref_title", "TEXT");
+    localMAutoDBInfo.primaryKey = "pref_key";
+    localMAutoDBInfo.columns[1] = "pref_title";
+    localMAutoDBInfo.colsMap.put("pref_title", "TEXT");
     localStringBuilder.append(" pref_title TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "pref_url";
-    locala.IBN.put("pref_url", "TEXT");
+    localMAutoDBInfo.columns[2] = "pref_url";
+    localMAutoDBInfo.colsMap.put("pref_url", "TEXT");
     localStringBuilder.append(" pref_url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "is_show";
-    locala.IBN.put("is_show", "INTEGER default '1' ");
+    localMAutoDBInfo.columns[3] = "is_show";
+    localMAutoDBInfo.colsMap.put("is_show", "INTEGER default '1' ");
     localStringBuilder.append(" is_show INTEGER default '1' ");
     localStringBuilder.append(", ");
-    locala.columns[4] = "pref_desc";
-    locala.IBN.put("pref_desc", "TEXT");
+    localMAutoDBInfo.columns[4] = "pref_desc";
+    localMAutoDBInfo.colsMap.put("pref_desc", "TEXT");
     localStringBuilder.append(" pref_desc TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "logo_url";
-    locala.IBN.put("logo_url", "TEXT");
+    localMAutoDBInfo.columns[5] = "logo_url";
+    localMAutoDBInfo.colsMap.put("logo_url", "TEXT");
     localStringBuilder.append(" logo_url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "jump_type";
-    locala.IBN.put("jump_type", "INTEGER");
+    localMAutoDBInfo.columns[6] = "jump_type";
+    localMAutoDBInfo.colsMap.put("jump_type", "INTEGER");
     localStringBuilder.append(" jump_type INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[7] = "tinyapp_username";
-    locala.IBN.put("tinyapp_username", "TEXT");
+    localMAutoDBInfo.columns[7] = "tinyapp_username";
+    localMAutoDBInfo.colsMap.put("tinyapp_username", "TEXT");
     localStringBuilder.append(" tinyapp_username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "tinyapp_path";
-    locala.IBN.put("tinyapp_path", "TEXT");
+    localMAutoDBInfo.columns[8] = "tinyapp_path";
+    localMAutoDBInfo.colsMap.put("tinyapp_path", "TEXT");
     localStringBuilder.append(" tinyapp_path TEXT");
-    locala.columns[9] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[9] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(70435);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ag
  * JD-Core Version:    0.7.0.1
  */

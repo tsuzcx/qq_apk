@@ -6,7 +6,7 @@ import com.tencent.kinda.gen.IUIPagePlatformDelegate;
 import com.tencent.kinda.gen.KindaModalManager;
 import com.tencent.kinda.gen.Platform;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaModalManagerImpl
   implements KindaModalManager
@@ -16,7 +16,7 @@ public class KindaModalManagerImpl
   public void addModalView(IUIModal paramIUIModal)
   {
     AppMethodBeat.i(18642);
-    ae.i("MicroMsg.KindaModalManagerImpl", "kinda call addModalView, modal: ".concat(String.valueOf(paramIUIModal)));
+    Log.i("MicroMsg.KindaModalManagerImpl", "kinda call addModalView, modal: ".concat(String.valueOf(paramIUIModal)));
     ActivityController.startNewUIModal(paramIUIModal);
     AppMethodBeat.o(18642);
   }
@@ -45,14 +45,14 @@ public class KindaModalManagerImpl
   public void removeModalView(IUIModal paramIUIModal)
   {
     AppMethodBeat.i(18643);
-    ae.i("MicroMsg.KindaModalManagerImpl", "kinda call reremoveModalView, modal: ".concat(String.valueOf(paramIUIModal)));
+    Log.i("MicroMsg.KindaModalManagerImpl", "kinda call reremoveModalView, modal: ".concat(String.valueOf(paramIUIModal)));
     ActivityController.remove(paramIUIModal);
     AppMethodBeat.o(18643);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaModalManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.gamelife;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/IPluginGameLife$Companion;", "", "()V", "CLASS", "", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/IPluginGameLife$Companion;", "", "()V", "CLASS", "", "plugin-gamelife_release"})
 public final class c$c
 {
   static
   {
-    AppMethodBeat.i(211952);
-    uHP = new c();
-    AppMethodBeat.o(211952);
+    AppMethodBeat.i(241191);
+    yab = new c();
+    AppMethodBeat.o(241191);
   }
 }
 

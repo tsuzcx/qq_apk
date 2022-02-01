@@ -1,59 +1,155 @@
 package com.tencent.mm.ak;
 
-import com.tencent.mm.model.bd;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bpj;
-import com.tencent.mm.protocal.protobuf.ccw;
-import com.tencent.mm.protocal.protobuf.px;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.zero.b.a;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.j.e;
+import com.tencent.mm.protocal.j.e.a;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class o
-  extends n
-  implements k
+  implements s
 {
-  protected int hRl = 3;
-  private boolean hRm = false;
+  private static final String TAG = "MicroMsg.MMReqRespBase";
+  private boolean isSingleSession = true;
+  private boolean isUserCmd = false;
+  private l.d req;
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString, q paramq);
-  
-  public abstract void aFa();
-  
-  public abstract f aFb();
-  
-  public abstract px b(q paramq);
-  
-  public abstract ccw c(q paramq);
-  
-  public abstract bpj d(q paramq);
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public static void fillBaseReq(l.d paramd, o paramo)
   {
-    if ((paramInt2 == 4) && (paramInt3 == -301))
+    paramd.setDeviceID(q.aoG());
+    paramd.setDeviceType(d.ics);
+    paramd.setClientVersion(d.KyO);
+    paramd.setUin(j.e.a.Kzx.aVJ());
+    if (g.aAc())
     {
-      ae.i("MicroMsg.NetSceneIDCRedirectBase", "alvinluo NetScene pre process MM_ERR_IDC_REDIRECT redirectCount: %d", new Object[] { Integer.valueOf(this.hRl) });
-      if (paramq != null)
+      int j = paramo.getType();
+      boolean bool;
+      int k;
+      int i;
+      if (((a)g.af(a.class)).aqJ().getInt("UseAesGcmSessionKeySwitch", 1) == 0)
       {
-        ae.i("MicroMsg.NetSceneIDCRedirectBase", "update idc info");
-        bd.a(true, b(paramq), c(paramq), d(paramq));
+        bool = true;
+        Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] accHasReady openSwitch[%s] ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
+        if (bool)
+        {
+          paramd = ((a)g.af(a.class)).aqJ().getValue("UseAesGcmSessionKeyCgiList");
+          if (!Util.isNullOrNil(paramd))
+          {
+            Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi list[%s]", new Object[] { paramd });
+            paramd = paramd.trim().split(",");
+            if (paramd.length > 0)
+            {
+              k = paramd.length;
+              i = 0;
+            }
+          }
+        }
       }
-      this.hRl -= 1;
-      if (this.hRl <= 0)
+      for (;;)
       {
-        aFa();
-        this.hRm = false;
-        return;
+        if (i < k)
+        {
+          String str = paramd[i];
+          if (j == Util.getInt(str, 0))
+          {
+            paramo.setSingleSession(false);
+            Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi list found cgi[%s] singleSession[%s]", new Object[] { str, Boolean.valueOf(paramo.isSingleSession()) });
+          }
+        }
+        else
+        {
+          return;
+          bool = false;
+          break;
+        }
+        i += 1;
       }
-      ae.d("MicroMsg.NetSceneIDCRedirectBase", "redirect IDC");
-      doScene(dispatcher(), aFb());
-      return;
     }
-    a(paramInt2, paramInt3, paramString, paramq);
+    Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] USE_ECDH[%s] accHasReady[%s] ", new Object[] { Integer.valueOf(paramd.getCmdId()), Boolean.valueOf(com.tencent.mm.protocal.f.KyZ), Boolean.valueOf(g.aAc()) });
+  }
+  
+  public boolean getIsLongPolling()
+  {
+    return false;
+  }
+  
+  public boolean getIsUserCmd()
+  {
+    return this.isUserCmd;
+  }
+  
+  public int getLongPollingTimeout()
+  {
+    return 0;
+  }
+  
+  public int getNewExtFlags()
+  {
+    return 0;
+  }
+  
+  public int getOptions()
+  {
+    return 0;
+  }
+  
+  public boolean getPush()
+  {
+    return false;
+  }
+  
+  public final l.d getReqObj()
+  {
+    if (this.req == null)
+    {
+      this.req = getReqObjImp();
+      fillBaseReq(this.req, this);
+    }
+    return this.req;
+  }
+  
+  protected abstract l.d getReqObjImp();
+  
+  public int getTimeOut()
+  {
+    return 0;
+  }
+  
+  public byte[] getTransHeader()
+  {
+    return null;
+  }
+  
+  public boolean isSingleSession()
+  {
+    return this.isSingleSession;
+  }
+  
+  public boolean keepAlive()
+  {
+    return false;
+  }
+  
+  public void setConnectionInfo(String paramString) {}
+  
+  public void setIsUserCmd(boolean paramBoolean)
+  {
+    this.isUserCmd = paramBoolean;
+  }
+  
+  void setSingleSession(boolean paramBoolean)
+  {
+    this.isSingleSession = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ak.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,149 +1,113 @@
 package com.tencent.mm.plugin.finder.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.c;
-import com.tencent.mm.vfs.w;
-import d.a.j;
-import d.b.a;
-import d.g.b.p;
-import d.l;
-import java.util.Comparator;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "", "path", "", "name", "maxSize", "", "markNoMedia", "", "enableClear", "(Ljava/lang/String;Ljava/lang/String;JZZ)V", "TAG", "getEnableClear", "()Z", "getMarkNoMedia", "getMaxSize", "()J", "getName", "()Ljava/lang/String;", "getPath", "dumpCacheDir", "Lkotlin/Pair;", "initFolder", "", "isNoMedia", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker;", "", "()V", "TAG", "", "configs", "", "Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker$CheckerConfig;", "getConfigs", "()Ljava/util/List;", "uploadBigFileConfig", "getUploadBigFileConfig", "()Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker$CheckerConfig;", "checkAll", "", "clean", "config", "mark", "CheckerConfig", "plugin-finder_release"})
 public final class f
 {
-  private final String TAG;
-  final long maxSize;
-  final String name;
-  public final String path;
-  private final boolean sWr;
-  final boolean sWs;
+  private static final String TAG = "Finder.FinderCrashChecker";
+  private static final a vVm;
+  private static final List<a> vVn;
+  public static final f vVo;
   
-  public f(String paramString1, String paramString2, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  static
   {
-    AppMethodBeat.i(167885);
-    this.path = paramString1;
-    this.name = paramString2;
-    this.maxSize = paramLong;
-    this.sWr = paramBoolean1;
-    this.sWs = paramBoolean2;
-    this.TAG = "Finder.FinderFolder";
-    AppMethodBeat.o(167885);
+    AppMethodBeat.i(253393);
+    vVo = new f();
+    TAG = "Finder.FinderCrashChecker";
+    a locala = new a("Finder_UploadBigFileConfig");
+    vVm = locala;
+    vVn = j.listOf(locala);
+    AppMethodBeat.o(253393);
   }
   
-  private static boolean aDc(String paramString)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(224307);
-    if (p.i(".nomedia", paramString))
-    {
-      AppMethodBeat.o(224307);
-      return true;
-    }
-    AppMethodBeat.o(224307);
-    return false;
+    AppMethodBeat.i(253390);
+    p.h(parama, "config");
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getSingleDefault();
+    p.g(localMultiProcessMMKV, "mmkv");
+    p.h(localMultiProcessMMKV, "mmkv");
+    localMultiProcessMMKV.putLong(parama.vVp, System.currentTimeMillis());
+    localMultiProcessMMKV.commit();
+    Log.i(TAG, "mark " + parama.vVp);
+    AppMethodBeat.o(253390);
   }
   
-  public final void cNI()
+  public static void b(a parama)
   {
-    AppMethodBeat.i(167883);
-    com.tencent.mm.vfs.o.aZI(this.path);
-    if (this.sWr) {
-      com.tencent.mm.vfs.o.aZX(this.path);
-    }
-    AppMethodBeat.o(167883);
+    AppMethodBeat.i(253391);
+    p.h(parama, "config");
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getSingleDefault();
+    p.g(localMultiProcessMMKV, "mmkv");
+    parama.a(localMultiProcessMMKV);
+    AppMethodBeat.o(253391);
   }
   
-  public final d.o<String, Long> cNJ()
+  public static a dBB()
   {
-    AppMethodBeat.i(167884);
-    b localb = new b("dumpCacheDir");
-    Object localObject1 = this.path;
-    ae.i(this.TAG, "dumpCacheDir cache ".concat(String.valueOf(localObject1)));
-    localObject1 = com.tencent.mm.vfs.o.dh((String)localObject1, true);
-    long l1;
-    long l2;
-    Object localObject2;
-    int i;
-    if (localObject1 != null)
+    return vVm;
+  }
+  
+  public static void dBC()
+  {
+    AppMethodBeat.i(253392);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getSingleDefault();
+    Iterator localIterator = ((Iterable)vVn).iterator();
+    while (localIterator.hasNext())
     {
-      localObject1 = w.b((Iterable)localObject1);
-      if ((localObject1 != null) && (((List)localObject1).size() > 1)) {
-        j.a((List)localObject1, (Comparator)new a());
-      }
-      l1 = 0L;
-      l2 = l1;
-      if (localObject1 == null) {
-        break label211;
-      }
-      localObject2 = (Iterable)localObject1;
-      i = 0;
-      localObject2 = ((Iterable)localObject2).iterator();
-    }
-    for (;;)
-    {
-      l2 = l1;
-      int j;
-      if (((Iterator)localObject2).hasNext())
+      a locala = (a)localIterator.next();
+      p.g(localMultiProcessMMKV, "mmkv");
+      p.h(localMultiProcessMMKV, "mmkv");
+      if (localMultiProcessMMKV.getLong(locala.vVp, 0L) != 0L)
       {
-        Object localObject3 = ((Iterator)localObject2).next();
-        j = i + 1;
-        if (i < 0) {
-          j.gkd();
-        }
-        localObject3 = (c)localObject3;
-        l2 = l1;
-        if (localObject3 != null)
-        {
-          String str = ((c)localObject3).name;
-          p.g(str, "fileEntry.name");
-          if (aDc(str)) {
-            break label336;
-          }
-          l2 = l1 + ((c)localObject3).size;
-        }
-        i = j;
-        l1 = l2;
-        continue;
-        localObject1 = null;
-        break;
+        locala.a(localMultiProcessMMKV);
+        h.CyF.n(locala.id, locala.key, 1L);
+        Log.i(TAG, "check " + locala.vVp + ", hit!");
       }
-      label211:
-      localObject2 = new StringBuilder("dump ").append(this.name).append(" fileCounts ");
-      if (localObject1 != null) {}
-      for (localObject1 = Integer.valueOf(((List)localObject1).size());; localObject1 = null)
-      {
-        localObject1 = localObject1 + ", cost: " + localb.gIr.abs() + "ms, totalSize " + bu.sL(l2) + " \n";
-        ae.i(this.TAG, (String)localObject1);
-        localObject1 = new d.o(localObject1, Long.valueOf(l2));
-        AppMethodBeat.o(167884);
-        return localObject1;
-      }
-      label336:
-      i = j;
     }
+    AppMethodBeat.o(253392);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
-  public static final class a<T>
-    implements Comparator<T>
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderCrashChecker$CheckerConfig;", "", "id", "", "key", "mmkvKey", "", "(JJLjava/lang/String;)V", "getId", "()J", "getKey", "getMmkvKey", "()Ljava/lang/String;", "check", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "clean", "mark", "plugin-finder_release"})
+  public static final class a
   {
-    public final int compare(T paramT1, T paramT2)
+    final long id;
+    final long key;
+    final String vVp;
+    
+    public a(String paramString)
     {
-      AppMethodBeat.i(167882);
-      int i = a.a((Comparable)Long.valueOf(((c)paramT1).LGc), (Comparable)Long.valueOf(((c)paramT2).LGc));
-      AppMethodBeat.o(167882);
-      return i;
+      AppMethodBeat.i(253389);
+      this.id = 1253L;
+      this.key = 37L;
+      this.vVp = paramString;
+      AppMethodBeat.o(253389);
+    }
+    
+    public final void a(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      AppMethodBeat.i(253388);
+      p.h(paramMultiProcessMMKV, "mmkv");
+      paramMultiProcessMMKV.putLong(this.vVp, 0L);
+      paramMultiProcessMMKV.commit();
+      paramMultiProcessMMKV = f.vVo;
+      Log.i(f.dBD(), "clean " + this.vVp);
+      AppMethodBeat.o(253388);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.f
  * JD-Core Version:    0.7.0.1
  */

@@ -5,29 +5,29 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.jsapi.video.j;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ap;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMFileSlotManager;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizPlaylistFileMgr;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "playlistManager", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "getPlaylistManager", "()Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "isProxyOpen", "", "save", "", "url", "content", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizPlaylistFileMgr;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "playlistManager", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "getPlaylistManager", "()Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "isProxyOpen", "", "save", "", "url", "content", "plugin-brandservice_release"})
 public final class a
 {
   public static final String TAG = "MicroMsg.BizPlaylistFileMgr";
-  public static final ap owF;
-  public static final a owG;
+  public static final MMFileSlotManager pKj;
+  public static final a pKk;
   
   static
   {
     AppMethodBeat.i(175529);
-    owG = new a();
+    pKk = new a();
     TAG = "MicroMsg.BizPlaylistFileMgr";
-    owF = new ap("bizplaylist", 86400L);
+    pKj = new MMFileSlotManager("bizplaylist", 86400L);
     AppMethodBeat.o(175529);
   }
   
-  public static boolean bTk()
+  public static boolean cqV()
   {
     AppMethodBeat.i(175528);
-    if ((j.bob().bod()) && (((b)g.ab(b.class)).a(b.a.qBo, 0) == 1))
+    if ((j.bJE().bJG()) && (((b)g.af(b.class)).a(b.a.rTX, 0) == 1))
     {
       AppMethodBeat.o(175528);
       return true;

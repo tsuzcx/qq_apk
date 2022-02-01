@@ -1,54 +1,59 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.protocal.protobuf.duv;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.protocal.protobuf.eou;
 import java.util.LinkedList;
 
 public abstract class a
-  extends n
+  extends q
 {
-  protected int DSQ;
-  protected Bundle DSR;
-  protected String dEc;
-  protected int fq;
+  protected int IDq;
+  protected Bundle IDr;
+  protected String dVP;
+  protected int fs;
   protected int mScene;
-  protected String uaV;
+  protected String xsj;
   
-  public final void WG(int paramInt)
+  public final void aWX(String paramString)
   {
-    this.DSQ = paramInt;
+    this.dVP = paramString;
   }
   
-  public void bc(LinkedList<duv> paramLinkedList) {}
-  
-  public final String cVp()
+  public final void afo(int paramInt)
   {
-    return this.uaV;
+    this.IDq = paramInt;
   }
   
-  public final int ePt()
+  public void by(LinkedList<eou> paramLinkedList) {}
+  
+  public final boolean fXA()
   {
-    return this.DSQ;
+    return this.fs == 0;
   }
   
-  public final boolean ePu()
+  public final Bundle fXB()
   {
-    return this.fq == 0;
+    return this.IDr;
   }
   
-  public final Bundle ePv()
+  public abstract String fXC();
+  
+  public abstract int fXD();
+  
+  public final String fXE()
   {
-    return this.DSR;
+    return this.dVP;
   }
   
-  public abstract String ePw();
-  
-  public abstract int ePx();
-  
-  public final String ePy()
+  public final int fXz()
   {
-    return this.dEc;
+    return this.IDq;
+  }
+  
+  public final String getKeyword()
+  {
+    return this.xsj;
   }
 }
 

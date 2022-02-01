@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class pf
-  extends b
+  extends IEvent
 {
-  public a dEl;
-  public b dEm;
+  public a dVk;
   
   public pf()
   {
@@ -17,31 +15,23 @@ public final class pf
   
   private pf(byte paramByte)
   {
-    AppMethodBeat.i(117551);
-    this.dEl = new a();
-    this.dEm = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(206895);
+    this.dVk = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(117551);
+    AppMethodBeat.o(206895);
   }
   
   public static final class a
   {
-    public Context context;
-    public String dEn;
-    public int opType = 0;
-  }
-  
-  public static final class b
-  {
-    public String dEo;
-    public boolean doq = false;
-    public String thumbPath;
+    public String dVl;
+    public String dVm;
+    public int dVn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.pf
  * JD-Core Version:    0.7.0.1
  */

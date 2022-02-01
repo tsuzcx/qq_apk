@@ -1,47 +1,46 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dpv;
-import com.tencent.mm.protocal.protobuf.dpw;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ejr;
+import com.tencent.mm.protocal.protobuf.ejs;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public dpw Dcu;
-  private f callback;
-  private final b rr;
+  public ejs HIi;
+  private i callback;
+  private final d rr;
   
   public g(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(182518);
-    b.a locala = new b.a();
-    dpv localdpv = new dpv();
-    localdpv.HWS = paramInt1;
-    localdpv.HWT = paramInt2;
-    locala.hQF = localdpv;
-    locala.hQG = new dpw();
+    d.a locala = new d.a();
+    ejr localejr = new ejr();
+    localejr.NiY = paramInt1;
+    localejr.NiZ = paramInt2;
+    locala.iLN = localejr;
+    locala.iLO = new ejs();
     locala.uri = "/cgi-bin/mmpay-bin/transferphonechangeswitch";
     locala.funcId = 1724;
-    this.rr = locala.aDS();
-    ae.i("MicroMsg.mobileRemit.NetSceneMobileRemitChangeSwitch", "NetSceneMobileRemitChangeSwitch() switchChangeType:%s", new Object[] { Integer.valueOf(paramInt1) });
+    this.rr = locala.aXF();
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitChangeSwitch", "NetSceneMobileRemitChangeSwitch() switchChangeType:%s", new Object[] { Integer.valueOf(paramInt1) });
     AppMethodBeat.o(182518);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(69539);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(69539);
     return i;
   }
@@ -51,12 +50,12 @@ public final class g
     return 1724;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69540);
-    ae.w("MicroMsg.mobileRemit.NetSceneMobileRemitChangeSwitch", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.w("MicroMsg.mobileRemit.NetSceneMobileRemitChangeSwitch", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.Dcu = ((dpw)((b)paramq).hQE.hQJ);
+      this.HIi = ((ejs)((d)params).iLL.iLR);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69540);

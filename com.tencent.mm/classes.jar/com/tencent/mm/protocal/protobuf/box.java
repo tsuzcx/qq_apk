@@ -1,117 +1,118 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class box
-  extends com.tencent.mm.bw.a
+  extends dpc
 {
-  public String id;
-  public String oED;
-  public long timestamp;
-  public String ykU;
-  public String ykV;
-  public int ykW;
+  public String LWX;
+  public String LWY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72499);
+    AppMethodBeat.i(125733);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.id != null) {
-        paramVarArgs.d(1, this.id);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(125733);
+        throw paramVarArgs;
       }
-      if (this.ykU != null) {
-        paramVarArgs.d(2, this.ykU);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.ykV != null) {
-        paramVarArgs.d(3, this.ykV);
+      if (this.LWX != null) {
+        paramVarArgs.e(2, this.LWX);
       }
-      if (this.oED != null) {
-        paramVarArgs.d(4, this.oED);
+      if (this.LWY != null) {
+        paramVarArgs.e(3, this.LWY);
       }
-      paramVarArgs.aZ(6, this.timestamp);
-      paramVarArgs.aS(5, this.ykW);
-      AppMethodBeat.o(72499);
+      AppMethodBeat.o(125733);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.id == null) {
-        break label486;
+      if (this.BaseResponse == null) {
+        break label478;
       }
     }
-    label486:
-    for (int i = f.a.a.b.b.a.e(1, this.id) + 0;; i = 0)
+    label478:
+    for (int i = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.ykU != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.ykU);
+      if (this.LWX != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.LWX);
       }
       i = paramInt;
-      if (this.ykV != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.ykV);
+      if (this.LWY != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.LWY);
       }
-      paramInt = i;
-      if (this.oED != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.oED);
-      }
-      i = f.a.a.b.b.a.p(6, this.timestamp);
-      int j = f.a.a.b.b.a.bz(5, this.ykW);
-      AppMethodBeat.o(72499);
-      return paramInt + i + j;
+      AppMethodBeat.o(125733);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(72499);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(125733);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(125733);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         box localbox = (box)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(72499);
+          AppMethodBeat.o(125733);
           return -1;
         case 1: 
-          localbox.id = locala.OmT.readString();
-          AppMethodBeat.o(72499);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localbox.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(125733);
           return 0;
         case 2: 
-          localbox.ykU = locala.OmT.readString();
-          AppMethodBeat.o(72499);
-          return 0;
-        case 3: 
-          localbox.ykV = locala.OmT.readString();
-          AppMethodBeat.o(72499);
-          return 0;
-        case 4: 
-          localbox.oED = locala.OmT.readString();
-          AppMethodBeat.o(72499);
-          return 0;
-        case 6: 
-          localbox.timestamp = locala.OmT.zd();
-          AppMethodBeat.o(72499);
+          localbox.LWX = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(125733);
           return 0;
         }
-        localbox.ykW = locala.OmT.zc();
-        AppMethodBeat.o(72499);
+        localbox.LWY = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(125733);
         return 0;
       }
-      AppMethodBeat.o(72499);
+      AppMethodBeat.o(125733);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.box
  * JD-Core Version:    0.7.0.1
  */

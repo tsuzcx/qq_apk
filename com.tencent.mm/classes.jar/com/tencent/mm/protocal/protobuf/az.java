@@ -5,99 +5,106 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class az
   extends com.tencent.mm.bw.a
 {
-  public String IconUrl;
-  public String Name;
-  public String hFS;
-  public int nJA;
-  public String xcg;
+  public String KDV;
+  public String KDW;
+  public String KDX;
+  public int KDY;
+  public int pTI;
+  public String qHg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91340);
+    AppMethodBeat.i(209317);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Name != null) {
-        paramVarArgs.d(1, this.Name);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.KDV != null) {
+        paramVarArgs.e(1, this.KDV);
       }
-      if (this.xcg != null) {
-        paramVarArgs.d(2, this.xcg);
+      if (this.KDW != null) {
+        paramVarArgs.e(2, this.KDW);
       }
-      paramVarArgs.aS(3, this.nJA);
-      if (this.hFS != null) {
-        paramVarArgs.d(4, this.hFS);
+      if (this.KDX != null) {
+        paramVarArgs.e(3, this.KDX);
       }
-      if (this.IconUrl != null) {
-        paramVarArgs.d(5, this.IconUrl);
+      paramVarArgs.aM(4, this.pTI);
+      if (this.qHg != null) {
+        paramVarArgs.e(5, this.qHg);
       }
-      AppMethodBeat.o(91340);
+      paramVarArgs.aM(6, this.KDY);
+      AppMethodBeat.o(209317);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Name == null) {
-        break label438;
+      if (this.KDV == null) {
+        break label486;
       }
     }
-    label438:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Name) + 0;; paramInt = 0)
+    label486:
+    for (int i = g.a.a.b.b.a.f(1, this.KDV) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.xcg != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.xcg);
-      }
-      i += f.a.a.b.b.a.bz(3, this.nJA);
       paramInt = i;
-      if (this.hFS != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.hFS);
+      if (this.KDW != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.KDW);
       }
       i = paramInt;
-      if (this.IconUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.IconUrl);
+      if (this.KDX != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.KDX);
       }
-      AppMethodBeat.o(91340);
-      return i;
+      i += g.a.a.b.b.a.bu(4, this.pTI);
+      paramInt = i;
+      if (this.qHg != null) {
+        paramInt = i + g.a.a.b.b.a.f(5, this.qHg);
+      }
+      i = g.a.a.b.b.a.bu(6, this.KDY);
+      AppMethodBeat.o(209317);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(91340);
+        AppMethodBeat.o(209317);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         az localaz = (az)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91340);
+          AppMethodBeat.o(209317);
           return -1;
         case 1: 
-          localaz.Name = locala.OmT.readString();
-          AppMethodBeat.o(91340);
+          localaz.KDV = locala.UbS.readString();
+          AppMethodBeat.o(209317);
           return 0;
         case 2: 
-          localaz.xcg = locala.OmT.readString();
-          AppMethodBeat.o(91340);
+          localaz.KDW = locala.UbS.readString();
+          AppMethodBeat.o(209317);
           return 0;
         case 3: 
-          localaz.nJA = locala.OmT.zc();
-          AppMethodBeat.o(91340);
+          localaz.KDX = locala.UbS.readString();
+          AppMethodBeat.o(209317);
           return 0;
         case 4: 
-          localaz.hFS = locala.OmT.readString();
-          AppMethodBeat.o(91340);
+          localaz.pTI = locala.UbS.zi();
+          AppMethodBeat.o(209317);
+          return 0;
+        case 5: 
+          localaz.qHg = locala.UbS.readString();
+          AppMethodBeat.o(209317);
           return 0;
         }
-        localaz.IconUrl = locala.OmT.readString();
-        AppMethodBeat.o(91340);
+        localaz.KDY = locala.UbS.zi();
+        AppMethodBeat.o(209317);
         return 0;
       }
-      AppMethodBeat.o(91340);
+      AppMethodBeat.o(209317);
       return -1;
     }
   }

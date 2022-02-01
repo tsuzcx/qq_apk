@@ -4,9 +4,9 @@ import android.view.View;
 
 public abstract interface b
 {
-  public abstract void aw(View paramView, int paramInt);
+  public abstract void aB(View paramView, int paramInt);
   
-  public abstract boolean eWo();
+  public abstract boolean gfl();
 }
 
 

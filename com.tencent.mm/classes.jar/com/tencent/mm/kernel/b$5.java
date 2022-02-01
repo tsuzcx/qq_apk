@@ -4,77 +4,77 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.aa.a;
 import com.tencent.mm.protocal.aa.b;
 import com.tencent.mm.protocal.ab.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class b$5
   extends ab.a
 {
-  private byte[] gDA;
+  private byte[] hqn;
   
   public b$5(b paramb) {}
   
-  public final int O(byte[] paramArrayOfByte)
+  public final int ac(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132051);
     aa.b localb = new aa.b();
     try
     {
       localb.fromProtoBuf(paramArrayOfByte);
-      long l = localb.FHg;
+      long l = localb.KAs;
       int i = (int)l;
       AppMethodBeat.o(132051);
       return i;
     }
     catch (Exception paramArrayOfByte)
     {
-      ae.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { bu.o(paramArrayOfByte) });
+      Log.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
       AppMethodBeat.o(132051);
     }
     return 0;
   }
   
-  public final byte[] ajl()
+  public final byte[] azB()
   {
     AppMethodBeat.i(132050);
-    if (!g.ajM())
+    if (!g.aAc())
     {
       AppMethodBeat.o(132050);
       return null;
     }
     aa.a locala = new aa.a();
-    g.ajS();
-    g.ajP();
+    g.aAi();
+    g.aAf();
     locala.setUin(a.getUin());
-    g.ajS();
-    locala.ihP = bu.aSx((String)g.ajR().ajA().get(8195, null));
-    locala.netType = com.tencent.mm.protocal.a.getNetType(ak.getContext());
-    locala.FGv = com.tencent.mm.protocal.a.fjP();
+    g.aAi();
+    locala.jcK = Util.decodeHexString((String)g.aAh().azQ().get(8195, null));
+    locala.netType = com.tencent.mm.protocal.a.getNetType(MMApplicationContext.getContext());
+    locala.KzG = com.tencent.mm.protocal.a.gtq();
     try
     {
       byte[] arrayOfByte = locala.toProtoBuf();
-      this.gDA = locala.gDA;
+      this.hqn = locala.hqn;
       AppMethodBeat.o(132050);
       return arrayOfByte;
     }
     catch (Exception localException)
     {
-      ae.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { bu.o(localException) });
+      Log.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
       AppMethodBeat.o(132050);
     }
     return null;
   }
   
-  public final byte[] ajm()
+  public final byte[] azC()
   {
-    return this.gDA;
+    return this.hqn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.b.5
  * JD-Core Version:    0.7.0.1
  */

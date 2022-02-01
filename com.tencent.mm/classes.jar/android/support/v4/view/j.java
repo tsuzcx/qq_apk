@@ -4,6 +4,8 @@ public abstract interface j
 {
   public abstract boolean isNestedScrollingEnabled();
   
+  public abstract void setNestedScrollingEnabled(boolean paramBoolean);
+  
   public abstract void stopNestedScroll();
 }
 

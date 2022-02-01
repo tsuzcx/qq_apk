@@ -2,32 +2,33 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.d.b;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.model.a;
 import com.tencent.mm.pluginsdk.model.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListenerImpl;", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "scene", "", "(I)V", "afterCloseStream", "", "afterGetResponseCode", "afterOpenConnection", "afterReadStreamData", "beforeCloseStream", "beforeGetResponseCode", "beforeOpenConnection", "beforeReadStreamData", "canReport", "", "downloadEnd", "downloadStart", "forceNormal", "id", "", "requestImageType", "startDownload", "url", "urlKey", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "onResult", "success", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "requestUrl", "Companion", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListenerImpl;", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "scene", "", "(I)V", "afterCloseStream", "", "afterGetResponseCode", "afterOpenConnection", "afterReadStreamData", "beforeCloseStream", "beforeGetResponseCode", "beforeOpenConnection", "beforeReadStreamData", "canReport", "", "downloadEnd", "downloadStart", "forceNormal", "id", "", "requestImageType", "startDownload", "url", "urlKey", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "onResult", "success", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "requestUrl", "Companion", "plugin-biz_release"})
 public final class k
   implements j
 {
-  public static final k.a FnW;
-  private String Fhz;
-  private boolean FnJ;
-  private int FnK;
-  private long FnM;
-  private long FnN;
-  private long FnO;
-  private long FnP;
-  private long FnQ;
-  private long FnR;
-  private long FnS;
-  private long FnT;
-  private long FnU;
-  private long FnV;
-  private long dCQ;
-  private boolean gxU;
+  public static final k.a KeM;
+  private String JYs;
+  private int KeA;
+  private long KeC;
+  private long KeD;
+  private long KeE;
+  private long KeF;
+  private long KeG;
+  private long KeH;
+  private long KeI;
+  private long KeJ;
+  private long KeK;
+  private long KeL;
+  private boolean Kez;
+  private long dUG;
+  private boolean hkH;
   private final String id;
   private int scene;
   private String url;
@@ -35,7 +36,7 @@ public final class k
   static
   {
     AppMethodBeat.i(124893);
-    FnW = new k.a((byte)0);
+    KeM = new k.a((byte)0);
     AppMethodBeat.o(124893);
   }
   
@@ -43,40 +44,40 @@ public final class k
   {
     AppMethodBeat.i(124892);
     this.scene = paramInt;
-    g localg = g.FnF;
-    this.gxU = g.Zu(paramInt);
+    g localg = g.Kev;
+    this.hkH = g.aif(paramInt);
     this.id = String.valueOf(hashCode());
     AppMethodBeat.o(124892);
   }
   
-  private final void bjD()
+  private final void bES()
   {
     AppMethodBeat.i(124891);
-    Object localObject = g.FnF;
-    if (g.Zv(this.scene))
+    Object localObject = g.Kev;
+    if (g.aig(this.scene))
     {
-      localObject = a.Fdw;
-      a.cK(3, this.Fhz);
+      localObject = a.JUl;
+      a.de(3, this.JYs);
     }
     AppMethodBeat.o(124891);
   }
   
-  public final void Zw(int paramInt)
+  public final void aih(int paramInt)
   {
     AppMethodBeat.i(124890);
-    ae.e("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onResultError id: %s, requestImageType: %d, responseCode: %d", new Object[] { this.id, Integer.valueOf(this.FnK), Integer.valueOf(paramInt) });
-    this.FnV = System.currentTimeMillis();
-    if (this.gxU)
+    Log.e("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onResultError id: %s, requestImageType: %d, responseCode: %d", new Object[] { this.id, Integer.valueOf(this.KeA), Integer.valueOf(paramInt) });
+    this.KeL = System.currentTimeMillis();
+    if (this.hkH)
     {
-      f localf = f.FnD;
-      f.bc(this.FnK, false);
-      if (this.FnJ)
+      f localf = f.Ket;
+      f.bw(this.KeA, false);
+      if (this.Kez)
       {
-        localf = f.FnD;
-        f.bd(this.FnK, false);
+        localf = f.Ket;
+        f.bx(this.KeA, false);
       }
     }
-    bjD();
+    bES();
     AppMethodBeat.o(124890);
   }
   
@@ -85,27 +86,27 @@ public final class k
     AppMethodBeat.i(124889);
     p.h(paramb, "response");
     long l = System.currentTimeMillis();
-    ae.i("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onResultSuccess id: %s, contentType: %s, cost: %d", new Object[] { this.id, paramb.contentType, Long.valueOf(l - this.dCQ) });
-    this.FnV = System.currentTimeMillis();
+    Log.i("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onResultSuccess id: %s, contentType: %s, cost: %d", new Object[] { this.id, paramb.contentType, Long.valueOf(l - this.dUG) });
+    this.KeL = System.currentTimeMillis();
     Object localObject;
-    if (this.gxU)
+    if (this.hkH)
     {
-      localObject = f.FnD;
-      f.bc(this.FnK, true);
-      localObject = f.FnD;
-      int i = this.FnK;
+      localObject = f.Ket;
+      f.bw(this.KeA, true);
+      localObject = f.Ket;
+      int i = this.KeA;
       localObject = paramb.contentType;
-      ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadImageType requestImageType: %d, responseContentType: %s", new Object[] { Integer.valueOf(i), localObject });
+      Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadImageType requestImageType: %d, responseContentType: %s", new Object[] { Integer.valueOf(i), localObject });
       g localg;
       if (i == 1) {
-        localg = g.FnF;
+        localg = g.Kev;
       }
-      switch (g.aOj((String)localObject))
+      switch (g.beL((String)localObject))
       {
       default: 
-        ae.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadImageType responseContentType: %s", new Object[] { localObject });
-        localg = g.FnF;
-        switch (g.aOj((String)localObject))
+        Log.v("MicroMsg.BizImageDownloadReporter", "alvinluo reportDownloadImageType responseContentType: %s", new Object[] { localObject });
+        localg = g.Kev;
+        switch (g.beL((String)localObject))
         {
         }
         break;
@@ -113,74 +114,74 @@ public final class k
     }
     for (;;)
     {
-      localObject = f.FnD;
-      f.bQ(paramb.contentType, this.FnV - this.FnU);
-      if ((this.FnJ) && (paramb.data != null))
+      localObject = f.Ket;
+      f.bR(paramb.contentType, this.KeL - this.KeK);
+      if ((this.Kez) && (paramb.data != null))
       {
-        paramb = f.FnD;
-        f.bd(this.FnK, true);
+        paramb = f.Ket;
+        f.bx(this.KeA, true);
       }
-      bjD();
+      bES();
       AppMethodBeat.o(124889);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 7L, 1L);
+      h.CyF.n(1111L, 7L, 1L);
       break;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 8L, 1L);
+      h.CyF.n(1111L, 8L, 1L);
       break;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 17L, 1L);
+      h.CyF.n(1111L, 17L, 1L);
       continue;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 19L, 1L);
+      h.CyF.n(1111L, 19L, 1L);
       continue;
-      com.tencent.mm.plugin.report.service.g.yxI.n(1111L, 36L, 1L);
+      h.CyF.n(1111L, 36L, 1L);
     }
   }
   
-  public final void bf(int paramInt, boolean paramBoolean)
+  public final void bz(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(124879);
-    ae.i("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onRequest id: %s, imageType: %d, forceNormal: %b, url: %s", new Object[] { this.id, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), this.url });
-    this.FnK = paramInt;
-    this.FnJ = paramBoolean;
-    this.FnU = System.currentTimeMillis();
-    if (this.gxU)
+    Log.i("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onRequest id: %s, imageType: %d, forceNormal: %b, url: %s", new Object[] { this.id, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), this.url });
+    this.KeA = paramInt;
+    this.Kez = paramBoolean;
+    this.KeK = System.currentTimeMillis();
+    if (this.hkH)
     {
-      f localf = f.FnD;
-      f.ffY();
-      localf = f.FnD;
-      f.Zs(this.FnK);
-      if (this.FnJ)
+      f localf = f.Ket;
+      f.gph();
+      localf = f.Ket;
+      f.aid(this.KeA);
+      if (this.Kez)
       {
-        localf = f.FnD;
-        f.Zt(this.FnK);
+        localf = f.Ket;
+        f.aie(this.KeA);
       }
     }
     AppMethodBeat.o(124879);
   }
   
-  public final void eh(String paramString1, String paramString2)
+  public final void ey(String paramString1, String paramString2)
   {
     AppMethodBeat.i(124877);
-    this.Fhz = paramString1;
+    this.JYs = paramString1;
     this.url = paramString2;
-    this.dCQ = System.currentTimeMillis();
-    paramString1 = g.FnF;
-    if (g.Zv(this.scene))
+    this.dUG = System.currentTimeMillis();
+    paramString1 = g.Kev;
+    if (g.aig(this.scene))
     {
-      paramString1 = a.Fdw;
-      a.cJ(3, this.Fhz);
+      paramString1 = a.JUl;
+      a.dd(3, this.JYs);
     }
-    ae.i("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onStart id: %s", new Object[] { this.id });
+    Log.i("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo BizImage download onStart id: %s", new Object[] { this.id });
     AppMethodBeat.o(124877);
   }
   
-  public final void fgb()
+  public final void gpk()
   {
     AppMethodBeat.i(124878);
-    Object localObject = g.FnF;
-    if (g.Zv(this.scene))
+    Object localObject = g.Kev;
+    if (g.aig(this.scene))
     {
-      localObject = a.Fdw;
-      localObject = this.Fhz;
+      localObject = a.JUl;
+      localObject = this.JYs;
       CharSequence localCharSequence = (CharSequence)localObject;
       if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
         break label101;
@@ -191,78 +192,78 @@ public final class k
     {
       if (i == 0)
       {
-        ae.d("MicroMsg.BizImageBlankReporter", "alvinluo retryDownload id: %s, url: %s", new Object[] { a.aMP((String)localObject), localObject });
-        a.t((Runnable)new a.i((String)localObject, System.currentTimeMillis()));
+        Log.d("MicroMsg.BizImageBlankReporter", "alvinluo retryDownload id: %s, url: %s", new Object[] { a.bdl((String)localObject), localObject });
+        a.v((Runnable)new a.i((String)localObject, System.currentTimeMillis()));
       }
       AppMethodBeat.o(124878);
       return;
     }
   }
   
-  public final void fgc()
+  public final void gpl()
   {
     AppMethodBeat.i(124880);
-    this.FnM = System.currentTimeMillis();
+    this.KeC = System.currentTimeMillis();
     AppMethodBeat.o(124880);
   }
   
-  public final void fgd()
+  public final void gpm()
   {
     AppMethodBeat.i(124881);
-    this.FnN = System.currentTimeMillis();
-    ae.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo onAfterOpenConnection id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.FnN - this.FnM) });
+    this.KeD = System.currentTimeMillis();
+    Log.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo onAfterOpenConnection id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.KeD - this.KeC) });
     AppMethodBeat.o(124881);
   }
   
-  public final void fge()
+  public final void gpn()
   {
     AppMethodBeat.i(124882);
-    this.FnO = System.currentTimeMillis();
+    this.KeE = System.currentTimeMillis();
     AppMethodBeat.o(124882);
   }
   
-  public final void fgf()
+  public final void gpo()
   {
     AppMethodBeat.i(124883);
-    this.FnP = System.currentTimeMillis();
-    ae.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo getResponseCode id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.FnP - this.FnO) });
+    this.KeF = System.currentTimeMillis();
+    Log.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo getResponseCode id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.KeF - this.KeE) });
     AppMethodBeat.o(124883);
   }
   
-  public final void fgg()
+  public final void gpp()
   {
     AppMethodBeat.i(124884);
-    this.FnQ = System.currentTimeMillis();
+    this.KeG = System.currentTimeMillis();
     AppMethodBeat.o(124884);
   }
   
-  public final void fgh()
+  public final void gpq()
   {
     AppMethodBeat.i(124885);
-    this.FnR = System.currentTimeMillis();
-    ae.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo readStreamData id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.FnR - this.FnQ) });
+    this.KeH = System.currentTimeMillis();
+    Log.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo readStreamData id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.KeH - this.KeG) });
     AppMethodBeat.o(124885);
   }
   
-  public final void fgi()
+  public final void gpr()
   {
     AppMethodBeat.i(124886);
-    this.FnS = System.currentTimeMillis();
+    this.KeI = System.currentTimeMillis();
     AppMethodBeat.o(124886);
   }
   
-  public final void fgj()
+  public final void gps()
   {
     AppMethodBeat.i(124887);
-    this.FnT = System.currentTimeMillis();
-    ae.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo closeStream id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.FnT - this.FnS) });
+    this.KeJ = System.currentTimeMillis();
+    Log.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo closeStream id: %s, cost: %d", new Object[] { this.id, Long.valueOf(this.KeJ - this.KeI) });
     AppMethodBeat.o(124887);
   }
   
-  public final void fgk()
+  public final void gpt()
   {
     AppMethodBeat.i(124888);
-    ae.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo onDisconnect id: %s", new Object[] { this.id });
+    Log.v("MicroMsg.BizImageHttpUrlConnectionListenerImpl", "alvinluo onDisconnect id: %s", new Object[] { this.id });
     AppMethodBeat.o(124888);
   }
 }

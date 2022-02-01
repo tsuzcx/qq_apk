@@ -12,80 +12,82 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.g.a.gx.a;
+import com.tencent.mm.g.a.hb;
+import com.tencent.mm.g.a.hb.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.g;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.j;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.t;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.u;
 import com.tencent.mm.pluginsdk.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class k
   implements com.tencent.mm.plugin.wenote.model.nativenote.b.c
 {
-  private static k ESL = null;
-  private static DisplayMetrics aJt;
+  private static k JIz = null;
+  private static DisplayMetrics aJm;
   public static int mScreenHeight;
   public static int mScreenWidth;
-  public static int pCv = -1;
-  private static int pCx = -1;
-  public com.tencent.mm.plugin.wenote.ui.nativenote.a ESK;
-  public long ESM;
-  public String ESN;
-  public com.tencent.mm.plugin.wenote.model.nativenote.b.b ESO;
-  private boolean ESP;
-  public int ESQ;
-  public String ESR;
-  public long ESS;
-  public int EST;
-  public boolean ESU;
-  public final aw ESV;
-  public int ahF;
-  public long doH;
-  public int mKJ;
-  private View.OnKeyListener pCA;
-  private transient ArrayList<WXRTEditText> pCs;
-  private int pCw;
+  public static int qRN = -1;
+  private static int qRP = -1;
+  public long JIA;
+  public String JIB;
+  public com.tencent.mm.plugin.wenote.model.nativenote.b.b JIC;
+  private boolean JID;
+  public int JIE;
+  public String JIF;
+  public long JIG;
+  public int JIH;
+  public boolean JII;
+  public final MTimerHandler JIJ;
+  public boolean JIx;
+  public com.tencent.mm.plugin.wenote.ui.nativenote.a JIy;
+  public long dFW;
+  public int mActionBarHeight;
+  public int mStatusBarHeight;
+  private transient ArrayList<WXRTEditText> qRK;
+  private int qRO;
+  private View.OnKeyListener qRS;
   
   public k(com.tencent.mm.plugin.wenote.ui.nativenote.a parama)
   {
     AppMethodBeat.i(30526);
-    this.ESM = -1L;
-    this.ESN = "";
-    this.doH = -1L;
-    this.ESO = null;
-    this.ESP = false;
-    this.ESQ = -1;
-    this.ESR = null;
-    this.ESS = -1L;
-    this.EST = 0;
-    this.ESU = false;
-    this.pCA = new View.OnKeyListener()
+    this.JIA = -1L;
+    this.JIB = "";
+    this.dFW = -1L;
+    this.JIC = null;
+    this.JID = false;
+    this.JIE = -1;
+    this.JIF = null;
+    this.JIG = -1L;
+    this.JIH = 0;
+    this.JII = false;
+    this.qRS = new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(30524);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramAnonymousInt);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousKeyEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
         if ((paramAnonymousKeyEvent.getAction() == 0) && (paramAnonymousKeyEvent.getKeyCode() == 67))
         {
-          if (c.faG().size() == 0)
+          if (c.gjL().size() == 0)
           {
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
             AppMethodBeat.o(30524);
             return false;
           }
-          localObject = k.this.faL();
+          localObject = k.this.gjQ();
           if (localObject == null)
           {
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
@@ -93,19 +95,19 @@ public final class k
             return false;
           }
           paramAnonymousInt = ((WXRTEditText)localObject).getRecyclerItemPosition();
-          ae.i("MicroMsg.Note.WXRTManager", "current focus pos: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          paramAnonymousView = c.faG().YE(paramAnonymousInt);
+          Log.i("MicroMsg.Note.WXRTManager", "current focus pos: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          paramAnonymousView = c.gjL().ahp(paramAnonymousInt);
           if (paramAnonymousView == null)
           {
-            ae.w("MicroMsg.Note.WXRTManager", "get current item is null %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            Log.w("MicroMsg.Note.WXRTManager", "get current item is null %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
             AppMethodBeat.o(30524);
             return false;
           }
-          paramAnonymousKeyEvent = c.faG().YE(paramAnonymousInt - 1);
+          paramAnonymousKeyEvent = c.gjL().ahp(paramAnonymousInt - 1);
           if (paramAnonymousKeyEvent == null)
           {
-            ae.i("MicroMsg.Note.WXRTManager", "get preItem is null %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            Log.i("MicroMsg.Note.WXRTManager", "get preItem is null %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
             AppMethodBeat.o(30524);
             return false;
@@ -119,7 +121,7 @@ public final class k
               com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
               AppMethodBeat.o(30524);
               return true;
-              ae.i("MicroMsg.Note.WXRTManager", "Handle Editor Type EDITTEXT");
+              Log.i("MicroMsg.Note.WXRTManager", "Handle Editor Type EDITTEXT");
               int i = ((WXRTEditText)localObject).getSelectionStart();
               if (i != ((WXRTEditText)localObject).getSelectionEnd())
               {
@@ -127,16 +129,16 @@ public final class k
                 AppMethodBeat.o(30524);
                 return false;
               }
-              if (i == ((WXRTEditText)localObject).getParagraphsInSelection().avj)
+              if (i == ((WXRTEditText)localObject).getParagraphsInSelection().avh)
               {
-                ((WXRTEditText)localObject).pBY = true;
-                k.this.b(u.ETv, Boolean.FALSE);
-                k.this.b(u.ETw, Boolean.FALSE);
-                k.this.b(u.ETu, Boolean.FALSE);
-                k.a(k.this).kf(false);
-                k.a(k.this).kg(false);
-                k.a(k.this).kh(false);
-                ((WXRTEditText)localObject).pBY = false;
+                ((WXRTEditText)localObject).qRq = true;
+                k.this.b(u.JJj, Boolean.FALSE);
+                k.this.b(u.JJk, Boolean.FALSE);
+                k.this.b(u.JJi, Boolean.FALSE);
+                k.a(k.this).li(false);
+                k.a(k.this).lj(false);
+                k.a(k.this).lk(false);
+                ((WXRTEditText)localObject).qRq = false;
               }
               if ((i != 0) || (paramAnonymousInt == 0))
               {
@@ -144,49 +146,49 @@ public final class k
                 AppMethodBeat.o(30524);
                 return false;
               }
-              paramAnonymousView = ((WXRTEditText)localObject).a(i.ESJ);
-              c.faG().cfB();
+              paramAnonymousView = ((WXRTEditText)localObject).a(i.JIw);
+              c.gjL().cDr();
               if (paramAnonymousKeyEvent.getType() != 1) {
                 break;
               }
-              bool = c.faG().Y(paramAnonymousInt, true);
+              bool = c.gjL().ae(paramAnonymousInt, true);
               paramAnonymousKeyEvent = (com.tencent.mm.plugin.wenote.model.a.i)paramAnonymousKeyEvent;
-              i = paramAnonymousKeyEvent.ERY.getText().toString().length();
+              i = paramAnonymousKeyEvent.JHL.getText().toString().length();
               paramAnonymousKeyEvent.content += paramAnonymousView;
-              paramAnonymousKeyEvent.pAl = i;
-              paramAnonymousKeyEvent.pAj = true;
-              paramAnonymousKeyEvent.pAp = false;
+              paramAnonymousKeyEvent.qPC = i;
+              paramAnonymousKeyEvent.qPA = true;
+              paramAnonymousKeyEvent.qPG = false;
               label585:
               if (!bool) {
                 break label651;
               }
-              k.b(k.this).fba().BH(paramAnonymousInt - 1);
+              k.b(k.this).gkf().Fr(paramAnonymousInt - 1);
             }
-            if (!bu.isNullOrNil(paramAnonymousView)) {
+            if (!Util.isNullOrNil(paramAnonymousView)) {
               break;
             }
           }
         }
-        for (boolean bool = c.faG().Y(paramAnonymousInt, true);; bool = false)
+        for (boolean bool = c.gjL().ae(paramAnonymousInt, true);; bool = false)
         {
-          paramAnonymousKeyEvent.ERX.setSelection(0);
-          paramAnonymousKeyEvent.pAj = true;
-          paramAnonymousKeyEvent.pAp = false;
+          paramAnonymousKeyEvent.JHK.setSelection(0);
+          paramAnonymousKeyEvent.qPA = true;
+          paramAnonymousKeyEvent.qPG = false;
           break label585;
           label651:
-          k.b(k.this).fba().fe(paramAnonymousInt - 1, 2);
+          k.b(k.this).gkf().fu(paramAnonymousInt - 1, 2);
           break;
-          ae.i("MicroMsg.Note.WXRTManager", "Handle Editor Type PREBUTTON");
-          c.faG().cfB();
+          Log.i("MicroMsg.Note.WXRTManager", "Handle Editor Type PREBUTTON");
+          c.gjL().cDr();
           if (paramAnonymousKeyEvent.getType() == 1)
           {
             paramAnonymousKeyEvent = (com.tencent.mm.plugin.wenote.model.a.i)paramAnonymousKeyEvent;
-            if (bu.isNullOrNil(paramAnonymousKeyEvent.content))
+            if (Util.isNullOrNil(paramAnonymousKeyEvent.content))
             {
-              paramAnonymousView.ERW.setSelection(0);
-              paramAnonymousView.pAj = true;
-              paramAnonymousView.pAp = true;
-              c.faG().Y(paramAnonymousInt - 1, true);
+              paramAnonymousView.JHJ.setSelection(0);
+              paramAnonymousView.qPA = true;
+              paramAnonymousView.qPG = true;
+              c.gjL().ae(paramAnonymousInt - 1, true);
               com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
               AppMethodBeat.o(30524);
               return true;
@@ -194,47 +196,47 @@ public final class k
             if (paramAnonymousKeyEvent.content.endsWith("<br/>")) {
               paramAnonymousKeyEvent.content = paramAnonymousKeyEvent.content.substring(0, paramAnonymousKeyEvent.content.length() - 5);
             }
-            paramAnonymousKeyEvent.pAl = -1;
-            paramAnonymousKeyEvent.pAj = true;
-            paramAnonymousKeyEvent.pAp = false;
+            paramAnonymousKeyEvent.qPC = -1;
+            paramAnonymousKeyEvent.qPA = true;
+            paramAnonymousKeyEvent.qPG = false;
           }
           for (;;)
           {
-            k.b(k.this).fba().fe(paramAnonymousInt - 1, 2);
+            k.b(k.this).gkf().fu(paramAnonymousInt - 1, 2);
             break;
-            paramAnonymousKeyEvent.ERX.setSelection(0);
-            paramAnonymousKeyEvent.pAj = true;
-            paramAnonymousKeyEvent.pAp = false;
+            paramAnonymousKeyEvent.JHK.setSelection(0);
+            paramAnonymousKeyEvent.qPA = true;
+            paramAnonymousKeyEvent.qPG = false;
           }
-          ae.i("MicroMsg.Note.WXRTManager", "Handle Editor Type NEXTBTTTON");
-          if ((paramAnonymousView.getType() == 4) && (((com.tencent.mm.plugin.wenote.model.a.l)paramAnonymousView).pAG.booleanValue()))
+          Log.i("MicroMsg.Note.WXRTManager", "Handle Editor Type NEXTBTTTON");
+          if ((paramAnonymousView.getType() == 4) && (((com.tencent.mm.plugin.wenote.model.a.l)paramAnonymousView).qPX.booleanValue()))
           {
-            ae.i("MicroMsg.Note.WXRTManager", "Current Item is Voice and Recording");
+            Log.i("MicroMsg.Note.WXRTManager", "Current Item is Voice and Recording");
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
             AppMethodBeat.o(30524);
             return false;
           }
-          if ((!paramAnonymousView.pAq) && (paramAnonymousView.getType() != -1))
+          if ((!paramAnonymousView.qPH) && (paramAnonymousView.getType() != -1))
           {
-            c.faG().Z(paramAnonymousInt, true);
+            c.gjL().af(paramAnonymousInt, true);
             com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
             AppMethodBeat.o(30524);
             return true;
           }
-          c.faG().cfB();
-          c.faG().Y(paramAnonymousInt, false);
-          k.b(k.this).fba().BJ(paramAnonymousInt);
+          c.gjL().cDr();
+          c.gjL().ae(paramAnonymousInt, false);
+          k.b(k.this).gkf().Ft(paramAnonymousInt);
           paramAnonymousView = new com.tencent.mm.plugin.wenote.model.a.i();
-          paramAnonymousView.pAj = true;
-          paramAnonymousView.pAp = false;
+          paramAnonymousView.qPA = true;
+          paramAnonymousView.qPG = false;
           paramAnonymousView.content = "";
-          paramAnonymousView.pAl = 0;
-          c.faG().a(paramAnonymousInt, paramAnonymousView);
-          c.faG().fh(paramAnonymousInt - 1, paramAnonymousInt + 1);
-          paramAnonymousView = k.b(k.this).ceS();
+          paramAnonymousView.qPC = 0;
+          c.gjL().a(paramAnonymousInt, paramAnonymousView);
+          c.gjL().fx(paramAnonymousInt - 1, paramAnonymousInt + 1);
+          paramAnonymousView = k.b(k.this).cCI();
           paramAnonymousKeyEvent = com.tencent.mm.hellhoundlib.b.c.a(paramAnonymousInt, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousKeyEvent.ahE(), "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", "Undefined", "scrollToPosition", "(I)V");
-          paramAnonymousView.ca(((Integer)paramAnonymousKeyEvent.mt(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousKeyEvent.axQ(), "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", "Undefined", "scrollToPosition", "(I)V");
+          paramAnonymousView.scrollToPosition(((Integer)paramAnonymousKeyEvent.pG(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", "Undefined", "scrollToPosition", "(I)V");
           break;
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTManager$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
@@ -243,7 +245,7 @@ public final class k
         }
       }
     };
-    this.ESV = new aw(new aw.a()
+    this.JIJ = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -253,65 +255,65 @@ public final class k
           AppMethodBeat.o(30525);
           return false;
         }
-        k.this.faO();
+        k.this.gjT();
         AppMethodBeat.o(30525);
         return true;
       }
     }, true);
-    this.pCs = new ArrayList();
-    this.ESK = parama;
-    ESL = this;
-    this.ahF = h.dX(parama.ceT());
-    this.mKJ = al.jO(parama.ceT());
-    int[] arrayOfInt = com.tencent.mm.compatible.util.i.eF(parama.ceT());
+    this.qRK = new ArrayList();
+    this.JIy = parama;
+    JIz = this;
+    this.mActionBarHeight = h.eu(parama.cCJ());
+    this.mStatusBarHeight = ao.jJ(parama.cCJ());
+    int[] arrayOfInt = com.tencent.mm.compatible.util.i.getScreenWH(parama.cCJ());
     mScreenHeight = arrayOfInt[1];
     mScreenWidth = arrayOfInt[0];
-    aJt = parama.ceT().getResources().getDisplayMetrics();
-    this.pCw = (mScreenHeight - this.ahF - this.mKJ - (int)aX(8.0F));
-    this.ESN = c.faG().cfG();
-    com.tencent.mm.plugin.wenote.model.nativenote.spans.m.pDR = 0.0F;
+    aJm = parama.cCJ().getResources().getDisplayMetrics();
+    this.qRO = (mScreenHeight - this.mActionBarHeight - this.mStatusBarHeight - (int)be(8.0F));
+    this.JIB = c.gjL().cDw();
+    com.tencent.mm.plugin.wenote.model.nativenote.spans.m.qTi = 0.0F;
     AppMethodBeat.o(30526);
   }
   
-  public static float aX(float paramFloat)
+  public static float be(float paramFloat)
   {
     AppMethodBeat.i(30537);
-    paramFloat = TypedValue.applyDimension(1, paramFloat, aJt);
+    paramFloat = TypedValue.applyDimension(1, paramFloat, aJm);
     AppMethodBeat.o(30537);
     return paramFloat;
   }
   
-  private void cx(String paramString, boolean paramBoolean)
+  private void cS(String paramString, boolean paramBoolean)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(30538);
-        gx localgx = new gx();
-        localgx.dub.type = 19;
-        localgx.dub.doN = c.faG().abO(paramString);
-        if (localgx.dub.doN == null)
+        hb localhb = new hb();
+        localhb.dLm.type = 19;
+        localhb.dLm.dGb = c.gjL().alU(paramString);
+        if (localhb.dLm.dGb == null)
         {
-          ae.e("MicroMsg.Note.WXRTManager", "updateNoteInfoStorage error, favProtoItem is null");
+          Log.e("MicroMsg.Note.WXRTManager", "updateNoteInfoStorage error, favProtoItem is null");
           AppMethodBeat.o(30538);
           return;
         }
-        localgx.dub.title = paramString;
-        localgx.dub.doH = this.doH;
-        paramString = localgx.dub;
+        localhb.dLm.title = paramString;
+        localhb.dLm.dFW = this.dFW;
+        paramString = localhb.dLm;
         int i;
         if (paramBoolean)
         {
           i = 1;
-          paramString.dui = i;
-          localgx.dub.desc = "fav_update_note_storage";
-          com.tencent.mm.sdk.b.a.IvT.l(localgx);
+          paramString.dLt = i;
+          localhb.dLm.desc = "fav_update_note_storage";
+          EventCenter.instance.publish(localhb);
           if (paramBoolean)
           {
-            this.ESQ = localgx.dub.due.getIntExtra("fav_note_item_status", -1);
-            this.ESR = localgx.dub.due.getStringExtra("fav_note_xml");
-            this.ESS = localgx.dub.due.getLongExtra("fav_note_item_updatetime", -1L);
+            this.JIE = localhb.dLm.dLp.getIntExtra("fav_note_item_status", -1);
+            this.JIF = localhb.dLm.dLp.getStringExtra("fav_note_xml");
+            this.JIG = localhb.dLm.dLp.getLongExtra("fav_note_item_updatetime", -1L);
           }
           AppMethodBeat.o(30538);
         }
@@ -324,55 +326,55 @@ public final class k
     }
   }
   
-  public static k faM()
+  public static k gjR()
   {
-    return ESL;
+    return JIz;
   }
   
-  private void faN()
+  private void gjS()
   {
     AppMethodBeat.i(30539);
-    if ((this.ESM < 0L) && (this.doH > 0L))
+    if ((this.JIA < 0L) && (this.dFW > 0L))
     {
-      this.ESV.ay(60000L, 60000L);
-      this.ESM = bu.HQ();
-      this.ESN = c.faG().cfG();
+      this.JIJ.startTimer(60000L);
+      this.JIA = Util.currentTicks();
+      this.JIB = c.gjL().cDw();
     }
     AppMethodBeat.o(30539);
   }
   
-  public static void faQ()
+  public static void gjV()
   {
     AppMethodBeat.i(30543);
-    if (ESL != null) {
-      ESL.ESK.fba().vH(true);
+    if (JIz != null) {
+      JIz.JIy.gkf().zD(true);
     }
     AppMethodBeat.o(30543);
   }
   
-  public final void BL(int paramInt)
+  public final void Fv(int paramInt)
   {
     AppMethodBeat.i(30531);
-    this.ESK.fba().N(paramInt, 0L);
+    this.JIy.gkf().Q(paramInt, 0L);
     AppMethodBeat.o(30531);
   }
   
   public final void a(WXRTEditText paramWXRTEditText, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30533);
-    if ((this.EST != 2) || (!this.ESU))
+    if ((this.JIH != 2) || (!this.JII))
     {
       AppMethodBeat.o(30533);
       return;
     }
-    this.ESK.fba().ff(paramInt1, paramInt2);
+    this.JIy.gkf().fv(paramInt1, paramInt2);
     boolean bool8;
     boolean bool7;
     boolean bool6;
     boolean bool5;
     if (paramWXRTEditText.getEditTextType() == 0)
     {
-      Iterator localIterator = u.pEv.iterator();
+      Iterator localIterator = u.qTM.iterator();
       boolean bool1 = false;
       boolean bool4 = false;
       boolean bool3 = false;
@@ -421,10 +423,10 @@ public final class k
       bool7 = false;
       bool6 = false;
       bool5 = false;
-      this.ESO.ke(bool5);
-      this.ESO.kf(bool6);
-      this.ESO.kg(bool7);
-      this.ESO.kh(bool8);
+      this.JIC.lh(bool5);
+      this.JIC.li(bool6);
+      this.JIC.lj(bool7);
+      this.JIC.lk(bool8);
       AppMethodBeat.o(30533);
       return;
     }
@@ -433,10 +435,10 @@ public final class k
   public final void a(WXRTEditText paramWXRTEditText, Spannable paramSpannable1, Spannable paramSpannable2, int paramInt)
   {
     AppMethodBeat.i(30534);
-    String str = paramWXRTEditText.a(i.ESJ);
+    String str = paramWXRTEditText.a(i.JIw);
     if (paramWXRTEditText.getEditTextType() == 0)
     {
-      com.tencent.mm.plugin.wenote.model.a.c localc = c.faG().YE(paramWXRTEditText.getRecyclerItemPosition());
+      com.tencent.mm.plugin.wenote.model.a.c localc = c.gjL().ahp(paramWXRTEditText.getRecyclerItemPosition());
       if ((localc != null) && (localc.getType() == 1))
       {
         int i;
@@ -448,32 +450,32 @@ public final class k
           }
         }
         label128:
-        for (int j = 0;; j = com.tencent.mm.plugin.wenote.c.c.abE(paramSpannable2.toString()))
+        for (int j = 0;; j = com.tencent.mm.plugin.wenote.c.c.alK(paramSpannable2.toString()))
         {
-          if (!c.faG().fg(j - i, 0)) {
+          if (!c.gjL().fw(j - i, 0)) {
             break label140;
           }
-          this.ESK.fba().ceH();
-          this.ESK.fba().BH(paramWXRTEditText.getRecyclerItemPosition());
+          this.JIy.gkf().cCx();
+          this.JIy.gkf().Fr(paramWXRTEditText.getRecyclerItemPosition());
           AppMethodBeat.o(30534);
           return;
-          i = com.tencent.mm.plugin.wenote.c.c.abE(paramSpannable1.toString());
+          i = com.tencent.mm.plugin.wenote.c.c.alK(paramSpannable1.toString());
           break;
         }
         label140:
-        c.faG().cfB();
-        ((com.tencent.mm.plugin.wenote.model.a.i)localc).pAl = paramInt;
+        c.gjL().cDr();
+        ((com.tencent.mm.plugin.wenote.model.a.i)localc).qPC = paramInt;
         ((com.tencent.mm.plugin.wenote.model.a.i)localc).content = str;
-        ((com.tencent.mm.plugin.wenote.model.a.i)localc).pAj = true;
-        localc.pAp = false;
-        paramWXRTEditText = c.faG();
-        paramWXRTEditText.pBb = (j - i + paramWXRTEditText.pBb);
+        ((com.tencent.mm.plugin.wenote.model.a.i)localc).qPA = true;
+        localc.qPG = false;
+        paramWXRTEditText = c.gjL();
+        paramWXRTEditText.qQs = (j - i + paramWXRTEditText.qQs);
       }
       AppMethodBeat.o(30534);
       return;
     }
     paramWXRTEditText.setText("");
-    if (bu.isNullOrNil(str))
+    if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(30534);
       return;
@@ -483,8 +485,8 @@ public final class k
     for (paramSpannable1 = "";; paramSpannable1 = str)
     {
       paramSpannable2.content = paramSpannable1;
-      paramInt = c.faG().a(paramSpannable2, paramWXRTEditText, true, false, false);
-      c.faG().fh(paramInt - 1, paramInt + 1);
+      paramInt = c.gjL().a(paramSpannable2, paramWXRTEditText, true, false, false);
+      c.gjL().fx(paramInt - 1, paramInt + 1);
       AppMethodBeat.o(30534);
       return;
     }
@@ -496,8 +498,8 @@ public final class k
     if (paramBoolean) {}
     try
     {
-      faN();
-      this.ESK.fba().a(paramWXRTEditText, paramBoolean, paramInt);
+      gjS();
+      this.JIy.gkf().a(paramWXRTEditText, paramBoolean, paramInt);
       return;
     }
     finally
@@ -509,33 +511,33 @@ public final class k
   public final void b(WXRTEditText paramWXRTEditText)
   {
     AppMethodBeat.i(30536);
-    this.ESK.fba().a(paramWXRTEditText);
+    this.JIy.gkf().a(paramWXRTEditText);
     AppMethodBeat.o(30536);
   }
   
   public final <V, C extends g<V>> void b(t<V, C> paramt, V paramV)
   {
     AppMethodBeat.i(30542);
-    WXRTEditText localWXRTEditText = faL();
+    WXRTEditText localWXRTEditText = gjQ();
     if (localWXRTEditText != null)
     {
       if (localWXRTEditText.getEditTextType() == 0)
       {
-        int i = localWXRTEditText.getSelection().avj;
+        int i = localWXRTEditText.getSelection().avh;
         int j = localWXRTEditText.getText().length();
         if (((paramV instanceof Boolean)) && (((Boolean)paramV).booleanValue()) && (i == j))
         {
-          localWXRTEditText.cfR();
+          localWXRTEditText.cDH();
           localWXRTEditText.getText().append("\n");
-          localWXRTEditText.cfS();
+          localWXRTEditText.cDI();
           localWXRTEditText.setSelection(i);
         }
         localWXRTEditText.a(paramt, paramV);
         AppMethodBeat.o(30542);
         return;
       }
-      localWXRTEditText.pBZ = true;
-      localWXRTEditText.pAt = paramt.cgC();
+      localWXRTEditText.qRr = true;
+      localWXRTEditText.qPK = paramt.cEq();
       localWXRTEditText.getText().append("\n");
     }
     AppMethodBeat.o(30542);
@@ -544,30 +546,30 @@ public final class k
   public final void e(boolean paramBoolean, long paramLong)
   {
     AppMethodBeat.i(30529);
-    this.ESK.fba().e(paramBoolean, paramLong);
+    this.JIy.gkf().e(paramBoolean, paramLong);
     AppMethodBeat.o(30529);
   }
   
-  public final void faE()
+  public final void gjJ()
   {
     AppMethodBeat.i(30530);
-    this.ESK.fba().faE();
-    faN();
+    this.JIy.gkf().gjJ();
+    gjS();
     AppMethodBeat.o(30530);
   }
   
-  public final void faF()
+  public final void gjK()
   {
     AppMethodBeat.i(30535);
-    this.ESK.fba().ceF();
+    this.JIy.gkf().cCv();
     AppMethodBeat.o(30535);
   }
   
-  public final WXRTEditText faL()
+  public final WXRTEditText gjQ()
   {
     AppMethodBeat.i(30528);
-    Object localObject1 = c.faG();
-    ArrayList localArrayList = this.pCs;
+    Object localObject1 = c.gjL();
+    ArrayList localArrayList = this.qRK;
     if (localArrayList != null) {
       localArrayList.clear();
     }
@@ -579,7 +581,7 @@ public final class k
       {
         if (((c)localObject1).mDataList == null)
         {
-          if (this.pCs != null) {
+          if (this.qRK != null) {
             break;
           }
           AppMethodBeat.o(30528);
@@ -590,12 +592,12 @@ public final class k
           break label148;
         }
         localc = (com.tencent.mm.plugin.wenote.model.a.c)localIterator.next();
-        if (localc.ERY != null)
+        if (localc.JHL != null)
         {
-          localArrayList.add(localc.ERY);
+          localArrayList.add(localc.JHL);
           continue;
         }
-        if (localc.ERW == null) {
+        if (localc.JHJ == null) {
           continue;
         }
       }
@@ -603,13 +605,13 @@ public final class k
       {
         AppMethodBeat.o(30528);
       }
-      if (localc.ERX != null)
+      if (localc.JHK != null)
       {
-        localObject2.add(localc.ERW);
-        localObject2.add(localc.ERX);
+        localObject2.add(localc.JHJ);
+        localObject2.add(localc.JHK);
       }
     }
-    localObject1 = this.pCs.iterator();
+    localObject1 = this.qRK.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       WXRTEditText localWXRTEditText = (WXRTEditText)((Iterator)localObject1).next();
@@ -623,35 +625,35 @@ public final class k
     return null;
   }
   
-  public final void faO()
+  public final void gjT()
   {
     AppMethodBeat.i(30540);
-    if ((this.doH > 0L) && (this.ESM > 0L))
+    if ((this.dFW > 0L) && (this.JIA > 0L))
     {
-      String str = c.faG().cfG();
-      if (!str.equals(this.ESN))
+      String str = c.gjL().cDw();
+      if (!str.equals(this.JIB))
       {
-        this.ESN = str;
-        if (!this.ESP)
+        this.JIB = str;
+        if (!this.JID)
         {
-          this.ESP = true;
-          cx(this.ESN, true);
+          this.JID = true;
+          cS(this.JIB, true);
           AppMethodBeat.o(30540);
           return;
         }
-        cx(this.ESN, false);
+        cS(this.JIB, false);
       }
     }
     AppMethodBeat.o(30540);
   }
   
-  public final WXRTEditText faP()
+  public final WXRTEditText gjU()
   {
     AppMethodBeat.i(30541);
-    WXRTEditText localWXRTEditText = faL();
-    if ((localWXRTEditText == null) && (this.pCs.size() > 0))
+    WXRTEditText localWXRTEditText = gjQ();
+    if ((localWXRTEditText == null) && (this.qRK.size() > 0))
     {
-      localWXRTEditText = (WXRTEditText)this.pCs.get(this.pCs.size() - 1);
+      localWXRTEditText = (WXRTEditText)this.qRK.get(this.qRK.size() - 1);
       AppMethodBeat.o(30541);
       return localWXRTEditText;
     }
@@ -662,10 +664,10 @@ public final class k
   public final void onDestroy()
   {
     AppMethodBeat.i(179745);
-    this.ESV.stopTimer();
-    this.ESM = -1L;
-    if (ESL == this) {
-      ESL = null;
+    this.JIJ.stopTimer();
+    this.JIA = -1L;
+    if (JIz == this) {
+      JIz = null;
     }
     AppMethodBeat.o(179745);
   }
@@ -673,19 +675,19 @@ public final class k
   public final void q(WXRTEditText paramWXRTEditText)
   {
     AppMethodBeat.i(30527);
-    if (paramWXRTEditText.pBN == 0) {
-      paramWXRTEditText.setTextSize(0, com.tencent.mm.cb.a.ax(paramWXRTEditText.getContext(), 2131165517));
+    if (paramWXRTEditText.qRf == 0) {
+      paramWXRTEditText.setTextSize(0, com.tencent.mm.cb.a.aG(paramWXRTEditText.getContext(), 2131165535));
     }
     b.setTextSize(paramWXRTEditText.getTextSize());
-    paramWXRTEditText.ESC = this;
+    paramWXRTEditText.JIp = this;
     paramWXRTEditText.setRichTextEditing(null);
-    paramWXRTEditText.setOnKeyListener(this.pCA);
+    paramWXRTEditText.setOnKeyListener(this.qRS);
     AppMethodBeat.o(30527);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.k
  * JD-Core Version:    0.7.0.1
  */

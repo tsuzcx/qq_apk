@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <NormalIconPreference android:icon="@raw/find_more_friend_mobile_icon" android:key="find_friends_by_mobile" android:title="@string/c78" />
-    <NormalIconPreference android:icon="@drawable/are" android:key="find_friends_by_google_account" android:title="@string/c74" />
+    <NormalIconPreference android:icon="@raw/find_more_friend_mobile_icon" android:key="find_friends_by_mobile" android:title="@string/cet" />
+    <NormalIconPreference android:icon="@drawable/bdi" android:key="find_friends_by_google_account" android:title="@string/cep" />
     <PreferenceCategory />
 </PreferenceScreen>

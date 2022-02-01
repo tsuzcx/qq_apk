@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@raw/mall_order_detail_good_selected" />
-    <item android:drawable="@raw/mall_order_detail_good_unselected" />
-</selector>
+    <gradient android:startColor="#00ededed" android:endColor="#ffededed" android:angle="270.0" android:type="linear" />
+</shape>

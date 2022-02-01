@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.transition.r;
+import android.support.transition.s;
 import android.support.v7.view.menu.h;
 import android.support.v7.view.menu.j;
 import android.support.v7.view.menu.o;
@@ -17,14 +17,14 @@ public final class BottomNavigationPresenter
   implements o
 {
   public int id;
-  private h kC;
-  public BottomNavigationMenuView kE;
-  public boolean kF = false;
+  private h kE;
+  public BottomNavigationMenuView kG;
+  public boolean kH = false;
   
   public final void a(Context paramContext, h paramh)
   {
-    this.kC = paramh;
-    this.kE.kC = this.kC;
+    this.kE = paramh;
+    this.kG.kE = this.kE;
   }
   
   public final void a(h paramh, boolean paramBoolean) {}
@@ -41,7 +41,7 @@ public final class BottomNavigationPresenter
     return false;
   }
   
-  public final boolean bD()
+  public final boolean bF()
   {
     return false;
   }
@@ -64,20 +64,20 @@ public final class BottomNavigationPresenter
     int i;
     if ((paramParcelable instanceof SavedState))
     {
-      localBottomNavigationMenuView = this.kE;
-      j = ((SavedState)paramParcelable).kq;
-      k = localBottomNavigationMenuView.kC.size();
+      localBottomNavigationMenuView = this.kG;
+      j = ((SavedState)paramParcelable).ks;
+      k = localBottomNavigationMenuView.kE.size();
       i = 0;
     }
     for (;;)
     {
       if (i < k)
       {
-        paramParcelable = localBottomNavigationMenuView.kC.getItem(i);
+        paramParcelable = localBottomNavigationMenuView.kE.getItem(i);
         if (j == paramParcelable.getItemId())
         {
-          localBottomNavigationMenuView.kq = j;
-          localBottomNavigationMenuView.kr = i;
+          localBottomNavigationMenuView.ks = j;
+          localBottomNavigationMenuView.kt = i;
           paramParcelable.setChecked(true);
         }
       }
@@ -92,54 +92,54 @@ public final class BottomNavigationPresenter
   public final Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState();
-    localSavedState.kq = this.kE.getSelectedItemId();
+    localSavedState.ks = this.kG.getSelectedItemId();
     return localSavedState;
   }
   
   public final void p(boolean paramBoolean)
   {
-    if (this.kF) {}
+    if (this.kH) {}
     for (;;)
     {
       return;
       if (paramBoolean)
       {
-        this.kE.bC();
+        this.kG.bE();
         return;
       }
-      BottomNavigationMenuView localBottomNavigationMenuView = this.kE;
-      if ((localBottomNavigationMenuView.kC != null) && (localBottomNavigationMenuView.kp != null))
+      BottomNavigationMenuView localBottomNavigationMenuView = this.kG;
+      if ((localBottomNavigationMenuView.kE != null) && (localBottomNavigationMenuView.kr != null))
       {
-        int j = localBottomNavigationMenuView.kC.size();
-        if (j != localBottomNavigationMenuView.kp.length)
+        int j = localBottomNavigationMenuView.kE.size();
+        if (j != localBottomNavigationMenuView.kr.length)
         {
-          localBottomNavigationMenuView.bC();
+          localBottomNavigationMenuView.bE();
           return;
         }
-        int k = localBottomNavigationMenuView.kq;
+        int k = localBottomNavigationMenuView.ks;
         int i = 0;
         while (i < j)
         {
-          MenuItem localMenuItem = localBottomNavigationMenuView.kC.getItem(i);
+          MenuItem localMenuItem = localBottomNavigationMenuView.kE.getItem(i);
           if (localMenuItem.isChecked())
           {
-            localBottomNavigationMenuView.kq = localMenuItem.getItemId();
-            localBottomNavigationMenuView.kr = i;
+            localBottomNavigationMenuView.ks = localMenuItem.getItemId();
+            localBottomNavigationMenuView.kt = i;
           }
           i += 1;
         }
-        if (k != localBottomNavigationMenuView.kq) {
-          r.a(localBottomNavigationMenuView, localBottomNavigationMenuView.kg);
+        if (k != localBottomNavigationMenuView.ks) {
+          s.a(localBottomNavigationMenuView, localBottomNavigationMenuView.ki);
         }
-        paramBoolean = BottomNavigationMenuView.m(localBottomNavigationMenuView.jY, localBottomNavigationMenuView.kC.hV().size());
+        paramBoolean = BottomNavigationMenuView.m(localBottomNavigationMenuView.ka, localBottomNavigationMenuView.kE.jdMethod_if().size());
         i = 0;
         while (i < j)
         {
-          localBottomNavigationMenuView.kB.kF = true;
-          localBottomNavigationMenuView.kp[i].setLabelVisibilityMode(localBottomNavigationMenuView.jY);
-          localBottomNavigationMenuView.kp[i].setShifting(paramBoolean);
-          localBottomNavigationMenuView.kp[i].a((j)localBottomNavigationMenuView.kC.getItem(i));
-          localBottomNavigationMenuView.kB.kF = false;
+          localBottomNavigationMenuView.kD.kH = true;
+          localBottomNavigationMenuView.kr[i].setLabelVisibilityMode(localBottomNavigationMenuView.ka);
+          localBottomNavigationMenuView.kr[i].setShifting(paramBoolean);
+          localBottomNavigationMenuView.kr[i].a((j)localBottomNavigationMenuView.kE.getItem(i));
+          localBottomNavigationMenuView.kD.kH = false;
           i += 1;
         }
       }
@@ -150,13 +150,13 @@ public final class BottomNavigationPresenter
     implements Parcelable
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-    int kq;
+    int ks;
     
     SavedState() {}
     
     SavedState(Parcel paramParcel)
     {
-      this.kq = paramParcel.readInt();
+      this.ks = paramParcel.readInt();
     }
     
     public int describeContents()
@@ -166,13 +166,13 @@ public final class BottomNavigationPresenter
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      paramParcel.writeInt(this.kq);
+      paramParcel.writeInt(this.ks);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.BottomNavigationPresenter
  * JD-Core Version:    0.7.0.1
  */

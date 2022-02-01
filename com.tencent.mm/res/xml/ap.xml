@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContactsSource
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.plugin.sns.timeline" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-</ContactsSource>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_other" android:plugin_layout="@layout/b9k" android:plugin_text="@string/g51" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="common_chatroom" android:layout="@layout/b8j" android:title="@string/ba7" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="friend_source" android:layout="@layout/b8j" android:title="@string/bgz" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="district" android:layout="@layout/b8j" android:title="@string/bag" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="signature" android:layout="@layout/b8j" android:title="@string/bfk" />
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_about_account" android:plugin_layout="@layout/b9k" android:plugin_text="@string/bc7" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="weishop" android:layout="@layout/b8j" android:title="@string/bft" />
+    <PreferenceSmallCategory android:key="contact_info_category_1" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="send_to_friend" android:layout="@layout/b8j" android:title="@string/bf9" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="false" android:key="add_to_black" android:persistent="false" android:summary="@string/bd7" android:title="@string/bd6" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="expose" android:layout="@layout/b8j" android:title="@string/ay8" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.Preference android:key="delete_contact" android:layout="@layout/b8j" android:title="@string/bad" />
+    <PreferenceSmallCategory />
+</PreferenceScreen>

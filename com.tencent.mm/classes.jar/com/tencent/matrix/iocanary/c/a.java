@@ -33,7 +33,7 @@ public final class a
       localJSONObject.put("stack", paramIOIssue.stack);
       localJSONObject.put("repeat", paramIOIssue.repeatReadCnt);
       label136:
-      localc.cFG = localJSONObject;
+      localc.cWe = localJSONObject;
       return localc;
     }
     catch (JSONException paramIOIssue)
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.iocanary.c.a
  * JD-Core Version:    0.7.0.1
  */

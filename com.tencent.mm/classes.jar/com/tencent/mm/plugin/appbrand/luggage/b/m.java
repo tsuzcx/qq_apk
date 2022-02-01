@@ -9,10 +9,10 @@ import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.b.a;
 import com.tencent.mm.modelappbrand.a.b.e;
 import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.modelappbrand.a.b.p;
+import com.tencent.mm.modelappbrand.a.b.q;
 import com.tencent.mm.plugin.appbrand.f.a.b;
 import com.tencent.mm.plugin.appbrand.f.a.c;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.io.InputStream;
 import java.util.Map;
 
@@ -21,102 +21,102 @@ public final class m
 {
   public final void a(String paramString, Map<String, String> paramMap, final a.c paramc)
   {
-    AppMethodBeat.i(207776);
-    b localb = b.aEl();
+    AppMethodBeat.i(219350);
+    b localb = b.aXY();
     paramc = new android.arch.a.c.a() {};
     if (TextUtils.isEmpty(paramString))
     {
       paramc.apply(null);
-      AppMethodBeat.o(207776);
+      AppMethodBeat.o(219350);
       return;
     }
-    b.p localp = new b.p(paramString, (byte)0);
-    localb.hNF.hOa.post(new b.a(localb, localb, localp, paramc, paramString, paramMap));
-    AppMethodBeat.o(207776);
+    b.q localq = new b.q(paramString, (byte)0);
+    localb.iIK.iJf.post(new b.a(localb, localb, localq, paramc, paramString, paramMap));
+    AppMethodBeat.o(219350);
   }
   
   public final Bitmap b(String paramString, Rect paramRect, final a.b paramb)
   {
-    AppMethodBeat.i(207775);
+    AppMethodBeat.i(219349);
     if (!match(paramString))
     {
-      AppMethodBeat.o(207775);
+      AppMethodBeat.o(219349);
       return null;
     }
     if (paramRect != null) {}
     for (paramRect = new com.tencent.mm.plugin.appbrand.luggage.a.a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());; paramRect = null)
     {
-      Bitmap localBitmap = b.aEl().a(paramString, paramRect);
+      Bitmap localBitmap = b.aXY().a(paramString, paramRect);
       if (localBitmap == null) {
-        b.aEl().a(new b.k()
+        b.aXY().a(new b.k()
         {
-          public final String BN()
+          public final void I(Bitmap paramAnonymousBitmap)
           {
-            AppMethodBeat.i(207772);
-            String str = "WxaIcon" + hashCode();
-            AppMethodBeat.o(207772);
-            return str;
-          }
-          
-          public final void F(Bitmap paramAnonymousBitmap)
-          {
-            AppMethodBeat.i(207770);
+            AppMethodBeat.i(219344);
             if (paramb == null)
             {
-              AppMethodBeat.o(207770);
+              AppMethodBeat.o(219344);
               return;
             }
             if ((paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
             {
-              paramb.N(null);
-              AppMethodBeat.o(207770);
+              paramb.Q(null);
+              AppMethodBeat.o(219344);
               return;
             }
-            paramb.N(paramAnonymousBitmap);
-            AppMethodBeat.o(207770);
+            paramb.Q(paramAnonymousBitmap);
+            AppMethodBeat.o(219344);
           }
           
-          public final void aEt() {}
-          
-          public final void ox()
+          public final String Lb()
           {
-            AppMethodBeat.i(207771);
+            AppMethodBeat.i(219346);
+            String str = "WxaIcon" + hashCode();
+            AppMethodBeat.o(219346);
+            return str;
+          }
+          
+          public final void aYg() {}
+          
+          public final void oD()
+          {
+            AppMethodBeat.i(219345);
             if (paramb == null)
             {
-              AppMethodBeat.o(207771);
+              AppMethodBeat.o(219345);
               return;
             }
-            paramb.N(null);
-            AppMethodBeat.o(207771);
+            paramb.Q(null);
+            AppMethodBeat.o(219345);
           }
         }, paramString, null, paramRect);
       }
-      AppMethodBeat.o(207775);
+      AppMethodBeat.o(219349);
       return localBitmap;
     }
   }
   
   public final boolean match(String paramString)
   {
-    AppMethodBeat.i(207774);
+    AppMethodBeat.i(219348);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(207774);
+      AppMethodBeat.o(219348);
       return false;
     }
     paramString = paramString.toLowerCase();
     if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
     {
-      AppMethodBeat.o(207774);
+      AppMethodBeat.o(219348);
       return true;
     }
-    AppMethodBeat.o(207774);
+    AppMethodBeat.o(219348);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.m
  * JD-Core Version:    0.7.0.1
  */

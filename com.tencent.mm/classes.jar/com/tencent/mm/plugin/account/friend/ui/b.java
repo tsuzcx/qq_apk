@@ -11,52 +11,52 @@ import com.tencent.mm.b.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.a.a;
 import com.tencent.mm.plugin.account.friend.a.q;
-import com.tencent.mm.protocal.protobuf.auf;
-import com.tencent.mm.protocal.protobuf.cdf;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.bfo;
+import com.tencent.mm.protocal.protobuf.ctl;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 final class b
   extends BaseAdapter
 {
-  LinkedList<auf> gnJ;
-  private LinkedList<cdf> hFT;
-  boolean jiA;
-  private boolean[] jiB;
-  private final LayoutInflater jiz;
+  LinkedList<bfo> gYE;
+  private LinkedList<ctl> iAd;
+  private final LayoutInflater kgB;
+  boolean kgC;
+  private boolean[] kgD;
   
   public b(LayoutInflater paramLayoutInflater)
   {
-    this.jiz = paramLayoutInflater;
+    this.kgB = paramLayoutInflater;
   }
   
-  public final void a(LinkedList<cdf> paramLinkedList, int paramInt)
+  public final void a(LinkedList<ctl> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(131225);
     if (paramInt < 0) {
-      this.hFT = paramLinkedList;
+      this.iAd = paramLinkedList;
     }
     for (;;)
     {
-      this.jiB = new boolean[this.hFT.size()];
+      this.kgD = new boolean[this.iAd.size()];
       AppMethodBeat.o(131225);
       return;
-      this.hFT = new LinkedList();
+      this.iAd = new LinkedList();
       int i = 0;
       while (i < paramLinkedList.size())
       {
-        if (paramInt == ((cdf)paramLinkedList.get(i)).GxI) {
-          this.hFT.add(paramLinkedList.get(i));
+        if (paramInt == ((ctl)paramLinkedList.get(i)).Ltr) {
+          this.iAd.add(paramLinkedList.get(i));
         }
         i += 1;
       }
     }
   }
   
-  public final String[] aTW()
+  public final String[] boI()
   {
     AppMethodBeat.i(131226);
-    Object localObject = this.jiB;
+    Object localObject = this.kgD;
     int m = localObject.length;
     int i = 0;
     int k;
@@ -71,12 +71,12 @@ final class b
     localObject = new String[j];
     i = 0;
     j = 0;
-    if (j < this.hFT.size())
+    if (j < this.iAd.size())
     {
-      if (this.jiB[j] == 0) {
+      if (this.kgD[j] == 0) {
         break label115;
       }
-      localObject[i] = ((cdf)this.hFT.get(j)).nIJ;
+      localObject[i] = ((ctl)this.iAd.get(j)).UserName;
       i += 1;
     }
     label115:
@@ -93,20 +93,20 @@ final class b
   {
     AppMethodBeat.i(131227);
     int i;
-    if (this.jiA)
+    if (this.kgC)
     {
-      if (this.gnJ == null)
+      if (this.gYE == null)
       {
         AppMethodBeat.o(131227);
         return 0;
       }
-      i = this.gnJ.size();
+      i = this.gYE.size();
       AppMethodBeat.o(131227);
       return i;
     }
-    if (this.hFT != null)
+    if (this.iAd != null)
     {
-      i = this.hFT.size();
+      i = this.iAd.size();
       AppMethodBeat.o(131227);
       return i;
     }
@@ -117,13 +117,13 @@ final class b
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(131228);
-    if (this.jiA)
+    if (this.kgC)
     {
-      localObject = this.gnJ.get(paramInt);
+      localObject = this.gYE.get(paramInt);
       AppMethodBeat.o(131228);
       return localObject;
     }
-    Object localObject = this.hFT.get(paramInt);
+    Object localObject = this.iAd.get(paramInt);
     AppMethodBeat.o(131228);
     return localObject;
   }
@@ -138,77 +138,77 @@ final class b
     AppMethodBeat.i(131229);
     Object localObject;
     View localView;
-    if (this.jiA)
+    if (this.kgC)
     {
-      localObject = (auf)this.gnJ.get(paramInt);
+      localObject = (bfo)this.gYE.get(paramInt);
       if ((paramView == null) || (((a)paramView.getTag()).type != 2))
       {
-        localView = this.jiz.inflate(2131494492, paramViewGroup, false);
+        localView = this.kgB.inflate(2131495084, paramViewGroup, false);
         paramView = new a();
         paramView.type = 2;
-        paramView.jiC = ((TextView)localView.findViewById(2131303558));
+        paramView.kgE = ((TextView)localView.findViewById(2131306333));
         localView.setTag(paramView);
         paramViewGroup = paramView;
       }
       for (;;)
       {
-        paramViewGroup.jiC.setText(((auf)localObject).GLc);
+        paramViewGroup.kgE.setText(((bfo)localObject).LPg);
         AppMethodBeat.o(131229);
         return localView;
         paramViewGroup = (a)paramView.getTag();
         localView = paramView;
       }
     }
-    cdf localcdf = (cdf)this.hFT.get(paramInt);
+    ctl localctl = (ctl)this.iAd.get(paramInt);
     if ((paramView == null) || (((a)paramView.getTag()).type != 1))
     {
-      localView = this.jiz.inflate(2131494491, paramViewGroup, false);
+      localView = this.kgB.inflate(2131495083, paramViewGroup, false);
       paramViewGroup = new a();
       paramViewGroup.type = 1;
-      paramViewGroup.fRI = ((TextView)localView.findViewById(2131301077));
-      paramViewGroup.jiD = ((TextView)localView.findViewById(2131301075));
-      paramViewGroup.jiF = ((CheckBox)localView.findViewById(2131301078));
-      paramViewGroup.jiE = ((TextView)localView.findViewById(2131301064));
+      paramViewGroup.gwR = ((TextView)localView.findViewById(2131302731));
+      paramViewGroup.kgF = ((TextView)localView.findViewById(2131302729));
+      paramViewGroup.kgH = ((CheckBox)localView.findViewById(2131302732));
+      paramViewGroup.kgG = ((TextView)localView.findViewById(2131302718));
       localView.setTag(paramViewGroup);
-      if (!((q)((a)g.ad(a.class)).getInviteFriendOpenStg()).Kh(localcdf.nIJ)) {
+      if (!((q)((a)g.ah(a.class)).getInviteFriendOpenStg()).Tf(localctl.UserName)) {
         break label379;
       }
-      paramViewGroup.jiE.setVisibility(0);
+      paramViewGroup.kgG.setVisibility(0);
       label279:
-      TextView localTextView = paramViewGroup.fRI;
-      if (localcdf == null) {
+      TextView localTextView = paramViewGroup.gwR;
+      if (localctl == null) {
         break label470;
       }
-      paramView = localcdf.Gtk;
+      paramView = localctl.LoI;
       if ((paramView == null) || (paramView.length() <= 0)) {
         break label391;
       }
       label307:
       localTextView.setText(paramView);
-      localObject = paramViewGroup.jiD;
-      if (localcdf == null) {
+      localObject = paramViewGroup.kgF;
+      if (localctl == null) {
         break label570;
       }
-      if (localcdf.Hee != 0) {
+      if (localctl.Mjk != 0) {
         break label476;
       }
-      paramView = localcdf.nIJ;
+      paramView = localctl.UserName;
     }
     label391:
     label570:
     for (;;)
     {
       ((TextView)localObject).setText(paramView);
-      paramViewGroup.jiF.setChecked(this.jiB[paramInt]);
+      paramViewGroup.kgH.setChecked(this.kgD[paramInt]);
       AppMethodBeat.o(131229);
       return localView;
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
       break;
       label379:
-      paramViewGroup.jiE.setVisibility(8);
+      paramViewGroup.kgG.setVisibility(8);
       break label279;
-      localObject = localcdf.nJO;
+      localObject = localctl.oUJ;
       if (localObject != null)
       {
         paramView = (View)localObject;
@@ -216,7 +216,7 @@ final class b
           break label307;
         }
       }
-      localObject = new p(localcdf.qkC).toString();
+      localObject = new p(localctl.rBx).toString();
       if (localObject != null)
       {
         paramView = (View)localObject;
@@ -224,7 +224,7 @@ final class b
           break label307;
         }
       }
-      localObject = localcdf.FVO;
+      localObject = localctl.KPz;
       if (localObject != null)
       {
         paramView = (View)localObject;
@@ -236,19 +236,19 @@ final class b
       paramView = "";
       break label307;
       label476:
-      if (localcdf.Hee == 2)
+      if (localctl.Mjk == 2)
       {
-        paramView = localcdf.nIJ;
+        paramView = localctl.UserName;
       }
       else
       {
-        if (localcdf.Hee == 1)
+        if (localctl.Mjk == 1)
         {
-          paramView = localcdf.nIJ;
-          if (!bu.isNullOrNil(paramView))
+          paramView = localctl.UserName;
+          if (!Util.isNullOrNil(paramView))
           {
             paramView = paramView.split("@");
-            if ((paramView == null) || (paramView.length < 2) || (bu.isNullOrNil(paramView[0])))
+            if ((paramView == null) || (paramView.length < 2) || (Util.isNullOrNil(paramView[0])))
             {
               paramView = "";
               continue;
@@ -262,15 +262,15 @@ final class b
     }
   }
   
-  public final void rv(int paramInt)
+  public final void vl(int paramInt)
   {
     AppMethodBeat.i(131224);
-    if ((paramInt < 0) || (paramInt >= this.jiB.length))
+    if ((paramInt < 0) || (paramInt >= this.kgD.length))
     {
       AppMethodBeat.o(131224);
       return;
     }
-    boolean[] arrayOfBoolean = this.jiB;
+    boolean[] arrayOfBoolean = this.kgD;
     if (arrayOfBoolean[paramInt] == 0) {}
     for (int i = 1;; i = 0)
     {
@@ -283,17 +283,17 @@ final class b
   
   static final class a
   {
-    TextView fRI;
-    TextView jiC;
-    TextView jiD;
-    TextView jiE;
-    CheckBox jiF;
+    TextView gwR;
+    TextView kgE;
+    TextView kgF;
+    TextView kgG;
+    CheckBox kgH;
     int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.b
  * JD-Core Version:    0.7.0.1
  */

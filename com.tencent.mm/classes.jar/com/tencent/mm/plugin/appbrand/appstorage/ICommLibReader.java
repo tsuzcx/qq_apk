@@ -6,13 +6,13 @@ import android.text.TextUtils;
 import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.o;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.Closeable;
 
 public abstract interface ICommLibReader
   extends Parcelable, b, o, Closeable, Comparable<ICommLibReader>
 {
-  public abstract String LE(String paramString);
+  public abstract String UN(String paramString);
   
   public static final class a
     extends RuntimeException
@@ -34,7 +34,7 @@ public abstract interface ICommLibReader
       AppMethodBeat.o(178572);
     }
     
-    public static ICommLibReader g(Parcel paramParcel)
+    public static ICommLibReader h(Parcel paramParcel)
     {
       AppMethodBeat.i(178573);
       String str = paramParcel.readString();
@@ -51,7 +51,7 @@ public abstract interface ICommLibReader
       }
       catch (Exception paramParcel)
       {
-        ae.e("Luggage.WXA.ICommLibReader.ParcelHelper", "readFromParcel e=%s", new Object[] { paramParcel });
+        Log.e("Luggage.WXA.ICommLibReader.ParcelHelper", "readFromParcel e=%s", new Object[] { paramParcel });
         AppMethodBeat.o(178573);
       }
       return null;
@@ -60,7 +60,7 @@ public abstract interface ICommLibReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.luggage.sdk.b.a.c.c;
+import android.content.Intent;
+import com.tencent.luggage.h.f.c;
+import com.tencent.luggage.sdk.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class ay
-  extends y<c>
+  extends d<s>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "getPermissionBytes";
+  public static final int CTRL_INDEX = 501;
+  public static final String NAME = "chooseInvoice";
+  final int lzi;
+  
+  public ay()
+  {
+    AppMethodBeat.i(174751);
+    this.lzi = a.aK(this);
+    AppMethodBeat.o(174751);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ay
  * JD-Core Version:    0.7.0.1
  */

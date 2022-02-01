@@ -18,26 +18,26 @@ public class MediaEditReportInfo
   
   static
   {
-    AppMethodBeat.i(218364);
+    AppMethodBeat.i(207047);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(218364);
+    AppMethodBeat.o(207047);
   }
   
   public MediaEditReportInfo()
   {
-    AppMethodBeat.i(218361);
+    AppMethodBeat.i(207044);
     this.editList = new ArrayList();
-    AppMethodBeat.o(218361);
+    AppMethodBeat.o(207044);
   }
   
   protected MediaEditReportInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(218362);
+    AppMethodBeat.i(207045);
     this.editList = new ArrayList();
     this.seekBarDragCnt = paramParcel.readInt();
     this.cropSizeCnt = paramParcel.readInt();
     paramParcel.readList(this.editList, MediaEditReportInfo.EditItem.class.getClassLoader());
-    AppMethodBeat.o(218362);
+    AppMethodBeat.o(207045);
   }
   
   public int describeContents()
@@ -47,16 +47,16 @@ public class MediaEditReportInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(218363);
+    AppMethodBeat.i(207046);
     paramParcel.writeInt(this.seekBarDragCnt);
     paramParcel.writeInt(this.cropSizeCnt);
     paramParcel.writeList(this.editList);
-    AppMethodBeat.o(218363);
+    AppMethodBeat.o(207046);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo
  * JD-Core Version:    0.7.0.1
  */

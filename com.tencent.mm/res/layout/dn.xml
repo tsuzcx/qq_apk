@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gbk" android:paddingLeft="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/jm" style="@style/mc"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/sk" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lw" />
-    <CheckBox android:id="@id/aq8" android:background="@drawable/a9_" android:focusable="false" android:clickable="false" android:layout_height="20.0dip" android:singleLine="true" style="@style/lz" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/cj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:textColorHint="@color/dd" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/nr" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="@dimen/pd" android:hint="@string/ka" android:drawableLeft="@raw/app_brand_desktop_search_icon" android:drawablePadding="@dimen/g" android:textCursorDrawable="@drawable/a70" style="@style/mb" />
+    </LinearLayout>
 </LinearLayout>

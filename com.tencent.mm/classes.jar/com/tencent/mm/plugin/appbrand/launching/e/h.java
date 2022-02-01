@@ -13,35 +13,36 @@ import com.tencent.mm.plugin.appbrand.api.WeAppOpenDeclarePromptBundle;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams;
-import com.tencent.mm.plugin.appbrand.config.g;
-import com.tencent.mm.plugin.appbrand.config.v;
+import com.tencent.mm.plugin.appbrand.config.y;
 import com.tencent.mm.plugin.appbrand.keylogger.c;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
+import com.tencent.mm.plugin.appbrand.launching.WeAppOpenUICallbackIPCProxy.c;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.plugin.appbrand.report.quality.n;
-import com.tencent.mm.plugin.appbrand.report.t;
+import com.tencent.mm.plugin.appbrand.report.quality.g;
+import com.tencent.mm.plugin.appbrand.report.quality.o;
+import com.tencent.mm.plugin.appbrand.report.w;
 import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
-import com.tencent.mm.plugin.appbrand.utils.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.task.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 public final class h
   extends com.tencent.mm.plugin.appbrand.launching.a
 {
-  private static long lSe = 0L;
+  private static long mZq = 0L;
   
   public static String a(LaunchParcel paramLaunchParcel)
   {
-    AppMethodBeat.i(222811);
+    AppMethodBeat.i(227139);
     String str2 = paramLaunchParcel.appId;
     String str1 = str2;
-    if (bu.isNullOrNil(str2)) {
-      str1 = v.Om(paramLaunchParcel.username);
+    if (Util.isNullOrNil(str2)) {
+      str1 = y.Xw(paramLaunchParcel.username);
     }
-    AppMethodBeat.o(222811);
+    AppMethodBeat.o(227139);
     return str1;
   }
   
@@ -70,86 +71,90 @@ public final class h
   {
     AppMethodBeat.i(47462);
     Object localObject1 = a(paramLaunchParcel);
-    Object localObject2 = b.c(paramLaunchParcel, (String)localObject1);
-    com.tencent.mm.plugin.appbrand.report.quality.f.a(paramLaunchParcel, (String)localObject2, (String)localObject1);
-    com.tencent.mm.plugin.appbrand.report.quality.f.b(paramLaunchParcel, (String)localObject2, (String)localObject1);
-    Object localObject3 = t.mwW;
-    t.b(paramLaunchParcel, (String)localObject2);
-    if (n.byR())
+    Object localObject2 = g.c(paramLaunchParcel, (String)localObject1);
+    g.a(paramLaunchParcel, (String)localObject2, (String)localObject1);
+    Object localObject3 = w.nHZ;
+    w.b(paramLaunchParcel, (String)localObject2);
+    if (o.bVk())
     {
-      localObject3 = n.mAZ;
-      n.ep((String)localObject1, (String)localObject2);
-      c.a(KSProcessWeAppLaunch.class, (String)localObject1);
-      c.a(KSProcessWeAppLaunch.class, (String)localObject1, String.format("Network:%s", new Object[] { az.getNetTypeString(paramContext) }));
+      localObject3 = o.nMe;
+      o.eI((String)localObject1, (String)localObject2);
+      c.e(KSProcessWeAppLaunch.class, (String)localObject1);
+      c.a(KSProcessWeAppLaunch.class, (String)localObject1, String.format("Network:%s", new Object[] { NetStatusUtil.getNetTypeString(paramContext) }));
     }
-    int i = paramLaunchParcel.hSZ;
-    if ((!bu.isNullOrNil((String)localObject1)) && (i == 0) && (com.tencent.mm.plugin.appbrand.task.f.ce((String)localObject1, i)))
+    int i = paramLaunchParcel.iOo;
+    if ((!Util.isNullOrNil((String)localObject1)) && (i == 0) && (com.tencent.mm.plugin.appbrand.task.h.bWb().cn((String)localObject1, i)))
     {
-      localObject3 = g.beC().NS((String)localObject1);
-      if ((localObject3 != null) && (((AppBrandInitConfigWC)localObject3).dQv == i))
+      localObject3 = com.tencent.mm.plugin.appbrand.config.h.bzT().Xa((String)localObject1);
+      if ((localObject3 != null) && (((AppBrandInitConfigWC)localObject3).eix == i))
       {
         paramLaunchParcel.f((AppBrandInitConfigLU)localObject3);
-        ((AppBrandInitConfigWC)localObject3).kaN = paramLaunchParcel.kaN;
-        ((AppBrandInitConfigWC)localObject3).kaM = paramLaunchParcel.kaM;
+        WeAppOpenUICallbackIPCProxy.c.a((AppBrandInitConfigWC)localObject3, paramLaunchParcel);
+        ((AppBrandInitConfigWC)localObject3).ldR = paramLaunchParcel.ldR;
+        ((AppBrandInitConfigWC)localObject3).ldQ = paramLaunchParcel.ldQ;
         ((AppBrandInitConfigWC)localObject3).launchMode = paramLaunchParcel.launchMode;
-        ((AppBrandInitConfigWC)localObject3).jFV = paramLaunchParcel.jFV;
-        ((AppBrandInitConfigWC)localObject3).kaS = new QualitySession((String)localObject2, (AppBrandInitConfigWC)localObject3, paramLaunchParcel.lRA);
-        ((AppBrandInitConfigWC)localObject3).kaS.mAh = false;
-        ((AppBrandInitConfigWC)localObject3).jFX = paramLaunchParcel.jFX;
-        if (paramLaunchParcel.lRG != null) {}
-        for (((AppBrandInitConfigWC)localObject3).kba = ((WeAppOpenDeclarePromptBundle)paramLaunchParcel.lRG);; ((AppBrandInitConfigWC)localObject3).kba = null)
+        ((AppBrandInitConfigWC)localObject3).kHG = paramLaunchParcel.kHG;
+        ((AppBrandInitConfigWC)localObject3).ldW = new QualitySession((String)localObject2, (AppBrandInitConfigWC)localObject3, paramLaunchParcel.mYK);
+        ((AppBrandInitConfigWC)localObject3).dC((String)localObject2);
+        ((AppBrandInitConfigWC)localObject3).ldW.nLm = false;
+        ((AppBrandInitConfigWC)localObject3).kHI = paramLaunchParcel.kHI;
+        if (paramLaunchParcel.mYQ != null) {}
+        for (((AppBrandInitConfigWC)localObject3).lee = ((WeAppOpenDeclarePromptBundle)paramLaunchParcel.mYQ);; ((AppBrandInitConfigWC)localObject3).lee = null)
         {
-          ((AppBrandInitConfigLU)localObject3).cmD = false;
-          i.b(paramContext, (AppBrandInitConfigWC)localObject3, paramLaunchParcel.lRA);
-          paramContext = t.mwW;
-          t.f((AppBrandInitConfigWC)localObject3);
+          ((AppBrandInitConfigLU)localObject3).cyy = false;
+          ((AppBrandInitConfigWC)localObject3).kHL = paramLaunchParcel.kHL;
+          ((AppBrandInitConfigWC)localObject3).kHM = paramLaunchParcel.kHM;
+          ((AppBrandInitConfigWC)localObject3).kHQ = paramLaunchParcel.kHQ;
+          i.b(paramContext, (AppBrandInitConfigWC)localObject3, paramLaunchParcel.mYK);
+          paramContext = w.nHZ;
+          w.h((AppBrandInitConfigWC)localObject3);
           AppMethodBeat.o(47462);
           return true;
         }
       }
     }
-    if (Math.abs(System.currentTimeMillis() - lSe) < 200L)
+    if (Math.abs(System.currentTimeMillis() - mZq) < 200L)
     {
-      ae.w("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "start in 200 ms, just return");
+      Log.w("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "start in 200 ms, just return");
       AppMethodBeat.o(47462);
       return false;
     }
-    lSe = bu.fpO();
-    ae.v("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "[applaunch] start entered %s %d", new Object[] { localObject1, Integer.valueOf(i) });
+    mZq = Util.nowMilliSecond();
+    Log.v("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "[applaunch] start entered %s %d", new Object[] { localObject1, Integer.valueOf(i) });
     boolean bool1;
-    if ((paramLaunchParcel.cmx != null) && (4 == paramLaunchParcel.cmx.kbg))
+    if ((paramLaunchParcel.cys != null) && (4 == paramLaunchParcel.cys.leo))
     {
       i = 1;
       boolean bool2 = "wxfe02ecfe70800f46".equalsIgnoreCase((String)localObject1);
       localObject3 = "Token@" + h.class.hashCode() + "#" + System.nanoTime();
       if (bool2) {
-        break label655;
+        break label692;
       }
       bool1 = true;
-      label421:
+      label458:
       if (i != 0) {
         bool1 = false;
       }
       new d(paramContext, (String)localObject3, bool1).a(paramLaunchParcel, (String)localObject2);
-      ae.v("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "start we app with username(%s) and appId(%s) and statObj(%s)", new Object[] { paramLaunchParcel.username, localObject1, paramLaunchParcel.lRA });
+      Log.v("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "start we app with username(%s) and appId(%s) and statObj(%s)", new Object[] { paramLaunchParcel.username, localObject1, paramLaunchParcel.mYK });
       localObject1 = new Intent(paramContext, AppBrandLaunchProxyUI.class);
       if ((paramContext instanceof Activity)) {
-        break label661;
+        break label698;
       }
       ((Intent)localObject1).addFlags(268435456);
-      label507:
+      label544:
       ((Intent)localObject1).putExtra("extra_from_mm", true);
       ((Intent)localObject1).putExtra("extra_entry_token", (String)localObject3);
-      if ((bool2) && (paramLaunchParcel.lRB != null) && (paramLaunchParcel.lRB.cmy != null))
+      if ((bool2) && (paramLaunchParcel.mYL != null) && (paramLaunchParcel.mYL.cyt != null))
       {
         ((Intent)localObject1).putExtra("extra_launch_weishi_video", true);
-        ((Intent)localObject1).putExtra("extra_launch_thumb_url", paramLaunchParcel.lRB.cmy.thumbUrl);
-        ((Intent)localObject1).putExtra("extra_launch_thumb_path", paramLaunchParcel.lRB.cmy.kbF);
+        ((Intent)localObject1).putExtra("extra_launch_thumb_url", paramLaunchParcel.mYL.cyt.thumbUrl);
+        ((Intent)localObject1).putExtra("extra_launch_thumb_path", paramLaunchParcel.mYL.cyt.leN);
       }
-      if ((!(paramContext instanceof Activity)) || (paramLaunchParcel.jFR < 0)) {
-        break label673;
+      if ((!(paramContext instanceof Activity)) || (paramLaunchParcel.kHC < 0)) {
+        break label710;
       }
-      ((Activity)paramContext).startActivityForResult((Intent)localObject1, paramLaunchParcel.jFR);
+      ((Activity)paramContext).startActivityForResult((Intent)localObject1, paramLaunchParcel.kHC);
     }
     for (;;)
     {
@@ -160,39 +165,39 @@ public final class h
       return true;
       i = 0;
       break;
-      label655:
+      label692:
       bool1 = false;
-      break label421;
-      label661:
+      break label458;
+      label698:
       c((Intent)localObject1, (Activity)paramContext);
-      break label507;
-      label673:
-      if (paramLaunchParcel.lIP != null)
+      break label544;
+      label710:
+      if (paramLaunchParcel.mQC != null)
       {
         int j = ((Intent)localObject1).getFlags();
         try
         {
           ((Intent)localObject1).setFlags(0xEFFFFFFF & j);
-          paramLaunchParcel = paramLaunchParcel.lIP;
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramLaunchParcel, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramLaunchParcel.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
+          paramLaunchParcel = paramLaunchParcel.mQC;
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+          com.tencent.mm.hellhoundlib.a.a.a(paramLaunchParcel, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramLaunchParcel.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramLaunchParcel, "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         catch (Exception paramLaunchParcel)
         {
           ((Intent)localObject1).setFlags(j);
-          paramLaunchParcel = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLaunchParcel.ahE(), "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramLaunchParcel.mt(0));
+          paramLaunchParcel = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLaunchParcel.axQ(), "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramLaunchParcel.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
       else
       {
-        paramLaunchParcel = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLaunchParcel.ahE(), "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramLaunchParcel.mt(0));
+        paramLaunchParcel = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLaunchParcel.axQ(), "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramLaunchParcel.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/launching/precondition/MMLaunchEntry", "startWithParcel", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
@@ -200,7 +205,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.h
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class ErrMsg
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<ErrMsg> CREATOR;
-  public String OoZ;
+  public String UdY;
   public String message;
   public String title;
   private int type;
@@ -26,7 +26,7 @@ public class ErrMsg
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.OoZ = "";
+    this.UdY = "";
   }
   
   private ErrMsg(Parcel paramParcel)
@@ -35,7 +35,7 @@ public class ErrMsg
     this.type = paramParcel.readInt();
     this.title = paramParcel.readString();
     this.message = paramParcel.readString();
-    this.OoZ = paramParcel.readString();
+    this.UdY = paramParcel.readString();
     AppMethodBeat.o(88194);
   }
   
@@ -52,12 +52,12 @@ public class ErrMsg
     return 0;
   }
   
-  public final void gCB()
+  public final void hPF()
   {
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.OoZ = "";
+    this.UdY = "";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -66,7 +66,7 @@ public class ErrMsg
     paramParcel.writeInt(this.type);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.message);
-    paramParcel.writeString(this.OoZ);
+    paramParcel.writeString(this.UdY);
     AppMethodBeat.o(88195);
   }
 }

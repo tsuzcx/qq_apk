@@ -5,7 +5,7 @@ import android.view.animation.Interpolator;
 final class MMFlipper$d
   implements Interpolator
 {
-  private float xAd = 1.3F;
+  private float BAe = 1.3F;
   
   public final float getInterpolation(float paramFloat)
   {
@@ -15,7 +15,7 @@ final class MMFlipper$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFlipper.d
  * JD-Core Version:    0.7.0.1
  */

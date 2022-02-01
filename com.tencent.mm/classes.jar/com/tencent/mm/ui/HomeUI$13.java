@@ -1,11 +1,11 @@
 package com.tencent.mm.ui;
 
-import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
 
 final class HomeUI$13
-  implements n.e
+  implements o.f
 {
   HomeUI$13(HomeUI paramHomeUI)
   {
@@ -13,21 +13,12 @@ final class HomeUI$13
     AppMethodBeat.o(163255);
   }
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onCreateMMMenu(m paramm)
   {
-    AppMethodBeat.i(186954);
-    switch (paramMenuItem.getItemId())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(186954);
-      return;
-      HomeUI.n(this.Jta);
-      AppMethodBeat.o(186954);
-      return;
-      HomeUI.m(this.Jta);
-    }
+    AppMethodBeat.i(232559);
+    paramm.d(1, "拍摄状态");
+    paramm.d(2, "属性配置");
+    AppMethodBeat.o(232559);
   }
 }
 

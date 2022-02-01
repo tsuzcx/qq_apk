@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
+        <ImageView android:src="@drawable/bdw" style="@style/jx" />
+        <TextView android:id="@id/d_d" android:text="@string/dip" style="@style/jy" />
+        <TextView android:id="@id/d_i" android:text="@string/dia" style="@style/jz" />
+        <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_marginTop="@dimen/hs" style="@style/nl">
+            <CheckBox android:id="@id/ic" android:text="@string/dhf" style="@style/ju" />
+            <Button android:id="@id/j1_" android:text="@string/dir" style="@style/kl" />
+        </LinearLayout>
+        <Button android:id="@id/bfk" android:text="@string/di_" style="@style/km" />
+    </LinearLayout>
+    <Button android:id="@id/dp6" android:text="@string/di7" style="@style/k1" />
+</LinearLayout>

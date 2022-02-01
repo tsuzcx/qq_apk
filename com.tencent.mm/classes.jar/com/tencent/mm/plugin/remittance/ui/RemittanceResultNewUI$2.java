@@ -15,16 +15,16 @@ final class RemittanceResultNewUI$2
   {
     AppMethodBeat.i(68280);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    RemittanceResultNewUI.a(this.ywh);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    RemittanceResultNewUI.a(this.Cxd);
     a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(68280);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceResultNewUI.2
  * JD-Core Version:    0.7.0.1
  */

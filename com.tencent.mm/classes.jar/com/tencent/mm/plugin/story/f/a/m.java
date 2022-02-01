@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.story.f.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/cgi/StoryVisibleSelfOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "visibleSelf", "deprecated", "", "(JIIZ)V", "getDeprecated", "()Z", "getVisibleSelf", "()I", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/cgi/StoryVisibleSelfOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "visibleSelf", "deprecated", "", "(JIIZ)V", "getDeprecated", "()Z", "getVisibleSelf", "()I", "plugin-story_release"})
 public final class m
   extends a
 {
-  public final int Bdd;
-  public final boolean Bde;
+  public final int FnU;
+  public final boolean FnV;
   
   public m(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super(paramLong, paramInt1);
-    this.Bdd = paramInt2;
-    this.Bde = paramBoolean;
+    this.FnU = paramInt2;
+    this.FnV = paramBoolean;
   }
 }
 

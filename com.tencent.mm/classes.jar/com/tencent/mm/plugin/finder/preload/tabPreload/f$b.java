@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.finder.preload.tabPreload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$CacheTime;", "", "lastTime", "", "(J)V", "getLastTime", "()J", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$CacheTime;", "", "lastTime", "", "(J)V", "getLastTime", "()J", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
 public final class f$b
 {
-  private final long hiI;
+  private final long hwQ;
   
   public f$b(long paramLong)
   {
-    this.hiI = paramLong;
+    this.hwQ = paramLong;
   }
   
   public final boolean equals(Object paramObject)
@@ -20,7 +20,7 @@ public final class f$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if (this.hiI != paramObject.hiI) {}
+        if (this.hwQ != paramObject.hwQ) {}
       }
     }
     else {
@@ -31,15 +31,15 @@ public final class f$b
   
   public final int hashCode()
   {
-    long l = this.hiI;
+    long l = this.hwQ;
     return (int)(l ^ l >>> 32);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(203581);
-    String str = "CacheTime(lastTime=" + this.hiI + ")";
-    AppMethodBeat.o(203581);
+    AppMethodBeat.i(249593);
+    String str = "CacheTime(lastTime=" + this.hwQ + ")";
+    AppMethodBeat.o(249593);
     return str;
   }
 }

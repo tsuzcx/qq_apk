@@ -1,56 +1,55 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahu;
-import com.tencent.mm.protocal.protobuf.bdk;
-import com.tencent.mm.protocal.protobuf.bdl;
-import com.tencent.mm.protocal.protobuf.di;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.akg;
+import com.tencent.mm.protocal.protobuf.boy;
+import com.tencent.mm.protocal.protobuf.boz;
+import com.tencent.mm.protocal.protobuf.dr;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class g
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
-  public LinkedList<ahu> xbI;
-  public String xbQ;
+  public LinkedList<akg> AZk;
+  public String AZs;
+  private i callback;
+  private d rr;
   
-  public g(String paramString1, String paramString2, di paramdi)
+  public g(String paramString1, String paramString2, dr paramdr)
   {
     AppMethodBeat.i(66891);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bdk();
-    ((b.a)localObject).hQG = new bdl();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getlastestexpressinfo";
-    ((b.a)localObject).funcId = 578;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bdk)this.rr.hQD.hQJ;
-    this.xbQ = paramString1;
-    ((bdk)localObject).Gfd = paramString1;
-    ae.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "pid ".concat(String.valueOf(paramString1)));
-    ((bdk)localObject).Ghx = paramString2;
-    ((bdk)localObject).GSN = paramdi;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new boy();
+    ((d.a)localObject).iLO = new boz();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getlastestexpressinfo";
+    ((d.a)localObject).funcId = 578;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (boy)this.rr.iLK.iLR;
+    this.AZs = paramString1;
+    ((boy)localObject).KZu = paramString1;
+    Log.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "pid ".concat(String.valueOf(paramString1)));
+    ((boy)localObject).Lca = paramString2;
+    ((boy)localObject).LWZ = paramdr;
     AppMethodBeat.o(66891);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(66893);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(66893);
     return i;
   }
@@ -60,29 +59,29 @@ public final class g
     return 578;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66892);
-    paramArrayOfByte = (bdl)((b)paramq).hQE.hQJ;
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.FUL == 0))
+    paramArrayOfByte = (boz)((d)params).iLL.iLR;
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.KOt == 0))
     {
-      ae.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "resp.ExpressCount " + paramArrayOfByte.GSP);
-      this.xbI = paramArrayOfByte.GSO;
+      Log.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "resp.ExpressCount " + paramArrayOfByte.LXb);
+      this.AZk = paramArrayOfByte.LXa;
     }
     paramInt1 = paramInt3;
-    paramq = paramString;
+    params = paramString;
     if (paramInt3 == 0)
     {
       paramInt1 = paramInt3;
-      paramq = paramString;
-      if (paramArrayOfByte.FUL != 0)
+      params = paramString;
+      if (paramArrayOfByte.KOt != 0)
       {
-        paramInt1 = paramArrayOfByte.FUL;
-        paramq = paramArrayOfByte.FUM;
+        paramInt1 = paramArrayOfByte.KOt;
+        params = paramArrayOfByte.KOu;
       }
     }
-    ae.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "errCode " + paramInt1 + ", errMsg " + paramq);
-    this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
+    Log.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "errCode " + paramInt1 + ", errMsg " + params);
+    this.callback.onSceneEnd(paramInt2, paramInt1, params, this);
     AppMethodBeat.o(66892);
   }
 }

@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.ipcall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.e;
-import com.tencent.mm.n.g;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.n.f;
+import com.tencent.mm.n.h;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class d
 {
-  public static boolean dgc()
+  public static boolean dZW()
   {
     AppMethodBeat.i(25325);
-    if (bc.ajM())
+    if (bg.aAc())
     {
-      if (g.acL().getInt("WCOEntranceSwitch", 0) > 0)
+      if (h.aqJ().getInt("WCOEntranceSwitch", 0) > 0)
       {
-        bc.aCg();
-        c.ajA().set(am.a.INo, Boolean.TRUE);
+        bg.aVF();
+        c.azQ().set(ar.a.NVr, Boolean.TRUE);
         AppMethodBeat.o(25325);
         return true;
       }
-      bc.aCg();
-      c.ajA().set(am.a.INo, Boolean.FALSE);
+      bg.aVF();
+      c.azQ().set(ar.a.NVr, Boolean.FALSE);
       AppMethodBeat.o(25325);
       return false;
     }
@@ -33,7 +33,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,108 @@
 package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.h;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.ak.h.c;
 import com.tencent.mm.av.q;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.l;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 import java.util.Map;
 import junit.framework.Assert;
 
 public final class f
-  implements com.tencent.mm.ak.e
+  implements h
 {
-  public final e.b b(e.a parama)
+  public final h.b b(h.a parama)
   {
     AppMethodBeat.i(27725);
-    cv localcv = parama.gte;
-    if (localcv == null)
+    de localde = parama.heO;
+    if (localde == null)
     {
-      ae.e("MicroMsg.QMsgExtension", "onPreAddMessage cmdAM is null");
+      Log.e("MicroMsg.QMsgExtension", "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(27725);
       return null;
     }
-    if ((localcv.urJ != 36) && (localcv.urJ != 39))
+    if ((localde.xKb != 36) && (localde.xKb != 39))
     {
-      ae.e("MicroMsg.QMsgExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(localcv.urJ) });
+      Log.e("MicroMsg.QMsgExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(localde.xKb) });
       AppMethodBeat.o(27725);
       return null;
     }
-    Object localObject2 = z.a(localcv.FNI);
-    String str1 = z.a(localcv.FNG);
-    Object localObject1 = z.a(localcv.FNH);
-    ae.d("MicroMsg.QMsgExtension", "parseQMsg content:".concat(String.valueOf(localObject2)));
-    bc.aCg();
-    String str2 = (String)c.ajA().get(2, null);
-    bv localbv;
+    Object localObject2 = z.a(localde.KHn);
+    String str1 = z.a(localde.KHl);
+    Object localObject1 = z.a(localde.KHm);
+    Log.d("MicroMsg.QMsgExtension", "parseQMsg content:".concat(String.valueOf(localObject2)));
+    bg.aVF();
+    String str2 = (String)c.azQ().get(2, null);
+    ca localca;
     if (str2.equals(str1))
     {
-      bc.aCg();
-      localbv = c.azI().aJ((String)localObject1, localcv.xrk);
-      ae.d("MicroMsg.QMsgExtension", "dkmsgid parseQMsg svrid:%d localid:%d", new Object[] { Long.valueOf(localcv.xrk), Long.valueOf(localbv.field_msgId) });
-      if ((localbv.field_msgId != 0L) && (localbv.field_createTime + 604800000L < bl.B(str1, localcv.CreateTime)))
+      bg.aVF();
+      localca = c.aSQ().aJ((String)localObject1, localde.Brn);
+      Log.d("MicroMsg.QMsgExtension", "dkmsgid parseQMsg svrid:%d localid:%d", new Object[] { Long.valueOf(localde.Brn), Long.valueOf(localca.field_msgId) });
+      if ((localca.field_msgId != 0L) && (localca.field_createTime + 604800000L < bp.C(str1, localde.CreateTime)))
       {
-        ae.w("MicroMsg.QMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(localcv.xrk), Long.valueOf(localbv.field_msgId) });
-        bl.rW(localbv.field_msgId);
-        localbv.setMsgId(0L);
+        Log.w("MicroMsg.QMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(localde.Brn), Long.valueOf(localca.field_msgId) });
+        bp.Ad(localca.field_msgId);
+        localca.setMsgId(0L);
       }
-      if (localbv.field_msgId != 0L) {
-        break label1091;
+      if (localca.field_msgId != 0L) {
+        break label1092;
       }
-      localbv = new bv();
-      localbv.qM(localcv.xrk);
-      localbv.qN(bl.B(str1, localcv.CreateTime));
+      localca = new ca();
+      localca.yF(localde.Brn);
+      localca.setCreateTime(bp.C(str1, localde.CreateTime));
     }
-    label777:
-    label803:
-    label832:
-    label1091:
+    label778:
+    label804:
+    label833:
+    label1092:
     for (;;)
     {
-      localbv.setType(localcv.urJ);
-      localbv.ui((String)localObject1);
-      Object localObject3 = g.dFk().awi((String)localObject1);
-      if ((localObject3 == null) || (bu.nullAsNil(((d)localObject3).getUsername()).length() <= 0))
+      localca.setType(localde.xKb);
+      localca.Cy((String)localObject1);
+      Object localObject3 = g.eFZ().aKB((String)localObject1);
+      if ((localObject3 == null) || (Util.nullAsNil(((d)localObject3).getUsername()).length() <= 0))
       {
         localObject3 = new d();
         ((d)localObject3).username = ((String)localObject1);
-        ((d)localObject3).xpU = 1;
-        ((d)localObject3).dEu = 9;
-        if (!g.dFk().a((d)localObject3)) {
-          ae.e("MicroMsg.QMsgExtension", "parseQMsg : insert QContact failed : username = " + ((d)localObject3).getUsername());
+        ((d)localObject3).Bqg = 1;
+        ((d)localObject3).cSx = 9;
+        if (!g.eFZ().a((d)localObject3)) {
+          Log.e("MicroMsg.QMsgExtension", "parseQMsg : insert QContact failed : username = " + ((d)localObject3).getUsername());
         }
       }
       long l2;
-      if ((localcv.FNJ == 2) && (localbv.field_msgId == 0L))
+      if ((localde.KHo == 2) && (localca.field_msgId == 0L))
       {
-        localObject3 = z.a(localcv.FNK);
+        localObject3 = z.a(localde.KHp);
         PString localPString = new PString();
         PInt localPInt1 = new PInt();
         PInt localPInt2 = new PInt();
-        l2 = q.aIX().a((String)localObject1, (byte[])localObject3, localcv.xrk, false, "", localPString, localPInt1, localPInt2);
+        l2 = q.bcR().a((String)localObject1, (byte[])localObject3, localde.Brn, false, "", localPString, localPInt1, localPInt2);
         l1 = l2;
         if (l2 > 0L)
         {
-          localbv.uj(localPString.value);
-          localbv.kD(localPInt1.value);
-          localbv.kE(localPInt2.value);
+          localca.Cz(localPString.value);
+          localca.nG(localPInt1.value);
+          localca.nH(localPInt2.value);
         }
       }
       for (long l1 = l2;; l1 = -1L)
@@ -110,78 +111,78 @@ public final class f
         label600:
         label622:
         int i;
-        if (localcv.urJ == 36)
+        if (localde.xKb == 36)
         {
           Assert.assertTrue(true);
-          if (bu.nullAsNil((String)localObject2).length() <= 0) {
-            break label959;
+          if (Util.nullAsNil((String)localObject2).length() <= 0) {
+            break label960;
           }
           bool = true;
           Assert.assertTrue(bool);
-          if (bu.nullAsNil(localbv.field_talker).length() <= 0) {
-            break label965;
+          if (Util.nullAsNil(localca.field_talker).length() <= 0) {
+            break label966;
           }
           bool = true;
           Assert.assertTrue(bool);
           i = 0;
-          bc.aCg();
-          localObject1 = c.azF().BH(localbv.field_talker);
-          if ((localObject1 != null) && (bu.nullAsNil(((aw)localObject1).field_username).length() > 0)) {
-            break label1081;
+          bg.aVF();
+          localObject1 = c.aSN().Kn(localca.field_talker);
+          if ((localObject1 != null) && (Util.nullAsNil(((ax)localObject1).field_username).length() > 0)) {
+            break label1082;
           }
           i = 1;
-          localObject1 = new an(localbv.field_talker);
+          localObject1 = new as(localca.field_talker);
         }
         for (;;)
         {
           localObject3 = new a((byte)0);
-          localObject2 = bx.M((String)localObject2, "msg");
+          localObject2 = XmlParser.parseXml((String)localObject2, "msg", null);
           if (localObject2 != null)
           {
-            ((a)localObject3).fXp = ((String)((Map)localObject2).get(".msg.from.displayname"));
+            ((a)localObject3).gCv = ((String)((Map)localObject2).get(".msg.from.displayname"));
             ((a)localObject3).content = ((String)((Map)localObject2).get(".msg.content.t"));
           }
-          if (((a)localObject3).fXp == null)
+          if (((a)localObject3).gCv == null)
           {
             localObject2 = "";
-            label757:
-            ((an)localObject1).tm((String)localObject2);
+            label758:
+            ((as)localObject1).BD((String)localObject2);
             if (((a)localObject3).content != null) {
-              break label981;
+              break label982;
             }
             localObject2 = "";
-            localbv.setContent((String)localObject2);
+            localca.setContent((String)localObject2);
             if (i == 0) {
-              break label991;
+              break label992;
             }
-            bc.aCg();
-            c.azF().an((an)localObject1);
-            bc.aCg();
-            if ((!c.azO().has(str1)) && (!str2.equals(str1))) {
-              break label1014;
+            bg.aVF();
+            c.aSN().ap((as)localObject1);
+            bg.aVF();
+            if ((!c.aSW().has(str1)) && (!str2.equals(str1))) {
+              break label1015;
             }
             i = 1;
             if (i == 0) {
-              break label1019;
+              break label1020;
             }
-            localbv.kt(1);
-            i = localcv.nJb;
-            label848:
-            localbv.setStatus(i);
-            localbv.tk(localcv.FNL);
-            bl.a(localbv, parama);
-            if (localbv.field_msgId != 0L) {
-              break label1048;
+            localca.nv(1);
+            i = localde.oTW;
+            label849:
+            localca.setStatus(i);
+            localca.BB(localde.KHq);
+            bp.a(localca, parama);
+            if (localca.field_msgId != 0L) {
+              break label1049;
             }
-            localbv.setMsgId(bl.v(localbv));
-            if (localcv.FNJ == 2)
+            localca.setMsgId(bp.x(localca));
+            if (localde.KHo == 2)
             {
-              parama = q.aIX().c(Long.valueOf(l1));
-              parama.sq((int)localbv.field_msgId);
-              q.aIX().a(Long.valueOf(l1), parama);
+              parama = q.bcR().c(Long.valueOf(l1));
+              parama.Aw((int)localca.field_msgId);
+              q.bcR().a(Long.valueOf(l1), parama);
             }
           }
-          for (parama = new e.b(localbv, true);; parama = new e.b(localbv, false))
+          for (parama = new h.b(localca, true);; parama = new h.b(localca, false))
           {
             AppMethodBeat.o(27725);
             return parama;
@@ -189,54 +190,54 @@ public final class f
             break;
             bool = false;
             break label600;
-            label965:
+            label966:
             bool = false;
             break label622;
-            localObject2 = ((a)localObject3).fXp;
-            break label757;
-            label981:
+            localObject2 = ((a)localObject3).gCv;
+            break label758;
+            label982:
             localObject2 = ((a)localObject3).content;
-            break label777;
-            label991:
-            bc.aCg();
-            c.azF().c(((aw)localObject1).field_username, (an)localObject1);
-            break label803;
-            label1014:
+            break label778;
+            label992:
+            bg.aVF();
+            c.aSN().c(((ax)localObject1).field_username, (as)localObject1);
+            break label804;
+            label1015:
             i = 0;
-            break label832;
-            label1019:
-            localbv.kt(0);
-            if (localcv.nJb > 3)
+            break label833;
+            label1020:
+            localca.nv(0);
+            if (localde.oTW > 3)
             {
-              i = localcv.nJb;
-              break label848;
+              i = localde.oTW;
+              break label849;
             }
             i = 3;
-            break label848;
-            bc.aCg();
-            c.azI().b(localcv.xrk, localbv);
+            break label849;
+            bg.aVF();
+            c.aSQ().b(localde.Brn, localca);
           }
         }
       }
     }
   }
   
-  public final void b(e.c paramc)
+  public final void b(h.c paramc)
   {
     AppMethodBeat.i(27726);
-    q.aIX().M(paramc.dCi);
+    q.bcR().V(paramc.dTX);
     AppMethodBeat.o(27726);
   }
   
   public static final class a
   {
     String content = "";
-    String fXp = "";
+    String gCv = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.a.f
  * JD-Core Version:    0.7.0.1
  */

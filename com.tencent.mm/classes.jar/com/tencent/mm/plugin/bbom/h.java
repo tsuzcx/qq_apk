@@ -1,286 +1,306 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.av.n;
 import com.tencent.mm.av.o;
 import com.tencent.mm.av.s;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.v;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelmulti.i;
 import com.tencent.mm.modelmulti.o.a;
 import com.tencent.mm.modelmulti.o.c;
 import com.tencent.mm.modelmulti.o.d;
 import com.tencent.mm.modelmulti.o.e;
 import com.tencent.mm.plugin.byp.b.b;
-import com.tencent.mm.plugin.gamelife.a.e;
+import com.tencent.mm.plugin.emoji.a;
 import com.tencent.mm.plugin.gamelife.a.f;
-import com.tencent.mm.plugin.i.a.p;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.plugin.i.a.aa;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ar;
+import com.tencent.mm.storage.as;
 
 public final class h
   implements o.c
 {
   public final o.a a(o.e parame)
   {
-    AppMethodBeat.i(186422);
+    AppMethodBeat.i(231633);
     Object localObject2;
     Object localObject3;
     Object localObject4;
     Object localObject1;
-    if (parame.ijg == o.d.iiP)
+    if (parame.jec == o.d.jdK)
     {
       localObject2 = new o.a();
-      boolean bool1 = ((p)com.tencent.mm.kernel.g.ab(p.class)).aji(parame.toUser);
-      boolean bool2 = an.aUv(parame.toUser);
-      ae.i("MicroMsg.CreateSendMsgCgiCallback", "[createTextCgi] constructorId=%s toUser=%s isFinderMessage=%s isGameLifeMessage=%s", new Object[] { Integer.valueOf(parame.iiV), parame.toUser, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      boolean bool1 = ((aa)com.tencent.mm.kernel.g.af(aa.class)).avl(parame.toUser);
+      boolean bool2 = as.bju(parame.toUser);
+      Log.i("MicroMsg.CreateSendMsgCgiCallback", "[createTextCgi] constructorId=%s toUser=%s isFinderMessage=%s isGameLifeMessage=%s", new Object[] { Integer.valueOf(parame.jdR), parame.toUser, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       if (bool1)
       {
         localObject3 = parame.toUser;
-        localObject4 = ((p)com.tencent.mm.kernel.g.ab(p.class)).ajf((String)localObject3);
-        if (an.aUu((String)localObject4))
+        localObject4 = ((aa)com.tencent.mm.kernel.g.af(aa.class)).avi((String)localObject3);
+        if (as.bjt((String)localObject4))
         {
-          localObject1 = v.aAC();
-          parame.dzZ = ((String)localObject1);
-          parame = new com.tencent.mm.plugin.byp.b.c(1, (String)localObject3, parame.dzZ, (String)localObject4, parame.content, parame.msgId);
-          ((o.a)localObject2).iiN = parame.dlw.field_msgId;
-          ((o.a)localObject2).dpw = parame;
+          localObject1 = z.aTY();
+          parame.dRL = ((String)localObject1);
+          parame = new com.tencent.mm.plugin.byp.b.d(1, (String)localObject3, parame.dRL, (String)localObject4, parame.content, parame.msgId);
+          ((o.a)localObject2).jdI = parame.dCM.field_msgId;
+          ((o.a)localObject2).dGJ = parame;
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(186422);
+        AppMethodBeat.o(231633);
         return localObject2;
-        localObject1 = v.aAK();
+        localObject1 = z.aUg();
         break;
         if (bool2)
         {
           localObject1 = parame.toUser;
-          localObject3 = ((f)com.tencent.mm.kernel.g.ab(f.class)).anD((String)localObject1);
-          parame.dzZ = ((e)localObject3).getSelfUsername();
-          parame = new com.tencent.mm.plugin.byp.b.c(3, (String)localObject1, parame.dzZ, ((e)localObject3).Wa(), parame.content, parame.msgId);
-          ((o.a)localObject2).iiN = parame.dlw.field_msgId;
-          ((o.a)localObject2).dpw = parame;
+          localObject3 = ((f)com.tencent.mm.kernel.g.af(f.class)).aAW((String)localObject1);
+          parame.dRL = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).getSelfUsername();
+          parame = new com.tencent.mm.plugin.byp.b.d(3, (String)localObject1, parame.dRL, ((com.tencent.mm.plugin.gamelife.a.e)localObject3).ajO(), parame.content, parame.msgId);
+          ((o.a)localObject2).jdI = parame.dCM.field_msgId;
+          ((o.a)localObject2).dGJ = parame;
         }
-        else if (parame.iiV == 5)
+        else if (parame.jdR == 5)
         {
-          parame = new i(parame.toUser, parame.content, parame.type, parame.dEu, parame.iiU);
-          ((o.a)localObject2).iiN = parame.msgId;
-          ((o.a)localObject2).dpw = parame;
+          parame = new i(parame.toUser, parame.content, parame.type, parame.cSx, parame.jdQ);
+          ((o.a)localObject2).jdI = parame.msgId;
+          ((o.a)localObject2).dGJ = parame;
         }
-        else if (parame.iiV == 4)
+        else if (parame.jdR == 4)
         {
-          parame = new i(parame.toUser, parame.content, parame.type, parame.dEu);
-          ((o.a)localObject2).iiN = parame.msgId;
-          ((o.a)localObject2).dpw = parame;
+          parame = new i(parame.toUser, parame.content, parame.type, parame.cSx);
+          ((o.a)localObject2).jdI = parame.msgId;
+          ((o.a)localObject2).dGJ = parame;
         }
-        else if (parame.iiV == 2)
+        else if (parame.jdR == 2)
         {
           parame = new i(parame.msgId);
-          ((o.a)localObject2).iiN = parame.msgId;
-          ((o.a)localObject2).dpw = parame;
+          ((o.a)localObject2).jdI = parame.msgId;
+          ((o.a)localObject2).dGJ = parame;
         }
         else
         {
           parame = new i();
-          ((o.a)localObject2).iiN = parame.msgId;
-          ((o.a)localObject2).dpw = parame;
+          ((o.a)localObject2).jdI = parame.msgId;
+          ((o.a)localObject2).dGJ = parame;
         }
       }
     }
-    if (parame.ijg == o.d.iiQ)
+    if (parame.jec == o.d.jdL)
     {
       localObject3 = new o.a();
-      ae.i("MicroMsg.CreateSendMsgCgiCallback", "[createImageCgi] constructorId=%s toUser=%s", new Object[] { Integer.valueOf(parame.iiV), parame.toUser });
+      Log.i("MicroMsg.CreateSendMsgCgiCallback", "[createImageCgi] constructorId=%s toUser=%s", new Object[] { Integer.valueOf(parame.jdR), parame.toUser });
       localObject1 = null;
-      if (parame.iiV == 2)
+      if (parame.jdR == 2)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.ijd, parame.icr);
+        localObject2 = new n(parame.jdZ, parame.iXp);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
         }
       }
     }
     for (;;)
     {
-      if ((localObject1 != null) && (((com.tencent.mm.av.n)localObject1).aIJ() != null)) {
-        ((o.a)localObject3).iiN = ((com.tencent.mm.av.n)localObject1).aIJ().field_msgId;
+      if ((localObject1 != null) && (((n)localObject1).bcD() != null)) {
+        ((o.a)localObject3).jdI = ((n)localObject1).bcD().field_msgId;
       }
-      ((o.a)localObject3).dpw = ((com.tencent.mm.ak.n)localObject1);
-      AppMethodBeat.o(186422);
+      ((o.a)localObject3).dGJ = ((q)localObject1);
+      AppMethodBeat.o(231633);
       return localObject3;
-      if (parame.iiV == 3)
+      if (parame.jdR == 3)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.ijd, parame.icr, parame.iiW);
+        localObject2 = new n(parame.jdZ, parame.iXp, parame.jdS);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
         }
       }
-      else if (parame.iiV == 6)
+      else if (parame.jdR == 6)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.gzx, parame.dzZ, parame.toUser, parame.iey, parame.icr, parame.iiW);
+        localObject2 = new n(parame.hmk, parame.dRL, parame.toUser, parame.iZt, parame.iXp, parame.jdS);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
         }
       }
-      else if (parame.iiV == 9)
+      else if (parame.jdR == 9)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.gzx, parame.dzZ, parame.toUser, parame.iey, parame.icr, parame.iiW, parame.dyw, parame.icA, parame.thumbPath);
+        localObject2 = new n(parame.hmk, parame.dRL, parame.toUser, parame.iZt, parame.iXp, parame.jdS, parame.dQd, parame.iXy, parame.thumbPath);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
         }
       }
-      else if (parame.iiV == 10)
+      else if (parame.jdR == 10)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.gzx, parame.dzZ, parame.toUser, parame.iey, parame.icr, parame.iiW, parame.dyw, parame.iiX, parame.iiY);
+        localObject2 = new n(parame.hmk, parame.dRL, parame.toUser, parame.iZt, parame.iXp, parame.jdS, parame.dQd, parame.jdT, parame.jdU);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
         }
       }
-      else if (parame.iiV == 11)
+      else if (parame.jdR == 11)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.gzx, parame.dzZ, parame.toUser, parame.iey, parame.icr, parame.iiW, parame.dyw, parame.icA, parame.thumbPath, parame.iiZ, parame.iiY);
+        localObject2 = new n(parame.hmk, parame.dRL, parame.toUser, parame.iZt, parame.iXp, parame.jdS, parame.dQd, parame.iXy, parame.thumbPath, parame.jdV, parame.jdU);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
         }
       }
-      else if (parame.iiV == 13)
+      else if (parame.jdR == 13)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.gzx, parame.dzZ, parame.toUser, parame.iey, parame.icr, parame.iiW, parame.dyw, parame.icA, parame.thumbPath, parame.iiZ, parame.iiY, parame.ija, parame.ijc);
+        localObject2 = new n(parame.hmk, parame.dRL, parame.toUser, parame.iZt, parame.iXp, parame.jdS, parame.dQd, parame.iXy, parame.thumbPath, parame.jdV, parame.jdU, parame.jdW, parame.jdY);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
         }
       }
-      else if (parame.iiV == 14)
+      else if (parame.jdR == 14)
       {
-        localObject1 = new com.tencent.mm.av.n(parame.ijd, parame.gzx, parame.dzZ, parame.toUser, parame.iey, parame.icr, parame.iiW, parame.dyw, parame.icA, parame.thumbPath, parame.iiZ, parame.iiY, parame.ije);
-        if (parame.gzE) {
-          ((com.tencent.mm.av.n)localObject1).aIK();
+        localObject1 = new n(parame.jdZ, parame.hmk, parame.dRL, parame.toUser, parame.iZt, parame.iXp, parame.jdS, parame.dQd, parame.iXy, parame.thumbPath, parame.jdV, parame.jdU, parame.jea);
+        if (parame.hmr) {
+          ((n)localObject1).bcE();
         }
       }
-      else if (parame.iiV == 19)
+      else if (parame.jdR == 19)
       {
-        localObject2 = new com.tencent.mm.av.n(parame.gzx, parame.dzZ, parame.toUser, parame.iey, parame.icr, parame.iiW, parame.dyw, parame.icA, parame.thumbPath, parame.iiZ, parame.iiY, parame.ije, parame.ijf, parame.dBu, parame.dzE, parame.ijb, parame.ija, parame.ijc);
+        localObject2 = new n(parame.hmk, parame.dRL, parame.toUser, parame.iZt, parame.iXp, parame.jdS, parame.dQd, parame.iXy, parame.thumbPath, parame.jdV, parame.jdU, parame.jea, parame.jeb, parame.dTj, parame.latitude, parame.jdX, parame.jdW, parame.jdY);
         localObject1 = localObject2;
-        if (parame.gzE)
+        if (parame.hmr)
         {
-          ((com.tencent.mm.av.n)localObject2).aIK();
+          ((n)localObject2).bcE();
           localObject1 = localObject2;
           continue;
-          if (parame.ijg == o.d.iiR)
+          if (parame.jec == o.d.jdM)
           {
             localObject2 = new o.a();
             if ((parame instanceof s))
             {
               localObject3 = (s)parame;
-              ae.i("MicroMsg.CreateSendMsgCgiCallback", "[createVideoCgi] constructorId=%s fileName=%s", new Object[] { Integer.valueOf(parame.iiV), ((s)localObject3).fileName });
-              if (parame.iiV != 1) {
+              Log.i("MicroMsg.CreateSendMsgCgiCallback", "[createVideoCgi] constructorId=%s fileName=%s", new Object[] { Integer.valueOf(parame.jdR), ((s)localObject3).fileName });
+              if (parame.jdR != 1) {
                 break label1333;
               }
-              ((o.a)localObject2).dpw = new com.tencent.mm.modelvideo.g(((s)localObject3).fileName);
+              ((o.a)localObject2).dGJ = new com.tencent.mm.modelvideo.g(((s)localObject3).fileName);
             }
             for (;;)
             {
-              AppMethodBeat.o(186422);
+              AppMethodBeat.o(231633);
               return localObject2;
               label1333:
-              if (parame.iiV == 4)
+              if (parame.jdR == 4)
               {
-                if (am.aUk(((s)localObject3).fileName))
+                if (ar.bjj(((s)localObject3).fileName))
                 {
-                  localObject4 = ((s)localObject3).ifH.field_toUser;
-                  localObject1 = ((p)com.tencent.mm.kernel.g.ab(p.class)).ajf((String)localObject4);
+                  localObject4 = ((s)localObject3).jaC.field_toUser;
+                  localObject1 = ((aa)com.tencent.mm.kernel.g.af(aa.class)).avi((String)localObject4);
                   parame.toUser = ((String)localObject1);
-                  if (an.aUu((String)localObject1)) {}
-                  for (localObject1 = v.aAC();; localObject1 = v.aAK())
+                  if (as.bjt((String)localObject1)) {}
+                  for (localObject1 = z.aTY();; localObject1 = z.aUg())
                   {
-                    parame.dzZ = ((String)localObject1);
-                    localObject1 = new com.tencent.mm.modelvideo.h(((s)localObject3).fileName, ((s)localObject3).ifG, ((s)localObject3).ifH, ((s)localObject3).ifI);
-                    ((o.a)localObject2).dpw = new com.tencent.mm.plugin.byp.b.d(1, (String)localObject4, parame.dzZ, parame.toUser, (com.tencent.mm.modelvideo.h)localObject1);
+                    parame.dRL = ((String)localObject1);
+                    localObject1 = new com.tencent.mm.modelvideo.h(((s)localObject3).fileName, ((s)localObject3).jaB, ((s)localObject3).jaC, ((s)localObject3).jaD);
+                    ((o.a)localObject2).dGJ = new com.tencent.mm.plugin.byp.b.e(1, (String)localObject4, parame.dRL, parame.toUser, (com.tencent.mm.modelvideo.h)localObject1);
                     break;
                   }
                 }
-                if (am.aUl(((s)localObject3).fileName))
+                if (ar.bjk(((s)localObject3).fileName))
                 {
-                  localObject1 = ((s)localObject3).ifH.field_toUser;
-                  localObject4 = ((f)com.tencent.mm.kernel.g.ab(f.class)).anD((String)localObject1);
-                  parame.toUser = ((e)localObject4).Wa();
-                  parame.dzZ = ((e)localObject4).getSelfUsername();
-                  ae.i("MicroMsg.CreateSendMsgCgiCallback", "[createVideoCgi] gameLife fromUserName:%s,toUserName:%s", new Object[] { parame.dzZ, parame.toUser });
-                  localObject3 = new com.tencent.mm.modelvideo.h(((s)localObject3).fileName, ((s)localObject3).ifG, ((s)localObject3).ifH, ((s)localObject3).ifI);
-                  ((o.a)localObject2).dpw = new com.tencent.mm.plugin.byp.b.d(3, (String)localObject1, parame.dzZ, parame.toUser, (com.tencent.mm.modelvideo.h)localObject3);
+                  localObject1 = ((s)localObject3).jaC.field_toUser;
+                  localObject4 = ((f)com.tencent.mm.kernel.g.af(f.class)).aAW((String)localObject1);
+                  parame.toUser = ((com.tencent.mm.plugin.gamelife.a.e)localObject4).ajO();
+                  parame.dRL = ((com.tencent.mm.plugin.gamelife.a.e)localObject4).getSelfUsername();
+                  Log.i("MicroMsg.CreateSendMsgCgiCallback", "[createVideoCgi] gameLife fromUserName:%s,toUserName:%s", new Object[] { parame.dRL, parame.toUser });
+                  localObject3 = new com.tencent.mm.modelvideo.h(((s)localObject3).fileName, ((s)localObject3).jaB, ((s)localObject3).jaC, ((s)localObject3).jaD);
+                  ((o.a)localObject2).dGJ = new com.tencent.mm.plugin.byp.b.e(3, (String)localObject1, parame.dRL, parame.toUser, (com.tencent.mm.modelvideo.h)localObject3);
                 }
                 else
                 {
-                  ((o.a)localObject2).dpw = new com.tencent.mm.modelvideo.h(((s)localObject3).fileName, ((s)localObject3).ifG, ((s)localObject3).ifH, ((s)localObject3).ifI);
+                  ((o.a)localObject2).dGJ = new com.tencent.mm.modelvideo.h(((s)localObject3).fileName, ((s)localObject3).jaB, ((s)localObject3).jaC, ((s)localObject3).jaD);
                 }
               }
             }
           }
-          if (parame.ijg == o.d.iiS)
+          if (parame.jec == o.d.jdN)
           {
-            ae.i("MicroMsg.CreateSendMsgCgiCallback", "[createCdnImageCgi] constructorId=%s toUser=%s", new Object[] { Integer.valueOf(parame.iiV), parame.toUser });
+            Log.i("MicroMsg.CreateSendMsgCgiCallback", "[createCdnImageCgi] constructorId=%s toUser=%s", new Object[] { Integer.valueOf(parame.jdR), parame.toUser });
             localObject2 = new o.a();
             String str;
             if ((parame instanceof com.tencent.mm.av.c))
             {
               localObject3 = (com.tencent.mm.av.c)parame;
-              if (!an.aji(parame.toUser)) {
+              if (!as.avl(parame.toUser)) {
                 break label1800;
               }
               localObject4 = parame.toUser;
-              str = ((p)com.tencent.mm.kernel.g.ab(p.class)).ajf((String)localObject4);
-              if (!an.aUu(str)) {
+              str = ((aa)com.tencent.mm.kernel.g.af(aa.class)).avi((String)localObject4);
+              if (!as.bjt(str)) {
                 break label1792;
               }
-              localObject1 = v.aAC();
-              parame.dzZ = ((String)localObject1);
-              ((o.a)localObject2).dpw = new b(1, (String)localObject4, ((com.tencent.mm.av.c)localObject3).dzZ, str, (com.tencent.mm.av.c)localObject3);
+              localObject1 = z.aTY();
+              parame.dRL = ((String)localObject1);
+              ((o.a)localObject2).dGJ = new com.tencent.mm.plugin.byp.b.c(1, (String)localObject4, ((com.tencent.mm.av.c)localObject3).dRL, str, (com.tencent.mm.av.c)localObject3);
             }
             for (;;)
             {
-              AppMethodBeat.o(186422);
+              AppMethodBeat.o(231633);
               return localObject2;
               label1792:
-              localObject1 = v.aAK();
+              localObject1 = z.aUg();
               break;
               label1800:
-              if (an.aUv(parame.toUser))
+              if (as.bju(parame.toUser))
               {
                 localObject1 = parame.toUser;
-                localObject4 = ((f)com.tencent.mm.kernel.g.ab(f.class)).anD((String)localObject1);
-                str = ((e)localObject4).Wa();
-                parame.dzZ = ((e)localObject4).getSelfUsername();
-                ((o.a)localObject2).dpw = new b(3, (String)localObject1, ((com.tencent.mm.av.c)localObject3).dzZ, str, (com.tencent.mm.av.c)localObject3);
+                localObject4 = ((f)com.tencent.mm.kernel.g.af(f.class)).aAW((String)localObject1);
+                str = ((com.tencent.mm.plugin.gamelife.a.e)localObject4).ajO();
+                parame.dRL = ((com.tencent.mm.plugin.gamelife.a.e)localObject4).getSelfUsername();
+                ((o.a)localObject2).dGJ = new com.tencent.mm.plugin.byp.b.c(3, (String)localObject1, ((com.tencent.mm.av.c)localObject3).dRL, str, (com.tencent.mm.av.c)localObject3);
               }
               else
               {
-                ((o.a)localObject2).dpw = new o(((com.tencent.mm.av.c)localObject3).gzx, ((com.tencent.mm.av.c)localObject3).ibY, ((com.tencent.mm.av.c)localObject3).ibZ, ((com.tencent.mm.av.c)localObject3).gzD, ((com.tencent.mm.av.c)localObject3).ica);
+                ((o.a)localObject2).dGJ = new o(((com.tencent.mm.av.c)localObject3).hmk, ((com.tencent.mm.av.c)localObject3).iWW, ((com.tencent.mm.av.c)localObject3).iWX, ((com.tencent.mm.av.c)localObject3).hmq, ((com.tencent.mm.av.c)localObject3).iWY);
               }
             }
           }
-          AppMethodBeat.o(186422);
+          if (parame.jec == o.d.jdO)
+          {
+            localObject1 = new o.a();
+            if ((parame instanceof a))
+            {
+              localObject2 = (a)parame;
+              if (as.bju(parame.toUser))
+              {
+                parame = parame.toUser;
+                localObject3 = ((f)com.tencent.mm.kernel.g.af(f.class)).aAW(parame);
+                ((a)localObject2).toUser = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).ajO();
+                ((a)localObject2).dRL = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).getSelfUsername();
+                ((o.a)localObject1).dGJ = new b(parame, ((a)localObject2).dRL, ((a)localObject2).toUser, ((a)localObject2).gWm, ((a)localObject2).msgId);
+              }
+            }
+            AppMethodBeat.o(231633);
+            return localObject1;
+          }
+          AppMethodBeat.o(231633);
           return null;
         }
       }
@@ -289,7 +309,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.h
  * JD-Core Version:    0.7.0.1
  */

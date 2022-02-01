@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a_r" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/csw" android:padding="14.0dip" android:visibility="gone" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/csv" android:layout_width="250.0dip" android:layout_height="250.0dip" android:scaleType="fitCenter" />
-    </LinearLayout>
-</LinearLayout>

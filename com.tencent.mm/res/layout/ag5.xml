@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/cp">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/jni" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" style="@style/jk" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/jnn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cj" android:singleLine="true" />
+        <View android:layout_gravity="bottom" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,50 +1,52 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bn;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.protocal.protobuf.cbe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class h
 {
-  private static String vzU;
-  private static c<bn> vzV;
+  public cbe yUC;
+  public String yUD;
+  public boolean yUE;
+  public String yUF;
   
-  static
+  public static h aDt(String paramString)
   {
-    AppMethodBeat.i(65175);
-    vzU = null;
-    vzV = new c() {};
-    AppMethodBeat.o(65175);
-  }
-  
-  public static void dli()
-  {
-    AppMethodBeat.i(65172);
-    k localk = new k(b.asj() + "wallet/luckyMoneyEffect/");
-    ae.d("MicroMsg.LuckMoneyEffectResourceMgr", "no media");
-    if ((localk.isDirectory()) && (localk.exists())) {
-      ae.i("MicroMsg.LuckMoneyEffectResourceMgr", "delete unused files: %s", new Object[] { Boolean.valueOf(o.dd(w.B(localk.mUri), true)) });
+    AppMethodBeat.i(65164);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(65164);
+      return null;
     }
-    AppMethodBeat.o(65172);
-  }
-  
-  public static void unInit()
-  {
-    AppMethodBeat.i(65171);
-    ae.i("MicroMsg.LuckMoneyEffectResourceMgr", "unInit");
-    a.IvT.d(vzV);
-    AppMethodBeat.o(65171);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      paramString = new h();
+      paramString.yUD = localJSONObject.optString("showSourceMac");
+      paramString.yUF = localJSONObject.optString("illegal_msg");
+      paramString.yUE = localJSONObject.optBoolean("is_illegal");
+      localJSONObject = localJSONObject.optJSONObject("showSource");
+      if (localJSONObject != null) {
+        paramString.yUC = ac.bb(localJSONObject);
+      }
+      AppMethodBeat.o(65164);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.EnvelopSourceMac", paramString, "", new Object[0]);
+      AppMethodBeat.o(65164);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.h
  * JD-Core Version:    0.7.0.1
  */

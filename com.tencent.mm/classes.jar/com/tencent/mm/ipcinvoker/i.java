@@ -9,10 +9,10 @@ import java.util.Map;
 
 public final class i
 {
-  public static void xe(String paramString)
+  public static void Fq(String paramString)
   {
     AppMethodBeat.i(158750);
-    if (c.ahJ().xb(paramString))
+    if (c.axW().Fo(paramString))
     {
       AppMethodBeat.o(158750);
       return;
@@ -22,25 +22,25 @@ public final class i
       public final void run()
       {
         AppMethodBeat.i(158748);
-        c localc = c.ahJ();
-        String str = this.gAb;
-        if (g.xd(str))
+        c localc = c.axW();
+        String str = this.hmO;
+        if (g.Fp(str))
         {
           b.i("IPC.IPCBridgeManager", "the same process(%s), do not need to build IPCBridge.", new Object[] { str });
           AppMethodBeat.o(158748);
           return;
         }
-        localc.wZ(str);
+        localc.Fn(str);
         AppMethodBeat.o(158748);
       }
     });
     AppMethodBeat.o(158750);
   }
   
-  public static void xf(String paramString)
+  public static void Fr(String paramString)
   {
     AppMethodBeat.i(158751);
-    if (c.ahJ().xb(paramString))
+    if (c.axW().Fo(paramString))
     {
       AppMethodBeat.o(158751);
       return;
@@ -50,7 +50,7 @@ public final class i
       public final void run()
       {
         AppMethodBeat.i(158749);
-        c.ahJ().xc(this.gAb);
+        c.axW().t(this.hmO, false);
         AppMethodBeat.o(158749);
       }
     });
@@ -59,7 +59,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.i
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ public class MediatorLiveData<T>
 {
   private b<LiveData<?>, Source<?>> cZ = new b();
   
-  protected final void W()
+  protected final void Z()
   {
     Iterator localIterator = this.cZ.iterator();
     while (localIterator.hasNext()) {
-      ((Source)((Map.Entry)localIterator.next()).getValue()).ac();
+      ((Source)((Map.Entry)localIterator.next()).getValue()).am();
     }
   }
   
@@ -28,14 +28,14 @@ public class MediatorLiveData<T>
     while (!hasActiveObservers()) {
       return;
     }
-    localSource.aa();
+    localSource.af();
   }
   
   protected final void onActive()
   {
     Iterator localIterator = this.cZ.iterator();
     while (localIterator.hasNext()) {
-      ((Source)((Map.Entry)localIterator.next()).getValue()).aa();
+      ((Source)((Map.Entry)localIterator.next()).getValue()).af();
     }
   }
   
@@ -43,7 +43,7 @@ public class MediatorLiveData<T>
   {
     paramLiveData = (Source)this.cZ.remove(paramLiveData);
     if (paramLiveData != null) {
-      paramLiveData.ac();
+      paramLiveData.am();
     }
   }
   
@@ -60,12 +60,12 @@ public class MediatorLiveData<T>
       this.cX = paramObserver;
     }
     
-    final void aa()
+    final void af()
     {
       this.ci.observeForever(this);
     }
     
-    final void ac()
+    final void am()
     {
       this.ci.removeObserver(this);
     }
@@ -82,7 +82,7 @@ public class MediatorLiveData<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.arch.lifecycle.MediatorLiveData
  * JD-Core Version:    0.7.0.1
  */

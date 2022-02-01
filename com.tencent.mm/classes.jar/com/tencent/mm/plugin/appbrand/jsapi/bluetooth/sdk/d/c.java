@@ -9,16 +9,16 @@ import android.content.pm.PackageManager;
 import android.support.v4.content.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.reflect.Method;
 import java.util.UUID;
 
 public final class c
 {
-  public static boolean Qf(String paramString)
+  public static boolean ZG(String paramString)
   {
     AppMethodBeat.i(144660);
-    if (b.checkSelfPermission(ak.getContext(), paramString) == 0)
+    if (b.checkSelfPermission(MMApplicationContext.getContext(), paramString) == 0)
     {
       AppMethodBeat.o(144660);
       return true;
@@ -27,7 +27,7 @@ public final class c
     return false;
   }
   
-  public static boolean Qg(String paramString)
+  public static boolean ZH(String paramString)
   {
     AppMethodBeat.i(144663);
     try
@@ -72,7 +72,7 @@ public final class c
     }
   }
   
-  public static byte[] at(byte[] paramArrayOfByte)
+  public static byte[] aK(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(183548);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -85,12 +85,12 @@ public final class c
     return paramArrayOfByte;
   }
   
-  public static BluetoothManager bkf()
+  public static BluetoothManager bFB()
   {
     try
     {
       AppMethodBeat.i(144657);
-      BluetoothManager localBluetoothManager = (BluetoothManager)ak.getContext().getSystemService("bluetooth");
+      BluetoothManager localBluetoothManager = (BluetoothManager)MMApplicationContext.getContext().getSystemService("bluetooth");
       AppMethodBeat.o(144657);
       return localBluetoothManager;
     }
@@ -103,14 +103,14 @@ public final class c
   
   /* Error */
   @android.annotation.SuppressLint({"MissingPermission", "NewApi"})
-  public static BluetoothAdapter bkg()
+  public static BluetoothAdapter bFC()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 104
     //   5: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 106	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/d/c:bkf	()Landroid/bluetooth/BluetoothManager;
+    //   8: invokestatic 106	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/d/c:bFB	()Landroid/bluetooth/BluetoothManager;
     //   11: astore_0
     //   12: aload_0
     //   13: ifnull +18 -> 31
@@ -150,10 +150,10 @@ public final class c
     //   44	49	52	finally
   }
   
-  public static boolean bkh()
+  public static boolean bFD()
   {
     AppMethodBeat.i(144659);
-    if ((!d.lB(18)) && (bkj()))
+    if ((!d.oE(18)) && (bFF()))
     {
       AppMethodBeat.o(144659);
       return true;
@@ -162,55 +162,55 @@ public final class c
     return false;
   }
   
-  public static boolean bki()
+  public static boolean bFE()
   {
     AppMethodBeat.i(144661);
-    if (bkg() == null)
+    if (bFC() == null)
     {
       AppMethodBeat.o(144661);
       return false;
     }
-    boolean bool = bkg().isEnabled();
+    boolean bool = bFC().isEnabled();
     AppMethodBeat.o(144661);
     return bool;
   }
   
-  private static boolean bkj()
+  private static boolean bFF()
   {
     AppMethodBeat.i(144662);
-    boolean bool = ak.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+    boolean bool = MMApplicationContext.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
     AppMethodBeat.o(144662);
     return bool;
   }
   
-  public static boolean sY(int paramInt)
+  public static boolean wU(int paramInt)
   {
     return (paramInt & 0x2) > 0;
   }
   
-  public static boolean sZ(int paramInt)
+  public static boolean wV(int paramInt)
   {
     return (paramInt & 0x8) > 0;
   }
   
-  public static boolean ta(int paramInt)
+  public static boolean wW(int paramInt)
   {
     return (paramInt & 0x4) > 0;
   }
   
-  public static boolean tb(int paramInt)
+  public static boolean wX(int paramInt)
   {
     return (paramInt & 0x10) > 0;
   }
   
-  public static boolean tc(int paramInt)
+  public static boolean wY(int paramInt)
   {
     return (paramInt & 0x20) > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c
  * JD-Core Version:    0.7.0.1
  */

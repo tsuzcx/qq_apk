@@ -30,22 +30,22 @@ public class XWalkResourceClient
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
-  private ReflectMethod createXWalkWebResourceResponseStringStringInputStreamMethod;
-  private ReflectMethod createXWalkWebResourceResponseStringStringInputStreamintStringMapMethod;
-  private ReflectMethod doUpdateVisitedHistoryXWalkViewInternalStringbooleanMethod;
-  private ReflectMethod onDocumentLoadedInFrameXWalkViewInternallongMethod;
-  private ReflectMethod onLoadFinishedXWalkViewInternalStringMethod;
-  private ReflectMethod onLoadStartedXWalkViewInternalStringMethod;
-  private ReflectMethod onProgressChangedXWalkViewInternalintMethod;
-  private ReflectMethod onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod;
-  private ReflectMethod onReceivedHttpAuthRequestXWalkViewInternalXWalkHttpAuthHandlerInternalStringStringMethod;
-  private ReflectMethod onReceivedLoadErrorXWalkViewInternalintStringStringMethod;
-  private ReflectMethod onReceivedResponseHeadersXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceResponseInternalMethod;
-  private ReflectMethod onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod;
-  private ReflectMethod postWrapperMethod;
-  private ReflectMethod shouldInterceptLoadRequestXWalkViewInternalStringMethod;
-  private ReflectMethod shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod;
-  private ReflectMethod shouldOverrideUrlLoadingXWalkViewInternalStringMethod;
+  private LazyReflectMethod createXWalkWebResourceResponseStringStringInputStreamMethod;
+  private LazyReflectMethod createXWalkWebResourceResponseStringStringInputStreamintStringMapMethod;
+  private LazyReflectMethod doUpdateVisitedHistoryXWalkViewInternalStringbooleanMethod;
+  private LazyReflectMethod onDocumentLoadedInFrameXWalkViewInternallongMethod;
+  private LazyReflectMethod onLoadFinishedXWalkViewInternalStringMethod;
+  private LazyReflectMethod onLoadStartedXWalkViewInternalStringMethod;
+  private LazyReflectMethod onProgressChangedXWalkViewInternalintMethod;
+  private LazyReflectMethod onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod;
+  private LazyReflectMethod onReceivedHttpAuthRequestXWalkViewInternalXWalkHttpAuthHandlerInternalStringStringMethod;
+  private LazyReflectMethod onReceivedLoadErrorXWalkViewInternalintStringStringMethod;
+  private LazyReflectMethod onReceivedResponseHeadersXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceResponseInternalMethod;
+  private LazyReflectMethod onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod;
+  private LazyReflectMethod postWrapperMethod;
+  private LazyReflectMethod shouldInterceptLoadRequestXWalkViewInternalStringMethod;
+  private LazyReflectMethod shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod;
+  private LazyReflectMethod shouldOverrideUrlLoadingXWalkViewInternalStringMethod;
   
   static
   {
@@ -62,21 +62,21 @@ public class XWalkResourceClient
   public XWalkResourceClient(XWalkView paramXWalkView)
   {
     AppMethodBeat.i(154841);
-    this.onDocumentLoadedInFrameXWalkViewInternallongMethod = new ReflectMethod(null, "onDocumentLoadedInFrame", new Class[0]);
-    this.onLoadStartedXWalkViewInternalStringMethod = new ReflectMethod(null, "onLoadStarted", new Class[0]);
-    this.onLoadFinishedXWalkViewInternalStringMethod = new ReflectMethod(null, "onLoadFinished", new Class[0]);
-    this.onProgressChangedXWalkViewInternalintMethod = new ReflectMethod(null, "onProgressChanged", new Class[0]);
-    this.shouldInterceptLoadRequestXWalkViewInternalStringMethod = new ReflectMethod(null, "shouldInterceptLoadRequest", new Class[0]);
-    this.shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod = new ReflectMethod(null, "shouldInterceptLoadRequest", new Class[0]);
-    this.onReceivedLoadErrorXWalkViewInternalintStringStringMethod = new ReflectMethod(null, "onReceivedLoadError", new Class[0]);
-    this.shouldOverrideUrlLoadingXWalkViewInternalStringMethod = new ReflectMethod(null, "shouldOverrideUrlLoading", new Class[0]);
-    this.onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod = new ReflectMethod(null, "onReceivedSslError", new Class[0]);
-    this.onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod = new ReflectMethod(null, "onReceivedClientCertRequest", new Class[0]);
-    this.onReceivedResponseHeadersXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceResponseInternalMethod = new ReflectMethod(null, "onReceivedResponseHeaders", new Class[0]);
-    this.doUpdateVisitedHistoryXWalkViewInternalStringbooleanMethod = new ReflectMethod(null, "doUpdateVisitedHistory", new Class[0]);
-    this.onReceivedHttpAuthRequestXWalkViewInternalXWalkHttpAuthHandlerInternalStringStringMethod = new ReflectMethod(null, "onReceivedHttpAuthRequest", new Class[0]);
-    this.createXWalkWebResourceResponseStringStringInputStreamMethod = new ReflectMethod(null, "createXWalkWebResourceResponse", new Class[0]);
-    this.createXWalkWebResourceResponseStringStringInputStreamintStringMapMethod = new ReflectMethod(null, "createXWalkWebResourceResponse", new Class[0]);
+    this.onDocumentLoadedInFrameXWalkViewInternallongMethod = new LazyReflectMethod(null, "onDocumentLoadedInFrame", new Class[0]);
+    this.onLoadStartedXWalkViewInternalStringMethod = new LazyReflectMethod(null, "onLoadStarted", new Class[0]);
+    this.onLoadFinishedXWalkViewInternalStringMethod = new LazyReflectMethod(null, "onLoadFinished", new Class[0]);
+    this.onProgressChangedXWalkViewInternalintMethod = new LazyReflectMethod(null, "onProgressChanged", new Class[0]);
+    this.shouldInterceptLoadRequestXWalkViewInternalStringMethod = new LazyReflectMethod(null, "shouldInterceptLoadRequest", new Class[0]);
+    this.shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod = new LazyReflectMethod(null, "shouldInterceptLoadRequest", new Class[0]);
+    this.onReceivedLoadErrorXWalkViewInternalintStringStringMethod = new LazyReflectMethod(null, "onReceivedLoadError", new Class[0]);
+    this.shouldOverrideUrlLoadingXWalkViewInternalStringMethod = new LazyReflectMethod(null, "shouldOverrideUrlLoading", new Class[0]);
+    this.onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod = new LazyReflectMethod(null, "onReceivedSslError", new Class[0]);
+    this.onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod = new LazyReflectMethod(null, "onReceivedClientCertRequest", new Class[0]);
+    this.onReceivedResponseHeadersXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceResponseInternalMethod = new LazyReflectMethod(null, "onReceivedResponseHeaders", new Class[0]);
+    this.doUpdateVisitedHistoryXWalkViewInternalStringbooleanMethod = new LazyReflectMethod(null, "doUpdateVisitedHistory", new Class[0]);
+    this.onReceivedHttpAuthRequestXWalkViewInternalXWalkHttpAuthHandlerInternalStringStringMethod = new LazyReflectMethod(null, "onReceivedHttpAuthRequest", new Class[0]);
+    this.createXWalkWebResourceResponseStringStringInputStreamMethod = new LazyReflectMethod(null, "createXWalkWebResourceResponse", new Class[0]);
+    this.createXWalkWebResourceResponseStringStringInputStreamintStringMapMethod = new LazyReflectMethod(null, "createXWalkWebResourceResponse", new Class[0]);
     this.constructorTypes = new ArrayList();
     this.constructorTypes.add("XWalkViewBridge");
     this.constructorParams = new ArrayList();
@@ -506,7 +506,7 @@ public class XWalkResourceClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.XWalkResourceClient
  * JD-Core Version:    0.7.0.1
  */

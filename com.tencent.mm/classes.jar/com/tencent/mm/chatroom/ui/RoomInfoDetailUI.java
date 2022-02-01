@@ -15,101 +15,57 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.ui.preference.SignaturePreference;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.bl.a;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.bp.a;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.caf;
-import com.tencent.mm.protocal.protobuf.cag;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.pluginsdk.wallet.d;
+import com.tencent.mm.protocal.protobuf.cph;
+import com.tencent.mm.protocal.protobuf.cpi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.c;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.e.h;
+import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.e.j;
 
 @Deprecated
 public class RoomInfoDetailUI
   extends MMPreference
-  implements com.tencent.mm.sdk.e.k.a
+  implements MStorage.IOnStorageChange
 {
-  private an contact;
-  private boolean dzK;
-  private CheckBoxPreference fOL;
-  private boolean fOY = false;
-  private String fPk;
-  private int fTn;
-  private SignaturePreference fTo;
-  private CheckBoxPreference fTp;
-  private CheckBoxPreference fTq;
+  private as contact;
+  private boolean dRx;
+  private CheckBoxPreference gtV;
+  private boolean gui = false;
+  private String guu;
+  private int gyu;
+  private SignaturePreference gyv;
+  private CheckBoxPreference gyw;
+  private CheckBoxPreference gyx;
   private boolean isDeleteCancel = false;
   private String roomId;
   private f screen;
   
-  private void YL()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(12749);
-    if (!this.dzK)
-    {
-      AppMethodBeat.o(12749);
-      return;
-    }
-    Object localObject = getSharedPreferences(this.fPk, 0);
-    if (this.fTn == 0)
-    {
-      setTitleMuteIconVisibility(0);
-      if (this.fOL != null)
-      {
-        this.fOL.setChecked(true);
-        ((SharedPreferences)localObject).edit().putBoolean("room_msg_notify", true).commit();
-      }
-      if (this.fTq != null) {
-        this.fTq.setChecked(Zh());
-      }
-      localObject = this.screen;
-      if (this.fTn != 1) {
-        break label179;
-      }
-    }
-    for (;;)
-    {
-      ((f)localObject).cT("room_show_msg_count", bool);
-      AppMethodBeat.o(12749);
-      return;
-      if (this.fTn != 1) {
-        break;
-      }
-      setTitleMuteIconVisibility(8);
-      if (this.fOL == null) {
-        break;
-      }
-      this.fOL.setChecked(false);
-      ((SharedPreferences)localObject).edit().putBoolean("room_msg_notify", false).commit();
-      break;
-      label179:
-      bool = false;
-    }
-  }
-  
-  private boolean Zh()
+  private boolean amU()
   {
     AppMethodBeat.i(12746);
-    if ((((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.roomId).field_chatroomdataflag & 0x2) == 0)
+    if ((((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.roomId).field_chatroomdataflag & 0x2) == 0)
     {
       AppMethodBeat.o(12746);
       return true;
@@ -118,73 +74,117 @@ public class RoomInfoDetailUI
     return false;
   }
   
-  private String Zi()
+  private String amV()
   {
     AppMethodBeat.i(12747);
-    Object localObject = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.roomId);
+    Object localObject = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.roomId);
     if (localObject == null)
     {
       AppMethodBeat.o(12747);
       return "";
     }
-    localObject = ((ac)localObject).field_selfDisplayName;
+    localObject = ((ah)localObject).field_selfDisplayName;
     AppMethodBeat.o(12747);
     return localObject;
   }
   
-  private void Zj()
+  private void amW()
   {
     AppMethodBeat.i(12748);
-    if ((this.contact != null) && (this.fTo != null))
+    if ((this.contact != null) && (this.gyv != null))
     {
-      Object localObject2 = Zi();
+      Object localObject2 = amV();
       Object localObject1 = localObject2;
-      if (bu.isNullOrNil((String)localObject2)) {
-        localObject1 = v.aAE();
+      if (Util.isNullOrNil((String)localObject2)) {
+        localObject1 = z.aUa();
       }
-      if (!bu.isNullOrNil((String)localObject1))
+      if (!Util.isNullOrNil((String)localObject1))
       {
-        SignaturePreference localSignaturePreference = this.fTo;
+        SignaturePreference localSignaturePreference = this.gyv;
         localObject2 = localObject1;
         if (((String)localObject1).length() <= 0) {
-          localObject2 = getString(2131763409);
+          localObject2 = getString(2131765591);
         }
-        localSignaturePreference.setSummary(k.c(this, (CharSequence)localObject2));
+        localSignaturePreference.setSummary(com.tencent.mm.pluginsdk.ui.span.l.c(this, (CharSequence)localObject2));
         AppMethodBeat.o(12748);
         return;
       }
-      this.fTo.setSummary("");
+      this.gyv.setSummary("");
     }
     AppMethodBeat.o(12748);
   }
   
-  public final void a(String paramString, m paramm) {}
+  private void amy()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(12749);
+    if (!this.dRx)
+    {
+      AppMethodBeat.o(12749);
+      return;
+    }
+    Object localObject = getSharedPreferences(this.guu, 0);
+    if (this.gyu == 0)
+    {
+      setTitleMuteIconVisibility(0);
+      if (this.gtV != null)
+      {
+        this.gtV.setChecked(true);
+        ((SharedPreferences)localObject).edit().putBoolean("room_msg_notify", true).commit();
+      }
+      if (this.gyx != null) {
+        this.gyx.setChecked(amU());
+      }
+      localObject = this.screen;
+      if (this.gyu != 1) {
+        break label179;
+      }
+    }
+    for (;;)
+    {
+      ((f)localObject).jdMethod_do("room_show_msg_count", bool);
+      AppMethodBeat.o(12749);
+      return;
+      if (this.gyu != 1) {
+        break;
+      }
+      setTitleMuteIconVisibility(8);
+      if (this.gtV == null) {
+        break;
+      }
+      this.gtV.setChecked(false);
+      ((SharedPreferences)localObject).edit().putBoolean("room_msg_notify", false).commit();
+      break;
+      label179:
+      bool = false;
+    }
+  }
   
   public int getResourceId()
   {
-    return 2131951706;
+    return 2132017251;
   }
   
   public void initView()
   {
     AppMethodBeat.i(12743);
-    setMMTitle(2131762728);
+    setMMTitle(2131764811);
     this.screen = getPreferenceScreen();
-    this.fPk = (getPackageName() + "_preferences");
-    this.dzK = getIntent().getBooleanExtra("Is_Chatroom", true);
+    this.guu = (getPackageName() + "_preferences");
+    this.dRx = getIntent().getBooleanExtra("Is_Chatroom", true);
     this.roomId = getIntent().getStringExtra("RoomInfo_Id");
     if (this.roomId == null) {
       this.roomId = getIntent().getStringExtra("Single_Chat_Talker");
     }
-    this.contact = ((l)g.ab(l.class)).azF().BH(this.roomId);
-    if (this.dzK)
+    this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.roomId);
+    if (this.dRx)
     {
-      this.fTn = this.contact.eRd;
-      this.fTo = ((SignaturePreference)this.screen.aXe("room_name"));
-      this.fOL = ((CheckBoxPreference)this.screen.aXe("room_msg_notify"));
-      this.fTq = ((CheckBoxPreference)this.screen.aXe("room_show_msg_count"));
-      this.fTp = ((CheckBoxPreference)this.screen.aXe("room_msg_show_username"));
-      this.fTq.JOq = false;
+      this.gyu = this.contact.fuH;
+      this.gyv = ((SignaturePreference)this.screen.bmg("room_name"));
+      this.gtV = ((CheckBoxPreference)this.screen.bmg("room_msg_notify"));
+      this.gyx = ((CheckBoxPreference)this.screen.bmg("room_show_msg_count"));
+      this.gyw = ((CheckBoxPreference)this.screen.bmg("room_msg_show_username"));
+      this.gyx.OZw = false;
     }
     for (;;)
     {
@@ -200,7 +200,7 @@ public class RoomInfoDetailUI
       });
       AppMethodBeat.o(12743);
       return;
-      this.fTn = 1;
+      this.gyu = 1;
     }
   }
   
@@ -233,24 +233,24 @@ public class RoomInfoDetailUI
         AppMethodBeat.o(12750);
         return;
       }
-      str1 = bu.bI(paramIntent.getStringExtra("Contact_Nick"), "");
-    } while (bu.isNullOrNil(str1));
-    String str2 = v.aAC();
-    paramIntent = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.roomId);
+      str1 = Util.nullAs(paramIntent.getStringExtra("Contact_Nick"), "");
+    } while (Util.isNullOrNil(str1));
+    String str2 = z.aTY();
+    paramIntent = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.roomId);
     if (paramIntent == null) {
-      paramIntent = new ac();
+      paramIntent = new ah();
     }
     for (;;)
     {
       paramIntent.field_chatroomname = this.roomId;
       paramIntent.field_selfDisplayName = str1;
-      ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().update(paramIntent, new String[0]);
-      paramIntent = new caf();
-      paramIntent.FNj = this.roomId;
-      paramIntent.nIJ = str2;
-      paramIntent.GnM = bu.nullAsNil(str1);
-      ((l)g.ab(l.class)).azE().d(new com.tencent.mm.plugin.messenger.foundation.a.a.k.a(48, paramIntent));
-      Zj();
+      ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().update(paramIntent, new String[0]);
+      paramIntent = new cph();
+      paramIntent.KGO = this.roomId;
+      paramIntent.UserName = str2;
+      paramIntent.Liq = Util.nullAsNil(str1);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(48, paramIntent));
+      amW();
       break;
     }
   }
@@ -263,21 +263,23 @@ public class RoomInfoDetailUI
     AppMethodBeat.o(12741);
   }
   
+  public void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData) {}
+  
   public void onPause()
   {
     AppMethodBeat.i(12745);
     super.onPause();
     Object localObject;
-    if (this.fOY)
+    if (this.gui)
     {
-      localObject = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.roomId);
-      ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().update((com.tencent.mm.sdk.e.c)localObject, new String[0]);
-      String str = v.aAC();
-      boolean bool = ((ac)localObject).ftR();
-      localObject = new cag();
-      ((cag)localObject).FNj = this.roomId;
-      ((cag)localObject).nIJ = str;
-      ((cag)localObject).HnL = 1;
+      localObject = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.roomId);
+      ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().update((IAutoDBItem)localObject, new String[0]);
+      String str = z.aTY();
+      boolean bool = ((ah)localObject).gBx();
+      localObject = new cpi();
+      ((cpi)localObject).KGO = this.roomId;
+      ((cpi)localObject).UserName = str;
+      ((cpi)localObject).Mvf = 1;
       if (!bool) {
         break label154;
       }
@@ -285,8 +287,8 @@ public class RoomInfoDetailUI
     label154:
     for (int i = 1;; i = 0)
     {
-      ((cag)localObject).yxf = i;
-      ((l)g.ab(l.class)).azE().d(new com.tencent.mm.plugin.messenger.foundation.a.a.k.a(49, (com.tencent.mm.bw.a)localObject));
+      ((cpi)localObject).Cyb = i;
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(49, (com.tencent.mm.bw.a)localObject));
       AppMethodBeat.o(12745);
       return;
     }
@@ -297,47 +299,47 @@ public class RoomInfoDetailUI
     boolean bool2 = true;
     AppMethodBeat.i(12744);
     paramPreference = paramPreference.mKey;
-    ae.d("MicroMsg.RoomInfoDetailUI", "click key : %s", new Object[] { paramPreference });
+    Log.d("MicroMsg.RoomInfoDetailUI", "click key : %s", new Object[] { paramPreference });
     String str;
     if (paramPreference.equals("room_name"))
     {
       paramf = new Intent();
-      paramf.setClass(this, e.h.class);
+      paramf.setClass(this, e.j.class);
       paramf.putExtra("Contact_mode_name_type", 4);
-      str = v.aAC();
-      paramf.putExtra("Contact_Nick", Zi());
+      str = z.aTY();
+      paramf.putExtra("Contact_Nick", amV());
       paramf.putExtra("Contact_User", str);
-      paramf.putExtra("MMActivity.OverrideEnterAnimation", 2130772047);
-      paramf.putExtra("MMActivity.OverrideExitAnimation", 2130772106);
+      paramf.putExtra("MMActivity.OverrideEnterAnimation", 2130772059);
+      paramf.putExtra("MMActivity.OverrideExitAnimation", 2130772130);
       getContext().startActivityForResult(paramf, 2);
     }
     int i;
     if (paramPreference.equals("room_msg_show_username"))
     {
-      paramf = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.roomId);
-      if (!paramf.ftR())
+      paramf = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.roomId);
+      if (!paramf.gBx())
       {
         bool1 = true;
-        paramf.wX(bool1);
-        this.fOY = true;
+        paramf.AL(bool1);
+        this.gui = true;
       }
     }
     else
     {
       if (paramPreference.equals("room_msg_notify"))
       {
-        if (this.fTn != 0) {
+        if (this.gyu != 0) {
           break label816;
         }
         i = 1;
         label198:
-        this.fTn = i;
-        ((l)g.ab(l.class)).azE().d(new com.tencent.mm.chatroom.f.a(this.roomId, this.fTn));
-        this.contact = ((l)g.ab(l.class)).azF().BH(this.roomId);
-        this.contact.kk(this.fTn);
-        ((l)g.ab(l.class)).azF().c(this.roomId, this.contact);
-        YL();
-        this.contact = ((l)g.ab(l.class)).azF().BH(this.roomId);
+        this.gyu = i;
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new com.tencent.mm.chatroom.f.a(this.roomId, this.gyu));
+        this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.roomId);
+        this.contact.nm(this.gyu);
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().c(this.roomId, this.contact);
+        amy();
+        this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.roomId);
         this.screen.notifyDataSetChanged();
       }
       if (paramPreference.equals("room_set_chatting_background"))
@@ -345,19 +347,19 @@ public class RoomInfoDetailUI
         paramf = new Intent();
         paramf.putExtra("isApplyToAll", false);
         paramf.putExtra("username", this.contact.field_username);
-        com.tencent.mm.br.d.b(this, "setting", ".ui.setting.SettingsChattingBackgroundUI", paramf, 1);
+        com.tencent.mm.br.c.b(this, "setting", ".ui.setting.SettingsChattingBackgroundUI", paramf, 1);
       }
       if (paramPreference.equals("room_clear_chatting_history"))
       {
-        if (!this.dzK) {
+        if (!this.dRx) {
           break label821;
         }
-        paramf = getString(2131759504);
+        paramf = getString(2131760819);
         label418:
-        str = getString(2131762591);
-        h.c local2 = new h.c()
+        str = getString(2131764671);
+        h.d local2 = new h.d()
         {
-          public final void lh(int paramAnonymousInt)
+          public final void oj(int paramAnonymousInt)
           {
             AppMethodBeat.i(12738);
             switch (paramAnonymousInt)
@@ -368,8 +370,8 @@ public class RoomInfoDetailUI
             }
             RoomInfoDetailUI.a(RoomInfoDetailUI.this, false);
             Object localObject = RoomInfoDetailUI.this;
-            RoomInfoDetailUI.this.getString(2131755906);
-            final p localp = h.b((Context)localObject, RoomInfoDetailUI.this.getString(2131755936), true, new DialogInterface.OnCancelListener()
+            RoomInfoDetailUI.this.getString(2131755998);
+            final q localq = h.a((Context)localObject, RoomInfoDetailUI.this.getString(2131756029), true, new DialogInterface.OnCancelListener()
             {
               public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
               {
@@ -379,12 +381,12 @@ public class RoomInfoDetailUI
               }
             });
             if (!RoomInfoDetailUI.a(RoomInfoDetailUI.this)) {}
-            for (localObject = com.tencent.mm.pluginsdk.wallet.d.aPl(RoomInfoDetailUI.b(RoomInfoDetailUI.this).field_username);; localObject = null)
+            for (localObject = d.bfO(RoomInfoDetailUI.b(RoomInfoDetailUI.this).field_username);; localObject = null)
             {
-              if (!bu.isNullOrNil((String)localObject))
+              if (!Util.isNullOrNil((String)localObject))
               {
-                localp.dismiss();
-                h.a(RoomInfoDetailUI.this, false, RoomInfoDetailUI.this.getString(2131765211, new Object[] { localObject }), null, RoomInfoDetailUI.this.getString(2131760081), RoomInfoDetailUI.this.getString(2131757424), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+                localq.dismiss();
+                h.a(RoomInfoDetailUI.this, false, RoomInfoDetailUI.this.getString(2131767654, new Object[] { localObject }), null, RoomInfoDetailUI.this.getString(2131761460), RoomInfoDetailUI.this.getString(2131757641), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
@@ -393,7 +395,7 @@ public class RoomInfoDetailUI
                     paramAnonymous2DialogInterface = new Intent();
                     paramAnonymous2DialogInterface.putExtra("Chat_User", RoomInfoDetailUI.b(RoomInfoDetailUI.this).field_username);
                     paramAnonymous2DialogInterface.addFlags(67108864);
-                    com.tencent.mm.br.d.f(RoomInfoDetailUI.this, ".ui.chatting.ChattingUI", paramAnonymous2DialogInterface);
+                    com.tencent.mm.br.c.f(RoomInfoDetailUI.this, ".ui.chatting.ChattingUI", paramAnonymous2DialogInterface);
                     AppMethodBeat.o(12736);
                   }
                 }, new DialogInterface.OnClickListener()
@@ -401,16 +403,16 @@ public class RoomInfoDetailUI
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
                     AppMethodBeat.i(12737);
-                    localp.show();
+                    localq.show();
                     RoomInfoDetailUI.a(RoomInfoDetailUI.this, false);
-                    RoomInfoDetailUI.a(RoomInfoDetailUI.this, localp);
+                    RoomInfoDetailUI.a(RoomInfoDetailUI.this, localq);
                     AppMethodBeat.o(12737);
                   }
-                }, -1, 2131099904);
+                }, -1, 2131099922);
                 AppMethodBeat.o(12738);
                 return;
               }
-              RoomInfoDetailUI.a(RoomInfoDetailUI.this, localp);
+              RoomInfoDetailUI.a(RoomInfoDetailUI.this, localq);
               break;
             }
           }
@@ -419,49 +421,49 @@ public class RoomInfoDetailUI
       }
       if (paramPreference.equals("room_placed_to_the_top"))
       {
-        paramf = getSharedPreferences(this.fPk, 0);
+        paramf = getSharedPreferences(this.guu, 0);
         if (this.contact != null)
         {
-          if (!((l)g.ab(l.class)).azL().aVi(this.contact.field_username)) {
+          if (!((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aST().bkg(this.contact.field_username)) {
             break label846;
           }
-          x.E(this.contact.field_username, true);
+          ab.F(this.contact.field_username, true);
           label521:
-          paramf.edit().putBoolean("room_placed_to_the_top", ((l)g.ab(l.class)).azL().aVi(this.contact.field_username)).commit();
+          paramf.edit().putBoolean("room_placed_to_the_top", ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aST().bkg(this.contact.field_username)).commit();
         }
       }
       if ("room_show_msg_count".equals(paramPreference))
       {
-        boolean bool3 = Zh();
-        ae.d("MicroMsg.RoomInfoDetailUI", "old value undeliver[%B], now set show msg count[%B]", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool3) });
+        boolean bool3 = amU();
+        Log.d("MicroMsg.RoomInfoDetailUI", "old value undeliver[%B], now set show msg count[%B]", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool3) });
         if (bool3) {
           break label860;
         }
         bool1 = true;
         label618:
-        paramf = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().Bx(this.roomId);
+        paramf = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.roomId);
         if (!bool1) {
           break label866;
         }
-        paramf.lP(0);
+        paramf.oS(0);
         label651:
-        ae.d("MicroMsg.RoomInfoDetailUI", "update show msg count[%B]", new Object[] { Boolean.valueOf(bool1) });
-        ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().update(paramf, new String[0]);
-        paramf = v.aAC();
-        paramPreference = new cag();
-        paramPreference.FNj = this.roomId;
-        paramPreference.nIJ = paramf;
-        paramPreference.HnL = 2;
+        Log.d("MicroMsg.RoomInfoDetailUI", "update show msg count[%B]", new Object[] { Boolean.valueOf(bool1) });
+        ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().update(paramf, new String[0]);
+        paramf = z.aTY();
+        paramPreference = new cpi();
+        paramPreference.KGO = this.roomId;
+        paramPreference.UserName = paramf;
+        paramPreference.Mvf = 2;
         if (!bool1) {
           break label874;
         }
         i = 2;
         label733:
-        paramPreference.yxf = i;
-        ((l)g.ab(l.class)).azE().d(new com.tencent.mm.plugin.messenger.foundation.a.a.k.a(49, paramPreference));
-        if (this.fTq != null)
+        paramPreference.Cyb = i;
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(49, paramPreference));
+        if (this.gyx != null)
         {
-          paramf = this.fTq;
+          paramf = this.gyx;
           if (bool3) {
             break label879;
           }
@@ -485,13 +487,13 @@ public class RoomInfoDetailUI
       break;
       i = 0;
       break label198;
-      paramf = getString(2131759503, new Object[] { this.contact.adG() });
+      paramf = getString(2131760818, new Object[] { this.contact.arJ() });
       break label418;
-      x.D(this.contact.field_username, true);
+      ab.E(this.contact.field_username, true);
       break label521;
       bool1 = false;
       break label618;
-      paramf.lP(2);
+      paramf.oS(2);
       break label651;
       i = 1;
       break label733;
@@ -502,17 +504,17 @@ public class RoomInfoDetailUI
   {
     AppMethodBeat.i(12742);
     super.onResume();
-    YL();
-    Zj();
+    amy();
+    amW();
     SharedPreferences localSharedPreferences;
-    if ((this.contact != null) && (this.fTp != null))
+    if ((this.contact != null) && (this.gyw != null))
     {
-      ac localac = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azP().By(this.roomId);
-      localSharedPreferences = getSharedPreferences(this.fPk, 0);
-      if (!localac.ftR()) {
+      ah localah = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Ke(this.roomId);
+      localSharedPreferences = getSharedPreferences(this.guu, 0);
+      if (!localah.gBx()) {
         break label117;
       }
-      this.fTp.setChecked(true);
+      this.gyw.setChecked(true);
       localSharedPreferences.edit().putBoolean("room_msg_show_username", true).commit();
     }
     for (;;)
@@ -521,7 +523,7 @@ public class RoomInfoDetailUI
       AppMethodBeat.o(12742);
       return;
       label117:
-      this.fTp.setChecked(false);
+      this.gyw.setChecked(false);
       localSharedPreferences.edit().putBoolean("room_msg_show_username", false).commit();
     }
   }
@@ -534,7 +536,7 @@ public class RoomInfoDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomInfoDetailUI
  * JD-Core Version:    0.7.0.1
  */

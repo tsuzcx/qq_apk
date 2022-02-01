@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
+import com.tencent.mm.plugin.appbrand.report.model.kv_14609.a;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class lf
-  extends b
+  extends IEvent
 {
-  public a dzy;
+  public a dQt;
   
   public lf()
   {
@@ -15,17 +17,17 @@ public final class lf
   
   private lf(byte paramByte)
   {
-    AppMethodBeat.i(218636);
-    this.dzy = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(43441);
+    this.dQt = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(218636);
+    AppMethodBeat.o(43441);
   }
   
   public static final class a
   {
-    public boolean dzz;
-    public boolean isStart;
+    public kv_14609 dQu;
+    public kv_14609.a dQv;
   }
 }
 

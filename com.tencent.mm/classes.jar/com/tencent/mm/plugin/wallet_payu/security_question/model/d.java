@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public ArrayList<PayUSecurityQuestion> DLu;
+  public ArrayList<PayUSecurityQuestion> IuJ;
   
   public d()
   {
@@ -19,7 +19,7 @@ public final class d
     AppMethodBeat.o(72213);
   }
   
-  public final int eIr()
+  public final int fPU()
   {
     return 11;
   }
@@ -29,7 +29,7 @@ public final class d
     AppMethodBeat.i(72214);
     if (paramJSONObject != null)
     {
-      this.DLu = new ArrayList();
+      this.IuJ = new ArrayList();
       paramString = paramJSONObject.optJSONArray("security_question_list");
       if (paramString != null)
       {
@@ -40,7 +40,7 @@ public final class d
           if (paramJSONObject != null)
           {
             paramJSONObject = new PayUSecurityQuestion(paramJSONObject.optString("id"), paramJSONObject.optString("description"));
-            this.DLu.add(paramJSONObject);
+            this.IuJ.add(paramJSONObject);
           }
           paramInt += 1;
         }
@@ -51,7 +51,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.model.d
  * JD-Core Version:    0.7.0.1
  */

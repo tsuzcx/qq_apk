@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class cg
-  extends b
+  extends IEvent
 {
-  public a doe;
-  
   public cg()
   {
     this((byte)0);
@@ -15,24 +12,8 @@ public final class cg
   
   private cg(byte paramByte)
   {
-    AppMethodBeat.i(91201);
-    this.doe = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91201);
-  }
-  
-  public static final class a
-  {
-    public int dof;
-    public String dog;
-    public String doh;
-    public String doi;
-    public int doj;
-    public String dok;
-    public String dol;
-    public boolean dom = true;
-    public long gW;
   }
 }
 

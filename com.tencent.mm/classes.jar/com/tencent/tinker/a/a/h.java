@@ -6,29 +6,29 @@ import com.tencent.tinker.a.a.b.e;
 public final class h
   extends s.a.a<h>
 {
-  public int MAc;
-  public int[] MAd;
-  public byte[] MAe;
+  public int Sgg;
+  public int[] Sgh;
+  public byte[] Sgi;
   
   public h(int paramInt1, int paramInt2, int[] paramArrayOfInt, byte[] paramArrayOfByte)
   {
     super(paramInt1);
-    this.MAc = paramInt2;
-    this.MAd = paramArrayOfInt;
-    this.MAe = paramArrayOfByte;
+    this.Sgg = paramInt2;
+    this.Sgh = paramArrayOfInt;
+    this.Sgi = paramArrayOfByte;
   }
   
   private int a(h paramh)
   {
-    int i = this.MAc;
-    int j = paramh.MAc;
+    int i = this.Sgg;
+    int j = paramh.Sgg;
     if (i != j)
     {
       j = i - j;
       return j;
     }
-    int[] arrayOfInt1 = this.MAd;
-    int[] arrayOfInt2 = paramh.MAd;
+    int[] arrayOfInt1 = this.Sgh;
+    int[] arrayOfInt2 = paramh.Sgh;
     int m = arrayOfInt1.length;
     i = arrayOfInt2.length;
     if (m < i) {
@@ -40,7 +40,7 @@ public final class h
       if (i != 0) {
         break;
       }
-      return c.q(this.MAe, paramh.MAe);
+      return c.p(this.Sgi, paramh.Sgi);
       if (m > i)
       {
         i = 1;
@@ -53,7 +53,7 @@ public final class h
           if (j >= m) {
             break label115;
           }
-          int k = c.lf(arrayOfInt1[j], arrayOfInt2[j]);
+          int k = c.mD(arrayOfInt1[j], arrayOfInt2[j]);
           i = k;
           if (k != 0) {
             break;
@@ -77,12 +77,12 @@ public final class h
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.MAc), this.MAd, this.MAe });
+    return e.hash(new Object[] { Integer.valueOf(this.Sgg), this.Sgh, this.Sgi });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.a.h
  * JD-Core Version:    0.7.0.1
  */

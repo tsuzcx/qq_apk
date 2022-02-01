@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.monitor;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.kvdata.BDStatusInfo;
 import com.tencent.mm.plugin.report.kvdata.TableInfo;
 import com.tencent.mm.plugin.report.kvdata.log_14375;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,8 +23,8 @@ final class b$3
     AppMethodBeat.i(51502);
     long l1;
     long l2;
-    long l3;
-    h localh;
+    com.tencent.mm.storagebase.h localh;
+    long l4;
     ArrayList localArrayList;
     try
     {
@@ -32,35 +32,36 @@ final class b$3
       locallog_14375.type_ = 1;
       localObject3 = new BDStatusInfo();
       locallog_14375.dbStatusInfo_ = ((BDStatusInfo)localObject3);
-      com.tencent.mm.kernel.g.ajS();
-      l1 = new k(com.tencent.mm.kernel.g.ajR().ajy()).length();
+      g.aAi();
+      l1 = new o(g.aAh().azO()).length();
       ((BDStatusInfo)localObject3).mmDBSize_ = l1;
       Object localObject1 = new StringBuilder();
-      com.tencent.mm.kernel.g.ajS();
-      l2 = new k(com.tencent.mm.kernel.g.ajR().cachePath + "SnsMicroMsg.db").length();
-      ((BDStatusInfo)localObject3).snsDBSize_ = l2;
+      g.aAi();
+      long l3 = new o(g.aAh().cachePath + "SnsMicroMsg.db").length();
+      ((BDStatusInfo)localObject3).snsDBSize_ = l3;
       localObject1 = new StringBuilder();
-      com.tencent.mm.kernel.g.ajS();
-      l3 = new k(com.tencent.mm.kernel.g.ajR().cachePath + "enFavorite.db").length();
-      ((BDStatusInfo)localObject3).favDBSize_ = l3;
-      b.a(this.wkM, 4, l1, this.wkO);
-      b.a(this.wkM, 128, l3, this.wkP);
-      localObject1 = l1 + ";" + l2 + ";" + l3;
-      com.tencent.mm.kernel.g.ajS();
-      localh = com.tencent.mm.kernel.g.ajR().gDY;
+      g.aAi();
+      l2 = new o(g.aAh().cachePath + "enFavorite.db").length();
+      ((BDStatusInfo)localObject3).favDBSize_ = l2;
+      b.a(this.zFo, 4, l1, this.zFq);
+      b.a(this.zFo, 128, l2, this.zFr);
+      localObject1 = l1 + ";" + l3 + ";" + l2;
+      g.aAi();
+      localh = g.aAh().hqL;
       if ((localh == null) || (!localh.isOpen()))
       {
-        ae.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo db is not open!");
-        com.tencent.mm.plugin.report.service.g.yxI.a(13778, false, false, true, new Object[] { Integer.valueOf(1), Integer.valueOf(1), localObject1 });
-        com.tencent.mm.plugin.report.service.g.yxI.c(14375, locallog_14375);
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(418L, 3L, 1L, true);
-        ae.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo result[%s]", new Object[] { localObject1 });
+        Log.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo db is not open!");
+        com.tencent.mm.plugin.report.service.h.CyF.a(13778, false, false, true, new Object[] { Integer.valueOf(1), Integer.valueOf(1), localObject1 });
+        com.tencent.mm.plugin.report.service.h.CyF.a(13778, false, false, true, new Object[] { Integer.valueOf(1), Integer.valueOf(2), Long.valueOf(l3) });
+        com.tencent.mm.plugin.report.service.h.CyF.c(14375, locallog_14375);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(418L, 3L, 1L, true);
+        Log.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo result[%s]", new Object[] { localObject1 });
         AppMethodBeat.o(51502);
         return;
       }
-      l3 = System.currentTimeMillis();
+      l4 = System.currentTimeMillis();
       localArrayList = new ArrayList();
-      localObject2 = localh.a("SELECT name FROM sqlite_master WHERE type='table'", null, 2);
+      localObject2 = localh.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null, 2);
       if (localObject2 != null)
       {
         int i = ((Cursor)localObject2).getColumnIndex("name");
@@ -72,8 +73,8 @@ final class b$3
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", localException, "reportDBInfo err!", new Object[0]);
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(418L, 4L, 1L, true);
+      Log.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", localException, "reportDBInfo err!", new Object[0]);
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(418L, 4L, 1L, true);
       AppMethodBeat.o(51502);
       return;
     }
@@ -87,7 +88,7 @@ final class b$3
       if (((Iterator)localObject3).hasNext())
       {
         String str2 = (String)((Iterator)localObject3).next();
-        Object localObject4 = localh.a("select count(*) from ".concat(String.valueOf(str2)), null, 2);
+        Object localObject4 = localh.rawQuery("select count(*) from ".concat(String.valueOf(str2)), null, 2);
         l1 = 0L;
         l2 = l1;
         if (localObject4 != null)
@@ -104,18 +105,18 @@ final class b$3
         ((TableInfo)localObject4).count_ = l2;
         ((LinkedList)localObject2).add(localObject4);
         if ("message".equals(str2)) {
-          b.a(this.wkM, 8, l2, this.wkQ);
+          b.a(this.zFo, 8, l2, this.zFs);
         } else if ("rconversation".equals(str2)) {
-          b.a(this.wkM, 16, l2, this.wkR);
+          b.a(this.zFo, 16, l2, this.zFt);
         } else if ("rcontact".equals(str2)) {
-          b.a(this.wkM, 32, l2, this.wkS);
+          b.a(this.zFo, 32, l2, this.zFu);
         } else if ("chatroom".equals(str2)) {
-          b.a(this.wkM, 64, l2, this.wkT);
+          b.a(this.zFo, 64, l2, this.zFv);
         }
       }
       else
       {
-        ae.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo dump all table count %d last %d", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(System.currentTimeMillis() - l3) });
+        Log.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo dump all table count %d last %d", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(System.currentTimeMillis() - l4) });
         break;
       }
     }

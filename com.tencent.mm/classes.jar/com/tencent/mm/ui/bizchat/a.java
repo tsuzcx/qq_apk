@@ -10,25 +10,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
   extends com.tencent.mm.ui.contact.a.a
 {
-  private static Map<String, c> JPg;
-  private b JPh;
-  a JPi;
-  public String heD;
-  public CharSequence iYg;
-  public long oex;
+  private static Map<String, c> Pam;
+  private b Pan;
+  a Pao;
+  public String hXq;
+  public CharSequence jVL;
+  public long ppv;
   public String username;
   
   static
   {
     AppMethodBeat.i(102808);
-    JPg = new HashMap();
+    Pam = new HashMap();
     AppMethodBeat.o(102808);
   }
   
@@ -36,30 +36,30 @@ public final class a
   {
     super(4, paramInt);
     AppMethodBeat.i(102805);
-    this.oex = -1L;
-    this.JPh = new b();
-    this.JPi = new a();
+    this.ppv = -1L;
+    this.Pan = new b();
+    this.Pao = new a();
     AppMethodBeat.o(102805);
   }
   
   public final void a(Context paramContext, com.tencent.mm.ui.contact.a.a.a parama)
   {
     AppMethodBeat.i(102806);
-    this.iYg = k.b(paramContext, this.iYg, com.tencent.mm.cb.a.ax(paramContext, 2131165517));
+    this.jVL = l.e(paramContext, this.jVL, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
     AppMethodBeat.o(102806);
   }
   
-  public final com.tencent.mm.ui.contact.a.a.b aRR()
+  public final com.tencent.mm.ui.contact.a.a.b bmx()
   {
-    return this.JPh;
+    return this.Pan;
   }
   
   public final class a
     extends com.tencent.mm.ui.contact.a.a.a
   {
-    public ImageView fQl;
-    public TextView fQm;
-    public TextView iFO;
+    public ImageView gvv;
+    public TextView gvw;
+    public TextView jBR;
     
     public a()
     {
@@ -78,14 +78,14 @@ public final class a
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102803);
-      if (com.tencent.mm.cb.a.ir(paramContext)) {}
-      for (paramContext = LayoutInflater.from(paramContext).inflate(2131495360, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(2131495359, paramViewGroup, false))
+      if (com.tencent.mm.cb.a.jk(paramContext)) {}
+      for (paramContext = LayoutInflater.from(paramContext).inflate(2131496221, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(2131496220, paramViewGroup, false))
       {
-        paramViewGroup = (a.a)a.this.JPi;
-        paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
-        paramViewGroup.fQm = ((TextView)paramContext.findViewById(2131305948));
-        paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
-        paramViewGroup.iFO.setVisibility(8);
+        paramViewGroup = (a.a)a.this.Pao;
+        paramViewGroup.gvv = ((ImageView)paramContext.findViewById(2131297134));
+        paramViewGroup.gvw = ((TextView)paramContext.findViewById(2131309249));
+        paramViewGroup.jBR = ((TextView)paramContext.findViewById(2131299510));
+        paramViewGroup.jBR.setVisibility(8);
         paramContext.setTag(paramViewGroup);
         AppMethodBeat.o(102803);
         return paramContext;
@@ -97,12 +97,12 @@ public final class a
       AppMethodBeat.i(102804);
       paramContext = (a)parama1;
       parama = (a.a)parama;
-      n.a(paramContext.iYg, parama.fQm);
-      q.aJb().a(paramContext.heD, parama.fQl, a.aXk(paramContext.username));
+      n.a(paramContext.jVL, parama.gvw);
+      q.bcV().a(paramContext.hXq, parama.gvv, a.bmo(paramContext.username));
       AppMethodBeat.o(102804);
     }
     
-    public final boolean aRS()
+    public final boolean bmy()
     {
       return false;
     }
@@ -110,7 +110,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.a
  * JD-Core Version:    0.7.0.1
  */

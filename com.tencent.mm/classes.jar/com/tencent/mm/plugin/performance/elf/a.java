@@ -5,28 +5,28 @@ import java.util.HashMap;
 
 public final class a
 {
-  public static HashMap<Class, AbstractProcessChecker> cEm;
+  public static HashMap<Class, AbstractProcessChecker> map;
   
   static
   {
     AppMethodBeat.i(124995);
-    cEm = new HashMap();
+    map = new HashMap();
     AppMethodBeat.o(124995);
   }
   
-  public static <T extends AbstractProcessChecker> T aS(Class<? extends AbstractProcessChecker> paramClass)
+  public static <T extends AbstractProcessChecker> T aU(Class<? extends AbstractProcessChecker> paramClass)
   {
     AppMethodBeat.i(124994);
-    if (cEm.containsKey(paramClass))
+    if (map.containsKey(paramClass))
     {
-      paramClass = (AbstractProcessChecker)cEm.get(paramClass);
+      paramClass = (AbstractProcessChecker)map.get(paramClass);
       AppMethodBeat.o(124994);
       return paramClass;
     }
     try
     {
       AbstractProcessChecker localAbstractProcessChecker = (AbstractProcessChecker)paramClass.newInstance();
-      cEm.put(paramClass, localAbstractProcessChecker);
+      map.put(paramClass, localAbstractProcessChecker);
       AppMethodBeat.o(124994);
       return localAbstractProcessChecker;
     }
@@ -44,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.a
  * JD-Core Version:    0.7.0.1
  */

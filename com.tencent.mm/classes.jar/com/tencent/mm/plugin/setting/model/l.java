@@ -1,68 +1,76 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.daj;
-import com.tencent.mm.protocal.protobuf.dak;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.dss;
+import com.tencent.mm.protocal.protobuf.dst;
+import com.tencent.mm.protocal.protobuf.eoo;
 
 public final class l
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  public byte[] CXN;
+  public dst CXQ;
+  private i callback;
+  private String dDv;
   
-  public l(String paramString1, String paramString2)
+  public l(String paramString)
   {
-    this(paramString1, paramString2, 0);
+    this.dDv = paramString;
   }
   
-  public l(String paramString1, String paramString2, int paramInt)
+  public l(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73780);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new daj();
-    ((b.a)localObject).hQG = new dak();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendfeedback";
-    ((b.a)localObject).funcId = 153;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (daj)this.rr.hQD.hQJ;
-    ((daj)localObject).HJQ = paramString1;
-    ((daj)localObject).hFS = paramString2;
-    ((daj)localObject).HgI = paramInt;
-    AppMethodBeat.o(73780);
+    this.CXN = paramArrayOfByte;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(73781);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(73781);
+    AppMethodBeat.i(73778);
+    this.callback = parami;
+    parami = new d.a();
+    dss localdss = new dss();
+    localdss.dDv = this.dDv;
+    if (this.CXN != null) {
+      localdss.Mcz = z.aC(this.CXN).getBuffer();
+    }
+    parami.iLN = localdss;
+    parami.iLO = new dst();
+    parami.funcId = getType();
+    parami.uri = "/cgi-bin/mmbiz-bin/searchuserauth";
+    parami.iLP = 0;
+    parami.respCmdId = 0;
+    int i = dispatch(paramg, parami.aXF(), this);
+    AppMethodBeat.o(73778);
     return i;
   }
   
   public final int getType()
   {
-    return 153;
+    return 1169;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73782);
-    ae.d("MicroMsg.NetSendSceneFeedBack", "onGYNetEnd type:" + paramInt2 + " code:" + paramInt3);
+    AppMethodBeat.i(73779);
+    this.CXQ = ((dst)((d)params).iLL.iLR);
+    if (this.CXQ.Lqs != null)
+    {
+      paramInt3 = this.CXQ.Lqs.dIZ;
+      paramString = this.CXQ.Lqs.dJa;
+    }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(73782);
+    AppMethodBeat.o(73779);
   }
 }
 

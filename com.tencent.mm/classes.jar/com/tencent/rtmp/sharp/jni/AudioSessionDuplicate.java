@@ -1,7 +1,7 @@
 package com.tencent.rtmp.sharp.jni;
 
 import android.content.Context;
-import com.tencent.liteav.audio.impl.TXCTraeJNI;
+import com.tencent.liteav.audio.impl.TXCAudioEngineJNI;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.locks.Condition;
@@ -15,7 +15,7 @@ public class AudioSessionDuplicate
   private static Condition _precon;
   private static ReentrantLock _prelock;
   private static String[] mDeviceList;
-  private static int switchState;
+  private static int playoutDeviceType;
   private static boolean usingJava;
   
   static
@@ -28,7 +28,7 @@ public class AudioSessionDuplicate
     _preDone = false;
     usingJava = true;
     mDeviceList = null;
-    switchState = 0;
+    playoutDeviceType = 0;
     AppMethodBeat.o(13661);
   }
   
@@ -147,28 +147,28 @@ public class AudioSessionDuplicate
     AppMethodBeat.i(13658);
     TXCLog.i("AudioSessionDuplicate", "device: ".concat(String.valueOf(paramString)));
     if (paramString.equals("DEVICE_EARPHONE")) {
-      switchState = 1;
+      playoutDeviceType = 1;
     }
     for (;;)
     {
-      TXCTraeJNI.nativeTraeSetDevState(switchState);
+      TXCAudioEngineJNI.nativeSetPlayoutDevice(playoutDeviceType);
       AppMethodBeat.o(13658);
       return;
       if (paramString.equals("DEVICE_SPEAKERPHONE")) {
-        switchState = 2;
+        playoutDeviceType = 2;
       } else if (paramString.equals("DEVICE_WIREDHEADSET")) {
-        switchState = 3;
+        playoutDeviceType = 3;
       } else if (paramString.equals("DEVICE_BLUETOOTHHEADSET")) {
-        switchState = 4;
+        playoutDeviceType = 4;
       } else {
-        switchState = 0;
+        playoutDeviceType = 0;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioSessionDuplicate
  * JD-Core Version:    0.7.0.1
  */

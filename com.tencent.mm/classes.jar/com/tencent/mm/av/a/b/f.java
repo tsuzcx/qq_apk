@@ -5,8 +5,8 @@ import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.c.o;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,15 +15,34 @@ import java.util.Set;
 public final class f
   implements o
 {
-  private com.tencent.mm.b.f<String, Bitmap> hfV;
-  private com.tencent.mm.b.f<String, Bitmap> hfW;
+  private com.tencent.mm.b.f<String, Bitmap> hYQ;
+  private com.tencent.mm.b.f<String, Bitmap> hYR;
   
   public f()
   {
     AppMethodBeat.i(130419);
-    this.hfV = new b(50, getClass());
-    this.hfW = new b(10, getClass());
+    this.hYQ = new b(50, getClass());
+    this.hYR = new b(10, getClass());
     AppMethodBeat.o(130419);
+  }
+  
+  public final Bitmap EP(String paramString)
+  {
+    AppMethodBeat.i(130420);
+    if (!Util.isNullOrNil(paramString))
+    {
+      if (this.hYQ.get(paramString) == null)
+      {
+        paramString = (Bitmap)this.hYR.get(paramString);
+        AppMethodBeat.o(130420);
+        return paramString;
+      }
+      paramString = (Bitmap)this.hYQ.get(paramString);
+      AppMethodBeat.o(130420);
+      return paramString;
+    }
+    AppMethodBeat.o(130420);
+    return null;
   }
   
   public final void clear()
@@ -32,9 +51,9 @@ public final class f
     Bitmap localBitmap;
     try
     {
-      if (this.hfV != null)
+      if (this.hYQ != null)
       {
-        Object localObject1 = this.hfV.snapshot();
+        Object localObject1 = this.hYQ.snapshot();
         if ((!((Map)localObject1).isEmpty()) && (((Map)localObject1).size() > 0))
         {
           localObject1 = ((Map)localObject1).entrySet().iterator();
@@ -42,20 +61,20 @@ public final class f
           {
             localBitmap = (Bitmap)((Map.Entry)((Iterator)localObject1).next()).getValue();
             if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-              ae.i("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "recycle bitmap:%s, not need", new Object[] { localBitmap.toString() });
+              Log.i("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "recycle bitmap:%s, not need", new Object[] { localBitmap.toString() });
             }
           }
         }
-        this.hfV.clear();
+        this.hYQ.clear();
       }
     }
     finally
     {
       AppMethodBeat.o(130422);
     }
-    if (this.hfW != null)
+    if (this.hYR != null)
     {
-      Object localObject3 = this.hfW.snapshot();
+      Object localObject3 = this.hYR.snapshot();
       if ((!((Map)localObject3).isEmpty()) && (((Map)localObject3).size() > 0))
       {
         localObject3 = ((Map)localObject3).entrySet().iterator();
@@ -63,11 +82,11 @@ public final class f
         {
           localBitmap = (Bitmap)((Map.Entry)((Iterator)localObject3).next()).getValue();
           if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-            ae.i("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "recycle bitmap:%s. not need", new Object[] { localBitmap.toString() });
+            Log.i("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "recycle bitmap:%s. not need", new Object[] { localBitmap.toString() });
           }
         }
       }
-      this.hfW.clear();
+      this.hYR.clear();
     }
     AppMethodBeat.o(130422);
   }
@@ -75,15 +94,15 @@ public final class f
   public final void put(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(130421);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "[cpan] put failed. key is null.");
+      Log.w("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "[cpan] put failed. key is null.");
       AppMethodBeat.o(130421);
       return;
     }
     if (paramBitmap == null)
     {
-      ae.w("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "[cpan] put failed.value is null.");
+      Log.w("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "[cpan] put failed.value is null.");
       AppMethodBeat.o(130421);
       return;
     }
@@ -98,11 +117,11 @@ public final class f
     }
     for (;;)
     {
-      ae.d("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "[cpan] put key:%s,bitmap size:%d B newsize:%s", new Object[] { paramString, Long.valueOf(l), bu.sL(l) });
+      Log.d("MicroMsg.imageloader.DefaultImageMemoryCacheListener", "[cpan] put key:%s,bitmap size:%d B newsize:%s", new Object[] { paramString, Long.valueOf(l), Util.getSizeKB(l) });
       if (l <= 524288L) {
         break;
       }
-      this.hfW.put(paramString, paramBitmap);
+      this.hYR.put(paramString, paramBitmap);
       AppMethodBeat.o(130421);
       return;
       int i = localBitmap.getRowBytes();
@@ -110,27 +129,16 @@ public final class f
       continue;
       l = 0L;
     }
-    this.hfV.put(paramString, paramBitmap);
+    this.hYQ.put(paramString, paramBitmap);
     AppMethodBeat.o(130421);
   }
   
-  public final Bitmap wA(String paramString)
+  public final void remove(String paramString)
   {
-    AppMethodBeat.i(130420);
-    if (!bu.isNullOrNil(paramString))
-    {
-      if (this.hfV.get(paramString) == null)
-      {
-        paramString = (Bitmap)this.hfW.get(paramString);
-        AppMethodBeat.o(130420);
-        return paramString;
-      }
-      paramString = (Bitmap)this.hfV.get(paramString);
-      AppMethodBeat.o(130420);
-      return paramString;
-    }
-    AppMethodBeat.o(130420);
-    return null;
+    AppMethodBeat.i(212681);
+    this.hYQ.remove(paramString);
+    this.hYR.remove(paramString);
+    AppMethodBeat.o(212681);
   }
 }
 

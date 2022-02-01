@@ -20,7 +20,7 @@ public class StrokedImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51997);
-    this.color = paramContext.getResources().getColor(2131100825);
+    this.color = paramContext.getResources().getColor(2131101023);
     AppMethodBeat.o(51997);
   }
   

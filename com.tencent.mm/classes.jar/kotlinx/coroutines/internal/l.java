@@ -1,342 +1,91 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicLongFieldUpdater;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
-import kotlinx.coroutines.am;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "", "E", "", "capacity", "", "singleConsumer", "<init>", "(IZ)V", "element", "addLast", "(Ljava/lang/Object;)I", "", "state", "Lkotlinx/coroutines/internal/Core;", "allocateNextCopy", "(J)Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "allocateOrGetNextCopy", "close", "()Z", "index", "fillPlaceholder", "(ILjava/lang/Object;)Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "isClosed", "R", "Lkotlin/Function1;", "transform", "", "map", "(Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "markFrozen", "()J", "next", "()Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "removeFirstOrNull", "()Ljava/lang/Object;", "oldHead", "newHead", "removeSlowPath", "(II)Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "I", "isEmpty", "mask", "Z", "getSize", "()I", "size", "Companion", "Placeholder", "kotlinx-coroutines-core"})
-public final class l<E>
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "", "E", "", "singleConsumer", "<init>", "(Z)V", "element", "addLast", "(Ljava/lang/Object;)Z", "", "close", "()V", "isClosed", "()Z", "R", "Lkotlin/Function1;", "transform", "", "map", "(Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "removeFirstOrNull", "()Ljava/lang/Object;", "isEmpty", "", "getSize", "()I", "size", "kotlinx-coroutines-core"})
+public class l<E>
 {
-  private static final AtomicReferenceFieldUpdater OgQ;
-  private static final AtomicLongFieldUpdater OgW;
-  public static final t OgZ;
-  public static final a Oha;
-  private AtomicReferenceArray OgX;
-  private final boolean OgY;
-  private volatile Object _next;
-  volatile long _state;
-  private final int bwz;
-  private final int mask;
+  private static final AtomicReferenceFieldUpdater TVT;
+  private volatile Object _cur;
   
   static
   {
-    AppMethodBeat.i(118088);
-    Oha = new a((byte)0);
-    OgZ = new t("REMOVE_FROZEN");
-    OgQ = AtomicReferenceFieldUpdater.newUpdater(l.class, Object.class, "_next");
-    OgW = AtomicLongFieldUpdater.newUpdater(l.class, "_state");
-    AppMethodBeat.o(118088);
+    AppMethodBeat.i(118130);
+    TVT = AtomicReferenceFieldUpdater.newUpdater(l.class, Object.class, "_cur");
+    AppMethodBeat.o(118130);
   }
   
-  public l(int paramInt, boolean paramBoolean)
+  public l()
   {
-    AppMethodBeat.i(118086);
-    this.bwz = paramInt;
-    this.OgY = paramBoolean;
-    this.mask = (this.bwz - 1);
-    this._next = null;
-    this._state = 0L;
-    this.OgX = new AtomicReferenceArray(this.bwz);
-    if (this.mask <= 1073741823) {}
-    Throwable localThrowable;
-    for (paramInt = 1; paramInt == 0; paramInt = 0)
-    {
-      localThrowable = (Throwable)new IllegalStateException("Check failed.".toString());
-      AppMethodBeat.o(118086);
-      throw localThrowable;
-    }
-    if ((this.bwz & this.mask) == 0) {}
-    for (paramInt = i; paramInt == 0; paramInt = 0)
-    {
-      localThrowable = (Throwable)new IllegalStateException("Check failed.".toString());
-      AppMethodBeat.o(118086);
-      throw localThrowable;
-    }
-    AppMethodBeat.o(118086);
+    AppMethodBeat.i(118129);
+    this._cur = new m(8, false);
+    AppMethodBeat.o(118129);
   }
   
-  private final l<E> Gg(long paramLong)
+  public final void close()
   {
-    AppMethodBeat.i(118084);
+    AppMethodBeat.i(118126);
     for (;;)
     {
-      l locall = (l)this._next;
-      if (locall != null)
+      m localm = (m)this._cur;
+      if (localm.close())
       {
-        AppMethodBeat.o(118084);
-        return locall;
+        AppMethodBeat.o(118126);
+        return;
       }
-      OgQ.compareAndSet(this, null, Gh(paramLong));
+      TVT.compareAndSet(this, localm, localm.hNM());
     }
   }
   
-  private final l<E> Gh(long paramLong)
+  public final int getSize()
   {
-    AppMethodBeat.i(118085);
-    l locall = new l(this.bwz * 2, this.OgY);
-    int i = (int)((0x3FFFFFFF & paramLong) >> 0);
-    int j = (int)((0xC0000000 & paramLong) >> 30);
-    while ((this.mask & i) != (this.mask & j))
+    long l = ((m)this._cur)._state;
+    int i = (int)((0x3FFFFFFF & l) >> 0);
+    return (int)((l & 0xC0000000) >> 30) - i & 0x3FFFFFFF;
+  }
+  
+  public final boolean gg(E paramE)
+  {
+    AppMethodBeat.i(118127);
+    for (;;)
     {
-      Object localObject2 = this.OgX.get(this.mask & i);
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new b(i);
+      m localm = (m)this._cur;
+      switch (localm.gh(paramE))
+      {
+      default: 
+        break;
+      case 0: 
+        AppMethodBeat.o(118127);
+        return true;
+      case 2: 
+        AppMethodBeat.o(118127);
+        return false;
+      case 1: 
+        TVT.compareAndSet(this, localm, localm.hNM());
       }
-      locall.OgX.set(locall.mask & i, localObject1);
-      i += 1;
     }
-    locall._state = (0xFFFFFFFF & paramLong);
-    AppMethodBeat.o(118085);
-    return locall;
   }
   
-  private final long gAG()
+  public final E hNC()
   {
-    AppMethodBeat.i(118083);
-    long l1;
-    long l2;
-    do
+    AppMethodBeat.i(118128);
+    for (;;)
     {
-      l1 = this._state;
-      if ((l1 & 0x0) != 0L)
+      m localm = (m)this._cur;
+      Object localObject = localm.hNC();
+      if (localObject != m.TVX)
       {
-        AppMethodBeat.o(118083);
-        return l1;
-      }
-      l2 = l1 | 0x0;
-    } while (!OgW.compareAndSet(this, l1, l2));
-    AppMethodBeat.o(118083);
-    return l2;
-  }
-  
-  private final l<E> lB(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(209331);
-    long l;
-    int j;
-    do
-    {
-      l = this._state;
-      j = (int)((0x3FFFFFFF & l) >> 0);
-      Object localObject;
-      if (am.gzF())
-      {
-        if (j == paramInt1) {}
-        for (int i = 1; i == 0; i = 0)
-        {
-          localObject = (Throwable)new AssertionError();
-          AppMethodBeat.o(209331);
-          throw ((Throwable)localObject);
-        }
-      }
-      if ((0x0 & l) != 0L)
-      {
-        localObject = gAF();
-        AppMethodBeat.o(209331);
+        AppMethodBeat.o(118128);
         return localObject;
       }
-    } while (!OgW.compareAndSet(this, l, a.ar(l, paramInt2)));
-    this.OgX.set(this.mask & j, null);
-    AppMethodBeat.o(209331);
-    return null;
-  }
-  
-  private final l<E> s(int paramInt, E paramE)
-  {
-    AppMethodBeat.i(118081);
-    Object localObject = this.OgX.get(this.mask & paramInt);
-    if (((localObject instanceof b)) && (((b)localObject).index == paramInt))
-    {
-      this.OgX.set(this.mask & paramInt, paramE);
-      AppMethodBeat.o(118081);
-      return this;
-    }
-    AppMethodBeat.o(118081);
-    return null;
-  }
-  
-  public final boolean close()
-  {
-    AppMethodBeat.i(209329);
-    long l;
-    do
-    {
-      l = this._state;
-      if ((l & 0x0) != 0L)
-      {
-        AppMethodBeat.o(209329);
-        return true;
-      }
-      if ((0x0 & l) != 0L)
-      {
-        AppMethodBeat.o(209329);
-        return false;
-      }
-    } while (!OgW.compareAndSet(this, l, l | 0x0));
-    AppMethodBeat.o(209329);
-    return true;
-  }
-  
-  public final l<E> gAF()
-  {
-    AppMethodBeat.i(118082);
-    l locall = Gg(gAG());
-    AppMethodBeat.o(118082);
-    return locall;
-  }
-  
-  public final Object gAv()
-  {
-    AppMethodBeat.i(209330);
-    int i;
-    Object localObject2;
-    int j;
-    do
-    {
-      long l;
-      do
-      {
-        l = this._state;
-        if ((0x0 & l) != 0L)
-        {
-          localObject1 = OgZ;
-          AppMethodBeat.o(209330);
-          return localObject1;
-        }
-        i = (int)((0x3FFFFFFF & l) >> 0);
-        if (((int)((0xC0000000 & l) >> 30) & this.mask) == (this.mask & i))
-        {
-          AppMethodBeat.o(209330);
-          return null;
-        }
-        localObject2 = this.OgX.get(this.mask & i);
-        if (localObject2 != null) {
-          break;
-        }
-      } while (!this.OgY);
-      AppMethodBeat.o(209330);
-      return null;
-      if ((localObject2 instanceof b))
-      {
-        AppMethodBeat.o(209330);
-        return null;
-      }
-      j = i + 1 & 0x3FFFFFFF;
-      if (OgW.compareAndSet(this, l, a.ar(l, j)))
-      {
-        this.OgX.set(this.mask & i, null);
-        AppMethodBeat.o(209330);
-        return localObject2;
-      }
-    } while (!this.OgY);
-    Object localObject1 = (l)this;
-    l locall;
-    do
-    {
-      locall = ((l)localObject1).lB(i, j);
-      localObject1 = locall;
-    } while (locall != null);
-    AppMethodBeat.o(209330);
-    return localObject2;
-  }
-  
-  public final int gc(E paramE)
-  {
-    AppMethodBeat.i(118080);
-    long l;
-    int j;
-    int k;
-    do
-    {
-      int i;
-      do
-      {
-        l = this._state;
-        if ((0x0 & l) != 0L)
-        {
-          i = a.Gi(l);
-          AppMethodBeat.o(118080);
-          return i;
-        }
-        i = (int)((0x3FFFFFFF & l) >> 0);
-        j = (int)((0xC0000000 & l) >> 30);
-        k = this.mask;
-        if ((j + 2 & k) == (i & k))
-        {
-          AppMethodBeat.o(118080);
-          return 1;
-        }
-        if ((this.OgY) || (this.OgX.get(j & k) == null)) {
-          break;
-        }
-      } while ((this.bwz >= 1024) && ((j - i & 0x3FFFFFFF) <= this.bwz >> 1));
-      AppMethodBeat.o(118080);
-      return 1;
-    } while (!OgW.compareAndSet(this, l, a.as(l, j + 1 & 0x3FFFFFFF)));
-    this.OgX.set(j & k, paramE);
-    Object localObject = (l)this;
-    l locall;
-    do
-    {
-      if ((((l)localObject)._state & 0x0) == 0L) {
-        break;
-      }
-      locall = ((l)localObject).gAF().s(j, paramE);
-      localObject = locall;
-    } while (locall != null);
-    AppMethodBeat.o(118080);
-    return 0;
-  }
-  
-  public final boolean isEmpty()
-  {
-    boolean bool = false;
-    long l = this._state;
-    if ((int)((0x3FFFFFFF & l) >> 0) == (int)((l & 0xC0000000) >> 30)) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/LockFreeTaskQueueCore$Companion;", "", "()V", "ADD_CLOSED", "", "ADD_FROZEN", "ADD_SUCCESS", "CAPACITY_BITS", "CLOSED_MASK", "", "CLOSED_SHIFT", "FROZEN_MASK", "FROZEN_SHIFT", "HEAD_MASK", "HEAD_SHIFT", "INITIAL_CAPACITY", "MAX_CAPACITY_MASK", "MIN_ADD_SPIN_CAPACITY", "REMOVE_FROZEN", "Lkotlinx/coroutines/internal/Symbol;", "TAIL_MASK", "TAIL_SHIFT", "addFailReason", "updateHead", "newHead", "updateTail", "newTail", "withState", "T", "block", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "head", "tail", "(JLkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "wo", "other", "kotlinx-coroutines-core"})
-  public static final class a
-  {
-    public static int Gi(long paramLong)
-    {
-      if ((0x0 & paramLong) != 0L) {
-        return 2;
-      }
-      return 1;
-    }
-    
-    public static long ar(long paramLong, int paramInt)
-    {
-      return 0xC0000000 & paramLong | paramInt << 0;
-    }
-    
-    public static long as(long paramLong, int paramInt)
-    {
-      return 0x3FFFFFFF & paramLong | paramInt << 30;
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/internal/LockFreeTaskQueueCore$Placeholder;", "", "index", "", "(I)V", "kotlinx-coroutines-core"})
-  public static final class b
-  {
-    public final int index;
-    
-    public b(int paramInt)
-    {
-      this.index = paramInt;
+      TVT.compareAndSet(this, localm, localm.hNM());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.internal.l
  * JD-Core Version:    0.7.0.1
  */

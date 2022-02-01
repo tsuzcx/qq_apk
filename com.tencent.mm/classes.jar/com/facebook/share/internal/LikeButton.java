@@ -24,13 +24,13 @@ public class LikeButton
     AppMethodBeat.i(8111);
     if (isSelected())
     {
-      setCompoundDrawablesWithIntrinsicBounds(2131231801, 0, 0, 0);
-      setText(getResources().getString(2131757506));
+      setCompoundDrawablesWithIntrinsicBounds(2131231881, 0, 0, 0);
+      setText(getResources().getString(2131757726));
       AppMethodBeat.o(8111);
       return;
     }
-    setCompoundDrawablesWithIntrinsicBounds(2131231797, 0, 0, 0);
-    setText(getResources().getString(2131757507));
+    setCompoundDrawablesWithIntrinsicBounds(2131231877, 0, 0, 0);
+    setText(getResources().getString(2131757727));
     AppMethodBeat.o(8111);
   }
   
@@ -49,7 +49,7 @@ public class LikeButton
   
   public int getDefaultStyleResource()
   {
-    return 2131821698;
+    return 2131821746;
   }
   
   @Deprecated
@@ -63,7 +63,7 @@ public class LikeButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.share.internal.LikeButton
  * JD-Core Version:    0.7.0.1
  */

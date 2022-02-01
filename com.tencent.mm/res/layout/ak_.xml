@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="280.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/daz" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <LinearLayout android:orientation="vertical" android:id="@id/db2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <TextView android:textSize="@dimen/i" android:textColor="@color/rx" android:gravity="center" android:background="@color/fn" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="选择一个表情" />
-        <LinearLayout android:orientation="vertical" android:id="@id/db1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>

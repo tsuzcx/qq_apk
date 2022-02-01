@@ -1,37 +1,11 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  public static String crM()
-  {
-    AppMethodBeat.i(122156);
-    int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
-    Object localObject;
-    if (i == 0) {
-      localObject = "-1";
-    }
-    for (;;)
-    {
-      localObject = d.afY((String)localObject);
-      AppMethodBeat.o(122156);
-      return localObject;
-      String str = com.tencent.mm.plugin.expt.hellhound.core.a.b.getString("mmkv_key_hellSenPageFlRptChe_".concat(String.valueOf(i)));
-      if (str != null)
-      {
-        localObject = str;
-        if (!str.isEmpty()) {}
-      }
-      else
-      {
-        localObject = null;
-      }
-    }
-  }
-  
-  public static void vr(long paramLong)
+  public static void Dv(long paramLong)
   {
     AppMethodBeat.i(184375);
     String str2 = String.valueOf(paramLong);
@@ -50,15 +24,41 @@ public final class f
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.HellSessionPageDao", localException, "HellSessionReportCache.writeBackOfFlow", new Object[0]);
+        Log.printErrStackTrace("HABBYGE-MALI.HellSessionPageDao", localException, "HellSessionReportCache.writeBackOfFlow", new Object[0]);
       }
     }
     AppMethodBeat.o(184375);
   }
+  
+  public static String cQu()
+  {
+    AppMethodBeat.i(122156);
+    int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
+    Object localObject;
+    if (i == 0) {
+      localObject = "-1";
+    }
+    for (;;)
+    {
+      localObject = d.aqJ((String)localObject);
+      AppMethodBeat.o(122156);
+      return localObject;
+      String str = com.tencent.mm.plugin.expt.hellhound.core.a.b.getString("mmkv_key_hellSenPageFlRptChe_".concat(String.valueOf(i)));
+      if (str != null)
+      {
+        localObject = str;
+        if (!str.isEmpty()) {}
+      }
+      else
+      {
+        localObject = null;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.f
  * JD-Core Version:    0.7.0.1
  */

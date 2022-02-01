@@ -1,15 +1,6 @@
 package com.tencent.mm.model;
 
-import android.content.Context;
-
-public abstract interface am
-{
-  public abstract void E(Context paramContext, String paramString);
-  
-  public abstract am a(p paramp);
-  
-  public abstract am b(p paramp);
-}
+public abstract interface am {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

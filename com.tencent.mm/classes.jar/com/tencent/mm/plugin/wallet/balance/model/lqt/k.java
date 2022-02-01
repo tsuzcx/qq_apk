@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.cmg;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.protocal.protobuf.dds;
+import com.tencent.mm.protocal.protobuf.ddt;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends a<cmg>
+  extends c<ddt>
 {
   public int scene;
   
   public k(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(68447);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cmf();
-    ((b.a)localObject).hQG = new cmg();
-    ((b.a)localObject).funcId = 1770;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/preaddplan";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDS();
-    cmf localcmf = (cmf)((b)localObject).hQD.hQJ;
-    localcmf.scene = paramInt1;
-    localcmf.COB = paramInt2;
-    c((b)localObject);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dds();
+    ((d.a)localObject).iLO = new ddt();
+    ((d.a)localObject).funcId = 1770;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/preaddplan";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    localObject = ((d.a)localObject).aXF();
+    dds localdds = (dds)((d)localObject).iLK.iLR;
+    localdds.scene = paramInt1;
+    localdds.Htr = paramInt2;
+    c((d)localObject);
     this.scene = paramInt1;
-    ae.i("MicroMsg.CgiLqtPreAddPlan", "scene: %s, planId: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.CgiLqtPreAddPlan", "scene: %s, planId: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(68447);
   }
 }

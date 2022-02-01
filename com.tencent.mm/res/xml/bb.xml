@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference newtip:key="allow_by_identity" newtip:layout="@layout/aop" newtip:summary="@string/fz" newtip:title="@string/fy" />
-    <PreferenceSmallCategory />
-    <Preference newtip:key="room_transfer_room_ower" newtip:layout="@layout/aop" newtip:title="@string/esf" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.chatroom.ui.preference.RoomManagerPreference newtip:key="room_manager" newtip:layout="@layout/b1f" newtip:title="@string/eqg" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.plugin.newtips.NewTipPreference newtip:key="use_wework_manager_room" newtip:layout="@layout/aop" newtip:path="useww" newtip:title="@string/g6e" />
-    <PreferenceSmallCategory />
-    <Preference newtip:key="room_bind_app_info" newtip:layout="@layout/aop" newtip:title="@string/hxe" />
-</PreferenceScreen>
+<input-method android:icon="@raw/hld_icon" android:settingsActivity="com.tencent.mm.ui.HldContactUI"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <subtype android:icon="@raw/hld_icon" android:imeSubtypeLocale="zh_CN" android:imeSubtypeMode="keyboard" />
+</input-method>

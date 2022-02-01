@@ -3,62 +3,64 @@ package com.tencent.mm.model.a;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatPermissions;
 
 public final class f
 {
-  private static void Ci(String paramString)
+  private static void KT(String paramString)
   {
     AppMethodBeat.i(153094);
-    ae.i("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast:%s", new Object[] { paramString });
-    if (g.aDh().aDf())
+    Log.i("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast:%s", new Object[] { paramString });
+    if (g.aWT().aWR())
     {
       Intent localIntent = new Intent();
       localIntent.setAction("com.tencent.mm.ui.ACTION_ABTEST");
       localIntent.putExtra("content", paramString);
-      ak.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+      MMApplicationContext.getContext().sendBroadcast(localIntent, WeChatPermissions.PERMISSION_MM_MESSAGE());
       AppMethodBeat.o(153094);
       return;
     }
-    ae.i("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast abtest faild. no test case.");
+    Log.i("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast abtest faild. no test case.");
     AppMethodBeat.o(153094);
   }
   
-  public static void Cj(String paramString)
+  public static void KU(String paramString)
   {
     AppMethodBeat.i(153097);
-    ae.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] startAbTestCase: start abtest click stream");
-    Ci("TestCaseID:".concat(String.valueOf(paramString)));
+    Log.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] startAbTestCase: start abtest click stream");
+    KT("TestCaseID:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(153097);
   }
   
-  public static void Ck(String paramString)
+  public static void KV(String paramString)
   {
     AppMethodBeat.i(153098);
-    if (g.aDh().Cg(paramString) != null)
+    if (g.aWT().KR(paramString) != null)
     {
-      ae.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] startAbTestPoint:%s", new Object[] { paramString });
-      g.aDh().Cg(paramString).hLA = System.currentTimeMillis();
-      g.aDh().Cg(paramString).startTime = System.currentTimeMillis();
-      g.aDh().Cg(paramString).hLB = false;
-      g.aDh().Cg(paramString).result = "0";
-      a(g.aDh().Cg(paramString), true);
+      Log.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] startAbTestPoint:%s", new Object[] { paramString });
+      g.aWT().KR(paramString).iGC = System.currentTimeMillis();
+      g.aWT().KR(paramString).startTime = System.currentTimeMillis();
+      g.aWT().KR(paramString).iGD = false;
+      g.aWT().KR(paramString).result = "0";
+      a(g.aWT().KR(paramString), true);
     }
     AppMethodBeat.o(153098);
   }
   
-  public static void Cl(String paramString)
+  public static void KW(String paramString)
   {
     AppMethodBeat.i(153099);
-    if ((g.aDh().Cg(paramString) != null) && (!g.aDh().Cg(paramString).hLB))
+    if ((g.aWT().KR(paramString) != null) && (!g.aWT().KR(paramString).iGD))
     {
-      ae.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] endAbTestPoint:%s", new Object[] { paramString });
-      g.aDh().Cg(paramString).hLA = System.currentTimeMillis();
-      g.aDh().Cg(paramString).endTime = System.currentTimeMillis();
-      g.aDh().Cg(paramString).hLB = true;
-      a(g.aDh().Cg(paramString));
-      a(g.aDh().Cg(paramString), false);
+      Log.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] endAbTestPoint:%s", new Object[] { paramString });
+      g.aWT().KR(paramString).iGC = System.currentTimeMillis();
+      g.aWT().KR(paramString).endTime = System.currentTimeMillis();
+      g.aWT().KR(paramString).iGD = true;
+      a(g.aWT().KR(paramString));
+      a(g.aWT().KR(paramString), false);
     }
     AppMethodBeat.o(153099);
   }
@@ -66,17 +68,17 @@ public final class f
   public static void a(e parame)
   {
     AppMethodBeat.i(153096);
-    if ((parame != null) && (g.aDh().aDf()))
+    if ((parame != null) && (g.aWT().aWR()))
     {
-      String str1 = g.aDh().hLx.hLt;
+      String str1 = g.aWT().iGz.iGw;
       String str2 = parame.id;
       String str3 = parame.id;
       String str4 = parame.endTime - parame.startTime;
       String str5 = parame.result;
-      String str6 = parame.hLz;
-      long l = parame.hmW;
-      ae.i("MicroMsg.abtest.AbTestReportHelper", "TestCaseID:%s TestPointsID:%s TestReportID：%s TetsCheckID:%s TestDurationTime:%s TestActionResult:%s, TestActionScene:%d", new Object[] { str1, str2, str6, str3, str4, str5, Long.valueOf(l) });
-      com.tencent.mm.plugin.report.service.g.yxI.f(11394, new Object[] { str1, str2, str6, str3, str4, str5, Long.valueOf(l) });
+      String str6 = parame.iGB;
+      long l = parame.igp;
+      Log.i("MicroMsg.abtest.AbTestReportHelper", "TestCaseID:%s TestPointsID:%s TestReportID：%s TetsCheckID:%s TestDurationTime:%s TestActionResult:%s, TestActionScene:%d", new Object[] { str1, str2, str6, str3, str4, str5, Long.valueOf(l) });
+      h.CyF.a(11394, new Object[] { str1, str2, str6, str3, str4, str5, Long.valueOf(l) });
     }
     AppMethodBeat.o(153096);
   }
@@ -84,9 +86,9 @@ public final class f
   private static void a(e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(153095);
-    if ((parame == null) || (!g.aDh().aDf()))
+    if ((parame == null) || (!g.aWT().aWR()))
     {
-      ae.w("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast abtest faild. abTestPoint or testcase is null.");
+      Log.w("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast abtest faild. abTestPoint or testcase is null.");
       AppMethodBeat.o(153095);
       return;
     }
@@ -95,20 +97,20 @@ public final class f
     for (StringBuilder localStringBuilder1 = localStringBuilder2.append("TestPointStart:");; localStringBuilder1 = localStringBuilder2.append("TestPointEnd:"))
     {
       localStringBuilder2.append(localStringBuilder1);
-      localStringBuilder2.append(g.aDh().hLx.hLt);
+      localStringBuilder2.append(g.aWT().iGz.iGw);
       localStringBuilder2.append("_");
       localStringBuilder2.append(parame.id);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.hLz);
+      localStringBuilder2.append(parame.iGB);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.hLz);
+      localStringBuilder2.append(parame.iGB);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.hLA);
+      localStringBuilder2.append(parame.iGC);
       localStringBuilder2.append("_");
       localStringBuilder2.append(parame.result);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.hmW);
-      Ci(localStringBuilder2.toString());
+      localStringBuilder2.append(parame.igp);
+      KT(localStringBuilder2.toString());
       AppMethodBeat.o(153095);
       return;
     }

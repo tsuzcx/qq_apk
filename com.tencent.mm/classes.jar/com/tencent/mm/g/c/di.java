@@ -2,380 +2,225 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class di
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eJV;
-  private static final int eMR = "lvbuffer".hashCode();
-  private static final int fcK;
-  private static final int fhj = "deviceID".hashCode();
-  private static final int fhk = "brandName".hashCode();
-  private static final int fhl;
-  private static final int fhm;
-  private static final int fhn;
-  private static final int fho;
-  private static final int fhp;
-  private static final int fhq;
-  private static final int fhr;
-  private static final int fhs;
-  private static final int fht;
+  private static final int fKA;
+  private static final int fKB;
+  private static final int fKC;
+  private static final int fKD = "googleitemid".hashCode();
+  private static final int fKE = "googlecgistatus".hashCode();
+  private static final int fKF = "contecttype".hashCode();
+  private static final int fKG = "googlenamepy".hashCode();
+  private static final int fKu = "googleid".hashCode();
+  private static final int fKv = "googlename".hashCode();
+  private static final int fKw = "googlephotourl".hashCode();
+  private static final int fKx = "googlegmail".hashCode();
+  private static final int fKy;
+  private static final int fKz;
+  private static final int fjl;
+  private static final int fqf;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  public String category;
-  private boolean eJR = true;
-  public boolean eMD = true;
-  private boolean fcy = true;
-  private boolean fgY = true;
-  private boolean fgZ = true;
-  public String fhA;
-  private int fhB;
-  public int fhC;
-  public long fhD;
-  public String fhE;
-  public String fhF;
-  private String fhG;
-  public String fhH;
-  private boolean fha = true;
-  private boolean fhb = true;
-  private boolean fhc = true;
-  private boolean fhd = true;
-  private boolean fhe = true;
-  private boolean fhf = true;
-  private boolean fhg = true;
-  private boolean fhh = true;
-  private boolean fhi = true;
-  public int fhu;
-  public int fhv;
-  public long fhw;
-  private long fhx;
-  public String fhy;
-  public String fhz;
-  public byte[] field_authBuf;
-  public String field_authKey;
-  public String field_brandName;
-  public int field_closeStrategy;
-  public String field_connProto;
-  public int field_connStrategy;
-  public String field_deviceID;
-  public String field_deviceType;
-  public byte[] field_lvbuffer;
-  public long field_mac;
-  public String field_md5Str;
-  public byte[] field_sessionBuf;
-  public byte[] field_sessionKey;
-  public String field_url;
-  public String iconUrl;
-  public String jumpUrl;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetusername = true;
+  private boolean fKh = true;
+  private boolean fKi = true;
+  private boolean fKj = true;
+  private boolean fKk = true;
+  private boolean fKl = true;
+  private boolean fKm = true;
+  private boolean fKn = true;
+  private boolean fKo = true;
+  private boolean fKp = true;
+  private boolean fKq = true;
+  private boolean fKr = true;
+  private boolean fKs = true;
+  private boolean fKt = true;
+  public String field_big_url;
+  public String field_contecttype;
+  public int field_googlecgistatus;
+  public String field_googlegmail;
+  public String field_googleid;
+  public String field_googleitemid;
+  public String field_googlename;
+  public String field_googlenamepy;
+  public String field_googlephotourl;
+  public String field_nickname;
+  public String field_nicknameqp;
+  public int field_ret;
+  public String field_small_url;
+  public int field_status;
+  public String field_username;
+  public String field_usernamepy;
+  private boolean fji = true;
+  private boolean fqb = true;
   
   static
   {
-    fcK = "mac".hashCode();
-    fhl = "deviceType".hashCode();
-    fhm = "connProto".hashCode();
-    fhn = "connStrategy".hashCode();
-    fho = "closeStrategy".hashCode();
-    fhp = "md5Str".hashCode();
-    fhq = "authKey".hashCode();
-    eJV = "url".hashCode();
-    fhr = "sessionKey".hashCode();
-    fhs = "sessionBuf".hashCode();
-    fht = "authBuf".hashCode();
+    fqf = "nickname".hashCode();
+    fKy = "nicknameqp".hashCode();
+    fKz = "usernamepy".hashCode();
+    fKA = "small_url".hashCode();
+    fKB = "big_url".hashCode();
+    fKC = "ret".hashCode();
+    fjl = "status".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
   {
     String[] arrayOfString = paramCursor.getColumnNames();
-    if (arrayOfString == null) {}
-    do
+    if (arrayOfString == null) {
+      return;
+    }
+    int i = 0;
+    int j = arrayOfString.length;
+    label20:
+    int k;
+    if (i < j)
     {
-      for (;;)
+      k = arrayOfString[i].hashCode();
+      if (fKu != k) {
+        break label60;
+      }
+      this.field_googleid = paramCursor.getString(i);
+    }
+    for (;;)
+    {
+      i += 1;
+      break label20;
+      break;
+      label60:
+      if (fKv == k)
       {
-        return;
-        int i = 0;
-        int j = arrayOfString.length;
-        if (i < j)
-        {
-          int k = arrayOfString[i].hashCode();
-          if (fhj == k)
-          {
-            this.field_deviceID = paramCursor.getString(i);
-            this.fgY = true;
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            if (fhk == k) {
-              this.field_brandName = paramCursor.getString(i);
-            } else if (fcK == k) {
-              this.field_mac = paramCursor.getLong(i);
-            } else if (fhl == k) {
-              this.field_deviceType = paramCursor.getString(i);
-            } else if (fhm == k) {
-              this.field_connProto = paramCursor.getString(i);
-            } else if (fhn == k) {
-              this.field_connStrategy = paramCursor.getInt(i);
-            } else if (fho == k) {
-              this.field_closeStrategy = paramCursor.getInt(i);
-            } else if (fhp == k) {
-              this.field_md5Str = paramCursor.getString(i);
-            } else if (fhq == k) {
-              this.field_authKey = paramCursor.getString(i);
-            } else if (eJV == k) {
-              this.field_url = paramCursor.getString(i);
-            } else if (fhr == k) {
-              this.field_sessionKey = paramCursor.getBlob(i);
-            } else if (fhs == k) {
-              this.field_sessionBuf = paramCursor.getBlob(i);
-            } else if (fht == k) {
-              this.field_authBuf = paramCursor.getBlob(i);
-            } else if (eMR == k) {
-              this.field_lvbuffer = paramCursor.getBlob(i);
-            } else if (rowid_HASHCODE == k) {
-              this.systemRowid = paramCursor.getLong(i);
-            }
-          }
-        }
-        try
-        {
-          if ((this.field_lvbuffer != null) && (this.field_lvbuffer.length != 0))
-          {
-            paramCursor = new ab();
-            i = paramCursor.cB(this.field_lvbuffer);
-            if (i != 0)
-            {
-              ae.e("MicroMsg.SDK.BaseHardDeviceInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
-              return;
-            }
-          }
-        }
-        catch (Exception paramCursor)
-        {
-          ae.e("MicroMsg.SDK.BaseHardDeviceInfo", "get value failed");
-          return;
-        }
+        this.field_googlename = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhu = paramCursor.getInt();
+      else if (fKw == k)
+      {
+        this.field_googlephotourl = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhv = paramCursor.getInt();
+      else if (fKx == k)
+      {
+        this.field_googlegmail = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhw = paramCursor.getLong();
+      else if (username_HASHCODE == k)
+      {
+        this.field_username = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhx = paramCursor.getLong();
+      else if (fqf == k)
+      {
+        this.field_nickname = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhy = paramCursor.getString();
+      else if (fKy == k)
+      {
+        this.field_nicknameqp = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.iconUrl = paramCursor.getString();
+      else if (fKz == k)
+      {
+        this.field_usernamepy = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.jumpUrl = paramCursor.getString();
+      else if (fKA == k)
+      {
+        this.field_small_url = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhz = paramCursor.getString();
+      else if (fKB == k)
+      {
+        this.field_big_url = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhA = paramCursor.getString();
+      else if (fKC == k)
+      {
+        this.field_ret = paramCursor.getInt(i);
       }
-      if (!paramCursor.foc()) {
-        this.category = paramCursor.getString();
+      else if (fjl == k)
+      {
+        this.field_status = paramCursor.getInt(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhB = paramCursor.getInt();
+      else if (fKD == k)
+      {
+        this.field_googleitemid = paramCursor.getString(i);
+        this.fKq = true;
       }
-      if (!paramCursor.foc()) {
-        this.fhC = paramCursor.getInt();
+      else if (fKE == k)
+      {
+        this.field_googlecgistatus = paramCursor.getInt(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhD = paramCursor.getLong();
+      else if (fKF == k)
+      {
+        this.field_contecttype = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhE = paramCursor.getString();
+      else if (fKG == k)
+      {
+        this.field_googlenamepy = paramCursor.getString(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhF = paramCursor.getString();
+      else if (rowid_HASHCODE == k)
+      {
+        this.systemRowid = paramCursor.getLong(i);
       }
-      if (!paramCursor.foc()) {
-        this.fhG = paramCursor.getString();
-      }
-    } while (paramCursor.foc());
-    this.fhH = paramCursor.getString();
+    }
   }
   
   public ContentValues convertTo()
   {
-    try
-    {
-      if (this.eMD)
-      {
-        localObject = new ab();
-        ((ab)localObject).fod();
-        ((ab)localObject).abc(this.fhu);
-        ((ab)localObject).abc(this.fhv);
-        ((ab)localObject).Dt(this.fhw);
-        ((ab)localObject).Dt(this.fhx);
-        ((ab)localObject).aRM(this.fhy);
-        ((ab)localObject).aRM(this.iconUrl);
-        ((ab)localObject).aRM(this.jumpUrl);
-        ((ab)localObject).aRM(this.fhz);
-        ((ab)localObject).aRM(this.fhA);
-        ((ab)localObject).aRM(this.category);
-        ((ab)localObject).abc(this.fhB);
-        ((ab)localObject).abc(this.fhC);
-        ((ab)localObject).Dt(this.fhD);
-        ((ab)localObject).aRM(this.fhE);
-        ((ab)localObject).aRM(this.fhF);
-        ((ab)localObject).aRM(this.fhG);
-        ((ab)localObject).aRM(this.fhH);
-        this.field_lvbuffer = ((ab)localObject).foe();
-      }
-      Object localObject = new ContentValues();
-      if (this.fgY) {
-        ((ContentValues)localObject).put("deviceID", this.field_deviceID);
-      }
-      if (this.fgZ) {
-        ((ContentValues)localObject).put("brandName", this.field_brandName);
-      }
-      if (this.fcy) {
-        ((ContentValues)localObject).put("mac", Long.valueOf(this.field_mac));
-      }
-      if (this.fha) {
-        ((ContentValues)localObject).put("deviceType", this.field_deviceType);
-      }
-      if (this.fhb) {
-        ((ContentValues)localObject).put("connProto", this.field_connProto);
-      }
-      if (this.fhc) {
-        ((ContentValues)localObject).put("connStrategy", Integer.valueOf(this.field_connStrategy));
-      }
-      if (this.fhd) {
-        ((ContentValues)localObject).put("closeStrategy", Integer.valueOf(this.field_closeStrategy));
-      }
-      if (this.fhe) {
-        ((ContentValues)localObject).put("md5Str", this.field_md5Str);
-      }
-      if (this.fhf) {
-        ((ContentValues)localObject).put("authKey", this.field_authKey);
-      }
-      if (this.eJR) {
-        ((ContentValues)localObject).put("url", this.field_url);
-      }
-      if (this.fhg) {
-        ((ContentValues)localObject).put("sessionKey", this.field_sessionKey);
-      }
-      if (this.fhh) {
-        ((ContentValues)localObject).put("sessionBuf", this.field_sessionBuf);
-      }
-      if (this.fhi) {
-        ((ContentValues)localObject).put("authBuf", this.field_authBuf);
-      }
-      if (this.eMD) {
-        ((ContentValues)localObject).put("lvbuffer", this.field_lvbuffer);
-      }
-      if (this.systemRowid > 0L) {
-        ((ContentValues)localObject).put("rowid", Long.valueOf(this.systemRowid));
-      }
-      return localObject;
+    ContentValues localContentValues = new ContentValues();
+    if (this.fKh) {
+      localContentValues.put("googleid", this.field_googleid);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ae.e("MicroMsg.SDK.BaseHardDeviceInfo", "get value failed, %s", new Object[] { localException.getMessage() });
-      }
+    if (this.fKi) {
+      localContentValues.put("googlename", this.field_googlename);
     }
-  }
-  
-  public final void kB(int paramInt)
-  {
-    this.fhB = paramInt;
-    this.eMD = true;
-  }
-  
-  public final void kC(int paramInt)
-  {
-    this.fhC = paramInt;
-    this.eMD = true;
-  }
-  
-  public final void qL(long paramLong)
-  {
-    this.fhD = paramLong;
-    this.eMD = true;
-  }
-  
-  public final void setIconUrl(String paramString)
-  {
-    this.iconUrl = paramString;
-    this.eMD = true;
-  }
-  
-  public final void tl(String paramString)
-  {
-    this.fhy = paramString;
-    this.eMD = true;
-  }
-  
-  public final void ua(String paramString)
-  {
-    this.jumpUrl = paramString;
-    this.eMD = true;
-  }
-  
-  public final void ub(String paramString)
-  {
-    this.fhz = paramString;
-    this.eMD = true;
-  }
-  
-  public final void uc(String paramString)
-  {
-    this.fhA = paramString;
-    this.eMD = true;
-  }
-  
-  public final void ud(String paramString)
-  {
-    this.category = paramString;
-    this.eMD = true;
-  }
-  
-  public final void ue(String paramString)
-  {
-    this.fhE = paramString;
-    this.eMD = true;
-  }
-  
-  public final void uf(String paramString)
-  {
-    this.fhF = paramString;
-    this.eMD = true;
-  }
-  
-  public final void ug(String paramString)
-  {
-    this.fhG = paramString;
-    this.eMD = true;
-  }
-  
-  public final void uh(String paramString)
-  {
-    this.fhH = paramString;
-    this.eMD = true;
+    if (this.fKj) {
+      localContentValues.put("googlephotourl", this.field_googlephotourl);
+    }
+    if (this.fKk) {
+      localContentValues.put("googlegmail", this.field_googlegmail);
+    }
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
+    }
+    if (this.fqb) {
+      localContentValues.put("nickname", this.field_nickname);
+    }
+    if (this.fKl) {
+      localContentValues.put("nicknameqp", this.field_nicknameqp);
+    }
+    if (this.fKm) {
+      localContentValues.put("usernamepy", this.field_usernamepy);
+    }
+    if (this.fKn) {
+      localContentValues.put("small_url", this.field_small_url);
+    }
+    if (this.fKo) {
+      localContentValues.put("big_url", this.field_big_url);
+    }
+    if (this.fKp) {
+      localContentValues.put("ret", Integer.valueOf(this.field_ret));
+    }
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.fKq) {
+      localContentValues.put("googleitemid", this.field_googleitemid);
+    }
+    if (this.fKr) {
+      localContentValues.put("googlecgistatus", Integer.valueOf(this.field_googlecgistatus));
+    }
+    if (this.fKs) {
+      localContentValues.put("contecttype", this.field_contecttype);
+    }
+    if (this.fKt) {
+      localContentValues.put("googlenamepy", this.field_googlenamepy);
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.di
  * JD-Core Version:    0.7.0.1
  */

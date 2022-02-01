@@ -5,7 +5,7 @@ import com.tencent.kinda.framework.animate.KindaAnimatorViewProxy;
 import com.tencent.kinda.framework.widget.base.MMKViewLayout;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
@@ -47,7 +47,7 @@ public class PlatformWrapLayout
   {
     AppMethodBeat.i(18725);
     Object localObject = unwrapProxyObj(paramKView);
-    ae.i("MMKViewLayout", "PlatformWrapLayout addView: %s %s", new Object[] { paramKView, localObject });
+    Log.i("MMKViewLayout", "PlatformWrapLayout addView: %s %s", new Object[] { paramKView, localObject });
     if (localObject != null) {
       paramKView = (KView)localObject;
     }
@@ -61,7 +61,7 @@ public class PlatformWrapLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.PlatformWrapLayout
  * JD-Core Version:    0.7.0.1
  */

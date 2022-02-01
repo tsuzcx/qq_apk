@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|left" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/a7c" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" android:minHeight="@dimen/k4">
+        <TextView android:textColor="@color/acd" android:id="@android:id/title" android:paddingLeft="@dimen/ib" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxEms="6" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/mi" />
+        <LinearLayout android:gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/kb" android:layout_alignParentRight="true">
+            <ImageView android:id="@id/im8" android:visibility="gone" android:scaleType="centerCrop" style="@style/ur" />
+            <ImageView android:id="@id/im9" android:visibility="gone" android:scaleType="centerCrop" style="@style/ur" />
+            <ImageView android:id="@id/im_" android:visibility="gone" android:scaleType="centerCrop" style="@style/ur" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:background="@drawable/b10" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" />
+</LinearLayout>

@@ -16,7 +16,7 @@ public class SetGlobalCompositeOperationActionArg
   static
   {
     AppMethodBeat.i(145188);
-    CREATOR = new SetGlobalCompositeOperationActionArg.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(145188);
   }
   
@@ -56,20 +56,20 @@ public class SetGlobalCompositeOperationActionArg
     return bool;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145183);
-    super.h(paramParcel);
-    this.type = paramParcel.readString();
-    AppMethodBeat.o(145183);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145187);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.type });
     AppMethodBeat.o(145187);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145183);
+    super.i(paramParcel);
+    this.type = paramParcel.readString();
+    AppMethodBeat.o(145183);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -90,7 +90,7 @@ public class SetGlobalCompositeOperationActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetGlobalCompositeOperationActionArg
  * JD-Core Version:    0.7.0.1
  */

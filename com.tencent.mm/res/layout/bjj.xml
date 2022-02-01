@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/iqp" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="21.0dip" android:layout_marginRight="24.0dip" android:text="@string/e4k" />
-    <TextView android:textSize="@dimen/a_" android:textColor="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="21.0dip" android:text="@string/e4j" />
+    <TextView android:gravity="center|left|top" android:id="@id/gad" android:paddingTop="@dimen/cb" android:layout_width="@dimen/em" android:layout_height="fill_parent" android:layout_marginRight="@dimen/i2" android:text="@string/bd0" style="@style/ob" />
+    <LinearLayout android:orientation="vertical" android:id="@id/gac" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/a75" android:showDividers="middle">
+        <include layout="@layout/bjm" />
+        <include layout="@layout/bjm" />
+        <include layout="@layout/bjm" />
+        <include layout="@layout/bjm" />
+        <include layout="@layout/bjm" />
+    </LinearLayout>
 </LinearLayout>

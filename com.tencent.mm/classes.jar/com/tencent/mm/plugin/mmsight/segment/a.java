@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.mmsight.segment;
 import android.annotation.TargetApi;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import com.tencent.mm.compatible.h.c;
+import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,31 +17,61 @@ import java.util.Locale;
 public abstract class a
   implements f
 {
-  long ckm;
-  private String gmc;
-  private c iyh;
-  private List<a> iyk = new ArrayList();
-  private List<a> iyl = new ArrayList();
-  String iym;
-  String iyn;
-  VideoTransPara iyo;
-  long iyp;
-  int iyq = -1;
-  int iyr = -1;
-  private boolean iys = false;
+  long cwj;
+  private String gWS;
+  private boolean iCs = false;
+  private List<a> jtB = new ArrayList();
+  private List<a> jtC = new ArrayList();
+  String jtD;
+  String jtE;
+  VideoTransPara jtF;
+  long jtG;
+  int jtH = -1;
+  int jtI = -1;
+  private c jty;
   
-  private int aNI()
+  private void b(c paramc)
+  {
+    int j = paramc.gLF.getTrackCount();
+    int i = 0;
+    if (i < j)
+    {
+      MediaFormat localMediaFormat = paramc.getTrackFormat(i);
+      String str;
+      if ((localMediaFormat.containsKey("mime")) && (!Util.isNullOrNil(localMediaFormat.getString("mime"))))
+      {
+        str = localMediaFormat.getString("mime");
+        Log.i("BaseMediaCodecClipper", "mime: %s", new Object[] { str });
+        if (!str.startsWith("audio/")) {
+          break label108;
+        }
+        this.jtC.add(new a(localMediaFormat, i));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label108:
+        if (str.startsWith("video/")) {
+          this.jtB.add(new a(localMediaFormat, i));
+        }
+      }
+    }
+    Log.i("BaseMediaCodecClipper", "findMediaFormat mAudioSelectedTrackList.size() = %d, mVideoSelectedTrackList.size() = %d", new Object[] { Integer.valueOf(this.jtC.size()), Integer.valueOf(this.jtB.size()) });
+  }
+  
+  private int bhN()
   {
     int j = -1;
     int i = j;
     Iterator localIterator;
     a locala;
-    if (this.iyl != null)
+    if (this.jtC != null)
     {
       i = j;
-      if (this.iyl.size() != 0)
+      if (this.jtC.size() != 0)
       {
-        localIterator = this.iyl.iterator();
+        localIterator = this.jtC.iterator();
         i = -1;
         if (localIterator.hasNext())
         {
@@ -60,12 +89,12 @@ public abstract class a
     {
       break;
       j = i;
-      if (this.iyk != null)
+      if (this.jtB != null)
       {
         j = i;
-        if (this.iyk.size() != 0)
+        if (this.jtB.size() != 0)
         {
-          localIterator = this.iyk.iterator();
+          localIterator = this.jtB.iterator();
           if (localIterator.hasNext())
           {
             locala = (a)localIterator.next();
@@ -85,51 +114,26 @@ public abstract class a
     }
   }
   
-  private void b(c paramc)
+  public abstract int QZ(String paramString);
+  
+  protected int a(c paramc, List<a> paramList1, List<a> paramList2)
   {
-    int j = paramc.gga.getTrackCount();
-    int i = 0;
-    if (i < j)
-    {
-      MediaFormat localMediaFormat = paramc.getTrackFormat(i);
-      String str;
-      if ((localMediaFormat.containsKey("mime")) && (!bu.isNullOrNil(localMediaFormat.getString("mime"))))
-      {
-        str = localMediaFormat.getString("mime");
-        ae.i("BaseMediaCodecClipper", "mime: %s", new Object[] { str });
-        if (!str.startsWith("audio/")) {
-          break label108;
-        }
-        this.iyl.add(new a(localMediaFormat, i));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label108:
-        if (str.startsWith("video/")) {
-          this.iyk.add(new a(localMediaFormat, i));
-        }
-      }
-    }
-    ae.i("BaseMediaCodecClipper", "findMediaFormat mAudioSelectedTrackList.size() = %d, mVideoSelectedTrackList.size() = %d", new Object[] { Integer.valueOf(this.iyl.size()), Integer.valueOf(this.iyk.size()) });
+    return 0;
   }
   
-  public abstract int In(String paramString);
-  
-  public int X(long paramLong1, long paramLong2)
+  public int ab(long paramLong1, long paramLong2)
   {
-    if (!this.iys)
+    if (!this.iCs)
     {
-      ae.e("BaseMediaCodecClipper", "checkTimeParameter has not been initialized.");
+      Log.e("BaseMediaCodecClipper", "checkTimeParameter has not been initialized.");
       throw new IllegalStateException("Please init this component first.");
     }
     long l = paramLong1;
     if (paramLong1 < 0L) {
       l = 0L;
     }
-    this.ckm = l;
-    MediaFormat localMediaFormat = ((a)this.iyk.get(0)).mediaFormat;
+    this.cwj = l;
+    MediaFormat localMediaFormat = ((a)this.jtB.get(0)).mediaFormat;
     if (!localMediaFormat.containsKey("durationUs")) {
       throw new o("Can not find duration.");
     }
@@ -142,55 +146,50 @@ public abstract class a
     {
       paramLong1 = localMediaFormat.getLong("durationUs") / 1000L;
     }
-    this.iyp = paramLong1;
-    return a(this.iyh, this.iyl, this.iyk);
+    this.jtG = paramLong1;
+    return a(this.jty, this.jtC, this.jtB);
   }
   
-  protected int a(c paramc, List<a> paramList1, List<a> paramList2)
+  public void b(String paramString1, String paramString2, VideoTransPara paramVideoTransPara)
   {
-    return 0;
-  }
-  
-  protected final String aNJ()
-  {
-    if (this.gmc == null) {
-      this.gmc = (CaptureMMProxy.getInstance().getAccVideoPath() + "vsg_clip_temp.mp4");
-    }
-    return this.gmc;
-  }
-  
-  public void c(String paramString1, String paramString2, VideoTransPara paramVideoTransPara)
-  {
-    ae.d("BaseMediaCodecClipper", "init() called with: src = [" + paramString1 + "], dst = [" + paramString2 + "], para = [" + paramVideoTransPara + "]");
-    long l = bu.HQ();
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)) || (paramVideoTransPara == null)) {
+    Log.d("BaseMediaCodecClipper", "init() called with: src = [" + paramString1 + "], dst = [" + paramString2 + "], para = [" + paramVideoTransPara + "]");
+    long l = Util.currentTicks();
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (paramVideoTransPara == null)) {
       throw new IllegalArgumentException(String.format(Locale.CHINA, "Argument's null or nil. src = %s; dst = %s; param = %s", new Object[] { paramString1, paramString2, paramVideoTransPara }));
     }
-    k localk = new k(paramString1);
-    new k(paramString2);
-    if ((!localk.canRead()) || (localk.length() == 0L)) {
+    com.tencent.mm.vfs.o localo = new com.tencent.mm.vfs.o(paramString1);
+    new com.tencent.mm.vfs.o(paramString2);
+    if ((!localo.canRead()) || (localo.length() == 0L)) {
       throw new IllegalArgumentException(String.format(Locale.CHINA, "Argument src video file can not be read or empty %s", new Object[] { paramString1 }));
     }
-    this.iym = paramString1;
-    this.iyn = paramString2;
-    this.iyo = paramVideoTransPara;
-    this.iyh = new c();
-    this.iyh.vT(paramString1);
-    b(this.iyh);
-    if ((this.iyk == null) || (this.iyk.size() == 0)) {
+    this.jtD = paramString1;
+    this.jtE = paramString2;
+    this.jtF = paramVideoTransPara;
+    this.jty = new c();
+    this.jty.setDataSource(paramString1);
+    b(this.jty);
+    if ((this.jtB == null) || (this.jtB.size() == 0)) {
       throw new o("Can not find video or audio track in this video file.");
     }
-    this.iyq = aNI();
-    this.iyr = In(paramString1);
-    this.iys = true;
-    ae.e("BaseMediaCodecClipper", "init cost time %dms", new Object[] { Long.valueOf(bu.aO(l)) });
+    this.jtH = bhN();
+    this.jtI = QZ(paramString1);
+    this.iCs = true;
+    Log.e("BaseMediaCodecClipper", "init cost time %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+  }
+  
+  protected final String bhO()
+  {
+    if (this.gWS == null) {
+      this.gWS = (CaptureMMProxy.getInstance().getAccVideoPath() + "vsg_clip_temp.mp4");
+    }
+    return this.gWS;
   }
   
   public final void release()
   {
-    this.iys = false;
-    if (this.iyh != null) {
-      this.iyh.gga.release();
+    this.iCs = false;
+    if (this.jty != null) {
+      this.jty.gLF.release();
     }
   }
   
@@ -208,7 +207,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.a
  * JD-Core Version:    0.7.0.1
  */

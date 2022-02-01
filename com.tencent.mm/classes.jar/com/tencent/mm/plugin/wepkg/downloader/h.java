@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
-import com.tencent.e.b;
+import com.tencent.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RunnableFuture;
@@ -21,13 +21,13 @@ public final class h
     if ((paramRunnable instanceof e))
     {
       e locale = (e)paramRunnable;
-      if ((locale.EWF != null) && (locale.EWF.EWg != null))
+      if ((locale.JMw != null) && (locale.JMw.JLZ != null))
       {
-        d.fbF().aMc(locale.EWF.EWg.EWG);
-        ae.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
+        d.gkL().bcv(locale.JMw.JLZ.JMx);
+        Log.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
       }
     }
-    ae.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
+    Log.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
     super.afterExecute(paramRunnable, paramThrowable);
     AppMethodBeat.o(110623);
   }
@@ -36,7 +36,7 @@ public final class h
   {
     AppMethodBeat.i(110622);
     super.beforeExecute(paramThread, paramRunnable);
-    ae.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
+    Log.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
     AppMethodBeat.o(110622);
   }
   
@@ -57,9 +57,9 @@ public final class h
   public final void terminated()
   {
     AppMethodBeat.i(110621);
-    d locald = d.fbF();
-    if (locald.EWq != null) {
-      locald.EWq.clear();
+    d locald = d.gkL();
+    if (locald.JMi != null) {
+      locald.JMi.clear();
     }
     super.terminated();
     AppMethodBeat.o(110621);
@@ -67,7 +67,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.h
  * JD-Core Version:    0.7.0.1
  */

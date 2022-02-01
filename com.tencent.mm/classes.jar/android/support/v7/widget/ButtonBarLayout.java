@@ -3,7 +3,7 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v7.a.a.a;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -15,19 +15,19 @@ import android.widget.LinearLayout.LayoutParams;
 public class ButtonBarLayout
   extends LinearLayout
 {
-  private boolean alt;
-  private int alu = -1;
-  private int alv = 0;
+  private boolean alG;
+  private int alH = -1;
+  private int alI = 0;
   
   public ButtonBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ButtonBarLayout);
-    this.alt = paramContext.getBoolean(0, true);
+    this.alG = paramContext.getBoolean(0, true);
     paramContext.recycle();
   }
   
-  private int bJ(int paramInt)
+  private int bK(int paramInt)
   {
     int i = getChildCount();
     while (paramInt < i)
@@ -40,7 +40,7 @@ public class ButtonBarLayout
     return -1;
   }
   
-  private boolean jo()
+  private boolean jx()
   {
     return getOrientation() == 1;
   }
@@ -58,7 +58,7 @@ public class ButtonBarLayout
       }
       i = 5;
       setGravity(i);
-      localView = findViewById(2131305140);
+      localView = findViewById(2131308319);
       if (localView != null) {
         if (!paramBoolean) {
           break label83;
@@ -85,30 +85,30 @@ public class ButtonBarLayout
   
   public int getMinimumHeight()
   {
-    return Math.max(this.alv, super.getMinimumHeight());
+    return Math.max(this.alI, super.getMinimumHeight());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt1);
-    if (this.alt)
+    if (this.alG)
     {
-      if ((i > this.alu) && (jo())) {
+      if ((i > this.alH) && (jx())) {
         setStacked(false);
       }
-      this.alu = i;
+      this.alH = i;
     }
     int j;
-    if ((!jo()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
+    if ((!jx()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
     {
       j = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
       i = 1;
       super.onMeasure(j, paramInt2);
       int k = i;
-      if (this.alt)
+      if (this.alG)
       {
         k = i;
-        if (!jo())
+        if (!jx())
         {
           if ((getMeasuredWidthAndState() & 0xFF000000) != 16777216) {
             break label261;
@@ -126,7 +126,7 @@ public class ButtonBarLayout
       if (k != 0) {
         super.onMeasure(paramInt1, paramInt2);
       }
-      paramInt1 = bJ(0);
+      paramInt1 = bK(0);
       if (paramInt1 < 0) {
         break label277;
       }
@@ -136,10 +136,10 @@ public class ButtonBarLayout
       i = localView.getMeasuredHeight();
       j = localLayoutParams.topMargin;
       paramInt2 = localLayoutParams.bottomMargin + (i + paramInt2 + j) + 0;
-      if (!jo()) {
+      if (!jx()) {
         break label267;
       }
-      i = bJ(paramInt1 + 1);
+      i = bK(paramInt1 + 1);
       paramInt1 = paramInt2;
       if (i >= 0) {
         paramInt1 = paramInt2 + (getChildAt(i).getPaddingTop() + (int)(16.0F * getResources().getDisplayMetrics().density));
@@ -147,7 +147,7 @@ public class ButtonBarLayout
     }
     for (;;)
     {
-      if (t.af(this) != paramInt1) {
+      if (u.ag(this) != paramInt1) {
         setMinimumHeight(paramInt1);
       }
       return;
@@ -167,10 +167,10 @@ public class ButtonBarLayout
   
   public void setAllowStacking(boolean paramBoolean)
   {
-    if (this.alt != paramBoolean)
+    if (this.alG != paramBoolean)
     {
-      this.alt = paramBoolean;
-      if ((!this.alt) && (getOrientation() == 1)) {
+      this.alG = paramBoolean;
+      if ((!this.alG) && (getOrientation() == 1)) {
         setStacked(false);
       }
       requestLayout();
@@ -179,7 +179,7 @@ public class ButtonBarLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v7.widget.ButtonBarLayout
  * JD-Core Version:    0.7.0.1
  */

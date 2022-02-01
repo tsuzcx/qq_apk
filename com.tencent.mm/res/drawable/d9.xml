@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle" android:useLevel="false"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/Red" />
-    <corners android:radius="9.5dip" />
-    <padding android:left="2.0dip" android:right="2.0dip" />
-    <size android:height="19.0dip" android:width="19.0dip" />
-</shape>
+<rotate android:drawable="@drawable/by0" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

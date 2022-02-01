@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_mobile" android:layout="@layout/aop" android:title="@string/b_g" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_qq" android:layout="@layout/aop" android:title="@string/b_h" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_linkedin" android:layout="@layout/aop" android:title="@string/b_f" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_facebook" android:layout="@layout/aop" android:title="@string/b_c" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_googlecontacts" android:layout="@layout/aop" android:title="@string/b_e" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_weishop" android:layout="@layout/aop" android:title="@string/b_j" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="contact_list_cache" />
 </PreferenceScreen>

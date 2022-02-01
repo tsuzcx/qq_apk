@@ -25,28 +25,28 @@ public class h
   extends g.a
   implements j
 {
-  private static final boolean OwB;
-  public static final int OwC;
-  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> OwD;
-  private static final AtomicReference<ScheduledExecutorService> OwE;
-  private static volatile Object OwF;
-  private static final Object OwG;
-  volatile boolean OwA;
-  final ScheduledExecutorService Owz;
+  private static final boolean Ump;
+  public static final int Umq;
+  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> Umr;
+  private static final AtomicReference<ScheduledExecutorService> Ums;
+  private static volatile Object Umt;
+  private static final Object Umu;
+  final ScheduledExecutorService Umn;
+  volatile boolean Umo;
   
   static
   {
     AppMethodBeat.i(90336);
-    OwG = new Object();
-    OwD = new ConcurrentHashMap();
-    OwE = new AtomicReference();
-    OwC = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
+    Umu = new Object();
+    Umr = new ConcurrentHashMap();
+    Ums = new AtomicReference();
+    Umq = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
     boolean bool = Boolean.getBoolean("rx.scheduler.jdk6.purge-force");
-    int i = e.gDJ();
+    int i = e.hQR();
     if ((!bool) && ((i == 0) || (i >= 21))) {}
     for (bool = true;; bool = false)
     {
-      OwB = bool;
+      Ump = bool;
       AppMethodBeat.o(90336);
       return;
     }
@@ -59,14 +59,14 @@ public class h
     if ((!b(paramThreadFactory)) && ((paramThreadFactory instanceof ScheduledThreadPoolExecutor))) {
       a((ScheduledThreadPoolExecutor)paramThreadFactory);
     }
-    this.Owz = paramThreadFactory;
+    this.Umn = paramThreadFactory;
     AppMethodBeat.o(90331);
   }
   
   public static void a(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90327);
-    OwD.remove(paramScheduledExecutorService);
+    Umr.remove(paramScheduledExecutorService);
     AppMethodBeat.o(90327);
   }
   
@@ -76,24 +76,24 @@ public class h
     for (;;)
     {
       ScheduledExecutorService localScheduledExecutorService;
-      if ((ScheduledExecutorService)OwE.get() == null)
+      if ((ScheduledExecutorService)Ums.get() == null)
       {
         localScheduledExecutorService = Executors.newScheduledThreadPool(1, new g("RxSchedulerPurge-"));
-        if (OwE.compareAndSet(null, localScheduledExecutorService)) {
+        if (Ums.compareAndSet(null, localScheduledExecutorService)) {
           localScheduledExecutorService.scheduleAtFixedRate(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(90325);
-              h.gDF();
+              h.hQN();
               AppMethodBeat.o(90325);
             }
-          }, OwC, OwC, TimeUnit.MILLISECONDS);
+          }, Umq, Umq, TimeUnit.MILLISECONDS);
         }
       }
       else
       {
-        OwD.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
+        Umr.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
         AppMethodBeat.o(90326);
         return;
       }
@@ -104,14 +104,14 @@ public class h
   public static boolean b(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90329);
-    if (OwB)
+    if (Ump)
     {
       Object localObject1;
       Object localObject2;
       if ((paramScheduledExecutorService instanceof ScheduledThreadPoolExecutor))
       {
-        localObject1 = OwF;
-        if (localObject1 == OwG)
+        localObject1 = Umt;
+        if (localObject1 == Umu)
         {
           AppMethodBeat.o(90329);
           return false;
@@ -122,7 +122,7 @@ public class h
           if (localObject1 != null)
           {
             localObject2 = localObject1;
-            OwF = localObject2;
+            Umt = localObject2;
           }
         }
       }
@@ -157,7 +157,7 @@ public class h
             c.onError(paramScheduledExecutorService);
           }
         }
-        localObject2 = OwG;
+        localObject2 = Umu;
         break;
         localObject1 = (Method)localObject1;
         continue;
@@ -190,14 +190,14 @@ public class h
     return null;
   }
   
-  static void gDF()
+  static void hQN()
   {
     AppMethodBeat.i(90328);
     for (;;)
     {
       try
       {
-        Iterator localIterator = OwD.keySet().iterator();
+        Iterator localIterator = Umr.keySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -210,7 +210,7 @@ public class h
       }
       catch (Throwable localThrowable)
       {
-        b.L(localThrowable);
+        b.N(localThrowable);
         c.onError(localThrowable);
         AppMethodBeat.o(90328);
         return;
@@ -230,9 +230,9 @@ public class h
   public final j a(a parama, long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(90333);
-    if (this.OwA)
+    if (this.Umo)
     {
-      parama = d.gEf();
+      parama = d.hRn();
       AppMethodBeat.o(90333);
       return parama;
     }
@@ -246,7 +246,7 @@ public class h
     AppMethodBeat.i(90334);
     i locali = new i(c.b(parama));
     if (paramLong <= 0L) {}
-    for (parama = this.Owz.submit(locali);; parama = this.Owz.schedule(locali, paramLong, paramTimeUnit))
+    for (parama = this.Umn.submit(locali);; parama = this.Umn.schedule(locali, paramLong, paramTimeUnit))
     {
       locali.b(parama);
       AppMethodBeat.o(90334);
@@ -254,18 +254,18 @@ public class h
     }
   }
   
-  public final void gDs()
+  public final void hQA()
   {
     AppMethodBeat.i(90335);
-    this.OwA = true;
-    this.Owz.shutdownNow();
-    a(this.Owz);
+    this.Umo = true;
+    this.Umn.shutdownNow();
+    a(this.Umn);
     AppMethodBeat.o(90335);
   }
   
-  public final boolean gDt()
+  public final boolean hQB()
   {
-    return this.OwA;
+    return this.Umo;
   }
 }
 

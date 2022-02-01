@@ -11,14 +11,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CleanLocationHeaderView
   extends LinearLayout
 {
-  private ImageView fWT;
-  private TextView wEa;
+  private TextView AzH;
+  private ImageView gBZ;
   
   public CleanLocationHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(89807);
-    aN(paramContext);
+    bh(paramContext);
     AppMethodBeat.o(89807);
   }
   
@@ -26,19 +26,19 @@ public class CleanLocationHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(89806);
-    aN(paramContext);
+    bh(paramContext);
     AppMethodBeat.o(89806);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(89808);
-    paramContext = View.inflate(paramContext, 2131494999, this);
-    this.wEa = ((TextView)paramContext.findViewById(2131302701));
-    this.wEa.setSingleLine(false);
-    this.fWT = ((ImageView)paramContext.findViewById(2131302683));
-    this.wEa.setText(2131757391);
-    this.fWT.setImageResource(2131691025);
+    paramContext = View.inflate(paramContext, 2131495812, this);
+    this.AzH = ((TextView)paramContext.findViewById(2131305255));
+    this.AzH.setSingleLine(false);
+    this.gBZ = ((ImageView)paramContext.findViewById(2131305237));
+    this.AzH.setText(2131757608);
+    this.gBZ.setImageResource(2131691325);
     AppMethodBeat.o(89808);
   }
 }

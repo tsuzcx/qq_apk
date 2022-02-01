@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.game.luggage.b;
 import android.content.Context;
 import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zs;
-import com.tencent.mm.plugin.game.luggage.f.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.a.aaz;
+import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -17,20 +17,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class c
-  extends br<g>
+  extends bs<i>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
     int i = 0;
     AppMethodBeat.i(83053);
-    ae.i("MicroMsg.JsApiBatchUpdateWepkg", "invokeInMM");
+    Log.i("MicroMsg.JsApiBatchUpdateWepkg", "invokeInMM");
     try
     {
       paramContext = new JSONObject(paramString);
       if (paramContext == null)
       {
-        ae.e("MicroMsg.JsApiBatchUpdateWepkg", "data is null");
-        parama.f("fail", null);
+        Log.e("MicroMsg.JsApiBatchUpdateWepkg", "data is null");
+        parama.i("fail", null);
         AppMethodBeat.o(83053);
         return;
       }
@@ -42,7 +42,7 @@ public class c
         paramContext = null;
       }
       paramContext = paramContext.optString("pkgIdList");
-      if (!bu.isNullOrNil(paramContext)) {
+      if (!Util.isNullOrNil(paramContext)) {
         try
         {
           paramString = new JSONArray(paramContext);
@@ -54,14 +54,14 @@ public class c
               paramContext.add(paramString.optString(i));
               i += 1;
             }
-            if (!bu.ht(paramContext))
+            if (!Util.isNullOrNil(paramContext))
             {
-              paramString = new zs();
-              paramString.dQc.dlO = 8;
-              paramString.dQc.scene = 0;
-              paramString.dQc.dQi = paramContext;
-              a.IvT.l(paramString);
-              parama.f(null, null);
+              paramString = new aaz();
+              paramString.eif.dDe = 8;
+              paramString.eif.scene = 0;
+              paramString.eif.eil = paramContext;
+              EventCenter.instance.publish(paramString);
+              parama.i(null, null);
               AppMethodBeat.o(83053);
               return;
             }
@@ -69,17 +69,17 @@ public class c
         }
         catch (JSONException paramContext)
         {
-          ae.e("MicroMsg.JsApiBatchUpdateWepkg", "data is not json");
+          Log.e("MicroMsg.JsApiBatchUpdateWepkg", "data is not json");
         }
       }
-      parama.f("fail", null);
+      parama.i("fail", null);
       AppMethodBeat.o(83053);
     }
   }
   
-  public final void b(b<g>.a paramb) {}
+  public final void b(b<i>.a paramb) {}
   
-  public final int ced()
+  public final int dTs()
   {
     return 1;
   }

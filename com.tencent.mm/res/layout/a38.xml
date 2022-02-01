@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/cil" android:background="@drawable/sr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip">
-        <TextView android:textSize="@dimen/i" android:textColor="@color/s5" android:gravity="left" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" android:text="@string/c0g" />
-    </FrameLayout>
-    <com.tencent.mm.ui.widget.MMWebView android:id="@id/h1u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
+        <ListView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/doc" android:background="@color/ac_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    </com.tencent.mm.ui.base.MMPullDownView>
 </LinearLayout>

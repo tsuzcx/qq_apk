@@ -1,16 +1,34 @@
 package com.tencent.wework.api.model;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WWMediaConversation
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] MLp;
-  public WWMediaMessage.WWMediaObject MLq;
+  public byte[] Sxt;
+  public WWMediaMessage.WWMediaObject Sxu;
   public String name;
-  public String rJY;
-  public long riq;
+  public long sJT;
+  public String tjJ;
+  
+  public final void brA(String paramString)
+  {
+    AppMethodBeat.i(199003);
+    super.brA(paramString);
+    try
+    {
+      this.Sxu.brA(paramString);
+      AppMethodBeat.o(199003);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      AppMethodBeat.o(199003);
+    }
+  }
   
   public final boolean checkArgs()
   {
@@ -20,22 +38,22 @@ public class WWMediaConversation
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.MLp != null) && (this.MLp.length > 10485760))
+    if ((this.Sxt != null) && (this.Sxt.length > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.rJY != null) && (this.rJY.length() > 10240))
+    if ((this.tjJ != null) && (this.tjJ.length() > 10240))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.rJY != null) && (getFileSize(this.rJY) > 10485760))
+    if ((this.tjJ != null) && (getFileSize(this.tjJ) > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.MLq != null) && (this.MLq.checkArgs()))
+    if ((this.Sxu != null) && (this.Sxu.checkArgs()))
     {
       AppMethodBeat.o(106538);
       return true;
@@ -46,21 +64,37 @@ public class WWMediaConversation
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(193327);
+    AppMethodBeat.i(199001);
     super.fromBundle(paramBundle);
     this.name = paramBundle.getString("_wwconvobject_name");
-    this.riq = paramBundle.getLong("_wwconvobject_date");
-    this.MLp = paramBundle.getByteArray("_wwconvobject_avatarData");
-    this.rJY = paramBundle.getString("_wwconvobject_avatarPath");
+    this.sJT = paramBundle.getLong("_wwconvobject_date");
+    this.Sxt = paramBundle.getByteArray("_wwconvobject_avatarData");
+    this.tjJ = paramBundle.getString("_wwconvobject_avatarPath");
     try
     {
-      this.MLq = ((WWMediaMessage.WWMediaObject)BaseMessage.bo(paramBundle.getBundle("_wwconvobject_message")));
-      AppMethodBeat.o(193327);
+      this.Sxu = ((WWMediaMessage.WWMediaObject)BaseMessage.bB(paramBundle.getBundle("_wwconvobject_message")));
+      AppMethodBeat.o(199001);
       return;
     }
     catch (Throwable paramBundle)
     {
-      AppMethodBeat.o(193327);
+      AppMethodBeat.o(199001);
+    }
+  }
+  
+  public final void setContext(Context paramContext)
+  {
+    AppMethodBeat.i(199004);
+    super.setContext(paramContext);
+    try
+    {
+      this.Sxu.setContext(paramContext);
+      AppMethodBeat.o(199004);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      AppMethodBeat.o(199004);
     }
   }
   
@@ -69,11 +103,26 @@ public class WWMediaConversation
     AppMethodBeat.i(106539);
     super.toBundle(paramBundle);
     paramBundle.putString("_wwconvobject_name", this.name);
-    paramBundle.putLong("_wwconvobject_date", this.riq);
-    paramBundle.putByteArray("_wwconvobject_avatarData", this.MLp);
-    paramBundle.putString("_wwconvobject_avatarPath", this.rJY);
-    paramBundle.putBundle("_wwconvobject_message", BaseMessage.b(this.MLq));
+    paramBundle.putLong("_wwconvobject_date", this.sJT);
+    paramBundle.putByteArray("_wwconvobject_avatarData", this.Sxt);
+    paramBundle.putString("_wwconvobject_avatarPath", this.tjJ);
+    paramBundle.putBundle("_wwconvobject_message", BaseMessage.a(this.Sxu));
     AppMethodBeat.o(106539);
+  }
+  
+  public final void v(Intent paramIntent, String paramString)
+  {
+    AppMethodBeat.i(199002);
+    try
+    {
+      this.Sxu.v(paramIntent, paramString);
+      AppMethodBeat.o(199002);
+      return;
+    }
+    catch (Throwable paramIntent)
+    {
+      AppMethodBeat.o(199002);
+    }
   }
 }
 

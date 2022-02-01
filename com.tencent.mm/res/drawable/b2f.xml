@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="80" android:drawable="@drawable/bqk" />
+    <item android:duration="80" android:drawable="@drawable/bql" />
+    <item android:duration="80" android:drawable="@drawable/bqm" />
+    <item android:duration="80" android:drawable="@drawable/bqn" />
+    <item android:duration="80" android:drawable="@drawable/bqo" />
+    <item android:duration="80" android:drawable="@drawable/bqp" />
+    <item android:duration="80" android:drawable="@drawable/bqq" />
+    <item android:duration="80" android:drawable="@drawable/bqr" />
+    <item android:duration="80" android:drawable="@drawable/bqs" />
+    <item android:duration="80" android:drawable="@drawable/bqt" />
+</animation-list>

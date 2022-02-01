@@ -15,12 +15,12 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class AddFriendItemPreference
   extends Preference
 {
+  private String Bgn;
+  private int CZk;
+  int CZl;
   private Context context;
   private Drawable drawable;
   private int height;
-  private String xit;
-  private int yUu;
-  int yUv;
   
   public AddFriendItemPreference(Context paramContext)
   {
@@ -36,12 +36,12 @@ public class AddFriendItemPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29182);
-    this.xit = "";
-    this.yUu = -1;
-    this.yUv = 8;
+    this.Bgn = "";
+    this.CZk = -1;
+    this.CZl = 8;
     this.height = -1;
     this.context = paramContext;
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(29182);
   }
   
@@ -49,7 +49,7 @@ public class AddFriendItemPreference
   {
     AppMethodBeat.i(29184);
     super.onBindView(paramView);
-    Object localObject = (ImageView)paramView.findViewById(2131300943);
+    Object localObject = (ImageView)paramView.findViewById(2131302573);
     if (localObject != null)
     {
       ((ImageView)localObject).setVisibility(8);
@@ -61,30 +61,30 @@ public class AddFriendItemPreference
     }
     for (;;)
     {
-      localObject = (LinearLayout)paramView.findViewById(2131302326);
+      localObject = (LinearLayout)paramView.findViewById(2131304721);
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      paramView = (TextView)paramView.findViewById(2131305745);
+      paramView = (TextView)paramView.findViewById(2131309014);
       if (paramView != null)
       {
-        paramView.setVisibility(this.yUv);
-        paramView.setText(this.xit);
-        if (this.yUu != -1) {
-          paramView.setBackgroundDrawable(a.l(this.context, this.yUu));
+        paramView.setVisibility(this.CZl);
+        paramView.setText(this.Bgn);
+        if (this.CZk != -1) {
+          paramView.setBackgroundDrawable(a.l(this.context, this.CZk));
         }
       }
       AppMethodBeat.o(29184);
       return;
       label137:
-      if (this.Xj != null)
+      if (this.Xw != null)
       {
-        ((ImageView)localObject).setImageDrawable(this.Xj);
+        ((ImageView)localObject).setImageDrawable(this.Xw);
         ((ImageView)localObject).setVisibility(0);
       }
-      else if (this.aeA != 0)
+      else if (this.aeN != 0)
       {
-        ((ImageView)localObject).setImageResource(this.aeA);
+        ((ImageView)localObject).setImageResource(this.aeN);
         ((ImageView)localObject).setVisibility(0);
       }
     }
@@ -94,9 +94,9 @@ public class AddFriendItemPreference
   {
     AppMethodBeat.i(29183);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131494819, localViewGroup);
+    View.inflate(this.mContext, 2131495553, localViewGroup);
     localViewGroup.setPadding(0, localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), localViewGroup.getPaddingBottom());
     AppMethodBeat.o(29183);
     return paramViewGroup;
@@ -104,7 +104,7 @@ public class AddFriendItemPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference
  * JD-Core Version:    0.7.0.1
  */

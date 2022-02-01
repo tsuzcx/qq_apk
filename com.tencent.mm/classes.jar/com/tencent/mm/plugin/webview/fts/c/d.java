@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.webview.fts.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.d.h;
 import com.tencent.mm.plugin.webview.fts.ui.FtsWebVideoView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
   implements b.a
 {
-  private f DRx;
-  private b.b Eed;
-  FtsWebVideoView Een;
-  public aw luk;
-  public int lul;
+  private h IBw;
+  private b.b IQD;
+  FtsWebVideoView IQN;
+  public MTimerHandler mAM;
+  public int mAN;
   
-  public d(FtsWebVideoView paramFtsWebVideoView, b.b paramb, f paramf)
+  public d(FtsWebVideoView paramFtsWebVideoView, b.b paramb, h paramh)
   {
-    AppMethodBeat.i(197999);
-    this.Een = paramFtsWebVideoView;
-    this.Eed = paramb;
-    this.Eed.a(this);
-    this.DRx = paramf;
-    AppMethodBeat.o(197999);
+    AppMethodBeat.i(210856);
+    this.IQN = paramFtsWebVideoView;
+    this.IQD = paramb;
+    this.IQD.a(this);
+    this.IBw = paramh;
+    AppMethodBeat.o(210856);
   }
   
-  private JSONObject I(boolean paramBoolean, String paramString)
+  private JSONObject J(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(78171);
-    JSONObject localJSONObject = boS();
+    JSONObject localJSONObject = bKv();
     localJSONObject.put("fullScreen", paramBoolean);
     localJSONObject.put("direction", paramString);
     AppMethodBeat.o(78171);
     return localJSONObject;
   }
   
-  private JSONObject eSe()
+  private JSONObject gaQ()
   {
     AppMethodBeat.i(78173);
-    JSONObject localJSONObject = boS();
-    localJSONObject.put("currentTime", this.Een.getCurrPosSec());
+    JSONObject localJSONObject = bKv();
+    localJSONObject.put("currentTime", this.IQN.getCurrPosSec());
     AppMethodBeat.o(78173);
     return localJSONObject;
   }
   
-  public final void DD() {}
+  public final void Na() {}
   
-  public final JSONObject a(int paramInt, JSONObject paramJSONObject)
+  public final JSONObject b(int paramInt, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(78176);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("playerId", this.Een.getmVideoPlayerId());
+    localJSONObject.put("playerId", this.IQN.getmVideoPlayerId());
     localJSONObject.put("event", paramInt);
     if (paramJSONObject != null) {
       localJSONObject.put("detail", paramJSONObject);
@@ -62,36 +62,36 @@ public final class d
     return localJSONObject;
   }
   
-  final JSONObject boS()
+  final JSONObject bKv()
   {
     AppMethodBeat.i(78172);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("data", this.Een.getCookieData());
+    localJSONObject.put("data", this.IQN.getCookieData());
     AppMethodBeat.o(78172);
     return localJSONObject;
   }
   
-  public final void boT()
+  public final void bKw()
   {
     AppMethodBeat.i(78174);
-    if (this.luk != null) {
-      this.luk.stopTimer();
+    if (this.mAM != null) {
+      this.mAM.stopTimer();
     }
     AppMethodBeat.o(78174);
   }
   
-  public final void bz(JSONObject paramJSONObject)
+  public final void bY(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(78168);
-    this.DRx.b("onVideoPlayerCallback", null, paramJSONObject);
+    this.IBw.b("onVideoPlayerCallback", null, paramJSONObject);
     AppMethodBeat.o(78168);
   }
   
   public final void clean()
   {
     AppMethodBeat.i(78167);
-    ae.i("MicroMsg.JsApiVideoCallback", "clean %s", new Object[] { toString() });
-    boT();
+    Log.i("MicroMsg.JsApiVideoCallback", "clean %s", new Object[] { toString() });
+    bKw();
     AppMethodBeat.o(78167);
   }
   
@@ -100,34 +100,34 @@ public final class d
     AppMethodBeat.i(78169);
     try
     {
-      ae.i("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString });
-      bz(a(5, I(paramBoolean, paramString)));
+      Log.i("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString });
+      bY(b(5, J(paramBoolean, paramString)));
       AppMethodBeat.o(78169);
       return;
     }
     catch (JSONException paramString)
     {
-      ae.e("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange e=%s", new Object[] { paramString });
+      Log.e("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange e=%s", new Object[] { paramString });
       AppMethodBeat.o(78169);
     }
   }
   
-  public final void eSa() {}
+  public final void gaM() {}
   
-  public final void eSb() {}
+  public final void gaN() {}
   
-  public final void eSd()
+  public final void gaP()
   {
     AppMethodBeat.i(78170);
     try
     {
-      bz(a(6, eSe()));
+      bY(b(6, gaQ()));
       AppMethodBeat.o(78170);
       return;
     }
     catch (JSONException localJSONException)
     {
-      ae.printErrStackTrace("MicroMsg.JsApiVideoCallback", localJSONException, null, new Object[0]);
+      Log.printErrStackTrace("MicroMsg.JsApiVideoCallback", localJSONException, null, new Object[0]);
       AppMethodBeat.o(78170);
     }
   }
@@ -142,9 +142,9 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(78175);
-    ae.d("MicroMsg.JsApiVideoCallback", "onDestroy clean");
+    Log.d("MicroMsg.JsApiVideoCallback", "onDestroy clean");
     clean();
-    this.Een.setCallback(null);
+    this.IQN.setCallback(null);
     AppMethodBeat.o(78175);
   }
   
@@ -152,7 +152,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.d
  * JD-Core Version:    0.7.0.1
  */

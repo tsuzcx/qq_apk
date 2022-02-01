@@ -9,37 +9,38 @@ import android.os.IBinder;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sport.PluginSport;
-import com.tencent.mm.sdk.h.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.vendor.MIUI;
 
 public class SportForegroundService
   extends Service
 {
-  private static boolean AYL;
-  private aq lVY;
+  private static boolean FjI;
+  private MMHandler ndA;
   
-  public static void eke()
+  public static void fmE()
   {
     AppMethodBeat.i(149339);
-    if (d.lA(26))
+    if (d.oD(26))
     {
-      if (b.fqp())
+      if (MIUI.ifMIUI())
       {
-        ae.i("MicroMsg.Sport.SportForegroundService", "miui, not need to start sport foreground");
+        Log.i("MicroMsg.Sport.SportForegroundService", "miui, not need to start sport foreground");
         AppMethodBeat.o(149339);
         return;
       }
-      if (!AYL)
+      if (!FjI)
       {
-        ae.i("MicroMsg.Sport.SportForegroundService", "startSportForegroundService");
-        AYL = true;
-        Intent localIntent = new Intent(ak.getContext(), SportForegroundService.class);
+        Log.i("MicroMsg.Sport.SportForegroundService", "startSportForegroundService");
+        FjI = true;
+        Intent localIntent = new Intent(MMApplicationContext.getContext(), SportForegroundService.class);
         try
         {
-          ak.getContext().startForegroundService(localIntent);
+          MMApplicationContext.getContext().startForegroundService(localIntent);
           AppMethodBeat.o(149339);
           return;
         }
@@ -49,17 +50,17 @@ public class SportForegroundService
     AppMethodBeat.o(149339);
   }
   
-  public static void ekf()
+  public static void fmF()
   {
     AppMethodBeat.i(149340);
-    if (d.lA(26))
+    if (d.oD(26))
     {
-      ae.i("MicroMsg.Sport.SportForegroundService", "stopSportForegroundService");
-      AYL = false;
-      Intent localIntent = new Intent(ak.getContext(), SportForegroundService.class);
+      Log.i("MicroMsg.Sport.SportForegroundService", "stopSportForegroundService");
+      FjI = false;
+      Intent localIntent = new Intent(MMApplicationContext.getContext(), SportForegroundService.class);
       try
       {
-        ak.getContext().stopService(localIntent);
+        MMApplicationContext.getContext().stopService(localIntent);
         AppMethodBeat.o(149340);
         return;
       }
@@ -68,9 +69,9 @@ public class SportForegroundService
     AppMethodBeat.o(149340);
   }
   
-  public static boolean ekg()
+  public static boolean fmG()
   {
-    return AYL;
+    return FjI;
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -81,9 +82,9 @@ public class SportForegroundService
   public void onDestroy()
   {
     AppMethodBeat.i(149338);
-    ae.i("MicroMsg.Sport.SportForegroundService", "onDestroy");
-    if (this.lVY != null) {
-      this.lVY.removeCallbacksAndMessages(null);
+    Log.i("MicroMsg.Sport.SportForegroundService", "onDestroy");
+    if (this.ndA != null) {
+      this.ndA.removeCallbacksAndMessages(null);
     }
     stopForeground(true);
     super.onDestroy();
@@ -93,21 +94,21 @@ public class SportForegroundService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(149337);
-    ae.i("MicroMsg.Sport.SportForegroundService", "onStartCommand %d", new Object[] { Integer.valueOf(paramInt2) });
-    if (d.lA(26))
+    Log.i("MicroMsg.Sport.SportForegroundService", "onStartCommand %d", new Object[] { Integer.valueOf(paramInt2) });
+    if (d.oD(26))
     {
       Notification.Builder localBuilder = new Notification.Builder(getApplicationContext(), "reminder_channel_id");
-      localBuilder.setContentTitle(ak.getResources().getString(2131764117)).setWhen(System.currentTimeMillis());
+      localBuilder.setContentTitle(MMApplicationContext.getResources().getString(2131766365)).setWhen(System.currentTimeMillis());
       startForeground(419430, localBuilder.build());
-      ae.i("MicroMsg.Sport.SportForegroundService", "onStartCommand startForeground");
-      ((PluginSport)com.tencent.mm.kernel.g.ad(PluginSport.class)).getPushSportStepDetector().ejP();
-      this.lVY = new aq(Looper.getMainLooper());
-      this.lVY.postDelayed(new Runnable()
+      Log.i("MicroMsg.Sport.SportForegroundService", "onStartCommand startForeground");
+      ((PluginSport)g.ah(PluginSport.class)).getPushSportStepDetector().fmp();
+      this.ndA = new MMHandler(Looper.getMainLooper());
+      this.ndA.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149336);
-          SportForegroundService.ekf();
+          SportForegroundService.fmF();
           AppMethodBeat.o(149336);
         }
       }, 6000L);
@@ -119,7 +120,7 @@ public class SportForegroundService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.SportForegroundService
  * JD-Core Version:    0.7.0.1
  */

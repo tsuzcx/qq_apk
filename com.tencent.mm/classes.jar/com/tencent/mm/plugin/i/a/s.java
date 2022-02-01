@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.i.a;
 
-import com.tencent.mm.protocal.protobuf.amb;
-import d.l;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.protocal.protobuf.aze;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "T", "", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "(Ljava/lang/Object;Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;)V", "finder-sdk_release"})
-public abstract interface s<T>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModProfileSticky;", "Lcom/tencent/mm/kernel/service/IService;", "modifyStickyFeed", "", "feedId", "", "opType", "", "nonceId", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModProfileStickySetting;", "finder-sdk_release"})
+public abstract interface s
+  extends a
 {
-  public abstract void a(T paramT, amb paramamb);
+  public abstract void a(long paramLong, int paramInt, String paramString, ai<aze> paramai);
 }
 
 

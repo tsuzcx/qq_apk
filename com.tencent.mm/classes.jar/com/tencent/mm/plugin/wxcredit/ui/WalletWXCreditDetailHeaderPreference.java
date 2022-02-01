@@ -12,8 +12,8 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class WalletWXCreditDetailHeaderPreference
   extends Preference
 {
-  TextView EZO;
-  TextView iXQ;
+  TextView JQG;
+  TextView jUP;
   private LayoutInflater mInflater;
   
   public WalletWXCreditDetailHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -26,7 +26,7 @@ public class WalletWXCreditDetailHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(72361);
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(72361);
   }
   
@@ -34,8 +34,8 @@ public class WalletWXCreditDetailHeaderPreference
   {
     AppMethodBeat.i(72363);
     super.onBindView(paramView);
-    this.iXQ = ((TextView)paramView.findViewById(2131306853));
-    this.EZO = ((TextView)paramView.findViewById(2131306860));
+    this.jUP = ((TextView)paramView.findViewById(2131310315));
+    this.JQG = ((TextView)paramView.findViewById(2131310322));
     AppMethodBeat.o(72363);
   }
   
@@ -43,9 +43,9 @@ public class WalletWXCreditDetailHeaderPreference
   {
     AppMethodBeat.i(72362);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    this.mInflater.inflate(2131496047, localViewGroup);
+    this.mInflater.inflate(2131497027, localViewGroup);
     AppMethodBeat.o(72362);
     return paramViewGroup;
   }

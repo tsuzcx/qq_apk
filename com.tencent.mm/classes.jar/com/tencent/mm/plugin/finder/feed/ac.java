@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract;", "", "Presenter", "ViewCallback", "plugin-finder_release"})
-public abstract interface ac {}
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+public final class ac {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

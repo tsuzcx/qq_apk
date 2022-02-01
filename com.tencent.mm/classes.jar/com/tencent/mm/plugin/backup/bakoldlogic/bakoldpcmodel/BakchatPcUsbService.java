@@ -4,23 +4,25 @@ import android.content.Intent;
 import android.os.IBinder;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.protocal.protobuf.baf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.plugin.backup.bakoldlogic.c.f;
+import com.tencent.mm.protocal.protobuf.blq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.service.MMService;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
 public class BakchatPcUsbService
   extends MMService
-  implements com.tencent.mm.ak.f
+  implements i
 {
-  private boolean nDP = false;
+  private boolean oOM = false;
   
-  public final IBinder WY()
+  public final IBinder akL()
   {
     return null;
   }
@@ -33,9 +35,9 @@ public class BakchatPcUsbService
   public final void onCreate()
   {
     AppMethodBeat.i(21914);
-    ae.i("MicroMsg.BakchatPcUsbService", "onCreate()");
+    Log.i("MicroMsg.BakchatPcUsbService", "onCreate()");
     super.onCreate();
-    bc.ajj().a(595, this);
+    bg.azz().a(595, this);
     com.tencent.mm.plugin.backup.g.b.a(1, this);
     AppMethodBeat.o(21914);
   }
@@ -43,77 +45,77 @@ public class BakchatPcUsbService
   public final void onDestroy()
   {
     AppMethodBeat.i(21916);
-    bc.ajj().b(595, this);
+    bg.azz().b(595, this);
     com.tencent.mm.plugin.backup.g.b.b(1, this);
     super.onDestroy();
-    ae.i("MicroMsg.BakchatPcUsbService", "onDestroy" + Thread.currentThread().getName());
+    Log.i("MicroMsg.BakchatPcUsbService", "onDestroy" + Thread.currentThread().getName());
     AppMethodBeat.o(21916);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(21917);
-    if ((paramn instanceof com.tencent.mm.plugin.backup.g.b))
+    if ((paramq instanceof com.tencent.mm.plugin.backup.g.b))
     {
-      if ((paramn.getType() == 1) && (paramInt1 == 0) && (paramInt2 == 0))
+      if ((paramq.getType() == 1) && (paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = new Intent().setClassName(ak.getContext(), "com.tencent.mm.ui.LauncherUI");
+        paramString = new Intent().setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI");
         paramString.addFlags(335544320);
         paramString.putExtra("nofification_type", "back_to_pcmgr_notification");
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahE(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakchatPcUsbService", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.mt(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakchatPcUsbService", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakchatPcUsbService", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       stopSelf();
       AppMethodBeat.o(21917);
       return;
     }
-    if ((paramn instanceof com.tencent.mm.plugin.backup.bakoldlogic.c.f))
+    if ((paramq instanceof f))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((com.tencent.mm.plugin.backup.bakoldlogic.c.f)paramn).bKz();
-        if (this.nDP)
+        paramString = ((f)paramq).chs();
+        if (this.oOM)
         {
-          ae.i("MicroMsg.BakchatPcUsbService", "from wifi, reconnect");
-          a.bKg().bKj().bKk();
+          Log.i("MicroMsg.BakchatPcUsbService", "from wifi, reconnect");
+          a.cgZ().chc().chd();
         }
-        if ((!this.nDP) && (paramString.nJA == 1))
+        if ((!this.oOM) && (paramString.oUv == 1))
         {
-          ae.e("MicroMsg.BakchatPcUsbService", "broast from usb but type is wifi, url may be fake!!!!");
+          Log.e("MicroMsg.BakchatPcUsbService", "broast from usb but type is wifi, url may be fake!!!!");
           stopSelf();
           AppMethodBeat.o(21917);
           return;
         }
-        a.bKg().nxW = paramString.ID;
-        a.bKg().nxX = paramString.FTc;
-        a.bKg().nxY = paramString.FTd;
-        a.bKg().bKh().eA(paramString.FSV, paramString.FSW);
-        com.tencent.mm.plugin.backup.g.b.a(a.bKg().bKh());
-        com.tencent.mm.plugin.backup.g.b.a(a.bKg().bKj());
-        com.tencent.mm.plugin.backup.g.b.xv(1);
-        a.bKg().bKj().f(paramString.nJA, paramString.FSU);
+        a.cgZ().oIU = paramString.ID;
+        a.cgZ().oIV = paramString.KML;
+        a.cgZ().oIW = paramString.KMM;
+        a.cgZ().cha().eR(paramString.KME, paramString.KMF);
+        com.tencent.mm.plugin.backup.g.b.a(a.cgZ().cha());
+        com.tencent.mm.plugin.backup.g.b.a(a.cgZ().chc());
+        com.tencent.mm.plugin.backup.g.b.Bb(1);
+        a.cgZ().chc().f(paramString.oUv, paramString.KMD);
         AppMethodBeat.o(21917);
         return;
       }
-      a.bKg().bKi().nGv = 2;
-      a.bKg().bKi().aCO();
+      a.cgZ().chb().oRs = 2;
+      a.cgZ().chb().aWm();
       if ((paramInt1 != 4) || (paramInt2 != -2011)) {
         break label375;
       }
-      ae.i("MicroMsg.BakchatPcUsbService", "getConnect info: INVALID URL");
-      if (!this.nDP) {}
+      Log.i("MicroMsg.BakchatPcUsbService", "getConnect info: INVALID URL");
+      if (!this.oOM) {}
     }
     for (;;)
     {
-      a.bKg().bKh();
-      e.bKq();
+      a.cgZ().cha();
+      e.chj();
       stopSelf();
       AppMethodBeat.o(21917);
       return;
       label375:
-      ae.i("MicroMsg.BakchatPcUsbService", "getConnect info other error");
+      Log.i("MicroMsg.BakchatPcUsbService", "getConnect info other error");
     }
   }
   
@@ -121,51 +123,51 @@ public class BakchatPcUsbService
   {
     paramInt1 = 1;
     AppMethodBeat.i(21915);
-    ae.i("MicroMsg.BakchatPcUsbService", "onStartCommand()");
+    Log.i("MicroMsg.BakchatPcUsbService", "onStartCommand()");
     if (paramIntent == null)
     {
-      ae.w("MicroMsg.BakchatPcUsbService", "onStartCommand intent is null");
+      Log.w("MicroMsg.BakchatPcUsbService", "onStartCommand intent is null");
       AppMethodBeat.o(21915);
       return 2;
     }
     String str = paramIntent.getStringExtra("url");
-    if (bu.isNullOrNil(str))
+    if (Util.isNullOrNil(str))
     {
-      ae.e("MicroMsg.BakchatPcUsbService", "onStartCommand url is null");
+      Log.e("MicroMsg.BakchatPcUsbService", "onStartCommand url is null");
       stopSelf();
       AppMethodBeat.o(21915);
       return 2;
     }
-    this.nDP = paramIntent.getBooleanExtra("isFromWifi", false);
-    ae.i("MicroMsg.BakchatPcUsbService", "Broadcast url:%s, isFromWifi:%b", new Object[] { str, Boolean.valueOf(this.nDP) });
-    a.bKg().bKi().aCO();
-    paramIntent = a.bKg().bKi();
-    if (this.nDP) {
+    this.oOM = paramIntent.getBooleanExtra("isFromWifi", false);
+    Log.i("MicroMsg.BakchatPcUsbService", "Broadcast url:%s, isFromWifi:%b", new Object[] { str, Boolean.valueOf(this.oOM) });
+    a.cgZ().chb().aWm();
+    paramIntent = a.cgZ().chb();
+    if (this.oOM) {
       paramInt1 = 2;
     }
-    paramIntent.nGu = paramInt1;
-    if (!bc.aCh())
+    paramIntent.oRr = paramInt1;
+    if (!bg.aVG())
     {
-      ae.e("MicroMsg.BakchatPcUsbService", "onStartCommand not in Login state");
-      paramIntent = new Intent().setClassName(ak.getContext(), "com.tencent.mm.ui.LauncherUI");
+      Log.e("MicroMsg.BakchatPcUsbService", "onStartCommand not in Login state");
+      paramIntent = new Intent().setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI");
       paramIntent.addFlags(335544320);
       paramIntent.putExtra("nofification_type", "back_to_pcmgr_notification");
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahE(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakchatPcUsbService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramIntent.mt(0));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.axQ(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakchatPcUsbService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramIntent.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/BakchatPcUsbService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(21915);
       return 2;
     }
-    paramIntent = new com.tencent.mm.plugin.backup.bakoldlogic.c.f(str);
-    bc.ajj().a(paramIntent, 0);
+    paramIntent = new f(str);
+    bg.azz().a(paramIntent, 0);
     AppMethodBeat.o(21915);
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.BakchatPcUsbService
  * JD-Core Version:    0.7.0.1
  */

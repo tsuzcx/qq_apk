@@ -11,14 +11,14 @@ import org.b.g.d;
 public final class g
   implements a, f
 {
-  private static final Pattern Otk;
-  private static final Pattern Otl;
+  private static final Pattern Uih;
+  private static final Pattern Uii;
   
   static
   {
     AppMethodBeat.i(40507);
-    Otk = Pattern.compile("oauth_token=([^&]+)");
-    Otl = Pattern.compile("oauth_token_secret=([^&]*)");
+    Uih = Pattern.compile("oauth_token=([^&]+)");
+    Uii = Pattern.compile("oauth_token_secret=([^&]*)");
     AppMethodBeat.o(40507);
   }
   
@@ -37,18 +37,18 @@ public final class g
     throw paramString;
   }
   
-  public final i bfE(String paramString)
+  public final i bvu(String paramString)
   {
     AppMethodBeat.i(40508);
-    d.nU(paramString, "Response body is incorrect. Can't extract a token from an empty string");
-    paramString = new i(g(paramString, Otk), g(paramString, Otl), paramString);
+    d.oM(paramString, "Response body is incorrect. Can't extract a token from an empty string");
+    paramString = new i(g(paramString, Uih), g(paramString, Uii), paramString);
     AppMethodBeat.o(40508);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.c.g
  * JD-Core Version:    0.7.0.1
  */

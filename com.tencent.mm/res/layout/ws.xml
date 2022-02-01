@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="53.0dip" android:src="@raw/remittance_received" />
-    <TextView android:textSize="@dimen/gy" android:textStyle="bold" android:textColor="@color/y4" android:id="@id/b_l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="37.0dip" android:text="@string/bij" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:id="@id/c34" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginBottom="96.0dip" android:text="@string/bii" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/o6" />
-    </RelativeLayout>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/a7h" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+        <ViewStub android:id="@id/bae" android:layout="@layout/wu" style="@style/fg" />
+        <ViewStub android:id="@id/bah" android:layout="@layout/wy" style="@style/fg" />
+        <ViewStub android:id="@id/baf" android:layout="@layout/ww" style="@style/fg" />
+        <ViewStub android:id="@id/bad" android:layout="@layout/wt" style="@style/fg" />
+        <ViewStub android:id="@id/bag" android:layout="@layout/wx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5" />
+        <ViewStub android:id="@id/a7c" android:layout="@layout/wq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:id="@id/a7i" android:background="@color/wz" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/bo" android:layout_marginStart="@dimen/hs" android:layout_marginEnd="84.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" />
+    <ImageView android:id="@id/a7j" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+</android.support.constraint.ConstraintLayout>

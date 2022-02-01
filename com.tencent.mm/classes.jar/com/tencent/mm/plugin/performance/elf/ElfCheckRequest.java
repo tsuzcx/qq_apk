@@ -9,7 +9,7 @@ public class ElfCheckRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<ElfCheckRequest> CREATOR;
-  public long cJR;
+  public long dap;
   
   static
   {
@@ -20,14 +20,14 @@ public class ElfCheckRequest
   
   public ElfCheckRequest()
   {
-    this.cJR = 0L;
+    this.dap = 0L;
   }
   
   protected ElfCheckRequest(Parcel paramParcel)
   {
     AppMethodBeat.i(124976);
-    this.cJR = 0L;
-    this.cJR = paramParcel.readLong();
+    this.dap = 0L;
+    this.dap = paramParcel.readLong();
     AppMethodBeat.o(124976);
   }
   
@@ -39,13 +39,13 @@ public class ElfCheckRequest
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(124975);
-    paramParcel.writeLong(this.cJR);
+    paramParcel.writeLong(this.dap);
     AppMethodBeat.o(124975);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.ElfCheckRequest
  * JD-Core Version:    0.7.0.1
  */

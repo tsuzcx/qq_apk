@@ -3,32 +3,32 @@ package com.tencent.mm.plugin.wallet_core.model.mall;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class b$a
 {
-  public static void aFS(String paramString)
+  public static void aVr(String paramString)
   {
     int k = 0;
-    AppMethodBeat.i(190197);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(214204);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(190197);
+      AppMethodBeat.o(214204);
       return;
     }
-    g.ajS();
-    String str2 = (String)g.ajR().ajA().get(am.a.IOp, null);
+    g.aAi();
+    String str2 = (String)g.aAh().azQ().get(ar.a.NWr, null);
     String str1;
-    if (bu.isNullOrNil(str2)) {
+    if (Util.isNullOrNil(str2)) {
       str1 = paramString;
     }
     for (;;)
     {
-      g.ajS();
-      g.ajR().ajA().set(am.a.IOp, str1);
-      AppMethodBeat.o(190197);
+      g.aAi();
+      g.aAh().azQ().set(ar.a.NWr, str1);
+      AppMethodBeat.o(214204);
       return;
       String[] arrayOfString = str2.split(",");
       str1 = paramString;
@@ -64,26 +64,26 @@ public final class b$a
     }
   }
   
-  public static boolean aFT(String paramString)
+  public static boolean aVs(String paramString)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(190198);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(214205);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(190198);
+      AppMethodBeat.o(214205);
       return true;
     }
-    g.ajS();
-    Object localObject = (String)g.ajR().ajA().get(am.a.IOp, null);
-    if (bu.isNullOrNil((String)localObject))
+    g.aAi();
+    Object localObject = (String)g.aAh().azQ().get(ar.a.NWr, null);
+    if (Util.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(190198);
+      AppMethodBeat.o(214205);
       return false;
     }
     localObject = ((String)localObject).split(",");
     if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(190198);
+      AppMethodBeat.o(214205);
       return false;
     }
     int i = 0;
@@ -98,7 +98,7 @@ public final class b$a
       }
       else
       {
-        AppMethodBeat.o(190198);
+        AppMethodBeat.o(214205);
         return bool1;
       }
       i += 1;

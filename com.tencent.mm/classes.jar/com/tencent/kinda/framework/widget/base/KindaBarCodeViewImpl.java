@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.kinda.gen.KBarCodeView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.by.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaBarCodeViewImpl
   extends BaseKindaCodeView
@@ -16,7 +16,7 @@ public class KindaBarCodeViewImpl
     AppMethodBeat.i(18855);
     if (TextUtils.isEmpty(paramString))
     {
-      ae.e("base_MMKView", "getBarcodeBitmap mBarcode == null");
+      Log.e("base_MMKView", "getBarcodeBitmap mBarcode == null");
       AppMethodBeat.o(18855);
       return null;
     }
@@ -27,7 +27,7 @@ public class KindaBarCodeViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaBarCodeViewImpl
  * JD-Core Version:    0.7.0.1
  */

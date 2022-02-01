@@ -9,15 +9,11 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class FinderFeedExposeLayout$m
   implements View.OnTouchListener
 {
@@ -26,37 +22,33 @@ final class FinderFeedExposeLayout$m
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(168338);
-    Object localObject1 = new b();
-    ((b)localObject1).bd(paramView);
-    ((b)localObject1).bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/finder/view/FinderFeedExposeLayout$setSpanTouch$touchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject1).ahF());
-    p.g(paramMotionEvent, "event");
+    kotlin.g.b.p.g(paramMotionEvent, "event");
     int j = paramMotionEvent.getAction();
     if (paramView == null)
     {
-      paramView = new v("null cannot be cast to non-null type android.widget.TextView");
+      paramView = new t("null cannot be cast to non-null type android.widget.TextView");
       AppMethodBeat.o(168338);
       throw paramView;
     }
     paramView = (TextView)paramView;
-    localObject1 = this.sMT;
-    Object localObject2;
+    Spannable localSpannable = this.vJd;
+    Object localObject1;
     int k;
     int i;
     if ((j == 1) || (j == 3))
     {
-      localObject2 = (ClickableSpan[])((Spannable)localObject1).getSpans(0, this.sMT.length(), ClickableSpan.class);
-      if (localObject2 != null)
+      localObject1 = (ClickableSpan[])localSpannable.getSpans(0, this.vJd.length(), ClickableSpan.class);
+      if (localObject1 != null)
       {
-        k = localObject2.length;
+        k = localObject1.length;
         i = 0;
         while (i < k)
         {
-          Object localObject3 = localObject2[i];
-          if ((localObject3 instanceof o))
+          Object localObject2 = localObject1[i];
+          if ((localObject2 instanceof com.tencent.mm.pluginsdk.ui.span.p))
           {
-            ((o)localObject3).setIsPressed(false);
-            this.tfx.ovs.invalidate();
+            ((com.tencent.mm.pluginsdk.ui.span.p)localObject2).setIsPressed(false);
+            this.wmB.pIN.invalidate();
           }
           i += 1;
         }
@@ -70,40 +62,39 @@ final class FinderFeedExposeLayout$m
       int n = paramView.getTotalPaddingTop();
       int i1 = paramView.getScrollX();
       int i2 = paramView.getScrollY();
-      localObject2 = paramView.getLayout();
-      i = ((Layout)localObject2).getOffsetForHorizontal(((Layout)localObject2).getLineForVertical(k - n + i2), i - m + i1);
-      localObject2 = (ClickableSpan[])((Spannable)localObject1).getSpans(i, i, ClickableSpan.class);
-      if (localObject2.length != 0)
+      localObject1 = paramView.getLayout();
+      i = ((Layout)localObject1).getOffsetForHorizontal(((Layout)localObject1).getLineForVertical(k - n + i2), i - m + i1);
+      localObject1 = (ClickableSpan[])localSpannable.getSpans(i, i, ClickableSpan.class);
+      if (localObject1.length != 0)
       {
-        localObject2 = localObject2[0];
+        localObject1 = localObject1[0];
         if (j == 1) {
-          ((ClickableSpan)localObject2).onClick((View)paramView);
+          ((ClickableSpan)localObject1).onClick((View)paramView);
         }
       }
     }
     for (boolean bool = true;; bool = false)
     {
-      ae.i(FinderFeedExposeLayout.b(this.tfq), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
-      a.a(bool, this, "com/tencent/mm/plugin/finder/view/FinderFeedExposeLayout$setSpanTouch$touchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+      Log.i(FinderFeedExposeLayout.b(this.wmu), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
       AppMethodBeat.o(168338);
       return bool;
       if (j != 0) {
         break;
       }
-      if ((localObject2 instanceof o))
+      if ((localObject1 instanceof com.tencent.mm.pluginsdk.ui.span.p))
       {
-        ((o)localObject2).setIsPressed(true);
-        this.tfx.ovs.invalidate();
+        ((com.tencent.mm.pluginsdk.ui.span.p)localObject1).setIsPressed(true);
+        this.wmB.pIN.invalidate();
       }
-      Selection.setSelection((Spannable)localObject1, ((Spannable)localObject1).getSpanStart(localObject2), ((Spannable)localObject1).getSpanEnd(localObject2));
+      Selection.setSelection(localSpannable, localSpannable.getSpanStart(localObject1), localSpannable.getSpanEnd(localObject1));
       break;
-      Selection.removeSelection((Spannable)localObject1);
+      Selection.removeSelection(localSpannable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderFeedExposeLayout.m
  * JD-Core Version:    0.7.0.1
  */

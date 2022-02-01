@@ -13,6 +13,19 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
   
   public abstract void OnDownloadSDKServiceTaskStateChanged(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, boolean paramBoolean1, boolean paramBoolean2);
   
+  public static class Default
+    implements ITMAssistantDownloadSDKServiceCallback
+  {
+    public void OnDownloadSDKServiceTaskProgressChanged(String paramString1, String paramString2, long paramLong1, long paramLong2) {}
+    
+    public void OnDownloadSDKServiceTaskStateChanged(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, boolean paramBoolean1, boolean paramBoolean2) {}
+    
+    public IBinder asBinder()
+    {
+      return null;
+    }
+  }
+  
   public static abstract class Stub
     extends Binder
     implements ITMAssistantDownloadSDKServiceCallback
@@ -36,6 +49,21 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
         return (ITMAssistantDownloadSDKServiceCallback)localIInterface;
       }
       return new Proxy(paramIBinder);
+    }
+    
+    public static ITMAssistantDownloadSDKServiceCallback getDefaultImpl()
+    {
+      return Proxy.sDefaultImpl;
+    }
+    
+    public static boolean setDefaultImpl(ITMAssistantDownloadSDKServiceCallback paramITMAssistantDownloadSDKServiceCallback)
+    {
+      if ((Proxy.sDefaultImpl == null) && (paramITMAssistantDownloadSDKServiceCallback != null))
+      {
+        Proxy.sDefaultImpl = paramITMAssistantDownloadSDKServiceCallback;
+        return true;
+      }
+      return false;
     }
     
     public IBinder asBinder()
@@ -86,6 +114,7 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
     static class Proxy
       implements ITMAssistantDownloadSDKServiceCallback
     {
+      public static ITMAssistantDownloadSDKServiceCallback sDefaultImpl;
       private IBinder mRemote;
       
       Proxy(IBinder paramIBinder)
@@ -105,7 +134,11 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
           localParcel1.writeString(paramString2);
           localParcel1.writeLong(paramLong1);
           localParcel1.writeLong(paramLong2);
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (ITMAssistantDownloadSDKServiceCallback.Stub.getDefaultImpl() != null))
+          {
+            ITMAssistantDownloadSDKServiceCallback.Stub.getDefaultImpl().OnDownloadSDKServiceTaskProgressChanged(paramString1, paramString2, paramLong1, paramLong2);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -117,100 +150,49 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
         }
       }
       
-      /* Error */
       public void OnDownloadSDKServiceTaskStateChanged(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
       {
-        // Byte code:
-        //   0: iconst_1
-        //   1: istore 8
-        //   3: ldc 66
-        //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   8: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   11: astore 9
-        //   13: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   16: astore 10
-        //   18: aload 9
-        //   20: ldc 37
-        //   22: invokevirtual 41	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   25: aload 9
-        //   27: aload_1
-        //   28: invokevirtual 44	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   31: aload 9
-        //   33: aload_2
-        //   34: invokevirtual 44	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   37: aload 9
-        //   39: iload_3
-        //   40: invokevirtual 69	android/os/Parcel:writeInt	(I)V
-        //   43: aload 9
-        //   45: iload 4
-        //   47: invokevirtual 69	android/os/Parcel:writeInt	(I)V
-        //   50: aload 9
-        //   52: aload 5
-        //   54: invokevirtual 44	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   57: iload 6
-        //   59: ifeq +62 -> 121
-        //   62: iconst_1
-        //   63: istore_3
-        //   64: aload 9
-        //   66: iload_3
-        //   67: invokevirtual 69	android/os/Parcel:writeInt	(I)V
-        //   70: iload 7
-        //   72: ifeq +54 -> 126
-        //   75: iload 8
-        //   77: istore_3
-        //   78: aload 9
-        //   80: iload_3
-        //   81: invokevirtual 69	android/os/Parcel:writeInt	(I)V
-        //   84: aload_0
-        //   85: getfield 19	com/tencent/tmassistantsdk/aidl/ITMAssistantDownloadSDKServiceCallback$Stub$Proxy:mRemote	Landroid/os/IBinder;
-        //   88: iconst_1
-        //   89: aload 9
-        //   91: aload 10
-        //   93: iconst_0
-        //   94: invokeinterface 54 5 0
-        //   99: pop
-        //   100: aload 10
-        //   102: invokevirtual 57	android/os/Parcel:readException	()V
-        //   105: aload 10
-        //   107: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   110: aload 9
-        //   112: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   115: ldc 66
-        //   117: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   120: return
-        //   121: iconst_0
-        //   122: istore_3
-        //   123: goto -59 -> 64
-        //   126: iconst_0
-        //   127: istore_3
-        //   128: goto -50 -> 78
-        //   131: astore_1
-        //   132: aload 10
-        //   134: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   137: aload 9
-        //   139: invokevirtual 60	android/os/Parcel:recycle	()V
-        //   142: ldc 66
-        //   144: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   147: aload_1
-        //   148: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	149	0	this	Proxy
-        //   0	149	1	paramString1	String
-        //   0	149	2	paramString2	String
-        //   0	149	3	paramInt1	int
-        //   0	149	4	paramInt2	int
-        //   0	149	5	paramString3	String
-        //   0	149	6	paramBoolean1	boolean
-        //   0	149	7	paramBoolean2	boolean
-        //   1	75	8	i	int
-        //   11	127	9	localParcel1	Parcel
-        //   16	117	10	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   18	57	131	finally
-        //   64	70	131	finally
-        //   78	105	131	finally
+        AppMethodBeat.i(101840);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceCallback");
+          localParcel1.writeString(paramString1);
+          localParcel1.writeString(paramString2);
+          localParcel1.writeInt(paramInt1);
+          localParcel1.writeInt(paramInt2);
+          localParcel1.writeString(paramString3);
+          if (paramBoolean1)
+          {
+            i = 1;
+            localParcel1.writeInt(i);
+            if (!paramBoolean2) {
+              break label149;
+            }
+          }
+          label149:
+          for (int i = 1;; i = 0)
+          {
+            localParcel1.writeInt(i);
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (ITMAssistantDownloadSDKServiceCallback.Stub.getDefaultImpl() == null)) {
+              break label155;
+            }
+            ITMAssistantDownloadSDKServiceCallback.Stub.getDefaultImpl().OnDownloadSDKServiceTaskStateChanged(paramString1, paramString2, paramInt1, paramInt2, paramString3, paramBoolean1, paramBoolean2);
+            return;
+            i = 0;
+            break;
+          }
+          label155:
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(101840);
+        }
       }
       
       public IBinder asBinder()
@@ -227,7 +209,7 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceCallback
  * JD-Core Version:    0.7.0.1
  */

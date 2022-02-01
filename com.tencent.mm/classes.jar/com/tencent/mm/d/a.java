@@ -8,15 +8,15 @@ import java.io.RandomAccessFile;
 
 public final class a
 {
-  public a cSI;
-  public b cSJ = null;
+  public a dje;
+  public b djf = null;
   
   public a(b paramb)
   {
-    this.cSJ = paramb;
+    this.djf = paramb;
   }
   
-  public static a fa(String paramString)
+  public static a fO(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(962);
@@ -42,25 +42,25 @@ public final class a
         AppMethodBeat.o(962);
       }
     }
-    localObject = a.G(k(paramString, i - 8, 8));
+    localObject = a.U(k(paramString, i - 8, 8));
     if (localObject == null)
     {
       AppMethodBeat.o(962);
       return null;
     }
-    if (((a)localObject).cSL >= 0)
+    if (((a)localObject).djh >= 0)
     {
       localb = new b();
-      localb.parseFrom(k(paramString, i - ((a)localObject).cSL - 8, ((a)localObject).cSL));
+      localb.parseFrom(k(paramString, i - ((a)localObject).djh - 8, ((a)localObject).djh));
       paramString = new a(localb);
-      paramString.cSI = ((a)localObject);
+      paramString.dje = ((a)localObject);
       AppMethodBeat.o(962);
       return paramString;
     }
     return null;
   }
   
-  public static boolean fb(String paramString)
+  public static boolean fP(String paramString)
   {
     AppMethodBeat.i(963);
     if (paramString == null)
@@ -74,14 +74,14 @@ public final class a
       AppMethodBeat.o(963);
       return false;
     }
-    a locala = fa(paramString);
-    if ((locala != null) && (locala.cSJ != null)) {
+    a locala = fO(paramString);
+    if ((locala != null) && (locala.djf != null)) {
       try
       {
         paramString = new File(paramString);
         if (paramString.exists())
         {
-          boolean bool = locala.cSJ.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.cSI.cSL + 8) - 2L), new byte[] { 0, 0 }));
+          boolean bool = locala.djf.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.dje.djh + 8) - 2L), new byte[] { 0, 0 }));
           AppMethodBeat.o(963);
           return bool;
         }
@@ -162,15 +162,15 @@ public final class a
     AppMethodBeat.i(961);
     try
     {
-      if (fa(paramFile.getAbsolutePath()) != null)
+      if (fO(paramFile.getAbsolutePath()) != null)
       {
         System.out.println("Error: duplicate append apk external info!");
         AppMethodBeat.o(961);
         return -1;
       }
-      byte[] arrayOfByte = this.cSJ.toByteArray();
+      byte[] arrayOfByte = this.djf.toByteArray();
       Object localObject = new a(arrayOfByte.length);
-      localObject = a.be(a.cSK << 32 | ((a)localObject).cSL);
+      localObject = a.bt(a.djg << 32 | ((a)localObject).djh);
       int i = (byte)((arrayOfByte.length + 8) % 256);
       int j = (byte)((arrayOfByte.length + 8) / 256);
       RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramFile, "rw");
@@ -194,22 +194,22 @@ public final class a
   
   public static final class a
   {
-    static final long cSK;
-    public int cSL = 0;
+    static final long djg;
+    public int djh = 0;
     
     static
     {
       AppMethodBeat.i(959);
-      cSK = "Micromsg".hashCode();
+      djg = "Micromsg".hashCode();
       AppMethodBeat.o(959);
     }
     
     public a(int paramInt)
     {
-      this.cSL = paramInt;
+      this.djh = paramInt;
     }
     
-    public static a G(byte[] paramArrayOfByte)
+    public static a U(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(960);
       long l;
@@ -219,7 +219,7 @@ public final class a
         l = 0L;
         i = 0;
         if (i >= paramArrayOfByte.length) {
-          if (l >> 32 != cSK) {
+          if (l >> 32 != djg) {
             break label75;
           }
         }
@@ -235,7 +235,7 @@ public final class a
       }
     }
     
-    static byte[] be(long paramLong)
+    static byte[] bt(long paramLong)
     {
       byte[] arrayOfByte = new byte[8];
       int i = 0;
@@ -252,7 +252,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.d.a
  * JD-Core Version:    0.7.0.1
  */

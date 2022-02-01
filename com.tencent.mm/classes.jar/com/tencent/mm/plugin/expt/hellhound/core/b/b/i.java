@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/IChatFragmentListener;", "", "onEnter", "", "onExit", "onPause", "onResume", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/IChatFragmentListener;", "", "onEnter", "", "onExit", "onPause", "onResume", "plugin-expt_release"})
 public abstract interface i
 {
   public abstract void onEnter();

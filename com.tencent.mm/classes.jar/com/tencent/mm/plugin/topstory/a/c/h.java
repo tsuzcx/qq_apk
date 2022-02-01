@@ -2,107 +2,107 @@ package com.tencent.mm.plugin.topstory.a.c;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.protocal.protobuf.aaj;
-import com.tencent.mm.protocal.protobuf.dox;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.protocal.protobuf.ega;
-import com.tencent.mm.protocal.protobuf.egb;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.eit;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.protocal.protobuf.fal;
+import com.tencent.mm.protocal.protobuf.fam;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class h
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private dox BJa;
-  public dpa BJb;
-  private f callback;
-  private b rr;
+  private eit GjJ;
+  public eiw GjK;
+  private i callback;
+  private d rr;
   
-  public h(dox paramdox, int paramInt, dpa paramdpa, long paramLong)
+  public h(eit parameit, int paramInt, eiw parameiw, long paramLong)
   {
     AppMethodBeat.i(91017);
-    ae.i("MicroMsg.TopStory.NetSceneTopStoryRelevantVideo", "Create NetSceneTopStoryVideo %s %s %s", new Object[] { paramdox.rfA, paramdox.kid, Long.valueOf(paramLong) });
-    this.BJa = paramdox;
-    this.BJb = paramdpa;
-    Object localObject1 = new b.a();
-    ((b.a)localObject1).funcId = getType();
-    ((b.a)localObject1).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
-    ((b.a)localObject1).hQF = new ega();
-    ((b.a)localObject1).hQG = new egb();
-    this.rr = ((b.a)localObject1).aDS();
-    localObject1 = (ega)this.rr.hQD.hQJ;
-    ((ega)localObject1).GeT = paramdox.offset;
-    ((ega)localObject1).GWA = ad.WL(1);
-    ((ega)localObject1).GLP = paramdox.dmf;
-    ((ega)localObject1).HkU = ad.bOD();
-    ((ega)localObject1).Scene = paramdox.scene;
-    ((ega)localObject1).GeS = paramdox.kid;
-    ((ega)localObject1).Iiw.addAll(paramdox.DTg);
-    Object localObject2 = ((ega)localObject1).Iiw.iterator();
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryRelevantVideo", "Create NetSceneTopStoryVideo %s %s %s", new Object[] { parameit.sGQ, parameit.hes, Long.valueOf(paramLong) });
+    this.GjJ = parameit;
+    this.GjK = parameiw;
+    Object localObject1 = new d.a();
+    ((d.a)localObject1).funcId = getType();
+    ((d.a)localObject1).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
+    ((d.a)localObject1).iLN = new fal();
+    ((d.a)localObject1).iLO = new fam();
+    this.rr = ((d.a)localObject1).aXF();
+    localObject1 = (fal)this.rr.iLK.iLR;
+    ((fal)localObject1).KZk = parameit.offset;
+    ((fal)localObject1).MaY = ai.aft(1);
+    ((fal)localObject1).LPT = parameit.dDv;
+    ((fal)localObject1).MlQ = ai.clJ();
+    ((fal)localObject1).Scene = parameit.scene;
+    ((fal)localObject1).KZj = parameit.hes;
+    ((fal)localObject1).Nva.addAll(parameit.IDO);
+    Object localObject2 = ((fal)localObject1).Nva.iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      aaj localaaj = (aaj)((Iterator)localObject2).next();
-      if (localaaj.key.equals("relevant_vid")) {
-        localaaj.GrF = paramdpa.udb;
+      aca localaca = (aca)((Iterator)localObject2).next();
+      if (localaca.key.equals("relevant_vid")) {
+        localaca.LmD = parameiw.psI;
       }
     }
-    localObject2 = new aaj();
-    ((aaj)localObject2).key = "relevant_vid";
-    ((aaj)localObject2).GrF = paramdpa.udb;
-    ((ega)localObject1).Iiw.add(localObject2);
-    ((ega)localObject1).HUi = ((int)paramdox.HVS);
-    ((ega)localObject1).HGo = paramInt;
-    ((ega)localObject1).nJA = 1;
-    paramdox = new aaj();
-    paramdox.key = "client_system_version";
-    paramdox.GrE = Build.VERSION.SDK_INT;
-    ((ega)localObject1).Iiw.add(paramdox);
-    paramdox = new aaj();
-    paramdox.key = "netType";
-    paramdox.GrF = ad.UD();
-    ((ega)localObject1).Iiw.add(paramdox);
-    paramdox = new aaj();
-    paramdox.key = "client_request_time";
-    paramdox.GrF = String.valueOf(System.currentTimeMillis());
-    ((ega)localObject1).Iiw.add(paramdox);
-    paramdox = new aaj();
-    paramdox.key = "relevant_play_time";
-    paramdox.GrF = String.valueOf(paramLong);
-    paramdox.GrE = paramLong;
-    ((ega)localObject1).Iiw.add(paramdox);
-    paramdox = ((ega)localObject1).Iiw.iterator();
-    while (paramdox.hasNext())
+    localObject2 = new aca();
+    ((aca)localObject2).key = "relevant_vid";
+    ((aca)localObject2).LmD = parameiw.psI;
+    ((fal)localObject1).Nva.add(localObject2);
+    ((fal)localObject1).NgA = ((int)parameit.Nib);
+    ((fal)localObject1).MRy = paramInt;
+    ((fal)localObject1).oUv = 1;
+    parameit = new aca();
+    parameit.key = "client_system_version";
+    parameit.LmC = Build.VERSION.SDK_INT;
+    ((fal)localObject1).Nva.add(parameit);
+    parameit = new aca();
+    parameit.key = "netType";
+    parameit.LmD = ai.ait();
+    ((fal)localObject1).Nva.add(parameit);
+    parameit = new aca();
+    parameit.key = "client_request_time";
+    parameit.LmD = String.valueOf(System.currentTimeMillis());
+    ((fal)localObject1).Nva.add(parameit);
+    parameit = new aca();
+    parameit.key = "relevant_play_time";
+    parameit.LmD = String.valueOf(paramLong);
+    parameit.LmC = paramLong;
+    ((fal)localObject1).Nva.add(parameit);
+    parameit = ((fal)localObject1).Nva.iterator();
+    while (parameit.hasNext())
     {
-      paramdpa = (aaj)paramdox.next();
-      ae.i("MicroMsg.TopStory.NetSceneTopStoryRelevantVideo", "key: %s unit_value %s text_value %s", new Object[] { paramdpa.key, Long.valueOf(paramdpa.GrE), paramdpa.GrF });
+      parameiw = (aca)parameit.next();
+      Log.i("MicroMsg.TopStory.NetSceneTopStoryRelevantVideo", "key: %s unit_value %s text_value %s", new Object[] { parameiw.key, Long.valueOf(parameiw.LmC), parameiw.LmD });
     }
     AppMethodBeat.o(91017);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(91018);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(91018);
     return i;
   }
   
-  public final egb esB()
+  public final fam fxZ()
   {
-    return (egb)this.rr.hQE.hQJ;
+    return (fam)this.rr.iLL.iLR;
   }
   
   public final int getType()
@@ -110,10 +110,10 @@ public final class h
     return 1943;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(91019);
-    ae.i("MicroMsg.TopStory.NetSceneTopStoryRelevantVideo", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryRelevantVideo", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(91019);
   }

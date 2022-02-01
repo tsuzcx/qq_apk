@@ -1,85 +1,85 @@
 package com.tencent.mm.plugin.nearby.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bun;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.chr;
+import com.tencent.mm.protocal.protobuf.chs;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public String iKu;
-  private final com.tencent.mm.ak.b rr;
-  public String wDQ;
+  public String Azx;
+  private i callback;
+  public String jHa;
+  private final com.tencent.mm.ak.d rr;
   
   public d(float paramFloat1, float paramFloat2, int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(89769);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bun();
-    ((b.a)localObject).hQG = new buo();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/joinlbsroom";
-    ((b.a)localObject).funcId = 376;
-    ((b.a)localObject).hQH = 183;
-    ((b.a)localObject).respCmdId = 1000000183;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bun)this.rr.hQD.hQJ;
-    ((bun)localObject).OpCode = 1;
-    ((bun)localObject).GgZ = paramFloat1;
-    ((bun)localObject).Gha = paramFloat2;
-    ((bun)localObject).Gzf = paramInt;
-    ((bun)localObject).Gzg = paramString1;
-    ((bun)localObject).Gzh = paramString2;
-    ((bun)localObject).Gzi = 0;
-    ae.d("MicroMsg.NetSceneLbsRoom", "Req: opcode:1 lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt + " gpsSource:0 mac" + paramString1 + " cell:" + paramString2);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new chr();
+    ((d.a)localObject).iLO = new chs();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/joinlbsroom";
+    ((d.a)localObject).funcId = 376;
+    ((d.a)localObject).iLP = 183;
+    ((d.a)localObject).respCmdId = 1000000183;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (chr)this.rr.iLK.iLR;
+    ((chr)localObject).OpCode = 1;
+    ((chr)localObject).LbC = paramFloat1;
+    ((chr)localObject).LbD = paramFloat2;
+    ((chr)localObject).LuT = paramInt;
+    ((chr)localObject).LuU = paramString1;
+    ((chr)localObject).LuV = paramString2;
+    ((chr)localObject).LuW = 0;
+    Log.d("MicroMsg.NetSceneLbsRoom", "Req: opcode:1 lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt + " gpsSource:0 mac" + paramString1 + " cell:" + paramString2);
     AppMethodBeat.o(89769);
   }
   
   public d(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89770);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bun();
-    ((b.a)localObject).hQG = new buo();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/joinlbsroom";
-    ((b.a)localObject).funcId = 376;
-    ((b.a)localObject).hQH = 183;
-    ((b.a)localObject).respCmdId = 1000000183;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bun)this.rr.hQD.hQJ;
-    ((bun)localObject).GgZ = 0.0F;
-    ((bun)localObject).Gha = 0.0F;
-    ((bun)localObject).Gzf = 0;
-    ((bun)localObject).Gzi = 0;
-    ((bun)localObject).Gzg = "";
-    ((bun)localObject).Gzh = "";
-    ((bun)localObject).OpCode = 2;
-    ((bun)localObject).ikN = paramString;
-    ((bun)localObject).HhL = paramInt1;
-    ((bun)localObject).HhK = paramInt2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new chr();
+    ((d.a)localObject).iLO = new chs();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/joinlbsroom";
+    ((d.a)localObject).funcId = 376;
+    ((d.a)localObject).iLP = 183;
+    ((d.a)localObject).respCmdId = 1000000183;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (chr)this.rr.iLK.iLR;
+    ((chr)localObject).LbC = 0.0F;
+    ((chr)localObject).LbD = 0.0F;
+    ((chr)localObject).LuT = 0;
+    ((chr)localObject).LuW = 0;
+    ((chr)localObject).LuU = "";
+    ((chr)localObject).LuV = "";
+    ((chr)localObject).OpCode = 2;
+    ((chr)localObject).jfM = paramString;
+    ((chr)localObject).Mnc = paramInt1;
+    ((chr)localObject).Mnb = paramInt2;
     AppMethodBeat.o(89770);
   }
   
-  public final int KZ()
+  public final int Vj()
   {
-    return ((bun)this.rr.hQD.hQJ).OpCode;
+    return ((chr)this.rr.iLK.iLR).OpCode;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(89771);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(89771);
     return i;
   }
@@ -89,28 +89,28 @@ public final class d
     return 376;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(89772);
-    ae.d("MicroMsg.NetSceneLbsRoom", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " opCode:" + KZ());
-    paramArrayOfByte = (buo)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    Log.d("MicroMsg.NetSceneLbsRoom", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " opCode:" + Vj());
+    paramArrayOfByte = (chs)((com.tencent.mm.ak.d)params).iLL.iLR;
     if (paramInt2 != 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(89772);
       return;
     }
-    if (KZ() == 1)
+    if (Vj() == 1)
     {
-      this.iKu = paramArrayOfByte.ikN;
-      this.wDQ = paramArrayOfByte.HhM;
+      this.jHa = paramArrayOfByte.jfM;
+      this.Azx = paramArrayOfByte.Mnd;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(89772);
       return;
     }
-    if (KZ() == 2)
+    if (Vj() == 2)
     {
-      b.auk(((bun)((com.tencent.mm.ak.b)paramq).hQD.hQJ).ikN);
+      b.aIt(((chr)((com.tencent.mm.ak.d)params).iLK.iLR).jfM);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(89772);
@@ -118,7 +118,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.a.d
  * JD-Core Version:    0.7.0.1
  */

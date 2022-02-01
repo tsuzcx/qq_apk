@@ -17,8 +17,8 @@ public final class x
     AppMethodBeat.i(144943);
     if ("butt".equalsIgnoreCase(paramString))
     {
-      paramd.jWq.setStrokeCap(Paint.Cap.BUTT);
-      paramd.jWp.setStrokeCap(Paint.Cap.BUTT);
+      paramd.kZm.setStrokeCap(Paint.Cap.BUTT);
+      paramd.kZl.setStrokeCap(Paint.Cap.BUTT);
     }
     for (;;)
     {
@@ -26,13 +26,13 @@ public final class x
       return true;
       if ("round".equalsIgnoreCase(paramString))
       {
-        paramd.jWq.setStrokeCap(Paint.Cap.ROUND);
-        paramd.jWp.setStrokeCap(Paint.Cap.ROUND);
+        paramd.kZm.setStrokeCap(Paint.Cap.ROUND);
+        paramd.kZl.setStrokeCap(Paint.Cap.ROUND);
       }
       else if ("square".equalsIgnoreCase(paramString))
       {
-        paramd.jWq.setStrokeCap(Paint.Cap.SQUARE);
-        paramd.jWp.setStrokeCap(Paint.Cap.SQUARE);
+        paramd.kZm.setStrokeCap(Paint.Cap.SQUARE);
+        paramd.kZl.setStrokeCap(Paint.Cap.SQUARE);
       }
     }
   }
@@ -46,7 +46,7 @@ public final class x
       AppMethodBeat.o(144944);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.jWO);
+    boolean bool = b(paramd, paramCanvas.kZK);
     AppMethodBeat.o(144944);
     return bool;
   }
@@ -64,7 +64,7 @@ public final class x
     return bool;
   }
   
-  public final BaseDrawActionArg bdS()
+  public final BaseDrawActionArg bzj()
   {
     AppMethodBeat.i(144941);
     SetLineCapActionArg localSetLineCapActionArg = new SetLineCapActionArg();
@@ -79,7 +79,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.x
  * JD-Core Version:    0.7.0.1
  */

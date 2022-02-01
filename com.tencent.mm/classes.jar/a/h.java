@@ -11,18 +11,18 @@ import java.util.concurrent.ExecutorService;
 
 public final class h<TResult>
 {
-  public static final ExecutorService aBO;
-  public static final Executor aBP;
-  public static final Executor aBQ;
-  private static volatile a aBR;
-  private static h<?> aBW;
-  private static h<Boolean> aBX;
-  private static h<Boolean> aBY;
-  private static h<?> aBZ;
-  private boolean aBS;
-  private boolean aBT;
-  private j aBU;
-  private List<f<TResult, Void>> aBV;
+  public static final ExecutorService aBM;
+  public static final Executor aBN;
+  public static final Executor aBO;
+  private static volatile a aBP;
+  private static h<?> aBU;
+  private static h<Boolean> aBV;
+  private static h<Boolean> aBW;
+  private static h<?> aBX;
+  private boolean aBQ;
+  private boolean aBR;
+  private j aBS;
+  private List<f<TResult, Void>> aBT;
   private boolean cancelled;
   private Exception error;
   private final Object lock;
@@ -31,13 +31,13 @@ public final class h<TResult>
   static
   {
     AppMethodBeat.i(53004);
-    aBO = b.nA();
-    aBP = b.nB();
-    aBQ = a.nz();
-    aBW = new h(null);
-    aBX = new h(Boolean.TRUE);
-    aBY = new h(Boolean.FALSE);
-    aBZ = new h((byte)0);
+    aBM = b.nC();
+    aBN = b.nD();
+    aBO = a.nB();
+    aBU = new h(null);
+    aBV = new h(Boolean.TRUE);
+    aBW = new h(Boolean.FALSE);
+    aBX = new h((byte)0);
     AppMethodBeat.o(53004);
   }
   
@@ -45,7 +45,7 @@ public final class h<TResult>
   {
     AppMethodBeat.i(52991);
     this.lock = new Object();
-    this.aBV = new ArrayList();
+    this.aBT = new ArrayList();
     AppMethodBeat.o(52991);
   }
   
@@ -53,8 +53,8 @@ public final class h<TResult>
   {
     AppMethodBeat.i(52993);
     this.lock = new Object();
-    this.aBV = new ArrayList();
-    nH();
+    this.aBT = new ArrayList();
+    nJ();
     AppMethodBeat.o(52993);
   }
   
@@ -62,7 +62,7 @@ public final class h<TResult>
   {
     AppMethodBeat.i(52992);
     this.lock = new Object();
-    this.aBV = new ArrayList();
+    this.aBT = new ArrayList();
     trySetResult(paramTResult);
     AppMethodBeat.o(52992);
   }
@@ -70,7 +70,7 @@ public final class h<TResult>
   public static <TResult> h<TResult> a(Callable<TResult> paramCallable)
   {
     AppMethodBeat.i(52995);
-    paramCallable = a(paramCallable, aBO);
+    paramCallable = a(paramCallable, aBM);
     AppMethodBeat.o(52995);
     return paramCallable;
   }
@@ -86,32 +86,32 @@ public final class h<TResult>
         public final void run()
         {
           AppMethodBeat.i(52990);
-          if ((this.aCd != null) && (this.aCd.aBJ.isCancellationRequested()))
+          if ((this.aCb != null) && (this.aCb.aBH.isCancellationRequested()))
           {
-            this.aCa.nI();
+            this.aBY.nK();
             AppMethodBeat.o(52990);
             return;
           }
           try
           {
-            this.aCa.setResult(paramCallable.call());
+            this.aBY.setResult(paramCallable.call());
             AppMethodBeat.o(52990);
             return;
           }
           catch (CancellationException localCancellationException)
           {
-            this.aCa.nI();
+            this.aBY.nK();
             AppMethodBeat.o(52990);
             return;
           }
           catch (Exception localException)
           {
-            this.aCa.c(localException);
+            this.aBY.c(localException);
             AppMethodBeat.o(52990);
           }
         }
       });
-      paramCallable = locali.aCg;
+      paramCallable = locali.aCe;
       AppMethodBeat.o(52996);
       return paramCallable;
     }
@@ -134,22 +134,22 @@ public final class h<TResult>
         public final void run()
         {
           AppMethodBeat.i(52989);
-          if ((this.aCd != null) && (this.aCd.aBJ.isCancellationRequested()))
+          if ((this.aCb != null) && (this.aCb.aBH.isCancellationRequested()))
           {
-            parami.nI();
+            parami.nK();
             AppMethodBeat.o(52989);
             return;
           }
           try
           {
-            paramf.a(paramh);
-            parami.setResult(null);
+            Object localObject = paramf.a(paramh);
+            parami.setResult(localObject);
             AppMethodBeat.o(52989);
             return;
           }
           catch (CancellationException localCancellationException)
           {
-            parami.nI();
+            parami.nK();
             AppMethodBeat.o(52989);
             return;
           }
@@ -170,21 +170,29 @@ public final class h<TResult>
     }
   }
   
+  public static <TResult> h<TResult> b(Callable<TResult> paramCallable)
+  {
+    AppMethodBeat.i(240220);
+    paramCallable = a(paramCallable, aBN);
+    AppMethodBeat.o(240220);
+    return paramCallable;
+  }
+  
   private boolean isCompleted()
   {
     synchronized (this.lock)
     {
-      boolean bool = this.aBS;
+      boolean bool = this.aBQ;
       return bool;
     }
   }
   
-  public static a nE()
+  public static a nG()
   {
-    return aBR;
+    return aBP;
   }
   
-  private void nG()
+  private void nI()
   {
     AppMethodBeat.i(52999);
     for (;;)
@@ -192,7 +200,7 @@ public final class h<TResult>
       f localf;
       synchronized (this.lock)
       {
-        Iterator localIterator = this.aBV.iterator();
+        Iterator localIterator = this.aBT.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -217,7 +225,7 @@ public final class h<TResult>
         throw localRuntimeException2;
       }
     }
-    this.aBV = null;
+    this.aBT = null;
     AppMethodBeat.o(52999);
   }
   
@@ -229,12 +237,12 @@ public final class h<TResult>
     {
       boolean bool = isCompleted();
       if (!bool) {
-        this.aBV.add(new f() {});
+        this.aBT.add(new f() {});
       }
       if (bool) {
         a(locali, paramf, this, paramExecutor, null);
       }
-      paramf = locali.aCg;
+      paramf = locali.aCe;
       AppMethodBeat.o(52997);
       return paramf;
     }
@@ -245,18 +253,18 @@ public final class h<TResult>
     AppMethodBeat.i(53002);
     synchronized (this.lock)
     {
-      if (this.aBS)
+      if (this.aBQ)
       {
         AppMethodBeat.o(53002);
         return false;
       }
-      this.aBS = true;
+      this.aBQ = true;
       this.error = paramException;
-      this.aBT = false;
+      this.aBR = false;
       this.lock.notifyAll();
-      nG();
-      if ((!this.aBT) && (aBR != null)) {
-        this.aBU = new j(this);
+      nI();
+      if ((!this.aBR) && (aBP != null)) {
+        this.aBS = new j(this);
       }
       AppMethodBeat.o(53002);
       return true;
@@ -269,11 +277,11 @@ public final class h<TResult>
     {
       if (this.error != null)
       {
-        this.aBT = true;
-        if (this.aBU != null)
+        this.aBR = true;
+        if (this.aBS != null)
         {
-          this.aBU.aCg = null;
-          this.aBU = null;
+          this.aBS.aCe = null;
+          this.aBS = null;
         }
       }
       Exception localException = this.error;
@@ -281,7 +289,16 @@ public final class h<TResult>
     }
   }
   
-  public final boolean nF()
+  public final TResult getResult()
+  {
+    synchronized (this.lock)
+    {
+      Object localObject2 = this.result;
+      return localObject2;
+    }
+  }
+  
+  public final boolean nH()
   {
     AppMethodBeat.i(52994);
     synchronized (this.lock)
@@ -296,20 +313,20 @@ public final class h<TResult>
     }
   }
   
-  final boolean nH()
+  final boolean nJ()
   {
     AppMethodBeat.i(53000);
     synchronized (this.lock)
     {
-      if (this.aBS)
+      if (this.aBQ)
       {
         AppMethodBeat.o(53000);
         return false;
       }
-      this.aBS = true;
+      this.aBQ = true;
       this.cancelled = true;
       this.lock.notifyAll();
-      nG();
+      nI();
       AppMethodBeat.o(53000);
       return true;
     }
@@ -320,15 +337,15 @@ public final class h<TResult>
     AppMethodBeat.i(53001);
     synchronized (this.lock)
     {
-      if (this.aBS)
+      if (this.aBQ)
       {
         AppMethodBeat.o(53001);
         return false;
       }
-      this.aBS = true;
+      this.aBQ = true;
       this.result = paramTResult;
       this.lock.notifyAll();
-      nG();
+      nI();
       AppMethodBeat.o(53001);
       return true;
     }
@@ -338,7 +355,7 @@ public final class h<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     a.h
  * JD-Core Version:    0.7.0.1
  */

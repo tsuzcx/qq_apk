@@ -1,23 +1,39 @@
 package com.tencent.mm.plugin.webview.e;
 
-import d.l;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.f;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/permission/AuthCallback;", "T", "", "onAuthEnd", "", "reason", "", "reqUrl", "", "onAuthStart", "onContentRedirect", "content", "onError", "errType", "errCode", "errMsg", "onPermissionUpdate", "fullUrl", "response", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", "onProcessResult", "", "(ILjava/lang/String;Ljava/lang/Object;)Z", "onUrlRedirect", "forceRedirect", "(IZLjava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", "webview-sdk_release"})
-public abstract interface a<T>
+public final class a
 {
-  public abstract void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2);
+  public static final String[] UtG = { "cache", "publicCache" };
   
-  public abstract void a(int paramInt, String paramString1, String paramString2, T paramT);
-  
-  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, T paramT);
-  
-  public abstract boolean b(int paramInt, String paramString, T paramT);
-  
-  public abstract void bl(int paramInt, String paramString);
-  
-  public abstract void bm(int paramInt, String paramString);
-  
-  public abstract void z(int paramInt, String paramString1, String paramString2);
+  public static boolean a(n paramn, f paramf)
+  {
+    AppMethodBeat.i(211023);
+    if ((paramf == null) || (paramn == null) || (TextUtils.isEmpty(paramn.mhO)))
+    {
+      AppMethodBeat.o(211023);
+      return false;
+    }
+    String[] arrayOfString = UtG;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      if (str.equalsIgnoreCase(paramn.mhO))
+      {
+        paramf.a(paramn, str + ":not in white list", null);
+        AppMethodBeat.o(211023);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(211023);
+    return false;
+  }
 }
 
 

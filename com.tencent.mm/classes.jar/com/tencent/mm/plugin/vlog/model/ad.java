@@ -1,104 +1,153 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.vlog.model.cgi.c;
-import com.tencent.mm.protocal.protobuf.kw;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
+import com.tencent.mm.plugin.vlog.model.local.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
+import com.tencent.mm.videocomposition.i;
+import com.tencent.mm.videocomposition.k;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/VlogReporter;", "", "()V", "TAG", "", "behaviorList", "", "Lcom/tencent/mm/protocal/protobuf/BehaviorReportItem;", "businessId", "", "lastPlayTime", "lastVlogScriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "requestId", "uin", "configure", "", "recordCancel", "recordSelect", "vLogScriptModel", "recordSend", "recordWatch", "sendResult", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "", "path", "", "type", "", "fromCamera", "(Ljava/lang/String;II)V", "cropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "getCropInfo", "()Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "durationMs", "", "getDurationMs", "()J", "editInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "getEditInfo", "()Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "value", "endTimeMs", "getEndTimeMs", "setEndTimeMs", "(J)V", "getFromCamera", "()I", "setFromCamera", "(I)V", "hasTransition", "", "getHasTransition", "()Z", "id", "getId", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "", "playRate", "getPlayRate", "()F", "setPlayRate", "(F)V", "sourceDuration", "getSourceDuration", "sourceHeight", "getSourceHeight", "setSourceHeight", "sourceScale", "getSourceScale", "setSourceScale", "sourceWidth", "getSourceWidth", "setSourceWidth", "startTimeMs", "getStartTimeMs", "setStartTimeMs", "timeRange", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "getTimeRange", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TimeRange;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getTrack", "()Lcom/tencent/mm/videocomposition/CompositionTrack;", "trackEndTimeMs", "getTrackEndTimeMs", "setTrackEndTimeMs", "trackStartTimeMs", "getTrackStartTimeMs", "setTrackStartTimeMs", "transAssetPath", "getTransAssetPath", "transDuration", "getTransDuration", "transEffectId", "getTransEffectId", "transId", "getTransId", "setTransId", "getType", "setType", "volume", "getVolume", "setVolume", "buildThumbSource", "Lcom/tencent/tavkit/composition/TAVSource;", "setTransition", "", "transition", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$TransEffectInfo;", "transformTransEffectId", "effectMap", "", "updateTrack", "Companion", "plugin-vlog_release"})
 public final class ad
 {
-  private static long ASt = 0L;
-  private static long BYs = 0L;
-  public static final List<kw> BYt;
-  public static aa BYu;
-  public static final ad BYv;
-  public static final String TAG = "MicroMsg.VlogReporter";
-  private static long uin;
-  private static long xsF;
+  public static final ad.a GzB;
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d Cev;
+  public final com.tencent.mm.videocomposition.d GzA;
+  int Gze;
+  public int Gzu;
+  public int Gzv;
+  public float Gzw;
+  public final j Gzx;
+  public int Gzy;
+  public final MediaEditReportInfo.EditItem Gzz;
+  public final int id;
+  public String path;
+  public int type;
   
   static
   {
-    AppMethodBeat.i(110954);
-    BYv = new ad();
-    TAG = "MicroMsg.VlogReporter";
-    BYt = (List)new ArrayList();
-    ASt = -1L;
-    AppMethodBeat.o(110954);
+    AppMethodBeat.i(190711);
+    GzB = new ad.a((byte)0);
+    Object localObject = aa.Gzi;
+    aa.efp();
+    localObject = i.Rhj;
+    i.hfm();
+    AppMethodBeat.o(190711);
   }
   
-  public static void a(aa paramaa)
+  public ad(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(110952);
-    long l = System.currentTimeMillis();
-    if (ASt != -1L)
-    {
-      aa localaa = BYu;
-      if (localaa != null)
-      {
-        kw localkw = new kw();
-        localkw.FVt = localaa.BYk;
-        localkw.FVu = 1L;
-        localkw.FVv = (l - ASt);
-        localkw.FVw = System.currentTimeMillis();
-        localkw.dwi = localaa.evX();
-        localkw.zQm = localaa.evW();
-        localkw.FVx = localaa.evY();
-        BYt.add(localkw);
-        ae.i(TAG, "record watch: vlogscriptModel = " + localaa + ", watch time = " + localkw.FVv + "ms");
-      }
+    AppMethodBeat.i(190710);
+    this.path = paramString;
+    this.type = paramInt1;
+    this.Gze = paramInt2;
+    this.id = hashCode();
+    this.Cev = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d(0L, false, 3);
+    this.Gzw = 1.0F;
+    this.Gzx = new j();
+    this.Gzy = -1;
+    this.Gzz = new MediaEditReportInfo.EditItem();
+    Log.i("MicroMsg.VLogCompositionTrack", "create VLogCompositionTrack path:" + this.path + ", type:" + this.type + ", id:" + this.id);
+    String str = s.k(this.path, false);
+    paramString = str;
+    if (str == null) {
+      paramString = "";
     }
-    ASt = l;
-    BYu = paramaa;
-    AppMethodBeat.o(110952);
+    p.g(paramString, "VFSFileOp.exportExternalPath(path, false) ?: \"\"");
+    this.GzA = new com.tencent.mm.videocomposition.d(paramString, this.type);
+    AppMethodBeat.o(190710);
   }
   
-  public static void ar(long paramLong1, long paramLong2)
+  public final void KO(long paramLong)
   {
-    AppMethodBeat.i(110951);
-    xsF = paramLong1;
-    uin = paramLong2;
-    BYs = 1L;
-    ae.i(TAG, "configure vlogreporter: requestId = " + paramLong1 + ", uin = " + paramLong2 + ", businessId = 1");
-    AppMethodBeat.o(110951);
+    AppMethodBeat.i(190703);
+    this.GzA.KO(paramLong);
+    AppMethodBeat.o(190703);
   }
   
-  public static void dJv()
+  public final void KP(long paramLong)
   {
-    AppMethodBeat.i(110953);
-    if (!((Collection)BYt).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(190704);
+    this.GzA.KP(paramLong);
+    AppMethodBeat.o(190704);
+  }
+  
+  public final void KQ(long paramLong)
+  {
+    AppMethodBeat.i(190705);
+    this.GzA.KQ(paramLong);
+    AppMethodBeat.o(190705);
+  }
+  
+  public final void KR(long paramLong)
+  {
+    AppMethodBeat.i(190706);
+    this.GzA.KR(paramLong);
+    AppMethodBeat.o(190706);
+  }
+  
+  public final void a(a.a parama)
+  {
+    AppMethodBeat.i(190709);
+    if (parama != null)
     {
-      if (i != 0)
-      {
-        ae.i(TAG, "do send result: behavior size = " + BYt.size());
-        b localb = g.ajQ();
-        p.g(localb, "network()");
-        localb.ajj().b((n)new c(xsF, uin, BYs, BYt));
-        BYt.clear();
-      }
-      xsF = 0L;
-      uin = 0L;
-      BYs = 0L;
-      ASt = -1L;
-      BYu = null;
-      AppMethodBeat.o(110953);
+      this.Gzy = parama.order;
+      this.GzA.Rhc.setPath(parama.assetPath);
+      this.GzA.Rhc.duration = parama.duration;
+      AppMethodBeat.o(190709);
       return;
     }
+    this.Gzy = -1;
+    this.GzA.Rhc.setPath("");
+    this.GzA.Rhc.duration = 0L;
+    AppMethodBeat.o(190709);
+  }
+  
+  public final boolean fBG()
+  {
+    AppMethodBeat.i(190708);
+    boolean bool = this.GzA.Rhc.isValid();
+    AppMethodBeat.o(190708);
+    return bool;
+  }
+  
+  public final String fBH()
+  {
+    return this.GzA.Rhc.path;
+  }
+  
+  public final long fBI()
+  {
+    com.tencent.mm.xeffect.effect.ad localad = this.GzA.Rhc.GAn;
+    if (localad != null) {
+      return localad.id;
+    }
+    return 0L;
+  }
+  
+  public final long getDurationMs()
+  {
+    return this.GzA.endTimeMs - this.GzA.startTimeMs;
+  }
+  
+  public final void setPlayRate(float paramFloat)
+  {
+    AppMethodBeat.i(190707);
+    this.GzA.setPlayRate(paramFloat);
+    AppMethodBeat.o(190707);
+  }
+  
+  public final void setVolume(float paramFloat)
+  {
+    this.GzA.volume = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.ad
  * JD-Core Version:    0.7.0.1
  */

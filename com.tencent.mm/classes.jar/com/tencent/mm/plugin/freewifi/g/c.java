@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.freewifi.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cn;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.cs;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends cn
+  extends cs
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(24949);
-    c.a locala = new c.a();
-    locala.IBL = new Field[14];
-    locala.columns = new String[15];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[14];
+    localMAutoDBInfo.columns = new String[15];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "ssidmd5";
-    locala.IBN.put("ssidmd5", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "ssidmd5";
+    localMAutoDBInfo.colsMap.put("ssidmd5", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" ssidmd5 TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "ssidmd5";
-    locala.columns[1] = "ssid";
-    locala.IBN.put("ssid", "TEXT");
+    localMAutoDBInfo.primaryKey = "ssidmd5";
+    localMAutoDBInfo.columns[1] = "ssid";
+    localMAutoDBInfo.colsMap.put("ssid", "TEXT");
     localStringBuilder.append(" ssid TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "mid";
-    locala.IBN.put("mid", "TEXT");
+    localMAutoDBInfo.columns[2] = "mid";
+    localMAutoDBInfo.colsMap.put("mid", "TEXT");
     localStringBuilder.append(" mid TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "url";
-    locala.IBN.put("url", "TEXT");
+    localMAutoDBInfo.columns[3] = "url";
+    localMAutoDBInfo.colsMap.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "connectState";
-    locala.IBN.put("connectState", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[4] = "connectState";
+    localMAutoDBInfo.colsMap.put("connectState", "INTEGER default '-1' ");
     localStringBuilder.append(" connectState INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[5] = "expiredTime";
-    locala.IBN.put("expiredTime", "LONG");
+    localMAutoDBInfo.columns[5] = "expiredTime";
+    localMAutoDBInfo.colsMap.put("expiredTime", "LONG");
     localStringBuilder.append(" expiredTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[6] = "wifiType";
-    locala.IBN.put("wifiType", "INTEGER default '1' ");
+    localMAutoDBInfo.columns[6] = "wifiType";
+    localMAutoDBInfo.colsMap.put("wifiType", "INTEGER default '1' ");
     localStringBuilder.append(" wifiType INTEGER default '1' ");
     localStringBuilder.append(", ");
-    locala.columns[7] = "action";
-    locala.IBN.put("action", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[7] = "action";
+    localMAutoDBInfo.colsMap.put("action", "INTEGER default '0' ");
     localStringBuilder.append(" action INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "showUrl";
-    locala.IBN.put("showUrl", "TEXT");
+    localMAutoDBInfo.columns[8] = "showUrl";
+    localMAutoDBInfo.colsMap.put("showUrl", "TEXT");
     localStringBuilder.append(" showUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[9] = "showWordEn";
-    locala.IBN.put("showWordEn", "TEXT");
+    localMAutoDBInfo.columns[9] = "showWordEn";
+    localMAutoDBInfo.colsMap.put("showWordEn", "TEXT");
     localStringBuilder.append(" showWordEn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "showWordCn";
-    locala.IBN.put("showWordCn", "TEXT");
+    localMAutoDBInfo.columns[10] = "showWordCn";
+    localMAutoDBInfo.colsMap.put("showWordCn", "TEXT");
     localStringBuilder.append(" showWordCn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[11] = "showWordTw";
-    locala.IBN.put("showWordTw", "TEXT");
+    localMAutoDBInfo.columns[11] = "showWordTw";
+    localMAutoDBInfo.colsMap.put("showWordTw", "TEXT");
     localStringBuilder.append(" showWordTw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[12] = "mac";
-    locala.IBN.put("mac", "TEXT");
+    localMAutoDBInfo.columns[12] = "mac";
+    localMAutoDBInfo.colsMap.put("mac", "TEXT");
     localStringBuilder.append(" mac TEXT");
     localStringBuilder.append(", ");
-    locala.columns[13] = "verifyResult";
-    locala.IBN.put("verifyResult", "INTEGER default '1' ");
+    localMAutoDBInfo.columns[13] = "verifyResult";
+    localMAutoDBInfo.colsMap.put("verifyResult", "INTEGER default '1' ");
     localStringBuilder.append(" verifyResult INTEGER default '1' ");
-    locala.columns[14] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[14] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(24949);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.g.c
  * JD-Core Version:    0.7.0.1
  */

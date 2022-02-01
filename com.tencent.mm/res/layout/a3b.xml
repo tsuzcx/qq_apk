@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ajp" android:layout_width="0.0dip" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ci" android:layout_weight="1.0">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bq" android:src="@raw/icons_outlined_search" flowlayout:iconColor="@color/BW_70" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingRight="0.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <ScrollView android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:overScrollMode="never">
-                <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/bw6" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/h" flowlayout:verticalSpacing="@dimen/h" />
-            </ScrollView>
-            <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/f8d" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bq" android:src="@drawable/a9r" android:contentDescription="@string/azz" flowlayout:iconColor="@color/ee" />
+<ScrollView android:scrollbars="none" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
+        <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardBannerView android:id="@id/ila" android:background="@drawable/t_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+        <LinearLayout android:orientation="vertical" android:id="@id/f5s" android:padding="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textStyle="bold" android:textColor="@color/a2x" android:layout_gravity="left" android:id="@id/f5t" android:paddingTop="@dimen/kb" android:paddingBottom="@dimen/kb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bv8" android:drawableLeft="@drawable/cm4" style="@style/mp" />
+            <com.tencent.mm.plugin.emoji.ui.widget.MMCopiableTextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/f5u" android:background="@drawable/b0w" android:paddingTop="@dimen/kb" android:paddingBottom="@dimen/kb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/f5r" android:paddingTop="@dimen/kb" android:paddingBottom="@dimen/kb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/fx" android:id="@id/aay" android:paddingLeft="@dimen/c0" android:paddingRight="@dimen/c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r5" />
-</com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView>
+</ScrollView>

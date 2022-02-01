@@ -11,10 +11,10 @@ abstract interface h
     static
     {
       AppMethodBeat.i(136675);
-      nmV = new a("CANCEL", 0);
-      nmW = new a("DELETE", 1);
-      nmX = new a("SELECT", 2);
-      nmY = new a[] { nmV, nmW, nmX };
+      owC = new a("CANCEL", 0);
+      owD = new a("DELETE", 1);
+      owE = new a("SELECT", 2);
+      owF = new a[] { owC, owD, owE };
       AppMethodBeat.o(136675);
     }
     
@@ -23,7 +23,7 @@ abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ho;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.g.b.a.lf;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class u
 {
-  public String DrI;
-  public String DrJ;
-  public String dyI;
+  public String IaU;
+  public String IaV;
+  public String dQx;
   
-  public static u bm(JSONObject paramJSONObject)
+  public static u bM(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70406);
     if (paramJSONObject == null)
@@ -28,32 +28,32 @@ public final class u
         return null;
       }
       u localu = new u();
-      localu.dyI = paramJSONObject.optString("wording");
-      localu.DrI = paramJSONObject.optString("btn_cancel");
-      localu.DrJ = paramJSONObject.optString("btn_confirm");
+      localu.dQx = paramJSONObject.optString("wording");
+      localu.IaU = paramJSONObject.optString("btn_cancel");
+      localu.IaV = paramJSONObject.optString("btn_confirm");
       AppMethodBeat.o(70406);
       return localu;
     }
     catch (Exception paramJSONObject)
     {
-      ae.e("MicroMsg.UnderAgeDialog", "parseUnderAgeDialogFromJson Exception:%s %s", new Object[] { paramJSONObject.getClass().getSimpleName(), paramJSONObject.getMessage() });
+      Log.e("MicroMsg.UnderAgeDialog", "parseUnderAgeDialogFromJson Exception:%s %s", new Object[] { paramJSONObject.getClass().getSimpleName(), paramJSONObject.getMessage() });
       AppMethodBeat.o(70406);
     }
     return null;
   }
   
-  public static void tW(int paramInt)
+  public static void xV(int paramInt)
   {
     AppMethodBeat.i(70407);
-    ho localho = new ho();
-    localho.dQB = paramInt;
-    localho.aLH();
+    lf locallf = new lf();
+    locallf.ejA = paramInt;
+    locallf.bfK();
     AppMethodBeat.o(70407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.u
  * JD-Core Version:    0.7.0.1
  */

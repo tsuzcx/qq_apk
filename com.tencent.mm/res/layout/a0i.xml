@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/d2t" android:background="@color/mq" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="1.0px" />
-</FrameLayout>
+    <EditText android:textColor="@color/a2x" android:id="@id/c3i" android:paddingLeft="0.0dip" android:inputType="numberDecimal" android:imeOptions="actionNone" style="@style/hg" />
+    <TextView android:textSize="@dimen/bd" android:id="@id/c3j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" />
+</LinearLayout>

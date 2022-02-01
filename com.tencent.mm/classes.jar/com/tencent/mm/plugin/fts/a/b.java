@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.fts.a;
 import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 
 public abstract class b
   implements k
 {
-  private boolean cLi;
+  private boolean dbG;
   
   public b()
   {
-    ae.i("MicroMsg.FTS.BaseFTS5SearchLogic", "Create %s", new Object[] { getName() });
+    Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "Create %s", new Object[] { getName() });
   }
   
   public a a(j paramj)
@@ -25,17 +25,17 @@ public abstract class b
   
   public void addSOSHistory(String paramString1, String paramString2) {}
   
-  protected abstract boolean agO();
+  protected abstract boolean axa();
   
   public final void create()
   {
     try
     {
-      ae.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnCreate %s | isCreated =%b", new Object[] { getName(), Boolean.valueOf(this.cLi) });
-      if ((!this.cLi) && (onCreate()))
+      Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnCreate %s | isCreated =%b", new Object[] { getName(), Boolean.valueOf(this.dbG) });
+      if ((!this.dbG) && (onCreate()))
       {
-        ae.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetCreated");
-        this.cLi = true;
+        Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetCreated");
+        this.dbG = true;
       }
       return;
     }
@@ -52,17 +52,17 @@ public abstract class b
   
   public final void destroy()
   {
-    ae.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.cLi) });
-    if ((this.cLi) && (agO()))
+    Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.dbG) });
+    if ((this.dbG) && (axa()))
     {
-      ae.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetDestroyed");
-      this.cLi = false;
+      Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetDestroyed");
+      this.dbG = false;
     }
   }
   
   public final boolean isCreated()
   {
-    return this.cLi;
+    return this.dbG;
   }
   
   protected abstract boolean onCreate();

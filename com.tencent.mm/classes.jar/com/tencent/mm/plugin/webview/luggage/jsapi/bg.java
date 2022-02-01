@@ -1,88 +1,116 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.plugin.webview.luggage.m;
+import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class bg
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78626);
-    ae.i("MicroMsg.JsApiSetNavigationBarColor", "invoke");
-    if (paramb.chh.cgn.optInt("actionCode") == 1)
+    AppMethodBeat.i(78625);
+    Log.i("MicroMsg.JsApiSetNavigationBarButtons", "invokeInOwn");
+    Object localObject1 = paramb.ctb.csi.optString("left");
+    Object localObject2 = paramb.ctb.csi.optString("right");
+    if ((Util.isNullOrNil((String)localObject1)) && (Util.isNullOrNil((String)localObject2)))
     {
-      i = 1;
-      localObject1 = "";
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject2 = paramb.chh.cgn.optJSONObject("wxcolor");
-        if (localObject2 != null) {
-          if (al.isDarkMode())
-          {
-            localObject2 = ((JSONObject)localObject2).optString("dark");
-            localObject1 = localObject2;
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        Object localObject2;
-        double d;
-        ae.e("MicroMsg.JsApiSetNavigationBarColor", localException1.getMessage());
-        i = 1;
-        continue;
-      }
-      try
-      {
-        d = paramb.chh.cgn.optDouble("alpha", -1.0D);
-        f = (float)d;
-      }
-      catch (Exception localException2)
-      {
-        ae.e("MicroMsg.JsApiSetNavigationBarColor", localException2.getMessage());
-        f = -1.0F;
-        continue;
-        ((g)paramb.chg).n((String)localObject1, f);
-        continue;
-      }
-      if (i == 0) {
-        break label201;
-      }
-      ((g)paramb.chg).bhZ();
-      paramb.a("", null);
-      AppMethodBeat.o(78626);
+      paramb.c("fail", null);
+      AppMethodBeat.o(78625);
       return;
-      i = 0;
-      break;
-      localObject2 = ((JSONObject)localObject2).optString("light");
-      localObject1 = localObject2;
-      continue;
-      localObject2 = paramb.chh.cgn.optString("color");
-      localObject1 = localObject2;
+    }
+    Bundle localBundle = new Bundle();
+    try
+    {
+      localObject3 = new JSONObject((String)localObject1);
+      str1 = z.bfL(((JSONObject)localObject3).optString("wxcolor", ""));
+      localObject1 = str1;
+      if (Util.isNullOrNil(str1)) {
+        localObject1 = ((JSONObject)localObject3).optString("color", "");
+      }
+      if (!Util.isNullOrNil((String)localObject1)) {
+        localBundle.putString("set_navigation_bar_buttons_left_text_color", (String)localObject1);
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        Object localObject3;
+        String str1;
+        boolean bool1;
+        String str2;
+        boolean bool2;
+        label276:
+        Log.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException1, "setNavigationBarButtons opt left ", new Object[0]);
+        continue;
+        label315:
+        localBundle.putBoolean("set_navigation_bar_buttons_hide_right_button", true);
+      }
+    }
+    try
+    {
+      localObject2 = new JSONObject((String)localObject2);
+      bool1 = ((JSONObject)localObject2).optBoolean("hidden", false);
+      localObject3 = ((JSONObject)localObject2).optString("text", "");
+      str2 = Util.nullAsNil(z.bfI(((JSONObject)localObject2).optString("iconData", "")));
+      str1 = z.bfL(((JSONObject)localObject2).optString("wxcolor", ""));
+      localObject1 = str1;
+      if (Util.isNullOrNil(str1)) {
+        localObject1 = ((JSONObject)localObject2).optString("color", "");
+      }
+      bool2 = ((JSONObject)localObject2).optBoolean("needClickEvent", false);
+      if (bool1) {
+        break label315;
+      }
+      localBundle.putString("set_navigation_bar_buttons_text", (String)localObject3);
+      localBundle.putString("set_navigation_bar_buttons_icon_data", str2);
+      localBundle.putString("set_navigation_bar_buttons_text_color", (String)localObject1);
+      localBundle.putBoolean("set_navigation_bar_buttons_need_click_event", bool2);
+    }
+    catch (Exception localException2)
+    {
+      Log.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException2, "setNavigationBarButtons opt right ", new Object[0]);
+      break label276;
+      m localm = ((g)paramb.cta).gbC();
+      if (localm != null) {
+        break label374;
+      }
+      paramb.c("fail", null);
+      AppMethodBeat.o(78625);
+      return;
+      label374:
+      localm.setNavigationBarButtons(localBundle);
+      paramb.c("", null);
+      AppMethodBeat.o(78625);
+    }
+    if (localBundle.size() < 0)
+    {
+      paramb.c("fail", null);
+      AppMethodBeat.o(78625);
+      return;
     }
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setNavigationBarColor";
+    return "setNavigationBarButtons";
   }
 }
 

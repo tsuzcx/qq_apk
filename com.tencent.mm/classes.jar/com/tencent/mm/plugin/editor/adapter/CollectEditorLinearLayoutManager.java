@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.editor.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.o;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.n;
+import android.support.v7.widget.RecyclerView.s;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class CollectEditorLinearLayoutManager
   extends LinearLayoutManager
 {
-  private final int nMm;
-  public int pyR;
-  public boolean pyS;
+  private final int oXi;
+  public int qOi;
+  public boolean qOj;
   
   public CollectEditorLinearLayoutManager()
   {
     AppMethodBeat.i(181634);
-    this.nMm = i.iL(ak.getContext());
-    this.pyR = -1;
-    this.pyS = false;
+    this.oXi = i.getKeyBordHeightPx(MMApplicationContext.getContext(), true);
+    this.qOi = -1;
+    this.qOj = false;
     AppMethodBeat.o(181634);
   }
   
@@ -31,38 +31,62 @@ public class CollectEditorLinearLayoutManager
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
     AppMethodBeat.i(181635);
-    this.nMm = i.iL(ak.getContext());
-    this.pyR = -1;
-    this.pyS = false;
+    this.oXi = i.getKeyBordHeightPx(MMApplicationContext.getContext(), true);
+    this.qOi = -1;
+    this.qOj = false;
     AppMethodBeat.o(181635);
   }
   
-  public final int b(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
+  public final int b(RecyclerView.s params)
+  {
+    if (this.qOi > 0) {
+      return this.qOi;
+    }
+    return 900;
+  }
+  
+  public void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
+  {
+    AppMethodBeat.i(181637);
+    try
+    {
+      super.onLayoutChildren(paramn, params);
+      AppMethodBeat.o(181637);
+      return;
+    }
+    catch (Exception paramn)
+    {
+      Log.printErrStackTrace("MicroMsg.CollectEditorLinearLayoutManager", paramn, "", new Object[0]);
+      AppMethodBeat.o(181637);
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
     int j = 1;
     AppMethodBeat.i(181636);
-    if (!this.pyS)
+    if (!this.qOj)
     {
-      paramInt = super.b(paramInt, paramo, paramt);
+      paramInt = super.scrollVerticallyBy(paramInt, paramn, params);
       AppMethodBeat.o(181636);
       return paramInt;
     }
     int i;
     if (paramInt < 0) {
-      if (j.aX(49.0F) <= Math.abs(paramInt)) {
+      if (j.be(49.0F) <= Math.abs(paramInt)) {
         i = 1;
       }
     }
     for (;;)
     {
       if (paramInt > 0) {
-        if (this.nMm + j.aX(49.0F) < paramInt) {
+        if (this.oXi + j.be(49.0F) < paramInt) {
           i = j;
         }
       }
       for (;;)
       {
-        if ((i != 0) && (this.pyS))
+        if ((i != 0) && (this.qOj))
         {
           AppMethodBeat.o(181636);
           return 0;
@@ -73,11 +97,11 @@ public class CollectEditorLinearLayoutManager
         }
         try
         {
-          paramInt = super.b(paramInt, paramo, paramt);
+          paramInt = super.scrollVerticallyBy(paramInt, paramn, params);
           AppMethodBeat.o(181636);
           return paramInt;
         }
-        catch (Exception paramo)
+        catch (Exception paramn)
         {
           AppMethodBeat.o(181636);
           return 0;
@@ -86,34 +110,10 @@ public class CollectEditorLinearLayoutManager
       i = 0;
     }
   }
-  
-  public final int c(RecyclerView.t paramt)
-  {
-    if (this.pyR > 0) {
-      return this.pyR;
-    }
-    return 900;
-  }
-  
-  public final void c(RecyclerView.o paramo, RecyclerView.t paramt)
-  {
-    AppMethodBeat.i(181637);
-    try
-    {
-      super.c(paramo, paramt);
-      AppMethodBeat.o(181637);
-      return;
-    }
-    catch (Exception paramo)
-    {
-      ae.printErrStackTrace("MicroMsg.CollectEditorLinearLayoutManager", paramo, "", new Object[0]);
-      AppMethodBeat.o(181637);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.CollectEditorLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

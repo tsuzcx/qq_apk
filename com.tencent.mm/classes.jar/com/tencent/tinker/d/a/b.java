@@ -2,7 +2,7 @@ package com.tencent.tinker.d.a;
 
 public final class b
 {
-  public static void aW(int paramInt1, int paramInt2, int paramInt3)
+  public static void checkOffsetAndCount(int paramInt1, int paramInt2, int paramInt3)
   {
     if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
       throw new ArrayIndexOutOfBoundsException(paramInt2);
@@ -11,7 +11,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.d.a.b
  * JD-Core Version:    0.7.0.1
  */

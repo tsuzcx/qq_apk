@@ -3,65 +3,75 @@ package com.tencent.mm.plugin.finder.ui;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.report.i;
-import com.tencent.mm.plugin.i.a.k;
-import com.tencent.mm.plugin.i.a.n;
-import com.tencent.mm.plugin.i.a.s;
-import com.tencent.mm.protocal.protobuf.aqf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.plugin.finder.report.k;
+import com.tencent.mm.plugin.finder.storage.c;
+import com.tencent.mm.plugin.finder.storage.config.b;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.i.a.ai;
+import com.tencent.mm.plugin.i.a.u;
+import com.tencent.mm.plugin.i.a.x;
+import com.tencent.mm.protocal.protobuf.azg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import d.l;
-import d.v;
+import java.util.HashMap;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "getCallback", "()Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "tipDialog", "Landroid/app/Dialog;", "getTipDialog", "()Landroid/app/Dialog;", "setTipDialog", "(Landroid/app/Dialog;)V", "getResourceId", "", "goBack", "", "initFeedReproductionBtn", "initMessageMuteBtn", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onFeedReproductionClick", "onMessageMuteClick", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onResume", "updateView", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "getCallback", "()Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "tipDialog", "Landroid/app/Dialog;", "getTipDialog", "()Landroid/app/Dialog;", "setTipDialog", "(Landroid/app/Dialog;)V", "getResourceId", "", "goBack", "", "handleAtShowTab", "initFeedMvReproductionBtn", "initFeedReproductionBtn", "initMessageMuteBtn", "initNoSeeAtTab", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onFeedMvReproductionClick", "onFeedReproductionClick", "onMessageMuteClick", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onResume", "updateView", "plugin-finder_release"})
 public final class FinderSettingPrivacyUI
   extends MMPreference
 {
   private final String TAG;
-  private final s<aqf> sSb;
+  private HashMap _$_findViewCache;
+  private final ai<azg> tUo;
   Dialog tipDialog;
   
   public FinderSettingPrivacyUI()
   {
-    AppMethodBeat.i(204786);
+    AppMethodBeat.i(252683);
     this.TAG = "Finder.FinderSettingPrivacyUI";
-    this.sSb = ((s)new FinderSettingPrivacyUI.a(this));
-    AppMethodBeat.o(204786);
+    this.tUo = ((ai)new a(this));
+    AppMethodBeat.o(252683);
   }
   
   private final void goBack()
   {
-    AppMethodBeat.i(204785);
-    Object localObject = getPreferenceScreen().aXe("checkbox_preference_one");
+    AppMethodBeat.i(252682);
+    Object localObject = getPreferenceScreen().bmg("checkbox_preference_one");
     if (localObject == null)
     {
-      localObject = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
-      AppMethodBeat.o(204785);
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+      AppMethodBeat.o(252682);
       throw ((Throwable)localObject);
     }
     boolean bool = ((CheckBoxPreference)localObject).isChecked();
-    localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
-    if (bool != com.tencent.mm.plugin.finder.utils.p.cOj())
+    localObject = y.vXH;
+    if (bool != y.dnv())
     {
       localObject = this.tipDialog;
       if (localObject != null)
       {
         ((Dialog)localObject).show();
-        localObject = (n)g.ab(n.class);
+        localObject = (x)g.af(x.class);
         if (!bool) {
           break label157;
         }
@@ -69,145 +79,241 @@ public final class FinderSettingPrivacyUI
       label157:
       for (int i = 1;; i = 2)
       {
-        ((n)localObject).b(i, this.sSb);
-        AppMethodBeat.o(204785);
+        ((x)localObject).b(i, this.tUo);
+        AppMethodBeat.o(252682);
         return;
         localObject = (FinderSettingPrivacyUI)this;
         Context localContext = (Context)((FinderSettingPrivacyUI)localObject).getContext();
-        ((FinderSettingPrivacyUI)localObject).getContext().getString(2131755906);
-        ((FinderSettingPrivacyUI)localObject).tipDialog = ((Dialog)com.tencent.mm.ui.base.h.b(localContext, ((FinderSettingPrivacyUI)localObject).getContext().getString(2131755936), false, (DialogInterface.OnCancelListener)FinderSettingPrivacyUI.b.sSd));
+        ((FinderSettingPrivacyUI)localObject).getContext().getString(2131755998);
+        ((FinderSettingPrivacyUI)localObject).tipDialog = ((Dialog)h.a(localContext, ((FinderSettingPrivacyUI)localObject).getContext().getString(2131756029), false, (DialogInterface.OnCancelListener)b.vOy));
         break;
       }
     }
     finish();
-    AppMethodBeat.o(204785);
+    AppMethodBeat.o(252682);
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(252686);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252686);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(252685);
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    AppMethodBeat.o(252685);
+    return localView1;
   }
   
   public final int getResourceId()
   {
-    return 2131951681;
+    return 2132017223;
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(204784);
+    AppMethodBeat.i(252681);
     goBack();
-    AppMethodBeat.o(204784);
+    AppMethodBeat.o(252681);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(167619);
     super.onCreate(paramBundle);
-    setMMTitle(2131759308);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new c(this));
+    setMMTitle(2131760431);
+    setBackBtn((MenuItem.OnMenuItemClickListener)new e(this));
     AppMethodBeat.o(167619);
   }
   
   public final boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
+    int i = 2;
     AppMethodBeat.i(167621);
     if (paramPreference == null) {
-      d.g.b.p.gkB();
+      kotlin.g.b.p.hyc();
     }
     paramf = paramPreference.getKey();
-    ae.i(this.TAG, "click ".concat(String.valueOf(paramf)));
+    Log.i(this.TAG, "click ".concat(String.valueOf(paramf)));
     if (paramf == null) {}
-    int i;
-    label364:
+    label510:
     do
     {
       do
       {
         do
         {
-          for (;;)
+          do
           {
-            AppMethodBeat.o(167621);
-            return true;
-            switch (paramf.hashCode())
+            do
             {
-            default: 
-              break;
-            case -421449683: 
-              if (paramf.equals("feed_reproduction"))
+              do
               {
-                paramf = getPreferenceScreen().aXe("feed_reproduction");
-                if (paramf != null) {
-                  break label364;
+                for (;;)
+                {
+                  AppMethodBeat.o(167621);
+                  return true;
+                  switch (paramf.hashCode())
+                  {
+                  default: 
+                    break;
+                  case -1462242975: 
+                    if (paramf.equals("feed_mv_reproduction"))
+                    {
+                      paramf = getPreferenceScreen().bmg("feed_mv_reproduction");
+                      if (paramf != null) {
+                        break label665;
+                      }
+                      paramf = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+                      AppMethodBeat.o(167621);
+                      throw paramf;
+                    }
+                    break;
+                  case 541151233: 
+                    if (paramf.equals("settings_blacklist"))
+                    {
+                      paramf = new Intent();
+                      paramf.setClass((Context)this, FinderBlackListUI.class);
+                      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+                      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                      startActivity((Intent)paramf.pG(0));
+                      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                    }
+                    break;
+                  }
                 }
-                paramf = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
-                AppMethodBeat.o(167621);
-                throw paramf;
+              } while (!paramf.equals("setting_no_see_at_tab_tips"));
+              paramf = getPreferenceScreen().bmg("setting_no_see_at_tab_tips");
+              if (paramf != null) {
+                break label824;
               }
-              break;
-            case 541151233: 
-              if (paramf.equals("settings_blacklist"))
-              {
-                paramf = new Intent();
-                paramf.setClass((Context)this, FinderBlackListUI.class);
-                paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-                com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                startActivity((Intent)paramf.mt(0));
-                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              }
+              paramf = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+              AppMethodBeat.o(167621);
+              throw paramf;
+            } while (!paramf.equals("settings_message_mute"));
+            paramf = getPreferenceScreen().bmg("settings_message_mute");
+            if (paramf != null) {
               break;
             }
+            paramf = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+            AppMethodBeat.o(167621);
+            throw paramf;
+          } while (!paramf.equals("feed_reproduction"));
+          paramf = getPreferenceScreen().bmg("feed_reproduction");
+          if (paramf != null) {
+            break;
           }
-        } while (!paramf.equals("settings_message_mute"));
-        paramf = getPreferenceScreen().aXe("settings_message_mute");
-        if (paramf == null)
-        {
-          paramf = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+          paramf = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
           AppMethodBeat.o(167621);
           throw paramf;
+          paramf = (CheckBoxPreference)paramf;
+        } while (paramf == null);
+        bool = paramf.isChecked();
+        paramf = g.aAh();
+        kotlin.g.b.p.g(paramf, "MMKernel.storage()");
+        i = paramf.azQ().getInt(ar.a.Okw, 0);
+        if (bool) {
+          i |= 0x40;
+        }
+        for (;;)
+        {
+          paramf = g.aAh();
+          kotlin.g.b.p.g(paramf, "MMKernel.storage()");
+          paramf.azQ().set(ar.a.Okw, Integer.valueOf(i));
+          ((com.tencent.mm.plugin.i.a.p)g.af(com.tencent.mm.plugin.i.a.p.class)).mQ(bool);
+          break;
+          i &= 0xFFFFFFBF;
         }
         paramf = (CheckBoxPreference)paramf;
       } while (paramf == null);
       bool = paramf.isChecked();
-      paramf = g.ajR();
-      d.g.b.p.g(paramf, "MMKernel.storage()");
-      i = paramf.ajA().getInt(am.a.Jbx, 0);
-      if (bool) {
-        i |= 0x40;
+      paramPreference = k.vfA;
+      if (bool)
+      {
+        i = 1;
+        k.ge(3, i);
+        paramPreference = g.aAh();
+        kotlin.g.b.p.g(paramPreference, "MMKernel.storage()");
+        i = paramPreference.azQ().getInt(ar.a.Okw, 0);
+        if (!bool) {
+          break label627;
+        }
+        paramPreference = getContext();
+        kotlin.g.b.p.g(paramPreference, "context");
+        paramf.setSummary((CharSequence)paramPreference.getResources().getString(2131759369));
+        i &= 0xFFFFFEFF;
       }
       for (;;)
       {
-        paramf = g.ajR();
-        d.g.b.p.g(paramf, "MMKernel.storage()");
-        paramf.ajA().set(am.a.Jbx, Integer.valueOf(i));
-        ((com.tencent.mm.plugin.i.a.h)g.ab(com.tencent.mm.plugin.i.a.h.class)).lL(bool);
+        paramf = g.aAh();
+        kotlin.g.b.p.g(paramf, "MMKernel.storage()");
+        paramf.azQ().set(ar.a.Okw, Integer.valueOf(i));
+        ((u)g.af(u.class)).mP(bool);
         break;
-        i &= 0xFFFFFFBF;
+        i = 2;
+        break label510;
+        paramPreference = getContext();
+        kotlin.g.b.p.g(paramPreference, "context");
+        paramf.setSummary((CharSequence)paramPreference.getResources().getString(2131759758));
+        i |= 0x100;
       }
       paramf = (CheckBoxPreference)paramf;
     } while (paramf == null);
+    label627:
     boolean bool = paramf.isChecked();
-    paramf = i.syT;
+    label665:
+    paramPreference = g.aAh();
+    kotlin.g.b.p.g(paramPreference, "MMKernel.storage()");
+    i = paramPreference.azQ().getInt(ar.a.Okw, 0);
     if (bool)
     {
-      i = 1;
-      label390:
-      i.fK(3, i);
-      paramf = g.ajR();
-      d.g.b.p.g(paramf, "MMKernel.storage()");
-      i = paramf.ajA().getInt(am.a.Jbx, 0);
-      if (!bool) {
-        break label478;
-      }
-      i |= 0x100;
+      paramPreference = getContext();
+      kotlin.g.b.p.g(paramPreference, "context");
+      paramf.setSummary((CharSequence)paramPreference.getResources().getString(2131759757));
+    }
+    for (i = 0xFFEDFFFF & i;; i = 0x120000 | i)
+    {
+      paramf = g.aAh();
+      kotlin.g.b.p.g(paramf, "MMKernel.storage()");
+      paramf.azQ().set(ar.a.Okw, Integer.valueOf(i));
+      ((x)g.af(x.class)).mR(bool);
+      break;
+      paramPreference = getContext();
+      kotlin.g.b.p.g(paramPreference, "context");
+      paramf.setSummary((CharSequence)paramPreference.getResources().getString(2131759759));
+    }
+    label824:
+    bool = ((CheckBoxPreference)paramf).isChecked();
+    paramf = this.tipDialog;
+    if (paramf != null) {
+      paramf.show();
     }
     for (;;)
     {
-      paramf = g.ajR();
-      d.g.b.p.g(paramf, "MMKernel.storage()");
-      paramf.ajA().set(am.a.Jbx, Integer.valueOf(i));
-      ((k)g.ab(k.class)).lK(bool);
+      paramf = (x)g.af(x.class);
+      if (bool) {
+        i = 1;
+      }
+      paramf.c(i, (ai)new d(this));
       break;
-      i = 2;
-      break label390;
-      label478:
-      i &= 0xFFFFFEFF;
+      paramf = (FinderSettingPrivacyUI)this;
+      paramPreference = (Context)paramf.getContext();
+      paramf.getContext().getString(2131755998);
+      paramf.tipDialog = ((Dialog)h.a(paramPreference, paramf.getContext().getString(2131756029), false, (DialogInterface.OnCancelListener)FinderSettingPrivacyUI.c.vOz));
     }
   }
   
@@ -216,115 +322,163 @@ public final class FinderSettingPrivacyUI
     boolean bool2 = true;
     AppMethodBeat.i(167620);
     super.onResume();
-    Object localObject = g.ajR();
-    d.g.b.p.g(localObject, "MMKernel.storage()");
-    if ((((e)localObject).ajA().getInt(am.a.Jbx, 0) & 0x40) != 0) {}
+    Object localObject1 = g.aAh();
+    kotlin.g.b.p.g(localObject1, "MMKernel.storage()");
+    if ((((e)localObject1).azQ().getInt(ar.a.Okw, 0) & 0x40) != 0) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      ae.d(this.TAG, "initNotRecommendBtn:".concat(String.valueOf(bool1)));
-      localObject = getPreferenceScreen().aXe("settings_message_mute");
-      if (localObject != null) {
+      Log.d(this.TAG, "initNotRecommendBtn:".concat(String.valueOf(bool1)));
+      localObject1 = getPreferenceScreen().bmg("settings_message_mute");
+      if (localObject1 != null) {
         break;
       }
-      localObject = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
       AppMethodBeat.o(167620);
-      throw ((Throwable)localObject);
+      throw ((Throwable)localObject1);
     }
-    localObject = (CheckBoxPreference)localObject;
-    ((CheckBoxPreference)localObject).setChecked(bool1);
-    ((CheckBoxPreference)localObject).fDK();
-    localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cJW().value()).intValue() != 1)
-    {
-      getPreferenceScreen().cT("checkbox_preference_one", true);
-      getPreferenceScreen().cT("preference_footer_1", true);
-      localObject = g.ajR();
-      d.g.b.p.g(localObject, "MMKernel.storage()");
-      if ((((e)localObject).ajA().getInt(am.a.Jbx, 0) & 0x100) == 0) {
-        break label303;
-      }
-    }
-    label303:
+    localObject1 = (CheckBoxPreference)localObject1;
+    ((CheckBoxPreference)localObject1).setChecked(bool1);
+    ((CheckBoxPreference)localObject1).gLR();
+    localObject1 = g.aAh();
+    kotlin.g.b.p.g(localObject1, "MMKernel.storage()");
+    if ((((e)localObject1).azQ().getInt(ar.a.Okw, 0) & 0x800) != 0) {}
     for (bool1 = true;; bool1 = false)
     {
-      localObject = getPreferenceScreen().aXe("feed_reproduction");
-      if (localObject != null) {
-        break label308;
+      Log.d(this.TAG, "initNoSeeAtTab:".concat(String.valueOf(bool1)));
+      localObject1 = getPreferenceScreen().bmg("setting_no_see_at_tab_tips");
+      if (localObject1 != null) {
+        break;
       }
-      localObject = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
       AppMethodBeat.o(167620);
-      throw ((Throwable)localObject);
-      localObject = com.tencent.mm.plugin.finder.utils.p.sXz;
-      bool1 = com.tencent.mm.plugin.finder.utils.p.cOj();
-      localObject = getPreferenceScreen().aXe("checkbox_preference_one");
-      if (localObject == null)
-      {
-        localObject = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
-        AppMethodBeat.o(167620);
-        throw ((Throwable)localObject);
+      throw ((Throwable)localObject1);
+    }
+    localObject1 = (CheckBoxPreference)localObject1;
+    ((CheckBoxPreference)localObject1).setChecked(bool1);
+    ((CheckBoxPreference)localObject1).gLR();
+    localObject1 = getPreferenceScreen().bmg("checkbox_preference_one");
+    if (localObject1 == null)
+    {
+      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+      AppMethodBeat.o(167620);
+      throw ((Throwable)localObject1);
+    }
+    localObject1 = (CheckBoxPreference)localObject1;
+    ((CheckBoxPreference)localObject1).gLR();
+    Object localObject2 = c.vCb;
+    if (((Number)c.dtN().value()).intValue() != 1)
+    {
+      getPreferenceScreen().jdMethod_do("checkbox_preference_one", true);
+      localObject1 = g.aAh();
+      kotlin.g.b.p.g(localObject1, "MMKernel.storage()");
+      if ((((e)localObject1).azQ().getInt(ar.a.Okw, 0) & 0x100) != 0) {
+        break label410;
       }
-      ((CheckBoxPreference)localObject).uo(bool1);
+    }
+    label410:
+    for (bool1 = true;; bool1 = false)
+    {
+      localObject1 = getPreferenceScreen().bmg("feed_reproduction");
+      if (localObject1 != null) {
+        break label415;
+      }
+      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+      AppMethodBeat.o(167620);
+      throw ((Throwable)localObject1);
+      localObject2 = y.vXH;
+      ((CheckBoxPreference)localObject1).setChecked(y.dnv());
       break;
     }
-    label308:
-    localObject = (CheckBoxPreference)localObject;
-    ((CheckBoxPreference)localObject).setChecked(bool1);
-    ((CheckBoxPreference)localObject).fDK();
-    getPreferenceScreen().notifyDataSetChanged();
-    localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-    int i;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cJP().value()).intValue() == 1)
+    label415:
+    localObject1 = (CheckBoxPreference)localObject1;
+    ((CheckBoxPreference)localObject1).setChecked(bool1);
+    ((CheckBoxPreference)localObject1).gLR();
+    if (((CheckBoxPreference)localObject1).isChecked())
     {
-      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cHp().value()).intValue() == 1)
-      {
-        i = 1;
-        localObject = getPreferenceScreen();
-        if (i != 0) {
-          break label500;
-        }
-        bool1 = true;
-        label391:
-        ((f)localObject).cT("settings_message_mute", bool1);
-        localObject = getPreferenceScreen();
-        if (i != 0) {
-          break label505;
-        }
-        bool1 = true;
-        label415:
-        ((f)localObject).cT("settings_message_mute_desc", bool1);
-        localObject = getPreferenceScreen();
-        com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-        if (com.tencent.mm.plugin.finder.storage.b.cGZ()) {
-          break label510;
-        }
-        bool1 = true;
-        label446:
-        ((f)localObject).cT("feed_reproduction", bool1);
-        localObject = getPreferenceScreen();
-        localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-        if (com.tencent.mm.plugin.finder.storage.b.cGZ()) {
-          break label515;
-        }
+      localObject2 = getContext();
+      kotlin.g.b.p.g(localObject2, "context");
+      ((CheckBoxPreference)localObject1).setSummary((CharSequence)((AppCompatActivity)localObject2).getResources().getString(2131759369));
+      localObject1 = g.aAh();
+      kotlin.g.b.p.g(localObject1, "MMKernel.storage()");
+      if ((((e)localObject1).azQ().getInt(ar.a.Okw, 0) & 0x120000) != 0) {
+        break label583;
       }
     }
-    label515:
+    label583:
+    for (bool1 = true;; bool1 = false)
+    {
+      localObject1 = getPreferenceScreen().bmg("feed_mv_reproduction");
+      if (localObject1 != null) {
+        break label588;
+      }
+      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
+      AppMethodBeat.o(167620);
+      throw ((Throwable)localObject1);
+      localObject2 = getContext();
+      kotlin.g.b.p.g(localObject2, "context");
+      ((CheckBoxPreference)localObject1).setSummary((CharSequence)((AppCompatActivity)localObject2).getResources().getString(2131759758));
+      break;
+    }
+    label588:
+    localObject1 = (CheckBoxPreference)localObject1;
+    ((CheckBoxPreference)localObject1).setChecked(bool1);
+    ((CheckBoxPreference)localObject1).gLR();
+    int i;
+    if (((CheckBoxPreference)localObject1).isChecked())
+    {
+      localObject2 = getContext();
+      kotlin.g.b.p.g(localObject2, "context");
+      ((CheckBoxPreference)localObject1).setSummary((CharSequence)((AppCompatActivity)localObject2).getResources().getString(2131759757));
+      getPreferenceScreen().notifyDataSetChanged();
+      localObject1 = c.vCb;
+      if (((Number)c.dtG().value()).intValue() != 1) {
+        break label822;
+      }
+      localObject1 = c.vCb;
+      if (((Number)c.dqZ().value()).intValue() != 1) {
+        break label822;
+      }
+      i = 1;
+      label700:
+      localObject1 = getPreferenceScreen();
+      if (i != 0) {
+        break label827;
+      }
+      bool1 = true;
+      label712:
+      ((f)localObject1).jdMethod_do("settings_message_mute", bool1);
+      localObject1 = getPreferenceScreen();
+      if (i != 0) {
+        break label832;
+      }
+      bool1 = true;
+      label736:
+      ((f)localObject1).jdMethod_do("settings_message_mute_desc", bool1);
+      localObject1 = getPreferenceScreen();
+      localObject2 = c.vCb;
+      if (c.dqG()) {
+        break label837;
+      }
+    }
+    label822:
+    label827:
+    label832:
+    label837:
     for (bool1 = bool2;; bool1 = false)
     {
-      ((f)localObject).cT("feed_reproduction_tips", bool1);
+      ((f)localObject1).jdMethod_do("feed_reproduction", bool1);
       AppMethodBeat.o(167620);
       return;
-      i = 0;
+      localObject2 = getContext();
+      kotlin.g.b.p.g(localObject2, "context");
+      ((CheckBoxPreference)localObject1).setSummary((CharSequence)((AppCompatActivity)localObject2).getResources().getString(2131759759));
       break;
-      label500:
+      i = 0;
+      break label700;
       bool1 = false;
-      break label391;
-      label505:
+      break label712;
       bool1 = false;
-      break label415;
-      label510:
-      bool1 = false;
-      break label446;
+      break label736;
     }
   }
   
@@ -334,16 +488,42 @@ public final class FinderSettingPrivacyUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class c
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI$callback$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+  public static final class a
+    implements ai<azg>
+  {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  static final class b
+    implements DialogInterface.OnCancelListener
+  {
+    public static final b vOy;
+    
+    static
+    {
+      AppMethodBeat.i(252678);
+      vOy = new b();
+      AppMethodBeat.o(252678);
+    }
+    
+    public final void onCancel(DialogInterface paramDialogInterface) {}
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI$handleAtShowTab$2", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+  public static final class d
+    implements ai<azg>
+  {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class e
     implements MenuItem.OnMenuItemClickListener
   {
-    c(FinderSettingPrivacyUI paramFinderSettingPrivacyUI) {}
+    e(FinderSettingPrivacyUI paramFinderSettingPrivacyUI) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167618);
-      FinderSettingPrivacyUI.a(this.sSc);
+      FinderSettingPrivacyUI.a(this.vOx);
       AppMethodBeat.o(167618);
       return true;
     }
@@ -351,7 +531,7 @@ public final class FinderSettingPrivacyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSettingPrivacyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -3,63 +3,64 @@ package com.tencent.mm.plugin.finder.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.logic.b;
-import com.tencent.mm.plugin.finder.storage.logic.b.a;
-import com.tencent.mm.plugin.finder.storage.m;
-import com.tencent.mm.plugin.finder.storage.t;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.protocal.protobuf.apw;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.l;
+import com.tencent.mm.plugin.finder.storage.aa;
+import com.tencent.mm.plugin.finder.storage.logic.c.a;
+import com.tencent.mm.plugin.finder.storage.o;
+import com.tencent.mm.plugin.finder.storage.z;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.protocal.protobuf.ayr;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mixItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;)V", "baseFinderFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getBaseFinderFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setBaseFinderFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "getMixItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "toString", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mixItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;)V", "baseFinderFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getBaseFinderFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setBaseFinderFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "getMixItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "toString", "", "plugin-finder_release"})
 public final class c
-  implements am
+  implements bo
 {
-  public BaseFinderFeed ssN;
-  public final t ssO;
+  public BaseFinderFeed uNI;
+  public final z uNJ;
   
-  public c(t paramt)
+  public c(z paramz)
   {
-    AppMethodBeat.i(203419);
-    this.ssO = paramt;
-    paramt = this.ssO.sJL;
-    if (paramt != null) {
-      b.a locala = b.sLq;
+    AppMethodBeat.i(248695);
+    this.uNJ = paramz;
+    paramz = this.uNJ.vEG;
+    if (paramz != null) {
+      c.a locala = com.tencent.mm.plugin.finder.storage.logic.c.vGN;
     }
-    for (paramt = b.a.j(paramt);; paramt = null)
+    for (paramz = c.a.s(paramz);; paramz = null)
     {
-      this.ssN = paramt;
-      AppMethodBeat.o(203419);
+      this.uNI = paramz;
+      AppMethodBeat.o(248695);
       return;
     }
   }
   
   public final int a(i parami)
   {
-    AppMethodBeat.i(203417);
-    d.g.b.p.h(parami, "obj");
+    AppMethodBeat.i(248693);
+    p.h(parami, "obj");
     if (!(parami instanceof c)) {}
     for (Object localObject = null;; localObject = parami)
     {
       if ((c)localObject != null)
       {
-        localObject = this.ssO;
-        parami = ((c)parami).ssO;
-        d.g.b.p.h(parami, "otherItem");
+        localObject = this.uNJ;
+        parami = ((c)parami).uNJ;
+        p.h(parami, "otherItem");
         int i;
-        com.tencent.mm.plugin.finder.utils.p localp;
+        y localy;
         boolean bool;
-        if (parami.sJN.dataType == ((t)localObject).sJN.dataType)
+        if (parami.vEI.dataType == ((z)localObject).vEI.dataType)
         {
-          i = parami.sJN.dataType;
-          if (i == t.sJO)
+          i = parami.vEI.dataType;
+          if (i == z.vEJ)
           {
-            localp = com.tencent.mm.plugin.finder.utils.p.sXz;
-            localObject = ((t)localObject).sJK;
-            parami = parami.sJK;
+            localy = y.vXH;
+            localObject = ((z)localObject).vEF;
+            parami = parami.vEF;
             if ((localObject != null) && (parami != null)) {
-              if ((!bu.isNullOrNil(((m)localObject).cLa())) && (d.g.b.p.i(((m)localObject).cLa(), parami.cLa()))) {
+              if ((!Util.isNullOrNil(((o)localObject).dxF())) && (p.j(((o)localObject).dxF(), parami.dxF()))) {
                 bool = true;
               }
             }
@@ -67,17 +68,17 @@ public final class c
         }
         while (bool)
         {
-          AppMethodBeat.o(203417);
+          AppMethodBeat.o(248693);
           return 0;
           bool = false;
           continue;
           bool = false;
           continue;
-          if (i == t.sJP)
+          if (i == z.vEK)
           {
-            localp = com.tencent.mm.plugin.finder.utils.p.sXz;
-            localObject = ((t)localObject).sJL;
-            parami = parami.sJL;
+            localy = y.vXH;
+            localObject = ((z)localObject).vEG;
+            parami = parami.vEG;
             if ((localObject != null) && (parami != null))
             {
               if ((((FinderItem)localObject).field_id != 0L) && (parami.field_id != 0L) && (((FinderItem)localObject).field_id == parami.field_id))
@@ -90,14 +91,14 @@ public final class c
               }
             }
           }
-          else if (i == t.sJQ)
+          else if (i == z.vEL)
           {
-            localp = com.tencent.mm.plugin.finder.utils.p.sXz;
-            localObject = ((t)localObject).ssM;
-            parami = parami.ssM;
+            localy = y.vXH;
+            localObject = ((z)localObject).uNH;
+            parami = parami.uNH;
             if ((localObject != null) && (parami != null))
             {
-              bool = ((u)localObject).a(parami);
+              bool = ((aa)localObject).a(parami);
               continue;
             }
             bool = false;
@@ -106,26 +107,26 @@ public final class c
           bool = false;
         }
       }
-      AppMethodBeat.o(203417);
+      AppMethodBeat.o(248693);
       return -1;
     }
   }
   
-  public final int bZz()
+  public final int cxn()
   {
-    return this.ssO.oOD;
+    return this.uNJ.qcr;
   }
   
-  public final long lP()
+  public final long lT()
   {
-    return this.ssO.sJM;
+    return this.uNJ.vEH;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(203418);
-    String str = "ItemId=" + this.ssO.sJM + ",ItemType=" + this.ssO.oOD + ' ';
-    AppMethodBeat.o(203418);
+    AppMethodBeat.i(248694);
+    String str = "ItemId=" + this.uNJ.vEH + ",ItemType=" + this.uNJ.qcr + ' ';
+    AppMethodBeat.o(248694);
     return str;
   }
 }

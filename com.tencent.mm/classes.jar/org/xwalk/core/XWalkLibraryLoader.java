@@ -896,7 +896,7 @@ public class XWalkLibraryLoader
       this.mDownloadInfo.mIsRuntime = paramBoolean;
       this.mDownloadInfo.mBizType = paramInt;
       this.mWXFileDownloaderBridge = new WXFileDownloaderBridge();
-      this.mWXFileDownloaderBridge.MOc = this;
+      this.mWXFileDownloaderBridge.SAY = this;
       AppMethodBeat.o(154777);
     }
     
@@ -917,8 +917,8 @@ public class XWalkLibraryLoader
       ??? = this.mWXFileDownloaderBridge;
       String str1 = this.mDownloadInfo.mUrl;
       String str2 = this.mDownloadInfo.mSavePath;
-      if (WXFileDownloaderBridge.MOb != null) {}
-      for (int i = WXFileDownloaderBridge.MOb.a(str1, str2, ???);; i = -1)
+      if (WXFileDownloaderBridge.SAX != null) {}
+      for (int i = WXFileDownloaderBridge.SAX.a(str1, str2, ???);; i = -1)
       {
         if (i != 0)
         {
@@ -1077,7 +1077,7 @@ public class XWalkLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.XWalkLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

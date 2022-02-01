@@ -6,79 +6,78 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.ui.ChatroomInfoUI.LocalHistoryInfo;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.x;
-import com.tencent.mm.n.e;
-import com.tencent.mm.plugin.record.a.f;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
-import d.g.b.p;
-import d.n.k;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.n.k;
+import kotlin.t;
 import org.xwalk.core.Log;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess;", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "chatRoomName", "", "userNameByAdd", "localHistoryInfo", "Lcom/tencent/mm/chatroom/ui/ChatroomInfoUI$LocalHistoryInfo;", "fakeMsgId", "", "iChatRoomAddContactCallback", "Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/chatroom/ui/ChatroomInfoUI$LocalHistoryInfo;JLcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;)V", "getChatRoomName", "()Ljava/lang/String;", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getFakeMsgId", "()J", "getIChatRoomAddContactCallback", "()Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;", "getLocalHistoryInfo", "()Lcom/tencent/mm/chatroom/ui/ChatroomInfoUI$LocalHistoryInfo;", "member", "Lcom/tencent/mm/storage/ChatRoomMember;", "getMember", "()Lcom/tencent/mm/storage/ChatRoomMember;", "setMember", "(Lcom/tencent/mm/storage/ChatRoomMember;)V", "getUserNameByAdd", "dealAddChatRoomMember", "", "errType", "", "errCode", "scene", "Lcom/tencent/mm/roomsdk/model/callback/RoomDetailResult;", "sysErrMsg", "desc", "tipResId", "dealNeedVerify", "verifyUserList", "", "memberBlackList", "getDisplayNameInRoom", "username", "getOwnerName", "getString", "resId", "formatArgs", "", "(I[Ljava/lang/Object;)Ljava/lang/String;", "goChatroomUpgrade", "Landroid/content/Context;", "roomname", "hardcodeVerifySysMsg", "chatroomName", "inviteChatRoomMember", "list", "isContactExit", "", "userName", "isSupportChatroomUpgradeEntry", "usernameToDisplayName", "memberList", "Companion", "IChatRoomAddContactCallback", "ui-chatroom_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess;", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "chatRoomName", "", "userNameByAdd", "localHistoryInfo", "Lcom/tencent/mm/chatroom/ui/ChatroomInfoUI$LocalHistoryInfo;", "fakeMsgId", "", "iChatRoomAddContactCallback", "Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/chatroom/ui/ChatroomInfoUI$LocalHistoryInfo;JLcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;)V", "getChatRoomName", "()Ljava/lang/String;", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getFakeMsgId", "()J", "getIChatRoomAddContactCallback", "()Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;", "getLocalHistoryInfo", "()Lcom/tencent/mm/chatroom/ui/ChatroomInfoUI$LocalHistoryInfo;", "member", "Lcom/tencent/mm/storage/ChatRoomMember;", "getMember", "()Lcom/tencent/mm/storage/ChatRoomMember;", "setMember", "(Lcom/tencent/mm/storage/ChatRoomMember;)V", "getUserNameByAdd", "dealAddChatRoomMember", "", "errType", "", "errCode", "scene", "Lcom/tencent/mm/roomsdk/model/callback/RoomDetailResult;", "sysErrMsg", "desc", "tipResId", "dealNeedVerify", "verifyUserList", "", "memberBlackList", "getDisplayNameInRoom", "username", "getOwnerName", "getString", "resId", "formatArgs", "", "(I[Ljava/lang/Object;)Ljava/lang/String;", "goChatroomUpgrade", "Landroid/content/Context;", "roomname", "hardcodeVerifySysMsg", "chatroomName", "inviteChatRoomMember", "list", "isContactExit", "", "userName", "isSupportChatroomUpgradeEntry", "usernameToDisplayName", "memberList", "Companion", "IChatRoomAddContactCallback", "ui-chatroom_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.ChatRoomAddContactProcess";
-  public static final a.a fNY;
-  final String dBh;
-  private ac fNS;
-  final MMActivity fNT;
-  private final String fNU;
-  private final ChatroomInfoUI.LocalHistoryInfo fNV;
-  final long fNW;
-  final b fNX;
+  public static final a.a gtj;
+  final String dSW;
+  private ah gtd;
+  final MMActivity gte;
+  private final String gtf;
+  private final ChatroomInfoUI.LocalHistoryInfo gtg;
+  final long gth;
+  final b gti;
   
   static
   {
-    AppMethodBeat.i(217332);
-    fNY = new a.a((byte)0);
+    AppMethodBeat.i(193981);
+    gtj = new a.a((byte)0);
     TAG = "MicroMsg.ChatRoomAddContactProcess";
-    AppMethodBeat.o(217332);
+    AppMethodBeat.o(193981);
   }
   
   public a(MMActivity paramMMActivity, String paramString1, String paramString2, ChatroomInfoUI.LocalHistoryInfo paramLocalHistoryInfo, long paramLong, b paramb)
   {
-    AppMethodBeat.i(217331);
-    this.fNT = paramMMActivity;
-    this.dBh = paramString1;
-    this.fNU = paramString2;
-    this.fNV = paramLocalHistoryInfo;
-    this.fNW = paramLong;
-    this.fNX = paramb;
-    paramMMActivity = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class);
+    AppMethodBeat.i(193980);
+    this.gte = paramMMActivity;
+    this.dSW = paramString1;
+    this.gtf = paramString2;
+    this.gtg = paramLocalHistoryInfo;
+    this.gth = paramLong;
+    this.gti = paramb;
+    paramMMActivity = g.af(com.tencent.mm.plugin.chatroom.a.c.class);
     p.g(paramMMActivity, "service(IChatroomService::class.java)");
-    this.fNS = ((com.tencent.mm.plugin.chatroom.a.c)paramMMActivity).azP().Bx(this.dBh);
-    if (this.fNS != null)
+    this.gtd = ((com.tencent.mm.plugin.chatroom.a.c)paramMMActivity).aSX().Kd(this.dSW);
+    if (this.gtd != null)
     {
-      paramMMActivity = this.fNS;
+      paramMMActivity = this.gtd;
       if (paramMMActivity == null) {
-        p.gkB();
+        p.hyc();
       }
-      int k = paramMMActivity.ftP();
+      int k = paramMMActivity.gBv();
       int j = 0;
-      paramMMActivity = this.fNS;
+      paramMMActivity = this.gtd;
       if (paramMMActivity == null) {
-        p.gkB();
+        p.hyc();
       }
       int i = j;
-      if (!paramMMActivity.YQ())
+      if (!paramMMActivity.amD())
       {
-        if (!x.zV(this.dBh)) {
+        if (!ab.Iy(this.dSW)) {
           break label253;
         }
         i = j;
@@ -88,18 +87,18 @@ public final class a
       }
       while (i != 0)
       {
-        new f.a((Context)this.fNT).aZq(getString(2131762554)).aZu(getString(2131755884)).zi(true).s(Boolean.TRUE).aZv(getString(2131755691)).aZs(getString(2131762208)).c((f.c)new f.c()
+        new f.a((Context)this.gte).bow(getString(2131764621)).boA(getString(2131755976)).Dq(true).u(Boolean.TRUE).boB(getString(2131755761)).boy(getString(2131764230)).c((f.c)new f.c()
         {
-          public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
+          public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
           {
-            AppMethodBeat.i(217314);
+            AppMethodBeat.i(193963);
             if (paramAnonymousBoolean) {
-              a.a(this.fNZ, paramAnonymousString);
+              a.a(this.gtk, paramAnonymousString);
             }
-            AppMethodBeat.o(217314);
+            AppMethodBeat.o(193963);
           }
         }).show();
-        AppMethodBeat.o(217331);
+        AppMethodBeat.o(193980);
         return;
         label253:
         i = j;
@@ -107,34 +106,34 @@ public final class a
           i = 1;
         }
       }
-      I(null, 2131755168);
-      AppMethodBeat.o(217331);
+      J(null, 2131755186);
+      AppMethodBeat.o(193980);
       return;
     }
     Log.e(TAG, "member is null!!!");
-    AppMethodBeat.o(217331);
+    AppMethodBeat.o(193980);
   }
   
-  private final void I(String paramString, int paramInt)
+  private final void J(String paramString, int paramInt)
   {
-    AppMethodBeat.i(217325);
-    if ((x.zU(this.dBh)) && (!x.zX(this.dBh)) && (!q.zo(this.fNU)))
+    AppMethodBeat.i(193974);
+    if ((ab.Ix(this.dSW)) && (!ab.IB(this.dSW)) && (!u.HQ(this.gtf)))
     {
-      h.T((Context)this.fNT, getString(2131762644), getString(2131755906));
-      AppMethodBeat.o(217325);
+      com.tencent.mm.ui.base.h.X((Context)this.gte, getString(2131764727), getString(2131755998));
+      AppMethodBeat.o(193974);
       return;
     }
-    Object localObject1 = this.fNU;
+    Object localObject1 = this.gtf;
     int j;
-    if (p.i(bu.nullAsNil(com.tencent.mm.model.v.aAC()), localObject1)) {
+    if (p.j(Util.nullAsNil(z.aTY()), localObject1)) {
       j = 1;
     }
     while (j != 0)
     {
-      h.T((Context)this.fNT, getString(2131755154), getString(2131755906));
-      AppMethodBeat.o(217325);
+      com.tencent.mm.ui.base.h.X((Context)this.gte, getString(2131755172), getString(2131755998));
+      AppMethodBeat.o(193974);
       return;
-      Object localObject2 = r.zA(this.dBh);
+      Object localObject2 = com.tencent.mm.model.v.Ic(this.dSW);
       if (localObject2 == null)
       {
         j = 0;
@@ -146,98 +145,96 @@ public final class a
         j = i;
         if (((Iterator)localObject2).hasNext())
         {
-          if (!p.i((String)((Iterator)localObject2).next(), localObject1)) {
-            break label384;
+          if (!p.j((String)((Iterator)localObject2).next(), localObject1)) {
+            break label380;
           }
           i = 1;
         }
       }
     }
-    label384:
+    label380:
     for (;;)
     {
       break;
-      if (this.fNU == null)
+      if (this.gtf == null)
       {
-        AppMethodBeat.o(217325);
+        AppMethodBeat.o(193974);
         return;
       }
-      localObject1 = (CharSequence)this.fNU;
+      localObject1 = (CharSequence)this.gtf;
       localObject1 = ((Collection)new k(",").q((CharSequence)localObject1, 0)).toArray(new String[0]);
       if (localObject1 == null)
       {
-        paramString = new d.v("null cannot be cast to non-null type kotlin.Array<T>");
-        AppMethodBeat.o(217325);
+        paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+        AppMethodBeat.o(193974);
         throw paramString;
       }
-      localObject1 = bu.U((String[])localObject1);
+      localObject1 = Util.stringsToList((String[])localObject1);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(217325);
+        AppMethodBeat.o(193974);
         return;
       }
-      paramString = com.tencent.mm.roomsdk.a.b.aRc(this.dBh).a(this.dBh, (List)localObject1, paramString, this.fNV);
+      paramString = com.tencent.mm.roomsdk.a.b.bhF(this.dSW).a(this.dSW, (List)localObject1, paramString, this.gtg);
       paramString.d((com.tencent.mm.roomsdk.a.b.a)new c(this));
-      localObject1 = (Context)this.fNT;
-      getString(2131755906);
-      paramString.a((Context)localObject1, getString(paramInt), true, (DialogInterface.OnCancelListener)new d(paramString));
-      AppMethodBeat.o(217325);
+      paramString.a((Context)this.gte, getString(2131755998), getString(paramInt), true, true, (DialogInterface.OnCancelListener)new d(paramString));
+      AppMethodBeat.o(193974);
       return;
     }
   }
   
-  private static List<String> P(List<String> paramList)
+  private static List<String> V(List<String> paramList)
   {
-    AppMethodBeat.i(217326);
+    AppMethodBeat.i(193975);
     List localList = (List)new LinkedList();
-    if (!com.tencent.mm.kernel.g.ajM())
+    if (!g.aAc())
     {
-      AppMethodBeat.o(217326);
+      AppMethodBeat.o(193975);
       return localList;
     }
     if (paramList == null)
     {
-      AppMethodBeat.o(217326);
+      AppMethodBeat.o(193975);
       return localList;
     }
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      paramList = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+      paramList = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
       p.g(paramList, "MMKernel.service(IMessengerStorage::class.java)");
-      an localan = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramList).azF().BH(str);
+      as localas = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramList).aSN().Kn(str);
       paramList = str;
-      if (localan != null)
+      if (localas != null)
       {
         paramList = str;
-        if (localan.adE() != 0)
+        if (localas.arH() != 0)
         {
-          paramList = localan.adG();
+          paramList = localas.arJ();
           p.g(paramList, "ct.displayRemark");
         }
       }
       localList.add(paramList);
     }
-    AppMethodBeat.o(217326);
+    AppMethodBeat.o(193975);
     return localList;
   }
   
-  private static boolean Yu()
+  private static boolean amh()
   {
-    AppMethodBeat.i(217328);
-    if (bu.getInt(com.tencent.mm.n.g.acL().getValue("ChatroomGlobalSwitch"), 1) == 1)
+    AppMethodBeat.i(193977);
+    if (Util.getInt(com.tencent.mm.n.h.aqJ().getValue("ChatroomGlobalSwitch"), 1) == 1)
     {
-      AppMethodBeat.o(217328);
+      AppMethodBeat.o(193977);
       return true;
     }
-    AppMethodBeat.o(217328);
+    AppMethodBeat.o(193977);
     return false;
   }
   
   private final void b(String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(217327);
+    AppMethodBeat.i(193976);
     if ((paramList != null) && (paramList.size() > 0))
     {
       LinkedList localLinkedList = new LinkedList();
@@ -249,44 +246,44 @@ public final class a
         i += 1;
       }
       paramList = "weixin://findfriend/verifycontact/" + paramString + "/";
-      q.a(paramString, (List)localLinkedList, getString(2131757105), true, paramList);
+      u.a(paramString, (List)localLinkedList, getString(2131757306), true, paramList);
     }
-    AppMethodBeat.o(217327);
+    AppMethodBeat.o(193976);
   }
   
   private String getString(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217330);
+    AppMethodBeat.i(193979);
     p.h(paramVarArgs, "formatArgs");
-    paramVarArgs = this.fNT.getString(paramInt, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    paramVarArgs = this.gte.getString(paramInt, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
     p.g(paramVarArgs, "context.getString(resId, *formatArgs)");
-    AppMethodBeat.o(217330);
+    AppMethodBeat.o(193979);
     return paramVarArgs;
   }
   
   public final String getString(int paramInt)
   {
-    AppMethodBeat.i(217329);
-    String str = this.fNT.getString(paramInt);
+    AppMethodBeat.i(193978);
+    String str = this.gte.getString(paramInt);
     p.g(str, "context.getString(resId)");
-    AppMethodBeat.o(217329);
+    AppMethodBeat.o(193978);
     return str;
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;", "", "onMemberListChanged", "", "updateUI", "ui-chatroom_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$IChatRoomAddContactCallback;", "", "onMemberListChanged", "", "updateUI", "ui-chatroom_release"})
   public static abstract interface b
   {
-    public abstract void Yv();
+    public abstract void ami();
     
-    public abstract void Yw();
+    public abstract void amj();
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/chatroom/process/ChatRoomAddContactProcess$dealAddChatRoomMember$1", "Lcom/tencent/mm/roomsdk/model/callback/RoomDetailResult;", "onResult", "", "errType", "", "errCode", "errMsg", "", "detailResult", "ui-chatroom_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/chatroom/process/ChatRoomAddContactProcess$dealAddChatRoomMember$1", "Lcom/tencent/mm/roomsdk/model/callback/RoomDetailResult;", "onResult", "", "errType", "", "errCode", "errMsg", "", "detailResult", "ui-chatroom_release"})
   public static final class c
     extends com.tencent.mm.roomsdk.a.b.c
   {}
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class d
     implements DialogInterface.OnCancelListener
   {
@@ -294,13 +291,13 @@ public final class a
     
     public final void onCancel(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(217316);
-      this.fOa.cancel();
-      AppMethodBeat.o(217316);
+      AppMethodBeat.i(193965);
+      this.gtl.cancel();
+      AppMethodBeat.o(193965);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "arg0", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "arg1", "", "onClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "arg0", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "arg1", "", "onClick"})
   static final class e
     implements DialogInterface.OnClickListener
   {
@@ -308,25 +305,46 @@ public final class a
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      AppMethodBeat.i(217317);
-      if (x.zU(this.fNZ.dBh))
+      AppMethodBeat.i(193966);
+      if (ab.Ix(this.gtk.dSW))
       {
-        paramDialogInterface = this.fNZ;
-        String str = this.fOb.fmb();
+        paramDialogInterface = this.gtk;
+        String str = this.gtm.gvN();
         p.g(str, "scene.getChatroomName()");
-        a.a(paramDialogInterface, str, this.fOc);
+        a.a(paramDialogInterface, str, this.gtn);
       }
       paramDialogInterface = new ArrayList();
-      paramDialogInterface.addAll((Collection)this.fOd);
-      paramDialogInterface.addAll((Collection)this.fOe);
-      a.a(this.fNZ, (List)paramDialogInterface);
-      ((com.tencent.mm.plugin.messenger.foundation.a.v)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.v.class)).Kk(1);
-      ((f)com.tencent.mm.kernel.g.ab(f.class)).y(this.fNZ.fNW, this.fNZ.dBh);
-      AppMethodBeat.o(217317);
+      paramDialogInterface.addAll((Collection)this.gto);
+      paramDialogInterface.addAll((Collection)this.gtp);
+      a.a(this.gtk, (List)paramDialogInterface);
+      ((com.tencent.mm.plugin.messenger.foundation.a.v)g.af(com.tencent.mm.plugin.messenger.foundation.a.v.class)).Qm(1);
+      ((com.tencent.mm.plugin.record.a.f)g.af(com.tencent.mm.plugin.record.a.f.class)).D(this.gtk.gth, this.gtk.dSW);
+      AppMethodBeat.o(193966);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "arg0", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "arg1", "", "onClick"})
+  static final class f
+    implements DialogInterface.OnClickListener
+  {
+    public static final f gtq;
+    
+    static
+    {
+      AppMethodBeat.i(193968);
+      gtq = new f();
+      AppMethodBeat.o(193968);
+    }
+    
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(193967);
+      ((com.tencent.mm.plugin.messenger.foundation.a.v)g.af(com.tencent.mm.plugin.messenger.foundation.a.v.class)).Qm(4);
+      AppMethodBeat.o(193967);
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class g
     implements DialogInterface.OnClickListener
   {
@@ -334,13 +352,13 @@ public final class a
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      AppMethodBeat.i(217320);
-      a.a(this.fNZ, (Context)this.fNZ.fNT);
-      AppMethodBeat.o(217320);
+      AppMethodBeat.i(193969);
+      a.a(this.gtk, (Context)this.gtk.gte);
+      AppMethodBeat.o(193969);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class h
     implements DialogInterface.OnClickListener
   {
@@ -348,13 +366,13 @@ public final class a
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      AppMethodBeat.i(217321);
-      this.fNZ.fNX.Yv();
-      AppMethodBeat.o(217321);
+      AppMethodBeat.i(193970);
+      this.gtk.gti.ami();
+      AppMethodBeat.o(193970);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "detailResult", "Lcom/tencent/mm/roomsdk/model/callback/RoomCallbackBaseFunc;", "onResult"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "detailResult", "Lcom/tencent/mm/roomsdk/model/callback/RoomCallbackBaseFunc;", "onResult"})
   static final class i<T extends com.tencent.mm.roomsdk.a.b.a<com.tencent.mm.roomsdk.a.b.a<?>>>
     implements com.tencent.mm.roomsdk.a.b.a<com.tencent.mm.roomsdk.a.b.a<?>>
   {
@@ -362,22 +380,22 @@ public final class a
     
     public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.roomsdk.a.b.a<?> parama)
     {
-      AppMethodBeat.i(217322);
-      this.fNZ.fNX.Yv();
-      this.fNZ.fNX.Yw();
-      ((f)com.tencent.mm.kernel.g.ab(f.class)).y(this.fNZ.fNW, this.fNZ.dBh);
-      AppMethodBeat.o(217322);
+      AppMethodBeat.i(193971);
+      this.gtk.gti.ami();
+      this.gtk.gti.amj();
+      ((com.tencent.mm.plugin.record.a.f)g.af(com.tencent.mm.plugin.record.a.f.class)).D(this.gtk.gth, this.gtk.dSW);
+      AppMethodBeat.o(193971);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "detailResult", "Lcom/tencent/mm/roomsdk/model/callback/RoomCallbackFunc;", "onResult"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "detailResult", "Lcom/tencent/mm/roomsdk/model/callback/RoomCallbackFunc;", "onResult"})
   static final class j
     implements com.tencent.mm.roomsdk.a.b.b
   {
     j(a parama) {}
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class k
     implements DialogInterface.OnCancelListener
   {
@@ -385,15 +403,15 @@ public final class a
     
     public final void onCancel(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(217324);
-      this.fOg.cancel();
-      AppMethodBeat.o(217324);
+      AppMethodBeat.i(193973);
+      this.gtr.cancel();
+      AppMethodBeat.o(193973);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.g.a
  * JD-Core Version:    0.7.0.1
  */

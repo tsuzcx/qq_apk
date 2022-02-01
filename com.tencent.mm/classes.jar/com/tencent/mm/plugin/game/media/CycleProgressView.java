@@ -15,7 +15,7 @@ public class CycleProgressView
 {
   private Paint paint;
   private int progress;
-  private float uhq;
+  private float xzK;
   
   public CycleProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,17 +52,17 @@ public class CycleProgressView
     AppMethodBeat.i(40888);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    if (this.uhq == 0.0F) {
-      this.uhq = ((int)(getWidth() / 2 * 0.167D));
+    if (this.xzK == 0.0F) {
+      this.xzK = ((int)(getWidth() / 2 * 0.167D));
     }
-    int j = (int)(i - this.uhq / 2.0F);
-    this.paint.setStrokeWidth(this.uhq);
-    this.paint.setColor(b.n(getContext(), 2131099656));
+    int j = (int)(i - this.xzK / 2.0F);
+    this.paint.setStrokeWidth(this.xzK);
+    this.paint.setColor(b.n(getContext(), 2131099657));
     this.paint.setAntiAlias(true);
     this.paint.setStyle(Paint.Style.STROKE);
     paramCanvas.drawCircle(i, i, j, this.paint);
-    this.paint.setStrokeWidth(this.uhq);
-    this.paint.setColor(b.n(getContext(), 2131101179));
+    this.paint.setStrokeWidth(this.xzK);
+    this.paint.setColor(b.n(getContext(), 2131101424));
     paramCanvas.drawArc(new RectF(i - j, i - j, i + j, i + j), -90.0F, this.progress * 360 / 100, false, this.paint);
     this.paint.setStrokeWidth(0.0F);
     this.paint.setStyle(Paint.Style.FILL);
@@ -80,7 +80,7 @@ public class CycleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.CycleProgressView
  * JD-Core Version:    0.7.0.1
  */

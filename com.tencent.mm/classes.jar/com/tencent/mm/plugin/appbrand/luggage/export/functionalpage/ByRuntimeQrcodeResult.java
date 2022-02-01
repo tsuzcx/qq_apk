@@ -6,14 +6,14 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ab.g;
 import com.tencent.mm.ab.i;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class ByRuntimeQrcodeResult
   implements Parcelable
 {
   public static final Parcelable.Creator<ByRuntimeQrcodeResult> CREATOR;
   public String data;
-  public String kbk;
+  public String les;
   
   static
   {
@@ -26,28 +26,28 @@ public class ByRuntimeQrcodeResult
   {
     AppMethodBeat.i(47499);
     this.data = paramParcel.readString();
-    this.kbk = paramParcel.readString();
+    this.les = paramParcel.readString();
     AppMethodBeat.o(47499);
   }
   
   public ByRuntimeQrcodeResult(String paramString1, String paramString2)
   {
     this.data = paramString1;
-    this.kbk = paramString2;
+    this.les = paramString2;
   }
   
-  public final String aYO()
+  public final String bua()
   {
     AppMethodBeat.i(47497);
     try
     {
-      String str = new i().h("transitiveData", this.kbk).h("data", this.data).toString();
+      String str = new i().h("transitiveData", this.les).h("data", this.data).toString();
       AppMethodBeat.o(47497);
       return str;
     }
     catch (g localg)
     {
-      ae.e("MicroMsg.AppBrand.Functional.ByRuntimeQrcodeResult", "toJsonString e = %s", new Object[] { localg });
+      Log.e("MicroMsg.AppBrand.Functional.ByRuntimeQrcodeResult", "toJsonString e = %s", new Object[] { localg });
       AppMethodBeat.o(47497);
     }
     return "{}";
@@ -62,13 +62,13 @@ public class ByRuntimeQrcodeResult
   {
     AppMethodBeat.i(47498);
     paramParcel.writeString(this.data);
-    paramParcel.writeString(this.kbk);
+    paramParcel.writeString(this.les);
     AppMethodBeat.o(47498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.ByRuntimeQrcodeResult
  * JD-Core Version:    0.7.0.1
  */

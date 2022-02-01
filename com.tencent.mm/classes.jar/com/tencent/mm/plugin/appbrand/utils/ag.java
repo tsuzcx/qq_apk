@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ag
 {
-  public static boolean Ck()
+  public static boolean LB()
   {
     AppMethodBeat.i(185648);
     if (Looper.getMainLooper() == Looper.myLooper())
@@ -24,7 +24,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.ag
  * JD-Core Version:    0.7.0.1
  */

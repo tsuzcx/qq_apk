@@ -22,13 +22,13 @@ import java.util.zip.ZipFile;
 
 public final class a
 {
-  private static final String zx = "code_cache" + File.separator + "secondary-dexes";
-  private static final Set<String> zy = new HashSet();
-  private static final boolean zz = o(System.getProperty("java.vm.version"));
+  private static final String zD = "code_cache" + File.separator + "secondary-dexes";
+  private static final Set<String> zE = new HashSet();
+  private static final boolean zF = o(System.getProperty("java.vm.version"));
   
   public static void K(Context paramContext)
   {
-    if (zz) {}
+    if (zF) {}
     ApplicationInfo localApplicationInfo;
     Object localObject;
     for (;;)
@@ -42,14 +42,14 @@ public final class a
         localApplicationInfo = L(paramContext);
         if (localApplicationInfo != null)
         {
-          synchronized (zy)
+          synchronized (zE)
           {
             localObject = localApplicationInfo.sourceDir;
-            if (zy.contains(localObject)) {
+            if (zE.contains(localObject)) {
               return;
             }
           }
-          zy.add(localObject);
+          zE.add(localObject);
         }
       }
       catch (Exception paramContext)
@@ -75,7 +75,7 @@ public final class a
     {
       M(paramContext);
       label190:
-      File localFile = new File(localApplicationInfo.dataDir, zx);
+      File localFile = new File(localApplicationInfo.dataDir, zD);
       List localList = b.a(paramContext, localApplicationInfo, localFile, false);
       if (f(localList)) {
         a((ClassLoader)localObject, localFile, localList);
@@ -342,7 +342,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.multidex.a
  * JD-Core Version:    0.7.0.1
  */

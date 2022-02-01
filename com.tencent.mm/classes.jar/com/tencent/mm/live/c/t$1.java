@@ -5,29 +5,29 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class t$1
   implements View.OnClickListener
 {
-  public static final 1 gXl;
+  public static final 1 hQg;
   
   static
   {
-    AppMethodBeat.i(216038);
-    gXl = new 1();
-    AppMethodBeat.o(216038);
+    AppMethodBeat.i(207996);
+    hQg = new 1();
+    AppMethodBeat.o(207996);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(216037);
+    AppMethodBeat.i(207995);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     a.a(this, "com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(216037);
+    AppMethodBeat.o(207995);
   }
 }
 

@@ -1,77 +1,81 @@
 package com.tencent.mm.plugin.appbrand.jsapi.y;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.utils.ad;
+import com.tencent.mm.plugin.appbrand.utils.ad.a;
+import com.tencent.mm.plugin.appbrand.utils.ad.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import org.json.JSONObject;
 
 public final class e
-  extends a
+  extends ab
 {
-  public static final int CTRL_INDEX = 896;
-  public static final String NAME = "queryTrafficCardInfo";
+  public static final int CTRL_INDEX = 472;
+  public static final String NAME = "enableDeviceOrientationChangeListening";
+  protected ad mqA;
+  private ad.b mqB;
+  private boolean mqz;
   
-  protected final void a(h paramh, int paramInt, com.b.a.a.a.a parama, JSONObject paramJSONObject)
+  public e()
   {
-    AppMethodBeat.i(222686);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(137634);
+    this.mqz = false;
+    this.mqB = new ad.b()
     {
-      parama = new HashMap();
-      parama.put("errCode", Integer.valueOf(b.lnG.errorCode));
-      paramh.h(paramInt, n("fail:" + b.lnG.errorMsg, parama));
-      ae.e("MicroMsg.JsApiQueryTrafficCardInfo", "deviceData is null, invoke fail: [%s] ! with appId[%s] callbackId[%d]", new Object[] { b.lnG.errorMsg, paramh.getAppId(), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(222686);
-      return;
-    }
-    Object localObject = paramJSONObject.optString("issuerID");
-    int i = paramJSONObject.optInt("dataType");
-    try
-    {
-      parama = parama.n((String)localObject, i);
-      ae.d("MicroMsg.JsApiQueryTrafficCardInfo", "queryTrafficCardInfoString: [%s]! ", new Object[] { parama });
-      parama = new JSONObject(parama);
-      localObject = new HashMap();
-      if (parama == null)
+      public final void a(ad.a paramAnonymousa1, final ad.a paramAnonymousa2)
       {
-        ((Map)localObject).put("errCode", Integer.valueOf(b.lnK.errorCode));
-        paramh.h(paramInt, n("fail:" + b.lnK.errorMsg, (Map)localObject));
-        AppMethodBeat.o(222686);
-        return;
+        AppMethodBeat.i(137633);
+        Log.i("MicroMsg.JsApiEnableDeviceOrientation", "OrientationListener lastOrientation:" + paramAnonymousa1.name() + "; newOrientation:" + paramAnonymousa2.name());
+        MMHandlerThread.postToMainThreadDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(137632);
+            h.c(paramAnonymousa2);
+            AppMethodBeat.o(137632);
+          }
+        }, 500L);
+        AppMethodBeat.o(137633);
+      }
+    };
+    AppMethodBeat.o(137634);
+  }
+  
+  public final String a(f paramf, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(137635);
+    if (paramJSONObject.optBoolean("enable", false))
+    {
+      h.A(paramf);
+      if (!this.mqz)
+      {
+        this.mqA = new ad(paramf.getContext(), this.mqB);
+        this.mqA.enable();
+        this.mqz = true;
       }
     }
-    catch (Exception parama)
+    for (;;)
     {
-      for (;;)
+      paramf = h("ok", null);
+      AppMethodBeat.o(137635);
+      return paramf;
+      h.B(paramf);
+      if (this.mqz)
       {
-        ae.e("MicroMsg.JsApiQueryTrafficCardInfo", "call huawei remote interface fail: [%s] ! ", new Object[] { parama.getMessage() });
-        parama = null;
+        this.mqA.disable();
+        this.mqA = null;
+        this.mqz = false;
       }
-      i = parama.optInt("resultCode");
-      if (i != b.lnF.errorCode)
-      {
-        paramJSONObject = b.ts(i);
-        parama = paramJSONObject;
-        if (paramJSONObject == b.lok) {
-          parama = b.lnZ;
-        }
-        ((Map)localObject).put("errCode", Integer.valueOf(parama.errorCode));
-        paramh.h(paramInt, n("fail:" + parama.errorMsg, (Map)localObject));
-        ae.e("MicroMsg.JsApiQueryTrafficCardInfo", "Return code from huawei remote interface! with RetCode rechargeCard[%d] ", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(222686);
-        return;
-      }
-      ((Map)localObject).put("errCode", Integer.valueOf(b.lnF.errorCode));
-      ((Map)localObject).put("data", parama.optJSONObject("data"));
-      paramh.h(paramInt, n(b.lnF.errorMsg, (Map)localObject));
-      AppMethodBeat.o(222686);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.y.e
  * JD-Core Version:    0.7.0.1
  */

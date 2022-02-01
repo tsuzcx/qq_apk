@@ -7,15 +7,15 @@ import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 
 public class BorderNumView
   extends View
 {
-  private static int JoA = 22;
-  private static int JoB = 105;
-  private static int JoC = 100;
-  private int Joz;
+  private static int Oyu = 22;
+  private static int Oyv = 105;
+  private static int Oyw = 100;
+  private int Oyt;
   private Context context;
   private Paint mPaint;
   
@@ -24,7 +24,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(32961);
     this.context = null;
-    this.Joz = 100;
+    this.Oyt = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32961);
@@ -35,7 +35,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(32962);
     this.context = null;
-    this.Joz = 100;
+    this.Oyt = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32962);
@@ -52,22 +52,22 @@ public class BorderNumView
   {
     AppMethodBeat.i(32964);
     super.onDraw(paramCanvas);
-    if (this.Joz < 100) {
-      JoA += 15;
+    if (this.Oyt < 100) {
+      Oyu += 15;
     }
-    if (this.Joz >= 1000) {
-      JoC -= 20;
+    if (this.Oyt >= 1000) {
+      Oyw -= 20;
     }
-    float f1 = BackwardSupportUtil.b.h(this.context, JoA);
-    float f2 = BackwardSupportUtil.b.h(this.context, JoB);
-    String str = this.Joz;
+    float f1 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, Oyu);
+    float f2 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, Oyv);
+    String str = this.Oyt;
     this.mPaint.setAntiAlias(true);
-    this.mPaint.setTextSize(JoC);
+    this.mPaint.setTextSize(Oyw);
     this.mPaint.setColor(-11491572);
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setStrokeWidth(8.0F);
     paramCanvas.drawText(str, f1, f2, this.mPaint);
-    this.mPaint.setTextSize(JoC);
+    this.mPaint.setTextSize(Oyw);
     this.mPaint.setColor(-1770573);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setStrokeWidth(8.0F);
@@ -77,7 +77,7 @@ public class BorderNumView
   
   public void setPaintNum(int paramInt)
   {
-    this.Joz = paramInt;
+    this.Oyt = paramInt;
   }
 }
 

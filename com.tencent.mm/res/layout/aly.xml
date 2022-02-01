@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/d6o" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:paddingLeft="@dimen/br" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/f5" style="@style/nq" />
+    <LinearLayout android:background="@drawable/asu" android:paddingLeft="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d71" android:background="@drawable/b9w" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="@dimen/az">
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/d6j" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax">
+                <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/d6k" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginLeft="@dimen/k5">
+                <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/d6l" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginLeft="@dimen/k5">
+                <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/d6m" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginLeft="@dimen/k5">
+                <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <TextView android:id="@id/d6z" android:visibility="visible" style="@style/zr" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

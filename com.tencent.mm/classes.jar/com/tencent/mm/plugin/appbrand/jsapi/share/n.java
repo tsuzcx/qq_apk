@@ -1,17 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.r;
+import kotlin.l;
 
-public final class n
-  extends a<r>
-{
-  public static final int CTRL_INDEX = 211;
-  public static final String NAME = "updateShareMenuDynamic";
-}
+@l(hxD={1, 1, 16})
+public final class n {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.n
  * JD-Core Version:    0.7.0.1
  */

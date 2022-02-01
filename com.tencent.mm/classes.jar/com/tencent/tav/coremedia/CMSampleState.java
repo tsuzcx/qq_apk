@@ -17,49 +17,49 @@ public class CMSampleState
   
   public CMSampleState(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(200204);
+    AppMethodBeat.i(199407);
     this.isNewFrame = true;
     this.stateCode = 0L;
     this.time = new CMTime(paramLong);
     this.stateCode = paramLong;
     this.msg = paramString;
     this.throwable = paramThrowable;
-    AppMethodBeat.o(200204);
+    AppMethodBeat.o(199407);
   }
   
   public CMSampleState(CMTime paramCMTime)
   {
-    AppMethodBeat.i(200203);
+    AppMethodBeat.i(199406);
     this.isNewFrame = true;
     this.stateCode = 0L;
     this.time = paramCMTime;
     if (paramCMTime.value < 0L) {
       this.stateCode = paramCMTime.value;
     }
-    AppMethodBeat.o(200203);
+    AppMethodBeat.o(199406);
   }
   
   public static CMSampleState fromError(long paramLong)
   {
-    AppMethodBeat.i(200200);
+    AppMethodBeat.i(199403);
     CMSampleState localCMSampleState = fromError(paramLong, "state:".concat(String.valueOf(paramLong)));
-    AppMethodBeat.o(200200);
+    AppMethodBeat.o(199403);
     return localCMSampleState;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString)
   {
-    AppMethodBeat.i(200201);
+    AppMethodBeat.i(199404);
     paramString = fromError(paramLong, paramString, new RuntimeException(paramString));
-    AppMethodBeat.o(200201);
+    AppMethodBeat.o(199404);
     return paramString;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(200202);
+    AppMethodBeat.i(199405);
     paramString = new CMSampleState(paramLong, paramString, paramThrowable);
-    AppMethodBeat.o(200202);
+    AppMethodBeat.o(199405);
     return paramString;
   }
   
@@ -123,15 +123,15 @@ public class CMSampleState
   
   public String toString()
   {
-    AppMethodBeat.i(200205);
+    AppMethodBeat.i(199408);
     String str = "CMSampleState{time=" + this.time + ", isNewFrame=" + this.isNewFrame + ", stateCode=" + this.stateCode + ", throwable=" + this.throwable + ", msg='" + this.msg + '\'' + '}';
-    AppMethodBeat.o(200205);
+    AppMethodBeat.o(199408);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMSampleState
  * JD-Core Version:    0.7.0.1
  */

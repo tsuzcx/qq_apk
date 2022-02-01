@@ -5,91 +5,91 @@ import com.tencent.tinker.a.a.j;
 public final class f
   extends e
 {
-  private final h MBn;
-  private final c MBo;
-  private final boolean MBp;
+  private final h Shp;
+  private final c Shq;
+  private final boolean Shr;
   
   public f(h paramh, c paramc)
   {
     super(null);
-    this.MBn = paramh;
-    this.MBo = paramc;
-    this.MBp = true;
+    this.Shp = paramh;
+    this.Shq = paramc;
+    this.Shr = true;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong)
   {
     paramInt1 = paramInt5;
-    if (this.MBp) {
-      paramInt1 = this.MBo.aiy(paramInt5);
+    if (this.Shr) {
+      paramInt1 = this.Shq.arY(paramInt5);
     }
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.aiB(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.asb(paramInt2));
     case -1: 
     case 0: 
     case 14: 
       s1 = (short)paramInt2;
-      this.MBn.c(s1);
+      this.Shp.c(s1);
       return;
     case 40: 
-      if (this.MBp)
+      if (this.Shr)
       {
-        paramInt1 -= this.MBn.aoY;
+        paramInt1 -= this.Shp.apk;
         if (paramInt1 != (byte)paramInt1)
         {
           if (paramInt1 != (short)paramInt1)
           {
-            this.MBn.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
+            this.Shp.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
             return;
           }
           s1 = (short)paramInt1;
-          this.MBn.b((short)41, s1);
+          this.Shp.b((short)41, s1);
           return;
         }
-        this.MBn.c(b.li(paramInt2, paramInt1 & 0xFF));
+        this.Shp.c(b.mG(paramInt2, paramInt1 & 0xFF));
         return;
       }
-      paramInt1 -= this.MBn.aoY;
+      paramInt1 -= this.Shp.apk;
       if (paramInt1 != (byte)paramInt1) {
-        throw new j("Target out of range: " + com.tencent.tinker.a.b.b.a.aiC(paramInt1) + ", perhaps you need to enable force jumbo mode.");
+        throw new j("Target out of range: " + com.tencent.tinker.a.b.b.a.asc(paramInt1) + ", perhaps you need to enable force jumbo mode.");
       }
-      this.MBn.c(b.li(paramInt2, paramInt1 & 0xFF));
+      this.Shp.c(b.mG(paramInt2, paramInt1 & 0xFF));
       return;
     case 41: 
-      if (this.MBp)
+      if (this.Shr)
       {
-        paramInt1 -= this.MBn.aoY;
+        paramInt1 -= this.Shp.apk;
         if (paramInt1 != (short)paramInt1)
         {
-          this.MBn.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
+          this.Shp.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
           return;
         }
         s1 = (short)paramInt1;
         s2 = (short)paramInt2;
-        this.MBn.b(s2, s1);
+        this.Shp.b(s2, s1);
         return;
       }
-      s1 = b.lk(paramInt1, this.MBn.aoY);
+      s1 = b.mI(paramInt1, this.Shp.apk);
       short s2 = (short)paramInt2;
-      this.MBn.b(s2, s1);
+      this.Shp.b(s2, s1);
       return;
     case 42: 
-      paramInt1 -= this.MBn.aoY;
+      paramInt1 -= this.Shp.apk;
       s1 = (short)paramInt2;
-      this.MBn.a(s1, (short)paramInt1, (short)(paramInt1 >> 16));
+      this.Shp.a(s1, (short)paramInt1, (short)(paramInt1 >> 16));
       return;
     }
     short s1 = (short)paramInt3;
-    this.MBn.a(b.li(paramInt2, b.lj(0, 0)), s1, b.Y(0, 0, 0, 0));
+    this.Shp.a(b.mG(paramInt2, b.mH(0, 0)), s1, b.W(0, 0, 0, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6)
   {
     paramInt1 = paramInt5;
-    if (this.MBp) {
-      paramInt1 = this.MBo.aiy(paramInt5);
+    if (this.Shr) {
+      paramInt1 = this.Shq.arY(paramInt5);
     }
     h localh;
     switch (paramInt2)
@@ -148,14 +148,14 @@ public final class f
     case 94: 
     case 95: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.aiB(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.asb(paramInt2));
     case 18: 
       paramInt1 = (short)paramInt2;
-      localh = this.MBn;
+      localh = this.Shp;
       if ((paramLong < -8L) || (paramLong > 7L)) {
-        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.FE(paramLong));
+        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.OI(paramLong));
       }
-      localh.c(b.li(paramInt1, b.lj(paramInt6, (int)paramLong & 0xF)));
+      localh.c(b.mG(paramInt1, b.mH(paramInt6, (int)paramLong & 0xF)));
       return;
     case 10: 
     case 11: 
@@ -167,7 +167,7 @@ public final class f
     case 29: 
     case 30: 
     case 39: 
-      this.MBn.c(b.li(paramInt2, paramInt6));
+      this.Shp.c(b.mG(paramInt2, paramInt6));
       return;
     case 56: 
     case 57: 
@@ -175,12 +175,12 @@ public final class f
     case 59: 
     case 60: 
     case 61: 
-      s1 = b.lk(paramInt1, this.MBn.aoY);
-      this.MBn.b(b.li(paramInt2, paramInt6), s1);
+      s1 = b.mI(paramInt1, this.Shp.apk);
+      this.Shp.b(b.mG(paramInt2, paramInt6), s1);
       return;
     case 19: 
     case 22: 
-      this.MBn.b(b.li(paramInt2, paramInt6), b.FD(paramLong));
+      this.Shp.b(b.mG(paramInt2, paramInt6), b.OH(paramLong));
       return;
     case 21: 
     case 25: 
@@ -188,26 +188,26 @@ public final class f
       for (paramInt1 = 16;; paramInt1 = 48)
       {
         s1 = (short)(int)(paramLong >> paramInt1);
-        this.MBn.b(b.li(paramInt2, paramInt6), s1);
+        this.Shp.b(b.mG(paramInt2, paramInt6), s1);
         return;
       }
     case 26: 
-      if (this.MBp)
+      if (this.Shr)
       {
         if (paramInt3 > 65535)
         {
-          this.MBn.a(b.li(27, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
+          this.Shp.a(b.mG(27, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
           return;
         }
         s1 = (short)paramInt3;
-        this.MBn.b(b.li(paramInt2, paramInt6), s1);
+        this.Shp.b(b.mG(paramInt2, paramInt6), s1);
         return;
       }
       if (paramInt3 > 65535) {
-        throw new j("string index out of bound: " + com.tencent.tinker.a.b.b.a.aiz(paramInt3) + ", perhaps you need to enable force jumbo mode.");
+        throw new j("string index out of bound: " + com.tencent.tinker.a.b.b.a.arZ(paramInt3) + ", perhaps you need to enable force jumbo mode.");
       }
       s1 = (short)paramInt3;
-      this.MBn.b(b.li(paramInt2, paramInt6), s1);
+      this.Shp.b(b.mG(paramInt2, paramInt6), s1);
       return;
     case 28: 
     case 31: 
@@ -227,15 +227,15 @@ public final class f
     case 108: 
     case 109: 
       s1 = (short)paramInt3;
-      this.MBn.b(b.li(paramInt2, paramInt6), s1);
+      this.Shp.b(b.mG(paramInt2, paramInt6), s1);
       return;
     case 20: 
     case 23: 
       if (paramLong != (int)paramLong) {
-        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.FE(paramLong));
+        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.OI(paramLong));
       }
       paramInt1 = (int)paramLong;
-      this.MBn.a(b.li(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
+      this.Shp.a(b.mG(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
       return;
     case 38: 
     case 43: 
@@ -245,18 +245,18 @@ public final class f
       }
       for (;;)
       {
-        paramInt1 -= this.MBn.aoY;
-        this.MBn.a(b.li(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
+        paramInt1 -= this.Shp.apk;
+        this.Shp.a(b.mG(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
         return;
-        localh = this.MBn;
-        localh.lh(paramInt1, localh.aoY);
+        localh = this.Shp;
+        localh.mF(paramInt1, localh.apk);
       }
     case 27: 
-      this.MBn.a(b.li(paramInt2, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
+      this.Shp.a(b.mG(paramInt2, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
       return;
     case 24: 
-      localh = this.MBn;
-      s1 = b.li(paramInt2, paramInt6);
+      localh = this.Shp;
+      s1 = b.mG(paramInt2, paramInt6);
       short s2 = (short)(int)paramLong;
       short s3 = (short)(int)(paramLong >> 16);
       short s4 = (short)(int)(paramLong >> 32);
@@ -269,14 +269,14 @@ public final class f
       return;
     }
     short s1 = (short)paramInt3;
-    this.MBn.a(b.li(paramInt2, b.lj(0, 1)), s1, b.Y(paramInt6, 0, 0, 0));
+    this.Shp.a(b.mG(paramInt2, b.mH(0, 1)), s1, b.W(paramInt6, 0, 0, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
     paramInt1 = paramInt5;
-    if (this.MBp) {
-      paramInt1 = this.MBo.aiy(paramInt5);
+    if (this.Shr) {
+      paramInt1 = this.Shq.arY(paramInt5);
     }
     switch (paramInt2)
     {
@@ -397,7 +397,7 @@ public final class f
     case 174: 
     case 175: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.aiB(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.asb(paramInt2));
     case 1: 
     case 4: 
     case 7: 
@@ -456,12 +456,12 @@ public final class f
     case 206: 
     case 207: 
       paramInt1 = (short)paramInt2;
-      this.MBn.c(b.li(paramInt1, b.lj(paramInt6, paramInt7)));
+      this.Shp.c(b.mG(paramInt1, b.mH(paramInt6, paramInt7)));
       return;
     case 2: 
     case 5: 
     case 8: 
-      this.MBn.b(b.li(paramInt2, paramInt6), b.aiv(paramInt7));
+      this.Shp.b(b.mG(paramInt2, paramInt6), b.arV(paramInt7));
       return;
     case 216: 
     case 217: 
@@ -474,12 +474,12 @@ public final class f
     case 224: 
     case 225: 
     case 226: 
-      h localh = this.MBn;
-      s = b.li(paramInt2, paramInt6);
+      h localh = this.Shp;
+      s = b.mG(paramInt2, paramInt6);
       if (paramLong != (byte)(int)paramLong) {
-        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.FE(paramLong));
+        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.OI(paramLong));
       }
-      localh.b(s, b.li(paramInt7, (int)paramLong & 0xFF));
+      localh.b(s, b.mG(paramInt7, (int)paramLong & 0xFF));
       return;
     case 50: 
     case 51: 
@@ -487,8 +487,8 @@ public final class f
     case 53: 
     case 54: 
     case 55: 
-      s = b.lk(paramInt1, this.MBn.aoY);
-      this.MBn.b(b.li(paramInt2, b.lj(paramInt6, paramInt7)), s);
+      s = b.mI(paramInt1, this.Shp.apk);
+      this.Shp.b(b.mG(paramInt2, b.mH(paramInt6, paramInt7)), s);
       return;
     case 208: 
     case 209: 
@@ -498,7 +498,7 @@ public final class f
     case 213: 
     case 214: 
     case 215: 
-      this.MBn.b(b.li(paramInt2, b.lj(paramInt6, paramInt7)), b.FD(paramLong));
+      this.Shp.b(b.mG(paramInt2, b.mH(paramInt6, paramInt7)), b.OH(paramLong));
       return;
     case 32: 
     case 35: 
@@ -517,17 +517,17 @@ public final class f
     case 94: 
     case 95: 
       s = (short)paramInt3;
-      this.MBn.b(b.li(paramInt2, b.lj(paramInt6, paramInt7)), s);
+      this.Shp.b(b.mG(paramInt2, b.mH(paramInt6, paramInt7)), s);
       return;
     case 3: 
     case 6: 
     case 9: 
       s = (short)paramInt2;
-      this.MBn.a(s, b.aiu(paramInt6), b.aiv(paramInt7));
+      this.Shp.a(s, b.arU(paramInt6), b.arV(paramInt7));
       return;
     }
     short s = (short)paramInt3;
-    this.MBn.a(b.li(paramInt2, b.lj(0, 2)), s, b.Y(paramInt6, paramInt7, 0, 0));
+    this.Shp.a(b.mG(paramInt2, b.mH(0, 2)), s, b.W(paramInt6, paramInt7, 0, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8)
@@ -618,7 +618,7 @@ public final class f
     case 142: 
     case 143: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.aiB(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.asb(paramInt2));
     case 45: 
     case 46: 
     case 47: 
@@ -670,11 +670,11 @@ public final class f
     case 173: 
     case 174: 
     case 175: 
-      this.MBn.b(b.li(paramInt2, paramInt6), b.li(paramInt7, paramInt8));
+      this.Shp.b(b.mG(paramInt2, paramInt6), b.mG(paramInt7, paramInt8));
       return;
     }
     short s = (short)paramInt3;
-    this.MBn.a(b.li(paramInt2, b.lj(0, 3)), s, b.Y(paramInt6, paramInt7, paramInt8, 0));
+    this.Shp.a(b.mG(paramInt2, b.mH(0, 3)), s, b.W(paramInt6, paramInt7, paramInt8, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
@@ -682,10 +682,10 @@ public final class f
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.aiB(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.asb(paramInt2));
     }
     short s = (short)paramInt3;
-    this.MBn.a(b.li(paramInt2, b.lj(0, 4)), s, b.Y(paramInt6, paramInt7, paramInt8, paramInt9));
+    this.Shp.a(b.mG(paramInt2, b.mH(0, 4)), s, b.W(paramInt6, paramInt7, paramInt8, paramInt9));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
@@ -693,29 +693,29 @@ public final class f
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.aiB(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.asb(paramInt2));
     }
     short s = (short)paramInt3;
-    this.MBn.a(b.li(paramInt2, b.lj(paramInt10, 5)), s, b.Y(paramInt6, paramInt7, paramInt8, paramInt9));
+    this.Shp.a(b.mG(paramInt2, b.mH(paramInt10, 5)), s, b.W(paramInt6, paramInt7, paramInt8, paramInt9));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
     int i = 0;
     paramInt1 = 0;
-    int j = this.MBn.gcP();
+    int j = this.Shp.hoX();
     short s = (short)paramInt2;
-    this.MBn.c(s);
-    this.MBn.c(b.ais(paramArrayOfInt.length));
-    this.MBn.writeInt(paramInt3);
-    if (this.MBp)
+    this.Shp.c(s);
+    this.Shp.c(b.arS(paramArrayOfInt.length));
+    this.Shp.writeInt(paramInt3);
+    if (this.Shr)
     {
       paramInt2 = paramArrayOfInt.length;
       while (paramInt1 < paramInt2)
       {
         paramInt3 = paramArrayOfInt[paramInt1];
-        paramInt3 = this.MBo.aiy(paramInt3);
-        this.MBn.writeInt(paramInt3 - j);
+        paramInt3 = this.Shq.arY(paramInt3);
+        this.Shp.writeInt(paramInt3 - j);
         paramInt1 += 1;
       }
     }
@@ -724,7 +724,7 @@ public final class f
     while (paramInt1 < paramInt2)
     {
       paramInt3 = paramArrayOfInt[paramInt1];
-      this.MBn.writeInt(paramInt3 - j);
+      this.Shp.writeInt(paramInt3 - j);
       paramInt1 += 1;
     }
   }
@@ -735,10 +735,10 @@ public final class f
     int j = 0;
     paramInt1 = 0;
     short s = (short)paramInt2;
-    this.MBn.c(s);
+    this.Shp.c(s);
     s = (short)paramInt4;
-    this.MBn.c(s);
-    this.MBn.writeInt(paramInt3);
+    this.Shp.c(s);
+    this.Shp.writeInt(paramInt3);
     h localh;
     switch (paramInt4)
     {
@@ -747,9 +747,9 @@ public final class f
     case 6: 
     case 7: 
     default: 
-      throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.aiA(paramInt4));
+      throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.asa(paramInt4));
     case 1: 
-      localh = this.MBn;
+      localh = this.Shp;
       paramObject = (byte[])paramObject;
       paramInt4 = paramObject.length;
       paramInt3 = 0;
@@ -777,7 +777,7 @@ public final class f
     for (;;)
     {
       return;
-      localh = this.MBn;
+      localh = this.Shp;
       paramObject = (short[])paramObject;
       paramInt2 = paramObject.length;
       while (paramInt1 < paramInt2)
@@ -786,7 +786,7 @@ public final class f
         paramInt1 += 1;
       }
       continue;
-      localh = this.MBn;
+      localh = this.Shp;
       paramObject = (int[])paramObject;
       paramInt2 = paramObject.length;
       paramInt1 = i;
@@ -796,7 +796,7 @@ public final class f
         paramInt1 += 1;
       }
       continue;
-      localh = this.MBn;
+      localh = this.Shp;
       paramObject = (long[])paramObject;
       paramInt2 = paramObject.length;
       paramInt1 = j;
@@ -816,27 +816,27 @@ public final class f
   {
     int j = 0;
     int i = 0;
-    int k = this.MBn.gcP();
+    int k = this.Shp.hoX();
     short s = (short)paramInt2;
-    this.MBn.c(s);
-    this.MBn.c(b.ais(paramArrayOfInt2.length));
+    this.Shp.c(s);
+    this.Shp.c(b.arS(paramArrayOfInt2.length));
     paramInt2 = paramArrayOfInt1.length;
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
       int m = paramArrayOfInt1[paramInt1];
-      this.MBn.writeInt(m);
+      this.Shp.writeInt(m);
       paramInt1 += 1;
     }
-    if (this.MBp)
+    if (this.Shr)
     {
       paramInt2 = paramArrayOfInt2.length;
       paramInt1 = i;
       while (paramInt1 < paramInt2)
       {
         i = paramArrayOfInt2[paramInt1];
-        i = this.MBo.aiy(i);
-        this.MBn.writeInt(i - k);
+        i = this.Shq.arY(i);
+        this.Shp.writeInt(i - k);
         paramInt1 += 1;
       }
     }
@@ -845,7 +845,7 @@ public final class f
     while (paramInt1 < paramInt2)
     {
       i = paramArrayOfInt2[paramInt1];
-      this.MBn.writeInt(i - k);
+      this.Shp.writeInt(i - k);
       paramInt1 += 1;
     }
   }
@@ -855,15 +855,15 @@ public final class f
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.aiB(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.asb(paramInt2));
     }
     short s = (short)paramInt3;
-    this.MBn.a(b.li(paramInt2, paramInt7), s, b.aiu(paramInt6));
+    this.Shp.a(b.mG(paramInt2, paramInt7), s, b.arU(paramInt6));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.f
  * JD-Core Version:    0.7.0.1
  */

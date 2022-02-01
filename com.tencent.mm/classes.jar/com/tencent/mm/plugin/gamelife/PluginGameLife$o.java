@@ -5,21 +5,21 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.p;
-import d.g.b.y.f;
-import d.l;
+import com.tencent.mm.ui.base.q;
+import kotlin.g.b.z.f;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class PluginGameLife$o
   implements Runnable
 {
-  PluginGameLife$o(y.f paramf, Context paramContext) {}
+  PluginGameLife$o(z.f paramf, Context paramContext) {}
   
   public final void run()
   {
-    AppMethodBeat.i(211975);
-    this.sVS.NiY = p.a(this.crf, (CharSequence)this.crf.getResources().getString(2131755936), false, 0, (DialogInterface.OnCancelListener)1.uIw);
-    AppMethodBeat.o(211975);
+    AppMethodBeat.i(241214);
+    this.wqe.SYG = q.a(this.$context, (CharSequence)this.$context.getResources().getString(2131756029), false, 0, (DialogInterface.OnCancelListener)1.yaJ);
+    AppMethodBeat.o(241214);
   }
 }
 

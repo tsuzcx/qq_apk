@@ -1,39 +1,44 @@
 package com.tencent.mm.search.b;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.b.ac;
-import com.tencent.mm.emoji.a.b.ah;
-import com.tencent.mm.emoji.a.b.h;
+import com.tencent.mm.br.c;
+import com.tencent.mm.emoji.b.b.ac;
+import com.tencent.mm.emoji.b.b.ah;
+import com.tencent.mm.emoji.b.b.h;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.ui.chat.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
 import com.tencent.mm.search.c.a;
 import com.tencent.mm.search.data.SimilarEmojiQueryModel;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.u;
 import com.tencent.mm.ui.widget.a.d.a;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/search/logic/SimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "jumpData", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "getJumpData", "()Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "setJumpData", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "handlePayEmoji", "", "context", "Landroid/content/Context;", "emoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "onClick", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/logic/SimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "jumpData", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "getJumpData", "()Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "setJumpData", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "handlePayEmoji", "", "context", "Landroid/content/Context;", "emoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "onClick", "view", "Landroid/view/View;", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
 public final class b
   extends com.tencent.mm.emoji.panel.a.d
 {
-  public static final b.a ICA;
-  public SimilarEmojiQueryModel ICz;
+  public static final b.a NJt;
+  public SimilarEmojiQueryModel hek;
   
   static
   {
     AppMethodBeat.i(105838);
-    ICA = new b.a((byte)0);
+    NJt = new b.a((byte)0);
     AppMethodBeat.o(105838);
   }
   
@@ -42,97 +47,127 @@ public final class b
     super(paramInt);
   }
   
-  public final void a(Context paramContext, int paramInt, ac paramac)
+  public final void a(View paramView, final Context paramContext, int paramInt, ac paramac)
   {
-    AppMethodBeat.i(105837);
+    AppMethodBeat.i(200086);
     p.h(paramContext, "context");
     if (paramac == null)
     {
-      AppMethodBeat.o(105837);
+      AppMethodBeat.o(200086);
+      return;
+    }
+    if (!WeChatBrands.Business.Entries.ContextSearch.checkAvailable(paramContext))
+    {
+      AppMethodBeat.o(200086);
       return;
     }
     if ((paramac instanceof h)) {}
-    for (Object localObject = ((h)paramac).glt.field_md5;; localObject = "")
+    for (paramView = ((h)paramac).gWm.field_md5;; paramView = "")
     {
-      ae.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", md5 :" + (String)localObject);
-      if ((!(paramac instanceof h)) || (((h)paramac).gnk != 102)) {
-        break label403;
+      Log.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", md5 :" + paramView);
+      if ((!(paramac instanceof h)) || (((h)paramac).gYc != 102)) {
+        break label423;
       }
-      localObject = a.ICC;
-      a.fqz();
-      localObject = com.tencent.mm.search.c.b.ICF;
-      com.tencent.mm.search.c.b.b(((h)paramac).glt, paramInt);
-      if (((h)paramac).glt.OAr == 1)
+      paramView = a.NJv;
+      a.gxu();
+      paramView = com.tencent.mm.search.c.b.NJx;
+      com.tencent.mm.search.c.b.b(((h)paramac).gWm, paramInt);
+      if (((h)paramac).gWm.UuM == 1)
       {
-        if (bu.isNullOrNil(((h)paramac).glt.afK())) {
+        if (Util.isNullOrNil(((h)paramac).gWm.avy())) {
           break;
         }
-        localObject = g.ad(com.tencent.mm.plugin.emoji.b.d.class);
-        p.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-        if (!((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr().acn(((h)paramac).glt.afK())) {
+        paramView = g.ah(com.tencent.mm.plugin.emoji.b.d.class);
+        p.g(paramView, "MMKernel.plugin(IPluginEmoji::class.java)");
+        if (!((com.tencent.mm.plugin.emoji.b.d)paramView).getEmojiMgr().amq(((h)paramac).gWm.avy())) {
           break;
         }
-        ae.i("MicroMsg.SimilarEmoji", "buy and resend emoji");
+        Log.i("MicroMsg.SimilarEmoji", "buy and resend emoji");
       }
-      paramContext = ((h)paramac).glt;
-      paramac = be.fvc();
-      p.g(paramac, "EmojiStorageMgr.getInstance()");
-      if (paramac.bJU().aWl(paramContext.field_md5) == null)
+      paramView = ((h)paramac).gWm;
+      paramContext = bj.gCJ();
+      p.g(paramContext, "EmojiStorageMgr.getInstance()");
+      if (paramContext.cgN().blk(paramView.field_md5) == null)
       {
-        paramac = be.fvc();
-        p.g(paramac, "EmojiStorageMgr.getInstance()");
-        paramac.bJU().J(paramContext);
+        paramContext = bj.gCJ();
+        p.g(paramContext, "EmojiStorageMgr.getInstance()");
+        paramContext.cgN().K(paramView);
       }
-      paramac = this.gpJ;
-      if (paramac == null) {
-        break label397;
+      paramContext = this.haC;
+      if (paramContext == null) {
+        break label417;
       }
-      paramac.A(paramContext);
-      AppMethodBeat.o(105837);
+      paramContext.B(paramView);
+      AppMethodBeat.o(200086);
       return;
     }
-    paramac = ((h)paramac).glt;
-    localObject = new d.a(paramContext);
-    ((d.a)localObject).aZh("");
-    ((d.a)localObject).aZi(paramContext.getString(2131763721));
-    ((d.a)localObject).zf(true);
-    ((d.a)localObject).afU(2131758210).c((DialogInterface.OnClickListener)new b.b(paramac, paramContext));
-    ((d.a)localObject).afV(2131755691);
-    paramContext = ((d.a)localObject).fQv();
-    p.g(paramContext, "alert");
-    paramac = paramContext.getWindow();
-    if (paramac != null)
+    paramView = ((h)paramac).gWm;
+    paramac = new d.a(paramContext);
+    paramac.bon("");
+    paramac.boo(paramContext.getString(2131765912));
+    paramac.Dk(true);
+    paramac.aoV(2131758498).c((DialogInterface.OnClickListener)new b(paramView, paramContext));
+    paramac.aoW(2131755761);
+    paramView = paramac.hbn();
+    p.g(paramView, "alert");
+    paramContext = paramView.getWindow();
+    if (paramContext != null)
     {
-      paramac.setSoftInputMode(48);
-      paramac.setFlags(131072, 131072);
+      paramContext.setSoftInputMode(48);
+      paramContext.setFlags(131072, 131072);
     }
-    paramContext.show();
-    AppMethodBeat.o(105837);
+    paramView.show();
+    AppMethodBeat.o(200086);
     return;
-    label397:
-    AppMethodBeat.o(105837);
+    label417:
+    AppMethodBeat.o(200086);
     return;
-    label403:
-    if (((paramac instanceof ah)) && (((ah)paramac).gnk == 101))
+    label423:
+    if (((paramac instanceof ah)) && (((ah)paramac).gYc == 101))
     {
-      if (this.ICz == null)
+      if (this.hek == null)
       {
-        ae.i("MicroMsg.SimilarEmoji", "can not jump for null data!");
-        AppMethodBeat.o(105837);
+        Log.i("MicroMsg.SimilarEmoji", "can not jump for null data!");
+        AppMethodBeat.o(200086);
         return;
       }
-      paramac = com.tencent.mm.search.c.b.ICF;
-      com.tencent.mm.search.c.b.fqD();
-      paramac = new Intent();
-      paramac.putExtra("KEY_NET_PARAM", (Parcelable)this.ICz);
-      com.tencent.mm.br.d.b(((t)paramContext).getBaseContext(), "webview", ".emojistore.ui.SosSimilarUI", paramac, 229);
+      paramView = com.tencent.mm.search.c.b.NJx;
+      com.tencent.mm.search.c.b.gxy();
+      paramView = new Intent();
+      paramView.putExtra("KEY_NET_PARAM", (Parcelable)this.hek);
+      c.b(((u)paramContext).getBaseContext(), "webview", ".emojistore.ui.SosSimilarUI", paramView, 229);
     }
-    AppMethodBeat.o(105837);
+    AppMethodBeat.o(200086);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  static final class b
+    implements DialogInterface.OnClickListener
+  {
+    b(EmojiInfo paramEmojiInfo, Context paramContext) {}
+    
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(105836);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("extra_id", this.haF.field_groupId);
+      localIntent.putExtra("preceding_scence", 20);
+      Context localContext = paramContext;
+      if (localContext == null)
+      {
+        paramDialogInterface = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMContextThemeWrapper");
+        AppMethodBeat.o(105836);
+        throw paramDialogInterface;
+      }
+      c.b(((u)localContext).getBaseContext(), "emoji", ".ui.EmojiStoreDetailUI", localIntent);
+      paramDialogInterface.cancel();
+      AppMethodBeat.o(105836);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.search.b.b
  * JD-Core Version:    0.7.0.1
  */

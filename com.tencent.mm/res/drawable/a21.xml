@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/Brand_BG_100" />
-    <corners android:radius="8.0dip" />
-</shape>
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/BW_100_Alpha_0_1" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/q9" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/q5" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
+</selector>

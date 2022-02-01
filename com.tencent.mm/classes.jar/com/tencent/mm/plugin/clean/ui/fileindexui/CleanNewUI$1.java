@@ -12,7 +12,7 @@ final class CleanNewUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(22921);
-    this.pcq.finish();
+    this.qrp.finish();
     AppMethodBeat.o(22921);
     return false;
   }

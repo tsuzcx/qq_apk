@@ -21,10 +21,10 @@ import android.media.AudioManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.q;
-import android.support.v4.view.ab;
+import android.support.v4.view.ac;
 import android.support.v4.view.e.a;
-import android.support.v4.view.x;
-import android.support.v4.view.z;
+import android.support.v4.view.u;
+import android.support.v4.view.y;
 import android.support.v4.widget.n;
 import android.support.v7.c.a.a;
 import android.support.v7.view.b;
@@ -38,11 +38,11 @@ import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.ContentFrameLayout.a;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.ViewStubCompat;
-import android.support.v7.widget.aa;
 import android.support.v7.widget.aa.a;
 import android.support.v7.widget.az;
 import android.support.v7.widget.be;
 import android.support.v7.widget.bh;
+import android.support.v7.widget.t;
 import android.text.TextUtils;
 import android.util.AndroidRuntimeException;
 import android.util.AttributeSet;
@@ -81,62 +81,62 @@ final class AppCompatDelegateImpl
   extends d
   implements h.a, LayoutInflater.Factory2
 {
-  private static final boolean Yj;
-  private static final int[] Yk;
-  private static boolean Yl;
-  private CharSequence Hd;
-  final Window WM;
-  private TextView Xl;
-  private ViewGroup YA;
-  private View YB;
-  private boolean YC;
-  private boolean YD;
-  boolean YE;
-  boolean YF;
-  boolean YG;
-  boolean YH;
-  boolean YI;
-  private boolean YJ;
-  private PanelFeatureState[] YK;
-  private PanelFeatureState YL;
+  private static final boolean Yw;
+  private static final int[] Yx;
+  private static boolean Yy;
+  private CharSequence Hn;
+  final Window WZ;
+  private TextView Xy;
+  final Window.Callback YA;
+  final c YB;
+  MenuInflater YC;
+  private t YD;
+  private b YE;
+  private g YF;
+  b YG;
+  ActionBarContextView YH;
+  PopupWindow YI;
+  Runnable YJ;
+  y YK = null;
+  boolean YL = true;
   private boolean YM;
-  private int YN = -100;
-  private boolean YO;
-  private e YP;
-  boolean YQ;
-  int YR;
-  private final Runnable YS = new Runnable()
+  private ViewGroup YN;
+  private View YO;
+  private boolean YP;
+  private boolean YQ;
+  boolean YR;
+  boolean YS;
+  boolean YT;
+  boolean YU;
+  boolean YV;
+  private boolean YW;
+  private PanelFeatureState[] YX;
+  private PanelFeatureState YY;
+  private boolean YZ;
+  final Window.Callback Yz;
+  private int Za = -100;
+  private boolean Zb;
+  private e Zc;
+  boolean Zd;
+  int Ze;
+  private final Runnable Zf = new Runnable()
   {
     public final void run()
     {
-      if ((AppCompatDelegateImpl.this.YR & 0x1) != 0) {
-        AppCompatDelegateImpl.this.bj(0);
+      if ((AppCompatDelegateImpl.this.Ze & 0x1) != 0) {
+        AppCompatDelegateImpl.this.bk(0);
       }
-      if ((AppCompatDelegateImpl.this.YR & 0x1000) != 0) {
-        AppCompatDelegateImpl.this.bj(108);
+      if ((AppCompatDelegateImpl.this.Ze & 0x1000) != 0) {
+        AppCompatDelegateImpl.this.bk(108);
       }
-      AppCompatDelegateImpl.this.YQ = false;
-      AppCompatDelegateImpl.this.YR = 0;
+      AppCompatDelegateImpl.this.Zd = false;
+      AppCompatDelegateImpl.this.Ze = 0;
     }
   };
-  private boolean YT;
-  private Rect YU;
-  private Rect YV;
-  private AppCompatViewInflater YW;
-  final Window.Callback Ym;
-  final Window.Callback Yn;
-  final c Yo;
-  MenuInflater Yp;
-  private android.support.v7.widget.t Yq;
-  private b Yr;
-  private g Ys;
-  b Yt;
-  ActionBarContextView Yu;
-  PopupWindow Yv;
-  Runnable Yw;
-  x Yx = null;
-  boolean Yy = true;
-  private boolean Yz;
+  private boolean Zg;
+  private Rect Zh;
+  private Rect Zi;
+  private AppCompatViewInflater Zj;
   ActionBar mActionBar;
   final Context mContext;
   boolean mIsDestroyed;
@@ -146,9 +146,9 @@ final class AppCompatDelegateImpl
     if (Build.VERSION.SDK_INT < 21) {}
     for (boolean bool = true;; bool = false)
     {
-      Yj = bool;
-      Yk = new int[] { 16842836 };
-      if ((Yj) && (!Yl))
+      Yw = bool;
+      Yx = new int[] { 16842836 };
+      if ((Yw) && (!Yy))
       {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
         {
@@ -178,13 +178,13 @@ final class AppCompatDelegateImpl
               localObject = new Resources.NotFoundException(paramAnonymousThrowable.getMessage() + ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
               ((Throwable)localObject).initCause(paramAnonymousThrowable.getCause());
               ((Throwable)localObject).setStackTrace(paramAnonymousThrowable.getStackTrace());
-              this.YX.uncaughtException(paramAnonymousThread, (Throwable)localObject);
+              this.Zk.uncaughtException(paramAnonymousThread, (Throwable)localObject);
               return;
             }
-            this.YX.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+            this.Zk.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
           }
         });
-        Yl = true;
+        Yy = true;
       }
       return;
     }
@@ -193,36 +193,36 @@ final class AppCompatDelegateImpl
   AppCompatDelegateImpl(Context paramContext, Window paramWindow, c paramc)
   {
     this.mContext = paramContext;
-    this.WM = paramWindow;
-    this.Yo = paramc;
-    this.Ym = this.WM.getCallback();
-    if ((this.Ym instanceof d)) {
+    this.WZ = paramWindow;
+    this.YB = paramc;
+    this.Yz = this.WZ.getCallback();
+    if ((this.Yz instanceof d)) {
       throw new IllegalStateException("AppCompat has already installed itself into the Window");
     }
-    this.Yn = new d(this.Ym);
-    this.WM.setCallback(this.Yn);
-    paramContext = az.a(paramContext, null, Yk);
-    paramWindow = paramContext.da(0);
+    this.YA = new d(this.Yz);
+    this.WZ.setCallback(this.YA);
+    paramContext = az.a(paramContext, null, Yx);
+    paramWindow = paramContext.cU(0);
     if (paramWindow != null) {
-      this.WM.setBackgroundDrawable(paramWindow);
+      this.WZ.setBackgroundDrawable(paramWindow);
     }
-    paramContext.ayA.recycle();
+    paramContext.ayy.recycle();
   }
   
   private View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
     String str;
     boolean bool;
-    if (this.YW == null)
+    if (this.Zj == null)
     {
       str = this.mContext.obtainStyledAttributes(android.support.v7.a.a.a.AppCompatTheme).getString(110);
       if ((str == null) || (AppCompatViewInflater.class.getName().equals(str))) {
-        this.YW = new AppCompatViewInflater();
+        this.Zj = new AppCompatViewInflater();
       }
     }
     else
     {
-      if (!Yj) {
+      if (!Yw) {
         break label192;
       }
       if (!(paramAttributeSet instanceof XmlPullParser)) {
@@ -237,15 +237,15 @@ final class AppCompatDelegateImpl
     {
       for (;;)
       {
-        return this.YW.createView(paramView, paramString, paramContext, paramAttributeSet, bool, Yj, true, be.ni());
+        return this.Zj.createView(paramView, paramString, paramContext, paramAttributeSet, bool, Yw, true, be.nk());
         try
         {
-          this.YW = ((AppCompatViewInflater)Class.forName(str).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
+          this.Zj = ((AppCompatViewInflater)Class.forName(str).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
         }
         catch (Throwable localThrowable)
         {
           new StringBuilder("Failed to instantiate custom view inflater ").append(str).append(". Falling back to default.");
-          this.YW = new AppCompatViewInflater();
+          this.Zj = new AppCompatViewInflater();
         }
       }
       break;
@@ -263,7 +263,7 @@ final class AppCompatDelegateImpl
   private void a(PanelFeatureState paramPanelFeatureState, KeyEvent paramKeyEvent)
   {
     int j = -1;
-    if ((paramPanelFeatureState.Vp) || (this.mIsDestroyed)) {}
+    if ((paramPanelFeatureState.VC) || (this.mIsDestroyed)) {}
     int i;
     Object localObject;
     label90:
@@ -275,15 +275,15 @@ final class AppCompatDelegateImpl
         for (;;)
         {
           return;
-          if (paramPanelFeatureState.Zh == 0) {
+          if (paramPanelFeatureState.Zu == 0) {
             if ((this.mContext.getResources().getConfiguration().screenLayout & 0xF) != 4) {
               break label90;
             }
           }
           for (i = 1; i == 0; i = 0)
           {
-            localObject = this.WM.getCallback();
-            if ((localObject == null) || (((Window.Callback)localObject).onMenuOpened(paramPanelFeatureState.Zh, paramPanelFeatureState.kC))) {
+            localObject = this.WZ.getCallback();
+            if ((localObject == null) || (((Window.Callback)localObject).onMenuOpened(paramPanelFeatureState.Zu, paramPanelFeatureState.kE))) {
               break label95;
             }
             a(paramPanelFeatureState, true);
@@ -292,18 +292,18 @@ final class AppCompatDelegateImpl
         }
         localObject = (WindowManager)this.mContext.getSystemService("window");
       } while ((localObject == null) || (!b(paramPanelFeatureState, paramKeyEvent)));
-      if ((paramPanelFeatureState.Zi != null) && (!paramPanelFeatureState.Zq)) {
+      if ((paramPanelFeatureState.Zv != null) && (!paramPanelFeatureState.ZD)) {
         break label370;
       }
-      if (paramPanelFeatureState.Zi != null) {
+      if (paramPanelFeatureState.Zv != null) {
         break;
       }
       a(paramPanelFeatureState);
-    } while (paramPanelFeatureState.Zi == null);
+    } while (paramPanelFeatureState.Zv == null);
     label158:
-    if ((c(paramPanelFeatureState)) && (paramPanelFeatureState.gJ()))
+    if ((c(paramPanelFeatureState)) && (paramPanelFeatureState.gQ()))
     {
-      paramKeyEvent = paramPanelFeatureState.Zj.getLayoutParams();
+      paramKeyEvent = paramPanelFeatureState.Zw.getLayoutParams();
       if (paramKeyEvent != null) {
         break label406;
       }
@@ -313,35 +313,35 @@ final class AppCompatDelegateImpl
     for (;;)
     {
       i = paramPanelFeatureState.background;
-      paramPanelFeatureState.Zi.setBackgroundResource(i);
-      ViewParent localViewParent = paramPanelFeatureState.Zj.getParent();
+      paramPanelFeatureState.Zv.setBackgroundResource(i);
+      ViewParent localViewParent = paramPanelFeatureState.Zw.getParent();
       if ((localViewParent != null) && ((localViewParent instanceof ViewGroup))) {
-        ((ViewGroup)localViewParent).removeView(paramPanelFeatureState.Zj);
+        ((ViewGroup)localViewParent).removeView(paramPanelFeatureState.Zw);
       }
-      paramPanelFeatureState.Zi.addView(paramPanelFeatureState.Zj, paramKeyEvent);
-      if (!paramPanelFeatureState.Zj.hasFocus()) {
-        paramPanelFeatureState.Zj.requestFocus();
+      paramPanelFeatureState.Zv.addView(paramPanelFeatureState.Zw, paramKeyEvent);
+      if (!paramPanelFeatureState.Zw.hasFocus()) {
+        paramPanelFeatureState.Zw.requestFocus();
       }
       i = -2;
       for (;;)
       {
-        paramPanelFeatureState.Zo = false;
+        paramPanelFeatureState.ZB = false;
         paramKeyEvent = new WindowManager.LayoutParams(i, -2, paramPanelFeatureState.x, paramPanelFeatureState.y, 1002, 8519680, -3);
         paramKeyEvent.gravity = paramPanelFeatureState.gravity;
         paramKeyEvent.windowAnimations = paramPanelFeatureState.windowAnimations;
-        ((WindowManager)localObject).addView(paramPanelFeatureState.Zi, paramKeyEvent);
-        paramPanelFeatureState.Vp = true;
+        ((WindowManager)localObject).addView(paramPanelFeatureState.Zv, paramKeyEvent);
+        paramPanelFeatureState.VC = true;
         return;
-        if ((!paramPanelFeatureState.Zq) || (paramPanelFeatureState.Zi.getChildCount() <= 0)) {
+        if ((!paramPanelFeatureState.ZD) || (paramPanelFeatureState.Zv.getChildCount() <= 0)) {
           break label158;
         }
-        paramPanelFeatureState.Zi.removeAllViews();
+        paramPanelFeatureState.Zv.removeAllViews();
         break label158;
         break;
         label370:
-        if (paramPanelFeatureState.Zk != null)
+        if (paramPanelFeatureState.Zx != null)
         {
-          paramKeyEvent = paramPanelFeatureState.Zk.getLayoutParams();
+          paramKeyEvent = paramPanelFeatureState.Zx.getLayoutParams();
           if (paramKeyEvent != null)
           {
             i = j;
@@ -357,8 +357,8 @@ final class AppCompatDelegateImpl
   
   private boolean a(PanelFeatureState paramPanelFeatureState)
   {
-    paramPanelFeatureState.Y(gx());
-    paramPanelFeatureState.Zi = new f(paramPanelFeatureState.Zm);
+    paramPanelFeatureState.Z(gE());
+    paramPanelFeatureState.Zv = new f(paramPanelFeatureState.Zz);
     paramPanelFeatureState.gravity = 81;
     return true;
   }
@@ -366,10 +366,10 @@ final class AppCompatDelegateImpl
   private boolean a(PanelFeatureState paramPanelFeatureState, int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramKeyEvent.isSystem()) {}
-    while (((!paramPanelFeatureState.Zn) && (!b(paramPanelFeatureState, paramKeyEvent))) || (paramPanelFeatureState.kC == null)) {
+    while (((!paramPanelFeatureState.ZA) && (!b(paramPanelFeatureState, paramKeyEvent))) || (paramPanelFeatureState.kE == null)) {
       return false;
     }
-    return paramPanelFeatureState.kC.performShortcut(paramInt, paramKeyEvent, 1);
+    return paramPanelFeatureState.kE.performShortcut(paramInt, paramKeyEvent, 1);
   }
   
   private boolean a(ViewParent paramViewParent)
@@ -377,13 +377,13 @@ final class AppCompatDelegateImpl
     if (paramViewParent == null) {
       return false;
     }
-    View localView = this.WM.getDecorView();
+    View localView = this.WZ.getDecorView();
     for (;;)
     {
       if (paramViewParent == null) {
         return true;
       }
-      if ((paramViewParent == localView) || (!(paramViewParent instanceof View)) || (android.support.v4.view.t.aC((View)paramViewParent))) {
+      if ((paramViewParent == localView) || (!(paramViewParent instanceof View)) || (u.aD((View)paramViewParent))) {
         return false;
       }
       paramViewParent = paramViewParent.getParent();
@@ -392,24 +392,24 @@ final class AppCompatDelegateImpl
   
   private b b(b.a parama)
   {
-    gC();
-    if (this.Yt != null) {
-      this.Yt.finish();
+    gJ();
+    if (this.YG != null) {
+      this.YG.finish();
     }
-    if ((this.Yo != null) && (!this.mIsDestroyed)) {}
+    if ((this.YB != null) && (!this.mIsDestroyed)) {}
     for (;;)
     {
       try
       {
-        b localb = this.Yo.onWindowStartingSupportActionMode(parama);
+        b localb = this.YB.onWindowStartingSupportActionMode(parama);
         if (localb == null) {
           break label95;
         }
-        this.Yt = localb;
-        if ((this.Yt != null) && (this.Yo != null)) {
-          this.Yo.onSupportActionModeStarted(this.Yt);
+        this.YG = localb;
+        if ((this.YG != null) && (this.YB != null)) {
+          this.YB.onSupportActionModeStarted(this.YG);
         }
-        return this.Yt;
+        return this.YG;
       }
       catch (AbstractMethodError localAbstractMethodError) {}
       Object localObject1 = null;
@@ -418,14 +418,14 @@ final class AppCompatDelegateImpl
       Object localObject2;
       label201:
       boolean bool;
-      if (this.Yu == null)
+      if (this.YH == null)
       {
-        if (!this.YH) {
+        if (!this.YU) {
           break label492;
         }
         localObject2 = new TypedValue();
         localObject1 = this.mContext.getTheme();
-        ((Resources.Theme)localObject1).resolveAttribute(2130968606, (TypedValue)localObject2, true);
+        ((Resources.Theme)localObject1).resolveAttribute(2130968607, (TypedValue)localObject2, true);
         if (((TypedValue)localObject2).resourceId != 0)
         {
           Resources.Theme localTheme = this.mContext.getResources().newTheme();
@@ -433,43 +433,43 @@ final class AppCompatDelegateImpl
           localTheme.applyStyle(((TypedValue)localObject2).resourceId, true);
           localObject1 = new android.support.v7.view.d(this.mContext, 0);
           ((Context)localObject1).getTheme().setTo(localTheme);
-          this.Yu = new ActionBarContextView((Context)localObject1);
-          this.Yv = new PopupWindow((Context)localObject1, null, 2130968620);
-          n.a(this.Yv, 2);
-          this.Yv.setContentView(this.Yu);
-          this.Yv.setWidth(-1);
-          ((Context)localObject1).getTheme().resolveAttribute(2130968600, (TypedValue)localObject2, true);
+          this.YH = new ActionBarContextView((Context)localObject1);
+          this.YI = new PopupWindow((Context)localObject1, null, 2130968621);
+          n.a(this.YI, 2);
+          this.YI.setContentView(this.YH);
+          this.YI.setWidth(-1);
+          ((Context)localObject1).getTheme().resolveAttribute(2130968601, (TypedValue)localObject2, true);
           int i = TypedValue.complexToDimensionPixelSize(((TypedValue)localObject2).data, ((Context)localObject1).getResources().getDisplayMetrics());
-          this.Yu.setContentHeight(i);
-          this.Yv.setHeight(-2);
-          this.Yw = new Runnable()
+          this.YH.setContentHeight(i);
+          this.YI.setHeight(-2);
+          this.YJ = new Runnable()
           {
             public final void run()
             {
-              AppCompatDelegateImpl.this.Yv.showAtLocation(AppCompatDelegateImpl.this.Yu, 55, 0, 0);
-              AppCompatDelegateImpl.this.gC();
-              if (AppCompatDelegateImpl.this.gB())
+              AppCompatDelegateImpl.this.YI.showAtLocation(AppCompatDelegateImpl.this.YH, 55, 0, 0);
+              AppCompatDelegateImpl.this.gJ();
+              if (AppCompatDelegateImpl.this.gI())
               {
-                AppCompatDelegateImpl.this.Yu.setAlpha(0.0F);
-                AppCompatDelegateImpl.this.Yx = android.support.v4.view.t.ag(AppCompatDelegateImpl.this.Yu).y(1.0F);
-                AppCompatDelegateImpl.this.Yx.a(new z()
+                AppCompatDelegateImpl.this.YH.setAlpha(0.0F);
+                AppCompatDelegateImpl.this.YK = u.ah(AppCompatDelegateImpl.this.YH).y(1.0F);
+                AppCompatDelegateImpl.this.YK.a(new android.support.v4.view.aa()
                 {
-                  public final void aH(View paramAnonymous2View)
-                  {
-                    AppCompatDelegateImpl.this.Yu.setVisibility(0);
-                  }
-                  
                   public final void aI(View paramAnonymous2View)
                   {
-                    AppCompatDelegateImpl.this.Yu.setAlpha(1.0F);
-                    AppCompatDelegateImpl.this.Yx.a(null);
-                    AppCompatDelegateImpl.this.Yx = null;
+                    AppCompatDelegateImpl.this.YH.setVisibility(0);
+                  }
+                  
+                  public final void aJ(View paramAnonymous2View)
+                  {
+                    AppCompatDelegateImpl.this.YH.setAlpha(1.0F);
+                    AppCompatDelegateImpl.this.YK.a(null);
+                    AppCompatDelegateImpl.this.YK = null;
                   }
                 });
                 return;
               }
-              AppCompatDelegateImpl.this.Yu.setAlpha(1.0F);
-              AppCompatDelegateImpl.this.Yu.setVisibility(0);
+              AppCompatDelegateImpl.this.YH.setAlpha(1.0F);
+              AppCompatDelegateImpl.this.YH.setVisibility(0);
             }
           };
         }
@@ -477,14 +477,14 @@ final class AppCompatDelegateImpl
       else
       {
         label319:
-        if (this.Yu == null) {
+        if (this.YH == null) {
           break label537;
         }
-        gC();
-        this.Yu.ip();
-        localObject1 = this.Yu.getContext();
-        localObject2 = this.Yu;
-        if (this.Yv != null) {
+        gJ();
+        this.YH.iy();
+        localObject1 = this.YH.getContext();
+        localObject2 = this.YH;
+        if (this.YI != null) {
           break label539;
         }
         bool = true;
@@ -494,48 +494,48 @@ final class AppCompatDelegateImpl
           break label598;
         }
         ((b)localObject1).invalidate();
-        this.Yu.c((b)localObject1);
-        this.Yt = ((b)localObject1);
-        if (!gB()) {
+        this.YH.c((b)localObject1);
+        this.YG = ((b)localObject1);
+        if (!gI()) {
           break label544;
         }
-        this.Yu.setAlpha(0.0F);
-        this.Yx = android.support.v4.view.t.ag(this.Yu).y(1.0F);
-        this.Yx.a(new z()
+        this.YH.setAlpha(0.0F);
+        this.YK = u.ah(this.YH).y(1.0F);
+        this.YK.a(new android.support.v4.view.aa()
         {
-          public final void aH(View paramAnonymousView)
+          public final void aI(View paramAnonymousView)
           {
-            AppCompatDelegateImpl.this.Yu.setVisibility(0);
-            AppCompatDelegateImpl.this.Yu.sendAccessibilityEvent(32);
-            if ((AppCompatDelegateImpl.this.Yu.getParent() instanceof View)) {
-              android.support.v4.view.t.ap((View)AppCompatDelegateImpl.this.Yu.getParent());
+            AppCompatDelegateImpl.this.YH.setVisibility(0);
+            AppCompatDelegateImpl.this.YH.sendAccessibilityEvent(32);
+            if ((AppCompatDelegateImpl.this.YH.getParent() instanceof View)) {
+              u.ap((View)AppCompatDelegateImpl.this.YH.getParent());
             }
           }
           
-          public final void aI(View paramAnonymousView)
+          public final void aJ(View paramAnonymousView)
           {
-            AppCompatDelegateImpl.this.Yu.setAlpha(1.0F);
-            AppCompatDelegateImpl.this.Yx.a(null);
-            AppCompatDelegateImpl.this.Yx = null;
+            AppCompatDelegateImpl.this.YH.setAlpha(1.0F);
+            AppCompatDelegateImpl.this.YK.a(null);
+            AppCompatDelegateImpl.this.YK = null;
           }
         });
       }
       for (;;)
       {
-        if (this.Yv == null) {
+        if (this.YI == null) {
           break label596;
         }
-        this.WM.getDecorView().post(this.Yw);
+        this.WZ.getDecorView().post(this.YJ);
         break;
         localObject1 = this.mContext;
         break label201;
         label492:
-        localObject1 = (ViewStubCompat)this.YA.findViewById(2131296372);
+        localObject1 = (ViewStubCompat)this.YN.findViewById(2131296397);
         if (localObject1 == null) {
           break label319;
         }
-        ((ViewStubCompat)localObject1).setLayoutInflater(LayoutInflater.from(gx()));
-        this.Yu = ((ActionBarContextView)((ViewStubCompat)localObject1).inflate());
+        ((ViewStubCompat)localObject1).setLayoutInflater(LayoutInflater.from(gE()));
+        this.YH = ((ActionBarContextView)((ViewStubCompat)localObject1).inflate());
         break label319;
         label537:
         break;
@@ -543,17 +543,17 @@ final class AppCompatDelegateImpl
         bool = false;
         break label361;
         label544:
-        this.Yu.setAlpha(1.0F);
-        this.Yu.setVisibility(0);
-        this.Yu.sendAccessibilityEvent(32);
-        if ((this.Yu.getParent() instanceof View)) {
-          android.support.v4.view.t.ap((View)this.Yu.getParent());
+        this.YH.setAlpha(1.0F);
+        this.YH.setVisibility(0);
+        this.YH.sendAccessibilityEvent(32);
+        if ((this.YH.getParent() instanceof View)) {
+          u.ap((View)this.YH.getParent());
         }
       }
       label596:
       continue;
       label598:
-      this.Yt = null;
+      this.YG = null;
     }
   }
   
@@ -563,18 +563,18 @@ final class AppCompatDelegateImpl
     TypedValue localTypedValue;
     Resources.Theme localTheme;
     Object localObject1;
-    if (((paramPanelFeatureState.Zh == 0) || (paramPanelFeatureState.Zh == 108)) && (this.Yq != null))
+    if (((paramPanelFeatureState.Zu == 0) || (paramPanelFeatureState.Zu == 108)) && (this.YD != null))
     {
       localTypedValue = new TypedValue();
       localTheme = localContext.getTheme();
-      localTheme.resolveAttribute(2130968606, localTypedValue, true);
+      localTheme.resolveAttribute(2130968607, localTypedValue, true);
       localObject1 = null;
       if (localTypedValue.resourceId != 0)
       {
         localObject1 = localContext.getResources().newTheme();
         ((Resources.Theme)localObject1).setTo(localTheme);
         ((Resources.Theme)localObject1).applyStyle(localTypedValue.resourceId, true);
-        ((Resources.Theme)localObject1).resolveAttribute(2130968607, localTypedValue, true);
+        ((Resources.Theme)localObject1).resolveAttribute(2130968608, localTypedValue, true);
         Object localObject2 = localObject1;
         if (localTypedValue.resourceId != 0)
         {
@@ -599,7 +599,7 @@ final class AppCompatDelegateImpl
       ((h)localObject1).a(this);
       paramPanelFeatureState.e((h)localObject1);
       return true;
-      localTheme.resolveAttribute(2130968607, localTypedValue, true);
+      localTheme.resolveAttribute(2130968608, localTypedValue, true);
       break;
       label203:
       localObject1 = localContext;
@@ -611,68 +611,68 @@ final class AppCompatDelegateImpl
     if (this.mIsDestroyed) {
       return false;
     }
-    if (paramPanelFeatureState.Zn) {
+    if (paramPanelFeatureState.ZA) {
       return true;
     }
-    if ((this.YL != null) && (this.YL != paramPanelFeatureState)) {
-      a(this.YL, false);
+    if ((this.YY != null) && (this.YY != paramPanelFeatureState)) {
+      a(this.YY, false);
     }
-    Window.Callback localCallback = this.WM.getCallback();
+    Window.Callback localCallback = this.WZ.getCallback();
     if (localCallback != null) {
-      paramPanelFeatureState.Zk = localCallback.onCreatePanelView(paramPanelFeatureState.Zh);
+      paramPanelFeatureState.Zx = localCallback.onCreatePanelView(paramPanelFeatureState.Zu);
     }
-    if ((paramPanelFeatureState.Zh == 0) || (paramPanelFeatureState.Zh == 108)) {}
+    if ((paramPanelFeatureState.Zu == 0) || (paramPanelFeatureState.Zu == 108)) {}
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) && (this.Yq != null)) {
-        this.Yq.iu();
+      if ((i != 0) && (this.YD != null)) {
+        this.YD.iD();
       }
-      if ((paramPanelFeatureState.Zk != null) || ((i != 0) && ((this.mActionBar instanceof g)))) {
+      if ((paramPanelFeatureState.Zx != null) || ((i != 0) && ((this.mActionBar instanceof g)))) {
         break label408;
       }
-      if ((paramPanelFeatureState.kC != null) && (!paramPanelFeatureState.Zr)) {
+      if ((paramPanelFeatureState.kE != null) && (!paramPanelFeatureState.ZE)) {
         break label278;
       }
-      if (paramPanelFeatureState.kC == null)
+      if (paramPanelFeatureState.kE == null)
       {
         b(paramPanelFeatureState);
-        if (paramPanelFeatureState.kC == null) {
+        if (paramPanelFeatureState.kE == null) {
           break;
         }
       }
-      if ((i != 0) && (this.Yq != null))
+      if ((i != 0) && (this.YD != null))
       {
-        if (this.Yr == null) {
-          this.Yr = new b();
+        if (this.YE == null) {
+          this.YE = new b();
         }
-        this.Yq.a(paramPanelFeatureState.kC, this.Yr);
+        this.YD.a(paramPanelFeatureState.kE, this.YE);
       }
-      paramPanelFeatureState.kC.hR();
-      if (localCallback.onCreatePanelMenu(paramPanelFeatureState.Zh, paramPanelFeatureState.kC)) {
+      paramPanelFeatureState.kE.ia();
+      if (localCallback.onCreatePanelMenu(paramPanelFeatureState.Zu, paramPanelFeatureState.kE)) {
         break label273;
       }
       paramPanelFeatureState.e(null);
-      if ((i == 0) || (this.Yq == null)) {
+      if ((i == 0) || (this.YD == null)) {
         break;
       }
-      this.Yq.a(null, this.Yr);
+      this.YD.a(null, this.YE);
       return false;
     }
     label273:
-    paramPanelFeatureState.Zr = false;
+    paramPanelFeatureState.ZE = false;
     label278:
-    paramPanelFeatureState.kC.hR();
-    if (paramPanelFeatureState.Zs != null)
+    paramPanelFeatureState.kE.ia();
+    if (paramPanelFeatureState.ZF != null)
     {
-      paramPanelFeatureState.kC.g(paramPanelFeatureState.Zs);
-      paramPanelFeatureState.Zs = null;
+      paramPanelFeatureState.kE.g(paramPanelFeatureState.ZF);
+      paramPanelFeatureState.ZF = null;
     }
-    if (!localCallback.onPreparePanel(0, paramPanelFeatureState.Zk, paramPanelFeatureState.kC))
+    if (!localCallback.onPreparePanel(0, paramPanelFeatureState.Zx, paramPanelFeatureState.kE))
     {
-      if ((i != 0) && (this.Yq != null)) {
-        this.Yq.a(null, this.Yr);
+      if ((i != 0) && (this.YD != null)) {
+        this.YD.a(null, this.YE);
       }
-      paramPanelFeatureState.kC.hS();
+      paramPanelFeatureState.kE.ib();
       return false;
     }
     if (paramKeyEvent != null)
@@ -686,19 +686,19 @@ final class AppCompatDelegateImpl
     label430:
     for (boolean bool = true;; bool = false)
     {
-      paramPanelFeatureState.Zp = bool;
-      paramPanelFeatureState.kC.setQwertyMode(paramPanelFeatureState.Zp);
-      paramPanelFeatureState.kC.hS();
-      paramPanelFeatureState.Zn = true;
-      paramPanelFeatureState.Zo = false;
-      this.YL = paramPanelFeatureState;
+      paramPanelFeatureState.ZC = bool;
+      paramPanelFeatureState.kE.setQwertyMode(paramPanelFeatureState.ZC);
+      paramPanelFeatureState.kE.ib();
+      paramPanelFeatureState.ZA = true;
+      paramPanelFeatureState.ZB = false;
+      this.YY = paramPanelFeatureState;
       return true;
       i = -1;
       break;
     }
   }
   
-  private static int bl(int paramInt)
+  private static int bm(int paramInt)
   {
     int i;
     if (paramInt == 8) {
@@ -712,7 +712,7 @@ final class AppCompatDelegateImpl
     return 109;
   }
   
-  private int bm(int paramInt)
+  private int bn(int paramInt)
   {
     switch (paramInt)
     {
@@ -722,13 +722,13 @@ final class AppCompatDelegateImpl
       if ((Build.VERSION.SDK_INT >= 23) && (((UiModeManager)this.mContext.getSystemService(UiModeManager.class)).getNightMode() == 0)) {
         return -1;
       }
-      gG();
-      return this.YP.gI();
+      gN();
+      return this.Zc.gP();
     }
     return -1;
   }
   
-  private boolean bn(int paramInt)
+  private boolean bo(int paramInt)
   {
     Resources localResources = this.mContext.getResources();
     Configuration localConfiguration = localResources.getConfiguration();
@@ -739,7 +739,7 @@ final class AppCompatDelegateImpl
       if ((i & 0x30) == paramInt) {
         break label116;
       }
-      if (!gH()) {
+      if (!gO()) {
         break label61;
       }
       ((Activity)this.mContext).recreate();
@@ -764,25 +764,223 @@ final class AppCompatDelegateImpl
   
   private boolean c(PanelFeatureState paramPanelFeatureState)
   {
-    if (paramPanelFeatureState.Zk != null)
+    if (paramPanelFeatureState.Zx != null)
     {
-      paramPanelFeatureState.Zj = paramPanelFeatureState.Zk;
+      paramPanelFeatureState.Zw = paramPanelFeatureState.Zx;
       return true;
     }
-    if (paramPanelFeatureState.kC == null) {
+    if (paramPanelFeatureState.kE == null) {
       return false;
     }
-    if (this.Ys == null) {
-      this.Ys = new g();
+    if (this.YF == null) {
+      this.YF = new g();
     }
-    paramPanelFeatureState.Zj = ((View)paramPanelFeatureState.b(this.Ys));
-    return paramPanelFeatureState.Zj != null;
+    paramPanelFeatureState.Zw = ((View)paramPanelFeatureState.b(this.YF));
+    return paramPanelFeatureState.Zw != null;
   }
   
-  private void gA()
+  private void gD()
   {
-    ContentFrameLayout localContentFrameLayout = (ContentFrameLayout)this.YA.findViewById(16908290);
-    Object localObject = this.WM.getDecorView();
+    gF();
+    if ((!this.YR) || (this.mActionBar != null)) {}
+    for (;;)
+    {
+      return;
+      if ((this.Yz instanceof Activity)) {
+        this.mActionBar = new j((Activity)this.Yz, this.YS);
+      }
+      while (this.mActionBar != null)
+      {
+        this.mActionBar.P(this.Zg);
+        return;
+        if ((this.Yz instanceof Dialog)) {
+          this.mActionBar = new j((Dialog)this.Yz);
+        }
+      }
+    }
+  }
+  
+  private Context gE()
+  {
+    Context localContext = null;
+    Object localObject = getSupportActionBar();
+    if (localObject != null) {
+      localContext = ((ActionBar)localObject).getThemedContext();
+    }
+    localObject = localContext;
+    if (localContext == null) {
+      localObject = this.mContext;
+    }
+    return localObject;
+  }
+  
+  private void gF()
+  {
+    Object localObject;
+    if (!this.YM)
+    {
+      this.YN = gG();
+      localObject = getTitle();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (this.YD == null) {
+          break label84;
+        }
+        this.YD.setWindowTitle((CharSequence)localObject);
+      }
+    }
+    for (;;)
+    {
+      gH();
+      this.YM = true;
+      localObject = bj(0);
+      if ((!this.mIsDestroyed) && ((localObject == null) || (((PanelFeatureState)localObject).kE == null))) {
+        invalidatePanelMenu(108);
+      }
+      return;
+      label84:
+      if (this.mActionBar != null) {
+        this.mActionBar.setWindowTitle((CharSequence)localObject);
+      } else if (this.Xy != null) {
+        this.Xy.setText((CharSequence)localObject);
+      }
+    }
+  }
+  
+  private ViewGroup gG()
+  {
+    Object localObject = this.mContext.obtainStyledAttributes(android.support.v7.a.a.a.AppCompatTheme);
+    if (!((TypedArray)localObject).hasValue(111))
+    {
+      ((TypedArray)localObject).recycle();
+      throw new IllegalStateException("You need to use a Theme.AppCompat theme (or descendant) with this activity.");
+    }
+    if (((TypedArray)localObject).getBoolean(120, false))
+    {
+      requestWindowFeature(1);
+      if (((TypedArray)localObject).getBoolean(112, false)) {
+        requestWindowFeature(109);
+      }
+      if (((TypedArray)localObject).getBoolean(113, false)) {
+        requestWindowFeature(10);
+      }
+      this.YU = ((TypedArray)localObject).getBoolean(0, false);
+      ((TypedArray)localObject).recycle();
+      this.WZ.getDecorView();
+      localObject = LayoutInflater.from(this.mContext);
+      if (this.YV) {
+        break label423;
+      }
+      if (!this.YU) {
+        break label261;
+      }
+      localObject = (ViewGroup)((LayoutInflater)localObject).inflate(2131492920, null);
+      this.YS = false;
+      this.YR = false;
+    }
+    for (;;)
+    {
+      if (localObject == null)
+      {
+        throw new IllegalArgumentException("AppCompat does not support the current theme features: { windowActionBar: " + this.YR + ", windowActionBarOverlay: " + this.YS + ", android:windowIsFloating: " + this.YU + ", windowActionModeOverlay: " + this.YT + ", windowNoTitle: " + this.YV + " }");
+        if (!((TypedArray)localObject).getBoolean(111, false)) {
+          break;
+        }
+        requestWindowFeature(108);
+        break;
+        label261:
+        if (!this.YR) {
+          break label631;
+        }
+        localObject = new TypedValue();
+        this.mContext.getTheme().resolveAttribute(2130968607, (TypedValue)localObject, true);
+        if (((TypedValue)localObject).resourceId != 0) {}
+        for (localObject = new android.support.v7.view.d(this.mContext, ((TypedValue)localObject).resourceId);; localObject = this.mContext)
+        {
+          localObject = (ViewGroup)LayoutInflater.from((Context)localObject).inflate(2131492931, null);
+          this.YD = ((t)((ViewGroup)localObject).findViewById(2131299436));
+          this.YD.setWindowCallback(this.WZ.getCallback());
+          if (this.YS) {
+            this.YD.bw(109);
+          }
+          if (this.YP) {
+            this.YD.bw(2);
+          }
+          if (this.YQ) {
+            this.YD.bw(5);
+          }
+          break;
+        }
+        label423:
+        if (this.YT) {}
+        for (localObject = (ViewGroup)((LayoutInflater)localObject).inflate(2131492930, null);; localObject = (ViewGroup)((LayoutInflater)localObject).inflate(2131492929, null))
+        {
+          if (Build.VERSION.SDK_INT < 21) {
+            break label480;
+          }
+          u.a((View)localObject, new android.support.v4.view.p()
+          {
+            public final ac a(View paramAnonymousView, ac paramAnonymousac)
+            {
+              int i = paramAnonymousac.getSystemWindowInsetTop();
+              int j = AppCompatDelegateImpl.this.bl(i);
+              ac localac = paramAnonymousac;
+              if (i != j) {
+                localac = paramAnonymousac.f(paramAnonymousac.getSystemWindowInsetLeft(), j, paramAnonymousac.getSystemWindowInsetRight(), paramAnonymousac.getSystemWindowInsetBottom());
+              }
+              return u.a(paramAnonymousView, localac);
+            }
+          });
+          break;
+        }
+        label480:
+        ((android.support.v7.widget.aa)localObject).setOnFitSystemWindowsListener(new aa.a()
+        {
+          public final void f(Rect paramAnonymousRect)
+          {
+            paramAnonymousRect.top = AppCompatDelegateImpl.this.bl(paramAnonymousRect.top);
+          }
+        });
+        continue;
+      }
+      if (this.YD == null) {
+        this.Xy = ((TextView)((ViewGroup)localObject).findViewById(2131309195));
+      }
+      bh.bS((View)localObject);
+      ContentFrameLayout localContentFrameLayout = (ContentFrameLayout)((ViewGroup)localObject).findViewById(2131296364);
+      ViewGroup localViewGroup = (ViewGroup)this.WZ.findViewById(16908290);
+      if (localViewGroup != null)
+      {
+        while (localViewGroup.getChildCount() > 0)
+        {
+          View localView = localViewGroup.getChildAt(0);
+          localViewGroup.removeViewAt(0);
+          localContentFrameLayout.addView(localView);
+        }
+        localViewGroup.setId(-1);
+        localContentFrameLayout.setId(16908290);
+        if ((localViewGroup instanceof FrameLayout)) {
+          ((FrameLayout)localViewGroup).setForeground(null);
+        }
+      }
+      this.WZ.setContentView((View)localObject);
+      localContentFrameLayout.setAttachListener(new ContentFrameLayout.a()
+      {
+        public final void onDetachedFromWindow()
+        {
+          AppCompatDelegateImpl.this.gM();
+        }
+      });
+      return localObject;
+      label631:
+      localObject = null;
+    }
+  }
+  
+  private void gH()
+  {
+    ContentFrameLayout localContentFrameLayout = (ContentFrameLayout)this.YN.findViewById(16908290);
+    Object localObject = this.WZ.getDecorView();
     localContentFrameLayout.j(((View)localObject).getPaddingLeft(), ((View)localObject).getPaddingTop(), ((View)localObject).getPaddingRight(), ((View)localObject).getPaddingBottom());
     localObject = this.mContext.obtainStyledAttributes(android.support.v7.a.a.a.AppCompatTheme);
     ((TypedArray)localObject).getValue(118, localContentFrameLayout.getMinWidthMajor());
@@ -803,24 +1001,24 @@ final class AppCompatDelegateImpl
     localContentFrameLayout.requestLayout();
   }
   
-  private void gE()
+  private void gL()
   {
-    if (this.Yz) {
+    if (this.YM) {
       throw new AndroidRuntimeException("Window feature must be requested before adding content");
     }
   }
   
-  private void gG()
+  private void gN()
   {
-    if (this.YP == null) {
-      this.YP = new e(i.Z(this.mContext));
+    if (this.Zc == null) {
+      this.Zc = new e(i.aa(this.mContext));
     }
   }
   
-  private boolean gH()
+  private boolean gO()
   {
     PackageManager localPackageManager;
-    if ((this.YO) && ((this.mContext instanceof Activity))) {
+    if ((this.Zb) && ((this.mContext instanceof Activity))) {
       localPackageManager = this.mContext.getPackageManager();
     }
     try
@@ -835,231 +1033,33 @@ final class AppCompatDelegateImpl
   
   private int getNightMode()
   {
-    if (this.YN != -100) {
-      return this.YN;
+    if (this.Za != -100) {
+      return this.Za;
     }
-    return d.Yi;
+    return d.Yv;
   }
   
   private CharSequence getTitle()
   {
-    if ((this.Ym instanceof Activity)) {
-      return ((Activity)this.Ym).getTitle();
+    if ((this.Yz instanceof Activity)) {
+      return ((Activity)this.Yz).getTitle();
     }
-    return this.Hd;
-  }
-  
-  private void gw()
-  {
-    gy();
-    if ((!this.YE) || (this.mActionBar != null)) {}
-    for (;;)
-    {
-      return;
-      if ((this.Ym instanceof Activity)) {
-        this.mActionBar = new j((Activity)this.Ym, this.YF);
-      }
-      while (this.mActionBar != null)
-      {
-        this.mActionBar.Q(this.YT);
-        return;
-        if ((this.Ym instanceof Dialog)) {
-          this.mActionBar = new j((Dialog)this.Ym);
-        }
-      }
-    }
-  }
-  
-  private Context gx()
-  {
-    Context localContext = null;
-    Object localObject = getSupportActionBar();
-    if (localObject != null) {
-      localContext = ((ActionBar)localObject).getThemedContext();
-    }
-    localObject = localContext;
-    if (localContext == null) {
-      localObject = this.mContext;
-    }
-    return localObject;
-  }
-  
-  private void gy()
-  {
-    Object localObject;
-    if (!this.Yz)
-    {
-      this.YA = gz();
-      localObject = getTitle();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        if (this.Yq == null) {
-          break label84;
-        }
-        this.Yq.setWindowTitle((CharSequence)localObject);
-      }
-    }
-    for (;;)
-    {
-      gA();
-      this.Yz = true;
-      localObject = bi(0);
-      if ((!this.mIsDestroyed) && ((localObject == null) || (((PanelFeatureState)localObject).kC == null))) {
-        invalidatePanelMenu(108);
-      }
-      return;
-      label84:
-      if (this.mActionBar != null) {
-        this.mActionBar.setWindowTitle((CharSequence)localObject);
-      } else if (this.Xl != null) {
-        this.Xl.setText((CharSequence)localObject);
-      }
-    }
-  }
-  
-  private ViewGroup gz()
-  {
-    Object localObject = this.mContext.obtainStyledAttributes(android.support.v7.a.a.a.AppCompatTheme);
-    if (!((TypedArray)localObject).hasValue(111))
-    {
-      ((TypedArray)localObject).recycle();
-      throw new IllegalStateException("You need to use a Theme.AppCompat theme (or descendant) with this activity.");
-    }
-    if (((TypedArray)localObject).getBoolean(120, false))
-    {
-      requestWindowFeature(1);
-      if (((TypedArray)localObject).getBoolean(112, false)) {
-        requestWindowFeature(109);
-      }
-      if (((TypedArray)localObject).getBoolean(113, false)) {
-        requestWindowFeature(10);
-      }
-      this.YH = ((TypedArray)localObject).getBoolean(0, false);
-      ((TypedArray)localObject).recycle();
-      this.WM.getDecorView();
-      localObject = LayoutInflater.from(this.mContext);
-      if (this.YI) {
-        break label423;
-      }
-      if (!this.YH) {
-        break label261;
-      }
-      localObject = (ViewGroup)((LayoutInflater)localObject).inflate(2131492903, null);
-      this.YF = false;
-      this.YE = false;
-    }
-    for (;;)
-    {
-      if (localObject == null)
-      {
-        throw new IllegalArgumentException("AppCompat does not support the current theme features: { windowActionBar: " + this.YE + ", windowActionBarOverlay: " + this.YF + ", android:windowIsFloating: " + this.YH + ", windowActionModeOverlay: " + this.YG + ", windowNoTitle: " + this.YI + " }");
-        if (!((TypedArray)localObject).getBoolean(111, false)) {
-          break;
-        }
-        requestWindowFeature(108);
-        break;
-        label261:
-        if (!this.YE) {
-          break label631;
-        }
-        localObject = new TypedValue();
-        this.mContext.getTheme().resolveAttribute(2130968606, (TypedValue)localObject, true);
-        if (((TypedValue)localObject).resourceId != 0) {}
-        for (localObject = new android.support.v7.view.d(this.mContext, ((TypedValue)localObject).resourceId);; localObject = this.mContext)
-        {
-          localObject = (ViewGroup)LayoutInflater.from((Context)localObject).inflate(2131492914, null);
-          this.Yq = ((android.support.v7.widget.t)((ViewGroup)localObject).findViewById(2131298945));
-          this.Yq.setWindowCallback(this.WM.getCallback());
-          if (this.YF) {
-            this.Yq.bv(109);
-          }
-          if (this.YC) {
-            this.Yq.bv(2);
-          }
-          if (this.YD) {
-            this.Yq.bv(5);
-          }
-          break;
-        }
-        label423:
-        if (this.YG) {}
-        for (localObject = (ViewGroup)((LayoutInflater)localObject).inflate(2131492913, null);; localObject = (ViewGroup)((LayoutInflater)localObject).inflate(2131492912, null))
-        {
-          if (Build.VERSION.SDK_INT < 21) {
-            break label480;
-          }
-          android.support.v4.view.t.a((View)localObject, new android.support.v4.view.p()
-          {
-            public final ab a(View paramAnonymousView, ab paramAnonymousab)
-            {
-              int i = paramAnonymousab.getSystemWindowInsetTop();
-              int j = AppCompatDelegateImpl.this.bk(i);
-              ab localab = paramAnonymousab;
-              if (i != j) {
-                localab = paramAnonymousab.f(paramAnonymousab.getSystemWindowInsetLeft(), j, paramAnonymousab.getSystemWindowInsetRight(), paramAnonymousab.getSystemWindowInsetBottom());
-              }
-              return android.support.v4.view.t.a(paramAnonymousView, localab);
-            }
-          });
-          break;
-        }
-        label480:
-        ((aa)localObject).setOnFitSystemWindowsListener(new aa.a()
-        {
-          public final void f(Rect paramAnonymousRect)
-          {
-            paramAnonymousRect.top = AppCompatDelegateImpl.this.bk(paramAnonymousRect.top);
-          }
-        });
-        continue;
-      }
-      if (this.Yq == null) {
-        this.Xl = ((TextView)((ViewGroup)localObject).findViewById(2131305902));
-      }
-      bh.cg((View)localObject);
-      ContentFrameLayout localContentFrameLayout = (ContentFrameLayout)((ViewGroup)localObject).findViewById(2131296344);
-      ViewGroup localViewGroup = (ViewGroup)this.WM.findViewById(16908290);
-      if (localViewGroup != null)
-      {
-        while (localViewGroup.getChildCount() > 0)
-        {
-          View localView = localViewGroup.getChildAt(0);
-          localViewGroup.removeViewAt(0);
-          localContentFrameLayout.addView(localView);
-        }
-        localViewGroup.setId(-1);
-        localContentFrameLayout.setId(16908290);
-        if ((localViewGroup instanceof FrameLayout)) {
-          ((FrameLayout)localViewGroup).setForeground(null);
-        }
-      }
-      this.WM.setContentView((View)localObject);
-      localContentFrameLayout.setAttachListener(new ContentFrameLayout.a()
-      {
-        public final void onDetachedFromWindow()
-        {
-          AppCompatDelegateImpl.this.gF();
-        }
-      });
-      return localObject;
-      label631:
-      localObject = null;
-    }
+    return this.Hn;
   }
   
   private void invalidatePanelMenu(int paramInt)
   {
-    this.YR |= 1 << paramInt;
-    if (!this.YQ)
+    this.Ze |= 1 << paramInt;
+    if (!this.Zd)
     {
-      android.support.v4.view.t.b(this.WM.getDecorView(), this.YS);
-      this.YQ = true;
+      u.b(this.WZ.getDecorView(), this.Zf);
+      this.Zd = true;
     }
   }
   
   final PanelFeatureState a(Menu paramMenu)
   {
-    PanelFeatureState[] arrayOfPanelFeatureState = this.YK;
+    PanelFeatureState[] arrayOfPanelFeatureState = this.YX;
     int i;
     int j;
     if (arrayOfPanelFeatureState != null)
@@ -1073,7 +1073,7 @@ final class AppCompatDelegateImpl
         break label57;
       }
       PanelFeatureState localPanelFeatureState = arrayOfPanelFeatureState[j];
-      if ((localPanelFeatureState != null) && (localPanelFeatureState.kC == paramMenu))
+      if ((localPanelFeatureState != null) && (localPanelFeatureState.kE == paramMenu))
       {
         return localPanelFeatureState;
         i = 0;
@@ -1098,8 +1098,8 @@ final class AppCompatDelegateImpl
         if (paramInt >= 0)
         {
           localPanelFeatureState = paramPanelFeatureState;
-          if (paramInt < this.YK.length) {
-            localPanelFeatureState = this.YK[paramInt];
+          if (paramInt < this.YX.length) {
+            localPanelFeatureState = this.YX[paramInt];
           }
         }
       }
@@ -1107,50 +1107,50 @@ final class AppCompatDelegateImpl
       localObject2 = paramMenu;
       if (localPanelFeatureState != null)
       {
-        localObject2 = localPanelFeatureState.kC;
+        localObject2 = localPanelFeatureState.kE;
         localObject1 = localPanelFeatureState;
       }
     }
-    if ((localObject1 != null) && (!((PanelFeatureState)localObject1).Vp)) {}
+    if ((localObject1 != null) && (!((PanelFeatureState)localObject1).VC)) {}
     while (this.mIsDestroyed) {
       return;
     }
-    this.Ym.onPanelClosed(paramInt, (Menu)localObject2);
+    this.Yz.onPanelClosed(paramInt, (Menu)localObject2);
   }
   
   final void a(PanelFeatureState paramPanelFeatureState, boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramPanelFeatureState.Zh == 0) && (this.Yq != null) && (this.Yq.isOverflowMenuShowing())) {
-      c(paramPanelFeatureState.kC);
+    if ((paramBoolean) && (paramPanelFeatureState.Zu == 0) && (this.YD != null) && (this.YD.isOverflowMenuShowing())) {
+      c(paramPanelFeatureState.kE);
     }
     do
     {
       return;
       WindowManager localWindowManager = (WindowManager)this.mContext.getSystemService("window");
-      if ((localWindowManager != null) && (paramPanelFeatureState.Vp) && (paramPanelFeatureState.Zi != null))
+      if ((localWindowManager != null) && (paramPanelFeatureState.VC) && (paramPanelFeatureState.Zv != null))
       {
-        localWindowManager.removeView(paramPanelFeatureState.Zi);
+        localWindowManager.removeView(paramPanelFeatureState.Zv);
         if (paramBoolean) {
-          a(paramPanelFeatureState.Zh, paramPanelFeatureState, null);
+          a(paramPanelFeatureState.Zu, paramPanelFeatureState, null);
         }
       }
-      paramPanelFeatureState.Zn = false;
-      paramPanelFeatureState.Zo = false;
-      paramPanelFeatureState.Vp = false;
-      paramPanelFeatureState.Zj = null;
-      paramPanelFeatureState.Zq = true;
-    } while (this.YL != paramPanelFeatureState);
-    this.YL = null;
+      paramPanelFeatureState.ZA = false;
+      paramPanelFeatureState.ZB = false;
+      paramPanelFeatureState.VC = false;
+      paramPanelFeatureState.Zw = null;
+      paramPanelFeatureState.ZD = true;
+    } while (this.YY != paramPanelFeatureState);
+    this.YY = null;
   }
   
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
-    Window.Callback localCallback = this.WM.getCallback();
+    Window.Callback localCallback = this.WZ.getCallback();
     if ((localCallback != null) && (!this.mIsDestroyed))
     {
-      paramh = a(paramh.hY());
+      paramh = a(paramh.ii());
       if (paramh != null) {
-        return localCallback.onMenuItemSelected(paramh.Zh, paramMenuItem);
+        return localCallback.onMenuItemSelected(paramh.Zu, paramMenuItem);
       }
     }
     return false;
@@ -1158,54 +1158,54 @@ final class AppCompatDelegateImpl
   
   public final void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    gy();
-    ((ViewGroup)this.YA.findViewById(16908290)).addView(paramView, paramLayoutParams);
-    this.Ym.onContentChanged();
+    gF();
+    ((ViewGroup)this.YN.findViewById(16908290)).addView(paramView, paramLayoutParams);
+    this.Yz.onContentChanged();
   }
   
   public final void b(h paramh)
   {
-    if ((this.Yq != null) && (this.Yq.is()) && ((!ViewConfiguration.get(this.mContext).hasPermanentMenuKey()) || (this.Yq.it())))
+    if ((this.YD != null) && (this.YD.iB()) && ((!ViewConfiguration.get(this.mContext).hasPermanentMenuKey()) || (this.YD.iC())))
     {
-      paramh = this.WM.getCallback();
-      if (!this.Yq.isOverflowMenuShowing()) {
+      paramh = this.WZ.getCallback();
+      if (!this.YD.isOverflowMenuShowing()) {
         if ((paramh != null) && (!this.mIsDestroyed))
         {
-          if ((this.YQ) && ((this.YR & 0x1) != 0))
+          if ((this.Zd) && ((this.Ze & 0x1) != 0))
           {
-            this.WM.getDecorView().removeCallbacks(this.YS);
-            this.YS.run();
+            this.WZ.getDecorView().removeCallbacks(this.Zf);
+            this.Zf.run();
           }
-          PanelFeatureState localPanelFeatureState = bi(0);
-          if ((localPanelFeatureState.kC != null) && (!localPanelFeatureState.Zr) && (paramh.onPreparePanel(0, localPanelFeatureState.Zk, localPanelFeatureState.kC)))
+          PanelFeatureState localPanelFeatureState = bj(0);
+          if ((localPanelFeatureState.kE != null) && (!localPanelFeatureState.ZE) && (paramh.onPreparePanel(0, localPanelFeatureState.Zx, localPanelFeatureState.kE)))
           {
-            paramh.onMenuOpened(108, localPanelFeatureState.kC);
-            this.Yq.showOverflowMenu();
+            paramh.onMenuOpened(108, localPanelFeatureState.kE);
+            this.YD.showOverflowMenu();
           }
         }
       }
       do
       {
         return;
-        this.Yq.hideOverflowMenu();
+        this.YD.hideOverflowMenu();
       } while (this.mIsDestroyed);
-      paramh.onPanelClosed(108, bi(0).kC);
+      paramh.onPanelClosed(108, bj(0).kE);
       return;
     }
-    paramh = bi(0);
-    paramh.Zq = true;
+    paramh = bj(0);
+    paramh.ZD = true;
     a(paramh, false);
     a(paramh, null);
   }
   
-  final void bh(int paramInt)
+  final void bi(int paramInt)
   {
     Object localObject;
     if (paramInt == 108)
     {
       localObject = getSupportActionBar();
       if (localObject != null) {
-        ((ActionBar)localObject).S(false);
+        ((ActionBar)localObject).R(false);
       }
     }
     do
@@ -1214,14 +1214,14 @@ final class AppCompatDelegateImpl
       {
         return;
       } while (paramInt != 0);
-      localObject = bi(paramInt);
-    } while (!((PanelFeatureState)localObject).Vp);
+      localObject = bj(paramInt);
+    } while (!((PanelFeatureState)localObject).VC);
     a((PanelFeatureState)localObject, false);
   }
   
-  protected final PanelFeatureState bi(int paramInt)
+  protected final PanelFeatureState bj(int paramInt)
   {
-    Object localObject2 = this.YK;
+    Object localObject2 = this.YX;
     Object localObject1;
     if (localObject2 != null)
     {
@@ -1234,7 +1234,7 @@ final class AppCompatDelegateImpl
       if (localObject2 != null) {
         System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
       }
-      this.YK = ((PanelFeatureState[])localObject1);
+      this.YX = ((PanelFeatureState[])localObject1);
     }
     localObject2 = localObject1[paramInt];
     if (localObject2 == null)
@@ -1246,53 +1246,53 @@ final class AppCompatDelegateImpl
     return localObject2;
   }
   
-  final void bj(int paramInt)
+  final void bk(int paramInt)
   {
-    PanelFeatureState localPanelFeatureState = bi(paramInt);
-    if (localPanelFeatureState.kC != null)
+    PanelFeatureState localPanelFeatureState = bj(paramInt);
+    if (localPanelFeatureState.kE != null)
     {
       Bundle localBundle = new Bundle();
-      localPanelFeatureState.kC.f(localBundle);
+      localPanelFeatureState.kE.f(localBundle);
       if (localBundle.size() > 0) {
-        localPanelFeatureState.Zs = localBundle;
+        localPanelFeatureState.ZF = localBundle;
       }
-      localPanelFeatureState.kC.hR();
-      localPanelFeatureState.kC.clear();
+      localPanelFeatureState.kE.ia();
+      localPanelFeatureState.kE.clear();
     }
-    localPanelFeatureState.Zr = true;
-    localPanelFeatureState.Zq = true;
-    if (((paramInt == 108) || (paramInt == 0)) && (this.Yq != null))
+    localPanelFeatureState.ZE = true;
+    localPanelFeatureState.ZD = true;
+    if (((paramInt == 108) || (paramInt == 0)) && (this.YD != null))
     {
-      localPanelFeatureState = bi(0);
+      localPanelFeatureState = bj(0);
       if (localPanelFeatureState != null)
       {
-        localPanelFeatureState.Zn = false;
+        localPanelFeatureState.ZA = false;
         b(localPanelFeatureState, null);
       }
     }
   }
   
-  final int bk(int paramInt)
+  final int bl(int paramInt)
   {
     int j = 1;
     int m = 0;
     Object localObject1;
     Object localObject2;
     int i;
-    if ((this.Yu != null) && ((this.Yu.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+    if ((this.YH != null) && ((this.YH.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
-      localObject1 = (ViewGroup.MarginLayoutParams)this.Yu.getLayoutParams();
-      if (this.Yu.isShown())
+      localObject1 = (ViewGroup.MarginLayoutParams)this.YH.getLayoutParams();
+      if (this.YH.isShown())
       {
-        if (this.YU == null)
+        if (this.Zh == null)
         {
-          this.YU = new Rect();
-          this.YV = new Rect();
+          this.Zh = new Rect();
+          this.Zi = new Rect();
         }
-        localObject2 = this.YU;
-        Rect localRect = this.YV;
+        localObject2 = this.Zh;
+        Rect localRect = this.Zi;
         ((Rect)localObject2).set(0, paramInt, 0, 0);
-        bh.a(this.YA, (Rect)localObject2, localRect);
+        bh.a(this.YN, (Rect)localObject2, localRect);
         if (localRect.top == 0)
         {
           i = paramInt;
@@ -1300,20 +1300,20 @@ final class AppCompatDelegateImpl
             break label351;
           }
           ((ViewGroup.MarginLayoutParams)localObject1).topMargin = paramInt;
-          if (this.YB != null) {
+          if (this.YO != null) {
             break label274;
           }
-          this.YB = new View(this.mContext);
-          this.YB.setBackgroundColor(this.mContext.getResources().getColor(2131099852));
-          this.YA.addView(this.YB, -1, new ViewGroup.LayoutParams(-1, paramInt));
+          this.YO = new View(this.mContext);
+          this.YO.setBackgroundColor(this.mContext.getResources().getColor(2131099870));
+          this.YN.addView(this.YO, -1, new ViewGroup.LayoutParams(-1, paramInt));
           i = 1;
           label198:
-          if (this.YB == null) {
+          if (this.YO == null) {
             break label312;
           }
           label205:
           int k = paramInt;
-          if (!this.YG)
+          if (!this.YT)
           {
             k = paramInt;
             if (j != 0) {
@@ -1323,16 +1323,16 @@ final class AppCompatDelegateImpl
           paramInt = k;
           label228:
           if (i != 0) {
-            this.Yu.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            this.YH.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           }
         }
       }
     }
     for (;;)
     {
-      if (this.YB != null)
+      if (this.YO != null)
       {
-        localObject1 = this.YB;
+        localObject1 = this.YO;
         if (j == 0) {
           break label338;
         }
@@ -1346,11 +1346,11 @@ final class AppCompatDelegateImpl
         return paramInt;
         i = 0;
         break;
-        localObject2 = this.YB.getLayoutParams();
+        localObject2 = this.YO.getLayoutParams();
         if (((ViewGroup.LayoutParams)localObject2).height != paramInt)
         {
           ((ViewGroup.LayoutParams)localObject2).height = paramInt;
-          this.YB.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          this.YO.setLayoutParams((ViewGroup.LayoutParams)localObject2);
         }
         i = 1;
         break label198;
@@ -1377,23 +1377,23 @@ final class AppCompatDelegateImpl
   
   final void c(h paramh)
   {
-    if (this.YJ) {
+    if (this.YW) {
       return;
     }
-    this.YJ = true;
-    this.Yq.gF();
-    Window.Callback localCallback = this.WM.getCallback();
+    this.YW = true;
+    this.YD.gM();
+    Window.Callback localCallback = this.WZ.getCallback();
     if ((localCallback != null) && (!this.mIsDestroyed)) {
       localCallback.onPanelClosed(108, paramh);
     }
-    this.YJ = false;
+    this.YW = false;
   }
   
   final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if (((this.Ym instanceof e.a)) || ((this.Ym instanceof e)))
+    if (((this.Yz instanceof e.a)) || ((this.Yz instanceof e)))
     {
-      localObject = this.WM.getDecorView();
+      localObject = this.WZ.getDecorView();
       if ((localObject == null) || (!android.support.v4.view.e.a((View)localObject, paramKeyEvent))) {}
     }
     int i;
@@ -1408,7 +1408,7 @@ final class AppCompatDelegateImpl
           do
           {
             return true;
-          } while ((paramKeyEvent.getKeyCode() == 82) && (this.Ym.dispatchKeyEvent(paramKeyEvent)));
+          } while ((paramKeyEvent.getKeyCode() == 82) && (this.Yz.dispatchKeyEvent(paramKeyEvent)));
           j = paramKeyEvent.getKeyCode();
           if (paramKeyEvent.getAction() == 0) {}
           for (i = 1; i != 0; i = 0) {
@@ -1419,14 +1419,14 @@ final class AppCompatDelegateImpl
             }
           }
         } while (paramKeyEvent.getRepeatCount() != 0);
-        localObject = bi(0);
-      } while (((PanelFeatureState)localObject).Vp);
+        localObject = bj(0);
+      } while (((PanelFeatureState)localObject).VC);
       b((PanelFeatureState)localObject, paramKeyEvent);
       return true;
       if ((paramKeyEvent.getFlags() & 0x80) != 0) {}
       for (bool = true;; bool = false)
       {
-        this.YM = bool;
+        this.YZ = bool;
         break;
       }
       switch (j)
@@ -1434,15 +1434,15 @@ final class AppCompatDelegateImpl
       default: 
         return false;
       }
-    } while (this.Yt != null);
-    Object localObject = bi(0);
-    if ((this.Yq != null) && (this.Yq.is()) && (!ViewConfiguration.get(this.mContext).hasPermanentMenuKey())) {
-      if (!this.Yq.isOverflowMenuShowing())
+    } while (this.YG != null);
+    Object localObject = bj(0);
+    if ((this.YD != null) && (this.YD.iB()) && (!ViewConfiguration.get(this.mContext).hasPermanentMenuKey())) {
+      if (!this.YD.isOverflowMenuShowing())
       {
         if ((this.mIsDestroyed) || (!b((PanelFeatureState)localObject, paramKeyEvent))) {
           break label511;
         }
-        bool = this.Yq.showOverflowMenu();
+        bool = this.YD.showOverflowMenu();
       }
     }
     label296:
@@ -1454,21 +1454,21 @@ final class AppCompatDelegateImpl
       }
       paramKeyEvent.playSoundEffect(0);
       return true;
-      bool = this.Yq.hideOverflowMenu();
+      bool = this.YD.hideOverflowMenu();
       continue;
-      if ((!((PanelFeatureState)localObject).Vp) && (!((PanelFeatureState)localObject).Zo)) {
+      if ((!((PanelFeatureState)localObject).VC) && (!((PanelFeatureState)localObject).ZB)) {
         break label373;
       }
-      bool = ((PanelFeatureState)localObject).Vp;
+      bool = ((PanelFeatureState)localObject).VC;
       a((PanelFeatureState)localObject, true);
     }
     label373:
-    if (((PanelFeatureState)localObject).Zn)
+    if (((PanelFeatureState)localObject).ZA)
     {
-      if (!((PanelFeatureState)localObject).Zr) {
+      if (!((PanelFeatureState)localObject).ZE) {
         break label517;
       }
-      ((PanelFeatureState)localObject).Zn = false;
+      ((PanelFeatureState)localObject).ZA = false;
     }
     label517:
     for (boolean bool = b((PanelFeatureState)localObject, paramKeyEvent);; bool = true)
@@ -1478,10 +1478,10 @@ final class AppCompatDelegateImpl
         a((PanelFeatureState)localObject, paramKeyEvent);
         bool = true;
         break label296;
-        bool = this.YM;
-        this.YM = false;
-        paramKeyEvent = bi(0);
-        if ((paramKeyEvent != null) && (paramKeyEvent.Vp))
+        bool = this.YZ;
+        this.YZ = false;
+        paramKeyEvent = bj(0);
+        if ((paramKeyEvent != null) && (paramKeyEvent.VC))
         {
           if (bool) {
             break;
@@ -1489,9 +1489,9 @@ final class AppCompatDelegateImpl
           a(paramKeyEvent, true);
           return true;
         }
-        if (this.Yt != null)
+        if (this.YG != null)
         {
-          this.Yt.finish();
+          this.YG.finish();
           i = 1;
         }
         while (i != 0)
@@ -1514,46 +1514,79 @@ final class AppCompatDelegateImpl
   
   public final <T extends View> T findViewById(int paramInt)
   {
-    gy();
-    return this.WM.findViewById(paramInt);
+    gF();
+    return this.WZ.findViewById(paramInt);
   }
   
-  final boolean gB()
+  public final void gA()
   {
-    return (this.Yz) && (this.YA != null) && (android.support.v4.view.t.ay(this.YA));
+    gF();
   }
   
-  final void gC()
+  public final void gB()
   {
-    if (this.Yx != null) {
-      this.Yx.cancel();
-    }
-  }
-  
-  final void gD()
-  {
-    a(bi(0), true);
-  }
-  
-  final void gF()
-  {
-    if (this.Yq != null) {
-      this.Yq.gF();
-    }
-    if (this.Yv != null)
+    LayoutInflater localLayoutInflater = LayoutInflater.from(this.mContext);
+    if (localLayoutInflater.getFactory() == null)
     {
-      this.WM.getDecorView().removeCallbacks(this.Yw);
-      if (!this.Yv.isShowing()) {}
+      android.support.v4.view.f.b(localLayoutInflater, this);
+      return;
+    }
+    localLayoutInflater.getFactory2();
+  }
+  
+  public final boolean gC()
+  {
+    boolean bool = false;
+    int i = getNightMode();
+    int j = bn(i);
+    if (j != -1) {
+      bool = bo(j);
+    }
+    if (i == 0)
+    {
+      gN();
+      this.Zc.setup();
+    }
+    this.Zb = true;
+    return bool;
+  }
+  
+  final boolean gI()
+  {
+    return (this.YM) && (this.YN != null) && (u.az(this.YN));
+  }
+  
+  final void gJ()
+  {
+    if (this.YK != null) {
+      this.YK.cancel();
+    }
+  }
+  
+  final void gK()
+  {
+    a(bj(0), true);
+  }
+  
+  final void gM()
+  {
+    if (this.YD != null) {
+      this.YD.gM();
+    }
+    if (this.YI != null)
+    {
+      this.WZ.getDecorView().removeCallbacks(this.YJ);
+      if (!this.YI.isShowing()) {}
     }
     try
     {
-      this.Yv.dismiss();
+      this.YI.dismiss();
       label55:
-      this.Yv = null;
-      gC();
-      PanelFeatureState localPanelFeatureState = bi(0);
-      if ((localPanelFeatureState != null) && (localPanelFeatureState.kC != null)) {
-        localPanelFeatureState.kC.close();
+      this.YI = null;
+      gJ();
+      PanelFeatureState localPanelFeatureState = bj(0);
+      if ((localPanelFeatureState != null) && (localPanelFeatureState.kE != null)) {
+        localPanelFeatureState.kE.close();
       }
       return;
     }
@@ -1570,9 +1603,9 @@ final class AppCompatDelegateImpl
   
   public final MenuInflater getMenuInflater()
   {
-    if (this.Yp == null)
+    if (this.YC == null)
     {
-      gw();
+      gD();
       if (this.mActionBar == null) {
         break label43;
       }
@@ -1580,54 +1613,21 @@ final class AppCompatDelegateImpl
     label43:
     for (Context localContext = this.mActionBar.getThemedContext();; localContext = this.mContext)
     {
-      this.Yp = new android.support.v7.view.g(localContext);
-      return this.Yp;
+      this.YC = new android.support.v7.view.g(localContext);
+      return this.YC;
     }
   }
   
   public final ActionBar getSupportActionBar()
   {
-    gw();
+    gD();
     return this.mActionBar;
-  }
-  
-  public final void gt()
-  {
-    gy();
-  }
-  
-  public final void gu()
-  {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.mContext);
-    if (localLayoutInflater.getFactory() == null)
-    {
-      android.support.v4.view.f.b(localLayoutInflater, this);
-      return;
-    }
-    localLayoutInflater.getFactory2();
-  }
-  
-  public final boolean gv()
-  {
-    boolean bool = false;
-    int i = getNightMode();
-    int j = bm(i);
-    if (j != -1) {
-      bool = bn(j);
-    }
-    if (i == 0)
-    {
-      gG();
-      this.YP.setup();
-    }
-    this.YO = true;
-    return bool;
   }
   
   public final void invalidateOptionsMenu()
   {
     ActionBar localActionBar = getSupportActionBar();
-    if ((localActionBar != null) && (localActionBar.gr())) {
+    if ((localActionBar != null) && (localActionBar.gy())) {
       return;
     }
     invalidatePanelMenu(0);
@@ -1635,34 +1635,34 @@ final class AppCompatDelegateImpl
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if ((this.YE) && (this.Yz))
+    if ((this.YR) && (this.YM))
     {
       ActionBar localActionBar = getSupportActionBar();
       if (localActionBar != null) {
         localActionBar.onConfigurationChanged(paramConfiguration);
       }
     }
-    android.support.v7.widget.g.jb().ab(this.mContext);
-    gv();
+    android.support.v7.widget.g.jk().ac(this.mContext);
+    gC();
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    if ((this.Ym instanceof Activity)) {}
+    if ((this.Yz instanceof Activity)) {}
     try
     {
-      Object localObject1 = q.i((Activity)this.Ym);
+      Object localObject1 = q.i((Activity)this.Yz);
       if (localObject1 != null)
       {
         localObject1 = this.mActionBar;
         if (localObject1 == null) {
-          this.YT = true;
+          this.Zg = true;
         }
       }
       else
       {
-        if ((paramBundle != null) && (this.YN == -100)) {
-          this.YN = paramBundle.getInt("appcompat:local_night_mode", -100);
+        if ((paramBundle != null) && (this.Za == -100)) {
+          this.Za = paramBundle.getInt("appcompat:local_night_mode", -100);
         }
         return;
       }
@@ -1673,7 +1673,7 @@ final class AppCompatDelegateImpl
       {
         Object localObject2 = null;
         continue;
-        localObject2.Q(true);
+        localObject2.P(true);
       }
     }
   }
@@ -1690,15 +1690,15 @@ final class AppCompatDelegateImpl
   
   public final void onDestroy()
   {
-    if (this.YQ) {
-      this.WM.getDecorView().removeCallbacks(this.YS);
+    if (this.Zd) {
+      this.WZ.getDecorView().removeCallbacks(this.Zf);
     }
     this.mIsDestroyed = true;
     if (this.mActionBar != null) {
       this.mActionBar.onDestroy();
     }
-    if (this.YP != null) {
-      this.YP.cleanup();
+    if (this.Zc != null) {
+      this.Zc.cleanup();
     }
   }
   
@@ -1712,19 +1712,19 @@ final class AppCompatDelegateImpl
       do
       {
         return true;
-        if ((this.YL == null) || (!a(this.YL, paramKeyEvent.getKeyCode(), paramKeyEvent))) {
+        if ((this.YY == null) || (!a(this.YY, paramKeyEvent.getKeyCode(), paramKeyEvent))) {
           break;
         }
-      } while (this.YL == null);
-      this.YL.Zo = true;
+      } while (this.YY == null);
+      this.YY.ZB = true;
       return true;
-      if (this.YL != null) {
+      if (this.YY != null) {
         break;
       }
-      localObject = bi(0);
+      localObject = bj(0);
       b((PanelFeatureState)localObject, paramKeyEvent);
       bool = a((PanelFeatureState)localObject, paramKeyEvent.getKeyCode(), paramKeyEvent);
-      ((PanelFeatureState)localObject).Zn = false;
+      ((PanelFeatureState)localObject).ZA = false;
     } while (bool);
     return false;
   }
@@ -1733,132 +1733,132 @@ final class AppCompatDelegateImpl
   {
     ActionBar localActionBar = getSupportActionBar();
     if (localActionBar != null) {
-      localActionBar.R(true);
+      localActionBar.Q(true);
     }
   }
   
   public final void onSaveInstanceState(Bundle paramBundle)
   {
-    if (this.YN != -100) {
-      paramBundle.putInt("appcompat:local_night_mode", this.YN);
+    if (this.Za != -100) {
+      paramBundle.putInt("appcompat:local_night_mode", this.Za);
     }
   }
   
   public final void onStart()
   {
-    gv();
+    gC();
   }
   
   public final void onStop()
   {
     ActionBar localActionBar = getSupportActionBar();
     if (localActionBar != null) {
-      localActionBar.R(false);
+      localActionBar.Q(false);
     }
-    if (this.YP != null) {
-      this.YP.cleanup();
+    if (this.Zc != null) {
+      this.Zc.cleanup();
     }
   }
   
   public final boolean requestWindowFeature(int paramInt)
   {
-    paramInt = bl(paramInt);
-    if ((this.YI) && (paramInt == 108)) {
+    paramInt = bm(paramInt);
+    if ((this.YV) && (paramInt == 108)) {
       return false;
     }
-    if ((this.YE) && (paramInt == 1)) {
-      this.YE = false;
+    if ((this.YR) && (paramInt == 1)) {
+      this.YR = false;
     }
     switch (paramInt)
     {
     default: 
-      return this.WM.requestFeature(paramInt);
+      return this.WZ.requestFeature(paramInt);
     case 108: 
-      gE();
-      this.YE = true;
+      gL();
+      this.YR = true;
       return true;
     case 109: 
-      gE();
-      this.YF = true;
+      gL();
+      this.YS = true;
       return true;
     case 10: 
-      gE();
-      this.YG = true;
+      gL();
+      this.YT = true;
       return true;
     case 2: 
-      gE();
-      this.YC = true;
+      gL();
+      this.YP = true;
       return true;
     case 5: 
-      gE();
-      this.YD = true;
+      gL();
+      this.YQ = true;
       return true;
     }
-    gE();
-    this.YI = true;
+    gL();
+    this.YV = true;
     return true;
   }
   
   public final void setContentView(int paramInt)
   {
-    gy();
-    ViewGroup localViewGroup = (ViewGroup)this.YA.findViewById(16908290);
+    gF();
+    ViewGroup localViewGroup = (ViewGroup)this.YN.findViewById(16908290);
     localViewGroup.removeAllViews();
     LayoutInflater.from(this.mContext).inflate(paramInt, localViewGroup);
-    this.Ym.onContentChanged();
+    this.Yz.onContentChanged();
   }
   
   public final void setContentView(View paramView)
   {
-    gy();
-    ViewGroup localViewGroup = (ViewGroup)this.YA.findViewById(16908290);
+    gF();
+    ViewGroup localViewGroup = (ViewGroup)this.YN.findViewById(16908290);
     localViewGroup.removeAllViews();
     localViewGroup.addView(paramView);
-    this.Ym.onContentChanged();
+    this.Yz.onContentChanged();
   }
   
   public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    gy();
-    ViewGroup localViewGroup = (ViewGroup)this.YA.findViewById(16908290);
+    gF();
+    ViewGroup localViewGroup = (ViewGroup)this.YN.findViewById(16908290);
     localViewGroup.removeAllViews();
     localViewGroup.addView(paramView, paramLayoutParams);
-    this.Ym.onContentChanged();
+    this.Yz.onContentChanged();
   }
   
   public final void setSupportActionBar(Toolbar paramToolbar)
   {
-    if (!(this.Ym instanceof Activity)) {
+    if (!(this.Yz instanceof Activity)) {
       return;
     }
     ActionBar localActionBar = getSupportActionBar();
     if ((localActionBar instanceof j)) {
       throw new IllegalStateException("This Activity already has an action bar supplied by the window decor. Do not request Window.FEATURE_SUPPORT_ACTION_BAR and set windowActionBar to false in your theme to use a Toolbar instead.");
     }
-    this.Yp = null;
+    this.YC = null;
     if (localActionBar != null) {
       localActionBar.onDestroy();
     }
     if (paramToolbar != null)
     {
-      paramToolbar = new g(paramToolbar, ((Activity)this.Ym).getTitle(), this.Yn);
+      paramToolbar = new g(paramToolbar, ((Activity)this.Yz).getTitle(), this.YA);
       this.mActionBar = paramToolbar;
-      this.WM.setCallback(paramToolbar.ZJ);
+      this.WZ.setCallback(paramToolbar.ZW);
     }
     for (;;)
     {
       invalidateOptionsMenu();
       return;
       this.mActionBar = null;
-      this.WM.setCallback(this.Yn);
+      this.WZ.setCallback(this.YA);
     }
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    this.Hd = paramCharSequence;
-    if (this.Yq != null) {
-      this.Yq.setWindowTitle(paramCharSequence);
+    this.Hn = paramCharSequence;
+    if (this.YD != null) {
+      this.YD.setWindowTitle(paramCharSequence);
     }
     do
     {
@@ -1868,8 +1868,8 @@ final class AppCompatDelegateImpl
         this.mActionBar.setWindowTitle(paramCharSequence);
         return;
       }
-    } while (this.Xl == null);
-    this.Xl.setText(paramCharSequence);
+    } while (this.Xy == null);
+    this.Xy.setText(paramCharSequence);
   }
   
   public final b startSupportActionMode(b.a parama)
@@ -1877,62 +1877,62 @@ final class AppCompatDelegateImpl
     if (parama == null) {
       throw new IllegalArgumentException("ActionMode callback can not be null.");
     }
-    if (this.Yt != null) {
-      this.Yt.finish();
+    if (this.YG != null) {
+      this.YG.finish();
     }
     parama = new c(parama);
     ActionBar localActionBar = getSupportActionBar();
     if (localActionBar != null)
     {
-      this.Yt = localActionBar.a(parama);
-      if ((this.Yt != null) && (this.Yo != null)) {
-        this.Yo.onSupportActionModeStarted(this.Yt);
+      this.YG = localActionBar.a(parama);
+      if ((this.YG != null) && (this.YB != null)) {
+        this.YB.onSupportActionModeStarted(this.YG);
       }
     }
-    if (this.Yt == null) {
-      this.Yt = b(parama);
+    if (this.YG == null) {
+      this.YG = b(parama);
     }
-    return this.Yt;
+    return this.YG;
   }
   
   protected static final class PanelFeatureState
   {
-    boolean Vp;
-    int Zh;
-    ViewGroup Zi;
-    View Zj;
-    View Zk;
-    android.support.v7.view.menu.f Zl;
-    Context Zm;
-    boolean Zn;
-    boolean Zo;
-    public boolean Zp;
-    boolean Zq;
-    boolean Zr;
-    Bundle Zs;
+    boolean VC;
+    boolean ZA;
+    boolean ZB;
+    public boolean ZC;
+    boolean ZD;
+    boolean ZE;
+    Bundle ZF;
+    int Zu;
+    ViewGroup Zv;
+    View Zw;
+    View Zx;
+    android.support.v7.view.menu.f Zy;
+    Context Zz;
     int background;
     int gravity;
-    h kC;
+    h kE;
     int windowAnimations;
     int x;
     int y;
     
     PanelFeatureState(int paramInt)
     {
-      this.Zh = paramInt;
-      this.Zq = false;
+      this.Zu = paramInt;
+      this.ZD = false;
     }
     
-    final void Y(Context paramContext)
+    final void Z(Context paramContext)
     {
       TypedValue localTypedValue = new TypedValue();
       Resources.Theme localTheme = paramContext.getResources().newTheme();
       localTheme.setTo(paramContext.getTheme());
-      localTheme.resolveAttribute(2130968599, localTypedValue, true);
+      localTheme.resolveAttribute(2130968600, localTypedValue, true);
       if (localTypedValue.resourceId != 0) {
         localTheme.applyStyle(localTypedValue.resourceId, true);
       }
-      localTheme.resolveAttribute(2130969365, localTypedValue, true);
+      localTheme.resolveAttribute(2130969439, localTypedValue, true);
       if (localTypedValue.resourceId != 0) {
         localTheme.applyStyle(localTypedValue.resourceId, true);
       }
@@ -1940,54 +1940,54 @@ final class AppCompatDelegateImpl
       {
         paramContext = new android.support.v7.view.d(paramContext, 0);
         paramContext.getTheme().setTo(localTheme);
-        this.Zm = paramContext;
+        this.Zz = paramContext;
         paramContext = paramContext.obtainStyledAttributes(android.support.v7.a.a.a.AppCompatTheme);
         this.background = paramContext.getResourceId(80, 0);
         this.windowAnimations = paramContext.getResourceId(1, 0);
         paramContext.recycle();
         return;
-        localTheme.applyStyle(2131821414, true);
+        localTheme.applyStyle(2131821459, true);
       }
     }
     
     final android.support.v7.view.menu.p b(o.a parama)
     {
-      if (this.kC == null) {
+      if (this.kE == null) {
         return null;
       }
-      if (this.Zl == null)
+      if (this.Zy == null)
       {
-        this.Zl = new android.support.v7.view.menu.f(this.Zm);
-        this.Zl.aeT = parama;
-        this.kC.a(this.Zl);
+        this.Zy = new android.support.v7.view.menu.f(this.Zz);
+        this.Zy.afg = parama;
+        this.kE.a(this.Zy);
       }
-      return this.Zl.c(this.Zi);
+      return this.Zy.c(this.Zv);
     }
     
     final void e(h paramh)
     {
-      if (paramh == this.kC) {}
+      if (paramh == this.kE) {}
       do
       {
         return;
-        if (this.kC != null) {
-          this.kC.b(this.Zl);
+        if (this.kE != null) {
+          this.kE.b(this.Zy);
         }
-        this.kC = paramh;
-      } while ((paramh == null) || (this.Zl == null));
-      paramh.a(this.Zl);
+        this.kE = paramh;
+      } while ((paramh == null) || (this.Zy == null));
+      paramh.a(this.Zy);
     }
     
-    public final boolean gJ()
+    public final boolean gQ()
     {
-      if (this.Zj == null) {}
+      if (this.Zw == null) {}
       do
       {
         return false;
-        if (this.Zk != null) {
+        if (this.Zx != null) {
           return true;
         }
-      } while (this.Zl.getAdapter().getCount() <= 0);
+      } while (this.Zy.getAdapter().getCount() <= 0);
       return true;
     }
   }
@@ -1997,7 +1997,7 @@ final class AppCompatDelegateImpl
   {
     a() {}
     
-    public final void bg(int paramInt)
+    public final void bh(int paramInt)
     {
       ActionBar localActionBar = AppCompatDelegateImpl.this.getSupportActionBar();
       if (localActionBar != null) {
@@ -2018,7 +2018,7 @@ final class AppCompatDelegateImpl
     
     public final boolean d(h paramh)
     {
-      Window.Callback localCallback = AppCompatDelegateImpl.this.WM.getCallback();
+      Window.Callback localCallback = AppCompatDelegateImpl.this.WZ.getCallback();
       if (localCallback != null) {
         localCallback.onMenuOpened(108, paramh);
       }
@@ -2029,63 +2029,63 @@ final class AppCompatDelegateImpl
   final class c
     implements b.a
   {
-    private b.a Za;
+    private b.a Zn;
     
     public c(b.a parama)
     {
-      this.Za = parama;
+      this.Zn = parama;
     }
     
     public final void a(b paramb)
     {
-      this.Za.a(paramb);
-      if (AppCompatDelegateImpl.this.Yv != null) {
-        AppCompatDelegateImpl.this.WM.getDecorView().removeCallbacks(AppCompatDelegateImpl.this.Yw);
+      this.Zn.a(paramb);
+      if (AppCompatDelegateImpl.this.YI != null) {
+        AppCompatDelegateImpl.this.WZ.getDecorView().removeCallbacks(AppCompatDelegateImpl.this.YJ);
       }
-      if (AppCompatDelegateImpl.this.Yu != null)
+      if (AppCompatDelegateImpl.this.YH != null)
       {
-        AppCompatDelegateImpl.this.gC();
-        AppCompatDelegateImpl.this.Yx = android.support.v4.view.t.ag(AppCompatDelegateImpl.this.Yu).y(0.0F);
-        AppCompatDelegateImpl.this.Yx.a(new z()
+        AppCompatDelegateImpl.this.gJ();
+        AppCompatDelegateImpl.this.YK = u.ah(AppCompatDelegateImpl.this.YH).y(0.0F);
+        AppCompatDelegateImpl.this.YK.a(new android.support.v4.view.aa()
         {
-          public final void aI(View paramAnonymousView)
+          public final void aJ(View paramAnonymousView)
           {
-            AppCompatDelegateImpl.this.Yu.setVisibility(8);
-            if (AppCompatDelegateImpl.this.Yv != null) {
-              AppCompatDelegateImpl.this.Yv.dismiss();
+            AppCompatDelegateImpl.this.YH.setVisibility(8);
+            if (AppCompatDelegateImpl.this.YI != null) {
+              AppCompatDelegateImpl.this.YI.dismiss();
             }
             for (;;)
             {
-              AppCompatDelegateImpl.this.Yu.removeAllViews();
-              AppCompatDelegateImpl.this.Yx.a(null);
-              AppCompatDelegateImpl.this.Yx = null;
+              AppCompatDelegateImpl.this.YH.removeAllViews();
+              AppCompatDelegateImpl.this.YK.a(null);
+              AppCompatDelegateImpl.this.YK = null;
               return;
-              if ((AppCompatDelegateImpl.this.Yu.getParent() instanceof View)) {
-                android.support.v4.view.t.ap((View)AppCompatDelegateImpl.this.Yu.getParent());
+              if ((AppCompatDelegateImpl.this.YH.getParent() instanceof View)) {
+                u.ap((View)AppCompatDelegateImpl.this.YH.getParent());
               }
             }
           }
         });
       }
-      if (AppCompatDelegateImpl.this.Yo != null) {
-        AppCompatDelegateImpl.this.Yo.onSupportActionModeFinished(AppCompatDelegateImpl.this.Yt);
+      if (AppCompatDelegateImpl.this.YB != null) {
+        AppCompatDelegateImpl.this.YB.onSupportActionModeFinished(AppCompatDelegateImpl.this.YG);
       }
-      AppCompatDelegateImpl.this.Yt = null;
+      AppCompatDelegateImpl.this.YG = null;
     }
     
     public final boolean a(b paramb, Menu paramMenu)
     {
-      return this.Za.a(paramb, paramMenu);
+      return this.Zn.a(paramb, paramMenu);
     }
     
     public final boolean a(b paramb, MenuItem paramMenuItem)
     {
-      return this.Za.a(paramb, paramMenuItem);
+      return this.Zn.a(paramb, paramMenuItem);
     }
     
     public final boolean b(b paramb, Menu paramMenu)
     {
-      return this.Za.b(paramb, paramMenu);
+      return this.Zn.b(paramb, paramMenu);
     }
   }
   
@@ -2135,7 +2135,7 @@ final class AppCompatDelegateImpl
       {
         paramMenu = paramMenu.getSupportActionBar();
         if (paramMenu != null) {
-          paramMenu.S(true);
+          paramMenu.R(true);
         }
       }
       return true;
@@ -2144,7 +2144,7 @@ final class AppCompatDelegateImpl
     public final void onPanelClosed(int paramInt, Menu paramMenu)
     {
       super.onPanelClosed(paramInt, paramMenu);
-      AppCompatDelegateImpl.this.bh(paramInt);
+      AppCompatDelegateImpl.this.bi(paramInt);
     }
     
     public final boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
@@ -2167,21 +2167,21 @@ final class AppCompatDelegateImpl
         localh = null;
         break;
         if (localh != null) {
-          localh.agx = true;
+          localh.agK = true;
         }
         bool2 = super.onPreparePanel(paramInt, paramView, paramMenu);
         bool1 = bool2;
       } while (localh == null);
-      localh.agx = false;
+      localh.agK = false;
       return bool2;
     }
     
     public final void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
     {
-      AppCompatDelegateImpl.PanelFeatureState localPanelFeatureState = AppCompatDelegateImpl.this.bi(0);
-      if ((localPanelFeatureState != null) && (localPanelFeatureState.kC != null))
+      AppCompatDelegateImpl.PanelFeatureState localPanelFeatureState = AppCompatDelegateImpl.this.bj(0);
+      if ((localPanelFeatureState != null) && (localPanelFeatureState.kE != null))
       {
-        super.onProvideKeyboardShortcuts(paramList, localPanelFeatureState.kC, paramInt);
+        super.onProvideKeyboardShortcuts(paramList, localPanelFeatureState.kE, paramInt);
         return;
       }
       super.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
@@ -2192,7 +2192,7 @@ final class AppCompatDelegateImpl
       if (Build.VERSION.SDK_INT >= 23) {
         return null;
       }
-      if (AppCompatDelegateImpl.this.Yy) {
+      if (AppCompatDelegateImpl.this.YL) {
         return a(paramCallback);
       }
       return super.onWindowStartingActionMode(paramCallback);
@@ -2200,7 +2200,7 @@ final class AppCompatDelegateImpl
     
     public final ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
     {
-      if (AppCompatDelegateImpl.this.Yy) {}
+      if (AppCompatDelegateImpl.this.YL) {}
       switch (paramInt)
       {
       default: 
@@ -2212,30 +2212,30 @@ final class AppCompatDelegateImpl
   
   final class e
   {
-    i Zc;
-    boolean Zd;
-    private BroadcastReceiver Ze;
-    private IntentFilter Zf;
+    i Zp;
+    boolean Zq;
+    private BroadcastReceiver Zr;
+    private IntentFilter Zs;
     
     e(i parami)
     {
-      this.Zc = parami;
-      this.Zd = parami.gM();
+      this.Zp = parami;
+      this.Zq = parami.gT();
     }
     
     final void cleanup()
     {
-      if (this.Ze != null)
+      if (this.Zr != null)
       {
-        AppCompatDelegateImpl.this.mContext.unregisterReceiver(this.Ze);
-        this.Ze = null;
+        AppCompatDelegateImpl.this.mContext.unregisterReceiver(this.Zr);
+        this.Zr = null;
       }
     }
     
-    final int gI()
+    final int gP()
     {
-      this.Zd = this.Zc.gM();
-      if (this.Zd) {
+      this.Zq = this.Zp.gT();
+      if (this.Zq) {
         return 2;
       }
       return 1;
@@ -2244,29 +2244,29 @@ final class AppCompatDelegateImpl
     final void setup()
     {
       cleanup();
-      if (this.Ze == null) {
-        this.Ze = new BroadcastReceiver()
+      if (this.Zr == null) {
+        this.Zr = new BroadcastReceiver()
         {
           public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
           {
             paramAnonymousContext = AppCompatDelegateImpl.e.this;
-            boolean bool = paramAnonymousContext.Zc.gM();
-            if (bool != paramAnonymousContext.Zd)
+            boolean bool = paramAnonymousContext.Zp.gT();
+            if (bool != paramAnonymousContext.Zq)
             {
-              paramAnonymousContext.Zd = bool;
-              paramAnonymousContext.YY.gv();
+              paramAnonymousContext.Zq = bool;
+              paramAnonymousContext.Zl.gC();
             }
           }
         };
       }
-      if (this.Zf == null)
+      if (this.Zs == null)
       {
-        this.Zf = new IntentFilter();
-        this.Zf.addAction("android.intent.action.TIME_SET");
-        this.Zf.addAction("android.intent.action.TIMEZONE_CHANGED");
-        this.Zf.addAction("android.intent.action.TIME_TICK");
+        this.Zs = new IntentFilter();
+        this.Zs.addAction("android.intent.action.TIME_SET");
+        this.Zs.addAction("android.intent.action.TIMEZONE_CHANGED");
+        this.Zs.addAction("android.intent.action.TIME_TICK");
       }
-      AppCompatDelegateImpl.this.mContext.registerReceiver(this.Ze, this.Zf);
+      AppCompatDelegateImpl.this.mContext.registerReceiver(this.Zr, this.Zs);
     }
   }
   
@@ -2292,7 +2292,7 @@ final class AppCompatDelegateImpl
         if ((i < -5) || (j < -5) || (i > getWidth() + 5) || (j > getHeight() + 5)) {}
         for (i = 1; i != 0; i = 0)
         {
-          AppCompatDelegateImpl.this.gD();
+          AppCompatDelegateImpl.this.gK();
           return true;
         }
       }
@@ -2312,7 +2312,7 @@ final class AppCompatDelegateImpl
     
     public final void a(h paramh, boolean paramBoolean)
     {
-      h localh = paramh.hY();
+      h localh = paramh.ii();
       if (localh != paramh) {}
       for (int i = 1;; i = 0)
       {
@@ -2326,7 +2326,7 @@ final class AppCompatDelegateImpl
           if (i == 0) {
             break;
           }
-          AppCompatDelegateImpl.this.a(paramh.Zh, paramh, localh);
+          AppCompatDelegateImpl.this.a(paramh.Zu, paramh, localh);
           AppCompatDelegateImpl.this.a(paramh, true);
         }
         return;
@@ -2336,9 +2336,9 @@ final class AppCompatDelegateImpl
     
     public final boolean d(h paramh)
     {
-      if ((paramh == null) && (AppCompatDelegateImpl.this.YE))
+      if ((paramh == null) && (AppCompatDelegateImpl.this.YR))
       {
-        Window.Callback localCallback = AppCompatDelegateImpl.this.WM.getCallback();
+        Window.Callback localCallback = AppCompatDelegateImpl.this.WZ.getCallback();
         if ((localCallback != null) && (!AppCompatDelegateImpl.this.mIsDestroyed)) {
           localCallback.onMenuOpened(108, paramh);
         }

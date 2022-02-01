@@ -1,88 +1,56 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.finder.cgi.report.b;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aio;
-import com.tencent.mm.protocal.protobuf.amx;
-import com.tencent.mm.protocal.protobuf.amy;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import java.util.LinkedList;
+import com.tencent.mm.protocal.protobuf.bdz;
+import com.tencent.mm.protocal.protobuf.bea;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneExtStatsReport;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "actionType", "", "extStats", "Lcom/tencent/mm/protocal/protobuf/ExtStats;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;ILcom/tencent/mm/protocal/protobuf/ExtStats;)V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderUserPagePreview;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderUserPagePreviewResponse;", "wxUsername", "", "(Ljava/lang/String;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderUserPagePreviewRequest;", "getWxUsername", "()Ljava/lang/String;", "isEnableReport", "Lcom/tencent/mm/plugin/finder/cgi/report/EnableValue;", "onCgiEnd", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class ac
-  extends ad
-  implements k
+  extends an<bea>
 {
   private final String TAG;
-  private f callback;
-  private b rr;
+  private final String dMW;
+  private bdz tuc;
   
-  public ac(arn paramarn, aio paramaio)
+  public ac(String paramString)
   {
-    super(paramarn);
-    AppMethodBeat.i(201524);
-    this.TAG = "Finder.NetSceneExtStatsReport";
-    b.a locala = new b.a();
-    locala.oS(getType());
-    amx localamx = new amx();
-    localamx.sbR = com.tencent.mm.model.v.aAK();
-    localamx.actionType = 18054;
-    localamx.rSz.add(paramaio);
-    paramaio = v.rRb;
-    localamx.GEg = v.a(paramarn);
-    locala.c((a)localamx);
-    paramarn = new amy();
-    paramarn.setBaseResponse(new BaseResponse());
-    locala.d((a)paramarn);
-    locala.DN("/cgi-bin/micromsg-bin/finderextstatsreport");
-    paramarn = locala.aDS();
-    p.g(paramarn, "builder.buildInstance()");
-    this.rr = paramarn;
-    AppMethodBeat.o(201524);
+    super(null);
+    AppMethodBeat.i(242294);
+    this.dMW = paramString;
+    this.TAG = "Finder.CgiFinderUserPagePreview";
+    this.tuc = new bdz();
+    paramString = this.tuc;
+    Object localObject = am.tuw;
+    paramString.LAI = am.a(this.ttO);
+    this.tuc.dMW = this.dMW;
+    paramString = new d.a();
+    paramString.c((a)this.tuc);
+    localObject = new bea();
+    ((bea)localObject).setBaseResponse(new BaseResponse());
+    ((bea)localObject).getBaseResponse().ErrMsg = new dqi();
+    paramString.d((a)localObject);
+    paramString.MB("/cgi-bin/micromsg-bin/finderuserpagepreview");
+    paramString.sG(6611);
+    c(paramString.aXF());
+    Log.i(this.TAG, "init wxUsername " + this.dMW);
+    AppMethodBeat.o(242294);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final b cXS()
   {
-    AppMethodBeat.i(201522);
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(201522);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 6681;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(201523);
-    ae.i(this.TAG, "onGYNetEnd " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramString + ' ');
-    paramq = this.callback;
-    if (paramq != null)
-    {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(201523);
-      return;
-    }
-    AppMethodBeat.o(201523);
+    return b.tyf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ac
  * JD-Core Version:    0.7.0.1
  */

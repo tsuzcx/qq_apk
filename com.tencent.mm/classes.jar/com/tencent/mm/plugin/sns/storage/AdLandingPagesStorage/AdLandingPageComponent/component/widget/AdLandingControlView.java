@@ -11,17 +11,12 @@ import java.util.Map;
 public class AdLandingControlView
   extends MMPageControlView
 {
-  public AdLandingControlView(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
   public AdLandingControlView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public final void Rc(int paramInt)
+  public final void Za(int paramInt)
   {
     AppMethodBeat.i(96829);
     removeAllViews();
@@ -34,33 +29,33 @@ public class AdLandingControlView
     int i = 0;
     if (i < j)
     {
-      this.dtJ = null;
+      this.dKU = null;
       if (paramInt == i)
       {
         if (this.map.size() > i) {
-          this.dtJ = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dKU = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.dtJ == null)
+        if (this.dKU == null)
         {
-          this.dtJ = ((ImageView)View.inflate(this.context, this.JGU, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.dtJ);
+          this.dKU = ((ImageView)View.inflate(this.context, this.ORM, null).findViewById(2131304738));
+          this.map.put(Integer.valueOf(i), this.dKU);
         }
-        this.dtJ.setSelected(true);
+        this.dKU.setSelected(true);
       }
       for (;;)
       {
-        addView(this.dtJ);
+        addView(this.dKU);
         i += 1;
         break;
         if (this.map.size() > i) {
-          this.dtJ = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dKU = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.dtJ == null)
+        if (this.dKU == null)
         {
-          this.dtJ = ((ImageView)View.inflate(this.context, this.JGU, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.dtJ);
+          this.dKU = ((ImageView)View.inflate(this.context, this.ORM, null).findViewById(2131304738));
+          this.map.put(Integer.valueOf(i), this.dKU);
         }
-        this.dtJ.setSelected(false);
+        this.dKU.setSelected(false);
       }
     }
     AppMethodBeat.o(96829);
@@ -68,7 +63,7 @@ public class AdLandingControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingControlView
  * JD-Core Version:    0.7.0.1
  */

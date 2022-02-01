@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="facebook_auth_tip" android:layout="@layout/aqa" android:title="@string/bys" />
-    <PreferenceCategory android:key="facebook_auth_cat" />
-    <Preference android:key="facebook_auth_bind_btn" android:layout="@layout/a22" android:title="@string/byr" />
-    <Preference android:key="facebook_auth_account" android:layout="@layout/aop" android:title="@string/byu" />
-    <PreferenceCategory android:key="facebook_auth_cat2" />
-    <Preference android:key="facebook_auth_unbind_btn" android:layout="@layout/aup" android:title="@string/bz1" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:key="join_rank" android:persistent="false" android:title="@string/c20" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:key="notify_rank" android:layout="@layout/b8j" android:persistent="false" android:title="@string/c22" />
+    <CheckBoxPreference android:defaultValue="true" android:key="notify_like" android:persistent="false" android:title="@string/c21" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="black_contact_list" android:layout="@layout/b8j" android:title="@string/c15" />
 </PreferenceScreen>

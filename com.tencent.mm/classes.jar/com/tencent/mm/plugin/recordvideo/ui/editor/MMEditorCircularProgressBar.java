@@ -10,222 +10,222 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 
 public class MMEditorCircularProgressBar
   extends View
 {
+  private a CdF;
   private int duration;
-  private boolean gHg;
+  private boolean htU;
   private boolean isStart;
-  private float kqK;
+  private float lus;
   private Context mContext;
   private float offset;
   private Paint paint;
   private float strokeWidth;
-  private ArrayList<Float> wgC;
-  private ArrayList<Float> wgD;
-  private boolean wgE;
-  private boolean wgF;
-  private boolean wgG;
-  private int wgq;
-  private int wgr;
-  private int wgs;
-  private RectF wgt;
-  private Paint wgu;
-  private Paint wgv;
-  private int wgw;
-  private float wgx;
-  private int wgy;
-  private a ycD;
+  private int zAQ;
+  private int zAR;
+  private int zAS;
+  private RectF zAT;
+  private Paint zAU;
+  private Paint zAV;
+  private int zAW;
+  private float zAX;
+  private int zAY;
+  private ArrayList<Float> zBc;
+  private ArrayList<Float> zBd;
+  private boolean zBe;
+  private boolean zBf;
+  private boolean zBg;
   
   public MMEditorCircularProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(206499);
-    this.wgq = Color.parseColor("#1AAD19");
-    this.wgr = Color.parseColor("#FFFFFF");
-    this.wgs = Color.parseColor("#FA5151");
+    AppMethodBeat.i(237204);
+    this.zAQ = Color.parseColor("#1AAD19");
+    this.zAR = Color.parseColor("#FFFFFF");
+    this.zAS = Color.parseColor("#FA5151");
     this.strokeWidth = 0.0F;
     this.offset = 0.0F;
-    this.wgw = 153;
-    this.wgx = 0.0F;
-    this.wgy = 0;
-    this.kqK = 0.0F;
+    this.zAW = 153;
+    this.zAX = 0.0F;
+    this.zAY = 0;
+    this.lus = 0.0F;
     this.duration = 0;
     this.isStart = false;
-    this.wgC = new ArrayList();
-    this.wgD = new ArrayList();
-    this.wgE = false;
-    this.wgF = false;
-    this.wgG = false;
-    this.gHg = false;
+    this.zBc = new ArrayList();
+    this.zBd = new ArrayList();
+    this.zBe = false;
+    this.zBf = false;
+    this.zBg = false;
+    this.htU = false;
     this.mContext = paramContext;
-    AppMethodBeat.o(206499);
+    AppMethodBeat.o(237204);
   }
   
   public MMEditorCircularProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(206500);
-    this.wgq = Color.parseColor("#1AAD19");
-    this.wgr = Color.parseColor("#FFFFFF");
-    this.wgs = Color.parseColor("#FA5151");
+    AppMethodBeat.i(237205);
+    this.zAQ = Color.parseColor("#1AAD19");
+    this.zAR = Color.parseColor("#FFFFFF");
+    this.zAS = Color.parseColor("#FA5151");
     this.strokeWidth = 0.0F;
     this.offset = 0.0F;
-    this.wgw = 153;
-    this.wgx = 0.0F;
-    this.wgy = 0;
-    this.kqK = 0.0F;
+    this.zAW = 153;
+    this.zAX = 0.0F;
+    this.zAY = 0;
+    this.lus = 0.0F;
     this.duration = 0;
     this.isStart = false;
-    this.wgC = new ArrayList();
-    this.wgD = new ArrayList();
-    this.wgE = false;
-    this.wgF = false;
-    this.wgG = false;
-    this.gHg = false;
+    this.zBc = new ArrayList();
+    this.zBd = new ArrayList();
+    this.zBe = false;
+    this.zBf = false;
+    this.zBg = false;
+    this.htU = false;
     this.mContext = paramContext;
-    AppMethodBeat.o(206500);
+    AppMethodBeat.o(237205);
   }
   
   public int getDrawWidth()
   {
-    AppMethodBeat.i(206502);
-    int i = (int)this.wgt.width();
-    AppMethodBeat.o(206502);
+    AppMethodBeat.i(237207);
+    int i = (int)this.zAT.width();
+    AppMethodBeat.o(237207);
     return i;
   }
   
   public ArrayList<Float> getSubProgress()
   {
-    return this.wgC;
+    return this.zBc;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(206509);
+    AppMethodBeat.i(237214);
     paramCanvas.save();
     paramCanvas.translate(this.offset, this.offset);
-    paramCanvas.rotate(180.0F, this.wgt.right / 2.0F, this.wgt.bottom / 2.0F);
-    if (this.wgE)
+    paramCanvas.rotate(180.0F, this.zAT.right / 2.0F, this.zAT.bottom / 2.0F);
+    if (this.zBe)
     {
       int i = 0;
       float f = 0.0F;
-      if (i < this.wgC.size())
+      if (i < this.zBc.size())
       {
-        if ((this.wgG) && (i == this.wgC.size() - 1)) {
-          paramCanvas.drawArc(this.wgt, 90.0F + f / this.kqK * 360.0F, (((Float)this.wgC.get(i)).floatValue() - f) / this.kqK * 360.0F, false, this.wgv);
+        if ((this.zBg) && (i == this.zBc.size() - 1)) {
+          paramCanvas.drawArc(this.zAT, 90.0F + f / this.lus * 360.0F, (((Float)this.zBc.get(i)).floatValue() - f) / this.lus * 360.0F, false, this.zAV);
         }
         for (;;)
         {
-          f = ((Float)this.wgC.get(i)).floatValue();
-          paramCanvas.drawArc(this.wgt, 90.0F + (f - 0.85F) / this.kqK * 360.0F, 0.85F / this.kqK * 360.0F, false, this.wgu);
+          f = ((Float)this.zBc.get(i)).floatValue();
+          paramCanvas.drawArc(this.zAT, 90.0F + (f - 0.85F) / this.lus * 360.0F, 0.85F / this.lus * 360.0F, false, this.zAU);
           i += 1;
           break;
-          paramCanvas.drawArc(this.wgt, 90.0F + f / this.kqK * 360.0F, (((Float)this.wgC.get(i)).floatValue() - f) / this.kqK * 360.0F, false, this.paint);
+          paramCanvas.drawArc(this.zAT, 90.0F + f / this.lus * 360.0F, (((Float)this.zBc.get(i)).floatValue() - f) / this.lus * 360.0F, false, this.paint);
         }
       }
-      paramCanvas.drawArc(this.wgt, 90.0F + f / this.kqK * 360.0F, (this.wgx - f) / this.kqK * 360.0F, false, this.paint);
+      paramCanvas.drawArc(this.zAT, 90.0F + f / this.lus * 360.0F, (this.zAX - f) / this.lus * 360.0F, false, this.paint);
     }
     for (;;)
     {
       paramCanvas.restore();
-      AppMethodBeat.o(206509);
+      AppMethodBeat.o(237214);
       return;
-      paramCanvas.drawArc(this.wgt, 90.0F, this.wgx / this.kqK * 360.0F, false, this.paint);
+      paramCanvas.drawArc(this.zAT, 90.0F, this.zAX / this.lus * 360.0F, false, this.paint);
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(206501);
+    AppMethodBeat.i(237206);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.gHg)
+    if (!this.htU)
     {
-      this.gHg = true;
+      this.htU = true;
       float f = getWidth();
-      this.strokeWidth = this.mContext.getResources().getDimensionPixelSize(2131166581);
+      this.strokeWidth = this.mContext.getResources().getDimensionPixelSize(2131166697);
       this.offset = (this.strokeWidth / 2.0F);
-      this.wgt = new RectF(this.offset, this.offset, f - this.offset, f - this.offset);
+      this.zAT = new RectF(this.offset, this.offset, f - this.offset, f - this.offset);
       this.paint = new Paint();
       this.paint.setStyle(Paint.Style.STROKE);
       this.paint.setStrokeWidth(this.strokeWidth);
-      this.paint.setColor(this.wgq);
-      this.paint.setAlpha(this.wgw);
+      this.paint.setColor(this.zAQ);
+      this.paint.setAlpha(this.zAW);
       this.paint.setAntiAlias(true);
-      this.wgu = new Paint();
-      this.wgu.setStyle(Paint.Style.STROKE);
-      this.wgu.setStrokeWidth(this.strokeWidth);
-      this.wgu.setColor(this.wgr);
-      this.wgu.setAlpha(this.wgw);
-      this.wgu.setAntiAlias(true);
-      this.wgv = new Paint();
-      this.wgv.setStyle(Paint.Style.STROKE);
-      this.wgv.setStrokeWidth(this.strokeWidth);
-      this.wgv.setColor(this.wgs);
-      this.wgv.setAntiAlias(true);
+      this.zAU = new Paint();
+      this.zAU.setStyle(Paint.Style.STROKE);
+      this.zAU.setStrokeWidth(this.strokeWidth);
+      this.zAU.setColor(this.zAR);
+      this.zAU.setAlpha(this.zAW);
+      this.zAU.setAntiAlias(true);
+      this.zAV = new Paint();
+      this.zAV.setStyle(Paint.Style.STROKE);
+      this.zAV.setStrokeWidth(this.strokeWidth);
+      this.zAV.setColor(this.zAS);
+      this.zAV.setAntiAlias(true);
     }
-    AppMethodBeat.o(206501);
+    AppMethodBeat.o(237206);
   }
   
   public void setCircularColor(int paramInt)
   {
-    AppMethodBeat.i(206508);
-    this.wgq = paramInt;
-    this.wgw = 255;
+    AppMethodBeat.i(237213);
+    this.zAQ = paramInt;
+    this.zAW = 255;
     if ((this.paint != null) && (paramInt != 0)) {
       this.paint.setColor(paramInt);
     }
-    AppMethodBeat.o(206508);
+    AppMethodBeat.o(237213);
   }
   
   public void setCurrentProgress(float paramFloat)
   {
-    AppMethodBeat.i(206507);
-    this.wgx = paramFloat;
+    AppMethodBeat.i(237212);
+    this.zAX = paramFloat;
     invalidate();
-    AppMethodBeat.o(206507);
+    AppMethodBeat.o(237212);
   }
   
   public void setDuration(int paramInt)
   {
-    AppMethodBeat.i(206505);
-    ae.i("MicroMsg.MMSightCircularProgressBar", "setDuration: %s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(237210);
+    Log.i("MicroMsg.MMSightCircularProgressBar", "setDuration: %s", new Object[] { Integer.valueOf(paramInt) });
     this.duration = paramInt;
-    AppMethodBeat.o(206505);
+    AppMethodBeat.o(237210);
   }
   
   public void setEnableSubProgress(boolean paramBoolean)
   {
-    AppMethodBeat.i(206503);
-    ae.i("MicroMsg.MMSightCircularProgressBar", "setEnableSubProgress: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.wgE = paramBoolean;
-    AppMethodBeat.o(206503);
+    AppMethodBeat.i(237208);
+    Log.i("MicroMsg.MMSightCircularProgressBar", "setEnableSubProgress: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.zBe = paramBoolean;
+    AppMethodBeat.o(237208);
   }
   
   public void setInitProgress(int paramInt)
   {
-    AppMethodBeat.i(206506);
-    ae.i("MicroMsg.MMSightCircularProgressBar", "setInitProgress: %s, isStart: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.isStart) });
+    AppMethodBeat.i(237211);
+    Log.i("MicroMsg.MMSightCircularProgressBar", "setInitProgress: %s, isStart: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.isStart) });
     if (!this.isStart) {
-      this.wgy = paramInt;
+      this.zAY = paramInt;
     }
-    AppMethodBeat.o(206506);
+    AppMethodBeat.o(237211);
   }
   
   public void setMaxProgress(float paramFloat)
   {
-    AppMethodBeat.i(206504);
-    ae.i("MicroMsg.MMSightCircularProgressBar", "setMaxProgress: %s", new Object[] { Float.valueOf(paramFloat) });
-    this.kqK = paramFloat;
-    AppMethodBeat.o(206504);
+    AppMethodBeat.i(237209);
+    Log.i("MicroMsg.MMSightCircularProgressBar", "setMaxProgress: %s", new Object[] { Float.valueOf(paramFloat) });
+    this.lus = paramFloat;
+    AppMethodBeat.o(237209);
   }
   
   public void setProgressCallback(a parama)
   {
-    this.ycD = parama;
+    this.CdF = parama;
   }
   
   public static abstract interface a {}

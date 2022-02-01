@@ -6,22 +6,22 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class MMCallBackScrollView
   extends ScrollView
 {
-  private aq mHandler;
+  private int Bpm;
+  private a Bpn;
+  private MMHandler mHandler;
   private int mState;
-  private int xpa;
-  private a xpb;
   
   public MMCallBackScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27680);
     this.mState = 0;
-    this.mHandler = new aq()
+    this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -47,7 +47,7 @@ public class MMCallBackScrollView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27681);
     this.mState = 0;
-    this.mHandler = new aq()
+    this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -68,13 +68,13 @@ public class MMCallBackScrollView
     AppMethodBeat.o(27681);
   }
   
-  private void NO(int paramInt)
+  private void Vd(int paramInt)
   {
     AppMethodBeat.i(27679);
-    if ((this.xpb != null) && (this.mState != paramInt))
+    if ((this.Bpn != null) && (this.mState != paramInt))
     {
       this.mState = paramInt;
-      this.xpb.cp(paramInt);
+      this.Bpn.onScrollStateChanged(paramInt);
     }
     AppMethodBeat.o(27679);
   }
@@ -83,7 +83,7 @@ public class MMCallBackScrollView
   {
     AppMethodBeat.i(27682);
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    this.xpa = getScrollY();
+    this.Bpm = getScrollY();
     switch (paramMotionEvent.getAction())
     {
     }
@@ -95,24 +95,24 @@ public class MMCallBackScrollView
       {
         this.mHandler.sendMessageDelayed(this.mHandler.obtainMessage(), 5L);
         continue;
-        NO(1);
+        Vd(1);
       }
     }
   }
   
   public void setMMOnScrollListener(a parama)
   {
-    this.xpb = parama;
+    this.Bpn = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cp(int paramInt);
+    public abstract void onScrollStateChanged(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMCallBackScrollView
  * JD-Core Version:    0.7.0.1
  */

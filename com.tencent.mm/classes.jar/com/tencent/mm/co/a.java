@@ -1,54 +1,67 @@
 package com.tencent.mm.co;
 
-import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vending.b.b;
+import com.tencent.mm.vending.h.d;
+import com.tencent.mm.vending.h.f;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class a
+public class a<_Callback>
+  extends com.tencent.mm.vending.b.a<_Callback>
 {
-  private static String[] LYc = { "BND-AL00", "BND-AL10", "BND-TL10", "NOVA 2S", "HWI-AL00", "HWI-TL00", "LLD-AL00", "LLD-AL10", "LLD-TL10", "MATE 9", "MHA-AL00", "MHA-TL00", "MATE 9 PRO", "LON-AL00", "PRA-AL00", "PRA-AL00X", "PRA-TL10", "STF-AL00", "STF-AL10", "STF-TL10", "P10", "VTR-AL00", "VTR-TL00", "P10 PLUS", "VKY-AL00", "VKY-TL00", "MATE10", "ALP-AL00", "ALP-TL00", "MATE10PRO", "BLA-AL00", "BLA-TL00", "P20", "EML-AL00", "EML-TL00", "P20PRO", "CLT-AL00", "CLT-AL01", "CLT-TL00", "MATE RS", "NEO-AL00", "COR-AL00", "COR-AL10", "COR-TL10", "NOVA3", "PAR-AL00", "PAR-TL00", "NOVA3I", "INE-AL00", "INE-TL00", "NOVA 3E", "ANE-AL00", "ANE-TL00", "COL-AL10", "COL-TL10" };
-  
-  public static boolean kN(int paramInt1, int paramInt2)
+  public a()
   {
-    AppMethodBeat.i(152884);
-    int i = ((b)g.ab(b.class)).a(b.a.qxs, 0);
-    if (i == 1)
+    super(new e());
+    AppMethodBeat.i(158413);
+    AppMethodBeat.o(158413);
+  }
+  
+  public a(d paramd)
+  {
+    super(paramd);
+  }
+  
+  public final void a(final a<_Callback> parama)
+  {
+    AppMethodBeat.i(158414);
+    Iterator localIterator = getQueue().iterator();
+    while (localIterator.hasNext())
     {
-      ae.i("MicroMsg.BigImageFilter", "alvinluo BigImageFilter clicfg notFilter: %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(152884);
-      return false;
-    }
-    if (((paramInt1 >= 5700) && (paramInt2 >= 8000)) || ((paramInt1 >= 8000) && (paramInt2 >= 5700))) {}
-    for (i = 1; i == 0; i = 0)
-    {
-      AppMethodBeat.o(152884);
-      return false;
-    }
-    String str = Build.MODEL;
-    if (bu.isNullOrNil(str))
-    {
-      AppMethodBeat.o(152884);
-      return false;
-    }
-    String[] arrayOfString = LYc;
-    int j = arrayOfString.length;
-    i = 0;
-    while (i < j)
-    {
-      if (str.equalsIgnoreCase(arrayOfString[i]))
-      {
-        ae.i("MicroMsg.BigImageFilter", "alvinluo BigImageFilter filter model: %s, width: %d, height: %d", new Object[] { str, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        AppMethodBeat.o(152884);
-        return true;
+      final b localb = (b)localIterator.next();
+      if (localb != null) {
+        if (localb.mScheduler != null)
+        {
+          this.mSchedulerInvoker.c(localb.mScheduler);
+          this.mSchedulerInvoker.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.QZL, true);
+        }
+        else
+        {
+          parama.bw(localb.QZG);
+        }
       }
-      i += 1;
     }
-    AppMethodBeat.o(152884);
-    return false;
+    AppMethodBeat.o(158414);
+  }
+  
+  public b<_Callback> add(_Callback param_Callback)
+  {
+    AppMethodBeat.i(158415);
+    param_Callback = super.add(new b(param_Callback, this));
+    AppMethodBeat.o(158415);
+    return param_Callback;
+  }
+  
+  public final void remove(_Callback param_Callback)
+  {
+    AppMethodBeat.i(158416);
+    super.remove(new b(param_Callback, this));
+    AppMethodBeat.o(158416);
+  }
+  
+  public static abstract interface a<_Callback>
+  {
+    public abstract void bw(_Callback param_Callback);
   }
 }
 

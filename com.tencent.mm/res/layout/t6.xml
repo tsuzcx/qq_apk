@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" style="@style/gi"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/b31" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="@dimen/av">
-        <TextView android:id="@id/b32" android:paddingLeft="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eo" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/m3" />
-    </RelativeLayout>
-    <ImageView android:id="@id/g1e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/a36" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <ProgressBar android:id="@id/f9d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/a5o" />
+    <include android:id="@id/au5" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/qr" style="@style/gp" />
+    <TextView android:id="@id/ayn" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/au5" style="@style/gy" />
+    <LinearLayout android:id="@id/aui" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/au5" style="@style/gu">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/ayb" android:layout_marginRight="6.0dip" style="@style/h2" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/j0y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c5" style="@style/a71" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/jg" android:id="@id/auk" android:background="@drawable/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ad" style="@style/h4" />
+                <TextView android:id="@id/atq" android:layout_marginLeft="0.0dip" style="@style/gj" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

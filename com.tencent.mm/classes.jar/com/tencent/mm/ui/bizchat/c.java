@@ -7,58 +7,65 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.a.d;
+import com.tencent.mm.al.a.e;
 import com.tencent.mm.al.ag;
 import com.tencent.mm.av.a.a;
 import com.tencent.mm.av.q;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
-import com.tencent.mm.ui.r;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.s.a;
 
 public final class c
-  extends r<com.tencent.mm.al.a.c>
-  implements n.b
+  extends s<com.tencent.mm.al.a.c>
+  implements MStorageEx.IOnStorageChange
 {
-  private final MMActivity fNT;
-  private com.tencent.mm.av.a.a.c fUx;
-  protected MMSlideDelView.g oac;
-  protected MMSlideDelView.c oad;
-  protected MMSlideDelView.f oae;
-  protected MMSlideDelView.d oaf;
-  private final String oeQ;
+  private final MMActivity gte;
+  private com.tencent.mm.av.a.a.c gzE;
+  protected MMSlideDelView.g pkY;
+  protected MMSlideDelView.c pkZ;
+  protected MMSlideDelView.f pla;
+  protected MMSlideDelView.d plb;
+  private final String ppO;
   
-  public c(Context paramContext, r.a parama, String paramString)
+  public c(Context paramContext, s.a parama, String paramString)
   {
     super(paramContext, new com.tencent.mm.al.a.c());
     AppMethodBeat.i(33958);
-    this.oaf = MMSlideDelView.getItemStatusCallBack();
-    this.fUx = null;
+    this.plb = MMSlideDelView.getItemStatusCallBack();
+    this.gzE = null;
     super.a(parama);
-    this.fNT = ((MMActivity)paramContext);
-    this.oeQ = paramString;
+    this.gte = ((MMActivity)paramContext);
+    this.ppO = paramString;
     paramContext = new com.tencent.mm.av.a.a.c.a();
-    paramContext.prefixPath = com.tencent.mm.al.a.e.ex(this.oeQ);
-    paramContext.igk = true;
-    paramContext.hgL = true;
-    paramContext.igv = 2131690013;
-    this.fUx = paramContext.aJu();
+    paramContext.prefixPath = e.fe(this.ppO);
+    paramContext.jbf = true;
+    paramContext.hZF = true;
+    paramContext.jbq = 2131690042;
+    this.gzE = paramContext.bdv();
     AppMethodBeat.o(33958);
   }
   
-  public final void ZD()
+  public final void a(MMSlideDelView.f paramf)
+  {
+    this.pla = paramf;
+  }
+  
+  public final void anp()
   {
     AppMethodBeat.i(33959);
-    dhl();
-    d locald = ag.aGr();
-    Object localObject = this.oeQ;
+    ebf();
+    d locald = ag.baj();
+    Object localObject = this.ppO;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("select * from BizChatInfo");
     localStringBuilder.append(" where brandUserName = '").append((String)localObject).append("'");
@@ -70,32 +77,20 @@ public final class c
     localStringBuffer.append(" upper(BizChatInfo.chatNamePY) asc, ");
     localStringBuffer.append(" upper(BizChatInfo.chatName) asc ");
     ((StringBuilder)localObject).append(localStringBuffer.toString());
-    ae.d("MicroMsg.BizChatInfoStorage", "getBizChatFavCursor: sql:%s", new Object[] { localStringBuilder.toString() });
+    Log.d("MicroMsg.BizChatInfoStorage", "getBizChatFavCursor: sql:%s", new Object[] { localStringBuilder.toString() });
     setCursor(locald.db.rawQuery(localStringBuilder.toString(), null));
-    if (this.Jvn != null) {
-      this.Jvn.aSR();
+    if (this.OFI != null) {
+      this.OFI.bnE();
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(33959);
   }
   
-  public final void ZE()
+  public final void anq()
   {
     AppMethodBeat.i(33962);
-    ZD();
+    anp();
     AppMethodBeat.o(33962);
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(33963);
-    super.a(paramInt, paramn, paramObject);
-    AppMethodBeat.o(33963);
-  }
-  
-  public final void a(MMSlideDelView.f paramf)
-  {
-    this.oae = paramf;
   }
   
   public final int getItemViewType(int paramInt)
@@ -111,16 +106,16 @@ public final class c
     if (paramView == null)
     {
       paramView = new a();
-      localView = View.inflate(this.fNT, 2131493846, null);
-      paramView.fQl = ((ImageView)localView.findViewById(2131297008));
-      paramView.fQm = ((TextView)localView.findViewById(2131302666));
+      localView = View.inflate(this.gte, 2131494001, null);
+      paramView.gvv = ((ImageView)localView.findViewById(2131297134));
+      paramView.gvw = ((TextView)localView.findViewById(2131305220));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      q.aJb().a(localc.field_headImageUrl, paramViewGroup.fQl, this.fUx);
-      paramViewGroup.fQm.setText(k.b(this.fNT, localc.field_chatName, (int)paramViewGroup.fQm.getTextSize()));
+      q.bcV().a(localc.field_headImageUrl, paramViewGroup.gvv, this.gzE);
+      paramViewGroup.gvw.setText(l.e(this.gte, localc.field_chatName, (int)paramViewGroup.gvw.getTextSize()));
       AppMethodBeat.o(33961);
       return localView;
       paramViewGroup = (a)paramView.getTag();
@@ -133,34 +128,41 @@ public final class c
     return 1;
   }
   
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(33963);
+    super.onNotifyChange(paramInt, paramMStorageEx, paramObject);
+    AppMethodBeat.o(33963);
+  }
+  
   public final void onPause()
   {
     AppMethodBeat.i(33960);
-    if (this.oaf != null) {
-      this.oaf.dhu();
+    if (this.plb != null) {
+      this.plb.ebo();
     }
     AppMethodBeat.o(33960);
   }
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.oad = paramc;
+    this.pkZ = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.oac = paramg;
+    this.pkY = paramg;
   }
   
   public static final class a
   {
-    public ImageView fQl;
-    public TextView fQm;
+    public ImageView gvv;
+    public TextView gvw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.c
  * JD-Core Version:    0.7.0.1
  */

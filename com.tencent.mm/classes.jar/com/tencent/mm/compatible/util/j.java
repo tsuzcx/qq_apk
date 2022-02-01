@@ -6,10 +6,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Process;
 import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -30,30 +28,30 @@ import java.util.zip.ZipFile;
 
 public final class j
 {
-  private static final Set<String> gfL;
-  private static final List<b> gfM;
-  private static final Map<String, ClassLoader> gfN;
-  private static final a gfO;
-  private static final Pattern gfP;
-  private static final Method[] gfQ;
-  private static final Boolean[] gfR;
-  private static final String[] gfS;
-  private static final ThreadLocal<Boolean> gfT;
-  private static final ThreadLocal<Boolean> gfU;
+  private static final Set<String> gLq;
+  private static final List<b> gLr;
+  private static final Map<String, ClassLoader> gLs;
+  private static final a gLt;
+  private static final Pattern gLu;
+  private static final Method[] gLv;
+  private static final Boolean[] gLw;
+  private static final String[] gLx;
+  private static final ThreadLocal<Boolean> gLy;
+  private static final ThreadLocal<Boolean> gLz;
   
   static
   {
     AppMethodBeat.i(125079);
-    gfL = new TreeSet();
-    gfM = new ArrayList();
-    gfN = new ConcurrentHashMap(64);
-    gfO = new a("load-lib-spin");
-    gfP = Pattern.compile("lib([^\\s/]+?)\\.so");
-    gfQ = new Method[] { null };
-    gfR = new Boolean[] { null };
-    gfS = new String[] { null };
-    gfT = new ThreadLocal();
-    gfU = new ThreadLocal();
+    gLq = new TreeSet();
+    gLr = new ArrayList();
+    gLs = new ConcurrentHashMap(64);
+    gLt = new a("load-lib-spin");
+    gLu = Pattern.compile("lib([^\\s/]+?)\\.so");
+    gLv = new Method[] { null };
+    gLw = new Boolean[] { null };
+    gLx = new String[] { null };
+    gLy = new ThreadLocal();
+    gLz = new ThreadLocal();
     AppMethodBeat.o(125079);
   }
   
@@ -71,11 +69,11 @@ public final class j
     // Byte code:
     //   0: ldc 110
     //   2: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 89	com/tencent/mm/compatible/util/j:gfS	[Ljava/lang/String;
+    //   5: getstatic 89	com/tencent/mm/compatible/util/j:gLx	[Ljava/lang/String;
     //   8: astore 9
     //   10: aload 9
     //   12: monitorenter
-    //   13: getstatic 89	com/tencent/mm/compatible/util/j:gfS	[Ljava/lang/String;
+    //   13: getstatic 89	com/tencent/mm/compatible/util/j:gLx	[Ljava/lang/String;
     //   16: iconst_0
     //   17: aaload
     //   18: astore 7
@@ -149,7 +147,7 @@ public final class j
     //   152: astore_0
     //   153: aload 5
     //   155: invokestatic 170	com/tencent/mm/compatible/util/j:closeQuietly	(Ljava/lang/Object;)V
-    //   158: getstatic 89	com/tencent/mm/compatible/util/j:gfS	[Ljava/lang/String;
+    //   158: getstatic 89	com/tencent/mm/compatible/util/j:gLx	[Ljava/lang/String;
     //   161: iconst_0
     //   162: aload_1
     //   163: aastore
@@ -333,39 +331,107 @@ public final class j
     return l;
   }
   
+  public static void Ec(String paramString)
+  {
+    AppMethodBeat.i(125057);
+    synchronized (gLq)
+    {
+      gLq.add(paramString);
+      a(2, "MicroMsg.LoadLibrary", "[+] Prior library search path '%s' added.", new Object[] { paramString });
+      AppMethodBeat.o(125057);
+      return;
+    }
+  }
+  
+  public static void Ed(String paramString)
+  {
+    AppMethodBeat.i(125061);
+    ClassLoader localClassLoader1 = j.class.getClassLoader();
+    ClassLoader localClassLoader2 = (ClassLoader)gLs.get(paramString);
+    if (localClassLoader2 != null)
+    {
+      if (localClassLoader2 != localClassLoader1) {
+        a(new UnsatisfiedLinkError("Library " + paramString + "to be loaded by classloader: " + localClassLoader1 + " has already loaded by classloader: " + localClassLoader2));
+      }
+      AppMethodBeat.o(125061);
+      return;
+    }
+    a(paramString, localClassLoader1);
+    gLs.put(paramString, localClassLoader1);
+    AppMethodBeat.o(125061);
+  }
+  
+  public static boolean Ee(String paramString)
+  {
+    AppMethodBeat.i(125062);
+    boolean bool = gLs.containsKey(paramString);
+    AppMethodBeat.o(125062);
+    return bool;
+  }
+  
+  private static String Ef(String paramString)
+  {
+    AppMethodBeat.i(125063);
+    paramString = "lib" + paramString + ".so";
+    AppMethodBeat.o(125063);
+    return paramString;
+  }
+  
+  private static String Eg(String arg0)
+  {
+    AppMethodBeat.i(125066);
+    String str = Ef(???);
+    synchronized (gLq)
+    {
+      Iterator localIterator = gLq.iterator();
+      while (localIterator.hasNext())
+      {
+        File localFile = new File((String)localIterator.next(), str);
+        if ((!localFile.isDirectory()) && (localFile.canRead()))
+        {
+          str = localFile.getAbsolutePath();
+          AppMethodBeat.o(125066);
+          return str;
+        }
+      }
+      AppMethodBeat.o(125066);
+      return null;
+    }
+  }
+  
   private static void a(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(125075);
-    Boolean localBoolean = (Boolean)gfT.get();
+    Boolean localBoolean = (Boolean)gLy.get();
     if ((localBoolean == null) || (!localBoolean.booleanValue()))
     {
-      gfT.set(Boolean.TRUE);
+      gLy.set(Boolean.TRUE);
       switch (paramInt)
       {
       }
       for (;;)
       {
-        gfT.set(Boolean.FALSE);
+        gLy.set(Boolean.FALSE);
         AppMethodBeat.o(125075);
         return;
-        ae.v(paramString1, paramString2, paramVarArgs);
+        com.tencent.mm.sdk.platformtools.Log.v(paramString1, paramString2, paramVarArgs);
         continue;
-        ae.d(paramString1, paramString2, paramVarArgs);
+        com.tencent.mm.sdk.platformtools.Log.d(paramString1, paramString2, paramVarArgs);
         continue;
-        ae.i(paramString1, paramString2, paramVarArgs);
+        com.tencent.mm.sdk.platformtools.Log.i(paramString1, paramString2, paramVarArgs);
         continue;
-        ae.w(paramString1, paramString2, paramVarArgs);
+        com.tencent.mm.sdk.platformtools.Log.w(paramString1, paramString2, paramVarArgs);
         continue;
-        ae.e(paramString1, paramString2, paramVarArgs);
+        com.tencent.mm.sdk.platformtools.Log.e(paramString1, paramString2, paramVarArgs);
       }
     }
     if (paramVarArgs.length == 0)
     {
-      Log.println(paramInt, paramString1, paramString2);
+      android.util.Log.println(paramInt, paramString1, paramString2);
       AppMethodBeat.o(125075);
       return;
     }
-    Log.println(paramInt, paramString1, String.format(paramString2, paramVarArgs));
+    android.util.Log.println(paramInt, paramString1, String.format(paramString2, paramVarArgs));
     AppMethodBeat.o(125075);
   }
   
@@ -375,7 +441,7 @@ public final class j
     // Byte code:
     //   0: aconst_null
     //   1: astore 6
-    //   3: ldc_w 269
+    //   3: ldc_w 359
     //   6: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: new 127	java/util/zip/ZipFile
     //   12: dup
@@ -386,24 +452,24 @@ public final class j
     //   23: astore 8
     //   25: aload_0
     //   26: aload_1
-    //   27: invokestatic 271	com/tencent/mm/compatible/util/j:A	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   27: invokestatic 361	com/tencent/mm/compatible/util/j:A	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   30: astore_0
     //   31: aload_0
     //   32: ifnonnull +58 -> 90
-    //   35: new 273	java/io/FileNotFoundException
+    //   35: new 363	java/io/FileNotFoundException
     //   38: dup
     //   39: new 142	java/lang/StringBuilder
     //   42: dup
-    //   43: ldc_w 275
+    //   43: ldc_w 365
     //   46: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   49: aload_1
     //   50: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: ldc_w 277
+    //   53: ldc_w 367
     //   56: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokespecial 278	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
+    //   62: invokespecial 368	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
     //   65: astore_0
-    //   66: ldc_w 269
+    //   66: ldc_w 359
     //   69: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: aload_0
     //   73: athrow
@@ -412,7 +478,7 @@ public final class j
     //   77: astore_1
     //   78: aload_1
     //   79: invokestatic 170	com/tencent/mm/compatible/util/j:closeQuietly	(Ljava/lang/Object;)V
-    //   82: ldc_w 269
+    //   82: ldc_w 359
     //   85: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aload_0
     //   89: athrow
@@ -420,55 +486,55 @@ public final class j
     //   92: aload_0
     //   93: invokevirtual 159	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
     //   96: astore_0
-    //   97: new 280	java/io/File
+    //   97: new 296	java/io/File
     //   100: dup
     //   101: aload_2
     //   102: aload_1
-    //   103: invokespecial 283	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   103: invokespecial 371	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   106: astore 7
     //   108: aload 7
-    //   110: invokevirtual 286	java/io/File:isDirectory	()Z
+    //   110: invokevirtual 306	java/io/File:isDirectory	()Z
     //   113: ifeq +190 -> 303
     //   116: iconst_3
     //   117: ldc 161
-    //   119: ldc_w 288
+    //   119: ldc_w 373
     //   122: iconst_1
     //   123: anewarray 4	java/lang/Object
     //   126: dup
     //   127: iconst_0
     //   128: aload 7
-    //   130: invokevirtual 291	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   130: invokevirtual 312	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   133: aastore
     //   134: invokestatic 166	com/tencent/mm/compatible/util/j:a	(ILjava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   137: aload 7
-    //   139: invokevirtual 294	java/io/File:delete	()Z
+    //   139: invokevirtual 376	java/io/File:delete	()Z
     //   142: pop
-    //   143: new 280	java/io/File
+    //   143: new 296	java/io/File
     //   146: dup
     //   147: new 142	java/lang/StringBuilder
     //   150: dup
-    //   151: invokespecial 295	java/lang/StringBuilder:<init>	()V
+    //   151: invokespecial 377	java/lang/StringBuilder:<init>	()V
     //   154: aload 7
-    //   156: invokevirtual 291	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   156: invokevirtual 312	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   159: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: ldc_w 297
+    //   162: ldc_w 379
     //   165: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   171: invokespecial 298	java/io/File:<init>	(Ljava/lang/String;)V
+    //   171: invokespecial 380	java/io/File:<init>	(Ljava/lang/String;)V
     //   174: astore 9
-    //   176: new 300	java/io/BufferedOutputStream
+    //   176: new 382	java/io/BufferedOutputStream
     //   179: dup
-    //   180: new 302	java/io/FileOutputStream
+    //   180: new 384	java/io/FileOutputStream
     //   183: dup
     //   184: aload 9
-    //   186: invokespecial 303	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   189: invokespecial 306	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   186: invokespecial 385	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   189: invokespecial 388	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   192: astore_1
     //   193: new 198	java/io/BufferedInputStream
     //   196: dup
     //   197: aload 8
     //   199: aload_0
-    //   200: invokevirtual 310	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   200: invokevirtual 392	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   203: invokespecial 206	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   206: astore_0
     //   207: aload_1
@@ -496,7 +562,7 @@ public final class j
     //   241: aload 10
     //   243: iconst_0
     //   244: iload_3
-    //   245: invokevirtual 315	java/io/OutputStream:write	([BII)V
+    //   245: invokevirtual 397	java/io/OutputStream:write	([BII)V
     //   248: goto -29 -> 219
     //   251: astore 7
     //   253: aload_1
@@ -504,13 +570,13 @@ public final class j
     //   255: aload_0
     //   256: astore 6
     //   258: aload 9
-    //   260: invokevirtual 294	java/io/File:delete	()Z
+    //   260: invokevirtual 376	java/io/File:delete	()Z
     //   263: pop
     //   264: aload_1
     //   265: astore_2
     //   266: aload_0
     //   267: astore 6
-    //   269: ldc_w 269
+    //   269: ldc_w 359
     //   272: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   275: aload_1
     //   276: astore_2
@@ -525,24 +591,24 @@ public final class j
     //   287: invokestatic 170	com/tencent/mm/compatible/util/j:closeQuietly	(Ljava/lang/Object;)V
     //   290: aload 6
     //   292: invokestatic 170	com/tencent/mm/compatible/util/j:closeQuietly	(Ljava/lang/Object;)V
-    //   295: ldc_w 269
+    //   295: ldc_w 359
     //   298: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   301: aload_0
     //   302: athrow
     //   303: aload 7
-    //   305: invokevirtual 318	java/io/File:canRead	()Z
+    //   305: invokevirtual 309	java/io/File:canRead	()Z
     //   308: ifeq -165 -> 143
     //   311: aload_0
-    //   312: invokevirtual 323	java/util/zip/ZipEntry:getCrc	()J
+    //   312: invokevirtual 402	java/util/zip/ZipEntry:getCrc	()J
     //   315: lstore 4
     //   317: aload 7
-    //   319: invokestatic 325	com/tencent/mm/compatible/util/j:E	(Ljava/io/File;)J
+    //   319: invokestatic 404	com/tencent/mm/compatible/util/j:E	(Ljava/io/File;)J
     //   322: lload 4
     //   324: lcmp
     //   325: ifne -182 -> 143
     //   328: iconst_3
     //   329: ldc 161
-    //   331: ldc_w 327
+    //   331: ldc_w 406
     //   334: iconst_1
     //   335: anewarray 4	java/lang/Object
     //   338: dup
@@ -552,7 +618,7 @@ public final class j
     //   342: invokestatic 166	com/tencent/mm/compatible/util/j:a	(ILjava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   345: aload 8
     //   347: invokestatic 170	com/tencent/mm/compatible/util/j:closeQuietly	(Ljava/lang/Object;)V
-    //   350: ldc_w 269
+    //   350: ldc_w 359
     //   353: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   356: return
     //   357: aload_1
@@ -561,32 +627,32 @@ public final class j
     //   362: invokestatic 170	com/tencent/mm/compatible/util/j:closeQuietly	(Ljava/lang/Object;)V
     //   365: aload 9
     //   367: aload 7
-    //   369: invokevirtual 331	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   369: invokevirtual 410	java/io/File:renameTo	(Ljava/io/File;)Z
     //   372: ifne +54 -> 426
     //   375: new 109	java/io/IOException
     //   378: dup
     //   379: new 142	java/lang/StringBuilder
     //   382: dup
-    //   383: ldc_w 333
+    //   383: ldc_w 412
     //   386: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   389: aload 9
-    //   391: invokevirtual 291	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   391: invokevirtual 312	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   394: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   397: ldc_w 335
+    //   397: ldc_w 414
     //   400: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   403: aload 7
-    //   405: invokevirtual 291	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   405: invokevirtual 312	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   408: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   411: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   414: invokespecial 336	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   414: invokespecial 415	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   417: astore_0
-    //   418: ldc_w 269
+    //   418: ldc_w 359
     //   421: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   424: aload_0
     //   425: athrow
     //   426: aload 8
     //   428: invokestatic 170	com/tencent/mm/compatible/util/j:closeQuietly	(Ljava/lang/Object;)V
-    //   431: ldc_w 269
+    //   431: ldc_w 359
     //   434: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   437: return
     //   438: astore_0
@@ -655,28 +721,28 @@ public final class j
   
   public static void a(b paramb)
   {
-    AppMethodBeat.i(211733);
-    synchronized (gfM)
+    AppMethodBeat.i(200821);
+    synchronized (gLr)
     {
-      if (!gfM.contains(paramb)) {
-        gfM.add(paramb);
+      if (!gLr.contains(paramb)) {
+        gLr.add(paramb);
       }
-      AppMethodBeat.o(211733);
+      AppMethodBeat.o(200821);
       return;
     }
   }
   
   private static void a(String paramString, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(211735);
-    String str = vQ(paramString);
+    AppMethodBeat.i(200823);
+    String str = Eg(paramString);
     if (str != null) {
       try
       {
         Runtime.getRuntime().load(str);
         a(2, "MicroMsg.LoadLibrary", "[+] Library [%s] was loaded, path: %s", new Object[] { paramString, str });
-        aby();
-        AppMethodBeat.o(211735);
+        apv();
+        AppMethodBeat.o(200823);
         return;
       }
       catch (UnsatisfiedLinkError paramClassLoader) {}
@@ -686,8 +752,8 @@ public final class j
       Thread.sleep(50L);
       Runtime.getRuntime().load(str);
       a(2, "MicroMsg.LoadLibrary", "[+] [RE] Library [%s] was loaded, path: %s", new Object[] { paramString, str });
-      aby();
-      AppMethodBeat.o(211735);
+      apv();
+      AppMethodBeat.o(200823);
       return;
       a(2, "MicroMsg.LoadLibrary", "[+] Try to load library [%s] with cl: %s", new Object[] { paramString, paramClassLoader });
       str = c(paramString, paramClassLoader);
@@ -696,8 +762,8 @@ public final class j
         {
           Runtime.getRuntime().load(str);
           a(2, "MicroMsg.LoadLibrary", "[+] Library [%s] was loaded, path: %s", new Object[] { paramString, str });
-          aby();
-          AppMethodBeat.o(211735);
+          apv();
+          AppMethodBeat.o(200823);
           return;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError2) {}
@@ -713,13 +779,13 @@ public final class j
           label174:
           Runtime.getRuntime().load(str);
           a(2, "MicroMsg.LoadLibrary", "[+] [RE] Library [%s] was loaded, path: %s", new Object[] { paramString, str });
-          aby();
-          AppMethodBeat.o(211735);
+          apv();
+          AppMethodBeat.o(200823);
           return;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError1) {}
         b(paramString, paramClassLoader);
-        AppMethodBeat.o(211735);
+        AppMethodBeat.o(200823);
         return;
         paramClassLoader = paramClassLoader;
       }
@@ -730,33 +796,20 @@ public final class j
     }
   }
   
-  private static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(125076);
-    Boolean localBoolean = (Boolean)gfU.get();
-    if ((localBoolean == null) || (!localBoolean.booleanValue()))
-    {
-      gfU.set(Boolean.TRUE);
-      ae.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
-      gfU.set(Boolean.FALSE);
-    }
-    AppMethodBeat.o(125076);
-  }
-  
   private static void a(UnsatisfiedLinkError paramUnsatisfiedLinkError)
   {
     AppMethodBeat.i(125059);
-    List localList = gfM;
+    List localList = gLr;
     int i = 0;
     label90:
     for (;;)
     {
       try
       {
-        Iterator localIterator = gfM.iterator();
+        Iterator localIterator = gLr.iterator();
         if (localIterator.hasNext())
         {
-          if ((!((b)localIterator.next()).Mi()) || (i != 0)) {
+          if ((!((b)localIterator.next()).Wt()) || (i != 0)) {
             break label90;
           }
           i = 1;
@@ -777,12 +830,12 @@ public final class j
     }
   }
   
-  private static void aby()
+  private static void apv()
   {
     AppMethodBeat.i(125058);
-    synchronized (gfM)
+    synchronized (gLr)
     {
-      Iterator localIterator = gfM.iterator();
+      Iterator localIterator = gLr.iterator();
       if (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -799,7 +852,7 @@ public final class j
       AppMethodBeat.o(125065);
       return null;
     }
-    paramUnsatisfiedLinkError = gfP.matcher(paramUnsatisfiedLinkError);
+    paramUnsatisfiedLinkError = gLu.matcher(paramUnsatisfiedLinkError);
     if (paramUnsatisfiedLinkError.find())
     {
       paramUnsatisfiedLinkError = paramUnsatisfiedLinkError.group(1);
@@ -820,34 +873,34 @@ public final class j
   private static void b(String paramString, ClassLoader paramClassLoader)
   {
     // Byte code:
-    //   0: ldc_w 436
+    //   0: ldc_w 490
     //   3: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 67	com/tencent/mm/compatible/util/j:gfO	Lcom/tencent/mm/compatible/util/j$a;
+    //   6: getstatic 67	com/tencent/mm/compatible/util/j:gLt	Lcom/tencent/mm/compatible/util/j$a;
     //   9: astore_2
     //   10: aload_2
     //   11: monitorenter
-    //   12: getstatic 67	com/tencent/mm/compatible/util/j:gfO	Lcom/tencent/mm/compatible/util/j$a;
-    //   15: invokevirtual 439	com/tencent/mm/compatible/util/j$a:lock	()V
-    //   18: invokestatic 445	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   12: getstatic 67	com/tencent/mm/compatible/util/j:gLt	Lcom/tencent/mm/compatible/util/j$a;
+    //   15: invokevirtual 493	com/tencent/mm/compatible/util/j$a:lock	()V
+    //   18: invokestatic 499	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   21: astore_3
     //   22: aload_3
     //   23: aload_0
-    //   24: invokestatic 448	com/tencent/mm/compatible/util/j:vP	(Ljava/lang/String;)Ljava/lang/String;
+    //   24: invokestatic 285	com/tencent/mm/compatible/util/j:Ef	(Ljava/lang/String;)Ljava/lang/String;
     //   27: aload_3
-    //   28: invokestatic 452	com/tencent/mm/compatible/util/j:ce	(Landroid/content/Context;)Ljava/io/File;
-    //   31: invokestatic 454	com/tencent/mm/compatible/util/j:a	(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)V
-    //   34: invokestatic 445	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   28: invokestatic 503	com/tencent/mm/compatible/util/j:cz	(Landroid/content/Context;)Ljava/io/File;
+    //   31: invokestatic 505	com/tencent/mm/compatible/util/j:a	(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)V
+    //   34: invokestatic 499	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   37: aload_0
-    //   38: invokestatic 457	com/tencent/mm/compatible/util/j:z	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   38: invokestatic 508	com/tencent/mm/compatible/util/j:z	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   41: astore_3
     //   42: aload_3
     //   43: ifnull +268 -> 311
-    //   46: invokestatic 361	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   46: invokestatic 432	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   49: aload_3
-    //   50: invokevirtual 364	java/lang/Runtime:load	(Ljava/lang/String;)V
+    //   50: invokevirtual 435	java/lang/Runtime:load	(Ljava/lang/String;)V
     //   53: iconst_2
     //   54: ldc 161
-    //   56: ldc_w 366
+    //   56: ldc_w 437
     //   59: iconst_2
     //   60: anewarray 4	java/lang/Object
     //   63: dup
@@ -859,23 +912,23 @@ public final class j
     //   69: aload_3
     //   70: aastore
     //   71: invokestatic 166	com/tencent/mm/compatible/util/j:a	(ILjava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   74: invokestatic 369	com/tencent/mm/compatible/util/j:aby	()V
-    //   77: getstatic 67	com/tencent/mm/compatible/util/j:gfO	Lcom/tencent/mm/compatible/util/j$a;
-    //   80: invokevirtual 460	com/tencent/mm/compatible/util/j$a:unlock	()V
+    //   74: invokestatic 440	com/tencent/mm/compatible/util/j:apv	()V
+    //   77: getstatic 67	com/tencent/mm/compatible/util/j:gLt	Lcom/tencent/mm/compatible/util/j$a;
+    //   80: invokevirtual 511	com/tencent/mm/compatible/util/j$a:unlock	()V
     //   83: aload_2
     //   84: monitorexit
-    //   85: ldc_w 436
+    //   85: ldc_w 490
     //   88: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: return
     //   92: astore 4
-    //   94: ldc2_w 386
-    //   97: invokestatic 377	java/lang/Thread:sleep	(J)V
-    //   100: invokestatic 361	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   94: ldc2_w 457
+    //   97: invokestatic 448	java/lang/Thread:sleep	(J)V
+    //   100: invokestatic 432	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   103: aload_3
-    //   104: invokevirtual 364	java/lang/Runtime:load	(Ljava/lang/String;)V
+    //   104: invokevirtual 435	java/lang/Runtime:load	(Ljava/lang/String;)V
     //   107: iconst_2
     //   108: ldc 161
-    //   110: ldc_w 379
+    //   110: ldc_w 450
     //   113: iconst_2
     //   114: anewarray 4	java/lang/Object
     //   117: dup
@@ -887,33 +940,33 @@ public final class j
     //   123: aload_3
     //   124: aastore
     //   125: invokestatic 166	com/tencent/mm/compatible/util/j:a	(ILjava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   128: invokestatic 369	com/tencent/mm/compatible/util/j:aby	()V
+    //   128: invokestatic 440	com/tencent/mm/compatible/util/j:apv	()V
     //   131: goto -54 -> 77
     //   134: astore 4
     //   136: ldc 161
     //   138: aload 4
-    //   140: ldc_w 462
+    //   140: ldc_w 513
     //   143: iconst_0
     //   144: anewarray 4	java/lang/Object
-    //   147: invokestatic 464	com/tencent/mm/compatible/util/j:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: invokestatic 516	com/tencent/mm/compatible/util/j:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   150: aload 4
-    //   152: invokestatic 466	com/tencent/mm/compatible/util/j:b	(Ljava/lang/UnsatisfiedLinkError;)Ljava/lang/String;
+    //   152: invokestatic 518	com/tencent/mm/compatible/util/j:b	(Ljava/lang/UnsatisfiedLinkError;)Ljava/lang/String;
     //   155: astore 5
     //   157: aload 5
     //   159: ifnull +77 -> 236
     //   162: aload 5
     //   164: aload_0
-    //   165: invokevirtual 469	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   165: invokevirtual 521	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   168: ifne +68 -> 236
     //   171: aload 5
     //   173: aload_1
-    //   174: invokestatic 389	com/tencent/mm/compatible/util/j:b	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   177: invokestatic 361	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   174: invokestatic 460	com/tencent/mm/compatible/util/j:b	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   177: invokestatic 432	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   180: aload_3
-    //   181: invokevirtual 364	java/lang/Runtime:load	(Ljava/lang/String;)V
+    //   181: invokevirtual 435	java/lang/Runtime:load	(Ljava/lang/String;)V
     //   184: iconst_2
     //   185: ldc 161
-    //   187: ldc_w 379
+    //   187: ldc_w 450
     //   190: iconst_2
     //   191: anewarray 4	java/lang/Object
     //   194: dup
@@ -925,74 +978,74 @@ public final class j
     //   200: aload_3
     //   201: aastore
     //   202: invokestatic 166	com/tencent/mm/compatible/util/j:a	(ILjava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   205: invokestatic 369	com/tencent/mm/compatible/util/j:aby	()V
+    //   205: invokestatic 440	com/tencent/mm/compatible/util/j:apv	()V
     //   208: goto -131 -> 77
     //   211: astore_0
     //   212: aload_0
-    //   213: invokestatic 471	com/tencent/mm/compatible/util/j:a	(Ljava/lang/UnsatisfiedLinkError;)V
-    //   216: getstatic 67	com/tencent/mm/compatible/util/j:gfO	Lcom/tencent/mm/compatible/util/j$a;
-    //   219: invokevirtual 460	com/tencent/mm/compatible/util/j$a:unlock	()V
+    //   213: invokestatic 261	com/tencent/mm/compatible/util/j:a	(Ljava/lang/UnsatisfiedLinkError;)V
+    //   216: getstatic 67	com/tencent/mm/compatible/util/j:gLt	Lcom/tencent/mm/compatible/util/j$a;
+    //   219: invokevirtual 511	com/tencent/mm/compatible/util/j$a:unlock	()V
     //   222: goto -139 -> 83
     //   225: astore_0
     //   226: aload_2
     //   227: monitorexit
-    //   228: ldc_w 436
+    //   228: ldc_w 490
     //   231: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   234: aload_0
     //   235: athrow
-    //   236: ldc_w 436
+    //   236: ldc_w 490
     //   239: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   242: aload 4
     //   244: athrow
     //   245: astore_0
-    //   246: new 350	java/lang/UnsatisfiedLinkError
+    //   246: new 248	java/lang/UnsatisfiedLinkError
     //   249: dup
     //   250: new 142	java/lang/StringBuilder
     //   253: dup
-    //   254: ldc_w 473
+    //   254: ldc_w 523
     //   257: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   260: aload_0
-    //   261: invokevirtual 477	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   264: invokevirtual 482	java/lang/Class:getName	()Ljava/lang/String;
+    //   261: invokevirtual 527	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   264: invokevirtual 530	java/lang/Class:getName	()Ljava/lang/String;
     //   267: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   270: ldc_w 484
+    //   270: ldc_w 532
     //   273: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   276: aload_0
-    //   277: invokevirtual 485	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   277: invokevirtual 533	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   280: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   283: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   286: invokespecial 486	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   286: invokespecial 258	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   289: astore_1
     //   290: aload_1
     //   291: aload_0
-    //   292: invokevirtual 490	java/lang/Throwable:getStackTrace	()[Ljava/lang/StackTraceElement;
-    //   295: invokevirtual 494	java/lang/UnsatisfiedLinkError:setStackTrace	([Ljava/lang/StackTraceElement;)V
+    //   292: invokevirtual 537	java/lang/Throwable:getStackTrace	()[Ljava/lang/StackTraceElement;
+    //   295: invokevirtual 541	java/lang/UnsatisfiedLinkError:setStackTrace	([Ljava/lang/StackTraceElement;)V
     //   298: aload_1
-    //   299: invokestatic 471	com/tencent/mm/compatible/util/j:a	(Ljava/lang/UnsatisfiedLinkError;)V
-    //   302: getstatic 67	com/tencent/mm/compatible/util/j:gfO	Lcom/tencent/mm/compatible/util/j$a;
-    //   305: invokevirtual 460	com/tencent/mm/compatible/util/j$a:unlock	()V
+    //   299: invokestatic 261	com/tencent/mm/compatible/util/j:a	(Ljava/lang/UnsatisfiedLinkError;)V
+    //   302: getstatic 67	com/tencent/mm/compatible/util/j:gLt	Lcom/tencent/mm/compatible/util/j$a;
+    //   305: invokevirtual 511	com/tencent/mm/compatible/util/j$a:unlock	()V
     //   308: goto -225 -> 83
-    //   311: new 350	java/lang/UnsatisfiedLinkError
+    //   311: new 248	java/lang/UnsatisfiedLinkError
     //   314: dup
     //   315: new 142	java/lang/StringBuilder
     //   318: dup
-    //   319: ldc_w 496
+    //   319: ldc_w 543
     //   322: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   325: aload_0
     //   326: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: ldc_w 498
+    //   329: ldc_w 545
     //   332: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   335: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   338: invokespecial 486	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   338: invokespecial 258	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   341: astore_0
-    //   342: ldc_w 436
+    //   342: ldc_w 490
     //   345: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   348: aload_0
     //   349: athrow
     //   350: astore_0
-    //   351: getstatic 67	com/tencent/mm/compatible/util/j:gfO	Lcom/tencent/mm/compatible/util/j$a;
-    //   354: invokevirtual 460	com/tencent/mm/compatible/util/j$a:unlock	()V
-    //   357: ldc_w 436
+    //   351: getstatic 67	com/tencent/mm/compatible/util/j:gLt	Lcom/tencent/mm/compatible/util/j$a;
+    //   354: invokevirtual 511	com/tencent/mm/compatible/util/j$a:unlock	()V
+    //   357: ldc_w 490
     //   360: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   363: aload_0
     //   364: athrow
@@ -1044,20 +1097,33 @@ public final class j
     //   94	100	365	java/lang/Throwable
   }
   
+  private static void b(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(125076);
+    Boolean localBoolean = (Boolean)gLz.get();
+    if ((localBoolean == null) || (!localBoolean.booleanValue()))
+    {
+      gLz.set(Boolean.TRUE);
+      com.tencent.mm.sdk.platformtools.Log.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+      gLz.set(Boolean.FALSE);
+    }
+    AppMethodBeat.o(125076);
+  }
+  
   private static String c(String paramString, ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(125067);
-    synchronized (gfQ)
+    synchronized (gLv)
     {
       try
       {
-        Method localMethod2 = gfQ[0];
+        Method localMethod2 = gLv[0];
         Method localMethod1 = localMethod2;
         if (localMethod2 == null)
         {
           localMethod1 = ClassLoader.class.getDeclaredMethod("findLibrary", new Class[] { String.class });
           localMethod1.setAccessible(true);
-          gfQ[0] = localMethod1;
+          gLv[0] = localMethod1;
         }
         paramString = (String)localMethod1.invoke(paramClassLoader, new Object[] { paramString });
         AppMethodBeat.o(125067);
@@ -1065,19 +1131,11 @@ public final class j
       }
       catch (Throwable paramString)
       {
-        a("MicroMsg.LoadLibrary", paramString, "[-] Fail to find library in classloader: ".concat(String.valueOf(paramClassLoader)), new Object[0]);
+        b("MicroMsg.LoadLibrary", paramString, "[-] Fail to find library in classloader: ".concat(String.valueOf(paramClassLoader)), new Object[0]);
         AppMethodBeat.o(125067);
         return null;
       }
     }
-  }
-  
-  private static File ce(Context paramContext)
-  {
-    AppMethodBeat.i(125069);
-    paramContext = paramContext.getDir("recovery_lib", 0);
-    AppMethodBeat.o(125069);
-    return paramContext;
   }
   
   private static void closeQuietly(Object paramObject)
@@ -1130,12 +1188,49 @@ public final class j
     throw paramObject;
   }
   
+  private static File cz(Context paramContext)
+  {
+    AppMethodBeat.i(125069);
+    paramContext = paramContext.getDir("recovery_lib", 0);
+    AppMethodBeat.o(125069);
+    return paramContext;
+  }
+  
+  public static String dZ(String paramString)
+  {
+    AppMethodBeat.i(125060);
+    String str = Eg(paramString);
+    if (str != null)
+    {
+      a(2, "MicroMsg.LoadLibrary", "[+] Found library [%s] at %s.", new Object[] { paramString, str });
+      AppMethodBeat.o(125060);
+      return str;
+    }
+    str = c(paramString, j.class.getClassLoader());
+    if (str != null)
+    {
+      a(2, "MicroMsg.LoadLibrary", "[+] Found library [%s] at %s.", new Object[] { paramString, str });
+      AppMethodBeat.o(125060);
+      return str;
+    }
+    str = z(MMApplicationContext.getContext(), paramString);
+    if (str != null) {
+      a(2, "MicroMsg.LoadLibrary", "[+] Found library [%s] at %s.", new Object[] { paramString, str });
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(125060);
+      return str;
+      a(4, "MicroMsg.LoadLibrary", "[-] Fail to find library [%s].", new Object[] { str });
+    }
+  }
+  
   private static boolean is64BitRuntime()
   {
     AppMethodBeat.i(125070);
-    synchronized (gfR)
+    synchronized (gLw)
     {
-      Boolean localBoolean2 = gfR[0];
+      Boolean localBoolean2 = gLw[0];
       Boolean localBoolean1 = localBoolean2;
       if (localBoolean2 == null) {
         if (Build.VERSION.SDK_INT < 23) {
@@ -1144,7 +1239,7 @@ public final class j
       }
       for (localBoolean1 = Boolean.valueOf(Process.is64Bit());; localBoolean1 = Boolean.valueOf(Build.CPU_ABI.contains("64")))
       {
-        gfR[0] = localBoolean1;
+        gLw[0] = localBoolean1;
         boolean bool = localBoolean1.booleanValue();
         AppMethodBeat.o(125070);
         return bool;
@@ -1159,145 +1254,48 @@ public final class j
   
   public static void load(String paramString)
   {
-    AppMethodBeat.i(211734);
+    AppMethodBeat.i(200822);
     j.class.getClassLoader();
-    vN(paramString);
-    AppMethodBeat.o(211734);
-  }
-  
-  public static void vL(String paramString)
-  {
-    AppMethodBeat.i(125057);
-    synchronized (gfL)
-    {
-      gfL.add(paramString);
-      a(2, "MicroMsg.LoadLibrary", "[+] Prior library search path '%s' added.", new Object[] { paramString });
-      AppMethodBeat.o(125057);
-      return;
-    }
-  }
-  
-  public static String vM(String paramString)
-  {
-    AppMethodBeat.i(125060);
-    String str = vQ(paramString);
-    if (str != null)
-    {
-      a(2, "MicroMsg.LoadLibrary", "[+] Found library [%s] at %s.", new Object[] { paramString, str });
-      AppMethodBeat.o(125060);
-      return str;
-    }
-    str = c(paramString, j.class.getClassLoader());
-    if (str != null)
-    {
-      a(2, "MicroMsg.LoadLibrary", "[+] Found library [%s] at %s.", new Object[] { paramString, str });
-      AppMethodBeat.o(125060);
-      return str;
-    }
-    str = z(ak.getContext(), paramString);
-    if (str != null) {
-      a(2, "MicroMsg.LoadLibrary", "[+] Found library [%s] at %s.", new Object[] { paramString, str });
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125060);
-      return str;
-      a(4, "MicroMsg.LoadLibrary", "[-] Fail to find library [%s].", new Object[] { str });
-    }
-  }
-  
-  public static void vN(String paramString)
-  {
-    AppMethodBeat.i(125061);
-    ClassLoader localClassLoader1 = j.class.getClassLoader();
-    ClassLoader localClassLoader2 = (ClassLoader)gfN.get(paramString);
-    if (localClassLoader2 != null)
-    {
-      if (localClassLoader2 != localClassLoader1) {
-        a(new UnsatisfiedLinkError("Library " + paramString + "to be loaded by classloader: " + localClassLoader1 + " has already loaded by classloader: " + localClassLoader2));
-      }
-      AppMethodBeat.o(125061);
-      return;
-    }
-    a(paramString, localClassLoader1);
-    gfN.put(paramString, localClassLoader1);
-    AppMethodBeat.o(125061);
-  }
-  
-  public static boolean vO(String paramString)
-  {
-    AppMethodBeat.i(125062);
-    boolean bool = gfN.containsKey(paramString);
-    AppMethodBeat.o(125062);
-    return bool;
-  }
-  
-  private static String vP(String paramString)
-  {
-    AppMethodBeat.i(125063);
-    paramString = "lib" + paramString + ".so";
-    AppMethodBeat.o(125063);
-    return paramString;
-  }
-  
-  private static String vQ(String arg0)
-  {
-    AppMethodBeat.i(125066);
-    String str = vP(???);
-    synchronized (gfL)
-    {
-      Iterator localIterator = gfL.iterator();
-      while (localIterator.hasNext())
-      {
-        File localFile = new File((String)localIterator.next(), str);
-        if ((!localFile.isDirectory()) && (localFile.canRead()))
-        {
-          str = localFile.getAbsolutePath();
-          AppMethodBeat.o(125066);
-          return str;
-        }
-      }
-      AppMethodBeat.o(125066);
-      return null;
-    }
+    Ed(paramString);
+    AppMethodBeat.o(200822);
   }
   
   private static String z(Context paramContext, String paramString)
   {
     AppMethodBeat.i(125068);
-    locala = gfO;
+    locala = gLt;
     try
     {
-      gfO.lock();
-      paramString = vP(paramString);
-      paramContext = new File(ce(paramContext), paramString);
+      gLt.lock();
+      paramString = Ef(paramString);
+      paramContext = new File(cz(paramContext), paramString);
       if ((!paramContext.isDirectory()) && (paramContext.canRead())) {
         paramContext = paramContext.getAbsolutePath();
       }
     }
     finally
     {
-      gfO.unlock();
+      gLt.unlock();
       AppMethodBeat.o(125068);
     }
     try
     {
-      gfO.unlock();
+      gLt.unlock();
       return paramContext;
     }
     finally
     {
       AppMethodBeat.o(125068);
     }
-    gfO.unlock();
+    gLt.unlock();
     AppMethodBeat.o(125068);
     return null;
   }
   
   static final class a
   {
-    private volatile int gfV = 0;
-    private LocalServerSocket gfW = null;
+    private volatile int gLA = 0;
+    private LocalServerSocket gLB = null;
     private final String mName;
     
     a(String paramString)
@@ -1310,10 +1308,10 @@ public final class j
       try
       {
         AppMethodBeat.i(125056);
-        if (this.gfW != null)
+        if (this.gLB != null)
         {
-          j.aP(this.gfW);
-          this.gfW = null;
+          j.aV(this.gLB);
+          this.gLB = null;
         }
         super.finalize();
         AppMethodBeat.o(125056);
@@ -1329,9 +1327,9 @@ public final class j
         try
         {
           AppMethodBeat.i(125054);
-          if (this.gfW != null)
+          if (this.gLB != null)
           {
-            this.gfV += 1;
+            this.gLA += 1;
             AppMethodBeat.o(125054);
             return;
           }
@@ -1340,8 +1338,8 @@ public final class j
         {
           try
           {
-            this.gfW = new LocalServerSocket(this.mName + Process.myUid());
-            this.gfV += 1;
+            this.gLB = new LocalServerSocket(this.mName + Process.myUid());
+            this.gLA += 1;
             AppMethodBeat.o(125054);
           }
           catch (Throwable localThrowable1) {}
@@ -1351,7 +1349,7 @@ public final class j
         {
           Thread.sleep(1L);
           label94:
-          if (this.gfW != null) {
+          if (this.gLB != null) {
             continue;
           }
           AppMethodBeat.o(125054);
@@ -1372,7 +1370,7 @@ public final class j
       //   2: ldc 78
       //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 20	com/tencent/mm/compatible/util/j$a:gfV	I
+      //   8: getfield 20	com/tencent/mm/compatible/util/j$a:gLA	I
       //   11: ifne +11 -> 22
       //   14: ldc 78
       //   16: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1381,22 +1379,22 @@ public final class j
       //   21: return
       //   22: aload_0
       //   23: aload_0
-      //   24: getfield 20	com/tencent/mm/compatible/util/j$a:gfV	I
+      //   24: getfield 20	com/tencent/mm/compatible/util/j$a:gLA	I
       //   27: iconst_1
       //   28: isub
-      //   29: putfield 20	com/tencent/mm/compatible/util/j$a:gfV	I
+      //   29: putfield 20	com/tencent/mm/compatible/util/j$a:gLA	I
       //   32: aload_0
-      //   33: getfield 20	com/tencent/mm/compatible/util/j$a:gfV	I
+      //   33: getfield 20	com/tencent/mm/compatible/util/j$a:gLA	I
       //   36: ifne +22 -> 58
       //   39: aload_0
-      //   40: getfield 22	com/tencent/mm/compatible/util/j$a:gfW	Landroid/net/LocalServerSocket;
+      //   40: getfield 22	com/tencent/mm/compatible/util/j$a:gLB	Landroid/net/LocalServerSocket;
       //   43: ifnull +15 -> 58
       //   46: aload_0
-      //   47: getfield 22	com/tencent/mm/compatible/util/j$a:gfW	Landroid/net/LocalServerSocket;
-      //   50: invokestatic 37	com/tencent/mm/compatible/util/j:aP	(Ljava/lang/Object;)V
+      //   47: getfield 22	com/tencent/mm/compatible/util/j$a:gLB	Landroid/net/LocalServerSocket;
+      //   50: invokestatic 37	com/tencent/mm/compatible/util/j:aV	(Ljava/lang/Object;)V
       //   53: aload_0
       //   54: aconst_null
-      //   55: putfield 22	com/tencent/mm/compatible/util/j$a:gfW	Landroid/net/LocalServerSocket;
+      //   55: putfield 22	com/tencent/mm/compatible/util/j$a:gLB	Landroid/net/LocalServerSocket;
       //   58: ldc 78
       //   60: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   63: goto -44 -> 19
@@ -1419,7 +1417,7 @@ public final class j
   
   public static abstract interface b
   {
-    public abstract boolean Mi();
+    public abstract boolean Wt();
   }
 }
 

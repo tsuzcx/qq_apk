@@ -8,8 +8,8 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.offline.i;
 import com.tencent.mm.plugin.offline.k;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.ArrayList;
 
 public class KOfflinePayServiceImpl
@@ -20,7 +20,7 @@ public class KOfflinePayServiceImpl
   public void cleanCftToken(String paramString)
   {
     AppMethodBeat.i(18361);
-    com.tencent.mm.wallet_core.c.b.fVM();
+    com.tencent.mm.wallet_core.c.b.hhj();
     com.tencent.mm.wallet_core.c.b.clearToken(paramString);
     AppMethodBeat.o(18361);
   }
@@ -28,7 +28,7 @@ public class KOfflinePayServiceImpl
   public boolean deleteCftCert(String paramString)
   {
     AppMethodBeat.i(18362);
-    com.tencent.mm.wallet_core.c.b.fVM();
+    com.tencent.mm.wallet_core.c.b.hhj();
     com.tencent.mm.wallet_core.c.b.clearCert(paramString);
     AppMethodBeat.o(18362);
     return true;
@@ -37,8 +37,8 @@ public class KOfflinePayServiceImpl
   public String getCertid()
   {
     AppMethodBeat.i(18351);
-    k.dzG();
-    String str = k.MN(196617);
+    k.ezn();
+    String str = k.TX(196617);
     AppMethodBeat.o(18351);
     return str;
   }
@@ -46,13 +46,13 @@ public class KOfflinePayServiceImpl
   public String getCftCSR(String paramString)
   {
     AppMethodBeat.i(18372);
-    com.tencent.mm.wallet_core.c.b.fVM().fVN();
-    com.tencent.mm.wallet_core.c.b localb = com.tencent.mm.wallet_core.c.b.fVM();
-    com.tencent.mm.wallet_core.b.fVf();
-    if (com.tencent.mm.wallet_core.b.fVh()) {}
+    com.tencent.mm.wallet_core.c.b.hhj().hhk();
+    com.tencent.mm.wallet_core.c.b localb = com.tencent.mm.wallet_core.c.b.hhj();
+    com.tencent.mm.wallet_core.b.hgC();
+    if (com.tencent.mm.wallet_core.b.hgE()) {}
     for (int i = 1;; i = 0)
     {
-      paramString = localb.gW(paramString, i);
+      paramString = localb.hr(paramString, i);
       AppMethodBeat.o(18372);
       return paramString;
     }
@@ -61,7 +61,7 @@ public class KOfflinePayServiceImpl
   public String getCftCertSign(String paramString1, String paramString2)
   {
     AppMethodBeat.i(18360);
-    com.tencent.mm.wallet_core.c.b.fVM();
+    com.tencent.mm.wallet_core.c.b.hhj();
     paramString1 = com.tencent.mm.wallet_core.c.b.genUserSig(paramString1, paramString2);
     AppMethodBeat.o(18360);
     return paramString1;
@@ -70,7 +70,7 @@ public class KOfflinePayServiceImpl
   public String getCftToken(String paramString)
   {
     AppMethodBeat.i(18356);
-    com.tencent.mm.wallet_core.c.b.fVM();
+    com.tencent.mm.wallet_core.c.b.hhj();
     paramString = com.tencent.mm.wallet_core.c.b.getToken(paramString);
     AppMethodBeat.o(18356);
     return paramString;
@@ -79,7 +79,7 @@ public class KOfflinePayServiceImpl
   public String getCodever()
   {
     AppMethodBeat.i(18349);
-    String str = g.ajR().ajA().get(am.a.IKq, "");
+    String str = g.aAh().azQ().get(ar.a.NSo, "");
     AppMethodBeat.o(18349);
     return str;
   }
@@ -87,8 +87,8 @@ public class KOfflinePayServiceImpl
   public String getDeviceid()
   {
     AppMethodBeat.i(18347);
-    k.dzG();
-    String str = k.MN(196628);
+    k.ezn();
+    String str = k.TX(196628);
     AppMethodBeat.o(18347);
     return str;
   }
@@ -96,7 +96,7 @@ public class KOfflinePayServiceImpl
   public String getLastSelectedCardBindSerial()
   {
     AppMethodBeat.i(18354);
-    String str = a.dAJ();
+    String str = a.eAv();
     AppMethodBeat.o(18354);
     return str;
   }
@@ -107,7 +107,7 @@ public class KOfflinePayServiceImpl
     long l1 = 0L;
     try
     {
-      long l2 = Long.valueOf(a.dAH()).longValue();
+      long l2 = Long.valueOf(a.eAt()).longValue();
       l1 = l2;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -122,7 +122,7 @@ public class KOfflinePayServiceImpl
   public boolean getOfflinePayHasSuccess()
   {
     AppMethodBeat.i(18371);
-    boolean bool = ((Boolean)g.ajR().ajA().get(am.a.IQJ, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)g.aAh().azQ().get(ar.a.NYK, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(18371);
     return bool;
   }
@@ -135,7 +135,7 @@ public class KOfflinePayServiceImpl
   public int getRegetTokenNum()
   {
     AppMethodBeat.i(18369);
-    int i = a.dBa();
+    int i = a.eAM();
     AppMethodBeat.o(18369);
     return i;
   }
@@ -143,9 +143,9 @@ public class KOfflinePayServiceImpl
   public int getRemainCftTokenNum(String paramString)
   {
     AppMethodBeat.i(18357);
-    k.dzG();
-    k.dzJ();
-    int i = i.dzF();
+    k.ezn();
+    k.ezq();
+    int i = i.ezm();
     AppMethodBeat.o(18357);
     return i;
   }
@@ -161,7 +161,7 @@ public class KOfflinePayServiceImpl
   public int getTokenUpdateInterval()
   {
     AppMethodBeat.i(18367);
-    int i = a.dAT();
+    int i = a.eAF();
     AppMethodBeat.o(18367);
     return i;
   }
@@ -169,7 +169,7 @@ public class KOfflinePayServiceImpl
   public boolean importCftCert(String paramString1, String paramString2)
   {
     AppMethodBeat.i(18373);
-    boolean bool = com.tencent.mm.wallet_core.c.b.fVM().importCert(paramString1, paramString2);
+    boolean bool = com.tencent.mm.wallet_core.c.b.hhj().importCert(paramString1, paramString2);
     AppMethodBeat.o(18373);
     return bool;
   }
@@ -177,18 +177,18 @@ public class KOfflinePayServiceImpl
   public void removeCertid()
   {
     AppMethodBeat.i(18353);
-    k.dzG();
-    k.bz(196617, "");
+    k.ezn();
+    k.bN(196617, "");
     AppMethodBeat.o(18353);
   }
   
   public boolean setCertid(String paramString)
   {
     AppMethodBeat.i(18352);
-    if (!com.tencent.matrix.trace.g.b.ef(paramString))
+    if (!com.tencent.matrix.trace.g.b.eP(paramString))
     {
-      k.dzG();
-      k.bz(196617, paramString);
+      k.ezn();
+      k.bN(196617, paramString);
       AppMethodBeat.o(18352);
       return true;
     }
@@ -199,7 +199,7 @@ public class KOfflinePayServiceImpl
   public boolean setCftTokenCode(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(18363);
-    com.tencent.mm.wallet_core.c.b.fVM();
+    com.tencent.mm.wallet_core.c.b.hhj();
     paramBoolean = com.tencent.mm.wallet_core.c.b.F(paramString2, paramString1, paramBoolean);
     AppMethodBeat.o(18363);
     return paramBoolean;
@@ -208,9 +208,9 @@ public class KOfflinePayServiceImpl
   public boolean setCodever(String paramString)
   {
     AppMethodBeat.i(18350);
-    if (!com.tencent.matrix.trace.g.b.ef(paramString))
+    if (!com.tencent.matrix.trace.g.b.eP(paramString))
     {
-      g.ajR().ajA().set(am.a.IKq, paramString);
+      g.aAh().azQ().set(ar.a.NSo, paramString);
       AppMethodBeat.o(18350);
       return true;
     }
@@ -221,10 +221,10 @@ public class KOfflinePayServiceImpl
   public boolean setDeviceid(String paramString)
   {
     AppMethodBeat.i(18348);
-    if (!com.tencent.matrix.trace.g.b.ef(paramString))
+    if (!com.tencent.matrix.trace.g.b.eP(paramString))
     {
-      k.dzG();
-      k.bz(196628, paramString);
+      k.ezn();
+      k.bN(196628, paramString);
       AppMethodBeat.o(18348);
       return true;
     }
@@ -235,39 +235,39 @@ public class KOfflinePayServiceImpl
   public void setLastSelectedCardBindSerial(String paramString)
   {
     AppMethodBeat.i(18355);
-    a.auY(paramString);
+    a.aJk(paramString);
     AppMethodBeat.o(18355);
   }
   
   public void setLastTokenUpdateTs(long paramLong)
   {
     AppMethodBeat.i(18364);
-    k.dzG();
-    k.bz(196632, String.valueOf(paramLong));
+    k.ezn();
+    k.bN(196632, String.valueOf(paramLong));
     AppMethodBeat.o(18364);
   }
   
   public void setOfflinePayHasSuccess()
   {
     AppMethodBeat.i(18370);
-    g.ajR().ajA().set(am.a.IQJ, Boolean.TRUE);
+    g.aAh().azQ().set(ar.a.NYK, Boolean.TRUE);
     AppMethodBeat.o(18370);
   }
   
   public void setRegetTokenNum(int paramInt)
   {
     AppMethodBeat.i(18368);
-    a.MX(paramInt);
+    a.Uh(paramInt);
     AppMethodBeat.o(18368);
   }
   
   public boolean setTokenPin(String paramString)
   {
     AppMethodBeat.i(18359);
-    if (!com.tencent.matrix.trace.g.b.ef(paramString))
+    if (!com.tencent.matrix.trace.g.b.eP(paramString))
     {
-      k.dzG();
-      k.bz(196647, paramString);
+      k.ezn();
+      k.bN(196647, paramString);
       AppMethodBeat.o(18359);
       return true;
     }
@@ -278,14 +278,14 @@ public class KOfflinePayServiceImpl
   public void setTokenUpdateInterval(int paramInt)
   {
     AppMethodBeat.i(18366);
-    k.dzG();
-    k.bz(196649, String.valueOf(paramInt));
+    k.ezn();
+    k.bN(196649, String.valueOf(paramInt));
     AppMethodBeat.o(18366);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KOfflinePayServiceImpl
  * JD-Core Version:    0.7.0.1
  */

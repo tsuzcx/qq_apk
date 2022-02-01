@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import java.util.Objects;
 import org.json.JSONObject;
 
@@ -63,23 +63,23 @@ public class DrawRectActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145023);
-    super.h(paramParcel);
-    this.x = paramParcel.readFloat();
-    this.y = paramParcel.readFloat();
-    this.width = paramParcel.readFloat();
-    this.height = paramParcel.readFloat();
-    AppMethodBeat.o(145023);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145027);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.width), Float.valueOf(this.height) });
     AppMethodBeat.o(145027);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145023);
+    super.i(paramParcel);
+    this.x = paramParcel.readFloat();
+    this.y = paramParcel.readFloat();
+    this.width = paramParcel.readFloat();
+    this.height = paramParcel.readFloat();
+    AppMethodBeat.o(145023);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -107,7 +107,7 @@ public class DrawRectActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawRectActionArg
  * JD-Core Version:    0.7.0.1
  */

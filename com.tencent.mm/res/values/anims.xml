@@ -4,35 +4,44 @@
     <item type="anim" name="h">false</item>
     <item type="anim" name="i">false</item>
     <item type="anim" name="j">false</item>
-    <item type="anim" name="x">false</item>
-    <item type="anim" name="a1">false</item>
+    <item type="anim" name="a2">false</item>
     <item type="anim" name="a6">false</item>
-    <item type="anim" name="ab">false</item>
-    <item type="anim" name="ac">false</item>
-    <item type="anim" name="ae">false</item>
+    <item type="anim" name="aa">false</item>
+    <item type="anim" name="ag">false</item>
+    <item type="anim" name="ah">false</item>
+    <item type="anim" name="aj">false</item>
     <item type="anim" name="an">false</item>
-    <item type="anim" name="ao">false</item>
-    <item type="anim" name="az">false</item>
-    <item type="anim" name="b0">false</item>
-    <item type="anim" name="ba">false</item>
-    <item type="anim" name="bb">false</item>
-    <item type="anim" name="bv">false</item>
-    <item type="anim" name="by">false</item>
-    <item type="anim" name="c2">false</item>
+    <item type="anim" name="at">false</item>
+    <item type="anim" name="au">false</item>
+    <item type="anim" name="b5">false</item>
+    <item type="anim" name="b6">false</item>
+    <item type="anim" name="b8">false</item>
+    <item type="anim" name="bk">false</item>
+    <item type="anim" name="bl">false</item>
     <item type="anim" name="c7">false</item>
-    <item type="anim" name="c8">false</item>
-    <item type="anim" name="ch">false</item>
-    <item type="anim" name="de">false</item>
-    <item type="anim" name="dg">false</item>
-    <item type="anim" name="dp">false</item>
-    <item type="anim" name="dr">false</item>
-    <item type="anim" name="ds">false</item>
-    <item type="anim" name="dt">false</item>
-    <item type="anim" name="e6">false</item>
-    <item type="anim" name="e7">false</item>
+    <item type="anim" name="c_">false</item>
+    <item type="anim" name="ce">false</item>
+    <item type="anim" name="ci">false</item>
+    <item type="anim" name="cj">false</item>
+    <item type="anim" name="ck">false</item>
+    <item type="anim" name="cn">false</item>
+    <item type="anim" name="cp">false</item>
+    <item type="anim" name="cq">false</item>
+    <item type="anim" name="ct">false</item>
+    <item type="anim" name="cu">false</item>
+    <item type="anim" name="d2">false</item>
+    <item type="anim" name="e2">false</item>
+    <item type="anim" name="e4">false</item>
     <item type="anim" name="ec">false</item>
-    <item type="anim" name="ed">false</item>
     <item type="anim" name="ee">false</item>
-    <item type="anim" name="eo">false</item>
-    <item type="anim" name="eu">false</item>
+    <item type="anim" name="ef">false</item>
+    <item type="anim" name="eg">false</item>
+    <item type="anim" name="ek">false</item>
+    <item type="anim" name="ey">false</item>
+    <item type="anim" name="ez">false</item>
+    <item type="anim" name="f5">false</item>
+    <item type="anim" name="f6">false</item>
+    <item type="anim" name="f7">false</item>
+    <item type="anim" name="fg">false</item>
+    <item type="anim" name="fl">false</item>
 </resources>

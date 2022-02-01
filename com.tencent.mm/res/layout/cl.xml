@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/qn" android:background="@color/d4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/l9" android:layout_width="fill_parent" android:layout_height="170.0dip">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/multitask_bar_miniprogram_logo" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/d_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i_" android:text="@string/j7" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i4" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <Button android:id="@id/fh" android:background="@null" android:layout_width="40.0dip" android:layout_height="fill_parent" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/l8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/i_">
-        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/lh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn" />
-        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/lg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn" />
-    </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

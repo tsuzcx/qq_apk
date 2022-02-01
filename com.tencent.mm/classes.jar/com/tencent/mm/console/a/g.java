@@ -1,91 +1,92 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ql;
-import com.tencent.mm.modelstat.WatchDogPushReceiver;
+import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
-  implements com.tencent.mm.pluginsdk.cmd.a
+  implements a
 {
   static
   {
-    AppMethodBeat.i(20182);
-    b.a(new g(), new String[] { "//recovery" });
-    AppMethodBeat.o(20182);
+    AppMethodBeat.i(20180);
+    b.a(new g(), new String[] { "//normsg" });
+    AppMethodBeat.o(20180);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    int i = 0;
-    AppMethodBeat.i(20181);
-    if (ae.getLogLevel() > 1)
+    AppMethodBeat.i(20179);
+    if (!CrashReportFactory.hasDebuger())
     {
-      AppMethodBeat.o(20181);
+      AppMethodBeat.o(20179);
       return false;
     }
     if (paramArrayOfString.length < 2)
     {
-      AppMethodBeat.o(20181);
-      return true;
+      AppMethodBeat.o(20179);
+      return false;
     }
-    paramContext = paramArrayOfString[1];
-    switch (paramContext.hashCode())
+    try
     {
-    default: 
-      i = -1;
-      label91:
-      switch (i)
+      if (paramArrayOfString.length >= 3) {
+        Integer.valueOf(paramArrayOfString[2]).intValue();
+      }
+      label50:
+      paramString = paramArrayOfString[1].toLowerCase();
+      long l1 = System.nanoTime();
+      int i = -1;
+      switch (paramString.hashCode())
       {
       }
-      break;
+      for (;;)
+      {
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(20179);
+          return false;
+          if (paramString.equals("testrpp"))
+          {
+            i = 0;
+            continue;
+            if (paramString.equals("oaid")) {
+              i = 1;
+            }
+          }
+          break;
+        }
+      }
+      com.tencent.mm.plugin.secinforeport.a.d.CWG.ik(0, 63);
+      Toast.makeText(paramContext, "info is reported.", 0).show();
+      for (;;)
+      {
+        long l2 = System.nanoTime();
+        paramArrayOfString = String.format("[NorMsgTest] cmd: %s, time: %d ns.", new Object[] { paramArrayOfString[1], Long.valueOf(l2 - l1) });
+        Log.i("MicroMsg.NorMsgTest", paramArrayOfString);
+        Toast.makeText(paramContext, paramArrayOfString, 0).show();
+        AppMethodBeat.o(20179);
+        return true;
+        paramString = com.tencent.mm.plugin.normsg.a.d.AEF.aoK();
+        Toast.makeText(paramContext, "oaid: ".concat(String.valueOf(paramString)), 1).show();
+        Log.i("MicroMsg.NorMsgTest", "[+] oaid: %s", new Object[] { paramString });
+      }
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      AppMethodBeat.o(20181);
-      return true;
-      if (!paramContext.equals("testpush")) {
-        break;
-      }
-      break label91;
-      if (!paramContext.equals("testmm")) {
-        break;
-      }
-      i = 1;
-      break label91;
-      if (!paramContext.equals("testmmonline")) {
-        break;
-      }
-      i = 2;
-      break label91;
-      if (!paramContext.equals("log")) {
-        break;
-      }
-      i = 3;
-      break label91;
-      WatchDogPushReceiver.aMp();
-      continue;
-      paramContext = new ql();
-      paramContext.dGk.action = 1;
-      com.tencent.mm.sdk.b.a.IvT.l(paramContext);
-      continue;
-      paramContext = new ql();
-      paramContext.dGk.action = 3;
-      com.tencent.mm.sdk.b.a.IvT.l(paramContext);
-      continue;
-      paramContext = new ql();
-      paramContext.dGk.action = 2;
-      com.tencent.mm.sdk.b.a.IvT.l(paramContext);
+      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.g
  * JD-Core Version:    0.7.0.1
  */

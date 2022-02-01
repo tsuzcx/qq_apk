@@ -17,42 +17,42 @@ public abstract class MigrateResultCallback
   
   protected abstract void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException);
   
-  protected abstract void aaN(int paramInt);
+  protected abstract void ajC(int paramInt);
   
-  protected abstract void aaO(int paramInt);
+  protected abstract void ajD(int paramInt);
   
-  public final void aaS(final int paramInt)
+  public final void ajH(final int paramInt)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      aaN(paramInt);
+      ajC(paramInt);
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211885);
-        MigrateResultCallback.this.aaN(paramInt);
-        AppMethodBeat.o(211885);
+        AppMethodBeat.i(204647);
+        MigrateResultCallback.this.ajC(paramInt);
+        AppMethodBeat.o(204647);
       }
     });
   }
   
-  public final void aaT(final int paramInt)
+  public final void ajI(final int paramInt)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      aaO(paramInt);
+      ajD(paramInt);
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211887);
-        MigrateResultCallback.this.aaO(paramInt);
-        AppMethodBeat.o(211887);
+        AppMethodBeat.i(204649);
+        MigrateResultCallback.this.ajD(paramInt);
+        AppMethodBeat.o(204649);
       }
     });
   }
@@ -68,9 +68,9 @@ public abstract class MigrateResultCallback
     {
       public final void run()
       {
-        AppMethodBeat.i(211888);
+        AppMethodBeat.i(204650);
         MigrateResultCallback.this.a(paramInt, paramExtStorageMigrateException);
-        AppMethodBeat.o(211888);
+        AppMethodBeat.o(204650);
       }
     });
   }
@@ -80,62 +80,62 @@ public abstract class MigrateResultCallback
     return 0;
   }
   
-  protected abstract void fmU();
+  protected abstract void gwH();
   
-  protected abstract void fmV();
+  protected abstract void gwI();
   
-  public final void fnw()
+  public final void gxi()
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      fmV();
+      gwI();
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211889);
-        MigrateResultCallback.this.fmV();
-        AppMethodBeat.o(211889);
+        AppMethodBeat.i(204651);
+        MigrateResultCallback.this.gwI();
+        AppMethodBeat.o(204651);
       }
     });
   }
   
-  protected abstract void jw(int paramInt1, int paramInt2);
+  protected abstract void kI(int paramInt1, int paramInt2);
   
-  public final void jx(final int paramInt1, final int paramInt2)
+  public final void kJ(final int paramInt1, final int paramInt2)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      jw(paramInt1, paramInt2);
+      kI(paramInt1, paramInt2);
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211890);
-        MigrateResultCallback.this.jw(paramInt1, paramInt2);
-        AppMethodBeat.o(211890);
+        AppMethodBeat.i(204652);
+        MigrateResultCallback.this.kI(paramInt1, paramInt2);
+        AppMethodBeat.o(204652);
       }
     });
   }
   
-  public final void lP(final String paramString1, final String paramString2)
+  public final void mN(final String paramString1, final String paramString2)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      fmU();
+      gwH();
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211886);
-        MigrateResultCallback.this.fmU();
-        AppMethodBeat.o(211886);
+        AppMethodBeat.i(204648);
+        MigrateResultCallback.this.gwH();
+        AppMethodBeat.o(204648);
       }
     });
   }

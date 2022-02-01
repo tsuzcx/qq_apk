@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <IconPreference android:key="share_micromsg_qzone" android:title="@string/f1e" />
-    <IconPreference android:key="share_micromsg_to_sina" android:title="@string/f1f" />
-    <IconPreference android:key="share_micromsg_to_fuckbook" android:title="@string/f1d" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <Preference mm:key="settings_sex" mm:layout="@layout/b8j" mm:title="@string/gts" />
+    <Preference mm:key="settings_district" mm:layout="@layout/b8j" mm:title="@string/go_" />
+    <com.tencent.mm.chatroom.ui.preference.SignaturePreference mm:key="settings_signature" mm:layout="@layout/b8j" mm:title="@string/gu0" />
+    <PreferenceSmallCategory />
+    <Preference mm:key="settings_linkedin" mm:layout="@layout/b8j" mm:title="@string/gpo" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

@@ -1,88 +1,146 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONObject;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleAdAction;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "ACTION_REPORT", "", "KEY_ACTION", "KEY_DATA", "TAG", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "doReport", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "data", "handleMsg", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetNetWorkType;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class j
   extends a
 {
-  private static final int ECX = 367;
-  public static final j EHE;
-  private static final String dLB = "handleAdAction";
+  private static final int CDJ = 16;
+  public static final j Jxl;
+  private static final String TAG = "MicroMsg.JsApiGetNetWorkType";
+  private static final String edq = "getNetworkType";
   
   static
   {
-    AppMethodBeat.i(182677);
-    EHE = new j();
-    ECX = 367;
-    dLB = "handleAdAction";
-    AppMethodBeat.o(182677);
+    AppMethodBeat.i(210597);
+    Jxl = new j();
+    TAG = "MicroMsg.JsApiGetNetWorkType";
+    CDJ = 16;
+    edq = "getNetworkType";
+    AppMethodBeat.o(210597);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, n paramn)
   {
-    int j = 0;
-    AppMethodBeat.i(199403);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Object localObject = (String)paraml.xqN.get("action");
-    ae.i("MicroMsg.JsApiHandleMPPageAction", "alvinfluo handleAdAction action: %s", new Object[] { localObject });
-    CharSequence localCharSequence = (CharSequence)localObject;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(210596);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Context localContext = paramf.context;
+    if (!NetStatusUtil.isConnected(localContext))
     {
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail action is empty", null);
-      AppMethodBeat.o(199403);
+      Log.i(TAG, "getNetworkType, not connected");
+      paramf.IQZ.h(paramn.ISe, "network_type:fail", null);
+      AppMethodBeat.o(210596);
       return true;
     }
-    if (p.i(localObject, "report"))
+    if (paramf.mHh != null) {}
+    int i;
+    for (;;)
     {
-      localObject = (String)paraml.xqN.get("data");
-      localCharSequence = (CharSequence)localObject;
-      if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-      for (i = 1; i != 0; i = 0)
+      try
       {
-        paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail data is empty", null);
-        AppMethodBeat.o(199403);
-        return true;
+        Object localObject = paramf.mHh;
+        if (localObject == null) {
+          p.hyc();
+        }
+        localObject = ((e)localObject).j(110, new Bundle());
+        p.g(localObject, "env.invoker!!.invokeAsRe…_SIM_CARD_TYPE, Bundle())");
+        i = ((Bundle)localObject).getInt("sim_card_type", 0);
+        if (i == 0)
+        {
+          i = 0;
+          int j = NetStatusUtil.getNetType(localContext);
+          Log.i(TAG, "getNetworkType, type = %s, simType = %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+          localObject = (Map)new HashMap();
+          if (!NetStatusUtil.is2G(localContext)) {
+            break;
+          }
+          Log.i(TAG, "getNetworkType, 2g");
+          ((Map)localObject).put("subtype", "2g");
+          ((Map)localObject).put("simtype", Integer.valueOf(i));
+          paramf.IQZ.h(paramn.ISe, "network_type:wwan", (Map)localObject);
+          AppMethodBeat.o(210596);
+          return true;
+        }
+        if (i == 1)
+        {
+          i = 1;
+        }
+        else
+        {
+          i = 2;
+          continue;
+          i = 0;
+        }
       }
-      localObject = new JSONObject((String)localObject);
-      int k = bu.aSB(((JSONObject)localObject).optString("logid"));
-      localObject = ((JSONObject)localObject).optString("logstr");
-      ae.v("MicroMsg.JsApiHandleMPPageAction", "alvinluo handleAdAction doReport logId: %s, logStr: %s", new Object[] { Integer.valueOf(k), localObject });
-      p.g(localObject, "logStr");
-      i = j;
-      if (((CharSequence)localObject).length() > 0) {
-        i = 1;
+      catch (Exception localException)
+      {
+        Log.e(TAG, "invokeAsResult ex %s", new Object[] { localException.getMessage() });
       }
-      if (i != 0) {
-        g.yxI.kvStat(k, (String)localObject);
-      }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", null);
-      AppMethodBeat.o(199403);
+    }
+    if (NetStatusUtil.is3G(localContext))
+    {
+      Log.i(TAG, "getNetworkType, 3g");
+      localException.put("subtype", "3g");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.IQZ.h(paramn.ISe, "network_type:wwan", localException);
+      AppMethodBeat.o(210596);
       return true;
     }
-    AppMethodBeat.o(199403);
-    return false;
+    if (NetStatusUtil.is4G(localContext))
+    {
+      Log.i(TAG, "getNetworkType, 4g");
+      localException.put("subtype", "4g");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.IQZ.h(paramn.ISe, "network_type:wwan", localException);
+      AppMethodBeat.o(210596);
+      return true;
+    }
+    if (NetStatusUtil.is5G(localContext))
+    {
+      Log.i(TAG, "getNetworkType, 5g");
+      localException.put("subtype", "5g");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.IQZ.h(paramn.ISe, "network_type:wwan", localException);
+      AppMethodBeat.o(210596);
+      return true;
+    }
+    if (NetStatusUtil.isWifi(localContext))
+    {
+      Log.i(TAG, "getNetworkType, wifi");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.IQZ.h(paramn.ISe, "network_type:wifi", localException);
+      AppMethodBeat.o(210596);
+      return true;
+    }
+    Log.w(TAG, "getNetworkType, unknown");
+    paramf.IQZ.h(paramn.ISe, "network_type:fail", null);
+    AppMethodBeat.o(210596);
+    return true;
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
+    return edq;
   }
 }
 

@@ -1,28 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/b4r" android:layout_width="fill_parent" android:layout_height="@dimen/i9" android:baselineAligned="false" android:minHeight="@dimen/i9"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="@dimen/i4" android:layout_height="@dimen/i4" android:layout_marginLeft="@dimen/bp" android:layout_marginRight="@dimen/d">
-        <ImageView android:id="@id/tm" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        <TextView android:id="@id/ga3" android:visibility="gone" android:layout_marginRight="@dimen/js" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/yi" />
-        <ImageView android:id="@id/tt" android:visibility="gone" android:layout_marginTop="@dimen/ic" android:layout_marginRight="@dimen/d" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/yj" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="?rd" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="top" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="22.0dip" android:layout_marginTop="@dimen/ic">
-            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/e3x" android:tag="nickname_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/m3" />
-            </LinearLayout>
-            <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/gx" android:gravity="center|right" android:id="@id/giv" android:tag="update_time_tv" android:layout_width="@dimen/b0" android:layout_height="wrap_content" style="@style/m1" />
+<LinearLayout android:orientation="vertical" android:background="@color/m" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.collect.ui.CollectPullDownView android:id="@id/b6e" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/b6c" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/aij" android:cacheColorHint="#00000000" android:divider="@color/m" android:dividerHeight="@dimen/ib" android:headerDividersEnabled="false" android:footerDividersEnabled="true" android:overScrollMode="never" />
+        <LinearLayout android:gravity="center_horizontal" android:id="@id/b6a" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/a2t" android:id="@id/b6b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/b6_" />
         </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="20.0dip">
-            <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <ImageView android:gravity="center|left" android:id="@id/cyw" android:layout_width="14.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/hk" />
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/jt" android:textColor="@color/t8" android:ellipsize="end" android:gravity="center|left" android:id="@id/cyv" android:tag="last_msg_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{lastmsg}" style="@style/m2" />
-            </LinearLayout>
-            <LinearLayout android:gravity="bottom|center|right" android:layout_width="40.0dip" android:layout_height="fill_parent">
-                <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/dw7" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/chatlist_multitalk_icon" android:contentDescription="@string/ge" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/cp8" android:paddingLeft="@dimen/js" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chat_mute_notify_normal" app:iconColor="@color/BW_0_Alpha_0_3" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/d53" android:paddingLeft="@dimen/js" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_location" android:contentDescription="@string/ge" app:iconColor="@color/BW_0_Alpha_0_3" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    </com.tencent.mm.plugin.collect.ui.CollectPullDownView>
 </LinearLayout>

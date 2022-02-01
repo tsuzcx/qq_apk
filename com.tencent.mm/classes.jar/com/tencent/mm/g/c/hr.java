@@ -2,55 +2,31 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class hr
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGY = "username".hashCode();
-  private static final int eHj = "token".hashCode();
-  private static final int fBB = "uin".hashCode();
-  private static final int fpC = "appid".hashCode();
+  private static final int ghG = "appDs".hashCode();
+  private static final int ghH = "appHour".hashCode();
+  private static final int ghI = "appTbe".hashCode();
+  private static final int ghJ = "appTen".hashCode();
+  private static final int ghK = "appIn".hashCode();
+  private static final int ghL = "appInbg".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  private boolean eHi = true;
-  private boolean fAW = true;
-  public String field_appid;
-  public String field_token;
-  public int field_uin;
-  public String field_username;
-  private boolean fpA = true;
-  
-  public static c.a VD()
-  {
-    c.a locala = new c.a();
-    locala.IBL = new Field[4];
-    locala.columns = new String[5];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "token";
-    locala.IBN.put("token", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" token TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IBM = "token";
-    locala.columns[1] = "username";
-    locala.IBN.put("username", "TEXT");
-    localStringBuilder.append(" username TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "uin";
-    locala.IBN.put("uin", "INTEGER");
-    localStringBuilder.append(" uin INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "appid";
-    locala.IBN.put("appid", "TEXT");
-    localStringBuilder.append(" appid TEXT");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
-  }
+  public int field_appDs;
+  public int field_appHour;
+  public long field_appIn;
+  public long field_appInbg;
+  public long field_appTbe;
+  public long field_appTen;
+  private boolean ghA = true;
+  private boolean ghB = true;
+  private boolean ghC = true;
+  private boolean ghD = true;
+  private boolean ghE = true;
+  private boolean ghF = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -65,24 +41,27 @@ public abstract class hr
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eHj != k) {
-        break label65;
+      if (ghG != k) {
+        break label60;
       }
-      this.field_token = paramCursor.getString(i);
-      this.eHi = true;
+      this.field_appDs = paramCursor.getInt(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eGY == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (fBB == k) {
-        this.field_uin = paramCursor.getInt(i);
-      } else if (fpC == k) {
-        this.field_appid = paramCursor.getString(i);
+      label60:
+      if (ghH == k) {
+        this.field_appHour = paramCursor.getInt(i);
+      } else if (ghI == k) {
+        this.field_appTbe = paramCursor.getLong(i);
+      } else if (ghJ == k) {
+        this.field_appTen = paramCursor.getLong(i);
+      } else if (ghK == k) {
+        this.field_appIn = paramCursor.getLong(i);
+      } else if (ghL == k) {
+        this.field_appInbg = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -92,17 +71,23 @@ public abstract class hr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eHi) {
-      localContentValues.put("token", this.field_token);
+    if (this.ghA) {
+      localContentValues.put("appDs", Integer.valueOf(this.field_appDs));
     }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.ghB) {
+      localContentValues.put("appHour", Integer.valueOf(this.field_appHour));
     }
-    if (this.fAW) {
-      localContentValues.put("uin", Integer.valueOf(this.field_uin));
+    if (this.ghC) {
+      localContentValues.put("appTbe", Long.valueOf(this.field_appTbe));
     }
-    if (this.fpA) {
-      localContentValues.put("appid", this.field_appid);
+    if (this.ghD) {
+      localContentValues.put("appTen", Long.valueOf(this.field_appTen));
+    }
+    if (this.ghE) {
+      localContentValues.put("appIn", Long.valueOf(this.field_appIn));
+    }
+    if (this.ghF) {
+      localContentValues.put("appInbg", Long.valueOf(this.field_appInbg));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -112,7 +97,7 @@ public abstract class hr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.hr
  * JD-Core Version:    0.7.0.1
  */

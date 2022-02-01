@@ -12,15 +12,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.model.k.a;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,22 +32,15 @@ abstract class m
   extends a<c>
 {
   protected Context mContext;
-  protected int uBX;
-  protected boolean uBY = true;
-  protected boolean uBZ = false;
-  protected boolean uCa = false;
-  protected int uCb;
-  protected ConcurrentHashMap<String, l> uCc;
-  protected SparseArray<View> uCd;
-  protected int uoy = 0;
-  private a uxj;
-  protected int uyE = 14;
-  private k.a uyI = new k.a()
+  protected int xGR = 0;
+  private a xPj;
+  protected int xQD = 14;
+  private k.a xQH = new k.a()
   {
     public final void e(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean)
     {
       AppMethodBeat.i(42249);
-      if ((!paramAnonymousBoolean) || (m.this.uCc == null) || (paramAnonymousString == null))
+      if ((!paramAnonymousBoolean) || (m.this.xUa == null) || (paramAnonymousString == null))
       {
         AppMethodBeat.o(42249);
         return;
@@ -53,30 +48,30 @@ abstract class m
       Object localObject;
       try
       {
-        localObject = m.this.uCc.values().iterator();
+        localObject = m.this.xUa.values().iterator();
         while (((Iterator)localObject).hasNext())
         {
           l locall = (l)((Iterator)localObject).next();
-          if ((locall != null) && (locall.umx != null) && ((locall.umx.field_appId.equals(paramAnonymousString)) || (locall.umx.field_packageName.equals(paramAnonymousString))))
+          if ((locall != null) && (locall.xEP != null) && ((locall.xEP.field_appId.equals(paramAnonymousString)) || (locall.xEP.field_packageName.equals(paramAnonymousString))))
           {
-            locall.fC(m.this.mContext);
-            locall.ceA();
+            locall.gi(m.this.mContext);
+            locall.cCq();
           }
         }
         paramAnonymousInt = 0;
       }
       catch (Exception paramAnonymousString)
       {
-        ae.e("MicroMsg.GameListAdapter", paramAnonymousString.getMessage());
+        Log.e("MicroMsg.GameListAdapter", paramAnonymousString.getMessage());
         AppMethodBeat.o(42249);
         return;
       }
-      while (paramAnonymousInt < m.this.upc.size())
+      while (paramAnonymousInt < m.this.xHv.size())
       {
-        localObject = (c)m.this.upc.get(paramAnonymousInt);
+        localObject = (c)m.this.xHv.get(paramAnonymousInt);
         if ((((c)localObject).type == 0) && ((((c)localObject).field_appId.equals(paramAnonymousString)) || (((c)localObject).field_packageName.equals(paramAnonymousString))) && (m.a(m.this) != null))
         {
-          m.a(m.this).Ir(paramAnonymousInt);
+          m.a(m.this).Os(paramAnonymousInt);
           AppMethodBeat.o(42249);
           return;
         }
@@ -85,8 +80,8 @@ abstract class m
       AppMethodBeat.o(42249);
     }
   };
-  protected d uyJ;
-  private DialogInterface.OnClickListener uzt = new DialogInterface.OnClickListener()
+  protected d xQI;
+  private DialogInterface.OnClickListener xRs = new DialogInterface.OnClickListener()
   {
     public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
     {
@@ -95,53 +90,60 @@ abstract class m
       AppMethodBeat.o(42251);
     }
   };
-  protected View.OnClickListener uzu = new View.OnClickListener()
+  protected View.OnClickListener xRt = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(42250);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameListAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+      Object localObject = new b();
+      ((b)localObject).bm(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameListAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
       if (!(paramAnonymousView.getTag() instanceof c))
       {
-        ae.e("MicroMsg.GameListAdapter", "No button tag retrived, ignore click");
+        Log.e("MicroMsg.GameListAdapter", "No button tag retrived, ignore click");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameListAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(42250);
         return;
       }
       paramAnonymousView = (c)paramAnonymousView.getTag();
-      if (!m.this.uCc.containsKey(paramAnonymousView.field_appId))
+      if (!m.this.xUa.containsKey(paramAnonymousView.field_appId))
       {
-        ae.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
+        Log.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameListAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(42250);
         return;
       }
-      localObject = (l)m.this.uCc.get(paramAnonymousView.field_appId);
-      ((l)localObject).fC(m.this.mContext);
-      m.this.uyJ.uwk = paramAnonymousView.ulT;
-      m.this.uyJ.uoy = m.this.uoy;
-      m.this.uyJ.a(paramAnonymousView, (l)localObject);
+      localObject = (l)m.this.xUa.get(paramAnonymousView.field_appId);
+      ((l)localObject).gi(m.this.mContext);
+      m.this.xQI.xOl = paramAnonymousView.xEl;
+      m.this.xQI.xGR = m.this.xGR;
+      m.this.xQI.a(paramAnonymousView, (l)localObject);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameListAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42250);
     }
   };
+  protected int xTV;
+  protected boolean xTW = true;
+  protected boolean xTX = false;
+  protected boolean xTY = false;
+  protected int xTZ;
+  protected ConcurrentHashMap<String, l> xUa;
+  protected SparseArray<View> xUb;
   
   public m(Context paramContext)
   {
     super(paramContext);
     this.mContext = paramContext;
-    this.uCc = new ConcurrentHashMap();
-    k.a(this.uyI);
-    this.uCd = new SparseArray();
-    this.uyJ = new d(paramContext);
-    this.uyJ.uwz = this.uzt;
+    this.xUa = new ConcurrentHashMap();
+    k.a(this.xQH);
+    this.xUb = new SparseArray();
+    this.xQI = new d(paramContext);
+    this.xQI.xOA = this.xRs;
   }
   
-  public void Is(int paramInt)
+  public void Ot(int paramInt)
   {
-    this.uCb = paramInt;
+    this.xTZ = paramInt;
   }
   
   abstract void a(c paramc, b paramb);
@@ -150,82 +152,44 @@ abstract class m
   
   public void a(a parama)
   {
-    this.uxj = parama;
+    this.xPj = parama;
   }
   
-  public void aA(final LinkedList<c> paramLinkedList)
+  public void aAA(String paramString)
   {
-    if (paramLinkedList == null) {
-      return;
-    }
-    com.tencent.mm.sdk.g.b.c(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(42248);
-        m.a(m.this, paramLinkedList);
-        ar.f(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(42247);
-            m.c(m.this, m.2.this.uCe);
-            ae.i("MicroMsg.GameListAdapter", "set size: %d", new Object[] { Integer.valueOf(m.2.this.uCe.size()) });
-            AppMethodBeat.o(42247);
-          }
-        });
-        AppMethodBeat.o(42248);
-      }
-    }, "game_get_download_info");
-  }
-  
-  public void ah(View paramView, int paramInt)
-  {
-    paramView = (b)paramView.getTag();
-    c localc = (c)this.upc.get(paramInt);
-    if (paramView != null)
-    {
-      this.uyJ.a(paramView.uCo, paramView.uCn, localc, (l)this.uCc.get(localc.field_appId));
-      return;
-    }
-    ae.e("MicroMsg.GameListAdapter", "holder should not be null, %d", new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public void anj(String paramString)
-  {
-    if (bu.isNullOrNil(paramString)) {}
+    if (Util.isNullOrNil(paramString)) {}
     do
     {
       do
       {
         return;
-      } while (!this.uCc.containsKey(paramString));
-      paramString = (l)this.uCc.get(paramString);
+      } while (!this.xUa.containsKey(paramString));
+      paramString = (l)this.xUa.get(paramString);
     } while (paramString == null);
-    paramString.dbC();
+    paramString.dVj();
   }
   
-  public void ank(String paramString)
+  public void aAB(String paramString)
   {
-    if (bu.isNullOrNil(paramString)) {}
+    if (Util.isNullOrNil(paramString)) {}
     do
     {
       do
       {
         return;
-      } while (!this.uCc.containsKey(paramString));
-      paramString = (l)this.uCc.get(paramString);
+      } while (!this.xUa.containsKey(paramString));
+      paramString = (l)this.xUa.get(paramString);
     } while (paramString == null);
-    paramString.ceA();
+    paramString.cCq();
   }
   
-  public void anl(String paramString)
+  public void aAC(String paramString)
   {
     int i = 0;
-    if (i < this.upc.size()) {
-      if (!((c)this.upc.get(i)).field_appId.equals(paramString)) {}
+    if (i < this.xHv.size()) {
+      if (!((c)this.xHv.get(i)).field_appId.equals(paramString)) {}
     }
-    for (paramString = (c)this.upc.get(i);; paramString = null)
+    for (paramString = (c)this.xHv.get(i);; paramString = null)
     {
       if (paramString != null) {
         break label63;
@@ -235,33 +199,33 @@ abstract class m
       break;
     }
     label63:
-    if (!this.uCc.containsKey(paramString.field_appId))
+    if (!this.xUa.containsKey(paramString.field_appId))
     {
-      ae.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
+      Log.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
       return;
     }
-    l locall = (l)this.uCc.get(paramString.field_appId);
-    this.uyJ.a(paramString, locall);
+    l locall = (l)this.xUa.get(paramString.field_appId);
+    this.xQI.a(paramString, locall);
   }
   
-  public void az(final LinkedList<c> paramLinkedList)
+  public void aU(final LinkedList<c> paramLinkedList)
   {
     if (paramLinkedList == null) {
       return;
     }
-    g.ajU().aw(new Runnable()
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42246);
         m.a(m.this, paramLinkedList);
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(42245);
-            m.b(m.this, m.1.this.uCe);
-            ae.i("MicroMsg.GameListAdapter", "add size: %d", new Object[] { Integer.valueOf(m.1.this.uCe.size()) });
+            m.b(m.this, m.1.this.xUc);
+            Log.i("MicroMsg.GameListAdapter", "add size: %d", new Object[] { Integer.valueOf(m.1.this.xUc.size()) });
             AppMethodBeat.o(42245);
           }
         });
@@ -270,16 +234,54 @@ abstract class m
     });
   }
   
+  public void aV(final LinkedList<c> paramLinkedList)
+  {
+    if (paramLinkedList == null) {
+      return;
+    }
+    ThreadPool.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(42248);
+        m.a(m.this, paramLinkedList);
+        MMHandlerThread.postToMainThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(42247);
+            m.c(m.this, m.2.this.xUc);
+            Log.i("MicroMsg.GameListAdapter", "set size: %d", new Object[] { Integer.valueOf(m.2.this.xUc.size()) });
+            AppMethodBeat.o(42247);
+          }
+        });
+        AppMethodBeat.o(42248);
+      }
+    }, "game_get_download_info");
+  }
+  
+  public void aj(View paramView, int paramInt)
+  {
+    paramView = (b)paramView.getTag();
+    c localc = (c)this.xHv.get(paramInt);
+    if (paramView != null)
+    {
+      this.xQI.a(paramView.xUm, paramView.xUl, localc, (l)this.xUa.get(localc.field_appId));
+      return;
+    }
+    Log.e("MicroMsg.GameListAdapter", "holder should not be null, %d", new Object[] { Integer.valueOf(paramInt) });
+  }
+  
   public void clear()
   {
     super.clear();
-    k.b(this.uyI);
+    k.b(this.xQH);
   }
   
   public void f(SparseArray<View> paramSparseArray)
   {
     if (paramSparseArray != null) {}
-    for (this.uCd = paramSparseArray;; this.uCd = new SparseArray())
+    for (this.xUb = paramSparseArray;; this.xUb = new SparseArray())
     {
       notifyDataSetChanged();
       return;
@@ -305,18 +307,18 @@ abstract class m
         i = 0;
         localView = View.inflate(paramView, i, null);
         paramView = new b();
-        paramView.uxa = ((ViewGroup)localView.findViewById(2131302004));
-        paramView.uCi = ((TextView)localView.findViewById(2131300534));
-        paramView.uCj = ((ImageView)localView.findViewById(2131300462));
-        paramView.uBn = ((TextView)localView.findViewById(2131300524));
-        paramView.uCk = ((TextView)localView.findViewById(2131302786));
-        paramView.uCl = ((TextView)localView.findViewById(2131300469));
-        paramView.uCm = ((TextView)localView.findViewById(2131300372));
-        paramView.uCn = ((Button)localView.findViewById(2131300434));
-        paramView.uCo = ((TextProgressBar)localView.findViewById(2131300436));
-        paramView.uCr = ((LinearLayout)localView.findViewById(2131300348));
-        paramView.uCp = ((GameListSocialView)localView.findViewById(2131300549));
-        paramView.uCq = ((ViewGroup)localView.findViewById(2131298909));
+        paramView.xPa = ((ViewGroup)localView.findViewById(2131304342));
+        paramView.xUg = ((TextView)localView.findViewById(2131302066));
+        paramView.xUh = ((ImageView)localView.findViewById(2131301985));
+        paramView.xTl = ((TextView)localView.findViewById(2131302051));
+        paramView.xUi = ((TextView)localView.findViewById(2131305355));
+        paramView.xUj = ((TextView)localView.findViewById(2131301992));
+        paramView.xUk = ((TextView)localView.findViewById(2131301895));
+        paramView.xUl = ((Button)localView.findViewById(2131301957));
+        paramView.xUm = ((TextProgressBar)localView.findViewById(2131301959));
+        paramView.xUp = ((LinearLayout)localView.findViewById(2131301870));
+        paramView.xUn = ((GameListSocialView)localView.findViewById(2131302081));
+        paramView.xUo = ((ViewGroup)localView.findViewById(2131299393));
         localView.setTag(paramView);
         paramViewGroup = paramView;
         label256:
@@ -329,17 +331,17 @@ abstract class m
     do
     {
       return localView;
-      i = this.uBX;
+      i = this.xTV;
       break;
-      i = 2131494235;
+      i = 2131494796;
       break;
       paramViewGroup = (b)paramView.getTag();
       localView = paramView;
       break label256;
       a(localc, paramViewGroup, paramInt);
-    } while ((this.uCb != 2) || (localc.ulU));
-    com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1004, localc.position, localc.field_appId, this.uoy, localc.ulT);
-    localc.ulU = true;
+    } while ((this.xTZ != 2) || (localc.xEm));
+    com.tencent.mm.plugin.game.d.a.b(this.mContext, 10, 1004, localc.position, localc.field_appId, this.xGR, localc.xEl);
+    localc.xEm = true;
     return localView;
     a(localc, paramViewGroup);
     return localView;
@@ -357,33 +359,33 @@ abstract class m
   
   public void setSourceScene(int paramInt)
   {
-    this.uoy = paramInt;
+    this.xGR = paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract void Ir(int paramInt);
+    public abstract void Os(int paramInt);
   }
   
   protected static final class b
   {
-    public TextView uBn;
-    public TextView uCi;
-    public ImageView uCj;
-    public TextView uCk;
-    public TextView uCl;
-    public TextView uCm;
-    public Button uCn;
-    public TextProgressBar uCo;
-    public GameListSocialView uCp;
-    public ViewGroup uCq;
-    public LinearLayout uCr;
-    public ViewGroup uxa;
+    public ViewGroup xPa;
+    public TextView xTl;
+    public TextView xUg;
+    public ImageView xUh;
+    public TextView xUi;
+    public TextView xUj;
+    public TextView xUk;
+    public Button xUl;
+    public TextProgressBar xUm;
+    public GameListSocialView xUn;
+    public ViewGroup xUo;
+    public LinearLayout xUp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.m
  * JD-Core Version:    0.7.0.1
  */

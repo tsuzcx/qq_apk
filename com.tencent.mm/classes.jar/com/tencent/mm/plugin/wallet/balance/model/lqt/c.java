@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.cbx;
-import com.tencent.mm.protocal.protobuf.cby;
-import com.tencent.mm.protocal.protobuf.dns;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.cqz;
+import com.tencent.mm.protocal.protobuf.cra;
+import com.tencent.mm.protocal.protobuf.ehn;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends a<cby>
+  extends com.tencent.mm.ak.c<cra>
 {
-  public c(dns paramdns)
+  public c(ehn paramehn)
   {
     AppMethodBeat.i(68400);
-    cbx localcbx = new cbx();
-    localcbx.HoY = paramdns;
-    localcbx.time_stamp = ((int)System.currentTimeMillis());
-    localcbx.CPZ = ae.eFT();
-    b.a locala = new b.a();
-    locala.hQF = localcbx;
-    locala.hQG = new cby();
+    cqz localcqz = new cqz();
+    localcqz.Mwt = paramehn;
+    localcqz.time_stamp = ((int)System.currentTimeMillis());
+    localcqz.HuS = ag.fNb();
+    d.a locala = new d.a();
+    locala.iLN = localcqz;
+    locala.iLO = new cra();
     locala.funcId = 1640;
     locala.uri = "/cgi-bin/mmpay-bin/lqtlqautoin/modifytrantime";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    c(locala.aDS());
-    if (paramdns != null) {}
-    for (paramdns = Integer.valueOf(paramdns.HUR);; paramdns = "null")
+    c(locala.aXF());
+    if (paramehn != null) {}
+    for (paramehn = Integer.valueOf(paramehn.Nhb);; paramehn = "null")
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CgiLqtAutoChargeModifyTime", "modify time: %s", new Object[] { paramdns });
+      Log.i("MicroMsg.CgiLqtAutoChargeModifyTime", "modify time: %s", new Object[] { paramehn });
       AppMethodBeat.o(68400);
       return;
     }
@@ -36,7 +36,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.c
  * JD-Core Version:    0.7.0.1
  */

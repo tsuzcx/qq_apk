@@ -9,85 +9,83 @@ import android.widget.ListAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.appusage.ab.b;
+import com.tencent.mm.plugin.appbrand.appusage.aa.b;
 import com.tencent.mm.plugin.appbrand.appusage.c;
 import com.tencent.mm.plugin.appbrand.appusage.f;
 import com.tencent.mm.plugin.appbrand.appusage.f.b;
-import com.tencent.mm.plugin.appbrand.report.k;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI.Fragment;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.t.b;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView.h;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView.l;
-import d.g.b.p;
-import d.l;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import kotlin.g.b.p;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionVerticalSortList;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUI$Fragment;", "()V", "mAdapter", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionDragSortAdapter;", "mList", "Lcom/tencent/mm/ui/widget/sortlist/DragSortListView;", "getLayoutId", "", "initView", "", "onActivityCreated", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-appbrand-integration_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionVerticalSortList;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUI$Fragment;", "()V", "mAdapter", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionDragSortAdapter;", "mList", "Lcom/tencent/mm/ui/widget/sortlist/DragSortListView;", "getLayoutId", "", "initView", "", "onActivityCreated", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandCollectionVerticalSortList
   extends AppBrandLauncherUI.Fragment
 {
-  public static final AppBrandCollectionVerticalSortList.a mNG;
+  public static final a oaT;
   private HashMap _$_findViewCache;
-  private DragSortListView mNE;
-  private d mNF;
+  private DragSortListView oaR;
+  private b oaS;
   
   static
   {
     AppMethodBeat.i(51213);
-    mNG = new AppBrandCollectionVerticalSortList.a((byte)0);
+    oaT = new a((byte)0);
     AppMethodBeat.o(51213);
   }
   
   public final int getLayoutId()
   {
-    return 2131492979;
+    return 2131493019;
   }
   
   public final void initView()
   {
     AppMethodBeat.i(51211);
-    this.mNE = ((DragSortListView)bAe());
-    Object localObject1 = this.mNE;
+    this.oaR = ((DragSortListView)bXc());
+    Object localObject1 = this.oaR;
     if (localObject1 != null) {
       ((DragSortListView)localObject1).setDropListener((DragSortListView.h)new b(this));
     }
-    localObject1 = this.mNE;
+    localObject1 = this.oaR;
     if (localObject1 != null) {
       ((DragSortListView)localObject1).setRemoveListener((DragSortListView.l)new c(this));
     }
     localObject1 = getActivity();
     if (localObject1 == null) {
-      p.gkB();
+      p.hyc();
     }
     p.g(localObject1, "activity!!");
     localObject1 = (Context)localObject1;
     Object localObject2 = getArguments();
     if (localObject2 == null) {
-      p.gkB();
+      p.hyc();
     }
     localObject2 = ((Bundle)localObject2).getParcelableArrayList("KEY_SORT_DATA_LIST");
     if (localObject2 == null) {
-      p.gkB();
+      p.hyc();
     }
-    this.mNF = new d((Context)localObject1, (ArrayList)localObject2);
-    localObject1 = this.mNF;
+    this.oaS = new b((Context)localObject1, (ArrayList)localObject2);
+    localObject1 = this.oaS;
     if (localObject1 == null) {
-      p.gkB();
+      p.hyc();
     }
-    localObject2 = this.mNE;
+    localObject2 = this.oaR;
     if (localObject2 == null) {
-      p.gkB();
+      p.hyc();
     }
     p.h(localObject2, "list");
-    ((d)localObject1).mNE = ((DragSortListView)localObject2);
-    localObject2 = ((d)localObject1).mNE;
+    ((b)localObject1).oaR = ((DragSortListView)localObject2);
+    localObject2 = ((b)localObject1).oaR;
     if (localObject2 == null) {
-      p.gkB();
+      p.hyc();
     }
     ((DragSortListView)localObject2).setAdapter((ListAdapter)localObject1);
     AppMethodBeat.o(51211);
@@ -104,7 +102,7 @@ public final class AppBrandCollectionVerticalSortList
     }
     paramBundle = (MMActivity)paramBundle;
     if (paramBundle != null) {
-      paramBundle.addTextOptionMenu(0, getString(2131755668), (MenuItem.OnMenuItemClickListener)new d(this), null, s.b.JwC);
+      paramBundle.addTextOptionMenu(0, getString(2131755718), (MenuItem.OnMenuItemClickListener)new d(this), null, t.b.OGW);
     }
     localFragmentActivity = getActivity();
     paramBundle = localFragmentActivity;
@@ -114,32 +112,35 @@ public final class AppBrandCollectionVerticalSortList
     paramBundle = (MMActivity)paramBundle;
     if (paramBundle != null)
     {
-      paramBundle.setBackBtn((MenuItem.OnMenuItemClickListener)new e(this), 2131689492);
+      paramBundle.setBackBtn((MenuItem.OnMenuItemClickListener)new e(this), 2131689494);
       AppMethodBeat.o(51212);
       return;
     }
     AppMethodBeat.o(51212);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "from", "", "to", "drop"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionVerticalSortList$Companion;", "", "()V", "KEY_DATA_LIST", "", "KEY_OPERATE_REPORT_SCENE", "KEY_OPERATE_REPORT_SCENE_ID", "TAG", "createSortList", "Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionVerticalSortList;", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "operateReportScene", "", "operateReportSceneId", "plugin-appbrand-integration_release"})
+  public static final class a {}
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "from", "", "to", "drop"})
   static final class b
     implements DragSortListView.h
   {
     b(AppBrandCollectionVerticalSortList paramAppBrandCollectionVerticalSortList) {}
     
-    public final void ek(int paramInt1, int paramInt2)
+    public final void ey(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(51204);
-      Object localObject = AppBrandCollectionVerticalSortList.a(this.mNH);
+      Object localObject = AppBrandCollectionVerticalSortList.a(this.oaU);
       if (localObject != null)
       {
-        localObject = ((d)localObject).vE(paramInt1);
+        localObject = ((b)localObject).zt(paramInt1);
         if (localObject != null)
         {
-          d locald = AppBrandCollectionVerticalSortList.a(this.mNH);
-          if (locald != null)
+          b localb = AppBrandCollectionVerticalSortList.a(this.oaU);
+          if (localb != null)
           {
-            locald.insert(localObject, paramInt2);
+            localb.insert(localObject, paramInt2);
             AppMethodBeat.o(51204);
             return;
           }
@@ -151,7 +152,7 @@ public final class AppBrandCollectionVerticalSortList
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "which", "", "remove"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "which", "", "remove"})
   static final class c
     implements DragSortListView.l
   {
@@ -160,10 +161,10 @@ public final class AppBrandCollectionVerticalSortList
     public final void remove(int paramInt)
     {
       AppMethodBeat.i(51205);
-      d locald = AppBrandCollectionVerticalSortList.a(this.mNH);
-      if (locald != null)
+      b localb = AppBrandCollectionVerticalSortList.a(this.oaU);
+      if (localb != null)
       {
-        locald.vE(paramInt);
+        localb.zt(paramInt);
         AppMethodBeat.o(51205);
         return;
       }
@@ -171,7 +172,7 @@ public final class AppBrandCollectionVerticalSortList
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class d
     implements MenuItem.OnMenuItemClickListener
   {
@@ -180,27 +181,27 @@ public final class AppBrandCollectionVerticalSortList
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(51209);
-      paramMenuItem = f.jRD;
-      paramMenuItem = f.bct();
+      paramMenuItem = f.kUn;
+      paramMenuItem = f.bxI();
       if (paramMenuItem == null) {
-        p.gkB();
+        p.hyc();
       }
-      d locald = AppBrandCollectionVerticalSortList.a(this.mNH);
-      if (locald == null) {
-        p.gkB();
+      b localb = AppBrandCollectionVerticalSortList.a(this.oaU);
+      if (localb == null) {
+        p.hyc();
       }
-      paramMenuItem.a((List)locald.jhZ, (f.b)new f.b()
+      paramMenuItem.a((List)localb.kgc, (f.b)new f.b()
       {
         public final void b(LocalUsageInfo paramAnonymousLocalUsageInfo)
         {
           AppMethodBeat.i(51206);
           p.h(paramAnonymousLocalUsageInfo, "info");
-          Object localObject = this.mNI.mNH.getArguments();
+          Object localObject = this.oaV.oaU.getArguments();
           int i;
           if (localObject != null)
           {
             i = ((Bundle)localObject).getInt("KEY_OPERATE_REPORT_SCENE");
-            localObject = this.mNI.mNH.getArguments();
+            localObject = this.oaV.oaU.getArguments();
             if (localObject == null) {
               break label74;
             }
@@ -208,7 +209,7 @@ public final class AppBrandCollectionVerticalSortList
           label74:
           for (localObject = ((Bundle)localObject).getString("KEY_OPERATE_REPORT_SCENE_ID");; localObject = null)
           {
-            k.a(paramAnonymousLocalUsageInfo, 6, i, (String)localObject);
+            com.tencent.mm.plugin.appbrand.report.l.a(paramAnonymousLocalUsageInfo, 6, i, (String)localObject);
             AppMethodBeat.o(51206);
             return;
             i = 0;
@@ -216,12 +217,12 @@ public final class AppBrandCollectionVerticalSortList
           }
         }
         
-        public final void bcu()
+        public final void bxJ()
         {
           AppMethodBeat.i(51208);
-          ae.i("MicroMsg.AppBrandCollectionVerticalSortList", "[collection]reorder callback entered");
-          ((c)g.ab(c.class)).a(ab.b.jTe);
-          FragmentActivity localFragmentActivity = this.mNI.mNH.getActivity();
+          Log.i("MicroMsg.AppBrandCollectionVerticalSortList", "[collection]reorder callback entered");
+          ((c)g.af(c.class)).a(aa.b.kVM);
+          FragmentActivity localFragmentActivity = this.oaV.oaU.getActivity();
           if (localFragmentActivity != null)
           {
             localFragmentActivity.finish();
@@ -235,12 +236,12 @@ public final class AppBrandCollectionVerticalSortList
         {
           AppMethodBeat.i(51207);
           p.h(paramAnonymousLocalUsageInfo, "info");
-          Object localObject = this.mNI.mNH.getArguments();
+          Object localObject = this.oaV.oaU.getArguments();
           int i;
           if (localObject != null)
           {
             i = ((Bundle)localObject).getInt("KEY_OPERATE_REPORT_SCENE");
-            localObject = this.mNI.mNH.getArguments();
+            localObject = this.oaV.oaU.getArguments();
             if (localObject == null) {
               break label74;
             }
@@ -248,7 +249,7 @@ public final class AppBrandCollectionVerticalSortList
           label74:
           for (localObject = ((Bundle)localObject).getString("KEY_OPERATE_REPORT_SCENE_ID");; localObject = null)
           {
-            k.a(paramAnonymousLocalUsageInfo, 7, i, (String)localObject);
+            com.tencent.mm.plugin.appbrand.report.l.a(paramAnonymousLocalUsageInfo, 7, i, (String)localObject);
             AppMethodBeat.o(51207);
             return;
             i = 0;
@@ -261,7 +262,7 @@ public final class AppBrandCollectionVerticalSortList
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class e
     implements MenuItem.OnMenuItemClickListener
   {
@@ -270,7 +271,7 @@ public final class AppBrandCollectionVerticalSortList
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(51210);
-      paramMenuItem = this.mNH.getActivity();
+      paramMenuItem = this.oaU.getActivity();
       if (paramMenuItem != null) {
         paramMenuItem.finish();
       }
@@ -281,7 +282,7 @@ public final class AppBrandCollectionVerticalSortList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.AppBrandCollectionVerticalSortList
  * JD-Core Version:    0.7.0.1
  */

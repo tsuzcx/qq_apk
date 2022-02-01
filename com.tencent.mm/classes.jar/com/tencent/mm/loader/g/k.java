@@ -1,30 +1,30 @@
 package com.tencent.mm.loader.g;
 
-import d.g.b.p;
+import kotlin.g.b.p;
 
 public final class k
   implements Runnable
 {
-  private b hhY;
-  private c hiE;
-  private a hiF;
+  private b iaV;
+  private c ibC;
+  private a ibD;
   
   public k(c paramc, b paramb, a parama)
   {
-    this.hiE = paramc;
-    this.hhY = paramb;
-    this.hiF = parama;
+    this.ibC = paramc;
+    this.iaV = paramb;
+    this.ibD = parama;
   }
   
   public final void run()
   {
-    c localc = this.hiE;
-    b localb = this.hhY;
-    a locala = this.hiF;
+    c localc = this.ibC;
+    b localb = this.iaV;
+    a locala = this.ibD;
     p.h(localb, "loader");
     p.h(locala, "watch");
-    localc.hhY = localb;
-    localc.hhZ = locala;
+    localc.iaV = localb;
+    localc.iaW = locala;
     localc.call();
   }
   
@@ -35,7 +35,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.loader.g.k
  * JD-Core Version:    0.7.0.1
  */

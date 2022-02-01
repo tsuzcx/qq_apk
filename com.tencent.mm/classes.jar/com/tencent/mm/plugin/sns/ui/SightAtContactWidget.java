@@ -20,17 +20,17 @@ public class SightAtContactWidget
   
   protected int getLayoutResource()
   {
-    return 2131495445;
+    return 2131496318;
   }
   
   protected int getWithDrawableId()
   {
-    return 2131691178;
+    return 2131691494;
   }
   
   protected int getWithEmptyDrawableId()
   {
-    return 2131691178;
+    return 2131691494;
   }
 }
 

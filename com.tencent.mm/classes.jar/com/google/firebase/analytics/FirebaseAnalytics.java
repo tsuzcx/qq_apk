@@ -98,15 +98,10 @@ public final class FirebaseAnalytics
     this.zzacw.zzjr().setUserProperty(paramString1, paramString2);
     AppMethodBeat.o(2340);
   }
-  
-  public static class c
-  {
-    public static final String SIGN_UP_METHOD = "sign_up_method";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.firebase.analytics.FirebaseAnalytics
  * JD-Core Version:    0.7.0.1
  */

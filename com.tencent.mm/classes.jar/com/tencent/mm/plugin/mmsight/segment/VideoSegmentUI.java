@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.a.k;
@@ -29,12 +30,14 @@ import com.tencent.mm.plugin.mmsight.segment.a.a.b;
 import com.tencent.mm.plugin.mmsight.segment.a.a.c;
 import com.tencent.mm.plugin.mmsight.segment.a.a.d;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMTextureView;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -45,44 +48,44 @@ import java.util.concurrent.TimeUnit;
 public class VideoSegmentUI
   extends MMActivity
 {
-  private CountDownLatch cJf;
-  private ProgressDialog fOC;
-  private com.tencent.mm.remoteservice.d gkS;
-  private int ipL;
+  private CountDownLatch cZC;
+  private com.tencent.mm.remoteservice.d gVN;
+  private ProgressDialog gtM;
+  private int jkS;
   private Surface mSurface;
-  private String pYH;
-  private RelativeLayout rJz;
+  private String rpE;
   private String thumbPath;
-  private VideoTransPara vZX;
-  private String wfn;
-  private f wfo;
-  private com.tencent.mm.plugin.mmsight.segment.a.c wfp;
-  private boolean wfq;
-  private c wfr;
-  private int wfs;
-  private boolean wft;
-  private boolean wfu;
-  private boolean wfv;
-  private c.b wfw;
-  private com.tencent.mm.plugin.mmsight.segment.a.c.a wfx;
-  private a.d wfy;
+  private RelativeLayout tjk;
+  private VideoTransPara zua;
+  private String zzN;
+  private f zzO;
+  private com.tencent.mm.plugin.mmsight.segment.a.c zzP;
+  private boolean zzQ;
+  private c zzR;
+  private int zzS;
+  private boolean zzT;
+  private boolean zzU;
+  private boolean zzV;
+  private c.b zzW;
+  private com.tencent.mm.plugin.mmsight.segment.a.c.a zzX;
+  private a.d zzY;
   
   public VideoSegmentUI()
   {
     AppMethodBeat.i(94488);
-    this.wfn = null;
-    this.wfq = false;
-    this.cJf = new CountDownLatch(2);
-    this.wfs = 10000;
-    this.fOC = null;
-    this.gkS = new com.tencent.mm.remoteservice.d(this);
-    this.pYH = "";
-    this.wft = false;
-    this.wfu = false;
-    this.wfv = false;
-    this.wfw = new c.b()
+    this.zzN = null;
+    this.zzQ = false;
+    this.cZC = new CountDownLatch(2);
+    this.zzS = 10000;
+    this.gtM = null;
+    this.gVN = new com.tencent.mm.remoteservice.d(this);
+    this.rpE = "";
+    this.zzT = false;
+    this.zzU = false;
+    this.zzV = false;
+    this.zzW = new c.b()
     {
-      public final void S(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void W(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94463);
         if (VideoSegmentUI.d(VideoSegmentUI.this) == null)
@@ -96,7 +99,7 @@ public class VideoSegmentUI
         AppMethodBeat.o(94463);
       }
       
-      public final void T(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void X(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94464);
         if (VideoSegmentUI.d(VideoSegmentUI.this) == null)
@@ -108,7 +111,7 @@ public class VideoSegmentUI
         AppMethodBeat.o(94464);
       }
       
-      public final void U(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void Y(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94465);
         if (VideoSegmentUI.d(VideoSegmentUI.this) == null)
@@ -123,7 +126,7 @@ public class VideoSegmentUI
         AppMethodBeat.o(94465);
       }
       
-      public final void V(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void Z(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94466);
         if ((paramAnonymousFloat2 - paramAnonymousFloat1) * VideoSegmentUI.e(VideoSegmentUI.this) <= VideoSegmentUI.p(VideoSegmentUI.this))
@@ -136,11 +139,11 @@ public class VideoSegmentUI
         AppMethodBeat.o(94466);
       }
     };
-    this.wfx = new com.tencent.mm.plugin.mmsight.segment.a.c.a()
+    this.zzX = new com.tencent.mm.plugin.mmsight.segment.a.c.a()
     {
-      private Runnable wfA;
+      private Runnable zAa;
       
-      public final void KR(int paramAnonymousInt)
+      public final void QR(int paramAnonymousInt)
       {
         AppMethodBeat.i(94467);
         if (VideoSegmentUI.j(VideoSegmentUI.this) == null)
@@ -148,36 +151,36 @@ public class VideoSegmentUI
           AppMethodBeat.o(94467);
           return;
         }
-        if (this.wfA != null) {
-          ((View)VideoSegmentUI.j(VideoSegmentUI.this)).removeCallbacks(this.wfA);
+        if (this.zAa != null) {
+          ((View)VideoSegmentUI.j(VideoSegmentUI.this)).removeCallbacks(this.zAa);
         }
-        this.wfA = new VideoSegmentUI.c(VideoSegmentUI.j(VideoSegmentUI.this), paramAnonymousInt, VideoSegmentUI.e(VideoSegmentUI.this));
-        ((View)VideoSegmentUI.j(VideoSegmentUI.this)).post(this.wfA);
+        this.zAa = new VideoSegmentUI.c(VideoSegmentUI.j(VideoSegmentUI.this), paramAnonymousInt, VideoSegmentUI.e(VideoSegmentUI.this));
+        ((View)VideoSegmentUI.j(VideoSegmentUI.this)).post(this.zAa);
         AppMethodBeat.o(94467);
       }
     };
-    this.wfy = new a.d()
+    this.zzY = new a.d()
     {
-      public final void ak(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      public final void ap(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(94468);
         if ((paramAnonymousInt1 <= 0) || (paramAnonymousInt2 <= 0))
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "VideoSegmentUI.onVideoSizeChanged wrong size (%d, %d) invoked = %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(VideoSegmentUI.q(VideoSegmentUI.this)) });
+          Log.e("MicroMsg.VideoSegmentUI", "VideoSegmentUI.onVideoSizeChanged wrong size (%d, %d) invoked = %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(VideoSegmentUI.q(VideoSegmentUI.this)) });
           AppMethodBeat.o(94468);
           return;
         }
         if (VideoSegmentUI.q(VideoSegmentUI.this))
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "VideoSegmentUI.onVideoSizeChanged surface has invoked");
+          Log.e("MicroMsg.VideoSegmentUI", "VideoSegmentUI.onVideoSizeChanged surface has invoked");
           AppMethodBeat.o(94468);
           return;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "VideoSegmentUI.onVideoSizeChanged (%d, %d)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.i("MicroMsg.VideoSegmentUI", "VideoSegmentUI.onVideoSizeChanged (%d, %d)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         VideoSegmentUI.r(VideoSegmentUI.this);
         if ((paramAnonymousInt2 <= 0) || (paramAnonymousInt1 <= 0))
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "This video has wrong size (%dx%d)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          Log.e("MicroMsg.VideoSegmentUI", "This video has wrong size (%dx%d)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
           VideoSegmentUI.m(VideoSegmentUI.this);
           VideoSegmentUI.this.finish();
           VideoSegmentUI.b(VideoSegmentUI.this);
@@ -187,7 +190,7 @@ public class VideoSegmentUI
         VideoSegmentUI.a locala = new VideoSegmentUI.a(VideoSegmentUI.this, VideoSegmentUI.s(VideoSegmentUI.this), paramAnonymousInt2, paramAnonymousInt1, paramAnonymousInt3, new VideoSegmentUI.b(VideoSegmentUI.this, (byte)0), (byte)0);
         if ((VideoSegmentUI.s(VideoSegmentUI.this).getWidth() <= 0) || (VideoSegmentUI.s(VideoSegmentUI.this).getHeight() <= 0))
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "post init surface task after root measured.");
+          Log.i("MicroMsg.VideoSegmentUI", "post init surface task after root measured.");
           VideoSegmentUI.s(VideoSegmentUI.this).post(locala);
           AppMethodBeat.o(94468);
           return;
@@ -202,21 +205,21 @@ public class VideoSegmentUI
   private void a(boolean paramBoolean, Surface paramSurface)
   {
     AppMethodBeat.i(94491);
-    if (this.wfp != null)
+    if (this.zzP != null)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "initSegmentPlayer not null, you can not init segmentPlayer");
+      Log.e("MicroMsg.VideoSegmentUI", "initSegmentPlayer not null, you can not init segmentPlayer");
       AppMethodBeat.o(94491);
       return;
     }
-    this.wfp = new com.tencent.mm.plugin.mmsight.segment.a.c();
-    this.wfq = false;
-    this.wfp.setDataSource(this.wfn);
-    this.wfp.a(new a.a()
+    this.zzP = new com.tencent.mm.plugin.mmsight.segment.a.c();
+    this.zzQ = false;
+    this.zzP.setDataSource(this.zzN);
+    this.zzP.a(new a.a()
     {
-      public final boolean gB(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final boolean hc(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(94475);
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "MediaPlayer on error what = %d extra = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.e("MicroMsg.VideoSegmentUI", "MediaPlayer on error what = %d extra = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         VideoSegmentUI.m(VideoSegmentUI.this);
         VideoSegmentUI.this.finish();
         VideoSegmentUI.b(VideoSegmentUI.this);
@@ -225,20 +228,20 @@ public class VideoSegmentUI
       }
     });
     if (paramBoolean) {
-      this.wfp.a(this.wfy);
+      this.zzP.a(this.zzY);
     }
-    this.wfp.setAudioStreamType(3);
-    this.wfp.setLooping(true);
+    this.zzP.setAudioStreamType(3);
+    this.zzP.setLooping(true);
     if (paramSurface != null) {
-      this.wfp.setSurface(paramSurface);
+      this.zzP.setSurface(paramSurface);
     }
-    this.wfp.wfx = this.wfx;
-    this.wfp.a(new a.b()
+    this.zzP.zzX = this.zzX;
+    this.zzP.a(new a.b()
     {
-      public final void dw(Object paramAnonymousObject)
+      public final void dD(Object paramAnonymousObject)
       {
         AppMethodBeat.i(94476);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "MediaPlayer.onPrepared start %s", new Object[] { paramAnonymousObject });
+        Log.i("MicroMsg.VideoSegmentUI", "MediaPlayer.onPrepared start %s", new Object[] { paramAnonymousObject });
         try
         {
           if (VideoSegmentUI.d(VideoSegmentUI.this) != null)
@@ -251,15 +254,15 @@ public class VideoSegmentUI
         }
         catch (Exception paramAnonymousObject)
         {
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onPrepared waiting for starting", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onPrepared waiting for starting", new Object[0]);
           AppMethodBeat.o(94476);
         }
       }
     });
-    this.wfp.prepareAsync();
-    this.wfp.a(new a.c()
+    this.zzP.prepareAsync();
+    this.zzP.a(new a.c()
     {
-      public final void dx(Object paramAnonymousObject)
+      public final void dE(Object paramAnonymousObject)
       {
         AppMethodBeat.i(94477);
         try
@@ -272,7 +275,7 @@ public class VideoSegmentUI
         }
         catch (Exception paramAnonymousObject)
         {
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onSeekComplete waiting for starting", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onSeekComplete waiting for starting", new Object[0]);
           AppMethodBeat.o(94477);
         }
       }
@@ -282,14 +285,14 @@ public class VideoSegmentUI
   
   public int getLayoutId()
   {
-    return 2131495842;
+    return 2131496811;
   }
   
   public void initView()
   {
     AppMethodBeat.i(94490);
-    this.wfr = ((c)findViewById(2131304490));
-    this.rJz = ((RelativeLayout)findViewById(2131304239));
+    this.zzR = ((c)findViewById(2131307492));
+    this.tjk = ((RelativeLayout)findViewById(2131307157));
     AppMethodBeat.o(94490);
   }
   
@@ -298,15 +301,15 @@ public class VideoSegmentUI
     AppMethodBeat.i(94489);
     super.onCreate(paramBundle);
     getWindow().addFlags(128);
-    CaptureMMProxy.createProxy(new CaptureMMProxy(this.gkS));
-    this.gkS.connect(new Runnable()
+    CaptureMMProxy.createProxy(new CaptureMMProxy(this.gVN));
+    this.gVN.connect(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94462);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "has connect");
+        Log.i("MicroMsg.VideoSegmentUI", "has connect");
         if (CaptureMMProxy.getInstance() != null) {
-          com.tencent.mm.compatible.deviceinfo.ae.vE(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+          ae.DV(CaptureMMProxy.getInstance().getDeviceInfoConfig());
         }
         VideoSegmentUI.a(VideoSegmentUI.this);
         AppMethodBeat.o(94462);
@@ -318,33 +321,33 @@ public class VideoSegmentUI
   public void onDestroy()
   {
     AppMethodBeat.i(94494);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "onDestroy");
+    Log.i("MicroMsg.VideoSegmentUI", "onDestroy");
     super.onDestroy();
     getWindow().clearFlags(128);
-    this.gkS.release();
-    if (this.wfr != null) {
-      this.wfr.release();
+    this.gVN.release();
+    if (this.zzR != null) {
+      this.zzR.release();
     }
-    if (this.wfp != null) {
-      this.wfp.release();
+    if (this.zzP != null) {
+      this.zzP.release();
     }
     if (this.mSurface != null) {
       this.mSurface.release();
     }
-    if (this.wfo != null) {
-      this.wfo.release();
+    if (this.zzO != null) {
+      this.zzO.release();
     }
-    k.wcg.ayL();
+    k.zwi.aRR();
     AppMethodBeat.o(94494);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(94493);
-    if (this.wfp != null)
+    if (this.zzP != null)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "onPause pause player");
-      this.wfp.pause();
+      Log.i("MicroMsg.VideoSegmentUI", "onPause pause player");
+      this.zzP.pause();
     }
     super.onPause();
     AppMethodBeat.o(94493);
@@ -353,10 +356,10 @@ public class VideoSegmentUI
   public void onResume()
   {
     AppMethodBeat.i(94492);
-    if ((this.wfp != null) && (this.wfq))
+    if ((this.zzP != null) && (this.zzQ))
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "onResume start player");
-      this.wfp.start();
+      Log.i("MicroMsg.VideoSegmentUI", "onResume start player");
+      this.zzP.start();
     }
     super.onResume();
     AppMethodBeat.o(94492);
@@ -372,21 +375,21 @@ public class VideoSegmentUI
     implements Runnable
   {
     private Context context;
-    private ViewGroup gJt;
-    private int wfF;
-    private int wfG;
-    private int wfH;
-    private VideoSegmentUI.b wfI;
+    private ViewGroup hwr;
+    private int zAf;
+    private int zAg;
+    private int zAh;
+    private VideoSegmentUI.b zAi;
     
     private a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3, VideoSegmentUI.b paramb)
     {
       AppMethodBeat.i(94480);
-      this.wfF = paramInt1;
-      this.wfG = paramInt2;
-      this.wfH = paramInt3;
+      this.zAf = paramInt1;
+      this.zAg = paramInt2;
+      this.zAh = paramInt3;
       this.context = paramViewGroup.getContext();
-      this.gJt = paramViewGroup;
-      this.wfI = paramb;
+      this.hwr = paramViewGroup;
+      this.zAi = paramb;
       AppMethodBeat.o(94480);
     }
     
@@ -403,7 +406,7 @@ public class VideoSegmentUI
         protected final void onMeasure(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(94479);
-          com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.VideoSegmentUI", "onMeasure video size[%d, %d, %d] spec[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.a(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.b(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt1)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt2)) });
+          Log.d("MicroMsg.VideoSegmentUI", "onMeasure video size[%d, %d, %d] spec[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.a(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.b(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt1)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt2)) });
           if ((VideoSegmentUI.a.c(VideoSegmentUI.a.this) == 90) || (VideoSegmentUI.a.c(VideoSegmentUI.a.this) == 270))
           {
             Matrix localMatrix = new Matrix();
@@ -416,35 +419,35 @@ public class VideoSegmentUI
             localMatrix.postRotate(VideoSegmentUI.a.c(VideoSegmentUI.a.this), f1, f2);
             localMatrix.postScale(1.0F / f3, f3, f1, f2);
             setTransform(localMatrix);
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "rotate transform mDegrees[%d] screenSize[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(i), Integer.valueOf(j) });
+            Log.i("MicroMsg.VideoSegmentUI", "rotate transform mDegrees[%d] screenSize[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(i), Integer.valueOf(j) });
           }
           super.onMeasure(paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(94479);
         }
       };
-      int i = this.gJt.getWidth();
-      int j = com.tencent.mm.cb.a.ax(this.context, 2131166957);
+      int i = this.hwr.getWidth();
+      int j = com.tencent.mm.cb.a.aG(this.context, 2131167092);
       int k = ((View)VideoSegmentUI.j(VideoSegmentUI.this)).getTop() - j * 2;
-      int m = this.wfG;
-      int n = this.wfF;
+      int m = this.zAg;
+      int n = this.zAf;
       Point localPoint = new Point();
       if (n / m > k / i) {}
       for (float f = k / n;; f = i / m)
       {
         localPoint.x = ((int)(m * f));
         localPoint.y = ((int)(f * n));
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d  rawDegress %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.wfG), Integer.valueOf(this.wfF), Integer.valueOf(this.wfH), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
+        Log.i("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d  rawDegress %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.zAg), Integer.valueOf(this.zAf), Integer.valueOf(this.zAh), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
         if ((localPoint.x > 0) && (localPoint.y > 0)) {
           break;
         }
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.wfG), Integer.valueOf(this.wfF), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
-        if (this.wfI != null)
+        Log.e("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.zAg), Integer.valueOf(this.zAf), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
+        if (this.zAi != null)
         {
-          localObject = this.wfI;
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "TextureViewCallback error");
-          VideoSegmentUI.m(((VideoSegmentUI.b)localObject).wfz);
-          ((VideoSegmentUI.b)localObject).wfz.finish();
-          VideoSegmentUI.b(((VideoSegmentUI.b)localObject).wfz);
+          localObject = this.zAi;
+          Log.e("MicroMsg.VideoSegmentUI", "TextureViewCallback error");
+          VideoSegmentUI.m(((VideoSegmentUI.b)localObject).zzZ);
+          ((VideoSegmentUI.b)localObject).zzZ.finish();
+          VideoSegmentUI.b(((VideoSegmentUI.b)localObject).zzZ);
         }
         AppMethodBeat.o(94481);
         return;
@@ -456,8 +459,8 @@ public class VideoSegmentUI
       i = (int)((i - localPoint.x) / 2.0F);
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
-      ((MMTextureView)localObject).setSurfaceTextureListener(this.wfI);
-      this.gJt.addView((View)localObject, 0, localLayoutParams);
+      ((MMTextureView)localObject).setSurfaceTextureListener(this.zAi);
+      this.hwr.addView((View)localObject, 0, localLayoutParams);
       AppMethodBeat.o(94481);
     }
   }
@@ -477,16 +480,16 @@ public class VideoSegmentUI
       }
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "TextureViewCallback create needResume[%b] segmentPlayer is null[%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        Log.i("MicroMsg.VideoSegmentUI", "TextureViewCallback create needResume[%b] segmentPlayer is null[%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
         VideoSegmentUI.b(VideoSegmentUI.this, new Surface(paramSurfaceTexture));
         if ((VideoSegmentUI.d(VideoSegmentUI.this) == null) && (VideoSegmentUI.w(VideoSegmentUI.this))) {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "MediaPlayer resume");
+          Log.i("MicroMsg.VideoSegmentUI", "MediaPlayer resume");
         }
         try
         {
           VideoSegmentUI.a(VideoSegmentUI.this, VideoSegmentUI.u(VideoSegmentUI.this));
           if ((VideoSegmentUI.j(VideoSegmentUI.this) != null) && (VideoSegmentUI.d(VideoSegmentUI.this) != null)) {
-            VideoSegmentUI.d(VideoSegmentUI.this).setLoop((int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).dqx()), (int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).dqy()));
+            VideoSegmentUI.d(VideoSegmentUI.this).setLoop((int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).eko()), (int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).ekp()));
           }
           VideoSegmentUI.a(VideoSegmentUI.this, false);
           VideoSegmentUI.o(VideoSegmentUI.this).countDown();
@@ -498,7 +501,7 @@ public class VideoSegmentUI
         {
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.VideoSegmentUI", paramSurfaceTexture, "ResumeMediaPlayer error %s", new Object[] { paramSurfaceTexture.getMessage() });
+            Log.printErrStackTrace("MicroMsg.VideoSegmentUI", paramSurfaceTexture, "ResumeMediaPlayer error %s", new Object[] { paramSurfaceTexture.getMessage() });
           }
         }
       }
@@ -507,12 +510,12 @@ public class VideoSegmentUI
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
       AppMethodBeat.i(94483);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "TextureViewCallback.surfaceDestroyed %s", new Object[] { bu.fpN() });
+      Log.i("MicroMsg.VideoSegmentUI", "TextureViewCallback.surfaceDestroyed %s", new Object[] { Util.getStack() });
       try
       {
         if (VideoSegmentUI.d(VideoSegmentUI.this) != null)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "TextureViewCallback MediaPlayer pause");
+          Log.i("MicroMsg.VideoSegmentUI", "TextureViewCallback MediaPlayer pause");
           VideoSegmentUI.d(VideoSegmentUI.this).release();
           VideoSegmentUI.v(VideoSegmentUI.this);
           VideoSegmentUI.a(VideoSegmentUI.this, true);
@@ -536,29 +539,29 @@ public class VideoSegmentUI
   static final class c
     implements Runnable
   {
-    private int ipL;
-    private WeakReference<c> og;
-    private int wfK;
+    private int jkS;
+    private WeakReference<c> oi;
+    private int zAk;
     
     public c(c paramc, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(94484);
-      this.og = new WeakReference(paramc);
-      this.wfK = paramInt1;
-      this.ipL = paramInt2;
+      this.oi = new WeakReference(paramc);
+      this.zAk = paramInt1;
+      this.jkS = paramInt2;
       AppMethodBeat.o(94484);
     }
     
     public final void run()
     {
       AppMethodBeat.i(94485);
-      c localc = (c)this.og.get();
+      c localc = (c)this.oi.get();
       if (localc == null)
       {
         AppMethodBeat.o(94485);
         return;
       }
-      localc.setCurrentCursorPosition(this.wfK / this.ipL);
+      localc.setCurrentCursorPosition(this.zAk / this.jkS);
       AppMethodBeat.o(94485);
     }
   }
@@ -584,14 +587,14 @@ public class VideoSegmentUI
               break label336;
             }
             bool2 = true;
-            com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.VideoSegmentUI", "Waiting Prepared error result[%b] needFinish[%b] isFinishing[%b] mSurface is null[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool2) });
+            Log.w("MicroMsg.VideoSegmentUI", "Waiting Prepared error result[%b] needFinish[%b] isFinishing[%b] mSurface is null[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool2) });
             VideoSegmentUI.this.finish();
             AppMethodBeat.o(94487);
           }
         }
         catch (InterruptedException localInterruptedException)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.VideoSegmentUI", "count down latch error %s", new Object[] { localInterruptedException });
+          Log.e("MicroMsg.VideoSegmentUI", "count down latch error %s", new Object[] { localInterruptedException });
           boolean bool1 = false;
           continue;
           if (VideoSegmentUI.d(VideoSegmentUI.this) != null)
@@ -605,22 +608,22 @@ public class VideoSegmentUI
           {
             VideoSegmentUI.a(VideoSegmentUI.this, VideoSegmentUI.u(VideoSegmentUI.this));
             VideoSegmentUI.d(VideoSegmentUI.this).setSurface(VideoSegmentUI.u(VideoSegmentUI.this));
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(94486);
                 if ((VideoSegmentUI.t(VideoSegmentUI.this)) || (VideoSegmentUI.this.isFinishing()) || (VideoSegmentUI.j(VideoSegmentUI.this) == null) || (VideoSegmentUI.d(VideoSegmentUI.this) == null))
                 {
-                  com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VideoSegmentUI", "waiting end, main thread, activity not valid.");
+                  Log.i("MicroMsg.VideoSegmentUI", "waiting end, main thread, activity not valid.");
                   AppMethodBeat.o(94486);
                   return;
                 }
                 ((View)VideoSegmentUI.j(VideoSegmentUI.this)).setAlpha(0.0F);
                 ((View)VideoSegmentUI.j(VideoSegmentUI.this)).setVisibility(0);
                 ((View)VideoSegmentUI.j(VideoSegmentUI.this)).animate().setDuration(300L).setStartDelay(200L).alpha(1.0F);
-                float f1 = VideoSegmentUI.j(VideoSegmentUI.this).dqx();
-                float f2 = VideoSegmentUI.j(VideoSegmentUI.this).dqy();
+                float f1 = VideoSegmentUI.j(VideoSegmentUI.this).eko();
+                float f2 = VideoSegmentUI.j(VideoSegmentUI.this).ekp();
                 if ((f2 - f1) * VideoSegmentUI.e(VideoSegmentUI.this) <= VideoSegmentUI.p(VideoSegmentUI.this)) {
                   VideoSegmentUI.this.enableOptionMenu(true);
                 }
@@ -633,7 +636,7 @@ public class VideoSegmentUI
           }
           catch (IOException localIOException)
           {
-            com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.VideoSegmentUI", localIOException, "init segmentPlayer second time %s", new Object[] { localIOException.getMessage() });
+            Log.printErrStackTrace("MicroMsg.VideoSegmentUI", localIOException, "init segmentPlayer second time %s", new Object[] { localIOException.getMessage() });
             VideoSegmentUI.this.finish();
             AppMethodBeat.o(94487);
             return;
@@ -641,7 +644,7 @@ public class VideoSegmentUI
         }
         catch (Exception localException)
         {
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.VideoSegmentUI", localException, "Finished when init", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.VideoSegmentUI", localException, "Finished when init", new Object[0]);
           VideoSegmentUI.this.finish();
           AppMethodBeat.o(94487);
           return;
@@ -654,7 +657,7 @@ public class VideoSegmentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.VideoSegmentUI
  * JD-Core Version:    0.7.0.1
  */

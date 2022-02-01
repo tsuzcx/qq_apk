@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.internal.NavigationMenuView android:id="@id/b_s" android:paddingBottom="@dimen/yf" android:scrollbars="vertical" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/hs">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/b_e" android:layout_width="@dimen/bi" android:layout_height="@dimen/bi" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/epo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a61" />
+        </FrameLayout>
+        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.edittext.PasterEditText android:textSize="@dimen/is" android:textColor="@color/x0" android:ellipsize="end" android:id="@id/b_h" android:background="@drawable/ca3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="0.0dip" android:maxLines="3" />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

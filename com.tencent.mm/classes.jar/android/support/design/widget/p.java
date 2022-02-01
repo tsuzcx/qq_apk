@@ -1,15 +1,15 @@
 package android.support.design.widget;
 
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.view.View;
 
 final class p
 {
   private final View view;
-  int wA;
-  int wx;
-  private int wy;
-  int wz;
+  int wE;
+  private int wF;
+  int wG;
+  int wH;
   
   public p(View paramView)
   {
@@ -18,26 +18,26 @@ final class p
   
   public final boolean G(int paramInt)
   {
-    if (this.wz != paramInt)
+    if (this.wG != paramInt)
     {
-      this.wz = paramInt;
-      dv();
+      this.wG = paramInt;
+      dy();
       return true;
     }
     return false;
   }
   
-  public final void du()
+  public final void dx()
   {
-    this.wx = this.view.getTop();
-    this.wy = this.view.getLeft();
-    dv();
+    this.wE = this.view.getTop();
+    this.wF = this.view.getLeft();
+    dy();
   }
   
-  final void dv()
+  final void dy()
   {
-    t.s(this.view, this.wz - (this.view.getTop() - this.wx));
-    t.u(this.view, this.wA - (this.view.getLeft() - this.wy));
+    u.s(this.view, this.wG - (this.view.getTop() - this.wE));
+    u.u(this.view, this.wH - (this.view.getLeft() - this.wF));
   }
 }
 

@@ -1,36 +1,40 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.sdk.e.d;
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.ac;
-import java.util.List;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
-public abstract interface al
-  extends d<ac>, g
+public final class al
 {
-  public abstract String BA(String paramString);
-  
-  public abstract List<String> BB(String paramString);
-  
-  public abstract boolean BC(String paramString);
-  
-  public abstract boolean BD(String paramString);
-  
-  public abstract int BE(String paramString);
-  
-  public abstract ac Bx(String paramString);
-  
-  public abstract ac By(String paramString);
-  
-  public abstract String Bz(String paramString);
-  
-  public abstract void y(String paramString, long paramLong);
-  
-  public abstract String zP(String paramString);
+  public static void aVk()
+  {
+    AppMethodBeat.i(20321);
+    Cursor localCursor = c.aSN().gCc();
+    if (localCursor == null) {}
+    for (int i = 0;; i = localCursor.getCount())
+    {
+      Log.i("MicroMsg.HardCodeUpdateTask", "[unstarAllBizContactFor50] size:%s", new Object[] { Integer.valueOf(i) });
+      if (localCursor.moveToFirst()) {
+        do
+        {
+          as localas = new as();
+          localas.convertFrom(localCursor);
+          localas.arc();
+          c.aSN().c(localas.field_username, localas);
+        } while (localCursor.moveToNext());
+      }
+      localCursor.close();
+      AppMethodBeat.o(20321);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.al
  * JD-Core Version:    0.7.0.1
  */

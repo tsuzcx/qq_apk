@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/fk6" android:background="?ju" android:paddingTop="@dimen/agb" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/bki" android:layout_width="@dimen/age" android:layout_height="@dimen/age" android:layout_centerHorizontal="true" />
-    <android.support.v7.widget.AppCompatTextView android:textColor="@color/km" android:gravity="center" android:id="@id/bkh" android:layout_width="@dimen/ag_" android:layout_height="@dimen/ag6" android:maxLines="1" android:layout_below="@id/bki" android:layout_centerHorizontal="true" app:autoSizeMaxTextSize="@dimen/ag7" app:autoSizeMinTextSize="@dimen/ag8" app:autoSizeStepGranularity="@dimen/ag9" app:autoSizeTextType="gib" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.tools.SearchViewNotRealTimeHelper android:id="@id/hf7" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="left" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bi8" style="MMFontPreferenceLarge" />
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/gm4" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="@dimen/k5" android:layout_weight="1.0">
+        <com.tencent.mm.plugin.brandservice.ui.BizSearchResultItemContainer android:id="@id/hd6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+</LinearLayout>

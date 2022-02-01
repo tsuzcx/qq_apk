@@ -13,48 +13,48 @@ import java.util.Map;
 
 public class XWalkUIClient
 {
-  private ReflectMethod OnGetSampleStringXWalkViewInternalMapCallbackMethod;
+  private LazyReflectMethod OnGetSampleStringXWalkViewInternalMapCallbackMethod;
   private Object bridge;
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
-  private ReflectMethod enumConsoleMessageTypeClassValueOfMethod;
-  private ReflectMethod enumInitiateByClassValueOfMethod;
-  private ReflectMethod enumJavascriptMessageTypeClassValueOfMethod;
-  private ReflectMethod enumLoadStatusClassValueOfMethod;
-  private ReflectMethod getVideoLoadingProgressViewMethod;
-  private ReflectMethod isSearchableMethod;
-  private ReflectMethod onConsoleMessageXWalkViewInternalStringintStringConsoleMessageTypeMethod;
-  private ReflectMethod onCreateWindowRequestedXWalkViewInternalInitiateByInternalValueCallbackMethod;
-  private ReflectMethod onDidChangeThemeColorXWalkViewInternalStringMessageMethod;
-  private ReflectMethod onFullscreenToggledXWalkViewInternalbooleanMethod;
-  private ReflectMethod onGeolocationPermissionsHidePromptMethod;
-  private ReflectMethod onGeolocationPermissionsShowPromptStringXWalkGeolocationPermissionsCallbackInternalMethod;
-  private ReflectMethod onGetTranslateStringXWalkViewInternalMapCallbackMethod;
-  private ReflectMethod onHideCustomViewMethod;
-  private ReflectMethod onIconAvailableXWalkViewInternalStringMessageMethod;
-  private ReflectMethod onJavascriptCloseWindowXWalkViewInternalMethod;
-  private ReflectMethod onJavascriptModalDialogXWalkViewInternalJavascriptMessageTypeInternalStringStringStringXWalkJavascriptResultInternalMethod;
-  private ReflectMethod onJsAlertXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod;
-  private ReflectMethod onJsConfirmXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod;
-  private ReflectMethod onJsPromptXWalkViewInternalStringStringStringXWalkJavascriptResultInternalMethod;
-  private ReflectMethod onPageCommitVisibleXWalkViewInternalStringMethod;
-  private ReflectMethod onPageLoadStartedXWalkViewInternalStringMethod;
-  private ReflectMethod onPageLoadStoppedXWalkViewInternalStringLoadStatusInternalMethod;
-  private ReflectMethod onReceivedIconXWalkViewInternalStringBitmapMethod;
-  private ReflectMethod onReceivedTitleXWalkViewInternalStringMethod;
-  private ReflectMethod onRequestFocusXWalkViewInternalMethod;
-  private ReflectMethod onScaleChangedXWalkViewInternalfloatfloatMethod;
-  private ReflectMethod onSearchWordXWalkViewInternalStringStringStringCallbackMethod;
-  private ReflectMethod onSelectInfoChangedXWalkViewInternallongStringStringStringCallbackMethod;
-  private ReflectMethod onShowCustomViewViewCustomViewCallbackInternalMethod;
-  private ReflectMethod onShowCustomViewViewintCustomViewCallbackInternalMethod;
-  private ReflectMethod onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod;
-  private ReflectMethod onShowSosMethod;
-  private ReflectMethod onUnhandledKeyEventXWalkViewInternalKeyEventMethod;
-  private ReflectMethod openFileChooserXWalkViewInternalValueCallbackStringStringMethod;
-  private ReflectMethod postWrapperMethod;
-  private ReflectMethod shouldOverrideKeyEventXWalkViewInternalKeyEventMethod;
+  private LazyReflectMethod enumConsoleMessageTypeClassValueOfMethod;
+  private LazyReflectMethod enumInitiateByClassValueOfMethod;
+  private LazyReflectMethod enumJavascriptMessageTypeClassValueOfMethod;
+  private LazyReflectMethod enumLoadStatusClassValueOfMethod;
+  private LazyReflectMethod getVideoLoadingProgressViewMethod;
+  private LazyReflectMethod isSearchableMethod;
+  private LazyReflectMethod onConsoleMessageXWalkViewInternalStringintStringConsoleMessageTypeMethod;
+  private LazyReflectMethod onCreateWindowRequestedXWalkViewInternalInitiateByInternalValueCallbackMethod;
+  private LazyReflectMethod onDidChangeThemeColorXWalkViewInternalStringMessageMethod;
+  private LazyReflectMethod onFullscreenToggledXWalkViewInternalbooleanMethod;
+  private LazyReflectMethod onGeolocationPermissionsHidePromptMethod;
+  private LazyReflectMethod onGeolocationPermissionsShowPromptStringXWalkGeolocationPermissionsCallbackInternalMethod;
+  private LazyReflectMethod onGetTranslateStringXWalkViewInternalMapCallbackMethod;
+  private LazyReflectMethod onHideCustomViewMethod;
+  private LazyReflectMethod onIconAvailableXWalkViewInternalStringMessageMethod;
+  private LazyReflectMethod onJavascriptCloseWindowXWalkViewInternalMethod;
+  private LazyReflectMethod onJavascriptModalDialogXWalkViewInternalJavascriptMessageTypeInternalStringStringStringXWalkJavascriptResultInternalMethod;
+  private LazyReflectMethod onJsAlertXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod;
+  private LazyReflectMethod onJsConfirmXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod;
+  private LazyReflectMethod onJsPromptXWalkViewInternalStringStringStringXWalkJavascriptResultInternalMethod;
+  private LazyReflectMethod onPageCommitVisibleXWalkViewInternalStringMethod;
+  private LazyReflectMethod onPageLoadStartedXWalkViewInternalStringMethod;
+  private LazyReflectMethod onPageLoadStoppedXWalkViewInternalStringLoadStatusInternalMethod;
+  private LazyReflectMethod onReceivedIconXWalkViewInternalStringBitmapMethod;
+  private LazyReflectMethod onReceivedTitleXWalkViewInternalStringMethod;
+  private LazyReflectMethod onRequestFocusXWalkViewInternalMethod;
+  private LazyReflectMethod onScaleChangedXWalkViewInternalfloatfloatMethod;
+  private LazyReflectMethod onSearchWordXWalkViewInternalStringStringStringCallbackMethod;
+  private LazyReflectMethod onSelectInfoChangedXWalkViewInternallongStringStringStringCallbackMethod;
+  private LazyReflectMethod onShowCustomViewViewCustomViewCallbackInternalMethod;
+  private LazyReflectMethod onShowCustomViewViewintCustomViewCallbackInternalMethod;
+  private LazyReflectMethod onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod;
+  private LazyReflectMethod onShowSosMethod;
+  private LazyReflectMethod onUnhandledKeyEventXWalkViewInternalKeyEventMethod;
+  private LazyReflectMethod openFileChooserXWalkViewInternalValueCallbackStringStringMethod;
+  private LazyReflectMethod postWrapperMethod;
+  private LazyReflectMethod shouldOverrideKeyEventXWalkViewInternalKeyEventMethod;
   
   static
   {
@@ -71,43 +71,43 @@ public class XWalkUIClient
   public XWalkUIClient(XWalkView paramXWalkView)
   {
     AppMethodBeat.i(154965);
-    this.enumJavascriptMessageTypeClassValueOfMethod = new ReflectMethod();
-    this.enumConsoleMessageTypeClassValueOfMethod = new ReflectMethod();
-    this.enumInitiateByClassValueOfMethod = new ReflectMethod();
-    this.enumLoadStatusClassValueOfMethod = new ReflectMethod();
-    this.onSelectInfoChangedXWalkViewInternallongStringStringStringCallbackMethod = new ReflectMethod(null, "onSelectInfoChanged", new Class[0]);
-    this.isSearchableMethod = new ReflectMethod(null, "isSearchable", new Class[0]);
-    this.onShowSosMethod = new ReflectMethod(null, "onShowSos", new Class[0]);
-    this.onSearchWordXWalkViewInternalStringStringStringCallbackMethod = new ReflectMethod(null, "onSearchWord", new Class[0]);
-    this.onCreateWindowRequestedXWalkViewInternalInitiateByInternalValueCallbackMethod = new ReflectMethod(null, "onCreateWindowRequested", new Class[0]);
-    this.onDidChangeThemeColorXWalkViewInternalStringMessageMethod = new ReflectMethod(null, "onDidChangeThemeColor", new Class[0]);
-    this.onIconAvailableXWalkViewInternalStringMessageMethod = new ReflectMethod(null, "onIconAvailable", new Class[0]);
-    this.onReceivedIconXWalkViewInternalStringBitmapMethod = new ReflectMethod(null, "onReceivedIcon", new Class[0]);
-    this.onRequestFocusXWalkViewInternalMethod = new ReflectMethod(null, "onRequestFocus", new Class[0]);
-    this.onJavascriptCloseWindowXWalkViewInternalMethod = new ReflectMethod(null, "onJavascriptCloseWindow", new Class[0]);
-    this.onJavascriptModalDialogXWalkViewInternalJavascriptMessageTypeInternalStringStringStringXWalkJavascriptResultInternalMethod = new ReflectMethod(null, "onJavascriptModalDialog", new Class[0]);
-    this.onFullscreenToggledXWalkViewInternalbooleanMethod = new ReflectMethod(null, "onFullscreenToggled", new Class[0]);
-    this.openFileChooserXWalkViewInternalValueCallbackStringStringMethod = new ReflectMethod(null, "openFileChooser", new Class[0]);
-    this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod = new ReflectMethod(null, "onShowFileChooser", new Class[0]);
-    this.onScaleChangedXWalkViewInternalfloatfloatMethod = new ReflectMethod(null, "onScaleChanged", new Class[0]);
-    this.shouldOverrideKeyEventXWalkViewInternalKeyEventMethod = new ReflectMethod(null, "shouldOverrideKeyEvent", new Class[0]);
-    this.onUnhandledKeyEventXWalkViewInternalKeyEventMethod = new ReflectMethod(null, "onUnhandledKeyEvent", new Class[0]);
-    this.onConsoleMessageXWalkViewInternalStringintStringConsoleMessageTypeMethod = new ReflectMethod(null, "onConsoleMessage", new Class[0]);
-    this.onReceivedTitleXWalkViewInternalStringMethod = new ReflectMethod(null, "onReceivedTitle", new Class[0]);
-    this.onPageLoadStartedXWalkViewInternalStringMethod = new ReflectMethod(null, "onPageLoadStarted", new Class[0]);
-    this.onPageLoadStoppedXWalkViewInternalStringLoadStatusInternalMethod = new ReflectMethod(null, "onPageLoadStopped", new Class[0]);
-    this.onPageCommitVisibleXWalkViewInternalStringMethod = new ReflectMethod(null, "onPageCommitVisible", new Class[0]);
-    this.onJsAlertXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod = new ReflectMethod(null, "onJsAlert", new Class[0]);
-    this.onJsConfirmXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod = new ReflectMethod(null, "onJsConfirm", new Class[0]);
-    this.onJsPromptXWalkViewInternalStringStringStringXWalkJavascriptResultInternalMethod = new ReflectMethod(null, "onJsPrompt", new Class[0]);
-    this.onShowCustomViewViewCustomViewCallbackInternalMethod = new ReflectMethod(null, "onShowCustomView", new Class[0]);
-    this.onShowCustomViewViewintCustomViewCallbackInternalMethod = new ReflectMethod(null, "onShowCustomView", new Class[0]);
-    this.onHideCustomViewMethod = new ReflectMethod(null, "onHideCustomView", new Class[0]);
-    this.onGeolocationPermissionsShowPromptStringXWalkGeolocationPermissionsCallbackInternalMethod = new ReflectMethod(null, "onGeolocationPermissionsShowPrompt", new Class[0]);
-    this.getVideoLoadingProgressViewMethod = new ReflectMethod(null, "getVideoLoadingProgressView", new Class[0]);
-    this.onGeolocationPermissionsHidePromptMethod = new ReflectMethod(null, "onGeolocationPermissionsHidePrompt", new Class[0]);
-    this.onGetTranslateStringXWalkViewInternalMapCallbackMethod = new ReflectMethod(null, "onGetTranslateString", new Class[0]);
-    this.OnGetSampleStringXWalkViewInternalMapCallbackMethod = new ReflectMethod(null, "OnGetSampleString", new Class[0]);
+    this.enumJavascriptMessageTypeClassValueOfMethod = new LazyReflectMethod();
+    this.enumConsoleMessageTypeClassValueOfMethod = new LazyReflectMethod();
+    this.enumInitiateByClassValueOfMethod = new LazyReflectMethod();
+    this.enumLoadStatusClassValueOfMethod = new LazyReflectMethod();
+    this.onSelectInfoChangedXWalkViewInternallongStringStringStringCallbackMethod = new LazyReflectMethod(null, "onSelectInfoChanged", new Class[0]);
+    this.isSearchableMethod = new LazyReflectMethod(null, "isSearchable", new Class[0]);
+    this.onShowSosMethod = new LazyReflectMethod(null, "onShowSos", new Class[0]);
+    this.onSearchWordXWalkViewInternalStringStringStringCallbackMethod = new LazyReflectMethod(null, "onSearchWord", new Class[0]);
+    this.onCreateWindowRequestedXWalkViewInternalInitiateByInternalValueCallbackMethod = new LazyReflectMethod(null, "onCreateWindowRequested", new Class[0]);
+    this.onDidChangeThemeColorXWalkViewInternalStringMessageMethod = new LazyReflectMethod(null, "onDidChangeThemeColor", new Class[0]);
+    this.onIconAvailableXWalkViewInternalStringMessageMethod = new LazyReflectMethod(null, "onIconAvailable", new Class[0]);
+    this.onReceivedIconXWalkViewInternalStringBitmapMethod = new LazyReflectMethod(null, "onReceivedIcon", new Class[0]);
+    this.onRequestFocusXWalkViewInternalMethod = new LazyReflectMethod(null, "onRequestFocus", new Class[0]);
+    this.onJavascriptCloseWindowXWalkViewInternalMethod = new LazyReflectMethod(null, "onJavascriptCloseWindow", new Class[0]);
+    this.onJavascriptModalDialogXWalkViewInternalJavascriptMessageTypeInternalStringStringStringXWalkJavascriptResultInternalMethod = new LazyReflectMethod(null, "onJavascriptModalDialog", new Class[0]);
+    this.onFullscreenToggledXWalkViewInternalbooleanMethod = new LazyReflectMethod(null, "onFullscreenToggled", new Class[0]);
+    this.openFileChooserXWalkViewInternalValueCallbackStringStringMethod = new LazyReflectMethod(null, "openFileChooser", new Class[0]);
+    this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod = new LazyReflectMethod(null, "onShowFileChooser", new Class[0]);
+    this.onScaleChangedXWalkViewInternalfloatfloatMethod = new LazyReflectMethod(null, "onScaleChanged", new Class[0]);
+    this.shouldOverrideKeyEventXWalkViewInternalKeyEventMethod = new LazyReflectMethod(null, "shouldOverrideKeyEvent", new Class[0]);
+    this.onUnhandledKeyEventXWalkViewInternalKeyEventMethod = new LazyReflectMethod(null, "onUnhandledKeyEvent", new Class[0]);
+    this.onConsoleMessageXWalkViewInternalStringintStringConsoleMessageTypeMethod = new LazyReflectMethod(null, "onConsoleMessage", new Class[0]);
+    this.onReceivedTitleXWalkViewInternalStringMethod = new LazyReflectMethod(null, "onReceivedTitle", new Class[0]);
+    this.onPageLoadStartedXWalkViewInternalStringMethod = new LazyReflectMethod(null, "onPageLoadStarted", new Class[0]);
+    this.onPageLoadStoppedXWalkViewInternalStringLoadStatusInternalMethod = new LazyReflectMethod(null, "onPageLoadStopped", new Class[0]);
+    this.onPageCommitVisibleXWalkViewInternalStringMethod = new LazyReflectMethod(null, "onPageCommitVisible", new Class[0]);
+    this.onJsAlertXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod = new LazyReflectMethod(null, "onJsAlert", new Class[0]);
+    this.onJsConfirmXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod = new LazyReflectMethod(null, "onJsConfirm", new Class[0]);
+    this.onJsPromptXWalkViewInternalStringStringStringXWalkJavascriptResultInternalMethod = new LazyReflectMethod(null, "onJsPrompt", new Class[0]);
+    this.onShowCustomViewViewCustomViewCallbackInternalMethod = new LazyReflectMethod(null, "onShowCustomView", new Class[0]);
+    this.onShowCustomViewViewintCustomViewCallbackInternalMethod = new LazyReflectMethod(null, "onShowCustomView", new Class[0]);
+    this.onHideCustomViewMethod = new LazyReflectMethod(null, "onHideCustomView", new Class[0]);
+    this.onGeolocationPermissionsShowPromptStringXWalkGeolocationPermissionsCallbackInternalMethod = new LazyReflectMethod(null, "onGeolocationPermissionsShowPrompt", new Class[0]);
+    this.getVideoLoadingProgressViewMethod = new LazyReflectMethod(null, "getVideoLoadingProgressView", new Class[0]);
+    this.onGeolocationPermissionsHidePromptMethod = new LazyReflectMethod(null, "onGeolocationPermissionsHidePrompt", new Class[0]);
+    this.onGetTranslateStringXWalkViewInternalMapCallbackMethod = new LazyReflectMethod(null, "onGetTranslateString", new Class[0]);
+    this.OnGetSampleStringXWalkViewInternalMapCallbackMethod = new LazyReflectMethod(null, "OnGetSampleString", new Class[0]);
     this.constructorTypes = new ArrayList();
     this.constructorTypes.add("XWalkViewBridge");
     this.constructorParams = new ArrayList();
@@ -791,11 +791,11 @@ public class XWalkUIClient
   
   public boolean onShowFileChooser(XWalkView paramXWalkView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    AppMethodBeat.i(207648);
+    AppMethodBeat.i(207393);
     try
     {
       boolean bool = ((Boolean)this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod.invoke(new Object[] { paramXWalkView.getBridge(), paramValueCallback, paramFileChooserParams })).booleanValue();
-      AppMethodBeat.o(207648);
+      AppMethodBeat.o(207393);
       return bool;
     }
     catch (UnsupportedOperationException paramXWalkView)
@@ -803,11 +803,11 @@ public class XWalkUIClient
       if (this.coreWrapper == null)
       {
         paramXWalkView = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207648);
+        AppMethodBeat.o(207393);
         throw paramXWalkView;
       }
       XWalkCoreWrapper.handleRuntimeError(paramXWalkView);
-      AppMethodBeat.o(207648);
+      AppMethodBeat.o(207393);
     }
     return false;
   }
@@ -1020,7 +1020,7 @@ public class XWalkUIClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.XWalkUIClient
  * JD-Core Version:    0.7.0.1
  */

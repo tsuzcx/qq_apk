@@ -1,67 +1,71 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class aj
-  extends am
+  extends ai
 {
-  public String phy;
-  
-  public aj(int paramInt1, long paramLong1, long paramLong2, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3)
+  public aj(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    AppMethodBeat.i(65291);
+    AppMethodBeat.i(65277);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("totalNum", String.valueOf(paramInt1));
-    localHashMap.put("totalAmount", String.valueOf(paramLong1));
-    localHashMap.put("perValue", String.valueOf(paramLong2));
-    localHashMap.put("hbType", String.valueOf(paramInt2));
-    localHashMap.put("wishing", URLEncoder.encode(bu.nullAsNil(paramString1)));
-    localHashMap.put("currency", String.valueOf(paramInt3));
-    if (!bu.isNullOrNil(paramString3)) {
-      localHashMap.put("headImg", URLEncoder.encode(paramString3));
+    localHashMap.put("appId", paramString1);
+    localHashMap.put("timeStamp", paramString2);
+    localHashMap.put("nonceStr", paramString3);
+    if (paramString4 != null) {
+      localHashMap.put("package", URLEncoder.encode(paramString4));
     }
-    localHashMap.put("nickName", URLEncoder.encode(bu.nullAsNil(paramString4)));
-    if (!bu.isNullOrNil(paramString2)) {
-      localHashMap.put("username", URLEncoder.encode(paramString2));
+    localHashMap.put("signType", paramString5);
+    if (paramString6 != null) {
+      localHashMap.put("paySign", URLEncoder.encode(paramString6));
+    }
+    localHashMap.put("way", "3");
+    if (paramString7 != null) {
+      localHashMap.put("jsapiH5Url", URLEncoder.encode(paramString7));
     }
     setRequestData(localHashMap);
-    AppMethodBeat.o(65291);
+    AppMethodBeat.o(65277);
   }
   
-  public final String cbJ()
+  public aj(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    return "/cgi-bin/mmpay-bin/h5requestwxhb";
-  }
-  
-  public final int cbK()
-  {
-    return 0;
-  }
-  
-  public final int getType()
-  {
-    return 1647;
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(65292);
-    ae.i("MicroMsg.NetSceneLuckyMoneyH5Request", "NetSceneLuckyMoneyH5Request response errCode=".concat(String.valueOf(paramInt)));
-    if (paramInt == 0) {
-      this.phy = paramJSONObject.optString("payUrl");
+    AppMethodBeat.i(65278);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("appId", paramString1);
+    localHashMap.put("timeStamp", paramString2);
+    localHashMap.put("nonceStr", paramString3);
+    if (paramString4 != null) {
+      localHashMap.put("package", URLEncoder.encode(paramString4));
     }
-    AppMethodBeat.o(65292);
+    localHashMap.put("signType", paramString5);
+    if (paramString6 != null) {
+      localHashMap.put("paySign", URLEncoder.encode(paramString6));
+    }
+    localHashMap.put("way", "4");
+    if (paramString7 != null) {
+      localHashMap.put("androidSign", URLEncoder.encode(paramString7));
+    }
+    if (paramString8 != null) {
+      localHashMap.put("androidPackage", URLEncoder.encode(paramString8));
+    }
+    setRequestData(localHashMap);
+    AppMethodBeat.o(65278);
   }
+  
+  public final int czE()
+  {
+    return 2;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.aj
  * JD-Core Version:    0.7.0.1
  */

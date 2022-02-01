@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/fa3" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/be9" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/j6z" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/caz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <com.tencent.mm.plugin.whatsnew.ui.BubblesView android:id="@id/afg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.whatsnew.ui.WhatsNewSubtitlesView android:layout_gravity="center_horizontal" android:id="@id/idu" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.mm.plugin.whatsnew.ui.LegacyCircleIndicator android:layout_gravity="end|bottom|center" android:id="@id/dxu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="106.0dip" android:layout_marginEnd="40.0dip" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_100_Alpha_0_6" android:layout_gravity="end|bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="66.0dip" android:text="@string/j1e" android:layout_marginEnd="40.0dip" />
+    </FrameLayout>
+    <com.tencent.mm.ui.mogic.WxViewPager android:id="@id/j7k" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+</merge>

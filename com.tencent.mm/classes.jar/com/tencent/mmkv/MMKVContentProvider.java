@@ -18,9 +18,9 @@ import java.util.List;
 public class MMKVContentProvider
   extends ContentProvider
 {
-  private static Uri LZe;
+  private static Uri Rzw;
   
-  protected static String aS(Context paramContext, int paramInt)
+  protected static String aT(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(13531);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -42,7 +42,33 @@ public class MMKVContentProvider
     return "";
   }
   
-  private static String iU(Context paramContext)
+  protected static Uri kU(Context paramContext)
+  {
+    AppMethodBeat.i(13528);
+    if (Rzw != null)
+    {
+      paramContext = Rzw;
+      AppMethodBeat.o(13528);
+      return paramContext;
+    }
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(13528);
+      return null;
+    }
+    paramContext = queryAuthority(paramContext);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(13528);
+      return null;
+    }
+    paramContext = Uri.parse("content://".concat(String.valueOf(paramContext)));
+    Rzw = paramContext;
+    AppMethodBeat.o(13528);
+    return paramContext;
+  }
+  
+  private static String queryAuthority(Context paramContext)
   {
     AppMethodBeat.i(13529);
     try
@@ -65,32 +91,6 @@ public class MMKVContentProvider
       AppMethodBeat.o(13529);
     }
     return null;
-  }
-  
-  protected static Uri kY(Context paramContext)
-  {
-    AppMethodBeat.i(13528);
-    if (LZe != null)
-    {
-      paramContext = LZe;
-      AppMethodBeat.o(13528);
-      return paramContext;
-    }
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(13528);
-      return null;
-    }
-    paramContext = iU(paramContext);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(13528);
-      return null;
-    }
-    paramContext = Uri.parse("content://".concat(String.valueOf(paramContext)));
-    LZe = paramContext;
-    AppMethodBeat.o(13528);
-    return paramContext;
   }
   
   public Bundle call(String paramString1, String paramString2, Bundle paramBundle)
@@ -148,14 +148,14 @@ public class MMKVContentProvider
       AppMethodBeat.o(13530);
       return false;
     }
-    localObject = iU((Context)localObject);
+    localObject = queryAuthority((Context)localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(13530);
       return false;
     }
-    if (LZe == null) {
-      LZe = Uri.parse("content://".concat(String.valueOf(localObject)));
+    if (Rzw == null) {
+      Rzw = Uri.parse("content://".concat(String.valueOf(localObject)));
     }
     AppMethodBeat.o(13530);
     return true;

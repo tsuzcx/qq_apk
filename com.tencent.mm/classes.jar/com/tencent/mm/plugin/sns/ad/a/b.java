@@ -1,164 +1,111 @@
 package com.tencent.mm.plugin.sns.ad.a;
 
-import android.os.Environment;
-import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
-import java.io.RandomAccessFile;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
+import com.tencent.mm.plugin.sns.ad.i.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
 
 public final class b
 {
-  private FileLock fileLock;
-  private String filename;
-  private RandomAccessFile randomAccessFile;
-  private String znf;
+  public SparseArray<a> DrN;
   
-  public b(String paramString1, String paramString2)
+  public static b t(Map<String, String> paramMap, String paramString)
   {
-    this.znf = paramString1;
-    this.filename = paramString2;
-  }
-  
-  private boolean isValid()
-  {
-    AppMethodBeat.i(218279);
-    if ((!TextUtils.isEmpty(this.znf)) && (!TextUtils.isEmpty(this.filename)))
-    {
-      AppMethodBeat.o(218279);
-      return true;
-    }
-    AppMethodBeat.o(218279);
-    return false;
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(218281);
-    try
-    {
-      if (this.fileLock != null)
-      {
-        this.fileLock.release();
-        this.fileLock = null;
-      }
-      try
-      {
-        label24:
-        if (this.randomAccessFile != null)
-        {
-          this.randomAccessFile.close();
-          this.randomAccessFile = null;
-        }
-        AppMethodBeat.o(218281);
-        return;
-      }
-      catch (Throwable localThrowable1)
-      {
-        AppMethodBeat.o(218281);
-        return;
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label24;
-    }
-  }
-  
-  public final String dUF()
-  {
-    AppMethodBeat.i(218282);
-    if (!isValid())
-    {
-      AppMethodBeat.o(218282);
-      return null;
-    }
-    if ((this.randomAccessFile == null) || (this.fileLock == null))
-    {
-      AppMethodBeat.o(218282);
-      return null;
-    }
+    AppMethodBeat.i(201850);
     for (;;)
     {
       try
       {
-        if (this.randomAccessFile.length() <= 10240L)
-        {
-          i = Long.valueOf(this.randomAccessFile.length()).intValue();
-          if (i <= 0)
-          {
-            AppMethodBeat.o(218282);
-            return null;
-          }
-          Object localObject = new byte[i];
-          if (this.randomAccessFile.read((byte[])localObject, 0, i) == i)
-          {
-            localObject = new String((byte[])localObject, 0, i, "UTF-8");
-            AppMethodBeat.o(218282);
-            return localObject;
-          }
-          AppMethodBeat.o(218282);
-          return null;
+        if (!c.isEmpty(paramMap)) {
+          break label197;
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        AppMethodBeat.o(218282);
+        AppMethodBeat.o(201850);
         return null;
       }
-      int i = 10240;
+      catch (Throwable paramMap)
+      {
+        Object localObject2;
+        Object localObject1;
+        Log.e("AdDynamicUpdateInfo", "parse the update info failed!!");
+        AppMethodBeat.o(201850);
+        return null;
+      }
+      localObject2 = localSparseArray;
+      if (i < 20) {
+        if (i == 0)
+        {
+          localObject2 = a.u(paramMap, paramString + ".action");
+          localObject1 = localObject2;
+          if (localObject2 != null)
+          {
+            localSparseArray = new SparseArray();
+            localObject1 = localObject2;
+          }
+          localObject2 = localSparseArray;
+          if (localObject1 != null)
+          {
+            localObject2 = localSparseArray;
+            if (localSparseArray != null)
+            {
+              localSparseArray.put(((a)localObject1).type, localObject1);
+              i += 1;
+            }
+          }
+        }
+        else
+        {
+          localObject1 = a.u(paramMap, paramString + ".action" + i);
+          continue;
+        }
+      }
+      if ((localObject2 != null) && (((SparseArray)localObject2).size() > 0))
+      {
+        paramMap = new b();
+        paramMap.DrN = ((SparseArray)localObject2);
+        AppMethodBeat.o(201850);
+        return paramMap;
+      }
+      paramMap = null;
+      continue;
+      label197:
+      int i = 0;
+      SparseArray localSparseArray = null;
     }
   }
   
-  public final boolean open()
+  public static final class a
   {
-    AppMethodBeat.i(218280);
-    if (!isValid())
+    public int DrO;
+    public int type;
+    
+    static a u(Map<String, String> paramMap, String paramString)
     {
-      AppMethodBeat.o(218280);
-      return false;
-    }
-    if ((this.randomAccessFile != null) || (this.fileLock != null))
-    {
-      AppMethodBeat.o(218280);
-      return false;
-    }
-    try
-    {
-      File localFile1 = new File(Environment.getExternalStorageDirectory(), this.znf);
-      File localFile2 = new File(localFile1, this.filename);
-      if (!localFile1.exists())
+      AppMethodBeat.i(201849);
+      if (c.isEmpty(paramMap))
       {
-        boolean bool = localFile1.mkdirs();
-        if (!bool)
-        {
-          AppMethodBeat.o(218280);
-          return false;
-        }
+        AppMethodBeat.o(201849);
+        return null;
       }
-      this.randomAccessFile = new RandomAccessFile(localFile2, "rwd");
-      this.fileLock = this.randomAccessFile.getChannel().lock();
-      if (!localFile2.isFile())
+      int i = Util.safeParseInt((String)paramMap.get(paramString + ".type"));
+      int j = Util.safeParseInt((String)paramMap.get(paramString + ".expireTime")) * 1000;
+      if ((i == 0) || (j == 0))
       {
-        close();
-        AppMethodBeat.o(218280);
-        return false;
+        AppMethodBeat.o(201849);
+        return null;
       }
-      AppMethodBeat.o(218280);
-      return true;
+      paramMap = new a();
+      paramMap.type = i;
+      paramMap.DrO = j;
+      AppMethodBeat.o(201849);
+      return paramMap;
     }
-    catch (Throwable localThrowable)
-    {
-      close();
-      AppMethodBeat.o(218280);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.a.b
  * JD-Core Version:    0.7.0.1
  */

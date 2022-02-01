@@ -1,52 +1,143 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.i;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.a.b;
+import com.tencent.mm.plugin.appbrand.a.c;
+import com.tencent.mm.plugin.appbrand.a.c.a;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
-public final class l
-  extends b
+public class l
+  extends h<com.tencent.mm.plugin.appbrand.s>
 {
-  public static final int CTRL_INDEX = 144;
-  public static final String NAME = "getMapCenterLocation";
+  private static final int CTRL_INDEX = 340;
+  private static final String NAME = "enableLocationUpdate";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public void b(final com.tencent.mm.plugin.appbrand.s params, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(143664);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(138201);
+    super.d(params, paramJSONObject, paramInt);
+    if (!(this.lXb instanceof t))
     {
-      ae.e("MicroMsg.JsApiGetMapCenterLocation", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(143664);
+      Log.w("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      params.i(paramInt, h("fail:system error", null));
+      AppMethodBeat.o(138201);
       return;
     }
-    ae.i("MicroMsg.JsApiGetMapCenterLocation", "data:%s", new Object[] { paramJSONObject });
-    paramJSONObject = h(paramc, paramJSONObject);
-    if (paramJSONObject == null)
-    {
-      ae.e("MicroMsg.JsApiGetMapCenterLocation", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(143664);
-      return;
+    final t localt = (t)this.lXb;
+    paramJSONObject = localt.lXi;
+    if (paramJSONObject != null) {
+      paramJSONObject.bGH();
     }
-    HashMap localHashMap = new HashMap();
-    b.i locali = paramJSONObject.blC();
-    localHashMap.put("latitude", Double.valueOf(locali.latitude));
-    localHashMap.put("longitude", Double.valueOf(locali.longitude));
-    ae.i("MicroMsg.JsApiGetMapCenterLocation", "ok, values:%s", new Object[] { localHashMap.toString() });
-    a(paramc, paramInt, n("ok", localHashMap), true, paramJSONObject.blB());
-    AppMethodBeat.o(143664);
+    if ((paramJSONObject == null) || (localt.lXu)) {
+      paramJSONObject = new r();
+    }
+    localt.lXi = paramJSONObject;
+    paramJSONObject.W(params.getRuntime());
+    localt.lXv = new s.a()
+    {
+      public final void ZO(String paramAnonymousString)
+      {
+        AppMethodBeat.i(138199);
+        int i = -1;
+        switch (paramAnonymousString.hashCode())
+        {
+        default: 
+          switch (i)
+          {
+          }
+          break;
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(138199);
+          return;
+          if (!paramAnonymousString.equals("StateListening")) {
+            break;
+          }
+          i = 0;
+          break;
+          if (!paramAnonymousString.equals("StateNotListening")) {
+            break;
+          }
+          i = 1;
+          break;
+          if (!paramAnonymousString.equals("StateSuspend")) {
+            break;
+          }
+          i = 2;
+          break;
+          Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "STATE_LISTENING, start blink");
+          if (localt.lXi != null)
+          {
+            localt.lXi.W(params.getRuntime());
+            AppMethodBeat.o(138199);
+            return;
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "STATE_NOT_LISTENING, stop blink");
+            if (localt.lXi != null) {
+              localt.lXi.bGG();
+            }
+          }
+        }
+      }
+    };
+    paramJSONObject = localt.lXA;
+    if (paramJSONObject != null) {
+      params.getRuntime().kAH.b(paramJSONObject);
+    }
+    if ((paramJSONObject == null) || (localt.lXu)) {
+      paramJSONObject = new c.a()
+      {
+        public final void a(String paramAnonymousString, b paramAnonymousb)
+        {
+          AppMethodBeat.i(138200);
+          if (paramAnonymousb == b.kQK)
+          {
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "AppRunningState.DESTROYED, uninit");
+            localt.quit();
+            AppMethodBeat.o(138200);
+            return;
+          }
+          if (paramAnonymousb == b.kQJ)
+          {
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "AppRunningState.SUSPEND, suspendListening");
+            localt.bGI();
+            AppMethodBeat.o(138200);
+            return;
+          }
+          if (paramAnonymousb == b.kQH)
+          {
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "AppRunningState.FOREGROUND, resumeListening");
+            localt.bGJ();
+            AppMethodBeat.o(138200);
+            return;
+          }
+          if (paramAnonymousb == b.kQI)
+          {
+            if (!localt.lXu)
+            {
+              Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "AppRunningState.BACKGROUND, stopListening");
+              localt.stopListening();
+              AppMethodBeat.o(138200);
+              return;
+            }
+            Log.i("MicroMsg.AppBrand.JsApiEnableLocationUpdateWxa", "AppRunningState.BACKGROUND, do nothing");
+          }
+          AppMethodBeat.o(138200);
+        }
+      };
+    }
+    params.getRuntime().kAH.a(paramJSONObject);
+    localt.lXA = paramJSONObject;
+    localt.lXu = false;
+    AppMethodBeat.o(138201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,31 @@
 package com.tencent.mm.plugin.vlog.model;
 
+import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "", "(Ljava/lang/String;I)V", "NONE", "FADE", "plugin-vlog_release"})
-public enum u
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"getInteger", "", "Landroid/media/MediaFormat;", "name", "", "defaultValue", "getLong", "", "plugin-vlog_release"})
+public final class u
 {
-  static
+  public static final int c(MediaFormat paramMediaFormat, String paramString, int paramInt)
   {
-    AppMethodBeat.i(110931);
-    u localu1 = new u("NONE", 0);
-    BXF = localu1;
-    u localu2 = new u("FADE", 1);
-    BXG = localu2;
-    BXH = new u[] { localu1, localu2 };
-    AppMethodBeat.o(110931);
+    AppMethodBeat.i(190590);
+    p.h(paramMediaFormat, "$this$getInteger");
+    p.h(paramString, "name");
+    if (paramMediaFormat.containsKey(paramString))
+    {
+      paramInt = paramMediaFormat.getInteger(paramString);
+      AppMethodBeat.o(190590);
+      return paramInt;
+    }
+    AppMethodBeat.o(190590);
+    return paramInt;
   }
-  
-  private u() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.u
  * JD-Core Version:    0.7.0.1
  */

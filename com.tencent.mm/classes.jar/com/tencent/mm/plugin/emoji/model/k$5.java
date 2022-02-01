@@ -9,16 +9,16 @@ final class k$5
 {
   public final String[] getSQLs()
   {
-    AppMethodBeat.i(194863);
-    Object localObject = g.JiP;
-    localObject = g.eoW();
-    AppMethodBeat.o(194863);
+    AppMethodBeat.i(240149);
+    Object localObject = g.OsH;
+    localObject = g.frw();
+    AppMethodBeat.o(240149);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.k.5
  * JD-Core Version:    0.7.0.1
  */

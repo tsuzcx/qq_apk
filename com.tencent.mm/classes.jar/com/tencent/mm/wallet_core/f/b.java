@@ -1,13 +1,13 @@
 package com.tencent.mm.wallet_core.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class b
 {
-  public static boolean fWk()
+  public static boolean hhI()
   {
     AppMethodBeat.i(72882);
     StringBuilder localStringBuilder = new StringBuilder(8);
@@ -29,7 +29,7 @@ public final class b
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(iv(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(jg(str2, localStringBuilder.toString()))) {
           break label175;
         }
         AppMethodBeat.o(72882);
@@ -40,7 +40,7 @@ public final class b
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(iv(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(jg(str1, localStringBuilder.toString())))
     {
       AppMethodBeat.o(72882);
       return true;
@@ -51,7 +51,7 @@ public final class b
     return false;
   }
   
-  public static boolean fWl()
+  public static boolean hhJ()
   {
     AppMethodBeat.i(72883);
     StringBuilder localStringBuilder = new StringBuilder(8);
@@ -73,7 +73,7 @@ public final class b
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(iv(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(jg(str2, localStringBuilder.toString()))) {
           break label175;
         }
         AppMethodBeat.o(72883);
@@ -84,7 +84,7 @@ public final class b
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(iv(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(jg(str1, localStringBuilder.toString())))
     {
       AppMethodBeat.o(72883);
       return true;
@@ -95,7 +95,7 @@ public final class b
     return false;
   }
   
-  public static boolean fWm()
+  public static boolean hhK()
   {
     AppMethodBeat.i(72884);
     StringBuilder localStringBuilder = new StringBuilder(8);
@@ -117,7 +117,7 @@ public final class b
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(iv(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(jg(str2, localStringBuilder.toString()))) {
           break label175;
         }
         AppMethodBeat.o(72884);
@@ -128,7 +128,7 @@ public final class b
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(iv(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(jg(str1, localStringBuilder.toString())))
     {
       AppMethodBeat.o(72884);
       return true;
@@ -139,20 +139,20 @@ public final class b
     return false;
   }
   
-  private static String iv(String paramString1, String paramString2)
+  private static String jg(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72885);
-    Object localObject = com.tencent.mm.model.c.d.aDI().xi("100327");
+    Object localObject = com.tencent.mm.model.c.d.aXu().Fu("100327");
     if (!((c)localObject).isValid())
     {
-      ae.w("MicroMsg.WalletPayHelper", "check point 1, explained by src code.");
+      Log.w("MicroMsg.WalletPayHelper", "check point 1, explained by src code.");
       AppMethodBeat.o(72885);
       return paramString2;
     }
-    localObject = ((c)localObject).fsy();
+    localObject = ((c)localObject).gzz();
     if (localObject == null)
     {
-      ae.w("MicroMsg.WalletPayHelper", "check point 2, explained by src code.");
+      Log.w("MicroMsg.WalletPayHelper", "check point 2, explained by src code.");
       AppMethodBeat.o(72885);
       return paramString2;
     }

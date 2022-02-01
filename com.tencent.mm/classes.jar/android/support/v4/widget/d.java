@@ -27,24 +27,24 @@ public final class d
   extends Drawable
   implements Animatable
 {
-  private static final Interpolator Sv = new LinearInterpolator();
-  private static final Interpolator Sw = new b();
-  private static final int[] Sx = { -16777216 };
-  private Animator EZ;
-  float SA;
-  boolean SB;
-  final a Sy;
-  private float Sz;
+  private static final Interpolator SI = new LinearInterpolator();
+  private static final Interpolator SJ = new b();
+  private static final int[] SK = { -16777216 };
+  private Animator Fj;
+  final a SL;
+  private float SM;
+  float SN;
+  boolean SO;
   private Resources mResources;
   
   public d(final Context paramContext)
   {
     this.mResources = ((Context)m.checkNotNull(paramContext)).getResources();
-    this.Sy = new a();
-    this.Sy.setColors(Sx);
-    this.Sy.setStrokeWidth(2.5F);
+    this.SL = new a();
+    this.SL.setColors(SK);
+    this.SL.setStrokeWidth(2.5F);
     invalidateSelf();
-    paramContext = this.Sy;
+    paramContext = this.SL;
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
@@ -58,7 +58,7 @@ public final class d
     });
     localValueAnimator.setRepeatCount(-1);
     localValueAnimator.setRepeatMode(1);
-    localValueAnimator.setInterpolator(Sv);
+    localValueAnimator.setInterpolator(SI);
     localValueAnimator.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
@@ -68,27 +68,27 @@ public final class d
       public final void onAnimationRepeat(Animator paramAnonymousAnimator)
       {
         d.this.a(1.0F, paramContext, true);
-        paramContext.fJ();
+        paramContext.fQ();
         d.a locala = paramContext;
-        locala.aU(locala.fH());
-        if (d.this.SB)
+        locala.aV(locala.fO());
+        if (d.this.SO)
         {
-          d.this.SB = false;
+          d.this.SO = false;
           paramAnonymousAnimator.cancel();
           paramAnonymousAnimator.setDuration(1332L);
           paramAnonymousAnimator.start();
-          paramContext.O(false);
+          paramContext.N(false);
           return;
         }
-        d.this.SA += 1.0F;
+        d.this.SN += 1.0F;
       }
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        d.this.SA = 0.0F;
+        d.this.SN = 0.0F;
       }
     });
-    this.EZ = localValueAnimator;
+    this.Fj = localValueAnimator;
   }
   
   static void a(float paramFloat, a parama)
@@ -96,8 +96,8 @@ public final class d
     if (paramFloat > 0.75F)
     {
       paramFloat = (paramFloat - 0.75F) / 0.25F;
-      int n = parama.fI();
-      int i = parama.mColors[parama.fH()];
+      int n = parama.fP();
+      int i = parama.mColors[parama.fO()];
       int j = n >> 24 & 0xFF;
       int k = n >> 16 & 0xFF;
       int m = n >> 8 & 0xFF;
@@ -105,48 +105,48 @@ public final class d
       int i1 = (int)(((i >> 24 & 0xFF) - j) * paramFloat);
       int i2 = (int)(((i >> 16 & 0xFF) - k) * paramFloat);
       int i3 = (int)(((i >> 8 & 0xFF) - m) * paramFloat);
-      parama.Ks = ((int)(paramFloat * ((i & 0xFF) - n)) + n | j + i1 << 24 | k + i2 << 16 | i3 + m << 8);
+      parama.KC = ((int)(paramFloat * ((i & 0xFF) - n)) + n | j + i1 << 24 | k + i2 << 16 | i3 + m << 8);
       return;
     }
-    parama.Ks = parama.fI();
+    parama.KC = parama.fP();
   }
   
   private void g(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    a locala = this.Sy;
+    a locala = this.SL;
     float f = this.mResources.getDisplayMetrics().density;
     locala.setStrokeWidth(paramFloat2 * f);
-    locala.SQ = (paramFloat1 * f);
-    locala.aU(0);
-    locala.SR = ((int)(paramFloat3 * f));
-    locala.SS = ((int)(f * paramFloat4));
+    locala.Tc = (paramFloat1 * f);
+    locala.aV(0);
+    locala.Td = ((int)(paramFloat3 * f));
+    locala.Te = ((int)(f * paramFloat4));
   }
   
   public final void C(float paramFloat)
   {
-    a locala = this.Sy;
-    if (paramFloat != locala.SP) {
-      locala.SP = paramFloat;
+    a locala = this.SL;
+    if (paramFloat != locala.Tb) {
+      locala.Tb = paramFloat;
     }
     invalidateSelf();
   }
   
   public final void D(float paramFloat)
   {
-    this.Sy.SH = 0.0F;
-    this.Sy.SI = paramFloat;
+    this.SL.SU = 0.0F;
+    this.SL.SV = paramFloat;
     invalidateSelf();
   }
   
   public final void E(float paramFloat)
   {
-    this.Sy.Sz = paramFloat;
+    this.SL.SM = paramFloat;
     invalidateSelf();
   }
   
-  public final void N(boolean paramBoolean)
+  public final void M(boolean paramBoolean)
   {
-    this.Sy.O(paramBoolean);
+    this.SL.N(paramBoolean);
     invalidateSelf();
   }
   
@@ -154,36 +154,36 @@ public final class d
   {
     float f1;
     float f2;
-    if (this.SB)
+    if (this.SO)
     {
       a(paramFloat, parama);
-      f1 = (float)(Math.floor(parama.SM / 0.8F) + 1.0D);
-      parama.SH = (parama.SK + (parama.SL - 0.01F - parama.SK) * paramFloat);
-      parama.SI = parama.SL;
-      f2 = parama.SM;
-      parama.Sz = ((f1 - parama.SM) * paramFloat + f2);
+      f1 = (float)(Math.floor(parama.SZ / 0.8F) + 1.0D);
+      parama.SU = (parama.SX + (parama.SY - 0.01F - parama.SX) * paramFloat);
+      parama.SV = parama.SY;
+      f2 = parama.SZ;
+      parama.SM = ((f1 - parama.SZ) * paramFloat + f2);
     }
     while ((paramFloat == 1.0F) && (!paramBoolean)) {
       return;
     }
-    float f3 = parama.SM;
+    float f3 = parama.SZ;
     if (paramFloat < 0.5F)
     {
       f1 = paramFloat / 0.5F;
-      f2 = parama.SK;
-      f1 = Sw.getInterpolation(f1) * 0.79F + 0.01F + f2;
+      f2 = parama.SX;
+      f1 = SJ.getInterpolation(f1) * 0.79F + 0.01F + f2;
     }
     for (;;)
     {
-      float f4 = this.SA;
-      parama.SH = f2;
-      parama.SI = f1;
-      parama.Sz = (f3 + 0.21F * paramFloat);
-      this.Sz = (216.0F * (f4 + paramFloat));
+      float f4 = this.SN;
+      parama.SU = f2;
+      parama.SV = f1;
+      parama.SM = (f3 + 0.21F * paramFloat);
+      this.SM = (216.0F * (f4 + paramFloat));
       return;
       f2 = (paramFloat - 0.5F) / 0.5F;
-      f1 = parama.SK + 0.79F;
-      f2 = f1 - ((1.0F - Sw.getInterpolation(f2)) * 0.79F + 0.01F);
+      f1 = parama.SX + 0.79F;
+      f2 = f1 - ((1.0F - SJ.getInterpolation(f2)) * 0.79F + 0.01F);
     }
   }
   
@@ -191,56 +191,56 @@ public final class d
   {
     Rect localRect = getBounds();
     paramCanvas.save();
-    paramCanvas.rotate(this.Sz, localRect.exactCenterX(), localRect.exactCenterY());
-    a locala = this.Sy;
-    RectF localRectF = locala.SE;
-    float f1 = locala.SQ + locala.xq / 2.0F;
-    if (locala.SQ <= 0.0F) {
-      f1 = Math.min(localRect.width(), localRect.height()) / 2.0F - Math.max(locala.SR * locala.SP / 2.0F, locala.xq / 2.0F);
+    paramCanvas.rotate(this.SM, localRect.exactCenterX(), localRect.exactCenterY());
+    a locala = this.SL;
+    RectF localRectF = locala.SR;
+    float f1 = locala.Tc + locala.mStrokeWidth / 2.0F;
+    if (locala.Tc <= 0.0F) {
+      f1 = Math.min(localRect.width(), localRect.height()) / 2.0F - Math.max(locala.Td * locala.Tb / 2.0F, locala.mStrokeWidth / 2.0F);
     }
     localRectF.set(localRect.centerX() - f1, localRect.centerY() - f1, localRect.centerX() + f1, f1 + localRect.centerY());
-    f1 = (locala.SH + locala.Sz) * 360.0F;
-    float f2 = (locala.SI + locala.Sz) * 360.0F - f1;
-    locala.mPaint.setColor(locala.Ks);
+    f1 = (locala.SU + locala.SM) * 360.0F;
+    float f2 = (locala.SV + locala.SM) * 360.0F - f1;
+    locala.mPaint.setColor(locala.KC);
     locala.mPaint.setAlpha(locala.mAlpha);
-    float f3 = locala.xq / 2.0F;
+    float f3 = locala.mStrokeWidth / 2.0F;
     localRectF.inset(f3, f3);
-    paramCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localRectF.width() / 2.0F, locala.SG);
+    paramCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localRectF.width() / 2.0F, locala.ST);
     localRectF.inset(-f3, -f3);
     paramCanvas.drawArc(localRectF, f1, f2, false, locala.mPaint);
-    if (locala.SN)
+    if (locala.mShowArrow)
     {
-      if (locala.SO != null) {
+      if (locala.Ta != null) {
         break label522;
       }
-      locala.SO = new Path();
-      locala.SO.setFillType(Path.FillType.EVEN_ODD);
+      locala.Ta = new Path();
+      locala.Ta.setFillType(Path.FillType.EVEN_ODD);
     }
     for (;;)
     {
       f3 = Math.min(localRectF.width(), localRectF.height()) / 2.0F;
-      float f4 = locala.SR * locala.SP / 2.0F;
-      locala.SO.moveTo(0.0F, 0.0F);
-      locala.SO.lineTo(locala.SR * locala.SP, 0.0F);
-      locala.SO.lineTo(locala.SR * locala.SP / 2.0F, locala.SS * locala.SP);
-      locala.SO.offset(f3 + localRectF.centerX() - f4, localRectF.centerY() + locala.xq / 2.0F);
-      locala.SO.close();
-      locala.SF.setColor(locala.Ks);
-      locala.SF.setAlpha(locala.mAlpha);
+      float f4 = locala.Td * locala.Tb / 2.0F;
+      locala.Ta.moveTo(0.0F, 0.0F);
+      locala.Ta.lineTo(locala.Td * locala.Tb, 0.0F);
+      locala.Ta.lineTo(locala.Td * locala.Tb / 2.0F, locala.Te * locala.Tb);
+      locala.Ta.offset(f3 + localRectF.centerX() - f4, localRectF.centerY() + locala.mStrokeWidth / 2.0F);
+      locala.Ta.close();
+      locala.SS.setColor(locala.KC);
+      locala.SS.setAlpha(locala.mAlpha);
       paramCanvas.save();
       paramCanvas.rotate(f1 + f2, localRectF.centerX(), localRectF.centerY());
-      paramCanvas.drawPath(locala.SO, locala.SF);
+      paramCanvas.drawPath(locala.Ta, locala.SS);
       paramCanvas.restore();
       paramCanvas.restore();
       return;
       label522:
-      locala.SO.reset();
+      locala.Ta.reset();
     }
   }
   
   public final int getAlpha()
   {
-    return this.Sy.mAlpha;
+    return this.SL.mAlpha;
   }
   
   public final int getOpacity()
@@ -250,18 +250,18 @@ public final class d
   
   public final boolean isRunning()
   {
-    return this.EZ.isRunning();
+    return this.Fj.isRunning();
   }
   
   public final void setAlpha(int paramInt)
   {
-    this.Sy.mAlpha = paramInt;
+    this.SL.mAlpha = paramInt;
     invalidateSelf();
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.Sy.mPaint.setColorFilter(paramColorFilter);
+    this.SL.mPaint.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
   
@@ -280,121 +280,121 @@ public final class d
   
   public final void start()
   {
-    this.EZ.cancel();
-    this.Sy.fJ();
-    if (this.Sy.SI != this.Sy.SH)
+    this.Fj.cancel();
+    this.SL.fQ();
+    if (this.SL.SV != this.SL.SU)
     {
-      this.SB = true;
-      this.EZ.setDuration(666L);
-      this.EZ.start();
+      this.SO = true;
+      this.Fj.setDuration(666L);
+      this.Fj.start();
       return;
     }
-    this.Sy.aU(0);
-    this.Sy.fK();
-    this.EZ.setDuration(1332L);
-    this.EZ.start();
+    this.SL.aV(0);
+    this.SL.fR();
+    this.Fj.setDuration(1332L);
+    this.Fj.start();
   }
   
   public final void stop()
   {
-    this.EZ.cancel();
-    this.Sz = 0.0F;
-    this.Sy.O(false);
-    this.Sy.aU(0);
-    this.Sy.fK();
+    this.Fj.cancel();
+    this.SM = 0.0F;
+    this.SL.N(false);
+    this.SL.aV(0);
+    this.SL.fR();
     invalidateSelf();
   }
   
   static final class a
   {
-    int Ks;
-    final RectF SE = new RectF();
-    final Paint SF = new Paint();
-    final Paint SG = new Paint();
-    float SH = 0.0F;
-    float SI = 0.0F;
-    int SJ;
-    float SK;
-    float SL;
-    float SM;
-    boolean SN;
-    Path SO;
-    float SP = 1.0F;
-    float SQ;
-    int SR;
-    int SS;
-    float Sz = 0.0F;
+    int KC;
+    float SM = 0.0F;
+    final RectF SR = new RectF();
+    final Paint SS = new Paint();
+    final Paint ST = new Paint();
+    float SU = 0.0F;
+    float SV = 0.0F;
+    int SW;
+    float SX;
+    float SY;
+    float SZ;
+    Path Ta;
+    float Tb = 1.0F;
+    float Tc;
+    int Td;
+    int Te;
     int mAlpha = 255;
     int[] mColors;
     final Paint mPaint = new Paint();
-    float xq = 5.0F;
+    boolean mShowArrow;
+    float mStrokeWidth = 5.0F;
     
     a()
     {
       this.mPaint.setStrokeCap(Paint.Cap.SQUARE);
       this.mPaint.setAntiAlias(true);
       this.mPaint.setStyle(Paint.Style.STROKE);
-      this.SF.setStyle(Paint.Style.FILL);
-      this.SF.setAntiAlias(true);
-      this.SG.setColor(0);
+      this.SS.setStyle(Paint.Style.FILL);
+      this.SS.setAntiAlias(true);
+      this.ST.setColor(0);
     }
     
-    final void O(boolean paramBoolean)
+    final void N(boolean paramBoolean)
     {
-      if (this.SN != paramBoolean) {
-        this.SN = paramBoolean;
+      if (this.mShowArrow != paramBoolean) {
+        this.mShowArrow = paramBoolean;
       }
     }
     
-    final void aU(int paramInt)
+    final void aV(int paramInt)
     {
-      this.SJ = paramInt;
-      this.Ks = this.mColors[this.SJ];
+      this.SW = paramInt;
+      this.KC = this.mColors[this.SW];
     }
     
-    final int fH()
+    final int fO()
     {
-      return (this.SJ + 1) % this.mColors.length;
+      return (this.SW + 1) % this.mColors.length;
     }
     
-    final int fI()
+    final int fP()
     {
-      return this.mColors[this.SJ];
+      return this.mColors[this.SW];
     }
     
-    final void fJ()
+    final void fQ()
     {
-      this.SK = this.SH;
-      this.SL = this.SI;
-      this.SM = this.Sz;
+      this.SX = this.SU;
+      this.SY = this.SV;
+      this.SZ = this.SM;
     }
     
-    final void fK()
+    final void fR()
     {
-      this.SK = 0.0F;
-      this.SL = 0.0F;
+      this.SX = 0.0F;
+      this.SY = 0.0F;
+      this.SZ = 0.0F;
+      this.SU = 0.0F;
+      this.SV = 0.0F;
       this.SM = 0.0F;
-      this.SH = 0.0F;
-      this.SI = 0.0F;
-      this.Sz = 0.0F;
     }
     
     final void setColors(int[] paramArrayOfInt)
     {
       this.mColors = paramArrayOfInt;
-      aU(0);
+      aV(0);
     }
     
     final void setStrokeWidth(float paramFloat)
     {
-      this.xq = paramFloat;
+      this.mStrokeWidth = paramFloat;
       this.mPaint.setStrokeWidth(paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.widget.d
  * JD-Core Version:    0.7.0.1
  */

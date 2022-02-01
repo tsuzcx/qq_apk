@@ -191,10 +191,11 @@ public abstract class DefaultLoader
   
   public boolean isLoading()
   {
-    if (this.uriLoader.isLoading()) {
+    if (this.uriLoader.isLoading()) {}
+    while ((this.isLoading) && (!this.shutdown)) {
       return true;
     }
-    return this.isLoading;
+    return false;
   }
   
   public void prepare()
@@ -246,6 +247,7 @@ public abstract class DefaultLoader
   
   public void shutdown()
   {
+    Logger.i("DefaultLoader", "[shutdown] enter");
     this.shutdown = true;
     this.chunks.offer(this.END_OF_QUEUE);
     join();
@@ -257,21 +259,25 @@ public abstract class DefaultLoader
     }
     catch (IOException localIOException1)
     {
-      for (;;)
+      try
       {
-        try
+        for (;;)
         {
           if (this.cacheSink != null) {
             this.cacheSink.close();
           }
+          Logger.i("DefaultLoader", "[shutdown] exit");
           return;
+          localIOException1 = localIOException1;
+          Logger.w("DefaultLoader", "[shutdown] failed to close upstream");
         }
-        catch (IOException localIOException2)
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
         {
           Logger.w("DefaultLoader", "[shutdown] failed to close cacheSink");
         }
-        localIOException1 = localIOException1;
-        Logger.w("DefaultLoader", "[shutdown] failed to close upstream");
       }
     }
   }
@@ -342,7 +348,7 @@ public abstract class DefaultLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.DefaultLoader
  * JD-Core Version:    0.7.0.1
  */

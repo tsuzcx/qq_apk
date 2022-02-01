@@ -4,18 +4,20 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.order.model.g;
 import com.tencent.mm.plugin.order.model.i;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI.a;
 import com.tencent.mm.plugin.wallet_payu.order.a.a;
-import com.tencent.mm.protocal.protobuf.ckn;
-import com.tencent.mm.protocal.protobuf.ckw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.wallet_payu.order.a.b;
+import com.tencent.mm.protocal.protobuf.dav;
+import com.tencent.mm.protocal.protobuf.dbe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 import com.tencent.mm.wallet_core.ui.f;
 import java.text.SimpleDateFormat;
@@ -27,7 +29,7 @@ import java.util.Locale;
 public class PayUMallOrderRecordListUI
   extends MallOrderRecordListUI
 {
-  public final String Nb(int paramInt)
+  public final String Ul(int paramInt)
   {
     AppMethodBeat.i(72077);
     String str = f.a(paramInt, new SimpleDateFormat("dd MMMM", Locale.ENGLISH), new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH));
@@ -35,7 +37,7 @@ public class PayUMallOrderRecordListUI
     return str;
   }
   
-  public final void dBB()
+  public final void eBm()
   {
     AppMethodBeat.i(72073);
     addSceneEndListener(1519);
@@ -43,7 +45,7 @@ public class PayUMallOrderRecordListUI
     AppMethodBeat.o(72073);
   }
   
-  public final void dBC()
+  public final void eBn()
   {
     AppMethodBeat.i(72074);
     removeSceneEndListener(1519);
@@ -51,69 +53,69 @@ public class PayUMallOrderRecordListUI
     AppMethodBeat.o(72074);
   }
   
-  public final void dBD()
+  public final void eBo()
   {
     AppMethodBeat.i(72076);
-    doSceneProgress(new a(this.fq));
+    doSceneProgress(new a(this.fs));
     AppMethodBeat.o(72076);
   }
   
-  public final void iy(String paramString1, String paramString2)
+  public final void jj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72075);
-    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.order.a.b(paramString1));
+    doSceneProgress(new b(paramString1));
     AppMethodBeat.o(72075);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(72078);
     Object localObject;
     boolean bool;
-    if ((paramn instanceof a))
+    if ((paramq instanceof a))
     {
       if (this.mProgressDialog != null)
       {
         this.mProgressDialog.dismiss();
         this.mProgressDialog = null;
       }
-      paramString = (a)paramn;
-      localObject = ((ckn)paramString.rr.hQE.hQJ).Hxa;
-      paramn = new LinkedList();
+      paramString = (a)paramq;
+      localObject = ((dav)paramString.rr.iLL.iLR).MGa;
+      paramq = new LinkedList();
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ckw localckw = (ckw)((Iterator)localObject).next();
+        dbe localdbe = (dbe)((Iterator)localObject).next();
         i locali = new i();
-        locali.uuo = localckw.uuo;
-        locali.wTi = localckw.wTi;
-        locali.wTj = localckw.wTj;
-        locali.CreateTime = localckw.CreateTime;
-        locali.wTe = localckw.wTe;
-        locali.wTb = localckw.wTb;
-        locali.wTh = "0";
-        locali.wTd = localckw.wTd;
-        locali.wTg = localckw.wTg;
-        locali.wTm = 1;
-        locali.wTl = localckw.wTl;
-        locali.wTk = localckw.wTk;
-        locali.wTf = localckw.wTf;
-        locali.wTa = localckw.HwR;
-        locali.wTc = localckw.wTc;
-        locali.wSZ = localckw.wSZ;
-        paramn.add(locali);
+        locali.xMq = localdbe.xMq;
+        locali.APc = localdbe.APc;
+        locali.APd = localdbe.APd;
+        locali.CreateTime = localdbe.CreateTime;
+        locali.AOY = localdbe.AOY;
+        locali.AOV = localdbe.AOV;
+        locali.APb = "0";
+        locali.AOX = localdbe.AOX;
+        locali.APa = localdbe.APa;
+        locali.APg = 1;
+        locali.APf = localdbe.APf;
+        locali.APe = localdbe.APe;
+        locali.AOZ = localdbe.AOZ;
+        locali.AOU = localdbe.MFR;
+        locali.AOW = localdbe.AOW;
+        locali.AOT = localdbe.AOT;
+        paramq.add(locali);
       }
-      eP(paramn);
-      eQ(null);
-      this.mCount = this.wUe.size();
-      if (paramString.eMT() > this.mCount)
+      fM(paramq);
+      fN(null);
+      this.mCount = this.AQa.size();
+      if (paramString.fUC() > this.mCount)
       {
         bool = true;
-        this.vHj = bool;
-        this.wUd.notifyDataSetChanged();
-        ae.d("MicroMsg.PayUMallOrderRecordListUI", "orders list count: " + this.mCount);
-        ae.d("MicroMsg.PayUMallOrderRecordListUI", "orders list total record: " + paramString.eMT());
-        ae.d("MicroMsg.PayUMallOrderRecordListUI", "orders list has more: " + this.vHj);
+        this.zci = bool;
+        this.APZ.notifyDataSetChanged();
+        Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list count: " + this.mCount);
+        Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list total record: " + paramString.fUC());
+        Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list has more: " + this.zci);
         this.mHandler.post(new Runnable()
         {
           public final void run()
@@ -121,10 +123,10 @@ public class PayUMallOrderRecordListUI
             AppMethodBeat.i(72071);
             if (PayUMallOrderRecordListUI.a(PayUMallOrderRecordListUI.this))
             {
-              ae.v("MicroMsg.PayUMallOrderRecordListUI", "has more");
+              Log.v("MicroMsg.PayUMallOrderRecordListUI", "has more");
               if (!PayUMallOrderRecordListUI.b(PayUMallOrderRecordListUI.this))
               {
-                PayUMallOrderRecordListUI.c(PayUMallOrderRecordListUI.this).fCN();
+                PayUMallOrderRecordListUI.c(PayUMallOrderRecordListUI.this).gKM();
                 PayUMallOrderRecordListUI.e(PayUMallOrderRecordListUI.this).setAdapter(PayUMallOrderRecordListUI.d(PayUMallOrderRecordListUI.this));
                 PayUMallOrderRecordListUI.f(PayUMallOrderRecordListUI.this);
               }
@@ -134,18 +136,18 @@ public class PayUMallOrderRecordListUI
               PayUMallOrderRecordListUI.h(PayUMallOrderRecordListUI.this).notifyDataSetChanged();
               AppMethodBeat.o(72071);
               return;
-              ae.v("MicroMsg.PayUMallOrderRecordListUI", "no more! dismiss footer view!");
-              PayUMallOrderRecordListUI.g(PayUMallOrderRecordListUI.this).fCO();
+              Log.v("MicroMsg.PayUMallOrderRecordListUI", "no more! dismiss footer view!");
+              PayUMallOrderRecordListUI.g(PayUMallOrderRecordListUI.this).gKN();
             }
           }
         });
         this.isLoading = false;
         label418:
-        if ((this.mCount > 0) || (this.wUe.size() != 0)) {
+        if ((this.mCount > 0) || (this.AQa.size() != 0)) {
           break label660;
         }
         showOptionMenu(false);
-        findViewById(2131299473).setVisibility(0);
+        findViewById(2131300102).setVisibility(0);
       }
     }
     for (;;)
@@ -154,7 +156,7 @@ public class PayUMallOrderRecordListUI
       return true;
       bool = false;
       break;
-      if (!(paramn instanceof g)) {
+      if (!(paramq instanceof g)) {
         break label418;
       }
       if (this.mProgressDialog != null)
@@ -162,16 +164,16 @@ public class PayUMallOrderRecordListUI
         this.mProgressDialog.dismiss();
         this.mProgressDialog = null;
       }
-      paramString = (g)paramn;
+      paramString = (g)paramq;
       label539:
-      if (paramString.dBx() == 2)
+      if (paramString.eBi() == 2)
       {
-        if (this.wUe != null) {
-          this.wUe.clear();
+        if (this.AQa != null) {
+          this.AQa.clear();
         }
         this.mCount = 0;
-        this.vHj = false;
-        this.fVK.fCO();
+        this.zci = false;
+        this.gAR.gKN();
       }
       for (;;)
       {
@@ -185,25 +187,25 @@ public class PayUMallOrderRecordListUI
           }
         });
         break;
-        paramString = paramString.dBy();
-        ae.d("MicroMsg.PayUMallOrderRecordListUI", "delete transId:".concat(String.valueOf(paramString)));
-        if (!bu.isNullOrNil(paramString))
+        paramString = paramString.eBj();
+        Log.d("MicroMsg.PayUMallOrderRecordListUI", "delete transId:".concat(String.valueOf(paramString)));
+        if (!Util.isNullOrNil(paramString))
         {
-          paramn = this.wUe.iterator();
-          if (paramn.hasNext())
+          paramq = this.AQa.iterator();
+          if (paramq.hasNext())
           {
-            localObject = (i)paramn.next();
-            if (!paramString.equals(((i)localObject).wSZ)) {
+            localObject = (i)paramq.next();
+            if (!paramString.equals(((i)localObject).AOT)) {
               break label539;
             }
-            this.wUe.remove(localObject);
-            this.mCount = this.wUe.size();
+            this.AQa.remove(localObject);
+            this.mCount = this.AQa.size();
           }
         }
       }
       label660:
       showOptionMenu(true);
-      findViewById(2131299473).setVisibility(8);
+      findViewById(2131300102).setVisibility(8);
     }
   }
   
@@ -215,7 +217,7 @@ public class PayUMallOrderRecordListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderRecordListUI
  * JD-Core Version:    0.7.0.1
  */

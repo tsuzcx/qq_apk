@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:background="@color/nd" android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="@dimen/a2n" android:textColor="@color/a_u" android:id="@id/cjj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-        <com.tencent.mm.plugin.facedetect.views.FaceNumberView android:id="@id/bsr" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_below="@id/cjj" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</merge>
+<TextView android:textColor="@color/n2" android:id="@id/bzf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/ct"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

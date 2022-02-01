@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc"
+<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/dvq" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bmx" android:background="@drawable/amv" android:paddingLeft="@dimen/c5" android:layout_width="fill_parent" android:layout_height="@dimen/av">
-        <com.tencent.mm.ui.base.MaskLayout android:id="@id/a12" android:layout_width="@dimen/at" android:layout_height="@dimen/at">
-            <ImageView android:id="@id/b3b" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:src="@raw/default_wework" android:layout_centerVertical="true" />
-            <TextView android:id="@id/ga3" android:visibility="gone" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/yj" />
-        </com.tencent.mm.ui.base.MaskLayout>
-        <LinearLayout android:gravity="center_vertical" android:id="@id/bmz" android:background="@drawable/amv" android:paddingRight="@dimen/b" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c0" android:layout_weight="1.0">
-            <TextView android:gravity="center_vertical" android:id="@id/bmy" android:singleLine="true" style="@style/m3" />
-        </LinearLayout>
+    <com.tencent.mm.ui.base.MultiTouchImageView android:id="@id/buw" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="150.0dip" />
+    <ProgressBar android:id="@id/buu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginBottom="3.0dip" style="?android:progressBarStyleHorizontal" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:gravity="center" android:id="@id/but" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/e37" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:gravity="center" android:id="@id/buv" android:background="@color/fm" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

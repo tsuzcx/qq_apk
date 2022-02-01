@@ -1,94 +1,94 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dc;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.di;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends dc
+  extends di
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(131047);
-    c.a locala = new c.a();
-    locala.IBL = new Field[16];
-    locala.columns = new String[17];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[16];
+    localMAutoDBInfo.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "googleid";
-    locala.IBN.put("googleid", "TEXT");
+    localMAutoDBInfo.columns[0] = "googleid";
+    localMAutoDBInfo.colsMap.put("googleid", "TEXT");
     localStringBuilder.append(" googleid TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "googlename";
-    locala.IBN.put("googlename", "TEXT");
+    localMAutoDBInfo.columns[1] = "googlename";
+    localMAutoDBInfo.colsMap.put("googlename", "TEXT");
     localStringBuilder.append(" googlename TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "googlephotourl";
-    locala.IBN.put("googlephotourl", "TEXT");
+    localMAutoDBInfo.columns[2] = "googlephotourl";
+    localMAutoDBInfo.colsMap.put("googlephotourl", "TEXT");
     localStringBuilder.append(" googlephotourl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "googlegmail";
-    locala.IBN.put("googlegmail", "TEXT");
+    localMAutoDBInfo.columns[3] = "googlegmail";
+    localMAutoDBInfo.colsMap.put("googlegmail", "TEXT");
     localStringBuilder.append(" googlegmail TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "username";
-    locala.IBN.put("username", "TEXT");
+    localMAutoDBInfo.columns[4] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "nickname";
-    locala.IBN.put("nickname", "TEXT");
+    localMAutoDBInfo.columns[5] = "nickname";
+    localMAutoDBInfo.colsMap.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "nicknameqp";
-    locala.IBN.put("nicknameqp", "TEXT");
+    localMAutoDBInfo.columns[6] = "nicknameqp";
+    localMAutoDBInfo.colsMap.put("nicknameqp", "TEXT");
     localStringBuilder.append(" nicknameqp TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "usernamepy";
-    locala.IBN.put("usernamepy", "TEXT");
+    localMAutoDBInfo.columns[7] = "usernamepy";
+    localMAutoDBInfo.colsMap.put("usernamepy", "TEXT");
     localStringBuilder.append(" usernamepy TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "small_url";
-    locala.IBN.put("small_url", "TEXT");
+    localMAutoDBInfo.columns[8] = "small_url";
+    localMAutoDBInfo.colsMap.put("small_url", "TEXT");
     localStringBuilder.append(" small_url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[9] = "big_url";
-    locala.IBN.put("big_url", "TEXT");
+    localMAutoDBInfo.columns[9] = "big_url";
+    localMAutoDBInfo.colsMap.put("big_url", "TEXT");
     localStringBuilder.append(" big_url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "ret";
-    locala.IBN.put("ret", "INTEGER");
+    localMAutoDBInfo.columns[10] = "ret";
+    localMAutoDBInfo.colsMap.put("ret", "INTEGER");
     localStringBuilder.append(" ret INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[11] = "status";
-    locala.IBN.put("status", "INTEGER");
+    localMAutoDBInfo.columns[11] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[12] = "googleitemid";
-    locala.IBN.put("googleitemid", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[12] = "googleitemid";
+    localMAutoDBInfo.colsMap.put("googleitemid", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" googleitemid TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "googleitemid";
-    locala.columns[13] = "googlecgistatus";
-    locala.IBN.put("googlecgistatus", "INTEGER default '2' ");
+    localMAutoDBInfo.primaryKey = "googleitemid";
+    localMAutoDBInfo.columns[13] = "googlecgistatus";
+    localMAutoDBInfo.colsMap.put("googlecgistatus", "INTEGER default '2' ");
     localStringBuilder.append(" googlecgistatus INTEGER default '2' ");
     localStringBuilder.append(", ");
-    locala.columns[14] = "contecttype";
-    locala.IBN.put("contecttype", "TEXT");
+    localMAutoDBInfo.columns[14] = "contecttype";
+    localMAutoDBInfo.colsMap.put("contecttype", "TEXT");
     localStringBuilder.append(" contecttype TEXT");
     localStringBuilder.append(", ");
-    locala.columns[15] = "googlenamepy";
-    locala.IBN.put("googlenamepy", "TEXT");
+    localMAutoDBInfo.columns[15] = "googlenamepy";
+    localMAutoDBInfo.colsMap.put("googlenamepy", "TEXT");
     localStringBuilder.append(" googlenamepy TEXT");
-    locala.columns[16] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[16] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(131047);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -120,7 +120,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.n
  * JD-Core Version:    0.7.0.1
  */

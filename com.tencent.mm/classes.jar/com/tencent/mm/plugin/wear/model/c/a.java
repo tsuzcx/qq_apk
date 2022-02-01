@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.wear.model.c;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wear.model.d;
 import com.tencent.mm.plugin.wear.model.e.i;
-import com.tencent.mm.protocal.protobuf.eek;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.eys;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 
 public final class a
 {
-  public static final void Wz(int paramInt)
+  public static final void aff(int paramInt)
   {
     AppMethodBeat.i(30052);
-    g.yxI.idkeyStat(249L, paramInt, 1L, false);
+    h.CyF.idkeyStat(249L, paramInt, 1L, false);
     AppMethodBeat.o(30052);
   }
   
-  public static final void iT(int paramInt1, int paramInt2)
+  public static final void jZ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30051);
-    eek localeek = com.tencent.mm.plugin.wear.model.a.eOd().DOs.DPe;
-    if (localeek != null)
+    eys localeys = com.tencent.mm.plugin.wear.model.a.fVM().IxH.Iyu;
+    if (localeys != null)
     {
-      ae.v("MicroMsg.Wear.ReportKVUtil", "report kv operation=%d scene=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      g.yxI.f(11632, new Object[] { Integer.valueOf(paramInt1), localeek.nIO, localeek.IiM, Integer.valueOf(paramInt2) });
+      Log.v("MicroMsg.Wear.ReportKVUtil", "report kv operation=%d scene=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      h.CyF.a(11632, new Object[] { Integer.valueOf(paramInt1), localeys.oTJ, localeys.Nvq, Integer.valueOf(paramInt2) });
     }
     AppMethodBeat.o(30051);
   }
   
-  public static final void uU(boolean paramBoolean)
+  public static final void yJ(boolean paramBoolean)
   {
     AppMethodBeat.i(30053);
     ArrayList localArrayList = new ArrayList();
@@ -47,7 +47,7 @@ public final class a
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
     }
-    g.yxI.b(localArrayList, false);
+    h.CyF.b(localArrayList, false);
     AppMethodBeat.o(30053);
   }
 }

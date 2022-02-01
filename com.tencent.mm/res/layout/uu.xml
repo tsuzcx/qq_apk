@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="left" android:background="#55000000" android:padding="@dimen/jn" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i_">
-        <Button android:id="@id/az0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C" android:layout_weight="1.0" style="@style/hk" />
-        <Button android:id="@id/fdu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:text="S" android:layout_weight="1.0" style="@style/hk" />
-        <Button android:id="@id/ec1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:text="P" android:layout_weight="1.0" style="@style/hk" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/b4f" android:background="#fff0eff4" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <View android:background="@color/rl" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel android:id="@id/az2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <com.tencent.mm.plugin.appbrand.wxawidget.console.SettingsPanel android:id="@id/fek" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <com.tencent.mm.plugin.appbrand.wxawidget.console.PerformancePanel android:id="@id/ec2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
-    </LinearLayout>
+    <com.tencent.mm.plugin.sns.ui.SnsTextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:id="@id/bn7" android:background="@drawable/avl" android:paddingLeft="2.0dip" android:paddingTop="3.0dip" android:paddingRight="2.0dip" android:paddingBottom="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:singleLine="true" />
+    <com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:id="@id/bn6" android:background="@drawable/avs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/x0" android:gravity="center" android:id="@id/bn4" android:background="@drawable/auv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" />
 </LinearLayout>

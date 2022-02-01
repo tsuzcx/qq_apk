@@ -12,7 +12,7 @@ public abstract interface b
   
   public abstract boolean collapseActionView();
   
-  public abstract android.support.v4.view.b eF();
+  public abstract android.support.v4.view.b eJ();
   
   public abstract boolean expandActionView();
   

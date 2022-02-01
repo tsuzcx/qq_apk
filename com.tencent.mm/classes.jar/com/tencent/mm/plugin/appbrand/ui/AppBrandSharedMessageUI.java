@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,39 +21,39 @@ import com.tencent.mm.ui.MMActivity;
 public class AppBrandSharedMessageUI
   extends MMActivity
 {
-  private MRecyclerView mJI;
   private ListView mListView;
+  private MRecyclerView nWH;
   
   public int getLayoutId()
   {
-    return 2131493058;
+    return 2131493097;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(48788);
     super.onCreate(paramBundle);
-    this.mListView = ((ListView)findViewById(2131301452));
-    this.mJI = ((MRecyclerView)findViewById(2131298926));
+    this.mListView = ((ListView)findViewById(2131303237));
+    this.nWH = ((MRecyclerView)findViewById(2131299410));
     this.mListView.setAdapter(new b(getLayoutInflater()));
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(223135);
+        AppMethodBeat.i(227669);
         b localb = new b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+        localb.bm(paramAnonymousAdapterView);
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.zo(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
         a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(223135);
+        AppMethodBeat.o(227669);
       }
     });
-    this.mJI.setLayoutManager(new LinearLayoutManager(1));
-    this.mJI.setAdapter(new a());
-    this.mJI.addHeaderView(getLayoutInflater().inflate(2131493057, null));
+    this.nWH.setLayoutManager(new LinearLayoutManager(1, false));
+    this.nWH.setAdapter(new a());
+    this.nWH.addHeaderView(getLayoutInflater().inflate(2131493096, null));
     AppMethodBeat.o(48788);
   }
   
@@ -66,12 +66,12 @@ public class AppBrandSharedMessageUI
   public static final class a
     extends RecyclerView.a
   {
-    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
     {
       return null;
     }
     
-    public final void a(RecyclerView.w paramw, int paramInt) {}
+    public final void a(RecyclerView.v paramv, int paramInt) {}
     
     public final int getItemCount()
     {

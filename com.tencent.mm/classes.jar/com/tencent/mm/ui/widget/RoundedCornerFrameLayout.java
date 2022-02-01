@@ -20,8 +20,8 @@ import com.tencent.mm.ae.a.a;
 public class RoundedCornerFrameLayout
   extends FrameLayout
 {
-  private a LpI;
-  private Bitmap LpJ;
+  private Bitmap Afd;
+  private a QEZ;
   private Paint paint;
   
   public RoundedCornerFrameLayout(Context paramContext)
@@ -52,7 +52,7 @@ public class RoundedCornerFrameLayout
   {
     AppMethodBeat.i(143453);
     float f = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RoundedCornerFrameLayout, paramInt, 0).getDimension(0, 0.0F);
-    this.LpI = new a(f, f, f, f);
+    this.QEZ = new a(f, f, f, f);
     this.paint = new Paint(1);
     this.paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
     setWillNotDraw(false);
@@ -69,9 +69,9 @@ public class RoundedCornerFrameLayout
     }
     int i = paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), null, 31);
     super.draw(paramCanvas);
-    if ((this.LpI.LpK > 0.0F) || (this.LpI.LpL > 0.0F) || (this.LpI.LpM > 0.0F) || (this.LpI.LpN > 0.0F))
+    if ((this.QEZ.QEV > 0.0F) || (this.QEZ.QEW > 0.0F) || (this.QEZ.QEX > 0.0F) || (this.QEZ.QEY > 0.0F))
     {
-      if (this.LpJ == null)
+      if (this.Afd == null)
       {
         int j = paramCanvas.getWidth();
         int k = paramCanvas.getHeight();
@@ -79,21 +79,21 @@ public class RoundedCornerFrameLayout
         Canvas localCanvas = new Canvas(localBitmap);
         Path localPath = new Path();
         RectF localRectF = new RectF(0.0F, 0.0F, j, k);
-        float f1 = this.LpI.LpK;
-        float f2 = this.LpI.LpK;
-        float f3 = this.LpI.LpL;
-        float f4 = this.LpI.LpL;
-        float f5 = this.LpI.LpN;
-        float f6 = this.LpI.LpN;
-        float f7 = this.LpI.LpM;
-        float f8 = this.LpI.LpM;
+        float f1 = this.QEZ.QEV;
+        float f2 = this.QEZ.QEV;
+        float f3 = this.QEZ.QEW;
+        float f4 = this.QEZ.QEW;
+        float f5 = this.QEZ.QEY;
+        float f6 = this.QEZ.QEY;
+        float f7 = this.QEZ.QEX;
+        float f8 = this.QEZ.QEX;
         Path.Direction localDirection = Path.Direction.CCW;
         localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, f5, f6, f7, f8 }, localDirection);
         localPath.setFillType(Path.FillType.WINDING);
         localCanvas.drawPath(localPath, new Paint(1));
-        this.LpJ = localBitmap;
+        this.Afd = localBitmap;
       }
-      paramCanvas.drawBitmap(this.LpJ, 0.0F, 0.0F, this.paint);
+      paramCanvas.drawBitmap(this.Afd, 0.0F, 0.0F, this.paint);
     }
     paramCanvas.restoreToCount(i);
     AppMethodBeat.o(143457);
@@ -103,20 +103,20 @@ public class RoundedCornerFrameLayout
   {
     AppMethodBeat.i(143456);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.LpJ = null;
+    this.Afd = null;
     AppMethodBeat.o(143456);
   }
   
-  public final void p(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public final void s(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     AppMethodBeat.i(143455);
-    this.LpI.LpK = paramFloat1;
-    this.LpI.LpL = paramFloat2;
-    this.LpI.LpM = paramFloat3;
-    this.LpI.LpN = paramFloat4;
-    if (this.LpJ != null)
+    this.QEZ.QEV = paramFloat1;
+    this.QEZ.QEW = paramFloat2;
+    this.QEZ.QEX = paramFloat3;
+    this.QEZ.QEY = paramFloat4;
+    if (this.Afd != null)
     {
-      this.LpJ = null;
+      this.Afd = null;
       postInvalidate();
     }
     AppMethodBeat.o(143455);
@@ -125,23 +125,23 @@ public class RoundedCornerFrameLayout
   public void setRadius(float paramFloat)
   {
     AppMethodBeat.i(143454);
-    p(paramFloat, paramFloat, paramFloat, paramFloat);
+    s(paramFloat, paramFloat, paramFloat, paramFloat);
     AppMethodBeat.o(143454);
   }
   
   final class a
   {
-    float LpK;
-    float LpL;
-    float LpM;
-    float LpN;
+    float QEV;
+    float QEW;
+    float QEX;
+    float QEY;
     
     a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      this.LpK = paramFloat1;
-      this.LpL = paramFloat2;
-      this.LpM = paramFloat3;
-      this.LpN = paramFloat4;
+      this.QEV = paramFloat1;
+      this.QEW = paramFloat2;
+      this.QEX = paramFloat3;
+      this.QEY = paramFloat4;
     }
   }
 }

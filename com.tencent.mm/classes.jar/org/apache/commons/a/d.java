@@ -5,28 +5,28 @@ import java.io.File;
 
 public final class d
 {
-  public static final String OpD;
-  private static final char OpE;
-  private static final char OpF;
+  public static final String UeB;
+  private static final char UeC;
+  private static final char UeD;
   
   static
   {
     AppMethodBeat.i(10303);
-    OpD = Character.toString('.');
+    UeB = Character.toString('.');
     char c = File.separatorChar;
-    OpE = c;
+    UeC = c;
     if (c == '\\') {}
     for (int i = 1; i != 0; i = 0)
     {
-      OpF = '/';
+      UeD = '/';
       AppMethodBeat.o(10303);
       return;
     }
-    OpF = '\\';
+    UeD = '\\';
     AppMethodBeat.o(10303);
   }
   
-  private static int bfj(String paramString)
+  private static int buZ(String paramString)
   {
     AppMethodBeat.i(10298);
     if (paramString == null)
@@ -138,7 +138,7 @@ public final class d
     return 0;
   }
   
-  private static int bfk(String paramString)
+  private static int bva(String paramString)
   {
     AppMethodBeat.i(10299);
     if (paramString == null)
@@ -151,7 +151,7 @@ public final class d
     return i;
   }
   
-  private static void bfl(String paramString)
+  private static void bvb(String paramString)
   {
     AppMethodBeat.i(10301);
     int j = paramString.length();
@@ -187,7 +187,7 @@ public final class d
       return "";
       int j = paramString.lastIndexOf('.');
       i = j;
-      if (bfk(paramString) > j) {
+      if (bva(paramString) > j) {
         i = -1;
       }
     }
@@ -204,8 +204,8 @@ public final class d
       AppMethodBeat.o(10300);
       return null;
     }
-    bfl(paramString);
-    paramString = paramString.substring(bfk(paramString) + 1);
+    bvb(paramString);
+    paramString = paramString.substring(bva(paramString) + 1);
     AppMethodBeat.o(10300);
     return paramString;
   }
@@ -215,61 +215,23 @@ public final class d
     return (paramChar == '/') || (paramChar == '\\');
   }
   
-  public static String nP(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(10297);
-    int i = bfj(paramString2);
-    if (i < 0)
-    {
-      AppMethodBeat.o(10297);
-      return null;
-    }
-    if (i > 0)
-    {
-      paramString1 = normalize(paramString2);
-      AppMethodBeat.o(10297);
-      return paramString1;
-    }
-    if (paramString1 == null)
-    {
-      AppMethodBeat.o(10297);
-      return null;
-    }
-    i = paramString1.length();
-    if (i == 0)
-    {
-      paramString1 = normalize(paramString2);
-      AppMethodBeat.o(10297);
-      return paramString1;
-    }
-    if (isSeparator(paramString1.charAt(i - 1)))
-    {
-      paramString1 = normalize(paramString1 + paramString2);
-      AppMethodBeat.o(10297);
-      return paramString1;
-    }
-    paramString1 = normalize(paramString1 + '/' + paramString2);
-    AppMethodBeat.o(10297);
-    return paramString1;
-  }
-  
   private static String normalize(String paramString)
   {
     AppMethodBeat.i(10296);
-    int i = OpE;
+    int i = UeC;
     if (paramString == null)
     {
       AppMethodBeat.o(10296);
       return null;
     }
-    bfl(paramString);
+    bvb(paramString);
     int m = paramString.length();
     if (m == 0)
     {
       AppMethodBeat.o(10296);
       return paramString;
     }
-    int i3 = bfj(paramString);
+    int i3 = buZ(paramString);
     if (i3 < 0)
     {
       AppMethodBeat.o(10296);
@@ -277,9 +239,9 @@ public final class d
     }
     char[] arrayOfChar = new char[m + 2];
     paramString.getChars(0, paramString.length(), arrayOfChar, 0);
-    if (i == OpE) {}
+    if (i == UeC) {}
     int k;
-    for (int j = OpF;; j = OpE)
+    for (int j = UeD;; j = UeC)
     {
       k = 0;
       while (k < arrayOfChar.length)
@@ -443,10 +405,48 @@ public final class d
       return paramString;
     }
   }
+  
+  public static String oH(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(10297);
+    int i = buZ(paramString2);
+    if (i < 0)
+    {
+      AppMethodBeat.o(10297);
+      return null;
+    }
+    if (i > 0)
+    {
+      paramString1 = normalize(paramString2);
+      AppMethodBeat.o(10297);
+      return paramString1;
+    }
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(10297);
+      return null;
+    }
+    i = paramString1.length();
+    if (i == 0)
+    {
+      paramString1 = normalize(paramString2);
+      AppMethodBeat.o(10297);
+      return paramString1;
+    }
+    if (isSeparator(paramString1.charAt(i - 1)))
+    {
+      paramString1 = normalize(paramString1 + paramString2);
+      AppMethodBeat.o(10297);
+      return paramString1;
+    }
+    paramString1 = normalize(paramString1 + '/' + paramString2);
+    AppMethodBeat.o(10297);
+    return paramString1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     org.apache.commons.a.d
  * JD-Core Version:    0.7.0.1
  */

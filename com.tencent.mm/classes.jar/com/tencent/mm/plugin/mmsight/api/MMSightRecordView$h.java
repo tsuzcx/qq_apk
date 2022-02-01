@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.mmsight.api;
 
 public abstract interface MMSightRecordView$h
 {
-  public abstract void gu(boolean paramBoolean);
+  public abstract void hs(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h
  * JD-Core Version:    0.7.0.1
  */

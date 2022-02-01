@@ -1,47 +1,48 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dyr;
-import com.tencent.mm.protocal.protobuf.dys;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.esy;
+import com.tencent.mm.protocal.protobuf.esz;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private com.tencent.mm.ak.b rr;
+  private i callback;
+  private d rr;
   
   public b(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(125425);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dyr();
-    ((b.a)localObject).hQG = new dys();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipheartbeat";
-    ((b.a)localObject).funcId = 795;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dyr)this.rr.hQD.hQJ;
-    ((dyr)localObject).HSD = paramLong1;
-    ((dyr)localObject).Gxr = paramLong2;
-    ((dyr)localObject).Hzw = System.currentTimeMillis();
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new esy();
+    ((d.a)localObject).iLO = new esz();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipheartbeat";
+    ((d.a)localObject).funcId = 795;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (esy)this.rr.iLK.iLR;
+    ((esy)localObject).NeG = paramLong1;
+    ((esy)localObject).Lta = paramLong2;
+    ((esy)localObject).MKf = System.currentTimeMillis();
     AppMethodBeat.o(125425);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(125427);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(125427);
     return i;
   }
@@ -51,10 +52,10 @@ public final class b
     return 795;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(125426);
-    ae.i("MicroMsg.NetSceneVoipCSHeartBeat", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.NetSceneVoipCSHeartBeat", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(125426);
   }

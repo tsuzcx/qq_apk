@@ -2,7 +2,7 @@ package com.tencent.mm.av.a.c;
 
 public abstract interface d
 {
-  public abstract void eM(boolean paramVarArgs);
+  public abstract void a(boolean paramBoolean, Object... paramVarArgs);
 }
 
 

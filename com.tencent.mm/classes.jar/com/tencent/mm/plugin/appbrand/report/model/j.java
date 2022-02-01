@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import d.l;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/model/WeAppRuntimeLoginStatusErrorReport;", "", "()V", "ID", "", "KEY_SYSTEM_RECREATE_APPBRAND_UI_MM_INVALID_UIN", "KEY_SYSTEM_RECREATE_APPBRAND_UI_NOW_UIN_NOT_EQUALS_CONFIG_UIN", "report", "", "key", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/model/WeAppRuntimeLoginStatusErrorReport;", "", "()V", "ID", "", "KEY_SYSTEM_RECREATE_APPBRAND_UI_MM_INVALID_UIN", "KEY_SYSTEM_RECREATE_APPBRAND_UI_NOW_UIN_NOT_EQUALS_CONFIG_UIN", "report", "", "key", "plugin-appbrand-integration_release"})
 public final class j
 {
-  public static final j mxO;
+  public static final j nIQ;
   
   static
   {
     AppMethodBeat.i(175213);
-    mxO = new j();
+    nIQ = new j();
     AppMethodBeat.o(175213);
   }
   
-  public static final void md(int paramInt)
+  public static final void pl(int paramInt)
   {
     AppMethodBeat.i(175212);
-    g.yxI.A(1294L, paramInt);
+    h.CyF.F(1294L, paramInt);
     AppMethodBeat.o(175212);
   }
 }

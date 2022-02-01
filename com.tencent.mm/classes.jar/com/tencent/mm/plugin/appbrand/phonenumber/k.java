@@ -14,117 +14,117 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.ag;
 import com.tencent.mm.plugin.appbrand.permission.f.a;
 import com.tencent.mm.plugin.appbrand.permission.g;
 import com.tencent.mm.plugin.appbrand.utils.html.c;
 import com.tencent.mm.plugin.appbrand.utils.html.c.a;
 import com.tencent.mm.plugin.appbrand.widget.dialog.m;
 import com.tencent.mm.plugin.appbrand.widget.dialog.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "webviewOpener", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "content", "", "context", "Landroid/content/Context;", "height", "", "shouldInLargeScreenCompatMode", "", "(Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;Ljava/lang/String;Landroid/content/Context;IZ)V", "_position", "backIv", "Landroid/widget/ImageView;", "getContent", "()Ljava/lang/String;", "contentTv", "Landroid/widget/TextView;", "contentV", "Landroid/view/View;", "getContext", "()Landroid/content/Context;", "dialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "getHeight", "()I", "rootView", "titleTv", "applyStyleByRotation", "", "cancel", "dismiss", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "getContentView", "getPosition", "isCancelable", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onDismiss", "onScreenOrientationChanged", "rotation", "onShow", "dialogHelper", "setPosition", "position", "show", "Companion", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "webviewOpener", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "content", "", "context", "Landroid/content/Context;", "height", "", "shouldInLargeScreenCompatMode", "", "(Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;Ljava/lang/String;Landroid/content/Context;IZ)V", "_position", "backIv", "Landroid/widget/ImageView;", "getContent", "()Ljava/lang/String;", "contentTv", "Landroid/widget/TextView;", "contentV", "Landroid/view/View;", "getContext", "()Landroid/content/Context;", "dialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "getHeight", "()I", "rootView", "titleTv", "applyStyleByRotation", "", "cancel", "dismiss", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "getContentView", "getPosition", "isCancelable", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onDismiss", "onScreenOrientationChanged", "rotation", "onShow", "dialogHelper", "setPosition", "position", "show", "Companion", "luggage-wechat-full-sdk_release"})
 public final class k
   implements g, com.tencent.mm.plugin.appbrand.widget.dialog.k
 {
   @Deprecated
-  public static final k.a moC;
+  public static final a nzo;
   private final String content;
   final Context context;
-  private final TextView heO;
+  private final TextView hXC;
   private final int height;
-  private int iGp;
-  private final View kFf;
-  private final ImageView kFg;
-  private final View kFh;
-  private m kFi;
-  private final ac moA;
-  private final boolean moB;
+  private int jCs;
+  private final View lJG;
+  private final ImageView lJH;
+  private final View lJI;
+  private m lJJ;
+  private final ag nzm;
+  private final boolean nzn;
   private final TextView titleTv;
   
   static
   {
-    AppMethodBeat.i(221005);
-    moC = new k.a((byte)0);
-    AppMethodBeat.o(221005);
+    AppMethodBeat.i(230145);
+    nzo = new a((byte)0);
+    AppMethodBeat.o(230145);
   }
   
-  public k(ac paramac, String paramString, Context paramContext, int paramInt, boolean paramBoolean)
+  public k(ag paramag, String paramString, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(221004);
-    this.moA = paramac;
+    AppMethodBeat.i(230144);
+    this.nzm = paramag;
     this.content = paramString;
     this.context = paramContext;
     this.height = paramInt;
-    this.moB = paramBoolean;
-    if (this.moA == null) {
-      ae.w("Luggage.FULL.DialogExplainDialog", "<init> get NULL webviewOpener");
+    this.nzn = paramBoolean;
+    if (this.nzm == null) {
+      Log.w("Luggage.FULL.DialogExplainDialog", "<init> get NULL webviewOpener");
     }
-    this.iGp = 2;
-    paramac = View.inflate(this.context, 2131493018, null);
-    p.g(paramac, "View.inflate(context, R.…ber_explain_dialog, null)");
-    this.kFh = paramac;
-    paramac = this.kFh.findViewById(2131303220);
-    p.g(paramac, "rootView.findViewById(R.…e_number_explain_content)");
-    this.kFf = paramac;
-    paramac = this.kFf;
-    if (paramac != null) {
-      paramac.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, this.height));
+    this.jCs = 2;
+    paramag = View.inflate(this.context, 2131493057, null);
+    p.g(paramag, "View.inflate(context, R.…ber_explain_dialog, null)");
+    this.lJI = paramag;
+    paramag = this.lJI.findViewById(2131305888);
+    p.g(paramag, "rootView.findViewById(R.…e_number_explain_content)");
+    this.lJG = paramag;
+    paramag = this.lJG;
+    if (paramag != null) {
+      paramag.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, this.height));
     }
-    paramac = this.kFh.findViewById(2131303221);
-    p.g(paramac, "rootView.findViewById(R.…mber_explain_dialog_back)");
-    this.kFg = ((ImageView)paramac);
-    paramac = this.kFg;
-    if (paramac != null) {
-      paramac.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    paramag = this.lJI.findViewById(2131305889);
+    p.g(paramag, "rootView.findViewById(R.…mber_explain_dialog_back)");
+    this.lJH = ((ImageView)paramag);
+    paramag = this.lJH;
+    if (paramag != null) {
+      paramag.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(148060);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          paramAnonymousView = k.a(this.moD);
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          paramAnonymousView = k.a(this.nzp);
           if (paramAnonymousView != null) {
-            paramAnonymousView.c((com.tencent.mm.plugin.appbrand.widget.dialog.k)this.moD);
+            paramAnonymousView.c((com.tencent.mm.plugin.appbrand.widget.dialog.k)this.nzp);
           }
           a.a(this, "com/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(148060);
         }
       });
     }
-    paramac = this.kFh.findViewById(2131303223);
-    p.g(paramac, "rootView.findViewById(R.…ber_explain_dialog_title)");
-    this.titleTv = ((TextView)paramac);
-    this.titleTv.setText(this.kFh.getContext().getText(2131756008));
-    paramac = this.kFh.findViewById(2131303222);
-    p.g(paramac, "rootView.findViewById(R.…r_explain_dialog_content)");
-    this.heO = ((TextView)paramac);
-    this.heO.setText(c.a(this.content, false, (c.a)new c.a()
+    paramag = this.lJI.findViewById(2131305891);
+    p.g(paramag, "rootView.findViewById(R.…ber_explain_dialog_title)");
+    this.titleTv = ((TextView)paramag);
+    this.titleTv.setText(this.lJI.getContext().getText(2131756123));
+    paramag = this.lJI.findViewById(2131305890);
+    p.g(paramag, "rootView.findViewById(R.…r_explain_dialog_content)");
+    this.hXC = ((TextView)paramag);
+    this.hXC.setText(c.a(this.content, false, (c.a)new c.a()
     {
-      public final void Pu(String paramAnonymousString)
+      public final void YF(String paramAnonymousString)
       {
         AppMethodBeat.i(148061);
-        ac localac = k.b(this.moD);
-        if (localac != null)
+        ag localag = k.b(this.nzp);
+        if (localag != null)
         {
-          localac.a(this.moD.context, paramAnonymousString, null);
+          localag.a(this.nzp.context, paramAnonymousString, null);
           AppMethodBeat.o(148061);
           return;
         }
         AppMethodBeat.o(148061);
       }
     }));
-    this.heO.setMovementMethod(LinkMovementMethod.getInstance());
-    this.heO.setLinkTextColor(Color.parseColor("#FF576B95"));
-    AppMethodBeat.o(221004);
+    this.hXC.setMovementMethod(LinkMovementMethod.getInstance());
+    this.hXC.setLinkTextColor(Color.parseColor("#FF576B95"));
+    AppMethodBeat.o(230144);
   }
   
-  private final void bxj()
+  private final void bTt()
   {
-    AppMethodBeat.i(221002);
+    AppMethodBeat.i(230142);
     Object localObject2 = this.context.getSystemService("window");
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof WindowManager)) {
@@ -133,33 +133,33 @@ public final class k
     localObject1 = (WindowManager)localObject1;
     if (localObject1 != null)
     {
-      localObject2 = n.nic;
-      localObject2 = this.kFh.getContext();
+      localObject2 = n.OrG;
+      localObject2 = this.lJI.getContext();
       p.g(localObject2, "contentView.context");
-      View localView = this.kFh;
+      View localView = this.lJI;
       localObject1 = ((WindowManager)localObject1).getDefaultDisplay();
       p.g(localObject1, "it.defaultDisplay");
-      n.a((Context)localObject2, localView, null, ((Display)localObject1).getRotation(), this.moB);
-      AppMethodBeat.o(221002);
+      n.a((Context)localObject2, localView, null, ((Display)localObject1).getRotation(), this.nzn);
+      AppMethodBeat.o(230142);
       return;
     }
-    AppMethodBeat.o(221002);
+    AppMethodBeat.o(230142);
   }
   
   public final void a(m paramm)
   {
-    AppMethodBeat.i(221001);
-    this.kFi = paramm;
-    bxj();
-    AppMethodBeat.o(221001);
+    AppMethodBeat.i(230141);
+    this.lJJ = paramm;
+    bTt();
+    AppMethodBeat.o(230141);
   }
   
-  public final boolean aOS()
+  public final boolean bjb()
   {
     return false;
   }
   
-  public final boolean aOT()
+  public final boolean bjc()
   {
     return true;
   }
@@ -168,36 +168,36 @@ public final class k
   
   public final void dismiss()
   {
-    AppMethodBeat.i(220999);
-    m localm = this.kFi;
+    AppMethodBeat.i(230139);
+    m localm = this.lJJ;
     if (localm != null)
     {
       localm.c((com.tencent.mm.plugin.appbrand.widget.dialog.k)this);
-      AppMethodBeat.o(220999);
+      AppMethodBeat.o(230139);
       return;
     }
-    AppMethodBeat.o(220999);
+    AppMethodBeat.o(230139);
   }
   
   public final View getContentView()
   {
-    return this.kFh;
+    return this.lJI;
   }
   
   public final int getPosition()
   {
-    return this.iGp;
+    return this.jCs;
   }
   
   public final void h(d paramd)
   {
-    AppMethodBeat.i(220998);
+    AppMethodBeat.i(230138);
     p.h(paramd, "component");
-    setPosition(this.iGp);
+    setPosition(this.jCs);
     p.h(paramd, "$this$findPromptViewContainer");
     p.h(paramd, "$this$findPromptViewContainer");
     f.a.j(paramd).b((com.tencent.mm.plugin.appbrand.widget.dialog.k)this);
-    AppMethodBeat.o(220998);
+    AppMethodBeat.o(230138);
   }
   
   public final boolean isCancelable()
@@ -207,34 +207,37 @@ public final class k
   
   public final void onCancel() {}
   
-  public final void qB(int paramInt)
-  {
-    AppMethodBeat.i(221003);
-    bxj();
-    AppMethodBeat.o(221003);
-  }
-  
   public final void setPosition(int paramInt)
   {
-    AppMethodBeat.i(221000);
-    this.iGp = paramInt;
+    AppMethodBeat.i(230140);
+    this.jCs = paramInt;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(221000);
+      AppMethodBeat.o(230140);
       return;
-      this.kFh.setBackground(android.support.v4.content.b.l(this.context, 2131231061));
-      AppMethodBeat.o(221000);
+      this.lJI.setBackground(android.support.v4.content.b.l(this.context, 2131231096));
+      AppMethodBeat.o(230140);
       return;
-      this.kFh.setBackground(android.support.v4.content.b.l(this.context, 2131231060));
+      this.lJI.setBackground(android.support.v4.content.b.l(this.context, 2131231095));
     }
   }
+  
+  public final void ut(int paramInt)
+  {
+    AppMethodBeat.i(230143);
+    bTt();
+    AppMethodBeat.o(230143);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"})
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.k
  * JD-Core Version:    0.7.0.1
  */

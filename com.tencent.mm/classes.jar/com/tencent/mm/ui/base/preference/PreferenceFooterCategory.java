@@ -12,16 +12,16 @@ public class PreferenceFooterCategory
   public PreferenceFooterCategory(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(193744);
-    setLayoutResource(2131494866);
-    AppMethodBeat.o(193744);
+    AppMethodBeat.i(205305);
+    setLayoutResource(2131495602);
+    AppMethodBeat.o(205305);
   }
   
   public PreferenceFooterCategory(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142656);
-    setLayoutResource(2131494866);
+    setLayoutResource(2131495602);
     AppMethodBeat.o(142656);
   }
   
@@ -29,7 +29,7 @@ public class PreferenceFooterCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142657);
-    setLayoutResource(2131494866);
+    setLayoutResource(2131495602);
     AppMethodBeat.o(142657);
   }
   

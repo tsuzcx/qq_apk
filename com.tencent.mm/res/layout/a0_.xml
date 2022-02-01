@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" style="@style/qp"
+<RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/ld">
-        <com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView android:id="@id/bo6" style="@style/hz" />
-        <TextView android:id="@id/bo5" style="@style/hy" />
-        <TextView android:id="@id/bo7" style="@style/i0" />
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:id="@id/a2i" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
+</RelativeLayout>

@@ -6,15 +6,15 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.vfs.s;
 
 public class LogoImageView
   extends ImageView
 {
-  aq handler;
+  MMHandler handler;
   String imagePath;
   int targetHeight;
   int targetWidth;
@@ -25,7 +25,7 @@ public class LogoImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(26595);
     this.url = null;
-    this.handler = new aq()
+    this.handler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -33,16 +33,16 @@ public class LogoImageView
         byte[] arrayOfByte = (byte[])paramAnonymousMessage.obj;
         if ((arrayOfByte == null) || (arrayOfByte.length == 0))
         {
-          ae.e("MicroMsg.LogoImageView", "handleMsg fail, data is null");
+          Log.e("MicroMsg.LogoImageView", "handleMsg fail, data is null");
           AppMethodBeat.o(26593);
           return;
         }
-        paramAnonymousMessage = h.cu(arrayOfByte);
+        paramAnonymousMessage = BitmapUtil.decodeByteArray(arrayOfByte);
         String str = LogoImageView.a(LogoImageView.this) + g.getMessageDigest(LogoImageView.b(LogoImageView.this).getBytes());
-        ae.d("MicroMsg.LogoImageView", "filePath  %s", new Object[] { str });
-        o.f(str, arrayOfByte, arrayOfByte.length);
+        Log.d("MicroMsg.LogoImageView", "filePath  %s", new Object[] { str });
+        s.f(str, arrayOfByte, arrayOfByte.length);
         if ((paramAnonymousMessage != null) && (LogoImageView.c(LogoImageView.this) > 0) && (LogoImageView.d(LogoImageView.this) > 0)) {
-          paramAnonymousMessage = h.a(paramAnonymousMessage, LogoImageView.d(LogoImageView.this), LogoImageView.c(LogoImageView.this), true, false);
+          paramAnonymousMessage = BitmapUtil.extractThumbNail(paramAnonymousMessage, LogoImageView.d(LogoImageView.this), LogoImageView.c(LogoImageView.this), true, false);
         }
         for (;;)
         {
@@ -57,7 +57,7 @@ public class LogoImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.LogoImageView
  * JD-Core Version:    0.7.0.1
  */

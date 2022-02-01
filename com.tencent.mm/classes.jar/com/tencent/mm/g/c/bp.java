@@ -2,39 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class bp
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eIK = "modifyTime".hashCode();
-  private static final int eJG;
-  private static final int eVF = "prodcutID".hashCode();
-  private static final int eVG = "totalCount".hashCode();
-  private static final int eVH = "continuCount".hashCode();
-  private static final int eVI = "showTipsTime".hashCode();
-  private static final int eVJ = "setFlagTime".hashCode();
+  private static final int content_HASHCODE = "content".hashCode();
+  private static final int fwT = "productID".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eIo = true;
-  private boolean eJE = true;
-  private boolean eVA = true;
-  private boolean eVB = true;
-  private boolean eVC = true;
-  private boolean eVD = true;
-  private boolean eVE = true;
-  public int field_continuCount;
-  public int field_flag;
-  public long field_modifyTime;
-  public String field_prodcutID;
-  public long field_setFlagTime;
-  public long field_showTipsTime;
-  public int field_totalCount;
-  
-  static
-  {
-    eJG = "flag".hashCode();
-  }
+  private boolean __hadSetcontent = true;
+  public byte[] field_content;
+  public String field_productID;
+  private boolean fwt = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -49,11 +29,11 @@ public abstract class bp
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVF != k) {
+      if (fwT != k) {
         break label65;
       }
-      this.field_prodcutID = paramCursor.getString(i);
-      this.eVA = true;
+      this.field_productID = paramCursor.getString(i);
+      this.fwt = true;
     }
     for (;;)
     {
@@ -61,18 +41,8 @@ public abstract class bp
       break label20;
       break;
       label65:
-      if (eVG == k) {
-        this.field_totalCount = paramCursor.getInt(i);
-      } else if (eVH == k) {
-        this.field_continuCount = paramCursor.getInt(i);
-      } else if (eJG == k) {
-        this.field_flag = paramCursor.getInt(i);
-      } else if (eIK == k) {
-        this.field_modifyTime = paramCursor.getLong(i);
-      } else if (eVI == k) {
-        this.field_showTipsTime = paramCursor.getLong(i);
-      } else if (eVJ == k) {
-        this.field_setFlagTime = paramCursor.getLong(i);
+      if (content_HASHCODE == k) {
+        this.field_content = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -82,26 +52,11 @@ public abstract class bp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVA) {
-      localContentValues.put("prodcutID", this.field_prodcutID);
+    if (this.fwt) {
+      localContentValues.put("productID", this.field_productID);
     }
-    if (this.eVB) {
-      localContentValues.put("totalCount", Integer.valueOf(this.field_totalCount));
-    }
-    if (this.eVC) {
-      localContentValues.put("continuCount", Integer.valueOf(this.field_continuCount));
-    }
-    if (this.eJE) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
-    }
-    if (this.eIo) {
-      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
-    }
-    if (this.eVD) {
-      localContentValues.put("showTipsTime", Long.valueOf(this.field_showTipsTime));
-    }
-    if (this.eVE) {
-      localContentValues.put("setFlagTime", Long.valueOf(this.field_setFlagTime));
+    if (this.__hadSetcontent) {
+      localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -111,7 +66,7 @@ public abstract class bp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.bp
  * JD-Core Version:    0.7.0.1
  */

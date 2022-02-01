@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
-        <TextView android:gravity="center_vertical" android:id="@id/gkm" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/a_f" />
-        <SeekBar android:id="@id/gkl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
-        <TextView android:gravity="center_vertical" android:id="@id/gko" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/a_k" />
-        <SeekBar android:id="@id/gkn" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
-        <TextView android:gravity="center_vertical" android:id="@id/gkq" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/g78" />
-        <SeekBar android:id="@id/gkp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    </LinearLayout>
+    <com.tencent.mm.plugin.brandservice.ui.BizSearchResultItemContainer android:id="@id/hd6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

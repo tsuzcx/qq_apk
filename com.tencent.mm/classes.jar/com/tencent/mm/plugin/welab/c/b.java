@@ -4,33 +4,33 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.api.af;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class b
   implements com.tencent.mm.plugin.welab.a.a.b
 {
-  public final String fag()
+  public final String gjl()
   {
     AppMethodBeat.i(30253);
-    String str = af.aHj("discoverSearchEntry").optString("labIcon");
+    String str = ak.aXe("discoverSearchEntry").optString("labIcon");
     AppMethodBeat.o(30253);
     return str;
   }
   
-  public final String fah()
+  public final String gjm()
   {
     AppMethodBeat.i(30254);
-    String str = af.aHj("discoverSearchEntry").optString("wording");
-    if (bu.isNullOrNil(str))
+    String str = ak.aXe("discoverSearchEntry").optString("wording");
+    if (Util.isNullOrNil(str))
     {
-      str = ak.getContext().getString(2131759102);
+      str = MMApplicationContext.getContext().getString(2131759435);
       AppMethodBeat.o(30254);
       return str;
     }
@@ -38,21 +38,21 @@ public final class b
     return str;
   }
   
-  public final void i(Activity paramActivity, String paramString)
+  public final void m(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(30252);
-    if (!ad.WK(0))
+    if (!ai.afs(0))
     {
-      ae.e("MicroMsg.FTS.SearchOneSearchOpener", "fts h5 template not avail");
+      Log.e("MicroMsg.FTS.SearchOneSearchOpener", "fts h5 template not avail");
       AppMethodBeat.o(30252);
       return;
     }
-    paramString = ad.ePM();
+    paramString = ai.fXX();
     paramString.putExtra("ftsbizscene", 20);
-    Map localMap = ad.f(20, true, 0);
+    Map localMap = ai.h(20, true, 0);
     paramString.putExtra("ftsneedkeyboard", true);
-    paramString.putExtra("rawUrl", ad.be(localMap));
-    d.b(paramActivity, "webview", ".ui.tools.fts.FTSSearchOneSearchWebViewUI", paramString);
+    paramString.putExtra("rawUrl", ai.bd(localMap));
+    c.b(paramActivity, "webview", ".ui.tools.fts.FTSSearchOneSearchWebViewUI", paramString);
     AppMethodBeat.o(30252);
   }
 }

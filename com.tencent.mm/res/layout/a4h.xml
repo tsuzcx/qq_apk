@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/dg_" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <android.support.v7.widget.RecyclerView android:id="@id/ev9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </android.support.design.widget.CoordinatorLayout>
-    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/e4d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/ccv" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d42" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
-        <ProgressBar android:background="@color/a7c" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:indeterminateDrawable="@drawable/a7e" />
+<LinearLayout android:layout_width="fill_parent" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
+        <com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView android:id="@id/c5o" style="@style/i8" />
+        <TextView android:id="@id/c5n" style="@style/i7" />
+        <TextView android:id="@id/c5p" style="@style/i9" />
     </LinearLayout>
-    <ListView android:id="@id/cjs" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+</LinearLayout>

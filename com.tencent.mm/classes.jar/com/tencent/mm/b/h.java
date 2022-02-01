@@ -1,13 +1,13 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.LruCache;
 
 public class h<K, O>
-  extends ah<K, O>
+  extends LruCache<K, O>
   implements f<K, O>
 {
-  private f.b<K, O> cQq = null;
-  private f.c<K, O> cQr = null;
+  private f.b<K, O> dgK = null;
+  private f.c<K, O> dgL = null;
   
   public h(int paramInt)
   {
@@ -17,14 +17,14 @@ public class h<K, O>
   public h(int paramInt, f.b<K, O> paramb)
   {
     super(paramInt);
-    this.cQq = paramb;
+    this.dgK = paramb;
   }
   
   public h(int paramInt, f.b<K, O> paramb, f.c<K, O> paramc)
   {
     super(paramInt);
-    this.cQq = paramb;
-    this.cQr = paramc;
+    this.dgK = paramb;
+    this.dgL = paramc;
   }
   
   public void a(f.a<K, O> parama)
@@ -32,17 +32,17 @@ public class h<K, O>
     clear();
   }
   
-  public final O aL(K paramK)
+  public final O aT(K paramK)
   {
     return get(paramK);
   }
   
   public void clear()
   {
-    super.trimToSize(-1);
+    trimToSize(-1);
   }
   
-  public final O create(K paramK)
+  public O create(K paramK)
   {
     return super.create(paramK);
   }
@@ -50,30 +50,30 @@ public class h<K, O>
   public void entryRemoved(boolean paramBoolean, K paramK, O paramO1, O paramO2)
   {
     super.entryRemoved(paramBoolean, paramK, paramO1, paramO2);
-    if (this.cQq != null) {
-      this.cQq.c(paramK, paramO1, paramO2);
+    if (this.dgK != null) {
+      this.dgK.c(paramK, paramO1, paramO2);
     }
   }
   
-  public final void q(K paramK, O paramO)
+  public int sizeOf(K paramK, O paramO)
+  {
+    if (this.dgL != null) {
+      return this.dgL.y(paramK, paramO);
+    }
+    return super.sizeOf(paramK, paramO);
+  }
+  
+  public void trimToSize(int paramInt)
+  {
+    super.trimToSize(paramInt);
+  }
+  
+  public final void x(K paramK, O paramO)
   {
     if ((paramO == null) || (paramK == null)) {
       return;
     }
     put(paramK, paramO);
-  }
-  
-  public int sizeOf(K paramK, O paramO)
-  {
-    if (this.cQr != null) {
-      return this.cQr.r(paramK, paramO);
-    }
-    return super.sizeOf(paramK, paramO);
-  }
-  
-  public final void trimToSize(int paramInt)
-  {
-    super.trimToSize(paramInt);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 
 public class GetEmotionRewardRequest
   extends com.tencent.mm.bw.a
@@ -14,7 +14,7 @@ public class GetEmotionRewardRequest
     AppMethodBeat.i(104802);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.ProductID == null)
       {
         paramVarArgs = new b("Not all required fields were included: ProductID");
@@ -22,9 +22,9 @@ public class GetEmotionRewardRequest
         throw paramVarArgs;
       }
       if (this.ProductID != null) {
-        paramVarArgs.d(1, this.ProductID);
+        paramVarArgs.e(1, this.ProductID);
       }
-      paramVarArgs.aS(2, this.OpCode);
+      paramVarArgs.aM(2, this.OpCode);
       AppMethodBeat.o(104802);
       return 0;
     }
@@ -34,17 +34,17 @@ public class GetEmotionRewardRequest
       }
     }
     label306:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ProductID) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.ProductID) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.OpCode);
+      int i = g.a.a.b.b.a.bu(2, this.OpCode);
       AppMethodBeat.o(104802);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.ProductID == null)
@@ -58,7 +58,7 @@ public class GetEmotionRewardRequest
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         GetEmotionRewardRequest localGetEmotionRewardRequest = (GetEmotionRewardRequest)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -66,11 +66,11 @@ public class GetEmotionRewardRequest
           AppMethodBeat.o(104802);
           return -1;
         case 1: 
-          localGetEmotionRewardRequest.ProductID = locala.OmT.readString();
+          localGetEmotionRewardRequest.ProductID = locala.UbS.readString();
           AppMethodBeat.o(104802);
           return 0;
         }
-        localGetEmotionRewardRequest.OpCode = locala.OmT.zc();
+        localGetEmotionRewardRequest.OpCode = locala.UbS.zi();
         AppMethodBeat.o(104802);
         return 0;
       }

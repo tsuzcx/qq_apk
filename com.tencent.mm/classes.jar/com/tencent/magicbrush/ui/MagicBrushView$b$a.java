@@ -4,10 +4,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 13})
+@l(hxD={1, 1, 16})
 public final class MagicBrushView$b$a
 {
   public static Object a(MagicBrushView.b paramb)
@@ -37,7 +37,7 @@ public final class MagicBrushView$b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.magicbrush.ui.MagicBrushView.b.a
  * JD-Core Version:    0.7.0.1
  */

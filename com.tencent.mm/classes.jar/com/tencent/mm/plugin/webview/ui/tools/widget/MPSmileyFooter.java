@@ -17,35 +17,37 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.ad;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.ui.z;
 
 public class MPSmileyFooter
   extends InputPanelLinearLayout
 {
-  private boolean AFU = true;
-  private int AtG = -1;
-  private int AtH = -1;
-  private int AtI = 0;
-  private MMEditText AzX = null;
-  private WeImageView EJl;
-  private LinearLayout EJm;
-  private LinearLayout EJn;
-  private int EJo = 0;
-  private boolean EJp = false;
+  private WeImageView AxC;
+  private int ECP = -1;
+  private int ECQ = -1;
+  private MMEditText EJt = null;
+  private boolean EPB = true;
+  private LinearLayout Jzc;
+  private LinearLayout Jzd;
+  private int Jze = 0;
+  private boolean Jzf = false;
   private MMActivity activity;
   private Context context;
-  public ChatFooterPanel qdo;
+  private int moe = 0;
+  public ChatFooterPanel rum;
   
   public MPSmileyFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,7 +55,7 @@ public class MPSmileyFooter
     this.context = paramContext;
   }
   
-  private int Yu(int paramInt)
+  private int ahf(int paramInt)
   {
     AppMethodBeat.i(82250);
     TypedValue localTypedValue = new TypedValue();
@@ -63,23 +65,23 @@ public class MPSmileyFooter
     return paramInt;
   }
   
-  private void bFx()
+  private void cbM()
   {
     AppMethodBeat.i(82259);
-    this.qdo.onPause();
-    this.qdo.setVisibility(8);
+    this.rum.onPause();
+    this.rum.setVisibility(8);
     AppMethodBeat.o(82259);
   }
   
-  private void efA()
+  private void fhZ()
   {
     AppMethodBeat.i(82261);
-    ViewGroup.LayoutParams localLayoutParams = this.EJm.getLayoutParams();
-    localLayoutParams.height = (this.AtI + this.EJo);
-    this.EJm.setLayoutParams(localLayoutParams);
-    int i = com.tencent.mm.sdk.platformtools.aa.iN(getContext());
-    this.qdo.setPortHeightPx(i);
-    localLayoutParams = this.qdo.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.Jzc.getLayoutParams();
+    localLayoutParams.height = (this.moe + this.Jze);
+    this.Jzc.setLayoutParams(localLayoutParams);
+    int i = KeyBoardUtil.getValidPanelHeight(getContext());
+    this.rum.setPortHeightPx(i);
+    localLayoutParams = this.rum.getLayoutParams();
     if (localLayoutParams != null) {
       localLayoutParams.height = i;
     }
@@ -105,44 +107,33 @@ public class MPSmileyFooter
     }
   }
   
-  public final void eZp()
+  public final void f(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(82252);
-    if (ehg())
+    AppMethodBeat.i(82260);
+    super.f(paramBoolean, paramInt);
+    if ((this.moe != paramInt) && (paramInt != 0))
     {
-      AppMethodBeat.o(82252);
-      return;
+      this.moe = paramInt;
+      i.C(getContext(), paramInt);
+      fhZ();
     }
-    setVisibility(8);
-    AppMethodBeat.o(82252);
+    AppMethodBeat.o(82260);
   }
   
-  public final boolean eZq()
-  {
-    AppMethodBeat.i(82254);
-    if ((ehg()) || (getVisibility() == 0))
-    {
-      AppMethodBeat.o(82254);
-      return true;
-    }
-    AppMethodBeat.o(82254);
-    return false;
-  }
-  
-  public final void ehf()
+  public final void fjH()
   {
     AppMethodBeat.i(82251);
     setVisibility(0);
-    if (this.EJl != null) {
-      this.EJl.setImageResource(Yu(2130968849));
+    if (this.AxC != null) {
+      this.AxC.setImageResource(ahf(2130968864));
     }
     AppMethodBeat.o(82251);
   }
   
-  public final boolean ehg()
+  public final boolean fjI()
   {
     AppMethodBeat.i(82255);
-    if (this.qdo.getVisibility() == 0)
+    if (this.rum.getVisibility() == 0)
     {
       AppMethodBeat.o(82255);
       return true;
@@ -151,64 +142,75 @@ public class MPSmileyFooter
     return false;
   }
   
-  public final void ehh()
+  public final void fjJ()
   {
     AppMethodBeat.i(82256);
-    bFx();
+    cbM();
     setVisibility(8);
     AppMethodBeat.o(82256);
   }
   
-  public final void g(boolean paramBoolean, int paramInt)
+  public final void giv()
   {
-    AppMethodBeat.i(82260);
-    super.g(paramBoolean, paramInt);
-    if ((this.AtI != paramInt) && (paramInt != 0))
+    AppMethodBeat.i(82252);
+    if (fjI())
     {
-      this.AtI = paramInt;
-      i.A(getContext(), paramInt);
-      efA();
+      AppMethodBeat.o(82252);
+      return;
     }
-    AppMethodBeat.o(82260);
+    setVisibility(8);
+    AppMethodBeat.o(82252);
+  }
+  
+  public final boolean giw()
+  {
+    AppMethodBeat.i(82254);
+    if ((fjI()) || (getVisibility() == 0))
+    {
+      AppMethodBeat.o(82254);
+      return true;
+    }
+    AppMethodBeat.o(82254);
+    return false;
   }
   
   public final void init(boolean paramBoolean)
   {
     AppMethodBeat.i(82257);
-    this.EJl = ((WeImageView)((ViewGroup)z.jV(this.context).inflate(2131494951, this)).findViewById(2131296558));
-    this.EJl.setOnClickListener(new View.OnClickListener()
+    this.AxC = ((WeImageView)((ViewGroup)aa.jQ(this.context).inflate(2131495694, this)).findViewById(2131296635));
+    this.AxC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82246);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         MPSmileyFooter.b(MPSmileyFooter.this);
         a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82246);
       }
     });
-    this.qdo = com.tencent.mm.api.aa.k(this.context, paramBoolean);
-    if (this.qdo == null)
+    this.rum = ad.l(this.context, paramBoolean);
+    if (this.rum == null)
     {
-      this.qdo = new d(this.context);
+      this.rum = new d(this.context);
       AppMethodBeat.o(82257);
       return;
     }
-    this.qdo.setEntranceScene(ChatFooterPanel.xKI);
-    this.qdo.setVisibility(8);
-    this.EJm = ((LinearLayout)findViewById(2131304875));
-    this.EJn = ((LinearLayout)findViewById(2131302426));
-    this.EJm.setOnClickListener(null);
-    this.AtI = com.tencent.mm.sdk.platformtools.aa.iN(getContext());
-    this.EJm.addView(this.qdo, -1, this.AtI);
-    this.qdo.fft();
-    this.qdo.onResume();
-    efA();
-    this.qdo.setOnTextOperationListener(new ChatFooterPanel.a()
+    this.rum.setEntranceScene(ChatFooterPanel.BKM);
+    this.rum.setVisibility(8);
+    this.Jzc = ((LinearLayout)findViewById(2131307961));
+    this.Jzd = ((LinearLayout)findViewById(2131304825));
+    this.Jzc.setOnClickListener(null);
+    this.moe = KeyBoardUtil.getValidPanelHeight(getContext());
+    this.Jzc.addView(this.rum, -1, this.moe);
+    this.rum.goD();
+    this.rum.onResume();
+    fhZ();
+    this.rum.setOnTextOperationListener(new ChatFooterPanel.a()
     {
-      public final void apc()
+      public final void aHC()
       {
         AppMethodBeat.i(82247);
         MPSmileyFooter.c(MPSmileyFooter.this).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
@@ -216,25 +218,25 @@ public class MPSmileyFooter
         AppMethodBeat.o(82247);
       }
       
-      public final void apd() {}
+      public final void aHD() {}
       
       public final void append(String paramAnonymousString)
       {
         AppMethodBeat.i(82248);
         try
         {
-          MPSmileyFooter.c(MPSmileyFooter.this).aZf(paramAnonymousString);
+          MPSmileyFooter.c(MPSmileyFooter.this).bol(paramAnonymousString);
           AppMethodBeat.o(82248);
           return;
         }
         catch (Exception paramAnonymousString)
         {
-          ae.printErrStackTrace("MicroMsg.SnsUploadSayFooter", paramAnonymousString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SnsUploadSayFooter", paramAnonymousString, "", new Object[0]);
           AppMethodBeat.o(82248);
         }
       }
       
-      public final void dW(boolean paramAnonymousBoolean) {}
+      public final void eP(boolean paramAnonymousBoolean) {}
     });
     AppMethodBeat.o(82257);
   }
@@ -243,8 +245,8 @@ public class MPSmileyFooter
   {
     AppMethodBeat.i(82258);
     super.onConfigurationChanged(paramConfiguration);
-    if (this.qdo != null) {
-      efA();
+    if (this.rum != null) {
+      fhZ();
     }
     AppMethodBeat.o(82258);
   }
@@ -253,11 +255,11 @@ public class MPSmileyFooter
   {
     AppMethodBeat.i(82263);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.AtG < paramInt4) {}
-    for (paramInt1 = paramInt4;; paramInt1 = this.AtG)
+    if (this.ECP < paramInt4) {}
+    for (paramInt1 = paramInt4;; paramInt1 = this.ECP)
     {
-      this.AtG = paramInt1;
-      this.AtH = paramInt4;
+      this.ECP = paramInt1;
+      this.ECQ = paramInt4;
       AppMethodBeat.o(82263);
       return;
     }
@@ -265,30 +267,30 @@ public class MPSmileyFooter
   
   public void setExtraAddHeight(int paramInt)
   {
-    this.EJo = paramInt;
+    this.Jze = paramInt;
   }
   
   public void setFobbidenWhenLandscape(boolean paramBoolean)
   {
-    this.EJp = paramBoolean;
+    this.Jzf = paramBoolean;
   }
   
   public void setMMEditText(MMEditText paramMMEditText)
   {
     AppMethodBeat.i(82253);
-    this.AzX = paramMMEditText;
+    this.EJt = paramMMEditText;
     paramMMEditText.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82245);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (MPSmileyFooter.this.getVisibility() == 8) {
           MPSmileyFooter.this.setVisibility(0);
         }
-        if (MPSmileyFooter.this.ehg()) {
+        if (MPSmileyFooter.this.fjI()) {
           MPSmileyFooter.a(MPSmileyFooter.this);
         }
         a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPSmileyFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -308,12 +310,12 @@ public class MPSmileyFooter
   public void setSmileHeight(int paramInt)
   {
     AppMethodBeat.i(82264);
-    ViewGroup.LayoutParams localLayoutParams = this.EJm.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.Jzc.getLayoutParams();
     localLayoutParams.height = paramInt;
-    this.EJm.setLayoutParams(localLayoutParams);
-    paramInt = com.tencent.mm.sdk.platformtools.aa.iN(getContext());
-    this.qdo.setPortHeightPx(paramInt);
-    localLayoutParams = this.qdo.getLayoutParams();
+    this.Jzc.setLayoutParams(localLayoutParams);
+    paramInt = KeyBoardUtil.getValidPanelHeight(getContext());
+    this.rum.setPortHeightPx(paramInt);
+    localLayoutParams = this.rum.getLayoutParams();
     if (localLayoutParams != null) {
       localLayoutParams.height = paramInt;
     }
@@ -322,7 +324,7 @@ public class MPSmileyFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.MPSmileyFooter
  * JD-Core Version:    0.7.0.1
  */

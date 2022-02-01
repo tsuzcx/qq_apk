@@ -8,56 +8,56 @@ import java.util.UUID;
 
 final class c
 {
-  public static final ParcelUuid kJA;
-  public static final ParcelUuid kJB;
-  public static final ParcelUuid kJC;
-  public static final ParcelUuid kJD;
-  public static final ParcelUuid kJE;
-  public static final ParcelUuid kJF;
-  public static final ParcelUuid kJG;
-  public static final ParcelUuid kJH;
-  public static final ParcelUuid kJI;
-  public static final ParcelUuid kJJ;
-  public static final ParcelUuid kJK;
-  public static final ParcelUuid kJL;
-  public static final ParcelUuid kJM;
-  public static final ParcelUuid kJN;
-  public static final ParcelUuid[] kJO;
-  public static final ParcelUuid kJu;
-  public static final ParcelUuid kJv;
-  public static final ParcelUuid kJw;
-  public static final ParcelUuid kJx;
-  public static final ParcelUuid kJy;
-  public static final ParcelUuid kJz;
+  public static final ParcelUuid lNZ;
+  public static final ParcelUuid lOa;
+  public static final ParcelUuid lOb;
+  public static final ParcelUuid lOc;
+  public static final ParcelUuid lOd;
+  public static final ParcelUuid lOe;
+  public static final ParcelUuid lOf;
+  public static final ParcelUuid lOg;
+  public static final ParcelUuid lOh;
+  public static final ParcelUuid lOi;
+  public static final ParcelUuid lOj;
+  public static final ParcelUuid lOk;
+  public static final ParcelUuid lOl;
+  public static final ParcelUuid lOm;
+  public static final ParcelUuid lOn;
+  public static final ParcelUuid lOo;
+  public static final ParcelUuid lOp;
+  public static final ParcelUuid lOq;
+  public static final ParcelUuid lOr;
+  public static final ParcelUuid lOs;
+  public static final ParcelUuid[] lOt;
   
   static
   {
     AppMethodBeat.i(144620);
-    kJu = ParcelUuid.fromString("0000110B-0000-1000-8000-00805F9B34FB");
-    kJv = ParcelUuid.fromString("0000110A-0000-1000-8000-00805F9B34FB");
-    kJw = ParcelUuid.fromString("0000110D-0000-1000-8000-00805F9B34FB");
-    kJx = ParcelUuid.fromString("00001108-0000-1000-8000-00805F9B34FB");
-    kJy = ParcelUuid.fromString("00001112-0000-1000-8000-00805F9B34FB");
-    kJz = ParcelUuid.fromString("0000111E-0000-1000-8000-00805F9B34FB");
-    kJA = ParcelUuid.fromString("0000111F-0000-1000-8000-00805F9B34FB");
-    kJB = ParcelUuid.fromString("0000110E-0000-1000-8000-00805F9B34FB");
-    kJC = ParcelUuid.fromString("0000110C-0000-1000-8000-00805F9B34FB");
-    kJD = ParcelUuid.fromString("00001105-0000-1000-8000-00805f9b34fb");
-    kJE = ParcelUuid.fromString("00001124-0000-1000-8000-00805f9b34fb");
-    kJF = ParcelUuid.fromString("00001812-0000-1000-8000-00805f9b34fb");
-    kJG = ParcelUuid.fromString("00001115-0000-1000-8000-00805F9B34FB");
-    kJH = ParcelUuid.fromString("00001116-0000-1000-8000-00805F9B34FB");
-    kJI = ParcelUuid.fromString("0000000f-0000-1000-8000-00805F9B34FB");
-    kJJ = ParcelUuid.fromString("0000112f-0000-1000-8000-00805F9B34FB");
-    kJK = ParcelUuid.fromString("00001134-0000-1000-8000-00805F9B34FB");
-    kJL = ParcelUuid.fromString("00001133-0000-1000-8000-00805F9B34FB");
-    kJM = ParcelUuid.fromString("00001132-0000-1000-8000-00805F9B34FB");
-    kJN = ParcelUuid.fromString("00000000-0000-1000-8000-00805F9B34FB");
-    kJO = new ParcelUuid[] { kJu, kJv, kJw, kJx, kJz, kJB, kJC, kJD, kJG, kJH, kJK, kJL, kJM };
+    lNZ = ParcelUuid.fromString("0000110B-0000-1000-8000-00805F9B34FB");
+    lOa = ParcelUuid.fromString("0000110A-0000-1000-8000-00805F9B34FB");
+    lOb = ParcelUuid.fromString("0000110D-0000-1000-8000-00805F9B34FB");
+    lOc = ParcelUuid.fromString("00001108-0000-1000-8000-00805F9B34FB");
+    lOd = ParcelUuid.fromString("00001112-0000-1000-8000-00805F9B34FB");
+    lOe = ParcelUuid.fromString("0000111E-0000-1000-8000-00805F9B34FB");
+    lOf = ParcelUuid.fromString("0000111F-0000-1000-8000-00805F9B34FB");
+    lOg = ParcelUuid.fromString("0000110E-0000-1000-8000-00805F9B34FB");
+    lOh = ParcelUuid.fromString("0000110C-0000-1000-8000-00805F9B34FB");
+    lOi = ParcelUuid.fromString("00001105-0000-1000-8000-00805f9b34fb");
+    lOj = ParcelUuid.fromString("00001124-0000-1000-8000-00805f9b34fb");
+    lOk = ParcelUuid.fromString("00001812-0000-1000-8000-00805f9b34fb");
+    lOl = ParcelUuid.fromString("00001115-0000-1000-8000-00805F9B34FB");
+    lOm = ParcelUuid.fromString("00001116-0000-1000-8000-00805F9B34FB");
+    lOn = ParcelUuid.fromString("0000000f-0000-1000-8000-00805F9B34FB");
+    lOo = ParcelUuid.fromString("0000112f-0000-1000-8000-00805F9B34FB");
+    lOp = ParcelUuid.fromString("00001134-0000-1000-8000-00805F9B34FB");
+    lOq = ParcelUuid.fromString("00001133-0000-1000-8000-00805F9B34FB");
+    lOr = ParcelUuid.fromString("00001132-0000-1000-8000-00805F9B34FB");
+    lOs = ParcelUuid.fromString("00000000-0000-1000-8000-00805F9B34FB");
+    lOt = new ParcelUuid[] { lNZ, lOa, lOb, lOc, lOe, lOg, lOh, lOi, lOl, lOm, lOp, lOq, lOr };
     AppMethodBeat.o(144620);
   }
   
-  public static ParcelUuid ar(byte[] paramArrayOfByte)
+  public static ParcelUuid aI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(144619);
     if (paramArrayOfByte == null)
@@ -83,7 +83,7 @@ final class c
     if (i == 2) {}
     for (long l = (paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8);; l = (paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8) + ((paramArrayOfByte[2] & 0xFF) << 16) + ((paramArrayOfByte[3] & 0xFF) << 24))
     {
-      paramArrayOfByte = new ParcelUuid(new UUID(kJN.getUuid().getMostSignificantBits() + (l << 32), kJN.getUuid().getLeastSignificantBits()));
+      paramArrayOfByte = new ParcelUuid(new UUID(lOs.getUuid().getMostSignificantBits() + (l << 32), lOs.getUuid().getLeastSignificantBits()));
       AppMethodBeat.o(144619);
       return paramArrayOfByte;
     }
@@ -91,7 +91,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.c
  * JD-Core Version:    0.7.0.1
  */

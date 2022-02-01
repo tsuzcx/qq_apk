@@ -1,169 +1,114 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import android.graphics.Rect;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.recordvideo.ui.editor.item.d;
-import com.tencent.mm.protocal.protobuf.aap;
-import com.tencent.mm.protocal.protobuf.aar;
-import com.tencent.mm.protocal.protobuf.byh;
-import com.tencent.mm.protocal.protobuf.csy;
-import com.tencent.mm.protocal.protobuf.dws;
-import com.tencent.mm.protocal.protobuf.ja;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.xeffect.effect.EffectManager;
+import com.tencent.mm.xeffect.effect.VLogEffectJNI;
+import com.tencent.mm.xeffect.effect.a;
+import com.tencent.mm.xeffect.effect.ac.a;
+import com.tencent.mm.xeffect.effect.ad;
+import com.tencent.mm.xeffect.effect.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/CompositionInfoConverter;", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "(Lcom/tencent/mm/plugin/vlog/model/VLogComposition;)V", "getComposition", "()Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "editData", "Lcom/tencent/mm/protocal/protobuf/CompositionEditInfo;", "getEditData", "()Lcom/tencent/mm/protocal/protobuf/CompositionEditInfo;", "magicProtoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MagicInfoProto;", "getMagicProtoList", "()Ljava/util/LinkedList;", "outputConfig", "Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "getOutputConfig", "()Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "templateInfo", "Lcom/tencent/mm/protocal/protobuf/VideoTemplateInfoProto;", "getTemplateInfo", "()Lcom/tencent/mm/protocal/protobuf/VideoTemplateInfoProto;", "setTemplateInfo", "(Lcom/tencent/mm/protocal/protobuf/VideoTemplateInfoProto;)V", "addEditInfo", "", "drawingRect", "Landroid/graphics/Rect;", "validRect", "", "editItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "addMagicInfo", "magicList", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicAddEffectItem;", "addTemplateInfo", "template", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "chooseExportConfig", "path", "", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "previewSize", "Landroid/util/Size;", "cropRect", "enableAdaptiveBitrate", "", "getCompositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "videoParamsToOutputConfig", "videoParams", "Companion", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/BlendRenderProcessWrapper;", "Lcom/tencent/mm/videocomposition/render/RenderProcessCallback;", "blendBitmapProvider", "Lkotlin/Function1;", "", "Landroid/graphics/Bitmap;", "effectMgr", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "(Lkotlin/jvm/functions/Function1;Lcom/tencent/mm/xeffect/effect/EffectManager;)V", "getBlendBitmapProvider", "()Lkotlin/jvm/functions/Function1;", "blendEffect", "Lcom/tencent/mm/xeffect/effect/BlendEffect;", "getBlendEffect", "()Lcom/tencent/mm/xeffect/effect/BlendEffect;", "getEffectMgr", "()Lcom/tencent/mm/xeffect/effect/EffectManager;", "height", "", "texture", "width", "blendTexture", "Lcom/tencent/mm/xeffect/InputTexture;", "pts", "ensureTexture", "", "onFrameStart", "onRelease", "uploadBitmap", "bitmap", "plugin-vlog_release"})
 public final class e
+  implements com.tencent.mm.videocomposition.b.e
 {
-  public static final a BWC;
-  private static final String TAG = "MicroMsg.CompositionInfoConverter";
-  public dws BWA;
-  public final v BWB;
-  public final aar BWx;
-  public final aap BWy;
-  public final LinkedList<byh> BWz;
+  private final a Gxh;
+  private int Gxi;
+  private int height;
+  private final kotlin.g.a.b<Long, Bitmap> ihf;
+  private final EffectManager wbk;
+  private int width;
   
-  static
+  public e(kotlin.g.a.b<? super Long, Bitmap> paramb, EffectManager paramEffectManager)
   {
-    AppMethodBeat.i(191159);
-    BWC = new a((byte)0);
-    TAG = "MicroMsg.CompositionInfoConverter";
-    AppMethodBeat.o(191159);
-  }
-  
-  public e(v paramv)
-  {
-    AppMethodBeat.i(191158);
-    this.BWB = paramv;
-    this.BWx = new aar();
-    this.BWy = new aap();
-    this.BWz = new LinkedList();
-    AppMethodBeat.o(191158);
-  }
-  
-  public final void a(Rect paramRect, float[] paramArrayOfFloat, List<? extends com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramList)
-  {
-    AppMethodBeat.i(191156);
-    p.h(paramRect, "drawingRect");
-    p.h(paramArrayOfFloat, "validRect");
-    p.h(paramList, "editItems");
-    this.BWy.GrQ = new csy();
-    Object localObject = this.BWy.GrQ;
-    p.g(localObject, "editData.drawingRect");
-    f.a(paramRect, (csy)localObject);
-    this.BWy.GrT = new csy();
-    paramRect = new Rect((int)paramArrayOfFloat[0], (int)paramArrayOfFloat[1], (int)paramArrayOfFloat[2], (int)paramArrayOfFloat[3]);
-    paramArrayOfFloat = this.BWy.GrT;
-    p.g(paramArrayOfFloat, "editData.validRect");
-    f.a(paramRect, paramArrayOfFloat);
-    paramRect = this.BWy.GrR;
-    paramList = (Iterable)paramList;
-    paramArrayOfFloat = (Collection)new ArrayList(j.a(paramList, 10));
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(190490);
+    this.ihf = paramb;
+    this.wbk = paramEffectManager;
+    paramb = this.wbk;
+    if (paramb != null) {}
+    for (paramb = paramb.a(j.Ryl);; paramb = null)
     {
-      localObject = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)paramList.next();
-      ja localja = new ja();
-      localja.dataType = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject).ydv.value;
-      localja.FUv = z.al(((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject).dLk().toByteArray());
-      paramArrayOfFloat.add(localja);
+      paramEffectManager = paramb;
+      if (!(paramb instanceof a)) {
+        paramEffectManager = null;
+      }
+      this.Gxh = ((a)paramEffectManager);
+      AppMethodBeat.o(190490);
+      return;
     }
-    paramRect.addAll((Collection)paramArrayOfFloat);
-    AppMethodBeat.o(191156);
   }
   
-  public final void gK(List<com.tencent.mm.plugin.vlog.model.effect.b> paramList)
+  public final void KM(long paramLong)
   {
-    AppMethodBeat.i(191157);
-    p.h(paramList, "magicList");
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(190488);
+    Object localObject1 = (Bitmap)this.ihf.invoke(Long.valueOf(paramLong));
+    Object localObject2;
+    if (localObject1 != null)
     {
-      com.tencent.mm.plugin.vlog.model.effect.b localb = (com.tencent.mm.plugin.vlog.model.effect.b)paramList.next();
-      LinkedList localLinkedList = this.BWz;
-      byh localbyh = new byh();
-      localbyh.path = localb.BYF.yeY;
-      localbyh.start = localb.start;
-      localbyh.bpc = localb.bpc;
-      localLinkedList.add(localbyh);
-    }
-    AppMethodBeat.o(191157);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/CompositionInfoConverter$Companion;", "", "()V", "MONO_CHANNEL_COUNT", "", "STEREO_CHANNEL_COUNT", "TAG", "", "abaResultToOutputConfig", "", "abaResult", "Lcom/tencent/mm/plugin/vlog/model/ABAResult;", "outputConfig", "Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "getABAResult", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "targetWidth", "targetHeight", "addStickers", "", "plugin-vlog_release"})
-  public static final class a
-  {
-    public static a a(v paramv, VideoTransPara paramVideoTransPara, int paramInt1, int paramInt2, boolean paramBoolean)
-    {
-      AppMethodBeat.i(191153);
-      p.h(paramv, "composition");
-      p.h(paramVideoTransPara, "videoParams");
-      paramv = (Iterable)paramv.BXJ;
-      Object localObject = (Collection)new ArrayList();
-      Iterator localIterator = paramv.iterator();
-      label122:
-      while (localIterator.hasNext())
+      this.width = ((Bitmap)localObject1).getWidth();
+      this.height = ((Bitmap)localObject1).getHeight();
+      if (this.Gxi == 0)
       {
-        paramv = (w)localIterator.next();
-        if (paramv.type == 2) {}
-        for (paramv = new b(paramv.path, paramv.BXV.HWH, paramv.BXV.HWI);; paramv = null)
-        {
-          if (paramv == null) {
-            break label122;
-          }
-          ((Collection)localObject).add(paramv);
-          break;
+        localObject2 = new int[1];
+        GLES20.glGenTextures(1, (int[])localObject2, 0);
+        GLES20.glBindTexture(3553, localObject2[0]);
+        GLES20.glBindTexture(3553, 0);
+        this.Gxi = localObject2[0];
+      }
+      GLES20.glBindTexture(3553, this.Gxi);
+      GLUtils.texImage2D(3553, 0, (Bitmap)localObject1, 0);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 10497.0F);
+      GLES20.glTexParameterf(3553, 10243, 10497.0F);
+      GLES20.glBindTexture(3553, 0);
+    }
+    for (localObject1 = new com.tencent.mm.xeffect.b(this.Gxi, this.width, this.height); localObject1 != null; localObject1 = null)
+    {
+      localObject2 = this.Gxh;
+      if ((localObject2 != null) && (((ad)localObject2).id == 0L))
+      {
+        localObject2 = this.wbk;
+        if (localObject2 != null) {
+          ((EffectManager)localObject2).a((ad)this.Gxh);
         }
       }
-      paramv = (List)localObject;
-      localObject = c.BWq;
-      paramv = c.a(paramv, paramVideoTransPara, paramInt1, paramInt2, paramBoolean);
-      AppMethodBeat.o(191153);
-      return paramv;
-    }
-    
-    public static void a(a parama, aar paramaar)
-    {
-      AppMethodBeat.i(191154);
-      p.h(parama, "abaResult");
-      p.h(paramaar, "outputConfig");
-      if (parama.errCode == 0)
-      {
-        if ((parama.width > 0) && (parama.height > 0) && (parama.bitrate > 0))
-        {
-          paramaar.targetWidth = parama.width;
-          paramaar.targetHeight = parama.height;
-          paramaar.videoBitrate = parama.bitrate;
-          ae.i(e.access$getTAG$cp(), "video abaResult, width:" + paramaar.targetWidth + ", height:" + paramaar.targetHeight + ", " + paramaar.videoBitrate);
-        }
-        parama = parama.sTT;
-        if (parama != null)
-        {
-          parama = d.a.e.Q(parama);
-          if (parama != null)
-          {
-            paramaar.Gsc.addAll((Collection)parama);
-            AppMethodBeat.o(191154);
-            return;
-          }
-        }
+      localObject2 = this.Gxh;
+      if (localObject2 == null) {
+        break;
       }
-      AppMethodBeat.o(191154);
+      int i = ((com.tencent.mm.xeffect.b)localObject1).textureId;
+      int j = ((com.tencent.mm.xeffect.b)localObject1).width;
+      int k = ((com.tencent.mm.xeffect.b)localObject1).height;
+      localObject1 = ((a)localObject2).RxR;
+      ((ac.a)localObject1).textureId = i;
+      ((ac.a)localObject1).width = j;
+      ((ac.a)localObject1).height = k;
+      VLogEffectJNI.INSTANCE.setEffectTexture$renderlib_release(((ac.a)localObject1).GAn.ptr, i, j, k);
+      AppMethodBeat.o(190488);
+      return;
     }
+    AppMethodBeat.o(190488);
+  }
+  
+  public final void onRelease()
+  {
+    AppMethodBeat.i(190489);
+    if (this.Gxi != 0)
+    {
+      GLES20.glDeleteTextures(1, new int[] { this.Gxi }, 0);
+      this.Gxi = 0;
+    }
+    AppMethodBeat.o(190489);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.e
  * JD-Core Version:    0.7.0.1
  */

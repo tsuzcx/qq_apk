@@ -27,6 +27,7 @@ public class TXEAudioDef
   public static final int TXE_AUDIO_RECORD_ERR_REPEAT_OPTION = -2;
   public static final int TXE_AUDIO_RECORD_FIRST_FRAME = -6;
   public static final int TXE_AUDIO_RECORD_RELEASE_MIC = -7;
+  public static final int TXE_CHANGER_TYPE_0 = -1;
   public static final int TXE_DEFAULT_AEC_TYPE = 0;
   public static final int TXE_DEFAULT_BITS = 16;
   public static final int TXE_DEFAULT_BYTES = 2;
@@ -39,14 +40,29 @@ public class TXEAudioDef
   public static final int TXE_DEFAULT_SAMPLE_NUM = 1024;
   public static final int TXE_OPUS_FRAME_LEN_MS = 20;
   public static final int TXE_OPUS_SAMPLE_NUM = 960;
-  public static final int TXE_REVERB_TYPE_0 = 0;
-  public static final int TXE_REVERB_TYPE_1 = 1;
-  public static final int TXE_REVERB_TYPE_2 = 2;
-  public static final int TXE_REVERB_TYPE_3 = 3;
-  public static final int TXE_REVERB_TYPE_4 = 4;
-  public static final int TXE_REVERB_TYPE_5 = 5;
-  public static final int TXE_REVERB_TYPE_6 = 6;
-  public static final int TXE_REVERB_TYPE_7 = 7;
+  public static final int TXE_REVERB_TYPE_Bright = 5;
+  public static final int TXE_REVERB_TYPE_Ethereal = 8;
+  public static final int TXE_REVERB_TYPE_Hall = 3;
+  public static final int TXE_REVERB_TYPE_KTV = 1;
+  public static final int TXE_REVERB_TYPE_Low = 4;
+  public static final int TXE_REVERB_TYPE_Magnetic = 7;
+  public static final int TXE_REVERB_TYPE_Melodious = 10;
+  public static final int TXE_REVERB_TYPE_Metal = 6;
+  public static final int TXE_REVERB_TYPE_NONE = 0;
+  public static final int TXE_REVERB_TYPE_Room = 2;
+  public static final int TXE_REVERB_TYPE_Studio = 9;
+  public static final int TXE_VOICE_CHANGER_BEASET = 7;
+  public static final int TXE_VOICE_CHANGER_CHILD = 1;
+  public static final int TXE_VOICE_CHANGER_ETHEREAL = 11;
+  public static final int TXE_VOICE_CHANGER_FATTY = 8;
+  public static final int TXE_VOICE_CHANGER_FOREIGNER = 6;
+  public static final int TXE_VOICE_CHANGER_HEAVY_MACHINERY = 10;
+  public static final int TXE_VOICE_CHANGER_HEAVY_METAL = 4;
+  public static final int TXE_VOICE_CHANGER_LOLI = 2;
+  public static final int TXE_VOICE_CHANGER_NONE = 0;
+  public static final int TXE_VOICE_CHANGER_SICK = 5;
+  public static final int TXE_VOICE_CHANGER_STRONG_CURRENT = 9;
+  public static final int TXE_VOICE_CHANGER_UNCLE = 3;
 }
 
 

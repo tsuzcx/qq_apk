@@ -5,41 +5,40 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class JsApiGetLabInfo
-  extends a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d
 {
   public static final int CTRL_INDEX = 557;
   public static final String NAME = "getLabInfo";
   
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46365);
     if (paramJSONObject == null)
     {
-      ae.e("MicroMsg.JsApiGetLabInfo", "fail:data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
+      Log.e("MicroMsg.JsApiGetLabInfo", "fail:data is null");
+      paramf.i(paramInt, h("fail:invalid data", null));
       AppMethodBeat.o(46365);
       return;
     }
     paramJSONObject = paramJSONObject.optString("labId");
-    if (bu.isNullOrNil(paramJSONObject))
+    if (Util.isNullOrNil(paramJSONObject))
     {
-      ae.e("MicroMsg.JsApiGetLabInfo", "fail:labId is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
+      Log.e("MicroMsg.JsApiGetLabInfo", "fail:labId is null");
+      paramf.i(paramInt, h("fail:invalid data", null));
       AppMethodBeat.o(46365);
       return;
     }
-    XIPCInvoker.a("com.tencent.mm", new IPCString(paramJSONObject), a.class, new d() {});
+    XIPCInvoker.a(MainProcessIPCService.dkO, new IPCString(paramJSONObject), a.class, new com.tencent.mm.ipcinvoker.d() {});
     AppMethodBeat.o(46365);
   }
   
@@ -47,7 +46,7 @@ public final class JsApiGetLabInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<GetLabInfoResult> CREATOR;
-    private boolean dMs;
+    private boolean eek;
     private boolean enabled;
     
     static
@@ -59,19 +58,19 @@ public final class JsApiGetLabInfo
     
     public GetLabInfoResult()
     {
-      this.dMs = false;
+      this.eek = false;
       this.enabled = false;
     }
     
     protected GetLabInfoResult(Parcel paramParcel)
     {
       AppMethodBeat.i(46362);
-      this.dMs = false;
+      this.eek = false;
       this.enabled = false;
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.dMs = bool1;
+        this.eek = bool1;
         if (paramParcel.readByte() == 0) {
           break label60;
         }
@@ -96,7 +95,7 @@ public final class JsApiGetLabInfo
     {
       byte b2 = 1;
       AppMethodBeat.i(46361);
-      if (this.dMs)
+      if (this.eek)
       {
         b1 = 1;
         paramParcel.writeByte(b1);

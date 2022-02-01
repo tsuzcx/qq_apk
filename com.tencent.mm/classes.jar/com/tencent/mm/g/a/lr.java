@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class lr
-  extends b
+  extends IEvent
 {
-  public a dzT;
+  public a dRb;
   
   public lr()
   {
@@ -15,16 +16,16 @@ public final class lr
   
   private lr(byte paramByte)
   {
-    AppMethodBeat.i(186320);
-    this.dzT = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(121050);
+    this.dRb = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(186320);
+    AppMethodBeat.o(121050);
   }
   
   public static final class a
   {
-    public int dzU = 0;
+    public Intent dRc;
   }
 }
 

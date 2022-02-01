@@ -15,43 +15,43 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMKeyBoardView
   extends LinearLayout
   implements View.OnClickListener, View.OnLongClickListener
 {
+  private a BoW;
+  private View BpA;
+  private View BpB;
+  private View BpC;
+  private View BpD;
+  private View BpE;
+  private View BpF;
+  private boolean BpG;
+  private int BpH;
+  private int BpI;
+  private ColorStateList BpJ;
+  private int BpK;
+  private int BpL;
+  private int BpM;
+  private int BpN;
+  private int BpO;
+  private int BpP;
+  private int BpQ;
+  private Button Bpp;
+  private Button Bpq;
+  private Button Bpr;
+  private Button Bps;
+  private Button Bpt;
+  private Button Bpu;
+  private Button Bpv;
+  private Button Bpw;
+  private Button Bpx;
+  private Button Bpy;
+  private ImageButton Bpz;
+  private float gPN;
   private Context mContext;
-  private float pDQ;
-  private a xoK;
-  private int xpA;
-  private int xpB;
-  private int xpC;
-  private int xpD;
-  private int xpE;
-  private Button xpd;
-  private Button xpe;
-  private Button xpf;
-  private Button xpg;
-  private Button xph;
-  private Button xpi;
-  private Button xpj;
-  private Button xpk;
-  private Button xpl;
-  private Button xpm;
-  private ImageButton xpn;
-  private View xpo;
-  private View xpp;
-  private View xpq;
-  private View xpr;
-  private View xps;
-  private View xpt;
-  private boolean xpu;
-  private int xpv;
-  private int xpw;
-  private ColorStateList xpx;
-  private int xpy;
-  private int xpz;
   
   public MMKeyBoardView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -62,120 +62,120 @@ public class MMKeyBoardView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27686);
-    this.xpu = true;
+    this.BpG = true;
     this.mContext = paramContext;
-    this.xpv = getResources().getDimensionPixelSize(2131166466);
-    this.xpw = getResources().getDimensionPixelSize(2131166467);
-    this.pDQ = getResources().getDimensionPixelSize(2131166468);
-    this.xpx = getResources().getColorStateList(2131100527);
-    this.xpy = getResources().getColor(2131100526);
-    this.xpd = new Button(this.mContext);
-    this.xpe = new Button(this.mContext);
-    this.xpf = new Button(this.mContext);
-    this.xpg = new Button(this.mContext);
-    this.xph = new Button(this.mContext);
-    this.xpi = new Button(this.mContext);
-    this.xpj = new Button(this.mContext);
-    this.xpk = new Button(this.mContext);
-    this.xpl = new Button(this.mContext);
-    this.xpm = new Button(this.mContext);
-    this.xpn = new ImageButton(this.mContext);
-    this.xpo = new View(this.mContext);
-    this.xpo = new View(this.mContext);
-    this.xpp = new View(this.mContext);
-    this.xpq = new View(this.mContext);
-    this.xpr = new View(this.mContext);
-    this.xps = new View(this.mContext);
-    this.xpt = new View(this.mContext);
-    this.xpd.setBackgroundResource(2131232759);
-    this.xpe.setBackgroundResource(2131232759);
-    this.xpf.setBackgroundResource(2131232759);
-    this.xpg.setBackgroundResource(2131232759);
-    this.xph.setBackgroundResource(2131232759);
-    this.xpi.setBackgroundResource(2131232759);
-    this.xpj.setBackgroundResource(2131232759);
-    this.xpk.setBackgroundResource(2131232759);
-    this.xpl.setBackgroundResource(2131232759);
-    this.xpi.setBackgroundResource(2131232759);
-    this.xpm.setBackgroundResource(2131232759);
-    this.xpn.setBackgroundResource(2131232759);
-    this.xpn.setImageResource(2131232760);
-    this.xpd.setText("0");
-    this.xpe.setText("1");
-    this.xpf.setText("2");
-    this.xpg.setText("3");
-    this.xph.setText("4");
-    this.xpi.setText("5");
-    this.xpj.setText("6");
-    this.xpk.setText("7");
-    this.xpl.setText("8");
-    this.xpm.setText("9");
-    this.xpd.setGravity(17);
-    this.xpe.setGravity(17);
-    this.xpf.setGravity(17);
-    this.xpg.setGravity(17);
-    this.xph.setGravity(17);
-    this.xpi.setGravity(17);
-    this.xpj.setGravity(17);
-    this.xpk.setGravity(17);
-    this.xpl.setGravity(17);
-    this.xpm.setGravity(17);
-    this.xpd.setTextSize(0, this.pDQ);
-    this.xpe.setTextSize(0, this.pDQ);
-    this.xpf.setTextSize(0, this.pDQ);
-    this.xpg.setTextSize(0, this.pDQ);
-    this.xph.setTextSize(0, this.pDQ);
-    this.xpi.setTextSize(0, this.pDQ);
-    this.xpj.setTextSize(0, this.pDQ);
-    this.xpk.setTextSize(0, this.pDQ);
-    this.xpl.setTextSize(0, this.pDQ);
-    this.xpm.setTextSize(0, this.pDQ);
-    this.xpd.setTextColor(this.xpx);
-    this.xpe.setTextColor(this.xpx);
-    this.xpf.setTextColor(this.xpx);
-    this.xpg.setTextColor(this.xpx);
-    this.xph.setTextColor(this.xpx);
-    this.xpi.setTextColor(this.xpx);
-    this.xpj.setTextColor(this.xpx);
-    this.xpk.setTextColor(this.xpx);
-    this.xpl.setTextColor(this.xpx);
-    this.xpm.setTextColor(this.xpx);
-    this.xpd.setOnClickListener(this);
-    this.xpe.setOnClickListener(this);
-    this.xpf.setOnClickListener(this);
-    this.xpg.setOnClickListener(this);
-    this.xph.setOnClickListener(this);
-    this.xpi.setOnClickListener(this);
-    this.xpj.setOnClickListener(this);
-    this.xpk.setOnClickListener(this);
-    this.xpl.setOnClickListener(this);
-    this.xpm.setOnClickListener(this);
-    this.xpn.setOnClickListener(this);
-    this.xpn.setOnLongClickListener(this);
-    this.xpo.setBackgroundColor(this.xpy);
-    this.xpo.setBackgroundColor(this.xpy);
-    this.xpp.setBackgroundColor(this.xpy);
-    this.xpq.setBackgroundColor(this.xpy);
-    this.xpr.setBackgroundColor(this.xpy);
-    this.xps.setBackgroundColor(this.xpy);
-    this.xpt.setBackgroundColor(this.xpy);
-    addView(this.xpd);
-    addView(this.xpe);
-    addView(this.xpf);
-    addView(this.xpg);
-    addView(this.xph);
-    addView(this.xpi);
-    addView(this.xpj);
-    addView(this.xpk);
-    addView(this.xpl);
-    addView(this.xpm);
-    addView(this.xpn);
-    addView(this.xpo);
-    addView(this.xpp);
-    addView(this.xpq);
-    addView(this.xpr);
-    addView(this.xps);
-    addView(this.xpt);
+    this.BpH = getResources().getDimensionPixelSize(2131166559);
+    this.BpI = getResources().getDimensionPixelSize(2131166560);
+    this.gPN = getResources().getDimensionPixelSize(2131166561);
+    this.BpJ = getResources().getColorStateList(2131100665);
+    this.BpK = getResources().getColor(2131100664);
+    this.Bpp = new Button(this.mContext);
+    this.Bpq = new Button(this.mContext);
+    this.Bpr = new Button(this.mContext);
+    this.Bps = new Button(this.mContext);
+    this.Bpt = new Button(this.mContext);
+    this.Bpu = new Button(this.mContext);
+    this.Bpv = new Button(this.mContext);
+    this.Bpw = new Button(this.mContext);
+    this.Bpx = new Button(this.mContext);
+    this.Bpy = new Button(this.mContext);
+    this.Bpz = new ImageButton(this.mContext);
+    this.BpA = new View(this.mContext);
+    this.BpA = new View(this.mContext);
+    this.BpB = new View(this.mContext);
+    this.BpC = new View(this.mContext);
+    this.BpD = new View(this.mContext);
+    this.BpE = new View(this.mContext);
+    this.BpF = new View(this.mContext);
+    this.Bpp.setBackgroundResource(2131233200);
+    this.Bpq.setBackgroundResource(2131233200);
+    this.Bpr.setBackgroundResource(2131233200);
+    this.Bps.setBackgroundResource(2131233200);
+    this.Bpt.setBackgroundResource(2131233200);
+    this.Bpu.setBackgroundResource(2131233200);
+    this.Bpv.setBackgroundResource(2131233200);
+    this.Bpw.setBackgroundResource(2131233200);
+    this.Bpx.setBackgroundResource(2131233200);
+    this.Bpu.setBackgroundResource(2131233200);
+    this.Bpy.setBackgroundResource(2131233200);
+    this.Bpz.setBackgroundResource(2131233200);
+    this.Bpz.setImageResource(2131233201);
+    this.Bpp.setText("0");
+    this.Bpq.setText("1");
+    this.Bpr.setText("2");
+    this.Bps.setText("3");
+    this.Bpt.setText("4");
+    this.Bpu.setText("5");
+    this.Bpv.setText("6");
+    this.Bpw.setText("7");
+    this.Bpx.setText("8");
+    this.Bpy.setText("9");
+    this.Bpp.setGravity(17);
+    this.Bpq.setGravity(17);
+    this.Bpr.setGravity(17);
+    this.Bps.setGravity(17);
+    this.Bpt.setGravity(17);
+    this.Bpu.setGravity(17);
+    this.Bpv.setGravity(17);
+    this.Bpw.setGravity(17);
+    this.Bpx.setGravity(17);
+    this.Bpy.setGravity(17);
+    this.Bpp.setTextSize(0, this.gPN);
+    this.Bpq.setTextSize(0, this.gPN);
+    this.Bpr.setTextSize(0, this.gPN);
+    this.Bps.setTextSize(0, this.gPN);
+    this.Bpt.setTextSize(0, this.gPN);
+    this.Bpu.setTextSize(0, this.gPN);
+    this.Bpv.setTextSize(0, this.gPN);
+    this.Bpw.setTextSize(0, this.gPN);
+    this.Bpx.setTextSize(0, this.gPN);
+    this.Bpy.setTextSize(0, this.gPN);
+    this.Bpp.setTextColor(this.BpJ);
+    this.Bpq.setTextColor(this.BpJ);
+    this.Bpr.setTextColor(this.BpJ);
+    this.Bps.setTextColor(this.BpJ);
+    this.Bpt.setTextColor(this.BpJ);
+    this.Bpu.setTextColor(this.BpJ);
+    this.Bpv.setTextColor(this.BpJ);
+    this.Bpw.setTextColor(this.BpJ);
+    this.Bpx.setTextColor(this.BpJ);
+    this.Bpy.setTextColor(this.BpJ);
+    this.Bpp.setOnClickListener(this);
+    this.Bpq.setOnClickListener(this);
+    this.Bpr.setOnClickListener(this);
+    this.Bps.setOnClickListener(this);
+    this.Bpt.setOnClickListener(this);
+    this.Bpu.setOnClickListener(this);
+    this.Bpv.setOnClickListener(this);
+    this.Bpw.setOnClickListener(this);
+    this.Bpx.setOnClickListener(this);
+    this.Bpy.setOnClickListener(this);
+    this.Bpz.setOnClickListener(this);
+    this.Bpz.setOnLongClickListener(this);
+    this.BpA.setBackgroundColor(this.BpK);
+    this.BpA.setBackgroundColor(this.BpK);
+    this.BpB.setBackgroundColor(this.BpK);
+    this.BpC.setBackgroundColor(this.BpK);
+    this.BpD.setBackgroundColor(this.BpK);
+    this.BpE.setBackgroundColor(this.BpK);
+    this.BpF.setBackgroundColor(this.BpK);
+    addView(this.Bpp);
+    addView(this.Bpq);
+    addView(this.Bpr);
+    addView(this.Bps);
+    addView(this.Bpt);
+    addView(this.Bpu);
+    addView(this.Bpv);
+    addView(this.Bpw);
+    addView(this.Bpx);
+    addView(this.Bpy);
+    addView(this.Bpz);
+    addView(this.BpA);
+    addView(this.BpB);
+    addView(this.BpC);
+    addView(this.BpD);
+    addView(this.BpE);
+    addView(this.BpF);
     post(new Runnable()
     {
       public final void run()
@@ -191,8 +191,8 @@ public class MMKeyBoardView
   private void input(String paramString)
   {
     AppMethodBeat.i(27692);
-    if ((this.xoK != null) && (this.xpu)) {
-      this.xoK.input(paramString);
+    if ((this.BoW != null) && (this.BpG)) {
+      this.BoW.input(paramString);
     }
     AppMethodBeat.o(27692);
   }
@@ -201,16 +201,16 @@ public class MMKeyBoardView
   {
     AppMethodBeat.i(27689);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/pwdgroup/ui/widget/MMKeyBoardView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    if (!this.xpu)
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/pwdgroup/ui/widget/MMKeyBoardView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if (!this.BpG)
     {
-      ae.d("MicroMsg.Facing.MMKeyBoardView", "onClick KeyBoard is disable.");
+      Log.d("MicroMsg.Facing.MMKeyBoardView", "onClick KeyBoard is disable.");
       a.a(this, "com/tencent/mm/plugin/pwdgroup/ui/widget/MMKeyBoardView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(27689);
       return;
     }
-    if (paramView == this.xpd) {
+    if (paramView == this.Bpp) {
       input("0");
     }
     for (;;)
@@ -218,26 +218,26 @@ public class MMKeyBoardView
       a.a(this, "com/tencent/mm/plugin/pwdgroup/ui/widget/MMKeyBoardView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(27689);
       return;
-      if (paramView == this.xpe) {
+      if (paramView == this.Bpq) {
         input("1");
-      } else if (paramView == this.xpf) {
+      } else if (paramView == this.Bpr) {
         input("2");
-      } else if (paramView == this.xpg) {
+      } else if (paramView == this.Bps) {
         input("3");
-      } else if (paramView == this.xph) {
+      } else if (paramView == this.Bpt) {
         input("4");
-      } else if (paramView == this.xpi) {
+      } else if (paramView == this.Bpu) {
         input("5");
-      } else if (paramView == this.xpj) {
+      } else if (paramView == this.Bpv) {
         input("6");
-      } else if (paramView == this.xpk) {
+      } else if (paramView == this.Bpw) {
         input("7");
-      } else if (paramView == this.xpl) {
+      } else if (paramView == this.Bpx) {
         input("8");
-      } else if (paramView == this.xpm) {
+      } else if (paramView == this.Bpy) {
         input("9");
-      } else if ((paramView == this.xpn) && (this.xoK != null) && (this.xpu)) {
-        this.xoK.delete();
+      } else if ((paramView == this.Bpz) && (this.BoW != null) && (this.BpG)) {
+        this.BoW.delete();
       }
     }
   }
@@ -248,31 +248,31 @@ public class MMKeyBoardView
   {
     AppMethodBeat.i(27687);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.xpz = getWidth();
-    this.xpA = getHeight();
-    paramInt1 = -this.xpw;
-    paramInt2 = this.xpD - this.xpw + 1;
-    paramInt3 = this.xpD * 2 - this.xpw + 2;
-    paramInt4 = this.xpE + 2;
-    int i = this.xpE * 2 + 3;
-    int j = this.xpE * 3 + 4;
-    this.xpe.layout(paramInt1, 1, this.xpB + paramInt1, this.xpC + 1);
-    this.xpf.layout(paramInt2, 1, this.xpB + paramInt2, this.xpC + 1);
-    this.xpg.layout(paramInt3, 1, this.xpB + paramInt3, this.xpC + 1);
-    this.xph.layout(paramInt1, paramInt4, this.xpB + paramInt1, this.xpC + paramInt4);
-    this.xpi.layout(paramInt2, paramInt4, this.xpB + paramInt2, this.xpC + paramInt4);
-    this.xpj.layout(paramInt3, paramInt4, this.xpB + paramInt3, this.xpC + paramInt4);
-    this.xpk.layout(paramInt1, i, this.xpB + paramInt1, this.xpC + i);
-    this.xpl.layout(paramInt2, i, this.xpB + paramInt2, this.xpC + i);
-    this.xpm.layout(paramInt3, i, this.xpB + paramInt3, this.xpC + i);
-    this.xpd.layout(paramInt2, j, this.xpB + paramInt2, this.xpC + j);
-    this.xpn.layout(paramInt3, j, this.xpB + paramInt3, this.xpC + j);
-    this.xpo.layout(0, this.xpv + 1, this.xpz, this.xpv + 1 + 1);
-    this.xpp.layout(0, this.xpv + paramInt4, this.xpz, paramInt4 + this.xpv + 1);
-    this.xpq.layout(0, this.xpv + i, this.xpz, i + this.xpv + 1);
-    this.xpr.layout(0, this.xpv + j, this.xpz, this.xpv + j + 1);
-    this.xps.layout(this.xpD + 1, this.xpv, this.xpD + 2, this.xpA);
-    this.xpt.layout(this.xpD * 2 + 2, this.xpv, this.xpD * 2 + 3, this.xpA);
+    this.BpL = getWidth();
+    this.BpM = getHeight();
+    paramInt1 = -this.BpI;
+    paramInt2 = this.BpP - this.BpI + 1;
+    paramInt3 = this.BpP * 2 - this.BpI + 2;
+    paramInt4 = this.BpQ + 2;
+    int i = this.BpQ * 2 + 3;
+    int j = this.BpQ * 3 + 4;
+    this.Bpq.layout(paramInt1, 1, this.BpN + paramInt1, this.BpO + 1);
+    this.Bpr.layout(paramInt2, 1, this.BpN + paramInt2, this.BpO + 1);
+    this.Bps.layout(paramInt3, 1, this.BpN + paramInt3, this.BpO + 1);
+    this.Bpt.layout(paramInt1, paramInt4, this.BpN + paramInt1, this.BpO + paramInt4);
+    this.Bpu.layout(paramInt2, paramInt4, this.BpN + paramInt2, this.BpO + paramInt4);
+    this.Bpv.layout(paramInt3, paramInt4, this.BpN + paramInt3, this.BpO + paramInt4);
+    this.Bpw.layout(paramInt1, i, this.BpN + paramInt1, this.BpO + i);
+    this.Bpx.layout(paramInt2, i, this.BpN + paramInt2, this.BpO + i);
+    this.Bpy.layout(paramInt3, i, this.BpN + paramInt3, this.BpO + i);
+    this.Bpp.layout(paramInt2, j, this.BpN + paramInt2, this.BpO + j);
+    this.Bpz.layout(paramInt3, j, this.BpN + paramInt3, this.BpO + j);
+    this.BpA.layout(0, this.BpH + 1, this.BpL, this.BpH + 1 + 1);
+    this.BpB.layout(0, this.BpH + paramInt4, this.BpL, paramInt4 + this.BpH + 1);
+    this.BpC.layout(0, this.BpH + i, this.BpL, i + this.BpH + 1);
+    this.BpD.layout(0, this.BpH + j, this.BpL, this.BpH + j + 1);
+    this.BpE.layout(this.BpP + 1, this.BpH, this.BpP + 2, this.BpM);
+    this.BpF.layout(this.BpP * 2 + 2, this.BpH, this.BpP * 2 + 3, this.BpM);
     AppMethodBeat.o(27687);
   }
   
@@ -280,10 +280,10 @@ public class MMKeyBoardView
   {
     AppMethodBeat.i(27690);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/pwdgroup/ui/widget/MMKeyBoardView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-    if ((paramView == this.xpn) && (this.xoK != null) && (this.xpu)) {
-      this.xoK.bdi();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/pwdgroup/ui/widget/MMKeyBoardView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+    if ((paramView == this.Bpz) && (this.BoW != null) && (this.BpG)) {
+      this.BoW.byC();
     }
     a.a(false, this, "com/tencent/mm/plugin/pwdgroup/ui/widget/MMKeyBoardView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(27690);
@@ -294,61 +294,61 @@ public class MMKeyBoardView
   {
     AppMethodBeat.i(27688);
     super.onMeasure(paramInt1, paramInt2);
-    this.xpz = getWidth();
-    this.xpA = getHeight();
-    if ((this.xpz != 0) && (this.xpA != 0))
+    this.BpL = getWidth();
+    this.BpM = getHeight();
+    if ((this.BpL != 0) && (this.BpM != 0))
     {
-      this.xpD = ((this.xpz - 2) / 3);
-      this.xpE = ((this.xpA - this.xpv - 4) / 4);
-      this.xpB = (this.xpD + this.xpw * 2);
-      this.xpC = (this.xpE + this.xpv * 2);
+      this.BpP = ((this.BpL - 2) / 3);
+      this.BpQ = ((this.BpM - this.BpH - 4) / 4);
+      this.BpN = (this.BpP + this.BpI * 2);
+      this.BpO = (this.BpQ + this.BpH * 2);
     }
-    this.xpe.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpf.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpg.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xph.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpi.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpj.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpk.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpl.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpm.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpd.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpn.measure(View.MeasureSpec.makeMeasureSpec(this.xpB, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpC, 1073741824));
-    this.xpo.measure(View.MeasureSpec.makeMeasureSpec(this.xpz, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
-    this.xpp.measure(View.MeasureSpec.makeMeasureSpec(this.xpz, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
-    this.xpq.measure(View.MeasureSpec.makeMeasureSpec(this.xpz, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
-    this.xpr.measure(View.MeasureSpec.makeMeasureSpec(this.xpz, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
-    this.xps.measure(View.MeasureSpec.makeMeasureSpec(1, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpA, 1073741824));
-    this.xpt.measure(View.MeasureSpec.makeMeasureSpec(1, 1073741824), View.MeasureSpec.makeMeasureSpec(this.xpA, 1073741824));
+    this.Bpq.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpr.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bps.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpt.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpu.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpv.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpw.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpx.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpy.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpp.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.Bpz.measure(View.MeasureSpec.makeMeasureSpec(this.BpN, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpO, 1073741824));
+    this.BpA.measure(View.MeasureSpec.makeMeasureSpec(this.BpL, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
+    this.BpB.measure(View.MeasureSpec.makeMeasureSpec(this.BpL, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
+    this.BpC.measure(View.MeasureSpec.makeMeasureSpec(this.BpL, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
+    this.BpD.measure(View.MeasureSpec.makeMeasureSpec(this.BpL, 1073741824), View.MeasureSpec.makeMeasureSpec(1, 1073741824));
+    this.BpE.measure(View.MeasureSpec.makeMeasureSpec(1, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpM, 1073741824));
+    this.BpF.measure(View.MeasureSpec.makeMeasureSpec(1, 1073741824), View.MeasureSpec.makeMeasureSpec(this.BpM, 1073741824));
     AppMethodBeat.o(27688);
   }
   
   public void setKeyBoardEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(27691);
-    this.xpu = paramBoolean;
-    this.xpd.setEnabled(paramBoolean);
-    this.xpe.setEnabled(paramBoolean);
-    this.xpf.setEnabled(paramBoolean);
-    this.xpg.setEnabled(paramBoolean);
-    this.xph.setEnabled(paramBoolean);
-    this.xpi.setEnabled(paramBoolean);
-    this.xpj.setEnabled(paramBoolean);
-    this.xpk.setEnabled(paramBoolean);
-    this.xpl.setEnabled(paramBoolean);
-    this.xpm.setEnabled(paramBoolean);
-    this.xpn.setEnabled(paramBoolean);
+    this.BpG = paramBoolean;
+    this.Bpp.setEnabled(paramBoolean);
+    this.Bpq.setEnabled(paramBoolean);
+    this.Bpr.setEnabled(paramBoolean);
+    this.Bps.setEnabled(paramBoolean);
+    this.Bpt.setEnabled(paramBoolean);
+    this.Bpu.setEnabled(paramBoolean);
+    this.Bpv.setEnabled(paramBoolean);
+    this.Bpw.setEnabled(paramBoolean);
+    this.Bpx.setEnabled(paramBoolean);
+    this.Bpy.setEnabled(paramBoolean);
+    this.Bpz.setEnabled(paramBoolean);
     AppMethodBeat.o(27691);
   }
   
   public void setOnInputDeleteListener(a parama)
   {
-    this.xoK = parama;
+    this.BoW = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void bdi();
+    public abstract void byC();
     
     public abstract void delete();
     
@@ -357,7 +357,7 @@ public class MMKeyBoardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMKeyBoardView
  * JD-Core Version:    0.7.0.1
  */

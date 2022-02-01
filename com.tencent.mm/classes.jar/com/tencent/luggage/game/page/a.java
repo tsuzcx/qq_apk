@@ -7,36 +7,36 @@ import android.view.ViewGroup;
 import android.webkit.ValueCallback;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsruntime.h;
-import com.tencent.mm.plugin.appbrand.jsruntime.j;
-import com.tencent.mm.plugin.appbrand.page.am;
-import com.tencent.mm.plugin.appbrand.page.an;
+import com.tencent.mm.plugin.appbrand.m.h;
+import com.tencent.mm.plugin.appbrand.m.j;
 import com.tencent.mm.plugin.appbrand.page.ap;
-import com.tencent.mm.plugin.appbrand.page.ar;
-import com.tencent.mm.plugin.appbrand.page.ax;
+import com.tencent.mm.plugin.appbrand.page.aq;
+import com.tencent.mm.plugin.appbrand.page.as;
+import com.tencent.mm.plugin.appbrand.page.au;
+import com.tencent.mm.plugin.appbrand.page.bb;
 import com.tencent.mm.plugin.appbrand.platform.window.d;
 import java.net.URL;
 import java.util.Map;
 
 public final class a
-  implements ax
+  implements bb
 {
-  private ViewGroup ckM;
-  private ViewGroup ckN;
+  private ViewGroup cwH;
+  private ViewGroup cwI;
   
-  public final void Dq() {}
+  public final void MM() {}
   
-  public final boolean Dr()
+  public final boolean MN()
   {
     return false;
   }
   
-  public final boolean Ds()
+  public final boolean MO()
   {
     return false;
   }
   
-  public final <T extends j> T P(Class<T> paramClass)
+  public final <T extends j> T R(Class<T> paramClass)
   {
     return null;
   }
@@ -45,19 +45,19 @@ public final class a
   
   public final void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, ValueCallback<String> paramValueCallback) {}
   
-  public final void addJavascriptInterface(Object paramObject, String paramString) {}
-  
-  public final void ax(Context paramContext)
+  public final void aG(Context paramContext)
   {
     AppMethodBeat.i(130625);
-    if (this.ckM == null) {
-      this.ckM = new FrameLayout(paramContext);
+    if (this.cwH == null) {
+      this.cwH = new FrameLayout(paramContext);
     }
-    if (this.ckN == null) {
-      this.ckN = new FrameLayout(paramContext);
+    if (this.cwI == null) {
+      this.cwI = new FrameLayout(paramContext);
     }
     AppMethodBeat.o(130625);
   }
+  
+  public final void addJavascriptInterface(Object paramObject, String paramString) {}
   
   public final boolean c(Canvas paramCanvas)
   {
@@ -66,8 +66,8 @@ public final class a
   
   public final void destroy()
   {
-    this.ckM = null;
-    this.ckN = null;
+    this.cwH = null;
+    this.cwI = null;
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback) {}
@@ -79,7 +79,7 @@ public final class a
   
   public final View getContentView()
   {
-    return this.ckN;
+    return this.cwI;
   }
   
   public final d getFullscreenImpl()
@@ -90,11 +90,6 @@ public final class a
   public final int getHeight()
   {
     return 0;
-  }
-  
-  public final String getUrl()
-  {
-    return "MiniGame";
   }
   
   public final String getUserAgentString()
@@ -119,23 +114,23 @@ public final class a
   
   public final View getWrapperView()
   {
-    return this.ckM;
+    return this.cwH;
   }
   
-  public final void j(Runnable paramRunnable)
+  public final void i(Runnable paramRunnable)
   {
-    AppMethodBeat.i(220730);
+    AppMethodBeat.i(222886);
     if (paramRunnable != null) {
       paramRunnable.run();
     }
-    AppMethodBeat.o(220730);
+    AppMethodBeat.o(222886);
   }
   
   public final void onBackground() {}
   
   public final void onForeground() {}
   
-  public final void q(int paramInt, long paramLong) {}
+  public final void s(int paramInt, long paramLong) {}
   
   public final void setAppBrandInfo(Map<String, String> paramMap) {}
   
@@ -145,21 +140,21 @@ public final class a
   
   public final void setJsExceptionHandler(h paramh) {}
   
-  public final void setOnScrollChangedListener(ap paramap) {}
+  public final void setOnScrollChangedListener(as paramas) {}
   
-  public final void setOnTrimListener(an paraman) {}
+  public final void setOnTrimListener(aq paramaq) {}
   
   public final void setVerticalScrollBarEnabled(boolean paramBoolean) {}
   
-  public final void setWebViewLayoutListener(am paramam) {}
+  public final void setWebViewLayoutListener(ap paramap) {}
   
-  public final void setXWebKeyboardImpl(ar paramar) {}
+  public final void setXWebKeyboardImpl(au paramau) {}
   
   public final void x(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.page.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.a.d;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,22 +16,22 @@ import java.util.List;
 
 public final class b
 {
-  LinkedList<String> ulA;
-  LinkedList<com.tencent.mm.pluginsdk.model.app.g> ulB;
+  LinkedList<String> xDS;
+  LinkedList<com.tencent.mm.pluginsdk.model.app.g> xDT;
   
   public b()
   {
     AppMethodBeat.i(41351);
-    this.ulB = new LinkedList();
-    this.ulA = new LinkedList();
+    this.xDT = new LinkedList();
+    this.xDS = new LinkedList();
     AppMethodBeat.o(41351);
   }
   
-  private void dbh()
+  private void dUO()
   {
     AppMethodBeat.i(41354);
     Object localObject1 = new ArrayList();
-    Object localObject2 = ((d)com.tencent.mm.kernel.g.ab(d.class)).azM().rawQuery("select * from FileDownloadInfo where status=3", new String[0]);
+    Object localObject2 = ((d)com.tencent.mm.kernel.g.af(d.class)).aSU().rawQuery("select * from FileDownloadInfo where status=3", new String[0]);
     if (localObject2 == null) {}
     while (!((List)localObject1).isEmpty())
     {
@@ -40,13 +40,13 @@ public final class b
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        if ((!bu.isNullOrNil((String)localObject2)) && (!this.ulA.contains(localObject2)))
+        if ((!Util.isNullOrNil((String)localObject2)) && (!this.xDS.contains(localObject2)))
         {
-          localObject3 = h.m((String)localObject2, false, false);
-          if ((localObject3 != null) && (!this.ulB.contains(localObject3)))
+          localObject3 = h.o((String)localObject2, false, false);
+          if ((localObject3 != null) && (!this.xDT.contains(localObject3)))
           {
-            this.ulB.add(localObject3);
-            this.ulA.add(localObject2);
+            this.xDT.add(localObject3);
+            this.xDS.add(localObject2);
           }
         }
       }
@@ -54,7 +54,7 @@ public final class b
       {
         localObject3 = new com.tencent.mm.plugin.downloader.g.a();
         ((com.tencent.mm.plugin.downloader.g.a)localObject3).convertFrom((Cursor)localObject2);
-        if ((!bu.isNullOrNil(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId)) && (((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId.startsWith("wx")) && (((com.tencent.mm.plugin.downloader.g.a)localObject3).field_status == 3) && (o.fB(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_filePath)) && (!((List)localObject1).contains(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId))) {
+        if ((!Util.isNullOrNil(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId)) && (((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId.startsWith("wx")) && (((com.tencent.mm.plugin.downloader.g.a)localObject3).field_status == 3) && (s.YS(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_filePath)) && (!((List)localObject1).contains(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId))) {
           ((List)localObject1).add(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId);
         }
       }
@@ -63,13 +63,13 @@ public final class b
     AppMethodBeat.o(41354);
   }
   
-  private void fq(Context paramContext)
+  private void fW(Context paramContext)
   {
     AppMethodBeat.i(41353);
-    Cursor localCursor = com.tencent.mm.plugin.s.a.dBg().fdM();
+    Cursor localCursor = com.tencent.mm.plugin.r.a.eAS().gmX();
     if (localCursor == null)
     {
-      ae.e("MicroMsg.GameAppCacheService", "getInstalledGame faild: curosr is null");
+      Log.e("MicroMsg.GameAppCacheService", "getInstalledGame faild: curosr is null");
       AppMethodBeat.o(41353);
       return;
     }
@@ -78,11 +78,11 @@ public final class b
       {
         com.tencent.mm.pluginsdk.model.app.g localg = new com.tencent.mm.pluginsdk.model.app.g();
         localg.convertFrom(localCursor);
-        if ((h.a(paramContext, localg)) && (!this.ulA.contains(localg.field_appId)))
+        if ((h.a(paramContext, localg)) && (!this.xDS.contains(localg.field_appId)))
         {
-          ae.i("MicroMsg.GameAppCacheService", "installed game:[%s][%s]", new Object[] { localg.field_appName, localg.field_appId });
-          this.ulB.add(localg);
-          this.ulA.add(localg.field_appId);
+          Log.i("MicroMsg.GameAppCacheService", "installed game:[%s][%s]", new Object[] { localg.field_appName, localg.field_appId });
+          this.xDT.add(localg);
+          this.xDS.add(localg.field_appId);
         }
       } while (localCursor.moveToNext());
     }
@@ -93,12 +93,12 @@ public final class b
   public final void clearCache()
   {
     AppMethodBeat.i(41355);
-    ae.i("MicroMsg.GameAppCacheService", "clear cached apppinfos");
-    if (this.ulB != null) {
-      this.ulB.clear();
+    Log.i("MicroMsg.GameAppCacheService", "clear cached apppinfos");
+    if (this.xDT != null) {
+      this.xDT.clear();
     }
-    if (this.ulA != null) {
-      this.ulA.clear();
+    if (this.xDS != null) {
+      this.xDS.clear();
     }
     AppMethodBeat.o(41355);
   }
@@ -106,34 +106,34 @@ public final class b
   public final void init(Context paramContext)
   {
     AppMethodBeat.i(41352);
-    if (this.ulB == null)
+    if (this.xDT == null)
     {
-      this.ulB = new LinkedList();
-      if (this.ulA != null) {
+      this.xDT = new LinkedList();
+      if (this.xDS != null) {
         break label122;
       }
-      this.ulA = new LinkedList();
+      this.xDS = new LinkedList();
     }
     for (;;)
     {
       long l1 = System.currentTimeMillis();
-      fq(paramContext);
+      fW(paramContext);
       long l2 = System.currentTimeMillis();
-      dbh();
+      dUO();
       long l3 = System.currentTimeMillis();
-      ae.i("MicroMsg.GameAppCacheService", "Init time: %d, %d, %d", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l3 - l2), Long.valueOf(l3 - l1) });
+      Log.i("MicroMsg.GameAppCacheService", "Init time: %d, %d, %d", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l3 - l2), Long.valueOf(l3 - l1) });
       AppMethodBeat.o(41352);
       return;
-      this.ulB.clear();
+      this.xDT.clear();
       break;
       label122:
-      this.ulA.clear();
+      this.xDS.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ import android.view.MotionEvent.PointerProperties;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class AppBrandViewMotionCompat
 {
-  private static MotionEvent.PointerCoords[] mZt;
-  private static MotionEvent.PointerProperties[] mZu;
-  private static int[] mZv;
+  private static int[] omA;
+  private static MotionEvent.PointerCoords[] omy;
+  private static MotionEvent.PointerProperties[] omz;
   
   @TargetApi(5)
-  public static int F(MotionEvent paramMotionEvent)
+  public static int J(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(174629);
     int k = paramMotionEvent.getPointerCount();
@@ -61,8 +61,139 @@ public final class AppBrandViewMotionCompat
     return false;
   }
   
+  public static boolean cM(View paramView)
+  {
+    AppMethodBeat.i(140870);
+    if ((paramView != null) && ((paramView instanceof c)) && (((c)paramView).caj()))
+    {
+      AppMethodBeat.o(140870);
+      return true;
+    }
+    AppMethodBeat.o(140870);
+    return false;
+  }
+  
+  public static boolean cN(View paramView)
+  {
+    AppMethodBeat.i(140871);
+    if ((paramView.getVisibility() == 0) || (paramView.getAnimation() != null))
+    {
+      AppMethodBeat.o(140871);
+      return true;
+    }
+    AppMethodBeat.o(140871);
+    return false;
+  }
+  
+  @TargetApi(11)
+  public static boolean cO(View paramView)
+  {
+    AppMethodBeat.i(174627);
+    boolean bool = paramView.getMatrix().isIdentity();
+    AppMethodBeat.o(174627);
+    return bool;
+  }
+  
+  public static Matrix cP(View paramView)
+  {
+    AppMethodBeat.i(174628);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(174628);
+      return null;
+    }
+    Matrix localMatrix2 = (Matrix)paramView.getTag(2131297003);
+    Matrix localMatrix1 = localMatrix2;
+    if (localMatrix2 == null)
+    {
+      localMatrix1 = new Matrix();
+      paramView.setTag(2131297003, localMatrix1);
+    }
+    paramView.getMatrix().invert(localMatrix1);
+    AppMethodBeat.o(174628);
+    return localMatrix1;
+  }
+  
+  @TargetApi(11)
+  @Keep
+  public static boolean dispatchTransformedTouchEvent(ViewGroup paramViewGroup, MotionEvent paramMotionEvent, boolean paramBoolean, View paramView, int paramInt)
+  {
+    AppMethodBeat.i(140873);
+    if ((paramViewGroup == null) || (paramMotionEvent == null))
+    {
+      AppMethodBeat.o(140873);
+      return false;
+    }
+    int i = paramMotionEvent.getAction();
+    if ((paramBoolean) || (i == 3))
+    {
+      paramMotionEvent.setAction(3);
+      if (paramView == null)
+      {
+        AppMethodBeat.o(140873);
+        return false;
+      }
+      paramBoolean = paramView.dispatchTouchEvent(paramMotionEvent);
+      paramMotionEvent.setAction(i);
+      AppMethodBeat.o(140873);
+      return paramBoolean;
+    }
+    i = J(paramMotionEvent);
+    paramInt = i & paramInt;
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(140873);
+      return false;
+    }
+    if (paramInt == i)
+    {
+      if ((paramView == null) || (paramView.getMatrix().isIdentity()))
+      {
+        if (paramView == null)
+        {
+          AppMethodBeat.o(140873);
+          return false;
+        }
+        float f1 = paramViewGroup.getScrollX() - paramView.getLeft();
+        float f2 = paramViewGroup.getScrollY() - paramView.getTop();
+        paramMotionEvent.offsetLocation(f1, f2);
+        paramBoolean = paramView.dispatchTouchEvent(paramMotionEvent);
+        paramMotionEvent.offsetLocation(-f1, -f2);
+        AppMethodBeat.o(140873);
+        return paramBoolean;
+      }
+      paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    }
+    while (paramView == null)
+    {
+      AppMethodBeat.o(140873);
+      return false;
+      try
+      {
+        paramMotionEvent = g(paramMotionEvent, paramInt);
+      }
+      catch (IllegalArgumentException paramViewGroup)
+      {
+        Log.w("MicroMsg.AppBrandViewMotionCompat", "dispatchTransformedTouchEvent e=%s", new Object[] { paramViewGroup.getMessage() });
+        AppMethodBeat.o(140873);
+        return false;
+      }
+    }
+    paramMotionEvent.offsetLocation(paramViewGroup.getScrollX() - paramView.getLeft(), paramViewGroup.getScrollY() - paramView.getTop());
+    if (!paramView.getMatrix().isIdentity())
+    {
+      paramViewGroup = paramView.getMatrix();
+      paramViewGroup.invert(paramViewGroup);
+      paramMotionEvent.transform(paramViewGroup);
+    }
+    paramBoolean = paramView.dispatchTouchEvent(paramMotionEvent);
+    paramMotionEvent.recycle();
+    AppMethodBeat.o(140873);
+    return paramBoolean;
+  }
+  
   @TargetApi(14)
-  public static MotionEvent c(MotionEvent paramMotionEvent, int paramInt)
+  public static MotionEvent g(MotionEvent paramMotionEvent, int paramInt)
   {
     AppMethodBeat.i(174632);
     if (Looper.getMainLooper() != Looper.myLooper())
@@ -72,10 +203,10 @@ public final class AppBrandViewMotionCompat
       throw paramMotionEvent;
     }
     int i3 = paramMotionEvent.getPointerCount();
-    wa(i3);
-    MotionEvent.PointerProperties[] arrayOfPointerProperties = mZu;
-    MotionEvent.PointerCoords[] arrayOfPointerCoords = mZt;
-    int[] arrayOfInt = mZv;
+    zQ(i3);
+    MotionEvent.PointerProperties[] arrayOfPointerProperties = omz;
+    MotionEvent.PointerCoords[] arrayOfPointerCoords = omy;
+    int[] arrayOfInt = omA;
     int i1 = paramMotionEvent.getAction();
     int i2 = i1 & 0xFF;
     int j = -1;
@@ -160,145 +291,14 @@ public final class AppBrandViewMotionCompat
     return localMotionEvent;
   }
   
-  public static boolean cV(View paramView)
-  {
-    AppMethodBeat.i(140870);
-    if ((paramView != null) && ((paramView instanceof c)) && (((c)paramView).bDj()))
-    {
-      AppMethodBeat.o(140870);
-      return true;
-    }
-    AppMethodBeat.o(140870);
-    return false;
-  }
-  
-  public static boolean cW(View paramView)
-  {
-    AppMethodBeat.i(140871);
-    if ((paramView.getVisibility() == 0) || (paramView.getAnimation() != null))
-    {
-      AppMethodBeat.o(140871);
-      return true;
-    }
-    AppMethodBeat.o(140871);
-    return false;
-  }
-  
-  @TargetApi(11)
-  public static boolean cX(View paramView)
-  {
-    AppMethodBeat.i(174627);
-    boolean bool = paramView.getMatrix().isIdentity();
-    AppMethodBeat.o(174627);
-    return bool;
-  }
-  
-  public static Matrix cY(View paramView)
-  {
-    AppMethodBeat.i(174628);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(174628);
-      return null;
-    }
-    Matrix localMatrix2 = (Matrix)paramView.getTag(2131296901);
-    Matrix localMatrix1 = localMatrix2;
-    if (localMatrix2 == null)
-    {
-      localMatrix1 = new Matrix();
-      paramView.setTag(2131296901, localMatrix1);
-    }
-    paramView.getMatrix().invert(localMatrix1);
-    AppMethodBeat.o(174628);
-    return localMatrix1;
-  }
-  
-  @TargetApi(11)
-  @Keep
-  public static boolean dispatchTransformedTouchEvent(ViewGroup paramViewGroup, MotionEvent paramMotionEvent, boolean paramBoolean, View paramView, int paramInt)
-  {
-    AppMethodBeat.i(140873);
-    if ((paramViewGroup == null) || (paramMotionEvent == null))
-    {
-      AppMethodBeat.o(140873);
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if ((paramBoolean) || (i == 3))
-    {
-      paramMotionEvent.setAction(3);
-      if (paramView == null)
-      {
-        AppMethodBeat.o(140873);
-        return false;
-      }
-      paramBoolean = paramView.dispatchTouchEvent(paramMotionEvent);
-      paramMotionEvent.setAction(i);
-      AppMethodBeat.o(140873);
-      return paramBoolean;
-    }
-    i = F(paramMotionEvent);
-    paramInt = i & paramInt;
-    if (paramInt == 0)
-    {
-      AppMethodBeat.o(140873);
-      return false;
-    }
-    if (paramInt == i)
-    {
-      if ((paramView == null) || (paramView.getMatrix().isIdentity()))
-      {
-        if (paramView == null)
-        {
-          AppMethodBeat.o(140873);
-          return false;
-        }
-        float f1 = paramViewGroup.getScrollX() - paramView.getLeft();
-        float f2 = paramViewGroup.getScrollY() - paramView.getTop();
-        paramMotionEvent.offsetLocation(f1, f2);
-        paramBoolean = paramView.dispatchTouchEvent(paramMotionEvent);
-        paramMotionEvent.offsetLocation(-f1, -f2);
-        AppMethodBeat.o(140873);
-        return paramBoolean;
-      }
-      paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    }
-    while (paramView == null)
-    {
-      AppMethodBeat.o(140873);
-      return false;
-      try
-      {
-        paramMotionEvent = c(paramMotionEvent, paramInt);
-      }
-      catch (IllegalArgumentException paramViewGroup)
-      {
-        ae.w("MicroMsg.AppBrandViewMotionCompat", "dispatchTransformedTouchEvent e=%s", new Object[] { paramViewGroup.getMessage() });
-        AppMethodBeat.o(140873);
-        return false;
-      }
-    }
-    paramMotionEvent.offsetLocation(paramViewGroup.getScrollX() - paramView.getLeft(), paramViewGroup.getScrollY() - paramView.getTop());
-    if (!paramView.getMatrix().isIdentity())
-    {
-      paramViewGroup = paramView.getMatrix();
-      paramViewGroup.invert(paramViewGroup);
-      paramMotionEvent.transform(paramViewGroup);
-    }
-    paramBoolean = paramView.dispatchTouchEvent(paramMotionEvent);
-    paramMotionEvent.recycle();
-    AppMethodBeat.o(140873);
-    return paramBoolean;
-  }
-  
-  private static void wa(int paramInt)
+  private static void zQ(int paramInt)
   {
     AppMethodBeat.i(174630);
-    if ((mZt == null) || (mZt.length < paramInt))
+    if ((omy == null) || (omy.length < paramInt))
     {
       int i;
-      if (mZt != null) {
-        i = mZt.length;
+      if (omy != null) {
+        i = omy.length;
       }
       while (i < paramInt)
       {
@@ -313,14 +313,14 @@ public final class AppBrandViewMotionCompat
         arrayOfPointerCoords[paramInt] = new MotionEvent.PointerCoords();
         paramInt += 1;
       }
-      mZt = arrayOfPointerCoords;
-      mZu = wb(i);
-      mZv = new int[i];
+      omy = arrayOfPointerCoords;
+      omz = zR(i);
+      omA = new int[i];
     }
     AppMethodBeat.o(174630);
   }
   
-  private static MotionEvent.PointerProperties[] wb(int paramInt)
+  private static MotionEvent.PointerProperties[] zR(int paramInt)
   {
     AppMethodBeat.i(174631);
     MotionEvent.PointerProperties[] arrayOfPointerProperties = new MotionEvent.PointerProperties[paramInt];

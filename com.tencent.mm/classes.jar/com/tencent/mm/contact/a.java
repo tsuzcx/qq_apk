@@ -1,46 +1,46 @@
 package com.tencent.mm.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  public static void a(an paraman, String paramString, ArrayList<String> paramArrayList)
+  public static void a(as paramas, String paramString, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(116828);
-    an localan = paraman;
-    if (paraman == null) {
-      localan = ((l)g.ab(l.class)).azF().BH(paramString);
+    as localas = paramas;
+    if (paramas == null) {
+      localas = ((l)g.af(l.class)).aSN().Kn(paramString);
     }
-    if ((localan != null) && ((int)localan.ght > 0) && (c.lO(localan.field_type)))
+    if ((localas != null) && ((int)localas.gMZ > 0) && (c.oR(localas.field_type)))
     {
-      localan.tS(h(paramArrayList));
-      g(localan);
-      ((l)g.ab(l.class)).azF().am(localan);
+      localas.Ci(j(paramArrayList));
+      g(localas);
+      ((l)g.af(l.class)).aSN().ao(localas);
     }
     AppMethodBeat.o(116828);
   }
   
-  public static String[] a(an paraman, String paramString)
+  public static String[] a(as paramas, String paramString)
   {
     AppMethodBeat.i(116825);
     if (paramString != null)
     {
-      paraman = paramString.split(d(paraman));
+      paramas = paramString.split(d(paramas));
       AppMethodBeat.o(116825);
-      return paraman;
+      return paramas;
     }
     AppMethodBeat.o(116825);
     return null;
   }
   
-  public static String[] aj(String paramString1, String paramString2)
+  public static String[] al(String paramString1, String paramString2)
   {
     AppMethodBeat.i(116826);
     if (paramString1 != null)
@@ -53,64 +53,64 @@ public final class a
     return null;
   }
   
-  public static String d(an paraman)
+  public static String d(as paramas)
   {
-    if (paraman == null) {
+    if (paramas == null) {
       return ",";
     }
-    if (paraman.eRz == 0) {
+    if (paramas.fvc == 0) {
       return ",";
     }
     return "，";
   }
   
-  public static String[] e(an paraman)
+  public static String[] e(as paramas)
   {
     AppMethodBeat.i(116824);
-    if (paraman == null)
+    if (paramas == null)
     {
       AppMethodBeat.o(116824);
       return null;
     }
-    if (paraman.eRu != null)
+    if (paramas.fuX != null)
     {
-      paraman = paraman.eRu.split(d(paraman));
+      paramas = paramas.fuX.split(d(paramas));
       AppMethodBeat.o(116824);
-      return paraman;
+      return paramas;
     }
     AppMethodBeat.o(116824);
     return null;
   }
   
-  public static int f(an paraman)
+  public static int f(as paramas)
   {
     AppMethodBeat.i(116829);
-    paraman = e(paraman);
-    if (paraman == null)
+    paramas = e(paramas);
+    if (paramas == null)
     {
       AppMethodBeat.o(116829);
       return 0;
     }
-    if (paraman.length >= 5)
+    if (paramas.length >= 5)
     {
       AppMethodBeat.o(116829);
       return 5;
     }
-    int i = paraman.length;
+    int i = paramas.length;
     AppMethodBeat.o(116829);
     return i;
   }
   
-  public static void g(an paraman)
+  public static void g(as paramas)
   {
     AppMethodBeat.i(116830);
-    if (paraman != null) {
-      paraman.VR();
+    if (paramas != null) {
+      paramas.ajF();
     }
     AppMethodBeat.o(116830);
   }
   
-  public static String h(ArrayList<String> paramArrayList)
+  public static String j(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(116827);
     if (paramArrayList == null)
@@ -130,7 +130,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.contact.a
  * JD-Core Version:    0.7.0.1
  */

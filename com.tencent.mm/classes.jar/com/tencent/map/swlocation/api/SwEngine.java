@@ -3,8 +3,8 @@ package com.tencent.map.swlocation.api;
 import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.d.a.a.q;
-import com.d.a.a.t;
+import com.b.a.a.q;
+import com.b.a.a.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SwEngine
@@ -46,13 +46,13 @@ public class SwEngine
   public static void stopContinousLocationUpdate()
   {
     AppMethodBeat.i(87877);
-    t.AA();
+    t.Jt();
     AppMethodBeat.o(87877);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.map.swlocation.api.SwEngine
  * JD-Core Version:    0.7.0.1
  */

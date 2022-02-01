@@ -2,16 +2,16 @@ package android.support.design.f;
 
 public final class e
 {
-  private static final a mj = new a();
-  private static final b mk = new b();
-  a ml = mj;
-  a mm = mj;
-  a mn = mj;
-  a mo = mj;
-  public b mp = mk;
-  b mq = mk;
-  b mr = mk;
-  b ms = mk;
+  private static final a ml = new a();
+  private static final b mm = new b();
+  a mn = ml;
+  a mo = ml;
+  a mp = ml;
+  a mq = ml;
+  public b mr = mm;
+  b ms = mm;
+  b mt = mm;
+  b mu = mm;
 }
 
 

@@ -7,12 +7,12 @@ import com.tencent.stubs.logger.Log;
 public final class b$i
   extends b.d
 {
-  private f MlP;
+  private f ROm;
   private SurfaceTexture surfaceTexture;
   
   public b$i(f paramf, SurfaceTexture paramSurfaceTexture)
   {
-    this.MlP = paramf;
+    this.ROm = paramf;
     this.surfaceTexture = paramSurfaceTexture;
   }
   
@@ -21,10 +21,10 @@ public final class b$i
     AppMethodBeat.i(174588);
     try
     {
-      if ((this.MlP.isOpen()) && (!this.MlP.cOB()))
+      if ((this.ROm.isOpen()) && (!this.ROm.dEO()))
       {
         Log.i("CameraTask.DefaultStartPreviewTask", "start preview");
-        this.MlP.p(this.surfaceTexture);
+        this.ROm.r(this.surfaceTexture);
       }
       AppMethodBeat.o(174588);
       return null;

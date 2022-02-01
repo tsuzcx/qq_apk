@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:background="@drawable/vp" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip">
-        <ImageView android:id="@id/f5k" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="3.0dip" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/f5m" android:paddingLeft="15.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{saysay}" />
-        <Chronometer android:textSize="13.0dip" android:textStyle="bold" android:textColor="@color/Brand" android:id="@id/as8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/fod" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ct" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="24.0dip">
+        <com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView android:id="@id/fp7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/fp6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/xb" android:background="@drawable/icon_shadow_multitalk_avatar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cc" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/am" android:ellipsize="end" android:id="@id/fpd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/jbb" android:background="@drawable/b31" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/fon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="16.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/foo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/i3b" android:layout_below="@id/fon" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

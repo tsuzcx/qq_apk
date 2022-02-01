@@ -1,37 +1,35 @@
 package com.tencent.xweb.xwalk;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import java.io.File;
 
 final class d$49
-  implements View.OnClickListener
+  implements Runnable
 {
-  d$49(d paramd, CheckBox paramCheckBox) {}
+  d$49(d paramd, String paramString) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(154212);
-    b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    paramView = this.MTD;
-    if (!this.MTD.isChecked()) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(207271);
+    try
     {
-      paramView.setChecked(bool);
-      a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(154212);
+      Thread.sleep(5000L);
+      label11:
+      File localFile = new File(this.SGJ);
+      String str = this.SGJ + ".zip";
+      u.a(new File[] { localFile }, str, -1);
+      AppMethodBeat.o(207271);
       return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label11;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.xwalk.d.49
  * JD-Core Version:    0.7.0.1
  */

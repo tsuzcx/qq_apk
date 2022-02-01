@@ -8,13 +8,14 @@ import com.tencent.mm.plugin.ball.service.FloatBallReportServiceProxy;
 import com.tencent.mm.plugin.ball.service.FloatBallReportServiceProxy.a;
 import com.tencent.mm.plugin.ball.service.FloatBallServiceProxy;
 import com.tencent.mm.plugin.ball.service.c.a;
-import com.tencent.mm.plugin.comm.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.ball.service.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class PluginBall
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.ball.c.d
+  implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.ball.c.c
 {
   private o.a appForegroundListener;
   
@@ -26,14 +27,14 @@ public class PluginBall
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(106007);
-        ae.i("MicroMsg.PluginBall", "onAppBackground, activity:%s", new Object[] { paramAnonymousString });
-        if ((!AppForegroundDelegate.cTA.cBB) && (com.tencent.mm.kernel.g.ajM()) && (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null))
+        Log.i("MicroMsg.PluginBall", "onAppBackground, activity:%s", new Object[] { paramAnonymousString });
+        if ((!AppForegroundDelegate.djR.cPB) && (com.tencent.mm.kernel.g.aAc()) && (com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class) != null))
         {
-          ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).iM(false);
-          ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).iR(false);
+          ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).jL(false);
+          ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).jQ(false);
         }
-        if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.b.class) != null) {
-          ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.b.class)).iL(AppForegroundDelegate.cTA.cBB);
+        if (com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.a.class) != null) {
+          ((com.tencent.mm.plugin.ball.c.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.a.class)).jK(AppForegroundDelegate.djR.cPB);
         }
         AppMethodBeat.o(106007);
       }
@@ -41,11 +42,16 @@ public class PluginBall
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(106006);
-        ae.i("MicroMsg.PluginBall", "onAppForeground, activity:%s", new Object[] { paramAnonymousString });
-        if ((AppForegroundDelegate.cTA.cBB) && (com.tencent.mm.kernel.g.ajM()) && (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null))
+        Log.i("MicroMsg.PluginBall", "onAppForeground, activity:%s", new Object[] { paramAnonymousString });
+        if ((AppForegroundDelegate.djR.cPB) && (com.tencent.mm.kernel.g.aAc()) && (com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class) != null))
         {
-          ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).iN(true);
-          ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).iR(true);
+          boolean bool = Util.isTopApplication(MMApplicationContext.getContext());
+          Log.i("MicroMsg.PluginBall", "alvinluo onAppForeground isTopApplication: %b", new Object[] { Boolean.valueOf(bool) });
+          if (bool)
+          {
+            ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).jM(true);
+            ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).jQ(true);
+          }
         }
         AppMethodBeat.o(106006);
       }
@@ -56,9 +62,9 @@ public class PluginBall
   public void dependency()
   {
     AppMethodBeat.i(106009);
-    ae.i("MicroMsg.PluginBall", "dependency");
-    if (ak.coh()) {
-      dependsOn(a.class);
+    Log.i("MicroMsg.PluginBall", "dependency");
+    if (MMApplicationContext.isMainProcess()) {
+      dependsOn(com.tencent.mm.plugin.comm.a.a.class);
     }
     dependsOn(com.tencent.mm.plugin.handoff.a.b.class);
     AppMethodBeat.o(106009);
@@ -67,31 +73,31 @@ public class PluginBall
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(106012);
-    ae.i("MicroMsg.PluginBall", "execute");
-    if (paramg.akL())
+    Log.i("MicroMsg.PluginBall", "execute");
+    if (paramg.aBb())
     {
-      ae.i("MicroMsg.PluginBall", "register IFloatBallService in MM process");
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.c.class, com.tencent.mm.plugin.ball.service.d.bLK());
-      paramg = com.tencent.mm.plugin.ball.service.c.nLS;
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.b.class, c.a.bLJ());
+      Log.i("MicroMsg.PluginBall", "register IFloatBallService in MM process");
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.b.class, d.ciB());
+      paramg = com.tencent.mm.plugin.ball.service.c.oWM;
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.a.class, c.a.ciA());
       AppMethodBeat.o(106012);
       return;
     }
     paramg = new FloatBallServiceProxy();
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.c.class, paramg);
-    Object localObject = FloatBallReportServiceProxy.nLW;
-    localObject = FloatBallReportServiceProxy.arx();
-    FloatBallReportServiceProxy.a locala = FloatBallReportServiceProxy.nLW;
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.b.class, (FloatBallReportServiceProxy)((d.f)localObject).getValue());
-    ae.i("MicroMsg.PluginBall", "register IFloatBallService in non-MM process, proxy:%s", new Object[] { paramg });
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.b.class, paramg);
+    Object localObject = FloatBallReportServiceProxy.oWQ;
+    localObject = FloatBallReportServiceProxy.aJW();
+    FloatBallReportServiceProxy.a locala = FloatBallReportServiceProxy.oWQ;
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.ball.c.a.class, (FloatBallReportServiceProxy)((kotlin.f)localObject).getValue());
+    Log.i("MicroMsg.PluginBall", "register IFloatBallService in non-MM process, proxy:%s", new Object[] { paramg });
     AppMethodBeat.o(106012);
   }
   
   public void installed()
   {
     AppMethodBeat.i(106010);
-    ae.i("MicroMsg.PluginBall", "installed");
-    alias(com.tencent.mm.plugin.ball.c.d.class);
+    Log.i("MicroMsg.PluginBall", "installed");
+    alias(com.tencent.mm.plugin.ball.c.c.class);
     AppMethodBeat.o(106010);
   }
   
@@ -103,10 +109,10 @@ public class PluginBall
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(106013);
-    ae.i("MicroMsg.PluginBall", "onAccountInitialized");
+    Log.i("MicroMsg.PluginBall", "onAccountInitialized");
     this.appForegroundListener.alive();
-    if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).bKT();
+    if (com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).chL();
     }
     AppMethodBeat.o(106013);
   }
@@ -114,10 +120,10 @@ public class PluginBall
   public void onAccountRelease()
   {
     AppMethodBeat.i(106014);
-    ae.i("MicroMsg.PluginBall", "onAccountRelease");
+    Log.i("MicroMsg.PluginBall", "onAccountRelease");
     this.appForegroundListener.dead();
-    if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).onAccountRelease();
+    if (com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).onAccountRelease();
     }
     AppMethodBeat.o(106014);
   }
@@ -125,14 +131,14 @@ public class PluginBall
   public void uninstalled()
   {
     AppMethodBeat.i(106011);
-    ae.i("MicroMsg.PluginBall", "uninstalled");
+    Log.i("MicroMsg.PluginBall", "uninstalled");
     super.uninstalled();
     AppMethodBeat.o(106011);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.PluginBall
  * JD-Core Version:    0.7.0.1
  */

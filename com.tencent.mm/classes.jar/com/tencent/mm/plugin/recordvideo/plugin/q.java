@@ -7,45 +7,40 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.e.b;
+import com.tencent.mm.plugin.recordvideo.e.c;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.h;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoBgPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "bgView", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getBgView", "()Landroid/widget/ImageView;", "setBgView", "(Landroid/widget/ImageView;)V", "blurBitmap", "Landroid/graphics/Bitmap;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "initLogic", "", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "release", "reset", "saveBgBitmap", "setBlackBg", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoBgPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "bgView", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getBgView", "()Landroid/widget/ImageView;", "setBgView", "(Landroid/widget/ImageView;)V", "blurBitmap", "Landroid/graphics/Bitmap;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "initLogic", "", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "release", "reset", "saveBgBitmap", "setBlackBg", "plugin-recordvideo_release"})
 public final class q
   implements t
 {
+  public Bitmap BQT;
+  public ImageView BQU;
   public String TAG;
   public Context context;
-  public Bitmap xQW;
-  public ImageView xQX;
   
   public q(ImageView paramImageView, d paramd)
   {
     AppMethodBeat.i(75578);
-    this.xQX = paramImageView;
+    this.BQU = paramImageView;
     this.TAG = "MicroMsg.EditVideoBgPlugin";
-    this.context = this.xQX.getContext();
+    this.context = this.BQU.getContext();
     AppMethodBeat.o(75578);
   }
   
-  public final boolean aoQ()
-  {
-    return false;
-  }
+  public final void aSs() {}
   
-  public final void azm() {}
-  
-  public final String dJP()
+  public final String eKD()
   {
     AppMethodBeat.i(163434);
-    if (this.xQW != null)
+    if (this.BQT != null)
     {
-      Object localObject = b.yhe;
-      localObject = b.axp(String.valueOf(System.currentTimeMillis()));
-      h.a(this.xQW, 100, Bitmap.CompressFormat.JPEG, (String)localObject, false);
+      Object localObject = c.Cic;
+      localObject = c.aLN(String.valueOf(System.currentTimeMillis()));
+      BitmapUtil.saveBitmapToImage(this.BQT, 100, Bitmap.CompressFormat.JPEG, (String)localObject, false);
       AppMethodBeat.o(163434);
       return localObject;
     }
@@ -60,17 +55,22 @@ public final class q
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
+  public final boolean onBackPress()
+  {
+    return false;
+  }
+  
   public final void onDetach() {}
   
   public final void onPause() {}
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(206582);
+    AppMethodBeat.i(237298);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(206582);
+    AppMethodBeat.o(237298);
   }
   
   public final void onResume() {}
@@ -78,16 +78,16 @@ public final class q
   public final void release()
   {
     AppMethodBeat.i(75577);
-    Bitmap localBitmap = this.xQW;
+    Bitmap localBitmap = this.BQT;
     if (localBitmap != null)
     {
       if (!localBitmap.isRecycled())
       {
-        localBitmap = this.xQW;
+        localBitmap = this.BQT;
         if (localBitmap != null) {
           localBitmap.recycle();
         }
-        this.xQW = null;
+        this.BQT = null;
       }
       AppMethodBeat.o(75577);
       return;
@@ -98,10 +98,10 @@ public final class q
   public final void reset()
   {
     AppMethodBeat.i(75576);
-    ImageView localImageView = this.xQX;
-    Context localContext = this.xQX.getContext();
+    ImageView localImageView = this.BQU;
+    Context localContext = this.BQU.getContext();
     p.g(localContext, "bgView.context");
-    localImageView.setBackgroundColor(localContext.getResources().getColor(2131101053));
+    localImageView.setBackgroundColor(localContext.getResources().getColor(2131101287));
     AppMethodBeat.o(75576);
   }
   
@@ -109,7 +109,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.q
  * JD-Core Version:    0.7.0.1
  */
